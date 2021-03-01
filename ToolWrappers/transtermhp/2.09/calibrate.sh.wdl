@@ -10,6 +10,9 @@ task Calibratesh {
       ~{output_file_dot_dat} \
       ~{trans_term}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_dot_dat: ""
     trans_term: ""

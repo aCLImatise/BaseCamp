@@ -3,28 +3,29 @@ id: fastaptamer_count.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_i
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_q
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fastaptamer_count

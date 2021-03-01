@@ -26,6 +26,9 @@ task MglexcliClassify {
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     normalize: "Output class posterior instead of the raw likelihood"
     model: "Pre-calculated classificaton model file"

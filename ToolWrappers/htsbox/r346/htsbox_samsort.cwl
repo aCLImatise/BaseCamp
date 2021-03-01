@@ -3,17 +3,17 @@ id: htsbox_samsort.cwl
 inputs:
 - id: in_t
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_l
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -l
 - id: in_s
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -S
 - id: in_sam_sort
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - htsbox

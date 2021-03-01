@@ -2,18 +2,235 @@
 command:
 - mbuffer
 positional: []
-named: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: ': use <num> blocks for buffer (default: 49633)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: ': use blocks of <size> bytes for processing (default: 4096)'
+  args: !SimpleFlagArg
+    name: size
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: ': memory <size> of buffer in b,k,M,G,% (default: 2% = 193M)'
+  args: !SimpleFlagArg
+    name: size
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: ': lock buffer in memory (unusable with file based buffers)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: ': use blocksize of device for output'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  description: ': assumed output device size (default: infinite/auto-detect)'
+  args: !SimpleFlagArg
+    name: size
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  description: ': start writing after buffer has been filled more than <num>%'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: ': start reading after buffer has been filled less than <num>%'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: ': use <file> for input'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ': use <file> for output (this option can be passed MULTIPLE times)'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --append
+  description: ': append to output file (must be passed before -o)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --truncate
+  description: ': truncate next file (must be passed before -o)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  description: ':<p> : output data to host <h> and port <p> (MUTLIPLE outputs supported)'
+  args: !SimpleFlagArg
+    name: h
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: ": <num> volumes for input, '0' to prompt interactively"
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: ': use memory mapped temporary file (for huge buffer)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: ': as -t but uses <file> as buffer'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: ': use <file> for logging messages'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: ': pause <num> milliseconds after each write'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: ': limit read rate to <rate> B/s, where <rate> can be given in b,k,M,G'
+  args: !SimpleFlagArg
+    name: rate
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: ': same as -r for writing; use eiter one, if your tape is too fast'
+  args: !SimpleFlagArg
+    name: rate
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: ': overwrite existing files'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: ': autoloader which needs <time> seconds to reload'
+  args: !SimpleFlagArg
+    name: time
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: ': issue command <cmd> to request new volume'
+  args: !SimpleFlagArg
+    name: cmd
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ': set verbose level to <level> (valid values are 0..6)'
+  args: !SimpleFlagArg
+    name: level
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: ': quiet - do not display the status on stderr'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  description: ': quiet - do not log the status'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: ': write with synchronous data integrity support'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: ': stop processing on any kind of error'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --direct
+  description: ': open input and output with O_DIRECT'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-4'
+  description: ': force use of IPv4'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-6'
+  description: ': force use of IPv6'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-0'
+  description: ': use IPv4 or IPv6'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tcpbuffer
+  description: ': size for TCP buffer'
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag
-  description: ': print version information'
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
   optional: true
+  synonyms:
+  - -V
+  - --version
+  description: ': print version information'
+  args: !EmptyFlagArg {}
 help_text: "usage: mbuffer [Options]\nOptions:\n-b <num>   : use <num> blocks for\
   \ buffer (default: 49633)\n-s <size>  : use blocks of <size> bytes for processing\
   \ (default: 4096)\n-m <size>  : memory <size> of buffer in b,k,M,G,% (default: 2%\
@@ -44,3 +261,4 @@ help_text: "usage: mbuffer [Options]\nOptions:\n-b <num>   : use <num> blocks fo
   \ -t -Z -B\n"
 generated_using:
 - --help
+docker_image:

@@ -12,6 +12,9 @@ task CruxTidesearchCruxoutput {
       ~{tide_search} \
       ~{tide_spectra_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     tide_search: ""

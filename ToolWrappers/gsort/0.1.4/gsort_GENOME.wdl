@@ -18,6 +18,9 @@ task GsortGENOME {
       ~{if defined(memory) then ("--memory " +  '"' + memory + '"') else ""} \
       ~{if defined(chromosome_mappings) then ("--chromosomemappings " +  '"' + chromosome_mappings + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     parent: ""
     memory: ""

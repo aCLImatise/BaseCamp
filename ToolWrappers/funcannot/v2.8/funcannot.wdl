@@ -8,6 +8,9 @@ task Funcannot {
     funcannot \
       ~{if defined(geneid) then ("--geneid " +  '"' + geneid + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     geneid: "specifies common genelist identifier in VCF file(s)"
   }

@@ -3,181 +3,181 @@ command:
 - digestiflow-demux
 positional:
 - !Positional
-  description: Path to output directory
+  optional: false
   position: 0
   name: OUT_DIR
-  optional: false
+  description: Path to output directory
 - !Positional
-  description: Path(s) to sequencer raw data directories
+  optional: false
   position: 1
   name: SEQ_DIR
-  optional: false
+  description: Path(s) to sequencer raw data directories
 named:
 - !Flag
-  description: Path to configuration TOML file to load.
+  optional: true
   synonyms:
   - --config
+  description: Path to configuration TOML file to load.
   args: !SimpleFlagArg
     name: CONFIG
-  optional: true
 - !Flag
-  description: "Demultiplexing tool to use. Choices are Illumina's\nbcl2fastq(2) and\
-    \ Picard"
+  optional: true
   synonyms:
   - --demux-tool
+  description: "Demultiplexing tool to use. Choices are Illumina's\nbcl2fastq(2) and\
+    \ Picard"
   args: !ChoiceFlagArg
     choices: !!set
-      bcl2fastq:
       picard:
-  optional: true
+      bcl2fastq:
 - !Flag
-  description: URL to Digestiflow Web API
+  optional: true
   synonyms:
   - --api-url
+  description: URL to Digestiflow Web API
   args: !SimpleFlagArg
     name: API_URL
-  optional: true
 - !Flag
-  description: API token to use for Digestiflow Web API
+  optional: true
   synonyms:
   - --api-token
+  description: API token to use for Digestiflow Web API
   args: !SimpleFlagArg
     name: API_TOKEN
-  optional: true
 - !Flag
-  description: "Create log entry with API token (debug level; use only\nwhen debugging\
-    \ as this has security implications)"
+  optional: true
   synonyms:
   - --log-api-token
+  description: "Create log entry with API token (debug level; use only\nwhen debugging\
+    \ as this has security implications)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not write/update flowcell info to database
+  optional: true
   synonyms:
   - --api-read-only
+  description: Do not write/update flowcell info to database
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Only create the success message.
+  optional: true
   synonyms:
   - --only-post-message
+  description: Only create the success message.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Force demultiplexing even if flow cell not marked as\nready"
+  optional: true
   synonyms:
   - --force-demultiplexing
+  description: "Force demultiplexing even if flow cell not marked as\nready"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Filter folder names to those containing the vendor ID\nof a flow cell\
-    \ that has been marked as ready for\ndemultiplexing in the server."
+  optional: true
   synonyms:
   - --filter-folder-names
+  description: "Filter folder names to those containing the vendor ID\nof a flow cell\
+    \ that has been marked as ready for\ndemultiplexing in the server."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Pass as --drmaa argument to snakemake call (make sure\nto define environment\
-    \ variable DRMAA_LIBRARY_PATH)."
+  optional: true
   synonyms:
   - --drmaa
+  description: "Pass as --drmaa argument to snakemake call (make sure\nto define environment\
+    \ variable DRMAA_LIBRARY_PATH)."
   args: !SimpleFlagArg
     name: DRMAA
-  optional: true
 - !Flag
-  description: Pass as --cluster-config to snakemake call.
+  optional: true
   synonyms:
   - --cluster-config
+  description: Pass as --cluster-config to snakemake call.
   args: !SimpleFlagArg
     name: CLUSTER_CONFIG
-  optional: true
 - !Flag
-  description: Project UUID to register flowcell for
+  optional: true
   synonyms:
   - --project-uuid
+  description: Project UUID to register flowcell for
   args: !SimpleFlagArg
     name: PROJECT_UUID
-  optional: true
 - !Flag
-  description: Degree of parallelism to use
+  optional: true
   synonyms:
   - --cores
+  description: Degree of parallelism to use
   args: !SimpleFlagArg
     name: CORES
-  optional: true
 - !Flag
-  description: Increase verbosity
+  optional: true
   synonyms:
   - --verbose
+  description: Increase verbosity
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Decrease verbosity
+  optional: true
   synonyms:
   - --quiet
+  description: Decrease verbosity
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Keep temporary working directory (useful only for\ndebugging)"
+  optional: true
   synonyms:
   - --keep-work-dir
+  description: "Keep temporary working directory (useful only for\ndebugging)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Max jobs per second to submit, default is 10.
+  optional: true
   synonyms:
   - --max-jobs-per-second
+  description: Max jobs per second to submit, default is 10.
   args: !SimpleFlagArg
     name: MAX_JOBS_PER_SECOND
-  optional: true
 - !Flag
-  description: "Specify working directory (instead of using temporary\none)"
+  optional: true
   synonyms:
   - --work-dir
+  description: "Specify working directory (instead of using temporary\none)"
   args: !SimpleFlagArg
     name: WORK_DIR
-  optional: true
 - !Flag
-  description: "Optional path to the jobscript to use when using\nDRMAA."
+  optional: true
   synonyms:
   - --jobscript
+  description: "Optional path to the jobscript to use when using\nDRMAA."
   args: !SimpleFlagArg
     name: JOBSCRIPT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --lane
   description: "Select individual lanes for demultiplexing; default is\nto use all\
     \ for which the sample sheet provides\ninformation; provide multiple times for\
     \ selecting\nmultiple lanes."
-  synonyms:
-  - --lane
   args: !SimpleFlagArg
     name: LANES
-  optional: true
 - !Flag
-  description: "Select tile regex; provide multiple times for multiple\nregexes with\
-    \ bcl2fastq. Picard will use the first\ntile. Conflicts with --lane\n"
+  optional: true
   synonyms:
   - --tiles
+  description: "Select tile regex; provide multiple times for multiple\nregexes with\
+    \ bcl2fastq. Picard will use the first\ntile. Conflicts with --lane\n"
   args: !SimpleFlagArg
     name: TILES
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: digestiflow-demux [-h] [--config CONFIG]\n                    \
   \     [--demux-tool {bcl2fastq,picard}] [--version]\n                         [--api-url\
   \ API_URL] [--api-token API_TOKEN]\n                         [--log-api-token] [--api-read-only]\n\
@@ -225,3 +225,4 @@ help_text: "usage: digestiflow-demux [-h] [--config CONFIG]\n                   
   \ Picard will use the first\n                        tile. Conflicts with --lane\n"
 generated_using:
 - --help
+docker_image:

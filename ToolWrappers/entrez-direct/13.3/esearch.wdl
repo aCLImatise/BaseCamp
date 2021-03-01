@@ -46,6 +46,9 @@ task Esearch {
       ~{if (spell) then "-spell" else ""} \
       ~{if (label) then "-label" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Database name"
     query: "Query string"

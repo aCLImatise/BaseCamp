@@ -16,6 +16,9 @@ task SketchyUtilsFxfilter {
       ~{if defined(column) then ("--column " +  '"' + column + '"') else ""} \
       ~{if defined(sep) then ("--sep " +  '"' + sep + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fpath: "Path to Fast{a,q} input file.  [required]"
     output_fast_file: "Output to Fast{a,q} file. Default stdout [-]"

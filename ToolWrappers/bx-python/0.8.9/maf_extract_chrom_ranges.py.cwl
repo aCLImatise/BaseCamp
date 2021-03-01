@@ -3,12 +3,12 @@ id: maf_extract_chrom_ranges.py.cwl
 inputs:
 - id: in_min_cols
   doc: "Minimum length (columns) required for alignment to be\noutput"
-  type: long
+  type: long?
   inputBinding:
     prefix: --mincols
 - id: in_prefix
   doc: "Prefix\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --prefix
 - id: in_interval_file
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - maf_extract_chrom_ranges.py

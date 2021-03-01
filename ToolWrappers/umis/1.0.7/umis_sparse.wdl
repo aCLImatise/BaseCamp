@@ -10,6 +10,9 @@ task UmisSparse {
       ~{csv} \
       ~{sparse}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     csv: ""
     sparse: ""

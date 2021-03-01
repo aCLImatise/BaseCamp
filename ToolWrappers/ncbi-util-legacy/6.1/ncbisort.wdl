@@ -14,6 +14,9 @@ task Ncbisort {
       ~{if (tc) then "-tc" else ""} \
       ~{if (cmu) then "-cmu" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
     o: ""

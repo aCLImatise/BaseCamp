@@ -22,6 +22,9 @@ task MedakaCompressBam {
       ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
       ~{if defined(use_fast_five_info) then ("--use_fast5_info " +  '"' + use_fast_five_info + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Verbose logging of debug information. (default: 20)"
     quiet: "Minimal logging; warnings only). (default: 20)"

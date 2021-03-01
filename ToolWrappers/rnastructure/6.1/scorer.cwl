@@ -4,20 +4,20 @@ inputs:
 - id: in_exact
   doc: "Specify exact comparison when structure comparison is scored.\nDefault is\
     \ to allow flexible pairings."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --exact
 - id: in_print
   doc: "Prints the output file to standard output. This won't override the default\n\
     behavior of writing to a file."
-  type: File
+  type: File?
   inputBinding:
     prefix: --print
 - id: in_number
   doc: "Specify the index of a particular structure in the predicted CT to be\ncompared\
     \ with the accepted CT, one-indexed.\nDefault is -1, which signifies all structures\
     \ output to one file.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --number
 - id: in_predicted_ct
@@ -42,14 +42,14 @@ outputs:
 - id: out_print
   doc: "Prints the output file to standard output. This won't override the default\n\
     behavior of writing to a file."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_print)
 - id: out_number
   doc: "Specify the index of a particular structure in the predicted CT to be\ncompared\
     \ with the accepted CT, one-indexed.\nDefault is -1, which signifies all structures\
     \ output to one file.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_number)
 - id: out_output_file
@@ -57,6 +57,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - scorer

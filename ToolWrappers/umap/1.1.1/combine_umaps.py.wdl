@@ -20,6 +20,9 @@ task CombineUmapspy {
       ~{if defined(var_id) then ("-var_id " +  '"' + var_id + '"') else ""} \
       ~{if defined(km_er_dir_two) then ("-kmer_dir_2 " +  '"' + km_er_dir_two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_dir: "If not specified, a subfolder will be created in\\nkmer_dir names as\\nglobalmap_k<smallestkmer>tok<largestkmer>"
     job_id: "1-based index for finding chromosome from"

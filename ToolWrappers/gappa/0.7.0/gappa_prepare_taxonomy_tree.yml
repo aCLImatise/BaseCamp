@@ -1,0 +1,124 @@
+!Command
+command:
+- gappa
+- prepare
+- taxonomy-tree
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --taxon-list-file
+  description: :FILE File that maps taxon names to taxonomic paths.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --taxonomy-file
+  description: :FILE   File that lists the taxa of the taxonomy as taxonomic paths.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-singleton-inner-nodes
+  description: Taxonomic paths can go down several levels without any furcation. Use
+    this option to keep such paths, instead of collapsing them into a single level.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-inner-node-names
+  description: Taxonomies contain names at every level, while trees usually do not.
+    Use this option to also set taxonomic names for the inner nodes of the tree.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-level
+  description: =-1          Maximum taxonomic level to process (0-based). Taxa below
+    this level are not added to the tree.
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --out-dir
+  description: =.            Directory to write files to
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-prefix
+  description: File prefix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-suffix
+  description: File suffix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-file-overwriting
+  description: Allow to overwrite existing output files instead of aborting the command.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Produce more verbose output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: =8            Number of threads to use for calculations.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: Write all output to a log file, in addition to standard output to the
+    terminal.
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Turn a taxonomy into a tree that can be used as a constraint for tree\
+  \ inference.\nUsage: gappa prepare taxonomy-tree [OPTIONS]\n\nInput:\n  --taxon-list-file\
+  \ TEXT:FILE File that maps taxon names to taxonomic paths.\n  --taxonomy-file TEXT:FILE\
+  \   File that lists the taxa of the taxonomy as taxonomic paths.\n\n\nSettings:\n\
+  \  --keep-singleton-inner-nodes\n                              Taxonomic paths can\
+  \ go down several levels without any furcation. Use this option to keep such paths,\
+  \ instead of collapsing them into a single level.\n  --keep-inner-node-names   \
+  \  Taxonomies contain names at every level, while trees usually do not. Use this\
+  \ option to also set taxonomic names for the inner nodes of the tree.\n  --max-level\
+  \ INT=-1          Maximum taxonomic level to process (0-based). Taxa below this\
+  \ level are not added to the tree.\n\n\nOutput:\n  --out-dir TEXT=.            Directory\
+  \ to write files to\n  --file-prefix TEXT          File prefix for output files\n\
+  \  --file-suffix TEXT          File suffix for output files\n\n\nGlobal Options:\n\
+  \  --allow-file-overwriting    Allow to overwrite existing output files instead\
+  \ of aborting the command.\n  --verbose                   Produce more verbose output.\n\
+  \  --threads UINT=8            Number of threads to use for calculations.\n  --log-file\
+  \ TEXT             Write all output to a log file, in addition to standard output\
+  \ to the terminal.\n  --help                      Print this help message and exit.\n\
+  \ngappa - a toolkit for analyzing and visualizing phylogenetic (placement) data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gappa:0.7.0--he513fc3_0

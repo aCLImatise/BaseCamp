@@ -20,6 +20,9 @@ task DrdiscoClassify {
       ~{if defined(min_chim_overhang) then ("--min-chim-overhang " +  '"' + min_chim_overhang + '"') else ""} \
       ~{if (ff_pe) then "--ffpe" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     only_valid: "Only return results marked as 'valid'"
     blacklist_regions: "Blacklist these regions (BED file)"

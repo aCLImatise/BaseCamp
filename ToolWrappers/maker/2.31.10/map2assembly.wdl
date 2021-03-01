@@ -36,6 +36,9 @@ task Map2assembly {
       ~{if (again) then "-again" else ""} \
       ~{if (quiet) then "-quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cpus: "|c  <integer>  Tells how many cpus to use for BLAST analysis."
     retry: "|r <integer>  Rerun failed contigs up to the specified count."

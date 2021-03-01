@@ -16,6 +16,9 @@ task IndelHistory {
       ~{if defined(read_history) then ("--read-history " +  '"' + read_history + '"') else ""} \
       ~{if (i_a_names) then "--ia-names" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     msa_format: "|MAF|SS|....\\nRead alignment in specified file format (default FASTA)."
     output_alignment: "Instead of a summary of indels only, output an alignment in FASTA\\nformat of sequences for all ancestral and leaf nodes."

@@ -12,6 +12,9 @@ task ReadSeqTofastq {
       ~{seq_file} \
       ~{qual_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     to_fast_q: ""
     seq_file: ""

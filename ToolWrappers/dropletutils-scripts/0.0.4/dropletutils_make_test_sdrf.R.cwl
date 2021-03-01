@@ -3,12 +3,12 @@ id: dropletutils_make_test_sdrf.R.cwl
 inputs:
 - id: in_barcodes
   doc: path to the cell barcodes file in .tsv format
-  type: File
+  type: File?
   inputBinding:
     prefix: --barcodes
 - id: in_output_file
   doc: path to the tab-deilmited output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: path to the tab-deilmited output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dropletutils-make-test-sdrf.R

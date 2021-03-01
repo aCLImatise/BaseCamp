@@ -18,6 +18,9 @@ task Wc {
       ~{if (max_line_length) then "--max-line-length" else ""} \
       ~{if (words) then "--words" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bytes: "print the byte counts"
     chars: "print the character counts"

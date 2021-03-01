@@ -1,0 +1,118 @@
+!Command
+command:
+- msstitch
+- storeseq
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --dbfile
+  description: Database lookup file
+  args: !SimpleFlagArg
+    name: LOOKUPFN
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: Input file of {} format
+  args: !SimpleFlagArg
+    name: FN
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Output file
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --fullprotein
+  description: "Store full protein sequences (at a minimum-match\nlength) in the SQLite\
+    \ file rather than tryptic\nsequences"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --insourcefrag
+  description: "Apply filter against both intact peptides and those\nthat match to\
+    \ the C-terminal part of a tryptic peptide\nfrom the database, resulting from\
+    \ in-source\nfragmentation, where some amino acids will be missing\nfrom the N-terminus.\
+    \ Specify the max number of amino\nacids that may be missing. Database should\
+    \ be built\nwith this flag in order for the lookup to work, since\nsequences will\
+    \ be stored and looked up reversed"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cutproline
+  description: "Flag to make trypsin before a proline residue. Then\nfiltering will\
+    \ be done against both cut and non-cut\npeptides."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minlen
+  description: Minimum length of peptide to be included
+  args: !SimpleFlagArg
+    name: MINLENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --notrypsin
+  description: "Do not trypsinize. User is expected to deliver\napretrypsinized FASTA\
+    \ file"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --miscleav
+  description: "Amount of missed cleavages to allow when trypsinizing,\ndefault is\
+    \ 0\n"
+  args: !SimpleFlagArg
+    name: MISS_CLEAVAGE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: msstitch storeseq [-h] [--version] [--dbfile LOOKUPFN] -i FN\n\
+  \                         [-o OUTFILE] [--fullprotein] [--insourcefrag]\n      \
+  \                   [--cutproline] [--minlen MINLENGTH] [--notrypsin]\n        \
+  \                 [--miscleav MISS_CLEAVAGE]\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --version             show program's\
+  \ version number and exit\n  --dbfile LOOKUPFN     Database lookup file\n  -i FN\
+  \                 Input file of {} format\n  -o OUTFILE            Output file\n\
+  \  --fullprotein         Store full protein sequences (at a minimum-match\n    \
+  \                    length) in the SQLite file rather than tryptic\n          \
+  \              sequences\n  --insourcefrag        Apply filter against both intact\
+  \ peptides and those\n                        that match to the C-terminal part\
+  \ of a tryptic peptide\n                        from the database, resulting from\
+  \ in-source\n                        fragmentation, where some amino acids will\
+  \ be missing\n                        from the N-terminus. Specify the max number\
+  \ of amino\n                        acids that may be missing. Database should be\
+  \ built\n                        with this flag in order for the lookup to work,\
+  \ since\n                        sequences will be stored and looked up reversed\n\
+  \  --cutproline          Flag to make trypsin before a proline residue. Then\n \
+  \                       filtering will be done against both cut and non-cut\n  \
+  \                      peptides.\n  --minlen MINLENGTH    Minimum length of peptide\
+  \ to be included\n  --notrypsin           Do not trypsinize. User is expected to\
+  \ deliver\n                        apretrypsinized FASTA file\n  --miscleav MISS_CLEAVAGE\n\
+  \                        Amount of missed cleavages to allow when trypsinizing,\n\
+  \                        default is 0\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/msstitch:3.5--py_0

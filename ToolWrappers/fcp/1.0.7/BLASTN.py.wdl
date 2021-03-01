@@ -12,6 +12,9 @@ task BLASTNpy {
       ~{query_file} \
       ~{results_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     blastn_path: ""
     query_file: ""

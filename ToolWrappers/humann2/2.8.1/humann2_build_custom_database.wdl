@@ -18,6 +18,9 @@ task Humann2BuildCustomDatabase {
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(genus_abundance_threshold) then ("--genus-abundance-threshold " +  '"' + genus_abundance_threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fasta_input_file: "the fasta input file"
     the_output_folder: "the output folder"

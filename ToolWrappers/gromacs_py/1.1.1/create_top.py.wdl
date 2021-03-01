@@ -12,6 +12,9 @@ task CreateToppy {
       ~{if defined(output_directory) then ("-o " +  '"' + output_directory + '"') else ""} \
       ~{if (v_site) then "-vsite" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_pdb_file: "Input PDB file"
     output_directory: "Output directory"

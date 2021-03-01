@@ -104,6 +104,9 @@ task Cmfinder04 {
       ~{if (summarize_gsc) then "--summarize-gsc" else ""} \
       ~{if defined(summarize_save_msa) then ("--summarize-save-msa " +  '"' + summarize_save_msa + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_alignment_file: ": input alignment file (.sto)"
     output_alignment_file: ": output alignment file (.sto)"

@@ -46,6 +46,9 @@ task Bayescan2 {
       ~{if (out_pilot) then "-out_pilot" else ""} \
       ~{if (out_freq) then "-out_freq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     optional_input_file: "Optional input file containing list of loci to discard"
     snp: "Use SNP genotypes matrix"

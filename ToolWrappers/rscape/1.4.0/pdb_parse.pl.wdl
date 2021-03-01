@@ -4,6 +4,9 @@ task PdbParsepl {
   command <<<
     pdb_parse_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

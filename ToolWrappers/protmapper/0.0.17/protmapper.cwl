@@ -6,26 +6,26 @@ inputs:
     \ acid sequence) rather than a\nsingle amino acid residue. In this case, peptide-\n\
     oriented mappings are applied. In this mode the\nfollowing boolean arguments are\
     \ ignored."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --peptide
 - id: in_no_methionine_offset
   doc: "If given, will not check for off-by-one errors in site\nposition (possibly)\
     \ attributable to site numbering\nfrom mature proteins after cleavage of the initial\n\
     methionine."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_methionine_offset
 - id: in_no_orthology_mapping
   doc: "If given, will not check sequence positions for known\nmodification sites\
     \ in mouse or rat sequences (based on\nPhosphoSitePlus data)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_orthology_mapping
 - id: in_no_isoform_mapping
   doc: "If given, will not check sequence positions for known\nmodifications in other\
     \ human isoforms of the protein\n(based on PhosphoSitePlus data).\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_isoform_mapping
 - id: in_input
@@ -48,6 +48,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - protmapper

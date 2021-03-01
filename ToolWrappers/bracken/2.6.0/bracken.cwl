@@ -3,37 +3,37 @@ id: bracken.cwl
 inputs:
 - id: in_t
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_l
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -l
 - id: in_r
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
 - id: in_w
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -w
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_i
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -i
 - id: in_d
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -d
 - id: in_my_db
@@ -76,6 +76,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bracken

@@ -22,6 +22,9 @@ task Peakzillapy {
       ~{if (bed_pe) then "--bedpe" else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     model_peaks: "number of most highly enriched regions used to\\nestimate peak size: default = 200"
     enrichment_cut_off: "minimum cutoff for fold enrichment: default = 2"

@@ -30,6 +30,9 @@ task SketchyCollect {
       ~{if (coverage) then "--coverage" else ""} \
       ~{if defined(image_format) then ("--image_format " +  '"' + image_format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory: "Path to directory to collect {prefix}.data.tsv"
     next_flow: "Predictions are from Sketchy Nextflow"

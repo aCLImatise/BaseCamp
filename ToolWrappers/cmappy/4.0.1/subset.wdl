@@ -22,6 +22,9 @@ task Subset {
       ~{if defined(out_type) then ("--out_type " +  '"' + out_type + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_path: "file path to input GCT(x) file (default: None)"
     rid: "filepath to grp file or string array for including\\nrows (default: None)"

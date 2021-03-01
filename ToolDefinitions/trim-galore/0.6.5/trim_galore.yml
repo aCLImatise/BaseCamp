@@ -4,18 +4,10 @@ command:
 positional: []
 named:
 - !Flag
-  description: Print this help message and exits.
-  synonyms:
-  - -h/--help
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: Print the version information and exits.
   synonyms:
-  - -v/--version
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
+  - -q
+  - --quality
   description: "Trim low-quality ends from reads in addition to adapter removal. For\n\
     RRBS samples, quality trimming will be performed first, and adapter\ntrimming\
     \ is carried in a second round. Other files are quality and adapter\ntrimmed in\
@@ -23,42 +15,43 @@ named:
     \ from all qualities; compute partial sums from all indices\nto the end of the\
     \ sequence; cut sequence at the index at which the sum is\nminimal). Default Phred\
     \ score: 20."
-  synonyms:
-  - -q/--quality
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Instructs Cutadapt to use ASCII+33 quality scores as Phred scores\n\
-    (Sanger/Illumina 1.9+ encoding) for quality trimming. Default: ON."
+  optional: true
   synonyms:
   - --phred33
+  description: "Instructs Cutadapt to use ASCII+33 quality scores as Phred scores\n\
+    (Sanger/Illumina 1.9+ encoding) for quality trimming. Default: ON."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Instructs Cutadapt to use ASCII+64 quality scores as Phred scores\n\
-    (Illumina 1.5 encoding) for quality trimming."
+  optional: true
   synonyms:
   - --phred64
+  description: "Instructs Cutadapt to use ASCII+64 quality scores as Phred scores\n\
+    (Illumina 1.5 encoding) for quality trimming."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Run FastQC in the default mode on the FastQ file once trimming is complete.
+  optional: true
   synonyms:
   - --fastqc
+  description: Run FastQC in the default mode on the FastQ file once trimming is complete.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fastqc_args
   description: "\"<ARGS>\"  Passes extra arguments to FastQC. If more than one argument\
     \ is to be passed\nto FastQC they must be in the form \"arg1 arg2 etc.\". An example\
     \ would be:\n--fastqc_args \"--nogroup --outdir /home/\". Passing extra arguments\
     \ will\nautomatically invoke FastQC, so --fastqc does not have to be specified\n\
     separately."
-  synonyms:
-  - --fastqc_args
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --adapter
   description: "Adapter sequence to be trimmed. If not specified explicitly, Trim\
     \ Galore will\ntry to auto-detect whether the Illumina universal, Nextera transposase\
     \ or Illumina\nsmall RNA adapter sequence was used. Also see '--illumina', '--nextera'\
@@ -67,99 +60,100 @@ named:
     \ adapter sequences,\nTrim Galore defaults to '--illumina' (as long as the Illumina\
     \ adapter was one of the\noptions, else '--nextera' is the default). A single\
     \ base\nmay also be given as e.g. -a A{10}, to be expanded to -a AAAAAAAAAA."
-  synonyms:
-  - -a/--adapter
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -a2
+  - --adapter2
   description: "Optional adapter sequence to be trimmed off read 2 of paired-end files.\
     \ This\noption requires '--paired' to be specified as well. If the libraries to\
     \ be trimmed\nare smallRNA then a2 will be set to the Illumina small RNA 5' adapter\
     \ automatically\n(GATCGTCGGACT). A single base may also be given as e.g. -a2 A{10},\
     \ to be expanded\nto -a2 AAAAAAAAAA."
-  synonyms:
-  - -a2/--adapter2
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: "Adapter sequence to be trimmed is the first 13bp of the Illumina universal\
-    \ adapter\n'AGATCGGAAGAGC' instead of the default auto-detection of adapter sequence."
+  optional: true
   synonyms:
   - --illumina
+  description: "Adapter sequence to be trimmed is the first 13bp of the Illumina universal\
+    \ adapter\n'AGATCGGAAGAGC' instead of the default auto-detection of adapter sequence."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Adapter sequence to be trimmed is the first 12bp of the Nextera adapter\n\
-    'CTGTCTCTTATA' instead of the default auto-detection of adapter sequence."
+  optional: true
   synonyms:
   - --nextera
+  description: "Adapter sequence to be trimmed is the first 12bp of the Nextera adapter\n\
+    'CTGTCTCTTATA' instead of the default auto-detection of adapter sequence."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --small_rna
   description: "Adapter sequence to be trimmed is the first 12bp of the Illumina Small\
     \ RNA 3' Adapter\n'TGGAATTCTCGG' instead of the default auto-detection of adapter\
     \ sequence. Selecting\nto trim smallRNA adapters will also lower the --length\
     \ value to 18bp. If the smallRNA\nlibraries are paired-end then a2 will be set\
     \ to the Illumina small RNA 5' adapter\nautomatically (GATCGTCGGACT) unless -a\
     \ 2 had been defined explicitly."
-  synonyms:
-  - --small_rna
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --consider_already_trimmed
   description: "During adapter auto-detection, the limit set by <INT> allows the user\
     \ to\nset a threshold up to which the file is considered already adapter-trimmed.\
     \ If no adapter\nsequence exceeds this threshold, no additional adapter trimming\
     \ will be performed (technically,\nthe adapter is set to '-a X'). Quality trimming\
     \ is still performed as usual.\nDefault: NOT SELECTED (i.e. normal auto-detection\
     \ precedence rules apply)."
-  synonyms:
-  - --consider_already_trimmed
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Discard reads that are longer than <INT> bp after trimming. This is\
-    \ only advised for\nsmallRNA sequencing to remove non-small RNA sequences."
+  optional: true
   synonyms:
   - --max_length
+  description: "Discard reads that are longer than <INT> bp after trimming. This is\
+    \ only advised for\nsmallRNA sequencing to remove non-small RNA sequences."
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --stringency
   description: "Overlap with adapter sequence required to trim a sequence. Defaults\
     \ to a\nvery stringent setting of 1, i.e. even a single bp of overlapping sequence\n\
     will be trimmed off from the 3' end of any read."
-  synonyms:
-  - --stringency
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Maximum allowed error rate (no. of errors divided by the length of\
-    \ the matching\nregion) (default: 0.1)"
+  optional: true
   synonyms:
   - -e
+  description: "Maximum allowed error rate (no. of errors divided by the length of\
+    \ the matching\nregion) (default: 0.1)"
   args: !SimpleFlagArg
     name: ERROR RATE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gzip
   description: "Compress the output file with GZIP. If the input files are GZIP-compressed\n\
     the output files will automatically be GZIP compressed as well. As of v0.2.8 the\n\
     compression will take place on the fly."
-  synonyms:
-  - --gzip
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Output files won't be compressed with GZIP. This option overrides --gzip.
+  optional: true
   synonyms:
   - --dont_gzip
+  description: Output files won't be compressed with GZIP. This option overrides --gzip.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --length
   description: "Discard reads that became shorter than length INT because of either\n\
     quality or adapter trimming. A value of '0' effectively disables\nthis behaviour.\
     \ Default: 20 bp.\nFor paired-end files, both reads of a read-pair need to be\
@@ -167,121 +161,124 @@ named:
     \ --paired).\nIf only one read became too short there is the possibility of keeping\
     \ such\nunpaired single-end reads (see --retain_unpaired). Default pair-cutoff:\
     \ 20 bp."
-  synonyms:
-  - --length
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max_n
   description: "The total number of Ns (as integer) a read may contain before it will\
     \ be removed altogether.\nIn a paired-end setting, either read exceeding this\
     \ limit will result in the entire\npair being removed from the trimmed output\
     \ files."
-  synonyms:
-  - --max_n
   args: !SimpleFlagArg
     name: COUNT
-  optional: true
 - !Flag
-  description: Removes Ns from either side of the read. This option does currently
-    not work in RRBS mode.
+  optional: true
   synonyms:
   - --trim-n
+  description: Removes Ns from either side of the read. This option does currently
+    not work in RRBS mode.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_dir
   description: "If specified all output will be written to this directory instead\
     \ of the current\ndirectory. If the directory doesn't exist it will be created\
     \ for you."
-  synonyms:
-  - -o/--output_dir
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
-  description: If specified no report file will be generated.
+  optional: true
   synonyms:
   - --no_report_file
+  description: If specified no report file will be generated.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: If specified any output to STDOUT or STDERR will be suppressed.
+  optional: true
   synonyms:
   - --suppress_warn
+  description: If specified any output to STDOUT or STDERR will be suppressed.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --clip_R1
   description: "Instructs Trim Galore to remove <int> bp from the 5' end of read 1\
     \ (or single-end\nreads). This may be useful if the qualities were very poor,\
     \ or if there is some\nsort of unwanted bias at the 5' end. Default: OFF."
-  synonyms:
-  - --clip_R1
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --clip_R2
   description: "Instructs Trim Galore to remove <int> bp from the 5' end of read 2\
     \ (paired-end reads\nonly). This may be useful if the qualities were very poor,\
     \ or if there is some sort\nof unwanted bias at the 5' end. For paired-end BS-Seq,\
     \ it is recommended to remove\nthe first few bp because the end-repair reaction\
     \ may introduce a bias towards low\nmethylation. Please refer to the M-bias plot\
     \ section in the Bismark User Guide for\nsome examples. Default: OFF."
-  synonyms:
-  - --clip_R2
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --three_prime_clip_R1
   description: "Instructs Trim Galore to remove <int> bp from the 3' end of read 1\
     \ (or single-end\nreads) AFTER adapter/quality trimming has been performed. This\
     \ may remove some unwanted\nbias from the 3' end that is not directly related\
     \ to adapter sequence or basecall quality.\nDefault: OFF."
-  synonyms:
-  - --three_prime_clip_R1
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --three_prime_clip_R2
   description: "Instructs Trim Galore to remove <int> bp from the 3' end of read 2\
     \ AFTER\nadapter/quality trimming has been performed. This may remove some unwanted\
     \ bias from\nthe 3' end that is not directly related to adapter sequence or basecall\
     \ quality.\nDefault: OFF."
-  synonyms:
-  - --three_prime_clip_R2
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --2colour
+  - --nextseq
   description: "This enables the option '--nextseq-trim=3'CUTOFF' within Cutadapt,\
     \ which will set a quality\ncutoff (that is normally given with -q instead), but\
     \ qualities of G bases are ignored.\nThis trimming is in common for the NextSeq-\
     \ and NovaSeq-platforms, where basecalls without\nany signal are called as high-quality\
     \ G bases. This is mutually exlusive with '-q INT'."
-  synonyms:
-  - --2colour/--nextseq
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --path_to_cutadapt
   description: "</path/to/cutadapt>     You may use this option to specify a path\
     \ to the Cutadapt executable,\ne.g. /my/home/cutadapt-1.7.1/bin/cutadapt. Else\
     \ it is assumed that Cutadapt is in\nthe PATH."
-  synonyms:
-  - --path_to_cutadapt
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --basename
   description: "Use PREFERRED_NAME as the basename for output files, instead of deriving\
     \ the filenames from\nthe input files. Single-end data would be called PREFERRED_NAME_trimmed.fq(.gz),\
     \ or\nPREFERRED_NAME_val_1.fq(.gz) and PREFERRED_NAME_val_2.fq(.gz) for paired-end\
     \ data. --basename\nonly works when 1 file (single-end) or 2 files (paired-end)\
     \ are specified, but not for longer lists."
-  synonyms:
-  - --basename
   args: !SimpleFlagArg
     name: PREFERRED_NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --cores
   description: "Number of cores to be used for trimming [default: 1]. For Cutadapt\
     \ to work with multiple cores, it\nrequires Python 3 as well as parallel gzip\
     \ (pigz) installed on the system. The version of Python used\nis detected from\
@@ -301,34 +298,34 @@ named:
     \ out) step.\n--cores 4 would then be: 4 (read) + 4 (write) + 4 (Cutadapt) + 2\
     \ (extra Cutadapt) +     1 (Trim Galore) = 15.\nIt seems that --cores 4 could\
     \ be a sweet spot, anything above has diminishing returns."
-  synonyms:
-  - -j/--cores
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --hardtrim5
   description: "Instead of performing adapter-/quality trimming, this option will\
     \ simply hard-trim sequences\nto <int> bp at the 5'-end. Once hard-trimming of\
     \ files is complete, Trim Galore will exit.\nHard-trimmed output files will end\
     \ in .<int>_5prime.fq(.gz). Here is an example:\nbefore:         CCTAAGGAAACAAGTACACTCCACACATGCATAAAGGAAATCAAATGTTATTTTTAAGAAAATGGAAAAT\n\
     --hardtrim5 20: CCTAAGGAAACAAGTACACT"
-  synonyms:
-  - --hardtrim5
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --hardtrim3
   description: "Instead of performing adapter-/quality trimming, this option will\
     \ simply hard-trim sequences\nto <int> bp at the 3'-end. Once hard-trimming of\
     \ files is complete, Trim Galore will exit.\nHard-trimmed output files will end\
     \ in .<int>_3prime.fq(.gz). Here is an example:\nbefore:         CCTAAGGAAACAAGTACACTCCACACATGCATAAAGGAAATCAAATGTTATTTTTAAGAAAATGGAAAAT\n\
     --hardtrim3 20:                                                   TTTTTAAGAAAATGGAAAAT"
-  synonyms:
-  - --hardtrim3
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --clock
   description: "In this mode, reads are trimmed in a specific way that is currently\
     \ used for the Mouse\nEpigenetic Clock (see here: Multi-tissue DNA methylation\
     \ age predictor in mouse, Stubbs et al.,\nGenome Biology, 2017 18:68 https://doi.org/10.1186/s13059-017-1203-5).\
@@ -354,11 +351,11 @@ named:
     \ '--dual_index' mode (see here: https://github.com/FelixKrueger/Umi-Grinder).\
     \ UmiBam recognises\nthe UMIs within this pattern: R1:(ATCTAGTT):R2:(CAATTTTG):\
     \ as (UMI R1) and (UMI R2)."
-  synonyms:
-  - --clock
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --polyA
   description: "This is a new, still experimental, trimming mode to identify and remove\
     \ poly-A tails from sequences.\nWhen --polyA is selected, Trim Galore attempts\
     \ to identify from the first supplied sample whether\nsequences contain more often\
@@ -382,11 +379,11 @@ named:
     \ and Illumina adapter contamination, 2) find and remove PolyA contamination.\n\
     Finally, if desired, 3) will specifically find PolyA trimmed sequences to a specific\
     \ FastQ file of your choice."
-  synonyms:
-  - --polyA
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --rrbs
   description: "Specifies that the input file was an MspI digested RRBS sample (recognition\n\
     site: CCGG). Single-end or Read 1 sequences (paired-end) which were adapter-trimmed\n\
     will have a further 2 bp removed from their 3' end. Sequences which were merely\n\
@@ -396,31 +393,31 @@ named:
     cytosine positions close to the 3' MspI site in sequenced fragments.\nThis option\
     \ is not recommended for users of the NuGEN ovation RRBS System 1-16\nkit (see\
     \ below)."
-  synonyms:
-  - --rrbs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --non_directional
   description: "Selecting this option for non-directional RRBS libraries will screen\n\
     quality-trimmed sequences for 'CAA' or 'CGA' at the start of the read\nand, if\
     \ found, removes the first two basepairs. Like with the option\n'--rrbs' this\
     \ avoids using cytosine positions that were filled-in\nduring the end-repair step.\
     \ '--non_directional' requires '--rrbs' to\nbe specified as well. Note that this\
     \ option does not set '--clip_r2 2' in\npaired-end mode."
-  synonyms:
-  - --non_directional
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --keep
   description: "Keep the quality trimmed intermediate file. Default: off, which means\n\
     the temporary file is being deleted after adapter trimming. Only has\nan effect\
     \ for RRBS samples since other FastQ files are not trimmed\nfor poor qualities\
     \ separately."
-  synonyms:
-  - --keep
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --paired
   description: "This option performs length trimming of quality/adapter/RRBS trimmed\
     \ reads for\npaired-end files. To pass the validation test, both sequences of\
     \ a sequence pair\nare required to have a certain minimum length which is governed\
@@ -430,11 +427,12 @@ named:
     \ order\nof FastQ files which is required by many aligners.\nTrim Galore! expects\
     \ paired-end files to be supplied in a pairwise fashion, e.g.\nfile1_1.fq file1_2.fq\
     \ SRR2_1.fq.gz SRR2_2.fq.gz ... ."
-  synonyms:
-  - --paired
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --trim1
   description: "Trims 1 bp off every read from its 3' end. This may be needed for\
     \ FastQ files that\nare to be aligned as paired-end data with Bowtie. This is\
     \ because Bowtie (1) regards\nalignments like this:\nR1 --------------------------->\
@@ -442,43 +440,54 @@ named:
     \                       <-----------------  R2\nas invalid (whenever a start/end\
     \ coordinate is contained within the other read).\nNOTE: If you are planning to\
     \ use Bowtie2, BWA etc. you don't need to specify this option."
-  synonyms:
-  - -t/--trim1
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --retain_unpaired
   description: "If only one of the two paired-end reads became too short, the longer\n\
     read will be written to either '.unpaired_1.fq' or '.unpaired_2.fq'\noutput files.\
     \ The length cutoff for unpaired single-end reads is\ngoverned by the parameters\
     \ -r1/--length_1 and -r2/--length_2. Default: OFF."
-  synonyms:
-  - --retain_unpaired
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r1
+  - --length_1
   description: "Unpaired single-end read length cutoff needed for read 1 to be written\
     \ to\n'.unpaired_1.fq' output file. These reads may be mapped in single-end mode.\n\
     Default: 35 bp."
-  synonyms:
-  - -r1/--length_1
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r2
+  - --length_2
   description: "Unpaired single-end read length cutoff needed for read 2 to be written\
     \ to\n'.unpaired_2.fq' output file. These reads may be mapped in single-end mode.\n\
     Default: 35 bp."
-  synonyms:
-  - -r2/--length_2
   args: !SimpleFlagArg
     name: INT
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print this help message and exits.
+  args: !EmptyFlagArg {}
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Print the version information and exits.
+  args: !EmptyFlagArg {}
 help_text: "\n USAGE:\n\ntrim_galore [options] <filename(s)>\n\n\n-h/--help      \
   \         Print this help message and exits.\n\n-v/--version            Print the\
   \ version information and exits.\n\n-q/--quality <INT>      Trim low-quality ends\
@@ -764,3 +773,4 @@ help_text: "\n USAGE:\n\ntrim_galore [options] <filename(s)>\n\n\n-h/--help     
   \ 35 bp.\n\nLast modified on 07 November 2019.\n\n"
 generated_using:
 - --help
+docker_image:

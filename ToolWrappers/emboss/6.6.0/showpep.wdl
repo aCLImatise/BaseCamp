@@ -42,6 +42,9 @@ task Showpep {
       ~{if (offset) then "-offset" else ""} \
       ~{if (html) then "-html" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "menu       [2] Display format (Values: 0 (Enter your\\nown list of things to display); 1 (Sequence\\nonly); 2 (Default sequence with features); 3\\n(Pretty sequence 4:Baroque))"
     uppercase: "range      [If this is left blank, then the sequence\\ncase is left alone.] Regions to put in\\nuppercase.\\nIf this is left blank, then the sequence\\ncase is left alone.\\nA set of regions is specified by a set of\\npairs of positions.\\nThe positions are integers.\\nThey are separated by any non-digit,\\nnon-alpha character.\\nExamples of region specifications are:\\n24-45, 56-78\\n1:45, 67=99;765..888\\n1,5,8,10,23,45,57,99"

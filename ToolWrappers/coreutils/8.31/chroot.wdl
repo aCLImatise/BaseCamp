@@ -14,6 +14,9 @@ task Chroot {
       ~{if defined(user_spec) then ("--userspec " +  '"' + user_spec + '"') else ""} \
       ~{if (skip_chdir) then "--skip-chdir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     groups: "specify supplementary groups as g1,g2,..,gN"
     user_spec: ":GROUP  specify user and group (ID or name) to use"

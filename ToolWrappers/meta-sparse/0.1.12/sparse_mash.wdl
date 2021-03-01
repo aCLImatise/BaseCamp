@@ -12,6 +12,9 @@ task SparseMash {
       ~{if defined(query) then ("--query " +  '"' + query + '"') else ""} \
       ~{if (read) then "--read" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dbname: "Name for the database folder. REQUIRED."
     query: "A genome in fasta format, or a set of reads in fastq format. REQUIRED."

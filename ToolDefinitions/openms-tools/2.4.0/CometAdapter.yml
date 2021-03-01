@@ -4,123 +4,126 @@ command:
 positional: []
 named:
 - !Flag
-  description: "*                            Input file (valid formats: 'mzML')"
+  optional: true
   synonyms:
   - -in
+  description: "*                            Input file (valid formats: 'mzML')"
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "*                           Output file (valid formats: 'idXML')"
+  optional: true
   synonyms:
   - -out
+  description: "*                           Output file (valid formats: 'idXML')"
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "*                      FASTA file (valid formats: 'FASTA')"
+  optional: true
   synonyms:
   - -database
+  description: "*                      FASTA file (valid formats: 'FASTA')"
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "*        Comet executable of the installation e.g. 'comet.exe'"
+  optional: true
   synonyms:
   - -comet_executable
+  description: "*        Comet executable of the installation e.g. 'comet.exe'"
   args: !SimpleFlagArg
     name: executable
-  optional: true
 - !Flag
-  description: "Comet version: (year,version,revision) (default: '2016.01 rev. 2'\
-    \ valid: '2016.01 rev. 2', '2016.01 rev. 3', '2017.01 rev. 0beta')"
+  optional: true
   synonyms:
   - -comet_version
+  description: "Comet version: (year,version,revision) (default: '2016.01 rev. 2'\
+    \ valid: '2016.01 rev. 2', '2016.01 rev. 3', '2017.01 rev. 0beta')"
   args: !SimpleFlagArg
     name: choice
-  optional: true
 - !Flag
-  description: "Output file - for Percolator input (valid formats: 'csv')"
+  optional: true
   synonyms:
   - -pin_out
+  description: "Output file - for Percolator input (valid formats: 'csv')"
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "Default Comet params file. All parameters of this take precedence.\
-    \ A template file can be generated using comet.exe -p (valid formats: 'txt')"
+  optional: true
   synonyms:
   - -default_params_file
+  description: "Default Comet params file. All parameters of this take precedence.\
+    \ A template file can be generated using comet.exe -p (valid formats: 'txt')"
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "Precursor monoisotopic mass tolerance (Comet parameter: peptide_mass_tolerance).\
-    \  See also precursor_error_units to set the unit. (default: '10')"
+  optional: true
   synonyms:
   - -precursor_mass_tolerance
+  description: "Precursor monoisotopic mass tolerance (Comet parameter: peptide_mass_tolerance).\
+    \  See also precursor_error_units to set the unit. (default: '10')"
   args: !SimpleFlagArg
     name: tolerance
-  optional: true
 - !Flag
-  description: "Unit of precursor monoisotopic mass tolerance for parameter precursor_mass_tolerance\
-    \ (Comet parameter: peptide_mass_units) (default: 'ppm' valid: 'amu', 'ppm', 'Da')"
+  optional: true
   synonyms:
   - -precursor_error_units
+  description: "Unit of precursor monoisotopic mass tolerance for parameter precursor_mass_tolerance\
+    \ (Comet parameter: peptide_mass_units) (default: 'ppm' valid: 'amu', 'ppm', 'Da')"
   args: !SimpleFlagArg
     name: choice
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -isotope_error
   description: "This parameter controls whether the peptide_mass_tolerance takes into\
     \ account possible isotope errors in the precursor mass measurement. Use -8/-4/0/4/8\
     \ only for SILAC. (default: 'off' valid: 'off', '0/1', '0/1/2', '-1/0/1/2/3',\
     \ '-8/-4/0/4/8')"
-  synonyms:
-  - -isotope_error
   args: !SimpleFlagArg
     name: choice
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -enzyme
   description: "The enzyme used for peptide digestion. (default: 'Trypsin' valid:\
     \ 'Arg-C', 'unspecific cleavage', 'Chymotrypsin', 'Trypsin', 'Asp-N', 'CNBr',\
     \ 'Lys-C', 'Lys-N', 'PepsinA', 'Trypsin/P', 'glutamyl endopeptidase')"
-  synonyms:
-  - -enzyme
   args: !SimpleFlagArg
     name: cleavage site
-  optional: true
 - !Flag
-  description: "Specify the termini where the cleavage rule has to match (default:\
-    \ 'fully' valid: 'semi', 'fully', 'C-term unspecific', 'N-term unspecific')"
+  optional: true
   synonyms:
   - -num_enzyme_termini
+  description: "Specify the termini where the cleavage rule has to match (default:\
+    \ 'fully' valid: 'semi', 'fully', 'C-term unspecific', 'N-term unspecific')"
   args: !SimpleFlagArg
     name: choice
-  optional: true
 - !Flag
-  description: "Number of possible cleavage sites missed by the enzyme. It has no\
-    \ effect if enzyme is unspecific cleavage. (default: '0' min: '0' max: '5')"
+  optional: true
   synonyms:
   - -allowed_missed_cleavages
+  description: "Number of possible cleavage sites missed by the enzyme. It has no\
+    \ effect if enzyme is unspecific cleavage. (default: '0' min: '0' max: '5')"
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
-  description: "Number of peptide hits in output file (default: '5')"
+  optional: true
   synonyms:
   - -num_hits
+  description: "Number of peptide hits in output file (default: '5')"
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -precursor_charge
   description: "[min]:[max]          Precursor charge range to search (if spectrum\
     \ is not annotated with a charge or if override_charge!=keep any known): 0:[num]\
     \ == search all charges, 2:6 == from +2 to +6, 3:3 == +3 (default: '0:0')"
-  synonyms:
-  - -precursor_charge
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -override_charge
   description: "_keep any known_: keep any precursor charge state (from input), _ignore\
     \ known_: ignore known precursor charge state and use precursor_charge parameter,\
     \ _ignore outside range_: ignore precursor charges outside precursor_charge range,\
@@ -129,45 +132,45 @@ named:
     \ m/z or use the precursor_charge range (default: 'keep known search unknown'\
     \ valid: 'keep any known', 'ignore known', 'ignore outside range', 'keep known\
     \ search unknown')"
-  synonyms:
-  - -override_charge
   args: !SimpleFlagArg
     name: choice
-  optional: true
 - !Flag
-  description: "MS level to analyze, valid are levels 2 (default) or 3 (default: '2'\
-    \ min: '2' max: '3')"
+  optional: true
   synonyms:
   - -ms_level
+  description: "MS level to analyze, valid are levels 2 (default) or 3 (default: '2'\
+    \ min: '2' max: '3')"
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
-  description: "If not ALL, only searches spectra of the given method (default: 'ALL'\
-    \ valid: 'ALL', 'CID', 'ECD', 'ETD', 'PQD', 'HCD', 'IRMPD')"
+  optional: true
   synonyms:
   - -activation_method
+  description: "If not ALL, only searches spectra of the given method (default: 'ALL'\
+    \ valid: 'ALL', 'CID', 'ECD', 'ETD', 'PQD', 'HCD', 'IRMPD')"
   args: !SimpleFlagArg
     name: method
-  optional: true
 - !Flag
-  description: "Set maximum fragment charge state to analyze as long as still lower\
-    \ than precursor charge - 1. (Allowed max 5) (default: '3' min: '1' max: '5')"
+  optional: true
   synonyms:
   - -max_fragment_charge
+  description: "Set maximum fragment charge state to analyze as long as still lower\
+    \ than precursor charge - 1. (Allowed max 5) (default: '3' min: '1' max: '5')"
   args: !SimpleFlagArg
     name: posnum
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -clip_nterm_methionine
   description: "If set to true, also considers the peptide sequence w/o N-term methionine\
     \ separately and applies appropriate N-term mods to it (default: 'false' valid:\
     \ 'true', 'false')"
-  synonyms:
-  - -clip_nterm_methionine
   args: !SimpleFlagArg
     name: bool
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -fixed_modifications
   description: "Fixed modifications, specified using Unimod (www.unimod.org) terms,\
     \ e.g. 'Carbamidomethyl (C)' or 'Oxidation (M)' (default: '[Carbamidomethyl (C)]'\
     \ valid: '15N-oxobutanoic (N-term C)', '2-dimethylsuccinyl (C)', '2-monomethylsuccinyl\
@@ -844,12 +847,12 @@ named:
     \ 'Xlink:DMP-s (K)', 'Xlink:DSS (K)', 'Xlink:DSS-NH2 (K)', 'Xlink:DST (K)', 'Xlink:DTSSP\
     \ (K)', 'Xlink:EGS (K)', 'Xlink:EGScleaved (K)', 'Xlink:SMCC (C)', 'Xlink:SSD\
     \ (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  synonyms:
-  - -fixed_modifications
   args: !SimpleFlagArg
     name: mods
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -variable_modifications
   description: "Variable modifications, specified using Unimod (www.unimod.org) terms,\
     \ e.g. 'Carbamidomethyl (C)' or 'Oxidation (M)' (default: '[Oxidation (M)]' valid:\
     \ '15N-oxobutanoic (N-term C)', '2-dimethylsuccinyl (C)', '2-monomethylsuccinyl\
@@ -1526,48 +1529,45 @@ named:
     \ 'Xlink:DMP-s (K)', 'Xlink:DSS (K)', 'Xlink:DSS-NH2 (K)', 'Xlink:DST (K)', 'Xlink:DTSSP\
     \ (K)', 'Xlink:EGS (K)', 'Xlink:EGScleaved (K)', 'Xlink:SMCC (C)', 'Xlink:SSD\
     \ (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  synonyms:
-  - -variable_modifications
   args: !SimpleFlagArg
     name: mods
-  optional: true
 - !Flag
-  description: Use the given TOPP INI file
+  optional: true
   synonyms:
   - -ini
+  description: Use the given TOPP INI file
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
-    \ '1')"
+  optional: true
   synonyms:
   - -threads
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: Writes the default configuration file
+  optional: true
   synonyms:
   - -write_ini
+  description: Writes the default configuration file
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: Shows all options (including advanced)
+  optional: true
   synonyms:
   - --helphelp
+  description: Shows all options (including advanced)
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Shows options
+  optional: true
   synonyms:
   - --help
+  description: Shows options
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nstty: standard input: Inappropriate ioctl for device\nCometAdapter --\
@@ -2959,3 +2959,4 @@ help_text: "\nstty: standard input: Inappropriate ioctl for device\nCometAdapter
   \  Shows all options (including advanced)\n\n"
 generated_using:
 - --help
+docker_image:

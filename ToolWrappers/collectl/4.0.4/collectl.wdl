@@ -46,6 +46,9 @@ task Collectl {
       ~{if (shows_lab_aliases) then "--showslabaliases" else ""} \
       ~{if (show_roots_labs) then "--showrootslabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count: "count      collect this number of samples and exit"
     filename: "file       name of directory/file to write to"

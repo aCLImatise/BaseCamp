@@ -18,6 +18,9 @@ task SctoolsDemultiplex {
       ~{if defined(forbidden_tags) then ("--forbidden-tags " +  '"' + forbidden_tags + '"') else ""} \
       ~{if defined(min_mapq) then ("--min-mapq " +  '"' + min_mapq + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     barcodes_csv: "Path to the CSV file storing the barcodes to be de-multiplexed.\\nNotice that the barcode value is expected to be found in first\\nposition."
     output_directory: "Path of the directory where de-multiplexed files are stored.\\nDefault: .."

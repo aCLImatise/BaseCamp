@@ -28,6 +28,9 @@ task Pysswpy {
       ~{if (reverse) then "--reverse" else ""} \
       ~{if (unaligned) then "--unaligned" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     subject: "Path of the fasta file containing the subject genome\\nsequence. Can be gziped. [REQUIRED]"
     query: "Path of the fastq or fasta file containing the short\\nread to be aligned. Can be gziped. [REQUIRED]"

@@ -14,12 +14,10 @@ task CoolerLoad {
     Boolean? input_copy_status
     Int? storage_options
     String compressed_dot
-    String ignore_dot
   }
   command <<<
     cooler load \
       ~{compressed_dot} \
-      ~{ignore_dot} \
       ~{if (format) then "--format" else ""} \
       ~{if defined(metadata) then ("--metadata " +  '"' + metadata + '"') else ""} \
       ~{if defined(assembly) then ("--assembly " +  '"' + assembly + '"') else ""} \
@@ -32,6 +30,9 @@ task CoolerLoad {
       ~{if (input_copy_status) then "--input-copy-status" else ""} \
       ~{if defined(storage_options) then ("--storage-options " +  '"' + storage_options + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "[coo|bg2]          'coo' refers to a tab-delimited sparse\\ntriplet file (bin1, bin2, count). 'bg2'\\nrefers to a 2D bedGraph-like file (chrom1,\\nstart1, end1, chrom2, start2, end2, count).\\n[required]"
     metadata: "Path to JSON file containing user metadata."
@@ -45,7 +46,6 @@ task CoolerLoad {
     input_copy_status: "[unique|duplex]\\nCopy status of input data when using\\nsymmetric-upper storage. | `unique`:\\nIncoming data comes from a unique half of a\\nsymmetric matrix, regardless of how element\\ncoordinates are ordered. Execution will be\\naborted if duplicates are detected.\\n`duplex`: Incoming data contains upper- and\\nlower-triangle duplicates. All lower-\\ntriangle input elements will be discarded! |\\nIf you wish to treat lower- and upper-\\ntriangle input data as distinct, use the\\n``--no-symmetric-upper`` option instead.\\n[default: unique]"
     storage_options: "Options to modify the data filter pipeline.\\nProvide as a comma-separated list of key-\\nvalue pairs of the form 'k1=v1,k2=v2,...'.\\nSee http://docs.h5py.org/en/stable/high/data\\nset.html#filter-pipeline for more details."
     compressed_dot: "COO: COO-rdinate sparse matrix format (a.k.a. ijv triple). 3 columns:"
-    ignore_dot: "[default: #]"
   }
   output {
     File out_stdout = stdout()

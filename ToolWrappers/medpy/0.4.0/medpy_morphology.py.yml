@@ -3,77 +3,77 @@ command:
 - medpy_morphology.py
 positional:
 - !Positional
-  description: Source volume.
+  optional: false
   position: 0
   name: input
-  optional: false
+  description: Source volume.
 - !Positional
-  description: Target volume.
+  optional: false
   position: 1
   name: output
-  optional: false
+  description: Target volume.
 named:
 - !Flag
-  description: The type of the morphological operation.
+  optional: true
   synonyms:
   - -t
   - --type
+  description: The type of the morphological operation.
   args: !ChoiceFlagArg
     choices: !!set
-      erosion:
       dilation:
-      opening:
       closing:
-  optional: true
+      erosion:
+      opening:
 - !Flag
-  description: "The number of iteration to execute. Supply a value of\n1 or higher\
-    \ to restrict the effect of the\nmorphological operation. Otherwise it is applied\
-    \ until\nsaturation."
+  optional: true
   synonyms:
   - -i
   - --iterations
+  description: "The number of iteration to execute. Supply a value of\n1 or higher\
+    \ to restrict the effect of the\nmorphological operation. Otherwise it is applied\
+    \ until\nsaturation."
   args: !SimpleFlagArg
     name: ITERATIONS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --size
   description: "Size of the closing element (>=1). The higher this\nvalue, the bigger\
     \ the wholes that get closed (closing)\nresp. unconnected elements that are removed\
     \ (opening).\nIn the 3D case, 1 equals a 6-connectedness, 2 a\n12-connectedness,\
     \ 3 a 18-connectedness, etc."
-  synonyms:
-  - -s
-  - --size
   args: !SimpleFlagArg
     name: SIZE
-  optional: true
 - !Flag
-  description: Display more information.
+  optional: true
   synonyms:
   - -v
+  description: Display more information.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Display debug information.
+  optional: true
   synonyms:
   - -d
+  description: Display debug information.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Silently override existing output images.
+  optional: true
   synonyms:
   - -f
+  description: Silently override existing output images.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: medpy_morphology.py [-h] [-t {erosion,dilation,opening,closing}]\n\
@@ -100,3 +100,4 @@ help_text: "usage: medpy_morphology.py [-h] [-t {erosion,dilation,opening,closin
   \ images.\n"
 generated_using:
 - --help
+docker_image:

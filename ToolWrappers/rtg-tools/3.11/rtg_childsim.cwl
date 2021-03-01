@@ -3,68 +3,68 @@ id: rtg_childsim.cwl
 inputs:
 - id: in_father
   doc: name of the existing sample to use as the father
-  type: string
+  type: string?
   inputBinding:
     prefix: --father
 - id: in_input
   doc: input VCF containing parent variants
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_mother
   doc: name of the existing sample to use as the mother
-  type: string
+  type: string?
   inputBinding:
     prefix: --mother
 - id: in_output
   doc: output VCF file name
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_output_sdf
   doc: if set, output an SDF containing the sample
-  type: string
+  type: string?
   inputBinding:
     prefix: --output-sdf
 - id: in_sample
   doc: name for new child sample
-  type: string
+  type: string?
   inputBinding:
     prefix: --sample
 - id: in_extra_crossovers
   doc: "probability of extra crossovers per chromosome\n(Default is 0.01)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --extra-crossovers
 - id: in_genetic_map_dir
   doc: "if set, load genetic maps from this directory\nfor recombination point selection"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --genetic-map-dir
 - id: in_no_gzip
   doc: do not gzip the output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-gzip
 - id: in_ploidy
   doc: "ploidy to use. Allowed values are [auto,\ndiploid, haploid] (Default is auto)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --ploidy
 - id: in_seed
   doc: seed for the random number generator
-  type: long
+  type: long?
   inputBinding:
     prefix: --seed
 - id: in_sex
   doc: "sex of individual. Allowed values are [male,\nfemale, either] (Default is\
     \ either)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --sex
 - id: in_show_crossovers
   doc: "if set, display information regarding haplotype\nselection and crossover points\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --show-crossovers
 - id: in_genome
@@ -78,9 +78,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: output VCF file name
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rtg

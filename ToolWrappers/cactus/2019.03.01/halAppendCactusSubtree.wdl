@@ -30,6 +30,9 @@ task HalAppendCactusSubtree {
       ~{if (in_memory) then "--inMemory" else ""} \
       ~{if defined(out_groups) then ("--outgroups " +  '"' + out_groups + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cache_bytes: ":   maximum size in bytes of regular hdf5 cache [default =\\n15728640]"
     cache_mdc: ":     number of metadata slots in hdf5 cache [default = 113]"

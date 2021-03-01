@@ -16,7 +16,7 @@ inputs:
     \ samples\nfor which phenotypes are imported. Values that match\nvalue of parameter\
     \ --na and cannot be converted to the\nprobed type of phenotype (e.g. '' in a\
     \ column of\nnumbers) are recorded as missing values."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_set
@@ -26,7 +26,7 @@ inputs:
     \ where high_qt and all_qt are obtained from\nsample statistics using parameter\
     \ --from_stat).\nParameter --samples could be used to limit the samples\nfor which\
     \ genotypes will be set."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --set
 - id: in_from_stat
@@ -42,39 +42,39 @@ inputs:
     homozygotes, heterozygotes, and genotypes with two\ndifferent alternative alleles.\
     \ Parameters --genotypes\nand --samples could be used to limit the genotypes to\n\
     be considered and the samples for which genotypes will\nbe set."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --from_stat
 - id: in_output
   doc: "[EXPRESSION [EXPRESSION ...]]\nA list of phenotype to be outputted. SQL-compatible\n\
     expressions or functions such as \"DP/DP_all\" and\n\"avg(DP)\" are also allowed"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --output
 - id: in_jobs
   doc: "Allow at most N concurrent jobs to obtain sample\nstatistics for parameter\
     \ --from-stat."
-  type: string
+  type: string?
   inputBinding:
     prefix: --jobs
-- id: in_limit_operation_use
+- id: in_limit_operation_genotypes
   doc: "[COND [COND ...]], --genotypes [COND [COND ...]]\nLimit the operation to genotypes\
     \ that match specified\nconditions. Use 'vtools show genotypes' to list usable\n\
     fields for each sample."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
-- id: in_update_phenotype_samples
+- id: in_update_phenotype_use
   doc: "[COND [COND ...]], --samples [COND [COND ...]]\nUpdate phenotype for samples\
     \ that match specified\nconditions. Use 'vtools show samples' to list usable\n\
     fields in the sample table."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_verbosity
   doc: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
     \ to standard output (default to\n1)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbosity
 - id: in_header
@@ -85,33 +85,34 @@ inputs:
     \ which is the preferred way to\nspecify large multi-line headers (e.g. cat myheader\
     \ |\nvtools export --header -). If this parameter is given\nwithout parameter,\
     \ a default header will be derived\nfrom field names."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --header
 - id: in_delimiter
   doc: "Delimiter, default to tab, a popular alternative is\n',' for csv output"
-  type: string
+  type: string?
   inputBinding:
     prefix: --delimiter
 - id: in_na
   doc: Input or output string for missing value..
-  type: string
+  type: string?
   inputBinding:
     prefix: --na
 - id: in_limit
   doc: "Number of record to display. Default to all record.\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --limit
 - id: in_input_file
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vtools

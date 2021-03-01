@@ -4,7 +4,7 @@ task RepeatMasker {
   input {
     Boolean? pa
     Boolean? slow_search_more
-    Boolean? quick_search_less
+    Boolean? quick_search_sensitive
     Int? qq
     Boolean? no_low
     Boolean? no_int
@@ -24,12 +24,12 @@ task RepeatMasker {
     Boolean? noisy
     Boolean? no_post
     File? dir
-    File? lignmentswrites_alignments_align
+    File? lignmentswrites_alignments_file
     Boolean? in_v
     Boolean? l_cam_big
     Boolean? small
     Boolean? xsmall
-    Boolean? returns_repetitive_regions
+    Boolean? returns_repetitive_regions_masked
     Boolean? poly
     Boolean? source
     File? html
@@ -47,7 +47,7 @@ task RepeatMasker {
       ~{process_repeats} \
       ~{if (pa) then "-pa" else ""} \
       ~{if (slow_search_more) then "-s" else ""} \
-      ~{if (quick_search_less) then "-q" else ""} \
+      ~{if (quick_search_sensitive) then "-q" else ""} \
       ~{if defined(qq) then ("-qq " +  '"' + qq + '"') else ""} \
       ~{if (no_low) then "-nolow" else ""} \
       ~{if (no_int) then "-noint" else ""} \
@@ -67,12 +67,12 @@ task RepeatMasker {
       ~{if (noisy) then "-noisy" else ""} \
       ~{if (no_post) then "-nopost" else ""} \
       ~{if (dir) then "-dir" else ""} \
-      ~{if (lignmentswrites_alignments_align) then "-a" else ""} \
+      ~{if (lignmentswrites_alignments_file) then "-a" else ""} \
       ~{if (in_v) then "-inv" else ""} \
       ~{if (l_cam_big) then "-lcambig" else ""} \
       ~{if (small) then "-small" else ""} \
       ~{if (xsmall) then "-xsmall" else ""} \
-      ~{if (returns_repetitive_regions) then "-x" else ""} \
+      ~{if (returns_repetitive_regions_masked) then "-x" else ""} \
       ~{if (poly) then "-poly" else ""} \
       ~{if (source) then "-source" else ""} \
       ~{if (html) then "-html" else ""} \
@@ -82,10 +82,13 @@ task RepeatMasker {
       ~{if (no_id) then "-no_id" else ""} \
       ~{if (xclncalculates_repeat_densities) then "-e" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pa: "(rallel) [number]\\nThe number of processors to use in parallel (only works for batch\\nfiles or sequences over 50 kb)"
     slow_search_more: "Slow search; 0-5% more sensitive, 2-3 times slower than default"
-    quick_search_less: "Quick search; 5-10% less sensitive, 2-5 times faster than default"
+    quick_search_sensitive: "Quick search; 5-10% less sensitive, 2-5 times faster than default"
     qq: "job; about 10% less sensitive, 4->10 times faster than default\\n(quick searches are fine under most circumstances) repeat options"
     no_low: "Does not mask low_complexity DNA or simple repeats"
     no_int: "Only masks low complex/simple repeats (no interspersed repeats)"
@@ -105,12 +108,12 @@ task RepeatMasker {
     noisy: "Prints search engine progress report to screen (defaults to .stderr\\nfile)"
     no_post: "Do not postprocess the results of the run ( i.e. call ProcessRepeats\\n). NOTE: This options should only be used when ProcessRepeats will\\nbe run manually on the results."
     dir: "[directory name]\\nWrites output to this directory (default is query file directory,\\n\\\"-dir .\\\" will write to current directory)."
-    lignmentswrites_alignments_align: "(lignments)\\nWrites alignments in .align output file"
+    lignmentswrites_alignments_file: "(lignments)\\nWrites alignments in .align output file"
     in_v: "Alignments are presented in the orientation of the repeat (with\\noption -a)"
     l_cam_big: "Outputs ambiguous DNA transposon fragments using a lower case name.\\nAll other repeats are listed in upper case. Ambiguous fragments\\nmatch multiple repeat elements and can only be called based on\\nflanking repeat information."
     small: "Returns complete .masked sequence in lower case"
     xsmall: "Returns repetitive regions in lowercase (rest capitals) rather than\\nmasked"
-    returns_repetitive_regions: "Returns repetitive regions masked with Xs rather than Ns"
+    returns_repetitive_regions_masked: "Returns repetitive regions masked with Xs rather than Ns"
     poly: "Reports simple repeats that may be polymorphic (in file.poly)"
     source: "Includes for each annotation the HSP \\\"evidence\\\". Currently this\\noption is only available with the \\\"-html\\\" output format listed\\nbelow."
     html: "Creates an additional output file in xhtml format."
@@ -125,7 +128,7 @@ task RepeatMasker {
   output {
     File out_stdout = stdout()
     File out_dir = "${in_dir}"
-    File out_lignmentswrites_alignments_align = "${in_lignmentswrites_alignments_align}"
+    File out_lignmentswrites_alignments_file = "${in_lignmentswrites_alignments_file}"
     File out_html = "${in_html}"
     File out_ace = "${in_ace}"
   }

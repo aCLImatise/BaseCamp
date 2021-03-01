@@ -4,150 +4,150 @@ command:
 - select
 positional:
 - !Positional
-  description: Source variant table.
+  optional: false
   position: 0
   name: from_table
-  optional: false
+  description: Source variant table.
 - !Positional
+  optional: false
+  position: 1
+  name: condition
   description: "Conditions by which variants are selected. Multiple\narguments are\
     \ automatically joined by 'AND' so 'OR'\nconditions should be provided by a single\
     \ argument\nwith conditions joined by 'OR'. If unspecified, all\nvariants (except\
     \ those excluded by parameter\n--samples) will be selected."
-  position: 1
-  name: condition
-  optional: false
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -s
   description: "[COND [COND ...]], --samples [COND [COND ...]]\nLimiting variants\
     \ from samples that match conditions\nthat use columns shown in command 'vtools\
     \ show sample'\n(e.g. 'aff=1', 'filename like \"MG%\"')."
-  synonyms:
-  - -s
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[TABLE [DESC ...]], --to_table [TABLE [DESC ...]]\nDestination variant\
-    \ table."
+  optional: true
   synonyms:
   - -t
+  description: "[TABLE [DESC ...]], --to_table [TABLE [DESC ...]]\nDestination variant\
+    \ table."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output number of variant, which is a shortcut to '--\noutput count(1)'."
+  optional: true
   synonyms:
   - -c
   - --count
+  description: "Output number of variant, which is a shortcut to '--\noutput count(1)'."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
   description: "[FIELDS [FIELDS ...]], --output [FIELDS [FIELDS ...]]\nA list of fields\
     \ that will be outputted. SQL-\ncompatible expressions or functions such as \"\
     pos-1\",\n\"count(1)\" or \"sum(num)\" are also allowed."
-  synonyms:
-  - -o
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
-    \ to standard output (default to\n1)."
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1)."
   args: !ChoiceFlagArg
     choices: !!set
+      '3':
       '2':
       '0':
-      '3':
       '1':
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --header
   description: "[HEADER [HEADER ...]]\nA complete header or a list of names that will\
     \ be\njoined by a delimiter (parameter --delimiter). If a\nspecial name - is specified,\
     \ the header will be read\nfrom the standard input, which is the preferred way\
     \ to\nspecify large multi-line headers (e.g. cat myheader |\nvtools export --header\
     \ -). If this parameter is given\nwithout parameter, a default header will be\
     \ derived\nfrom field names."
-  synonyms:
-  - --header
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Delimiter use to separate columns of output. The\ndefault output uses\
-    \ tabs to delimit columns padded to\nthe same width by spaces. You can use '-d,'\
-    \ for csv\noutput, or -d'\\t' for unpadded tab-delimited output."
+  optional: true
   synonyms:
   - -d
   - --delimiter
+  description: "Delimiter use to separate columns of output. The\ndefault output uses\
+    \ tabs to delimit columns padded to\nthe same width by spaces. You can use '-d,'\
+    \ for csv\noutput, or -d'\\t' for unpadded tab-delimited output."
   args: !SimpleFlagArg
     name: DELIMITER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --precision
   description: "Precision used to output float numbers. The default\nvalue is None\
     \ which uses system default (e.g. whatever\nstr(number) outputs). You can set\
     \ it to a positive\nnumber (e.g. 4) to limit the number of digits to\noutput."
-  synonyms:
-  - --precision
   args: !SimpleFlagArg
     name: PRECISION
-  optional: true
 - !Flag
-  description: Output string for missing value
+  optional: true
   synonyms:
   - --na
+  description: Output string for missing value
   args: !SimpleFlagArg
     name: NA
-  optional: true
 - !Flag
-  description: Limit output to the first N records.
+  optional: true
   synonyms:
   - -l
   - --limit
+  description: Limit output to the first N records.
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Output reference genome. If set to alternative build,\nchr and pos\
-    \ in the fields will be replaced by alt_chr\nand alt_pos"
+  optional: true
   synonyms:
   - --build
+  description: "Output reference genome. If set to alternative build,\nchr and pos\
+    \ in the fields will be replaced by alt_chr\nand alt_pos"
   args: !SimpleFlagArg
     name: BUILD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -g
   description: "[FIELD [FIELD ...]], --group_by [FIELD [FIELD ...]], --group-by [FIELD\
     \ [FIELD ...]]\nGroup output by fields. This option is useful for\naggregation\
     \ output where summary statistics are\ngrouped by one or more fields."
-  synonyms:
-  - -g
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --all
   description: "Variant tools by default output only one of the\nrecords if a variant\
     \ matches multiple records in an\nannotation database. This option tells variant\
     \ tools\nto output all matching records."
-  synonyms:
-  - --all
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Order output by specified fields in ascending order,\nor descending\
-    \ order if field name is followed by DESC\n(e.g. --order_by 'num DESC')\n"
+  optional: true
   synonyms:
   - --order_by
   - --order-by
+  description: "Order output by specified fields in ascending order,\nor descending\
+    \ order if field name is followed by DESC\n(e.g. --order_by 'num DESC')\n"
   args: !RepeatFlagArg
     name: FIELD
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: vtools select [-h] [-s [COND [COND ...]]] [-t [TABLE [DESC ...]]]\n\
@@ -212,3 +212,4 @@ help_text: "usage: vtools select [-h] [-s [COND [COND ...]]] [-t [TABLE [DESC ..
   \ 'num DESC')\n"
 generated_using:
 - --help
+docker_image:

@@ -1,15 +1,46 @@
 class: CommandLineTool
 id: pmp_bf.cwl
 inputs:
-- id: in_hb
-  doc: "--model single|average|jc|k2|f81|f84|hky|tn (default=f81)\n--pur-pyr <float>\
-    \ (default=1.0)\n--transition-transversion <float> (default=0.5)\n--bg <float>\
-    \ (default=1.0)\n--fg <float> (default=1.0)\n--motif <id> (default=all)\n--bfile\
-    \ <background> (default from motif file)\n--pseudocount <float> (default=0.1)\n\
-    --ustar <label>\n--verbosity [1|2|3|4] (default 2)"
-  type: boolean
+- id: in_model
+  doc: '|average|jc|k2|f81|f84|hky|tn (default=f81)'
+  type: long?
   inputBinding:
-    prefix: --hb
+    prefix: --model
+- id: in_pur_pyr
+  doc: (default=1.0)
+  type: double?
+  inputBinding:
+    prefix: --pur-pyr
+- id: in_transition_transversion
+  doc: (default=0.5)
+  type: double?
+  inputBinding:
+    prefix: --transition-transversion
+- id: in_bg
+  doc: (default=1.0)
+  type: double?
+  inputBinding:
+    prefix: --bg
+- id: in_fg
+  doc: (default=1.0)
+  type: double?
+  inputBinding:
+    prefix: --fg
+- id: in_motif
+  doc: (default=all)
+  type: string?
+  inputBinding:
+    prefix: --motif
+- id: in_b_file
+  doc: (default from motif file)
+  type: File?
+  inputBinding:
+    prefix: --bfile
+- id: in_pseudo_count
+  doc: (default=0.1)
+  type: double?
+  inputBinding:
+    prefix: --pseudocount
 - id: in_pmp
   doc: ''
   type: string
@@ -29,6 +60,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pmp_bf

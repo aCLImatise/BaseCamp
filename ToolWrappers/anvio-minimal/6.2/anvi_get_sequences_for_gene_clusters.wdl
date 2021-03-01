@@ -66,6 +66,9 @@ task Anvigetsequencesforgeneclusters {
       ~{if (list_aligners) then "--list-aligners" else ""} \
       ~{if (just_do_it) then "--just-do-it" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_db: "Anvi'o pan database"
     genomes_storage: "Anvi'o genomes storage file"

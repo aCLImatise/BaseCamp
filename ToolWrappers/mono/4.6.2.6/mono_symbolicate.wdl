@@ -10,6 +10,9 @@ task Monosymbolicate {
       ~{if (quiet_warnings_displayed) then "-q" else ""} \
       ~{if (verbose_log_debug) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet_warnings_displayed: "Quiet, warnings are not displayed"
     verbose_log_debug: "Verbose, log debug messages"

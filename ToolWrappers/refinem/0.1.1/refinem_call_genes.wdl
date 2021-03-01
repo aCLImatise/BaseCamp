@@ -18,6 +18,9 @@ task RefinemCallGenes {
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     unbinned_file: "call genes on unbinned scaffolds"
     genome_ext: "extension of genomes (other files in directory are\\nignored) (default: fna)"

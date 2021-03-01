@@ -11,7 +11,7 @@ inputs:
   doc: "[CFILE [CFILE ...]], --control [CFILE [CFILE ...]]\nControl file. If multiple\
     \ files are given as '-c A B\nC', they will be pooled to estimate ChIP-seq\nbackground\
     \ noise."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_format
@@ -25,20 +25,20 @@ inputs:
     fragment size first and extending reads. Also please\nnote that the BEDPE only\
     \ contains three columns, and\nis NOT the same BEDPE format used by BEDTOOLS.\n\
     DEFAULT: \"AUTO\""
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
 - id: in_g_size
   doc: "Effective genome size. It can be 1.0e+9 or 1000000000,\nor shortcuts:'hs'\
     \ for human (2.7e9), 'mm' for mouse\n(1.87e9), 'ce' for C. elegans (9e7) and 'dm'\
     \ for\nfruitfly (1.2e8), Default:hs"
-  type: long
+  type: long?
   inputBinding:
     prefix: --gsize
 - id: in_t_size
   doc: "Tag size/read length. This will override the auto\ndetected tag size. DEFAULT:\
     \ Not set"
-  type: long
+  type: long?
   inputBinding:
     prefix: --tsize
 - id: in_keep_dup
@@ -53,32 +53,32 @@ inputs:
     \ tool to filter\nduplicates, please remove those duplicate reads and\nsave a\
     \ new alignment file then ask MACS2 to keep all\nby '--keep-dup all'. The default\
     \ is to keep one tag at\nthe same location. Default: 1"
-  type: long
+  type: long?
   inputBinding:
     prefix: --keep-dup
 - id: in_outdir
   doc: "If specified all output files will be written to that\ndirectory. Default:\
     \ the current working directory"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_name
   doc: "Experiment name, which will be used to generate output\nfile names. DEFAULT:\
     \ \"NA\""
-  type: File
+  type: File?
   inputBinding:
     prefix: --name
 - id: in_bdg
   doc: "Whether or not to save extended fragment pileup, and\nlocal lambda tracks\
     \ (two files) at every bp into a\nbedGraph file. DEFAULT: False"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bdg
 - id: in_verbose
   doc: "Set verbose level of runtime message. 0: only show\ncritical message, 1: show\
     \ additional warning message,\n2: show process information, 3: show debug messages.\n\
     DEFAULT:2"
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbose
 - id: in_track_line
@@ -88,7 +88,7 @@ inputs:
     \ then show the smaller and faster\nbinary bigWig file at UCSC genome browser,\
     \ as well as\ndownstream analysis. Require -B to be set. Default:\nNot include\
     \ trackline."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --trackline
 - id: in_sp_mr
@@ -100,7 +100,7 @@ inputs:
     \ shouldn't use this option\nbecause you will end up with different results.\n\
     However, this option is recommended for displaying\nnormalized pileup tracks across\
     \ many datasets. Require\n-B to be set. Default: False"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --SPMR
 - id: in_no_model
@@ -110,7 +110,7 @@ inputs:
     \ you plan to compare different\nconditions, aka differential calling, use both\n\
     'nomodel' and 'extsize' to make signal files from\ndifferent datasets comparable.\
     \ DEFAULT: False"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nomodel
 - id: in_shift
@@ -122,7 +122,7 @@ inputs:
     \ or -1 * half of\nEXTSIZE together with EXTSIZE option for detecting\nenriched\
     \ cutting loci such as certain DNAseI-Seq\ndatasets. Note, you can't set values\
     \ other than 0 if\nformat is BAMPE or BEDPE for paired-end data. DEFAULT:\n0."
-  type: long
+  type: long?
   inputBinding:
     prefix: --shift
 - id: in_ext_size
@@ -133,20 +133,20 @@ inputs:
     \ to both direction with 1/2 d. This is\nequivalent to say each read is extended\
     \ towards 5'->3'\ninto a d size fragment. DEFAULT: 200. EXTSIZE and\nSHIFT can\
     \ be combined when necessary. Check SHIFT\noption."
-  type: long
+  type: long?
   inputBinding:
     prefix: --extsize
 - id: in_bw
   doc: "Band width for picking regions to compute fragment\nsize. This value is only\
     \ used while building the\nshifting model. Tweaking this is not recommended.\n\
     DEFAULT: 300"
-  type: long
+  type: long?
   inputBinding:
     prefix: --bw
 - id: in_d_min
   doc: "Minimum fragment size in basepair. Any predicted\nfragment size less than\
     \ this will be excluded.\nDEFAULT: 20"
-  type: long
+  type: long?
   inputBinding:
     prefix: --d-min
 - id: in_mfold__mfold
@@ -155,7 +155,7 @@ inputs:
     \ in regions must be lower\nthan upper limit, and higher than the lower limit.\
     \ Use\nas \"-m 10 30\". This setting is only used while\nbuilding the shifting\
     \ model. Tweaking it is not\nrecommended. DEFAULT:5 50"
-  type: long
+  type: long?
   inputBinding:
     prefix: -m
 - id: in_fix_bimodal
@@ -163,20 +163,20 @@ inputs:
     \ build paired model, it will use\nthe nomodel settings, the --exsize parameter\
     \ to extend\neach tags towards 3' direction. Not to use this\nautomate fixation\
     \ is a default behavior now. DEFAULT:\nFalse"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fix-bimodal
 - id: in_q_value
   doc: "Minimum FDR (q-value) cutoff for peak detection.\nDEFAULT: 0.05. -q, and -p\
     \ are mutually exclusive."
-  type: double
+  type: double?
   inputBinding:
     prefix: --qvalue
 - id: in_p_value
   doc: "Pvalue cutoff for peak detection. DEFAULT: not set.\n-q, and -p are mutually\
     \ exclusive. If pvalue cutoff is\nset, qvalue will not be calculated and reported\
     \ as -1\nin the final .xls file."
-  type: File
+  type: File?
   inputBinding:
     prefix: --pvalue
 - id: in_scale_to
@@ -187,7 +187,7 @@ inputs:
     \ in general but more specific results. Keep\nin mind that scaling down will influence\
     \ control/input\nsample more. DEFAULT: 'small', the choice is either\n'small'\
     \ or 'large'."
-  type: string
+  type: string?
   inputBinding:
     prefix: --scale-to
 - id: in_down_sample
@@ -198,25 +198,25 @@ inputs:
     1 million unique reads will be randomly picked.</not\nimplemented> Caution: due\
     \ to the implementation, the\nfinal number of selected reads may not be as you\n\
     expected! DEFAULT: False"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --down-sample
 - id: in_seed
   doc: "Set the random seed while down sampling data. Must be\na non-negative integer\
     \ in order to be effective.\nDEFAULT: not set"
-  type: long
+  type: long?
   inputBinding:
     prefix: --seed
 - id: in_tempdir
   doc: 'Optional directory to store temp files. DEFAULT: /tmp'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --tempdir
 - id: in_no_lambda
   doc: "If True, MACS will use fixed background lambda as\nlocal lambda for every\
     \ peak region. Normally, MACS\ncalculates a dynamic local lambda to reflect the\
     \ local\nbias due to the potential chromatin accessibility."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nolambda
 - id: in_s_local
@@ -227,7 +227,7 @@ inputs:
     \ the\ncontrol data is available. The final local bias would\nbe the maximum of\
     \ the lambda value from d, slocal, and\nllocal size windows. While control is\
     \ not available, d\nand slocal lambda won't be considered. DEFAULT: 1000"
-  type: long
+  type: long?
   inputBinding:
     prefix: --slocal
 - id: in_l_local
@@ -238,13 +238,13 @@ inputs:
     be the maximum of the lambda value from d, slocal, and\nllocal size windows. While\
     \ control is not available, d\nand slocal lambda won't be considered. DEFAULT:\
     \ 10000."
-  type: long
+  type: long?
   inputBinding:
     prefix: --llocal
 - id: in_max_gap
   doc: "Maximum gap between significant sites to cluster them\ntogether. The DEFAULT\
     \ value is the detected read\nlength/tag size."
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-gap
 - id: in_min_length
@@ -254,12 +254,12 @@ inputs:
     \ as 500bps. You can also use '--\ncutoff-analysis' option with default setting,\
     \ and\ncheck the column 'avelpeak' under different cutoff\nvalues to decide a\
     \ reasonable minlen value."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-length
 - id: in_broad
   doc: If set, MACS will try to call broad peaks using the
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --broad
 - id: in_cut_off_analysis
@@ -269,20 +269,20 @@ inputs:
     \ file. Note, minlen and maxgap\nmay affect the results. WARNING: May take ~30\
     \ folds\nlonger time to finish. The result can be useful for\nusers to decide\
     \ a reasonable cutoff value. DEFAULT:\nFalse"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cutoff-analysis
 - id: in_call_summits
   doc: "If set, MACS will use a more sophisticated signal\nprocessing approach to\
     \ find subpeak summits in each\nenriched peak region. DEFAULT: False"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --call-summits
 - id: in_fe_cut_off
   doc: "When set, the value will be used to filter out peaks\nwith low fold-enrichment.\
     \ Note, MACS2 use 1.0 as\npseudocount while calculating fold-enrichment.\nDEFAULT:\
     \ 1.0"
-  type: double
+  type: double?
   inputBinding:
     prefix: --fe-cutoff
 - id: in_buffer_size
@@ -293,12 +293,12 @@ inputs:
     \ usage (but it will take longer time\nto read alignment files). Minimum memory\
     \ requested for\nreading an alignment file is about # of CHROMOSOME *\nBUFFER_SIZE\
     \ * 8 Bytes. DEFAULT: 100000"
-  type: long
+  type: long?
   inputBinding:
     prefix: --buffer-size
 - id: in_to_large
   doc: Obsolete option. Please use '--scale-to large'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --to-large
 - id: in_instead_dot
@@ -313,15 +313,16 @@ outputs:
 - id: out_outdir
   doc: "If specified all output files will be written to that\ndirectory. Default:\
     \ the current working directory"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
 - id: out_name
   doc: "Experiment name, which will be used to generate output\nfile names. DEFAULT:\
     \ \"NA\""
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_name)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - macs2

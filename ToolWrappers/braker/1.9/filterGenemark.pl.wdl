@@ -20,6 +20,9 @@ task FilterGenemarkpl {
       ~{if (suppress) then "--suppress" else ""} \
       ~{if (filter_out_short) then "--filterOutShort" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     introns: "Corresponding intron file in gff format"
     genemark: "File in gtf format"

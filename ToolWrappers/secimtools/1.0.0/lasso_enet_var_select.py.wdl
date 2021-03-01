@@ -24,6 +24,9 @@ task LassoEnetVarSelectpy {
       ~{if defined(flags) then ("--flags " +  '"' + flags + '"') else ""} \
       ~{if defined(plots) then ("--plots " +  '"' + plots + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a: "[-c COEFFICIENTS] [-f FLAGS]"
     input_dataset_wide: "Input dataset in wide format."

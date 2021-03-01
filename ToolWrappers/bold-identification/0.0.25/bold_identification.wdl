@@ -24,6 +24,9 @@ task BoldIdentification {
       ~{if (continuous_mode_jump) then "-c" else ""} \
       ~{if (debug_mode_output) then "-D" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_name: "input file name"
     input_file_format: "input file format [fasta]"

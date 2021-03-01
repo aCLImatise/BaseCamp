@@ -22,6 +22,9 @@ task MultiplexResolver {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*            Peptide multiplets with assigned sequence information (valid formats: 'consensusXML')"
     in_blacklist: "Optional input containing spectral peaks blacklisted during feature detection. Needed for generation of dummy features. (valid formats: 'mzML')"

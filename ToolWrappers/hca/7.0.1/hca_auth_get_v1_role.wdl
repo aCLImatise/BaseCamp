@@ -8,6 +8,9 @@ task HcaAuthGetv1role {
     hca auth get_v1_role \
       ~{if defined(role_id) then ("--role-id " +  '"' + role_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     role_id: "The name of the role."
   }

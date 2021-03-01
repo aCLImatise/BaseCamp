@@ -20,6 +20,9 @@ task Cleric {
       ~{if (emit_tool_contract) then "--emit-tool-contract" else ""} \
       ~{if (resolved_tool_contract) then "--resolved-tool-contract" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aln: "Pairwise alignment of reference to target"
     emit_tool_contract: "Emit tool contract."

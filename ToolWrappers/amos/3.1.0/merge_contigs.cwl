@@ -3,7 +3,7 @@ id: merge_contigs.cwl
 inputs:
 - id: in_output_outprefixmali_file
   doc: Output the <out-prefix>.mali file
-  type: File
+  type: File?
   inputBinding:
     prefix: -a
 - id: in_coords_file
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output_outprefixmali_file
   doc: Output the <out-prefix>.mali file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_outprefixmali_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - merge-contigs

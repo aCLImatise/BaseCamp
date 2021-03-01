@@ -12,6 +12,9 @@ task HgvsToVcf {
       ~{input_dot_hgvs} \
       ~{if (no_left_shift) then "-noLeftShift" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_left_shift: "Don't do the VCF-conventional left shifting of ambiguous placements"
     db: ""

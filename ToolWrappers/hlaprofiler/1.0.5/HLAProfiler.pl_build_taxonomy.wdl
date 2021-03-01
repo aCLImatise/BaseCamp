@@ -28,6 +28,9 @@ task HLAProfilerplBuildTaxonomy {
       ~{if (minimizer) then "-minimizer" else ""} \
       ~{if (threads) then "-threads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     transcripts: "|t          location of fasta file containing transcripts. Currently only GENCODE transcripts are supported.(required)"
     transcript_gtf: "|g       location of gtf file containing transcripts corresponding to the -transcripts option. Currently only GENCODE transcripts are supported.(required)"

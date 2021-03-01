@@ -4,6 +4,9 @@ task Bgbpipe {
   command <<<
     bg_bpipe
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

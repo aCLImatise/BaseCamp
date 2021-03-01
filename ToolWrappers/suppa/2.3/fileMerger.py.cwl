@@ -3,12 +3,12 @@ id: fileMerger.py.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_f
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_i
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fileMerger.py

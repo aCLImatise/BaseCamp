@@ -4,6 +4,9 @@ task CatUncomment {
   command <<<
     catUncomment
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

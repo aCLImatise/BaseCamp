@@ -16,6 +16,9 @@ task AgatSpCompareTwoBUSCOspl {
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""} \
       ~{if defined(string_output_folder) then ("--output " +  '"' + string_output_folder + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fone: "STRING: Input busco folder1"
     f_two: "STRING: Input busco folder2"

@@ -8,6 +8,9 @@ task Pbindex {
     pbindex \
       ~{in_dot_bam}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_bam: "FILE  Input BAM file"
   }

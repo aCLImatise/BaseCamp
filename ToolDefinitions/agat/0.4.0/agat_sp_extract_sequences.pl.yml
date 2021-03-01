@@ -3,87 +3,90 @@ command:
 - agat_sp_extract_sequences.pl
 positional:
 - !Positional
-  description: 'Description:'
+  optional: false
   position: 0
   name: agat_sp_extract_sequences.pl
-  optional: false
+  description: 'Description:'
 named:
 - !Flag
-  description: String - Input GTF/GFF file.
+  optional: true
   synonyms:
   - -g
   - --gff
   - -ref
+  description: String - Input GTF/GFF file.
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: String - Input fasta file.
+  optional: true
   synonyms:
   - -f
   - --fasta
+  description: String - Input fasta file.
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --dnrc
   description: "Boolean - dnrc means `do not reverse complement`, by default the\n\
     extrated sequence of a feature on the minus strand is reverse\ncomplemented. You\
     \ can deactivate the behavior by using this\noption."
-  synonyms:
-  - --dnrc
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
   description: "String - Define the feature you want to extract the sequnece\nfrom.\
     \ Default 'cds'. Most common choice are:\ngene,mrna,exon,cds,trna,three_prime_utr,five_prime_utr.\
     \ When you\nchose exon (or cds,utr,etc.), all the exon of a same parent\nfeature\
     \ are attached together before to extract the sequence. If\nyou wish to extract\
     \ each exon of a mRNA independently, see\noption --split."
-  synonyms:
-  - -t
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Boolean - Will translate the extracted sequence in Amino acid.\nBy\
-    \ default the codon table used is the 1 (Standard). See --table\nparameter for\
-    \ more options."
+  optional: true
   synonyms:
   - -p
   - --protein
   - --aa
+  description: "Boolean - Will translate the extracted sequence in Amino acid.\nBy\
+    \ default the codon table used is the 1 (Standard). See --table\nparameter for\
+    \ more options."
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: "Integer - Allow to choose the codon table for the translation.\n[default\
-    \ 1]"
+  optional: true
   synonyms:
   - --codon
   - --table
   - --ct
+  description: "Integer - Allow to choose the codon table for the translation.\n[default\
+    \ 1]"
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --eo
   description: "Boolean - Called 'extremity only', this option will extract only\n\
     the adjacent parts of a feature. This option has to be activated\nwith -u and/or\
     \ -p option. /!\\ using -u and -p together builds a\nchimeric sequence which will\
     \ be the concatenation of the left\nand right extremities of a feature."
-  synonyms:
-  - --eo
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --split
   description: "- By default, all level3 features (exon, cds, utr)\ncollectively linked\
     \ to a level2 feature (rna, mRNA) are merge\ntogether to shape an entire feature\
     \ (e.g. several cds pieces can\nbe merged to create the CDS in its whole). If\
     \ you wish to\nextract all the subfeatures independently activate this option."
-  synonyms:
-  - --split
   args: !SimpleFlagArg
     name: Boolean
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --full
   description: "Boolean - This option allows dealing with multifeature like cds\n\
     or exon, to extract the full sequence from start extremity to\nthe end extremity,\
     \ i.e with introns. The use of that option with\nexon feature will give the same\
@@ -92,109 +95,106 @@ named:
     `-t exon` option wihtout the --full option and wihtout the\n--split option) Use\
     \ of that option on cds will give the cdna*\nwihtout the untraslated sequences.\
     \ *Not a real cdna because it\nis not reversed"
-  synonyms:
-  - --full
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Integer - It will take that number of nucleotide in more at the\n\
-    5' extremity. /!\\ You must activate the option \"--full\" if you\nwith to extract\
-    \ only the most upstream part of certain feature\n(exon,cds,utr) otherwise you\
-    \ will extract each upstream parts of\nthe subfeatures (e.g many cds parts may\
-    \ be needed to shape a cds\nin its whole)."
+  optional: true
   synonyms:
   - --up
   - '-5'
   - --five
   - -upstream
+  description: "Integer - It will take that number of nucleotide in more at the\n\
+    5' extremity. /!\\ You must activate the option \"--full\" if you\nwith to extract\
+    \ only the most upstream part of certain feature\n(exon,cds,utr) otherwise you\
+    \ will extract each upstream parts of\nthe subfeatures (e.g many cds parts may\
+    \ be needed to shape a cds\nin its whole)."
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: "Integer - It will take that number of nucleotide in more at the\n\
-    3' extremity. /!\\ You must activate the option \"--full\" if you\nwith to extract\
-    \ only the most downstream part of certain feature\n(exon,cds,utr) otherwise you\
-    \ will extract each downstream parts\nof the subfeatures (e.g many cds parts may\
-    \ be needed to shape a\ncds in its whole)."
+  optional: true
   synonyms:
   - --do
   - '-3'
   - --three
   - -down
   - -downstream
+  description: "Integer - It will take that number of nucleotide in more at the\n\
+    3' extremity. /!\\ You must activate the option \"--full\" if you\nwith to extract\
+    \ only the most downstream part of certain feature\n(exon,cds,utr) otherwise you\
+    \ will extract each downstream parts\nof the subfeatures (e.g many cds parts may\
+    \ be needed to shape a\ncds in its whole)."
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cdna
   description: "Boolean - This extract the cdna* sequence (i.e transcribed\nsequence\
     \ (devoid of introns, but containing untranslated\nexons)). It corresponds to\
     \ extract the exons sequences. *Not a\nreal cdna because it is not reversed"
-  synonyms:
-  - --cdna
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ofs
   description: "String - Output Fields Separator for the description field of\nthe\
     \ header of the created fasta sequences. By default it's a\nspace < > but can\
     \ be modified by any String or character using\nthis option."
-  synonyms:
-  - --ofs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --clean_internal_stop
+  - --cis
   description: "Boolean - The Clean Internal Stop option allows replacing the\ntranslation\
     \ of the stop codons present among the sequence that\nis represented by the <*>\
     \ character by <X>. Indeed the <*>\ncharacter can be disturbing for many programs\
     \ (e.g interproscan)"
-  synonyms:
-  - --clean_internal_stop
-  - --cis
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: "Boolean - The Clean Final Stop option allows removing the\ntranslation\
-    \ of the final stop codons that is represented by the\n<*> character. This character\
-    \ can be disturbing for many\nprograms (e.g interproscan)"
+  optional: true
   synonyms:
   - --clean_final_stop
   - --cfs
+  description: "Boolean - The Clean Final Stop option allows removing the\ntranslation\
+    \ of the final stop codons that is represented by the\n<*> character. This character\
+    \ can be disturbing for many\nprograms (e.g interproscan)"
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --remove_orf_offset
+  - --roo
   description: "Boolean - CDS can start with a phase different from 0 when a\ngene\
     \ model is fragmented. When asking for protein translation\nthis (start) offset\
     \ is trimmed out automatically. But when you\nextract CDS dna sequences, this\
     \ (start) offset is not removed by\ndefault. To remove it activate this option.\
     \ If --up or --do\noption are used too, the (start) offset is trimmed first, then\n\
     is added the piece of sequence asked for."
-  synonyms:
-  - --remove_orf_offset
-  - --roo
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: "String - Output fasta file. If no output file is specified, the\n\
-    output will be written to STDOUT."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "String - Output fasta file. If no output file is specified, the\n\
+    output will be written to STDOUT."
   args: !SimpleFlagArg
     name: or
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Boolean - Display this helpful text.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Boolean - Display this helpful text.
   args: !SimpleFlagArg
     name: or
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\n ------------------------------------------------------------------------------\n\
@@ -299,3 +299,4 @@ help_text: "\n -----------------------------------------------------------------
   \n"
 generated_using:
 - --help
+docker_image:

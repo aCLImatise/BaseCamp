@@ -16,9 +16,12 @@ task Mercy {
       ~{if defined(dump) then ("-dump " +  '"' + dump + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    af: "| -tf        fragcounts"
-    ac: "| -dc | -co  contigcounts"
+    af: "fragcounts"
+    ac: "contigcounts"
     dump: ""
     v: ""
     opts: ""

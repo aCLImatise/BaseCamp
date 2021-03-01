@@ -2,10 +2,10 @@ version 1.0
 
 task Seqwish {
   input {
-    Boolean? induce_graph_pafformatted
+    Boolean? induce_graph_optionally
     Boolean? sequences_used_generate
     Boolean? build_graph_using
-    Boolean? write_graph_file
+    Boolean? write_graph_gfa
     Boolean? use_match_list
     File? write_graph_vgp
     Boolean? use_many_threads
@@ -18,10 +18,10 @@ task Seqwish {
   command <<<
     seqwish \
       ~{steps} \
-      ~{if (induce_graph_pafformatted) then "-p" else ""} \
+      ~{if (induce_graph_optionally) then "-p" else ""} \
       ~{if (sequences_used_generate) then "-s" else ""} \
       ~{if (build_graph_using) then "-b" else ""} \
-      ~{if (write_graph_file) then "-g" else ""} \
+      ~{if (write_graph_gfa) then "-g" else ""} \
       ~{if (use_match_list) then "-m" else ""} \
       ~{if (write_graph_vgp) then "-o" else ""} \
       ~{if (use_many_threads) then "-t" else ""} \
@@ -30,11 +30,14 @@ task Seqwish {
       ~{if (keep_temp) then "--keep-temp" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    induce_graph_pafformatted: "[FILE], --paf-alns=[FILE]       Induce the graph from these PAF\\nformatted alignments. Optionally, a list\\nof filenames and minimum match lengths:\\n[file_1]:[min_match_length_1],... This\\nallows the differential filtering of\\nshort matches from some but not all\\ninputs, in effect allowing `-k` to be\\nspecified differently for each input."
+    induce_graph_optionally: "[FILE], --paf-alns=[FILE]       Induce the graph from these PAF\\nformatted alignments. Optionally, a list\\nof filenames and minimum match lengths:\\n[file_1]:[min_match_length_1],... This\\nallows the differential filtering of\\nshort matches from some but not all\\ninputs, in effect allowing `-k` to be\\nspecified differently for each input."
     sequences_used_generate: "[FILE], --seqs=[FILE]           The sequences used to generate the\\nalignments (FASTA, FASTQ, .seq)"
     build_graph_using: "[BASE], --base=[BASE]           Build graph using this basename"
-    write_graph_file: "[FILE], --gfa=[FILE]            Write the graph in GFA to FILE"
+    write_graph_gfa: "[FILE], --gfa=[FILE]            Write the graph in GFA to FILE"
     use_match_list: "[FILE], --match-list=[FILE]     Use the sequence match list in FILE to\\nsubset the input alignments"
     write_graph_vgp: "[BASE], --vgp-out=[BASE]        Write the graph in VGP format with\\nbasename FILE"
     use_many_threads: "[N], --threads=[N]              Use this many threads during parallel"

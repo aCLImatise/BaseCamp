@@ -3,29 +3,30 @@ id: biopython.convert.cwl
 inputs:
 - id: in_records_seperate_files
   doc: records into seperate files
-  type: string
+  type: string?
   inputBinding:
     prefix: -s
-- id: in_select_records_must
+- id: in_select_records_return
   doc: to select records. Must return list of SeqIO records. Root is list of input
     SeqIO records.
-  type: File
+  type: File?
   inputBinding:
     prefix: -q
 - id: in_details_records_conversion
   doc: out details of records during conversion
-  type: string
+  type: string?
   inputBinding:
     prefix: -i
 - id: in_version_and_exit
   doc: version and exit
-  type: string
+  type: string?
   inputBinding:
     prefix: -v
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - biopython.convert

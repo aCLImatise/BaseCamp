@@ -16,6 +16,9 @@ task IntrahostpyTabfileRename {
       ~{if defined(col_idx) then ("--col_idx " +  '"' + col_idx + '"') else ""} \
       ~{if defined(loglevel) then ("--loglevel " +  '"' + loglevel + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     col_idx: "Which column number to replace (0-based index).\\n[default: 0]"
     loglevel: "Verboseness of output. [default: DEBUG]"

@@ -30,6 +30,9 @@ task Abyssoverlap {
       ~{if (no_ss) then "--no-SS" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min: "find matches at least N bp [50]"
     max: "find matches less than N bp [inf]"

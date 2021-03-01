@@ -3,7 +3,7 @@ id: dx_docker_add_to_applet_applet.cwl
 inputs:
 - id: in_alternative_export
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --alternative_export
 - id: in_dx_docker
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dx-docker

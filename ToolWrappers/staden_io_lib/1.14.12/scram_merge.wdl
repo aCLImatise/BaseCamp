@@ -28,6 +28,9 @@ task ScramMerge {
       ~{if defined(specify_format_version) then ("-V " +  '"' + specify_format_version + '"') else ""} \
       ~{if (embed_reference_sequence) then "-X" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     set_input_format: "Set input format:  \\\"bam\\\", \\\"sam\\\" or \\\"cram\\\"."
     set_output_format: "Set output format: \\\"bam\\\", \\\"sam\\\" or \\\"cram\\\"."

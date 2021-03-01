@@ -4,419 +4,442 @@ command:
 positional: []
 named:
 - !Flag
-  description: query input files are FASTQ .fq/.fastq (default)
+  optional: true
   synonyms:
   - -q
+  description: query input files are FASTQ .fq/.fastq (default)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: query input files are (multi-)FASTA .fa/.mfa
+  optional: true
   synonyms:
   - -f
+  description: query input files are (multi-)FASTA .fa/.mfa
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -F
   description: ":<int>,i:<int> query input files are continuous FASTA where reads\n\
     are substrings (k-mers) extracted from a FASTA file <s>\nand aligned at offsets\
     \ 1, 1+i, 1+2i ... end of reference"
-  synonyms:
-  - -F
   args: !SimpleFlagArg
     name: k
-  optional: true
 - !Flag
-  description: query input files are raw one-sequence-per-line
+  optional: true
   synonyms:
   - -r
+  description: query input files are raw one-sequence-per-line
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: query sequences given on cmd line (as <mates>, <singles>)
+  optional: true
   synonyms:
   - -c
+  description: query sequences given on cmd line (as <mates>, <singles>)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: reads and index are in colorspace
+  optional: true
   synonyms:
   - -C
+  description: reads and index are in colorspace
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -Q
+  - --quals
   description: QV file(s) corresponding to CSFASTA inputs; use with -f -C
-  synonyms:
-  - -Q/--quals
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --Q1
+  - --Q2
   description: same as -Q, but for mate files 1 and 2 respectively
-  synonyms:
-  - --Q1/--Q2
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --skip
   description: skip the first <int> reads/pairs in the input
-  synonyms:
-  - -s/--skip
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --qupto
   description: stop after first <int> reads/pairs (excl. skipped reads)
-  synonyms:
-  - -u/--qupto
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - '-5'
+  - --trim5
   description: trim <int> bases from 5' (left) end of reads
-  synonyms:
-  - -5/--trim5
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - '-3'
+  - --trim3
   description: trim <int> bases from 3' (right) end of reads
-  synonyms:
-  - -3/--trim3
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: input quals are Phred+33 (default)
+  optional: true
   synonyms:
   - --phred33-quals
+  description: input quals are Phred+33 (default)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: input quals are Phred+64 (same as --solexa1.3-quals)
+  optional: true
   synonyms:
   - --phred64-quals
+  description: input quals are Phred+64 (same as --solexa1.3-quals)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: input quals are from GA Pipeline ver. < 1.3
+  optional: true
   synonyms:
   - --solexa-quals
+  description: input quals are from GA Pipeline ver. < 1.3
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: input quals are from GA Pipeline ver. >= 1.3
+  optional: true
   synonyms:
   - --solexa1.3-quals
+  description: input quals are from GA Pipeline ver. >= 1.3
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: qualities are given as space-separated integers (not ASCII)
+  optional: true
   synonyms:
   - --integer-quals
+  description: qualities are given as space-separated integers (not ASCII)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: report end-to-end hits w/ <=v mismatches; ignore qualities
+  optional: true
   synonyms:
   - -v
+  description: report end-to-end hits w/ <=v mismatches; ignore qualities
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --maqerr
   description: 'max sum of mismatch quals across alignment for -n (def: 70)'
-  synonyms:
-  - -e/--maqerr
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --seedlen
   description: 'seed length for -n (default: 28)'
-  synonyms:
-  - -l/--seedlen
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: disable Maq-like quality rounding for -n (nearest 10 <= 30)
+  optional: true
   synonyms:
   - --nomaqround
+  description: disable Maq-like quality rounding for -n (nearest 10 <= 30)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --minins
   description: 'minimum insert size for paired-end alignment (default: 0)'
-  synonyms:
-  - -I/--minins
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --maxins
   description: 'maximum insert size for paired-end alignment (default: 250)'
-  synonyms:
-  - -X/--maxins
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: '-1, -2 mates align fw/rev, rev/fw, fw/fw (default: --fr)'
+  optional: true
   synonyms:
-  - --fr/--rf/--ff
-  args: !EmptyFlagArg {}
-  optional: true
+  - --fr
+  - --rf
+  - --ff
+  - '-1'
+  - '-2'
+  description: 'align fw/rev, rev/fw, fw/fw (default: --fr)'
+  args: !SimpleFlagArg
+    name: mates
 - !Flag
+  optional: true
+  synonyms:
+  - --nofw
+  - --norc
   description: do not align to forward/reverse-complement reference strand
-  synonyms:
-  - --nofw/--norc
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'max # backtracks for -n 2/3 (default: 125, 800 for --best)'
+  optional: true
   synonyms:
   - --maxbts
+  description: 'max # backtracks for -n 2/3 (default: 125, 800 for --best)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'max # attempts to find mate for anchor hit (default: 100)'
+  optional: true
   synonyms:
   - --pairtries
+  description: 'max # attempts to find mate for anchor hit (default: 100)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: try hard to find valid alignments, at the expense of speed
+  optional: true
   synonyms:
-  - -y/--tryhard
+  - -y
+  - --tryhard
+  description: try hard to find valid alignments, at the expense of speed
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'max megabytes of RAM for best-first search frames (def: 64)'
+  optional: true
   synonyms:
   - --chunkmbs
+  description: 'max megabytes of RAM for best-first search frames (def: 64)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: '# of reads to read from input file at once (default: 16)'
+  optional: true
   synonyms:
   - --reads-per-batch
+  description: '# of reads to read from input file at once (default: 16)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'report up to <int> good alignments per read (default: 1)'
+  optional: true
   synonyms:
   - -k
+  description: 'report up to <int> good alignments per read (default: 1)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: report all alignments per read (much slower than low -k)
+  optional: true
   synonyms:
-  - -a/--all
+  - -a
+  - --all
+  description: report all alignments per read (much slower than low -k)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'suppress all alignments if > <int> exist (def: no limit)'
+  optional: true
   synonyms:
   - -m
+  description: 'suppress all alignments if > <int> exist (def: no limit)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: like -m, but reports 1 random hit (MAPQ=0); requires --best
+  optional: true
   synonyms:
   - -M
+  description: like -m, but reports 1 random hit (MAPQ=0); requires --best
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: hits guaranteed best stratum; ties broken by quality
+  optional: true
   synonyms:
   - --best
+  description: hits guaranteed best stratum; ties broken by quality
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: hits in sub-optimal strata aren't reported (requires --best)
+  optional: true
   synonyms:
   - --strata
+  description: hits in sub-optimal strata aren't reported (requires --best)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --time
   description: print wall-clock time taken by search phases
-  synonyms:
-  - -t/--time
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'leftmost ref offset = <int> in bowtie output (default: 0)'
+  optional: true
   synonyms:
-  - -B/--offbase
+  - -B
+  - --offbase
+  description: 'leftmost ref offset = <int> in bowtie output (default: 0)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: print nothing but the alignments
+  optional: true
   synonyms:
   - --quiet
+  description: print nothing but the alignments
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: refer to ref. seqs by 0-based index rather than name
+  optional: true
   synonyms:
   - --refidx
+  description: refer to ref. seqs by 0-based index rather than name
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: write aligned reads/pairs to file(s) <fname>
+  optional: true
   synonyms:
   - --al
+  description: write aligned reads/pairs to file(s) <fname>
   args: !SimpleFlagArg
     name: fname
-  optional: true
 - !Flag
-  description: write unaligned reads/pairs to file(s) <fname>
+  optional: true
   synonyms:
   - --un
+  description: write unaligned reads/pairs to file(s) <fname>
   args: !SimpleFlagArg
     name: fname
-  optional: true
 - !Flag
-  description: suppress SAM records for unaligned reads
+  optional: true
   synonyms:
   - --no-unal
+  description: suppress SAM records for unaligned reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: write reads/pairs over -m limit to file(s) <fname>
+  optional: true
   synonyms:
   - --max
+  description: write reads/pairs over -m limit to file(s) <fname>
   args: !SimpleFlagArg
     name: fname
-  optional: true
 - !Flag
-  description: suppresses given columns (comma-delim'ed) in default output
+  optional: true
   synonyms:
   - --suppress
+  description: suppresses given columns (comma-delim'ed) in default output
   args: !SimpleFlagArg
     name: cols
-  optional: true
 - !Flag
-  description: 'write entire ref name (default: only up to 1st space)'
+  optional: true
   synonyms:
   - --fullref
+  description: 'write entire ref name (default: only up to 1st space)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Phred penalty for SNP when decoding colorspace (def: 30)'
+  optional: true
   synonyms:
   - --snpphred
+  description: 'Phred penalty for SNP when decoding colorspace (def: 30)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: print aligned colorspace seqs as colors, not decoded bases
+  optional: true
   synonyms:
   - --col-cseq
+  description: print aligned colorspace seqs as colors, not decoded bases
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: print original colorspace quals, not decoded quals
+  optional: true
   synonyms:
   - --col-cqual
+  description: print original colorspace quals, not decoded quals
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: keep nucleotides at extreme ends of decoded alignment
+  optional: true
   synonyms:
   - --col-keepends
+  description: keep nucleotides at extreme ends of decoded alignment
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: write hits in SAM format
+  optional: true
   synonyms:
-  - -S/--sam
+  - -S
+  - --sam
+  description: write hits in SAM format
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: default mapping quality (MAPQ) to print for SAM alignments
+  optional: true
   synonyms:
   - --mapq
+  description: default mapping quality (MAPQ) to print for SAM alignments
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: supppress header lines (starting with @) for SAM output
+  optional: true
   synonyms:
   - --sam-nohead
+  description: supppress header lines (starting with @) for SAM output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: supppress @SQ header lines for SAM output
+  optional: true
   synonyms:
   - --sam-nosq
+  description: supppress @SQ header lines for SAM output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: add <text> (usually "lab=value") to @RG line of SAM header
+  optional: true
   synonyms:
   - --sam-RG
+  description: add <text> (usually "lab=value") to @RG line of SAM header
   args: !SimpleFlagArg
     name: text
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --offrate
   description: override offrate of index; must be >= index's offrate
-  synonyms:
-  - -o/--offrate
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --threads
   description: 'number of alignment threads to launch (default: 1)'
-  synonyms:
-  - -p/--threads
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: use memory-mapped I/O for index; many 'bowtie's can share
+  optional: true
   synonyms:
   - --mm
+  description: use memory-mapped I/O for index; many 'bowtie's can share
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: use shared mem for index; many 'bowtie's can share
+  optional: true
   synonyms:
   - --shmem
+  description: use shared mem for index; many 'bowtie's can share
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: seed for random number generator
+  optional: true
   synonyms:
   - --seed
+  description: seed for random number generator
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: verbose output (for debugging)
+  optional: true
   synonyms:
   - --verbose
+  description: verbose output (for debugging)
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: print this usage message
-  synonyms:
-  - -h/--help
-  args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this usage message
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag: !Flag
-  description: print version information and quit
+  optional: true
   synonyms:
   - --version
+  description: print version information and quit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: \nbowtie-align-l [options]* <ebwt> {-1 <m1> -2 <m2> | --12 <r>\
   \ | --interleaved <i> | <s>} [<hit>]\n\n  <m1>    Comma-separated list of files\
   \ containing upstream mates (or the\n          sequences themselves, if -c is set)\
@@ -491,3 +514,4 @@ help_text: "Usage: \nbowtie-align-l [options]* <ebwt> {-1 <m1> -2 <m2> | --12 <r
   \ message\n"
 generated_using:
 - --help
+docker_image:

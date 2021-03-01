@@ -2,7 +2,6 @@ version 1.0
 
 task Imputationpy {
   input {
-    String? s
     String? input_dataset_wide
     File? design
     String? id
@@ -19,7 +18,6 @@ task Imputationpy {
   }
   command <<<
     imputation_py \
-      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
       ~{if defined(input_dataset_wide) then ("--input " +  '"' + input_dataset_wide + '"') else ""} \
       ~{if defined(design) then ("--design " +  '"' + design + '"') else ""} \
       ~{if defined(id) then ("--ID " +  '"' + id + '"') else ""} \
@@ -34,8 +32,10 @@ task Imputationpy {
       ~{if defined(knn) then ("--knn " +  '"' + knn + '"') else ""} \
       ~{if defined(col_cut_off) then ("--col_cutoff " +  '"' + col_cut_off + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    s: "[-noz] [-noneg]"
     input_dataset_wide: "Input dataset in wide format."
     design: "Design file."
     id: "Name of the column with unique identifiers."

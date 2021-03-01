@@ -3,7 +3,7 @@ id: phylorank_rank_res.cwl
 inputs:
 - id: in_tax_a_file
   doc: "output file indicating taxa within each resolution\ncategory\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --taxa_file
 - id: in_input_tree
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_tax_a_file
   doc: "output file indicating taxa within each resolution\ncategory\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_tax_a_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phylorank

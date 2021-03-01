@@ -16,6 +16,9 @@ task CactusFastaSoftmaskIntervalspy {
       ~{if defined(mask) then ("--mask " +  '"' + mask + '"') else ""} \
       ~{if (unmask) then "--unmask" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chrom: "copy (and mask) only the specified sequence(s)\\n<sequence_names> is a comma-separated list\\n(default is to copy and mask all sequences)"
     origin: "intervals are origin-one, closed\\n(default is origin-zero, half-open)"

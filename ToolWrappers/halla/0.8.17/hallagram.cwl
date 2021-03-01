@@ -3,42 +3,42 @@ id: hallagram.cwl
 inputs:
 - id: in_strongest
   doc: isolate the N strongest associations
-  type: string
+  type: string?
   inputBinding:
     prefix: --strongest
 - id: in_largest
   doc: isolate the N largest associations
-  type: string
+  type: string?
   inputBinding:
     prefix: --largest
 - id: in_mask
   doc: mask feature pairs not in associations
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mask
 - id: in_cmap
   doc: matplotlib color map
-  type: string
+  type: string?
   inputBinding:
     prefix: --cmap
 - id: in_a_x_labels
   doc: "AXLABELS\naxis labels"
-  type: string
+  type: string?
   inputBinding:
     prefix: --axlabels
 - id: in_outfile
   doc: output file name
-  type: File
+  type: File?
   inputBinding:
     prefix: --outfile
 - id: in_similarity
   doc: "Similarity metric has been used for similarity\nmeasurement"
-  type: string
+  type: string?
   inputBinding:
     prefix: --similarity
 - id: in_order_by
   doc: "Order the significant association by similarity,\npvalue, or qvalue\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --orderby
 - id: in_sim_table
@@ -62,9 +62,10 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: output file name
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hallagram

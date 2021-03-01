@@ -5,33 +5,37 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Alignment file. If multiple files are given as '-t A B\nC', then they\
-    \ will all be read and combined. Note that\npair-end data is not supposed to work\
-    \ with this\ncommand. REQUIRED."
+  optional: true
   synonyms:
   - -i
   - --ifile
+  description: "Alignment file. If multiple files are given as '-t A B\nC', then they\
+    \ will all be read and combined. Note that\npair-end data is not supposed to work\
+    \ with this\ncommand. REQUIRED."
   args: !RepeatFlagArg
     name: IFILE
-  optional: true
 - !Flag
-  description: "Output bedGraph file name. If not specified, will\nwrite to standard\
-    \ output. REQUIRED."
+  optional: true
   synonyms:
   - -o
   - --ofile
+  description: "Output bedGraph file name. If not specified, will\nwrite to standard\
+    \ output. REQUIRED."
   args: !SimpleFlagArg
     name: OUTPUTFILE
-  optional: true
 - !Flag
-  description: "If specified all output files will be written to that\ndirectory.\
-    \ Default: the current working directory"
+  optional: true
   synonyms:
   - --outdir
+  description: "If specified all output files will be written to that\ndirectory.\
+    \ Default: the current working directory"
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
   description: "Format of tag file, \"AUTO\", \"BED\", \"ELAND\",\n\"ELANDMULTI\"\
     , \"ELANDEXPORT\", \"SAM\", \"BAM\", \"BOWTIE\",\n\"BAMPE\", or \"BEDPE\". The\
     \ default AUTO option will let\n'macs2 pileup' decide which format the file is.\n\
@@ -39,23 +43,23 @@ named:
     , \"ELANDMULTI\", \"ELANDEXPORT\", \"SAM\",\n\"BAM\" and \"BOWTIE\". If the format\
     \ is BAMPE or BEDPE,\nplease specify it explicitly. Please note that when\nthe\
     \ format is BAMPE or BEDPE, the -B and --extsize\noptions would be ignored."
-  synonyms:
-  - -f
-  - --format
   args: !ChoiceFlagArg
     choices: !!set
-      SAM:
-      AUTO:
-      ELAND:
-      BAMPE:
-      BOWTIE:
-      BAM:
       ELANDMULTI:
+      SAM:
+      BOWTIE:
       BEDPE:
+      BAM:
       ELANDEXPORT:
       BED:
-  optional: true
+      ELAND:
+      BAMPE:
+      AUTO:
 - !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --both-direction
   description: "By default, any read will be extended towards\ndownstream direction\
     \ by extension size. So it's\n[0,size-1] (1-based index system) for plus strand\
     \ read\nand [-size+1,0] for minus strand read where position 0\nis 5' end of the\
@@ -68,22 +72,21 @@ named:
     \ fragment size/d estimated from\n10kb, 1kb, d and whole genome background. This\
     \ option\nwill be ignored when the format is set as BAMPE or\nBEDPE. DEFAULT:\
     \ False"
-  synonyms:
-  - -B
-  - --both-direction
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extsize
   description: "The extension size in bps. Each alignment read will\nbecome a EXTSIZE\
     \ of fragment, then be piled up. Check\ndescription for -B for detail. It's twice\
     \ the\n`shiftsize` in old MACSv1 language. This option will\nbe ignored when the\
     \ format is set as BAMPE or BEDPE.\nDEFAULT: 200"
-  synonyms:
-  - --extsize
   args: !SimpleFlagArg
     name: EXTSIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --buffer-size
   description: "Buffer size for incrementally increasing internal\narray size to store\
     \ reads alignment information. In\nmost cases, you don't have to change this parameter.\n\
     However, if there are large number of\nchromosomes/contigs/scaffolds in your alignment,\
@@ -91,30 +94,27 @@ named:
     \ usage (but it will take longer time\nto read alignment files). Minimum memory\
     \ requested for\nreading an alignment file is about # of CHROMOSOME *\nBUFFER_SIZE\
     \ * 8 Bytes. DEFAULT: 100000"
-  synonyms:
-  - --buffer-size
   args: !SimpleFlagArg
     name: BUFFER_SIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --verbose
   description: "Set verbose level. 0: only show critical message, 1:\nshow additional\
     \ warning message, 2: show process\ninformation, 3: show debug messages. If you\
     \ want to\nknow where are the duplicate reads, use 3. DEFAULT:2\n"
-  synonyms:
-  - --verbose
   args: !SimpleFlagArg
     name: VERBOSE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: macs2 pileup [-h] -i IFILE [IFILE ...] -o OUTPUTFILE [--outdir\
@@ -178,3 +178,4 @@ help_text: "usage: macs2 pileup [-h] -i IFILE [IFILE ...] -o OUTPUTFILE [--outdi
   \ the duplicate reads, use 3. DEFAULT:2\n"
 generated_using:
 - --help
+docker_image:

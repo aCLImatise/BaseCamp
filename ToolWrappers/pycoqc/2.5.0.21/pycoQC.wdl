@@ -40,6 +40,9 @@ task PycoQC {
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
       ~{if (default_config) then "--default_config" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Increase verbosity"
     quiet: "Reduce verbosity"

@@ -5,19 +5,19 @@ inputs:
   doc: "ID to use as leaf node in subgraph. All ancestors of this ID are\nincluded\
     \ in the exported graph (unless -partial is set)\nMultiple IDs can be passed\n\
     -id ID1 -id ID2 -id ID3 ....etc"
-  type: long
+  type: long?
   inputBinding:
     prefix: -id
 - id: in_subset
   doc: "Extracts a named subset from the ontology file. (only works with obo\nformat\
     \ files). For example, a specific GO slim\nONLY terms belonging to the subset\
     \ are exported - the -partial\noption is automatically set"
-  type: File
+  type: File?
   inputBinding:
     prefix: -subset
 - id: in_namespace
   doc: only terms in this namespace
-  type: string
+  type: string?
   inputBinding:
     prefix: -namespace
 - id: in_filter_code
@@ -26,7 +26,7 @@ inputs:
     You should have an understanding of the go-perl object model before\nusing this\
     \ option\nExample:\ngo-filter-subset -filter_code 'sub {shift->namespace eq 'molecular_function'}'\
     \ go.obo\n(the same things can be achieved with the -namespace option)"
-  type: string
+  type: string?
   inputBinding:
     prefix: -filter_code
 - id: in_partial
@@ -34,7 +34,7 @@ inputs:
     \ is set to the next recursive parent node in the\nfilter\nFor example, with the\
     \ -subset option: if X and Y belong to the\nsubset, and Z does not, and X is_a\
     \ Z is_a Y, then the exported graph\nwithh have X is_a Y"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -partial
 - id: in_use_cache
@@ -45,18 +45,14 @@ inputs:
     \ time you parse the file, this program will automatically\ncheck for the existence\
     \ of the \".cache\" file. If it exists, and is\nmore recent than the file you\
     \ specified, this is parsed instead. If\nit does not exist, it is rebuilt."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -use_cache
-- id: in_documentation
-  doc: <http://www.godatabase.org/dev>
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - go-filter-subset.pl

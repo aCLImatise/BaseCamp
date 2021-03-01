@@ -10,11 +10,11 @@ task Picoporerename {
     Boolean? no_skip_root
     Int? print_every
     Boolean? v
-    String list_directories_shrink
+    String list_directories_files
   }
   command <<<
     picopore_rename \
-      ~{list_directories_shrink} \
+      ~{list_directories_files} \
       ~{if defined(pattern) then ("--pattern " +  '"' + pattern + '"') else ""} \
       ~{if defined(replacement) then ("--replacement " +  '"' + replacement + '"') else ""} \
       ~{if (skip_confirm_step) then "-y" else ""} \
@@ -24,6 +24,9 @@ task Picoporerename {
       ~{if defined(print_every) then ("--print-every " +  '"' + print_every + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pattern: "String or regex to replace"
     replacement: "String or regex replacement for PATTERN"
@@ -33,7 +36,7 @@ task Picoporerename {
     no_skip_root: "ignore files in root input directories for albacore\\nrealtime compression (Default: --no-skip-root)"
     print_every: "print a dot every approximately INT files, or -1 to\\nsilence (Default: 100)\\n"
     v: ""
-    list_directories_shrink: "list of directories or fast5 files to shrink"
+    list_directories_files: "list of directories or fast5 files to shrink"
   }
   output {
     File out_stdout = stdout()

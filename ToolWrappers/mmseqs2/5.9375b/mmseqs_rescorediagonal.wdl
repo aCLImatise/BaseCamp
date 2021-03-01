@@ -28,6 +28,9 @@ task MmseqsRescorediagonal {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_self_matches: "false           artificially add entries of queries with themselves (for clustering)"
     list_matches_evalue: "0.001           list matches below this E-value [0.0, inf]"

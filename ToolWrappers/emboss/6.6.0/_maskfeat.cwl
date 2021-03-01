@@ -9,7 +9,7 @@ inputs:
     \ for\na list of the Swissprot feature types.\nThe type may be wildcarded by using\
     \ '*'.\nIf you wish to mask more than one type,\nseparate their names with spaces\
     \ or commas,\neg:\n*UTR repeat* (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -type
 - id: in_to_lower
@@ -18,13 +18,14 @@ inputs:
     \ masked region. The\nsequence is unchanged apart from the case\nchange. You might\
     \ like to ensure that the\nwhole sequence is in upper-case before\nmasking the\
     \ specified regions to lower-case\nby using the '-supper' flag."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -tolower
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _maskfeat

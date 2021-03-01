@@ -13,7 +13,7 @@ task OverlapImport {
     Boolean? obt
     Boolean? utg
     String? random
-    String? read_ids_will
+    String? read_ids_be
     String? b_read_ids
     File ascii_ovl_file_input_dot
   }
@@ -31,9 +31,12 @@ task OverlapImport {
       ~{if (obt) then "-obt" else ""} \
       ~{if (utg) then "-utg" else ""} \
       ~{if defined(random) then ("-random " +  '"' + random + '"') else ""} \
-      ~{if defined(read_ids_will) then ("-a " +  '"' + read_ids_will + '"') else ""} \
+      ~{if defined(read_ids_be) then ("-a " +  '"' + read_ids_be + '"') else ""} \
       ~{if defined(b_read_ids) then ("-b " +  '"' + b_read_ids + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_valid_sequence: "path to valid sequence store"
     output_file_name: "output file name"
@@ -46,7 +49,7 @@ task OverlapImport {
     obt: "corrected reads"
     utg: "trimmed reads"
     random: "create N random overlaps, for store testing"
-    read_ids_will: "A read IDs will be between x and y"
+    read_ids_be: "A read IDs will be between x and y"
     b_read_ids: "B read IDs will be between x and y"
     ascii_ovl_file_input_dot: ""
   }

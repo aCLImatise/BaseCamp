@@ -10,6 +10,9 @@ task NhmmscanHmmdb {
       ~{seq_file} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
     seq_file: ""

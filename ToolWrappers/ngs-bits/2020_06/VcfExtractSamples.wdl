@@ -16,6 +16,9 @@ task VcfExtractSamples {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     samples: "Comma-separated list of samples to extract (in the given order)."
     in: "Input VCF file. If unset, reads from STDIN.\\nDefault value: ''"

@@ -68,6 +68,9 @@ task Sina {
       ~{if defined(lca_fields) then ("--lca-fields " +  '"' + lca_fields + '"') else ""} \
       ~{if defined(lca_quorum) then ("--lca-quorum " +  '"' + lca_quorum + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     show_full_help: "[ --help-all ]        show full help (long)"
     arg_input_file: "[ --in ] arg (=\\\"-\\\")   input file (arb or fasta)"

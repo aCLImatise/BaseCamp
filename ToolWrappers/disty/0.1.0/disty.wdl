@@ -16,6 +16,9 @@ task Disty {
       ~{if (int_strategy_deal) then "-s" else ""} \
       ~{if (print_version_exit) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     float_skip_columns: "FLOAT  skip columns having frequency of N > FLOAT [1.00]"
     int_input_format: "INT    input format [0]\\n0: ACGT\\n1: 01"

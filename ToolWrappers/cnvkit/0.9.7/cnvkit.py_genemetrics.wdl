@@ -48,6 +48,9 @@ task CnvkitpyGenemetrics {
       ~{if defined(alpha) then ("--alpha " +  '"' + alpha + '"') else ""} \
       ~{if defined(bootstrap) then ("--bootstrap " +  '"' + bootstrap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     segment: "Segmentation calls (.cns), the output of the 'segment'\\ncommand)."
     threshold: "Copy number change threshold to report a gene\\ngain/loss. [Default: 0.2]"

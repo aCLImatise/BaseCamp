@@ -3,27 +3,27 @@ id: virmet_fetch.cwl
 inputs:
 - id: in_viral
   doc: viral [nucleic acids/proteins]
-  type: string
+  type: string?
   inputBinding:
     prefix: --viral
 - id: in_human
   doc: human
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --human
 - id: in_bact
   doc: bacterial (RefSeq)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bact
 - id: in_fungal
   doc: fungal (RefSeq)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fungal
 - id: in_bovine
   doc: bovine (Bos taurus)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bovine
 - id: in_vir_met
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - virmet

@@ -48,9 +48,12 @@ task KssdDist {
       ~{if defined(quality) then ("--quality " +  '"' + quality + '"') else ""} \
       ~{if defined(reference_dir) then ("--reference_dir " +  '"' + reference_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     by_read: "sketch the file by read[false]."
-    correction: "perform correction for shared k-mer counts or not\\n.[0]"
+    correction: "/1       perform correction for shared k-mer counts or not\\n.[0]"
     mut_dist_max: "max mutation allowed for distance output.[1]"
     skf: "share_kmer_ct file path."
     half_km_er_length: "set half Kmer length: 2-15 [8]"
@@ -59,11 +62,11 @@ task KssdDist {
     list: "a file contain paths for all query sequences"
     dim_rdc_level: "Dimension Reduction Level or provide .shuf\\nfile[2]"
     max_memory: "maximal memory (in G) usage allowed"
-    metric: "output metrics: 0: Jaccard/1: Containment [0]"
+    metric: "/1           output metrics: 0: Jaccard/1: Containment [0]"
     lst_k_mero_crs: "Specify the Least Kmer occurence in fastq file"
     neighbor_n_max: "max number of nearest reference genomes.[1]"
     outdir: "folder path for results files."
-    out_fields: "output fields(latter includes former):\\nDistance/Q-values/Confidence Intervels.[2]"
+    out_fields: "/1/2      output fields(latter includes former):\\nDistance/Q-values/Confidence Intervels.[2]"
     thread_n: "set threads number [all threads]"
     pipe_cmd: "pipe command."
     quality: "Filter Kmer with lowest base quality < q (Phred)"

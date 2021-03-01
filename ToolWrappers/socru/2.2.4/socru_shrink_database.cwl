@@ -3,17 +3,17 @@ id: socru_shrink_database.cwl
 inputs:
 - id: in_min_fragment_size
   doc: 'Minimum fragment size in bases (default: 100000)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_fragment_size
 - id: in_debug
   doc: 'Turn on debugging (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_verbose
   doc: 'Turn on verbose output (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_blast_results
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - socru_shrink_database

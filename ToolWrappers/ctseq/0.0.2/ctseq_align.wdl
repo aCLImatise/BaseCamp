@@ -20,6 +20,9 @@ task CtseqAlign {
       ~{if defined(bismark_cores) then ("--bismarkCores " +  '"' + bismark_cores + '"') else ""} \
       ~{if defined(reads_per_file) then ("--readsPerFile " +  '"' + reads_per_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_dir: "Full path to directory where you have already built\\nyour methylation reference files. If no '--refDir' is\\nspecified, ctseq will look in your current directory."
     dir: "Path to directory where you have your fastq files. If\\nno '--dir' is specified, ctseq will look in your\\ncurrent directory."

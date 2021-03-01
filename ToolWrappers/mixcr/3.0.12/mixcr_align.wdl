@@ -9,8 +9,8 @@ task MixcrAlign {
     File? species
     File? report
     File? json_report
-    String? library
-    String? trimming_quality_threshold
+    String? vdjc_gene_library
+    String? read_preprocessing_trimming_threshold
     Int? trimming_window_size
     String? parameters
     Boolean? stringstring_overrides_default
@@ -19,11 +19,21 @@ task MixcrAlign {
     Int? not_aligned_r_two
     Int? limit
     String? threads
-    String files
+    String scr
+    String align
+    Int? failed_read_sr_one
+    String? var_20
+    String? var_21
+    String? report_file
   }
   command <<<
     mixcr align \
-      ~{files} \
+      ~{scr} \
+      ~{align} \
+      ~{failed_read_sr_one} \
+      ~{var_20} \
+      ~{var_21} \
+      ~{report_file} \
       ~{if (no_warnings) then "--no-warnings" else ""} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (force_overwrite) then "--force-overwrite" else ""} \
@@ -31,8 +41,8 @@ task MixcrAlign {
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""} \
       ~{if defined(report) then ("--report " +  '"' + report + '"') else ""} \
       ~{if defined(json_report) then ("--json-report " +  '"' + json_report + '"') else ""} \
-      ~{if defined(library) then ("--library " +  '"' + library + '"') else ""} \
-      ~{if defined(trimming_quality_threshold) then ("--trimming-quality-threshold " +  '"' + trimming_quality_threshold + '"') else ""} \
+      ~{if defined(vdjc_gene_library) then ("--library " +  '"' + vdjc_gene_library + '"') else ""} \
+      ~{if defined(read_preprocessing_trimming_threshold) then ("--trimming-quality-threshold " +  '"' + read_preprocessing_trimming_threshold + '"') else ""} \
       ~{if defined(trimming_window_size) then ("--trimming-window-size " +  '"' + trimming_window_size + '"') else ""} \
       ~{if defined(parameters) then ("--parameters " +  '"' + parameters + '"') else ""} \
       ~{if (stringstring_overrides_default) then "-O" else ""} \
@@ -42,6 +52,9 @@ task MixcrAlign {
       ~{if defined(limit) then ("--limit " +  '"' + limit + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_warnings: "Suppress all warning messages."
     verbose: "Verbose warning messages."
@@ -50,8 +63,8 @@ task MixcrAlign {
     species: "Species (organism), as specified in library file or taxon id.\\nPossible values: hs, HomoSapiens, musmusculus, mmu, hsa, 9606, 10090 etc."
     report: "Report file (human readable version, see -j / --json-report for machine\\nreadable report)"
     json_report: "JSON formatted report file"
-    library: "V/D/J/C gene library"
-    trimming_quality_threshold: "Read pre-processing: trimming quality threshold"
+    vdjc_gene_library: "V/D/J/C gene library"
+    read_preprocessing_trimming_threshold: "Read pre-processing: trimming quality threshold"
     trimming_window_size: "Read pre-processing: trimming window size"
     parameters: "Parameters preset."
     stringstring_overrides_default: "<String=String>       Overrides default aligner parameter values"
@@ -60,7 +73,12 @@ task MixcrAlign {
     not_aligned_r_two: "Pipe not aligned R2 reads into separate file."
     limit: "Maximal number of reads to process"
     threads: "Processing threads"
-    files: "file_R1.(fastq[.gz]|fasta) [file_R2.fastq[.gz]] alignments.vdjca"
+    scr: ""
+    align: ""
+    failed_read_sr_one: ""
+    var_20: ""
+    var_21: ""
+    report_file: ""
   }
   output {
     File out_stdout = stdout()

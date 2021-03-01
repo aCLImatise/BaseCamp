@@ -14,13 +14,13 @@ task Starseqrpy {
     Boolean? keep_gene_dups
     Boolean? keep_mi_to
     Boolean? verbose
-    Int? fast_q_one
-    Int? fast_q_two
     File? star_index
     String? mode
     File? star_j_xns
     File? star_sam
     File? star_bam
+    Int? two
+    Int? one
   }
   command <<<
     starseqr_py \
@@ -36,14 +36,17 @@ task Starseqrpy {
       ~{if (keep_gene_dups) then "--keep_gene_dups" else ""} \
       ~{if (keep_mi_to) then "--keep_mito" else ""} \
       ~{if (verbose) then "--verbose" else ""} \
-      ~{if defined(fast_q_one) then ("--fastq1 " +  '"' + fast_q_one + '"') else ""} \
-      ~{if defined(fast_q_two) then ("--fastq2 " +  '"' + fast_q_two + '"') else ""} \
       ~{if defined(star_index) then ("--star_index " +  '"' + star_index + '"') else ""} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
       ~{if defined(star_j_xns) then ("--star_jxns " +  '"' + star_j_xns + '"') else ""} \
       ~{if defined(star_sam) then ("--star_sam " +  '"' + star_sam + '"') else ""} \
-      ~{if defined(star_bam) then ("--star_bam " +  '"' + star_bam + '"') else ""}
+      ~{if defined(star_bam) then ("--star_bam " +  '"' + star_bam + '"') else ""} \
+      ~{if defined(two) then ("-2 " +  '"' + two + '"') else ""} \
+      ~{if defined(one) then ("-1 " +  '"' + one + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "prefix to name files. Can be string or /path/to/string"
     fast_a: "indexed fasta (.fa)"
@@ -57,13 +60,13 @@ task Starseqrpy {
     keep_gene_dups: "allow internal gene duplications to be considered"
     keep_mi_to: "allow RNA fusions to contain at least one breakpoint\\nfrom Mitochondria"
     verbose: "verbose level... repeat up to three times."
-    fast_q_one: "fastq.gz 1(.gz)"
-    fast_q_two: "fastq.gz 2(.gz)"
     star_index: "path to STAR index folder"
     mode: "STAR alignment mode. 0=More-specific, 1=More-Sensitive"
     star_j_xns: "chimeric junctions file produced by STAR"
     star_sam: "Chimeric.out.sam file produced by STAR. Either use\\nthis or -sb"
     star_bam: "Aligned.sortedByCoord.out.bam file produced by STAR.\\nMust contain chimeric reads with ch tag.\\n"
+    two: ""
+    one: ""
   }
   output {
     File out_stdout = stdout()

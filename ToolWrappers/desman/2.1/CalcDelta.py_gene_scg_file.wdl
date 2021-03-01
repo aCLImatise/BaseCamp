@@ -14,6 +14,9 @@ task CalcDeltapyGeneScgFile {
       ~{gene_scg_file} \
       ~{output_stub}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     calc_delta_do_tpy: ""
     gene_cov_file: ""

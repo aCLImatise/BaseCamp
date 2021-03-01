@@ -3,17 +3,17 @@ id: ofstd_tests.cwl
 inputs:
 - id: in_list
   doc: list available tests and exit
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --list
 - id: in_exhaustive
   doc: also run extensive and slow tests
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --exhaustive
 - id: in_verbose
   doc: verbose mode, print processing details
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_tests_to_run
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ofstd_tests

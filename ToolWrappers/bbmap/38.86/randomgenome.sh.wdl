@@ -8,6 +8,9 @@ task Randomgenomesh {
     randomgenome_sh \
       ~{len}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     len: ""
   }

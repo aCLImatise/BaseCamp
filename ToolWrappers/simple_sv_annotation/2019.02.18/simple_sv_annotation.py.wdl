@@ -16,6 +16,9 @@ task SimpleSvAnnotationpy {
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""} \
       ~{if defined(exon_nums) then ("--exonNums " +  '"' + exon_nums + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene_list: "File with names of genes (one per line) for\\nprioritisation"
     known_fusion_pairs: "File with known fusion gene pairs, one pair per line\\ndelimited by comma"

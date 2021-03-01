@@ -8,6 +8,9 @@ task BedparseCdsBedfile {
     bedparse cds bedfile \
       ~{if (ignore_cds_only) then "--ignoreCDSonly" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_cds_only: ""
   }

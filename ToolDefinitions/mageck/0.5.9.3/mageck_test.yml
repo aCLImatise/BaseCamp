@@ -5,134 +5,137 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Provide a tab-separated count table instead of sam\nfiles. Each line\
-    \ in the table should include sgRNA\nname (1st column), gene name (2nd column)\
-    \ and read\ncounts in each sample."
+  optional: true
   synonyms:
   - -k
   - --count-table
+  description: "Provide a tab-separated count table instead of sam\nfiles. Each line\
+    \ in the table should include sgRNA\nname (1st column), gene name (2nd column)\
+    \ and read\ncounts in each sample."
   args: !SimpleFlagArg
     name: COUNT_TABLE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --treatment-id
   description: "Sample label or sample index (0 as the first sample)\nin the count\
     \ table as treatment experiments, separated\nby comma (,). If sample label is\
     \ provided, the labels\nmust match the labels in the first line of the count\n\
     table; for example, \"HL60.final,KBM7.final\". For\nsample index, \"0,2\" means\
     \ the 1st and 3rd samples are\ntreatment experiments."
-  synonyms:
-  - -t
-  - --treatment-id
   args: !SimpleFlagArg
     name: TREATMENT_ID
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --day0-label
   description: "Specify the label for control sample (usually day 0 or\nplasmid).\
     \ For every other sample label, the module\nwill treat it as a treatment condition\
     \ and compare\nwith control sample."
-  synonyms:
-  - --day0-label
   args: !SimpleFlagArg
     name: DAY0_LABEL
-  optional: true
 - !Flag
-  description: "Sample label or sample index in the count table as\ncontrol experiments,\
-    \ separated by comma (,). Default\nis all the samples not specified in treatment\n\
-    experiments."
+  optional: true
   synonyms:
   - -c
   - --control-id
+  description: "Sample label or sample index in the count table as\ncontrol experiments,\
+    \ separated by comma (,). Default\nis all the samples not specified in treatment\n\
+    experiments."
   args: !SimpleFlagArg
     name: CONTROL_ID
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --paired
   description: "Paired sample comparisons. In this mode, the number of\nsamples in\
     \ -t and -c must match and have an exactly\nthe same order in terms of samples.\
     \ For example, \"-t\ntreatment_r1,treatment_r2 -c control_r1,control_r2\"."
-  synonyms:
-  - --paired
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --norm-method
   description: "Method for normalization, including \"none\" (no\nnormalization),\
     \ \"median\" (median normalization,\ndefault), \"total\" (normalization by total\
     \ read\ncounts), \"control\" (normalization by control sgRNAs\nspecified by the\
     \ --control-sgrna option)."
-  synonyms:
-  - --norm-method
   args: !ChoiceFlagArg
     choices: !!set
       median:
-      total:
       none:
       control:
-  optional: true
+      total:
 - !Flag
-  description: "p value threshold to determine the alpha value of RRA\nin gene test\
-    \ (-p option in RRA), default 0.25."
+  optional: true
   synonyms:
   - --gene-test-fdr-threshold
+  description: "p value threshold to determine the alpha value of RRA\nin gene test\
+    \ (-p option in RRA), default 0.25."
   args: !SimpleFlagArg
     name: GENE_TEST_FDR_THRESHOLD
-  optional: true
 - !Flag
-  description: "Method for sgrna-level p-value adjustment, including\nfalse discovery\
-    \ rate (fdr), holm's method (holm), or\npounds's method (pounds)."
+  optional: true
   synonyms:
   - --adjust-method
+  description: "Method for sgrna-level p-value adjustment, including\nfalse discovery\
+    \ rate (fdr), holm's method (holm), or\npounds's method (pounds)."
   args: !ChoiceFlagArg
     choices: !!set
+      holm:
       pounds:
       fdr:
-      holm:
-  optional: true
 - !Flag
-  description: "Sample label or sample index for estimating variances,\nseparated\
-    \ by comma (,). See -t/--treatment-id option\nfor specifying samples."
+  optional: true
   synonyms:
   - --variance-estimation-samples
+  description: "Sample label or sample index for estimating variances,\nseparated\
+    \ by comma (,). See -t/--treatment-id option\nfor specifying samples."
   args: !SimpleFlagArg
     name: VARIANCE_ESTIMATION_SAMPLES
-  optional: true
 - !Flag
-  description: "Sorting criteria, either by negative selection (neg)\nor positive\
-    \ selection (pos). Default negative\nselection."
+  optional: true
   synonyms:
   - --sort-criteria
+  description: "Sorting criteria, either by negative selection (neg)\nor positive\
+    \ selection (pos). Default negative\nselection."
   args: !ChoiceFlagArg
     choices: !!set
-      pos:
       neg:
-  optional: true
+      pos:
 - !Flag
+  optional: true
+  synonyms:
+  - --remove-zero
   description: "Remove sgRNAs whose mean value is zero in control,\ntreatment, both\
     \ control/treatment, or any\ncontrol/treatment sample. Default: both (remove those\n\
     sgRNAs that are zero in both control and treatment\nsamples)."
-  synonyms:
-  - --remove-zero
   args: !ChoiceFlagArg
     choices: !!set
       any:
-      treatment:
+      both:
       none:
       control:
-      both:
-  optional: true
+      treatment:
 - !Flag
-  description: "sgRNA normalized count threshold to be considered\nremoved in the\
-    \ --remove-zero option. Default 0."
+  optional: true
   synonyms:
   - --remove-zero-threshold
+  description: "sgRNA normalized count threshold to be considered\nremoved in the\
+    \ --remove-zero option. Default 0."
   args: !SimpleFlagArg
     name: REMOVE_ZERO_THRESHOLD
-  optional: true
 - !Flag
-  description: Generate pdf report of the analysis.
+  optional: true
   synonyms:
   - --pdf-report
+  description: Generate pdf report of the analysis.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gene-lfc-method
   description: "Method to calculate gene log fold changes (LFC) from\nsgRNA LFCs.\
     \ Available methods include the median/mean\nof all sgRNAs (median/mean), or the\
     \ median/mean sgRNAs\nthat are ranked in front of the alpha cutoff in RRA\n(alphamedian/alphamean),\
@@ -140,101 +143,98 @@ named:
     \ case, the number of sgRNAs\ncorrespond to the \"goodsgrna\" column in the output,\n\
     and the gene LFC will be set to 0 if no sgRNA is in\nfront of the alpha cutoff.\
     \ Default median."
-  synonyms:
-  - --gene-lfc-method
   args: !ChoiceFlagArg
     choices: !!set
-      alphamean:
-      median:
-      secondbest:
       alphamedian:
+      secondbest:
       mean:
-  optional: true
+      median:
+      alphamean:
 - !Flag
-  description: The prefix of the output file(s). Default sample1.
+  optional: true
   synonyms:
   - -n
   - --output-prefix
+  description: The prefix of the output file(s). Default sample1.
   args: !SimpleFlagArg
     name: OUTPUT_PREFIX
-  optional: true
 - !Flag
-  description: "A list of control sgRNAs for normalization and for\ngenerating the\
-    \ null distribution of RRA."
+  optional: true
   synonyms:
   - --control-sgrna
+  description: "A list of control sgRNAs for normalization and for\ngenerating the\
+    \ null distribution of RRA."
   args: !SimpleFlagArg
     name: CONTROL_SGRNA
-  optional: true
 - !Flag
-  description: "A list of genes whose sgRNAs are used as control\nsgRNAs for normalization\
-    \ and for generating the null\ndistribution of RRA."
+  optional: true
   synonyms:
   - --control-gene
+  description: "A list of genes whose sgRNAs are used as control\nsgRNAs for normalization\
+    \ and for generating the null\ndistribution of RRA."
   args: !SimpleFlagArg
     name: CONTROL_GENE
-  optional: true
 - !Flag
-  description: "Write normalized read counts to file ([output-\nprefix].normalized.txt)."
+  optional: true
   synonyms:
   - --normcounts-to-file
+  description: "Write normalized read counts to file ([output-\nprefix].normalized.txt)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Skip genes in the report. By default, \"NA\" or \"na\"\nwill be skipped."
+  optional: true
   synonyms:
   - --skip-gene
+  description: "Skip genes in the report. By default, \"NA\" or \"na\"\nwill be skipped."
   args: !SimpleFlagArg
     name: SKIP_GENE
-  optional: true
 - !Flag
-  description: Keep intermediate files.
+  optional: true
   synonyms:
   - --keep-tmp
+  description: Keep intermediate files.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Additional arguments to run RRA. They will be appended\nto the command\
-    \ line for calling RRA."
+  optional: true
   synonyms:
   - --additional-rra-parameters
+  description: "Additional arguments to run RRA. They will be appended\nto the command\
+    \ line for calling RRA."
   args: !SimpleFlagArg
     name: ADDITIONAL_RRA_PARAMETERS
-  optional: true
 - !Flag
-  description: "A matrix of copy number variation data across cell\nlines to normalize\
-    \ CNV-biased sgRNA scores prior to\ngene ranking."
+  optional: true
   synonyms:
   - --cnv-norm
+  description: "A matrix of copy number variation data across cell\nlines to normalize\
+    \ CNV-biased sgRNA scores prior to\ngene ranking."
   args: !SimpleFlagArg
     name: CNV_NORM
-  optional: true
 - !Flag
-  description: "The name of the cell line to be used for copy number\nvariation normalization."
+  optional: true
   synonyms:
   - --cell-line
+  description: "The name of the cell line to be used for copy number\nvariation normalization."
   args: !SimpleFlagArg
     name: CELL_LINE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cnv-est
   description: "Estimate CNV profiles from screening data. A BED file\nwith gene positions\
     \ are required as input. The CNVs of\nthese genes are to be estimated and used\
     \ for copy\nnumber bias correction.\n"
-  synonyms:
-  - --cnv-est
   args: !SimpleFlagArg
     name: CNV_EST
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: mageck test [-h] -k COUNT_TABLE\n                   (-t TREATMENT_ID\
@@ -332,3 +332,4 @@ help_text: "usage: mageck test [-h] -k COUNT_TABLE\n                   (-t TREAT
   \ are to be estimated and used for copy\n                        number bias correction.\n"
 generated_using:
 - --help
+docker_image:

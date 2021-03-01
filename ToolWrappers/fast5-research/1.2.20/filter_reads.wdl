@@ -4,6 +4,9 @@ task FilterReads {
   command <<<
     filter_reads
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

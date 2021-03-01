@@ -4,6 +4,9 @@ task Pedump {
   command <<<
     pedump
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -4,12 +4,12 @@ inputs:
 - id: in_all_constraints
   doc: "add all constraints to the optimization problem, not\njust those with mixed\
     \ signs."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --all_constraints
 - id: in_method
   doc: "Method for consensus clustering\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --method
 - id: in_positional_arguments
@@ -42,6 +42,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - PATHOGIST

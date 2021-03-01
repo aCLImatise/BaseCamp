@@ -10,6 +10,9 @@ task CruxExtractrows {
       ~{tsv_file} \
       ~{column_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tsv_file: ""
     column_name: ""

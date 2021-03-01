@@ -26,6 +26,9 @@ task PairtoolsSort {
       ~{if defined(cmd_in) then ("--cmd-in " +  '"' + cmd_in + '"') else ""} \
       ~{if defined(cmd_out) then ("--cmd-out " +  '"' + cmd_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_pairs_file: "output pairs file. If the path ends with .gz or\\n.lz4, the output is compressed by pbgzip or lz4,\\ncorrespondingly. By default, the output is printed\\ninto stdout."
     nproc: "Number of processes to split the sorting work"

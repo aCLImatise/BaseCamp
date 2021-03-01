@@ -14,6 +14,9 @@ task CompareFlagspy {
       ~{if defined(flag_one) then ("--flag1 " +  '"' + flag_one + '"') else ""} \
       ~{if defined(flag_two) then ("--flag2 " +  '"' + flag_two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dataset_wide: "Input dataset in wide format."
     output_file_cross: "Output file (Cross tab format)."

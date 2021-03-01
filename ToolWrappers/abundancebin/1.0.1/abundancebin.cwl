@@ -3,13 +3,14 @@ id: abundancebin.cwl
 inputs:
 - id: in_bin_num
   doc: (bin number)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bin_num
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - abundancebin

@@ -8,6 +8,9 @@ task Hisat2ExtractExonspyGtfFile {
     hisat2_extract_exons_py gtf_file \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
   }

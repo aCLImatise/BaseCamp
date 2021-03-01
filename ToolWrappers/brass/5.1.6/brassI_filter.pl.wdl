@@ -72,6 +72,9 @@ task BrassIFilterpl {
       ~{if (blat) then "-blat" else ""} \
       ~{if (min_identity) then "-minIdentity" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: ": Name of the input brassI marked groups file"
     outfile: ": Name of the output file (bedpe filename extension will be appended if not supplied)"

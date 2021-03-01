@@ -3,7 +3,7 @@ id: deepMedicRun.cwl
 inputs:
 - id: in_new_model
   doc: Create a new CNN model with model parameters at given config file [MODEL_CONF].
-  type: File
+  type: File?
   inputBinding:
     prefix: -newModel
 - id: in_train
@@ -11,7 +11,7 @@ inputs:
     This option can follow a [-newModel MODEL_CONF] option, to create a new model\
     \ and start training it immediately.\nOtherwise, existing model can be specified\
     \ in the training-config file or by the additional option [-model]."
-  type: File
+  type: File?
   inputBinding:
     prefix: -train
 - id: in_test
@@ -19,7 +19,7 @@ inputs:
     \ given in config file [TESTING_CONF].\nExisting model can be specified in the\
     \ given training-config file or by the additional option [-model].\nThis option\
     \ cannot be used in combination with [-newModel] or [-train]."
-  type: File
+  type: File?
   inputBinding:
     prefix: -test
 - id: in_model
@@ -27,7 +27,7 @@ inputs:
     \ can follow a [-train] or [-test] option. Not in combination with a [-newModel].\n\
     If given, this option will override any \"model\" parameters given in the train\
     \ or testing configuration file."
-  type: File
+  type: File?
   inputBinding:
     prefix: -model
 - id: in_dev
@@ -38,7 +38,7 @@ inputs:
     \ documentation.NOTE#2: If you get problems using the GPU with [cpu cuda], try\
     \ using the old Theano backend with [cpu cuda] or disaable cuDNN. See docs Sec\
     \ 1.3 and 2.2."
-  type: long
+  type: long?
   inputBinding:
     prefix: -dev
 - id: in_pre_trained
@@ -47,7 +47,7 @@ inputs:
     \ /path/to/model/config -pretrained /path/to/pretrained/model\nNOTE: By default,\
     \ parameters are transfered to all layers except the classification layer. Use\
     \ option [-layers] to manually specify layers to pretrain."
-  type: File
+  type: File?
   inputBinding:
     prefix: -pretrained
 - id: in_layers
@@ -67,7 +67,7 @@ inputs:
     \ parameters are NOT reinitialized!\nUseful to begin a secondary training session\
     \ with new learning-rate schedule, in order to fine-tune a previously trained\
     \ model (Doc., Sec. 3.2)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -resetOptimizer
 - id: in_konstantinos_dot_kamnitsasonetwoaticdotac_dot_uk
@@ -79,6 +79,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - deepMedicRun

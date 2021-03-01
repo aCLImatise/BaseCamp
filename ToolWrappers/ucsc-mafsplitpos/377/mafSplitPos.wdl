@@ -16,6 +16,9 @@ task MafSplitPos {
       ~{if defined(min_gap) then ("-minGap " +  '"' + min_gap + '"') else ""} \
       ~{if defined(min_repeat) then ("-minRepeat " +  '"' + min_repeat + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chrom: "Restrict to one chromosome"
     min_gap: "Split only on gaps >N bp, defaults to 100, specify -1 to disable"

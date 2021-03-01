@@ -8,6 +8,9 @@ task AugurMeasurements {
     augur measurements_ \
       ~{augur}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     augur: ""
   }

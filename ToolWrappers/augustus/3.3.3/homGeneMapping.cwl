@@ -3,7 +3,7 @@ id: homGeneMapping.cwl
 inputs:
 - id: in_hal_file
   doc: input hal file
-  type: File
+  type: File?
   inputBinding:
     prefix: --halfile
 - id: in_gt_fs
@@ -12,45 +12,45 @@ inputs:
     \  path/to/genefile/of/genome_1  path/to/hintsfile/of/genome_1\nname_of_genome_2\
     \  path/to/genefile/of/genome_2  path/to/hintsfile/of/genome_2\n...\nname_of_genome_N\
     \  path/to/genefile/of/genome_N  path/to/hintsfile/of/genome_N"
-  type: File
+  type: File?
   inputBinding:
     prefix: --gtfs
 - id: in_cpus
   doc: 'N is the number of CPUs to use (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --cpus
 - id: in_no_dupes
   doc: 'do not map between duplications in hal graph. (default: off)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noDupes
 - id: in_details
   doc: 'print detailed output (default: off)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --details
 - id: in_hal_lift_over_exec_dir
   doc: "Directory that contains the executable halLiftover\nIf not specified it must\
     \ be in $PATH environment variable."
-  type: File
+  type: File?
   inputBinding:
     prefix: --halLiftover_exec_dir
 - id: in_unmapped
   doc: "print a GTF attribute with a list of all genomes, that are not aligned to\
     \ the\ncorresponding gene feature, e.g. hgm_unmapped \"1,4,5\"; (default; off)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --unmapped
 - id: in_tmpdir
   doc: a temporary file directory that stores lifted over files. (default 'tmp/' in
     current directory)
-  type: File
+  type: File?
   inputBinding:
     prefix: --tmpdir
 - id: in_outdir
   doc: 'file directory that stores output gene files. (default: current directory)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_print_homologs
@@ -60,7 +60,7 @@ inputs:
     \ (3,jg89.t1) (5,jg290.t1)\n...\nTwo transcripts are in the same set, if all their\
     \ exons/introns are homologs and their are\nno additional exons/introns.\nThis\
     \ option requires the Boost C++ Library"
-  type: File
+  type: File?
   inputBinding:
     prefix: --printHomologs
 - id: in_dbaccess
@@ -70,7 +70,7 @@ inputs:
     \ Augustus package. If both a database and hint files in 'gtffilenames.tbl'\n\
     are specified, hints are retrieved from both sources.\nThis option requires the\
     \ SQLite3 library"
-  type: long
+  type: long?
   inputBinding:
     prefix: --dbaccess
 outputs:
@@ -79,9 +79,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: 'file directory that stores output gene files. (default: current directory)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - homGeneMapping

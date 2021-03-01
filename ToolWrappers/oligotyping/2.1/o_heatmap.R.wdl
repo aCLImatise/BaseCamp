@@ -32,6 +32,9 @@ task OheatmapR {
       ~{if defined(scale_the_other_way) then ("--scale_the_other_way " +  '"' + scale_the_other_way + '"') else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metadata: "Metadata file"
     output_file_prefix: "Output file prefix for visualization files [default \\\"unknown\\\"]"

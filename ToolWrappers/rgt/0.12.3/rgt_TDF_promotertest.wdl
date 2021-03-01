@@ -76,6 +76,9 @@ task RgtTDFPromotertest {
       ~{if (rm) then "-rm" else ""} \
       ~{if (par) then "-par" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_name: "Input file name for RNA sequence (in fasta format)"
     rn: "Define the RNA name"

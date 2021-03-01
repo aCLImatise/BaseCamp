@@ -12,6 +12,9 @@ task BiasExplorerpy {
       ~{if defined(report_pdf_biasexplorerpdf) then ("-r " +  '"' + report_pdf_biasexplorerpdf + '"') else ""} \
       ~{if (exclude_transcripts_zero) then "-x" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report_pdf_biasexplorerpdf: "Report PDF (bias_explorer.pdf)."
     exclude_transcripts_zero: "Exclude transcripts with zero counts."

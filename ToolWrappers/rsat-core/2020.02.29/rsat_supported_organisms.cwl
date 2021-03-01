@@ -3,7 +3,7 @@ id: rsat_supported_organisms.cwl
 inputs:
 - id: in_help
   doc: (must be first argument) display options
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -help
 - id: in_format
@@ -12,18 +12,18 @@ inputs:
     tree: a textual representation of the tree, with\nhyphen-based indentation to\
     \ indicate taxon depth.\nhtml_tree: same as tree, but wiht HTML tags (organism\n\
     names in italics, taxon names in bold)."
-  type: string
+  type: string?
   inputBinding:
     prefix: -format
 - id: in_return
   doc: "fields\nsupported: ID,name,taxid,source,last_update,nb,seq_format,up_from,up_to,taxonomy,data,genome,genome_assembly,genome_version,download_date,variant_available,variant_source,path_to_variant_files,blast_available"
-  type: string
+  type: string?
   inputBinding:
     prefix: -return
 - id: in_tax_on
   doc: "Only returns organisms belonging to a selected taxon.\nExample:\nsupported-organisms\
     \ -taxon Enterobacteriaceae"
-  type: string
+  type: string?
   inputBinding:
     prefix: -taxon
 - id: in_group
@@ -38,7 +38,7 @@ inputs:
     \ is converted to Viridiplantae\n- \"Prokaryotes\" is converted to \"Bacteria\
     \ OR Archaea\"\nExample:\nsupported-organisms -taxon Protists\nsupported-organisms\
     \ -taxon Prokaryotes"
-  type: string
+  type: string?
   inputBinding:
     prefix: -group
 - id: in_source
@@ -46,7 +46,7 @@ inputs:
     \ used iteratively to accept\nmultiple sources.\nExample:\nsupported-organisms\
     \ -source ensembl\nsupported-organisms -source ensemblgenomes\nsupported-organisms\
     \ -source ensembl -source ensemblgenomes"
-  type: string
+  type: string?
   inputBinding:
     prefix: -source
 - id: in_depth
@@ -61,7 +61,7 @@ inputs:
     of the taxonomy.\nAlso note that the depth of the taxonomic annotations\nvary\
     \ along branches, so that positive values will give\ndifferent results from negative\
     \ values."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -depth
 - id: in_unique_species
@@ -71,13 +71,13 @@ inputs:
     \ the taxonomic depth in the\ntaxonomic classification, we use a somewhat pedestrial\n\
     criterion to identify species, by considering the\nfirst word of the organism\
     \ name as the genus, and the\nsecond name as the species."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -unique_species
 - id: in_unique_genus
   doc: "Select at most one organism per genus. See option\n-unique_species for the\
     \ details."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -unique_genus
 - id: in_server
@@ -87,7 +87,7 @@ inputs:
     supported on the main RSAT server, before downloading\nthem.\nEx:\nsupported-organisms\
     \ -taxon Fungi -server\nAn alternative server RSAT server can be selected by\n\
     specifying the URL of the Web server.\nsupported-organisms -server http://embnet.ccg.unam.mx/rsa-tools\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: -server
 - id: in_supported_organisms
@@ -109,6 +109,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

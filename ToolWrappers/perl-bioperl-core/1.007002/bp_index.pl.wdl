@@ -16,6 +16,9 @@ task BpIndexpl {
       ~{if defined(type) then ("-type " +  '"' + type + '"') else ""} \
       ~{if (report_index_addition) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fmt: "<format>   - Fasta (default), swiss or EMBL"
     dir: "<dir>      - directory where the index files are found\\n(overrides BIOPERL_INDEX environment variable)"

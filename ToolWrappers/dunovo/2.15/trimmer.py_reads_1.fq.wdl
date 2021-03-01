@@ -16,6 +16,9 @@ task TrimmerpyReads1fq {
       ~{output_one_dot_fq} \
       ~{output_two_dot_fq}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     trimmer_do_tpy: ""
     input_one_dot_fq: ""

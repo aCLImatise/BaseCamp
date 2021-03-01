@@ -8,6 +8,9 @@ task Senergy {
     senergy \
       ~{etot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     etot: "EKtot       EPtot        BOND       ANGLE       DIHED      1-4 NB     1-4 EEL     VDWAALS       EELEC      EHBOND  CONSTRAINT      EAMBER"
   }

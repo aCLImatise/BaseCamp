@@ -5,151 +5,151 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
   description: "Name of the folder where you saved the output from\n\"outrigger index\"\
     \ (default is ./outrigger_output,\nwhich is relative to the directory where you\
     \ called\nthe program)\". You will need this file for the next\nstep, \"outrigger\
     \ psi\""
-  synonyms:
-  - -o
-  - --output
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -j
   description: "[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab [SJ_OUT_TAB [SJ_OUT_TAB\
     \ ...]]\nSJ.out.tab files from STAR aligner output. Not\nrequired if you specify\
     \ \"--compiled-junction-reads\""
-  synonyms:
-  - -j
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Name of the splice junction files to detect novel\nexons and build\
-    \ an index of alternative splicing\nevents from. Not required if you specify SJ.out.tab\n\
-    file with '--sj-out-tab'"
+  optional: true
   synonyms:
   - -c
   - --junction-reads-csv
+  description: "Name of the splice junction files to detect novel\nexons and build\
+    \ an index of alternative splicing\nevents from. Not required if you specify SJ.out.tab\n\
+    file with '--sj-out-tab'"
   args: !SimpleFlagArg
     name: JUNCTION_READS_CSV
-  optional: true
 - !Flag
-  description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nLocation of bam files to use\
-    \ for finding events."
+  optional: true
   synonyms:
   - -b
+  description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nLocation of bam files to use\
+    \ for finding events."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum number of reads per junction for that junction\nto count in\
-    \ creating the index of splicing events\n(default=10)"
+  optional: true
   synonyms:
   - -m
   - --min-reads
+  description: "Minimum number of reads per junction for that junction\nto count in\
+    \ creating the index of splicing events\n(default=10)"
   args: !SimpleFlagArg
     name: MIN_READS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ignore-multimapping
   description: "Applies to STAR SJ.out.tab files only. If this flag is\nused, then\
     \ do not include reads that mapped to\nmultiple locations in the genome, not uniquely\
     \ to a\nlocus, in the read count for a junction. If inputting\n\"bam\" files,\
     \ then this means that reads with a mapping\nquality (MAPQ) of less than 255 are\
     \ considered\n\"multimapped.\" This is the same thing as what the STAR\naligner\
     \ does. By default, this is off, and all reads\nare used."
-  synonyms:
-  - --ignore-multimapping
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Maximum length of an exon detected *de novo* from the\ndataset. This\
-    \ is to prevent multiple kilobase long\nexons from being accidentally created.\
-    \ (default=100)"
+  optional: true
   synonyms:
   - -l
   - --max-de-novo-exon-length
+  description: "Maximum length of an exon detected *de novo* from the\ndataset. This\
+    \ is to prevent multiple kilobase long\nexons from being accidentally created.\
+    \ (default=100)"
   args: !SimpleFlagArg
     name: MAX_DE_NOVO_EXON_LENGTH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gtf-filename
   description: "Name of the gtf file you want to use. If a gffutils\nfeature database\
     \ doesn't already exist at this\nlocation plus '.db' (e.g. if your gtf is\ngencode.v19.annotation.gtf,\
     \ then the database is\ninferred to be gencode.v19.annotation.gtf.db), then a\n\
     database will be auto-created. Not required if you\nprovide a pre-built database\
     \ with '--gffutils-db'"
-  synonyms:
-  - -g
-  - --gtf-filename
   args: !SimpleFlagArg
     name: GTF_FILENAME
-  optional: true
 - !Flag
-  description: "Name of the gffutils database file you want to use.\nThe exon IDs\
-    \ defined here will be used in the function\nwhen creating splicing event names.\
-    \ Not required if\nyou provide a gtf file with '--gtf-filename'"
+  optional: true
   synonyms:
   - -d
   - --gffutils-db
+  description: "Name of the gffutils database file you want to use.\nThe exon IDs\
+    \ defined here will be used in the function\nwhen creating splicing event names.\
+    \ Not required if\nyou provide a gtf file with '--gtf-filename'"
   args: !SimpleFlagArg
     name: GFFUTILS_DB
-  optional: true
 - !Flag
-  description: "If given, print debugging logging information to\nstandard out (Warning:\
-    \ LOTS of output. Not recommended\nunless you think something is going wrong)"
+  optional: true
   synonyms:
   - --debug
+  description: "If given, print debugging logging information to\nstandard out (Warning:\
+    \ LOTS of output. Not recommended\nunless you think something is going wrong)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Number of threads to use when parallelizing exon\nfinding and file\
-    \ reading. Default is -1, which means\nto use as many threads as are available."
+  optional: true
   synonyms:
   - --n-jobs
+  description: "Number of threads to use when parallelizing exon\nfinding and file\
+    \ reading. Default is -1, which means\nto use as many threads as are available."
   args: !SimpleFlagArg
     name: N_JOBS
-  optional: true
 - !Flag
-  description: "If set, then use a smaller memory footprint. By\ndefault, this is\
-    \ off."
+  optional: true
   synonyms:
   - --low-memory
+  description: "If set, then use a smaller memory footprint. By\ndefault, this is\
+    \ off."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --splice-types
   description: "Which splice types to find. By default, \"all\" are used\nwhich at\
     \ this point is skipped exon (SE) and mutually\nexclusive exon (MXE) events. Can\
     \ also specify only\none, e.g. \"se\" or both \"se,mxe\""
-  synonyms:
-  - --splice-types
   args: !SimpleFlagArg
     name: SPLICE_TYPES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --force
   description: "If the 'outrigger index' command was interrupted,\nthere will be intermediate\
     \ files remaining. If you\nwish to restart outrigger and overwrite them all, use\n\
     this flag. If you want to continue from where you left\noff, use the '--resume'\
     \ flag. If neither is specified,\nthe program exits and complains to the user."
-  synonyms:
-  - --force
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --resume
   description: "If the 'outrigger index' command was interrupted,\nthere will be intermediate\
     \ files remaining. If you\nwant to continue from where you left off, use this\n\
     flag. The default action is to do nothing and ask the\nuser for input.\n"
-  synonyms:
-  - --resume
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: outrigger index [-h] [-o OUTPUT]\n                       (-j [SJ_OUT_TAB\
@@ -222,3 +222,4 @@ help_text: "usage: outrigger index [-h] [-o OUTPUT]\n                       (-j 
   \                     user for input.\n"
 generated_using:
 - --help
+docker_image:

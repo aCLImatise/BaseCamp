@@ -8,6 +8,9 @@ task EnrichmCompounds {
     enrichm compounds_ \
       ~{enrich_m}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     enrich_m: ""
   }

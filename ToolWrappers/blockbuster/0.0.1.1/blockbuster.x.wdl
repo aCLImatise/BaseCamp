@@ -10,11 +10,11 @@ task Blockbusterx {
     Int? merge
     Int? tag_filter
     Int? print
-    File file
+    File var_file
   }
   command <<<
     blockbuster_x \
-      ~{file} \
+      ~{var_file} \
       ~{if defined(format) then ("-format " +  '"' + format + '"') else ""} \
       ~{if defined(distance) then ("-distance " +  '"' + distance + '"') else ""} \
       ~{if defined(min_cluster_height) then ("-minClusterHeight " +  '"' + min_cluster_height + '"') else ""} \
@@ -24,6 +24,9 @@ task Blockbusterx {
       ~{if defined(tag_filter) then ("-tagFilter " +  '"' + tag_filter + '"') else ""} \
       ~{if defined(print) then ("-print " +  '"' + print + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "file format of input file (default: 1)\\n(1) bed\\n(2) segemehl-output"
     distance: "minimum distance between two clusters (default: 30)"
@@ -33,7 +36,7 @@ task Blockbusterx {
     merge: "merge reads with almost similar means (default: 0)"
     tag_filter: "skip tags with expression smaller than this value (default: 0)"
     print: "print out: (1) blocks (2) reads (default: 1)"
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

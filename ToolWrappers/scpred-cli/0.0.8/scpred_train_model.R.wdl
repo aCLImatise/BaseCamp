@@ -26,6 +26,9 @@ task ScpredTrainModelR {
       ~{if defined(training_results) then ("--training-results " +  '"' + training_results + '"') else ""} \
       ~{if defined(train_probs_plot) then ("--train-probs-plot " +  '"' + train_probs_plot + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object: "Path to the input object of scPred or seurat class in .rds format"
     train_id: "ID of the training dataset (optional)"

@@ -10,6 +10,9 @@ task FastaToMockFastqpyInputFasta {
       ~{fast_a_to_mock_fast_q_do_tpy} \
       ~{if defined(q) then ("-q " +  '"' + q + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     q: ""
     fast_a_to_mock_fast_q_do_tpy: ""

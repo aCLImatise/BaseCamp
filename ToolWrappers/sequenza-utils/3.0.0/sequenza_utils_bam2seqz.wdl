@@ -40,6 +40,9 @@ task SequenzautilsBam2seqz {
       ~{if defined(q_format) then ("--qformat " +  '"' + q_format + '"') else ""} \
       ~{if defined(threshold_filter_positions) then ("-N " +  '"' + threshold_filter_positions + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pile_up: "Use pileups as input files instead of BAMs."
     normal: "Name of the BAM/pileup file from the reference/normal\\nsample"

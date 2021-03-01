@@ -10,6 +10,9 @@ task Metaphlan2kronapy {
       ~{if defined(profile) then ("--profile " +  '"' + profile + '"') else ""} \
       ~{if defined(krona) then ("--krona " +  '"' + krona + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     profile: "The input file is the MetaPhlAn standard result file"
     krona: "the Krons output file name\\n"

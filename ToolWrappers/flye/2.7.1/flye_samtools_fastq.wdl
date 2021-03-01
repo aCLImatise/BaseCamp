@@ -5,8 +5,8 @@ task FlyesamtoolsFastq {
     File? write_reads_designated_readother
     File? write_reads_designated_read_file
     File? write_reads_designated_read_specified
-    Int? only_include_reads_flags
-    Int? only_include_reads_none
+    Int? only_include_reads_flags_present
+    Int? only_include_reads_none_present
     Int? only_exclude_reads
     Boolean? append_read_name
     Boolean? always_append_read
@@ -35,8 +35,8 @@ task FlyesamtoolsFastq {
       ~{if defined(write_reads_designated_readother) then ("-0 " +  '"' + write_reads_designated_readother + '"') else ""} \
       ~{if defined(write_reads_designated_read_file) then ("-1 " +  '"' + write_reads_designated_read_file + '"') else ""} \
       ~{if defined(write_reads_designated_read_specified) then ("-2 " +  '"' + write_reads_designated_read_specified + '"') else ""} \
-      ~{if defined(only_include_reads_flags) then ("-f " +  '"' + only_include_reads_flags + '"') else ""} \
-      ~{if defined(only_include_reads_none) then ("-F " +  '"' + only_include_reads_none + '"') else ""} \
+      ~{if defined(only_include_reads_flags_present) then ("-f " +  '"' + only_include_reads_flags_present + '"') else ""} \
+      ~{if defined(only_include_reads_none_present) then ("-F " +  '"' + only_include_reads_none_present + '"') else ""} \
       ~{if defined(only_exclude_reads) then ("-G " +  '"' + only_exclude_reads + '"') else ""} \
       ~{if (append_read_name) then "-n" else ""} \
       ~{if (always_append_read) then "-N" else ""} \
@@ -56,12 +56,15 @@ task FlyesamtoolsFastq {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     write_reads_designated_readother: "write reads designated READ_OTHER to FILE"
     write_reads_designated_read_file: "write reads designated READ1 to FILE"
     write_reads_designated_read_specified: "write reads designated READ2 to FILE\\nnote: if a singleton file is specified with -s, only\\npaired reads will be written to the -1 and -2 files."
-    only_include_reads_flags: "only include reads with all  of the FLAGs in INT present [0]"
-    only_include_reads_none: "only include reads with none of the FLAGS in INT present [0]"
+    only_include_reads_flags_present: "only include reads with all  of the FLAGs in INT present [0]"
+    only_include_reads_none_present: "only include reads with none of the FLAGS in INT present [0]"
     only_exclude_reads: "only EXCLUDE reads with all  of the FLAGs in INT present [0]"
     append_read_name: "don't append /1 and /2 to the read name"
     always_append_read: "always append /1 and /2 to the read name"

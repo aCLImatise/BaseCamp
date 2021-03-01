@@ -3,27 +3,27 @@ id: falconc_ipa2_construct_config.cwl
 inputs:
 - id: in_help_syntax
   doc: 'advanced: prepend,plurals,..'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --help-syntax
 - id: in__outfn_string
   doc: =, --out-fn=  string  REQUIRED  Output file.
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_out_fmt
   doc: "=      string  \"json\"    Output format of the config file. (json or\nbash)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --out-fmt
 - id: in__infn_string
   doc: =, --in-fn=   string  "-"       set in_fn
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_no_sort
   doc: bool    false     set no_sort
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-sort
 outputs:
@@ -32,14 +32,15 @@ outputs:
   type: stdout
 - id: out__outfn_string
   doc: =, --out-fn=  string  REQUIRED  Output file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in__outfn_string)
 - id: out_out_fmt
   doc: "=      string  \"json\"    Output format of the config file. (json or\nbash)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_fmt)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - falconc

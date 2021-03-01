@@ -2,7 +2,7 @@ version 1.0
 
 task SoftClipsToSplitReads {
   input {
-    Boolean? displays_options_specific
+    Boolean? std_help
     String true_dot
     String aligners
   }
@@ -10,10 +10,13 @@ task SoftClipsToSplitReads {
     SoftClipsToSplitReads \
       ~{true_dot} \
       ~{aligners} \
-      ~{if (displays_options_specific) then "-H" else ""}
+      ~{if (std_help) then "--stdhelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    displays_options_specific: "Displays options specific to this tool AND options common to all Picard command line\\ntools."
+    std_help: "Displays options specific to this tool AND options common to all Picard command line\\ntools."
     true_dot: "Default value: true. This option can be set to 'null' to clear the default value."
     aligners: "Default value: EXTERNAL. This option can be set to 'null' to clear the default"
   }

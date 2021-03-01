@@ -24,6 +24,9 @@ task Breakpointinspector {
       ~{if defined(tumor_slice) then ("-tumor_slice " +  '"' + tumor_slice + '"') else ""} \
       ~{if defined(vcf) then ("-vcf " +  '"' + vcf + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contamination_fraction: "fraction of allowable normal support per\\ntumor support read"
     output_vcf: "VCF output file (optional)"

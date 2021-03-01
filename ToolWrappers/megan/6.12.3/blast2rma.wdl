@@ -47,14 +47,14 @@ task Blast2rma {
     Boolean? accession_tags
     Boolean? verbose
     String i__gzipped
-    String _output_files
+    String o__output
     String _paired_paired
     String parameters
   }
   command <<<
     blast2rma \
       ~{i__gzipped} \
-      ~{_output_files} \
+      ~{o__output} \
       ~{_paired_paired} \
       ~{parameters} \
       ~{if (format) then "--format" else ""} \
@@ -102,6 +102,9 @@ task Blast2rma {
       ~{if (accession_tags) then "--accessionTags" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "[string]                Input file format. Mandatory option. Legal values: Unknown, DAA, BlastText, BlastXML, BlastTab, LastMAF, RapSearch2Aln, IlluminaReporter, RDPAssignmentDetails, RDPStandalone, Mothur, SAM, References_as_FastA"
     blast_mode: "[string]            Blast mode. Default value: Unknown. Legal values: Unknown, BlastN, BlastP, BlastX, Classifier"
@@ -148,7 +151,7 @@ task Blast2rma {
     accession_tags: "[string(s)]   List of accession tags. Default value(s): gb| ref|."
     verbose: "Echo commandline options and be verbose. Default value: false."
     i__gzipped: "-i, --in [string(s)]                 Input BLAST file[s] (gzipped ok). Mandatory option."
-    _output_files: "-o, --out [string(s)]                Output file(s), one for each input file, or a directory. Mandatory option."
+    o__output: "-o, --out [string(s)]                Output file(s), one for each input file, or a directory. Mandatory option."
     _paired_paired: "-p, --paired                         Reads are paired. Default value: false."
     parameters: "-lg, --longReads                     Parse and analyse as long reads. Default value: false."
   }

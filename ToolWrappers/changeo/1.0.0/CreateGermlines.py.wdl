@@ -42,6 +42,9 @@ task CreateGermlinespy {
       ~{if defined(jf) then ("--jf " +  '"' + jf + '"') else ""} \
       ~{if defined(cf) then ("--cf " +  '"' + cf + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_tab_defaultnone: "A list of tab delimited database files. (default:\\nNone)"
     explicit_output_file: "Explicit output file name. Note, this argument cannot\\nbe used with the --failed, --outdir, or --outname\\narguments. If unspecified, then the output filename\\nwill be based on the input filename(s). (default:\\nNone)"

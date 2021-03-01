@@ -34,6 +34,9 @@ task ExecAnnotation {
       ~{if (keep_tabular) then "--keep-tabular" else ""} \
       ~{if (keep_output) then "--keep-output" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_output_result: "File to output the result  [stdout]"
     profile: "Profile HMM database"

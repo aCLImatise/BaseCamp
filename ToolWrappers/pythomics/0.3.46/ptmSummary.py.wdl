@@ -34,6 +34,9 @@ task PtmSummarypy {
       ~{if defined(mods) then ("--mods " +  '"' + mods + '"') else ""} \
       ~{if defined(site_protein) then ("--site-protein " +  '"' + site_protein + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads_to_run: "Threads to run"
     no_log_two: "Do not log2 normalize quantification values."

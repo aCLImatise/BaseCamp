@@ -12,6 +12,9 @@ task SierrapyIN {
       ~{var_command} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sierra_py: ""
     var_command: ""

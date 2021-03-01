@@ -14,6 +14,9 @@ task WbShortcuts {
       ~{if (list_functions) then "-list-functions" else ""} \
       ~{if (all_functions_help) then "-all-functions-help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version: "display version info"
     list_functions: "show available functions"

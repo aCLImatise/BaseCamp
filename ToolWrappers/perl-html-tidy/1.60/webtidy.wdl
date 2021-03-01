@@ -18,6 +18,9 @@ task Webtidy {
       ~{if (no_errors) then "--noerrors" else ""} \
       ~{if (no_warnings) then "--nowarnings" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     context: "[=n]   Show the offending line (and n surrounding lines)"
     no_errors: "Ignore errors"

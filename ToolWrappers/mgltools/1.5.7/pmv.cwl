@@ -3,52 +3,52 @@ id: pmv.cwl
 inputs:
 - id: in_again
   doc: ': play back lastlog file'
-  type: File
+  type: File?
   inputBinding:
     prefix: --again
 - id: in_overwrite_log
   doc: ': overwrite log file'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --overwriteLog
 - id: in_unique_log
   doc: ': create a log file with a unique name'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --uniqueLog
 - id: in_no_log
   doc: ': turn off logging'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noLog
 - id: in_no_gui
   doc: ': start PMV without the Graphical User Interface'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noGUI
 - id: in_no_splash
   doc: ': turn off Splash Screen'
-  type: string
+  type: string?
   inputBinding:
     prefix: --noSplash
 - id: in_die
   doc: ': do not start GUI event loop'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --die
 - id: in_customizer
   doc: ': run the user specified file'
-  type: File
+  type: File?
   inputBinding:
     prefix: --customizer
 - id: in_lib
   doc: ': add a libraries of commands'
-  type: string
+  type: string?
   inputBinding:
     prefix: --lib
 - id: in_ipython
   doc: ': create an ipython shell instead of a python shell'
-  type: string
+  type: string?
   inputBinding:
     prefix: --ipython
 - id: in_update
@@ -56,7 +56,7 @@ inputs:
     \ Manager GUI is provided\n'nightly': download and install Nightly Builds\n'tested'\
     \ : download and install tested Nightly Builds\n'clear'  : clear/uninstall all\
     \ the updates"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --update
 - id: in_d_mode
@@ -66,7 +66,7 @@ inputs:
     'bt'   : backbone trace\n'sp'   : CA-spline\n'sssb' : secondary structure for\
     \ proteins,\nsticks and balls for other residues with bonds\nlines for other residues\
     \ without bonds"
-  type: string
+  type: string?
   inputBinding:
     prefix: --dmode
 - id: in_c_mode
@@ -76,7 +76,7 @@ inputs:
     \ scheme\n'css': color by secondary structure element\nexample:\ndisplay protein\
     \ as ribbon, non protein as sticks and balls\nand color by atom type\npmv -i --dmode\
     \ sssb --cmode cr myprot.pdb\npmv -i -m sssb -c cr myprot.pdb\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --cmode
 - id: in_options
@@ -88,6 +88,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pmv

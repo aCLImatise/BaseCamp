@@ -16,6 +16,9 @@ task Locarnaprealignallpl {
       ~{if (run_locally) then "--run-locally" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "Full documentation"
     test: "Test only. Jobs are not run or submitted to SGE!"

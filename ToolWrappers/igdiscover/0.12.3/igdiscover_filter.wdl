@@ -14,6 +14,9 @@ task IgdiscoverFilter {
       ~{if defined(j_coverage) then ("--j-coverage " +  '"' + j_coverage + '"') else ""} \
       ~{if defined(json) then ("--json " +  '"' + json + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v_coverage: "Require that the sequence covers at least PERCENT of\\nthe V gene. Default: 90"
     v_evalue: "Require that the E-value for the V gene match is at\\nmost EVALUE. Default: 0.001"

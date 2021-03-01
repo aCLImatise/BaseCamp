@@ -4,7 +4,7 @@ inputs:
 - id: in_max_read_default
   doc: "max read length. Default 100.  This sets the size of junction\nrecords in\
     \ trems of bp from each exon.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_ref_gene_file
@@ -16,6 +16,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - novoutil

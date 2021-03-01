@@ -38,6 +38,9 @@ task Keytool {
       ~{if (print_crl) then "-printcrl" else ""} \
       ~{if (store_passwd) then "-storepasswd" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cert_req: "Generates a certificate request"
     change_alias: "Changes an entry's alias"

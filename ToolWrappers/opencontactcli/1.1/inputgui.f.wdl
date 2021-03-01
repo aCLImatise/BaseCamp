@@ -4,6 +4,9 @@ task Inputguif {
   command <<<
     inputgui_f
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

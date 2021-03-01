@@ -20,6 +20,9 @@ task PATHOGISTConsensus {
       ~{if (all_constraints) then "--all_constraints" else ""} \
       ~{if defined(method) then ("--method " +  '"' + method + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all_constraints: "add all constraints to the optimization problem, not\\njust those with mixed signs."
     method: "Method for consensus clustering\\n"

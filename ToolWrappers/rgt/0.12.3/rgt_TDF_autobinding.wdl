@@ -14,6 +14,9 @@ task RgtTDFAutobinding {
       ~{if (set_maximal_errorrate) then "-e" else ""} \
       ~{if (abo) then "-abo" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_file: "Input FASTA file of the whole genome"
     define_minimum_length: "[Triplexes] Define the minimum length of triplex (default: 20)"

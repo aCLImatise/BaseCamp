@@ -8,6 +8,9 @@ task DBdust {
     DBdust \
       ~{if (b) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     b: ""
   }

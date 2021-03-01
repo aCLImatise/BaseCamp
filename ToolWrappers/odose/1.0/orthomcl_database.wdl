@@ -4,6 +4,9 @@ task OrthomclDatabase {
   command <<<
     orthomcl_database
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

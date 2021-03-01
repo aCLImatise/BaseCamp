@@ -20,6 +20,9 @@ task PyfastxExtract {
       ~{if defined(out_file) then ("--out-file " +  '"' + out_file + '"') else ""} \
       ~{if (sequential_read) then "--sequential-read" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_file: "a file containing sequence or read names, one name per\\nline"
     reverse_complement: "output reverse complement sequence"

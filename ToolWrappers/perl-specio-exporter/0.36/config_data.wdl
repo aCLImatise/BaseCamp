@@ -18,6 +18,9 @@ task ConfigData {
       ~{if defined(set_config) then ("--set_config " +  '"' + set_config + '"') else ""} \
       ~{if defined(set_feature) then ("--set_feature " +  '"' + set_feature + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Print the value of a config option"
     eval: "eval() config values before setting"

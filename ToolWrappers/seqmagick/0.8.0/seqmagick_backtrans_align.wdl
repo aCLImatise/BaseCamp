@@ -16,6 +16,9 @@ task SeqmagickBacktransalign {
       ~{if defined(translation_table) then ("--translation-table " +  '"' + translation_table + '"') else ""} \
       ~{if defined(fail_action) then ("--fail-action " +  '"' + fail_action + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_file: "Output destination. Default: STDOUT"
     translation_table: "Translation table to use. [Default: standard-\\nambiguous]"

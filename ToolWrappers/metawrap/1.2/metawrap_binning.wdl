@@ -36,6 +36,9 @@ task MetawrapBinning {
       ~{if (single_end) then "--single-end" else ""} \
       ~{if (interleaved) then "--interleaved" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metagenomic_assembly_file: "metagenomic assembly file"
     output_directory: "output directory"

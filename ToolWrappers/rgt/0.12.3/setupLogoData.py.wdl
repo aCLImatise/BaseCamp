@@ -10,6 +10,9 @@ task SetupLogoDatapy {
       ~{repository_folder} \
       ~{if (all) then "--all" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "Fetch all data sets."
     repository_folder: "optional arguments:"

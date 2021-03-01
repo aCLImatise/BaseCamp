@@ -3,6 +3,9 @@ command:
 - bp_load_gff.pl
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: NOTES
   description: "If the filename is given as \"-\" then the input is taken from standard\n\
     input. Compressed files (.gz, .Z, .bz2) are automatically uncompressed.\nFASTA\
     \ format files are distinguished from GFF files by their filename\nextensions.\
@@ -15,95 +18,92 @@ positional:
     \ bases. If you have\nfeatures that are close to or greater that 100Mb in length,\
     \ then the\nvalue of maxfeature should be increased to 1,000,000,000, or another\n\
     power of 10."
-  position: 0
-  name: NOTES
-  optional: false
 named:
 - !Flag
-  description: "'dbi:mysql:database=dmel_r5_1;host=myhost;port=myport'\ndna1.fa dna2.fa\
-    \ features1.gff features2.gff ..."
+  optional: true
   synonyms:
   - --dsn
+  description: "'dbi:mysql:database=dmel_r5_1;host=myhost;port=myport'\ndna1.fa dna2.fa\
+    \ features1.gff features2.gff ..."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: of --database.
+  optional: true
   synonyms:
   - -d
+  description: of --database.
   args: !SimpleFlagArg
     name: instead
-  optional: true
 - !Flag
-  description: Schema adaptor (default dbi::mysqlopt)
+  optional: true
   synonyms:
   - --adaptor
+  description: Schema adaptor (default dbi::mysqlopt)
   args: !SimpleFlagArg
     name: adaptor
-  optional: true
 - !Flag
-  description: <user>      Username for mysql authentication
+  optional: true
   synonyms:
   - --user
+  description: <user>      Username for mysql authentication
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <password>  Password for mysql authentication
+  optional: true
   synonyms:
   - --pass
+  description: <password>  Password for mysql authentication
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <path>      Fasta file or directory containing fasta files for the
-    DNA
+  optional: true
   synonyms:
   - --fasta
+  description: <path>      Fasta file or directory containing fasta files for the
+    DNA
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Force creation and initialization of database
+  optional: true
   synonyms:
   - --create
+  description: Force creation and initialization of database
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Set the value of the maximum feature size (default 100 Mb; must be
-    a power of 10)
+  optional: true
   synonyms:
   - --maxfeature
+  description: Set the value of the maximum feature size (default 100 Mb; must be
+    a power of 10)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "A list of one or more tag names (comma or space separated)\nto be\
-    \ used for grouping in the 9th column."
+  optional: true
   synonyms:
   - --group
+  description: "A list of one or more tag names (comma or space separated)\nto be\
+    \ used for grouping in the 9th column."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Upgrade existing database to current schema
+  optional: true
   synonyms:
   - --upgrade
+  description: Upgrade existing database to current schema
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Activate GFF3 name munging (see Bio::DB::GFF)
+  optional: true
   synonyms:
   - --gff3_munge
+  description: Activate GFF3 name munging (see Bio::DB::GFF)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: No progress reports
+  optional: true
   synonyms:
   - --quiet
+  description: No progress reports
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Generate summary statistics for drawing coverage histograms.\nThis\
-    \ can be run on a previously loaded database or during\nthe load."
+  optional: true
   synonyms:
   - --summary
+  description: "Generate summary statistics for drawing coverage histograms.\nThis\
+    \ can be run on a previously loaded database or during\nthe load."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -155,3 +155,4 @@ help_text: "NAME\n    bp_load_gff.pl - Load a Bio::DB::GFF database from GFF fil
   \ warranty.\n\n"
 generated_using:
 - --help
+docker_image:

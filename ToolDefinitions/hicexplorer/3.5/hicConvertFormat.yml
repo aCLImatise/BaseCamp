@@ -4,127 +4,127 @@ command:
 positional: []
 named:
 - !Flag
-  description: "input file(s). Could be one or many files. (default:\nNone)"
+  optional: true
   synonyms:
   - --matrices
   - -m
+  description: "input file(s). Could be one or many files. (default:\nNone)"
   args: !RepeatFlagArg
     name: MATRICES
-  optional: true
 - !Flag
-  description: 'File name to save the exported matrix. (default: None)'
+  optional: true
   synonyms:
   - --outFileName
   - -o
+  description: 'File name to save the exported matrix. (default: None)'
   args: !RepeatFlagArg
     name: OUTFILENAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --inputFormat
   description: "File format of the input matrix file. The following\noptions are available:\
     \ `h5` (native HiCExplorer format\nbased on hdf5 storage format), `cool`, `hic`,\
     \ `homer`,\n`hicpro`. (default: None)"
-  synonyms:
-  - --inputFormat
   args: !ChoiceFlagArg
     choices: !!set
+      h5:
       hic:
-      hicpro:
       cool:
       homer:
-      h5:
-  optional: true
+      hicpro:
 - !Flag
+  optional: true
+  synonyms:
+  - --outputFormat
   description: "Output format. The following options are available:\n`h5` (native\
     \ HiCExplorer format based on hdf5 storage\nformat). `cool` and `ginteractions`.\
     \ (default: cool)"
-  synonyms:
-  - --outputFormat
   args: !ChoiceFlagArg
     choices: !!set
+      h5:
       mcool:
-      ginteractions:
       cool:
       homer:
-      h5:
-  optional: true
+      ginteractions:
 - !Flag
+  optional: true
+  synonyms:
+  - --correction_name
   description: "Name of the column which stores the correction\nfactors. The information\
     \ about the column names can be\nfigured out with the tool hicInfo. Option only\
     \ for\ncool input files. (default: weight)"
-  synonyms:
-  - --correction_name
   args: !SimpleFlagArg
     name: CORRECTION_NAME
-  optional: true
 - !Flag
-  description: "If set, division is applied for correction. Default is\na multiplication.\
-    \ Option only for cool input files.\n(default: False)"
+  optional: true
   synonyms:
   - --correction_division
+  description: "If set, division is applied for correction. Default is\na multiplication.\
+    \ Option only for cool input files.\n(default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Store the applied correction and do not set correction\nfactors. Option\
-    \ only for cool input files. (default:\nFalse)"
+  optional: true
   synonyms:
   - --store_applied_correction
+  description: "Store the applied correction and do not set correction\nfactors. Option\
+    \ only for cool input files. (default:\nFalse)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Load only one chromosome. Option only for cool input\nfiles. (default:\
-    \ None)"
+  optional: true
   synonyms:
   - --chromosome
+  description: "Load only one chromosome. Option only for cool input\nfiles. (default:\
+    \ None)"
   args: !SimpleFlagArg
     name: CHROMOSOME
-  optional: true
 - !Flag
-  description: "Enforce datatype of counts to integer. Option only for\ncool input\
-    \ files. (default: False)"
+  optional: true
   synonyms:
   - --enforce_integer
+  description: "Enforce datatype of counts to integer. Option only for\ncool input\
+    \ files. (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Load only 'count' data and do not apply a correction.\nOption only\
-    \ for cool input files. (default: False)"
+  optional: true
   synonyms:
   - --load_raw_values
+  description: "Load only 'count' data and do not apply a correction.\nOption only\
+    \ for cool input files. (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "List of resolutions that should be added. (default:\nNone)"
+  optional: true
   synonyms:
   - --resolutions
   - -r
+  description: "List of resolutions that should be added. (default:\nNone)"
   args: !RepeatFlagArg
     name: RESOLUTIONS
-  optional: true
 - !Flag
-  description: "Bed file(s) of hicpro file format. (default: None)\n"
+  optional: true
   synonyms:
   - --bedFileHicpro
   - -bf
+  description: "Bed file(s) of hicpro file format. (default: None)\n"
   args: !RepeatFlagArg
     name: BEDFILEHICPRO
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit.
+  optional: true
   synonyms:
   - --help
   - -h
+  description: show this help message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: hicConvertFormat --matrices MATRICES [MATRICES ...] --outFileName\n\
   \                        OUTFILENAME [OUTFILENAME ...] --inputFormat\n         \
   \               {h5,cool,hic,homer,hicpro} --outputFormat\n                    \
@@ -179,3 +179,4 @@ help_text: "usage: hicConvertFormat --matrices MATRICES [MATRICES ...] --outFile
   \ hicpro file format. (default: None)\n"
 generated_using:
 - --help
+docker_image:

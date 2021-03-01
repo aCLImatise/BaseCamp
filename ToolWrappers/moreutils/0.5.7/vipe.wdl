@@ -4,6 +4,9 @@ task Vipe {
   command <<<
     vipe
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

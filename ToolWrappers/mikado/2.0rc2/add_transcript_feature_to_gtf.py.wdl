@@ -24,6 +24,9 @@ task AddTranscriptFeatureToGtfpy {
       ~{cufflinks} \
       ~{gt_fs}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     script: ""
     to: ""

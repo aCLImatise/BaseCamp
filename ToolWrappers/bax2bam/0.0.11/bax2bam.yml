@@ -1,0 +1,187 @@
+!Command
+command:
+- bax2bam
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: DeletionQV
+  description: dq        Y
+- !Positional
+  optional: false
+  position: 1
+  name: DeletionTag
+  description: dt        Y
+- !Positional
+  optional: false
+  position: 2
+  name: InsertionQV
+  description: iq        Y
+- !Positional
+  optional: false
+  position: 3
+  name: IPD
+  description: ip        Y
+- !Positional
+  optional: false
+  position: 4
+  name: PulseWidth
+  description: pw        Y*
+- !Positional
+  optional: false
+  position: 5
+  name: MergeQV
+  description: mq        Y
+- !Positional
+  optional: false
+  position: 6
+  name: SubstitutionQV
+  description: sq        Y
+- !Positional
+  optional: false
+  position: 7
+  name: SubstitutionTag
+  description: st        N
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --xml
+  description: DataSet XML file containing a list of movie names
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fofn
+  description: File-of-file-names containing a list of input files
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Prefix of output filenames. Movie name will be used if\nno prefix\
+    \ provided"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --output-xml
+  description: "Explicit output XML name. If none provided via this arg,\nbax2bam\
+    \ will use -o prefix (<prefix>.dataset.xml). If\nthat is not specified either,\
+    \ the output XML filename\nwill be <moviename>.dataset.xml"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --subread
+  description: Output subreads (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hqregion
+  description: Output HQ regions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --polymeraseread
+  description: Output full polymerase read
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ccs
+  description: Output CCS sequences (requires ccs.h5 input)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pulsefeatures
+  description: "Comma-separated list of desired pulse features, using\nthe names listed\
+    \ above."
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --losslessframes
+  description: "Store full, 16-bit IPD/PulseWidth data, instead of\n(default) downsampled,\
+    \ 8-bit encoding."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --internal
+  description: "Output BAMs in internal mode. Currently this indicates\nthat non-sequencing\
+    \ ZMWs should be included in the\noutput scraps BAM file, if applicable."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --allowUnrecognizedChemistryTriple
+  description: "By default, bax2bam only allows the conversion of files\nwith chemistries\
+    \ that are supported in SMRT Analysis 3.\nSet this flag to disable the strict\
+    \ check and allow\ngeneration of BAM files containing legacy chemistries.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: bax2bam [options]\n\nbax2bam converts the legacy PacBio basecall\
+  \ format (bax.h5) into the BAM\nbasecall format.\n\nOptions:\n  -h, --help     \
+  \       show this help message and exit\n  --version             show program's\
+  \ version number and exit\n\n  Input/output files:\n    movie.1.bax.h5 movie.2.bax.h5\
+  \ ...\n                        Input files which should be from the same movie\n\
+  \    --xml=STRING        DataSet XML file containing a list of movie names\n   \
+  \ -f STRING, --fofn=STRING\n                        File-of-file-names containing\
+  \ a list of input files\n    -o STRING           Prefix of output filenames. Movie\
+  \ name will be used if\n                        no prefix provided\n    --output-xml=STRING\n\
+  \                        Explicit output XML name. If none provided via this arg,\n\
+  \                        bax2bam will use -o prefix (<prefix>.dataset.xml). If\n\
+  \                        that is not specified either, the output XML filename\n\
+  \                        will be <moviename>.dataset.xml\n\n  Output read types\
+  \ (mutually exclusive):\n    --subread           Output subreads (default)\n   \
+  \ --hqregion          Output HQ regions\n    --polymeraseread    Output full polymerase\
+  \ read\n    --ccs               Output CCS sequences (requires ccs.h5 input)\n\n\
+  \  Pulse feature options:\n    Configure pulse features in the output BAM. Supported\
+  \ features include:\n        Pulse Feature:    BAM tag:  Default:\n        DeletionQV\
+  \        dq        Y\n        DeletionTag       dt        Y\n        InsertionQV\
+  \       iq        Y\n        IPD               ip        Y\n        PulseWidth \
+  \       pw        Y*\n        MergeQV           mq        Y\n        SubstitutionQV\
+  \    sq        Y\n        SubstitutionTag   st        N\n    \n    * - PulseWidth\
+  \ will be ignored in CCS mode.\n    \n    If this option is used, then only those\
+  \ features listed will be included,\n    regardless of the default state.\n\n  \
+  \  --pulsefeatures=STRING\n                        Comma-separated list of desired\
+  \ pulse features, using\n                        the names listed above.\n     \
+  \                   \n    --losslessframes    Store full, 16-bit IPD/PulseWidth\
+  \ data, instead of\n                        (default) downsampled, 8-bit encoding.\n\
+  \n  Output BAM file type:\n    --internal          Output BAMs in internal mode.\
+  \ Currently this indicates\n                        that non-sequencing ZMWs should\
+  \ be included in the\n                        output scraps BAM file, if applicable.\n\
+  \n  Additional options:\n    --allowUnrecognizedChemistryTriple\n              \
+  \          By default, bax2bam only allows the conversion of files\n           \
+  \             with chemistries that are supported in SMRT Analysis 3.\n        \
+  \                Set this flag to disable the strict check and allow\n         \
+  \               generation of BAM files containing legacy chemistries.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bax2bam:0.0.11--0

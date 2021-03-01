@@ -10,6 +10,9 @@ task FindAllSnpspy {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(a) then ("-a " +  '"' + a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     a: ""

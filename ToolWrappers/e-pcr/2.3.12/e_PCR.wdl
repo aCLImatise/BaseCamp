@@ -44,6 +44,9 @@ task EPCR {
       ~{if (mid) then "-mid" else ""} \
       ~{if (hv) then "-hV" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _margin_default: "##   Margin (default 50)"
     _wordsize_default: "##   Wordsize  (default 7)"

@@ -3,15 +3,40 @@ version 1.0
 task Imsindel {
   input {
     Boolean? bam
+    File? out_d
+    Int? in_del_size
+    Boolean? re_ffa
+    Boolean? gl_search
+    Boolean? sam_tools
+    File? output_consensus_seq
+    Boolean? exclude_region
   }
   command <<<
     imsindel \
-      ~{if (bam) then "--bam" else ""}
+      ~{if (bam) then "--bam" else ""} \
+      ~{if defined(out_d) then ("--outd " +  '"' + out_d + '"') else ""} \
+      ~{if defined(in_del_size) then ("--indelsize " +  '"' + in_del_size + '"') else ""} \
+      ~{if (re_ffa) then "--reffa" else ""} \
+      ~{if (gl_search) then "--glsearch" else ""} \
+      ~{if (sam_tools) then "--samtools" else ""} \
+      ~{if (output_consensus_seq) then "--output-consensus-seq" else ""} \
+      ~{if (exclude_region) then "--exclude-region" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    bam: "/path/to/foo.bam\\n--chr chromosome\\n--outd /path/to/outoput-dir\\n--indelsize maximal indel-size\\n--reffa /path/to/ref.fa\\n--baseq [20]\\n--mapq [20]\\n--within [3]\\n--pair-within [5]\\n--alt-read-depth [5]\\n--support-reads [3]\\n--clip-length [5]\\n--support-clip-length [5]\\n--glsearch [glsearch36]\\n--glsearch-mat [data/mydna.mat]\\n--mafft [mafft]\\n--samtools [samtools]\\n--temp [/temp]\\n--thread [1]\\n--output-consensus-seq /path/to/output-dir\\n--exclude-region /path/to/exclude-list\\n"
+    bam: "/path/to/foo.bam"
+    out_d: "/path/to/outoput-dir"
+    in_del_size: "indel-size"
+    re_ffa: "/path/to/ref.fa"
+    gl_search: "[glsearch36]"
+    sam_tools: "[samtools]"
+    output_consensus_seq: "/path/to/output-dir"
+    exclude_region: "/path/to/exclude-list"
   }
   output {
     File out_stdout = stdout()
+    File out_output_consensus_seq = "${in_output_consensus_seq}"
   }
 }

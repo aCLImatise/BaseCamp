@@ -18,6 +18,9 @@ task SolvateIonspy {
       ~{if defined(distance_solute_box) then ("-d " +  '"' + distance_solute_box + '"') else ""} \
       ~{if defined(ion_concentration_mm) then ("-C " +  '"' + ion_concentration_mm + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_pdb_file: "Input PDB file"
     topologie_gromacs_format: "Topologie in gromacs format .top"

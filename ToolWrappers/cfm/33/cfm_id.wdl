@@ -32,6 +32,9 @@ task Cfmid {
       ~{output_filename} \
       ~{output_msp_or_mgf}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     spectrum_file: ""
     id: ""

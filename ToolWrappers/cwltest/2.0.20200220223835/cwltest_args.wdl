@@ -18,6 +18,9 @@ task CwltestArgs {
       ~{if defined(basedir) then ("--basedir " +  '"' + basedir + '"') else ""} \
       ~{if defined(test) then ("--test " +  '"' + test + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s: ""
     n: ""

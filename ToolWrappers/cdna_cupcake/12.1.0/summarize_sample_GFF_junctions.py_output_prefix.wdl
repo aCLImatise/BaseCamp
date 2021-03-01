@@ -12,6 +12,9 @@ task SummarizeSampleGFFJunctionspyOutputPrefix {
       ~{config} \
       ~{output_prefix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     summarize_sample_gff_junctions_do_tpy: ""
     config: ""

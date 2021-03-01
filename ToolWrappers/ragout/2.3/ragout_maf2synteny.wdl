@@ -16,6 +16,9 @@ task Ragoutmaf2synteny {
       ~{if defined(commaseparated_list_synteny) then ("-b " +  '"' + commaseparated_list_synteny + '"') else ""} \
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_output_directory: "path to the output directory [default = .]"
     path_file_custom: "path to a file with custom simplification parameters [default = not set]"

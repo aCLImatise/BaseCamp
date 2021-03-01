@@ -34,6 +34,9 @@ task PhyloCSFLinuxx8664 {
       ~{if (aa) then "--aa" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     strategy: "|fixed|omega\\nevaluation strategy (default mle)"
     files: "input list(s) of alignment filenames instead of\\nindividual alignment(s)"

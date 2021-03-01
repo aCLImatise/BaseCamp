@@ -68,6 +68,9 @@ task Cathresolvehits {
       ~{if (cath_rules_help) then "--cath-rules-help" else ""} \
       ~{if (raw_format_help) then "--raw-format-help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_version_information: "[ --version ]                               Output version information"
     input_format: "(=raw_with_scores)     Parse the input data from <format>, one of available formats:"

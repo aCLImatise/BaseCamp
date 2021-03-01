@@ -12,20 +12,18 @@ task Nanonetcall {
     Int? limit
     Int? min_len
     Int? max_len
-    String? model
+    Float? model
     Int? jobs
     String? trans
     Boolean? no_fast_decode
     Boolean? no_exc_open_cl
     Boolean? no_list_platforms
     Array[String] platforms
-    String path_default_none
-    Float eggs_slash_nano_net_two_dot_zero_dot_zero_py_two_dot_seven_linux_x_eight_six_six_four_dot_egg
+    String path_fast_files
   }
   command <<<
     nanonetcall \
-      ~{path_default_none} \
-      ~{eggs_slash_nano_net_two_dot_zero_dot_zero_py_two_dot_seven_linux_x_eight_six_six_four_dot_egg} \
+      ~{path_fast_files} \
       ~{if defined(watch) then ("--watch " +  '"' + watch + '"') else ""} \
       ~{if defined(section) then ("--section " +  '"' + section + '"') else ""} \
       ~{if (no_event_detect) then "--no-event_detect" else ""} \
@@ -44,6 +42,9 @@ task Nanonetcall {
       ~{if (no_list_platforms) then "--no-list_platforms" else ""} \
       ~{if defined(platforms) then ("--platforms " +  '"' + platforms + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     watch: "Switch to watching folder, argument value used as\\ntimeout period. (default: None)"
     section: "Section of read for which to produce basecalls, will\\noverride that stored in model file. (default: None)"
@@ -55,15 +56,14 @@ task Nanonetcall {
     limit: "Limit the number of input for processing. (default:\\nNone)"
     min_len: "Min. read length (events) to basecall. (default: 500)"
     max_len: "Max. read length (events) to basecall. (default:\\n15000)"
-    model: "Trained ANN. (default: /root/.cache/Python-"
+    model: "Trained ANN. (default: /root/.cache/Python-\\nEggs/nanonet-2.0.0-py2.7-linux-x86_64.egg-\\ntmp/nanonet/data/default_template.npy)"
     jobs: "No of decoding jobs to run in parallel. (default: 1)"
     trans: "step skip\\nBase transition probabilities (default: None)"
     no_fast_decode: "Use simple, fast decoder with no transition estimates.\\n(Default: --no-fast_decode) (default: False)"
     no_exc_open_cl: "Do not use CPU alongside OpenCL, overrides --jobs.\\n(Default: --no-exc_opencl) (default: False)"
     no_list_platforms: "Output list of available OpenCL GPU platforms.\\n(Default: --no-list_platforms) (default: False)"
     platforms: "List of OpenCL GPU platforms and devices to be used in\\na format VENDOR:DEVICE:N_Files space separated, i.e.\\n--platforms nvidia:0:1 amd:0:2 amd:1:2. (default:\\nNone)\\n"
-    path_default_none: "A path to fast5 files. (default: None)"
-    eggs_slash_nano_net_two_dot_zero_dot_zero_py_two_dot_seven_linux_x_eight_six_six_four_dot_egg: "tmp/nanonet/data/default_template.npy)"
+    path_fast_files: "A path to fast5 files. (default: None)"
   }
   output {
     File out_stdout = stdout()

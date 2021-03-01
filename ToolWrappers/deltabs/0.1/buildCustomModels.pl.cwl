@@ -1,41 +1,41 @@
 class: CommandLineTool
 id: buildCustomModels.pl.cwl
 inputs:
-- id: in__datadir_s
-  doc: '/ --datadir  <s>    :       Data directory for writing output to'
-  type: Directory
+- id: in_datadir
+  doc: '<s>    :       Data directory for writing output to'
+  type: Directory?
   inputBinding:
-    prefix: -d
-- id: in_db
-  doc: '/ --database <s>    :       Database file default:[datadir/uniref90.fasta]'
-  type: boolean
+    prefix: --datadir
+- id: in_database
+  doc: ':       Database file default:[datadir/uniref90.fasta]'
+  type: File?
   inputBinding:
-    prefix: -db
-- id: in__proteome_proteome
-  doc: '/ --proteome <s>    :       A proteome file in fasta format'
-  type: boolean
+    prefix: --database
+- id: in_proteome
+  doc: ':       A proteome file in fasta format'
+  type: File?
   inputBinding:
-    prefix: -p
-- id: in__testmode_generate
-  doc: '/ --testmode        :       Generate small database and proteome files for
-    testing'
-  type: boolean
+    prefix: --proteome
+- id: in_test_mode
+  doc: ':       Generate small database and proteome files for testing'
+  type: boolean?
   inputBinding:
-    prefix: -t
-- id: in__verbose_turn
-  doc: '/ --verbose         :       Turn on verbose messaging'
-  type: boolean
+    prefix: --testmode
+- id: in_verbose
+  doc: ':       Turn on verbose messaging'
+  type: boolean?
   inputBinding:
-    prefix: -v
+    prefix: --verbose
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out__datadir_s
-  doc: '/ --datadir  <s>    :       Data directory for writing output to'
-  type: Directory
+- id: out_datadir
+  doc: '<s>    :       Data directory for writing output to'
+  type: Directory?
   outputBinding:
-    glob: $(inputs.in__datadir_s)
+    glob: $(inputs.in_datadir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - buildCustomModels.pl

@@ -4,6 +4,9 @@ task StatSpliceMap {
   command <<<
     statSpliceMap
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

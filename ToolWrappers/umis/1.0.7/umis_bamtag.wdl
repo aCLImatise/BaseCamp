@@ -8,6 +8,9 @@ task UmisBamtag {
     umis bamtag \
       ~{sam}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sam: ""
   }

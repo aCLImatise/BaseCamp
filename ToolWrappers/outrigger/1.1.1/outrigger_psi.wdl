@@ -3,7 +3,7 @@ version 1.0
 task OutriggerPsi {
   input {
     Directory? index
-    Directory? name_folder_is
+    Directory? name_is_specify
     File? junction_reads_csv
     File? sjouttab_files_star
     Boolean? bam_files_use
@@ -21,7 +21,7 @@ task OutriggerPsi {
   command <<<
     outrigger psi \
       ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
-      ~{if defined(name_folder_is) then ("--output " +  '"' + name_folder_is + '"') else ""} \
+      ~{if defined(name_is_specify) then ("--output " +  '"' + name_is_specify + '"') else ""} \
       ~{if defined(junction_reads_csv) then ("--junction-reads-csv " +  '"' + junction_reads_csv + '"') else ""} \
       ~{if (sjouttab_files_star) then "-j" else ""} \
       ~{if (bam_files_use) then "-b" else ""} \
@@ -36,9 +36,12 @@ task OutriggerPsi {
       ~{if defined(n_jobs) then ("--n-jobs " +  '"' + n_jobs + '"') else ""} \
       ~{if (low_memory) then "--low-memory" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index: "Name of the folder where you saved the output from\\n\\\"outrigger index\\\" (default is\\n./outrigger_output/index, which is relative to the\\ndirectory where you called this program, assuming you\\nhave called \\\"outrigger psi\\\" in the same folder as you\\ncalled \\\"outrigger index\\\")"
-    name_folder_is: "Name of the folder where you saved the output from\\n\\\"outrigger index\\\" (default is ./outrigger_output,\\nwhich is relative to the directory where you called\\nthe program). Cannot specify both an --index and\\n--output with \\\"psi\\\""
+    name_is_specify: "Name of the folder where you saved the output from\\n\\\"outrigger index\\\" (default is ./outrigger_output,\\nwhich is relative to the directory where you called\\nthe program). Cannot specify both an --index and\\n--output with \\\"psi\\\""
     junction_reads_csv: "Name of the compiled splice junction file to calculate\\npsi scores on. Default is the '--output' folder's\\njunctions/reads.csv file. Not required if you specify\\nSJ.out.tab files with '--sj-out-tab'"
     sjouttab_files_star: "[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab [SJ_OUT_TAB [SJ_OUT_TAB ...]]\\nSJ.out.tab files from STAR aligner output. Not\\nrequired if you specify a file with \\\"--compiled-\\njunction-reads\\\""
     bam_files_use: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\\nBam files to use to calculate psi on"
@@ -56,7 +59,7 @@ task OutriggerPsi {
   output {
     File out_stdout = stdout()
     Directory out_index = "${in_index}"
-    Directory out_name_folder_is = "${in_name_folder_is}"
+    Directory out_name_is_specify = "${in_name_is_specify}"
     File out_junction_reads_csv = "${in_junction_reads_csv}"
     File out_sjouttab_files_star = "${in_sjouttab_files_star}"
   }

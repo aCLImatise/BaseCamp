@@ -3,12 +3,12 @@ id: pbmerge.cwl
 inputs:
 - id: in_str_output_bam
   doc: STR   Output BAM filename. Writes to stdout if not provided.
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_no_pbi
   doc: Disables creation of PBI index file. PBI always disabled when writing to stdout.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-pbi
 - id: in_input
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_str_output_bam
   doc: STR   Output BAM filename. Writes to stdout if not provided.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_str_output_bam)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pbmerge

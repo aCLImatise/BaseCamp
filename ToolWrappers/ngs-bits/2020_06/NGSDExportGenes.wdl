@@ -16,6 +16,9 @@ task NGSDExportGenes {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "Output TSV file. If unset, writes to STDOUT.\\nDefault value: ''"
     hpo: "Annotate with HPO terms (slow).\\nDefault value: 'false'"

@@ -24,6 +24,9 @@ task ClusteringDmatrix {
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(workdir) then ("--workdir " +  '"' + workdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dist_cut_off: "Only save distances below the cutoff"
     in: "Input fasta file"

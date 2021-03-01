@@ -4,6 +4,9 @@ task Meltpl {
   command <<<
     melt_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

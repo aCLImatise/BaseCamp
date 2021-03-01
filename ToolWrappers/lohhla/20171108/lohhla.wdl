@@ -46,6 +46,9 @@ task Lohhla {
       ~{if defined(hla_exon_loc) then ("--HLAexonLoc " +  '"' + hla_exon_loc + '"') else ""} \
       ~{if defined(ignore_warnings) then ("--ignoreWarnings " +  '"' + ignore_warnings + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     patient_id: "patient ID"
     output_dir: "location of output directory"

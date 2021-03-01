@@ -18,6 +18,9 @@ task RnftoolsMason2rnf {
       ~{if (allow_unmapped) then "--allow-unmapped" else ""} \
       ~{if defined(simulator_name) then ("--simulator-name " +  '"' + simulator_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sam: "Input SAM/BAM with true (expected) alignments of the\\nreads (- for standard input)."
     rnf_fast_q: "Output FASTQ file (- for standard output)."

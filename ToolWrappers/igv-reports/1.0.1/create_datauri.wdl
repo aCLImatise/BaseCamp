@@ -12,6 +12,9 @@ task CreateDatauri {
       ~{if defined(file_type) then ("--filetype " +  '"' + file_type + '"') else ""} \
       ~{if defined(region) then ("--region " +  '"' + region + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_type: "type of file to be converted to data uri"
     region: "genomic region to be converted in the form chr:start-\\nstop\\n"

@@ -5,38 +5,38 @@ inputs:
   doc: The boundary term to use. Note that difference of means (means) requires the
     original image, while stawiaski requires the gradient image of the original image
     to be passed to badditional.
-  type: string
+  type: string?
   inputBinding:
     prefix: --boundary
 - id: in_regional
   doc: The regional term to use. Note that the atlas requires to provide an atlas
     image.
-  type: string
+  type: string?
   inputBinding:
     prefix: --regional
 - id: in_r_additional
   doc: The additional image required by the regional term. See there for details.
-  type: string
+  type: string?
   inputBinding:
     prefix: --radditional
 - id: in_alpha
   doc: The weight of the regional term compared to the boundary term.
-  type: string
+  type: string?
   inputBinding:
     prefix: --alpha
 - id: in_set_flag_override
   doc: Set this flag to silently override files that exist.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_display_more_information
   doc: Display more information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_display_debug_information
   doc: Display debug information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_b_additional
@@ -63,6 +63,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - medpy_graphcut_label_w_regional.py

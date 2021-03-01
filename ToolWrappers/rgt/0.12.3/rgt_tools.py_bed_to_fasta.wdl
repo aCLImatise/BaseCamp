@@ -20,6 +20,9 @@ task RgttoolspyBedToFasta {
       ~{if (block) then "-block" else ""} \
       ~{if (score) then "-score" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bed_file: "Input BED file"
     output_directory_fasta: "Output directory for FASTA files"

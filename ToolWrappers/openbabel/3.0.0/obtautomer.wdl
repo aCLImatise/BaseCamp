@@ -10,6 +10,9 @@ task Obtautomer {
       ~{filename} \
       ~{if (canonical_tautomer_only) then "-c" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     canonical_tautomer_only: ": Canonical tautomer only"
     filename: ""

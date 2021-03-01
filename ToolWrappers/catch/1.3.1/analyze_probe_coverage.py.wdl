@@ -2,7 +2,6 @@ version 1.0
 
 task AnalyzeProbeCoveragepy {
   input {
-    Int? m
     Array[String] dataset
     File? probes_fast_a
     Int? mismatches
@@ -20,7 +19,6 @@ task AnalyzeProbeCoveragepy {
   }
   command <<<
     analyze_probe_coverage_py \
-      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
       ~{if defined(dataset) then ("--dataset " +  '"' + dataset + '"') else ""} \
       ~{if defined(probes_fast_a) then ("--probes-fasta " +  '"' + probes_fast_a + '"') else ""} \
       ~{if defined(mismatches) then ("--mismatches " +  '"' + mismatches + '"') else ""} \
@@ -36,8 +34,10 @@ task AnalyzeProbeCoveragepy {
       ~{if (debug) then "--debug" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    m: "[--island-of-exact-match ISLAND_OF_EXACT_MATCH]\\n[-e COVER_EXTENSION]\\n[--limit-target-genomes LIMIT_TARGET_GENOMES]\\n[--print-analysis]\\n[--write-analysis-to-tsv WRITE_ANALYSIS_TO_TSV]\\n[--write-sliding-window-coverage WRITE_SLIDING_WINDOW_COVERAGE]\\n[--max-num-processes MAX_NUM_PROCESSES]\\n[--kmer-probe-map-k KMER_PROBE_MAP_K]\\n[--debug] [--verbose] [-V]"
     dataset: "Labels for one or more target datasets (e.g., one\\nlabel per species)"
     probes_fast_a: "Path to a FASTA file that provides the probes (one per\\nsequence) whose coverage should be analyzed against\\nthe genomes in the given datasets"
     mismatches: "Allow for this number of mismatches when determining\\nwhether a probe covers a sequence"

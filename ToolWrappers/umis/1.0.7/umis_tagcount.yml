@@ -4,46 +4,77 @@ command:
 - tagcount
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: SAM
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: OUT
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "A TSV file mapping transcript ids to gene ids.\nIf provided expression\
-    \ will be summarised to\ngene level (recommended)."
+  optional: true
   synonyms:
   - --genemap
+  description: "A TSV file mapping transcript ids to gene ids.\nIf provided expression\
+    \ will be summarised to\ngene level (recommended)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "--positional\n--minevidence FLOAT\n--cb_histogram TEXT           A\
-    \ TSV file with CBs and a count. If the counts\nare are the number of reads at\
-    \ a CB, the\ncb_cutoff option can be used to filter out CBs\nto be counted.\n\
-    --cb_cutoff TEXT              Number of counts to filter cellular barcodes.\n\
-    Set to 'auto' to calculate a cutoff\nautomatically.\n--no_scale_evidence\n--subsample\
-    \ INTEGER\n--sparse                      Ouput counts in MatrixMarket format.\n\
-    --parse_tags                  Parse BAM tags in stead of read name. In this\n\
-    mode the optional tags UM and CR will be used\nfor UMI and cell barcode, respetively.\n\
-    --gene_tags                   Use the optional TX and GX tags in the BAM\nfile\
-    \ to read gene mapping information in stead\nof the mapping target nane. Useful\
-    \ if e.g.\nreads have been mapped to genome in stead of\ntranscriptome.\n--help\
-    \                        Show this message and exit.\n"
+  optional: true
   synonyms:
   - --output_evidence_table
+  - --positional
+  - --minevidence
+  - --cb_histogram
+  description: "A TSV file with CBs and a count. If the counts\nare are the number\
+    \ of reads at a CB, the\ncb_cutoff option can be used to filter out CBs\nto be\
+    \ counted."
   args: !SimpleFlagArg
     name: TEXT
+- !Flag
   optional: true
+  synonyms:
+  - --cb_cutoff
+  description: "Number of counts to filter cellular barcodes.\nSet to 'auto' to calculate\
+    \ a cutoff\nautomatically."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --no_scale_evidence
+  - --subsample
+  - --sparse
+  description: Ouput counts in MatrixMarket format.
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --parse_tags
+  description: "Parse BAM tags in stead of read name. In this\nmode the optional tags\
+    \ UM and CR will be used\nfor UMI and cell barcode, respetively."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gene_tags
+  description: "Use the optional TX and GX tags in the BAM\nfile to read gene mapping\
+    \ information in stead\nof the mapping target nane. Useful if e.g.\nreads have\
+    \ been mapped to genome in stead of\ntranscriptome."
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: umis tagcount [OPTIONS] SAM OUT\n\n  Count up evidence for tagged\
@@ -69,3 +100,4 @@ help_text: "Usage: umis tagcount [OPTIONS] SAM OUT\n\n  Count up evidence for ta
   \  Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

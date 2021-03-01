@@ -4,6 +4,9 @@ task Sam2pindel {
   command <<<
     sam2pindel
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

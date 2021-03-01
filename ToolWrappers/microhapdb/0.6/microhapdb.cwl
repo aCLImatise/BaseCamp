@@ -3,12 +3,12 @@ id: microhapdb.cwl
 inputs:
 - id: in_files
   doc: print data table filenames and exit
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --files
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_cmd
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - microhapdb

@@ -40,6 +40,9 @@ task TripailleAnalysisLoadGo {
       ~{if defined(description) then ("--description " +  '"' + description + '"') else ""} \
       ~{if defined(date_executed) then ("--date_executed " +  '"' + date_executed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     organism: "Organism common name or abbreviation"
     organism_id: "Organism ID"

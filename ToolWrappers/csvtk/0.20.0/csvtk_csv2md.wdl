@@ -36,6 +36,9 @@ task CsvtkCsv2md {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignments: "comma separated alignments. e.g. -a l,c,c,c or -a c (default \\\"l\\\")"
     min_width: "min width (at least 3) (default 3)"

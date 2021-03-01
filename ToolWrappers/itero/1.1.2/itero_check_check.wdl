@@ -10,6 +10,9 @@ task IteroCheckCheck {
       ~{it_ero} \
       ~{check}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     it_ero: ""
     check: ""

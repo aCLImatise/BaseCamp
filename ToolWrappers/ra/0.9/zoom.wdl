@@ -12,6 +12,9 @@ task Zoom {
       ~{if (depth) then "--depth" else ""} \
       ~{if (depot) then "--depot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     root: "root read (int)"
     depth: "neighborhood depth (int)"

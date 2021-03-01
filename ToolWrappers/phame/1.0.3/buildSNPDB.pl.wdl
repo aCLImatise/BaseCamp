@@ -12,6 +12,9 @@ task BuildSNPDBpl {
       ~{if (reference_file) then "-r" else ""} \
       ~{if (header_list) then "-l" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_directory_name: "in directory name"
     reference_file: "reference file"

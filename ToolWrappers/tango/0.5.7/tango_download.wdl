@@ -22,6 +22,9 @@ task TangoDownload {
       ~{if (skip_check) then "--skip_check" else ""} \
       ~{if (skip_id_map) then "--skip_idmap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dl_dir: "Write files to this directory. Defaults to db name in\\ncurrent directory. Will be created if missing."
     tmpdir: "Temporary directory for downloading files"

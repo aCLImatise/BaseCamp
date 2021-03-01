@@ -12,11 +12,11 @@ task RtgPedstats {
     Boolean? paternal_ids
     Boolean? primary_ids
     Boolean? simple_dot
-    File file
+    File pedigree_file_process
   }
   command <<<
     rtg pedstats \
-      ~{file} \
+      ~{pedigree_file_process} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""} \
       ~{if defined(dot) then ("--dot " +  '"' + dot + '"') else ""} \
       ~{if (families) then "--families" else ""} \
@@ -28,6 +28,9 @@ task RtgPedstats {
       ~{if (primary_ids) then "--primary-ids" else ""} \
       ~{if (simple_dot) then "--simple-dot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     delimiter: "output id lists using this separator (Default is \\n)"
     dot: "output pedigree in Graphviz format, using the supplied\\ntext as a title"
@@ -39,7 +42,7 @@ task RtgPedstats {
     paternal_ids: "output ids of paternal individuals"
     primary_ids: "output ids of all primary individuals"
     simple_dot: "when outputting Graphviz format, use a layout that\\nlooks less like a traditional pedigree diagram but\\nworks better with large complex pedigrees"
-    file: "the pedigree file to process, may be PED or VCF, use\\n'-' to read from stdin"
+    pedigree_file_process: "the pedigree file to process, may be PED or VCF, use\\n'-' to read from stdin"
   }
   output {
     File out_stdout = stdout()

@@ -32,6 +32,9 @@ task Kcgrasstest {
       ~{if (var_7) then "-tran" else ""} \
       ~{if (etc) then "-etc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pc_cap: ""
     psi_z: ""

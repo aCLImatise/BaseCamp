@@ -3,77 +3,77 @@ command:
 - RepEnrich_setup.py
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: annotation_file
   description: "List annotation file. The annotation file contains the\nrepeat masker\
     \ annotation for the genome of interest\nand may be downloaded at RepeatMasker.org\
     \ Example\n/data/annotation/mm9/mm9.fa.out"
-  position: 0
-  name: annotation_file
-  optional: false
 - !Positional
-  description: "File name and path for genome of interest in fasta\nformat. Example\
-    \ /data/annotation/mm9/mm9.fa"
+  optional: false
   position: 1
   name: genomefasta
-  optional: false
+  description: "File name and path for genome of interest in fasta\nformat. Example\
+    \ /data/annotation/mm9/mm9.fa"
 - !Positional
-  description: "List folder to contain bamfiles for repeats and repeat\nelement psuedogenomes.\
-    \ Example\n/data/annotation/mm9/setup"
+  optional: false
   position: 2
   name: setup_folder
-  optional: false
+  description: "List folder to contain bamfiles for repeats and repeat\nelement psuedogenomes.\
+    \ Example\n/data/annotation/mm9/setup"
 named:
 - !Flag
-  description: "Output location of a description file that saves the\nnumber of fragments\
-    \ processed per repname. Default\n./repnames_nfragments.txt"
+  optional: true
   synonyms:
   - --nfragmentsfile1
+  description: "Output location of a description file that saves the\nnumber of fragments\
+    \ processed per repname. Default\n./repnames_nfragments.txt"
   args: !SimpleFlagArg
     name: nfragmentsfile1
-  optional: true
 - !Flag
-  description: "Length of the spacer used to build repeat\npsuedogeneomes. Default\
-    \ 200"
+  optional: true
   synonyms:
   - --gaplength
+  description: "Length of the spacer used to build repeat\npsuedogeneomes. Default\
+    \ 200"
   args: !SimpleFlagArg
     name: gaplength
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --flankinglength
   description: "Length of the flanking region adjacent to the repeat\nelement that\
     \ is used to build repeat psuedogeneomes.\nThe flanking length should be set according\
     \ to the\nlength of your reads. Default 25"
-  synonyms:
-  - --flankinglength
   args: !SimpleFlagArg
     name: flankinglength
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --is_bed
   description: "Is the annotation file a bed file. This is also a\ncompatible format.\
     \ The file needs to be a tab\nseperated bed with optional fields. Ex. format chr\n\
     start end Name_element class family. The class and\nfamily should identical to\
     \ name_element if not\napplicable. Default FALSE change to TRUE\n"
-  synonyms:
-  - --is_bed
   args: !SimpleFlagArg
     name: is_bed
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: getargs_genome_maker.py [-h] [--version]\n                    \
   \           [--nfragmentsfile1 nfragmentsfile1]\n                              \
   \ [--gaplength gaplength]\n                               [--flankinglength flankinglength]\n\
@@ -117,3 +117,4 @@ help_text: "usage: getargs_genome_maker.py [-h] [--version]\n                   
   \ to TRUE\n"
 generated_using:
 - --help
+docker_image:

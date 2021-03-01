@@ -28,6 +28,9 @@ task Mercat {
       ~{if (_trimmomatic_options) then "-t" else ""} \
       ~{if (split_mb_files) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pathtoinputfile: "path-to-input-file"
     pathtofoldercontaininginputfiles: "path-to-folder-containing-input-files"

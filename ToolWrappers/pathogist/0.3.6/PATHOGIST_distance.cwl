@@ -3,7 +3,7 @@ id: PATHOGIST_distance.cwl
 inputs:
 - id: in_bed
   doc: bed file of unwanted SNP positions in the genome
-  type: File
+  type: File?
   inputBinding:
     prefix: --bed
 - id: in_calls_path
@@ -21,6 +21,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - PATHOGIST

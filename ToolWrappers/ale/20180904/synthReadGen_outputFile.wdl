@@ -12,6 +12,9 @@ task SynthReadGenOutputFile {
       ~{input_file} \
       ~{output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     synth_read_gen: ""
     input_file: ""

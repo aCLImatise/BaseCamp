@@ -3,7 +3,7 @@ id: kcdirmgr.cwl
 inputs:
 - id: in_otr
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -otr
 - id: in_check
@@ -85,6 +85,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kcdirmgr

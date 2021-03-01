@@ -16,6 +16,9 @@ task Cathassigndomains {
       ~{if defined(sf_of_domain_file) then ("--sf-of-domain-file " +  '"' + sf_of_domain_file + '"') else ""} \
       ~{if defined(forbidden_node) then ("--forbidden-node " +  '"' + forbidden_node + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_version_information: "[ --version ]                                                  Output version information"
     svm_light_rbf_file: "File containing SVM-light RBF model for CATH assignment"

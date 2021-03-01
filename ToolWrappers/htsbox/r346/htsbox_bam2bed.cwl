@@ -3,7 +3,7 @@ id: htsbox_bam2bed.cwl
 inputs:
 - id: in_se
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -Se
 - id: in_bam_two_bed
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - htsbox

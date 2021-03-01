@@ -4,22 +4,22 @@ inputs:
 - id: in_chrom
   doc: "limit to this chromosome only. use '-3' for all chromosomes (in the case of\
     \ exome data) (default: chr15)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --chrom
 - id: in_info_fields
   doc: comma-delimited list of info fields
-  type: string
+  type: string?
   inputBinding:
     prefix: --info-fields
 - id: in_fmt_fields
   doc: comma-delimited list of sample fields
-  type: string
+  type: string?
   inputBinding:
     prefix: --fmt-fields
 - id: in_html
   doc: 'path to output file (default: slivar-ddc.html)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --html
 - id: in_vcf
@@ -33,9 +33,10 @@ outputs:
   type: stdout
 - id: out_html
   doc: 'path to output file (default: slivar-ddc.html)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_html)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - slivar

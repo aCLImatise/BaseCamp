@@ -30,6 +30,9 @@ task Vcffilter {
       ~{if (or) then "--or" else ""} \
       ~{if (region) then "--region" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     info_filter: "specifies a filter to apply to the info fields of records,\\nremoves alleles which do not pass the filter"
     genotype_filter: "a filter to apply to the genotype fields of records"

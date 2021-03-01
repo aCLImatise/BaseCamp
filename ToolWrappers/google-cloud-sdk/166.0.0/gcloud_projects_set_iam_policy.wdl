@@ -14,6 +14,9 @@ task GcloudProjectsSetiampolicy {
       ~{optional} \
       ~{flags}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     project_id: ""
     policy_file: ""

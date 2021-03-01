@@ -18,6 +18,9 @@ task MmseqsExtractdomains {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_matches_evalue: "0.001           list matches below this E-value [0.0, inf]"
     list_matches_fraction: "0.000           list matches above this fraction of aligned (covered) residues (see --cov-mode)"

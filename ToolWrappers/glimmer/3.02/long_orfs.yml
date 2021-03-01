@@ -3,20 +3,135 @@ command:
 - long-orfs
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: sequence-file
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: output-file
-  optional: false
-named: []
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --start_codons
+  description: "Use comma-separated list of codons as start codons\nSample format:\
+    \  -A atg,gtg"
+  args: !SimpleFlagArg
+    name: codon-list
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  - --entropy
+  description: "Read entropy profiles from <filename>.  Format is one header\nline,\
+    \ then 20 lines of 3 columns each.  Columns are amino acid,\npositive entropy,\
+    \ negative entropy.  Rows must be in order\nby amino acid code letter"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fixed
+  description: "Do *NOT* automatically determine the minimum gene length so as\nto\
+    \ maximize the total length of output regions"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --min_len
+  description: Only genes with length >= <n> will be considered
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --ignore
+  description: "<filename> specifies regions of bases that are off\nlimits, so that\
+    \ no bases within that area will be examined"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --linear
+  description: Assume linear rather than circular genome, i.e., no wraparound
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --length_opt
+  description: "Find and use the minimum gene length that maximizes the total\nlength\
+    \ of non-overlapping genes, instead of maximizing the\nnumber of such genes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --no_header
+  description: "Do not include heading information in the output; only output\nthe\
+    \ orf-coordinate lines"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --max_olap
+  description: "Set maximum overlap length to <n>.  Overlaps this short or shorter\n\
+    are ignored."
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --cutoff
+  description: Only genes with entropy distance score less than <x> will be considered
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --without_stops
+  description: "Do *NOT* include the stop codon in the output coordinates.\nBy default,\
+    \ it is included."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --trans_table
+  description: Use Genbank translation table number <n> for stop codons
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -Z
+  - --stop_codons
+  description: "Use comma-separated list of codons as stop codons\nSample format:\
+    \  -Z tag,tga,taa\n"
+  args: !SimpleFlagArg
+    name: codon-list
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print this message
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Starting at Wed Sep  9 19:04:38 2020\n\nUSAGE:  long-orfs [options] <sequence-file>\
@@ -47,3 +162,4 @@ help_text: "Starting at Wed Sep  9 19:04:38 2020\n\nUSAGE:  long-orfs [options] 
   \n"
 generated_using:
 - --help
+docker_image:

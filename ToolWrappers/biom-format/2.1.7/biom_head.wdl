@@ -14,6 +14,9 @@ task BiomHead {
       ~{if defined(n_obs) then ("--n-obs " +  '"' + n_obs + '"') else ""} \
       ~{if defined(n_samp) then ("--n-samp " +  '"' + n_samp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fp: "The input BIOM table  [required]"
     output_fp: "An output file-path"

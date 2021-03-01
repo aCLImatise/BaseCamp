@@ -30,6 +30,9 @@ task FastutilsSubsample {
       ~{if (keep) then "--keep" else ""} \
       ~{if (fof_n) then "--fofn" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "input file in fasta/q format. This options is required if -r or -l are used [stdin]"
     out: "output file [stdout]"

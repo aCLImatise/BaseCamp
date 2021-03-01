@@ -40,6 +40,9 @@ task Pbsim {
       ~{if (accuracy_mean) then "--accuracy-mean" else ""} \
       ~{if (accuracy_sd) then "--accuracy-sd" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "prefix of output files (sd)."
     data_type: "data type. CLR or CCS (CLR)."

@@ -18,6 +18,9 @@ task PancakeSpecify {
       ~{if defined(genome_file) then ("--genome_file " +  '"' + genome_file + '"') else ""} \
       ~{if defined(delete) then ("--delete " +  '"' + delete + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_file: "Name of PanCake Data Object File (required)"
     chrom: "name(s) of respective chromosome(s)"

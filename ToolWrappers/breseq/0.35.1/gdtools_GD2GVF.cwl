@@ -4,17 +4,17 @@ inputs:
 - id: in_reference
   doc: File containing reference sequences in GenBank, GFF3, or FASTA format. Option
     may be provided multiple times for multiple files (REQUIRED)
-  type: File
+  type: File?
   inputBinding:
     prefix: --reference
 - id: in_output
   doc: name of output file (DEFAULT=output.gvf)
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_snv_only
   doc: only include SNP/SNV entries in output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --snv-only
 outputs:
@@ -23,9 +23,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: name of output file (DEFAULT=output.gvf)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gdtools

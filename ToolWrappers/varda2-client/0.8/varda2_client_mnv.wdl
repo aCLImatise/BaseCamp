@@ -14,6 +14,9 @@ task Varda2clientMnv {
       ~{if defined(inserted) then ("--inserted " +  '"' + inserted + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     start: "Start of region"
     end: "End of region"

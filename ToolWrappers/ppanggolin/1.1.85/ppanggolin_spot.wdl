@@ -32,6 +32,9 @@ task PpanggolinSpot {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_directory_defaultppanggolinoutputdatehourpid: "Output directory (default:\\nppanggolin_output_DATE2020-09-09_HOUR23.41.14_PID1862)"
     spot_graph: "Writes a graph in a .gexf format of pairs of blocks of\\nsingle copy markers flanking RGPs, supposedly\\nbelonging to the same hotspot (default: False)"

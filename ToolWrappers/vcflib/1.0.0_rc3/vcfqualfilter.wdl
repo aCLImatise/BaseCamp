@@ -4,6 +4,9 @@ task Vcfqualfilter {
   command <<<
     vcfqualfilter
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

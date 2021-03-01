@@ -36,6 +36,9 @@ task Nplikeness {
       ~{if defined(in_signatures_file) then ("-inSignaturesFile " +  '"' + in_signatures_file + '"') else ""} \
       ~{if (var_12) then "-generateSignatures" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input structure file to score or to"
     in_type: "Input file type: Enter sdf/smi"

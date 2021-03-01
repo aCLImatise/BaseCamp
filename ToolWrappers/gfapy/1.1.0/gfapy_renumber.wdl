@@ -10,6 +10,9 @@ task Gfapyrenumber {
       ~{gfa} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "output GFA file [/dev/stdout]"
     gfa: "input GFA file"

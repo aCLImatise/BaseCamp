@@ -18,6 +18,9 @@ task Kaiju2krona {
       ~{if (enable_verbose_output) then "-v" else ""} \
       ~{if (include_count_unclassified) then "-u" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_input_file: "Name of input file"
     name_output_file: "Name of output file."

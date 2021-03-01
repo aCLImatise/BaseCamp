@@ -106,6 +106,9 @@ task AdapterRemoval {
       ~{if defined(barcode_mm_r_two) then ("--barcode-mm-r2 " +  '"' + barcode_mm_r_two + '"') else ""} \
       ~{if (demultiplex_only) then "--demultiplex-only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_one: "Input files containing mate 1 reads or single-ended reads; one or\\nmore files may be listed [REQUIRED]."
     file_two: "[FILE ...]\\nInput files containing mate 2 reads; if used, then the same number of\\nfiles as --file1 must be listed [OPTIONAL]."

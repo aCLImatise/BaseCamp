@@ -5,141 +5,141 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -o
   description: "Explicit output file name. Note, this argument cannot\nbe used with\
     \ the --failed, --outdir, or --outname\narguments. If unspecified, then the output\
     \ filename\nwill be based on the input filename(s). (default:\nNone)"
-  synonyms:
-  - -o
   args: !RepeatFlagArg
     name: OUT_FILES
-  optional: true
 - !Flag
-  description: "Specify to changes the output directory to the\nlocation specified.\
-    \ The input file directory is used\nif this is not specified. (default: None)"
+  optional: true
   synonyms:
   - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
   args: !SimpleFlagArg
     name: OUT_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outname
   description: "Changes the prefix of the successfully processed\noutput file to the\
     \ string specified. May not be\nspecified with multiple input files. (default:\
     \ None)"
-  synonyms:
-  - --outname
   args: !SimpleFlagArg
     name: OUT_NAME
-  optional: true
 - !Flag
-  description: "Specify to write verbose logging to a file. May not be\nspecified\
-    \ with multiple input files. (default: None)"
+  optional: true
   synonyms:
   - --log
+  description: "Specify to write verbose logging to a file. May not be\nspecified\
+    \ with multiple input files. (default: None)"
   args: !SimpleFlagArg
     name: LOG_FILE
-  optional: true
 - !Flag
-  description: "If specified create files containing records that fail\nprocessing.\
-    \ (default: False)"
+  optional: true
   synonyms:
   - --failed
+  description: "If specified create files containing records that fail\nprocessing.\
+    \ (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Specify input and output format. (default: airr)'
+  optional: true
   synonyms:
   - --format
+  description: 'Specify input and output format. (default: airr)'
   args: !ChoiceFlagArg
     choices: !!set
-      airr:
       changeo:
-  optional: true
+      airr:
 - !Flag
-  description: "IgBLAST output files in format 7 with query sequence\n(igblastp argument\
-    \ '-outfmt \"7 std qseq sseq btop\"').\n(default: None)"
+  optional: true
   synonyms:
   - -i
+  description: "IgBLAST output files in format 7 with query sequence\n(igblastp argument\
+    \ '-outfmt \"7 std qseq sseq btop\"').\n(default: None)"
   args: !RepeatFlagArg
     name: ALIGNER_FILES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
   description: "List of folders and/or fasta files containing the same\ngermline set\
     \ used in the IgBLAST alignment. These\nreference sequences must contain IMGT-numbering\n\
     spacers (gaps) in the V segment. (default: None)"
-  synonyms:
-  - -r
   args: !RepeatFlagArg
     name: REPO
-  optional: true
 - !Flag
-  description: "List of input FASTA files (with .fasta, .fna or .fa\nextension), containing\
-    \ sequences. (default: None)"
+  optional: true
   synonyms:
   - -s
+  description: "List of input FASTA files (with .fasta, .fna or .fa\nextension), containing\
+    \ sequences. (default: None)"
   args: !RepeatFlagArg
     name: SEQ_FILES
-  optional: true
 - !Flag
-  description: "Table file containing 10X annotations (with .csv or\n.tsv extension).\
-    \ (default: None)"
+  optional: true
   synonyms:
   - --10x
+  description: "Table file containing 10X annotations (with .csv or\n.tsv extension).\
+    \ (default: None)"
   args: !RepeatFlagArg
     name: CELLRANGER_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --asis-id
   description: "Specify to prevent input sequence headers from being\nparsed to add\
     \ new columns to database. Parsing of\nsequence headers requires headers to be\
     \ in the pRESTO\nannotation format, so this should be specified when\nsequence\
     \ headers are incompatible with the pRESTO\nannotation scheme. Note, unrecognized\
     \ header formats\nwill default to this behavior. (default: False)"
-  synonyms:
-  - --asis-id
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --asis-calls
   description: "Specify to prevent gene calls from being parsed into\nstandard allele\
     \ names in both the IgBLAST output and\nreference database. Note, this requires\
     \ the sequence\nidentifiers in the reference sequence set and the\nIgBLAST database\
     \ to be exact string matches. (default:\nFalse)"
-  synonyms:
-  - --asis-calls
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extended
   description: "Specify to include additional aligner specific fields\nin the output.\
     \ Adds v_score, v_identity, v_support,\nv_cigar, fwr1, fwr2, fwr3, cdr1 and cdr2.\
     \ (default:\nFalse)"
-  synonyms:
-  - --extended
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "IMGT CDR and FWR boundary definition to use. (default:\ndefault)\n"
+  optional: true
   synonyms:
   - --regions
+  description: "IMGT CDR and FWR boundary definition to use. (default:\ndefault)\n"
   args: !ChoiceFlagArg
     choices: !!set
       rhesus-igl:
       default:
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: MakeDb.py igblast-aa [--version] [-h] [-o OUT_FILES [OUT_FILES\
   \ ...]]\n                            [--outdir OUT_DIR] [--outname OUT_NAME]\n \
   \                           [--log LOG_FILE] [--failed]\n                      \
@@ -196,3 +196,4 @@ help_text: "usage: MakeDb.py igblast-aa [--version] [-h] [-o OUT_FILES [OUT_FILE
   \                        default)\n"
 generated_using:
 - --help
+docker_image:

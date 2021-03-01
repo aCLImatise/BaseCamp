@@ -4,6 +4,9 @@ task Swalignpy {
   command <<<
     swalign_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -14,6 +14,9 @@ task TbprofilerVariantMatrixpy {
       ~{if defined(txt) then ("--txt " +  '"' + txt + '"') else ""} \
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     samples: "NGS Platform (default: None)"
     dir: "NGS Platform (default: results/)"

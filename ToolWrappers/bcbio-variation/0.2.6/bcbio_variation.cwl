@@ -3,227 +3,227 @@ id: bcbio_variation.cwl
 inputs:
 - id: in_analysis_type
   doc: Name of the tool to run
-  type: string
+  type: string?
   inputBinding:
     prefix: --analysis_type
 - id: in_arg_file
   doc: "Reads arguments from the\nspecified file"
-  type: File
+  type: File?
   inputBinding:
     prefix: --arg_file
 - id: in_input_file
   doc: "Input file containing sequence\ndata (SAM or BAM)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --input_file
 - id: in_read_buffer_size
   doc: "Number of reads per SAM file to\nbuffer in memory"
-  type: long
+  type: long?
   inputBinding:
     prefix: --read_buffer_size
 - id: in_phone_home
   doc: "Run reporting mode (NO_ET|AWS|\nSTDOUT)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --phone_home
 - id: in_g_atk_key
   doc: "GATK key file required to run\nwith -et NO_ET"
-  type: File
+  type: File?
   inputBinding:
     prefix: --gatk_key
 - id: in_tag
   doc: "Tag to identify this GATK run\nas part of a group of runs"
-  type: string
+  type: string?
   inputBinding:
     prefix: --tag
 - id: in_read_filter
   doc: "Filters to apply to reads\nbefore analysis"
-  type: string
+  type: string?
   inputBinding:
     prefix: --read_filter
 - id: in_intervals
   doc: "One or more genomic intervals\nover which to operate"
-  type: string
+  type: string?
   inputBinding:
     prefix: --intervals
 - id: in_exclude_intervals
   doc: "One or more genomic intervals\nto exclude from processing"
-  type: string
+  type: string?
   inputBinding:
     prefix: --excludeIntervals
 - id: in_interval_set_rule
   doc: "Set merging approach to use for\ncombining interval inputs\n(UNION|INTERSECTION)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --interval_set_rule
 - id: in_interval_merging
   doc: "Interval merging rule for\nabutting intervals (ALL|\nOVERLAPPING_ONLY)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --interval_merging
 - id: in_interval_padding
   doc: "Amount of padding (in bp) to\nadd to each interval"
-  type: string
+  type: string?
   inputBinding:
     prefix: --interval_padding
 - id: in_reference_sequence
   doc: Reference sequence file
-  type: File
+  type: File?
   inputBinding:
     prefix: --reference_sequence
 - id: in_nondeterministic_random_seed
   doc: Use a non-deterministic random
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nonDeterministicRandomSeed
 - id: in_max_runtime_units
   doc: "Unit of time used by maxRuntime\n(NANOSECONDS|MICROSECONDS|\nMILLISECONDS|SECONDS|MINUTES|\n\
     HOURS|DAYS)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxRuntimeUnits
 - id: in_downsampling_type
   doc: "Type of read downsampling to\nemploy at a given locus (NONE|\nALL_READS|BY_SAMPLE)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --downsampling_type
 - id: in_down_sample_to_fraction
   doc: Fraction of reads to downsample
-  type: string
+  type: string?
   inputBinding:
     prefix: --downsample_to_fraction
 - id: in_baq
   doc: "Type of BAQ calculation to\napply in the engine (OFF|\nCALCULATE_AS_NECESSARY|\n\
     RECALCULATE)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --baq
 - id: in_baq_gap_open_penalty
   doc: BAQ gap open penalty
-  type: string
+  type: string?
   inputBinding:
     prefix: --baqGapOpenPenalty
 - id: in_refactor_ndn_cigar_string
   doc: "refactor cigar string with NDN\nelements to one element"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --refactor_NDN_cigar_string
 - id: in_fix_m_is_encoded_quality_scores
   doc: Fix mis-encoded base quality
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fix_misencoded_quality_scores
 - id: in_use_original_qualities
   doc: "Use the base quality scores\nfrom the OQ tag"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --useOriginalQualities
 - id: in_default_base_qualities
   doc: Assign a default base quality
-  type: string
+  type: string?
   inputBinding:
     prefix: --defaultBaseQualities
 - id: in_performance_log
   doc: "Write GATK runtime performance\nlog to this file"
-  type: File
+  type: File?
   inputBinding:
     prefix: --performanceLog
 - id: in_b_qsr
   doc: "Input covariates table file for\non-the-fly base quality score\nrecalibration"
-  type: File
+  type: File?
   inputBinding:
     prefix: --BQSR
 - id: in_disable_in_del_quals
   doc: "Disable printing of base\ninsertion and deletion tags\n(with -BQSR)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --disable_indel_quals
 - id: in_emit_original_quals
   doc: "Emit the OQ tag with the\noriginal base qualities (with\n-BQSR)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --emit_original_quals
 - id: in_preserve_q_scores_less_than
   doc: "Don't recalibrate bases with\nquality scores less than this\nthreshold (with\
     \ -BQSR)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --preserve_qscores_less_than
 - id: in_global_q_score_prior
   doc: "Global Qscore Bayesian prior to\nuse for BQSR"
-  type: string
+  type: string?
   inputBinding:
     prefix: --globalQScorePrior
 - id: in_validation_strictness
   doc: "How strict should we be with\nvalidation (STRICT|LENIENT|\nSILENT)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --validation_strictness
 - id: in_remove_program_records
   doc: "Remove program records from the\nSAM header"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --remove_program_records
 - id: in_keep_program_records
   doc: Keep program records in the SAM
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep_program_records
 - id: in_unsafe
   doc: "Enable unsafe operations:\nnothing will be checked at\nruntime (ALLOW_N_CIGAR_READS|\n\
     ALLOW_UNINDEXED_BAM|\nALLOW_UNSET_BAM_SORT_ORDER|\nNO_READ_ORDER_VERIFICATION|\n\
     ALLOW_SEQ_DICT_INCOMPATIBILITY|\nLENIENT_VCF_PROCESSING|ALL)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --unsafe
 - id: in_num_threads
   doc: "Number of data threads to\nallocate to this analysis"
-  type: long
+  type: long?
   inputBinding:
     prefix: --num_threads
 - id: in_num_cpu_threads_per_data_thread
   doc: "Number of CPU threads to\nallocate per data thread"
-  type: long
+  type: long?
   inputBinding:
     prefix: --num_cpu_threads_per_data_thread
 - id: in_monitor_thread_efficiency
   doc: Enable threading efficiency
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --monitorThreadEfficiency
 - id: in_pedigree_string
   doc: Pedigree string for samples
-  type: string
+  type: string?
   inputBinding:
     prefix: --pedigreeString
 - id: in_pedigree_validation_type
   doc: "Validation strictness for\npedigree information (STRICT|\nSILENT)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --pedigreeValidationType
 - id: in_variant_index_type
   doc: "Type of IndexCreator to use for\nVCF/BCF indices (DYNAMIC_SEEK|\nDYNAMIC_SIZE|LINEAR|INTERVAL)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --variant_index_type
 - id: in_variant_index_parameter
   doc: "Parameter to pass to the\nVCF/BCF IndexCreator"
-  type: string
+  type: string?
   inputBinding:
     prefix: --variant_index_parameter
 - id: in_logging_level
   doc: Set the minimum level of
-  type: string
+  type: string?
   inputBinding:
     prefix: --logging_level
 - id: in_max_runtime
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -maxRuntime
 - id: in_jar
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -jar
 - id: in_seed
@@ -415,7 +415,7 @@ inputs:
   type: string
   inputBinding:
     position: 20
-- id: in_countrods_prints_counts
+- id: in_countrods_prints_encountered
   doc: CountRODs                     Prints out counts of the number of reference
     ordered data objects encountered.
   type: string
@@ -580,6 +580,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bcbio-variation

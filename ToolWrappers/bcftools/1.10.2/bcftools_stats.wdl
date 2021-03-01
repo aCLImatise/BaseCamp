@@ -50,6 +50,9 @@ task BcftoolsStats {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     af_bins: "allele frequency bins, a list (0.1,0.5,1) or a file (0.1\\n0.5\\n1)"
     af_tag: "allele frequency tag to use, by default estimated from AN,AC or GT"

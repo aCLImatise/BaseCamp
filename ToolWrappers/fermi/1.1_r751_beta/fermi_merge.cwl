@@ -3,17 +3,17 @@ id: fermi_merge.cwl
 inputs:
 - id: in_force_overwrite_file
   doc: force to overwrite the output file (effective with -o)
-  type: File
+  type: File?
   inputBinding:
     prefix: -f
 - id: in_output_file_name
   doc: output file name [null]
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_number_threads_use
   doc: number of threads to use
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_in_zero_dot_bwt
@@ -32,14 +32,15 @@ outputs:
   type: stdout
 - id: out_force_overwrite_file
   doc: force to overwrite the output file (effective with -o)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_force_overwrite_file)
 - id: out_output_file_name
   doc: output file name [null]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file_name)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fermi

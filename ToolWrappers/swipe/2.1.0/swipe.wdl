@@ -58,10 +58,13 @@ task Swipe {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(db_size) then ("--dbsize " +  '"' + db_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "sequence database base name (required)"
     query: "query sequence filename (stdin)"
-    matrix: "score matrix name or filename (BLOSUM62)"
+    matrix: "/FILE     score matrix name or filename (BLOSUM62)"
     penalty: "penalty for nucleotide mismatch (-3)"
     reward: "reward for nucleotide match (1)"
     gap_open: "gap open penalty (11)"
@@ -75,8 +78,8 @@ task Swipe {
     num_threads: "number of threads to use [1-256] (1)"
     out_fmt: "output format [0,7-9=plain,xml,tsv,tsv+] (0)"
     show_gis: "show gi numbers in results (no)"
-    sym_type: "symbol type/translation [0-4] (1)"
-    strand: "query strands to search [1-3] (3)"
+    sym_type: "/NUM     symbol type/translation [0-4] (1)"
+    strand: "/NUM      query strands to search [1-3] (3)"
     query_gen_code: "query genetic code [1-23] (1)"
     db_gen_code: "database genetic code [1-23] (1)"
     taxid_list: "taxid list filename (none)"

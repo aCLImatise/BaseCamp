@@ -24,6 +24,9 @@ task PhyluceAlignFilterAlignments {
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignments: "The directory containing the alignment files"
     directory_write_alignments: "The directory to write alignments meeting criteria."

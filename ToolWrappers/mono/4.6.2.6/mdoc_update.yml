@@ -3,163 +3,163 @@ command:
 - mdoc-update
 positional:
 - !Positional
-  description: 'SOURCES is a comma-separated list of:'
+  optional: false
   position: 0
   name: generate.
-  optional: false
+  description: 'SOURCES is a comma-separated list of:'
 - !Positional
-  description: Method calls in same assembly
+  optional: false
   position: 1
   name: asm
-  optional: false
+  description: Method calls in same assembly
 - !Positional
-  description: Method calls in dependent assemblies
+  optional: false
   position: 2
   name: depasm
-  optional: false
+  description: Method calls in dependent assemblies
 - !Positional
-  description: Record all possible exceptions
+  optional: false
   position: 3
   name: all
-  optional: false
+  description: Record all possible exceptions
 - !Positional
-  description: "Modifier; only create <exception/>s\nfor NEW types/members"
+  optional: false
   position: 4
   name: added
-  optional: false
+  description: "Modifier; only create <exception/>s\nfor NEW types/members"
 named:
 - !Flag
-  description: Delete removed members from the XML files.
+  optional: true
   synonyms:
   - --delete
+  description: Delete removed members from the XML files.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[=SOURCES] Document potential exceptions that members can'
+  optional: true
   synonyms:
   - --exceptions
+  description: '[=SOURCES] Document potential exceptions that members can'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify a FLAG to alter behavior.  See later -f*\noptions for available\
-    \ flags."
+  optional: true
   synonyms:
   - -f
+  description: "Specify a FLAG to alter behavior.  See later -f*\noptions for available\
+    \ flags."
   args: !SimpleFlagArg
     name: FLAG
-  optional: true
 - !Flag
-  description: "Do not report an error if a --type=TYPE type\nwas not found."
+  optional: true
   synonyms:
   - --fignore-missing-types
+  description: "Do not report an error if a --type=TYPE type\nwas not found."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not generate //AssemblyVersion elements.
+  optional: true
   synonyms:
   - --fno-assembly-versions
+  description: Do not generate //AssemblyVersion elements.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Import documentation from FILE.
+  optional: true
   synonyms:
   - -i
   - --import
+  description: Import documentation from FILE.
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: Check for assembly references in DIRECTORY.
+  optional: true
   synonyms:
   - -L
   - --lib
+  description: Check for assembly references in DIRECTORY.
   args: !SimpleFlagArg
     name: DIRECTORY
-  optional: true
 - !Flag
-  description: Ignored for compatibility with update-ecma-xml.
+  optional: true
   synonyms:
   - --library
+  description: Ignored for compatibility with update-ecma-xml.
   args: !SimpleFlagArg
     name: VALUE
-  optional: true
 - !Flag
-  description: Root DIRECTORY to generate/update documentation.
+  optional: true
   synonyms:
   - -o
   - --out
+  description: Root DIRECTORY to generate/update documentation.
   args: !SimpleFlagArg
     name: DIRECTORY
-  optional: true
 - !Flag
-  description: "Search for dependent assemblies in the directory\ncontaining ASSEMBLY.\n\
-    (Equivalent to '-L `dirname ASSEMBLY`'.)"
+  optional: true
   synonyms:
   - -r
+  description: "Search for dependent assemblies in the directory\ncontaining ASSEMBLY.\n\
+    (Equivalent to '-L `dirname ASSEMBLY`'.)"
   args: !SimpleFlagArg
     name: ASSEMBLY
-  optional: true
 - !Flag
-  description: "Manually specify the assembly VERSION that new\nmembers were added\
-    \ in."
+  optional: true
   synonyms:
   - --since
+  description: "Manually specify the assembly VERSION that new\nmembers were added\
+    \ in."
   args: !SimpleFlagArg
     name: VERSION
-  optional: true
 - !Flag
-  description: Only update documentation for TYPE.
+  optional: true
   synonyms:
   - --type
+  description: Only update documentation for TYPE.
   args: !SimpleFlagArg
     name: TYPE
-  optional: true
 - !Flag
-  description: "When processing assembly ASSEMBLY, strip off\nleading namespace PREFIX:\n\
-    e.g. --dropns ASSEMBLY=PREFIX"
+  optional: true
   synonyms:
   - --dropns
+  description: "When processing assembly ASSEMBLY, strip off\nleading namespace PREFIX:\n\
+    e.g. --dropns ASSEMBLY=PREFIX"
   args: !SimpleFlagArg
     name: ASSEMBLY
-  optional: true
 - !Flag
-  description: "If the new assembly is switching to 'magic types',\nthen this switch\
-    \ should be defined."
+  optional: true
   synonyms:
   - --ntypes
+  description: "If the new assembly is switching to 'magic types',\nthen this switch\
+    \ should be defined."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not delete members that don't exist in the\nassembly, but rather\
-    \ mark them as preserved."
+  optional: true
   synonyms:
   - --preserve
+  description: "Do not delete members that don't exist in the\nassembly, but rather\
+    \ mark them as preserved."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Allow types to be in multiple assemblies.
+  optional: true
   synonyms:
   - --multiassembly
+  description: Allow types to be in multiple assemblies.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --api-style
   description: "Denotes the apistyle. Currently, only `classic`\nand `unified` are\
     \ supported. `classic` set of\nassemblies should be run first, immediately\nfollowed\
     \ by 'unified' assemblies with the `\ndropns` parameter."
-  synonyms:
-  - --api-style
   args: !SimpleFlagArg
     name: VALUE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ', -?, --help             Show this message and exit.'
+  optional: true
   synonyms:
   - -h
+  description: ', -?, --help             Show this message and exit.'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: mdoc update [OPTIONS]+ ASSEMBLIES\n\nCreate or update documentation\
@@ -201,3 +201,4 @@ help_text: "usage: mdoc update [OPTIONS]+ ASSEMBLIES\n\nCreate or update documen
   \          Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

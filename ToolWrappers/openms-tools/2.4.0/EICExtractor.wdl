@@ -30,6 +30,9 @@ task EICExtractor {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*        Input raw data file (valid formats: 'mzML')"
     in_header: "[for Waters data only] Read additional information from _HEADER.TXT. Provide one for each raw input file. (valid formats: 'txt')"

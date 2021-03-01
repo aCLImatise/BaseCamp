@@ -3,204 +3,204 @@ command:
 - crispector
 positional:
 - !Positional
-  description: -m_r2, --mock_in2 PATH          Mock read read 2 input path, if FASTQ
-    files
+  optional: false
   position: 0
   name: file
-  optional: false
+  description: -m_r2, --mock_in2 PATH          Mock read read 2 input path, if FASTQ
+    files
 named:
 - !Flag
-  description: Tx read 1 input path or Tx merged FASTQ file
+  optional: true
   synonyms:
   - -t_r1
   - --tx_in1
+  description: Tx read 1 input path or Tx merged FASTQ file
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Tx read 2 input path, if FASTQ files aren't\nmerged [OPTIONAL]"
+  optional: true
   synonyms:
   - -t_r2
   - --tx_in2
+  description: "Tx read 2 input path, if FASTQ files aren't\nmerged [OPTIONAL]"
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: Mock read 1 input path or mock merged FASTQ
+  optional: true
   synonyms:
   - -m_r1
   - --mock_in1
+  description: Mock read 1 input path or mock merged FASTQ
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --experiment_config
   description: "A CSV (Comma Separated Values‏) file with\nthe experiment data. Table\
     \ has 11 columns:\nSiteName, AmpliconReference, gRNA, OnTarget,\nForwardPrimer,\
     \ ReversePrimer,TxInput1Path\nTxInput2Path, MockInput1Path,\nMockInput2Path, DonorReference.\
     \ The first 4\ncolumns are required, the rest are optional.\nHeader should be\
     \ specified by the above\norder. Please check the README on GitHub\nfurther details\
     \ and examples.  [required]"
-  synonyms:
-  - -c
-  - --experiment_config
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: Path to output folder
+  optional: true
   synonyms:
   - -o
   - --report_output
+  description: Path to output folder
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cut_site_position
   description: "Expected cut-site position with respect to\nthe 3' end of the provided\
     \ sgRNA sequence.\nNote, the sgRNA sequence must be entered\nwithout the PAM.\
     \  [default: -3]"
-  synonyms:
-  - --cut_site_position
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Path to crispector configuration in YAML\nformat.See \"Advanced usage\"\
-    \ section in\nREADME on GitHub for further."
+  optional: true
   synonyms:
   - --crispector_config
+  description: "Path to crispector configuration in YAML\nformat.See \"Advanced usage\"\
+    \ section in\nREADME on GitHub for further."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: Try "fastp --help" for more details
+  optional: true
   synonyms:
   - --fastp_options_string
+  description: Try "fastp --help" for more details
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Minimum number of reads (per locus site) to\nevaluate edit events\
-    \  [default: 500]"
+  optional: true
   synonyms:
   - --min_num_of_reads
+  description: "Minimum number of reads (per locus site) to\nevaluate edit events\
+    \  [default: 500]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min_read_length_without_primers
   description: "Filter out any read shorter than\nmin_read_length_without_primers\
     \ + length of\nforward and reverse primers. This threshold\nfilters primer-dimmer\
     \ effect reads.\n[default: 10]"
-  synonyms:
-  - --min_read_length_without_primers
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Maximum edit distance to consider a read\nprefix (or suffix) as a\
-    \ match for a primer.\n[default: 8]"
+  optional: true
   synonyms:
   - --max_edit_distance_on_primers
+  description: "Maximum edit distance to consider a read\nprefix (or suffix) as a\
+    \ match for a primer.\n[default: 8]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --amplicon_min_score
   description: "RANGE\nMinimum normalized alignment score to\nconsider a read alignment\
     \ as valid.\nNormalized alignment score is defined as the\nNeedleman-Wunch alignment\
     \ score divided by\nthe maximum possible score. Below this\nalignment threshold,\
     \ reads are discarded.\n[default: 30]"
-  synonyms:
-  - --amplicon_min_score
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --translocation_amplicon_min_score
   description: "RANGE\nMinimum alignment score to consider a read\nwith primer inconsistency\
     \ as a possible\ntranslocation. Should be higher than\n--amplicon_min_score, because\
     \ translocations\nreads are noisier.Score is normalized\nbetween 0 (not even one\
     \ bp match) to 100\n(read is identical to  [default: 80]"
-  synonyms:
-  - --translocation_amplicon_min_score
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min_editing_activity
   description: "RANGE\nMinimum editing activity (%). Sites with\nediting activity\
     \ lower than the minimum,\nwill be discarded from the translocation\ndetection.\
     \  [default: 0.1]"
-  synonyms:
-  - --min_editing_activity
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --translocation_p_value
   description: "RANGE\nTranslocations statistical significance\nlevel. This threshold\
     \ is applied on the\ncorrected p_value,FDR (false discovery\nrate).  [default:\
     \ 0.05]"
-  synonyms:
-  - --translocation_p_value
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Disable translocations detection  [default:\nFalse]"
+  optional: true
   synonyms:
   - --disable_translocations
+  description: "Disable translocations detection  [default:\nFalse]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --override_noise_estimation
   description: "Override noise estimation with default q\nparameter from crispector_config\
     \ file. It's\nadvisable to set this flag for experiment\nwith a low number of\
     \ off-target sites (<5).\nq is defined as the probability of an indel\nto occur\
     \ through an edit event. Check\nCRISPECTOR paper for more details.\n[default:\
     \ False]"
-  synonyms:
-  - --override_noise_estimation
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "RANGE\nConfidence interval for the evaluated\nediting activity  [default:\
-    \ 0.95]"
+  optional: true
   synonyms:
   - --confidence_interval
+  description: "RANGE\nConfidence interval for the evaluated\nediting activity  [default:\
+    \ 0.95]"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Enable substitutions events for the\nquantification of edit events\
-    \  [default:\nFalse]"
+  optional: true
   synonyms:
   - --enable_substitutions
+  description: "Enable substitutions events for the\nquantification of edit events\
+    \  [default:\nFalse]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not create plots for sites (save memory\nand runtime)  [default:\
-    \ False]"
+  optional: true
   synonyms:
   - --suppress_site_output
+  description: "Do not create plots for sites (save memory\nand runtime)  [default:\
+    \ False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Keep intermediate files for debug purposes\n[default: False; required]"
+  optional: true
   synonyms:
   - --keep_intermediate_files
+  description: "Keep intermediate files for debug purposes\n[default: False; required]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Higher verbosity  [default: False]'
+  optional: true
   synonyms:
   - --verbose
+  description: 'Higher verbosity  [default: False]'
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: crispector [OPTIONS]\n\n  Accurate estimation of genome editing\
@@ -282,3 +282,4 @@ help_text: "Usage: crispector [OPTIONS]\n\n  Accurate estimation of genome editi
   \           Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

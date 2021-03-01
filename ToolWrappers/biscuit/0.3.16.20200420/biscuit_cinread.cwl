@@ -3,28 +3,28 @@ id: biscuit_cinread.cwl
 inputs:
 - id: in_region
   doc: region.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
-- id: in_target_c_ch
+- id: in_target_c_cg
   doc: target (c, cg, ch, hcg, gch, hch) [cg]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
-- id: in_content_print_cgrposcqpos
+- id: in_content_print_delimitedqname
   doc: "content to print, \",\"-delimited:\nQNAME, QPAIR, STRAND, BSSTRAND, MAPQ\n\
     QBEG, QEND, CHRM, CRPOS, CGRPOS\nCQPOS, CRBASE, CCTXT, CQBASE, CRETENTION\n[QNAME,QPAIR,BSSTRAND,CRBASE,CQBASE]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_consider_secondary_mapping
   doc: consider secondary mapping.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_output
   doc: output.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -o
 - id: in_cin_read
@@ -46,6 +46,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - biscuit

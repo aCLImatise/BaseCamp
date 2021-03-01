@@ -16,6 +16,9 @@ task JunctionAnnotationpy {
       ~{if defined(min_intron) then ("--min-intron " +  '"' + min_intron + '"') else ""} \
       ~{if defined(mapq) then ("--mapq " +  '"' + mapq + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Alignment file in BAM or SAM format."
     ref_gene: "Reference gene model in bed format. This file is\\nbetter to be a pooled gene model as it will be used to\\nannotate splicing junctions [required]"

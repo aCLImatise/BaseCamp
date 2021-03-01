@@ -16,6 +16,9 @@ task SplashUtilconversionrateBam {
       ~{if defined(region) then ("-region " +  '"' + region + '"') else ""} \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rev: ""
     region: ""

@@ -20,6 +20,9 @@ task MedpyApparentDiffusionCoefficientpy {
       ~{if (display_debug_information) then "-d" else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threshold: "set a fixed threshold for the input images to mask the\\ncomputation"
     verbose: "verbose output"

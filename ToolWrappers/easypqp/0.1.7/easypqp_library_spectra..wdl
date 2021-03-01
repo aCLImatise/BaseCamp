@@ -12,6 +12,9 @@ task EasypqpLibrarySpectra {
       ~{library} \
       ~{in_files}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     easy_pqp: ""
     library: ""

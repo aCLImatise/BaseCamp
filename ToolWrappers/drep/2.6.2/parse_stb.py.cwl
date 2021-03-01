@@ -3,23 +3,23 @@ id: parse_stb.py.cwl
 inputs:
 - id: in_stb
   doc: 'scaffold to bin file (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --stb
 - id: in_fasta_file_extract
   doc: "[FASTA [FASTA ...]], --fasta [FASTA [FASTA ...]]\nfasta file to extract scaffolds\
     \ from. Will treat as\ncompressed if ends in .gz (default: None)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_output
   doc: 'output base name (default: )'
-  type: string
+  type: string?
   inputBinding:
     prefix: --output
 - id: in_reverse
   doc: 'generate a stb from a list of genomes (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reverse
 - id: in_the
@@ -71,6 +71,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - parse_stb.py

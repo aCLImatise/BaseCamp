@@ -1,31 +1,30 @@
 class: CommandLineTool
 id: lorikeet_merge_spoligotypes.cwl
 inputs:
-- id: in__input_valueinput
-  doc: "| --input <value>\nInput directory that contains all spoligotype files. You\
-    \ can specify multiple -i arguments"
-  type: Directory
+- id: in_input
+  doc: Input directory that contains all spoligotype files. You can specify multiple
+    -i arguments
+  type: Directory?
   inputBinding:
-    prefix: -i
-- id: in__output_valueoutput
-  doc: "| --output <value>\nOutput prefix"
-  type: string
+    prefix: --input
+- id: in_output
+  doc: Output prefix
+  type: string?
   inputBinding:
-    prefix: -o
-- id: in__recursivesearch_input
-  doc: "| --recursive\nSearch input directories recursively [Default=true]"
-  type: boolean
+    prefix: --output
+- id: in_recursive
+  doc: Search input directories recursively [Default=true]
+  type: boolean?
   inputBinding:
-    prefix: -r
-- id: in__pattern_valuefile
-  doc: "| --pattern <value>\nFile name pattern for the input files. [Default=\".*.spoligotype]\"\
-    \n"
-  type: File
+    prefix: --recursive
+- id: in_pattern
+  doc: "File name pattern for the input files. [Default=\".*.spoligotype]\"\n"
+  type: File?
   inputBinding:
-    prefix: -p
+    prefix: --pattern
 - id: in_jar
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -jar
 - id: in_java
@@ -42,6 +41,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - lorikeet

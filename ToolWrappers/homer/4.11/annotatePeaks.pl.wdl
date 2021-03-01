@@ -18,7 +18,7 @@ task AnnotatePeakspl {
     Int? matrix
     File? m_bed
     File? m_logic
-    Directory? list_showtag_counts
+    Directory? list_experiment_directories
     Int? bed_graph
     File? wig
     File? find_nearest_peaks
@@ -58,7 +58,7 @@ task AnnotatePeakspl {
     File? g_was_catalog
     File? mapping_peak_ids
     Boolean? no_gene
-    Boolean? homer_one_slash_homer_two
+    Boolean? homer_one
     Boolean? cpu
     Boolean? no_blanks
     File peak_file_vertical_line_tss
@@ -88,7 +88,7 @@ task AnnotatePeakspl {
       ~{if defined(matrix) then ("-matrix " +  '"' + matrix + '"') else ""} \
       ~{if defined(m_bed) then ("-mbed " +  '"' + m_bed + '"') else ""} \
       ~{if defined(m_logic) then ("-mlogic " +  '"' + m_logic + '"') else ""} \
-      ~{if defined(list_showtag_counts) then ("-d " +  '"' + list_showtag_counts + '"') else ""} \
+      ~{if defined(list_experiment_directories) then ("-d " +  '"' + list_experiment_directories + '"') else ""} \
       ~{if defined(bed_graph) then ("-bedGraph " +  '"' + bed_graph + '"') else ""} \
       ~{if defined(wig) then ("-wig " +  '"' + wig + '"') else ""} \
       ~{if defined(find_nearest_peaks) then ("-p " +  '"' + find_nearest_peaks + '"') else ""} \
@@ -128,10 +128,13 @@ task AnnotatePeakspl {
       ~{if defined(g_was_catalog) then ("-gwasCatalog " +  '"' + g_was_catalog + '"') else ""} \
       ~{if defined(mapping_peak_ids) then ("-map " +  '"' + mapping_peak_ids + '"') else ""} \
       ~{if (no_gene) then "-nogene" else ""} \
-      ~{if (homer_one_slash_homer_two) then "-homer1/-homer2" else ""} \
+      ~{if (homer_one) then "-homer1" else ""} \
       ~{if (cpu) then "-cpu" else ""} \
       ~{if (no_blanks) then "-noblanks" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gtf: "(Use -gff and -gff3 if appropriate, but GTF is better)"
     gid: "(by default the GTF file is processed by transcript_id, use this option for gene_id)"
@@ -149,7 +152,7 @@ task AnnotatePeakspl {
     matrix: "(outputs a motif co-occurrence files:\\nprefix.count.matrix.txt - number of peaks with motif co-occurrence\\nprefix.ratio.matrix.txt - ratio of observed vs. expected  co-occurrence\\nprefix.logPvalue.matrix.txt - co-occurrence enrichment\\nprefix.stats.txt - table of pair-wise motif co-occurrence statistics\\nadditional options:\\n-matrixMinDist <#> (minimum distance between motif pairs - to avoid overlap, default: 4)\\n-matrixMaxDist <#> (maximum distance between motif pairs)"
     m_bed: "(Output motif positions to a BED file to load at UCSC (or -mpeak))"
     m_logic: "(will output stats on common motif orientations)"
-    list_showtag_counts: "[tag directory 2] ... (list of experiment directories to show\\ntag counts for) NOTE: -dfile <file> where file is a list of directories in first column"
+    list_experiment_directories: "[tag directory 2] ... (list of experiment directories to show\\ntag counts for) NOTE: -dfile <file> where file is a list of directories in first column"
     bed_graph: "[bedGraph file 2] ... (read coverage counts from bedGraph files)"
     wig: "[wiggle file 2] ... (read coverage counts from wiggle files)"
     find_nearest_peaks: "[peak file 2] ... (to find nearest peaks)"
@@ -189,7 +192,7 @@ task AnnotatePeakspl {
     g_was_catalog: "(list overlapping GWAS risk SNPs)"
     mapping_peak_ids: "(mapping between peak IDs and promoter IDs, overrides closest assignment)"
     no_gene: "(skip genome annotation step, skip TSS annotation)"
-    homer_one_slash_homer_two: "(by default, the new version of homer [-homer2] is used for finding motifs)"
+    homer_one: "(by default, the new version of homer [-homer2] is used for finding motifs)"
     cpu: "<#> (Number of processors to use when possible - only some parts utilize multiple cores)"
     no_blanks: "(remove peaks/rows with missing data)"
     peak_file_vertical_line_tss: ""

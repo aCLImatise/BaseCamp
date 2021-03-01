@@ -8,6 +8,9 @@ task BiocondautilsVisualization {
     bioconda_utils visualization \
       ~{biocon_da_utils}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     biocon_da_utils: ""
   }

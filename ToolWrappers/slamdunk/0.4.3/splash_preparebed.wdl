@@ -12,6 +12,9 @@ task SplashPreparebed {
       ~{if defined(read_length) then ("--read-length " +  '"' + read_length + '"') else ""} \
       ~{if defined(output_dir) then ("--outputDir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "BED file"
     read_length: "All UTRs short than the read length are removed."

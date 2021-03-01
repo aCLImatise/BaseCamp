@@ -2,12 +2,15 @@ class: CommandLineTool
 id: quasitools_call_aavar.cwl
 inputs:
 - id: in_min_freq
-  doc: "the minimum required frequency.\n-e, --error_rate FLOAT  estimated sequencing\
-    \ error rate.\n-o, --output FILENAME\n--help                  Show this message\
-    \ and exit.\n"
-  type: double
+  doc: the minimum required frequency.
+  type: double?
   inputBinding:
     prefix: --min_freq
+- id: in_error_rate
+  doc: estimated sequencing error rate.
+  type: double?
+  inputBinding:
+    prefix: --error_rate
 - id: in_bam
   doc: ''
   type: string
@@ -25,13 +28,14 @@ inputs:
     position: 2
 - id: in_variants
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 3
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - quasitools

@@ -16,6 +16,9 @@ task HLAProfilerplCountReads {
       ~{if (output_directory) then "-output_directory" else ""} \
       ~{if (threads) then "-threads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reads_directory: "location of directory containing filtered read fastqs. Please make sure to filter files using HLAProfiler.pl filter before counting (required)"
     sample_name: "|sn         name of the sample. This must perfect match the prefix of each of the read count files. i.e. The sample name for file NA12878.200.B_1.uniq.cnt would be NA12878.200 (required)"

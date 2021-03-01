@@ -1,30 +1,26 @@
 class: CommandLineTool
 id: advntr_viewmodel.cwl
 inputs:
-- id: in_h_slash_help
-  doc: show this help message and exit
-  type: boolean
-  inputBinding:
-    prefix: -h/--help
-- id: in_g_slash_gene
+- id: in_gene
   doc: comma-separated list of Gene Names
-  type: string
+  type: string?
   inputBinding:
-    prefix: -g/--gene
-- id: in_p_slash_pattern
+    prefix: --gene
+- id: in_pattern
   doc: repeating pattern of VNTR in forward (5' to 3') direction
-  type: long
+  type: long?
   inputBinding:
-    prefix: -p/--pattern
-- id: in_m_slash_models
+    prefix: --pattern
+- id: in_models
   doc: VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]
-  type: File
+  type: File?
   inputBinding:
-    prefix: -m/--models
+    prefix: --models
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - advntr

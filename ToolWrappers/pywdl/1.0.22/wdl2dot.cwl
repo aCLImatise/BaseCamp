@@ -3,12 +3,12 @@ id: wdl2dot.cwl
 inputs:
 - id: in_input_file
   doc: Input wdl file
-  type: File
+  type: File?
   inputBinding:
     prefix: --input_file
 - id: in_output_file
   doc: "Output dot file\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_file
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: "Output dot file\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - wdl2dot

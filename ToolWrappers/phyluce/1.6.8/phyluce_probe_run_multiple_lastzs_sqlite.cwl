@@ -1,28 +1,26 @@
 class: CommandLineTool
 id: phyluce_probe_run_multiple_lastzs_sqlite.cwl
 inputs:
-- id: in_probe_file
-  doc: "[--chromolist CHROMOLIST [CHROMOLIST ...]]\n[--scaffoldlist SCAFFOLDLIST [SCAFFOLDLIST\
-    \ ...]]\n[--append] [--no-dir]\n[--cores CORES]\n[--genome-base-path BASE_PATH]\n\
-    [--coverage COVERAGE]\n[--identity IDENTITY]"
-  type: File
-  inputBinding:
-    prefix: --probefile
 - id: in_db
   doc: The database in which to store results (also use
-  type: string
+  type: string?
   inputBinding:
     prefix: --db
 - id: in_append
   doc: adding results to an existing database)
-  type: string
+  type: string?
   inputBinding:
     prefix: --append
 - id: in_output
   doc: The directory in which to store the LASTZ files
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
+- id: in_probe_file
+  doc: The probe file to align against the sequences
+  type: File?
+  inputBinding:
+    prefix: --probefile
 - id: in_chromo_list
   doc: "The list of organisms with genome sequences in\nchromosomes"
   type: string[]
@@ -35,22 +33,22 @@ inputs:
     prefix: --scaffoldlist
 - id: in_no_dir
   doc: If genome sequences are not in their own abbr.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-dir
 - id: in_genome_base_path
   doc: "The base path to a directory containing genomes\nsequences"
-  type: File
+  type: File?
   inputBinding:
     prefix: --genome-base-path
 - id: in_coverage
   doc: The default coverage to search for using lastz
-  type: string
+  type: string?
   inputBinding:
     prefix: --coverage
 - id: in_identity
   doc: The default percent identity to search for using lastz
-  type: string
+  type: string?
   inputBinding:
     prefix: --identity
 - id: in_directory
@@ -62,6 +60,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phyluce_probe_run_multiple_lastzs_sqlite

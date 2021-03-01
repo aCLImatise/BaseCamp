@@ -8,6 +8,9 @@ task Unicode2asciish {
     unicode2ascii_sh \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
   }

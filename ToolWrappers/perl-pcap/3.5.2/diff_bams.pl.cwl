@@ -2,70 +2,40 @@ class: CommandLineTool
 id: diff_bams.pl.cwl
 inputs:
 - id: in_bam_a
-  doc: -a    The first BAM|CRAM file.
-  type: boolean
+  doc: The first BAM|CRAM file.
+  type: boolean?
   inputBinding:
     prefix: -bam_a
 - id: in_bam_b
-  doc: -b    The second BAM|CRAM file.
-  type: boolean
+  doc: The second BAM|CRAM file.
+  type: boolean?
   inputBinding:
     prefix: -bam_b
 - id: in_ref
-  doc: -r    Required for CRAM, genome.fa with co-located fai.
-  type: boolean
+  doc: Required for CRAM, genome.fa with co-located fai.
+  type: boolean?
   inputBinding:
     prefix: -ref
 - id: in_count_flag_differences
-  doc: -c    Count flag differences
-  type: boolean
+  doc: Count flag differences
+  type: boolean?
   inputBinding:
     prefix: -count
 - id: in_skip_z
-  doc: -s    Don't include reads with MAPQ=0 in comparison
-  type: boolean
+  doc: Don't include reads with MAPQ=0 in comparison
+  type: boolean?
   inputBinding:
     prefix: -skipz
 - id: in_man
-  doc: -m    Full documentation.
-  type: boolean
+  doc: Full documentation.
+  type: boolean?
   inputBinding:
     prefix: -man
-- id: in_m
+- id: in_var_6
   doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: in_var_7
-  doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -help
-- id: in_s
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -s
-- id: in_c
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -c
-- id: in_r
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -r
-- id: in_b
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -b
-- id: in_var_12
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -a
 - id: in_one_dot
   doc: ''
   type: long
@@ -81,7 +51,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_var_16
+- id: in_var_10
   doc: ''
   type: string
   inputBinding:
@@ -96,7 +66,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_var_19
+- id: in_var_13
   doc: ''
   type: string
   inputBinding:
@@ -116,7 +86,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_var_23
+- id: in_var_17
   doc: ''
   type: string
   inputBinding:
@@ -126,7 +96,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_input_slash_output
+- id: in_input
   doc: ''
   type: string
   inputBinding:
@@ -146,7 +116,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_var_29
+- id: in_var_23
   doc: ''
   type: string
   inputBinding:
@@ -166,7 +136,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_var_33
+- id: in_var_27
   doc: ''
   type: string
   inputBinding:
@@ -182,11 +152,6 @@ inputs:
   inputBinding:
     position: 1
 - id: in_parameters
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: in_paths_dot
   doc: ''
   type: string
   inputBinding:
@@ -207,11 +172,6 @@ inputs:
   inputBinding:
     position: 2
 - id: in_cram
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: in_var_42
   doc: ''
   type: string
   inputBinding:
@@ -261,11 +221,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: in_program
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: in_that
   doc: ''
   type: string
@@ -296,17 +251,7 @@ inputs:
   type: string
   inputBinding:
     position: 4
-- id: in_works
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-- id: in_var_60
-  doc: ''
-  type: string
-  inputBinding:
-    position: 5
-- id: in_around
+- id: in_a
   doc: ''
   type: string
   inputBinding:
@@ -321,12 +266,12 @@ inputs:
   type: string
   inputBinding:
     position: 5
-- id: in_var_64
+- id: in_var_53
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: in_var_65
+- id: in_var_54
   doc: ''
   type: string
   inputBinding:
@@ -346,17 +291,7 @@ inputs:
   type: string
   inputBinding:
     position: 6
-- id: in_var_69
-  doc: ''
-  type: string
-  inputBinding:
-    position: 6
 - id: in_be
-  doc: ''
-  type: string
-  inputBinding:
-    position: 7
-- id: in_by
   doc: ''
   type: string
   inputBinding:
@@ -376,12 +311,7 @@ inputs:
   type: string
   inputBinding:
     position: 8
-- id: in_var_75
-  doc: ''
-  type: string
-  inputBinding:
-    position: 8
-- id: in_only
+- id: in_var_62
   doc: ''
   type: string
   inputBinding:
@@ -410,6 +340,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - diff_bams.pl

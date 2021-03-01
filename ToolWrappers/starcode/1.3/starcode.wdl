@@ -36,6 +36,9 @@ task Starcode {
       ~{if (print_clusters) then "--print-clusters" else ""} \
       ~{if (seq_id) then "--seq-id" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dist: ": maximum Levenshtein distance (default auto)"
     threads: ": number of concurrent threads (default 1)"

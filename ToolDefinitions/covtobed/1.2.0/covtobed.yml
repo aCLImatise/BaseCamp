@@ -1,0 +1,118 @@
+!Command
+command:
+- covtobed
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: BAM
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --physical-coverage
+  description: compute physical coverage (needs paired alignments in input)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --min-mapq
+  description: "skip alignments whose mapping quality is less than MINQ\n(default:\
+    \ 0)"
+  args: !SimpleFlagArg
+    name: MINQ
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-cov
+  description: "print BED feature only if the coverage is bigger than\n(or equal to)\
+    \ MINCOV (default: 0)"
+  args: !SimpleFlagArg
+    name: MINCOV
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --max-cov
+  description: "print BED feature only if the coverage is lower than\nMAXCOV (default:\
+    \ 100000)"
+  args: !SimpleFlagArg
+    name: MAXCOV
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --min-len
+  description: "print BED feature only if its length is bigger (or equal\nto) than\
+    \ MINLELN (default: 1)"
+  args: !SimpleFlagArg
+    name: MINLEN
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --min-ctg-len
+  description: Skip reference sequences (contigs) shorter than this value
+  args: !SimpleFlagArg
+    name: MINCTGLEN
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --discard-invalid-alignments
+  description: "skip duplicates, failed QC, and non primary alignment,\nminq>0 (or\
+    \ user-defined if higher) (default: 0)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output-strands
+  description: output coverage and stats separately for each strand
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: output format
+  args: !SimpleFlagArg
+    name: CHOICE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: covtobed [options] [BAM]...\n\nComputes coverage from alignments\n\
+  \nOptions:\n  -h, --help            show this help message and exit\n  --version\
+  \             show program's version number and exit\n  --physical-coverage   compute\
+  \ physical coverage (needs paired alignments in input)\n  -q MINQ, --min-mapq=MINQ\n\
+  \                        skip alignments whose mapping quality is less than MINQ\n\
+  \                        (default: 0)\n  -m MINCOV, --min-cov=MINCOV\n         \
+  \               print BED feature only if the coverage is bigger than\n        \
+  \                (or equal to) MINCOV (default: 0)\n  -x MAXCOV, --max-cov=MAXCOV\n\
+  \                        print BED feature only if the coverage is lower than\n\
+  \                        MAXCOV (default: 100000)\n  -l MINLEN, --min-len=MINLEN\n\
+  \                        print BED feature only if its length is bigger (or equal\n\
+  \                        to) than MINLELN (default: 1)\n  -z MINCTGLEN, --min-ctg-len=MINCTGLEN\n\
+  \                        Skip reference sequences (contigs) shorter than this value\n\
+  \  -d, --discard-invalid-alignments\n                        skip duplicates, failed\
+  \ QC, and non primary alignment,\n                        minq>0 (or user-defined\
+  \ if higher) (default: 0)\n  --output-strands      output coverage and stats separately\
+  \ for each strand\n  --format=CHOICE       output format\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/covtobed:1.2.0--h4893569_0

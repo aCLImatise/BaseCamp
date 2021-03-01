@@ -42,6 +42,9 @@ task SeqkitReplace {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     by_seq: "replace seq"
     ignore_case: "ignore case"

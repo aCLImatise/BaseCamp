@@ -8,6 +8,9 @@ task CnvkitpyTable {
     cnvkit_py table_ \
       ~{cnv_kit_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cnv_kit_do_tpy: ""
   }

@@ -3,37 +3,37 @@ id: fastqe.cwl
 inputs:
 - id: in_min_len
   doc: Minimum length sequence to include in stats (default 0)
-  type: long
+  type: long?
   inputBinding:
     prefix: --minlen
 - id: in_mean
   doc: show mean quality per position (DEFAULT)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mean
 - id: in_bin
   doc: use binned scores
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bin
 - id: in_min
   doc: show minimum quality per position
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --min
 - id: in_max
   doc: show maximum quality per position
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --max
 - id: in_log
   doc: record program progress in LOG_FILE
-  type: File
+  type: File?
   inputBinding:
     prefix: --log
 - id: in_scale
   doc: show relevant scale in output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --scale
 - id: in_fast_a_file
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fastqe

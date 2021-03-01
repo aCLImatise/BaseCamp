@@ -30,6 +30,9 @@ task SplitHaplotype {
       ~{if (report_batches_processed) then "-v" else ""} \
       ~{if defined(s) then ("-S " +  '"' + s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     range_reads_operate: "[-end]                     range of reads to operate on."
     path_input_fasta: "path to input FASTA or FASTQ of reads to classify.\\nthese may be uncompressed, gzip, bzip2 or xz compressed."

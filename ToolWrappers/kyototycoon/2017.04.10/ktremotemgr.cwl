@@ -3,137 +3,137 @@ id: ktremotemgr.cwl
 inputs:
 - id: in_limit
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -limit
 - id: in_px
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -px
 - id: in_sx
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -sx
 - id: in_db
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -db
 - id: in_ssb_rd
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ssbrd
 - id: in_ssname
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -ssname
 - id: in_sw_time
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -swtime
 - id: in_sw_name
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -swname
 - id: in_tout
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -tout
 - id: in_port
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -port
 - id: in_host
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -host
 - id: in_bin
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bin
 - id: in_xt
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -xt
 - id: in_uf
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -uf
 - id: in_uw
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -uw
 - id: in_ux
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ux
 - id: in_sid
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -sid
 - id: in_ts
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -ts
 - id: in_pt
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pt
 - id: in_pv
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pv
 - id: in_rm
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -rm
 - id: in_max
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -max
 - id: in_des
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -des
 - id: in_pz
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pz
 - id: in_hard
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -hard
 - id: in_iv
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -iv
 - id: in_m_port
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -mport
 - id: in_clear
@@ -225,6 +225,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ktremotemgr

@@ -4,6 +4,9 @@ task Tracer {
   command <<<
     tracer
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

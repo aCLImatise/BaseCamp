@@ -3,22 +3,22 @@ id: gff2bed.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GFF file.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gff
 - id: in_feature
   doc: "Specify feature type (eg. CDS,tRNA,rRNA,SBS, etc) to be extracted\nfrom GFF3."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --feature
 - id: in_out
   doc: Output path.
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_man
   doc: "Prints the manual page and exits\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --man
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Output path.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gff2bed.pl

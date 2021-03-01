@@ -2,8 +2,8 @@ version 1.0
 
 task TomboPlotPerRead {
   input {
-    Boolean? per_read_statistics_filename
     Array[String] genome_locations
+    File? per_read_statistics_filename
     File? genome_fast_a
     Array[Int] fast_five_based_irs
     Int? num_reads
@@ -16,8 +16,8 @@ task TomboPlotPerRead {
   }
   command <<<
     tombo plot per_read \
-      ~{if (per_read_statistics_filename) then "--per-read-statistics-filename" else ""} \
       ~{if defined(genome_locations) then ("--genome-locations " +  '"' + genome_locations + '"') else ""} \
+      ~{if defined(per_read_statistics_filename) then ("--per-read-statistics-filename " +  '"' + per_read_statistics_filename + '"') else ""} \
       ~{if defined(genome_fast_a) then ("--genome-fasta " +  '"' + genome_fast_a + '"') else ""} \
       ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
       ~{if defined(num_reads) then ("--num-reads " +  '"' + num_reads + '"') else ""} \
@@ -28,9 +28,12 @@ task TomboPlotPerRead {
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    per_read_statistics_filename: "PER_READ_STATISTICS_FILENAME\\n[--genome-fasta GENOME_FASTA]\\n[--fast5-basedirs FAST5_BASEDIRS [FAST5_BASEDIRS ...]]\\n[--num-reads NUM_READS] [--num-bases NUM_BASES]\\n[--box-center] [--pdf-filename PDF_FILENAME]\\n[--corrected-group CORRECTED_GROUP]\\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\\n[--quiet] [--help]"
     genome_locations: "Genomic locations at which to plot signal. Format\\nlocations as \\\"chrm:position[:strand]\\n[chrm2:position2[:strand2] ...]\\\" (strand not\\napplicable for all applications)"
+    per_read_statistics_filename: "Binary file containing per-read statistics from\\nstatistical testing."
     genome_fast_a: "FASTA file used to re-squiggle. For faster sequence\\naccess."
     fast_five_based_irs: "Directories containing fast5 files."
     num_reads: "Number of reads to plot. Default: 100"

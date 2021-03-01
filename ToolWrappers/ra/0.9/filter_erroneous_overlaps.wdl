@@ -12,6 +12,9 @@ task FilterErroneousOverlaps {
       ~{if (spec_file) then "--spec_file" else ""} \
       ~{if (working_directory) then "--working_directory" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     depot: "depot path (string)"
     spec_file: "spec file path (string [=])"

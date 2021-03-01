@@ -18,6 +18,9 @@ task NanopolishPolya {
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     window: "only compute the poly-A lengths for reads in window STR (format: ctg:start_id-end_id)"

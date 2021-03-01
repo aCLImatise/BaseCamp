@@ -8,6 +8,9 @@ task Zipdetails {
     zipdetails \
       ~{if (verbose_output_stuff) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose_output_stuff: "Verbose - output more stuff"
   }

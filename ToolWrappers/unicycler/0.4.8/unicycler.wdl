@@ -32,6 +32,9 @@ task Unicycler {
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
       ~{if defined(linear_seqs) then ("--linear_seqs " +  '"' + linear_seqs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help_all: "Show a help message with all program options"
     short_one: "FASTQ file of first short reads in each pair\\n(required)"

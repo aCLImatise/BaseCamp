@@ -20,6 +20,9 @@ task IgdiscoverClonoquery {
       ~{if (aa) then "--aa" else ""} \
       ~{if defined(summary) then ("--summary " +  '"' + summary + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minimum_count: "Discard all rows with count less than N. Default: 1"
     cdr_three_core: ":END\\nSTART:END defines the non-junction region of CDR3\\nsequences. Use negative numbers for END to count from\\nthe end. Regions before and after are considered to be\\njunction sequence, and for two CDR3s to be considered\\nsimilar, at least one of the junctions must be\\nidentical. Default: no junction region."

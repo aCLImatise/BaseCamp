@@ -42,6 +42,9 @@ task GuppyFilter {
       ~{if (mass_le) then "--mass-le" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specify_filename_write: "Specify the filename to write to."
     out_dir: "Specify the directory to write files to."

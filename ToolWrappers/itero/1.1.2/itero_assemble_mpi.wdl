@@ -28,6 +28,9 @@ task IteroAssembleMpi {
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""} \
       ~{if defined(directory_store_output) then ("--output " +  '"' + directory_store_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "A configuration file containing reads to assemble"
     subfolder: "A subdirectory, below the level of the group,\\ncontaining the reads"

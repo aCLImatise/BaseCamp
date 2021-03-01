@@ -16,6 +16,9 @@ task FastenTrim {
       ~{if defined(first_base) then ("--first-base " +  '"' + first_base + '"') else ""} \
       ~{if defined(last_base) then ("--last-base " +  '"' + last_base + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_cpus: "Number of CPUs (default: 1)"
     paired_end: "The input reads are interleaved paired-end"

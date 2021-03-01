@@ -26,6 +26,9 @@ task BamClipOverlap {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input bam file. Needs to be sorted by name."
     out: "Output bam file."

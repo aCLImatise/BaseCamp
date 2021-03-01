@@ -3,12 +3,12 @@ id: subColumn.cwl
 inputs:
 - id: in_list
   doc: '- Column is a comma-separated list.  Substitute all elements in list'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -list
 - id: in_miss
   doc: '- Print misses to this file instead of aborting'
-  type: File
+  type: File?
   inputBinding:
     prefix: -miss
 - id: in_column
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - subColumn

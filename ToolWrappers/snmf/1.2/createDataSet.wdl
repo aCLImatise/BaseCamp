@@ -2,26 +2,29 @@ version 1.0
 
 task CreateDataSet {
   input {
-    File? _genotype_file
-    String? _seed_random
-    Float? _percentage_masked
-    File? _output_file
+    File? genotype_file_format
+    String? _seed_init
+    Float? percentage_masked_data
+    File? output_file_formatdefault
   }
   command <<<
     createDataSet \
-      ~{if defined(_genotype_file) then ("-x " +  '"' + _genotype_file + '"') else ""} \
-      ~{if defined(_seed_random) then ("-s " +  '"' + _seed_random + '"') else ""} \
-      ~{if defined(_percentage_masked) then ("-r " +  '"' + _percentage_masked + '"') else ""} \
-      ~{if defined(_output_file) then ("-o " +  '"' + _output_file + '"') else ""}
+      ~{if defined(genotype_file_format) then ("-x " +  '"' + genotype_file_format + '"') else ""} \
+      ~{if defined(_seed_init) then ("-s " +  '"' + _seed_init + '"') else ""} \
+      ~{if defined(percentage_masked_data) then ("-r " +  '"' + percentage_masked_data + '"') else ""} \
+      ~{if defined(output_file_formatdefault) then ("-o " +  '"' + output_file_formatdefault + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _genotype_file: "-- genotype file (in .geno format)"
-    _seed_random: "-- seed random init             (default: random)"
-    _percentage_masked: "-- percentage of masked data    (default: 0.05)"
-    _output_file: "-- output file (in .geno format)(default: input_file_I.geno)"
+    genotype_file_format: "-- genotype file (in .geno format)"
+    _seed_init: "-- seed random init             (default: random)"
+    percentage_masked_data: "-- percentage of masked data    (default: 0.05)"
+    output_file_formatdefault: "-- output file (in .geno format)(default: input_file_I.geno)"
   }
   output {
     File out_stdout = stdout()
-    File out__output_file = "${in__output_file}"
+    File out_output_file_formatdefault = "${in_output_file_formatdefault}"
   }
 }

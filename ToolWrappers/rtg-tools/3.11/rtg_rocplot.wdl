@@ -26,6 +26,9 @@ task RtgRocplot {
       ~{if defined(precision_sensitivity) then ("--precision-sensitivity " +  '"' + precision_sensitivity + '"') else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     curve: "ROC data file with title optionally specified\\n(path[=title]). May be specified 0 or more times"
     png: "if set, output a PNG image to the given file"

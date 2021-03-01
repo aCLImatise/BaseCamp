@@ -4,6 +4,9 @@ task Fusionsam2juncFilteranchorNewfmt {
   command <<<
     fusionsam2junc_filteranchor_newfmt
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

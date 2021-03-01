@@ -22,6 +22,9 @@ task Bam2bedgraph {
       ~{if (filter_include) then "--filter-include" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_bamcram_file: "Path to bam/cram input file. [default: stdin]"
     file_path_output: "File path for output. [default: stdout]"

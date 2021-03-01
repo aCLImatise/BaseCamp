@@ -12,6 +12,9 @@ task CruxBullseyeCruxoutput {
       ~{bullseye} \
       ~{ms_one_spectra}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     bullseye: ""

@@ -1,13 +1,24 @@
 !Command
 command:
 - splitMfasta.pl
-positional:
-- !Positional
-  description: s/input.split.2.fa
-  position: 0
-  name: s/input.split.1.fa
-  optional: false
-named: []
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --minsize
+  description: "each split output fasta file total to at least this man base pairs.\n\
+    set this to 0 to split the input in single sequence files."
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --outputpath
+  description: "prefix to output path. Output files are\ns/input.split.1.fa\ns/input.split.2.fa\n\
+    s/input.split.3.fa\n...\n"
+  args: !SimpleFlagArg
+    name: s
 parent:
 subcommands: []
 usage: []
@@ -22,3 +33,4 @@ help_text: "/usr/local/bin/splitMfasta.pl -- split a multiple fasta file in smal
   \                  s/input.split.2.fa\n                  s/input.split.3.fa\n  \
   \                ... \n\n"
 generated_using: []
+docker_image:

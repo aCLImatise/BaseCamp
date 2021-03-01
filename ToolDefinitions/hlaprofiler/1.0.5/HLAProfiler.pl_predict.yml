@@ -4,42 +4,45 @@ command:
 - predict
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: options
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: '|fq1             location of read1 fastq (required)'
+  optional: true
   synonyms:
   - -fastq1
+  description: '|fq1             location of read1 fastq (required)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|fq2             location of read2 fastq (required)'
+  optional: true
   synonyms:
   - -fastq2
+  description: '|fq2             location of read2 fastq (required)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|db       name of HLA database (required)'
+  optional: true
   synonyms:
   - -database_name
+  description: '|db       name of HLA database (required)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|dd       name of parent directory of database (required)'
+  optional: true
   synonyms:
   - -directory_dir
+  description: '|dd       name of parent directory of database (required)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|r    reference fa used to create the database (required)'
+  optional: true
   synonyms:
   - -reference
+  description: '|r    reference fa used to create the database (required)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -allele_refinement
   description: "|ar   Specifies the level to which the predicted alleles are to be\
     \ refined based on the observed reads (default:all)\nPossible values:\nrefine_only\
     \     Refines the allelle call by looking predicting the true allele sequence\
@@ -50,98 +53,95 @@ named:
     \ (-refine_only) and report novel alleles (-novel_only), creates a profile for\
     \ the refined/novel allele sequence and calculates prediction metrics.\nnone \
     \           Turns off refinement and novel allele prediction."
-  synonyms:
-  - -allele_refinement
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|nr           number of reads to simulated per reference allele for
-    k-mer profile creations.(default:500000)'
+  optional: true
   synonyms:
   - -num_reads
+  description: '|nr           number of reads to simulated per reference allele for
+    k-mer profile creations.(default:500000)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|rl         length of reads simulated for k-mer profile. Same as the
-    length of the k-mers in the profile.(default:50)'
+  optional: true
   synonyms:
   - -read_length
+  description: '|rl         length of reads simulated for k-mer profile. Same as the
+    length of the k-mers in the profile.(default:50)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|m           maximum size of insert (default:1000)'
+  optional: true
   synonyms:
   - -max_insert
+  description: '|m           maximum size of insert (default:1000)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|sc               scale of pareto distribution to determine insert
-    size (default:80)'
+  optional: true
   synonyms:
   - -scale
+  description: '|sc               scale of pareto distribution to determine insert
+    size (default:80)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|sh               shape of pareto distribution to determine insert
-    size (default:0.7)'
+  optional: true
   synonyms:
   - -shape
+  description: '|sh               shape of pareto distribution to determine insert
+    size (default:0.7)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|sd                seed of random number generator for simulation
-    (default:1234)'
+  optional: true
   synonyms:
   - -seed
+  description: '|sd                seed of random number generator for simulation
+    (default:1234)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|if  toggles flag to keep intermediate files (default:off)'
+  optional: true
   synonyms:
   - -intermediate_files
+  description: '|if  toggles flag to keep intermediate files (default:off)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|min      minimum number of reads from a gene before attempting to
-    call HLA types.(default:100)'
+  optional: true
   synonyms:
   - -minimum_reads
+  description: '|min      minimum number of reads from a gene before attempting to
+    call HLA types.(default:100)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|c              number of threads (default:1)'
+  optional: true
   synonyms:
   - -threads
+  description: '|c              number of threads (default:1)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|od          output directory (default:" .")'
+  optional: true
   synonyms:
   - -output_dir
+  description: '|od          output directory (default:" .")'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|kp         base directory of kraken installation. (default:base directory
-    of path returned by `which kraken`)'
+  optional: true
   synonyms:
   - -kraken_path
+  description: '|kp         base directory of kraken installation. (default:base directory
+    of path returned by `which kraken`)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|l                  name of the prediction log file'
+  optional: true
   synonyms:
   - -log
+  description: '|l                  name of the prediction log file'
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: '|h                 prints this help prompt'
+  optional: true
   synonyms:
   - -help
+  description: '|h                 prints this help prompt'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nHLAProfiler.pl predict\n\nDESCRIPTION\nA tool for predicting the HLA\
@@ -176,3 +176,4 @@ help_text: "\nHLAProfiler.pl predict\n\nDESCRIPTION\nA tool for predicting the H
   14 Jul 2017\n\nCopyright. Q2 Solutions|EA Genomics. 2016\n\n\n"
 generated_using:
 - --help
+docker_image:

@@ -5,20 +5,35 @@ command:
 positional: []
 named:
 - !Flag
-  description: '{phypat,phypat+PGL}'
+  optional: true
   synonyms:
   - --predictor
+  description: "{phypat,phypat+PGL}\npick phypat or phypat+PGL classifier"
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - --strategy
+  - -i
+  - --include_negative
+  - -p
+  - --models_f
+  description: "phenotype models archive; if set, look for the target\nin the phenotype\
+    \ in the given phenotype collection\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      majority:
+      non-zero:
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: traitar show [-h] [--predictor {phypat,phypat+PGL}]\n         \
@@ -32,3 +47,4 @@ help_text: "usage: traitar show [-h] [--predictor {phypat,phypat+PGL}]\n        
   \ phenotype collection\n"
 generated_using:
 - --help
+docker_image:

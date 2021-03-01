@@ -24,6 +24,9 @@ task MedakaSnp {
       ~{if defined(ref_vcf) then ("--ref_vcf " +  '"' + ref_vcf + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Verbose logging of debug information. (default: 20)"
     quiet: "Minimal logging; warnings only). (default: 20)"

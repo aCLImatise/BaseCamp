@@ -2,7 +2,7 @@ version 1.0
 
 task EncyclopeDIA {
   input {
-    Boolean? input_dia_mzml
+    Boolean? input_mzml_file
     Boolean? protein_fasta_database
     Boolean? library_elib_file
     String? walnut
@@ -13,11 +13,13 @@ task EncyclopeDIA {
     Boolean? acquisition
     Boolean? enzyme
     Boolean? filter_peak_lists
+    Boolean? fixed
     Boolean? frag
     Boolean? f_to_l_units
     Boolean? lf_to_l_units
     Boolean? localization_modification
     Boolean? min_intensity
+    Boolean? precursor_window_size
     Boolean? pto_l_units
     Boolean? rt_window_in_min
     Boolean? scoring_breadth_type
@@ -25,7 +27,7 @@ task EncyclopeDIA {
   }
   command <<<
     EncyclopeDIA \
-      ~{if (input_dia_mzml) then "-i" else ""} \
+      ~{if (input_mzml_file) then "-i" else ""} \
       ~{if (protein_fasta_database) then "-f" else ""} \
       ~{if (library_elib_file) then "-l" else ""} \
       ~{if defined(walnut) then ("-walnut " +  '"' + walnut + '"') else ""} \
@@ -36,18 +38,23 @@ task EncyclopeDIA {
       ~{if (acquisition) then "-acquisition" else ""} \
       ~{if (enzyme) then "-enzyme" else ""} \
       ~{if (filter_peak_lists) then "-filterPeaklists" else ""} \
+      ~{if (fixed) then "-fixed" else ""} \
       ~{if (frag) then "-frag" else ""} \
       ~{if (f_to_l_units) then "-ftolunits" else ""} \
       ~{if (lf_to_l_units) then "-lftolunits" else ""} \
       ~{if (localization_modification) then "-localizationModification" else ""} \
       ~{if (min_intensity) then "-minIntensity" else ""} \
+      ~{if (precursor_window_size) then "-precursorWindowSize" else ""} \
       ~{if (pto_l_units) then "-ptolunits" else ""} \
       ~{if (rt_window_in_min) then "-rtWindowInMin" else ""} \
       ~{if (scoring_breadth_type) then "-scoringBreadthType" else ""} \
       ~{if (verify_modification_ions) then "-verifyModificationIons" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    input_dia_mzml: "input .DIA or .MZML file"
+    input_mzml_file: "input .DIA or .MZML file"
     protein_fasta_database: "protein .FASTA database"
     library_elib_file: "library .ELIB file"
     walnut: "Walnut FASTA search (use -walnut -h for help)"
@@ -58,11 +65,13 @@ task EncyclopeDIA {
     acquisition: "(default: DIA)"
     enzyme: "(default: trypsin)"
     filter_peak_lists: "(default: false)"
+    fixed: "(default: C=57.0214635)"
     frag: "(default: CID)"
     f_to_l_units: "(default: ppm)"
     lf_to_l_units: "(default: ppm)"
     localization_modification: "(default: none)"
     min_intensity: "(default: -1.0)"
+    precursor_window_size: "(default: -1)"
     pto_l_units: "(default: ppm)"
     rt_window_in_min: "(default: -1.0)"
     scoring_breadth_type: "(default: window)"

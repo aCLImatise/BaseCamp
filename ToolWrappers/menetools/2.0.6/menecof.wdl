@@ -20,6 +20,9 @@ task Menecof {
       ~{if (weight) then "--weight" else ""} \
       ~{if (enumerate) then "--enumerate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     draft_net: "metabolic network in SBML format"
     seeds: "seeds in SBML format"

@@ -1,0 +1,307 @@
+!Command
+command:
+- integron_finder
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --local-max
+  description: "Allows thorough local detection (slower but more\nsensitive and do\
+    \ not increase false positive rate)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --func-annot
+  description: "Functional annotation of CDS associated with integrons\nHMM files\
+    \ are needed in Func_annot folder."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cpu
+  description: Number of CPUs used by INFERNAL and HMMER
+  args: !SimpleFlagArg
+    name: CPU
+- !Flag
+  optional: true
+  synonyms:
+  - -dt
+  - --distance-thresh
+  description: "Two elements are aggregated if they are distant of\nDISTANCE_THRESH\
+    \ [4000]bp or less"
+  args: !SimpleFlagArg
+    name: DISTANCE_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: 'Set the output directory (default: current)'
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --union-integrases
+  description: "Instead of taking intersection of hits from Phage_int\nprofile (Tyr\
+    \ recombinases) and integron_integrase\nprofile, use the union of the hits"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cmsearch
+  description: "Complete path to cmsearch if not in PATH. eg:\n/usr/local/bin/cmsearch"
+  args: !SimpleFlagArg
+    name: CMSEARCH
+- !Flag
+  optional: true
+  synonyms:
+  - --hmmsearch
+  description: "Complete path to hmmsearch if not in PATH. eg:\n/usr/local/bin/hmmsearch"
+  args: !SimpleFlagArg
+    name: HMMSEARCH
+- !Flag
+  optional: true
+  synonyms:
+  - --prodigal
+  description: "Complete path to prodigal if not in PATH. eg:\n/usr/local/bin/prodigal"
+  args: !SimpleFlagArg
+    name: PRODIGAL
+- !Flag
+  optional: true
+  synonyms:
+  - --path-func-annot
+  description: "Path to file containing all hmm bank paths (one per\nline)"
+  args: !SimpleFlagArg
+    name: PATH_FUNC_ANNOT
+- !Flag
+  optional: true
+  synonyms:
+  - --gembase
+  description: "Use gembase formatted protein file instead of\nProdigal. Folder structure\
+    \ must be preserved"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --annot-parser
+  description: "the name of the parser to use to get information from\nprotein file."
+  args: !SimpleFlagArg
+    name: ANNOT_PARSER_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --attc-model
+  description: Path or file to the attc model (Covariance Matrix).
+  args: !SimpleFlagArg
+    name: ATTC_MODEL
+- !Flag
+  optional: true
+  synonyms:
+  - --evalue-attc
+  description: "Set evalue threshold to filter out hits above it\n(default: 1)"
+  args: !SimpleFlagArg
+    name: EVALUE_ATTC
+- !Flag
+  optional: true
+  synonyms:
+  - --calin-threshold
+  description: "keep 'CALIN' only if attC sites nuber >= calin-\nthreshold (default:\
+    \ 2)"
+  args: !SimpleFlagArg
+    name: CALIN_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-palindromes
+  description: "For a given hit, if the palindromic version is found,\ndon't remove\
+    \ the one with highest evalue."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-proteins
+  description: "Don't annotate CDS and don't find integrase, just look\nfor attC sites."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --promoter-attI
+  description: "Search also for promoter and attI sites. (default\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-attc-size
+  description: 'Set maximum value fot the attC size (default: 200bp)'
+  args: !SimpleFlagArg
+    name: MAX_ATTC_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --min-attc-size
+  description: 'set minimum value fot the attC size (default: 40bp)'
+  args: !SimpleFlagArg
+    name: MIN_ATTC_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --eagle-eyes
+  description: "Synonym of --local-max. Like a soaring eagle in the\nsky, catching\
+    \ rabbits (or attC sites) by surprise."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --circ
+  description: Set the default topology for replicons to 'circular'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --linear
+  description: Set the default topology for replicons to 'linear'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --topology-file
+  description: "The path to a file where the topology for each\nreplicon is specified."
+  args: !SimpleFlagArg
+    name: TOPOLOGY_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --mute
+  description: "mute the log on stdout.(continue to log on\nintegron_finder.out)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pdf
+  description: "For each complete integron, a simple graphic of the\nregion is depicted\
+    \ (in pdf format)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gbk
+  description: "generate a GenBank file with the sequence annotated\nwith the same\
+    \ annotations than .integrons file."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-tmp
+  description: "keep intermediate results. This results are stored in\ndirectory named\
+    \ tmp_<replicon id>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --split-results
+  description: "Instead of merging integron results from all replicon\nin one file,\
+    \ keep them in separated files."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: 'Increase verbosity of output (can be cumulative : -vv)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: 'Decrease verbosity of output (can be cumulative : -qq)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: integron_finder [-h] [--local-max] [--func-annot] [--cpu CPU]\n\
+  \                       [-dt DISTANCE_THRESHOLD] [--outdir OUTDIR]\n           \
+  \            [--union-integrases] [--cmsearch CMSEARCH]\n                      \
+  \ [--hmmsearch HMMSEARCH] [--prodigal PRODIGAL]\n                       [--path-func-annot\
+  \ PATH_FUNC_ANNOT] [--gembase]\n                       [--annot-parser ANNOT_PARSER_NAME]\n\
+  \                       [--attc-model ATTC_MODEL] [--evalue-attc EVALUE_ATTC]\n\
+  \                       [--calin-threshold CALIN_THRESHOLD]\n                  \
+  \     [--keep-palindromes] [--no-proteins] [--promoter-attI]\n                 \
+  \      [--max-attc-size MAX_ATTC_SIZE]\n                       [--min-attc-size\
+  \ MIN_ATTC_SIZE] [--eagle-eyes] [--pdf]\n                       [--gbk] [--keep-tmp]\
+  \ [--split-results]\n                       [--circ | --linear] [--topology-file\
+  \ TOPOLOGY_FILE]\n                       [-V] [--mute] [-v] [-q]\n             \
+  \          replicon\n\npositional arguments:\n  replicon              Path to the\
+  \ replicon file (in fasta format), eg :\n                        path/to/file.fst\
+  \ or file.fst\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --local-max           Allows thorough local detection (slower but\
+  \ more\n                        sensitive and do not increase false positive rate).\n\
+  \  --func-annot          Functional annotation of CDS associated with integrons\n\
+  \                        HMM files are needed in Func_annot folder.\n  --cpu CPU\
+  \             Number of CPUs used by INFERNAL and HMMER\n  -dt DISTANCE_THRESHOLD,\
+  \ --distance-thresh DISTANCE_THRESHOLD\n                        Two elements are\
+  \ aggregated if they are distant of\n                        DISTANCE_THRESH [4000]bp\
+  \ or less\n  --outdir OUTDIR       Set the output directory (default: current)\n\
+  \  --union-integrases    Instead of taking intersection of hits from Phage_int\n\
+  \                        profile (Tyr recombinases) and integron_integrase\n   \
+  \                     profile, use the union of the hits\n  --cmsearch CMSEARCH\
+  \   Complete path to cmsearch if not in PATH. eg:\n                        /usr/local/bin/cmsearch\n\
+  \  --hmmsearch HMMSEARCH\n                        Complete path to hmmsearch if\
+  \ not in PATH. eg:\n                        /usr/local/bin/hmmsearch\n  --prodigal\
+  \ PRODIGAL   Complete path to prodigal if not in PATH. eg:\n                   \
+  \     /usr/local/bin/prodigal\n  --path-func-annot PATH_FUNC_ANNOT\n           \
+  \             Path to file containing all hmm bank paths (one per\n            \
+  \            line)\n  --gembase             Use gembase formatted protein file instead\
+  \ of\n                        Prodigal. Folder structure must be preserved\n  --annot-parser\
+  \ ANNOT_PARSER_NAME\n                        the name of the parser to use to get\
+  \ information from\n                        protein file.\n  --attc-model ATTC_MODEL\n\
+  \                        Path or file to the attc model (Covariance Matrix).\n \
+  \ --evalue-attc EVALUE_ATTC\n                        Set evalue threshold to filter\
+  \ out hits above it\n                        (default: 1)\n  --calin-threshold CALIN_THRESHOLD\n\
+  \                        keep 'CALIN' only if attC sites nuber >= calin-\n     \
+  \                   threshold (default: 2)\n  --keep-palindromes    For a given\
+  \ hit, if the palindromic version is found,\n                        don't remove\
+  \ the one with highest evalue.\n  --no-proteins         Don't annotate CDS and don't\
+  \ find integrase, just look\n                        for attC sites.\n  --promoter-attI\
+  \       Search also for promoter and attI sites. (default\n                    \
+  \    False)\n  --max-attc-size MAX_ATTC_SIZE\n                        Set maximum\
+  \ value fot the attC size (default: 200bp)\n  --min-attc-size MIN_ATTC_SIZE\n  \
+  \                      set minimum value fot the attC size (default: 40bp)\n  --eagle-eyes\
+  \          Synonym of --local-max. Like a soaring eagle in the\n               \
+  \         sky, catching rabbits (or attC sites) by surprise.\n  --circ         \
+  \       Set the default topology for replicons to 'circular'\n  --linear       \
+  \       Set the default topology for replicons to 'linear'\n  --topology-file TOPOLOGY_FILE\n\
+  \                        The path to a file where the topology for each\n      \
+  \                  replicon is specified.\n  -V, --version         show program's\
+  \ version number and exit\n  --mute                mute the log on stdout.(continue\
+  \ to log on\n                        integron_finder.out)\n\nOutput options:\n \
+  \ --pdf                 For each complete integron, a simple graphic of the\n  \
+  \                      region is depicted (in pdf format)\n  --gbk             \
+  \    generate a GenBank file with the sequence annotated\n                     \
+  \   with the same annotations than .integrons file.\n  --keep-tmp            keep\
+  \ intermediate results. This results are stored in\n                        directory\
+  \ named tmp_<replicon id>\n  --split-results       Instead of merging integron results\
+  \ from all replicon\n                        in one file, keep them in separated\
+  \ files.\n\n  -v, --verbose         Increase verbosity of output (can be cumulative\
+  \ : -vv)\n  -q, --quiet           Decrease verbosity of output (can be cumulative\
+  \ : -qq)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/integron_finder:2.0rc6--py_0

@@ -7,7 +7,7 @@ task Fargene {
     String? score
     Boolean? input_data_paired
     String? meta_score
-    Directory? output_directory_whole
+    Directory? output_directory_defaultfargeneoutput
     Directory? force
     Directory? tmp_dir
     Boolean? protein
@@ -33,7 +33,7 @@ task Fargene {
       ~{if defined(score) then ("--score " +  '"' + score + '"') else ""} \
       ~{if (input_data_paired) then "--meta" else ""} \
       ~{if defined(meta_score) then ("--meta-score " +  '"' + meta_score + '"') else ""} \
-      ~{if defined(output_directory_whole) then ("--output " +  '"' + output_directory_whole + '"') else ""} \
+      ~{if defined(output_directory_defaultfargeneoutput) then ("--output " +  '"' + output_directory_defaultfargeneoutput + '"') else ""} \
       ~{if (force) then "--force" else ""} \
       ~{if defined(tmp_dir) then ("--tmp-dir " +  '"' + tmp_dir + '"') else ""} \
       ~{if (protein) then "--protein" else ""} \
@@ -52,13 +52,16 @@ task Fargene {
       ~{if defined(loglevel) then ("--loglevel " +  '"' + loglevel + '"') else ""} \
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_files: "Input file(s) to be searched. Could either be in FASTA\\nor FASTQ format."
     hmm_model: "The Hidden Markov Model that should be used to analyse\\nthe data. Could either be one of the pre-defined\\nmodels or the path to a custom HMM."
     score: "The threshold score for a sequence to be classified as\\na (almost) complete gene (default: None)."
     input_data_paired: "If the input data is paired end metagenomic data\\n(default: False)."
     meta_score: "The threshold score for a fragment to be classified as\\na positive. Expressed as score per amino acid\\n(default: None)."
-    output_directory_whole: "The output directory for the whole run (default:\\n./fargene_output)."
+    output_directory_defaultfargeneoutput: "The output directory for the whole run (default:\\n./fargene_output)."
     force: "Overwrite output directory if it exists (default:\\nFalse)."
     tmp_dir: "Directory for (sometimes large) intermediate files.\\n(default: OUT_DIR/tmpdir)"
     protein: "If the input sequence(s) is amino acids (default:\\nFalse)."
@@ -79,7 +82,7 @@ task Fargene {
   }
   output {
     File out_stdout = stdout()
-    Directory out_output_directory_whole = "${in_output_directory_whole}"
+    Directory out_output_directory_defaultfargeneoutput = "${in_output_directory_defaultfargeneoutput}"
     Directory out_force = "${in_force}"
   }
 }

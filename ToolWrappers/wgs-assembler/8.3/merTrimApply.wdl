@@ -12,6 +12,9 @@ task MerTrimApply {
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
       ~{if defined(var_2) then ("-L " +  '"' + var_2 + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_0: ""
     g: ""

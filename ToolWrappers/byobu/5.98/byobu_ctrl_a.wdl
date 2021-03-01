@@ -8,6 +8,9 @@ task Byobuctrla {
     byobu_ctrl_a \
       ~{mode}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: ""
   }

@@ -30,6 +30,9 @@ task SecaprAlignSequences {
       ~{if (ambiguous) then "--ambiguous" else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequences: "The fasta file containing individual sequences for\\nseveral samples and loci"
     directory_store_resulting: "The directory in which to store the resulting"

@@ -30,6 +30,9 @@ task Gthsplit {
       ~{if (force) then "-force" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignment_score: "split according to the overall alignment score (scr)\\ndefault: no"
     coverage: "split according to coverage (cov)\\ndefault: no"

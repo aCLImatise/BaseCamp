@@ -60,6 +60,9 @@ task OmssaSearchrb {
       ~{if defined(omx_output) then ("--omx-output " +  '"' + omx_output + '"') else ""} \
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     replace_output: "Dont skip analyses for which the output file already exists [false]"
     explicitly_named_output: "An explicitly named output file."

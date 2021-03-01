@@ -28,6 +28,9 @@ task QueryDNADatabasepy {
       ~{if (base_name) then "--base_name" else ""} \
       ~{if (intersect_node_graph) then "--intersect_nodegraph" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads to use (default: 8)"
     force: "Force creation of new NodeGraph. (default: False)"

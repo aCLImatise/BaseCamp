@@ -2,7 +2,7 @@ version 1.0
 
 task AgatConvertMinimap2Bam2gffpl {
   input {
-    File? input_file_sam
+    File? input_file_extension
     File? bam
     File? sam
     File? output_gff_file
@@ -13,13 +13,16 @@ task AgatConvertMinimap2Bam2gffpl {
     agat_convert_minimap2_bam2gff_pl \
       ~{agat_convert_sp_minimap_two_bamtwogffdotpl} \
       ~{path_dot} \
-      ~{if defined(input_file_sam) then ("--input " +  '"' + input_file_sam + '"') else ""} \
+      ~{if defined(input_file_extension) then ("--input " +  '"' + input_file_extension + '"') else ""} \
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
       ~{if defined(sam) then ("--sam " +  '"' + sam + '"') else ""} \
       ~{if defined(output_gff_file) then ("--output " +  '"' + output_gff_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    input_file_sam: "Input file in sam (.sam extension) or bam (.bam extension)\\nformat."
+    input_file_extension: "Input file in sam (.sam extension) or bam (.bam extension)\\nformat."
     bam: "To force to use the input file as sam file."
     sam: "To force to use the input file as sam file."
     output_gff_file: "Output GFF file. If no output file is specified, the output will\\nbe written to STDOUT."

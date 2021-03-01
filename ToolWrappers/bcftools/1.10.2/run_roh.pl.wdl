@@ -30,6 +30,9 @@ task Runrohpl {
       ~{if defined(roh_args) then ("--roh-args " +  '"' + roh_args + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     af_an_not_s: "Allele frequency annotations [1000GP-AFs/AFs.tab.gz]"
     in_dir: "Input directory with VCF files"

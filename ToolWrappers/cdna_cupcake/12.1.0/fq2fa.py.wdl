@@ -16,6 +16,9 @@ task Fq2fapy {
       ~{fast_a} \
       ~{fast_q_filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     convert: ""
     fast_q: ""

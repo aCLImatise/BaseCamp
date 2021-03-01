@@ -14,6 +14,9 @@ task Hisat2SimulateReadspyBaseFname {
       ~{if (single_end) then "--single-end" else ""} \
       ~{if (d) then "-d" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     single_end: ""

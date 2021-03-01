@@ -26,6 +26,9 @@ task Wossname {
       ~{if (colon) then "-colon" else ""} \
       ~{if (gui) then "-gui" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explode: "boolean    [N] The groups that EMBOSS applications\\nbelong to have two forms, exploded and not\\nexploded. The exploded group names are more\\nnumerous and often vaguely phrased than the\\nnon-exploded ones. The exploded names are\\nformed from definitions of the group names\\nthat start like NAME1:NAME2 and which are\\nthen expanded into many combinations of the\\nnames as: 'NAME1', 'NAME2', 'NAME1 NAME2',\\nNAME2 NAME1'. The non-expanded names are\\nsimply like: 'NAME1 NAME2'."
     outfile: "outfile    [stdout] Tool metadata output file"

@@ -14,6 +14,9 @@ task PhyluceAssemblyExplodeGetFastasFile {
       ~{if (by_tax_on) then "--by-taxon" else ""} \
       ~{if defined(split_char) then ("--split-char " +  '"' + split_char + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_file: "The input fasta file to explode"
     output_directory_create: "The output directory to create and in which to store\\nthe fastas"

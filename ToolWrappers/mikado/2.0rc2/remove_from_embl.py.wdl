@@ -30,6 +30,9 @@ task RemoveFromEmblpy {
       ~{swissprot} \
       ~{file_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     script: ""
     to: ""

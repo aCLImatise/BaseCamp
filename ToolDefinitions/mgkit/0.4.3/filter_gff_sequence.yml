@@ -4,35 +4,73 @@ command:
 - sequence
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: INPUT_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: OUTPUT_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-t, --sorted                    If the GFF file is sorted (all of\
-    \ a sequence\nannotations are contiguos) can use less\nmemory, `sort -s -k 1,1`\
-    \ can be used\n-a, --attribute [evalue|bitscore|identity|length]\nAttribute on\
-    \ which to apply the filter\n[default: bitscore]\n-f, --function [mean|median|quantile|std|max|min]\n\
-    Function for filtering  [default: mean]\n-l, --value FLOAT               Value\
-    \ for the function (used for *std* and\n*quantile*)\n-c, --comparison [gt|ge|lt|le]\
-    \  Type of comparison (e.g. ge -> greater than\nor equal to)  [default: ge]\n\
-    --progress                      Shows Progress Bar\n--help                   \
-    \       Show this message and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  - -t
+  - --sorted
+  description: "If the GFF file is sorted (all of a sequence\nannotations are contiguos)\
+    \ can use less\nmemory, `sort -s -k 1,1` can be used"
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -a
+  - --attribute
+  description: "[evalue|bitscore|identity|length]\nAttribute on which to apply the\
+    \ filter\n[default: bitscore]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --function
+  description: "[mean|median|quantile|std|max|min]\nFunction for filtering  [default:\
+    \ mean]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --value
+  description: "Value for the function (used for *std* and\n*quantile*)"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --comparison
+  description: "[gt|ge|lt|le]  Type of comparison (e.g. ge -> greater than\nor equal\
+    \ to)  [default: ge]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: Shows Progress Bar
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: filter-gff sequence [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Filter\
@@ -50,3 +88,4 @@ help_text: "Usage: filter-gff sequence [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n 
   \ --help                          Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

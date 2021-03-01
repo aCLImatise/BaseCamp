@@ -14,6 +14,9 @@ task Reconciletreealignment {
       ~{output_tree} \
       ~{output_alignment}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_tree: ""
     input_alignment: ""

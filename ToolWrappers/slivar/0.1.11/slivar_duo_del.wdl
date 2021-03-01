@@ -22,6 +22,9 @@ task SlivarDuodel {
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
       ~{if (affected_only) then "--affected-only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ped: "required ped file describing the duos in the VCF"
     g_notate: "optional gnotate file to check for flagged variants to exclude"

@@ -20,6 +20,9 @@ task SimilarityPyseer {
       ~{if defined(max_missing) then ("--max-missing " +  '"' + max_missing + '"') else ""} \
       ~{if (uncompressed) then "--uncompressed" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_ers: "Kmers file"
     vcf: "VCF file. Will filter any non 'PASS' sites"

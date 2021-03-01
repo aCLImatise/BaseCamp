@@ -10,6 +10,9 @@ task Hugemergepl {
       ~{source_dir} \
       ~{if (keep) then "--keep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep: "Keep the unmerged files.\\nThe unmerged files are deleted by default."
     source_dir: ""

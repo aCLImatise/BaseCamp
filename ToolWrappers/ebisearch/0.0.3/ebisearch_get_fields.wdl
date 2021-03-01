@@ -4,7 +4,7 @@ task EbisearchGetFields {
   input {
     String? domain
     Boolean? field_type
-    File? file
+    File? optional_file_export
     String information
   }
   command <<<
@@ -12,12 +12,15 @@ task EbisearchGetFields {
       ~{information} \
       ~{if defined(domain) then ("--domain " +  '"' + domain + '"') else ""} \
       ~{if (field_type) then "--field_type" else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""}
+      ~{if defined(optional_file_export) then ("--file " +  '"' + optional_file_export + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     domain: "Domain id in EBI (accessible with\\nget_domains)"
     field_type: "[searchable|retrievable|sortable|facet|topterms]\\nType fo field"
-    file: "(Optional) File to export the domain"
+    optional_file_export: "(Optional) File to export the domain"
     information: "--help                          Show this message and exit."
   }
   output {

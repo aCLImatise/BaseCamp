@@ -3,175 +3,175 @@ command:
 - haystack_hotspots
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: samples_filename_or_bam_folder
   description: "A tab delimited file with in each row (1) a sample\nname, (2) the\
     \ path to the corresponding bam or bigwig\nfilename. Alternatively it is possible\
     \ to specify a\nfolder containing some .bam files to analyze."
-  position: 0
-  name: samples_filename_or_bam_folder
-  optional: false
 - !Positional
-  description: "Genome assembly to use from UCSC (for example hg19,\nmm9, etc.)"
+  optional: false
   position: 1
   name: genome_name
-  optional: false
+  description: "Genome assembly to use from UCSC (for example hg19,\nmm9, etc.)"
 named:
 - !Flag
-  description: VARIABLE REGIONS-
+  optional: true
   synonyms:
   - -SELECTION
+  description: VARIABLE REGIONS-
   args: !SimpleFlagArg
     name: OF
-  optional: true
 - !Flag
-  description: 'Output directory (default: current directory)'
+  optional: true
   synonyms:
   - --output_directory
+  description: 'Output directory (default: current directory)'
   args: !SimpleFlagArg
     name: OUTPUT_DIRECTORY
-  optional: true
 - !Flag
-  description: 'bin size to use(default: 500bp)'
+  optional: true
   synonyms:
   - --bin_size
+  description: 'bin size to use(default: 500bp)'
   args: !SimpleFlagArg
     name: BIN_SIZE
-  optional: true
 - !Flag
-  description: "Exclude chromosomes that contain given (regex) string.\nFor example\
-    \ _random|chrX|chrY excludes random, X, and\nY chromosome regions"
+  optional: true
   synonyms:
   - --chrom_exclude
+  description: "Exclude chromosomes that contain given (regex) string.\nFor example\
+    \ _random|chrX|chrY excludes random, X, and\nY chromosome regions"
   args: !SimpleFlagArg
     name: CHROM_EXCLUDE
-  optional: true
 - !Flag
-  description: "Percentile on the signal intensity to consider for the\nhotspots (default:\
-    \ 99)"
+  optional: true
   synonyms:
   - --th_rpm
+  description: "Percentile on the signal intensity to consider for the\nhotspots (default:\
+    \ 99)"
   args: !SimpleFlagArg
     name: TH_RPM
-  optional: true
 - !Flag
-  description: "Variance stabilizing transformation among: none, log2,\nangle (default:\
-    \ angle)"
+  optional: true
   synonyms:
   - --transformation
+  description: "Variance stabilizing transformation among: none, log2,\nangle (default:\
+    \ angle)"
   args: !ChoiceFlagArg
     choices: !!set
+      angle:
       none:
       log2:
-      angle:
-  optional: true
 - !Flag
-  description: "z-score value to select the specific regions(default:\n1.5)"
+  optional: true
   synonyms:
   - --z_score_high
+  description: "z-score value to select the specific regions(default:\n1.5)"
   args: !SimpleFlagArg
     name: Z_SCORE_HIGH
-  optional: true
 - !Flag
-  description: "z-score value to select the not specific regions\n(default: 0.25)"
+  optional: true
   synonyms:
   - --z_score_low
+  description: "z-score value to select the not specific regions\n(default: 0.25)"
   args: !SimpleFlagArg
     name: Z_SCORE_LOW
-  optional: true
 - !Flag
-  description: 'Read extension in bps (default: 200)'
+  optional: true
   synonyms:
   - --read_ext
+  description: 'Read extension in bps (default: 200)'
   args: !SimpleFlagArg
     name: READ_EXT
-  optional: true
 - !Flag
-  description: "Upper bound on the % of the regions selected (default:\n0.1, 0.0=0%\
-    \ 1.0=100%)"
+  optional: true
   synonyms:
   - --max_regions_percentage
+  description: "Upper bound on the % of the regions selected (default:\n0.1, 0.0=0%\
+    \ 1.0=100%)"
   args: !SimpleFlagArg
     name: MAX_REGIONS_PERCENTAGE
-  optional: true
 - !Flag
-  description: Define a custom output filename for the report
+  optional: true
   synonyms:
   - --name
+  description: Define a custom output filename for the report
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --blacklist
   description: "Exclude blacklisted regions. Blacklisted regions are\nnot excluded\
     \ by default. Use hg19 to blacklist regions\nfor the human genome build 19, otherwise\
     \ provide the\nfilepath for a bed file with blacklisted regions."
-  synonyms:
-  - --blacklist
   args: !SimpleFlagArg
     name: BLACKLIST
-  optional: true
 - !Flag
-  description: "Look for cell type specific regions with depletion of\nsignal instead\
-    \ of enrichment"
+  optional: true
   synonyms:
   - --depleted
+  description: "Look for cell type specific regions with depletion of\nsignal instead\
+    \ of enrichment"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Disable quantile normalization (default: False)'
+  optional: true
   synonyms:
   - --disable_quantile_normalization
+  description: 'Disable quantile normalization (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Keep any file previously precalculated
+  optional: true
   synonyms:
   - --do_not_recompute
+  description: Keep any file previously precalculated
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --do_not_filter_bams
   description: "Use BAM files as provided. Do not remove reads that\nare unmapped,\
     \ mate unmapped, not primary aligned or\nlow MAPQ reads, reads failing qc and\
     \ optical\nduplicates"
-  synonyms:
-  - --do_not_filter_bams
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use the bigwig format instead of the bam format for\nthe input. Note:\
-    \ The files must have extension .bw"
+  optional: true
   synonyms:
   - --input_is_bigwig
+  description: "Use the bigwig format instead of the bam format for\nthe input. Note:\
+    \ The files must have extension .bw"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: keep intermediate bedgraph files
+  optional: true
   synonyms:
   - --keep_intermediate_files
+  description: keep intermediate bedgraph files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify the number of processes to use. The default is\n#cores available."
+  optional: true
   synonyms:
   - --n_processes
+  description: "Specify the number of processes to use. The default is\n#cores available."
   args: !SimpleFlagArg
     name: N_PROCESSES
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Print version and exit.
+  optional: true
   synonyms:
   - --version
+  description: Print version and exit.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "\n[H A Y S T A C K   H O T S P O T]\n\n-SELECTION OF VARIABLE REGIONS-\n\
   \nVersion 0.5.5\n\nusage: haystack_hotspots [-h] [--output_directory OUTPUT_DIRECTORY]\n\
   \                         [--bin_size BIN_SIZE] [--chrom_exclude CHROM_EXCLUDE]\n\
@@ -227,3 +227,4 @@ help_text: "\n[H A Y S T A C K   H O T S P O T]\n\n-SELECTION OF VARIABLE REGION
   \ and exit.\n"
 generated_using:
 - --help
+docker_image:

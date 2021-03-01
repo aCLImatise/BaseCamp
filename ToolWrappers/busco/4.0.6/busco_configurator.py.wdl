@@ -10,6 +10,9 @@ task BuscoConfiguratorpy {
       ~{config_dot_in_idot_default} \
       ~{your_config_do_tini}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_dot_in_idot_default: ""
     your_config_do_tini: ""

@@ -26,6 +26,9 @@ task Arvcopy {
       ~{if defined(project_uuid) then ("--project-uuid " +  '"' + project_uuid + '"') else ""} \
       ~{if defined(retries) then ("--retries " +  '"' + retries + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Verbose output."
     progress: "Report progress on copying collections. (default)"

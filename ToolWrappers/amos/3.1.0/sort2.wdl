@@ -7,24 +7,27 @@ task Sort2 {
     Boolean? version_print_version
     Boolean? depend
     Int? debug
-    File file
+    File var_file
   }
   command <<<
     sort2 \
-      ~{file} \
+      ~{var_file} \
       ~{if defined(first_column_sort) then ("-i " +  '"' + first_column_sort + '"') else ""} \
       ~{if defined(second_column_sort) then ("-j " +  '"' + second_column_sort + '"') else ""} \
       ~{if (version_print_version) then "-V" else ""} \
       ~{if (depend) then "-depend" else ""} \
       ~{if defined(debug) then ("-debug " +  '"' + debug + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     first_column_sort: "- First  column to sort after (Default 0)"
     second_column_sort: "- Second column to sort after (Default 1)"
     version_print_version: "|version      - Print the version and exit;"
     depend: "- Print the program and database dependency list;"
     debug: "- Set the debug <level> (0, non-debug by default);"
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

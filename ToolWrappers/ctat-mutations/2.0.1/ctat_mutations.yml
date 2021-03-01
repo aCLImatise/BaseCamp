@@ -4,219 +4,219 @@ command:
 positional: []
 named:
 - !Flag
-  description: Path to one of the two paired RNAseq samples (left)
+  optional: true
   synonyms:
   - --left
+  description: Path to one of the two paired RNAseq samples (left)
   args: !SimpleFlagArg
     name: Left_sample_file
-  optional: true
 - !Flag
-  description: Path to one of the two paired RNAseq samples (right)
+  optional: true
   synonyms:
   - --right
+  description: Path to one of the two paired RNAseq samples (right)
   args: !SimpleFlagArg
     name: Right_sample_file
-  optional: true
 - !Flag
-  description: output directory
+  optional: true
   synonyms:
   - --out_dir
+  description: output directory
   args: !SimpleFlagArg
     name: STR_OUT_DIR
-  optional: true
 - !Flag
-  description: "Path to the reference genome to use in the analysis\npipeline."
+  optional: true
   synonyms:
   - --reference
+  description: "Path to the reference genome to use in the analysis\npipeline."
   args: !SimpleFlagArg
     name: Reference_genome
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --index
   description: "The initial index is made only from the reference\ngenome and can\
     \ be shared. If premade, supply a path\nhere to the index directory so that it\
     \ is not rebuilt\nfor every alignment. Please provide the full path."
-  synonyms:
-  - --index
   args: !SimpleFlagArg
     name: Use_premade_index
-  optional: true
 - !Flag
-  description: dbsnp vcf file for the reference genome.
+  optional: true
   synonyms:
   - --dbsnp_vcf
+  description: dbsnp vcf file for the reference genome.
   args: !SimpleFlagArg
     name: Variant_calling_file_for_the_reference_genome
-  optional: true
 - !Flag
-  description: The number of threads to use for multi-threaded steps.
+  optional: true
   synonyms:
   - --threads
+  description: The number of threads to use for multi-threaded steps.
   args: !SimpleFlagArg
     name: Process_threads
-  optional: true
 - !Flag
-  description: Specifies the variant filtering method.
+  optional: true
   synonyms:
   - --variant_filtering_mode
+  description: Specifies the variant filtering method.
   args: !SimpleFlagArg
     name: Filter_mode
-  optional: true
 - !Flag
-  description: Specifies the variant calling method to use.
+  optional: true
   synonyms:
   - --variant_call_mode
+  description: Specifies the variant calling method to use.
   args: !SimpleFlagArg
     name: Call_mode
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ref_bed
   description: "BED file\nBed file for reference genome, required only if making\n\
     the mutation inspector json. If given the json file\nwill be made. Please make\
     \ sure the bed file is indexed\nand that bed.idx file is in the same folder with\
     \ the\nsame file basename as the related bed file."
-  synonyms:
-  - --ref_bed
   args: !SimpleFlagArg
     name: Reference
-  optional: true
 - !Flag
-  description: Turns off plotting recalibration of alignments.
+  optional: true
   synonyms:
   - --plot
+  description: Turns off plotting recalibration of alignments.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Coding Cosmic Mutation VCF annotated with Phenotype\nInformation and\
-    \ zipped using bgzip."
+  optional: true
   synonyms:
   - --cosmic_vcf_gz
+  description: "Coding Cosmic Mutation VCF annotated with Phenotype\nInformation and\
+    \ zipped using bgzip."
   args: !SimpleFlagArg
     name: cosmic_reference_vcf
-  optional: true
 - !Flag
-  description: "if enabled, turns off filtering based on known rna-\nediting sites\
-    \ from radar and rediportal"
+  optional: true
   synonyms:
   - --no_filter_rna_editing
+  description: "if enabled, turns off filtering based on known rna-\nediting sites\
+    \ from radar and rediportal"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Tissue type (used in CRAVAT variant prioritation).\nSupported classifiers\
-    \ can be found at\nhttp://www.cravat.us/help.jsp)"
+  optional: true
   synonyms:
   - --tissue_type
+  description: "Tissue type (used in CRAVAT variant prioritation).\nSupported classifiers\
+    \ can be found at\nhttp://www.cravat.us/help.jsp)"
   args: !SimpleFlagArg
     name: cravat_tissue
-  optional: true
 - !Flag
-  description: Email used to notify of errors associated with cravat.
+  optional: true
   synonyms:
   - --email
+  description: Email used to notify of errors associated with cravat.
   args: !SimpleFlagArg
     name: email_contact
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --wdl_compatible_run
   description: "Cromwell/WDL requires execution to happen relative to\nan output directory\
     \ of dynaically created without\ngiving the directory path to the underlying\n\
     tools/pipelines. This requires a pipeline to use\nrelative paths which can be\
     \ dangerous outside of\nCromwell/WDL. This will ignore any output directory\n\
     specified in the command line and force the output to\nbe relative paths. DO NOT\
     \ USE outside of Cromwell/WDL."
-  synonyms:
-  - --wdl_compatible_run
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Headers for each CRAVAT feature annotated to the VCF\nfile (used in\
-    \ BCFtools)."
+  optional: true
   synonyms:
   - --cravat_annotation_header
+  description: "Headers for each CRAVAT feature annotated to the VCF\nfile (used in\
+    \ BCFtools)."
   args: !SimpleFlagArg
     name: cravat_headers
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bam
   description: "Sample file in the form of a bam, if this is given NO\nalignment will\
     \ be performed; the alignment mode\ncommand line will be ignored; let and right\
     \ sample\nfiles will be ignored. Normal pipeline processing will\npick up directly\
     \ after alignment in the pipeline with\nthe supplied bam."
-  synonyms:
-  - --bam
   args: !SimpleFlagArg
     name: bam_file
-  optional: true
 - !Flag
-  description: Specifies the alignment and indexing algorithm to use.
+  optional: true
   synonyms:
   - --alignment_mode
+  description: Specifies the alignment and indexing algorithm to use.
   args: !SimpleFlagArg
     name: Alignment_mode
-  optional: true
 - !Flag
-  description: Calculates the base coverage per base.
+  optional: true
   synonyms:
   - --base_depth
+  description: Calculates the base coverage per base.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --star_memory
   description: "Memory limit for star index. This should be used to\nincrease memory\
     \ if needed. Reducing memory consumption\nshould be performed with the STAR Limited\
     \ mod."
-  synonyms:
-  - --star_memory
   args: !SimpleFlagArg
     name: Star_memory
-  optional: true
 - !Flag
-  description: sets debug mode for logger
+  optional: true
   synonyms:
   - --debug
+  description: sets debug mode for logger
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "genome lib directory - see\nhttp://FusionFilter.github.io for details.\
-    \ Uses env\nvar CTAT_GENOME_LIB as default"
+  optional: true
   synonyms:
   - --genome_lib_dir
+  description: "genome lib directory - see\nhttp://FusionFilter.github.io for details.\
+    \ Uses env\nvar CTAT_GENOME_LIB as default"
   args: !SimpleFlagArg
     name: GENOME_LIB_DIR
-  optional: true
 - !Flag
-  description: Skips CRAVAT services.
+  optional: true
   synonyms:
   - --skip_cravat
+  description: Skips CRAVAT services.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Turns off optional indel realignment step.
+  optional: true
   synonyms:
   - --realign
+  description: Turns off optional indel realignment step.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If used, turns off gatk recalibration of bam files\nbefore samtools\
-    \ variant calling."
+  optional: true
   synonyms:
   - --no_recalibrate_bam
+  description: "If used, turns off gatk recalibration of bam files\nbefore samtools\
+    \ variant calling."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sequencing_platform
   description: "Platform\nThe sequencing platform used to generate the samples\nchoices\
     \ include ILLUMINA SLX,SOLEXA SOLID,454 COMPLETE\nPACBIO IONTORRENT CAPILLARY\
     \ ONT.\n"
-  synonyms:
-  - --sequencing_platform
   args: !SimpleFlagArg
     name: Sequencing
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "PICARD_HOME is /usr/local/share/picard-2.18.14-0\nGATK_HOME is /usr/local/share/gatk4-4.0.11.0-0\n\
@@ -297,3 +297,4 @@ help_text: "PICARD_HOME is /usr/local/share/picard-2.18.14-0\nGATK_HOME is /usr/
   \                     PACBIO IONTORRENT CAPILLARY ONT.\n"
 generated_using:
 - --help
+docker_image:

@@ -34,6 +34,9 @@ task Segtoolsfeaturedistance {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(val_pass_val) then ("-R " +  '"' + val_pass_val + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clobber: "Overwrite any existing output files."
     quiet: "Do not print diagnostic messages."

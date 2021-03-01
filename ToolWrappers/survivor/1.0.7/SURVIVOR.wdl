@@ -36,6 +36,9 @@ task SURVIVOR {
       ~{hap_cut_to_vcf} \
       ~{convert_assembly_tics}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sims_v: "Simulates SVs and SNPs on a reference genome."
     scan_reads: "Obtain error profiles form mapped reads for simulation."

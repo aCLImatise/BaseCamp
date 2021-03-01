@@ -16,6 +16,9 @@ task Fretree {
       ~{if (v_screen_width) then "-vscreenwidth" else ""} \
       ~{if (screen_lines) then "-screenlines" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     initial_tree: "menu       [Arbitary] Initial tree (Values: a\\n(Arbitary); u (User); s (Specify))"
     format: "menu       [p] Format to write trees (Values: p\\n(PHYLIP); n (NEXUS); x (XML))"

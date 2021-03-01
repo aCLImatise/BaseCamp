@@ -244,6 +244,9 @@ task Snakemake {
       ~{if defined(singularity_args) then ("--singularity-args " +  '"' + singularity_args + '"') else ""} \
       ~{if (use_env_modules) then "--use-envmodules" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dry_run: "Do not execute anything, and display what would be\\ndone. If you have a very large workflow, use --dry-run\\n--quiet to just print a summary of the DAG of jobs.\\n(default: False)"
     profile: "Name of profile to use for configuring Snakemake.\\nSnakemake will search for a corresponding folder in\\n/etc/xdg/snakemake and /root/.config/snakemake.\\nAlternatively, this can be an absolute or relative\\npath. The profile folder has to contain a file\\n'config.yaml'. This file can be used to set default\\nvalues for command line options in YAML format. For\\nexample, '--cluster qsub' becomes 'cluster: qsub' in\\nthe YAML file. Profiles can be obtained from\\nhttps://github.com/snakemake-profiles. (default: None)"

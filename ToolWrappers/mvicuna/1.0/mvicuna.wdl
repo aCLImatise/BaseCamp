@@ -52,6 +52,9 @@ task Mvicuna {
       ~{if (trm_q) then "-trm_q" else ""} \
       ~{if (fe_k) then "-fe_k" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i_pfq: ": comma separated input paired fastq files; the ith and (i+1)th files form a pair (i is an odd number)"
     is_fq: ": comma separated input single end fastq files"

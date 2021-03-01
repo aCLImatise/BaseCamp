@@ -3,43 +3,44 @@ id: samgroupbyname.cwl
 inputs:
 - id: in_write_output_bam
   doc: Write output in BAM format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
-- id: in_write_file_output
+- id: in_write_standard_output
   doc: Write to FILE rather than standard output
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
-- id: in_emit_pairs_reads
+- id: in_emit_pairs_discarding
   doc: Emit pairs only, discarding any leftover singleton reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_display_file_information
   doc: Display file information and statistics
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_bpv
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bpv
 - id: in_file
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_write_file_output
+- id: out_write_standard_output
   doc: Write to FILE rather than standard output
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_write_file_output)
+    glob: $(inputs.in_write_standard_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - samgroupbyname

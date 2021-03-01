@@ -3,49 +3,49 @@ id: retest.cwl
 inputs:
 - id: in_debug
   doc: increase output verbosity and perform additional
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_local
   doc: test local directory scripts instead of pip installed
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --local
 - id: in_min_score
   doc: "minimum score/confidence of the classification of a\nread to pass the quality\
     \ filter; 35 by default"
-  type: long
+  type: long?
   inputBinding:
     prefix: --minscore
 - id: in_min_tax_a
   doc: perform additional tests for mintaxa dependency
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mintaxa
 - id: in_roc
   doc: perform additional tests and get ROC figures
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --roc
 - id: in_skip
   doc: "skip the recentrifuge calls and just load the results\nto plot ROC figure\
     \ by mintaxa (results should be\navailable)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip
 - id: in_strain
   doc: set this same flag in rcf [experimental feature]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --strain
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -V
 - id: in_i
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_checks
@@ -57,6 +57,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - retest

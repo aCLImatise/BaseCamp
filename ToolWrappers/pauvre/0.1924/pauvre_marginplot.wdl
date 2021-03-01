@@ -48,6 +48,9 @@ task PauvreMarginplot {
       ~{if (add_y_axes) then "--add-yaxes" else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     dpi: "Change the dpi from the default 600 if you need it"

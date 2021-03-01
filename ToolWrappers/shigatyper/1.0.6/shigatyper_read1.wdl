@@ -12,6 +12,9 @@ task ShigatyperRead1 {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: ""
     n: ""

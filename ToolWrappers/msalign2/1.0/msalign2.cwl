@@ -3,17 +3,17 @@ id: msalign2.cwl
 inputs:
 - id: in_e
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -e
 - id: in_two
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: '-2'
 - id: in_one
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: '-1'
 - id: in_ms_align
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - msalign2

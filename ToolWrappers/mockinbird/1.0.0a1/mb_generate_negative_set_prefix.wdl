@@ -14,6 +14,9 @@ task MbgeneratenegativesetPrefix {
       ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
       ~{if defined(number) then ("--number " +  '"' + number + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
     width: ""

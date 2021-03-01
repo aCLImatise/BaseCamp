@@ -14,6 +14,9 @@ task HalRandGen {
       ~{if (preset) then "--preset" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     preset: "<small, medium, big, large> [medum]"
     seed: "[system time]"

@@ -14,6 +14,9 @@ task ContigCleaner {
       ~{if defined(skip) then ("--skip " +  '"' + skip + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cut_off_length: "Minimum acceptable contig length [2000]"
     hit_percent_id: "Minimum acceptable hit percent id for contained\\ncontigs [95]"

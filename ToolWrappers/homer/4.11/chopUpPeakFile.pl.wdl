@@ -10,6 +10,9 @@ task ChopUpPeakFilepl {
       ~{target_peak_file} \
       ~{background_peak_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target_peak_file: ""
     background_peak_file: ""

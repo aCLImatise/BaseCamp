@@ -10,6 +10,9 @@ task Rsemforebseqgeneratengvectorfromclusteringinfo {
       ~{input_file} \
       ~{output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: ""
     output_file: ""

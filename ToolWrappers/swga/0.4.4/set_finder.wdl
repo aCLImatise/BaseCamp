@@ -2,18 +2,18 @@ version 1.0
 
 task SetFinder {
   input {
-    Boolean? _find_cliques
-    Boolean? _single_find
-    Boolean? _weight_tell
+    Boolean? all
+    Boolean? single
+    Boolean? weight
     Int? min
     Int? max
     String? bg_freq
     Int? bg_len
-    Boolean? _maximal_require
-    Boolean? _unweighted_assume
-    Boolean? _when_writing
+    Boolean? maximal
+    Boolean? unweighted
+    Boolean? from_zero
     String? reorder
-    Boolean? _quiet_suppresses
+    Boolean? quiet
     File? output_results_file
     String ordering_same_order
     String reverse
@@ -32,33 +32,36 @@ task SetFinder {
       ~{weighted_coloring} \
       ~{degree} \
       ~{random} \
-      ~{if (_find_cliques) then "-a" else ""} \
-      ~{if (_single_find) then "-s" else ""} \
-      ~{if (_weight_tell) then "-w" else ""} \
+      ~{if (all) then "--all" else ""} \
+      ~{if (single) then "--single" else ""} \
+      ~{if (weight) then "--weight" else ""} \
       ~{if defined(min) then ("--min " +  '"' + min + '"') else ""} \
       ~{if defined(max) then ("--max " +  '"' + max + '"') else ""} \
       ~{if defined(bg_freq) then ("--bg_freq " +  '"' + bg_freq + '"') else ""} \
       ~{if defined(bg_len) then ("--bg_len " +  '"' + bg_len + '"') else ""} \
-      ~{if (_maximal_require) then "-x" else ""} \
-      ~{if (_unweighted_assume) then "-u" else ""} \
-      ~{if (_when_writing) then "-0" else ""} \
+      ~{if (maximal) then "--maximal" else ""} \
+      ~{if (unweighted) then "--unweighted" else ""} \
+      ~{if (from_zero) then "--from-0" else ""} \
       ~{if defined(reorder) then ("--reorder " +  '"' + reorder + '"') else ""} \
-      ~{if (_quiet_suppresses) then "-q" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(output_results_file) then ("--output " +  '"' + output_results_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _find_cliques: "--all          Find all cliques."
-    _single_find: "--single       Find only one clique (default)."
-    _weight_tell: "--weight       Tell only maximum weight (no faster than -s)."
+    all: "Find all cliques."
+    single: "Find only one clique (default)."
+    weight: "Tell only maximum weight (no faster than -s)."
     min: "Search for cliques with weight at least N.  If N=0,\\nsearches for maximum weight clique (default)."
     max: "Search for cliques with weight at most N.  If N=0,\\nno limit is imposed (default).  N being positive is\\nincompatible with \\\"--min 0\\\" (\\\"--min 1\\\" is assumed)."
     bg_freq: "Minimum value for genome_length/primer_counts in a set."
     bg_len: "Length of the background genome (in bases)."
-    _maximal_require: "--maximal      Require cliques to be maximal."
-    _unweighted_assume: "--unweighted   Assume weight 1 for all vertices."
-    _when_writing: "--from-0       Number vertices 0 to n-1 instead of 1 to n when writing."
+    maximal: "Require cliques to be maximal."
+    unweighted: "Assume weight 1 for all vertices."
+    from_zero: "Number vertices 0 to n-1 instead of 1 to n when writing."
     reorder: "Reorder with function F.  See below for details."
-    _quiet_suppresses: "--quiet        Suppresses progress output.  Specifying -q twice\\nsuppresses all output except the actual result."
+    quiet: "Suppresses progress output.  Specifying -q twice\\nsuppresses all output except the actual result."
     output_results_file: "Output results to file F."
     ordering_same_order: "No ordering (same order as in the file)."
     reverse: "Reverse order as in the file."

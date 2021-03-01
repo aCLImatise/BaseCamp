@@ -16,6 +16,9 @@ task ProbeMatch {
       ~{if defined(max_dist) then ("--maxDist " +  '"' + max_dist + '"') else ""} \
       ~{if defined(outfile) then ("--outFile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_dist: "Give a max distance"
     outfile: "Write output to a file"

@@ -10,6 +10,9 @@ task Retaxdump {
       ~{if defined(nodes_path) then ("--nodespath " +  '"' + nodes_path + '"') else ""} \
       ~{if (v) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nodes_path: "path for the nodes information files (nodes.dmp and\\nnames.dmp from NCBI)"
     v: ""

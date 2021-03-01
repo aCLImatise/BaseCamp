@@ -16,6 +16,9 @@ task CbImportCellranger {
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if (no_mat) then "--noMat" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "show debug messages"
     in_dir: "input folder with the cellranger analysis output. This\\nis the directory with the two directories 'analysis'\\nand 'filtered_gene_bc_matrices'"

@@ -2,7 +2,6 @@ version 1.0
 
 task Refiner {
   input {
-    Boolean? foo
     File? trf_prgm
     File? cd_hit_dir
     File? maff_t_dir
@@ -15,11 +14,12 @@ task Refiner {
     File? recon_dir
     File? genome_tools_dir
     String instances
+    String bar
   }
   command <<<
     Refiner \
       ~{instances} \
-      ~{if (foo) then "-foo" else ""} \
+      ~{bar} \
       ~{if defined(trf_prgm) then ("-trf_prgm " +  '"' + trf_prgm + '"') else ""} \
       ~{if defined(cd_hit_dir) then ("-cdhit_dir " +  '"' + cd_hit_dir + '"') else ""} \
       ~{if defined(maff_t_dir) then ("-mafft_dir " +  '"' + maff_t_dir + '"') else ""} \
@@ -32,8 +32,10 @@ task Refiner {
       ~{if defined(recon_dir) then ("-recon_dir " +  '"' + recon_dir + '"') else ""} \
       ~{if defined(genome_tools_dir) then ("-genometools_dir " +  '"' + genome_tools_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    foo: "bar"
     trf_prgm: "The full path including the name for the TRF program ( 4.0.9 or\\nhigher )"
     cd_hit_dir: "The path to the installation of the CD-Hit sequence clustering\\npackage."
     maff_t_dir: "The path to the installation of the MAFFT multiple alignment\\nprogram."
@@ -46,6 +48,7 @@ task Refiner {
     recon_dir: "The path to the installation of the RECON de-novo repeatfinding\\nprogram."
     genome_tools_dir: "The path to the installation of the GenomeTools package."
     instances: "SYNOPSIS\\nRefiner [-options] <family fasta sequences>"
+    bar: "CONFIGURATION OVERRIDES"
   }
   output {
     File out_stdout = stdout()

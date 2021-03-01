@@ -8,6 +8,9 @@ task PeakachuCommands {
     peakachu commands \
       ~{peak_a_chu}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     peak_a_chu: ""
   }

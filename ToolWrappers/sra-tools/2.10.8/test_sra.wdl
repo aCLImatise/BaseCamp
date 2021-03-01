@@ -28,6 +28,9 @@ task Testsra {
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""} \
       ~{if (q) then "-Q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     xml_text_generate: "< xml | text > - whether to generate well-formed XML"
     check_objects_recursively: "- check objects recursively"

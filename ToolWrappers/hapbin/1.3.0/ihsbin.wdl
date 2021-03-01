@@ -26,6 +26,9 @@ task Ihsbin {
       ~{if (bin_om) then "--binom" else ""} \
       ~{if (ascii) then "--ascii" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hap: "Hap file"
     map_file: "Map file"

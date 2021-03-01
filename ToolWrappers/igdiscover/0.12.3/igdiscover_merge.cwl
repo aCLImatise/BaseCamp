@@ -3,12 +3,12 @@ id: igdiscover_merge.cwl
 inputs:
 - id: in_threads
   doc: Number of threads
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_no_cache
   doc: 'Disable cache. Default: Determined by configuration'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-cache
 - id: in_reads_one
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - igdiscover

@@ -12,6 +12,9 @@ task GetSuperReadSizes {
       ~{if defined(kuni_tig_lenghts_file) then ("--kunitig_lenghts_file " +  '"' + kuni_tig_lenghts_file + '"') else ""} \
       ~{if defined(super_reads_file) then ("--super_reads_file " +  '"' + super_reads_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kuni_tig_lenghts_file: "*file with k-unitig lengths, two columns: kunitig length"
     super_reads_file: "*file with super-read names"

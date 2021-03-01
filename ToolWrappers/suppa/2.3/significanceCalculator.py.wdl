@@ -8,6 +8,9 @@ task SignificanceCalculatorpy {
     significanceCalculator_py \
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     m: ""
   }

@@ -10,6 +10,9 @@ task ProphyleSplitAllseqpy {
       ~{output_dir} \
       ~{if defined(fasta_file) then ("-i " +  '"' + fasta_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fasta_file: "Fasta file [stdin]"
     output_dir: "Path to the output directory"

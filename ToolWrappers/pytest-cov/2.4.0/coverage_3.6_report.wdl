@@ -24,6 +24,9 @@ task Coverage36Report {
       ~{if defined(debug) then ("--debug " +  '"' + debug + '"') else ""} \
       ~{if defined(rcfile) then ("--rcfile " +  '"' + rcfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fail_under: "Exit with a status of 2 if the total coverage is less\\nthan MIN."
     ignore_errors: "Ignore errors while reading source files."

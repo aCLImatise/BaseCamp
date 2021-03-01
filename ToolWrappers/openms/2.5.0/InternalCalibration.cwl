@@ -3,23 +3,23 @@ id: InternalCalibration.cwl
 inputs:
 - id: in_in
   doc: "*                                Input peak file (valid formats: 'mzML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -in
 - id: in_out
   doc: "*                               Output file  (valid formats: 'mzML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
 - id: in_r_script_executable
   doc: "Path to the Rscript executable (default: 'Rscript')."
-  type: File
+  type: File?
   inputBinding:
     prefix: -rscript_executable
 - id: in_ppm_match_tolerance
   doc: "<delta m/z in [ppm]>  Finding calibrants in raw data uses this tolerance (for\
     \ lock masses and ID's). (default: '25.0')"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ppm_match_tolerance
 - id: in_ms_level
@@ -33,27 +33,27 @@ inputs:
     \ center->right) around an MS scan in which calibrants are collected to build\
     \ a model. Set to -1 to use ALL calibrants for all scans, i.e. a global model.\
     \ (default: '300.0')"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -RT_chunking
 - id: in_ini
   doc: Use the given TOPP INI file
-  type: File
+  type: File?
   inputBinding:
     prefix: -ini
 - id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -threads
 - id: in_write_ini
   doc: Writes the default configuration file
-  type: File
+  type: File?
   inputBinding:
     prefix: -write_ini
 - id: in_helphelp
   doc: Shows all options (including advanced)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --helphelp
 outputs:
@@ -62,9 +62,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: "*                               Output file  (valid formats: 'mzML')"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - InternalCalibration

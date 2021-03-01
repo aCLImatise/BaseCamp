@@ -10,17 +10,11 @@ task PbsTrain {
     File? log
     String dimension_dot
     Int size_dot
-    Int one_five_eight_zero_zero_six
-    Int two_two_one_nine_three_seven
-    Int one_five_nine_four_seven_two
   }
   command <<<
     pbsTrain \
       ~{dimension_dot} \
       ~{size_dot} \
-      ~{one_five_eight_zero_zero_six} \
-      ~{two_two_one_nine_three_seven} \
-      ~{one_five_nine_four_seven_two} \
       ~{if defined(suff_stats) then ("--suff-stats " +  '"' + suff_stats + '"') else ""} \
       ~{if defined(nbytes) then ("--nbytes " +  '"' + nbytes + '"') else ""} \
       ~{if defined(nrows) then ("--nrows " +  '"' + nrows + '"') else ""} \
@@ -28,6 +22,9 @@ task PbsTrain {
       ~{if defined(no_train) then ("--no-train " +  '"' + no_train + '"') else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     suff_stats: "Output is a code file that can be used with"
     nbytes: "Number of bytes per encoded probabilistic base (default 1).\\nThe size of the code will be 256^b - 1 (one letter in the code\\nis reserved for gaps).  Values as large as 4 are allowed for\\nb, but in the current implementation, performance\\nconsiderations effectively limit it to 2 or 3."
@@ -37,9 +34,6 @@ task PbsTrain {
     log: "write log of optimization procedure to specified file."
     dimension_dot: "By default, n is given the largest possible value such"
     size_dot: "EXAMPLES:"
-    one_five_eight_zero_zero_six: "0.191119        0.046081        0.695205        0.067595"
-    two_two_one_nine_three_seven: "0.047309        0.122834        0.043852        0.786004"
-    one_five_nine_four_seven_two: "0.067254        0.697947        0.045959        0.188840"
   }
   output {
     File out_stdout = stdout()

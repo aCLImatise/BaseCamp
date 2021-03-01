@@ -62,6 +62,9 @@ task CreateMegaReads {
       ~{if defined(super_reads) then ("--superreads " +  '"' + super_reads + '"') else ""} \
       ~{if defined(pac_bio) then ("--pacbio " +  '"' + pac_bio + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     size: "*Number of k-mers in SuperReads"
     mer: "*Mer size"

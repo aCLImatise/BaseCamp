@@ -16,6 +16,9 @@ task PlanemoTestReports {
       ~{if defined(test_output_markdown) then ("--test_output_markdown " +  '"' + test_output_markdown + '"') else ""} \
       ~{if defined(test_output_x_unit) then ("--test_output_xunit " +  '"' + test_output_x_unit + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     test_output: "Output test report (HTML - for humans) defaults\\nto tool_test_output.html."
     test_output_text: "Output test report (Basic text - for display in\\nCI)"

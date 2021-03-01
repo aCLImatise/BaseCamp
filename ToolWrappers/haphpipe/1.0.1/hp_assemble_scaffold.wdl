@@ -22,6 +22,9 @@ task HpAssembleScaffold {
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contigs_fa: "Fasta file with assembled contigs"
     ref_fa: "Fasta file with reference genome to scaffold against"

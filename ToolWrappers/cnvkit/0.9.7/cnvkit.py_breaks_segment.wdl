@@ -18,6 +18,9 @@ task CnvkitpyBreaksSegment {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     m: ""

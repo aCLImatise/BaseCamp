@@ -26,6 +26,9 @@ task DnaseAverageProfilepy {
       ~{if (normalise_cutting_bias) then "-b" else ""} \
       ~{if (atacseq_mode) then "-A" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window_size: "Size of flanking area around centre of the regions to\\nplot (default: 100)"
     bias_file: "Location of the sorted, index"

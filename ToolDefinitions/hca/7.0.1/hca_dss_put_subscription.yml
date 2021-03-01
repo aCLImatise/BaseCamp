@@ -6,16 +6,9 @@ command:
 positional: []
 named:
 - !Flag
-  description: "[--encoding {application/json,multipart/form-data}]\n[--es-query ES_QUERY]\n\
-    [--form-fields FORM_FIELDS]\n[--hmac-key-id HMAC_KEY_ID]\n[--hmac-secret-key HMAC_SECRET_KEY]\n\
-    [--jmespath-query JMESPATH_QUERY]\n[--method {POST,PUT}]\n[--payload-form-field\
-    \ PAYLOAD_FORM_FIELD]\n--replica {aws,gcp}"
-  synonyms:
-  - --callback-url
-  args: !SimpleFlagArg
-    name: CALLBACK_URL
   optional: true
-- !Flag
+  synonyms:
+  - --attachments
   description: "The set of bundle metadata items to be included in the payload of\
     \ a notification request to a subscription endpoint. Each property in this object\
     \ represents an attachment to the notification payload. Each attachment will be\
@@ -36,36 +29,47 @@ named:
     \ to 128 KiB in size when serialized to JSON and encoded as UTF-8. If it is not,\
     \ the notification will be sent with\n\"attachments\": {\n\"_errors\": \"Attachments\
     \ too large (131073 bytes)\"\n}"
-  synonyms:
-  - --attachments
   args: !SimpleFlagArg
     name: ATTACHMENTS
-  optional: true
 - !Flag
-  description: "The MIME type describing the encoding of the request body * `application/json`\
-    \ - the HTTP request body is the notification payload as JSON * `multipart/form-data`\
-    \ - the HTTP request body is a list of form fields, each consisting of a name\n\
-    and a corresponding value. See https://tools.ietf.org/html/rfc7578 for details\
-    \ on this encoding.\nThe actual notification payload will be placed as JSON into\
-    \ a field of the name specified via\n`payload_form_field`."
+  optional: true
+  synonyms:
+  - --callback-url
+  description: "The subscriber's URL. An HTTP request is made to the specified URL\
+    \ for every attempt to deliver a notification to the subscriber. If the HTTP response\
+    \ code is 2XX, the delivery attempt is considered successful. Otherwise, more\
+    \ attempts will be made with an exponentially increasing delay between attempts,\
+    \ until an attempt is successful or the a maximum number of attempts is reached.\n\
+    Occasionally, duplicate notifications may be sent. It is up to the receiver of\
+    \ the notification to tolerate duplicate notifications."
+  args: !SimpleFlagArg
+    name: CALLBACK_URL
+- !Flag
+  optional: true
   synonyms:
   - --encoding
-  args: !ChoiceFlagArg
-    choices: !!set
-      application/json:
-      multipart/form-data:
-  optional: true
+  description: "{application/json,multipart/form-data}\nThe MIME type describing the\
+    \ encoding of the request body * `application/json` - the HTTP request body is\
+    \ the notification payload as JSON * `multipart/form-data` - the HTTP request\
+    \ body is a list of form fields, each consisting of a name\nand a corresponding\
+    \ value. See https://tools.ietf.org/html/rfc7578 for details on this encoding.\n\
+    The actual notification payload will be placed as JSON into a field of the name\
+    \ specified via\n`payload_form_field`."
+  args: !EmptyFlagArg {}
 - !Flag
+  optional: true
+  synonyms:
+  - --es-query
   description: An Elasticsearch query for restricting the set of bundles for which
     the subscriber is notified. The subscriber will only be notified for newly indexed
     bundles that match the given query. If this parameter is present the subscription
     will be of type `elasticsearch`, otherwise it will be of type `jmespath`.
-  synonyms:
-  - --es-query
   args: !SimpleFlagArg
     name: ES_QUERY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --form-fields
   description: "A collection of static form fields to be supplied in the request body,\
     \ alongside the actual notification payload. The value of each field must be a\
     \ string. For example, if the subscriptions has this property set to `{\"foo\"\
@@ -76,77 +80,74 @@ named:
     , \"subscription_id\": ...\n```\nSince the type of this property is `object`,\
     \ multi-valued fields are not supported. This property is ignored unless `encoding`\
     \ is `multipart/form-data`."
-  synonyms:
-  - --form-fields
   args: !SimpleFlagArg
     name: FORM_FIELDS
-  optional: true
 - !Flag
-  description: An optional key ID to use with `hmac_secret_key`.
+  optional: true
   synonyms:
   - --hmac-key-id
+  description: An optional key ID to use with `hmac_secret_key`.
   args: !SimpleFlagArg
     name: HMAC_KEY_ID
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --hmac-secret-key
   description: The key for signing requests to the subscriber's URL. The signature
     will be constructed according to https://tools.ietf.org/html/draft-cavage-http-signatures
     and transmitted in the HTTP `Authorization` header.
-  synonyms:
-  - --hmac-secret-key
   args: !SimpleFlagArg
     name: HMAC_SECRET_KEY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --jmespath-query
   description: An JMESPath query for restricting the set of bundles for which the
     subscriber is notified. The subscriber will only be notified for new bundles that
     match the given query. If `es_query` is specified, the subscription will be of
     type `elasticsearch`. If `es_query` is not present, the subscription will be of
     type `jmespath`
-  synonyms:
-  - --jmespath-query
   args: !SimpleFlagArg
     name: JMESPATH_QUERY
-  optional: true
 - !Flag
-  description: The HTTP request method to use when delivering a notification to the
-    subscriber.
+  optional: true
   synonyms:
   - --method
+  description: The HTTP request method to use when delivering a notification to the
+    subscriber.
   args: !ChoiceFlagArg
     choices: !!set
       PUT:
       POST:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --payload-form-field
   description: The name of the form field that will hold the notification payload
     when the request is made. If the default name of the payload field collides with
     that of a field in `form_fields`, this porperty can be used to rename the payload
     and avoid the collision. This property is ignored unless `encoding` is `multipart/form-data`.
-  synonyms:
-  - --payload-form-field
   args: !SimpleFlagArg
     name: PAYLOAD_FORM_FIELD
-  optional: true
 - !Flag
-  description: Replica to write to.
+  optional: true
   synonyms:
   - --replica
+  description: Replica to write to.
   args: !ChoiceFlagArg
     choices: !!set
       gcp:
       aws:
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: hca dss put-subscription [-h] [--attachments ATTACHMENTS]\n   \
@@ -242,3 +243,4 @@ help_text: "usage: hca dss put-subscription [-h] [--attachments ATTACHMENTS]\n  
   \ `multipart/form-data`.\n  --replica {aws,gcp}   Replica to write to.\n\n"
 generated_using:
 - --help
+docker_image:

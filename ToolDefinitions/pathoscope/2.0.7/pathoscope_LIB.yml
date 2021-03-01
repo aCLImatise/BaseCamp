@@ -5,112 +5,112 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Specify reference genome(Download\nftp://ftp.ncbi.nih.gov/blast/db/FASTA/nt.gz)"
+  optional: true
   synonyms:
   - -genomeFile
+  description: "Specify reference genome(Download\nftp://ftp.ncbi.nih.gov/blast/db/FASTA/nt.gz)"
   args: !SimpleFlagArg
     name: LIB_REFERENCE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -taxonIds
   description: "Specify taxon ids of your interest with comma\nseparated (if you have\
     \ multiple taxon ids). If you do\nnot specify this option, it will work on all\
     \ entries\nin the reference file. For taxonomy id lookup, refer\nto http://www.ncbi.nlm.nih.gov/taxonomy"
-  synonyms:
-  - -taxonIds
   args: !SimpleFlagArg
     name: LIB_TAXON_IDS
-  optional: true
 - !Flag
-  description: "Specify taxon ids to exclude with comma separated (if\nyou have multiple\
-    \ taxon ids to exclude)."
+  optional: true
   synonyms:
   - -excludeTaxonIds
+  description: "Specify taxon ids to exclude with comma separated (if\nyou have multiple\
+    \ taxon ids to exclude)."
   args: !SimpleFlagArg
     name: LIB_EXCLUDE_TAXON_IDS
-  optional: true
 - !Flag
-  description: "Do not keep an additional description in original\nfasta seq header.Depending\
-    \ on NGS aligner, a long\nsequence header may slow down its mapping process."
+  optional: true
   synonyms:
   - --noDesc
+  description: "Do not keep an additional description in original\nfasta seq header.Depending\
+    \ on NGS aligner, a long\nsequence header may slow down its mapping process."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --subTax
   description: "To include all sub taxonomies under the query taxonomy\nid. e.g.,\
     \ if you set -t 4751 --subtax, it will cover\nall sub taxonomies under taxon id\
     \ 4751 (fungi)."
-  synonyms:
-  - --subTax
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --online
   description: "To enable online searching in case you cannot find a\ncorrect taxonomy\
     \ id for a given gi. When there are\nmany entries in nt whose gi is invalid, this\
     \ option\nmay slow down the overall process."
-  synonyms:
-  - --online
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "specify hostname running mysql if you want to use\nmysql instead of\
-    \ hash method in mapping gi to taxonomy\nid"
+  optional: true
   synonyms:
   - -dbhost
+  description: "specify hostname running mysql if you want to use\nmysql instead of\
+    \ hash method in mapping gi to taxonomy\nid"
   args: !SimpleFlagArg
     name: LIB_DBHOST
-  optional: true
 - !Flag
-  description: "provide mysql server port if different from default\n(3306)"
+  optional: true
   synonyms:
   - -dbport
+  description: "provide mysql server port if different from default\n(3306)"
   args: !SimpleFlagArg
     name: LIB_DBPORT
-  optional: true
 - !Flag
-  description: user name to access mysql
+  optional: true
   synonyms:
   - -dbuser
+  description: user name to access mysql
   args: !SimpleFlagArg
     name: LIB_DBUSER
-  optional: true
 - !Flag
-  description: provide password associate with user
+  optional: true
   synonyms:
   - -dbpasswd
+  description: provide password associate with user
   args: !SimpleFlagArg
     name: LIB_DBPASSWD
-  optional: true
 - !Flag
-  description: 'mysql pathoscope database name (default: pathodb)'
+  optional: true
   synonyms:
   - -db
+  description: 'mysql pathoscope database name (default: pathodb)'
   args: !SimpleFlagArg
     name: LIB_DB
-  optional: true
 - !Flag
-  description: Output Directory (Default=. (current directory))
+  optional: true
   synonyms:
   - -outDir
+  description: Output Directory (Default=. (current directory))
   args: !SimpleFlagArg
     name: LIB_OUTDIR
-  optional: true
 - !Flag
-  description: "specify an output prefix to name your target database\n"
+  optional: true
   synonyms:
   - -outPrefix
+  description: "specify an output prefix to name your target database\n"
   args: !SimpleFlagArg
     name: LIB_OUTPREFIX
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Running without mySQLdb library\nusage: pathoscope LIB [-h] -genomeFile\
@@ -149,3 +149,4 @@ help_text: "Running without mySQLdb library\nusage: pathoscope LIB [-h] -genomeF
   \        specify an output prefix to name your target database\n"
 generated_using:
 - --help
+docker_image:

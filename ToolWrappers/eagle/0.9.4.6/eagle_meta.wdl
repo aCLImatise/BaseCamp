@@ -16,6 +16,9 @@ task EagleMeta {
       ~{if (delete) then "--delete" else ""} \
       ~{if (store_list) then "--storelist" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     write_value_meta: "write this value as meta information"
     delete: "delete the meta information"

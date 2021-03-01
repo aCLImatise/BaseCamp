@@ -2,8 +2,9 @@ version 1.0
 
 task TomboBuildModelEstimateMotifAltReference {
   input {
-    Int? alternate_model_name
-    File? motif_description
+    File? tombo_model_alternative
+    Int? short_name_associate
+    File? motif_containing_alternatebase
     Array[Int] fast_five_based_irs
     String? upstream_bases
     String? downstream_bases
@@ -16,11 +17,18 @@ task TomboBuildModelEstimateMotifAltReference {
     Int? corrected_group
     Array[String] base_call_subgroups
     Boolean? quiet
+    String _alternatemodelname
+    String _motifdescription
+    String _fastbasedirs
   }
   command <<<
     tombo build_model estimate_motif_alt_reference \
-      ~{if defined(alternate_model_name) then ("--alternate-model-name " +  '"' + alternate_model_name + '"') else ""} \
-      ~{if defined(motif_description) then ("--motif-description " +  '"' + motif_description + '"') else ""} \
+      ~{_alternatemodelname} \
+      ~{_motifdescription} \
+      ~{_fastbasedirs} \
+      ~{if defined(tombo_model_alternative) then ("--alternate-model-filename " +  '"' + tombo_model_alternative + '"') else ""} \
+      ~{if defined(short_name_associate) then ("--alternate-model-name " +  '"' + short_name_associate + '"') else ""} \
+      ~{if defined(motif_containing_alternatebase) then ("--motif-description " +  '"' + motif_containing_alternatebase + '"') else ""} \
       ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
       ~{if defined(upstream_bases) then ("--upstream-bases " +  '"' + upstream_bases + '"') else ""} \
       ~{if defined(downstream_bases) then ("--downstream-bases " +  '"' + downstream_bases + '"') else ""} \
@@ -34,9 +42,13 @@ task TomboBuildModelEstimateMotifAltReference {
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    alternate_model_name: "A short name to associate with this alternate model\\n(e.g. 5mC, 6mA, etc.). This text will be included in\\noutput filenames when this model is used for testing."
-    motif_description: "Motif containing alternate-base. All positions with\\nthis motif should be modified (or filtered with\\n[--valid-locations-filename]). Format descriptions as:\\n\\\"motif:mod_pos\\\". mod_pos indicates the alternate-base\\nwithin the motif (1-based index). Example: \\\"CG:1\\\" to\\ntrain a CpG methylation model."
+    tombo_model_alternative: "Tombo model for alternative likelihood ratio\\nsignificance testing."
+    short_name_associate: "A short name to associate with this alternate model\\n(e.g. 5mC, 6mA, etc.). This text will be included in\\noutput filenames when this model is used for testing."
+    motif_containing_alternatebase: "Motif containing alternate-base. All positions with\\nthis motif should be modified (or filtered with\\n[--valid-locations-filename]). Format descriptions as:\\n\\\"motif:mod_pos\\\". mod_pos indicates the alternate-base\\nwithin the motif (1-based index). Example: \\\"CG:1\\\" to\\ntrain a CpG methylation model."
     fast_five_based_irs: "Directories containing fast5 files."
     upstream_bases: "Upstream bases in k-mer. Default: 1"
     downstream_bases: "Downstream bases in k-mer. Default: 2"
@@ -49,6 +61,9 @@ task TomboBuildModelEstimateMotifAltReference {
     corrected_group: "FAST5 group created by resquiggle command. Default:\\nRawGenomeCorrected_000"
     base_call_subgroups: "FAST5 subgroup(s) (under /Analyses/[--basecall-\\ngroup]/) containing basecalls and created within\\n[--corrected-group] containing re-squiggle results.\\nDefault: ['BaseCalled_template']"
     quiet: "Don't print status information."
+    _alternatemodelname: "--alternate-model-name"
+    _motifdescription: "--motif-description"
+    _fastbasedirs: "--fast5-basedirs"
   }
   output {
     File out_stdout = stdout()

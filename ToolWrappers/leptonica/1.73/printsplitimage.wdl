@@ -4,6 +4,9 @@ task Printsplitimage {
   command <<<
     printsplitimage
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

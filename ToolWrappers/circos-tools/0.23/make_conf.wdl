@@ -10,6 +10,9 @@ task Makeconf {
       ~{cat} \
       ~{parsed_table_dot_txt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cat: ""
     parsed_table_dot_txt: ""

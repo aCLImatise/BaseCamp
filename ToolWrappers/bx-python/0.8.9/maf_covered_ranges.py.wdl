@@ -8,6 +8,9 @@ task MafCoveredRangespy {
     maf_covered_ranges_py \
       ~{species_one}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     species_one: ""
   }

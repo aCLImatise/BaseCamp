@@ -44,6 +44,9 @@ task Tgsgapcloser {
       ~{if (ngs) then "--ngs" else ""} \
       ~{if (rac_on) then "--racon" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sc_aff: "<scaffold_file>      the input scaffold file."
     reads: "<tgs_reads_file>     the input TGS reads file."

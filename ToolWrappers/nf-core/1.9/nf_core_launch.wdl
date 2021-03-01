@@ -12,6 +12,9 @@ task NfcoreLaunch {
       ~{if defined(params) then ("--params " +  '"' + params + '"') else ""} \
       ~{if (direct) then "--direct" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     params: "Local parameter settings file in JSON."
     direct: "Uses given values from the parameter file directly."

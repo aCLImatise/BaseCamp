@@ -7,7 +7,7 @@ inputs:
     \ matrix. The default\nvalue assumes you are using the EBLOSUM62\nmatrix for protein\
     \ sequences, and the\nEDNAFULL matrix for nucleotide sequences.\n(Number from\
     \ 0.000 to 100.000)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -gapopen
 - id: in_gap_extend
@@ -20,7 +20,7 @@ inputs:
     \ can get this result by\nsetting the gap open penalty to zero (or\nvery low)\
     \ and using the gap extension\npenalty to control gap scoring. (Number from\n\
     0.000 to 10.000)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -gapextend
 - id: in_data_file
@@ -28,13 +28,14 @@ inputs:
     \ matrix file used when\ncomparing sequences. By default it is the\nfile 'EBLOSUM62'\
     \ (for proteins) or the file\n'EDNAFULL' (for nucleic sequences). These\nfiles\
     \ are found in the 'data' directory of\nthe EMBOSS installation."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -datafile
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _water

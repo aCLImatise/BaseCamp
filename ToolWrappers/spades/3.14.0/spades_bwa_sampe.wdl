@@ -40,6 +40,9 @@ task SpadesbwaSampe {
       ~{if (disable_smithwaterman_unmapped) then "-s" else ""} \
       ~{if (disable_insert_size) then "-A" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     maximum_insert_size: "maximum insert size [500]"
     maximum_occurrences_one: "maximum occurrences for one end [100000]"

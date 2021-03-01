@@ -34,6 +34,9 @@ task UnicyclerCheck {
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(reads) then ("--reads " +  '"' + reads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sam: "Input SAM file of alignments (if this file doesn't\\nexist, the alignment will be performed with results\\nsaved to this file - you can use the aligner\\narguments with this script)"
     ref: "FASTA file containing one or more reference"

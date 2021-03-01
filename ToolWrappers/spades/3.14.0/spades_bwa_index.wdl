@@ -18,6 +18,9 @@ task SpadesbwaIndex {
       ~{if defined(prefix_of_index) then ("-p " +  '"' + prefix_of_index + '"') else ""} \
       ~{if (index_files_named) then "-6" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bwt_construction_algorithm: "BWT construction algorithm: is or rb2 [auto]"
     prefix_of_index: "prefix of the index [same as fasta name]"

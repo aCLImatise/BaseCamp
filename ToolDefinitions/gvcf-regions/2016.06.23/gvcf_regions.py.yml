@@ -4,66 +4,66 @@ command:
 positional: []
 named:
 - !Flag
-  description: use this flag to treat unreported sites as called
+  optional: true
   synonyms:
   - --unreported_is_called
+  description: use this flag to treat unreported sites as called
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "list of phrases considered as discarded, e.g., CNV,\nME. A line that\
-    \ contains any of the ignore phrases is\ndiscarded."
+  optional: true
   synonyms:
   - --ignore_phrases
+  description: "list of phrases considered as discarded, e.g., CNV,\nME. A line that\
+    \ contains any of the ignore phrases is\ndiscarded."
   args: !RepeatFlagArg
     name: IGNORE_PHRASES
-  optional: true
 - !Flag
-  description: minimum GQ (Genotype Quality) considered as called
+  optional: true
   synonyms:
   - --min_GQ
+  description: minimum GQ (Genotype Quality) considered as called
   args: !SimpleFlagArg
     name: MIN_GQ
-  optional: true
 - !Flag
-  description: minimum QUAL considered as called
+  optional: true
   synonyms:
   - --min_QUAL
+  description: minimum QUAL considered as called
   args: !SimpleFlagArg
     name: MIN_QUAL
-  optional: true
 - !Flag
-  description: "list of phrases considered as called, e.g., PASS,\nREFCALL. A line\
-    \ must contain any of the pass phrases\nto be considered as called."
+  optional: true
   synonyms:
   - --pass_phrases
+  description: "list of phrases considered as called, e.g., PASS,\nREFCALL. A line\
+    \ must contain any of the pass phrases\nto be considered as called."
   args: !RepeatFlagArg
     name: PASS_PHRASES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gvcf_type
   description: "type of gvcf output. [unreported_is_called,\nignore_phrases, min_GQ,\
     \ min_QUAL, pass_phrases]\npresets: complete_genomics: [True, ['CNV', 'INS:ME'],\n\
     None, None, ['PASS']]. freebayes: [False, None, None,\nNone, ['PASS']]. gatk:\
     \ [False, None, 5, None, None].\nplatypus: [False, None, None, None, ['PASS',\n\
     'REFCALL']].\n"
-  synonyms:
-  - --gvcf_type
   args: !ChoiceFlagArg
     choices: !!set
-      gatk:
       complete_genomics:
       platypus:
       freebayes:
-  optional: true
+      gatk:
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: gvcf_regions.py [-h] [--unreported_is_called]\n               \
@@ -91,3 +91,4 @@ help_text: "usage: gvcf_regions.py [-h] [--unreported_is_called]\n              
   \      platypus: [False, None, None, None, ['PASS',\n                        'REFCALL']].\n"
 generated_using:
 - --help
+docker_image:

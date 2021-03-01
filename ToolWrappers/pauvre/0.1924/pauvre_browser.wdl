@@ -32,6 +32,9 @@ task PauvreBrowser {
       ~{if defined(stop) then ("--stop " +  '"' + stop + '"') else ""} \
       ~{if (transparent) then "--transparent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     chromosome_id: "The fasta sequence to observe. Use the header name of\\nthe fasta file without the '>' character"

@@ -5,132 +5,132 @@ command:
 positional: []
 named:
 - !Flag
-  description: 'threads (default: 6)'
+  optional: true
   synonyms:
   - -p
   - --processors
+  description: 'threads (default: 6)'
   args: !SimpleFlagArg
     name: PROCESSORS
-  optional: true
 - !Flag
-  description: 'make extra debugging output (default: False)'
+  optional: true
   synonyms:
   - -d
   - --debug
+  description: 'make extra debugging output (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'MASH sketch size (default: 1000)'
+  optional: true
   synonyms:
   - -ms
   - --MASH_sketch
+  description: 'MASH sketch size (default: 1000)'
   args: !SimpleFlagArg
     name: MASH_SKETCH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --S_algorithm
   description: "Algorithm for secondary clustering comaprisons:\nfastANI = Kmer-based\
     \ approach; very fast\nANImf   = (DEFAULT) Align whole genomes with nucmer; filter\
     \ alignment; compare aligned regions\nANIn    = Align whole genomes with nucmer;\
     \ compare aligned regions\ngANI    = Identify and align ORFs; compare aligned\
     \ ORFS\ngoANI   = Open source version of gANI; requires nsmimscan\n(default: ANImf)"
-  synonyms:
-  - --S_algorithm
   args: !ChoiceFlagArg
     choices: !!set
       goANI:
-      fastANI:
-      gANI:
       ANImf:
       ANIn:
-  optional: true
+      fastANI:
+      gANI:
 - !Flag
-  description: "Presets to pass to nucmer\ntight   = only align highly conserved regions\n\
-    normal  = default ANIn parameters (default: normal)"
+  optional: true
   synonyms:
   - --n_PRESET
+  description: "Presets to pass to nucmer\ntight   = only align highly conserved regions\n\
+    normal  = default ANIn parameters (default: normal)"
   args: !ChoiceFlagArg
     choices: !!set
       tight:
       normal:
-  optional: true
 - !Flag
-  description: "ANI threshold to form primary (MASH) clusters\n(default: 0.9)"
+  optional: true
   synonyms:
   - -pa
   - --P_ani
+  description: "ANI threshold to form primary (MASH) clusters\n(default: 0.9)"
   args: !SimpleFlagArg
     name: P_ANI
-  optional: true
 - !Flag
-  description: "ANI threshold to form secondary clusters (default:\n0.99)"
+  optional: true
   synonyms:
   - -sa
   - --S_ani
+  description: "ANI threshold to form secondary clusters (default:\n0.99)"
   args: !SimpleFlagArg
     name: S_ANI
-  optional: true
 - !Flag
-  description: "Skip MASH clustering, just do secondary clustering on\nall genomes\
-    \ (default: False)"
+  optional: true
   synonyms:
   - --SkipMash
+  description: "Skip MASH clustering, just do secondary clustering on\nall genomes\
+    \ (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Skip secondary clustering, just perform MASH\nclustering (default:\
-    \ False)"
+  optional: true
   synonyms:
   - --SkipSecondary
+  description: "Skip secondary clustering, just perform MASH\nclustering (default:\
+    \ False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minmum level of overlap between genomes when doing\nsecondary comparisons\
-    \ (default: 0.1)"
+  optional: true
   synonyms:
   - -nc
   - --cov_thresh
+  description: "Minmum level of overlap between genomes when doing\nsecondary comparisons\
+    \ (default: 0.1)"
   args: !SimpleFlagArg
     name: COV_THRESH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -cm
+  - --coverage_method
   description: "Method to calculate coverage of an alignment\n(for ANIn/ANImf only;\
     \ gANI and fastANI can only do larger method)\ntotal   = 2*(aligned length) /\
     \ (sum of total genome lengths)\nlarger  = max((aligned length / genome 1), (aligned_length\
     \ / genome2))\n(default: larger)"
-  synonyms:
-  - -cm
-  - --coverage_method
   args: !ChoiceFlagArg
     choices: !!set
-      total:
       larger:
-  optional: true
+      total:
 - !Flag
-  description: "Algorithm used to cluster genomes (passed to\nscipy.cluster.hierarchy.linkage\
-    \ (default: average)"
+  optional: true
   synonyms:
   - --clusterAlg
+  description: "Algorithm used to cluster genomes (passed to\nscipy.cluster.hierarchy.linkage\
+    \ (default: average)"
   args: !SimpleFlagArg
     name: CLUSTERALG
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -g
   description: "[GENOMES [GENOMES ...]], --genomes [GENOMES [GENOMES ...]]\ngenomes\
     \ to cluster in .fasta format. Not necessary if\nalready loaded sequences with\
     \ the \"filter\" operation\n(default: None)\n"
-  synonyms:
-  - -g
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: dRep cluster [-p PROCESSORS] [-d] [-h] [-ms MASH_SKETCH]\n    \
@@ -178,3 +178,4 @@ help_text: "usage: dRep cluster [-p PROCESSORS] [-d] [-h] [-ms MASH_SKETCH]\n   
   \ operation\n                        (default: None)\n"
 generated_using:
 - --help
+docker_image:

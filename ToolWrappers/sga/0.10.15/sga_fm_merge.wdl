@@ -16,6 +16,9 @@ task SgaFmmerge {
       ~{if defined(min_overlap) then ("--min-overlap " +  '"' + min_overlap + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     prefix: "use PREFIX for the names of the index files (default: prefix of the input file)"

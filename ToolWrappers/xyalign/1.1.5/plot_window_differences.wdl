@@ -30,6 +30,9 @@ task PlotWindowDifferences {
       ~{if (log_transform_depth) then "--log_transform_depth" else ""} \
       ~{if defined(after) then ("--after " +  '"' + after + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     before: "Full path to dataframe 1 (will be treated) as 'before'"
     chrom: "Chromosome to analyze. Must match name in dataframes."

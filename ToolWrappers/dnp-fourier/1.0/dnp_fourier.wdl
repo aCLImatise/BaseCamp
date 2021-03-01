@@ -16,6 +16,9 @@ task Dnpfourier {
       ~{if defined(normalisation_base_normalization) then ("-n " +  '"' + normalisation_base_normalization + '"') else ""} \
       ~{if defined(output_table_normalization) then ("-t " +  '"' + output_table_normalization + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequence: "sequence"
     table: "table"

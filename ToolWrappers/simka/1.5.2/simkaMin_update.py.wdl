@@ -24,6 +24,9 @@ task SimkaMinUpdatepy {
       ~{if (min_read_size) then "-min-read-size" else ""} \
       ~{if (min_shannon_index) then "-min-shannon-index" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "(1 arg) :    input file of datasets (datasets to add to existing simka results"
     in_to_update: "(1 arg) :    path to existing simka results to update (existing results will be overwritten)"

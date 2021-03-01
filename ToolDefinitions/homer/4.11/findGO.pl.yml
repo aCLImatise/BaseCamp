@@ -3,30 +3,48 @@ command:
 - findGO.pl
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: target ids file
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: organism
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: output directory
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "-cpu <#> (number of cpus to use)\n-human (convert IDs and run as human\
-    \ [uses homologene])\n-customID (don't convert IDs)\n-ontology <file.genes> [file2.genes]\
-    \ ... (custom ontologies)\n"
+  optional: true
   synonyms:
   - -bg
+  - -cpu
+  description: <#> (number of cpus to use)
   args: !SimpleFlagArg
     name: background ids file
+- !Flag
   optional: true
+  synonyms:
+  - -human
+  description: (convert IDs and run as human [uses homologene])
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -customID
+  description: (don't convert IDs)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ontology
+  description: '[file2.genes] ... (custom ontologies)'
+  args: !SimpleFlagArg
+    name: file.genes
 parent:
 subcommands: []
 usage: []
@@ -40,3 +58,4 @@ help_text: "\n\tUsage: findGO.pl <target ids file> <organism> <output directory>
   \n"
 generated_using:
 - --help
+docker_image:

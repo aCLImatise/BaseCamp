@@ -24,6 +24,9 @@ task MetagenomicspyKrona {
       ~{if (no_rank) then "--noRank" else ""} \
       ~{if defined(loglevel) then ("--loglevel " +  '"' + loglevel + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query_column: "Column of query id. (default 2)"
     taxid_column: "Column of taxonomy id. (default 3)"

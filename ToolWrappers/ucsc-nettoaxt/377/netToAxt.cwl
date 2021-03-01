@@ -3,22 +3,22 @@ id: netToAxt.cwl
 inputs:
 - id: in_q_chain
   doc: '- net is with respect to the q side of chains.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -qChain
 - id: in_max_gap
   doc: '- maximum size of gap before breaking. Default 100'
-  type: long
+  type: long?
   inputBinding:
     prefix: -maxGap
 - id: in_gap_out
   doc: '- Output gap sizes to file'
-  type: File
+  type: File?
   inputBinding:
     prefix: -gapOut
 - id: in_no_split
   doc: "- Don't split chain when there is an insertion of another chain"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -noSplit
 - id: in_in_dotnet
@@ -47,9 +47,10 @@ outputs:
   type: stdout
 - id: out_gap_out
   doc: '- Output gap sizes to file'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_gap_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - netToAxt

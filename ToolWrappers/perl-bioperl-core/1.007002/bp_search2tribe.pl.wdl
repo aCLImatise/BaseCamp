@@ -12,6 +12,9 @@ task BpSearch2tribepl {
       ~{if defined(search_result_format) then ("-f " +  '"' + search_result_format + '"') else ""} \
       ~{if defined(weight) then ("--weight " +  '"' + weight + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _output_filename: "- the output filename [default STDOUT]"
     search_result_format: "- search result format (blast, fasta)\\n(ssearch is fasta format). default is blast."

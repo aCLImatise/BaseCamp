@@ -11,19 +11,19 @@ subcommands:
   - INPUT
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: OUTPUT
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -s
+    description: ''
     args: !SimpleFlagArg
       name: SEP
-    optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -33,19 +33,19 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: OUTPUT
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -s
+        description: ''
         args: !SimpleFlagArg
           name: SEP
-        optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -55,19 +55,19 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: OUTPUT
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -s
+            description: ''
             args: !SimpleFlagArg
               name: SEP
-            optional: true
-          parent: &id006 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
             named: []
@@ -77,115 +77,209 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: OUTPUT
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -s
+                description: ''
                 args: !SimpleFlagArg
                   name: SEP
-                optional: true
-              parent: &id003 !Command
+              parent: &id006 !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: "sequence count will be appended as '(SEP)COUNT'\n"
-                  synonyms:
-                  - -s
-                  - --separator
-                  args: !SimpleFlagArg
-                    name: SEP
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: OUTPUT
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -s
+                    description: ''
                     args: !SimpleFlagArg
                       name: SEP
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -s
+                      - --separator
+                      description: "sequence count will be appended as '(SEP)COUNT'\n"
+                      args: !SimpleFlagArg
+                        name: SEP
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: OUTPUT
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: SEP
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\nseqmerge:\
+                        \ error: argument INPUT: can't open 'INPUT': [Errno 2] No\
+                        \ such file or directory: 'INPUT'\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - seqmerge
+                      - OUTPUT
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: seqmerge
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: INPUT
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 2
+                        name: OUTPUT
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: SEP
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\nseqmerge:\
+                        \ error: argument INPUT: can't open 'OUTPUT': [Errno 2] No\
+                        \ such file or directory: 'OUTPUT'\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\n\nscreen\
+                      \ for duplicate sequences and squash them\n\npositional arguments:\n\
+                      \  INPUT                 input FASTA MSA file\n  OUTPUT    \
+                      \            output FASTA MSA file\n\noptional arguments:\n\
+                      \  -h, --help            show this help message and exit\n \
+                      \ -s SEP, --separator SEP\n                        sequence\
+                      \ count will be appended as '(SEP)COUNT'\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\nseqmerge:\
                     \ error: argument INPUT: can't open 'INPUT': [Errno 2] No such\
                     \ file or directory: 'INPUT'\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - seqmerge
-                  - OUTPUT
+                  command: *id005
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: seqmerge
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: INPUT
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 2
                     name: OUTPUT
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -s
+                    description: ''
                     args: !SimpleFlagArg
                       name: SEP
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\nseqmerge:\
                     \ error: argument INPUT: can't open 'OUTPUT': [Errno 2] No such\
                     \ file or directory: 'OUTPUT'\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\n\nscreen for\
@@ -196,61 +290,64 @@ subcommands:
                   \ SEP\n                        sequence count will be appended as\
                   \ '(SEP)COUNT'\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\nseqmerge: error:\
                 \ argument INPUT: can't open 'INPUT': [Errno 2] No such file or directory:\
                 \ 'INPUT'\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: seqmerge
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: INPUT
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 2
                 name: OUTPUT
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -s
+                description: ''
                 args: !SimpleFlagArg
                   name: SEP
-                optional: true
-              parent: *id003
+              parent: *id006
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\nseqmerge: error:\
                 \ argument INPUT: can't open 'OUTPUT': [Errno 2] No such file or directory:\
                 \ 'OUTPUT'\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -262,61 +359,64 @@ subcommands:
               \ help message and exit\n  -s SEP, --separator SEP\n               \
               \         sequence count will be appended as '(SEP)COUNT'\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\nseqmerge: error:\
             \ argument INPUT: can't open 'INPUT': [Errno 2] No such file or directory:\
             \ 'INPUT'\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: seqmerge
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: INPUT
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 2
             name: OUTPUT
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -s
+            description: ''
             args: !SimpleFlagArg
               name: SEP
-            optional: true
-          parent: *id006
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\nseqmerge: error:\
             \ argument INPUT: can't open 'OUTPUT': [Errno 2] No such file or directory:\
             \ 'OUTPUT'\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -328,59 +428,62 @@ subcommands:
           \ exit\n  -s SEP, --separator SEP\n                        sequence count\
           \ will be appended as '(SEP)COUNT'\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\nseqmerge: error: argument\
         \ INPUT: can't open 'INPUT': [Errno 2] No such file or directory: 'INPUT'\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: seqmerge
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: INPUT
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 2
         name: OUTPUT
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -s
+        description: ''
         args: !SimpleFlagArg
           name: SEP
-        optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\nseqmerge: error: argument\
         \ INPUT: can't open 'OUTPUT': [Errno 2] No such file or directory: 'OUTPUT'\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -392,59 +495,62 @@ subcommands:
       \  -s SEP, --separator SEP\n                        sequence count will be appended\
       \ as '(SEP)COUNT'\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\nseqmerge: error: argument\
     \ INPUT: can't open 'INPUT': [Errno 2] No such file or directory: 'INPUT'\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: seqmerge
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: INPUT
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 2
     name: OUTPUT
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -s
+    description: ''
     args: !SimpleFlagArg
       name: SEP
-    optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\nseqmerge: error: argument\
     \ INPUT: can't open 'OUTPUT': [Errno 2] No such file or directory: 'OUTPUT'\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -455,3 +561,4 @@ help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\n\nscreen for duplicate s
   \  -h, --help            show this help message and exit\n  -s SEP, --separator\
   \ SEP\n                        sequence count will be appended as '(SEP)COUNT'\n"
 generated_using: *id004
+docker_image:

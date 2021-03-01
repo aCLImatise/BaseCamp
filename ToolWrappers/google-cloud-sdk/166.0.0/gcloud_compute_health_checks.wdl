@@ -16,6 +16,9 @@ task GcloudComputeHealthchecks {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create health checks for load balanced instances."
     update: "Update health checks for load balanced instances."

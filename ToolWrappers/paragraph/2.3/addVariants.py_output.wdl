@@ -16,6 +16,9 @@ task AddVariantspyOutput {
       ~{if (v) then "-v" else ""} \
       ~{if defined(variants) then ("--variants " +  '"' + variants + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
     variants: ""

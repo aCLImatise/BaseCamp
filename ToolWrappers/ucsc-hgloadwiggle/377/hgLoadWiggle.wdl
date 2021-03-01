@@ -32,6 +32,9 @@ task HgLoadWiggle {
       ~{if defined(tmpdir) then ("-tmpDir " +  '"' + tmpdir + '"') else ""} \
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_bin: "suppress bin field"
     no_load: "do not load table, only create .tab file"

@@ -8,6 +8,9 @@ task BiocondautilsBot {
     bioconda_utils bot \
       ~{if defined(loglevel) then ("--loglevel " +  '"' + loglevel + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: "Log level (default: 'info')"
   }

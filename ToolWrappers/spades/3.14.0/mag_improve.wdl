@@ -14,6 +14,9 @@ task Magimprove {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_length_use: "k-mer length to use"
     reference: "fasta file with reference sequence (for benchmarking purposes)"

@@ -26,6 +26,9 @@ task RtgMendelian {
       ~{if defined(pedigree) then ("--pedigree " +  '"' + pedigree + '"') else ""} \
       ~{if (no_gzip) then "--no-gzip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file_containing: "VCF file containing multi-sample variant\\ncalls. Use '-' to read from standard input"
     set_output_annotated: "if set, output annotated calls to this VCF\\nfile. Use '-' to write to standard output"

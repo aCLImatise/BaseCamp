@@ -14,6 +14,9 @@ task Segwaywinner {
       ~{if (copy) then "--copy" else ""} \
       ~{if (clobber) then "--clobber" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_master: "print input master file name"
     params: "print parameters file name"

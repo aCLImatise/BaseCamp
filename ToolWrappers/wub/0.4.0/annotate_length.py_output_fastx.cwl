@@ -3,12 +3,12 @@ id: annotate_length.py_output_fastx.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_i
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -i
 - id: in_annotate_length_do_tpy
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - annotate_length.py

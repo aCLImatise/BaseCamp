@@ -10,6 +10,9 @@ task HcaDssGetcollection {
       ~{if defined(uuid) then ("--uuid " +  '"' + uuid + '"') else ""} \
       ~{if defined(replica) then ("--replica " +  '"' + replica + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     uuid: "A RFC4122-compliant ID for the collection."
     replica: "Replica to fetch from."

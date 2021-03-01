@@ -4,13 +4,13 @@ inputs:
 - id: in_old
   doc: "Use the old AMBER formatting (pre-Amber6).\nThe 'ideal bonds' and 'ideal angles'\
     \ lines have different fields\npre-AMBER6 and AMBER6."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -old
 - id: in_print_distance_violations
   doc: "Print out distance violations in \"verbose\" mode showing\nactual values instead\
     \ of a 'graphical' display."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_information_dot
@@ -22,6 +22,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sviol

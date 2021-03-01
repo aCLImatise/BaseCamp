@@ -126,6 +126,9 @@ task Blasr {
       ~{if (subsample) then "--subsample" else ""} \
       ~{if defined(hole_numbers) then ("--holeNumbers " +  '"' + hole_numbers + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sa: "Use the suffix array 'sa' for detecting matches\\nbetween the reads and the reference.  The suffix\\narray has been prepared by the sawriter program."
     ctab: "A table of tuple counts used to estimate match significance.  This is\\nby the program 'printTupleCountTable'.  While it is quick to generate on\\nthe fly, if there are many invocations of blasr, it is useful to\\nprecompute the ctab."

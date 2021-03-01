@@ -3,22 +3,22 @@ id: nanoQC.cwl
 inputs:
 - id: in_outdir
   doc: Specify directory in which output has to be created.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_rna
   doc: Fastq is from direct RNA-seq and contains U
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rna
 - id: in_l
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -l
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_fast_q
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: Specify directory in which output has to be created.
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nanoQC

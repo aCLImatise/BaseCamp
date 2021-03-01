@@ -3,7 +3,7 @@ id: etraining.cwl
 inputs:
 - id: in_species
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --species
 - id: in_train_filename
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - etraining

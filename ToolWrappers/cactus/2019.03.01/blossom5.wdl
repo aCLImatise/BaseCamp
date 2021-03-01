@@ -10,6 +10,9 @@ task Blossom5 {
       ~{see} \
       ~{usage_dot_txt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     see: ""
     usage_dot_txt: ""

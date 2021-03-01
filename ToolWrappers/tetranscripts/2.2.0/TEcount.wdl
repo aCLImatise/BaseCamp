@@ -32,6 +32,9 @@ task TEcount {
       ~{if defined(fragment_length) then ("--fragmentLength " +  '"' + fragment_length + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "An RNAseq BAM file."
     gtf: "GTF file for gene annotations"

@@ -10,6 +10,9 @@ task NextflowbakCloudList {
       ~{cluster_name} \
       ~{if (region) then "-region" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     region: "The region to use. Overrides config/env settings.\\n"
     cluster_name: ""

@@ -12,6 +12,9 @@ task TbvcfreportARGS {
       ~{var_command} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tb_vcf_report: ""
     var_command: ""

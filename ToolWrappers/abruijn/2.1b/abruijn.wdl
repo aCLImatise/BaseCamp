@@ -28,6 +28,9 @@ task Abruijn {
       ~{if defined(min_coverage) then ("--min-coverage " +  '"' + min_coverage + '"') else ""} \
       ~{if defined(max_coverage) then ("--max-coverage " +  '"' + max_coverage + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "enable debug output"
     resume: "try to resume previous assembly"

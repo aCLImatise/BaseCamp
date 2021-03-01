@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Directory, Int, Boolean
+
+Asqcan_V0_1_0 = CommandToolBuilder(tool="asqcan", base_command=["asqcan"], inputs=[ToolInput(tag="in_fast_q_dir", input_type=File(optional=True), prefix="--fastq-dir", doc=InputDocumentation(doc="Path to a directory with your interleaved fastq files.")), ToolInput(tag="in_output_directory", input_type=Directory(optional=True), prefix="--output-directory", doc=InputDocumentation(doc="Path to the output directory. A directory will be\ncreated if one does not exist.")), ToolInput(tag="in_blast_database", input_type=File(optional=True), prefix="--blast_database", doc=InputDocumentation(doc="Path to the local nt blast database. This pipeline\ndoes not require you to have a local copy of the nt\ndatabase but without it you will not be able to use\nsimilarity data for blobtools. Similarity data adds\nsignificantly to the blobplot and blobtools table\noutputs of this pipeline. See https://blast.ncbi.nlm.n\nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=\nDownload to install a local nt database.")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="Number of threads to use for multiprocessing.")), ToolInput(tag="in_max_memory", input_type=Int(optional=True), prefix="--max_memory", doc=InputDocumentation(doc="Maximum amount of RAM to assign to the pipeline in GB\n(Just the number).")), ToolInput(tag="in_force", input_type=Boolean(optional=True), prefix="--force", doc=InputDocumentation(doc="Overwrite files in the output directories.")), ToolInput(tag="in_verbose", input_type=Directory(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Increase verbosity on command line output (n.b.\nverbose output is always saved to asqcan.log in the\noutput directory).\n"))], outputs=[ToolOutput(tag="out_output_directory", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output_directory", type_hint=File()), doc=OutputDocumentation(doc="Path to the output directory. A directory will be\ncreated if one does not exist.")), ToolOutput(tag="out_verbose", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_verbose", type_hint=File()), doc=OutputDocumentation(doc="Increase verbosity on command line output (n.b.\nverbose output is always saved to asqcan.log in the\noutput directory).\n"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Asqcan_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -10,6 +10,9 @@ task MotifRaptorSet {
       ~{if defined(parameter_name) then ("--parametername " +  '"' + parameter_name + '"') else ""} \
       ~{if defined(parameter_value) then ("--parametervalue " +  '"' + parameter_value + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     parameter_name: "Parameter Name"
     parameter_value: "Parameter Value\\n"

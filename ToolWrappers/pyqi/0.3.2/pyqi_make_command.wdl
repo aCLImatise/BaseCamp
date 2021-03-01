@@ -24,6 +24,9 @@ task PyqiMakecommand {
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if defined(output_fp) then ("--output-fp " +  '"' + output_fp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     author: "author/maintainer name [default: none]"
     email: "maintainer email address [default: none]"

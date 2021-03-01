@@ -18,6 +18,9 @@ task HtsboxBam2fq {
       ~{if (copy_bc_tags) then "-t" else ""} \
       ~{if defined(write_singleton_reads) then ("-s " +  '"' + write_singleton_reads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     append_read_name: "append /1 and /2 to the read name"
     output_quality_present: "output quality in the OQ tag if present"

@@ -5,105 +5,102 @@ command:
 positional: []
 named:
 - !Flag
-  description: "[--collapse-samples COLLAPSE_SAMPLES [COLLAPSE_SAMPLES ...]]\n[--sample-category\
-    \ SAMPLE_CATEGORY [SAMPLE_CATEGORY ...]]\n[--min-cluster MIN_CLUSTER]\n[--sig-cutoff\
-    \ SIG_CUTOFF]\n[--dmr-max-dist DMR_MAX_DIST]\n[--min-num-dms MIN_NUM_DMS]\n[--resid-cutoff\
-    \ RESID_CUTOFF]\n[--num-sims NUM_SIMS] [--min-tests MIN_TESTS]"
-  synonyms:
-  - --output-file
-  args: !SimpleFlagArg
-    name: OUTPUT_FILE
   optional: true
-- !Flag
-  description: "File storing the results of RMS tests (from DMRfind\nfunction. (default:\
-    \ None)"
   synonyms:
   - --input-rms-file
+  description: "File storing the results of RMS tests (from DMRfind\nfunction. (default:\
+    \ None)"
   args: !SimpleFlagArg
     name: INPUT_RMS_FILE
-  optional: true
 - !Flag
-  description: "A list of samples for collapsing blocks (default:\nFalse)"
+  optional: true
+  synonyms:
+  - --output-file
+  description: "String indicating the name of output file (default:\nNone)"
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+- !Flag
+  optional: true
   synonyms:
   - --collapse-samples
+  description: "A list of samples for collapsing blocks (default:\nFalse)"
   args: !RepeatFlagArg
     name: COLLAPSE_SAMPLES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sample-category
   description: "A list of categories that each respective sample\nbelongs to; the\
     \ categories must begin at 0 and\nincrease by 1 for each category added. ex: samples\n\
     [A,B,C] categories [0,1,2] or categories [0, 1, 0]\n(default: False)"
-  synonyms:
-  - --sample-category
   args: !RepeatFlagArg
     name: SAMPLE_CATEGORY
-  optional: true
 - !Flag
-  description: "The minimum number of each sample category that must\nbe present in\
-    \ every block that is output. (default: 2)"
+  optional: true
   synonyms:
   - --min-cluster
+  description: "The minimum number of each sample category that must\nbe present in\
+    \ every block that is output. (default: 2)"
   args: !SimpleFlagArg
     name: MIN_CLUSTER
-  optional: true
 - !Flag
-  description: "Float indicating at what FDR you want to consider a\nresult significant.\
-    \ (default: 0.01)"
+  optional: true
   synonyms:
   - --sig-cutoff
+  description: "Float indicating at what FDR you want to consider a\nresult significant.\
+    \ (default: 0.01)"
   args: !SimpleFlagArg
     name: SIG_CUTOFF
-  optional: true
 - !Flag
-  description: "Maximum distance two significant sites can be to be\nincluded in the\
-    \ same block. (default: 250)"
+  optional: true
   synonyms:
   - --dmr-max-dist
+  description: "Maximum distance two significant sites can be to be\nincluded in the\
+    \ same block. (default: 250)"
   args: !SimpleFlagArg
     name: DMR_MAX_DIST
-  optional: true
 - !Flag
-  description: "The minimum number of differentially methylated sites\nthat a differentially\
-    \ methylated region needs to\ncontain to be reported (default: 0)"
+  optional: true
   synonyms:
   - --min-num-dms
+  description: "The minimum number of differentially methylated sites\nthat a differentially\
+    \ methylated region needs to\ncontain to be reported (default: 0)"
   args: !SimpleFlagArg
     name: MIN_NUM_DMS
-  optional: true
 - !Flag
-  description: "Results will have to show deviations in the\ncontingency table in\
-    \ the same direction as the rest of\nthe window (default: 0.01)"
+  optional: true
   synonyms:
   - --resid-cutoff
+  description: "Results will have to show deviations in the\ncontingency table in\
+    \ the same direction as the rest of\nthe window (default: 0.01)"
   args: !SimpleFlagArg
     name: RESID_CUTOFF
-  optional: true
 - !Flag
-  description: "Number of permutation tests you would like to run to\nestimate the\
-    \ p-values of the differential methylation\ntests (default: 3000)"
+  optional: true
   synonyms:
   - --num-sims
+  description: "Number of permutation tests you would like to run to\nestimate the\
+    \ p-values of the differential methylation\ntests (default: 3000)"
   args: !SimpleFlagArg
     name: NUM_SIMS
-  optional: true
 - !Flag
-  description: "Minimum number of permuation tests you\\ would d like\nto run for\
-    \ each mC (default: 100)\n"
+  optional: true
   synonyms:
   - --min-tests
+  description: "Minimum number of permuation tests you\\ would d like\nto run for\
+    \ each mC (default: 100)\n"
   args: !SimpleFlagArg
     name: MIN_TESTS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: methylpy reidentify-DMR [-h] --input-rms-file INPUT_RMS_FILE\n\
@@ -147,3 +144,4 @@ help_text: "usage: methylpy reidentify-DMR [-h] --input-rms-file INPUT_RMS_FILE\
   \ 100)\n"
 generated_using:
 - --help
+docker_image:

@@ -1,0 +1,515 @@
+&id001 !Command
+command:
+- MetaCHIP
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - MetaCHIP
+  - PI
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: input genome folder
+    args: !SimpleFlagArg
+      name: I
+  - !Flag
+    optional: true
+    synonyms:
+    - -taxon
+    description: taxonomic classification of input genomes
+    args: !SimpleFlagArg
+      name: TAXON
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: output prefix
+    args: !SimpleFlagArg
+      name: P
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: "grouping rank, choose from p (phylum), c (class), o (order), f\n\
+      (family), g (genus) or any combination of them"
+    args: !SimpleFlagArg
+      name: R
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: grouping file
+    args: !SimpleFlagArg
+      name: G
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    description: file extension
+    args: !SimpleFlagArg
+      name: X
+  - !Flag
+    optional: true
+    synonyms:
+    - -nonmeta
+    description: provide if input genomes are NOT metagenome-assembled genomes
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: 'number of threads, default: 1'
+    args: !SimpleFlagArg
+      name: T
+  - !Flag
+    optional: true
+    synonyms:
+    - -quiet
+    description: not report progress
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -force
+    description: force overwrite existing results
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -noblast
+    description: "skip running all-vs-all blastn, provide if you have other ways\n\
+      (e.g. with job scripts) to speed up the blastn step"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: MetaCHIP PI [-h] -i I [-taxon TAXON] -p P [-r R] [-g G] [-x X]\n\
+    \                   [-nonmeta] [-t T] [-quiet] [-force] [-noblast]\n\nPrepare\
+    \ input files\n\noptional arguments:\n  -h, --help    show this help message and\
+    \ exit\n  -i I          input genome folder\n  -taxon TAXON  taxonomic classification\
+    \ of input genomes\n  -p P          output prefix\n  -r R          grouping rank,\
+    \ choose from p (phylum), c (class), o (order), f\n                (family), g\
+    \ (genus) or any combination of them\n  -g G          grouping file\n  -x X  \
+    \        file extension\n  -nonmeta      provide if input genomes are NOT metagenome-assembled\
+    \ genomes\n  -t T          number of threads, default: 1\n  -quiet        not\
+    \ report progress\n  -force        force overwrite existing results\n  -noblast\
+    \      skip running all-vs-all blastn, provide if you have other ways\n      \
+    \          (e.g. with job scripts) to speed up the blastn step\n\nExample: MetaCHIP\
+    \ PI -h\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/metachip:1.10.3--pyh3252c3a_0
+- !Command
+  command:
+  - MetaCHIP
+  - filter_HGT
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "txt file containing detected HGTs, e.g.\n[prefix]_[ranks]_detected_HGTs.txt"
+    args: !SimpleFlagArg
+      name: I
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: HGTs detected at least n levels, 2 <= n <= 5
+    args: !SimpleFlagArg
+      name: N
+  - !Flag
+    optional: true
+    synonyms:
+    - -plot
+    description: flanking plots folder
+    args: !SimpleFlagArg
+      name: PLOT
+  - !Flag
+    optional: true
+    synonyms:
+    - -ffn
+    description: get nucleotide sequences for qualified HGTs
+    args: !SimpleFlagArg
+      name: FFN
+  - !Flag
+    optional: true
+    synonyms:
+    - -faa
+    description: get amino acid sequences for qualified HGTs
+    args: !SimpleFlagArg
+      name: FAA
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: \n====================================== filter_HGT example commands\
+    \ ======================================\n\n# get HGTs detected at at least TWO\
+    \ levels\nMetaCHIP filter_HGT -i NorthSea_pcofg_detected_HGTs.txt -n 2\n\n# get\
+    \ HGTs detected at at least THREE levels and copy their flanking region plots\
+    \ into a new folder\nMetaCHIP filter_HGT -i NorthSea_pcofg_detected_HGTs.txt -n\
+    \ 3 -plot NorthSea_pcofg_Flanking_region_plots\n\n=========================================================================================================\n\
+    \nget HGTs detected at least n levels\n\noptional arguments:\n  -h, --help  show\
+    \ this help message and exit\n  -i I        txt file containing detected HGTs,\
+    \ e.g.\n              [prefix]_[ranks]_detected_HGTs.txt\n  -n N        HGTs detected\
+    \ at least n levels, 2 <= n <= 5\n  -plot PLOT  flanking plots folder\n  -ffn\
+    \ FFN    get nucleotide sequences for qualified HGTs\n  -faa FAA    get amino\
+    \ acid sequences for qualified HGTs\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metachip:1.10.3--pyh3252c3a_0
+- !Command
+  command:
+  - MetaCHIP
+  - get_SCG_tree
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: input genome folder
+    args: !SimpleFlagArg
+      name: I
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: output prefix
+    args: !SimpleFlagArg
+      name: P
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    description: file extension
+    args: !SimpleFlagArg
+      name: X
+  - !Flag
+    optional: true
+    synonyms:
+    - -nonmeta
+    description: annotate Non-metagenome-assembled genomes (Non-MAGs)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: 'number of threads, default: 1'
+    args: !SimpleFlagArg
+      name: T
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: \n===================================== get SCG tree example\
+    \ commands =====================================\n\n# for completed genome\nMetaCHIP\
+    \ get_SCG_tree -i genomes -p NorthSea -x fasta -t 4 -nonmeta\n\n# for metagenome-assembled\
+    \ genomes (MAGs) \nMetaCHIP get_SCG_tree -i genomes -p NorthSea -x fasta -t 4\n\
+    \n# Software dependencies:\nProdigal, HMMER, Mafft and FastTree\n\n=========================================================================================================\n\
+    \nget SCG tree\n\noptional arguments:\n  -h, --help  show this help message and\
+    \ exit\n  -i I        input genome folder\n  -p P        output prefix\n  -x X\
+    \        file extension\n  -nonmeta    annotate Non-metagenome-assembled genomes\
+    \ (Non-MAGs)\n  -t T        number of threads, default: 1\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metachip:1.10.3--pyh3252c3a_0
+- !Command
+  command:
+  - MetaCHIP
+  - BP
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: output prefix
+    args: !SimpleFlagArg
+      name: P
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: grouping rank
+    args: !SimpleFlagArg
+      name: R
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: grouping file
+    args: !SimpleFlagArg
+      name: G
+  - !Flag
+    optional: true
+    synonyms:
+    - -cov
+    description: 'coverage cutoff, default: 75'
+    args: !SimpleFlagArg
+      name: COV
+  - !Flag
+    optional: true
+    synonyms:
+    - -al
+    description: 'alignment length cutoff, default: 200'
+    args: !SimpleFlagArg
+      name: AL
+  - !Flag
+    optional: true
+    synonyms:
+    - -flk
+    description: 'the length of flanking sequences to plot (Kbp), default: 10'
+    args: !SimpleFlagArg
+      name: FLK
+  - !Flag
+    optional: true
+    synonyms:
+    - -ip
+    description: 'identity percentile cutoff, default: 90'
+    args: !SimpleFlagArg
+      name: IP
+  - !Flag
+    optional: true
+    synonyms:
+    - -ei
+    description: 'end match identity cutoff, default: 80'
+    args: !SimpleFlagArg
+      name: EI
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: 'number of threads, default: 1'
+    args: !SimpleFlagArg
+      name: T
+  - !Flag
+    optional: true
+    synonyms:
+    - -NoEbCheck
+    description: "disable end break and contig match check for fast processing,\n\
+      not recommend for metagenome-assembled genomes (MAGs)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -force
+    description: overwrite previous results
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -quiet
+    description: Do not report progress
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -tmp
+    description: keep temporary files
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: MetaCHIP BP [-h] -p P [-r R] [-g G] [-cov COV] [-al AL] [-flk\
+    \ FLK]\n                   [-ip IP] [-ei EI] [-t T] [-NoEbCheck] [-force] [-quiet]\n\
+    \                   [-tmp]\n\nBM and PG approach\n\noptional arguments:\n  -h,\
+    \ --help  show this help message and exit\n  -p P        output prefix\n  -r R\
+    \        grouping rank\n  -g G        grouping file\n  -cov COV    coverage cutoff,\
+    \ default: 75\n  -al AL      alignment length cutoff, default: 200\n  -flk FLK\
+    \    the length of flanking sequences to plot (Kbp), default: 10\n  -ip IP   \
+    \   identity percentile cutoff, default: 90\n  -ei EI      end match identity\
+    \ cutoff, default: 80\n  -t T        number of threads, default: 1\n  -NoEbCheck\
+    \  disable end break and contig match check for fast processing,\n           \
+    \   not recommend for metagenome-assembled genomes (MAGs)\n  -force      overwrite\
+    \ previous results\n  -quiet      Do not report progress\n  -tmp        keep temporary\
+    \ files\n\nExample: MetaCHIP BP -h\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metachip:1.10.3--pyh3252c3a_0
+- !Command
+  command:
+  - MetaCHIP
+  - update_hmms
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -hmm
+    description: MetaCHIP_phylo.hmm file
+    args: !SimpleFlagArg
+      name: HMM
+  - !Flag
+    optional: true
+    synonyms:
+    - -p_db
+    description: Pfam db file, e.g. Pfam-A.hmm
+    args: !SimpleFlagArg
+      name: P_DB
+  - !Flag
+    optional: true
+    synonyms:
+    - -t_db
+    description: TIGRFAMs db folder, e.g. TIGRFAMs_14.0_HMM
+    args: !SimpleFlagArg
+      name: T_DB
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: \n====================================== update_hmms example\
+    \ commands ====================================\n\n# Download Pfam DB file (e.g.\
+    \ v32.0)\nwget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz\n\
+    gunzip Pfam-A.hmm.gz\n\n# Download TIGRFAM DB folder (e.g. v14.0)\nwget ftp://ftp.jcvi.org/pub/data/TIGRFAMs/14.0_Release/TIGRFAMs_14.0_HMM.tar.gz\n\
+    tar -xzvf TIGRFAMs_14.0_HMM.tar.gz\n\nMetaCHIP update_hmms -hmm MetaCHIP_phylo.hmm\
+    \ -p_db Pfam-A.hmm -t_db TIGRFAMs_14.0_HMM\n\n========================================================================================================\n\
+    \nupdate hmm profiles\n\noptional arguments:\n  -h, --help  show this help message\
+    \ and exit\n  -hmm HMM    MetaCHIP_phylo.hmm file\n  -p_db P_DB  Pfam db file,\
+    \ e.g. Pfam-A.hmm\n  -t_db T_DB  TIGRFAMs db folder, e.g. TIGRFAMs_14.0_HMM\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metachip:1.10.3--pyh3252c3a_0
+- !Command
+  command:
+  - MetaCHIP
+  - rename_seqs
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: name
+    description: -sep_in SEP_IN    separator for input sequences
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -in
+    description: input sequence file
+    args: !SimpleFlagArg
+      name: IN
+  - !Flag
+    optional: true
+    synonyms:
+    - -inc_suffix
+    description: rename sequences by incrementally adding suffix to file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -sep_out
+    description: 'separator for output sequences, default: same as sep_in'
+    args: !SimpleFlagArg
+      name: SEP_OUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: the number of columns to keep
+    args: !SimpleFlagArg
+      name: N
+  - !Flag
+    optional: true
+    synonyms:
+    - -prefix
+    description: add prefix to sequence
+    args: !SimpleFlagArg
+      name: PREFIX
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    description: file extension
+    args: !SimpleFlagArg
+      name: X
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: \n========================= rename_seqs example commands =========================\n\
+    \n# rename sequences according to the file name by incrementally adding 1 to suffix\n\
+    MetaCHIP rename_seqs -inc_suffix -in Contigs.fa\nMetaCHIP rename_seqs -inc_suffix\
+    \ -in bin_folder -x fa\n\n# rename \"NODE_941_length_17600_cov_52.7123\" to \"\
+    NODE_941\"\nMetaCHIP rename_seqs -in Contigs.fa -sep_in \"_\" -n 2\n\n# rename\
+    \ \"Seawater|NODE|941|length|17600|cov|52.7123\" to \"Seawater_NODE_941\"\nMetaCHIP\
+    \ rename_seqs -in Contigs.fa -sep_in \"|\" -sep_out \"_\" -n 3\n\n# add prefix\
+    \ to all sequences in a fasta file\nMetaCHIP rename_seqs -in Contigs.fa -prefix\
+    \ seawater\n\n# rename \"NODE_941_length_17600_cov_52.7123\" to \"Seawater_NODE_941\"\
+    \nMetaCHIP rename_seqs -in Contigs.fa -sep_in \"_\" -n 2 -prefix Seawater\n\n\
+    ===============================================================================\n\
+    \nrename sequences in a file\n\noptional arguments:\n  -h, --help        show\
+    \ this help message and exit\n  -in IN            input sequence file\n  -inc_suffix\
+    \       rename sequences by incrementally adding suffix to file\n            \
+    \        name\n  -sep_in SEP_IN    separator for input sequences\n  -sep_out SEP_OUT\
+    \  separator for output sequences, default: same as sep_in\n  -n N           \
+    \   the number of columns to keep\n  -prefix PREFIX    add prefix to sequence\n\
+    \  -x X              file extension\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metachip:1.10.3--pyh3252c3a_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: " \n            ...::: MetaCHIP v1.10.3 :::...\n        \n    Core modules:\n\
+  \       PI            ->  Prepare input files \n       BP            ->  Run Best-match\
+  \ and Phylogenetic approaches\n       \n    Supplementary modules:\n       filter_HGT\
+  \    ->  Get HGTs been found at no less than n taxonomic ranks\n       update_hmms\
+  \   ->  Update hmm profiles used for inferring SCG tree\n       get_SCG_tree  ->\
+  \  Get SCG protein tree\n       rename_seqs   ->  Rename sequences in a file\n\n\
+  \    # for command specific help info\n    MetaCHIP PI -h\n    MetaCHIP BP -h\n\
+  \    \n    \n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/metachip:1.10.3--pyh3252c3a_0

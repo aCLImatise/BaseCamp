@@ -70,6 +70,9 @@ task Runmitospy {
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(json) then ("--json " +  '"' + json + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     the_input_file: "the input file"
     fast_a: "input fasta sequence"

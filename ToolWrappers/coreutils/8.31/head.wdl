@@ -16,6 +16,9 @@ task Head {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (zero_terminated) then "--zero-terminated" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bytes: "=[-]NUM       print the first NUM bytes of each file;\\nwith the leading '-', print all but the last\\nNUM bytes of each file"
     lines: "=[-]NUM       print the first NUM lines instead of the first 10;\\nwith the leading '-', print all but the last\\nNUM lines of each file"

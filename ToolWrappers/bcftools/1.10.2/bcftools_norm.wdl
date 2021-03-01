@@ -42,6 +42,9 @@ task BcftoolsNorm {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(site_win) then ("--site-win " +  '"' + site_win + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     check_ref: "check REF alleles and exit (e), warn (w), exclude (x), or set (s) bad sites [e]"
     remove_duplicates: "remove duplicate lines of the same type."

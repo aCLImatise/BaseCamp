@@ -18,6 +18,9 @@ task AgatSqMaskpl {
       ~{if (hm) then "-hm" else ""} \
       ~{if defined(output_gff_file) then ("--output " +  '"' + output_gff_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GTF/GFF file."
     fast_a: "Input fasta file that will be masked"

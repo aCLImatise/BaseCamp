@@ -42,6 +42,9 @@ task Jaotc {
       ~{if (linker_path) then "--linker-path" else ""} \
       ~{if (flag_pass_flag) then "-J" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_name: "Output file name"
     class_name: "List of classes to compile"

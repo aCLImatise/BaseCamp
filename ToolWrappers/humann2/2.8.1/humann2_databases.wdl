@@ -12,6 +12,9 @@ task Humann2Databases {
       ~{if defined(download) then ("--download " +  '"' + download + '"') else ""} \
       ~{if defined(update_config) then ("--update-config " +  '"' + update_config + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     available: "print the available databases"
     download: "<build> <install_location>\\ndownload the selected database to the install location"

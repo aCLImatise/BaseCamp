@@ -3,22 +3,22 @@ id: FidoChooseParameters.cwl
 inputs:
 - id: in_c
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -c
 - id: in_g
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
 - id: in_a
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_p
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_graph_file
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - FidoChooseParameters

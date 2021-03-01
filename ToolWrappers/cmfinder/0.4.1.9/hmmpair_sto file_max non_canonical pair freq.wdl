@@ -12,6 +12,9 @@ task HmmpairStofileMaxnoncanonicalpairfreq {
       ~{size_of_poly_n_flanking_seqs_in_forward_prob_calculations} \
       ~{uniform_distribution_of_profile_hmm_starts_and_ends}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fragmentary_policy: ""
     size_of_poly_n_flanking_seqs_in_forward_prob_calculations: ""

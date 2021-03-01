@@ -18,6 +18,9 @@ task ScaterisoutlierR {
       ~{if defined(min_diff) then ("--min-diff " +  '"' + min_diff + '"') else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metric_file: "Two column table with cell names on the first column and numeric QC metric on the second column."
     nm_ads: "scalar, number of median-absolute-deviations away from median required for a value to be called an outlier."

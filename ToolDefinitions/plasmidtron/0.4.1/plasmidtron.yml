@@ -3,170 +3,170 @@ command:
 - plasmidtron
 positional:
 - !Positional
-  description: Output directory
+  optional: false
   position: 0
   name: output_directory
-  optional: false
+  description: Output directory
 - !Positional
-  description: File of filenames of trait (case) FASTQs
+  optional: false
   position: 1
   name: file_of_traits
-  optional: false
+  description: File of filenames of trait (case) FASTQs
 - !Positional
-  description: File of filenames of nontrait (control) FASTQs
+  optional: false
   position: 2
   name: file_of_nontraits
-  optional: false
+  description: File of filenames of nontrait (control) FASTQs
 named:
 - !Flag
-  description: "Control how the traits kmers are filtered for assembly\n[union]"
+  optional: true
   synonyms:
   - --action
   - -a
+  description: "Control how the traits kmers are filtered for assembly\n[union]"
   args: !ChoiceFlagArg
     choices: !!set
-      union:
       intersection:
-  optional: true
+      union:
 - !Flag
-  description: Keep intermediate files [False]
+  optional: true
   synonyms:
   - --keep_files
   - -f
+  description: Keep intermediate files [False]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Kmer to use, depends on read length [51]
+  optional: true
   synonyms:
   - --kmer
   - -k
+  description: Kmer to use, depends on read length [51]
   args: !SimpleFlagArg
     name: KMER
-  optional: true
 - !Flag
-  description: Minimum contig length in final assembly [300]
+  optional: true
   synonyms:
   - --min_contig_len
   - -l
+  description: Minimum contig length in final assembly [300]
   args: !SimpleFlagArg
     name: MIN_CONTIG_LEN
-  optional: true
 - !Flag
-  description: "Filter out contigs with low coverage. Set to 0 to keep\nall. [5]"
+  optional: true
   synonyms:
   - --min_spades_contig_coverage
   - -c
+  description: "Filter out contigs with low coverage. Set to 0 to keep\nall. [5]"
   args: !SimpleFlagArg
     name: MIN_SPADES_CONTIG_COVERAGE
-  optional: true
 - !Flag
-  description: "Filter out contigs with high coverage. Set to 0 to\nkeep all. [500]"
+  optional: true
   synonyms:
   - --max_spades_contig_coverage
   - -e
+  description: "Filter out contigs with high coverage. Set to 0 to\nkeep all. [500]"
   args: !SimpleFlagArg
     name: MAX_SPADES_CONTIG_COVERAGE
-  optional: true
 - !Flag
-  description: Exclude traits k-mers occurring less than this [10]
+  optional: true
   synonyms:
   - --min_kmers_threshold
   - -m
+  description: Exclude traits k-mers occurring less than this [10]
   args: !SimpleFlagArg
     name: MIN_KMERS_THRESHOLD
-  optional: true
 - !Flag
-  description: Exclude traits k-mers occurring more than this [254]
+  optional: true
   synonyms:
   - --max_kmers_threshold
   - -x
+  description: Exclude traits k-mers occurring more than this [254]
   args: !SimpleFlagArg
     name: MAX_KMERS_THRESHOLD
-  optional: true
 - !Flag
-  description: Exclude nontraits k-mers occurring less than this [5]
+  optional: true
   synonyms:
   - --min_controls_kmers_threshold
+  description: Exclude nontraits k-mers occurring less than this [5]
   args: !SimpleFlagArg
     name: MIN_CONTROLS_KMERS_THRESHOLD
-  optional: true
 - !Flag
-  description: "Exclude nontraits k-mers occurring more than this\n[254]"
+  optional: true
   synonyms:
   - --max_controls_kmers_threshold
+  description: "Exclude nontraits k-mers occurring more than this\n[254]"
   args: !SimpleFlagArg
     name: MAX_CONTROLS_KMERS_THRESHOLD
-  optional: true
 - !Flag
-  description: Min percentage kmer coverage of read to keep it[0.2]
+  optional: true
   synonyms:
   - --min_kmers_per_read
   - -r
+  description: Min percentage kmer coverage of read to keep it[0.2]
   args: !SimpleFlagArg
     name: MIN_KMERS_PER_READ
-  optional: true
 - !Flag
-  description: Match both pairs to keep them in assembly [False]
+  optional: true
   synonyms:
   - --match_both_pairs
   - -d
+  description: Match both pairs to keep them in assembly [False]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Kmer to use, depends on read length [kmerplot.png]
+  optional: true
   synonyms:
   - --plot_filename
   - -p
+  description: Kmer to use, depends on read length [kmerplot.png]
   args: !SimpleFlagArg
     name: PLOT_FILENAME
-  optional: true
 - !Flag
-  description: Create kmer plot [False]
+  optional: true
   synonyms:
   - --kmer_plot
   - -g
+  description: Create kmer plot [False]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Set the SPAdes executable [spades.py]
+  optional: true
   synonyms:
   - --spades_exec
   - -s
+  description: Set the SPAdes executable [spades.py]
   args: !SimpleFlagArg
     name: SPADES_EXEC
-  optional: true
 - !Flag
-  description: Number of threads [1]
+  optional: true
   synonyms:
   - --threads
   - -t
+  description: Number of threads [1]
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: Turn on debugging [0]
+  optional: true
   synonyms:
   - --verbose
   - -v
+  description: Turn on debugging [0]
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: plasmidtron [options] output_directory file_of_traits file_of_nontraits\n\
   \nA tool to assemble parts of a genome responsible for a trait\n\npositional arguments:\n\
   \  output_directory      Output directory\n  file_of_traits        File of filenames\
@@ -201,3 +201,4 @@ help_text: "usage: plasmidtron [options] output_directory file_of_traits file_of
   \ and exit\n"
 generated_using:
 - --help
+docker_image:

@@ -1,0 +1,200 @@
+!Command
+command:
+- ama
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: motif file
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: sequence file
+  description: ''
+- !Positional
+  optional: true
+  position: 2
+  name: background file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --sdbg
+  description: "Use Markov background model of order <order>\nderived from the sequence\
+    \ to compute its\nlikelihood ratios;\noverrides --pvalues, --gcbins and --rma;\n\
+    <background file> is required unless\n--sdbg is given."
+  args: !SimpleFlagArg
+    name: order
+- !Flag
+  optional: true
+  synonyms:
+  - --motif
+  description: "Use only the motif identified by <id>.\nThis option may be repeated."
+  args: !SimpleFlagArg
+    name: id
+- !Flag
+  optional: true
+  synonyms:
+  - --motif-pseudo
+  description: "The value <float> times the background\nfrequency is added to the\
+    \ count of each\nletter when creating the likelihood\nratio matrix; default: 0.01"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --norc
+  description: "Disables the scanning of the reverse\ncomplement strand for complementable\n\
+    alphabets. The switch is set automatically\nfor alphabets without complements."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --scoring
+  description: "[avg-odds|max-odds]\nIndicates whether the average or\nthe maximum\
+    \ odds should be calculated\ndefault: avg-odds"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rma
+  description: "Scale motif scores to the range [0,1].\n(Relative Motif Affinity).\n\
+    Motif scores are scaled by the maximum\nscore achievable by that PWM; default:\n\
+    Motif scores are not normalized."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pvalues
+  description: "Print p-value of avg-odds score in cisml\noutput. Ignored for max-odds\
+    \ scoring;\ndefault: P-values are not printed."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gcbins
+  description: "Compensate p-values for GC* content of\neach sequence using given\
+    \ number of\nGC range bins. Recommended bins: 41.\nThis option only works with\
+    \ complementable\nalphabets with exactly 2 complement pairs;\ndefault: P-values\
+    \ are based on\nfrequencies in background file.\n* GC refers to any complement\
+    \ pair, not\nactually G and C except for the case of DNA."
+  args: !SimpleFlagArg
+    name: bins
+- !Flag
+  optional: true
+  synonyms:
+  - --cs
+  description: "Enable combining sequences with same\nidentifier by taking the average\
+    \ score\nand the Sidac corrected p-value."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --o-format
+  description: "[gff|cisml]   Output file format; default: cisml.\nIgnored if --o\
+    \ or --oc option used,\nand then CisML (.xml) and GFF (.txt)\nfiles are both output\
+    \ into the\nspecified directory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --o
+  description: "Output all available formats to\n<directory>; give up if <directory>\n\
+    exists."
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - --oc
+  description: "Output all available formats to\n<directory>; If <directory> exists\n\
+    overwrite contents."
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: "[1|2|3|4]    Controls amount of screen output;\ndefault: 2"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-seq-length
+  description: "Set the maximum length allowed for\ninput sequences; default: 250000000"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --last
+  description: "Use only scores of (up to) last <n>\nsequence positions to compute\
+    \ AMA."
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version and exit.
+  args: !EmptyFlagArg {}
+help_text: "ama: unrecognized option '--help'\nUnrecognized or ambiguous option.\n\
+  Usage: ama [options] <motif file> <sequence file> [<background file>]\n\n   Options:\n\
+  \     --sdbg <order>           Use Markov background model of order <order>\n  \
+  \                              derived from the sequence to compute its\n      \
+  \                          likelihood ratios;\n                                overrides\
+  \ --pvalues, --gcbins and --rma;\n                                <background file>\
+  \ is required unless\n                                --sdbg is given.\n     --motif\
+  \ <id>             Use only the motif identified by <id>.\n                    \
+  \            This option may be repeated.\n     --motif-pseudo <float>   The value\
+  \ <float> times the background\n                                frequency is added\
+  \ to the count of each\n                                letter when creating the\
+  \ likelihood \n                                ratio matrix; default: 0.01\n   \
+  \  --norc                   Disables the scanning of the reverse\n             \
+  \                   complement strand for complementable\n                     \
+  \           alphabets. The switch is set automatically\n                       \
+  \         for alphabets without complements.\n     --scoring [avg-odds|max-odds]\n\
+  \                              Indicates whether the average or \n             \
+  \                   the maximum odds should be calculated\n                    \
+  \            default: avg-odds\n     --rma                    Scale motif scores\
+  \ to the range [0,1].\n                                (Relative Motif Affinity).\n\
+  \                                Motif scores are scaled by the maximum\n      \
+  \                          score achievable by that PWM; default:\n            \
+  \                    Motif scores are not normalized.\n     --pvalues          \
+  \      Print p-value of avg-odds score in cisml\n                              \
+  \  output. Ignored for max-odds scoring;\n                                default:\
+  \ P-values are not printed.\n     --gcbins <bins>          Compensate p-values for\
+  \ GC* content of\n                                each sequence using given number\
+  \ of \n                                GC range bins. Recommended bins: 41.\n  \
+  \                              This option only works with complementable\n    \
+  \                            alphabets with exactly 2 complement pairs;\n      \
+  \                          default: P-values are based on\n                    \
+  \            frequencies in background file.\n                               * GC\
+  \ refers to any complement pair, not\n                                actually G\
+  \ and C except for the case of DNA.\n     --cs                     Enable combining\
+  \ sequences with same\n                                identifier by taking the\
+  \ average score\n                                and the Sidac corrected p-value.\n\
+  \     --o-format [gff|cisml]   Output file format; default: cisml.\n           \
+  \                     Ignored if --o or --oc option used,\n                    \
+  \            and then CisML (.xml) and GFF (.txt)\n                            \
+  \    files are both output into the\n                                specified directory.\n\
+  \     --o <directory>          Output all available formats to\n               \
+  \                 <directory>; give up if <directory>\n                        \
+  \        exists.\n     --oc <directory>         Output all available formats to\n\
+  \                                <directory>; If <directory> exists\n          \
+  \                      overwrite contents.\n     --verbosity [1|2|3|4]    Controls\
+  \ amount of screen output;\n                                default: 2\n     --max-seq-length\
+  \ <int>   Set the maximum length allowed for \n                                input\
+  \ sequences; default: 250000000\n     --last <int>             Use only scores of\
+  \ (up to) last <n>\n                                sequence positions to compute\
+  \ AMA.\n     --version                Print version and exit.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/meme:5.3.0--py38pl526hc1f1133_0

@@ -12,6 +12,9 @@ task Osequencedistances {
       ~{if defined(output_file) then ("--output_file " +  '"' + output_file + '"') else ""} \
       ~{if (align) then "--align" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "Output file to store results"
     align: "If sequences require pairwise alignment"

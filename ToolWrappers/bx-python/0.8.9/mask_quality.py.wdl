@@ -22,6 +22,9 @@ task MaskQualitypy {
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""} \
       ~{if defined(list) then ("--list " +  '"' + list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format_input_axt: "Format of input (axt or maf)"
     format_output_axt: "Format of output (axt or maf)"

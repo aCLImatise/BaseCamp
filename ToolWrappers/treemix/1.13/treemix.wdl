@@ -10,7 +10,7 @@ task Treemix {
     Boolean? tf
     Boolean? number_migration_add
     Boolean? root
-    Boolean? read_graph_previous
+    Boolean? read_graph_run
     String? se
     String? micro
     String? bootstrap
@@ -29,7 +29,7 @@ task Treemix {
       ~{if (tf) then "-tf" else ""} \
       ~{if (number_migration_add) then "-m" else ""} \
       ~{if (root) then "-root" else ""} \
-      ~{if (read_graph_previous) then "-g" else ""} \
+      ~{if (read_graph_run) then "-g" else ""} \
       ~{if defined(se) then ("-se " +  '"' + se + '"') else ""} \
       ~{if defined(micro) then ("-micro " +  '"' + micro + '"') else ""} \
       ~{if defined(bootstrap) then ("-bootstrap " +  '"' + bootstrap + '"') else ""} \
@@ -38,6 +38,9 @@ task Treemix {
       ~{if (seed) then "-seed" else ""} \
       ~{if (n_warn) then "-n_warn" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this_help: "this help"
     _input_file: "[file name] input file"
@@ -47,7 +50,7 @@ task Treemix {
     tf: "[file name] Read the tree topology from a file, rather than estimating it"
     number_migration_add: "[int] number of migration edges to add (0)"
     root: "[string] comma-delimited list of populations to set on one side of the root (for migration)"
-    read_graph_previous: "[vertices file name] [edges file name] read the graph from a previous TreeMix run"
+    read_graph_run: "[vertices file name] [edges file name] read the graph from a previous TreeMix run"
     se: "standard errors of migration weights (computationally expensive)"
     micro: "data"
     bootstrap: "a single bootstrap replicate"

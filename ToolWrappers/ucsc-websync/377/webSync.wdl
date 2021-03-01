@@ -14,6 +14,9 @@ task WebSync {
       ~{if defined(connections) then ("--connections " +  '"' + connections + '"') else ""} \
       ~{if (skip_scan) then "--skipScan" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "show debug messages"
     connections: "Maximum number of parallel connections to the server,\\ndefault 10"

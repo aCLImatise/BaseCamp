@@ -3,12 +3,12 @@ id: esl_sfetch_sqfile.cwl
 inputs:
 - id: in_index
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: --index
 - id: in_f
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -f
 - id: in_esl_s_fetch
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - esl-sfetch

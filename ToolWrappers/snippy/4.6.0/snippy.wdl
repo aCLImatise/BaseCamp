@@ -66,6 +66,9 @@ task Snippy {
       ~{if defined(bwa_opt) then ("--bwaopt " +  '"' + bwa_opt + '"') else ""} \
       ~{if defined(fb_opt) then ("--fbopt " +  '"' + fb_opt + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     citation: "Print citation for referencing snippy"
     check: "Check dependences are installed then exit (default OFF)"

@@ -14,6 +14,9 @@ task Pbutgcns {
       ~{if (arg_number_use) then "-j" else ""} \
       ~{if defined(unitig_input_file) then ("--input " +  '"' + unitig_input_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     increase_logging_verbosity: "[ --verbose ]      Increase logging verbosity"
     arg_number_use: "[ --threads ] arg  Number of consensus threads to use"

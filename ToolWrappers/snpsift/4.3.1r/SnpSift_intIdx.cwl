@@ -3,17 +3,17 @@ id: SnpSift_intIdx.cwl
 inputs:
 - id: in_if
   doc: ': Input offset. Default 0 (i.e. zero-based coordinates).'
-  type: long
+  type: long?
   inputBinding:
     prefix: -if
 - id: in_genomic_intervals_command
   doc: ': Genomic intervals in command line.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_jar
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -jar
 - id: in_java
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - SnpSift

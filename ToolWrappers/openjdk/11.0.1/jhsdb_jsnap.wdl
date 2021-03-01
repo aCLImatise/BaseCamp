@@ -14,6 +14,9 @@ task JhsdbJsnap {
       ~{if (core) then "--core" else ""} \
       ~{if (pid) then "--pid" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "to print all performance counters"
     exe: "executable image name"

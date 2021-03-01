@@ -16,6 +16,9 @@ task SeqcoverageFASTA {
       ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     q: ""
     d: ""

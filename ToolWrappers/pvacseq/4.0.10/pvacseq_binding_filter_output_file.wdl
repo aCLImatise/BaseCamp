@@ -12,6 +12,9 @@ task PvacseqBindingFilterOutputFile {
       ~{binding_filter} \
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     b: ""
     pvac_seq: ""

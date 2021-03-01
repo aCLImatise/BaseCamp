@@ -18,6 +18,9 @@ task RowsToCols {
       ~{if (fixed) then "-fixed" else ""} \
       ~{if defined(offsets) then ("-offsets " +  '"' + offsets + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_col: "- rows may to have various numbers of columns."
     tab: "- fields are separated by tab"

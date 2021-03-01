@@ -24,6 +24,9 @@ task Sites2meme {
       ~{if (log_odds) then "-logodds" else ""} \
       ~{if defined(url) then ("-url " +  '"' + url + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ext: "the file extension (with '.') of the sites files;\\nthe file name minus the extension will be\\nused as the motif identifer;\\ndefault: expect an extension of \\\".txt\\\""
     tab_separated_file: "tab separated file containing id, name pairs."

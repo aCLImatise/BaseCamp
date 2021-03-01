@@ -30,6 +30,9 @@ task ParaSync {
       ~{if (newer) then "-newer" else ""} \
       ~{if (progress) then "-progress" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     means_accept_files: "='ext1,ext2'  means accept only files with ext1 or ext2"
     newer: "only download a file if it is newer than the version we already have."

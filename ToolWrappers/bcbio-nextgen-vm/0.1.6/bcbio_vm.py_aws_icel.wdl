@@ -16,6 +16,9 @@ task BcbioVmpyAwsIcel {
       ~{unmount} \
       ~{stop}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create scratch filesystem using Intel Cloud Edition\\nfor Lustre"
     fs_spec: "Get the filesystem spec for a running filesystem"

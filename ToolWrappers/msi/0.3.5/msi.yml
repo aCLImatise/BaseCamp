@@ -1,0 +1,149 @@
+!Command
+command:
+- msi
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: '- toplevel directory with the nanopore data. fastq files will be searched
+    in $tl_dir/*.fastq.gz. It is expected one file per library/barcode.'
+  args: !SimpleFlagArg
+    name: tl_dir
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: '- minimum length of the reads'
+  args: !SimpleFlagArg
+    name: min_len
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: '- maximum length of the reads'
+  args: !SimpleFlagArg
+    name: max_len
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: '- minimum quality'
+  args: !SimpleFlagArg
+    name: min_qual
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  description: '- metadata file*'
+  args: !SimpleFlagArg
+    name: metadata
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  description: '- minimum number of reads that a cluster should have (Default=1)'
+  args: !SimpleFlagArg
+    name: min_reads
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: '-  output folder'
+  args: !SimpleFlagArg
+    name: out_folder
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: '- path to the blast database'
+  args: !SimpleFlagArg
+    name: blast_database
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  description: '- value passed to blast (minimum % id - value between 0 and 100)'
+  args: !SimpleFlagArg
+    name: blast_min_id
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  description: '- value passed to blast (minimum e-value - value < 1)'
+  args: !SimpleFlagArg
+    name: blast_evalue
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: minimum cluster identity (sequences with a value greater or equal are
+    clustered together - value between 0 and 1)
+  args: !SimpleFlagArg
+    name: min_cluster_id2-
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: '- maximum number of threads'
+  args: !SimpleFlagArg
+    name: threads
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: '- file with default parameters values (overrides values passed in
+    the command line)'
+  args: !SimpleFlagArg
+    name: param_file
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: '- run fastqc to generate qc reports for the fastq files'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: '- stop execution before running blast'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  description: '- increase verbosity'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: '- provides usage information'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "MSI_DIR variable not set. Setting it to /usr/local\nmsi.sh [options] -i\
+  \ raw_data_toplevel_folder -c params_file\nonly -i or -c are mandatory.\n\nThe otpions\
+  \ available are:\n -i tl_dir - toplevel directory with the nanopore data. fastq\
+  \ files will be searched in $tl_dir/*.fastq.gz. It is expected one file per library/barcode.\n\
+  \ -m min_len    - minimum length of the reads\n -M max_len    - maximum length of\
+  \ the reads\n -q min_qual   - minimum quality\n -I metadata   - metadata file*\n\
+  \ -C min_reads  - minimum number of reads that a cluster should have (Default=1)\n\
+  \ -o out_folder -  output folder\n -b blast_database - path to the blast database\n\
+  \ -B blast_min_id   - value passed to blast (minimum % id - value between 0 and\
+  \ 100)\n -E blast_evalue   - value passed to blast (minimum e-value - value < 1)\n\
+  \ -T min_cluster_id2- minimum cluster identity (sequences with a value greater or\
+  \ equal are clustered together - value between 0 and 1) \n -t threads        - maximum\
+  \ number of threads\n -c param_file      - file with default parameters values (overrides\
+  \ values passed in the command line)\n -r                 - run fastqc to generate\
+  \ qc reports for the fastq files\n -S                 - stop execution before running\
+  \ blast\n -V                 - increase verbosity\n -h  - provides usage information\n\
+  \n*metadata file: tsv file were the file name should be found in one column and\
+  \ the column names (first line of the file) X, Y, Z should exist.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/msi:0.3.5--1

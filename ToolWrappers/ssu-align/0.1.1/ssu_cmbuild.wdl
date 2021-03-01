@@ -5,7 +5,7 @@ task Ssucmbuild {
     File? name_cms_s
     Boolean? append_cm_cmfile
     Boolean? force_allow_overwriting
-    Boolean? _verbose_output
+    Boolean? be_verbose_output
     Boolean? i_ins
     Int? w_beta
     Boolean? devhelp
@@ -56,7 +56,7 @@ task Ssucmbuild {
       ~{if defined(name_cms_s) then ("-n " +  '"' + name_cms_s + '"') else ""} \
       ~{if (append_cm_cmfile) then "-A" else ""} \
       ~{if (force_allow_overwriting) then "-F" else ""} \
-      ~{if (_verbose_output) then "-v" else ""} \
+      ~{if (be_verbose_output) then "-v" else ""} \
       ~{if (i_ins) then "--iins" else ""} \
       ~{if defined(w_beta) then ("--Wbeta " +  '"' + w_beta + '"') else ""} \
       ~{if (devhelp) then "--devhelp" else ""} \
@@ -98,11 +98,14 @@ task Ssucmbuild {
       ~{if (i_leaved) then "--ileaved" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_cms_s: ": name the CM(s) <s>, (only if single aln in file)"
     append_cm_cmfile: ": append this CM to <cmfile>"
     force_allow_overwriting: ": force; allow overwriting of <cmfile>"
-    _verbose_output: ": be verbose with output"
+    be_verbose_output: ": be verbose with output"
     i_ins: ": allow informative insert emissions, do not zero them"
     w_beta: ": set tail loss prob for calc'ing W (max size of a hit) to <x>"
     devhelp: ": show list of undocumented developer options"

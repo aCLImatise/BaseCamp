@@ -8,6 +8,9 @@ task Fasta2gsi {
     fasta2gsi \
       ~{if defined(help_dot_gsi) then ("--help.gsi " +  '"' + help_dot_gsi + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help_dot_gsi: "0 sequence names."
   }

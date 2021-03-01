@@ -38,6 +38,9 @@ task BasecallNetworkpyEvents {
       ~{if defined(segmentation) then ("--segmentation " +  '"' + segmentation + '"') else ""} \
       ~{if defined(trim) then ("--trim " +  '"' + trim + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alphabet: "Alphabet of the sequences (default: b'ACGT')"
     compile: "File output compiled model (default: None)"

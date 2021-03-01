@@ -12,6 +12,9 @@ task BiomFromuc {
       ~{if defined(output_fp) then ("--output-fp " +  '"' + output_fp + '"') else ""} \
       ~{if defined(rep_set_fp) then ("--rep-set-fp " +  '"' + rep_set_fp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fp: "The input uc filepath.  [required]"
     output_fp: "The output BIOM filepath  [required]"

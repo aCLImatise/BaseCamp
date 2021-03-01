@@ -98,6 +98,9 @@ task HpMultipleAlign {
       ~{if (fast_a_only) then "--fastaonly" else ""} \
       ~{if (align_all) then "--alignall" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_gtf: "(unless --alignall option included)."
     seqs: "FASTA file with sequences to be aligned"

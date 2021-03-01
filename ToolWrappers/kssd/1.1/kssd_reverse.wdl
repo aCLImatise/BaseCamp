@@ -18,6 +18,9 @@ task KssdReverse {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     by_reads: "recover k-mer from sketched reads ."
     s_huf_file: "provide .shuf file."

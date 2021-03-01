@@ -14,6 +14,9 @@ task MakeKreportpy {
       ~{if defined(output_kraken_report) then ("--output " +  '"' + output_kraken_report + '"') else ""} \
       ~{if (use_read_len) then "--use-read-len" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kraken: "Kraken output file (5 tab-delimited columns, taxid in\\n3rd column)"
     taxonomy: "Output taxonomy file from make_ktaxonomy.py"

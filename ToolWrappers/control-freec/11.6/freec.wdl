@@ -12,6 +12,9 @@ task Freec {
       ~{if defined(sample) then ("-sample " +  '"' + sample + '"') else ""} \
       ~{if defined(conf) then ("-conf " +  '"' + conf + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample: ""
     conf: ""

@@ -3,22 +3,22 @@ id: FrameBot_stat.cwl
 inputs:
 - id: in_seq_desc
   doc: the description of the reference seq, tab-delimited file or fasta
-  type: File
+  type: File?
   inputBinding:
     prefix: --seq-desc
 - id: in_identity
   doc: the minimum protein identity, default is 0, range [0-100]
-  type: long
+  type: long?
   inputBinding:
     prefix: --identity
 - id: in_id_mapping
   doc: "Id mapping file. Output from Dereplicator\n(http://fungene.cme.msu.edu/FunGenePipeline/derep/form.spr)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --id-mapping
 - id: in_sample_mapping
   doc: "Sample mapping file. Output from Dereplicator\n(http://fungene.cme.msu.edu/FunGenePipeline/derep/form.spr)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --sample-mapping
 - id: in_stat_type
@@ -30,7 +30,7 @@ inputs:
     \ format is similar to a\ndata matrix used for R analysis\nsubset outputs the\
     \ number of sequences to the nearest match for only sequence IDs in sample\nmapping\
     \ file\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --stat-type
 - id: in_get_frame_bot_stat_main
@@ -54,12 +54,12 @@ outputs:
   type: stdout
 - id: out_id_mapping
   doc: "Id mapping file. Output from Dereplicator\n(http://fungene.cme.msu.edu/FunGenePipeline/derep/form.spr)."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_id_mapping)
 - id: out_sample_mapping
   doc: "Sample mapping file. Output from Dereplicator\n(http://fungene.cme.msu.edu/FunGenePipeline/derep/form.spr)."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_sample_mapping)
 - id: out_out_file
@@ -67,6 +67,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_out_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - FrameBot

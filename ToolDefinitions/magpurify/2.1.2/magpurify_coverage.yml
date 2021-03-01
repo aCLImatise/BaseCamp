@@ -4,53 +4,53 @@ command:
 - coverage
 positional:
 - !Positional
-  description: Path to input genome in FASTA format
+  optional: false
   position: 0
   name: fna
-  optional: false
+  description: Path to input genome in FASTA format
 - !Positional
-  description: Output directory to store results and intermediate
+  optional: false
   position: 1
   name: out
-  optional: false
+  description: Output directory to store results and intermediate
 - !Positional
-  description: bams                  Path to input sorted BAM file(s)
+  optional: false
   position: 2
   name: files
-  optional: false
+  description: bams                  Path to input sorted BAM file(s)
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --max-deviation
   description: "Contigs with coverage greater than [max-deviation *\nmean coverage]\
     \ or less than [(1/max-deviation) * mean\ncoverage] will be flagged as outliers\
     \ (default: 5.0)"
-  synonyms:
-  - --max-deviation
   args: !SimpleFlagArg
     name: MAX_DEVIATION
-  optional: true
 - !Flag
-  description: "Compute the mean weighted by the contig length\n(default: False)"
+  optional: true
   synonyms:
   - --weighted-mean
+  description: "Compute the mean weighted by the contig length\n(default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Number of CPUs to use (default: 1)'
+  optional: true
   synonyms:
   - --threads
+  description: 'Number of CPUs to use (default: 1)'
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: magpurify coverage [-h] [--max-deviation MAX_DEVIATION]\n     \
@@ -68,3 +68,4 @@ help_text: "usage: magpurify coverage [-h] [--max-deviation MAX_DEVIATION]\n    
   \     Number of CPUs to use (default: 1)\n"
 generated_using:
 - --help
+docker_image:

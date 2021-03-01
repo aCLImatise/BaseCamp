@@ -18,6 +18,9 @@ task EvaluateGtfpl {
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_files_gtf: ": Input files are gtf not lists"
     quick_load_file: ": Quick load the gtf file.  Do not check them for errors."

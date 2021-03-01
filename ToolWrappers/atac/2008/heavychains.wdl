@@ -4,6 +4,9 @@ task Heavychains {
   command <<<
     heavychains
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

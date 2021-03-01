@@ -16,6 +16,9 @@ task Svmpredict {
       ~{if defined(predict_probability_estimates) then ("-b " +  '"' + predict_probability_estimates + '"') else ""} \
       ~{if (quiet_mode_outputs) then "-q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     predict_probability_estimates: ": whether to predict probability estimates, 0 or 1 (default 0); for one-class SVM only 0 is supported"
     quiet_mode_outputs: ": quiet mode (no outputs)"

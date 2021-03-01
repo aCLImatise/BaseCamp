@@ -4,43 +4,82 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --file_cal
-  args: !SimpleFlagArg
-    name: FILE_CAL
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - --file_pred
+  description: "Path to peptide file for which to make predictions\n(required)"
   args: !SimpleFlagArg
     name: FILE_PRED
+- !Flag
   optional: true
+  synonyms:
+  - --file_cal
+  description: "Path to peptide file with retention times to use for\ncalibration\
+    \ (optional)"
+  args: !SimpleFlagArg
+    name: FILE_CAL
+- !Flag
+  optional: true
+  synonyms:
+  - --file_pred_out
+  description: Path to output file with predictions (optional)
+  args: !SimpleFlagArg
+    name: FILE_PRED_OUT
+- !Flag
+  optional: true
+  synonyms:
+  - --file_model
+  description: "Path to prediction model(s). Seperate with spaces.\nLeave empty to\
+    \ select the best of the default models\n(optional)"
+  args: !RepeatFlagArg
+    name: FILE_MODEL
+- !Flag
+  optional: true
+  synonyms:
+  - --split_cal
+  - --dict_divider
+  - --batch_num
+  description: "Batch size (in peptides) for predicting the retention\ntime. Set lower\
+    \ to decrease memory footprint\n(optional, default=250000)"
+  args: !SimpleFlagArg
+    name: SPLIT_CAL
+- !Flag
+  optional: true
+  synonyms:
+  - --plot_predictions
+  description: "Save scatter plot of predictions vs observations\n(default=False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --n_threads
+  description: "Number of threads to use (optional, default=maximum\navailable)"
+  args: !SimpleFlagArg
+    name: N_THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --log_level
+  description: "Logging level (debug, info, warning, error, or\ncritical; default=info)"
+  args: !SimpleFlagArg
+    name: LOG_LEVEL
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--file_pred FILE_PRED\nPath to peptide\
-    \ file for which to make predictions\n(required)\n--file_cal FILE_CAL   Path to\
-    \ peptide file with retention times to use for\ncalibration (optional)\n--file_pred_out\
-    \ FILE_PRED_OUT\nPath to output file with predictions (optional)\n--file_model\
-    \ FILE_MODEL [FILE_MODEL ...]\nPath to prediction model(s). Seperate with spaces.\n\
-    Leave empty to select the best of the default models\n(optional)\n--split_cal\
-    \ SPLIT_CAL\n--dict_divider DICT_DIVIDER\n--batch_num BATCH_NUM\nBatch size (in\
-    \ peptides) for predicting the retention\ntime. Set lower to decrease memory footprint\n\
-    (optional, default=250000)\n--plot_predictions    Save scatter plot of predictions\
-    \ vs observations\n(default=False)\n--n_threads N_THREADS\nNumber of threads to\
-    \ use (optional, default=maximum\navailable)\n--log_level LOG_LEVEL\nLogging level\
-    \ (debug, info, warning, error, or\ncritical; default=info)\n--version       \
-    \      show program's version number and exit\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
 help_text: "usage: deeplc [-h] [--file_pred FILE_PRED] [--file_cal FILE_CAL]\n   \
   \           [--file_pred_out FILE_PRED_OUT]\n              [--file_model FILE_MODEL\
   \ [FILE_MODEL ...]]\n              [--split_cal SPLIT_CAL] [--dict_divider DICT_DIVIDER]\n\
@@ -66,3 +105,4 @@ help_text: "usage: deeplc [-h] [--file_pred FILE_PRED] [--file_cal FILE_CAL]\n  
   \ and exit\n"
 generated_using:
 - --help
+docker_image:

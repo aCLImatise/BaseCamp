@@ -12,6 +12,9 @@ task ICountManMapstar {
       ~{man} \
       ~{if (mode) then "--mode" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: ""
     i_count: ""

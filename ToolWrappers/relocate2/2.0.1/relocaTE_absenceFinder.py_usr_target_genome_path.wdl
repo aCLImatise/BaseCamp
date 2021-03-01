@@ -8,6 +8,9 @@ task RelocaTEAbsenceFinderpyUsrTargetGenomePath {
     relocaTE_absenceFinder_py usr_target genome_path \
       ~{te}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     te: "= sys.argv[4] ## repeat to analyze: ALL or mPing/other te name "
   }

@@ -3,27 +3,27 @@ id: flye_samtools_dict.cwl
 inputs:
 - id: in_assembly
   doc: assembly
-  type: string
+  type: string?
   inputBinding:
     prefix: --assembly
 - id: in_no_header
   doc: do not print @HD line
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-header
 - id: in_output
   doc: file to write out dict file [stdout]
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_species
   doc: species
-  type: string
+  type: string?
   inputBinding:
     prefix: --species
 - id: in_uri
   doc: URI [file:///abs/path/to/file.fa]
-  type: File
+  type: File?
   inputBinding:
     prefix: --uri
 - id: in_sam_tools
@@ -47,9 +47,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: file to write out dict file [stdout]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - flye-samtools

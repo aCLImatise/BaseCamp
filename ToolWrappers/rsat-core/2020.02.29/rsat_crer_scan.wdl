@@ -4,7 +4,7 @@ task RsatCrerscan {
   input {
     File? specified_input_read
     String? in_format
-    File? output_file_format
+    File? output_file_ft
     Int? level_verbose_messages
     File? auto_param
     Boolean? sort_list_sites
@@ -33,7 +33,7 @@ task RsatCrerscan {
       ~{cre_r_scan} \
       ~{if defined(specified_input_read) then ("-i " +  '"' + specified_input_read + '"') else ""} \
       ~{if defined(in_format) then ("-in_format " +  '"' + in_format + '"') else ""} \
-      ~{if defined(output_file_format) then ("-o " +  '"' + output_file_format + '"') else ""} \
+      ~{if defined(output_file_ft) then ("-o " +  '"' + output_file_ft + '"') else ""} \
       ~{if defined(level_verbose_messages) then ("-v " +  '"' + level_verbose_messages + '"') else ""} \
       ~{if defined(auto_param) then ("-autoparam " +  '"' + auto_param + '"') else ""} \
       ~{if (sort_list_sites) then "-s" else ""} \
@@ -56,10 +56,13 @@ task RsatCrerscan {
       ~{if (no_pval) then "-nopval" else ""} \
       ~{if (pre_table) then "-pre_table" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specified_input_read: "If not specified, input is read from STDIN"
     in_format: "input_format. Default: ft (produced by RSAT matrix-\\nscan and dna-pattern). Supported: ft, bed"
-    output_file_format: "Output file in ft format"
+    output_file_ft: "Output file in ft format"
     level_verbose_messages: "level of verbose. Messages are wrote on standard\\nerror. Supported: Integer = 1,2,3. By default : 1 = No\\nmessage. Level 2 : moderately density of messages.\\nLevel 3 : High density"
     auto_param: "Extract some input parameters from the commented rows\\n(starting with ';') of the input file. This option is\\nonly valid for files produced by matrix-scan with a\\nverbosity of at least 1."
     sort_list_sites: "sort the list of sites. Very recommended. The sites\\nare sorted by center position"
@@ -85,6 +88,6 @@ task RsatCrerscan {
   }
   output {
     File out_stdout = stdout()
-    File out_output_file_format = "${in_output_file_format}"
+    File out_output_file_ft = "${in_output_file_ft}"
   }
 }

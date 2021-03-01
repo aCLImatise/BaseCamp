@@ -10,6 +10,9 @@ task FastxLengthTabpyInputFastx {
       ~{output_tsv} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: ""
     output_tsv: ""

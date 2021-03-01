@@ -4,18 +4,18 @@ inputs:
 - id: in_algorithm
   doc: "TAD-calling algorithm. Options: insulation,\nninsulation, directionality.\
     \ Default: insulation."
-  type: string
+  type: string?
   inputBinding:
     prefix: --algorithm
 - id: in_normalisation_window
   doc: "Normalisation window in number of regions. Only\naffects ninsulation algorithm.\
     \ If not specified,\nwindow will be the whole chromosome."
-  type: long
+  type: long?
   inputBinding:
     prefix: --normalisation-window
 - id: in_write_values
   doc: Write index values to file instead of TADs.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --write-values
 - id: in_matrix
@@ -51,6 +51,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tadtool

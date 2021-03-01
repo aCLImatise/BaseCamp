@@ -4,6 +4,9 @@ task Parl {
   command <<<
     parl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -12,6 +12,9 @@ task Bstats {
       ~{if defined(_sampling_iterations) then ("-i " +  '"' + _sampling_iterations + '"') else ""} \
       ~{if defined(output_diff_data) then ("-d " +  '"' + output_diff_data + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _verbose: ": verbose"
     _sampling_iterations: ": Sampling iterations (100)"

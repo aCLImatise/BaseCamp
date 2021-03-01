@@ -4,7 +4,7 @@ inputs:
 - id: in_input
   doc: "STRING: Input GTF/GFF file(s). Several files can be processed at\nonce: -i\
     \ file1 -i file2"
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_genome
@@ -12,13 +12,13 @@ inputs:
     \ of the genome represented by each kind\nof rfam-id. You can provide an INTEGER\
     \ or the genome in fasta\nformat. If you provide the fasta, the genome size will\
     \ be\ncalculated on the fly."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --genome
 - id: in_output
   doc: "STRING: Output file. If no output file is specified, the output\nwill be written\
     \ to STDOUT. The result is in tabulate format."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_agat_sq_rf_am_analyzer_do_tpl
@@ -33,9 +33,10 @@ outputs:
 - id: out_output
   doc: "STRING: Output file. If no output file is specified, the output\nwill be written\
     \ to STDOUT. The result is in tabulate format."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agat_sq_rfam_analyzer.pl

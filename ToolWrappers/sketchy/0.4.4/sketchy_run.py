@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Directory, String, Boolean
+
+Sketchy_Run_V0_1_0 = CommandToolBuilder(tool="sketchy_run", base_command=["sketchy", "run"], inputs=[ToolInput(tag="in_fast_q", input_type=File(optional=True), prefix="--fastq", doc=InputDocumentation(doc="Path to input Fastq containing basecalled nanopore")), ToolInput(tag="in_sketch", input_type=File(optional=True), prefix="--sketch", doc=InputDocumentation(doc="Path to reference sketch local files or species")), ToolInput(tag="in_ranks", input_type=Int(optional=True), prefix="--ranks", doc=InputDocumentation(doc="Output highest ranking sum of shared hashes [10]")), ToolInput(tag="in_outdir", input_type=Directory(optional=True), prefix="--outdir", doc=InputDocumentation(doc="Output directory for data and plots [sketchy]")), ToolInput(tag="in_prefix", input_type=String(optional=True), prefix="--prefix", doc=InputDocumentation(doc="Prefix for output files [sketchy].")), ToolInput(tag="in_limit", input_type=Int(optional=True), prefix="--limit", doc=InputDocumentation(doc="Maximum number of reads to predict on [all]")), ToolInput(tag="in_palette", input_type=String(optional=True), prefix="--palette", doc=InputDocumentation(doc="Brewer color palette for plots [YlGnBu]")), ToolInput(tag="in_stable", input_type=Int(optional=True), prefix="--stable", doc=InputDocumentation(doc="Stability parameter to compute stable breakpoints, in\nreads [1000]")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="Threads for sketch queries in Mash [4]")), ToolInput(tag="in_home", input_type=File(optional=True), prefix="--home", doc=InputDocumentation(doc="Sketchy path to reference sketch home directory. Can\nbe set via environmental variable: SKETCHY_PATH")), ToolInput(tag="in_quiet", input_type=Boolean(optional=True), prefix="--quiet", doc=InputDocumentation(doc="Run without logging output or progress bar.")), ToolInput(tag="in_reads", input_type=String(), position=0, doc=InputDocumentation(doc="[required]")), ToolInput(tag="in_template", input_type=String(), position=1, doc=InputDocumentation(doc="[required]"))], outputs=[ToolOutput(tag="out_outdir", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_outdir", type_hint=File()), doc=OutputDocumentation(doc="Output directory for data and plots [sketchy]"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Sketchy_Run_V0_1_0().translate("wdl", allow_empty_container=True)
+

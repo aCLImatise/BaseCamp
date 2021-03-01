@@ -26,6 +26,9 @@ task HulkSmash {
       ~{if defined(processors) then ("--processors " +  '"' + processors + '"') else ""} \
       ~{if (profiling) then "--profiling" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     algorithm: "tells HULK which sketching algorithm to use [histosketch kmv khf] (default \\\"histosketch\\\")"
     banner_matrix: "write a matrix file for banner"

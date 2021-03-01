@@ -3,101 +3,105 @@ command:
 - dless
 positional:
 - !Positional
-  description: In particular, detects elements that have been under
+  optional: false
   position: 0
   name: phylo-HMM.
-  optional: false
+  description: In particular, detects elements that have been under
 named:
 - !Flag
-  description: (default 0.3)
+  optional: true
   synonyms:
   - --rho
   - -R
+  description: (default 0.3)
   args: !SimpleFlagArg
     name: rho
-  optional: true
 - !Flag
-  description: "[~]<mu>,<nu>\nSet the transition probabilities of the two-state HMM\
-    \ using\nthe specified values of <mu> and <nu> (both between 0 and 1)."
+  optional: true
   synonyms:
   - --transitions
   - -t
+  description: "[~]<mu>,<nu>\nSet the transition probabilities of the two-state HMM\
+    \ using\nthe specified values of <mu> and <nu> (both between 0 and 1)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --target-coverage
+  - -C
   description: "[~]<gamma>\n(Alternative to transitions, use with --expected-length)\
     \ Set\nthe transition parameters such that the expected fraction of\nsites in\
     \ conserved elements is <gamma> (betwen 0 and 1).  This\nis a *prior* rather than\
     \ *posterior* expectation and assumes\nstationarity of the state-transition process.\
     \  This option\ncauses the ratio mu/nu to be fixed at (1-gamma)/gamma, and\ntogether\
     \ with --expected-length, completely defines the\ntransition probabilities."
-  synonyms:
-  - --target-coverage
-  - -C
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[~]<omega>\n(Alternative to --transitions, use with --target-coverage)\
-    \ Set\ntransition probabilities such that the (prior) expected length\nof a conserved\
-    \ element is <omega>.  The parameter mu is set to\n1/omega."
+  optional: true
   synonyms:
   - --expected-length
   - -E
+  description: "[~]<omega>\n(Alternative to --transitions, use with --target-coverage)\
+    \ Set\ntransition probabilities such that the (prior) expected length\nof a conserved\
+    \ element is <omega>.  The parameter mu is set to\n1/omega."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "|PHYLIP|MPM|MAF|SS\nAlignment format (default is to guess format from\
-    \ file contents).\nNote that the program msa_view can be used for conversion."
+  optional: true
   synonyms:
   - --msa-format
   - -i
+  description: "|PHYLIP|MPM|MAF|SS\nAlignment format (default is to guess format from\
+    \ file contents).\nNote that the program msa_view can be used for conversion."
   args: !SimpleFlagArg
     name: FASTA
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --refseq
+  - -M
   description: "(for use with --msa-format MAF) Read the complete text of the\nreference\
     \ sequence from <fname> (FASTA format) and combine it\nwith the contents of the\
     \ MAF file to produce a complete,\nordered representation of the alignment.  The\
     \ reference\nsequence of the MAF file is assumed to be the one that appears\n\
     first in each block."
-  synonyms:
-  - --refseq
-  - -M
   args: !SimpleFlagArg
     name: fname
-  optional: true
 - !Flag
-  description: "Use coordinate frame of specified sequence in output.  Default\nvalue\
-    \ is 1, first sequence in alignment; 0 indicates\ncoordinate frame of entire multiple\
-    \ alignment."
+  optional: true
   synonyms:
   - --refidx
   - -r
+  description: "Use coordinate frame of specified sequence in output.  Default\nvalue\
+    \ is 1, first sequence in alignment; 0 indicates\ncoordinate frame of entire multiple\
+    \ alignment."
   args: !SimpleFlagArg
     name: refseq_idx
-  optional: true
 - !Flag
-  description: "Use specified string for 'seqname' (GFF) or 'chrom' field in\noutput\
-    \ file.  Default is obtained from input file name (double\nfilename root, e.g.,\
-    \ \"chr22\" if input file is \"chr22.35.ss\")."
+  optional: true
   synonyms:
   - --seqname
   - -N
+  description: "Use specified string for 'seqname' (GFF) or 'chrom' field in\noutput\
+    \ file.  Default is obtained from input file name (double\nfilename root, e.g.,\
+    \ \"chr22\" if input file is \"chr22.35.ss\")."
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --idpref
+  - -P
   description: "Use specified string as prefix of generated ids in output\nfile. \
     \ Can be used to ensure ids are unique.  Default is\nobtained from input file\
     \ name (single filename root, e.g.,\n\"chr22.35\" if input file is \"chr22.35.ss\"\
     )."
-  synonyms:
-  - --idpref
-  - -P
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --indel-model
+  - -I
   description: ",beta,tau[,alpha2,beta2,tau2]\nUse a simple model of insertions and\
     \ deletions that assumes a known\nindel history and at most one indel per branch\
     \ of the tree at any\ngiven position.  The parameters alpha and beta are rates\
@@ -107,31 +111,27 @@ named:
     \ for nonconserved regions and the\nsecond for conserved regions.  If --indel-history\
     \ is not used, a\nhistory will be inferred on the fly using a simple parsimony\n\
     algorithm."
-  synonyms:
-  - --indel-model
-  - -I
   args: !SimpleFlagArg
     name: alpha
-  optional: true
 - !Flag
-  description: "(for use with --indel-model) Use the specified indel history (see\n\
-    indelHistory)."
+  optional: true
   synonyms:
   - --indel-history
   - -H
+  description: "(for use with --indel-model) Use the specified indel history (see\n\
+    indelHistory)."
   args: !SimpleFlagArg
     name: file.ih
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "Show this help message and exit.\n"
+  optional: true
   synonyms:
   - --help
   - -h
+  description: "Show this help message and exit.\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nPROGRAM: dless (Detection of Lineage Specific Selection)\n\nUSAGE: dless\
@@ -188,3 +188,4 @@ help_text: "\nPROGRAM: dless (Detection of Lineage Specific Selection)\n\nUSAGE:
   \   Show this help message and exit.\n"
 generated_using:
 - --help
+docker_image:

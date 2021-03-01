@@ -12,6 +12,9 @@ task Bodypl {
       ~{if (skip) then "-skip" else ""} \
       ~{if (select) then "-select" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     include_blank_lines: ": Do *not* include blank lines when counting (default counts them)."
     skip: "<n1,n2...>: Exclude line numbers n1,n2..."

@@ -3,111 +3,111 @@ command:
 - call_sbatch.py
 positional:
 - !Positional
-  description: The command to execute
+  optional: false
   position: 0
   name: cmd
-  optional: false
+  description: The command to execute
 named:
 - !Flag
-  description: 'The number of CPUs to use (default: 1)'
+  optional: true
   synonyms:
   - --num-cpus
+  description: 'The number of CPUs to use (default: 1)'
   args: !SimpleFlagArg
     name: NUM_CPUS
-  optional: true
 - !Flag
-  description: 'The amount of RAM to request (default: 10G)'
+  optional: true
   synonyms:
   - --mem
+  description: 'The amount of RAM to request (default: 10G)'
   args: !SimpleFlagArg
     name: MEM
-  optional: true
 - !Flag
-  description: 'The amount of time to request (default: 0-05:59)'
+  optional: true
   synonyms:
   - --time
+  description: 'The amount of time to request (default: 0-05:59)'
   args: !SimpleFlagArg
     name: TIME
-  optional: true
 - !Flag
-  description: 'The partitions to request (default: general)'
+  optional: true
   synonyms:
   - --partitions
+  description: 'The partitions to request (default: general)'
   args: !SimpleFlagArg
     name: PARTITIONS
-  optional: true
 - !Flag
-  description: "If this flag is present, stdout will be redirected to\n/dev/null (default:\
-    \ False)"
+  optional: true
   synonyms:
   - --no-output
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "If this flag is present, stderr will be redirected to\n/dev/null (default:\
+  description: "If this flag is present, stdout will be redirected to\n/dev/null (default:\
     \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --no-error
+  description: "If this flag is present, stderr will be redirected to\n/dev/null (default:\
+    \ False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If this is present and the --no-output flag is not\ngiven, then stdout\
-    \ will be directed to this file\nrather than slurm-<job>.out (default: None)"
+  optional: true
   synonyms:
   - --stdout-file
+  description: "If this is present and the --no-output flag is not\ngiven, then stdout\
+    \ will be directed to this file\nrather than slurm-<job>.out (default: None)"
   args: !SimpleFlagArg
     name: STDOUT_FILE
-  optional: true
 - !Flag
-  description: "If this is present and the --no-error flag is not\ngiven, then stderr\
-    \ will be directed to this file\nrather than slurm-<job>.err (default: None)"
+  optional: true
   synonyms:
   - --stderr-file
+  description: "If this is present and the --no-error flag is not\ngiven, then stderr\
+    \ will be directed to this file\nrather than slurm-<job>.err (default: None)"
   args: !SimpleFlagArg
     name: STDERR_FILE
-  optional: true
 - !Flag
-  description: "If this flag is present, then the commands will not be\nexecuted (but\
-    \ will be printed). (default: False)"
+  optional: true
   synonyms:
   - --do-not-call
+  description: "If this flag is present, then the commands will not be\nexecuted (but\
+    \ will be printed). (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If this flag is present, the program calls will be\nsubmitted to SLURM.\
-    \ (default: False)"
+  optional: true
   synonyms:
   - --use-slurm
+  description: "If this flag is present, the program calls will be\nsubmitted to SLURM.\
+    \ (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mail-type
   description: "[{NONE,BEGIN,END,FAIL,REQUEUE,ALL,STAGE_OUT,TIME_LIMIT,TIME_LIMIT_90,TIME_LIMIT_80,TIME_LIMIT_50,ARRAY_TASKS}\
     \ [{NONE,BEGIN,END,FAIL,REQUEUE,ALL,STAGE_OUT,TIME_LIMIT,TIME_LIMIT_90,TIME_LIMIT_80,TIME_LIMIT_50,ARRAY_TASKS}\
     \ ...]]\nWhen to send an email notifcation of the job status.\nSee official documentation\
     \ for a description of the\nvalues. If a mail-user is not specified, this will\n\
     revert to 'None'. (default: ['FAIL', 'TIME_LIMIT'])"
-  synonyms:
-  - --mail-type
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "To whom an email will be sent, in accordance with\nmail-type (default:\
-    \ None)\n"
+  optional: true
   synonyms:
   - --mail-user
+  description: "To whom an email will be sent, in accordance with\nmail-type (default:\
+    \ None)\n"
   args: !SimpleFlagArg
     name: MAIL_USER
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: call_sbatch.py [-h] [--num-cpus NUM_CPUS] [--mem MEM] [--time TIME]\n\
@@ -147,3 +147,4 @@ help_text: "usage: call_sbatch.py [-h] [--num-cpus NUM_CPUS] [--mem MEM] [--time
   \ with\n                        mail-type (default: None)\n"
 generated_using:
 - --help
+docker_image:

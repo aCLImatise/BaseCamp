@@ -4,24 +4,24 @@ inputs:
 - id: in_input
   doc: '[string]                 Input file in MAF format as produced by Last (.gz
     ok). Mandatory option.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input
 - id: in_reads_file
   doc: '[string]             File containing all reads, if given, determines output
     order (.gz ok).'
-  type: File
+  type: File?
   inputBinding:
     prefix: --readsFile
 - id: in_output
   doc: "[string]                Output file (.gz ok, use 'stdout' for standard out).\
     \ Default value: stdout."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_verbose
   doc: 'Echo commandline options and be verbose. Default value: false.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 outputs:
@@ -31,15 +31,16 @@ outputs:
 - id: out_reads_file
   doc: '[string]             File containing all reads, if given, determines output
     order (.gz ok).'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_reads_file)
 - id: out_output
   doc: "[string]                Output file (.gz ok, use 'stdout' for standard out).\
     \ Default value: stdout."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sort-last-maf

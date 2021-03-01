@@ -4,6 +4,9 @@ task Boink {
   command <<<
     boink
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

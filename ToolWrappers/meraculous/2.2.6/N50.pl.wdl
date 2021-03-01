@@ -10,6 +10,9 @@ task N50pl {
       ~{input_file} \
       ~{if defined(g) then ("-G " +  '"' + g + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     g: ""
     input_file: ""

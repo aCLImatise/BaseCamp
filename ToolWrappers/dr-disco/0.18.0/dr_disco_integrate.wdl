@@ -14,6 +14,9 @@ task DrdiscoIntegrate {
       ~{if defined(gtf) then ("--gtf " +  '"' + gtf + '"') else ""} \
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gtf: "Use gene annotation for estimating fusion genes and improve\\nclassification of exonic (GTF file)"
     fast_a: "Use reference sequences to estimate edit distances to splice\\njunction motifs (FASTA file)"

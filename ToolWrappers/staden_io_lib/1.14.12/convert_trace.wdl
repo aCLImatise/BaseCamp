@@ -46,6 +46,9 @@ task ConvertTrace {
       ~{if (signed) then "-signed" else ""} \
       ~{if (none_g) then "-noneg" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format_input_defaults: "Format for input (defaults to any"
     format_output_default: "Format for output (default ztr)"

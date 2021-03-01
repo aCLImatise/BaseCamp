@@ -20,6 +20,9 @@ task RibotricerPrepareorfs {
       ~{if defined(stop_codons) then ("--stop_codons " +  '"' + stop_codons + '"') else ""} \
       ~{if (longest) then "--longest" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gtf: "Path to GTF file  [required]"
     fast_a: "Path to FASTA file  [required]"

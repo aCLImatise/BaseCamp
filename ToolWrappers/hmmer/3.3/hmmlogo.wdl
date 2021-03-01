@@ -16,6 +16,9 @@ task Hmmlogo {
       ~{if (height_score) then "--height_score" else ""} \
       ~{if (no_in_del) then "--no_indel" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     height_relent_all: ": total height = relative entropy ; all letters shown (default)"
     height_relent_above_bg: ": total height = relative entropy ; only letters >bg shown"

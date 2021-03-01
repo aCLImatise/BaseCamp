@@ -3,44 +3,44 @@ id: dbxedam.cwl
 inputs:
 - id: in_directory
   doc: directory  [.] Database directory
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -directory
 - id: in_filenames
   doc: "string     [EDAM*.obo] Wildcard database filename (Any\nstring)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -filenames
 - id: in_fields
   doc: "menu       [*] Index fields (Values: id (ID); acc\n(Synonym); nam (Name);\
     \ isa (Parent); des\n(Description); ns (Namespace); hasin\n(has_input); hasout\
     \ (has_output); isid\n(is_identifier_of); isfmt (is_format_of))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -fields
 - id: in_outfile
   doc: outfile    [*.dbxedam] General log output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -outfile
 - id: in_release
   doc: "string     [0.0] Release number (Any string up to 9\ncharacters)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -release
 - id: in_date
   doc: string     [00/00/00] Index date (Date string dd/mm/yy)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -date
 - id: in_exclude
   doc: string     Wildcard filename(s) to exclude (Any string)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -exclude
 - id: in_index_outdir
   doc: outdir     [.] Index file output directory
-  type: File
+  type: File?
   inputBinding:
     prefix: -indexoutdir
 outputs:
@@ -49,14 +49,15 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: outfile    [*.dbxedam] General log output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
 - id: out_index_outdir
   doc: outdir     [.] Index file output directory
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_index_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dbxedam

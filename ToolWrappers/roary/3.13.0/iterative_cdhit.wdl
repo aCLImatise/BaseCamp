@@ -24,6 +24,9 @@ task IterativeCdhit {
       ~{if defined(step_size_percentage) then ("-s " +  '"' + step_size_percentage + '"') else ""} \
       ~{if (verbose_output_stdout) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_file: "input FASTA file of protein sequences [_combined_files]"
     number_of_threads: "number of threads [1]"

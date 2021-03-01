@@ -8,6 +8,9 @@ task Convertfilestops {
     convertfilestops \
       ~{where}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     where: "dirin:  input directory for image files\\nsubstr:  Use 'allfiles' to convert all files\\nin the directory.\\nres:  Input resolution of each image;\\nassumed to all be the same\\nfileout:  Output ps file.\\n"
   }

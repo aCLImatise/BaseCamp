@@ -3,37 +3,37 @@ id: segmentation_fold.cwl
 inputs:
 - id: in_specific_rna_sequence
   doc: Specific RNA SEQUENCE (overrules -f)
-  type: string
+  type: string?
   inputBinding:
     prefix: -s
 - id: in_path_fastafile_containing
   doc: Path of FASTA_FILE containing sequence(s)
-  type: File
+  type: File?
   inputBinding:
     prefix: -f
 - id: in_enabledisable_segment_functionality
   doc: Enable/disable segment functionality           [1/0]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_minimum_hairpin_size
   doc: 'Minimum hairpin size, default: 3               [1,N}'
-  type: long
+  type: long?
   inputBinding:
     prefix: -H
 - id: in_use_custom_file
   doc: Use custom  "segments.xml"-syntaxed file
-  type: File
+  type: File?
   inputBinding:
     prefix: -x
-- id: in_number_threads_maximum
+- id: in_number_threads_ndefault
   doc: "Number of threads; 0 = maximum available,      [0,N}\ndefault: 3"
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_default_xml
   doc: path to default "segments.xml" on
-  type: File
+  type: File?
   inputBinding:
     prefix: --default-xml
 - id: in_system
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - segmentation-fold

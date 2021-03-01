@@ -30,6 +30,9 @@ task Rgi {
       ~{if (software_version) then "--software_version" else ""} \
       ~{if (data_version) then "--data_version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_type: "must be one of contig, orf, protein, read (default:\\ncontig)"
     input_sequence: "input file must be in either FASTA (contig and\\nprotein), FASTQ(read) or gzip format! e.g\\nmyFile.fasta, myFasta.fasta.gz"

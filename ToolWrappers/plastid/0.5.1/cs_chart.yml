@@ -4,125 +4,125 @@ command:
 - chart
 positional:
 - !Positional
-  description: "Optional. File listing regions (genes or transcripts),\none per line,\
-    \ to include in comparisons. If not given,\nall genes are included."
+  optional: false
   position: 0
   name: gene_list.txt
-  optional: false
+  description: "Optional. File listing regions (genes or transcripts),\none per line,\
+    \ to include in comparisons. If not given,\nall genes are included."
 - !Positional
-  description: Basename for output files
+  optional: false
   position: 1
   name: outbase
-  optional: false
+  description: Basename for output files
 named:
 - !Flag
-  description: input files, made by 'count' subprogram
+  optional: true
   synonyms:
   - -i
   - --in
+  description: input files, made by 'count' subprogram
   args: !RepeatFlagArg
     name: INFILES
-  optional: true
 - !Flag
-  description: "Bins into which features are partitioned based on\ncounts"
+  optional: true
   synonyms:
   - --bins
+  description: "Bins into which features are partitioned based on\ncounts"
   args: !RepeatFlagArg
     name: BINS
-  optional: true
 - !Flag
-  description: 'Regions to compare (default: exon, utr5, cds, utr3)'
+  optional: true
   synonyms:
   - --regions
+  description: 'Regions to compare (default: exon, utr5, cds, utr3)'
   args: !RepeatFlagArg
     name: REGIONS
-  optional: true
 - !Flag
-  description: 'Metrics to compare (default: rpkm, reads)'
+  optional: true
   synonyms:
   - --metrics
+  description: 'Metrics to compare (default: rpkm, reads)'
   args: !RepeatFlagArg
     name: METRICS
-  optional: true
 - !Flag
-  description: Suppress all warning messages. Cannot use with '-v'.
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: Suppress all warning messages. Cannot use with '-v'.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn\
-    \ warnings into exceptions. Cannot use\nwith '-q'. (Default: show each type of\
-    \ warning once)"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn\
+    \ warnings into exceptions. Cannot use\nwith '-q'. (Default: show each type of\
+    \ warning once)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'File format for figure(s); Default: png)'
+  optional: true
   synonyms:
   - --figformat
+  description: 'File format for figure(s); Default: png)'
   args: !ChoiceFlagArg
     choices: !!set
-      pgf:
-      ps:
       raw:
-      png:
       eps:
-      svg:
       svgz:
+      png:
       rgba:
+      svg:
       pdf:
-  optional: true
+      ps:
+      pgf:
 - !Flag
-  description: "N         Figure width and height, in inches. (Default: use\nmatplotlibrc\
-    \ params)"
+  optional: true
   synonyms:
   - --figsize
+  description: "N         Figure width and height, in inches. (Default: use\nmatplotlibrc\
+    \ params)"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Base title for plot(s).
+  optional: true
   synonyms:
   - --title
+  description: Base title for plot(s).
   args: !SimpleFlagArg
     name: TITLE
-  optional: true
 - !Flag
-  description: "Matplotlib color map from which palette will be made\n(e.g. 'Blues','autumn','Set1';\
-    \ default: use colors\nfrom ``--stylesheet`` if given, or color cycle in\nmatplotlibrc)"
+  optional: true
   synonyms:
   - --cmap
+  description: "Matplotlib color map from which palette will be made\n(e.g. 'Blues','autumn','Set1';\
+    \ default: use colors\nfrom ``--stylesheet`` if given, or color cycle in\nmatplotlibrc)"
   args: !SimpleFlagArg
     name: CMAP
-  optional: true
 - !Flag
-  description: 'Figure resolution (Default: 150)'
+  optional: true
   synonyms:
   - --dpi
+  description: 'Figure resolution (Default: 150)'
   args: !SimpleFlagArg
     name: DPI
-  optional: true
 - !Flag
-  description: "{Solarize_Light2,_classic_test_patch,bmh,classic,dark_background,fast,fivethirtyeight,ggplot,grayscale,seaborn,seaborn-bright,seaborn-colorblind,seaborn-dark,seaborn-dark-palette,seaborn-darkgrid,seaborn-deep,seaborn-muted,seaborn-notebook,seaborn-paper,seaborn-pastel,seaborn-poster,seaborn-talk,seaborn-ticks,seaborn-white,seaborn-whitegrid,tableau-colorblind10}\n\
-    Use this matplotlib stylesheet instead of matplotlibrc\nparams\n"
+  optional: true
   synonyms:
   - --stylesheet
+  description: "{Solarize_Light2,_classic_test_patch,bmh,classic,dark_background,fast,fivethirtyeight,ggplot,grayscale,seaborn,seaborn-bright,seaborn-colorblind,seaborn-dark,seaborn-dark-palette,seaborn-darkgrid,seaborn-deep,seaborn-muted,seaborn-notebook,seaborn-paper,seaborn-pastel,seaborn-poster,seaborn-talk,seaborn-ticks,seaborn-white,seaborn-whitegrid,tableau-colorblind10}\n\
+    Use this matplotlib stylesheet instead of matplotlibrc\nparams\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: cs chart [-h] [-q] [-v]\n                [--figformat {eps,pdf,pgf,png,ps,raw,rgba,svg,svgz}]\n\
@@ -161,3 +161,4 @@ help_text: "usage: cs chart [-h] [-q] [-v]\n                [--figformat {eps,pd
   \                        params\n"
 generated_using:
 - --help
+docker_image:

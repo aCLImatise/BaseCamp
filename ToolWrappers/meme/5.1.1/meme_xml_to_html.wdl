@@ -8,6 +8,9 @@ task MemeXmlToHtml {
     meme_xml_to_html \
       ~{meme_xml_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     meme_xml_file: ""
   }

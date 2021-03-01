@@ -28,6 +28,9 @@ task BpDownloadQueryGenbankpl {
       ~{if defined(min_date) then ("--mindate " +  '"' + min_date + '"') else ""} \
       ~{if defined(date_type) then ("--datetype " +  '"' + date_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query: "string OR"
     query_file: "file with query OR"

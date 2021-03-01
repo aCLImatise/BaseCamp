@@ -4,7 +4,7 @@ inputs:
 - id: in_min_mapq
   doc: "Minimum mapping quality of alignments to consider\n(default: 20). Alignments\
     \ with a lower mapping quality\nare ignored."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_mapq
 - id: in_min_sv_size
@@ -12,7 +12,7 @@ inputs:
     \ of any size but is limited\nby the signal-to-noise ratio in the input alignments.\n\
     That means that more accurate assemblies and\nalignments enable the detection\
     \ of smaller events."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_sv_size
 - id: in_max_sv_size
@@ -23,7 +23,7 @@ inputs:
     \ breakpoint. SVIM calls a translocation\nbreakpoint if the mapping distance is\
     \ larger than this\nparameter and a deletion (or inversion) if it is\nsmaller\
     \ or equal."
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_sv_size
 - id: in_query_gap_tolerance
@@ -33,7 +33,7 @@ inputs:
     \ The query gap tolerance\ndetermines the maximum tolerated length of the query\n\
     gap between both segments. If there is an unaligned\nquery segment larger than\
     \ this value between the two\nsegments, no deletion is called."
-  type: long
+  type: long?
   inputBinding:
     prefix: --query_gap_tolerance
 - id: in_query_overlap_tolerance
@@ -43,7 +43,7 @@ inputs:
     \ reference. The query overlap\ntolerance determines the maximum tolerated length\
     \ of\nan overlap between both segments in the query. If the\noverlap between the\
     \ two segments in the query is\nlarger than this value, no deletion is called."
-  type: long
+  type: long?
   inputBinding:
     prefix: --query_overlap_tolerance
 - id: in_reference_gap_tolerance
@@ -54,7 +54,7 @@ inputs:
     determines the maximum tolerated length of the\nreference gap between both segments.\
     \ If there is a\nreference gap larger than this value between the two\nsegments,\
     \ no insertion is called."
-  type: long
+  type: long?
   inputBinding:
     prefix: --reference_gap_tolerance
 - id: in_reference_overlap_tolerance
@@ -65,18 +65,18 @@ inputs:
     tolerance determines the maximum tolerated length of\nan overlap between both\
     \ segments on the reference. If\nthere is a reference gap larger than this value\n\
     between the two segments, no insertion is called."
-  type: long
+  type: long?
   inputBinding:
     prefix: --reference_overlap_tolerance
 - id: in_max_edit_distance
   doc: "Maximum edit distance between both alleles to be\npaired up into a homozygous\
     \ call (default: 200)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_edit_distance
 - id: in_sample
   doc: "Sample ID to include in output vcf file (default:\nSample)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --sample
 - id: in_types
@@ -84,14 +84,14 @@ inputs:
     \ Give a comma-\nseparated list of SV types. The possible SV types are:\nDEL (deletions),\
     \ INS (novel insertions), INV\n(inversions), DUP_TAN (tandem duplications), DUP_INT\n\
     (interspersed duplications), BND (breakends)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --types
 - id: in_symbolic_alleles
   doc: "Use symbolic alleles, such as <DEL> or <INV> in the\nVCF output (default:\
     \ False). By default, deletions,\ninsertions, and inversions are represented by\
     \ their\nnucleotide sequence in the output VCF."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --symbolic_alleles
 - id: in_duplications_as_insertions
@@ -100,14 +100,14 @@ inputs:
     \ and the\ngenomic source is given by the POS and END tags. When\nenabling this\
     \ option, duplications are instead\nrepresented by the SVTYPE=INS and POS and\
     \ END both\ngive the insertion point of the duplication."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --duplications_as_insertions
 - id: in_query_names
   doc: "Output names of supporting query sequences in INFO tag\nof VCF (default: False).\
     \ If enabled, the INFO/READS\ntag contains the list of names of the supporting\
     \ query\nsequences.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --query_names
 - id: in_working_dir
@@ -139,9 +139,10 @@ outputs:
   type: stdout
 - id: out_sample
   doc: "Sample ID to include in output vcf file (default:\nSample)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_sample)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - svim-asm

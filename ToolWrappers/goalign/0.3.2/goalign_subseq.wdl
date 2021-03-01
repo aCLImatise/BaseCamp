@@ -18,11 +18,11 @@ task GoalignSubseq {
     Boolean? phylip
     Int? seed
     Int? threads
-    Int warning_output_stdout
+    Int warning_is_works
   }
   command <<<
     goalign subseq \
-      ~{warning_output_stdout} \
+      ~{warning_is_works} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
       ~{if defined(alignment_output_file) then ("--output " +  '"' + alignment_output_file + '"') else ""} \
       ~{if defined(start) then ("--start " +  '"' + start + '"') else ""} \
@@ -40,6 +40,9 @@ task GoalignSubseq {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     length: "Length of the sub alignment (default 10)"
     alignment_output_file: "Alignment output file (default \\\"stdout\\\")"
@@ -57,7 +60,7 @@ task GoalignSubseq {
     phylip: "Alignment is in phylip? default fasta"
     seed: "Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)"
     threads: "Number of threads (default 1)"
-    warning_output_stdout: "Warning: If output is stdout, it works only if input format is Phylip, because "
+    warning_is_works: "Warning: If output is stdout, it works only if input format is Phylip, because "
   }
   output {
     File out_stdout = stdout()

@@ -16,6 +16,9 @@ task NGSDAnnotateCNV {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "TSV file containing CNV."
     out: "TSV output file."

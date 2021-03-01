@@ -2,7 +2,7 @@ version 1.0
 
 task KAligner {
   input {
-    Int? kmer_size_length
+    Int? kmer_size_alignment
     Int? section
     String? ignore_multimap
     Boolean? multimap
@@ -17,7 +17,7 @@ task KAligner {
   command <<<
     KAligner \
       ~{var_10} \
-      ~{if defined(kmer_size_length) then ("--kmer " +  '"' + kmer_size_length + '"') else ""} \
+      ~{if defined(kmer_size_alignment) then ("--kmer " +  '"' + kmer_size_alignment + '"') else ""} \
       ~{if defined(section) then ("--section " +  '"' + section + '"') else ""} \
       ~{if defined(ignore_multimap) then ("--ignore-multimap " +  '"' + ignore_multimap + '"') else ""} \
       ~{if (multimap) then "--multimap" else ""} \
@@ -28,9 +28,12 @@ task KAligner {
       ~{if (sam) then "--sam" else ""} \
       ~{if (seq) then "--seq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    kmer_size_length: "k-mer size and minimum alignment length"
-    section: "split the target into N sections and align\\nreads to section S [1/1]"
+    kmer_size_alignment: "k-mer size and minimum alignment length"
+    section: "/N     split the target into N sections and align\\nreads to section S [1/1]"
     ignore_multimap: "duplicate k-mer in the target\\n[default]"
     multimap: "allow duplicate k-mer in the target"
     no_multimap: "disallow duplicate k-mer in the target"

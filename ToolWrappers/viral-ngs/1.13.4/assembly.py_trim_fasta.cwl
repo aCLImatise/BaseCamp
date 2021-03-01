@@ -3,7 +3,7 @@ id: assembly.py_trim_fasta.cwl
 inputs:
 - id: in_loglevel
   doc: 'Verboseness of output. [default: DEBUG]'
-  type: string
+  type: string?
   inputBinding:
     prefix: --loglevel
 - id: in_in_fasta
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - assembly.py

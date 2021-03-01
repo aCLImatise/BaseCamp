@@ -28,6 +28,9 @@ task FastANI {
       ~{if (matrix) then "--matrix" else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "reference genome (fasta/fastq)[.gz]"
     ref_list: "a file containing list of reference genome files, one genome per line"

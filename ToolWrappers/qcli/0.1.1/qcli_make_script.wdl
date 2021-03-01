@@ -16,6 +16,9 @@ task QcliMakeScript {
       ~{if defined(copyright) then ("--copyright " +  '"' + copyright + '"') else ""} \
       ~{if defined(output_fp) then ("--output_fp " +  '"' + output_fp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     author_name: "The script author's (probably you) name to be included\\nin the header variables. This will typically need to\\nbe enclosed  in quotes to handle spaces.\\n[default:AUTHOR_NAME]"

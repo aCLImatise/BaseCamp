@@ -12,6 +12,9 @@ task Dircolors {
       ~{if (c_shell) then "--c-shell" else ""} \
       ~{if (print_database) then "--print-database" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bourne_shell: "output Bourne shell code to set LS_COLORS"
     c_shell: "output C shell code to set LS_COLORS"

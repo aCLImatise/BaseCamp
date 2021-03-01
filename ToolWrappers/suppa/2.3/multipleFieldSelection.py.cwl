@@ -8,7 +8,7 @@ inputs:
     prefix: --input-files
 - id: in_key_field
   doc: common field among the input files.
-  type: string
+  type: string?
   inputBinding:
     prefix: --key-field
 - id: in_fields
@@ -18,17 +18,17 @@ inputs:
     prefix: --fields
 - id: in_separator
   doc: field separator
-  type: string
+  type: string?
   inputBinding:
     prefix: --separator
 - id: in_output_file
   doc: name of the output file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file
 - id: in_no_header
   doc: use it if the file has no header.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-header
 outputs:
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: name of the output file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - multipleFieldSelection.py

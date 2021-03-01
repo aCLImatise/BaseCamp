@@ -3,7 +3,7 @@ id: locarna_mea.pl.cwl
 inputs:
 - id: in_man
   doc: documentation
-  type: string
+  type: string?
   inputBinding:
     prefix: --man
 - id: in_loca_rna_me_a
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - locarna-mea.pl

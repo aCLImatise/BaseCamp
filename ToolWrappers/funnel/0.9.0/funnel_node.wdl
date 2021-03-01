@@ -100,6 +100,9 @@ task FunnelNode {
       ~{if defined(worker_dot_workdir) then ("--Worker.WorkDir " +  '"' + worker_dot_workdir + '"') else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     amazons_three_dot_disabled: "Disable storage backend"
     amazons_three_dot_max_retries: "Maximum number of times that a request will be retried for failures"

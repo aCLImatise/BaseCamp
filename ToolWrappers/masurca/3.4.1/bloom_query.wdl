@@ -12,6 +12,9 @@ task BloomQuery {
       ~{var_input} \
       ~{if defined(mer) then ("--mer " +  '"' + mer + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mer: "*k-mer size"
     bloom_query_cmdline: ""

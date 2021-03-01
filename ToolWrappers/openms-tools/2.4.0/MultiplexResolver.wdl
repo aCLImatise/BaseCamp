@@ -20,6 +20,9 @@ task MultiplexResolver {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*            Peptide multiplets with assigned sequence information (valid formats: 'consensusXML')"
     out: "*           Complete peptide multiplets. (valid formats: 'consensusXML')"

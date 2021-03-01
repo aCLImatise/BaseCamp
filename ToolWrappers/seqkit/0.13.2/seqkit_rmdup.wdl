@@ -34,6 +34,9 @@ task SeqkitRmdup {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     by_name: "by full name instead of just id"
     by_seq: "by seq"

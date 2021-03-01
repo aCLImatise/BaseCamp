@@ -70,6 +70,9 @@ task RNAcofold {
       ~{if (no_closing_gu) then "--noClosingGU" else ""} \
       ~{if defined(param_file) then ("--paramFile " +  '"' + param_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     full_help: "Print help, including hidden options, and exit"
@@ -85,7 +88,7 @@ task RNAcofold {
     canonical_bp_only: "Remove non-canonical base pairs from the\\nstructure constraint\\n(default=off)"
     enforce_constraint: "Enforce base pairs given by round brackets ( )\\nin structure constraint\\n(default=off)"
     shape: "Use SHAPE reactivity data to guide structure"
-    shape_conversion: "+ [optional parameters]\\nSelect method to convert SHAPE reactivities to\\npairing probabilities.\\n(default=`O')"
+    shape_conversion: "/C/S/L/O  + [optional parameters]\\nSelect method to convert SHAPE reactivities to\\npairing probabilities.\\n(default=`O')"
     part_func: "[=INT]          Calculate the partition function and base\\npairing probability matrix in addition to the\\nmfe structure. Default is calculation of mfe\\nstructure only.\\n(default=`1')"
     all_pf: "[=INT]            Compute the partition function and free\\nenergies not only of the hetero-dimer\\nconsisting of the two input sequences (the\\n\\\"AB dimer\\\"), but also of the homo-dimers AA\\nand BB as well as A and B monomers.\\n(default=`1')"
     concentrations: "In addition to everything listed under the -a\\noption, read in initial monomer\\nconcentrations and compute the expected\\nequilibrium concentrations of the 5 possible\\nspecies (AB, AA, BB, A, B).\\n(default=off)"

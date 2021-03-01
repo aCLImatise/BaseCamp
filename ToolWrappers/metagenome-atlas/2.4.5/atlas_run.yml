@@ -1,0 +1,72 @@
+!Command
+command:
+- atlas
+- run
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --working-dir
+  description: location to run atlas.
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config-file
+  description: config-file generated with 'atlas init'
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
+  description: "use at most this many jobs in parallel (see cluster\nsubmission for\
+    \ mor details)."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --profile
+  description: snakemake profile e.g. for cluster execution.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --dryrun
+  description: 'Test execution.  [default: False]'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: atlas run [OPTIONS]\n                 [[qc|assembly|binning|genomes|genecatalog|None|all]]\n\
+  \                 [SNAKEMAKE_ARGS]...\n\n  Runs the ATLAS pipline\n\n  By default\
+  \ all steps are executed but a sub-workflow can be specified.\n  Needs a config-file\
+  \ and expects to find a sample table in the working-\n  directory. Both can be generated\
+  \ with 'atlas init'\n\n  Most snakemake arguments can be appended to the command\
+  \ for more info see\n  'snakemake --help'\n\n  For more details, see: https://metagenome-atlas.readthedocs.io\n\
+  \nOptions:\n  -w, --working-dir PATH  location to run atlas.\n  -c, --config-file\
+  \ PATH  config-file generated with 'atlas init'\n  -j, --jobs INTEGER      use at\
+  \ most this many jobs in parallel (see cluster\n                          submission\
+  \ for mor details).\n\n  --profile TEXT          snakemake profile e.g. for cluster\
+  \ execution.\n  -n, --dryrun            Test execution.  [default: False]\n  -h,\
+  \ --help              Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/metagenome-atlas:2.4.5--py_0

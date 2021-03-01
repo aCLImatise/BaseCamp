@@ -22,6 +22,9 @@ task BICseqTwoSamplepl {
       ~{if (no_scale) then "--noscale" else ""} \
       ~{if (strict) then "--strict" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     lambda: ": the (positive) penalty used for BIC-seq"
     tmp: ": the tmp directory; If unspecified, use /usr/local/bin/tmp/"

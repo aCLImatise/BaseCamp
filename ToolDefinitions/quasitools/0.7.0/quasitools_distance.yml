@@ -4,83 +4,87 @@ command:
 - distance
 positional:
 - !Positional
-  description: Normalization is done dividing base read counts (A, C, T, G) inside
-    every
+  optional: false
   position: 0
   name: pileup.
-  optional: false
+  description: Normalization is done dividing base read counts (A, C, T, G) inside
+    every
 - !Positional
-  description: --help                          Show this message and exit.
+  optional: false
   position: 0
   name: coverage.
-  optional: false
+  description: --help                          Show this message and exit.
 named:
 - !Flag
-  description: "/ -dn, --dont_normalize\nNormalize read count data so that the read\n\
-    counts per 4-tuple (A, C, T, G) sum to one."
+  optional: true
   synonyms:
   - -n
   - --normalize
+  - -dn
+  - --dont_normalize
+  description: "Normalize read count data so that the read\ncounts per 4-tuple (A,\
+    \ C, T, G) sum to one."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ -os, --output_similarity\nOutput an angular distance matrix (by\n\
-    default), or output a cosine similarity\nmatrix (cosine similarity is not a metric)"
+  optional: true
   synonyms:
   - -od
   - --output_distance
+  - -os
+  - --output_similarity
+  description: "Output an angular distance matrix (by\ndefault), or output a cosine\
+    \ similarity\nmatrix (cosine similarity is not a metric)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Set the start base position of the reference\nto use in the distance\
-    \ or similarity\ncalculation. Start position is one-indexed.\nI.e. it must be\
-    \ between one and the total\nlength of the reference sequence(s),\ninclusive."
+  optional: true
   synonyms:
   - -s
   - --startpos
+  description: "Set the start base position of the reference\nto use in the distance\
+    \ or similarity\ncalculation. Start position is one-indexed.\nI.e. it must be\
+    \ between one and the total\nlength of the reference sequence(s),\ninclusive."
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Set the end base position of the reference\nto use in the distance\
-    \ or similarity\ncalculation. End position is one-indexed.\nI.e. it must be between\
-    \ one and the total\nlength of the reference sequence(s),\ninclusive."
+  optional: true
   synonyms:
   - -e
   - --endpos
+  description: "Set the end base position of the reference\nto use in the distance\
+    \ or similarity\ncalculation. End position is one-indexed.\nI.e. it must be between\
+    \ one and the total\nlength of the reference sequence(s),\ninclusive."
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Output the quasispecies distance or\nsimilarity matrix in CSV format\
-    \ in a file."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "Output the quasispecies distance or\nsimilarity matrix in CSV format\
+    \ in a file."
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
-  description: "Ignore contiguous start and end pileup\nregions with no coverage."
+  optional: true
   synonyms:
   - -t
   - --truncate
+  description: "Ignore contiguous start and end pileup\nregions with no coverage."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Ignore all pileup regions with no coverage.
+  optional: true
   synonyms:
   - -r
   - --remove_no_coverage
+  description: Ignore all pileup regions with no coverage.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not ignore pileup regions with no
+  optional: true
   synonyms:
   - -k
   - --keep_no_coverage
+  description: Do not ignore pileup regions with no
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -125,3 +129,4 @@ help_text: "Usage: quasitools distance [OPTIONS] REFERENCE [BAM]...\n\n  Quasito
   \ message and exit.\n"
 generated_using:
 - --help
+docker_image:

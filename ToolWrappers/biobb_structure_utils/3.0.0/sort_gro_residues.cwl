@@ -3,17 +3,17 @@ id: sort_gro_residues.cwl
 inputs:
 - id: in_config
   doc: This file can be a YAML file, JSON file or JSON string
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_input_gro_path
   doc: Input GRO file name
-  type: File
+  type: File?
   inputBinding:
     prefix: --input_gro_path
 - id: in_output_gro_path
   doc: "Output sorted GRO file name\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_gro_path
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_gro_path
   doc: "Output sorted GRO file name\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_gro_path)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sort_gro_residues

@@ -5,9 +5,9 @@ task BedtoolsWindow {
     Boolean? a_bam
     Boolean? ub_am
     Boolean? bed
-    Boolean? base_pairs_added_upstream_downstream
-    Boolean? base_pairs_added_upstream_left
-    Boolean? base_pairs_added_right
+    Boolean? base_pairs_added_upstream
+    Boolean? base_pairs_left
+    Boolean? base_pairs_added_downstream
     Boolean? sw
     Boolean? only_report_same
     Boolean? only_report_opposite
@@ -23,9 +23,9 @@ task BedtoolsWindow {
       ~{if (a_bam) then "-abam" else ""} \
       ~{if (ub_am) then "-ubam" else ""} \
       ~{if (bed) then "-bed" else ""} \
-      ~{if (base_pairs_added_upstream_downstream) then "-w" else ""} \
-      ~{if (base_pairs_added_upstream_left) then "-l" else ""} \
-      ~{if (base_pairs_added_right) then "-r" else ""} \
+      ~{if (base_pairs_added_upstream) then "-w" else ""} \
+      ~{if (base_pairs_left) then "-l" else ""} \
+      ~{if (base_pairs_added_downstream) then "-r" else ""} \
       ~{if (sw) then "-sw" else ""} \
       ~{if (only_report_same) then "-sm" else ""} \
       ~{if (only_report_opposite) then "-Sm" else ""} \
@@ -36,13 +36,16 @@ task BedtoolsWindow {
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
       ~{if defined(a) then ("-a " +  '"' + a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_bam: "The A input file is in BAM format.  Output will be BAM as well. Replaces -a."
     ub_am: "Write uncompressed BAM output. Default writes compressed BAM."
     bed: "When using BAM input (-abam), write output as BED. The default\\nis to write output in BAM when using -abam."
-    base_pairs_added_upstream_downstream: "Base pairs added upstream and downstream of each entry\\nin A when searching for overlaps in B.\\n- Creates symmetrical \\\"windows\\\" around A.\\n- Default is 1000 bp.\\n- (INTEGER)"
-    base_pairs_added_upstream_left: "Base pairs added upstream (left of) of each entry\\nin A when searching for overlaps in B.\\n- Allows one to define asymmetrical \\\"windows\\\".\\n- Default is 1000 bp.\\n- (INTEGER)"
-    base_pairs_added_right: "Base pairs added downstream (right of) of each entry\\nin A when searching for overlaps in B.\\n- Allows one to define asymmetrical \\\"windows\\\".\\n- Default is 1000 bp.\\n- (INTEGER)"
+    base_pairs_added_upstream: "Base pairs added upstream and downstream of each entry\\nin A when searching for overlaps in B.\\n- Creates symmetrical \\\"windows\\\" around A.\\n- Default is 1000 bp.\\n- (INTEGER)"
+    base_pairs_left: "Base pairs added upstream (left of) of each entry\\nin A when searching for overlaps in B.\\n- Allows one to define asymmetrical \\\"windows\\\".\\n- Default is 1000 bp.\\n- (INTEGER)"
+    base_pairs_added_downstream: "Base pairs added downstream (right of) of each entry\\nin A when searching for overlaps in B.\\n- Allows one to define asymmetrical \\\"windows\\\".\\n- Default is 1000 bp.\\n- (INTEGER)"
     sw: "Define -l and -r based on strand.  For example if used, -l 500\\nfor a negative-stranded feature will add 500 bp downstream.\\n- Default = disabled."
     only_report_same: "Only report hits in B that overlap A on the _same_ strand.\\n- By default, overlaps are reported without respect to strand."
     only_report_opposite: "Only report hits in B that overlap A on the _opposite_ strand.\\n- By default, overlaps are reported without respect to strand."

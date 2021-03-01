@@ -16,6 +16,9 @@ task Ansibledoc {
       ~{if (snippet) then "--snippet" else ""} \
       ~{if (show_version_number) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     module_path: "Ansible modules/ directory"
     list: "List available modules"

@@ -20,6 +20,9 @@ task DeepacGwpaFactiv {
       ~{if defined(seq_chunk) then ("--seq-chunk " +  '"' + seq_chunk + '"') else ""} \
       ~{if (perform_calculations_only) then "-F" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     model: "Model file (.h5)"
     test_data: "Test data (.npy)"

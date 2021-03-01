@@ -38,6 +38,9 @@ task MixcrAlignmentsDiff {
       ~{if defined(gene_feature) then ("--gene-feature " +  '"' + gene_feature + '"') else ""} \
       ~{if defined(top_hits_level) then ("--top-hits-level " +  '"' + top_hits_level + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_warnings: "Suppress all warning messages."
     verbose: "Verbose warning messages."

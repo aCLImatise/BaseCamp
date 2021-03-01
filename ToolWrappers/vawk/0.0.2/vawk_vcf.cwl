@@ -3,22 +3,22 @@ id: vawk_vcf.cwl
 inputs:
 - id: in_debug
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_header
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --header
 - id: in_c
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -c
 - id: in_v
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -v
 - id: in_va_wk
@@ -33,13 +33,14 @@ inputs:
     position: 1
 - id: in_vcf
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vawk

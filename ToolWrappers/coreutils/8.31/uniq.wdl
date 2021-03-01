@@ -28,6 +28,9 @@ task Uniq {
       ~{if (zero_terminated) then "--zero-terminated" else ""} \
       ~{if defined(check_chars) then ("--check-chars " +  '"' + check_chars + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count: "prefix lines by the number of occurrences"
     repeated: "only print duplicate lines, one for each group"

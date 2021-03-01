@@ -2,10 +2,11 @@ version 1.0
 
 task MsstitchGenes {
   input {
-    Int? score_col_pattern
     File? input_file_format
     Directory? directory_to_output
     File? output_file
+    File? decoy_fn
+    String? score_col_pattern
     Boolean? log_score
     Int? min_int
     Array[String] denom_cols
@@ -21,10 +22,11 @@ task MsstitchGenes {
   command <<<
     msstitch genes \
       ~{values_dot} \
-      ~{if defined(score_col_pattern) then ("--scorecolpattern " +  '"' + score_col_pattern + '"') else ""} \
       ~{if defined(input_file_format) then ("-i " +  '"' + input_file_format + '"') else ""} \
       ~{if defined(directory_to_output) then ("-d " +  '"' + directory_to_output + '"') else ""} \
       ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""} \
+      ~{if defined(decoy_fn) then ("--decoyfn " +  '"' + decoy_fn + '"') else ""} \
+      ~{if defined(score_col_pattern) then ("--scorecolpattern " +  '"' + score_col_pattern + '"') else ""} \
       ~{if (log_score) then "--logscore" else ""} \
       ~{if defined(min_int) then ("--minint " +  '"' + min_int + '"') else ""} \
       ~{if defined(denom_cols) then ("--denomcols " +  '"' + denom_cols + '"') else ""} \
@@ -36,11 +38,15 @@ task MsstitchGenes {
       ~{if defined(target_fast_a) then ("--targetfasta " +  '"' + target_fast_a + '"') else ""} \
       ~{if defined(decoy_fast_a) then ("--decoyfasta " +  '"' + decoy_fast_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    score_col_pattern: "[--logscore] [--isobquantcolpattern QUANTCOLPATTERN]\\n[--minint MININT]\\n[--denomcols DENOMCOLS [DENOMCOLS ...]]\\n[--denompatterns DENOMPATTERNS [DENOMPATTERNS ...]]\\n[--ms1quant] [--psmtable PSMFILE]\\n[--fastadelim {tab,pipe,semicolon}]\\n[--genefield GENEFIELD] --targetfasta T_FASTA\\n--decoyfasta D_FASTA"
     input_file_format: "Input file of {} format"
     directory_to_output: "Directory to output in"
     output_file: "Output file"
+    decoy_fn: "Decoy peptide table input file"
+    score_col_pattern: "Regular expression pattern to find column where score\\nto use (e.g. percolator svm-score) is written."
     log_score: "Score, e.g. q-values will be converted to -log10"
     min_int: "Intensity threshold of PSMs when calculating isobaric\\nratios. Values below threshold will be set to NA."
     denom_cols: "Column numbers of denominator channels when creating a\\nsummarized feature table with isobaric ratios from\\nPSMs"

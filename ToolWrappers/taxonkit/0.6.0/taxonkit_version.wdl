@@ -18,6 +18,9 @@ task TaxonkitVersion {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     check_update: "check update"
     data_dir: "directory containing nodes.dmp and names.dmp (default \\\"/root/.taxonkit\\\")"

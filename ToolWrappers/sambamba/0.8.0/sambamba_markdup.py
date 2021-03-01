@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Int, File, Directory, String
+
+Sambamba_Markdup_V0_1_0 = CommandToolBuilder(tool="sambamba_markdup", base_command=["sambamba", "markdup"], inputs=[ToolInput(tag="in_remove_duplicates", input_type=Boolean(optional=True), prefix="--remove-duplicates", doc=InputDocumentation(doc="remove duplicates instead of just marking them")), ToolInput(tag="in_n_threads", input_type=Int(optional=True), prefix="--nthreads", doc=InputDocumentation(doc="number of threads to use")), ToolInput(tag="in_compression_level", input_type=File(optional=True), prefix="--compression-level", doc=InputDocumentation(doc="specify compression level of the resulting file (from 0 to 9)")), ToolInput(tag="in_show_progress", input_type=Boolean(optional=True), prefix="--show-progress", doc=InputDocumentation(doc="show progressbar in STDERR")), ToolInput(tag="in_tmpdir", input_type=Directory(optional=True), prefix="--tmpdir", doc=InputDocumentation(doc="specify directory for temporary files")), ToolInput(tag="in_hash_table_size", input_type=Int(optional=True), prefix="--hash-table-size", doc=InputDocumentation(doc="size of hash table for finding read pairs (default is 262144 reads);\nwill be rounded down to the nearest power of two;\nshould be > (average coverage) * (insert size) for good performance")), ToolInput(tag="in_overflow_list_size", input_type=Int(optional=True), prefix="--overflow-list-size", doc=InputDocumentation(doc="size of the overflow list where reads, thrown from the hash table,\nget a second chance to meet their pairs (default is 200000 reads);\nincreasing the size reduces the number of temporary files created")), ToolInput(tag="in_sort_buffer_size", input_type=Int(optional=True), prefix="--sort-buffer-size", doc=InputDocumentation(doc="total amount of memory (in *megabytes*) used for sorting purposes;\nthe default is 2048, increasing it will reduce the number of created\ntemporary files and the time spent in the main thread")), ToolInput(tag="in_io_buffer_size", input_type=Int(optional=True), prefix="--io-buffer-size", doc=InputDocumentation(doc="two buffers of BUFFER_SIZE *megabytes* each are used\nfor reading and writing BAM during the second pass (default is 128)\n")), ToolInput(tag="in_samba_mba_mark_dup", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_input_dot_bam", input_type=String(), position=1, doc=InputDocumentation(doc=""))], outputs=[], container="quay.io/biocontainers/sambamba:0.8.0--h984e79f_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Sambamba_Markdup_V0_1_0().translate("wdl")
+

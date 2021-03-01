@@ -58,6 +58,9 @@ task Epang {
       ~{if defined(rate_scalers) then ("--rate-scalers " +  '"' + rate_scalers + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Display debug output."
     b_fast: ":FILE        Convert the given fasta file to bfast format."

@@ -3,12 +3,12 @@ id: calculate_coverage.py_input_fastx.cwl
 inputs:
 - id: in_s
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -s
 - id: in_f
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_calculate_coverage_do_tpy
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - calculate_coverage.py

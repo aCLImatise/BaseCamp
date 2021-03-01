@@ -20,6 +20,9 @@ task ScpredGetFeatureSpaceR {
       ~{if defined(output_path) then ("--output-path " +  '"' + output_path + '"') else ""} \
       ~{if defined(eigenvalue_plot_path) then ("--eigenvalue-plot-path " +  '"' + eigenvalue_plot_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object: "Path to the input object of scPred or seurat class in .rds format"
     prediction_column: "Name of the metadata column that contains training labels"

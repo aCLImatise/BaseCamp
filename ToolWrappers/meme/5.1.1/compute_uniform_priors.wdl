@@ -12,6 +12,9 @@ task Computeuniformpriors {
       ~{prior_value} \
       ~{psp_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compute_uniform_prior: ""
     prior_value: ""

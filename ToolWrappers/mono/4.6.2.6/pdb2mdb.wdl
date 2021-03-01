@@ -8,6 +8,9 @@ task Pdb2mdb {
     pdb2mdb \
       ~{assembly}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly: ""
   }

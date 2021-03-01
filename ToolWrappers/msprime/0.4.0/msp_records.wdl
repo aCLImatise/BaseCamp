@@ -12,6 +12,9 @@ task MspRecords {
       ~{if (header) then "--header" else ""} \
       ~{if defined(precision) then ("--precision " +  '"' + precision + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     header: "Print a header line in the output."
     precision: "The number of decimal places to print in records\\n"

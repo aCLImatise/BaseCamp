@@ -22,6 +22,9 @@ task ClanSearch {
       ~{if (o) then "-o" else ""} \
       ~{if (r) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d: ""
     f: ""

@@ -40,6 +40,9 @@ task Splitrim {
       ~{if (sort_len_desc) then "--sortLenDesc" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "=        string   Name of the FASTQ file containing all the single-end reads"
     min_l: "=          int      Minimum length for a trimmed read to be considered valid [default: 0]"

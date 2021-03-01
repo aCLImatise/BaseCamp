@@ -3,249 +3,236 @@ command:
 - rdkit2fps
 positional:
 - !Positional
-  description: input structure files (default is stdin)
+  optional: false
   position: 0
   name: filenames
-  optional: false
+  description: input structure files (default is stdin)
 - !Positional
-  description: smi, ism, usm, can, smi.gz, ism.gz, usm.gz, can.gz
+  optional: false
   position: 0
   name: SMILES
-  optional: false
+  description: smi, ism, usm, can, smi.gz, ism.gz, usm.gz, can.gz
 - !Positional
-  description: sdf, mol, sd, mdl, sdf.gz, mol.gz, sd.gz, mdl.gz
+  optional: false
   position: 1
   name: SDF
-  optional: false
+  description: sdf, mol, sd, mdl, sdf.gz, mol.gz, sd.gz, mdl.gz
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --fpSize
   description: "number of bits in the fingerprint. Default of 2048 for\nRDK, Morgan,\
     \ topological torsion, atom pair, and\npattern fingerprints, and 512 for Avalon\
     \ fingerprints"
-  synonyms:
-  - --fpSize
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: ",INT,...\nfingerprint generation must use these atom indices\n(out\
-    \ of range indices are ignored)"
+  optional: true
   synonyms:
   - --from-atoms
+  description: ",INT,...\nfingerprint generation must use these atom indices\n(out\
+    \ of range indices are ignored)"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: tag name containing the record id (SD files only)
+  optional: true
   synonyms:
   - --id-tag
+  description: tag name containing the record id (SD files only)
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: input structure format (default guesses from filename)
+  optional: true
   synonyms:
   - --in
+  description: input structure format (default guesses from filename)
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
-  description: save the fingerprints to FILENAME (default=stdout)
+  optional: true
   synonyms:
   - -o
   - --output
+  description: save the fingerprints to FILENAME (default=stdout)
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
-  description: "output structure format (default guesses from output\nfilename, or\
-    \ is 'fps')"
+  optional: true
   synonyms:
   - --out
+  description: "output structure format (default guesses from output\nfilename, or\
+    \ is 'fps')"
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
-  description: "how should structure parse errors be handled?\n(default=ignore)"
+  optional: true
   synonyms:
   - --errors
+  description: "how should structure parse errors be handled?\n(default=ignore)"
   args: !ChoiceFlagArg
     choices: !!set
       report:
-      ignore:
       strict:
-  optional: true
+      ignore:
 - !Flag
-  description: generate RDK fingerprints (default)
+  optional: true
   synonyms:
   - --RDK
+  description: generate RDK fingerprints (default)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "minimum number of bonds to include in the subgraph\n(default=1)"
+  optional: true
   synonyms:
   - --minPath
+  description: "minimum number of bonds to include in the subgraph\n(default=1)"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "maximum number of bonds to include in the subgraph\n(default=7)"
+  optional: true
   synonyms:
   - --maxPath
+  description: "maximum number of bonds to include in the subgraph\n(default=7)"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: number of bits to set per path (default=2)
+  optional: true
   synonyms:
   - --nBitsPerHash
+  description: number of bits to set per path (default=2)
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "|1           include information about the number of hydrogens on\n\
-    each atom (default=1)"
+  optional: true
   synonyms:
   - --useHs
+  description: "|1           include information about the number of hydrogens on\n\
+    each atom (default=1)"
   args: !SimpleFlagArg
     name: '0'
-  optional: true
 - !Flag
-  description: generate Morgan fingerprints
+  optional: true
   synonyms:
   - --morgan
+  description: generate Morgan fingerprints
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: radius for the Morgan algorithm (default=2)
+  optional: true
   synonyms:
   - --radius
+  description: radius for the Morgan algorithm (default=2)
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: '|1     use chemical-feature invariants (default=0)'
+  optional: true
   synonyms:
   - --useFeatures
+  description: '|1     use chemical-feature invariants (default=0)'
   args: !SimpleFlagArg
     name: '0'
-  optional: true
 - !Flag
-  description: '|1    include chirality information (default=0)'
+  optional: true
   synonyms:
   - --useChirality
+  description: '|1    include chirality information (default=0)'
   args: !SimpleFlagArg
     name: '0'
-  optional: true
 - !Flag
-  description: '|1    include bond type information (default=1)'
+  optional: true
   synonyms:
   - --useBondTypes
+  description: '|1    include bond type information (default=1)'
   args: !SimpleFlagArg
     name: '0'
-  optional: true
 - !Flag
-  description: generate Topological Torsion fingerprints
+  optional: true
   synonyms:
   - --torsions
+  description: generate Topological Torsion fingerprints
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: number of bits in the fingerprint (default=4)
+  optional: true
   synonyms:
   - --targetSize
+  description: number of bits in the fingerprint (default=4)
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: generate Atom Pair fingerprints
+  optional: true
   synonyms:
   - --pairs
+  description: generate Atom Pair fingerprints
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: minimum bond count for a pair (default=1)
+  optional: true
   synonyms:
   - --minLength
+  description: minimum bond count for a pair (default=1)
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: maximum bond count for a pair (default=30)
+  optional: true
   synonyms:
   - --maxLength
+  description: maximum bond count for a pair (default=30)
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: generate MACCS fingerprints
+  optional: true
   synonyms:
   - --maccs166
+  description: generate MACCS fingerprints
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: generate Avalon fingerprints
+  optional: true
   synonyms:
   - --avalon
+  description: generate Avalon fingerprints
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "|1         is the fingerprint for a query structure? (1 if yes, 0\n\
-    if no) (default=0)"
+  optional: true
   synonyms:
   - --isQuery
+  description: "|1         is the fingerprint for a query structure? (1 if yes, 0\n\
+    if no) (default=0)"
   args: !SimpleFlagArg
     name: '0'
-  optional: true
 - !Flag
-  description: "bit flags, SSSBits are 32767 and similarity bits are\n15761407 (default=15761407)"
+  optional: true
   synonyms:
   - --bitFlags
+  description: "bit flags, SSSBits are 32767 and similarity bits are\n15761407 (default=15761407)"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: generate (substructure) pattern fingerprints
+  optional: true
   synonyms:
   - --pattern
+  description: generate (substructure) pattern fingerprints
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: generate ChemFP substructure fingerprints
+  optional: true
   synonyms:
   - --substruct
+  description: generate ChemFP substructure fingerprints
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: generate 166 bit RDKit/MACCS fingerprints (version 2)
-  synonyms:
-  - --rdmaccs
-  - --rdmaccs/2
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: use the version 1 definition for --rdmaccs
-  synonyms:
-  - --rdmaccs/1
-  args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: rdkit2fps [-h] [--fpSize INT] [--RDK] [--minPath INT] [--maxPath\
   \ INT]\n                 [--nBitsPerHash INT] [--useHs 0|1] [--morgan] [--radius\
   \ INT]\n                 [--useFeatures 0|1] [--useChirality 0|1] [--useBondTypes\
@@ -305,3 +292,4 @@ help_text: "usage: rdkit2fps [-h] [--fpSize INT] [--RDK] [--minPath INT] [--maxP
   \ sd.gz, mdl.gz\n"
 generated_using:
 - --help
+docker_image:

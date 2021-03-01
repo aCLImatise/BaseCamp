@@ -118,6 +118,9 @@ task MaCMD {
       ~{if defined(detect_small_inversions) then ("--Detect_Small_Inversions " +  '"' + detect_small_inversions + '"') else ""} \
       ~{if defined(z_drop_inversions) then ("--Z_Drop_Inversions " +  '"' + z_drop_inversions + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     presetting: "[Default]              Optimize aligner parameters for a selected\\nsequencing technique. Available presettings are:\\n'Default', 'Illumina', 'Illumina_Paired',\\n'Nanopore', 'PacBio'."
     index: "[]                     Filename of FMD-index. (A FMD-index can be\\ngenerated via the --Create_Index option.) This\\noption must be set."

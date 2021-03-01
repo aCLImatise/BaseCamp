@@ -11,12 +11,12 @@ subcommands:
   - utglog
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: prefix
-    optional: false
+    description: ''
   named: []
-  parent: &id010 !Command
+  parent: &id011 !Command
     command: *id001
     positional: []
     named: []
@@ -26,12 +26,12 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: prefix
-        optional: false
+        description: ''
       named: []
-      parent: &id009 !Command
+      parent: &id010 !Command
         command: *id001
         positional: []
         named: []
@@ -41,12 +41,12 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: prefix
-            optional: false
+            description: ''
           named: []
-          parent: &id008 !Command
+          parent: &id009 !Command
             command: *id001
             positional: []
             named: []
@@ -56,12 +56,12 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: prefix
-                optional: false
+                description: ''
               named: []
-              parent: &id003 !Command
+              parent: &id008 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -71,118 +71,323 @@ subcommands:
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: prefix
-                    optional: false
+                    description: ''
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: prefix
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: fermi2.pl utglog <prefix>\n"
+                      generated_using: &id005 []
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - fermi2.pl
+                      - unitig
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: fermi2.pl
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: in.fq
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -p
+                        description: output prefix [fmdef]
+                        args: !SimpleFlagArg
+                          name: STR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        description: approximate genome size [100m]
+                        args: !SimpleFlagArg
+                          name: STR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - '-2'
+                        description: 2-pass error correction
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        description: primary read length [101]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -T
+                        description: use INT-mer for post-trimming/filtering [61]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -k
+                        description: min overlap length during unitig construction
+                          [based on -l]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        description: min overlap length during graph cleaning [based
+                          on -l]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -m
+                        description: min overlap length for unambiguous merging [based
+                          on -l]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        description: number of threads [4]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -E
+                        description: don't apply error correction
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -MORE_OPTIONS
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -OPTIONS
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "/usr/local/bin/fermi2.pl version [unknown] calling\
+                        \ Getopt::Std::getopts (version 1.12 [paranoid]),\nrunning\
+                        \ under Perl version 5.26.2.\n\nUsage: fermi2.pl [-OPTIONS\
+                        \ [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]\n\nThe following\
+                        \ single-character options are accepted:\n\tWith arguments:\
+                        \ -t -p -k -f -r -c -l -m -s -T\n\tBoolean (without arguments):\
+                        \ -2 -E\n\nOptions may be merged together.  -- stops processing\
+                        \ of options.\nSpace is not required between options and their\
+                        \ arguments.\n  [Now continuing due to backward compatibility\
+                        \ and excessive paranoia.\n   See 'perldoc Getopt::Std' about\
+                        \ $Getopt::Std::STANDARD_HELP_VERSION.]\n\nUsage:   fermi2.pl\
+                        \ unitig [options] <in.fq>\n\nOptions: -p STR    output prefix\
+                        \ [fmdef]\n         -s STR    approximate genome size [100m]\n\
+                        \         -2        2-pass error correction\n         -l INT\
+                        \    primary read length [101]\n         -T INT    use INT-mer\
+                        \ for post-trimming/filtering [61]\n         -k INT    min\
+                        \ overlap length during unitig construction [based on -l]\n\
+                        \         -o INT    min overlap length during graph cleaning\
+                        \ [based on -l]\n         -m INT    min overlap length for\
+                        \ unambiguous merging [based on -l]\n         -t INT    number\
+                        \ of threads [4]\n         -E        don't apply error correction\n\
+                        \n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - fermi2.pl
+                      - mag2fmr
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: fermi2.pl
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -MORE_OPTIONS
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -OPTIONS
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "/usr/local/bin/fermi2.pl version [unknown] calling\
+                        \ Getopt::Std::getopts (version 1.12 [paranoid]),\nrunning\
+                        \ under Perl version 5.26.2.\n\nUsage: fermi2.pl [-OPTIONS\
+                        \ [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]\n\nThe following\
+                        \ single-character options are accepted:\n\tWith arguments:\
+                        \ -i -s -r -l -d -M\n\tBoolean (without arguments): -a\n\n\
+                        Options may be merged together.  -- stops processing of options.\n\
+                        Space is not required between options and their arguments.\n\
+                        \  [Now continuing due to backward compatibility and excessive\
+                        \ paranoia.\n   See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n\
+                        fermi2.pl mag2fmr [-a] [-i in.fmr] <file1.mag.gz> [...]\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "\nUsage:   fermi2.pl <command> [arguments]\n\nCommand:\
+                      \ unitig     generate Makefile for unitig assembly\n       \
+                      \  utglog     analyze log files generated by unitig\n      \
+                      \   mag2fmr    create FMR for multiple MAG unitig assemblies\n\
+                      \n"
+                    generated_using: *id005
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: fermi2.pl utglog <prefix>\n"
-                  generated_using: &id005 []
+                  generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - fermi2.pl
-                  - unitig
+                  command: *id006
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: fermi2.pl
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 0
                     name: in.fq
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: output prefix [fmdef]
+                    optional: true
                     synonyms:
                     - -p
+                    description: output prefix [fmdef]
                     args: !SimpleFlagArg
                       name: STR
-                    optional: true
                   - !Flag
-                    description: approximate genome size [100m]
+                    optional: true
                     synonyms:
                     - -s
+                    description: approximate genome size [100m]
                     args: !SimpleFlagArg
                       name: STR
-                    optional: true
                   - !Flag
-                    description: 2-pass error correction
+                    optional: true
                     synonyms:
                     - '-2'
+                    description: 2-pass error correction
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: primary read length [101]
+                    optional: true
                     synonyms:
                     - -l
+                    description: primary read length [101]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: use INT-mer for post-trimming/filtering [61]
+                    optional: true
                     synonyms:
                     - -T
+                    description: use INT-mer for post-trimming/filtering [61]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: min overlap length during unitig construction [based
-                      on -l]
+                    optional: true
                     synonyms:
                     - -k
+                    description: min overlap length during unitig construction [based
+                      on -l]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: min overlap length during graph cleaning [based on
-                      -l]
+                    optional: true
                     synonyms:
                     - -o
+                    description: min overlap length during graph cleaning [based on
+                      -l]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: min overlap length for unambiguous merging [based
-                      on -l]
+                    optional: true
                     synonyms:
                     - -m
+                    description: min overlap length for unambiguous merging [based
+                      on -l]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: number of threads [4]
+                    optional: true
                     synonyms:
                     - -t
+                    description: number of threads [4]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: don't apply error correction
+                    optional: true
                     synonyms:
                     - -E
+                    description: don't apply error correction
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -MORE_OPTIONS
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
                     description: ''
+                    args: !EmptyFlagArg {}
+                  - !Flag
+                    optional: true
                     synonyms:
                     - -OPTIONS
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -209,31 +414,29 @@ subcommands:
                     \         -m INT    min overlap length for unambiguous merging\
                     \ [based on -l]\n         -t INT    number of threads [4]\n  \
                     \       -E        don't apply error correction\n\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - fermi2.pl
-                  - mag2fmr
+                  command: *id007
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: fermi2.pl
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -MORE_OPTIONS
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
                     description: ''
+                    args: !EmptyFlagArg {}
+                  - !Flag
+                    optional: true
                     synonyms:
                     - -OPTIONS
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -251,6 +454,7 @@ subcommands:
                     \ paranoia.\n   See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n\
                     fermi2.pl mag2fmr [-a] [-i in.fmr] <file1.mag.gz> [...]\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -260,6 +464,7 @@ subcommands:
                   \     analyze log files generated by unitig\n         mag2fmr  \
                   \  create FMR for multiple MAG unitig assemblies\n\n"
                 generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -267,103 +472,104 @@ subcommands:
               version_flag:
               help_text: "Usage: fermi2.pl utglog <prefix>\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: fermi2.pl
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 0
                 name: in.fq
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: output prefix [fmdef]
+                optional: true
                 synonyms:
                 - -p
+                description: output prefix [fmdef]
                 args: !SimpleFlagArg
                   name: STR
-                optional: true
               - !Flag
-                description: approximate genome size [100m]
+                optional: true
                 synonyms:
                 - -s
+                description: approximate genome size [100m]
                 args: !SimpleFlagArg
                   name: STR
-                optional: true
               - !Flag
-                description: 2-pass error correction
+                optional: true
                 synonyms:
                 - '-2'
+                description: 2-pass error correction
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: primary read length [101]
+                optional: true
                 synonyms:
                 - -l
+                description: primary read length [101]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: use INT-mer for post-trimming/filtering [61]
+                optional: true
                 synonyms:
                 - -T
+                description: use INT-mer for post-trimming/filtering [61]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: min overlap length during unitig construction [based
-                  on -l]
+                optional: true
                 synonyms:
                 - -k
+                description: min overlap length during unitig construction [based
+                  on -l]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: min overlap length during graph cleaning [based on -l]
+                optional: true
                 synonyms:
                 - -o
+                description: min overlap length during graph cleaning [based on -l]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: min overlap length for unambiguous merging [based on
-                  -l]
+                optional: true
                 synonyms:
                 - -m
+                description: min overlap length for unambiguous merging [based on
+                  -l]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: number of threads [4]
+                optional: true
                 synonyms:
                 - -t
+                description: number of threads [4]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: don't apply error correction
+                optional: true
                 synonyms:
                 - -E
+                description: don't apply error correction
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -MORE_OPTIONS
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
                 description: ''
+                args: !EmptyFlagArg {}
+              - !Flag
+                optional: true
                 synonyms:
                 - -OPTIONS
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag:
@@ -389,28 +595,29 @@ subcommands:
                 \ on -l]\n         -t INT    number of threads [4]\n         -E  \
                 \      don't apply error correction\n\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: fermi2.pl
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -MORE_OPTIONS
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
                 description: ''
+                args: !EmptyFlagArg {}
+              - !Flag
+                optional: true
                 synonyms:
                 - -OPTIONS
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag:
@@ -427,6 +634,7 @@ subcommands:
                 \ Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\nfermi2.pl\
                 \ mag2fmr [-a] [-i in.fmr] <file1.mag.gz> [...]\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -436,6 +644,7 @@ subcommands:
               \ log files generated by unitig\n         mag2fmr    create FMR for\
               \ multiple MAG unitig assemblies\n\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -443,101 +652,102 @@ subcommands:
           version_flag:
           help_text: "Usage: fermi2.pl utglog <prefix>\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: fermi2.pl
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 0
             name: in.fq
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: output prefix [fmdef]
+            optional: true
             synonyms:
             - -p
+            description: output prefix [fmdef]
             args: !SimpleFlagArg
               name: STR
-            optional: true
           - !Flag
-            description: approximate genome size [100m]
+            optional: true
             synonyms:
             - -s
+            description: approximate genome size [100m]
             args: !SimpleFlagArg
               name: STR
-            optional: true
           - !Flag
-            description: 2-pass error correction
+            optional: true
             synonyms:
             - '-2'
+            description: 2-pass error correction
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: primary read length [101]
+            optional: true
             synonyms:
             - -l
+            description: primary read length [101]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: use INT-mer for post-trimming/filtering [61]
+            optional: true
             synonyms:
             - -T
+            description: use INT-mer for post-trimming/filtering [61]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: min overlap length during unitig construction [based on -l]
+            optional: true
             synonyms:
             - -k
+            description: min overlap length during unitig construction [based on -l]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: min overlap length during graph cleaning [based on -l]
+            optional: true
             synonyms:
             - -o
+            description: min overlap length during graph cleaning [based on -l]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: min overlap length for unambiguous merging [based on -l]
+            optional: true
             synonyms:
             - -m
+            description: min overlap length for unambiguous merging [based on -l]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: number of threads [4]
+            optional: true
             synonyms:
             - -t
+            description: number of threads [4]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: don't apply error correction
+            optional: true
             synonyms:
             - -E
+            description: don't apply error correction
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -MORE_OPTIONS
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
             description: ''
+            args: !EmptyFlagArg {}
+          - !Flag
+            optional: true
             synonyms:
             - -OPTIONS
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag:
@@ -562,28 +772,29 @@ subcommands:
             \ merging [based on -l]\n         -t INT    number of threads [4]\n  \
             \       -E        don't apply error correction\n\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: fermi2.pl
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -MORE_OPTIONS
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
             description: ''
+            args: !EmptyFlagArg {}
+          - !Flag
+            optional: true
             synonyms:
             - -OPTIONS
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag:
@@ -600,6 +811,7 @@ subcommands:
             \ about $Getopt::Std::STANDARD_HELP_VERSION.]\nfermi2.pl mag2fmr [-a]\
             \ [-i in.fmr] <file1.mag.gz> [...]\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -609,6 +821,7 @@ subcommands:
           \ log files generated by unitig\n         mag2fmr    create FMR for multiple\
           \ MAG unitig assemblies\n\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -616,101 +829,102 @@ subcommands:
       version_flag:
       help_text: "Usage: fermi2.pl utglog <prefix>\n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: fermi2.pl
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 0
         name: in.fq
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: output prefix [fmdef]
+        optional: true
         synonyms:
         - -p
+        description: output prefix [fmdef]
         args: !SimpleFlagArg
           name: STR
-        optional: true
       - !Flag
-        description: approximate genome size [100m]
+        optional: true
         synonyms:
         - -s
+        description: approximate genome size [100m]
         args: !SimpleFlagArg
           name: STR
-        optional: true
       - !Flag
-        description: 2-pass error correction
+        optional: true
         synonyms:
         - '-2'
+        description: 2-pass error correction
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: primary read length [101]
+        optional: true
         synonyms:
         - -l
+        description: primary read length [101]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: use INT-mer for post-trimming/filtering [61]
+        optional: true
         synonyms:
         - -T
+        description: use INT-mer for post-trimming/filtering [61]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: min overlap length during unitig construction [based on -l]
+        optional: true
         synonyms:
         - -k
+        description: min overlap length during unitig construction [based on -l]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: min overlap length during graph cleaning [based on -l]
+        optional: true
         synonyms:
         - -o
+        description: min overlap length during graph cleaning [based on -l]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: min overlap length for unambiguous merging [based on -l]
+        optional: true
         synonyms:
         - -m
+        description: min overlap length for unambiguous merging [based on -l]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: number of threads [4]
+        optional: true
         synonyms:
         - -t
+        description: number of threads [4]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: don't apply error correction
+        optional: true
         synonyms:
         - -E
+        description: don't apply error correction
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -MORE_OPTIONS
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
         description: ''
+        args: !EmptyFlagArg {}
+      - !Flag
+        optional: true
         synonyms:
         - -OPTIONS
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag:
@@ -734,28 +948,29 @@ subcommands:
         \ on -l]\n         -t INT    number of threads [4]\n         -E        don't\
         \ apply error correction\n\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: fermi2.pl
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -MORE_OPTIONS
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
         description: ''
+        args: !EmptyFlagArg {}
+      - !Flag
+        optional: true
         synonyms:
         - -OPTIONS
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag:
@@ -771,6 +986,7 @@ subcommands:
         \ excessive paranoia.\n   See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n\
         fermi2.pl mag2fmr [-a] [-i in.fmr] <file1.mag.gz> [...]\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -780,6 +996,7 @@ subcommands:
       \ generated by unitig\n         mag2fmr    create FMR for multiple MAG unitig\
       \ assemblies\n\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -787,101 +1004,102 @@ subcommands:
   version_flag:
   help_text: "Usage: fermi2.pl utglog <prefix>\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: fermi2.pl
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 0
     name: in.fq
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: output prefix [fmdef]
+    optional: true
     synonyms:
     - -p
+    description: output prefix [fmdef]
     args: !SimpleFlagArg
       name: STR
-    optional: true
   - !Flag
-    description: approximate genome size [100m]
+    optional: true
     synonyms:
     - -s
+    description: approximate genome size [100m]
     args: !SimpleFlagArg
       name: STR
-    optional: true
   - !Flag
-    description: 2-pass error correction
+    optional: true
     synonyms:
     - '-2'
+    description: 2-pass error correction
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: primary read length [101]
+    optional: true
     synonyms:
     - -l
+    description: primary read length [101]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: use INT-mer for post-trimming/filtering [61]
+    optional: true
     synonyms:
     - -T
+    description: use INT-mer for post-trimming/filtering [61]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: min overlap length during unitig construction [based on -l]
+    optional: true
     synonyms:
     - -k
+    description: min overlap length during unitig construction [based on -l]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: min overlap length during graph cleaning [based on -l]
+    optional: true
     synonyms:
     - -o
+    description: min overlap length during graph cleaning [based on -l]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: min overlap length for unambiguous merging [based on -l]
+    optional: true
     synonyms:
     - -m
+    description: min overlap length for unambiguous merging [based on -l]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: number of threads [4]
+    optional: true
     synonyms:
     - -t
+    description: number of threads [4]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: don't apply error correction
+    optional: true
     synonyms:
     - -E
+    description: don't apply error correction
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -MORE_OPTIONS
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
     description: ''
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
     synonyms:
     - -OPTIONS
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:
@@ -904,28 +1122,29 @@ subcommands:
     \ for unambiguous merging [based on -l]\n         -t INT    number of threads\
     \ [4]\n         -E        don't apply error correction\n\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: fermi2.pl
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -MORE_OPTIONS
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
     description: ''
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
     synonyms:
     - -OPTIONS
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:
@@ -941,6 +1160,7 @@ subcommands:
     \ about $Getopt::Std::STANDARD_HELP_VERSION.]\nfermi2.pl mag2fmr [-a] [-i in.fmr]\
     \ <file1.mag.gz> [...]\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -950,3 +1170,4 @@ help_text: "\nUsage:   fermi2.pl <command> [arguments]\n\nCommand: unitig     ge
   \ by unitig\n         mag2fmr    create FMR for multiple MAG unitig assemblies\n\
   \n"
 generated_using: *id005
+docker_image:

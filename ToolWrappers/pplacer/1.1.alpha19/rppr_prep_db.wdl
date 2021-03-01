@@ -14,6 +14,9 @@ task RpprPrepDb {
       ~{if (sqlite) then "--sqlite" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_package_path: "Reference package path. Required."
     sqlite: "Specify the database file to use. Required."

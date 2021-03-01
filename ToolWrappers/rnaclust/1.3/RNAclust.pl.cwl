@@ -3,43 +3,43 @@ id: RNAclust.pl.cwl
 inputs:
 - id: in_file_name_fasta
   doc: "<file name>                     FASTA file\n(required)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fasta
-- id: in_dir_name_target
+- id: in_dir_name_directory
   doc: "<dir name>                      Target directory TGTDIR\n(required)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dir
 - id: in_cpu
   doc: "<integer>                       Number of CPUs available on your machine.\
     \ Calls to locarna and\nRNAfold will be distributed equally on those CPUs. (default:\
     \ 1)\n(optional)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cpu
 - id: in_dp_only
   doc: "Stop after dotplots are created. This option is useful if\ncalculation of\
     \ pairwise alignments will be distributed among\ndifferent machines.\n(optional)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dponly
 - id: in_dp_dir
   doc: "<dir>                           Directory of dotplots. Use this option in\
     \ case you distribute the\ncalculation of pairwise alignments among different\
     \ machines using\n--start and --end options.\n(optional)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dpdir
-- id: in_integer_start_pairwise
+- id: in_integer_start_ioptional
   doc: "<integer>                       Start with pairwise alignment i.\n(optional)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --start
 - id: in_end
   doc: "<integer>                       Stop with pairwise alignment j.\n(optional,\
     \ except --start is specified)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --end
 - id: in_tree
@@ -47,27 +47,27 @@ inputs:
     \ machines (options --start, --end) in order to generate\nthe hierarchical cluster-tree.\
     \ The pairwise alignments must be moved\nto one 'paligs' directory beforehand.\n\
     (optional)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tree
 - id: in_malig
   doc: "Final cluster-tree is traversed and multiple alignment for each internal\n\
     node is computed progressively, default: no\n(optional)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --malig
-- id: in_rnasoup_immediatly_computing
+- id: in_starts_rnasoup_written
   doc: "Starts RNAsoup immediatly after computing the pairwise alignments and\nthe\
     \ hierarchical tree. Results are written to the subfold 'rnasoup'.\nActivates\
     \ the --malig option.\n(optional)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rnasoup
 - id: in_rna_soup_only
   doc: "Starts just RNAsoup on an existing RNAclust directory. Activates --malig\n\
     if there are no multiple alignments available. Writes RNAsoup output to a\nsubfolder\
     \ called 'rnasoup'.\n(optional)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --rnasoup-only
 - id: in_add_sequence
@@ -75,31 +75,31 @@ inputs:
     folder containing the existing tree is defined by --dir. A subfolder,\nnamed 'additionalSeqs',\
     \ containing the new tree and additional files will\nbe created there. This function\
     \ is still experimental, not all combinations\nof parameter will work.\n(optional)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --addSequence
 - id: in_loca_rna_opts
   doc: "<\"locarna options\">          Options passed directly to locarna (must be\
     \ given as one string)\n(optional)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --locarna-opts
 - id: in_mlo_carna_opts
   doc: "<\"mlocarna options\">        Options passed directly to mlocarna (must be\
     \ given as one string).\nmlocarna is used if multiple alignments for the internal\
     \ nodes will be\ncalculated (see --malig).\n(optional)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mlocarna-opts
 - id: in_man
   doc: "full documentation\n(optional)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --man
 - id: in_local_bin
   doc: "Use the rnaclust, rnasoup and pgma binaries from a local installation\ninstead\
     \ of the global one.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --localbin
 - id: in_appends
@@ -500,9 +500,10 @@ outputs:
   doc: "Starts just RNAsoup on an existing RNAclust directory. Activates --malig\n\
     if there are no multiple alignments available. Writes RNAsoup output to a\nsubfolder\
     \ called 'rnasoup'.\n(optional)"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_rna_soup_only)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - RNAclust.pl

@@ -2,7 +2,7 @@ version 1.0
 
 task BiscuitBsstrand {
   input {
-    Boolean? region_optional_
+    Boolean? region_optional_chrx
     Boolean? append_count_tag
     Boolean? correct_bsstrand_output
     String optional_output_bam
@@ -10,12 +10,15 @@ task BiscuitBsstrand {
   command <<<
     biscuit bsstrand \
       ~{optional_output_bam} \
-      ~{if (region_optional_) then "-g" else ""} \
+      ~{if (region_optional_chrx) then "-g" else ""} \
       ~{if (append_count_tag) then "-y" else ""} \
       ~{if (correct_bsstrand_output) then "-c" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    region_optional_: "region (optional, chrX:123-456 if missing, process the whole bam)."
+    region_optional_chrx: "region (optional, chrX:123-456 if missing, process the whole bam)."
     append_count_tag: "append count of C>T (YC tag) and G>A (YG tag) in output bam."
     correct_bsstrand_output: "correct bsstrand in the output bam, YD tag will be replaced if existent and created if not."
     optional_output_bam: "optional output bam, work with -y or -c"

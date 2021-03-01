@@ -2,7 +2,7 @@ version 1.0
 
 task Memechip {
   input {
-    Directory? failing_directory_exists
+    Directory? dir_output_failing
     Directory? oc
     Boolean? db
     Boolean? neg
@@ -48,7 +48,7 @@ task Memechip {
   command <<<
     meme_chip \
       ~{bfile_path_background} \
-      ~{if (failing_directory_exists) then "-o" else ""} \
+      ~{if (dir_output_failing) then "-o" else ""} \
       ~{if (oc) then "-oc" else ""} \
       ~{if (db) then "-db" else ""} \
       ~{if (neg) then "-neg" else ""} \
@@ -90,8 +90,11 @@ task Memechip {
       ~{if (spam_o_skip) then "-spamo-skip" else ""} \
       ~{if (fimo_skip) then "-fimo-skip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    failing_directory_exists: "<dir>   : output to the specified directory, failing if the directory exists"
+    dir_output_failing: "<dir>   : output to the specified directory, failing if the directory exists"
     oc: "<dir>   : output to the specified directory, overwriting if the directory exists"
     db: "<path>  : target database for use by Tomtom and CentriMo; if not present,\\nTomtom and CentriMo are not run"
     neg: "<path>  : negative (control) sequence file name;\\nthe control sequences will be input to MEME, CentriMo and DREME,\\nand MEME will use the Differential Enrichment objective function;\\nsequences are assumed to originate from the same alphabet as the\\nprimary sequence file and should be the same length as those;\\ndefault: no negative sequences are used for MEME\\nor CentriMo, and for DREME, the primary sequences\\nare shuffled to create the negative set"
@@ -136,7 +139,7 @@ task Memechip {
   }
   output {
     File out_stdout = stdout()
-    Directory out_failing_directory_exists = "${in_failing_directory_exists}"
+    Directory out_dir_output_failing = "${in_dir_output_failing}"
     Directory out_oc = "${in_oc}"
   }
 }

@@ -24,6 +24,9 @@ task RnaCdclassify {
       ~{if defined(path_output_file) then ("--output " +  '"' + path_output_file + '"') else ""} \
       ~{if defined(unknown_threshold) then ("--unknown-threshold " +  '"' + unknown_threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chunksize: "Chunksize in bases. Default = 100"
     contig: "Name of mitochrondrial contig in your BAM\\nfiles. Default = chrM"

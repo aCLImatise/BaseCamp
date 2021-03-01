@@ -20,6 +20,9 @@ task Breakseq2GenBplibpy {
       ~{if defined(junction_length) then ("--junction_length " +  '"' + junction_length + '"') else ""} \
       ~{if defined(format_version) then ("--format_version " +  '"' + format_version + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "Reference FASTA (default: None)"
     output_fasta_generate: "Output FASTA to generate. Leave unspecified for stdout\\n(default: None)"

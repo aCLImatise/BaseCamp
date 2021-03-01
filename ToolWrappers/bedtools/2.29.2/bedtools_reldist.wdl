@@ -12,6 +12,9 @@ task BedtoolsReldist {
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
       ~{if defined(a) then ("-a " +  '"' + a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detail: "the relativedistance for each interval in A"
     b: ""

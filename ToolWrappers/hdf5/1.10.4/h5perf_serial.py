@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Int, Boolean, File
+
+H5Perf_Serial_V0_1_0 = CommandToolBuilder(tool="h5perf_serial", base_command=["h5perf_serial"], inputs=[ToolInput(tag="in_which_apis_test", input_type=String(optional=True), prefix="-A", doc=InputDocumentation(doc="Which APIs to test\n[default: all of them]")), ToolInput(tag="in_selects_chunked_storage", input_type=String(optional=True), prefix="-c", doc=InputDocumentation(doc="Selects chunked storage and defines chunks dimensions\nand sizes\n[default: Off]")), ToolInput(tag="in_dimensions_sizes_dataset", input_type=Int(optional=True), prefix="-e", doc=InputDocumentation(doc="Dimensions and sizes of dataset\n[default: 100,200]")), ToolInput(tag="in_number_iterations_perform", input_type=Int(optional=True), prefix="-i", doc=InputDocumentation(doc="Number of iterations to perform\n[default: 1]")), ToolInput(tag="in_dimension_access_order", input_type=Int(optional=True), prefix="-r", doc=InputDocumentation(doc="Dimension access order (see below for description)\n[default: 1,2]")), ToolInput(tag="in_selects_extendable_dimensions", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc="Selects extendable dimensions for HDF5 dataset\n[default: Off]")), ToolInput(tag="in_selects_file_driver", input_type=File(optional=True), prefix="-v", doc=InputDocumentation(doc="Selects file driver for HDF5 access\n[default: sec2]")), ToolInput(tag="in_perform_write_tests", input_type=Boolean(optional=True), prefix="-w", doc=InputDocumentation(doc="Perform write tests, not the read tests\n[default: Off]")), ToolInput(tag="in_dimensions_sizes_transfer", input_type=Int(optional=True), prefix="-x", doc=InputDocumentation(doc="Dimensions and sizes of the transfer buffer\n[default: 10,20]")), ToolInput(tag="in_options", input_type=String(), position=0, doc=InputDocumentation(doc="-h                Print an usage message and exit")), ToolInput(tag="in_vfd", input_type=String(), position=0, doc=InputDocumentation(doc="- is an HDF5 file driver specifier. Valid values are:\nsec2, stdio, core, split, multi, family, direct")), ToolInput(tag="in_hdf_five_no_cleanup", input_type=Int(), position=0, doc=InputDocumentation(doc="Do not remove data files if set [default remove]")), ToolInput(tag="in_hdf_five_prefix", input_type=Int(), position=1, doc=InputDocumentation(doc="Data file prefix"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    H5Perf_Serial_V0_1_0().translate("wdl", allow_empty_container=True)
+

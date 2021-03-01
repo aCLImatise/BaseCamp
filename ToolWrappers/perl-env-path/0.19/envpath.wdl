@@ -3,7 +3,7 @@ version 1.0
 task Envpath {
   input {
     File? append_token_path
-    String? newdir_change_olddir
+    String? change_olddir_newdir
     File? prepend_token_path
     String? token_insert_token
     Boolean? list_specified_pathvars
@@ -16,7 +16,7 @@ task Envpath {
   command <<<
     envpath \
       ~{if defined(append_token_path) then ("-A " +  '"' + append_token_path + '"') else ""} \
-      ~{if defined(newdir_change_olddir) then ("-C " +  '"' + newdir_change_olddir + '"') else ""} \
+      ~{if defined(change_olddir_newdir) then ("-C " +  '"' + change_olddir_newdir + '"') else ""} \
       ~{if defined(prepend_token_path) then ("-P " +  '"' + prepend_token_path + '"') else ""} \
       ~{if defined(token_insert_token) then ("-I " +  '"' + token_insert_token + '"') else ""} \
       ~{if (list_specified_pathvars) then "-L" else ""} \
@@ -26,9 +26,12 @@ task Envpath {
       ~{if (remove_redundant_entries) then "-U" else ""} \
       ~{if defined(like__path) then ("-W " +  '"' + like__path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     append_token_path: "Append TOKEN to the path variable named 'VAR'"
-    newdir_change_olddir: "=newdir     Change <olddir> to <newdir> within 'VAR'"
+    change_olddir_newdir: "=newdir     Change <olddir> to <newdir> within 'VAR'"
     prepend_token_path: "Prepend TOKEN to the path variable named 'VAR'"
     token_insert_token: ",(-|+)TOKEN]   Insert TOKEN before (-) or after (+) 'dir' in VAR"
     list_specified_pathvars: "[VAR]             List specified pathvar(s) in one-entry-per-line fmt"

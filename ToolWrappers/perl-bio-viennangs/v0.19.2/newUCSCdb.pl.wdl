@@ -26,6 +26,9 @@ task NewUCSCdbpl {
       ~{if (source) then "-source" else ""} \
       ~{if (clade) then "-clade" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "<string>  new database name                        ()"
     fa: "<string>  (multi) fasta file holding sequence      ()"

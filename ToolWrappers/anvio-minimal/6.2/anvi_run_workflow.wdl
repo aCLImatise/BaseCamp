@@ -2,7 +2,7 @@ version 1.0
 
 task Anvirunworkflow {
   input {
-    String? you_must_specify
+    String? you_specify_name
     File? get_default_config
     Boolean? list_workflows
     File? list_dependencies
@@ -14,7 +14,7 @@ task Anvirunworkflow {
   }
   command <<<
     anvi_run_workflow \
-      ~{if defined(you_must_specify) then ("--workflow " +  '"' + you_must_specify + '"') else ""} \
+      ~{if defined(you_specify_name) then ("--workflow " +  '"' + you_specify_name + '"') else ""} \
       ~{if defined(get_default_config) then ("--get-default-config " +  '"' + get_default_config + '"') else ""} \
       ~{if (list_workflows) then "--list-workflows" else ""} \
       ~{if (list_dependencies) then "--list-dependencies" else ""} \
@@ -24,8 +24,11 @@ task Anvirunworkflow {
       ~{if (save_workflow_graph) then "--save-workflow-graph" else ""} \
       ~{if (_additionalparams_additional) then "-A" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    you_must_specify: "You must specify a workflow name. To see a list of\\navailable workflows run --list-workflows."
+    you_specify_name: "You must specify a workflow name. To see a list of\\navailable workflows run --list-workflows."
     get_default_config: "Store a json formatted config file with all the\\ndefault settings of the workflow. This is a good draft\\nyou could use in order to write your own config file.\\nThis config file contains all parameters that could be\\nconfigured for this workflow. NOTICE: the config file\\nis provided with default values only for parameters\\nthat are set by us in the workflow. The values for the\\nrest of the parameters are determined by the relevant\\nprogram."
     list_workflows: "Print a list of available snakemake workflows"
     list_dependencies: "Print a list of the dependencies of this workflow. You\\nmust provide a workflow name and a config file.\\nsnakemake will figure out which rules need to be run\\naccording to your config file, and according to the\\nfiles available on your disk. According to the rules\\nthat need to be run, we will let you know which\\nprograms are going to be used, so that you can make\\nsure you have all of them installed and loaded."

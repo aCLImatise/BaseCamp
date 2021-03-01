@@ -3,7 +3,7 @@ id: hicup2juicer.cwl
 inputs:
 - id: in_zip
   doc: Write output to a gzip file
-  type: File
+  type: File?
   inputBinding:
     prefix: --zip
 outputs:
@@ -12,9 +12,10 @@ outputs:
   type: stdout
 - id: out_zip
   doc: Write output to a gzip file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_zip)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicup2juicer

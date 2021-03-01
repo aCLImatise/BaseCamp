@@ -10,6 +10,9 @@ task RgttoolspyBedToGtf {
       ~{if defined(input_bed_file) then ("-i " +  '"' + input_bed_file + '"') else ""} \
       ~{if defined(output_gtf_file) then ("-o " +  '"' + output_gtf_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bed_file: "Input BED file"
     output_gtf_file: "Output GTF file"

@@ -22,6 +22,9 @@ task NextflowClean {
       ~{if (keep_logs) then "-keep-logs" else ""} \
       ~{if (quiet) then "-quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     after: "Clean up runs executed after the specified one"
     before: "Clean up runs executed before the specified one"

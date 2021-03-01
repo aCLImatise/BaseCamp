@@ -27,7 +27,7 @@ task StatSTR {
     String a
     String tr
     String var_24
-    File file
+    File var_file
   }
   command <<<
     statSTR \
@@ -39,7 +39,7 @@ task StatSTR {
       ~{a} \
       ~{tr} \
       ~{var_24} \
-      ~{file} \
+      ~{var_file} \
       ~{if defined(input_str_vcf) then ("--vcf " +  '"' + input_str_vcf + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(vcf_type) then ("--vcftype " +  '"' + vcf_type + '"') else ""} \
@@ -58,6 +58,9 @@ task StatSTR {
       ~{if (use_length) then "--use-length" else ""} \
       ~{if (plot_a_freq) then "--plot-afreq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_str_vcf: "Input STR VCF file"
     out: "Output file prefix. Use stdout to print file to\\nstandard output."
@@ -84,7 +87,7 @@ task StatSTR {
     a: ""
     tr: ""
     var_24: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

@@ -5,7 +5,7 @@ task SuppapyDiffSplice {
     String? method
     Array[String] psi
     Array[String] tpm
-    File? input_file_eventtranscripts
+    File? input_file_format
     Int? area
     Int? lower_bound
     Boolean? paired
@@ -24,7 +24,7 @@ task SuppapyDiffSplice {
       ~{if defined(method) then ("--method " +  '"' + method + '"') else ""} \
       ~{if defined(psi) then ("--psi " +  '"' + psi + '"') else ""} \
       ~{if defined(tpm) then ("--tpm " +  '"' + tpm + '"') else ""} \
-      ~{if defined(input_file_eventtranscripts) then ("--input " +  '"' + input_file_eventtranscripts + '"') else ""} \
+      ~{if defined(input_file_format) then ("--input " +  '"' + input_file_format + '"') else ""} \
       ~{if defined(area) then ("--area " +  '"' + area + '"') else ""} \
       ~{if defined(lower_bound) then ("--lower-bound " +  '"' + lower_bound + '"') else ""} \
       ~{if (paired) then "--paired" else ""} \
@@ -38,11 +38,14 @@ task SuppapyDiffSplice {
       ~{if defined(name_output_files) then ("--output " +  '"' + name_output_files + '"') else ""} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     method: "Method to test significance. Required."
     psi: "Path of the PSI files. PSI files and the transcript\\nexpression (TPM) files must have the same order.The\\nconditions files and the tpm files must have the same\\norder."
     tpm: "Path of the transcript expression (TPM) files.\\nConditions files and the transcript expression (TPM)\\nfiles must have the same order.The conditions files\\nand the tpm files must have the same order."
-    input_file_eventtranscripts: "Input file with the event-transcripts equivalence\\n(.ioe or .ioi format)"
+    input_file_format: "Input file with the event-transcripts equivalence\\n(.ioe or .ioi format)"
     area: "Number indicating the number of points in the local\\narea distribution. (default: 1000)"
     lower_bound: "Lower-bound for the absolute delta PSI value to test\\nfor significance. (Default: 0)."
     paired: "Boolean. Indicates if replicates in conditions are\\npaired. (Default: False)."

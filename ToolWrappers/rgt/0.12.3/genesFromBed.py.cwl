@@ -3,22 +3,22 @@ id: genesFromBed.py.cwl
 inputs:
 - id: in_mode
   doc: choose mode
-  type: string
+  type: string?
   inputBinding:
     prefix: --mode
 - id: in_distance
   doc: distance from peak to gene
-  type: string
+  type: string?
   inputBinding:
     prefix: --distance
 - id: in_type
   doc: type of bed file (<bed>, <THOR>)
-  type: File
+  type: File?
   inputBinding:
     prefix: --type
 - id: in_metric
   doc: metric to merge peaks' scores (mean, max)
-  type: long
+  type: long?
   inputBinding:
     prefix: --metric
 - id: in_exp_matrix
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - genesFromBed.py

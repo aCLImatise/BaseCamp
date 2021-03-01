@@ -28,6 +28,9 @@ task VelocytoRundropest {
       ~{if defined(dump) then ("--dump " +  '"' + dump + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bc_file: "Valid barcodes file, to filter the bam. If --bcfile is not specified the file will be searched in the default position outputted by ``velocyto tools dropest_bc_correct``. Otherwise an error will be thrown"
     logic: "The logic to use for the filtering (default: Default)"

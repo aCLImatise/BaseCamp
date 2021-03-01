@@ -10,6 +10,9 @@ task Whichdb {
       ~{if (get) then "-get" else ""} \
       ~{if (show_all) then "-showall" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     get: "toggle     [N] Retrieve sequences"
     show_all: "boolean    [N] Show failed attempts"

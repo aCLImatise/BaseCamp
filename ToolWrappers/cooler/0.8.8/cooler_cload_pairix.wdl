@@ -22,6 +22,9 @@ task CoolerCloadPairix {
       ~{if (zero_based) then "--zero-based" else ""} \
       ~{if defined(max_split) then ("--max-split " +  '"' + max_split + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metadata: "Path to JSON file containing user metadata."
     assembly: "Name of genome assembly (e.g. hg19, mm10)"

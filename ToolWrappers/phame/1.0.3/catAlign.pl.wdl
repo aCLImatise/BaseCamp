@@ -8,6 +8,9 @@ task CatAlignpl {
     catAlign_pl \
       ~{defined_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     defined_dot: "It was interpreted as a \\\"\\\" or a 0, but maybe it was a mistake."
   }

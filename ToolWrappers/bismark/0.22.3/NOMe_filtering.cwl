@@ -5,18 +5,19 @@ inputs:
   doc: "Enter the genome folder you wish to use to extract sequences from (full path\
     \ only!). Accepted\nformats are FastA files ending with '.fa' or '.fasta'. Specifying\
     \ a genome folder path is mandatory."
-  type: File
+  type: File?
   inputBinding:
     prefix: --genome_folder
 - id: in_input
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - NOMe_filtering

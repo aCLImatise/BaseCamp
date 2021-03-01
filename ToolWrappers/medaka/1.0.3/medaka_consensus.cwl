@@ -3,23 +3,23 @@ id: medaka_consensus.cwl
 inputs:
 - id: in_fastx_input_basecalls
   doc: fastx input basecalls (required).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_fasta_input_assembly
   doc: fasta input assembly (required).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_output_folder_default
   doc: 'output folder (default: medaka).'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
 - id: in_output_vcf_slows
   doc: "output vcf of changes, and bed file of polished regions.\n(note that this\
     \ slows down consensus calculation)."
-  type: File
+  type: File?
   inputBinding:
     prefix: -v
 - id: in_medaka_model_default
@@ -31,22 +31,22 @@ inputs:
     \ r941_prom_high_g344, r941_prom_high_g360, r941_prom_snp_g303, r941_prom_snp_g322,\
     \ r941_prom_snp_g360, r941_prom_variant_g303, r941_prom_variant_g322, r941_prom_variant_g360.\n\
     Alternatively a .hdf file from 'medaka train'."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
 - id: in_force_overwrite_outputs
   doc: Force overwrite of outputs (default will reuse existing outputs).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_number_threads_create
   doc: 'number of threads with which to create features (default: 1).'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
-- id: in_batchsize_use_default
+- id: in_batchsize_controls_default
   doc: 'batchsize, controls memory use (default: 100).'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 outputs:
@@ -55,15 +55,16 @@ outputs:
   type: stdout
 - id: out_output_folder_default
   doc: 'output folder (default: medaka).'
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_folder_default)
 - id: out_output_vcf_slows
   doc: "output vcf of changes, and bed file of polished regions.\n(note that this\
     \ slows down consensus calculation)."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_vcf_slows)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - medaka_consensus

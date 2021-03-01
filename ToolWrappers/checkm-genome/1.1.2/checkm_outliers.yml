@@ -4,72 +4,72 @@ command:
 - outliers
 positional:
 - !Positional
-  description: directory specified during qa command
+  optional: false
   position: 0
   name: results_dir
-  optional: false
+  description: directory specified during qa command
 - !Positional
-  description: directory containing bins (fasta format)
+  optional: false
   position: 1
   name: bin_dir
-  optional: false
+  description: directory containing bins (fasta format)
 - !Positional
-  description: tetranucleotide profiles for each sequence (see tetra command)
+  optional: false
   position: 2
   name: tetra_profile
-  optional: false
+  description: tetranucleotide profiles for each sequence (see tetra command)
 - !Positional
-  description: print results to file
+  optional: false
   position: 3
   name: output_file
-  optional: false
+  description: print results to file
 named:
 - !Flag
-  description: 'reference distribution used to identify outliers; integer between
-    0 and 100 (default: 95)'
+  optional: true
   synonyms:
   - -d
   - --distributions
+  description: 'reference distribution used to identify outliers; integer between
+    0 and 100 (default: 95)'
   args: !SimpleFlagArg
     name: dist_value
-  optional: true
 - !Flag
-  description: "report sequences that are outliers in 'all' or 'any' reference distribution\
-    \ (default: any)"
+  optional: true
   synonyms:
   - -r
   - --report_type
+  description: "report sequences that are outliers in 'all' or 'any' reference distribution\
+    \ (default: any)"
   args: !ChoiceFlagArg
     choices: !!set
       any:
       all:
-  optional: true
 - !Flag
-  description: 'extension of bins (other files in directory are ignored) (default:
-    fna)'
+  optional: true
   synonyms:
   - -x
   - --extension
+  description: 'extension of bins (other files in directory are ignored) (default:
+    fna)'
   args: !SimpleFlagArg
     name: EXTENSION
-  optional: true
 - !Flag
-  description: suppress console output
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: suppress console output
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: checkm outliers [-h] [-d dist_value] [-r {any,all}] [-x EXTENSION]\
@@ -88,3 +88,4 @@ help_text: "usage: checkm outliers [-h] [-d dist_value] [-r {any,all}] [-x EXTEN
   \nExample: checkm outliers ./output ./bins tetra.tsv outliers.tsv\n"
 generated_using:
 - --help
+docker_image:

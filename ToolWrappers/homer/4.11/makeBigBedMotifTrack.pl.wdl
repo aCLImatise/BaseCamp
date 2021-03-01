@@ -12,6 +12,9 @@ task MakeBigBedMotifTrackpl {
       ~{motif_file} \
       ~{genome}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     track_name: ""
     motif_file: ""

@@ -8,6 +8,9 @@ task ArrowCannedkeysFindKeyById {
     arrow cannedkeys findKeyById \
       ~{id_number}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id_number: ""
   }

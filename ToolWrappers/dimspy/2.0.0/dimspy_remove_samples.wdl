@@ -12,6 +12,9 @@ task DimspyRemovesamples {
       ~{if defined(hdf_file_save) then ("--output " +  '"' + hdf_file_save + '"') else ""} \
       ~{if defined(sample_names) then ("--sample-names " +  '"' + sample_names + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hdf_file_contains: "HDF5 file that contains a peak matrix object or list\\nof peaklist objects from one of the processing steps."
     hdf_file_save: "HDF5 file to save the peak matrix object or peaklist\\nobjects to."

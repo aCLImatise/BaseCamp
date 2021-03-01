@@ -8,6 +8,9 @@ task BtToxinScanner {
     BtToxin_scanner \
       ~{exit}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exit: "[--threads (INT)]             Number of threads to be used ( Default 4 )"
   }

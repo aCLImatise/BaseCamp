@@ -12,6 +12,9 @@ task FastutilsSubseq {
       ~{if defined(output_file_use) then ("-o " +  '"' + output_file_use + '"') else ""} \
       ~{if (print_version_build) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_fastx: "input file in fastx format. Use - for stdin."
     output_file_use: "output file. Use - for stdout."

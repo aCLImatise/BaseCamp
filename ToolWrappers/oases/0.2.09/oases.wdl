@@ -18,12 +18,10 @@ task Oases {
     String? scaffolding
     Int? degree_cut_off
     Directory directory
-    Directory directory_slash_transcripts_dot_fa
   }
   command <<<
     oases \
       ~{directory} \
-      ~{directory_slash_transcripts_dot_fa} \
       ~{if (citation) then "--citation" else ""} \
       ~{if defined(ins_length_two) then ("-ins_length2 " +  '"' + ins_length_two + '"') else ""} \
       ~{if defined(ins_length_long) then ("-ins_length_long " +  '"' + ins_length_long + '"') else ""} \
@@ -40,6 +38,9 @@ task Oases {
       ~{if defined(scaffolding) then ("-scaffolding " +  '"' + scaffolding + '"') else ""} \
       ~{if defined(degree_cut_off) then ("-degree_cutoff " +  '"' + degree_cut_off + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     citation: ": print citation to Oases manuscript and exit"
     ins_length_two: ": expected distance between two paired-end reads in the second short-read dataset (default: no read pairing)"
@@ -57,7 +58,6 @@ task Oases {
     scaffolding: ": Allow gaps in transcripts (default: no)"
     degree_cut_off: ": Maximum allowed degree on either end of a contigg to consider it 'unique' (default: 3)"
     directory: ": working directory name"
-    directory_slash_transcripts_dot_fa: "directory/contig-ordering.txt"
   }
   output {
     File out_stdout = stdout()

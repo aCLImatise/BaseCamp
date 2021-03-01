@@ -4,12 +4,12 @@ inputs:
 - id: in_full
   doc: "boolean    [N] The default behaviour is to report for\nrelevant servers only\
     \ basic information from\nthe EMBOSS server definition"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -full
 - id: in_outfile
   doc: outfile    [stdout] Output file name
-  type: File
+  type: File?
   inputBinding:
     prefix: -outfile
 outputs:
@@ -18,9 +18,10 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: outfile    [stdout] Output file name
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - servertell

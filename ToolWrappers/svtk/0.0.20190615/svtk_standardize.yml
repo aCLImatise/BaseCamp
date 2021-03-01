@@ -4,76 +4,76 @@ command:
 - standardize
 positional:
 - !Positional
-  description: Raw VCF.
+  optional: false
   position: 0
   name: vcf
-  optional: false
+  description: Raw VCF.
 - !Positional
-  description: Standardized VCF.
+  optional: false
   position: 1
   name: fout
-  optional: false
+  description: Standardized VCF.
 - !Positional
-  description: Source algorithm. [delly,lumpy,manta,wham,melt]
+  optional: false
   position: 2
   name: source
-  optional: false
+  description: Source algorithm. [delly,lumpy,manta,wham,melt]
 named:
 - !Flag
-  description: "If provided, variant names will be overwritten with\nthis prefix."
+  optional: true
   synonyms:
   - -p
   - --prefix
+  description: "If provided, variant names will be overwritten with\nthis prefix."
   args: !SimpleFlagArg
     name: PREFIX
-  optional: true
 - !Flag
-  description: "Include records where all samples are called 0/0 or\n./."
+  optional: true
   synonyms:
   - --include-reference-sites
+  description: "Include records where all samples are called 0/0 or\n./."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Path to python file with custom standardizer\ndefinition. (Not yet\
-    \ supported.)"
+  optional: true
   synonyms:
   - --standardizer
+  description: "Path to python file with custom standardizer\ndefinition. (Not yet\
+    \ supported.)"
   args: !SimpleFlagArg
     name: STANDARDIZER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --contigs
   description: "Reference fasta index (.fai). If provided, contigs in\nindex will\
     \ be used in VCF header. Otherwise all GRCh37\ncontigs will be used in header.\
     \ Variants on contigs\nnot in provided list will be removed."
-  synonyms:
-  - --contigs
   args: !SimpleFlagArg
     name: CONTIGS
-  optional: true
 - !Flag
-  description: Minimum SV size to report [50].
+  optional: true
   synonyms:
   - --min-size
+  description: Minimum SV size to report [50].
   args: !SimpleFlagArg
     name: MIN_SIZE
-  optional: true
 - !Flag
-  description: "Call sites with null genotypes (./.). Generally useful\nwhen an algorithm\
-    \ has been run on a single sample and\nhas only reported variant sites.\n"
+  optional: true
   synonyms:
   - --call-null-sites
+  description: "Call sites with null genotypes (./.). Generally useful\nwhen an algorithm\
+    \ has been run on a single sample and\nhas only reported variant sites.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: svtk standardize [-h] [-p PREFIX] [--include-reference-sites]\n\
@@ -103,3 +103,4 @@ help_text: "usage: svtk standardize [-h] [-p PREFIX] [--include-reference-sites]
   \      has only reported variant sites.\n"
 generated_using:
 - --help
+docker_image:

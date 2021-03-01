@@ -28,6 +28,9 @@ task FeatureFinderIdentification {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                        Input file: LC-MS raw data (valid formats: 'mzML')"
     id: "*                        Input file: Peptide identifications derived directly from 'in' (valid formats: 'idXML')"

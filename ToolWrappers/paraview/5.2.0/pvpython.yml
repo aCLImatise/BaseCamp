@@ -4,42 +4,133 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Set the ID of the server and client to make sure they match. 0 is\
-    \ reserved to imply none specified.\n--cslog=opt             ClientServerStream\
-    \ log file.\n--data=opt              Load the specified data. To specify file\
-    \ series replace the numeral with a '.' eg. my0.vtk, my1.vtk...myN.vtk becomes\
-    \ my..vtk\n--disable-registry\n-dr                     Do not use registry when\
-    \ running ParaView (for testing).\n--enable-bt             Enable stack trace\
-    \ signal handler.\n--enable-streaming      EXPERIMENTAL: When specified, view-based\
-    \ streaming is enabled for certain views and representation types.\n--help\n/?\
-    \                      Displays available command line arguments.\n--hostname=opt\
-    \          Override the hostname to be used to connect to this process. By default,\
-    \ the hostname is determined using appropriate system calls.\n--multi-servers\
-    \         Allow client to connect to several pvserver\n--print-monitors      \
-    \  Print detected monitors and exit (Windows only).\n--server-url=opt\n-url=opt\
-    \                Set the server-url to connect with when the client starts. --server\
-    \ (-s) option supersedes this option, hence one should only use one of the two\
-    \ options.\n--state=opt             Load the specified statefile (.pvsm).\n--stereo\
-    \                Tell the application to enable stereo rendering\n--stereo-type=opt\
-    \       Specify the stereo type. This valid only when --stereo is specified. Possible\
-    \ values are \"Crystal Eyes\", \"Red-Blue\", \"Interlaced\", \"Dresden\", \"Anaglyph\"\
-    , \"Checkerboard\",\"SplitViewportHorizontal\"\n--test-plugin=opt       Specify\
-    \ the name of the plugin to load for testing\n--test-plugin-path=opt  Specify\
-    \ the path where more plugins can be found.This is typically used when testing\
-    \ plugins.\n--use-cuda-interop\n-cudaiop                When specified, piston\
-    \ classes will use cuda interop for direct rendering\n--version\n-V          \
-    \            Give the version number and exit.\n"
+  optional: true
   synonyms:
   - --connect-id
+  description: Set the ID of the server and client to make sure they match. 0 is reserved
+    to imply none specified.
   args: !SimpleFlagArg
     name: opt
+- !Flag
   optional: true
+  synonyms:
+  - --cslog
+  description: ClientServerStream log file.
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --data
+  description: Load the specified data. To specify file series replace the numeral
+    with a '.' eg. my0.vtk, my1.vtk...myN.vtk becomes my..vtk
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --disable-registry
+  - -dr
+  description: Do not use registry when running ParaView (for testing).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --enable-bt
+  description: Enable stack trace signal handler.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --enable-streaming
+  description: 'EXPERIMENTAL: When specified, view-based streaming is enabled for
+    certain views and representation types.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hostname
+  description: Override the hostname to be used to connect to this process. By default,
+    the hostname is determined using appropriate system calls.
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --multi-servers
+  description: Allow client to connect to several pvserver
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print-monitors
+  description: Print detected monitors and exit (Windows only).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --server-url
+  - -url
+  description: Set the server-url to connect with when the client starts. --server
+    (-s) option supersedes this option, hence one should only use one of the two options.
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --state
+  description: Load the specified statefile (.pvsm).
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --stereo
+  description: Tell the application to enable stereo rendering
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stereo-type
+  description: Specify the stereo type. This valid only when --stereo is specified.
+    Possible values are "Crystal Eyes", "Red-Blue", "Interlaced", "Dresden", "Anaglyph",
+    "Checkerboard","SplitViewportHorizontal"
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --test-plugin
+  description: Specify the name of the plugin to load for testing
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --test-plugin-path
+  description: Specify the path where more plugins can be found.This is typically
+    used when testing plugins.
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --use-cuda-interop
+  - -cudaiop
+  description: When specified, piston classes will use cuda interop for direct rendering
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag:
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -V
+  description: Give the version number and exit.
+  args: !EmptyFlagArg {}
 help_text: "\n  --connect-id=opt        Set the ID of the server and client to make\
   \ sure they match. 0 is reserved to imply none specified.\n\n  --cslog=opt     \
   \        ClientServerStream log file.\n\n  --data=opt              Load the specified\
@@ -68,3 +159,4 @@ help_text: "\n  --connect-id=opt        Set the ID of the server and client to m
   \                      Give the version number and exit.\n\n"
 generated_using:
 - --help
+docker_image:

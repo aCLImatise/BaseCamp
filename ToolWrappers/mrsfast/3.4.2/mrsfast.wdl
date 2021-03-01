@@ -2,7 +2,6 @@ version 1.0
 
 task Mrsfast {
   input {
-    Int? max
     String mrs_fast_ultra
     String treated
     String to
@@ -14,7 +13,7 @@ task Mrsfast {
     String only_dot
     Int length
     String options_dot
-    String maxdiscordantlength_maximum_length
+    String maxdiscordantlength_maximum_
     String variation
     String format_dot
     String should
@@ -43,7 +42,7 @@ task Mrsfast {
       ~{only_dot} \
       ~{length} \
       ~{options_dot} \
-      ~{maxdiscordantlength_maximum_length} \
+      ~{maxdiscordantlength_maximum_} \
       ~{variation} \
       ~{format_dot} \
       ~{should} \
@@ -57,11 +56,12 @@ task Mrsfast {
       ~{derived} \
       ~{mission_dot} \
       ~{ular} \
-      ~{negligence} \
-      ~{if defined(max) then ("--max " +  '"' + max + '"') else ""}
+      ~{negligence}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    max: "$ ./mrsfast --search refgen.fasta --pe --seq1 first-mates.fastq  --seq2\\nsecond-mates.fastq -e 3 --threads 4\\n$  ./mrsfast --search refgen.fasta --pe --seq1 first-mates.fastq --seq2\\nsecond-mates.fastq --min 100 --max 400 --best -o output\\nDiscordant mapping:\\n$  ./mrsfast   --search   refgen.fasta   --pe   --discordant-vh   --seq\\nreads.fastq --min 100 --max 400"
     mrs_fast_ultra: "DDEESSCCRRIIPPTTIIOONN"
     treated: "sequences are not supported in this version."
     to: "install  mrsFAST-ultra, please download the source zip package from"
@@ -73,7 +73,7 @@ task Mrsfast {
     only_dot: "----sseeqq22 _f_i_l_e"
     length: "will  be  calculated  if  not  provided by corresponding"
     options_dot: "----mmiinn _m_i_n_-_d_i_s_c_o_r_d_a_n_t_-_l_e_n_g_t_h"
-    maxdiscordantlength_maximum_length: "_m_a_x_-_d_i_s_c_o_r_d_a_n_t_-_l_e_n_g_t_h for maximum length of concordant map-"
+    maxdiscordantlength_maximum_: "_m_a_x_-_d_i_s_c_o_r_d_a_n_t_-_l_e_n_g_t_h for maximum length of concordant map-"
     variation: "Hunter / Common Law. Output will be generate in DIVET"
     format_dot: "----mmaaxx--ddiissccoorrddaanntt--ccuuttooffff _m"
     should: "be  created  from  the  dbSNP  (.vcf)  file  using  the"

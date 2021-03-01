@@ -2,7 +2,7 @@ version 1.0
 
 task Seqsplit {
   input {
-    File? output_new_fasta
+    File? output_new_file
     File? frag_file
     File? in_format
     Int? length
@@ -14,7 +14,7 @@ task Seqsplit {
   command <<<
     seqsplit \
       ~{seq_file} \
-      ~{if defined(output_new_fasta) then ("-o " +  '"' + output_new_fasta + '"') else ""} \
+      ~{if defined(output_new_file) then ("-o " +  '"' + output_new_file + '"') else ""} \
       ~{if defined(frag_file) then ("--fragfile " +  '"' + frag_file + '"') else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
@@ -22,8 +22,11 @@ task Seqsplit {
       ~{if (short_names) then "--shortnames" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    output_new_fasta: ": output the new FASTA file to <file>"
+    output_new_file: ": output the new FASTA file to <file>"
     frag_file: ": save one-line-per-frag coord summary file to <f>"
     in_format: ": specify sequence file format <s>"
     length: ": set max length of each unique seq frag to <n>"
@@ -34,6 +37,6 @@ task Seqsplit {
   }
   output {
     File out_stdout = stdout()
-    File out_output_new_fasta = "${in_output_new_fasta}"
+    File out_output_new_file = "${in_output_new_file}"
   }
 }

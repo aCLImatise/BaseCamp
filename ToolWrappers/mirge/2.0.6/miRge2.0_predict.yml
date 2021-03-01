@@ -4,213 +4,219 @@ command:
 - predict
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: args
-  optional: true
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -s
   description: "[sample <required> [sample <required> ...]]\ntwo options: 1. A file\
     \ where each row represents one\nsample name; 2. *.fastq *.fastq ... Or *.fastq.gz\n\
     *.fastq.gz ..."
-  synonyms:
-  - -s
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "the directory of the outputs (default: current\ndirectory)"
+  optional: true
   synonyms:
   - -o
+  description: "the directory of the outputs (default: current\ndirectory)"
   args: !SimpleFlagArg
     name: dir
-  optional: true
 - !Flag
-  description: "the miRNA database (default: miRBase. miRGeneDB is\noptional)"
+  optional: true
   synonyms:
   - -d
+  description: "the miRNA database (default: miRBase. miRGeneDB is\noptional)"
   args: !SimpleFlagArg
     name: string required
-  optional: true
 - !Flag
-  description: the path to the system's bowtie binary
+  optional: true
   synonyms:
   - -pb
+  description: the path to the system's bowtie binary
   args: !SimpleFlagArg
     name: dir required
-  optional: true
 - !Flag
-  description: the path to the miRge libraries
+  optional: true
   synonyms:
   - -lib
+  description: the path to the miRge libraries
   args: !SimpleFlagArg
     name: dir required
-  optional: true
 - !Flag
-  description: "the species can be human, mouse, fruitfly, nematode,\nrat and zebrafish\
-    \ (novel miRNA detection is confined\nin human and mouse)"
+  optional: true
   synonyms:
   - -sp
+  description: "the species can be human, mouse, fruitfly, nematode,\nrat and zebrafish\
+    \ (novel miRNA detection is confined\nin human and mouse)"
   args: !SimpleFlagArg
     name: string required
-  optional: true
 - !Flag
-  description: the path to the system's samtools binary
+  optional: true
   synonyms:
   - -ps
+  description: the path to the system's samtools binary
   args: !SimpleFlagArg
     name: dir required
-  optional: true
 - !Flag
-  description: the path to the system's rnafold binary
+  optional: true
   synonyms:
   - -pr
+  description: the path to the system's rnafold binary
   args: !SimpleFlagArg
     name: dir required
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -ex
   description: "the threshold of the proportion of canonical reads for\nthe miRNAs\
     \ to determine whether keeping them or not\nwhen counting. Users can set it between\
     \ 0 and 0.5.\n(default: 0.1)"
-  synonyms:
-  - -ex
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: "the adapter need to be removed which could be\nillumina, ion or a\
-    \ defined sequence (default: none)"
+  optional: true
   synonyms:
   - -ad
+  description: "the adapter need to be removed which could be\nillumina, ion or a\
+    \ defined sequence (default: none)"
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: "switch to annotate spike-ins if the bowtie index files\nare loacted\
-    \ at the path of bowtie's index files\n(default: off)"
+  optional: true
+  synonyms:
+  - -phred64
+  description: 'phred64 format(default: 64)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -spikeIn
+  description: "switch to annotate spike-ins if the bowtie index files\nare loacted\
+    \ at the path of bowtie's index files\n(default: off)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "switch to write trimmed and collapsed fasta file\n(default: off)"
+  optional: true
   synonyms:
   - -tcf
+  description: "switch to write trimmed and collapsed fasta file\n(default: off)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'switch to calculate of isomirs entropy (default: off)'
+  optional: true
   synonyms:
   - -di
+  description: 'switch to calculate of isomirs entropy (default: off)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "the number of processors to use for trimming, qc, and\nalignment (default:\
-    \ 1)"
+  optional: true
   synonyms:
   - -cpu
+  description: "the number of processors to use for trimming, qc, and\nalignment (default:\
+    \ 1)"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'switch to calculate of A to I editing (default: off)'
+  optional: true
   synonyms:
   - -ai
+  description: 'switch to calculate of A to I editing (default: off)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'switch to output results in gff format (default: off)'
+  optional: true
   synonyms:
   - -gff
+  description: 'switch to output results in gff format (default: off)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'switch to analyze tRNA fragment (default: off)'
+  optional: true
   synonyms:
   - -trf
+  description: 'switch to analyze tRNA fragment (default: off)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -ws
   description: "the file containing the overall samples to analysis\nfor novel miRNA\
     \ prediction. No header, just a list of\n*.fastq file names in a column. Names\
     \ of files can be\nto your choosing (e.g. filestochecknovel.txt)"
-  synonyms:
-  - -ws
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "the minimum length of the reatined reads for novel\nmiRNA detection\
-    \ (default: 16)"
+  optional: true
   synonyms:
   - -minl
+  description: "the minimum length of the reatined reads for novel\nmiRNA detection\
+    \ (default: 16)"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "the maximum length of the reatined reads for novel\nmiRNA detection\
-    \ (default: 25)"
+  optional: true
   synonyms:
   - -maxl
+  description: "the maximum length of the reatined reads for novel\nmiRNA detection\
+    \ (default: 25)"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "the maximum read count of the reatined reads for novel\nmiRNA detection\
-    \ (default: 2)"
+  optional: true
   synonyms:
   - -cc
+  description: "the maximum read count of the reatined reads for novel\nmiRNA detection\
+    \ (default: 2)"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "the maximum number of mapping loci for the retained\nreads for novel\
-    \ miRNA detection (default: 3)"
+  optional: true
   synonyms:
   - -ml
+  description: "the maximum number of mapping loci for the retained\nreads for novel\
+    \ miRNA detection (default: 3)"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "the seed length when invoking Bowtie for novel miRNA\ndetection (default:\
-    \ 25)"
+  optional: true
   synonyms:
   - -sl
+  description: "the seed length when invoking Bowtie for novel miRNA\ndetection (default:\
+    \ 25)"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "the length of overlapped seqence when joining reads\ninto longer sequences\
-    \ based on the coordinate on the\ngenome for novel miRNA detection (default: 14)"
+  optional: true
   synonyms:
   - -olc
+  description: "the length of overlapped seqence when joining reads\ninto longer sequences\
+    \ based on the coordinate on the\ngenome for novel miRNA detection (default: 14)"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "the maximum length of the clustered sequences for\nnovel miRNA detection\
-    \ (default: 30)"
+  optional: true
   synonyms:
   - -clc
+  description: "the maximum length of the clustered sequences for\nnovel miRNA detection\
+    \ (default: 30)"
   args: !SimpleFlagArg
     name: int
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: \r##################################################################################\n\
   ##                                                                             \
   \ ##\n##      miRge2.0 (Comprehensive analysis of miRNA sequencing Data)       \
@@ -269,3 +275,4 @@ help_text: "usage: \r###########################################################
   \             show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

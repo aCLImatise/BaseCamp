@@ -30,6 +30,9 @@ task Monocle3Partition {
       ~{if defined(partition_q_val) then ("--partition-qval " +  '"' + partition_q_val + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_format: "Format of input object. [Default: cds3]"
     output_object_format: "Format of output object. [Default: cds3]"

@@ -2,12 +2,11 @@ version 1.0
 
 task Nanocall {
   input {
-    Int? _threads_intnumber
-    File? _output_file
+    Int? threads
     Int? pore
-    Boolean? strandfile_strandfile_accepted
+    Boolean? strandfile_model_strandfile
     File? model_fof_n
-    File? _trans_filecustom
+    File? trans
     Float? pr_stay
     Float? pr_skip
     Boolean? no_base_call
@@ -31,24 +30,24 @@ task Nanocall {
     Int? trim_ed_hp_start
     Int? trim_ed_hp_end
     Int? train_drift
-    File? stats
-    String? log
     Int? chunk_size
     Int? ed_group
     Boolean? write_fast_five
+    File? o
     String nano_call
     String output_dot
+    String stats_dot
   }
   command <<<
     nanocall \
       ~{nano_call} \
       ~{output_dot} \
-      ~{if defined(_threads_intnumber) then ("-t " +  '"' + _threads_intnumber + '"') else ""} \
-      ~{if defined(_output_file) then ("-o " +  '"' + _output_file + '"') else ""} \
+      ~{stats_dot} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(pore) then ("--pore " +  '"' + pore + '"') else ""} \
-      ~{if (strandfile_strandfile_accepted) then "-m" else ""} \
+      ~{if (strandfile_model_strandfile) then "-m" else ""} \
       ~{if defined(model_fof_n) then ("--model-fofn " +  '"' + model_fof_n + '"') else ""} \
-      ~{if defined(_trans_filecustom) then ("-s " +  '"' + _trans_filecustom + '"') else ""} \
+      ~{if defined(trans) then ("--trans " +  '"' + trans + '"') else ""} \
       ~{if defined(pr_stay) then ("--pr-stay " +  '"' + pr_stay + '"') else ""} \
       ~{if defined(pr_skip) then ("--pr-skip " +  '"' + pr_skip + '"') else ""} \
       ~{if (no_base_call) then "--no-basecall" else ""} \
@@ -72,19 +71,20 @@ task Nanocall {
       ~{if defined(trim_ed_hp_start) then ("--trim-ed-hp-start " +  '"' + trim_ed_hp_start + '"') else ""} \
       ~{if defined(trim_ed_hp_end) then ("--trim-ed-hp-end " +  '"' + trim_ed_hp_end + '"') else ""} \
       ~{if defined(train_drift) then ("--train-drift " +  '"' + train_drift + '"') else ""} \
-      ~{if defined(stats) then ("--stats " +  '"' + stats + '"') else ""} \
-      ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if defined(chunk_size) then ("--chunk-size " +  '"' + chunk_size + '"') else ""} \
       ~{if defined(ed_group) then ("--ed-group " +  '"' + ed_group + '"') else ""} \
-      ~{if (write_fast_five) then "--write-fast5" else ""}
+      ~{if (write_fast_five) then "--write-fast5" else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _threads_intnumber: ",  --threads <int>\\nNumber of parallel threads. (default: 1)"
-    _output_file: ",  --output <file>"
+    threads: "Number of parallel threads. (default: 1)"
     pore: "Pore name, used to select builtin pore model. (default: r9)"
-    strandfile_strandfile_accepted: "<strand:file>,  --model <strand:file>  (accepted multiple times)\\nCustom pore model for strand (0=template, 1=complement, 2=both)."
+    strandfile_model_strandfile: "<strand:file>,  --model <strand:file>  (accepted multiple times)\\nCustom pore model for strand (0=template, 1=complement, 2=both)."
     model_fof_n: "File of pore models."
-    _trans_filecustom: ",  --trans <file>\\nCustom initial state transitions."
+    trans: "Custom initial state transitions."
     pr_stay: "Transition probability of staying in the same state. (default: 0.1)"
     pr_skip: "Transition probability of skipping at least 1 state. (default: 0.3)"
     no_base_call: "Disable basecalling."
@@ -108,16 +108,15 @@ task Nanocall {
     trim_ed_hp_start: "Number of events to trim before hairpin start. (default: 50)"
     trim_ed_hp_end: "Number of events to trim after hairpin end. (default: 50)"
     train_drift: "Train drift parameter. (default: yes for R73, no for R9)"
-    stats: "Stats."
-    log: "(accepted multiple times)\\nLog level. (default: info)"
     chunk_size: "Thread chunk size. (default: 1)"
     ed_group: "EventDetection group to use. (default: smallest available)"
     write_fast_five: ""
+    o: ""
     nano_call: "[-t <int>] [-o <file>] [--write-fast5] [--pore <r73|r9>] [-m\\n<strand:file>] ...  [--model-fofn <file>] [-s <file>]\\n[--pr-stay <float>] [--pr-skip <float>] [--no-basecall]\\n[--basecall] [--no-train] [--train] [--no-train-scaling]\\n[--no-train-transitions] [--double-strand-scaling]\\n[--single-strand-scaling] [--1d] [--scaling-num-events <int>]\\n[--scaling-max-rounds <int>] [--scaling-min-progress <float>]\\n[--scaling-select-threshold <float>] [--fasta-line-width\\n<int>] [--min-ed-events <int>] [--max-ed-events <int>]\\n[--trim-ed-sq-start <int>] [--trim-ed-sq-end <int>]\\n[--trim-ed-hp-start <int>] [--trim-ed-hp-end <int>]\\n[--train-drift <0|1>] [--stats <file>] [--log <string>] ...\\n[--chunk-size <int>] [--ed-group <000|001|...>] [--]\\n[--version] [-h] <path> ..."
     output_dot: "--write-fast5"
+    stats_dot: "--log <string>  (accepted multiple times)"
   }
   output {
     File out_stdout = stdout()
-    File out__output_file = "${in__output_file}"
   }
 }

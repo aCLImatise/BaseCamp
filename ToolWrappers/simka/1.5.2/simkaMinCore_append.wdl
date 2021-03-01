@@ -10,6 +10,9 @@ task SimkaMinCoreAppend {
       ~{if (in_one) then "-in1" else ""} \
       ~{if (in_two) then "-in2" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_one: "(1 arg) :    first sketch file to merge (this file will be overwritten)"
     in_two: "(1 arg) :    second sketch file to merge (this file will be appended to the first one)"

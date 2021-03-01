@@ -3,7 +3,7 @@ id: _btwisted.cwl
 inputs:
 - id: in_angle_data
   doc: datafile   [Eangles.dat] DNA base pair twist angle data
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -angledata
 - id: in_file
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _btwisted

@@ -7,7 +7,7 @@ task BlibSearch {
     Boolean? arg_compare_query
     Boolean? n
     Boolean? l
-    Boolean? arg_search_only_spectra_charge_higherthan
+    Boolean? arg_search_only_spectra_higherthan
     Boolean? arg_return_arg
     File? psm_result_file
     Boolean? arg_return_results
@@ -24,7 +24,7 @@ task BlibSearch {
       ~{if (arg_compare_query) then "-w" else ""} \
       ~{if (n) then "-n" else ""} \
       ~{if (l) then "-L" else ""} \
-      ~{if (arg_search_only_spectra_charge_higherthan) then "-H" else ""} \
+      ~{if (arg_search_only_spectra_higherthan) then "-H" else ""} \
       ~{if (arg_return_arg) then "-m" else ""} \
       ~{if defined(psm_result_file) then ("--psm-result-file " +  '"' + psm_result_file + '"') else ""} \
       ~{if (arg_return_results) then "-R" else ""} \
@@ -32,13 +32,16 @@ task BlibSearch {
       ~{if (arg_file_containing) then "-p" else ""} \
       ~{if (arg_status_control) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_remove_peaks: "[ --clear-precursor ] arg (=1)  Remove the peaks in a X m/z window around\\nthe precursor from the query and library\\nspectrum."
     top_peaks_for_search: "(=100)     Use ARG of the highest intensity peaks."
     arg_compare_query: "[ --mz-window ] arg (=3)        Compare query to library spectra with\\nprecursor m/z +/- ARG."
     n: "[ --min-peaks ] arg (=20)       Search only spectra with charge no less\\nthan ARG."
     l: "[ --low-charge ] arg (=1)       Search only spectra with charge no less\\nthan ARG."
-    arg_search_only_spectra_charge_higherthan: "[ --high-charge ] arg (=5)      Search only spectra with charge no higher\\nthan ARG."
+    arg_search_only_spectra_higherthan: "[ --high-charge ] arg (=5)      Search only spectra with charge no higher\\nthan ARG."
     arg_return_arg: "[ --report-matches ] arg (=5)   Return ARG of the best matches for each"
     psm_result_file: "Return results in a .psm file named ARG."
     arg_return_results: "[ --report-file ] arg           Return results in report file named ARG.\\nDefault is <spectrum file name>.report."

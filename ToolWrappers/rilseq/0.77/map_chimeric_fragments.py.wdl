@@ -48,6 +48,9 @@ task MapChimericFragmentspy {
       ~{if defined(params_aln) then ("--params_aln " +  '"' + params_aln + '"') else ""} \
       ~{if defined(sam_se_params) then ("--samse_params " +  '"' + sam_se_params + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reverse_complement: "Treat the reads as reverse complement. This means that\\nthe first read is actually the 3' end of the fragment.\\nUse this when using Jonathan Livny's protocol for\\nlibrary construction (default: False)"
     transcripts: "A gff file of transcripts. If given, screen reads that\\nmight reside from the same transcript. Very useful for\\nscreening ribosomal RNAs. Otherwise use only the size\\nlimit. (default: None)"

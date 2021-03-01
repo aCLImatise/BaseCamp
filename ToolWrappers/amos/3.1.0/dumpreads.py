@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Int, File, String
+
+Dumpreads_V0_1_0 = CommandToolBuilder(tool="dumpreads", base_command=["dumpreads"], inputs=[ToolInput(tag="in_dump_reads_fastq", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc="Dump reads in fastq format")), ToolInput(tag="in_use_sanger_fastq", input_type=Int(optional=True), prefix="-Q", doc=InputDocumentation(doc="Use this as the min base quality (default: 33 / Sanger FASTQ)")), ToolInput(tag="in_dump_qualities_fasta", input_type=Boolean(optional=True), prefix="-q", doc=InputDocumentation(doc="Dump qualities in fasta format instead of sequence")), ToolInput(tag="in_use_eids_iids", input_type=Boolean(optional=True), prefix="-e", doc=InputDocumentation(doc="Use EIDs for FastA header instead of IIDs")), ToolInput(tag="in_ignore_clear_range", input_type=Boolean(optional=True), prefix="-r", doc=InputDocumentation(doc="Ignore clear range and dump entire sequence")), ToolInput(tag="in_display_clear_range", input_type=Boolean(optional=True), prefix="-c", doc=InputDocumentation(doc="Display clear range information on FASTA header for TIGR Assembler")), ToolInput(tag="in_dump_just_eids", input_type=File(optional=True), prefix="-E", doc=InputDocumentation(doc="Dump just the eids listed in file")), ToolInput(tag="in_dump_just_iids", input_type=File(optional=True), prefix="-I", doc=InputDocumentation(doc="Dump just the iids listed in file")), ToolInput(tag="in_set_maximum_number", input_type=Int(optional=True), prefix="-L", doc=InputDocumentation(doc="Set the maximum number of bases per line (Default: 70)")), ToolInput(tag="in_minimum_iid_display", input_type=Int(optional=True), prefix="-m", doc=InputDocumentation(doc="Minimum IID to display (not included) (Default all; not compatible with -e,-E,-I options)")), ToolInput(tag="in_maximum_iid_display", input_type=Int(optional=True), prefix="-M", doc=InputDocumentation(doc="Maximum IID to display (included) (Default all; not compatible with -e,-E,-I options)")), ToolInput(tag="in_disregard_bank_locks", input_type=Boolean(optional=True), prefix="-s", doc=InputDocumentation(doc="Disregard bank locks and write permissions (spy mode)")), ToolInput(tag="in_display_compatible_version", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc="Display the compatible bank version")), ToolInput(tag="in_dump_reads", input_type=String(), position=0, doc=InputDocumentation(doc="[options] <bank path>"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Dumpreads_V0_1_0().translate("wdl", allow_empty_container=True)
+

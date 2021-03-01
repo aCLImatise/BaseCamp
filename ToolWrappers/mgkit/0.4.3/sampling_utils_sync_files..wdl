@@ -14,6 +14,9 @@ task SamplingutilsSyncFiles {
       ~{input_file} \
       ~{output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sampling_utils: ""
     sync: ""

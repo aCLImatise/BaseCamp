@@ -9,7 +9,7 @@ task MinorityFreq {
     Int? name_patientsample_identifiers
     Int? number_threads_default
     Boolean? freqs
-    File? indicates_coverage_locus
+    File? indicates_coverage_be
     Directory? output_directory_default
     File? fasta_file_containing
     String bam
@@ -24,10 +24,13 @@ task MinorityFreq {
       ~{if defined(name_patientsample_identifiers) then ("-N " +  '"' + name_patientsample_identifiers + '"') else ""} \
       ~{if defined(number_threads_default) then ("-t " +  '"' + number_threads_default + '"') else ""} \
       ~{if (freqs) then "--freqs" else ""} \
-      ~{if (indicates_coverage_locus) then "-d" else ""} \
+      ~{if (indicates_coverage_be) then "-d" else ""} \
       ~{if defined(output_directory_default) then ("-o " +  '"' + output_directory_default + '"') else ""} \
       ~{if defined(fasta_file_containing) then ("-r " +  '"' + fasta_file_containing + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     start: "Starting position of the region of interest, 0-based\\nindexing (default: None)"
     end: "Ending position of the region of interest, 0-based\\nindexing. Note a half-open interval is used, i.e,\\n[start:end) (default: None)"
@@ -36,14 +39,14 @@ task MinorityFreq {
     name_patientsample_identifiers: ",name2,...    Patient/sample identifiers as comma separated strings\\n(default: None)"
     number_threads_default: "Number of threads (default: 1)"
     freqs: "Indicates whether or not all frequencies should be\\nstored (default: False)"
-    indicates_coverage_locus: "Indicates whether coverage per locus should be written\\nto output file (default: False)"
+    indicates_coverage_be: "Indicates whether coverage per locus should be written\\nto output file (default: False)"
     output_directory_default: "Output directory (default: /)"
     fasta_file_containing: "Either a fasta file containing a reference sequence or\\nthe reference name of the region/chromosome of\\ninterest. The latter is expected if a region is\\nspecified (default: None)\\n"
     bam: "BAM file(s)"
   }
   output {
     File out_stdout = stdout()
-    File out_indicates_coverage_locus = "${in_indicates_coverage_locus}"
+    File out_indicates_coverage_be = "${in_indicates_coverage_be}"
     Directory out_output_directory_default = "${in_output_directory_default}"
   }
 }

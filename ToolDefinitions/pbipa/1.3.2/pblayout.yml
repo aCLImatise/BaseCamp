@@ -1,0 +1,752 @@
+&id001 !Command
+command:
+- pblayout
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - pblayout
+  - map-r2c
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: m4
+    description: STR    Input M4.
+  - !Positional
+    optional: false
+    position: 1
+    name: tp
+    description: STR    Input Tiling path file.
+  - !Positional
+    optional: false
+    position: 2
+    name: ctg_lens
+    description: "STR    File containing contig lengths. First column is the contigh\
+      \ name, second column contig\nlength, other columns are ignored. Can be space\
+      \ or tab separated. The .fai files are\nacceptable."
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --alias-seqdb
+    description: STR    Specifies the SeqDB to use for id-to-name lookup for every
+      read in the tiling path.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-diag-diff
+    description: "INT    Maximum diagonal difference for clustering of read-to-contig\
+      \ projections during mapping.\n[100]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --secondary-frac
+    description: "FLOAT  If two mappings overlap by more than this fraction, one will\
+      \ be marked as secondary and\nremoved from output. [0.5]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-dist-from-edge
+    description: "INT    For each mapped region, all overlap coordinates within this\
+      \ distance from the\nleft-/right-most query position will be recollected to\
+      \ find the optimal mapping\nposition. This allows for some 'jitter' in mapping.\
+      \ [3]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-level
+    description: 'STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN,
+      FATAL). [WARN]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-file
+    description: FILE   Log to a file, instead of stderr.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this help and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show application version and exit.
+    args: !EmptyFlagArg {}
+  help_text: "pblayout map-r2c - Map reads to contigs based on tiling paths and overlaps.\n\
+    \nUsage:\n  pblayout map-r2c [options] <m4> <tp> <ctg_lens>\n\n  m4          \
+    \          STR    Input M4.\n  tp                    STR    Input Tiling path\
+    \ file.\n  ctg_lens              STR    File containing contig lengths. First\
+    \ column is the contigh name, second column contig\n                         \
+    \      length, other columns are ignored. Can be space or tab separated. The .fai\
+    \ files are\n                               acceptable.\n\nOther Options:\n  --alias-seqdb\
+    \         STR    Specifies the SeqDB to use for id-to-name lookup for every read\
+    \ in the tiling path.\n  --max-diag-diff       INT    Maximum diagonal difference\
+    \ for clustering of read-to-contig projections during mapping.\n             \
+    \                  [100]\n  --secondary-frac      FLOAT  If two mappings overlap\
+    \ by more than this fraction, one will be marked as secondary and\n          \
+    \                     removed from output. [0.5]\n  --max-dist-from-edge  INT\
+    \    For each mapped region, all overlap coordinates within this distance from\
+    \ the\n                               left-/right-most query position will be\
+    \ recollected to find the optimal mapping\n                               position.\
+    \ This allows for some 'jitter' in mapping. [3]\n\n  -h,--help               \
+    \     Show this help and exit.\n  --version                    Show application\
+    \ version and exit.\n  --log-level           STR    Set log level. Valid choices:\
+    \ (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file            FILE   Log\
+    \ to a file, instead of stderr.\n\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0
+- !Command
+  command:
+  - pblayout
+  - m4-to-sg
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.m4
+    description: STR  Input M4 or M4F.
+  - !Positional
+    optional: false
+    position: 1
+    name: out.sg
+    description: STR  Output SG.
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this help and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show application version and exit.
+    args: !EmptyFlagArg {}
+  help_text: "pblayout m4-to-sg - Convert M4 to SG.\n\nUsage:\n  pblayout m4-to-sg\
+    \ [options] <in.m4> <out.sg>\n\n  in.m4      STR  Input M4 or M4F.\n  out.sg \
+    \    STR  Output SG.\n\nOptions:\n  -h,--help       Show this help and exit.\n\
+    \  --version       Show application version and exit.\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0
+- !Command
+  command:
+  - pblayout
+  - m4-to-g
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.m4
+    description: STR  Input M4 or M4F. (default should be preads.m4
+  - !Positional
+    optional: false
+    position: 1
+    name: out.g
+    description: 'STR  (Output Graph: ctg_paths, c_path, sg_edges_list, chimer_nodes
+      (if not'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --disable-chimer-bridge-removal
+    description: ), utg_data, utg_data0 (maybe)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --lfc
+    description: "use local flow constraint method rather than best overlap method\
+      \ to resolve\nknots in string graph"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ctg-prefix
+    description: STR  Prefix for contig names.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this help and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show application version and exit.
+    args: !EmptyFlagArg {}
+  help_text: "pblayout m4-to-g - Convert M4 to Graph (like ovlp_to_graph).\n\nUsage:\n\
+    \  pblayout m4-to-g [options] <in.m4> <out.g>\n\n  in.m4                     \
+    \       STR  Input M4 or M4F. (default should be preads.m4\n  out.g          \
+    \                  STR  (Output Graph: ctg_paths, c_path, sg_edges_list, chimer_nodes\
+    \ (if not\n                                        --disable-chimer-bridge-removal),\
+    \ utg_data, utg_data0 (maybe)\n\n  --lfc                                 use local\
+    \ flow constraint method rather than best overlap method to resolve\n        \
+    \                                knots in string graph\n  --disable-chimer-bridge-removal\
+    \       and do not write chimer_nodes file\n  --ctg-prefix                   \
+    \  STR  Prefix for contig names.\n\n  -h,--help                             Show\
+    \ this help and exit.\n  --version                             Show application\
+    \ version and exit.\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0
+- !Command
+  command:
+  - pblayout
+  - m4-index
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.m4
+    description: STR  Input M4.
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --piles
+    description: STR  Path to a file with a list of read names for which to fetch
+      the piles. One read name per line.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this help and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show application version and exit.
+    args: !EmptyFlagArg {}
+  help_text: "pblayout m4-index - Generate M4 index file.\n\nUsage:\n  pblayout m4-index\
+    \ [options] <in.m4>\n\n  in.m4      STR  Input M4.\n\nAlgorithm Options:\n  --piles\
+    \    STR  Path to a file with a list of read names for which to fetch the piles.\
+    \ One read name per line.\n\n  -h,--help       Show this help and exit.\n  --version\
+    \       Show application version and exit.\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0
+- !Command
+  command:
+  - pblayout
+  - variants
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in_fn
+    description: STR   Path to a file in IPAOvl format.
+  - !Positional
+    optional: false
+    position: 0
+    name: IDs.
+    description: --min-allele-count    INT   Maximum number of times a diff can occur
+      in a pile to call it an error. Threshold is
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --alias-seqdb
+    description: STR   If provided, read names will be looked up in the SeqDB index
+      cache to determine their
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-indel-len
+    description: "INT   Indels above this length will be masked and not used for error\
+      \ correction and variant\ncalling, and they won't contribute to the consensus.\
+      \ [10000000]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-coverage
+    description: INT   Minimum coverage of a pile for phasing. [6]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-alleles
+    description: "INT   Ignore variant sites with more alleles than this value. If\
+      \ <= 0 no thresholding is\napplied. [2]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --mask-diff-window
+    description: INT   If two or more diffs are within this many bases from each other,
+      mask them. [0]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --num-rss-iterations
+    description: INT   Number of times to repeat NumRss beyond the first. [0]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --phase
+    description: Run the phasing. Write <out_prefix>.keepers.ovl and .scraps.ovl
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --batch
+    description: INT   Number of piles to load in a batch. [1000]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --write-rss-ascii
+    description: Write the read similarity scores in ASCII format instead of binary.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug-verbose
+    description: Prints out extremely verbose debug information.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix
+    description: "STR   Prefix of the output files. Two files will be written: {out_prefix}.ovl\
+      \ and\n{out_prefix}.(ascii|binary).rss [pblayout]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --num-threads
+    description: INT   Number of threads to use, 0 means autodetection. [0]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-level
+    description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+      [WARN]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-file
+    description: FILE  Log to a file, instead of stderr.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this help and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show application version and exit.
+    args: !EmptyFlagArg {}
+  help_text: "variants - Call variants and errors from a set of overlaps with variant\
+    \ strings.\n\nUsage:\n  variants [options] <in_fn>\n\n  in_fn                \
+    \ STR   Path to a file in IPAOvl format.\n\nOptions:\n  --alias-seqdb        \
+    \ STR   If provided, read names will be looked up in the SeqDB index cache to\
+    \ determine their\n                              IDs.\n  --min-allele-count  \
+    \  INT   Maximum number of times a diff can occur in a pile to call it an error.\
+    \ Threshold is\n                              inclusive. [3]\n  --max-indel-len\
+    \       INT   Indels above this length will be masked and not used for error correction\
+    \ and variant\n                              calling, and they won't contribute\
+    \ to the consensus. [10000000]\n  --min-coverage        INT   Minimum coverage\
+    \ of a pile for phasing. [6]\n  --max-alleles         INT   Ignore variant sites\
+    \ with more alleles than this value. If <= 0 no thresholding is\n            \
+    \                  applied. [2]\n  --mask-diff-window    INT   If two or more\
+    \ diffs are within this many bases from each other, mask them. [0]\n  --num-rss-iterations\
+    \  INT   Number of times to repeat NumRss beyond the first. [0]\n  --phase   \
+    \                  Run the phasing. Write <out_prefix>.keepers.ovl and .scraps.ovl\n\
+    \  --batch               INT   Number of piles to load in a batch. [1000]\n  --write-rss-ascii\
+    \           Write the read similarity scores in ASCII format instead of binary.\n\
+    \  --debug-verbose             Prints out extremely verbose debug information.\n\
+    \  --prefix              STR   Prefix of the output files. Two files will be written:\
+    \ {out_prefix}.ovl and\n                              {out_prefix}.(ascii|binary).rss\
+    \ [pblayout]\n\n  -h,--help                   Show this help and exit.\n  --version\
+    \                   Show application version and exit.\n  -j,--num-threads   \
+    \   INT   Number of threads to use, 0 means autodetection. [0]\n  --log-level\
+    \           STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).\
+    \ [WARN]\n  --log-file            FILE  Log to a file, instead of stderr.\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0
+- !Command
+  command:
+  - pblayout
+  - tp2seq
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in_reads_fn
+    description: STR   Path to a SeqDB file with reads which will be used to compose
+      the sequences.
+  - !Positional
+    optional: false
+    position: 1
+    name: in_tiling_path_fn
+    description: STR   Path to a TilingPath file.
+  - !Positional
+    optional: false
+    position: 2
+    name: out_fn
+    description: STR   Output FASTA filename.
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --use-seq-ids
+    description: The input tiling path contains sequence IDs instead of read names.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --use-hpc
+    description: "Assumes that the input tiling paths were constructed in the homopolymer-compressed\
+      \ space,\nand expands the sequences during sequence construction."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --realign
+    description: Realigns the tiling path edges to improve tiling coordinates.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --batch-mb
+    description: "INT   Batch size in Mbp. Reads for a batch of contigs are loaded\
+      \ at once so that all reads total\nin roughly this size. [1000]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --num-threads
+    description: INT   Number of threads to use, 0 means autodetection. [0]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-level
+    description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+      [WARN]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-file
+    description: FILE  Log to a file, instead of stderr.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this help and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show application version and exit.
+    args: !EmptyFlagArg {}
+  help_text: "tp2seq - Construct contig sequences from a given tiling path file.\n\
+    \nUsage:\n  tp2seq [options] <in_reads_fn> <in_tiling_path_fn> <out_fn>\n\n  in_reads_fn\
+    \        STR   Path to a SeqDB file with reads which will be used to compose the\
+    \ sequences.\n  in_tiling_path_fn  STR   Path to a TilingPath file.\n  out_fn\
+    \             STR   Output FASTA filename.\n\nAlgorithm Options:\n  --use-seq-ids\
+    \            The input tiling path contains sequence IDs instead of read names.\n\
+    \  --use-hpc                Assumes that the input tiling paths were constructed\
+    \ in the homopolymer-compressed space,\n                           and expands\
+    \ the sequences during sequence construction.\n  --realign                Realigns\
+    \ the tiling path edges to improve tiling coordinates.\n  --batch-mb         INT\
+    \   Batch size in Mbp. Reads for a batch of contigs are loaded at once so that\
+    \ all reads total\n                           in roughly this size. [1000]\n\n\
+    \  -h,--help                Show this help and exit.\n  --version            \
+    \    Show application version and exit.\n  -j,--num-threads   INT   Number of\
+    \ threads to use, 0 means autodetection. [0]\n  --log-level        STR   Set log\
+    \ level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file\
+    \         FILE  Log to a file, instead of stderr.\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0
+- !Command
+  command:
+  - pblayout
+  - subgraph
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in_sg
+    description: STR   Input string graph in the sg_edges_list format.
+  - !Positional
+    optional: false
+    position: 1
+    name: out_prefix
+    description: STR   Output prefix.
+  - !Positional
+    optional: false
+    position: 0
+    name: provided.
+    description: '--csv-nodes              STR   CSV file with a list of nodes to
+      extract. Each line contains 2 columns: <node_name>'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --directed
+    description: Apply the directed ego-graph algorithm to extract the subgraph.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --radius
+    description: INT   Radius (in the number of nodes) to extract in each direction.
+      [100]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --tp
+    description: STR   Path to a tiling path file. If specified, it will be used to
+      create the Bandage CSV.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --seqdb
+    description: STR   Path to a SeqDB file. If specified, it will be used to retrieve
+      lengths of sequences.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --use-seq-ids
+    description: Indicates that the sequences in the input graph are actually IDs
+      instead of headers.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --write-seqs
+    description: Write the sequences to the generated GFA file. This requires the
+      '--seqdb' to be
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --num-threads
+    description: INT   Number of threads to use, 0 means autodetection. [0]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-level
+    description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+      [WARN]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-file
+    description: FILE  Log to a file, instead of stderr.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this help and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show application version and exit.
+    args: !EmptyFlagArg {}
+  help_text: "subgraph - Extract a subgraph from a given assembly graph.\n\nUsage:\n\
+    \  subgraph [options] <in_sg> <out_prefix> <node1 [node2 node3 ...]>\n\n  in_sg\
+    \                    STR   Input string graph in the sg_edges_list format.\n \
+    \ out_prefix               STR   Output prefix.\n  node1 [node2 node3 ...]  STR\
+    \   One or more nodes to extract the subgraph for.\n\nAlgorithm Options:\n  --directed\
+    \                     Apply the directed ego-graph algorithm to extract the subgraph.\n\
+    \  --radius                 INT   Radius (in the number of nodes) to extract in\
+    \ each direction. [100]\n  --tp                     STR   Path to a tiling path\
+    \ file. If specified, it will be used to create the Bandage CSV.\n  --seqdb  \
+    \                STR   Path to a SeqDB file. If specified, it will be used to\
+    \ retrieve lengths of sequences.\n  --use-seq-ids                  Indicates that\
+    \ the sequences in the input graph are actually IDs instead of headers.\n  --write-seqs\
+    \                   Write the sequences to the generated GFA file. This requires\
+    \ the '--seqdb' to be\n                                 provided.\n  --csv-nodes\
+    \              STR   CSV file with a list of nodes to extract. Each line contains\
+    \ 2 columns: <node_name>\n                                 <label>. The label\
+    \ will be used to name the output files.\n\n  -h,--help                      Show\
+    \ this help and exit.\n  --version                      Show application version\
+    \ and exit.\n  -j,--num-threads         INT   Number of threads to use, 0 means\
+    \ autodetection. [0]\n  --log-level              STR   Set log level. Valid choices:\
+    \ (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file               FILE \
+    \ Log to a file, instead of stderr.\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0
+- !Command
+  command:
+  - pblayout
+  - m4-to-m4
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.m4
+    description: STR  Input M4.
+  - !Positional
+    optional: false
+    position: 1
+    name: out.m4
+    description: STR  Output M4.
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this help and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show application version and exit.
+    args: !EmptyFlagArg {}
+  help_text: "pblayout m4-to-m4 - Convert M4 to M4.\n\nUsage:\n  pblayout m4-to-m4\
+    \ [options] <in.m4> <out.m4>\n\n  in.m4      STR  Input M4.\n  out.m4     STR\
+    \  Output M4.\n\nOptions:\n  -h,--help       Show this help and exit.\n  --version\
+    \       Show application version and exit.\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0
+- !Command
+  command:
+  - pblayout
+  - sg-to-sg
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.sg
+    description: STR  Input SG.
+  - !Positional
+    optional: false
+    position: 1
+    name: out.sg
+    description: STR  Output SG.
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this help and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show application version and exit.
+    args: !EmptyFlagArg {}
+  help_text: "pblayout sg-to-sg - Convert SG to SG.\n\nUsage:\n  pblayout sg-to-sg\
+    \ [options] <in.sg> <out.sg>\n\n  in.sg      STR  Input SG.\n  out.sg     STR\
+    \  Output SG.\n\nOptions:\n  -h,--help       Show this help and exit.\n  --version\
+    \       Show application version and exit.\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "pblayout - PacBio assembly tool.\n\nUsage:\n  pblayout <tool>\n\n  -h,--help\
+  \    Show this help and exit.\n  --version    Show application version and exit.\n\
+  \nTools:\n  dedup-actg Deduplicate alternative bubble branches (associate contigs).\
+  \ Only unphased bubbles are deduplicated based on alignment identity and length.\n\
+  \  m4-to-m4   Convert M4 to M4.\n  m4-to-sg   Convert M4 to SG.\n  m4-to-g    Convert\
+  \ M4 to Graph (like ovlp_to_graph).\n  sg-to-sg   Convert SG to SG.\n  read-to-contig\
+  \ Assign reads to a tiling path based on overlaps.\n  m4-to-sg-to-gfa1 Convert M4\
+  \ to GFA1, via intermediate string graph.\n  m4-index   Generate M4 index file.\n\
+  \  tp2seq     Construct contig sequences from a given tiling path file.\n  subgraph\
+  \   Extract a subgraph from a given assembly graph.\n  map-r2c    Map reads to contigs\
+  \ based on tiling paths and overlaps.\n  variants   Call variants and errors from\
+  \ a set of overlaps with variant strings.\n  variants-rss-debug Debug RSS file by\
+  \ writing '{prefix}.debug.rss' which includes aliases.\n\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0

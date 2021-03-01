@@ -3,22 +3,22 @@ id: genFm9.cwl
 inputs:
 - id: in_fast_q
   doc: file is in a fastq format
-  type: File
+  type: File?
   inputBinding:
     prefix: -fastq
 - id: in_multi_fast_a
   doc: FILE  with all the reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -multiFasta
 - id: in_output
   doc: for the output-file  if print option was selected (default output)
-  type: File
+  type: File?
   inputBinding:
     prefix: -output
 - id: in_size
   doc: of reads to generate the FM9 (default all dataset)
-  type: long
+  type: long?
   inputBinding:
     prefix: -size
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: for the output-file  if print option was selected (default output)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - genFm9

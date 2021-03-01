@@ -1,0 +1,183 @@
+!Command
+command:
+- scHicQualityControl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: scHi-C
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: matrix
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  description: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction\
+    \ matrices to\ninvestigate for QC. Needs to be in scool format\n(default: None)"
+  args: !SimpleFlagArg
+    name: scool
+- !Flag
+  optional: true
+  synonyms:
+  - --outputScool
+  - -o
+  description: "scool matrix which contains only the filtered matrices\n(default:\
+    \ filtered_matrices.scool)"
+  args: !SimpleFlagArg
+    name: OUTPUTSCOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --minimumReadCoverage
+  description: "Remove all samples with a lower read coverage as this\nvalue. (default:\
+    \ 1000000)"
+  args: !SimpleFlagArg
+    name: MINIMUMREADCOVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --minimumDensity
+  description: "Remove all samples with a lower density as this value.\nThe density\
+    \ is given by: number of non-zero\ninteractions / all possible interactions. (default:\n\
+    0.001)"
+  args: !SimpleFlagArg
+    name: MINIMUMDENSITY
+- !Flag
+  optional: true
+  synonyms:
+  - --maximumRegionToConsider
+  description: "To compute the density, consider only this genomic\ndistance around\
+    \ the diagonal. (default: 30000000)"
+  args: !SimpleFlagArg
+    name: MAXIMUMREGIONTOCONSIDER
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosomes
+  - -c
+  description: "List of chromosomes that a cell needs to have to be\nnot deleted.\
+    \ However, other chromosomes/contigs and\nscaffolds which may exist are not deleted.\
+    \ Use\nscHicAdjustMatrix for this. (default: None)"
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileNameDensity
+  - -od
+  description: "File name of the density histogram (default:\ndensity.png)"
+  args: !SimpleFlagArg
+    name: OUTFILENAMEDENSITY
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileNameReadCoverage
+  - -or
+  description: "File name of the read coverage (default:\nreadCoverage.png)"
+  args: !SimpleFlagArg
+    name: OUTFILENAMEREADCOVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileNameQCReport
+  - -oqc
+  description: "File name of the quality report (default:\nqc_report.txt)"
+  args: !SimpleFlagArg
+    name: OUTFILENAMEQCREPORT
+- !Flag
+  optional: true
+  synonyms:
+  - --plotOnly
+  description: "Do not create a new matrix, create only the plots.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --runChromosomeCheck
+  description: "Skip the data integrity check for the chromosomes.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  - -d
+  description: 'The dpi of the plot. (default: 300)'
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
+    \ 4)"
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: scHicQualityControl --matrix scool scHi-C matrix\n            \
+  \               [--outputScool OUTPUTSCOOL]\n                           [--minimumReadCoverage\
+  \ MINIMUMREADCOVERAGE]\n                           [--minimumDensity MINIMUMDENSITY]\n\
+  \                           [--maximumRegionToConsider MAXIMUMREGIONTOCONSIDER]\n\
+  \                           [--chromosomes CHROMOSOMES [CHROMOSOMES ...]]\n    \
+  \                       [--outFileNameDensity OUTFILENAMEDENSITY]\n            \
+  \               [--outFileNameReadCoverage OUTFILENAMEREADCOVERAGE]\n          \
+  \                 [--outFileNameQCReport OUTFILENAMEQCREPORT]\n                \
+  \           [--plotOnly] [--runChromosomeCheck] [--dpi DPI]\n                  \
+  \         [--threads THREADS] [--help] [--version]\n\nRequired arguments:\n  --matrix\
+  \ scool scHi-C matrix, -m scool scHi-C matrix\n                        The single\
+  \ cell Hi-C interaction matrices to\n                        investigate for QC.\
+  \ Needs to be in scool format\n                        (default: None)\n\nOptional\
+  \ arguments:\n  --outputScool OUTPUTSCOOL, -o OUTPUTSCOOL\n                    \
+  \    scool matrix which contains only the filtered matrices\n                  \
+  \      (default: filtered_matrices.scool)\n  --minimumReadCoverage MINIMUMREADCOVERAGE\n\
+  \                        Remove all samples with a lower read coverage as this\n\
+  \                        value. (default: 1000000)\n  --minimumDensity MINIMUMDENSITY\n\
+  \                        Remove all samples with a lower density as this value.\n\
+  \                        The density is given by: number of non-zero\n         \
+  \               interactions / all possible interactions. (default:\n          \
+  \              0.001)\n  --maximumRegionToConsider MAXIMUMREGIONTOCONSIDER\n   \
+  \                     To compute the density, consider only this genomic\n     \
+  \                   distance around the diagonal. (default: 30000000)\n  --chromosomes\
+  \ CHROMOSOMES [CHROMOSOMES ...], -c CHROMOSOMES [CHROMOSOMES ...]\n            \
+  \            List of chromosomes that a cell needs to have to be\n             \
+  \           not deleted. However, other chromosomes/contigs and\n              \
+  \          scaffolds which may exist are not deleted. Use\n                    \
+  \    scHicAdjustMatrix for this. (default: None)\n  --outFileNameDensity OUTFILENAMEDENSITY,\
+  \ -od OUTFILENAMEDENSITY\n                        File name of the density histogram\
+  \ (default:\n                        density.png)\n  --outFileNameReadCoverage OUTFILENAMEREADCOVERAGE,\
+  \ -or OUTFILENAMEREADCOVERAGE\n                        File name of the read coverage\
+  \ (default:\n                        readCoverage.png)\n  --outFileNameQCReport\
+  \ OUTFILENAMEQCREPORT, -oqc OUTFILENAMEQCREPORT\n                        File name\
+  \ of the quality report (default:\n                        qc_report.txt)\n  --plotOnly\
+  \            Do not create a new matrix, create only the plots.\n              \
+  \          (default: False)\n  --runChromosomeCheck  Skip the data integrity check\
+  \ for the chromosomes.\n                        (default: False)\n  --dpi DPI, -d\
+  \ DPI     The dpi of the plot. (default: 300)\n  --threads THREADS, -t THREADS\n\
+  \                        Number of threads. Using the python multiprocessing\n \
+  \                       module. (default: 4)\n  --help, -h            show this\
+  \ help message and exit\n  --version             show program's version number and\
+  \ exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/schicexplorer:7--py_0

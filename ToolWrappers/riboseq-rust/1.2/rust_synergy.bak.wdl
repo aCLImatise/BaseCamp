@@ -12,6 +12,9 @@ task RustSynergybak {
       ~{rust_tripeptide_file} \
       ~{if defined(directory_path_outputfile) then ("-o " +  '"' + directory_path_outputfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_path_outputfile: "directory  path to outputfile, default is \\\"synergy\\\""
     rust_amino_file: "path to file produced from \\\"rust_amino\\\""

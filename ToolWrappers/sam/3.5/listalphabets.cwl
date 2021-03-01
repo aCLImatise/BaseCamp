@@ -3,7 +3,7 @@ id: listalphabets.cwl
 inputs:
 - id: in_option
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -option
 - id: in_run_name
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - listalphabets

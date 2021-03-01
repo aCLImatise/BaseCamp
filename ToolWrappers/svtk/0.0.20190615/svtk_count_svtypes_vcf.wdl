@@ -16,6 +16,9 @@ task SvtkCountsvtypesVcf {
       ~{if (total_obs) then "--total-obs" else ""} \
       ~{if (no_header) then "--no-header" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     total_variants: ""
     total_obs: ""

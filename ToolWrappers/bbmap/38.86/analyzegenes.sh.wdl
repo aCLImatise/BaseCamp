@@ -8,6 +8,9 @@ task Analyzegenessh {
     analyzegenes_sh \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
   }

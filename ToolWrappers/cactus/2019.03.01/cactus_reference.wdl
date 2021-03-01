@@ -34,6 +34,9 @@ task CactusReference {
       ~{if (min_number_of_sequences_to_support_adjacency) then "--minNumberOfSequencesToSupportAdjacency" else ""} \
       ~{if (make_scaffolds) then "--makeScaffolds" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: ": Set the log level"
     cactus_disk: ": The location of the flower disk directory"

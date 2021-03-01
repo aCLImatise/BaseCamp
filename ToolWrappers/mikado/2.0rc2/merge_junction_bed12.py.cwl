@@ -3,12 +3,12 @@ id: merge_junction_bed12.py.cwl
 inputs:
 - id: in_delim
   doc: 'Delimiter for merged names. Default: ;'
-  type: string
+  type: string?
   inputBinding:
     prefix: --delim
 - id: in_threads
   doc: "Number of threads to use for multiprocessing. Default:\n1"
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_top_hat
@@ -17,12 +17,12 @@ inputs:
     convert the lines to this latter format. By default,\nthe script assumes that\
     \ the intron start/end are\ndefined using thickStart/End like in portcullis.\n\
     Mixed-type input files are not supported."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tophat
 - id: in_output
   doc: "Output file. Default: stdout\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_bed
@@ -36,9 +36,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file. Default: stdout\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - merge_junction_bed12.py

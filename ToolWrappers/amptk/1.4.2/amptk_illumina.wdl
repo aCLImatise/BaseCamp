@@ -46,6 +46,9 @@ task AmptkIllumina {
       ~{if (merge_method) then "--merge_method" else ""} \
       ~{if (u_search) then "--usearch" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "Input folder of FASTQ files (Required)"
     out: "Output folder name. Default: amptk-data"

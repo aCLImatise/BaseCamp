@@ -10,6 +10,9 @@ task PblayoutSgtosg {
       ~{in_dots_g} \
       ~{out_dots_g}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dots_g: "STR  Input SG."
     out_dots_g: "STR  Output SG."

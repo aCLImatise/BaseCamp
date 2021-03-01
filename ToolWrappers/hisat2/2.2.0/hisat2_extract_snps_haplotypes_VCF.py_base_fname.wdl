@@ -8,6 +8,9 @@ task Hisat2ExtractSnpsHaplotypesVCFpyBaseFname {
     hisat2_extract_snps_haplotypes_VCF_py base_fname \
       ~{his_at_two_extract_snps_haplotypes_vcf_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     his_at_two_extract_snps_haplotypes_vcf_do_tpy: ""
   }

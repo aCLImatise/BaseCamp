@@ -20,6 +20,9 @@ task GotreeCompareTrees {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     binary: "If true, then just print true (identical tree) or false (different tree) for each compared tree"
     tips: "Include tips in the comparison"

@@ -3,32 +3,32 @@ id: kaiju2krona.cwl
 inputs:
 - id: in_name_input_file
   doc: Name of input file
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_name_output_file
   doc: Name of output file.
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_name_nodesdmp_file
   doc: Name of nodes.dmp file
-  type: File
+  type: File?
   inputBinding:
     prefix: -t
 - id: in_name_namesdmp_file
   doc: Name of names.dmp file
-  type: File
+  type: File?
   inputBinding:
     prefix: -n
 - id: in_enable_verbose_output
   doc: Enable verbose output.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_include_count_unclassified
   doc: Include count for unclassified reads in output.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -u
 outputs:
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_name_output_file
   doc: Name of output file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_name_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kaiju2krona

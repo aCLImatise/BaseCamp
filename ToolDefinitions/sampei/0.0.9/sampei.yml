@@ -1,0 +1,167 @@
+!Command
+command:
+- sampei
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: mgf_query_file
+  description: "Query mgf file with full path containing query scans\nhave been identified\
+    \ by DB search"
+- !Positional
+  optional: false
+  position: 1
+  name: mgf_target_file
+  description: "Target mgf file with full path containing target scans\nwith undefined\
+    \ modifications"
+- !Positional
+  optional: false
+  position: 2
+  name: id_file
+  description: File in which query scans have been identified by DB
+- !Positional
+  optional: false
+  position: 3
+  name: search
+  description: 'optional arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matched-query-intensity
+  description: "The percentage of MS2 intensity of query scan matched\nto target scan\
+    \ over the summation of total MS2\nintensity in the query scan. (default = 0.3)"
+  args: !SimpleFlagArg
+    name: MATCHED_QUERY_INTENSITY
+- !Flag
+  optional: true
+  synonyms:
+  - --error-type
+  description: (default = ppm)
+  args: !ChoiceFlagArg
+    choices: !!set
+      ppm:
+      dalton:
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --output-directory
+  description: "Full path to the directory where output is stored. If\nthis directory\
+    \ does not exist it will be created.\n(default = output)"
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - --no-filter
+  description: "Disable the filter and keep DB identified scans in the\ntarget mgf\
+    \ file"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --largest-gap-percent
+  description: "The percentage of the largest consecutive b/y ion\nmissing over the\
+    \ length of the peptide sequence.\n(default = 0.4)"
+  args: !SimpleFlagArg
+    name: LARGEST_GAP_PERCENT
+- !Flag
+  optional: true
+  synonyms:
+  - --matched-peptide-intensity
+  description: "The percentage of MS2 intensity of target scan matched\nto the theoretical\
+    \ fragments of peptide sequence over\nthe summation of total MS2 intensity in\
+    \ the target\nscan. (default = 0.5)"
+  args: !SimpleFlagArg
+    name: MATCHED_PEPTIDE_INTENSITY
+- !Flag
+  optional: true
+  synonyms:
+  - --min-diff-dalton-bin
+  description: "The absolute minimum dalton difference between the\nquery scan and\
+    \ the target scan. (default = 10)"
+  args: !SimpleFlagArg
+    name: MIN_DIFF_DALTON_BIN
+- !Flag
+  optional: true
+  synonyms:
+  - --xtandem-xml
+  description: "The path to an X!tandem xml file which will be used to\nfilter the\
+    \ results."
+  args: !SimpleFlagArg
+    name: XTANDEM_XML
+- !Flag
+  optional: true
+  synonyms:
+  - --write-intermediate
+  description: Write files for each step of filtering.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-peaks-per-scan
+  description: ''
+  args: !SimpleFlagArg
+    name: MAX_PEAKS_PER_SCAN
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: SAMPEI [-h] [--max-peaks-per-scan MAX_PEAKS_PER_SCAN]\n       \
+  \       [--fragment-mass-error FRAGMENT_MASS_ERROR]\n              [--matched-query-intensity\
+  \ MATCHED_QUERY_INTENSITY]\n              [--error-type {ppm,dalton}] [-O OUTPUT_DIRECTORY]\
+  \ [--no-filter]\n              [--largest-gap-percent LARGEST_GAP_PERCENT]\n   \
+  \           [--matched-peptide-intensity MATCHED_PEPTIDE_INTENSITY]\n          \
+  \    [--min-diff-dalton-bin MIN_DIFF_DALTON_BIN]\n              [--xtandem-xml XTANDEM_XML]\
+  \ [--write-intermediate] [-v]\n              mgf_query_file mgf_target_file id_file\n\
+  \nSAMPEI is a searching method leveraging high quality query spectra within the\n\
+  same or different dataset to assign target spectra with peptide sequence and\nundefined\
+  \ modification (mass shift).\n\npositional arguments:\n  mgf_query_file        Query\
+  \ mgf file with full path containing query scans\n                        have been\
+  \ identified by DB search\n  mgf_target_file       Target mgf file with full path\
+  \ containing target scans\n                        with undefined modifications\n\
+  \  id_file               File in which query scans have been identified by DB\n\
+  \                        search\n\noptional arguments:\n  -h, --help           \
+  \ show this help message and exit\n  --max-peaks-per-scan MAX_PEAKS_PER_SCAN\n \
+  \                       (default = 20)\n  --fragment-mass-error FRAGMENT_MASS_ERROR\n\
+  \                        (default = 20)\n  --matched-query-intensity MATCHED_QUERY_INTENSITY\n\
+  \                        The percentage of MS2 intensity of query scan matched\n\
+  \                        to target scan over the summation of total MS2\n      \
+  \                  intensity in the query scan. (default = 0.3)\n  --error-type\
+  \ {ppm,dalton}\n                        (default = ppm)\n  -O OUTPUT_DIRECTORY,\
+  \ --output-directory OUTPUT_DIRECTORY\n                        Full path to the\
+  \ directory where output is stored. If\n                        this directory does\
+  \ not exist it will be created.\n                        (default = output)\n  --no-filter\
+  \           Disable the filter and keep DB identified scans in the\n           \
+  \             target mgf file\n  --largest-gap-percent LARGEST_GAP_PERCENT\n   \
+  \                     The percentage of the largest consecutive b/y ion\n      \
+  \                  missing over the length of the peptide sequence.\n          \
+  \              (default = 0.4)\n  --matched-peptide-intensity MATCHED_PEPTIDE_INTENSITY\n\
+  \                        The percentage of MS2 intensity of target scan matched\n\
+  \                        to the theoretical fragments of peptide sequence over\n\
+  \                        the summation of total MS2 intensity in the target\n  \
+  \                      scan. (default = 0.5)\n  --min-diff-dalton-bin MIN_DIFF_DALTON_BIN\n\
+  \                        The absolute minimum dalton difference between the\n  \
+  \                      query scan and the target scan. (default = 10)\n  --xtandem-xml\
+  \ XTANDEM_XML\n                        The path to an X!tandem xml file which will\
+  \ be used to\n                        filter the results.\n  --write-intermediate\
+  \  Write files for each step of filtering.\n  -v, --version         show program's\
+  \ version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sampei:0.0.9--py_0

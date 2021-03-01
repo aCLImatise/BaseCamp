@@ -3,17 +3,17 @@ id: sixgill_merge_metapeptidedbfiles.cwl
 inputs:
 - id: in_debug
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_no_gzip_out
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nogzipout
 - id: in_out
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --out
 - id: in_six_gill_merge
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sixgill_merge

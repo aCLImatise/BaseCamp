@@ -38,6 +38,9 @@ task SeqkitSplit2 {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     by_length: "split sequences into chunks of N bases, supports K/M/G suffix"
     by_part: "split sequences into N parts"

@@ -16,6 +16,9 @@ task ProtectionScorepy {
       ~{genome_file} \
       ~{output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     footprint_file: ""
     m_pbs_file: ""

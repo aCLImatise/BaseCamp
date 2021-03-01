@@ -26,6 +26,9 @@ task Racon {
       ~{if defined(gap) then ("--gap " +  '"' + gap + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     include_unpolished: "output unpolished target sequences"
     fragment_correction: "perform fragment correction instead of contig polishing\\n(overlaps file should contain dual/self overlaps!)"

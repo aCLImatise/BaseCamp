@@ -12,6 +12,9 @@ task ChimerascanrelativebedpetoCG {
       ~{if defined(output_filename_stdout) then ("--output " +  '"' + output_filename_stdout + '"') else ""} \
       ~{if (v) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene_annotation: "gene_features.txt file used by chimersacan"
     output_filename_stdout: "output filename; '-' for stdout\\n"

@@ -8,6 +8,9 @@ task Printtimesh {
     printtime_sh \
       ~{filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: ""
   }

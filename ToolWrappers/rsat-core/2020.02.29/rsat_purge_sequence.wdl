@@ -38,6 +38,9 @@ task RsatPurgesequence {
       ~{if defined(skip_short) then ("-skip_short " +  '"' + skip_short + '"') else ""} \
       ~{if (no_die) then "-nodie" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "(must be first argument) display options"
     verbose: "verbose"

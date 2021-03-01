@@ -2,14 +2,14 @@ version 1.0
 
 task Daligner {
   input {
-    Boolean? kmer_size_must
-    Boolean? look_kmers_w
+    Boolean? kmer_size_be
+    Boolean? look_kmers_averlapping
     Boolean? ignore_kmers_occur
     Boolean? use_only_gb
-    Boolean? look_alignments_e
-    Boolean? look_alignments_l
+    Boolean? look_percent_similarity
+    Boolean? look_alignments_length
     Boolean? trace_point_spacing
-    Boolean? bridge_consecutive_aligned
+    Boolean? bridge_consecutive_segments
     Boolean? hgap_option_align
     Boolean? use_t_threads
     Boolean? block_level_sorts
@@ -24,14 +24,14 @@ task Daligner {
   command <<<
     daligner \
       ~{d_aligner_two_dot_zero} \
-      ~{if (kmer_size_must) then "-k" else ""} \
-      ~{if (look_kmers_w) then "-w" else ""} \
+      ~{if (kmer_size_be) then "-k" else ""} \
+      ~{if (look_kmers_averlapping) then "-w" else ""} \
       ~{if (ignore_kmers_occur) then "-t" else ""} \
       ~{if (use_only_gb) then "-M" else ""} \
-      ~{if (look_alignments_e) then "-e" else ""} \
-      ~{if (look_alignments_l) then "-l" else ""} \
+      ~{if (look_percent_similarity) then "-e" else ""} \
+      ~{if (look_alignments_length) then "-l" else ""} \
       ~{if (trace_point_spacing) then "-s" else ""} \
-      ~{if (bridge_consecutive_aligned) then "-B" else ""} \
+      ~{if (bridge_consecutive_segments) then "-B" else ""} \
       ~{if (hgap_option_align) then "-H" else ""} \
       ~{if (use_t_threads) then "-T" else ""} \
       ~{if (block_level_sorts) then "-P" else ""} \
@@ -42,15 +42,18 @@ task Daligner {
       ~{if (compare_reads_themselves) then "-I" else ""} \
       ~{if (va_abi) then "-vaABI" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    kmer_size_must: ": k-mer size (must be <= 32)."
-    look_kmers_w: ": Look for k-mers in averlapping bands of size 2^-w."
+    kmer_size_be: ": k-mer size (must be <= 32)."
+    look_kmers_averlapping: ": Look for k-mers in averlapping bands of size 2^-w."
     ignore_kmers_occur: ": Ignore k-mers that occur >= -t times in a block."
     use_only_gb: ": Use only -M GB of memory by ignoring most frequent k-mers."
-    look_alignments_e: ": Look for alignments with -e percent similarity."
-    look_alignments_l: ": Look for alignments of length >= -l."
+    look_percent_similarity: ": Look for alignments with -e percent similarity."
+    look_alignments_length: ": Look for alignments of length >= -l."
     trace_point_spacing: ": The trace point spacing for encoding alignments."
-    bridge_consecutive_aligned: ": Bridge consecutive aligned segments into one if possible"
+    bridge_consecutive_segments: ": Bridge consecutive aligned segments into one if possible"
     hgap_option_align: ": HGAP option: align only target reads of length >= -H."
     use_t_threads: ": Use -T threads."
     block_level_sorts: ": Do block level sorts and merges in directory -P."

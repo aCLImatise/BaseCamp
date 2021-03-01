@@ -24,6 +24,9 @@ task ConfigureESTmapperpl {
       ~{if (sge_name) then "-sgename" else ""} \
       ~{if (local) then "-local" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "the genome to map to"
     genome_dir: "the directory to save the configuration in"

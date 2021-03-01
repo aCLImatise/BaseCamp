@@ -24,6 +24,9 @@ task TbprofilerCollate {
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(external_db) then ("--external_db " +  '"' + external_db + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "Sample prefix (default: tbprofiler)"
     samples: "File with samples (one per line) (default: None)"

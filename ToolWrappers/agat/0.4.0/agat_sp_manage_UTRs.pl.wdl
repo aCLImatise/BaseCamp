@@ -22,6 +22,9 @@ task AgatSpManageUTRspl {
       ~{if defined(plot) then ("--plot " +  '"' + plot + '"') else ""} \
       ~{if defined(output_gff_file) then ("--output " +  '"' + output_gff_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_file: "Input GTF/GFF file."
     number: "Threshold of exon's number of the UTR. Over or equal to this\\nthreshold, the UTR will be discarded. Default value is 5."

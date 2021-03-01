@@ -3,57 +3,57 @@ id: esearch.cwl
 inputs:
 - id: in_db
   doc: Database name
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -db
 - id: in_query
   doc: Query string
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -query
 - id: in_sort
   doc: Result presentation order
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -sort
 - id: in_days
   doc: Number of days in the past
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -days
 - id: in_date_type
   doc: Date field abbreviation
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -datetype
 - id: in_min_date
   doc: Start of date range
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -mindate
 - id: in_maxdate
   doc: End of date range
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -maxdate
 - id: in_field
   doc: Query words individually in field
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -field
 - id: in_pairs
   doc: Query overlapping word pairs
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pairs
 - id: in_spell
   doc: Correct misspellings in query
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -spell
 - id: in_label
   doc: Alias for query step
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -label
 - id: in_gene
@@ -106,6 +106,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - esearch

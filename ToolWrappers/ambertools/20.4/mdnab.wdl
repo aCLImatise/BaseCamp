@@ -18,6 +18,9 @@ task Mdnab {
       ~{pico_secs} \
       ~{res_force}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pdb: "= PDB file name"
     prm: "= parameter-topology file name"

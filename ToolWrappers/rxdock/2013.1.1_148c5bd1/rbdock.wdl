@@ -36,6 +36,9 @@ task Rbdock {
       ~{if (t) then "-t" else ""} \
       ~{if (d) then "-D" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_ligand_sd: "input ligand SD file"
     output_file_names: "output file name(s) prefix"

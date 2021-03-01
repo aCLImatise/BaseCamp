@@ -10,6 +10,9 @@ task Dottup {
       ~{if (word_size) then "-wordsize" else ""} \
       ~{if (stretch) then "-stretch" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     word_size: "integer    [10] Word size (Integer 2 or more)"
     stretch: "toggle     [N] Use non-proportional axes"

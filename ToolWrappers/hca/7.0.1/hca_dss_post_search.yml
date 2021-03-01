@@ -6,69 +6,69 @@ command:
 positional: []
 named:
 - !Flag
-  description: Elasticsearch query
+  optional: true
   synonyms:
   - --es-query
+  description: Elasticsearch query
   args: !SimpleFlagArg
     name: ES_QUERY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --output-format
   description: Specifies the output format. The default format, `summary`, is a list
     of UUIDs for bundles that match the query. Set this parameter to `raw` to get
     the verbatim JSON metadata for bundles that match the query. When using `output_format
     raw` the `per_page` size is limit to no more than 10 to avoid excessively large
     response sizes.
-  synonyms:
-  - --output-format
   args: !ChoiceFlagArg
     choices: !!set
       summary:
       raw:
-  optional: true
 - !Flag
-  description: Replica to search.
+  optional: true
   synonyms:
   - --replica
+  description: Replica to search.
   args: !ChoiceFlagArg
     choices: !!set
       gcp:
       aws:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --per-page
   description: Max number of results to return per page. When using `output_format
     raw` the `per_page` size is limit to no more than 10 to avoid excessively large
     response sizes.
-  synonyms:
-  - --per-page
   args: !SimpleFlagArg
     name: PER_PAGE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --search-after
   description: '**Search-After-Context**. An internal state pointer parameter for
     use with pagination. This parameter is referenced by the `Link` header as described
     in the "Pagination" section. The API client should not need to set this parameter
     directly; it should instead directly fetch the URL given in the `Link` header.'
-  synonyms:
-  - --search-after
   args: !SimpleFlagArg
     name: SEARCH_AFTER
-  optional: true
 - !Flag
-  description: Do not automatically page the responses
+  optional: true
   synonyms:
   - --no-paginate
+  description: Do not automatically page the responses
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: hca dss post-search [-h] --es-query ES_QUERY\n                \
@@ -120,3 +120,4 @@ help_text: "usage: hca dss post-search [-h] --es-query ES_QUERY\n               
   \ page the responses\n\n"
 generated_using:
 - --help
+docker_image:

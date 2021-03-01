@@ -14,6 +14,9 @@ task BioformatsSnpeff2bed {
       ~{if (bed_three) then "--bed3" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_three: "convert to the BED3 format"
     v: ""

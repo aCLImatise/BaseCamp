@@ -34,6 +34,9 @@ task OpenPepXL {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                                       Input file containing the spectra. (valid formats: 'mzML')"
     consensus: "*                                Input file containing the linked mass peaks. (valid formats: 'consensusXML')"

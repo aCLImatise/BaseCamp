@@ -4,6 +4,9 @@ task Clstr2txtpl {
   command <<<
     clstr2txt_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

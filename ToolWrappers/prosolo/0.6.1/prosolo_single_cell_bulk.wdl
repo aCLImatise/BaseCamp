@@ -46,6 +46,9 @@ task ProsoloSinglecellbulk {
       ~{if defined(spurious_del_rate) then ("--spurious-del-rate " +  '"' + spurious_del_rate + '"') else ""} \
       ~{if defined(spurious_ins_rate) then ("--spurious-ins-rate " +  '"' + spurious_ins_rate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exclusive_end: "Assume that the END tag is exclusive (i.e. it points to the position after the\\nvariant). This is needed, e.g., for DELLY."
     omit_fragment_evidence: "Omit evidence consisting of read pairs with unexpected insert size (insert size\\nparameters will be ignored)."

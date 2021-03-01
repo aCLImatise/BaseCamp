@@ -4,6 +4,9 @@ task TgStoreFilter {
   command <<<
     tgStoreFilter
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

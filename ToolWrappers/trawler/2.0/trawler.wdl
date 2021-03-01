@@ -72,6 +72,9 @@ task Trawler {
       ~{if (clustering) then "-clustering" else ""} \
       ~{if (web) then "-web" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample: "(FASTA format) better to be repeat-masked."
     background: "(FASTA format)"

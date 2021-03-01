@@ -12,6 +12,9 @@ task FunannotateTest {
       ~{if (tests) then "--tests" else ""} \
       ~{if (cpus) then "--cpus" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tests: "Test sets to run. [all,clean,mask,predict,busco,rna-seq,annotate,compare]"
     cpus: "Number of cpus to use. Default: 2"

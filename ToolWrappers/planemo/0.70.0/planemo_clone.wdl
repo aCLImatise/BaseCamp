@@ -2,7 +2,7 @@ version 1.0
 
 task PlanemoClone {
   input {
-    String? branch
+    String? skip_fork
     String target
     String project
   }
@@ -10,10 +10,13 @@ task PlanemoClone {
     planemo clone \
       ~{target} \
       ~{project} \
-      ~{if defined(branch) then ("--branch " +  '"' + branch + '"') else ""}
+      ~{if defined(skip_fork) then ("--skip_fork " +  '"' + skip_fork + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    branch: "Create a named branch on result."
+    skip_fork: "Create a named branch on result."
     target: ""
     project: ""
   }

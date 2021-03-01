@@ -14,6 +14,9 @@ task TbprofilerOddsRatiospy {
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(variant_format) then ("--variant-format " +  '"' + variant_format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     samples: "NGS Platform (default: None)"
     dir: "NGS Platform (default: results/)"

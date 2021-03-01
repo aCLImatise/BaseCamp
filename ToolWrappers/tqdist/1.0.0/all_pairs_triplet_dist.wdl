@@ -12,6 +12,9 @@ task AllPairsTripletDist {
       ~{var_output} \
       ~{filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_filename: ""
     var_output: ""

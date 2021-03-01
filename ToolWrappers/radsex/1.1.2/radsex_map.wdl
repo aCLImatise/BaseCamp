@@ -26,6 +26,9 @@ task RadsexMap {
       ~{if (sign_if_threshold) then "--signif-threshold" else ""} \
       ~{if (disable_correction) then "--disable-correction" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     markers_file: "TEXT:FILE                 Path to a set of markers to align, either a depth table from \\\"process\\\", \\\"signif\\\", or \\\"subset\\\" or a fasta file from \\\"subset\\\" or \\\"signif\\\"    [REQUIRED]"
     output_file: "TEXT                      Path to the output file (mapping position, group bias, and probability of association with group for all aligned markers)                  [REQUIRED]"

@@ -20,7 +20,7 @@ task Mclblastline {
     Boolean? ass_no_map
     Boolean? ass
     Int? mcl_te
-    Float? inflation_value_main
+    Float? inflation_value_mcl
     Float? initial_inflation_value
     Int? mcl_l
     Float? mcl_pi
@@ -60,7 +60,7 @@ task Mclblastline {
       ~{if (ass_no_map) then "--ass-nomap" else ""} \
       ~{if (ass) then "--ass" else ""} \
       ~{if defined(mcl_te) then ("--mcl-te " +  '"' + mcl_te + '"') else ""} \
-      ~{if defined(inflation_value_main) then ("--mcl-I " +  '"' + inflation_value_main + '"') else ""} \
+      ~{if defined(inflation_value_mcl) then ("--mcl-I " +  '"' + inflation_value_mcl + '"') else ""} \
       ~{if defined(initial_inflation_value) then ("--mcl-i " +  '"' + initial_inflation_value + '"') else ""} \
       ~{if defined(mcl_l) then ("--mcl-l " +  '"' + mcl_l + '"') else ""} \
       ~{if defined(mcl_pi) then ("--mcl-pi " +  '"' + mcl_pi + '"') else ""} \
@@ -76,6 +76,9 @@ task Mclblastline {
       ~{if (fmt) then "--fmt" else ""} \
       ~{if defined(xi_dat) then ("--xi-dat " +  '"' + xi_dat + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     what_if: "shows only what would be done."
     start_assemble: "skip the parse step, assume needed files exist already."
@@ -95,7 +98,7 @@ task Mclblastline {
     ass_no_map: "map file does not exist or should be ignored."
     ass: "<-opt[=val]> add '-opt [val]' to mcxassemble command line."
     mcl_te: "number of expansion threads."
-    inflation_value_main: "inflation value, MAIN mcl handle."
+    inflation_value_mcl: "inflation value, MAIN mcl handle."
     initial_inflation_value: "initial inflation value."
     mcl_l: "initial loop length."
     mcl_pi: "pre-inflation value."

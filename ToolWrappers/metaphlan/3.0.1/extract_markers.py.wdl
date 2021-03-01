@@ -12,6 +12,9 @@ task ExtractMarkerspy {
       ~{if defined(clade) then ("--clade " +  '"' + clade + '"') else ""} \
       ~{if defined(output_dir) then ("--output_dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: "The input MetaPhlAn dtabase"
     clade: "The clades to investigate"

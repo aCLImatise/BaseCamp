@@ -3,12 +3,12 @@ id: medpy_set_pixel_spacing.py_spacing.cwl
 inputs:
 - id: in_d
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_me_dpy_set_pixel_spacing_do_tpy
@@ -23,13 +23,14 @@ inputs:
     position: 1
 - id: in_spacing
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - medpy_set_pixel_spacing.py

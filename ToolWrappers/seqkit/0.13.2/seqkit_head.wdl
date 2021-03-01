@@ -26,6 +26,9 @@ task SeqkitHead {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number: "print first N FASTA/Q records (default 10)"
     alphabet_guess_seq_length: "length of sequence prefix of the first FASTA record based on which seqkit guesses the sequence type (0 for whole seq) (default 10000)"

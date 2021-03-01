@@ -3,29 +3,30 @@ id: falconc_bam_tags_enrich.cwl
 inputs:
 - id: in_help_syntax
   doc: 'advanced: prepend,plurals,..'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --help-syntax
-- id: in__outputfn_string
+- id: in_outputfn_string_required
   doc: "=, --output-fn=  string  REQUIRED  Bam or Sam filename (based on its\nextension)"
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
-- id: in__inputfn_string
+- id: in_inputfn_string_required
   doc: "=, --input-fn=   string  REQUIRED  Bam or Sam filename (based on its\nextension),\
     \ or '-'\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out__outputfn_string
+- id: out_outputfn_string_required
   doc: "=, --output-fn=  string  REQUIRED  Bam or Sam filename (based on its\nextension)"
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in__outputfn_string)
+    glob: $(inputs.in_outputfn_string_required)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - falconc

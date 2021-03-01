@@ -14,6 +14,9 @@ task FixMapOrdering {
       ~{out_unmapped_bam} \
       ~{if defined(sam_header) then ("--sam-header " +  '"' + sam_header + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sam_header: ""
     in_sam_file: ""

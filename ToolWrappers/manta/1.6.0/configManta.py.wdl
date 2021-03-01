@@ -26,6 +26,9 @@ task ConfigMantapy {
       ~{if defined(run_dir) then ("--runDir " +  '"' + run_dir + '"') else ""} \
       ~{if defined(call_regions) then ("--callRegions " +  '"' + call_regions + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "provide a configuration file to override defaults in\\nglobal config file (/usr/local/share/manta-1.6.0-0/bin\\n/configManta.py.ini)"
     all_help: "show all extended/hidden options"

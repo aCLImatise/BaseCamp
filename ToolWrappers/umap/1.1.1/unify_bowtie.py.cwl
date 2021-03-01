@@ -4,12 +4,12 @@ inputs:
 - id: in_job_id
   doc: "If not using a cluster for submitting jobs, specify the\njob_id by integer\
     \ ranging from 1 to total number of\nchromosomes in chrsize_path"
-  type: long
+  type: long?
   inputBinding:
     prefix: -job_id
 - id: in_var_id
   doc: HPC variable name for job ID (1-based index)
-  type: long
+  type: long?
   inputBinding:
     prefix: -var_id
 - id: in_bowtie_outdir
@@ -27,6 +27,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - unify_bowtie.py

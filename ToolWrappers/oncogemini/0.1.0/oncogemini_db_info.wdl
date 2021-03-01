@@ -8,6 +8,9 @@ task OncogeminiDbInfo {
     oncogemini db_info \
       ~{db}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "The name of the database to be updated."
   }

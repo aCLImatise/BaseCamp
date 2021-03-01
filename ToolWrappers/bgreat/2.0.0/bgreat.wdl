@@ -48,6 +48,9 @@ task Bgreat {
       ~{if defined(put_in_mapping) then ("-e " +  '"' + put_in_mapping + '"') else ""} \
       ~{if defined(output_optimal_mapping) then ("-F " +  '"' + output_optimal_mapping + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_unpaired: "file (unpaired)"
     file_paired: "file (paired)"

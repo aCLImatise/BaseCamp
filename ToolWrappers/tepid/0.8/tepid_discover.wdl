@@ -30,6 +30,9 @@ task Tepiddiscover {
       ~{if defined(te) then ("--te " +  '"' + te + '"') else ""} \
       ~{if (se) then "--se" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep: "keep all intermediate files"
     deletions: "find deletions only"

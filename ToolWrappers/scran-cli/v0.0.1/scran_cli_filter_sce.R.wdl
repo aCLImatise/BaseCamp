@@ -22,6 +22,9 @@ task ScranclifiltersceR {
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if defined(output_sce_object) then ("--output-sce-object " +  '"' + output_sce_object + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sce_object: "Path to the input SCE object in rds format."
     exprs_values: "String indicating which assay contains the count data that should be used to compute log-transformed expression values."

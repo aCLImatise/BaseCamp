@@ -18,6 +18,9 @@ task MerBlast128mer {
       ~{output_file_prefix} \
       ~{num_threads}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contigs_file: ""
     contigs_hash_file: ""

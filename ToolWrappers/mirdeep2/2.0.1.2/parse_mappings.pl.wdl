@@ -3,8 +3,8 @@ version 1.0
 task ParseMappingspl {
   input {
     Int? discard_mappings_higher
-    Int? discard_mappings_shorter
     Int? discard_mappings_read
+    Int? discard_mappings_longer
     File? discard_read_queries_not_file
     File? discard_read_queries_in_file
     File? discard_reference_dbs_not_file
@@ -16,8 +16,8 @@ task ParseMappingspl {
   command <<<
     parse_mappings_pl \
       ~{if defined(discard_mappings_higher) then ("-a " +  '"' + discard_mappings_higher + '"') else ""} \
-      ~{if defined(discard_mappings_shorter) then ("-b " +  '"' + discard_mappings_shorter + '"') else ""} \
-      ~{if defined(discard_mappings_read) then ("-c " +  '"' + discard_mappings_read + '"') else ""} \
+      ~{if defined(discard_mappings_read) then ("-b " +  '"' + discard_mappings_read + '"') else ""} \
+      ~{if defined(discard_mappings_longer) then ("-c " +  '"' + discard_mappings_longer + '"') else ""} \
       ~{if defined(discard_read_queries_not_file) then ("-d " +  '"' + discard_read_queries_not_file + '"') else ""} \
       ~{if defined(discard_read_queries_in_file) then ("-e " +  '"' + discard_read_queries_in_file + '"') else ""} \
       ~{if defined(discard_reference_dbs_not_file) then ("-f " +  '"' + discard_reference_dbs_not_file + '"') else ""} \
@@ -26,10 +26,13 @@ task ParseMappingspl {
       ~{if (remove_unmatched_nts) then "-j" else ""} \
       ~{if (output_progress_standard) then "-k" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     discard_mappings_higher: "Discard mappings of edit distance higher than this"
-    discard_mappings_shorter: "Discard mappings of read queries shorter than this"
-    discard_mappings_read: "Discard mappings of read queries longer than this"
+    discard_mappings_read: "Discard mappings of read queries shorter than this"
+    discard_mappings_longer: "Discard mappings of read queries longer than this"
     discard_read_queries_not_file: "Discard read queries not in this file"
     discard_read_queries_in_file: "Discard read queries in this file"
     discard_reference_dbs_not_file: "Discard reference dbs not in this file"

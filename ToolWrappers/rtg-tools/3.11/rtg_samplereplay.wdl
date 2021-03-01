@@ -14,6 +14,9 @@ task RtgSamplereplay {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_vcf_containing: "input VCF containing the sample genotype"
     name_output_sdf: "name for output SDF"

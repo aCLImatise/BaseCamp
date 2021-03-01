@@ -3,22 +3,22 @@ id: thermo.cwl
 inputs:
 - id: in_output
   doc: 'output file name (default: stdout)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -output
 - id: in_chrom
   doc: directory with chrom files (FASTA format)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -chrom
 - id: in_verbose
   doc: print more run info
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -verbose
 - id: in_about
   doc: print about message
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -about
 - id: in_target_regions_slash_sequences
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: 'output file name (default: stdout)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - thermo

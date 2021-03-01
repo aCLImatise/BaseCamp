@@ -3,35 +3,38 @@ command:
 - makeTagDirectory
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: directory
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: alignment file 1
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 2
   name: file
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 3
   name: '2'
-  optional: true
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -fragLength
   description: "<# | given | pe> (Set estimated fragment length or use PE length -\
     \ given: use read lengths)\nBy default treats the sample as a single read ChIP-Seq\
     \ experiment"
-  synonyms:
-  - -fragLength
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -format
   description: "where X can be: (with column specifications underneath)\nbed - BED\
     \ format files:\n(1:chr,2:start,3:end,4:+/- or read name,5:# tags,6:+/-)\n-force5th\
     \ (5th column of BED file contains # of reads mapping to position)\nsam - SAM\
@@ -57,91 +60,187 @@ named:
     -minCounts <#> (minimum number of reads to report mC/C ratios, default: 10)\n\
     -mCcontext <CG|CHG|CHH|all> (only use C's in this context, default: CG)\nHiCsummary\
     \ - minimal paired-end read mapping information\n(1:readname,2:chr1,3:5'pos1,4:strand1,5:chr2,6:5'pos2,7:strand2)"
-  synonyms:
-  - -format
   args: !SimpleFlagArg
     name: X
-  optional: true
 - !Flag
-  description: (flip strand of each read, i.e. might want to use with some RNA-seq)
+  optional: true
   synonyms:
   - -flip
+  description: (flip strand of each read, i.e. might want to use with some RNA-seq)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <#|all|default> (set the effective total number of reads - all includes
-    multimappers)
+  optional: true
   synonyms:
   - -totalReads
+  description: <#|all|default> (set the effective total number of reads - all includes
+    multimappers)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '(5th column of BED file contains # of reads mapping to position)'
+  optional: true
   synonyms:
   - -force5th
+  description: '(5th column of BED file contains # of reads mapping to position)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[tag directory 2] ... (add Tag directory to new tag directory)'
+  optional: true
   synonyms:
   - -d
+  description: '[tag directory 2] ... (add Tag directory to new tag directory)'
   args: !SimpleFlagArg
     name: tag directory
-  optional: true
 - !Flag
-  description: '[tag file 2] ... (add tag file i.e. *.tags.tsv to new tag directory)'
+  optional: true
   synonyms:
   - -t
+  description: '[tag file 2] ... (add tag file i.e. *.tags.tsv to new tag directory)'
   args: !SimpleFlagArg
     name: tag file
-  optional: true
 - !Flag
-  description: (Create a single tags.tsv file for all "chromosomes" - i.e. if >100
-    chromosomes)
+  optional: true
   synonyms:
   - -single
+  description: (Create a single tags.tsv file for all "chromosomes" - i.e. if >100
+    chromosomes)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (Use current tag directory for QC/processing, do not parse new alignment
-    files)
+  optional: true
   synonyms:
   - -update
+  description: (Use current tag directory for QC/processing, do not parse new alignment
+    files)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Maximum tags per bp, default: no maximum)'
+  optional: true
   synonyms:
   - -tbp
+  description: '<#> (Maximum tags per bp, default: no maximum)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '(number of decimal places to use for tag totals, default: 1)'
+  optional: true
   synonyms:
   - -precision
+  description: '(number of decimal places to use for tag totals, default: 1)'
   args: !SimpleFlagArg
     name: 1|2|3
-  optional: true
 - !Flag
-  description: <#> and -maxlen <#> (Filter reads with lengths outside this range)
+  optional: true
   synonyms:
   - -minlen
+  description: <#> and -maxlen <#> (Filter reads with lengths outside this range)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (remove paired end tags within 1.5x fragment length on same chr)
+  optional: true
+  synonyms:
+  - -genome
+  description: (To see available genomes, use "-genome list")
+  args: !SimpleFlagArg
+    name: genome version
+- !Flag
+  optional: true
+  synonyms:
+  - -or-
+  description: '(for custom genomes):'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -genome
+  - -checkGC
+  description: (check Sequence bias, requires "-genome")
+  args: !SimpleFlagArg
+    name: path-to-FASTA file or directory of FASTA files
+- !Flag
+  optional: true
+  synonyms:
+  - -freqStart
+  description: '<#> (offset to start calculating frequency, default: -50)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -freqEnd
+  description: '<#> (distance past fragment length to calculate frequency, default:
+    +50)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -oligoStart
+  description: <#> (oligo bias start)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -oligoEnd
+  description: <#> (oligo bias end)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -normGC
+  description: "(i.e. tagGCcontent.txt file from control experiment)\nUse \"-normGC\
+    \ default\" to match the genomic GC distribution"
+  args: !SimpleFlagArg
+    name: target GC profile file
+- !Flag
+  optional: true
+  synonyms:
+  - -normFixedOligo
+  description: (normalize 5' end bias, "-normFixedOligo default" ok)
+  args: !SimpleFlagArg
+    name: oligoFreqFile
+- !Flag
+  optional: true
+  synonyms:
+  - -normLength
+  description: (i.e. tagLengthDistribution.txt file from control experiment)
+  args: !SimpleFlagArg
+    name: target Length profile file
+- !Flag
+  optional: true
+  synonyms:
+  - -minNormRatio
+  description: '<#> (Minimum deflation ratio of tag counts, default: 0.25)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -maxNormRatio
+  description: '<#> (Maximum inflation ratio of tag counts, default: 2.0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -iterNorm
+  description: "<#> (Sets -max/minNormRatio to 1 and 0, iteratively normalizes such\
+    \ that the\nresulting distrubtion is no more than #% different than target, i.e.\
+    \ 0.1,default: off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -filterReads
+  description: <offset> <keep|remove> (filter reads based on oligo sequence in the
+    genome)
+  args: !SimpleFlagArg
+    name: seq
+- !Flag
+  optional: true
   synonyms:
   - -removePEbg
+  description: (remove paired end tags within 1.5x fragment length on same chr)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (remove PE  reads facing on another within this distance, default:
-    1.5x fragLen)'
+  optional: true
   synonyms:
   - -PEbgLength
+  description: '<#> (remove PE  reads facing on another within this distance, default:
+    1.5x fragLen)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -restrictionSite
   description: "(i.e. AAGCTT for HindIII, assign data < 1.5x fragment length to sites)\n\
     Must specify genome sequence directory too. (-rsmis <#> to specify mismatches,\
     \ def: 0)\n-both, -one, -onlyOne, -none (Keeps reads near restriction sites, default:\
@@ -149,26 +248,23 @@ named:
     -removeRestrictionEnds (removes reads starting on a restriction fragment)\n-assignMidPoint\
     \ (will place reads in the middle of HindIII fragments)\n-restrictionSiteLength\
     \ <#> (maximum distance from restriction site, default: 1.5x fragLen)"
-  synonyms:
-  - -restrictionSite
   args: !SimpleFlagArg
     name: seq
-  optional: true
 - !Flag
-  description: "<#> (remove tags from regions with > than # times\nthe average tags\
-    \ per size bp, suggest \"-removeSpikes 10000 8\")"
+  optional: true
   synonyms:
   - -removeSpikes
+  description: "<#> (remove tags from regions with > than # times\nthe average tags\
+    \ per size bp, suggest \"-removeSpikes 10000 8\")"
   args: !SimpleFlagArg
     name: size bp
-  optional: true
 - !Flag
-  description: "(PE alignments in bowtie alignment, assumes last character of read\
-    \ name is 0 or 1)\n(don't need this for sam/bam files)\n"
+  optional: true
   synonyms:
   - -bowtiePE
+  description: "(PE alignments in bowtie alignment, assumes last character of read\
+    \ name is 0 or 1)\n(don't need this for sam/bam files)\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -257,3 +353,4 @@ help_text: "\n!!!!!!!!!!!!\n\tNEED to specify directory with first argument!!!\n
   \ of read name is 0 or 1)\n\t\t\t(don't need this for sam/bam files)\n\n"
 generated_using:
 - --help
+docker_image:

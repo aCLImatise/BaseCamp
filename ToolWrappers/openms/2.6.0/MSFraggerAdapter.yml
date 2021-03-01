@@ -1,0 +1,243 @@
+!Command
+command:
+- MSFraggerAdapter
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -java_executable
+  description: The Java executable. Usually Java is on the system PATH. If Java is
+    not found, use this parameter to specify the full path to Java
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -java_heapmemory
+  description: "Maximum Java heap size (in MB) (default: '3500')"
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -executable
+  description: Path to the MSFragger executable to use; may be empty if the executable
+    is globally available.
+  args: !SimpleFlagArg
+    name: path_to_executable
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: "*                                                              Input\
+    \ File with specta for MSFragger (valid formats: 'mzML', 'mzXML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: "*                                                             MSFragger\
+    \ output file (valid formats: 'idXML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -opt_out
+  description: "MSFragger optional output file (valid formats: 'pepXML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -database
+  description: "*                                               Protein FASTA database\
+    \ file path (valid formats: 'FASTA', 'fasta', 'fa', 'fas')"
+  args: !SimpleFlagArg
+    name: path_to_fasta
+- !Flag
+  optional: true
+  synonyms:
+  - -ini
+  description: Use the given TOPP INI file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -threads
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -write_ini
+  description: Writes the default configuration file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --helphelp
+  description: Shows all options (including advanced)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows options
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nMSFraggerAdapter\
+  \ -- Peptide Identification with MSFragger\nFull documentation: http://www.openms.de/documentation/UTILS_MSFraggerAdapter.html\n\
+  Version: 2.6.0-pre-exported-20201001 Oct  1 2020, 01:37:06\nTo cite OpenMS:\n  Rost\
+  \ HL, Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible open-source software\
+  \ platform for mass spectrometry data analysis. Nat Meth. 2016; 13, 9: 741-748.\
+  \ doi:10.1038/nmeth.3959.\nTo cite MSFraggerAdapter:\n  Kong AT, Leprevost FV, Avtonomov\
+  \ DM, Mellacheruvu D, Nesvizhskii AI. MSFragger: ultrafast and comprehensive peptide\
+  \ identification in mass spectrometry–based proteomics. Nature Methods volume 14,\
+  \ pages 513–520 (2017). doi:doi:10.1038/nmeth.4256.\n\nUsage:\n  MSFraggerAdapter\
+  \ <options>\n\nOptions (mandatory options marked with '*'):\n  -java_executable\
+  \ <file>                                                  The Java executable. Usually\
+  \ Java is on the system PATH. If Java is not found, use this parameter to specify\
+  \ the full path to Java\n  -java_heapmemory <num>                              \
+  \                     Maximum Java heap size (in MB) (default: '3500')\n  -executable\
+  \ <path_to_executable>                                         Path to the MSFragger\
+  \ executable to use; may be empty if the executable is globally available.\n  -in\
+  \ <file>*                                                              Input File\
+  \ with specta for MSFragger (valid formats: 'mzML', 'mzXML')\n  -out <file>*   \
+  \                                                          MSFragger output file\
+  \ (valid formats: 'idXML')\n  -opt_out <file>                                  \
+  \                        MSFragger optional output file (valid formats: 'pepXML')\n\
+  \  -database <path_to_fasta>*                                               Protein\
+  \ FASTA database file path (valid formats: 'FASTA', 'fasta', 'fa', 'fas')\n\nSearch\
+  \ Tolerances:\n  -tolerance:precursor_mass_tolerance <precursor_mass_tolerance>\
+  \           Precursor mass tolerance (window is +/- this value) (default: '20.0'\
+  \ min: '0.0')\n  -tolerance:precursor_mass_unit <precursor_mass_unit>          \
+  \           Unit of precursor mass tolerance (default: 'ppm' valid: 'Da', 'ppm')\n\
+  \  -tolerance:precursor_true_tolerance <precursor_true_tolerance>           True\
+  \ precursor mass tolerance (window is +/- this value). Used for tie breaker of results\
+  \ (in spectrally ambiguous cases) and zero bin boosting in open searches (0 disables\
+  \ these features). This option is STRONGLY recommended for open searches. (default:\
+  \ '0.0' min: '0.0')\n  -tolerance:precursor_true_unit <precursor_true_unit>    \
+  \                 Unit of precursor true tolerance (default: 'ppm' valid: 'Da',\
+  \ 'ppm')\n  -tolerance:fragment_mass_tolerance <fragment_mass_tolerance>       \
+  \      Fragment mass tolerance (window is +/- this value) (default: '20.0' min:\
+  \ '0.0')\n  -tolerance:fragment_mass_unit <fragment_mass_unit>                 \
+  \      Unit of fragment mass tolerance (default: 'ppm' valid: 'Da', 'ppm')\n  -tolerance:isotope_error\
+  \ <isotope_error>                                 Isotope correction for MS/MS events\
+  \ triggered on isotopic peaks. Should be set to 0 (disabled) for open search or\
+  \ 0/1/2 for correction of narrow window searches. Shifts the precursor mass window\
+  \ to multiples of this value multiplied by the mass of C13-C12. (default: '0' valid:\
+  \ '0', '1', '2')\n\nIn-Silico Digestion Parameters:\n  -digest:search_enzyme_name\
+  \ <search_enzyme_name>                          Name of the enzyme to be written\
+  \ to the pepXML file (default: 'Trypsin' valid: 'Trypsin', 'Formic_acid', 'Chymotrypsin',\
+  \ 'Chymotrypsin/P', 'CNBr', 'Asp-N/B', 'Asp-N_ambic', 'Lys-C/P', 'PepsinA', 'cyanogen-bromide',\
+  \ 'Clostripain/P', 'elastase-trypsin-chymotrypsin', 'no cleavage', 'TrypChymo',\
+  \ 'Trypsin/P', 'Arg-C/P', 'Asp-N', '2-iodobenzoate', 'iodosobenzoate', 'V8-DE',\
+  \ 'V8-E', 'leukocyte elastase', 'proline endopeptidase', 'glutamyl endopeptidase',\
+  \ 'Alpha-lytic protease', 'staphylococcal protease/D', 'proline-endopeptidase/HKR',\
+  \ 'Glu-C+P', 'PepsinA + P', 'unspecific cleavage', 'Arg-C', 'Lys-C', 'Lys-N')\n\
+  \  -digest:search_enzyme_cutafter <search_enzyme_cutafter>                  Residues\
+  \ after which the enzyme cuts (specified as a string of amino acids) (default: 'KR')\n\
+  \  -digest:search_enzyme_nocutbefore <search_enzyme_nocutbefore>            Residues\
+  \ that the enzyme will not cut before (default: 'P')\n  -digest:num_enzyme_termini\
+  \ <num_enzyme_termini>                          Number of enzyme termini (non-enzymatic\
+  \ (0), semi (1), fully (2) (default: 'fully' valid: 'non-enzymatic', 'semi', 'fully')\n\
+  \  -digest:allowed_missed_cleavage <allowed_missed_cleavage>                Allowed\
+  \ number of missed cleavages (default: '2' valid: '0', '1', '2', '3', '4', '5')\n\
+  \  -digest:min_length <digest_min_length>                                   Minimum\
+  \ length of peptides to be generated during in-silico digestion (default: '7' min:\
+  \ '0')\n  -digest:max_length <digest_max_length>                               \
+  \    Maximum length of peptides to be generated during in-silico digestion (default:\
+  \ '64' min: '0')\n  -digest:mass_range_min <digest_mass_range_min>             \
+  \              Min mass of peptides to be generated (Da) (default: '500.0' min:\
+  \ '0.0')\n  -digest:mass_range_max <digest_mass_range_max>                     \
+  \      Max mass of peptides to be generated (Da) (default: '5000.0' min: '0.0')\n\
+  \nVariable Modification Parameters:\n  -varmod:clip_nterm_m                    \
+  \                                 Specifies the trimming of a protein N-terminal\
+  \ methionine as a variable modification\n  -varmod:masses <varmod1_mass .. varmod7_mass>\
+  \                            Masses for variable modifications\n  -varmod:syntaxes\
+  \ <varmod1_syntax .. varmod7_syntax>                      Syntax Strings for variable\
+  \ modifications\n  -varmod:enable_common                                       \
+  \             Enable common variable modifications (15.9949 M and 42.0106 [^)\n\
+  \  -varmod:not_allow_multiple_variable_mods_on_residue                      Do not\
+  \ allow any one amino acid to be modified by multiple variable modifications\n \
+  \ -varmod:max_variable_mods_per_mod <max_variable_mods_per_mod>            Maximum\
+  \ number of residues that can be occupied by each variable modification (default:\
+  \ '2' valid: '0', '1', '2', '3', '4', '5')\n  -varmod:max_variable_mods_combinations\
+  \ <max_variable_mods_combinations>  Maximum allowed number of modified variably\
+  \ modified peptides from each peptide sequence, (maximum of 65534). If a greater\
+  \ number than the maximum is generated, only the unmodified peptide is considered\
+  \ (default: '5000' min: '0' max: '65534')\n\nSpectrum Processing Parameters:\n \
+  \ -spectrum:minimum_peaks <minimum_peaks>                                  Minimum\
+  \ number of peaks in experimental spectrum for matching (default: '10' min: '0')\n\
+  \  -spectrum:use_topn_peaks <use_topN_peaks>                                Pre-process\
+  \ experimental spectrum to only use top N peaks (default: '50' min: '0')\n  -spectrum:minimum_ratio\
+  \ <minimum_ratio>                                  Filters out all peaks in experimental\
+  \ spectrum less intense than this multiple of the base peak intensity (default:\
+  \ '0.0' min: '0.0' max: '1.0')\n  -spectrum:clear_mz_range_min <clear_mz_range_min>\
+  \                        Removes peaks in this m/z range prior to matching (minimum\
+  \ value). Useful for iTRAQ/TMT experiments (i.e. 0.0 150.0) (default: '0.0' min:\
+  \ '0.0')\n  -spectrum:clear_mz_range_max <clear_mz_range_max>                  \
+  \      Removes peaks in this m/z range prior to matching (maximum value). Useful\
+  \ for iTRAQ/TMT experiments (i.e. 0.0 150.0) (default: '0.0' min: '0.0')\n  -spectrum:max_fragment_charge\
+  \ <max_fragment_charge>                      Maximum charge state for theoretical\
+  \ fragments to match (default: '2' valid: '1', '2', '3', '4')\n  -spectrum:override_charge\
+  \                                                Ignores precursor charge and uses\
+  \ charge state specified in precursor_charge range (parameters: spectrum:precursor_charge_min\
+  \ and spectrum:precursor_charge_max)\n  -spectrum:precursor_charge_min <precursor_charge_min>\
+  \                    Min charge of precursor charge range to consider. If specified,\
+  \ also spectrum:override_charge must be set) (default: '1' min: '0')\n  -spectrum:precursor_charge_max\
+  \ <precursor_charge_max>                    Max charge of precursor charge range\
+  \ to consider. If specified, also spectrum:override_charge must be set) (default:\
+  \ '4' min: '0')\n\nOpen Search Features:\n  -search:track_zero_topn <track_zero_topn>\
+  \                                Track top N unmodified peptide results separately\
+  \ from main results internally for boosting features. Should be set to a number\
+  \ greater than search:output_report_topN if zero bin boosting is desired (default:\
+  \ '0' min: '0')\n  -search:zero_bin_accept_expect <zero_bin_accept_expect>     \
+  \             Ranks a zero-bin hit above all non-zero-bin hit if it has expectation\
+  \ less than this value (default: '0.0' min: '0.0')\n  -search:zero_bin_mult_expect\
+  \ <zero_bin_mult_expect>                      Multiplies expect value of PSMs in\
+  \ the zero-bin during results ordering (set to less than 1 for boosting) (default:\
+  \ '1.0' min: '0.0')\n  -search:add_topn_complementary <add_topn_complementary> \
+  \                 Inserts complementary ions corresponding to the top N most intense\
+  \ fragments in each experimental spectrum. Useful for recovery of modified peptides\
+  \ near C-terminus in open search. 0 disables this option (default: '0' min: '0')\n\
+  \  -search:min_fragments_modeling <min_fragments_modeling>                  Minimum\
+  \ number of matched peaks in PSM for inclusion in statistical modeling (default:\
+  \ '3' min: '0')\n  -search:min_matched_fragments <min_matched_fragments>       \
+  \             Minimum number of matched peaks for PSM to be reported. MSFragger\
+  \ recommends a minimum of 4 for narrow window searching and 6 for open searches\
+  \ (default: '4' min: '0')\n  -search:output_report_topn <output_report_topn>   \
+  \                       Reports top N PSMs per input spectrum (default: '1' min:\
+  \ '0')\n  -search:output_max_expect <output_max_expect>                        \
+  \    Suppresses reporting of PSM if top hit has expectation greater than this threshold\
+  \ (default: '50.0' min: '0.0')\n\nStatic Modification Parameters:\n  -statmod:add_cterm_peptide\
+  \ <add_cterm_peptide>                           Statically add mass in Da to C-terminal\
+  \ of peptide (default: '0.0' min: '0.0')\n  -statmod:add_nterm_peptide <add_nterm_peptide>\
+  \                           Statically add mass in Da to N-terminal of peptide (default:\
+  \ '0.0' min: '0.0')\n  -statmod:add_cterm_protein <add_cterm_protein>          \
+  \                 Statically add mass in Da to C-terminal of protein (default: '0.0'\
+  \ min: '0.0')\n  -statmod:add_nterm_protein <add_nterm_protein>                \
+  \           Statically add mass in Da to N-terminal of protein (default: '0.0' min:\
+  \ '0.0')\n\n                                                                   \
+  \        \nCommon UTIL options:\n  -ini <file>                                 \
+  \                             Use the given TOPP INI file\n  -threads <n>      \
+  \                                                       Sets the number of threads\
+  \ allowed to be used by the TOPP tool (default: '1')\n  -write_ini <file>      \
+  \                                                  Writes the default configuration\
+  \ file\n  --help                                                               \
+  \    Shows options\n  --helphelp                                               \
+  \                Shows all options (including advanced)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/openms:2.6.0--h4afb90d_0

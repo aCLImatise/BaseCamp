@@ -24,8 +24,11 @@ task HicQuickQC {
       ~{if defined(dangling_sequence) then ("--danglingSequence " +  '"' + dangling_sequence + '"') else ""} \
       ~{if defined(lines) then ("--lines " +  '"' + lines + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    restriction_cut_file: "file [BED file ...]\\n--restrictionSequence RESTRICTIONSEQUENCE\\n[RESTRICTIONSEQUENCE ...] --danglingSequence\\nDANGLINGSEQUENCE [DANGLINGSEQUENCE ...] [--lines LINES]\\n[--help] [--version]"
+    restriction_cut_file: "file [BED file ...]"
     sam_files: "sam files two sam files, -s two sam files two sam files\\nThe two PE alignment sam files to process. (default:\\nNone)"
     qc_folder: "Path of folder to save the quality control data of the\\nmatrix. The log files produced this way can be loaded\\ninto `hicQC` in order to compare the quality of\\nmultiple Hi-C libraries. (default: None)"
     restriction_sequence: "Sequence of the restriction site, if multiple are\\nused, please list them space seperated. If a dangling\\nsequence is listed at the same time, please preserve\\nthe same order. (default: None)"

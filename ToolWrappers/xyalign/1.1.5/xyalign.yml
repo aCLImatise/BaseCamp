@@ -3,104 +3,107 @@ command:
 - xyalign
 positional:
 - !Positional
-  description: --version, -V         Print version and exit.
+  optional: false
   position: 0
   name: end.
-  optional: false
+  description: --version, -V         Print version and exit.
 - !Positional
-  description: --reporting_level {DEBUG,INFO,ERROR,CRITICAL}
+  optional: false
   position: 1
   name: sample_xyalign.log
-  optional: false
+  description: --reporting_level {DEBUG,INFO,ERROR,CRITICAL}
 - !Positional
-  description: --no_bam_analysis     Include flag to prevent depth/mapq analysis of
-    bam
+  optional: false
   position: 0
   name: files.
-  optional: false
+  description: --no_bam_analysis     Include flag to prevent depth/mapq analysis of
+    bam
 named:
 - !Flag
-  description: "[BAM [BAM ...]]\nFull path to input bam files. If more than one\n\
-    provided, only the first will be used for modules\nother than --CHROM_STATS"
+  optional: true
   synonyms:
   - --bam
+  description: "[BAM [BAM ...]]\nFull path to input bam files. If more than one\n\
+    provided, only the first will be used for modules\nother than --CHROM_STATS"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cram
   description: "[CRAM [CRAM ...]]\nFull path to input cram files. If more than one\n\
     provided, only the first will be used for modules\nother than --CHROM_STATS. Not\
     \ currently supported."
-  synonyms:
-  - --cram
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sam
   description: "[SAM [SAM ...]]\nFull path to input sam files. If more than one\n\
     provided, only the first will be used for modules\nother than --CHROM_STATS. Not\
     \ currently supported."
-  synonyms:
-  - --sam
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "REQUIRED. Path to reference sequence (including file\nname)."
+  optional: true
   synonyms:
   - --ref
+  description: "REQUIRED. Path to reference sequence (including file\nname)."
   args: !SimpleFlagArg
     name: REF
-  optional: true
 - !Flag
-  description: "REQUIRED. Output directory. XYalign will create a\ndirectory structure\
-    \ within this directory"
+  optional: true
   synonyms:
   - --output_dir
   - -o
+  description: "REQUIRED. Output directory. XYalign will create a\ndirectory structure\
+    \ within this directory"
   args: !SimpleFlagArg
     name: OUTPUT_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --chromosomes
   description: "[CHROMOSOMES [CHROMOSOMES ...]], -c [CHROMOSOMES [CHROMOSOMES ...]]\n\
     Chromosomes to analyze (names must match reference\nexactly). For humans, we recommend\
     \ at least chr19,\nchrX, chrY. Generally, we suggest including the sex\nchromosomes\
     \ and at least one autosome. To analyze all\nchromosomes use '--chromosomes ALL'\
     \ or '--chromosomes\nall'."
-  synonyms:
-  - --chromosomes
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --x_chromosome
   description: "[X_CHROMOSOME [X_CHROMOSOME ...]], -x [X_CHROMOSOME [X_CHROMOSOME\
     \ ...]]\nNames of x-linked scaffolds in reference fasta (must\nmatch reference\
     \ exactly)."
-  synonyms:
-  - --x_chromosome
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --y_chromosome
   description: "[Y_CHROMOSOME [Y_CHROMOSOME ...]], -y [Y_CHROMOSOME [Y_CHROMOSOME\
     \ ...]]\nNames of y-linked scaffolds in reference fasta (must\nmatch reference\
     \ exactly). Defaults to chrY. Give None\nif using an assembly without a Y chromosome"
-  synonyms:
-  - --y_chromosome
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Name/ID of sample - for use in plot titles and file\nnaming. Default\
-    \ is sample"
+  optional: true
   synonyms:
   - --sample_id
   - -id
+  description: "Name/ID of sample - for use in plot titles and file\nnaming. Default\
+    \ is sample"
   args: !SimpleFlagArg
     name: SAMPLE_ID
-  optional: true
 - !Flag
-  description: Number of cores/threads to use. Default is 1
+  optional: true
   synonyms:
   - --cpus
+  description: Number of cores/threads to use. Default is 1
   args: !SimpleFlagArg
     name: CPUS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --xmx
   description: "Memory to be provided to java programs via -Xmx. E.g.,\nuse the flag\
     \ '--xmx 4g' to pass '-Xmx4g' as a flag\nwhen running java programs (currently\
     \ just repair.sh).\nDefault is 'None' (i.e., nothing provided on the\ncommand\
@@ -108,348 +111,348 @@ named:
     \ if you're\nusing --STRIP_READS on deep coverage whole genome\ndata, you might\
     \ need quite a bit of memory, e.g. '--\nxmx 16g', '--xmx 32g', or more depending\
     \ on how many\nreads are present per read group."
-  synonyms:
-  - --xmx
   args: !SimpleFlagArg
     name: XMX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fastq_compression
   description: "Compression level for fastqs output from repair.sh.\nBetween (inclusive)\
     \ 0 and 9. Default is 3. 1 through 9\nindicate compression levels. If 0, fastqs\
     \ will be\nuncompressed."
-  synonyms:
-  - --fastq_compression
   args: !ChoiceFlagArg
     choices: !!set
-      '6':
-      '2':
       '9':
       '0':
-      '7':
-      '1':
-      '8':
-      '4':
-      '3':
+      '2':
       '5':
-  optional: true
+      '7':
+      '8':
+      '3':
+      '1':
+      '4':
+      '6':
 - !Flag
-  description: Include flag if reads are single-end and NOT paired-
+  optional: true
   synonyms:
   - --single_end
+  description: Include flag if reads are single-end and NOT paired-
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Include flag to preserve temporary files.
+  optional: true
   synonyms:
   - --no_cleanup
+  description: Include flag to preserve temporary files.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --PREPARE_REFERENCE
   description: "This flag will limit XYalign to only preparing\nreference fastas for\
     \ individuals with and without Y\nchromosomes. These fastas can then be passed\
     \ with each\nsample to save subsequent processing time."
-  synonyms:
-  - --PREPARE_REFERENCE
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "This flag will limit XYalign to only analyzing\nprovided bam files\
-    \ for depth and mapq across entire\nchromosomes."
+  optional: true
   synonyms:
   - --CHROM_STATS
+  description: "This flag will limit XYalign to only analyzing\nprovided bam files\
+    \ for depth and mapq across entire\nchromosomes."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "This flag will limit XYalign to only analyzing the bam\nfile for depth,\
-    \ mapq, and (optionally) read balance\nand outputting plots."
+  optional: true
   synonyms:
   - --ANALYZE_BAM
+  description: "This flag will limit XYalign to only analyzing the bam\nfile for depth,\
+    \ mapq, and (optionally) read balance\nand outputting plots."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --CHARACTERIZE_SEX_CHROMS
   description: "This flag will limit XYalign to the steps required to\ncharacterize\
     \ sex chromosome content (i.e., analyzing\nthe bam for depth, mapq, and read balance\
     \ and running\nstatistical tests to help infer ploidy)"
-  synonyms:
-  - --CHARACTERIZE_SEX_CHROMS
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --REMAPPING
   description: "This flag will limit XYalign to only the steps\nrequired to strip\
     \ reads and remap to masked\nreferences. If masked references are not provided,\n\
     they will be created."
-  synonyms:
-  - --REMAPPING
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "This flag will limit XYalign to only the steps\nrequired to strip\
-    \ reads from a provided bam file."
+  optional: true
   synonyms:
   - --STRIP_READS
+  description: "This flag will limit XYalign to only the steps\nrequired to strip\
+    \ reads from a provided bam file."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Name of logfile. Will overwrite if exists. Default is
+  optional: true
   synonyms:
   - --logfile
+  description: Name of logfile. Will overwrite if exists. Default is
   args: !SimpleFlagArg
     name: LOGFILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --platypus_path
   description: "Path to platypus. Default is 'platypus'. If platypus\nis not directly\
     \ callable (e.g., '/path/to/platypus' or\n'/path/to/Playpus.py'), then provide\
     \ path to python as\nwell (e.g., '/path/to/python /path/to/platypus'). In\naddition,\
     \ be sure provided python is version 2. See\nthe documentation for more information\
     \ about setting\nup an anaconda environment."
-  synonyms:
-  - --platypus_path
   args: !SimpleFlagArg
     name: PLATYPUS_PATH
-  optional: true
 - !Flag
-  description: Path to bwa. Default is 'bwa'
+  optional: true
   synonyms:
   - --bwa_path
+  description: Path to bwa. Default is 'bwa'
   args: !SimpleFlagArg
     name: BWA_PATH
-  optional: true
 - !Flag
-  description: Path to samtools. Default is 'samtools'
+  optional: true
   synonyms:
   - --samtools_path
+  description: Path to samtools. Default is 'samtools'
   args: !SimpleFlagArg
     name: SAMTOOLS_PATH
-  optional: true
 - !Flag
-  description: "Path to bbmap's repair.sh script. Default is\n'repair.sh'"
+  optional: true
   synonyms:
   - --repairsh_path
+  description: "Path to bbmap's repair.sh script. Default is\n'repair.sh'"
   args: !SimpleFlagArg
     name: REPAIRSH_PATH
-  optional: true
 - !Flag
-  description: "Path to bbmap's shuffle.sh script. Default is\n'shuffle.sh'"
+  optional: true
   synonyms:
   - --shufflesh_path
+  description: "Path to bbmap's shuffle.sh script. Default is\n'shuffle.sh'"
   args: !SimpleFlagArg
     name: SHUFFLESH_PATH
-  optional: true
 - !Flag
-  description: Path to sambamba. Default is 'sambamba'
+  optional: true
   synonyms:
   - --sambamba_path
+  description: Path to sambamba. Default is 'sambamba'
   args: !SimpleFlagArg
     name: SAMBAMBA_PATH
-  optional: true
 - !Flag
-  description: Path to bedtools. Default is 'bedtools'
+  optional: true
   synonyms:
   - --bedtools_path
+  description: Path to bedtools. Default is 'bedtools'
   args: !SimpleFlagArg
     name: BEDTOOLS_PATH
-  optional: true
 - !Flag
-  description: "Platypus calling withing the pipeline (before\nprocessing, after processing,\
-    \ both, or neither).\nOptions: both, none, before, after."
+  optional: true
   synonyms:
   - --platypus_calling
+  description: "Platypus calling withing the pipeline (before\nprocessing, after processing,\
+    \ both, or neither).\nOptions: both, none, before, after."
   args: !ChoiceFlagArg
     choices: !!set
-      none:
-      both:
       after:
+      both:
       before:
-  optional: true
+      none:
 - !Flag
-  description: Include flag to prevent plotting read balance from VCF
+  optional: true
   synonyms:
   - --no_variant_plots
+  description: Include flag to prevent plotting read balance from VCF
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Include flag to prevent check of compatibility between\ninput bam\
-    \ and reference fasta"
+  optional: true
   synonyms:
   - --skip_compatibility_check
+  description: "Include flag to prevent check of compatibility between\ninput bam\
+    \ and reference fasta"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Include flag to turn off permutation tests.
+  optional: true
   synonyms:
   - --no_perm_test
+  description: Include flag to turn off permutation tests.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Include flag to turn off KS Two Sample tests.
+  optional: true
   synonyms:
   - --no_ks_test
+  description: Include flag to turn off KS Two Sample tests.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Include flag to turn off bootstrap analyses. Requires\neither --y_present,\
-    \ --y_absent, or\n--sex_chrom_calling_threshold if running full\npipeline."
+  optional: true
   synonyms:
   - --no_bootstrap
+  description: "Include flag to turn off bootstrap analyses. Requires\neither --y_present,\
+    \ --y_absent, or\n--sex_chrom_calling_threshold if running full\npipeline."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Consider all SNPs with a site quality (QUAL) greater\nthan or equal\
-    \ to this value. Default is 30."
+  optional: true
   synonyms:
   - --variant_site_quality
   - -vsq
+  description: "Consider all SNPs with a site quality (QUAL) greater\nthan or equal\
+    \ to this value. Default is 30."
   args: !SimpleFlagArg
     name: VARIANT_SITE_QUALITY
-  optional: true
 - !Flag
-  description: "Consider all SNPs with a sample genotype quality\ngreater than or\
-    \ equal to this value. Default is 30."
+  optional: true
   synonyms:
   - --variant_genotype_quality
   - -vgq
+  description: "Consider all SNPs with a sample genotype quality\ngreater than or\
+    \ equal to this value. Default is 30."
   args: !SimpleFlagArg
     name: VARIANT_GENOTYPE_QUALITY
-  optional: true
 - !Flag
-  description: "Consider all SNPs with a sample depth greater than or\nequal to this\
-    \ value. Default is 4."
+  optional: true
   synonyms:
   - --variant_depth
   - -vd
+  description: "Consider all SNPs with a sample depth greater than or\nequal to this\
+    \ value. Default is 4."
   args: !SimpleFlagArg
     name: VARIANT_DEPTH
-  optional: true
 - !Flag
-  description: "Prefix to use for Platypus log files. Will default to\nthe sample_id\
-    \ argument provided"
+  optional: true
   synonyms:
   - --platypus_logfile
+  description: "Prefix to use for Platypus log files. Will default to\nthe sample_id\
+    \ argument provided"
   args: !SimpleFlagArg
     name: PLATYPUS_LOGFILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --homogenize_read_balance
   description: "If True, read balance values will be transformed by\nsubtracting each\
     \ value from 1. For example, 0.25 and\n0.75 would be treated equivalently. Default\
     \ is False."
-  synonyms:
-  - --homogenize_read_balance
   args: !SimpleFlagArg
     name: HOMOGENIZE_READ_BALANCE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min_variant_count
   description: "Minimum number of variants in a window for the read\nbalance of that\
     \ window to be plotted. Note that this\ndoes not affect plotting of variant counts.\
     \ Default is\n1, though we note that many window averages will be\nmeaningless\
     \ at this setting."
-  synonyms:
-  - --min_variant_count
   args: !SimpleFlagArg
     name: MIN_VARIANT_COUNT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --reference_mask
   description: "[REFERENCE_MASK [REFERENCE_MASK ...]]\nBed file containing regions\
     \ to replace with Ns in the\nsex chromosome reference. Examples might include\
     \ the\npseudoautosomal regions on the Y to force all\nmapping/calling on those\
     \ regions of the X chromosome.\nDefault is None."
-  synonyms:
-  - --reference_mask
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --xx_ref_out_name
   description: "Desired name for masked output fasta for samples\nWITHOUT a Y chromosome\
     \ (e.g., XX, XXX, XO, etc.).\nDefaults to 'xyalign_noY.masked.fa'. Will be output\
     \ in\nthe XYalign reference directory."
-  synonyms:
-  - --xx_ref_out_name
   args: !SimpleFlagArg
     name: XX_REF_OUT_NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --xy_ref_out_name
   description: "Desired name for masked output fasta for samples WITH\na Y chromosome\
     \ (e.g., XY, XXY, etc.). Defaults to\n'xyalign_withY.masked.fa'. Will be output\
     \ in the\nXYalign reference directory."
-  synonyms:
-  - --xy_ref_out_name
   args: !SimpleFlagArg
     name: XY_REF_OUT_NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --xx_ref_out
   description: "Desired path to and name of masked output fasta for\nsamples WITHOUT\
     \ a Y chromosome (e.g., XX, XXX, XO,\netc.). Overwrites if exists. Use if you\
     \ would like\noutput somewhere other than XYalign reference\ndirectory. Otherwise,\
     \ use --xx_ref_name."
-  synonyms:
-  - --xx_ref_out
   args: !SimpleFlagArg
     name: XX_REF_OUT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --xy_ref_out
   description: "Desired path to and name of masked output fasta for\nsamples WITH\
     \ a Y chromosome (e.g., XY, XXY, etc.).\nOverwrites if exists. Use if you would\
     \ like output\nsomewhere other than XYalign reference directory.\nOtherwise, use\
     \ --xy_ref_name."
-  synonyms:
-  - --xy_ref_out
   args: !SimpleFlagArg
     name: XY_REF_OUT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --xx_ref_in
   description: "Path to preprocessed reference fasta to be used for\nremapping in\
     \ X0 or XX samples. Default is None. If\nnone, will produce a sample-specific\
     \ reference for\nremapping."
-  synonyms:
-  - --xx_ref_in
   args: !SimpleFlagArg
     name: XX_REF_IN
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --xy_ref_in
   description: "Path to preprocessed reference fasta to be used for\nremapping in\
     \ samples containing Y chromosome. Default\nis None. If none, will produce a sample-specific\n\
     reference for remapping."
-  synonyms:
-  - --xy_ref_in
   args: !SimpleFlagArg
     name: XY_REF_IN
-  optional: true
 - !Flag
-  description: "If True, index with BWA during PREPARE_REFERENCE. Only\nrelevantwhen\
-    \ running the PREPARE_REFERENCE module by\nitself. Default is False."
+  optional: true
   synonyms:
   - --bwa_index
+  description: "If True, index with BWA during PREPARE_REFERENCE. Only\nrelevantwhen\
+    \ running the PREPARE_REFERENCE module by\nitself. Default is False."
   args: !SimpleFlagArg
     name: BWA_INDEX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --read_group_id
   description: "If read groups are present in a bam file, they are\nused by default\
     \ in remapping steps. However, if read\ngroups are not present in a file, there\
     \ are two\noptions for proceeding. If '--read_group_id None' is\nprovided (case\
     \ sensitive), then no read groups will be\nused in subsequent mapping steps. Otherwise,\
     \ any other\nstring provided to this flag will be used as a read\ngroup ID. Default\
     \ is '--read_group_id xyalign'"
-  synonyms:
-  - --read_group_id
   args: !SimpleFlagArg
     name: READ_GROUP_ID
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bwa_flags
   description: "Provide a string (in quotes, with spaces between\narguments) for additional\
     \ flags desired for BWA\nmapping (other than -R and -t). Example: '-M -T 20 -v\n\
     4'. Note that those are spaces between arguments."
-  synonyms:
-  - --bwa_flags
   args: !SimpleFlagArg
     name: BWA_FLAGS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sex_chrom_bam_only
   description: "This flag skips merging the new sex chromosome bam\nfile back into\
     \ the original bam file (i.e., sex chrom\nswapping). This will output a bam file\
     \ containing only\nthe newly remapped sex chromosomes."
-  synonyms:
-  - --sex_chrom_bam_only
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sex_chrom_calling_threshold
   description: "This is the *maximum* filtered X/Y depth ratio for an\nindividual\
     \ to be considered as having heterogametic\nsex chromsomes (e.g., XY) for the\
     \ REMAPPING module of\nXYalign. Note here that X and Y chromosomes are simply\n\
@@ -459,161 +462,158 @@ named:
     \ sequencing methods,\netc. See documentation for more detail. Default is\n2.0,\
     \ which we found to be reasonable for exome, low-\ncoverage whole-genome, and\
     \ high-coverage whole-genome\nhuman data."
-  synonyms:
-  - --sex_chrom_calling_threshold
   args: !SimpleFlagArg
     name: SEX_CHROM_CALLING_THRESHOLD
-  optional: true
 - !Flag
-  description: "Overrides sex chr estimation by XYalign and remaps\nwith Y present."
+  optional: true
   synonyms:
   - --y_present
+  description: "Overrides sex chr estimation by XYalign and remaps\nwith Y present."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Overrides sex chr estimation by XY align and remaps\nwith Y absent."
+  optional: true
   synonyms:
   - --y_absent
+  description: "Overrides sex chr estimation by XY align and remaps\nwith Y absent."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Window size (integer) for sliding window calculations.\nDefault is\
-    \ 50000. Default is None. If set to None,\nwill use targets provided using --target_bed."
+  optional: true
   synonyms:
   - --window_size
   - -w
+  description: "Window size (integer) for sliding window calculations.\nDefault is\
+    \ 50000. Default is None. If set to None,\nwill use targets provided using --target_bed."
   args: !SimpleFlagArg
     name: WINDOW_SIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --target_bed
   description: "Bed file containing targets to use in sliding window\nanalyses instead\
     \ of a fixed window width. Either this\nor --window_size needs to be set. Default\
     \ is None,\nwhich will use window size provided with\n--window_size. If not None,\
     \ and --window_size is None,\nanalyses will use targets in provided file. Must\
     \ be\ntypical bed format, 0-based indexing, with the first\nthree columns containing\
     \ the chromosome name, start\ncoordinate, stop coordinate."
-  synonyms:
-  - --target_bed
   args: !SimpleFlagArg
     name: TARGET_BED
-  optional: true
 - !Flag
-  description: "Calculate exact depth within windows, else use much\nfaster approximation.\
-    \ *Currently exact is not\nimplemented*. Default is False."
+  optional: true
   synonyms:
   - --exact_depth
+  description: "Calculate exact depth within windows, else use much\nfaster approximation.\
+    \ *Currently exact is not\nimplemented*. Default is False."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "This flag will calculate the depth filter threshold\nbased on all\
-    \ values from across the genome. By\ndefault, thresholds are calculated per chromosome."
+  optional: true
   synonyms:
   - --whole_genome_threshold
+  description: "This flag will calculate the depth filter threshold\nbased on all\
+    \ values from across the genome. By\ndefault, thresholds are calculated per chromosome."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum mean mapq threshold for a window to be\nconsidered high quality.\
-    \ Default is 20."
+  optional: true
   synonyms:
   - --mapq_cutoff
   - -mq
+  description: "Minimum mean mapq threshold for a window to be\nconsidered high quality.\
+    \ Default is 20."
   args: !SimpleFlagArg
     name: MAPQ_CUTOFF
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min_depth_filter
   description: "Minimum depth threshold for a window to be considered\nhigh quality.\
     \ Calculated as mean depth *\nmin_depth_filter. So, a min_depth_filter of 0.2\
     \ would\nrequire at least a minimum depth of 2 if the mean\ndepth was 10. Default\
     \ is 0.0 to consider all windows."
-  synonyms:
-  - --min_depth_filter
   args: !SimpleFlagArg
     name: MIN_DEPTH_FILTER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max_depth_filter
   description: "Maximum depth threshold for a window to be considered\nhigh quality.\
     \ Calculated as mean depth *\nmax_depth_filter. So, a max_depth_filter of 4 would\n\
     require depths to be less than or equal to 40 if the\nmean depth was 10. Default\
     \ is 10000.0 to consider all\nwindows."
-  synonyms:
-  - --max_depth_filter
   args: !SimpleFlagArg
     name: MAX_DEPTH_FILTER
-  optional: true
 - !Flag
-  description: "Number of permutations to use for permutation\nanalyses. Default is\
-    \ 10000"
+  optional: true
   synonyms:
   - --num_permutations
+  description: "Number of permutations to use for permutation\nanalyses. Default is\
+    \ 10000"
   args: !SimpleFlagArg
     name: NUM_PERMUTATIONS
-  optional: true
 - !Flag
-  description: "Number of bootstrap replicates to use when\nbootstrapping mean depth\
-    \ ratios among chromosomes.\nDefault is 10000"
+  optional: true
   synonyms:
   - --num_bootstraps
+  description: "Number of bootstrap replicates to use when\nbootstrapping mean depth\
+    \ ratios among chromosomes.\nDefault is 10000"
   args: !SimpleFlagArg
     name: NUM_BOOTSTRAPS
-  optional: true
 - !Flag
-  description: "Ignore duplicate reads in bam analyses. Default is to\ninclude duplicates."
+  optional: true
   synonyms:
   - --ignore_duplicates
+  description: "Ignore duplicate reads in bam analyses. Default is to\ninclude duplicates."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Marker size for genome-wide plots in matplotlib.\nDefault is 10."
+  optional: true
   synonyms:
   - --marker_size
+  description: "Marker size for genome-wide plots in matplotlib.\nDefault is 10."
   args: !SimpleFlagArg
     name: MARKER_SIZE
-  optional: true
 - !Flag
-  description: "Transparency of markers in genome-wide plots. Alpha in\nmatplotlib.\
-    \ Default is 0.5"
+  optional: true
   synonyms:
   - --marker_transparency
   - -mt
+  description: "Transparency of markers in genome-wide plots. Alpha in\nmatplotlib.\
+    \ Default is 0.5"
   args: !SimpleFlagArg
     name: MARKER_TRANSPARENCY
-  optional: true
 - !Flag
-  description: "For genome-wide scatter plots, divide all coordinates\nby this value.Default\
-    \ is 1000000, which will plot\neverything in megabases."
+  optional: true
   synonyms:
   - --coordinate_scale
+  description: "For genome-wide scatter plots, divide all coordinates\nby this value.Default\
+    \ is 1000000, which will plot\neverything in megabases."
   args: !SimpleFlagArg
     name: COORDINATE_SCALE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --include_fixed
   description: "Default is False, which removes read balances less\nthan or equal\
     \ to 0.05 and equal to 1.0 for histogram\nplotting. True will include all values.\
     \ Extreme values\nremoved by default because they often swamp out the\nsignal\
     \ of the rest of the distribution."
-  synonyms:
-  - --include_fixed
   args: !SimpleFlagArg
     name: INCLUDE_FIXED
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --use_counts
   description: "If True, get counts of reads per chromosome for\nCHROM_STATS, rather\
     \ than calculating mean depth and\nmapq. Much faster, but provides less information.\n\
     Default is False\n"
-  synonyms:
-  - --use_counts
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: xyalign [-h] [--bam [BAM [BAM ...]]] [--cram [CRAM [CRAM ...]]]\n\
@@ -883,3 +883,4 @@ help_text: "usage: xyalign [-h] [--bam [BAM [BAM ...]]] [--cram [CRAM [CRAM ...]
   \ Default is False\n"
 generated_using:
 - --help
+docker_image:

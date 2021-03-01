@@ -8,6 +8,9 @@ task Alnselpl {
     alnsel_pl \
       ~{input_dot_aln}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dot_aln: ""
   }

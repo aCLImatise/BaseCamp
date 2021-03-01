@@ -62,6 +62,9 @@ task RILseqSignificantRegionspy {
       ~{if defined(min_odds_ratio) then ("--min_odds_ratio " +  '"' + min_odds_ratio + '"') else ""} \
       ~{if defined(linear_chromosome_list) then ("--linear_chromosome_list " +  '"' + linear_chromosome_list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "genome fasta file (default: None)"
     total_rna: "Normalize in total RNA from these bam files. Enter a\\ncomma separated list of bam files. (default: None)"

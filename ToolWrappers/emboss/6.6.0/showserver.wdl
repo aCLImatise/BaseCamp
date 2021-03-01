@@ -42,6 +42,9 @@ task Showserver {
       ~{if (all) then "-all" else ""} \
       ~{if (comment) then "-comment" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     servername: "string     Name of a single server to give information\\non (Any string)"
     show_types: "menu       [*] Show type(s) (Values: Protein (Protein\\nsequences); Nucleic (Nucleotide sequences);\\nSequence (Any sequence data); Protfeatures\\n(Protein features); Nucfeatures (Nucleotide\\nfeatures); Features (Any feature table\\ndata); Obo (OBO ontology data); Resource\\n(Data resource); Taxonomy (Taxonomy data);\\nAssembly (Assembled short read data); Text\\n(text data); Html (HTML text data); Xml (XML\\ntext data); Unknown (Unspecified datatype\\nto be defined for each database))"

@@ -4,6 +4,9 @@ task Gslp {
   command <<<
     gslp
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

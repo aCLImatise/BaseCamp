@@ -22,6 +22,9 @@ task Taeper {
       ~{if defined(log_level) then ("--log_level " +  '"' + log_level + '"') else ""} \
       ~{if (no_progress_bar) then "--no_progress_bar" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dir: "Directory where files are located."
     index: "Provide a prebuilt index file to skip indexing. Be\\naware that paths within an index file are relative to\\nthe current working directory when they were built."

@@ -2,69 +2,153 @@
 command:
 - dimspy
 - process-scans
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Ringing
+  description: -e start end scan_type, --include-scan-events start end scan_type
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -m
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -l
-  args: !SimpleFlagArg
-    name: FILELIST
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: OUTPUT
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -i
+  - --input
+  description: "Directory (*.raw, *.mzml or tab-delimited peaklist\nfiles), single\
+    \ *.mzml/*.raw file or zip archive\n(*.mzml only)"
   args: !SimpleFlagArg
     name: source
+- !Flag
   optional: true
+  synonyms:
+  - -o
+  - --output
+  description: HDF5 file to save the peaklist objects to.
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --filelist
+  description: "Tab-delimited file that include the name of the data\nfiles (*.raw\
+    \ or *.mzml) and meta data. Column names:\nfilename, replicate, batch, injectionOrder,\n\
+    classLabel."
+  args: !SimpleFlagArg
+    name: FILELIST
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --function-noise
+  description: Select function to calculate noise.
+  args: !ChoiceFlagArg
+    choices: !!set
+      mean:
+      median:
+      noise_packets:
+      mad:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --snr-threshold
+  description: Signal-to-noise threshold
+  args: !SimpleFlagArg
+    name: SNR_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --ppm
+  description: "Mass tolerance in Parts per million to group peaks\nacross scans /\
+    \ mass spectra."
+  args: !SimpleFlagArg
+    name: PPM
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --min_scans
+  description: "Minimum number of scans required for each m/z range or\nevent."
+  args: !SimpleFlagArg
+    name: MIN_SCANS
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --min-fraction
+  description: "Minimum fraction a peak has to be present. Use 0.0 to\nnot apply this\
+    \ filter."
+  args: !SimpleFlagArg
+    name: MIN_FRACTION
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --rsd-threshold
+  description: "Maximum threshold - relative standard deviation\n(Calculated for peaks\
+    \ that have been measured across a\nminimum of two scans)."
+  args: !SimpleFlagArg
+    name: RSD_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --skip-stitching
+  description: "Skip the step where (SIM) windows are 'stitched' or\n'joined' together.\
+    \ Individual peaklists are generated\nfor each window."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: "end scan_type, --exclude-scan-events start end scan_type\nScan events\
+    \ to select. E.g. 100.0 200.0 sim or 50.0\n1000.0 full"
+  args: !SimpleFlagArg
+    name: start
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: "end, --remove-mz-range start end\nM/z range(s) to remove. E.g. 100.0\
+    \ 102.0 or 140.0\n145.0."
+  args: !SimpleFlagArg
+    name: start
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --report
+  description: Summary/Report of processed mass spectra
+  args: !SimpleFlagArg
+    name: REPORT
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --block-size
+  description: "The size of each block of peaks to perform clustering\non."
+  args: !SimpleFlagArg
+    name: BLOCK_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --ncpus
+  description: "Number of central processing units (CPUs).\n"
+  args: !SimpleFlagArg
+    name: NCPUS
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-i source, --input source\nDirectory\
-    \ (*.raw, *.mzml or tab-delimited peaklist\nfiles), single *.mzml/*.raw file or\
-    \ zip archive\n(*.mzml only)\n-o OUTPUT, --output OUTPUT\nHDF5 file to save the\
-    \ peaklist objects to.\n-l FILELIST, --filelist FILELIST\nTab-delimited file that\
-    \ include the name of the data\nfiles (*.raw or *.mzml) and meta data. Column\
-    \ names:\nfilename, replicate, batch, injectionOrder,\nclassLabel.\n-m {median,mean,mad,noise_packets},\
-    \ --function-noise {median,mean,mad,noise_packets}\nSelect function to calculate\
-    \ noise.\n-s SNR_THRESHOLD, --snr-threshold SNR_THRESHOLD\nSignal-to-noise threshold\n\
-    -p PPM, --ppm PPM     Mass tolerance in Parts per million to group peaks\nacross\
-    \ scans / mass spectra.\n-n MIN_SCANS, --min_scans MIN_SCANS\nMinimum number of\
-    \ scans required for each m/z range or\nevent.\n-a MIN_FRACTION, --min-fraction\
-    \ MIN_FRACTION\nMinimum fraction a peak has to be present. Use 0.0 to\nnot apply\
-    \ this filter.\n-d RSD_THRESHOLD, --rsd-threshold RSD_THRESHOLD\nMaximum threshold\
-    \ - relative standard deviation\n(Calculated for peaks that have been measured\
-    \ across a\nminimum of two scans).\n-k, --skip-stitching  Skip the step where\
-    \ (SIM) windows are 'stitched' or\n'joined' together. Individual peaklists are\
-    \ generated\nfor each window.\n-r RINGING_THRESHOLD, --ringing-threshold RINGING_THRESHOLD\n\
-    Ringing\n-e start end scan_type, --include-scan-events start end scan_type\nScan\
-    \ events to select. E.g. 100.0 200.0 sim or 50.0\n1000.0 full\n-x start end scan_type,\
-    \ --exclude-scan-events start end scan_type\nScan events to select. E.g. 100.0\
-    \ 200.0 sim or 50.0\n1000.0 full\n-z start end, --remove-mz-range start end\n\
-    M/z range(s) to remove. E.g. 100.0 102.0 or 140.0\n145.0.\n-u REPORT, --report\
-    \ REPORT\nSummary/Report of processed mass spectra\n-b BLOCK_SIZE, --block-size\
-    \ BLOCK_SIZE\nThe size of each block of peaks to perform clustering\non.\n-c NCPUS,\
-    \ --ncpus NCPUS\nNumber of central processing units (CPUs).\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Executing dimspy version 2.0.0.\nusage: dimspy process-scans [-h] -i source\
@@ -110,3 +194,4 @@ help_text: "Executing dimspy version 2.0.0.\nusage: dimspy process-scans [-h] -i
   \               Number of central processing units (CPUs).\n"
 generated_using:
 - --help
+docker_image:

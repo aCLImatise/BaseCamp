@@ -16,6 +16,9 @@ task HgSpeciesRna {
       ~{if (est) then "-est" else ""} \
       ~{if defined(filter) then ("-filter " +  '"' + filter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     est: "- If set will get ESTs rather than mRNAs"
     filter: "- only read accessions listed in file"

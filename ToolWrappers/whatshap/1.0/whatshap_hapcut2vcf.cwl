@@ -3,7 +3,7 @@ id: whatshap_hapcut2vcf.cwl
 inputs:
 - id: in_output
   doc: "Output VCF file. If omitted, use standard output.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_vcf
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output VCF file. If omitted, use standard output.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - whatshap

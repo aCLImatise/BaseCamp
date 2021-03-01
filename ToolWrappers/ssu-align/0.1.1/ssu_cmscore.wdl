@@ -2,8 +2,8 @@ version 1.0
 
 task Ssucmscore {
   input {
-    Int? generate_n_sequences
-    Boolean? align_locally_wrt
+    Int? _generate_sequences
+    Boolean? align_locally_model
     Int? set_rng_seed
     Boolean? print_individual_timings
     Boolean? sub
@@ -35,8 +35,8 @@ task Ssucmscore {
   command <<<
     ssu_cmscore \
       ~{cm_file} \
-      ~{if defined(generate_n_sequences) then ("-n " +  '"' + generate_n_sequences + '"') else ""} \
-      ~{if (align_locally_wrt) then "-l" else ""} \
+      ~{if defined(_generate_sequences) then ("-n " +  '"' + _generate_sequences + '"') else ""} \
+      ~{if (align_locally_model) then "-l" else ""} \
       ~{if defined(set_rng_seed) then ("-s " +  '"' + set_rng_seed + '"') else ""} \
       ~{if (print_individual_timings) then "-a" else ""} \
       ~{if (sub) then "--sub" else ""} \
@@ -64,9 +64,12 @@ task Ssucmscore {
       ~{if defined(t_file) then ("--tfile " +  '"' + t_file + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    generate_n_sequences: ": generate <n> sequences  [10]"
-    align_locally_wrt: ": align locally w.r.t. the model"
+    _generate_sequences: ": generate <n> sequences  [10]"
+    align_locally_model: ": align locally w.r.t. the model"
     set_rng_seed: ": set RNG seed to <n> (if 0: one-time arbitrary seed)  [181]"
     print_individual_timings: ": print individual timings & scores, not just a summary"
     sub: ": build sub CM for columns b/t HMM predicted start/end points"

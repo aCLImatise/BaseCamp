@@ -74,6 +74,9 @@ task Eel {
       ~{var_32} \
       ~{pw_files}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_0: "specifies how many alignments you want. (Default 3)"
     var_1: "Bonus factor for hit (Default 2)"

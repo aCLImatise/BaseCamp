@@ -4,18 +4,21 @@ task Vcfcombine {
   input {
     String? region
     String? vcf
-    File? file
+    File? var_file
   }
   command <<<
     vcfcombine \
       ~{vcf} \
-      ~{file} \
+      ~{var_file} \
       ~{if defined(region) then ("--region " +  '"' + region + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     region: "A region specifier of the form chrN:x-y to bound the merge"
     vcf: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

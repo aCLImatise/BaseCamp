@@ -3,24 +3,24 @@ id: filterGenemark.pl.cwl
 inputs:
 - id: in_introns
   doc: Corresponding intron file in gff format
-  type: File
+  type: File?
   inputBinding:
     prefix: --introns
 - id: in_genemark
   doc: File in gtf format
-  type: File
+  type: File?
   inputBinding:
     prefix: --genemark
 - id: in_output
   doc: "Specifies output file name. Default is 'genemark-input_file_name.c.gtf'\n\
     and 'genemark-input_file_name.f.good.gtf'\nand 'genemark-input_file_name.f.bad.gtf'\
     \ for filtered genes included and not included\nin intron file respectively"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_suppress
   doc: Suppress file output
-  type: File
+  type: File?
   inputBinding:
     prefix: --suppress
 - id: in_filter_out_short
@@ -28,7 +28,7 @@ inputs:
     \ intron\nwithin 2*maximal CDS length of the gene with at least 20% of average\
     \ intron\nmultiplicity for that gene (screens also downstream of stop, which either\
     \ indicates\nwrong reading frame, or a downstream UTR)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --filterOutShort
 - id: in_genemark_dot_gtf
@@ -47,9 +47,10 @@ outputs:
   type: stdout
 - id: out_suppress
   doc: Suppress file output
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_suppress)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - filterGenemark.pl

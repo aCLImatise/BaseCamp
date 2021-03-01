@@ -7,7 +7,7 @@ task Busco {
     File? out
     File? out_path
     Float? evalue
-    String? specify_busco_analysis
+    String? specify_busco_mode
     String? lineage_dataset
     Boolean? force
     Int? limit
@@ -40,7 +40,7 @@ task Busco {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(out_path) then ("--out_path " +  '"' + out_path + '"') else ""} \
       ~{if defined(evalue) then ("--evalue " +  '"' + evalue + '"') else ""} \
-      ~{if defined(specify_busco_analysis) then ("--mode " +  '"' + specify_busco_analysis + '"') else ""} \
+      ~{if defined(specify_busco_mode) then ("--mode " +  '"' + specify_busco_mode + '"') else ""} \
       ~{if defined(lineage_dataset) then ("--lineage_dataset " +  '"' + lineage_dataset + '"') else ""} \
       ~{if (force) then "--force" else ""} \
       ~{if defined(limit) then ("--limit " +  '"' + limit + '"') else ""} \
@@ -56,13 +56,16 @@ task Busco {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if (list_datasets) then "--list-datasets" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file__fasta: "FILE, --in FASTA FILE\\nInput sequence file in FASTA format. Can be an assembled genome or transcriptome (DNA), or protein sequences from an annotated gene set."
     cpu: "Specify the number (N=integer) of threads/cores to use."
     out: "Give your analysis run a recognisable short name. Output folders and files will be labelled with this name. WARNING: do not provide a path"
     out_path: "Optional location for results folder, excluding results folder name. Default is current working directory."
     evalue: "E-value cutoff for BLAST searches. Allowed formats, 0.001 or 1e-03 (Default: 1e-03)"
-    specify_busco_analysis: "Specify which BUSCO analysis mode to run.\\nThere are three valid modes:\\n- geno or genome, for genome assemblies (DNA)\\n- tran or transcriptome, for transcriptome assemblies (DNA)\\n- prot or proteins, for annotated gene sets (protein)"
+    specify_busco_mode: "Specify which BUSCO analysis mode to run.\\nThere are three valid modes:\\n- geno or genome, for genome assemblies (DNA)\\n- tran or transcriptome, for transcriptome assemblies (DNA)\\n- prot or proteins, for annotated gene sets (protein)"
     lineage_dataset: "Specify the name of the BUSCO lineage to be used."
     force: "Force rewriting of existing files. Must be used when output files with the provided name already exist."
     limit: "How many candidate regions (contig or transcript) to consider per BUSCO (default: 3)"

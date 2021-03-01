@@ -3,7 +3,7 @@ id: embossupdate.cwl
 inputs:
 - id: in_outfile
   doc: outfile    [stdout] EMBOSS update output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -outfile
 outputs:
@@ -12,9 +12,10 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: outfile    [stdout] EMBOSS update output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - embossupdate

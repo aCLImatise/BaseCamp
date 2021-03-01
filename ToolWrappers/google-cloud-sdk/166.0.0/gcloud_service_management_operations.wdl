@@ -12,6 +12,9 @@ task GcloudServicemanagementOperations {
       ~{describe} \
       ~{wait}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     services: "SYNOPSIS"
     describe: "Describes an operation resource for a given operation name."

@@ -4,7 +4,7 @@ inputs:
 - id: in_format
   doc: "The documentation FORMAT used within PATHS.  Valid\nformats include:\necma\n\
     If no format provided, `ecma' is used."
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
 - id: in_mdoc
@@ -21,6 +21,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mdoc-validate

@@ -3,7 +3,7 @@ version 1.0
 task XS {
   input {
     Boolean? verbose_mode
-    Boolean? sequencingtype_type_
+    Boolean? sequencingtype_type_roche
     Int? hf
     Boolean? ninstrumentname_unique_use
     Boolean? use_same_header
@@ -29,7 +29,7 @@ task XS {
   command <<<
     XS \
       ~{if (verbose_mode) then "-v" else ""} \
-      ~{if (sequencingtype_type_) then "-t" else ""} \
+      ~{if (sequencingtype_type_roche) then "-t" else ""} \
       ~{if defined(hf) then ("-hf " +  '"' + hf + '"') else ""} \
       ~{if (ninstrumentname_unique_use) then "-i" else ""} \
       ~{if (use_same_header) then "-o" else ""} \
@@ -52,9 +52,12 @@ task XS {
       ~{if (es) then "-es" else ""} \
       ~{if (seed_generation_seed) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose_mode: "verbose mode"
-    sequencingtype_type_: "<sequencingType>     type: 1=Roche-454, 2=Illumina, 3=ABI SOLiD, 4=Ion Torrent"
+    sequencingtype_type_roche: "<sequencingType>     type: 1=Roche-454, 2=Illumina, 3=ABI SOLiD, 4=Ion Torrent"
     hf: "header format: 1=Length appendix, 2=Pair End"
     ninstrumentname_unique_use: "n=<instrumentName>   the unique instrument name (use n= before name)"
     use_same_header: "use the same header in third line of the read"

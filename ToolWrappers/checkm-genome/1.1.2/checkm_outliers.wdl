@@ -22,6 +22,9 @@ task CheckmOutliers {
       ~{if defined(extension) then ("--extension " +  '"' + extension + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     distributions: "reference distribution used to identify outliers; integer between 0 and 100 (default: 95)"
     report_type: "report sequences that are outliers in 'all' or 'any' reference distribution (default: any)"

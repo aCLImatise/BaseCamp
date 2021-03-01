@@ -14,8 +14,11 @@ task Removetrackpl {
       ~{if (delete) then "--delete" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    dir: "Path to the JBrowse data directory to operate on."
+    dir: "/to/data/dir\\nPath to the JBrowse data directory to operate on."
     track_label: "Track label(s) to delete. This option may be specified multiple\\ntimes to delete multiple tracks."
     delete: "In addition to removing the track configuration so that JBrowse will\\nnot display the track, delete the track data as well. Be careful!"
     quiet: "Do not print any progress messages.\\n"

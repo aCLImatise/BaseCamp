@@ -4,12 +4,12 @@ inputs:
 - id: in_nproc
   doc: "Number of processes to use for batch processing\nchunks of pixels [default:\
     \ 1, i.e. no process pool]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --nproc
 - id: in_chunksize
   doc: "Number of pixels allocated to each process\n[default: 10000000]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --chunksize
 - id: in_resolutions
@@ -18,39 +18,39 @@ inputs:
     \ steps of factor 10 interleaved with\nsteps of 2 and 5). Examples:\n1000B=1000,2000,4000,8000,...\n\
     1000N=1000,2000,5000,10000,...\n5000N=5000,10000,25000,50000,... 4DN is an alias\n\
     for 1000,2000,5000N [default: B]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --resolutions
 - id: in_balance
   doc: Apply balancing to each zoom level. Off by default.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --balance
 - id: in_balance_args
   doc: Additional arguments to pass to cooler balance
-  type: string
+  type: string?
   inputBinding:
     prefix: --balance-args
 - id: in_base_uri
   doc: "One or more additional base coolers to aggregate\nfrom, if needed."
-  type: string
+  type: string?
   inputBinding:
     prefix: --base-uri
 - id: in_out
   doc: Output file or URI
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_field
   doc: "Specify the names of value columns to merge as\n'<name>'. Repeat the `--field`\
     \ option for each one.\nUse '<name>:dtype=<dtype>' to specify the dtype.\nInclude\
     \ ',agg=<agg>' to specify an aggregation\nfunction different from 'sum'."
-  type: string
+  type: string?
   inputBinding:
     prefix: --field
 - id: in_legacy
   doc: Use the legacy layout of integer-labeled zoom
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --legacy
 - id: in_levels_dot
@@ -64,9 +64,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Output file or URI
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cooler

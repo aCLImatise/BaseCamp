@@ -4,6 +4,9 @@ task PslMap {
   command <<<
     pslMap
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

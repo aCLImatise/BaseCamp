@@ -2,7 +2,7 @@ version 1.0
 
 task Binlorry {
   input {
-    File? fastafastq_input_reads
+    File? fastafastq_directory_willbe
     File? data
     Boolean? unordered_data
     File? output_filename_prefix
@@ -17,7 +17,7 @@ task Binlorry {
   }
   command <<<
     binlorry \
-      ~{if defined(fastafastq_input_reads) then ("--input " +  '"' + fastafastq_input_reads + '"') else ""} \
+      ~{if defined(fastafastq_directory_willbe) then ("--input " +  '"' + fastafastq_directory_willbe + '"') else ""} \
       ~{if defined(data) then ("--data " +  '"' + data + '"') else ""} \
       ~{if (unordered_data) then "--unordered_data" else ""} \
       ~{if defined(output_filename_prefix) then ("--output " +  '"' + output_filename_prefix + '"') else ""} \
@@ -30,8 +30,11 @@ task Binlorry {
       ~{if defined(max_length) then ("--max-length " +  '"' + max_length + '"') else ""} \
       ~{if defined(header_delimiters) then ("--header-delimiters " +  '"' + header_delimiters + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    fastafastq_input_reads: "FASTA/FASTQ of input reads or a directory which will\\nbe recursively searched for FASTQ files (required)."
+    fastafastq_directory_willbe: "FASTA/FASTQ of input reads or a directory which will\\nbe recursively searched for FASTQ files (required)."
     data: "A CSV file with metadata fields for reads or a\\ndirectory of csv files that will be recursively\\nsearched for names corresponding to a matching input\\nFASTA/FASTQ files."
     unordered_data: "The metadata tables are not in the same order as the\\nreads - they will all beloaded and then looked up as\\nneeded (slower). (default: False)"
     output_filename_prefix: "Output filename (or filename prefix)"

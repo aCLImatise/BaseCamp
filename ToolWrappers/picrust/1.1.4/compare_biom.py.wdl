@@ -24,6 +24,9 @@ task CompareBiompy {
       ~{if defined(exp_trait_table_fp) then ("--exp_trait_table_fp " +  '"' + exp_trait_table_fp + '"') else ""} \
       ~{if defined(output_fp) then ("--output_fp " +  '"' + output_fp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     compare_observations: "Calculate accuracy values by comparing between\\nobservations (instead of between samples) [default:\\nFalse]"

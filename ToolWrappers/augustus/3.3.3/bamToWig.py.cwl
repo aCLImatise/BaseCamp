@@ -3,22 +3,22 @@ id: bamToWig.py.cwl
 inputs:
 - id: in_bam_file
   doc: Input file in Bam format.
-  type: File
+  type: File?
   inputBinding:
     prefix: --bamFile
 - id: in_genome_file
   doc: Input genome file in FASTA format.
-  type: File
+  type: File?
   inputBinding:
     prefix: --genomeFile
 - id: in_outfile
   doc: Output file in wiggle format.
-  type: File
+  type: File?
   inputBinding:
     prefix: --outFile
 - id: in_sam_tools_path
   doc: "Path to samtools executable, e.g. '/usr/bin'.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --SAMTOOLS_PATH
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: Output file in wiggle format.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bamToWig.py

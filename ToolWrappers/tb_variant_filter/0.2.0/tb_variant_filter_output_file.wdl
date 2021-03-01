@@ -10,6 +10,9 @@ task TbVariantFilterOutputFile {
       ~{tb_variant_filter} \
       ~{if defined(region_filter) then ("--region_filter " +  '"' + region_filter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     region_filter: ""
     tb_variant_filter: ""

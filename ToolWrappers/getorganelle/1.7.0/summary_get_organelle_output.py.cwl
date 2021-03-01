@@ -3,7 +3,7 @@ id: summary_get_organelle_output.py.cwl
 inputs:
 - id: in_output_csv_file
   doc: Output csv file.
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_list_of_sample_folders
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_csv_file
   doc: Output csv file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_csv_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - summary_get_organelle_output.py

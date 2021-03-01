@@ -10,6 +10,9 @@ task FilterByCountpy {
       ~{if defined(min_count) then ("--min_count " +  '"' + min_count + '"') else ""} \
       ~{if (dun_use_group_count) then "--dun_use_group_count" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_count: "Minimum FL count (default: 2)"
     dun_use_group_count: "Turn off more stringent min count (default: off)\\n"

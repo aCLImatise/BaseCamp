@@ -3,17 +3,17 @@ id: rgt_tools.py_wig_trim_end.cwl
 inputs:
 - id: in_input_wig_file
   doc: Input WIG file
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_output_wig_file
   doc: Output WIG file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_chro_size
   doc: Define path to the chromosome size file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -chrosize
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_wig_file
   doc: Output WIG file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_wig_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rgt-tools.py

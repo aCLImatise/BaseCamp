@@ -8,6 +8,9 @@ task GraftMSet {
     graftM set_ \
       ~{graft_m}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graft_m: ""
   }

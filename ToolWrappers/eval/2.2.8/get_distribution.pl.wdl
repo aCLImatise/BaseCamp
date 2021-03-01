@@ -16,6 +16,9 @@ task GetDistributionpl {
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specify_distribution_mode: ": Specify distribution mode.  Must be a number selected from the\\nlist below.  Default is mode 1."
     inputs_gtf_files: ": Inputs are gtf files instead of list files"

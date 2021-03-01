@@ -8,6 +8,9 @@ task ArbPrimer {
     arb_primer \
       ~{dbname}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dbname: ""
   }

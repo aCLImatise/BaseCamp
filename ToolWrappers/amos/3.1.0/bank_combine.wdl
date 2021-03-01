@@ -8,6 +8,9 @@ task Bankcombine {
     bank_combine \
       ~{in_n}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_n: ""
   }

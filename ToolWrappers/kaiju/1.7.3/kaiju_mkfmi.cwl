@@ -4,13 +4,14 @@ inputs:
 - id: in_remove_cmd
   doc: "(string)\nCommand for deleting .bwt and .sa files (e.g. rm)\nValue:  NULL\
     \ (null)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -removecmd
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kaiju-mkfmi

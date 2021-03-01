@@ -28,6 +28,9 @@ task Chgrp {
       ~{if (command_line_argument) then "-H" else ""} \
       ~{if (traverse_symbolic_link) then "-L" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     changes: "like verbose but report only when a change is made"
     silent: "suppress most error messages"

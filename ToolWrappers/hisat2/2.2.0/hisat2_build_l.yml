@@ -3,193 +3,199 @@ command:
 - hisat2-build-l
 positional:
 - !Positional
-  description: comma-separated list of files with ref sequences
+  optional: false
   position: 0
   name: reference_in
-  optional: false
+  description: comma-separated list of files with ref sequences
 - !Positional
-  description: write ht2l data to files with this dir/basename
+  optional: false
   position: 1
   name: hisat2_index_base
-  optional: false
+  description: write ht2l data to files with this dir/basename
 named:
 - !Flag
-  description: "reference sequences given on cmd line (as\n<reference_in>)"
+  optional: true
   synonyms:
   - -c
+  description: "reference sequences given on cmd line (as\n<reference_in>)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: disable automatic -p/--bmax/--dcv memory-fitting
+  optional: true
   synonyms:
-  - -a/--noauto
+  - -a
+  - --noauto
+  description: disable automatic -p/--bmax/--dcv memory-fitting
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: number of threads
+  optional: true
   synonyms:
   - -p
+  description: number of threads
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: max bucket sz for blockwise suffix-array builder
+  optional: true
   synonyms:
   - --bmax
+  description: max bucket sz for blockwise suffix-array builder
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'max bucket sz as divisor of ref len (default: 4)'
+  optional: true
   synonyms:
   - --bmaxdivn
+  description: 'max bucket sz as divisor of ref len (default: 4)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'diff-cover period for blockwise (default: 1024)'
+  optional: true
   synonyms:
   - --dcv
+  description: 'diff-cover period for blockwise (default: 1024)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: disable diff-cover (algorithm becomes quadratic)
+  optional: true
   synonyms:
   - --nodc
+  description: disable diff-cover (algorithm becomes quadratic)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --noref
   description: don't build .3/.4.ht2 (packed reference) portion
-  synonyms:
-  - -r/--noref
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - '-3'
+  - --justref
   description: just build .3/.4.ht2 (packed reference) portion
-  synonyms:
-  - -3/--justref
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --offrate
   description: 'SA is sampled every 2^offRate BWT chars (default: 5)'
-  synonyms:
-  - -o/--offrate
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --ftabchars
   description: '# of chars consumed in initial lookup (default: 10)'
-  synonyms:
-  - -t/--ftabchars
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'SA (local) is sampled every 2^offRate BWT chars (default: 3)'
+  optional: true
   synonyms:
   - --localoffrate
+  description: 'SA (local) is sampled every 2^offRate BWT chars (default: 3)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: '# of chars consumed in initial lookup in a local index (default: 6)'
+  optional: true
   synonyms:
   - --localftabchars
+  description: '# of chars consumed in initial lookup in a local index (default: 6)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: SNP file name
+  optional: true
   synonyms:
   - --snp
+  description: SNP file name
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: haplotype file name
+  optional: true
   synonyms:
   - --haplotype
+  description: haplotype file name
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: Splice site file name
+  optional: true
   synonyms:
   - --ss
+  description: Splice site file name
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: Exon file name
+  optional: true
   synonyms:
   - --exon
+  description: Exon file name
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: Repeat reference file name
+  optional: true
   synonyms:
   - --repeat-ref
+  description: Repeat reference file name
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: Repeat information file name
+  optional: true
   synonyms:
   - --repeat-info
+  description: Repeat information file name
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: Repeat snp file name
+  optional: true
   synonyms:
   - --repeat-snp
+  description: Repeat snp file name
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: Repeat haplotype file name
+  optional: true
   synonyms:
   - --repeat-haplotype
+  description: Repeat haplotype file name
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: seed for random number generator
+  optional: true
   synonyms:
   - --seed
+  description: seed for random number generator
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
   description: disable verbose output (for debugging)
-  synonyms:
-  - -q/--quiet
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: print detailed description of tool and its options
-  synonyms:
-  - -h/--help
-  args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print detailed description of tool and its options
+  args: !EmptyFlagArg {}
 usage_flag: !Flag
-  description: print this usage message
+  optional: true
   synonyms:
   - --usage
+  description: print this usage message
   args: !EmptyFlagArg {}
-  optional: true
 version_flag: !Flag
-  description: print version information and quit
+  optional: true
   synonyms:
   - --version
+  description: print version information and quit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "HISAT2 version  by Daehwan Kim (infphilo@gmail.com, http://www.ccb.jhu.edu/people/infphilo)\n\
   Usage: hisat2-build [options]* <reference_in> <ht2_index_base>\n    reference_in\
   \            comma-separated list of files with ref sequences\n    hisat2_index_base\
@@ -219,3 +225,4 @@ help_text: "HISAT2 version  by Daehwan Kim (infphilo@gmail.com, http://www.ccb.j
   \ and quit\n"
 generated_using:
 - --help
+docker_image:

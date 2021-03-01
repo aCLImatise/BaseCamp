@@ -3,7 +3,7 @@ id: kseq_count.cwl
 inputs:
 - id: in_a
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_filename
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kseq_count

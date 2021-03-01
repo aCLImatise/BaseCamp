@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String
+
+Rnaclustalignrange_Pl_V0_1_0 = CommandToolBuilder(tool="rnaclustAlignRange.pl", base_command=["rnaclustAlignRange.pl"], inputs=[ToolInput(tag="in_range", input_type=Boolean(optional=True), prefix="--range", doc=InputDocumentation(doc="<i-j>                          specifies pairwise alignments which will be calculated (e.g. --range 1-100)\n(required)")), ToolInput(tag="in_tgt_dir", input_type=Boolean(optional=True), prefix="--tgtdir", doc=InputDocumentation(doc="<dir>                          target directory\n(required)")), ToolInput(tag="in_dp_dir", input_type=Boolean(optional=True), prefix="--dpdir", doc=InputDocumentation(doc="<dir>                          Directory containing the dotplots\n(required)s")), ToolInput(tag="in_cpu", input_type=Boolean(optional=True), prefix="--cpu", doc=InputDocumentation(doc="<n>                            Number of CPUs available on your machine. Calls to locarna will\nbe distributed equally between those CPUs. (default: 1)\n(optional)")), ToolInput(tag="in_loca_rna_opts", input_type=Boolean(optional=True), prefix="--locarna-opts", doc=InputDocumentation(doc="<'locarna options'>          options passed directly to locarna (must be given as one string)\n(optional)")), ToolInput(tag="in_loca_rna_path", input_type=File(optional=True), prefix="--locarna-path", doc=InputDocumentation(doc="path to locarna (default: )\n(optional)")), ToolInput(tag="in_man", input_type=Boolean(optional=True), prefix="--man", doc=InputDocumentation(doc="full documentation\n(optional)\n")), ToolInput(tag="in_i_j", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_specifies", input_type=String(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_pairwise", input_type=String(), position=2, doc=InputDocumentation(doc="")), ToolInput(tag="in_alignments", input_type=String(), position=3, doc=InputDocumentation(doc="")), ToolInput(tag="in_which", input_type=String(), position=4, doc=InputDocumentation(doc="")), ToolInput(tag="in_will", input_type=String(), position=5, doc=InputDocumentation(doc="")), ToolInput(tag="in_be", input_type=String(), position=6, doc=InputDocumentation(doc="")), ToolInput(tag="in_calculated", input_type=String(), position=7, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Rnaclustalignrange_Pl_V0_1_0().translate("wdl", allow_empty_container=True)
+

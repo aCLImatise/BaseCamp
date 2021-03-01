@@ -14,6 +14,9 @@ task KronosInit {
       ~{if defined(setup_file) then ("--setup_file " +  '"' + setup_file + '"') else ""} \
       ~{if defined(config_file) then ("--config_file " +  '"' + config_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pipeline_name: "a name for the resultant pipeline"
     input_samples: "path to the samples file"

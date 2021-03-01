@@ -1,0 +1,163 @@
+!Command
+command:
+- rtg
+- fastqtrim
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "input FASTQ file, Use '-' to read from\nstandard input"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "output filename. Use '-' to write to\nstandard output"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quality-format
+  description: "quality data encoding method used in FASTQ\ninput files (Illumina\
+    \ 1.8+ uses sanger).\nAllowed values are [sanger, solexa,\nillumina] (Default\
+    \ is sanger)"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --discard-empty-reads
+  description: "if set, discard reads that have zero length\nafter trimming. Should\
+    \ not be used with\npaired-end data"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  - --end-quality-threshold
+  description: "trim read ends to maximise base quality\nabove the given threshold\
+    \ (Default is 0)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-read-length
+  description: "if a read ends up shorter than this\nthreshold it will be trimmed\
+    \ to zero length\n(Default is 0)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --start-quality-threshold
+  description: "trim read starts to maximise base quality\nabove the given threshold\
+    \ (Default is 0)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --trim-end-bases
+  description: "always trim the specified number of bases\nfrom read end (Default\
+    \ is 0)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --trim-start-bases
+  description: "always trim the specified number of bases\nfrom read start (Default\
+    \ is 0)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -Z
+  - --no-gzip
+  description: do not gzip the output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reverse-complement
+  description: if set, output in reverse complement
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: seed used during subsampling
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --subsample
+  description: "if set, subsample the input to retain this\nfraction of reads"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --threads
+  description: "number of threads (Default is the number of\navailable cores)\n"
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print help on command-line flag usage
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: rtg fastqtrim [OPTION]... -i FILE -o FILE\n\nTrim reads in FASTQ\
+  \ files.\n\nFile Input/Output\n  -i, --input=FILE                  input FASTQ file,\
+  \ Use '-' to read from\n                                    standard input\n  -o,\
+  \ --output=FILE                 output filename. Use '-' to write to\n         \
+  \                           standard output\n  -q, --quality-format=FORMAT     \
+  \  quality data encoding method used in FASTQ\n                                \
+  \    input files (Illumina 1.8+ uses sanger).\n                                \
+  \    Allowed values are [sanger, solexa,\n                                    illumina]\
+  \ (Default is sanger)\n\nFiltering\n      --discard-empty-reads         if set,\
+  \ discard reads that have zero length\n                                    after\
+  \ trimming. Should not be used with\n                                    paired-end\
+  \ data\n  -E, --end-quality-threshold=INT   trim read ends to maximise base quality\n\
+  \                                    above the given threshold (Default is 0)\n\
+  \      --min-read-length=INT         if a read ends up shorter than this\n     \
+  \                               threshold it will be trimmed to zero length\n  \
+  \                                  (Default is 0)\n  -S, --start-quality-threshold=INT\
+  \ trim read starts to maximise base quality\n                                  \
+  \  above the given threshold (Default is 0)\n  -e, --trim-end-bases=INT        \
+  \  always trim the specified number of bases\n                                 \
+  \   from read end (Default is 0)\n  -s, --trim-start-bases=INT        always trim\
+  \ the specified number of bases\n                                    from read start\
+  \ (Default is 0)\n\nUtility\n  -h, --help                        print help on command-line\
+  \ flag usage\n  -Z, --no-gzip                     do not gzip the output\n  -r,\
+  \ --reverse-complement          if set, output in reverse complement\n      --seed=INT\
+  \                    seed used during subsampling\n      --subsample=FLOAT     \
+  \        if set, subsample the input to retain this\n                          \
+  \          fraction of reads\n  -T, --threads=INT                 number of threads\
+  \ (Default is the number of\n                                    available cores)\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rtg-tools:3.12--0

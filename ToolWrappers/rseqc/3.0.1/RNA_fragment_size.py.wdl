@@ -14,6 +14,9 @@ task RNAFragmentSizepy {
       ~{if defined(mapq) then ("--mapq " +  '"' + mapq + '"') else ""} \
       ~{if defined(frag_num) then ("--frag-num " +  '"' + frag_num + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bam_file: "Input BAM file"
     ref_gene: "Reference gene model in BED format. Must be strandard\\n12-column BED file. [required]"

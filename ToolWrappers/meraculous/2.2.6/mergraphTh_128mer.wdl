@@ -22,6 +22,9 @@ task MergraphTh128mer {
       ~{output_prefix} \
       ~{input_descriptor_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mer_count_file_prefix: ""
     mer_size: ""

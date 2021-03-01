@@ -8,6 +8,9 @@ task MmseqsCreatesubdb {
     mmseqs createsubdb \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbosity_level_nothing: "3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info"
   }

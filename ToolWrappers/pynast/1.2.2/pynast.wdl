@@ -4,6 +4,9 @@ task Pynast {
   command <<<
     pynast
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

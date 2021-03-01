@@ -3,44 +3,44 @@ id: cs_generate.cwl
 inputs:
 - id: in_quiet
   doc: Suppress all warning messages. Cannot use with '-v'.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_verbose
   doc: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn warnings\
     \ into exceptions. Cannot use\nwith '-q'. (Default: show each type of warning\
     \ once)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_annotation_files
   doc: "[BED | BigBed | GTF2 | GFF3] [infile.[BED | BigBed | GTF2 | GFF3] ...]\nZero\
     \ or more annotation files (max 1 file if BigBed)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --annotation_files
 - id: in_annotation_format
   doc: "Format of annotation_files (Default: GTF2). Note: GFF3\nassembly assumes SO\
     \ v.2.5.2 feature ontologies, which\nmay or may not match your specific file."
-  type: string
+  type: string?
   inputBinding:
     prefix: --annotation_format
 - id: in_add_three
   doc: "If supplied, coding regions will be extended by 3\nnucleotides at their 3'\
     \ ends (except for GTF2 files\nthat explicitly include `stop_codon` features).\
     \ Use if\nyour annotation file excludes stop codons from CDS."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --add_three
 - id: in_tab_ix
   doc: "annotation_files are tabix-compressed and indexed\n(Default: False). Ignored\
     \ for BigBed files."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tabix
 - id: in_sorted
   doc: "annotation_files are sorted by chromosomal position\n(Default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sorted
 - id: in_bed_extra_columns
@@ -58,13 +58,13 @@ inputs:
 - id: in_maxmem
   doc: "Maximum desired memory footprint in MB to devote to\nBigBed/BigWig files.\
     \ May be exceeded by large queries.\n(Default: 0, No maximum)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxmem
 - id: in_mask_maxmem
   doc: "Maximum desired memory footprint in MB to devote to\nBigBed/BigWig files.\
     \ May be exceeded by large queries.\n(Default: 0, No maximum)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --mask_maxmem
 - id: in_gff_transcript_types
@@ -106,31 +106,31 @@ inputs:
 - id: in_mask_annotation_files
   doc: "[BED | BigBed | GTF2 | GFF3 | PSL] [infile.[BED | BigBed | GTF2 | GFF3 | PSL]\
     \ ...]\nZero or more annotation files (max 1 file if BigBed)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --mask_annotation_files
 - id: in_mask_annotation_format
   doc: "Format of mask_annotation_files (Default: GTF2). Note:\nGFF3 assembly assumes\
     \ SO v.2.5.2 feature ontologies,\nwhich may or may not match your specific file."
-  type: string
+  type: string?
   inputBinding:
     prefix: --mask_annotation_format
 - id: in_mask_add_three
   doc: "If supplied, coding regions will be extended by 3\nnucleotides at their 3'\
     \ ends (except for GTF2 files\nthat explicitly include `stop_codon` features).\
     \ Use if\nyour annotation file excludes stop codons from CDS."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mask_add_three
 - id: in_mask_tab_ix
   doc: "mask_annotation_files are tabix-compressed and indexed\n(Default: False).\
     \ Ignored for BigBed files."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mask_tabix
 - id: in_mask_sorted
   doc: "mask_annotation_files are sorted by chromosomal\nposition (Default: False)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mask_sorted
 - id: in_genes_dot
@@ -147,6 +147,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cs

@@ -1,0 +1,105 @@
+!Command
+command:
+- breadth_depth.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: considered
+  description: --minqual MINQUAL     Minimum base quality. Bases with quality score
+    lower
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "ID, --contig REFERENCE ID\nFocus on a subset of references in the\
+    \ BAM file. Can\nbe a list of references separated by commas or a FASTA\nfile\
+    \ (the IDs are used to subset)"
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "If set unmapped (FUNMAP), secondary (FSECONDARY), qc-\nfail (FQCFAIL)\
+    \ and duplicate (FDUP) are excluded. If\nunset ALL reads are considered (bedtools\
+    \ genomecov\nstyle). Default: unset"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sortindex
+  description: Sort and index the file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minlen
+  description: Minimum Reference Length for a reference to be
+  args: !SimpleFlagArg
+    name: MINLEN
+- !Flag
+  optional: true
+  synonyms:
+  - --mincov
+  description: "Minimum position coverage to perform the polymorphism\ncalculation.\
+    \ Position with a lower depth of coverage\nwill be discarded (i.e. considered\
+    \ as zero-coverage\npositions). This is calculated AFTER --minqual.\nDefault:\
+    \ 1"
+  args: !SimpleFlagArg
+    name: MINCOV
+- !Flag
+  optional: true
+  synonyms:
+  - --truncate
+  description: "Number of nucleotides that are truncated at either\ncontigs end before\
+    \ calculating coverage values."
+  args: !SimpleFlagArg
+    name: TRUNCATE
+- !Flag
+  optional: true
+  synonyms:
+  - --combine
+  description: "Combine all contigs into one giant contig and report\nit at the end\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: breadth_depth.py [-h] [-c REFERENCE ID] [-f] [--sortindex]\n  \
+  \                      [--minlen MINLEN] [--minqual MINQUAL]\n                 \
+  \       [--mincov MINCOV] [--truncate TRUNCATE] [--combine]\n                  \
+  \      BAMFILE\n\ncalculate the Breadth and Depth of coverage of BAMFILE.\n\npositional\
+  \ arguments:\n  BAMFILE               The file on which to operate\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -c REFERENCE ID, --contig\
+  \ REFERENCE ID\n                        Focus on a subset of references in the BAM\
+  \ file. Can\n                        be a list of references separated by commas\
+  \ or a FASTA\n                        file (the IDs are used to subset)\n  -f  \
+  \                  If set unmapped (FUNMAP), secondary (FSECONDARY), qc-\n     \
+  \                   fail (FQCFAIL) and duplicate (FDUP) are excluded. If\n     \
+  \                   unset ALL reads are considered (bedtools genomecov\n       \
+  \                 style). Default: unset\n  --sortindex           Sort and index\
+  \ the file\n  --minlen MINLEN       Minimum Reference Length for a reference to\
+  \ be\n                        considered\n  --minqual MINQUAL     Minimum base quality.\
+  \ Bases with quality score lower\n                        than this will be discarded.\
+  \ This is performed BEFORE\n                        --mincov. Default: 30\n  --mincov\
+  \ MINCOV       Minimum position coverage to perform the polymorphism\n         \
+  \               calculation. Position with a lower depth of coverage\n         \
+  \               will be discarded (i.e. considered as zero-coverage\n          \
+  \              positions). This is calculated AFTER --minqual.\n               \
+  \         Default: 1\n  --truncate TRUNCATE   Number of nucleotides that are truncated\
+  \ at either\n                        contigs end before calculating coverage values.\n\
+  \  --combine             Combine all contigs into one giant contig and report\n\
+  \                        it at the end\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cmseq:1.0.2--pyh7b7c402_0

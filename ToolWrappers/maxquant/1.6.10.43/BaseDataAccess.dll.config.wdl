@@ -4,6 +4,9 @@ task BaseDataAccessdllconfig {
   command <<<
     BaseDataAccess_dll_config
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

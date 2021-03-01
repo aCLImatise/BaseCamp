@@ -20,6 +20,9 @@ task ConvertExternalGenome {
       ~{if defined(external) then ("--external " +  '"' + external + '"') else ""} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nuc_me_rpath: "Path to the 'nucmer' executable."
     nuc_mer_args: "Optional arguments to pass to the 'nucmer' executable."

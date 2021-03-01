@@ -4,177 +4,177 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Specify the output file where to write the\nconfigurations (default:\
-    \ None)"
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "Specify the output file where to write the\nconfigurations (default:\
+    \ None)"
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: "Specify the type of the database, where \"n\" stands for\nnucleotides\
-    \ and \"a\" for amino acids (default: None)"
+  optional: true
   synonyms:
   - -d
   - --db_type
+  description: "Specify the type of the database, where \"n\" stands for\nnucleotides\
+    \ and \"a\" for amino acids (default: None)"
   args: !ChoiceFlagArg
     choices: !!set
-      a:
       n:
-  optional: true
+      a:
 - !Flag
-  description: "Add the \"db_dna\" section of the selected software that\nwill be\
-    \ used for building the indexed database\n(default: None)"
+  optional: true
   synonyms:
   - --db_dna
+  description: "Add the \"db_dna\" section of the selected software that\nwill be\
+    \ used for building the indexed database\n(default: None)"
   args: !ChoiceFlagArg
     choices: !!set
       makeblastdb:
-  optional: true
 - !Flag
-  description: "Add the \"db_aa\" section of the selected software that\nwill be used\
-    \ for building the indexed database\n(default: None)"
+  optional: true
   synonyms:
   - --db_aa
+  description: "Add the \"db_aa\" section of the selected software that\nwill be used\
+    \ for building the indexed database\n(default: None)"
   args: !ChoiceFlagArg
     choices: !!set
       diamond:
       usearch:
-  optional: true
 - !Flag
-  description: "Add the \"map_dna\" section of the selected software\nthat will be\
-    \ used for mapping the database against the\ninput genomes (default: None)"
+  optional: true
   synonyms:
   - --map_dna
+  description: "Add the \"map_dna\" section of the selected software\nthat will be\
+    \ used for mapping the database against the\ninput genomes (default: None)"
   args: !ChoiceFlagArg
     choices: !!set
-      tblastn:
-      blastn:
       diamond:
-  optional: true
+      blastn:
+      tblastn:
 - !Flag
-  description: "Add the \"map_aa\" section of the selected software that\nwill be\
-    \ used for mapping the database against the\ninput proteomes (default: None)"
+  optional: true
   synonyms:
   - --map_aa
+  description: "Add the \"map_aa\" section of the selected software that\nwill be\
+    \ used for mapping the database against the\ninput proteomes (default: None)"
   args: !ChoiceFlagArg
     choices: !!set
       diamond:
       usearch:
-  optional: true
 - !Flag
-  description: "Add the \"msa\" section of the selected software that\nwill be used\
-    \ for producing the MSAs (default: None)"
+  optional: true
   synonyms:
   - --msa
+  description: "Add the \"msa\" section of the selected software that\nwill be used\
+    \ for producing the MSAs (default: None)"
   args: !ChoiceFlagArg
     choices: !!set
       opal:
+      muscle:
       upp:
       mafft:
-      muscle:
-  optional: true
 - !Flag
-  description: "Add the \"trim\" section of the selected software that\nwill be used\
-    \ for the gappy regions removal of the MSAs\n(default: None)"
+  optional: true
   synonyms:
   - --trim
+  description: "Add the \"trim\" section of the selected software that\nwill be used\
+    \ for the gappy regions removal of the MSAs\n(default: None)"
   args: !ChoiceFlagArg
     choices: !!set
       trimal:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gene_tree1
   description: "Add the \"gene_tree1\" section of the selected software\nthat will\
     \ be used for building the phylogenies for the\nmarkers in the database (default:\
     \ None)"
-  synonyms:
-  - --gene_tree1
   args: !ChoiceFlagArg
     choices: !!set
+      fasttree:
       iqtree:
       raxml:
-      fasttree:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gene_tree2
   description: "Add the \"gene_tree2\" section of the selected software\nthat will\
     \ be used for refining the phylogenies\npreviously built with what specified in\
     \ the\n\"gene_tree1\" section (default: None)"
-  synonyms:
-  - --gene_tree2
   args: !ChoiceFlagArg
     choices: !!set
       raxml:
-  optional: true
 - !Flag
-  description: "Add the \"tree1\" section of the selected software that\nwill be used\
-    \ for building the first phylogeny\n(default: None)"
+  optional: true
   synonyms:
   - --tree1
+  description: "Add the \"tree1\" section of the selected software that\nwill be used\
+    \ for building the first phylogeny\n(default: None)"
   args: !ChoiceFlagArg
     choices: !!set
-      fasttree:
-      iqtree:
-      astral:
       astrid:
+      iqtree:
+      fasttree:
+      astral:
       raxml:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --tree2
   description: "Add the \"tree2\" section of the selected software that\nwill be used\
     \ for refining the phylogeny previously\nbuilt with what specified in the \"tree1\"\
     \ section\n(default: None)"
-  synonyms:
-  - --tree2
   args: !ChoiceFlagArg
     choices: !!set
       raxml:
-  optional: true
 - !Flag
-  description: "Write the absolute path to the executable instead of\nthe executable\
-    \ name as found in the system path\nenvironment (default: False)"
+  optional: true
   synonyms:
   - -a
   - --absolute_path
+  description: "Write the absolute path to the executable instead of\nthe executable\
+    \ name as found in the system path\nenvironment (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --force_nucleotides
   description: "If specified sets parameters for phylogenetic analysis\nsoftware so\
     \ that they use nucleotide sequences, even\nin the case of a database of amino\
     \ acids (default:\nNone)"
-  synonyms:
-  - --force_nucleotides
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Overwrite output file if it exists (default: False)'
+  optional: true
   synonyms:
   - --overwrite
+  description: 'Overwrite output file if it exists (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Prints more stuff (default: False)'
+  optional: true
   synonyms:
   - --verbose
+  description: 'Prints more stuff (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: "Prints the current phylophlan_write_config_file.py\nversion and exit\n"
+  optional: true
   synonyms:
   - -v
   - --version
+  description: "Prints the current phylophlan_write_config_file.py\nversion and exit\n"
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: phylophlan_write_config_file [-h] -o OUTPUT -d {n,a}\n        \
   \                            (--db_dna {makeblastdb} | --db_aa {usearch,diamond})\n\
   \                                    [--map_dna {blastn,tblastn,diamond}]\n    \
@@ -235,3 +235,4 @@ help_text: "usage: phylophlan_write_config_file [-h] -o OUTPUT -d {n,a}\n       
   \                        version and exit\n"
 generated_using:
 - --help
+docker_image:

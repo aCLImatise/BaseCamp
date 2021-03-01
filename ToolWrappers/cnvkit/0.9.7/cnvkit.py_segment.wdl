@@ -34,6 +34,9 @@ task CnvkitpySegment {
       ~{if defined(min_variant_depth) then ("--min-variant-depth " +  '"' + min_variant_depth + '"') else ""} \
       ~{if (ignore_vcfs_genotypes) then "-z" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_table_file: "Output table file name (CNR-like table of segments,\\n.cns)."
     data_frame: "File name to save the raw R dataframe emitted by CBS\\nor Fused Lasso. (Useful for debugging.)"

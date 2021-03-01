@@ -10,6 +10,9 @@ task SeqhaxConvert {
       ~{if (output_fasta) then "-a" else ""} \
       ~{if (output_fastq_adding) then "-q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_fasta: "Output FASTA."
     output_fastq_adding: "Output FASTQ (adding qualities)."

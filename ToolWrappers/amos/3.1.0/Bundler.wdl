@@ -18,6 +18,9 @@ task Bundler {
       ~{if (t) then "-t" else ""} \
       ~{if (b) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
     b: ""

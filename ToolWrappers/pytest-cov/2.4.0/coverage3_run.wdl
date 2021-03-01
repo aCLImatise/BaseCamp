@@ -12,13 +12,11 @@ task Coverage3Run {
     String? debug
     File? rcfile
     String coverage_dot
-    String multiprocessing_dot
     String quoted_dot
   }
   command <<<
     coverage3 run \
       ~{coverage_dot} \
-      ~{multiprocessing_dot} \
       ~{quoted_dot} \
       ~{if (append) then "--append" else ""} \
       ~{if (branch) then "--branch" else ""} \
@@ -30,6 +28,9 @@ task Coverage3Run {
       ~{if defined(debug) then ("--debug " +  '"' + debug + '"') else ""} \
       ~{if defined(rcfile) then ("--rcfile " +  '"' + rcfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     append: "Append coverage data to .coverage, otherwise it starts\\nclean each time."
     branch: "Measure branch coverage in addition to statement"
@@ -41,7 +42,6 @@ task Coverage3Run {
     debug: "Debug options, separated by commas"
     rcfile: "Specify configuration file.  Defaults to '.coveragerc'"
     coverage_dot: "--concurrency=LIB     Properly measure code using a concurrency library."
-    multiprocessing_dot: "--include=PAT1,PAT2,..."
     quoted_dot: "-m, --module          <pyfile> is an importable Python module, not a script"
   }
   output {

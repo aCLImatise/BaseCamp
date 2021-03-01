@@ -44,6 +44,9 @@ task AutoAugpl {
       ~{if defined(max_intron_len) then ("--maxIntronLen " +  '"' + max_intron_len + '"') else ""} \
       ~{if (use_gmap_for_pasa) then "--useGMAPforPASA" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "fasta file with DNA sequences for training"
     training_set: "genesfile contains training genes in Genbank, GFF or protein FASTA format"

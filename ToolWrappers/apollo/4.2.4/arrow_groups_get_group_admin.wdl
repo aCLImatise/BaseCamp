@@ -8,6 +8,9 @@ task ArrowGroupsGetGroupAdmin {
     arrow groups get_group_admin \
       ~{group}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     group: ""
   }

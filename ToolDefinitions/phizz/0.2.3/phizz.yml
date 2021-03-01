@@ -11,19 +11,12 @@ subcommands:
   - build-genes
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: GENE_FILE
-    optional: false
-  named:
-  - !Flag
-    description: "--path TEXT\n--help          Show this message and exit.\n"
-    synonyms:
-    - --db_name
-    args: !SimpleFlagArg
-      name: TEXT
-    optional: true
-  parent: &id010 !Command
+    description: ''
+  named: []
+  parent: &id011 !Command
     command: *id001
     positional: []
     named: []
@@ -33,19 +26,19 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: GENE_FILE
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: "--path TEXT\n--help          Show this message and exit.\n"
+        optional: true
         synonyms:
         - --db_name
+        description: "--path TEXT\n--help          Show this message and exit.\n"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
-      parent: &id009 !Command
+      parent: &id010 !Command
         command: *id001
         positional: []
         named: []
@@ -55,19 +48,19 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: GENE_FILE
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: "--path TEXT\n--help          Show this message and exit.\n"
+            optional: true
             synonyms:
             - --db_name
+            description: "--path TEXT\n--help          Show this message and exit.\n"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
-          parent: &id008 !Command
+          parent: &id009 !Command
             command: *id001
             positional: []
             named: []
@@ -77,145 +70,308 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: GENE_FILE
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: "--path TEXT\n--help          Show this message and exit.\n"
+                optional: true
                 synonyms:
                 - --db_name
+                description: "--path TEXT\n--help          Show this message and exit.\n"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
-              parent: &id003 !Command
+              parent: &id008 !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -v
-                  - --verbose
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: GENE_FILE
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --db_name
+                    description: "--path TEXT\n--help          Show this message and\
+                      \ exit.\n"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
-                  - !Flag
-                    description: ''
-                    synonyms:
-                    - --path
-                    args: !SimpleFlagArg
-                      name: TEXT
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -v
+                      - --verbose
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: GENE_FILE
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --db_name
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --path
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: phizz build-genes [OPTIONS] GENE_FILE\n\n\
+                        \  Create a gene database.\n\nOptions:\n  --db_name TEXT\n\
+                        \  --path TEXT\n  --help          Show this message and exit.\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - phizz
+                      - query
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        - --config
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --hpo_term
+                        description: Specify a hpo term
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -m
+                        - --mim_term
+                        description: Specify a omim id
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --outfile
+                        description: Specify path to outfile
+                        args: !SimpleFlagArg
+                          name: FILENAME
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -j
+                        - --to_json
+                        description: If output should be in json format
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --chrom
+                        description: The chromosome
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --start
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --stop
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: phizz query [OPTIONS]\n\n  Query the hpo\
+                        \ database.\n\n  Print the result in csv format as default.\n\
+                        \nOptions:\n  -c, --config PATH\n  -h, --hpo_term TEXT   \
+                        \  Specify a hpo term\n  -m, --mim_term TEXT     Specify a\
+                        \ omim id\n  -o, --outfile FILENAME  Specify path to outfile\n\
+                        \  -j, --to_json           If output should be in json format\n\
+                        \  --chrom TEXT            The chromosome\n  --start INTEGER\n\
+                        \  --stop INTEGER\n  --help                  Show this message\
+                        \ and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - phizz
+                      - init
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --db_name
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --path
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: phizz init [OPTIONS]\n\n  Create a config\
+                        \ file for phizz.\n\nOptions:\n  --db_name TEXT\n  --path\
+                        \ TEXT\n  --help          Show this message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - phizz
+                      - delete
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --db_name
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --path
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: phizz delete [OPTIONS]\n\n  Delete the database.\n\
+                        \nOptions:\n  --db_name PATH\n  --path TEXT\n  --help    \
+                        \      Show this message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --help
+                      description: Show this message and exit.
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --version
+                      description: Show the version and exit.
+                      args: !EmptyFlagArg {}
+                    help_text: "Usage: phizz [OPTIONS] COMMAND [ARGS]...\n\n  phizz:\
+                      \ query hpo and omim resources.\n\nOptions:\n  -v, --verbose\n\
+                      \  --version      Show the version and exit.\n  --help     \
+                      \    Show this message and exit.\n\nCommands:\n  build-genes\
+                      \  Create a gene database.\n  delete       Delete the database.\n\
+                      \  init         Create a config file for phizz.\n  query   \
+                      \     Query the hpo database.\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
-                  help_flag: !Flag
-                    description: Show this message and exit.
-                    synonyms:
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: phizz build-genes [OPTIONS] GENE_FILE\n\n  Create\
                     \ a gene database.\n\nOptions:\n  --db_name TEXT\n  --path TEXT\n\
                     \  --help          Show this message and exit.\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - phizz
-                  - query
+                  command: *id005
                   positional: []
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -c
                     - --config
+                    description: "-h, --hpo_term TEXT     Specify a hpo term\n-m,\
+                      \ --mim_term TEXT     Specify a omim id\n-o, --outfile FILENAME\
+                      \  Specify path to outfile\n-j, --to_json           If output\
+                      \ should be in json format\n--chrom TEXT            The chromosome\n\
+                      --start INTEGER\n--stop INTEGER\n--help                  Show\
+                      \ this message and exit.\n"
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
-                  - !Flag
-                    description: Specify a hpo term
-                    synonyms:
-                    - -h
-                    - --hpo_term
-                    args: !SimpleFlagArg
-                      name: TEXT
-                    optional: true
-                  - !Flag
-                    description: Specify a omim id
-                    synonyms:
-                    - -m
-                    - --mim_term
-                    args: !SimpleFlagArg
-                      name: TEXT
-                    optional: true
-                  - !Flag
-                    description: Specify path to outfile
-                    synonyms:
-                    - -o
-                    - --outfile
-                    args: !SimpleFlagArg
-                      name: FILENAME
-                    optional: true
-                  - !Flag
-                    description: If output should be in json format
-                    synonyms:
-                    - -j
-                    - --to_json
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: The chromosome
-                    synonyms:
-                    - --chrom
-                    args: !SimpleFlagArg
-                      name: TEXT
-                    optional: true
-                  - !Flag
-                    description: ''
-                    synonyms:
-                    - --start
-                    args: !SimpleFlagArg
-                      name: INTEGER
-                    optional: true
-                  - !Flag
-                    description: ''
-                    synonyms:
-                    - --stop
-                    args: !SimpleFlagArg
-                      name: INTEGER
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
-                  help_flag: !Flag
-                    description: Show this message and exit.
-                    synonyms:
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: phizz query [OPTIONS]\n\n  Query the hpo database.\n\
@@ -227,90 +383,57 @@ subcommands:
                     \    The chromosome\n  --start INTEGER\n  --stop INTEGER\n  --help\
                     \                  Show this message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - phizz
-                  - init
+                  command: *id006
                   positional: []
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --db_name
+                    description: "--path TEXT\n--help          Show this message and\
+                      \ exit.\n"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
-                  - !Flag
-                    description: ''
-                    synonyms:
-                    - --path
-                    args: !SimpleFlagArg
-                      name: TEXT
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
-                  help_flag: !Flag
-                    description: Show this message and exit.
-                    synonyms:
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: phizz init [OPTIONS]\n\n  Create a config file\
                     \ for phizz.\n\nOptions:\n  --db_name TEXT\n  --path TEXT\n  --help\
                     \          Show this message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - phizz
-                  - delete
+                  command: *id007
                   positional: []
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --db_name
+                    description: "--path TEXT\n--help          Show this message and\
+                      \ exit.\n"
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
-                  - !Flag
-                    description: ''
-                    synonyms:
-                    - --path
-                    args: !SimpleFlagArg
-                      name: TEXT
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
-                  help_flag: !Flag
-                    description: Show this message and exit.
-                    synonyms:
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: phizz delete [OPTIONS]\n\n  Delete the database.\n\
                     \nOptions:\n  --db_name PATH\n  --path TEXT\n  --help        \
                     \  Show this message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: Show the version and exit.
-                  synonyms:
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "Usage: phizz [OPTIONS] COMMAND [ARGS]...\n\n  phizz: query\
                   \ hpo and omim resources.\n\nOptions:\n  -v, --verbose\n  --version\
                   \      Show the version and exit.\n  --help         Show this message\
@@ -318,6 +441,7 @@ subcommands:
                   \  delete       Delete the database.\n  init         Create a config\
                   \ file for phizz.\n  query        Query the hpo database.\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -327,23 +451,24 @@ subcommands:
                 \ a gene database.\n\nOptions:\n  --db_name TEXT\n  --path TEXT\n\
                 \  --help          Show this message and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional: []
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - -c
+                - --config
                 description: "-h, --hpo_term TEXT     Specify a hpo term\n-m, --mim_term\
                   \ TEXT     Specify a omim id\n-o, --outfile FILENAME  Specify path\
                   \ to outfile\n-j, --to_json           If output should be in json\
                   \ format\n--chrom TEXT            The chromosome\n--start INTEGER\n\
                   --stop INTEGER\n--help                  Show this message and exit.\n"
-                synonyms:
-                - -c
-                - --config
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag:
@@ -358,18 +483,19 @@ subcommands:
                 \ INTEGER\n  --stop INTEGER\n  --help                  Show this message\
                 \ and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional: []
               named:
               - !Flag
-                description: "--path TEXT\n--help          Show this message and exit.\n"
+                optional: true
                 synonyms:
                 - --db_name
+                description: "--path TEXT\n--help          Show this message and exit.\n"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag:
@@ -379,18 +505,19 @@ subcommands:
                 \ phizz.\n\nOptions:\n  --db_name TEXT\n  --path TEXT\n  --help  \
                 \        Show this message and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional: []
               named:
               - !Flag
-                description: "--path TEXT\n--help          Show this message and exit.\n"
+                optional: true
                 synonyms:
                 - --db_name
+                description: "--path TEXT\n--help          Show this message and exit.\n"
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag:
@@ -400,6 +527,7 @@ subcommands:
                 \nOptions:\n  --db_name PATH\n  --path TEXT\n  --help          Show\
                 \ this message and exit.\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -411,6 +539,7 @@ subcommands:
               \ delete       Delete the database.\n  init         Create a config\
               \ file for phizz.\n  query        Query the hpo database.\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -420,23 +549,24 @@ subcommands:
             \ database.\n\nOptions:\n  --db_name TEXT\n  --path TEXT\n  --help   \
             \       Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional: []
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - -c
+            - --config
             description: "-h, --hpo_term TEXT     Specify a hpo term\n-m, --mim_term\
               \ TEXT     Specify a omim id\n-o, --outfile FILENAME  Specify path to\
               \ outfile\n-j, --to_json           If output should be in json format\n\
               --chrom TEXT            The chromosome\n--start INTEGER\n--stop INTEGER\n\
               --help                  Show this message and exit.\n"
-            synonyms:
-            - -c
-            - --config
             args: !SimpleFlagArg
               name: PATH
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag:
@@ -450,18 +580,19 @@ subcommands:
             \  --chrom TEXT            The chromosome\n  --start INTEGER\n  --stop\
             \ INTEGER\n  --help                  Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional: []
           named:
           - !Flag
-            description: "--path TEXT\n--help          Show this message and exit.\n"
+            optional: true
             synonyms:
             - --db_name
+            description: "--path TEXT\n--help          Show this message and exit.\n"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag:
@@ -471,18 +602,19 @@ subcommands:
             \nOptions:\n  --db_name TEXT\n  --path TEXT\n  --help          Show this\
             \ message and exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional: []
           named:
           - !Flag
-            description: "--path TEXT\n--help          Show this message and exit.\n"
+            optional: true
             synonyms:
             - --db_name
+            description: "--path TEXT\n--help          Show this message and exit.\n"
             args: !SimpleFlagArg
               name: PATH
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag:
@@ -492,6 +624,7 @@ subcommands:
             Options:\n  --db_name PATH\n  --path TEXT\n  --help          Show this\
             \ message and exit.\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -503,6 +636,7 @@ subcommands:
           \ the database.\n  init         Create a config file for phizz.\n  query\
           \        Query the hpo database.\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -512,23 +646,24 @@ subcommands:
         \ database.\n\nOptions:\n  --db_name TEXT\n  --path TEXT\n  --help       \
         \   Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional: []
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - -c
+        - --config
         description: "-h, --hpo_term TEXT     Specify a hpo term\n-m, --mim_term TEXT\
           \     Specify a omim id\n-o, --outfile FILENAME  Specify path to outfile\n\
           -j, --to_json           If output should be in json format\n--chrom TEXT\
           \            The chromosome\n--start INTEGER\n--stop INTEGER\n--help   \
           \               Show this message and exit.\n"
-        synonyms:
-        - -c
-        - --config
         args: !SimpleFlagArg
           name: PATH
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag:
@@ -542,18 +677,19 @@ subcommands:
         \ The chromosome\n  --start INTEGER\n  --stop INTEGER\n  --help          \
         \        Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional: []
       named:
       - !Flag
-        description: "--path TEXT\n--help          Show this message and exit.\n"
+        optional: true
         synonyms:
         - --db_name
+        description: "--path TEXT\n--help          Show this message and exit.\n"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag:
@@ -563,18 +699,19 @@ subcommands:
         \nOptions:\n  --db_name TEXT\n  --path TEXT\n  --help          Show this message\
         \ and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional: []
       named:
       - !Flag
-        description: "--path TEXT\n--help          Show this message and exit.\n"
+        optional: true
         synonyms:
         - --db_name
+        description: "--path TEXT\n--help          Show this message and exit.\n"
         args: !SimpleFlagArg
           name: PATH
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag:
@@ -584,6 +721,7 @@ subcommands:
         \  --db_name PATH\n  --path TEXT\n  --help          Show this message and\
         \ exit.\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -594,35 +732,81 @@ subcommands:
       \  Create a gene database.\n  delete       Delete the database.\n  init    \
       \     Create a config file for phizz.\n  query        Query the hpo database.\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
-  help_flag:
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --db_name
+    - --path
+    - --help
+    description: Show this message and exit.
+    args: !SimpleFlagArg
+      name: TEXT
   usage_flag:
   version_flag:
   help_text: "Usage: phizz build-genes [OPTIONS] GENE_FILE\n\n  Create a gene database.\n\
     \nOptions:\n  --db_name TEXT\n  --path TEXT\n  --help          Show this message\
     \ and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional: []
   named:
   - !Flag
-    description: "-h, --hpo_term TEXT     Specify a hpo term\n-m, --mim_term TEXT\
-      \     Specify a omim id\n-o, --outfile FILENAME  Specify path to outfile\n-j,\
-      \ --to_json           If output should be in json format\n--chrom TEXT     \
-      \       The chromosome\n--start INTEGER\n--stop INTEGER\n--help            \
-      \      Show this message and exit.\n"
+    optional: true
     synonyms:
     - -c
     - --config
+    - -h
+    - --hpo_term
+    description: Specify a hpo term
     args: !SimpleFlagArg
       name: PATH
+  - !Flag
     optional: true
-  parent: *id010
+    synonyms:
+    - -m
+    - --mim_term
+    description: Specify a omim id
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outfile
+    description: Specify path to outfile
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --to_json
+    description: If output should be in json format
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --chrom
+    description: The chromosome
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id011
   subcommands: []
   usage: []
-  help_flag:
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --start
+    - --stop
+    - --help
+    description: Show this message and exit.
+    args: !SimpleFlagArg
+      name: INTEGER
   usage_flag:
   version_flag:
   help_text: "Usage: phizz query [OPTIONS]\n\n  Query the hpo database.\n\n  Print\
@@ -633,47 +817,52 @@ subcommands:
     \ chromosome\n  --start INTEGER\n  --stop INTEGER\n  --help                  Show\
     \ this message and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional: []
-  named:
-  - !Flag
-    description: "--path TEXT\n--help          Show this message and exit.\n"
-    synonyms:
-    - --db_name
-    args: !SimpleFlagArg
-      name: TEXT
-    optional: true
-  parent: *id010
+  named: []
+  parent: *id011
   subcommands: []
   usage: []
-  help_flag:
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --db_name
+    - --path
+    - --help
+    description: Show this message and exit.
+    args: !SimpleFlagArg
+      name: TEXT
   usage_flag:
   version_flag:
   help_text: "Usage: phizz init [OPTIONS]\n\n  Create a config file for phizz.\n\n\
     Options:\n  --db_name TEXT\n  --path TEXT\n  --help          Show this message\
     \ and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional: []
-  named:
-  - !Flag
-    description: "--path TEXT\n--help          Show this message and exit.\n"
-    synonyms:
-    - --db_name
-    args: !SimpleFlagArg
-      name: PATH
-    optional: true
-  parent: *id010
+  named: []
+  parent: *id011
   subcommands: []
   usage: []
-  help_flag:
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --db_name
+    - --path
+    - --help
+    description: Show this message and exit.
+    args: !SimpleFlagArg
+      name: PATH
   usage_flag:
   version_flag:
   help_text: "Usage: phizz delete [OPTIONS]\n\n  Delete the database.\n\nOptions:\n\
     \  --db_name PATH\n  --path TEXT\n  --help          Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -684,3 +873,4 @@ help_text: "Usage: phizz [OPTIONS] COMMAND [ARGS]...\n\n  phizz: query hpo and o
   \  Create a gene database.\n  delete       Delete the database.\n  init        \
   \ Create a config file for phizz.\n  query        Query the hpo database.\n"
 generated_using: *id004
+docker_image:

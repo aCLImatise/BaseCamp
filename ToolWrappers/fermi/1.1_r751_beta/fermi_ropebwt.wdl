@@ -36,6 +36,9 @@ task FermiRopebwt {
       ~{if (suppress_end_trimming) then "-O" else ""} \
       ~{if (print_tree_stdout) then "-T" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     algorithm_bpr_bcr: "algorithm: bpr or bcr [bpr]"
     max_number_runs: "max number of runs in leaves (bpr only) [512]"

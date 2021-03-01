@@ -8,6 +8,9 @@ task FindNovelJunctions {
     findNovelJunctions \
       ~{or}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     or: "./findNovelJunction refFlat.bed junction.bed"
   }

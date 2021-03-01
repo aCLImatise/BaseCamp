@@ -4,6 +4,9 @@ task EnvParallel {
   command <<<
     env_parallel
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

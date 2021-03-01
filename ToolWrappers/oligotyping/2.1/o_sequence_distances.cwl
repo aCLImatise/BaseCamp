@@ -3,12 +3,12 @@ id: o_sequence_distances.cwl
 inputs:
 - id: in_output_file
   doc: Output file to store results
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_file
 - id: in_align
   doc: If sequences require pairwise alignment
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --align
 - id: in_fast_a
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: Output file to store results
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - o-sequence-distances

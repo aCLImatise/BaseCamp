@@ -31,7 +31,7 @@ task CorrectSubcontigsCoordspl {
     String identity
     String overlap
     String threads
-    File file
+    File var_file
     String from
     Int length
     String to
@@ -68,7 +68,7 @@ task CorrectSubcontigsCoordspl {
       ~{identity} \
       ~{overlap} \
       ~{threads} \
-      ~{file} \
+      ~{var_file} \
       ~{from} \
       ~{length} \
       ~{to} \
@@ -96,6 +96,9 @@ task CorrectSubcontigsCoordspl {
       ~{if defined(thread) then ("--thread " +  '"' + thread + '"') else ""} \
       ~{if defined(var_10) then ("--help " +  '"' + var_10 + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query: "input contig fasta file (e.g., contig1.fa)"
     ref: "input reference file (e.g., ref.fa)"
@@ -126,7 +129,7 @@ task CorrectSubcontigsCoordspl {
     identity: ""
     overlap: ""
     threads: ""
-    file: ""
+    var_file: ""
     from: ""
     length: ""
     to: ""

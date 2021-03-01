@@ -10,6 +10,9 @@ task PyprophetScoreTargets {
       ~{py_prophet} \
       ~{score}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     py_prophet: ""
     score: ""

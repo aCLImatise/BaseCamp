@@ -28,6 +28,9 @@ task CreateClone {
       ~{if defined(project) then ("--project " +  '"' + project + '"') else ""} \
       ~{if defined(cime_output_root) then ("--cime-output-root " +  '"' + cime_output_root + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Print debug information (very verbose) to file /create_clone.log"
     verbose: "Add additional context (time and file) to log messages"

@@ -3,7 +3,7 @@ id: megalodon_extras_phase_variants_whatshap_filter.cwl
 inputs:
 - id: in_filtered_records
   doc: "File to output filtered records.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --filtered-records
 - id: in_in_vcf
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_filtered_records
   doc: "File to output filtered records.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_filtered_records)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - megalodon_extras

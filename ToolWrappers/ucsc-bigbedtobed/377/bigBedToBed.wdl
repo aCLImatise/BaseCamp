@@ -18,6 +18,9 @@ task BigBedToBed {
       ~{if defined(max_items) then ("-maxItems " +  '"' + max_items + '"') else ""} \
       ~{if (udc_dir) then "-udcDir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chrom: "- if set restrict output to given chromosome"
     start: "- if set, restrict output to only that over start"

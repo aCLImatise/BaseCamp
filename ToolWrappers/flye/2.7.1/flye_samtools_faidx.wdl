@@ -26,6 +26,9 @@ task FlyesamtoolsFaidx {
       ~{if defined(mark_strand) then ("--mark-strand " +  '"' + mark_strand + '"') else ""} \
       ~{if (fast_q) then "--fastq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     write_fasta_file: "Write FASTA to file."
     length: "Length of FASTA sequence line. [60]"

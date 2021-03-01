@@ -3,7 +3,7 @@ id: gcloud_iam_optional.cwl
 inputs:
 - id: in_flags
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 - id: in_group_vertical_line_command
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

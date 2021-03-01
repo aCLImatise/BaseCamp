@@ -14,6 +14,9 @@ task CompleteLocus {
       ~{if defined(output_directory) then ("--output-directory " +  '"' + output_directory + '"') else ""} \
       ~{if defined(suppress_warnings) then ("--suppress-warnings " +  '"' + suppress_warnings + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_input_file: "Path to input locus file"
     input_directory: "Path to directory containing locus files"

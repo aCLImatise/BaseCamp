@@ -10,11 +10,11 @@ task Fastasplitter {
     Int? part_num_prefix
     Directory? out_dir
     Boolean? no_pad
-    File file
+    File var_file
   }
   command <<<
     fasta_splitter \
-      ~{file} \
+      ~{var_file} \
       ~{if defined(n_parts) then ("--n-parts " +  '"' + n_parts + '"') else ""} \
       ~{if defined(part_size) then ("--part-size " +  '"' + part_size + '"') else ""} \
       ~{if (measure) then "--measure" else ""} \
@@ -24,6 +24,9 @@ task Fastasplitter {
       ~{if (out_dir) then "--out-dir" else ""} \
       ~{if (no_pad) then "--nopad" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_parts: "- Divide into <N> parts"
     part_size: "- Divide into parts of size <N>"
@@ -33,7 +36,7 @@ task Fastasplitter {
     part_num_prefix: "- Put T before part number in file names (def.: .part-)"
     out_dir: "- Specify output directory."
     no_pad: "- Don't pad part numbers with 0."
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

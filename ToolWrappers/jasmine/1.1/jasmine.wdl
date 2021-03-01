@@ -10,6 +10,9 @@ task Jasmine {
       ~{var_command} \
       ~{line}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_command: ""
     line: ""

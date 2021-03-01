@@ -3,12 +3,12 @@ id: sequana_gtf_fixer.cwl
 inputs:
 - id: in_input_gtf_file
   doc: input GTF file
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_output_gtf_file
   doc: output GTF file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_gtf_fixer
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_output_gtf_file
   doc: output GTF file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_gtf_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sequana_gtf_fixer

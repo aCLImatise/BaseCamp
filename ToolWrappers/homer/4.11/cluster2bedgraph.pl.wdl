@@ -12,6 +12,9 @@ task Cluster2bedgraphpl {
       ~{res} \
       ~{name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cluster_distance_file: ""
     res: ""

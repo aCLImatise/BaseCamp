@@ -3,86 +3,89 @@ command:
 - anvi-pan-genome
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: clusters.
   description: "--skip-hierarchical-clustering\nAnvi'o attempts to generate a hierarchical\
     \ clustering\nof your gene clusters once it identifies them so you\ncan use `anvi-display-pan`\
     \ to play with it. But if you\nwant to skip this step, this is your flag."
-  position: 0
-  name: clusters.
-  optional: false
 named:
 - !Flag
-  description: Anvi'o genomes storage file
+  optional: true
   synonyms:
   - -g
   - --genomes-storage
+  description: Anvi'o genomes storage file
   args: !SimpleFlagArg
     name: GENOMES_STORAGE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -G
+  - --genome-names
   description: "Genome names to 'focus'. You can use this parameter to\nlimit the\
     \ genomes included in your analysis. You can\nprovide these names as a comma-separated\
     \ list of\nnames, or you can put them in a file, where you have a\nsingle genome\
     \ name in each line, and provide the file\npath."
-  synonyms:
-  - -G
-  - --genome-names
   args: !SimpleFlagArg
     name: GENOME_NAMES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --skip-alignments
   description: "By default, anvi'o attempts to align amino acid\nsequences in each\
     \ gene cluster using multiple sequnce\nalignment via muscle. You can use this\
     \ flag to skip\nthat step and be upset later."
-  synonyms:
-  - --skip-alignments
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --skip-homogeneity
   description: "By default, anvi'o attempts to calculate homogeneity\nvalues for every\
     \ gene cluster, given that they are\naligned. You can use this flag to have anvi'o\
     \ skip\nhomogeneity calculations. Anvi'o will ignore this flag\nif you decide\
     \ to skip alignments"
-  synonyms:
-  - --skip-homogeneity
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --quick-homogeneity
   description: "By default, anvi'o will use a homogeneity algorithm\nthat checks for\
     \ horizontal and vertical geometric\nhomogeneity (along with functional). With\
     \ this flag,\nyou can tell anvi'o to skip horizontal geometric\nhomogeneity calculations.\
     \ It will be less accurate but\nquicker. Anvi'o will ignore this flag if you skip\n\
     homogeneity calculations or alignments all together."
-  synonyms:
-  - --quick-homogeneity
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The multiple sequence alignment program to use when\nmultiple sequence\
-    \ alignment is necessary. To see all\navailable options, use the flag `--list-aligners`."
+  optional: true
   synonyms:
   - --align-with
+  description: "The multiple sequence alignment program to use when\nmultiple sequence\
+    \ alignment is necessary. To see all\navailable options, use the flag `--list-aligners`."
   args: !SimpleFlagArg
     name: ALIGNER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --exclude-partial-gene-calls
   description: "By default, anvi'o includes all partial gene calls\nfrom the analysis,\
     \ which, in some cases, may inflate\nthe number of gene clusters identified and\
     \ introduce\nextra heterogeneity within those gene clusters. Using\nthis flag,\
     \ you can request anvi'o to exclude partial\ngene calls from the analysis (whether\
     \ a gene call is\npartial or not is an information that comes directly\nfrom the\
     \ gene caller used to identify genes during the\ngeneration of the contigs database)."
-  synonyms:
-  - --exclude-partial-gene-calls
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "This program uses DIAMOND by default, however, if you\nlike, you can\
-    \ use good ol' blastp from NCBI instead."
+  optional: true
   synonyms:
   - --use-ncbi-blast
+  description: "This program uses DIAMOND by default, however, if you\nlike, you can\
+    \ use good ol' blastp from NCBI instead."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --minbit
   description: "The minimum minbit value. The minbit heuristic\nprovides a mean to\
     \ set a to eliminate weak matches\nbetween two amino acid sequences. We learned\
     \ it from\nITEP (Benedict MN et al, doi:10.1186/1471-2164-15-8),\nwhich is a comprehensive\
@@ -94,34 +97,34 @@ named:
     \ to 0 if (1) they match over a very short\nstretch compared even to the length\
     \ of the shorter\namino acid sequence or (2) the match betwen sequence\nidentity\
     \ is low. The default is 0.5."
-  synonyms:
-  - --minbit
   args: !SimpleFlagArg
     name: MINBIT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mcl-inflation
   description: "MCL inflation parameter, that defines the sensitivity\nof the algorithm\
     \ during the identification of the gene\nclusters. More information on this parameter\
     \ and it's\neffect on cluster granularity is here:\n(http://micans.org/mcl/man/mclfaq.html#faq7.2).\
     \ The\ndefault is 2."
-  synonyms:
-  - --mcl-inflation
   args: !SimpleFlagArg
     name: INFLATION
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min-occurrence
   description: "Do you not want singletons?\\ You don't? Well, this\nparameter will\
     \ help you get rid of them (along with\ndoubletons, if you want). Anvi'o will\
     \ remove gene\nclusters that occur less than the number you set using\nthis parameter\
     \ from the analysis. The default is 1,\nwhich means everything will be kept. If\
     \ you want to\nremove singletons, set it to 2, if you want to remove\ndoubletons\
     \ as well, set it to 3, and so on."
-  synonyms:
-  - --min-occurrence
   args: !SimpleFlagArg
     name: NUM_OCCURRENCE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min-percent-identity
   description: "Minimum percent identity between the two amino acid\nsequences for\
     \ them to have an edge for MCL analysis.\nThis value will be used to filter hits\
     \ from Diamond\nsearch results. Because percent identity is not a\npredictor of\
@@ -130,106 +133,103 @@ named:
     \ entire length of those involved), we\nsuggest you rely on 'minbit' parameter.\
     \ But you know\nwhat? Maybe you shouldn't listen to anyone, and\nexperiment on\
     \ your own! The default is 0 percent."
-  synonyms:
-  - --min-percent-identity
   args: !SimpleFlagArg
     name: PERCENT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sensitive
   description: "DIAMOND sensitivity. With this flag you can instruct\nDIAMOND to be\
     \ 'sensitive', rather than 'fast' during\nthe search. It is likely the search\
     \ will take\nremarkably longer. But, hey, if you are doing it for\nyour final\
     \ analysis, maybe it should take longer and\nbe more accurate. This flag is only\
     \ relevant if you\nare running DIAMOND."
-  synonyms:
-  - --sensitive
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Name of the project. Please choose a short but\ndescriptive name (so\
-    \ anvi'o can use it whenever she\nneeds to name an output file, or add a new table\
-    \ in a\ndatabase, or name her first born)."
+  optional: true
   synonyms:
   - -n
   - --project-name
+  description: "Name of the project. Please choose a short but\ndescriptive name (so\
+    \ anvi'o can use it whenever she\nneeds to name an output file, or add a new table\
+    \ in a\ndatabase, or name her first born)."
   args: !SimpleFlagArg
     name: PROJECT_NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --description
   description: "A plain text file that contains some description about\nthe project.\
     \ You can use Markdwon syntax. The\ndescription text will be rendered and shown\
     \ in all\nrelevant interfaces, including the anvi'o interactive\ninterface, or\
     \ anvi'o summary outputs."
-  synonyms:
-  - --description
   args: !SimpleFlagArg
     name: TEXT_FILE
-  optional: true
 - !Flag
-  description: Directory path for output files
+  optional: true
   synonyms:
   - -o
   - --output-dir
+  description: Directory path for output files
   args: !SimpleFlagArg
     name: PAN_DB_DIR
-  optional: true
 - !Flag
-  description: "Overwrite if the output files and/or directories\nexist."
+  optional: true
   synonyms:
   - -W
   - --overwrite-output-destinations
+  description: "Overwrite if the output files and/or directories\nexist."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --num-threads
   description: "Maximum number of threads to use for multithreading\nwhenever possible.\
     \ Very conservatively, the default is\n1. It is a good idea to not exceed the\
     \ number of CPUs\n/ cores on your system. Plus, please be careful with\nthis option\
     \ if you are running your commands on a SGE\n--if you are clusterizing your runs,\
     \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
     \ fast."
-  synonyms:
-  - -T
-  - --num-threads
   args: !SimpleFlagArg
     name: NUM_THREADS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --enforce-hierarchical-clustering
   description: "If you want anvi'o to try to generate a hierarchical\nclustering of\
     \ your gene clusters even if the number of\ngene clusters exceeds its suggested\
     \ limit for\nhierarchical clustering, you can use this flag to\nenforce it. Are\
     \ you are a rebel of some sorts? Or did\ncomputers made you upset? Express your\
     \ anger towards\nmachine using this flag."
-  synonyms:
-  - --enforce-hierarchical-clustering
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --distance
   description: "The distance metric for the clustering of gene\nclusters. If you do\
     \ not use this flag, the default\ndistance metric will be used for each clustering\n\
     configuration which is \"euclidean\"."
-  synonyms:
-  - --distance
   args: !SimpleFlagArg
     name: DISTANCE_METRIC
-  optional: true
 - !Flag
-  description: "The same story with the `--distance`, except, the\nsystem default\
-    \ for this one is ward.\n"
+  optional: true
   synonyms:
   - --linkage
+  description: "The same story with the `--distance`, except, the\nsystem default\
+    \ for this one is ward.\n"
   args: !SimpleFlagArg
     name: LINKAGE_METHOD
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: anvi-pan-genome [-h] -g GENOMES_STORAGE [-G GENOME_NAMES]\n   \
@@ -372,3 +372,4 @@ help_text: "usage: anvi-pan-genome [-h] -g GENOMES_STORAGE [-G GENOME_NAMES]\n  
   \               system default for this one is ward.\n"
 generated_using:
 - --help
+docker_image:

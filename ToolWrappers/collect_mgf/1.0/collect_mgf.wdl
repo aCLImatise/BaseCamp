@@ -10,6 +10,9 @@ task CollectMgf {
       ~{exp_no_directory} \
       ~{dd_results_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exp_no_directory: ""
     dd_results_file: ""

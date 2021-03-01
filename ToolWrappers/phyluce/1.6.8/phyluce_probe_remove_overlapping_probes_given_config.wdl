@@ -12,6 +12,9 @@ task PhyluceProbeRemoveOverlappingProbesGivenConfig {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if defined(output_probe_file) then ("--output " +  '"' + output_probe_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     probes: "The input probe file"
     config: "The input conf file of probes names to remove"

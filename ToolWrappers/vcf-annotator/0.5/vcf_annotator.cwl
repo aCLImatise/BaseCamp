@@ -3,7 +3,7 @@ id: vcf_annotator.cwl
 inputs:
 - id: in_output
   doc: File to write VCF output to (Default STDOUT).
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_vcf_file
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: File to write VCF output to (Default STDOUT).
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vcf-annotator

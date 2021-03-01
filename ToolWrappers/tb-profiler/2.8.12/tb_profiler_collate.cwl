@@ -3,48 +3,48 @@ id: tb_profiler_collate.cwl
 inputs:
 - id: in_prefix
   doc: 'Sample prefix (default: tbprofiler)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --prefix
 - id: in_samples
   doc: 'File with samples (one per line) (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --samples
 - id: in_dir
   doc: 'Storage directory (default: results)'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --dir
 - id: in_full
   doc: 'Output mutations in main result file (default: False)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --full
 - id: in_all_variants
   doc: 'Output all variants in variant matrix (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --all_variants
 - id: in_mark_missing
   doc: "An asteriks will be use to mark predictions which are\naffected by missing\
     \ data at a drug resistance position\n(default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mark_missing
 - id: in_reporting_af
   doc: "Minimum allele frequency to call variants (default:\n0.1)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --reporting_af
 - id: in_db
   doc: "Full path to mutation database json file to use\n(default: tbdb)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --db
 - id: in_external_db
   doc: "Path to db files prefix (overrides \"--db\" parameter)\n(default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --external_db
 outputs:
@@ -53,9 +53,10 @@ outputs:
   type: stdout
 - id: out_full
   doc: 'Output mutations in main result file (default: False)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_full)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tb-profiler

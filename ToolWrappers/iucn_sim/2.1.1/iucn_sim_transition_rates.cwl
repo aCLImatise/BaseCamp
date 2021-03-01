@@ -6,18 +6,18 @@ inputs:
     \ as generation length (GL) data\nestimates if available. GL data is only used\
     \ for '--\nextinction_probs_mode 0' ('species_data.txt' output\nfrom get_iucn_data\
     \ function)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --species_data
 - id: in_iucn_history
   doc: "File containing IUCN history of the reference group\nfor transition rate estimation\
     \ ('*_iucn_history.txt'\noutput of get_iucn_data function)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --iucn_history
 - id: in_outdir
   doc: Provide path to outdir where results will be saved.
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_extinction_probs_mode
@@ -26,7 +26,7 @@ inputs:
     extinction probabilities. Set to '1' to simulate\nextinctions based on recorded\
     \ extinctions in IUCN\nhistory (e.g. Monroe et al, 2019 approach, no GL data\n\
     is being used)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --extinction_probs_mode
 - id: in_possibly_extinct_list
@@ -36,7 +36,7 @@ inputs:
     \ species will then be\nmodeled as extinct by the esimate_rates function,\nwhich\
     \ will effect the estimated extinction\nprobabilities when chosing `--extinction_probs_mode\
     \ 1`"
-  type: File
+  type: File?
   inputBinding:
     prefix: --possibly_extinct_list
 - id: in_rate_samples
@@ -47,22 +47,22 @@ inputs:
     `run_sim` function will randomely resample from the\navailable q-matrices (default=100,\
     \ this is ususally\nsufficient, larger numbers can lead to very high\noutput file\
     \ size volumes)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --rate_samples
 - id: in_n_gen
   doc: "Number of generations for MCMC for transition rate\nestimation (default=100000)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --n_gen
 - id: in_burnin
   doc: "Burn-in for MCMC for transition rate estimation\n(default=1000)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --burnin
 - id: in_seed
   doc: Set random seed for the MCMC.
-  type: string
+  type: string?
   inputBinding:
     prefix: --seed
 outputs:
@@ -72,7 +72,7 @@ outputs:
 - id: out_iucn_history
   doc: "File containing IUCN history of the reference group\nfor transition rate estimation\
     \ ('*_iucn_history.txt'\noutput of get_iucn_data function)."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_iucn_history)
 - id: out_possibly_extinct_list
@@ -82,9 +82,10 @@ outputs:
     \ species will then be\nmodeled as extinct by the esimate_rates function,\nwhich\
     \ will effect the estimated extinction\nprobabilities when chosing `--extinction_probs_mode\
     \ 1`"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_possibly_extinct_list)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - iucn_sim

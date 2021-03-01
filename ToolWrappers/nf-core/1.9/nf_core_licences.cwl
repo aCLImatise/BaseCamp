@@ -3,7 +3,7 @@ id: nf_core_licences.cwl
 inputs:
 - id: in_json
   doc: Print output in JSON
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --json
 - id: in_pipeline_name
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nf-core

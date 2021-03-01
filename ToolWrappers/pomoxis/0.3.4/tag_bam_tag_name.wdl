@@ -16,6 +16,9 @@ task TagBamTagName {
       ~{tag_name} \
       ~{tag_value}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tag_bam: ""
     var_input: ""

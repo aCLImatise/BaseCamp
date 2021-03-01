@@ -12,6 +12,9 @@ task ArrowArrowyml {
       ~{var_command} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arrow: ""
     var_command: ""

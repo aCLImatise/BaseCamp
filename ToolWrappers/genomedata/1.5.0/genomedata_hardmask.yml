@@ -1,0 +1,88 @@
+!Command
+command:
+- genomedata-hardmask
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: maskfile
+  description: input mask file
+- !Positional
+  optional: false
+  position: 1
+  name: gdarchive
+  description: genomedata archive
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --trackname
+  description: 'Track(s) to be filtered (default: all)'
+  args: !RepeatFlagArg
+    name: TRACKNAME
+- !Flag
+  optional: true
+  synonyms:
+  - --hardmask
+  description: "Specify a comparison operation on a value to mask out\n(e.g. \"lt0.5\"\
+    \ will mask all values less than 0.5). See\nthe bash comparison operators for\
+    \ the two letter\noperations (default: all values masked)"
+  args: !SimpleFlagArg
+    name: OPERATOR
+- !Flag
+  optional: true
+  synonyms:
+  - --no-close
+  description: Do not close the genomedata archive after masking
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dry-run
+  description: "Do not perform any masking. Useful with verbosity set\nto see what\
+    \ regions would be filtered"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Print status and diagnostic messages
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: genomedata-hard-mask [-h] [--version] [-t TRACKNAME [TRACKNAME\
+  \ ...]]\n                            [--hardmask OPERATOR] [--no-close] [--dry-run]\n\
+  \                            [--verbose]\n                            maskfile gdarchive\n\
+  \nPermanently mask TRACKNAME(s) from a genomedata archive with MASKFILE using an\n\
+  optional filter operator.\n\npositional arguments:\n  maskfile              input\
+  \ mask file\n  gdarchive             genomedata archive\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --version          \
+  \   show program's version number and exit\n  -t TRACKNAME [TRACKNAME ...], --trackname\
+  \ TRACKNAME [TRACKNAME ...]\n                        Track(s) to be filtered (default:\
+  \ all)\n  --hardmask OPERATOR   Specify a comparison operation on a value to mask\
+  \ out\n                        (e.g. \"lt0.5\" will mask all values less than 0.5).\
+  \ See\n                        the bash comparison operators for the two letter\n\
+  \                        operations (default: all values masked)\n  --no-close \
+  \           Do not close the genomedata archive after masking\n  --dry-run     \
+  \        Do not perform any masking. Useful with verbosity set\n               \
+  \         to see what regions would be filtered\n  --verbose             Print status\
+  \ and diagnostic messages\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/genomedata:1.5.0--py36h485661d_0

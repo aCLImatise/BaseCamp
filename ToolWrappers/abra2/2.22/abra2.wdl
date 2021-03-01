@@ -106,6 +106,9 @@ task Abra2 {
       ~{if (und_up) then "--undup" else ""} \
       ~{if (ws) then "--ws" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     am_q: "Set mapq for alignments that map\\nequally well to reference and an\\nABRA generated contig.  default of\\n-1 disables (default: -1)"
     ca: "Contig anchor [M_bases_at_contig_edge,\\nmax_mismatches_near_edge] (default:\\n10,2)"

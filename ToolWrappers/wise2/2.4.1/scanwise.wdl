@@ -102,6 +102,9 @@ task Scanwise {
       ~{if (pi_seq_max) then "-piseqmax" else ""} \
       ~{if (pi_seq_max_len) then "-piseqmax_len" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db_size: "[number] effective db size for Evalue calculation [300000]"
     scan_host: "[localhost] host name for wise server"

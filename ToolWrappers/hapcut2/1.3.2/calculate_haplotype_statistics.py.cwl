@@ -3,7 +3,7 @@ id: calculate_haplotype_statistics.py.cwl
 inputs:
 - id: in_v_two
   doc: optionally -h2 arguments). All files must contain information for one
-  type: long
+  type: long?
   inputBinding:
     prefix: -v2
 - id: in_vcf_one
@@ -34,13 +34,14 @@ inputs:
     prefix: --haplotype_blocks2
 - id: in_indels
   doc: "Use this flag to consider indel variants. Default:\nIndels ignored.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --indels
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - calculate_haplotype_statistics.py

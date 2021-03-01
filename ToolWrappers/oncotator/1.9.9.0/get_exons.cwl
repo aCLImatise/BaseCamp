@@ -3,7 +3,7 @@ id: get_exons.cwl
 inputs:
 - id: in_include_noncoding
   doc: Whether non-coding regions should be included.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --includeNonCoding
 - id: in_padding
@@ -21,7 +21,7 @@ inputs:
     \ gencode_basic_exons.txt | sort -k1,1 -k2,2n  > gencode_basic_exons.bed.txt\n\
     Then to merge the exons using bedtools, if you would like:\nmergeBed -nms -i gencode_basic_exons.bed.txt\
     \ > gencode_basic_exons.merged.txt\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --padding
 - id: in_input_gene_list_file
@@ -48,6 +48,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - get_exons

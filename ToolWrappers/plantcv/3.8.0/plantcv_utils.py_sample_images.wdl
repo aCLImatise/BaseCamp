@@ -12,6 +12,9 @@ task PlantcvutilspySampleImages {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(number) then ("--number " +  '"' + number + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     source: "Source directory of images"
     outdir: "Output directory for the random sample to get saved"

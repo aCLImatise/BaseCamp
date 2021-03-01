@@ -94,6 +94,9 @@ task Dinuc {
       ~{if (din_uc) then "-dinuc" else ""} \
       ~{if (no_blk) then "-noblk" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_menu: "Prevent the menu interface being displayed"
     nowarn: "Prevent warnings about sequences being displayed"

@@ -10,6 +10,9 @@ task Polcash {
       ~{if (r) then "-r" else ""} \
       ~{if defined(a) then ("-a " +  '"' + a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     a: ""

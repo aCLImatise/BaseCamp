@@ -4,119 +4,119 @@ command:
 - filter_reads
 positional:
 - !Positional
-  description: Sorted .bam file
+  optional: false
   position: 0
   name: bam
-  optional: false
+  description: Sorted .bam file
 - !Positional
-  description: Fasta file the bam is mapped to
+  optional: false
   position: 1
   name: fasta
-  optional: false
+  description: Fasta file the bam is mapped to
 named:
 - !Flag
-  description: "Location of folder to store read report(s) (default:\nNone)"
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "Location of folder to store read report(s) (default:\nNone)"
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: 'Number of processes to use (default: 6)'
+  optional: true
   synonyms:
   - -p
   - --processes
+  description: 'Number of processes to use (default: 6)'
   args: !SimpleFlagArg
     name: PROCESSES
-  optional: true
 - !Flag
-  description: 'Make extra debugging output (default: False)'
+  optional: true
   synonyms:
   - -d
   - --debug
+  description: 'Make extra debugging output (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum percent identity of read pairs to consensus to\nuse the reads.\
-    \ Must be >, not >= (default: 0.95)"
+  optional: true
   synonyms:
   - -l
   - --filter_cutoff
+  description: "Minimum percent identity of read pairs to consensus to\nuse the reads.\
+    \ Must be >, not >= (default: 0.95)"
   args: !SimpleFlagArg
     name: FILTER_CUTOFF
-  optional: true
 - !Flag
-  description: "Minimum mapq score of EITHER read in a pair to use\nthat pair. Must\
-    \ be >, not >= (default: -1)"
+  optional: true
   synonyms:
   - --min_mapq
+  description: "Minimum mapq score of EITHER read in a pair to use\nthat pair. Must\
+    \ be >, not >= (default: -1)"
   args: !SimpleFlagArg
     name: MIN_MAPQ
-  optional: true
 - !Flag
-  description: "Multiplier to determine maximum insert size between\ntwo reads - default\
-    \ is to use 3x median insert size.\nMust be >, not >= (default: 3)"
+  optional: true
   synonyms:
   - --max_insert_relative
+  description: "Multiplier to determine maximum insert size between\ntwo reads - default\
+    \ is to use 3x median insert size.\nMust be >, not >= (default: 3)"
   args: !SimpleFlagArg
     name: MAX_INSERT_RELATIVE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min_insert
   description: "Minimum insert size between two reads - default is 50\nbp. If two\
     \ reads are 50bp each and overlap completely,\ntheir insert will be 50. Must be\
     \ >, not >= (default:\n50)"
-  synonyms:
-  - --min_insert
   args: !SimpleFlagArg
     name: MIN_INSERT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pairing_filter
   description: "How should paired reads be handled?\npaired_only = Only paired reads\
     \ are retained\nnon_discordant = Keep all paired reads and singleton reads that\
     \ map to a single scaffold\nall_reads = Keep all reads regardless of pairing status\
     \ (NOT RECOMMENDED; See documentation for deatils)\n(default: paired_only)"
-  synonyms:
-  - --pairing_filter
   args: !ChoiceFlagArg
     choices: !!set
-      paired_only:
-      all_reads:
       non_discordant:
-  optional: true
+      all_reads:
+      paired_only:
 - !Flag
+  optional: true
+  synonyms:
+  - --priority_reads
   description: "The location of a list of reads that should be\nretained regardless\
     \ of pairing status (for example\nlong reads or merged reads). This can be a .fastq\
     \ file\nor text file with list of read names (will assume file\nis compressed\
     \ if ends in .gz (default: None)"
-  synonyms:
-  - --priority_reads
   args: !SimpleFlagArg
     name: PRIORITY_READS
-  optional: true
 - !Flag
-  description: "Store read filtering info for each scaffold (default:\nFalse)"
+  optional: true
   synonyms:
   - --scaffold_level_read_report
+  description: "Store read filtering info for each scaffold (default:\nFalse)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Make a detailed read report indicating deatils about\neach individual\
-    \ mapped read (default: False)\n"
+  optional: true
   synonyms:
   - --deatiled_read_report
+  description: "Make a detailed read report indicating deatils about\neach individual\
+    \ mapped read (default: False)\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: inStrain filter_reads [-o OUTPUT] [-p PROCESSES] [-d] [-h]\n  \
@@ -161,3 +161,4 @@ help_text: "usage: inStrain filter_reads [-o OUTPUT] [-p PROCESSES] [-d] [-h]\n 
   \                        each individual mapped read (default: False)\n"
 generated_using:
 - --help
+docker_image:

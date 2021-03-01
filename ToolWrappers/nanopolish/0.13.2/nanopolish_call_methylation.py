@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String, Int, Directory
+
+Nanopolish_Call_Methylation_V0_1_0 = CommandToolBuilder(tool="nanopolish_call_methylation", base_command=["nanopolish", "call-methylation"], inputs=[ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="display verbose output")), ToolInput(tag="in_reads", input_type=File(optional=True), prefix="--reads", doc=InputDocumentation(doc="the ONT reads are in fasta/fastq FILE")), ToolInput(tag="in_bam", input_type=File(optional=True), prefix="--bam", doc=InputDocumentation(doc="the reads aligned to the genome assembly are in bam FILE")), ToolInput(tag="in_genome", input_type=File(optional=True), prefix="--genome", doc=InputDocumentation(doc="the genome we are calling methylation for is in fasta FILE")), ToolInput(tag="in_methylation", input_type=String(optional=True), prefix="--methylation", doc=InputDocumentation(doc="the type of methylation (cpg,gpc,dam,dcm)")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="use NUM threads (default: 1)")), ToolInput(tag="in_watch", input_type=Directory(optional=True), prefix="--watch", doc=InputDocumentation(doc="watch the sequencing run directory DIR and call methylation as data is generated")), ToolInput(tag="in_watch_write_bam", input_type=Boolean(optional=True), prefix="--watch-write-bam", doc=InputDocumentation(doc="in watch mode, write the alignments for each fastq")), ToolInput(tag="in_watch_process_total", input_type=Directory(optional=True), prefix="--watch-process-total", doc=InputDocumentation(doc="in watch mode, there are TOTAL calling processes running against this directory")), ToolInput(tag="in_watch_process_index", input_type=File(optional=True), prefix="--watch-process-index", doc=InputDocumentation(doc="in watch mode, the index of this process is IDX\nthe previous two options allow you to run multiple independent methylation\ncalling processes against a single directory. Each process will only call\nfiles when X mod TOTAL == IDX, where X is the suffix of the fast5 file.")), ToolInput(tag="in_progress", input_type=Boolean(optional=True), prefix="--progress", doc=InputDocumentation(doc="print out a progress message")), ToolInput(tag="in_batch_size", input_type=Int(optional=True), prefix="--batchsize", doc=InputDocumentation(doc="the batch size (default: 512)"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Nanopolish_Call_Methylation_V0_1_0().translate("wdl", allow_empty_container=True)
+

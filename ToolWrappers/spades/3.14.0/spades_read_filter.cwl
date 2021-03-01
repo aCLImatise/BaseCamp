@@ -3,28 +3,28 @@ id: spades_read_filter.cwl
 inputs:
 - id: in_km_er
   doc: K-mer length
-  type: long
+  type: long?
   inputBinding:
     prefix: --kmer
 - id: in_cov
   doc: Median kmer count threshold (read pairs, s.t. kmer count median for BOTH reads
     LESS OR EQUAL to this value will be ignored)
-  type: string
+  type: string?
   inputBinding:
     prefix: --cov
 - id: in_dataset
   doc: Dataset description (in YAML)
-  type: string
+  type: string?
   inputBinding:
     prefix: --dataset
 - id: in_threads
   doc: '# of threads to use'
-  type: string
+  type: string?
   inputBinding:
     prefix: --threads
 - id: in_outdir
   doc: Output directory to use
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 outputs:
@@ -33,9 +33,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: Output directory to use
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - spades-read-filter

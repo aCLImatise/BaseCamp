@@ -28,6 +28,9 @@ task Hal2mafSplitpl {
       ~{if defined(hal_exec_dir) then ("--hal_exec_dir " +  '"' + hal_exec_dir + '"') else ""} \
       ~{if defined(no_split_list) then ("--no_split_list " +  '"' + no_split_list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hal_file: "F is the input hal file"
     ref_genome: "S is the name of the reference genome"

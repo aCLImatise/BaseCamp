@@ -28,6 +28,9 @@ task Bwamethpy {
       ~{bwa} \
       ~{me_mdot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_map: ""
     bisulfite: ""

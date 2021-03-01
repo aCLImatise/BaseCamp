@@ -12,6 +12,9 @@ task Pygvcf2coverage {
       ~{if (no_merge) then "--no_merge" else ""} \
       ~{if defined(distance) then ("--distance " +  '"' + distance + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threshold: "DP threshold"
     no_merge: "Do not merge entries"

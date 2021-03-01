@@ -12,6 +12,9 @@ task TANmask {
       ~{if (shortest_tandem_interval) then "-l" else ""} \
       ~{if (use_name_tandem) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose_mode_output: ": Verbose mode, output statistics as proceed."
     shortest_tandem_interval: ": shortest tandem interval to report."

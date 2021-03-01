@@ -8,6 +8,9 @@ task GhosttreeExtensionsCOMMAND {
     ghost_tree extensions COMMAND \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     args: ""
   }

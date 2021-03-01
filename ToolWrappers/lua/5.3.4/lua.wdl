@@ -20,6 +20,9 @@ task Lua {
       ~{if (show_version_information) then "-v" else ""} \
       ~{if (ignore_environment_variables) then "-E" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     execute_string: "execute string 'stat'"
     enter_interactive_mode: "enter interactive mode after executing 'script'"

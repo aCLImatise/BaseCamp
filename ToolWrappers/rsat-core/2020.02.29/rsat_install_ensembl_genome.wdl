@@ -18,6 +18,9 @@ task RsatInstallensemblgenome {
       ~{analysis_dot} \
       ~{incomplete_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     install_ensembl_genome: "[1mVERSION[0m"
     util: "[1mUSAGE[0m"

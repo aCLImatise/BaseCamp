@@ -14,6 +14,9 @@ task DrdiscoIsblacklistedReported {
       ~{pos_one} \
       ~{pos_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dr_disco: ""
     is_blacklisted: ""

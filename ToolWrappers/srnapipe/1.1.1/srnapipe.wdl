@@ -48,6 +48,9 @@ task Srnapipe {
       ~{if defined(ppp_on) then ("--PPPon " +  '"' + ppp_on + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "Fastq file to process"
     fast_q_n: "Name of the content to process"

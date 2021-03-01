@@ -18,6 +18,9 @@ task KinamineYshaker {
       ~{fdr} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jar: ""
     java: ""

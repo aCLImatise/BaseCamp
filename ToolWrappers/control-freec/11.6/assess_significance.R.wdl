@@ -4,6 +4,9 @@ task AssessSignificanceR {
   command <<<
     assess_significance_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

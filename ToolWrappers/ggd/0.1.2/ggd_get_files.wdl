@@ -16,6 +16,9 @@ task GgdGetfiles {
       ~{if defined(pattern) then ("--pattern " +  '"' + pattern + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     channel: "The ggd channel of the recipe to find. (Default =\\ngenomics)"
     species: "(Optional) species recipe is for. Use '*' for any\\nspecies"

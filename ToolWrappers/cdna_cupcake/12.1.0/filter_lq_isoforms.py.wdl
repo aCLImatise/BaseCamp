@@ -16,6 +16,9 @@ task FilterLqIsoformspy {
       ~{if defined(min_exp_acc) then ("--min_exp_acc " +  '"' + min_exp_acc + '"') else ""} \
       ~{if (is_fl_nc) then "--is_flnc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_fl_count: "Minimum FL count (default: 2)."
     min_exp_acc: "Minimum predicted accuracy (default: 0.99)."

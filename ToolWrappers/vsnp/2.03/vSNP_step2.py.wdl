@@ -26,6 +26,9 @@ task VSNPStep2py {
       ~{if defined(cwd) then ("--cwd " +  '"' + cwd + '"') else ""} \
       ~{if defined(gbk) then ("--gbk " +  '"' + gbk + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "provide a valid reference, see -t output"
     table: "see valid reference types available"

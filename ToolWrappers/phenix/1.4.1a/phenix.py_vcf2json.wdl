@@ -16,6 +16,9 @@ task PhenixpyVcf2json {
       ~{if (vcf_is_filtered) then "--vcf_is_filtered" else ""} \
       ~{if (summary_info) then "--summary_info" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_vcf_file: "path to a VCF file"
     output_file_prefix: "Path to the json output file (without file extension).\\nDefault: sample_name"

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, String, Boolean
+
+Riboplot_V0_1_0 = CommandToolBuilder(tool="riboplot", base_command=["riboplot"], inputs=[ToolInput(tag="in_rna_file", input_type=File(optional=True), prefix="--rna_file", doc=InputDocumentation(doc="RNA-Seq alignment file (BAM)")), ToolInput(tag="in_read_lengths", input_type=Int(optional=True), prefix="--read_lengths", doc=InputDocumentation(doc="Read lengths to consider (default: 0). Multiple read\nlengths should be separated by commas. If multiple\nread lengths are specified, corresponding read offsets\nshould also be specified. If you do not wish to apply\nan offset, please input 0 for the corresponding read\nlength")), ToolInput(tag="in_read_offsets", input_type=Int(optional=True), prefix="--read_offsets", doc=InputDocumentation(doc="Read offsets (default: 0). Multiple read offsets\nshould be separated by commas")), ToolInput(tag="in_color_scheme", input_type=String(optional=True), prefix="--color_scheme", doc=InputDocumentation(doc="Color scheme to use (default: default)")), ToolInput(tag="in_html_file", input_type=File(optional=True), prefix="--html_file", doc=InputDocumentation(doc="Output file for results (HTML)")), ToolInput(tag="in_output_path", input_type=File(optional=True), prefix="--output_path", doc=InputDocumentation(doc="Files are saved in this directory")), ToolInput(tag="in_debug", input_type=Boolean(optional=True), prefix="--debug", doc=InputDocumentation(doc="Flag. Produce debug output")), ToolInput(tag="in_ribo_file", input_type=File(optional=True), prefix="--ribo_file", doc=InputDocumentation(doc="Ribo-Seq alignment file in BAM format")), ToolInput(tag="in_transcriptome_fast_a", input_type=File(optional=True), prefix="--transcriptome_fasta", doc=InputDocumentation(doc="FASTA format file of the transcriptome")), ToolInput(tag="in_transcript_name", input_type=String(optional=True), prefix="--transcript_name", doc=InputDocumentation(doc="Transcript name\n"))], outputs=[ToolOutput(tag="out_html_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_html_file", type_hint=File()), doc=OutputDocumentation(doc="Output file for results (HTML)")), ToolOutput(tag="out_output_path", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_path", type_hint=File()), doc=OutputDocumentation(doc="Files are saved in this directory"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Riboplot_V0_1_0().translate("wdl", allow_empty_container=True)
+

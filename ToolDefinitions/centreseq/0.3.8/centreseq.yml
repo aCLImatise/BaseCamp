@@ -11,22 +11,22 @@ subcommands:
   - genome
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: centreseq
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: COMMAND
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: true
     position: 2
     name: ARGS
-    optional: true
+    description: ''
   named: []
-  parent: &id010 !Command
+  parent: &id011 !Command
     command: *id001
     positional: []
     named: []
@@ -36,22 +36,22 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: centreseq
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: COMMAND
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: true
         position: 2
         name: ARGS
-        optional: true
+        description: ''
       named: []
-      parent: &id009 !Command
+      parent: &id010 !Command
         command: *id001
         positional: []
         named: []
@@ -61,22 +61,22 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: centreseq
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: COMMAND
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: true
             position: 2
             name: ARGS
-            optional: true
+            description: ''
           named: []
-          parent: &id008 !Command
+          parent: &id009 !Command
             command: *id001
             positional: []
             named: []
@@ -86,22 +86,22 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: centreseq
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: COMMAND
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: true
                 position: 2
                 name: ARGS
-                optional: true
+                description: ''
               named: []
-              parent: &id003 !Command
+              parent: &id008 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -111,22 +111,397 @@ subcommands:
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: centreseq
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: COMMAND
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: true
                     position: 2
                     name: ARGS
-                    optional: true
+                    description: ''
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: centreseq
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: COMMAND
+                        description: ''
+                      - !Positional
+                        optional: true
+                        position: 2
+                        name: ARGS
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: centreseq [OPTIONS] COMMAND [ARGS]...\nTry\
+                        \ \"centreseq --help\" for help.\n\nError: No such command\
+                        \ \"genome\".\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - centreseq
+                      - tree
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        - --summary-report
+                        description: "Path to summary_report.csv file produced by\
+                          \ the\ncore pipeline  [required]"
+                        args: !SimpleFlagArg
+                          name: PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -p
+                        - --prokka-dir
+                        description: "Path to the Prokka output directory generated\
+                          \ by\nthe core pipeline  [required]"
+                        args: !SimpleFlagArg
+                          name: PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --outdir
+                        description: "Root directory to store all output files\n[required]"
+                        args: !SimpleFlagArg
+                          name: PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -pct
+                        - --percentile
+                        description: "Filter summary report by n_members to the top\
+                          \ nth\npercentile. Defaults to 99.0."
+                        args: !SimpleFlagArg
+                          name: FLOAT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -n
+                        - --n-cpu
+                        description: "Number of CPUs to dedicate to parallelizable\n\
+                          steps of the pipeline.Will take all available\nCPUs - 1\
+                          \ if not specified."
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -v
+                        - --verbose
+                        description: Set this flag to enable more verbose logging.
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --version
+                        description: Use this flag to print the version and exit.
+                        args: !EmptyFlagArg {}
+                      help_text: "Usage: centreseq tree [OPTIONS]\n\n  Processes centreseq\
+                        \ core output files to produce files that can be fed\n  into\
+                        \ phylogenetic tree building software.\n\nOptions:\n  -s,\
+                        \ --summary-report PATH  Path to summary_report.csv file produced\
+                        \ by the\n                             core pipeline  [required]\n\
+                        \  -p, --prokka-dir PATH      Path to the Prokka output directory\
+                        \ generated by\n                             the core pipeline\
+                        \  [required]\n  -o, --outdir PATH          Root directory\
+                        \ to store all output files\n                            \
+                        \ [required]\n  -pct, --percentile FLOAT   Filter summary\
+                        \ report by n_members to the top nth\n                   \
+                        \          percentile. Defaults to 99.0.\n  -n, --n-cpu INTEGER\
+                        \        Number of CPUs to dedicate to parallelizable\n  \
+                        \                           steps of the pipeline.Will take\
+                        \ all available\n                             CPUs - 1 if\
+                        \ not specified.\n  -v, --verbose              Set this flag\
+                        \ to enable more verbose logging.\n  --version           \
+                        \       Use this flag to print the version and exit.\n  --help\
+                        \                     Show this message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - centreseq
+                      - subset
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -i
+                        - --input-samples
+                        description: "Path to a new line separated text file containing\n\
+                          each Sample ID to target  [required]"
+                        args: !SimpleFlagArg
+                          name: PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        - --summary-report
+                        description: "Path to summary report generated by the centreseq\n\
+                          core command, i.e. summary_report.tsv  [required]"
+                        args: !SimpleFlagArg
+                          name: PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --outpath
+                        description: "Path to desired output file. If no value is\n\
+                          provided, will create a new report in the same\ndirectory\
+                          \ as the input summary report."
+                        args: !SimpleFlagArg
+                          name: PATH
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: centreseq subset [OPTIONS]\n\n  Given an\
+                        \ input text file of Sample IDs and a summary report, will\
+                        \ return a\n  filtered version of the summary report for clusters\
+                        \ that belong\n  exclusively in the input sample ID list\n\
+                        \nOptions:\n  -i, --input-samples PATH   Path to a new line\
+                        \ separated text file containing\n                       \
+                        \      each Sample ID to target  [required]\n  -s, --summary-report\
+                        \ PATH  Path to summary report generated by the centreseq\n\
+                        \                             core command, i.e. summary_report.tsv\
+                        \  [required]\n  -o, --outpath PATH         Path to desired\
+                        \ output file. If no value is\n                          \
+                        \   provided, will create a new report in the same\n     \
+                        \                        directory as the input summary report.\n\
+                        \  --help                     Show this message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - centreseq
+                      - core
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        - --fasta-dir
+                        description: "Path to directory containing *.fasta files for\n\
+                          input to the core pipeline  [required]"
+                        args: !SimpleFlagArg
+                          name: PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --outdir
+                        description: "Root directory to store all output files. If\n\
+                          this directory already exists, the pipeline\nwill attempt\
+                          \ to skip the Prokka step by reading\nin the existing Prokka\
+                          \ output directory, but\nwill overwrite all other existing\
+                          \ result files.\n[required]"
+                        args: !SimpleFlagArg
+                          name: PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -n
+                        - --n-cpu
+                        description: "Number of CPUs to dedicate to parallelizable\n\
+                          steps of the pipeline. Will take all available\nCPUs - 1\
+                          \ by default."
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --n-cpu-medoid
+                        description: "Number of CPUs for the representative medoid\n\
+                          picking step (if enabled). You will need\nsubstantial RAM\
+                          \ per CPU."
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -m
+                        - --min-seq-id
+                        description: "Sets the mmseqs cluster parameter \"--min-seq-\n\
+                          id\". Defaults to 0.95."
+                        args: !SimpleFlagArg
+                          name: FLOAT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        - --coverage-length
+                        description: "Sets the mmseqs cluster coverage parameter \"\
+                          -c\"\ndirectly. Defaults to 0.95, which is the\nrecommended\
+                          \ setting."
+                        args: !SimpleFlagArg
+                          name: FLOAT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --medoid-repseqs
+                        description: "This setting will identify the representative\n\
+                          medoid nucleotide sequence for each core\ncluster. Enabling\
+                          \ this will increase\ncomputation time considerably. Note\
+                          \ that this\nparameter has no effect on the number of core\n\
+                          clusters detected."
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --pairwise
+                        description: "Generate pairwise comparisons of all core\n\
+                          genomes. This setting allows for viewing an\ninteractive\
+                          \ network chart which visualizes core\ngenome relatedness."
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -v
+                        - --verbose
+                        description: Set this flag to enable more verbose logging.
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --version
+                        description: Use this flag to print the version and exit.
+                        args: !EmptyFlagArg {}
+                      help_text: "Usage: centreseq core [OPTIONS]\n\n  Given an input\
+                        \ directory containing any number of assemblies (.fasta),\n\
+                        \  centreseq core will 1) annotate the genomes with Prokka,\
+                        \ 2) perform self-\n  clustering on each genome with MMSeqs2\
+                        \ linclust, 3) concatenate the self-\n  clustered genomes\
+                        \ into a single pan-genome, 4) cluster the pan-genome with\n\
+                        \  MMSeqs2 linclust, establishing a core genome, 5) generate\
+                        \ helpful reports\n  to interrogate your dataset Note that\
+                        \ if specified output directory\n  already exists, centreseq\
+                        \ will search for an existing Prokka directory and\n  skip\
+                        \ this step if possible.\n\nOptions:\n  -f, --fasta-dir PATH\
+                        \         Path to directory containing *.fasta files for\n\
+                        \                               input to the core pipeline\
+                        \  [required]\n  -o, --outdir PATH            Root directory\
+                        \ to store all output files. If\n                        \
+                        \       this directory already exists, the pipeline\n    \
+                        \                           will attempt to skip the Prokka\
+                        \ step by reading\n                               in the existing\
+                        \ Prokka output directory, but\n                         \
+                        \      will overwrite all other existing result files.\n \
+                        \                              [required]\n  -n, --n-cpu INTEGER\
+                        \          Number of CPUs to dedicate to parallelizable\n\
+                        \                               steps of the pipeline. Will\
+                        \ take all available\n                               CPUs\
+                        \ - 1 by default.\n  --n-cpu-medoid INTEGER       Number of\
+                        \ CPUs for the representative medoid\n                   \
+                        \            picking step (if enabled). You will need\n  \
+                        \                             substantial RAM per CPU.\n \
+                        \ -m, --min-seq-id FLOAT       Sets the mmseqs cluster parameter\
+                        \ \"--min-seq-\n                               id\". Defaults\
+                        \ to 0.95.\n  -c, --coverage-length FLOAT  Sets the mmseqs\
+                        \ cluster coverage parameter \"-c\"\n                    \
+                        \           directly. Defaults to 0.95, which is the\n   \
+                        \                            recommended setting.\n  --medoid-repseqs\
+                        \             This setting will identify the representative\n\
+                        \                               medoid nucleotide sequence\
+                        \ for each core\n                               cluster. Enabling\
+                        \ this will increase\n                               computation\
+                        \ time considerably. Note that this\n                    \
+                        \           parameter has no effect on the number of core\n\
+                        \                               clusters detected.\n  --pairwise\
+                        \                   Generate pairwise comparisons of all core\n\
+                        \                               genomes. This setting allows\
+                        \ for viewing an\n                               interactive\
+                        \ network chart which visualizes core\n                  \
+                        \             genome relatedness.\n  -v, --verbose       \
+                        \         Set this flag to enable more verbose logging.\n\
+                        \  --version                    Use this flag to print the\
+                        \ version and exit.\n  --help                       Show this\
+                        \ message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --help
+                      description: Show this message and exit.
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --version
+                      description: Print the version and exit.
+                      args: !EmptyFlagArg {}
+                    help_text: "Usage: centreseq [OPTIONS] COMMAND [ARGS]...\n\n \
+                      \ centreseq builds an annotated core genome using assemblies\
+                      \ as input.\n\nOptions:\n  --version  Print the version and\
+                      \ exit.\n  --help     Show this message and exit.\n\nCommands:\n\
+                      \  core     Given an input directory containing assemblies,\
+                      \ establishes a core\n           genome\n  extract  Helper tool\
+                      \ to extract sequences from a particular core cluster\n  subset\
+                      \   Subset summary_report.tsv to only samples of interest\n\
+                      \  tree     Produces output for phylogenetic tree software\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -135,81 +510,79 @@ subcommands:
                   help_text: "Usage: centreseq [OPTIONS] COMMAND [ARGS]...\nTry \"\
                     centreseq --help\" for help.\n\nError: No such command \"genome\"\
                     .\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - centreseq
-                  - tree
+                  command: *id005
                   positional: []
                   named:
                   - !Flag
-                    description: "Path to summary_report.csv file produced by the\n\
-                      core pipeline  [required]"
+                    optional: true
                     synonyms:
                     - -s
                     - --summary-report
+                    description: "Path to summary_report.csv file produced by the\n\
+                      core pipeline  [required]"
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   - !Flag
-                    description: "Path to the Prokka output directory generated by\n\
-                      the core pipeline  [required]"
+                    optional: true
                     synonyms:
                     - -p
                     - --prokka-dir
+                    description: "Path to the Prokka output directory generated by\n\
+                      the core pipeline  [required]"
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   - !Flag
-                    description: "Root directory to store all output files\n[required]"
+                    optional: true
                     synonyms:
                     - -o
                     - --outdir
+                    description: "Root directory to store all output files\n[required]"
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   - !Flag
-                    description: "Filter summary report by n_members to the top nth\n\
-                      percentile. Defaults to 99.0."
+                    optional: true
                     synonyms:
                     - -pct
                     - --percentile
+                    description: "Filter summary report by n_members to the top nth\n\
+                      percentile. Defaults to 99.0."
                     args: !SimpleFlagArg
                       name: FLOAT
-                    optional: true
                   - !Flag
-                    description: "Number of CPUs to dedicate to parallelizable\nsteps\
-                      \ of the pipeline.Will take all available\nCPUs - 1 if not specified."
+                    optional: true
                     synonyms:
                     - -n
                     - --n-cpu
+                    description: "Number of CPUs to dedicate to parallelizable\nsteps\
+                      \ of the pipeline.Will take all available\nCPUs - 1 if not specified."
                     args: !SimpleFlagArg
                       name: INTEGER
-                    optional: true
                   - !Flag
-                    description: Set this flag to enable more verbose logging.
+                    optional: true
                     synonyms:
                     - -v
                     - --verbose
+                    description: Set this flag to enable more verbose logging.
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag: !Flag
-                    description: Use this flag to print the version and exit.
+                    optional: true
                     synonyms:
                     - --version
+                    description: Use this flag to print the version and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   help_text: "Usage: centreseq tree [OPTIONS]\n\n  Processes centreseq\
                     \ core output files to produce files that can be fed\n  into phylogenetic\
                     \ tree building software.\n\nOptions:\n  -s, --summary-report\
@@ -229,49 +602,48 @@ subcommands:
                     \ flag to print the version and exit.\n  --help              \
                     \       Show this message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - centreseq
-                  - subset
+                  command: *id006
                   positional: []
                   named:
                   - !Flag
-                    description: "Path to a new line separated text file containing\n\
-                      each Sample ID to target  [required]"
+                    optional: true
                     synonyms:
                     - -i
                     - --input-samples
+                    description: "Path to a new line separated text file containing\n\
+                      each Sample ID to target  [required]"
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   - !Flag
-                    description: "Path to summary report generated by the centreseq\n\
-                      core command, i.e. summary_report.tsv  [required]"
+                    optional: true
                     synonyms:
                     - -s
                     - --summary-report
+                    description: "Path to summary report generated by the centreseq\n\
+                      core command, i.e. summary_report.tsv  [required]"
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   - !Flag
-                    description: "Path to desired output file. If no value is\nprovided,\
-                      \ will create a new report in the same\ndirectory as the input\
-                      \ summary report."
+                    optional: true
                     synonyms:
                     - -o
                     - --outpath
+                    description: "Path to desired output file. If no value is\nprovided,\
+                      \ will create a new report in the same\ndirectory as the input\
+                      \ summary report."
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: centreseq subset [OPTIONS]\n\n  Given an input\
@@ -289,109 +661,108 @@ subcommands:
                     \ summary report.\n  --help                     Show this message\
                     \ and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - centreseq
-                  - core
+                  command: *id007
                   positional: []
                   named:
                   - !Flag
-                    description: "Path to directory containing *.fasta files for\n\
-                      input to the core pipeline  [required]"
+                    optional: true
                     synonyms:
                     - -f
                     - --fasta-dir
+                    description: "Path to directory containing *.fasta files for\n\
+                      input to the core pipeline  [required]"
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -o
+                    - --outdir
                     description: "Root directory to store all output files. If\nthis\
                       \ directory already exists, the pipeline\nwill attempt to skip\
                       \ the Prokka step by reading\nin the existing Prokka output\
                       \ directory, but\nwill overwrite all other existing result files.\n\
                       [required]"
-                    synonyms:
-                    - -o
-                    - --outdir
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   - !Flag
-                    description: "Number of CPUs to dedicate to parallelizable\nsteps\
-                      \ of the pipeline. Will take all available\nCPUs - 1 by default."
+                    optional: true
                     synonyms:
                     - -n
                     - --n-cpu
+                    description: "Number of CPUs to dedicate to parallelizable\nsteps\
+                      \ of the pipeline. Will take all available\nCPUs - 1 by default."
                     args: !SimpleFlagArg
                       name: INTEGER
-                    optional: true
                   - !Flag
-                    description: "Number of CPUs for the representative medoid\npicking\
-                      \ step (if enabled). You will need\nsubstantial RAM per CPU."
+                    optional: true
                     synonyms:
                     - --n-cpu-medoid
+                    description: "Number of CPUs for the representative medoid\npicking\
+                      \ step (if enabled). You will need\nsubstantial RAM per CPU."
                     args: !SimpleFlagArg
                       name: INTEGER
-                    optional: true
                   - !Flag
-                    description: "Sets the mmseqs cluster parameter \"--min-seq-\n\
-                      id\". Defaults to 0.95."
+                    optional: true
                     synonyms:
                     - -m
                     - --min-seq-id
+                    description: "Sets the mmseqs cluster parameter \"--min-seq-\n\
+                      id\". Defaults to 0.95."
                     args: !SimpleFlagArg
                       name: FLOAT
-                    optional: true
                   - !Flag
-                    description: "Sets the mmseqs cluster coverage parameter \"-c\"\
-                      \ndirectly. Defaults to 0.95, which is the\nrecommended setting."
+                    optional: true
                     synonyms:
                     - -c
                     - --coverage-length
+                    description: "Sets the mmseqs cluster coverage parameter \"-c\"\
+                      \ndirectly. Defaults to 0.95, which is the\nrecommended setting."
                     args: !SimpleFlagArg
                       name: FLOAT
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --medoid-repseqs
                     description: "This setting will identify the representative\n\
                       medoid nucleotide sequence for each core\ncluster. Enabling\
                       \ this will increase\ncomputation time considerably. Note that\
                       \ this\nparameter has no effect on the number of core\nclusters\
                       \ detected."
-                    synonyms:
-                    - --medoid-repseqs
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --pairwise
                     description: "Generate pairwise comparisons of all core\ngenomes.\
                       \ This setting allows for viewing an\ninteractive network chart\
                       \ which visualizes core\ngenome relatedness."
-                    synonyms:
-                    - --pairwise
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Set this flag to enable more verbose logging.
+                    optional: true
                     synonyms:
                     - -v
                     - --verbose
+                    description: Set this flag to enable more verbose logging.
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag: !Flag
-                    description: Use this flag to print the version and exit.
+                    optional: true
                     synonyms:
                     - --version
+                    description: Use this flag to print the version and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   help_text: "Usage: centreseq core [OPTIONS]\n\n  Given an input\
                     \ directory containing any number of assemblies (.fasta),\n  centreseq\
                     \ core will 1) annotate the genomes with Prokka, 2) perform self-\n\
@@ -439,20 +810,11 @@ subcommands:
                     \          Use this flag to print the version and exit.\n  --help\
                     \                       Show this message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: Print the version and exit.
-                  synonyms:
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "Usage: centreseq [OPTIONS] COMMAND [ARGS]...\n\n  centreseq\
                   \ builds an annotated core genome using assemblies as input.\n\n\
                   Options:\n  --version  Print the version and exit.\n  --help   \
@@ -463,6 +825,7 @@ subcommands:
                   \ to only samples of interest\n  tree     Produces output for phylogenetic\
                   \ tree software\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -471,77 +834,78 @@ subcommands:
               help_text: "Usage: centreseq [OPTIONS] COMMAND [ARGS]...\nTry \"centreseq\
                 \ --help\" for help.\n\nError: No such command \"genome\".\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional: []
               named:
               - !Flag
-                description: "Path to summary_report.csv file produced by the\ncore\
-                  \ pipeline  [required]"
+                optional: true
                 synonyms:
                 - -s
                 - --summary-report
+                description: "Path to summary_report.csv file produced by the\ncore\
+                  \ pipeline  [required]"
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
               - !Flag
-                description: "Path to the Prokka output directory generated by\nthe\
-                  \ core pipeline  [required]"
+                optional: true
                 synonyms:
                 - -p
                 - --prokka-dir
+                description: "Path to the Prokka output directory generated by\nthe\
+                  \ core pipeline  [required]"
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
               - !Flag
-                description: "Root directory to store all output files\n[required]"
+                optional: true
                 synonyms:
                 - -o
                 - --outdir
+                description: "Root directory to store all output files\n[required]"
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
               - !Flag
-                description: "Filter summary report by n_members to the top nth\n\
-                  percentile. Defaults to 99.0."
+                optional: true
                 synonyms:
                 - -pct
                 - --percentile
+                description: "Filter summary report by n_members to the top nth\n\
+                  percentile. Defaults to 99.0."
                 args: !SimpleFlagArg
                   name: FLOAT
-                optional: true
               - !Flag
-                description: "Number of CPUs to dedicate to parallelizable\nsteps\
-                  \ of the pipeline.Will take all available\nCPUs - 1 if not specified."
+                optional: true
                 synonyms:
                 - -n
                 - --n-cpu
+                description: "Number of CPUs to dedicate to parallelizable\nsteps\
+                  \ of the pipeline.Will take all available\nCPUs - 1 if not specified."
                 args: !SimpleFlagArg
                   name: INTEGER
-                optional: true
               - !Flag
-                description: Set this flag to enable more verbose logging.
+                optional: true
                 synonyms:
                 - -v
                 - --verbose
+                description: Set this flag to enable more verbose logging.
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag: !Flag
-                description: Use this flag to print the version and exit.
+                optional: true
                 synonyms:
                 - --version
+                description: Use this flag to print the version and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               help_text: "Usage: centreseq tree [OPTIONS]\n\n  Processes centreseq\
                 \ core output files to produce files that can be fed\n  into phylogenetic\
                 \ tree building software.\n\nOptions:\n  -s, --summary-report PATH\
@@ -560,47 +924,48 @@ subcommands:
                 \                  Use this flag to print the version and exit.\n\
                 \  --help                     Show this message and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional: []
               named:
               - !Flag
-                description: "Path to a new line separated text file containing\n\
-                  each Sample ID to target  [required]"
+                optional: true
                 synonyms:
                 - -i
                 - --input-samples
+                description: "Path to a new line separated text file containing\n\
+                  each Sample ID to target  [required]"
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
               - !Flag
-                description: "Path to summary report generated by the centreseq\n\
-                  core command, i.e. summary_report.tsv  [required]"
+                optional: true
                 synonyms:
                 - -s
                 - --summary-report
+                description: "Path to summary report generated by the centreseq\n\
+                  core command, i.e. summary_report.tsv  [required]"
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
               - !Flag
-                description: "Path to desired output file. If no value is\nprovided,\
-                  \ will create a new report in the same\ndirectory as the input summary\
-                  \ report."
+                optional: true
                 synonyms:
                 - -o
                 - --outpath
+                description: "Path to desired output file. If no value is\nprovided,\
+                  \ will create a new report in the same\ndirectory as the input summary\
+                  \ report."
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: centreseq subset [OPTIONS]\n\n  Given an input text\
@@ -617,105 +982,106 @@ subcommands:
                 \ summary report.\n  --help                     Show this message\
                 \ and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional: []
               named:
               - !Flag
-                description: "Path to directory containing *.fasta files for\ninput\
-                  \ to the core pipeline  [required]"
+                optional: true
                 synonyms:
                 - -f
                 - --fasta-dir
+                description: "Path to directory containing *.fasta files for\ninput\
+                  \ to the core pipeline  [required]"
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - -o
+                - --outdir
                 description: "Root directory to store all output files. If\nthis directory\
                   \ already exists, the pipeline\nwill attempt to skip the Prokka\
                   \ step by reading\nin the existing Prokka output directory, but\n\
                   will overwrite all other existing result files.\n[required]"
-                synonyms:
-                - -o
-                - --outdir
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
               - !Flag
-                description: "Number of CPUs to dedicate to parallelizable\nsteps\
-                  \ of the pipeline. Will take all available\nCPUs - 1 by default."
+                optional: true
                 synonyms:
                 - -n
                 - --n-cpu
+                description: "Number of CPUs to dedicate to parallelizable\nsteps\
+                  \ of the pipeline. Will take all available\nCPUs - 1 by default."
                 args: !SimpleFlagArg
                   name: INTEGER
-                optional: true
               - !Flag
-                description: "Number of CPUs for the representative medoid\npicking\
-                  \ step (if enabled). You will need\nsubstantial RAM per CPU."
+                optional: true
                 synonyms:
                 - --n-cpu-medoid
+                description: "Number of CPUs for the representative medoid\npicking\
+                  \ step (if enabled). You will need\nsubstantial RAM per CPU."
                 args: !SimpleFlagArg
                   name: INTEGER
-                optional: true
               - !Flag
-                description: "Sets the mmseqs cluster parameter \"--min-seq-\nid\"\
-                  . Defaults to 0.95."
+                optional: true
                 synonyms:
                 - -m
                 - --min-seq-id
+                description: "Sets the mmseqs cluster parameter \"--min-seq-\nid\"\
+                  . Defaults to 0.95."
                 args: !SimpleFlagArg
                   name: FLOAT
-                optional: true
               - !Flag
-                description: "Sets the mmseqs cluster coverage parameter \"-c\"\n\
-                  directly. Defaults to 0.95, which is the\nrecommended setting."
+                optional: true
                 synonyms:
                 - -c
                 - --coverage-length
+                description: "Sets the mmseqs cluster coverage parameter \"-c\"\n\
+                  directly. Defaults to 0.95, which is the\nrecommended setting."
                 args: !SimpleFlagArg
                   name: FLOAT
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --medoid-repseqs
                 description: "This setting will identify the representative\nmedoid\
                   \ nucleotide sequence for each core\ncluster. Enabling this will\
                   \ increase\ncomputation time considerably. Note that this\nparameter\
                   \ has no effect on the number of core\nclusters detected."
-                synonyms:
-                - --medoid-repseqs
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --pairwise
                 description: "Generate pairwise comparisons of all core\ngenomes.\
                   \ This setting allows for viewing an\ninteractive network chart\
                   \ which visualizes core\ngenome relatedness."
-                synonyms:
-                - --pairwise
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Set this flag to enable more verbose logging.
+                optional: true
                 synonyms:
                 - -v
                 - --verbose
+                description: Set this flag to enable more verbose logging.
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag: !Flag
-                description: Use this flag to print the version and exit.
+                optional: true
                 synonyms:
                 - --version
+                description: Use this flag to print the version and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               help_text: "Usage: centreseq core [OPTIONS]\n\n  Given an input directory\
                 \ containing any number of assemblies (.fasta),\n  centreseq core\
                 \ will 1) annotate the genomes with Prokka, 2) perform self-\n  clustering\
@@ -760,6 +1126,7 @@ subcommands:
                 \      Use this flag to print the version and exit.\n  --help    \
                 \                   Show this message and exit.\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -773,6 +1140,7 @@ subcommands:
               \   Subset summary_report.tsv to only samples of interest\n  tree  \
               \   Produces output for phylogenetic tree software\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -781,77 +1149,78 @@ subcommands:
           help_text: "Usage: centreseq [OPTIONS] COMMAND [ARGS]...\nTry \"centreseq\
             \ --help\" for help.\n\nError: No such command \"genome\".\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional: []
           named:
           - !Flag
-            description: "Path to summary_report.csv file produced by the\ncore pipeline\
-              \  [required]"
+            optional: true
             synonyms:
             - -s
             - --summary-report
+            description: "Path to summary_report.csv file produced by the\ncore pipeline\
+              \  [required]"
             args: !SimpleFlagArg
               name: PATH
-            optional: true
           - !Flag
-            description: "Path to the Prokka output directory generated by\nthe core\
-              \ pipeline  [required]"
+            optional: true
             synonyms:
             - -p
             - --prokka-dir
+            description: "Path to the Prokka output directory generated by\nthe core\
+              \ pipeline  [required]"
             args: !SimpleFlagArg
               name: PATH
-            optional: true
           - !Flag
-            description: "Root directory to store all output files\n[required]"
+            optional: true
             synonyms:
             - -o
             - --outdir
+            description: "Root directory to store all output files\n[required]"
             args: !SimpleFlagArg
               name: PATH
-            optional: true
           - !Flag
-            description: "Filter summary report by n_members to the top nth\npercentile.\
-              \ Defaults to 99.0."
+            optional: true
             synonyms:
             - -pct
             - --percentile
+            description: "Filter summary report by n_members to the top nth\npercentile.\
+              \ Defaults to 99.0."
             args: !SimpleFlagArg
               name: FLOAT
-            optional: true
           - !Flag
-            description: "Number of CPUs to dedicate to parallelizable\nsteps of the\
-              \ pipeline.Will take all available\nCPUs - 1 if not specified."
+            optional: true
             synonyms:
             - -n
             - --n-cpu
+            description: "Number of CPUs to dedicate to parallelizable\nsteps of the\
+              \ pipeline.Will take all available\nCPUs - 1 if not specified."
             args: !SimpleFlagArg
               name: INTEGER
-            optional: true
           - !Flag
-            description: Set this flag to enable more verbose logging.
+            optional: true
             synonyms:
             - -v
             - --verbose
+            description: Set this flag to enable more verbose logging.
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag: !Flag
-            description: Use this flag to print the version and exit.
+            optional: true
             synonyms:
             - --version
+            description: Use this flag to print the version and exit.
             args: !EmptyFlagArg {}
-            optional: true
           help_text: "Usage: centreseq tree [OPTIONS]\n\n  Processes centreseq core\
             \ output files to produce files that can be fed\n  into phylogenetic tree\
             \ building software.\n\nOptions:\n  -s, --summary-report PATH  Path to\
@@ -869,46 +1238,47 @@ subcommands:
             \                  Use this flag to print the version and exit.\n  --help\
             \                     Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional: []
           named:
           - !Flag
-            description: "Path to a new line separated text file containing\neach\
-              \ Sample ID to target  [required]"
+            optional: true
             synonyms:
             - -i
             - --input-samples
+            description: "Path to a new line separated text file containing\neach\
+              \ Sample ID to target  [required]"
             args: !SimpleFlagArg
               name: PATH
-            optional: true
           - !Flag
-            description: "Path to summary report generated by the centreseq\ncore\
-              \ command, i.e. summary_report.tsv  [required]"
+            optional: true
             synonyms:
             - -s
             - --summary-report
+            description: "Path to summary report generated by the centreseq\ncore\
+              \ command, i.e. summary_report.tsv  [required]"
             args: !SimpleFlagArg
               name: PATH
-            optional: true
           - !Flag
-            description: "Path to desired output file. If no value is\nprovided, will\
-              \ create a new report in the same\ndirectory as the input summary report."
+            optional: true
             synonyms:
             - -o
             - --outpath
+            description: "Path to desired output file. If no value is\nprovided, will\
+              \ create a new report in the same\ndirectory as the input summary report."
             args: !SimpleFlagArg
               name: PATH
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: centreseq subset [OPTIONS]\n\n  Given an input text file\
@@ -924,105 +1294,106 @@ subcommands:
             \ in the same\n                             directory as the input summary\
             \ report.\n  --help                     Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional: []
           named:
           - !Flag
-            description: "Path to directory containing *.fasta files for\ninput to\
-              \ the core pipeline  [required]"
+            optional: true
             synonyms:
             - -f
             - --fasta-dir
+            description: "Path to directory containing *.fasta files for\ninput to\
+              \ the core pipeline  [required]"
             args: !SimpleFlagArg
               name: PATH
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - -o
+            - --outdir
             description: "Root directory to store all output files. If\nthis directory\
               \ already exists, the pipeline\nwill attempt to skip the Prokka step\
               \ by reading\nin the existing Prokka output directory, but\nwill overwrite\
               \ all other existing result files.\n[required]"
-            synonyms:
-            - -o
-            - --outdir
             args: !SimpleFlagArg
               name: PATH
-            optional: true
           - !Flag
-            description: "Number of CPUs to dedicate to parallelizable\nsteps of the\
-              \ pipeline. Will take all available\nCPUs - 1 by default."
+            optional: true
             synonyms:
             - -n
             - --n-cpu
+            description: "Number of CPUs to dedicate to parallelizable\nsteps of the\
+              \ pipeline. Will take all available\nCPUs - 1 by default."
             args: !SimpleFlagArg
               name: INTEGER
-            optional: true
           - !Flag
-            description: "Number of CPUs for the representative medoid\npicking step\
-              \ (if enabled). You will need\nsubstantial RAM per CPU."
+            optional: true
             synonyms:
             - --n-cpu-medoid
+            description: "Number of CPUs for the representative medoid\npicking step\
+              \ (if enabled). You will need\nsubstantial RAM per CPU."
             args: !SimpleFlagArg
               name: INTEGER
-            optional: true
           - !Flag
-            description: "Sets the mmseqs cluster parameter \"--min-seq-\nid\". Defaults\
-              \ to 0.95."
+            optional: true
             synonyms:
             - -m
             - --min-seq-id
+            description: "Sets the mmseqs cluster parameter \"--min-seq-\nid\". Defaults\
+              \ to 0.95."
             args: !SimpleFlagArg
               name: FLOAT
-            optional: true
           - !Flag
-            description: "Sets the mmseqs cluster coverage parameter \"-c\"\ndirectly.\
-              \ Defaults to 0.95, which is the\nrecommended setting."
+            optional: true
             synonyms:
             - -c
             - --coverage-length
+            description: "Sets the mmseqs cluster coverage parameter \"-c\"\ndirectly.\
+              \ Defaults to 0.95, which is the\nrecommended setting."
             args: !SimpleFlagArg
               name: FLOAT
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --medoid-repseqs
             description: "This setting will identify the representative\nmedoid nucleotide\
               \ sequence for each core\ncluster. Enabling this will increase\ncomputation\
               \ time considerably. Note that this\nparameter has no effect on the\
               \ number of core\nclusters detected."
-            synonyms:
-            - --medoid-repseqs
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --pairwise
             description: "Generate pairwise comparisons of all core\ngenomes. This\
               \ setting allows for viewing an\ninteractive network chart which visualizes\
               \ core\ngenome relatedness."
-            synonyms:
-            - --pairwise
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Set this flag to enable more verbose logging.
+            optional: true
             synonyms:
             - -v
             - --verbose
+            description: Set this flag to enable more verbose logging.
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag: !Flag
-            description: Use this flag to print the version and exit.
+            optional: true
             synonyms:
             - --version
+            description: Use this flag to print the version and exit.
             args: !EmptyFlagArg {}
-            optional: true
           help_text: "Usage: centreseq core [OPTIONS]\n\n  Given an input directory\
             \ containing any number of assemblies (.fasta),\n  centreseq core will\
             \ 1) annotate the genomes with Prokka, 2) perform self-\n  clustering\
@@ -1065,6 +1436,7 @@ subcommands:
             \                    Use this flag to print the version and exit.\n  --help\
             \                       Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -1078,6 +1450,7 @@ subcommands:
           \ to only samples of interest\n  tree     Produces output for phylogenetic\
           \ tree software\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -1086,77 +1459,78 @@ subcommands:
       help_text: "Usage: centreseq [OPTIONS] COMMAND [ARGS]...\nTry \"centreseq --help\"\
         \ for help.\n\nError: No such command \"genome\".\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional: []
       named:
       - !Flag
-        description: "Path to summary_report.csv file produced by the\ncore pipeline\
-          \  [required]"
+        optional: true
         synonyms:
         - -s
         - --summary-report
+        description: "Path to summary_report.csv file produced by the\ncore pipeline\
+          \  [required]"
         args: !SimpleFlagArg
           name: PATH
-        optional: true
       - !Flag
-        description: "Path to the Prokka output directory generated by\nthe core pipeline\
-          \  [required]"
+        optional: true
         synonyms:
         - -p
         - --prokka-dir
+        description: "Path to the Prokka output directory generated by\nthe core pipeline\
+          \  [required]"
         args: !SimpleFlagArg
           name: PATH
-        optional: true
       - !Flag
-        description: "Root directory to store all output files\n[required]"
+        optional: true
         synonyms:
         - -o
         - --outdir
+        description: "Root directory to store all output files\n[required]"
         args: !SimpleFlagArg
           name: PATH
-        optional: true
       - !Flag
-        description: "Filter summary report by n_members to the top nth\npercentile.\
-          \ Defaults to 99.0."
+        optional: true
         synonyms:
         - -pct
         - --percentile
+        description: "Filter summary report by n_members to the top nth\npercentile.\
+          \ Defaults to 99.0."
         args: !SimpleFlagArg
           name: FLOAT
-        optional: true
       - !Flag
-        description: "Number of CPUs to dedicate to parallelizable\nsteps of the pipeline.Will\
-          \ take all available\nCPUs - 1 if not specified."
+        optional: true
         synonyms:
         - -n
         - --n-cpu
+        description: "Number of CPUs to dedicate to parallelizable\nsteps of the pipeline.Will\
+          \ take all available\nCPUs - 1 if not specified."
         args: !SimpleFlagArg
           name: INTEGER
-        optional: true
       - !Flag
-        description: Set this flag to enable more verbose logging.
+        optional: true
         synonyms:
         - -v
         - --verbose
+        description: Set this flag to enable more verbose logging.
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag: !Flag
-        description: Use this flag to print the version and exit.
+        optional: true
         synonyms:
         - --version
+        description: Use this flag to print the version and exit.
         args: !EmptyFlagArg {}
-        optional: true
       help_text: "Usage: centreseq tree [OPTIONS]\n\n  Processes centreseq core output\
         \ files to produce files that can be fed\n  into phylogenetic tree building\
         \ software.\n\nOptions:\n  -s, --summary-report PATH  Path to summary_report.csv\
@@ -1173,46 +1547,47 @@ subcommands:
         \                  Use this flag to print the version and exit.\n  --help\
         \                     Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional: []
       named:
       - !Flag
-        description: "Path to a new line separated text file containing\neach Sample\
-          \ ID to target  [required]"
+        optional: true
         synonyms:
         - -i
         - --input-samples
+        description: "Path to a new line separated text file containing\neach Sample\
+          \ ID to target  [required]"
         args: !SimpleFlagArg
           name: PATH
-        optional: true
       - !Flag
-        description: "Path to summary report generated by the centreseq\ncore command,\
-          \ i.e. summary_report.tsv  [required]"
+        optional: true
         synonyms:
         - -s
         - --summary-report
+        description: "Path to summary report generated by the centreseq\ncore command,\
+          \ i.e. summary_report.tsv  [required]"
         args: !SimpleFlagArg
           name: PATH
-        optional: true
       - !Flag
-        description: "Path to desired output file. If no value is\nprovided, will\
-          \ create a new report in the same\ndirectory as the input summary report."
+        optional: true
         synonyms:
         - -o
         - --outpath
+        description: "Path to desired output file. If no value is\nprovided, will\
+          \ create a new report in the same\ndirectory as the input summary report."
         args: !SimpleFlagArg
           name: PATH
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: centreseq subset [OPTIONS]\n\n  Given an input text file\
@@ -1228,105 +1603,106 @@ subcommands:
         \ as the input summary report.\n  --help                     Show this message\
         \ and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional: []
       named:
       - !Flag
-        description: "Path to directory containing *.fasta files for\ninput to the\
-          \ core pipeline  [required]"
+        optional: true
         synonyms:
         - -f
         - --fasta-dir
+        description: "Path to directory containing *.fasta files for\ninput to the\
+          \ core pipeline  [required]"
         args: !SimpleFlagArg
           name: PATH
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - -o
+        - --outdir
         description: "Root directory to store all output files. If\nthis directory\
           \ already exists, the pipeline\nwill attempt to skip the Prokka step by\
           \ reading\nin the existing Prokka output directory, but\nwill overwrite\
           \ all other existing result files.\n[required]"
-        synonyms:
-        - -o
-        - --outdir
         args: !SimpleFlagArg
           name: PATH
-        optional: true
       - !Flag
-        description: "Number of CPUs to dedicate to parallelizable\nsteps of the pipeline.\
-          \ Will take all available\nCPUs - 1 by default."
+        optional: true
         synonyms:
         - -n
         - --n-cpu
+        description: "Number of CPUs to dedicate to parallelizable\nsteps of the pipeline.\
+          \ Will take all available\nCPUs - 1 by default."
         args: !SimpleFlagArg
           name: INTEGER
-        optional: true
       - !Flag
-        description: "Number of CPUs for the representative medoid\npicking step (if\
-          \ enabled). You will need\nsubstantial RAM per CPU."
+        optional: true
         synonyms:
         - --n-cpu-medoid
+        description: "Number of CPUs for the representative medoid\npicking step (if\
+          \ enabled). You will need\nsubstantial RAM per CPU."
         args: !SimpleFlagArg
           name: INTEGER
-        optional: true
       - !Flag
-        description: "Sets the mmseqs cluster parameter \"--min-seq-\nid\". Defaults\
-          \ to 0.95."
+        optional: true
         synonyms:
         - -m
         - --min-seq-id
+        description: "Sets the mmseqs cluster parameter \"--min-seq-\nid\". Defaults\
+          \ to 0.95."
         args: !SimpleFlagArg
           name: FLOAT
-        optional: true
       - !Flag
-        description: "Sets the mmseqs cluster coverage parameter \"-c\"\ndirectly.\
-          \ Defaults to 0.95, which is the\nrecommended setting."
+        optional: true
         synonyms:
         - -c
         - --coverage-length
+        description: "Sets the mmseqs cluster coverage parameter \"-c\"\ndirectly.\
+          \ Defaults to 0.95, which is the\nrecommended setting."
         args: !SimpleFlagArg
           name: FLOAT
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --medoid-repseqs
         description: "This setting will identify the representative\nmedoid nucleotide\
           \ sequence for each core\ncluster. Enabling this will increase\ncomputation\
           \ time considerably. Note that this\nparameter has no effect on the number\
           \ of core\nclusters detected."
-        synonyms:
-        - --medoid-repseqs
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --pairwise
         description: "Generate pairwise comparisons of all core\ngenomes. This setting\
           \ allows for viewing an\ninteractive network chart which visualizes core\n\
           genome relatedness."
-        synonyms:
-        - --pairwise
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Set this flag to enable more verbose logging.
+        optional: true
         synonyms:
         - -v
         - --verbose
+        description: Set this flag to enable more verbose logging.
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag: !Flag
-        description: Use this flag to print the version and exit.
+        optional: true
         synonyms:
         - --version
+        description: Use this flag to print the version and exit.
         args: !EmptyFlagArg {}
-        optional: true
       help_text: "Usage: centreseq core [OPTIONS]\n\n  Given an input directory containing\
         \ any number of assemblies (.fasta),\n  centreseq core will 1) annotate the\
         \ genomes with Prokka, 2) perform self-\n  clustering on each genome with\
@@ -1367,6 +1743,7 @@ subcommands:
         \        Use this flag to print the version and exit.\n  --help          \
         \             Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -1379,6 +1756,7 @@ subcommands:
       \ a particular core cluster\n  subset   Subset summary_report.tsv to only samples\
       \ of interest\n  tree     Produces output for phylogenetic tree software\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -1387,77 +1765,78 @@ subcommands:
   help_text: "Usage: centreseq [OPTIONS] COMMAND [ARGS]...\nTry \"centreseq --help\"\
     \ for help.\n\nError: No such command \"genome\".\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional: []
   named:
   - !Flag
-    description: "Path to summary_report.csv file produced by the\ncore pipeline \
-      \ [required]"
+    optional: true
     synonyms:
     - -s
     - --summary-report
+    description: "Path to summary_report.csv file produced by the\ncore pipeline \
+      \ [required]"
     args: !SimpleFlagArg
       name: PATH
-    optional: true
   - !Flag
-    description: "Path to the Prokka output directory generated by\nthe core pipeline\
-      \  [required]"
+    optional: true
     synonyms:
     - -p
     - --prokka-dir
+    description: "Path to the Prokka output directory generated by\nthe core pipeline\
+      \  [required]"
     args: !SimpleFlagArg
       name: PATH
-    optional: true
   - !Flag
-    description: "Root directory to store all output files\n[required]"
+    optional: true
     synonyms:
     - -o
     - --outdir
+    description: "Root directory to store all output files\n[required]"
     args: !SimpleFlagArg
       name: PATH
-    optional: true
   - !Flag
-    description: "Filter summary report by n_members to the top nth\npercentile. Defaults\
-      \ to 99.0."
+    optional: true
     synonyms:
     - -pct
     - --percentile
+    description: "Filter summary report by n_members to the top nth\npercentile. Defaults\
+      \ to 99.0."
     args: !SimpleFlagArg
       name: FLOAT
-    optional: true
   - !Flag
-    description: "Number of CPUs to dedicate to parallelizable\nsteps of the pipeline.Will\
-      \ take all available\nCPUs - 1 if not specified."
+    optional: true
     synonyms:
     - -n
     - --n-cpu
+    description: "Number of CPUs to dedicate to parallelizable\nsteps of the pipeline.Will\
+      \ take all available\nCPUs - 1 if not specified."
     args: !SimpleFlagArg
       name: INTEGER
-    optional: true
   - !Flag
-    description: Set this flag to enable more verbose logging.
+    optional: true
     synonyms:
     - -v
     - --verbose
+    description: Set this flag to enable more verbose logging.
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag: !Flag
-    description: Use this flag to print the version and exit.
+    optional: true
     synonyms:
     - --version
+    description: Use this flag to print the version and exit.
     args: !EmptyFlagArg {}
-    optional: true
   help_text: "Usage: centreseq tree [OPTIONS]\n\n  Processes centreseq core output\
     \ files to produce files that can be fed\n  into phylogenetic tree building software.\n\
     \nOptions:\n  -s, --summary-report PATH  Path to summary_report.csv file produced\
@@ -1474,46 +1853,47 @@ subcommands:
     \ to print the version and exit.\n  --help                     Show this message\
     \ and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional: []
   named:
   - !Flag
-    description: "Path to a new line separated text file containing\neach Sample ID\
-      \ to target  [required]"
+    optional: true
     synonyms:
     - -i
     - --input-samples
+    description: "Path to a new line separated text file containing\neach Sample ID\
+      \ to target  [required]"
     args: !SimpleFlagArg
       name: PATH
-    optional: true
   - !Flag
-    description: "Path to summary report generated by the centreseq\ncore command,\
-      \ i.e. summary_report.tsv  [required]"
+    optional: true
     synonyms:
     - -s
     - --summary-report
+    description: "Path to summary report generated by the centreseq\ncore command,\
+      \ i.e. summary_report.tsv  [required]"
     args: !SimpleFlagArg
       name: PATH
-    optional: true
   - !Flag
-    description: "Path to desired output file. If no value is\nprovided, will create\
-      \ a new report in the same\ndirectory as the input summary report."
+    optional: true
     synonyms:
     - -o
     - --outpath
+    description: "Path to desired output file. If no value is\nprovided, will create\
+      \ a new report in the same\ndirectory as the input summary report."
     args: !SimpleFlagArg
       name: PATH
-    optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: centreseq subset [OPTIONS]\n\n  Given an input text file of Sample\
@@ -1528,105 +1908,106 @@ subcommands:
     \             directory as the input summary report.\n  --help               \
     \      Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional: []
   named:
   - !Flag
-    description: "Path to directory containing *.fasta files for\ninput to the core\
-      \ pipeline  [required]"
+    optional: true
     synonyms:
     - -f
     - --fasta-dir
+    description: "Path to directory containing *.fasta files for\ninput to the core\
+      \ pipeline  [required]"
     args: !SimpleFlagArg
       name: PATH
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outdir
     description: "Root directory to store all output files. If\nthis directory already\
       \ exists, the pipeline\nwill attempt to skip the Prokka step by reading\nin\
       \ the existing Prokka output directory, but\nwill overwrite all other existing\
       \ result files.\n[required]"
-    synonyms:
-    - -o
-    - --outdir
     args: !SimpleFlagArg
       name: PATH
-    optional: true
   - !Flag
-    description: "Number of CPUs to dedicate to parallelizable\nsteps of the pipeline.\
-      \ Will take all available\nCPUs - 1 by default."
+    optional: true
     synonyms:
     - -n
     - --n-cpu
+    description: "Number of CPUs to dedicate to parallelizable\nsteps of the pipeline.\
+      \ Will take all available\nCPUs - 1 by default."
     args: !SimpleFlagArg
       name: INTEGER
-    optional: true
   - !Flag
-    description: "Number of CPUs for the representative medoid\npicking step (if enabled).\
-      \ You will need\nsubstantial RAM per CPU."
+    optional: true
     synonyms:
     - --n-cpu-medoid
+    description: "Number of CPUs for the representative medoid\npicking step (if enabled).\
+      \ You will need\nsubstantial RAM per CPU."
     args: !SimpleFlagArg
       name: INTEGER
-    optional: true
   - !Flag
-    description: "Sets the mmseqs cluster parameter \"--min-seq-\nid\". Defaults to\
-      \ 0.95."
+    optional: true
     synonyms:
     - -m
     - --min-seq-id
+    description: "Sets the mmseqs cluster parameter \"--min-seq-\nid\". Defaults to\
+      \ 0.95."
     args: !SimpleFlagArg
       name: FLOAT
-    optional: true
   - !Flag
-    description: "Sets the mmseqs cluster coverage parameter \"-c\"\ndirectly. Defaults\
-      \ to 0.95, which is the\nrecommended setting."
+    optional: true
     synonyms:
     - -c
     - --coverage-length
+    description: "Sets the mmseqs cluster coverage parameter \"-c\"\ndirectly. Defaults\
+      \ to 0.95, which is the\nrecommended setting."
     args: !SimpleFlagArg
       name: FLOAT
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --medoid-repseqs
     description: "This setting will identify the representative\nmedoid nucleotide\
       \ sequence for each core\ncluster. Enabling this will increase\ncomputation\
       \ time considerably. Note that this\nparameter has no effect on the number of\
       \ core\nclusters detected."
-    synonyms:
-    - --medoid-repseqs
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --pairwise
     description: "Generate pairwise comparisons of all core\ngenomes. This setting\
       \ allows for viewing an\ninteractive network chart which visualizes core\ngenome\
       \ relatedness."
-    synonyms:
-    - --pairwise
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Set this flag to enable more verbose logging.
+    optional: true
     synonyms:
     - -v
     - --verbose
+    description: Set this flag to enable more verbose logging.
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag: !Flag
-    description: Use this flag to print the version and exit.
+    optional: true
     synonyms:
     - --version
+    description: Use this flag to print the version and exit.
     args: !EmptyFlagArg {}
-    optional: true
   help_text: "Usage: centreseq core [OPTIONS]\n\n  Given an input directory containing\
     \ any number of assemblies (.fasta),\n  centreseq core will 1) annotate the genomes\
     \ with Prokka, 2) perform self-\n  clustering on each genome with MMSeqs2 linclust,\
@@ -1665,6 +2046,7 @@ subcommands:
     \  --version                    Use this flag to print the version and exit.\n\
     \  --help                       Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -1677,3 +2059,4 @@ help_text: "Usage: centreseq [OPTIONS] COMMAND [ARGS]...\n\n  centreseq builds a
   \ core cluster\n  subset   Subset summary_report.tsv to only samples of interest\n\
   \  tree     Produces output for phylogenetic tree software\n"
 generated_using: *id004
+docker_image:

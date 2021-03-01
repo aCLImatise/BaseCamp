@@ -4,6 +4,9 @@ task Segtoolssignaldistribution {
   command <<<
     segtools_signal_distribution
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

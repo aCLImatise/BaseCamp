@@ -3,68 +3,86 @@ command:
 - alignTranscripts1.0
 positional:
 - !Positional
-  description: bed file A
+  optional: false
   position: 0
   name: bedA
-  optional: false
+  description: bed file A
 - !Positional
-  description: fasta file A
+  optional: false
   position: 1
   name: genomeFastaA
-  optional: false
+  description: fasta file A
 - !Positional
-  description: bed file B
+  optional: false
   position: 2
   name: bedB
-  optional: false
+  description: bed file B
 - !Positional
-  description: fasta file B
+  optional: false
   position: 3
   name: genomeFastaB
-  optional: false
+  description: fasta file B
 - !Positional
-  description: out prefix
+  optional: false
   position: 4
   name: out_prefix
-  optional: false
+  description: out prefix
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --pad
-  args: !SimpleFlagArg
-    name: PAD
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --geneB
-  args: !SimpleFlagArg
-    name: GENEB
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - --geneA
+  description: if bedA has more than one entry, specify which gene to
   args: !SimpleFlagArg
     name: GENEA
+- !Flag
   optional: true
+  synonyms:
+  - --gap_open
+  - --gap_extend
+  - --unmask
+  description: unmask repeats when aligning
+  args: !SimpleFlagArg
+    name: GAP_OPEN
+- !Flag
+  optional: true
+  synonyms:
+  - --orf
+  description: flag for checking for orfs in alignment
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bedtools_path
+  - --lastz_path
+  - --shuffle_bg
+  description: "Aligns genes to random background and removes\nnonsignificant alignments"
+  args: !SimpleFlagArg
+    name: BEDTOOLS_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --pad
+  description: ''
+  args: !SimpleFlagArg
+    name: PAD
+- !Flag
+  optional: true
+  synonyms:
+  - --geneB
+  description: ''
+  args: !SimpleFlagArg
+    name: GENEB
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--geneA GENEA         if bedA has\
-    \ more than one entry, specify which gene to\nalign\n--geneB GENEB         if\
-    \ bedB has more than one entry, specify which gene to\nalign\n--pad PAD\n--gap_open\
-    \ GAP_OPEN\n--gap_extend GAP_EXTEND\n--unmask              unmask repeats when\
-    \ aligning\n--orf                 flag for checking for orfs in alignment\n--bedtools_path\
-    \ BEDTOOLS_PATH\n--lastz_path LASTZ_PATH\n--shuffle_bg          Aligns genes to\
-    \ random background and removes\nnonsignificant alignments\n--pvalue PVALUE\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: alignTranscripts1.0 [-h] [--geneA GENEA] [--geneB GENEB] [--pad\
@@ -88,3 +106,4 @@ help_text: "usage: alignTranscripts1.0 [-h] [--geneA GENEA] [--geneB GENEB] [--p
   \                 nonsignificant alignments\n  --pvalue PVALUE\n"
 generated_using:
 - --help
+docker_image:

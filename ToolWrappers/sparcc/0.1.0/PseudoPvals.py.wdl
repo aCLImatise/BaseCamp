@@ -36,6 +36,9 @@ task PseudoPvalspy {
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type: "Type of p-values to computed.  oned-sided | two-sided\\n(default)."
     outfile: "Name of file to which p-values will be written.\\n"

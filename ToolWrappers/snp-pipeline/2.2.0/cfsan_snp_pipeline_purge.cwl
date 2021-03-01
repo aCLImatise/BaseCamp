@@ -3,7 +3,7 @@ id: cfsan_snp_pipeline_purge.cwl
 inputs:
 - id: in_verbose
   doc: 'Verbose message level (0=no info, 5=lots) (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbose
 - id: in_work_dir
@@ -16,6 +16,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cfsan_snp_pipeline

@@ -58,6 +58,9 @@ task Qfypy {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     adjust_conf_regions: "When hap.py was run with --adjust-conf-regions, on the\\noriginal VCF, then quantify needs the truthset VCF in\\norder to correctly reproduce the results. This switch\\nallows us to pass the truth VCF into quantify."
     type: "Annotation format in input VCF file."

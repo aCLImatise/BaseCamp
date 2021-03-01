@@ -4,6 +4,9 @@ task Downloaduniprottaxash {
   command <<<
     download_uniprot_taxa_sh
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

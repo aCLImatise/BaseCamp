@@ -22,6 +22,9 @@ task Msa2vcfpy {
       ~{if (help_format) then "--helpFormat" else ""} \
       ~{if (output_file_optional) then "--output" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "reference name used for the CHROM column. Optional\\nDefault: chrUn"
     all_sites: "print all sites\\nDefault: false"

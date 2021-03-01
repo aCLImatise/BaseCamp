@@ -38,6 +38,9 @@ task BcftoolsFilter {
       ~{if defined(targets_file) then ("--targets-file " +  '"' + targets_file + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exclude: "exclude sites for which the expression is true (see man page for details)"
     snp_gap: "filter SNPs within <int> base pairs of an indel"

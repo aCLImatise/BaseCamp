@@ -12,6 +12,9 @@ task ExtractFastaBinspy {
       ~{cluster_file} \
       ~{if defined(output_path) then ("--output_path " +  '"' + output_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_path: "Directory where files will be printed\\n"
     fast_a_file: "Input Fasta file."

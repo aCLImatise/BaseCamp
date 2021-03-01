@@ -4,6 +4,9 @@ task Elprep {
   command <<<
     elprep
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

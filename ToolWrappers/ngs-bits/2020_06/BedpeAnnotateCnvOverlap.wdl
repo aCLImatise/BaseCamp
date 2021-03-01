@@ -16,6 +16,9 @@ task BedpeAnnotateCnvOverlap {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input SV file (in Bedpe format)."
     out: "Output SV file (in Bedpe format)."

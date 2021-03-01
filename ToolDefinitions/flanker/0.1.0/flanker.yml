@@ -1,0 +1,180 @@
+!Command
+command:
+- flanker
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gene
+  description: "Gene(s) of interest (escape any special characters).\nUse space seperation\
+    \ for multipe genes (default: None)"
+  args: !RepeatFlagArg
+    name: GENE
+- !Flag
+  optional: true
+  synonyms:
+  - -log
+  - --list_of_genes
+  description: "Line separated file containing genes of interest\n(default: False)"
+  args: !SimpleFlagArg
+    name: LIST_OF_GENES
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --flank
+  description: "Choose which side(s) of the gene to extract\n(upstream/downstream/both)\
+    \ (default: both)"
+  args: !SimpleFlagArg
+    name: FLANK
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mode
+  description: "One of \"default\" - normal mode, \"mm\" - multi-allelic\ncluster,\
+    \ or \"sm\" - salami-mode (default: default)"
+  args: !SimpleFlagArg
+    name: MODE
+- !Flag
+  optional: true
+  synonyms:
+  - -circ
+  - --circ
+  description: 'Is sequence circularised (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -inc
+  - --include_gene
+  description: 'Include the gene of interest (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -db
+  - --database
+  description: "Choose Abricate database e.g. NCBI, resfinder\n(default: ncbi)"
+  args: !SimpleFlagArg
+    name: DATABASE
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: "[VERBOSE], --verbose [VERBOSE]\nIncrease verbosity: 0 = only warnings,\
+    \ 1 = info, 2 =\ndebug. No number means info. Default is no verbosity.\n(default:\
+    \ 0)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --fasta_file
+  description: 'Input fasta file (default: None)'
+  args: !SimpleFlagArg
+    name: FASTA_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window
+  description: "Length of flanking sequence/first window length\n(default: 1000)"
+  args: !SimpleFlagArg
+    name: WINDOW
+- !Flag
+  optional: true
+  synonyms:
+  - -wstop
+  - --window_stop
+  description: 'Final window length (default: None)'
+  args: !SimpleFlagArg
+    name: WINDOW_STOP
+- !Flag
+  optional: true
+  synonyms:
+  - -wstep
+  - --window_step
+  description: 'Step in window sequence (default: None)'
+  args: !SimpleFlagArg
+    name: WINDOW_STEP
+- !Flag
+  optional: true
+  synonyms:
+  - -cl
+  - --cluster
+  description: 'Turn on clustering mode? (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outfile
+  description: 'Prefix for the clustering file (default: out)'
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -tr
+  - --threshold
+  description: "mash distance threshold for clustering (default:\n0.001)"
+  args: !SimpleFlagArg
+    name: THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --threads
+  description: "threads for mash to use (default: 1)\n"
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: flanker [-h] -i FASTA_FILE (-g GENE [GENE ...] | -log LIST_OF_GENES)\n\
+  \               [-f FLANK] [-m MODE] [-circ] [-inc] [-db DATABASE]\n           \
+  \    [-v [VERBOSE]] [-w WINDOW] [-wstop WINDOW_STOP]\n               [-wstep WINDOW_STEP]\
+  \ [-cl] [-o OUTFILE] [-tr THRESHOLD]\n               [-p THREADS]\n\nflanker\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ -g GENE [GENE ...], --gene GENE [GENE ...]\n                        Gene(s) of\
+  \ interest (escape any special characters).\n                        Use space seperation\
+  \ for multipe genes (default: None)\n  -log LIST_OF_GENES, --list_of_genes LIST_OF_GENES\n\
+  \                        Line separated file containing genes of interest\n    \
+  \                    (default: False)\n  -f FLANK, --flank FLANK\n             \
+  \           Choose which side(s) of the gene to extract\n                      \
+  \  (upstream/downstream/both) (default: both)\n  -m MODE, --mode MODE  One of \"\
+  default\" - normal mode, \"mm\" - multi-allelic\n                        cluster,\
+  \ or \"sm\" - salami-mode (default: default)\n  -circ, --circ         Is sequence\
+  \ circularised (default: False)\n  -inc, --include_gene  Include the gene of interest\
+  \ (default: False)\n  -db DATABASE, --database DATABASE\n                      \
+  \  Choose Abricate database e.g. NCBI, resfinder\n                        (default:\
+  \ ncbi)\n  -v [VERBOSE], --verbose [VERBOSE]\n                        Increase verbosity:\
+  \ 0 = only warnings, 1 = info, 2 =\n                        debug. No number means\
+  \ info. Default is no verbosity.\n                        (default: 0)\n\nrequired\
+  \ arguments:\n  -i FASTA_FILE, --fasta_file FASTA_FILE\n                       \
+  \ Input fasta file (default: None)\n\nwindow options:\n  -w WINDOW, --window WINDOW\n\
+  \                        Length of flanking sequence/first window length\n     \
+  \                   (default: 1000)\n  -wstop WINDOW_STOP, --window_stop WINDOW_STOP\n\
+  \                        Final window length (default: None)\n  -wstep WINDOW_STEP,\
+  \ --window_step WINDOW_STEP\n                        Step in window sequence (default:\
+  \ None)\n\nclustering options:\n  -cl, --cluster        Turn on clustering mode?\
+  \ (default: False)\n  -o OUTFILE, --outfile OUTFILE\n                        Prefix\
+  \ for the clustering file (default: out)\n  -tr THRESHOLD, --threshold THRESHOLD\n\
+  \                        mash distance threshold for clustering (default:\n    \
+  \                    0.001)\n  -p THREADS, --threads THREADS\n                 \
+  \       threads for mash to use (default: 1)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/flanker:0.1.0--py_0

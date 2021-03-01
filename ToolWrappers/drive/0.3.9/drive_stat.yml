@@ -3,11 +3,48 @@ command:
 - drive
 - stat
 positional: []
-named: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -depth
+  description: max traversal depth (default 1)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -id
+  description: stat by id instead of path
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -md5sum
+  description: produce output compatible with md5sum(1)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -quiet
+  description: if set, do not log anything but errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -recursive
+  description: "recursively discover folders\n"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - -hidden
+  description: discover hidden paths
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage of stat:\n  -depth int\n    \tmax traversal depth (default 1)\n\
@@ -17,3 +54,4 @@ help_text: "Usage of stat:\n  -depth int\n    \tmax traversal depth (default 1)\
   \ folders\n"
 generated_using:
 - --help
+docker_image:

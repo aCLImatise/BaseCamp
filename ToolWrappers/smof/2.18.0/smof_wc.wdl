@@ -4,18 +4,21 @@ task SmofWc {
   input {
     Boolean? chars
     Boolean? lines
-    String input_fasta_default
+    String input_fasta_sequence
   }
   command <<<
     smof wc \
-      ~{input_fasta_default} \
+      ~{input_fasta_sequence} \
       ~{if (chars) then "--chars" else ""} \
       ~{if (lines) then "--lines" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chars: "writes the summed length of all sequences"
     lines: "writes the total number of sequences"
-    input_fasta_default: "input fasta sequence (default = stdin)"
+    input_fasta_sequence: "input fasta sequence (default = stdin)"
   }
   output {
     File out_stdout = stdout()

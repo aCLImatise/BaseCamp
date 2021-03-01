@@ -22,6 +22,9 @@ task ChorusNGSfilter {
       ~{if defined(probe) then ("--probe " +  '"' + probe + '"') else ""} \
       ~{if defined(output_bed_format) then ("--output " +  '"' + output_bed_format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jellyfish: "The path where Jellyfish software installed"
     genome: "Fasta format genome file, should include all sequences\\nfrom genome"

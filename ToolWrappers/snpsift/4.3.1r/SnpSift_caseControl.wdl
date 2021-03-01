@@ -18,6 +18,9 @@ task SnpSiftCaseControl {
       ~{if (v) then "-v" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chi_two: ": Use ChiSquare approximarion instead of Fisher exact test."
     name: ": A name to be added after to 'Cases' or 'Controls' tags"

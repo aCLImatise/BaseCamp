@@ -48,6 +48,9 @@ task GtftkTabulate {
       ~{if (logger_file) then "--logger-file" else ""} \
       ~{if (write_message_to_file) then "--write-message-to-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     select_transcript_ids: "A shortcuts for \\\"-k transcript_id\\\". (default: False)"
     select_gene_ids: "A shortcuts for \\\"-k gene_id\\\". (default: False)"

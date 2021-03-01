@@ -7,7 +7,7 @@ task Jpredapi {
     Boolean? skip_pdb
     String? mode
     String? format
-    File? file
+    File? filename_file_job
     File? seq
     String? email
     String? name
@@ -36,7 +36,7 @@ task Jpredapi {
       ~{if (skip_pdb) then "--skipPDB" else ""} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(filename_file_job) then ("--file " +  '"' + filename_file_job + '"') else ""} \
       ~{if defined(seq) then ("--seq " +  '"' + seq + '"') else ""} \
       ~{if defined(email) then ("--email " +  '"' + email + '"') else ""} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
@@ -48,13 +48,16 @@ task Jpredapi {
       ~{if defined(attempts) then ("--attempts " +  '"' + attempts + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     silent: "Do not print messages."
     extract: "Extract results tar.gz archive."
     skip_pdb: "PDB check."
     mode: "Submission mode, possible values: single, batch, msa."
     format: "Submission format, possible values: raw, fasta, msf, blc."
-    file: "Filename of a file with the job input (sequence(s))."
+    filename_file_job: "Filename of a file with the job input (sequence(s))."
     seq: "Instead of passing input file, for single-sequence submission."
     email: "E-mail address where job report will be sent (optional for all but batch submissions)."
     name: "Job name."

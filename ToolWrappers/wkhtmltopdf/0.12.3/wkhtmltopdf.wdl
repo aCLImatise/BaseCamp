@@ -4,6 +4,9 @@ task Wkhtmltopdf {
   command <<<
     wkhtmltopdf
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

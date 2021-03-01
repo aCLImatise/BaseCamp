@@ -16,6 +16,9 @@ task H5clear {
       ~{if (filesize) then "--filesize" else ""} \
       ~{if defined(increment) then ("--increment " +  '"' + increment + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     status: "Clear the status_flags field in the file's superblock"
     image: "Remove the metadata cache image from the file"

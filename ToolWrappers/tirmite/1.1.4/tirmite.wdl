@@ -56,6 +56,9 @@ task Tirmite {
       ~{if defined(n_hmmer) then ("--nhmmer " +  '"' + n_hmmer + '"') else ""} \
       ~{if defined(hmmbuild) then ("--hmmbuild " +  '"' + hmmbuild + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "Path to target genome that will be queried with HMMs."
     hmm_dir: "Directory containing pre-prepared TIR-pHMMs."

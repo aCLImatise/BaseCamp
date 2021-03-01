@@ -20,6 +20,9 @@ task RtgSdf2sam {
       ~{if (names) then "--names" else ""} \
       ~{if (no_gzip) then "--no-gzip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sdf_containing_sequences: "SDF containing sequences"
     output_filename_extension: "output filename (extension added if not present). Use '-'\\nto write to standard output"

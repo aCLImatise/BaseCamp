@@ -8,6 +8,9 @@ task Bam2fnaINPUT {
     bam2fna INPUT \
       ~{var_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_output: ""
   }

@@ -16,6 +16,9 @@ task Wigchoosepl {
       ~{if defined(min_re_lcov) then ("--minrelcov " +  '"' + min_re_lcov + '"') else ""} \
       ~{if defined(max_gap) then ("--maxgap " +  '"' + max_gap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_cov: "minimal coverage for each position of the interval (default: 1)"
     min_re_lcov: "minimal relative coverage (0 <= f <= 1, default: 0)"

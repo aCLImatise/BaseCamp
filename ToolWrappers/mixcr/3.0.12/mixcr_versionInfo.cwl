@@ -3,12 +3,12 @@ id: mixcr_versionInfo.cwl
 inputs:
 - id: in_verbose
   doc: Verbose warning messages.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_no_warnings
   doc: Suppress all warning messages.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-warnings
 - id: in_scr
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mixcr

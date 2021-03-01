@@ -8,6 +8,9 @@ task Vcfcleancomplex {
     vcfcleancomplex \
       ~{vcf_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file: ""
   }

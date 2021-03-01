@@ -14,6 +14,9 @@ task SparseIndex {
       ~{if defined(seq_list) then ("--seqlist " +  '"' + seq_list + '"') else ""} \
       ~{if defined(n_thread) then ("--n_thread " +  '"' + n_thread + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dbname: "Name for the database folder. REQUIRED."
     update: "Index the current RefSeq database. Overwrite SEQLIST."

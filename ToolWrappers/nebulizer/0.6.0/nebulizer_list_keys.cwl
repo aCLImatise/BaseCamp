@@ -3,7 +3,7 @@ id: nebulizer_list_keys.cwl
 inputs:
 - id: in_name
   doc: list only aliases matching name. Can include glob-style
-  type: string
+  type: string?
   inputBinding:
     prefix: --name
 - id: in_wild_cards_dot
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nebulizer

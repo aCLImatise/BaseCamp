@@ -10,6 +10,9 @@ task Embossversion {
       ~{if (full) then "-full" else ""} \
       ~{if (outfile) then "-outfile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     full: "boolean    Show all EMBOSS version information fields"
     outfile: "outfile    [stdout] EMBOSS version output file"

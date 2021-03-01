@@ -3,22 +3,22 @@ id: plncpro_format_ff.sh.cwl
 inputs:
 - id: in_do_prompt_overwriting
   doc: Don't prompt before overwriting
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_interactive_prompt_overwrite
   doc: Interactive, prompt before overwrite
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_overwrite_existing_file
   doc: Don't overwrite an existing file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_fin
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -fin
 - id: in_mv
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - plncpro_format_ff.sh

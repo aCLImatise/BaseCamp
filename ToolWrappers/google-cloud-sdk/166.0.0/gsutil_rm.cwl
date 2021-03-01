@@ -7,13 +7,13 @@ inputs:
     \ exit status will be non-zero even\nif this flag is set. Execution will still\
     \ halt if an inaccessible\nbucket is encountered. This option is implicitly set\
     \ when running\n\"gsutil -m rm ...\"."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_causes_gsutil_read
   doc: "Causes gsutil to read the list of objects to remove from stdin.\nThis allows\
     \ you to run a program that generates the list of\nobjects to remove."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -I
 - id: in_r_r_options
@@ -22,12 +22,12 @@ inputs:
     \ If used with a bucket-only\nURL (like gs://bucket), after deleting objects and\
     \ subdirectories\ngsutil will delete the bucket. This option implies the -a option\n\
     and will delete all object versions."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -R
 - id: in_delete_versions_object
   doc: Delete all versions of an object.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_subdirectories_dot
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gsutil

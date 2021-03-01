@@ -22,6 +22,9 @@ task HcaDssGetbundle {
       ~{if defined(start_at) then ("--start-at " +  '"' + start_at + '"') else ""} \
       ~{if (no_paginate) then "--no-paginate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     uuid: "Bundle unique ID."
     replica: "Replica to fetch from."

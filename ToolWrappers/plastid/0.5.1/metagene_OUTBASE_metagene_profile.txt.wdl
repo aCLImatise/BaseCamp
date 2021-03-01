@@ -8,6 +8,9 @@ task MetageneOUTBASEMetageneProfiletxt {
     metagene OUTBASE_metagene_profile_txt \
       ~{meta_gene}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     meta_gene: ""
   }

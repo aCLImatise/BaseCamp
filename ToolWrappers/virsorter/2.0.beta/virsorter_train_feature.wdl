@@ -30,6 +30,9 @@ task VirsorterTrainfeature {
       ~{if (genome_as_bin) then "--genome-as-bin" else ""} \
       ~{if (use_cond_a_off) then "--use-conda-off" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     working_dir: "output directory  [required]"
     seq_file: "genome sequence file for training; for file\\npattern globbing, put quotes around the pattern,\\neg. \\\"fasta-dir/*.fa\\\"  [required]"

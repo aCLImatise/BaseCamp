@@ -3,166 +3,166 @@ command:
 - SVrefine
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: For
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: complete
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: documentation
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --bam
   description: "Specify a BAM file produced by MiniMap2 with the alignments to be\n\
     used for retrieving SV sequence information. (Either a BAM file or a\nMUMmer-generated\
     \ delta file is required)."
-  synonyms:
-  - --bam
   args: !SimpleFlagArg
     name: path to BAM file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --delta
   description: "Specify a delta file produced by MUMmer with the alignments to be\n\
     used for retrieving SV sequence information. Generally, one would\nuse the same\
     \ filtered delta file that was used to create the \"diff\"\nfile (see below).\
     \ (Either a BAM file or a MUMmer-generated delta\nfile is required)."
-  synonyms:
-  - --delta
   args: !SimpleFlagArg
     name: path to delta file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --regions
   description: "Specify a BED file of regions to be investigated for structural\n\
     variants in the assembly (i.e., the query fasta file). If not\nprovided, potential\
     \ regions with structural variation are discovered\nfrom the endpoints of alignments\
     \ in the supplied MUMmer alignment\nfile. (Optional)."
-  synonyms:
-  - --regions
   args: !SimpleFlagArg
     name: path to a BED file of regions
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ref_fasta
   description: "Specify the path to a multi-fasta file containing the sequences used\n\
     as reference in the alignments. If not specified, and a MUMmer delta\nfile path\
     \ is provided using the --delta option on the command line,\nthe script uses the\
     \ reference path obtained by parsing the delta\nfile's first line. (Optional)."
-  synonyms:
-  - --ref_fasta
   args: !SimpleFlagArg
     name: path to reference multi-fasta file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --query_fasta
   description: "Specify the path to a multi-fasta file containing the sequences used\n\
     as the query in the alignments. If not specified, and a MUMmer delta\nfile path\
     \ is provided using the --delta option on the command line,\nthe script uses the\
     \ query path obtained by parsing the delta file's\nfirst line. (Optional)."
-  synonyms:
-  - --query_fasta
   args: !SimpleFlagArg
     name: path to query multi-fasta file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --prefix
   description: "Specify a string to use as the prefix to output files created by\n\
     this program. Unless specified by a different option, the output VCF\nfile will\
     \ be <prefix>.vcf.gz, the log file will be <prefix>.log,\netc. (Default: \"SVrefine\"\
     )"
-  synonyms:
-  - --prefix
   args: !SimpleFlagArg
     name: prefix to be used in output file names
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outvcf
   description: "Specify the path to which to write a new VCF file containing the\n\
     structural variants discovered in this comparison. BEWARE: if this\nfile already\
     \ exists, it will be overwritten!"
-  synonyms:
-  - --outvcf
   args: !SimpleFlagArg
     name: path to which to write a new VCF-formatted file
-  optional: true
 - !Flag
-  description: "Specify a string to be written as the reference name in the\n##reference\
-    \ line of the VCF header. (Optional)."
+  optional: true
   synonyms:
   - --refname
+  description: "Specify a string to be written as the reference name in the\n##reference\
+    \ line of the VCF header. (Optional)."
   args: !SimpleFlagArg
     name: string to include as the reference name in the VCF header
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --samplename
   description: "<string to include as the sample name in the \"CHROM\" line>\nSpecify\
     \ a string to be written as the sample name in the header\nspecifying a genotype\
     \ column in the VCF line beginning with \"CHROM\".\n(Optional)."
-  synonyms:
-  - --samplename
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Specify an integer for the maximum size of SV to report. (Optional).
+  optional: true
   synonyms:
   - --maxsize
+  description: Specify an integer for the maximum size of SV to report. (Optional).
   args: !SimpleFlagArg
     name: maximum size of SV to report
-  optional: true
 - !Flag
-  description: Flag option to suppress printout of the VCF header.
+  optional: true
   synonyms:
   - --noheader
+  description: Flag option to suppress printout of the VCF header.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nocov
   description: "<path to write a BED file with \"no coverage\" regions>\nSpecify the\
     \ path to which to write a BED file containing the regions\nof the input BED file\
     \ which had no spanning coverage in the query\nalignments. (Optional)."
-  synonyms:
-  - --nocov
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --svregions
   description: "Specify the path to which to write a BED file containing the widened\n\
     coordinates of structural variants. These are the same coordinates\nreported in\
     \ the \"WIDENEDREF\" tag in the variant VCF. (Optional)."
-  synonyms:
-  - --svregions
   args: !SimpleFlagArg
     name: path to write a BED file with widened SV regions
-  optional: true
 - !Flag
-  description: "Write sequences from the reference FASTA file into the \"REF\" and\n\
-    \"ALT\" fields of the VCF."
+  optional: true
   synonyms:
   - --includeseqs
+  description: "Write sequences from the reference FASTA file into the \"REF\" and\n\
+    \"ALT\" fields of the VCF."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Write verbose output, debugging information, etc. to the log file.
+  optional: true
   synonyms:
   - --verbose
+  description: Write verbose output, debugging information, etc. to the log file.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - --outref
+  description: ''
   args: !SimpleFlagArg
     name: path to bed file of homozygous reference regions
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "Display documentation. One \"--help\" gives a brief synopsis, \"-h\
-    \ -h\"\nshows all options, \"--manual\" provides complete documentation.\n"
+  optional: true
   synonyms:
   - --help
   - --manual
+  description: "Display documentation. One \"--help\" gives a brief synopsis, \"-h\
+    \ -h\"\nshows all options, \"--manual\" provides complete documentation.\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage:\n      SVrefine --bam <BAM file of alignments> --regions <path\
@@ -227,3 +227,4 @@ help_text: "Usage:\n      SVrefine --bam <BAM file of alignments> --regions <pat
   \ One \"--help\" gives a brief synopsis, \"-h -h\"\n        shows all options, \"\
   --manual\" provides complete documentation.\n\n"
 generated_using: []
+docker_image:

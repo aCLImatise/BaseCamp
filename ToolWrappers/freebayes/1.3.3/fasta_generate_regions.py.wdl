@@ -4,6 +4,9 @@ task FastaGenerateRegionspy {
   command <<<
     fasta_generate_regions_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

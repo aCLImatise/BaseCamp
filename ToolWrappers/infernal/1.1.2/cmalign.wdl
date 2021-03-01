@@ -74,6 +74,9 @@ task Cmalign {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_alignment_file: ": output the alignment to file <f>, not stdout"
     configure_cm_global: ": configure CM for global alignment [default: local]"

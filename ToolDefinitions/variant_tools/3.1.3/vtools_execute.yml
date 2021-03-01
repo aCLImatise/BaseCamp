@@ -4,6 +4,9 @@ command:
 - execute
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: SPECFILE
   description: "Name of a pipeline configuration file, which can be a\npath to a .pipeline\
     \ file (with or without extension)\nor one of the online pipelines listed by command\n\
     \"vtools show pipelines\". For backward compatibility,\nif no input and output\
@@ -11,10 +14,10 @@ positional:
     treated as a SQL query that will be executed against\nthe project database, with\
     \ project genotype database\nattached as \"genotype\" and annotation databases\n\
     attached by their names."
-  position: 0
-  name: SPECFILE
-  optional: false
 - !Positional
+  optional: false
+  position: 1
+  name: PIPELINES
   description: "Name of one or more pipelines defined in SPECFILE,\nwhich can be ignored\
     \ if the SPECFILE only defines one\npipeline. One or more steps can be specified\
     \ in the\nform of 'pipeline:5' (step_5 only), 'pipeline:-5' (up\nto step 5), 'pipeline:5-'\
@@ -24,52 +27,49 @@ positional:
     subset of steps. Please use command \"vtools show\npipeline SPECFILE\" for details\
     \ of available pipelines\nin SPECFILE, including pipeline-specific parameters\n\
     that could be used to change the default behavior of\nthe pipelines."
-  position: 1
-  name: PIPELINES
-  optional: false
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
   description: "Execute the pipeline in parallel model if a number\nother than 1 is\
     \ specified. In this mode, the\nRunCommand action will create a shell script and\n\
     submit the job using a command specified by option\n``submitter``, if this parameter\
     \ is defined."
-  synonyms:
-  - -j
-  - --jobs
   args: !SimpleFlagArg
     name: JOBS
-  optional: true
 - !Flag
-  description: Delimiter used to output results of a SQL query.
+  optional: true
   synonyms:
   - -d
   - --delimiter
+  description: Delimiter used to output results of a SQL query.
   args: !SimpleFlagArg
     name: DELIMITER
-  optional: true
 - !Flag
-  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
-    \ to standard output (default to\n1).\n"
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1).\n"
   args: !ChoiceFlagArg
     choices: !!set
+      '3':
       '2':
       '0':
-      '3':
       '1':
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: vtools execute [-h] [-j JOBS] [-d DELIMITER] [-v {0,1,2,3}]\n \
@@ -109,3 +109,4 @@ help_text: "usage: vtools execute [-h] [-j JOBS] [-d DELIMITER] [-v {0,1,2,3}]\n
   \                   1).\n"
 generated_using:
 - --help
+docker_image:

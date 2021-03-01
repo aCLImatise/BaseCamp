@@ -30,6 +30,9 @@ task Transfac2meme {
       ~{if (log_odds) then "-logodds" else ""} \
       ~{if defined(url) then ("-url " +  '"' + url + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rna: "output an RNA database instead of a DNA database."
     numbers: "use numbers instead of strings as motif names"

@@ -30,6 +30,9 @@ task SeuratfindmarkersR {
       ~{if defined(min_cells_group) then ("--min-cells-group " +  '"' + min_cells_group + '"') else ""} \
       ~{if defined(output_text_file) then ("--output-text-file " +  '"' + output_text_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name in which a serialized R matrix object may be found."
     genes_use: "File to be used to derive a vector of genes to test. Default is to use all genes."

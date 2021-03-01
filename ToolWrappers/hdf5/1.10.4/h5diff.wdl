@@ -38,6 +38,9 @@ task H5diff {
       ~{if (exclude_path) then "--exclude-path" else ""} \
       ~{if defined(mode_print_above) then ("-v " +  '"' + mode_print_above + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report: "Report mode. Print differences."
     quiet: "Quiet mode. Do not produce output."

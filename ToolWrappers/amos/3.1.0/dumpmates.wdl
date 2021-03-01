@@ -14,6 +14,9 @@ task Dumpmates {
       ~{if (disregard_bank_locks) then "-s" else ""} \
       ~{if (display_compatible_version) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report_objects_eid: "Report objects by EID instead of IID"
     disregard_bank_locks: "Disregard bank locks and write permissions (spy mode)"

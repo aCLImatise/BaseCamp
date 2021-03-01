@@ -3,37 +3,37 @@ id: mapsifter.cwl
 inputs:
 - id: in_output
   doc: 'Name of output file (default: stdout)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -output
 - id: in_verbose
   doc: print more run info
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -verbose
 - id: in_exclude
   doc: exclude contained
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -exclude
 - id: in_upper
   doc: upper bound on scores
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -upper
 - id: in_lower
   doc: lower bound on scores
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -lower
 - id: in_target
   doc: target regions file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -target
 - id: in_about
   doc: print about message
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -about
 - id: in_bed_format_file
@@ -47,9 +47,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: 'Name of output file (default: stdout)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mapsifter

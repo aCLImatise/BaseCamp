@@ -3,101 +3,101 @@ command:
 - pool.py
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: probe_count_tsv
   description: "Path to TSV file that contains probe counts for each\ndataset and\
     \ combination of parameters; the first row\nmust be a header, the first column\
     \ must give a dataset\n('dataset'), the last column must list a number of\nprobes\
     \ ('num_probes'), and the intermediary columns\ngive parameter values"
-  position: 0
-  name: probe_count_tsv
-  optional: false
 - !Positional
+  optional: false
+  position: 1
+  name: target_probe_count
   description: "Constraint on the total number of probes in the\ndesign; generally,\
     \ parameters will be selected such\nthat the number of probes, when pooled across\n\
     datasets, is just below this number"
-  position: 1
-  name: target_probe_count
-  optional: false
 - !Positional
-  description: Path to TSV file in which to output optimal parameter
+  optional: false
   position: 2
   name: param_vals_tsv
-  optional: false
+  description: Path to TSV file in which to output optimal parameter
 - !Positional
-  description: 'optional arguments:'
+  optional: false
   position: 3
   name: values
-  optional: false
+  description: 'optional arguments:'
 named:
 - !Flag
-  description: "ROUND_PARAMS\n<m> <e>; round mismatches parameter to the nearest\n\
-    multiple of m and cover_extension parameter to the\nnearest multiple of e"
+  optional: true
   synonyms:
   - --round-params
+  description: "ROUND_PARAMS\n<m> <e>; round mismatches parameter to the nearest\n\
+    multiple of m and cover_extension parameter to the\nnearest multiple of e"
   args: !SimpleFlagArg
     name: ROUND_PARAMS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --use-nd
   description: "Use the higher dimensional (n > 2) interpolation and\nsearch functions\
     \ for optimizing parameters. This is\nrequired if the input table of probe counts\
     \ contains\nmore than 2 parameters. This does not round parameters\nto integers\
     \ or to be placed on a grid -- i.e., they\nwill be output as fractional values\
     \ (from which probe\ncounts were interpolated). When using this, --loss-\ncoeffs\
     \ should also be set (default is 1 for all\nparameters)."
-  synonyms:
-  - --use-nd
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --loss-coeffs
   description: "Coefficients on parameters in the loss function. These\nmust be specified\
     \ in the same order as the parameter\ncolumns in the input table. Default is 1\
     \ for\nmismatches and 1/100 for cover_extension (or, when\n--use-nd is specified,\
     \ 1 for all parameters)."
-  synonyms:
-  - --loss-coeffs
   args: !RepeatFlagArg
     name: LOSS_COEFFS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --dataset-weights
   description: "Path to TSV file that contains a weight for each\ndataset to use in\
     \ the loss function. The first row\nmust be a header, the first column must provide\
     \ the\ndataset ('dataset') and the second column must provide\nthe weight of the\
     \ dataset ('weight'). If not provided,\nthe default is a weight of 1 for each\
     \ dataset."
-  synonyms:
-  - --dataset-weights
   args: !SimpleFlagArg
     name: DATASET_WEIGHTS_TSV
-  optional: true
 - !Flag
-  description: Debug output
+  optional: true
   synonyms:
   - --debug
+  description: Debug output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Verbose output
+  optional: true
   synonyms:
   - --verbose
+  description: Verbose output
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
   - -V
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: pool.py [-h] [--round-params ROUND_PARAMS ROUND_PARAMS] [--use-nd]\n\
   \               [--loss-coeffs LOSS_COEFFS [LOSS_COEFFS ...]]\n               [--dataset-weights\
   \ DATASET_WEIGHTS_TSV] [--debug] [--verbose]\n               [--version]\n     \
@@ -140,3 +140,4 @@ help_text: "usage: pool.py [-h] [--round-params ROUND_PARAMS ROUND_PARAMS] [--us
   \  --version, -V         show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

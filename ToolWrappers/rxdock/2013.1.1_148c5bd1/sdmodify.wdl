@@ -12,6 +12,9 @@ task Sdmodify {
       ~{sd_files} \
       ~{if (f) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
     data_field: ""

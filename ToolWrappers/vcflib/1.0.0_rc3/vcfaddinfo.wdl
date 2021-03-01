@@ -8,6 +8,9 @@ task Vcfaddinfo {
     vcfaddinfo \
       ~{vcf_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file: ""
   }

@@ -20,6 +20,9 @@ task OmetaMDSanalysiswithmetadataR {
       ~{if defined(mapping_variable) then ("--mapping_variable " +  '"' + mapping_variable + '"') else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_prefix: "Output file prefix [default \\\"unknown\\\"]"
     distance: "Distance metric [default \\\"horn\\\"]"

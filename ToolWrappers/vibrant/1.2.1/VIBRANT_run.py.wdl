@@ -26,6 +26,9 @@ task VIBRANTRunpy {
       ~{if defined(path_original_hmmfiles) then ("-d " +  '"' + path_original_hmmfiles + '"') else ""} \
       ~{if defined(path_original_tsv) then ("-m " +  '"' + path_original_tsv + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_file: "input fasta file"
     format_of_input: "format of input [default=\\\"nucl\\\"]"

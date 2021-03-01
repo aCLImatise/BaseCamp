@@ -10,6 +10,9 @@ task UmisCbHistogram {
       ~{fast_q} \
       ~{if defined(umi_histogram) then ("--umi_histogram " +  '"' + umi_histogram + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     umi_histogram: "Output a count of each UMI for each cellular barcode\\nto this file."
     fast_q: ""

@@ -24,6 +24,9 @@ task GetAmpliconsAndReadspy {
       ~{if defined(primer_hits) then ("--primer_hits " +  '"' + primer_hits + '"') else ""} \
       ~{if defined(fast_a_fps) then ("--fasta_fps " +  '"' + fast_a_fps + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     output_dir: "Specify output directory for amplicons and reads.\\n[default: .]"

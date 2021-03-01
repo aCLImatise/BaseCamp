@@ -12,6 +12,9 @@ task FileMergerpy {
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     f: ""

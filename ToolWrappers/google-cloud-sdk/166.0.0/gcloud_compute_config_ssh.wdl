@@ -16,6 +16,9 @@ task GcloudComputeConfigssh {
       ~{if defined(ssh_config_file) then ("--ssh-config-file " +  '"' + ssh_config_file + '"') else ""} \
       ~{if defined(ssh_key_file) then ("--ssh-key-file " +  '"' + ssh_key_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dry_run: "If provided, the proposed changes to the SSH config file are printed to\\nstandard output and no actual changes are made."
     force_key_file_overwrite: "If enabled gcloud will regenerate and overwrite the files associated\\nwith a broken SSH key without asking for confirmation in both\\ninteractive and non-interactive environment.\\nIf disabled gcloud will not attempt to regenerate the files associated\\nwith a broken SSH key and fail in both interactive and non-interactive\\nenvironment."

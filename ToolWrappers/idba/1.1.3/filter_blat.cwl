@@ -3,12 +3,17 @@ id: filter_blat.cwl
 inputs:
 - id: in_min_contig
   doc: (=100)            minimum contigs
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_contig
+- id: in_similar
+  doc: (=0.95)              similarity
+  type: double?
+  inputBinding:
+    prefix: --similar
 - id: in_is_local
   doc: is local
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --is_local
 - id: in_validate_contigs_blat
@@ -30,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - filter_blat

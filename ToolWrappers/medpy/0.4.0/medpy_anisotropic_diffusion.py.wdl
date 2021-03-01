@@ -22,6 +22,9 @@ task MedpyAnisotropicDiffusionpy {
       ~{if (display_debug_information) then "-d" else ""} \
       ~{if (silently_override_images) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     iterations: "The number of smoothing iterations. Strong parameter."
     kappa: "The algorithms kappa parameter. The higher the more\\nedges are smoothed over."

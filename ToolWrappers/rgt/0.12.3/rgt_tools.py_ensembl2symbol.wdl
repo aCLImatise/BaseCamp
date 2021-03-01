@@ -12,6 +12,9 @@ task RgttoolspyEnsembl2symbol {
       ~{if defined(output_gene_list) then ("-o " +  '"' + output_gene_list + '"') else ""} \
       ~{if (organism) then "-organism" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_gene_list: "Input gene list"
     output_gene_list: "Output gene list"

@@ -12,6 +12,9 @@ task NwMatch {
       ~{pattern} \
       ~{if (hv) then "-hv" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hv: ""
     target_trees_filename_vertical_line: ""

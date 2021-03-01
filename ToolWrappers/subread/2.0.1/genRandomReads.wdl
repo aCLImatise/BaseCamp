@@ -2,9 +2,9 @@ version 1.0
 
 task GenRandomReads {
   input {
-    File? transcript_fast_a
     String? expression_levels
     Boolean? summarize_fast_a
+    File? transcript_fast_a
     Boolean? total_reads
     Int? read_len
     Int? rand_seed
@@ -55,17 +55,18 @@ task GenRandomReads {
     String actually
     String database
     String deal
-    String var_53
+    File var_file
+    String var_54
     String of
-    String read_slash_pairs
+    String read
     String sequencing
     String table
-    String var_58
+    String var_59
     String var_true
     String value
     String values_dot
     String columns
-    String fast_a_slash_gz
+    String fast_a
     String containing
     String delimited
     String errors
@@ -81,7 +82,6 @@ task GenRandomReads {
     String phred
     String are
     String by
-    File file
     String names
     String normal
     String numbers_dot
@@ -99,7 +99,6 @@ task GenRandomReads {
     String is
     String when
     String var_as
-    String read
     String used
   }
   command <<<
@@ -144,17 +143,18 @@ task GenRandomReads {
       ~{actually} \
       ~{database} \
       ~{deal} \
-      ~{var_53} \
+      ~{var_file} \
+      ~{var_54} \
       ~{of} \
-      ~{read_slash_pairs} \
+      ~{read} \
       ~{sequencing} \
       ~{table} \
-      ~{var_58} \
+      ~{var_59} \
       ~{var_true} \
       ~{value} \
       ~{values_dot} \
       ~{columns} \
-      ~{fast_a_slash_gz} \
+      ~{fast_a} \
       ~{containing} \
       ~{delimited} \
       ~{errors} \
@@ -170,7 +170,6 @@ task GenRandomReads {
       ~{phred} \
       ~{are} \
       ~{by} \
-      ~{file} \
       ~{names} \
       ~{normal} \
       ~{numbers_dot} \
@@ -188,11 +187,10 @@ task GenRandomReads {
       ~{is} \
       ~{when} \
       ~{var_as} \
-      ~{read} \
       ~{used} \
-      ~{if defined(transcript_fast_a) then ("--transcriptFasta " +  '"' + transcript_fast_a + '"') else ""} \
       ~{if defined(expression_levels) then ("--expressionLevels " +  '"' + expression_levels + '"') else ""} \
       ~{if (summarize_fast_a) then "--summarizeFasta" else ""} \
+      ~{if defined(transcript_fast_a) then ("--transcriptFasta " +  '"' + transcript_fast_a + '"') else ""} \
       ~{if (total_reads) then "--totalReads" else ""} \
       ~{if defined(read_len) then ("--readLen " +  '"' + read_len + '"') else ""} \
       ~{if defined(rand_seed) then ("--randSeed " +  '"' + rand_seed + '"') else ""} \
@@ -204,10 +202,13 @@ task GenRandomReads {
       ~{if (truth_in_read_names) then "--truthInReadNames" else ""} \
       ~{if (no_actual_reads) then "--noActualReads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    transcript_fast_a: "[--simpleTranscriptId]"
     expression_levels: "[other options]"
     summarize_fast_a: "Only output the transcript names and lengths."
+    transcript_fast_a: "The transcript database in FASTA/gz format."
     total_reads: "<int>        Total read/pairs in output."
     read_len: "The length of the output reads. 100 by default."
     rand_seed: "Seed to generate random numbers. UNIXTIME is used\\nas the random seed by default."
@@ -258,17 +259,18 @@ task GenRandomReads {
     actually: ""
     database: ""
     deal: ""
-    var_53: ""
+    var_file: ""
+    var_54: ""
     of: ""
-    read_slash_pairs: ""
+    read: ""
     sequencing: ""
     table: ""
-    var_58: ""
+    var_59: ""
     var_true: ""
     value: ""
     values_dot: ""
     columns: ""
-    fast_a_slash_gz: ""
+    fast_a: ""
     containing: ""
     delimited: ""
     errors: ""
@@ -284,7 +286,6 @@ task GenRandomReads {
     phred: ""
     are: ""
     by: ""
-    file: ""
     names: ""
     normal: ""
     numbers_dot: ""
@@ -302,7 +303,6 @@ task GenRandomReads {
     is: ""
     when: ""
     var_as: ""
-    read: ""
     used: ""
   }
   output {

@@ -11,30 +11,30 @@ inputs:
 - id: in_outdir
   doc: "Specify to changes the output directory to the\nlocation specified. The input\
     \ file directory is used\nif this is not specified. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_out_name
   doc: "Changes the prefix of the successfully processed\noutput file to the string\
     \ specified. May not be\nspecified with multiple input files. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outname
 - id: in_log
   doc: "Specify to write verbose logging to a file. May not be\nspecified with multiple\
     \ input files. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --log
 - id: in_failed
   doc: "If specified create files containing records that fail\nprocessing. (default:\
     \ False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --failed
 - id: in_format
   doc: 'Specify input and output format. (default: airr)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
 - id: in_igblast_output_files
@@ -50,7 +50,7 @@ inputs:
   type: string[]
   inputBinding:
     prefix: -r
-- id: in_list_input_fasta
+- id: in_list_containing_sequences
   doc: "List of input FASTA files (with .fasta, .fna or .fa\nextension), containing\
     \ sequences. (default: None)"
   type: string[]
@@ -68,7 +68,7 @@ inputs:
     annotation format, so this should be specified when\nsequence headers are incompatible\
     \ with the pRESTO\nannotation scheme. Note, unrecognized header formats\nwill\
     \ default to this behavior. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --asis-id
 - id: in_as_is_calls
@@ -76,25 +76,26 @@ inputs:
     \ in both the IgBLAST output and\nreference database. Note, this requires the\
     \ sequence\nidentifiers in the reference sequence set and the\nIgBLAST database\
     \ to be exact string matches. (default:\nFalse)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --asis-calls
 - id: in_extended
   doc: "Specify to include additional aligner specific fields\nin the output. Adds\
     \ v_score, v_identity, v_support,\nv_cigar, fwr1, fwr2, fwr3, cdr1 and cdr2. (default:\n\
     False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --extended
 - id: in_regions
   doc: "IMGT CDR and FWR boundary definition to use. (default:\ndefault)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --regions
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - MakeDb.py

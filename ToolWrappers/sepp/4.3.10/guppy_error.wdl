@@ -28,6 +28,9 @@ task GuppyError {
       ~{if (scale_experimental_bl) then "--scale-experimental-bl" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pp: "Use posterior probability for the weight."
     specify_filename_write: "Specify the filename to write to."

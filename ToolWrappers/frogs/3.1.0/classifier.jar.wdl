@@ -4,6 +4,9 @@ task Classifierjar {
   command <<<
     classifier_jar
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

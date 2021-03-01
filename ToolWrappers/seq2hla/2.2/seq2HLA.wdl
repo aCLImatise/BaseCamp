@@ -16,6 +16,9 @@ task Seq2HLA {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(trim_three) then ("--trim3 " +  '"' + trim_three + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     one: "File name of #1 mates (uncompressed or gzipped fastq)"
     two: "File name of #2 mates (uncompressed or gzipped fastq)"

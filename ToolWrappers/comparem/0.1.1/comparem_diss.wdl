@@ -18,6 +18,9 @@ task ComparemDiss {
       ~{if (full_matrix) then "--full_matrix" else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metric: "distance metric to use (default: euclidean)"
     full_matrix: "output full dissimilarity matrix"

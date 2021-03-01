@@ -1,0 +1,71 @@
+!Command
+command:
+- remove_callers_from_somaticseq_tsv.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -infile
+  - --infile
+  description: 'input file (default: None)'
+  args: !SimpleFlagArg
+    name: INFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -outfile
+  - --outfile
+  description: 'input file (default: None)'
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -subtract
+  description: "[{if_MuTect,if_VarScan2,if_JointSNVMix2,if_SomaticSniper,if_VarDict,MuSE_Tier,if_LoFreq,if_Scalpel,if_Strelka,if_TNscope,if_Platypus}\
+    \ ...], --subtract-callers {if_MuTect,if_VarScan2,if_JointSNVMix2,if_SomaticSniper,if_VarDict,MuSE_Tier,if_LoFreq,if_Scalpel,if_Strelka,if_TNscope,if_Platypus}\
+    \ [{if_MuTect,if_VarScan2,if_JointSNVMix2,if_SomaticSniper,if_VarDict,MuSE_Tier,if_LoFreq,if_Scalpel,if_Strelka,if_TNscope,if_Platypus}\
+    \ ...]\ncolumns to make nan (default: None)\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      if_Platypus:
+      if_Strelka:
+      if_JointSNVMix2:
+      if_VarDict:
+      MuSE_Tier:
+      if_LoFreq:
+      if_TNscope:
+      if_Scalpel:
+      if_SomaticSniper:
+      if_VarScan2:
+      if_MuTect:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: remove_callers_from_somaticseq_tsv.py [-h] -infile INFILE -outfile\n\
+  \                                             OUTFILE -subtract\n              \
+  \                               {if_MuTect,if_VarScan2,if_JointSNVMix2,if_SomaticSniper,if_VarDict,MuSE_Tier,if_LoFreq,if_Scalpel,if_Strelka,if_TNscope,if_Platypus}\n\
+  \                                             [{if_MuTect,if_VarScan2,if_JointSNVMix2,if_SomaticSniper,if_VarDict,MuSE_Tier,if_LoFreq,if_Scalpel,if_Strelka,if_TNscope,if_Platypus}\
+  \ ...]\n\nIn SomaticSeq TSV files, replace certain callers with nan and remove lines\n\
+  where they are only called by these. To mimic a TSV where only a subset of the\n\
+  callers were used.\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -infile INFILE, --infile INFILE\n                        input\
+  \ file (default: None)\n  -outfile OUTFILE, --outfile OUTFILE\n                \
+  \        input file (default: None)\n  -subtract {if_MuTect,if_VarScan2,if_JointSNVMix2,if_SomaticSniper,if_VarDict,MuSE_Tier,if_LoFreq,if_Scalpel,if_Strelka,if_TNscope,if_Platypus}\
+  \ [{if_MuTect,if_VarScan2,if_JointSNVMix2,if_SomaticSniper,if_VarDict,MuSE_Tier,if_LoFreq,if_Scalpel,if_Strelka,if_TNscope,if_Platypus}\
+  \ ...], --subtract-callers {if_MuTect,if_VarScan2,if_JointSNVMix2,if_SomaticSniper,if_VarDict,MuSE_Tier,if_LoFreq,if_Scalpel,if_Strelka,if_TNscope,if_Platypus}\
+  \ [{if_MuTect,if_VarScan2,if_JointSNVMix2,if_SomaticSniper,if_VarDict,MuSE_Tier,if_LoFreq,if_Scalpel,if_Strelka,if_TNscope,if_Platypus}\
+  \ ...]\n                        columns to make nan (default: None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/somaticseq:3.6.2--py_0

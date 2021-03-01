@@ -3,7 +3,7 @@ version 1.0
 task OverlapAlign {
   input {
     File? mandatory_path_seqstore
-    File? mandatorym_path_overlaps
+    File? mandatorym_path_ovlstore
     String? process_reads_bgnid
     String? erate
     Boolean? partial
@@ -14,7 +14,7 @@ task OverlapAlign {
   command <<<
     overlapAlign \
       ~{if defined(mandatory_path_seqstore) then ("-S " +  '"' + mandatory_path_seqstore + '"') else ""} \
-      ~{if defined(mandatorym_path_overlaps) then ("-O " +  '"' + mandatorym_path_overlaps + '"') else ""} \
+      ~{if defined(mandatorym_path_ovlstore) then ("-O " +  '"' + mandatorym_path_ovlstore + '"') else ""} \
       ~{if defined(process_reads_bgnid) then ("-r " +  '"' + process_reads_bgnid + '"') else ""} \
       ~{if defined(erate) then ("-erate " +  '"' + erate + '"') else ""} \
       ~{if (partial) then "-partial" else ""} \
@@ -22,9 +22,12 @@ task OverlapAlign {
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if (vt) then "-Vt" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mandatory_path_seqstore: "Mandatory, path to seqStore sequences."
-    mandatorym_path_overlaps: "Mandatorym path to ovlStore overlaps."
+    mandatorym_path_ovlstore: "Mandatorym path to ovlStore overlaps."
     process_reads_bgnid: "[-endID]  Process reads bgnID to endID, inclusive."
     erate: "Overlaps are computed at 'e' fraction error; must be larger than the original erate"
     partial: "Overlaps are 'overlapInCore -S' partial overlaps"

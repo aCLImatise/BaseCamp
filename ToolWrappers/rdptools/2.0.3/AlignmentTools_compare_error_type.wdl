@@ -12,6 +12,9 @@ task AlignmentToolsCompareerrortype {
       ~{ref_nucl} \
       ~{if defined(stem) then ("--stem " +  '"' + stem + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stem: "Output stem (default <query_nucl.fasta>)"
     compare_error_type: ""

@@ -3,82 +3,79 @@ id: dcmqrti.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --arguments
-- id: in__quiet_quiet
-  doc: --quiet             quiet mode, print no warnings and errors
-  type: boolean
+- id: in_quiet
+  doc: quiet mode, print no warnings and errors
+  type: boolean?
   inputBinding:
-    prefix: -q
-- id: in__verbose_details
-  doc: --verbose           verbose mode, print processing details
-  type: boolean
+    prefix: --quiet
+- id: in_verbose
+  doc: verbose mode, print processing details
+  type: boolean?
   inputBinding:
-    prefix: -v
-- id: in__debug_debug
-  doc: --debug             debug mode, print debug information
-  type: boolean
+    prefix: --verbose
+- id: in_debug
+  doc: debug mode, print debug information
+  type: boolean?
   inputBinding:
-    prefix: -d
-- id: in_ll
-  doc: "--log-level         [l]evel: string constant\n(fatal, error, warn, info, debug,\
-    \ trace)\nuse level l for the logger"
-  type: boolean
+    prefix: --debug
+- id: in_log_level
+  doc: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\nuse level\
+    \ l for the logger"
+  type: boolean?
   inputBinding:
-    prefix: -ll
-- id: in_lc
-  doc: "--log-config        [f]ilename: string\nuse config file f for the logger"
-  type: boolean
+    prefix: --log-level
+- id: in_log_config
+  doc: "[f]ilename: string\nuse config file f for the logger"
+  type: boolean?
   inputBinding:
-    prefix: -lc
-- id: in__config_ilename
-  doc: "--config            [f]ilename: string\nuse specific configuration file\n\
-    (default: /usr/local/etc/dcmtk/dcmqrscp.cfg)"
-  type: boolean
+    prefix: --log-config
+- id: in_config
+  doc: "[f]ilename: string\nuse specific configuration file\n(default: /usr/local/etc/dcmtk/dcmqrscp.cfg)"
+  type: boolean?
   inputBinding:
-    prefix: -c
-- id: in_to
-  doc: "--timeout           [s]econds: integer (default: unlimited)\ntimeout for connection\
-    \ requests"
-  type: boolean
+    prefix: --config
+- id: in_timeout
+  doc: "[s]econds: integer (default: unlimited)\ntimeout for connection requests"
+  type: boolean?
   inputBinding:
-    prefix: -to
-- id: in_ta
-  doc: "--acse-timeout      [s]econds: integer (default: 30)\ntimeout for ACSE messages"
-  type: boolean
+    prefix: --timeout
+- id: in_acse_timeout
+  doc: "[s]econds: integer (default: 30)\ntimeout for ACSE messages"
+  type: boolean?
   inputBinding:
-    prefix: -ta
-- id: in_td
-  doc: "--dimse-timeout     [s]econds: integer (default: unlimited)\ntimeout for DIMSE\
-    \ messages"
-  type: boolean
+    prefix: --acse-timeout
+- id: in_dim_se_timeout
+  doc: "[s]econds: integer (default: unlimited)\ntimeout for DIMSE messages"
+  type: boolean?
   inputBinding:
-    prefix: -td
-- id: in_xi
-  doc: --propose-implicit  propose implicit VR little endian TS only
-  type: boolean
+    prefix: --dimse-timeout
+- id: in_propose_implicit
+  doc: propose implicit VR little endian TS only
+  type: boolean?
   inputBinding:
-    prefix: -xi
+    prefix: --propose-implicit
 - id: in_ae_title
   doc: "[a]etitle: string\nset my AE title (default: TELNET_INITIATOR)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --aetitle
 - id: in_max_pdu
   doc: "[n]umber of bytes: integer (4096..131072)\nset max receive pdu to n bytes\n\
     (default: use value from configuration file)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --max-pdu
-- id: in__disablenewvr_disable
-  doc: --disable-new-vr    disable support for new VRs, convert to OB
-  type: boolean
+- id: in_disable_new_vr
+  doc: disable support for new VRs, convert to OB
+  type: boolean?
   inputBinding:
-    prefix: -u
+    prefix: --disable-new-vr
 - id: in_remote
   doc: "[t]itle: string\nconnect to remote database defined in cfg file\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --remote
 - id: in_peer
@@ -90,6 +87,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dcmqrti

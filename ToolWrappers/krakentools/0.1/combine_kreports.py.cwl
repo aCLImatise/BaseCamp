@@ -8,17 +8,17 @@ inputs:
     prefix: --report-files
 - id: in_output
   doc: Output kraken report file with combined information
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_display_headers
   doc: Include header lines
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --display-headers
 - id: in_no_headers
   doc: Do not include header lines
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-headers
 - id: in_sample_names
@@ -28,7 +28,7 @@ inputs:
     prefix: --sample-names
 - id: in_only_combined
   doc: "Include only the total combined reads column, not the\nindividual sample cols\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --only-combined
 outputs:
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output kraken report file with combined information
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - combine_kreports.py

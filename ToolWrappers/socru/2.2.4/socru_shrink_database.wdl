@@ -20,6 +20,9 @@ task SocruShrinkDatabase {
       ~{if (debug) then "--debug" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_fragment_size: "Minimum fragment size in bases (default: 100000)"
     debug: "Turn on debugging (default: False)"

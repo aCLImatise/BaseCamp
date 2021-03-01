@@ -2,14 +2,17 @@ version 1.0
 
 task NdscoreInfasta {
   input {
-    Int? loop_penalty
+    Boolean? gc
   }
   command <<<
     _ndscore in_fasta \
-      ~{if defined(loop_penalty) then ("--loop-penalty " +  '"' + loop_penalty + '"') else ""}
+      ~{if (gc) then "--gc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    loop_penalty: ",2,3,4,5,6,7,8,9,10,11"
+    gc: "=-2.3 --au=-0.9 --gu=1.3 --mm=3.5 --gap=6"
   }
   output {
     File out_stdout = stdout()

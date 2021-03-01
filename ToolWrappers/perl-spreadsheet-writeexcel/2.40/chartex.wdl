@@ -12,6 +12,9 @@ task Chartex {
       ~{if defined(man) then ("--man " +  '"' + man + '"') else ""} \
       ~{if (chart_name) then "--chartname" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "Prints the manual page and exits.\\n"
     chart_name: ""

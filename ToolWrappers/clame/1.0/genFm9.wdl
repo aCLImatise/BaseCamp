@@ -14,6 +14,9 @@ task GenFm9 {
       ~{if defined(outputfile_print_option) then ("-output " +  '"' + outputfile_print_option + '"') else ""} \
       ~{if defined(size) then ("-size " +  '"' + size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "file is in a fastq format"
     multi_fast_a: "FILE  with all the reads"

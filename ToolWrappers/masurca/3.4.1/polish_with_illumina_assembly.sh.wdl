@@ -16,6 +16,9 @@ task PolishWithIlluminaAssemblysh {
       ~{if defined(q) then ("-q " +  '"' + q + '"') else ""} \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     m: ""
     i: ""

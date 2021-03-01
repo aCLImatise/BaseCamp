@@ -2,7 +2,7 @@ version 1.0
 
 task InStrainProfile {
   input {
-    String? output_prefix_instrain
+    String? output_prefix_default
     Boolean? use_full_fast_a_header
     Int? processes
     Boolean? debug
@@ -18,7 +18,7 @@ task InStrainProfile {
     Int? min_freq
     Float? fdr
     File? gene_file
-    Boolean? scaffold_bin_can
+    Boolean? scaffold_bin_be
     Boolean? mm_level
     Int? min_snp
     Int? min_fast_a_reads
@@ -35,7 +35,7 @@ task InStrainProfile {
     inStrain profile \
       ~{bam} \
       ~{fast_a} \
-      ~{if defined(output_prefix_instrain) then ("--output " +  '"' + output_prefix_instrain + '"') else ""} \
+      ~{if defined(output_prefix_default) then ("--output " +  '"' + output_prefix_default + '"') else ""} \
       ~{if (use_full_fast_a_header) then "--use_full_fasta_header" else ""} \
       ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""} \
       ~{if (debug) then "--debug" else ""} \
@@ -51,7 +51,7 @@ task InStrainProfile {
       ~{if defined(min_freq) then ("--min_freq " +  '"' + min_freq + '"') else ""} \
       ~{if defined(fdr) then ("--fdr " +  '"' + fdr + '"') else ""} \
       ~{if defined(gene_file) then ("--gene_file " +  '"' + gene_file + '"') else ""} \
-      ~{if (scaffold_bin_can) then "-s" else ""} \
+      ~{if (scaffold_bin_be) then "-s" else ""} \
       ~{if (mm_level) then "--mm_level" else ""} \
       ~{if defined(min_snp) then ("--min_snp " +  '"' + min_snp + '"') else ""} \
       ~{if defined(min_fast_a_reads) then ("--min_fasta_reads " +  '"' + min_fast_a_reads + '"') else ""} \
@@ -62,8 +62,11 @@ task InStrainProfile {
       ~{if (skip_genome_wide) then "--skip_genome_wide" else ""} \
       ~{if (skip_plot_generation) then "--skip_plot_generation" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    output_prefix_instrain: "Output prefix (default: inStrain)"
+    output_prefix_default: "Output prefix (default: inStrain)"
     use_full_fast_a_header: "Instead of using the fasta ID (space in header before\\nspace), use the full header. Needed for some mapping\\ntools (including bbMap) (default: False)"
     processes: "Number of processes to use (default: 6)"
     debug: "Make extra debugging output (default: False)"
@@ -79,7 +82,7 @@ task InStrainProfile {
     min_freq: "Minimum SNP frequency to confirm a SNV (both this AND\\nthe FDR snp count cutoff must be true to call a SNP).\\n(default: 0.05)"
     fdr: "SNP false discovery rate- based on simulation data\\nwith a 0.1 percent error rate (Q30) (default: 1e-06)"
     gene_file: "Path to prodigal .fna genes file. If file ends in .gb\\nor .gbk, will treat as a genbank file (EXPERIMENTAL;\\nthe name of the gene must be in the gene qualifier)\\n(default: None)"
-    scaffold_bin_can: "[STB [STB ...]], --stb [STB [STB ...]]\\nScaffold to bin. This can be a file with each line\\nlisting a scaffold and a bin name, tab-seperated. This\\ncan also be a space-seperated list of .fasta files,\\nwith one genome per .fasta file. If nothing is\\nprovided, all scaffolds will be treated as belonging\\nto the same genome (default: [])"
+    scaffold_bin_be: "[STB [STB ...]], --stb [STB [STB ...]]\\nScaffold to bin. This can be a file with each line\\nlisting a scaffold and a bin name, tab-seperated. This\\ncan also be a space-seperated list of .fasta files,\\nwith one genome per .fasta file. If nothing is\\nprovided, all scaffolds will be treated as belonging\\nto the same genome (default: [])"
     mm_level: "Create files on the mm level (see documentation for\\ninfo) (default: False)"
     min_snp: "Absolute minimum number of reads connecting two SNPs\\nto calculate LD between them. (default: 20)"
     min_fast_a_reads: "Minimum number of reads mapping to a scaffold to\\nproceed with profiling it (default: 0)"

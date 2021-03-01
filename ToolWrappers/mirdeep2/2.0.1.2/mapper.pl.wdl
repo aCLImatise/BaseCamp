@@ -8,13 +8,13 @@ task Mapperpl {
     Boolean? input_file_fastq
     Boolean? input_file_config
     Boolean? threeletter_prefix_reads
-    Boolean? convert_rna_dna
-    Boolean? remove_entries_sequence
+    Boolean? convert_rna_map
+    Boolean? remove_entries_have
     Int? clip_adapter_sequence
     Int? discard_reads_shorter
     Boolean? collapse_reads
-    File? map_genome_must
-    Boolean? map_one_mismatch
+    File? map_genome_indexed
+    Boolean? map_takes_longer
     Int? read_allowed_map
     File? print_processed_reads
     File? print_read_mappings
@@ -31,13 +31,13 @@ task Mapperpl {
       ~{if (input_file_fastq) then "-e" else ""} \
       ~{if (input_file_config) then "-d" else ""} \
       ~{if (threeletter_prefix_reads) then "-g" else ""} \
-      ~{if (convert_rna_dna) then "-i" else ""} \
-      ~{if (remove_entries_sequence) then "-j" else ""} \
+      ~{if (convert_rna_map) then "-i" else ""} \
+      ~{if (remove_entries_have) then "-j" else ""} \
       ~{if defined(clip_adapter_sequence) then ("-k " +  '"' + clip_adapter_sequence + '"') else ""} \
       ~{if defined(discard_reads_shorter) then ("-l " +  '"' + discard_reads_shorter + '"') else ""} \
       ~{if (collapse_reads) then "-m" else ""} \
-      ~{if defined(map_genome_must) then ("-p " +  '"' + map_genome_must + '"') else ""} \
-      ~{if (map_one_mismatch) then "-q" else ""} \
+      ~{if defined(map_genome_indexed) then ("-p " +  '"' + map_genome_indexed + '"') else ""} \
+      ~{if (map_takes_longer) then "-q" else ""} \
       ~{if defined(read_allowed_map) then ("-r " +  '"' + read_allowed_map + '"') else ""} \
       ~{if defined(print_processed_reads) then ("-s " +  '"' + print_processed_reads + '"') else ""} \
       ~{if defined(print_read_mappings) then ("-t " +  '"' + print_read_mappings + '"') else ""} \
@@ -46,6 +46,9 @@ task Mapperpl {
       ~{if (overwrite_existing_files) then "-n" else ""} \
       ~{if (number_threads_use) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_seqtxt: "input file is seq.txt format"
     input_file_qseqtxt: "input file is qseq.txt format"
@@ -53,13 +56,13 @@ task Mapperpl {
     input_file_fastq: "input file is fastq format"
     input_file_config: "input file is a config file (see miRDeep2 documentation).\\noptions -a, -b, -c or -e must be given with option -d."
     threeletter_prefix_reads: "three-letter prefix for reads (by default 'seq')"
-    convert_rna_dna: "convert rna to dna alphabet (to map against genome)"
-    remove_entries_sequence: "remove all entries that have a sequence that contains letters\\nother than a,c,g,t,u,n,A,C,G,T,U,N"
+    convert_rna_map: "convert rna to dna alphabet (to map against genome)"
+    remove_entries_have: "remove all entries that have a sequence that contains letters\\nother than a,c,g,t,u,n,A,C,G,T,U,N"
     clip_adapter_sequence: "clip 3' adapter sequence"
     discard_reads_shorter: "discard reads shorter than int nts, default = 18"
     collapse_reads: "collapse reads"
-    map_genome_must: "map to genome (must be indexed by bowtie-build). The 'genome'\\nstring must be the prefix of the bowtie index. For instance, if\\nthe first indexed file is called 'h_sapiens_37_asm.1.ebwt' then\\nthe prefix is 'h_sapiens_37_asm'."
-    map_one_mismatch: "map with one mismatch in the seed (mapping takes longer)"
+    map_genome_indexed: "map to genome (must be indexed by bowtie-build). The 'genome'\\nstring must be the prefix of the bowtie index. For instance, if\\nthe first indexed file is called 'h_sapiens_37_asm.1.ebwt' then\\nthe prefix is 'h_sapiens_37_asm'."
+    map_takes_longer: "map with one mismatch in the seed (mapping takes longer)"
     read_allowed_map: "a read is allowed to map up to this number of positions in the genome\\ndefault is 5"
     print_processed_reads: "print processed reads to this file"
     print_read_mappings: "print read mappings to this file"

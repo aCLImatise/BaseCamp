@@ -11,20 +11,20 @@ subcommands:
   - fq2fa
   positional:
   - !Positional
-    description: fastq file, gzip support
+    optional: false
     position: 0
     name: fastx
-    optional: false
+    description: fastq file, gzip support
   named:
   - !Flag
-    description: "output file, default: output to stdout\n"
+    optional: true
     synonyms:
     - -o
     - --out-file
+    description: "output file, default: output to stdout\n"
     args: !SimpleFlagArg
       name: str
-    optional: true
-  parent: &id018 !Command
+  parent: &id020 !Command
     command: *id001
     positional: []
     named: []
@@ -34,20 +34,20 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: fastq file, gzip support
+        optional: false
         position: 0
         name: fastx
-        optional: false
+        description: fastq file, gzip support
       named:
       - !Flag
-        description: "output file, default: output to stdout\n"
+        optional: true
         synonyms:
         - -o
         - --out-file
+        description: "output file, default: output to stdout\n"
         args: !SimpleFlagArg
           name: str
-        optional: true
-      parent: &id016 !Command
+      parent: &id018 !Command
         command: *id001
         positional: []
         named: []
@@ -57,20 +57,20 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: fastq file, gzip support
+            optional: false
             position: 0
             name: fastx
-            optional: false
+            description: fastq file, gzip support
           named:
           - !Flag
-            description: "output file, default: output to stdout\n"
+            optional: true
             synonyms:
             - -o
             - --out-file
+            description: "output file, default: output to stdout\n"
             args: !SimpleFlagArg
               name: str
-            optional: true
-          parent: &id014 !Command
+          parent: &id016 !Command
             command: *id001
             positional: []
             named: []
@@ -80,20 +80,20 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: fastq file, gzip support
+                optional: false
                 position: 0
                 name: fastx
-                optional: false
+                description: fastq file, gzip support
               named:
               - !Flag
-                description: "output file, default: output to stdout\n"
+                optional: true
                 synonyms:
                 - -o
                 - --out-file
+                description: "output file, default: output to stdout\n"
                 args: !SimpleFlagArg
                   name: str
-                optional: true
-              parent: &id003 !Command
+              parent: &id014 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -103,29 +103,475 @@ subcommands:
                   command: *id002
                   positional:
                   - !Positional
-                    description: fastq file, gzip support
+                    optional: false
                     position: 0
                     name: fastx
-                    optional: false
+                    description: fastq file, gzip support
                   named:
                   - !Flag
-                    description: "output file, default: output to stdout\n"
+                    optional: true
                     synonyms:
                     - -o
                     - --out-file
+                    description: "output file, default: output to stdout\n"
                     args: !SimpleFlagArg
                       name: str
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: fastx
+                        description: fastq file, gzip support
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --out-file
+                        description: "output file, default: output to stdout\n"
+                        args: !SimpleFlagArg
+                          name: str
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: pyfastx fq2fa [-h] [-o str] fastx\n\npositional\
+                        \ arguments:\n  fastx                 fastq file, gzip support\n\
+                        \noptional arguments:\n  -h, --help            show this help\
+                        \ message and exit\n  -o str, --out-file str\n           \
+                        \             output file, default: output to stdout\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - pyfastx
+                      - split
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: fastx
+                        description: fasta or fastq file, gzip support
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -n
+                        description: split a fasta/q file into N new files with even
+                          size
+                        args: !SimpleFlagArg
+                          name: int
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        description: "split a fasta/q file into multiple files containing\n\
+                          the same sequence counts"
+                        args: !SimpleFlagArg
+                          name: int
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --out-dir
+                        description: "output directory, default is current folder\n"
+                        args: !SimpleFlagArg
+                          name: str
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: pyfastx split [-h] (-n int | -c int) [-o\
+                        \ str] fastx\n\npositional arguments:\n  fastx           \
+                        \      fasta or fastq file, gzip support\n\noptional arguments:\n\
+                        \  -h, --help            show this help message and exit\n\
+                        \  -n int                split a fasta/q file into N new files\
+                        \ with even size\n  -c int                split a fasta/q\
+                        \ file into multiple files containing\n                  \
+                        \      the same sequence counts\n  -o str, --out-dir str\n\
+                        \                        output directory, default is current\
+                        \ folder\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - pyfastx
+                      - sample
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -n
+                        description: number of sequences to be sampled
+                        args: !SimpleFlagArg
+                          name: int
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -p
+                        description: proportion of sequences to be sampled, 0~1
+                        args: !SimpleFlagArg
+                          name: float
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        - --seed
+                        description: random seed, default is the current system time
+                        args: !SimpleFlagArg
+                          name: int
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --sequential-read
+                        description: "start sequential reading, particularly suitable\
+                          \ for\nsampling large numbers of sequences"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --out-file
+                        description: "output file, default: output to stdout\n"
+                        args: !SimpleFlagArg
+                          name: str
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: pyfastx sample [-h] (-n int | -p float) [-s\
+                        \ int] [--sequential-read]\n                      [-o str]\n\
+                        \                      fastx\n\npositional arguments:\n  fastx\
+                        \                 fasta or fastq file, gzip support\n\noptional\
+                        \ arguments:\n  -h, --help            show this help message\
+                        \ and exit\n  -n int                number of sequences to\
+                        \ be sampled\n  -p float              proportion of sequences\
+                        \ to be sampled, 0~1\n  -s int, --seed int    random seed,\
+                        \ default is the current system time\n  --sequential-read\
+                        \     start sequential reading, particularly suitable for\n\
+                        \                        sampling large numbers of sequences\n\
+                        \  -o str, --out-file str\n                        output\
+                        \ file, default: output to stdout\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id008
+                      - pyfastx
+                      - extract
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: fastx
+                        description: fasta or fastq file, gzip support
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: name
+                        description: "sequence name or read name, multiple names were\n\
+                          separated by space"
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        - --list-file
+                        description: "a file containing sequence or read names, one\
+                          \ name per\nline"
+                        args: !SimpleFlagArg
+                          name: str
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --reverse-complement
+                        description: output reverse complement sequence
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --out-fasta
+                        description: "output fasta format when extract reads from\
+                          \ fastq,\ndefault output fastq format"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --out-file
+                        description: 'output file, default: output to stdout'
+                        args: !SimpleFlagArg
+                          name: str
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --sequential-read
+                        description: "start sequential reading, particularly suitable\
+                          \ for\nextracting large numbers of sequences\n"
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: pyfastx extract [-h] [-l str] [--reverse-complement]\
+                        \ [--out-fasta]\n                       [-o str] [--sequential-read]\n\
+                        \                       fastx [name [name ...]]\n\npositional\
+                        \ arguments:\n  fastx                 fasta or fastq file,\
+                        \ gzip support\n  name                  sequence name or read\
+                        \ name, multiple names were\n                        separated\
+                        \ by space\n\noptional arguments:\n  -h, --help          \
+                        \  show this help message and exit\n  -l str, --list-file\
+                        \ str\n                        a file containing sequence\
+                        \ or read names, one name per\n                        line\n\
+                        \  --reverse-complement  output reverse complement sequence\n\
+                        \  --out-fasta           output fasta format when extract\
+                        \ reads from fastq,\n                        default output\
+                        \ fastq format\n  -o str, --out-file str\n               \
+                        \         output file, default: output to stdout\n  --sequential-read\
+                        \     start sequential reading, particularly suitable for\n\
+                        \                        extracting large numbers of sequences\n"
+                      generated_using: *id004
+                      docker_image:
+                    - &id005 !Command
+                      command: &id009
+                      - pyfastx
+                      - stat
+                      positional: []
+                      named: []
+                      parent: *id003
+                      subcommands:
+                      - !Command
+                        command: &id010
+                        - pyfastx
+                        - stat
+                        - fastx
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: pyfastx
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: COMMAND
+                          description: ''
+                        named: []
+                        parent: *id005
+                        subcommands: []
+                        usage: []
+                        help_flag:
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: pyfastx COMMAND [OPTIONS]\npyfastx: error:\
+                          \ unrecognized arguments: --usage\n"
+                        generated_using: &id011
+                        - --usage
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: pyfastx stat [-h] fastx [fastx ...]\n\npositional\
+                        \ arguments:\n  fastx       fasta or fastq file, gzip support\n\
+                        \noptional arguments:\n  -h, --help  show this help message\
+                        \ and exit\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id012
+                      - pyfastx
+                      - index
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: fastx
+                        description: fasta or fastq file, gzip support
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        - --full
+                        description: build full index, base composition will be calculated
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: pyfastx index [-h] [-f] fastx [fastx ...]\n\
+                        \npositional arguments:\n  fastx       fasta or fastq file,\
+                        \ gzip support\n\noptional arguments:\n  -h, --help  show\
+                        \ this help message and exit\n  -f, --full  build full index,\
+                        \ base composition will be calculated\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id013
+                      - pyfastx
+                      - subseq
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: fastx
+                        description: input fasta file, gzip support
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: region
+                        description: "format is chr:start-end, start and end position\
+                          \ is\n1-based, multiple regions were separated by space"
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -r
+                        - --region-file
+                        description: "tab-delimited file, one region per line, both\
+                          \ start\nand end position are 1-based"
+                        args: !SimpleFlagArg
+                          name: str
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -b
+                        - --bed-file
+                        description: "tab-delimited BED file, 0-based start position\
+                          \ and\n1-based end position"
+                        args: !SimpleFlagArg
+                          name: str
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --out-file
+                        description: "output file, default: output to stdout\n"
+                        args: !SimpleFlagArg
+                          name: str
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: pyfastx subseq [-h] [-r str | -b str] [-o\
+                        \ str]\n                      fastx [region [region ...]]\n\
+                        \npositional arguments:\n  fastx                 input fasta\
+                        \ file, gzip support\n  region                format is chr:start-end,\
+                        \ start and end position is\n                        1-based,\
+                        \ multiple regions were separated by space\n\noptional arguments:\n\
+                        \  -h, --help            show this help message and exit\n\
+                        \  -r str, --region-file str\n                        tab-delimited\
+                        \ file, one region per line, both start\n                \
+                        \        and end position are 1-based\n  -b str, --bed-file\
+                        \ str\n                        tab-delimited BED file, 0-based\
+                        \ start position and\n                        1-based end\
+                        \ position\n  -o str, --out-file str\n                   \
+                        \     output file, default: output to stdout\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -v
+                      - --version
+                      description: show program's version number and exit
+                      args: !EmptyFlagArg {}
+                    help_text: "usage: pyfastx COMMAND [OPTIONS]\n\nA command line\
+                      \ tool for FASTA/Q file manipulation\n\noptional arguments:\n\
+                      \  -h, --help     show this help message and exit\n  -v, --version\
+                      \  show program's version number and exit\n\nCommands:\n  \n\
+                      \    index        build index for fasta/q file\n    stat   \
+                      \      show detailed statistics information of fasta/q file\n\
+                      \    split        split fasta/q file into multiple files\n \
+                      \   fq2fa        convert fastq file to fasta file\n    subseq\
+                      \       get subsequences from fasta file by region\n    sample\
+                      \       randomly sample sequences from fasta or fastq file\n\
+                      \    extract      extract full sequences or reads from fasta/q\
+                      \ file\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: pyfastx fq2fa [-h] [-o str] fastx\n\npositional\
@@ -133,52 +579,50 @@ subcommands:
                     \noptional arguments:\n  -h, --help            show this help\
                     \ message and exit\n  -o str, --out-file str\n               \
                     \         output file, default: output to stdout\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - pyfastx
-                  - split
+                  command: *id006
                   positional:
                   - !Positional
-                    description: fasta or fastq file, gzip support
+                    optional: false
                     position: 0
                     name: fastx
-                    optional: false
+                    description: fasta or fastq file, gzip support
                   named:
                   - !Flag
-                    description: split a fasta/q file into N new files with even size
+                    optional: true
                     synonyms:
                     - -n
+                    description: split a fasta/q file into N new files with even size
                     args: !SimpleFlagArg
                       name: int
-                    optional: true
                   - !Flag
-                    description: "split a fasta/q file into multiple files containing\n\
-                      the same sequence counts"
+                    optional: true
                     synonyms:
                     - -c
+                    description: "split a fasta/q file into multiple files containing\n\
+                      the same sequence counts"
                     args: !SimpleFlagArg
                       name: int
-                    optional: true
                   - !Flag
-                    description: "output directory, default is current folder\n"
+                    optional: true
                     synonyms:
                     - -o
                     - --out-dir
+                    description: "output directory, default is current folder\n"
                     args: !SimpleFlagArg
                       name: str
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: pyfastx split [-h] (-n int | -c int) [-o str]\
@@ -191,59 +635,58 @@ subcommands:
                     \  -o str, --out-dir str\n                        output directory,\
                     \ default is current folder\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - pyfastx
-                  - sample
+                  command: *id007
                   positional: []
                   named:
                   - !Flag
-                    description: number of sequences to be sampled
+                    optional: true
                     synonyms:
                     - -n
+                    description: number of sequences to be sampled
                     args: !SimpleFlagArg
                       name: int
-                    optional: true
                   - !Flag
-                    description: proportion of sequences to be sampled, 0~1
+                    optional: true
                     synonyms:
                     - -p
+                    description: proportion of sequences to be sampled, 0~1
                     args: !SimpleFlagArg
                       name: float
-                    optional: true
                   - !Flag
-                    description: random seed, default is the current system time
+                    optional: true
                     synonyms:
                     - -s
                     - --seed
+                    description: random seed, default is the current system time
                     args: !SimpleFlagArg
                       name: int
-                    optional: true
                   - !Flag
-                    description: "start sequential reading, particularly suitable\
-                      \ for\nsampling large numbers of sequences"
+                    optional: true
                     synonyms:
                     - --sequential-read
+                    description: "start sequential reading, particularly suitable\
+                      \ for\nsampling large numbers of sequences"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "output file, default: output to stdout\n"
+                    optional: true
                     synonyms:
                     - -o
                     - --out-file
+                    description: "output file, default: output to stdout\n"
                     args: !SimpleFlagArg
                       name: str
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: pyfastx sample [-h] (-n int | -p float) [-s int]\
@@ -259,70 +702,69 @@ subcommands:
                     \ of sequences\n  -o str, --out-file str\n                   \
                     \     output file, default: output to stdout\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id008
-                  - pyfastx
-                  - extract
+                  command: *id008
                   positional:
                   - !Positional
-                    description: fasta or fastq file, gzip support
+                    optional: false
                     position: 0
                     name: fastx
-                    optional: false
+                    description: fasta or fastq file, gzip support
                   - !Positional
-                    description: "sequence name or read name, multiple names were\n\
-                      separated by space"
+                    optional: false
                     position: 1
                     name: name
-                    optional: false
+                    description: "sequence name or read name, multiple names were\n\
+                      separated by space"
                   named:
                   - !Flag
-                    description: "a file containing sequence or read names, one name\
-                      \ per\nline"
+                    optional: true
                     synonyms:
                     - -l
                     - --list-file
+                    description: "a file containing sequence or read names, one name\
+                      \ per\nline"
                     args: !SimpleFlagArg
                       name: str
-                    optional: true
                   - !Flag
-                    description: output reverse complement sequence
+                    optional: true
                     synonyms:
                     - --reverse-complement
+                    description: output reverse complement sequence
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "output fasta format when extract reads from fastq,\n\
-                      default output fastq format"
+                    optional: true
                     synonyms:
                     - --out-fasta
+                    description: "output fasta format when extract reads from fastq,\n\
+                      default output fastq format"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: 'output file, default: output to stdout'
+                    optional: true
                     synonyms:
                     - -o
                     - --out-file
+                    description: 'output file, default: output to stdout'
                     args: !SimpleFlagArg
                       name: str
-                    optional: true
                   - !Flag
-                    description: "start sequential reading, particularly suitable\
-                      \ for\nextracting large numbers of sequences\n"
+                    optional: true
                     synonyms:
                     - --sequential-read
+                    description: "start sequential reading, particularly suitable\
+                      \ for\nextracting large numbers of sequences\n"
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: pyfastx extract [-h] [-l str] [--reverse-complement]\
@@ -343,30 +785,26 @@ subcommands:
                     \ suitable for\n                        extracting large numbers\
                     \ of sequences\n"
                   generated_using: *id004
-                - &id005 !Command
-                  command: &id009
-                  - pyfastx
-                  - stat
+                  docker_image:
+                - &id015 !Command
+                  command: *id009
                   positional: []
                   named: []
                   parent: *id003
                   subcommands:
                   - !Command
-                    command: &id010
-                    - pyfastx
-                    - stat
-                    - fastx
+                    command: *id010
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: pyfastx
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 1
                       name: COMMAND
-                      optional: false
+                      description: ''
                     named: []
                     parent: *id005
                     subcommands: []
@@ -376,16 +814,10 @@ subcommands:
                     version_flag:
                     help_text: "usage: pyfastx COMMAND [OPTIONS]\npyfastx: error:\
                       \ unrecognized arguments: --usage\n"
-                    generated_using: &id011
-                    - --usage
+                    generated_using: *id011
+                    docker_image:
                   usage: []
-                  help_flag: !Flag
-                    description: show this help message and exit
-                    synonyms:
-                    - -h
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "usage: pyfastx stat [-h] fastx [fastx ...]\n\npositional\
@@ -393,34 +825,33 @@ subcommands:
                     \noptional arguments:\n  -h, --help  show this help message and\
                     \ exit\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id012
-                  - pyfastx
-                  - index
+                  command: *id012
                   positional:
                   - !Positional
-                    description: fasta or fastq file, gzip support
+                    optional: false
                     position: 0
                     name: fastx
-                    optional: false
+                    description: fasta or fastq file, gzip support
                   named:
                   - !Flag
-                    description: build full index, base composition will be calculated
+                    optional: true
                     synonyms:
                     - -f
                     - --full
+                    description: build full index, base composition will be calculated
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: pyfastx index [-h] [-f] fastx [fastx ...]\n\n\
@@ -429,59 +860,58 @@ subcommands:
                     \ message and exit\n  -f, --full  build full index, base composition\
                     \ will be calculated\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id013
-                  - pyfastx
-                  - subseq
+                  command: *id013
                   positional:
                   - !Positional
-                    description: input fasta file, gzip support
+                    optional: false
                     position: 0
                     name: fastx
-                    optional: false
+                    description: input fasta file, gzip support
                   - !Positional
-                    description: "format is chr:start-end, start and end position\
-                      \ is\n1-based, multiple regions were separated by space"
+                    optional: false
                     position: 1
                     name: region
-                    optional: false
+                    description: "format is chr:start-end, start and end position\
+                      \ is\n1-based, multiple regions were separated by space"
                   named:
                   - !Flag
-                    description: "tab-delimited file, one region per line, both start\n\
-                      and end position are 1-based"
+                    optional: true
                     synonyms:
                     - -r
                     - --region-file
+                    description: "tab-delimited file, one region per line, both start\n\
+                      and end position are 1-based"
                     args: !SimpleFlagArg
                       name: str
-                    optional: true
                   - !Flag
-                    description: "tab-delimited BED file, 0-based start position and\n\
-                      1-based end position"
+                    optional: true
                     synonyms:
                     - -b
                     - --bed-file
+                    description: "tab-delimited BED file, 0-based start position and\n\
+                      1-based end position"
                     args: !SimpleFlagArg
                       name: str
-                    optional: true
                   - !Flag
-                    description: "output file, default: output to stdout\n"
+                    optional: true
                     synonyms:
                     - -o
                     - --out-file
+                    description: "output file, default: output to stdout\n"
                     args: !SimpleFlagArg
                       name: str
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: pyfastx subseq [-h] [-r str | -b str] [-o str]\n\
@@ -499,22 +929,11 @@ subcommands:
                     \ str\n                        output file, default: output to\
                     \ stdout\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: show program's version number and exit
-                  synonyms:
-                  - -v
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "usage: pyfastx COMMAND [OPTIONS]\n\nA command line tool\
                   \ for FASTA/Q file manipulation\n\noptional arguments:\n  -h, --help\
                   \     show this help message and exit\n  -v, --version  show program's\
@@ -527,15 +946,16 @@ subcommands:
                   \ file\n    extract      extract full sequences or reads from fasta/q\
                   \ file\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: pyfastx fq2fa [-h] [-o str] fastx\n\npositional arguments:\n\
@@ -544,48 +964,49 @@ subcommands:
                 \ --out-file str\n                        output file, default: output\
                 \ to stdout\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: fasta or fastq file, gzip support
+                optional: false
                 position: 0
                 name: fastx
-                optional: false
+                description: fasta or fastq file, gzip support
               named:
               - !Flag
-                description: split a fasta/q file into N new files with even size
+                optional: true
                 synonyms:
                 - -n
+                description: split a fasta/q file into N new files with even size
                 args: !SimpleFlagArg
                   name: int
-                optional: true
               - !Flag
-                description: "split a fasta/q file into multiple files containing\n\
-                  the same sequence counts"
+                optional: true
                 synonyms:
                 - -c
+                description: "split a fasta/q file into multiple files containing\n\
+                  the same sequence counts"
                 args: !SimpleFlagArg
                   name: int
-                optional: true
               - !Flag
-                description: "output directory, default is current folder\n"
+                optional: true
                 synonyms:
                 - -o
                 - --out-dir
+                description: "output directory, default is current folder\n"
                 args: !SimpleFlagArg
                   name: str
-                optional: true
-              parent: *id003
+              parent: *id014
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: pyfastx split [-h] (-n int | -c int) [-o str] fastx\n\
@@ -597,57 +1018,58 @@ subcommands:
                 \        the same sequence counts\n  -o str, --out-dir str\n     \
                 \                   output directory, default is current folder\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional: []
               named:
               - !Flag
-                description: number of sequences to be sampled
+                optional: true
                 synonyms:
                 - -n
+                description: number of sequences to be sampled
                 args: !SimpleFlagArg
                   name: int
-                optional: true
               - !Flag
-                description: proportion of sequences to be sampled, 0~1
+                optional: true
                 synonyms:
                 - -p
+                description: proportion of sequences to be sampled, 0~1
                 args: !SimpleFlagArg
                   name: float
-                optional: true
               - !Flag
-                description: random seed, default is the current system time
+                optional: true
                 synonyms:
                 - -s
                 - --seed
+                description: random seed, default is the current system time
                 args: !SimpleFlagArg
                   name: int
-                optional: true
               - !Flag
-                description: "start sequential reading, particularly suitable for\n\
-                  sampling large numbers of sequences"
+                optional: true
                 synonyms:
                 - --sequential-read
+                description: "start sequential reading, particularly suitable for\n\
+                  sampling large numbers of sequences"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "output file, default: output to stdout\n"
+                optional: true
                 synonyms:
                 - -o
                 - --out-file
+                description: "output file, default: output to stdout\n"
                 args: !SimpleFlagArg
                   name: str
-                optional: true
-              parent: *id003
+              parent: *id014
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: pyfastx sample [-h] (-n int | -p float) [-s int]\
@@ -663,68 +1085,69 @@ subcommands:
                 \ --out-file str\n                        output file, default: output\
                 \ to stdout\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id008
               positional:
               - !Positional
-                description: fasta or fastq file, gzip support
+                optional: false
                 position: 0
                 name: fastx
-                optional: false
+                description: fasta or fastq file, gzip support
               - !Positional
-                description: "sequence name or read name, multiple names were\nseparated\
-                  \ by space"
+                optional: false
                 position: 1
                 name: name
-                optional: false
+                description: "sequence name or read name, multiple names were\nseparated\
+                  \ by space"
               named:
               - !Flag
-                description: "a file containing sequence or read names, one name per\n\
-                  line"
+                optional: true
                 synonyms:
                 - -l
                 - --list-file
+                description: "a file containing sequence or read names, one name per\n\
+                  line"
                 args: !SimpleFlagArg
                   name: str
-                optional: true
               - !Flag
-                description: output reverse complement sequence
+                optional: true
                 synonyms:
                 - --reverse-complement
+                description: output reverse complement sequence
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "output fasta format when extract reads from fastq,\n\
-                  default output fastq format"
+                optional: true
                 synonyms:
                 - --out-fasta
+                description: "output fasta format when extract reads from fastq,\n\
+                  default output fastq format"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: 'output file, default: output to stdout'
+                optional: true
                 synonyms:
                 - -o
                 - --out-file
+                description: 'output file, default: output to stdout'
                 args: !SimpleFlagArg
                   name: str
-                optional: true
               - !Flag
-                description: "start sequential reading, particularly suitable for\n\
-                  extracting large numbers of sequences\n"
+                optional: true
                 synonyms:
                 - --sequential-read
+                description: "start sequential reading, particularly suitable for\n\
+                  extracting large numbers of sequences\n"
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id014
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: pyfastx extract [-h] [-l str] [--reverse-complement]\
@@ -743,27 +1166,28 @@ subcommands:
                 \     start sequential reading, particularly suitable for\n      \
                 \                  extracting large numbers of sequences\n"
               generated_using: *id004
-            - &id015 !Command
+              docker_image:
+            - &id017 !Command
               command: *id009
               positional: []
               named: []
-              parent: *id003
+              parent: *id014
               subcommands:
               - !Command
                 command: *id010
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: pyfastx
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: COMMAND
-                  optional: false
+                  description: ''
                 named: []
-                parent: *id005
+                parent: *id015
                 subcommands: []
                 usage: []
                 help_flag:
@@ -772,6 +1196,7 @@ subcommands:
                 help_text: "usage: pyfastx COMMAND [OPTIONS]\npyfastx: error: unrecognized\
                   \ arguments: --usage\n"
                 generated_using: *id011
+                docker_image:
               usage: []
               help_flag:
               usage_flag:
@@ -780,32 +1205,33 @@ subcommands:
                 \ arguments:\n  fastx       fasta or fastq file, gzip support\n\n\
                 optional arguments:\n  -h, --help  show this help message and exit\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id012
               positional:
               - !Positional
-                description: fasta or fastq file, gzip support
+                optional: false
                 position: 0
                 name: fastx
-                optional: false
+                description: fasta or fastq file, gzip support
               named:
               - !Flag
-                description: build full index, base composition will be calculated
+                optional: true
                 synonyms:
                 - -f
                 - --full
+                description: build full index, base composition will be calculated
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id014
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: pyfastx index [-h] [-f] fastx [fastx ...]\n\npositional\
@@ -813,57 +1239,58 @@ subcommands:
                 optional arguments:\n  -h, --help  show this help message and exit\n\
                 \  -f, --full  build full index, base composition will be calculated\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id013
               positional:
               - !Positional
-                description: input fasta file, gzip support
+                optional: false
                 position: 0
                 name: fastx
-                optional: false
+                description: input fasta file, gzip support
               - !Positional
-                description: "format is chr:start-end, start and end position is\n\
-                  1-based, multiple regions were separated by space"
+                optional: false
                 position: 1
                 name: region
-                optional: false
+                description: "format is chr:start-end, start and end position is\n\
+                  1-based, multiple regions were separated by space"
               named:
               - !Flag
-                description: "tab-delimited file, one region per line, both start\n\
-                  and end position are 1-based"
+                optional: true
                 synonyms:
                 - -r
                 - --region-file
+                description: "tab-delimited file, one region per line, both start\n\
+                  and end position are 1-based"
                 args: !SimpleFlagArg
                   name: str
-                optional: true
               - !Flag
-                description: "tab-delimited BED file, 0-based start position and\n\
-                  1-based end position"
+                optional: true
                 synonyms:
                 - -b
                 - --bed-file
+                description: "tab-delimited BED file, 0-based start position and\n\
+                  1-based end position"
                 args: !SimpleFlagArg
                   name: str
-                optional: true
               - !Flag
-                description: "output file, default: output to stdout\n"
+                optional: true
                 synonyms:
                 - -o
                 - --out-file
+                description: "output file, default: output to stdout\n"
                 args: !SimpleFlagArg
                   name: str
-                optional: true
-              parent: *id003
+              parent: *id014
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: pyfastx subseq [-h] [-r str | -b str] [-o str]\n\
@@ -880,6 +1307,7 @@ subcommands:
                 \ str, --out-file str\n                        output file, default:\
                 \ output to stdout\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -895,15 +1323,16 @@ subcommands:
               \  randomly sample sequences from fasta or fastq file\n    extract \
               \     extract full sequences or reads from fasta/q file\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: pyfastx fq2fa [-h] [-o str] fastx\n\npositional arguments:\n\
@@ -911,48 +1340,49 @@ subcommands:
             \  -h, --help            show this help message and exit\n  -o str, --out-file\
             \ str\n                        output file, default: output to stdout\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: fasta or fastq file, gzip support
+            optional: false
             position: 0
             name: fastx
-            optional: false
+            description: fasta or fastq file, gzip support
           named:
           - !Flag
-            description: split a fasta/q file into N new files with even size
+            optional: true
             synonyms:
             - -n
+            description: split a fasta/q file into N new files with even size
             args: !SimpleFlagArg
               name: int
-            optional: true
           - !Flag
-            description: "split a fasta/q file into multiple files containing\nthe\
-              \ same sequence counts"
+            optional: true
             synonyms:
             - -c
+            description: "split a fasta/q file into multiple files containing\nthe\
+              \ same sequence counts"
             args: !SimpleFlagArg
               name: int
-            optional: true
           - !Flag
-            description: "output directory, default is current folder\n"
+            optional: true
             synonyms:
             - -o
             - --out-dir
+            description: "output directory, default is current folder\n"
             args: !SimpleFlagArg
               name: str
-            optional: true
-          parent: *id014
+          parent: *id016
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: pyfastx split [-h] (-n int | -c int) [-o str] fastx\n\
@@ -964,57 +1394,58 @@ subcommands:
             \ sequence counts\n  -o str, --out-dir str\n                        output\
             \ directory, default is current folder\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional: []
           named:
           - !Flag
-            description: number of sequences to be sampled
+            optional: true
             synonyms:
             - -n
+            description: number of sequences to be sampled
             args: !SimpleFlagArg
               name: int
-            optional: true
           - !Flag
-            description: proportion of sequences to be sampled, 0~1
+            optional: true
             synonyms:
             - -p
+            description: proportion of sequences to be sampled, 0~1
             args: !SimpleFlagArg
               name: float
-            optional: true
           - !Flag
-            description: random seed, default is the current system time
+            optional: true
             synonyms:
             - -s
             - --seed
+            description: random seed, default is the current system time
             args: !SimpleFlagArg
               name: int
-            optional: true
           - !Flag
-            description: "start sequential reading, particularly suitable for\nsampling\
-              \ large numbers of sequences"
+            optional: true
             synonyms:
             - --sequential-read
+            description: "start sequential reading, particularly suitable for\nsampling\
+              \ large numbers of sequences"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "output file, default: output to stdout\n"
+            optional: true
             synonyms:
             - -o
             - --out-file
+            description: "output file, default: output to stdout\n"
             args: !SimpleFlagArg
               name: str
-            optional: true
-          parent: *id014
+          parent: *id016
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: pyfastx sample [-h] (-n int | -p float) [-s int] [--sequential-read]\n\
@@ -1029,68 +1460,69 @@ subcommands:
             \ -o str, --out-file str\n                        output file, default:\
             \ output to stdout\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id008
           positional:
           - !Positional
-            description: fasta or fastq file, gzip support
+            optional: false
             position: 0
             name: fastx
-            optional: false
+            description: fasta or fastq file, gzip support
           - !Positional
-            description: "sequence name or read name, multiple names were\nseparated\
-              \ by space"
+            optional: false
             position: 1
             name: name
-            optional: false
+            description: "sequence name or read name, multiple names were\nseparated\
+              \ by space"
           named:
           - !Flag
-            description: "a file containing sequence or read names, one name per\n\
-              line"
+            optional: true
             synonyms:
             - -l
             - --list-file
+            description: "a file containing sequence or read names, one name per\n\
+              line"
             args: !SimpleFlagArg
               name: str
-            optional: true
           - !Flag
-            description: output reverse complement sequence
+            optional: true
             synonyms:
             - --reverse-complement
+            description: output reverse complement sequence
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "output fasta format when extract reads from fastq,\ndefault\
-              \ output fastq format"
+            optional: true
             synonyms:
             - --out-fasta
+            description: "output fasta format when extract reads from fastq,\ndefault\
+              \ output fastq format"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: 'output file, default: output to stdout'
+            optional: true
             synonyms:
             - -o
             - --out-file
+            description: 'output file, default: output to stdout'
             args: !SimpleFlagArg
               name: str
-            optional: true
           - !Flag
-            description: "start sequential reading, particularly suitable for\nextracting\
-              \ large numbers of sequences\n"
+            optional: true
             synonyms:
             - --sequential-read
+            description: "start sequential reading, particularly suitable for\nextracting\
+              \ large numbers of sequences\n"
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id014
+          parent: *id016
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: pyfastx extract [-h] [-l str] [--reverse-complement]\
@@ -1109,27 +1541,28 @@ subcommands:
             \ sequential reading, particularly suitable for\n                    \
             \    extracting large numbers of sequences\n"
           generated_using: *id004
-        - &id017 !Command
+          docker_image:
+        - &id019 !Command
           command: *id009
           positional: []
           named: []
-          parent: *id014
+          parent: *id016
           subcommands:
           - !Command
             command: *id010
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: pyfastx
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: COMMAND
-              optional: false
+              description: ''
             named: []
-            parent: *id015
+            parent: *id017
             subcommands: []
             usage: []
             help_flag:
@@ -1138,6 +1571,7 @@ subcommands:
             help_text: "usage: pyfastx COMMAND [OPTIONS]\npyfastx: error: unrecognized\
               \ arguments: --usage\n"
             generated_using: *id011
+            docker_image:
           usage: []
           help_flag:
           usage_flag:
@@ -1146,32 +1580,33 @@ subcommands:
             \  fastx       fasta or fastq file, gzip support\n\noptional arguments:\n\
             \  -h, --help  show this help message and exit\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id012
           positional:
           - !Positional
-            description: fasta or fastq file, gzip support
+            optional: false
             position: 0
             name: fastx
-            optional: false
+            description: fasta or fastq file, gzip support
           named:
           - !Flag
-            description: build full index, base composition will be calculated
+            optional: true
             synonyms:
             - -f
             - --full
+            description: build full index, base composition will be calculated
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id014
+          parent: *id016
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: pyfastx index [-h] [-f] fastx [fastx ...]\n\npositional\
@@ -1179,57 +1614,58 @@ subcommands:
             \ arguments:\n  -h, --help  show this help message and exit\n  -f, --full\
             \  build full index, base composition will be calculated\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id013
           positional:
           - !Positional
-            description: input fasta file, gzip support
+            optional: false
             position: 0
             name: fastx
-            optional: false
+            description: input fasta file, gzip support
           - !Positional
-            description: "format is chr:start-end, start and end position is\n1-based,\
-              \ multiple regions were separated by space"
+            optional: false
             position: 1
             name: region
-            optional: false
+            description: "format is chr:start-end, start and end position is\n1-based,\
+              \ multiple regions were separated by space"
           named:
           - !Flag
-            description: "tab-delimited file, one region per line, both start\nand\
-              \ end position are 1-based"
+            optional: true
             synonyms:
             - -r
             - --region-file
+            description: "tab-delimited file, one region per line, both start\nand\
+              \ end position are 1-based"
             args: !SimpleFlagArg
               name: str
-            optional: true
           - !Flag
-            description: "tab-delimited BED file, 0-based start position and\n1-based\
-              \ end position"
+            optional: true
             synonyms:
             - -b
             - --bed-file
+            description: "tab-delimited BED file, 0-based start position and\n1-based\
+              \ end position"
             args: !SimpleFlagArg
               name: str
-            optional: true
           - !Flag
-            description: "output file, default: output to stdout\n"
+            optional: true
             synonyms:
             - -o
             - --out-file
+            description: "output file, default: output to stdout\n"
             args: !SimpleFlagArg
               name: str
-            optional: true
-          parent: *id014
+          parent: *id016
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: pyfastx subseq [-h] [-r str | -b str] [-o str]\n    \
@@ -1245,6 +1681,7 @@ subcommands:
             \             1-based end position\n  -o str, --out-file str\n       \
             \                 output file, default: output to stdout\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -1260,15 +1697,16 @@ subcommands:
           \ or fastq file\n    extract      extract full sequences or reads from fasta/q\
           \ file\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: pyfastx fq2fa [-h] [-o str] fastx\n\npositional arguments:\n\
@@ -1276,48 +1714,49 @@ subcommands:
         \  -h, --help            show this help message and exit\n  -o str, --out-file\
         \ str\n                        output file, default: output to stdout\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: fasta or fastq file, gzip support
+        optional: false
         position: 0
         name: fastx
-        optional: false
+        description: fasta or fastq file, gzip support
       named:
       - !Flag
-        description: split a fasta/q file into N new files with even size
+        optional: true
         synonyms:
         - -n
+        description: split a fasta/q file into N new files with even size
         args: !SimpleFlagArg
           name: int
-        optional: true
       - !Flag
-        description: "split a fasta/q file into multiple files containing\nthe same\
-          \ sequence counts"
+        optional: true
         synonyms:
         - -c
+        description: "split a fasta/q file into multiple files containing\nthe same\
+          \ sequence counts"
         args: !SimpleFlagArg
           name: int
-        optional: true
       - !Flag
-        description: "output directory, default is current folder\n"
+        optional: true
         synonyms:
         - -o
         - --out-dir
+        description: "output directory, default is current folder\n"
         args: !SimpleFlagArg
           name: str
-        optional: true
-      parent: *id016
+      parent: *id018
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: pyfastx split [-h] (-n int | -c int) [-o str] fastx\n\npositional\
@@ -1328,57 +1767,58 @@ subcommands:
         \                        the same sequence counts\n  -o str, --out-dir str\n\
         \                        output directory, default is current folder\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional: []
       named:
       - !Flag
-        description: number of sequences to be sampled
+        optional: true
         synonyms:
         - -n
+        description: number of sequences to be sampled
         args: !SimpleFlagArg
           name: int
-        optional: true
       - !Flag
-        description: proportion of sequences to be sampled, 0~1
+        optional: true
         synonyms:
         - -p
+        description: proportion of sequences to be sampled, 0~1
         args: !SimpleFlagArg
           name: float
-        optional: true
       - !Flag
-        description: random seed, default is the current system time
+        optional: true
         synonyms:
         - -s
         - --seed
+        description: random seed, default is the current system time
         args: !SimpleFlagArg
           name: int
-        optional: true
       - !Flag
-        description: "start sequential reading, particularly suitable for\nsampling\
-          \ large numbers of sequences"
+        optional: true
         synonyms:
         - --sequential-read
+        description: "start sequential reading, particularly suitable for\nsampling\
+          \ large numbers of sequences"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "output file, default: output to stdout\n"
+        optional: true
         synonyms:
         - -o
         - --out-file
+        description: "output file, default: output to stdout\n"
         args: !SimpleFlagArg
           name: str
-        optional: true
-      parent: *id016
+      parent: *id018
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: pyfastx sample [-h] (-n int | -p float) [-s int] [--sequential-read]\n\
@@ -1392,67 +1832,68 @@ subcommands:
         \          sampling large numbers of sequences\n  -o str, --out-file str\n\
         \                        output file, default: output to stdout\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id008
       positional:
       - !Positional
-        description: fasta or fastq file, gzip support
+        optional: false
         position: 0
         name: fastx
-        optional: false
+        description: fasta or fastq file, gzip support
       - !Positional
-        description: "sequence name or read name, multiple names were\nseparated by\
-          \ space"
+        optional: false
         position: 1
         name: name
-        optional: false
+        description: "sequence name or read name, multiple names were\nseparated by\
+          \ space"
       named:
       - !Flag
-        description: "a file containing sequence or read names, one name per\nline"
+        optional: true
         synonyms:
         - -l
         - --list-file
+        description: "a file containing sequence or read names, one name per\nline"
         args: !SimpleFlagArg
           name: str
-        optional: true
       - !Flag
-        description: output reverse complement sequence
+        optional: true
         synonyms:
         - --reverse-complement
+        description: output reverse complement sequence
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "output fasta format when extract reads from fastq,\ndefault\
-          \ output fastq format"
+        optional: true
         synonyms:
         - --out-fasta
+        description: "output fasta format when extract reads from fastq,\ndefault\
+          \ output fastq format"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: 'output file, default: output to stdout'
+        optional: true
         synonyms:
         - -o
         - --out-file
+        description: 'output file, default: output to stdout'
         args: !SimpleFlagArg
           name: str
-        optional: true
       - !Flag
-        description: "start sequential reading, particularly suitable for\nextracting\
-          \ large numbers of sequences\n"
+        optional: true
         synonyms:
         - --sequential-read
+        description: "start sequential reading, particularly suitable for\nextracting\
+          \ large numbers of sequences\n"
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id016
+      parent: *id018
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: pyfastx extract [-h] [-l str] [--reverse-complement] [--out-fasta]\n\
@@ -1470,27 +1911,28 @@ subcommands:
         \     start sequential reading, particularly suitable for\n              \
         \          extracting large numbers of sequences\n"
       generated_using: *id004
-    - &id019 !Command
+      docker_image:
+    - &id021 !Command
       command: *id009
       positional: []
       named: []
-      parent: *id016
+      parent: *id018
       subcommands:
       - !Command
         command: *id010
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: pyfastx
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: COMMAND
-          optional: false
+          description: ''
         named: []
-        parent: *id017
+        parent: *id019
         subcommands: []
         usage: []
         help_flag:
@@ -1499,6 +1941,7 @@ subcommands:
         help_text: "usage: pyfastx COMMAND [OPTIONS]\npyfastx: error: unrecognized\
           \ arguments: --usage\n"
         generated_using: *id011
+        docker_image:
       usage: []
       help_flag:
       usage_flag:
@@ -1507,32 +1950,33 @@ subcommands:
         \  fastx       fasta or fastq file, gzip support\n\noptional arguments:\n\
         \  -h, --help  show this help message and exit\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id012
       positional:
       - !Positional
-        description: fasta or fastq file, gzip support
+        optional: false
         position: 0
         name: fastx
-        optional: false
+        description: fasta or fastq file, gzip support
       named:
       - !Flag
-        description: build full index, base composition will be calculated
+        optional: true
         synonyms:
         - -f
         - --full
+        description: build full index, base composition will be calculated
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id016
+      parent: *id018
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: pyfastx index [-h] [-f] fastx [fastx ...]\n\npositional arguments:\n\
@@ -1540,57 +1984,58 @@ subcommands:
         \  -h, --help  show this help message and exit\n  -f, --full  build full index,\
         \ base composition will be calculated\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id013
       positional:
       - !Positional
-        description: input fasta file, gzip support
+        optional: false
         position: 0
         name: fastx
-        optional: false
+        description: input fasta file, gzip support
       - !Positional
-        description: "format is chr:start-end, start and end position is\n1-based,\
-          \ multiple regions were separated by space"
+        optional: false
         position: 1
         name: region
-        optional: false
+        description: "format is chr:start-end, start and end position is\n1-based,\
+          \ multiple regions were separated by space"
       named:
       - !Flag
-        description: "tab-delimited file, one region per line, both start\nand end\
-          \ position are 1-based"
+        optional: true
         synonyms:
         - -r
         - --region-file
+        description: "tab-delimited file, one region per line, both start\nand end\
+          \ position are 1-based"
         args: !SimpleFlagArg
           name: str
-        optional: true
       - !Flag
-        description: "tab-delimited BED file, 0-based start position and\n1-based\
-          \ end position"
+        optional: true
         synonyms:
         - -b
         - --bed-file
+        description: "tab-delimited BED file, 0-based start position and\n1-based\
+          \ end position"
         args: !SimpleFlagArg
           name: str
-        optional: true
       - !Flag
-        description: "output file, default: output to stdout\n"
+        optional: true
         synonyms:
         - -o
         - --out-file
+        description: "output file, default: output to stdout\n"
         args: !SimpleFlagArg
           name: str
-        optional: true
-      parent: *id016
+      parent: *id018
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: pyfastx subseq [-h] [-r str | -b str] [-o str]\n        \
@@ -1605,6 +2050,7 @@ subcommands:
         \ and\n                        1-based end position\n  -o str, --out-file\
         \ str\n                        output file, default: output to stdout\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -1619,15 +2065,16 @@ subcommands:
       \    sample       randomly sample sequences from fasta or fastq file\n    extract\
       \      extract full sequences or reads from fasta/q file\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: pyfastx fq2fa [-h] [-o str] fastx\n\npositional arguments:\n\
@@ -1635,48 +2082,49 @@ subcommands:
     \ --help            show this help message and exit\n  -o str, --out-file str\n\
     \                        output file, default: output to stdout\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: fasta or fastq file, gzip support
+    optional: false
     position: 0
     name: fastx
-    optional: false
+    description: fasta or fastq file, gzip support
   named:
   - !Flag
-    description: split a fasta/q file into N new files with even size
+    optional: true
     synonyms:
     - -n
+    description: split a fasta/q file into N new files with even size
     args: !SimpleFlagArg
       name: int
-    optional: true
   - !Flag
-    description: "split a fasta/q file into multiple files containing\nthe same sequence\
-      \ counts"
+    optional: true
     synonyms:
     - -c
+    description: "split a fasta/q file into multiple files containing\nthe same sequence\
+      \ counts"
     args: !SimpleFlagArg
       name: int
-    optional: true
   - !Flag
-    description: "output directory, default is current folder\n"
+    optional: true
     synonyms:
     - -o
     - --out-dir
+    description: "output directory, default is current folder\n"
     args: !SimpleFlagArg
       name: str
-    optional: true
-  parent: *id018
+  parent: *id020
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: pyfastx split [-h] (-n int | -c int) [-o str] fastx\n\npositional\
@@ -1687,57 +2135,58 @@ subcommands:
     \                 the same sequence counts\n  -o str, --out-dir str\n        \
     \                output directory, default is current folder\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional: []
   named:
   - !Flag
-    description: number of sequences to be sampled
+    optional: true
     synonyms:
     - -n
+    description: number of sequences to be sampled
     args: !SimpleFlagArg
       name: int
-    optional: true
   - !Flag
-    description: proportion of sequences to be sampled, 0~1
+    optional: true
     synonyms:
     - -p
+    description: proportion of sequences to be sampled, 0~1
     args: !SimpleFlagArg
       name: float
-    optional: true
   - !Flag
-    description: random seed, default is the current system time
+    optional: true
     synonyms:
     - -s
     - --seed
+    description: random seed, default is the current system time
     args: !SimpleFlagArg
       name: int
-    optional: true
   - !Flag
-    description: "start sequential reading, particularly suitable for\nsampling large\
-      \ numbers of sequences"
+    optional: true
     synonyms:
     - --sequential-read
+    description: "start sequential reading, particularly suitable for\nsampling large\
+      \ numbers of sequences"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "output file, default: output to stdout\n"
+    optional: true
     synonyms:
     - -o
     - --out-file
+    description: "output file, default: output to stdout\n"
     args: !SimpleFlagArg
       name: str
-    optional: true
-  parent: *id018
+  parent: *id020
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: pyfastx sample [-h] (-n int | -p float) [-s int] [--sequential-read]\n\
@@ -1751,66 +2200,67 @@ subcommands:
     \  -o str, --out-file str\n                        output file, default: output\
     \ to stdout\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id008
   positional:
   - !Positional
-    description: fasta or fastq file, gzip support
+    optional: false
     position: 0
     name: fastx
-    optional: false
+    description: fasta or fastq file, gzip support
   - !Positional
-    description: "sequence name or read name, multiple names were\nseparated by space"
+    optional: false
     position: 1
     name: name
-    optional: false
+    description: "sequence name or read name, multiple names were\nseparated by space"
   named:
   - !Flag
-    description: "a file containing sequence or read names, one name per\nline"
+    optional: true
     synonyms:
     - -l
     - --list-file
+    description: "a file containing sequence or read names, one name per\nline"
     args: !SimpleFlagArg
       name: str
-    optional: true
   - !Flag
-    description: output reverse complement sequence
+    optional: true
     synonyms:
     - --reverse-complement
+    description: output reverse complement sequence
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "output fasta format when extract reads from fastq,\ndefault output\
-      \ fastq format"
+    optional: true
     synonyms:
     - --out-fasta
+    description: "output fasta format when extract reads from fastq,\ndefault output\
+      \ fastq format"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: 'output file, default: output to stdout'
+    optional: true
     synonyms:
     - -o
     - --out-file
+    description: 'output file, default: output to stdout'
     args: !SimpleFlagArg
       name: str
-    optional: true
   - !Flag
-    description: "start sequential reading, particularly suitable for\nextracting\
-      \ large numbers of sequences\n"
+    optional: true
     synonyms:
     - --sequential-read
+    description: "start sequential reading, particularly suitable for\nextracting\
+      \ large numbers of sequences\n"
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id018
+  parent: *id020
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: pyfastx extract [-h] [-l str] [--reverse-complement] [--out-fasta]\n\
@@ -1827,27 +2277,28 @@ subcommands:
     \ to stdout\n  --sequential-read     start sequential reading, particularly suitable\
     \ for\n                        extracting large numbers of sequences\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id009
   positional: []
   named: []
-  parent: *id018
+  parent: *id020
   subcommands:
   - !Command
     command: *id010
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: pyfastx
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 1
       name: COMMAND
-      optional: false
+      description: ''
     named: []
-    parent: *id019
+    parent: *id021
     subcommands: []
     usage: []
     help_flag:
@@ -1856,6 +2307,7 @@ subcommands:
     help_text: "usage: pyfastx COMMAND [OPTIONS]\npyfastx: error: unrecognized arguments:\
       \ --usage\n"
     generated_using: *id011
+    docker_image:
   usage: []
   help_flag:
   usage_flag:
@@ -1864,32 +2316,33 @@ subcommands:
     \  fastx       fasta or fastq file, gzip support\n\noptional arguments:\n  -h,\
     \ --help  show this help message and exit\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id012
   positional:
   - !Positional
-    description: fasta or fastq file, gzip support
+    optional: false
     position: 0
     name: fastx
-    optional: false
+    description: fasta or fastq file, gzip support
   named:
   - !Flag
-    description: build full index, base composition will be calculated
+    optional: true
     synonyms:
     - -f
     - --full
+    description: build full index, base composition will be calculated
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id018
+  parent: *id020
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: pyfastx index [-h] [-f] fastx [fastx ...]\n\npositional arguments:\n\
@@ -1897,57 +2350,58 @@ subcommands:
     \ --help  show this help message and exit\n  -f, --full  build full index, base\
     \ composition will be calculated\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id013
   positional:
   - !Positional
-    description: input fasta file, gzip support
+    optional: false
     position: 0
     name: fastx
-    optional: false
+    description: input fasta file, gzip support
   - !Positional
-    description: "format is chr:start-end, start and end position is\n1-based, multiple\
-      \ regions were separated by space"
+    optional: false
     position: 1
     name: region
-    optional: false
+    description: "format is chr:start-end, start and end position is\n1-based, multiple\
+      \ regions were separated by space"
   named:
   - !Flag
-    description: "tab-delimited file, one region per line, both start\nand end position\
-      \ are 1-based"
+    optional: true
     synonyms:
     - -r
     - --region-file
+    description: "tab-delimited file, one region per line, both start\nand end position\
+      \ are 1-based"
     args: !SimpleFlagArg
       name: str
-    optional: true
   - !Flag
-    description: "tab-delimited BED file, 0-based start position and\n1-based end\
-      \ position"
+    optional: true
     synonyms:
     - -b
     - --bed-file
+    description: "tab-delimited BED file, 0-based start position and\n1-based end\
+      \ position"
     args: !SimpleFlagArg
       name: str
-    optional: true
   - !Flag
-    description: "output file, default: output to stdout\n"
+    optional: true
     synonyms:
     - -o
     - --out-file
+    description: "output file, default: output to stdout\n"
     args: !SimpleFlagArg
       name: str
-    optional: true
-  parent: *id018
+  parent: *id020
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: pyfastx subseq [-h] [-r str | -b str] [-o str]\n            \
@@ -1962,6 +2416,7 @@ subcommands:
     \                    1-based end position\n  -o str, --out-file str\n        \
     \                output file, default: output to stdout\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -1976,3 +2431,4 @@ help_text: "usage: pyfastx COMMAND [OPTIONS]\n\nA command line tool for FASTA/Q 
   \ sequences from fasta or fastq file\n    extract      extract full sequences or\
   \ reads from fasta/q file\n"
 generated_using: *id004
+docker_image:

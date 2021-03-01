@@ -3,12 +3,12 @@ id: jass_plot_manhattan_PLOT_PATH.cwl
 inputs:
 - id: in_plot_path
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --plot-path
 - id: in_work_table_path
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: --worktable-path
 - id: in_jass
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - jass

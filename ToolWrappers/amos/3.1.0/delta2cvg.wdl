@@ -20,6 +20,9 @@ task Delta2cvg {
       ~{if (depend) then "-depend" else ""} \
       ~{if defined(debug) then ("-debug " +  '"' + debug + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_coverage_display: "- Min coverage to display"
     max_coverage_display: "- Max coverage to display"

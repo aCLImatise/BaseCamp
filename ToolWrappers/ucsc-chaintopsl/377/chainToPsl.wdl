@@ -16,6 +16,9 @@ task ChainToPsl {
       ~{target_dot_lst} \
       ~{query_dot_lst}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_chain: ""
     t_sizes: ""

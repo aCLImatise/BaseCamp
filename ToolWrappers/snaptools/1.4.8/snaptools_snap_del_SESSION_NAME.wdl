@@ -14,6 +14,9 @@ task SnaptoolsSnapdelSESSIONNAME {
       ~{if (session_name) then "--session-name" else ""} \
       ~{if defined(snap_file) then ("--snap-file " +  '"' + snap_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     session_name: ""
     snap_file: ""

@@ -12,6 +12,9 @@ task GcloudDebugTargets {
       ~{debugger_dot} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     targets: "SYNOPSIS"
     debugger_dot: "GCLOUD WIDE FLAGS"

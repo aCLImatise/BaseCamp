@@ -12,6 +12,9 @@ task Crlupdate {
       ~{if (verbose_mode_display) then "-v" else ""} \
       ~{if (force_download_replace) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     use_store_default: "use the machine certificate store (default to user)"
     verbose_mode_display: "verbose mode (display status for every steps)"

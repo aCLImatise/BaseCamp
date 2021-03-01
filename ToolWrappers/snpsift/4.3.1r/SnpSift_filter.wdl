@@ -4,7 +4,7 @@ task SnpSiftFilter {
   input {
     String? add_filter
     File? expr_file
-    File? file
+    File? vcf_input_file
     String? filter_id
     Boolean? inverse
     Boolean? pass
@@ -23,7 +23,7 @@ task SnpSiftFilter {
       ~{filter} \
       ~{if defined(add_filter) then ("--addFilter " +  '"' + add_filter + '"') else ""} \
       ~{if defined(expr_file) then ("--exprFile " +  '"' + expr_file + '"') else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(vcf_input_file) then ("--file " +  '"' + vcf_input_file + '"') else ""} \
       ~{if defined(filter_id) then ("--filterId " +  '"' + filter_id + '"') else ""} \
       ~{if (inverse) then "--inverse" else ""} \
       ~{if (pass) then "--pass" else ""} \
@@ -34,10 +34,13 @@ task SnpSiftFilter {
       ~{if (galaxy) then "--galaxy" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_filter: ": Add a string to FILTER VCF field if 'expression' is true. Default: '' (none)"
     expr_file: ": Read expression from a file"
-    file: ": VCF input file. Default: STDIN"
+    vcf_input_file: ": VCF input file. Default: STDIN"
     filter_id: ": ID for this filter (##FILTER tag in header and FILTER VCF field). Default: 'SnpSift'"
     inverse: ": Inverse. Show lines that do not match filter expression"
     pass: ": Use 'PASS' field instead of filtering out VCF entries"

@@ -34,6 +34,9 @@ task SeuratscaledataR {
       ~{if defined(check_for_norm) then ("--check-for-norm " +  '"' + check_for_norm + '"') else ""} \
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name in which a serialized R matrix object may be found."
     input_format: "Either loom, seurat, anndata or singlecellexperiment for the input format to read."

@@ -16,6 +16,9 @@ task Gfinisher {
       ~{if (verbose_mode) then "-v" else ""} \
       ~{if (ref) then "-ref" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contigsscaffolds_input_file: "contigs/scaffolds input file"
     ds: "dataset files names (one or more separated by comma)"

@@ -2,8 +2,8 @@ version 1.0
 
 task Porechop {
   input {
-    Directory? fastafastq_input_reads
-    File? filename_fasta_fastq
+    Directory? fastafastq_directory_willbe
+    File? filename_reads_printed
     String? format
     File? verbosity
     Int? threads
@@ -29,8 +29,8 @@ task Porechop {
   }
   command <<<
     porechop \
-      ~{if defined(fastafastq_input_reads) then ("--input " +  '"' + fastafastq_input_reads + '"') else ""} \
-      ~{if defined(filename_fasta_fastq) then ("--output " +  '"' + filename_fasta_fastq + '"') else ""} \
+      ~{if defined(fastafastq_directory_willbe) then ("--input " +  '"' + fastafastq_directory_willbe + '"') else ""} \
+      ~{if defined(filename_reads_printed) then ("--output " +  '"' + filename_reads_printed + '"') else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
@@ -54,9 +54,12 @@ task Porechop {
       ~{if defined(extra_middle_trim_bad_side) then ("--extra_middle_trim_bad_side " +  '"' + extra_middle_trim_bad_side + '"') else ""} \
       ~{if defined(min_split_read_size) then ("--min_split_read_size " +  '"' + min_split_read_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    fastafastq_input_reads: "FASTA/FASTQ of input reads or a directory which will\\nbe recursively searched for FASTQ files (required)"
-    filename_fasta_fastq: "Filename for FASTA or FASTQ of trimmed reads (if not\\nset, trimmed reads will be printed to stdout)"
+    fastafastq_directory_willbe: "FASTA/FASTQ of input reads or a directory which will\\nbe recursively searched for FASTQ files (required)"
+    filename_reads_printed: "Filename for FASTA or FASTQ of trimmed reads (if not\\nset, trimmed reads will be printed to stdout)"
     format: "Output format for the reads - if auto, the format\\nwill be chosen based on the output filename or the\\ninput read format (default: auto)"
     verbosity: "Level of progress information: 0 = none, 1 = some, 2\\n= lots, 3 = full - output will go to stdout if reads\\nare saved to a file and stderr if reads are printed\\nto stdout (default: 1)"
     threads: "Number of threads to use for adapter alignment\\n(default: 8)"

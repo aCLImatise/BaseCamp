@@ -3,23 +3,23 @@ id: heinz.cwl
 inputs:
 - id: in_fdr
   doc: Specifies fdr
-  type: long
+  type: long?
   inputBinding:
     prefix: -FDR
 - id: in_specifies_a
   doc: Specifies a
-  type: long
+  type: long?
   inputBinding:
     prefix: -a
 - id: in_edge_list_file
   doc: Edge list file
-  type: File
+  type: File?
   inputBinding:
     prefix: -e
 - id: in_enum
   doc: "Enumeration mode:\n0 - No enumeration\n1 - No root\n2 - Fix root\n3 - No root\
     \ per component (default)"
-  type: long
+  type: long?
   inputBinding:
     prefix: -enum
 - id: in_formulation_problem_single
@@ -28,64 +28,64 @@ inputs:
     \ (Node-separator)\n5 - Cut formulation (Node-separator, BK, default)\n6 - Tree\
     \ DP\n7 - Tree DP heuristic (fixed_edge)\n8 - Tree DP heuristic (random_edge)\n\
     9 - Tree DP heuristic (uniform_edge)"
-  type: long
+  type: long?
   inputBinding:
     prefix: -f
 - id: in_lambda
   doc: Specifies lambda
-  type: long
+  type: long?
   inputBinding:
     prefix: -lambda
 - id: in_specifies_number_threads
   doc: 'Specifies number of threads (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: -m
 - id: in_max_cuts
   doc: "Specifies the maximum number of cuts per step\n(only in conjuction with -f\
     \ 2, optional, default: -1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: -maxCuts
 - id: in_node_file
   doc: Node file
-  type: File
+  type: File?
   inputBinding:
     prefix: -n
 - id: in_output_file
   doc: Output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_enable_preprocessing
   doc: Enable preprocessing
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
-- id: in_specifies_root_optional
+- id: in_specifies_root_node
   doc: Specifies the root node (optional)
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
 - id: in_stp_node_file
   doc: STP node file
-  type: File
+  type: File?
   inputBinding:
     prefix: -s
 - id: in_time_limit_seconds
   doc: 'Time limit (in seconds, default: -1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_verbosity
   doc: "Specifies the verbosity level:\n0 - No output\n1 - Only necessary output\n\
     2 - More verbose output (default)\n3 - Debug output"
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbosity
 - id: in_version
   doc: "Show version number\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -version
 outputs:
@@ -94,9 +94,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: Output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - heinz

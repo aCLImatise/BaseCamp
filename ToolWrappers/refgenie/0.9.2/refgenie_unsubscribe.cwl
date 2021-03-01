@@ -4,7 +4,7 @@ inputs:
 - id: in_genome_config
   doc: "Path to local genome configuration file. Optional if\nREFGENIE environment\
     \ variable is set."
-  type: File
+  type: File?
   inputBinding:
     prefix: --genome-config
 - id: in_genome_server
@@ -16,6 +16,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - refgenie

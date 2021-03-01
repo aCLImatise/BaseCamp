@@ -3,12 +3,12 @@ id: paraFetch.cwl
 inputs:
 - id: in_newer
   doc: only download a file if it is newer than the version we already have.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -newer
 - id: in_progress
   doc: Show progress of download.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -progress
 - id: in_n
@@ -95,6 +95,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - paraFetch

@@ -28,6 +28,9 @@ task Vcf2ldGene {
       ~{if (gene_file) then "--geneFile" else ""} \
       ~{if (gene) then "--gene" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_vcf: ": input VCF File"
     out: ": output prefix"

@@ -6,7 +6,7 @@ inputs:
     \ must have before it is\nremoved. If there are mismatches in the tail\nthan there\
     \ must be at least this length of\npoly-A tail before the mismatch for the\nmismatch\
     \ to be considered part of the tail.\n(Integer 1 or more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -minlength
 - id: in_mismatches
@@ -18,7 +18,7 @@ inputs:
     \ only the A's after it are considered to\nbe part of the tail). The terminal\
     \ 9 bases\nof GCAAAAGAAAA would be removed; There are\nat least -minlength A's\
     \ preceeding the last\n'G', so it is part of the tail. (Integer 0\nor more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -mismatches
 - id: in_to_lower
@@ -27,13 +27,14 @@ inputs:
     \ this as a masked region.\nThe sequence is unchanged apart from the\ncase change.\
     \ You might like to ensure that\nthe whole sequence is in upper-case before\n\
     masking the specified regions to lower-case\nby using the '-supper' sequence qualifier."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -tolower
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - trimest

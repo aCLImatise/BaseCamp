@@ -16,6 +16,9 @@ task Spadesreadfilter {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: "K-mer length"
     cov: "Median kmer count threshold (read pairs, s.t. kmer count median for BOTH reads LESS OR EQUAL to this value will be ignored)"

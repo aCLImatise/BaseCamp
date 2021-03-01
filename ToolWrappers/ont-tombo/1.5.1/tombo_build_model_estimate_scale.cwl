@@ -3,7 +3,7 @@ id: tombo_build_model_estimate_scale.cwl
 inputs:
 - id: in_quiet
   doc: Don't print status information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_fast_fives_basedir
@@ -16,6 +16,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tombo

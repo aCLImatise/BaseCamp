@@ -12,6 +12,9 @@ task Rfheader {
       ~{the} \
       ~{header}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     refine: ""
     the: ""

@@ -20,6 +20,9 @@ task HalTreeNIBackgroundpy {
       ~{if defined(ar_extend_pct) then ("--arExtendPct " +  '"' + ar_extend_pct + '"') else ""} \
       ~{if defined(root) then ("--root " +  '"' + root + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     background_bed_name: "Name function for background bed files where genome\\nname is specified as %s. Computed using\\nhalTreeNIBackground (default: %%s_bg.bed)"
     ar: "Select only repeatmasked regions (default: False)"

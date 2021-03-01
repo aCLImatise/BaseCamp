@@ -38,6 +38,9 @@ task Amptk54 {
       ~{if (primer_mismatch) then "--primer_mismatch" else ""} \
       ~{if (cpus) then "--cpus" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "Input file (SFF, FASTA, or FASTQ) (Required)"
     qual: "QUAL file (Required if -i is FASTA)."

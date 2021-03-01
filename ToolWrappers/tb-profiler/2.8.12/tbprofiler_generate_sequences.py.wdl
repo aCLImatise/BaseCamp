@@ -16,6 +16,9 @@ task TbprofilerGenerateSequencespy {
       ~{if defined(variant_format) then ("--variant-format " +  '"' + variant_format + '"') else ""} \
       ~{if (non_dr) then "--non-dr" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     samples: "NGS Platform (default: None)"
     dir: "NGS Platform (default: vcf/)"

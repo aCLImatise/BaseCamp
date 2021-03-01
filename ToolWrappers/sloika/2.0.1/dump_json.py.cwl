@@ -3,13 +3,13 @@ id: dump_json.py.cwl
 inputs:
 - id: in_out_file
   doc: 'Output JSON file to this file location (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --out_file
 - id: in_no_params
   doc: "Output parameters as well as model structure (Default:\n--params) (default:\
     \ True)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-params
 - id: in_model
@@ -23,9 +23,10 @@ outputs:
   type: stdout
 - id: out_out_file
   doc: 'Output JSON file to this file location (default: None)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dump_json.py

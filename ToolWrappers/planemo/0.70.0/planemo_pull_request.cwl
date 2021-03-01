@@ -3,7 +3,7 @@ id: planemo_pull_request.cwl
 inputs:
 - id: in_message
   doc: Message describing the pull request to create.
-  type: string
+  type: string?
   inputBinding:
     prefix: --message
 - id: in_project
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - planemo

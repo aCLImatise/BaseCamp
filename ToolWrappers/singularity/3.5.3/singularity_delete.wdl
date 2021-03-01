@@ -16,6 +16,9 @@ task SingularityDelete {
       ~{delete} \
       ~{arch}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

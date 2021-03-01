@@ -2,23 +2,32 @@ version 1.0
 
 task SkipPslSelfSsawk {
   input {
-    File? val_set_sep
+    String? val_set_variable
+    String? use_sep_field
+    File? read_program_file
     String awk
     String? awk_program
-    File? file
+    File? var_file
   }
   command <<<
     skip_psl_self_ss_awk \
       ~{awk} \
       ~{awk_program} \
-      ~{file} \
-      ~{if defined(val_set_sep) then ("-v " +  '"' + val_set_sep + '"') else ""}
+      ~{var_file} \
+      ~{if defined(val_set_variable) then ("-v " +  '"' + val_set_variable + '"') else ""} \
+      ~{if defined(use_sep_field) then ("-F " +  '"' + use_sep_field + '"') else ""} \
+      ~{if defined(read_program_file) then ("-f " +  '"' + read_program_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    val_set_sep: "=VAL      Set variable\\n-F SEP          Use SEP as field separator\\n-f FILE         Read program from FILE\\n-e AWK_PROGRAM\\n"
+    val_set_variable: "=VAL      Set variable"
+    use_sep_field: "Use SEP as field separator"
+    read_program_file: "Read program from FILE"
     awk: ""
     awk_program: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

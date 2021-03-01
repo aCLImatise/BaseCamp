@@ -1,0 +1,240 @@
+!Command
+command:
+- verifybamid2
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --BamFile
+  description: '[STR: Empty]        : [String] Bam or Cram file for the sample[Required
+    if --PileupFile not specified]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --PileupFile
+  description: '[STR: Empty]        : [String] Pileup file for the sample[Required
+    if --BamFile not specified]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --Reference
+  description: '[STR: Empty]        : [String] Reference file[Required]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --SVDPrefix
+  description: '[STR: Empty]        : [String] SVD related files prefix(normally shared
+    by .UD, .mu and .bed files)[Required]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --Output
+  description: '[STR: result]       : [String] Prefix of output files[optional]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --WithinAncestry
+  description: '[FLG: OFF]          : [Bool] Enabling withinAncestry assume target
+    sample and contamination source are from the same populations,[default:BetweenAncestry]
+    otherwise'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --DisableSanityCheck
+  description: '[FLG: OFF]          : [Bool] Disable marker quality sanity check(no
+    marker filtering)[default:false]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --NumPC
+  description: '[INT: 2]            : [Int] Set number of PCs to infer Allele Frequency[optional]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --FixPC
+  description: '[STR: Empty]        : [String] Input fixed PCs to estimate Alpha[format
+    PC1:PC2:PC3...]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --FixAlpha
+  description: '[FLT: -1.0e+00]     : [Double] Input fixed Alpha to estimate PC coordinates'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --KnownAF
+  description: '[STR: Empty]        : [String] known allele frequency file (chr  pos     freq)[Optional]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --NumThread
+  description: '[INT: 4]            : [Int] Set number of threads in likelihood calculation[default:4]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --Seed
+  description: '[INT: 12345]        : [Int] Random number seed[default:12345]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --Epsilon
+  description: '[FLT: 1.0e-08]      : [Double] Minimization procedure convergence
+    threshold, usually a trade-off bettween accuracy and running time[default:1e-10]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --OutputPileup
+  description: '[FLG: OFF]          : [Bool] If output temp pileup file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --Verbose
+  description: '[FLG: OFF]          : [Bool] If print the progress of the method on
+    the screen'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --RefVCF
+  description: "[STR: Empty]        : [String] VCF file from which to extract reference\
+    \ panel's genotype matrix[Required if no SVD files available]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-BQ
+  description: '[INT: 13]           : [Int] skip bases with baseQ/BAQ smaller than
+    min-BQ'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-MQ
+  description: '[INT: 2]            : [Int] skip alignments with mapQ smaller than
+    min-MQ'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --adjust-MQ
+  description: '[INT: 40]           : [Int] adjust mapping quality; recommended:50,
+    disable:0'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-depth
+  description: '[INT: 8000]         : [Int] max per-file depth'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-orphans
+  description: '[FLG: OFF]          : [Bool] do not use anomalous read pairs'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --incl-flags
+  description: '[INT: 1040]         : [Int] required flags: skip reads with mask bits
+    unset'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --excl-flags
+  description: '[INT: 1796]         : [Int] filter flags: skip reads with mask bits
+    set'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --UDPath
+  description: '[STR: Empty]        : [String] UD matrix file from SVD result of genotype
+    matrix'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --MeanPath
+  description: '[STR: Empty]        : [String] Mean matrix file of genotype matrix'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --BedPath
+  description: '[STR: Empty]        : [String] Bed file for markers used in this analysis,1
+    based pos(chr        pos-1   pos     refAllele       altAllele)[Required]'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "VerifyBamID2: A robust tool for DNA contamination estimation from sequence\
+  \ reads using ancestry-agnostic method.\n\n Version:2.0.1\n Copyright (c) 2009-2020\
+  \ by Hyun Min Kang and Fan Zhang\n This project is licensed under the terms of the\
+  \ MIT license.\n\nDetailed instructions of parameters are availanle. Ones with \"\
+  []\" are in effect:\n\nInput/Output Files - Input/Output files for the program[Complete\
+  \ Path Recommended]\n  --BamFile            [STR: Empty]        : [String] Bam or\
+  \ Cram file for the sample[Required if --PileupFile not specified]\n  --PileupFile\
+  \         [STR: Empty]        : [String] Pileup file for the sample[Required if\
+  \ --BamFile not specified]\n  --Reference          [STR: Empty]        : [String]\
+  \ Reference file[Required]\n  --SVDPrefix          [STR: Empty]        : [String]\
+  \ SVD related files prefix(normally shared by .UD, .mu and .bed files)[Required]\n\
+  \  --Output             [STR: result]       : [String] Prefix of output files[optional]\n\
+  \nModel Selection Options - Options to adjust model selection and parameters\n \
+  \ --WithinAncestry     [FLG: OFF]          : [Bool] Enabling withinAncestry assume\
+  \ target sample and contamination source are from the same populations,[default:BetweenAncestry]\
+  \ otherwise\n  --DisableSanityCheck [FLG: OFF]          : [Bool] Disable marker\
+  \ quality sanity check(no marker filtering)[default:false]\n  --NumPC          \
+  \    [INT: 2]            : [Int] Set number of PCs to infer Allele Frequency[optional]\n\
+  \  --FixPC              [STR: Empty]        : [String] Input fixed PCs to estimate\
+  \ Alpha[format PC1:PC2:PC3...]\n  --FixAlpha           [FLT: -1.0e+00]     : [Double]\
+  \ Input fixed Alpha to estimate PC coordinates\n  --KnownAF            [STR: Empty]\
+  \        : [String] known allele frequency file (chr\tpos\tfreq)[Optional]\n  --NumThread\
+  \          [INT: 4]            : [Int] Set number of threads in likelihood calculation[default:4]\n\
+  \  --Seed               [INT: 12345]        : [Int] Random number seed[default:12345]\n\
+  \  --Epsilon            [FLT: 1.0e-08]      : [Double] Minimization procedure convergence\
+  \ threshold, usually a trade-off bettween accuracy and running time[default:1e-10]\n\
+  \  --OutputPileup       [FLG: OFF]          : [Bool] If output temp pileup file\n\
+  \  --Verbose            [FLG: OFF]          : [Bool] If print the progress of the\
+  \ method on the screen\n\nConstruction of SVD Auxiliary Files - Use these options\
+  \ when generating SVDPrefix files\n  --RefVCF             [STR: Empty]        :\
+  \ [String] VCF file from which to extract reference panel's genotype matrix[Required\
+  \ if no SVD files available]\n\nPileup Options - Arguments for pileup info extraction\n\
+  \  --min-BQ             [INT: 13]           : [Int] skip bases with baseQ/BAQ smaller\
+  \ than min-BQ\n  --min-MQ             [INT: 2]            : [Int] skip alignments\
+  \ with mapQ smaller than min-MQ\n  --adjust-MQ          [INT: 40]           : [Int]\
+  \ adjust mapping quality; recommended:50, disable:0\n  --max-depth          [INT:\
+  \ 8000]         : [Int] max per-file depth\n  --no-orphans         [FLG: OFF]  \
+  \        : [Bool] do not use anomalous read pairs\n  --incl-flags         [INT:\
+  \ 1040]         : [Int] required flags: skip reads with mask bits unset\n  --excl-flags\
+  \         [INT: 1796]         : [Int] filter flags: skip reads with mask bits set\n\
+  \nDeprecated Options - These options still are available but not recommended\n \
+  \ --UDPath             [STR: Empty]        : [String] UD matrix file from SVD result\
+  \ of genotype matrix\n  --MeanPath           [STR: Empty]        : [String] Mean\
+  \ matrix file of genotype matrix\n  --BedPath            [STR: Empty]        : [String]\
+  \ Bed file for markers used in this analysis,1 based pos(chr\tpos-1\tpos\trefAllele\t\
+  altAllele)[Required]\n\n\nNOTES:\nWhen --help was included in the argument. The\
+  \ program prints the help message but do not actually run\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/verifybamid2:2.0.1--h32f71e1_0

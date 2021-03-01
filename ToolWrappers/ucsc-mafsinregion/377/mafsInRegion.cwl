@@ -3,13 +3,13 @@ id: mafsInRegion.cwl
 inputs:
 - id: in_outdir
   doc: '- output separate files named by bed name field to outDir'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -outDir
 - id: in_keep_initial_gaps
   doc: '- keep alignment columns at the beginning and of a block that are gapped in
     all species'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -keepInitialGaps
 - id: in_regions_dot_bed
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mafsInRegion

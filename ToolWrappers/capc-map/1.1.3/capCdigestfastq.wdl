@@ -18,6 +18,9 @@ task CapCdigestfastq {
       ~{if (x_bp_position) then "-p" else ""} \
       ~{if (long) then "--long" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     firstfq_first_pair: "first_fq    is the first of the pair of fastq files"
     secondfq_second_pair: "second_fq   is the second of the pair of fastq files"

@@ -8,7 +8,7 @@ inputs:
     \ and\nwith GERP it includes the estimated numbers of neutral,\nobserved, and\
     \ rejected substitutions, along with the number of\nspecies available at each\
     \ site."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --base-by-base
 - id: in_confidence_interval
@@ -20,13 +20,13 @@ inputs:
     \ but the confidence interval is based on the assumption\nthat the combined distribution\
     \ will be approximately normal (true\nfor large numbers of sites by central limit\
     \ theorem)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --confidence-interval
 - id: in_msa_format
   doc: "|PHYLIP|MPM|MAF|SS\nAlignment format (default is to guess format from file\
     \ contents)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --msa-format
 - id: in_method
@@ -41,7 +41,7 @@ inputs:
     \ likelihood expected number of\nsubstitutions with the expected number under\
     \ the neutral model.\nCurrently LRT, SCORE, and GERP can be used only with\n--base-by-base,\
     \ --wig-scores, or --features."
-  type: long
+  type: long?
   inputBinding:
     prefix: --method
 - id: in_wig_scores
@@ -49,14 +49,14 @@ inputs:
     \ (acceleration) scores as -log10(p).  Output base-by-base\nscores in fixed-step\
     \ wig format, using the coordinate system of the\nreference sequence (see --refidx).\
     \  In GERP mode, outputs rejected\nsubstitutions per site instead of -log10 p-values."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --wig-scores
 - id: in_ref_idx
   doc: "(for use with --wig-scores or --base-by-base) Use coordinate frame\nof specified\
     \ sequence in output.  Default value is 1, first\nsequence in alignment; 0 indicates\
     \ coordinate frame of entire\nmultiple alignment."
-  type: long
+  type: long?
   inputBinding:
     prefix: --refidx
 - id: in_mode
@@ -68,7 +68,7 @@ inputs:
     \ to\nindicate conservation and negative values to indicate acceleration.\nIn\
     \ GERP mode, CON and CONACC both report the number of rejected\nsubstitutions\
     \ R (which may be negative), while ACC reports -R, and\nNNEUT reports abs(R)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --mode
 - id: in_features
@@ -76,13 +76,13 @@ inputs:
     \ and related statistics with one row per\nfeature.  The features are assumed\
     \ to use the coordinate frame\nof the first sequence in the alignment.  Not for\
     \ use with\n--null or --posterior.  See also --gff-scores."
-  type: File
+  type: File?
   inputBinding:
     prefix: --features
 - id: in_gff_scores
   doc: "(For use with features)  Instead of a table, output a GFF and\nassign each\
     \ feature a score equal to its -log10 p-value."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gff-scores
 - id: in_subtree
@@ -96,7 +96,7 @@ inputs:
     \ human\" will create one partition\nconsisting only of human and the branch leading\
     \ to it and another\npartition consisting of the rest of the tree.  In 'SPH' mode,\
     \ a\nreversible substitution model is assumed."
-  type: string
+  type: string?
   inputBinding:
     prefix: --subtree
 - id: in_branch
@@ -105,33 +105,33 @@ inputs:
     \ the remaining branches.  Then tests for conservation/\nacceleration in the set\
     \ of named branches relative to the others.\nThe argument is a comma-delimited\
     \ list of child nodes."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --branch
 - id: in_chrom
   doc: "(Optionally use with --wig-scores or --base-by-base) Chromosome\nname for\
     \ wig output.  Default is root of multiple alignment\nfilename."
-  type: File
+  type: File?
   inputBinding:
     prefix: --chrom
 - id: in_log
   doc: "Write log to <fname> describing details of parameter optimization.\nUseful\
     \ for debugging.  (Warning: may produce large file.)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --log
 - id: in_seed
   doc: "Provide a random number seed, should be an integer >=1.  Random\nnumbers are\
     \ used in some cases to generate starting values for\noptimization.  If not specified\
     \ will use a seed based on the\ncurrent time."
-  type: long
+  type: long?
   inputBinding:
     prefix: --seed
 - id: in_no_prune
   doc: "Do not prune species from tree which are not in alignment.  Rather,\ntreat\
     \ these species as having missing data in the alignment.  Missing\ndata does have\
     \ an effect on the results when --method SPH is used."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-prune
 - id: in_null
@@ -140,7 +140,7 @@ inputs:
     \ table.  The 'alignment'\nargument will be ignored.  If used with --subtree,\
     \ the joint\ndistribution over the number of substitutions in the specified\n\
     supertree and subtree will be output instead."
-  type: long
+  type: long?
   inputBinding:
     prefix: --null
 - id: in_posterior
@@ -148,7 +148,7 @@ inputs:
     \ the alignment and the model, and output\nas a table.  If used with --subtree,\
     \ the joint distribution\nover the number of substitutions in the specified supertree\n\
     and subtree will be output instead."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --posterior
 - id: in_fit_model
@@ -157,7 +157,7 @@ inputs:
     \ for the specified subtree and supertree.\nMakes p-values less conservative.\
     \  This option has no effect with\n--null and currently cannot be used with --features.\
     \  It can be\nused with --wig-scores and --base-by-base."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fit-model
 - id: in_epsilon
@@ -167,13 +167,13 @@ inputs:
     \ need to be used, at some cost in\nspeed.  Note that truncation affects only\
     \ *right* tails, not left\ntails, so it should be an issue only with p-values\
     \ of acceleration."
-  type: double
+  type: double?
   inputBinding:
     prefix: --epsilon
 - id: in_quantiles
   doc: "(For use with --null or --posterior) Report quantiles of\ndistribution rather\
     \ than whole distribution."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quantiles
 - id: in_option_dot
@@ -205,15 +205,16 @@ outputs:
     \ and related statistics with one row per\nfeature.  The features are assumed\
     \ to use the coordinate frame\nof the first sequence in the alignment.  Not for\
     \ use with\n--null or --posterior.  See also --gff-scores."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_features)
 - id: out_chrom
   doc: "(Optionally use with --wig-scores or --base-by-base) Chromosome\nname for\
     \ wig output.  Default is root of multiple alignment\nfilename."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_chrom)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phyloP

@@ -20,6 +20,9 @@ task MerCounterTh128mer {
       ~{fast_q_descriptor_file} \
       ~{trim_flag}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mer_size: ""
     min_count_to_report: ""

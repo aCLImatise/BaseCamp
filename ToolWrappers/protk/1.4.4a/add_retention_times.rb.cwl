@@ -3,12 +3,12 @@ id: add_retention_times.rb.cwl
 inputs:
 - id: in_replace_output
   doc: Dont skip analyses for which the output file already exists [false]
-  type: File
+  type: File?
   inputBinding:
     prefix: --replace-output
 - id: in_output
   doc: An explicitly named output file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_file_one_dot_pep_dot_xml
@@ -27,14 +27,15 @@ outputs:
   type: stdout
 - id: out_replace_output
   doc: Dont skip analyses for which the output file already exists [false]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_replace_output)
 - id: out_output
   doc: An explicitly named output file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - add_retention_times.rb

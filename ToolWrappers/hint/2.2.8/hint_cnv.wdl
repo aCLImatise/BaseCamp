@@ -30,6 +30,9 @@ task HintCnv {
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix_file: "The matrix compressed file contains single or multiple\\nresolutions Hi-C contact matrix files (multi-cool, or\\nhic file), resolution should be set via parameter -r;\\nor a sparse | dense format matrix file whole genome\\nwidely (not suggest when using a high resolution)"
     ref_dir: "the reference directory that downloaded from dropbox\\ndropbox. (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A\\nABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)"

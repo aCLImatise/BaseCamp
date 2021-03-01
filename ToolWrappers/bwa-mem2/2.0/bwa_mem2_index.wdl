@@ -10,6 +10,9 @@ task Bwamem2Index {
       ~{in_dot_fast_a} \
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     p: ""
     in_dot_fast_a: ""

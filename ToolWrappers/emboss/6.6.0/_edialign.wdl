@@ -22,6 +22,9 @@ task Edialign {
       ~{if (mask) then "-mask" else ""} \
       ~{if (do_stars) then "-dostars" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     overlap_w: "selection  [default (when Nseq =< 35)] By default\\noverlap weights are used when Nseq =<35 but\\nyou can set this to 'yes' or 'no'"
     linkage: "menu       [UPGMA] Clustering method to construct\\nsequence tree (UPGMA, minimum linkage or\\nmaximum linkage) (Values: UPGMA (UPGMA); max\\n(maximum linkage); min (minimum linkage))"

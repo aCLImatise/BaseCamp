@@ -122,6 +122,9 @@ task CaperRun {
       ~{if defined(out_s_three_bucket) then ("--out-s3-bucket " +  '"' + out_s_three_bucket + '"') else ""} \
       ~{if defined(tmp_s_three_bucket) then ("--tmp-s3-bucket " +  '"' + tmp_s_three_bucket + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dry_run: "Caper does not take any action."
     debug: "Prints all logs >= DEBUG level"

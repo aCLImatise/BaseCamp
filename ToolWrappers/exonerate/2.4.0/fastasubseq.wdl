@@ -4,6 +4,9 @@ task Fastasubseq {
   command <<<
     fastasubseq
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

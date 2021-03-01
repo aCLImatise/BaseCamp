@@ -20,6 +20,9 @@ task Duphold {
       ~{if defined(output_vcfbcf_default) then ("--output " +  '"' + output_vcfbcf_default + '"') else ""} \
       ~{if (drop) then "--drop" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf: "path to sorted SV VCF/BCF"
     bam: "path to indexed BAM/CRAM"

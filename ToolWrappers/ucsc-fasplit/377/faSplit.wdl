@@ -32,6 +32,9 @@ task FaSplit {
       ~{if defined(outdir_depth) then ("-outDirDepth " +  '"' + outdir_depth + '"') else ""} \
       ~{if defined(prefix_length) then ("-prefixLength " +  '"' + prefix_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "- Write names of each file created (=3 more details)"
     max_n: "- Suppress pieces with more than maxN n's.  Only used with size.\\ndefault is size-1 (only suppresses pieces that are all N)."

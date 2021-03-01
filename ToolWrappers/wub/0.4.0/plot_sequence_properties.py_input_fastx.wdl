@@ -14,6 +14,9 @@ task PlotSequencePropertiespyInputFastx {
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     b: ""

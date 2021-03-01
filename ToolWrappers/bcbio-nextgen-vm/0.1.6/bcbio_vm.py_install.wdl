@@ -22,6 +22,9 @@ task BcbioVmpyInstall {
       ~{if defined(image) then ("--image " +  '"' + image + '"') else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genomes: "Genomes to download"
     aligners: "Aligner indexes to download"

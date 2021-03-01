@@ -8,6 +8,9 @@ task Gtdbtk {
     gtdbtk \
       ~{error}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     error: "________________________________________________________________________________"
   }

@@ -18,6 +18,9 @@ task Rmid {
       ~{if (runtime_flag_each) then "-C" else ""} \
       ~{if (runtime_flag_the) then "-J" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     port: "Specify port for rmid to use"
     log: "Specify directory in which rmid writes log"

@@ -36,6 +36,9 @@ task BcbioPrepareSamplespy {
       ~{if defined(tag) then ("--tag " +  '"' + tag + '"') else ""} \
       ~{if defined(parallel_type) then ("--paralleltype " +  '"' + parallel_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     csv: "csv file with metadata"
     out: "output dir"

@@ -14,6 +14,9 @@ task Sirna {
       ~{if (tt) then "-tt" else ""} \
       ~{if (context) then "-context" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pol_iii: "boolean    [N] This option allows you to select only\\nthe 21 base probes that start with a purine\\nand so can be expressed from Pol III\\nexpression vectors. This is the NARN(17)YNN\\npattern that has been suggested by Tuschl et\\nal."
     aa: "boolean    [N] This option allows you to select only\\nthose 23 base regions that start with AA. If\\nthis option is not selected then regions\\nthat start with AA will be favoured by\\ngiving them a higher score, but regions that\\ndo not start with AA will also be reported."

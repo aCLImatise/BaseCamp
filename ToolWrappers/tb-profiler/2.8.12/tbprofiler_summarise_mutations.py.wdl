@@ -16,6 +16,9 @@ task TbprofilerSummariseMutationspy {
       ~{if defined(columns) then ("--columns " +  '"' + columns + '"') else ""} \
       ~{if (non_dr) then "--non-dr" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "NGS Platform (default: results)"
     summary: "NGS Platform (default: None)"

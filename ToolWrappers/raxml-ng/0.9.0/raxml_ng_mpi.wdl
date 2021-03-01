@@ -106,6 +106,9 @@ task Raxmlngmpi {
       ~{if (bs_cut_off) then "--bs-cutoff" else ""} \
       ~{if (bs_metric) then "--bs-metric" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     evaluate: "evaluate the likelihood of a tree (with model+brlen optimization)"
     search: "ML tree search (default: 10 parsimony + 10 random starting trees)"

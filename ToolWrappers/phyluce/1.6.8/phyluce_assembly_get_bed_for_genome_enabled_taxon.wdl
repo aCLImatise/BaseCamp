@@ -24,6 +24,9 @@ task PhyluceAssemblyGetBedForGenomeEnabledTaxon {
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""} \
       ~{if defined(regex) then ("--regex " +  '"' + regex + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     locus_db: "The probe.matches.sqlite database"
     lastz_file_use: "The lastz file to use"

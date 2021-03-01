@@ -38,6 +38,9 @@ task CramtoolsCram {
       ~{if (reference_fast_a_file) then "--reference-fasta-file" else ""} \
       ~{if (log_level) then "--log-level" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     capture_all_tags: "Capture all tags. (default: false)"
     capture_tags: "Capture the tags listed, for example 'OQ:XA:XB' (default: )"

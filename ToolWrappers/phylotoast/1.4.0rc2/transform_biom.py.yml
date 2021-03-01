@@ -4,29 +4,61 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -i
+  - --biom_table_fp
+  description: Path to the input BIOM-format table. [REQUIRED]
   args: !SimpleFlagArg
     name: BIOM_TABLE_FP
+- !Flag
   optional: true
+  synonyms:
+  - -t
+  - --transform
+  description: "The transform to apply to the data. Default: arcsine\nsquare root."
+  args: !ChoiceFlagArg
+    choices: !!set
+      arcsin_sqrt:
+      ra_log10:
+      log10:
+      ra:
+- !Flag
+  optional: true
+  synonyms:
+  - --fmt
+  description: "Set the output format of the BIOM table. Default is\nHDF5."
+  args: !ChoiceFlagArg
+    choices: !!set
+      hdf5:
+      json:
+      tsv:
+- !Flag
+  optional: true
+  synonyms:
+  - --gzip
+  description: "Compress the output BIOM table with gzip. HDF5 BIOM\n(v2.x) files\
+    \ are internally compressed by default, so\nthis option is not needed when specifying\
+    \ --fmt hdf5."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_fp
+  description: Output path for the transformed BIOM table.[REQUIRED]
+  args: !SimpleFlagArg
+    name: OUTPUT_FP
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-i BIOM_TABLE_FP, --biom_table_fp\
-    \ BIOM_TABLE_FP\nPath to the input BIOM-format table. [REQUIRED]\n-t {arcsin_sqrt,log10,ra,ra_log10},\
-    \ --transform {arcsin_sqrt,log10,ra,ra_log10}\nThe transform to apply to the data.\
-    \ Default: arcsine\nsquare root.\n--fmt {hdf5,json,tsv}\nSet the output format\
-    \ of the BIOM table. Default is\nHDF5.\n--gzip                Compress the output\
-    \ BIOM table with gzip. HDF5 BIOM\n(v2.x) files are internally compressed by default,\
-    \ so\nthis option is not needed when specifying --fmt hdf5.\n-o OUTPUT_FP, --output_fp\
-    \ OUTPUT_FP\nOutput path for the transformed BIOM table.[REQUIRED]\n-v, --verbose\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: transform_biom.py [-h] -i BIOM_TABLE_FP\n                     \
@@ -47,3 +79,4 @@ help_text: "usage: transform_biom.py [-h] -i BIOM_TABLE_FP\n                    
   \  -v, --verbose\n"
 generated_using:
 - --help
+docker_image:

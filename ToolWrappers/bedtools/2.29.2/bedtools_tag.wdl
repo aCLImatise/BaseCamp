@@ -26,6 +26,9 @@ task BedtoolsTag {
       ~{if defined(files) then ("-files " +  '"' + files + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     require_overlaps_same: "Require overlaps on the same strand.  That is, only tag alignments that have the same\\nstrand as a feature in the annotation file(s)."
     require_overlaps_opposite: "Require overlaps on the opposite strand.  That is, only tag alignments that have the opposite\\nstrand as a feature in the annotation file(s)."

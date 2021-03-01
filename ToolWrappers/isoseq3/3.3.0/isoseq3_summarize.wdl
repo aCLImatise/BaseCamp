@@ -12,6 +12,9 @@ task Isoseq3Summarize {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_level: "STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]"
     log_file: "FILE  Log to a file, instead of stderr."

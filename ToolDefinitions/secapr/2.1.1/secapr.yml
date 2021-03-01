@@ -1,0 +1,1179 @@
+&id001 !Command
+command:
+- secapr
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - secapr
+  - align_sequences
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: alignments.
+    description: --aligner {muscle,mafft}
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --sequences
+    description: "The fasta file containing individual sequences for\nseveral samples\
+      \ and loci"
+    args: !SimpleFlagArg
+      name: SEQUENCES
+  - !Flag
+    optional: true
+    synonyms:
+    - --outdir
+    description: The directory in which to store the resulting
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --exclude_ambiguous
+    description: Don't allow reads in alignments containing N-bases.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --gap_opening_penalty
+    description: Set gap opening penalty for aligner.
+    args: !SimpleFlagArg
+      name: GAP_OPENING_PENALTY
+  - !Flag
+    optional: true
+    synonyms:
+    - --gap_extension_penalty
+    description: Set gap extension penalty for aligner.
+    args: !SimpleFlagArg
+      name: GAP_EXTENSION_PENALTY
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_seqs_per_locus
+    description: "Minimum number of sequences required for building\nalignment."
+    args: !SimpleFlagArg
+      name: MIN_SEQS_PER_LOCUS
+  - !Flag
+    optional: true
+    synonyms:
+    - --no_trim
+    description: "Suppress trimming of alignments. By default secapr\nuses trimal\
+      \ to trim gappy positions from alignments."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --trimal_setting
+    description: "Use one of trimal automated scenarios. These will\noverwrite all\
+      \ other trimming flags (see below). See\ntrimal tutorial for more info about\
+      \ settings."
+    args: !ChoiceFlagArg
+      choices: !!set
+        gappyout:
+        strict:
+        manual:
+        strictplus:
+  - !Flag
+    optional: true
+    synonyms:
+    - --window_size
+    description: Sliding window size for trimming.
+    args: !SimpleFlagArg
+      name: WINDOW_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --seq_proportion
+    description: "The proportion of sequences required. All alignment\ncolumns with\
+      \ fewer sequences will be deleted (0-1)."
+    args: !SimpleFlagArg
+      name: SEQ_PROPORTION
+  - !Flag
+    optional: true
+    synonyms:
+    - --conserve_alignment_percentage
+    description: "This setting will ensure to conserve the specified\npercentage of\
+      \ the alignment when trimming (0-100)."
+    args: !SimpleFlagArg
+      name: CONSERVE_ALIGNMENT_PERCENTAGE
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_length
+    description: The minimum length of alignments to keep.
+    args: !SimpleFlagArg
+      name: MIN_LENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - --cores
+    description: "Process alignments in parallel using --cores for\nalignment. This\
+      \ is the number of PHYSICAL CPUs.\n"
+    args: !SimpleFlagArg
+      name: CORES
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr align_sequences [-h] --sequences SEQUENCES --outdir OUTDIR\n\
+    \                              [--aligner {muscle,mafft}] [--exclude_ambiguous]\n\
+    \                              [--gap_opening_penalty GAP_OPENING_PENALTY]\n \
+    \                             [--gap_extension_penalty GAP_EXTENSION_PENALTY]\n\
+    \                              [--min_seqs_per_locus MIN_SEQS_PER_LOCUS]\n   \
+    \                           [--no_trim]\n                              [--trimal_setting\
+    \ {manual,gappyout,strict,strictplus}]\n                              [--window_size\
+    \ WINDOW_SIZE]\n                              [--seq_proportion SEQ_PROPORTION]\n\
+    \                              [--conserve_alignment_percentage CONSERVE_ALIGNMENT_PERCENTAGE]\n\
+    \                              [--min_length MIN_LENGTH] [--cores CORES]\n\nCreated\
+    \ on Thu Jan 14 22:04:36 2021 @author: Tobias Andermann\n(tobiasandermann88@gmail.com)\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --sequences SEQUENCES\n                        The fasta file containing individual\
+    \ sequences for\n                        several samples and loci\n  --outdir\
+    \ OUTDIR       The directory in which to store the resulting\n               \
+    \         alignments.\n  --aligner {muscle,mafft}\n                        The\
+    \ alignment engine to use.\n  --exclude_ambiguous   Don't allow reads in alignments\
+    \ containing N-bases.\n  --gap_opening_penalty GAP_OPENING_PENALTY\n         \
+    \               Set gap opening penalty for aligner.\n  --gap_extension_penalty\
+    \ GAP_EXTENSION_PENALTY\n                        Set gap extension penalty for\
+    \ aligner.\n  --min_seqs_per_locus MIN_SEQS_PER_LOCUS\n                      \
+    \  Minimum number of sequences required for building\n                       \
+    \ alignment.\n  --no_trim             Suppress trimming of alignments. By default\
+    \ secapr\n                        uses trimal to trim gappy positions from alignments.\n\
+    \  --trimal_setting {manual,gappyout,strict,strictplus}\n                    \
+    \    Use one of trimal automated scenarios. These will\n                     \
+    \   overwrite all other trimming flags (see below). See\n                    \
+    \    trimal tutorial for more info about settings.\n  --window_size WINDOW_SIZE\n\
+    \                        Sliding window size for trimming.\n  --seq_proportion\
+    \ SEQ_PROPORTION\n                        The proportion of sequences required.\
+    \ All alignment\n                        columns with fewer sequences will be\
+    \ deleted (0-1).\n  --conserve_alignment_percentage CONSERVE_ALIGNMENT_PERCENTAGE\n\
+    \                        This setting will ensure to conserve the specified\n\
+    \                        percentage of the alignment when trimming (0-100).\n\
+    \  --min_length MIN_LENGTH\n                        The minimum length of alignments\
+    \ to keep.\n  --cores CORES         Process alignments in parallel using --cores\
+    \ for\n                        alignment. This is the number of PHYSICAL CPUs.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0
+- !Command
+  command:
+  - secapr
+  - add_missing_sequences
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input
+    description: The directory containing fasta alignments
+    args: !SimpleFlagArg
+      name: INPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: The output directory where results will be safed
+    args: !SimpleFlagArg
+      name: OUTPUT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr add_missing_sequences [-h] --input INPUT --output OUTPUT\n\
+    \nThis script will add dummy sequences '?' for missing taxa in each alignments,\n\
+    making sure that all alignments in the input folder contain the same taxa (as\n\
+    required for e.g. *BEAST).\",\n\noptional arguments:\n  -h, --help       show\
+    \ this help message and exit\n  --input INPUT    The directory containing fasta\
+    \ alignments\n  --output OUTPUT  The output directory where results will be safed\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0
+- !Command
+  command:
+  - secapr
+  - assemble_reads
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input
+    description: "Call the folder that contains the trimmed reads,\norganized in a\
+      \ separate subfolder for each sample. The\nname of the subfolder has to start\
+      \ with the sample\nname, delimited with an underscore [_] (default output\n\
+      of secapr clean_reads function)"
+    args: !SimpleFlagArg
+      name: INPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: The output directory where results will be saved
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --assembler
+    description: The assembler to use (default = spades).
+    args: !ChoiceFlagArg
+      choices: !!set
+        spades:
+        abyss:
+  - !Flag
+    optional: true
+    synonyms:
+    - --kmer
+    description: "Set the kmer value (only available for Abyss and\nSpades). Provide\
+      \ single value for Abyss, or list of\nkmers for Spades, e.g. \"--kmer 21,33,55\"\
+      . Default for\nAbyss is 35, and for spades it is 21,33,55,77,99,127.\nNote that\
+      \ Spades only accepts uneven kmer values."
+    args: !SimpleFlagArg
+      name: KMER
+  - !Flag
+    optional: true
+    synonyms:
+    - --contig_length
+    description: "Set the minimum contig length for the assembly.\nContigs that are\
+      \ shorter than this threshold will be\ndiscarded."
+    args: !SimpleFlagArg
+      name: CONTIG_LENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - --max_memory
+    description: "Set the maximum memory to be used during assembly in\nGB (only available\
+      \ for Spades). This can be necessary\nwhen working with computing nodes with\
+      \ limited memory\nor to avoid over-allocation of computing resources on\nclusters\
+      \ which can in some cases cause your assembly\nto be stopped or interrupted."
+    args: !SimpleFlagArg
+      name: MAX_MEMORY
+  - !Flag
+    optional: true
+    synonyms:
+    - --single_reads
+    description: "Use this flag if you additionally want to use single\nreads for\
+      \ the assembly"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cores
+    description: "For parallel processing you can set the number of\ncores you want\
+      \ to run the assembly on.\n"
+    args: !SimpleFlagArg
+      name: CORES
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr assemble_reads [-h] --input INPUT --output OUTPUT\n  \
+    \                           [--assembler {spades,abyss}] [--kmer KMER]\n     \
+    \                        [--contig_length CONTIG_LENGTH]\n                   \
+    \          [--max_memory MAX_MEMORY] [--single_reads]\n                      \
+    \       [--cores CORES]\n\nAssemble trimmed Illumina read files (fastq)\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  --input\
+    \ INPUT         Call the folder that contains the trimmed reads,\n           \
+    \             organized in a separate subfolder for each sample. The\n       \
+    \                 name of the subfolder has to start with the sample\n       \
+    \                 name, delimited with an underscore [_] (default output\n   \
+    \                     of secapr clean_reads function)\n  --output OUTPUT     \
+    \  The output directory where results will be saved\n  --assembler {spades,abyss}\n\
+    \                        The assembler to use (default = spades).\n  --kmer KMER\
+    \           Set the kmer value (only available for Abyss and\n               \
+    \         Spades). Provide single value for Abyss, or list of\n              \
+    \          kmers for Spades, e.g. \"--kmer 21,33,55\". Default for\n         \
+    \               Abyss is 35, and for spades it is 21,33,55,77,99,127.\n      \
+    \                  Note that Spades only accepts uneven kmer values.\n  --contig_length\
+    \ CONTIG_LENGTH\n                        Set the minimum contig length for the\
+    \ assembly.\n                        Contigs that are shorter than this threshold\
+    \ will be\n                        discarded.\n  --max_memory MAX_MEMORY\n   \
+    \                     Set the maximum memory to be used during assembly in\n \
+    \                       GB (only available for Spades). This can be necessary\n\
+    \                        when working with computing nodes with limited memory\n\
+    \                        or to avoid over-allocation of computing resources on\n\
+    \                        clusters which can in some cases cause your assembly\n\
+    \                        to be stopped or interrupted.\n  --single_reads     \
+    \   Use this flag if you additionally want to use single\n                   \
+    \     reads for the assembly\n  --cores CORES         For parallel processing\
+    \ you can set the number of\n                        cores you want to run the\
+    \ assembly on.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0
+- !Command
+  command:
+  - secapr
+  - plot_sequence_yield
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: OUTPUT
+    description: Plot overview of extracted sequences
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --extracted_contigs
+    description: "The directory containing the extracted target contigs\n(output from\
+      \ find_target_contigs function)."
+    args: !SimpleFlagArg
+      name: EXTRACTED_CONTIGS
+  - !Flag
+    optional: true
+    synonyms:
+    - --alignments
+    description: "The directory containing the contig alignments.\nProvide this path\
+      \ if you want to add a line to the\nplot showing for which loci alignments could\
+      \ be\ncreated."
+    args: !SimpleFlagArg
+      name: ALIGNMENTS
+  - !Flag
+    optional: true
+    synonyms:
+    - --read_cov
+    description: "The directory containing the reference assembly\nresults. Provide\
+      \ this path if you want to display the\nread coverage for each locus and sample."
+    args: !SimpleFlagArg
+      name: READ_COV
+  - !Flag
+    optional: true
+    synonyms:
+    - --coverage_norm
+    description: "Here you can adjust the color scale of the read-\ncoverage plot.\
+      \ This value will define the maximum of\nthe color scale, e.g. if set to '10'\
+      \ read-coverage of\n10 and above will be colored black, while everything\nbelow\
+      \ (0-10) will be stretched across the color\nspectrum from yellow, red to black."
+    args: !SimpleFlagArg
+      name: COVERAGE_NORM
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: The directory in which to store the plots.
+    args: !SimpleFlagArg
+      name: OUTPUT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr plot_sequence_yield [-h] --extracted_contigs EXTRACTED_CONTIGS\n\
+    \                                  [--alignments ALIGNMENTS]\n               \
+    \                   [--read_cov READ_COV]\n                                  [--coverage_norm\
+    \ COVERAGE_NORM] --output\n                                  OUTPUT\n\nPlot overview\
+    \ of extracted sequences\n\noptional arguments:\n  -h, --help            show\
+    \ this help message and exit\n  --extracted_contigs EXTRACTED_CONTIGS\n      \
+    \                  The directory containing the extracted target contigs\n   \
+    \                     (output from find_target_contigs function).\n  --alignments\
+    \ ALIGNMENTS\n                        The directory containing the contig alignments.\n\
+    \                        Provide this path if you want to add a line to the\n\
+    \                        plot showing for which loci alignments could be\n   \
+    \                     created.\n  --read_cov READ_COV   The directory containing\
+    \ the reference assembly\n                        results. Provide this path if\
+    \ you want to display the\n                        read coverage for each locus\
+    \ and sample.\n  --coverage_norm COVERAGE_NORM\n                        Here you\
+    \ can adjust the color scale of the read-\n                        coverage plot.\
+    \ This value will define the maximum of\n                        the color scale,\
+    \ e.g. if set to '10' read-coverage of\n                        10 and above will\
+    \ be colored black, while everything\n                        below (0-10) will\
+    \ be stretched across the color\n                        spectrum from yellow,\
+    \ red to black.\n  --output OUTPUT       The directory in which to store the plots.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0
+- !Command
+  command:
+  - secapr
+  - locus_selection
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: assembly.
+    description: --output OUTPUT       The output directory where results will be
+      safed.
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input
+    description: The folder with the results of the reference based
+    args: !SimpleFlagArg
+      name: INPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --n
+    description: "The n loci that are best represented accross all\nsamples will be\
+      \ extracted."
+    args: !SimpleFlagArg
+      name: N
+  - !Flag
+    optional: true
+    synonyms:
+    - --read_cov
+    description: "The threshold for what average read coverage the\nselected target\
+      \ loci should at least have."
+    args: !SimpleFlagArg
+      name: READ_COV
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: "Path to reference library fasta file (secapr will find\nit by itself\
+      \ if the reference assembly was executed\nwith secapr).\n"
+    args: !SimpleFlagArg
+      name: REFERENCE
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: ''
+    args: !SimpleFlagArg
+      name: OUTPUT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr locus_selection [-h] --input INPUT --output OUTPUT [--n\
+    \ N]\n                              [--read_cov READ_COV] [--reference REFERENCE]\n\
+    \nExtract the n loci with the best read-coverage from you reference-based\nassembly\
+    \ (bam-files)\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  --input INPUT         The folder with the results of the reference\
+    \ based\n                        assembly.\n  --output OUTPUT       The output\
+    \ directory where results will be safed.\n  --n N                 The n loci that\
+    \ are best represented accross all\n                        samples will be extracted.\n\
+    \  --read_cov READ_COV   The threshold for what average read coverage the\n  \
+    \                      selected target loci should at least have.\n  --reference\
+    \ REFERENCE\n                        Path to reference library fasta file (secapr\
+    \ will find\n                        it by itself if the reference assembly was\
+    \ executed\n                        with secapr).\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0
+- !Command
+  command:
+  - secapr
+  - automate_all
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input
+    description: The directory containing cleaned fastq files
+    args: !SimpleFlagArg
+      name: INPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: "The output directory where all intermediate and final\ndata files\
+      \ will be stored"
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: "Provide a reference library (FASTA) containing\nsequences for the\
+      \ genes of interest (required to find\ncontigs matching targeted regions)."
+    args: !SimpleFlagArg
+      name: REFERENCE
+  - !Flag
+    optional: true
+    synonyms:
+    - --setting
+    description: "The setting you want to run SECAPR on. \"relaxed\" uses\nvery non-restrictive\
+      \ default values (use when samples\nare expected to differ considerably from\
+      \ provided\nreference or are covering wide evolutionary range,\ne.g. different\
+      \ families or orders). \"conservative\" is\nvery restrictive and can be used\
+      \ when samples are\nclosely related and match provided reference very\nwell."
+    args: !ChoiceFlagArg
+      choices: !!set
+        relaxed:
+        medium:
+        conservative:
+  - !Flag
+    optional: true
+    synonyms:
+    - --assembler
+    description: "The assembler to use for de-novo assembly\n(default=spades)."
+    args: !ChoiceFlagArg
+      choices: !!set
+        trinity:
+        spades:
+        abyss:
+  - !Flag
+    optional: true
+    synonyms:
+    - --cores
+    description: "Number of computational cores for parallelization of\ncomputation.\n"
+    args: !SimpleFlagArg
+      name: CORES
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr automate_all [-h] --input INPUT --output OUTPUT --reference\n\
+    \                           REFERENCE [--setting {relaxed,medium,conservative}]\n\
+    \                           [--assembler {spades,abyss,trinity}]\n           \
+    \                [--cores CORES]\n\nThis script automates the complete secapr\
+    \ pipeline, producing MSAs (allele,\ncontig and BAM-consensus) from FASTQ files\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --input INPUT         The directory containing cleaned fastq files\n  --output\
+    \ OUTPUT       The output directory where all intermediate and final\n       \
+    \                 data files will be stored\n  --reference REFERENCE\n       \
+    \                 Provide a reference library (FASTA) containing\n           \
+    \             sequences for the genes of interest (required to find\n        \
+    \                contigs matching targeted regions).\n  --setting {relaxed,medium,conservative}\n\
+    \                        The setting you want to run SECAPR on. \"relaxed\" uses\n\
+    \                        very non-restrictive default values (use when samples\n\
+    \                        are expected to differ considerably from provided\n \
+    \                       reference or are covering wide evolutionary range,\n \
+    \                       e.g. different families or orders). \"conservative\" is\n\
+    \                        very restrictive and can be used when samples are\n \
+    \                       closely related and match provided reference very\n  \
+    \                      well.\n  --assembler {spades,abyss,trinity}\n         \
+    \               The assembler to use for de-novo assembly\n                  \
+    \      (default=spades).\n  --cores CORES         Number of computational cores\
+    \ for parallelization of\n                        computation.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0
+- !Command
+  command:
+  - secapr
+  - supermatrix
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: secapr
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: ''
+    args: !EmptyFlagArg {}
+  help_text: "usage: secapr [-h] [--version]\n              {quality_check,clean_reads,assemble_reads,find_target_contigs,align_sequences,join_exons,reference_assembly,phase_alleles,add_missing_sequences,locus_selection,automate_all,concatenate_alignments,paralogs_to_ref,plot_sequence_yield}\n\
+    \              ...\nsecapr: error: invalid choice: 'supermatrix' (choose from\
+    \ 'quality_check', 'clean_reads', 'assemble_reads', 'find_target_contigs', 'align_sequences',\
+    \ 'join_exons', 'reference_assembly', 'phase_alleles', 'add_missing_sequences',\
+    \ 'locus_selection', 'automate_all', 'concatenate_alignments', 'paralogs_to_ref',\
+    \ 'plot_sequence_yield')\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0
+- !Command
+  command:
+  - secapr
+  - concatenate_alignments
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input
+    description: The directory containing the fasta-alignment-files
+    args: !SimpleFlagArg
+      name: INPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: The output directory where results will be safed
+    args: !SimpleFlagArg
+      name: OUTPUT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr concatenate_alignments [-h] --input INPUT --output OUTPUT\n\
+    \nConcatenate mutliple alignments (MSAs) into one supermatrix\n\noptional arguments:\n\
+    \  -h, --help       show this help message and exit\n  --input INPUT    The directory\
+    \ containing the fasta-alignment-files\n  --output OUTPUT  The output directory\
+    \ where results will be safed\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0
+- !Command
+  command:
+  - secapr
+  - quality_check
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input
+    description: The directory containing fastq files
+    args: !SimpleFlagArg
+      name: INPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: "The output directory where quality-test results will be\nsaved\n"
+    args: !SimpleFlagArg
+      name: OUTPUT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr quality_check [-h] --input INPUT --output OUTPUT\n\nThis\
+    \ script runs a fastqc test on all fastq samples in a user-provided folder\nand\
+    \ creates an overview plot,\n\noptional arguments:\n  -h, --help       show this\
+    \ help message and exit\n  --input INPUT    The directory containing fastq files\n\
+    \  --output OUTPUT  The output directory where quality-test results will be\n\
+    \                   saved\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0
+- !Command
+  command:
+  - secapr
+  - join_exons
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input
+    description: The directory containing the fasta-alignment-files
+    args: !SimpleFlagArg
+      name: INPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: The output directory where results will be saved
+    args: !SimpleFlagArg
+      name: OUTPUT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr join_exons [-h] --input INPUT --output OUTPUT\n\nJoin\
+    \ exon-alignment files belonging to the same gene\n\noptional arguments:\n  -h,\
+    \ --help       show this help message and exit\n  --input INPUT    The directory\
+    \ containing the fasta-alignment-files\n  --output OUTPUT  The output directory\
+    \ where results will be saved\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0
+- !Command
+  command:
+  - secapr
+  - clean_reads
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input
+    description: "The directory containing the unzipped .fastq or .fq\nfiles (raw\
+      \ read files)"
+    args: !SimpleFlagArg
+      name: INPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --config
+    description: "A configuration file containing the adapter\ninformation and the\
+      \ sample names"
+    args: !SimpleFlagArg
+      name: CONFIG
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: The output directory where results will be saved
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --read_min
+    description: "Set the minimum read count threshold. Any read file\ncontaining\
+      \ fewer reads than this minimum threshold\nwill not be processed further. Default:\
+      \ 200000"
+    args: !SimpleFlagArg
+      name: READ_MIN
+  - !Flag
+    optional: true
+    synonyms:
+    - --index
+    description: "Specify if single- or double-indexed adapters were\nused for the\
+      \ library preparation (essential\ninformation in order to interpret the control-file\n\
+      correctly)."
+    args: !ChoiceFlagArg
+      choices: !!set
+        single:
+        double:
+  - !Flag
+    optional: true
+    synonyms:
+    - --seedMismatches
+    description: "Specifies the maximum mismatch count which will still\nallow a full\
+      \ match to be performed. For more\ninformation see trimmoatic tutorial. Default:\
+      \ 2"
+    args: !SimpleFlagArg
+      name: SEEDMISMATCHES
+  - !Flag
+    optional: true
+    synonyms:
+    - --palindromeClipThreshold
+    description: "Specifies how accurate the match between the two\n\"adapter ligated\"\
+      \ reads must be for PE palindrome read\nalignment. Default: 30"
+    args: !SimpleFlagArg
+      name: PALINDROMECLIPTHRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - --simpleClipThreshold
+    description: "Specifies how accurate the match between any adapter\netc. sequence\
+      \ must be against a read. For more\ninformation see trimmoatic tutorial. Default:\
+      \ 10"
+    args: !SimpleFlagArg
+      name: SIMPLECLIPTHRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - --windowSize
+    description: "Specifies the number of bases to average across. For\nmore information\
+      \ see trimmoatic tutorial. Default: 4"
+    args: !SimpleFlagArg
+      name: WINDOWSIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --requiredQuality
+    description: "Specifies the average quality required. For more\ninformation see\
+      \ trimmoatic tutorial. Default: 15"
+    args: !SimpleFlagArg
+      name: REQUIREDQUALITY
+  - !Flag
+    optional: true
+    synonyms:
+    - --leadingQuality
+    description: "Specifies the minimum quality required to keep a base\nat the beginning\
+      \ of the read. For more information see\ntrimmoatic tutorial. Default: 20"
+    args: !SimpleFlagArg
+      name: LEADINGQUALITY
+  - !Flag
+    optional: true
+    synonyms:
+    - --trailingQuality
+    description: "Specifies the minimum quality required to keep a base\nat the end\
+      \ of a read. For more information see\ntrimmoatic tutorial. Default: 20"
+    args: !SimpleFlagArg
+      name: TRAILINGQUALITY
+  - !Flag
+    optional: true
+    synonyms:
+    - --cropToLength
+    description: "The number of bases to keep, from the start of the\nread. Everything\
+      \ exceeding this length will be removed\nfrom the end of the read. For more\
+      \ information see\ntrimmoatic tutorial. Default: 250"
+    args: !SimpleFlagArg
+      name: CROPTOLENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - --headCrop
+    description: "The number of bases to remove from the start of the\nread. For more\
+      \ information see trimmoatic tutorial.\nDefault: 0"
+    args: !SimpleFlagArg
+      name: HEADCROP
+  - !Flag
+    optional: true
+    synonyms:
+    - --minLength
+    description: "Specifies the minimum length of reads to be kept. For\nmore information\
+      \ see trimmoatic tutorial. Default: 40\n"
+    args: !SimpleFlagArg
+      name: MINLENGTH
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr clean_reads [-h] --input INPUT --config CONFIG --output\
+    \ OUTPUT\n                          [--read_min READ_MIN] [--index {single,double}]\n\
+    \                          [--seedMismatches SEEDMISMATCHES]\n               \
+    \           [--palindromeClipThreshold PALINDROMECLIPTHRESHOLD]\n            \
+    \              [--simpleClipThreshold SIMPLECLIPTHRESHOLD]\n                 \
+    \         [--windowSize WINDOWSIZE]\n                          [--requiredQuality\
+    \ REQUIREDQUALITY]\n                          [--leadingQuality LEADINGQUALITY]\n\
+    \                          [--trailingQuality TRAILINGQUALITY]\n             \
+    \             [--cropToLength CROPTOLENGTH] [--headCrop HEADCROP]\n          \
+    \                [--minLength MINLENGTH]\n\nClean and trim raw Illumina read files\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --input INPUT         The directory containing the unzipped .fastq or .fq\n\
+    \                        files (raw read files)\n  --config CONFIG       A configuration\
+    \ file containing the adapter\n                        information and the sample\
+    \ names\n  --output OUTPUT       The output directory where results will be saved\n\
+    \  --read_min READ_MIN   Set the minimum read count threshold. Any read file\n\
+    \                        containing fewer reads than this minimum threshold\n\
+    \                        will not be processed further. Default: 200000\n  --index\
+    \ {single,double}\n                        Specify if single- or double-indexed\
+    \ adapters were\n                        used for the library preparation (essential\n\
+    \                        information in order to interpret the control-file\n\
+    \                        correctly).\n  --seedMismatches SEEDMISMATCHES\n    \
+    \                    Specifies the maximum mismatch count which will still\n \
+    \                       allow a full match to be performed. For more\n       \
+    \                 information see trimmoatic tutorial. Default: 2\n  --palindromeClipThreshold\
+    \ PALINDROMECLIPTHRESHOLD\n                        Specifies how accurate the\
+    \ match between the two\n                        \"adapter ligated\" reads must\
+    \ be for PE palindrome read\n                        alignment. Default: 30\n\
+    \  --simpleClipThreshold SIMPLECLIPTHRESHOLD\n                        Specifies\
+    \ how accurate the match between any adapter\n                        etc. sequence\
+    \ must be against a read. For more\n                        information see trimmoatic\
+    \ tutorial. Default: 10\n  --windowSize WINDOWSIZE\n                        Specifies\
+    \ the number of bases to average across. For\n                        more information\
+    \ see trimmoatic tutorial. Default: 4\n  --requiredQuality REQUIREDQUALITY\n \
+    \                       Specifies the average quality required. For more\n   \
+    \                     information see trimmoatic tutorial. Default: 15\n  --leadingQuality\
+    \ LEADINGQUALITY\n                        Specifies the minimum quality required\
+    \ to keep a base\n                        at the beginning of the read. For more\
+    \ information see\n                        trimmoatic tutorial. Default: 20\n\
+    \  --trailingQuality TRAILINGQUALITY\n                        Specifies the minimum\
+    \ quality required to keep a base\n                        at the end of a read.\
+    \ For more information see\n                        trimmoatic tutorial. Default:\
+    \ 20\n  --cropToLength CROPTOLENGTH\n                        The number of bases\
+    \ to keep, from the start of the\n                        read. Everything exceeding\
+    \ this length will be removed\n                        from the end of the read.\
+    \ For more information see\n                        trimmoatic tutorial. Default:\
+    \ 250\n  --headCrop HEADCROP   The number of bases to remove from the start of\
+    \ the\n                        read. For more information see trimmoatic tutorial.\n\
+    \                        Default: 0\n  --minLength MINLENGTH\n               \
+    \         Specifies the minimum length of reads to be kept. For\n            \
+    \            more information see trimmoatic tutorial. Default: 40\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0
+- !Command
+  command:
+  - secapr
+  - phase_alleles
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: REFERENCE
+    description: Phase remapped reads form reference-based assembly into two separate
+      alleles.
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input
+    description: "Call the folder that contains the results of the\nreference based\
+      \ assembly (output of reference_assembly\nfunction, containing the bam-files)."
+    args: !SimpleFlagArg
+      name: INPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: The output directory where results will be safed.
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_coverage
+    description: "Set the minimum read coverage. Only positions that are\ncovered\
+      \ by this number of reads will be called in the\nconsensus sequence, otherwise\
+      \ the program will add an\nambiguity at this position."
+    args: !SimpleFlagArg
+      name: MIN_COVERAGE
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: "Provide the reference that was used for read-mapping.\nIf you used\
+      \ the alignment-consensus method, provide\nthe joined_fasta_library.fasta which\
+      \ is found in the\nreference_seqs folder within the reference-assembly\noutput.\n"
+    args: !SimpleFlagArg
+      name: REFERENCE
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr phase_alleles [-h] --input INPUT --output OUTPUT\n   \
+    \                         [--min_coverage MIN_COVERAGE] --reference\n        \
+    \                    REFERENCE\n\nPhase remapped reads form reference-based assembly\
+    \ into two separate alleles.\nThen produce consensus sequence for each allele.\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --input INPUT         Call the folder that contains the results of the\n  \
+    \                      reference based assembly (output of reference_assembly\n\
+    \                        function, containing the bam-files).\n  --output OUTPUT\
+    \       The output directory where results will be safed.\n  --min_coverage MIN_COVERAGE\n\
+    \                        Set the minimum read coverage. Only positions that are\n\
+    \                        covered by this number of reads will be called in the\n\
+    \                        consensus sequence, otherwise the program will add an\n\
+    \                        ambiguity at this position.\n  --reference REFERENCE\n\
+    \                        Provide the reference that was used for read-mapping.\n\
+    \                        If you used the alignment-consensus method, provide\n\
+    \                        the joined_fasta_library.fasta which is found in the\n\
+    \                        reference_seqs folder within the reference-assembly\n\
+    \                        output.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0
+- !Command
+  command:
+  - secapr
+  - find_target_contigs
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --contigs
+    description: "The directory containing the assembled contigs in\nfasta format.\
+      \ Alternatively you can provide a\ndirectory with subfolders containing results\
+      \ of\nvarious assembly runs (e.g. based on different kmer\nvalues). In the latter\
+      \ case it is recommended to use\nthe --keep_paralogs flag, to avoid the majority\
+      \ of\nloci being discarded as paralogous."
+    args: !SimpleFlagArg
+      name: CONTIGS
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: "The fasta-file containing the reference sequences (one\nsequence\
+      \ per targeted locus)."
+    args: !SimpleFlagArg
+      name: REFERENCE
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: "The directory in which to store the extracted target\ncontigs and\
+      \ lastz results."
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --target_length
+    description: "The required length of the matching sequence stretch\nbetween contigs\
+      \ and target sequences. This does not\nhave to be a perfect match but can be\
+      \ adjusted with\nthe --min_identity flag [default=50]."
+    args: !SimpleFlagArg
+      name: TARGET_LENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_identity
+    description: "The minimum percent identity required for a match\n[default=90]."
+    args: !SimpleFlagArg
+      name: MIN_IDENTITY
+  - !Flag
+    optional: true
+    synonyms:
+    - --seed_length
+    description: "Length of initial seed sequence for finding BLAST\nmatches. The\
+      \ seed has to be a perfect match between a\ngiven contig and a reference locus\
+      \ (default=11)."
+    args: !SimpleFlagArg
+      name: SEED_LENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - --remove_multilocus_contigs
+    description: Drop those contigs that match multiple exons.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep_paralogs
+    description: "Keep contigs for loci that are flagged as potentially\nparalogous\
+      \ (multiple contigs matching same locus). The\nlongest contig will be selected\
+      \ for these loci.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr find_target_contigs [-h] --contigs CONTIGS --reference\
+    \ REFERENCE\n                                  --output OUTPUT\n             \
+    \                     [--target_length TARGET_LENGTH]\n                      \
+    \            [--min_identity MIN_IDENTITY]\n                                 \
+    \ [--seed_length SEED_LENGTH]\n                                  [--remove_multilocus_contigs]\n\
+    \                                  [--keep_paralogs]\n\nExtract the contigs that\
+    \ match the reference database\n\noptional arguments:\n  -h, --help          \
+    \  show this help message and exit\n  --contigs CONTIGS     The directory containing\
+    \ the assembled contigs in\n                        fasta format. Alternatively\
+    \ you can provide a\n                        directory with subfolders containing\
+    \ results of\n                        various assembly runs (e.g. based on different\
+    \ kmer\n                        values). In the latter case it is recommended\
+    \ to use\n                        the --keep_paralogs flag, to avoid the majority\
+    \ of\n                        loci being discarded as paralogous.\n  --reference\
+    \ REFERENCE\n                        The fasta-file containing the reference sequences\
+    \ (one\n                        sequence per targeted locus).\n  --output OUTPUT\
+    \       The directory in which to store the extracted target\n               \
+    \         contigs and lastz results.\n  --target_length TARGET_LENGTH\n      \
+    \                  The required length of the matching sequence stretch\n    \
+    \                    between contigs and target sequences. This does not\n   \
+    \                     have to be a perfect match but can be adjusted with\n  \
+    \                      the --min_identity flag [default=50].\n  --min_identity\
+    \ MIN_IDENTITY\n                        The minimum percent identity required\
+    \ for a match\n                        [default=90].\n  --seed_length SEED_LENGTH\n\
+    \                        Length of initial seed sequence for finding BLAST\n \
+    \                       matches. The seed has to be a perfect match between a\n\
+    \                        given contig and a reference locus (default=11).\n  --remove_multilocus_contigs\n\
+    \                        Drop those contigs that match multiple exons.\n  --keep_paralogs\
+    \       Keep contigs for loci that are flagged as potentially\n              \
+    \          paralogous (multiple contigs matching same locus). The\n          \
+    \              longest contig will be selected for these loci.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: secapr [-h] [--version]\n              {quality_check,clean_reads,assemble_reads,find_target_contigs,align_sequences,join_exons,reference_assembly,phase_alleles,add_missing_sequences,locus_selection,automate_all,concatenate_alignments,paralogs_to_ref,plot_sequence_yield}\n\
+  \              ...\n\npositional arguments:\n  {quality_check,clean_reads,assemble_reads,find_target_contigs,align_sequences,join_exons,reference_assembly,phase_alleles,add_missing_sequences,locus_selection,automate_all,concatenate_alignments,paralogs_to_ref,plot_sequence_yield}\n\
+  \    quality_check       This script runs a fastqc test on all fastq samples in\n\
+  \                        a user-provided folder and creates an overview plot,\n\
+  \    clean_reads         Clean and trim raw Illumina read files\n    assemble_reads\
+  \      Assemble trimmed Illumina read files (fastq)\n    find_target_contigs\n \
+  \                       Extract the contigs that match the reference database\n\
+  \    align_sequences     Created on Thu Jan 14 22:04:36 2021\n    join_exons\n \
+  \   reference_assembly  Create new reference library and map raw reads against\n\
+  \                        the library (reference-based assembly)\n    phase_alleles\
+  \       Phase remapped reads form reference-based assembly\n                   \
+  \     into two separate alleles. Then produce consensus\n                      \
+  \  sequence for each allele.\n    add_missing_sequences\n                      \
+  \  This script will add dummy sequences '?' for missing\n                      \
+  \  taxa in each alignments, making sure that all\n                        alignments\
+  \ in the input folder contain the same taxa\n                        (as required\
+  \ for e.g. *BEAST).\",\n    locus_selection     Extract the n loci with the best\
+  \ read-coverage from\n                        you reference-based assembly (bam-files)\n\
+  \    automate_all        This script automates the complete secapr pipeline,\n \
+  \                       producing MSAs (allele, contig and BAM-consensus) from\n\
+  \                        FASTQ files\n    concatenate_alignments\n             \
+  \           Concatenate mutliple alignments (MSAs) into one\n                  \
+  \      supermatrix\n    paralogs_to_ref     Align paralogous contigs with reference\
+  \ sequence\n    plot_sequence_yield\n                        Plot overview of extracted\
+  \ sequences\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --version             show program's version number and exit\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0

@@ -16,6 +16,9 @@ task MafRanges {
       ~{if defined(other_db) then ("-otherDb " +  '"' + other_db + '"') else ""} \
       ~{if (not_all_o_gap) then "-notAllOGap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     other_db: "Output ranges only for alignments that include oDb.\\noDB can be comma-separated list."
     not_all_o_gap: "Don't include bases for which all other species have a gap."

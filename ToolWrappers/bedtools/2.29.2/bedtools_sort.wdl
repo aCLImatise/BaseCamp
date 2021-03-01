@@ -26,6 +26,9 @@ task BedtoolsSort {
       ~{if defined(header) then ("-header " +  '"' + header + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     size_a: "Sort by feature size in ascending order."
     sized: "Sort by feature size in descending order."

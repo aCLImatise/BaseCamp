@@ -4,13 +4,13 @@ inputs:
 - id: in_log_probability
   doc: "Specify that program should output probabilities as logs (base 10).\nDefault\
     \ is to output probabilties."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --logprobability
 - id: in_max_likelihood
   doc: "Specify that program should output a maximum likelihood alignment.\nDefault\
     \ is to output pairwise probabilities."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --maxlikelihood
 - id: in_seq_one
@@ -37,6 +37,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_out_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phmm

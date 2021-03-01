@@ -3,20 +3,21 @@ version 1.0
 task PhastCons {
   input {
     File? msa_format
-    String? estimate_rho
-    Boolean? score
+    Boolean? transitions
     Boolean? expected_length
+    Int? target_coverage
+    Int? ref_idx
+    Boolean? most_conserved
     Float? rho
     String? estimate_trees
+    String? estimate_rho
     Int? gc
     Int? n_rates
-    Boolean? transitions
-    Int? target_coverage
     File? viterbi
+    Boolean? score
     File? lnl
     Boolean? no_post_probs
     File? log
-    Int? ref_idx
     File? seqname
     File? id_pref
     Boolean? quiet
@@ -36,30 +37,39 @@ task PhastCons {
     Int? require_informative
     String? not_informative
     Boolean? ignore_missing
+    String algorithm_dot
+    String alignment_dot
+    String option_dot
+    String here_dot
     String parameter_dot
     String models_dot
     String elements_dot
   }
   command <<<
     phastCons \
+      ~{algorithm_dot} \
+      ~{alignment_dot} \
+      ~{option_dot} \
+      ~{here_dot} \
       ~{parameter_dot} \
       ~{models_dot} \
       ~{elements_dot} \
       ~{if defined(msa_format) then ("--msa-format " +  '"' + msa_format + '"') else ""} \
-      ~{if defined(estimate_rho) then ("--estimate-rho " +  '"' + estimate_rho + '"') else ""} \
-      ~{if (score) then "--score" else ""} \
+      ~{if (transitions) then "--transitions" else ""} \
       ~{if (expected_length) then "--expected-length" else ""} \
+      ~{if defined(target_coverage) then ("--target-coverage " +  '"' + target_coverage + '"') else ""} \
+      ~{if defined(ref_idx) then ("--refidx " +  '"' + ref_idx + '"') else ""} \
+      ~{if (most_conserved) then "--most-conserved" else ""} \
       ~{if defined(rho) then ("--rho " +  '"' + rho + '"') else ""} \
       ~{if defined(estimate_trees) then ("--estimate-trees " +  '"' + estimate_trees + '"') else ""} \
+      ~{if defined(estimate_rho) then ("--estimate-rho " +  '"' + estimate_rho + '"') else ""} \
       ~{if defined(gc) then ("--gc " +  '"' + gc + '"') else ""} \
       ~{if defined(n_rates) then ("--nrates " +  '"' + n_rates + '"') else ""} \
-      ~{if (transitions) then "--transitions" else ""} \
-      ~{if defined(target_coverage) then ("--target-coverage " +  '"' + target_coverage + '"') else ""} \
       ~{if (viterbi) then "--viterbi" else ""} \
+      ~{if (score) then "--score" else ""} \
       ~{if defined(lnl) then ("--lnl " +  '"' + lnl + '"') else ""} \
       ~{if (no_post_probs) then "--no-post-probs" else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
-      ~{if defined(ref_idx) then ("--refidx " +  '"' + ref_idx + '"') else ""} \
       ~{if defined(seqname) then ("--seqname " +  '"' + seqname + '"') else ""} \
       ~{if defined(id_pref) then ("--idpref " +  '"' + id_pref + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""} \
@@ -80,22 +90,26 @@ task PhastCons {
       ~{if defined(not_informative) then ("--not-informative " +  '"' + not_informative + '"') else ""} \
       ~{if (ignore_missing) then "--ignore-missing" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     msa_format: "|FASTA|MPM|SS|MAF\\nAlignment file format.  Default is to guess format based on\\nfile contents.  Note that the msa_view program can be used to\\nconvert between formats."
-    estimate_rho: "Like --estimate-trees, but estimate only the parameter rho."
-    score: "(Optionally use with --viterbi) Assign a log-odds score to\\neach prediction."
+    transitions: "[~]<mu>,<nu>\\nFix the transition probabilities of the two-state HMM as\\nspecified, rather than estimating them by maximum likelihood.\\nAlternatively, if first character of argument is '~', estimate\\nparameters, but initialize to specified values.  The argument\\n<mu> is the probability of transitioning from the conserved to\\nthe non-conserved state, and <nu> is the probability of the\\nreverse transition.  The probabilities of self transitions are\\nthus 1-<mu> and 1-<nu> and the expected lengths of conserved\\nand nonconserved elements are 1/<mu> and 1/<nu>, respectively."
     expected_length: "[~]<omega>  {--expected-lengths also allowed,\\nfor backward compatibility}\\n(For use with --target-coverage, alternative to --transitions)\\nSet transition probabilities such that the expected length of\\na conserved element is <omega>.  Specifically, the parameter\\nmu is set to 1/<omega>.  If preceded by '~', <omega> will be\\nestimated, but will be initialized to the specified value."
+    target_coverage: "(Alternative to --transitions) Constrain transition parameters\\nsuch that the expected fraction of sites in conserved elements\\nis <gamma> (0 < <gamma> < 1).  This is a *prior* rather than\\n*posterior* expectation and assumes stationarity of the\\nstate-transition process.  Adding this constraint causes the\\nratio mu/nu to be fixed at (1-<gamma>)/<gamma>.  If used with\\n--expected-length, the transition probabilities will be\\ncompletely fixed; otherwise the expected-length parameter\\n<omega> will be estimated by maximum likelihood."
+    ref_idx: "Use coordinate frame of specified sequence in output.  Default\\nvalue is 1, first sequence in alignment; 0 indicates\\ncoordinate frame of entire multiple alignment."
+    most_conserved: "(aka --viterbi) option, is a set of discrete"
     rho: "Set the *scale* (overall evolutionary rate) of the model for\\nthe conserved state to be <rho> times that of the model for\\nthe non-conserved state (0 < <rho> < 1; default 0.3).  If used\\nwith --estimate-trees or --estimate-rho, the specified value\\nwill be used for initialization only (rho will be\\nestimated).  This option is ignored if two tree models are\\ngiven."
     estimate_trees: "Estimate free parameters of tree models and write new models\\nto <fname_root>.cons.mod and <fname_root>.noncons.mod."
+    estimate_rho: "Like --estimate-trees, but estimate only the parameter rho."
     gc: "(Optionally use with --estimate-trees or --estimate-rho)\\nAssume a background nucleotide distribution consistent with\\nthe given average G+C content (0 < <val> < 1) when estimating\\ntree models.  (The frequencies of G and C will be set to\\n<val>/2 and the frequencies of A and T will be set to\\n(1-<val>)/2.)  This option overrides the default behavior of\\nestimating the background distribution from the data (if\\n--estimate-trees) or obtaining them from the input model (if\\n--estimate-rho)."
     n_rates: "| <nrates_conserved,nrates_nonconserved>\\n(Optionally use with a discrete-gamma model and --estimate-trees)\\nAssume the specified number of rate categories, instead of the\\nnumber given in the *.mod file.  The shape parameter 'alpha' will\\nbe as given in the *.mod file.  In the case of the default\\ntwo-state HMM, two values can be specified, for the numbers of\\nrates for the conserved and the nonconserved states, resp."
-    transitions: "[~]<mu>,<nu>\\nFix the transition probabilities of the two-state HMM as\\nspecified, rather than estimating them by maximum likelihood.\\nAlternatively, if first character of argument is '~', estimate\\nparameters, but initialize to specified values.  The argument\\n<mu> is the probability of transitioning from the conserved to\\nthe non-conserved state, and <nu> is the probability of the\\nreverse transition.  The probabilities of self transitions are\\nthus 1-<mu> and 1-<nu> and the expected lengths of conserved\\nand nonconserved elements are 1/<mu> and 1/<nu>, respectively."
-    target_coverage: "(Alternative to --transitions) Constrain transition parameters\\nsuch that the expected fraction of sites in conserved elements\\nis <gamma> (0 < <gamma> < 1).  This is a *prior* rather than\\n*posterior* expectation and assumes stationarity of the\\nstate-transition process.  Adding this constraint causes the\\nratio mu/nu to be fixed at (1-<gamma>)/<gamma>.  If used with\\n--expected-length, the transition probabilities will be\\ncompletely fixed; otherwise the expected-length parameter\\n<omega> will be estimated by maximum likelihood."
     viterbi: "[alternatively --most-conserved], -V <fname>\\nPredict discrete elements using the Viterbi algorithm and\\nwrite to specified file.  Output is in BED format, unless\\n<fname> has suffix \\\".gff\\\", in which case output is in GFF."
+    score: "(Optionally use with --viterbi) Assign a log-odds score to\\neach prediction."
     lnl: "Compute total log likelihood using the forward algorithm and\\nwrite to specified file."
     no_post_probs: "Suppress output of posterior probabilities.  Useful if only\\ndiscrete elements or likelihood is of interest."
     log: "(Optionally use when estimating free parameters) Write log of\\noptimization procedure to specified file."
-    ref_idx: "Use coordinate frame of specified sequence in output.  Default\\nvalue is 1, first sequence in alignment; 0 indicates\\ncoordinate frame of entire multiple alignment."
     seqname: "(Optionally use with --viterbi) Use specified string\\nfor 'seqname' (GFF) or 'chrom' field in output file.  Default\\nis obtained from input file name (double filename root, e.g.,\\n\\\"chr22\\\" if input file is \\\"chr22.35.ss\\\")."
     id_pref: "(Optionally use with --viterbi) Use specified string as\\nprefix of generated ids in output file.  Can be used to ensure\\nids are unique.  Default is obtained from input file name\\n(single filename root, e.g., \\\"chr22.35\\\" if input file is\\n\\\"chr22.35.ss\\\")."
     quiet: "Proceed quietly (without updates to stderr)."
@@ -115,6 +129,10 @@ task PhastCons {
     require_informative: "Require \\\"informative\\\" columns (i.e., columns with more than\\ntwo non-missing-data characters, excluding sequences specified\\nby --not-informative) in specified HMM states, to help\\neliminate false positive predictions.  States can be specified\\nby number (indexing starts with 0) or, if --catmap is used, by\\ncategory name.  Non-informative columns will be given emission\\nprobabilities of zero.  By default, this option is active,\\nwith <states> equal to the set of states of interest for\\nprediction (as specified by --states).  Use \\\"none\\\" to disable\\ncompletely."
     not_informative: "Do not consider the specified sequences (listed by name) when\\ndeciding whether a column is informative.  This option may be\\nuseful when sequences are present that are very close to the\\nreference sequence and thus do not contribute much in the way\\nof phylogenetic information.  E.g., one might use\\n\\\"--not-informative chimp\\\" with a human-referenced multiple\\nalignment including chimp sequence, to avoid false-positive\\npredictions based only on human/chimp alignments (can be a\\nproblem, e.g., with --coding-potential)."
     ignore_missing: "(For use when estimating transition probabilities) Ignore\\nregions of missing data in all sequences but the reference\\nsequence (excluding sequences specified by --not-informative)\\nwhen estimating transition probabilities.  Can help avoid\\ntoo-low estimates of <mu> and <nu> or too-high estimates of\\n<lambda>.  Warning: this option should not be used with\\n--viterbi because coordinates in output will be\\nunrecognizable."
+    algorithm_dot: "To specify them at the command line, use either the"
+    alignment_dot: "They can be suppressed with the --no-post-probs"
+    option_dot: "The secondary type of output, activated with the"
+    here_dot: "For example, it is possible to produce conservation scores"
     parameter_dot: "Also predict conserved elements as well as"
     models_dot: "Output the conservation scores but not the conserved"
     elements_dot: "phastCons mydata.ss cons.mod,noncons.mod > scores.wig"

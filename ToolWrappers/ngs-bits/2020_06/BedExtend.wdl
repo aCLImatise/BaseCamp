@@ -18,6 +18,9 @@ task BedExtend {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_bases_extend: "The number of bases to extend (on both sides of each region)."
     in: "Input BED file. If unset, reads from STDIN.\\nDefault value: ''"

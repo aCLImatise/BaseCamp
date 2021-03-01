@@ -20,12 +20,12 @@ task Octopus {
     Boolean? one_based_indexing
     Boolean? arg_spaceseparated_regionschrombeginend
     Boolean? arg_file_containing
-    Boolean? arg_spaceseparated_list_skip
-    Boolean? arg_file_regions
+    Boolean? arg_spaceseparated_list_may
+    Boolean? arg_file_line
     Boolean? arg_spaceseparated_sample
     Boolean? ignore_unmapped_contigs
     File? pedigree
-    File? arg_file_where
+    File? arg_file_written
     String? contig_output_order
     Boolean? sites_only
     Boolean? legacy
@@ -82,12 +82,12 @@ task Octopus {
     Int? haplotype_overflow
     Int? max_hold_out_depth
     String? extension_level
-    Boolean? arg_haplotypes_filtered
+    Boolean? arg_haplotypes_posterior
     Int? ded_up_haplotypes_with_prior_model
     Int? protect_reference_haplotype
     Boolean? arg_population_use
     Boolean? arg_contigs_unspecified
-    Boolean? arg_y_mt
+    Boolean? arg_y_chry
     File? contig_plo_i_dies_file
     Int? min_variant_posterior
     Boolean? ref_call
@@ -95,7 +95,7 @@ task Octopus {
     Int? min_ref_call_posterior
     Boolean? arg_snp_heterozygosity
     Float? snp_heterozygosity_stdev
-    Boolean? arg_germline_indel
+    Boolean? arg_indel_heterozygosity
     Boolean? use_uniform_genotype_priors
     Int? max_genotypes
     Boolean? use_independent_genotype_priors
@@ -150,12 +150,12 @@ task Octopus {
       ~{if (one_based_indexing) then "--one-based-indexing" else ""} \
       ~{if (arg_spaceseparated_regionschrombeginend) then "-T" else ""} \
       ~{if (arg_file_containing) then "-t" else ""} \
-      ~{if (arg_spaceseparated_list_skip) then "-K" else ""} \
-      ~{if (arg_file_regions) then "-k" else ""} \
+      ~{if (arg_spaceseparated_list_may) then "-K" else ""} \
+      ~{if (arg_file_line) then "-k" else ""} \
       ~{if (arg_spaceseparated_sample) then "-S" else ""} \
       ~{if (ignore_unmapped_contigs) then "--ignore-unmapped-contigs" else ""} \
       ~{if defined(pedigree) then ("--pedigree " +  '"' + pedigree + '"') else ""} \
-      ~{if (arg_file_where) then "-o" else ""} \
+      ~{if (arg_file_written) then "-o" else ""} \
       ~{if defined(contig_output_order) then ("--contig-output-order " +  '"' + contig_output_order + '"') else ""} \
       ~{if (sites_only) then "--sites-only" else ""} \
       ~{if (legacy) then "--legacy" else ""} \
@@ -212,12 +212,12 @@ task Octopus {
       ~{if defined(haplotype_overflow) then ("--haplotype-overflow " +  '"' + haplotype_overflow + '"') else ""} \
       ~{if defined(max_hold_out_depth) then ("--max-holdout-depth " +  '"' + max_hold_out_depth + '"') else ""} \
       ~{if defined(extension_level) then ("--extension-level " +  '"' + extension_level + '"') else ""} \
-      ~{if (arg_haplotypes_filtered) then "-e" else ""} \
+      ~{if (arg_haplotypes_posterior) then "-e" else ""} \
       ~{if defined(ded_up_haplotypes_with_prior_model) then ("--dedup-haplotypes-with-prior-model " +  '"' + ded_up_haplotypes_with_prior_model + '"') else ""} \
       ~{if defined(protect_reference_haplotype) then ("--protect-reference-haplotype " +  '"' + protect_reference_haplotype + '"') else ""} \
       ~{if (arg_population_use) then "-C" else ""} \
       ~{if (arg_contigs_unspecified) then "-P" else ""} \
-      ~{if (arg_y_mt) then "-p" else ""} \
+      ~{if (arg_y_chry) then "-p" else ""} \
       ~{if defined(contig_plo_i_dies_file) then ("--contig-ploidies-file " +  '"' + contig_plo_i_dies_file + '"') else ""} \
       ~{if defined(min_variant_posterior) then ("--min-variant-posterior " +  '"' + min_variant_posterior + '"') else ""} \
       ~{if (ref_call) then "--refcall" else ""} \
@@ -225,7 +225,7 @@ task Octopus {
       ~{if defined(min_ref_call_posterior) then ("--min-refcall-posterior " +  '"' + min_ref_call_posterior + '"') else ""} \
       ~{if (arg_snp_heterozygosity) then "-z" else ""} \
       ~{if defined(snp_heterozygosity_stdev) then ("--snp-heterozygosity-stdev " +  '"' + snp_heterozygosity_stdev + '"') else ""} \
-      ~{if (arg_germline_indel) then "-y" else ""} \
+      ~{if (arg_indel_heterozygosity) then "-y" else ""} \
       ~{if (use_uniform_genotype_priors) then "--use-uniform-genotype-priors" else ""} \
       ~{if defined(max_genotypes) then ("--max-genotypes " +  '"' + max_genotypes + '"') else ""} \
       ~{if (use_independent_genotype_priors) then "--use-independent-genotype-priors" else ""} \
@@ -246,6 +246,9 @@ task Octopus {
       ~{if defined(filter_vcf) then ("--filter-vcf " +  '"' + filter_vcf + '"') else ""} \
       ~{if defined(somatic_forest_file) then ("--somatic-forest-file " +  '"' + somatic_forest_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "A config file, used to populate command\\nline options"
     debug: "[=arg(=\\\"octopus_debug.log\\\")]  Writes verbose debug information to\\ndebug.log in the working directory"
@@ -265,12 +268,12 @@ task Octopus {
     one_based_indexing: "Notifies that input regions are given\\nusing one based indexing rather than\\nzero based"
     arg_spaceseparated_regionschrombeginend: "[ --regions ] arg                  Space-separated list of regions\\n(chrom:begin-end) to be analysed. May\\nbe specified multiple times"
     arg_file_containing: "[ --regions-file ] arg             File containing a list of regions\\n(chrom:begin-end), one per line, to be\\nanalysed"
-    arg_spaceseparated_list_skip: "[ --skip-regions ] arg             Space-separated list of regions\\n(chrom:begin-end) to skip May be\\nspecified multiple times"
-    arg_file_regions: "[ --skip-regions-file ] arg        File of regions (chrom:begin-end), one\\nper line, to skip"
+    arg_spaceseparated_list_may: "[ --skip-regions ] arg             Space-separated list of regions\\n(chrom:begin-end) to skip May be\\nspecified multiple times"
+    arg_file_line: "[ --skip-regions-file ] arg        File of regions (chrom:begin-end), one\\nper line, to skip"
     arg_spaceseparated_sample: "[ --samples ] arg                  Space-separated list of sample names to"
     ignore_unmapped_contigs: "Ignore any contigs that are not present\\nin the read files"
     pedigree: "PED file containing sample pedigree"
-    arg_file_where: "[ --output ] arg                   File to where output is written. If\\nunspecified, calls are written to\\nstdout"
+    arg_file_written: "[ --output ] arg                   File to where output is written. If\\nunspecified, calls are written to\\nstdout"
     contig_output_order: "(=asInReferenceIndex)\\nThe order contigs should be written to\\nthe output"
     sites_only: "Only reports call sites (i.e. without\\nsample genotype information)"
     legacy: "Outputs a legacy version of the final\\ncallset in addition to the native\\nversion"
@@ -327,12 +330,12 @@ task Octopus {
     haplotype_overflow: "(=200000)    Regions with more haplotypes than this\\nwill be skipped"
     max_hold_out_depth: "(=20)         Maximum number of holdout attempts the\\nhaplotype generator can make before the\\nregion is skipped"
     extension_level: "(=normal)       Level of haplotype extension. Possible\\nvalues are: conservative, normal,\\noptimistic, aggressive"
-    arg_haplotypes_filtered: "[ --haplotype-extension-threshold ] arg (=100)\\nHaplotypes with posterior probability\\nless than this can be filtered before\\nextension"
+    arg_haplotypes_posterior: "[ --haplotype-extension-threshold ] arg (=100)\\nHaplotypes with posterior probability\\nless than this can be filtered before\\nextension"
     ded_up_haplotypes_with_prior_model: "(=1)\\nRemove duplicate haplotypes using\\nmutation prior model"
     protect_reference_haplotype: "(=1)\\nProtect the reference haplotype from\\nfiltering"
     arg_population_use: "[ --caller ] arg (=population)     Which of the octopus callers to use"
     arg_contigs_unspecified: "[ --organism-ploidy ] arg (=2)     All contigs with unspecified ploidies\\nare assumed the organism ploidy"
-    arg_y_mt: "[ --contig-ploidies ] arg (=Y=1 chrY=1 MT=1 chrM=1)\\nSpace-separated list of contig\\n(contig=ploidy) or sample contig\\n(sample:contig=ploidy) ploidies"
+    arg_y_chry: "[ --contig-ploidies ] arg (=Y=1 chrY=1 MT=1 chrM=1)\\nSpace-separated list of contig\\n(contig=ploidy) or sample contig\\n(sample:contig=ploidy) ploidies"
     contig_plo_i_dies_file: "File containing a list of contig\\n(contig=ploidy) or sample contig\\n(sample:contig=ploidy) ploidies, one\\nper line"
     min_variant_posterior: "(=1)      Report variant alleles with posterior\\nprobability (phred scale) greater than\\nthis"
     ref_call: "[=arg(=blocked)]            Caller will report reference confidence\\ncalls for each position (positional),\\nor in automatically sized blocks\\n(blocked)"
@@ -340,7 +343,7 @@ task Octopus {
     min_ref_call_posterior: "(=2)      Report reference alleles with posterior\\nprobability (phred scale) greater than\\nthis"
     arg_snp_heterozygosity: "[ --snp-heterozygosity ] arg (=0.001)\\nGermline SNP heterozygosity for the\\ngiven samples"
     snp_heterozygosity_stdev: "(=0.01)\\nStandard deviation of the germline SNP\\nheterozygosity used for the given\\nsamples"
-    arg_germline_indel: "[ --indel-heterozygosity ] arg (=0.0001)\\nGermline indel heterozygosity for the\\ngiven samples"
+    arg_indel_heterozygosity: "[ --indel-heterozygosity ] arg (=0.0001)\\nGermline indel heterozygosity for the\\ngiven samples"
     use_uniform_genotype_priors: "Use a uniform prior model when\\ncalculating genotype posteriors"
     max_genotypes: "(=5000)           The maximum number of genotypes to"
     use_independent_genotype_priors: "Use independent genotype priors for\\njoint calling"
@@ -370,7 +373,7 @@ task Octopus {
   }
   output {
     File out_stdout = stdout()
-    File out_arg_file_where = "${in_arg_file_where}"
+    File out_arg_file_written = "${in_arg_file_written}"
     File out_re_genotype = "${in_re_genotype}"
   }
 }

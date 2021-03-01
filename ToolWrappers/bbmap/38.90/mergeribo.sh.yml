@@ -1,0 +1,73 @@
+!Command
+command:
+- mergeribo.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sequence.
+  description: Mutually exclusive with best.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will\nspecify 200 megs. The max is\
+    \ typically 85% of physical memory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eoom
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: Disable assertions.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified January 28, 2020\n\nDescription:\
+  \  Merges files of SSU sequences to keep one per taxID.\nBy default, a consensus\
+  \ is generated per TaxID, then the sequence\nbest matching that consensus is used:\n\
+  First, all sequences per TaxID are aligned to a reference consensus.\nSecond, the\
+  \ best-matching sequence is used as a seed, and all other\nsequences for that TaxID\
+  \ are aligned to the seed to generate a new consensus.\nThird, in 'consensus' mode,\
+  \ that consensus is simply output.\nIn 'best' mode (default), all sequences are\
+  \ aligned again to the new consensus,\nand the best-matching is output.\n\nUsage:\
+  \  mergeribo.sh in=<file,file> out=<file> 16S\n\nStandard parameters:\nin=<file,file>\
+  \  Comma-delimited list of files.\nout=<file>      Output file.\nout2=<file>   \
+  \  Read 2 output if reads are in two files.\noverwrite=f     (ow) Set to false to\
+  \ force the program to abort rather than\n                overwrite an existing\
+  \ file.\nshowspeed=t     (ss) Set to 'f' to suppress display of processing speed.\n\
+  ziplevel=2      (zl) Set to 1 (lowest) through 9 (max) to change compression\n \
+  \               level; lower compression is faster.\n\nProcessing parameters:\n\
+  alt=<file>      Lower priority data.  Only used if there is no SSU associated\n\
+  \                with the TaxID from the primary input.\nbest=t          Output\
+  \ the best representative per taxID.\nconsensus=f     Output a consensus per taxID\
+  \ instead of the best input\n                sequence.  Mutually exclusive with\
+  \ best.\nfast=f          Output the best sequence based on alignment to global consensus\n\
+  \                (the seed) rather than individual consensus.\nminid=0.62      Ignore\
+  \ sequences with identity lower than this to the global\n                consensus.\n\
+  maxns=-1        Ignore sequences with more than this many Ns, if non-negative.\n\
+  minlen=1        Ignore sequences shorter than this.\nmaxlen=4000     Ignore sequences\
+  \ longer than this.\n16S=t           Align to 16S consensus to pick the seed. Mutually\
+  \ exclusive.\n18S=f           Align to 18S consensus to pick the seed. Mutually\
+  \ exclusive.\n\nJava Parameters:\n-Xmx            This will set Java's memory usage,\
+  \ overriding autodetection.\n                -Xmx20g will specify 20 gigs of RAM,\
+  \ and -Xmx200m will\n                specify 200 megs. The max is typically 85%\
+  \ of physical memory.\n-eoom           This flag will cause the process to exit\
+  \ if an out-of-memory\n                exception occurs.  Requires Java 8u92+.\n\
+  -da             Disable assertions.\n\nPlease contact Brian Bushnell at bbushnell@lbl.gov\
+  \ if you encounter any problems.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

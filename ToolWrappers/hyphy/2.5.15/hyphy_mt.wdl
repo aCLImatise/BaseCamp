@@ -14,6 +14,9 @@ task HyphyMt {
       ~{fprintfstdout} \
       ~{return}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: "i=0;"
     branch_under_condition: "Branch under condition 'echoFlag'"

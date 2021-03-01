@@ -22,6 +22,9 @@ task MapAlignerIdentification {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*               Input files to align (all must have the same file type) (valid formats: 'featureXML', 'consensusXML', 'idXML')"
     out: "Output files (same file type as 'in'). Either this option or 'trafo_out' has to be provided; they can be used together. (valid formats: 'featureXML', 'consensusXML', 'idXML')"

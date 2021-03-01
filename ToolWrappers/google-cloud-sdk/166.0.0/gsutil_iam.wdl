@@ -18,6 +18,9 @@ task GsutilIam {
       ~{if defined(performs_precondition_check) then ("-e " +  '"' + performs_precondition_check + '"') else ""} \
       ~{if (default_gsutil_error) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i_d: "(\\\"user\\\"|\\\"serviceAccount\\\"|\\\"domain\\\"|\\\"group\\\"):id"
     performs_recursively_objects: "Performs \\\"iam set\\\" recursively to all objects under the\\nspecified bucket."

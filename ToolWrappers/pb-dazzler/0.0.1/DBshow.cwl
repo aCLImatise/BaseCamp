@@ -3,58 +3,59 @@ id: DBshow.cwl
 inputs:
 - id: in_show_untrimmed_database
   doc: ': Show the untrimmed database.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -u
 - id: in_show_also_quiva
   doc: ': Show also the .quiva streams.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
-- id: in_show_also_arrow
+- id: in_show_also_sequences
   doc: ': Show also the .arrow pulse sequences.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_show_default_read
   doc: ': Do not show the default read DNA sequences.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_show_mask_intervals
   doc: ': Show mask intervals and highlight in sequence.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
-- id: in_produce_quiva_ignore
+- id: in_produce_quiva_file
   doc: ': Produce a .quiva file (ignore all other options but -uU).'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -Q
-- id: in_produce_arrow_ignore
+- id: in_produce_file_ignore
   doc: ': Produce a .arrow file (ignore all other options but -uw).'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -A
 - id: in_use_upper_case
   doc: ': Use upper case for DNA (default is lower case).'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -U
-- id: in_print_w_bp
+- id: in_print_bp_line
   doc: ': Print -w bp per line (default is 80).'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -w
 - id: in_unq_auqa
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -unqaUQA
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - DBshow

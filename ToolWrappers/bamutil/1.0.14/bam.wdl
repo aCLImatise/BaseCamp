@@ -8,6 +8,9 @@ task Bam {
     bam \
       ~{tool}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tool: ""
   }

@@ -4,169 +4,169 @@ command:
 positional: []
 named:
 - !Flag
-  description: '[--flankdistance FLANKDISTANCE]'
+  optional: true
   synonyms:
   - --target
+  description: '[--flankdistance FLANKDISTANCE]'
   args: !SimpleFlagArg
     name: TARGET
-  optional: true
 - !Flag
-  description: path to BAM file with precomputed guideRNAs. REQUIRED
+  optional: true
   synonyms:
   - -b
+  description: path to BAM file with precomputed guideRNAs. REQUIRED
   args: !SimpleFlagArg
     name: BAM
-  optional: true
 - !Flag
-  description: "coordinates in the form \"<chr>:<start>-<end>\"\n;example: chrX:3364088-3372035,\
-    \ mutually exclusive\nwith --batch"
+  optional: true
   synonyms:
   - -c
+  description: "coordinates in the form \"<chr>:<start>-<end>\"\n;example: chrX:3364088-3372035,\
+    \ mutually exclusive\nwith --batch"
   args: !SimpleFlagArg
     name: COORDS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --batch
   description: "absolute filepath to a BED file, GTF file where the\nfirst field (column)\
     \ contains chromosome information\n(chr#:), or a txt file composed of a single\
     \ field\n(column) of genomic coordinates of the following\nformat: chr#:start-end,\
     \ mutually exclusive with -c"
-  synonyms:
-  - --batch
   args: !SimpleFlagArg
     name: BATCH_MODE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sequence
   description: "sequence file is fasta file format. sequences will be\nprocessed through\
     \ locally installed blat binary and\nsequences with perfect matches to a specified\
     \ genome\nwill be processed. If a perfect match does not exist,\nthe individual\
     \ query will not be processed"
-  synonyms:
-  - --sequence
   args: !SimpleFlagArg
     name: SEQUENCE_FILE
-  optional: true
 - !Flag
-  description: "the distance flanking both the upstream and downstream\nregions of\
-    \ a target coordinate.Default is 1000."
+  optional: true
   synonyms:
   - --flankdistance
+  description: "the distance flanking both the upstream and downstream\nregions of\
+    \ a target coordinate.Default is 1000."
   args: !SimpleFlagArg
     name: FLANKDISTANCE
-  optional: true
 - !Flag
-  description: "whether input coordinates are 1-based (default is\n0-based); output\
-    \ is always in BED format and 0-based"
+  optional: true
   synonyms:
   - --one
+  description: "whether input coordinates are 1-based (default is\n0-based); output\
+    \ is always in BED format and 0-based"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: name of output directory. REQUIRED
+  optional: true
   synonyms:
   - -o
+  description: name of output directory. REQUIRED
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: "file format for output can either be bed (bed) or csv\n(csv) format.\
-    \ Default is csv."
+  optional: true
   synonyms:
   - --output_format
+  description: "file format for output can either be bed (bed) or csv\n(csv) format.\
+    \ Default is csv."
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
-  description: whether header should be included in output
+  optional: true
   synonyms:
   - --header
+  description: whether header should be included in output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --off
   description: "whether detailed info about off-targets of each\nguideRNA should be\
     \ included in output (each off-target\nin a separate line); default is to include\
     \ only\nsummary about all off-targets of a guideRNA. Must be\nutilized with csv\
     \ output format (which is default)"
-  synonyms:
-  - --off
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sort
   description: "sort sgRNAs by fewest off-targets (offtargets),\nhighest Rule 2 Set\
     \ cutting efficiencyscore (score),\nhighest CFD cutting specificity (specificity),\
     \ or\nsgRNAs closest to the target region (coordinates).\nDefault is coordinates.\
     \ Mutually exclusive with\nselect."
-  synonyms:
-  - --sort
   args: !SimpleFlagArg
     name: SORT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --select
   description: "guidequery chooses n optimal sgRNAs based on\nemphasizing fewest off-targets\
     \ then sorts by Rule 2\nSet cutting efficiency (offtargets) or it chooses n\n\
     optimal sgRNAsbased on emphasizing highest Rule 2 Set\ncutting efficiency score\
     \ then sorts by fewest off-\ntargets (score). Also can choose n sgRNAs closes\
     \ to\ntarget and sorts by offtargets (coordinates). Also can\nchoose n sgRNAs\
     \ with highest CFD score and sorts by\nofftargets. Mutually exclusive with sort."
-  synonyms:
-  - --select
   args: !SimpleFlagArg
     name: SELECT
-  optional: true
 - !Flag
-  description: "amount of optimal sgRNAs desired from the --select\nparameter. Ignored\
-    \ if --select not used. Default is 3."
+  optional: true
   synonyms:
   - -n
+  description: "amount of optimal sgRNAs desired from the --select\nparameter. Ignored\
+    \ if --select not used. Default is 3."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --annot
   description: "path to BED file with coordinates of genomic features\nthat should\
     \ be used for annotation (format\n(tabulated): chrom, start, end, name); for example,\n\
     use Table Browser https://genome.ucsc.edu/cgi-\nbin/hgTables to create such BED\
     \ files of various\nkinds; alternatively, use here short names for\npreinstalled\
     \ exon annotations: \"hg38\" for human, \"dm6\"\nfor fly, \"mm10\" for mouse,\
     \ \"sacSer3\" for yeast, ce11\nfor c. elegans"
-  synonyms:
-  - --annot
   args: !SimpleFlagArg
     name: ANNOTFILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --feature_bed_file
   description: "path to BED file with genomic features of interest\nsuch that user\
     \ can upload a BED file with feature\nnames (in 4th field) and GuideScan will\
     \ map the\ngenomic coordinates to the feature"
-  synonyms:
-  - --feature_bed_file
   args: !SimpleFlagArg
     name: FEATURES
-  optional: true
 - !Flag
-  description: "fasta file with index located in same directory so\nthat --sequence\
-    \ queries can be processed"
+  optional: true
   synonyms:
   - --fasta_file
+  description: "fasta file with index located in same directory so\nthat --sequence\
+    \ queries can be processed"
   args: !SimpleFlagArg
     name: FASTA
-  optional: true
 - !Flag
-  description: "absolute filepath to blat tool. Binary packages for\nlocally running\
-    \ blat are found within GuideScan\nsoftware at ./blat_binaries"
+  optional: true
   synonyms:
   - --blat
+  description: "absolute filepath to blat tool. Binary packages for\nlocally running\
+    \ blat are found within GuideScan\nsoftware at ./blat_binaries"
   args: !SimpleFlagArg
     name: BLAT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: guidescan_guidequery [-h] -b BAM\n                            (-c\
@@ -257,3 +257,4 @@ help_text: "usage: guidescan_guidequery [-h] -b BAM\n                           
   annotations found.\n"
 generated_using:
 - --help
+docker_image:

@@ -2,14 +2,17 @@ version 1.0
 
 task PhyluceNcbiChunkFastaForNcbi {
   input {
-    String? var_input
+    String? the_input_fasta
   }
   command <<<
     phyluce_ncbi_chunk_fasta_for_ncbi \
-      ~{if defined(var_input) then ("--input " +  '"' + var_input + '"') else ""}
+      ~{if defined(the_input_fasta) then ("--input " +  '"' + the_input_fasta + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    var_input: ""
+    the_input_fasta: "The input FASTA"
   }
   output {
     File out_stdout = stdout()

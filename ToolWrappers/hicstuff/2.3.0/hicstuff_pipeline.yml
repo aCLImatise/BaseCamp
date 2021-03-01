@@ -4,203 +4,203 @@ command:
 - pipeline
 positional:
 - !Positional
-  description: -e, --enzyme=ENZ              Restriction enzyme if a string, or chunk
+  optional: false
   position: 0
   name: positions.
-  optional: false
+  description: -e, --enzyme=ENZ              Restriction enzyme if a string, or chunk
 - !Positional
-  description: -p, --plot                    Generates plots in the output directory
+  optional: false
   position: 0
   name: directory.
-  optional: false
+  description: -p, --plot                    Generates plots in the output directory
 named:
 - !Flag
-  description: "Alignment software to use. Can be either\nbowtie2, minimap2 or bwa.\
-    \ minimap2 should\nonly be used for reads > 100 bp.\n[default: bowtie2]"
+  optional: true
   synonyms:
   - -a
   - --aligner
+  description: "Alignment software to use. Can be either\nbowtie2, minimap2 or bwa.\
+    \ minimap2 should\nonly be used for reads > 100 bp.\n[default: bowtie2]"
   args: !SimpleFlagArg
     name: bowtie2
-  optional: true
 - !Flag
-  description: "Positions of the centromeres separated by\na space and in the same\
-    \ order than the\nchromosomes. Discordant with the circular\noption."
+  optional: true
   synonyms:
   - -c
   - --centromeres
+  description: "Positions of the centromeres separated by\na space and in the same\
+    \ order than the\nchromosomes. Discordant with the circular\noption."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Enable if the genome is circular.\nDiscordant with the centromeres\
-    \ option."
+  optional: true
   synonyms:
   - -C
   - --circular
+  description: "Enable if the genome is circular.\nDiscordant with the centromeres\
+    \ option."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --distance-law
   description: "If enabled, generates a distance law file\nwith the values of the\
     \ probabilities to\nhave a contact between two distances for\neach chromosomes\
     \ or arms if the file with\nthe positions has been given. The values\nare not\
     \ normalized, or averaged."
-  synonyms:
-  - -d
-  - --distance-law
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Filter out PCR duplicates based on read
+  optional: true
   synonyms:
   - -D
   - --duplicates
+  description: Filter out PCR duplicates based on read
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Filter out spurious 3C events (loops and\nuncuts) using hicstuff filter.\
-    \ Requires\n\"-e\" to be a restriction enzyme, not a\nchunk size. For more informations,\
-    \ see\nCournac et al. BMC Genomics, 2012."
+  optional: true
   synonyms:
   - -f
   - --filter
+  description: "Filter out spurious 3C events (loops and\nuncuts) using hicstuff filter.\
+    \ Requires\n\"-e\" to be a restriction enzyme, not a\nchunk size. For more informations,\
+    \ see\nCournac et al. BMC Genomics, 2012."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Write even if the output file already exists.
+  optional: true
   synonyms:
   - -F
   - --force
+  description: Write even if the output file already exists.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Map reads iteratively using hicstuff\niteralign, by truncating reads\
-    \ to 20bp\nand then repeatedly extending and\naligning them."
+  optional: true
   synonyms:
   - -i
   - --iterative
+  description: "Map reads iteratively using hicstuff\niteralign, by truncating reads\
+    \ to 20bp\nand then repeatedly extending and\naligning them."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Reference genome to map against. Path to\nthe bowtie2/bwa index if\
-    \ using bowtie2/bwa,\nor to a FASTA file if using minimap2."
+  optional: true
   synonyms:
   - -g
   - --genome
+  description: "Reference genome to map against. Path to\nthe bowtie2/bwa index if\
+    \ using bowtie2/bwa,\nor to a FASTA file if using minimap2."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "The format of the output sparse matrix.\nCan be \"bg2\" for 2D Bedgraph\
-    \ format,\n\"cool\" for Mirnylab's cooler software, or\n\"graal\" for graal-compatible\
-    \ plain text\nCOO format. [default: graal]"
+  optional: true
   synonyms:
   - -M
   - --matfmt
+  description: "The format of the output sparse matrix.\nCan be \"bg2\" for 2D Bedgraph\
+    \ format,\n\"cool\" for Mirnylab's cooler software, or\n\"graal\" for graal-compatible\
+    \ plain text\nCOO format. [default: graal]"
   args: !SimpleFlagArg
     name: FMT
-  optional: true
 - !Flag
-  description: "If enabled, intermediary BED files will\nbe kept after generating\
-    \ the contact map.\nDisabled by defaut."
+  optional: true
   synonyms:
   - -n
   - --no-cleanup
+  description: "If enabled, intermediary BED files will\nbe kept after generating\
+    \ the contact map.\nDisabled by defaut."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Output directory. Defaults to the current
+  optional: true
   synonyms:
   - -o
   - --outdir
+  description: Output directory. Defaults to the current
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
-  description: "Overrides default filenames and prefixes all\noutput files with a\
-    \ custom name."
+  optional: true
   synonyms:
   - -P
   - --prefix
+  description: "Overrides default filenames and prefixes all\noutput files with a\
+    \ custom name."
   args: !SimpleFlagArg
     name: PREFIX
-  optional: true
 - !Flag
-  description: "Minimum mapping quality for selecting\ncontacts. [default: 30]."
+  optional: true
   synonyms:
   - -q
   - --quality-min
+  description: "Minimum mapping quality for selecting\ncontacts. [default: 30]."
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Integer. Number of kb that will be remove around\nthe centromere position\
-    \ given by in the centromere\nfile. [default: 0]"
+  optional: true
   synonyms:
   - -r
   - --remove-centromeres
+  description: "Integer. Number of kb that will be remove around\nthe centromere position\
+    \ given by in the centromere\nfile. [default: 0]"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Maximum read length in the fastq file. Optionally\nused in iterative\
-    \ alignment mode. Estimated from\nthe first read by default. Useful if input fastq\n\
-    is a composite of different read lengths."
+  optional: true
   synonyms:
   - -R
   - --read-len
+  description: "Maximum read length in the fastq file. Optionally\nused in iterative\
+    \ alignment mode. Estimated from\nthe first read by default. Useful if input fastq\n\
+    is a composite of different read lengths."
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Minimum size threshold to consider\ncontigs. Keep all contigs by default.\n\
-    [default: 0]"
+  optional: true
   synonyms:
   - -s
   - --size
+  description: "Minimum size threshold to consider\ncontigs. Keep all contigs by default.\n\
+    [default: 0]"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --start-stage
   description: "Define the starting point of the pipeline\nto skip some steps. Default\
     \ is \"fastq\" to\nrun from the start. Can also be \"bam\" to\nskip the alignment,\
     \ \"pairs\" to start from a\nsingle pairs file or \"pairs_idx\" to skip\nfragment\
     \ attribution and only build the\nmatrix. [default: fastq]"
-  synonyms:
-  - -S
-  - --start-stage
   args: !SimpleFlagArg
     name: STAGE
-  optional: true
 - !Flag
-  description: "Number of threads to allocate.\n[default: 1]."
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: "Number of threads to allocate.\n[default: 1]."
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Directory for storing intermediary BED\nfiles and temporary sort files.\
-    \ Defaults\nto the output directory."
+  optional: true
   synonyms:
   - -T
   - --tmpdir
+  description: "Directory for storing intermediary BED\nfiles and temporary sort files.\
+    \ Defaults\nto the output directory."
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -p
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -e
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -296,3 +296,4 @@ help_text: "Whole (end-to-end) contact map generation command\n\n    Entire Pipe
   \ details and statistics about the run.\n    \n"
 generated_using:
 - --help
+docker_image:

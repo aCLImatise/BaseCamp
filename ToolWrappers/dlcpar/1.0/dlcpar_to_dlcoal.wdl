@@ -34,6 +34,9 @@ task DlcparToDlcoal {
       ~{if defined(input_ext) then ("--inputext " +  '"' + input_ext + '"') else ""} \
       ~{if defined(output_ext) then ("--outputext " +  '"' + output_ext + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stree: "species tree file in newick format"
     s_map: "gene to species map"

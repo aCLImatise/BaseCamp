@@ -2,15 +2,15 @@ version 1.0
 
 task Wtdbg2 {
   input {
-    File? long_reads_sequences
-    String? prefix_output_files
+    File? long_reads_file
+    String? prefix_output_required
     Int? number_threads_cores
     Boolean? force_overwrite_files
     Int? presets_comma_delimited
     Int? approximate_genome_size
     Float? choose_best_depth
     Int? choose_longest_subread
-    Int? kmer_psize_p
+    Int? kmer_psize_seed
     Float? filter_high_frequency
     Float? min_length_alignment
     Float? min_matched_length
@@ -19,7 +19,7 @@ task Wtdbg2 {
     Float? min_similarity_calculated
     Int? min_read_depth
     Boolean? quiet
-    Boolean? verbose_can_multiple
+    Boolean? verbose_be_multiple
     Boolean? print_version_information
     Int? cpu
     String? see_i
@@ -98,15 +98,15 @@ task Wtdbg2 {
   command <<<
     wtdbg2 \
       ~{reads_dot_fa} \
-      ~{if defined(long_reads_sequences) then ("-i " +  '"' + long_reads_sequences + '"') else ""} \
-      ~{if defined(prefix_output_files) then ("-o " +  '"' + prefix_output_files + '"') else ""} \
+      ~{if defined(long_reads_file) then ("-i " +  '"' + long_reads_file + '"') else ""} \
+      ~{if defined(prefix_output_required) then ("-o " +  '"' + prefix_output_required + '"') else ""} \
       ~{if defined(number_threads_cores) then ("-t " +  '"' + number_threads_cores + '"') else ""} \
       ~{if (force_overwrite_files) then "-f" else ""} \
       ~{if defined(presets_comma_delimited) then ("-x " +  '"' + presets_comma_delimited + '"') else ""} \
       ~{if defined(approximate_genome_size) then ("-g " +  '"' + approximate_genome_size + '"') else ""} \
       ~{if defined(choose_best_depth) then ("-X " +  '"' + choose_best_depth + '"') else ""} \
       ~{if defined(choose_longest_subread) then ("-L " +  '"' + choose_longest_subread + '"') else ""} \
-      ~{if defined(kmer_psize_p) then ("-p " +  '"' + kmer_psize_p + '"') else ""} \
+      ~{if defined(kmer_psize_seed) then ("-p " +  '"' + kmer_psize_seed + '"') else ""} \
       ~{if defined(filter_high_frequency) then ("-K " +  '"' + filter_high_frequency + '"') else ""} \
       ~{if defined(min_length_alignment) then ("-l " +  '"' + min_length_alignment + '"') else ""} \
       ~{if defined(min_matched_length) then ("-m " +  '"' + min_matched_length + '"') else ""} \
@@ -115,7 +115,7 @@ task Wtdbg2 {
       ~{if defined(min_similarity_calculated) then ("-s " +  '"' + min_similarity_calculated + '"') else ""} \
       ~{if defined(min_read_depth) then ("-e " +  '"' + min_read_depth + '"') else ""} \
       ~{if (quiet) then "-q" else ""} \
-      ~{if (verbose_can_multiple) then "-v" else ""} \
+      ~{if (verbose_be_multiple) then "-v" else ""} \
       ~{if (print_version_information) then "-V" else ""} \
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if defined(see_i) then ("--input " +  '"' + see_i + '"') else ""} \
@@ -190,16 +190,19 @@ task Wtdbg2 {
       ~{if (no_read_clip) then "--no-read-clip" else ""} \
       ~{if (no_chain_ning_clip) then "--no-chainning-clip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    long_reads_sequences: "Long reads sequences file (REQUIRED; can be multiple), []"
-    prefix_output_files: "Prefix of output files (REQUIRED), []"
+    long_reads_file: "Long reads sequences file (REQUIRED; can be multiple), []"
+    prefix_output_required: "Prefix of output files (REQUIRED), []"
     number_threads_cores: "Number of threads, 0 for all cores, [4]"
     force_overwrite_files: "Force to overwrite output files"
     presets_comma_delimited: "Presets, comma delimited, []\\npreset1/rsII/rs: -p 21 -S 4 -s 0.05 -L 5000\\npreset2: -p 0 -k 15 -AS 2 -s 0.05 -L 5000\\npreset3: -p 19 -AS 2 -s 0.05 -L 5000\\nsequel/sq\\nnanopore/ont:\\n(genome size < 1G: preset2) -p 0 -k 15 -AS 2 -s 0.05 -L 5000\\n(genome size >= 1G: preset3) -p 19 -AS 2 -s 0.05 -L 5000\\npreset4/corrected/ccs: -p 21 -k 0 -AS 4 -K 0.05 -s 0.5"
     approximate_genome_size: "Approximate genome size (k/m/g suffix allowed) [0]"
     choose_best_depth: "Choose the best <float> depth from input reads(effective with -g) [50.0]"
     choose_longest_subread: "Choose the longest subread and drop reads shorter than <int> (5000 recommended for PacBio) [0]\\nNegative integer indicate tidying read names too, e.g. -5000."
-    kmer_psize_p: "Kmer psize, 0 <= p <= 23, [21]\\nk + p <= 25, seed is <k-mer>+<p-homopolymer-compressed>"
+    kmer_psize_seed: "Kmer psize, 0 <= p <= 23, [21]\\nk + p <= 25, seed is <k-mer>+<p-homopolymer-compressed>"
     filter_high_frequency: "Filter high frequency kmers, maybe repetitive, [1000.05]\\n>= 1000 and indexing >= (1 - 0.05) * total_kmers_count"
     min_length_alignment: "Min length of alignment, [2048]"
     min_matched_length: "Min matched length by kmer matching, [200]"
@@ -208,7 +211,7 @@ task Wtdbg2 {
     min_similarity_calculated: "Min similarity, calculated by kmer matched length / aligned length, [0.05]"
     min_read_depth: "Min read depth of a valid edge, [3]"
     quiet: "See -q"
-    verbose_can_multiple: "Verbose (can be multiple)"
+    verbose_be_multiple: "Verbose (can be multiple)"
     print_version_information: "Print version information and then exit"
     cpu: "See -t 0, default: all cores"
     see_i: "+\\nSee -i"

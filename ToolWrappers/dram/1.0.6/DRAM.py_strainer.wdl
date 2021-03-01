@@ -28,6 +28,9 @@ task DRAMpyStrainer {
       ~{if defined(completeness) then ("--completeness " +  '"' + completeness + '"') else ""} \
       ~{if defined(contamination) then ("--contamination " +  '"' + contamination + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_annotations: "annotations file to pull genes from (default: None)"
     input_fast_a: "fasta file to filter (default: None)"

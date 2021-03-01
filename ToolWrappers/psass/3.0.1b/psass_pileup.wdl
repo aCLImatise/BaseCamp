@@ -14,6 +14,9 @@ task PsassPileup {
       ~{if (output_file) then "--output-file" else ""} \
       ~{if (min_map_quality) then "--min-map-quality" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "TEXT:FILE    Reference file in fasta format, required with CRAM input files"
     output_file: "TEXT         Write to an output file instead of stdout"

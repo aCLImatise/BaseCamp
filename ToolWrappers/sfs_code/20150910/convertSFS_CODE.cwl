@@ -12,7 +12,7 @@ inputs:
     \ only first <#its> iterations.  Note: cannot use\nboth \"P\" and \"I\" options\
     \ (use \"P.I\" instead).  By\ndefault, a fasta style alignment of all individuals\
     \ across\nall loci and iterations will be printed to the screen."
-  type: File
+  type: File?
   inputBinding:
     prefix: --alignment
 - id: in_mk
@@ -32,7 +32,7 @@ inputs:
     \ a fixed difference (setting\n<OG_size> = -1 is uses the entire sample size).\n\
     Each MK table is printed in the following order:\n<PS> <PN> <FS> <FN>, where 'P'\
     \ refers to polymorphic,\n'F' fixed, 'S' synonymous and 'N' is nonsynonymous."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --MK
 - id: in_sfs
@@ -51,7 +51,7 @@ inputs:
     \ for true data, i.e. not when using\nOBS flag).  To print each iteration indepdently,\
     \ use 'ITS'\nflag (to print only a subset of iterations, include the\nnumber of\
     \ iterations [#its].\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --SFS
 - id: in_for_mdot
@@ -74,9 +74,10 @@ outputs:
     \ only first <#its> iterations.  Note: cannot use\nboth \"P\" and \"I\" options\
     \ (use \"P.I\" instead).  By\ndefault, a fasta style alignment of all individuals\
     \ across\nall loci and iterations will be printed to the screen."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_alignment)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - convertSFS_CODE

@@ -18,6 +18,9 @@ task SerobaRunSerotyping {
       ~{if (no_clean) then "--noclean" else ""} \
       ~{if defined(coverage) then ("--coverage " +  '"' + coverage + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_clean: "Do not clean up intermediate files (assemblies, ariba\\nreport)"
     coverage: "threshold for k-mer coverage of the reference sequence\\n, default = 20\\n"

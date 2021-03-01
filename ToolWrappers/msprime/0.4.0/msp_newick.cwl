@@ -3,7 +3,7 @@ id: msp_newick.cwl
 inputs:
 - id: in_precision
   doc: "The number of decimal places in branch lengths\n"
-  type: double
+  type: double?
   inputBinding:
     prefix: --precision
 - id: in_history_file
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - msp

@@ -18,13 +18,14 @@ inputs:
     position: 2
 - id: in_gene_table_dot_txt
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 3
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pizzly_flatten_json.py

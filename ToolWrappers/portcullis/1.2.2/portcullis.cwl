@@ -3,7 +3,7 @@ id: portcullis.cwl
 inputs:
 - id: in_print_extra_information
   doc: '[ --verbose ]      Print extra information'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_junctions
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - portcullis

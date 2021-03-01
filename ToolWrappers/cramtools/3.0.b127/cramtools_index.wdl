@@ -16,6 +16,9 @@ task CramtoolsIndex {
       ~{if (input_file) then "--input-file" else ""} \
       ~{if (log_level) then "--log-level" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index_file: "Write index to this file."
     index_format: "Choose between BAM index (bai) and CRAM index (crai).  (default: CRAI)"

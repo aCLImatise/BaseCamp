@@ -4,28 +4,28 @@ inputs:
 - id: in_fig_dir
   doc: "Path to the output figure directory.\nBy default, the figure is only shown\n\
     but not saved."
-  type: File
+  type: File?
   inputBinding:
     prefix: --figdir
 - id: in_interactive
   doc: "Interactively shows plots and asks\nfor thresholds."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --interactive
 - id: in_plot
   doc: "Shows plots of library composition\nand 3C events abundance."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --plot
 - id: in_prefix
   doc: "If the library has a name, it will\nbe shown on the figures."
-  type: string
+  type: string?
   inputBinding:
     prefix: --prefix
 - id: in_thresholds
   doc: "Manually defines integer values for\nthe thresholds in the order\n[uncut,\
     \ loop]. Reads above those values\nare kept.\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --thresholds
 - id: in_input
@@ -46,9 +46,10 @@ outputs:
 - id: out_fig_dir
   doc: "Path to the output figure directory.\nBy default, the figure is only shown\n\
     but not saved."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_fig_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicstuff

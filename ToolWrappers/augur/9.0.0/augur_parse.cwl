@@ -3,17 +3,17 @@ id: augur_parse.cwl
 inputs:
 - id: in_sequences
   doc: 'sequences in fasta or VCF format (default: None)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --sequences
 - id: in_output_sequences
   doc: 'output sequences file (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-sequences
 - id: in_output_metadata
   doc: 'output metadata file (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-metadata
 - id: in_fields
@@ -29,13 +29,13 @@ inputs:
     prefix: --prettify-fields
 - id: in_separator
   doc: 'separator of fasta header (default: |)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --separator
 - id: in_fix_dates
   doc: "attempt to parse non-standard dates and output them in\nstandard YYYY-MM-DD\
     \ format (default: None)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --fix-dates
 outputs:
@@ -44,14 +44,15 @@ outputs:
   type: stdout
 - id: out_output_sequences
   doc: 'output sequences file (default: None)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_sequences)
 - id: out_output_metadata
   doc: 'output metadata file (default: None)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_metadata)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - augur

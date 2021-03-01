@@ -4,6 +4,9 @@ task RunDadaPairedR {
   command <<<
     run_dada_paired_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

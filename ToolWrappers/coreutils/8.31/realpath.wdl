@@ -24,6 +24,9 @@ task Realpath {
       ~{if (no_symlinks) then "--no-symlinks" else ""} \
       ~{if (end_output_line) then "--zero" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     canonicalize_existing: "all components of the path must exist"
     canonicalize_missing: "no path components need exist or be a directory"

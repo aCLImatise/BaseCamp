@@ -10,6 +10,9 @@ task Vcfglxgt {
       ~{vcf_file} \
       ~{if (fix_null_genotypes) then "--fix-null-genotypes" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fix_null_genotypes: "only apply to null and partly-null genotypes"
     vcf_file: ""

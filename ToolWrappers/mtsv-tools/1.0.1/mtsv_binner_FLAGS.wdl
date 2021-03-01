@@ -8,6 +8,9 @@ task MtsvbinnerFLAGS {
     mtsv_binner FLAGS \
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: ""
   }

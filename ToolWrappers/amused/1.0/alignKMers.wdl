@@ -18,6 +18,9 @@ task AlignKMers {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _unaligned_kmers: "= unaligned k-mers"
     minimum_overlap_align: "= minimum overlap to align [default=3]"

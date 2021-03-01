@@ -3,27 +3,27 @@ id: amptk_show.cwl
 inputs:
 - id: in_input
   doc: Input FASTQ file (.demux.fq)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input
 - id: in_quality_trim
   doc: Quality trim reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quality_trim
 - id: in_max_ee
   doc: 'maxEE threshold for quality. Default: 1.0'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --maxee
 - id: in_length
   doc: 'truncation length for trimming: Default: 250'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --length
 - id: in_out
   doc: Output FASTQ file name (--quality_trim only)
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_arguments
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Output FASTQ file name (--quality_trim only)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - amptk

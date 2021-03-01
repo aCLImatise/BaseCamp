@@ -7,7 +7,7 @@ task HicAggregateContacts {
     File? bed
     Int? bed_two
     Int? number_of_bins
-    String? transform
+    Boolean? transform
     String? avg_type
     String? dpi
     File? outfile_prefix_matrix
@@ -32,7 +32,7 @@ task HicAggregateContacts {
       ~{if defined(bed) then ("--BED " +  '"' + bed + '"') else ""} \
       ~{if defined(bed_two) then ("--BED2 " +  '"' + bed_two + '"') else ""} \
       ~{if defined(number_of_bins) then ("--numberOfBins " +  '"' + number_of_bins + '"') else ""} \
-      ~{if defined(transform) then ("--transform " +  '"' + transform + '"') else ""} \
+      ~{if (transform) then "--transform" else ""} \
       ~{if defined(avg_type) then ("--avgType " +  '"' + avg_type + '"') else ""} \
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
       ~{if defined(outfile_prefix_matrix) then ("--outFilePrefixMatrix " +  '"' + outfile_prefix_matrix + '"') else ""} \
@@ -48,13 +48,16 @@ task HicAggregateContacts {
       ~{if defined(vmin) then ("--vMin " +  '"' + vmin + '"') else ""} \
       ~{if defined(vmax) then ("--vMax " +  '"' + vmax + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "Path of the Hi-C matrix to plot."
     out_filename: "File name to save the image."
     bed: "Interactions between regions in this BED file are"
     bed_two: "Optional second BED file. Interactions between regions\\nin first and second BED file are plotted."
     number_of_bins: "Number of bins to include in the submatrix. The bed\\nregions will be centered between half number of bins\\nand the other half number of bins."
-    transform: "Type of transformation for the matrix. The options are\\n\\\"none\\\", \\\"total-counts\\\", \\\"z-score\\\" and \\\"obs/exp\\\". If\\ntotal counts are selected, the sub-matrix values are\\ndivided by the total counts for normalization. If\\nz-score or obs/exp are selected, the Hi-C matrix is\\nconverted into a z-score or observed / expected\\nmatrix."
+    transform: "{total-counts,z-score,obs/exp,none}\\nType of transformation for the matrix. The options are\\n\\\"none\\\", \\\"total-counts\\\", \\\"z-score\\\" and \\\"obs/exp\\\". If\\ntotal counts are selected, the sub-matrix values are\\ndivided by the total counts for normalization. If\\nz-score or obs/exp are selected, the Hi-C matrix is\\nconverted into a z-score or observed / expected\\nmatrix."
     avg_type: "Type of average used in the output matrix. Options are\\nmean and median. Default is median."
     dpi: "Optional parameter: Resolution for the image in case\\ntheoutput is a raster graphics image (e.g png, jpg)."
     outfile_prefix_matrix: "If this option is set, the values underlying the\\noutput matrix will be saved to tab-delimited tables\\n(one per chromosome) using the indicated prefix, for\\nexample TSS_to_TSS_chrX.tab. If clustering is\\nperformed, the values are saved including the\\ncluster_id in the file TSS_to_TSS_chrX_cluster_1.tab."

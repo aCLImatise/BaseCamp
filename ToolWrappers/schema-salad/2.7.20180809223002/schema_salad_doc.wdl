@@ -10,6 +10,9 @@ task Schemasaladdoc {
       ~{if defined(redirect) then ("--redirect " +  '"' + redirect + '"') else ""} \
       ~{if defined(only) then ("--only " +  '"' + only + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     redirect: ""
     only: ""

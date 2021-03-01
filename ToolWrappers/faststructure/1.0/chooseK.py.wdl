@@ -8,6 +8,9 @@ task ChooseKpy {
     chooseK_py \
       ~{python}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     python: ""
   }

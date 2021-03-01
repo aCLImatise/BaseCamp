@@ -16,6 +16,9 @@ task RnftoolsDwgsim2rnf {
       ~{if defined(fa_idx) then ("--faidx " +  '"' + fa_idx + '"') else ""} \
       ~{if defined(genome_id) then ("--genome-id " +  '"' + genome_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dwg_sim_prefix: "Prefix for DwgSim."
     estimate_unknown: "Estimate unknown values."

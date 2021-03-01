@@ -3,12 +3,12 @@ id: rtg_extract.cwl
 inputs:
 - id: in_header
   doc: print out header also
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --header
 - id: in_header_only
   doc: out header only
-  type: string
+  type: string?
   inputBinding:
     prefix: --header-only
 - id: in_file
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rtg

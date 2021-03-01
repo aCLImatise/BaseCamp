@@ -8,6 +8,9 @@ task FastqNotEmpty {
     fastq_not_empty \
       ~{fast_q_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q_file: ""
   }

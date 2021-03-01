@@ -25,8 +25,8 @@ task RunBESST {
     Boolean? faster_ilp
     Boolean? print_scores
     Int? kmer_size_used
-    Int? usted_creating_graph
-    File? path_output_besst
+    Int? mmer_usted_creating
+    File? path_output_directory
     Boolean? deactivate_sequencing_duplicates
     Boolean? parallellize_work_load
     Boolean? devel
@@ -65,8 +65,8 @@ task RunBESST {
       ~{if (faster_ilp) then "--FASTER_ILP" else ""} \
       ~{if (print_scores) then "--print_scores" else ""} \
       ~{if defined(kmer_size_used) then ("-K " +  '"' + kmer_size_used + '"') else ""} \
-      ~{if defined(usted_creating_graph) then ("-M " +  '"' + usted_creating_graph + '"') else ""} \
-      ~{if defined(path_output_besst) then ("-o " +  '"' + path_output_besst + '"') else ""} \
+      ~{if defined(mmer_usted_creating) then ("-M " +  '"' + mmer_usted_creating + '"') else ""} \
+      ~{if defined(path_output_directory) then ("-o " +  '"' + path_output_directory + '"') else ""} \
       ~{if (deactivate_sequencing_duplicates) then "-d" else ""} \
       ~{if (parallellize_work_load) then "-q" else ""} \
       ~{if (devel) then "-devel" else ""} \
@@ -76,6 +76,9 @@ task RunBESST {
       ~{if (bfs_traversal) then "--bfs_traversal" else ""} \
       ~{if defined(max_contig_overlap) then ("-max_contig_overlap " +  '"' + max_contig_overlap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     deactivate_pathfinder_module: "Deactivate pathfinder module for including smaller"
     fasta_file_containing: "Fasta file containing contigs."
@@ -100,8 +103,8 @@ task RunBESST {
     faster_ilp: "Faster but worse performing heuristic solution to\\nsolving ILPs. May be used if BESST is too slow.\\nHowever, lowering --iter is usually more effective to\\nreduce scaffolding time."
     print_scores: "Print BESST scores on edges in the Scaffolding graph."
     kmer_size_used: "k-mer size used in de brujin graph for obtaining\\ncontigs in assembly, default 50"
-    usted_creating_graph: "m-mer usted for creating connection graph. Should be\\nset lower than k-mer size"
-    path_output_besst: "Path to output directory. BESST will create a folder\\nnamed 'BESST_output' in the directory given by the\\npath."
+    mmer_usted_creating: "m-mer usted for creating connection graph. Should be\\nset lower than k-mer size"
+    path_output_directory: "Path to output directory. BESST will create a folder\\nnamed 'BESST_output' in the directory given by the\\npath."
     deactivate_sequencing_duplicates: "Deactivate sequencing duplicates detection"
     parallellize_work_load: "Parallellize work load of path finder module in case\\nof multiple processors available."
     devel: "Run in development mode (bug checking and memory usage\\netc.)"
@@ -115,7 +118,7 @@ task RunBESST {
   }
   output {
     File out_stdout = stdout()
-    File out_path_output_besst = "${in_path_output_besst}"
+    File out_path_output_directory = "${in_path_output_directory}"
     File out_separate_repeats = "${in_separate_repeats}"
   }
 }

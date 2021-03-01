@@ -1,0 +1,179 @@
+!Command
+command:
+- hicCorrectMatrix
+- correct
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  - -m
+  description: "Name of the Hi-C matrix to correct in .h5 format.\n(default: None)"
+  args: !SimpleFlagArg
+    name: MATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: "File name to save the resulting matrix. The output is\na .h5 file.\
+    \ (default: None)"
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --correctionMethod
+  description: "Method to be used for matrix correction. It can be set\nto KR or ICE\
+    \ (Default: KR)."
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --filterThreshold
+  description: "FILTERTHRESHOLD, -t FILTERTHRESHOLD FILTERTHRESHOLD\nRemoves bins\
+    \ of low or large coverage. Usually these\nbins do not contain valid Hi-C data\
+    \ or represent\nregions that accumulate reads and thus must be\ndiscarded. Use\
+    \ hicCorrectMatrix diagnostic_plot to\nidentify the modified z-value thresholds.\
+    \ A lower and\nupper threshold are required separated by space, e.g.\n--filterThreshold\
+    \ -1.5 5. Applied only for ICE!\n(default: None)"
+  args: !SimpleFlagArg
+    name: FILTERTHRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --iterNum
+  - -n
+  description: "Number of iterations to compute.only for ICE!\n(Default: 500)."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --inflationCutoff
+  description: "Value corresponding to the maximum number of times a\nbin can be scaled\
+    \ up during the iterative correction.\nFor example, an inflation cutoff of 3 will\
+    \ filter out\nall bins that were expanded 3 times or more during the\niterative\
+    \ correctionself.Only for ICE! (default: None)"
+  args: !SimpleFlagArg
+    name: INFLATIONCUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - --transCutoff
+  - -transcut
+  description: "Clip high counts in the top -transcut trans regions\n(i.e. between\
+    \ chromosomes). A usual value is 0.05.\nOnly for ICE! (default: None)"
+  args: !SimpleFlagArg
+    name: TRANSCUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - --sequencedCountCutoff
+  description: "Each bin receives a value indicating the fraction that\nis covered\
+    \ by reads. A cutoff of 0.5 will discard all\nthose bins that have less than half\
+    \ of the bin\ncovered. Only for ICE! (default: None)"
+  args: !SimpleFlagArg
+    name: SEQUENCEDCOUNTCUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosomes
+  description: "List of chromosomes to be included in the iterative\ncorrection. The\
+    \ order of the given chromosomes will be\nthen kept for the resulting corrected\
+    \ matrix (default:\nNone)"
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+- !Flag
+  optional: true
+  synonyms:
+  - --skipDiagonal
+  - -s
+  description: "If set, diagonal counts are not included. Only for\nICE! (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --perchr
+  description: "Normalize each chromosome separately. This is useful\nfor samples\
+    \ from cells with uneven number of\nchromosomes and/or translocations. (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: 'Print processing status. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-1.2'
+  description: ''
+  args: !SimpleFlagArg
+    name: '5'
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicCorrectMatrix correct --matrix hic_matrix.h5 --filterThreshold\
+  \ -1.2 5 (Only if ICE)-out corrected_matrix.h5 \n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n\nRequired arguments:\n  --matrix\
+  \ MATRIX, -m MATRIX\n                        Name of the Hi-C matrix to correct\
+  \ in .h5 format.\n                        (default: None)\n  --outFileName OUTFILENAME,\
+  \ -o OUTFILENAME\n                        File name to save the resulting matrix.\
+  \ The output is\n                        a .h5 file. (default: None)\n\nOptional\
+  \ arguments:\n  --correctionMethod STR\n                        Method to be used\
+  \ for matrix correction. It can be set\n                        to KR or ICE (Default:\
+  \ KR).\n  --filterThreshold FILTERTHRESHOLD FILTERTHRESHOLD, -t FILTERTHRESHOLD\
+  \ FILTERTHRESHOLD\n                        Removes bins of low or large coverage.\
+  \ Usually these\n                        bins do not contain valid Hi-C data or\
+  \ represent\n                        regions that accumulate reads and thus must\
+  \ be\n                        discarded. Use hicCorrectMatrix diagnostic_plot to\n\
+  \                        identify the modified z-value thresholds. A lower and\n\
+  \                        upper threshold are required separated by space, e.g.\n\
+  \                        --filterThreshold -1.5 5. Applied only for ICE!\n     \
+  \                   (default: None)\n  --iterNum INT, -n INT\n                 \
+  \       Number of iterations to compute.only for ICE!\n                        (Default:\
+  \ 500).\n  --inflationCutoff INFLATIONCUTOFF\n                        Value corresponding\
+  \ to the maximum number of times a\n                        bin can be scaled up\
+  \ during the iterative correction.\n                        For example, an inflation\
+  \ cutoff of 3 will filter out\n                        all bins that were expanded\
+  \ 3 times or more during the\n                        iterative correctionself.Only\
+  \ for ICE! (default: None)\n  --transCutoff TRANSCUTOFF, -transcut TRANSCUTOFF\n\
+  \                        Clip high counts in the top -transcut trans regions\n \
+  \                       (i.e. between chromosomes). A usual value is 0.05.\n   \
+  \                     Only for ICE! (default: None)\n  --sequencedCountCutoff SEQUENCEDCOUNTCUTOFF\n\
+  \                        Each bin receives a value indicating the fraction that\n\
+  \                        is covered by reads. A cutoff of 0.5 will discard all\n\
+  \                        those bins that have less than half of the bin\n      \
+  \                  covered. Only for ICE! (default: None)\n  --chromosomes CHROMOSOMES\
+  \ [CHROMOSOMES ...]\n                        List of chromosomes to be included\
+  \ in the iterative\n                        correction. The order of the given chromosomes\
+  \ will be\n                        then kept for the resulting corrected matrix\
+  \ (default:\n                        None)\n  --skipDiagonal, -s    If set, diagonal\
+  \ counts are not included. Only for\n                        ICE! (default: False)\n\
+  \  --perchr              Normalize each chromosome separately. This is useful\n\
+  \                        for samples from cells with uneven number of\n        \
+  \                chromosomes and/or translocations. (default: False)\n  --verbose\
+  \             Print processing status. (default: False)\n  --version           \
+  \  show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

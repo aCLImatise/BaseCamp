@@ -3,57 +3,57 @@ id: augur_filter.cwl
 inputs:
 - id: in_sequences
   doc: 'sequences in fasta or VCF format (default: None)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --sequences
 - id: in_metadata
   doc: 'metadata associated with sequences (default: None)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --metadata
 - id: in_min_date
   doc: "minimal cutoff for date; may be specified as an Augur-\nstyle numeric date\
     \ (with the year as the integer part)\nor YYYY-MM-DD (default: None)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-date
 - id: in_max_date
   doc: "maximal cutoff for date; may be specified as an Augur-\nstyle numeric date\
     \ (with the year as the integer part)\nor YYYY-MM-DD (default: None)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-date
 - id: in_min_length
   doc: 'minimal length of the sequences (default: None)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-length
 - id: in_non_nucleotide
   doc: "exclude sequences that contain illegal characters\n(default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --non-nucleotide
 - id: in_exclude
   doc: "file with list of strains that are to be excluded\n(default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --exclude
 - id: in_include
   doc: "file with list of strains that are to be included\nregardless of priorities\
     \ or subsampling (default:\nNone)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --include
 - id: in_priority
   doc: "file with list of priority scores for sequences\n(strain priority) (default:\
     \ None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --priority
 - id: in_sequences_per_group
   doc: "subsample to no more than this number of sequences per\ncategory (default:\
     \ None)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --sequences-per-group
 - id: in_group_by
@@ -66,7 +66,7 @@ inputs:
 - id: in_subsample_seed
   doc: "random number generator seed to allow reproducible\nsub-sampling (with same\
     \ input data). Can be number or\nstring. (default: None)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --subsample-seed
 - id: in_exclude_where
@@ -87,12 +87,12 @@ inputs:
 - id: in_query
   doc: "Filter samples by attribute. Uses Pandas Dataframe\nquerying, see https://pandas.pydata.org/pandas-\n\
     docs/stable/user_guide/indexing.html#indexing-query\nfor syntax. (default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --query
 - id: in_output
   doc: "output file (default: None)\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -101,9 +101,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "output file (default: None)\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - augur

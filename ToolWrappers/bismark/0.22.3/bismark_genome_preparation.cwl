@@ -3,7 +3,7 @@ id: bismark_genome_preparation.cwl
 inputs:
 - id: in_verbose
   doc: Print verbose output for more details or debugging.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_path_to_aligner
@@ -11,13 +11,13 @@ inputs:
     \ system\n(depending on which aligner/indexer you intend to use; please note that\
     \ this\nis the folder and not any executable). Unless this path is specified,\
     \ it is\nassumed that the aligner in question (Bowtie 2/HISAT2) is in the PATH."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --path_to_aligner
 - id: in_bowtie_two
   doc: "This will create bisulfite indexes for use with Bowtie 2. Recommended for\
     \ most bisulfite\nsequencing applications (Default: ON)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bowtie2
 - id: in_his_at_two
@@ -25,7 +25,7 @@ inputs:
     \ this is\nstill unchartered territory, and only recommended for specialist applications\
     \ such as\nRNA-methylation analyses or SLAM-seq type applications (see also: --slam).\
     \ (Default: OFF)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --hisat2
 - id: in_parallel
@@ -34,7 +34,7 @@ inputs:
     \ top and bottom strand\nseparately), so e.g. '--parallel 4' will use 8 threads\
     \ in total. Please also see --large-index\nfor parallel processing of VERY LARGE\
     \ genomes (e.g. the axolotl)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --parallel
 - id: in_single_fast_a
@@ -46,7 +46,7 @@ inputs:
     \ files; the operating system can\nonly handle lists up to a certain length, and\
     \ some newly assembled\ngenomes may contain 20000-500000 contigs of scaffold files\
     \ which do exceed\nthis list length limit)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --single_fasta
 - id: in_genomic_composition
@@ -54,7 +54,7 @@ inputs:
     and write the genomic composition table 'genomic_nucleotide_frequencies.txt' to\
     \ the\ngenome folder. This may be useful later on when using bam2nuc or the Bismark\
     \ option\n--nucleotide_coverage."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --genomic_composition
 - id: in_slam
@@ -64,14 +64,14 @@ inputs:
     \ sequences, but this might change at some point. This means\nthat a genome prepared\
     \ in --slam mode is currently indistinguishable from a true Bisulfite Genome,\n\
     so please make sure you name the genome folder appropriately to avoid confusion."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --slam
 - id: in_large_index
   doc: "Force generated index to be 'large', even if reference has fewer than 4 billion\
     \ nucleotides. At the time\nof writing this is required for parallel processing\
     \ of VERY LARGE genomes (e.g. the axolotl)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --large-index
 - id: in_arguments
@@ -83,6 +83,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bismark_genome_preparation

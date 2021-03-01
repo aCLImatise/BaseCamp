@@ -16,6 +16,9 @@ task GcloudAppServices {
       ~{list} \
       ~{set_traffic}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     browse: "Open the specified service(s) in a browser."
     delete: "Delete services in the current project."

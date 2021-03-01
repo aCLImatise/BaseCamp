@@ -3,46 +3,46 @@ id: initializeDatasource.cwl
 inputs:
 - id: in_ds_type
   doc: datasource type.  Type of datasource to create.
-  type: string
+  type: string?
   inputBinding:
     prefix: --ds_type
 - id: in_ds_file
   doc: datasource filename.  Headers must be on the first line.  This is the source
     file that contains annotation data.
-  type: File
+  type: File?
   inputBinding:
     prefix: --ds_file
 - id: in_name
   doc: datasource name. Plain name for the datasource.  E.g. 'MutSig_Published_Results'
-  type: string
+  type: string?
   inputBinding:
     prefix: --name
 - id: in_db_dir
   doc: Main datasource directory that contains other datasources.  I.e. the destination
     directory for the newly created datasource.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --dbDir
 - id: in_ds_folder_name
   doc: Name of the folder that should appear in dbDir
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --ds_foldername
 - id: in_genome_build
   doc: Genome build.  For example, hg19.
-  type: string
+  type: string?
   inputBinding:
     prefix: --genome_build
 - id: in_index_columns
   doc: Comma separated list of index columns.  MUST be the name of the columns and
     each row must have unique values across all index columns.
-  type: string
+  type: string?
   inputBinding:
     prefix: --index_columns
 - id: in_annotation_columns
   doc: Comma separated list of annotation columns. MUST be the subset of the columns.  This
     (optional) parameter is specified for indexed_tsv only.
-  type: string
+  type: string?
   inputBinding:
     prefix: --annotation_columns
 - id: in_match_mode
@@ -121,13 +121,14 @@ inputs:
     \ --ds_type indexed_vcf --ds_file ESP6500SI-V2.vcf --name ESP --version 6500SI-V2\
     \ --dbDir ~/oncotest_ESP6500SI-V2 --genome_build hg19 --match_mode exact --ds_foldername\
     \ ~/ESP6500SI-V2_exact\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --match_mode
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - initializeDatasource

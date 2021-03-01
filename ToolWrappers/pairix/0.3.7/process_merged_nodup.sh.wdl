@@ -23,7 +23,7 @@ task ProcessMergedNodupsh {
     Int? v
     Boolean? delimiter_space_instead
     Boolean? query_region_string
-    Int? skip_first_int
+    Int? skip_first_lines
     String? symbol_query_region
     Boolean? zerobased_coordinate
     Boolean? print_only_lines
@@ -31,7 +31,7 @@ task ProcessMergedNodupsh {
     Boolean? print_only_region
     Boolean? only_check_occurs
     Boolean? list_chromosome_names
-    Boolean? autoflip_query_exist
+    Boolean? autoflip_query_pair
     Boolean? nrugmcszbdfimstokt
     String pair_ix
     String sort
@@ -63,7 +63,7 @@ task ProcessMergedNodupsh {
       ~{if defined(v) then ("-v " +  '"' + v + '"') else ""} \
       ~{if (delimiter_space_instead) then "-T" else ""} \
       ~{if (query_region_string) then "-L" else ""} \
-      ~{if defined(skip_first_int) then ("-S " +  '"' + skip_first_int + '"') else ""} \
+      ~{if defined(skip_first_lines) then ("-S " +  '"' + skip_first_lines + '"') else ""} \
       ~{if defined(symbol_query_region) then ("-w " +  '"' + symbol_query_region + '"') else ""} \
       ~{if (zerobased_coordinate) then "-0" else ""} \
       ~{if (print_only_lines) then "-H" else ""} \
@@ -71,9 +71,12 @@ task ProcessMergedNodupsh {
       ~{if (print_only_region) then "-W" else ""} \
       ~{if (only_check_occurs) then "-Y" else ""} \
       ~{if (list_chromosome_names) then "-l" else ""} \
-      ~{if (autoflip_query_exist) then "-a" else ""} \
+      ~{if (autoflip_query_pair) then "-a" else ""} \
       ~{if (nrugmcszbdfimstokt) then "-nrugMcszbdfimSTokt" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_leading_blanks: "Ignore leading blanks"
     check_input_sorted: "Check whether input is sorted"
@@ -96,7 +99,7 @@ task ProcessMergedNodupsh {
     v: "end2 column; can be identical to '-u' [null or identical to the start2 specified by -u]"
     delimiter_space_instead: "delimiter is space instead of tab."
     query_region_string: "query region is not a string but a file listing query regions"
-    skip_first_int: "skip first INT lines [0]"
+    skip_first_lines: "skip first INT lines [0]"
     symbol_query_region: "symbol for query region separator [|]"
     zerobased_coordinate: "zero-based coordinate"
     print_only_lines: "print only the header lines"
@@ -104,7 +107,7 @@ task ProcessMergedNodupsh {
     print_only_region: "print only the region split character"
     only_check_occurs: "Only check if the file is a triangle (i.e. a chromosome pair occurs only in one direction (e.g. if chr1|chr2 exists, chr2|chr1 doesn't))"
     list_chromosome_names: "list chromosome names"
-    autoflip_query_exist: "autoflip query when the matching chromosome pair doesn't exist"
+    autoflip_query_pair: "autoflip query when the matching chromosome pair doesn't exist"
     nrugmcszbdfimstokt: ""
     pair_ix: ""
     sort: ""

@@ -10,6 +10,9 @@ task Bbstatssh {
       ~{stats_dots_h} \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stats_dots_h: ""
     in: ""

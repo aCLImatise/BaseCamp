@@ -10,6 +10,9 @@ task PlotQualitiespyInputFastx {
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
       ~{if defined(w) then ("-w " +  '"' + w + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     w: ""

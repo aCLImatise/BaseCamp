@@ -12,6 +12,9 @@ task StrainestMap2snp {
       ~{mapped} \
       ~{var_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: ""
     mapped: ""

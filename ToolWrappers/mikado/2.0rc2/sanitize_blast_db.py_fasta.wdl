@@ -12,6 +12,9 @@ task SanitizeBlastDbpyFasta {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(ml) then ("-ml " +  '"' + ml + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     ml: ""

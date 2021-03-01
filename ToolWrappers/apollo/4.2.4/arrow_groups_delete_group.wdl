@@ -8,6 +8,9 @@ task ArrowGroupsDeleteGroup {
     arrow groups delete_group \
       ~{group}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     group: ""
   }

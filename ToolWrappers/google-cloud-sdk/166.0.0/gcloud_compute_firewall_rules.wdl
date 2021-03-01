@@ -16,6 +16,9 @@ task GcloudComputeFirewallrules {
       ~{list} \
       ~{update}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create a Google Compute Engine firewall rule."
     delete: "Delete Google Compute Engine firewall rules."

@@ -4,6 +4,9 @@ task MergeBamWithSameSMpl {
   command <<<
     mergeBamWithSameSM_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

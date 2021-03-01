@@ -16,6 +16,9 @@ task OverlapStoreIndexer {
       ~{if (when_testing_also) then "-f" else ""} \
       ~{if (delete) then "-delete" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_overlap_store: "path to overlap store to build the final index for"
     number_slices_used: "number of slices used in bucketizing/sorting"

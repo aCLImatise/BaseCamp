@@ -20,6 +20,9 @@ task Seealso {
       ~{if (show_embassy) then "-showembassy" else ""} \
       ~{if (colon) then "-colon" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explode: "boolean    [N] The groups that EMBOSS applications\\nbelong to have two forms, exploded and not\\nexploded. The exploded group names are more\\nnumerous and often vaguely phrased than the\\nnon-exploded ones. The exploded names are\\nformed from definitions of the group names\\nthat start like NAME1:NAME2 and which are\\nthen expanded into many combinations of the\\nnames as: 'NAME1', 'NAME2', 'NAME1 NAME2',\\nNAME2 NAME1'. The non-expanded names are\\nsimply like: 'NAME1 NAME2'.\\nUsing expanded group names will find many\\nmore programs which share at least some of\\nthe expanded names than using the\\nnon-exploded names and so you will get more\\nprograms reported as sharing a similar\\nfunction than you will if you specify that\\nyou wish to use non-exploded names"
     outfile: "outfile    [stdout] Output file name"

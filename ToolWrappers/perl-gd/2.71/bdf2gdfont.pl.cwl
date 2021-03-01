@@ -3,7 +3,7 @@ id: bdf2gdfont.pl.cwl
 inputs:
 - id: in_hlucidatypewriterboldrnormalsansmiso_
   doc: '&H-LucidaTypewriter-Bold-R-Normal-Sans-18-180-75-75-M-110-ISO8859-'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -B
 - id: in_gd_dot
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bdf2gdfont.pl

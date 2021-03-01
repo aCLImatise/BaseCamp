@@ -22,6 +22,9 @@ task MashtreeWrapperDeprecatedpl {
       ~{if (seed) then "--seed" else ""} \
       ~{if (save_sketches) then "--save-sketches" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_matrix: "''   Output file for distance matrix"
     reps: "0    How many bootstrap repetitions to run;\\nIf zero, no bootstrapping.\\nBootstrapping will only work on compressed fastq\\nfiles."

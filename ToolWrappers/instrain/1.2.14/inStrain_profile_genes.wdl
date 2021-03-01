@@ -16,6 +16,9 @@ task InStrainProfileGenes {
       ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene_file: "Path to prodigal .fna genes file. If file ends in .gb\\nor .gbk, will treat as a genbank file (EXPERIMENTAL;\\nthe name of the gene must be in the gene qualifier)\\n(default: None)"
     is: "an inStrain profile object (default: None)"

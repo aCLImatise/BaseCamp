@@ -44,6 +44,9 @@ task PTModel {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_positive: "*            Input file with positive examples (valid formats: 'idXML')"
     in_negative: "*            Input file with negative examples (valid formats: 'idXML')"

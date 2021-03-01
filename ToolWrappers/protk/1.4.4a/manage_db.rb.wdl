@@ -10,6 +10,9 @@ task ManageDbrb {
       ~{var_command} \
       ~{dbname}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_command: ""
     dbname: ""

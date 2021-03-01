@@ -3,7 +3,7 @@ id: anvi_pan_genome.cwl
 inputs:
 - id: in_genomes_storage
   doc: Anvi'o genomes storage file
-  type: File
+  type: File?
   inputBinding:
     prefix: --genomes-storage
 - id: in_genome_names
@@ -11,14 +11,14 @@ inputs:
     \ included in your analysis. You can\nprovide these names as a comma-separated\
     \ list of\nnames, or you can put them in a file, where you have a\nsingle genome\
     \ name in each line, and provide the file\npath."
-  type: File
+  type: File?
   inputBinding:
     prefix: --genome-names
 - id: in_skip_alignments
   doc: "By default, anvi'o attempts to align amino acid\nsequences in each gene cluster\
     \ using multiple sequnce\nalignment via muscle. You can use this flag to skip\n\
     that step and be upset later."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip-alignments
 - id: in_skip_homogeneity
@@ -26,7 +26,7 @@ inputs:
     \ cluster, given that they are\naligned. You can use this flag to have anvi'o\
     \ skip\nhomogeneity calculations. Anvi'o will ignore this flag\nif you decide\
     \ to skip alignments"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip-homogeneity
 - id: in_quick_homogeneity
@@ -35,13 +35,13 @@ inputs:
     you can tell anvi'o to skip horizontal geometric\nhomogeneity calculations. It\
     \ will be less accurate but\nquicker. Anvi'o will ignore this flag if you skip\n\
     homogeneity calculations or alignments all together."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quick-homogeneity
 - id: in_align_with
   doc: "The multiple sequence alignment program to use when\nmultiple sequence alignment\
     \ is necessary. To see all\navailable options, use the flag `--list-aligners`."
-  type: string
+  type: string?
   inputBinding:
     prefix: --align-with
 - id: in_exclude_partial_gene_calls
@@ -51,13 +51,13 @@ inputs:
     \ anvi'o to exclude partial\ngene calls from the analysis (whether a gene call\
     \ is\npartial or not is an information that comes directly\nfrom the gene caller\
     \ used to identify genes during the\ngeneration of the contigs database)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --exclude-partial-gene-calls
 - id: in_use_ncbi_blast
   doc: "This program uses DIAMOND by default, however, if you\nlike, you can use good\
     \ ol' blastp from NCBI instead."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use-ncbi-blast
 - id: in_min_bit
@@ -72,7 +72,7 @@ inputs:
     \ to 0 if (1) they match over a very short\nstretch compared even to the length\
     \ of the shorter\namino acid sequence or (2) the match betwen sequence\nidentity\
     \ is low. The default is 0.5."
-  type: long
+  type: long?
   inputBinding:
     prefix: --minbit
 - id: in_mcl_inflation
@@ -80,7 +80,7 @@ inputs:
     \ the identification of the gene\nclusters. More information on this parameter\
     \ and it's\neffect on cluster granularity is here:\n(http://micans.org/mcl/man/mclfaq.html#faq7.2).\
     \ The\ndefault is 2."
-  type: double
+  type: double?
   inputBinding:
     prefix: --mcl-inflation
 - id: in_min_occurrence
@@ -90,7 +90,7 @@ inputs:
     \ analysis. The default is 1,\nwhich means everything will be kept. If you want\
     \ to\nremove singletons, set it to 2, if you want to remove\ndoubletons as well,\
     \ set it to 3, and so on."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-occurrence
 - id: in_min_percent_identity
@@ -102,7 +102,7 @@ inputs:
     \ of those involved), we\nsuggest you rely on 'minbit' parameter. But you know\n\
     what? Maybe you shouldn't listen to anyone, and\nexperiment on your own! The default\
     \ is 0 percent."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-percent-identity
 - id: in_sensitive
@@ -111,14 +111,14 @@ inputs:
     \ longer. But, hey, if you are doing it for\nyour final analysis, maybe it should\
     \ take longer and\nbe more accurate. This flag is only relevant if you\nare running\
     \ DIAMOND."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sensitive
 - id: in_project_name
   doc: "Name of the project. Please choose a short but\ndescriptive name (so anvi'o\
     \ can use it whenever she\nneeds to name an output file, or add a new table in\
     \ a\ndatabase, or name her first born)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --project-name
 - id: in_description
@@ -126,17 +126,17 @@ inputs:
     \ use Markdwon syntax. The\ndescription text will be rendered and shown in all\n\
     relevant interfaces, including the anvi'o interactive\ninterface, or anvi'o summary\
     \ outputs."
-  type: File
+  type: File?
   inputBinding:
     prefix: --description
 - id: in_output_dir
   doc: Directory path for output files
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-dir
 - id: in_overwrite_output_destinations
   doc: "Overwrite if the output files and/or directories\nexist."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --overwrite-output-destinations
 - id: in_num_threads
@@ -146,7 +146,7 @@ inputs:
     \ you are running your commands on a SGE\n--if you are clusterizing your runs,\
     \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
     \ fast."
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-threads
 - id: in_enforce_hierarchical_clustering
@@ -155,20 +155,20 @@ inputs:
     hierarchical clustering, you can use this flag to\nenforce it. Are you are a rebel\
     \ of some sorts? Or did\ncomputers made you upset? Express your anger towards\n\
     machine using this flag."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --enforce-hierarchical-clustering
 - id: in_distance
   doc: "The distance metric for the clustering of gene\nclusters. If you do not use\
     \ this flag, the default\ndistance metric will be used for each clustering\nconfiguration\
     \ which is \"euclidean\"."
-  type: string
+  type: string?
   inputBinding:
     prefix: --distance
 - id: in_linkage
   doc: "The same story with the `--distance`, except, the\nsystem default for this\
     \ one is ward.\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --linkage
 - id: in_clusters_dot
@@ -186,14 +186,15 @@ outputs:
   doc: "Name of the project. Please choose a short but\ndescriptive name (so anvi'o\
     \ can use it whenever she\nneeds to name an output file, or add a new table in\
     \ a\ndatabase, or name her first born)."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_project_name)
 - id: out_output_dir
   doc: Directory path for output files
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-pan-genome

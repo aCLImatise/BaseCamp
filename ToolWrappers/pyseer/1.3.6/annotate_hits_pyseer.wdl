@@ -16,6 +16,9 @@ task AnnotateHitsPyseer {
       ~{if defined(bwa) then ("--bwa " +  '"' + bwa + '"') else ""} \
       ~{if defined(tmp_prefix) then ("--tmp-prefix " +  '"' + tmp_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bwa: "Location of bwa executable [default=bwa]"
     tmp_prefix: "Directory to store temporary files [default=./]\\n"

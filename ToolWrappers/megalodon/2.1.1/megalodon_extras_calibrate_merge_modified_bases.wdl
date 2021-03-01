@@ -10,6 +10,9 @@ task MegalodonExtrasCalibrateMergeModifiedBases {
       ~{if defined(out_filename) then ("--out-filename " +  '"' + out_filename + '"') else ""} \
       ~{if (overwrite) then "--overwrite" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_filename: "Filename to output calibration values. Default:\\nmegalodon_mod_calibration.npz"
     overwrite: "Overwrite --out-filename if it exists."

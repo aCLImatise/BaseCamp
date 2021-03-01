@@ -16,6 +16,9 @@ task Bed2DtoUCSCbedpl {
       ~{if (interactions) then "-interactions" else ""} \
       ~{if (ends) then "-ends" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ucsc: "(outputs BED12 format for visualizing 2D BED file in the UCSC browser)"
     peaks: "(outputs HOMER-style peak file spanning interaction region)"

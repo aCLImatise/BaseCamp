@@ -32,6 +32,9 @@ task Ustacks {
       ~{if defined(bound_high) then ("--bound-high " +  '"' + bound_high + '"') else ""} \
       ~{if defined(bc_err_freq) then ("--bc-err-freq " +  '"' + bc_err_freq + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: ": a name for the sample (default: input file name minus the suffix)."
     keep_high_cov: ": disable the algorithm that removes highly-repetitive stacks and nearby errors."

@@ -6,8 +6,8 @@ task Piconv {
     String? resolve
     String? from
     String? to
-    String? will_input_instead
-    String? c_check_validity
+    String? be_input_stdin
+    String? check_validity_input
     Boolean? debug
     String? scheme
     Boolean? perl_qq
@@ -20,21 +20,24 @@ task Piconv {
       ~{if defined(resolve) then ("--resolve " +  '"' + resolve + '"') else ""} \
       ~{if defined(from) then ("--from " +  '"' + from + '"') else ""} \
       ~{if defined(to) then ("--to " +  '"' + to + '"') else ""} \
-      ~{if defined(will_input_instead) then ("--string " +  '"' + will_input_instead + '"') else ""} \
-      ~{if defined(c_check_validity) then ("-C " +  '"' + c_check_validity + '"') else ""} \
+      ~{if defined(be_input_stdin) then ("--string " +  '"' + be_input_stdin + '"') else ""} \
+      ~{if defined(check_validity_input) then ("-C " +  '"' + check_validity_input + '"') else ""} \
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(scheme) then ("--scheme " +  '"' + scheme + '"') else ""} \
       ~{if (perl_qq) then "--perlqq" else ""} \
       ~{if (html_cref) then "--htmlcref" else ""} \
       ~{if (xml_cref) then "--xmlcref" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list: "lists all available encodings"
     resolve: "resolve encoding to its (Encode) canonical name"
     from: "when omitted, the current locale will be used"
     to: "when omitted, the current locale will be used"
-    will_input_instead: "\\\"string\\\" will be the input instead of STDIN or files"
-    c_check_validity: "| -c           check the validity of the input"
+    be_input_stdin: "\\\"string\\\" will be the input instead of STDIN or files"
+    check_validity_input: "check the validity of the input"
     debug: "show debug information"
     scheme: "use the scheme for conversion"
     perl_qq: "transliterate characters missing in encoding to \\x{HHHH}\\nwhere HHHH is the hexadecimal Unicode code point"

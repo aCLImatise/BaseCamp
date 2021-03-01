@@ -34,6 +34,9 @@ task VarscanCopyCaller {
       ~{if defined(recenter_down) then ("--recenter-down " +  '"' + recenter_down + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "Output file to contain the calls"
     output_hom_del_file: "Optional output file for candidate homozygous deletions"

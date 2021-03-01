@@ -8,6 +8,9 @@ task Ps2asciiGs {
     ps2ascii gs \
       ~{if (dict) then "--dict" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dict: ":1245/1684(ro)(G)--   --dict:0/20(G)--   --dict:81/200(L)--"
   }

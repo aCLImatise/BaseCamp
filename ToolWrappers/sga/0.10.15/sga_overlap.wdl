@@ -28,6 +28,9 @@ task SgaOverlap {
       ~{if defined(seed_stride) then ("--seed-stride " +  '"' + seed_stride + '"') else ""} \
       ~{if defined(sample_rate) then ("--sample-rate " +  '"' + sample_rate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     threads: "use NUM worker threads to compute the overlaps (default: no threading)"

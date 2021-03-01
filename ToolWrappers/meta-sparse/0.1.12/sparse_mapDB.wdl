@@ -18,6 +18,9 @@ task SparseMapDB {
       ~{if (malt) then "--malt" else ""} \
       ~{if (append) then "--append" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dbname: "Name for the database folder. REQUIRED."
     map_db: "Name for the sub-database. REQUIRED."

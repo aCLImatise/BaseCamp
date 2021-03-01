@@ -22,6 +22,9 @@ task Anvigetaacounts {
       ~{if defined(gene_caller_ids) then ("--gene-caller-ids " +  '"' + gene_caller_ids + '"') else ""} \
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "File path to store results."
     profile_db: "Anvi'o profile database"

@@ -3,17 +3,17 @@ id: biom_validate_table.cwl
 inputs:
 - id: in_input_fp
   doc: "The input filpath to validate against the BIOM\nformat specification  [required]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-fp
 - id: in_format_version
   doc: The specific format version to validate against
-  type: string
+  type: string?
   inputBinding:
     prefix: --format-version
 - id: in_detailed_report
   doc: Include more details in the output report
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --detailed-report
 - id: in_format_dot_org
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - biom

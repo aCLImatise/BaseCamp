@@ -24,6 +24,9 @@ task GuessBaitspy {
       ~{if defined(min_gap) then ("--min-gap " +  '"' + min_gap + '"') else ""} \
       ~{if defined(min_length) then ("--min-length " +  '"' + min_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     inferred_targets_bed: "The inferred targets, in BED format."
     coverage: "Filename to output average coverage depths in .cnn\\nformat."

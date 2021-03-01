@@ -16,6 +16,9 @@ task DsComputeGCCoverage {
       ~{if defined(window_size) then ("--windowSize " +  '"' + window_size + '"') else ""} \
       ~{if defined(bedgraph_files_output) then ("--output " +  '"' + bedgraph_files_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fasta_files_want: "Fasta files from which you want the GC content to be\\ncalculated."
     window_size: "Size of the window used to binify the genome and\\ncalculate the GC content. Default: 1000."

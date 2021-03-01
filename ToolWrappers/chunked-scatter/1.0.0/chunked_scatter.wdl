@@ -18,6 +18,9 @@ task Chunkedscatter {
       ~{if defined(minimum_bp_per_file) then ("--minimum-bp-per-file " +  '"' + minimum_bp_per_file + '"') else ""} \
       ~{if defined(overlap) then ("--overlap " +  '"' + overlap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "The prefix of the ouput files. Output will be named\\nlike: <PREFIX><N>.bed, in which N is an incrementing\\nnumber. Default 'scatter-'."
     split_contigs: "If set, contigs are allowed to be split up over\\nmultiple files."

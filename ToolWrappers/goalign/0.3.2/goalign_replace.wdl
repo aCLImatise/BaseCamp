@@ -40,6 +40,9 @@ task GoalignReplace {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     new: "New string that will replace old string in sequences (default \\\"none\\\")"
     old: "String to replace in the sequences (default \\\"none\\\")"

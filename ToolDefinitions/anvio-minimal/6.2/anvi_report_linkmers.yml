@@ -4,54 +4,58 @@ command:
 positional: []
 named:
 - !Flag
-  description: "[--only-complete-links] -o FILE_PATH\n[--list-contigs]"
-  synonyms:
-  - --contigs-and-positions
-  args: !SimpleFlagArg
-    name: CONTIGS_AND_POS
   optional: true
-- !Flag
+  synonyms:
+  - -i
   description: "(S) [INPUT_BAM(S) ...], --input-files INPUT_BAM(S) [INPUT_BAM(S) ...]\n\
     Sorted and indexed BAM files to analyze. It is\nessential that all BAM files must\
     \ be the result of\nmappings against the same contigs."
-  synonyms:
-  - -i
   args: !SimpleFlagArg
     name: INPUT_BAM
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --contigs-and-positions
+  description: "This is the file where you list the contigs, and\nnucleotide positions\
+    \ you are interested in. This is\nsupposed to be a TAB-delimited file with two\
+    \ columns.\nIn each line, the first column should be the contig\nname, and the\
+    \ second column should be the comma-\nseparated list of integers for nucleotide\
+    \ positions."
+  args: !SimpleFlagArg
+    name: CONTIGS_AND_POS
+- !Flag
+  optional: true
+  synonyms:
+  - --only-complete-links
   description: "When declared, only reads that cover all positions\nwill be reported.\
     \ It is necessary to use this flag if\nyou want to perform oligotyping-like analyses\
     \ on\nmatching reads."
-  synonyms:
-  - --only-complete-links
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: File path to store results.
+  optional: true
   synonyms:
   - -o
   - --output-file
+  description: File path to store results.
   args: !SimpleFlagArg
     name: FILE_PATH
-  optional: true
 - !Flag
-  description: "When declared, the program will list contigs in the\nBAM file and\
-    \ exit gracefully without any further\nanalysis.\n"
+  optional: true
   synonyms:
   - --list-contigs
+  description: "When declared, the program will list contigs in the\nBAM file and\
+    \ exit gracefully without any further\nanalysis.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: anvi-report-linkmers [-h] -i INPUT_BAMS) [INPUT_BAM(S ...]\n  \
@@ -78,3 +82,4 @@ help_text: "usage: anvi-report-linkmers [-h] -i INPUT_BAMS) [INPUT_BAM(S ...]\n 
   \ and exit gracefully without any further\n                        analysis.\n"
 generated_using:
 - --help
+docker_image:

@@ -16,6 +16,9 @@ task Eledef {
       ~{method} \
       ~{cut_off}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ele_def: ""
     seq_list: ""

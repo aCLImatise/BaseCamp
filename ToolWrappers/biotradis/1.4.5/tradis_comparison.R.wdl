@@ -20,6 +20,9 @@ task TradisComparisonR {
       ~{if (enable_filtering_minimum) then "-f" else ""} \
       ~{if (_filter_enabled) then "-t" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     controls: ": 'control' libraries, generally growth in a permissive"
     conditions: ": libraries exposed to the experimental condition being"

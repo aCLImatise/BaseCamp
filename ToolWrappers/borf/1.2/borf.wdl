@@ -22,6 +22,9 @@ task Borf {
       ~{if (force_overwrite) then "--force_overwrite" else ""} \
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_path: "path to write output files. [OUTPUT_PATH].pep and\\n[OUTPUT_PATH].txt (default: input .fa file name)"
     strand: "Predict orfs for both strands"

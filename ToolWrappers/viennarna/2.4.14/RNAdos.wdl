@@ -24,6 +24,9 @@ task RNAdos {
       ~{if defined(param_file) then ("--paramFile " +  '"' + param_file + '"') else ""} \
       ~{if defined(hashtable_bits) then ("--hashtable-bits " +  '"' + hashtable_bits + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     verbose: "Be verbose.\\n(default=off)"

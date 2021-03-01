@@ -24,6 +24,9 @@ task Prince {
       ~{if defined(primers) then ("--primers " +  '"' + primers + '"') else ""} \
       ~{if defined(num_procs) then ("--num_procs " +  '"' + num_procs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     boost_output: "output file for training data / training data used to\\npredict copy numbers for queries"
     target_output: "output file for query copy number predictions"

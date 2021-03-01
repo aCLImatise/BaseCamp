@@ -10,6 +10,9 @@ task ProphexBwt2fa {
       ~{idx_base} \
       ~{output_dot_fa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     idx_base: ""
     output_dot_fa: ""

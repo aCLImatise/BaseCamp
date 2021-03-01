@@ -3,17 +3,17 @@ id: fastutils_subseq.cwl
 inputs:
 - id: in_input_file_fastx
   doc: input file in fastx format. Use - for stdin.
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_output_file_use
   doc: output file. Use - for stdout.
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_print_version_build
   doc: print version and build date
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_file_use
   doc: output file. Use - for stdout.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file_use)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fastutils

@@ -68,6 +68,9 @@ task CsvtkPlotBox {
       ~{if defined(y_min) then ("--y-min " +  '"' + y_min + '"') else ""} \
       ~{if defined(ylab) then ("--ylab " +  '"' + ylab + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     box_width: "box width"
     horiz: "horize box plot"

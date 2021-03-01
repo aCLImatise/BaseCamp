@@ -18,6 +18,9 @@ task PlanemoMull {
       ~{if defined(mulled_command) then ("--mulled_command " +  '"' + mulled_command + '"') else ""} \
       ~{if defined(cond_a_ensure_channels) then ("--conda_ensure_channels " +  '"' + cond_a_ensure_channels + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cond_a_requirements: "`` on the target tool(s)."
     recursive: "Recursively perform command for"

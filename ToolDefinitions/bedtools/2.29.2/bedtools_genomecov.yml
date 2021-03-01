@@ -2,135 +2,139 @@
 command:
 - bedtools
 - genomecov
-positional:
-- !Positional
-  description: -bga            Report depth in BedGraph format, as above (-bg).
-  position: 0
-  name: genome.ucsc.edu/goldenPath/help/bedgraph.html
-  optional: false
+positional: []
 named:
 - !Flag
-  description: "The input file is in BAM format.\nNote: BAM _must_ be sorted by position"
+  optional: true
   synonyms:
   - -ibam
+  description: "The input file is in BAM format.\nNote: BAM _must_ be sorted by position"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Report the depth at each genome position (with one-based coordinates).\n\
-    Default behavior is to report a histogram."
+  optional: true
   synonyms:
   - -d
+  description: "Report the depth at each genome position (with one-based coordinates).\n\
+    Default behavior is to report a histogram."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Report the depth at each genome position (with zero-based coordinates).\n\
-    Reports only non-zero positions.\nDefault behavior is to report a histogram."
+  optional: true
   synonyms:
   - -dz
+  description: "Report the depth at each genome position (with zero-based coordinates).\n\
+    Reports only non-zero positions.\nDefault behavior is to report a histogram."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Report depth in BedGraph format. For details, see:'
+  optional: true
   synonyms:
   - -bg
+  description: "Report depth in BedGraph format. For details, see:\ngenome.ucsc.edu/goldenPath/help/bedgraph.html"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -bga
+  description: "Report depth in BedGraph format, as above (-bg).\nHowever with this\
+    \ option, regions with zero\ncoverage are also reported. This allows one to\n\
+    quickly extract all regions of a genome with 0\ncoverage by applying: \"grep -w\
+    \ 0$\" to the output."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -split
   description: "Treat \"split\" BAM or BED12 entries as distinct BED intervals.\n\
     when computing coverage.\nFor BAM files, this uses the CIGAR \"N\" and \"D\" operations\n\
     to infer the blocks for computing coverage.\nFor BED12 files, this uses the BlockCount,\
     \ BlockStarts, and BlockEnds\nfields (i.e., columns 10,11,12)."
-  synonyms:
-  - -split
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -strand
   description: "Calculate coverage of intervals from a specific strand.\nWith BED\
     \ files, requires at least 6 columns (strand is column 6).\n- (STRING): can be\
     \ + or -"
-  synonyms:
-  - -strand
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Calculate coverage of pair-end fragments.\nWorks for BAM files only"
+  optional: true
   synonyms:
   - -pc
+  description: "Calculate coverage of pair-end fragments.\nWorks for BAM files only"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Force to use provided fragment size instead of read length\nWorks\
-    \ for BAM files only"
+  optional: true
   synonyms:
   - -fs
+  description: "Force to use provided fragment size instead of read length\nWorks\
+    \ for BAM files only"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Change strand af the mate read (so both reads from the same strand)\
-    \ useful for strand specific\nWorks for BAM files only"
+  optional: true
   synonyms:
   - -du
+  description: "Change strand af the mate read (so both reads from the same strand)\
+    \ useful for strand specific\nWorks for BAM files only"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Calculate coverage of 5" positions (instead of entire interval).
+  optional: true
   synonyms:
   - '-5'
+  description: Calculate coverage of 5" positions (instead of entire interval).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Calculate coverage of 3" positions (instead of entire interval).
+  optional: true
   synonyms:
   - '-3'
+  description: Calculate coverage of 3" positions (instead of entire interval).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Combine all positions with a depth >= max into\na single bin in the\
-    \ histogram. Irrelevant\nfor -d and -bedGraph\n- (INTEGER)"
+  optional: true
   synonyms:
   - -max
+  description: "Combine all positions with a depth >= max into\na single bin in the\
+    \ histogram. Irrelevant\nfor -d and -bedGraph\n- (INTEGER)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -scale
   description: "Scale the coverage by a constant factor.\nEach coverage value is multiplied\
     \ by this factor before being reported.\nUseful for normalizing coverage by, e.g.,\
     \ reads per million (RPM).\n- Default is 1.0; i.e., unscaled.\n- (FLOAT)"
-  synonyms:
-  - -scale
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -trackline
   description: "Adds a UCSC/Genome-Browser track line definition in the first line\
     \ of the output.\n- See here for more details about track line definition:\nhttp://genome.ucsc.edu/goldenPath/help/bedgraph.html\n\
     - NOTE: When adding a trackline definition, the output BedGraph can be easily\n\
     uploaded to the Genome Browser as a custom track,\nBUT CAN NOT be converted into\
     \ a BigWig file (w/o removing the first line)."
-  synonyms:
-  - -trackline
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -trackopts
   description: "Writes additional track line definition parameters in the first line.\n\
     - Example:\n-trackopts 'name=\"My Track\" visibility=2 color=255,30,30'\nNote\
     \ the use of single-quotes if you have spaces in your parameters.\n- (TEXT)"
-  synonyms:
-  - -trackopts
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -g
+  description: ''
   args: !SimpleFlagArg
     name: genome
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -i
+  description: ''
   args: !SimpleFlagArg
     name: bed/gff/vcf
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -188,3 +192,4 @@ help_text: "\n*****ERROR: Unrecognized parameter: --help *****\n\n\n*****\n*****
   \ size from hg19.chromInfo\" > hg19.genome\n\n"
 generated_using:
 - --help
+docker_image:

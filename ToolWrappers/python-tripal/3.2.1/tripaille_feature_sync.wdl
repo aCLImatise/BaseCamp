@@ -22,6 +22,9 @@ task TripailleFeatureSync {
       ~{if defined(job_name) then ("--job_name " +  '"' + job_name + '"') else ""} \
       ~{if (no_wait) then "--no_wait" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     organism: "Common name of the organism to sync"
     organism_id: "ID of the organism to sync"

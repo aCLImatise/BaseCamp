@@ -36,6 +36,9 @@ task SamtoolsSort {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     set_compression_level: "Set compression level, from 0 (uncompressed) to 9 (best)"
     set_maximum_memory: "Set maximum memory per thread; suffix K/M/G recognized [768M]"

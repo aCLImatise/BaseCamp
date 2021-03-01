@@ -12,6 +12,9 @@ task Rsemgetunique {
       ~{unsorted_transcript_bam_input} \
       ~{bam_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_threads: ""
     unsorted_transcript_bam_input: ""

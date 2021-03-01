@@ -28,6 +28,9 @@ task Bactopiatoolspy {
       ~{summary} \
       ~{if defined(bac_topia) then ("--bactopia " +  '"' + bac_topia + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bac_topia: "Directory where Bactopia repository is stored."
     str: "Name of the Bactopia tool to execute."

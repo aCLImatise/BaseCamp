@@ -22,6 +22,9 @@ task VariantFilterRegions {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input variant list."
     out: "Output variant list."

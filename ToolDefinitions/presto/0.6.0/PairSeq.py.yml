@@ -3,92 +3,95 @@ command:
 - PairSeq.py
 positional:
 - !Positional
-  description: successfully paired reads with modified annotations.
+  optional: false
   position: 0
   name: pair-pass
-  optional: false
+  description: successfully paired reads with modified annotations.
 - !Positional
-  description: raw reads that could not be assigned to a mate-pair.
+  optional: false
   position: 1
   name: pair-fail
-  optional: false
+  description: raw reads that could not be assigned to a mate-pair.
 named:
 - !Flag
-  description: "An ordered list of FASTA/FASTQ files containing\nhead/primary sequences.\
-    \ (default: None)"
+  optional: true
   synonyms:
   - '-1'
+  description: "An ordered list of FASTA/FASTQ files containing\nhead/primary sequences.\
+    \ (default: None)"
   args: !RepeatFlagArg
     name: SEQ_FILES_1
-  optional: true
 - !Flag
-  description: "An ordered list of FASTA/FASTQ files containing\ntail/secondary sequences.\
-    \ (default: None)"
+  optional: true
   synonyms:
   - '-2'
+  description: "An ordered list of FASTA/FASTQ files containing\ntail/secondary sequences.\
+    \ (default: None)"
   args: !RepeatFlagArg
     name: SEQ_FILES_2
-  optional: true
 - !Flag
-  description: "Specify to changes the output directory to the\nlocation specified.\
-    \ The input file directory is used\nif this is not specified. (default: None)"
+  optional: true
   synonyms:
   - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
   args: !SimpleFlagArg
     name: OUT_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outname
   description: "Changes the prefix of the successfully processed\noutput file to the\
     \ string specified. May not be\nspecified with multiple input files. (default:\
     \ None)"
-  synonyms:
-  - --outname
   args: !SimpleFlagArg
     name: OUT_NAME
-  optional: true
 - !Flag
-  description: "If specified create files containing records that fail\nprocessing.\
-    \ (default: False)"
+  optional: true
   synonyms:
   - --failed
+  description: "If specified create files containing records that fail\nprocessing.\
+    \ (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
+  optional: true
   synonyms:
   - --fasta
+  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --delim
   description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
     annotation blocks, field names and values, and values\nwithin a field, respectively.\
     \ (default: ('|', '=',\n','))"
-  synonyms:
-  - --delim
   args: !SimpleFlagArg
     name: DELIMITER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --1f
   description: "The annotation fields to copy from file 1 records into\nfile 2 records.\
     \ If a copied annotation already exists\nin a file 2 record, then the annotations\
     \ copied from\nfile 1 will be added to the front of the existing\nannotation.\
     \ (default: None)"
-  synonyms:
-  - --1f
   args: !RepeatFlagArg
     name: FIELDS_1
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --2f
   description: "The annotation fields to copy from file 2 records into\nfile 1 records.\
     \ If a copied annotation already exists\nin a file 1 record, then the annotations\
     \ copied from\nfile 2 will be added to the end of the existing\nannotation. (default:\
     \ None)"
-  synonyms:
-  - --2f
   args: !RepeatFlagArg
     name: FIELDS_2
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --act
   description: "The collapse actions to take on all fields copied\nbetween files to\
     \ combine duplicate fields into a\nsingle value. The actions \"min\", \"max\"\
     , \"sum\" perform\nthe corresponding mathematical operation on numeric\nannotations.\
@@ -96,46 +99,43 @@ named:
     \ values. The\naction \"cat\" concatenates the values together into a\nsingle\
     \ string. Only applies if the field already\nexists in the header before being\
     \ copying from the\nother file. (default: None)"
-  synonyms:
-  - --act
   args: !ChoiceFlagArg
     choices: !!set
-      min:
       cat:
       set:
       sum:
+      min:
       max:
-  optional: true
 - !Flag
-  description: "The format of the sequence identifier which defines\nshared coordinate\
-    \ information across mate pairs.\n(default: presto)"
+  optional: true
   synonyms:
   - --coord
+  description: "The format of the sequence identifier which defines\nshared coordinate\
+    \ information across mate pairs.\n(default: presto)"
   args: !ChoiceFlagArg
     choices: !!set
-      solexa:
-      illumina:
       '454':
       sra:
+      illumina:
+      solexa:
       presto:
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: PairSeq.py [--version] [-h] -1 SEQ_FILES_1 [SEQ_FILES_1 ...] -2\n\
   \                  SEQ_FILES_2 [SEQ_FILES_2 ...] [--outdir OUT_DIR]\n          \
   \        [--outname OUT_NAME] [--failed] [--fasta]\n                  [--delim DELIMITER\
@@ -190,3 +190,4 @@ help_text: "usage: PairSeq.py [--version] [-h] -1 SEQ_FILES_1 [SEQ_FILES_1 ...] 
   \ defined>\n        annotation fields specified by the --1f or --2f arguments.\n"
 generated_using:
 - --help
+docker_image:

@@ -12,6 +12,9 @@ task Dshvcfpedigree {
       ~{if (input_vcf_file) then "--input-vcf-file" else ""} \
       ~{if (output_pedigree_file) then "--output-pedigree-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     input_vcf_file: "[class java.io.File]  input VCF file, default stdin [optional]"

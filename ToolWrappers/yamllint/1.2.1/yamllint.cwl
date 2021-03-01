@@ -3,17 +3,17 @@ id: yamllint.cwl
 inputs:
 - id: in_config_file
   doc: path to a custom configuration
-  type: File
+  type: File?
   inputBinding:
     prefix: --config-file
 - id: in_config_data
   doc: custom configuration (as YAML source)
-  type: string
+  type: string?
   inputBinding:
     prefix: --config-data
 - id: in_format
   doc: format for parsing output
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
 - id: in_file_or_dir
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - yamllint

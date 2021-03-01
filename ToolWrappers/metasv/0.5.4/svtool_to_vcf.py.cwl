@@ -1,39 +1,39 @@
 class: CommandLineTool
 id: svtool_to_vcf.py.cwl
 inputs:
-- id: in_sample
-  doc: '[--reference REFERENCE] [--sort]'
-  type: string
-  inputBinding:
-    prefix: --sample
 - id: in_input
   doc: 'SV tool output file (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: 'Output VCF to create (default: None)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --output
 - id: in_tool
   doc: 'Tool name (default: BreakDancer)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --tool
+- id: in_sample
+  doc: 'Sample name (default: None)'
+  type: string?
+  inputBinding:
+    prefix: --sample
 - id: in_reference
   doc: 'Reference FASTA (default: None)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --reference
 - id: in_sort
   doc: 'Sort the VCF records before writing (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sort
 - id: in_index
   doc: "Tabix compress and index the output VCF (default:\nFalse)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --index
 outputs:
@@ -42,9 +42,10 @@ outputs:
   type: stdout
 - id: out_input
   doc: 'SV tool output file (default: None)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_input)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - svtool_to_vcf.py

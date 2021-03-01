@@ -1,0 +1,91 @@
+!Command
+command:
+- bamaddrg
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bam
+  description: use this BAM as input
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --uncompressed
+  description: uncompressed BAM output
+  args: !SimpleFlagArg
+    name: write
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sample
+  description: optionally apply this sample name to the preceeding BAM file
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --delete
+  description: removes this sample name and all associated RGs from the header
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --clear
+  description: removes all RGs which were in the old file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --read-group
+  description: optionally apply this read group to the preceeding BAM file
+  args: !SimpleFlagArg
+    name: GROUP
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --region
+  description: limit alignments to those in this region (chr:start..end)
+  args: !SimpleFlagArg
+    name: REGION
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: this dialog
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: bamaddrg [-b FILE [-s NAME [-r GROUP]]]\n\noptions:\n    -h, --help\
+  \         this dialog\n    -b, --bam FILE     use this BAM as input\n    -u, --uncompressed\
+  \ write uncompressed BAM output\n    -s, --sample NAME  optionally apply this sample\
+  \ name to the preceeding BAM file\n    -d, --delete NAME  removes this sample name\
+  \ and all associated RGs from the header\n    -c, --clear        removes all RGs\
+  \ which were in the old file\n    -r, --read-group GROUP  optionally apply this\
+  \ read group to the preceeding BAM file\n    -R, --region REGION  limit alignments\
+  \ to those in this region (chr:start..end)\n\nMerges the alignments in the supplied\
+  \ BAM files, using the supplied sample names\nand read groups to specifically add\
+  \ read group (RG) tags to each alignment.  The\noutput is uncompressed, and is suitable\
+  \ for input into downstream alignment systems\nwhich require RG tag information.\n\
+  \nSample names and read groups may be specified by supplying a sample name or read\
+  \ group\nargument after each listed BAM file.\n\nWhen no sample names are supplied,\
+  \ the names of the BAM files are used as the sample\nnames and read groups.  When\
+  \ no read groups are supplied, the sample names are used\nas read groups.\n\nauthor:\
+  \ Erik Garrison <erik.garrison@bc.edu>\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bamaddrg:9baba65f88228e55639689a3cea38dd150e6284f--h970fe44_0

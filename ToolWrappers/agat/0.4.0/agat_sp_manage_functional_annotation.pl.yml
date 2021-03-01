@@ -3,178 +3,181 @@ command:
 - agat_sp_manage_functional_annotation.pl
 positional:
 - !Positional
-  description: 'Description:'
+  optional: false
   position: 0
   name: agat_sp_manage_functional_annotation.pl
-  optional: false
+  description: 'Description:'
 - !Positional
-  description: qseqid  query (e.g., gene) sequence id
+  optional: false
   position: 0
   name: '1.'
-  optional: false
+  description: qseqid  query (e.g., gene) sequence id
 - !Positional
-  description: sseqid  subject (e.g., reference genome) sequence id
+  optional: false
   position: 1
   name: '2.'
-  optional: false
+  description: sseqid  subject (e.g., reference genome) sequence id
 - !Positional
-  description: pident  percentage of identical matches
+  optional: false
   position: 2
   name: '3.'
-  optional: false
+  description: pident  percentage of identical matches
 - !Positional
-  description: length  alignment length
+  optional: false
   position: 3
   name: '4.'
-  optional: false
+  description: length  alignment length
 - !Positional
-  description: mismatch  number of mismatches
+  optional: false
   position: 4
   name: '5.'
-  optional: false
+  description: mismatch  number of mismatches
 - !Positional
-  description: gapopen   number of gap openings
+  optional: false
   position: 5
   name: '6.'
-  optional: false
+  description: gapopen   number of gap openings
 - !Positional
-  description: qstart  start of alignment in query
+  optional: false
   position: 6
   name: '7.'
-  optional: false
+  description: qstart  start of alignment in query
 - !Positional
-  description: qend  end of alignment in query
+  optional: false
   position: 7
   name: '8.'
-  optional: false
+  description: qend  end of alignment in query
 - !Positional
-  description: sstart  start of alignment in subject
+  optional: false
   position: 8
   name: '9.'
-  optional: false
+  description: sstart  start of alignment in subject
 - !Positional
-  description: send  end of alignment in subject
+  optional: false
   position: 9
   name: '10.'
-  optional: false
+  description: send  end of alignment in subject
 - !Positional
-  description: evalue  expect value
+  optional: false
   position: 10
   name: '11.'
-  optional: false
+  description: evalue  expect value
 - !Positional
-  description: bitscore  bit score
+  optional: false
   position: 11
   name: '12.'
-  optional: false
+  description: bitscore  bit score
 named:
 - !Flag
-  description: ", --gff or --gff3\nString - Input GTF/GFF file."
+  optional: true
   synonyms:
   - -f
   - --reffile
   - -ref
-  args: !EmptyFlagArg {}
-  optional: true
+  - --gff
+  - --gff3
+  description: String - Input GTF/GFF file.
+  args: !SimpleFlagArg
+    name: or
 - !Flag
-  description: "String - Input blast ( outfmt 6 = tabular ) file that will be\nused\
-    \ to complement the features read from the first file\n(specified with --ref)."
+  optional: true
   synonyms:
   - -b
   - --blast
+  description: "String - Input blast ( outfmt 6 = tabular ) file that will be\nused\
+    \ to complement the features read from the first file\n(specified with --ref)."
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: "String - The fasta file that has been used as DB for the blast.\n\
-    Gene names and products/descriptions will be fished from this\nfile."
+  optional: true
   synonyms:
   - -d
   - --db
+  description: "String - The fasta file that has been used as DB for the blast.\n\
+    Gene names and products/descriptions will be fished from this\nfile."
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: "Integer - Maximum e-value to keep the annotation from the blast\n\
-    file. By default 1e-6."
+  optional: true
   synonyms:
   - --be
   - --blast_evalue
+  description: "Integer - Maximum e-value to keep the annotation from the blast\n\
+    file. By default 1e-6."
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pe
   description: "Integer - The PE (protein existence) in the uniprot header\nindicates\
     \ the type of evidence that supports the existence of\nthe protein. You can decide\
     \ until which protein existence level\nyou want to consider to lift the finctional\
     \ information. Default\n5.\n1. Experimental evidence at protein level 2. Experimental\n\
     evidence at transcript level 3. Protein inferred from homology\n4. Protein predicted\
     \ 5. Protein uncertain"
-  synonyms:
-  - --pe
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "String - Input interpro file (.tsv) that will be used to\ncomplement\
-    \ the features read from the first file (specified with\n--ref)."
+  optional: true
   synonyms:
   - -i
   - --interpro
+  description: "String - Input interpro file (.tsv) that will be used to\ncomplement\
+    \ the features read from the first file (specified with\n--ref)."
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -id
   description: "String - This option will changed the id name. It will create\nfrom\
     \ id prefix (usually 6 letters) given as input, uniq IDs like\nprefixE00000000001.\
     \ Where E mean exon. Instead E we can have C\nfor CDS, G for gene, T for mRNA,\
     \ U for Utr. In the case of\ndiscontinuous features (i.e. a single feature that\
     \ exists over\nmultiple genomic locations) the same ID may appear on multiple\n\
     lines. All lines that share an ID collectively represent a\nsignle feature."
-  synonyms:
-  - -id
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -idau
   description: "Boolean - This option (id all uniq) is similar to -id option but\n\
     Id of features that share an ID collectively will be change by\ndifferent and\
     \ uniq ID."
-  synonyms:
-  - -idau
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Integer - Usefull only if -id is used. This option is used to\ndefine\
-    \ the number that will be used to begin the numbering. By\ndefault begin by 1."
+  optional: true
   synonyms:
   - -nb
+  description: "Integer - Usefull only if -id is used. This option is used to\ndefine\
+    \ the number that will be used to begin the numbering. By\ndefault begin by 1."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "String - Output GFF file. If no output file is specified, the\noutput\
-    \ will be written to STDOUT."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "String - Output GFF file. If no output file is specified, the\noutput\
+    \ will be written to STDOUT."
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: Boolean - Verbose, for debug purpose.
+  optional: true
   synonyms:
   - -v
+  description: Boolean - Verbose, for debug purpose.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Boolean - Display this helpful text.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Boolean - Display this helpful text.
   args: !SimpleFlagArg
     name: or
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\n ------------------------------------------------------------------------------\n\
@@ -266,3 +269,4 @@ help_text: "\n -----------------------------------------------------------------
   \n"
 generated_using:
 - --help
+docker_image:

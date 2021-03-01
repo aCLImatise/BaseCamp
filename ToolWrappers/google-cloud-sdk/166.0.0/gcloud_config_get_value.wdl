@@ -2,7 +2,6 @@ version 1.0
 
 task GcloudConfigGetvalue {
   input {
-    String section_slash_property
     String core
     String custom_ca_certs_file
     String default_regional_backend_service
@@ -43,7 +42,6 @@ task GcloudConfigGetvalue {
   }
   command <<<
     gcloud config get_value \
-      ~{section_slash_property} \
       ~{core} \
       ~{custom_ca_certs_file} \
       ~{default_regional_backend_service} \
@@ -82,8 +80,10 @@ task GcloudConfigGetvalue {
       ~{spanner} \
       ~{instance}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    section_slash_property: "The property to be fetched. Note that SECTION/ is optional while\\nreferring to properties in the core section."
     core: "account\\nThe account gcloud should use for authentication. You can run\\ngcloud auth list to see the accounts you currently have available."
     custom_ca_certs_file: "Absolute path to a custom CA cert file."
     default_regional_backend_service: "If True, backend services in gcloud compute backend-services will\\nbe regional by default. The --global flag will be required for\\nglobal backend services."

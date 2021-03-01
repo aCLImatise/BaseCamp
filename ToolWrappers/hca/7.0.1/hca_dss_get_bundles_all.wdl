@@ -18,6 +18,9 @@ task HcaDssGetbundlesall {
       ~{if defined(search_after) then ("--search-after " +  '"' + search_after + '"') else ""} \
       ~{if (no_paginate) then "--no-paginate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     replica: "Replica to fetch from."
     prefix: "Used to specify the beginning of a particular bundle UUID.  Capitalized letters will be lower-cased as is done when users submit a uuid (all uuids have lower-cased letters upon ingestion into the dss).  Characters other than letters, numbers, and dashes are not allowed and will error.\\nThe specified character(s) will return all available bundle uuids starting with that character(s)."

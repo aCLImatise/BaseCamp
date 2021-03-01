@@ -14,6 +14,9 @@ task CnvkitpyMetrics {
       ~{if (drop_low_coverage) then "--drop-low-coverage" else ""} \
       ~{if defined(output_table_file) then ("--output " +  '"' + output_table_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     segments: "One or more segmentation data files (*.cns, output of\\nthe 'segment' command). If more than one file is\\ngiven, the number must match the coverage data files,\\nin which case the input files will be paired together\\nin the given order. Otherwise, the same segments will\\nbe used for all coverage files."
     drop_low_coverage: "Drop very-low-coverage bins before calculations to\\nreduce negative \\\"fat tail\\\" of bin log2 values in poor-\\nquality tumor samples."

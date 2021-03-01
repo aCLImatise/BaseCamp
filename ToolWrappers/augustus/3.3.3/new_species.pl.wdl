@@ -14,6 +14,9 @@ task NewSpeciespl {
       ~{if (ignore) then "--ignore" else ""} \
       ~{if (prokaryotic) then "--prokaryotic" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     augustus_config_path: "full path to augustus/config directory"
     silent: "suppress help messages"

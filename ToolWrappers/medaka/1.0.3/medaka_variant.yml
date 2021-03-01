@@ -1,70 +1,154 @@
 !Command
 command:
-- medaka
-- variant
-positional:
-- !Positional
-  description: Reference sequence .fasta file.
-  position: 0
-  name: ref_fasta
-  optional: false
-- !Positional
-  description: Consensus .hdf files.
-  position: 1
-  name: inputs
-  optional: false
-- !Positional
-  description: Output .vcf.
-  position: 2
-  name: output
-  optional: false
+- medaka_variant
+positional: []
 named:
 - !Flag
-  description: 'Verbose logging of debug information. (default: 20)'
+  optional: true
   synonyms:
-  - --debug
+  - -i
+  description: "input bam of reads aligned to ref. Read groups are currently ignored,\n\
+    so the bam should only contain reads from a single sample."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Minimal logging; warnings only). (default: 20)'
+  optional: true
   synonyms:
-  - --quiet
+  - -f
+  description: input fasta input reference (required).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Limit variant calling to these reference names\n(default: None)"
-  synonyms:
-  - --regions
-  args: !RepeatFlagArg
-    name: REGIONS
   optional: true
-- !Flag
-  description: 'Populate VCF info fields. (default: False)'
   synonyms:
-  - --verbose
+  - -r
+  description: "region string(s). If providing multiple regions, wrap them in quotes.\n\
+    If not provided, will process all contigs in bam."
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -o
+  description: 'output folder (default: medaka_variant).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "medaka model for initial SNP calling from mixed reads prior to phasing,\n\
+    (default: r941_prom_snp_g360).\nAvailable: r103_min_high_g345, r103_min_high_g360,\
+    \ r103_prom_high_g360, r103_prom_snp_g3210, r103_prom_variant_g3210, r10_min_high_g303,\
+    \ r10_min_high_g340, r941_min_fast_g303, r941_min_high_g303, r941_min_high_g330,\
+    \ r941_min_high_g340_rle, r941_min_high_g344, r941_min_high_g351, r941_min_high_g360,\
+    \ r941_prom_fast_g303, r941_prom_high_g303, r941_prom_high_g330, r941_prom_high_g344,\
+    \ r941_prom_high_g360, r941_prom_snp_g303, r941_prom_snp_g322, r941_prom_snp_g360,\
+    \ r941_prom_variant_g303, r941_prom_variant_g322, r941_prom_variant_g360.\nAlternatively\
+    \ a .hdf file from 'medaka train'."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "medaka model for final variant calling from phased reads,\n(default:\
+    \ r941_prom_variant_g360).\nAvailable: r103_min_high_g345, r103_min_high_g360,\
+    \ r103_prom_high_g360, r103_prom_snp_g3210, r103_prom_variant_g3210, r10_min_high_g303,\
+    \ r10_min_high_g340, r941_min_fast_g303, r941_min_high_g303, r941_min_high_g330,\
+    \ r941_min_high_g340_rle, r941_min_high_g344, r941_min_high_g351, r941_min_high_g360,\
+    \ r941_prom_fast_g303, r941_prom_high_g303, r941_prom_high_g330, r941_prom_high_g344,\
+    \ r941_prom_high_g360, r941_prom_snp_g303, r941_prom_snp_g322, r941_prom_snp_g360,\
+    \ r941_prom_variant_g303, r941_prom_variant_g322, r941_prom_variant_g360.\nAlternatively\
+    \ a .hdf file from 'medaka train'."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: 'number of threads with which to create features (default: 1).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: output phased vcf.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: 'batchsize, controls memory use (default: 100).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: 'delete intermediate files. (default: keep).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  description: 'threshold for filtering indels in final VCF (default: 9)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  description: 'threshold for filtering SNPs in final VCF (default: 8)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  description: 'Avoid filtering of final VCF (default: do filter)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: stop after initial SNP calling from mixed reads prior to phasing.
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
-  - --help
+  description: show this help text.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
-help_text: "usage: medaka variant [-h] [--debug | --quiet]\n                     \
-  \ [--regions REGIONS [REGIONS ...]] [--verbose]\n                      ref_fasta\
-  \ inputs [inputs ...] output\n\npositional arguments:\n  ref_fasta             Reference\
-  \ sequence .fasta file.\n  inputs                Consensus .hdf files.\n  output\
-  \                Output .vcf.\n\noptional arguments:\n  -h, --help            show\
-  \ this help message and exit\n  --debug               Verbose logging of debug information.\
-  \ (default: 20)\n  --quiet               Minimal logging; warnings only). (default:\
-  \ 20)\n  --regions REGIONS [REGIONS ...]\n                        Limit variant\
-  \ calling to these reference names\n                        (default: None)\n  --verbose\
-  \             Populate VCF info fields. (default: False)\n"
+help_text: "\nmedaka 1.0.3\n-------------\n\nVariant calling via neural networks.\
+  \ The input bam should be aligned to the\nreference against which to call variants.\
+  \ Note: that although configurable\nit is unlikely that the model arguments should\
+  \ be changed from their defaults.\n\nmedaka_variant [-h] -i <bam>\n\n    -h  show\
+  \ this help text.\n    -i  input bam of reads aligned to ref. Read groups are currently\
+  \ ignored,\n        so the bam should only contain reads from a single sample.\n\
+  \    -f  input fasta input reference (required).\n    -r  region string(s). If providing\
+  \ multiple regions, wrap them in quotes.\n        If not provided, will process\
+  \ all contigs in bam. \n    -o  output folder (default: medaka_variant).\n    -s\
+  \  medaka model for initial SNP calling from mixed reads prior to phasing,\n   \
+  \     (default: r941_prom_snp_g360).\n        Available: r103_min_high_g345, r103_min_high_g360,\
+  \ r103_prom_high_g360, r103_prom_snp_g3210, r103_prom_variant_g3210, r10_min_high_g303,\
+  \ r10_min_high_g340, r941_min_fast_g303, r941_min_high_g303, r941_min_high_g330,\
+  \ r941_min_high_g340_rle, r941_min_high_g344, r941_min_high_g351, r941_min_high_g360,\
+  \ r941_prom_fast_g303, r941_prom_high_g303, r941_prom_high_g330, r941_prom_high_g344,\
+  \ r941_prom_high_g360, r941_prom_snp_g303, r941_prom_snp_g322, r941_prom_snp_g360,\
+  \ r941_prom_variant_g303, r941_prom_variant_g322, r941_prom_variant_g360.\n    \
+  \    Alternatively a .hdf file from 'medaka train'. \n    -m  medaka model for final\
+  \ variant calling from phased reads,\n        (default: r941_prom_variant_g360).\n\
+  \        Available: r103_min_high_g345, r103_min_high_g360, r103_prom_high_g360,\
+  \ r103_prom_snp_g3210, r103_prom_variant_g3210, r10_min_high_g303, r10_min_high_g340,\
+  \ r941_min_fast_g303, r941_min_high_g303, r941_min_high_g330, r941_min_high_g340_rle,\
+  \ r941_min_high_g344, r941_min_high_g351, r941_min_high_g360, r941_prom_fast_g303,\
+  \ r941_prom_high_g303, r941_prom_high_g330, r941_prom_high_g344, r941_prom_high_g360,\
+  \ r941_prom_snp_g303, r941_prom_snp_g322, r941_prom_snp_g360, r941_prom_variant_g303,\
+  \ r941_prom_variant_g322, r941_prom_variant_g360.\n        Alternatively a .hdf\
+  \ file from 'medaka train'. \n    -t  number of threads with which to create features\
+  \ (default: 1).\n    -p  output phased vcf.\n    -b  batchsize, controls memory\
+  \ use (default: 100).\n    -d  delete intermediate files. (default: keep).\n   \
+  \ -N  threshold for filtering indels in final VCF (default: 9)\n    -P  threshold\
+  \ for filtering SNPs in final VCF (default: 8)\n    -U  Avoid filtering of final\
+  \ VCF (default: do filter)\n    -S  stop after initial SNP calling from mixed reads\
+  \ prior to phasing.\n"
 generated_using:
-- --help
+- -h
+docker_image:

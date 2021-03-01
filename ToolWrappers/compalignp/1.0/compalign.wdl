@@ -18,6 +18,9 @@ task Compalign {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     only_compare_marked: ": only compare under marked #=CS consensus structure"
     in_format: ": specify that both alignments are in format <s> (MSF, for instance)"

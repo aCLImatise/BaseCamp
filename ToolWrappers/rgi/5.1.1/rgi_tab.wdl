@@ -8,6 +8,9 @@ task RgiTab {
     rgi tab \
       ~{if defined(a_file) then ("--afile " +  '"' + a_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_file: "must be a rgi json result file\\n"
   }

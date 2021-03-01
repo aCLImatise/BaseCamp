@@ -14,6 +14,9 @@ task PanPipe {
       ~{if (pro_kk_a_args) then "--prokka_args" else ""} \
       ~{if (gif_rop_args) then "--gifrop_args" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads to use for parallel commands. Will be overridden by values in *_args options"
     roar_y_args: "a quoted string of arguments to pass to roary, e.g.: '-t 8 -s -e --mafft'"

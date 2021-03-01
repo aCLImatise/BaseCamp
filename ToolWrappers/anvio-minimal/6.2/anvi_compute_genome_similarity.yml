@@ -3,36 +3,40 @@ command:
 - anvi-compute-genome-similarity
 positional:
 - !Positional
-  description: --log-file FILE_PATH  File path to store debug/output messages.
+  optional: false
   position: 0
   name: it.
-  optional: false
+  description: --log-file FILE_PATH  File path to store debug/output messages.
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --internal-genomes
   description: "A five-column TAB-delimited flat text file. The header\nline must\
     \ contain these columns: 'name', 'bin_id',\n'collection_id', 'profile_db_path',\
     \ 'contigs_db_path'.\nEach line should list a single entry, where 'name' can\n\
     be any name to describe the anvi'o bin identified as\n'bin_id' that is stored\
     \ in a collection."
-  synonyms:
-  - -i
-  - --internal-genomes
   args: !SimpleFlagArg
     name: FILE_PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --external-genomes
   description: "A two-column TAB-delimited flat text file that lists\nanvi'o contigs\
     \ databases. The first item in the header\nline should read 'name', and the second\
     \ should read\n'contigs_db_path'. Each line in the file should\ndescribe a single\
     \ entry, where the first column is the\nname of the genome (or MAG), and the second\
     \ column is\nthe anvi'o contigs database generated for this genome."
-  synonyms:
-  - -e
-  - --external-genomes
   args: !SimpleFlagArg
     name: FILE_PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta-text-file
   description: "A two-column TAB-delimited file that lists multiple\nFASTA files to\
     \ import for analysis. If using for\n`anvi-dereplicate-genomes` or `anvi-compute-distance`,\n\
     each FASTA is assumed to be a genome. The first item\nin the header line should\
@@ -40,34 +44,33 @@ named:
     \ should\ndescribe a single entry, where the first column is the\nname of the\
     \ FASTA file or corresponding sequence, and\nthe second column is the path to\
     \ the FASTA file\nitself."
-  synonyms:
-  - -f
-  - --fasta-text-file
   args: !SimpleFlagArg
     name: FASTA_TEXT_FILE
-  optional: true
 - !Flag
-  description: Directory path for output files
+  optional: true
   synonyms:
   - -o
   - --output-dir
+  description: Directory path for output files
   args: !SimpleFlagArg
     name: DIR_PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pan-db
   description: "This is totally optional, but very useful when\napplicable. If you\
     \ are running this for genomes for\nwhich you already have an anvi'o pangeome,\
     \ then you\ncan show where the pan database is and anvi'o would\nautomatically\
     \ add the results into the misc data\ntables of your pangenome. Those data can\
     \ then be shown\nas heatmaps on the pan interactive interface through\nthe 'layers'\
     \ tab."
-  synonyms:
-  - -p
-  - --pan-db
   args: !SimpleFlagArg
     name: PAN_DB
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --program
   description: "Tell anvi'o which program to run to process genome\nsimilarity. For\
     \ ANI, you should either use pyANI or\nfastANI. If accuracy is paramount (for\
     \ example,\ndistinguishing things less than 1 percent different),\nor for dealing\
@@ -76,37 +79,37 @@ named:
     \ use sourmash, but its really not\nintended for genome comparisons. If you don't\
     \ choose\nanything here, anvi'o will reluctantly set the program\nto pyANI, but\
     \ you really should be the one who is on\ntop of these things."
-  synonyms:
-  - --program
   args: !ChoiceFlagArg
     choices: !!set
-      fastANI:
       pyANI:
+      fastANI:
       sourmash:
-  optional: true
 - !Flag
-  description: Choose a kmer. The default is 16.
+  optional: true
   synonyms:
   - --fastani-kmer-size
+  description: Choose a kmer. The default is 16.
   args: !SimpleFlagArg
     name: FASTANI_KMER_SIZE
-  optional: true
 - !Flag
-  description: Choose a fragment length. The default is 3000.
+  optional: true
   synonyms:
   - --fragment-length
+  description: Choose a fragment length. The default is 3000.
   args: !SimpleFlagArg
     name: FRAGMENT_LENGTH
-  optional: true
 - !Flag
-  description: "Choose the minimum number of fragment lengths to that\ncan can be\
-    \ trusted. The default is 50."
+  optional: true
   synonyms:
   - --min-num-fragments
+  description: "Choose the minimum number of fragment lengths to that\ncan can be\
+    \ trusted. The default is 50."
   args: !SimpleFlagArg
     name: MIN_NUM_FRAGMENTS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --method
   description: "Method for pyANI. The default is ANIb. You must have\nthe necessary\
     \ binary in path for whichever method you\nchoose. According to the pyANI help\
     \ for v0.2.7 at\nhttps://github.com/widdowquinn/pyani, the method\n'ANIm' uses\
@@ -114,16 +117,16 @@ named:
     \ 1020nt\nfragments of the input sequences. 'ANIblastall': uses\nthe legacy BLASTN\
     \ to align 1020nt fragments Finally,\n'TETRA': calculates tetranucleotide frequencies\
     \ of\neach input sequence"
-  synonyms:
-  - --method
   args: !ChoiceFlagArg
     choices: !!set
       TETRA:
-      ANIm:
-      ANIb:
       ANIblastall:
-  optional: true
+      ANIb:
+      ANIm:
 - !Flag
+  optional: true
+  synonyms:
+  - --min-alignment-fraction
   description: "In some cases you may get high raw ANI estimates\n(percent identity\
     \ scores) between two genomes that\nhave little to do with each other simply because\
     \ only\na small fraction of their content may be aligned. This\nfilter will set\
@@ -132,12 +135,12 @@ named:
     \ and set percent identity\nscores between two genomes to 0 if the alignment\n\
     fraction *between either of them* is less than the\nparameter described here.\
     \ The default is 0."
-  synonyms:
-  - --min-alignment-fraction
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --significant-alignment-length
   description: "So --min-alignment-fraction discards any hit that is\ncoming from\
     \ alignments that represent shorter\nfractions of genomes, but what if you still\
     \ don't want\nto miss an alignment that is longer than an X number\nof nucleotides\
@@ -149,12 +152,12 @@ named:
     \ if\n--min-alignment-fraction is your shield to protect\nyourself from incoming\
     \ garbage, --significant-\nalignment-length is your chopstick to pick out those\n\
     that may be interesting, and you are a true warrior\nhere."
-  synonyms:
-  - --significant-alignment-length
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min-full-percent-identity
   description: "In some cases you may get high raw ANI estimates\n(percent identity\
     \ scores) between two genomes that\nhave little to do with each other simply because\
     \ only\na small fraction of their content may be aligned. This\ncan be partly\
@@ -169,73 +172,70 @@ named:
     \ and set all ANI measures\nbetween two genomes to 0 if the *full* percent\nidentity\
     \ *between either of them* is less than the\nparameter described here. The default\
     \ is 0."
-  synonyms:
-  - --min-full-percent-identity
   args: !SimpleFlagArg
     name: FULL_PERCENT_IDENTITY
-  optional: true
 - !Flag
-  description: "Set the k-mer size for mash similarity checks. We\nfound 13 in almost\
-    \ all cases correlates best with\nalignment-based ANI."
+  optional: true
   synonyms:
   - --kmer-size
+  description: "Set the k-mer size for mash similarity checks. We\nfound 13 in almost\
+    \ all cases correlates best with\nalignment-based ANI."
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --scale
   description: "Set the compression ratio for fasta signature file\ncomputations.\
     \ The default is 1000. Smaller ratios\ndecrease sensitivity, while larger ratios\
     \ will lead to\nlarge fasta signatures."
-  synonyms:
-  - --scale
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "The distance metric for the hierarchical clustering.\nThe default\
-    \ is \"euclidean\"."
+  optional: true
   synonyms:
   - --distance
+  description: "The distance metric for the hierarchical clustering.\nThe default\
+    \ is \"euclidean\"."
   args: !SimpleFlagArg
     name: DISTANCE_METRIC
-  optional: true
 - !Flag
-  description: "The linkage method for the hierarchical clustering.\nThe default is\
-    \ \"ward\"."
+  optional: true
   synonyms:
   - --linkage
+  description: "The linkage method for the hierarchical clustering.\nThe default is\
+    \ \"ward\"."
   args: !SimpleFlagArg
     name: LINKAGE_METHOD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --num-threads
   description: "Maximum number of threads to use for multithreading\nwhenever possible.\
     \ Very conservatively, the default is\n1. It is a good idea to not exceed the\
     \ number of CPUs\n/ cores on your system. Plus, please be careful with\nthis option\
     \ if you are running your commands on a SGE\n--if you are clusterizing your runs,\
     \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
     \ fast."
-  synonyms:
-  - -T
-  - --num-threads
   args: !SimpleFlagArg
     name: NUM_THREADS
-  optional: true
 - !Flag
-  description: Don't bother me with questions or warnings, just do
+  optional: true
   synonyms:
   - --just-do-it
+  description: Don't bother me with questions or warnings, just do
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: anvi-compute-genome-similarity [-h] [-i FILE_PATH] [-e FILE_PATH]\n\
@@ -395,3 +395,4 @@ help_text: "usage: anvi-compute-genome-similarity [-h] [-i FILE_PATH] [-e FILE_P
   \ FILE_PATH  File path to store debug/output messages.\n"
 generated_using:
 - --help
+docker_image:

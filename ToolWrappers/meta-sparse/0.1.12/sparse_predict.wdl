@@ -18,6 +18,9 @@ task SparsePredict {
       ~{if defined(r_two) then ("--r2 " +  '"' + r_two + '"') else ""} \
       ~{if defined(n_thread) then ("--n_thread " +  '"' + n_thread + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dbname: "Name for the database folder. REQUIRED"
     map_db: "Comma delimited names for sub-databases. REQUIRED.\\nDefault: representative,subpopulation,Virus"

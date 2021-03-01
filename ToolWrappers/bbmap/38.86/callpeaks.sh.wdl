@@ -8,6 +8,9 @@ task Callpeakssh {
     callpeaks_sh \
       ~{increases_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     increases_dot: "Useful for kmer-frequency histograms."
   }

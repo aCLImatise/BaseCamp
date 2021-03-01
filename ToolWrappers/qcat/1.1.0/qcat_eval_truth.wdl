@@ -6,7 +6,7 @@ task Qcatevaltruth {
     String? g
     String? n
     String? t
-    String? fast_q
+    String fast_q
   }
   command <<<
     qcat_eval_truth \
@@ -16,12 +16,15 @@ task Qcatevaltruth {
       ~{if defined(n) then ("-n " +  '"' + n + '"') else ""} \
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max: ""
     g: ""
     n: ""
     t: ""
-    fast_q: ""
+    fast_q: "optional arguments:"
   }
   output {
     File out_stdout = stdout()

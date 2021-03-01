@@ -26,6 +26,9 @@ task Elsize {
       ~{if defined(deb) then ("-deb " +  '"' + deb + '"') else ""} \
       ~{if defined(xyz) then ("-xyz " +  '"' + xyz + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     det: "(default) gives A_det,"
     ell: "A_ell (elliptic integral),"

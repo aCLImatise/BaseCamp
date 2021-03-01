@@ -3,7 +3,7 @@ id: chakin_organism_add_organism.cwl
 inputs:
 - id: in_comment
   doc: A comment / description
-  type: string
+  type: string?
   inputBinding:
     prefix: --comment
 - id: in_genus
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - chakin

@@ -4,89 +4,89 @@ command:
 positional: []
 named:
 - !Flag
-  description: "use paired end deduping with template. SAM/BAM\nalignment must contain\
-    \ paired end reads. Degenerate\nread pairs (alignments for one read of pair) will\
-    \ be\ndiscarded."
+  optional: true
   synonyms:
   - '-2'
   - --paired-end
+  description: "use paired end deduping with template. SAM/BAM\nalignment must contain\
+    \ paired end reads. Degenerate\nread pairs (alignments for one read of pair) will\
+    \ be\ndiscarded."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
   description: "|READ.fq   FASTQ file containing the molecular tag sequence for\n\
     each read name in the corresponding SAM/BAM file\n(required only for CASE 1 detailed\
     \ above)"
-  synonyms:
-  - -f
   args: !SimpleFlagArg
     name: INDEX.fq
-  optional: true
 - !Flag
-  description: "prefix of output file paths for sorted BAMs (default\nwill create\
-    \ prefix.sorted.markdup.bam,\nprefix.sorted.dedup.bam, prefix_dup_log.txt)"
+  optional: true
   synonyms:
   - -o
   - --out
+  description: "prefix of output file paths for sorted BAMs (default\nwill create\
+    \ prefix.sorted.markdup.bam,\nprefix.sorted.dedup.bam, prefix_dup_log.txt)"
   args: !SimpleFlagArg
     name: OUT_PREFIX
-  optional: true
 - !Flag
-  description: "position in index read where molecular tag sequence\nbegins. This\
-    \ should be a 1-based value that counts in\nfrom the 3' END of the read. (default\
-    \ = 6)"
+  optional: true
   synonyms:
   - -s
   - --start
+  description: "position in index read where molecular tag sequence\nbegins. This\
+    \ should be a 1-based value that counts in\nfrom the 3' END of the read. (default\
+    \ = 6)"
   args: !SimpleFlagArg
     name: START
-  optional: true
 - !Flag
-  description: length of molecular tag sequence (default = 6)
+  optional: true
   synonyms:
   - -l
   - --length
+  description: length of molecular tag sequence (default = 6)
   args: !SimpleFlagArg
     name: LENGTH
-  optional: true
 - !Flag
-  description: "directory for reading and writing to temporary files\nand named pipes\
-    \ (default: /tmp)"
+  optional: true
   synonyms:
   - -T
+  description: "directory for reading and writing to temporary files\nand named pipes\
+    \ (default: /tmp)"
   args: !SimpleFlagArg
     name: TEMP_DIR
-  optional: true
 - !Flag
-  description: "required for compatibility with samtools sort style in\nsamtools versions\
-    \ <=0.1.19"
+  optional: true
   synonyms:
   - --old-samtools
+  description: "required for compatibility with samtools sort style in\nsamtools versions\
+    \ <=0.1.19"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: required for only outputting duplicates removed file
+  optional: true
   synonyms:
   - --rmdup-only
+  description: required for only outputting duplicates removed file
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -v
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: nudup.py [-2] [-f INDEX.fq|READ.fq] [-o OUT_PREFIX] [-s START]\n\
   \                [-l LENGTH] [-T TEMP_DIR] [--old-samtools] [--rmdup-only] [-v]\n\
   \                [-h]\n                IN.sam|IN.bam\n\nMarks/removes PCR introduced\
@@ -135,3 +135,4 @@ help_text: "usage: nudup.py [-2] [-f INDEX.fq|READ.fq] [-o OUT_PREFIX] [-s START
   \ message and exit\n"
 generated_using:
 - --help
+docker_image:

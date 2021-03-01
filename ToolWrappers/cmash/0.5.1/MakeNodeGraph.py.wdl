@@ -18,6 +18,9 @@ task MakeNodeGraphpy {
       ~{if defined(k_size) then ("--k_size " +  '"' + k_size + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fp_rate: "False positive rate. (default: 0.0001)"
     intersect_node_graph: "Location of Node Graph. Will only insert query k-mers\\nin bloom filter if they appear anywhere in the\\ntraining database. Note that the Jaccard estimates\\nwill now be J(query intersect union_i training_i,\\ntraining_i) instead of J(query, training_i), but will\\nuse significantly less space (unfortunately will also\\ndisable threading). (default: None)"

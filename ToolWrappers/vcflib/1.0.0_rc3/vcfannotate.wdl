@@ -14,6 +14,9 @@ task Vcfannotate {
       ~{if (key) then "--key" else ""} \
       ~{if (default) then "--default" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "use annotations provided by this BED file"
     key: "use this INFO field key for the annotations"

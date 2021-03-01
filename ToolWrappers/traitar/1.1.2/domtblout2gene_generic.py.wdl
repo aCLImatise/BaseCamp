@@ -26,6 +26,9 @@ task Domtblout2geneGenericpy {
       ~{annotation} \
       ~{files}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     generate: ""
     summary: ""

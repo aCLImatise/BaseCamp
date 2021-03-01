@@ -14,6 +14,9 @@ task CactusCheck {
       ~{if (recursive) then "--recursive" else ""} \
       ~{if (check_normalised) then "--checkNormalised" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: ": Set the log level"
     cactus_disk: ": The location of the flower disk directory"

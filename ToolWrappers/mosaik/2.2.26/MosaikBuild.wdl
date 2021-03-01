@@ -48,6 +48,9 @@ task MosaikBuild {
       ~{if (tp) then "-tp" else ""} \
       ~{if (ts) then "-ts" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fr: "the FASTA reference sequences file"
     ga: "the genome assembly ID. e.g. HG18"

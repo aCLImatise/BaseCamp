@@ -26,6 +26,9 @@ task GetConservedRegionspl {
       ~{if defined(peak_regions_exclude) then ("-p " +  '"' + peak_regions_exclude + '"') else ""} \
       ~{if (keep_exons) then "-keepExons" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     size: "<#|given> (size of region centered on peaks to look for conserved islands)\\ndefault: given"
     bufsize: "<#> (size of area around conserved islands to include)\\ndefault: 25"

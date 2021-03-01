@@ -12,6 +12,9 @@ task Base64 {
       ~{if (ignore_garbage) then "--ignore-garbage" else ""} \
       ~{if defined(wrap) then ("--wrap " +  '"' + wrap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     decode: "decode data"
     ignore_garbage: "when decoding, ignore non-alphabet characters"

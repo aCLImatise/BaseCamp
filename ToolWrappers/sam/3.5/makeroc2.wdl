@@ -14,6 +14,9 @@ task Makeroc2 {
       ~{if (plotline) then "-plotline" else ""} \
       ~{if defined(option) then ("-option " +  '"' + option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     distfile: ".dist    Score file to read (required)."
     plotline: "<num>  Mark false pos/neg curves at given threshold."

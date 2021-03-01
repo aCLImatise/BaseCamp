@@ -8,6 +8,9 @@ task HmmconvertHmmfile {
     hmmconvert hmmfile \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
   }

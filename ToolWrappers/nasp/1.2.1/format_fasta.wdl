@@ -10,6 +10,9 @@ task FormatFasta {
       ~{if defined(input_fast_a) then ("--inputfasta " +  '"' + input_fast_a + '"') else ""} \
       ~{if defined(output_fast_a) then ("--outputfasta " +  '"' + output_fast_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fast_a: "Path to input fasta."
     output_fast_a: "Path to output fasta.\\n"

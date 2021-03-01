@@ -4,347 +4,347 @@ command:
 - mogrify
 positional:
 - !Positional
-  description: Sequence file(s) to mogrify
+  optional: false
   position: 0
   name: sequence_file
-  optional: false
+  description: Sequence file(s) to mogrify
 named:
 - !Flag
-  description: Input alphabet. Required for writing NEXUS.
+  optional: true
   synonyms:
   - --alphabet
+  description: Input alphabet. Required for writing NEXUS.
   args: !ChoiceFlagArg
     choices: !!set
-      rna:
-      protein:
       dna:
+      rna:
       dna-ambiguous:
       rna-ambiguous:
-  optional: true
+      protein:
 - !Flag
-  description: "Adjust line wrap for sequence strings. When N is 0,\nall line breaks\
-    \ are removed. Only fasta files are\nsupported for the output format."
+  optional: true
   synonyms:
   - --line-wrap
+  description: "Adjust line wrap for sequence strings. When N is 0,\nall line breaks\
+    \ are removed. Only fasta files are\nsupported for the output format."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Perform sorting by length or name, ascending or\ndescending. ASCII\
-    \ sorting is performed for names"
+  optional: true
   synonyms:
   - --sort
+  description: "Perform sorting by length or name, ascending or\ndescending. ASCII\
+    \ sorting is performed for names"
   args: !ChoiceFlagArg
     choices: !!set
-      length-asc:
-      name-desc:
       name-asc:
       length-desc:
-  optional: true
+      length-asc:
+      name-desc:
 - !Flag
+  optional: true
+  synonyms:
+  - --apply-function
   description: "/path/to/module.py:function_name[:parameter]\nSpecify a custom function\
     \ to apply to the input\nsequences, specified as\n/path/to/file.py:function_name.\
     \ Function should accept\nan iterable of Bio.SeqRecord objects, and yield\nSeqRecords.\
     \ If the parameter is specified, it will be\npassed as a string as the second\
     \ argument to the\nfunction. Specify more than one to chain."
-  synonyms:
-  - --apply-function
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cut
   description: ":end[,start2:end2]\nKeep only the residues within the 1-indexed start\
     \ and\nend positions specified, : separated. Includes last\nitem. Start or end\
     \ can be left unspecified to indicate\nstart/end of sequence. A negative start\
     \ may be\nprovided to indicate an offset from the end of the\nsequence. Note that\
     \ to prevent negative numbers being\ninterpreted as flags, this should be written\
     \ with an\nequals sign between `--cut` and the argument, e.g.:\n`--cut=-10:`"
-  synonyms:
-  - --cut
   args: !SimpleFlagArg
     name: start
-  optional: true
 - !Flag
-  description: "Apply --cut relative to the indexes of non-gap\nresidues in sequence\
-    \ identified by ID"
+  optional: true
   synonyms:
   - --relative-to
+  description: "Apply --cut relative to the indexes of non-gap\nresidues in sequence\
+    \ identified by ID"
   args: !SimpleFlagArg
     name: ID
-  optional: true
 - !Flag
-  description: ":end[,start2:end2]\nRemove the residues at the specified indices.\
-    \ Same\nformat as `--cut`."
+  optional: true
   synonyms:
   - --drop
+  description: ":end[,start2:end2]\nRemove the residues at the specified indices.\
+    \ Same\nformat as `--cut`."
   args: !SimpleFlagArg
     name: start
-  optional: true
 - !Flag
-  description: "Replace any of the characters \"?.:~\" with a \"-\" for\nall sequences"
+  optional: true
   synonyms:
   - --dash-gap
+  description: "Replace any of the characters \"?.:~\" with a \"-\" for\nall sequences"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Translate the sequences to lower case
+  optional: true
   synonyms:
   - --lower
+  description: Translate the sequences to lower case
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mask
   description: ":end1[,start2:end2]\nReplace residues in 1-indexed slice with gap-\n\
     characters. If --relative-to is also specified,\ncoordinates are relative to the\
     \ sequence ID provided."
-  synonyms:
-  - --mask
   args: !SimpleFlagArg
     name: start1
-  optional: true
 - !Flag
-  description: Reverse the order of sites in sequences
+  optional: true
   synonyms:
   - --reverse
+  description: Reverse the order of sites in sequences
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Convert sequences into reverse complements
+  optional: true
   synonyms:
   - --reverse-complement
+  description: Convert sequences into reverse complements
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Remove any gaps that are present in the same position\nacross all\
-    \ sequences in an alignment (equivalent to\n--squeeze-threshold=1.0)"
+  optional: true
   synonyms:
   - --squeeze
+  description: "Remove any gaps that are present in the same position\nacross all\
+    \ sequences in an alignment (equivalent to\n--squeeze-threshold=1.0)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Trim columns from an alignment which have gaps in\nleast the specified\
-    \ proportion of sequences."
+  optional: true
   synonyms:
   - --squeeze-threshold
+  description: "Trim columns from an alignment which have gaps in\nleast the specified\
+    \ proportion of sequences."
   args: !SimpleFlagArg
     name: PROP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --transcribe
   description: "Transcription and back transcription for generic DNA\nand RNA. Source\
     \ sequences must be the correct alphabet\nor this action will likely produce incorrect\
     \ results."
-  synonyms:
-  - --transcribe
   args: !ChoiceFlagArg
     choices: !!set
-      dna2rna:
       rna2dna:
-  optional: true
+      dna2rna:
 - !Flag
+  optional: true
+  synonyms:
+  - --translate
   description: "Translate from generic DNA/RNA to proteins. Options\nwith \"stop\"\
     \ suffix will NOT translate through stop\ncodons . Source sequences must be the\
     \ correct alphabet\nor this action will likely produce incorrect results."
-  synonyms:
-  - --translate
   args: !ChoiceFlagArg
     choices: !!set
       rna2proteinstop:
       dna2protein:
       rna2protein:
       dna2proteinstop:
-  optional: true
 - !Flag
-  description: Remove gaps in the sequence alignment
+  optional: true
   synonyms:
   - --ungap
+  description: Remove gaps in the sequence alignment
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Translate the sequences to upper case
+  optional: true
   synonyms:
   - --upper
+  description: Translate the sequences to upper case
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Remove any duplicate sequences by sequence content,\nkeep the first\
-    \ instance seen"
+  optional: true
   synonyms:
   - --deduplicate-sequences
+  description: "Remove any duplicate sequences by sequence content,\nkeep the first\
+    \ instance seen"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Write all of the deduplicated sequences to a file
+  optional: true
   synonyms:
   - --deduplicated-sequences-file
+  description: Write all of the deduplicated sequences to a file
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Remove any duplicate sequences by ID, keep the first\ninstance seen"
+  optional: true
   synonyms:
   - --deduplicate-taxa
+  description: "Remove any duplicate sequences by ID, keep the first\ninstance seen"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Filter sequences, removing those sequence IDs in the\nspecified file"
+  optional: true
   synonyms:
   - --exclude-from-file
+  description: "Filter sequences, removing those sequence IDs in the\nspecified file"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Filter sequences, keeping only those sequence IDs in\nthe specified\
-    \ file"
+  optional: true
   synonyms:
   - --include-from-file
+  description: "Filter sequences, keeping only those sequence IDs in\nthe specified\
+    \ file"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Trim down to top N sequences. With the leading `-',\nprint all but\
-    \ the last N sequences."
+  optional: true
   synonyms:
   - --head
+  description: "Trim down to top N sequences. With the leading `-',\nprint all but\
+    \ the last N sequences."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Discard any sequences beyond the specified maximum\nlength. This operation\
-    \ occurs *before* all length-\nchanging options such as cut and squeeze."
+  optional: true
   synonyms:
   - --max-length
+  description: "Discard any sequences beyond the specified maximum\nlength. This operation\
+    \ occurs *before* all length-\nchanging options such as cut and squeeze."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Discard any sequences less than the specified minimum\nlength. This\
-    \ operation occurs *before* cut and\nsqueeze."
+  optional: true
   synonyms:
   - --min-length
+  description: "Discard any sequences less than the specified minimum\nlength. This\
+    \ operation occurs *before* cut and\nsqueeze."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Discard any sequences less than the specified minimum\nlength, excluding\
-    \ gaps. This operation occurs *before*\ncut and squeeze."
+  optional: true
   synonyms:
   - --min-ungapped-length
+  description: "Discard any sequences less than the specified minimum\nlength, excluding\
+    \ gaps. This operation occurs *before*\ncut and squeeze."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Filter the sequences by regular expression in ID or\ndescription"
+  optional: true
   synonyms:
   - --pattern-include
+  description: "Filter the sequences by regular expression in ID or\ndescription"
   args: !SimpleFlagArg
     name: REGEX
-  optional: true
 - !Flag
-  description: "Filter the sequences by regular expression in ID or\ndescription"
+  optional: true
   synonyms:
   - --pattern-exclude
+  description: "Filter the sequences by regular expression in ID or\ndescription"
   args: !SimpleFlagArg
     name: REGEX
-  optional: true
 - !Flag
-  description: Prune sequences containing only gaps ('-')
+  optional: true
   synonyms:
   - --prune-empty
+  description: Prune sequences containing only gaps ('-')
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Select a random sampling of sequences
+  optional: true
   synonyms:
   - --sample
+  description: Select a random sampling of sequences
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Set random seed for sampling of sequences
+  optional: true
   synonyms:
   - --sample-seed
+  description: Set random seed for sampling of sequences
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Filter the sequences by regular expression in sequence
+  optional: true
   synonyms:
   - --seq-pattern-include
+  description: Filter the sequences by regular expression in sequence
   args: !SimpleFlagArg
     name: REGEX
-  optional: true
 - !Flag
-  description: Filter the sequences by regular expression in sequence
+  optional: true
   synonyms:
   - --seq-pattern-exclude
+  description: Filter the sequences by regular expression in sequence
   args: !SimpleFlagArg
     name: REGEX
-  optional: true
 - !Flag
-  description: "Trim down to bottom N sequences. Use +N to output\nsequences starting\
-    \ with the Nth."
+  optional: true
   synonyms:
   - --tail
+  description: "Trim down to bottom N sequences. Use +N to output\nsequences starting\
+    \ with the Nth."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Take only the first whitespace-delimited word as the\nname of the\
-    \ sequence"
+  optional: true
   synonyms:
   - --first-name
+  description: "Take only the first whitespace-delimited word as the\nname of the\
+    \ sequence"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Append a suffix to all IDs.
+  optional: true
   synonyms:
   - --name-suffix
+  description: Append a suffix to all IDs.
   args: !SimpleFlagArg
     name: SUFFIX
-  optional: true
 - !Flag
-  description: Insert a prefix for all IDs.
+  optional: true
   synonyms:
   - --name-prefix
+  description: Insert a prefix for all IDs.
   args: !SimpleFlagArg
     name: PREFIX
-  optional: true
 - !Flag
-  description: "replace_pattern\nReplace regex pattern \"search_pattern\" with\n\"\
-    replace_pattern\" in sequence ID and description"
+  optional: true
   synonyms:
   - --pattern-replace
+  description: "replace_pattern\nReplace regex pattern \"search_pattern\" with\n\"\
+    replace_pattern\" in sequence ID and description"
   args: !SimpleFlagArg
     name: search_pattern
-  optional: true
 - !Flag
-  description: Strip ranges from sequences IDs, matching </x-y>
+  optional: true
   synonyms:
   - --strip-range
+  description: Strip ranges from sequences IDs, matching </x-y>
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Input file format (default: determine from extension)'
+  optional: true
   synonyms:
   - --input-format
+  description: 'Input file format (default: determine from extension)'
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
-  description: 'Output file format (default: determine from extension)'
+  optional: true
   synonyms:
   - --output-format
+  description: 'Output file format (default: determine from extension)'
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: seqmagick mogrify [-h] [--line-wrap N]\n                      \
@@ -460,3 +460,4 @@ help_text: "usage: seqmagick mogrify [-h] [--line-wrap N]\n                     
   \ are case-sensitive by default. Append \"(?i)\"\nto a pattern to make it case-insensitive.\n"
 generated_using:
 - --help
+docker_image:

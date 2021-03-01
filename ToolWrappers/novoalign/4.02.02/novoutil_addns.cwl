@@ -1,9 +1,9 @@
 class: CommandLineTool
 id: novoutil_addns.cwl
 inputs:
-- id: in_number_add_default
+- id: in_number_ns_add
   doc: 99      Number of Ns to add. default 50.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_fast_a_files
@@ -16,6 +16,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - novoutil

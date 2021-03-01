@@ -3,6 +3,7 @@ version 1.0
 task QuasitoolsCallAavar {
   input {
     Float? min_freq
+    Float? error_rate
     String bam
     String reference
     Int bed_four_file
@@ -14,10 +15,15 @@ task QuasitoolsCallAavar {
       ~{reference} \
       ~{bed_four_file} \
       ~{variants} \
-      ~{if defined(min_freq) then ("--min_freq " +  '"' + min_freq + '"') else ""}
+      ~{if defined(min_freq) then ("--min_freq " +  '"' + min_freq + '"') else ""} \
+      ~{if defined(error_rate) then ("--error_rate " +  '"' + error_rate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    min_freq: "the minimum required frequency.\\n-e, --error_rate FLOAT  estimated sequencing error rate.\\n-o, --output FILENAME\\n--help                  Show this message and exit.\\n"
+    min_freq: "the minimum required frequency."
+    error_rate: "estimated sequencing error rate."
     bam: ""
     reference: ""
     bed_four_file: ""

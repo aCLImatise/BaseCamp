@@ -28,6 +28,9 @@ task Spadesgsimplifier {
       ~{if defined(dead_ends) then ("--dead-ends " +  '"' + dead_ends + '"') else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gfa: "produce GFA output (default: true)"
     spades_gp: "output graph pack in SPAdes internal format (default: false). Recommended if bulges are removed to improve further read mapping. In case GFA output is required with graph pack specify '--gfa'"

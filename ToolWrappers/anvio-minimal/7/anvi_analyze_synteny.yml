@@ -1,0 +1,163 @@
+!Command
+command:
+- anvi-analyze-synteny
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ngrams
+  description: '🍺 More on `anvi-analyze-synteny`:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genomes-storage
+  description: "Anvi'o genomes storage file (default: None)"
+  args: !SimpleFlagArg
+    name: GENOMES_STORAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --ngram-window-range
+  description: "The range of window sizes of Ngrams to analyze for\nsynteny patterns.Please\
+    \ format the window-range as x:y\n(e.g. Window sizes 2 to 4 would be denoted as:\
+    \ 2:4)\n(default: 2:3)"
+  args: !SimpleFlagArg
+    name: NGRAM_WINDOW_RANGE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-file
+  description: 'File path to store results. (default: None)'
+  args: !SimpleFlagArg
+    name: FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --annotation-source
+  description: "NAME\nGet functional annotations for a specific annotation\nsource.\
+    \ You can use the flag '--list-annotation-\nsources' to learn about what sources\
+    \ are available.\n(default: None)"
+  args: !SimpleFlagArg
+    name: SOURCE
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pan-db
+  description: "Anvi'o pan database (default: None)"
+  args: !SimpleFlagArg
+    name: PAN_DB
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --ngram-source
+  description: "If two annotation sources are provided, please choose\none annotation\
+    \ source that will be used to calcuate\nNgrams (e.g. gene_clusters, COG_FUNCTION)\
+    \ (default:\nNone)"
+  args: !SimpleFlagArg
+    name: NGRAM_SOURCE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --list-annotation-sources
+  description: "List available functional annotation sources.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --analyze-unknown-functions
+  description: "Provide this flag if you want anvi-analyze-synteny to\nreport Ngrams\
+    \ that contain gene calls that have no\nannotation. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  - --genome-names
+  description: "Genome names to 'focus'. You can use this parameter to\nlimit the\
+    \ genomes included in your analysis. You can\nprovide these names as a comma-separated\
+    \ list of\nnames, or you can put them in a file, where you have a\nsingle genome\
+    \ name in each line, and provide the file\npath. (default: None)"
+  args: !SimpleFlagArg
+    name: GENOME_NAMES
+- !Flag
+  optional: true
+  synonyms:
+  - --first-functional-hit-only
+  description: "Use this flag if you want to use on the first\nfunctional annotation\
+    \ when making ngrams and assigning\nannotations. In some cases, anvio reports\
+    \ more than\none annotation when there are multiple good hits to\nthe gene. When\
+    \ this happens, all annotations will be\nreported in order of alignment score\
+    \ and delimited by\n'!!!' e.g. 'COG123!!!COG456!!!COG789'. This flag will\nreport\
+    \ 'COG123!!!COG456!!!COG789' as 'COG123'.\n(default: False)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-analyze-synteny [-h] -g GENOMES_STORAGE\n                \
+  \            [--ngram-window-range NGRAM_WINDOW_RANGE]\n                       \
+  \     [-o FILE_PATH] [--annotation-source SOURCE NAME]\n                       \
+  \     [-p PAN_DB] [-n NGRAM_SOURCE] [-l]\n                            [--analyze-unknown-functions]\
+  \ [-G GENOME_NAMES]\n                            [--first-functional-hit-only]\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \nEssential INPUT:\n  -g GENOMES_STORAGE, --genomes-storage GENOMES_STORAGE\n  \
+  \                      Anvi'o genomes storage file (default: None)\n  --ngram-window-range\
+  \ NGRAM_WINDOW_RANGE\n                        The range of window sizes of Ngrams\
+  \ to analyze for\n                        synteny patterns.Please format the window-range\
+  \ as x:y\n                        (e.g. Window sizes 2 to 4 would be denoted as:\
+  \ 2:4)\n                        (default: 2:3)\n  -o FILE_PATH, --output-file FILE_PATH\n\
+  \                        File path to store results. (default: None)\n\nAnnotation\
+  \ sources for Ngrams:\n  Choose one source of annotations for your Ngrams.\n\n \
+  \ --annotation-source SOURCE NAME\n                        Get functional annotations\
+  \ for a specific annotation\n                        source. You can use the flag\
+  \ '--list-annotation-\n                        sources' to learn about what sources\
+  \ are available.\n                        (default: None)\n  -p PAN_DB, --pan-db\
+  \ PAN_DB\n                        Anvi'o pan database (default: None)\n  -n NGRAM_SOURCE,\
+  \ --ngram-source NGRAM_SOURCE\n                        If two annotation sources\
+  \ are provided, please choose\n                        one annotation source that\
+  \ will be used to calcuate\n                        Ngrams (e.g. gene_clusters,\
+  \ COG_FUNCTION) (default:\n                        None)\n\nOptional arguments:\n\
+  \  -l, --list-annotation-sources\n                        List available functional\
+  \ annotation sources.\n                        (default: False)\n  --analyze-unknown-functions\n\
+  \                        Provide this flag if you want anvi-analyze-synteny to\n\
+  \                        report Ngrams that contain gene calls that have no\n  \
+  \                      annotation. (default: False)\n  -G GENOME_NAMES, --genome-names\
+  \ GENOME_NAMES\n                        Genome names to 'focus'. You can use this\
+  \ parameter to\n                        limit the genomes included in your analysis.\
+  \ You can\n                        provide these names as a comma-separated list\
+  \ of\n                        names, or you can put them in a file, where you have\
+  \ a\n                        single genome name in each line, and provide the file\n\
+  \                        path. (default: None)\n  --first-functional-hit-only\n\
+  \                        Use this flag if you want to use on the first\n       \
+  \                 functional annotation when making ngrams and assigning\n     \
+  \                   annotations. In some cases, anvio reports more than\n      \
+  \                  one annotation when there are multiple good hits to\n       \
+  \                 the gene. When this happens, all annotations will be\n       \
+  \                 reported in order of alignment score and delimited by\n      \
+  \                  '!!!' e.g. 'COG123!!!COG456!!!COG789'. This flag will\n     \
+  \                   report 'COG123!!!COG456!!!COG789' as 'COG123'.\n           \
+  \             (default: False)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   Extract ngrams, as in 'co-occurring genes\
+  \ in synteny', from genomes\n\n\U0001F9C0 Can consume: \n\n   genomes-storage-db\
+  \ / functions / pan-db\n   \n\U0001F355 Can provide: \n\n   ngrams\n   \n\U0001F37A\
+  \ More on `anvi-analyze-synteny`:\n\n   https://merenlab.org/software/anvio/help/7/programs/anvi-analyze-synteny\n\
+  \n\U0001F37B All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

@@ -12,6 +12,9 @@ task Esimsa {
       ~{max_charge} \
       ~{var_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     peak_list: ""
     max_charge: ""

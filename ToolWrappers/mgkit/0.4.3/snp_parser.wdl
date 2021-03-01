@@ -34,6 +34,9 @@ task SnpParser {
       ~{if (cite) then "--cite" else ""} \
       ~{if (manual) then "--manual" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "Ouput file (default: snp_data.pickle)"
     min_qual: "Minimum SNP quality (Phred score) (default: 30)"

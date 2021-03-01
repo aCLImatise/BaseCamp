@@ -18,6 +18,9 @@ task OptimirLibprep {
       ~{if defined(dir_output) then ("--dirOutput " +  '"' + dir_output + '"') else ""} \
       ~{if defined(bowtie_two_build) then ("--bowtie2_build " +  '"' + bowtie_two_build + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf: "Full path of the input VCF file."
     matures_fast_a: "Path to the reference library containing mature miRNAs\\nsequences [default: miRBase 21]"

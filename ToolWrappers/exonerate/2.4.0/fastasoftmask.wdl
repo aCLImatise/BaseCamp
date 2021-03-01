@@ -4,6 +4,9 @@ task Fastasoftmask {
   command <<<
     fastasoftmask
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

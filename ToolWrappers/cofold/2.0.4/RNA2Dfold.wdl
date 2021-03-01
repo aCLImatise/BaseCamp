@@ -42,6 +42,9 @@ task RNA2Dfold {
       ~{if (no_gu) then "--noGU" else ""} \
       ~{if (no_closing_gu) then "--noClosingGU" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     num_threads: "Set the number of threads used for calculations\\n(only available when compiled with OpenMP\\nsupport)"

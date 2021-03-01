@@ -26,6 +26,9 @@ task PathoscopeREP {
       ~{if defined(sam_file) then ("-samfile " +  '"' + sam_file + '"') else ""} \
       ~{if (no_display_cut_off) then "--noDisplayCutoff" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sam_tools_home: "Full Path to samtools binary directory (Default: Uses\\nsamtools in system path)"
     dbhost: "specify hostname running mysql if you want to use\\nmysql instead of hash method in mapping gi to taxonomy\\nid"

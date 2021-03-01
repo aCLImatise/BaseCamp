@@ -12,6 +12,9 @@ task StrainestSnpdist {
       ~{dist} \
       ~{hist}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     snp: ""
     dist: ""

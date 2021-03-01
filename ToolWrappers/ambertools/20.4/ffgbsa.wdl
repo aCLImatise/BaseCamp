@@ -14,6 +14,9 @@ task Ffgbsa {
       ~{gb_flag} \
       ~{sa_flag}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pdb: "= PDB file name"
     prm: "= parameter-topology file name"

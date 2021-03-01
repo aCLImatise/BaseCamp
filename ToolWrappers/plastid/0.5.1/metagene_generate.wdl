@@ -60,6 +60,9 @@ task MetageneGenerate {
       ~{if (mask_tab_ix) then "--mask_tabix" else ""} \
       ~{if (mask_sorted) then "--mask_sorted" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     landmark: "Landmark around which to build metagene profile\\n(Default: cds_start)"
     upstream: "Nucleotides to include upstream of landmark (Default:\\n50)"

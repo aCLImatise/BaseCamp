@@ -18,6 +18,9 @@ task CheckmTetraOutputFile {
       ~{if (q) then "-q" else ""} \
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     q: ""
     t: ""

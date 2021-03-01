@@ -12,6 +12,9 @@ task Findphyl {
       ~{col_file} \
       ~{if defined(limit) then ("--limit " +  '"' + limit + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     limit: ""
     rate_file: ""

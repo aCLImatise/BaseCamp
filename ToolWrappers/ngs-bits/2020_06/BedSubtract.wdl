@@ -16,6 +16,9 @@ task BedSubtract {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_two: "Input BED file which is subtracted from 'in'."
     in: "Input BED file. If unset, reads from STDIN.\\nDefault value: ''"

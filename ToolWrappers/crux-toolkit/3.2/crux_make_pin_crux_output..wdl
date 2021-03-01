@@ -12,6 +12,9 @@ task CruxMakepinCruxoutput {
       ~{make_pin} \
       ~{target_input}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     make_pin: ""

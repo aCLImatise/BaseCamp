@@ -4,6 +4,9 @@ task MedpyWatershedpy {
   command <<<
     medpy_watershed_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

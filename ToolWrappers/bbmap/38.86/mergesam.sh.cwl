@@ -3,7 +3,7 @@ id: mergesam.sh.cwl
 inputs:
 - id: in_da
   doc: Disable assertions.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -da
 - id: in_files
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mergesam.sh

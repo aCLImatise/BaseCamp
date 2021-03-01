@@ -12,6 +12,9 @@ task BlossomRandGraphpy {
       ~{if defined(is_probability_edge) then ("-p " +  '"' + is_probability_edge + '"') else ""} \
       ~{if defined(weight_edge_uniformw) then ("-w " +  '"' + weight_edge_uniformw + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_vertices_graphnote: "is the number of vertices in graph\\nNote: N must be even and an integer"
     is_probability_edge: "is the probability of an edge"

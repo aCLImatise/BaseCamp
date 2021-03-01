@@ -18,6 +18,9 @@ task SelectFasta {
       ~{if (fast_a) then "-fasta" else ""} \
       ~{if (fast_a_sel) then "-fasta_sel" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "FILE  (fastq file to select reads from)"
     list: "FILE  (list of reads, fastq or fasta)"

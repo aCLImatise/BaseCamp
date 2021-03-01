@@ -1,15 +1,11 @@
 version 1.0
 
 task BlastdbConvert {
-  input {
-    String? out
-  }
   command <<<
-    blastdb_convert \
-      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""}
+    blastdb_convert
   >>>
-  parameter_meta {
-    out: "[-logfile File_Name] [-version]"
+  runtime {
+    docker: "None"
   }
   output {
     File out_stdout = stdout()

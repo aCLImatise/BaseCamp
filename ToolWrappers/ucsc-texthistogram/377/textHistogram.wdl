@@ -30,6 +30,9 @@ task TextHistogram {
       ~{if (freq) then "-freq" else ""} \
       ~{if defined(skip) then ("-skip " +  '"' + skip + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     binsize: "- Size of bins, default 1"
     max_bin_count: "- Maximum # of bins, default 25"

@@ -32,6 +32,9 @@ task Concat {
       ~{if (verbose) then "-verbose" else ""} \
       ~{if defined(error_report_output_file) then ("--error_report_output_file " +  '"' + error_report_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_wildcard: "wildcard specifying where files should be found (make\\nsure to surround in quotes if calling from command\\nline!) (default: None)"
     concat_direction: "which direction to concatenate (default: None)"

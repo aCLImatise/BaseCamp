@@ -8,6 +8,9 @@ task RandomSplit {
     random_split \
       ~{probability_that_line_goes_to_output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     probability_that_line_goes_to_output_file: ""
   }

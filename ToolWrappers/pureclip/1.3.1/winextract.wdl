@@ -18,6 +18,9 @@ task Winextract {
       ~{if (uow) then "--uow" else ""} \
       ~{if (asn) then "--asn" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "Genome reference file. Valid filetypes are: .fa and .fasta."
     in_bed: "Input cand-regions. Valid filetype is: .bed."

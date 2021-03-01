@@ -16,6 +16,9 @@ task Makeprotseq {
       ~{if (length) then "-length" else ""} \
       ~{if (use_insert) then "-useinsert" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pep_stats_file: "infile     This file should be a pepstats output file.\\nProtein sequences will be created with the\\ncomposition in the pepstats output file."
     amount: "integer    [100] Number of sequences created (Integer 1\\nor more)"

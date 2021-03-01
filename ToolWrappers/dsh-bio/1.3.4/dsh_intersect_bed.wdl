@@ -16,6 +16,9 @@ task Dshintersectbed {
       ~{if (output_file) then "--output-file" else ""} \
       ~{if (strategy) then "--strategy" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_input_file: "[class java.io.File]  A input BED file, default stdin [optional]"
     b_input_file: "[class java.io.File]  B input BED file [required]"

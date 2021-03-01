@@ -10,6 +10,9 @@ task SingularityCacheTypes {
       ~{clean} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clean: "Clean your local Singularity cache"
     list: "List your local Singularity cache"

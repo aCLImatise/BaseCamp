@@ -8,6 +8,9 @@ task CruxExtractcolumns {
     crux extract_columns \
       ~{tsv_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tsv_file: ""
   }

@@ -108,6 +108,9 @@ task Beast {
       ~{if defined(citations_file) then ("-citations_file " +  '"' + citations_file + '"') else ""} \
       ~{if defined(version) then ("-version " +  '"' + version + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "verbose XML parsing messages"
     warnings: "warning messages about BEAST XML file"

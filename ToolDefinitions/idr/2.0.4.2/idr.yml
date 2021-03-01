@@ -3,241 +3,241 @@ command:
 - idr
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: SAMPLES
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "SAMPLES, -s SAMPLES SAMPLES\nFiles containing peaks and scores."
+  optional: true
   synonyms:
   - --samples
+  description: "SAMPLES, -s SAMPLES SAMPLES\nFiles containing peaks and scores."
   args: !SimpleFlagArg
     name: SAMPLES
-  optional: true
 - !Flag
-  description: If provided, all peaks will be taken from this file.
+  optional: true
   synonyms:
   - --peak-list
   - -p
+  description: If provided, all peaks will be taken from this file.
   args: !SimpleFlagArg
     name: PEAK_LIST
-  optional: true
 - !Flag
-  description: File type of --samples and --peak-list.
+  optional: true
   synonyms:
   - --input-file-type
+  description: File type of --samples and --peak-list.
   args: !ChoiceFlagArg
     choices: !!set
-      narrowPeak:
-      broadPeak:
       bed:
       gff:
-  optional: true
+      broadPeak:
+      narrowPeak:
 - !Flag
-  description: "Which column to use to rank peaks.\nOptions: signal.value p.value\
-    \ q.value columnIndex\nDefaults:\nnarrowPeak/broadPeak: signal.value\nbed: score"
+  optional: true
   synonyms:
   - --rank
+  description: "Which column to use to rank peaks.\nOptions: signal.value p.value\
+    \ q.value columnIndex\nDefaults:\nnarrowPeak/broadPeak: signal.value\nbed: score"
   args: !SimpleFlagArg
     name: RANK
-  optional: true
 - !Flag
-  description: "File to write output to.\nDefault: idrValues.txt"
+  optional: true
   synonyms:
   - --output-file
   - -o
+  description: "File to write output to.\nDefault: idrValues.txt"
   args: !SimpleFlagArg
     name: OUTPUT_FILE
-  optional: true
 - !Flag
-  description: Output file type. Defaults to input file type when available, otherwise
-    bed.
+  optional: true
   synonyms:
   - --output-file-type
+  description: Output file type. Defaults to input file type when available, otherwise
+    bed.
   args: !ChoiceFlagArg
     choices: !!set
-      narrowPeak:
-      broadPeak:
       bed:
-  optional: true
+      broadPeak:
+      narrowPeak:
 - !Flag
-  description: 'File to write output to. Default: stderr'
+  optional: true
   synonyms:
   - --log-output-file
   - -l
+  description: 'File to write output to. Default: stderr'
   args: !SimpleFlagArg
     name: LOG_OUTPUT_FILE
-  optional: true
 - !Flag
-  description: "Only return peaks with a global idr threshold below this value.\n\
-    Default: report all peaks"
+  optional: true
   synonyms:
   - --idr-threshold
   - -i
+  description: "Only return peaks with a global idr threshold below this value.\n\
+    Default: report all peaks"
   args: !SimpleFlagArg
     name: IDR_THRESHOLD
-  optional: true
 - !Flag
-  description: "Report statistics for peaks with a global idr below this value but\
-    \ return all peaks with an idr below --idr.\nDefault: 0.05"
+  optional: true
   synonyms:
   - --soft-idr-threshold
+  description: "Report statistics for peaks with a global idr below this value but\
+    \ return all peaks with an idr below --idr.\nDefault: 0.05"
   args: !SimpleFlagArg
     name: SOFT_IDR_THRESHOLD
-  optional: true
 - !Flag
-  description: Use old output format.
+  optional: true
   synonyms:
   - --use-old-output-format
+  description: Use old output format.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Plot the results to [OFNAME].png
+  optional: true
   synonyms:
   - --plot
+  description: Plot the results to [OFNAME].png
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Use peaks without an overlapping match and set the value to 0.
+  optional: true
   synonyms:
   - --use-nonoverlapping-peaks
+  description: Use peaks without an overlapping match and set the value to 0.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Which method to use for merging peaks.\nDefault: 'sum' for signal/score/column\
-    \ indexes, 'min' for p/q-value."
+  optional: true
   synonyms:
   - --peak-merge-method
+  description: "Which method to use for merging peaks.\nDefault: 'sum' for signal/score/column\
+    \ indexes, 'min' for p/q-value."
   args: !ChoiceFlagArg
     choices: !!set
-      avg:
+      sum:
       min:
       max:
-      sum:
-  optional: true
+      avg:
 - !Flag
-  description: 'Initial value of mu. Default: 0.10'
+  optional: true
   synonyms:
   - --initial-mu
+  description: 'Initial value of mu. Default: 0.10'
   args: !SimpleFlagArg
     name: INITIAL_MU
-  optional: true
 - !Flag
-  description: 'Initial value of sigma. Default: 1.00'
+  optional: true
   synonyms:
   - --initial-sigma
+  description: 'Initial value of sigma. Default: 1.00'
   args: !SimpleFlagArg
     name: INITIAL_SIGMA
-  optional: true
 - !Flag
-  description: 'Initial value of rho. Default: 0.20'
+  optional: true
   synonyms:
   - --initial-rho
+  description: 'Initial value of rho. Default: 0.20'
   args: !SimpleFlagArg
     name: INITIAL_RHO
-  optional: true
 - !Flag
-  description: 'Initial value of the mixture params. Default: 0.50'
+  optional: true
   synonyms:
   - --initial-mix-param
+  description: 'Initial value of the mixture params. Default: 0.50'
   args: !SimpleFlagArg
     name: INITIAL_MIX_PARAM
-  optional: true
 - !Flag
-  description: Fix mu to the starting point and do not let it vary.
+  optional: true
   synonyms:
   - --fix-mu
+  description: Fix mu to the starting point and do not let it vary.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Fix sigma to the starting point and do not let it vary.
+  optional: true
   synonyms:
   - --fix-sigma
+  description: Fix sigma to the starting point and do not let it vary.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Allow signal points that are below the noise mean (should only be used
-    if you know what you are doing).
+  optional: true
   synonyms:
   - --dont-filter-peaks-below-noise-mean
+  description: Allow signal points that are below the noise mean (should only be used
+    if you know what you are doing).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --use-best-multisummit-IDR
   description: Set the IDR value for a group of multi summit peaks (a group of peaks
     with the same chr/start/stop but different summits) to the best value across all
     of these peaks. This is a work around for peak callers that don't do a good job
     splitting scores across multi summit peaks (e.g. MACS). If set in conjunction
     with --plot two plots will be created - one with alternate summits and one without.  Use
     this option with care.
-  synonyms:
-  - --use-best-multisummit-IDR
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Allow negative values for scores. (should only be used if you know
-    what you are doing)
+  optional: true
   synonyms:
   - --allow-negative-scores
+  description: Allow negative values for scores. (should only be used if you know
+    what you are doing)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'The random seed value (sor braking ties). Default: 0'
+  optional: true
   synonyms:
   - --random-seed
+  description: 'The random seed value (sor braking ties). Default: 0'
   args: !SimpleFlagArg
     name: RANDOM_SEED
-  optional: true
 - !Flag
-  description: 'The maximum number of optimization iterations. Default: 3000'
+  optional: true
   synonyms:
   - --max-iter
+  description: 'The maximum number of optimization iterations. Default: 3000'
   args: !SimpleFlagArg
     name: MAX_ITER
-  optional: true
 - !Flag
-  description: 'The maximum change in parameter value changes for convergence. Default:
-    1.00e-06'
+  optional: true
   synonyms:
   - --convergence-eps
+  description: 'The maximum change in parameter value changes for convergence. Default:
+    1.00e-06'
   args: !SimpleFlagArg
     name: CONVERGENCE_EPS
-  optional: true
 - !Flag
-  description: Only return the merged peak list.
+  optional: true
   synonyms:
   - --only-merge-peaks
+  description: Only return the merged peak list.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Print out additional debug information
+  optional: true
   synonyms:
   - --verbose
+  description: Print out additional debug information
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Don't print any status messages
+  optional: true
   synonyms:
   - --quiet
+  description: Don't print any status messages
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: idr [-h] --samples SAMPLES SAMPLES [--peak-list PEAK_LIST]\n  \
   \         [--input-file-type {narrowPeak,broadPeak,bed,gff}] [--rank RANK]\n   \
   \        [--output-file OUTPUT_FILE]\n           [--output-file-type {narrowPeak,broadPeak,bed}]\n\
@@ -301,3 +301,4 @@ help_text: "usage: idr [-h] --samples SAMPLES SAMPLES [--peak-list PEAK_LIST]\n 
   \ exit\n/usr/local/bin/idr --help\n"
 generated_using:
 - --help
+docker_image:

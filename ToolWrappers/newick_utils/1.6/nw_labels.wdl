@@ -14,6 +14,9 @@ task NwLabels {
       ~{if (print_roots_label) then "-r" else ""} \
       ~{if (tabseparated_print_single) then "-t" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_labels_inner: ": don't print labels of inner nodes"
     print_leaf_labels: ": don't print leaf labels"

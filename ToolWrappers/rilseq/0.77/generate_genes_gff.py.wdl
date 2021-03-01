@@ -10,6 +10,9 @@ task GenerateGenesGffpy {
       ~{bc_dir} \
       ~{if defined(bc_chr_list) then ("--BC_chrlist " +  '"' + bc_chr_list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bc_chr_list: "A comma separated dictionary of chromosome names from\\nthe BioCyc name to the bam name. See the names of\\nchromosomes in bam file using samtools view -H\\nfoo.bam.\\n"
     bc_dir: "BioCyc flat-files directory."

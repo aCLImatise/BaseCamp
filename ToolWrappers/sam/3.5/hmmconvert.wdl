@@ -14,6 +14,9 @@ task Hmmconvert {
       ~{if defined(binary_output) then ("-binary_output " +  '"' + binary_output + '"') else ""} \
       ~{if defined(option) then ("-option " +  '"' + option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     model_file: "model file"
     binary_output: "target format ASCII/BINARY"

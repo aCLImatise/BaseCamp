@@ -16,6 +16,9 @@ task Abyssalign {
       ~{if defined(di_align_m) then ("--dialign-m " +  '"' + di_align_m + '"') else ""} \
       ~{if defined(di_align_p) then ("--dialign-p " +  '"' + di_align_p + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     di_align_d: "dialign debug level, default: 0"

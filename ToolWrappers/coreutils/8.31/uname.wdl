@@ -24,6 +24,9 @@ task Uname {
       ~{if (hardware_platform) then "--hardware-platform" else ""} \
       ~{if (operating_system) then "--operating-system" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "print all information, in the following order,\\nexcept omit -p and -i if unknown:"
     kernel_name: "print the kernel name"

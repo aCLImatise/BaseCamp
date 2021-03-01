@@ -4,65 +4,57 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -v
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --print-reads
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --paired-end
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --min-quality
-  args: !SimpleFlagArg
-    name: FLOAT
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --min-length
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -p
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -n
+  - --numcpus
+  description: 'Number of CPUs (default: 1)'
   args: !SimpleFlagArg
     name: INT
+- !Flag
   optional: true
+  synonyms:
+  - -p
+  - --paired-end
+  description: The input reads are interleaved paired-end
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Print more status messages
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-length
+  description: Minimum read length allowed
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-quality
+  description: Minimum quality allowed
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --print-reads
+  description: "Print the reads as they are being validated (useful\nfor unix pipes)"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "Print this help menu.\n-n, --numcpus INT   Number of CPUs (default:\
-    \ 1)\n-p, --paired-end    The input reads are interleaved paired-end\n-v, --verbose\
-    \       Print more status messages\n--min-length INT\nMinimum read length allowed\n\
-    --min-quality FLOAT\nMinimum quality allowed\n--paired-end    The reads are interleaved\
-    \ paired-end\n--print-reads   Print the reads as they are being validated (useful\n\
-    for unix pipes)\n-v, --verbose\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Print this help menu.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Validates your reads and makes you feel good about yourself!\nUsage: fasten_validate\
@@ -77,3 +69,4 @@ help_text: "Validates your reads and makes you feel good about yourself!\nUsage:
   \                 for unix pipes)\n    -v, --verbose       \n\n"
 generated_using:
 - --help
+docker_image:

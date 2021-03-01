@@ -8,6 +8,9 @@ task Splitsource {
     splitsource \
       ~{if (feature) then "-feature" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     feature: "boolean    [N] Retain feature information"
   }

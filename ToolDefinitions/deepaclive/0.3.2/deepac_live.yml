@@ -1,0 +1,516 @@
+&id001 !Command
+command:
+- deepac-live
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug-no-eager
+  description: Disable eager mode.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug-tf
+  description: "Set tensorflow debug info verbosity level. 0 = max, 3\n= min. Default:\
+    \ 2 (errors); 3 for tests (muted)"
+  args: !SimpleFlagArg
+    name: DEBUG_TF
+- !Flag
+  optional: true
+  synonyms:
+  - --debug-device
+  description: Enable verbose device placement information.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force-cpu
+  description: Use a CPU even if GPUs are available.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tpu
+  description: "TPU name: 'colab' for Google Colab, or name of your\nTPU on GCE.\n"
+  args: !SimpleFlagArg
+    name: TPU
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - deepac-live
+  - details.
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: deepac-live
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug-tf
+    description: ''
+    args: !SimpleFlagArg
+      name: DEBUG_TF
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug-no-eager
+    description: ''
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: deepac-live [-h] [-v] [--debug-no-eager] [--debug-tf DEBUG_TF]\n\
+    \                   [--debug-device] [--force-cpu] [--tpu TPU]\n             \
+    \      {sender,receiver,refilter,local,test} ...\ndeepac-live: error: argument\
+    \ subparser: invalid choice: 'details.' (choose from 'sender', 'receiver', 'refilter',\
+    \ 'local', 'test')\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/deepaclive:0.3.2--py_0
+- !Command
+  command:
+  - deepac-live
+  - thresholds.
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: deepac-live
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug-tf
+    description: ''
+    args: !SimpleFlagArg
+      name: DEBUG_TF
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug-no-eager
+    description: ''
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: deepac-live [-h] [-v] [--debug-no-eager] [--debug-tf DEBUG_TF]\n\
+    \                   [--debug-device] [--force-cpu] [--tpu TPU]\n             \
+    \      {sender,receiver,refilter,local,test} ...\ndeepac-live: error: argument\
+    \ subparser: invalid choice: 'thresholds.' (choose from 'sender', 'receiver',\
+    \ 'refilter', 'local', 'test')\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/deepaclive:0.3.2--py_0
+- !Command
+  command:
+  - deepac-live
+  - receiver
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --read-length
+    description: Expected read length
+    args: !SimpleFlagArg
+      name: READ_LENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --seq-cycles
+    description: Comma-separated list of sequencing cycles to analyze.
+    args: !SimpleFlagArg
+      name: CYCLE_LIST
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --format
+    description: Format of temp files. bam or fasta.
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -B
+    - --barcodes
+    description: "Comma-separated list of barcodes of samples to\nanalyze. Default:\
+      \ \"undetermined\""
+    args: !SimpleFlagArg
+      name: BARCODES
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --command
+    description: DeePaC command to use (switches builtin models).
+    args: !SimpleFlagArg
+      name: COMMAND
+  - !Flag
+    optional: true
+    synonyms:
+    - -C
+    - --custom
+    description: Use a custom model.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --model
+    description: Model to use. "rapid", "sensitive" or custom .h5 file.
+    args: !SimpleFlagArg
+      name: MODEL
+  - !Flag
+    optional: true
+    synonyms:
+    - -N
+    - --n-cpus-rec
+    description: 'Number of cores used by the receiver. Default: all'
+    args: !SimpleFlagArg
+      name: N_CPUS_REC
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gpus
+    description: 'GPU devices to use (comma-separated). Default: all'
+    args: !RepeatFlagArg
+      name: GPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threshold
+    description: Classification threshold.
+    args: !SimpleFlagArg
+      name: THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    - --receiver-input
+    description: Receiver input directory.
+    args: !SimpleFlagArg
+      name: REC_IN_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    - --receiver-output
+    description: Receiver output directory.
+    args: !SimpleFlagArg
+      name: REC_OUT_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --discard-neg
+    description: Don't save predictions for nonpathogenic reads.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: deepac-live receiver [-h] -l READ_LENGTH -s CYCLE_LIST [-f FORMAT]\n\
+    \                            [-B BARCODES] [-c COMMAND | -C] [-m MODEL]\n    \
+    \                        [-N N_CPUS_REC] [-g GPUS [GPUS ...]]\n              \
+    \              [-t THRESHOLD] -I REC_IN_DIR -O REC_OUT_DIR [-d]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -l READ_LENGTH, --read-length\
+    \ READ_LENGTH\n                        Expected read length\n  -s CYCLE_LIST,\
+    \ --seq-cycles CYCLE_LIST\n                        Comma-separated list of sequencing\
+    \ cycles to analyze.\n  -f FORMAT, --format FORMAT\n                        Format\
+    \ of temp files. bam or fasta.\n  -B BARCODES, --barcodes BARCODES\n         \
+    \               Comma-separated list of barcodes of samples to\n             \
+    \           analyze. Default: \"undetermined\"\n  -c COMMAND, --command COMMAND\n\
+    \                        DeePaC command to use (switches builtin models).\n  -C,\
+    \ --custom          Use a custom model.\n  -m MODEL, --model MODEL\n         \
+    \               Model to use. \"rapid\", \"sensitive\" or custom .h5 file.\n \
+    \ -N N_CPUS_REC, --n-cpus-rec N_CPUS_REC\n                        Number of cores\
+    \ used by the receiver. Default: all\n  -g GPUS [GPUS ...], --gpus GPUS [GPUS\
+    \ ...]\n                        GPU devices to use (comma-separated). Default:\
+    \ all\n  -t THRESHOLD, --threshold THRESHOLD\n                        Classification\
+    \ threshold.\n  -I REC_IN_DIR, --receiver-input REC_IN_DIR\n                 \
+    \       Receiver input directory.\n  -O REC_OUT_DIR, --receiver-output REC_OUT_DIR\n\
+    \                        Receiver output directory.\n  -d, --discard-neg     Don't\
+    \ save predictions for nonpathogenic reads.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/deepaclive:0.3.2--py_0
+- !Command
+  command:
+  - deepac-live
+  - test
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --command
+    description: DeePaC command to use (switches builtin models).
+    args: !SimpleFlagArg
+      name: COMMAND
+  - !Flag
+    optional: true
+    synonyms:
+    - -C
+    - --custom
+    description: Use a custom model.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --model
+    description: Model to use. "rapid", "sensitive" or custom .h5 file.
+    args: !SimpleFlagArg
+      name: MODEL
+  - !Flag
+    optional: true
+    synonyms:
+    - -N
+    - --n-cpus-rec
+    description: 'Number of cores used by the receiver. Default: all'
+    args: !SimpleFlagArg
+      name: N_CPUS_REC
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gpus
+    description: 'GPU devices to use (comma-separated). Default: all'
+    args: !RepeatFlagArg
+      name: GPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --keep
+    description: Don't delete previous test output.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --scale
+    description: "Generate s*1024 reads for testing (Default: s=1).\n"
+    args: !SimpleFlagArg
+      name: SCALE
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: deepac-live test [-h] [-c COMMAND | -C] [-m MODEL] [-N N_CPUS_REC]\n\
+    \                        [-g GPUS [GPUS ...]] [-k] [-s SCALE]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -c COMMAND, --command\
+    \ COMMAND\n                        DeePaC command to use (switches builtin models).\n\
+    \  -C, --custom          Use a custom model.\n  -m MODEL, --model MODEL\n    \
+    \                    Model to use. \"rapid\", \"sensitive\" or custom .h5 file.\n\
+    \  -N N_CPUS_REC, --n-cpus-rec N_CPUS_REC\n                        Number of cores\
+    \ used by the receiver. Default: all\n  -g GPUS [GPUS ...], --gpus GPUS [GPUS\
+    \ ...]\n                        GPU devices to use (comma-separated). Default:\
+    \ all\n  -k, --keep            Don't delete previous test output.\n  -s SCALE,\
+    \ --scale SCALE\n                        Generate s*1024 reads for testing (Default:\
+    \ s=1).\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/deepaclive:0.3.2--py_0
+- !Command
+  command:
+  - deepac-live
+  - refilter
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --read-length
+    description: Expected read length
+    args: !SimpleFlagArg
+      name: READ_LENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --seq-cycles
+    description: Comma-separated list of sequencing cycles to analyze.
+    args: !SimpleFlagArg
+      name: CYCLE_LIST
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --format
+    description: Format of temp files. bam or fasta.
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -B
+    - --barcodes
+    description: "Comma-separated list of barcodes of samples to\nanalyze. Default:\
+      \ \"undetermined\""
+    args: !SimpleFlagArg
+      name: BARCODES
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threshold
+    description: Classification threshold.
+    args: !SimpleFlagArg
+      name: THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --fasta-input
+    description: Receiver input directory.
+    args: !SimpleFlagArg
+      name: FASTA_IN_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    - --preds-input
+    description: Comma-separated list of receiver output directories.
+    args: !SimpleFlagArg
+      name: PREDS_IN_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    - --refilter-output
+    description: Refilter output directory.
+    args: !SimpleFlagArg
+      name: REF_OUT_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --discard-neg
+    description: Don't save predictions for nonpathogenic reads.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: deepac-live refilter [-h] -l READ_LENGTH -s CYCLE_LIST [-f FORMAT]\n\
+    \                            [-B BARCODES] [-t THRESHOLD] -i FASTA_IN_DIR -I\n\
+    \                            PREDS_IN_DIR -O REF_OUT_DIR [-d]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -l READ_LENGTH, --read-length\
+    \ READ_LENGTH\n                        Expected read length\n  -s CYCLE_LIST,\
+    \ --seq-cycles CYCLE_LIST\n                        Comma-separated list of sequencing\
+    \ cycles to analyze.\n  -f FORMAT, --format FORMAT\n                        Format\
+    \ of temp files. bam or fasta.\n  -B BARCODES, --barcodes BARCODES\n         \
+    \               Comma-separated list of barcodes of samples to\n             \
+    \           analyze. Default: \"undetermined\"\n  -t THRESHOLD, --threshold THRESHOLD\n\
+    \                        Classification threshold.\n  -i FASTA_IN_DIR, --fasta-input\
+    \ FASTA_IN_DIR\n                        Receiver input directory.\n  -I PREDS_IN_DIR,\
+    \ --preds-input PREDS_IN_DIR\n                        Comma-separated list of\
+    \ receiver output directories.\n  -O REF_OUT_DIR, --refilter-output REF_OUT_DIR\n\
+    \                        Refilter output directory.\n  -d, --discard-neg     Don't\
+    \ save predictions for nonpathogenic reads.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/deepaclive:0.3.2--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Print version.
+  args: !EmptyFlagArg {}
+help_text: "usage: deepac-live [-h] [-v] [--debug-no-eager] [--debug-tf DEBUG_TF]\n\
+  \                   [--debug-device] [--force-cpu] [--tpu TPU]\n               \
+  \    {sender,receiver,refilter,local,test} ...\n\nRunning DeePaC in real time.\n\
+  \npositional arguments:\n  {sender,receiver,refilter,local,test}\n             \
+  \           DeePaC-live subcommands. See command --help for\n                  \
+  \      details.\n    sender              Prepare and send data.\n    receiver  \
+  \          Receive and analyze data.\n    refilter            Refilter data with\
+  \ ensembles or alternative\n                        thresholds.\n    local     \
+  \          Process data locally.\n    test                Test locally.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -v, --version\
+  \         Print version.\n  --debug-no-eager      Disable eager mode.\n  --debug-tf\
+  \ DEBUG_TF   Set tensorflow debug info verbosity level. 0 = max, 3\n           \
+  \             = min. Default: 2 (errors); 3 for tests (muted)\n  --debug-device\
+  \        Enable verbose device placement information.\n  --force-cpu           Use\
+  \ a CPU even if GPUs are available.\n  --tpu TPU             TPU name: 'colab' for\
+  \ Google Colab, or name of your\n                        TPU on GCE.\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/deepaclive:0.3.2--py_0

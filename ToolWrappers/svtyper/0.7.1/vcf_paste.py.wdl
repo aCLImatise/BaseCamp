@@ -12,6 +12,9 @@ task VcfPastepy {
       ~{if (sum_quals) then "--sum_quals" else ""} \
       ~{if defined(vcf_list) then ("--vcf_list " +  '"' + vcf_list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     master: "VCF file to set first 8 columns of variant info [first file in vcf_list]"
     sum_quals: "Sum QUAL scores of input VCFs as output QUAL score"

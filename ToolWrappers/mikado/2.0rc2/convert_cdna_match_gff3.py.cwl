@@ -51,30 +51,16 @@ inputs:
   type: string
   inputBinding:
     position: 9
-- id: in_match_slash_match_part
+- id: in_match
   doc: ''
   type: string
   inputBinding:
     position: 11
-- id: in_or
-  doc: ''
-  type: string
-  inputBinding:
-    position: 12
-- id: in_gtf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 14
-- id: in_file_dot
-  doc: ''
-  type: File
-  inputBinding:
-    position: 15
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - convert_cdna_match_gff3.py

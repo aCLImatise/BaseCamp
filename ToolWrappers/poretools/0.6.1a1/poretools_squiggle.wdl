@@ -16,6 +16,9 @@ task PoretoolsSquiggle {
       ~{if defined(num_facets) then ("--num-facets " +  '"' + num_facets + '"') else ""} \
       ~{if (theme_bw) then "--theme-bw" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     save_as: "Save the squiggle plot to a file."

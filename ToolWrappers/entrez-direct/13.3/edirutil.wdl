@@ -4,6 +4,9 @@ task Edirutil {
   command <<<
     edirutil
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

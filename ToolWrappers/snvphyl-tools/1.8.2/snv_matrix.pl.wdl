@@ -12,6 +12,9 @@ task SnvMatrixpl {
       ~{if (print_more_information) then "-v" else ""} \
       ~{if (prints_matrix_passed) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_more_information: ":  Print more information (to stderr)"
     prints_matrix_passed: ":  Prints matrix to passed file"

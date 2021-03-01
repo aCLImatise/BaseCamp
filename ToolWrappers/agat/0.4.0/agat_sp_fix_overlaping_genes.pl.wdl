@@ -2,18 +2,21 @@ version 1.0
 
 task AgatSpFixOverlapingGenespl {
   input {
-    File? file
+    File? input_gtfgff_file
     File? outfile
     String agat_sp_fix_overlap_ing_genes_do_tpl
   }
   command <<<
     agat_sp_fix_overlaping_genes_pl \
       ~{agat_sp_fix_overlap_ing_genes_do_tpl} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(input_gtfgff_file) then ("--file " +  '"' + input_gtfgff_file + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: "Input GTF/GFF file."
+    input_gtfgff_file: "Input GTF/GFF file."
     outfile: "Output file. If none given, will be display in standard output."
     agat_sp_fix_overlap_ing_genes_do_tpl: "Description:"
   }

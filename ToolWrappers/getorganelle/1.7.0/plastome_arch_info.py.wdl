@@ -4,7 +4,7 @@ task PlastomeArchInfopy {
   input {
     File? output_file
     Int? minimum_repeat_length
-    String? valid_bases_default
+    String? valid_bases_atgcrmykhbdvatgcrmykhbdv
     String fast_a_format_sequence_file
   }
   command <<<
@@ -12,12 +12,15 @@ task PlastomeArchInfopy {
       ~{fast_a_format_sequence_file} \
       ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""} \
       ~{if defined(minimum_repeat_length) then ("-r " +  '"' + minimum_repeat_length + '"') else ""} \
-      ~{if defined(valid_bases_default) then ("-v " +  '"' + valid_bases_default + '"') else ""}
+      ~{if defined(valid_bases_atgcrmykhbdvatgcrmykhbdv) then ("-v " +  '"' + valid_bases_atgcrmykhbdvatgcrmykhbdv + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "output file."
     minimum_repeat_length: "The minimum repeat length treated as the IR region of\\nplastome. Default: [5000]"
-    valid_bases_default: "Valid bases. Default: ATGCRMYKHBDVatgcrmykhbdv"
+    valid_bases_atgcrmykhbdvatgcrmykhbdv: "Valid bases. Default: ATGCRMYKHBDVatgcrmykhbdv"
     fast_a_format_sequence_file: ""
   }
   output {

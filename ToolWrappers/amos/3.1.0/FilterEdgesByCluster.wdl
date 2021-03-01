@@ -14,6 +14,9 @@ task FilterEdgesByCluster {
       ~{if defined(clusters) then ("-clusters " +  '"' + clusters + '"') else ""} \
       ~{if (b) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clusters: ""
     b: ""

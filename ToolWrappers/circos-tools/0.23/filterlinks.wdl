@@ -12,6 +12,9 @@ task Filterlinks {
       ~{if (no_inter) then "-nointer" else ""} \
       ~{if defined(links) then ("-links " +  '"' + links + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_intra: ""
     no_inter: ""

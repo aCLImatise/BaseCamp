@@ -46,6 +46,9 @@ task Srapathorig2108 {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     function: "function to perform (resolve, names,\\nsearch) default=resolve or names if\\nprotocol is specified"
     location: "location of data"

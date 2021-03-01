@@ -3,239 +3,239 @@ command:
 - kissplice
 positional:
 - !Positional
-  description: --output-path         Will output the id of the nodes composing the
-    two
+  optional: false
   position: 0
   name: bubble
-  optional: false
+  description: --output-path         Will output the id of the nodes composing the
+    two
 named:
 - !Flag
-  description: "input fasta/q read files or compressed (.gz) fasta/q\nfiles (mutiple,\
-    \ such as \"-r file1 -r file2...\")"
+  optional: true
   synonyms:
   - -r
+  description: "input fasta/q read files or compressed (.gz) fasta/q\nfiles (mutiple,\
+    \ such as \"-r file1 -r file2...\")"
   args: !SimpleFlagArg
     name: READFILES
-  optional: true
 - !Flag
-  description: k-mer size (default=41)
+  optional: true
   synonyms:
   - -k
+  description: k-mer size (default=41)
   args: !SimpleFlagArg
     name: KVAL
-  optional: true
 - !Flag
-  description: maximum number of branching nodes (default 5)
+  optional: true
   synonyms:
   - -b
+  description: maximum number of branching nodes (default 5)
   args: !SimpleFlagArg
     name: BVAL
-  optional: true
 - !Flag
-  description: 'maximal length of the shorter path (default: 2k+1)'
+  optional: true
   synonyms:
   - -l
+  description: 'maximal length of the shorter path (default: 2k+1)'
   args: !SimpleFlagArg
     name: LLMAX
-  optional: true
 - !Flag
-  description: minimum length of the shorter path (default 2k-8)
+  optional: true
   synonyms:
   - -m
+  description: minimum length of the shorter path (default 2k-8)
   args: !SimpleFlagArg
     name: LL_MIN
-  optional: true
 - !Flag
-  description: "maximum length of the longest path (default 1000000),\nskipped exons\
-    \ longer than UL_MAX are not reported"
+  optional: true
   synonyms:
   - -M
+  description: "maximum length of the longest path (default 1000000),\nskipped exons\
+    \ longer than UL_MAX are not reported"
   args: !SimpleFlagArg
     name: UL_MAX
-  optional: true
 - !Flag
-  description: "path and prefix to pre-built de Bruijn graph (suffixed\nby .edges/.nodes)\
-    \ if jointly used with -r, graph used\nto find bubbles and reads used for quantification"
+  optional: true
   synonyms:
   - -g
+  description: "path and prefix to pre-built de Bruijn graph (suffixed\nby .edges/.nodes)\
+    \ if jointly used with -r, graph used\nto find bubbles and reads used for quantification"
   args: !SimpleFlagArg
     name: GRAPH_PREFIX
-  optional: true
 - !Flag
-  description: "path to store the results and the summary log file\n(default = ./results)"
+  optional: true
   synonyms:
   - -o
+  description: "path to store the results and the summary log file\n(default = ./results)"
   args: !SimpleFlagArg
     name: OUT_DIR
-  optional: true
 - !Flag
-  description: "specific directory (absolute path) where to build\ntemporary files\
-    \ (default temporary directory\notherwise)"
+  optional: true
   synonyms:
   - -d
+  description: "specific directory (absolute path) where to build\ntemporary files\
+    \ (default temporary directory\notherwise)"
   args: !SimpleFlagArg
     name: PATH_TO_TMP
-  optional: true
 - !Flag
-  description: number of cores (must be <= number of physical cores)
+  optional: true
   synonyms:
   - -t
+  description: number of cores (must be <= number of physical cores)
   args: !SimpleFlagArg
     name: NBPROCS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
   description: "0, 1 or 2. Changes which types of SNPs will be output.\nIf 0 (default),\
     \ will not output SNPs. If 1, will\noutput Type0a-SNPs. If 2, will output Type0a\
     \ and\nType0b SNPs (warning: this option may increase a lot\nthe running time.\
     \ You might also want to try the\nexperimental algorithm here)"
-  synonyms:
-  - -s
   args: !SimpleFlagArg
     name: OUTPUT_SNPS
-  optional: true
 - !Flag
-  description: Verbose mode
+  optional: true
   synonyms:
   - -v
+  description: Verbose mode
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: keep the nodes/edges file for unfinished bccs
+  optional: true
   synonyms:
   - -u
+  description: keep the nodes/edges file for unfinished bccs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "an integer, k-mers present strictly less than this\nnumber of times\
-    \ in the dataset will be discarded\n(default 2)"
+  optional: true
   synonyms:
   - -c
+  description: "an integer, k-mers present strictly less than this\nnumber of times\
+    \ in the dataset will be discarded\n(default 2)"
   args: !SimpleFlagArg
     name: MIN_COV
-  optional: true
 - !Flag
-  description: "a percentage from [0,1), edges with relative coverage\nbelow this\
-    \ number are removed (default 0.05)"
+  optional: true
   synonyms:
   - -C
+  description: "a percentage from [0,1), edges with relative coverage\nbelow this\
+    \ number are removed (default 0.05)"
   args: !SimpleFlagArg
     name: MIN_RELATIVE_COV
-  optional: true
 - !Flag
-  description: estimated genome/transcriptome size (default = 1G)
+  optional: true
   synonyms:
   - -z
+  description: estimated genome/transcriptome size (default = 1G)
   args: !SimpleFlagArg
     name: GENOME_SIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
   description: "edit distance threshold, if the two sequences (paths)\nof a bubble\
     \ have edit distance smaller than this\nthreshold, the bubble is classified as\
     \ an inexact\nrepeat (default 3)"
-  synonyms:
-  - -e
   args: !SimpleFlagArg
     name: MIN_EDIT_DIST
-  optional: true
 - !Flag
-  description: "maximal number of bubbles enumeration in each bcc. If\nexceeded, no\
-    \ bubble is output for the bcc (default\n100M)"
+  optional: true
   synonyms:
   - -y
+  description: "maximal number of bubbles enumeration in each bcc. If\nexceeded, no\
+    \ bubble is output for the bcc (default\n100M)"
   args: !SimpleFlagArg
     name: MAX_CYCLES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mismatches
   description: "Maximal number of substitutions authorized between a\nread and a fragment\
     \ (for quantification only), default\n0. If you increase the mismatch and use\
     \ --counts think\nof increasing min_overlap too."
-  synonyms:
-  - --mismatches
   args: !SimpleFlagArg
     name: MISM
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --counts
   description: "0,1 or 2 . Changes how the counts will be reported. If\n0 (default):\
     \ total counts, if 1: counts on junctions,\nif 2: all counts. see User guide for\
     \ more information"
-  synonyms:
-  - --counts
   args: !SimpleFlagArg
     name: COUNTSMETHOD
-  optional: true
 - !Flag
-  description: "Set how many nt must overlap a junction to be counted\nby --counts\
-    \ option. Default=3. see User guide for more\ninformation"
+  optional: true
   synonyms:
   - --min_overlap
+  description: "Set how many nt must overlap a junction to be counted\nby --counts\
+    \ option. Default=3. see User guide for more\ninformation"
   args: !SimpleFlagArg
     name: MINOVERLAP
-  optional: true
 - !Flag
-  description: "max amount of time (in seconds) spent for enumerating\nbubbles in\
-    \ each bcc. If exceeded, no bubble is output\nfor the bcc (default 100000)"
+  optional: true
   synonyms:
   - --timeout
+  description: "max amount of time (in seconds) spent for enumerating\nbubbles in\
+    \ each bcc. If exceeded, no bubble is output\nfor the bcc (default 100000)"
   args: !SimpleFlagArg
     name: TIMEOUT
-  optional: true
 - !Flag
-  description: Will output the maximum non-ambiguous context of a
+  optional: true
   synonyms:
   - --output-context
+  description: Will output the maximum non-ambiguous context of a
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Will output the number of branching nodes in each\npath."
+  optional: true
   synonyms:
   - --output-branch-count
+  description: "Will output the number of branching nodes in each\npath."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Keep the node/edges files for all bccs.
+  optional: true
   synonyms:
   - --keep-bccs
+  description: Keep the node/edges files for all bccs.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Uses a new experimental algorithm that searches for\nbubbles by listing\
-    \ all paths."
+  optional: true
   synonyms:
   - --experimental
+  description: "Uses a new experimental algorithm that searches for\nbubbles by listing\
+    \ all paths."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-memory
   description: "If you use the experimental algorithm, you must\nprovide the maximum\
     \ size of the process's virtual\nmemory (address space) in megabytes (default\n\
     unlimited). WARNING: this option does not work on Mac\noperating systems."
-  synonyms:
-  - --max-memory
   args: !SimpleFlagArg
     name: MAX_MEMORY
-  optional: true
 - !Flag
-  description: "Keep the .counts file after the sequencing-errors-\nremoval step.\n"
+  optional: true
   synonyms:
   - --keep-counts
+  description: "Keep the .counts file after the sequencing-errors-\nremoval step.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "KISSPLICE_INSTDIR: /usr/local/bin\nKS_SEC_EXEC_PATH: /usr/local/libexec/kissplice\n\
   usage: kissplice [-h] [-r READFILES] [-k KVAL] [-b BVAL] [-l LLMAX]\n          \
   \       [-m LL_MIN] [-M UL_MAX] [-g GRAPH_PREFIX] [-o OUT_DIR]\n               \
@@ -307,3 +307,4 @@ help_text: "KISSPLICE_INSTDIR: /usr/local/bin\nKS_SEC_EXEC_PATH: /usr/local/libe
   \ the sequencing-errors-\n                        removal step.\n"
 generated_using:
 - --help
+docker_image:

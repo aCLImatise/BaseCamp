@@ -14,6 +14,9 @@ task GcloudComputeTargetinstances {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create a target instance for handling traffic from a forwarding rule."
     delete: "Delete target instances."

@@ -4,6 +4,9 @@ task Bamlastfilter {
   command <<<
     bamlastfilter
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

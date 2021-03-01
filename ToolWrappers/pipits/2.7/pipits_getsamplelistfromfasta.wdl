@@ -8,7 +8,7 @@ task PipitsGetsamplelistfromfasta {
     String a
     String sample
     String list
-    File file
+    File var_file
     String from
     String fast_a
     String sequences_dot
@@ -19,13 +19,16 @@ task PipitsGetsamplelistfromfasta {
       ~{a} \
       ~{sample} \
       ~{list} \
-      ~{file} \
+      ~{var_file} \
       ~{from} \
       ~{fast_a} \
       ~{sequences_dot} \
       ~{if (o) then "-o" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     i: ""
@@ -33,7 +36,7 @@ task PipitsGetsamplelistfromfasta {
     a: ""
     sample: ""
     list: ""
-    file: ""
+    var_file: ""
     from: ""
     fast_a: ""
     sequences_dot: ""

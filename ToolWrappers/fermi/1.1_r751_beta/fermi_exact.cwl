@@ -3,7 +3,7 @@ id: fermi_exact.cwl
 inputs:
 - id: in_ms
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -Ms
 - id: in_idx_based_ot_bwt
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fermi

@@ -2,20 +2,20 @@ version 1.0
 
 task SplashPlothalflifespergene {
   input {
-    Boolean? t
-    String? slam
-    String? sim
+    String? slam_dunk_dir
+    File? bed
   }
   command <<<
     splash plot_halflifespergene \
-      ~{if (t) then "-t" else ""} \
-      ~{if defined(slam) then ("-slam " +  '"' + slam + '"') else ""} \
-      ~{if defined(sim) then ("-sim " +  '"' + sim + '"') else ""}
+      ~{if defined(slam_dunk_dir) then ("--slamdunkDir " +  '"' + slam_dunk_dir + '"') else ""} \
+      ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    t: ""
-    slam: ""
-    sim: ""
+    slam_dunk_dir: "T->C conversion rate"
+    bed: "BED file"
   }
   output {
     File out_stdout = stdout()

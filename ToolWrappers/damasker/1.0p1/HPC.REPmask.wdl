@@ -14,6 +14,9 @@ task HPCREPmask {
       ~{if (t) then "-t" else ""} \
       ~{if (vbd) then "-vbd" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     int_cint_readsdbdam: "<int> -c<int> <reads:db|dam> [<block:int>[-<range:int>]"
     t: ""

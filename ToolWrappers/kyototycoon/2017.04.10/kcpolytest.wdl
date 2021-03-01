@@ -30,6 +30,9 @@ task Kcpolytest {
       ~{if (hard) then "-hard" else ""} \
       ~{if defined(it) then ("-it " +  '"' + it + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rnd: ""
     th: ""

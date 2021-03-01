@@ -18,6 +18,9 @@ task Nullarborreportpl {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "Report name to put in the top heading"
     in_dir: "Nullarbor result folder"

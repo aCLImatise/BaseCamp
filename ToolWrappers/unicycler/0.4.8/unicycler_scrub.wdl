@@ -28,6 +28,9 @@ task UnicyclerScrub {
       ~{if defined(parameters) then ("--parameters " +  '"' + parameters + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reads_assembly_scrubbed: "These are the reads or assembly to be scrubbed (can\\nbe FASTA or FASTQ format"
     out: "The scrubbed reads or assembly will be saved to this\\nfile (will have the same format as the --input file\\nformat) or use \\\"none\\\" to not produce an output file"

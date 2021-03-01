@@ -2,8 +2,8 @@ version 1.0
 
 task PhyluceAlignFormatNexusFilesForRaxml {
   input {
-    String? var_output
     Directory? alignments
+    File? output_file_none
     Boolean? nexus
     Boolean? charsets
     String? verbosity
@@ -11,16 +11,19 @@ task PhyluceAlignFormatNexusFilesForRaxml {
   }
   command <<<
     phyluce_align_format_nexus_files_for_raxml \
-      ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""} \
       ~{if defined(alignments) then ("--alignments " +  '"' + alignments + '"') else ""} \
+      ~{if defined(output_file_none) then ("--output " +  '"' + output_file_none + '"') else ""} \
       ~{if (nexus) then "--nexus" else ""} \
       ~{if (charsets) then "--charsets" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    var_output: "[--nexus]"
     alignments: "The directory containing alignments to concatenate\\n(NEXUS-ONLY). (default: None)"
+    output_file_none: "The output file for the concatenated phylip data\\n(default: None)"
     nexus: "Export as NEXUS format (default: False)"
     charsets: "Add charsets to phylip file (default: False)"
     verbosity: "The logging level to use. (default: INFO)"
@@ -28,5 +31,6 @@ task PhyluceAlignFormatNexusFilesForRaxml {
   }
   output {
     File out_stdout = stdout()
+    File out_output_file_none = "${in_output_file_none}"
   }
 }

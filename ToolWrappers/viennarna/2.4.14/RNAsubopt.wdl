@@ -78,6 +78,9 @@ task RNAsubopt {
       ~{if (log_ml) then "--logML" else ""} \
       ~{if defined(param_file) then ("--paramFile " +  '"' + param_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     full_help: "Print help, including hidden options, and exit"
@@ -94,7 +97,7 @@ task RNAsubopt {
     enforce_constraint: "Enforce base pairs given by round brackets ( )\\nin structure constraint\\n(default=off)"
     shape: "Use SHAPE reactivity data in the folding\\nrecursions (does not work for Zuker\\nsuboptimals and stochastic backtracking yet)"
     shape_method: "=[D/Z/W] + [optional parameters]\\nSpecify the method how to convert SHAPE\\nreactivity data to pseudo energy\\ncontributions\\n(default=`D')"
-    shape_conversion: "+ [optional parameters]\\nSpecify the method used to convert SHAPE\\nreactivities to pairing probabilities when\\nusing the SHAPE approach of Zarringhalam et\\nal.\\n(default=`O')"
+    shape_conversion: "/C/S/L/O  + [optional parameters]\\nSpecify the method used to convert SHAPE\\nreactivities to pairing probabilities when\\nusing the SHAPE approach of Zarringhalam et\\nal.\\n(default=`O')"
     delta_energy: "Compute suboptimal structures with energy in a\\ncertain range of the optimum (kcal/mol).\\nDefault is calculation of mfe structure only."
     delta_energy_post: "Only print structures with energy within range\\nof the mfe after post reevaluation of\\nenergies."
     sorted: "Sort the suboptimal structures by energy.\\n(default=off)"

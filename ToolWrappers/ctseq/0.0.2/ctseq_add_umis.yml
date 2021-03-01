@@ -5,62 +5,70 @@ command:
 positional: []
 named:
 - !Flag
-  description: '[--umiExt UMIEXT]'
-  synonyms:
-  - --forwardExt
-  - --reverseExt
-  args: !SimpleFlagArg
-    name: FORWARDEXT
   optional: true
-- !Flag
+  synonyms:
+  - --umiType
   description: "Choose 'separate' if the UMIs for the reads are\ncontained in a separate\
     \ fastq file where the line\nafter the read name is the UMI. Choose 'inline' if\
     \ the\nUMIs are already included in the forward/reverse read\nfastq files in the\
     \ following format: '@M01806:488:0000\n00000-J36GT:1:1101:15963:1363:GTAGGTAAAGTG\n\
     1:N:0:CGAGTAAT' where 'GTAGGTAAAGTG' is the UMI"
-  synonyms:
-  - --umiType
   args: !ChoiceFlagArg
     choices: !!set
-      separate:
       inline:
-  optional: true
+      separate:
 - !Flag
-  description: Length of UMI sequence, e.g. 12 (required)
+  optional: true
   synonyms:
   - -l
   - --umiLength
+  description: Length of UMI sequence, e.g. 12 (required)
   args: !SimpleFlagArg
     name: UMILENGTH
-  optional: true
 - !Flag
-  description: "Path to directory containing fastq files;\nforward/reverse reads and\
-    \ umi files. If no '--dir' is\nspecified, ctseq will look in your current directory."
+  optional: true
   synonyms:
   - -d
   - --dir
+  description: "Path to directory containing fastq files;\nforward/reverse reads and\
+    \ umi files. If no '--dir' is\nspecified, ctseq will look in your current directory."
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --forwardExt
+  description: "Unique extension of fastq files containing FORWARD\nreads. Make sure\
+    \ to include '.gz' if your files are\ncompressed (required)"
+  args: !SimpleFlagArg
+    name: FORWARDEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --reverseExt
+  description: "Unique extension of fastq files containing REVERSE\nreads. Make sure\
+    \ to include '.gz' if your files are\ncompressed (required)"
+  args: !SimpleFlagArg
+    name: REVERSEEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --umiExt
   description: "Unique extension of fastq files containing the UMIs\n(This flag is\
     \ REQUIRED if UMIs are contained in\nseparate fastq file). Make sure to include\
     \ '.gz' if\nyour files are compressed.\n"
-  synonyms:
-  - --umiExt
   args: !SimpleFlagArg
     name: UMIEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: ctseq add_umis [-h] --umiType {separate,inline} -l UMILENGTH [-d\
@@ -89,3 +97,4 @@ help_text: "usage: ctseq add_umis [-h] --umiType {separate,inline} -l UMILENGTH 
   \ to include '.gz' if\n                        your files are compressed.\n"
 generated_using:
 - --help
+docker_image:

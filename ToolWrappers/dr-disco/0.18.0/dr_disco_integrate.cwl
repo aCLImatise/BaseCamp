@@ -4,13 +4,13 @@ inputs:
 - id: in_gtf
   doc: "Use gene annotation for estimating fusion genes and improve\nclassification\
     \ of exonic (GTF file)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --gtf
 - id: in_fast_a
   doc: "Use reference sequences to estimate edit distances to splice\njunction motifs\
     \ (FASTA file)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta
 - id: in_table_input_file
@@ -27,6 +27,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dr-disco

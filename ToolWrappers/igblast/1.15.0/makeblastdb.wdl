@@ -1,15 +1,11 @@
 version 1.0
 
 task Makeblastdb {
-  input {
-    String? dbtype
-  }
   command <<<
-    makeblastdb \
-      ~{if defined(dbtype) then ("-dbtype " +  '"' + dbtype + '"') else ""}
+    makeblastdb
   >>>
-  parameter_meta {
-    dbtype: "[-title database_title] [-parse_seqids]"
+  runtime {
+    docker: "None"
   }
   output {
     File out_stdout = stdout()

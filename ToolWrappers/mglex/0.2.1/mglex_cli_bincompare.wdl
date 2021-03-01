@@ -30,6 +30,9 @@ task MglexcliBincompare {
       ~{if defined(subset_two) then ("--subset-2 " +  '"' + subset_two + '"') else ""} \
       ~{if defined(subset_one) then ("--subset-1 " +  '"' + subset_one + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     posterior_ratio: "Weigh sequences by (subset) bin posterior [default: False]"
     data: "Likelihood matrix [standard input]"
@@ -42,7 +45,7 @@ task MglexcliBincompare {
     v: ""
     subset_two: ""
     subset_one: ""
-    bin_compare: ""
+    bin_compare: "[--weight <file> --data <file> --subset-1 <file> --subset-2 <file> --beta <float> --posterior-ratio]\\n[--prefilter-thresh <float> --edge-thresh <float>]"
   }
   output {
     File out_stdout = stdout()

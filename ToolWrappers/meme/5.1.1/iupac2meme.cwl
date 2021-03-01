@@ -3,61 +3,61 @@ id: iupac2meme.cwl
 inputs:
 - id: in_use_dna_iupac_alphabet
   doc: use DNA IUPAC alphabet
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -dna
-- id: in_use_rna_alphabet
+- id: in_use_rna_iupac_alphabet
   doc: use RNA IUPAC alphabet
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -rna
 - id: in_use_protein_iupac_alphabet
   doc: use protein IUPAC alphabet
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -protein
 - id: in_alph
   doc: "file with alphabet definition;\ndefault: use DNA IUPAC alphabet"
-  type: File
+  type: File?
   inputBinding:
     prefix: -alph
 - id: in_num_seqs
   doc: "assume frequencies based on this many\nsequences; default: 20"
-  type: long
+  type: long?
   inputBinding:
     prefix: -numseqs
 - id: in_bg
   doc: "file with background frequencies of letters;\ndefault: uniform background"
-  type: File
+  type: File?
   inputBinding:
     prefix: -bg
 - id: in_pseudo
   doc: "add <total pseudocounts> times letter\nbackground to each frequency; default:\
     \ 0"
-  type: long
+  type: long?
   inputBinding:
     prefix: -pseudo
 - id: in_output_logodds_pssm
   doc: "output the log-odds (PSSM) and frequency\n(PSPM) motifs; default: PSPM motif\
     \ only"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -logodds
 - id: in_url
   doc: "website for the motif; The motif name is\nsubstituted for MOTIF_NAME; default:\
     \ no url"
-  type: string
+  type: string?
   inputBinding:
     prefix: -url
 - id: in_no_sort
   doc: don't sort the order of motifs
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nosort
 - id: in_named
   doc: "looks for a motif name after each IUPAC code;\ndefault: use the IUPAC code\
     \ as the motif name"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -named
 - id: in_add
@@ -199,6 +199,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - iupac2meme

@@ -1,0 +1,178 @@
+!Command
+command:
+- RNAinverse
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: program
+  description: "-R, --repeat[=INT]         Search repeatedly for the same structure.\n\
+    If an argument is supplied to this option it\nmust follow the option flag immediately.\
+    \ E.g.:\n-R5\n(default=`100')"
+- !Positional
+  optional: false
+  position: 1
+  name: alphabet.
+  description: -v, --verbose              In conjunction with a negative value supplied
+    to
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --detailed-help
+  description: "Print help, including all details and hidden\noptions, and exit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --full-help
+  description: Print help, including hidden options, and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --alphabet
+  description: Find sequences using only nucleotides from a given
+  args: !SimpleFlagArg
+    name: ALPHABET
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: ', print the last subsequence and substructure'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --function
+  description: "Use minimum energy (-Fm), partition function\nfolding (-Fp) or both\
+    \ (-Fmp).\n(default=`m')"
+  args: !SimpleFlagArg
+    name: mp
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --final
+  description: "In combination with -Fp stop search when sequence\nis found with E(s)-F\
+    \ is smaller than final,\nwhere F=-kT*ln(Q)."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --temp
+  description: "Rescale energy parameters to a temperature of temp\nC. Default is\
+    \ 37C."
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - '-4'
+  - --noTetra
+  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
+    \ and hexaloop hairpins.\nMostly for testing.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dangles
+  description: "How to treat \"dangling end\" energies for bases\nadjacent to helices\
+    \ in free ends and multi-loops\n(default=`2')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --noGU
+  description: "Do not allow GU pairs\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noClosingGU
+  description: "Do not allow GU pairs at the end of helices\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --paramFile
+  description: "Read energy parameters from paramfile, instead of\nusing the default\
+    \ parameter set."
+  args: !SimpleFlagArg
+    name: paramfile
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: RNAinverse [OPTION]...\nFind RNA sequences with given secondary\
+  \ structure\n\nThe program searches for sequences folding into a predefined structure,\
+  \ thereby\ninverting the folding algorithm. Target structures (in bracket notation)\
+  \ and\nstarting sequences for the search are read alternately from stdin.\nCharacters\
+  \ in the start sequence other than \"AUGC\" (or the alphabet specified\nwith -a)\
+  \ will be treated as wild cards and replaced by a random character. Any\nlower case\
+  \ characters in the start sequence will be kept fixed during the\nsearch. If necessary,\
+  \ the sequence will be elongated to the length of the\nstructure. Thus a string\
+  \ of \"N\"s as well as a blank line specify a random\nstart sequence.\nFor each\
+  \ search the best sequence found and its Hamming distance to the start\nsequence\
+  \ are printed to stdout. If the the search was unsuccessful, a structure\ndistance\
+  \ to the target is appended.\nThe -Fp and -R options can modify the output format,\
+  \ see commandline options\nbelow.\nThe program will continue to read new structures\
+  \ and sequences until a line\nconsisting of the single character \"@\" or an end\
+  \ of file condition is\nencountered.\n\n\n  -h, --help                 Print help\
+  \ and exit\n      --detailed-help        Print help, including all details and hidden\n\
+  \                               options, and exit\n      --full-help           \
+  \ Print help, including hidden options, and exit\n  -V, --version              Print\
+  \ version and exit\n\nGeneral Options:\n  Below are command line options which alter\
+  \ the general behavior of this\n  program\n\n  -R, --repeat[=INT]         Search\
+  \ repeatedly for the same structure.\n                               If an argument\
+  \ is supplied to this option it\n                               must follow the\
+  \ option flag immediately. E.g.:\n                               -R5\n         \
+  \                        (default=`100')\n  -a, --alphabet=ALPHABET    Find sequences\
+  \ using only nucleotides from a given\n                               alphabet.\n\
+  \n\n  -v, --verbose              In conjunction with a negative value supplied to\n\
+  \                               -R, print the last subsequence and substructure\n\
+  \                               for each unsuccessful search.\n\n              \
+  \                   (default=off)\n\nAlgorithms:\n  Select additional algorithms\
+  \ which should be included in the calculations.\n\n\n  -F, --function=mp       \
+  \   Use minimum energy (-Fm), partition function\n                             \
+  \  folding (-Fp) or both (-Fmp).\n                                 (default=`m')\n\
+  \  -f, --final=FLOAT          In combination with -Fp stop search when sequence\n\
+  \                               is found with E(s)-F is smaller than final,\n  \
+  \                             where F=-kT*ln(Q).\n\n\n\nModel Details:\n  -T, --temp=DOUBLE\
+  \          Rescale energy parameters to a temperature of temp\n                \
+  \               C. Default is 37C.\n\n\n  -4, --noTetra              Do not include\
+  \ special tabulated stabilizing\n                               energies for tri-,\
+  \ tetra- and hexaloop hairpins.\n                               Mostly for testing.\n\
+  \n                                 (default=off)\n  -d, --dangles=INT          How\
+  \ to treat \"dangling end\" energies for bases\n                               adjacent\
+  \ to helices in free ends and multi-loops\n                                 (default=`2')\n\
+  \      --noGU                 Do not allow GU pairs\n\n                        \
+  \         (default=off)\n      --noClosingGU          Do not allow GU pairs at the\
+  \ end of helices\n\n                                 (default=off)\n  -P, --paramFile=paramfile\
+  \  Read energy parameters from paramfile, instead of\n                         \
+  \      using the default parameter set.\n\n\nIf in doubt our program is right, nature\
+  \ is at fault.\nComments should be sent to rna@tbi.univie.ac.at.\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/viennarna:2.4.17--py36hd181a71_0

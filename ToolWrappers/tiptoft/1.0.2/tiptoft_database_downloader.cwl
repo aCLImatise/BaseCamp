@@ -3,7 +3,7 @@ id: tiptoft_database_downloader.cwl
 inputs:
 - id: in_verbose
   doc: 'Turn on debugging (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_output_prefix
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tiptoft_database_downloader

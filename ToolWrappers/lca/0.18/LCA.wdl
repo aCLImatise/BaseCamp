@@ -2,7 +2,7 @@ version 1.0
 
 task LCA {
   input {
-    Int? assignments_tab_format
+    Int? assignments_ref_database
     File? file_entries_corresponding
     File? file_containing_name
     Boolean? mat_high
@@ -14,7 +14,7 @@ task LCA {
   }
   command <<<
     LCA \
-      ~{if defined(assignments_tab_format) then ("-i " +  '"' + assignments_tab_format + '"') else ""} \
+      ~{if defined(assignments_ref_database) then ("-i " +  '"' + assignments_ref_database + '"') else ""} \
       ~{if defined(file_entries_corresponding) then ("-r " +  '"' + file_entries_corresponding + '"') else ""} \
       ~{if defined(file_containing_name) then ("-o " +  '"' + file_containing_name + '"') else ""} \
       ~{if (mat_high) then "-matHigh" else ""} \
@@ -24,8 +24,11 @@ task LCA {
       ~{if (lca_frac) then "-LCAfrac" else ""} \
       ~{if (id) then "-id" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    assignments_tab_format: "assignments of sequences to ref database in blast .m8 tab delimited format"
+    assignments_ref_database: "assignments of sequences to ref database in blast .m8 tab delimited format"
     file_entries_corresponding: "file with entries corresponding to sequences in ref database, that was mapped against"
     file_containing_name: "file containing the sequence name and the assigned taxonomy against the ref database"
     mat_high: "calculate abundance of reads at different taxonomic levels. An extra file (derriving from -o) per tax level is written"

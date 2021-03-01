@@ -8,6 +8,9 @@ task Multilignsmp {
     multilign_smp \
       ~{configuration_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     configuration_file: ""
   }

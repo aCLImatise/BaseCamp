@@ -12,10 +12,10 @@ task CreatePanGenome {
     Boolean? delete_intermediate_files
     Int? translation_table
     Boolean? verbose_output_stdout
-    Boolean? add_information_work
+    Boolean? add_inference_information
     Int? maximum_number_clusters
     Boolean? qc
-    File? path_kraken_database
+    File? path_kraken_qc
     Boolean? print_version_exit
     Boolean? check_dependancies_versions
   }
@@ -31,13 +31,16 @@ task CreatePanGenome {
       ~{if (delete_intermediate_files) then "-z" else ""} \
       ~{if defined(translation_table) then ("-t " +  '"' + translation_table + '"') else ""} \
       ~{if (verbose_output_stdout) then "-v" else ""} \
-      ~{if (add_information_work) then "-y" else ""} \
+      ~{if (add_inference_information) then "-y" else ""} \
       ~{if defined(maximum_number_clusters) then ("-g " +  '"' + maximum_number_clusters + '"') else ""} \
       ~{if (qc) then "-qc" else ""} \
-      ~{if defined(path_kraken_database) then ("-k " +  '"' + path_kraken_database + '"') else ""} \
+      ~{if defined(path_kraken_qc) then ("-k " +  '"' + path_kraken_qc + '"') else ""} \
       ~{if (print_version_exit) then "-w" else ""} \
       ~{if (check_dependancies_versions) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_threads: "number of threads [1]"
     clusters_output_filename: "clusters output filename [clustered_proteins]"
@@ -49,10 +52,10 @@ task CreatePanGenome {
     delete_intermediate_files: "dont delete intermediate files"
     translation_table: "translation table [11]"
     verbose_output_stdout: "verbose output to STDOUT"
-    add_information_work: "add gene inference information to spreadsheet, doesnt work with -e"
+    add_inference_information: "add gene inference information to spreadsheet, doesnt work with -e"
     maximum_number_clusters: "maximum number of clusters [50000]"
     qc: "generate QC report with Kraken"
-    path_kraken_database: "path to Kraken database for QC, use with -qc"
+    path_kraken_qc: "path to Kraken database for QC, use with -qc"
     print_version_exit: "print version and exit"
     check_dependancies_versions: "check dependancies and print versions"
   }

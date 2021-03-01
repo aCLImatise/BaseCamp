@@ -8,6 +8,9 @@ task Evolver {
     evolver \
       ~{evolver}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     evolver: "evolver option# MyDataFile"
   }

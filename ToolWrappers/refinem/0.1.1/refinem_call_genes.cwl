@@ -3,22 +3,22 @@ id: refinem_call_genes.cwl
 inputs:
 - id: in_unbinned_file
   doc: call genes on unbinned scaffolds
-  type: File
+  type: File?
   inputBinding:
     prefix: --unbinned_file
 - id: in_genome_ext
   doc: "extension of genomes (other files in directory are\nignored) (default: fna)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --genome_ext
 - id: in_cpus
   doc: 'number of CPUs to use (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --cpus
 - id: in_silent
   doc: suppress output of logger
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --silent
 - id: in_genome_nt_dir
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - refinem

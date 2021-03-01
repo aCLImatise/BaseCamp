@@ -22,6 +22,9 @@ task GdtoolsCHECK {
       ~{if defined(plot_jc) then ("--plot-jc " +  '"' + plot_jc + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_gd_file: "output GD file (DEFAULT=comp.gd)"
     reference: "file containing reference sequences in GenBank, GFF3, or FASTA format. Option may be provided multiple times for multiple files (REQUIRED)"

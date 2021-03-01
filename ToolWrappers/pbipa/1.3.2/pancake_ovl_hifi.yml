@@ -1,0 +1,384 @@
+!Command
+command:
+- pancake
+- ovl-hifi
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: target_prefix
+  description: STR    Prefix of the target SeqDB and SeedDB files. It should match.
+- !Positional
+  optional: false
+  position: 1
+  name: query_prefix
+  description: STR    Prefix of the query SeqDB and SeedDB files. It should match.
+- !Positional
+  optional: false
+  position: 2
+  name: target_block
+  description: INT    Block ID from the target DB. Queries will be mapped only onto
+    this block.
+- !Positional
+  optional: false
+  position: 3
+  name: query_block_start
+  description: INT    Start block ID for a range of blocks to map. Zero based.
+- !Positional
+  optional: false
+  position: 4
+  name: query_block_end
+  description: "INT    Start block ID for a range of blocks to map. Zero based, non-inclusive.\
+    \ Value == 0\nruns until the end block."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --out-fmt
+  description: 'STR    Select the output format. Valid choices: (m4, ipa, paf, sam).
+    [m4]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --freq-percentile
+  description: FLOAT  Filter frequent kmers. [0.0002]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-qlen
+  description: INT    Ignore queries shorter than this. [50]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-tlen
+  description: INT    Ignore targets shorter than this. [50]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-seed-dist
+  description: INT    Maximum distance between two seeds to join into an anchor. [5000]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-num-seeds
+  description: INT    Minimum number of seeds in an anchor. [3]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-cov-bases
+  description: INT    Minimum number of bases covered by kmers in an anchor. [30]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-anchor-span
+  description: INT    Minimum chain span to retain it. [1000]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chain-bw
+  description: INT    Diagonal bandwidth to merge seeds into chains. [100]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --aln-bw
+  description: FLOAT  Bandwidth for alignment, fraction of the query span. [0.01]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --aln-diff-rate
+  description: FLOAT  Expected maximum diff rate between sequences. [0.03]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-idt
+  description: "FLOAT  Minimum percent alignment identity allowed to report the alignment.\
+    \ This is an\noverall threshold which takes into account both indels and SNPs.\
+    \ [98]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-snps
+  description: "Ignore SNPs when computing the identity for an overlap. This only\
+    \ works in the\ntraceback mode."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-indels
+  description: "Ignore indels when computing the identity for an overlap. This only\
+    \ works in the\ntraceback mode."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-map-len
+  description: INT    Output only alignments above this length. [1000]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-sym
+  description: "If Aid < Bid, only compute overlap Aid->Bid and skip computing overlap\
+    \ for\nBid->Aid."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-self-hits
+  description: "If both the query and the target DBs are the same and Aid == Bid then\
+    \ this is a\nself-hit. This option enables the output of such overlaps."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --one-hit-per-target
+  description: Allow only one alignment per query/target pair.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-rev
+  description: For eveery overlap, write out its reverse complement too.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-ids
+  description: Output overlaps will contain numeric IDs for the A and B reads (instead
+    of names).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-cigar
+  description: Write the CIGAR string if the sensitive alignment mode is applied.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dt-dist
+  description: "INT    Allowed distance of an overlap from the beginning of the sequences\
+    \ to call the\noverlap a dovetail. [0]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ext-dist
+  description: "INT    Heuristically modify the coordinats of an overlap into a dovetail\
+    \ overlap if are\nwithin this distance from the edges of the reads. [0]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --combine
+  description: INT    Combines this many query blocks into one larger block for processing.
+    [1]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bestn
+  description: INT    Output only best N alignments. [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-hpc
+  description: Enable homopolymer compression.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --traceback
+  description: Run alignment traceback and compute mismatches.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mask-hp
+  description: Mask homopolymer errors when traceback is generated. This will impact
+    identity
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mask-hp-snps
+  description: "Mask mismatches which occur in the homopolymer sequences. Applied\
+    \ only when\ntraceback is generated. This will impact identity calculation."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mask-hp-arbitrary
+  description: "Allows arbitrary bases to be inserted into the HP stretches (the bases\
+    \ don't have\nto match the HP). Only used in combination with '--mask-hp'."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mark-secondary
+  description: Mask homopolymer errors when traceback is generated. This will impact
+    identity
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --secondary-min-score-frac
+  description: FLOAT  Minimum secondary-to-primary score ratio. [0.8]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trim
+  description: "Applies window-based trimming of the front and end of the alignment.\
+    \ Can be used\nonly in combination with '--traceback'."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trim-window-size
+  description: INT    Window size for trimming. [30]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trim-match-frac
+  description: FLOAT  Minimum fraction in a trimming window of match bases to stop
+    trimming. [0.75]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trim-to-first-match
+  description: "When trimming is applied, this option ensures that the first non-trimmed\
+    \ base will\nbe a match operation. Can be used only in combination with '--trim'."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --num-threads
+  description: INT    Number of threads to use, 0 means autodetection. [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: 'STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [WARN]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE   Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "pancake - HiFi overlapping.\n\nUsage:\n  pancake [options] <target_prefix>\
+  \ <query_prefix> <target_block> <query_block_start> <query_block_end>\n\n  target_prefix\
+  \               STR    Prefix of the target SeqDB and SeedDB files. It should match.\n\
+  \  query_prefix                STR    Prefix of the query SeqDB and SeedDB files.\
+  \ It should match.\n  target_block                INT    Block ID from the target\
+  \ DB. Queries will be mapped only onto this block.\n  query_block_start        \
+  \   INT    Start block ID for a range of blocks to map. Zero based.\n  query_block_end\
+  \             INT    Start block ID for a range of blocks to map. Zero based, non-inclusive.\
+  \ Value == 0\n                                     runs until the end block.\n\n\
+  Input/Output Options:\n  --out-fmt                   STR    Select the output format.\
+  \ Valid choices: (m4, ipa, paf, sam). [m4]\n\nAlgorithm Options:\n  --freq-percentile\
+  \           FLOAT  Filter frequent kmers. [0.0002]\n  --min-qlen               \
+  \   INT    Ignore queries shorter than this. [50]\n  --min-tlen                \
+  \  INT    Ignore targets shorter than this. [50]\n  --max-seed-dist            \
+  \ INT    Maximum distance between two seeds to join into an anchor. [5000]\n  --min-num-seeds\
+  \             INT    Minimum number of seeds in an anchor. [3]\n  --min-cov-bases\
+  \             INT    Minimum number of bases covered by kmers in an anchor. [30]\n\
+  \  --min-anchor-span           INT    Minimum chain span to retain it. [1000]\n\
+  \  --chain-bw                  INT    Diagonal bandwidth to merge seeds into chains.\
+  \ [100]\n  --aln-bw                    FLOAT  Bandwidth for alignment, fraction\
+  \ of the query span. [0.01]\n  --aln-diff-rate             FLOAT  Expected maximum\
+  \ diff rate between sequences. [0.03]\n  --min-idt                   FLOAT  Minimum\
+  \ percent alignment identity allowed to report the alignment. This is an\n     \
+  \                                overall threshold which takes into account both\
+  \ indels and SNPs. [98]\n  --no-snps                          Ignore SNPs when computing\
+  \ the identity for an overlap. This only works in the\n                        \
+  \             traceback mode.\n  --no-indels                        Ignore indels\
+  \ when computing the identity for an overlap. This only works in the\n         \
+  \                            traceback mode.\n  --min-map-len               INT\
+  \    Output only alignments above this length. [1000]\n  --skip-sym            \
+  \             If Aid < Bid, only compute overlap Aid->Bid and skip computing overlap\
+  \ for\n                                     Bid->Aid.\n  --allow-self-hits     \
+  \             If both the query and the target DBs are the same and Aid == Bid then\
+  \ this is a\n                                     self-hit. This option enables\
+  \ the output of such overlaps.\n  --one-hit-per-target               Allow only\
+  \ one alignment per query/target pair.\n  --write-rev                        For\
+  \ eveery overlap, write out its reverse complement too.\n  --write-ids         \
+  \               Output overlaps will contain numeric IDs for the A and B reads (instead\
+  \ of names).\n  --write-cigar                      Write the CIGAR string if the\
+  \ sensitive alignment mode is applied.\n  --dt-dist                   INT    Allowed\
+  \ distance of an overlap from the beginning of the sequences to call the\n     \
+  \                                overlap a dovetail. [0]\n  --ext-dist         \
+  \         INT    Heuristically modify the coordinats of an overlap into a dovetail\
+  \ overlap if are\n                                     within this distance from\
+  \ the edges of the reads. [0]\n  --combine                   INT    Combines this\
+  \ many query blocks into one larger block for processing. [1]\n  --bestn       \
+  \              INT    Output only best N alignments. [0]\n  --use-hpc          \
+  \                Enable homopolymer compression.\n  --traceback                \
+  \        Run alignment traceback and compute mismatches.\n  --mask-hp          \
+  \                Mask homopolymer errors when traceback is generated. This will\
+  \ impact identity\n                                     calculation.\n  --mask-repeats\
+  \                     Mask indels in simple exact repeats when traceback is generated.\
+  \ This will impact\n                                     identity calculation.\n\
+  \  --mask-hp-snps                     Mask mismatches which occur in the homopolymer\
+  \ sequences. Applied only when\n                                     traceback is\
+  \ generated. This will impact identity calculation.\n  --mask-hp-arbitrary     \
+  \           Allows arbitrary bases to be inserted into the HP stretches (the bases\
+  \ don't have\n                                     to match the HP). Only used in\
+  \ combination with '--mask-hp'.\n  --mark-secondary                   Mask homopolymer\
+  \ errors when traceback is generated. This will impact identity\n              \
+  \                       calculation.\n  --secondary-min-ovl-frac    FLOAT  Minimum\
+  \ amount overlap with primary alignment to call an alignment secondary.\n      \
+  \                               [0.5]\n  --secondary-min-score-frac  FLOAT  Minimum\
+  \ secondary-to-primary score ratio. [0.8]\n  --trim                            \
+  \ Applies window-based trimming of the front and end of the alignment. Can be used\n\
+  \                                     only in combination with '--traceback'.\n\
+  \  --trim-window-size          INT    Window size for trimming. [30]\n  --trim-match-frac\
+  \           FLOAT  Minimum fraction in a trimming window of match bases to stop\
+  \ trimming. [0.75]\n  --trim-to-first-match              When trimming is applied,\
+  \ this option ensures that the first non-trimmed base will\n                   \
+  \                  be a match operation. Can be used only in combination with '--trim'.\n\
+  \n  -h,--help                          Show this help and exit.\n  --version   \
+  \                       Show application version and exit.\n  -j,--num-threads \
+  \           INT    Number of threads to use, 0 means autodetection. [0]\n  --log-level\
+  \                 STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN,\
+  \ FATAL). [WARN]\n  --log-file                  FILE   Log to a file, instead of\
+  \ stderr.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0

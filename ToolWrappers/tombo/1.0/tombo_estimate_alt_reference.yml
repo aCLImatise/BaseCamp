@@ -2,112 +2,118 @@
 command:
 - tombo
 - estimate_alt_reference
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ALTERNATE_MODEL_FILENAME
+  description: --alternate-model-name
+- !Positional
+  optional: false
+  position: 1
+  name: ALTERNATE_MODEL_NAME
+  description: --alternate-model-base {A,C,G,T}
 named:
 - !Flag
-  description: "ALTERNATE_MODEL_FILENAME\n--alternate-model-name\nALTERNATE_MODEL_NAME\n\
-    --alternate-model-base {A,C,G,T}\n[--tombo-model-filename TOMBO_MODEL_FILENAME]\n\
-    [--min-alt-base-percentage MIN_ALT_BASE_PERCENTAGE]\n[--sd-threshold SD_THRESHOLD]\n\
-    [--minimum-kmer-observations MINIMUM_KMER_OBSERVATIONS]\n[--corrected-group CORRECTED_GROUP]\n\
-    [--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\n[--quiet]\
-    \ [--help]"
-  synonyms:
-  - --alternate-model-filename
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: Directories containing fast5 files.
   synonyms:
   - --fast5-basedirs
+  description: Directories containing fast5 files.
   args: !RepeatFlagArg
     name: FAST5_BASEDIRS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --alternate-model-filename
+  description: "Tombo model for alternative likelihood ratio\nsignificance testing."
+  args: !SimpleFlagArg
+    name: ALTERNATE_MODEL_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --alternate-model-name
   description: "A short name to associate with this alternate model\n(e.g. 5mC, 4mC,\
     \ 6mA). This text will be included in\noutput filenames when this model is used\
     \ for testing."
-  synonyms:
-  - --alternate-model-name
   args: !SimpleFlagArg
     name: ALTERNATE_MODEL_NAME
-  optional: true
 - !Flag
-  description: Non-standard base is an alternative to this base.
+  optional: true
   synonyms:
   - --alternate-model-base
+  description: Non-standard base is an alternative to this base.
   args: !ChoiceFlagArg
     choices: !!set
       C:
       A:
       G:
       T:
-  optional: true
 - !Flag
-  description: "Tombo model for event-less resquiggle and significance\ntesting. If\
-    \ no model is provided the default DNA or\nRNA tombo model will be used."
+  optional: true
   synonyms:
   - --tombo-model-filename
+  description: "Tombo model for event-less resquiggle and significance\ntesting. If\
+    \ no model is provided the default DNA or\nRNA tombo model will be used."
   args: !SimpleFlagArg
     name: TOMBO_MODEL_FILENAME
-  optional: true
 - !Flag
-  description: "Minimum estimated percent of non-standard base\ndistribution for inclusion\
-    \ of k-mer in non-standard\nmodel. Default: 5.000000"
+  optional: true
   synonyms:
   - --min-alt-base-percentage
+  description: "Minimum estimated percent of non-standard base\ndistribution for inclusion\
+    \ of k-mer in non-standard\nmodel. Default: 5.000000"
   args: !SimpleFlagArg
     name: MIN_ALT_BASE_PERCENTAGE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sd-threshold
   description: "Minimum level standard deviation difference between\nestimated non-standard\
     \ distribution mean and standard\nmodel mean for inclusion of k-mer in non-standard\n\
     model. Default: 1.500000"
-  synonyms:
-  - --sd-threshold
   args: !SimpleFlagArg
     name: SD_THRESHOLD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --minimum-kmer-observations
   description: "Number of each k-mer observations required in order to\nproduce a\
     \ reference (genomic locations for standard\nreference and per-read for alternative\
     \ reference).\nDefault: 1000"
-  synonyms:
-  - --minimum-kmer-observations
   args: !SimpleFlagArg
     name: MINIMUM_KMER_OBSERVATIONS
-  optional: true
 - !Flag
-  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
+  optional: true
   synonyms:
   - --corrected-group
+  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
   args: !SimpleFlagArg
     name: CORRECTED_GROUP
-  optional: true
 - !Flag
-  description: "FAST5 subgroup(s) (under Analyses/[corrected-group])\ncontaining basecalls.\
-    \ Default: ['BaseCalled_template']"
+  optional: true
   synonyms:
   - --basecall-subgroups
+  description: "FAST5 subgroup(s) (under Analyses/[corrected-group])\ncontaining basecalls.\
+    \ Default: ['BaseCalled_template']"
   args: !RepeatFlagArg
     name: BASECALL_SUBGROUPS
-  optional: true
 - !Flag
-  description: Don't print status information.
+  optional: true
   synonyms:
   - --quiet
   - -q
+  description: Don't print status information.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: Print this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: tombo estimate_alt_reference --fast5-basedirs FAST5_BASEDIRS\n\
@@ -155,3 +161,4 @@ help_text: "usage: tombo estimate_alt_reference --fast5-basedirs FAST5_BASEDIRS\
   \ message and exit\n"
 generated_using:
 - --help
+docker_image:

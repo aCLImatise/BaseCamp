@@ -26,6 +26,9 @@ task OvStoreStats {
       ~{if defined(var_6) then ("-O " +  '"' + var_6 + '"') else ""} \
       ~{if defined(s) then ("-S " +  '"' + s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     expect_coverage_mean: "Expect coverage at mean (below 1/3 this is 'low coverage', above 5/3 is 'repeat')"
     write_stats_stdout: "Write stats to stdout, not to a file"

@@ -3,169 +3,199 @@ command:
 - mhcflurry-calibrate-percentile-ranks
 positional:
 - !Positional
-  description: --summary-top-peptide-fraction X [X ...]
+  optional: false
   position: 0
   name: allele
-  optional: false
+  description: --summary-top-peptide-fraction X [X ...]
 named:
 - !Flag
-  description: Type of predictor to calibrate
+  optional: true
   synonyms:
   - --predictor-kind
+  description: Type of predictor to calibrate
   args: !ChoiceFlagArg
     choices: !!set
       class1_presentation:
       class1_affinity:
-  optional: true
 - !Flag
-  description: Directory to read and write models
+  optional: true
   synonyms:
   - --models-dir
+  description: Directory to read and write models
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
-  description: "Alleles to calibrate percentile ranks for. If not\nspecified all alleles\
-    \ are used"
+  optional: true
   synonyms:
   - --allele
+  description: "Alleles to calibrate percentile ranks for. If not\nspecified all alleles\
+    \ are used"
   args: !RepeatFlagArg
     name: ALLELE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --match-amino-acid-distribution-data
   description: "Sample random peptides from the amino acid\ndistribution of the peptides\
     \ listed in the supplied\nCSV file, which must have a 'peptide' column. If not\n\
     specified a uniform distribution is used."
-  synonyms:
-  - --match-amino-acid-distribution-data
   args: !SimpleFlagArg
     name: MATCH_AMINO_ACID_DISTRIBUTION_DATA
-  optional: true
 - !Flag
-  description: "Use alleles in supplied CSV file, which must have an\n'allele' column."
+  optional: true
   synonyms:
   - --alleles-file
+  description: "Use alleles in supplied CSV file, which must have an\n'allele' column."
   args: !SimpleFlagArg
     name: ALLELES_FILE
-  optional: true
 - !Flag
-  description: "Number of peptides per length to use to calibrate\npercent ranks.\
-    \ Default: 100000."
+  optional: true
   synonyms:
   - --num-peptides-per-length
+  description: "Number of peptides per length to use to calibrate\npercent ranks.\
+    \ Default: 100000."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Used when calibrrating a presentation predictor.\nNumber of genotypesto\
-    \ sample"
+  optional: true
   synonyms:
   - --num-genotypes
+  description: "Used when calibrrating a presentation predictor.\nNumber of genotypesto\
+    \ sample"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Used when calibrating a presentation predictor. Number\nof alleles\
-    \ per genotype. Use 1 to calibrate for single\nalleles. Default: 6"
+  optional: true
   synonyms:
   - --alleles-per-genotype
+  description: "Used when calibrating a presentation predictor. Number\nof alleles\
+    \ per genotype. Use 1 to calibrate for single\nalleles. Default: 6"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Calculate motifs and length preferences for each
+  optional: true
   synonyms:
   - --motif-summary
+  description: Calculate motifs and length preferences for each
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "LENGTH_RANGE\nMin and max peptide length to calibrate, inclusive.\n\
-    Default: (8, 15)"
+  optional: true
   synonyms:
   - --length-range
+  description: "LENGTH_RANGE\nMin and max peptide length to calibrate, inclusive.\n\
+    Default: (8, 15)"
   args: !SimpleFlagArg
     name: LENGTH_RANGE
-  optional: true
 - !Flag
-  description: Keras batch size for predictions
+  optional: true
   synonyms:
   - --prediction-batch-size
+  description: Keras batch size for predictions
   args: !SimpleFlagArg
     name: PREDICTION_BATCH_SIZE
-  optional: true
 - !Flag
-  description: 'Number of alleles per work chunk. Default: 1.'
+  optional: true
   synonyms:
   - --alleles-per-work-chunk
+  description: 'Number of alleles per work chunk. Default: 1.'
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: 'Keras verbosity. Default: 0'
+  optional: true
   synonyms:
   - --verbosity
+  description: 'Keras verbosity. Default: 0'
   args: !SimpleFlagArg
     name: VERBOSITY
-  optional: true
 - !Flag
-  description: "Number of local processes to parallelize training\nover. Set to 0\
-    \ for serial run. Default: 0."
+  optional: true
   synonyms:
   - --num-jobs
+  description: "Number of local processes to parallelize training\nover. Set to 0\
+    \ for serial run. Default: 0."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Keras backend. If not specified will use system\ndefault."
+  optional: true
   synonyms:
   - --backend
+  description: "Keras backend. If not specified will use system\ndefault."
   args: !ChoiceFlagArg
     choices: !!set
-      tensorflow-gpu:
       tensorflow-default:
       tensorflow-cpu:
-  optional: true
+      tensorflow-gpu:
 - !Flag
-  description: "Number of GPUs to attempt to parallelize across.\nRequires running\
-    \ in parallel."
+  optional: true
   synonyms:
   - --gpus
+  description: "Number of GPUs to attempt to parallelize across.\nRequires running\
+    \ in parallel."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Maximum number of workers to assign to a GPU.\nAdditional tasks will\
-    \ run on CPU."
+  optional: true
   synonyms:
   - --max-workers-per-gpu
+  description: "Maximum number of workers to assign to a GPU.\nAdditional tasks will\
+    \ run on CPU."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Restart workers after N tasks. Workaround for\ntensorflow memory leaks.\
-    \ Requires Python >=3.2."
+  optional: true
   synonyms:
   - --max-tasks-per-worker
+  description: "Restart workers after N tasks. Workaround for\ntensorflow memory leaks.\
+    \ Requires Python >=3.2."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Write worker stdout and stderr logs to given\ndirectory."
+  optional: true
   synonyms:
   - --worker-log-dir
+  description: "Write worker stdout and stderr logs to given\ndirectory."
   args: !SimpleFlagArg
     name: WORKER_LOG_DIR
+- !Flag
   optional: true
+  synonyms:
+  - --cluster-parallelism
+  - --cluster-submit-command
+  description: 'Default: sh'
+  args: !SimpleFlagArg
+    name: CLUSTER_SUBMIT_COMMAND
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster-results-workdir
+  description: 'Default: ./cluster-workdir'
+  args: !SimpleFlagArg
+    name: CLUSTER_RESULTS_WORKDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --additional-complete-file
+  description: "Additional file to monitor for job completion.\nDefault: STDERR"
+  args: !SimpleFlagArg
+    name: ADDITIONAL_COMPLETE_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster-script-prefix-path
+  - --cluster-max-retries
+  description: "How many times to rerun failing jobs. Default: 3\n"
+  args: !SimpleFlagArg
+    name: CLUSTER_SCRIPT_PREFIX_PATH
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "To show stack trace, run:\nkill -s USR1 841\nusage: \nCalibrate percentile\
@@ -218,3 +248,4 @@ help_text: "To show stack trace, run:\nkill -s USR1 841\nusage: \nCalibrate perc
   \                    How many times to rerun failing jobs. Default: 3\n"
 generated_using:
 - --help
+docker_image:

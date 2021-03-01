@@ -26,6 +26,9 @@ task Structurepy {
       ~{if (full) then "--full" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_populations: "(number of populations)"
     pathtoinputfile: "(/path/to/input/file)"

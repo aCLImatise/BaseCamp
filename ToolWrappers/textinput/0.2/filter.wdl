@@ -8,6 +8,9 @@ task Filter {
     filter \
       ~{if (no_header) then "--no-header" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_header: "input does not contain a header line"
   }

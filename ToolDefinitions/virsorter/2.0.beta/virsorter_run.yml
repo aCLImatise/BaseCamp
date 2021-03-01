@@ -4,149 +4,149 @@ command:
 - run
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: all|classify
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: SNAKEMAKE_ARGS
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: output directory
+  optional: true
   synonyms:
   - -w
   - --working-dir
+  description: output directory
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "database directory, default to the --db-dir\nset during installation"
+  optional: true
   synonyms:
   - -d
   - --db-dir
+  description: "database directory, default to the --db-dir\nset during installation"
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "sequence file in fa or fq format (could be\ncompressed by gzip or\
-    \ bz2)  [required]"
+  optional: true
   synonyms:
   - -i
   - --seqfile
+  description: "sequence file in fa or fq format (could be\ncompressed by gzip or\
+    \ bz2)  [required]"
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "classifiers of viral groups to included (comma\nseparated and no space\
-    \ in between)  [default:\ndsDNAphage,NCLDV,RNA,ssDNA,lavidaviridae]"
+  optional: true
   synonyms:
   - --include-groups
+  description: "classifiers of viral groups to included (comma\nseparated and no space\
+    \ in between)  [default:\ndsDNAphage,NCLDV,RNA,ssDNA,lavidaviridae]"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "max # of jobs allowed in parallel.  [default:\n8]"
+  optional: true
   synonyms:
   - -j
   - --jobs
+  description: "max # of jobs allowed in parallel.  [default:\n8]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "minimal score to be identified as viral\n[default: 0.5]"
+  optional: true
   synonyms:
   - --min-score
+  description: "minimal score to be identified as viral\n[default: 0.5]"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --hallmark-required-on-short
   description: "require hallmark gene short seqs (length\ncutoff as \"short\" were\
     \ set in template-\nconfig.yaml file); this can reduce false\npositives at reasonable\
     \ cost of sensitivity\n[default: False]"
-  synonyms:
-  - --hallmark-required-on-short
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --provirus-off
   description: "To turn off extracting provirus after\nclassifying full contig seqs;\
     \ Togetehr with\nlower --max-orf-per-seq, can speed up a run\nsignificantly  [default:\
     \ False]"
-  synonyms:
-  - --provirus-off
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-orf-per-seq
   description: "Max # of orf used for computing taxonomic\nfeatures; if # of orf in\
     \ a seq exceeds the max\nlimit, it is sub-sampled to this # to reduce\ncomputation;\
     \ to turn off this, set it to -1;\nthis option must be used together with\n--provirus-off\
     \ option  [default: 20]"
-  synonyms:
-  - --max-orf-per-seq
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "minimal seq length required; all seqs shorter\nthan this will be removed\
-    \  [default: 0]"
+  optional: true
   synonyms:
   - --min-length
+  description: "minimal seq length required; all seqs shorter\nthan this will be removed\
+    \  [default: 0]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Directory name for intermediate files
+  optional: true
   synonyms:
   - --tmpdir
+  description: Directory name for intermediate files
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: 'shows detailed rules output  [default: False]'
+  optional: true
   synonyms:
   - --verbose
+  description: 'shows detailed rules output  [default: False]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: snakemake profile e.g. for cluster execution.
+  optional: true
   synonyms:
   - --profile
+  description: snakemake profile e.g. for cluster execution.
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Check rules to run and files to produce\n[default: False]"
+  optional: true
   synonyms:
   - -n
   - --dryrun
+  description: "Check rules to run and files to produce\n[default: False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --use-conda-off
   description: "Stop using the conda envs (vs2.yaml) that come\nwith this package\
     \ and use what are installed\nin current system; Only useful when you want\nto\
     \ install dependencies on your own with your\nown prefer versions  [default: False]"
-  synonyms:
-  - --use-conda-off
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Remove intermediate file directory (--tmpdir)\n[default: False]"
+  optional: true
   synonyms:
   - --rm-tmpdir
+  description: "Remove intermediate file directory (--tmpdir)\n[default: False]"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: virsorter run [OPTIONS] [[all|classify]] [SNAKEMAKE_ARGS]...\n\n\
@@ -194,3 +194,4 @@ help_text: "Usage: virsorter run [OPTIONS] [[all|classify]] [SNAKEMAKE_ARGS]...\
   \      Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

@@ -2,8 +2,9 @@ version 1.0
 
 task TaxonFilterpyDepleteHuman {
   input {
-    Array[String] bm_tagger_dbs
     String? tax_filt_bam
+    Array[String] bm_tagger_dbs
+    Array[String] blast_dbs
     String? last_db
     Int? threads
     Int? jvm_memory
@@ -23,8 +24,9 @@ task TaxonFilterpyDepleteHuman {
       ~{bm_tagger_bam} \
       ~{rmd_up_bam} \
       ~{removal_dot} \
-      ~{if defined(bm_tagger_dbs) then ("--bmtaggerDbs " +  '"' + bm_tagger_dbs + '"') else ""} \
       ~{if defined(tax_filt_bam) then ("--taxfiltBam " +  '"' + tax_filt_bam + '"') else ""} \
+      ~{if defined(bm_tagger_dbs) then ("--bmtaggerDbs " +  '"' + bm_tagger_dbs + '"') else ""} \
+      ~{if defined(blast_dbs) then ("--blastDbs " +  '"' + blast_dbs + '"') else ""} \
       ~{if defined(last_db) then ("--lastDb " +  '"' + last_db + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(jvm_memory) then ("--JVMmemory " +  '"' + jvm_memory + '"') else ""} \
@@ -32,9 +34,13 @@ task TaxonFilterpyDepleteHuman {
       ~{if defined(tmp_dir) then ("--tmp_dir " +  '"' + tmp_dir + '"') else ""} \
       ~{if (tmp_dir_keep) then "--tmp_dirKeep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    bm_tagger_dbs: "BLASTDBS [BLASTDBS ...]\\n[--lastDb LASTDB]\\n[--threads THREADS]\\n[--JVMmemory JVMMEMORY]\\n[--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\\n[--version]\\n[--tmp_dir TMP_DIR]\\n[--tmp_dirKeep]\\ninBam [revertBam] bmtaggerBam\\nrmdupBam blastnBam"
     tax_filt_bam: "Output BAM: blastnBam run through taxonomic selection\\nvia LASTAL."
+    bm_tagger_dbs: "Reference databases (one or more) to deplete from\\ninput. For each db, requires prior creation of\\ndb.bitmask by bmtool, and db.srprism.idx,\\ndb.srprism.map, etc. by srprism mkindex."
+    blast_dbs: "One or more reference databases for blast to deplete\\nfrom input."
     last_db: "One reference database for last (required if"
     threads: "The number of threads to use in running blastn."
     jvm_memory: "JVM virtual memory size for Picard FilterSamReads\\n(default: 4g)"

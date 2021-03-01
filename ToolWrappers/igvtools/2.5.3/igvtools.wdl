@@ -18,6 +18,9 @@ task Igvtools {
       ~{format_exp} \
       ~{gui}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sort: "sort an alignment file by start position. "
     index: "index an alignment file"

@@ -13,19 +13,11 @@ task Getfeaturespy {
     Boolean? gff
     String? output_format_namefeature
     Boolean? max
-    String gb_slash_bed
-    String and
-    String possibly
-    String fas
-    File file
+    String gb
   }
   command <<<
     getfeatures_py \
-      ~{gb_slash_bed} \
-      ~{and} \
-      ~{possibly} \
-      ~{fas} \
-      ~{file} \
+      ~{gb} \
       ~{if (linear) then "--linear" else ""} \
       ~{if defined(allow_only_features_type) then ("-p " +  '"' + allow_only_features_type + '"') else ""} \
       ~{if defined(forbid_features_type) then ("-P " +  '"' + forbid_features_type + '"') else ""} \
@@ -38,6 +30,9 @@ task Getfeaturespy {
       ~{if defined(output_format_namefeature) then ("-f " +  '"' + output_format_namefeature + '"') else ""} \
       ~{if (max) then "--max" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     linear: "consider genome circular"
     allow_only_features_type: "allow only features of type TYPE"
@@ -50,11 +45,7 @@ task Getfeaturespy {
     gff: "output gff"
     output_format_namefeature: "output format: %name=feature name, %type=feature type,\\n%start=feature start, %stop=feature end, %strand=feature strand,\\n%s=sequence, %a=accession, %n=name"
     max: "consider only max score part per gene"
-    gb_slash_bed: ""
-    and: ""
-    possibly: ""
-    fas: ""
-    file: ""
+    gb: ""
   }
   output {
     File out_stdout = stdout()

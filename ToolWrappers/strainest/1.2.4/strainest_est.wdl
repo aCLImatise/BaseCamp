@@ -22,6 +22,9 @@ task StrainestEst {
       ~{if defined(max_ident_thr) then ("--max-ident-thr " +  '"' + max_ident_thr + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quality_thr: "base quality threshold  [default: 20]"
     min_depth_percentile: "discard positions where the depth of\\ncoverage is lower than the\\nMIN_DEPTH_PERCENTILE percentile  [default:\\n10]"

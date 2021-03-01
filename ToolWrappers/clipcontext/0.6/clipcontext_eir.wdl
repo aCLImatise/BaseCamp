@@ -14,6 +14,9 @@ task ClipcontextEir {
       ~{if defined(exon_out) then ("--exon-out " +  '"' + exon_out + '"') else ""} \
       ~{if defined(intron_out) then ("--intron-out " +  '"' + intron_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tr: "Transcript sequence IDs list file for which to extract\\nexon + intron regions"
     gtf: "Genomic annotations (hg38) GTF file (.gtf or .gtf.gz)"

@@ -52,6 +52,9 @@ task WhatshapGenotype {
       ~{if defined(gen_map) then ("--genmap " +  '"' + gen_map + '"') else ""} \
       ~{if (use_ped_samples) then "--use-ped-samples" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_vcf_file: "Output VCF file. Add .gz to the file name to get\\ncompressed output. If omitted, use standard output."
     reference: "Reference file. Provide this to detect alleles through\\nre-alignment. If no index (.fai) exists, it will be\\ncreated"
@@ -70,7 +73,7 @@ task WhatshapGenotype {
     gap_start: "gap starting penalty in case affine gap costs are used\\n(default: 10)."
     gap_extend: "gap extend penalty in case affine gap costs are used\\n(default: 7)."
     mismatch: "mismatch cost in case affine gap costs are used\\n(default: 15)"
-    ped: "Use pedigree information in PED file to improve\\ngenotyping (switches to PedMEC algorithm). Columns 2,\\n3, 4 must refer to child, mother, and father sample\\nnames as used in the VCF and BAM. Other columns are\\nignored (EXPERIMENTAL)."
+    ped: "/FAM         Use pedigree information in PED file to improve\\ngenotyping (switches to PedMEC algorithm). Columns 2,\\n3, 4 must refer to child, mother, and father sample\\nnames as used in the VCF and BAM. Other columns are\\nignored (EXPERIMENTAL)."
     recomb_rate: "Recombination rate in cM/Mb (used with --ped). If\\ngiven, a constant recombination rate is assumed\\n(default: 1.26cM/Mb)."
     gen_map: "File with genetic map (used with --ped) to be used\\ninstead of constant recombination rate, i.e. overrides\\noption --recombrate."
     use_ped_samples: "Only work on samples mentioned in the provided PED\\nfile.\\n"

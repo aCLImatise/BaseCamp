@@ -6,8 +6,8 @@ task SampleStatsExtra {
     Boolean? arg_specify_precision
     Boolean? arg_part_margin
     Boolean? arg_restrict_chroms
-    Boolean? arg_compute_spectrum
-    Boolean? arg_compute_stats
+    Boolean? arg_compute_frequency
+    Boolean? arg_compute_ld
     Boolean? ld_use_cm
     Boolean? ld_use_bp
     String? ld_seps
@@ -33,8 +33,8 @@ task SampleStatsExtra {
       ~{if (arg_specify_precision) then "-p" else ""} \
       ~{if (arg_part_margin) then "-m" else ""} \
       ~{if (arg_restrict_chroms) then "-c" else ""} \
-      ~{if (arg_compute_spectrum) then "-a" else ""} \
-      ~{if (arg_compute_stats) then "-l" else ""} \
+      ~{if (arg_compute_frequency) then "-a" else ""} \
+      ~{if (arg_compute_ld) then "-l" else ""} \
       ~{if (ld_use_cm) then "--ld-use-cM" else ""} \
       ~{if (ld_use_bp) then "--ld-use-bp" else ""} \
       ~{if defined(ld_seps) then ("--ld-seps " +  '"' + ld_seps + '"') else ""} \
@@ -54,13 +54,16 @@ task SampleStatsExtra {
       ~{if defined(ld_hist_min_maf) then ("--ld-hist-min-maf " +  '"' + ld_hist_min_maf + '"') else ""} \
       ~{if (arg_print_progress) then "-g" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_name_output: "[ --outfile ] arg                  name of output file (default is to\\nwrite to stdout)"
     arg_specify_precision: "[ --precision ] arg (=8)           specify precision of output"
     arg_part_margin: "[ --margin ] arg (=0.10000000000000001)\\nignore part of simulated region within\\nthis margin of ends of region"
     arg_restrict_chroms: "[ --chromRange ] arg               restrict chroms to this range"
-    arg_compute_spectrum: "[ --afs ] arg                      compute allele frequency spectrum"
-    arg_compute_stats: "[ --ld ] arg                       compute LD stats for these definitions"
+    arg_compute_frequency: "[ --afs ] arg                      compute allele frequency spectrum"
+    arg_compute_ld: "[ --ld ] arg                       compute LD stats for these definitions"
     ld_use_cm: "use cM for LD snp distances"
     ld_use_bp: "use bp for LD snp distances"
     ld_seps: "snp count separation for LD stats"

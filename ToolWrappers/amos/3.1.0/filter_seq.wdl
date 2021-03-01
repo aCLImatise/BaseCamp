@@ -10,6 +10,9 @@ task FilterSeq {
       ~{good_dot} \
       ~{if defined(index) then ("-index " +  '"' + index + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index: "an index file of the copy file"
     good_dot: ""

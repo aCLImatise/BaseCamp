@@ -8,6 +8,9 @@ task GenomepyGenomes {
     genomepy genomes \
       ~{if defined(provider) then ("--provider " +  '"' + provider + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     provider: "provider"
   }

@@ -2,14 +2,17 @@ version 1.0
 
 task HailctlDataprocDescribe {
   input {
-    File file
+    File path_hail_file
   }
   command <<<
     hailctl dataproc describe \
-      ~{file}
+      ~{path_hail_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: "Path to hail file (either MatrixTable or Table)."
+    path_hail_file: "Path to hail file (either MatrixTable or Table)."
   }
   output {
     File out_stdout = stdout()

@@ -20,6 +20,9 @@ task CromwelltoolsTaskRuntime {
       ~{if defined(metadata) then ("--metadata " +  '"' + metadata + '"') else ""} \
       ~{if defined(uuid) then ("--uuid " +  '"' + uuid + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     url: "The URL to the Cromwell server. e.g.\\n\\\"https://cromwell.server.org/\\\""
     username: "Cromwell username for HTTPBasicAuth."

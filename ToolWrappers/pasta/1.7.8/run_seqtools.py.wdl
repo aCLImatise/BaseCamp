@@ -20,6 +20,9 @@ task RunSeqtoolspy {
       ~{if defined(mask_sites) then ("-masksites " +  '"' + mask_sites + '"') else ""} \
       ~{if defined(filter_fragments) then ("-filterfragments " +  '"' + filter_fragments + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "[INFILE]      name of the input file (default: standard input)"
     outfile: "[OUTFILE]    name of the output file (default: standard output)"

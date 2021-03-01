@@ -12,6 +12,9 @@ task Sc3sc3calcconsensR {
       ~{if defined(output_text_file) then ("--output-text-file " +  '"' + output_text_file + '"') else ""} \
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name in which a SC3 'SingleCellExperiment' object has been stored after kmeans clustering."
     output_text_file: "Text file name in which to store clusters, one column for every k value."

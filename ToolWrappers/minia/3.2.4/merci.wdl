@@ -16,6 +16,9 @@ task Merci {
       ~{if (assembly) then "-assembly" else ""} \
       ~{if (reads) then "-reads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "(1 arg) :    verbosity level  [default '1']"
     nb_cores: "(1 arg) :    number of threads  [default '0']"

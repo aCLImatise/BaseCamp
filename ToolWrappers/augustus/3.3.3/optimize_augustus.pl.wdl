@@ -66,6 +66,9 @@ task OptimizeAugustuspl {
       ~{if defined(jg) then ("--jg " +  '"' + jg + '"') else ""} \
       ~{if defined(jg_exec_dir) then ("--jg_exec_dir " +  '"' + jg_exec_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     meta_pars: "metapars.cfg contains the names and their ranges of the\\nmeta parameters that are subject to optimization.\\n(default: generic_metapars.cfg)"
     rounds: "r is the number of rounds (default: 5)"

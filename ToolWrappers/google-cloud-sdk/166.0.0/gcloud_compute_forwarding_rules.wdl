@@ -16,6 +16,9 @@ task GcloudComputeForwardingrules {
       ~{list} \
       ~{set_target}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create a forwarding rule to direct network traffic to a load balancer."
     delete: "Delete forwarding rules."

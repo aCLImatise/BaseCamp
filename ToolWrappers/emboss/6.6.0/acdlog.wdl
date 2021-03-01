@@ -4,6 +4,9 @@ task Acdlog {
   command <<<
     acdlog
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

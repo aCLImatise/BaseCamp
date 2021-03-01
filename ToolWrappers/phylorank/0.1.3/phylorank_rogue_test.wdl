@@ -16,6 +16,9 @@ task PhylorankRogueTest {
       ~{if defined(out_group_tax_on) then ("--outgroup_taxon " +  '"' + out_group_tax_on + '"') else ""} \
       ~{if (decorate) then "--decorate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_group_tax_on: "taxon to use as outgroup (e.g., d__Archaea); imples\\ntree should be rooted"
     decorate: "indicates trees should be decorated"

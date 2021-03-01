@@ -8,6 +8,9 @@ task SNAPstatspl {
     SNAPstats_pl \
       ~{codons_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     codons_dot: ""
   }

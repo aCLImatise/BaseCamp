@@ -32,6 +32,9 @@ task WatchmedoLog {
       ~{if (debug_force_fs_events) then "--debug-force-fsevents" else ""} \
       ~{if (debug_force_i_notify) then "--debug-force-inotify" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     patterns: "matches event paths with these patterns (separated by\\n;). (default: '*')"
     ignore_patterns: "ignores event paths with these patterns (separated by\\n;). (default: '')"

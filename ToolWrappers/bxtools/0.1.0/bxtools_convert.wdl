@@ -14,6 +14,9 @@ task BxtoolsConvert {
       ~{if (keep_tags) then "--keep-tags" else ""} \
       ~{if (tag) then "--tag" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Set verbose output"
     keep_tags: "Add chromosome tag (CR) and keep other tags. Default: delete all tags"

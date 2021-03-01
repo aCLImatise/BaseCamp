@@ -12,6 +12,9 @@ task MspSimulateSampleSize {
       ~{simulate} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     length: ""
     msp: ""

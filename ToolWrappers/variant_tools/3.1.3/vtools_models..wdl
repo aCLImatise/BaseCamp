@@ -8,6 +8,9 @@ task VtoolsModels {
     vtools models_ \
       ~{v_tools}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v_tools: ""
   }

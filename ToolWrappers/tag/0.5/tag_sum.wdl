@@ -8,6 +8,9 @@ task TagSum {
     tag sum \
       ~{gff_three}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff_three: "input file"
   }

@@ -20,6 +20,9 @@ task HisatgenotypeHLAGenotypingPGspy {
       ~{if defined(num_mismatch) then ("--num-mismatch " +  '"' + num_mismatch + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_type: "Reference type: gene, chromosome, and genome (default:\\ngene)"
     hla_list: "A comma-separated list of HLA genes (default:\\nA,B,C,DQA1,DQB1,DRB1)"

@@ -12,6 +12,9 @@ task SocruSpecies {
       ~{if (debug) then "--debug" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     extended: "Extended information about the species databases (default:\\nFalse)"
     debug: "Turn on debugging (default: False)"

@@ -16,6 +16,8 @@ task BsCall {
     Int? max_template_length
     Int? realign_tolerance
     File? no_compress
+    File? contig_bed
+    File? dbsnp
     Float? conversion
     Float? reference_bias
   }
@@ -35,9 +37,14 @@ task BsCall {
       ~{if defined(max_template_length) then ("--max-template-length " +  '"' + max_template_length + '"') else ""} \
       ~{if defined(realign_tolerance) then ("--realign-tolerance " +  '"' + realign_tolerance + '"') else ""} \
       ~{if defined(no_compress) then ("--no-compress " +  '"' + no_compress + '"') else ""} \
+      ~{if defined(contig_bed) then ("--contig-bed " +  '"' + contig_bed + '"') else ""} \
+      ~{if defined(dbsnp) then ("--dbsnp " +  '"' + dbsnp + '"') else ""} \
       ~{if defined(conversion) then ("--conversion " +  '"' + conversion + '"') else ""} \
       ~{if defined(reference_bias) then ("--reference-bias " +  '"' + reference_bias + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_split: "Do not split output on contig"
     haploid: "Assume genome is haploid"
@@ -52,7 +59,9 @@ task BsCall {
     bq_threshold: "Set base quality threshold for calling (default 20)"
     max_template_length: "Set maximum template length for a pair (default 1000)"
     realign_tolerance: "Tolerance for realignment positions (default 8)"
-    no_compress: "--output|-o <output prefix>\\n--sample|-n <sample name> SAMPLE\\n--reference|-r <file> (MultiFASTA/FASTA)\\n--contig-bed|-C <file> (BED)\\n--dbsnp|-D <file> (dbSNP processed file)\\n--all-positions|-A"
+    no_compress: "SAMPLE"
+    contig_bed: "(BED)"
+    dbsnp: "(dbSNP processed file)"
     conversion: ",<float> Set under and over conversion rates (default 0.01,0.05)"
     reference_bias: "Set bias to reference homozygote (default 2)"
   }

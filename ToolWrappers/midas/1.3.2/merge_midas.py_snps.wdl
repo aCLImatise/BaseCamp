@@ -3,9 +3,9 @@ version 1.0
 task MergeMidaspySnps {
   input {
     Int? threads
-    String? input_sample_output
-    File? specify_one_followinglist
-    File? path_reference_default
+    String? input_sample_directories
+    File? specify_one_ex
+    File? path_reference_databaseby
     Boolean? core_snps
     Boolean? core_sites
     Boolean? all_snps
@@ -29,9 +29,9 @@ task MergeMidaspySnps {
     merge_midas_py snps \
       ~{outdir} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{if defined(input_sample_output) then ("-i " +  '"' + input_sample_output + '"') else ""} \
-      ~{if defined(specify_one_followinglist) then ("-t " +  '"' + specify_one_followinglist + '"') else ""} \
-      ~{if defined(path_reference_default) then ("-d " +  '"' + path_reference_default + '"') else ""} \
+      ~{if defined(input_sample_directories) then ("-i " +  '"' + input_sample_directories + '"') else ""} \
+      ~{if defined(specify_one_ex) then ("-t " +  '"' + specify_one_ex + '"') else ""} \
+      ~{if defined(path_reference_databaseby) then ("-d " +  '"' + path_reference_databaseby + '"') else ""} \
       ~{if (core_snps) then "--core_snps" else ""} \
       ~{if (core_sites) then "--core_sites" else ""} \
       ~{if (all_snps) then "--all_snps" else ""} \
@@ -50,11 +50,14 @@ task MergeMidaspySnps {
       ~{if defined(site_prev) then ("--site_prev " +  '"' + site_prev + '"') else ""} \
       ~{if defined(max_sites) then ("--max_sites " +  '"' + max_sites + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of CPUs to use (1)"
-    input_sample_output: "Input to sample directories output by run_midas.py; see '-t' for details"
-    specify_one_followinglist: "Specify one of the following:\\nlist: -i is a comma-separated list (ex: /samples/sample_1,/samples/sample_2)\\ndir: -i is a directory containing all samples (ex: /samples)\\nfile: -i is a file of paths to samples (ex: /sample_paths.txt)"
-    path_reference_default: "Path to reference database\\nBy default, the MIDAS_DB environmental variable is used"
+    input_sample_directories: "Input to sample directories output by run_midas.py; see '-t' for details"
+    specify_one_ex: "Specify one of the following:\\nlist: -i is a comma-separated list (ex: /samples/sample_1,/samples/sample_2)\\ndir: -i is a directory containing all samples (ex: /samples)\\nfile: -i is a file of paths to samples (ex: /sample_paths.txt)"
+    path_reference_databaseby: "Path to reference database\\nBy default, the MIDAS_DB environmental variable is used"
     core_snps: "Same as: --snp_type bi --site_depth 1 --site_ratio 2.0 --site_prev 0.95 (default)"
     core_sites: "Same as: --snp_type any --site_depth 1 --site_ratio 2.0 --site_prev 0.95"
     all_snps: "Same as: --snp_type bi --site_prev 0.0"

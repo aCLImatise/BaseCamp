@@ -22,6 +22,9 @@ task Rmsk2starchfloat128 {
       ~{if (starch_gzip) then "--starch-gzip" else ""} \
       ~{if (starch_note) then "--starch-note" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i_fmtgenomic_format: "=[bam|gff|gtf|gvf|psl|rmsk|sam|vcf|wig] (-i <fmt>)\\nGenomic format of input file (required)"
     o_fmtformat_bed: "=[bed|starch] (-o <fmt>)\\nFormat of output file, either BED or BEDOPS Starch (optional, default is BED)"

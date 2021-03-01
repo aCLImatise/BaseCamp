@@ -8,6 +8,9 @@ task RbtVcfbaf {
     rbt vcf_baf \
       ~{rbt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rbt: ""
   }

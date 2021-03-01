@@ -4,6 +4,9 @@ task Bamsplitdiv {
   command <<<
     bamsplitdiv
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -3,12 +3,12 @@ id: pipits_getsamplelistfromfasta.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -o
 - id: in_i
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_creates
@@ -55,6 +55,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pipits_getsamplelistfromfasta

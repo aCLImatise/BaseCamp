@@ -14,6 +14,9 @@ task VarlociraptorFiltercallsHelp {
       ~{information} \
       ~{try}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     for: ""
     more: ""

@@ -14,6 +14,9 @@ task Cnxpy {
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""} \
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_name: "Output file name (json format)"
     bam: "pass a BAM file for aligner name/version extraction"

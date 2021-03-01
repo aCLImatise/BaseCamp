@@ -12,6 +12,9 @@ task PyqiMakebashcompletion {
       ~{if defined(driver_name) then ("--driver-name " +  '"' + driver_name + '"') else ""} \
       ~{if defined(output_fp) then ("--output-fp " +  '"' + output_fp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     command_config_module: "CLI command configuration module [REQUIRED]"
     driver_name: "name of the driver script [REQUIRED]"

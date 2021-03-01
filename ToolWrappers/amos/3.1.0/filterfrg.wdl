@@ -4,6 +4,9 @@ task Filterfrg {
   command <<<
     filterfrg
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

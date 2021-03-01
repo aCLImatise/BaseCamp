@@ -20,6 +20,9 @@ task Zerone {
       ~{if (list_output) then "--list-output" else ""} \
       ~{if (confidence) then "--confidence" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mock: ": given file is a mock control"
     chip: ": given file is a ChIP-seq experiment"

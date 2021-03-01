@@ -3,7 +3,7 @@ id: spades_bwa_bwt2sa.cwl
 inputs:
 - id: in_i
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -i
 - id: in_bwa
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - spades-bwa

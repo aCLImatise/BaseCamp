@@ -26,6 +26,9 @@ task CoolerZoomify {
       ~{if defined(field) then ("--field " +  '"' + field + '"') else ""} \
       ~{if (legacy) then "--legacy" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nproc: "Number of processes to use for batch processing\\nchunks of pixels [default: 1, i.e. no process pool]"
     chunksize: "Number of pixels allocated to each process\\n[default: 10000000]"

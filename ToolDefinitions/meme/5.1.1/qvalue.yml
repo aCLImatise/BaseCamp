@@ -3,20 +3,48 @@ command:
 - qvalue
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: pvalues
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "--good-score high|low\n--pi-zero\n--pi-zero-file <file>\n--fdr\n--bootstraps\
-    \ <int> (default=1000)\n--header <int> (default=0)\n--column <int> (default=1)\n\
-    --append\n--seed <int> (default from clock)\n--verbosity 1|2|3|4 (default = 2)\n"
+  optional: true
   synonyms:
   - --null
+  - --good-score
+  description: '|low'
   args: !SimpleFlagArg
     name: file
+- !Flag
   optional: true
+  synonyms:
+  - --header
+  description: (default=0)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --column
+  description: (default=1)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --append
+  - --seed
+  description: (default from clock)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: '|2|3|4 (default = 2)'
+  args: !SimpleFlagArg
+    name: '1'
 parent:
 subcommands: []
 usage: []
@@ -29,3 +57,4 @@ help_text: "Usage: qvalue [options] <pvalues>\n\n   Options:\n     --null <file>
   \ <int> (default=1)\n     --append\n     --seed <int> (default from clock)\n   \
   \  --verbosity 1|2|3|4 (default = 2)\n\n"
 generated_using: []
+docker_image:

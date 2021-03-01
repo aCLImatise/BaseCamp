@@ -3,16 +3,19 @@ version 1.0
 task EslselectnN {
   input {
     Boolean? options
-    File file
+    File var_file
   }
   command <<<
     esl_selectn n \
-      ~{file} \
+      ~{var_file} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

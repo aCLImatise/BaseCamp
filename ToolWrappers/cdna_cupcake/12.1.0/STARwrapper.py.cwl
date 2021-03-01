@@ -3,7 +3,7 @@ id: STARwrapper.py.cwl
 inputs:
 - id: in_cpus
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --cpus
 - id: in_wrapper
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - STARwrapper.py

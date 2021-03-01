@@ -16,6 +16,9 @@ task ParseMatchAnnotpy {
       ~{if (parse_fl_coverage) then "--parse_FL_coverage" else ""} \
       ~{if (not_p_bid) then "--not_pbid" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     parse_fl_coverage: ""
     not_p_bid: ""

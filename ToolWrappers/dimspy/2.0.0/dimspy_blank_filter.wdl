@@ -22,6 +22,9 @@ task DimspyBlankfilter {
       ~{if (remove_blank_samples) then "--remove-blank-samples" else ""} \
       ~{if defined(labels) then ("--labels " +  '"' + labels + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hdf_file_file: "HDF5 file or tab-delimited file that contains a peak\\nmatrix (object)."
     hdf_file_save: "HDF5 file to save the peak matrix object to."

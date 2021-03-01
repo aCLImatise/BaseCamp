@@ -20,6 +20,9 @@ task NormalizeByCopyNumberpy {
       ~{if defined(input_otu_fp) then ("--input_otu_fp " +  '"' + input_otu_fp + '"') else ""} \
       ~{if defined(output_otu_fp) then ("--output_otu_fp " +  '"' + output_otu_fp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     gg_version: "Version of GreenGenes that was used for OTU picking.\\nValid choices are: 13_5, 18may2012 [default: 13_5]"

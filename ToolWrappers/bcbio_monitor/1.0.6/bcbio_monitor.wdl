@@ -16,6 +16,9 @@ task BcbioMonitor {
       ~{if (no_browser) then "--no-browser" else ""} \
       ~{if (local) then "--local" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "PAth to the configuration file, defaults to\\n~/.bcbio/monitor.yaml"
     title: "Title (or name) for the analysis, i.e NA12878 test"

@@ -8,6 +8,9 @@ task VtoolsConditions {
     vtools conditions \
       ~{v_tools}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v_tools: ""
   }

@@ -12,6 +12,9 @@ task Goenrichment {
       ~{if defined(annotation) then ("--annotation " +  '"' + annotation + '"') else ""} \
       ~{if defined(study) then ("--study " +  '"' + study + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     go: "Path to the Gene Ontology OBO or OWL file"
     annotation: "Path to the tabular annotation file (GAF, BLAST2GO or 2-column table format"

@@ -10,6 +10,9 @@ task BiscuitRectangle {
       ~{ref_dot_fa} \
       ~{if (output_file) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "output file [stdout]"
     ref_dot_fa: ""

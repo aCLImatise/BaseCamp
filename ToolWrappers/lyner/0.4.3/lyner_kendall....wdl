@@ -12,6 +12,9 @@ task LynerKendall {
       ~{command_one} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     lyne_r: ""
     command_one: ""

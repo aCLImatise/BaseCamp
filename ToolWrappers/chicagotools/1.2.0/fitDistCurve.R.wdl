@@ -22,6 +22,9 @@ task FitDistCurveR {
       ~{if defined(bin_number) then ("--binNumber " +  '"' + bin_number + '"') else ""} \
       ~{if defined(half_number) then ("--halfNumber " +  '"' + half_number + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     opts: "RDS file containing argument values"
     inputs: "Comma-separated list: locations of saved CHiCAGO objects (either .Rda or .Rds)."

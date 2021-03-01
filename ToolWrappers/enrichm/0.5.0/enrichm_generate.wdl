@@ -26,6 +26,9 @@ task EnrichmGenerate {
       ~{if (grid_search) then "--grid_search" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log: "Output logging information to this file."
     verbosity: "Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent"

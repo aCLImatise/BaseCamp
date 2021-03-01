@@ -4,17 +4,85 @@ command:
 positional: []
 named:
 - !Flag
-  description: "directory (optional)\n-o output directory (optional)\n-d database\
-    \ to map (.fasta)\n-s sample name\n-g group name (optional). If unset, samples\
-    \ will be gathered in NO_GROUP group\n-1 reads corresponding to paired-end R1\n\
-    -2 reads corresponding to paired-end R2\n-f offrate index for bowtie_build (optional).\
-    \ Default value 1. for quicker indexing use higher number\n-a use -a mapping (off\
-    \ by default)\n-T number of threads\n-v version\n-h display usage message"
+  optional: true
   synonyms:
   - -i
+  description: directory (optional)
   args: !SimpleFlagArg
     name: input
+- !Flag
   optional: true
+  synonyms:
+  - -o
+  description: directory (optional)
+  args: !SimpleFlagArg
+    name: output
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: to map (.fasta)
+  args: !SimpleFlagArg
+    name: database
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: name
+  args: !SimpleFlagArg
+    name: sample
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: name (optional). If unset, samples will be gathered in NO_GROUP group
+  args: !SimpleFlagArg
+    name: group
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: corresponding to paired-end R1
+  args: !SimpleFlagArg
+    name: reads
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: corresponding to paired-end R2
+  args: !SimpleFlagArg
+    name: reads
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: index for bowtie_build (optional). Default value 1. for quicker indexing
+    use higher number
+  args: !SimpleFlagArg
+    name: offrate
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - -a
+  description: (off by default)
+  args: !SimpleFlagArg
+    name: use
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: of threads
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - -h
+  description: usage message
+  args: !SimpleFlagArg
+    name: version
 parent:
 subcommands: []
 usage: []
@@ -34,3 +102,4 @@ help_text: "\nBowtie_mapper script index a database and map a supplied pair-end 
   \ -1 ecoli_1.fastq -2 ecoli_2.fastq -a\n\n"
 generated_using:
 - --help
+docker_image:

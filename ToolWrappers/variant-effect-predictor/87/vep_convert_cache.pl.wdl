@@ -28,10 +28,13 @@ task VepConvertCachepl {
       ~{if (b_gzip) then "--bgzip" else ""} \
       ~{if (tab_ix) then "--tabix" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    quiet: "-q   Shhh!"
-    force_overwrite: "-f   Overwrite existing cache files if found"
-    remove: "-r   Remove old cache files after conversion"
+    quiet: "Shhh!"
+    force_overwrite: "Overwrite existing cache files if found"
+    remove: "Remove old cache files after conversion"
     dir: "[dir]          -d   Cache directory (default: $HOME/.vep)"
     species: "[species]  -s   Species cache to convert (\\\"all\\\" to do all found)"
     compress: "[cmd]     -c   Path to binary/command to decompress gzipped files.\\nDefaults to \\\"zcat\\\", some systems may prefer \\\"gzip -dc\\\""

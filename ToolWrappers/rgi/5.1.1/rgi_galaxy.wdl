@@ -10,6 +10,9 @@ task RgiGalaxy {
       ~{if defined(galaxy_database) then ("--galaxy_database " +  '"' + galaxy_database + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     galaxy_database: "path to CARD data and blast databases"
     debug: "debug mode"

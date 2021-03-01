@@ -11,7 +11,7 @@ inputs:
     \ 10\nbases/residues before the end of the\nfeature. The output sequence will\
     \ be padded\nwith 'N' or 'X' characters if the sequence\nstarts after the required\
     \ start of the\nextraction. (Any integer value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -before
 - id: in_after
@@ -24,7 +24,7 @@ inputs:
     bases/residues after the start of the\nfeature. The output sequence will be padded\n\
     with 'N' or 'X' characters if the sequence\nends before the required end of the\n\
     extraction. (Any integer value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -after
 - id: in_source
@@ -34,7 +34,7 @@ inputs:
     it is the feature table (eg: EMBL) that the\nfeature came from.\nThe source may\
     \ be wildcarded by using '*'.\nIf you wish to show more than one source,\nseparate\
     \ their names with the character '|',\neg:\ngene* | embl (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -source
 - id: in_type
@@ -45,7 +45,7 @@ inputs:
     \ types.\nThe type may be wildcarded by using '*'.\nIf you wish to extract more\
     \ than one type,\nseparate their names with the character '|',\neg:\n*UTR | intron\
     \ (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -type
 - id: in_sense
@@ -53,19 +53,19 @@ inputs:
     \ any feature type\nin the feature table is extracted. You can\nset this to match\
     \ any feature sense you\nwish. 0 - any sense, 1 - forward sense, -1 -\nreverse\
     \ sense (Any integer value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -sense
 - id: in_min_score
   doc: "float      [0.0] Minimum score of feature to extract\n(see also maxscore)\
     \ (Any numeric value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -minscore
 - id: in_max_score
   doc: "float      [0.0] Maximum score of feature to extract.\nIf both minscore and\
     \ maxscore are zero (the\ndefault), then any score is ignored (Any\nnumeric value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -maxscore
 - id: in_tag
@@ -80,7 +80,7 @@ inputs:
     \ you wish to show.\nThe tag may be wildcarded by using '*'.\nIf you wish to extract\
     \ more than one tag,\nseparate their names with the character '|',\neg:\ngene\
     \ | label (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -tag
 - id: in_value
@@ -96,7 +96,7 @@ inputs:
     \ to\nshow.\nThe tag value may be wildcarded by using\n'*'.\nIf you wish to show\
     \ more than one tag value,\nseparate their names with a space or the\ncharacter\
     \ '|', eg:\npax* | 10 (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -value
 - id: in_join
@@ -106,7 +106,7 @@ inputs:
     \ any group of these features will be\noutput as a single sequence. If the 'before'\n\
     and 'after' qualifiers have been set, then\nonly the sequence before the first\
     \ feature\nand after the last feature are added."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -join
 - id: in_feat_in_name
@@ -116,7 +116,7 @@ inputs:
     \ processing of the\nsequences file, so it is useful for the type\nto be a part\
     \ of the sequence ID name. If\nyou set this to be TRUE then the name is\nadded\
     \ to the ID name of the output sequence."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -featinname
 - id: in_describe
@@ -136,13 +136,14 @@ inputs:
     \ tag you\nwish to show.\nThe tag may be wildcarded by using '*'.\nIf you wish\
     \ to extract more than one tag,\nseparate their names with the character '|',\n\
     eg:\ngene | label (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -describe
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _extractfeat

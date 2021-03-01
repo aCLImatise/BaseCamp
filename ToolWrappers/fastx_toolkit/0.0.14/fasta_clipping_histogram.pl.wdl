@@ -8,6 +8,9 @@ task FastaClippingHistogrampl {
     fasta_clipping_histogram_pl \
       ~{input_file_dot_fa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_dot_fa: "= input file (in FASTA format, can be GZIPped)"
   }

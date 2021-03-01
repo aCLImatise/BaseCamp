@@ -15,7 +15,7 @@ task Gff3ToEmbl {
     String taxonid
     String project_accession
     String description
-    File file
+    File gff_filename
   }
   command <<<
     gff3_to_embl \
@@ -23,7 +23,7 @@ task Gff3ToEmbl {
       ~{taxonid} \
       ~{project_accession} \
       ~{description} \
-      ~{file} \
+      ~{gff_filename} \
       ~{if defined(authors) then ("--authors " +  '"' + authors + '"') else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
       ~{if defined(publication) then ("--publication " +  '"' + publication + '"') else ""} \
@@ -34,6 +34,9 @@ task Gff3ToEmbl {
       ~{if defined(translation_table) then ("--translation_table " +  '"' + translation_table + '"') else ""} \
       ~{if defined(chromosome_list) then ("--chromosome_list " +  '"' + chromosome_list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     authors: "Authors (in the EMBL RA line style)"
     title: "Title of paper (in the EMBL RT line style)"
@@ -48,7 +51,7 @@ task Gff3ToEmbl {
     taxonid: "Taxon id"
     project_accession: "Accession number for the project"
     description: "Genus species subspecies strain of organism"
-    file: "GFF3 filename"
+    gff_filename: "GFF3 filename"
   }
   output {
     File out_stdout = stdout()

@@ -12,6 +12,9 @@ task SvtoolsVcftobedpe {
       ~{if defined(output_bedpe_write) then ("--output " +  '"' + output_bedpe_write + '"') else ""} \
       ~{if defined(tempdir) then ("--tempdir " +  '"' + tempdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_input_default: "VCF input (default: stdin)"
     output_bedpe_write: "output BEDPE to write (default: stdout)"

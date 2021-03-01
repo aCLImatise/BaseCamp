@@ -46,6 +46,9 @@ task RunByDirectory {
       ~{if defined(skip_gaps) then ("--skip-gaps " +  '"' + skip_gaps + '"') else ""} \
       ~{if defined(dir_for_read_sequences) then ("--dir-for-read-sequences " +  '"' + dir_for_read_sequences + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_threads: "Number of threads (1)"
     output_file_read: "Output file with sequence and read placement (output.txt)"

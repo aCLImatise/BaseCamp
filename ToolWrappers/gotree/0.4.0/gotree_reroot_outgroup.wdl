@@ -22,6 +22,9 @@ task GotreeRerootOutgroup {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     remove_out_group: "Removes the outgroup after reroot"
     strict: "Enforce the outgroup to be monophyletic (else throw an error)"

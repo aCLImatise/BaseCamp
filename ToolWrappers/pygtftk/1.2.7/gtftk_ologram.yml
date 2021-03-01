@@ -1,0 +1,550 @@
+!Command
+command:
+- gtftk
+- ologram
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: the
+  description: '*  more-bed arguments to look for enrichment in overlaps for custom
+    annotations.'
+- !Positional
+  optional: false
+  position: 0
+  name: used.
+  description: "*  The program produces a pdf file and a tsv file ('_stats_') containing\
+    \ intersection"
+- !Positional
+  optional: false
+  position: 0
+  name: regions.
+  description: '*  You can exclude regions from the shuffling. This is done by shuffling
+    across a concatenated'
+- !Positional
+  optional: false
+  position: 0
+  name: values.
+  description: This is especially true for small regions such as Transcriptional Regulator
+    biding
+- !Positional
+  optional: false
+  position: 0
+  name: studying
+  description: Transcriptional Regulators, shuffling only on inferred Cis Regulatory
+    Modules or
+- !Positional
+  optional: false
+  position: 0
+  name: RAM.
+  description: If you nevertheless need to use many shuffles, look to the ologram_merge_run
+    plugin.
+- !Positional
+  optional: false
+  position: 0
+  name: '2020-08-01'
+  description: 'Arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -mocs
+  - --multiple-overlap-target-combi-size
+  description: 'Maximum number of sets in the output combinations. Default to -1 meaning
+    no max number. Set it to number of --more-bed +1 to get exact (exclusive) combinations
+    (default: -1)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -monc
+  - --multiple-overlap-max-number-of-combinations
+  description: 'Maximum number of combinations to consider by applying the MODL algorithm
+    to the matrix of full overlaps. Defaults to -1, which means MODL is NOT applied
+    and all combinations are returned (default: -1)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --inputfile
+  description: 'Path to the GTF file. Defaults to STDIN (default: <stdin>)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chrom-info
+  description: 'Tabulated two-columns file. Chromosomes as column 1, sizes as column
+    2 (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --peak-file
+  description: 'The file containing the peaks/regions to be annotated. (bed format).
+    (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --more-bed
+  description: 'A list of bed files to be considered as additional genomic annotations.
+    (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --more-bed-labels
+  description: 'A comma separated list of labels (see --more-bed). Optional. (default:
+    None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --bed-excl
+  description: 'Exclusion file. The chromosomes will be shortened by this much for
+    the shuffles of peaks and features. (bed format). (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -bi
+  - --bed-incl
+  description: 'Opposite of --bed-excl, will perform the same operation but keep only
+    those regions. (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --upstream
+  description: "Extend the TSS and TTS of in 5' by a given value. (default: 1000)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --downstream
+  description: "Extend the TSS and TTS of in 3' by a given value. (default: 1000)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --more-keys
+  description: 'A comma separated list of key used for labeling the genome. See Notes.
+    (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --no-basic-feature
+  description: 'No statistics for basic features of GTF. Concentrates on --more-bed
+    and --more-keys. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mo
+  - --more-bed-multiple-overlap
+  description: 'The more-beds specified will be considered all at once for multiple
+    overlaps. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -moc
+  - --multiple-overlap-custom-combis
+  description: "Path to a text ('*.txt') file that will be read as a NumPy matrix,\
+    \ overriding the combinations to be studied. See notes for the format of the text\
+    \ file. (default: None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --nb-threads
+  description: 'Number of threads for multiprocessing. (default: 1)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --seed
+  description: 'Numpy random seed. (default: 42)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mn
+  - --minibatch-nb
+  description: 'Number of minibatches of shuffles. (default: 10)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ms
+  - --minibatch-size
+  description: 'Size of each minibatch, in number of shuffles. (default: 20)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ma
+  - --use-markov
+  description: 'Whether to use Markov model realisations (order 2) instead of independant
+    shuffles. See notes. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outputdir
+  description: 'Output directory name. (default: ologram_output)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pw
+  - --pdf-width
+  description: 'Output pdf file width (inches). (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ph
+  - --pdf-height
+  description: 'Output pdf file height (inches). (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pf
+  - --pdf-file-alt
+  description: 'Provide an alternative path for the main image. (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --no-pdf
+  description: 'Do not produce any image file. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --display-fit-quality
+  description: 'Display the negative binomial fit quality on the diagrams. (default:
+    False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tp
+  - --tsv-file-path
+  description: 'Provide an alternative path for text output file. (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --sort-features
+  description: 'Whether to sort features in diagrams according to a computed statistic.
+    (default: summed_bp_overlaps_true)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --no-gtf
+  description: 'No GTF file is provided as input. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force-chrom-gtf
+  description: 'Discard silently, from GTF, genes outside chromosomes defined in --chrom-info.
+    (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --force-chrom-peak
+  description: 'Discard silently, from --peak-file, peaks outside chromosomes defined
+    in --chrom-info. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --force-chrom-more-bed
+  description: 'Discard silently, from --more-bed files, regions outside chromosomes
+    defined in --chrom-info. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --verbosity
+  description: 'Set output verbosity ([0-3]). (default: 0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --no-date
+  description: 'Do not add date to output file names. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --add-chr
+  description: "Add 'chr' to chromosome names before printing output. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  - --tmp-dir
+  description: 'Keep all temporary files into this folder. (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --keep-all
+  description: 'Try to keep all temporary files even if process does not terminate
+    normally. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --logger-file
+  description: 'Stores the arguments passed to the command into a file. (default:
+    None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --write-message-to-file
+  description: 'Store all message into a file. (default: None)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "  Usage: gtftk ologram [-i GTF] [-c TXT] -p BED [-b [more_bed [more_bed\
+  \ ...]]] [-l more_bed_labels] [-e BED] [-bi BED] [-u upstream] [-d downstream] [-m\
+  \ more_keys] [-n] [-mo] [-mocs multiple_overlap_target_combi_size] [-monc multiple_overlap_max_number_of_combinations]\
+  \ [-moc multiple_overlap_custom_combis] [-k nb_threads] [-s seed] [-mn minibatch_nb]\
+  \ [-ms minibatch_size] [-ma] [-o DIR] [-pw pdf_width] [-ph pdf_height] [-pf pdf_file_alt]\
+  \ [-x] [-y] [-tp tsv_file_path] [-j {None,nb_intersections_expectation_shuffled,nb_intersections_variance_shuffled,nb_intersections_negbinom_fit_quality,nb_intersections_log2_fold_change,nb_intersections_true,nb_intersections_pvalue,summed_bp_overlaps_expectation_shuffled,summed_bp_overlaps_variance_shuffled,summed_bp_overlaps_negbinom_fit_quality,summed_bp_overlaps_log2_fold_change,summed_bp_overlaps_true,summed_bp_overlaps_pvalue}]\
+  \ [-z] [-f] [-w] [-q] [-h] [-V [verbosity]] [-D] [-C] [-K tmp_dir] [-A] [-L logger_file]\
+  \ [-W write_message_to_file]\n\n  Description: \n     *  OLOGRAM -- OverLap Of Genomic\
+  \ Regions Analysis using Monte Carlo. Ologram annotates peaks (in bed\n     format)\
+  \ using (i) genomic features extracted from a GTF file (e.g promoter, tts, gene\
+  \ body,\n     UTR...) (ii) genomic regions tagged with particular keys/values in\
+  \ a GTF file (e.g.\n     gene_biotype \"protein_coding\", gene_biotype \"LncRNA\"\
+  ...) or (iii) from a BED file (e.g. user-\n     defined regions).  Each pair {peak\
+  \ file, feature} is randomly shuffled independently across the\n     genome (inter-region\
+  \ lengths are considered). Then the probability of intersection under the\n    \
+  \ null hypothesis (the peaks and this feature are independent) is deduced thanks\
+  \ to this Monte\n     Carlo approach. The program will return statistics for both\
+  \ the number of intersections and the\n     total lengths (in basepairs) of all\
+  \ intersections.  The null hypothesis is:  H0: The regions of\n     the query (--peak-file)\
+  \ are located independently of the  reference (--inputfile or --more-bed)\n    \
+  \ with respect to overlap.  H1: The regions of the query (--peak-file) tend to overlap\
+  \ the\n     reference (--inputfile or --more-bed).   OLOGRAM can now also calculate\
+  \ enrichment for n-wise\n     combinations (e.g. [Query + A + B] or [Query + B +\
+  \ C]) on sets of regions defined by the user\n     (--more-bed argument).  Author\
+  \ : Quentin FERRE <quentin.q.ferre@gmail.com>, Co-authors :\n     Guillaume CHARBONNIER\
+  \ <guillaume.charbonnier@outlook.com> and Denis PUTHIER\n     <denis.puthier@univ-amu.fr>.\n\
+  \n  Notes:\n     *  OLOGRAM is multithreaded and can use many cores, most notably\
+  \ processing one batch of\n     shuffles per core. Note that this can be RAM-intensive,\
+  \ on top of the base pygtftk processing\n     of a full human GTF can require upwards\
+  \ of 8Gb. It is recommended you do not run other programs\n     in the meantime\
+  \ on a laptop.\n     *  You may pass custom sets of regions as BED files, especially\
+  \ for multiple overlaps,  with\n     the\n     *  more-bed arguments to look for\
+  \ enrichment in overlaps for custom annotations.\n     *  Genome size is computed\
+  \ from the provided chromInfo file (-c). It should thus only contain\n     ordinary\
+  \ chromosomes. --chrom-info may also accept 'mm8', 'mm9', 'mm10', 'hg19', 'hg38',\
+  \ 'rn3'\n     or 'rn4'. In this case the corresponding size of conventional chromosomes\
+  \ are used. ChrM is not\n     used.\n     *  The program produces a pdf file and\
+  \ a tsv file ('_stats_') containing intersection\n     statistics for the shuffled\
+  \ BEDs under H0 (peak_file and the considered genomic region are\n     independant):\
+  \ number of intersections (N = number of lines in the bed intersect) and total\n\
+  \     number of overlapping base pairs (S).  The output figure gives, for both statistics,\n\
+  \     expectation and standard deviation (error bars) in the shuffles compared to\
+  \ the actual values.\n     It also gives, under the 'fit' label for each statistic,\
+  \ the goodness of fit of the statistic\n     under (H0) to a Negative Binomial assessed\
+  \ by a Cramer's V score (fit_quality gives 1-V ; as\n     per Cramer (1948) a good\
+  \ fit should have a fit quality above (1 - 0.25 = 0.75) if your nb. of\n     shuffles\
+  \ is in the hundreds, but closer to 0.9 if it is in the thousands or above.  The\
+  \ p-value\n     of the true intersection under the distribution characterized by\
+  \ the shuffles is also given,\n     under 'p_value'. Finally, the log2 fold change\
+  \ between true and shuffles is also given.\n     *  If --more-keys is used additional\
+  \ region sets will be tested based on the associated key\n     value. As an example,\
+  \ if --more-keys is set to the 'gene_biotype' (a key generally found in\n     ensembl\
+  \ GTF), the region related to 'protein_coding', 'lncRNA' or any other values for\
+  \ that key\n     will be retrieved merged and tested for enrichment.\n     *  Use\
+  \ --no-basic-feature if you want to perform enrichment analysis on custom, focused\n\
+  \     annotations only (--more-bed or --more-key).\n     *  The goal of the minibatches\
+  \ is to save RAM. You should increase the number of minibatches,\n     instead of\
+  \ their size. You may need to use very small minibatches if you have large sets\
+  \ of\n     regions.\n     *  You can exclude regions from the shuffling. This is\
+  \ done by shuffling across a concatenated\n     \"sub-genome\" obtained by removing\
+  \ the excluded regions, but the same ones will be excluded from\n     the peak_file\
+  \ and the GTF/more-bed files.\n     *  BETA : About --use-markov. This arguments\
+  \ control whether to use Markov model realisations\n     (of order 2) instead of\
+  \ independant shuffles for respectively region lengths and inter-region\n     lengths.\
+  \ This can better capture the structure of the genomic regions repartitions. This\
+  \ is not\n     recommended in the general case and can be *very* time-consuming\
+  \ (hours).\n     *  While they will be accepted by OLOGRAM, in BED files lines such\
+  \ as \"chr1 100 100\" or \"chr1\n     100\" would represent empty regions (of length\
+  \ 0) and as such are an error.\n     *  Support for multiple overlaps is available.\
+  \ Please see the documentation for more\n     information. If the --more-bed-multiple-overlap\
+  \ argument is used, the query peak file will be\n     compared with the custom regions\
+  \ passed to the --more-bed argument, and with  them only. For\n     example, you\
+  \ can put as query the  binding sites of the Transcription Factor A, in --more-bed\n\
+  \     the factors B, C and D, and see whether A+B+D is an enriched combination.\n\
+  \     *  By default, interesections are counted as \"inexact\", meaning an overlap\
+  \ of [A + B + C] will\n     count towards [A + B + ...]. For exact intersections\
+  \ (ie. [A + B + nothing else]), set the\n     --multiple-overlap-target-combi-size\
+  \ flag to the number of --more-bed +1 (+1 for the query)\n     In any case, only\
+  \ intersections with the query are counted. ie. Query+A+B is counted, but A+B+C\n\
+  \     is not. Intersection within sets are supported by the backend and may come\
+  \ in a future version.\n     We recommend using --multiple-overlap-target-combi-size\
+  \ only when not using MODL since\n     filtering is applied after the first step\
+  \ of candidate mining.\n     *  Furthermore, you may use our MODL algorithm to find\
+  \ biological complexes of interest, by\n     mining for frequent itemsets on the\
+  \ intersections on the true data. This is done with the\n     --multiple-overlap-max-number-of-combinations\
+  \ argument. This will not change the N,S and\n     enrichment result, but will restrict\
+  \ the set of interesting combis for which those are\n     calculated and displayed\n\
+  \     *  MODL is designed to find complexes more than association rules, so we do\
+  \ not recommend\n     asking for more than 20-50 combinations to keep the running\
+  \ time reasonable and keep the found\n     combinations still relevant. Note that\
+  \ MODL is completely optional. It is mostly needed when\n     the list of --more-bed\
+  \ is very long and you do not want to filter the results manually, and\n     when\
+  \ you are working with noisy data which could obfuscate the interesting combinations.\
+  \ MODL\n     employs a form of subsampling on the original matrix and will discard\
+  \ combinations rarer than\n     1/10000 occurences to reduce computing times. This\
+  \ can magnify the noise however and can be\n     disabled when using MODL separately.\
+  \   It will also reduce the abundance of all lines in the\n     matrix to their\
+  \ square roots to reduce the emphasis on the most frequent elements. This is done\n\
+  \     as the matrix of intersections will usually have many redundant lines and\
+  \ as such can be\n     squished without changing the result. It is also possible\
+  \ to bypass it and provide a custom\n     list of combinations to be considered.\n\
+  \     *  MODL can be used separately in Python. An example of how to compute an\
+  \ intersection matrix\n     manually from BED files is presented in the documentation.\n\
+  \     *  For statistical reality reasons, with multiple sets the expected overlaps\
+  \ for the longer\n     combinations (A+B+C+D+... when they are all independant)\
+  \ can be very low. As a result, longer\n     combinations tend to be more enriched\
+  \ : this should be kept in mind when comparing enrichment\n     values.  This is\
+  \ especially true for small regions such as Transcriptional Regulator biding\n \
+  \    sites where the total coverage of all sets considered is low.  Note that the\
+  \ fact that we are\n     using a Negative Binomial rather than empirical p-values\
+  \ helps alleviate this problem. If a\n     combination is so rare that it is not\
+  \ encoutered even once in the shuffles, it will have a\n     p-value of NaN. Furthermore,\
+  \ if C is depleted with query but always present with A and B, and A\n     and B\
+  \ are enriched themselves, A+B+C will be enriched.\n     *  A low number of intersecting\
+  \ basepairs can require using more shuffles, but very-low-average\n     Negative\
+  \ Binomial distributions are not really signficant. We recommend instead shuffling\
+  \ only\n     across a biologically relevant subsection of the genome (with --bed-incl)\
+  \ : for example, if\n     studying  Transcriptional Regulators, shuffling only on\
+  \ inferred Cis Regulatory Modules or\n     promoters. Or perhaps run a first pairwise\
+  \  analysis to identify likely candidates, and then\n     shuffle only across a\
+  \ subgenome obtained by merging all regions in the query. This also allows\n   \
+  \  using fewer shuffles (dozens), because remembering intersections across many\
+  \ files will use\n     RAM.  If you nevertheless need to use many shuffles, look\
+  \ to the ologram_merge_run plugin.\n     *  We recommend running the ologram_modl_treeify\
+  \ plugin on the resulting tsv file if you use\n     multiple overlaps.\n     * \
+  \ If you manually specify the combinations to be studied with --multiple-overlap-custom-\n\
+  \     combis, use the following format for the text file :  The order is the same\
+  \ as --more-beds\n     (ie. if --more-bed is \"A.bed B.bed C.bed\", \"1 0 1 1\"\
+  \ means Query + B + C). Data should be\n     whitespace separated with one combination\
+  \ per line.\n\n  Version:  2020-08-01\n\nArguments:\n -i, --inputfile          \
+  \              Path to the GTF file. Defaults to STDIN (default: <stdin>)\n -c,\
+  \ --chrom-info                       Tabulated two-columns file. Chromosomes as\
+  \ column 1, sizes as column 2 (default: None)\n -p, --peak-file                \
+  \        The file containing the peaks/regions to be annotated. (bed format). (default:\
+  \ None)\n -b, --more-bed                         A list of bed files to be considered\
+  \ as additional genomic annotations. (default: None)\n -l, --more-bed-labels   \
+  \               A comma separated list of labels (see --more-bed). Optional. (default:\
+  \ None)\n -e, --bed-excl                         Exclusion file. The chromosomes\
+  \ will be shortened by this much for the shuffles of peaks and features. (bed format).\
+  \ (default: None)\n -bi, --bed-incl                        Opposite of --bed-excl,\
+  \ will perform the same operation but keep only those regions. (default: None)\n\
+  \ -u, --upstream                         Extend the TSS and TTS of in 5' by a given\
+  \ value. (default: 1000)\n -d, --downstream                       Extend the TSS\
+  \ and TTS of in 3' by a given value. (default: 1000)\n -m, --more-keys         \
+  \               A comma separated list of key used for labeling the genome. See\
+  \ Notes. (default: None)\n -n, --no-basic-feature                 No statistics\
+  \ for basic features of GTF. Concentrates on --more-bed and --more-keys. (default:\
+  \ False)\n -mo, --more-bed-multiple-overlap       The more-beds specified will be\
+  \ considered all at once for multiple overlaps. (default: False)\n -mocs, --multiple-overlap-target-combi-size\n\
+  \                                        Maximum number of sets in the output combinations.\
+  \ Default to -1 meaning no max number. Set it to number of --more-bed +1 to get\
+  \ exact (exclusive) combinations (default: -1)\n -monc, --multiple-overlap-max-number-of-combinations\n\
+  \                                        Maximum number of combinations to consider\
+  \ by applying the MODL algorithm to the matrix of full overlaps. Defaults to -1,\
+  \ which means MODL is NOT applied and all combinations are returned (default: -1)\n\
+  \ -moc, --multiple-overlap-custom-combis\n                                     \
+  \   Path to a text ('*.txt') file that will be read as a NumPy matrix, overriding\
+  \ the combinations to be studied. See notes for the format of the text file. (default:\
+  \ None)\n -k, --nb-threads                       Number of threads for multiprocessing.\
+  \ (default: 1)\n -s, --seed                             Numpy random seed. (default:\
+  \ 42)\n -mn, --minibatch-nb                    Number of minibatches of shuffles.\
+  \ (default: 10)\n -ms, --minibatch-size                  Size of each minibatch,\
+  \ in number of shuffles. (default: 20)\n -ma, --use-markov                     \
+  \ Whether to use Markov model realisations (order 2) instead of independant shuffles.\
+  \ See notes. (default: False)\n -o, --outputdir                        Output directory\
+  \ name. (default: ologram_output)\n -pw, --pdf-width                       Output\
+  \ pdf file width (inches). (default: None)\n -ph, --pdf-height                 \
+  \     Output pdf file height (inches). (default: None)\n -pf, --pdf-file-alt   \
+  \                 Provide an alternative path for the main image. (default: None)\n\
+  \ -x, --no-pdf                           Do not produce any image file. (default:\
+  \ False)\n -y, --display-fit-quality              Display the negative binomial\
+  \ fit quality on the diagrams. (default: False)\n -tp, --tsv-file-path         \
+  \          Provide an alternative path for text output file. (default: None)\n -j,\
+  \ --sort-features                    Whether to sort features in diagrams according\
+  \ to a computed statistic. (default: summed_bp_overlaps_true)\n -z, --no-gtf   \
+  \                        No GTF file is provided as input. (default: False)\n -f,\
+  \ --force-chrom-gtf                  Discard silently, from GTF, genes outside chromosomes\
+  \ defined in --chrom-info. (default: False)\n -w, --force-chrom-peak           \
+  \      Discard silently, from --peak-file, peaks outside chromosomes defined in\
+  \ --chrom-info. (default: False)\n -q, --force-chrom-more-bed             Discard\
+  \ silently, from --more-bed files, regions outside chromosomes defined in --chrom-info.\
+  \ (default: False)\n\nCommand-wise optional arguments:\n -h, --help            \
+  \                 Show this help message and exit.\n -V, --verbosity           \
+  \             Set output verbosity ([0-3]). (default: 0)\n -D, --no-date       \
+  \                   Do not add date to output file names. (default: False)\n -C,\
+  \ --add-chr                          Add 'chr' to chromosome names before printing\
+  \ output. (default: False)\n -K, --tmp-dir                          Keep all temporary\
+  \ files into this folder. (default: None)\n -A, --keep-all                     \
+  \    Try to keep all temporary files even if process does not terminate normally.\
+  \ (default: False)\n -L, --logger-file                      Stores the arguments\
+  \ passed to the command into a file. (default: None)\n -W, --write-message-to-file\
+  \            Store all message into a file. (default: None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pygtftk:1.2.7--py36h4edd4cd_1

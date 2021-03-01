@@ -18,6 +18,9 @@ task CalculateSnpDistancespy {
       ~{if defined(matrix) then ("--matrix " +  '"' + matrix + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "Force processing even when result file already exists\\nand is newer than inputs (default: False)"
     pairs: "Relative or absolute path to the pairwise distance\\noutput file. (default: None)"

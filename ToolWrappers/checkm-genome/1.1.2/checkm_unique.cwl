@@ -4,7 +4,7 @@ inputs:
 - id: in_extension
   doc: 'extension of bins (all other files in bin directory are ignored) (default:
     fna)'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --extension
 - id: in_bin_dir
@@ -16,6 +16,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - checkm

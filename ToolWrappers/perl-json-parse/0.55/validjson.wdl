@@ -8,6 +8,9 @@ task Validjson {
     validjson \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Get confirmation that the files are valid."
   }

@@ -14,6 +14,9 @@ task Yamllint {
       ~{if defined(config_data) then ("--config-data " +  '"' + config_data + '"') else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: "path to a custom configuration"
     config_data: "custom configuration (as YAML source)"

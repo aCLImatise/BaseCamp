@@ -18,6 +18,9 @@ task CnvGeneAnnotation {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input TSV file containing the CNVs."
     out: "Output TSV file containing the annotated CNVs."

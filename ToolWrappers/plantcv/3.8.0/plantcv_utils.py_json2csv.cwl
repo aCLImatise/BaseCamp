@@ -3,12 +3,12 @@ id: plantcv_utils.py_json2csv.cwl
 inputs:
 - id: in_json
   doc: Input PlantCV JSON filename.
-  type: File
+  type: File?
   inputBinding:
     prefix: --json
 - id: in_csv
   doc: Output CSV filename prefix.
-  type: File
+  type: File?
   inputBinding:
     prefix: --csv
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_csv
   doc: Output CSV filename prefix.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_csv)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - plantcv-utils.py

@@ -14,6 +14,9 @@ task ContigReadCountPerGenomepy {
       ~{bam_files} \
       ~{if defined(max_n_processors) then ("--max_n_processors " +  '"' + max_n_processors + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_n_processors: "Specify the maximum number of processors to use, if\\nabsent, all present processors will be used.\\n"
     contig_fa: "Contigs fasta file"

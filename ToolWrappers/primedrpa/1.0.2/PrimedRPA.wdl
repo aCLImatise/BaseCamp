@@ -50,6 +50,9 @@ task PrimedRPA {
       ~{if defined(background_search_sensitivity) then ("--BackgroundSearchSensitivity " +  '"' + background_search_sensitivity + '"') else ""} \
       ~{if defined(evalue) then ("--Evalue " +  '"' + evalue + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run_id: "Desired Run ID"
     prior_align: "Optional: Path to Prior Binding File"

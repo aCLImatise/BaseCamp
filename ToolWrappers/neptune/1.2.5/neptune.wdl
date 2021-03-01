@@ -60,6 +60,9 @@ task Neptune {
       ~{if defined(filter_specification) then ("--filter-specification " +  '"' + filter_specification + '"') else ""} \
       ~{if defined(consolidate_specification) then ("--consolidate-specification " +  '"' + consolidate_specification + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     inclusion: "The inclusion targets in FASTA format."
     exclusion: "The exclusion targets in FASTA format."

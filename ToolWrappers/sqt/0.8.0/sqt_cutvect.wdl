@@ -10,6 +10,9 @@ task SqtCutvect {
       ~{vector} \
       ~{reads}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vector: "FASTA with vector sequence(s)"
     reads: "FASTA/FASTQ with read"

@@ -1,0 +1,281 @@
+&id001 !Command
+command:
+- unitem
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - unitem
+  - compare
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: assembly_file
+    description: assembled contigs used to generate bins
+  - !Positional
+    optional: false
+    position: 1
+    name: bin_dir1
+    description: directory containing bins from first method
+  - !Positional
+    optional: false
+    position: 2
+    name: bin_dir2
+    description: directory containing bins from second method
+  - !Positional
+    optional: false
+    position: 3
+    name: output_file
+    description: output file showing overlap between bins
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --extension1
+    description: 'extension of bins in directory 1 (default: fna)'
+    args: !SimpleFlagArg
+      name: EXTENSION1
+  - !Flag
+    optional: true
+    synonyms:
+    - -y
+    - --extension2
+    description: 'extension of bins in directory 2 (default: fna)'
+    args: !SimpleFlagArg
+      name: EXTENSION2
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output of logger
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: unitem compare [-h] [-x EXTENSION1] [-y EXTENSION2] [--silent]\n\
+    \                      assembly_file bin_dir1 bin_dir2 output_file\n\nCompare\
+    \ bins from two binning methods.\n\npositional arguments:\n  assembly_file   \
+    \      assembled contigs used to generate bins\n  bin_dir1              directory\
+    \ containing bins from first method\n  bin_dir2              directory containing\
+    \ bins from second method\n  output_file           output file showing overlap\
+    \ between bins\n\noptional arguments:\n  -h, --help            show this help\
+    \ message and exit\n  -x, --extension1 EXTENSION1\n                        extension\
+    \ of bins in directory 1 (default: fna)\n  -y, --extension2 EXTENSION2\n     \
+    \                   extension of bins in directory 2 (default: fna)\n  --silent\
+    \              suppress output of logger\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/unitem:0.0.18--py_0
+- !Command
+  command:
+  - unitem
+  - unique
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bin_dir
+    description: directory containing bins
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --extension
+    description: "extension of bins (all other files in directory are\nignored) (default:\
+      \ fna)"
+    args: !SimpleFlagArg
+      name: EXTENSION
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output of logger
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: unitem unique [-h] [-x EXTENSION] [--silent] bin_dir\n\nEnsure\
+    \ sequences are not assigned to multiple bins.\n\npositional arguments:\n  bin_dir\
+    \               directory containing bins\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  -x, --extension EXTENSION\n  \
+    \                      extension of bins (all other files in directory are\n \
+    \                       ignored) (default: fna)\n  --silent              suppress\
+    \ output of logger\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/unitem:0.0.18--py_0
+- !Command
+  command:
+  - unitem
+  - greedy
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: profile_dir
+    description: "directory with bin profiles (output of 'profile'\ncommand)"
+  - !Positional
+    optional: false
+    position: 1
+    name: output_dir
+    description: output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --bin_dirs
+    description: "[BIN_DIRS [BIN_DIRS ...]]\ndirectories with bins from different\
+      \ binning methods"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --bin_file
+    description: "tab-separated file indicating directories with bins\nfrom binning\
+      \ methods (two columns: method name and\ndirectory)"
+    args: !SimpleFlagArg
+      name: BIN_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --weight
+    description: "weight given to contamination for assessing genome\nqualitys (default:\
+      \ 2)"
+    args: !SimpleFlagArg
+      name: WEIGHT
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --sel_min_quality
+    description: "minimum quality of bin to consider during bin\nselection process\
+      \ (default: 50)"
+    args: !SimpleFlagArg
+      name: SEL_MIN_QUALITY
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --sel_min_comp
+    description: "minimum completeness of bin to consider during bin\nselection process\
+      \ (default: 50)"
+    args: !SimpleFlagArg
+      name: SEL_MIN_COMP
+  - !Flag
+    optional: true
+    synonyms:
+    - -y
+    - --sel_max_cont
+    description: "maximum contamination of bin to consider during bin\nselection process\
+      \ (default: 10)"
+    args: !SimpleFlagArg
+      name: SEL_MAX_CONT
+  - !Flag
+    optional: true
+    synonyms:
+    - --report_min_quality
+    description: 'minimum quality of bin to report (default: 10)'
+    args: !SimpleFlagArg
+      name: REPORT_MIN_QUALITY
+  - !Flag
+    optional: true
+    synonyms:
+    - --simple_headers
+    description: do not added additional information to FASTA headers
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --bin_prefix
+    description: 'prefix for output bins (default: bin)'
+    args: !SimpleFlagArg
+      name: BIN_PREFIX
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output of logger
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show help message
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: unitem greedy (-b [BIN_DIRS [BIN_DIRS ...]] | -f BIN_FILE) [-w\
+    \ WEIGHT]\n                     [-q SEL_MIN_QUALITY] [-x SEL_MIN_COMP] [-y SEL_MAX_CONT]\n\
+    \                     [--report_min_quality REPORT_MIN_QUALITY]\n            \
+    \         [--simple_headers] [-p BIN_PREFIX] [--silent] [-h]\n               \
+    \      profile_dir output_dir\n\nGreedy bin selection across multiple binning\
+    \ methods.\n\npositional arguments:\n  profile_dir           directory with bin\
+    \ profiles (output of 'profile'\n                        command)\n  output_dir\
+    \            output directory\n\nrequired arguments (one of):\n  -b, --bin_dirs\
+    \ [BIN_DIRS [BIN_DIRS ...]]\n                        directories with bins from\
+    \ different binning methods\n  -f, --bin_file BIN_FILE\n                     \
+    \   tab-separated file indicating directories with bins\n                    \
+    \    from binning methods (two columns: method name and\n                    \
+    \    directory)\n\noptional bin selection arguments:\n  -w, --weight WEIGHT  \
+    \ weight given to contamination for assessing genome\n                       \
+    \ qualitys (default: 2)\n  -q, --sel_min_quality SEL_MIN_QUALITY\n           \
+    \             minimum quality of bin to consider during bin\n                \
+    \        selection process (default: 50)\n  -x, --sel_min_comp SEL_MIN_COMP\n\
+    \                        minimum completeness of bin to consider during bin\n\
+    \                        selection process (default: 50)\n  -y, --sel_max_cont\
+    \ SEL_MAX_CONT\n                        maximum contamination of bin to consider\
+    \ during bin\n                        selection process (default: 10)\n\noptional\
+    \ arguments:\n  --report_min_quality REPORT_MIN_QUALITY\n                    \
+    \    minimum quality of bin to report (default: 10)\n  --simple_headers      do\
+    \ not added additional information to FASTA headers\n  -p, --bin_prefix BIN_PREFIX\n\
+    \                        prefix for output bins (default: bin)\n  --silent   \
+    \           suppress output of logger\n  -h, --help            show help message\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/unitem:0.0.18--py_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n                ...::: UniteM v0.0.18 :::...\n\n  Binning:\n    bin\
+  \ -> Apply binning methods to an assembly\n  \n  Profiling:\n    profile -> Identify\
+  \ marker genes and calculate assembly statistics\n   \n  Bin selection:\n    consensus\
+  \ -> Consensus clustering across multiple binning methods\n    greedy    -> Greedy\
+  \ bin selection across multiple binning methods\n    unanimous -> Unanimous bin\
+  \ filtering across multiple binning methods\n\n  Utility functions:\n    compare\
+  \  -> Compare bins from two binning methods\n    unique   -> Ensure sequences are\
+  \ not assigned to multiple bins\n\n  Use: unitem <command> -h for command specific\
+  \ help.\n\n  Feature requests or bug reports can be sent to Donovan Parks (donovan.parks@gmail.com)\n\
+  \    or posted on GitHub (https://github.com/dparks1134/unitem).\n    \n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/unitem:0.0.18--py_0

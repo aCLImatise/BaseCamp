@@ -2,7 +2,7 @@ version 1.0
 
 task Yapp {
   input {
-    String? give_parser_module
+    String? give_your_module
     File? create_file_grammaroutput
     Boolean? create_standalone_module
     Boolean? disable_source_file
@@ -17,7 +17,7 @@ task Yapp {
   command <<<
     yapp \
       ~{grammar} \
-      ~{if defined(give_parser_module) then ("-m " +  '"' + give_parser_module + '"') else ""} \
+      ~{if defined(give_your_module) then ("-m " +  '"' + give_your_module + '"') else ""} \
       ~{if (create_file_grammaroutput) then "-v" else ""} \
       ~{if (create_standalone_module) then "-s" else ""} \
       ~{if (disable_source_file) then "-n" else ""} \
@@ -28,8 +28,11 @@ task Yapp {
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    give_parser_module: "Give your parser module the name <module>\\ndefault is <grammar>"
+    give_your_module: "Give your parser module the name <module>\\ndefault is <grammar>"
     create_file_grammaroutput: "Create a file <grammar>.output describing your parser"
     create_standalone_module: "Create a standalone module in which the driver is included"
     disable_source_file: "Disable source file line numbering embedded in your parser"

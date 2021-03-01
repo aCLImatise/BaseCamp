@@ -1,0 +1,137 @@
+!Command
+command:
+- filter_vep
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --input_file
+  description: "[file]  -i   Specify the input file (i.e. the VEP results file).\n\
+    If no input file is specified, the script will\nattempt to read from STDIN. Input\
+    \ may be gzipped - to\nforce the script to read a file as gzipped, use --gz"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: "[vcf|tab]        Specify input file format (tab for any tab-delimited\n\
+    format, including default VEP output format)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output_file
+  description: "[file] -o   Specify the output file to write to. If no output file\n\
+    is specified, the script will write to STDOUT"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force_overwrite
+  description: "Force the script to overwrite the output file if it\nalready exists"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --filter
+  description: "[filters]   -f   Add filter. Multiple --filter flags may be used,\
+    \ and\nare treated as logical ANDs, i.e. all filters must\npass for a line to\
+    \ be printed"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --list
+  - -l
+  description: List allowed fields from the input file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --count
+  - -c
+  description: Print only a count of matched lines
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --only_matched
+  description: "In VCF files, the CSQ field that contains the\nconsequence data will\
+    \ often contain more than one\n\"block\" of consequence data, where each block\n\
+    corresponds to a variant/feature overlap. Using\n--only_matched will remove blocks\
+    \ that do not pass the\nfilters. By default, the script prints out the entire\n\
+    VCF line if any of the blocks pass the filters."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vcf_info_field
+  description: "[key]    With VCF input files, by default filter_vep expects to\n\
+    find VEP annotations encoded in the CSQ INFO key; VEP\nitself can be configured\
+    \ to write to a different key\n(with the equivalent --vcf_info_field flag). Use\
+    \ this\nflag to change the INFO key VEP expects to decode."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ontology
+  - -y
+  description: "Use Sequence Ontology to match consequence terms. Use\nwith operator\
+    \ \"is\" to match against all child terms of\nyour value.\ne.g. \"Consequence\
+    \ is coding_sequence_variant\" will\nmatch missense_variant, synonymous_variant\
+    \ etc.\nRequires database connection; defaults to connecting\nto ensembldb.ensembl.org.\
+    \ Use --host, --port, --user,\n--password, --version as per ./vep to change\n\
+    connection parameters.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Print usage message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "#------------#\n# filter_vep #\n#------------#\n\nhttp://www.ensembl.org/info/docs/tools/vep/script/vep_filter.html\n\
+  \nUsage:\n./filter_vep [arguments]\n  \n--help               -h   Print usage message\
+  \ and exit\n\n--input_file [file]  -i   Specify the input file (i.e. the VEP results\
+  \ file).\n                          If no input file is specified, the script will\n\
+  \                          attempt to read from STDIN. Input may be gzipped - to\n\
+  \                          force the script to read a file as gzipped, use --gz\n\
+  --format [vcf|tab]        Specify input file format (tab for any tab-delimited\n\
+  \                          format, including default VEP output format)\n\n--output_file\
+  \ [file] -o   Specify the output file to write to. If no output file\n         \
+  \                 is specified, the script will write to STDOUT\n--force_overwrite\
+  \         Force the script to overwrite the output file if it\n                \
+  \          already exists\n\n--filter [filters]   -f   Add filter. Multiple --filter\
+  \ flags may be used, and\n                          are treated as logical ANDs,\
+  \ i.e. all filters must\n                          pass for a line to be printed\n\
+  \n--list               -l   List allowed fields from the input file\n--count   \
+  \           -c   Print only a count of matched lines\n\n--only_matched         \
+  \   In VCF files, the CSQ field that contains the\n                          consequence\
+  \ data will often contain more than one\n                          \"block\" of\
+  \ consequence data, where each block\n                          corresponds to a\
+  \ variant/feature overlap. Using\n                          --only_matched will\
+  \ remove blocks that do not pass the\n                          filters. By default,\
+  \ the script prints out the entire\n                          VCF line if any of\
+  \ the blocks pass the filters.\n\n--vcf_info_field [key]    With VCF input files,\
+  \ by default filter_vep expects to\n                          find VEP annotations\
+  \ encoded in the CSQ INFO key; VEP\n                          itself can be configured\
+  \ to write to a different key\n                          (with the equivalent --vcf_info_field\
+  \ flag). Use this\n                          flag to change the INFO key VEP expects\
+  \ to decode.\n                          \n--ontology           -y   Use Sequence\
+  \ Ontology to match consequence terms. Use\n                          with operator\
+  \ \"is\" to match against all child terms of\n                          your value.\n\
+  \                          e.g. \"Consequence is coding_sequence_variant\" will\n\
+  \                          match missense_variant, synonymous_variant etc.\n   \
+  \                       Requires database connection; defaults to connecting\n \
+  \                         to ensembldb.ensembl.org. Use --host, --port, --user,\n\
+  \                          --password, --version as per ./vep to change\n      \
+  \                    connection parameters.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ensembl-vep:103.1--pl526hecda079_0

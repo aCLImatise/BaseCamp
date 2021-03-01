@@ -3,17 +3,17 @@ id: kallisto_quant.cwl
 inputs:
 - id: in_index
   doc: "Filename for the kallisto index to be used for\nquantification"
-  type: File
+  type: File?
   inputBinding:
     prefix: --index
 - id: in_output_dir
   doc: Directory to write output to
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output-dir
 - id: in_bias
   doc: Perform sequence based bias correction
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bias
 - id: in_bootstrap_samples
@@ -24,46 +24,46 @@ inputs:
     \ reads where unobserved rest of fragment is\npredicted to lie outside a transcript\n\
     --fr-stranded             Strand specific reads, first read forward\n--rf-stranded\
     \             Strand specific reads, first read reverse"
-  type: long
+  type: long?
   inputBinding:
     prefix: --bootstrap-samples
 - id: in_fragment_length
   doc: Estimated average fragment length
-  type: long
+  type: long?
   inputBinding:
     prefix: --fragment-length
 - id: in_sd
   doc: "Estimated standard deviation of fragment length\n(default: -l, -s values are\
     \ estimated from paired\nend data, but are required when using --single)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --sd
 - id: in_threads
   doc: "Number of threads to use (default: 1)\n--pseudobam               Save pseudoalignments\
     \ to transcriptome to BAM file\n--genomebam               Project pseudoalignments\
     \ to genome sorted BAM file"
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_gtf
   doc: "GTF file for transcriptome information\n(required for --genomebam)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gtf
 - id: in_chromosomes
   doc: "Tab separated file with chromosome names and lengths\n(optional for --genomebam,\
     \ but recommended)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --chromosomes
 - id: in_verbose
   doc: Print out progress information every 1M proccessed reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_arguments
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 - id: in_fast_q_files
@@ -77,9 +77,10 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: Directory to write output to
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kallisto

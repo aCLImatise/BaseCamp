@@ -84,6 +84,9 @@ task Quast {
       ~{if (test) then "--test" else ""} \
       ~{if (test_sv) then "--test-sv" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "<dirname>       Directory to store all result files [default: quast_results/results_<datetime>]"
     filename_reference_genome: "<filename>      Reference genome file"

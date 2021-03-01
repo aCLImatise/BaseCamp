@@ -2,14 +2,62 @@ version 1.0
 
 task Pandoc {
   input {
-    Int? from
+    String? strip_empty_paragraphs
+    String? v
+    File? print_default_data_file
+    Int? dpi
+    String? wrap
+    Int? table_of_contents
+    File? include_before_body
+    String? reference_location
+    String? top_level_division
+    String? default_image_extension
+    String? citation_abbreviations
+    Boolean? math_jax
+    Boolean? kate_x
+    Boolean? m
+    Boolean? mime_tex
+    Boolean? js_math
   }
   command <<<
     pandoc \
-      ~{if defined(from) then ("--from " +  '"' + from + '"') else ""}
+      ~{if defined(strip_empty_paragraphs) then ("--strip-empty-paragraphs " +  '"' + strip_empty_paragraphs + '"') else ""} \
+      ~{if defined(v) then ("-V " +  '"' + v + '"') else ""} \
+      ~{if defined(print_default_data_file) then ("--print-default-data-file " +  '"' + print_default_data_file + '"') else ""} \
+      ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
+      ~{if defined(wrap) then ("--wrap " +  '"' + wrap + '"') else ""} \
+      ~{if defined(table_of_contents) then ("--table-of-contents " +  '"' + table_of_contents + '"') else ""} \
+      ~{if defined(include_before_body) then ("--include-before-body " +  '"' + include_before_body + '"') else ""} \
+      ~{if defined(reference_location) then ("--reference-location " +  '"' + reference_location + '"') else ""} \
+      ~{if defined(top_level_division) then ("--top-level-division " +  '"' + top_level_division + '"') else ""} \
+      ~{if defined(default_image_extension) then ("--default-image-extension " +  '"' + default_image_extension + '"') else ""} \
+      ~{if defined(citation_abbreviations) then ("--citation-abbreviations " +  '"' + citation_abbreviations + '"') else ""} \
+      ~{if (math_jax) then "--mathjax" else ""} \
+      ~{if (kate_x) then "--katex" else ""} \
+      ~{if (m) then "-m" else ""} \
+      ~{if (mime_tex) then "--mimetex" else ""} \
+      ~{if (js_math) then "--jsmath" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    from: "-t FORMAT, -w FORMAT  --to=FORMAT, --write=FORMAT\\n-o FILE               --output=FILE\\n--data-dir=DIRECTORY\\n--base-header-level=NUMBER\\n--strip-empty-paragraphs\\n--indented-code-classes=STRING\\n-F PROGRAM            --filter=PROGRAM\\n--lua-filter=SCRIPTPATH\\n-p                    --preserve-tabs\\n--tab-stop=NUMBER\\n--track-changes=accept|reject|all\\n--file-scope\\n--extract-media=PATH\\n-s                    --standalone\\n--template=FILE\\n-M KEY[:VALUE]        --metadata=KEY[:VALUE]\\n-V KEY[:VALUE]        --variable=KEY[:VALUE]\\n-D FORMAT             --print-default-template=FORMAT\\n--print-default-data-file=FILE\\n--print-highlight-style=STYLE|FILE\\n--dpi=NUMBER\\n--eol=crlf|lf|native\\n--wrap=auto|none|preserve\\n--columns=NUMBER\\n--strip-comments\\n--toc, --table-of-contents\\n--toc-depth=NUMBER\\n--no-highlight\\n--highlight-style=STYLE|FILE\\n--syntax-definition=FILE\\n-H FILE               --include-in-header=FILE\\n-B FILE               --include-before-body=FILE\\n-A FILE               --include-after-body=FILE\\n--resource-path=SEARCHPATH\\n--request-header=NAME:VALUE\\n--self-contained\\n--html-q-tags\\n--ascii\\n--reference-links\\n--reference-location=block|section|document\\n--atx-headers\\n--top-level-division=section|chapter|part\\n-N                    --number-sections\\n--number-offset=NUMBERS\\n--listings\\n-i                    --incremental\\n--slide-level=NUMBER\\n--section-divs\\n--default-image-extension=extension\\n--email-obfuscation=none|javascript|references\\n--id-prefix=STRING\\n-T STRING             --title-prefix=STRING\\n-c URL                --css=URL\\n--reference-doc=FILE\\n--epub-subdirectory=DIRNAME\\n--epub-cover-image=FILE\\n--epub-metadata=FILE\\n--epub-embed-font=FILE\\n--epub-chapter-level=NUMBER\\n--pdf-engine=PROGRAM\\n--pdf-engine-opt=STRING\\n--bibliography=FILE\\n--csl=FILE\\n--citation-abbreviations=FILE\\n--natbib\\n--biblatex\\n--mathml\\n--webtex[=URL]\\n--mathjax[=URL]\\n--katex[=URL]\\n-m[URL]               --latexmathml[=URL], --asciimathml[=URL]\\n--mimetex[=URL]\\n--jsmath[=URL]\\n--gladtex\\n--abbreviations=FILE\\n--trace\\n--dump-args\\n--ignore-args\\n--verbose\\n--quiet\\n--fail-if-warnings\\n--log=FILE\\n--bash-completion\\n--list-input-formats\\n--list-output-formats\\n--list-extensions[=FORMAT]\\n--list-highlight-languages\\n--list-highlight-styles\\n-v                    --version\\n-h                    --help\\n"
+    strip_empty_paragraphs: "|reject|all"
+    v: "[:VALUE]        --variable=KEY[:VALUE]"
+    print_default_data_file: "|FILE"
+    dpi: "|lf|native"
+    wrap: "|none|preserve"
+    table_of_contents: "|FILE"
+    include_before_body: ":VALUE"
+    reference_location: "|section|document"
+    top_level_division: "|chapter|part"
+    default_image_extension: "|javascript|references"
+    citation_abbreviations: "[=URL]"
+    math_jax: "[=URL]"
+    kate_x: "[=URL]"
+    m: "[URL]               --latexmathml[=URL], --asciimathml[=URL]"
+    mime_tex: "[=URL]"
+    js_math: "[=URL]"
   }
   output {
     File out_stdout = stdout()

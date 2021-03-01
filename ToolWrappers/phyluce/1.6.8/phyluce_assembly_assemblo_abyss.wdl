@@ -26,6 +26,9 @@ task PhyluceAssemblyAssembloAbyss {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if defined(dir) then ("--dir " +  '"' + dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_store_data: "The directory in which to store the assembly data"
     km_er: "The kmer value to use"

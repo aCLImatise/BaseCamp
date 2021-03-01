@@ -4,69 +4,69 @@ command:
 - sim
 positional:
 - !Positional
-  description: 'required named arguments:'
+  optional: false
   position: 1
   name: mutated
-  optional: false
+  description: 'required named arguments:'
 named:
 - !Flag
-  description: 'output directory; default: /'
+  optional: true
   synonyms:
   - -o
   - --output
+  description: 'output directory; default: /'
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: "Logger writes debug to file in output dir; this sets\nverbosity level\
-    \ sent to stderr. 1 = debug(), 2 =\ninfo(), 3 = warning(), 4 = error() and 5 =\
-    \ critical();\ndefault: 2"
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Logger writes debug to file in output dir; this sets\nverbosity level\
+    \ sent to stderr. 1 = debug(), 2 =\ninfo(), 3 = warning(), 4 = error() and 5 =\
+    \ critical();\ndefault: 2"
   args: !ChoiceFlagArg
     choices: !!set
       '2':
+      '5':
+      '3':
       '1':
       '4':
-      '3':
-      '5':
-  optional: true
 - !Flag
-  description: 'Probability of mutated basesdefault: 0.01'
+  optional: true
   synonyms:
   - -f
   - --frequency
+  description: 'Probability of mutated basesdefault: 0.01'
   args: !SimpleFlagArg
     name: FREQUENCY
-  optional: true
 - !Flag
-  description: "if value given, only mutated the ends of the sequences\nand ignore\
-    \ the middledefault: None"
+  optional: true
   synonyms:
   - -e
   - --end_length
+  description: "if value given, only mutated the ends of the sequences\nand ignore\
+    \ the middledefault: None"
   args: !SimpleFlagArg
     name: END_LENGTH
-  optional: true
 - !Flag
-  description: 'cause reproduciblity; default: None'
+  optional: true
   synonyms:
   - -s
   - --seed
+  description: 'cause reproduciblity; default: None'
   args: !SimpleFlagArg
     name: SEED
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Displays this help message
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Displays this help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: ribo sim -o OUTPUT [-v {1,2,3,4,5}] [-f FREQUENCY] [-e END_LENGTH]\n\
@@ -87,3 +87,4 @@ help_text: "usage: ribo sim -o OUTPUT [-v {1,2,3,4,5}] [-f FREQUENCY] [-e END_LE
   \            Displays this help message\n"
 generated_using:
 - --help
+docker_image:

@@ -26,6 +26,9 @@ task TaxonFilterpyDepleteBlastnBam {
       ~{if defined(tmp_dir) then ("--tmp_dir " +  '"' + tmp_dir + '"') else ""} \
       ~{if (tmp_dir_keep) then "--tmp_dirKeep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "The number of threads to use in running blastn."
     chunksize: "FASTA chunk size (default: 1000000)"

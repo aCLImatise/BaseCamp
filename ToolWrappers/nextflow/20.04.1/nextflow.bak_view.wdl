@@ -16,6 +16,9 @@ task NextflowbakView {
       ~{if (list_repository_contentdefault) then "-l" else ""} \
       ~{if (hide_header_linedefault) then "-q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_repository_contentdefault: "List repository content\\nDefault: false"
     hide_header_linedefault: "Hide header line\\nDefault: false\\n"

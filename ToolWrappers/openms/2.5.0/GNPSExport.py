@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Int, Boolean
+
+Gnpsexport_V0_1_0 = CommandToolBuilder(tool="GNPSExport", base_command=["GNPSExport"], inputs=[ToolInput(tag="in_in_cm", input_type=File(optional=True), prefix="-in_cm", doc=InputDocumentation(doc="*                        Input file containing consensus elements with 'peptide' annotations (valid formats: 'consensusXML')")), ToolInput(tag="in_in_mzm_l", input_type=String(optional=True), prefix="-in_mzml", doc=InputDocumentation(doc="*                     Original mzml files containing ms/ms spectrum information (valid formats: 'mzML')")), ToolInput(tag="in_out", input_type=File(optional=True), prefix="-out", doc=InputDocumentation(doc="*                          Output MGF file (valid formats: 'mgf')")), ToolInput(tag="in_output_type", input_type=String(optional=True), prefix="-output_type", doc=InputDocumentation(doc="Specificity of mgf output information (default: 'full_spectra' valid: 'full_spectra', 'merged_spectra')")), ToolInput(tag="in_precursor_mz_tolerance", input_type=Int(optional=True), prefix="-precursor_mz_tolerance", doc=InputDocumentation(doc="Tolerance mz window for precursor selection (default: '1.0e-04')")), ToolInput(tag="in_precursor_rt_tolerance", input_type=Int(optional=True), prefix="-precursor_rt_tolerance", doc=InputDocumentation(doc="Tolerance rt window for precursor selection (default: '5.0')")), ToolInput(tag="in_merged_spectra", input_type=Boolean(optional=True), prefix="-merged_spectra", doc=InputDocumentation(doc=":cos_similarity <num>  Cosine similarity threshold for merged_spectra output (default: '0.95')")), ToolInput(tag="in_ini", input_type=File(optional=True), prefix="-ini", doc=InputDocumentation(doc="Use the given TOPP INI file")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="-threads", doc=InputDocumentation(doc="Sets the number of threads allowed to be used by the TOPP tool (default: '1')")), ToolInput(tag="in_write_ini", input_type=File(optional=True), prefix="-write_ini", doc=InputDocumentation(doc="Writes the default configuration file")), ToolInput(tag="in_helphelp", input_type=Boolean(optional=True), prefix="--helphelp", doc=InputDocumentation(doc="Shows all options (including advanced)"))], outputs=[ToolOutput(tag="out_out", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out", type_hint=File()), doc=OutputDocumentation(doc="*                          Output MGF file (valid formats: 'mgf')"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Gnpsexport_V0_1_0().translate("wdl", allow_empty_container=True)
+

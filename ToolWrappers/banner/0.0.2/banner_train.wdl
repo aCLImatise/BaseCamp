@@ -16,6 +16,9 @@ task BannerTrain {
       ~{if defined(processors) then ("--processors " +  '"' + processors + '"') else ""} \
       ~{if defined(estimators) then ("--estimators " +  '"' + estimators + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "The matrix from hulk smash"
     outfile: "Where to write the model to"

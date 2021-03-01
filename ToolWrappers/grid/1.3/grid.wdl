@@ -22,6 +22,9 @@ task Grid {
       ~{single} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
     display: ""

@@ -22,6 +22,9 @@ task VirmetIndex {
       ~{if (fungal) then "--fungal" else ""} \
       ~{if (bovine) then "--bovine" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     viral: "make blast index of viral database"
     human: "make bwa index of human database"

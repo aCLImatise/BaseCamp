@@ -46,6 +46,9 @@ task CramtoolsBam {
       ~{if (print_sam_header_quit) then "-H" else ""} \
       ~{if (log_level) then "--log-level" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     calculate_md_tag: "Calculate MD tag. (default: false)"
     calculate_nm_tag: "Calculate NM tag. (default: false)"

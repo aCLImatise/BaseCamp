@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceUtilitiesMergeNextSeqGzipFiles {
   input {
-    File? path_directory_containing
+    File? path_directory_merge
     File? config
     File? path_directory_store
     String? section
@@ -12,7 +12,7 @@ task PhyluceUtilitiesMergeNextSeqGzipFiles {
   }
   command <<<
     phyluce_utilities_merge_next_seq_gzip_files \
-      ~{if defined(path_directory_containing) then ("--input " +  '"' + path_directory_containing + '"') else ""} \
+      ~{if defined(path_directory_merge) then ("--input " +  '"' + path_directory_merge + '"') else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if defined(path_directory_store) then ("--output " +  '"' + path_directory_store + '"') else ""} \
       ~{if defined(section) then ("--section " +  '"' + section + '"') else ""} \
@@ -20,8 +20,11 @@ task PhyluceUtilitiesMergeNextSeqGzipFiles {
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""} \
       ~{if (se) then "--se" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    path_directory_containing: "The path to a directory containing the reads to merge."
+    path_directory_merge: "The path to a directory containing the reads to merge."
     config: "The path to the config file to use for merging."
     path_directory_store: "The path to a directory in which to store the output."
     section: "The section holding the merge info."

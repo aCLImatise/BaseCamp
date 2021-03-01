@@ -3,23 +3,23 @@ id: genePredToGtf.cwl
 inputs:
 - id: in_utr
   doc: '- Add 5UTR and 3UTR features'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -utr
 - id: in_honor_cds_stat
   doc: "- use cdsStartStat/cdsEndStat when defining start/end\ncodon records"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -honorCdsStat
 - id: in_source
   doc: set source name to use
-  type: string
+  type: string?
   inputBinding:
     prefix: -source
 - id: in_add_comments
   doc: "- Add comments before each set of transcript records.\nallows for easier visual\
     \ inspection"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -addComments
 - id: in_database
@@ -36,6 +36,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - genePredToGtf

@@ -12,6 +12,9 @@ task Ifne {
       ~{args} \
       ~{if (n) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n: ""
     var_command: ""

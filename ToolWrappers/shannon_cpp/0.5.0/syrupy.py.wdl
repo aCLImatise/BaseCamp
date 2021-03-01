@@ -4,7 +4,7 @@ task Syrupypy {
   input {
     Boolean? quiet
     File? replace
-    Boolean? _debugleveldebugging_information
+    Boolean? _debugleveldebugging_level
     Boolean? explain
     String? poll_pid
     String? ssh
@@ -27,7 +27,7 @@ task Syrupypy {
       ~{exists} \
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (replace) then "--replace" else ""} \
-      ~{if (_debugleveldebugging_information) then "-v" else ""} \
+      ~{if (_debugleveldebugging_level) then "-v" else ""} \
       ~{if (explain) then "--explain" else ""} \
       ~{if defined(poll_pid) then ("--poll-pid " +  '"' + poll_pid + '"') else ""} \
       ~{if defined(ssh) then ("--ssh " +  '"' + ssh + '"') else ""} \
@@ -44,10 +44,13 @@ task Syrupypy {
       ~{if (no_align) then "--no-align" else ""} \
       ~{if (no_headers) then "--no-headers" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "do not report miscellaneous run information to stderr"
     replace: "replace output file(s) without asking if already"
-    _debugleveldebugging_information: "#, --debug-level=#\\ndebugging information level (0, 1, 2, 3; default=0)"
+    _debugleveldebugging_level: "#, --debug-level=#\\ndebugging information level (0, 1, 2, 3; default=0)"
     explain: "show detailed information on the meaning of each of\\nthe columns, and then exit"
     poll_pid: "ignore COMMAND if given, and poll external process\\nwith specified PID"
     ssh: "use SSH to remote view PS with syrupy"

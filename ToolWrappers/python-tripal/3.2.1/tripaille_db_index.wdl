@@ -30,6 +30,9 @@ task TripailleDbIndex {
       ~{if defined(job_name) then ("--job_name " +  '"' + job_name + '"') else ""} \
       ~{if (no_wait) then "--no_wait" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: "Indexing mode: 'website' to index the website ,\\n'nodes' for the website nodes, 'entities' for the\\nwebsite entities (Tripal 3), 'table' to index a single\\ntable, 'gene' to build a Gene search index (Tripal 3\\nonly) (default: website) ('website' default to 'nodes'\\nfor Tripal 2, 'entities' for Tripal 3)  [default:\\nwebsite]"
     table: "Table to index (only in 'table' mode)"

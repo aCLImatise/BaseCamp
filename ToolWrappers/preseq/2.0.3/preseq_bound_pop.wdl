@@ -2,7 +2,7 @@ version 1.0
 
 task PreseqBoundPop {
   input {
-    File? species_richness_default
+    File? species_richness_output
     Boolean? max_num_points
     Boolean? tolerance
     Boolean? bootstraps
@@ -23,7 +23,7 @@ task PreseqBoundPop {
     preseq bound_pop \
       ~{bound_pop} \
       ~{sorted_bed_file} \
-      ~{if (species_richness_default) then "-output" else ""} \
+      ~{if (species_richness_output) then "-output" else ""} \
       ~{if (max_num_points) then "-max_num_points" else ""} \
       ~{if (tolerance) then "-tolerance" else ""} \
       ~{if (bootstraps) then "-bootstraps" else ""} \
@@ -38,8 +38,11 @@ task PreseqBoundPop {
       ~{if (seed) then "-seed" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    species_richness_default: "species richness output file (default: stdout)"
+    species_richness_output: "species richness output file (default: stdout)"
     max_num_points: "maximum number of points in quadrature estimates\\n(default: 10)"
     tolerance: "numerical tolerance (default: 1e-20)"
     bootstraps: "number of bootstraps (default: 500)"
@@ -58,6 +61,6 @@ task PreseqBoundPop {
   }
   output {
     File out_stdout = stdout()
-    File out_species_richness_default = "${in_species_richness_default}"
+    File out_species_richness_output = "${in_species_richness_output}"
   }
 }

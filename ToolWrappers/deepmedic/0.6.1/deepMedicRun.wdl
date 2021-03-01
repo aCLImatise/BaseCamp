@@ -24,6 +24,9 @@ task DeepMedicRun {
       ~{if defined(layers) then ("-layers " +  '"' + layers + '"') else ""} \
       ~{if (reset_optimizer) then "-resetOptimizer" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     new_model: "Create a new CNN model with model parameters at given config file [MODEL_CONF]."
     train: "Train a CNN model with training parameters at given config file [TRAINING_CONF].\\nThis option can follow a [-newModel MODEL_CONF] option, to create a new model and start training it immediately.\\nOtherwise, existing model can be specified in the training-config file or by the additional option [-model]."

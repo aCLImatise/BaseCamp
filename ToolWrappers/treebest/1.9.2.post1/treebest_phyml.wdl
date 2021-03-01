@@ -50,6 +50,9 @@ task TreebestPhyml {
       ~{if defined(constraining_tree_) then ("-C " +  '"' + constraining_tree_ + '"') else ""} \
       ~{if defined(prob_presence_inconsistent) then ("-p " +  '"' + prob_presence_inconsistent + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     build_opt_loglk: "build | opt | loglk | dist                          [build]"
     input_nucleotide_alignment: "the input is a nucleotide alignment"

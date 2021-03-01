@@ -14,6 +14,9 @@ task SsueslseqrangeNproc {
       ~{proc_idx} \
       ~{nproc}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ssu_esl_seq_range: ""
     sq_file: ""

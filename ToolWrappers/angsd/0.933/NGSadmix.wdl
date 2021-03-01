@@ -40,6 +40,9 @@ task NGSadmix {
       ~{if defined(min_lrt) then ("-minLrt " +  '"' + min_lrt + '"') else ""} \
       ~{if defined(mini_nd) then ("-minInd " +  '"' + mini_nd + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     likes: "likelihood filename"
     of_ancestral_populations: "of ancestral populations"

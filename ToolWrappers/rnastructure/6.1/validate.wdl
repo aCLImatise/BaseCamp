@@ -20,6 +20,9 @@ task Validate {
       ~{if (length) then "--length" else ""} \
       ~{if (type) then "--type" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     info: "Display information about the sequence. (This also implies --quiet.)\\nCurrently the only information shown is the sequence length of each\\nvalidated sequence."
     quiet: "Suppress unnecessary output. The process exit code indicates the result of\\nvalidation (as usual)."

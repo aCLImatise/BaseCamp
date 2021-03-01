@@ -58,6 +58,9 @@ task HaystackPipeline {
       ~{if defined(rho_cut_off) then ("--rho_cutoff " +  '"' + rho_cut_off + '"') else ""} \
       ~{if defined(tf_value_cut_to_ff) then ("--tf_value_cuttoff " +  '"' + tf_value_cut_to_ff + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     selection: "HOTSPOTS OF VARIABILITY AND ENRICHED MOTIFS-"
     name: "Define a custom output filename for the report"

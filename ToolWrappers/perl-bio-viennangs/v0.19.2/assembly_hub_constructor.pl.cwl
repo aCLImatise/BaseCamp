@@ -3,25 +3,25 @@ id: assembly_hub_constructor.pl.cwl
 inputs:
 - id: in_fa
   doc: Input file in Fasta format.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fa
 - id: in_in_folder
   doc: "Directory which contains all track files in BED/bigBed format. The\nresulting\
     \ Assembly Hub will contain these files in their respective\nbigFile version."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --infolder
 - id: in_out
   doc: Destination folder for the output Assembly Hub.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --out
 - id: in_baseurl
   doc: "BaseURL used within the Assembly Hub. This URL will be included\nverbatim\
     \ in the resulting Assembly Hub. It is crucial that this URl\nis valid, else the\
     \ resulting Assembly Hub will be broken."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --baseurl
 - id: in_bigwigs
@@ -32,17 +32,17 @@ inputs:
     yields a multi big wig container displaying bar as positive reads in\ngreen and\
     \ bar2 as negative 3 red colored reads in the same track and\nadditionally bar3\
     \ in an own track colored blue."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bigwigs
 - id: in_man
   doc: "Prints the manual page and exits.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --man
 - id: in_url
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -URL
 outputs:
@@ -51,9 +51,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Destination folder for the output Assembly Hub.
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - assembly_hub_constructor.pl

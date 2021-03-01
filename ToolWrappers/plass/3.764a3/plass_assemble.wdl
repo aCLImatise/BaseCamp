@@ -6,9 +6,9 @@ task PlassAssemble {
     Int? alph_size
     Int? mask
     Int? mask_lower_case
-    Int? kmer_size_range
+    Int? kmer_size_set
     Int? split_memory_limit
-    Float? extend_sequences_evalue
+    Float? extend_sequences_is
     Float? list_matches_fraction
     Boolean? add_string_convert
     Int? cov_mode
@@ -57,9 +57,9 @@ task PlassAssemble {
       ~{if defined(alph_size) then ("--alph-size " +  '"' + alph_size + '"') else ""} \
       ~{if defined(mask) then ("--mask " +  '"' + mask + '"') else ""} \
       ~{if defined(mask_lower_case) then ("--mask-lower-case " +  '"' + mask_lower_case + '"') else ""} \
-      ~{if defined(kmer_size_range) then ("-k " +  '"' + kmer_size_range + '"') else ""} \
+      ~{if defined(kmer_size_set) then ("-k " +  '"' + kmer_size_set + '"') else ""} \
       ~{if defined(split_memory_limit) then ("--split-memory-limit " +  '"' + split_memory_limit + '"') else ""} \
-      ~{if defined(extend_sequences_evalue) then ("-e " +  '"' + extend_sequences_evalue + '"') else ""} \
+      ~{if defined(extend_sequences_is) then ("-e " +  '"' + extend_sequences_is + '"') else ""} \
       ~{if defined(list_matches_fraction) then ("-c " +  '"' + list_matches_fraction + '"') else ""} \
       ~{if (add_string_convert) then "-a" else ""} \
       ~{if defined(cov_mode) then ("--cov-mode " +  '"' + cov_mode + '"') else ""} \
@@ -102,14 +102,17 @@ task PlassAssemble {
       ~{if defined(km_er_per_seq_scale) then ("--kmer-per-seq-scale " +  '"' + km_er_per_seq_scale + '"') else ""} \
       ~{if defined(create_lookup) then ("--create-lookup " +  '"' + create_lookup + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_self_matches: "artificially add entries of queries with themselves (for clustering)"
     alph_size: "alphabet size (range 2-21) [13]"
     mask: "mask sequences in k-mer stage 0: w/o low complexity masking, 1: with low complexity masking [0]"
     mask_lower_case: "lowercase letters will be excluded from k-mer search 0: include region, 1: exclude region [0]"
-    kmer_size_range: "k-mer size in the range (0: set automatically to optimum) [14]"
+    kmer_size_set: "k-mer size in the range (0: set automatically to optimum) [14]"
     split_memory_limit: "Set max memory per split. E.g. 800B, 5K, 10M, 1G. Defaults (0) to all available system memory. [0]"
-    extend_sequences_evalue: "Extend sequences if the E-value is below [0.0, inf] [0.000]"
+    extend_sequences_is: "Extend sequences if the E-value is below [0.0, inf] [0.000]"
     list_matches_fraction: "list matches above this fraction of aligned (covered) residues (see --cov-mode) [0.000]"
     add_string_convert: "add backtrace string (convert to alignments with mmseqs convertalis utility)"
     cov_mode: "0: coverage of query and target, 1: coverage of target, 2: coverage of query 3: target seq. length needs to be at least x% of query length, 4: query seq. length needs to be at least x% of target length 5: short seq. needs to be at least x% of the other seq. length [0]"

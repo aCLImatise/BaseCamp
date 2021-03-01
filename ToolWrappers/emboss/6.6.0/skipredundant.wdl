@@ -16,6 +16,9 @@ task Skipredundant {
       ~{if (data_file) then "-datafile" else ""} \
       ~{if (feature) then "-feature" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: "menu       [1] This option specifies whether to remove\\nredundancy at a single threshold percentage\\nsequence similarity or remove redundancy\\noutside a range of acceptable threshold\\npercentage similarity. All permutations of\\npair-wise sequence alignments are calculated\\nfor each set of input sequences in turn\\nusing the EMBOSS implementation of the\\nNeedleman and Wunsch global alignment\\nalgorithm. Redundant sequences are removed\\nin one of two modes as follows: (i) If a\\npair of proteins achieve greater than a\\nthreshold percentage sequence similarity\\n(specified by the user) the shortest\\nsequence is discarded. (ii) If a pair of\\nproteins have a percentage sequence\\nsimilarity that lies outside an acceptable\\nrange (specified by the user) the shortest\\nsequence is discarded. (Values: 1 (Single\\nthreshold percentage sequence similarity); 2\\n(Outside a range of acceptable threshold\\npercentage similarities))"
     gap_open: "float      [10.0 for any sequence] The gap open penalty\\nis the score taken away when a gap is\\ncreated. The best value depends on the\\nchoice of comparison matrix. The default\\nvalue assumes you are using the EBLOSUM62\\nmatrix for protein sequences, and the\\nEDNAFULL matrix for nucleotide sequences.\\n(Floating point number from 1.0 to 100.0)"

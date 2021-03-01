@@ -3,17 +3,17 @@ id: checkv_update_database.cwl
 inputs:
 - id: in_quiet
   doc: Suppress logging messages
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_restart
   doc: Overwrite existing database
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --restart
 - id: in_threads
   doc: Number of threads for Prodigal and DIAMOND
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_source_db
@@ -36,6 +36,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - checkv

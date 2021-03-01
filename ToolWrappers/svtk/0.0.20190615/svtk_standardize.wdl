@@ -24,6 +24,9 @@ task SvtkStandardize {
       ~{if defined(min_size) then ("--min-size " +  '"' + min_size + '"') else ""} \
       ~{if (call_null_sites) then "--call-null-sites" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "If provided, variant names will be overwritten with\\nthis prefix."
     include_reference_sites: "Include records where all samples are called 0/0 or\\n./."

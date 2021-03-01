@@ -14,6 +14,9 @@ task Anviexportstructures {
       ~{if defined(gene_caller_ids) then ("--gene-caller-ids " +  '"' + gene_caller_ids + '"') else ""} \
       ~{if defined(genes_of_interest) then ("--genes-of-interest " +  '"' + genes_of_interest + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     structure_db: "Anvi'o structure database."
     output_dir: "Directory path for output files"

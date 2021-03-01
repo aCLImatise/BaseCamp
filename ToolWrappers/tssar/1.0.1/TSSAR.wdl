@@ -12,7 +12,7 @@ task TSSAR {
     Boolean? score
     Boolean? no_cluster
     Boolean? range
-    Boolean? clean
+    Boolean? no_clean
     Boolean? tmpdir
     Boolean? man
   }
@@ -28,10 +28,13 @@ task TSSAR {
       ~{if (score) then "--score" else ""} \
       ~{if (no_cluster) then "--nocluster" else ""} \
       ~{if (range) then "--range" else ""} \
-      ~{if (clean) then "--clean" else ""} \
+      ~{if (no_clean) then "--noclean" else ""} \
       ~{if (tmpdir) then "--tmpdir" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     libp: "*libraryP.sam* AND --libM *libraryM.sam*\\nInput library (P .. Plus; M .. Minus) in SAM format. The plus\\nlibrary is the one with enriched TSS (for dRNA-seq this means that\\nthe plus library is the treated library, while the minus library is\\nthe untreated library)"
     fast_a: "*genome.fa* OR --g_size *INT*\\nEither the location of reference genome sequence in fasta file\\nformat OR the genome size in *INT*. The fasta file is only used to\\nparse the genome size so just one of the two must be specified."
@@ -41,9 +44,9 @@ task TSSAR {
     verbose: "If set, some progress reports are printed to STDERR during\\ncomputation."
     pro_rata: "If set, the information from the SAM file how many times a read was\\nmapped to the genome is used, if present. If the read maps *n* times\\nto the genome, each position is counted only *1/n* times. Usefull in\\ncombination with e.g. segemehl mapper, which can report suboptimal\\nmapping positions and/or reports all location where a read maps\\noptimally. Default is off."
     score: "*p|d*\\nIf score mode is *p* the p-value is used as score in the TSS BED\\nfile. If score mode is *d* the peak difference is used as score in\\nthe TSS BED file. Default is *d*. Also used for clustering, which\\nadvices to use 'd', since the p-value often becomes zero for\\nconsecutive positions, thus disabling a proper merging of\\nconsecutive positions to the best one."
-    no_cluster: "| --cluster\\nIf --nocluster is set all positions annotated as TSS are reported.\\nIf --cluster is set consecutive TSS positions are clustered and only\\nthe 'best' position is reported. 'Best' position depends on the\\nsetting of --score (see above). Either the position with the lowest\\np-Value or the position with the highest peak difference between\\nplus and minus library is reported. Default is --cluster. The option\\n--range defines the maximal distance for two significant positions\\nto be called 'consecutive'."
+    no_cluster: "If --nocluster is set all positions annotated as TSS are reported.\\nIf --cluster is set consecutive TSS positions are clustered and only\\nthe 'best' position is reported. 'Best' position depends on the\\nsetting of --score (see above). Either the position with the lowest\\np-Value or the position with the highest peak difference between\\nplus and minus library is reported. Default is --cluster. The option\\n--range defines the maximal distance for two significant positions\\nto be called 'consecutive'."
     range: "*INT*\\nThe maximal distance for two significant positions to be be\\nclustered together if option --cluster is set. Default is *3* nt. If\\n--cluster is set to --nocluster, --range is ignored."
-    clean: "| --noclean\\nIf --clean is set, all temporary files which are created during the\\ncomputation are deleted afterwards. With --noclean they are stored.\\nMainly for debugging purpose. Default setting is --clean."
+    no_clean: "If --clean is set, all temporary files which are created during the\\ncomputation are deleted afterwards. With --noclean they are stored.\\nMainly for debugging purpose. Default setting is --clean."
     tmpdir: "*DIR*\\nSpecifies where the temporary files should be stored. Default is\\n*/tmp*."
     man: "Print a long version of the man-page."
   }

@@ -8,6 +8,9 @@ task AugurAuspice {
     augur auspice_ \
       ~{augur}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     augur: ""
   }

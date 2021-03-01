@@ -3,12 +3,12 @@ id: simplify_fasta.cwl
 inputs:
 - id: in_specify_name_input
   doc: Specify the name of the input file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_specify_name_output
   doc: Specify the name for the output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_specify_name_output
   doc: Specify the name for the output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_specify_name_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - simplify-fasta

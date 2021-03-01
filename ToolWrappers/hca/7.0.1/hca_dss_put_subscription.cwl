@@ -1,14 +1,6 @@
 class: CommandLineTool
 id: hca_dss_put_subscription.cwl
 inputs:
-- id: in_callback_url
-  doc: "[--encoding {application/json,multipart/form-data}]\n[--es-query ES_QUERY]\n\
-    [--form-fields FORM_FIELDS]\n[--hmac-key-id HMAC_KEY_ID]\n[--hmac-secret-key HMAC_SECRET_KEY]\n\
-    [--jmespath-query JMESPATH_QUERY]\n[--method {POST,PUT}]\n[--payload-form-field\
-    \ PAYLOAD_FORM_FIELD]\n--replica {aws,gcp}"
-  type: string
-  inputBinding:
-    prefix: --callback-url
 - id: in_attachments
   doc: "The set of bundle metadata items to be included in the payload of a notification\
     \ request to a subscription endpoint. Each property in this object represents\
@@ -30,17 +22,28 @@ inputs:
     \ to 128 KiB in size when serialized to JSON and encoded as UTF-8. If it is not,\
     \ the notification will be sent with\n\"attachments\": {\n\"_errors\": \"Attachments\
     \ too large (131073 bytes)\"\n}"
-  type: long
+  type: long?
   inputBinding:
     prefix: --attachments
+- id: in_callback_url
+  doc: "The subscriber's URL. An HTTP request is made to the specified URL for every\
+    \ attempt to deliver a notification to the subscriber. If the HTTP response code\
+    \ is 2XX, the delivery attempt is considered successful. Otherwise, more attempts\
+    \ will be made with an exponentially increasing delay between attempts, until\
+    \ an attempt is successful or the a maximum number of attempts is reached.\nOccasionally,\
+    \ duplicate notifications may be sent. It is up to the receiver of the notification\
+    \ to tolerate duplicate notifications."
+  type: long?
+  inputBinding:
+    prefix: --callback-url
 - id: in_encoding
-  doc: "The MIME type describing the encoding of the request body * `application/json`\
-    \ - the HTTP request body is the notification payload as JSON * `multipart/form-data`\
-    \ - the HTTP request body is a list of form fields, each consisting of a name\n\
-    and a corresponding value. See https://tools.ietf.org/html/rfc7578 for details\
-    \ on this encoding.\nThe actual notification payload will be placed as JSON into\
-    \ a field of the name specified via\n`payload_form_field`."
-  type: string
+  doc: "{application/json,multipart/form-data}\nThe MIME type describing the encoding\
+    \ of the request body * `application/json` - the HTTP request body is the notification\
+    \ payload as JSON * `multipart/form-data` - the HTTP request body is a list of\
+    \ form fields, each consisting of a name\nand a corresponding value. See https://tools.ietf.org/html/rfc7578\
+    \ for details on this encoding.\nThe actual notification payload will be placed\
+    \ as JSON into a field of the name specified via\n`payload_form_field`."
+  type: boolean?
   inputBinding:
     prefix: --encoding
 - id: in_es_query
@@ -48,7 +51,7 @@ inputs:
     is notified. The subscriber will only be notified for newly indexed bundles that
     match the given query. If this parameter is present the subscription will be of
     type `elasticsearch`, otherwise it will be of type `jmespath`.
-  type: string
+  type: string?
   inputBinding:
     prefix: --es-query
 - id: in_form_fields
@@ -62,19 +65,19 @@ inputs:
     , \"subscription_id\": ...\n```\nSince the type of this property is `object`,\
     \ multi-valued fields are not supported. This property is ignored unless `encoding`\
     \ is `multipart/form-data`."
-  type: string
+  type: string?
   inputBinding:
     prefix: --form-fields
 - id: in_hmac_key_id
   doc: An optional key ID to use with `hmac_secret_key`.
-  type: string
+  type: string?
   inputBinding:
     prefix: --hmac-key-id
 - id: in_hmac_secret_key
   doc: The key for signing requests to the subscriber's URL. The signature will be
     constructed according to https://tools.ietf.org/html/draft-cavage-http-signatures
     and transmitted in the HTTP `Authorization` header.
-  type: string
+  type: string?
   inputBinding:
     prefix: --hmac-secret-key
 - id: in_j_mes_path_query
@@ -82,12 +85,12 @@ inputs:
     is notified. The subscriber will only be notified for new bundles that match the
     given query. If `es_query` is specified, the subscription will be of type `elasticsearch`.
     If `es_query` is not present, the subscription will be of type `jmespath`
-  type: File
+  type: File?
   inputBinding:
     prefix: --jmespath-query
 - id: in_method
   doc: The HTTP request method to use when delivering a notification to the subscriber.
-  type: string
+  type: string?
   inputBinding:
     prefix: --method
 - id: in_payload_form_field
@@ -95,18 +98,19 @@ inputs:
     request is made. If the default name of the payload field collides with that of
     a field in `form_fields`, this porperty can be used to rename the payload and
     avoid the collision. This property is ignored unless `encoding` is `multipart/form-data`.
-  type: string
+  type: string?
   inputBinding:
     prefix: --payload-form-field
 - id: in_replica
   doc: Replica to write to.
-  type: string
+  type: string?
   inputBinding:
     prefix: --replica
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hca

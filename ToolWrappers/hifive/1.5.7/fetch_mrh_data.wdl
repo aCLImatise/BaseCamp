@@ -28,6 +28,9 @@ task FetchMrhData {
       ~{if defined(min_resolution) then ("--min-resolution " +  '"' + min_resolution + '"') else ""} \
       ~{if (text) then "--text" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chrom: "The first region chromosome."
     chrom_two: "The first region chromosome. If no value is passed,\\nthis will be set to the same value as 'chrom'."

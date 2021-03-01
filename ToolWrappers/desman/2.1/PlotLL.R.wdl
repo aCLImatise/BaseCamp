@@ -4,6 +4,9 @@ task PlotLLR {
   command <<<
     PlotLL_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

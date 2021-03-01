@@ -22,6 +22,9 @@ task ExtractBcspy {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "Write results to this file."
     bcs: "Write barcodes to this file in FASTQ format."

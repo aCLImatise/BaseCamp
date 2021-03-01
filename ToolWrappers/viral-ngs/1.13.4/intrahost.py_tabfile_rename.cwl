@@ -3,12 +3,12 @@ id: intrahost.py_tabfile_rename.cwl
 inputs:
 - id: in_col_idx
   doc: "Which column number to replace (0-based index).\n[default: 0]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --col_idx
 - id: in_loglevel
   doc: 'Verboseness of output. [default: DEBUG]'
-  type: string
+  type: string?
   inputBinding:
     prefix: --loglevel
 - id: in_in_file
@@ -32,6 +32,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - intrahost.py

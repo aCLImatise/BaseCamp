@@ -24,6 +24,9 @@ task SanitizeMeCLIpy {
       ~{if (pac_bio_ccs) then "--PacBioCCS" else ""} \
       ~{if (short_read) then "--ShortRead" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_folder: "Folder containing fastq files. Only files ending in\\n.fq, .fg.gz, .fastq, and .fastq.gz will be processed"
     reference: "Host Reference fasta or fasta.gz file"

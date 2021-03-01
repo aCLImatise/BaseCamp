@@ -10,6 +10,9 @@ task RgtTDFIntegrate {
       ~{if (path) then "-path" else ""} \
       ~{if (exp) then "-exp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path: "Define the path of the project."
     exp: "Include expression score for ranking."

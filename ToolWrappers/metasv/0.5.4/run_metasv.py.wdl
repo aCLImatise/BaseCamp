@@ -134,6 +134,9 @@ task RunMetasvpy {
       ~{if defined(num_threads) then ("--num_threads " +  '"' + num_threads + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample: "Sample name (default: None)"
     pin_del_vcf: "VCF file or dir for Pindel VCFs (default: [])"

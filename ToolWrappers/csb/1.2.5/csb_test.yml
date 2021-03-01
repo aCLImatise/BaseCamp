@@ -3,62 +3,62 @@ command:
 - csb-test
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: namespaces
   description: "An optional list of CSB test dotted namespaces, from\nwhich to load\
     \ tests. '__main__' and '.' are\ninterpreted as the current module. If a namespace\
     \ ends\nwith an asterisk '.*', all sub-packages will be\nscanned as well. Examples:\
     \ \"csb.test.cases.bio.*\"\n\"csb.test.cases.bio.io\" \"csb.test.cases.bio.utils\"\
     \n\".\")"
-  position: 0
-  name: namespaces
-  optional: false
 named:
 - !Flag
-  description: "Type of tests to load from each namespace\n(default=any)"
+  optional: true
   synonyms:
   - -t
   - --type
+  description: "Type of tests to load from each namespace\n(default=any)"
   args: !ChoiceFlagArg
     choices: !!set
       functional:
-      custom:
       any:
-      regression:
+      custom:
       unit:
-  optional: true
+      regression:
 - !Flag
-  description: "Verbosity level passed to unittest.TextTestRunner\n(default=1)."
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Verbosity level passed to unittest.TextTestRunner\n(default=1)."
   args: !SimpleFlagArg
     name: VERBOSITY
-  optional: true
 - !Flag
-  description: "Force update of the test pickles in\n/usr/local/lib/python3.6/site-packages/csb/test/data"
+  optional: true
   synonyms:
   - -u
   - --update-files
+  description: "Force update of the test pickles in\n/usr/local/lib/python3.6/site-packages/csb/test/data"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Generate, store and load additional test resources in\nthis directory\
-    \ (default=/usr/local/lib/python3.6/site-\npackages/csb/test/data)\n"
+  optional: true
   synonyms:
   - -g
   - --generated-resources
+  description: "Generate, store and load additional test resources in\nthis directory\
+    \ (default=/usr/local/lib/python3.6/site-\npackages/csb/test/data)\n"
   args: !SimpleFlagArg
     name: GENERATED_RESOURCES
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: csb-test [-h] [-t {unit,functional,custom,any,regression}]\n  \
@@ -82,3 +82,4 @@ help_text: "usage: csb-test [-h] [-t {unit,functional,custom,any,regression}]\n 
   \                  packages/csb/test/data)\n"
 generated_using:
 - --help
+docker_image:

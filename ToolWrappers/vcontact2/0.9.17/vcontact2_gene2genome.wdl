@@ -2,20 +2,23 @@ version 1.0
 
 task Vcontact2Gene2genome {
   input {
-    File? proteins
-    Boolean? s
-    File? o
+    File? source_type
+    Boolean? keep_descriptions
+    Boolean? compatibility
   }
   command <<<
     vcontact2_gene2genome \
-      ~{if defined(proteins) then ("--proteins " +  '"' + proteins + '"') else ""} \
-      ~{if (s) then "-s" else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{if defined(source_type) then ("--source-type " +  '"' + source_type + '"') else ""} \
+      ~{if (keep_descriptions) then "--keep-descriptions" else ""} \
+      ~{if (compatibility) then "--compatibility" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    proteins: "-o FILENAME, --output FILENAME\\n-s {VIRSorter,Prodigal-coords,Prodigal-FAA,MetaGeneMark,NCBICodingSequence,NCBIFasta}, --source-type {VIRSorter,Prodigal-coords,Prodigal-FAA,MetaGeneMark,NCBICodingSequence,NCBIFasta}\\nSelect one of the options as an input source. MetaGeneMark can be either the nucleotide or protein FASTA-formatted output.\\n-k, --keep-descriptions\\nThis will enable taking the full description of sequences during MetaGeneMark parsing.\\n-c, --compatibility   Adds compatibility for vContact1 headers.\\n"
-    s: ""
-    o: ""
+    source_type: "Select one of the options as an input source. MetaGeneMark can be either the nucleotide or protein FASTA-formatted output."
+    keep_descriptions: "This will enable taking the full description of sequences during MetaGeneMark parsing."
+    compatibility: "Adds compatibility for vContact1 headers."
   }
   output {
     File out_stdout = stdout()

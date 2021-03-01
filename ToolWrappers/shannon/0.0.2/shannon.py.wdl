@@ -8,6 +8,9 @@ task Shannonpy {
     shannon_py \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
   }

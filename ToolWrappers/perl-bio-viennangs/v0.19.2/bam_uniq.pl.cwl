@@ -3,7 +3,7 @@ id: bam_uniq.pl.cwl
 inputs:
 - id: in_bam
   doc: BAM file to extract unique and multi mappers from
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bam
 - id: in_band
@@ -13,17 +13,17 @@ inputs:
     \ a band are considered\nmulti mappers. In a paired-end context this means that\
     \ e.g. a read\nmap uniquely, but its mate is a multi-mapper, both will be\nconsideres\
     \ multi-mappers."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --band
 - id: in_out
   doc: Output path
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_man
   doc: "Prints the manual page and exits\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --man
 outputs:
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Output path
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bam_uniq.pl

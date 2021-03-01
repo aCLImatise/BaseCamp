@@ -13,11 +13,11 @@ task Rabix {
     String? tmp_outdir_prefix
     String? tmpdir_prefix
     Boolean? verbose
-    String resolve_referenced_fragments
+    String rresolveapp_resolve_fragments
   }
   command <<<
     rabix \
-      ~{resolve_referenced_fragments} \
+      ~{rresolveapp_resolve_fragments} \
       ~{if defined(basedir) then ("--basedir " +  '"' + basedir + '"') else ""} \
       ~{if defined(configuration_dir) then ("--configuration-dir " +  '"' + configuration_dir + '"') else ""} \
       ~{if defined(cache_dir) then ("--cache-dir " +  '"' + cache_dir + '"') else ""} \
@@ -30,6 +30,9 @@ task Rabix {
       ~{if defined(tmpdir_prefix) then ("--tmpdir-prefix " +  '"' + tmpdir_prefix + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     basedir: "execution directory"
     configuration_dir: "configuration directory"
@@ -42,7 +45,7 @@ task Rabix {
     tmp_outdir_prefix: "legacy compatibility parameter, doesn't do anything"
     tmpdir_prefix: "legacy compatibility parameter, doesn't do anything"
     verbose: "print more information on the standard output"
-    resolve_referenced_fragments: "-r,--resolve-app               resolve all referenced fragments and print application"
+    rresolveapp_resolve_fragments: "-r,--resolve-app               resolve all referenced fragments and print application"
   }
   output {
     File out_stdout = stdout()

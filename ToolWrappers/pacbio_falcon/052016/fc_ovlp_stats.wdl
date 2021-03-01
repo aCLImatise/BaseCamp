@@ -20,6 +20,9 @@ task FcOvlpStats {
       ~{if (silent) then "--silent" else ""} \
       ~{if defined(min_len) then ("--min_len " +  '"' + min_len + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_core: "number of processes used for generating consensus; 0 for\\nmain process only (default=4)"
     fof_n: "file contains the path of all LAS file to be processed in"

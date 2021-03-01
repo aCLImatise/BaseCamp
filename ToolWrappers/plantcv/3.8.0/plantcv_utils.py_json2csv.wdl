@@ -10,6 +10,9 @@ task PlantcvutilspyJson2csv {
       ~{if defined(json) then ("--json " +  '"' + json + '"') else ""} \
       ~{if defined(csv) then ("--csv " +  '"' + csv + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     json: "Input PlantCV JSON filename."
     csv: "Output CSV filename prefix."

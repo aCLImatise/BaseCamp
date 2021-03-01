@@ -16,6 +16,9 @@ task GcloudDebugDefaulttest {
       ~{flags} \
       ~{group}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     g_cloud: ""
     debug: ""

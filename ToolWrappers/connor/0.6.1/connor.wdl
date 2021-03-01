@@ -28,6 +28,9 @@ task Connor {
       ~{if defined(filter_order) then ("--filter_order " +  '"' + filter_order + '"') else ""} \
       ~{if defined(umt_length) then ("--umt_length " +  '"' + umt_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "print all log messages to console"
     force: "=False. Override validation warnings"

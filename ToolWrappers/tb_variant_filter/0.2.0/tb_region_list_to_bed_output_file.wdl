@@ -10,6 +10,9 @@ task TbRegionListToBedOutputFile {
       ~{tb_region_list_to_bed} \
       ~{if defined(chromosome_name) then ("--chromosome_name " +  '"' + chromosome_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chromosome_name: ""
     tb_region_list_to_bed: ""

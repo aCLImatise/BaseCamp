@@ -14,6 +14,9 @@ task Iufastatofastq {
       ~{if defined(fastq_output_file) then ("--output " +  '"' + fastq_output_file + '"') else ""} \
       ~{if (rev_comp) then "--rev-comp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_sequences: "Number of sequences to be converted (by default the\\neverything will be processed)"
     fastq_output_file: "FASTQ output file name (default: [-i]-FASTA-[-n]"

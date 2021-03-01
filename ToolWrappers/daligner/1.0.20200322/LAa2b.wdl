@@ -4,6 +4,9 @@ task LAa2b {
   command <<<
     LAa2b
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

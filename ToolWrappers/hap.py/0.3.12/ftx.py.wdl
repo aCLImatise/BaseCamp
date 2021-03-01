@@ -28,6 +28,9 @@ task Ftxpy {
       ~{if (normalize) then "--normalize" else ""} \
       ~{if (fix_chr) then "--fix-chr" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_name: "Output file name. Output will be in CSV format"
     location: "Location for bcftools view (e.g. chr1)"

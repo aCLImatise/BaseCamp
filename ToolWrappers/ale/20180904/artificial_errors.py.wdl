@@ -22,6 +22,9 @@ task ArtificialErrorspy {
       ~{if (ab) then "-ab" else ""} \
       ~{if (s_name_error) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ase: "<i>     : add substitution error at <location> for <length>"
     ade: "<i>     : add deletion error at <location> for <length>"

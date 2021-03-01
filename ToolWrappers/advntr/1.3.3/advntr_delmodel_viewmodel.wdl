@@ -2,9 +2,8 @@ version 1.0
 
 task AdvntrDelmodelViewmodel {
   input {
-    String? vid_slash_vntr_id
-    File? m_slash_models
-    Boolean? h_slash_help
+    String? vntr_id
+    File? models
     String ad_vntr
     String del_model
   }
@@ -12,14 +11,15 @@ task AdvntrDelmodelViewmodel {
     advntr delmodel viewmodel \
       ~{ad_vntr} \
       ~{del_model} \
-      ~{if defined(vid_slash_vntr_id) then ("-vid/--vntr_id " +  '"' + vid_slash_vntr_id + '"') else ""} \
-      ~{if defined(m_slash_models) then ("-m/--models " +  '"' + m_slash_models + '"') else ""} \
-      ~{if (h_slash_help) then "-h/--help" else ""}
+      ~{if defined(vntr_id) then ("--vntr_id " +  '"' + vntr_id + '"') else ""} \
+      ~{if defined(models) then ("--models " +  '"' + models + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    vid_slash_vntr_id: "VNTR ID"
-    m_slash_models: "VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]"
-    h_slash_help: "show this help message and exit"
+    vntr_id: "VNTR ID"
+    models: "VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]"
     ad_vntr: ""
     del_model: ""
   }

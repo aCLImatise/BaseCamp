@@ -22,6 +22,9 @@ task Cdsmappingstats {
       ~{if defined(colors) then ("--colors " +  '"' + colors + '"') else ""} \
       ~{if defined(workdir) then ("--workdir " +  '"' + workdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_length_use: "k-mer length to use"
     graph: "In GFA (ending with .gfa) or prefix to SPAdes graph pack"

@@ -18,6 +18,9 @@ task SketchySurveyLink {
       ~{if (symlink) then "--symlink" else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     iid: "Path to isolate ID file from Pathfinder Survey"
     directory: "Path to directory from which to extract files"

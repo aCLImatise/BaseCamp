@@ -48,6 +48,9 @@ task TandemSearchrb {
       ~{if (keep_params_files) then "--keep-params-files" else ""} \
       ~{if (output_spectra) then "--output-spectra" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     replace_output: "Dont skip analyses for which the output file already exists [false]"
     explicitly_named_output: "An explicitly named output file."

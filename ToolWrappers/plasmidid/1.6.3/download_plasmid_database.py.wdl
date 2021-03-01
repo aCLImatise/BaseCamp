@@ -8,6 +8,9 @@ task DownloadPlasmidDatabasepy {
     download_plasmid_database_py \
       ~{if defined(required_output_directory) then ("--output " +  '"' + required_output_directory + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     required_output_directory: "REQUIRED. Output directory to extract plasmid database\\n"
   }

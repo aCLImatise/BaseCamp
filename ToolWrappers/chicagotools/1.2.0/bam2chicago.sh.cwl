@@ -23,13 +23,14 @@ inputs:
     position: 3
 - id: in_no_delete
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 4
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bam2chicago.sh

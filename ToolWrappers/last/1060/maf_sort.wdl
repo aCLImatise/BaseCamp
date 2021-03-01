@@ -12,6 +12,9 @@ task Mafsort {
       ~{if (only_print_duplicate) then "-d" else ""} \
       ~{if (sort_nth_sequence) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     only_print_duplicate: "only print duplicate alignments"
     sort_nth_sequence: "sort by the n-th sequence (default: 1)"

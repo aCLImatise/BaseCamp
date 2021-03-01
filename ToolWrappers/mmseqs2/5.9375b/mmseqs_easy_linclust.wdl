@@ -74,6 +74,9 @@ task MmseqsEasylinclust {
       ~{if (max_seq_len) then "--max-seq-len" else ""} \
       ~{if (max_seqs) then "--max-seqs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     comp_bias_corr: "1               correct for locally biased amino acid composition [0,1]"
     add_self_matches: "false           artificially add entries of queries with themselves (for clustering)"

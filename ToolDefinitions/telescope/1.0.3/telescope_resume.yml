@@ -5,39 +5,42 @@ command:
 positional: []
 named:
 - !Flag
-  description: 'Silence (most) output. (default: False)'
+  optional: true
   synonyms:
   - --quiet
+  description: 'Silence (most) output. (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Print debug messages. (default: False)'
+  optional: true
   synonyms:
   - --debug
+  description: 'Print debug messages. (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Log output to this file. (default: None)'
+  optional: true
   synonyms:
   - --logfile
+  description: 'Log output to this file. (default: None)'
   args: !SimpleFlagArg
     name: LOGFILE
-  optional: true
 - !Flag
-  description: 'Output directory. (default: .)'
+  optional: true
   synonyms:
   - --outdir
+  description: 'Output directory. (default: .)'
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
-  description: 'Experiment tag (default: telescope)'
+  optional: true
   synonyms:
   - --exp_tag
+  description: 'Experiment tag (default: telescope)'
   args: !SimpleFlagArg
     name: EXP_TAG
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --reassign_mode
   description: "Reassignment mode. After EM is complete, each fragment\nis reassigned\
     \ according to the expected value of its\nmembership weights. The reassignment\
     \ method is the\nmethod for resolving the \"best\" reassignment for\nfragments\
@@ -50,70 +53,67 @@ named:
     \ Results using all assignment modes are\nincluded in the Telescope report by\
     \ default. This\nargument determines what mode will be used for the\n\"final counts\"\
     \ column. (default: exclude)"
-  synonyms:
-  - --reassign_mode
   args: !ChoiceFlagArg
     choices: !!set
-      exclude:
-      conf:
       unique:
-      choose:
+      conf:
       average:
-  optional: true
+      choose:
+      exclude:
 - !Flag
-  description: "Minimum probability for high confidence assignment.\n(default: 0.9)"
+  optional: true
   synonyms:
   - --conf_prob
+  description: "Minimum probability for high confidence assignment.\n(default: 0.9)"
   args: !SimpleFlagArg
     name: CONF_PROB
-  optional: true
 - !Flag
-  description: "Prior on π. Equivalent to adding n unique reads.\n(default: 0)"
+  optional: true
   synonyms:
   - --pi_prior
+  description: "Prior on π. Equivalent to adding n unique reads.\n(default: 0)"
   args: !SimpleFlagArg
     name: PI_PRIOR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --theta_prior
   description: "Prior on θ. Equivalent to adding n non-unique reads.\nNOTE: It is\
     \ recommended to set this prior to a large\nvalue. This increases the penalty\
     \ for non-unique reads\nand improves accuracy. (default: 200000)"
-  synonyms:
-  - --theta_prior
   args: !SimpleFlagArg
     name: THETA_PRIOR
-  optional: true
 - !Flag
-  description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
+  optional: true
   synonyms:
   - --em_epsilon
+  description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
   args: !SimpleFlagArg
     name: EM_EPSILON
-  optional: true
 - !Flag
-  description: 'EM Algorithm maximum iterations (default: 100)'
+  optional: true
   synonyms:
   - --max_iter
+  description: 'EM Algorithm maximum iterations (default: 100)'
   args: !SimpleFlagArg
     name: MAX_ITER
-  optional: true
 - !Flag
-  description: "Use difference in log-likelihood as convergence\ncriteria. (default:\
-    \ False)\n"
+  optional: true
   synonyms:
   - --use_likelihood
+  description: "Use difference in log-likelihood as convergence\ncriteria. (default:\
+    \ False)\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: telescope resume [-h] [--quiet] [--debug] [--logfile LOGFILE]\n\
@@ -159,3 +159,4 @@ help_text: "usage: telescope resume [-h] [--quiet] [--debug] [--logfile LOGFILE]
   \                        criteria. (default: False)\n"
 generated_using:
 - --help
+docker_image:

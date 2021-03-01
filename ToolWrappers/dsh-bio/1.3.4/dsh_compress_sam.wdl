@@ -14,6 +14,9 @@ task Dshcompresssam {
       ~{if (input_sam_file) then "--input-sam-file" else ""} \
       ~{if (output_sam_file) then "--output-sam-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     input_sam_file: "[class java.io.File]  input SAM file, default stdin [optional]"

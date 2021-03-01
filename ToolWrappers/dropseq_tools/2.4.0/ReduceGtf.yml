@@ -1,0 +1,93 @@
+!Command
+command:
+- ReduceGtf
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: extracted.
+  description: This is the 3rd field of the GTF file, some examples of standard feature
+    types
+- !Positional
+  optional: false
+  position: 0
+  name: file.
+  description: 'Default value: [pseudogene, polymorphic_pseudogene, TR_J_pseudogene,'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: (default 4g)
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: final command line before executing
+  args: !SimpleFlagArg
+    name: echo
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: /usr/local/bin/ReduceGtf [-m <jvm_heap_size>] [-v] program args...\n\
+  \       -m <jvm_heap_size> (default 4g)\n       -v echo final command line before\
+  \ executing\n\nProgram options:\nUSAGE: ReduceGtf [options]\n\nGTF files are annoyingly\
+  \ complex with a poor definition of what data is in them. So hey, why not write\
+  \ a file parser.\nThis program reduces the GTF file in to a simplier, easier to\
+  \ parse format, while simultaneously allowing for data to be\nfiltered.\nVersion:\
+  \ 2.4.0(3d2b3d8_1600201514)\n\n\nOptions:\n\n--help\n-h                        \
+  \    Displays options specific to this tool.\n\n--stdhelp\n-H                  \
+  \          Displays options specific to this tool AND options common to all Picard\
+  \ command line\n                              tools.\n\n--version              \
+  \       Displays program version.\n\nSEQUENCE_DICTIONARY=File\nSD=File         \
+  \              The reference sequence dictionary.  Only chromosomes found in this\
+  \ file AND the GTF file\n                              will be retained.  Required.\
+  \ \n\nGTF=File                      The GTF file to reduce  Required. \n\nOUTPUT=File\n\
+  O=File                        The output reduced GTF file.  Required. \n\nFEATURE_TYPE=String\
+  \           Feature type(s) to extract. Only lines of the GTF that have these feature\
+  \ types will be\n                              extracted.  This is the 3rd field\
+  \ of the GTF file, some examples of standard feature types\n                   \
+  \           are CDS, start_codon, stop_codon, and exon.   Default value: [gene,\
+  \ transcript, exon].\n                              This option can be set to 'null'\
+  \ to clear the default value. This option may be specified\n                   \
+  \           0 or more times. This option can be set to 'null' to clear the default\
+  \ list. \n\nIGNORE_FUNC_TYPE=String       Functional type(s) to ignore.  These are\
+  \ values in the FUNCTIONAL_FIELD column in the GTF\n                           \
+  \   file.  Default value: [pseudogene, polymorphic_pseudogene, TR_J_pseudogene,\n\
+  \                              TR_V_pseudogene, IG_C_pseudogene, IG_J_pseudogene,\
+  \ IG_V_pseudogene]. This option can be\n                              set to 'null'\
+  \ to clear the default value. This option may be specified 0 or more times.\n  \
+  \                            This option can be set to 'null' to clear the default\
+  \ list. \n\nENHANCE_GTF=Boolean           Enhance this reduced GTF file with genes,transcripts,introns,\
+  \ and consensus introns.  This\n                              is real handy when\
+  \ your GTF file only defines exons, but has the transcript and gene IDs\n      \
+  \                        they belong to.  Default value: true. This option can be\
+  \ set to 'null' to clear the\n                              default value. Possible\
+  \ values: {true, false} \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/dropseq_tools:2.4.0--0

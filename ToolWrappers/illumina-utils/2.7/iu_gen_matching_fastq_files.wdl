@@ -16,6 +16,9 @@ task Iugenmatchingfastqfiles {
       ~{if defined(identifier_code) then ("--identifier-code " +  '"' + identifier_code + '"') else ""} \
       ~{if (identifier_tested) then "--identifier-tested" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r_one: "R1"
     r_two: "R2"

@@ -34,6 +34,9 @@ task GoalignCompress {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compressed_output_alignment: "Compressed output alignment file (default \\\"stdout\\\")"
     weight_out: "Pattern weight output file (default \\\"none\\\")"

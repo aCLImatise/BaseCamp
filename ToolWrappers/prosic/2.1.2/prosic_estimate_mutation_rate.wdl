@@ -14,6 +14,9 @@ task ProsicEstimatemutationrate {
       ~{if defined(max_af) then ("--max-af " +  '"' + max_af + '"') else ""} \
       ~{if defined(min_af) then ("--min-af " +  '"' + min_af + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fit: "Path to file that will observations and the parameters of the fitted model as JSON."
     max_af: "Maximum allele frequency to consider [0.25]."

@@ -12,6 +12,9 @@ task Gtf2bedpl {
       ~{upstream_extension} \
       ~{downstream_extension}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_gtf: ""
     upstream_extension: ""

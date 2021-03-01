@@ -14,6 +14,9 @@ task MimoddInfo {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(o_format) then ("--oformat " +  '"' + o_format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ofile: "redirect the output to the specified file (default:\\nstdout)"
     verbose: "verbose output"

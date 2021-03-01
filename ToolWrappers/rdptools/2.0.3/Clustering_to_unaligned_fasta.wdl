@@ -8,6 +8,9 @@ task ClusteringTounalignedfasta {
     Clustering to_unaligned_fasta \
       ~{input_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: ""
   }

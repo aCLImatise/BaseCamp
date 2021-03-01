@@ -70,6 +70,9 @@ task MakeHubpy {
       ~{if (no_gene_pred_to_big_gene_pred) then "--no_genePredToBigGenePred" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_usage_examples: "Print usage examples for make_hub.py"
     email: "Contact e-mail adress for assembly hub"

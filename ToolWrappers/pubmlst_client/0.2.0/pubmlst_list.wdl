@@ -14,6 +14,9 @@ task PubmlstList {
       ~{if (names_only) then "--names_only" else ""} \
       ~{if defined(base_url) then ("--base-url " +  '"' + base_url + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pattern: "regex pattern to filter scheme names"
     exclude_pattern: "regex pattern to filter scheme names"

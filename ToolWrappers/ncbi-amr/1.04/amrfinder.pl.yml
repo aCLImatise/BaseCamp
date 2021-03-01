@@ -3,97 +3,102 @@ command:
 - amrfinder.pl
 positional:
 - !Positional
-  description: -g <gff> GFF file indicating genomic location for proteins in -p <protein>
+  optional: false
   position: 0
   name: HMMER
-  optional: false
+  description: -g <gff> GFF file indicating genomic location for proteins in -p <protein>
 named:
 - !Flag
-  description: help text
-  synonyms:
-  - -h/--help
-  args: !SimpleFlagArg
-    name: print
   optional: true
-- !Flag
-  description: version information
   synonyms:
-  - -v/--version
-  args: !SimpleFlagArg
-    name: print
-  optional: true
-- !Flag
+  - -U
+  - --update_data
   description: "AMRFinder database by downloading latest version\nfrom the NCBI ftp\
     \ site"
-  synonyms:
-  - -U/--update_data
   args: !SimpleFlagArg
     name: update
-  optional: true
 - !Flag
-  description: Directory containing the AMR database
+  optional: true
   synonyms:
-  - -d/--database
+  - -d
+  - --database
+  description: Directory containing the AMR database
   args: !SimpleFlagArg
     name: dir
-  optional: true
 - !Flag
-  description: tabfile output to this file instead of STDOUT
+  optional: true
   synonyms:
-  - -o/--output
+  - -o
+  - --output
+  description: tabfile output to this file instead of STDOUT
   args: !SimpleFlagArg
     name: file.tsv
-  optional: true
 - !Flag
-  description: "'t print status messages to STDERR"
+  optional: true
   synonyms:
-  - -q/--quiet
+  - -q
+  - --quiet
+  description: "'t print status messages to STDERR"
   args: !SimpleFlagArg
     name: don
-  optional: true
 - !Flag
-  description: Amino-acid sequences to search using BLASTP and
+  optional: true
   synonyms:
-  - -p/--protein
+  - -p
+  - --protein
+  description: Amino-acid sequences to search using BLASTP and
   args: !SimpleFlagArg
     name: protein
-  optional: true
 - !Flag
-  description: genomic sequence to search using blastx
+  optional: true
   synonyms:
   - -n
+  description: genomic sequence to search using blastx
   args: !SimpleFlagArg
     name: nucleotide
-  optional: true
 - !Flag
-  description: Minimum proportion identical translated AA residues
+  optional: true
   synonyms:
   - -i
+  description: Minimum proportion identical translated AA residues
   args: !SimpleFlagArg
     name: '0.9'
-  optional: true
 - !Flag
-  description: "Minimum coverage of reference protein sequence for\na \"BLASTX\" match\
-    \ vs. a \"PARTIALX\" match"
+  optional: true
   synonyms:
   - -c
+  description: "Minimum coverage of reference protein sequence for\na \"BLASTX\" match\
+    \ vs. a \"PARTIALX\" match"
   args: !SimpleFlagArg
     name: '0.5'
-  optional: true
 - !Flag
-  description: "Translation table for blastx, for options and their meaning see:\n\
-    https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi\n"
+  optional: true
   synonyms:
   - -t
+  description: "Translation table for blastx, for options and their meaning see:\n\
+    https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi\n"
   args: !SimpleFlagArg
     name: '11'
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help text
+  args: !SimpleFlagArg
+    name: print
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: version information
+  args: !SimpleFlagArg
+    name: print
 help_text: "\namrfinder [-h|-v]\namrfinder [-options] -p <Protein FASTA>\namrfinder\
   \ [-options] -n <genomic sequence FASTA>\n\n\n    -h/--help print help text\n  \
   \  -v/--version print version information \n    -U/--update_data update AMRFinder\
@@ -111,3 +116,4 @@ help_text: "\namrfinder [-h|-v]\namrfinder [-options] -p <Protein FASTA>\namrfin
   \ see:\n        https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi\n"
 generated_using:
 - --help
+docker_image:

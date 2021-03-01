@@ -10,6 +10,9 @@ task RandomSplitpl {
       ~{dbfile} \
       ~{size}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dbfile: ""
     size: ""

@@ -10,6 +10,9 @@ task ArrowAnnotationsSetSequence {
       ~{organism} \
       ~{sequence}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     organism: ""
     sequence: ""

@@ -3,32 +3,32 @@ id: exploc_p.cwl
 inputs:
 - id: in_man
   doc: full documentation
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --man
 - id: in_verbose
   doc: verbose
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_exp_a_rnap_params
   doc: parameters for ExpaRNA-P
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --exparnap-params
 - id: in_loca_rna_params
   doc: parameters for LocARNA
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --locarna-params
 - id: in_output
   doc: path to output folder
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_output_time
   doc: output individual runtimes
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --output-time
 - id: in_loca_rna_dot
@@ -47,9 +47,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: path to output folder
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - exploc_p

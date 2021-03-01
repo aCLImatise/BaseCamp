@@ -58,6 +58,9 @@ task Treerecs {
       ~{if (output_without_description) then "--output-without-description" else ""} \
       ~{if (f_event) then "--fevent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "verbose mode. Causes Treerecs to print messages about its progress."
     super_verbose: "super-verbose mode. Print even more messages than in verbose mode."
@@ -75,7 +78,7 @@ task Treerecs {
     output_format: "output format(s): newick(default), nhx, phyloxml, recphyloxml or svg.\\nrepeat option or use a colon-separated list of formats to get multiple\\noutput"
     force: "force possible overwrite of existing files."
     sep: "specify separator character for species names embedded in gene names\\n(default = '_')."
-    prefix: "specify whether the species_name is a prefix of gene_name\\ndefault = N)."
+    prefix: "/N\\nspecify whether the species_name is a prefix of gene_name\\ndefault = N)."
     parallelize: "run in parallel if possible."
     save_map: "save map(s) used during execution."
     quiet: "silent mode (no print, no progression bar)."

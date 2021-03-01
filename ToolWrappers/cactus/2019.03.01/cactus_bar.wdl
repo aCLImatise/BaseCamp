@@ -56,6 +56,9 @@ task CactusBar {
       ~{if (minimum_size_to_rescue) then "--minimumSizeToRescue" else ""} \
       ~{if (minimum_coverage_to_rescue) then "--minimumCoverageToRescue" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: ": Set the log level"
     cactus_disk: ": The location of the flower disk directory"

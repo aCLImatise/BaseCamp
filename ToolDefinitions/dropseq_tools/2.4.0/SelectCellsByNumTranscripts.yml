@@ -1,0 +1,106 @@
+!Command
+command:
+- SelectCellsByNumTranscripts
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: (default 4g)
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: final command line before executing
+  args: !SimpleFlagArg
+    name: echo
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: /usr/local/bin/SelectCellsByNumTranscripts [-m <jvm_heap_size>]\
+  \ [-v] program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
+  \ command line before executing\n\nProgram options:\nUSAGE: SelectCellsByNumTranscripts\
+  \ [options]\n\nDetermine the cell barcodes that have a minimum number of transcripts.\
+  \  For a multi-species BAM, the minimum must be\nreached in transcripts for a single\
+  \ species.\nVersion: 2.4.0(3d2b3d8_1600201514)\n\n\nOptions:\n\n--help\n-h     \
+  \                       Displays options specific to this tool.\n\n--stdhelp\n-H\
+  \                            Displays options specific to this tool AND options\
+  \ common to all Picard command line\n                              tools.\n\n--version\
+  \                     Displays program version.\n\nINPUT=File\nI=File          \
+  \              SAM or BAM file to analyze.  Required. \n\nOUTPUT=File\nO=File  \
+  \                      List of cell barcodes, one per line  Required. \n\nMETRICS=File\n\
+  M=File                        If specified, produce summary metrics  Default value:\
+  \ null. \n\nMIN_TRANSCRIPTS_PER_CELL=Integer\n                              Select\
+  \ cells with at least this many transcripts  Required. \n\nMIN_READS_PER_CELL=Integer\
+  \    Limit cells to those with at least this many reads.  Default value: null. \n\
+  \nORGANISM=String               If specified, transcripts are counted per species,\
+  \ and the MIN_TRANSCRIPTS_PER_CELL\n                              threshold must\
+  \ be reached by transcripts for a single species before a cell is selected. \n \
+  \                             Default value: null. This option may be specified\
+  \ 0 or more times. \n\nOUTPUT_INTERIM_CELLS=File     If set, cells with minimum\
+  \ number of reads are written to this file.  Default value: null.\n\nINPUT_INTERIM_CELLS=File\
+  \      If set, read cells from this file rather than filtering BAM for cells with\
+  \ minimum number\n                              of reads.  Default value: null.\
+  \ \n\nCELL_BARCODE_TAG=String       The cell barcode tag.  If there are no reads\
+  \ with this tag, the program will assume that\n                              all\
+  \ reads belong to the same cell and process in single sample mode.  Default value:\
+  \ XC.\n                              This option can be set to 'null' to clear the\
+  \ default value. \n\nMOLECULAR_BARCODE_TAG=String  The molecular barcode tag.  Default\
+  \ value: XM. This option can be set to 'null' to clear\n                       \
+  \       the default value. \n\nREAD_MQ=Integer               The map quality of\
+  \ the read to be included.  Default value: 10. This option can be set to\n     \
+  \                         'null' to clear the default value. \n\nEDIT_DISTANCE=Integer\
+  \         The edit distance that molecular barcodes should be combined at within\
+  \ a gene.  Default\n                              value: 1. This option can be set\
+  \ to 'null' to clear the default value. \n\nGENE_NAME_TAG=String          Gene Name\
+  \ tag.  Takes on the gene name this read overlaps (if any)  Default value: gn.\n\
+  \                              This option can be set to 'null' to clear the default\
+  \ value. \n\nGENE_STRAND_TAG=String        Gene Strand tag.  For a given gene name\
+  \ , this is the strand of the gene.  Default value:\n                          \
+  \    gs. This option can be set to 'null' to clear the default value. \n\nGENE_FUNCTION_TAG=String\
+  \      Gene Function tag.  For a given gene name , this is the function of the gene\
+  \ at this\n                              read's position: UTR/CODING/INTRONIC/...\
+  \  Default value: gf. This option can be set to\n                              'null'\
+  \ to clear the default value. \n\nSTRAND_STRATEGY=StrandStrategyThe strand strategy\
+  \ decides which reads will be used by analysis.  The SENSE strategy\n          \
+  \                    requires the read and annotation to have the same strand. \
+  \ The ANTISENSE strategy requires\n                              the read and annotation\
+  \ to be on opposite strands.  The BOTH strategy is permissive, and\n           \
+  \                   allows the read to be on either strand.  Default value: SENSE.\
+  \ This option can be set to\n                              'null' to clear the default\
+  \ value. Possible values: {SENSE, ANTISENSE, BOTH} \n\nLOCUS_FUNCTION_LIST=LocusFunction\n\
+  \                              A list of functional annotations that reads need\
+  \ to be completely contained by to be\n                              considered\
+  \ for analysis.  Default value: [CODING, UTR]. This option can be set to 'null'\n\
+  \                              to clear the default value. Possible values: {INTERGENIC,\
+  \ INTRONIC, UTR, CODING,\n                              RIBOSOMAL} This option may\
+  \ be specified 0 or more times. This option can be set to 'null'\n             \
+  \                 to clear the default list. \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/dropseq_tools:2.4.0--0

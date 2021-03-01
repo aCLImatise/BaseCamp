@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Int, String
+
+Novoutil_Iupac_V0_1_0 = CommandToolBuilder(tool="novoutil_iupac", base_command=["novoutil", "iupac"], inputs=[ToolInput(tag="in_lower_quality_limit", input_type=Boolean(optional=True), prefix="-q", doc=InputDocumentation(doc="<99>    Lower quality limit for SNPs. Default 30.\nSNPs with quality of '.' are assumed as high quality.")), ToolInput(tag="in_replace_reference_base", input_type=Boolean(optional=True), prefix="-g", doc=InputDocumentation(doc="Replace reference base with the genotype base code.\nThe reference base will not be included in the IUPAC code if\nthe SNP is homozygous. Zygosity is determined as follows:\nif -s is specified then from GT attribute of the sample\nelse if there is an AF tag then AF=1 is homozygous\nelse check first GT tag.")), ToolInput(tag="in_update_reference_changes", input_type=Boolean(optional=True), prefix="-i", doc=InputDocumentation(doc="Update reference with homozygous indels from the vcf file.\nNote. That this changes the length of reference and will affect\nlocation of annotations hence ability to give a list of bed\nfiles to be relocated.")), ToolInput(tag="in_use_snp_vcf", input_type=Boolean(optional=True), prefix="-w", doc=InputDocumentation(doc="Use with SNP files in wgsim format rather than vcf.")), ToolInput(tag="in_sets_sample_specified", input_type=Int(optional=True), prefix="-s", doc=InputDocumentation(doc="Sets sample (1 based) to use for multi-sample vcf files.\nWhen a sample is specified the GT of that sample is used for\ndetermining genotype. If sample has ./. in GT attribute then\nthe SNP is not encoded into the reference.\nIf a multi-sample vcf file is used and -s is not specified\nthen all SNPs are applied and AF attribute is used to determine\ngenotype, AF=1.0 is homozygous for the SNP.")), ToolInput(tag="in_snp_file", input_type=String(), position=0, doc=InputDocumentation(doc="is a sorted vcf file of SNPs, and")), ToolInput(tag="in_fast_a_files", input_type=String(), position=1, doc=InputDocumentation(doc="is one or more fasta files to be processed.\nInput files may be compressed with gzip or bzip.")), ToolInput(tag="in_bed_files", input_type=String(), position=2, doc=InputDocumentation(doc="BED format files whose coordinates should be updated to match the new \nfasta file. Useful if indels are being incorporated in the new fasta files.\nRelocated BED filenames are prefixed by 'new.'"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Novoutil_Iupac_V0_1_0().translate("wdl", allow_empty_container=True)
+

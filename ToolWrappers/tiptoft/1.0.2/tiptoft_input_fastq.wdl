@@ -10,6 +10,9 @@ task TiptoftInputFastq {
       ~{tip_to_ft} \
       ~{input_dot_fast_q}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tip_to_ft: ""
     input_dot_fast_q: ""

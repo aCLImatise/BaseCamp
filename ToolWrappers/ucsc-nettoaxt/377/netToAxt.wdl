@@ -22,6 +22,9 @@ task NetToAxt {
       ~{if defined(gap_out) then ("-gapOut " +  '"' + gap_out + '"') else ""} \
       ~{if (no_split) then "-noSplit" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     q_chain: "- net is with respect to the q side of chains."
     max_gap: "- maximum size of gap before breaking. Default 100"

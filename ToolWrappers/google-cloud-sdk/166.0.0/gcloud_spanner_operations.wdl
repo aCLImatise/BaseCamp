@@ -12,6 +12,9 @@ task GcloudSpannerOperations {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cancel: "Cancel a Cloud Spanner operation."
     describe: "Describe a Cloud Spanner operation."

@@ -10,6 +10,9 @@ task MbplotmetagenePcTable {
       ~{mb_plot_meta_gene} \
       ~{if defined(downstream_bp) then ("--downstream_bp " +  '"' + downstream_bp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     downstream_bp: ""
     mb_plot_meta_gene: ""

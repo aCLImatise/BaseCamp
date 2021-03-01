@@ -10,6 +10,9 @@ task Espell {
       ~{if (db) then "-db" else ""} \
       ~{if (query) then "-query" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Database name"
     query: "Query string"

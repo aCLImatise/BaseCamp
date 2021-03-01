@@ -4,6 +4,9 @@ task Fastacomposition {
   command <<<
     fastacomposition
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

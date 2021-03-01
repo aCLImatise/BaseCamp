@@ -9,13 +9,13 @@ inputs:
     \ is\nnew behaviour. Previously one could specify that they\nwill be output as\
     \ missing or hom-ref, but that\nfeature was recently removed. I plan to implement\n\
     this behaviour in the future in a new\neigenstrat-merging tool."
-  type: File
+  type: File?
   inputBinding:
     prefix: --snpFile
 - id: in_out_prefix
   doc: "specify the filenames for the EigenStrat SNP and IND\nfile outputs: <FILE_PREFIX>.snp.txt\
     \ and\n<FILE_PREFIX>.ind.txt\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outPrefix
 outputs:
@@ -30,9 +30,10 @@ outputs:
     \ is\nnew behaviour. Previously one could specify that they\nwill be output as\
     \ missing or hom-ref, but that\nfeature was recently removed. I plan to implement\n\
     this behaviour in the future in a new\neigenstrat-merging tool."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_snp_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vcf2eigenstrat

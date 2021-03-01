@@ -1,0 +1,153 @@
+!Command
+command:
+- clinker
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: files
+  description: Gene cluster GenBank files
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -na
+  - --no_align
+  description: Do not align clusters
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --identity
+  description: Minimum alignment sequence identity
+  args: !SimpleFlagArg
+    name: IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
+  description: "Number of alignments to run in parallel (0 to use the\nnumber of CPUs)"
+  args: !SimpleFlagArg
+    name: JOBS
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --session
+  description: Path to clinker session
+  args: !SimpleFlagArg
+    name: SESSION
+- !Flag
+  optional: true
+  synonyms:
+  - -ji
+  - --json_indent
+  description: Number of spaces to indent JSON
+  args: !SimpleFlagArg
+    name: JSON_INDENT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: Overwrite previous output file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Save alignments to file
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "[PLOT], --plot [PLOT]\nPlot cluster alignments using clustermap.js.\
+    \ If a path\nis given, clinker will generate a portable HTML file\nat that path.\
+    \ Otherwise, the plot will be served\ndynamically using Python's HTTP server."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dl
+  - --delimiter
+  description: Character to delimit output by
+  args: !SimpleFlagArg
+    name: DELIMITER
+- !Flag
+  optional: true
+  synonyms:
+  - -dc
+  - --decimals
+  description: Number of decimal places in output
+  args: !SimpleFlagArg
+    name: DECIMALS
+- !Flag
+  optional: true
+  synonyms:
+  - -hl
+  - --hide_link_headers
+  description: Hide alignment column headers
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ha
+  - --hide_aln_headers
+  description: Hide alignment cluster name headers
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ufo
+  - --use_file_order
+  description: Display clusters in order of input files
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: clinker [-h] [-na] [-i IDENTITY] [-j JOBS] [-s SESSION]\n     \
+  \          [-ji JSON_INDENT] [-f] [-o OUTPUT] [-p [PLOT]] [-dl DELIMITER]\n    \
+  \           [-dc DECIMALS] [-hl] [-ha] [-ufo]\n               files [files ...]\n\
+  \nclinker: Automatic creation of publication-ready gene cluster comparison figures.\n\
+  \nclinker generates gene cluster comparison figures from GenBank files. It performs\
+  \ pairwise local or global alignments between every sequence in every unique pair\
+  \ of clusters and generates interactive, to-scale comparison figures using the clustermap.js\
+  \ library.\n\npositional arguments:\n  files                 Gene cluster GenBank\
+  \ files\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n\nAlignment options:\n  -na, --no_align       Do not align clusters\n  -i\
+  \ IDENTITY, --identity IDENTITY\n                        Minimum alignment sequence\
+  \ identity\n  -j JOBS, --jobs JOBS  Number of alignments to run in parallel (0 to\
+  \ use the\n                        number of CPUs)\n\nOutput options:\n  -s SESSION,\
+  \ --session SESSION\n                        Path to clinker session\n  -ji JSON_INDENT,\
+  \ --json_indent JSON_INDENT\n                        Number of spaces to indent\
+  \ JSON\n  -f, --force           Overwrite previous output file\n  -o OUTPUT, --output\
+  \ OUTPUT\n                        Save alignments to file\n  -p [PLOT], --plot [PLOT]\n\
+  \                        Plot cluster alignments using clustermap.js. If a path\n\
+  \                        is given, clinker will generate a portable HTML file\n\
+  \                        at that path. Otherwise, the plot will be served\n    \
+  \                    dynamically using Python's HTTP server.\n  -dl DELIMITER, --delimiter\
+  \ DELIMITER\n                        Character to delimit output by\n  -dc DECIMALS,\
+  \ --decimals DECIMALS\n                        Number of decimal places in output\n\
+  \  -hl, --hide_link_headers\n                        Hide alignment column headers\n\
+  \  -ha, --hide_aln_headers\n                        Hide alignment cluster name\
+  \ headers\n\nVisualisation options:\n  -ufo, --use_file_order\n                \
+  \        Display clusters in order of input files\n\nExample usage\n-------------\n\
+  Align clusters, plot results and print scores to screen:\n  $ clinker files/*.gbk\n\
+  \nCameron Gilchrist, 2020\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/clinker-py:0.0.12--pyh3252c3a_0

@@ -38,6 +38,9 @@ task Csfastq1csfastq {
       ~{if (max_reads) then "-max_reads" else ""} \
       ~{if (log) then "-log" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cs_fast_q_one: "(string)        first csfastq file."
     cs_fast_q_two: "(string)        second csfastq file."

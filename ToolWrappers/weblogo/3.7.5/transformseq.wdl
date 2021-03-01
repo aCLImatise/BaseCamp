@@ -26,6 +26,9 @@ task Transformseq {
       ~{if (reverse) then "--reverse" else ""} \
       ~{if (complement) then "--complement" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fin: "Sequence input file (default: stdin)"
     format_in: "Multiple sequence alignment format: (clustal,\\nfasta, plain, msf, genbank, nbrf, nexus, phylip,\\nstockholm, intelligenetics, table, array)"

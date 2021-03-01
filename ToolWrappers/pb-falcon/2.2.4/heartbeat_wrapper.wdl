@@ -16,6 +16,9 @@ task Heartbeatwrapper {
       ~{if defined(heartbeat_file) then ("--heartbeat-file " +  '"' + heartbeat_file + '"') else ""} \
       ~{if defined(directory) then ("--directory " +  '"' + directory + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exit_file: "[--directory DIRECTORY]"
     rate: "Heartbeat rate, in seconds (default: 1.0)"

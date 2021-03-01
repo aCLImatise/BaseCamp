@@ -12,6 +12,9 @@ task NwSupport {
       ~{replicates_filename} \
       ~{if (hlp) then "-hlp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hlp: ""
     target_tree_filename_vertical_line: ""

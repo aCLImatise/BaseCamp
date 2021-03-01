@@ -20,6 +20,9 @@ task Gd2topng {
       ~{width} \
       ~{height}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gd_two_to_png: ""
     filename_dot_gd_two: ""

@@ -1,0 +1,106 @@
+!Command
+command:
+- kmercountexact.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eoom
+  description: "This flag will cause the process to exit if an\nout-of-memory exception\
+    \ occurs.  Requires Java 8u92+."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: Disable assertions.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified October 14, 2020\n\nDescription:\
+  \  Counts the number of unique kmers in a file.\nGenerates a kmer frequency histogram\
+  \ and genome size estimate (in peaks output),\nand prints a file containing all\
+  \ kmers and their counts.\nSupports K=1 to infinity, though not all values are allowed.\n\
+  SEE ALSO: bbnorm.sh/khist.sh, loglog.sh, and kmercountmulti.sh.\n\nUsage:   kmercountexact.sh\
+  \ in=<file> khist=<file> peaks=<file>\n\nInput may be fasta or fastq, compressed\
+  \ or uncompressed.\nOutput may be stdout or a file.  out, khist, and peaks are optional.\n\
+  \n\nInput parameters:\nin=<file>           Primary input file.\nin2=<file>     \
+  \     Second input file for paired reads.\namino=f             Run in amino acid\
+  \ mode.\n\nOutput parameters:\nout=<file>          Print kmers and their counts.\
+  \  This is produces a\n                    huge file, so skip it if you only need\
+  \ the histogram.\nfastadump=t         Print kmers and counts as fasta versus 2-column\
+  \ tsv.\nmincount=1          Only print kmers with at least this depth.\nreads=-1\
+  \            Only process this number of reads, then quit (-1 means all).\ndumpthreads=-1\
+  \      Use this number of threads for dumping kmers (-1 means auto).\n\nHashing\
+  \ parameters:\nk=31                Kmer length (1-31 is fastest).\nprealloc=t  \
+  \        Pre-allocate memory rather than dynamically growing; faster and more memory-efficient.\
+  \  A float fraction (0-1) may be specified, default 1.\nprefilter=0         If set\
+  \ to a positive integer, use a countmin sketch to ignore kmers with depth of that\
+  \ value or lower.\nprehashes=2         Number of hashes for prefilter.\nprefiltersize=0.2\
+  \   Fraction of memory to use for prefilter.\nminq=6              Ignore kmers containing\
+  \ bases with quality below this. (TODO)\nminprob=0.0         Ignore kmers with overall\
+  \ probability of correctness below this.\nthreads=X           Spawn X hashing threads\
+  \ (default is number of logical processors).\nonepass=f           If true, prefilter\
+  \ will be generated in same pass as kmer counts.  Much faster but counts will be\
+  \ lower, by up to prefilter's depth limit.\nrcomp=t             Store and count\
+  \ each kmer together and its reverse-complement.\n\nHistogram parameters:\nkhist=<file>\
+  \        Print kmer frequency histogram.\nhistcolumns=2       2 columns: (depth,\
+  \ count).  3 columns: (depth, rawCount, count).\nhistmax=100000      Maximum depth\
+  \ to print in histogram output.\nhistheader=t        Set true to print a header\
+  \ line.\nnzo=t               (nonzeroonly) Only print lines for depths with a nonzero\
+  \ kmer count.\ngchist=f            Add an extra histogram column with the average\
+  \ GC%.\n\nIntersection parameters:\nref=<file>          An input assembly of the\
+  \ input reads.\nintersection=<file> Output file for a 2-D histogram of read and\
+  \ ref kmer counts.\nrefmax=6            Maximum reference kmer depth to track; read\
+  \ depth is controlled by 'histmax'.\n\nSmoothing parameters:\nsmoothkhist=f    \
+  \   Smooth the output kmer histogram.\nsmoothpeaks=t       Smooth the kmer histogram\
+  \ for peak-calling, but does not affect the output histogram.\nsmoothradius=1  \
+  \    Initial radius of progressive smoothing function.\nmaxradius=10        Maximum\
+  \ radius of progressive smoothing function.\nprogressivemult=2   Increment radius\
+  \ each time depth increases by this factor.\nlogscale=t          Transform to log-scale\
+  \ prior to peak-calling.\nlogwidth=0.1        The larger the number, the smoother.\n\
+  \nPeak calling parameters:\npeaks=<file>        Write the peaks to this file.  Default\
+  \ is stdout. \n                    Also contains the genome size estimate in bp.\n\
+  minHeight=2         (h) Ignore peaks shorter than this.\nminVolume=5         (v)\
+  \ Ignore peaks with less area than this.\nminWidth=3          (w) Ignore peaks narrower\
+  \ than this.\nminPeak=2           (minp) Ignore peaks with an X-value below this.\n\
+  maxPeak=BIG         (maxp) Ignore peaks with an X-value above this.\nmaxPeakCount=12\
+  \     (maxpc) Print up to this many peaks (prioritizing height).\nploidy=-1    \
+  \       Specify ploidy; otherwise it will be autodetected.\n\nSketch parameters\
+  \ (for making a MinHashSketch):\nsketch=<file>       Write a minhash sketch to this\
+  \ file.\nsketchlen=10000     Output the top 10000 kmers.  Only kmers with at least\
+  \ mincount are included.\nsketchname=         Name of output sketch.\nsketchid=\
+  \           taxID of output sketch.\n\nQuality parameters:\nqtrim=f            \
+  \ Trim read ends to remove bases with quality below minq.\n                    Values:\
+  \ t (trim both ends), f (neither end), r (right end only), l (left end only).\n\
+  trimq=4             Trim quality threshold.\nminavgquality=0     (maq) Reads with\
+  \ average quality (before trimming) below this will be discarded.\n\nOverlap parameters\
+  \ (for overlapping paired-end reads only):\nmerge=f             Attempt to merge\
+  \ reads before counting kmers.\necco=f              Error correct via overlap, but\
+  \ do not merge reads.   \n\nJava Parameters:\n-Xmx                This will set\
+  \ Java's memory usage, overriding autodetection.\n                    -Xmx20g will\
+  \ specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\n                \
+  \    The max is typically 85% of physical memory.\n-eoom               This flag\
+  \ will cause the process to exit if an\n                    out-of-memory exception\
+  \ occurs.  Requires Java 8u92+.\n-da                 Disable assertions.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

@@ -3,12 +3,12 @@ id: run_prokka.cwl
 inputs:
 - id: in_threads
   doc: number of threads to use (default=1)
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_verbose
   doc: print additional output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_input
@@ -18,22 +18,22 @@ inputs:
     prefix: --input
 - id: in_out_dir
   doc: location of an output directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --out_dir
 - id: in_force
   doc: overwrite old commands
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_add_pro_kk_a_cmds
   doc: "additional commands to supply to Prokka (these are not\nchecked!)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --add_prokka_cmds
 - id: in_num_training
   doc: "number of genomes to use in training prodigal\n(default=10)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --num_training
 outputs:
@@ -42,9 +42,10 @@ outputs:
   type: stdout
 - id: out_out_dir
   doc: location of an output directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_out_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - run_prokka

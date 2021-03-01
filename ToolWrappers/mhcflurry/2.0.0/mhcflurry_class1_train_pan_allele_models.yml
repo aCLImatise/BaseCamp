@@ -3,157 +3,187 @@ command:
 - mhcflurry-class1-train-pan-allele-models
 positional:
 - !Positional
-  description: --pretrain-data FILE.csv
+  optional: false
   position: 0
   name: measurement_value
-  optional: false
+  description: --pretrain-data FILE.csv
 - !Positional
-  description: --max-epochs N        Max training epochs. If specified here it overrides
+  optional: false
   position: 0
   name: train.
-  optional: false
+  description: --max-epochs N        Max training epochs. If specified here it overrides
 named:
 - !Flag
-  description: 'Training data CSV. Expected columns: allele, peptide,'
+  optional: true
   synonyms:
   - --data
+  description: 'Training data CSV. Expected columns: allele, peptide,'
   args: !SimpleFlagArg
     name: FILE.csv
-  optional: true
 - !Flag
-  description: Directory to write models and manifest
+  optional: true
   synonyms:
   - --out-models-dir
+  description: Directory to write models and manifest
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
-  description: JSON or YAML of hyperparameters
+  optional: true
   synonyms:
   - --hyperparameters
+  description: JSON or YAML of hyperparameters
   args: !SimpleFlagArg
     name: FILE.json
-  optional: true
 - !Flag
-  description: "X\nFraction of measurements per allele to hold out, and\nmaximum number"
+  optional: true
   synonyms:
   - --held-out-measurements-per-allele-fraction-and-max
+  description: "X\nFraction of measurements per allele to hold out, and\nmaximum number"
   args: !SimpleFlagArg
     name: X
-  optional: true
 - !Flag
-  description: "Do not use affinity value inequalities even when\npresent in data"
+  optional: true
   synonyms:
   - --ignore-inequalities
+  description: "Do not use affinity value inequalities even when\npresent in data"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Number of training folds.
+  optional: true
   synonyms:
   - --num-folds
+  description: Number of training folds.
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Number of replicates per (architecture, fold) pair to
+  optional: true
   synonyms:
   - --num-replicates
+  description: Number of replicates per (architecture, fold) pair to
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Allele sequences file.
+  optional: true
   synonyms:
   - --allele-sequences
+  description: Allele sequences file.
   args: !SimpleFlagArg
     name: FILE.csv
-  optional: true
 - !Flag
-  description: 'Keras verbosity. Default: 0'
+  optional: true
   synonyms:
   - --verbosity
+  description: 'Keras verbosity. Default: 0'
   args: !SimpleFlagArg
     name: VERBOSITY
-  optional: true
 - !Flag
-  description: Launch python debugger on error
+  optional: true
   synonyms:
   - --debug
+  description: Launch python debugger on error
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Continue training models from an incomplete training\nrun. If this\
-    \ is specified then the only required\nargument is --out-models-dir"
+  optional: true
   synonyms:
   - --continue-incomplete
+  description: "Continue training models from an incomplete training\nrun. If this\
+    \ is specified then the only required\nargument is --out-models-dir"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not actually train models. The initialized run can\nbe continued\
-    \ later with --continue-incomplete."
+  optional: true
   synonyms:
   - --only-initialize
+  description: "Do not actually train models. The initialized run can\nbe continued\
+    \ later with --continue-incomplete."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Number of local processes to parallelize training\nover. Set to 0\
-    \ for serial run. Default: 0."
+  optional: true
   synonyms:
   - --num-jobs
+  description: "Number of local processes to parallelize training\nover. Set to 0\
+    \ for serial run. Default: 0."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Keras backend. If not specified will use system\ndefault."
+  optional: true
   synonyms:
   - --backend
+  description: "Keras backend. If not specified will use system\ndefault."
   args: !ChoiceFlagArg
     choices: !!set
-      tensorflow-gpu:
       tensorflow-default:
       tensorflow-cpu:
-  optional: true
+      tensorflow-gpu:
 - !Flag
-  description: "Number of GPUs to attempt to parallelize across.\nRequires running\
-    \ in parallel."
+  optional: true
   synonyms:
   - --gpus
+  description: "Number of GPUs to attempt to parallelize across.\nRequires running\
+    \ in parallel."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Maximum number of workers to assign to a GPU.\nAdditional tasks will\
-    \ run on CPU."
+  optional: true
   synonyms:
   - --max-workers-per-gpu
+  description: "Maximum number of workers to assign to a GPU.\nAdditional tasks will\
+    \ run on CPU."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Restart workers after N tasks. Workaround for\ntensorflow memory leaks.\
-    \ Requires Python >=3.2."
+  optional: true
   synonyms:
   - --max-tasks-per-worker
+  description: "Restart workers after N tasks. Workaround for\ntensorflow memory leaks.\
+    \ Requires Python >=3.2."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Write worker stdout and stderr logs to given\ndirectory."
+  optional: true
   synonyms:
   - --worker-log-dir
+  description: "Write worker stdout and stderr logs to given\ndirectory."
   args: !SimpleFlagArg
     name: WORKER_LOG_DIR
+- !Flag
   optional: true
+  synonyms:
+  - --cluster-parallelism
+  - --cluster-submit-command
+  description: 'Default: sh'
+  args: !SimpleFlagArg
+    name: CLUSTER_SUBMIT_COMMAND
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster-results-workdir
+  description: 'Default: ./cluster-workdir'
+  args: !SimpleFlagArg
+    name: CLUSTER_RESULTS_WORKDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --additional-complete-file
+  description: "Additional file to monitor for job completion.\nDefault: STDERR"
+  args: !SimpleFlagArg
+    name: ADDITIONAL_COMPLETE_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster-script-prefix-path
+  - --cluster-max-retries
+  description: "How many times to rerun failing jobs. Default: 3\n"
+  args: !SimpleFlagArg
+    name: CLUSTER_SCRIPT_PREFIX_PATH
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "To show stack trace, run:\nkill -s USR1 234\nusage: \nTrain Class1 pan-allele\
@@ -199,3 +229,4 @@ help_text: "To show stack trace, run:\nkill -s USR1 234\nusage: \nTrain Class1 p
   \                    How many times to rerun failing jobs. Default: 3\n"
 generated_using:
 - --help
+docker_image:

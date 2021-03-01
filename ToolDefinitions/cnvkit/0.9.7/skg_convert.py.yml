@@ -3,85 +3,85 @@ command:
 - skg_convert.py
 positional:
 - !Positional
-  description: 'Input filename. [Default: stdin]'
+  optional: false
   position: 0
   name: FILE
-  optional: false
+  description: 'Input filename. [Default: stdin]'
 named:
 - !Flag
-  description: 'Output filename. [Default: stdout]'
+  optional: true
   synonyms:
   - -o
   - --output
+  description: 'Output filename. [Default: stdout]'
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: 'Input format. [Default: auto-detect]'
+  optional: true
   synonyms:
   - -f
   - --from
+  description: 'Input format. [Default: auto-detect]'
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
-  description: Output format. [Required]
+  optional: true
   synonyms:
   - -t
   - --to
+  description: Output format. [Required]
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
-  description: "Flatten overlapping regions, keeping original\nboundaries. Not recommended\
-    \ with --exons."
+  optional: true
   synonyms:
   - --flatten
+  description: "Flatten overlapping regions, keeping original\nboundaries. Not recommended\
+    \ with --exons."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --merge
   description: "[BASEPAIRS]   Merge overlapping regions with different names.\nRecommended\
     \ with --exons. Optional argument value is\nthe number of overlapping bases between\
     \ two regions to\ntrigger a merge. [Default: 1]"
-  synonyms:
-  - --merge
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: GFF attributes tag to use for gene names.
+  optional: true
   synonyms:
   - --gff-tag
+  description: GFF attributes tag to use for gene names.
   args: !SimpleFlagArg
     name: GFF_TAG
-  optional: true
 - !Flag
-  description: "GFF record type (column 3) to use exclusively. E.g.\nfor GFF3 files,\
-    \ 'exon', 'gene', and other SOFA terms\ncan be used here."
+  optional: true
   synonyms:
   - --gff-type
+  description: "GFF record type (column 3) to use exclusively. E.g.\nfor GFF3 files,\
+    \ 'exon', 'gene', and other SOFA terms\ncan be used here."
   args: !SimpleFlagArg
     name: GFF_TYPE
-  optional: true
 - !Flag
-  description: "Emit each exon instead of the whole gene regions.\n"
+  optional: true
   synonyms:
   - --refflat-type
+  description: "Emit each exon instead of the whole gene regions.\n"
   args: !ChoiceFlagArg
     choices: !!set
-      exon:
       cds:
+      exon:
       transcript:
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: skg_convert.py [-h] [-o FILE] [-f FORMAT] [-t FORMAT] [--flatten]\n\
@@ -106,3 +106,4 @@ help_text: "usage: skg_convert.py [-h] [-o FILE] [-f FORMAT] [-t FORMAT] [--flat
   \ gene regions.\n"
 generated_using:
 - --help
+docker_image:

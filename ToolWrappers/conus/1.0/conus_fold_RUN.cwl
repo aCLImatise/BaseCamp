@@ -3,7 +3,7 @@ id: conus_fold_RUN.cwl
 inputs:
 - id: in_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -options
 - id: in_conus_fold
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - conus_fold

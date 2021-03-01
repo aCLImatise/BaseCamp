@@ -2,7 +2,6 @@ version 1.0
 
 task AMASpyReplicate {
   input {
-    Array[String] i
     String? replicateargs__repaln
     File? out_format
     Boolean? check_align
@@ -14,7 +13,6 @@ task AMASpyReplicate {
   command <<<
     AMAS_py replicate \
       ~{check} \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(replicateargs__repaln) then ("-r " +  '"' + replicateargs__repaln + '"') else ""} \
       ~{if defined(out_format) then ("--out-format " +  '"' + out_format + '"') else ""} \
       ~{if (check_align) then "--check-align" else ""} \
@@ -22,8 +20,10 @@ task AMASpyReplicate {
       ~{if defined(in_format) then ("--in-format " +  '"' + in_format + '"') else ""} \
       ~{if defined(data_type) then ("--data-type " +  '"' + data_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    i: "{fasta,phylip,nexus,phylip-int,nexus-int} -d {aa,dna}"
     replicateargs__repaln: "REPLICATE_ARGS, --rep-aln REPLICATE_ARGS REPLICATE_ARGS\\nCreate replicate data sets for phylogenetic jackknife\\n[replicates, no alignments for each replicate]"
     out_format: "File format for the output alignment. Default: fasta"
     check_align: "Check if input sequences are aligned. Default: no"

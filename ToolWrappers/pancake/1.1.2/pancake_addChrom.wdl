@@ -22,6 +22,9 @@ task PancakeAddChrom {
       ~{if defined(min_len) then ("--min_len " +  '"' + min_len + '"') else ""} \
       ~{if (no_self_alignments) then "--no_self_alignments" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_file: "Name of PanCake Data Object File (required)"
     sequences: "fasta or multiple fasta file providing input\\nchromosome sequences"

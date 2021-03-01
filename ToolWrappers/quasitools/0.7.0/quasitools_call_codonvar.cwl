@@ -2,9 +2,8 @@ class: CommandLineTool
 id: quasitools_call_codonvar.cwl
 inputs:
 - id: in_error_rate
-  doc: "estimated sequencing error rate.\n-o, --output FILENAME\n--help          \
-    \        Show this message and exit.\n"
-  type: File
+  doc: estimated sequencing error rate.
+  type: double?
   inputBinding:
     prefix: --error_rate
 - id: in_bam
@@ -31,12 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_error_rate
-  doc: "estimated sequencing error rate.\n-o, --output FILENAME\n--help          \
-    \        Show this message and exit.\n"
-  type: File
-  outputBinding:
-    glob: $(inputs.in_error_rate)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - quasitools

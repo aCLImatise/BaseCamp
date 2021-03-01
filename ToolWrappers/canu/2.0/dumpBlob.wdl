@@ -8,6 +8,9 @@ task DumpBlob {
     dumpBlob \
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     b: ""
   }

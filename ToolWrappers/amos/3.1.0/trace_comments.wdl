@@ -8,6 +8,9 @@ task TraceComments {
     trace_comments \
       ~{get_comment}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     get_comment: "dir"
   }

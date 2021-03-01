@@ -8,6 +8,9 @@ task PlanemoShareTest {
     planemo share_test \
       ~{file_path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_path: ""
   }

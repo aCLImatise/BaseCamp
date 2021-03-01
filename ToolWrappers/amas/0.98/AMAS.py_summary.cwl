@@ -3,18 +3,18 @@ id: AMAS.py_summary.cwl
 inputs:
 - id: in_summary_out
   doc: "File name for the alignment summary. Default:\n'summary.txt'"
-  type: File
+  type: File?
   inputBinding:
     prefix: --summary-out
 - id: in_by_tax_on
   doc: "In addition to alignment summary, write by\nsequence/taxon summaries. Default:\
     \ Don't write"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --by-taxon
 - id: in_check_align
   doc: 'Check if input sequences are aligned. Default: no'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --check-align
 - id: in_in_files
@@ -25,17 +25,17 @@ inputs:
     prefix: --in-files
 - id: in_in_format
   doc: The format of input alignment
-  type: string
+  type: string?
   inputBinding:
     prefix: --in-format
 - id: in_data_type
   doc: "Type of data\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --data-type
 - id: in_c
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -c
 - id: in_check
@@ -47,6 +47,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - AMAS.py

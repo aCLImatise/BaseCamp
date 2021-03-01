@@ -2,7 +2,7 @@ version 1.0
 
 task Hivnetworkcsv {
   input {
-    File? input_csv_file_inferred
+    File? input_csv_file_omitted
     File? uds
     File? dot
     File? cluster
@@ -12,7 +12,7 @@ task Hivnetworkcsv {
     Int? format
     Int? exclude
     File? resistance
-    String? parser__parser
+    String? parser_parser_pattern
     File? attributes
     Boolean? compact_json
     Boolean? json
@@ -40,7 +40,7 @@ task Hivnetworkcsv {
   }
   command <<<
     hivnetworkcsv \
-      ~{if defined(input_csv_file_inferred) then ("--input " +  '"' + input_csv_file_inferred + '"') else ""} \
+      ~{if defined(input_csv_file_omitted) then ("--input " +  '"' + input_csv_file_omitted + '"') else ""} \
       ~{if defined(uds) then ("--uds " +  '"' + uds + '"') else ""} \
       ~{if defined(dot) then ("--dot " +  '"' + dot + '"') else ""} \
       ~{if defined(cluster) then ("--cluster " +  '"' + cluster + '"') else ""} \
@@ -50,7 +50,7 @@ task Hivnetworkcsv {
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
       ~{if defined(resistance) then ("--resistance " +  '"' + resistance + '"') else ""} \
-      ~{if defined(parser__parser) then ("-p " +  '"' + parser__parser + '"') else ""} \
+      ~{if defined(parser_parser_pattern) then ("-p " +  '"' + parser_parser_pattern + '"') else ""} \
       ~{if defined(attributes) then ("--attributes " +  '"' + attributes + '"') else ""} \
       ~{if (compact_json) then "--compact-json" else ""} \
       ~{if (json) then "--json" else ""} \
@@ -76,8 +76,11 @@ task Hivnetworkcsv {
       ~{if defined(import_attributes) then ("--import-attributes " +  '"' + import_attributes + '"') else ""} \
       ~{if defined(sub_cluster_annotation) then ("--subcluster-annotation " +  '"' + sub_cluster_annotation + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    input_csv_file_inferred: "Input CSV file with inferred genetic links (or stdin\\nif omitted). Can be specified multiple times for\\nmultiple input files (e.g. to include a reference\\ndatabase). Must be a CSV file with three columns:\\nID1,ID2,distance."
+    input_csv_file_omitted: "Input CSV file with inferred genetic links (or stdin\\nif omitted). Can be specified multiple times for\\nmultiple input files (e.g. to include a reference\\ndatabase). Must be a CSV file with three columns:\\nID1,ID2,distance."
     uds: "Input CSV file with UDS data. Must be a CSV file with\\nthree columns: ID1,ID2,distance."
     dot: "Output DOT file for GraphViz (or stdout if omitted)"
     cluster: "Output a CSV file with cluster assignments for each\\nsequence"
@@ -87,7 +90,7 @@ task Hivnetworkcsv {
     format: "Sequence ID format. One of AEH (ID | sample_date |\\notherfiels default), LANL (e.g. B_HXB2_K03455_1983 :\\nsubtype_country_id_year -- could have more fields),\\nregexp (match a regular expression, use the first\\ngroup as the ID), or plain (treat as sequence ID only,\\nno meta); one per input argument if specified"
     exclude: "Exclude any sequence which belongs to a cluster\\ncontaining a \\\"reference\\\" strain, defined by the year\\nof isolation. The value of this argument is an integer\\nyear (e.g. 1984) so that any sequence isolated in or\\nbefore that year (e.g. <=1983) is considered to be a\\nlab strain. This option makes sense for LANL or AEH\\ndata."
     resistance: "Load a JSON file with resistance annotation by\\nsequence"
-    parser__parser: "PARSER, --parser PARSER PARSER\\nThe reg.exp pattern to split up sequence ids; only\\nused if format is regexp; format is INDEX EXPRESSION\\n(consumes two arguments)"
+    parser_parser_pattern: "PARSER, --parser PARSER PARSER\\nThe reg.exp pattern to split up sequence ids; only\\nused if format is regexp; format is INDEX EXPRESSION\\n(consumes two arguments)"
     attributes: "Load a CSV file with optional node attributes"
     compact_json: "Output the network report as a compact JSON object"
     json: "Output the network report as a JSON object"

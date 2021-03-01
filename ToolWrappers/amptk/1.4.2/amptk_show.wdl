@@ -18,6 +18,9 @@ task AmptkShow {
       ~{if (length) then "--length" else ""} \
       ~{if (out) then "--out" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fastq_file: "Input FASTQ file (.demux.fq)"
     quality_trim: "Quality trim reads"

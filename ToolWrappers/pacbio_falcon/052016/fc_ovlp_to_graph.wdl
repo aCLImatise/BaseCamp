@@ -14,6 +14,9 @@ task FcOvlpToGraph {
       ~{if (lfc) then "--lfc" else ""} \
       ~{if defined(min_idt) then ("--min_idt " +  '"' + min_idt + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_len: "minimum length of the reads to be considered for"
     lfc: "use local flow constraint method rather than best overlap\\nmethod to resolve knots in string graph\\n"

@@ -3,22 +3,22 @@ id: prodigal_them..cwl
 inputs:
 - id: in_f
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_d
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -d
 - id: in_c
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_a
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -a
 - id: in_prodigal
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - prodigal

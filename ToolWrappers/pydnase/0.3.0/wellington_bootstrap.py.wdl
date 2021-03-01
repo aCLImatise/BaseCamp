@@ -28,6 +28,9 @@ task WellingtonBootstrappy {
       ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""} \
       ~{if (atacseq_mode_default) then "-A" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     footprint_sizes: "Range of footprint sizes to try in format\\n\\\"from,to,step\\\" (default: 11,26,2)"
     fdr_cut_off: "Detect footprints using the FDR selection method at a\\nspecific FDR (default: 0.01)"

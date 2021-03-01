@@ -8,6 +8,9 @@ task MspMacs {
     msp macs \
       ~{history_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     history_file: "The msprime history file in HDF5 format"
   }

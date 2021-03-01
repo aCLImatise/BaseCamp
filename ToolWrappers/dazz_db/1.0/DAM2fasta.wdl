@@ -8,6 +8,9 @@ task DAM2fasta {
     DAM2fasta \
       ~{if (vu) then "-vU" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vu: ""
   }

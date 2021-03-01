@@ -3,29 +3,29 @@ id: combine_umaps.py.cwl
 inputs:
 - id: in_out_dir
   doc: "If not specified, a subfolder will be created in\nkmer_dir names as\nglobalmap_k<smallestkmer>tok<largestkmer>"
-  type: string
+  type: string?
   inputBinding:
     prefix: -out_dir
 - id: in_job_id
   doc: 1-based index for finding chromosome from
-  type: long
+  type: long?
   inputBinding:
     prefix: -job_id
 - id: in_chr_size_path_dot
   doc: not specified, it will user -var_id
-  type: string
+  type: string?
   inputBinding:
     prefix: -chrsize_path.
 - id: in_var_id
   doc: "If -job_id is not specified, job_id will be inferred\nfrom environmental variable\
     \ -var_id."
-  type: string
+  type: string?
   inputBinding:
     prefix: -var_id
 - id: in_km_er_dir_two
   doc: "Specify to merge kmers of two different directories by\nlogical operation\
     \ AND.\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: -kmer_dir_2
 - id: in_km_er_dir
@@ -43,6 +43,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - combine_umaps.py

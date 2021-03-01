@@ -70,6 +70,9 @@ task MauveStatic {
       ~{if defined(alignment_output_format) then ("--alignment-output-format " +  '"' + alignment_output_format + '"') else ""} \
       ~{if defined(output_alignment) then ("--output-alignment " +  '"' + output_alignment + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_name: "Output file name.  Prints to screen by default"
     mums: "MUMs only, do not attempt to determine locally collinear blocks (LCBs)"

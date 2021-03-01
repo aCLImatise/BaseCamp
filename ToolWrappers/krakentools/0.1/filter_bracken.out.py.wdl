@@ -14,6 +14,9 @@ task FilterBrackenoutpy {
       ~{if (include) then "--include" else ""} \
       ~{if (exclude) then "--exclude" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Input bracken OUTPUT file. [NOT the report file]"
     output_file: "Output bracken OUTPUT file."

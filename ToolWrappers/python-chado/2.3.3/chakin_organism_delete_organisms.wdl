@@ -20,6 +20,9 @@ task ChakinOrganismDeleteOrganisms {
       ~{if defined(abbr) then ("--abbr " +  '"' + abbr + '"') else ""} \
       ~{if defined(comment) then ("--comment " +  '"' + comment + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     organism_id: "organism_id filter"
     genus: "genus filter"

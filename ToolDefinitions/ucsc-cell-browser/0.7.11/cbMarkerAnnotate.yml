@@ -3,78 +3,91 @@ command:
 - cbMarkerAnnotate
 positional:
 - !Positional
-  description: --hgnc=HGNC           location of HGNC file, default
+  optional: false
   position: 0
-  name: geneAnnot/HPRD_molecular_class_081914.txt
-  optional: false
-- !Positional
-  description: --sfari=SFARI         location of SFARI file, default geneAnnot/SFARI-
-  position: 1
-  name: geneAnnot/hgnc_complete_set_05Dec17.txt
-  optional: false
-- !Positional
-  description: --omim=OMIM           location of OMIM file, default geneAnnot/mim2gene.txt
-  position: 2
   name: Gene_genes_export06-12-2017.csv
-  optional: false
-- !Positional
-  description: --hpo=HPO             location of HPO gene/disease/phenotype file,
-    default
-  position: 3
-  name: geneAnnot/Census_allWed_Dec__6_18_35_54_2017.tsv
-  optional: false
-- !Positional
-  description: --lmd=LMD             location of BrainSpan LMD file, default
-  position: 4
-  name: geneAnnot/hpo_frequent_7Dec17.txt
-  optional: false
-- !Positional
-  description: --mgiOrtho=MGIORTHO   location of MGI Homologene file, default
-  position: 5
-  name: geneAnnot/brainspan_genes.csv
-  optional: false
-- !Positional
-  description: --eurexpress=EUREXPRESS
-  position: 6
-  name: geneAnnot/mgi_HGNC_homologene_8Dec17.txt
-  optional: false
-- !Positional
-  description: --brainspanMouseDev=BRAINSPANMOUSEDEV
-  position: 0
-  name: geneAnnot/eurexpress_7Dec17.txt
-  optional: false
+  description: --omim=OMIM           location of OMIM file, default geneAnnot/mim2gene.txt
 named:
 - !Flag
-  description: show debug messages
+  optional: true
   synonyms:
   - -d
   - --debug
+  description: show debug messages
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: location of HPRD file, default
+  optional: true
   synonyms:
   - --hprd
+  description: "location of HPRD file, default\ngeneAnnot/HPRD_molecular_class_081914.txt"
   args: !SimpleFlagArg
     name: HPRD
-  optional: true
 - !Flag
-  description: location of COSMIC Census file, default
+  optional: true
+  synonyms:
+  - --hgnc
+  description: "location of HGNC file, default\ngeneAnnot/hgnc_complete_set_05Dec17.txt"
+  args: !SimpleFlagArg
+    name: HGNC
+- !Flag
+  optional: true
+  synonyms:
+  - --sfari
+  description: location of SFARI file, default geneAnnot/SFARI-
+  args: !SimpleFlagArg
+    name: SFARI
+- !Flag
+  optional: true
   synonyms:
   - --cosmic
+  description: "location of COSMIC Census file, default\ngeneAnnot/Census_allWed_Dec__6_18_35_54_2017.tsv"
   args: !SimpleFlagArg
     name: COSMIC
+- !Flag
   optional: true
+  synonyms:
+  - --hpo
+  description: "location of HPO gene/disease/phenotype file, default\ngeneAnnot/hpo_frequent_7Dec17.txt"
+  args: !SimpleFlagArg
+    name: HPO
+- !Flag
+  optional: true
+  synonyms:
+  - --lmd
+  description: "location of BrainSpan LMD file, default\ngeneAnnot/brainspan_genes.csv"
+  args: !SimpleFlagArg
+    name: LMD
+- !Flag
+  optional: true
+  synonyms:
+  - --mgiOrtho
+  description: "location of MGI Homologene file, default\ngeneAnnot/mgi_HGNC_homologene_8Dec17.txt"
+  args: !SimpleFlagArg
+    name: MGIORTHO
+- !Flag
+  optional: true
+  synonyms:
+  - --eurexpress
+  description: "location of Eurexpress file, default\ngeneAnnot/eurexpress_7Dec17.txt"
+  args: !SimpleFlagArg
+    name: EUREXPRESS
+- !Flag
+  optional: true
+  synonyms:
+  - --brainspanMouseDev
+  description: "location of brainspan Mouse Development ISH file,\ndefault geneAnnot/brainspanMouse_9Dec17.txt\n"
+  args: !SimpleFlagArg
+    name: BRAINSPANMOUSEDEV
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: cbMarkerAnnotate [options] inFname outFname - annotate a tab-sep\
@@ -101,3 +114,4 @@ help_text: "Usage: cbMarkerAnnotate [options] inFname outFname - annotate a tab-
   \                     default geneAnnot/brainspanMouse_9Dec17.txt\n"
 generated_using:
 - --help
+docker_image:

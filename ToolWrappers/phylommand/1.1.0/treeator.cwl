@@ -2,27 +2,27 @@ class: CommandLineTool
 id: treeator.cwl
 inputs:
 - id: in_alphabet_file
-  doc: "/ -a [file/type] give file with character alphabet, or dna,\nprotein, or binary\
+  doc: "[file/type] give file with character alphabet, or dna,\nprotein, or binary\
     \ for dna, amino acid,\nrespectively binary (0 1) alphabets (default:\ndna)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --alphabet_file
 - id: in_data_file
-  doc: / -d [file]          give the data file.
-  type: boolean
+  doc: '[file]          give the data file.'
+  type: boolean?
   inputBinding:
     prefix: --data_file
 - id: in_fixed
-  doc: "/ -e [number/s]          give parameter to fix. First parameter is\nindexed\
-    \ 0. Several parameters can be given in a\ncomma separated string, e.g. -e 0,2,3."
-  type: boolean
+  doc: "[number/s]          give parameter to fix. First parameter is\nindexed 0.\
+    \ Several parameters can be given in a\ncomma separated string, e.g. -e 0,2,3."
+  type: boolean?
   inputBinding:
     prefix: --fixed
 - id: in_file
-  doc: "/ -f [file]               give data file name, or if data file name\nalready\
-    \ given, then tree file name. If nexus\nformat and no tree file name is given,\
-    \ tree is\nassumed to be in same file as data."
-  type: boolean
+  doc: "[file]               give data file name, or if data file name\nalready given,\
+    \ then tree file name. If nexus\nformat and no tree file name is given, tree is\n\
+    assumed to be in same file as data."
+  type: boolean?
   inputBinding:
     prefix: --file
 - id: in_format
@@ -33,90 +33,89 @@ inputs:
     \ file format, and newick\nis the default tree file format (unless\ncharacter\
     \ file is set to nexus, then nexus is\nalso default for tree file, e.g. --format\n\
     nexus)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --format
 - id: in_get_state_at_nodes
   doc: "will give the states at internal nodes as\ncomments (readable in FigTree)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --get_state_at_nodes
 - id: in_likelihood
-  doc: / -l                calculate likelihood for data given tree.
-  type: boolean
+  doc: calculate likelihood for data given tree.
+  type: boolean?
   inputBinding:
     prefix: --likelihood
 - id: in_model
-  doc: "/ -m [number/s]          give the model by numbering the rate parameters\n\
-    for different transition, e.g. -m 0,1,0,2,1,2.\nThe order is by row, i.e. from\
-    \ parameter 0 to\nparameter 1 first then, 0 to 2, and so on to\nall other parameters,\
-    \ then 1 to 0, and so\nforth."
-  type: boolean
+  doc: "[number/s]          give the model by numbering the rate parameters\nfor different\
+    \ transition, e.g. -m 0,1,0,2,1,2.\nThe order is by row, i.e. from parameter 0\
+    \ to\nparameter 1 first then, 0 to 2, and so on to\nall other parameters, then\
+    \ 1 to 0, and so\nforth."
+  type: boolean?
   inputBinding:
     prefix: --model
 - id: in_neighbour_joining
-  doc: "/ -n         compute neighbour joining tree for given data.\nThe data should\
-    \ be  a left triangular\nsimilarity matrix."
-  type: boolean
+  doc: "compute neighbour joining tree for given data.\nThe data should be  a left\
+    \ triangular\nsimilarity matrix."
+  type: boolean?
   inputBinding:
     prefix: --neighbour_joining
 - id: in_no_branch_length
-  doc: "/ -0          do not print branch lengths and do not\ncalculate branch lengths\
-    \ for parsimony trees."
-  type: boolean
+  doc: "do not print branch lengths and do not\ncalculate branch lengths for parsimony\
+    \ trees."
+  type: boolean?
   inputBinding:
     prefix: --no_branch_length
 - id: in_no_label
-  doc: "/ -L                  will tell treeator that there are no taxon\nlabels in\
-    \ the similarity matrix."
-  type: boolean
+  doc: "will tell treeator that there are no taxon\nlabels in the similarity matrix."
+  type: boolean?
   inputBinding:
     prefix: --no_label
 - id: in_no_optim
-  doc: "/ -N                  calculate likelihood for given parameters. No\noptimization."
-  type: boolean
+  doc: "calculate likelihood for given parameters. No\noptimization."
+  type: boolean?
   inputBinding:
     prefix: --no_optim
 - id: in_output
   doc: "[newick/nexus]          give tree format for output, nexus (nex or x\nfor\
     \ short) or newick (new or w for short), e.g\n--output x. (default w)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --output
 - id: in_parameters
-  doc: "/ -P [values]       give corresponding parameter values for\nparameters. If\
-    \ optimizing these will be\nstarting values, e.g. -P 0.1,0.01,0.05."
-  type: boolean
+  doc: "[values]       give corresponding parameter values for\nparameters. If optimizing\
+    \ these will be\nstarting values, e.g. -P 0.1,0.01,0.05."
+  type: boolean?
   inputBinding:
     prefix: --parameters
 - id: in_parsimony
-  doc: "/ -p                 calculate parsimony score for given tree and\ndata."
-  type: boolean
+  doc: "calculate parsimony score for given tree and\ndata."
+  type: boolean?
   inputBinding:
     prefix: --parsimony
 - id: in_random
-  doc: / -r                    do stepwise addition in random order.
-  type: boolean
+  doc: do stepwise addition in random order.
+  type: boolean?
   inputBinding:
     prefix: --random
 - id: in_tree_file
-  doc: / -t [file]          give tree file name.
-  type: boolean
+  doc: '[file]          give tree file name.'
+  type: boolean?
   inputBinding:
     prefix: --tree_file
 - id: in_step_wise
-  doc: / -s                 do parsimony stepwise addition.
-  type: boolean
+  doc: do parsimony stepwise addition.
+  type: boolean?
   inputBinding:
     prefix: --step_wise
 - id: in_verbose
-  doc: / -v                   get additional output.
-  type: boolean
+  doc: get additional output.
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_arguments
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 - id: in_data_file_dot_txt
@@ -128,6 +127,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - treeator

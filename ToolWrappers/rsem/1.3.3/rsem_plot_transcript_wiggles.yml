@@ -3,62 +3,63 @@ command:
 - rsem-plot-transcript-wiggles
 positional:
 - !Positional
-  description: The name of the sample analyzed.
+  optional: false
   position: 0
   name: sample_name
-  optional: false
+  description: The name of the sample analyzed.
 - !Positional
-  description: "A list of transcript ids or gene ids. But it cannot be a mixture of\n\
-    transcript & gene ids. Each id occupies one line without extra\nspaces."
+  optional: false
   position: 1
   name: input_list
-  optional: false
+  description: "A list of transcript ids or gene ids. But it cannot be a mixture of\n\
+    transcript & gene ids. Each id occupies one line without extra\nspaces."
 named:
 - !Flag
-  description: 'The input-list is a list of gene ids. (Default: off)'
+  optional: true
   synonyms:
   - --gene-list
+  description: 'The input-list is a list of gene ids. (Default: off)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The input-list is a list of transcript ids. This option can only be\n\
-    turned on if allele-specific expression is calculated. (Default:\noff)"
+  optional: true
   synonyms:
   - --transcript-list
+  description: "The input-list is a list of transcript ids. This option can only be\n\
+    turned on if allele-specific expression is calculated. (Default:\noff)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Show the wiggle plots as stacked bar plots. See description section\n\
-    for details. (Default: off)"
+  optional: true
   synonyms:
   - --show-unique
+  description: "Show the wiggle plots as stacked bar plots. See description section\n\
+    for details. (Default: off)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Set the number of threads we can use. (Default: 1)'
+  optional: true
   synonyms:
-  - -p/--num-threads
+  - -p
+  - --num-threads
+  description: 'Set the number of threads we can use. (Default: 1)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Set the maximum allowable memory per thread. <string> represents the\n\
-    memory and accepts suffices 'K/M/G'. (Default: 1G)"
+  optional: true
   synonyms:
   - --memory-per-thread
+  description: "Set the maximum allowable memory per thread. <string> represents the\n\
+    memory and accepts suffices 'K/M/G'. (Default: 1G)"
   args: !SimpleFlagArg
     name: string
-  optional: true
-- !Flag
-  description: Show help information.
-  synonyms:
-  - -h/--help
-  args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show help information.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "NAME\n    rsem-plot-transcript-wiggles - Generate PDF wiggle plots from\
@@ -116,3 +117,4 @@ help_text: "NAME\n    rsem-plot-transcript-wiggles - Generate PDF wiggle plots f
   \ --show-unique mmliver_single_quals gene_ids.txt output.pdf\n\n"
 generated_using:
 - --help
+docker_image:

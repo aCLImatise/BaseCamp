@@ -20,14 +20,17 @@ task Pash2SAM {
       ~{if (sample) then "--sample" else ""} \
       ~{if (center) then "--center" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    pash_mappings: "| -p    pash mappings file"
-    fast_q_file: "| -f    FASTQ file for the mapped reads. When using .fa and .qual file, use our utility faqualToFastq.rb"
-    references_equ_nces: "| -r    file containing the reference sequences and their lengths"
-    bisulfite_seq_flag: "| -B    converting the mappings of a bisulfite sequencing run"
-    sam_file: "| -S    output SAM file"
-    sample: "| -s    sample name"
-    center: "| -C    center name"
+    pash_mappings: "pash mappings file"
+    fast_q_file: "FASTQ file for the mapped reads. When using .fa and .qual file, use our utility faqualToFastq.rb"
+    references_equ_nces: "file containing the reference sequences and their lengths"
+    bisulfite_seq_flag: "converting the mappings of a bisulfite sequencing run"
+    sam_file: "output SAM file"
+    sample: "sample name"
+    center: "center name"
   }
   output {
     File out_stdout = stdout()

@@ -4,12 +4,12 @@ inputs:
 - id: in_dir
   doc: "Destination directory for installation (defaults to gmapdb\ndirectory specified\
     \ at configure time)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --dir
 - id: in_genome_db
   doc: Genome name (required)
-  type: string
+  type: string?
   inputBinding:
     prefix: --genomedb
 - id: in_names
@@ -28,17 +28,17 @@ inputs:
     \ same as column 1).  The option of a blank\ncolumn 2 is allowed only when specifying\
     \ --sort=names,\nbecause otherwise, the program cannot distinguish between a\n\
     1-column and 2-column names file."
-  type: File
+  type: File?
   inputBinding:
     prefix: --names
 - id: in_km_er
   doc: 'k-mer value for genomic index (allowed: 15 or less, default is 15)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --kmer
 - id: in_sampling_interval_genomoe
   doc: 'sampling interval for genomoe (allowed: 1-3, default 3)'
-  type: long
+  type: long?
   inputBinding:
     prefix: -q
 - id: in_sort
@@ -47,32 +47,32 @@ inputs:
     \ 1)\nnumeric-alpha - chr1, chr1U, chr2, chrM, chrU, chrX, chrY\nchrom - chr1,\
     \ chr2, chrM, chrX, chrY, chr1U, chrU\nnames - sort chromosomes based on file\
     \ provided to --names flag"
-  type: File
+  type: File?
   inputBinding:
     prefix: --sort
 - id: in_gunzip
   doc: Files are gzipped, so need to gunzip each file first
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gunzip
 - id: in_fast_a_pipe
   doc: Interpret argument as a command, instead of a list of FASTA files
-  type: string
+  type: string?
   inputBinding:
     prefix: --fasta-pipe
 - id: in_fast_q
   doc: Files are in FASTQ format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fastq
 - id: in_rev_comp
   doc: Reverse complement all contigs
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --revcomp
-- id: in_wait_sleep_seconds
+- id: in_sleep_many_seconds
   doc: Wait (sleep) this many seconds after each step (default 2)
-  type: long
+  type: long?
   inputBinding:
     prefix: -w
 - id: in_circular
@@ -80,50 +80,50 @@ inputs:
     \ or a filename containing circular chromosomes,\none per line).  If you use the\
     \ --names feature, then you\nshould use the original name of the chromosome, not\
     \ the\nsubstitute name, for this option."
-  type: File
+  type: File?
   inputBinding:
     prefix: --circular
 - id: in_alt_scaffold
   doc: "File with alt scaffold info, listing alternate scaffolds,\none per line, tab-delimited,\
     \ with the following fields:\n(1) alt_scaf_acc, (2) parent_name, (3) orientation,\n\
     (4) alt_scaf_start, (5) alt_scaf_stop, (6) parent_start, (7) parent_end."
-  type: File
+  type: File?
   inputBinding:
     prefix: --altscaffold
 - id: in_n_messages
   doc: Maximum number of messages (warnings, contig reports) to report (default 50)
-  type: long
+  type: long?
   inputBinding:
     prefix: --nmessages
 - id: in_md_flag
   doc: "Use MD file from NCBI for mapping contigs to\nchromosomal coordinates"
-  type: File
+  type: File?
   inputBinding:
     prefix: --mdflag
 - id: in_contigs_are_mapped
   doc: "Find a chromosomal region in each FASTA header line.\nUseful for contigs that\
     \ have been mapped\nto chromosomal coordinates.  Ignored if the --mdflag is provided."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --contigs-are-mapped
 - id: in_transcriptome_db
   doc: Transcriptome name
-  type: string
+  type: string?
   inputBinding:
     prefix: --transcriptomedb
 - id: in_transcripts
   doc: FASTA file containing transcripts (required if specifying
-  type: File
+  type: File?
   inputBinding:
     prefix: --transcripts
 - id: in_n_threads
   doc: "Number of threads for GMAP alignment of transcripts to genome\n(default 8)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --nthreads
 - id: in_options_dot_dot_dot
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 - id: in_genome_fast_a_files
@@ -135,6 +135,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gmap_build

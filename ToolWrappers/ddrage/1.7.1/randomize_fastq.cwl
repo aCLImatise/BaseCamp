@@ -3,12 +3,12 @@ id: randomize_fastq.cwl
 inputs:
 - id: in_force
   doc: overwrite existing output file(s)
-  type: File
+  type: File?
   inputBinding:
     prefix: --force
 - id: in_buffer_size
   doc: "size of output buffer in bytes [128 MB]. Not used if\nwriting gzipped files.\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --buffersize
 - id: in_fast_q
@@ -26,9 +26,10 @@ outputs:
   type: stdout
 - id: out_force
   doc: overwrite existing output file(s)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_force)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - randomize_fastq

@@ -28,6 +28,9 @@ task SCNICAnalysispyBetween {
       ~{if defined(procs) then ("--procs " +  '"' + procs + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     table_one: "table to be correlated (default: None)"
     table_two: "second table to be correlated (default: None)"

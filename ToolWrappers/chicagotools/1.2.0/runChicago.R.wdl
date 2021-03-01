@@ -48,6 +48,9 @@ task RunChicagoR {
       ~{if defined(en_max_dist) then ("--en-max-dist " +  '"' + en_max_dist + '"') else ""} \
       ~{if defined(en_sample_no) then ("--en-sample-no " +  '"' + en_sample_no + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_memory: "Should chicagoPipeline print out memory use?"
     rda: "Save the Chicago object as an RDa image (instead of the default RDS)"

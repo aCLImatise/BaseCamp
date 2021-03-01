@@ -8,6 +8,9 @@ task SingularityVersion {
     singularity version \
       ~{singularity}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
   }

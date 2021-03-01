@@ -3,23 +3,24 @@ id: synapse_store_table.cwl
 inputs:
 - id: in_name
   doc: Name of Table
-  type: string
+  type: string?
   inputBinding:
     prefix: --name
 - id: in_parentid
   doc: Synapse ID of project
-  type: long
+  type: long?
   inputBinding:
     prefix: --parentid
 - id: in_csv
   doc: Path to csv
-  type: File
+  type: File?
   inputBinding:
     prefix: --csv
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - synapse

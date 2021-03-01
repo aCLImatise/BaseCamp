@@ -3,17 +3,17 @@ id: bwa_samse.cwl
 inputs:
 - id: in_r
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
 - id: in_f
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_n
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -n
 - id: in_prefix
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bwa

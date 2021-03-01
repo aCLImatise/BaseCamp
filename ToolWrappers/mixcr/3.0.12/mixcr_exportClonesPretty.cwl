@@ -3,53 +3,53 @@ id: mixcr_exportClonesPretty.cwl
 inputs:
 - id: in_verbose
   doc: Verbose warning messages.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_limit_before
   doc: Limit number of alignments before filtering
-  type: long
+  type: long?
   inputBinding:
     prefix: --limitBefore
 - id: in_chains
   doc: Filter export to a specific protein chain gene (e.g. TRA or IGH).
-  type: string
+  type: string?
   inputBinding:
     prefix: --chains
 - id: in_cdr_three_equals
   doc: "Only output clones where CDR3 (not whole clonal sequence) exactly equals to\n\
     given sequence"
-  type: long
+  type: long?
   inputBinding:
     prefix: --cdr3-equals
 - id: in_force_overwrite
   doc: Force overwrite of output file(s).
-  type: File
+  type: File?
   inputBinding:
     prefix: --force-overwrite
 - id: in_clone_ids
   doc: List of clone ids to export
-  type: string
+  type: string?
   inputBinding:
     prefix: --clone-ids
 - id: in_limit
   doc: Limit number of filtered alignments; no more than N alignments will be
-  type: long
+  type: long?
   inputBinding:
     prefix: --limit
 - id: in_clonal_sequence_contains
   doc: Only output clones where target clonal sequence contains sub-sequence.
-  type: string
+  type: string?
   inputBinding:
     prefix: --clonal-sequence-contains
 - id: in_skip
   doc: Number of output alignments to skip
-  type: long
+  type: long?
   inputBinding:
     prefix: --skip
 - id: in_nw
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nw
 - id: in_outputted
@@ -63,9 +63,10 @@ outputs:
   type: stdout
 - id: out_force_overwrite
   doc: Force overwrite of output file(s).
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_force_overwrite)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mixcr

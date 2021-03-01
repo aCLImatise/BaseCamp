@@ -8,6 +8,9 @@ task Ct2rnaml {
     ct2rnaml \
       ~{if (help_dot_ct) then "--help.ct" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help_dot_ct: ": No such file or directory"
   }

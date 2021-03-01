@@ -42,6 +42,9 @@ task HalLodInterpolatepy {
       ~{if defined(min_lod_zero) then ("--minLod0 " +  '"' + min_lod_zero + '"') else ""} \
       ~{if defined(cut_off) then ("--cutOff " +  '"' + cut_off + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_block: "maximum desired number of blocks to ever display at\\nonce. (default: 223)"
     scale: "scaling factor between two successive levels of detail\\n(default: 2.5)"

@@ -38,6 +38,9 @@ task CalcProbpy {
       ~{if (max_alignments) then "--max_alignments" else ""} \
       ~{if (debug_level) then "--debug_level" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename_input_reads: "filename for input reads separated by commas. Must enter\\na fasta OR fastq filename."
     fast_q: "if set, input reads are fastq format (fasta by default)."

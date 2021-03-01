@@ -14,6 +14,9 @@ task LengthNormaliseCountspyOutputCount {
       ~{output_count} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
     length_normalise_counts_do_tpy: ""

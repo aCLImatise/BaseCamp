@@ -10,6 +10,9 @@ task MbsoftclipanalyzerBamFile {
       ~{output_dir} \
       ~{if defined(top_n) then ("--top_n " +  '"' + top_n + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     top_n: ""
     output_dir: ""

@@ -16,6 +16,9 @@ task MmseqsCreatedb {
       ~{if (max_seq_len) then "--max-seq-len" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dont_split_seq_by_len: "true            Dont split sequences by --max-seq-len"
     dont_shuffle: "true            Do not shuffle input database"

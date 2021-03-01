@@ -2,14 +2,17 @@ version 1.0
 
 task FilterGridSeeds {
   input {
-    Boolean? string_fasta_file
+    Boolean? string_target_file
   }
   command <<<
     FilterGridSeeds \
-      ~{if (string_fasta_file) then "-t" else ""}
+      ~{if (string_target_file) then "-t" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    string_fasta_file: "<string> : target fasta file"
+    string_target_file: "<string> : target fasta file"
   }
   output {
     File out_stdout = stdout()

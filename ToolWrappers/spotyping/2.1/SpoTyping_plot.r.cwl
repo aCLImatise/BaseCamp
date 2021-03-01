@@ -3,12 +3,12 @@ id: SpoTyping_plot.r.cwl
 inputs:
 - id: in_more_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -MORE_OPTIONS
 - id: in_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -OPTIONS
 - id: in_nobs
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - SpoTyping_plot.r

@@ -18,6 +18,9 @@ task PysradbSrrtosrp {
       ~{if (expand) then "--expand" else ""} \
       ~{if defined(save_to) then ("--saveto " +  '"' + save_to + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Path to SRAmetadb.sqlite file"
     detailed: "'Output additional columns: [experiment_accession (SRX),\\nsample_accession (SRS), run_alias (GSM_r), experiment_alias\\n(GSM), sample_alias (GSM_), study_alias (GSE)]"

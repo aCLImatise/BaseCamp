@@ -18,6 +18,9 @@ task FfindexApply {
       ~{if (k) then "-k" else ""} \
       ~{if (q) then "-q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: ""
     d: ""

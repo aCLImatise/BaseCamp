@@ -1,67 +1,117 @@
 !Command
 command:
 - sarscov2summary
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: p-value
+  description: -c COORDINATES, --coordinates COORDINATES
+- !Positional
+  optional: false
+  position: 0
+  name: frequency
+  description: -E EVOLUTIONARY_ANNOTATION, --evolutionary_annotation EVOLUTIONARY_ANNOTATION
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -p
-  args: !SimpleFlagArg
-    name: PRIME
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -m
-  args: !SimpleFlagArg
-    name: MEME
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -f
-  args: !SimpleFlagArg
-    name: FEL
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -s
-  args: !SimpleFlagArg
-    name: SLAC
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -o
+  - --output
+  description: Write results here
   args: !SimpleFlagArg
     name: OUTPUT
+- !Flag
   optional: true
+  synonyms:
+  - -s
+  - --slac
+  description: SLAC results file
+  args: !SimpleFlagArg
+    name: SLAC
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fel
+  description: FEL results file
+  args: !SimpleFlagArg
+    name: FEL
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --meme
+  description: MEME results file
+  args: !SimpleFlagArg
+    name: MEME
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --prime
+  description: PRIME results file
+  args: !SimpleFlagArg
+    name: PRIME
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --database
+  description: "Primary database record to extract sequence\ninformation from"
+  args: !SimpleFlagArg
+    name: DATABASE
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --duplicates
+  description: The JSON file recording compressed sequence duplicates
+  args: !SimpleFlagArg
+    name: DUPLICATES
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --MAF
+  description: Also include sites with hapoltype MAF >= this
+  args: !SimpleFlagArg
+    name: MAF
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --evolutionary_fragment
+  description: "Used in conjunction with evolutionary annotation to\ndesignate the\
+    \ fragment to look up"
+  args: !SimpleFlagArg
+    name: EVOLUTIONARY_FRAGMENT
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --mafs
+  description: If provided, write a CSV file with MAF/p-value tables
+  args: !SimpleFlagArg
+    name: MAFS
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --evolutionary_csv
+  description: "If provided, write a CSV file with observed/predicted\nfrequncies\n"
+  args: !SimpleFlagArg
+    name: EVOLUTIONARY_CSV
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-o OUTPUT, --output OUTPUT\nWrite\
-    \ results here\n-s SLAC, --slac SLAC  SLAC results file\n-f FEL, --fel FEL   \
-    \  FEL results file\n-m MEME, --meme MEME  MEME results file\n-p PRIME, --prime\
-    \ PRIME\nPRIME results file\n-P PVALUE, --pvalue PVALUE\np-value\n-c COORDINATES,\
-    \ --coordinates COORDINATES\nAn alignment with reference sequence (assumed to\
-    \ start\nwith NC)\n-D DATABASE, --database DATABASE\nPrimary database record to\
-    \ extract sequence\ninformation from\n-d DUPLICATES, --duplicates DUPLICATES\n\
-    The JSON file recording compressed sequence duplicates\n-M MAF, --MAF MAF    \
-    \ Also include sites with hapoltype MAF >= this\nfrequency\n-E EVOLUTIONARY_ANNOTATION,\
-    \ --evolutionary_annotation EVOLUTIONARY_ANNOTATION\nIf provided use evolutionary\
-    \ likelihood annotation\n-F EVOLUTIONARY_FRAGMENT, --evolutionary_fragment EVOLUTIONARY_FRAGMENT\n\
-    Used in conjunction with evolutionary annotation to\ndesignate the fragment to\
-    \ look up\n-A MAFS, --mafs MAFS  If provided, write a CSV file with MAF/p-value\
-    \ tables\n-V EVOLUTIONARY_CSV, --evolutionary_csv EVOLUTIONARY_CSV\nIf provided,\
-    \ write a CSV file with observed/predicted\nfrequncies\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: sarscov2summary [-h] [-o OUTPUT] -s SLAC -f FEL -m MEME [-p PRIME]\n\
@@ -90,3 +140,4 @@ help_text: "usage: sarscov2summary [-h] [-o OUTPUT] -s SLAC -f FEL -m MEME [-p P
   \ a CSV file with observed/predicted\n                        frequncies\n"
 generated_using:
 - --help
+docker_image:

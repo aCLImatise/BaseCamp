@@ -16,7 +16,7 @@ task EcoPrimers {
     Boolean? required_axon_level
     Boolean? false_positive_quorum
     Boolean? set_ouble_strand
-    Boolean? set_length_default
+    Boolean? set_primer_length
     Boolean? set_ingle_strand
     Boolean? salt_correction_method
     Boolean? salt_contentration_m
@@ -44,7 +44,7 @@ task EcoPrimers {
       ~{if (required_axon_level) then "-t" else ""} \
       ~{if (false_positive_quorum) then "-x" else ""} \
       ~{if (set_ouble_strand) then "-D" else ""} \
-      ~{if (set_length_default) then "-O" else ""} \
+      ~{if (set_primer_length) then "-O" else ""} \
       ~{if (set_ingle_strand) then "-S" else ""} \
       ~{if (salt_correction_method) then "-m" else ""} \
       ~{if (salt_contentration_m) then "-a" else ""} \
@@ -56,6 +56,9 @@ task EcoPrimers {
       ~{if (print_sets_primers) then "-p" else ""} \
       ~{if (ignore_pairs_having) then "-T" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     atabase_match_format: ": [D]atabase : to match the expected format, the database\\nhas to be formated first by the ecoPCRFormat.py program located.\\nin the ecoPCR/tools directory.\\necoPCRFormat.py creates three file types :\\n.sdx : contains the sequences\\n.tdx : contains information concerning the taxonomy\\n.rdx : contains the taxonomy rank\\necoPrimer needs all the file type. As a result, you have to write the\\ndatabase radical without any extension. For example /ecoPrimerDB/fstvert"
     rror_max_error: ": [E]rror : max error allowed by oligonucleotide (0 by default)"
@@ -71,7 +74,7 @@ task EcoPrimers {
     required_axon_level: ": required [t]axon level for results, by default the results are computed at species level"
     false_positive_quorum: ": false positive quorum"
     set_ouble_strand: ": set in [d]ouble strand mode"
-    set_length_default: ": set the primer length (default 18)"
+    set_primer_length: ": set the primer length (default 18)"
     set_ingle_strand: ": Set in [s]ingle strand mode"
     salt_correction_method: ": Salt correction method for Tm computation (SANTALUCIA : 1 or OWCZARZY:2, default=1)"
     salt_contentration_m: ": Salt contentration in M for Tm computation (default 0.05 M)"

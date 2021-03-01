@@ -2,10 +2,10 @@ version 1.0
 
 task TracyAlign {
   input {
-    Boolean? arg_gzipped_fasta
+    Boolean? arg_gzipped_file
     Boolean? arg_peak_ratio
     Boolean? arg_kmer_size
-    Boolean? arg_min_support
+    Boolean? arg_min_kmer
     Boolean? arg_max_indel
     Boolean? arg_gap_open
     Boolean? arg_gap_extension
@@ -21,10 +21,10 @@ task TracyAlign {
   command <<<
     tracy align \
       ~{trace_do_tab_one} \
-      ~{if (arg_gzipped_fasta) then "-r" else ""} \
+      ~{if (arg_gzipped_file) then "-r" else ""} \
       ~{if (arg_peak_ratio) then "-p" else ""} \
       ~{if (arg_kmer_size) then "-k" else ""} \
-      ~{if (arg_min_support) then "-s" else ""} \
+      ~{if (arg_min_kmer) then "-s" else ""} \
       ~{if (arg_max_indel) then "-i" else ""} \
       ~{if (arg_gap_open) then "-g" else ""} \
       ~{if (arg_gap_extension) then "-e" else ""} \
@@ -36,11 +36,14 @@ task TracyAlign {
       ~{if (arg_alignment_line) then "-l" else ""} \
       ~{if (arg_output_prefix) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    arg_gzipped_fasta: "[ --reference ] arg              (gzipped) fasta or wildtype ab1 file"
+    arg_gzipped_file: "[ --reference ] arg              (gzipped) fasta or wildtype ab1 file"
     arg_peak_ratio: "[ --pratio ] arg (=0.330000013)  peak ratio to call base"
     arg_kmer_size: "[ --kmer ] arg (=15)             kmer size to anchor trace"
-    arg_min_support: "[ --support ] arg (=3)           min. kmer support"
+    arg_min_kmer: "[ --support ] arg (=3)           min. kmer support"
     arg_max_indel: "[ --maxindel ] arg (=1000)       max. indel size in Sanger trace"
     arg_gap_open: "[ --gapopen ] arg (=-10)         gap open"
     arg_gap_extension: "[ --gapext ] arg (=-4)           gap extension"

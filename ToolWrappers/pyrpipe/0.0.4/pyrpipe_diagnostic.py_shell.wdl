@@ -16,6 +16,9 @@ task PyrpipeDiagnosticpyShell {
       ~{if (verbose) then "-v" else ""} \
       ~{if defined(filter_programs_provide) then ("-f " +  '"' + filter_programs_provide + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_default_same: "out file default: same as input logfile"
     dump_command_options: "Dump command options [(a)ll,fa(i)l,(p)ass] default: a"

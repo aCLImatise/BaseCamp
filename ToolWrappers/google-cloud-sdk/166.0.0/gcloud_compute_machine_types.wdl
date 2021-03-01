@@ -12,6 +12,9 @@ task GcloudComputeMachinetypes {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     types: "SYNOPSIS"
     describe: "Describe a Google Compute Engine machine type."

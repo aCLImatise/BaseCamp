@@ -58,6 +58,9 @@ task ScriptTreeTestWrapper2py {
       ~{if defined(max_log_file_size) then ("--maxLogFileSize " +  '"' + max_log_file_size + '"') else ""} \
       ~{if defined(command_run_generate) then ("--command " +  '"' + command_run_generate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     logoff: "Turn off logging. (default is CRITICAL)"
     loginfo: "Turn on logging at INFO level. (default is CRITICAL)"

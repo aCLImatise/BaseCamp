@@ -1,15 +1,11 @@
 version 1.0
 
 task LynerChanges {
-  input {
-    Boolean? mode
-  }
   command <<<
-    lyner changes \
-      ~{if (mode) then "--mode" else ""}
+    lyner changes
   >>>
-  parameter_meta {
-    mode: "[likelihood|cdf]"
+  runtime {
+    docker: "None"
   }
   output {
     File out_stdout = stdout()

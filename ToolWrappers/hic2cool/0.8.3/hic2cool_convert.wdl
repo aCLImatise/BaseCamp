@@ -18,6 +18,9 @@ task Hic2coolConvert {
       ~{if (silent) then "--silent" else ""} \
       ~{if (warnings) then "--warnings" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     resolution: "integer bp resolution desired in cooler file. Setting\\nto 0 (default) will use all resolutions. If all\\nresolutions are used, a multi-res .cool file will be\\ncreated, which has a different hdf5 structure. See the\\nREADME for more info"
     nproc: "number of processes to use to parse hic file. default\\nset to 1"

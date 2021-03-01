@@ -16,6 +16,9 @@ task FaToTwoBit {
       ~{if (strip_version) then "-stripVersion" else ""} \
       ~{if (ignored_ups) then "-ignoreDups" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     long: "use 64-bit offsets for index.   Allow for twoBit to contain more than 4Gb of sequence.\\nNOT COMPATIBLE WITH OLDER CODE."
     no_mask: "Ignore lower-case masking in fa file."

@@ -30,6 +30,9 @@ task Snap {
       ~{if defined(xdef) then ("-xdef " +  '"' + xdef + '"') else ""} \
       ~{if defined(name) then ("-name " +  '"' + name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     lc_mask: "treat lowercase as N"
     plus: "predict on plus strand only"

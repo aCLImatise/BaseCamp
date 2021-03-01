@@ -4,118 +4,118 @@ command:
 positional: []
 named:
 - !Flag
-  description: "number of processes used for for tracking reads; 0 for\nmain process\
-    \ only (default: 4)"
+  optional: true
   synonyms:
   - --n-core
+  description: "number of processes used for for tracking reads; 0 for\nmain process\
+    \ only (default: 4)"
   args: !SimpleFlagArg
     name: N_CORE
-  optional: true
 - !Flag
-  description: "Substituted as {base_dir} into default inputs.\n(default: .)"
+  optional: true
   synonyms:
   - --base-dir
+  description: "Substituted as {base_dir} into default inputs.\n(default: .)"
   args: !SimpleFlagArg
     name: BASE_DIR
-  optional: true
 - !Flag
-  description: "Input. Filename of Dazzler DB (default:\n{base_dir}/0-rawreads/build/raw_reads.db)"
+  optional: true
   synonyms:
   - --db-fn
+  description: "Input. Filename of Dazzler DB (default:\n{base_dir}/0-rawreads/build/raw_reads.db)"
   args: !SimpleFlagArg
     name: DB_FN
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --las-fofn-fn
   description: "Inputs. Filename of las filenames, to be processed in\nparallel. Paths\
     \ are relative to location of file.\n(default: {base_dir}/0-rawreads/las-merge-\n\
     combine/las_fofn.json)"
-  synonyms:
-  - --las-fofn-fn
   args: !SimpleFlagArg
     name: LAS_FOFN_FN
-  optional: true
 - !Flag
-  description: "phased-read-file (accumulated from many\nfc_graphs_to_h_tigs.py calls)\
-    \ (default:\n{base_dir}/3-unzip/all_phased_reads)"
+  optional: true
   synonyms:
   - --phased-reads-fn
+  description: "phased-read-file (accumulated from many\nfc_graphs_to_h_tigs.py calls)\
+    \ (default:\n{base_dir}/3-unzip/all_phased_reads)"
   args: !SimpleFlagArg
     name: PHASED_READS_FN
-  optional: true
 - !Flag
-  description: "read_to_contig_map, from fc_get_read_hctg_map\n(default: ./read_to_contig_map)"
+  optional: true
   synonyms:
   - --read-to-contig-map-fn
+  description: "read_to_contig_map, from fc_get_read_hctg_map\n(default: ./read_to_contig_map)"
   args: !SimpleFlagArg
     name: READ_TO_CONTIG_MAP_FN
-  optional: true
 - !Flag
-  description: "rawread_ids file (from a task within\nfc_get_read_ctg_map.py) (default:\n\
-    {base_dir}/3-unzip/reads/dump_rawread_ids/rawread_ids)"
+  optional: true
   synonyms:
   - --rawread-ids-fn
+  description: "rawread_ids file (from a task within\nfc_get_read_ctg_map.py) (default:\n\
+    {base_dir}/3-unzip/reads/dump_rawread_ids/rawread_ids)"
   args: !SimpleFlagArg
     name: RAWREAD_IDS_FN
-  optional: true
 - !Flag
-  description: "Output of stage2 (now replaced by rr_hctg_track2.nim)\n(default: {base_dir}/rawread_to_contigs)"
+  optional: true
   synonyms:
   - --output
+  description: "Output of stage2 (now replaced by rr_hctg_track2.nim)\n(default: {base_dir}/rawread_to_contigs)"
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: "Output of stage1, consumed by stage2. This is a list\nof the (msgpack)\
-    \ partials. (default: ./partials.json)"
+  optional: true
   synonyms:
   - --partials-fn
+  description: "Output of stage1, consumed by stage2. This is a list\nof the (msgpack)\
+    \ partials. (default: ./partials.json)"
   args: !SimpleFlagArg
     name: PARTIALS_FN
-  optional: true
 - !Flag
-  description: 'min length of the reads (default: 2500)'
+  optional: true
   synonyms:
   - --min-len
+  description: 'min length of the reads (default: 2500)'
   args: !SimpleFlagArg
     name: MIN_LEN
-  optional: true
 - !Flag
-  description: "stream from LA4Falcon, instead of slurping all at\nonce; can save\
-    \ memory for large data (default: False)"
+  optional: true
   synonyms:
   - --stream
+  description: "stream from LA4Falcon, instead of slurping all at\nonce; can save\
+    \ memory for large data (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "single-threaded, plus other aids to debugging\n(default: False)"
+  optional: true
   synonyms:
   - --debug
   - -g
+  description: "single-threaded, plus other aids to debugging\n(default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'suppress cmd reporting on stderr (default: False)'
+  optional: true
   synonyms:
   - --silent
+  description: 'suppress cmd reporting on stderr (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'keep best n hits (default: 30)'
+  optional: true
   synonyms:
   - --bestn
+  description: 'keep best n hits (default: 30)'
   args: !SimpleFlagArg
     name: BESTN
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: fc_rr_hctg_track.py [-h] [--n-core N_CORE] [--base-dir BASE_DIR]\n\
@@ -158,3 +158,4 @@ help_text: "usage: fc_rr_hctg_track.py [-h] [--n-core N_CORE] [--base-dir BASE_D
   \ False)\n  --bestn BESTN         keep best n hits (default: 30)\n"
 generated_using:
 - --help
+docker_image:

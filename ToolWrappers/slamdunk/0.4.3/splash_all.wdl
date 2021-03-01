@@ -38,6 +38,9 @@ task SplashAll {
       ~{if defined(replicates) then ("--replicates " +  '"' + replicates + '"') else ""} \
       ~{if (skip_turnover) then "--skip-turnover" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "Reference fasta file"
     bed: "BED file"

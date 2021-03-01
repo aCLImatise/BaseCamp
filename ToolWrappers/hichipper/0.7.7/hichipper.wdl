@@ -60,6 +60,9 @@ task Hichipper {
       ~{if defined(b_gzip_path) then ("--bgzip-path " +  '"' + b_gzip_path + '"') else ""} \
       ~{if defined(r_path) then ("--r-path " +  '"' + r_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "Output directory name; must not be already\\nexisting [Required]  [required]"
     keep_temp_files: "Keep temporary files?"

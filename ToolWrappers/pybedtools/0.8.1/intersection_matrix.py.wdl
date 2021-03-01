@@ -32,6 +32,9 @@ task IntersectionMatrixpy {
       ~{intersections} \
       ~{of}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n: ""
     run: ""

@@ -3,12 +3,12 @@ id: phyluce_align_split_concat_nexus_to_loci.cwl
 inputs:
 - id: in_nexus
   doc: The input NEXUS file
-  type: File
+  type: File?
   inputBinding:
     prefix: --nexus
 - id: in_output_directory_store
   doc: The output directory in which to store alignments
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 - id: in_split_concatenated_file
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_directory_store
   doc: The output directory in which to store alignments
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_directory_store)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phyluce_align_split_concat_nexus_to_loci

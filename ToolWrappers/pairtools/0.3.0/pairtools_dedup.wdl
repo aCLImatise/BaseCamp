@@ -2,7 +2,7 @@ version 1.0
 
 task PairtoolsDedup {
   input {
-    File? output_file_pairs
+    File? output_file_ends
     File? output_dups
     File? output_unmapped
     File? output_stats
@@ -29,7 +29,7 @@ task PairtoolsDedup {
   command <<<
     pairtools dedup \
       ~{pairs_path} \
-      ~{if defined(output_file_pairs) then ("--output " +  '"' + output_file_pairs + '"') else ""} \
+      ~{if defined(output_file_ends) then ("--output " +  '"' + output_file_ends + '"') else ""} \
       ~{if defined(output_dups) then ("--output-dups " +  '"' + output_dups + '"') else ""} \
       ~{if defined(output_unmapped) then ("--output-unmapped " +  '"' + output_unmapped + '"') else ""} \
       ~{if defined(output_stats) then ("--output-stats " +  '"' + output_stats + '"') else ""} \
@@ -52,8 +52,11 @@ task PairtoolsDedup {
       ~{if defined(cmd_in) then ("--cmd-in " +  '"' + cmd_in + '"') else ""} \
       ~{if defined(cmd_out) then ("--cmd-out " +  '"' + cmd_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    output_file_pairs: "output file for pairs after duplicate\\nremoval. If the path ends with .gz or .lz4,\\nthe output is pbgzip-/lz4c-compressed. By\\ndefault, the output is printed into stdout."
+    output_file_ends: "output file for pairs after duplicate\\nremoval. If the path ends with .gz or .lz4,\\nthe output is pbgzip-/lz4c-compressed. By\\ndefault, the output is printed into stdout."
     output_dups: "output file for duplicated pairs.  If the\\npath ends with .gz or .lz4, the output is\\npbgzip-/lz4c-compressed. If the path is the\\nsame as in --output or -, output duplicates\\ntogether  with deduped pairs. By default,\\nduplicates are dropped."
     output_unmapped: "output file for unmapped pairs. If the path\\nends with .gz or .lz4, the output is\\npbgzip-/lz4c-compressed. If the path is the\\nsame as in --output or -, output unmapped\\npairs together with deduped pairs. If the\\npath is the same as --output-dups, output\\nunmapped reads together with dups. By\\ndefault, unmapped pairs are dropped."
     output_stats: "output file for duplicate statistics.  If\\nfile exists, it will be open in the append\\nmode. If the path ends with .gz or .lz4, the\\noutput is pbgzip-/lz4c-compressed. By\\ndefault, statistics are not printed."
@@ -79,7 +82,7 @@ task PairtoolsDedup {
   }
   output {
     File out_stdout = stdout()
-    File out_output_file_pairs = "${in_output_file_pairs}"
+    File out_output_file_ends = "${in_output_file_ends}"
     File out_output_dups = "${in_output_dups}"
     File out_output_unmapped = "${in_output_unmapped}"
     File out_output_stats = "${in_output_stats}"

@@ -4,32 +4,32 @@ inputs:
 - id: in_log_level
   doc: "Write a log file (--log-level=DEBUG for debug mode,\n--log-level=INFO for\
     \ info mode)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --log-level
 - id: in_log
   doc: Path to log file. (accepts stdout)
-  type: File
+  type: File?
   inputBinding:
     prefix: --log
 - id: in_verbose
   doc: Flag for more verbose log output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_input
   doc: Human genome FASTA file
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_bed
   doc: BED file annotation of genes
-  type: File
+  type: File?
   inputBinding:
     prefix: --bed
-- id: in_output_single_fasta
+- id: in_output_single_file
   doc: "Output a single FASTA file with gene sequences\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_extracts_gene_sequences
@@ -41,11 +41,12 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_output_single_fasta
+- id: out_output_single_file
   doc: "Output a single FASTA file with gene sequences\n"
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_output_single_fasta)
+    glob: $(inputs.in_output_single_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - extract_gene_seq

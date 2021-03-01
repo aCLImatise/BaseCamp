@@ -22,6 +22,9 @@ task HLAProfilerplFilter {
       ~{if (kraken_path) then "-kraken_path" else ""} \
       ~{if (threads) then "-threads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q_one: "|fq1             read1 fastq.(required)"
     fast_q_two: "|fq2             read2 fastq.(required)"

@@ -2,8 +2,8 @@ version 1.0
 
 task AC {
   input {
-    Boolean? show_compression_levels
-    Boolean? verbose_mode_information
+    Boolean? show_ac_levels
+    Boolean? verbose_mode_more
     Boolean? display_version_number
     Boolean? force_overwrite_output
     Int? level_compression_lazy
@@ -13,8 +13,8 @@ task AC {
   }
   command <<<
     AC \
-      ~{if (show_compression_levels) then "-s" else ""} \
-      ~{if (verbose_mode_information) then "-v" else ""} \
+      ~{if (show_ac_levels) then "-s" else ""} \
+      ~{if (verbose_mode_more) then "-v" else ""} \
       ~{if (display_version_number) then "-V" else ""} \
       ~{if (force_overwrite_output) then "-f" else ""} \
       ~{if defined(level_compression_lazy) then ("-l " +  '"' + level_compression_lazy + '"') else ""} \
@@ -22,9 +22,12 @@ task AC {
       ~{if (it_creates_file) then "-e" else ""} \
       ~{if defined(reference_file_loaded) then ("-r " +  '"' + reference_file_loaded + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    show_compression_levels: "show AC compression levels,"
-    verbose_mode_information: "verbose mode (more information),"
+    show_ac_levels: "show AC compression levels,"
+    verbose_mode_more: "verbose mode (more information),"
     display_version_number: "display version number,"
     force_overwrite_output: "force overwrite of output,"
     level_compression_lazy: "level of compression [1;7] (lazy -tm setup),"

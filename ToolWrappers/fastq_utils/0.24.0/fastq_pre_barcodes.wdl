@@ -56,6 +56,9 @@ task FastqPreBarcodes {
       ~{if defined(sample_size) then ("--sample_size " +  '"' + sample_size + '"') else ""} \
       ~{if (one_zero_x) then "--10x" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: ":increase level of messages printed to stderr"
     brief: ":decrease level of messages printed to stderr"

@@ -4,171 +4,171 @@ command:
 - stats
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: A.vcf.gz
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: B.vcf.gz
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: allele frequency bins, a list (0.1,0.5,1) or a file (0.1\n0.5\n1)
+  optional: true
   synonyms:
   - --af-bins
+  description: allele frequency bins, a list (0.1,0.5,1) or a file (0.1\n0.5\n1)
   args: !SimpleFlagArg
     name: list
-  optional: true
 - !Flag
-  description: allele frequency tag to use, by default estimated from AN,AC or GT
+  optional: true
   synonyms:
   - --af-tag
+  description: allele frequency tag to use, by default estimated from AN,AC or GT
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: include only 1st allele at multiallelic sites
+  optional: true
   synonyms:
   - '-1'
   - --1st-allele-only
+  description: include only 1st allele at multiallelic sites
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: treat as identical records with <snps|indels|both|all|some|none>, see
-    man page for details [none]
+  optional: true
   synonyms:
   - -c
   - --collapse
+  description: treat as identical records with <snps|indels|both|all|some|none>, see
+    man page for details [none]
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: '<int,int,int>          depth distribution: min,max,bin size [0,500,1]'
+  optional: true
   synonyms:
   - -d
   - --depth
+  description: '<int,int,int>          depth distribution: min,max,bin size [0,500,1]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: exclude sites for which the expression is true (see man page for details)
+  optional: true
   synonyms:
   - -e
   - --exclude
+  description: exclude sites for which the expression is true (see man page for details)
   args: !SimpleFlagArg
     name: expr
-  optional: true
 - !Flag
-  description: tab-delimited file with exons for indel frameshifts (chr,from,to; 1-based,
-    inclusive, bgzip compressed)
+  optional: true
   synonyms:
   - -E
   - --exons
+  description: tab-delimited file with exons for indel frameshifts (chr,from,to; 1-based,
+    inclusive, bgzip compressed)
   args: !SimpleFlagArg
     name: file.gz
-  optional: true
 - !Flag
-  description: require at least one of the listed FILTER strings (e.g. "PASS,.")
+  optional: true
   synonyms:
   - -f
   - --apply-filters
+  description: require at least one of the listed FILTER strings (e.g. "PASS,.")
   args: !SimpleFlagArg
     name: list
-  optional: true
 - !Flag
-  description: faidx indexed reference sequence file to determine INDEL context
+  optional: true
   synonyms:
   - -F
   - --fasta-ref
+  description: faidx indexed reference sequence file to determine INDEL context
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: select sites for which the expression is true (see man page for details)
+  optional: true
   synonyms:
   - -i
   - --include
+  description: select sites for which the expression is true (see man page for details)
   args: !SimpleFlagArg
     name: expr
-  optional: true
 - !Flag
-  description: collect stats for sites with ID separately (known vs novel)
+  optional: true
   synonyms:
   - -I
   - --split-by-ID
+  description: collect stats for sites with ID separately (known vs novel)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: restrict to comma-separated list of regions
+  optional: true
   synonyms:
   - -r
   - --regions
+  description: restrict to comma-separated list of regions
   args: !SimpleFlagArg
     name: region
-  optional: true
 - !Flag
-  description: restrict to regions listed in a file
+  optional: true
   synonyms:
   - -R
   - --regions-file
+  description: restrict to regions listed in a file
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: list of samples for sample stats, "-" to include all samples
+  optional: true
   synonyms:
   - -s
   - --samples
+  description: list of samples for sample stats, "-" to include all samples
   args: !SimpleFlagArg
     name: list
-  optional: true
 - !Flag
-  description: file of samples to include
+  optional: true
   synonyms:
   - -S
   - --samples-file
+  description: file of samples to include
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: similar to -r but streams rather than index-jumps
+  optional: true
   synonyms:
   - -t
   - --targets
+  description: similar to -r but streams rather than index-jumps
   args: !SimpleFlagArg
     name: region
-  optional: true
 - !Flag
-  description: similar to -R but streams rather than index-jumps
+  optional: true
   synonyms:
   - -T
   - --targets-file
+  description: similar to -R but streams rather than index-jumps
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: <TAG[:min:max:n]>  collect Ts/Tv stats for any tag using the given
-    binning [0:1:100]
+  optional: true
   synonyms:
   - -u
   - --user-tstv
+  description: <TAG[:min:max:n]>  collect Ts/Tv stats for any tag using the given
+    binning [0:1:100]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: use multithreading with <int> worker threads [0]
+  optional: true
   synonyms:
   - --threads
+  description: use multithreading with <int> worker threads [0]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: produce verbose per-site and per-sample output
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: produce verbose per-site and per-sample output
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -207,3 +207,4 @@ help_text: "\nAbout:   Parses VCF or BCF and produces stats which can be plotted
   \ verbose per-site and per-sample output\n\n"
 generated_using:
 - --help
+docker_image:

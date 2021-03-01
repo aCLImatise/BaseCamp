@@ -12,6 +12,9 @@ task DASedit {
       ~{if (x) then "-x" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     x: ""
     v: ""

@@ -5,7 +5,7 @@ inputs:
   doc: ": Select the computation mode. Available modes are \"mfe\",\n\"subopt\", \"\
     shapes\", \"probs\", \"sample\", \"cast\", \"eval\",\n\"abstract\", \"outside\"\
     , \"mea\", \"probing\". Omit the ticks on\ninput.\nDefault is \"shapes\"."
-  type: string
+  type: string?
   inputBinding:
     prefix: --mode
 - id: in_absolute_deviation
@@ -14,7 +14,7 @@ inputs:
     \ energy is -10.0 kcal/mol, the\nenergy range is set to 0.0 to -10.0 kcal/mol.\n\
     <float> must be a positive floating point\nnumber.\nConnot be combined with --relativeDeviation.\n\
     Only available in modes: \"subopt\", \"shapes\",\n\"cast\"."
-  type: double
+  type: double?
   inputBinding:
     prefix: --absoluteDeviation
 - id: in_relative_deviation
@@ -24,7 +24,7 @@ inputs:
     <float> must be a positive floating point\nnumber.\nBy default, --relativeDeviation\
     \ is set to 10 %.\nCannot be combined with --absoluteDeviation.\nOnly available\
     \ in modes: \"subopt\", \"shapes\",\n\"cast\"."
-  type: double
+  type: double?
   inputBinding:
     prefix: --relativeDeviation
 - id: in_shape_level
@@ -33,7 +33,7 @@ inputs:
     \ concrete one.\n<int> must be a number between 5 and 1.\nDefault is 5 (the most\
     \ abstract one).\nOnly available in modes: \"mfe\", \"subopt\", \"shapes\",\n\"\
     probs\", \"sample\", \"cast\", \"eval\", \"abstract\", \"mea\",\n\"probing\"."
-  type: long
+  type: long?
   inputBinding:
     prefix: --shapeLevel
 - id: in_low_prob_filter
@@ -43,7 +43,7 @@ inputs:
     filter can have a slight influence on the overall\nresults. To disable this filter,\
     \ use option\n--lowProbFilter 0.\n<float> must be a positive floating point number\n\
     smaller than 1.\nOnly available in mode: \"probs\"."
-  type: double
+  type: double?
   inputBinding:
     prefix: --lowProbFilter
 - id: in_output_low_prob_filter
@@ -53,7 +53,7 @@ inputs:
     \ value. To disable this filter, use\noption --outputLowProbFilter 0.\n<float>\
     \ must be a positive floating point\nnumber smaller than 1.\nOnly available in\
     \ modes: \"probs\", \"sample\"."
-  type: double
+  type: double?
   inputBinding:
     prefix: --outputLowProbFilter
 - id: in_num_samples
@@ -61,14 +61,14 @@ inputs:
     In our experience, 1000 iterations are sufficient to\nachieve reasonable results\
     \ for shapes with high\nprobability. Thus, default is 1000.\nOnly available in\
     \ mode: \"sample\"."
-  type: long
+  type: long?
   inputBinding:
     prefix: --numSamples
 - id: in_show_samples
   doc: ": You can inspect the samples drawn by stochastic\nbacktrace if you turn --showSamples\
     \ on by setting it to\n1.\nDefault is 0 = off.\nOnly available in mode: \"sample\"\
     ."
-  type: long
+  type: long?
   inputBinding:
     prefix: --showSamples
 - id: in_window_size
@@ -78,7 +78,7 @@ inputs:
     <int> must be a non-zero positive integer, smaller than\nthe input length.\nOnly\
     \ available in modes: \"mfe\", \"subopt\", \"shapes\",\n\"probs\", \"sample\"\
     , \"mea\", \"probing\"."
-  type: long
+  type: long?
   inputBinding:
     prefix: --windowSize
 - id: in_window_increment
@@ -86,7 +86,7 @@ inputs:
     \ to <int> bases.\n<int> must be a non-zero positive integer, smaller\nthan --windowSize.\n\
     Default is 1.\nOnly available in modes: \"mfe\", \"subopt\", \"shapes\",\n\"probs\"\
     , \"sample\", \"mea\", \"probing\"."
-  type: long
+  type: long?
   inputBinding:
     prefix: --windowIncrement
 - id: in_structure_probs
@@ -94,7 +94,7 @@ inputs:
     \ will be computed. To speed\nup computation, this calculation is switched off\
     \ by\ndefault.\nOnly available in modes: \"mfe\", \"subopt\", \"shapes\",\n\"\
     probs\", \"sample\", \"cast\", \"mea\", \"probing\"."
-  type: long
+  type: long?
   inputBinding:
     prefix: --structureProbs
 - id: in_grammar
@@ -109,7 +109,7 @@ inputs:
     \ same\nas microstate, while staying unambiguous. Unfortunately,\nmfe computation\
     \ violates Bellman's principle of\noptimality.\nDefault is \"macrostate\". See\
     \ [5] for further details."
-  type: long
+  type: long?
   inputBinding:
     prefix: --grammar
 - id: in_temperature
@@ -117,7 +117,7 @@ inputs:
     \ floating point number.\nDefault is 37 C.\nOnly available in modes: \"mfe\",\
     \ \"subopt\", \"shapes\",\n\"probs\", \"sample\", \"cast\", \"eval\", \"outside\"\
     , \"mea\",\n\"probing\"."
-  type: double
+  type: double?
   inputBinding:
     prefix: --temperature
 - id: in_param
@@ -126,7 +126,7 @@ inputs:
     \ format.\nDefault are parameters released by the Turner group in\n2004 (see [3]\
     \ and [4]).\nOnly available in modes: \"mfe\", \"subopt\", \"shapes\",\n\"probs\"\
     , \"sample\", \"cast\", \"eval\", \"outside\", \"mea\",\n\"probing\"."
-  type: File
+  type: File?
   inputBinding:
     prefix: --param
 - id: in_allow_lp
@@ -135,33 +135,33 @@ inputs:
     \ we normally forbid them.\nShould you want to allow them set <int> to 1.\n<int>\
     \ must be 0 (=don't allow lonely base pairs) or 1 (=\nallow them).\nDefault is\
     \ 0, i.e. no lonely base pairs."
-  type: long
+  type: long?
   inputBinding:
     prefix: --allowLP
 - id: in_bp_pm_threshold
   doc: ": Set the threshold for base pair probabilities\nincluded in the postscript\
     \ output.\nDefault is 1e-05.\nOnly available in mode: \"outside\"."
-  type: double
+  type: double?
   inputBinding:
     prefix: --bppmThreshold
 - id: in_dotplot
   doc: ": Sets the filename for the probability dot plot, produced\nin \"outside\"\
     \ mode.\nDefault is \"dotPlot.ps\".\nOnly available in mode: \"outside\"."
-  type: File
+  type: File?
   inputBinding:
     prefix: --dotplot
 - id: in_png
   doc: ": Activate this option to also produce a png file of the \"dot\nplot\". This\
     \ is deactivated by default and requires an\ninstallation of the program \"GhostScript\"\
     .\nOnly available in mode: \"outside\"."
-  type: long
+  type: long?
   inputBinding:
     prefix: --png
 - id: in_bin_path
   doc: ": RNAshapes expects that according Bellman's GAP compiled\nbinaries are located\
     \ in the same directory as the Perl\nwrapper is. Should you moved them into another\n\
     directory, you must set --binPath to this new location!"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --binPath
 - id: in_bin_prefix
@@ -172,24 +172,24 @@ inputs:
     Thus, for non-window mode \"subopt\", with grammar\n\"overdangle\" and \"mis\"\
     \ representation, the name would\nbe \"RNAshapes_subopt_overdangle\".\nWith --binPrefix\
     \ you can change the prefix into some\narbitary one."
-  type: long
+  type: long?
   inputBinding:
     prefix: --binPrefix
 - id: in_prob_decimals
   doc: ': Sets the number of digits used for printing shape'
-  type: long
+  type: long?
   inputBinding:
     prefix: --probDecimals
 - id: in_verbose
   doc: ": Prints the actual command for Bellman's GAP binary."
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbose
 - id: in_varna
   doc: ": Provide a file name to which a HTML formatted version of\nthe output should\
     \ be saved in.\nOnly available in modes: \"mfe\", \"subopt\", \"shapes\",\n\"\
     probs\", \"sample\", \"cast\", \"eval\", \"mea\", \"probing\"."
-  type: File
+  type: File?
   inputBinding:
     prefix: --varna
 - id: in_slope
@@ -198,24 +198,24 @@ inputs:
     \ If you set\n--normalization to 'RNAstructure', reactivities are\nnormalized\
     \ according to this spirit, but added for all\nbase-pairs and substracted for\
     \ all unpaired bases. Default\nis 1.8.\nOnly available in mode: \"probing\"."
-  type: double
+  type: double?
   inputBinding:
     prefix: --slope
 - id: in_intercept
   doc: ": See parameter --slope: sets the value for 'intercept'.\nOnly effective if\
     \ --normalization is set to\n'RNAstructure'. Default is -0.6.\nOnly available\
     \ in mode: \"probing\"."
-  type: double
+  type: double?
   inputBinding:
     prefix: --intercept
 - id: in_normalization
   doc: ': The reactivities read from a file (see'
-  type: File
+  type: File?
   inputBinding:
     prefix: --normalization
 - id: in_reactivity_filename
   doc: ) can be normalized in four
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reactivityfilename
 - id: in_modifier
@@ -226,12 +226,12 @@ inputs:
     \ are:\n'DMS' affects [A,C]\n'CMCT' affects [G,U]\n'SHAPE' affects [A,C,G,U]\n\
     'diffSHAPE' affects [A,C,G,U]\n'unknown' affects [A,C,G,U]\nDefault is unknown.\n\
     Only available in mode: \"probing\"."
-  type: File
+  type: File?
   inputBinding:
     prefix: --modifier
 - id: in_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -options
 - id: in_mfe
@@ -346,17 +346,11 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_one_zero_do_tone_one_eight_six_slash_one_seven_four_eight_seven_one_eight_eight_six_two_six_dot
-  doc: '[2] Andreas R Gruber, Ronny Lorenz, Stephan H Bernhart, Richard Neuboeck,
-    Ivo L'
-  type: double
-  inputBinding:
-    position: 0
 - id: in_hofacker_dot
   doc: '"The Vienna RNA Websuite."'
   type: string
   inputBinding:
-    position: 1
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
@@ -365,9 +359,10 @@ outputs:
   doc: ": Provide a file name to which a HTML formatted version of\nthe output should\
     \ be saved in.\nOnly available in modes: \"mfe\", \"subopt\", \"shapes\",\n\"\
     probs\", \"sample\", \"cast\", \"eval\", \"mea\", \"probing\"."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_varna)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - RNAshapes

@@ -8,6 +8,9 @@ task Mobstertovcf {
     mobster_to_vcf \
       ~{mobster_to_vcf}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mobster_to_vcf: ""
   }

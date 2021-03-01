@@ -14,6 +14,9 @@ task VsnpPathAdderpy {
       ~{if (show) then "--show" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cwd: "Absolute directory path to be added to find reference\\noption files."
     show: "Show available directories."

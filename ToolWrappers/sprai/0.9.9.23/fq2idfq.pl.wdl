@@ -10,6 +10,9 @@ task Fq2idfqpl {
       ~{this} \
       ~{in_dot_fq}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this: ""
     in_dot_fq: ""

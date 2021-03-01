@@ -22,6 +22,9 @@ task Fseqbootall {
       ~{if (test) then "-test" else ""} \
       ~{if (print_data) then "-printdata" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     categories: "properties File of input categories"
     mix_file: "properties File of mixtures"

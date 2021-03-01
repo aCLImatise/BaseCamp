@@ -14,6 +14,9 @@ task HpsuisSerosh {
       ~{if (sample_name) then "-s" else ""} \
       ~{if (threads) then "--threads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_raw_reads: "input raw reads"
     path_output_directory: "path to output directory"

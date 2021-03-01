@@ -24,6 +24,9 @@ task Resp {
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if (var_8) then "-O" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s: ""
     w: ""

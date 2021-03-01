@@ -2,7 +2,7 @@ version 1.0
 
 task Nasm {
   input {
-    Boolean? assemble_tasm_mode
+    Boolean? assemble_scitech_compatible
     Boolean? generate_debug_information
     Boolean? e_preprocess_only
     Boolean? preprocess_assemble_only
@@ -20,7 +20,7 @@ task Nasm {
     String? select_output_format
     File? write_listing_listfile
     Boolean? path_adds_pathname
-    Boolean? digit_optimize_branch
+    Boolean? digit_branch_offsets
     Boolean? o_zero
     Boolean? o_one
     Boolean? ox
@@ -28,7 +28,7 @@ task Nasm {
     Boolean? macro_predefines_macro
     Boolean? macro_undefines_macro
     Boolean? format_specifies_gnu
-    Boolean? foo_enables_wfoo
+    Boolean? foo_enables_warning
     Boolean? w_foo
     Boolean? postfix
     String? at
@@ -65,7 +65,7 @@ task Nasm {
       ~{lock} \
       ~{hle} \
       ~{bnd} \
-      ~{if (assemble_tasm_mode) then "-t" else ""} \
+      ~{if (assemble_scitech_compatible) then "-t" else ""} \
       ~{if (generate_debug_information) then "-g" else ""} \
       ~{if (e_preprocess_only) then "-E" else ""} \
       ~{if (preprocess_assemble_only) then "-a" else ""} \
@@ -83,7 +83,7 @@ task Nasm {
       ~{if defined(select_output_format) then ("-f " +  '"' + select_output_format + '"') else ""} \
       ~{if defined(write_listing_listfile) then ("-l " +  '"' + write_listing_listfile + '"') else ""} \
       ~{if (path_adds_pathname) then "-I" else ""} \
-      ~{if (digit_optimize_branch) then "-O" else ""} \
+      ~{if (digit_branch_offsets) then "-O" else ""} \
       ~{if (o_zero) then "-O0" else ""} \
       ~{if (o_one) then "-O1" else ""} \
       ~{if (ox) then "-Ox" else ""} \
@@ -91,13 +91,16 @@ task Nasm {
       ~{if (macro_predefines_macro) then "-D" else ""} \
       ~{if (macro_undefines_macro) then "-U" else ""} \
       ~{if (format_specifies_gnu) then "-X" else ""} \
-      ~{if (foo_enables_wfoo) then "-w" else ""} \
+      ~{if (foo_enables_warning) then "-w" else ""} \
       ~{if (w_foo) then "-w-foo" else ""} \
       ~{if (postfix) then "--postfix" else ""} \
       ~{if defined(at) then ("-@ " +  '"' + at + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    assemble_tasm_mode: "assemble in SciTech TASM compatible mode"
+    assemble_scitech_compatible: "assemble in SciTech TASM compatible mode"
     generate_debug_information: "generate debug information in selected format"
     e_preprocess_only: "(or -e)  preprocess only (writes output to stdout by default)"
     preprocess_assemble_only: "don't preprocess (assemble only)"
@@ -115,7 +118,7 @@ task Nasm {
     select_output_format: "select an output format"
     write_listing_listfile: "write listing to a listfile"
     path_adds_pathname: "<path>    adds a pathname to the include file path"
-    digit_optimize_branch: "<digit>   optimize branch offsets"
+    digit_branch_offsets: "<digit>   optimize branch offsets"
     o_zero: ": No optimization"
     o_one: ": Minimal optimization"
     ox: ": Multipass optimization (default)"
@@ -123,7 +126,7 @@ task Nasm {
     macro_predefines_macro: "<macro>[=<value>] pre-defines a macro"
     macro_undefines_macro: "<macro>   undefines a macro"
     format_specifies_gnu: "<format>  specifies error reporting format (gnu or vc)"
-    foo_enables_wfoo: "+foo      enables warning foo (equiv. -Wfoo)"
+    foo_enables_warning: "+foo      enables warning foo (equiv. -Wfoo)"
     w_foo: "disable warning foo (equiv. -Wno-foo)"
     postfix: "this options prepend or append the given argument to all\\nextern and global variables"
     at: ""

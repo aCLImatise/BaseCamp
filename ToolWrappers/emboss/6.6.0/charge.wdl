@@ -12,6 +12,9 @@ task Charge {
       ~{if (aa_data) then "-aadata" else ""} \
       ~{if (plot) then "-plot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window: "integer    [5] Window length (Integer 1 or more)"
     aa_data: "datafile   [Eamino.dat] Amino acids properties and\\nmolecular weight data file"

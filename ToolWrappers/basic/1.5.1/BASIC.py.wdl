@@ -2,7 +2,7 @@ version 1.0
 
 task BASICpy {
   input {
-    String? type_receptor_choices
+    String? type_receptor_defaultbcr
     Int? launch_threads_run
     File? name_output_file
     File? se
@@ -18,7 +18,7 @@ task BASICpy {
   }
   command <<<
     BASIC_py \
-      ~{if defined(type_receptor_choices) then ("-i " +  '"' + type_receptor_choices + '"') else ""} \
+      ~{if defined(type_receptor_defaultbcr) then ("-i " +  '"' + type_receptor_defaultbcr + '"') else ""} \
       ~{if defined(launch_threads_run) then ("-p " +  '"' + launch_threads_run + '"') else ""} \
       ~{if defined(name_output_file) then ("-n " +  '"' + name_output_file + '"') else ""} \
       ~{if defined(se) then ("-SE " +  '"' + se + '"') else ""} \
@@ -32,8 +32,11 @@ task BASICpy {
       ~{if defined(path_database_defaults) then ("-d " +  '"' + path_database_defaults + '"') else ""} \
       ~{if defined(subsample) then ("--subsample " +  '"' + subsample + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    type_receptor_choices: "Type of receptor. Choices: \\\"BCR\\\" or \\\"TCR\\\" (default:\\nBCR)"
+    type_receptor_defaultbcr: "Type of receptor. Choices: \\\"BCR\\\" or \\\"TCR\\\" (default:\\nBCR)"
     launch_threads_run: "Launch p > 2 threads that will run on separate\\nprocessors/cores (default: 2)"
     name_output_file: "Name of output file. Note: a \\\".fasta\\\" extension will\\nbe added (default: result.fasta)"
     se: "Single end FASTQ file (optionally gzipped). (example:\\nse.fastq)"

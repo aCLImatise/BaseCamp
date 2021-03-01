@@ -4,7 +4,7 @@ inputs:
 - id: in_out_filename
   doc: "Output filename for text summary. Default: output into\nmegalodon results\
     \ directory\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --out-filename
 outputs:
@@ -14,9 +14,10 @@ outputs:
 - id: out_out_filename
   doc: "Output filename for text summary. Default: output into\nmegalodon results\
     \ directory\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - megalodon_extras

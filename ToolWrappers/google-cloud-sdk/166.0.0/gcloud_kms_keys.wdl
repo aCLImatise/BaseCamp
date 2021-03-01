@@ -34,6 +34,9 @@ task GcloudKmsKeys {
       ~{if defined(keyring) then ("--keyring " +  '"' + keyring + '"') else ""} \
       ~{if defined(location) then ("--location " +  '"' + location + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keyring: "The containing keyring."
     location: "The location of the requested resource."

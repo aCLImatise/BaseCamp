@@ -18,6 +18,9 @@ task HMMCtoCMC {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hmm_compare_result_file: "Path to HMMCompare result file"
     cm_models_file: "Path to covariance model file"

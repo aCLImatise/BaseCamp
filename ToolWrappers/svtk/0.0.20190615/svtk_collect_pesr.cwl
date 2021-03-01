@@ -3,17 +3,17 @@ id: svtk_collect_pesr.cwl
 inputs:
 - id: in_index_dir
   doc: "Directory of local BAM indexes if accessing a remote\nS3 bam."
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --index-dir
 - id: in_region
   doc: Tabix-formatted region to parse
-  type: string
+  type: string?
   inputBinding:
     prefix: --region
 - id: in_b_gzip
   doc: bgzip and tabix index output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bgzip
 - id: in_bam
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - svtk

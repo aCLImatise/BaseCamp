@@ -12,6 +12,9 @@ task Dotpath {
       ~{if (graph) then "-graph" else ""} \
       ~{if (overlaps) then "-overlaps" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     word_size: "integer    [4] Word size (Integer 2 or more)"
     graph: "graph      [$EMBOSS_GRAPHICS value, or png] Graph type\\n(ps, hpgl, hp7470, hp7580, meta, cps, tek,\\ntekt, none, data, png, gif, svg)"

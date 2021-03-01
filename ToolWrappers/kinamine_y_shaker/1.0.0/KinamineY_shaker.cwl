@@ -3,7 +3,7 @@ id: KinamineY_shaker.cwl
 inputs:
 - id: in_jar
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -jar
 - id: in_java
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - KinamineY-shaker

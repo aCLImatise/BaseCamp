@@ -3,12 +3,12 @@ id: pybel_machine.cwl
 inputs:
 - id: in_local
   doc: Upload to local database.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --local
 - id: in_host
   doc: URL of BEL Commons. Defaults to https://bel-
-  type: string
+  type: string?
   inputBinding:
     prefix: --host
 - id: in_commons_dots_cai_dot_fraunhofer_dot_de
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pybel

@@ -3,21 +3,24 @@ command:
 - findPeaks
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: tag directory
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -o
   description: "(file name for to output peaks, default: stdout)\n\"-o auto\" will\
     \ send output to \"<tag directory>/peaks.txt\", \".../regions.txt\",\nor \".../transcripts.txt\"\
     \ depending on the \"-style\" option"
-  synonyms:
-  - -o
   args: !SimpleFlagArg
     name: filename|auto
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -style
   description: "(Specialized options for specific analysis strategies)\nfactor (transcription\
     \ factor ChIP-Seq, uses -center, output: peaks.txt,  default)\nhistone (histone\
     \ modification ChIP-Seq, region based, uses -region -size 500 -L 0, regions.txt)\n\
@@ -27,308 +30,306 @@ named:
     superhistone (Super Enhancers from H3K27ac data, superEnhancers.txt)\nmC (Cytosine\
     \ methylation (BS-seq/methylC-seq), regions.txt)\ndamid (DamID enrichment from\
     \ DpnI digestion, regions.txt)\nclip (CLIP-Seq enrichment, strand specific, peaks.txt)"
-  synonyms:
-  - -style
   args: !SimpleFlagArg
     name: option
-  optional: true
 - !Flag
-  description: (Experiment to use as IgG/Input/Control)
+  optional: true
   synonyms:
   - -i
+  description: (Experiment to use as IgG/Input/Control)
   args: !SimpleFlagArg
     name: input tag directory
-  optional: true
 - !Flag
-  description: '<#> (Peak size, default: auto)'
+  optional: true
   synonyms:
   - -size
+  description: '<#> (Peak size, default: auto)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (minimum distance between peaks, default: peak size x2)'
+  optional: true
   synonyms:
   - -minDist
+  description: '<#> (minimum distance between peaks, default: peak size x2)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Set effective mappable genome size, default: 2e9)'
+  optional: true
   synonyms:
   - -gsize
+  description: '<#> (Set effective mappable genome size, default: 2e9)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#|auto> (Approximate fragment length, default: auto)'
+  optional: true
   synonyms:
   - -fragLength
+  description: '<#|auto> (Approximate fragment length, default: auto)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#|auto> (Approximate fragment length of input tags, default: auto)'
+  optional: true
   synonyms:
   - -inputFragLength
+  description: '<#|auto> (Approximate fragment length of input tags, default: auto)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Maximum tags per bp to count, 0 = no limit, default: auto)'
+  optional: true
   synonyms:
   - -tbp
+  description: '<#> (Maximum tags per bp to count, 0 = no limit, default: auto)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Maximum tags per bp to count in input, 0 = no limit, default:
-    auto)'
+  optional: true
   synonyms:
   - -inputtbp
+  description: '<#> (Maximum tags per bp to count in input, 0 = no limit, default:
+    auto)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (find peaks using tags on both strands or separate, default:both)
+  optional: true
   synonyms:
   - -strand
+  description: (find peaks using tags on both strands or separate, default:both)
   args: !SimpleFlagArg
     name: both|separate
-  optional: true
 - !Flag
-  description: '# (Tag count to normalize to, default 10000000)'
+  optional: true
   synonyms:
   - -norm
+  description: '# (Tag count to normalize to, default 10000000)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (extends start/stop coordinates to cover full region considered "enriched")
+  optional: true
   synonyms:
   - -region
+  description: (extends start/stop coordinates to cover full region considered "enriched")
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<#> (number of fractions peaks are divided in when extending 'regions',\
-    \ def: 4)"
+  optional: true
   synonyms:
   - -regionRes
+  description: "<#> (number of fractions peaks are divided in when extending 'regions',\
+    \ def: 4)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (Centers peaks on maximum tag overlap and calculates focus ratios)
+  optional: true
   synonyms:
   - -center
+  description: (Centers peaks on maximum tag overlap and calculates focus ratios)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(Centers peaks on most likely nucleosome free region [works best with\
-    \ mnase data])\n(-center and -nfr can be performed later with \"getPeakTags\""
+  optional: true
   synonyms:
   - -nfr
+  description: "(Centers peaks on most likely nucleosome free region [works best with\
+    \ mnase data])\n(-center and -nfr can be performed later with \"getPeakTags\""
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (fold enrichment over input tag count, default: 4.0)'
+  optional: true
   synonyms:
   - -F
+  description: '<#> (fold enrichment over input tag count, default: 4.0)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (poisson p-value threshold relative to input tag count, default:
-    0.0001)'
+  optional: true
   synonyms:
   - -P
+  description: '<#> (poisson p-value threshold relative to input tag count, default:
+    0.0001)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (fold enrichment over local tag count, default: 4.0)'
+  optional: true
   synonyms:
   - -L
+  description: '<#> (fold enrichment over local tag count, default: 4.0)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (poisson p-value threshold relative to local tag count, default:
-    0.0001)'
+  optional: true
   synonyms:
   - -LP
+  description: '<#> (poisson p-value threshold relative to local tag count, default:
+    0.0001)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (fold enrichment limit of expected unique tag positions, default:
-    2.0)'
+  optional: true
   synonyms:
   - -C
+  description: '<#> (fold enrichment limit of expected unique tag positions, default:
+    2.0)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (region to check for local tag enrichment, default: 10000)'
+  optional: true
   synonyms:
   - -localSize
+  description: '<#> (region to check for local tag enrichment, default: 10000)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Size of region to search for control tags, default: 2x peak size)'
+  optional: true
   synonyms:
   - -inputSize
+  description: '<#> (Size of region to search for control tags, default: 2x peak size)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <#> (False discovery rate, default = 0.001)
+  optional: true
   synonyms:
   - -fdr
+  description: <#> (False discovery rate, default = 0.001)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Set poisson p-value cutoff, default: uses fdr)'
+  optional: true
   synonyms:
   - -poisson
+  description: '<#> (Set poisson p-value cutoff, default: uses fdr)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Set # of tags to define a peak, default: 25)'
+  optional: true
   synonyms:
   - -tagThreshold
+  description: '<#> (Set # of tags to define a peak, default: 25)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Set # of normalized tags to define a peak, by default uses 1e7
-    for norm)'
+  optional: true
   synonyms:
   - -ntagThreshold
+  description: '<#> (Set # of normalized tags to define a peak, by default uses 1e7
+    for norm)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Absolute minimum tags per peak, default: expected tags per peak)'
+  optional: true
   synonyms:
   - -minTagThreshold
+  description: '<#> (Absolute minimum tags per peak, default: expected tags per peak)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Slope threshold to identify super vs. typical enh., default:
-    1.00)'
+  optional: true
   synonyms:
   - -superSlope
+  description: '<#> (Slope threshold to identify super vs. typical enh., default:
+    1.00)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (moving window/number of peaks to use to calculate slope, default:
-    10)'
+  optional: true
   synonyms:
   - -superWindow
+  description: '<#> (moving window/number of peaks to use to calculate slope, default:
+    10)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '(Output typical enhancers to this file, default: not used)'
+  optional: true
   synonyms:
   - -typical
+  description: '(Output typical enhancers to this file, default: not used)'
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
-  description: (initial peaks to use for super enhancer merging/scoring)
+  optional: true
   synonyms:
   - -inputPeaks
+  description: (initial peaks to use for super enhancer merging/scoring)
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
-  description: (regions to exclude from analysis, i.e. TSS regions for H3K27ac)
+  optional: true
   synonyms:
   - -excludePeaks
+  description: (regions to exclude from analysis, i.e. TSS regions for H3K27ac)
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
-  description: '/ -methylC (find unmethylated/methylated regions, default: -unmethyC)'
+  optional: true
   synonyms:
   - -unmethylC
+  - -methylC
+  description: '(find unmethylated/methylated regions, default: -unmethyC)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (methylation threshold of regions, default: avg methylation/2)'
+  optional: true
   synonyms:
   - -mCthresh
+  description: '<#> (methylation threshold of regions, default: avg methylation/2)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Minimum number of cytosines per methylation peak, default: 6)'
+  optional: true
   synonyms:
   - -minNumC
+  description: '<#> (Minimum number of cytosines per methylation peak, default: 6)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (size of region for initiation detection/artifact size, default:
-    250)'
+  optional: true
   synonyms:
   - -tssSize
+  description: '<#> (size of region for initiation detection/artifact size, default:
+    250)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (size of regoin for transcript body detection, default: 1000)'
+  optional: true
   synonyms:
   - -minBodySize
+  description: '<#> (size of regoin for transcript body detection, default: 1000)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (fold enrichment for new initiation dectection, default: 4.0)'
+  optional: true
   synonyms:
   - -tssFold
+  description: '<#> (fold enrichment for new initiation dectection, default: 4.0)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (fold enrichment for new transcript dectection, default: 4.0)'
+  optional: true
   synonyms:
   - -bodyFold
+  description: '<#> (fold enrichment for new transcript dectection, default: 4.0)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (end transcript when levels are this much less than the start,
-    default: 10.0)'
+  optional: true
   synonyms:
   - -endFold
+  description: '<#> (end transcript when levels are this much less than the start,
+    default: 10.0)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '(method used for identifying new transcripts, default: fold)'
+  optional: true
   synonyms:
   - -method
+  description: '(method used for identifying new transcripts, default: fold)'
   args: !SimpleFlagArg
     name: fold|level
-  optional: true
 - !Flag
-  description: "(directory of binary files specifying uniquely mappable locations)\n\
-    Download from http://biowhat.ucsd.edu/homer/groseq/"
+  optional: true
   synonyms:
   - -uniqmap
+  description: "(directory of binary files specifying uniquely mappable locations)\n\
+    Download from http://biowhat.ucsd.edu/homer/groseq/"
   args: !SimpleFlagArg
     name: directory
-  optional: true
 - !Flag
-  description: '<#> (confidence p-value: 1.00e-05)'
+  optional: true
   synonyms:
   - -confPvalue
+  description: '<#> (confidence p-value: 1.00e-05)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Minimum initial read depth for transcripts, default: auto)'
+  optional: true
   synonyms:
   - -minReadDepth
+  description: '<#> (Minimum initial read depth for transcripts, default: auto)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Pseudo tag count, default: 2.0)'
+  optional: true
   synonyms:
   - -pseudoCount
+  description: '<#> (Pseudo tag count, default: 2.0)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (reverse strand of reads - for first-strand rna-seq/gro-seq)
+  optional: true
   synonyms:
   - -rev
+  description: (reverse strand of reads - for first-strand rna-seq/gro-seq)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(Output de novo transcripts in GTF format)\n\"-o auto\" will produce\
-    \ <dir>/transcripts.txt and <dir>/transcripts.gtf\n"
+  optional: true
   synonyms:
   - -gtf
+  description: "(Output de novo transcripts in GTF format)\n\"-o auto\" will produce\
+    \ <dir>/transcripts.txt and <dir>/transcripts.gtf\n"
   args: !SimpleFlagArg
     name: filename
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -405,3 +406,4 @@ help_text: "!!! First argument needs to be a <tag directory>\n\n\tUsage: findPea
   \t\t\n"
 generated_using:
 - --help
+docker_image:

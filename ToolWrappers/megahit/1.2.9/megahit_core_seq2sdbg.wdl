@@ -34,6 +34,9 @@ task MegahitCoreSeq2sdbg {
       ~{if (need_mercy) then "--need_mercy" else ""} \
       ~{if defined(mem_flag) then ("--mem_flag " +  '"' + mem_flag + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     host_mem: "(=0)                memory to be used. No more than 95% of the free memory is recommended. 0 for auto detect."
     km_er_size: "(=0)               kmer size"

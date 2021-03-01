@@ -8,6 +8,9 @@ task Statssh {
     stats_sh \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
   }

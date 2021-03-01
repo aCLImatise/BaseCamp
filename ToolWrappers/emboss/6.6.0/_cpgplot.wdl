@@ -16,6 +16,9 @@ task Cpgplot {
       ~{if (min_oe) then "-minoe" else ""} \
       ~{if (min_pc) then "-minpc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window: "integer    [100] The percentage CG content and the\\nObserved frequency of CG is calculated\\nwithin a window whose size is set by this\\nparameter. The window is moved down the\\nsequence and these statistics are calculated\\nat each position that the window is moved\\nto. (Integer 1 or more)"
     min_len: "integer    [200] This sets the minimum length that a\\nCpG island has to be before it is reported.\\n(Integer 1 or more)"

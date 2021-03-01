@@ -4,66 +4,69 @@ command:
 positional: []
 named:
 - !Flag
-  description: "*                            Input file  (valid formats: 'mzML')"
+  optional: true
   synonyms:
   - -in
+  description: "*                            Input file  (valid formats: 'mzML')"
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "*                           Output file  (valid formats: 'idXML')"
+  optional: true
   synonyms:
   - -out
+  description: "*                           Output file  (valid formats: 'idXML')"
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "Precursor monoisotopic mass tolerance (default: '10')"
+  optional: true
   synonyms:
   - -precursor_mass_tolerance
+  description: "Precursor monoisotopic mass tolerance (default: '10')"
   args: !SimpleFlagArg
     name: tolerance
-  optional: true
 - !Flag
-  description: "Unit of precursor mass tolerance (default: 'ppm' valid: 'Da', 'ppm')"
+  optional: true
   synonyms:
   - -precursor_error_units
+  description: "Unit of precursor mass tolerance (default: 'ppm' valid: 'Da', 'ppm')"
   args: !SimpleFlagArg
     name: choice
-  optional: true
 - !Flag
-  description: "Fragment mass error in Dalton (default: '0.3')"
+  optional: true
   synonyms:
   - -fragment_mass_tolerance
+  description: "Fragment mass error in Dalton (default: '0.3')"
   args: !SimpleFlagArg
     name: tolerance
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -database
   description: "*              NCBI formatted FASTA files. The .psq filename should\
     \ be given, e.g. 'SwissProt.fasta.psq'. If the filename does not end in '.psq'\
     \ (e.g., SwissProt.fasta) the psq suffix will be added automatically. Non-existing\
     \ relative file-names are looked up via'OpenMS.ini:id_db_dir' (valid formats:\
     \ 'psq', 'fasta')"
-  synonyms:
-  - -database
   args: !SimpleFlagArg
     name: psq or fasta
-  optional: true
 - !Flag
-  description: "Minimum precursor ion charge (default: '1')"
+  optional: true
   synonyms:
   - -min_precursor_charge
+  description: "Minimum precursor ion charge (default: '1')"
   args: !SimpleFlagArg
     name: charge
-  optional: true
 - !Flag
-  description: "Maximum precursor ion charge (default: '3')"
+  optional: true
   synonyms:
   - -max_precursor_charge
+  description: "Maximum precursor ion charge (default: '3')"
   args: !SimpleFlagArg
     name: charge
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -fixed_modifications
   description: "Fixed modifications, specified using Unimod (www.unimod.org) terms,\
     \ e.g. 'Carbamidomethyl (C)' or 'Oxidation (M)' (default: '[Carbamidomethyl (C)]'\
     \ valid: '15N-oxobutanoic (N-term C)', '2-dimethylsuccinyl (C)', '2-monomethylsuccinyl\
@@ -740,12 +743,12 @@ named:
     \ 'Xlink:DMP-s (K)', 'Xlink:DSS (K)', 'Xlink:DSS-NH2 (K)', 'Xlink:DST (K)', 'Xlink:DTSSP\
     \ (K)', 'Xlink:EGS (K)', 'Xlink:EGScleaved (K)', 'Xlink:SMCC (C)', 'Xlink:SSD\
     \ (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  synonyms:
-  - -fixed_modifications
   args: !SimpleFlagArg
     name: mods
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -variable_modifications
   description: "Variable modifications, specified using Unimod (www.unimod.org) terms,\
     \ e.g. 'Carbamidomethyl (C)' or 'Oxidation (M)' (default: '[Oxidation (M)]' valid:\
     \ '15N-oxobutanoic (N-term C)', '2-dimethylsuccinyl (C)', '2-monomethylsuccinyl\
@@ -1422,92 +1425,89 @@ named:
     \ 'Xlink:DMP-s (K)', 'Xlink:DSS (K)', 'Xlink:DSS-NH2 (K)', 'Xlink:DST (K)', 'Xlink:DTSSP\
     \ (K)', 'Xlink:EGS (K)', 'Xlink:EGScleaved (K)', 'Xlink:SMCC (C)', 'Xlink:SSD\
     \ (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  synonyms:
-  - -variable_modifications
   args: !SimpleFlagArg
     name: mods
-  optional: true
 - !Flag
-  description: "*        The 'omssacl' executable of the OMSSA installation"
+  optional: true
   synonyms:
   - -omssa_executable
+  description: "*        The 'omssacl' executable of the OMSSA installation"
   args: !SimpleFlagArg
     name: executable
-  optional: true
 - !Flag
-  description: "Number of missed cleavages allowed (default: '1')"
+  optional: true
   synonyms:
   - -v
+  description: "Number of missed cleavages allowed (default: '1')"
   args: !SimpleFlagArg
     name: Integer
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -enzyme
   description: "The enzyme used for peptide digestion. (default: 'Trypsin' valid:\
     \ 'Trypsin', 'Lys-C/P', 'PepsinA', 'CNBr', 'Formic_acid', 'Chymotrypsin', 'Asp-N_ambic',\
     \ 'no cleavage', 'TrypChymo', 'glutamyl endopeptidase', 'Arg-C', 'unspecific cleavage',\
     \ 'Trypsin/P', 'Lys-C', 'Asp-N')"
-  synonyms:
-  - -enzyme
   args: !SimpleFlagArg
     name: enzyme
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -hl
   description: "Maximum number of hits retained for one spectrum. Note: even when\
     \ set to 1 OMSSA may report multiple hits with different charge states (default:\
     \ '30')"
-  synonyms:
-  - -hl
   args: !SimpleFlagArg
     name: Integer
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -he
   description: "The maximum e-value allowed in the hit list. If you set this parameter\
     \ too small (e.g., he=1), this will effectively introduce FDR filtering. Thus,\
     \ allowing a less stringent FDR during post-processing will nevertheless return\
     \ the (better) FDR introduced here, since mediocre hits are not even reported.\
     \ (default: '1000')"
-  synonyms:
-  - -he
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: Use the given TOPP INI file
+  optional: true
   synonyms:
   - -ini
+  description: Use the given TOPP INI file
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
-    \ '1')"
+  optional: true
   synonyms:
   - -threads
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: Writes the default configuration file
+  optional: true
   synonyms:
   - -write_ini
+  description: Writes the default configuration file
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: Shows all options (including advanced)
+  optional: true
   synonyms:
   - --helphelp
+  description: Shows all options (including advanced)
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Shows options
+  optional: true
   synonyms:
   - --help
+  description: Shows options
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nstty: standard input: Inappropriate ioctl for device\nOMSSAAdapter --\
@@ -2876,3 +2876,4 @@ help_text: "\nstty: standard input: Inappropriate ioctl for device\nOMSSAAdapter
   \  Shows all options (including advanced)\n\n"
 generated_using:
 - --help
+docker_image:

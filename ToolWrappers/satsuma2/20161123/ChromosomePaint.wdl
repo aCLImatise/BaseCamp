@@ -8,6 +8,9 @@ task ChromosomePaint {
     ChromosomePaint \
       ~{if (string_mizbee_file) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_mizbee_file: "<string> : MizBee file"
   }

@@ -54,6 +54,9 @@ task Ncbigenomedownload {
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(type_materials) then ("--type-materials " +  '"' + type_materials + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     section: "NCBI section to download (default: refseq)"
     formats: "Which formats to download (default: genbank).A comma-\\nseparated list of formats is also possible. For\\nexample: \\\"fasta,assembly-report\\\". Choose from:\\n['genbank', 'fasta', 'rm', 'features', 'gff',\\n'protein-fasta', 'genpept', 'wgs', 'cds-fasta', 'rna-\\nfna', 'rna-fasta', 'assembly-report', 'assembly-\\nstats', 'all']"

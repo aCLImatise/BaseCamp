@@ -22,6 +22,9 @@ task ComputeMds {
       ~{if defined(out_name) then ("--outname " +  '"' + out_name + '"') else ""} \
       ~{if defined(file_name_prefix) then ("-q " +  '"' + file_name_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     start: "Starting position of the region of interest, 0-based\\nindexing (default: 2252)"
     end: "Ending position of the region of interest, 0-based\\nindexing. Note a half-open interval is used, i.e,\\n[start:end) (default: 2549)"

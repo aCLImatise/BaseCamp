@@ -14,6 +14,9 @@ task FilterMatrixByGenomepy {
       ~{if defined(genomes) then ("--genomes " +  '"' + genomes + '"') else ""} \
       ~{if defined(actions) then ("--actions " +  '"' + actions + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_matrix: "/path/to/NASP_matrix [REQUIRED]"
     out_prefix: "prefix for output files [REQUIRED]"

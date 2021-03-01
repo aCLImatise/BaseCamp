@@ -3,33 +3,33 @@ id: bp_netinstall.pl.cwl
 inputs:
 - id: in_dev
   doc: Use the development version of bioperl from git
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dev
 - id: in_build_param_str
   doc: Parameters that are passed in at 'perl Build.PL'
-  type: string
+  type: string?
   inputBinding:
     prefix: --build_param_str
 - id: in_install_param_str
   doc: "Use this string to predefine './Build install'\nparameters such as 'install_base'\
     \ for\nbioperl installation"
-  type: string
+  type: string?
   inputBinding:
     prefix: --install_param_str
 - id: in_bioperl_path
   doc: Path to BioPerl tarball (will not download BioPerl)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bioperl_path
 - id: in_skip_start
   doc: Don't wait for 'Enter' at program start
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip_start
 - id: in_b
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in_don
@@ -91,6 +91,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bp_netinstall.pl

@@ -26,6 +26,9 @@ task MetagenomePipelinepy {
       ~{if (skip_norm) then "--skip_norm" else ""} \
       ~{if defined(out_dir) then ("--out_dir " +  '"' + out_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_table_sequence: "Input table of sequence abundances (BIOM, TSV, or\\nmothur shared file format)."
     function: "Table of predicted gene family copy numbers (output of\\nhsp.py)."

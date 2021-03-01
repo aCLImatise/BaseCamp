@@ -26,6 +26,9 @@ task GemServer {
       ~{if (backtrace) then "--backtrace" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     port: "port to listen on"
     dir: "directories from which to serve gems\\nmultiple directories may be provided\\n--[no-]daemon                run as a daemon"

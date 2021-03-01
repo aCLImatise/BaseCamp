@@ -30,6 +30,9 @@ task Dupre {
       ~{if (histogram) then "--histogram" else ""} \
       ~{if (strip_names) then "--stripnames" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     observed: "observed occupancy vector (space-separated ints, or a\\nfilename)"
     target: "target size, relative (ends with x) or absolute\\n(integer), e.g. '5x' or '1000000')"

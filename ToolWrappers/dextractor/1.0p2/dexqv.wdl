@@ -8,6 +8,9 @@ task Dexqv {
     dexqv \
       ~{if (v_kl) then "-vkl" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v_kl: ""
   }

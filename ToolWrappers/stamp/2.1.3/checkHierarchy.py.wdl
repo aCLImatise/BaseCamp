@@ -8,6 +8,9 @@ task CheckHierarchypy {
     checkHierarchy_py \
       ~{stamp_profile}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stamp_profile: "STAMP profile to evaluate"
   }

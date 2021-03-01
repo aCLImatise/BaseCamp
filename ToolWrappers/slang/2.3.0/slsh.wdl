@@ -26,6 +26,9 @@ task Slsh {
       ~{if (show_verbose_messages) then "-v" else ""} \
       ~{if (d_name) then "-Dname" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     execute_slang_code: "Execute 'string' as S-Lang code"
     compile_debugging_code: "Compile with debugging code, tracebacks, etc"

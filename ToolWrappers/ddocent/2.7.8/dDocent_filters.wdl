@@ -4,6 +4,9 @@ task DDocentFilters {
   command <<<
     dDocent_filters
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

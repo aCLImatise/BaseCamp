@@ -26,6 +26,9 @@ task MethylpyTestallc {
       ~{if defined(sort_mem) then ("--sort-mem " +  '"' + sort_mem + '"') else ""} \
       ~{if defined(remove_chr_prefix) then ("--remove-chr-prefix " +  '"' + remove_chr_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all_c_file: "allc file to be tested. (default: None)"
     sample: "sample name (default: None)"

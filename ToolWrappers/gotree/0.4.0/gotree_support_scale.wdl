@@ -18,6 +18,9 @@ task GotreeSupportScale {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     factor: "Branch support scaling factor (default 1)"
     format: "Input tree format (newick, nexus, or phyloxml) (default \\\"newick\\\")"

@@ -18,6 +18,9 @@ task Famsa {
       ~{if (gt_export) then "-gt_export" else ""} \
       ~{if (dist_export) then "-dist_export" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads_means_default: "- no. of threads, 0 means all available (default: 0)"
     verbose_mode_show: "- verbose mode, show timing information (default: disabled)"

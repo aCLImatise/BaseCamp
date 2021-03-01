@@ -26,6 +26,9 @@ task HpSampleReads {
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fq_one: "Fastq file with read 1"
     fq_two: "Fastq file with read 2"

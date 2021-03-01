@@ -22,6 +22,9 @@ task MakerMapIds {
       ~{if (justify) then "--justify" else ""} \
       ~{if (sort_order) then "--sort_order" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "The prefix to use for all IDs (default = 'MAKER_')"
     suffix: "A suffix to use for all transcript IDs (default = '-R').\\nSpecifying --suffix will also turn on --iterate."

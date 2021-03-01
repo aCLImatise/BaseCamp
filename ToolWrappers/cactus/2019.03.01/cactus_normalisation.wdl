@@ -12,6 +12,9 @@ task CactusNormalisation {
       ~{if (cactus_disk) then "--cactusDisk" else ""} \
       ~{if (max_number_of_chains) then "--maxNumberOfChains" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: ": Set the log level"
     cactus_disk: ": stKVDatabase conf string for the cactus database"

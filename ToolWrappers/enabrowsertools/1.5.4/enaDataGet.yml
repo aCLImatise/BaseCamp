@@ -4,101 +4,101 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
   description: "File format required. Format requested must be\npermitted for data\
     \ type selected. sequence, assembly\nand wgs accessions: embl(default) and fasta\
     \ formats.\nread group: submitted, fastq and sra formats. analysis\ngroup: submitted\
     \ only."
-  synonyms:
-  - -f
-  - --format
   args: !ChoiceFlagArg
     choices: !!set
-      fastq:
-      embl:
-      fasta:
       submitted:
+      embl:
       sra:
-  optional: true
+      fasta:
+      fastq:
 - !Flag
-  description: "Destination directory (default is current running\ndirectory)"
+  optional: true
   synonyms:
   - -d
   - --dest
+  description: "Destination directory (default is current running\ndirectory)"
   args: !SimpleFlagArg
     name: DEST
-  optional: true
 - !Flag
-  description: "Download WGS set for each assembly if available\n(default is false)"
+  optional: true
   synonyms:
   - -w
   - --wgs
+  description: "Download WGS set for each assembly if available\n(default is false)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Extract WGS scaffolds for each assembly if available\n(default is\
-    \ false)"
+  optional: true
   synonyms:
   - -e
   - --extract-wgs
+  description: "Extract WGS scaffolds for each assembly if available\n(default is\
+    \ false)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Expand CON scaffolds when downloading embl format\n(default is false)"
+  optional: true
   synonyms:
   - -exp
   - --expanded
+  description: "Expand CON scaffolds when downloading embl format\n(default is false)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Download read or analysis XML in addition to data\nfiles (default\
-    \ is false)"
+  optional: true
   synonyms:
   - -m
   - --meta
+  description: "Download read or analysis XML in addition to data\nfiles (default\
+    \ is false)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Download CRAM index files with submitted CRAM files,\nif any (default\
-    \ is false). This flag is ignored for\nfastq and sra format options."
+  optional: true
   synonyms:
   - -i
   - --index
+  description: "Download CRAM index files with submitted CRAM files,\nif any (default\
+    \ is false). This flag is ignored for\nfastq and sra format options."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use the aspera command line client to download,\ninstead of FTP."
+  optional: true
   synonyms:
   - -a
   - --aspera
+  description: "Use the aspera command line client to download,\ninstead of FTP."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use the provided settings file, will otherwise check\nfor environment\
-    \ variable or default settings file\nlocation."
+  optional: true
   synonyms:
   - -as
   - --aspera-settings
+  description: "Use the provided settings file, will otherwise check\nfor environment\
+    \ variable or default settings file\nlocation."
   args: !SimpleFlagArg
     name: ASPERA_SETTINGS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -v
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: enaDataGet [-h] [-f {embl,fasta,submitted,fastq,sra}] [-d DEST]\
   \ [-w]\n                  [-e] [-exp] [-m] [-i] [-a] [-as ASPERA_SETTINGS] [-v]\n\
   \                  accession\n\nDownload data for a given accession\n\npositional\
@@ -128,3 +128,4 @@ help_text: "usage: enaDataGet [-h] [-f {embl,fasta,submitted,fastq,sra}] [-d DES
   \        location.\n  -v, --version         show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

@@ -8,6 +8,9 @@ task MakeDbpyVdjScore {
     MakeDb_py vdj_score \
       ~{make_db_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     make_db_do_tpy: ""
   }

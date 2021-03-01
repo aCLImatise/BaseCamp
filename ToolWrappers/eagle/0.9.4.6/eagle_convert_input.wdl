@@ -16,6 +16,9 @@ task EagleConvertInput {
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
       ~{if (var_1) then "--samples" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: ""
     var_1: ""

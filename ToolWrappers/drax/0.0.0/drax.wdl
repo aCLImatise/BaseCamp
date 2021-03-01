@@ -72,6 +72,9 @@ task Drax {
       ~{if (without_docker) then "-without-docker" else ""} \
       ~{if (work_dir) then "-work-dir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exports_current_system: "Exports all current system environment\\nDefault: false"
     cache: "Enable/disable processes caching\\nDefault: true"

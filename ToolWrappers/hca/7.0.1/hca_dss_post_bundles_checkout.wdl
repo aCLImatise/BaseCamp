@@ -14,6 +14,9 @@ task HcaDssPostbundlescheckout {
       ~{if defined(uuid) then ("--uuid " +  '"' + uuid + '"') else ""} \
       ~{if defined(replica) then ("--replica " +  '"' + replica + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     destination: "User-owned destination storage bucket."
     email: "An email address to send status updates to."

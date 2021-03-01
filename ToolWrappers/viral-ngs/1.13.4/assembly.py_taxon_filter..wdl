@@ -10,6 +10,9 @@ task AssemblypyTaxonFilter {
       ~{assembly_do_tpy} \
       ~{subcommand}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly_do_tpy: ""
     subcommand: ""

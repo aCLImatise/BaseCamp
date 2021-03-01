@@ -3,7 +3,7 @@ id: gcloud_topic_configurations.cwl
 inputs:
 - id: in_configuration
   doc: ', or environment variable'
-  type: string
+  type: string?
   inputBinding:
     prefix: --configuration
 - id: in_unset_dot
@@ -248,6 +248,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

@@ -16,6 +16,9 @@ task GmapCat {
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(names) then ("--names " +  '"' + names + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "Destination directory for output genome index"
     db: "Output genome name"

@@ -10,6 +10,9 @@ task PslHisto {
       ~{if (multi_only) then "-multiOnly" else ""} \
       ~{if (nonzero) then "-nonZero" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     multi_only: "- omit queries with only one alignment from output."
     nonzero: "- omit queries with zero values."

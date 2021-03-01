@@ -14,6 +14,9 @@ task MzidToProtxmlrb {
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(min_prob) then ("--minprob " +  '"' + min_prob + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicitly_named_output: "An explicitly named output file."
     debug: "Run in debug mode [false]"

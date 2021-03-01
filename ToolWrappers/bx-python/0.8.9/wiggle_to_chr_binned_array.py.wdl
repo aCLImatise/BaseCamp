@@ -8,6 +8,9 @@ task WiggleToChrBinnedArraypy {
     wiggle_to_chr_binned_array_py \
       ~{score_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     score_file: ""
   }

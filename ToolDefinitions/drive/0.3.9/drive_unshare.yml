@@ -3,11 +3,57 @@ command:
 - drive
 - unshare
 positional: []
-named: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -emails
+  description: emails to share the file to
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -no-prompt
+  description: disables the prompt
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -quiet
+  description: if set, do not log anything but errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -role
+  description: "role to set to receipients of share. Possible values:\n* owner.\n\
+    * reader.\n* writer.\n* commenter."
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -type
+  description: scope of account to revoke access to
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -verbose
+  description: "show step by step information verbosely (default true)\n"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - -id
+  description: unshare by id instead of path
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage of unshare:\n  -emails string\n    \temails to share the file to\n\
@@ -18,3 +64,4 @@ help_text: "Usage of unshare:\n  -emails string\n    \temails to share the file 
   \ to\n  -verbose\n    \tshow step by step information verbosely (default true)\n"
 generated_using:
 - --help
+docker_image:

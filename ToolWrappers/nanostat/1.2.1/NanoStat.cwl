@@ -3,33 +3,33 @@ id: NanoStat.cwl
 inputs:
 - id: in_outdir
   doc: Specify directory for output, only in combination with -n.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_prefix
   doc: Specify an optional prefix to be used for the output file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --prefix
 - id: in_name
   doc: Specify a filename/path for the output, stdout is the default.
-  type: File
+  type: File?
   inputBinding:
     prefix: --name
 - id: in_threads
   doc: Set the allowed number of threads to be used by the script.
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_barcoded
   doc: Use if you want to split the summary file by barcode
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --barcoded
 - id: in_read_type
   doc: "Which read type to extract information about from summary. Options are 1D,\
     \ 2D,\n1D2"
-  type: string
+  type: string?
   inputBinding:
     prefix: --readtype
 - id: in_fast_q
@@ -65,7 +65,7 @@ inputs:
     prefix: --cram
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
@@ -74,19 +74,20 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: Specify directory for output, only in combination with -n.
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
 - id: out_prefix
   doc: Specify an optional prefix to be used for the output file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_prefix)
 - id: out_name
   doc: Specify a filename/path for the output, stdout is the default.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_name)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - NanoStat

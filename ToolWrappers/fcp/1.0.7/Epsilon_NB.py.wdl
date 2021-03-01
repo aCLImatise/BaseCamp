@@ -12,6 +12,9 @@ task EpsilonNBpy {
       ~{epsilon} \
       ~{results_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nb_results: ""
     epsilon: ""

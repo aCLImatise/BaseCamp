@@ -3,7 +3,7 @@ id: deepac_vir_convert.cwl
 inputs:
 - id: in_weights
   doc: Use prepared weights instead of the model file.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --weights
 - id: in_config
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - deepac-vir

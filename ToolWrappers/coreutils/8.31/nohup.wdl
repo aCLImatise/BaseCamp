@@ -10,6 +10,9 @@ task Nohup {
       ~{var_command} \
       ~{arg}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_command: ""
     arg: ""

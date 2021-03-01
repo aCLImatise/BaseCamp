@@ -3,104 +3,119 @@ command:
 - analyzeChIP-Seq.pl
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: exp tag directory
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: genome
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 2
   name: global
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 3
   name: specific
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: (or)
+  optional: true
   synonyms:
   - -i
+  description: (or)
   args: !SimpleFlagArg
     name: Input/IgG experiment tag directory
-  optional: true
 - !Flag
-  description: '[input alignment file2] ...(creates temporary input directory)'
+  optional: true
   synonyms:
   - -iraw
+  description: '[input alignment file2] ...(creates temporary input directory)'
   args: !SimpleFlagArg
     name: input alignment file
-  optional: true
 - !Flag
-  description: '(findPeaks style for peak finding, default: factor)'
+  optional: true
   synonyms:
   - -style
+  description: '(findPeaks style for peak finding, default: factor)'
   args: !SimpleFlagArg
     name: factor|histone|...
-  optional: true
 - !Flag
-  description: '(size of reagion to perform motif finding on, default: factor[200],
-    histone[1000])'
+  optional: true
   synonyms:
   - -msize
+  description: '(size of reagion to perform motif finding on, default: factor[200],
+    histone[1000])'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(2ndary motif analysis on \"focused\" TF peaks, using 50bp regions,\
-    \ or\nanalysis of NFR regions of \"histone\" peaks, using 200bp regions)"
+  optional: true
   synonyms:
   - -focus
+  description: "(2ndary motif analysis on \"focused\" TF peaks, using 50bp regions,\
+    \ or\nanalysis of NFR regions of \"histone\" peaks, using 200bp regions)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (number of CPUs to run motif finding with, default: 1)'
+  optional: true
   synonyms:
   - -p
+  description: '<#> (number of CPUs to run motif finding with, default: 1)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (when performing analysis, limit motif finding to peaks >3kb from TSS)
+  optional: true
   synonyms:
   - -enhancer
+  description: (when performing analysis, limit motif finding to peaks >3kb from TSS)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (forces all steps)
+  optional: true
   synonyms:
   - -force
+  description: (forces all steps)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (Motif finding with repeat masked genome, or add "r" to end of genome
-    name)
+  optional: true
   synonyms:
   - -mask
+  description: (Motif finding with repeat masked genome, or add "r" to end of genome
+    name)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (skips nucleotide frequency and GC quality control calculations)
+  optional: true
   synonyms:
   - -skipFreq
+  description: (skips nucleotide frequency and GC quality control calculations)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '(For motif finding, use CpG% sequence bias correction, default: GC%)'
+  optional: true
   synonyms:
   - -cpg
+  description: '(For motif finding, use CpG% sequence bias correction, default: GC%)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (perform Genome Ontology Analysis on tags - need ~ 3Gbs of memory)
+  optional: true
   synonyms:
   - -tagGO
+  description: (perform Genome Ontology Analysis on tags - need ~ 3Gbs of memory)
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -A
+  description: (normally -A experiment1.sam  ...)
+  args: !SimpleFlagArg
+    name: makeTagDirectory specific options
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - -d
+  description: INPUT_DIRECTORY -go EXP_DIRECTORY/GOanalysis
+  args: !SimpleFlagArg
+    name: EXP_DIRECTORY
 parent:
 subcommands: []
 usage: []
@@ -139,3 +154,4 @@ help_text: "\n\tUsage: analyzeChIP-Seq.pl <exp tag directory> <genome> [global o
   \ -go EXP_DIRECTORY/GOanalysis\n\n"
 generated_using:
 - --help
+docker_image:

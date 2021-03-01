@@ -150,6 +150,9 @@ task Xyalign {
       ~{if defined(include_fixed) then ("--include_fixed " +  '"' + include_fixed + '"') else ""} \
       ~{if (use_counts) then "--use_counts" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "[BAM [BAM ...]]\\nFull path to input bam files. If more than one\\nprovided, only the first will be used for modules\\nother than --CHROM_STATS"
     cram: "[CRAM [CRAM ...]]\\nFull path to input cram files. If more than one\\nprovided, only the first will be used for modules\\nother than --CHROM_STATS. Not currently supported."

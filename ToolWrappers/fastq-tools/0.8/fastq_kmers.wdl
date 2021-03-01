@@ -8,6 +8,9 @@ task Fastqkmers {
     fastq_kmers \
       ~{if defined(size) then ("--size " +  '"' + size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     size: "kmer size (default: 1)"
   }

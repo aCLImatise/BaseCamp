@@ -1,0 +1,441 @@
+&id001 !Command
+command:
+- motifscan
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - motifscan
+  - genome
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: Enable verbose log messages.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --list
+    description: Display installed genome assemblies.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --list-remote
+    description: Display available remote genome assemblies.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --search
+    description: Search for genome assemblies in a remote database.
+    args: !SimpleFlagArg
+      name: KEYWORD
+  - !Flag
+    optional: true
+    synonyms:
+    - --install
+    description: Install a new genome assembly.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --uninstall
+    description: Uninstall a genome assembly.
+    args: !SimpleFlagArg
+      name: NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --name
+    description: Name of the genome assembly to be installed.
+    args: !SimpleFlagArg
+      name: NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Local genome sequences file(s) in FASTA format.
+    args: !RepeatFlagArg
+      name: FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: Local gene annotation (refGene.txt) file.
+    args: !SimpleFlagArg
+      name: ANNOTATION
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --remote
+    description: Download required data files from a remote assembly.
+    args: !SimpleFlagArg
+      name: GENOME
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-dir
+    description: "Write to a given directory instead of the default\ndirectory."
+    args: !SimpleFlagArg
+      name: DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --database
+    description: "Which remote database is used to list/install/search\ngenome assemblies.\
+      \ Default: ucsc"
+    args: !ChoiceFlagArg
+      choices: !!set
+        ucsc:
+  - !Flag
+    optional: true
+    synonyms:
+    - --clean
+    description: Clean the download directory after installation.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: motifscan genome [-h]\n                        (--list | --list-remote\
+    \ | --search KEYWORD | --install | --uninstall NAME)\n                       \
+    \ [-n NAME] [-i FASTA [FASTA ...]] [-a ANNOTATION]\n                        [-r\
+    \ GENOME] [-o DIR] [--database {ucsc}] [--clean]\n                        [--verbose]\n\
+    \nGenome assembly commands.\n\nThis subcommand controls the genome assemblies\
+    \ used by MotifScan.\nMotifScan requires a sequences FASTA file and a gene annotation\
+    \ file \n(if available) for each genome assembly, users can either download them\
+    \ \nfrom a remote database or install directly with local prepared files.\n\n\
+    optional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --verbose             Enable verbose log messages.\n\nGenome Subcommands:\n\
+    \  --list                Display installed genome assemblies.\n  --list-remote\
+    \         Display available remote genome assemblies.\n  --search KEYWORD    \
+    \  Search for genome assemblies in a remote database.\n  --install           \
+    \  Install a new genome assembly.\n  --uninstall NAME      Uninstall a genome\
+    \ assembly.\n\nInstall Options:\n  -n NAME, --name NAME  Name of the genome assembly\
+    \ to be installed.\n  -i FASTA [FASTA ...]  Local genome sequences file(s) in\
+    \ FASTA format.\n  -a ANNOTATION         Local gene annotation (refGene.txt) file.\n\
+    \  -r GENOME, --remote GENOME\n                        Download required data\
+    \ files from a remote assembly.\n  -o DIR, --output-dir DIR\n                \
+    \        Write to a given directory instead of the default\n                 \
+    \       directory.\n\nRemote Database Options:\n  --database {ucsc}     Which\
+    \ remote database is used to list/install/search\n                        genome\
+    \ assemblies. Default: ucsc\n  --clean               Clean the download directory\
+    \ after installation.\n\nExamples:\n--------- \n1) Display installed genomes:\n\
+    \n    motifscan genome --list\n\n2) Display all available genomes in a remote\
+    \ database:\n\n    motifscan genome --list-remote\n\n3) Search genomes in a remote\
+    \ database by keyword (e.g. 'human'):\n\n    motifscan genome --search human\n\
+    \n4) Install 'hg19' genome assembly from a remote database:\n\n    motifscan genome\
+    \ --install -n hg19 -r hg19\n\n5) Install 'hg19' genome assembly with local prepared\
+    \ files:\n\n    motifscan genome --install -n hg19 -i <hg19.fa> -a <refGene.txt>\
+    \   \n\n6) Uninstall a genome assembly:\n\n    motifscan genome --uninstall <genome_name>\n\
+    \nNotes:\n------       \nThe path of newly installed genome will be automatically\
+    \ saved. If you \nmove the directory to another location later, please reconfigure\
+    \ it:\n\n    motifscan config --set-genome <genome_name> <new_path>\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/motifscan:1.3.0--py36h4c5857e_0
+- !Command
+  command:
+  - motifscan
+  - scan
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: strands.
+    description: 'Enrichment Analysis Options:'
+  - !Positional
+    optional: false
+    position: 1
+    name: analysis.
+    description: --cf {bed,bed3-summit,macs,macs2,narrowpeak,broadpeak,manorm}
+  - !Positional
+    optional: false
+    position: 0
+    name: bed
+    description: 'Threads Options:'
+  - !Positional
+    optional: false
+    position: 0
+    name: site.
+    description: --plot                If set, plot the distributions of detected
+      motif
+  - !Positional
+    optional: false
+    position: 1
+    name: sites.
+    description: 'Examples:'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: Enable verbose log messages.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Input genomic regions (peaks) to be scanned.
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: 'Format of the input file. Default: bed'
+    args: !ChoiceFlagArg
+      choices: !!set
+        bed:
+        macs2:
+        broadpeak:
+        narrowpeak:
+        manorm:
+        bed3-summit:
+        macs:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --motif
+    description: Motif set name to scan for.
+    args: !SimpleFlagArg
+      name: NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --genome
+    description: Genome assembly name.
+    args: !SimpleFlagArg
+      name: GENOME
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: 'P value cutoff for motif scores. Default: 1e-4'
+    args: !ChoiceFlagArg
+      choices: !!set
+        '1e-3':
+        '1e-5':
+        '1e-6':
+        '1e-4':
+        '1e-2':
+  - !Flag
+    optional: true
+    synonyms:
+    - --loc
+    description: If specified, only scan promoter or distal regions.
+    args: !ChoiceFlagArg
+      choices: !!set
+        distal:
+        promoter:
+  - !Flag
+    optional: true
+    synonyms:
+    - --upstream
+    description: 'TSS upstream distance for promoters. Default: 4000'
+    args: !SimpleFlagArg
+      name: DISTANCE
+  - !Flag
+    optional: true
+    synonyms:
+    - --downstream
+    description: 'TSS downstream distance for promoters. Default: 2000'
+    args: !SimpleFlagArg
+      name: DISTANCE
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --window-size
+    description: "Window size for scanning. In most cases, motifs occur\nclosely around\
+      \ the centers or summits of genomic\npeaks. Scanning a fixed-size window is\
+      \ often\nsufficient to detect motif sites and unbiased for the\nenrichment analysis.\
+      \ If set to 0, the whole input\nregions are included for scanning. Default:\
+      \ 1000"
+    args: !SimpleFlagArg
+      name: LENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - --strand
+    description: '{both,+,-}   Enable strand-specific scanning, defaults to scan both'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-enrich
+    description: Disable the enrichment analysis.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --n-random
+    description: "Generate N random control regions for each input\nregion. Default:\
+      \ 5"
+    args: !SimpleFlagArg
+      name: N
+  - !Flag
+    optional: true
+    synonyms:
+    - --seed
+    description: Random seed used to generate control regions.
+    args: !SimpleFlagArg
+      name: SEED
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: Use custom control regions for the enrichment
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: Number of processes used to run in parallel.
+    args: !SimpleFlagArg
+      name: N
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-dir
+    description: Directory to write output files.
+    args: !SimpleFlagArg
+      name: DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --site
+    description: If set, report the position for each detected motif
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: motifscan scan [-h] -i FILE\n                      [-f {bed,bed3-summit,macs,macs2,narrowpeak,broadpeak,manorm}]\n\
+    \                      -m NAME -g GENOME [-p {1e-2,1e-3,1e-4,1e-5,1e-6}]\n   \
+    \                   [--loc {promoter,distal}] [--upstream DISTANCE]\n        \
+    \              [--downstream DISTANCE] [-w LENGTH]\n                      [--strand\
+    \ {both,+,-}] [--no-enrich] [--n-random N]\n                      [--seed SEED]\
+    \ [-c FILE]\n                      [--cf {bed,bed3-summit,macs,macs2,narrowpeak,broadpeak,manorm}]\n\
+    \                      [-t N] -o DIR [--site] [--plot] [--verbose]\n\nScan input\
+    \ regions to detect motif occurrences.\n\nThis main command invokes to scan the\
+    \ sequences of user specified input \ngenomic regions and detect the occurrences\
+    \ for a set of known motifs. \nAfter scanning the input regions, an optional motif\
+    \ enrichment analysis \nis performed to check whether these motifs are over/under-represented\
+    \ \ncompared to control regions (can be random generated or user specified).\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --verbose             Enable verbose log messages.\n\nInput Options:\n  -i\
+    \ FILE               Input genomic regions (peaks) to be scanned.\n  -f {bed,bed3-summit,macs,macs2,narrowpeak,broadpeak,manorm}\n\
+    \                        Format of the input file. Default: bed\n  -m NAME, --motif\
+    \ NAME\n                        Motif set name to scan for.\n  -g GENOME, --genome\
+    \ GENOME\n                        Genome assembly name.\n\nScanning Options:\n\
+    \  -p {1e-2,1e-3,1e-4,1e-5,1e-6}\n                        P value cutoff for motif\
+    \ scores. Default: 1e-4\n  --loc {promoter,distal}\n                        If\
+    \ specified, only scan promoter or distal regions.\n  --upstream DISTANCE   TSS\
+    \ upstream distance for promoters. Default: 4000\n  --downstream DISTANCE\n  \
+    \                      TSS downstream distance for promoters. Default: 2000\n\
+    \  -w LENGTH, --window-size LENGTH\n                        Window size for scanning.\
+    \ In most cases, motifs occur\n                        closely around the centers\
+    \ or summits of genomic\n                        peaks. Scanning a fixed-size\
+    \ window is often\n                        sufficient to detect motif sites and\
+    \ unbiased for the\n                        enrichment analysis. If set to 0,\
+    \ the whole input\n                        regions are included for scanning.\
+    \ Default: 1000\n  --strand {both,+,-}   Enable strand-specific scanning, defaults\
+    \ to scan both\n                        strands.\n\nEnrichment Analysis Options:\n\
+    \  --no-enrich           Disable the enrichment analysis.\n  --n-random N    \
+    \      Generate N random control regions for each input\n                    \
+    \    region. Default: 5\n  --seed SEED           Random seed used to generate\
+    \ control regions.\n  -c FILE               Use custom control regions for the\
+    \ enrichment\n                        analysis.\n  --cf {bed,bed3-summit,macs,macs2,narrowpeak,broadpeak,manorm}\n\
+    \                        Format of the control file. Default: bed\n\nThreads Options:\n\
+    \  -t N, --threads N     Number of processes used to run in parallel.\n\nOutput\
+    \ Options:\n  -o DIR, --output-dir DIR\n                        Directory to write\
+    \ output files.\n  --site                If set, report the position for each\
+    \ detected motif\n                        site.\n  --plot                If set,\
+    \ plot the distributions of detected motif\n                        sites.\n\n\
+    Examples:\n---------\n1) Scan input regions for a set of known motifs under 'hg19'\
+    \ genome:\n\n    motifscan scan -i regions.bed -m <motif_set> -g hg19 -o <path>\n\
+    \n2) Test motif enrichment compared to user-specified control regions:\n\n   \
+    \ motifscan scan -i regions.bed -c control.bed -m <motif_set> -g hg19 -o <path>\n\
+    \n3) Only scan input regions located at promoters:\n\n    motifscan scan -i regions.bed\
+    \ -m <motif_set> -g hg19 --loc promoter -o <path>\n\n4) Scan whole input regions\
+    \ rather than fixed-size windows:\n\n    motifscan scan -i regions.bed -m <motif_set>\
+    \ -g hg19 -w 0 -o <path>\n\n5) Report the positions and distributions of detected\
+    \ motif sites:\n\n    motifscan scan -i regions.bed -m <motif_set> -g hg19 --site\
+    \ --plot -o <path>\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/motifscan:1.3.0--py36h4c5857e_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: motifscan [-h] [-v] command ...\n\nMotifScan: A motif discovery\
+  \ tool to detect the occurrences of known motifs\n\nGiven a set of input genomic\
+  \ regions, MotifScan scans the sequences to \ndetect the occurrences of known motifs.\
+  \ It can also perform an enrichment \nanalysis to check whether these motifs are\
+  \ over/under-represented compared \nto the control regions.\n\n!!! NOTE !!!\nMotifScan\
+  \ requires basic data files including genome sequences and motif \nPFMs (Position\
+  \ Frequency Matrices) to detect the binding sites of motifs. \nBefore scanning,\
+  \ users should install genome assemblies and motif sets from\na remote database\
+  \ or with local prepared files via `motifscan genome` and \n`motifscan motif` subcommands.\n\
+  \nCitation:\nSun, H., Wang, J., Gong, Z. et al. Quantitative integration of epigenomic\
+  \ \nvariation and transcription factor binding using MAmotif toolkit identifies\n\
+  an important role of IRF2 as transcription activator at gene promoters. \nCell Discov\
+  \ 4, 38 (2018). https://doi.org/10.1038/s41421-018-0045-y\n\noptional arguments:\n\
+  \  -h, --help     show this help message and exit\n  -v, --version  show program's\
+  \ version number and exit\n\nMotifScan Subcommands:\n  command\n    config     \
+  \  Configure data paths for MotifScan.\n    genome       Genome assembly commands.\n\
+  \    motif        Motif set (PFMs/PWMs) commands.\n    scan         Scan input regions\
+  \ to detect motif occurrences.\n\nPlease run `motifscan COMMAND -h` to see the subcommand\
+  \ options.\n\nSee also: \n  Documentation: https://motifscan.readthedocs.io\n  Source\
+  \ code: https://github.com/shao-lab/MotifScan\n  Bug reports: https://github.com/shao-lab/MotifScan/issues\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/motifscan:1.3.0--py36h4c5857e_0

@@ -22,6 +22,9 @@ task RunClassifierpl {
       ~{blast} \
       ~{prefix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     perl: ""
     runmetaphylerdotpl: ""

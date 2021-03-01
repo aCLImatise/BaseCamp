@@ -20,6 +20,9 @@ task ContigMerDepth128mer {
       ~{output_prefix} \
       ~{contigs_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mer_count_file_prefix: ""
     mer_size: ""

@@ -12,6 +12,9 @@ task Fold {
       ~{if (spaces) then "--spaces" else ""} \
       ~{if defined(width) then ("--width " +  '"' + width + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bytes: "count bytes rather than columns"
     spaces: "break at spaces"

@@ -8,6 +8,9 @@ task IpaValidate {
     ipa validate \
       ~{ipa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ipa: ""
   }

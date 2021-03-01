@@ -4,6 +4,9 @@ task Bamfilterrefid {
   command <<<
     bamfilterrefid
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

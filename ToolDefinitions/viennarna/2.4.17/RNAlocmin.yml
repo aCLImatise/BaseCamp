@@ -1,0 +1,341 @@
+!Command
+command:
+- RNAlocmin
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: this
+  description: (default=`0.0')
+- !Positional
+  optional: false
+  position: 1
+  name: postprocessing.
+  description: (default=off)
+- !Positional
+  optional: false
+  position: 0
+  name: flag.
+  description: (default=`treeRNAloc.ps')
+- !Positional
+  optional: false
+  position: 0
+  name: basin
+  description: (default=`1000')
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --detailed-help
+  description: "Print help, including all details and hidden\noptions, and exit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --full-help
+  description: Print help, including hidden options, and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --seq
+  description: "Sequence file in FASTA format. If the sequence is\nthe first line\
+    \ of the input file, this is not\nneeded  (default=`seq.txt')"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --previous
+  description: "Previously found LM (output from RNAlocmin or\nbarriers), if specified\
+    \ does not need --seq\noption"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --move
+  description: "Move set:\nI ==> insertion & deletion of base pairs\nS ==> I&D& switch\
+    \ of base pairs  (possible\nvalues=\"I\", \"S\" default=`I')"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --min-num
+  description: "Maximal number of local minima returned\n(0 == unlimited)  (default=`100000')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --find-num
+  description: "Maximal number of local minima found\n(default = unlimited - crawl\
+    \ through whole input\nfile)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose-lvl
+  description: "Level of verbosity (0 = nothing, 4 = full)\nWARNING: higher verbose\
+    \ levels increase the\ncomputation time  (default=`0')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --depth
+  description: "Depth of findpath search (higher value increases\nrunning time linearly)\
+    \  (default=`10')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --minh
+  description: Print only minima with energy barrier greater than
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --walk
+  description: "Walking method used\nD ==> gradient descent\nF ==> use first found\
+    \ lower energy structure\nR ==> use random lower energy structure (does\nnot work\
+    \ with --noLP and -m S options)\n(possible values=\"D\", \"F\", \"R\"\ndefault=`D')"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --noLP
+  description: "Work only with canonical RNA structures (w/o\nisolated base pairs,\
+    \ cannot be combined with\nranodm walk (-w R option) and shift move set (-m\n\
+    S))  (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --paramFile
+  description: "Read energy parameters from paramfile, instead of\nusing the default\
+    \ parameter set"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dangles
+  description: "How to treat \"dangling end\" energies for bases\nadjacent to helices\
+    \ in free ends and multi-loops\n(default=`2')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --pseudoknots
+  description: "Allow for pseudoknots according to \"gfold\" model\n- H, K, L, and\
+    \ M types (genus one) of\npseudoknots are allowed (increases computation\ntime\
+    \ greatly), cannot be combined with shift\nmove set (-m S)  (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --just-read
+  description: Do not expect input from stdin, just do
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --neighborhood
+  description: "Use the Neighborhood routines to perform gradient\ndescend. Cannot\
+    \ be combined with shift move set\n(-m S) and pseudoknots (-k). Test option.\n\
+    (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --degeneracy-off
+  description: "Do not deal with degeneracy, select the\nlexicographically first from\
+    \ the same energy\nneighbors.  (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --just-output
+  description: "Do not store the minima and optimize, just compute\ndirectly minima\
+    \ and output them. Output file can\ncontain duplicates.  (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bartree
+  description: "Generate an approximate barrier tree.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --barr-name
+  description: Name of barrier tree output file, switches on -b
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --barrier-file
+  description: "File for saddle heights between LM (simulates the\noutput format of\
+    \ barriers program)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rates
+  description: Create rates for treekin  (default=off)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --rates-file
+  description: "File where to write rates, switches on -r flag\n(default=`rates.out')"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --temp
+  description: "Temperature in Celsius (only for rates)\n(default=`37.0')"
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - --floodPortion
+  description: "Fraction of minima to flood (floods first minima\nwith low number\
+    \ of inwalking sample structures)\n(0.0 -> no flood; 1.0 -> try to flood all)\n\
+    Usable only with -r or -b options.\n(default=`0.95')"
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - --floodMax
+  description: Flood cap - how many structures to flood in one
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --eRange
+  description: "Report only LM, which energy is in range <MFE (or\nlowest found LM),\
+    \ MFE+eRange> in kcal/mol.\n"
+  args: !SimpleFlagArg
+    name: FLOAT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: RNAlocmin [OPTION]... [FILE]...\nCalculate local minima from structures\
+  \ via gradient walks. Example usage: \n    RNAsubopt -p 10000 < \"sequence.txt\"\
+  \ > \"suboptp.txt\"\n    RNAlocmin -s \"sequence.txt\" [OPTIONS] < \"suboptp.txt\"\
+  \n\n  -h, --help                 Print help and exit\n      --detailed-help    \
+  \    Print help, including all details and hidden\n                            \
+  \   options, and exit\n      --full-help            Print help, including hidden\
+  \ options, and exit\n  -V, --version              Print version and exit\n\nGeneral\
+  \ options:\n  -s, --seq=STRING           Sequence file in FASTA format. If the sequence\
+  \ is\n                               the first line of the input file, this is not\n\
+  \                               needed  (default=`seq.txt')\n  -p, --previous=STRING\
+  \      Previously found LM (output from RNAlocmin or\n                         \
+  \      barriers), if specified does not need --seq\n                           \
+  \    option\n  -m, --move=STRING          Move set:\n                          \
+  \     I ==> insertion & deletion of base pairs\n                               S\
+  \ ==> I&D& switch of base pairs  (possible\n                               values=\"\
+  I\", \"S\" default=`I')\n  -n, --min-num=INT          Maximal number of local minima\
+  \ returned\n                               (0 == unlimited)  (default=`100000')\n\
+  \      --find-num=INT         Maximal number of local minima found\n           \
+  \                    (default = unlimited - crawl through whole input\n        \
+  \                       file)\n  -v, --verbose-lvl=INT      Level of verbosity (0\
+  \ = nothing, 4 = full)\n                               WARNING: higher verbose levels\
+  \ increase the\n                               computation time  (default=`0')\n\
+  \      --depth=INT            Depth of findpath search (higher value increases\n\
+  \                               running time linearly)  (default=`10')\n      --minh=DOUBLE\
+  \          Print only minima with energy barrier greater than\n                \
+  \               this  (default=`0.0')\n  -w, --walk=STRING          Walking method\
+  \ used\n                               D ==> gradient descent\n                \
+  \               F ==> use first found lower energy structure\n                 \
+  \              R ==> use random lower energy structure (does\n                 \
+  \              not work with --noLP and -m S options)\n                        \
+  \       (possible values=\"D\", \"F\", \"R\"\n                               default=`D')\n\
+  \      --noLP                 Work only with canonical RNA structures (w/o\n   \
+  \                            isolated base pairs, cannot be combined with\n    \
+  \                           ranodm walk (-w R option) and shift move set (-m\n \
+  \                              S))  (default=off)\n  -P, --paramFile=STRING    \
+  \ Read energy parameters from paramfile, instead of\n                          \
+  \     using the default parameter set\n  -d, --dangles=INT          How to treat\
+  \ \"dangling end\" energies for bases\n                               adjacent to\
+  \ helices in free ends and multi-loops\n                                 (default=`2')\n\
+  \  -k, --pseudoknots          Allow for pseudoknots according to \"gfold\" model\n\
+  \                               - H, K, L, and M types (genus one) of\n        \
+  \                       pseudoknots are allowed (increases computation\n       \
+  \                        time greatly), cannot be combined with shift\n        \
+  \                       move set (-m S)  (default=off)\n      --just-read      \
+  \      Do not expect input from stdin, just do\n                               postprocessing.\
+  \  (default=off)\n  -N, --neighborhood         Use the Neighborhood routines to\
+  \ perform gradient\n                               descend. Cannot be combined with\
+  \ shift move set\n                               (-m S) and pseudoknots (-k). Test\
+  \ option.\n                               (default=off)\n      --degeneracy-off\
+  \       Do not deal with degeneracy, select the\n                              \
+  \ lexicographically first from the same energy\n                               neighbors.\
+  \  (default=off)\n      --just-output          Do not store the minima and optimize,\
+  \ just compute\n                               directly minima and output them.\
+  \ Output file can\n                               contain duplicates.  (default=off)\n\
+  \nBarrier tree:\n  -b, --bartree              Generate an approximate barrier tree.\n\
+  \                               (default=off)\n      --barr-name=STRING     Name\
+  \ of barrier tree output file, switches on -b\n                               flag.\
+  \  (default=`treeRNAloc.ps')\n\nKinetics (rates for treekin program):\n      --barrier-file=STRING\
+  \  File for saddle heights between LM (simulates the\n                         \
+  \      output format of barriers program)\n  -r, --rates                Create rates\
+  \ for treekin  (default=off)\n  -f, --rates-file=STRING    File where to write rates,\
+  \ switches on -r flag\n                               (default=`rates.out')\n  -T,\
+  \ --temp=DOUBLE          Temperature in Celsius (only for rates)\n             \
+  \                  (default=`37.0')\n\nFlooding parameters (flooding occurs only\
+  \ with -r, -b, or --minh option):\n      --floodPortion=DOUBLE  Fraction of minima\
+  \ to flood (floods first minima\n                               with low number\
+  \ of inwalking sample structures)\n                               (0.0 -> no flood;\
+  \ 1.0 -> try to flood all)\n                               Usable only with -r or\
+  \ -b options.\n                               (default=`0.95')\n      --floodMax=INT\
+  \         Flood cap - how many structures to flood in one\n                    \
+  \           basin  (default=`1000')\n\nMiscelaneous:\n      --eRange=FLOAT     \
+  \    Report only LM, which energy is in range <MFE (or\n                       \
+  \        lowest found LM), MFE+eRange> in kcal/mol.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/viennarna:2.4.17--py36hd181a71_0

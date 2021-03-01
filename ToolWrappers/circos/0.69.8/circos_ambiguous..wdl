@@ -8,6 +8,9 @@ task CircosAmbiguous {
     circos ambiguous_ \
       ~{hood}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hood: "http://www.circos.ca/documentation/tutorials/configuration/debugging"
   }

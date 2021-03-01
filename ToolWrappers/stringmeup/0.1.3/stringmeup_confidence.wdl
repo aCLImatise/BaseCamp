@@ -8,6 +8,9 @@ task StringmeupConfidence {
     stringmeup confidence \
       ~{confidence_recal}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     confidence_recal: ""
   }

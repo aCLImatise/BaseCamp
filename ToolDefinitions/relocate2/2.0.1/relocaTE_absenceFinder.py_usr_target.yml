@@ -13,10 +13,10 @@ subcommands:
   - genome_path
   positional:
   - !Positional
-    description: '= sys.argv[4] ## repeat to analyze: ALL or mPing/other te name '
+    optional: false
     position: 0
     name: TE
-    optional: false
+    description: '= sys.argv[4] ## repeat to analyze: ALL or mPing/other te name '
   named: []
   parent: !Command
     command: *id001
@@ -28,10 +28,10 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: '= sys.argv[4] ## repeat to analyze: ALL or mPing/other te name '
+        optional: false
         position: 0
         name: TE
-        optional: false
+        description: '= sys.argv[4] ## repeat to analyze: ALL or mPing/other te name '
       named: []
       parent: !Command
         command: *id001
@@ -43,11 +43,11 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: '= sys.argv[4] ## repeat to analyze: ALL or mPing/other te
-              name '
+            optional: false
             position: 0
             name: TE
-            optional: false
+            description: '= sys.argv[4] ## repeat to analyze: ALL or mPing/other te
+              name '
           named: []
           parent: !Command
             command: *id001
@@ -59,47 +59,86 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: '= sys.argv[4] ## repeat to analyze: ALL or mPing/other
-                  te name '
+                optional: false
                 position: 0
                 name: TE
-                optional: false
+                description: '= sys.argv[4] ## repeat to analyze: ALL or mPing/other
+                  te name '
               named: []
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
                 named: []
-                parent: !Command
-                  command:
-                  - relocaTE_absenceFinder.py
-                  positional: []
-                  named: []
-                  parent:
-                  subcommands:
-                  - *id003
-                  usage: []
-                  help_flag:
-                  usage_flag:
-                  version_flag:
-                  help_text: "Traceback (most recent call last):\n  File \"/usr/local/bin/relocaTE_absenceFinder.py\"\
-                    , line 967, in <module>\n    main()\n  File \"/usr/local/bin/relocaTE_absenceFinder.py\"\
-                    , line 890, in main\n    usr_target           = sys.argv[2] ##\
-                    \ chromosome to analyze: ALL or Chr1..N\nIndexError: list index\
-                    \ out of range\n"
-                  generated_using: &id004
-                  - --help
+                parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: '= sys.argv[4] ## repeat to analyze: ALL or mPing/other
-                      te name '
+                    optional: false
                     position: 0
                     name: TE
-                    optional: false
+                    description: '= sys.argv[4] ## repeat to analyze: ALL or mPing/other
+                      te name '
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent: !Command
+                      command:
+                      - relocaTE_absenceFinder.py
+                      positional: []
+                      named: []
+                      parent:
+                      subcommands:
+                      - *id003
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Traceback (most recent call last):\n  File \"/usr/local/bin/relocaTE_absenceFinder.py\"\
+                        , line 967, in <module>\n    main()\n  File \"/usr/local/bin/relocaTE_absenceFinder.py\"\
+                        , line 890, in main\n    usr_target           = sys.argv[2]\
+                        \ ## chromosome to analyze: ALL or Chr1..N\nIndexError: list\
+                        \ index out of range\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: TE
+                        description: '= sys.argv[4] ## repeat to analyze: ALL or mPing/other
+                          te name '
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Traceback (most recent call last):\n  File \"/usr/local/bin/relocaTE_absenceFinder.py\"\
+                        , line 967, in <module>\n    main()\n  File \"/usr/local/bin/relocaTE_absenceFinder.py\"\
+                        , line 892, in main\n    TE                   = sys.argv[4]\
+                        \ ## repeat to analyze: ALL or mPing/other te name \nIndexError:\
+                        \ list index out of range\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "Traceback (most recent call last):\n  File \"/usr/local/bin/relocaTE_absenceFinder.py\"\
+                      , line 967, in <module>\n    main()\n  File \"/usr/local/bin/relocaTE_absenceFinder.py\"\
+                      , line 891, in main\n    genome_path          = sys.argv[3]\
+                      \ ## genome sequence\nIndexError: list index out of range\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -111,6 +150,7 @@ subcommands:
                     \ repeat to analyze: ALL or mPing/other te name \nIndexError:\
                     \ list index out of range\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -120,6 +160,7 @@ subcommands:
                   , line 891, in main\n    genome_path          = sys.argv[3] ## genome\
                   \ sequence\nIndexError: list index out of range\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -131,6 +172,7 @@ subcommands:
                 \ to analyze: ALL or mPing/other te name \nIndexError: list index\
                 \ out of range\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -140,6 +182,7 @@ subcommands:
               , line 891, in main\n    genome_path          = sys.argv[3] ## genome\
               \ sequence\nIndexError: list index out of range\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -151,6 +194,7 @@ subcommands:
             \ to analyze: ALL or mPing/other te name \nIndexError: list index out\
             \ of range\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -160,6 +204,7 @@ subcommands:
           , line 891, in main\n    genome_path          = sys.argv[3] ## genome sequence\n\
           IndexError: list index out of range\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -170,6 +215,7 @@ subcommands:
         , line 892, in main\n    TE                   = sys.argv[4] ## repeat to analyze:\
         \ ALL or mPing/other te name \nIndexError: list index out of range\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -179,6 +225,7 @@ subcommands:
       , line 891, in main\n    genome_path          = sys.argv[3] ## genome sequence\n\
       IndexError: list index out of range\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -189,6 +236,7 @@ subcommands:
     , line 892, in main\n    TE                   = sys.argv[4] ## repeat to analyze:\
     \ ALL or mPing/other te name \nIndexError: list index out of range\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -198,3 +246,4 @@ help_text: "Traceback (most recent call last):\n  File \"/usr/local/bin/relocaTE
   , line 891, in main\n    genome_path          = sys.argv[3] ## genome sequence\n\
   IndexError: list index out of range\n"
 generated_using: *id004
+docker_image:

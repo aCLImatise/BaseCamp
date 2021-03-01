@@ -5,36 +5,39 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Force strandedness.  That is, only merge features\nthat are on the\
-    \ same strand.\n- By default, merging is done without respect to strand."
+  optional: true
   synonyms:
   - -s
+  description: "Force strandedness.  That is, only merge features\nthat are on the\
+    \ same strand.\n- By default, merging is done without respect to strand."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -S
   description: "Force merge for one specific strand only.\nFollow with + or - to force\
     \ merge from only\nthe forward or reverse strand, respectively.\n- By default,\
     \ merging is done without respect to strand."
-  synonyms:
-  - -S
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -d
   description: "Maximum distance between features allowed for features\nto be merged.\n\
     - Def. 0. That is, overlapping & book-ended features are merged.\n- (INTEGER)\n\
     - Note: negative values enforce the number of b.p. required for overlap."
-  synonyms:
-  - -d
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify columns from the B file to map onto intervals in A.\nDefault:\
-    \ 5.\nMultiple columns can be specified in a comma-delimited list."
+  optional: true
   synonyms:
   - -c
+  description: "Specify columns from the B file to map onto intervals in A.\nDefault:\
+    \ 5.\nMultiple columns can be specified in a comma-delimited list."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
   description: "Specify the operation that should be applied to -c.\nValid operations:\n\
     sum, min, max, absmin, absmax,\nmean, median, mode, antimode\nstdev, sstdev\n\
     collapse (i.e., print a delimited list (duplicates allowed)),\ndistinct (i.e.,\
@@ -51,61 +54,58 @@ named:
     \ in respective order.\nE.g., \"-c 5,4,6 -o sum,mean,count\" will give the sum\
     \ of column 5,\nthe mean of column 4, and the count of column 6.\nThe order of\
     \ output columns will match the ordering given in the command."
-  synonyms:
-  - -o
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify a custom delimiter for the collapse operations.\n- Example:\
-    \ -delim \"|\"\n- Default: \",\"."
+  optional: true
   synonyms:
   - -delim
+  description: "Specify a custom delimiter for the collapse operations.\n- Example:\
+    \ -delim \"|\"\n- Default: \",\"."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Sets the decimal precision for output (Default: 5)'
+  optional: true
   synonyms:
   - -prec
+  description: 'Sets the decimal precision for output (Default: 5)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: If using BAM input, write output as BED.
+  optional: true
   synonyms:
   - -bed
+  description: If using BAM input, write output as BED.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: the header from the A file prior to results.
+  optional: true
   synonyms:
   - -header
+  description: the header from the A file prior to results.
   args: !SimpleFlagArg
     name: Print
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -nobuf
   description: "Disable buffered output. Using this option will cause each line\n\
     of output to be printed as it is generated, rather than saved\nin a buffer. This\
     \ will make printing large output files\nnoticeably slower, but can be useful\
     \ in conjunction with\nother software tools and scripts that need to process one\n\
     line of bedtools output at a time."
-  synonyms:
-  - -nobuf
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -iobuf
   description: "Specify amount of memory to use for input buffer.\nTakes an integer\
     \ argument. Optional suffixes K/M/G supported.\nNote: currently has no effect\
     \ with compressed files."
-  synonyms:
-  - -iobuf
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -i
+  description: ''
   args: !SimpleFlagArg
     name: bed/gff/vcf
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -155,3 +155,4 @@ help_text: "\nTool:    bedtools merge (aka mergeBed)\nVersion: v2.29.2\nSummary:
   \ must be sorted by chrom, then start.\n\n\n\n\n"
 generated_using:
 - --help
+docker_image:

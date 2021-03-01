@@ -3,27 +3,27 @@ id: telescope_resume.cwl
 inputs:
 - id: in_quiet
   doc: 'Silence (most) output. (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_debug
   doc: 'Print debug messages. (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_log_file
   doc: 'Log output to this file. (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --logfile
 - id: in_outdir
   doc: 'Output directory. (default: .)'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_exp_tag
   doc: 'Experiment tag (default: telescope)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --exp_tag
 - id: in_reassign_mode
@@ -39,39 +39,39 @@ inputs:
     \ using all assignment modes are\nincluded in the Telescope report by default.\
     \ This\nargument determines what mode will be used for the\n\"final counts\" column.\
     \ (default: exclude)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --reassign_mode
 - id: in_conf_prob
   doc: "Minimum probability for high confidence assignment.\n(default: 0.9)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --conf_prob
 - id: in_pi_prior
   doc: "Prior on π. Equivalent to adding n unique reads.\n(default: 0)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --pi_prior
 - id: in_theta_prior
   doc: "Prior on θ. Equivalent to adding n non-unique reads.\nNOTE: It is recommended\
     \ to set this prior to a large\nvalue. This increases the penalty for non-unique\
     \ reads\nand improves accuracy. (default: 200000)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --theta_prior
 - id: in_em_epsilon
   doc: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
-  type: double
+  type: double?
   inputBinding:
     prefix: --em_epsilon
 - id: in_max_iter
   doc: 'EM Algorithm maximum iterations (default: 100)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_iter
 - id: in_use_likelihood
   doc: "Use difference in log-likelihood as convergence\ncriteria. (default: False)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use_likelihood
 outputs:
@@ -80,14 +80,15 @@ outputs:
   type: stdout
 - id: out_log_file
   doc: 'Log output to this file. (default: None)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_log_file)
 - id: out_outdir
   doc: 'Output directory. (default: .)'
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - telescope

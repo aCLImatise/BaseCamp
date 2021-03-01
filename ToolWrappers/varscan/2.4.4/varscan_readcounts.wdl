@@ -22,6 +22,9 @@ task VarscanReadcounts {
       ~{if defined(min_base_qual) then ("--min-base-qual " +  '"' + min_base_qual + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     variants_file: "list of variants at which to report readcounts"
     output_file: "Output file to contain the readcounts"

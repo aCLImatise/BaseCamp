@@ -10,6 +10,9 @@ task RapidVisr {
       ~{viridis_pal} \
       ~{lowess}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     viridis_pal: "Attaching package: 'gplots'"
     lowess: "Error in if (plotMethod == \\\"stats\\\") { : "

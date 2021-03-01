@@ -4,6 +4,9 @@ task Coderet {
   command <<<
     coderet
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

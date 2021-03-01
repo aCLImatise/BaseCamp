@@ -3,149 +3,151 @@ command:
 - mango-submit
 positional:
 - !Positional
-  description: ': Path to compressed .genome file. To build a new genome file, run'
+  optional: false
   position: 0
   name: genome
-  optional: false
-- !Positional
-  description: '-cacheSize N                                                              :
-    Bp to cache on driver. (default: 1000)'
-  position: 1
-  name: bin/make_genome.
-  optional: false
+  description: ": Path to compressed .genome file. To build a new genome file, run\n\
+    bin/make_genome."
 named:
 - !Flag
-  description: ': A list of coverage files to view, separated by commas (,)'
+  optional: true
+  synonyms:
+  - -cacheSize
+  description: ': Bp to cache on driver. (default: 1000)'
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
   synonyms:
   - -coverage
+  description: ': A list of coverage files to view, separated by commas (,)'
   args: !SimpleFlagArg
     name: VAL
-  optional: true
 - !Flag
-  description: ": For debugging purposes. Sets front end in source code to avoid\n\
-    recompilation. (default: false)"
+  optional: true
   synonyms:
   - -debugFrontend
+  description: ": For debugging purposes. Sets front end in source code to avoid\n\
+    recompilation. (default: false)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': This turns on discovery mode on start up. (default: false)'
+  optional: true
   synonyms:
   - -discover
+  description: ': This turns on discovery mode on start up. (default: false)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': The feature files to view, separated by commas (,)'
+  optional: true
   synonyms:
   - -features
+  description: ': The feature files to view, separated by commas (,)'
   args: !SimpleFlagArg
     name: VAL
-  optional: true
 - !Flag
-  description: ': This turns on binned parquet pre-fetch warmup step (default: false)'
+  optional: true
   synonyms:
   - -parquetIsBinned
+  description: ': This turns on binned parquet pre-fetch warmup step (default: false)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': Parquet block size (default = 128mb) (default: 134217728)'
+  optional: true
   synonyms:
   - -parquet_block_size
+  description: ': Parquet block size (default = 128mb) (default: 134217728)'
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: '[UNCOMPRESSED | SNAPPY | GZIP | LZO | BROTLI   : Parquet compression
-    codec (default: GZIP)'
+  optional: true
   synonyms:
   - -parquet_compression_codec
+  description: '[UNCOMPRESSED | SNAPPY | GZIP | LZO | BROTLI   : Parquet compression
+    codec (default: GZIP)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': Disable dictionary encoding (default: false)'
+  optional: true
   synonyms:
   - -parquet_disable_dictionary
+  description: ': Disable dictionary encoding (default: false)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': Parquet logging level (default = severe) (default: SEVERE)'
+  optional: true
   synonyms:
   - -parquet_logging_level
+  description: ': Parquet logging level (default = severe) (default: SEVERE)'
   args: !SimpleFlagArg
     name: VAL
-  optional: true
 - !Flag
-  description: ': Parquet page size (default = 1mb) (default: 1048576)'
+  optional: true
   synonyms:
   - -parquet_page_size
+  description: ': Parquet page size (default = 1mb) (default: 1048576)'
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: ": The port to bind to for visualization. The default is 8080. (default:\n\
-    8080)"
+  optional: true
   synonyms:
   - -port
+  description: ": The port to bind to for visualization. The default is 8080. (default:\n\
+    8080)"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: ': Bp to prefetch in executors. (default: 10000)'
+  optional: true
   synonyms:
   - -prefetchSize
+  description: ': Bp to prefetch in executors. (default: 10000)'
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: ': Chromosomes to prefetch, separated by commas (,).'
+  optional: true
   synonyms:
   - -preload
+  description: ': Chromosomes to prefetch, separated by commas (,).'
   args: !SimpleFlagArg
     name: VAL
-  optional: true
 - !Flag
-  description: ': Print metrics to the log on completion (default: false)'
+  optional: true
   synonyms:
   - -print_metrics
+  description: ': Print metrics to the log on completion (default: false)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': A list of reads files to view, separated by commas (,)'
+  optional: true
   synonyms:
   - -reads
+  description: ': A list of reads files to view, separated by commas (,)'
   args: !SimpleFlagArg
     name: VAL
-  optional: true
 - !Flag
-  description: ': Repartitions data to default number of partitions. (default: false)'
+  optional: true
   synonyms:
   - -repartition
+  description: ': Repartitions data to default number of partitions. (default: false)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': For debugging purposes. (default: false)'
+  optional: true
   synonyms:
   - -test
+  description: ': For debugging purposes. (default: false)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ": A list of variants files to view, separated by commas (,). Vcf files\n\
-    require a corresponding tbi index.\n"
+  optional: true
   synonyms:
   - -variants
+  description: ": A list of variants files to view, separated by commas (,). Vcf files\n\
+    require a corresponding tbi index.\n"
   args: !SimpleFlagArg
     name: VAL
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: '(-help, --help, -?)                                                    :
-    Print help (default: true)'
+  optional: true
   synonyms:
   - -h
+  description: '(-help, --help, -?)                                                    :
+    Print help (default: true)'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: " genome                                                              \
@@ -191,3 +193,4 @@ help_text: " genome                                                             
   \ a corresponding tbi index.\n"
 generated_using:
 - --help
+docker_image:

@@ -10,6 +10,9 @@ task FermiSeqrank {
       ~{fermi} \
       ~{seq_sort}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fermi: ""
     seq_sort: ""

@@ -4,15 +4,60 @@ command:
 positional: []
 named:
 - !Flag
-  description: "[*.rng | *.rnc | *.nvdl | *.xsd] [instances]\n--validate-rng relax-ng-grammar-xml\
-    \ [instances]\n--validate-rnc relax-ng-compact-grammar-file [instances]\n--validate-nvdl\
-    \ nvdl-script-xml [instances]\n--validate-xsd xml-schema [instances]\n--validate-xsd2\
-    \ xml-schema [instances] (in .NET 2.0 validator)\n--validate-dtd instances\n--transform\
-    \ stylesheet instance-xml [output-xml]\n--prettyprint [source] [result]"
+  optional: true
   synonyms:
   - --validate
+  description: '[*.rng | *.rnc | *.nvdl | *.xsd] [instances]'
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - --validate-rng
+  description: '[instances]'
+  args: !SimpleFlagArg
+    name: relax-ng-grammar-xml
+- !Flag
+  optional: true
+  synonyms:
+  - --validate-rnc
+  description: '[instances]'
+  args: !SimpleFlagArg
+    name: relax-ng-compact-grammar-file
+- !Flag
+  optional: true
+  synonyms:
+  - --validate-nvdl
+  description: '[instances]'
+  args: !SimpleFlagArg
+    name: nvdl-script-xml
+- !Flag
+  optional: true
+  synonyms:
+  - --validate-xsd
+  description: '[instances]'
+  args: !SimpleFlagArg
+    name: xml-schema
+- !Flag
+  optional: true
+  synonyms:
+  - --validate-xsd2
+  description: '[instances] (in .NET 2.0 validator)'
+  args: !SimpleFlagArg
+    name: xml-schema
+- !Flag
+  optional: true
+  synonyms:
+  - --validate-dtd
+  - --transform
+  description: instance-xml [output-xml]
+  args: !SimpleFlagArg
+    name: instances
+- !Flag
+  optional: true
+  synonyms:
+  - --prettyprint
+  description: '[source] [result]'
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
@@ -29,3 +74,4 @@ help_text: "\nUsage: mono-xmltool [options]\n\noptions:\n\n\t--validate [*.rng |
   \ exception details.\n\n"
 generated_using:
 - --help
+docker_image:

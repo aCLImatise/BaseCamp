@@ -4,28 +4,35 @@ command:
 - uid
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: FASTA_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: OUTPUT_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-t, --table FILENAME  Filename of a table to record the changes (by\
-    \ default\ndiscards it)\n--help                Show this message and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
+  - -t
+  - --table
+  description: "Filename of a table to record the changes (by default\ndiscards it)"
+  args: !SimpleFlagArg
+    name: FILENAME
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: fasta-utils uid [OPTIONS] [FASTA_FILE] [OUTPUT_FILE]\n\n  Changes\
@@ -35,3 +42,4 @@ help_text: "Usage: fasta-utils uid [OPTIONS] [FASTA_FILE] [OUTPUT_FILE]\n\n  Cha
   \ this message and exit.\n"
 generated_using:
 - --help
+docker_image:

@@ -26,6 +26,9 @@ task StreamingQueryDNADatabaseQueuepy {
       ~{if defined(filter_file) then ("--filter_file " +  '"' + filter_file + '"') else ""} \
       ~{if defined(location_of_thresh) then ("--location_of_thresh " +  '"' + location_of_thresh + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads to use (default: 8)"
     containment_threshold: "Only return results with containment index above this\\nthreshold at the maximum k-mer size. (default: 0.1)"

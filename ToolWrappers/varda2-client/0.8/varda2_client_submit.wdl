@@ -16,6 +16,9 @@ task Varda2clientSubmit {
       ~{if defined(sample_sheet) then ("--sample-sheet " +  '"' + sample_sheet + '"') else ""} \
       ~{if defined(variants_file) then ("--variants-file " +  '"' + variants_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     disease_code: "Disease indication code"
     lab_sample_id: "Local sample id"

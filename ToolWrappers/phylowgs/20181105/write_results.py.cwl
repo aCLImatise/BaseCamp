@@ -3,12 +3,12 @@ id: write_results.py.cwl
 inputs:
 - id: in_include_ssm_names
   doc: "Include SSM names in output (which may be sensitive\ndata) (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --include-ssm-names
 - id: in_min_ssms
   doc: "Minimum number or percent of SSMs to retain a subclone\n(default: 0.01)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-ssms
 - id: in_dataset_name
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - write_results.py

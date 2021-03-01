@@ -20,6 +20,9 @@ task Rfmix2tagorepy {
       ~{if defined(unk) then ("--unk " +  '"' + unk + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chr_one: "Chromosome 1 RFMix painting"
     chr_two: "Chromosome 2 RFMix painting"

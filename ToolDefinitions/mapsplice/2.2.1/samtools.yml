@@ -11,17 +11,17 @@ subcommands:
   - glfview
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: glfview
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: in.glf
-    optional: false
+    description: ''
   named: []
-  parent: &id021 !Command
+  parent: &id022 !Command
     command: *id001
     positional: []
     named: []
@@ -31,17 +31,17 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: glfview
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: in.glf
-        optional: false
+        description: ''
       named: []
-      parent: &id020 !Command
+      parent: &id021 !Command
         command: *id001
         positional: []
         named: []
@@ -51,17 +51,17 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: glfview
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: in.glf
-            optional: false
+            description: ''
           named: []
-          parent: &id019 !Command
+          parent: &id020 !Command
             command: *id001
             positional: []
             named: []
@@ -71,17 +71,17 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: glfview
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: in.glf
-                optional: false
+                description: ''
               named: []
-              parent: &id003 !Command
+              parent: &id019 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -91,39 +91,930 @@ subcommands:
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: glfview
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: in.glf
-                    optional: false
+                    description: ''
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: glfview
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: in.glf
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: glfview <in.glf>\n"
+                      generated_using: &id005 []
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - samtools
+                      - reheader
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: in.header.sam
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: in.bam
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: samtools reheader <in.header.sam> <in.bam>\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - samtools
+                      - merge
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: out.bam
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: in1.bam
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 2
+                        name: in2.bam
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -n
+                        description: sort by read names
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -r
+                        description: attach RG tag (inferred from file names)
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -u
+                        description: uncompressed BAM output
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -R
+                        description: merge file in the specified region STR [all]
+                        args: !SimpleFlagArg
+                          name: STR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: copy the header in FILE to <out.bam> [in1.bam]
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -nr
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "merge: invalid option -- '-'\n\nUsage:   samtools\
+                        \ merge [-nr] [-h inh.sam] <out.bam> <in1.bam> <in2.bam> [...]\n\
+                        \nOptions: -n       sort by read names\n         -r      \
+                        \ attach RG tag (inferred from file names)\n         -u  \
+                        \     uncompressed BAM output\n         -R STR   merge file\
+                        \ in the specified region STR [all]\n         -h FILE  copy\
+                        \ the header in FILE to <out.bam> [in1.bam]\n\nNote: Samtools'\
+                        \ merge does not reconstruct the @RG dictionary in the header.\
+                        \ Users\n      must provide the correct header with -h, or\
+                        \ uses Picard which properly maintains\n      the header dictionary\
+                        \ in merging.\n\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id008
+                      - samtools
+                      - mpileup
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: in1.bam
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        description: reference sequence file [null]
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -r
+                        description: region in which pileup is generated [null]
+                        args: !SimpleFlagArg
+                          name: STR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        description: 'list of positions (format: chr pos) [null]'
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -M
+                        description: cap mapping quality at INT [60]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -Q
+                        description: min base quality [13]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -q
+                        description: filter out alignment with MQ smaller than INT
+                          [0]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -g
+                        description: generate BCF output
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -u
+                        description: do not compress BCF output
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -B
+                        description: disable BAQ computation
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "\nUsage:   samtools mpileup [options] in1.bam [in2.bam\
+                        \ [...]]\n\nOptions: -f FILE     reference sequence file [null]\n\
+                        \         -r STR      region in which pileup is generated\
+                        \ [null]\n         -l FILE     list of positions (format:\
+                        \ chr pos) [null]\n         -M INT      cap mapping quality\
+                        \ at INT [60]\n         -Q INT      min base quality [13]\n\
+                        \         -q INT      filter out alignment with MQ smaller\
+                        \ than INT [0]\n         -g          generate BCF output\n\
+                        \         -u          do not compress BCF output\n       \
+                        \  -B          disable BAQ computation\n\nNotes: Assuming\
+                        \ diploid individuals.\n\n"
+                      generated_using: *id005
+                      docker_image:
+                    - !Command
+                      command: &id009
+                      - samtools
+                      - rmdup
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: input.srt.bam
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: output.bam
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        description: rmdup for SE reads
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -S
+                        description: treat PE reads as SE in rmdup (force -s)
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -sS
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "rmdup: invalid option -- '-'\nrmdup: invalid option\
+                        \ -- 'h'\nrmdup: invalid option -- 'e'\nrmdup: invalid option\
+                        \ -- 'l'\nrmdup: invalid option -- 'p'\n\nUsage:  samtools\
+                        \ rmdup [-sS] <input.srt.bam> <output.bam>\n\nOption: -s \
+                        \   rmdup for SE reads\n        -S    treat PE reads as SE\
+                        \ in rmdup (force -s)\n\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id010
+                      - samtools
+                      - view
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: in.bam
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -b
+                        description: output BAM
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -H
+                        description: print header only (no alignments)
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -S
+                        description: input is SAM
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -u
+                        description: uncompressed BAM output (force -b)
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -x
+                        description: output FLAG in HEX (samtools-C specific)
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -X
+                        description: output FLAG in string (samtools-C specific)
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        description: list of reference names and lengths (force -S)
+                          [null]
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -T
+                        description: reference sequence file (force -S) [null]
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        description: output file name [stdout]
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -R
+                        description: list of read groups to be outputted [null]
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        description: required flag, 0 for unset [0]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -F
+                        description: filtering flag, 0 for unset [0]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -q
+                        description: minimum mapping quality [0]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        description: only output reads in library STR [null]
+                        args: !SimpleFlagArg
+                          name: STR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -r
+                        description: only output reads in read group STR [null]
+                        args: !SimpleFlagArg
+                          name: STR
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: print header for the SAM output
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "view: invalid option -- '-'\nview: invalid option\
+                        \ -- 'e'\n\nUsage:   samtools view [options] <in.bam>|<in.sam>\
+                        \ [region1 [...]]\n\nOptions: -b       output BAM\n      \
+                        \   -h       print header for the SAM output\n         -H\
+                        \       print header only (no alignments)\n         -S   \
+                        \    input is SAM\n         -u       uncompressed BAM output\
+                        \ (force -b)\n         -x       output FLAG in HEX (samtools-C\
+                        \ specific)\n         -X       output FLAG in string (samtools-C\
+                        \ specific)\n         -t FILE  list of reference names and\
+                        \ lengths (force -S) [null]\n         -T FILE  reference sequence\
+                        \ file (force -S) [null]\n         -o FILE  output file name\
+                        \ [stdout]\n         -R FILE  list of read groups to be outputted\
+                        \ [null]\n         -f INT   required flag, 0 for unset [0]\n\
+                        \         -F INT   filtering flag, 0 for unset [0]\n     \
+                        \    -q INT   minimum mapping quality [0]\n         -l STR\
+                        \   only output reads in library STR [null]\n         -r STR\
+                        \   only output reads in read group STR [null]\n         -?\
+                        \       longer help\n\nNotes:\n\n  1. By default, this command\
+                        \ assumes the file on the command line is in\n     the BAM\
+                        \ format and it prints the alignments in SAM. If `-t' is\n\
+                        \     applied, the input file is assumed to be in the SAM\
+                        \ format. The\n     file supplied with `-t' is SPACE/TAB delimited\
+                        \ with the first two\n     fields of each line consisting\
+                        \ of the reference name and the\n     corresponding sequence\
+                        \ length. The `.fai' file generated by `faidx'\n     can be\
+                        \ used here. This file may be empty if reads are unaligned.\n\
+                        \n  2. SAM->BAM conversion: `samtools view -bT ref.fa in.sam.gz'.\n\
+                        \n  3. BAM->SAM conversion: `samtools view in.bam'.\n\n  4.\
+                        \ A region should be presented in one of the following formats:\n\
+                        \     `chr1', `chr2:1,000' and `chr3:1000-2,000'. When a region\
+                        \ is\n     specified, the input alignment file must be an\
+                        \ indexed BAM file.\n\n  5. Option `-u' is preferred over\
+                        \ `-b' when the output is piped to\n     another samtools\
+                        \ command.\n\n  6. In a string FLAG, each character represents\
+                        \ one bit with\n     p=0x1 (paired), P=0x2 (properly paired),\
+                        \ u=0x4 (unmapped),\n     U=0x8 (mate unmapped), r=0x10 (reverse),\
+                        \ R=0x20 (mate reverse)\n     1=0x40 (first), 2=0x80 (second),\
+                        \ s=0x100 (not primary), \n     f=0x200 (failure) and d=0x400\
+                        \ (duplicate). Note that `-x' and\n     `-X' are samtools-C\
+                        \ specific. Picard and older samtools do not\n     support\
+                        \ HEX or string flags.\n\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id011
+                      - samtools
+                      - pileup
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: in.bam
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        description: simple (yet incomplete) pileup format
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -S
+                        description: the input is in SAM
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -B
+                        description: disable BAQ computation
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -A
+                        description: use the original MAQ model for SNP calling (DEPRECATED)
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - '-2'
+                        description: output the 2nd best call and quality
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -i
+                        description: only show lines/consensus with indels
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -Q
+                        description: min base quality (possibly capped by BAQ) [13]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -C
+                        description: coefficient for adjusting mapQ of poor mappings
+                          [0]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -m
+                        description: filtering reads with bits in INT [0x704]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -M
+                        description: cap mapping quality at INT [60]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -d
+                        description: limit maximum depth for indels [1024]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        description: list of reference sequences (force -S)
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        description: list of sites at which pileup is output
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        description: reference sequence in the FASTA format
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        description: compute the consensus sequence
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -v
+                        description: print variants only (for -c)
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -g
+                        description: output in the GLFv3 format (DEPRECATED)
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -T
+                        description: theta in maq consensus calling model (for -c)
+                          [0.83]
+                        args: !SimpleFlagArg
+                          name: FLOAT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -N
+                        description: number of haplotypes in the sample (for -c) [2]
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -r
+                        description: prior of a difference between two haplotypes
+                          (for -c) [0.001]
+                        args: !SimpleFlagArg
+                          name: FLOAT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -G
+                        description: prior of an indel between two haplotypes (for
+                          -c) [0.00015]
+                        args: !SimpleFlagArg
+                          name: FLOAT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -I
+                        description: phred prob. of an indel in sequencing/prep. (for
+                          -c) [40]
+                        args: !SimpleFlagArg
+                          name: INT
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "\nUsage:  samtools pileup [options] <in.bam>|<in.sam>\n\
+                        \nOption: -s        simple (yet incomplete) pileup format\n\
+                        \        -S        the input is in SAM\n        -B       \
+                        \ disable BAQ computation\n        -A        use the original\
+                        \ MAQ model for SNP calling (DEPRECATED)\n        -2     \
+                        \   output the 2nd best call and quality\n        -i     \
+                        \   only show lines/consensus with indels\n        -Q INT\
+                        \    min base quality (possibly capped by BAQ) [13]\n    \
+                        \    -C INT    coefficient for adjusting mapQ of poor mappings\
+                        \ [0]\n        -m INT    filtering reads with bits in INT\
+                        \ [0x704]\n        -M INT    cap mapping quality at INT [60]\n\
+                        \        -d INT    limit maximum depth for indels [1024]\n\
+                        \        -t FILE   list of reference sequences (force -S)\n\
+                        \        -l FILE   list of sites at which pileup is output\n\
+                        \        -f FILE   reference sequence in the FASTA format\n\
+                        \n        -c        compute the consensus sequence\n     \
+                        \   -v        print variants only (for -c)\n        -g   \
+                        \     output in the GLFv3 format (DEPRECATED)\n        -T\
+                        \ FLOAT  theta in maq consensus calling model (for -c) [0.83]\n\
+                        \        -N INT    number of haplotypes in the sample (for\
+                        \ -c) [2]\n        -r FLOAT  prior of a difference between\
+                        \ two haplotypes (for -c) [0.001]\n        -G FLOAT  prior\
+                        \ of an indel between two haplotypes (for -c) [0.00015]\n\
+                        \        -I INT    phred prob. of an indel in sequencing/prep.\
+                        \ (for -c) [40]\n\n"
+                      generated_using: *id005
+                      docker_image:
+                    - !Command
+                      command: &id012
+                      - samtools
+                      - tview
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: bamtk
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: tview
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 2
+                        name: aln.bam
+                        description: ''
+                      - !Positional
+                        optional: true
+                        position: 3
+                        name: ref.fasta
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: bamtk tview <aln.bam> [ref.fasta]\n"
+                      generated_using: *id005
+                      docker_image:
+                    - !Command
+                      command: &id013
+                      - samtools
+                      - idxstats
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: in.bam
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: samtools idxstats <in.bam>\n"
+                      generated_using: *id005
+                      docker_image:
+                    - !Command
+                      command: &id014
+                      - samtools
+                      - index
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: in.bam
+                        description: ''
+                      - !Positional
+                        optional: true
+                        position: 1
+                        name: out.index
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: samtools index <in.bam> [out.index]\n"
+                      generated_using: *id005
+                      docker_image:
+                    - !Command
+                      command: &id015
+                      - samtools
+                      - sort
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: in.bam
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: out.prefix
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -m
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: maxMem
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -on
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "sort: invalid option -- '-'\nsort: invalid option\
+                        \ -- 'h'\nsort: invalid option -- 'e'\nsort: invalid option\
+                        \ -- 'l'\nsort: invalid option -- 'p'\nUsage: samtools sort\
+                        \ [-on] [-m <maxMem>] <in.bam> <out.prefix>\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id016
+                      - samtools
+                      - flagstat
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: in.bam
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: samtools flagstat <in.bam>\n"
+                      generated_using: *id005
+                      docker_image:
+                    - !Command
+                      command: &id017
+                      - samtools
+                      - faidx
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: faidx
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: in.fasta
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: faidx <in.fasta> [<reg> [...]]\n"
+                      generated_using: *id005
+                      docker_image:
+                    - !Command
+                      command: &id018
+                      - samtools
+                      - calmd
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: samtools
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: fillmd
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 2
+                        name: aln.bam
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 3
+                        name: ref.fasta
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -e
+                        description: change identical bases to '='
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -u
+                        description: uncompressed BAM output (for piping)
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -b
+                        description: compressed BAM output
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -S
+                        description: the input is SAM with header
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -r
+                        description: read-independent local realignment
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -eubrS
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "\nUsage:   samtools fillmd [-eubrS] <aln.bam> <ref.fasta>\n\
+                        \nOptions: -e       change identical bases to '='\n      \
+                        \   -u       uncompressed BAM output (for piping)\n      \
+                        \   -b       compressed BAM output\n         -S       the\
+                        \ input is SAM with header\n         -r       read-independent\
+                        \ local realignment\n\n"
+                      generated_using: *id005
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "\nProgram: samtools (Tools for alignments in the SAM\
+                      \ format)\nVersion: 0.1.9 (r783)\n\nUsage:   samtools <command>\
+                      \ [options]\n\nCommand: view        SAM<->BAM conversion\n \
+                      \        sort        sort alignment file\n         pileup  \
+                      \    generate pileup output\n         mpileup     multi-way\
+                      \ pileup\n         faidx       index/extract FASTA\n       \
+                      \  tview       text alignment viewer\n         index       index\
+                      \ alignment\n         idxstats    BAM index stats (r595 or later)\n\
+                      \         fixmate     fix mate information\n         glfview\
+                      \     print GLFv3 file\n         flagstat    simple stats\n\
+                      \         calmd       recalculate MD/NM tags and '=' bases\n\
+                      \         merge       merge sorted alignments\n         rmdup\
+                      \       remove PCR duplicates\n         reheader    replace\
+                      \ BAM header\n\n"
+                    generated_using: *id005
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: glfview <in.glf>\n"
-                  generated_using: &id005 []
+                  generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - samtools
-                  - reheader
+                  command: *id006
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: in.header.sam
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: in.bam
-                    optional: false
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
@@ -132,67 +1023,65 @@ subcommands:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: samtools reheader <in.header.sam> <in.bam>\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - samtools
-                  - merge
+                  command: *id007
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: out.bam
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: in1.bam
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 2
                     name: in2.bam
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: sort by read names
+                    optional: true
                     synonyms:
                     - -n
+                    description: sort by read names
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: attach RG tag (inferred from file names)
+                    optional: true
                     synonyms:
                     - -r
+                    description: attach RG tag (inferred from file names)
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: uncompressed BAM output
+                    optional: true
                     synonyms:
                     - -u
+                    description: uncompressed BAM output
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: merge file in the specified region STR [all]
+                    optional: true
                     synonyms:
                     - -R
+                    description: merge file in the specified region STR [all]
                     args: !SimpleFlagArg
                       name: STR
-                    optional: true
                   - !Flag
-                    description: copy the header in FILE to <out.bam> [in1.bam]
+                    optional: true
                     synonyms:
                     - -h
+                    description: copy the header in FILE to <out.bam> [in1.bam]
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -nr
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -210,77 +1099,76 @@ subcommands:
                     \ correct header with -h, or uses Picard which properly maintains\n\
                     \      the header dictionary in merging.\n\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id008
-                  - samtools
-                  - mpileup
+                  command: *id008
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: in1.bam
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: reference sequence file [null]
+                    optional: true
                     synonyms:
                     - -f
+                    description: reference sequence file [null]
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: region in which pileup is generated [null]
+                    optional: true
                     synonyms:
                     - -r
+                    description: region in which pileup is generated [null]
                     args: !SimpleFlagArg
                       name: STR
-                    optional: true
                   - !Flag
-                    description: 'list of positions (format: chr pos) [null]'
+                    optional: true
                     synonyms:
                     - -l
+                    description: 'list of positions (format: chr pos) [null]'
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: cap mapping quality at INT [60]
+                    optional: true
                     synonyms:
                     - -M
+                    description: cap mapping quality at INT [60]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: min base quality [13]
+                    optional: true
                     synonyms:
                     - -Q
+                    description: min base quality [13]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: filter out alignment with MQ smaller than INT [0]
+                    optional: true
                     synonyms:
                     - -q
+                    description: filter out alignment with MQ smaller than INT [0]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: generate BCF output
+                    optional: true
                     synonyms:
                     - -g
+                    description: generate BCF output
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: do not compress BCF output
+                    optional: true
                     synonyms:
                     - -u
+                    description: do not compress BCF output
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: disable BAQ computation
+                    optional: true
                     synonyms:
                     - -B
+                    description: disable BAQ computation
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -298,40 +1186,39 @@ subcommands:
                     \ BCF output\n         -B          disable BAQ computation\n\n\
                     Notes: Assuming diploid individuals.\n\n"
                   generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id009
-                  - samtools
-                  - rmdup
+                  command: *id009
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: input.srt.bam
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: output.bam
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: rmdup for SE reads
+                    optional: true
                     synonyms:
                     - -s
+                    description: rmdup for SE reads
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: treat PE reads as SE in rmdup (force -s)
+                    optional: true
                     synonyms:
                     - -S
+                    description: treat PE reads as SE in rmdup (force -s)
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -sS
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -345,125 +1232,124 @@ subcommands:
                     \ SE reads\n        -S    treat PE reads as SE in rmdup (force\
                     \ -s)\n\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id010
-                  - samtools
-                  - view
+                  command: *id010
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: in.bam
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: output BAM
+                    optional: true
                     synonyms:
                     - -b
+                    description: output BAM
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: print header only (no alignments)
+                    optional: true
                     synonyms:
                     - -H
+                    description: print header only (no alignments)
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: input is SAM
+                    optional: true
                     synonyms:
                     - -S
+                    description: input is SAM
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: uncompressed BAM output (force -b)
+                    optional: true
                     synonyms:
                     - -u
+                    description: uncompressed BAM output (force -b)
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: output FLAG in HEX (samtools-C specific)
+                    optional: true
                     synonyms:
                     - -x
+                    description: output FLAG in HEX (samtools-C specific)
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: output FLAG in string (samtools-C specific)
+                    optional: true
                     synonyms:
                     - -X
+                    description: output FLAG in string (samtools-C specific)
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: list of reference names and lengths (force -S) [null]
+                    optional: true
                     synonyms:
                     - -t
+                    description: list of reference names and lengths (force -S) [null]
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: reference sequence file (force -S) [null]
+                    optional: true
                     synonyms:
                     - -T
+                    description: reference sequence file (force -S) [null]
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: output file name [stdout]
+                    optional: true
                     synonyms:
                     - -o
+                    description: output file name [stdout]
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: list of read groups to be outputted [null]
+                    optional: true
                     synonyms:
                     - -R
+                    description: list of read groups to be outputted [null]
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: required flag, 0 for unset [0]
+                    optional: true
                     synonyms:
                     - -f
+                    description: required flag, 0 for unset [0]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: filtering flag, 0 for unset [0]
+                    optional: true
                     synonyms:
                     - -F
+                    description: filtering flag, 0 for unset [0]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: minimum mapping quality [0]
+                    optional: true
                     synonyms:
                     - -q
+                    description: minimum mapping quality [0]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: only output reads in library STR [null]
+                    optional: true
                     synonyms:
                     - -l
+                    description: only output reads in library STR [null]
                     args: !SimpleFlagArg
                       name: STR
-                    optional: true
                   - !Flag
-                    description: only output reads in read group STR [null]
+                    optional: true
                     synonyms:
                     - -r
+                    description: only output reads in read group STR [null]
                     args: !SimpleFlagArg
                       name: STR
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: print header for the SAM output
+                    optional: true
                     synonyms:
                     - -h
+                    description: print header for the SAM output
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "view: invalid option -- '-'\nview: invalid option --\
@@ -506,165 +1392,164 @@ subcommands:
                     \ specific. Picard and older samtools do not\n     support HEX\
                     \ or string flags.\n\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id011
-                  - samtools
-                  - pileup
+                  command: *id011
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: in.bam
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: simple (yet incomplete) pileup format
+                    optional: true
                     synonyms:
                     - -s
+                    description: simple (yet incomplete) pileup format
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: the input is in SAM
+                    optional: true
                     synonyms:
                     - -S
+                    description: the input is in SAM
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: disable BAQ computation
+                    optional: true
                     synonyms:
                     - -B
+                    description: disable BAQ computation
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: use the original MAQ model for SNP calling (DEPRECATED)
+                    optional: true
                     synonyms:
                     - -A
+                    description: use the original MAQ model for SNP calling (DEPRECATED)
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: output the 2nd best call and quality
+                    optional: true
                     synonyms:
                     - '-2'
+                    description: output the 2nd best call and quality
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: only show lines/consensus with indels
+                    optional: true
                     synonyms:
                     - -i
+                    description: only show lines/consensus with indels
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: min base quality (possibly capped by BAQ) [13]
+                    optional: true
                     synonyms:
                     - -Q
+                    description: min base quality (possibly capped by BAQ) [13]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: coefficient for adjusting mapQ of poor mappings [0]
+                    optional: true
                     synonyms:
                     - -C
+                    description: coefficient for adjusting mapQ of poor mappings [0]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: filtering reads with bits in INT [0x704]
+                    optional: true
                     synonyms:
                     - -m
+                    description: filtering reads with bits in INT [0x704]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: cap mapping quality at INT [60]
+                    optional: true
                     synonyms:
                     - -M
+                    description: cap mapping quality at INT [60]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: limit maximum depth for indels [1024]
+                    optional: true
                     synonyms:
                     - -d
+                    description: limit maximum depth for indels [1024]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: list of reference sequences (force -S)
+                    optional: true
                     synonyms:
                     - -t
+                    description: list of reference sequences (force -S)
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: list of sites at which pileup is output
+                    optional: true
                     synonyms:
                     - -l
+                    description: list of sites at which pileup is output
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: reference sequence in the FASTA format
+                    optional: true
                     synonyms:
                     - -f
+                    description: reference sequence in the FASTA format
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: compute the consensus sequence
+                    optional: true
                     synonyms:
                     - -c
+                    description: compute the consensus sequence
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: print variants only (for -c)
+                    optional: true
                     synonyms:
                     - -v
+                    description: print variants only (for -c)
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: output in the GLFv3 format (DEPRECATED)
+                    optional: true
                     synonyms:
                     - -g
+                    description: output in the GLFv3 format (DEPRECATED)
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: theta in maq consensus calling model (for -c) [0.83]
+                    optional: true
                     synonyms:
                     - -T
+                    description: theta in maq consensus calling model (for -c) [0.83]
                     args: !SimpleFlagArg
                       name: FLOAT
-                    optional: true
                   - !Flag
-                    description: number of haplotypes in the sample (for -c) [2]
+                    optional: true
                     synonyms:
                     - -N
+                    description: number of haplotypes in the sample (for -c) [2]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: prior of a difference between two haplotypes (for
-                      -c) [0.001]
+                    optional: true
                     synonyms:
                     - -r
+                    description: prior of a difference between two haplotypes (for
+                      -c) [0.001]
                     args: !SimpleFlagArg
                       name: FLOAT
-                    optional: true
                   - !Flag
-                    description: prior of an indel between two haplotypes (for -c)
-                      [0.00015]
+                    optional: true
                     synonyms:
                     - -G
+                    description: prior of an indel between two haplotypes (for -c)
+                      [0.00015]
                     args: !SimpleFlagArg
                       name: FLOAT
-                    optional: true
                   - !Flag
-                    description: phred prob. of an indel in sequencing/prep. (for
-                      -c) [40]
+                    optional: true
                     synonyms:
                     - -I
+                    description: phred prob. of an indel in sequencing/prep. (for
+                      -c) [40]
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -695,31 +1580,30 @@ subcommands:
                     \ -c) [0.00015]\n        -I INT    phred prob. of an indel in\
                     \ sequencing/prep. (for -c) [40]\n\n"
                   generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id012
-                  - samtools
-                  - tview
+                  command: *id012
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: bamtk
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: tview
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 2
                     name: aln.bam
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: true
                     position: 3
                     name: ref.fasta
-                    optional: true
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
@@ -729,16 +1613,15 @@ subcommands:
                   version_flag:
                   help_text: "Usage: bamtk tview <aln.bam> [ref.fasta]\n"
                   generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id013
-                  - samtools
-                  - idxstats
+                  command: *id013
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: in.bam
-                    optional: false
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
@@ -748,21 +1631,20 @@ subcommands:
                   version_flag:
                   help_text: "Usage: samtools idxstats <in.bam>\n"
                   generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id014
-                  - samtools
-                  - index
+                  command: *id014
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: in.bam
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: true
                     position: 1
                     name: out.index
-                    optional: true
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
@@ -772,35 +1654,34 @@ subcommands:
                   version_flag:
                   help_text: "Usage: samtools index <in.bam> [out.index]\n"
                   generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id015
-                  - samtools
-                  - sort
+                  command: *id015
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: in.bam
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: out.prefix
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -m
+                    description: ''
                     args: !SimpleFlagArg
                       name: maxMem
-                    optional: true
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -on
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -812,16 +1693,15 @@ subcommands:
                     sort: invalid option -- 'p'\nUsage: samtools sort [-on] [-m <maxMem>]\
                     \ <in.bam> <out.prefix>\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id016
-                  - samtools
-                  - flagstat
+                  command: *id016
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: in.bam
-                    optional: false
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
@@ -831,21 +1711,20 @@ subcommands:
                   version_flag:
                   help_text: "Usage: samtools flagstat <in.bam>\n"
                   generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id017
-                  - samtools
-                  - faidx
+                  command: *id017
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: faidx
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: in.fasta
-                    optional: false
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
@@ -855,68 +1734,67 @@ subcommands:
                   version_flag:
                   help_text: "Usage: faidx <in.fasta> [<reg> [...]]\n"
                   generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id018
-                  - samtools
-                  - calmd
+                  command: *id018
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: samtools
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: fillmd
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 2
                     name: aln.bam
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 3
                     name: ref.fasta
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: change identical bases to '='
+                    optional: true
                     synonyms:
                     - -e
+                    description: change identical bases to '='
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: uncompressed BAM output (for piping)
+                    optional: true
                     synonyms:
                     - -u
+                    description: uncompressed BAM output (for piping)
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: compressed BAM output
+                    optional: true
                     synonyms:
                     - -b
+                    description: compressed BAM output
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: the input is SAM with header
+                    optional: true
                     synonyms:
                     - -S
+                    description: the input is SAM with header
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: read-independent local realignment
+                    optional: true
                     synonyms:
                     - -r
+                    description: read-independent local realignment
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -eubrS
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -930,6 +1808,7 @@ subcommands:
                     \ with header\n         -r       read-independent local realignment\n\
                     \n"
                   generated_using: *id005
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -948,6 +1827,7 @@ subcommands:
                   \  remove PCR duplicates\n         reheader    replace BAM header\n\
                   \n"
                 generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -955,21 +1835,22 @@ subcommands:
               version_flag:
               help_text: "Usage: glfview <in.glf>\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: in.header.sam
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: in.bam
-                optional: false
+                description: ''
               named: []
-              parent: *id003
+              parent: *id019
               subcommands: []
               usage: []
               help_flag:
@@ -977,64 +1858,65 @@ subcommands:
               version_flag:
               help_text: "Usage: samtools reheader <in.header.sam> <in.bam>\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: out.bam
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: in1.bam
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 2
                 name: in2.bam
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: sort by read names
+                optional: true
                 synonyms:
                 - -n
+                description: sort by read names
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: attach RG tag (inferred from file names)
+                optional: true
                 synonyms:
                 - -r
+                description: attach RG tag (inferred from file names)
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: uncompressed BAM output
+                optional: true
                 synonyms:
                 - -u
+                description: uncompressed BAM output
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: merge file in the specified region STR [all]
+                optional: true
                 synonyms:
                 - -R
+                description: merge file in the specified region STR [all]
                 args: !SimpleFlagArg
                   name: STR
-                optional: true
               - !Flag
-                description: copy the header in FILE to <out.bam> [in1.bam]
+                optional: true
                 synonyms:
                 - -h
+                description: copy the header in FILE to <out.bam> [in1.bam]
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -nr
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id019
               subcommands: []
               usage: []
               help_flag:
@@ -1051,76 +1933,77 @@ subcommands:
                 \ uses Picard which properly maintains\n      the header dictionary\
                 \ in merging.\n\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id008
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: in1.bam
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: reference sequence file [null]
+                optional: true
                 synonyms:
                 - -f
+                description: reference sequence file [null]
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: region in which pileup is generated [null]
+                optional: true
                 synonyms:
                 - -r
+                description: region in which pileup is generated [null]
                 args: !SimpleFlagArg
                   name: STR
-                optional: true
               - !Flag
-                description: 'list of positions (format: chr pos) [null]'
+                optional: true
                 synonyms:
                 - -l
+                description: 'list of positions (format: chr pos) [null]'
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: cap mapping quality at INT [60]
+                optional: true
                 synonyms:
                 - -M
+                description: cap mapping quality at INT [60]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: min base quality [13]
+                optional: true
                 synonyms:
                 - -Q
+                description: min base quality [13]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: filter out alignment with MQ smaller than INT [0]
+                optional: true
                 synonyms:
                 - -q
+                description: filter out alignment with MQ smaller than INT [0]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: generate BCF output
+                optional: true
                 synonyms:
                 - -g
+                description: generate BCF output
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: do not compress BCF output
+                optional: true
                 synonyms:
                 - -u
+                description: do not compress BCF output
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: disable BAQ computation
+                optional: true
                 synonyms:
                 - -B
+                description: disable BAQ computation
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id019
               subcommands: []
               usage: []
               help_flag:
@@ -1137,39 +2020,40 @@ subcommands:
                 \      disable BAQ computation\n\nNotes: Assuming diploid individuals.\n\
                 \n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id009
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: input.srt.bam
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: output.bam
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: rmdup for SE reads
+                optional: true
                 synonyms:
                 - -s
+                description: rmdup for SE reads
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: treat PE reads as SE in rmdup (force -s)
+                optional: true
                 synonyms:
                 - -S
+                description: treat PE reads as SE in rmdup (force -s)
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -sS
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id019
               subcommands: []
               usage: []
               help_flag:
@@ -1181,123 +2065,124 @@ subcommands:
                 \ <output.bam>\n\nOption: -s    rmdup for SE reads\n        -S   \
                 \ treat PE reads as SE in rmdup (force -s)\n\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id010
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: in.bam
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: output BAM
+                optional: true
                 synonyms:
                 - -b
+                description: output BAM
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: print header only (no alignments)
+                optional: true
                 synonyms:
                 - -H
+                description: print header only (no alignments)
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: input is SAM
+                optional: true
                 synonyms:
                 - -S
+                description: input is SAM
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: uncompressed BAM output (force -b)
+                optional: true
                 synonyms:
                 - -u
+                description: uncompressed BAM output (force -b)
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: output FLAG in HEX (samtools-C specific)
+                optional: true
                 synonyms:
                 - -x
+                description: output FLAG in HEX (samtools-C specific)
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: output FLAG in string (samtools-C specific)
+                optional: true
                 synonyms:
                 - -X
+                description: output FLAG in string (samtools-C specific)
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: list of reference names and lengths (force -S) [null]
+                optional: true
                 synonyms:
                 - -t
+                description: list of reference names and lengths (force -S) [null]
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: reference sequence file (force -S) [null]
+                optional: true
                 synonyms:
                 - -T
+                description: reference sequence file (force -S) [null]
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: output file name [stdout]
+                optional: true
                 synonyms:
                 - -o
+                description: output file name [stdout]
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: list of read groups to be outputted [null]
+                optional: true
                 synonyms:
                 - -R
+                description: list of read groups to be outputted [null]
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: required flag, 0 for unset [0]
+                optional: true
                 synonyms:
                 - -f
+                description: required flag, 0 for unset [0]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: filtering flag, 0 for unset [0]
+                optional: true
                 synonyms:
                 - -F
+                description: filtering flag, 0 for unset [0]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: minimum mapping quality [0]
+                optional: true
                 synonyms:
                 - -q
+                description: minimum mapping quality [0]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: only output reads in library STR [null]
+                optional: true
                 synonyms:
                 - -l
+                description: only output reads in library STR [null]
                 args: !SimpleFlagArg
                   name: STR
-                optional: true
               - !Flag
-                description: only output reads in read group STR [null]
+                optional: true
                 synonyms:
                 - -r
+                description: only output reads in read group STR [null]
                 args: !SimpleFlagArg
                   name: STR
-                optional: true
-              parent: *id003
+              parent: *id019
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: print header for the SAM output
+                optional: true
                 synonyms:
                 - -h
+                description: print header for the SAM output
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "view: invalid option -- '-'\nview: invalid option -- 'e'\n\
@@ -1337,163 +2222,164 @@ subcommands:
                 \     `-X' are samtools-C specific. Picard and older samtools do not\n\
                 \     support HEX or string flags.\n\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id011
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: in.bam
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: simple (yet incomplete) pileup format
+                optional: true
                 synonyms:
                 - -s
+                description: simple (yet incomplete) pileup format
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: the input is in SAM
+                optional: true
                 synonyms:
                 - -S
+                description: the input is in SAM
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: disable BAQ computation
+                optional: true
                 synonyms:
                 - -B
+                description: disable BAQ computation
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: use the original MAQ model for SNP calling (DEPRECATED)
+                optional: true
                 synonyms:
                 - -A
+                description: use the original MAQ model for SNP calling (DEPRECATED)
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: output the 2nd best call and quality
+                optional: true
                 synonyms:
                 - '-2'
+                description: output the 2nd best call and quality
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: only show lines/consensus with indels
+                optional: true
                 synonyms:
                 - -i
+                description: only show lines/consensus with indels
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: min base quality (possibly capped by BAQ) [13]
+                optional: true
                 synonyms:
                 - -Q
+                description: min base quality (possibly capped by BAQ) [13]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: coefficient for adjusting mapQ of poor mappings [0]
+                optional: true
                 synonyms:
                 - -C
+                description: coefficient for adjusting mapQ of poor mappings [0]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: filtering reads with bits in INT [0x704]
+                optional: true
                 synonyms:
                 - -m
+                description: filtering reads with bits in INT [0x704]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: cap mapping quality at INT [60]
+                optional: true
                 synonyms:
                 - -M
+                description: cap mapping quality at INT [60]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: limit maximum depth for indels [1024]
+                optional: true
                 synonyms:
                 - -d
+                description: limit maximum depth for indels [1024]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: list of reference sequences (force -S)
+                optional: true
                 synonyms:
                 - -t
+                description: list of reference sequences (force -S)
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: list of sites at which pileup is output
+                optional: true
                 synonyms:
                 - -l
+                description: list of sites at which pileup is output
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: reference sequence in the FASTA format
+                optional: true
                 synonyms:
                 - -f
+                description: reference sequence in the FASTA format
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: compute the consensus sequence
+                optional: true
                 synonyms:
                 - -c
+                description: compute the consensus sequence
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: print variants only (for -c)
+                optional: true
                 synonyms:
                 - -v
+                description: print variants only (for -c)
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: output in the GLFv3 format (DEPRECATED)
+                optional: true
                 synonyms:
                 - -g
+                description: output in the GLFv3 format (DEPRECATED)
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: theta in maq consensus calling model (for -c) [0.83]
+                optional: true
                 synonyms:
                 - -T
+                description: theta in maq consensus calling model (for -c) [0.83]
                 args: !SimpleFlagArg
                   name: FLOAT
-                optional: true
               - !Flag
-                description: number of haplotypes in the sample (for -c) [2]
+                optional: true
                 synonyms:
                 - -N
+                description: number of haplotypes in the sample (for -c) [2]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: prior of a difference between two haplotypes (for -c)
-                  [0.001]
+                optional: true
                 synonyms:
                 - -r
+                description: prior of a difference between two haplotypes (for -c)
+                  [0.001]
                 args: !SimpleFlagArg
                   name: FLOAT
-                optional: true
               - !Flag
-                description: prior of an indel between two haplotypes (for -c) [0.00015]
+                optional: true
                 synonyms:
                 - -G
+                description: prior of an indel between two haplotypes (for -c) [0.00015]
                 args: !SimpleFlagArg
                   name: FLOAT
-                optional: true
               - !Flag
-                description: phred prob. of an indel in sequencing/prep. (for -c)
-                  [40]
+                optional: true
                 synonyms:
                 - -I
+                description: phred prob. of an indel in sequencing/prep. (for -c)
+                  [40]
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
-              parent: *id003
+              parent: *id019
               subcommands: []
               usage: []
               help_flag:
@@ -1521,31 +2407,32 @@ subcommands:
                 \ between two haplotypes (for -c) [0.00015]\n        -I INT    phred\
                 \ prob. of an indel in sequencing/prep. (for -c) [40]\n\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id012
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: bamtk
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: tview
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 2
                 name: aln.bam
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: true
                 position: 3
                 name: ref.fasta
-                optional: true
+                description: ''
               named: []
-              parent: *id003
+              parent: *id019
               subcommands: []
               usage: []
               help_flag:
@@ -1553,16 +2440,17 @@ subcommands:
               version_flag:
               help_text: "Usage: bamtk tview <aln.bam> [ref.fasta]\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id013
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: in.bam
-                optional: false
+                description: ''
               named: []
-              parent: *id003
+              parent: *id019
               subcommands: []
               usage: []
               help_flag:
@@ -1570,21 +2458,22 @@ subcommands:
               version_flag:
               help_text: "Usage: samtools idxstats <in.bam>\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id014
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: in.bam
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: true
                 position: 1
                 name: out.index
-                optional: true
+                description: ''
               named: []
-              parent: *id003
+              parent: *id019
               subcommands: []
               usage: []
               help_flag:
@@ -1592,34 +2481,35 @@ subcommands:
               version_flag:
               help_text: "Usage: samtools index <in.bam> [out.index]\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id015
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: in.bam
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: out.prefix
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -m
+                description: ''
                 args: !SimpleFlagArg
                   name: maxMem
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -on
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id019
               subcommands: []
               usage: []
               help_flag:
@@ -1630,16 +2520,17 @@ subcommands:
                 \ option -- 'p'\nUsage: samtools sort [-on] [-m <maxMem>] <in.bam>\
                 \ <out.prefix>\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id016
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: in.bam
-                optional: false
+                description: ''
               named: []
-              parent: *id003
+              parent: *id019
               subcommands: []
               usage: []
               help_flag:
@@ -1647,21 +2538,22 @@ subcommands:
               version_flag:
               help_text: "Usage: samtools flagstat <in.bam>\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id017
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: faidx
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: in.fasta
-                optional: false
+                description: ''
               named: []
-              parent: *id003
+              parent: *id019
               subcommands: []
               usage: []
               help_flag:
@@ -1669,67 +2561,68 @@ subcommands:
               version_flag:
               help_text: "Usage: faidx <in.fasta> [<reg> [...]]\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id018
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: samtools
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: fillmd
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 2
                 name: aln.bam
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 3
                 name: ref.fasta
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: change identical bases to '='
+                optional: true
                 synonyms:
                 - -e
+                description: change identical bases to '='
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: uncompressed BAM output (for piping)
+                optional: true
                 synonyms:
                 - -u
+                description: uncompressed BAM output (for piping)
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: compressed BAM output
+                optional: true
                 synonyms:
                 - -b
+                description: compressed BAM output
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: the input is SAM with header
+                optional: true
                 synonyms:
                 - -S
+                description: the input is SAM with header
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: read-independent local realignment
+                optional: true
                 synonyms:
                 - -r
+                description: read-independent local realignment
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -eubrS
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id019
               subcommands: []
               usage: []
               help_flag:
@@ -1741,6 +2634,7 @@ subcommands:
                 \ BAM output\n         -S       the input is SAM with header\n   \
                 \      -r       read-independent local realignment\n\n"
               generated_using: *id005
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -1758,6 +2652,7 @@ subcommands:
               \ sorted alignments\n         rmdup       remove PCR duplicates\n  \
               \       reheader    replace BAM header\n\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -1765,21 +2660,22 @@ subcommands:
           version_flag:
           help_text: "Usage: glfview <in.glf>\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: in.header.sam
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: in.bam
-            optional: false
+            description: ''
           named: []
-          parent: *id019
+          parent: *id020
           subcommands: []
           usage: []
           help_flag:
@@ -1787,64 +2683,65 @@ subcommands:
           version_flag:
           help_text: "Usage: samtools reheader <in.header.sam> <in.bam>\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: out.bam
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: in1.bam
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 2
             name: in2.bam
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: sort by read names
+            optional: true
             synonyms:
             - -n
+            description: sort by read names
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: attach RG tag (inferred from file names)
+            optional: true
             synonyms:
             - -r
+            description: attach RG tag (inferred from file names)
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: uncompressed BAM output
+            optional: true
             synonyms:
             - -u
+            description: uncompressed BAM output
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: merge file in the specified region STR [all]
+            optional: true
             synonyms:
             - -R
+            description: merge file in the specified region STR [all]
             args: !SimpleFlagArg
               name: STR
-            optional: true
           - !Flag
-            description: copy the header in FILE to <out.bam> [in1.bam]
+            optional: true
             synonyms:
             - -h
+            description: copy the header in FILE to <out.bam> [in1.bam]
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -nr
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id019
+          parent: *id020
           subcommands: []
           usage: []
           help_flag:
@@ -1860,76 +2757,77 @@ subcommands:
             \ must provide the correct header with -h, or uses Picard which properly\
             \ maintains\n      the header dictionary in merging.\n\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id008
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: in1.bam
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: reference sequence file [null]
+            optional: true
             synonyms:
             - -f
+            description: reference sequence file [null]
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: region in which pileup is generated [null]
+            optional: true
             synonyms:
             - -r
+            description: region in which pileup is generated [null]
             args: !SimpleFlagArg
               name: STR
-            optional: true
           - !Flag
-            description: 'list of positions (format: chr pos) [null]'
+            optional: true
             synonyms:
             - -l
+            description: 'list of positions (format: chr pos) [null]'
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: cap mapping quality at INT [60]
+            optional: true
             synonyms:
             - -M
+            description: cap mapping quality at INT [60]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: min base quality [13]
+            optional: true
             synonyms:
             - -Q
+            description: min base quality [13]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: filter out alignment with MQ smaller than INT [0]
+            optional: true
             synonyms:
             - -q
+            description: filter out alignment with MQ smaller than INT [0]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: generate BCF output
+            optional: true
             synonyms:
             - -g
+            description: generate BCF output
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: do not compress BCF output
+            optional: true
             synonyms:
             - -u
+            description: do not compress BCF output
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: disable BAQ computation
+            optional: true
             synonyms:
             - -B
+            description: disable BAQ computation
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id019
+          parent: *id020
           subcommands: []
           usage: []
           help_flag:
@@ -1945,39 +2843,40 @@ subcommands:
             \ compress BCF output\n         -B          disable BAQ computation\n\n\
             Notes: Assuming diploid individuals.\n\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id009
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: input.srt.bam
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: output.bam
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: rmdup for SE reads
+            optional: true
             synonyms:
             - -s
+            description: rmdup for SE reads
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: treat PE reads as SE in rmdup (force -s)
+            optional: true
             synonyms:
             - -S
+            description: treat PE reads as SE in rmdup (force -s)
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -sS
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id019
+          parent: *id020
           subcommands: []
           usage: []
           help_flag:
@@ -1989,123 +2888,124 @@ subcommands:
             \nOption: -s    rmdup for SE reads\n        -S    treat PE reads as SE\
             \ in rmdup (force -s)\n\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id010
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: in.bam
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: output BAM
+            optional: true
             synonyms:
             - -b
+            description: output BAM
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: print header only (no alignments)
+            optional: true
             synonyms:
             - -H
+            description: print header only (no alignments)
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: input is SAM
+            optional: true
             synonyms:
             - -S
+            description: input is SAM
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: uncompressed BAM output (force -b)
+            optional: true
             synonyms:
             - -u
+            description: uncompressed BAM output (force -b)
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: output FLAG in HEX (samtools-C specific)
+            optional: true
             synonyms:
             - -x
+            description: output FLAG in HEX (samtools-C specific)
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: output FLAG in string (samtools-C specific)
+            optional: true
             synonyms:
             - -X
+            description: output FLAG in string (samtools-C specific)
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: list of reference names and lengths (force -S) [null]
+            optional: true
             synonyms:
             - -t
+            description: list of reference names and lengths (force -S) [null]
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: reference sequence file (force -S) [null]
+            optional: true
             synonyms:
             - -T
+            description: reference sequence file (force -S) [null]
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: output file name [stdout]
+            optional: true
             synonyms:
             - -o
+            description: output file name [stdout]
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: list of read groups to be outputted [null]
+            optional: true
             synonyms:
             - -R
+            description: list of read groups to be outputted [null]
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: required flag, 0 for unset [0]
+            optional: true
             synonyms:
             - -f
+            description: required flag, 0 for unset [0]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: filtering flag, 0 for unset [0]
+            optional: true
             synonyms:
             - -F
+            description: filtering flag, 0 for unset [0]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: minimum mapping quality [0]
+            optional: true
             synonyms:
             - -q
+            description: minimum mapping quality [0]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: only output reads in library STR [null]
+            optional: true
             synonyms:
             - -l
+            description: only output reads in library STR [null]
             args: !SimpleFlagArg
               name: STR
-            optional: true
           - !Flag
-            description: only output reads in read group STR [null]
+            optional: true
             synonyms:
             - -r
+            description: only output reads in read group STR [null]
             args: !SimpleFlagArg
               name: STR
-            optional: true
-          parent: *id019
+          parent: *id020
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: print header for the SAM output
+            optional: true
             synonyms:
             - -h
+            description: print header for the SAM output
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "view: invalid option -- '-'\nview: invalid option -- 'e'\n\n\
@@ -2143,161 +3043,162 @@ subcommands:
             \ Note that `-x' and\n     `-X' are samtools-C specific. Picard and older\
             \ samtools do not\n     support HEX or string flags.\n\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id011
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: in.bam
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: simple (yet incomplete) pileup format
+            optional: true
             synonyms:
             - -s
+            description: simple (yet incomplete) pileup format
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: the input is in SAM
+            optional: true
             synonyms:
             - -S
+            description: the input is in SAM
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: disable BAQ computation
+            optional: true
             synonyms:
             - -B
+            description: disable BAQ computation
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: use the original MAQ model for SNP calling (DEPRECATED)
+            optional: true
             synonyms:
             - -A
+            description: use the original MAQ model for SNP calling (DEPRECATED)
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: output the 2nd best call and quality
+            optional: true
             synonyms:
             - '-2'
+            description: output the 2nd best call and quality
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: only show lines/consensus with indels
+            optional: true
             synonyms:
             - -i
+            description: only show lines/consensus with indels
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: min base quality (possibly capped by BAQ) [13]
+            optional: true
             synonyms:
             - -Q
+            description: min base quality (possibly capped by BAQ) [13]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: coefficient for adjusting mapQ of poor mappings [0]
+            optional: true
             synonyms:
             - -C
+            description: coefficient for adjusting mapQ of poor mappings [0]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: filtering reads with bits in INT [0x704]
+            optional: true
             synonyms:
             - -m
+            description: filtering reads with bits in INT [0x704]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: cap mapping quality at INT [60]
+            optional: true
             synonyms:
             - -M
+            description: cap mapping quality at INT [60]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: limit maximum depth for indels [1024]
+            optional: true
             synonyms:
             - -d
+            description: limit maximum depth for indels [1024]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: list of reference sequences (force -S)
+            optional: true
             synonyms:
             - -t
+            description: list of reference sequences (force -S)
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: list of sites at which pileup is output
+            optional: true
             synonyms:
             - -l
+            description: list of sites at which pileup is output
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: reference sequence in the FASTA format
+            optional: true
             synonyms:
             - -f
+            description: reference sequence in the FASTA format
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: compute the consensus sequence
+            optional: true
             synonyms:
             - -c
+            description: compute the consensus sequence
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: print variants only (for -c)
+            optional: true
             synonyms:
             - -v
+            description: print variants only (for -c)
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: output in the GLFv3 format (DEPRECATED)
+            optional: true
             synonyms:
             - -g
+            description: output in the GLFv3 format (DEPRECATED)
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: theta in maq consensus calling model (for -c) [0.83]
+            optional: true
             synonyms:
             - -T
+            description: theta in maq consensus calling model (for -c) [0.83]
             args: !SimpleFlagArg
               name: FLOAT
-            optional: true
           - !Flag
-            description: number of haplotypes in the sample (for -c) [2]
+            optional: true
             synonyms:
             - -N
+            description: number of haplotypes in the sample (for -c) [2]
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: prior of a difference between two haplotypes (for -c) [0.001]
+            optional: true
             synonyms:
             - -r
+            description: prior of a difference between two haplotypes (for -c) [0.001]
             args: !SimpleFlagArg
               name: FLOAT
-            optional: true
           - !Flag
-            description: prior of an indel between two haplotypes (for -c) [0.00015]
+            optional: true
             synonyms:
             - -G
+            description: prior of an indel between two haplotypes (for -c) [0.00015]
             args: !SimpleFlagArg
               name: FLOAT
-            optional: true
           - !Flag
-            description: phred prob. of an indel in sequencing/prep. (for -c) [40]
+            optional: true
             synonyms:
             - -I
+            description: phred prob. of an indel in sequencing/prep. (for -c) [40]
             args: !SimpleFlagArg
               name: INT
-            optional: true
-          parent: *id019
+          parent: *id020
           subcommands: []
           usage: []
           help_flag:
@@ -2325,31 +3226,32 @@ subcommands:
             \   -I INT    phred prob. of an indel in sequencing/prep. (for -c) [40]\n\
             \n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id012
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: bamtk
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: tview
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 2
             name: aln.bam
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: true
             position: 3
             name: ref.fasta
-            optional: true
+            description: ''
           named: []
-          parent: *id019
+          parent: *id020
           subcommands: []
           usage: []
           help_flag:
@@ -2357,16 +3259,17 @@ subcommands:
           version_flag:
           help_text: "Usage: bamtk tview <aln.bam> [ref.fasta]\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id013
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: in.bam
-            optional: false
+            description: ''
           named: []
-          parent: *id019
+          parent: *id020
           subcommands: []
           usage: []
           help_flag:
@@ -2374,21 +3277,22 @@ subcommands:
           version_flag:
           help_text: "Usage: samtools idxstats <in.bam>\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id014
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: in.bam
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: true
             position: 1
             name: out.index
-            optional: true
+            description: ''
           named: []
-          parent: *id019
+          parent: *id020
           subcommands: []
           usage: []
           help_flag:
@@ -2396,34 +3300,35 @@ subcommands:
           version_flag:
           help_text: "Usage: samtools index <in.bam> [out.index]\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id015
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: in.bam
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: out.prefix
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -m
+            description: ''
             args: !SimpleFlagArg
               name: maxMem
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -on
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id019
+          parent: *id020
           subcommands: []
           usage: []
           help_flag:
@@ -2433,16 +3338,17 @@ subcommands:
             \ invalid option -- 'e'\nsort: invalid option -- 'l'\nsort: invalid option\
             \ -- 'p'\nUsage: samtools sort [-on] [-m <maxMem>] <in.bam> <out.prefix>\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id016
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: in.bam
-            optional: false
+            description: ''
           named: []
-          parent: *id019
+          parent: *id020
           subcommands: []
           usage: []
           help_flag:
@@ -2450,21 +3356,22 @@ subcommands:
           version_flag:
           help_text: "Usage: samtools flagstat <in.bam>\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id017
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: faidx
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: in.fasta
-            optional: false
+            description: ''
           named: []
-          parent: *id019
+          parent: *id020
           subcommands: []
           usage: []
           help_flag:
@@ -2472,67 +3379,68 @@ subcommands:
           version_flag:
           help_text: "Usage: faidx <in.fasta> [<reg> [...]]\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id018
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: samtools
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: fillmd
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 2
             name: aln.bam
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 3
             name: ref.fasta
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: change identical bases to '='
+            optional: true
             synonyms:
             - -e
+            description: change identical bases to '='
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: uncompressed BAM output (for piping)
+            optional: true
             synonyms:
             - -u
+            description: uncompressed BAM output (for piping)
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: compressed BAM output
+            optional: true
             synonyms:
             - -b
+            description: compressed BAM output
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: the input is SAM with header
+            optional: true
             synonyms:
             - -S
+            description: the input is SAM with header
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: read-independent local realignment
+            optional: true
             synonyms:
             - -r
+            description: read-independent local realignment
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -eubrS
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id019
+          parent: *id020
           subcommands: []
           usage: []
           help_flag:
@@ -2544,6 +3452,7 @@ subcommands:
             \        -S       the input is SAM with header\n         -r       read-independent\
             \ local realignment\n\n"
           generated_using: *id005
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -2561,6 +3470,7 @@ subcommands:
           \ rmdup       remove PCR duplicates\n         reheader    replace BAM header\n\
           \n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -2568,21 +3478,22 @@ subcommands:
       version_flag:
       help_text: "Usage: glfview <in.glf>\n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: in.header.sam
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: in.bam
-        optional: false
+        description: ''
       named: []
-      parent: *id020
+      parent: *id021
       subcommands: []
       usage: []
       help_flag:
@@ -2590,64 +3501,65 @@ subcommands:
       version_flag:
       help_text: "Usage: samtools reheader <in.header.sam> <in.bam>\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: out.bam
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: in1.bam
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 2
         name: in2.bam
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: sort by read names
+        optional: true
         synonyms:
         - -n
+        description: sort by read names
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: attach RG tag (inferred from file names)
+        optional: true
         synonyms:
         - -r
+        description: attach RG tag (inferred from file names)
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: uncompressed BAM output
+        optional: true
         synonyms:
         - -u
+        description: uncompressed BAM output
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: merge file in the specified region STR [all]
+        optional: true
         synonyms:
         - -R
+        description: merge file in the specified region STR [all]
         args: !SimpleFlagArg
           name: STR
-        optional: true
       - !Flag
-        description: copy the header in FILE to <out.bam> [in1.bam]
+        optional: true
         synonyms:
         - -h
+        description: copy the header in FILE to <out.bam> [in1.bam]
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -nr
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id020
+      parent: *id021
       subcommands: []
       usage: []
       help_flag:
@@ -2663,76 +3575,77 @@ subcommands:
         \ with -h, or uses Picard which properly maintains\n      the header dictionary\
         \ in merging.\n\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id008
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: in1.bam
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: reference sequence file [null]
+        optional: true
         synonyms:
         - -f
+        description: reference sequence file [null]
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: region in which pileup is generated [null]
+        optional: true
         synonyms:
         - -r
+        description: region in which pileup is generated [null]
         args: !SimpleFlagArg
           name: STR
-        optional: true
       - !Flag
-        description: 'list of positions (format: chr pos) [null]'
+        optional: true
         synonyms:
         - -l
+        description: 'list of positions (format: chr pos) [null]'
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: cap mapping quality at INT [60]
+        optional: true
         synonyms:
         - -M
+        description: cap mapping quality at INT [60]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: min base quality [13]
+        optional: true
         synonyms:
         - -Q
+        description: min base quality [13]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: filter out alignment with MQ smaller than INT [0]
+        optional: true
         synonyms:
         - -q
+        description: filter out alignment with MQ smaller than INT [0]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: generate BCF output
+        optional: true
         synonyms:
         - -g
+        description: generate BCF output
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: do not compress BCF output
+        optional: true
         synonyms:
         - -u
+        description: do not compress BCF output
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: disable BAQ computation
+        optional: true
         synonyms:
         - -B
+        description: disable BAQ computation
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id020
+      parent: *id021
       subcommands: []
       usage: []
       help_flag:
@@ -2748,39 +3661,40 @@ subcommands:
         \         -B          disable BAQ computation\n\nNotes: Assuming diploid individuals.\n\
         \n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id009
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: input.srt.bam
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: output.bam
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: rmdup for SE reads
+        optional: true
         synonyms:
         - -s
+        description: rmdup for SE reads
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: treat PE reads as SE in rmdup (force -s)
+        optional: true
         synonyms:
         - -S
+        description: treat PE reads as SE in rmdup (force -s)
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -sS
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id020
+      parent: *id021
       subcommands: []
       usage: []
       help_flag:
@@ -2792,123 +3706,124 @@ subcommands:
         Option: -s    rmdup for SE reads\n        -S    treat PE reads as SE in rmdup\
         \ (force -s)\n\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id010
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: in.bam
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: output BAM
+        optional: true
         synonyms:
         - -b
+        description: output BAM
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: print header only (no alignments)
+        optional: true
         synonyms:
         - -H
+        description: print header only (no alignments)
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: input is SAM
+        optional: true
         synonyms:
         - -S
+        description: input is SAM
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: uncompressed BAM output (force -b)
+        optional: true
         synonyms:
         - -u
+        description: uncompressed BAM output (force -b)
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: output FLAG in HEX (samtools-C specific)
+        optional: true
         synonyms:
         - -x
+        description: output FLAG in HEX (samtools-C specific)
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: output FLAG in string (samtools-C specific)
+        optional: true
         synonyms:
         - -X
+        description: output FLAG in string (samtools-C specific)
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: list of reference names and lengths (force -S) [null]
+        optional: true
         synonyms:
         - -t
+        description: list of reference names and lengths (force -S) [null]
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: reference sequence file (force -S) [null]
+        optional: true
         synonyms:
         - -T
+        description: reference sequence file (force -S) [null]
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: output file name [stdout]
+        optional: true
         synonyms:
         - -o
+        description: output file name [stdout]
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: list of read groups to be outputted [null]
+        optional: true
         synonyms:
         - -R
+        description: list of read groups to be outputted [null]
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: required flag, 0 for unset [0]
+        optional: true
         synonyms:
         - -f
+        description: required flag, 0 for unset [0]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: filtering flag, 0 for unset [0]
+        optional: true
         synonyms:
         - -F
+        description: filtering flag, 0 for unset [0]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: minimum mapping quality [0]
+        optional: true
         synonyms:
         - -q
+        description: minimum mapping quality [0]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: only output reads in library STR [null]
+        optional: true
         synonyms:
         - -l
+        description: only output reads in library STR [null]
         args: !SimpleFlagArg
           name: STR
-        optional: true
       - !Flag
-        description: only output reads in read group STR [null]
+        optional: true
         synonyms:
         - -r
+        description: only output reads in read group STR [null]
         args: !SimpleFlagArg
           name: STR
-        optional: true
-      parent: *id020
+      parent: *id021
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: print header for the SAM output
+        optional: true
         synonyms:
         - -h
+        description: print header for the SAM output
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "view: invalid option -- '-'\nview: invalid option -- 'e'\n\nUsage:\
@@ -2945,161 +3860,162 @@ subcommands:
         \ specific. Picard and older samtools do not\n     support HEX or string flags.\n\
         \n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id011
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: in.bam
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: simple (yet incomplete) pileup format
+        optional: true
         synonyms:
         - -s
+        description: simple (yet incomplete) pileup format
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: the input is in SAM
+        optional: true
         synonyms:
         - -S
+        description: the input is in SAM
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: disable BAQ computation
+        optional: true
         synonyms:
         - -B
+        description: disable BAQ computation
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: use the original MAQ model for SNP calling (DEPRECATED)
+        optional: true
         synonyms:
         - -A
+        description: use the original MAQ model for SNP calling (DEPRECATED)
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: output the 2nd best call and quality
+        optional: true
         synonyms:
         - '-2'
+        description: output the 2nd best call and quality
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: only show lines/consensus with indels
+        optional: true
         synonyms:
         - -i
+        description: only show lines/consensus with indels
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: min base quality (possibly capped by BAQ) [13]
+        optional: true
         synonyms:
         - -Q
+        description: min base quality (possibly capped by BAQ) [13]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: coefficient for adjusting mapQ of poor mappings [0]
+        optional: true
         synonyms:
         - -C
+        description: coefficient for adjusting mapQ of poor mappings [0]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: filtering reads with bits in INT [0x704]
+        optional: true
         synonyms:
         - -m
+        description: filtering reads with bits in INT [0x704]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: cap mapping quality at INT [60]
+        optional: true
         synonyms:
         - -M
+        description: cap mapping quality at INT [60]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: limit maximum depth for indels [1024]
+        optional: true
         synonyms:
         - -d
+        description: limit maximum depth for indels [1024]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: list of reference sequences (force -S)
+        optional: true
         synonyms:
         - -t
+        description: list of reference sequences (force -S)
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: list of sites at which pileup is output
+        optional: true
         synonyms:
         - -l
+        description: list of sites at which pileup is output
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: reference sequence in the FASTA format
+        optional: true
         synonyms:
         - -f
+        description: reference sequence in the FASTA format
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: compute the consensus sequence
+        optional: true
         synonyms:
         - -c
+        description: compute the consensus sequence
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: print variants only (for -c)
+        optional: true
         synonyms:
         - -v
+        description: print variants only (for -c)
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: output in the GLFv3 format (DEPRECATED)
+        optional: true
         synonyms:
         - -g
+        description: output in the GLFv3 format (DEPRECATED)
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: theta in maq consensus calling model (for -c) [0.83]
+        optional: true
         synonyms:
         - -T
+        description: theta in maq consensus calling model (for -c) [0.83]
         args: !SimpleFlagArg
           name: FLOAT
-        optional: true
       - !Flag
-        description: number of haplotypes in the sample (for -c) [2]
+        optional: true
         synonyms:
         - -N
+        description: number of haplotypes in the sample (for -c) [2]
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: prior of a difference between two haplotypes (for -c) [0.001]
+        optional: true
         synonyms:
         - -r
+        description: prior of a difference between two haplotypes (for -c) [0.001]
         args: !SimpleFlagArg
           name: FLOAT
-        optional: true
       - !Flag
-        description: prior of an indel between two haplotypes (for -c) [0.00015]
+        optional: true
         synonyms:
         - -G
+        description: prior of an indel between two haplotypes (for -c) [0.00015]
         args: !SimpleFlagArg
           name: FLOAT
-        optional: true
       - !Flag
-        description: phred prob. of an indel in sequencing/prep. (for -c) [40]
+        optional: true
         synonyms:
         - -I
+        description: phred prob. of an indel in sequencing/prep. (for -c) [40]
         args: !SimpleFlagArg
           name: INT
-        optional: true
-      parent: *id020
+      parent: *id021
       subcommands: []
       usage: []
       help_flag:
@@ -3125,31 +4041,32 @@ subcommands:
         \  prior of an indel between two haplotypes (for -c) [0.00015]\n        -I\
         \ INT    phred prob. of an indel in sequencing/prep. (for -c) [40]\n\n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id012
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: bamtk
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: tview
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 2
         name: aln.bam
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: true
         position: 3
         name: ref.fasta
-        optional: true
+        description: ''
       named: []
-      parent: *id020
+      parent: *id021
       subcommands: []
       usage: []
       help_flag:
@@ -3157,16 +4074,17 @@ subcommands:
       version_flag:
       help_text: "Usage: bamtk tview <aln.bam> [ref.fasta]\n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id013
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: in.bam
-        optional: false
+        description: ''
       named: []
-      parent: *id020
+      parent: *id021
       subcommands: []
       usage: []
       help_flag:
@@ -3174,21 +4092,22 @@ subcommands:
       version_flag:
       help_text: "Usage: samtools idxstats <in.bam>\n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id014
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: in.bam
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: true
         position: 1
         name: out.index
-        optional: true
+        description: ''
       named: []
-      parent: *id020
+      parent: *id021
       subcommands: []
       usage: []
       help_flag:
@@ -3196,34 +4115,35 @@ subcommands:
       version_flag:
       help_text: "Usage: samtools index <in.bam> [out.index]\n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id015
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: in.bam
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: out.prefix
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -m
+        description: ''
         args: !SimpleFlagArg
           name: maxMem
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -on
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id020
+      parent: *id021
       subcommands: []
       usage: []
       help_flag:
@@ -3233,16 +4153,17 @@ subcommands:
         \ invalid option -- 'e'\nsort: invalid option -- 'l'\nsort: invalid option\
         \ -- 'p'\nUsage: samtools sort [-on] [-m <maxMem>] <in.bam> <out.prefix>\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id016
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: in.bam
-        optional: false
+        description: ''
       named: []
-      parent: *id020
+      parent: *id021
       subcommands: []
       usage: []
       help_flag:
@@ -3250,21 +4171,22 @@ subcommands:
       version_flag:
       help_text: "Usage: samtools flagstat <in.bam>\n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id017
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: faidx
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: in.fasta
-        optional: false
+        description: ''
       named: []
-      parent: *id020
+      parent: *id021
       subcommands: []
       usage: []
       help_flag:
@@ -3272,67 +4194,68 @@ subcommands:
       version_flag:
       help_text: "Usage: faidx <in.fasta> [<reg> [...]]\n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id018
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: samtools
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: fillmd
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 2
         name: aln.bam
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 3
         name: ref.fasta
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: change identical bases to '='
+        optional: true
         synonyms:
         - -e
+        description: change identical bases to '='
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: uncompressed BAM output (for piping)
+        optional: true
         synonyms:
         - -u
+        description: uncompressed BAM output (for piping)
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: compressed BAM output
+        optional: true
         synonyms:
         - -b
+        description: compressed BAM output
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: the input is SAM with header
+        optional: true
         synonyms:
         - -S
+        description: the input is SAM with header
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: read-independent local realignment
+        optional: true
         synonyms:
         - -r
+        description: read-independent local realignment
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -eubrS
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id020
+      parent: *id021
       subcommands: []
       usage: []
       help_flag:
@@ -3344,6 +4267,7 @@ subcommands:
         \       the input is SAM with header\n         -r       read-independent local\
         \ realignment\n\n"
       generated_using: *id005
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -3360,6 +4284,7 @@ subcommands:
       \ sorted alignments\n         rmdup       remove PCR duplicates\n         reheader\
       \    replace BAM header\n\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -3367,21 +4292,22 @@ subcommands:
   version_flag:
   help_text: "Usage: glfview <in.glf>\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: in.header.sam
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: in.bam
-    optional: false
+    description: ''
   named: []
-  parent: *id021
+  parent: *id022
   subcommands: []
   usage: []
   help_flag:
@@ -3389,64 +4315,65 @@ subcommands:
   version_flag:
   help_text: "Usage: samtools reheader <in.header.sam> <in.bam>\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: out.bam
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: in1.bam
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 2
     name: in2.bam
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: sort by read names
+    optional: true
     synonyms:
     - -n
+    description: sort by read names
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: attach RG tag (inferred from file names)
+    optional: true
     synonyms:
     - -r
+    description: attach RG tag (inferred from file names)
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: uncompressed BAM output
+    optional: true
     synonyms:
     - -u
+    description: uncompressed BAM output
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: merge file in the specified region STR [all]
+    optional: true
     synonyms:
     - -R
+    description: merge file in the specified region STR [all]
     args: !SimpleFlagArg
       name: STR
-    optional: true
   - !Flag
-    description: copy the header in FILE to <out.bam> [in1.bam]
+    optional: true
     synonyms:
     - -h
+    description: copy the header in FILE to <out.bam> [in1.bam]
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -nr
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id021
+  parent: *id022
   subcommands: []
   usage: []
   help_flag:
@@ -3461,76 +4388,77 @@ subcommands:
     \ Users\n      must provide the correct header with -h, or uses Picard which properly\
     \ maintains\n      the header dictionary in merging.\n\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id008
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: in1.bam
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: reference sequence file [null]
+    optional: true
     synonyms:
     - -f
+    description: reference sequence file [null]
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: region in which pileup is generated [null]
+    optional: true
     synonyms:
     - -r
+    description: region in which pileup is generated [null]
     args: !SimpleFlagArg
       name: STR
-    optional: true
   - !Flag
-    description: 'list of positions (format: chr pos) [null]'
+    optional: true
     synonyms:
     - -l
+    description: 'list of positions (format: chr pos) [null]'
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: cap mapping quality at INT [60]
+    optional: true
     synonyms:
     - -M
+    description: cap mapping quality at INT [60]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: min base quality [13]
+    optional: true
     synonyms:
     - -Q
+    description: min base quality [13]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: filter out alignment with MQ smaller than INT [0]
+    optional: true
     synonyms:
     - -q
+    description: filter out alignment with MQ smaller than INT [0]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: generate BCF output
+    optional: true
     synonyms:
     - -g
+    description: generate BCF output
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: do not compress BCF output
+    optional: true
     synonyms:
     - -u
+    description: do not compress BCF output
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: disable BAQ computation
+    optional: true
     synonyms:
     - -B
+    description: disable BAQ computation
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id021
+  parent: *id022
   subcommands: []
   usage: []
   help_flag:
@@ -3545,39 +4473,40 @@ subcommands:
     \      -u          do not compress BCF output\n         -B          disable BAQ\
     \ computation\n\nNotes: Assuming diploid individuals.\n\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id009
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: input.srt.bam
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: output.bam
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: rmdup for SE reads
+    optional: true
     synonyms:
     - -s
+    description: rmdup for SE reads
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: treat PE reads as SE in rmdup (force -s)
+    optional: true
     synonyms:
     - -S
+    description: treat PE reads as SE in rmdup (force -s)
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -sS
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id021
+  parent: *id022
   subcommands: []
   usage: []
   help_flag:
@@ -3588,123 +4517,124 @@ subcommands:
     Usage:  samtools rmdup [-sS] <input.srt.bam> <output.bam>\n\nOption: -s    rmdup\
     \ for SE reads\n        -S    treat PE reads as SE in rmdup (force -s)\n\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id010
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: in.bam
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: output BAM
+    optional: true
     synonyms:
     - -b
+    description: output BAM
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: print header only (no alignments)
+    optional: true
     synonyms:
     - -H
+    description: print header only (no alignments)
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: input is SAM
+    optional: true
     synonyms:
     - -S
+    description: input is SAM
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: uncompressed BAM output (force -b)
+    optional: true
     synonyms:
     - -u
+    description: uncompressed BAM output (force -b)
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: output FLAG in HEX (samtools-C specific)
+    optional: true
     synonyms:
     - -x
+    description: output FLAG in HEX (samtools-C specific)
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: output FLAG in string (samtools-C specific)
+    optional: true
     synonyms:
     - -X
+    description: output FLAG in string (samtools-C specific)
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: list of reference names and lengths (force -S) [null]
+    optional: true
     synonyms:
     - -t
+    description: list of reference names and lengths (force -S) [null]
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: reference sequence file (force -S) [null]
+    optional: true
     synonyms:
     - -T
+    description: reference sequence file (force -S) [null]
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: output file name [stdout]
+    optional: true
     synonyms:
     - -o
+    description: output file name [stdout]
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: list of read groups to be outputted [null]
+    optional: true
     synonyms:
     - -R
+    description: list of read groups to be outputted [null]
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: required flag, 0 for unset [0]
+    optional: true
     synonyms:
     - -f
+    description: required flag, 0 for unset [0]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: filtering flag, 0 for unset [0]
+    optional: true
     synonyms:
     - -F
+    description: filtering flag, 0 for unset [0]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: minimum mapping quality [0]
+    optional: true
     synonyms:
     - -q
+    description: minimum mapping quality [0]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: only output reads in library STR [null]
+    optional: true
     synonyms:
     - -l
+    description: only output reads in library STR [null]
     args: !SimpleFlagArg
       name: STR
-    optional: true
   - !Flag
-    description: only output reads in read group STR [null]
+    optional: true
     synonyms:
     - -r
+    description: only output reads in read group STR [null]
     args: !SimpleFlagArg
       name: STR
-    optional: true
-  parent: *id021
+  parent: *id022
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: print header for the SAM output
+    optional: true
     synonyms:
     - -h
+    description: print header for the SAM output
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "view: invalid option -- '-'\nview: invalid option -- 'e'\n\nUsage: \
@@ -3739,161 +4669,162 @@ subcommands:
     \ and\n     `-X' are samtools-C specific. Picard and older samtools do not\n \
     \    support HEX or string flags.\n\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id011
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: in.bam
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: simple (yet incomplete) pileup format
+    optional: true
     synonyms:
     - -s
+    description: simple (yet incomplete) pileup format
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: the input is in SAM
+    optional: true
     synonyms:
     - -S
+    description: the input is in SAM
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: disable BAQ computation
+    optional: true
     synonyms:
     - -B
+    description: disable BAQ computation
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: use the original MAQ model for SNP calling (DEPRECATED)
+    optional: true
     synonyms:
     - -A
+    description: use the original MAQ model for SNP calling (DEPRECATED)
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: output the 2nd best call and quality
+    optional: true
     synonyms:
     - '-2'
+    description: output the 2nd best call and quality
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: only show lines/consensus with indels
+    optional: true
     synonyms:
     - -i
+    description: only show lines/consensus with indels
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: min base quality (possibly capped by BAQ) [13]
+    optional: true
     synonyms:
     - -Q
+    description: min base quality (possibly capped by BAQ) [13]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: coefficient for adjusting mapQ of poor mappings [0]
+    optional: true
     synonyms:
     - -C
+    description: coefficient for adjusting mapQ of poor mappings [0]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: filtering reads with bits in INT [0x704]
+    optional: true
     synonyms:
     - -m
+    description: filtering reads with bits in INT [0x704]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: cap mapping quality at INT [60]
+    optional: true
     synonyms:
     - -M
+    description: cap mapping quality at INT [60]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: limit maximum depth for indels [1024]
+    optional: true
     synonyms:
     - -d
+    description: limit maximum depth for indels [1024]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: list of reference sequences (force -S)
+    optional: true
     synonyms:
     - -t
+    description: list of reference sequences (force -S)
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: list of sites at which pileup is output
+    optional: true
     synonyms:
     - -l
+    description: list of sites at which pileup is output
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: reference sequence in the FASTA format
+    optional: true
     synonyms:
     - -f
+    description: reference sequence in the FASTA format
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: compute the consensus sequence
+    optional: true
     synonyms:
     - -c
+    description: compute the consensus sequence
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: print variants only (for -c)
+    optional: true
     synonyms:
     - -v
+    description: print variants only (for -c)
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: output in the GLFv3 format (DEPRECATED)
+    optional: true
     synonyms:
     - -g
+    description: output in the GLFv3 format (DEPRECATED)
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: theta in maq consensus calling model (for -c) [0.83]
+    optional: true
     synonyms:
     - -T
+    description: theta in maq consensus calling model (for -c) [0.83]
     args: !SimpleFlagArg
       name: FLOAT
-    optional: true
   - !Flag
-    description: number of haplotypes in the sample (for -c) [2]
+    optional: true
     synonyms:
     - -N
+    description: number of haplotypes in the sample (for -c) [2]
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: prior of a difference between two haplotypes (for -c) [0.001]
+    optional: true
     synonyms:
     - -r
+    description: prior of a difference between two haplotypes (for -c) [0.001]
     args: !SimpleFlagArg
       name: FLOAT
-    optional: true
   - !Flag
-    description: prior of an indel between two haplotypes (for -c) [0.00015]
+    optional: true
     synonyms:
     - -G
+    description: prior of an indel between two haplotypes (for -c) [0.00015]
     args: !SimpleFlagArg
       name: FLOAT
-    optional: true
   - !Flag
-    description: phred prob. of an indel in sequencing/prep. (for -c) [40]
+    optional: true
     synonyms:
     - -I
+    description: phred prob. of an indel in sequencing/prep. (for -c) [40]
     args: !SimpleFlagArg
       name: INT
-    optional: true
-  parent: *id021
+  parent: *id022
   subcommands: []
   usage: []
   help_flag:
@@ -3919,31 +4850,32 @@ subcommands:
     \ [0.00015]\n        -I INT    phred prob. of an indel in sequencing/prep. (for\
     \ -c) [40]\n\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id012
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: bamtk
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: tview
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 2
     name: aln.bam
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: true
     position: 3
     name: ref.fasta
-    optional: true
+    description: ''
   named: []
-  parent: *id021
+  parent: *id022
   subcommands: []
   usage: []
   help_flag:
@@ -3951,16 +4883,17 @@ subcommands:
   version_flag:
   help_text: "Usage: bamtk tview <aln.bam> [ref.fasta]\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id013
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: in.bam
-    optional: false
+    description: ''
   named: []
-  parent: *id021
+  parent: *id022
   subcommands: []
   usage: []
   help_flag:
@@ -3968,21 +4901,22 @@ subcommands:
   version_flag:
   help_text: "Usage: samtools idxstats <in.bam>\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id014
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: in.bam
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: true
     position: 1
     name: out.index
-    optional: true
+    description: ''
   named: []
-  parent: *id021
+  parent: *id022
   subcommands: []
   usage: []
   help_flag:
@@ -3990,34 +4924,35 @@ subcommands:
   version_flag:
   help_text: "Usage: samtools index <in.bam> [out.index]\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id015
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: in.bam
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: out.prefix
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -m
+    description: ''
     args: !SimpleFlagArg
       name: maxMem
-    optional: true
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -on
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id021
+  parent: *id022
   subcommands: []
   usage: []
   help_flag:
@@ -4027,16 +4962,17 @@ subcommands:
     \ option -- 'e'\nsort: invalid option -- 'l'\nsort: invalid option -- 'p'\nUsage:\
     \ samtools sort [-on] [-m <maxMem>] <in.bam> <out.prefix>\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id016
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: in.bam
-    optional: false
+    description: ''
   named: []
-  parent: *id021
+  parent: *id022
   subcommands: []
   usage: []
   help_flag:
@@ -4044,21 +4980,22 @@ subcommands:
   version_flag:
   help_text: "Usage: samtools flagstat <in.bam>\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id017
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: faidx
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: in.fasta
-    optional: false
+    description: ''
   named: []
-  parent: *id021
+  parent: *id022
   subcommands: []
   usage: []
   help_flag:
@@ -4066,67 +5003,68 @@ subcommands:
   version_flag:
   help_text: "Usage: faidx <in.fasta> [<reg> [...]]\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id018
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: samtools
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: fillmd
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 2
     name: aln.bam
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 3
     name: ref.fasta
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: change identical bases to '='
+    optional: true
     synonyms:
     - -e
+    description: change identical bases to '='
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: uncompressed BAM output (for piping)
+    optional: true
     synonyms:
     - -u
+    description: uncompressed BAM output (for piping)
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: compressed BAM output
+    optional: true
     synonyms:
     - -b
+    description: compressed BAM output
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: the input is SAM with header
+    optional: true
     synonyms:
     - -S
+    description: the input is SAM with header
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: read-independent local realignment
+    optional: true
     synonyms:
     - -r
+    description: read-independent local realignment
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -eubrS
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id021
+  parent: *id022
   subcommands: []
   usage: []
   help_flag:
@@ -4138,6 +5076,7 @@ subcommands:
     \ input is SAM with header\n         -r       read-independent local realignment\n\
     \n"
   generated_using: *id005
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -4153,3 +5092,4 @@ help_text: "\nProgram: samtools (Tools for alignments in the SAM format)\nVersio
   \ and '=' bases\n         merge       merge sorted alignments\n         rmdup  \
   \     remove PCR duplicates\n         reheader    replace BAM header\n\n"
 generated_using: *id005
+docker_image:

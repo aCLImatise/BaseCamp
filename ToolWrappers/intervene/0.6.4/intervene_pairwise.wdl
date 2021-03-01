@@ -56,6 +56,9 @@ task IntervenePairwise {
       ~{if (script_only) then "--scriptonly" else ""} \
       ~{if (test) then "--test" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_genomic_regions: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\\nInput genomic regions in (BED/GTF/GFF) format.\\nFor files in a directory use *.<extension>. e.g. *.bed"
     type: "Type of input sets. Genomic regions or lists of genes/SNPs sets. Default is \\\"genomic\\\"."

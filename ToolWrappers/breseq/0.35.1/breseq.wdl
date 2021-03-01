@@ -146,6 +146,9 @@ task Breseq {
       ~{if defined(cnv_tile_size) then ("--cnv-tile-size " +  '"' + cnv_tile_size + '"') else ""} \
       ~{if (cnv_ignore_redundant) then "--cnv-ignore-redundant" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "File containing reference sequences in GenBank, GFF3, or FASTA format. Option may be provided multiple times for multiple files (REQUIRED)"
     name: "Human-readable name of the analysis run for output (DEFAULT=<none>)"

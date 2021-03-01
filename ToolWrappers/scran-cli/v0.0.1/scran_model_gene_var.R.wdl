@@ -28,6 +28,9 @@ task ScranmodelgenevarR {
       ~{if defined(method) then ("--method " +  '"' + method + '"') else ""} \
       ~{if defined(output_geneva_r_table) then ("--output-geneVar-table " +  '"' + output_geneva_r_table + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sce_object: "Path to the input SCE object in rds format."
     block: "A factor specifying the blocking levels for each cell in sce, for instance a donor covariate. If specified, variance modelling is performed separately within each block and statistics are combined across blocks."

@@ -10,6 +10,9 @@ task MafDropOverlappingpy {
       ~{interval} \
       ~{files_dot_dot_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     interval: ""
     files_dot_dot_dot: ""

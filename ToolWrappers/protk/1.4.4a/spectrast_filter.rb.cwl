@@ -3,17 +3,17 @@ id: spectrast_filter.rb.cwl
 inputs:
 - id: in_output
   doc: An explicitly named output file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_binary_output
   doc: Produce spectral libraries in binary format rather than ASCII [false]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --binary-output
 - id: in_predicate
   doc: Keep only spectra satifying predicate pred. Should be a C-style predicate
-  type: string
+  type: string?
   inputBinding:
     prefix: --predicate
 - id: in_merge
@@ -26,14 +26,14 @@ inputs:
     \ first file in the argument list that contains that peptide ion.\nUseful for\
     \ keeping existing consensus spectra unchanged while adding\nonly previously unseen\
     \ peptide ions. [U]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --merge
 - id: in_replicates
   doc: "How to derive a single spectrum from replicates. Options are None, C,B\nC:\
     \ Consensus. Create the consensus spectrum of all replicate spectra of each peptide\
     \ ion.\nB: Best replicate. Pick the best replicate of each peptide ion. [None]\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --replicates
 - id: in_file_one_dots_plib
@@ -47,9 +47,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: An explicitly named output file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - spectrast_filter.rb

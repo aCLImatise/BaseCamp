@@ -62,6 +62,9 @@ task HaystackMotifs {
       ~{if defined(gene_ids_to_names_filename) then ("--gene_ids_to_names_filename " +  '"' + gene_ids_to_names_filename + '"') else ""} \
       ~{if defined(n_processes) then ("--n_processes " +  '"' + n_processes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     motif: "ANALYSIS- [Luca Pinello - lpinello@jimmy.harvard.edu]"
     bed_bg_filename: "A bed file containing the backround coordinates on the\\ngenome of reference (default random sampled regions\\nfrom the genome)"

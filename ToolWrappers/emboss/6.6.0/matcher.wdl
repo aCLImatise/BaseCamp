@@ -14,6 +14,9 @@ task Matcher {
       ~{if (gap_open) then "-gapopen" else ""} \
       ~{if (gap_extend) then "-gapextend" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_file: "matrix     [EBLOSUM62 for protein, EDNAFULL for DNA]\\nThis is the scoring matrix file used when\\ncomparing sequences. By default it is the\\nfile 'EBLOSUM62' (for proteins) or the file\\n'EDNAFULL' (for nucleic sequences). These\\nfiles are found in the 'data' directory of\\nthe EMBOSS installation."
     alternatives: "integer    [1] This sets the number of alternative\\nmatches output. By default only the highest\\nscoring alignment is shown. A value of 2\\ngives you other reasonable alignments. In\\nsome cases, for example multidomain proteins\\nof cDNA and genomic DNA comparisons, there\\nmay be other interesting and significant\\nalignments. (Integer 1 or more)"

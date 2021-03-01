@@ -1,0 +1,247 @@
+!Command
+command:
+- amrfinder
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --update
+  description: Update the AMRFinder database
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  - --force_update
+  description: Force updating the AMRFinder database
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --protein
+  description: Input protein FASTA file
+  args: !SimpleFlagArg
+    name: PROT_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --nucleotide
+  description: Input nucleotide FASTA file
+  args: !SimpleFlagArg
+    name: NUC_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gff
+  description: GFF file for protein locations. Protein id should be in the attribute
+    'Name=<id>' (9th field) of the rows with type 'CDS' or 'gene' (3rd field).
+  args: !SimpleFlagArg
+    name: GFF_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --pgap
+  description: Input files PROT_FASTA, NUC_FASTA and GFF_FILE are created by the NCBI
+    PGAP
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --database
+  description: 'Alternative directory with AMRFinder database. Default: $AMRFINDER_DB'
+  args: !SimpleFlagArg
+    name: DATABASE_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --ident_min
+  description: "Minimum proportion of identical amino acids in alignment for hit (0..1).\
+    \ -1 means use a curated threshold if it exists and 0.9 otherwise\nDefault: -1"
+  args: !SimpleFlagArg
+    name: MIN_IDENT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --coverage_min
+  description: "Minimum coverage of the reference protein (0..1)\nDefault: 0.5"
+  args: !SimpleFlagArg
+    name: MIN_COV
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --organism
+  description: Taxonomy group. To see all possible taxonomy groups use the --list_organisms
+    flag
+  args: !SimpleFlagArg
+    name: ORGANISM
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --list_organisms
+  description: Print the list of all possible taxonomy groups for mutations identification
+    and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --translation_table
+  description: "NCBI genetic code for translated BLAST\nDefault: 11"
+  args: !SimpleFlagArg
+    name: TRANSLATION_TABLE
+- !Flag
+  optional: true
+  synonyms:
+  - --plus
+  description: Add the plus genes to the report
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --report_common
+  description: Report proteins common to a taxonomy group
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mutation_all
+  description: File to report all mutations
+  args: !SimpleFlagArg
+    name: MUT_ALL_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --blast_bin
+  description: 'Directory for BLAST. Deafult: $BLAST_BIN'
+  args: !SimpleFlagArg
+    name: BLAST_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --name
+  description: Text to be added as the first column "name" to all rows of the report,
+    for example it can be an assembly name
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Write output to OUTPUT_FILE instead of STDOUT
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --protein_output
+  description: Output protein FASTA file of reported proteins
+  args: !SimpleFlagArg
+    name: PROT_FASTA_OUT
+- !Flag
+  optional: true
+  synonyms:
+  - --nucleotide_output
+  description: Output nucleotide FASTA file of reported nucleotide sequences
+  args: !SimpleFlagArg
+    name: NUC_FASTA_OUT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: Suppress messages to STDERR
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gpipe_org
+  description: NCBI internal GPipe organism names
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --parm
+  description: 'amr_report parameters for testing: -nosame -noblast -skip_hmm_check
+    -bed'
+  args: !SimpleFlagArg
+    name: PARM
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: "Max. number of threads\nDefault: 4"
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Integrity checks
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: Error log file, appended, opened on application start
+  args: !SimpleFlagArg
+    name: LOG
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Identify AMR and virulence genes in proteins and/or contigs and print\
+  \ a report\n\nDOCUMENTATION\n    See https://github.com/ncbi/amr/wiki for full documentation\n\
+  \nUPDATES\n    Subscribe to the amrfinder-announce mailing list for database and\
+  \ software update notifications:\n    https://www.ncbi.nlm.nih.gov/mailman/listinfo/amrfinder-announce\n\
+  \nUSAGE:   amrfinder [--update] [--force_update] [--protein PROT_FASTA] [--nucleotide\
+  \ NUC_FASTA] [--gff GFF_FILE] [--pgap] [--database DATABASE_DIR] [--ident_min MIN_IDENT]\
+  \ [--coverage_min MIN_COV] [--organism ORGANISM] [--list_organisms] [--translation_table\
+  \ TRANSLATION_TABLE] [--plus] [--report_common] [--mutation_all MUT_ALL_FILE] [--blast_bin\
+  \ BLAST_DIR] [--name NAME] [--output OUTPUT_FILE] [--protein_output PROT_FASTA_OUT]\
+  \ [--nucleotide_output NUC_FASTA_OUT] [--quiet] [--gpipe_org] [--parm PARM] [--threads\
+  \ THREADS] [--debug] [--log LOG]\nHELP:    amrfinder --help or amrfinder -h\nVERSION:\
+  \ amrfinder --version\n\nOPTIONAL PARAMETERS:\n-u, --update\n    Update the AMRFinder\
+  \ database\n-U, --force_update\n    Force updating the AMRFinder database\n-p PROT_FASTA,\
+  \ --protein PROT_FASTA\n    Input protein FASTA file\n-n NUC_FASTA, --nucleotide\
+  \ NUC_FASTA\n    Input nucleotide FASTA file\n-g GFF_FILE, --gff GFF_FILE\n    GFF\
+  \ file for protein locations. Protein id should be in the attribute 'Name=<id>'\
+  \ (9th field) of the rows with type 'CDS' or 'gene' (3rd field).\n--pgap\n    Input\
+  \ files PROT_FASTA, NUC_FASTA and GFF_FILE are created by the NCBI PGAP\n-d DATABASE_DIR,\
+  \ --database DATABASE_DIR\n    Alternative directory with AMRFinder database. Default:\
+  \ $AMRFINDER_DB\n-i MIN_IDENT, --ident_min MIN_IDENT\n    Minimum proportion of\
+  \ identical amino acids in alignment for hit (0..1). -1 means use a curated threshold\
+  \ if it exists and 0.9 otherwise\n    Default: -1\n-c MIN_COV, --coverage_min MIN_COV\n\
+  \    Minimum coverage of the reference protein (0..1)\n    Default: 0.5\n-O ORGANISM,\
+  \ --organism ORGANISM\n    Taxonomy group. To see all possible taxonomy groups use\
+  \ the --list_organisms flag\n-l, --list_organisms\n    Print the list of all possible\
+  \ taxonomy groups for mutations identification and exit\n-t TRANSLATION_TABLE, --translation_table\
+  \ TRANSLATION_TABLE\n    NCBI genetic code for translated BLAST\n    Default: 11\n\
+  --plus\n    Add the plus genes to the report\n--report_common\n    Report proteins\
+  \ common to a taxonomy group\n--mutation_all MUT_ALL_FILE\n    File to report all\
+  \ mutations\n--blast_bin BLAST_DIR\n    Directory for BLAST. Deafult: $BLAST_BIN\n\
+  --name NAME\n    Text to be added as the first column \"name\" to all rows of the\
+  \ report, for example it can be an assembly name\n-o OUTPUT_FILE, --output OUTPUT_FILE\n\
+  \    Write output to OUTPUT_FILE instead of STDOUT\n--protein_output PROT_FASTA_OUT\n\
+  \    Output protein FASTA file of reported proteins\n--nucleotide_output NUC_FASTA_OUT\n\
+  \    Output nucleotide FASTA file of reported nucleotide sequences\n-q, --quiet\n\
+  \    Suppress messages to STDERR\n--gpipe_org\n    NCBI internal GPipe organism\
+  \ names\n--parm PARM\n    amr_report parameters for testing: -nosame -noblast -skip_hmm_check\
+  \ -bed\n--threads THREADS\n    Max. number of threads\n    Default: 4\n--debug\n\
+  \    Integrity checks\n--log LOG\n    Error log file, appended, opened on application\
+  \ start\n\nTemporary directory used is $TMPDIR or \"/tmp\"\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ncbi-amrfinderplus:3.9.8--h671e170_0

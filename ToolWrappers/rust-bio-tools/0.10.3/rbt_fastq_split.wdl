@@ -8,6 +8,9 @@ task RbtFastqsplit {
     rbt fastq_split \
       ~{chunks}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chunks: ""
   }

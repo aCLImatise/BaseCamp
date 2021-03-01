@@ -24,6 +24,9 @@ task Kleborate {
       ~{if defined(kap_tive_k_outfile) then ("--kaptive_k_outfile " +  '"' + kap_tive_k_outfile + '"') else ""} \
       ~{if defined(kap_tive_o_outfile) then ("--kaptive_o_outfile " +  '"' + kap_tive_o_outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assemblies: "FASTA file(s) for assemblies"
     resistance: "Turn on resistance genes screening (default: no\\nresistance gene screening)"

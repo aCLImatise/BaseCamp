@@ -4,6 +4,9 @@ task Configyml {
   command <<<
     _config_yml
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

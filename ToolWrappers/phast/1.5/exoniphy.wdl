@@ -54,6 +54,9 @@ task Exoniphy {
       ~{if defined(not_informative) then ("--not-informative " +  '"' + not_informative + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree_models: "List of tree model (*.mod) files, one for each state in the\\nHMM.  Order of models must correspond to order of states in\\nHMM file.  By default, a set of models appropriate for human,\\nmouse, and rat are used (estimated as described in Siepel &\\nHaussler, 2004)."
     hmm: "Name of HMM file defining states and transition probabilities.\\nBy default, the 60-state HMM described in Siepel & Haussler\\n(2004) is used, with transition probabilities appropriate for\\nmammalian genomes (estimated as described in that paper)."

@@ -4,6 +4,9 @@ task GmtkKernel {
   command <<<
     gmtkKernel
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

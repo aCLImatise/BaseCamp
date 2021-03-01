@@ -4,27 +4,27 @@ inputs:
 - id: in_index_object_file
   doc: "'SingleCellExperiment' object previously prepared with the scmap-index-cluster.R\
     \ script."
-  type: File
+  type: File?
   inputBinding:
     prefix: --index-object-file
 - id: in_projection_object_file
   doc: "'SingleCellExperiment' object to project."
-  type: File
+  type: File?
   inputBinding:
     prefix: --projection-object-file
 - id: in_threshold
   doc: Threshold on similarity (or probability for SVM and RF).
-  type: string
+  type: string?
   inputBinding:
     prefix: --threshold
 - id: in_output_text_file
   doc: File name in which to text-format cell type assignments.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-text-file
 - id: in_output_object_file
   doc: File name in which to store serialized R object of type 'SingleCellExperiment'.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-object-file
 outputs:
@@ -33,14 +33,15 @@ outputs:
   type: stdout
 - id: out_output_text_file
   doc: File name in which to text-format cell type assignments.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_text_file)
 - id: out_output_object_file
   doc: File name in which to store serialized R object of type 'SingleCellExperiment'.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_object_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - scmap-scmap-cluster.R

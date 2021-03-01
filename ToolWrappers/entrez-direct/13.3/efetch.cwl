@@ -3,92 +3,92 @@ id: efetch.cwl
 inputs:
 - id: in_format
   doc: Format of record or report
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -format
 - id: in_mode
   doc: text, xml, asn.1, json
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -mode
 - id: in_style
   doc: withparts, conwithfeat
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -style
 - id: in_db
   doc: Database name
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -db
 - id: in_id
   doc: Unique identifier or accession number
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -id
 - id: in_seq_start
   doc: First sequence position to retrieve
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -seq_start
 - id: in_seq_stop
   doc: Last sequence position to retrieve
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -seq_stop
 - id: in_strand
   doc: 1 = forward DNA strand, 2 = reverse complement
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -strand
 - id: in_rev_comp
   doc: Shortcut for strand 2
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -revcomp
 - id: in_chr_start
   doc: Sequence range from 0-based coordinates
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -chr_start
 - id: in_chr_stop
   doc: in gene docsum GenomicInfoType object
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -chr_stop
 - id: in_complexity
   doc: 0 = default, 1 = bioseq, 3 = nuc-prot set
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -complexity
 - id: in_extend
   doc: Extend sequence retrieval in both directions
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -extend
 - id: in_extra_feat
   doc: Bit flag specifying extra features
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -extrafeat
 - id: in_start
   doc: First record to fetch
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -start
 - id: in_stop
   doc: Last record to fetch
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -stop
 - id: in_raw
   doc: Skip database-specific XML modifications
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -raw
 - id: in_json
   doc: Convert adjusted XML output to JSON
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -json
 - id: in_full
@@ -325,6 +325,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - efetch

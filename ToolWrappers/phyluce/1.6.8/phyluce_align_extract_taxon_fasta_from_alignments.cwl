@@ -3,32 +3,32 @@ id: phyluce_align_extract_taxon_fasta_from_alignments.cwl
 inputs:
 - id: in_alignments
   doc: The directory of alignments
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --alignments
 - id: in_tax_on
   doc: The taxon to extract
-  type: string
+  type: string?
   inputBinding:
     prefix: --taxon
 - id: in_output
   doc: The output FASTA file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_input_format
   doc: The input format of the alignments
-  type: string
+  type: string?
   inputBinding:
     prefix: --input-format
 - id: in_verbosity
   doc: The logging level to use.
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbosity
 - id: in_log_path
   doc: The path to a directory to hold logs.
-  type: File
+  type: File?
   inputBinding:
     prefix: --log-path
 outputs:
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: The output FASTA file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phyluce_align_extract_taxon_fasta_from_alignments

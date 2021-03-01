@@ -2,7 +2,7 @@ version 1.0
 
 task BsSeeker2buildpy {
   input {
-    File? file
+    File? input_your_fasta
     Int? aligner
     File? path
     File? db
@@ -13,7 +13,7 @@ task BsSeeker2buildpy {
   }
   command <<<
     bs_seeker2_build_py \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(input_your_fasta) then ("--file " +  '"' + input_your_fasta + '"') else ""} \
       ~{if defined(aligner) then ("--aligner " +  '"' + aligner + '"') else ""} \
       ~{if defined(path) then ("--path " +  '"' + path + '"') else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
@@ -22,8 +22,11 @@ task BsSeeker2buildpy {
       ~{if defined(up) then ("--up " +  '"' + up + '"') else ""} \
       ~{if defined(cut_site) then ("--cut-site " +  '"' + cut_site + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: "Input your reference genome file (fasta)"
+    input_your_fasta: "Input your reference genome file (fasta)"
     aligner: "Aligner program to perform the analysis: bowtie,\\nbowtie2, soap, rmap [Default: bowtie]"
     path: "Path to the aligner program. Detected:\\nbowtie: None\\nbowtie2: /usr/local/bin\\nrmap: None\\nsoap: None"
     db: "Path to the reference genome library (generated in\\npreprocessing genome) [Default:\\n/usr/local/bin/bs_utils/reference_genomes]"

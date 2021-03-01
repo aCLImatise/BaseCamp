@@ -36,6 +36,9 @@ task Signcode {
       ~{if (ky) then "-ky" else ""} \
       ~{if (_key_location) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     spc: "Software Publisher Certificate file"
     private_key_file: "Private Key file"

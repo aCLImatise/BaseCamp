@@ -92,6 +92,9 @@ task MarvelProkka {
       ~{if (not_rna) then "--notrna" else ""} \
       ~{if (rn_ammer) then "--rnammer" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     citation: "Print citation for referencing Prokka"
     quiet: "No screen output (default OFF)"

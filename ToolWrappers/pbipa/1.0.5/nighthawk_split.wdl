@@ -20,6 +20,9 @@ task NighthawkSplit {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     split_type: "STR   Type of splitting to perform. Valid choices: (nfiles,\\novlpiles, noverlaps). [ovlpiles]"
     limit: "INT   Number of files when split-type is 'nfiles', or\\nnumber of piles when split-type is 'ovlpiles'. [1000]"

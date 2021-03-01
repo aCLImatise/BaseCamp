@@ -3,18 +3,18 @@ id: min_abundance_finder.pl.cwl
 inputs:
 - id: in_gt
   doc: "1   Look for the first peak at this kmer count\nand then the next valley."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gt
 - id: in_km_er
   doc: 21  kmer length
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --kmer
 - id: in_num_cpus
   doc: "This script will apply one thread per kmer\nlength. Multiple values of k are\
     \ tested to\nget a consensus value."
-  type: long
+  type: long?
   inputBinding:
     prefix: --numcpus
 - id: in_misc
@@ -28,6 +28,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - min_abundance_finder.pl

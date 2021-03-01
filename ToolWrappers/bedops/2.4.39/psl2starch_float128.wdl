@@ -22,6 +22,9 @@ task Psl2starchfloat128 {
       ~{if (starch_gzip) then "--starch-gzip" else ""} \
       ~{if (starch_note) then "--starch-note" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep_header: "(-k)\\nPreserve header section as pseudo-BED elements (requires --headered)"
     split: "(-s)\\nSplit record into multiple BED elements, based on tStarts field value"

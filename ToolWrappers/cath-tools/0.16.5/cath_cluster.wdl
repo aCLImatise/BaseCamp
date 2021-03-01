@@ -26,6 +26,9 @@ task Cathcluster {
       ~{if defined(clust_spans_to_file) then ("--clust-spans-to-file " +  '"' + clust_spans_to_file + '"') else ""} \
       ~{if defined(reps_to_file) then ("--reps-to-file " +  '"' + reps_to_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_version_information: "[ --version ]              Output version information"
     link_dir_n: "Interpret each link value as <dirn>, one of:\\nDISTANCE - A higher value means the corresponding two entries are more distant\\nSTRENGTH - A higher value means the corresponding tow entries are more connected"

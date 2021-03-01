@@ -8,6 +8,9 @@ task VcfAlleleFreqpy {
     vcf_allele_freq_py \
       ~{vcf}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf: "VCF input (default: stdin)"
   }

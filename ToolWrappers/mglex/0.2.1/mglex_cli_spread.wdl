@@ -20,6 +20,9 @@ task MglexcliSpread {
       ~{if (normalize) then "--normalize" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data: "Feature matrix; default standard input"
     responsibility: "Responsibility (weight) matrix file"

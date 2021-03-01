@@ -4,17 +4,17 @@ inputs:
 - id: in_min_gap_size
   doc: "Minimum gap size between accessible sequence regions.\nRegions separated by\
     \ less than this distance will be\njoined together. [Default: 5000]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-gap-size
 - id: in_exclude
   doc: "Additional regions to exclude, in BED format. Can be\nused multiple times."
-  type: string
+  type: string?
   inputBinding:
     prefix: --exclude
 - id: in_output
   doc: "Output file name\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -23,9 +23,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file name\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cnvkit.py

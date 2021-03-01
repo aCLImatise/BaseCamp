@@ -10,6 +10,9 @@ task OrthomclAdjustFasta {
       ~{tax_on_code} \
       ~{fast_a_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tax_on_code: ""
     fast_a_file: ""

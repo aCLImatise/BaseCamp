@@ -15,12 +15,12 @@ task Leaff {
     Boolean? _uppercase_bases
     Int? s_l_print
     Int? l_print_sequences_s
-    Float? h_print_sequences
+    Float? print_sequences_composition
     File? print_sequences_seqid
-    Int? print_picked_sequences
+    Int? print_randomly_picked
     String? print_single_sequence
-    String? l_print_sequences_id
-    Boolean? print_sequences_whole
+    String? l_print_sequences_inclusive
+    Boolean? print_sequences_do
   }
   command <<<
     leaff \
@@ -37,13 +37,16 @@ task Leaff {
       ~{if (_uppercase_bases) then "-u" else ""} \
       ~{if defined(s_l_print) then ("-G " +  '"' + s_l_print + '"') else ""} \
       ~{if defined(l_print_sequences_s) then ("-L " +  '"' + l_print_sequences_s + '"') else ""} \
-      ~{if defined(h_print_sequences) then ("-N " +  '"' + h_print_sequences + '"') else ""} \
+      ~{if defined(print_sequences_composition) then ("-N " +  '"' + print_sequences_composition + '"') else ""} \
       ~{if defined(print_sequences_seqid) then ("-q " +  '"' + print_sequences_seqid + '"') else ""} \
-      ~{if defined(print_picked_sequences) then ("-r " +  '"' + print_picked_sequences + '"') else ""} \
+      ~{if defined(print_randomly_picked) then ("-r " +  '"' + print_randomly_picked + '"') else ""} \
       ~{if defined(print_single_sequence) then ("-s " +  '"' + print_single_sequence + '"') else ""} \
-      ~{if defined(l_print_sequences_id) then ("-S " +  '"' + l_print_sequences_id + '"') else ""} \
-      ~{if (print_sequences_whole) then "-W" else ""}
+      ~{if defined(l_print_sequences_inclusive) then ("-S " +  '"' + l_print_sequences_inclusive + '"') else ""} \
+      ~{if (print_sequences_do) then "-W" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     use_sequence_f: ":     use sequence in 'file' (-F is also allowed for historical reasons)"
     _read_actions: ":     read actions from 'file'"
@@ -58,12 +61,12 @@ task Leaff {
     _uppercase_bases: ":          uppercase all bases"
     s_l_print: "s l:    print n randomly generated sequences, 0 < s <= length <= l"
     l_print_sequences_s: "l:      print all sequences such that s <= length < l"
-    h_print_sequences: "h:      print all sequences such that l <= % N composition < h\\n(NOTE 0.0 <= l < h < 100.0)\\n(NOTE that you cannot print sequences with 100% N\\nThis is a useful bug)."
+    print_sequences_composition: "h:      print all sequences such that l <= % N composition < h\\n(NOTE 0.0 <= l < h < 100.0)\\n(NOTE that you cannot print sequences with 100% N\\nThis is a useful bug)."
     print_sequences_seqid: ":     print sequences from the seqid list in 'file'"
-    print_picked_sequences: ":      print 'num' randomly picked sequences"
+    print_randomly_picked: ":      print 'num' randomly picked sequences"
     print_single_sequence: ":    print the single sequence 'seqid'"
-    l_print_sequences_id: "l:      print all the sequences from ID 'f' to 'l' (inclusive)"
-    print_sequences_whole: ":          print all sequences (do the whole file)"
+    l_print_sequences_inclusive: "l:      print all the sequences from ID 'f' to 'l' (inclusive)"
+    print_sequences_do: ":          print all sequences (do the whole file)"
   }
   output {
     File out_stdout = stdout()

@@ -22,6 +22,9 @@ task NucmerAnnotate {
       ~{if (depend) then "-depend" else ""} \
       ~{if defined(debug) then ("-debug " +  '"' + debug + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore: "- Maximum length of the end sequence unaligned (Default: 20 bp)"
     all: "- Display all alignments (Default: only the annotated ones)"

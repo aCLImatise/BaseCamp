@@ -14,6 +14,9 @@ task NaspOutputFolder {
       ~{output_folder} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: ""
     nasp: ""

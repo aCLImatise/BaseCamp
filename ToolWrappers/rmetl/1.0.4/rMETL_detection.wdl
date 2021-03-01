@@ -22,6 +22,9 @@ task RMETLDetection {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(presets) then ("--presets " +  '"' + presets + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_support: "Mininum number of reads that support a ME.[5]"
     min_length: "Mininum length of ME to be reported.[50]"

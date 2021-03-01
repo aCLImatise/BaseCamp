@@ -4,93 +4,93 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Alignment file in BAM format (SAM is not supported).\n[required]"
+  optional: true
   synonyms:
   - -i
   - --input-file
+  description: "Alignment file in BAM format (SAM is not supported).\n[required]"
   args: !SimpleFlagArg
     name: INPUT_FILE
-  optional: true
 - !Flag
-  description: Prefix of output files(s). [required]
+  optional: true
   synonyms:
   - -o
   - --out-prefix
+  description: Prefix of output files(s). [required]
   args: !SimpleFlagArg
     name: OUTPUT_PREFIX
-  optional: true
 - !Flag
-  description: Reference gene model in bed fomat. [required]
+  optional: true
   synonyms:
   - -r
   - --refgene
+  description: Reference gene model in bed fomat. [required]
   args: !SimpleFlagArg
     name: REFGENE_BED
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --strand
   description: "How read(s) were stranded during sequencing. For\nexample: --strand='1++,1--,2+-,2-+'\
     \ means that this is\na pair-end, strand-specific RNA-seq, and the strand\nrule\
     \ is: read1 mapped to '+' => parental gene on '+';\nread1 mapped to '-' => parental\
     \ gene on '-'; read2\nmapped to '+' => parental gene on '-'; read2 mapped to\n\
     '-' => parental gene on '+'.  If you are not sure\nabout the strand rule, run\
     \ 'infer_experiment.py'\ndefault=none (Not a strand specific RNA-seq data)"
-  synonyms:
-  - -d
-  - --strand
   args: !SimpleFlagArg
     name: STRAND_RULE
-  optional: true
 - !Flag
-  description: "How to deal with multiple hit reads. Presence this\noption renders\
-    \ program to skip multiple hits reads."
+  optional: true
   synonyms:
   - -u
   - --skip-multi-hits
+  description: "How to deal with multiple hit reads. Presence this\noption renders\
+    \ program to skip multiple hits reads."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "How to count total reads. Presence of this option\nrenders program\
-    \ only used exonic (UTR exons and CDS\nexons) reads, otherwise use all reads."
+  optional: true
   synonyms:
   - -e
   - --only-exonic
+  description: "How to count total reads. Presence of this option\nrenders program\
+    \ only used exonic (UTR exons and CDS\nexons) reads, otherwise use all reads."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum mapping quality (phred scaled) for an\nalignment to be called\
-    \ \"uniquely mapped\". default=30"
+  optional: true
   synonyms:
   - -q
   - --mapq
+  description: "Minimum mapping quality (phred scaled) for an\nalignment to be called\
+    \ \"uniquely mapped\". default=30"
   args: !SimpleFlagArg
     name: MAP_QUAL
-  optional: true
 - !Flag
-  description: "How to count read-pairs that only have one end mapped.\n0: ignore\
-    \ it. 0.5: treat it as half fragment. 1: treat\nit as whole fragment. default=1\n"
+  optional: true
   synonyms:
   - -s
   - --single-read
+  description: "How to count read-pairs that only have one end mapped.\n0: ignore\
+    \ it. 0.5: treat it as half fragment. 1: treat\nit as whole fragment. default=1\n"
   args: !SimpleFlagArg
     name: SINGLE_READ
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: FPKM_count.py [options]\n\ncalculate raw read count, FPM (fragment\
   \ per million) and FPKM (fragment per million mapped\nreads per kilobase exon) for\
   \ each gene in BED file.\n\n\n\nOptions:\n  --version             show program's\
@@ -121,3 +121,4 @@ help_text: "Usage: FPKM_count.py [options]\n\ncalculate raw read count, FPM (fra
   \ as half fragment. 1: treat\n                        it as whole fragment. default=1\n"
 generated_using:
 - --help
+docker_image:

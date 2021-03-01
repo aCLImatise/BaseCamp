@@ -12,6 +12,9 @@ task AgatSpWebApolloCompliantpl {
       ~{if defined(gff) then ("--gff " +  '"' + gff + '"') else ""} \
       ~{if defined(output_gff_file) then ("--output " +  '"' + output_gff_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GTF/GFF file."
     output_gff_file: "Output GFF file. If no output file is specified, the output will\\nbe written to STDOUT."

@@ -14,6 +14,9 @@ task ConvertOrthofinderTreeIdspySpeciesIDs {
       ~{sequence_ids} \
       ~{species_ids}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     convert_ortho_finder_tree_ids_do_tpy: ""
     tree_input: ""

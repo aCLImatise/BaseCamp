@@ -32,6 +32,9 @@ task Mbxxmotif {
       ~{if defined(a_width) then ("--awidth " +  '"' + a_width + '"') else ""} \
       ~{if (keep_tmp_files) then "--keep-tmp-files" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     neg_set: "set path to negative set if available."
     plot_pwm: "plot top plotPWM PWMs as pdf sequence logos"

@@ -10,6 +10,9 @@ task RgttoolspyBedOverlap {
       ~{if defined(input_bed_files) then ("-i " +  '"' + input_bed_files + '"') else ""} \
       ~{if defined(output_text_file) then ("-o " +  '"' + output_text_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bed_files: "Input BED files or directory"
     output_text_file: "Output text file"

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Array, Boolean
+
+Vtools_Report_Transmission_V0_1_0 = CommandToolBuilder(tool="vtools_report_transmission", base_command=["vtools_report", "transmission"], inputs=[ToolInput(tag="in_parentsnames_uniquely_identify", input_type=String(optional=True), prefix="--parents", doc=InputDocumentation(doc="PARENTS\nNames of parents, which should uniquely identify two\nsamples.")), ToolInput(tag="in_offspring", input_type=Array(t=String(), optional=True), prefix="--offspring", doc=InputDocumentation(doc="Names of one or more offspring samples.")), ToolInput(tag="in_de_novo", input_type=Boolean(optional=True), prefix="--denovo", doc=InputDocumentation(doc="[DENOVO [DENOVO ...]]\nA list of tables to store denovo variants for each\noffspring. DeNovo variants are defined as offspring\nvariants that do not exist in any of the parents,\nincluding the cases when the offspring have different\nvariants from what parents have at the same genomic\nlocations.")), ToolInput(tag="in_recessive", input_type=Boolean(optional=True), prefix="--recessive", doc=InputDocumentation(doc="[RECESSIVE [RECESSIVE ...]]\nA list of tables to store recessive variants for each\noffspring. Recessive variants are defined as variants\nthat are homozygous in offspring, and heterozygous in\nboth parents.")), ToolInput(tag="in_inconsistent", input_type=Boolean(optional=True), prefix="--inconsistent", doc=InputDocumentation(doc="[INCONSISTENT [INCONSISTENT ...]]\nA list of tables to store variants for each offspring\nthat demonstrate mendelian inconsistencies, namely\nvariants that are not passed from parents to offspring\nin a Mendelian fashion. Examples of inconsistent\nvariants include de novo variants, homozygous variants\nin offspring with only one parental carrier, wildtype\noffspring variants with a homozygous parent,\nheterozygous offspring variants with two homozygous\nparents, and more complicated cases when multiple\nvariants appear at the same sites.")), ToolInput(tag="in_verbosity", input_type=String(optional=True), prefix="--verbosity", doc=InputDocumentation(doc="Output error and warning (0), info (1), debug (2) and\ntrace (3) information to standard output (default to\n1).\n")), ToolInput(tag="in_var_6", input_type=String(optional=True), position=0, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Vtools_Report_Transmission_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -8,6 +8,9 @@ task Vcfnull2ref {
     vcfnull2ref \
       ~{vcf_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file: ""
   }

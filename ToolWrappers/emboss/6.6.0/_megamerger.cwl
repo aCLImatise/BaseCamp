@@ -3,7 +3,7 @@ id: _megamerger.cwl
 inputs:
 - id: in_word_size
   doc: integer    [20] Word size (Integer 2 or more)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -wordsize
 - id: in_prefer
@@ -13,13 +13,14 @@ inputs:
     \ using the sequence where the\nmismatch is closest to that sequence's\ncentre.\
     \ If this option is used, then the\nfirst sequence (seqa) will always be used\
     \ in\npreference to the other sequence when there\nis a mismatch."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -prefer
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _megamerger

@@ -3,27 +3,27 @@ id: bp_mutate.pl.cwl
 inputs:
 - id: in_percent
   doc: mutagenized
-  type: string
+  type: string?
   inputBinding:
     prefix: --percent
 - id: in_number
   doc: Number of mutant sequences created
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --number
 - id: in_output
   doc: Output file (optional)
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_format
   doc: 'Output format (default: fasta)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --format
 - id: in_input
   doc: Input file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input
 - id: in_bioperl_lat_bioperl_dot_org
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output file (optional)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bp_mutate.pl

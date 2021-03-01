@@ -5,81 +5,81 @@ command:
 positional: []
 named:
 - !Flag
-  description: 'alignment in fasta or VCF format (default: None)'
+  optional: true
   synonyms:
   - --alignment
   - -a
+  description: 'alignment in fasta or VCF format (default: None)'
   args: !SimpleFlagArg
     name: ALIGNMENT
-  optional: true
 - !Flag
-  description: 'tree builder to use (default: iqtree)'
+  optional: true
   synonyms:
   - --method
+  description: 'tree builder to use (default: iqtree)'
   args: !ChoiceFlagArg
     choices: !!set
+      fasttree:
       iqtree:
       raxml:
-      fasttree:
-  optional: true
 - !Flag
-  description: 'file name to write tree to (default: None)'
+  optional: true
   synonyms:
   - --output
   - -o
+  description: 'file name to write tree to (default: None)'
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: "{HKY,GTR,HKY+G,GTR+G,GTR+R10}\nsubstitution model to use. Specify\
-    \ 'none' to run\nModelTest. Currently, only available for IQTREE.\n(default: GTR)"
+  optional: true
   synonyms:
   - --substitution-model
+  description: "{HKY,GTR,HKY+G,GTR+G,GTR+R10}\nsubstitution model to use. Specify\
+    \ 'none' to run\nModelTest. Currently, only available for IQTREE.\n(default: GTR)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nthreads
   description: "number of threads to use; specifying the value 'auto'\nwill cause\
     \ the number of available CPU cores on your\nsystem, if determinable, to be used\
     \ (default: 1)"
-  synonyms:
-  - --nthreads
   args: !SimpleFlagArg
     name: NTHREADS
-  optional: true
 - !Flag
-  description: "fasta file of the sequence the VCF was mapped to\n(default: None)"
+  optional: true
   synonyms:
   - --vcf-reference
+  description: "fasta file of the sequence the VCF was mapped to\n(default: None)"
   args: !SimpleFlagArg
     name: VCF_REFERENCE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --exclude-sites
   description: "file name of one-based sites to exclude for raw tree\nbuilding (BED\
     \ format in .bed files, DRM format in tab-\ndelimited files, or one position per\
     \ line) (default:\nNone)"
-  synonyms:
-  - --exclude-sites
   args: !SimpleFlagArg
     name: EXCLUDE_SITES
-  optional: true
 - !Flag
-  description: "extra arguments to be passed directly to the\nexecutable of the requested\
-    \ tree method (e.g., --tree-\nbuilder-args=\"-czb\") (default: )\n"
+  optional: true
   synonyms:
   - --tree-builder-args
+  description: "extra arguments to be passed directly to the\nexecutable of the requested\
+    \ tree method (e.g., --tree-\nbuilder-args=\"-czb\") (default: )\n"
   args: !SimpleFlagArg
     name: TREE_BUILDER_ARGS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: augur tree [-h] --alignment ALIGNMENT\n                  [--method\
@@ -109,3 +109,4 @@ help_text: "usage: augur tree [-h] --alignment ALIGNMENT\n                  [--m
   \            builder-args=\"-czb\") (default: )\n"
 generated_using:
 - --help
+docker_image:

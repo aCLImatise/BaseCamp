@@ -76,6 +76,9 @@ task Flexbar {
       ~{if (stdout_log) then "--stdout-log" else ""} \
       ~{if (removal_tags) then "--removal-tags" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     full_help: "Display the help message with advanced options."
     versions: "Print Flexbar and SeqAn version numbers."

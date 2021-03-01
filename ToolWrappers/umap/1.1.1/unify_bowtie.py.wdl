@@ -14,6 +14,9 @@ task UnifyBowtiepy {
       ~{if defined(job_id) then ("-job_id " +  '"' + job_id + '"') else ""} \
       ~{if defined(var_id) then ("-var_id " +  '"' + var_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     job_id: "If not using a cluster for submitting jobs, specify the\\njob_id by integer ranging from 1 to total number of\\nchromosomes in chrsize_path"
     var_id: "HPC variable name for job ID (1-based index)"

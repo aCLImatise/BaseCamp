@@ -22,6 +22,9 @@ task Lastpairprobs {
       ~{if defined(disjoint) then ("--disjoint " +  '"' + disjoint + '"') else ""} \
       ~{if defined(circular) then ("--circular " +  '"' + circular + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rna: "assume the reads are from potentially-spliced RNA"
     est_dist: "just estimate the distribution of distances"

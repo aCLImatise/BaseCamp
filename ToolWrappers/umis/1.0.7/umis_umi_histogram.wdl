@@ -8,6 +8,9 @@ task UmisUmiHistogram {
     umis umi_histogram \
       ~{fast_q}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: ""
   }

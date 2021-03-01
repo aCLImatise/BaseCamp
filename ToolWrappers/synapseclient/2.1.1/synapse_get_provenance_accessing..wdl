@@ -12,6 +12,9 @@ task SynapseGetprovenanceAccessing {
       ~{get_provenance} \
       ~{if defined(id) then ("-id " +  '"' + id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id: ""
     synapse: ""

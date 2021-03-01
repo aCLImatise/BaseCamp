@@ -18,6 +18,9 @@ task Tspex {
       ~{if (disable_transformation) then "--disable_transformation" else ""} \
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log: "Log-transform expression values. (default: False)"
     disable_transformation: "By default, tissue-specificity values are transformed\\nso that they range from 0 (perfectly ubiquitous) to 1\\n(perfectly tissue-specific). If this parameter is\\nused, transformation will be disabled and each metric\\nwill have have a diferent range of possible values.\\n(default: False)"

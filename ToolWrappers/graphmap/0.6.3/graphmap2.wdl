@@ -8,6 +8,9 @@ task Graphmap2 {
     graphmap2 \
       ~{tool}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tool: "STR   Specifies the tool to run:\\nalign - the entire GraphMap pipeline.\\nowler - Overlapping With Long Erroneous Reads.\\n"
   }

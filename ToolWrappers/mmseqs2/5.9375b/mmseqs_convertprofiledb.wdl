@@ -14,6 +14,9 @@ task MmseqsConvertprofiledb {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     profile_type: "0               0: HMM (HHsuite) 1: PSSM or 2: HMMER3"
     sub_mat: "blosum62.out    amino acid substitution matrix file"

@@ -3,22 +3,22 @@ id: Antisense.py.cwl
 inputs:
 - id: in_input_file_format
   doc: 'input file, format: qseq/fastq/fasta/sequence'
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_name_output_file
   doc: Name of the output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_length_show_one
   doc: "Length to show in one line for fasta. [Default: show all in one\nline]"
-  type: long
+  type: long?
   inputBinding:
     prefix: -l
-- id: in_would_filter_reads
+- id: in_filter_quality_reads
   doc: Would not filter low quality reads if specified
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -k
 - id: in_caaggaacggt
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_name_output_file
   doc: Name of the output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_name_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - Antisense.py

@@ -1,0 +1,104 @@
+!Command
+command:
+- plasmidhawk
+- predict
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: labs
+  description: input-pangenome-fasta
+- !Positional
+  optional: false
+  position: 0
+  name: input-pangenome-annotated-meta
+  description: Lab ownership metadata file
+- !Positional
+  optional: false
+  position: 1
+  name: input-files
+  description: "a list of input fasta file names. If there is one file\nand it ends\
+    \ with a non-fasta suffix it is assumed that\nthis file contains a list of input\
+    \ files separated by\na newline"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: output lab-of-origin prediction
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --skip
+  description: "Use nucmer results already present in work-dir instead\nof rerunning"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --work-dir
+  description: output lab-of-origin prediction
+  args: !SimpleFlagArg
+    name: WORK_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --thread
+  description: Number of threads, default 20
+  args: !SimpleFlagArg
+    name: THREAD
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --identity
+  description: Minimum alignment identity [0,100], default 0
+  args: !SimpleFlagArg
+    name: IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Print verbose output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: plasmidhawk predict [-h] [-o OUTPUT] [-s] [-w WORK_DIR] [-t THREAD]\n\
+  \                           [-d IDENTITY] [-v]\n                           [{max,supermax,correct}]\
+  \ input-pangenome-fasta\n                           input-pangenome-annotated-meta\
+  \ input-files\n                           [input-files ...]\n\npositional arguments:\n\
+  \  {max,supermax,correct}\n                        Choose prediction mode (max,\
+  \ supermax, correct),\n                        default max. supermax is max mode,\
+  \ but output top 50\n                        labs\n  input-pangenome-fasta\n   \
+  \                     input pan-genome fasta file\n  input-pangenome-annotated-meta\n\
+  \                        Lab ownership metadata file\n  input-files           a\
+  \ list of input fasta file names. If there is one file\n                       \
+  \ and it ends with a non-fasta suffix it is assumed that\n                     \
+  \   this file contains a list of input files separated by\n                    \
+  \    a newline\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -o OUTPUT, --output OUTPUT\n                        output lab-of-origin\
+  \ prediction\n  -s, --skip            Use nucmer results already present in work-dir\
+  \ instead\n                        of rerunning\n  -w WORK_DIR, --work-dir WORK_DIR\n\
+  \                        output lab-of-origin prediction\n  -t THREAD, --thread\
+  \ THREAD\n                        Number of threads, default 20\n  -d IDENTITY,\
+  \ --identity IDENTITY\n                        Minimum alignment identity [0,100],\
+  \ default 0\n  -v, --verbose         Print verbose output\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/plasmidhawk:1.0.2--0

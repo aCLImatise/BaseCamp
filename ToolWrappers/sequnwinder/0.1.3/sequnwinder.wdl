@@ -54,6 +54,9 @@ task Sequnwinder {
       ~{if defined(meme_search_win) then ("--memesearchwin " +  '"' + meme_search_win + '"') else ""} \
       ~{if defined(motif_min_roc) then ("--motifminROC " +  '"' + motif_min_roc + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: ": Ouput file prefix. All output will be put into a directory with the prefix name"
     threads: ": Use n threads to train SeqUnwinder model. Default is 5 threads"

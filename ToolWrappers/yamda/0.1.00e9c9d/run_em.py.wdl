@@ -46,6 +46,9 @@ task RunEmpy {
       ~{if defined(output_dir) then ("--outputdir " +  '"' + output_dir + '"') else ""} \
       ~{if defined(output_dirc) then ("--outputdirc " +  '"' + output_dirc + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_file: "Input FASTA file"
     input_two: "Input FASTA file of negative sequences"

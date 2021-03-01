@@ -14,6 +14,9 @@ task Pepstats {
       ~{if (mw_data) then "-mwdata" else ""} \
       ~{if (mono) then "-mono" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aa_data: "datafile   [Eamino.dat] Amino acid properties"
     mw_data: "datafile   [Emolwt.dat] Molecular weight data for amino"

@@ -10,6 +10,9 @@ task SamtoolsGlfview {
       ~{glf_view} \
       ~{in_dot_glf}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     glf_view: ""
     in_dot_glf: ""

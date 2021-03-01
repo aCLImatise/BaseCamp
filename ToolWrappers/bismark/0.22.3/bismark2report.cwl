@@ -1,18 +1,18 @@
 class: CommandLineTool
 id: bismark2report.cwl
 inputs:
-- id: in_oslash_output
+- id: in_output
   doc: "Name of the output file (optional). If not specified explicitly, the output\
     \ filename will be derived\nfrom the Bismark alignment report file. Specifying\
     \ an output filename only works if the HTML report is\nto be generated for a single\
     \ Bismark alignment report (and potentially additional reports)."
-  type: File
+  type: File?
   inputBinding:
-    prefix: -o/--output
+    prefix: --output
 - id: in_dir
   doc: Output directory. Output is written to the current directory if not specified
     explicitly.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --dir
 - id: in_alignment_report
@@ -21,7 +21,7 @@ inputs:
     \ mapping report file. Based on the basename of\nthe Bismark mapping report, bismark2report\
     \ will also attempt to find the other Bismark reports (see below)\nfor inclusion\
     \ into the HTML report. Specifying a Bismark alignment report file is mandatory."
-  type: File
+  type: File?
   inputBinding:
     prefix: --alignment_report
 - id: in_ded_up_report
@@ -29,7 +29,7 @@ inputs:
     \ report file with the same\nbasename as the Bismark mapping report (generated\
     \ by deduplicate_bismark) in the\ncurrent working directory. Including a deduplication\
     \ report is optional, and using the FILE 'none'\nwill skip this step entirely."
-  type: File
+  type: File?
   inputBinding:
     prefix: --dedup_report
 - id: in_splitting_report
@@ -38,7 +38,7 @@ inputs:
     \ Bismark methylation extractor) in the current\nworking directory. Including\
     \ a splitting report is optional, and using the FILE 'none' will skip this\nstep\
     \ entirely."
-  type: File
+  type: File?
   inputBinding:
     prefix: --splitting_report
 - id: in_m_bias_report
@@ -47,7 +47,7 @@ inputs:
     \ by the Bismark methylation extractor) in the current\nworking directory. Including\
     \ an M-Bias report is optional, and using the FILE 'none' will skip this step\n\
     entirely."
-  type: File
+  type: File?
   inputBinding:
     prefix: --mbias_report
 - id: in_nucleotide_report
@@ -57,27 +57,28 @@ inputs:
     \ directory. Including a nucleotide coverage statistics\nreport is optional, and\
     \ using the FILE 'none' will skip this report entirely.\nScript last modified:\
     \ 03 May 2019\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --nucleotide_report
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_oslash_output
+- id: out_output
   doc: "Name of the output file (optional). If not specified explicitly, the output\
     \ filename will be derived\nfrom the Bismark alignment report file. Specifying\
     \ an output filename only works if the HTML report is\nto be generated for a single\
     \ Bismark alignment report (and potentially additional reports)."
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_oslash_output)
+    glob: $(inputs.in_output)
 - id: out_dir
   doc: Output directory. Output is written to the current directory if not specified
     explicitly.
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bismark2report

@@ -20,6 +20,9 @@ task SingularityOciExec {
       ~{container_id} \
       ~{var_command}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

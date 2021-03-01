@@ -1,0 +1,185 @@
+!Command
+command:
+- bcftools
+- gtcheck
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: query.vcf.gz
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --distinctive-sites
+  description: "Find sites that can distinguish between at least NUM sample pairs.\n\
+    NUM[,MEM[,TMP]]          If the number is smaller or equal to 1, it is interpreted\
+    \ as the fraction of pairs.\nThe optional MEM string sets the maximum memory used\
+    \ for in-memory sorting [500M]\nand TMP is a prefix of temporary files used by\
+    \ external sorting [/tmp/bcftools-gtcheck]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dry-run
+  description: Stop after first record to estimate required time
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --error-probability
+  description: Phred-scaled probability of genotyping error, 0 for faster but less
+    accurate results [40]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genotypes
+  description: Genotypes to compare against
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --homs-only
+  description: Homozygous genotypes only, useful with low coverage data (requires
+    -g)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --n-matches
+  description: "Print only top INT matches for each sample, 0 for unlimited. Use negative\
+    \ value\nto sort by HWE probability rather than the number of discordant sites\
+    \ [0]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --no-HWE-prob
+  description: Disable calculation of HWE probability
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pairs
+  description: Comma-separated sample pairs to compare (qry,gt[,qry,gt..] with -g
+    or qry,qry[,qry,qry..] w/o)
+  args: !SimpleFlagArg
+    name: LIST
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --pairs-file
+  description: File with tab-delimited sample pairs to compare (qry,gt with -g or
+    qry,qry w/o)
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --regions
+  description: Restrict to comma-separated list of regions
+  args: !SimpleFlagArg
+    name: REGION
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --regions-file
+  description: Restrict to regions listed in a file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --samples
+  description: '[qry|gt]:LIST        List of query or -g samples (by default all samples
+    are compared)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --samples-file
+  description: '[qry|gt]:FILE   File with the query or -g samples to compare'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --targets
+  description: Similar to -r but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: REGION
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --targets-file
+  description: Similar to -R but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --use
+  description: Which tag to use in the query file (TAG1) and the -g file (TAG2) [PL,GT]
+  args: !OptionalFlagArg
+    names:
+    - TAG1
+    - TAG2
+    separator: ','
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nAbout:   Check sample identity. With no -g BCF given, multi-sample cross-check\
+  \ is performed.\nUsage:   bcftools gtcheck [options] [-g <genotypes.vcf.gz>] <query.vcf.gz>\n\
+  \nOptions:\n        --distinctive-sites            Find sites that can distinguish\
+  \ between at least NUM sample pairs.\n                  NUM[,MEM[,TMP]]        \
+  \  If the number is smaller or equal to 1, it is interpreted as the fraction of\
+  \ pairs.\n                                           The optional MEM string sets\
+  \ the maximum memory used for in-memory sorting [500M]\n                       \
+  \                    and TMP is a prefix of temporary files used by external sorting\
+  \ [/tmp/bcftools-gtcheck]\n        --dry-run                      Stop after first\
+  \ record to estimate required time\n    -e, --error-probability INT        Phred-scaled\
+  \ probability of genotyping error, 0 for faster but less accurate results [40]\n\
+  \    -g, --genotypes FILE               Genotypes to compare against\n    -H, --homs-only\
+  \                    Homozygous genotypes only, useful with low coverage data (requires\
+  \ -g)\n        --n-matches INT                Print only top INT matches for each\
+  \ sample, 0 for unlimited. Use negative value\n                                \
+  \            to sort by HWE probability rather than the number of discordant sites\
+  \ [0]\n        --no-HWE-prob                  Disable calculation of HWE probability\n\
+  \    -p, --pairs LIST                   Comma-separated sample pairs to compare\
+  \ (qry,gt[,qry,gt..] with -g or qry,qry[,qry,qry..] w/o)\n    -P, --pairs-file FILE\
+  \              File with tab-delimited sample pairs to compare (qry,gt with -g or\
+  \ qry,qry w/o)\n    -r, --regions REGION               Restrict to comma-separated\
+  \ list of regions\n    -R, --regions-file FILE            Restrict to regions listed\
+  \ in a file\n    -s, --samples [qry|gt]:LIST        List of query or -g samples\
+  \ (by default all samples are compared)\n    -S, --samples-file [qry|gt]:FILE  \
+  \ File with the query or -g samples to compare\n    -t, --targets REGION       \
+  \        Similar to -r but streams rather than index-jumps\n    -T, --targets-file\
+  \ FILE            Similar to -R but streams rather than index-jumps\n    -u, --use\
+  \ TAG1[,TAG2]              Which tag to use in the query file (TAG1) and the -g\
+  \ file (TAG2) [PL,GT]\nExamples:\n   # Check discordance of all samples from B against\
+  \ all sample in A\n   bcftools gtcheck -g A.bcf B.bcf\n\n   # Limit comparisons\
+  \ to the fiven list of samples\n   bcftools gtcheck -s gt:a1,a2,a3 -s qry:b1,b2\
+  \ -g A.bcf B.bcf\n\n   # Compare only two pairs a1,b1 and a1,b2\n   bcftools gtcheck\
+  \ -p a1,b1,a1,b2 -g A.bcf B.bcf\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bcftools:1.11--h7c999a4_0

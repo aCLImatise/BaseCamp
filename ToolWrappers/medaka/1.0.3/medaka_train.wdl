@@ -38,6 +38,9 @@ task MedakaTrain {
       ~{if defined(validation_split) then ("--validation_split " +  '"' + validation_split + '"') else ""} \
       ~{if defined(validation_features) then ("--validation_features " +  '"' + validation_features + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Verbose logging of debug information. (default: 20)"
     quiet: "Minimal logging; warnings only). (default: 20)"

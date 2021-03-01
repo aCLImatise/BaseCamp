@@ -8,6 +8,9 @@ task Pdf2ps {
     pdf2ps \
       ~{if defined(d_ascii_eight_five_encode_pages) then ("-dASCII85EncodePages " +  '"' + d_ascii_eight_five_encode_pages + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d_ascii_eight_five_encode_pages: ""
   }

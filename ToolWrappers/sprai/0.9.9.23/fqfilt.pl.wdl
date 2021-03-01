@@ -12,6 +12,9 @@ task Fqfiltpl {
       ~{in_dot_fq} \
       ~{min_len}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this: ""
     in_dot_fq: ""

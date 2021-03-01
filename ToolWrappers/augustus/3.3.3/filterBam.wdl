@@ -36,6 +36,9 @@ task FilterBam {
       ~{if defined(pair_bed_file) then ("--pairBedFile " +  '"' + pair_bed_file + '"') else ""} \
       ~{if (pairwise_alignments) then "--pairwiseAlignments" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     best: "output all best matches that satisfy minId and minCover (default 0)"
     no_introns: "do not allow longer gaps -for RNA-RNA alignments- (default 0)"

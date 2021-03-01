@@ -14,6 +14,9 @@ task ExtractSplitReadsBwaMem {
       ~{if (included_ups) then "--includeDups" else ""} \
       ~{if defined(min_non_overlap) then ("--minNonOverlap " +  '"' + min_non_overlap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "A SAM file or standard input (-i stdin)."
     num_splits: "The maximum number of split-read mappings to allow per\\nread. Reads with more are excluded. Default=2"

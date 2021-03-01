@@ -10,6 +10,9 @@ task Hotspot3dSummary {
       ~{if (clusters_file) then "--clusters-file" else ""} \
       ~{if (output_prefix) then "--output-prefix" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clusters_file: "Clusters file\\nOPTIONAL"
     output_prefix: "Output prefix"

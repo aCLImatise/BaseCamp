@@ -20,7 +20,7 @@ task WhatsGNUPlotterpy {
     Boolean? histogram
     String? histogram_color
     Int? histogram_bins
-    Int? novelconserved__novelconserved
+    Int? _novelconserved_novelconserved
     File? strains_tag_volcano
     Int? cut_off_volcano
     String? cc
@@ -49,11 +49,14 @@ task WhatsGNUPlotterpy {
       ~{if (histogram) then "--histogram" else ""} \
       ~{if defined(histogram_color) then ("--histogram_color " +  '"' + histogram_color + '"') else ""} \
       ~{if defined(histogram_bins) then ("--histogram_bins " +  '"' + histogram_bins + '"') else ""} \
-      ~{if defined(novelconserved__novelconserved) then ("-p " +  '"' + novelconserved__novelconserved + '"') else ""} \
+      ~{if defined(_novelconserved_novelconserved) then ("-p " +  '"' + _novelconserved_novelconserved + '"') else ""} \
       ~{if defined(strains_tag_volcano) then ("--strains_tag_volcano " +  '"' + strains_tag_volcano + '"') else ""} \
       ~{if defined(cut_off_volcano) then ("--cutoff_volcano " +  '"' + cut_off_volcano + '"') else ""} \
       ~{if defined(cc) then ("-cc " +  '"' + cc + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     heat_map: "heatmap of GNU scores for orthologous genes in\\nmultiple isolates"
     list_genes: "a txt file of ortholog group names from one of the\\nWhatsGNU reports for heatmap"
@@ -73,7 +76,7 @@ task WhatsGNUPlotterpy {
     histogram: "histogram of GNU scores"
     histogram_color: "histogram color"
     histogram_bins: "number of bins for the histograms [10]"
-    novelconserved__novelconserved: "NOVEL_CONSERVED, --novel_conserved NOVEL_CONSERVED NOVEL_CONSERVED\\nupper and lower GNU score limits for novel and\\nconserved proteins novel_GNU_upper_limit,\\nconserved_GNU_lower_limit, respectively [Default 10,\\n100]"
+    _novelconserved_novelconserved: "NOVEL_CONSERVED, --novel_conserved NOVEL_CONSERVED NOVEL_CONSERVED\\nupper and lower GNU score limits for novel and\\nconserved proteins novel_GNU_upper_limit,\\nconserved_GNU_lower_limit, respectively [Default 10,\\n100]"
     strains_tag_volcano: "a csv file of the strains of the two groups to be\\ncompared with (case/control) tag"
     cut_off_volcano: "a percentage of isolates a protein must be in\\n[Default: 100]"
     cc: "CASE_CONTROL_NAME, --case_control_name CASE_CONTROL_NAME CASE_CONTROL_NAME\\ncase and control groups' names [Default: case control]\\n"

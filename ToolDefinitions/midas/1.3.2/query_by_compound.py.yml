@@ -4,58 +4,58 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -i
   description: "Input to sample directories output by run_midas.py\nCan be a list\
     \ of directories, a directory containing all samples, or a file with paths\nSee\
     \ '-t' for details"
-  synonyms:
-  - -i
   args: !SimpleFlagArg
     name: INPUT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
   description: "list: -i is a comma-separated list (ex: /path/to/samples/sample_1,/path/to/samples/sample_2)\n\
     dir: -i is a directory containing all samples (ex: /path/to/samples)\nfile: -i\
     \ is a file containing paths to sample directories (ex: /path/to/sample_paths.txt)"
-  synonyms:
-  - -t
   args: !ChoiceFlagArg
     choices: !!set
-      list:
       file:
       dir:
-  optional: true
+      list:
 - !Flag
-  description: Path to output file (/dev/stdout)
+  optional: true
   synonyms:
   - -o
+  description: Path to output file (/dev/stdout)
   args: !SimpleFlagArg
     name: OUT
-  optional: true
 - !Flag
-  description: "Path to MIDAS reference database\nBy default, the MIDAS_DB environmental\
-    \ variable is used"
+  optional: true
   synonyms:
   - -d
+  description: "Path to MIDAS reference database\nBy default, the MIDAS_DB environmental\
+    \ variable is used"
   args: !SimpleFlagArg
     name: DB
-  optional: true
 - !Flag
-  description: KEGG Compound identifier
+  optional: true
   synonyms:
   - -c
+  description: KEGG Compound identifier
   args: !SimpleFlagArg
     name: COMPOUND
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Description: \nQuery MIDAS output results by KEGG compound identifier\n\
@@ -80,3 +80,4 @@ help_text: "Description: \nQuery MIDAS output results by KEGG compound identifie
   \ -t list -c C00312\n"
 generated_using:
 - --help
+docker_image:

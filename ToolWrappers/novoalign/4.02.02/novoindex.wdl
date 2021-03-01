@@ -4,8 +4,8 @@ task Novoindex {
   input {
     Boolean? kmer_length_used
     Boolean? step_size_index
-    Boolean? sets_number_use
-    Boolean? sets_masking_indexed
+    Boolean? sets_number_threads
+    Boolean? sets_lower_case
     Boolean? sets_bisulphite_indexing
     Boolean? add_m_tag
     Boolean? name_sets_name
@@ -20,17 +20,20 @@ task Novoindex {
       ~{sequence_files} \
       ~{if (kmer_length_used) then "-k" else ""} \
       ~{if (step_size_index) then "-s" else ""} \
-      ~{if (sets_number_use) then "-t" else ""} \
-      ~{if (sets_masking_indexed) then "-m" else ""} \
+      ~{if (sets_number_threads) then "-t" else ""} \
+      ~{if (sets_lower_case) then "-m" else ""} \
       ~{if (sets_bisulphite_indexing) then "-b" else ""} \
       ~{if (add_m_tag) then "-5" else ""} \
       ~{if (name_sets_name) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_length_used: "99        is the k-mer length to be used for the index. Typically 14."
     step_size_index: "9         is the step size for the index. Typical values are from 1 to 3."
-    sets_number_use: "9         sets number of threads to use for indexing."
-    sets_masking_indexed: "sets lower case masking on. Lower case sequence will not be indexed."
+    sets_number_threads: "9         sets number of threads to use for indexing."
+    sets_lower_case: "sets lower case masking on. Lower case sequence will not be indexed."
     sets_bisulphite_indexing: "sets bisulphite indexing and alignment mode for methylation experiments."
     add_m_tag: "add an M5 tag to sequence headers."
     name_sets_name: "name      sets the an internal name for the reference sequence index. This is\\nused in report headers and as the AS: field in SAM SQ record.\\nDefaults to the indexfile name."

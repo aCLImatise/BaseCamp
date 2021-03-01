@@ -28,6 +28,9 @@ task Aligncache2108 {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threshold: "cache PRIMARY_ALIGNMENT records with\\ndifference between values of ALIGN_ID and\\nMATE_ALIGN_ID >= the value of 'threshold'\\noption"
     cursor_cache: "the size of the read cursor in Megabytes"

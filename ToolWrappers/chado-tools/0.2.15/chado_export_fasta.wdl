@@ -22,6 +22,9 @@ task ChadoExportFasta {
       ~{if defined(release) then ("--release " +  '"' + release + '"') else ""} \
       ~{if (include_obsolete) then "--include_obsolete" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "verbose mode"
     config: "YAML file containing connection details"

@@ -4,6 +4,9 @@ task Jeprof {
   command <<<
     jeprof
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

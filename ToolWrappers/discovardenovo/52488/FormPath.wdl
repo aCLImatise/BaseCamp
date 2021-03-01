@@ -8,6 +8,9 @@ task FormPath {
     FormPath \
       ~{arg_one}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_one: ""
   }

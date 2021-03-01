@@ -14,6 +14,9 @@ task GdtoolsGD2CIRCOS {
       ~{if defined(distance) then ("--distance " +  '"' + distance + '"') else ""} \
       ~{if defined(feature) then ("--feature " +  '"' + feature + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "File containing reference sequences in GenBank, GFF3, or FASTA format. Option may be provided multiple times for multiple files (REQUIRED)"
     name_save_files: "name of directory to save Circos configuration files and scripts (DEFAULT=circos_output)"

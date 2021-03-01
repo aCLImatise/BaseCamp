@@ -6,7 +6,7 @@ task FasttreeMP {
     String? nopr
     File? log
     Boolean? fastest
-    Int? analyze_phylip_onlyuse
+    Int? analyze_alignments_onlyuse
     String? no_support
     String? in_tree
     File? in_tree_one
@@ -27,7 +27,7 @@ task FasttreeMP {
       ~{if defined(nopr) then ("-nopr " +  '"' + nopr + '"') else ""} \
       ~{if defined(log) then ("-log " +  '"' + log + '"') else ""} \
       ~{if (fastest) then "-fastest" else ""} \
-      ~{if defined(analyze_phylip_onlyuse) then ("-n " +  '"' + analyze_phylip_onlyuse + '"') else ""} \
+      ~{if defined(analyze_alignments_onlyuse) then ("-n " +  '"' + analyze_alignments_onlyuse + '"') else ""} \
       ~{if defined(no_support) then ("-nosupport " +  '"' + no_support + '"') else ""} \
       ~{if defined(in_tree) then ("-intree " +  '"' + in_tree + '"') else ""} \
       ~{if defined(in_tree_one) then ("-intree1 " +  '"' + in_tree_one + '"') else ""} \
@@ -42,12 +42,15 @@ task FasttreeMP {
       ~{if defined(constraints) then ("-constraints " +  '"' + constraints + '"') else ""} \
       ~{if (expert) then "-expert" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "suppress reporting information"
     nopr: "suppress progress indicator"
     log: "-- save intermediate trees, settings, and model details"
     fastest: "-- speed up the neighbor joining phase & reduce memory usage\\n(recommended for >50,000 sequences)"
-    analyze_phylip_onlyuse: "to analyze multiple alignments (phylip format only)\\n(use for global bootstrap, with seqboot and CompareToBootstrap.pl)"
+    analyze_alignments_onlyuse: "to analyze multiple alignments (phylip format only)\\n(use for global bootstrap, with seqboot and CompareToBootstrap.pl)"
     no_support: "not compute support values"
     in_tree: "optimize branch lengths for a fixed topology"
     in_tree_one: "to use this starting tree for all the alignments\\n(for faster global bootstrap on huge alignments)"

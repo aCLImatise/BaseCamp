@@ -16,6 +16,9 @@ task Anvisetuppdbdatabase {
       ~{if (update) then "--update" else ""} \
       ~{if (reset) then "--reset" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pdb_database_path: "The path for the PDB database to be stored. If you\\nleave it as is without specifying anything, anvi'o\\nwill set up everything in a pre-defined default\\ndirectory. The advantage of using the default\\ndirectory at the time of set up is that every user of\\nanvi'o on a computer system will be using a single\\ndata directory, but then you may need to run the setup\\nprogram with superuser privileges. If you don't have\\nsuperuser privileges, then you can use this parameter\\nto tell anvi'o the location you wish to use to setup\\nyour database."
     num_threads: "Maximum number of threads to use for multithreading\\nwhenever possible. Very conservatively, the default is\\n1. It is a good idea to not exceed the number of CPUs\\n/ cores on your system. Plus, please be careful with\\nthis option if you are running your commands on a SGE\\n--if you are clusterizing your runs, and asking for\\nmultiple threads to use, you may deplete your\\nresources very fast."

@@ -4,6 +4,9 @@ task RealSFS {
   command <<<
     realSFS
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

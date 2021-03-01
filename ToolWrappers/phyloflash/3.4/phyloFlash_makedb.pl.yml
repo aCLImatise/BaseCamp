@@ -1,0 +1,165 @@
+!Command
+command:
+- phyloFlash_makedb.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: recommended.
+  description: 'Default: 10'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --remote
+  description: Download databases via FTP
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --silva_file
+  description: "/to/silva_db\nPath to local copy of SILVA database file. Ignored if\
+    \ --remote\nflag is used.\nThis should be the Fasta-formatted SILVA SSURef file,\
+    \ clustered\nat 99% identity, with SILVA taxonomy strings in file header, and\n\
+    sequences truncated to SSU gene boundaries. The file name should\nbe in the form\n\
+    SILVA_[Release]_SSURef_Nr99_tax_silva_trunc.fasta.gz (release\n132 and before)\
+    \ or\nSILVA_[Release]_SSURef_NR99_tax_silva_trunc.fasta.gz (from\nrelease 138\
+    \ onwards)"
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --univec_file
+  description: "/to/univec_db\nPath to local copy of Univec database file. Ignored\
+    \ if --remote\nflag is used."
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --emirge
+  description: "Index database with Bowtie v1 for Emirge. Requires bowtie-build\n\
+    to be in path.\nDefault: Yes (turn off with --noemirge)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sortmerna
+  description: "Index database for Sortmerna, if you wish to use it as an\nalternative\
+    \ to BBmap for extracting rRNA reads from the read\nfile. Requires indexdb_rna\
+    \ to be in path.\nDefault: No (--nosortmerna)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep
+  description: Do not delete intermediary files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --overwrite
+  description: "Overwrite files if already present. Files are not overwritten by\n\
+    default, allowing you to restart the DB build process if it was\ninterrupted (but\
+    \ you will have to do find and delete corrupted\nfiles manually).\nDefault: No\
+    \ (\"--nooverwrite\")"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ref_minlength
+  description: "Minimum length of database sequences to keep after trimming of\nvectors\
+    \ and contaminant sequences. Default of 800 bp is about\n50% for SSU rRNA gene\
+    \ length, but should be changed if a custom\ndatabase is used.\nDefault: 800"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --CPUs
+  description: "Number of processors to use\nDefault: All available"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --mem
+  description: Memory limit (in Gb) for indexing tools. At least 10 is
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: "Write phyloFlash_makedb.pl log to a file.\nDefault: None"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --check_env
+  description: "Check that required dependencies are available in your path. If\n\
+    specifying optional tools --sortmerna and --emirge, put the\n--check_env argument\
+    \ at the end of the command."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --man
+  description: Full manual page
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: "Report version\n"
+  args: !EmptyFlagArg {}
+help_text: "Usage:\n    ### download databases via FTP\n\n    phyloFlash_makedb.pl\
+  \ --remote\n\n    ### use local copies\n\n    phyloFlash_makedb.pl --silva_file\
+  \ path/to/silva_db --univec_file\n    path/to/univec_db\n\n    ## Get help\n\n \
+  \   phyloFlash_makedb.pl --help\n\n    phyloFlash_makedb.pl --man\n\nArguments:\n\
+  \  Input Files:\n    --remote\n            Download databases via FTP\n\n    --silva_file\
+  \ path/to/silva_db\n            Path to local copy of SILVA database file. Ignored\
+  \ if --remote\n            flag is used.\n\n            This should be the Fasta-formatted\
+  \ SILVA SSURef file, clustered\n            at 99% identity, with SILVA taxonomy\
+  \ strings in file header, and\n            sequences truncated to SSU gene boundaries.\
+  \ The file name should\n            be in the form\n            SILVA_[Release]_SSURef_Nr99_tax_silva_trunc.fasta.gz\
+  \ (release\n            132 and before) or\n            SILVA_[Release]_SSURef_NR99_tax_silva_trunc.fasta.gz\
+  \ (from\n            release 138 onwards)\n\n    --univec_file path/to/univec_db\n\
+  \            Path to local copy of Univec database file. Ignored if --remote\n \
+  \           flag is used.\n\n  Optional Tools:\n    --emirge\n            Index\
+  \ database with Bowtie v1 for Emirge. Requires bowtie-build\n            to be in\
+  \ path.\n\n            Default: Yes (turn off with --noemirge)\n\n    --sortmerna\n\
+  \            Index database for Sortmerna, if you wish to use it as an\n       \
+  \     alternative to BBmap for extracting rRNA reads from the read\n           \
+  \ file. Requires indexdb_rna to be in path.\n\n            Default: No (--nosortmerna).\n\
+  \n  Configuration and Help:\n    --keep  Do not delete intermediary files\n\n  \
+  \  --overwrite\n            Overwrite files if already present. Files are not overwritten\
+  \ by\n            default, allowing you to restart the DB build process if it was\n\
+  \            interrupted (but you will have to do find and delete corrupted\n  \
+  \          files manually).\n\n            Default: No (\"--nooverwrite\")\n\n \
+  \   --ref_minlength\n            Minimum length of database sequences to keep after\
+  \ trimming of\n            vectors and contaminant sequences. Default of 800 bp\
+  \ is about\n            50% for SSU rRNA gene length, but should be changed if a\
+  \ custom\n            database is used.\n\n            Default: 800\n\n    --CPUs\
+  \ N\n            Number of processors to use\n\n            Default: All available\n\
+  \n    --mem N Memory limit (in Gb) for indexing tools. At least 10 is\n        \
+  \    recommended.\n\n            Default: 10\n\n    --log FILE\n            Write\
+  \ phyloFlash_makedb.pl log to a file.\n\n            Default: None\n\n    --check_env\n\
+  \            Check that required dependencies are available in your path. If\n \
+  \           specifying optional tools --sortmerna and --emirge, put the\n      \
+  \      --check_env argument at the end of the command.\n\n    --help  Help message\n\
+  \n    --man   Full manual page\n\n    --version\n            Report version\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/phyloflash:3.4--0

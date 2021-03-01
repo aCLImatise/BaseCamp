@@ -84,6 +84,9 @@ task GuppyVisualization {
       ~{to_json} \
       ~{trim}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     visualization: "fat                     makes trees with edges fattened in proportion to the number of reads"
     heat: "maps an an arbitrary vector of the correct length to the tree"

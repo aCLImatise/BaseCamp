@@ -12,6 +12,9 @@ task MafFetch {
       ~{table} \
       ~{over_bed}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: ""
     table: ""

@@ -2,16 +2,46 @@ version 1.0
 
 task MomoSimple {
   input {
-    Int? default_momooutoc_output
+    String? psm_type
+    Boolean? sequence_column
+    Boolean? width
+    File? protein_database
+    Boolean? filter
+    String? remove_unknowns
+    Boolean? eliminate_repeats
+    Boolean? min_occurrences
+    Boolean? single_motif_per_mass
+    Int? verbosity
     File ptm_file
   }
   command <<<
     momo simple \
       ~{ptm_file} \
-      ~{if defined(default_momooutoc_output) then ("--o " +  '"' + default_momooutoc_output + '"') else ""}
+      ~{if defined(psm_type) then ("--psm-type " +  '"' + psm_type + '"') else ""} \
+      ~{if (sequence_column) then "--sequence-column" else ""} \
+      ~{if (width) then "--width" else ""} \
+      ~{if defined(protein_database) then ("--protein-database " +  '"' + protein_database + '"') else ""} \
+      ~{if (filter) then "--filter" else ""} \
+      ~{if defined(remove_unknowns) then ("--remove-unknowns " +  '"' + remove_unknowns + '"') else ""} \
+      ~{if (eliminate_repeats) then "--eliminate-repeats" else ""} \
+      ~{if (min_occurrences) then "--min-occurrences" else ""} \
+      ~{if (single_motif_per_mass) then "--single-motif-per-mass" else ""} \
+      ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    default_momooutoc_output: "(default: momo_out)\\n--oc <output dir> (default: momo_out)\\n--psm-type comet|ms-gf+|tide|percolator\\n--sequence-column [column name]\\n--width [positive odd integer] (default: 7)\\n--protein-database <protein sequence file> (default: None)\\n--filter [field],lt|le|eq|ge|gt,[threshold] (default: no filter)\\n--remove-unknowns T|F (default: F)\\n--eliminate-repeats [positive odd integer or 0 for no elimination] (default: width)\\n--min-occurrences [non-negative] (default: 5)\\n--single-motif-per-mass\\n--hash-fasta [positive integer or 0 for linear search] (default: 0)\\n--verbosity 1|2|3|4|5 (default: 2)\\n--version (print the version and exit)\\n"
+    psm_type: "|ms-gf+|tide|percolator"
+    sequence_column: "[column name]"
+    width: "[positive odd integer] (default: 7)"
+    protein_database: "(default: None)"
+    filter: "[field],lt|le|eq|ge|gt,[threshold] (default: no filter)"
+    remove_unknowns: "|F (default: F)"
+    eliminate_repeats: "[positive odd integer or 0 for no elimination] (default: width)"
+    min_occurrences: "[non-negative] (default: 5)"
+    single_motif_per_mass: "[positive integer or 0 for linear search] (default: 0)"
+    verbosity: "|2|3|4|5 (default: 2)"
     ptm_file: ""
   }
   output {

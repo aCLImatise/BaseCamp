@@ -4,6 +4,9 @@ task Jaffaassembly {
   command <<<
     jaffa_assembly
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

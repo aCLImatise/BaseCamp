@@ -10,6 +10,9 @@ task Anviupdatedbdescription {
       ~{db} \
       ~{if defined(description) then ("--description " +  '"' + description + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     description: "A plain text file that contains some description about\\nthe project. You can use Markdwon syntax. The\\ndescription text will be rendered and shown in all\\nrelevant interfaces, including the anvi'o interactive\\ninterface, or anvi'o summary outputs.\\n"
     db: "An anvi'o database."

@@ -1,14 +1,14 @@
 class: CommandLineTool
 id: bank_clean.cwl
 inputs:
-- id: in_directory_path_clean
+- id: in_directory_path_bank
   doc: The directory path of the bank to clean
-  type: File
+  type: File?
   inputBinding:
     prefix: -b
 - id: in_display_compatible_version
   doc: Display the compatible bank version
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_bank_clean
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bank-clean

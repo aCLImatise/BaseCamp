@@ -3,27 +3,27 @@ id: fu_grep.cwl
 inputs:
 - id: in_annotate
   doc: Add comments to the sequence when match is found
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --annotate
 - id: in_name
   doc: 'Search pattern in sequence name (default: sequence)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --name
 - id: in_comments
   doc: 'Search pattern in sequence comments (default: sequence)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --comments
 - id: in_stranded
   doc: Do not search reverse complemented oligo
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --stranded
 - id: in_fast_a
   doc: Force output in FASTA format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fasta
 - id: in_dna_string
@@ -60,6 +60,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fu-grep

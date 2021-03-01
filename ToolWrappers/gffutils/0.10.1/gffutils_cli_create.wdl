@@ -18,6 +18,9 @@ task GffutilscliCreate {
       ~{if (disable_infer_genes) then "--disable-infer-genes" else ""} \
       ~{if (disable_infer_transcripts) then "--disable-infer-transcripts" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database_create_default: "Database to create. Default is to append \\\".db\\\" to the\\nend of the input filename (default: -)"
     force: "Overwrite an existing database (default: False)"

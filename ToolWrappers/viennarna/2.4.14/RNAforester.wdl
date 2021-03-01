@@ -8,7 +8,7 @@ task RNAforester {
     Boolean? tables
     Boolean? backtrace
     Boolean? calculate_alignment_top
-    Boolean? calculate_distance_instead
+    Boolean? calculate_distance_similarity
     Boolean? calculate_relative_score
     Boolean? local_similarity
     Int? so
@@ -48,7 +48,7 @@ task RNAforester {
       ~{if (tables) then "--tables" else ""} \
       ~{if (backtrace) then "--backtrace" else ""} \
       ~{if (calculate_alignment_top) then "-t" else ""} \
-      ~{if (calculate_distance_instead) then "-d" else ""} \
+      ~{if (calculate_distance_similarity) then "-d" else ""} \
       ~{if (calculate_relative_score) then "-r" else ""} \
       ~{if (local_similarity) then "-l" else ""} \
       ~{if defined(so) then ("-so " +  '"' + so + '"') else ""} \
@@ -80,6 +80,9 @@ task RNAforester {
       ~{if (two_d_fig) then "--2d_fig" else ""} \
       ~{if (fast_a) then "--fasta" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_input_file: "read input from file"
     score: "compute only scores, no alignment"
@@ -87,7 +90,7 @@ task RNAforester {
     tables: "shows dynamic programming tables"
     backtrace: "shows backtrace call table cells"
     calculate_alignment_top: "calculate alignment top down instead of bottom up"
-    calculate_distance_instead: "calculate distance instead of similarity"
+    calculate_distance_similarity: "calculate distance instead of similarity"
     calculate_relative_score: "calculate relative score"
     local_similarity: "local similarity"
     so: "local suboptimal alignments within int%"

@@ -14,6 +14,9 @@ task Py2neo {
       ~{if defined(p) then ("-P " +  '"' + p + '"') else ""} \
       ~{if defined(h) then ("-H " +  '"' + h + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     p: ""
     h: ""

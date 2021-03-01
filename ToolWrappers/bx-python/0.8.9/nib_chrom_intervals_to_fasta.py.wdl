@@ -8,6 +8,9 @@ task NibChromIntervalsToFastapy {
     nib_chrom_intervals_to_fasta_py \
       ~{nib_dir}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nib_dir: ""
   }

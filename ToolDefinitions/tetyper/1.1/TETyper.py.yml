@@ -4,90 +4,93 @@ command:
 positional: []
 named:
 - !Flag
-  description: Prefix to use for output files. Required.
+  optional: true
   synonyms:
   - --outprefix
+  description: Prefix to use for output files. Required.
   args: !SimpleFlagArg
     name: OUTPREFIX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ref
   description: "Reference sequence in fasta format. If not already\nindexed with bwa,\
     \ this will be created automatically.\nA blast database is also required, again\
     \ this will be\ncreated automatically if it does not already exist.\nRequired."
-  synonyms:
-  - --ref
   args: !SimpleFlagArg
     name: REF
-  optional: true
 - !Flag
-  description: "Blast database corresponding to reference file (this\nargument is\
-    \ only needed if the blast database was\ncreated with a different name)."
+  optional: true
   synonyms:
   - --refdb
+  description: "Blast database corresponding to reference file (this\nargument is\
+    \ only needed if the blast database was\ncreated with a different name)."
   args: !SimpleFlagArg
     name: REFDB
-  optional: true
 - !Flag
-  description: Forward reads. Can be gzipped.
+  optional: true
   synonyms:
   - --fq1
+  description: Forward reads. Can be gzipped.
   args: !SimpleFlagArg
     name: FQ1
-  optional: true
 - !Flag
-  description: Reverse reads. Can be gzipped.
+  optional: true
   synonyms:
   - --fq2
+  description: Reverse reads. Can be gzipped.
   args: !SimpleFlagArg
     name: FQ2
-  optional: true
 - !Flag
-  description: Interleaved forward and reverse reads.
+  optional: true
   synonyms:
   - --fq12
+  description: Interleaved forward and reverse reads.
   args: !SimpleFlagArg
     name: FQ12
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bam
   description: "Bam file containing reads mapped to the given\nreference. If the reads\
     \ have already been mapped, this\noption saves time compared to specifying the\
     \ reads in\nfastq format. If this option is specified then --fq*\nare ignored."
-  synonyms:
-  - --bam
   args: !SimpleFlagArg
     name: BAM
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --assembly
   description: "Use this assembly (fasta format) for detecting\nstructural variants\
     \ instead of generating a new one.\nThis option saves time if an assembly is already\n\
     available."
-  synonyms:
-  - --assembly
   args: !SimpleFlagArg
     name: ASSEMBLY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --spades_params
   description: "Additional parameters for running spades assembly.\nEnclose in quotes\
     \ and precede with a space. Default: \"\n--cov-cutoff auto --disable-rr\". Ignored\
     \ if --assembly\nis specified."
-  synonyms:
-  - --spades_params
   args: !SimpleFlagArg
     name: SPADES_PARAMS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --struct_profiles
   description: "File containing known structural variants. Tab\nseparated format with\
     \ two columns. First column is\nvariant name. Second column contains a list of\n\
     sequence ranges representing deletions relative to the\nreference, or \"none\"\
     \ for no deletions. Each range\nshould be written as \"startpos-endpos\", with\
     \ multiple\nranges ordered by start position and separated by a\n\"|\" with no\
     \ extra whitespace."
-  synonyms:
-  - --struct_profiles
   args: !SimpleFlagArg
     name: STRUCT_PROFILES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --snp_profiles
   description: "File containing known SNP profiles. Tab separated\nformat with three\
     \ columns. First column: variant name,\nsecond column: homozygous SNPs, third\
     \ column:\nheterozygous SNPs. SNPs should be written as\n\"refPOSalt\", where\
@@ -97,100 +100,97 @@ named:
     \ SNP).\nMultiple SNPs of the same type (homozygous or\nheterozygous) should be\
     \ ordered by position and\nseparated by a \"|\". \"none\" indicates no SNPs of\
     \ the\ngiven type."
-  synonyms:
-  - --snp_profiles
   args: !SimpleFlagArg
     name: SNP_PROFILES
-  optional: true
 - !Flag
-  description: Length of flanking region to extract. Required.
+  optional: true
   synonyms:
   - --flank_len
+  description: Length of flanking region to extract. Required.
   args: !SimpleFlagArg
     name: FLANK_LEN
-  optional: true
 - !Flag
-  description: "Minimum read number for including a specific flanking\nsequence. Default\
-    \ 10."
+  optional: true
   synonyms:
   - --min_reads
+  description: "Minimum read number for including a specific flanking\nsequence. Default\
+    \ 10."
   args: !SimpleFlagArg
     name: MIN_READS
-  optional: true
 - !Flag
-  description: "Minimum read number for each strand for including a\nspecific flanking\
-    \ sequence. Default 1."
+  optional: true
   synonyms:
   - --min_each_strand
+  description: "Minimum read number for each strand for including a\nspecific flanking\
+    \ sequence. Default 1."
   args: !SimpleFlagArg
     name: MIN_EACH_STRAND
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min_mapped_len
   description: "Minimum length of mapping for a read to be used in\ndetermining flanking\
     \ sequences. Higher values are more\nrobust to spurious mapping. Lower values\
     \ will recover\nmore reads. Default 30."
-  synonyms:
-  - --min_mapped_len
   args: !SimpleFlagArg
     name: MIN_MAPPED_LEN
-  optional: true
 - !Flag
-  description: "Minimum quality value across extracted flanking\nsequence. Default\
-    \ 10."
+  optional: true
   synonyms:
   - --min_qual
+  description: "Minimum quality value across extracted flanking\nsequence. Default\
+    \ 10."
   args: !SimpleFlagArg
     name: MIN_QUAL
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --show_region
   description: "Display presence/absence for a specific region of\ninterest within\
     \ the reference (e.g. to display blaKPC\npresence/absence with the Tn4401b-1 reference,\
     \ use\n\"7202-8083\")"
-  synonyms:
-  - --show_region
   args: !SimpleFlagArg
     name: SHOW_REGION
-  optional: true
 - !Flag
-  description: "Number of threads to use for mapping and assembly\nsteps. Default:\
-    \ 1"
+  optional: true
   synonyms:
   - --threads
+  description: "Number of threads to use for mapping and assembly\nsteps. Default:\
+    \ 1"
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: "Verbosity level for logging to stderr. 1 = ERROR, 2 =\nWARNING, 3\
-    \ = INFO, 4 = DUBUG. Default: 3."
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Verbosity level for logging to stderr. 1 = ERROR, 2 =\nWARNING, 3\
+    \ = INFO, 4 = DUBUG. Default: 3."
   args: !ChoiceFlagArg
     choices: !!set
-      '4':
-      '2':
       '3':
+      '2':
       '1':
-  optional: true
+      '4':
 - !Flag
+  optional: true
+  synonyms:
+  - --no_overwrite
   description: "Flag to prevent accidental overwriting of previous\noutput files.\
     \ In this mode, the pipeline checks for a\nlog file named according to the given\
     \ output prefix.\nIf it exists then the pipeline exits without modifying\nany\
     \ files.\n"
-  synonyms:
-  - --no_overwrite
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: TETyper.py [-h] --outprefix OUTPREFIX --ref REF [--refdb REFDB]\n\
@@ -272,3 +272,4 @@ help_text: "usage: TETyper.py [-h] --outprefix OUTPREFIX --ref REF [--refdb REFD
   \ modifying\n                        any files.\n"
 generated_using:
 - --help
+docker_image:

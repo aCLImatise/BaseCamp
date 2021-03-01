@@ -18,6 +18,9 @@ task GraphicsMagickWandconfig {
       ~{if (cppflags) then "--cppflags" else ""} \
       ~{if (cflags) then "--cflags" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: ""
     libs: ""

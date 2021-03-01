@@ -28,6 +28,9 @@ task ClipcontextT2g {
       ~{if defined(gtf) then ("--gtf " +  '"' + gtf + '"') else ""} \
       ~{if defined(gen) then ("--gen " +  '"' + gen + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     thr: "Site score threshold for filtering --in BED file (default:\\nNone)"
     rev_filter: "Reverse filtering (keep values <= threshold and prefer sites\\nwith smaller values) (default: False)"

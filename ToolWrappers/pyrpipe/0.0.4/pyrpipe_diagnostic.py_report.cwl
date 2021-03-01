@@ -3,22 +3,22 @@ id: pyrpipe_diagnostic.py_report.cwl
 inputs:
 - id: in_file_default_same
   doc: 'out file default: same as input logfile'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_report_output_type
   doc: 'report output type: [md,pdf,html] default: pdf'
-  type: string
+  type: string?
   inputBinding:
     prefix: -e
-- id: in_report_options_f
+- id: in_report_options_default
   doc: 'Report options [(f)ull,fa(i)l,(p)ass] default: f'
-  type: string
+  type: string?
   inputBinding:
     prefix: -c
 - id: in_verbose
   doc: verbose
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_log_file
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pyrpipe_diagnostic.py

@@ -1,0 +1,222 @@
+!Command
+command:
+- analyze_coverage.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: designs_fn
+  description: "Path to output of running design.py; a TSV file where\neach row contains\
+    \ a design (target)"
+- !Positional
+  optional: false
+  position: 1
+  name: seqs_fn
+  description: "Path to FASTA file giving sequences against which to\ncompute coverage.\
+    \ (See --use-accessions to pass\naccessions as input rather than a FASTA file.)"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --write-frac-bound
+  description: "If set, write a table in which each row represents an\ninput design\
+    \ and gives the fraction of all sequences\nthat are covered by the design. The\
+    \ 'design_id' column\ngives the row number of the design in the designs\ninput\
+    \ (1 for the first design). The provided argument\nis a path to a TSV file at\
+    \ which to the write the\ntable."
+  args: !SimpleFlagArg
+    name: WRITE_FRAC_BOUND
+- !Flag
+  optional: true
+  synonyms:
+  - --write-mean-activity-of-guides
+  description: "If set, write a table in which each row represents an\ninput design\
+    \ and gives the mean activity across the\ntarget sequences of the guide set. The\
+    \ 'design_id'\ncolumn gives the row number of the design in the\ndesigns input\
+    \ (1 for the first design). The provided\nargument is a path to a TSV file at\
+    \ which to write the\ntable. If set, a predictive model must be set without\n\
+    --predict-activity-require-highly-active"
+  args: !SimpleFlagArg
+    name: WRITE_MEAN_ACTIVITY_OF_GUIDES
+- !Flag
+  optional: true
+  synonyms:
+  - -pm
+  - --primer-mismatches
+  description: "Allow for this number of mismatches when determining\nwhether a primer\
+    \ covers a sequence (ignore this if the\ntargets only consist of guides)"
+  args: !SimpleFlagArg
+    name: PRIMER_MISMATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - -gm
+  - --guide-mismatches
+  description: "Allow for this number of mismatches when determining\nwhether a guide\
+    \ covers a sequence; either this or\n--predict-activity-model-path should be set"
+  args: !SimpleFlagArg
+    name: GUIDE_MISMATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - --do-not-allow-gu-pairing
+  description: "When determining whether a guide binds to a region of\ntarget sequence,\
+    \ do not count G-U (wobble) base pairs\nas matching. Default is to tolerate G-U\
+    \ pairing:\nnamely, A in an output guide sequence matches G in the\ntarget and\
+    \ C in an output guide sequence matches T in\nthe target (since the synthesized\
+    \ guide is the reverse\ncomplement of the output guide sequence)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --predict-activity-model-path
+  description: "PREDICT_ACTIVITY_MODEL_PATH\nPaths to directories containing serialized\
+    \ models in\nTensorFlow's SavedModel format for predicting guide-\ntarget activity.\
+    \ There are two arguments: (1)\nclassification model to determine which guides\
+    \ are\nactive; (2) regression model, which is used to\ndetermine which guides\
+    \ (among active ones) are highly\nactive. The models/ directory contains example\
+    \ models.\nEither this or --guide-mismatches should be set."
+  args: !SimpleFlagArg
+    name: PREDICT_ACTIVITY_MODEL_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --predict-activity-thres
+  description: "PREDICT_ACTIVITY_THRES\nThresholds to use for decisions on output\
+    \ of\npredictive models. There are two arguments: (1)\nclassification threshold\
+    \ for deciding which guide-\ntarget pairs are active (in [0,1], where higher values\n\
+    have higher precision but less recall); (2) regression\nthreshold for deciding\
+    \ which guide-target pairs are\nhighly active (>= 0, where higher values limit\
+    \ the\nnumber determined to be highly active). If not set but\n--predict-activity-model-path\
+    \ is set, then this uses\ndefault thresholds stored with the models. To 'bind\n\
+    to' or 'cover' a target, the guide-target pair must be\nactive or, if --predict-activity-require-highly-active\n\
+    is set, highly active."
+  args: !SimpleFlagArg
+    name: PREDICT_ACTIVITY_THRES
+- !Flag
+  optional: true
+  synonyms:
+  - --predict-activity-require-highly-active
+  description: "When determining whether a guide-target pair binds\nusing an activity\
+    \ model, require that the pair be\npredicted to be highly active (not just active)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-accessions
+  description: "When set, the input file of sequences gives accessions\nrather than\
+    \ being a FASTA of sequences -- each line in\nthe file gives an accession. This\
+    \ fetches the\nsequences of those accessions uses them as input."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fully-sensitive
+  description: "When set, use a naive, slow sliding approach to find\nbinding for\
+    \ primers and guides; otherwise, this uses\nan index to more quickly identify\
+    \ binding sites"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Debug output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Verbose output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: analyze_coverage.py [-h] [--write-frac-bound WRITE_FRAC_BOUND]\n\
+  \                           [--write-mean-activity-of-guides WRITE_MEAN_ACTIVITY_OF_GUIDES]\n\
+  \                           [-pm PRIMER_MISMATCHES] [-gm GUIDE_MISMATCHES]\n   \
+  \                        [--do-not-allow-gu-pairing]\n                         \
+  \  [--predict-activity-model-path PREDICT_ACTIVITY_MODEL_PATH PREDICT_ACTIVITY_MODEL_PATH]\n\
+  \                           [--predict-activity-thres PREDICT_ACTIVITY_THRES PREDICT_ACTIVITY_THRES]\n\
+  \                           [--predict-activity-require-highly-active]\n       \
+  \                    [--use-accessions] [--fully-sensitive] [--debug]\n        \
+  \                   [--verbose]\n                           designs_fn seqs_fn\n\
+  \npositional arguments:\n  designs_fn            Path to output of running design.py;\
+  \ a TSV file where\n                        each row contains a design (target)\n\
+  \  seqs_fn               Path to FASTA file giving sequences against which to\n\
+  \                        compute coverage. (See --use-accessions to pass\n     \
+  \                   accessions as input rather than a FASTA file.)\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --write-frac-bound WRITE_FRAC_BOUND\n\
+  \                        If set, write a table in which each row represents an\n\
+  \                        input design and gives the fraction of all sequences\n\
+  \                        that are covered by the design. The 'design_id' column\n\
+  \                        gives the row number of the design in the designs\n   \
+  \                     input (1 for the first design). The provided argument\n  \
+  \                      is a path to a TSV file at which to the write the\n     \
+  \                   table.\n  --write-mean-activity-of-guides WRITE_MEAN_ACTIVITY_OF_GUIDES\n\
+  \                        If set, write a table in which each row represents an\n\
+  \                        input design and gives the mean activity across the\n \
+  \                       target sequences of the guide set. The 'design_id'\n   \
+  \                     column gives the row number of the design in the\n       \
+  \                 designs input (1 for the first design). The provided\n       \
+  \                 argument is a path to a TSV file at which to write the\n     \
+  \                   table. If set, a predictive model must be set without\n    \
+  \                    --predict-activity-require-highly-active\n  -pm PRIMER_MISMATCHES,\
+  \ --primer-mismatches PRIMER_MISMATCHES\n                        Allow for this\
+  \ number of mismatches when determining\n                        whether a primer\
+  \ covers a sequence (ignore this if the\n                        targets only consist\
+  \ of guides)\n  -gm GUIDE_MISMATCHES, --guide-mismatches GUIDE_MISMATCHES\n    \
+  \                    Allow for this number of mismatches when determining\n    \
+  \                    whether a guide covers a sequence; either this or\n       \
+  \                 --predict-activity-model-path should be set\n  --do-not-allow-gu-pairing\n\
+  \                        When determining whether a guide binds to a region of\n\
+  \                        target sequence, do not count G-U (wobble) base pairs\n\
+  \                        as matching. Default is to tolerate G-U pairing:\n    \
+  \                    namely, A in an output guide sequence matches G in the\n  \
+  \                      target and C in an output guide sequence matches T in\n \
+  \                       the target (since the synthesized guide is the reverse\n\
+  \                        complement of the output guide sequence)\n  --predict-activity-model-path\
+  \ PREDICT_ACTIVITY_MODEL_PATH PREDICT_ACTIVITY_MODEL_PATH\n                    \
+  \    Paths to directories containing serialized models in\n                    \
+  \    TensorFlow's SavedModel format for predicting guide-\n                    \
+  \    target activity. There are two arguments: (1)\n                        classification\
+  \ model to determine which guides are\n                        active; (2) regression\
+  \ model, which is used to\n                        determine which guides (among\
+  \ active ones) are highly\n                        active. The models/ directory\
+  \ contains example models.\n                        Either this or --guide-mismatches\
+  \ should be set.\n  --predict-activity-thres PREDICT_ACTIVITY_THRES PREDICT_ACTIVITY_THRES\n\
+  \                        Thresholds to use for decisions on output of\n        \
+  \                predictive models. There are two arguments: (1)\n             \
+  \           classification threshold for deciding which guide-\n               \
+  \         target pairs are active (in [0,1], where higher values\n             \
+  \           have higher precision but less recall); (2) regression\n           \
+  \             threshold for deciding which guide-target pairs are\n            \
+  \            highly active (>= 0, where higher values limit the\n              \
+  \          number determined to be highly active). If not set but\n            \
+  \            --predict-activity-model-path is set, then this uses\n            \
+  \            default thresholds stored with the models. To 'bind\n             \
+  \           to' or 'cover' a target, the guide-target pair must be\n           \
+  \             active or, if --predict-activity-require-highly-active\n         \
+  \               is set, highly active.\n  --predict-activity-require-highly-active\n\
+  \                        When determining whether a guide-target pair binds\n  \
+  \                      using an activity model, require that the pair be\n     \
+  \                   predicted to be highly active (not just active)\n  --use-accessions\
+  \      When set, the input file of sequences gives accessions\n                \
+  \        rather than being a FASTA of sequences -- each line in\n              \
+  \          the file gives an accession. This fetches the\n                     \
+  \   sequences of those accessions uses them as input.\n  --fully-sensitive     When\
+  \ set, use a naive, slow sliding approach to find\n                        binding\
+  \ for primers and guides; otherwise, this uses\n                        an index\
+  \ to more quickly identify binding sites\n  --debug               Debug output\n\
+  \  --verbose             Verbose output\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/adapt:1.2.0--py_0

@@ -3,17 +3,17 @@ id: sorted_merge.cwl
 inputs:
 - id: in_key
   doc: Key (1 base column number) for sorting (1)
-  type: long
+  type: long?
   inputBinding:
     prefix: --key
 - id: in_output
   doc: Output file instead of stdout (/dev/fd/1)
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_numerical
   doc: Numerical sort (false)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --numerical
 - id: in_input
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output file instead of stdout (/dev/fd/1)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sorted_merge

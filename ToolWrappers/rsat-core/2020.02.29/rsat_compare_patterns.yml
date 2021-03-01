@@ -4,32 +4,35 @@ command:
 - compare-patterns
 positional:
 - !Positional
-  description: AUTHOR
+  optional: false
   position: 0
   name: compare-patterns
-  optional: false
+  description: AUTHOR
 - !Positional
-  description: This program is typically used to compare a set of discovered
+  optional: false
   position: 0
   name: supported.
-  optional: false
+  description: This program is typically used to compare a set of discovered
 - !Positional
-  description: sequences
+  optional: false
   position: 0
   name: util
-  optional: false
+  description: sequences
 - !Positional
-  description: "seq1 and seq2 must be DNA sequences (not peptidic). \nIUPAC degenerate\
-    \ code is accepted in seq1 as well as seq2."
+  optional: false
   position: 0
   name: PATTERNS
-  optional: false
+  description: "seq1 and seq2 must be DNA sequences (not peptidic). \nIUPAC degenerate\
+    \ code is accepted in seq1 as well as seq2."
 - !Positional
-  description: number of matching positions
+  optional: false
   position: 0
   name: match
-  optional: false
+  description: number of matching positions
 - !Positional
+  optional: false
+  position: 1
+  name: Pval
   description: "P-value for a single comparison. \nThis represents the probability,\
     \ for the comparison\nbetween two sequences, to return a match.\nWhen the simple\
     \ nucleotide alphabet (A, C, G, T) is\nused, the probability of random match is\
@@ -77,10 +80,10 @@ positional:
     \ c) = SUM  ( C  C    / C  )\ni=1     3  1      4\nThis reflects the fact that\
     \ it is impossible to\nhave not a single white ball in the selection, when\nwe\
     \ select 2 balls among a set of 3 black and 1\nwhite balls."
-  position: 1
-  name: Pval
-  optional: false
 - !Positional
+  optional: false
+  position: 2
+  name: Eval_p
   description: "E-value for a single comparison between two sequences. \nThis is a\
     \ correction for multiple testing, taking\ninto account the fact that a comparison\
     \ between two\nsequences (or patterns) can already result in some\nmulti-testing\
@@ -90,174 +93,171 @@ positional:
     \ = Pval*2*noffs\nIt is useful to return the Eval together with the\nnumber of\
     \ offsets analyzed (corresponding to the\nnumber of tests for a given pair of\
     \ sequences).\n-return Pval,noffs,Eval,sig"
-  position: 2
-  name: Eval_p
-  optional: false
 - !Positional
-  description: Significance for a single comparison between two
+  optional: false
   position: 3
   name: sig_p
-  optional: false
+  description: Significance for a single comparison between two
 - !Positional
-  description: "This is a simple logarithmic conversion of Eval_p.\nsig_p = -log10(Eval_p)"
+  optional: false
   position: 4
   name: sequences.
-  optional: false
+  description: "This is a simple logarithmic conversion of Eval_p.\nsig_p = -log10(Eval_p)"
 - !Positional
+  optional: false
+  position: 5
+  name: Eval_f
   description: "E-value for the whole analysis. \nThis E-value includes a correction\
     \ for the fact\nthat, usually, multiple sequences (patterns) are\ncompared to\
     \ multiple sequences (patterns).\nFor example, if the program is used to compare\
     \ an\noligo-analysis result file with a database of\nannotated sites, the oligo\
     \ file can typically\ncontain a dozen of words, and the database several\nhundreds\
     \ of sites."
-  position: 5
-  name: Eval_f
-  optional: false
 - !Positional
-  description: "Significance for the whole analysis. \nThis is a simple logarithmic\
-    \ conversion of Eval_f.\nsig_f = -log10(Eval_f)"
+  optional: false
   position: 6
   name: sig_f
-  optional: false
+  description: "Significance for the whole analysis. \nThis is a simple logarithmic\
+    \ conversion of Eval_f.\nsig_f = -log10(Eval_f)"
 - !Positional
+  optional: false
+  position: 7
+  name: weight
   description: "the weight reflects the number of matching positions,\nwith a lower\
     \ weight for matches between partially\nspecified nucleotides (IUPAC codes).\n\
     The weight is calculated as\n-log4(Pval)\nFor an alignment between non-ambigous\
     \ nucleotides, the\nweight is maximal, and its value is the number of\nmatching\
     \ residues."
-  position: 7
-  name: weight
-  optional: false
 - !Positional
-  description: maximal weight for pattern 1
+  optional: false
   position: 0
   name: max_w1
-  optional: false
+  description: maximal weight for pattern 1
 - !Positional
-  description: maximal weight for pattern 2
+  optional: false
   position: 1
   name: max_w2
-  optional: false
+  description: maximal weight for pattern 2
 - !Positional
+  optional: false
+  position: 0
+  name: length
   description: "lengths \nThis option returns 4 length values\nlen1   length of sequence\
     \ 1\nlen2   length of sequence 2\nmlen   length of the match\ntlen   total length\
     \ of the alignment\ntlen = len1 + len2 - mlen"
-  position: 0
-  name: length
-  optional: false
 - !Positional
-  description: sequences to be compared
+  optional: false
   position: 1
   name: seq
-  optional: false
+  description: sequences to be compared
 named:
 - !Flag
-  description: (must be first argument) display options
+  optional: true
   synonyms:
   - -help
+  description: (must be first argument) display options
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: verbose
+  optional: true
   synonyms:
   - -v
+  description: verbose
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "first sequence for the comparison\nThis argument can be repeated on\
-    \ the same command line\nto enter multiple patterns."
+  optional: true
   synonyms:
   - -seq1
+  description: "first sequence for the comparison\nThis argument can be repeated on\
+    \ the same command line\nto enter multiple patterns."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -seq2
   description: "second sequence for the comparison\nThe options -seq1 and -seq2 can\
     \ be used iteratively to\nspecify multiple sequence patterns. Each sequence of\n\
     group 1 is then compared to each sequence of group 2.\nex: -seq1 gataag -seq1\
     \ gattag -seq1 gataah\n-seq2 agataata -seq2 gtttag\nNote that when many patterns\
     \ have to be entered, the\noptions -file1 and -file2 are more convenient."
-  synonyms:
-  - -seq2
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "file containing a list of patterns to be used as first\nsequences\
-    \ for the comparison (see format below)."
+  optional: true
   synonyms:
   - -file1
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "file containing a list of patterns to be used as second\nsequences\
+  description: "file containing a list of patterns to be used as first\nsequences\
     \ for the comparison (see format below)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -file2
+  description: "file containing a list of patterns to be used as second\nsequences\
+    \ for the comparison (see format below)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "fields\nEach selected field is returned in a separate column.\nSupported:\
-    \ match,Pval,Eval_p,sig_p,Eval_f,sig_f,noffs,weight,seq,id,length,offset,strand,max_w,diff_w,rel_w,top_s"
+  optional: true
   synonyms:
   - -return
+  description: "fields\nEach selected field is returned in a separate column.\nSupported:\
+    \ match,Pval,Eval_p,sig_p,Eval_f,sig_f,noffs,weight,seq,id,length,offset,strand,max_w,diff_w,rel_w,top_s"
   args: !SimpleFlagArg
     name: return
-  optional: true
 - !Flag
-  description: "#\nupper threshold value for a given field\nSupported_fields: match,Pval,Eval_p,sig_p,Eval_f,sig_f,weight,len1,len2,mlen,tlen,offset,max_w1,max_w2,max_w,diff_w1,diff_w2,diff_w,rel_w1,rel_w2,rel_w"
+  optional: true
   synonyms:
   - -uth
+  description: "#\nupper threshold value for a given field\nSupported_fields: match,Pval,Eval_p,sig_p,Eval_f,sig_f,weight,len1,len2,mlen,tlen,offset,max_w1,max_w2,max_w,diff_w1,diff_w2,diff_w,rel_w1,rel_w2,rel_w"
   args: !SimpleFlagArg
     name: field
-  optional: true
 - !Flag
-  description: "#\nlower threshold value for a given field\n(same fields as -uth)"
+  optional: true
   synonyms:
   - -lth
+  description: "#\nlower threshold value for a given field\n(same fields as -uth)"
   args: !SimpleFlagArg
     name: field
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -slide
   description: "find best match by sliding seq2 along seq1\nWhen this option is used,\
     \ the best offset is also\nreturned. The offset is the number of positions to\n\
     shift seq1 in order to obtain the best scoring\nalignment. Negative values represent\
     \ a shit of seq2 to\nthe left side, positive values ot the right side."
-  synonyms:
-  - -slide
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -2str
   description: "Match on both strands\nIn addition to the direct matching (strand\
     \ = D), the\nreverse complement of each pattern of group 1\n(specified by -seq1\
     \ or -file1) is matched against each\npattern of group2."
-  synonyms:
-  - -2str
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -table
   description: "Return a contingency table, where each row corresponds\nto one sequence\
     \ from file 1, each column to a sequence\nfrom file 2, and the cells contain the\
     \ value of the\nspecified field.\nSupported fields: match,Pval,Eval_p,sig_p,Eval_f,sig_f,weight,offset,strand,max_w,diff_w,rel_w1,rel_w2,rel_w,top_s"
-  synonyms:
-  - -table
   args: !SimpleFlagArg
     name: field
-  optional: true
 - !Flag
-  description: "null string (default ) displayed in\ncontingency tables when the cell\
-    \ contains a value\nwhich does not pass the thresholds."
+  optional: true
   synonyms:
   - -null
+  description: "null string (default ) displayed in\ncontingency tables when the cell\
+    \ contains a value\nwhich does not pass the thresholds."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: display full help message
+  optional: true
   synonyms:
   - -h
+  description: display full help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "NAME\n\tcompare-patterns\n\nAUTHOR\n\tJacques van Helden (Jacques.van-Helden@univ-amu.fr)\n\
@@ -415,3 +415,4 @@ help_text: "NAME\n\tcompare-patterns\n\nAUTHOR\n\tJacques van Helden (Jacques.va
   \ mlen 3\n\n\tThis options sets a lower threshold of 3 on matching length.\n\n"
 generated_using:
 - -h
+docker_image:

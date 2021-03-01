@@ -10,15 +10,17 @@ task NcbipyFetchGenbankRecords {
     Directory? tmp_dir
     Boolean? tmp_dir_keep
     String? loglevel
+    String var_8
     String email_address
     String destination_dir
-    String accession_ids
+    String list_accession_ids
   }
   command <<<
     ncbi_py fetch_genbank_records \
+      ~{var_8} \
       ~{email_address} \
       ~{destination_dir} \
-      ~{accession_ids} \
+      ~{list_accession_ids} \
       ~{if (force_overwrite) then "--forceOverwrite" else ""} \
       ~{if defined(combined_file_prefix) then ("--combinedFilePrefix " +  '"' + combined_file_prefix + '"') else ""} \
       ~{if defined(file_ext) then ("--fileExt " +  '"' + file_ext + '"') else ""} \
@@ -28,6 +30,9 @@ task NcbipyFetchGenbankRecords {
       ~{if (tmp_dir_keep) then "--tmp_dirKeep" else ""} \
       ~{if defined(loglevel) then ("--loglevel " +  '"' + loglevel + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force_overwrite: "Overwrite existing files, if present."
     combined_file_prefix: "The prefix of the file containing the combined\\nconcatenated results returned by the list of accession\\nIDs, in the order provided."
@@ -37,9 +42,10 @@ task NcbipyFetchGenbankRecords {
     tmp_dir: "Base directory for temp files. [default: /tmp]"
     tmp_dir_keep: "Keep the tmp_dir if an exception occurs while running.\\nDefault is to delete all temp files at the end, even\\nif there's a failure."
     loglevel: "Verboseness of output. [default: DEBUG]"
+    var_8: "[accession_IDs ...]"
     email_address: "Your email address. To access the Genbank\\nCoreNucleotide database, NCBI requires you to specify\\nyour email address with each request. In case of\\nexcessive usage of the E-utilities, NCBI will attempt\\nto contact a user at the email address provided before\\nblocking access. This email address should be\\nregistered with NCBI. To register an email address,\\nsimply send an email to eutilities@ncbi.nlm.nih.gov\\nincluding your email address and the tool name\\n(tool='https://github.com/broadinstitute/viral-ngs')."
     destination_dir: "Output directory with where .fasta and .tbl files will\\nbe saved"
-    accession_ids: "List of Genbank nuccore accession IDs"
+    list_accession_ids: "List of Genbank nuccore accession IDs"
   }
   output {
     File out_stdout = stdout()

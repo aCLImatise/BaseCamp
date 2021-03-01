@@ -8,6 +8,9 @@ task DASrealign {
     DASrealign \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
   }

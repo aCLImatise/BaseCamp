@@ -38,6 +38,9 @@ task AmptkSRAsubmit {
       ~{if (require_primer) then "--require_primer" else ""} \
       ~{if (min_len) then "--min_len" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fastq_file: "Input FASTQ file or folder (Required)"
     out: "Output base name. Default: sra"

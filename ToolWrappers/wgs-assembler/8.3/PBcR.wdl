@@ -24,6 +24,9 @@ task PBcR {
       ~{if defined(max_gap) then ("-maxGap " +  '"' + max_gap + '"') else ""} \
       ~{if (coverage_cut_off) then "-coverageCutoff" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     length: "Minimum length of PacBio sequences to correct/output."
     partitions: "Number of partitions for consensus"

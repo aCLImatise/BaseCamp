@@ -3,17 +3,17 @@ id: tsvToVcf.pl.cwl
 inputs:
 - id: in_tsv_file_containing
   doc: tsv file containing the snv_alignment
-  type: File
+  type: File?
   inputBinding:
     prefix: -t
 - id: in_directory_containing_files
   doc: directory containing vcf files from freebayes
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -v
-- id: in_directory_new_files
+- id: in_directory_files_be
   doc: directory the new vcf files will be output to
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -d
 - id: in_destination
@@ -75,11 +75,12 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_directory_new_files
+- id: out_directory_files_be
   doc: directory the new vcf files will be output to
-  type: Directory
+  type: Directory?
   outputBinding:
-    glob: $(inputs.in_directory_new_files)
+    glob: $(inputs.in_directory_files_be)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tsvToVcf.pl

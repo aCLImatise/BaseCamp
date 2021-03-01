@@ -3,78 +3,84 @@ command:
 - bismark2bedGraph
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: methylation
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: extractor
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 2
   name: input
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 3
   name: files
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: Name of the output file, mandatory.
+  optional: true
   synonyms:
-  - -o/--output
+  - -o
+  - --output
+  description: Name of the output file, mandatory.
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
-  description: Output directory. Output is written to the current directory if not
-    specified explicitly.
+  optional: true
   synonyms:
   - --dir
+  description: Output directory. Output is written to the current directory if not
+    specified explicitly.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cutoff
   description: "[threshold]       The minimum number of times a methylation state\
     \ has to be seen for that nucleotide\nbefore its methylation percentage is reported.\
     \ Default: 1."
-  synonyms:
-  - --cutoff
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Replaces whitespaces in the sequence ID field with underscores to allow
-    sorting.
+  optional: true
   synonyms:
   - --remove_spaces
+  description: Replaces whitespaces in the sequence ID field with underscores to allow
+    sorting.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --CX
+  - --CX_context
   description: "The sorted bedGraph output file contains information on every single\
     \ cytosine that was covered\nin the experiment irrespective of its sequence context.\
     \ This applies to both forward and\nreverse strands. Please be aware that this\
     \ option may generate large temporary and output files\nand may take a long time\
     \ to sort (up to many hours). Default: OFF.\n(i.e. Default = CpG context only)."
-  synonyms:
-  - --CX/--CX_context
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --buffer_size
   description: "This allows you to specify the main memory sort buffer when sorting\
     \ the methylation information.\nEither specify a percentage of physical memory\
     \ by appending % (e.g. --buffer_size 50%) or\na multiple of 1024 bytes, e.g. 'K'\
     \ multiplies by 1024, 'M' by 1048576 and so on for 'T' etc.\n(e.g. --buffer_size\
     \ 20G). For more information on sort type 'info sort' on a command line.\nDefaults\
     \ to 2G."
-  synonyms:
-  - --buffer_size
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --scaffolds
+  - --gazillion
   description: "Users working with unfinished genomes sporting tens or even hundreds\
     \ of thousands of\nscaffolds/contigs/chromosomes frequently encountered errors\
     \ with pre-sorting reads to\nindividual chromosome files. These errors were caused\
@@ -88,11 +94,11 @@ named:
     \ take a looooong time to complete, depending on\nthe size of the input files,\
     \ and the memory you allocate to this process (see --buffer_size).\nNevertheless,\
     \ it seems to be working."
-  synonyms:
-  - --scaffolds/--gazillion
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ample_memory
   description: "Using this option will not sort chromosomal positions using the UNIX\
     \ 'sort' command, but will\ninstead use two arrays to sort methylated and unmethylated\
     \ calls, respectively. This may result\nin a faster sorting process for very large\
@@ -102,26 +108,16 @@ named:
     of creating and looping through arrays this option might in fact be *slower* for\
     \ small-ish\nfiles (up to a few million alignments). Note also that this option\
     \ is not currently compatible\nwith options '--scaffolds/--gazillion'."
-  synonyms:
-  - --ample_memory
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --zero_based
   description: "Write out an additional coverage file (ending in .zero.cov) that uses\
     \ 0-based genomic start\nand 1-based genomic end coordinates (zero-based, half-open),\
     \ like used in the bedGraph file,\ninstead of using 1-based coordinates throughout.\
     \ Default: OFF."
-  synonyms:
-  - --zero_based
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: output
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -203,3 +199,4 @@ help_text: "\n  SYNOPSIS:\n\n  This script uses positional methylation data gene
   \ modified: 07 June 2017\n\n"
 generated_using:
 - --help
+docker_image:

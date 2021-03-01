@@ -3,31 +3,31 @@ id: iu_filter_quality_minoche.cwl
 inputs:
 - id: in_minimum_highquality_read
   doc: 'Minimum high-quality read length (default: 0.75)'
-  type: double
+  type: double?
   inputBinding:
     prefix: -p
 - id: in_ignore_def_lines
   doc: "If FASTQ files are not CASAVA outputs, parsing the\nheader info may go wrong.\
     \ This flag tells the software\nto skip parsing deflines."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ignore-deflines
 - id: in_visualize_quality_curves
   doc: "When set, mean quality score for individual bases will\nbe stored and visualized\
     \ for each group of reads."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --visualize-quality-curves
 - id: in_limit_num_pairs
   doc: "Put a limit to the number of pairs to analyze. For\ntesting purposes."
-  type: long
+  type: long?
   inputBinding:
     prefix: --limit-num-pairs
 - id: in_print_qual_scores
   doc: "When set, the script will print out the Q-scores the\nway it sees it in the\
     \ FASTQ file. This flag will\ngenerate a lot of useless output to the stdout,\
     \ and\nyou should not use it if you are not testing\nsomething."
-  type: File
+  type: File?
   inputBinding:
     prefix: --print-qual-scores
 - id: in_store_read_fate
@@ -37,7 +37,7 @@ inputs:
     \ utterly useless to you unless you\nhave a very specific benchmarking or debugging\n\
     interestes, hence, it is not stored by default. You\ncan change that behavior\
     \ by using this flag, and ask\nillumina-utils to store this data on your disk.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --store-read-fate
 outputs:
@@ -48,9 +48,10 @@ outputs:
   doc: "When set, the script will print out the Q-scores the\nway it sees it in the\
     \ FASTQ file. This flag will\ngenerate a lot of useless output to the stdout,\
     \ and\nyou should not use it if you are not testing\nsomething."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_print_qual_scores)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - iu-filter-quality-minoche

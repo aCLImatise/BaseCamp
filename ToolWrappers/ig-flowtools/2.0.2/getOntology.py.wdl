@@ -16,6 +16,9 @@ task GetOntologypy {
       ~{if defined(path_supporting_directory) then ("-d " +  '"' + path_supporting_directory + '"') else ""} \
       ~{if defined(path_sharetemplates_directory) then ("-t " +  '"' + path_sharetemplates_directory + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     m: "marker queries."
     y: "marker queries."

@@ -14,6 +14,9 @@ task NebulizerListTools {
       ~{cards_dot} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "list only tools matching NAME. Can include glob-style wild-"
     tool: "name, version, tool panel section, and toolshed repository and revision"

@@ -10,6 +10,9 @@ task TreebestTreedist {
       ~{tree_one} \
       ~{tree_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree_one: ""
     tree_two: ""

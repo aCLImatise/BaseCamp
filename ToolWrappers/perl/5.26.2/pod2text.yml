@@ -3,129 +3,133 @@ command:
 - pod2text
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: input
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "Use an alternate output format that, among other things, uses a\n\
-    different heading style and marks \"=item\" entries with a colon in\nthe left\
-    \ margin."
+  optional: true
   synonyms:
   - -a
   - --alt
+  description: "Use an alternate output format that, among other things, uses a\n\
+    different heading style and marks \"=item\" entries with a colon in\nthe left\
+    \ margin."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --code
   description: "Include any non-POD text from the input file in the output as well.\n\
     Useful for viewing code documented with POD blocks with the POD\nrendered and\
     \ the code left intact."
-  synonyms:
-  - --code
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Format the output with ANSI color escape sequences. Using this\noption\
-    \ requires that Term::ANSIColor be installed on your system."
+  optional: true
   synonyms:
   - -c
   - --color
+  description: "Format the output with ANSI color escape sequences. Using this\noption\
+    \ requires that Term::ANSIColor be installed on your system."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --errors
   description: "Set the error handling style. \"die\" says to throw an exception on\n\
     any POD formatting error. \"stderr\" says to report errors on standard\nerror,\
     \ but not to throw an exception. \"pod\" says to include a POD\nERRORS section\
     \ in the resulting documentation summarizing the\nerrors. \"none\" ignores POD\
     \ errors entirely, as much as possible.\nThe default is \"die\"."
-  synonyms:
-  - --errors
   args: !SimpleFlagArg
     name: style
-  optional: true
 - !Flag
-  description: "Set the number of spaces to indent regular text, and the default\n\
-    indentation for \"=over\" blocks. Defaults to 4 spaces if this option\nisn't given."
+  optional: true
   synonyms:
   - -i
   - --indent
+  description: "Set the number of spaces to indent regular text, and the default\n\
+    indentation for \"=over\" blocks. Defaults to 4 spaces if this option\nisn't given."
   args: !SimpleFlagArg
     name: indent
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --loose
   description: "Print a blank line after a \"=head1\" heading. Normally, no blank\
     \ line\nis printed after \"=head1\", although one is still printed after\n\"=head2\"\
     , because this is the expected formatting for manual pages;\nif you're formatting\
     \ arbitrary text documents, using this option is\nrecommended."
-  synonyms:
-  - -l
-  - --loose
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The width of the left margin in spaces. Defaults to 0. This is the\n\
-    margin for all text, including headings, not the amount by which\nregular text\
-    \ is indented; for the latter, see -i option."
+  optional: true
   synonyms:
   - -m
   - --left-margin
   - --margin
+  description: "The width of the left margin in spaces. Defaults to 0. This is the\n\
+    margin for all text, including headings, not the amount by which\nregular text\
+    \ is indented; for the latter, see -i option."
   args: !SimpleFlagArg
     name: width
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nourls
   description: "Normally, L<> formatting codes with a URL but anchor text are\nformatted\
     \ to show both the anchor text and the URL. In other words:\nL<foo|http://example.com/>\n\
     is formatted as:\nfoo <http://example.com/>\nThis flag, if given, suppresses the\
     \ URL when anchor text is given,\nso this example would be formatted as just \"\
     foo\". This can produce\nless cluttered output in cases where the URLs are not\
     \ particularly\nimportant."
-  synonyms:
-  - --nourls
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --overstrike
   description: "Format the output with overstrike printing. Bold text is rendered\
     \ as\ncharacter, backspace, character. Italics and file names are rendered\nas\
     \ underscore, backspace, character. Many pagers, such as less, know\nhow to convert\
     \ this to bold or underlined text."
-  synonyms:
-  - -o
-  - --overstrike
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quotes
   description: "Sets the quote marks used to surround C<> text to quotes. If quotes\n\
     is a single character, it is used as both the left and right quote.\nOtherwise,\
     \ it is split in half, and the first half of the string is\nused as the left quote\
     \ and the second is used as the right quote.\nquotes may also be set to the special\
     \ value \"none\", in which case no\nquote marks are added around C<> text."
-  synonyms:
-  - -q
-  - --quotes
   args: !SimpleFlagArg
     name: quotes
-  optional: true
 - !Flag
-  description: "Assume each sentence ends with two spaces and try to preserve that\n\
-    spacing. Without this option, all consecutive whitespace in\nnon-verbatim paragraphs\
-    \ is compressed into a single space."
+  optional: true
   synonyms:
   - -s
   - --sentence
+  description: "Assume each sentence ends with two spaces and try to preserve that\n\
+    spacing. Without this option, all consecutive whitespace in\nnon-verbatim paragraphs\
+    \ is compressed into a single space."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --stderr
   description: "By default, pod2text dies if any errors are detected in the POD\n\
     input. If --stderr is given and no --errors flag is present, errors\nare sent\
     \ to standard error, but pod2text does not abort. This is\nequivalent to \"--errors=stderr\"\
     \ and is supported for backward\ncompatibility."
-  synonyms:
-  - --stderr
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --termcap
   description: "Try to determine the width of the screen and the bold and underline\n\
     sequences for the terminal from termcap, and use that information in\nformatting\
     \ the output. Output will be wrapped at two columns less\nthan the width of your\
@@ -133,12 +137,12 @@ named:
     \ file somewhere where Term::Cap can\nfind it and requires that your system support\
     \ termios. With this\noption, the output of pod2text will contain terminal control\n\
     sequences for your current terminal type."
-  synonyms:
-  - -t
-  - --termcap
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --utf8
   description: "By default, pod2text tries to use the same output encoding as its\n\
     input encoding (to be backward-compatible with older versions). This\noption says\
     \ to instead force the output encoding to UTF-8.\nBe aware that, when using this\
@@ -147,38 +151,34 @@ named:
     if it's Latin-1 or UTF-8, but it will warn, which by default results\nin a pod2text\
     \ failure. Use the \"=encoding\" command to declare the\nencoding. See perlpod(1)\
     \ for more information."
-  synonyms:
-  - -u
-  - --utf8
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The column at which to wrap text on the right-hand side. Defaults\
-    \ to\n76, unless -t is given, in which case it's two columns less than the\nwidth\
-    \ of your terminal device.\n"
+  optional: true
   synonyms:
   - -w
   - --width
   - -width
+  description: "The column at which to wrap text on the right-hand side. Defaults\
+    \ to\n76, unless -t is given, in which case it's two columns less than the\nwidth\
+    \ of your terminal device.\n"
   args: !SimpleFlagArg
     name: width
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -aclostu
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print out usage information and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Print out usage information and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage:\n    pod2text [-aclostu] [--code] [--errors=style] [-i indent]\
@@ -251,3 +251,4 @@ help_text: "Usage:\n    pod2text [-aclostu] [--code] [--errors=style] [-i indent
   \        width of your terminal device.\n\n"
 generated_using:
 - --help
+docker_image:

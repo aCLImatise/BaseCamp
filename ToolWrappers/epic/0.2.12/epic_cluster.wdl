@@ -24,6 +24,9 @@ task Epiccluster {
       ~{if defined(distance_allowed) then ("--distance-allowed " +  '"' + distance_allowed + '"') else ""} \
       ~{if defined(number_cores) then ("--number-cores " +  '"' + number_cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "Matrix to run clustering algorithm on."
     outfile: "Where to store the cluster matrix."

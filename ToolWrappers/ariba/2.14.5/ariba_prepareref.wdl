@@ -40,6 +40,9 @@ task AribaPrepareref {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "REQUIRED. Name of fasta file. Can be used more than\\nonce if your sequences are spread over more than on\\nfile"
     metadata: "Name of tsv file of metadata about the input\\nsequences. Can be used more than once if your metadata\\nis spread over more than one file. Incompatible with\\n--all_coding"

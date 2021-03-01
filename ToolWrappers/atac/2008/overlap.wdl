@@ -4,6 +4,9 @@ task Overlap {
   command <<<
     overlap
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

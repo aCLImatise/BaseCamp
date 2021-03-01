@@ -3,17 +3,17 @@ id: DAStrim.cwl
 inputs:
 - id: in_b
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in_g
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_int
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - DAStrim

@@ -4,38 +4,97 @@ command:
 - call
 positional:
 - !Positional
-  description: path to bam file
+  optional: false
   position: 0
   name: bam
-  optional: false
+  description: path to bam file
 - !Positional
-  description: bin file previously created by `strling extract`
+  optional: false
   position: 1
   name: bin
-  optional: false
+  description: bin file previously created by `strling extract`
 named:
 - !Flag
-  description: "path to fasta file\n-m, --min-support=MIN_SUPPORT\nminimum number\
-    \ of supporting reads for a locus to be reported (default: 6)\n-c, --min-clip=MIN_CLIP\
-    \    minimum number of supporting clipped reads for each side of a locus (default:\
-    \ 0)\n-t, --min-clip-total=MIN_CLIP_TOTAL\nminimum total number of supporting\
-    \ clipped reads for a locus (default: 0)\n-q, --min-mapq=MIN_MAPQ    minimum mapping\
-    \ quality (does not apply to STR reads) (default: 40)\n-l, --loci=LOCI       \
-    \     Annoated bed file specifying additional STR loci to genotype. Format is:\
-    \ chr start stop repeatunit [name]\n-b, --bounds=BOUNDS        STRling -bounds.txt\
-    \ file (usually produced by strling merge) specifying additional STR loci to genotype.\n\
-    -o, --output-prefix=OUTPUT_PREFIX\nprefix for output files (default: strling)\n\
-    -v, --verbose\n-h, --help                 Show this help\n"
+  optional: true
   synonyms:
   - -f
   - --fasta
+  description: path to fasta file
   args: !SimpleFlagArg
     name: FASTA
+- !Flag
   optional: true
+  synonyms:
+  - -m
+  - --min-support
+  description: 'minimum number of supporting reads for a locus to be reported (default:
+    6)'
+  args: !SimpleFlagArg
+    name: MIN_SUPPORT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --min-clip
+  description: 'minimum number of supporting clipped reads for each side of a locus
+    (default: 0)'
+  args: !SimpleFlagArg
+    name: MIN_CLIP
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --min-clip-total
+  description: 'minimum total number of supporting clipped reads for a locus (default:
+    0)'
+  args: !SimpleFlagArg
+    name: MIN_CLIP_TOTAL
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --min-mapq
+  description: 'minimum mapping quality (does not apply to STR reads) (default: 40)'
+  args: !SimpleFlagArg
+    name: MIN_MAPQ
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --loci
+  description: 'Annoated bed file specifying additional STR loci to genotype. Format
+    is: chr start stop repeatunit [name]'
+  args: !SimpleFlagArg
+    name: LOCI
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bounds
+  description: STRling -bounds.txt file (usually produced by strling merge) specifying
+    additional STR loci to genotype.
+  args: !SimpleFlagArg
+    name: BOUNDS
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-prefix
+  description: 'prefix for output files (default: strling)'
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  - -h
+  - --help
+  description: Show this help
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "strling call\n\nUsage:\n  strling call [options] bam bin\n\nArguments:\n\
@@ -55,3 +114,4 @@ help_text: "strling call\n\nUsage:\n  strling call [options] bam bin\n\nArgument
   \                 Show this help\n"
 generated_using:
 - --help
+docker_image:

@@ -18,6 +18,9 @@ task ProbKnotsmp {
       ~{if (iterations) then "--iterations" else ""} \
       ~{if (minimum) then "--minimum" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "This flag only matters if the input file is a sequence file or an ensemble\\nstructure file and has been specified as such. Specify that the sequence is\\nDNA, and DNA parameters are to be used.\\nDefault is to use RNA parameters."
     ensemble: "Identify the input file format as an ensemble ctructure file. NOTE: all\\nstructures in the file must have the same sequence."

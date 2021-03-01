@@ -4,115 +4,119 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Print information during execution -- useful for\ndebugging [default:\
-    \ False]"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: "Print information during execution -- useful for\ndebugging [default:\
+    \ False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --number_of_axes
   description: "Number of axes to be incorporated in the plot. Only 3\nwill be displayed\
     \ at any given time but this option\nmodifies how many axes you can use for your\n\
     visualization. Note that Emperor will only use the\naxes that explain more than\
     \ 0.5% (this will be shown\nas 1% in the GUI)of the variability [default: 10]"
-  synonyms:
-  - --number_of_axes
   args: !SimpleFlagArg
     name: NUMBER_OF_AXES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --custom_axes
   description: "Comma-separated list of metadata categories to use as\ncustom axes\
     \ in the plot. For instance, if there is a\ntime category and you would like to\
     \ see the samples\nplotted on that axis instead of PC1, PC2, etc., you\nwould\
     \ pass time as the value of this option.  Note: if\nthere is any non-numeric data\
     \ in the metadata column,\nan error will be presented [default: none]"
-  synonyms:
-  - -a
-  - --custom_axes
   args: !SimpleFlagArg
     name: CUSTOM_AXES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --add_unique_columns
   description: "Add to the output categories of the mapping file the\ncolumns where\
     \ all values are different. Note: if the\nresult of one of the concatenated fields\
     \ in --color_by\nis a column where all values are unique, the resulting\ncolumn\
     \ will get removed as well [default: False]"
-  synonyms:
-  - --add_unique_columns
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --add_vectors
   description: "Comma-sparated category(ies) used to add connecting\nlines (vectors)\
     \ between samples. The first category\nspecifies the samples that will be connected\
     \ by the\nvectors, whilst the second category (optionally)\ndetermines the order\
     \ in which the samples will be\nconnected. [default: [None, None]]"
-  synonyms:
-  - --add_vectors
   args: !SimpleFlagArg
     name: ADD_VECTORS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --color_by
   description: "Comma-separated list of metadata categories (column\nheaders) to color\
     \ by in the plots. The categories must\nmatch the name of a column header in the\
     \ mapping file\nexactly. Multiple categories can be listed by comma\nseparating\
     \ them without spaces. The user can also\ncombine columns in the mapping file\
     \ by separating the\ncategories by \"&&\" without spaces. [default=color by\n\
     all categories except ones where all values are\ndifferent]"
-  synonyms:
-  - -b
-  - --color_by
   args: !SimpleFlagArg
     name: COLOR_BY
-  optional: true
 - !Flag
-  description: "Output filepath that will contain the coordinates\nwhere each taxonomic\
-    \ sphere is centered. [default:\nnone]"
+  optional: true
   synonyms:
   - --biplot_fp
+  description: "Output filepath that will contain the coordinates\nwhere each taxonomic\
+    \ sphere is centered. [default:\nnone]"
   args: !SimpleFlagArg
     name: BIPLOT_FP
-  optional: true
 - !Flag
-  description: "Passing a directory with the -i (--input_coords)\noption in combination\
-    \ with this flag results in a set\nof bars connecting the replicated samples across\
-    \ all\nthe input files. [default=False]"
+  optional: true
   synonyms:
   - -c
   - --compare_plots
+  description: "Passing a directory with the -i (--input_coords)\noption in combination\
+    \ with this flag results in a set\nof bars connecting the replicated samples across\
+    \ all\nthe input files. [default=False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --ellipsoid_method
   description: "Used only when plotting ellipsoids for jackknifed beta\ndiversity\
     \ (i.e. using a directory of coord files\ninstead of a single coord file). Valid\
     \ values are\n\"IQR\" (for inter-quartile ranges) and \"sdev\" (for\nstandard\
     \ deviation). [default=IQR]"
-  synonyms:
-  - -e
-  - --ellipsoid_method
   args: !SimpleFlagArg
     name: ELLIPSOID_METHOD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ignore_missing_samples
   description: "This will overpass the error raised when the\ncoordinates file contains\
     \ samples that are not present\nin the mapping file. Be aware that this is very\n\
     misleading as the PCoA is accounting for all the\nsamples and removing some samples\
     \ could lead to\nerroneous/skewed interpretations."
-  synonyms:
-  - --ignore_missing_samples
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Number of taxonomic groups from the \"--taxa_fp\" file\nto display.\
-    \ Passing \"-1\" will cause to display all the\ntaxonomic groups, this option\
-    \ is only used when\ncreating BiPlots. [default=10]"
+  optional: true
   synonyms:
   - -n
   - --n_taxa_to_keep
+  description: "Number of taxonomic groups from the \"--taxa_fp\" file\nto display.\
+    \ Passing \"-1\" will cause to display all the\ntaxonomic groups, this option\
+    \ is only used when\ncreating BiPlots. [default=10]"
   args: !SimpleFlagArg
     name: N_TAXA_TO_KEEP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --master_pcoa
   description: "Used only when the input is a directory of coordinate\nfiles i. e.\
     \ for jackknifed beta diversity plot or for\na coordinate comparison plot (procrustes\
     \ analysis).\nThe coordinates in this file will be the center of\neach ellipsoid\
@@ -120,22 +124,22 @@ named:
     \ originate\nfrom for a comparison plot. [default: arbitrarily\nselected file\
     \ from the input directory for a\njackknifed plot or None for a comparison plot\
     \ in this\ncase one file will be connected to the next one and so\non]"
-  synonyms:
-  - -s
-  - --master_pcoa
   args: !SimpleFlagArg
     name: MASTER_PCOA
-  optional: true
 - !Flag
-  description: "Path to a summarized taxa file (i. e. the output of\nsummarize_taxa.py).\
-    \ This option is only used when\ncreating BiPlots. [default=none]"
+  optional: true
   synonyms:
   - -t
   - --taxa_fp
+  description: "Path to a summarized taxa file (i. e. the output of\nsummarize_taxa.py).\
+    \ This option is only used when\ncreating BiPlots. [default=none]"
   args: !SimpleFlagArg
     name: TAXA_FP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --missing_custom_axes_values
   description: "Option to override the error shown when the catergory\nused in '--custom_axes'\
     \ has non-numeric values in the\nmapping file. The basic format is\ncustom_axis:new_value.\
     \ For example, if you want to\nplot in time 0 all the samples that do not have\
@@ -144,33 +148,33 @@ named:
     with this format you can specify different values\n(new_value) to use in the substitution\
     \ based on other\ncolumn (other_column) value (value_in_other_column);\nsee example\
     \ above. This option could be used in all\nexplicit axes."
-  synonyms:
-  - -x
-  - --missing_custom_axes_values
   args: !SimpleFlagArg
     name: MISSING_CUSTOM_AXES_VALUES
-  optional: true
 - !Flag
-  description: "path to the output directory that will contain the\nPCoA plot. [default:\
-    \ emperor]"
+  optional: true
   synonyms:
   - -o
   - --output_dir
+  description: "path to the output directory that will contain the\nPCoA plot. [default:\
+    \ emperor]"
   args: !SimpleFlagArg
     name: OUTPUT_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --number_of_segments
   description: "the number of segments to generate any spheres, this\nincludes the\
     \ samples, the taxa (biplots), and the\nconfidence intervals (jackknifing). Higher\
     \ values will\nresult in better quality but can make the plots less\nresponsive,\
     \ also it will make the resulting SVG images\nbigger. The value should be between\
     \ 4 and 14.\n[default: 8]"
-  synonyms:
-  - --number_of_segments
   args: !SimpleFlagArg
     name: NUMBER_OF_SEGMENTS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input_coords
   description: "Depending on the plot to be generated, can be one of\nthe following:\
     \ (1) Filepath of a coordinates file to\ncreate a PCoA plot. (2) Directory path\
     \ to a folder\ncontaining coordinates files to create a jackknifed\nPCoA plot.\
@@ -178,37 +182,33 @@ named:
     \ coordinates there\ncontained when --compare_plots is enabled (useful for\nprocustes\
     \ analysis plots). For directories: hidden\nfiles, sub-directories and files suffixed\
     \ as\n'_procrustes_results.txt' [REQUIRED]"
-  synonyms:
-  - -i
-  - --input_coords
   args: !SimpleFlagArg
     name: INPUT_COORDS
-  optional: true
 - !Flag
-  description: "path to a metadata mapping file [REQUIRED]\n"
+  optional: true
   synonyms:
   - -m
   - --map_fp
+  description: "path to a metadata mapping file [REQUIRED]\n"
   args: !SimpleFlagArg
     name: MAP_FP
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: make_emperor.py [options] {-i/--input_coords INPUT_COORDS -m/--map_fp\
   \ MAP_FP}\n\n[] indicates optional input (order unimportant)\n{} indicates required\
   \ input (order unimportant)\n\nThis script automates the creation  of three-dimensional\
@@ -377,3 +377,4 @@ help_text: "Usage: make_emperor.py [options] {-i/--input_coords INPUT_COORDS -m/
   \                        path to a metadata mapping file [REQUIRED]\n"
 generated_using:
 - --help
+docker_image:

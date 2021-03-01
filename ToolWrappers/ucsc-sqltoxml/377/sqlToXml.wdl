@@ -18,6 +18,9 @@ task SqlToXml {
       ~{if defined(tab) then ("-tab " +  '"' + tab + '"') else ""} \
       ~{if defined(max_list) then ("-maxList " +  '"' + max_list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     top_tag: "- Give the top level XML tag the given name.  By\\ndefault it will be the same as the database name."
     query: "- Instead of dumping whole database, just dump those\\nrecords matching SQL select statement in file.sql.\\nThis statement should be of the form:\\nselect * from table where ...\\nor\\nselect table.* from table,otherTables where ...\\nWhere the table is the same as the table in the first\\nline of dumpSpec."

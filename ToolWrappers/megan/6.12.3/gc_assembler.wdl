@@ -34,6 +34,9 @@ task Gcassembler {
       ~{if (very_verbose) then "--veryVerbose" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_daa_rma: "[string]                 Input DAA or RMA6 file. Mandatory option."
     output_filename_template: "[string]                Output filename template, use %d or %s to represent class id or name, respectively. Default value: input-%d.fasta."

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean
+
+Who_V0_1_0 = CommandToolBuilder(tool="who", base_command=["who"], inputs=[ToolInput(tag="in_all", input_type=Boolean(optional=True), prefix="--all", doc=InputDocumentation(doc="same as -b -d --login -p -r -t -T -u")), ToolInput(tag="in_boot", input_type=Boolean(optional=True), prefix="--boot", doc=InputDocumentation(doc="time of last system boot")), ToolInput(tag="in_dead", input_type=Boolean(optional=True), prefix="--dead", doc=InputDocumentation(doc="print dead processes")), ToolInput(tag="in_heading", input_type=Boolean(optional=True), prefix="--heading", doc=InputDocumentation(doc="print line of column headings")), ToolInput(tag="in_login", input_type=Boolean(optional=True), prefix="--login", doc=InputDocumentation(doc="print system login processes")), ToolInput(tag="in_lookup", input_type=Boolean(optional=True), prefix="--lookup", doc=InputDocumentation(doc="attempt to canonicalize hostnames via DNS")), ToolInput(tag="in_only_hostname_user", input_type=Boolean(optional=True), prefix="-m", doc=InputDocumentation(doc="only hostname and user associated with stdin")), ToolInput(tag="in_process", input_type=Boolean(optional=True), prefix="--process", doc=InputDocumentation(doc="print active processes spawned by init")), ToolInput(tag="in_count", input_type=Boolean(optional=True), prefix="--count", doc=InputDocumentation(doc="all login names and number of users logged on")), ToolInput(tag="in_runlevel", input_type=Boolean(optional=True), prefix="--runlevel", doc=InputDocumentation(doc="print current runlevel")), ToolInput(tag="in_short", input_type=Boolean(optional=True), prefix="--short", doc=InputDocumentation(doc="print only name, line, and time (default)")), ToolInput(tag="in_time", input_type=Boolean(optional=True), prefix="--time", doc=InputDocumentation(doc="print last system clock change")), ToolInput(tag="in_mesg", input_type=Boolean(optional=True), prefix="--mesg", doc=InputDocumentation(doc="add user's message status as +, - or ?")), ToolInput(tag="in_users", input_type=Boolean(optional=True), prefix="--users", doc=InputDocumentation(doc="list users logged in")), ToolInput(tag="in_message", input_type=Boolean(optional=True), prefix="--message", doc=InputDocumentation(doc="same as -T")), ToolInput(tag="in_writable", input_type=Boolean(optional=True), prefix="--writable", doc=InputDocumentation(doc="same as -T"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Who_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -34,6 +34,9 @@ task GenemarkGtf2gff3 {
       ~{use} \
       ~{var_13}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_0: ""
     this: ""

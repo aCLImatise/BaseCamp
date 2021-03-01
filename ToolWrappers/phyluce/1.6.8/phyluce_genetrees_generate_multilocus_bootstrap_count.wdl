@@ -20,6 +20,9 @@ task PhyluceGenetreesGenerateMultilocusBootstrapCount {
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignments: "The input directory containing alignments in phylip\\nformat"
     bootstrap_replicates: "The file that will hold bootstrap replicates sampling"

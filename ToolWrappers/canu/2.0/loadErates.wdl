@@ -14,6 +14,9 @@ task LoadErates {
       ~{if defined(path_sequence_store) then ("-S " +  '"' + path_sequence_store + '"') else ""} \
       ~{if defined(list_evalue_files) then ("-L " +  '"' + list_evalue_files + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_overlap_store: "path to the overlap store to create"
     path_sequence_store: "path to a sequence store"

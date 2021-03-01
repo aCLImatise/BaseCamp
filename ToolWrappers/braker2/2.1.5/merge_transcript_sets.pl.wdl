@@ -10,6 +10,9 @@ task MergeTranscriptSetspl {
       ~{transcripts_dot} \
       ~{set_ndot_gtf}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     transcripts_dot: "Attention: nonredundant transcript names over all sets are assumed!"
     set_ndot_gtf: "file with gene predictions in gtf format"

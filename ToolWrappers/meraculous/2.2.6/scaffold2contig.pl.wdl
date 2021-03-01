@@ -8,6 +8,9 @@ task Scaffold2contigpl {
     scaffold2contig_pl \
       ~{scaffold_seq_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     scaffold_seq_file: ""
   }

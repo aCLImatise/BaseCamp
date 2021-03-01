@@ -4,6 +4,9 @@ task Ray {
   command <<<
     Ray
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

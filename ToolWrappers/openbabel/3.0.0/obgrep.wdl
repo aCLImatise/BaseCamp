@@ -18,6 +18,9 @@ task Obgrep {
       ~{if (only_print_name) then "-n" else ""} \
       ~{if defined(print_molecule_occurs) then ("-t " +  '"' + print_molecule_occurs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     invert_matching_print: "Invert the matching, print non-matching molecules"
     print_number_matched: "Print the number of matched molecules"

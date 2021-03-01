@@ -22,6 +22,9 @@ task ClusterAndSplitGenespl {
       ~{if defined(clusters) then ("--clusters " +  '"' + clusters + '"') else ""} \
       ~{if defined(max_cluster_size) then ("--maxclustersize " +  '"' + max_cluster_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "threshold: minimal number of dependencies between two genes\\nin order to force them into same cluster (default: 10)"
     tx_format: "commonfile holds transcript ids instead of gene ids\\nthe mapping given by the --genes file is used to map transcript ids to gene ids"

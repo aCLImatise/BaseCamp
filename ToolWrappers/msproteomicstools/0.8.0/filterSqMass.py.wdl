@@ -4,6 +4,9 @@ task FilterSqMasspy {
   command <<<
     filterSqMass_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

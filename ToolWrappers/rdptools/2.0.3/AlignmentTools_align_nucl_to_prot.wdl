@@ -16,6 +16,9 @@ task AlignmentToolsAlignnucltoprot {
       ~{aligned_nucl_out} \
       ~{stats_out}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     align_nucleotide_to_protein: ""
     aligned_prot_seqs: ""

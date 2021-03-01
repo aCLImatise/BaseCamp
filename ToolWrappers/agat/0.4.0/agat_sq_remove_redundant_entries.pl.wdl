@@ -12,6 +12,9 @@ task AgatSqRemoveRedundantEntriespl {
       ~{if defined(string_input_gtfgff) then ("--input " +  '"' + string_input_gtfgff + '"') else ""} \
       ~{if defined(string_output_file) then ("--output " +  '"' + string_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_input_gtfgff: "STRING: Input GTF/GFF file."
     string_output_file: "STRING: Output file. If no output file is specified, the output\\nwill be written to STDOUT. The result is in tabulate format."

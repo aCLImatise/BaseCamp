@@ -1,0 +1,129 @@
+!Command
+command:
+- cstranslate
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --infile
+  description: Input file with alignment or sequence
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outfile
+  description: 'Output file for generated abstract state sequence (def: <infile>.as)'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --append
+  description: Append generated abstract state sequence to this file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --informat
+  description: '|seq|fas|... Input format: prf, seq, fas, a2m, a3m or ca3m (def=auto)'
+  args: !SimpleFlagArg
+    name: prf
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --outformat
+  description: '|prf        Outformat: abstract state sequence or profile (def=seq)'
+  args: !SimpleFlagArg
+    name: seq
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --match-assign
+  description: "[0:100]     Make all FASTA columns with less than X% gaps match columns\n\
+    (def: make columns with residue in first sequence match columns)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --alphabet
+  description: Abstract state alphabet consisting of exactly 219 states (def=internal)
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --context-data
+  description: Add context-specific pseudocounts using given context-data (def=internal)
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --pc-admix
+  description: '[0,1]           Pseudocount admix for context-specific pseudocounts
+    (def=0.90)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --pc-ali
+  description: '[0,inf[           Constant in pseudocount calculation for alignments
+    (def=12.0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --weight
+  description: '[0,inf[           Weight of abstract state column in emission calculation
+    (def=1000.00)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --ffindex
+  description: Read from -i <ffindex>, write to -o <ffindex> (do not include _ca3m
+    suffix for ca3m informat); enables openmp if possible (def=off)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "cstranslate 3.3.0\nTranslate a sequence/alignment into an abstract state\
+  \ alphabet.\nCopyright (c) 2010-2012 Andreas Biegert, Christof Angermueller, Johannes\
+  \ Soeding, and LMU Munich\n\nUsage: cstranslate -i <infile> [options]\n\nOptions:\n\
+  \  -i, --infile <file>            Input file with alignment or sequence\n  -o, --outfile\
+  \ <file>           Output file for generated abstract state sequence (def: <infile>.as)\n\
+  \  -a, --append <file>            Append generated abstract state sequence to this\
+  \ file\n  -I, --informat prf|seq|fas|... Input format: prf, seq, fas, a2m, a3m or\
+  \ ca3m (def=auto)\n  -O, --outformat seq|prf        Outformat: abstract state sequence\
+  \ or profile (def=seq)\n  -M, --match-assign [0:100]     Make all FASTA columns\
+  \ with less than X% gaps match columns\n                                 (def: make\
+  \ columns with residue in first sequence match columns)\n  -A, --alphabet <file>\
+  \          Abstract state alphabet consisting of exactly 219 states (def=internal)\n\
+  \  -D, --context-data <file>      Add context-specific pseudocounts using given\
+  \ context-data (def=internal)\n  -x, --pc-admix [0,1]           Pseudocount admix\
+  \ for context-specific pseudocounts (def=0.90)\n  -c, --pc-ali [0,inf[         \
+  \  Constant in pseudocount calculation for alignments (def=12.0)\n  -w, --weight\
+  \ [0,inf[           Weight of abstract state column in emission calculation (def=1000.00)\n\
+  \  -f, --ffindex                  Read from -i <ffindex>, write to -o <ffindex>\
+  \ (do not include _ca3m suffix for ca3m informat); enables openmp if possible (def=off)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hhsuite:3.3.0--py38pl526h6ed170a_0

@@ -3,176 +3,176 @@ command:
 - bamsieve
 positional:
 - !Positional
-  description: Input BAM or DataSet from which reads will be read
+  optional: false
   position: 0
   name: input_bam
-  optional: false
+  description: Input BAM or DataSet from which reads will be read
 - !Positional
-  description: "Output BAM or DataSet to which filtered reads will be\nwritten (default:\
-    \ None)"
+  optional: false
   position: 1
   name: output_bam
-  optional: false
+  description: "Output BAM or DataSet to which filtered reads will be\nwritten (default:\
+    \ None)"
 named:
 - !Flag
-  description: "Write the log to file. Default(None) will write to\nstdout. (default:\
-    \ None)"
+  optional: true
   synonyms:
   - --log-file
+  description: "Write the log to file. Default(None) will write to\nstdout. (default:\
+    \ None)"
   args: !SimpleFlagArg
     name: LOG_FILE
-  optional: true
 - !Flag
-  description: 'Set log level (default: WARN)'
+  optional: true
   synonyms:
   - --log-level
+  description: 'Set log level (default: WARN)'
   args: !ChoiceFlagArg
     choices: !!set
-      CRITICAL:
-      ERROR:
       INFO:
-      WARNING:
       DEBUG:
-  optional: true
+      CRITICAL:
+      WARNING:
+      ERROR:
 - !Flag
-  description: 'Alias for setting log level to DEBUG (default: False)'
+  optional: true
   synonyms:
   - --debug
+  description: 'Alias for setting log level to DEBUG (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Alias for setting log level to CRITICAL to suppress\noutput. (default:\
-    \ False)"
+  optional: true
   synonyms:
   - --quiet
+  description: "Alias for setting log level to CRITICAL to suppress\noutput. (default:\
+    \ False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Set the verbosity level. (default: None)'
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: 'Set the verbosity level. (default: None)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Print a list of ZMWs and exit (default: False)'
+  optional: true
   synonyms:
   - --show-zmws
+  description: 'Print a list of ZMWs and exit (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --whitelist
   description: "Comma-separated list of ZMWs, or file containing\nwhitelist of one\
     \ hole number per line, or BAM/DataSet\nfile from which to extract ZMWs (default:\
     \ None)"
-  synonyms:
-  - --whitelist
   args: !SimpleFlagArg
     name: WHITELIST
-  optional: true
 - !Flag
-  description: "Opposite of --whitelist, specifies ZMWs to discard\n(default: None)"
+  optional: true
   synonyms:
   - --blacklist
+  description: "Opposite of --whitelist, specifies ZMWs to discard\n(default: None)"
   args: !SimpleFlagArg
     name: BLACKLIST
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --subreads
   description: "If set, the whitelist or blacklist will be assumed to\ncontain one\
     \ subread name per line, or a BAM/DataSet\nfile from which to extract subreads\
     \ (default: False)"
-  synonyms:
-  - --subreads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --percentage
   description: "If you prefer to recover a percentage of a SMRTcell\nrather than a\
     \ specific list of reads specify that\npercentage (range 0-100) here (default:\
     \ None)"
-  synonyms:
-  - --percentage
   args: !SimpleFlagArg
     name: PERCENTAGE
-  optional: true
 - !Flag
-  description: "Recover a specific number of ZMWs picked at random\n(default: None)"
+  optional: true
   synonyms:
   - -n
   - --count
+  description: "Recover a specific number of ZMWs picked at random\n(default: None)"
   args: !SimpleFlagArg
     name: COUNT
-  optional: true
 - !Flag
-  description: "Random seed for selecting a percentage of reads\n(default: None)"
+  optional: true
   synonyms:
   - -s
   - --seed
+  description: "Random seed for selecting a percentage of reads\n(default: None)"
   args: !SimpleFlagArg
     name: SEED
-  optional: true
 - !Flag
-  description: 'Discard input DataSet metadata (default: False)'
+  optional: true
   synonyms:
   - --ignore-metadata
+  description: 'Discard input DataSet metadata (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Make external resource paths relative (default: False)'
+  optional: true
   synonyms:
   - --relative
+  description: 'Make external resource paths relative (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Randomize sequences for privacy (default: False)'
+  optional: true
   synonyms:
   - --anonymize
+  description: 'Randomize sequences for privacy (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Indicates that the whitelist or blacklist contains\nbarcode indices\
-    \ instead of ZMW numbers (default:\nFalse)"
+  optional: true
   synonyms:
   - --barcodes
+  description: "Indicates that the whitelist or blacklist contains\nbarcode indices\
+    \ instead of ZMW numbers (default:\nFalse)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sample-scraps
   description: "If enabled, --percentage and --count will include hole\nnumbers from\
     \ scraps BAM files when picking a random\nsample (default is to sample only ZMWs\
     \ present in\nsubreads BAM). (default: False)"
-  synonyms:
-  - --sample-scraps
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If enabled, the UUID from the input dataset will be\nused for the\
-    \ output as well. (default: False)"
+  optional: true
   synonyms:
   - --keep-uuid
+  description: "If enabled, the UUID from the input dataset will be\nused for the\
+    \ output as well. (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum number of adapters to filter for (default:\nNone)\n"
+  optional: true
   synonyms:
   - --min-adapters
+  description: "Minimum number of adapters to filter for (default:\nNone)\n"
   args: !SimpleFlagArg
     name: MIN_ADAPTERS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: bamsieve [-h] [--version] [--log-file LOG_FILE]\n             \
   \   [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL} | --debug | --quiet | -v]\n\
   \                [--show-zmws] [--whitelist WHITELIST] [--blacklist BLACKLIST]\n\
@@ -222,3 +222,4 @@ help_text: "usage: bamsieve [-h] [--version] [--log-file LOG_FILE]\n            
   \                      None)\n"
 generated_using:
 - --help
+docker_image:

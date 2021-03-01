@@ -10,6 +10,9 @@ task ExtractFastqread {
       ~{prog} \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     prog: ""

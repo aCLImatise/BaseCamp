@@ -12,6 +12,9 @@ task FfindexModify {
       ~{if (unlink_entry_remove) then "-u" else ""} \
       ~{if (print_version_info) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sort_index_file: "sort index file"
     unlink_entry_remove: "unlink entry (remove from index only)"

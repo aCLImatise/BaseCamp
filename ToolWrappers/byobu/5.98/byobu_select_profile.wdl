@@ -12,6 +12,9 @@ task Byobuselectprofile {
       ~{if (background) then "--background" else ""} \
       ~{if (foreground) then "--foreground" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list: "list available profiles"
     background: "set the background color"

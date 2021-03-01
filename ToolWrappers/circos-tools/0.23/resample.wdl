@@ -4,6 +4,9 @@ task Resample {
   command <<<
     resample
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

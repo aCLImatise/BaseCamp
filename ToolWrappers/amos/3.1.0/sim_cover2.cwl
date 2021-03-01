@@ -1,9 +1,9 @@
 class: CommandLineTool
 id: sim_cover2.cwl
 inputs:
-- id: in_set_overlap_length
+- id: in_set_minimum_overlap
   doc: Set minimum overlap length to <n> (default = 40)
-  type: long
+  type: long?
   inputBinding:
     prefix: -o
 - id: in_coverage
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sim-cover2

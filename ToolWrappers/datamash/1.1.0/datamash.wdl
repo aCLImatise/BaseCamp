@@ -36,6 +36,9 @@ task Datamash {
       ~{if (whitespace) then "--whitespace" else ""} \
       ~{if (zero_terminated) then "--zero-terminated" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     full: "print entire input line before op results\\n(default: print only the grouped keys)"
     group: "[,Y,Z]       group via fields X,[Y,Z];\\nequivalent to primary operation 'groupby'"

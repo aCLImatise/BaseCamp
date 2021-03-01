@@ -1,0 +1,359 @@
+!Command
+command:
+- RNAfold
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: structure.
+  description: (default=off)
+- !Positional
+  optional: false
+  position: 0
+  name: predictions
+  description: --shapeMethod=D|Z|W       Select SHAPE reactivity data incorporation
+- !Positional
+  optional: false
+  position: 1
+  name: strategy.
+  description: (default=`D')
+- !Positional
+  optional: false
+  position: 0
+  name: molecule.
+  description: (default=off)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --detailed-help
+  description: "Print help, including all details and hidden\noptions, and exit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --full-help
+  description: Print help, including hidden options, and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: "Be verbose.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
+  description: "[=number]           Split batch input into jobs and start\nprocessing\
+    \ in parallel using multiple\nthreads. A value of 0 indicates to use as\nmany\
+    \ parallel threads as computation cores\nare available.\n(default=`0')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --infile
+  description: Read a file instead of reading from stdin
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outfile
+  description: '[=<filename>]    Print output to file instead of stdout'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noPS
+  description: Do not produce postscript drawing of the mfe
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noDP
+  description: "Do not produce dot-plot postscript file\ncontaining base pair or stack\n\
+    probabilitities.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noconv
+  description: "Do not automatically substitute nucleotide\n\"T\" with \"U\"\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --auto-id
+  description: "Automatically generate an ID for each sequence.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --id-prefix
+  description: "Prefix for automatically generated IDs (as used\nin output file names)\n\
+    (default=`sequence')"
+  args: !SimpleFlagArg
+    name: prefix
+- !Flag
+  optional: true
+  synonyms:
+  - --maxBPspan
+  description: "Set the maximum base pair span\n(default=`-1')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --constraint
+  description: "[=<filename>] Calculate structures subject to constraints.\n(default=`')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --batch
+  description: "Use constraints for multiple sequences.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --canonicalBPonly
+  description: "Remove non-canonical base pairs from the\nstructure constraint\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --enforceConstraint
+  description: "Enforce base pairs given by round brackets ( )\nin structure constraint\n\
+    (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --shape
+  description: Use SHAPE reactivity data to guide structure
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --shapeConversion
+  description: "|C|S|L|O\nSelect method to convert SHAPE reactivities to\npairing\
+    \ probabilities.\n(default=`O')"
+  args: !SimpleFlagArg
+    name: M
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --partfunc
+  description: "[=INT]          Calculate the partition function and base\npairing\
+    \ probability matrix.\n(default=`1')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --MEA
+  description: "[=gamma]             Calculate an MEA (maximum expected accuracy)\n\
+    structure, where the expected accuracy is\ncomputed from the pair probabilities:\
+    \ each\nbase pair (i,j) gets a score 2*gamma*p_ij and\nthe score of an unpaired\
+    \ base is given by the\nprobability of not forming a pair.\n(default=`1.')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --circ
+  description: Assume a circular (instead of linear) RNA
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gquad
+  description: "Incoorporate G-Quadruplex formation into the\nstructure prediction\
+    \ algorithm.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --temp
+  description: "Rescale energy parameters to a temperature of\ntemp C. Default is\
+    \ 37C."
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - '-4'
+  - --noTetra
+  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
+    \ and hexaloop\nhairpins.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dangles
+  description: "How to treat \"dangling end\" energies for\nbases adjacent to helices\
+    \ in free ends and\nmulti-loops\n(default=`2')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --noLP
+  description: "Produce structures without lonely pairs\n(helices of length 1).\n\
+    (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noGU
+  description: "Do not allow GU pairs\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noClosingGU
+  description: "Do not allow GU pairs at the end of helices\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --paramFile
+  description: "Read energy parameters from paramfile, instead\nof using the default\
+    \ parameter set."
+  args: !SimpleFlagArg
+    name: paramfile
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: RNAfold [OPTIONS] [<input0.fa>] [<input1.fa>]...\nCalculate minimum\
+  \ free energy secondary structures and partition function of\nRNAs\n\nThe program\
+  \ reads RNA sequences, calculates their minimum free energy (mfe)\nstructure and\
+  \ prints the mfe structure in bracket notation and its free energy.\nIf not specified\
+  \ differently using commandline arguments, input is accepted\nfrom stdin or read\
+  \ from an input file, and output printed to stdout. If the -p\noption was given\
+  \ it also computes the partition function (pf) and base pairing\nprobability matrix,\
+  \ and prints the free energy of the thermodynamic ensemble,\nthe frequency of the\
+  \ mfe structure in the ensemble, and the ensemble diversity\nto stdout.\n\nIt also\
+  \ produces PostScript files with plots of the resulting secondary\nstructure graph\
+  \ and a \"dot plot\" of the base pairing matrix.\nThe dot plot shows a matrix of\
+  \ squares with area proportional to the pairing\nprobability in the upper right\
+  \ half, and one square for each pair in the\nminimum free energy structure in the\
+  \ lower left half. For each pair i-j with\nprobability p>10E-6 there is a line of\
+  \ the form\n\ni  j  sqrt(p)  ubox\n\nin the PostScript file, so that the pair probabilities\
+  \ can be easily extracted.\n\nSequences may be provided in a simple text format\
+  \ where each sequence occupies\na single line. Output files are named \"rna.ps\"\
+  \ and \"dot.ps\". Existing files\nof the same name will be overwritten.\n\nIt is\
+  \ also possible to provide sequence data in FASTA format. In this case, the\nfirst\
+  \ word of the FASTA header will be used as prefix for output file names.\nPostScript\
+  \ files \"prefix_ss.ps\" and \"prefix_dp.ps\" are produced for the\nstructure and\
+  \ dot plot, respectively. Note, however, that once FASTA input was\nprovided all\
+  \ following sequences must be in FASTA format too.\n\nTo avoid problems with certain\
+  \ operating systems and/or file systems the prefix\nwill ALWAYS be sanitized! This\
+  \ step substitutes any special character in the\nprefix by a filename delimiter.\
+  \ See the --filename-delim option to change the\ndelimiting character according\
+  \ to your requirements.\n\nThe program will continue to read new sequences until\
+  \ a line consisting of the\nsingle character @ or an end of file (EOF) condition\
+  \ is encountered.\n\n\n\n  -h, --help                    Print help and exit\n \
+  \     --detailed-help           Print help, including all details and hidden\n \
+  \                                 options, and exit\n      --full-help         \
+  \      Print help, including hidden options, and exit\n  -V, --version         \
+  \        Print version and exit\n\nGeneral Options:\n  Command line options which\
+  \ alter the general behavior of this program\n\n\n  -v, --verbose              \
+  \   Be verbose.\n\n                                    (default=off)\n  -j, --jobs[=number]\
+  \           Split batch input into jobs and start\n                            \
+  \      processing in parallel using multiple\n                                 \
+  \ threads. A value of 0 indicates to use as\n                                  many\
+  \ parallel threads as computation cores\n                                  are available.\n\
+  \                                    (default=`0')\n  -i, --infile=<filename>  \
+  \     Read a file instead of reading from stdin\n\n  -o, --outfile[=<filename>]\
+  \    Print output to file instead of stdout\n\n      --noPS                    Do\
+  \ not produce postscript drawing of the mfe\n                                  structure.\n\
+  \n                                    (default=off)\n      --noDP              \
+  \      Do not produce dot-plot postscript file\n                               \
+  \   containing base pair or stack\n                                  probabilitities.\n\
+  \                                    (default=off)\n      --noconv             \
+  \     Do not automatically substitute nucleotide\n                             \
+  \     \"T\" with \"U\"\n\n                                    (default=off)\n  \
+  \    --auto-id                 Automatically generate an ID for each sequence.\n\
+  \                                    (default=off)\n      --id-prefix=prefix   \
+  \     Prefix for automatically generated IDs (as used\n                        \
+  \          in output file names)\n\n                                    (default=`sequence')\n\
+  \nStructure Constraints:\n  Command line options to interact with the structure\
+  \ constraints feature of\n  this program\n\n\n      --maxBPspan=INT           Set\
+  \ the maximum base pair span\n\n                                    (default=`-1')\n\
+  \  -C, --constraint[=<filename>] Calculate structures subject to constraints.\n\
+  \                                    (default=`')\n      --batch               \
+  \    Use constraints for multiple sequences.\n                                 \
+  \   (default=off)\n      --canonicalBPonly         Remove non-canonical base pairs\
+  \ from the\n                                  structure constraint\n\n         \
+  \                           (default=off)\n      --enforceConstraint       Enforce\
+  \ base pairs given by round brackets ( )\n                                  in structure\
+  \ constraint\n\n                                    (default=off)\n      --shape=<filename>\
+  \        Use SHAPE reactivity data to guide structure\n                        \
+  \          predictions\n\n\n      --shapeMethod=D|Z|W       Select SHAPE reactivity\
+  \ data incorporation\n                                  strategy.\n            \
+  \                        (default=`D')\n      --shapeConversion=M|C|S|L|O\n    \
+  \                            Select method to convert SHAPE reactivities to\n  \
+  \                                pairing probabilities.\n                      \
+  \              (default=`O')\n\nAlgorithms:\n  Select additional algorithms which\
+  \ should be included in the calculations.\n  The Minimum free energy (MFE) and a\
+  \ structure representative are calculated\n  in any case.\n\n\n  -p, --partfunc[=INT]\
+  \          Calculate the partition function and base\n                         \
+  \         pairing probability matrix.\n                                    (default=`1')\n\
+  \      --MEA[=gamma]             Calculate an MEA (maximum expected accuracy)\n\
+  \                                  structure, where the expected accuracy is\n \
+  \                                 computed from the pair probabilities: each\n \
+  \                                 base pair (i,j) gets a score 2*gamma*p_ij and\n\
+  \                                  the score of an unpaired base is given by the\n\
+  \                                  probability of not forming a pair.\n        \
+  \                            (default=`1.')\n  -c, --circ                    Assume\
+  \ a circular (instead of linear) RNA\n                                  molecule.\n\
+  \n                                    (default=off)\n  -g, --gquad             \
+  \      Incoorporate G-Quadruplex formation into the\n                          \
+  \        structure prediction algorithm.\n\n                                   \
+  \ (default=off)\n\nModel Details:\n  -T, --temp=DOUBLE             Rescale energy\
+  \ parameters to a temperature of\n                                  temp C. Default\
+  \ is 37C.\n\n\n  -4, --noTetra                 Do not include special tabulated\
+  \ stabilizing\n                                  energies for tri-, tetra- and hexaloop\n\
+  \                                  hairpins.\n                                 \
+  \   (default=off)\n  -d, --dangles=INT             How to treat \"dangling end\"\
+  \ energies for\n                                  bases adjacent to helices in free\
+  \ ends and\n                                  multi-loops\n                    \
+  \                (default=`2')\n      --noLP                    Produce structures\
+  \ without lonely pairs\n                                  (helices of length 1).\n\
+  \                                    (default=off)\n      --noGU               \
+  \     Do not allow GU pairs\n\n                                    (default=off)\n\
+  \      --noClosingGU             Do not allow GU pairs at the end of helices\n\n\
+  \                                    (default=off)\n  -P, --paramFile=paramfile\
+  \     Read energy parameters from paramfile, instead\n                         \
+  \         of using the default parameter set.\n\n\nIf in doubt our program is right,\
+  \ nature is at fault.\nComments should be sent to rna@tbi.univie.ac.at.\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/viennarna:2.4.17--py36hd181a71_0

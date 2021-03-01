@@ -18,6 +18,9 @@ task Bottlepy {
       ~{if (debug) then "--debug" else ""} \
       ~{if (reload) then "--reload" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bind: "bind socket to ADDRESS."
     server: "use SERVER as backend."

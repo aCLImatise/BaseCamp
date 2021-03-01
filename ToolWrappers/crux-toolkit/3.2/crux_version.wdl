@@ -8,6 +8,9 @@ task CruxVersion {
     crux version \
       ~{crux}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
   }

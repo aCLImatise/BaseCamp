@@ -36,6 +36,9 @@ task Gff3ToGenePred {
       ~{if (allow_minimal_genes) then "-allowMinimalGenes" else ""} \
       ~{if (refseq_hacks) then "-refseqHacks" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     warn_and_continue: "- on bad genePreds being created, put out warning but continue"
     use_name: "- rather than using 'id' as name, use the 'name' tag"

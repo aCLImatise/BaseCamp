@@ -24,6 +24,9 @@ task Extractpartitionspy {
       ~{if (gzip) then "--gzip" else ""} \
       ~{if (bzip) then "--bzip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     info: "print citation information"
     max_size: "Max group size (n sequences) (default: 1000000)"

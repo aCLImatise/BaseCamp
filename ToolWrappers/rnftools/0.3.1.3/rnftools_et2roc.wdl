@@ -10,6 +10,9 @@ task RnftoolsEt2roc {
       ~{if defined(et) then ("--et " +  '"' + et + '"') else ""} \
       ~{if defined(roc) then ("--roc " +  '"' + roc + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     et: "Input ET file (evaluated read tuples, - for standard\\ninput)."
     roc: "Output ROC file (evaluated reads, - for standard\\noutput).\\n"

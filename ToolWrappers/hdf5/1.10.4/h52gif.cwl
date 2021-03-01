@@ -3,7 +3,7 @@ id: h52gif.cwl
 inputs:
 - id: in_i
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -i
 - id: in_h_five_file
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - h52gif

@@ -3,17 +3,17 @@ id: phandango_mapper.cwl
 inputs:
 - id: in_bwa
   doc: 'Location of bwa executable [Default: bwa]'
-  type: string
+  type: string?
   inputBinding:
     prefix: --bwa
 - id: in_tmp_prefix
   doc: 'Directory to store temporary files [Default: cwd]'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --tmp-prefix
 - id: in_use_filter_p
   doc: 'Plot the unadjusted p-value [Default: lrt-p-value]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use-filter-p
 - id: in_km_ers
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phandango_mapper

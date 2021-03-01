@@ -17,8 +17,8 @@ task Jackhmmer {
     String? p_extend
     String? mx
     File? mx_file
-    Float? report_sequences_evalue_threshold
-    String? report_sequences_score_threshold
+    Float? report_sequences_threshold
+    String? report_sequences_score
     Float? dome
     String? do_mt
     String? ince
@@ -83,8 +83,8 @@ task Jackhmmer {
       ~{if defined(p_extend) then ("--pextend " +  '"' + p_extend + '"') else ""} \
       ~{if defined(mx) then ("--mx " +  '"' + mx + '"') else ""} \
       ~{if defined(mx_file) then ("--mxfile " +  '"' + mx_file + '"') else ""} \
-      ~{if defined(report_sequences_evalue_threshold) then ("-E " +  '"' + report_sequences_evalue_threshold + '"') else ""} \
-      ~{if defined(report_sequences_score_threshold) then ("-T " +  '"' + report_sequences_score_threshold + '"') else ""} \
+      ~{if defined(report_sequences_threshold) then ("-E " +  '"' + report_sequences_threshold + '"') else ""} \
+      ~{if defined(report_sequences_score) then ("-T " +  '"' + report_sequences_score + '"') else ""} \
       ~{if defined(dome) then ("--domE " +  '"' + dome + '"') else ""} \
       ~{if defined(do_mt) then ("--domT " +  '"' + do_mt + '"') else ""} \
       ~{if defined(ince) then ("--incE " +  '"' + ince + '"') else ""} \
@@ -128,6 +128,9 @@ task Jackhmmer {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     set_maximum_number: ": set maximum number of iterations to <n>  [5]  (n>0)"
     direct_output_file: ": direct output to file <f>, not stdout"
@@ -144,8 +147,8 @@ task Jackhmmer {
     p_extend: ": gap extend probability"
     mx: ": substitution score matrix choice (of some built-in matrices)"
     mx_file: ": read substitution score matrix from file <f>"
-    report_sequences_evalue_threshold: ": report sequences <= this E-value threshold in output  [10.0]  (x>0)"
-    report_sequences_score_threshold: ": report sequences >= this score threshold in output"
+    report_sequences_threshold: ": report sequences <= this E-value threshold in output  [10.0]  (x>0)"
+    report_sequences_score: ": report sequences >= this score threshold in output"
     dome: ": report domains <= this E-value threshold in output  [10.0]  (x>0)"
     do_mt: ": report domains >= this score cutoff in output"
     ince: ": consider sequences <= this E-value threshold as significant"

@@ -12,6 +12,9 @@ task Gd2togif {
       ~{filename_dot_gd_two} \
       ~{filename_do_tgif}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gd_two_to_gif: ""
     filename_dot_gd_two: ""

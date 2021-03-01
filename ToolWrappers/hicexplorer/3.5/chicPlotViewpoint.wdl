@@ -58,6 +58,9 @@ task ChicPlotViewpoint {
       ~{if defined(target_file) then ("--targetFile " +  '"' + target_file + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     interaction_file: "path to the interaction files which should be used for\\nplotting"
     range: "RANGE   Defines the region upstream and downstream of a\\nreference point which should be included. Format is\\n--region upstream downstream, e.g.: --region 500000\\n500000 plots 500kb up- and 500kb downstream. This\\nvalue should not exceed the range used in the other\\nchic-tools."

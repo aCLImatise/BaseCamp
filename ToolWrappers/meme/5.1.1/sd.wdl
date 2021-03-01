@@ -4,6 +4,9 @@ task Sd {
   command <<<
     sd
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

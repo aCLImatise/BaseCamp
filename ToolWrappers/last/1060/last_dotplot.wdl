@@ -82,6 +82,9 @@ task Lastdotplot {
       ~{if defined(bridged_color) then ("--bridged-color " +  '"' + bridged_color + '"') else ""} \
       ~{if defined(un_bridged_color) then ("--unbridged-color " +  '"' + un_bridged_color + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "show progress messages & data about the plot"
     width: "maximum width in pixels (default: 1000)"

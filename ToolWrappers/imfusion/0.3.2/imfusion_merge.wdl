@@ -14,6 +14,9 @@ task Imfusionmerge {
       ~{if defined(names) then ("--names " +  '"' + names + '"') else ""} \
       ~{if defined(output_expression) then ("--output_expression " +  '"' + output_expression + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample_dirs: "Path to sample directories."
     output_path_merged_insertion: "Output path for merged insertion file."

@@ -2,14 +2,17 @@ version 1.0
 
 task Distmat {
   input {
-    File file
+    File additional_optional_qualifiers
   }
   command <<<
     _distmat \
-      ~{file}
+      ~{additional_optional_qualifiers}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: "Additional (Optional) qualifiers (* if not always prompted):"
+    additional_optional_qualifiers: "Additional (Optional) qualifiers (* if not always prompted):"
   }
   output {
     File out_stdout = stdout()

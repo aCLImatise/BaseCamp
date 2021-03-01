@@ -18,6 +18,9 @@ task TaxonFilterpyBlastnBuildDb {
       ~{if defined(tmp_dir) then ("--tmp_dir " +  '"' + tmp_dir + '"') else ""} \
       ~{if (tmp_dir_keep) then "--tmp_dirKeep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_prefix: "Prefix for the output file name (default: inputFasta\\nname, sans \\\".fasta\\\" extension)"
     loglevel: "Verboseness of output. [default: DEBUG]"

@@ -20,6 +20,9 @@ task SgaPreqc {
       ~{if (diploid_reference_mode) then "--diploid-reference-mode" else ""} \
       ~{if (force_em) then "--force-EM" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     threads: "use NUM threads (default: 1)"

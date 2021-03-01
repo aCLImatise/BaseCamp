@@ -14,6 +14,9 @@ task MockinbirdFlipMateOutputBam {
       ~{input_bam} \
       ~{output_bam}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mock_in_bird: ""
     flip_mate: ""

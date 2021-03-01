@@ -4,13 +4,13 @@ inputs:
 - id: in_plot_insert_len
   doc: "Plot the insert length distribution from a given\ninsert length (*.insert_len)\
     \ filename. Second argument\nis a settings file name."
-  type: long
+  type: long?
   inputBinding:
     prefix: --plot-insert-len
 - id: in_plot_bf_dist
   doc: "Plot Bayes factor distributon. Takes the arguments:\n(1) Bayes factor filename\
     \ (*.miso_bf) filename, (2) a\nsettings filename."
-  type: File
+  type: File?
   inputBinding:
     prefix: --plot-bf-dist
 - id: in_plot_event
@@ -18,36 +18,36 @@ inputs:
     \ the arguments: (1) event name\n(i.e. the ID= of the event based on MISO gff3\n\
     annotation file, (2) directory where indexed GFF\nannotation is (output of index_gff.py),\
     \ (3) path to\nplotting settings file."
-  type: File
+  type: File?
   inputBinding:
     prefix: --plot-event
 - id: in_no_posteriors
   doc: "If given this argument, MISO posterior estimates are\nnot plotted."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-posteriors
 - id: in_plot_title
   doc: "Title of plot: a string that will be displayed at top\nof plot. Example: --plot-title\
     \ \"My favorite gene\"."
-  type: string
+  type: string?
   inputBinding:
     prefix: --plot-title
 - id: in_plot_label
   doc: "Plot label. If given, plot will be saved in the output\ndirectory as the plot\
     \ label ending in the relevant\nextension, e.g. <plot_label>.pdf. Example: --plot-\n\
     label my_gene"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --plot-label
 - id: in_output_dir
   doc: Output directory.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output-dir
 - id: in_group_info
   doc: "If there is the need to divide bam files into groups,\nthen provided this\
     \ parameter with the the group files'\nname. Exemple: '--group-info gf.gf'\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --group-info
 outputs:
@@ -59,21 +59,22 @@ outputs:
     \ the arguments: (1) event name\n(i.e. the ID= of the event based on MISO gff3\n\
     annotation file, (2) directory where indexed GFF\nannotation is (output of index_gff.py),\
     \ (3) path to\nplotting settings file."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_plot_event)
 - id: out_plot_label
   doc: "Plot label. If given, plot will be saved in the output\ndirectory as the plot\
     \ label ending in the relevant\nextension, e.g. <plot_label>.pdf. Example: --plot-\n\
     label my_gene"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_plot_label)
 - id: out_output_dir
   doc: Output directory.
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sashimi_plot

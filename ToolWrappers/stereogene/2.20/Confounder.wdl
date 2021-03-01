@@ -9,7 +9,7 @@ task Confounder {
     Int? silent
     Int? bin
     Int? clear
-    Boolean? force_profile_preparation
+    Boolean? force_binary_profile
     File? cfg
     File? prof_path
     File? track_path
@@ -51,7 +51,7 @@ task Confounder {
       ~{if defined(silent) then ("-silent " +  '"' + silent + '"') else ""} \
       ~{if defined(bin) then ("-bin " +  '"' + bin + '"') else ""} \
       ~{if defined(clear) then ("-clear " +  '"' + clear + '"') else ""} \
-      ~{if (force_profile_preparation) then "-c" else ""} \
+      ~{if (force_binary_profile) then "-c" else ""} \
       ~{if defined(cfg) then ("-cfg " +  '"' + cfg + '"') else ""} \
       ~{if defined(prof_path) then ("-profPath " +  '"' + prof_path + '"') else ""} \
       ~{if defined(track_path) then ("-trackPath " +  '"' + track_path + '"') else ""} \
@@ -84,6 +84,9 @@ task Confounder {
       ~{if defined(r_fdr) then ("-R_FDR " +  '"' + r_fdr + '"') else ""} \
       ~{if defined(out_res) then ("-outRes " +  '"' + out_res + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: "verbose"
     syntax: "strong syntax control in input files"
@@ -92,7 +95,7 @@ task Confounder {
     silent: "no output to stdout"
     bin: "bin size for input averaging"
     clear: "force binary profile preparation"
-    force_profile_preparation: "force  binary profile preparation"
+    force_binary_profile: "force  binary profile preparation"
     cfg: "config file"
     prof_path: "path for binary profiles"
     track_path: "path for tracks"

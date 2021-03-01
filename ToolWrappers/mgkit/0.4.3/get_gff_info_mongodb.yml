@@ -4,31 +4,56 @@ command:
 - mongodb
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: GFF_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: OUTPUT_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-t, --taxonomy FILENAME  Taxonomy used to populate the lineage\n-c,\
-    \ --no-cache           No cache for the lineage function\n-i, --indent INTEGER\
-    \     If used, the json will be written in a human\nreadble form\n--progress \
-    \              Shows Progress Bar\n--help                   Show this message\
-    \ and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
-  args: !EmptyFlagArg {}
+  - -t
+  - --taxonomy
+  description: Taxonomy used to populate the lineage
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
   optional: true
+  synonyms:
+  - -c
+  - --no-cache
+  description: No cache for the lineage function
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --indent
+  description: "If used, the json will be written in a human\nreadble form"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: Shows Progress Bar
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: get-gff-info mongodb [OPTIONS] [GFF_FILE] [OUTPUT_FILE]\n\n  Extract\
@@ -40,3 +65,4 @@ help_text: "Usage: get-gff-info mongodb [OPTIONS] [GFF_FILE] [OUTPUT_FILE]\n\n  
   \  --help                   Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

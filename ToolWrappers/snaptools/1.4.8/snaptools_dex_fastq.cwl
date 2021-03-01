@@ -3,12 +3,12 @@ id: snaptools_dex_fastq.cwl
 inputs:
 - id: in_input_fast_q
   doc: "fastq file contains the sequencing reads (default:\nNone)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-fastq
 - id: in_output_fast_q
   doc: 'output decomplexed fastq file (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-fastq
 - id: in_index_fast_q_list
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_fast_q
   doc: 'output decomplexed fastq file (default: None)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_fast_q)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - snaptools

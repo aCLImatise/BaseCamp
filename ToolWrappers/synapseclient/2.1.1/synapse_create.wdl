@@ -14,6 +14,9 @@ task SynapseCreate {
       ~{if defined(description) then ("--description " +  '"' + description + '"') else ""} \
       ~{if defined(description_file) then ("--descriptionFile " +  '"' + description_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     parentid: "Synapse ID of project or folder where to place folder\\n[not used with project]"
     name: "Name of folder/project."

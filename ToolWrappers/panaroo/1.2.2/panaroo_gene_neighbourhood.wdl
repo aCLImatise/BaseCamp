@@ -16,6 +16,9 @@ task Panaroogeneneighbourhood {
       ~{if defined(expand_no) then ("--expand_no " +  '"' + expand_no + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graph: "[--expand_no EXPAND_NO]"
     gene: "gene of interest"

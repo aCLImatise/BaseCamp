@@ -18,6 +18,9 @@ task PtargrepArchive {
       ~{if (list_only) then "--list-only" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     basename: "ignore directory paths from archive"
     ignore_case: "do case-insensitive pattern matching"

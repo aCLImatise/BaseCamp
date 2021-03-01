@@ -8,6 +8,9 @@ task LongSpanningReads {
     long_spanning_reads \
       ~{reads_dot_fa_slashdot_fq}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reads_dot_fa_slashdot_fq: ""
   }

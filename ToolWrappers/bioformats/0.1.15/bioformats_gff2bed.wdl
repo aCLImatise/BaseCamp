@@ -2,7 +2,7 @@ version 1.0
 
 task BioformatsGff2bed {
   input {
-    File? attributes_include_defaultnone
+    File? attributes_include_output
     String? name_tag
     String? missing_value
     File? genes
@@ -18,7 +18,7 @@ task BioformatsGff2bed {
       ~{gff_file} \
       ~{type} \
       ~{output_file} \
-      ~{if (attributes_include_defaultnone) then "-a" else ""} \
+      ~{if (attributes_include_output) then "-a" else ""} \
       ~{if defined(name_tag) then ("--name_tag " +  '"' + name_tag + '"') else ""} \
       ~{if defined(missing_value) then ("--missing_value " +  '"' + missing_value + '"') else ""} \
       ~{if (genes) then "--genes" else ""} \
@@ -26,8 +26,11 @@ task BioformatsGff2bed {
       ~{if (no_order_check) then "--no_order_check" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    attributes_include_defaultnone: "[ATTRIBUTES [ATTRIBUTES ...]], --attributes [ATTRIBUTES [ATTRIBUTES ...]]\\nattributes to include to the output BED file (default:\\nNone)"
+    attributes_include_output: "[ATTRIBUTES [ATTRIBUTES ...]], --attributes [ATTRIBUTES [ATTRIBUTES ...]]\\nattributes to include to the output BED file (default:\\nNone)"
     name_tag: "an attribute tag of a feature name (default: None)"
     missing_value: "the missing tag value (default: NA)"
     genes: "output a BED12 file of genes (default: False)"
@@ -40,7 +43,7 @@ task BioformatsGff2bed {
   }
   output {
     File out_stdout = stdout()
-    File out_attributes_include_defaultnone = "${in_attributes_include_defaultnone}"
+    File out_attributes_include_output = "${in_attributes_include_output}"
     File out_genes = "${in_genes}"
   }
 }

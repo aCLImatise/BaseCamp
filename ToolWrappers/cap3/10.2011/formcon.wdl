@@ -12,6 +12,9 @@ task Formcon {
       ~{min_distance} \
       ~{max_distance}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_of_reads: "file of DNA reads in FASTA format"
     min_distance: "minimum length in bp of subclones"

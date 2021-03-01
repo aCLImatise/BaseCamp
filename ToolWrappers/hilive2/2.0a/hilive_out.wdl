@@ -7,7 +7,7 @@ task Hiliveout {
     File? run_info
     File? continue
     Boolean? arg_illuminas_basecalls
-    Boolean? arg_specify_considered
+    Boolean? arg_specify_tiles
     Boolean? arg_specify_number
     Boolean? arg_length_types
     Boolean? arg_barcodes_beconsidered
@@ -59,7 +59,7 @@ task Hiliveout {
       ~{if defined(run_info) then ("--runinfo " +  '"' + run_info + '"') else ""} \
       ~{if defined(continue) then ("--continue " +  '"' + continue + '"') else ""} \
       ~{if (arg_illuminas_basecalls) then "-b" else ""} \
-      ~{if (arg_specify_considered) then "-t" else ""} \
+      ~{if (arg_specify_tiles) then "-t" else ""} \
       ~{if (arg_specify_number) then "-T" else ""} \
       ~{if (arg_length_types) then "-r" else ""} \
       ~{if (arg_barcodes_beconsidered) then "-B" else ""} \
@@ -102,13 +102,16 @@ task Hiliveout {
       ~{if (arg_maximum_number) then "-N" else ""} \
       ~{if (config) then "--config" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_hilive_config: "[ --config ]\\nPath to a HiLive config file (in general, this should be\\n'hilive_config.ini' which is created in the temp directory of the\\nrespective run)"
     print_license_information: "[ --license ]                  Print license information and exit."
     run_info: "Path to Illumina's runInfo.xml file. If\\nspecified, read lengths, lane count and\\ntile count are automatically set in\\naccordance with the sequencing run.\\nParameters obtained from the command line\\nor config file are prioritized over\\nsettings obtained from the runInfo.xml."
     continue: "Continue an interrupted HiLive run from a\\nspecified cycle. We strongly recommend to\\nload the config file that was automatically\\ncreated for the original run to continue\\nwith identical settings. This config file\\n(hilive_config.ini) can be found in the\\ntemporary directory specified with\\n--temp-dir."
     arg_illuminas_basecalls: "[ --bcl-dir ] arg              Illumina's BaseCalls directory which\\ncontains the sequence information of the\\nreads."
-    arg_specify_considered: "[ --tiles ] arg                Specify the tiles to be considered for read\\nalignment. [Default: [1-2][1-3][01-16] (96\\ntiles)]"
+    arg_specify_tiles: "[ --tiles ] arg                Specify the tiles to be considered for read\\nalignment. [Default: [1-2][1-3][01-16] (96\\ntiles)]"
     arg_specify_number: "[ --max-tile ] arg             Specify the highest tile number. The tile\\nnumbers will be computed by this number,\\nconsidering the correct surface count,\\nswath count and tile count for Illumina\\nsequencing.\\nThis parameter serves as a shortcut for\\n--tiles.\\nExample:\\n--max-tile 2216\\nwill activate all tiles in\\n[1-2][1-2][01-16]."
     arg_length_types: "[ --reads ] arg                Length and types of the read segments. Each\\nsegment is either a read ('R') or a barcode\\n('B'). Please give the segments in the\\ncorrect order as they are produced by the\\nsequencing machine. [REQUIRED]\\nExample:\\n--reads 101R,8B,8B,101R\\nspecifies paired-end sequencing with\\n2x101bp reads and 2x8bp barcodes."
     arg_barcodes_beconsidered: "[ --barcodes ] arg             Barcode(s) of the sample(s) to be\\nconsidered for read alignment. Barcodes\\nmust match the barcode length(s) as\\nspecified with --reads. Delimit different\\nsegments of the same barcodes by '-' and\\ndifferent barcodes by ','. [Default: All\\nbarcodes]\\nExample:\\n-b ACCG-ATTG,ATGT-TGAC\\nfor two different barcodes of length 2x4bp."

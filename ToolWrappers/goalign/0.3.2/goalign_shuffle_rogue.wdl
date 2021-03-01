@@ -38,6 +38,9 @@ task GoalignShuffleRogue {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     length: "Proportion of the sites to shuffle (default 0.5)"
     prop_seq: "Proportion of the  sequences to consider as rogue (default 0.5)"

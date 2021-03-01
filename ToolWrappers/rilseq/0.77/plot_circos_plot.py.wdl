@@ -26,6 +26,9 @@ task PlotCircosPlotpy {
       ~{if defined(min_interactions) then ("--min_interactions " +  '"' + min_interactions + '"') else ""} \
       ~{if defined(ec_chr_list) then ("--EC_chrlist " +  '"' + ec_chr_list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     summary: "Plot only significant interactions that appear in the\\nsummary file. (default: None)"
     region: "Split the genome to windows of this size. (default:\\n200)"

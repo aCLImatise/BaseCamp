@@ -12,6 +12,9 @@ task CruxTideindexDecoy_ {
       ~{tide_index} \
       ~{protein_fast_a_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     tide_index: ""

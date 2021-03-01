@@ -26,6 +26,9 @@ task AsmCollectpy {
       ~{stats} \
       ~{files}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     script: ""
     to: ""

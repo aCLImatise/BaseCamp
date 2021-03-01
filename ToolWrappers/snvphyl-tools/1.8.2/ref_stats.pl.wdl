@@ -12,6 +12,9 @@ task RefStatspl {
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specify_bin_size: "#          specify bin size for histogram (default 100)"
     more_options: ""

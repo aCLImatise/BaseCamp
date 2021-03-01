@@ -12,19 +12,19 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - --outdir
+    description: ''
     args: !SimpleFlagArg
       name: OUTDIR
-    optional: true
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -q
+    description: ''
     args: !SimpleFlagArg
       name: QUALITY
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -36,19 +36,19 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --outdir
+        description: ''
         args: !SimpleFlagArg
           name: OUTDIR
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -q
+        description: ''
         args: !SimpleFlagArg
           name: QUALITY
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -60,19 +60,19 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --outdir
+            description: ''
             args: !SimpleFlagArg
               name: OUTDIR
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -q
+            description: ''
             args: !SimpleFlagArg
               name: QUALITY
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -84,38 +84,23 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --outdir
+                description: ''
                 args: !SimpleFlagArg
                   name: OUTDIR
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -q
+                description: ''
                 args: !SimpleFlagArg
                   name: QUALITY
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: Splitting on this average read quality score
-                  synonyms:
-                  - -q
-                  - --quality
-                  args: !SimpleFlagArg
-                    name: QUALITY
-                  optional: true
-                - !Flag
-                  description: Specify directory in which output has to be created.
-                  synonyms:
-                  - --outdir
-                  args: !SimpleFlagArg
-                    name: OUTDIR
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
@@ -123,43 +108,112 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --outdir
+                    description: ''
                     args: !SimpleFlagArg
                       name: OUTDIR
-                    optional: true
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -q
+                    description: ''
                     args: !SimpleFlagArg
                       name: QUALITY
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -q
+                      - --quality
+                      description: Splitting on this average read quality score
+                      args: !SimpleFlagArg
+                        name: QUALITY
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --outdir
+                      description: Specify directory in which output has to be created.
+                      args: !SimpleFlagArg
+                        name: OUTDIR
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --outdir
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: OUTDIR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -q
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: QUALITY
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: NanoSplit [-h] [-q QUALITY] [--outdir OUTDIR]\
+                        \ fastqfile\nNanoSplit: error: argument fastqfile: can't open\
+                        \ 'fastqfile': [Errno 2] No such file or directory: 'fastqfile'\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: NanoSplit [-h] [-q QUALITY] [--outdir OUTDIR]\
+                      \ fastqfile\n\nPerform splitting of a fastq file based on average\
+                      \ basecall quality.\n\npositional arguments:\n  fastqfile  \
+                      \           Fastq file to split, can be gz compressed.\n\noptional\
+                      \ arguments:\n  -h, --help            show this help message\
+                      \ and exit\n  -q QUALITY, --quality QUALITY\n              \
+                      \          Splitting on this average read quality score\n  --outdir\
+                      \ OUTDIR       Specify directory in which output has to be created.\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: NanoSplit [-h] [-q QUALITY] [--outdir OUTDIR]\
                     \ fastqfile\nNanoSplit: error: argument fastqfile: can't open\
                     \ 'fastqfile': [Errno 2] No such file or directory: 'fastqfile'\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "usage: NanoSplit [-h] [-q QUALITY] [--outdir OUTDIR] fastqfile\n\
@@ -171,20 +225,22 @@ subcommands:
                   \ quality score\n  --outdir OUTDIR       Specify directory in which\
                   \ output has to be created.\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: NanoSplit [-h] [-q QUALITY] [--outdir OUTDIR] fastqfile\n\
                 NanoSplit: error: argument fastqfile: can't open 'fastqfile': [Errno\
                 \ 2] No such file or directory: 'fastqfile'\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -198,20 +254,22 @@ subcommands:
               \  --outdir OUTDIR       Specify directory in which output has to be\
               \ created.\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: NanoSplit [-h] [-q QUALITY] [--outdir OUTDIR] fastqfile\n\
             NanoSplit: error: argument fastqfile: can't open 'fastqfile': [Errno 2]\
             \ No such file or directory: 'fastqfile'\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -224,20 +282,22 @@ subcommands:
           \                Splitting on this average read quality score\n  --outdir\
           \ OUTDIR       Specify directory in which output has to be created.\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: NanoSplit [-h] [-q QUALITY] [--outdir OUTDIR] fastqfile\n\
         NanoSplit: error: argument fastqfile: can't open 'fastqfile': [Errno 2] No\
         \ such file or directory: 'fastqfile'\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -250,20 +310,22 @@ subcommands:
       \ average read quality score\n  --outdir OUTDIR       Specify directory in which\
       \ output has to be created.\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: NanoSplit [-h] [-q QUALITY] [--outdir OUTDIR] fastqfile\nNanoSplit:\
     \ error: argument fastqfile: can't open 'fastqfile': [Errno 2] No such file or\
     \ directory: 'fastqfile'\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -275,3 +337,4 @@ help_text: "usage: NanoSplit [-h] [-q QUALITY] [--outdir OUTDIR] fastqfile\n\nPe
   \ --quality QUALITY\n                        Splitting on this average read quality\
   \ score\n  --outdir OUTDIR       Specify directory in which output has to be created.\n"
 generated_using: *id004
+docker_image:

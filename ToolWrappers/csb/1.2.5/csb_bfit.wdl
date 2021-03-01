@@ -24,6 +24,9 @@ task Csbbfit {
       ~{if defined(niter) then ("--niter " +  '"' + niter + '"') else ""} \
       ~{if (em) then "--em" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chain_one: "Chain of the first structure (default=A)"
     chain_two: "Chain of the second structure (default=A)"

@@ -2,23 +2,23 @@ class: CommandLineTool
 id: sfld_preprocess.cwl
 inputs:
 - id: in_hmm
-  doc: '| -m FILE    HMM file (input)'
-  type: boolean
+  doc: HMM file (input)
+  type: File?
   inputBinding:
     prefix: --hmm
 - id: in_sites
-  doc: '| -s FILE    sites file (output)'
-  type: File
+  doc: sites file (output)
+  type: File?
   inputBinding:
     prefix: --sites
 - id: in_alignments
-  doc: '| -a FILE    alignments file (input)'
-  type: boolean
+  doc: alignments file (input)
+  type: File?
   inputBinding:
     prefix: --alignments
 - id: in_hmm_dir
-  doc: '| -d DIR     SFLD HMM directory (overrides $SFLD_LIB_DIR)'
-  type: boolean
+  doc: SFLD HMM directory (overrides $SFLD_LIB_DIR)
+  type: Directory?
   inputBinding:
     prefix: --hmm_dir
 outputs:
@@ -26,10 +26,11 @@ outputs:
   doc: Standard output stream
   type: stdout
 - id: out_sites
-  doc: '| -s FILE    sites file (output)'
-  type: File
+  doc: sites file (output)
+  type: File?
   outputBinding:
     glob: $(inputs.in_sites)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sfld_preprocess

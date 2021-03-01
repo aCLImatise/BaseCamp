@@ -12,6 +12,9 @@ task ArbProto2Xsub {
       ~{xs_header} \
       ~{type_map}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prototypes_doth: ""
     xs_header: ""

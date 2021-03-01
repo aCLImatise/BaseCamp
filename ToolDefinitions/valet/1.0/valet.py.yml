@@ -2,46 +2,238 @@
 command:
 - valet.py
 positional: []
-named: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --assembly-fasta
+  description: Candidate assembly files
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --assembly-names
+  description: Names for the different assemblies.
+  args: !SimpleFlagArg
+    name: ASSEMBLY_NAMES
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reads
+  description: First Read File
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - --1
+  description: "Fastq filenames separated by commas that contain the\nfirst mates."
+  args: !SimpleFlagArg
+    name: FIRST_MATES
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  - --2
+  description: "Fastq filenames separated by commas that contain the\nsecond mates."
+  args: !SimpleFlagArg
+    name: SECOND_MATES
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --coverage-file
+  description: Assembly created per-contig coverage file
+  args: !SimpleFlagArg
+    name: COVERAGE_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --config-file
+  description: Config file with preset parameters.
+  args: !SimpleFlagArg
+    name: CONFIG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-dir
+  description: Output directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window-size
+  description: Sliding window size when determining misassemblies.
+  args: !SimpleFlagArg
+    name: WINDOW_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: "if set, input reads are fasta format (by default,\nreads are FASTQ)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --fastq
+  description: if set, input reads are fastq format.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --threads
+  description: Number of threads
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --minins
+  description: Min insert sizes for mate pairs separated by commas.
+  args: !SimpleFlagArg
+    name: MIN_INSERT_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --maxins
+  description: Max insert sizes for mate pairs separated by commas.
+  args: !SimpleFlagArg
+    name: MAX_INSERT_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --orientation
+  description: Orientation of the mates.
+  args: !SimpleFlagArg
+    name: ORIENTATION
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mu
+  description: average mate pair insert sizes.
+  args: !SimpleFlagArg
+    name: MU
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --sigma
+  description: standard deviation of mate pair insert sizes.
+  args: !SimpleFlagArg
+    name: SIGMA
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --max-alignments
+  description: bowtie2 parameter to set the max number of alignments.
+  args: !SimpleFlagArg
+    name: MAX_ALIGNMENTS
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --email
+  description: Email to notify when job completes
+  args: !SimpleFlagArg
+    name: EMAIL
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --min-coverage
+  description: Minimum average coverage to run misassembly detection.
+  args: !SimpleFlagArg
+    name: MIN_COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --coverage-multiplier
+  description: "When binning by coverage, the new high = high + high *\nmultiplier"
+  args: !SimpleFlagArg
+    name: COVERAGE_MULTIPLIER
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --min-suspicious
+  description: "Minimum number of overlapping flagged miassemblies to\nmark region\
+    \ as suspicious."
+  args: !SimpleFlagArg
+    name: MIN_SUSPICIOUS_REGIONS
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --suspicious-flank-size
+  description: "Mark region as suspicious if multiple signatures occur\nwithin this\
+    \ window size."
+  args: !SimpleFlagArg
+    name: SUSPICIOUS_FLANK_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --min-contig-length
+  description: Ignore contigs smaller than this length.
+  args: !SimpleFlagArg
+    name: MIN_CONTIG_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --ignore-ends
+  description: "Ignore flagged regions within b bps from the ends of\nthe contigs."
+  args: !SimpleFlagArg
+    name: IGNORE_END_DISTANCES
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --breakpoint-bin
+  description: Bin sized used to find breakpoints.
+  args: !SimpleFlagArg
+    name: BREAKPOINTS_BIN
+- !Flag
+  optional: true
+  synonyms:
+  - --orf-file
+  description: gff formatted file containing orfs
+  args: !SimpleFlagArg
+    name: ORF_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer
+  description: kmer length used for abundance estimation
+  args: !SimpleFlagArg
+    name: KMER_LENGTH
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-a FILE, --assembly-fasta=FILE\n\
-    Candidate assembly files\n--assembly-names=ASSEMBLY_NAMES\nNames for the different\
-    \ assemblies.\n-r FILE, --reads=FILE\nFirst Read File\n-1 FIRST_MATES, --1=FIRST_MATES\n\
-    Fastq filenames separated by commas that contain the\nfirst mates.\n-2 SECOND_MATES,\
-    \ --2=SECOND_MATES\nFastq filenames separated by commas that contain the\nsecond\
-    \ mates.\n-c COVERAGE_FILE, --coverage-file=COVERAGE_FILE\nAssembly created per-contig\
-    \ coverage file\n-i CONFIG_FILE, --config-file=CONFIG_FILE\nConfig file with preset\
-    \ parameters.\n-o OUTPUT_DIR, --output-dir=OUTPUT_DIR\nOutput directory\n-w WINDOW_SIZE,\
-    \ --window-size=WINDOW_SIZE\nSliding window size when determining misassemblies.\n\
-    -f, --fasta           if set, input reads are fasta format (by default,\nreads\
-    \ are FASTQ).\n-q, --fastq           if set, input reads are fastq format.\n-p\
-    \ THREADS, --threads=THREADS\nNumber of threads\n-I MIN_INSERT_SIZE, --minins=MIN_INSERT_SIZE\n\
-    Min insert sizes for mate pairs separated by commas.\n-X MAX_INSERT_SIZE, --maxins=MAX_INSERT_SIZE\n\
-    Max insert sizes for mate pairs separated by commas.\n-n ORIENTATION, --orientation=ORIENTATION\n\
-    Orientation of the mates.\n-m MU, --mu=MU        average mate pair insert sizes.\n\
-    -t SIGMA, --sigma=SIGMA\nstandard deviation of mate pair insert sizes.\n-x MAX_ALIGNMENTS,\
-    \ --max-alignments=MAX_ALIGNMENTS\nbowtie2 parameter to set the max number of\
-    \ alignments.\n-e EMAIL, --email=EMAIL\nEmail to notify when job completes\n-g\
-    \ MIN_COVERAGE, --min-coverage=MIN_COVERAGE\nMinimum average coverage to run misassembly\
-    \ detection.\n-l COVERAGE_MULTIPLIER, --coverage-multiplier=COVERAGE_MULTIPLIER\n\
-    When binning by coverage, the new high = high + high *\nmultiplier\n-s MIN_SUSPICIOUS_REGIONS,\
-    \ --min-suspicious=MIN_SUSPICIOUS_REGIONS\nMinimum number of overlapping flagged\
-    \ miassemblies to\nmark region as suspicious.\n-d SUSPICIOUS_FLANK_SIZE, --suspicious-flank-size=SUSPICIOUS_FLANK_SIZE\n\
-    Mark region as suspicious if multiple signatures occur\nwithin this window size.\n\
-    -z MIN_CONTIG_LENGTH, --min-contig-length=MIN_CONTIG_LENGTH\nIgnore contigs smaller\
-    \ than this length.\n-b IGNORE_END_DISTANCES, --ignore-ends=IGNORE_END_DISTANCES\n\
-    Ignore flagged regions within b bps from the ends of\nthe contigs.\n-k BREAKPOINTS_BIN,\
-    \ --breakpoint-bin=BREAKPOINTS_BIN\nBin sized used to find breakpoints.\n--orf-file=ORF_FILE\
-    \   gff formatted file containing orfs\n--kmer=KMER_LENGTH    kmer length used\
-    \ for abundance estimation\n--skip-reapr\n--debug\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: valet.py [options]\n\nOptions:\n  -h, --help            show this\
@@ -87,3 +279,4 @@ help_text: "Usage: valet.py [options]\n\nOptions:\n  -h, --help            show 
   \               \n"
 generated_using:
 - --help
+docker_image:

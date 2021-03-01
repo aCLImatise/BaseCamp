@@ -10,6 +10,9 @@ task ErrorCorrected2frg {
       ~{lib_id} \
       ~{if defined(length_min) then ("--length-min " +  '"' + length_min + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     length_min: "Minimum length of a read (64)"
     lib_id: ""

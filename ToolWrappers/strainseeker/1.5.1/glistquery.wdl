@@ -30,6 +30,9 @@ task Glistquery {
       ~{if (all) then "-all" else ""} \
       ~{if (increase_debug_level) then "-D" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stat: "- print statistics of the list file and exit"
     query: "- single query word"

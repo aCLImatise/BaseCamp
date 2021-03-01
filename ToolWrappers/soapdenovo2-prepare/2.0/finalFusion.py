@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean
+
+Finalfusion_V0_1_0 = CommandToolBuilder(tool="finalFusion", base_command=["finalFusion"], inputs=[ToolInput(tag="in_library_file", input_type=Boolean(optional=True), prefix="-s", doc=InputDocumentation(doc="Library file.")), ToolInput(tag="in_prefix_input_files", input_type=Boolean(optional=True), prefix="-g", doc=InputDocumentation(doc="Prefix of input files.")), ToolInput(tag="in_threads", input_type=Boolean(optional=True), prefix="-p", doc=InputDocumentation(doc="Threads.")), ToolInput(tag="in_d", input_type=Boolean(optional=True), prefix="-D", doc=InputDocumentation(doc="Enable this mode.")), ToolInput(tag="in_kmer", input_type=Boolean(optional=True), prefix="-K", doc=InputDocumentation(doc="Kmer.")), ToolInput(tag="in_input_contig_filecant", input_type=Boolean(optional=True), prefix="-c", doc=InputDocumentation(doc="Input contig file.(can't be name prefix.contig)")), ToolInput(tag="in_m", input_type=Boolean(optional=True), prefix="-M", doc=InputDocumentation(doc="Enable this mode.")), ToolInput(tag="in_b", input_type=Boolean(optional=True), prefix="-B", doc=InputDocumentation(doc="Enable this mode.")), ToolInput(tag="in_weight_threshold_outputting", input_type=Boolean(optional=True), prefix="-u", doc=InputDocumentation(doc="Weight threshold for outputting bundle file.(default 3)")), ToolInput(tag="in_o", input_type=Boolean(optional=True), prefix="-O", doc=InputDocumentation(doc="Enable this mode.")), ToolInput(tag="in_var_10", input_type=Boolean(optional=True), prefix="-S", doc=InputDocumentation(doc="Enable this mode.")), ToolInput(tag="in_threshold_minimum_k", input_type=Boolean(optional=True), prefix="-L", doc=InputDocumentation(doc="threshold for minimum length of contig(default K+2).")), ToolInput(tag="in_overlap_percent_threshold_subgraphdefault", input_type=Boolean(optional=True), prefix="-P", doc=InputDocumentation(doc="Overlap percent threshold for a subgraph(default 0.075).")), ToolInput(tag="in_overlap_percent_threshold_pedefault", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc="Overlap percent threshold for a PE(default 0.2).")), ToolInput(tag="in_overlap_length_threshold", input_type=Boolean(optional=True), prefix="-i", doc=InputDocumentation(doc="Overlap length threshold for remove transitive connect(default 20)."))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Finalfusion_V0_1_0().translate("wdl", allow_empty_container=True)
+

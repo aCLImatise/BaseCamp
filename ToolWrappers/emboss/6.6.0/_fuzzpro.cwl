@@ -16,13 +16,14 @@ inputs:
     \ pattern is restricted to either the\nN- or C-terminal of a sequence, that pattern\n\
     either starts with a '<' symbol or\nrespectively ends with a '>' symbol.\nA period\
     \ ends the pattern. (Optional in\nfuzzpro).\nFor example, [DE](2)HS{P}X(2)PX(2,4)C"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pattern
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _fuzzpro

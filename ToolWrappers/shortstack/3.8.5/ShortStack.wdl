@@ -60,6 +60,9 @@ task ShortStack {
       ~{if (strand_cut_off) then "--strand_cutoff" else ""} \
       ~{if (total_primaries) then "--total_primaries" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_file: "[string] : path to reference genome in .fasta or .fa format. Required for any run."
     outdir: "[string] : name of output directory to be created for results. Defaults to 'ShortStack_[time]',\\nwhere [time] is the current UNIX time according to the system. If the outdir already exists, ShortStack\\nwill exit with an error message."

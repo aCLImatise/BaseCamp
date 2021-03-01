@@ -54,6 +54,9 @@ task MimoddMap {
       ~{if (no_kde) then "--no-kde" else ""} \
       ~{if defined(hist_colors) then ("--hist-colors " +  '"' + hist_colors + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ofile: "redirect the binned variant counts to this file\\n(default: stdout)."
     quiet: "suppress warning messages about plotting problems."

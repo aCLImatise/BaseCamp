@@ -3,12 +3,12 @@ id: dbsnp_iit.cwl
 inputs:
 - id: in_more_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -MORE_OPTIONS
 - id: in_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -OPTIONS
 - id: in_allele_freq_sum_not_one
@@ -51,8 +51,8 @@ inputs:
   type: string
   inputBinding:
     position: 7
-- id: in_single_class_tri_allelic
-  doc: SingleClassZeroSpan
+- id: in_single_class_longer_span
+  doc: SingleClassQuadAllelic
   type: string
   inputBinding:
     position: 8
@@ -60,6 +60,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dbsnp_iit

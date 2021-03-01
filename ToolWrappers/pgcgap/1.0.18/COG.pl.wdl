@@ -4,6 +4,9 @@ task COGpl {
   command <<<
     COG_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

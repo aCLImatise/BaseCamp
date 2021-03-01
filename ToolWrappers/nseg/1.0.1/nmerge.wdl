@@ -8,6 +8,9 @@ task Nmerge {
     nmerge \
       ~{dbn}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dbn: ""
   }

@@ -4,7 +4,7 @@ task Soapcoverage {
   input {
     String? cvg
     Boolean? ref_single
-    Boolean? input_several_soap_soap_gziped_results
+    Boolean? input_several_soap_soap_gziped_results_filenames
     Boolean? il
     Boolean? il_single
     Boolean? il_soap
@@ -46,7 +46,7 @@ task Soapcoverage {
     soap_coverage \
       ~{if defined(cvg) then ("-cvg " +  '"' + cvg + '"') else ""} \
       ~{if (ref_single) then "-refsingle" else ""} \
-      ~{if (input_several_soap_soap_gziped_results) then "-i" else ""} \
+      ~{if (input_several_soap_soap_gziped_results_filenames) then "-i" else ""} \
       ~{if (il) then "-il" else ""} \
       ~{if (il_single) then "-il_single" else ""} \
       ~{if (il_soap) then "-il_soap" else ""} \
@@ -84,10 +84,13 @@ task Soapcoverage {
       ~{if (insert_upper) then "-insertupper" else ""} \
       ~{if (insert_lower) then "-insertlower" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cvg: "Selector for sequencing coverage mode, physical coverage mode or reads tag mode\\nAt least and only one should be selected!"
     ref_single: "[filename]   Input reference fasta file used in SOAP"
-    input_several_soap_soap_gziped_results: "[soap-file1 soap-file2 ...]\\nInput several soap or soap gziped results by filenames."
+    input_several_soap_soap_gziped_results_filenames: "[soap-file1 soap-file2 ...]\\nInput several soap or soap gziped results by filenames."
     il: "[soap-list]         Input several soap or soap gziped results (absolute path!) with a soap-list file\\nCaution: Only PE aligned results can be used in physical coverage!"
     il_single: "[SE aligned results list]"
     il_soap: "[PE aligned results list]"

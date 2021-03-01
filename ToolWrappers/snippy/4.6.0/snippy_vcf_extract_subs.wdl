@@ -18,6 +18,9 @@ task SnippyvcfExtractSubs {
       ~{if defined(format_tags) then ("--format-tags " +  '"' + format_tags + '"') else ""} \
       ~{if defined(filter) then ("--filter " +  '"' + filter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "+        Output verbose debug info (default '0')."
     ref: "FASTA reference (default '')."

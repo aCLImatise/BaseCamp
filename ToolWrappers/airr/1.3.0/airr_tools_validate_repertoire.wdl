@@ -8,6 +8,9 @@ task AirrtoolsValidateRepertoire {
     airr_tools validate repertoire \
       ~{if defined(list_airr_repertoire) then ("-a " +  '"' + list_airr_repertoire + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_airr_repertoire: "A list of AIRR repertoire metadata files.\\n"
   }

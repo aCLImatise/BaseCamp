@@ -32,6 +32,9 @@ task Dbiblast {
       ~{if (source_file) then "-sourcefile" else ""} \
       ~{if (index_outdir) then "-indexoutdir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory: "directory  [.] Database directory"
     filenames: "string     [Database name] Wildcard database filename\\n(Any string)"

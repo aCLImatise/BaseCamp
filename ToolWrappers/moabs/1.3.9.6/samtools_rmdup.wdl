@@ -16,6 +16,9 @@ task SamtoolsRmdup {
       ~{if (treat_pe_reads) then "-S" else ""} \
       ~{if (ss) then "-sS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rmdup_se_reads: "rmdup for SE reads"
     treat_pe_reads: "treat PE reads as SE in rmdup (force -s)"

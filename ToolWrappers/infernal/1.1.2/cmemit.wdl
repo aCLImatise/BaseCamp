@@ -3,7 +3,7 @@ version 1.0
 task Cmemit {
   input {
     File? send_sequence_output
-    Int? generate_n_sequences
+    Int? _generate_sequences
     Boolean? write_generated_sequences_unaligned
     Boolean? write_generated_sequences_alignment
     Boolean? generate_single_sequence
@@ -30,7 +30,7 @@ task Cmemit {
     cmemit \
       ~{cm_file} \
       ~{if defined(send_sequence_output) then ("-o " +  '"' + send_sequence_output + '"') else ""} \
-      ~{if defined(generate_n_sequences) then ("-N " +  '"' + generate_n_sequences + '"') else ""} \
+      ~{if defined(_generate_sequences) then ("-N " +  '"' + _generate_sequences + '"') else ""} \
       ~{if (write_generated_sequences_unaligned) then "-u" else ""} \
       ~{if (write_generated_sequences_alignment) then "-a" else ""} \
       ~{if (generate_single_sequence) then "-c" else ""} \
@@ -52,9 +52,12 @@ task Cmemit {
       ~{if (no_hmm_only) then "--nohmmonly" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     send_sequence_output: ": send sequence output to file <f>, not stdout"
-    generate_n_sequences: ": generate <n> sequences  [10]"
+    _generate_sequences: ": generate <n> sequences  [10]"
     write_generated_sequences_unaligned: ": write generated sequences as unaligned FASTA [default]  [default]"
     write_generated_sequences_alignment: ": write generated sequences as an alignment"
     generate_single_sequence: ": generate a single \\\"consensus\\\" sequence only"

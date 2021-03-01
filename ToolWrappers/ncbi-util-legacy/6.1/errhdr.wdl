@@ -14,6 +14,9 @@ task Errhdr {
       ~{if defined(codesubcode_tuples) then ("-2 " +  '"' + codesubcode_tuples + '"') else ""} \
       ~{if defined(short_subcode_defines) then ("-s " +  '"' + short_subcode_defines + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     codesubcode_tuples: "code,subcode tuples"
     short_subcode_defines: "short subcode defines"

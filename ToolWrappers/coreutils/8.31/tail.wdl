@@ -28,6 +28,9 @@ task Tail {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (zero_terminated) then "--zero-terminated" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bytes: "=[+]NUM       output the last NUM bytes; or use -c +NUM to\\noutput starting with byte NUM of each file"
     follow: "[={name|descriptor}]\\noutput appended data as the file grows;\\nan absent option argument means 'descriptor'"

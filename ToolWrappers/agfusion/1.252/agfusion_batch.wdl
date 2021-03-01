@@ -2,7 +2,7 @@ version 1.0
 
 task AgfusionBatch {
   input {
-    File? file
+    File? output_file_algorithm
     String? algorithm
     File? database
     Directory? out
@@ -24,7 +24,7 @@ task AgfusionBatch {
   command <<<
     agfusion batch \
       ~{png} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(output_file_algorithm) then ("--file " +  '"' + output_file_algorithm + '"') else ""} \
       ~{if defined(algorithm) then ("--algorithm " +  '"' + algorithm + '"') else ""} \
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
@@ -42,8 +42,11 @@ task AgfusionBatch {
       ~{if (no_domain_labels) then "--no_domain_labels" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: "Output file from fusion-finding algorithm."
+    output_file_algorithm: "Output file from fusion-finding algorithm."
     algorithm: "The fusion-finding algorithm. Can be one of the\\nfollowing: bellerophontes, breakfusion, chimerascan,\\nchimerscope, defuse, ericscript, fusioncatcher,\\nfusionhunter, fusionmap, fusioninspector, infusion,\\njaffa, mapsplice, starfusion, tophatfusion."
     database: "Path to the AGFusion database (e.g. --db\\n/path/to/agfusion.homo_sapiens.87.db)"
     out: "Directory to save results"
@@ -64,6 +67,6 @@ task AgfusionBatch {
   }
   output {
     File out_stdout = stdout()
-    File out_file = "${in_file}"
+    File out_output_file_algorithm = "${in_output_file_algorithm}"
   }
 }

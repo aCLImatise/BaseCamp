@@ -16,19 +16,20 @@ inputs:
 - id: in_outdir
   doc: "Specify to changes the output directory to the\nlocation specified. The input\
     \ file directory is used\nif this is not specified. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_out_name
   doc: "Changes the prefix of the successfully processed\noutput file to the string\
     \ specified. May not be\nspecified with multiple input files. (default: None)\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outname
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ConvertDb.py

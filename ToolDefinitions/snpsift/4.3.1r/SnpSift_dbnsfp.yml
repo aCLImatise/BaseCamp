@@ -4,69 +4,72 @@ command:
 - dbnsfp
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: java
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: DbNsfp
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: file.vcf
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: ": Annotate fields, even if the database has an empty value (annotates\
-    \ using '.' for empty)."
+  optional: true
   synonyms:
   - -a
+  description: ": Annotate fields, even if the database has an empty value (annotates\
+    \ using '.' for empty)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': Collapse repeated values from dbNSFP. Default: false'
+  optional: true
   synonyms:
   - -collapse
+  description: ': Collapse repeated values from dbNSFP. Default: false'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': Path to dbNSFP database file (bgzip + tabix).'
+  optional: true
   synonyms:
   - -db
+  description: ': Path to dbNSFP database file (bgzip + tabix).'
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: ': Genome version.'
+  optional: true
   synonyms:
   - -g
+  description: ': Genome version.'
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
-  description: ": Switch off 'collapsing' repeated values from dbNSFP. Default: true"
+  optional: true
   synonyms:
   - -noCollapse
+  description: ": Switch off 'collapsing' repeated values from dbNSFP. Default: true"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ": Annotate fields even if there are no database matching entries (annotates\
-    \ using '.')."
+  optional: true
   synonyms:
   - -m
+  description: ": Annotate fields even if there are no database matching entries (annotates\
+    \ using '.')."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ": Invert 'fields to add' selection (i.e. use all fields except the\
-    \ ones specified in option '-f')."
+  optional: true
   synonyms:
   - -n
+  description: ": Invert 'fields to add' selection (i.e. use all fields except the\
+    \ ones specified in option '-f')."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
   description: ": A comma separated list of fields to add.\nDefault fields to add:\
     \ Uniprot_acc, Interpro_domain, SIFT_pred, Polyphen2_HDIV_pred, Polyphen2_HVAR_pred,\
     \ LRT_pred, MutationTaster_pred, GERP++_NR, GERP++_RS, phastCons100way_vertebrate,\
@@ -79,62 +82,61 @@ named:
     \ ExAC_Adj_AF, ExAC_AFR_AC, ExAC_AFR_AF, ExAC_AMR_AC, ExAC_AMR_AF, ExAC_EAS_AC,\
     \ ExAC_EAS_AF, ExAC_FIN_AC, ExAC_FIN_AF, ExAC_NFE_AC, ExAC_NFE_AF, ExAC_SAS_AC,\
     \ ExAC_SAS_AF"
-  synonyms:
-  - -f
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ', -config <file>  : Specify config file'
+  optional: true
   synonyms:
   - -c
-  args: !EmptyFlagArg {}
-  optional: true
+  - -config
+  description: ': Specify config file'
+  args: !SimpleFlagArg
+    name: file
 - !Flag
-  description: ': Debug.'
+  optional: true
   synonyms:
   - -d
+  description: ': Debug.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': Download database, if not available locally. Default: true.'
+  optional: true
   synonyms:
   - -download
+  description: ': Download database, if not available locally. Default: true.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': Do not download a database, if not available locally.'
+  optional: true
   synonyms:
   - -noDownload
+  description: ': Do not download a database, if not available locally.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': Do not report usage statistics to server.'
+  optional: true
   synonyms:
   - -noLog
+  description: ': Do not report usage statistics to server.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': Verbose.'
+  optional: true
   synonyms:
   - -v
+  description: ': Verbose.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -jar
+  description: ''
   args: !SimpleFlagArg
     name: SnpSift.jar
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ': Help.'
+  optional: true
   synonyms:
   - -h
+  description: ': Help.'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Error: You must provide either a genome name or a database path (i.e.\
@@ -170,3 +172,4 @@ help_text: "Error: You must provide either a genome name or a database path (i.e
   \ corresponding index file (dbNSFP.txt.gz.tbi) must be present.\n\n"
 generated_using:
 - --help
+docker_image:

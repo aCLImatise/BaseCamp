@@ -16,6 +16,9 @@ task FastqConcat {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input (gzipped) FASTQ files."
     out: "Output gzipped FASTQ file."

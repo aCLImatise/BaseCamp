@@ -12,6 +12,9 @@ task SinglemMakedb {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     full_help: ""
     quiet: ""

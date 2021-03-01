@@ -62,6 +62,9 @@ task BcftoolsCall {
       ~{if defined(pval_threshold) then ("--pval-threshold " +  '"' + pval_threshold + '"') else ""} \
       ~{if defined(prior) then ("--prior " +  '"' + prior + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_version: "do not append version and command line to the header"
     write_output_file: "write output to a file [standard output]"

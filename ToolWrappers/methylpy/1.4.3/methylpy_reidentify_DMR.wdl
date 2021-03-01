@@ -2,8 +2,8 @@ version 1.0
 
 task MethylpyReidentifyDMR {
   input {
-    File? output_file
     File? input_rms_file
+    File? output_file
     Array[String] collapse_samples
     Array[String] sample_category
     Int? min_cluster
@@ -16,8 +16,8 @@ task MethylpyReidentifyDMR {
   }
   command <<<
     methylpy reidentify_DMR \
-      ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
       ~{if defined(input_rms_file) then ("--input-rms-file " +  '"' + input_rms_file + '"') else ""} \
+      ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
       ~{if defined(collapse_samples) then ("--collapse-samples " +  '"' + collapse_samples + '"') else ""} \
       ~{if defined(sample_category) then ("--sample-category " +  '"' + sample_category + '"') else ""} \
       ~{if defined(min_cluster) then ("--min-cluster " +  '"' + min_cluster + '"') else ""} \
@@ -28,9 +28,12 @@ task MethylpyReidentifyDMR {
       ~{if defined(num_sims) then ("--num-sims " +  '"' + num_sims + '"') else ""} \
       ~{if defined(min_tests) then ("--min-tests " +  '"' + min_tests + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    output_file: "[--collapse-samples COLLAPSE_SAMPLES [COLLAPSE_SAMPLES ...]]\\n[--sample-category SAMPLE_CATEGORY [SAMPLE_CATEGORY ...]]\\n[--min-cluster MIN_CLUSTER]\\n[--sig-cutoff SIG_CUTOFF]\\n[--dmr-max-dist DMR_MAX_DIST]\\n[--min-num-dms MIN_NUM_DMS]\\n[--resid-cutoff RESID_CUTOFF]\\n[--num-sims NUM_SIMS] [--min-tests MIN_TESTS]"
     input_rms_file: "File storing the results of RMS tests (from DMRfind\\nfunction. (default: None)"
+    output_file: "String indicating the name of output file (default:\\nNone)"
     collapse_samples: "A list of samples for collapsing blocks (default:\\nFalse)"
     sample_category: "A list of categories that each respective sample\\nbelongs to; the categories must begin at 0 and\\nincrease by 1 for each category added. ex: samples\\n[A,B,C] categories [0,1,2] or categories [0, 1, 0]\\n(default: False)"
     min_cluster: "The minimum number of each sample category that must\\nbe present in every block that is output. (default: 2)"

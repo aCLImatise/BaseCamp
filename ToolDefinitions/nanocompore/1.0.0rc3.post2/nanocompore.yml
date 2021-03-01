@@ -11,10 +11,10 @@ subcommands:
   - plot
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: nanocompore
-    optional: false
+    description: ''
   named: []
   parent: !Command
     command: *id001
@@ -26,10 +26,10 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: nanocompore
-        optional: false
+        description: ''
       named: []
       parent: !Command
         command: *id001
@@ -41,10 +41,10 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: nanocompore
-            optional: false
+            description: ''
           named: []
           parent: !Command
             command: *id001
@@ -56,12 +56,12 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: nanocompore
-                optional: false
+                description: ''
               named: []
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
                 named: []
@@ -71,47 +71,98 @@ subcommands:
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: nanocompore
-                    optional: false
+                    description: ''
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: nanocompore
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --version
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      help_text: "usage: nanocompore [-h] [--version] {sampcomp,simreads,plot}\
+                        \ ...\nnanocompore: error: unrecognized arguments: --usage\n"
+                      generated_using: &id004
+                      - --usage
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --version
+                      - -v
+                      description: show program's version number and exit
+                      args: !EmptyFlagArg {}
+                    help_text: "usage: nanocompore [-h] [--version] {sampcomp,simreads,plot}\
+                      \ ...\n\nSoftware package that identifies raw signal changes\
+                      \ between two conditions\nfrom https://github.com/jts/nanopolish\
+                      \ resquiggled dRNA-Seq data.\n\npositional arguments:\n  {sampcomp,simreads,plot}\n\
+                      \                        Nanocompore implements the following\
+                      \ subcommands\n    plot                Run downstream analysis\
+                      \ and plot results\n\noptional arguments:\n  -h, --help    \
+                      \        show this help message and exit\n  --version, -v  \
+                      \       show program's version number and exit\n"
+                    generated_using: &id005
+                    - --help
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --version
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   help_text: "usage: nanocompore [-h] [--version] {sampcomp,simreads,plot}\
                     \ ...\nnanocompore: error: unrecognized arguments: --usage\n"
-                  generated_using: &id004
-                  - --usage
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: show program's version number and exit
-                  synonyms:
-                  - --version
-                  - -v
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "usage: nanocompore [-h] [--version] {sampcomp,simreads,plot}\
                   \ ...\n\nSoftware package that identifies raw signal changes between\
                   \ two conditions\nfrom https://github.com/jts/nanopolish resquiggled\
@@ -121,26 +172,27 @@ subcommands:
                   \noptional arguments:\n  -h, --help            show this help message\
                   \ and exit\n  --version, -v         show program's version number\
                   \ and exit\n"
-                generated_using: &id005
-                - --help
+                generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --version
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               help_text: "usage: nanocompore [-h] [--version] {sampcomp,simreads,plot}\
                 \ ...\nnanocompore: error: unrecognized arguments: --usage\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -155,24 +207,26 @@ subcommands:
               \ and exit\n  --version, -v         show program's version number and\
               \ exit\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - --version
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           help_text: "usage: nanocompore [-h] [--version] {sampcomp,simreads,plot}\
             \ ...\nnanocompore: error: unrecognized arguments: --usage\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -186,24 +240,26 @@ subcommands:
           \     show this help message and exit\n  --version, -v         show program's\
           \ version number and exit\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - --version
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       help_text: "usage: nanocompore [-h] [--version] {sampcomp,simreads,plot} ...\n\
         nanocompore: error: unrecognized arguments: --usage\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -217,24 +273,26 @@ subcommands:
       \ show this help message and exit\n  --version, -v         show program's version\
       \ number and exit\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - --version
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   help_text: "usage: nanocompore [-h] [--version] {sampcomp,simreads,plot} ...\nnanocompore:\
     \ error: unrecognized arguments: --usage\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -247,3 +305,4 @@ help_text: "usage: nanocompore [-h] [--version] {sampcomp,simreads,plot} ...\n\n
   \  -h, --help            show this help message and exit\n  --version, -v      \
   \   show program's version number and exit\n"
 generated_using: *id005
+docker_image:

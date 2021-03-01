@@ -17,19 +17,9 @@ task Split {
     Int? separator
     Boolean? unbuffered
     File? verbose
-    String k_slash_n
-    String lslash_n
-    String lslash_k_slash_n
-    String r_slash_n
-    String r_slash_k_slash_n
   }
   command <<<
     split \
-      ~{k_slash_n} \
-      ~{lslash_n} \
-      ~{lslash_k_slash_n} \
-      ~{r_slash_n} \
-      ~{r_slash_k_slash_n} \
       ~{if defined(suffix_length) then ("--suffix-length " +  '"' + suffix_length + '"') else ""} \
       ~{if defined(additional_suffix) then ("--additional-suffix " +  '"' + additional_suffix + '"') else ""} \
       ~{if defined(bytes) then ("--bytes " +  '"' + bytes + '"') else ""} \
@@ -46,6 +36,9 @@ task Split {
       ~{if (unbuffered) then "--unbuffered" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     suffix_length: "generate suffixes of length N (default 2)"
     additional_suffix: "append an additional SUFFIX to file names"
@@ -62,11 +55,6 @@ task Split {
     separator: "use SEP instead of newline as the record separator;\\n'\\0' (zero) specifies the NUL character"
     unbuffered: "immediately copy input to output with '-n r/...'"
     verbose: "print a diagnostic just before each\\noutput file is opened"
-    k_slash_n: "output Kth of N to stdout"
-    lslash_n: "split into N files without splitting lines/records"
-    lslash_k_slash_n: "output Kth of N to stdout without splitting lines/records"
-    r_slash_n: "like 'l' but use round robin distribution"
-    r_slash_k_slash_n: "likewise but only output Kth of N to stdout"
   }
   output {
     File out_stdout = stdout()

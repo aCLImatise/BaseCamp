@@ -26,6 +26,9 @@ task Riboplot {
       ~{if defined(transcriptome_fast_a) then ("--transcriptome_fasta " +  '"' + transcriptome_fast_a + '"') else ""} \
       ~{if defined(transcript_name) then ("--transcript_name " +  '"' + transcript_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rna_file: "RNA-Seq alignment file (BAM)"
     read_lengths: "Read lengths to consider (default: 0). Multiple read\\nlengths should be separated by commas. If multiple\\nread lengths are specified, corresponding read offsets\\nshould also be specified. If you do not wish to apply\\nan offset, please input 0 for the corresponding read\\nlength"

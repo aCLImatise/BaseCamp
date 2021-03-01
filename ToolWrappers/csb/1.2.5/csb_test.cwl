@@ -3,23 +3,23 @@ id: csb_test.cwl
 inputs:
 - id: in_type
   doc: "Type of tests to load from each namespace\n(default=any)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --type
 - id: in_verbosity
   doc: "Verbosity level passed to unittest.TextTestRunner\n(default=1)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbosity
 - id: in_update_files
   doc: "Force update of the test pickles in\n/usr/local/lib/python3.6/site-packages/csb/test/data"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --update-files
 - id: in_generated_resources
   doc: "Generate, store and load additional test resources in\nthis directory (default=/usr/local/lib/python3.6/site-\n\
     packages/csb/test/data)\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --generated-resources
 - id: in_namespaces
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - csb-test

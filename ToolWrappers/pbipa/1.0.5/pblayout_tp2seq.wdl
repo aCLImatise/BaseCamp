@@ -26,6 +26,9 @@ task PblayoutTp2seq {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     use_seq_ids: "The input tiling path contains sequence IDs instead\\nof read names."
     use_hpc: "Assumes that the input tiling paths were constructed\\nin the homopolymer-compressed space, and expands the\\nsequences during sequence construction."

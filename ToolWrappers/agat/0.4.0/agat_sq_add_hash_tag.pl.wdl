@@ -14,6 +14,9 @@ task AgatSqAddHashTagpl {
       ~{if defined(interval) then ("--interval " +  '"' + interval + '"') else ""} \
       ~{if defined(string_output_file) then ("--output " +  '"' + string_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_input_gtfgff: "STRING: Input GTF/GFF file."
     interval: "Integer: 1 or 2. 1 will add ### after each new sequence (column1\\nof the gff), while 2 will add the ### after each group of\\nfeature (gene). By default the value is 1."

@@ -24,6 +24,9 @@ task ScrancomputesumfactorsR {
       ~{if defined(min_mean) then ("--min_mean " +  '"' + min_mean + '"') else ""} \
       ~{if defined(output_sce_object) then ("--output-sce-object " +  '"' + output_sce_object + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sce_object: "Path to the input SCE object in rds format."
     assay_type: "Specify which assay values to use. Default: \\\"logcounts\\\"."

@@ -19,17 +19,17 @@ inputs:
     prefix: --reference
 - id: in_output_dir
   doc: "Location for all output files (default is current\ndirectory)."
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output_dir
 - id: in_log
   doc: "Prefix for log file. If not supplied, prefix will be\ncurrent date and time."
-  type: File
+  type: File?
   inputBinding:
     prefix: --log
 - id: in_help_all
   doc: Display extended help
-  type: string
+  type: string?
   inputBinding:
     prefix: --help_all
 outputs:
@@ -38,9 +38,10 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: "Location for all output files (default is current\ndirectory)."
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ismap

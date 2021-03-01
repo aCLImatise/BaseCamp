@@ -32,6 +32,9 @@ task EBFilter {
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format_annovar_tsv: "the format of mutation file vcf or annovar (tsv)"
     threshold_mapping_quality: "threshold for mapping quality for calculating base\\ncounts"

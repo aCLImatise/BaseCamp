@@ -34,6 +34,9 @@ task GetRnaPred {
       ~{if (include_coords) then "-includeCoords" else ""} \
       ~{if (gene_pred_ext) then "-genePredExt" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     weird: "- only get ones with weird splice sites"
     cds_upper: "- output CDS in upper case"

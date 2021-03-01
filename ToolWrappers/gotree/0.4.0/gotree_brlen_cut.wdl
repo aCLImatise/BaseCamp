@@ -18,6 +18,9 @@ task GotreeBrlenCut {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_length: "Length cutoff. Branches with length greater than or equal to this cutoff are considered removed (default 0.5)"
     output_file_groups: "Output file with groups of tips/connected components (default \\\"stdout\\\")"

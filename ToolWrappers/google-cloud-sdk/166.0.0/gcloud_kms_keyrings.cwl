@@ -3,7 +3,7 @@ id: gcloud_kms_keyrings.cwl
 inputs:
 - id: in_location
   doc: The location of the requested resource.
-  type: string
+  type: string?
   inputBinding:
     prefix: --location
 - id: in_add_i_am_policy_binding
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

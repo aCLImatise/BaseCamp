@@ -3,17 +3,17 @@ id: sequence_filter.py_input_fastx.cwl
 inputs:
 - id: in_q
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -q
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_i
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -i
 - id: in_sequence_filter_do_tpy
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sequence_filter.py

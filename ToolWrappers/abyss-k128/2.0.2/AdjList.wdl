@@ -2,7 +2,7 @@ version 1.0
 
 task AdjList {
   input {
-    Int? length_kmer_when
+    Int? length_kmer_is
     Int? single_km_er
     Int? min_overlap
     Boolean? adj
@@ -23,7 +23,7 @@ task AdjList {
   command <<<
     AdjList \
       ~{var_16} \
-      ~{if defined(length_kmer_when) then ("--kmer " +  '"' + length_kmer_when + '"') else ""} \
+      ~{if defined(length_kmer_is) then ("--kmer " +  '"' + length_kmer_is + '"') else ""} \
       ~{if defined(single_km_er) then ("--single-kmer " +  '"' + single_km_er + '"') else ""} \
       ~{if defined(min_overlap) then ("--min-overlap " +  '"' + min_overlap + '"') else ""} \
       ~{if (adj) then "--adj" else ""} \
@@ -40,8 +40,11 @@ task AdjList {
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    length_kmer_when: "the length of a k-mer (when -K is not set)\\nor the span of a k-mer pair (when -K is set)"
+    length_kmer_is: "the length of a k-mer (when -K is not set)\\nor the span of a k-mer pair (when -K is set)"
     single_km_er: "the length of a single k-mer in a k-mer pair"
     min_overlap: "require a minimum overlap of M bases [50]"
     adj: "output the graph in ADJ format [default]"

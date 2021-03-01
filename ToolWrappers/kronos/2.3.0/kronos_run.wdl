@@ -36,6 +36,9 @@ task KronosRun {
       ~{if defined(config_file) then ("--config_file " +  '"' + config_file + '"') else ""} \
       ~{if (no_prefix) then "--no_prefix" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     job_scheduler: "job scheduler used to manage jobs on the cluster"
     components_dir: "path to components_dir"

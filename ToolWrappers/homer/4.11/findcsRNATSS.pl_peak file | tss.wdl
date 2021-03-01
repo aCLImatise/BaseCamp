@@ -50,6 +50,9 @@ task FindcsRNATSSplPeakfiletss {
       ~{if (bi_threshold) then "-biThreshold" else ""} \
       ~{if (dist) then "-dist" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: "(*see note below)"
     rna: "(*see note below)"

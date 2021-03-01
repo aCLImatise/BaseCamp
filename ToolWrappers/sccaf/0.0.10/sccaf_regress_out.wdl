@@ -12,6 +12,9 @@ task Sccafregressout {
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
       ~{if defined(keys_to_regress) then ("--keys-to-regress " +  '"' + keys_to_regress + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Path to input in AnnData or Loom"
     output_file: "Path for output file for annData with regression done."

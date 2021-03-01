@@ -3,7 +3,7 @@ id: _compseq.cwl
 inputs:
 - id: in_word
   doc: integer    [2] This is the size of word (n-mer) to
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -word
 - id: in_in_file
@@ -13,7 +13,7 @@ inputs:
     \ you should use a file produced\nfrom protein sequences if you are counting\n\
     protein sequence word frequencies, and you\nmust use one made from nucleotide\n\
     frequencies if you are analysing a\nnucleotide sequence."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -infile
 - id: in_frame
@@ -24,7 +24,7 @@ inputs:
     \ that occur in\na single frame of the word by setting this\nvalue to a number\
     \ other than zero.\nIf you set it to 1 it will only count the\nwords in frame\
     \ 1, 2 will only count the\nwords in frame 2 and so on. (Integer 0 or\nmore)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -frame
 - id: in_calc_freq
@@ -39,7 +39,7 @@ inputs:
     \ specified then the values from that\nfile will be used instead of this\ncalculation\
     \ of expected frequency from the\nsequence, even if 'calcfreq' is set to be\n\
     true."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -calcfreq
 - id: in_count_dot
@@ -51,6 +51,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _compseq

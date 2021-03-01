@@ -66,6 +66,9 @@ task Pblat {
       ~{if defined(max_intron) then ("-maxIntron " +  '"' + max_intron + '"') else ""} \
       ~{if (extend_through_n) then "-extendThroughN" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ooc: "tells the program to load over-occurring 11-mers from\\nan external file.  This will increase the speed\\nby a factor of 40 in many cases, but is not required."
     database_type_type: "Database type.  Type is one of:\\ndna - DNA sequence\\nprot - protein sequence\\ndnax - DNA sequence translated in six frames to protein\\nThe default is dna."

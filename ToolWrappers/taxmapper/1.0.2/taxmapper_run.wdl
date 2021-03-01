@@ -20,6 +20,9 @@ task TaxmapperRun {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: "Database path for RAPseach database index"
     folder: "Folder with reads in fasta or fastq format"

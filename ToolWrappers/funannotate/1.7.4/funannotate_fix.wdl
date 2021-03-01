@@ -18,6 +18,9 @@ task FunannotateFix {
       ~{if (out) then "--out" else ""} \
       ~{if (tbl_two_asn) then "--tbl2asn" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     annotated_genome_genbank: "Annotated genome in GenBank format."
     tbl: "NCBI tbl annotation file."

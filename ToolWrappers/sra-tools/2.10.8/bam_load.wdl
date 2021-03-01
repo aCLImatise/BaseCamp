@@ -3,7 +3,7 @@ version 1.0
 task Bamload {
   input {
     File? path_name_output
-    File? path_where_fasta
+    File? path_where_get
     File? config
     File? header
     File? tmpfs
@@ -52,7 +52,7 @@ task Bamload {
       ~{quit_dot} \
       ~{file_dot} \
       ~{if defined(path_name_output) then ("--output " +  '"' + path_name_output + '"') else ""} \
-      ~{if defined(path_where_fasta) then ("--input " +  '"' + path_where_fasta + '"') else ""} \
+      ~{if defined(path_where_get) then ("--input " +  '"' + path_where_get + '"') else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if defined(header) then ("--header " +  '"' + header + '"') else ""} \
       ~{if defined(tmpfs) then ("--tmpfs " +  '"' + tmpfs + '"') else ""} \
@@ -84,9 +84,12 @@ task Bamload {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_name_output: "Path and Name of the output database."
-    path_where_fasta: "Path where to get fasta files from."
+    path_where_get: "Path where to get fasta files from."
     config: "Path to configuration file: maps the input\\nBAM file's reference names to the\\nequivalent GenBank accession. It is\\ntab-delimited text file with unix line\\nendings (\\n LF) with the following fields\\nin this order: #1 reference name as it\\noccurs in the BAM file's SN field of @SQ\\nheader record; #2 INSDC reference ID"
     header: "path to file containing the SAM header to\\nstore in the resulting cSRA, recommended in\\ncase of multiple input BAMs"
     tmpfs: "Path to be used for scratch files."

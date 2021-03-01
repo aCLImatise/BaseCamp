@@ -1,21 +1,21 @@
 class: CommandLineTool
 id: srf_filter.cwl
 inputs:
-- id: in_chunk_types_given
+- id: in_chunk_types_output
   doc: "Chunk types to output given as a comma delimited list of types.\nThe following\
     \ types are allowed: \"ALL\", \"BASE\", \"CNF1\", \"CNF4\"\n\"SAMP\", \"SMP4\"\
     .\nThe default is \"ALL\"."
-  type: long
+  type: long?
   inputBinding:
     prefix: -c
 - id: in_sampsmp_mdata_types
   doc: "SAMP/SMP4 mdata types to output given as a comma delimited list of types.\n\
     The following types are allowed: \"ALL\", \"PROC\", \"SLXI\", \"SLXN\"\n\"0FAM\"\
     , \"1CY3\", \"2TXR\", \"3CY5\".\nThe default is \"ALL\"."
-  type: long
+  type: long?
   inputBinding:
     prefix: -m
-- id: in_filter_apply_reads
+- id: in_filter_apply_match
   doc: "The filter to apply to reads in the archive.  If reads match the\nfilter they\
     \ are dumped.\nThe filter takes the form of <name>=<value>, where <name> can be\n\
     \"read\", \"prefix\", \"file\".\nIf the <name> is \"read\" the value is represents\
@@ -25,32 +25,32 @@ inputs:
     file\" the value is a file name where any\nnumber of \"read\" and \"prefix\" name\
     \ value pairs can be included,\none per line.\nThe default is no filter, which\
     \ means all reads are dumped."
-  type: long
+  type: long?
   inputBinding:
     prefix: -f
 - id: in_exclude_bad_reads
   doc: exclude bad reads using readsFlags bitmask in data block header.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in_use_option_add
   doc: use this option to add a Illumina-style REGN chunk.
-  type: long
+  type: long?
   inputBinding:
     prefix: '-2'
 - id: in_print_verbose_messages
   doc: Print verbose messages.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_o
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -o
 - id: in_var_7
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -C
 - id: in_input
@@ -62,6 +62,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - srf_filter

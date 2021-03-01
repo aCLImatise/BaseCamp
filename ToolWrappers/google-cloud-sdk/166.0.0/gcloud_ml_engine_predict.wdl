@@ -12,6 +12,9 @@ task GcloudMlenginePredict {
       ~{if defined(json_instances) then ("--json-instances " +  '"' + json_instances + '"') else ""} \
       ~{if defined(text_instances) then ("--text-instances " +  '"' + text_instances + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     model: "Name of the model."
     json_instances: "Path to a local file from which instances are read. Instances are in\\nJSON format; newline delimited.\\nAn example of the JSON instances file:\\n{\\\"images\\\": [0.0, ..., 0.1], \\\"key\\\": 3}\\n{\\\"images\\\": [0.0, ..., 0.1], \\\"key\\\": 2}\\n...\\nThis flag accepts \\\"-\\\" for stdin."

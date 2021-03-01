@@ -6,7 +6,7 @@ task FalconcIpapolishsplit {
     Boolean? _maxnshards_int
     Boolean? _shardprefix_string
     Boolean? _blockprefix_string
-    Boolean? _inreadtocontigfn_string
+    Boolean? _string_columns
     Boolean? mb_per_block
     Boolean? blacklist_fn
     String cli_gen_erated
@@ -22,16 +22,19 @@ task FalconcIpapolishsplit {
       ~{if (_maxnshards_int) then "-m" else ""} \
       ~{if (_shardprefix_string) then "-s" else ""} \
       ~{if (_blockprefix_string) then "-b" else ""} \
-      ~{if (_inreadtocontigfn_string) then "-i" else ""} \
+      ~{if (_string_columns) then "-i" else ""} \
       ~{if (mb_per_block) then "--mb-per-block" else ""} \
       ~{if (blacklist_fn) then "--blacklist-fn" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help_syntax: "advanced:prepen\\nd,plurals,.."
     _maxnshards_int: "=, --max-nshards=           int     REQUIRED                     Maximum number\\nof distributed\\njobs"
     _shardprefix_string: "=, --shard-prefix=          string  \\\"shard\\\"                      The output.\\nShard files are\\n(prefix).(shard_\\nid).block_ids"
     _blockprefix_string: "=, --block-prefix=          string  \\\"block\\\"                      Block files are\\n(prefix).(block_\\nid).reads\\n(prepared\\npreviously)"
-    _inreadtocontigfn_string: "=, --in-read-to-contig-fn=  string  \\\"sorted.read_to_contig.csv\\\"  2-columns: read#"
+    _string_columns: "=, --in-read-to-contig-fn=  string  \\\"sorted.read_to_contig.csv\\\"  2-columns: read#"
     mb_per_block: "=               int     REQUIRED                     Try to target\\nmegabases total\\nin all contigs\\nin any block"
     blacklist_fn: "=               string  \\\"\\\"                           Specifies a file\\nwith a list of\\ncontigs to skip\\nfor polishing.\\n"
     cli_gen_erated: "help"

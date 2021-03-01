@@ -1,0 +1,198 @@
+!Command
+command:
+- mhcflurry-class1-select-processing-models
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Model
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: select
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: antigen
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: processing
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: models.
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --data
+  description: "Model selection data CSV. Expected columns: peptide,\nhit, fold_0,\
+    \ ..., fold_N"
+  args: !SimpleFlagArg
+    name: FILE.csv
+- !Flag
+  optional: true
+  synonyms:
+  - --models-dir
+  description: Directory to read models
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --out-models-dir
+  description: Directory to write selected models
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --min-models-per-fold
+  description: Min number of models to select per fold
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --max-models-per-fold
+  description: Max number of models to select per fold
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: 'Keras verbosity. Default: 0'
+  args: !SimpleFlagArg
+    name: VERBOSITY
+- !Flag
+  optional: true
+  synonyms:
+  - --num-jobs
+  description: "Number of local processes to parallelize training\nover. Set to 0\
+    \ for serial run. Default: 0."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --backend
+  description: "Keras backend. If not specified will use system\ndefault."
+  args: !ChoiceFlagArg
+    choices: !!set
+      tensorflow-default:
+      tensorflow-gpu:
+      tensorflow-cpu:
+- !Flag
+  optional: true
+  synonyms:
+  - --gpus
+  description: "Number of GPUs to attempt to parallelize across.\nRequires running\
+    \ in parallel."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --max-workers-per-gpu
+  description: "Maximum number of workers to assign to a GPU.\nAdditional tasks will\
+    \ run on CPU."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --max-tasks-per-worker
+  description: "Restart workers after N tasks. Workaround for\ntensorflow memory leaks.\
+    \ Requires Python >=3.2."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --worker-log-dir
+  description: "Write worker stdout and stderr logs to given\ndirectory."
+  args: !SimpleFlagArg
+    name: WORKER_LOG_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster-parallelism
+  - --cluster-submit-command
+  description: 'Default: sh'
+  args: !SimpleFlagArg
+    name: CLUSTER_SUBMIT_COMMAND
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster-results-workdir
+  description: 'Default: ./cluster-workdir'
+  args: !SimpleFlagArg
+    name: CLUSTER_RESULTS_WORKDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --additional-complete-file
+  description: "Additional file to monitor for job completion.\nDefault: STDERR"
+  args: !SimpleFlagArg
+    name: ADDITIONAL_COMPLETE_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster-script-prefix-path
+  - --cluster-max-retries
+  description: "How many times to rerun failing jobs. Default: 3\n"
+  args: !SimpleFlagArg
+    name: CLUSTER_SCRIPT_PREFIX_PATH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "To show stack trace, run:\nkill -s USR1 1436\nusage: \nModel select antigen\
+  \ processing models.\n\nAPPROACH: For each training fold, we select at least min\
+  \ and at most max models\n(where min and max are set by the --{min/max}-models-per-fold\
+  \ argument) using a\nstep-up (forward) selection procedure. The final ensemble is\
+  \ the union of all\nselected models across all folds. AUC is used as the metric.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --data FILE.csv       Model selection data CSV. Expected columns: peptide,\n\
+  \                        hit, fold_0, ..., fold_N\n  --models-dir DIR      Directory\
+  \ to read models\n  --out-models-dir DIR  Directory to write selected models\n \
+  \ --min-models-per-fold N\n                        Min number of models to select\
+  \ per fold\n  --max-models-per-fold N\n                        Max number of models\
+  \ to select per fold\n  --verbosity VERBOSITY\n                        Keras verbosity.\
+  \ Default: 0\n\nLocal parallelism:\n  --num-jobs N          Number of local processes\
+  \ to parallelize training\n                        over. Set to 0 for serial run.\
+  \ Default: 0.\n  --backend {tensorflow-gpu,tensorflow-cpu,tensorflow-default}\n\
+  \                        Keras backend. If not specified will use system\n     \
+  \                   default.\n  --gpus N              Number of GPUs to attempt\
+  \ to parallelize across.\n                        Requires running in parallel.\n\
+  \  --max-workers-per-gpu N\n                        Maximum number of workers to\
+  \ assign to a GPU.\n                        Additional tasks will run on CPU.\n\
+  \  --max-tasks-per-worker N\n                        Restart workers after N tasks.\
+  \ Workaround for\n                        tensorflow memory leaks. Requires Python\
+  \ >=3.2.\n  --worker-log-dir WORKER_LOG_DIR\n                        Write worker\
+  \ stdout and stderr logs to given\n                        directory.\n\nCluster\
+  \ parallelism:\n  --cluster-parallelism\n  --cluster-submit-command CLUSTER_SUBMIT_COMMAND\n\
+  \                        Default: sh\n  --cluster-results-workdir CLUSTER_RESULTS_WORKDIR\n\
+  \                        Default: ./cluster-workdir\n  --additional-complete-file\
+  \ ADDITIONAL_COMPLETE_FILE\n                        Additional file to monitor for\
+  \ job completion.\n                        Default: STDERR\n  --cluster-script-prefix-path\
+  \ CLUSTER_SCRIPT_PREFIX_PATH\n  --cluster-max-retries CLUSTER_MAX_RETRIES\n    \
+  \                    How many times to rerun failing jobs. Default: 3\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mhcflurry:2.0.1--pyh864c0ab_0

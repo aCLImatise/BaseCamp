@@ -3,42 +3,42 @@ id: bp_genbank2gff.pl.cwl
 inputs:
 - id: in_create
   doc: Force creation and initialization of database
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --create
 - id: in_dsn
   doc: <dsn>        Data source (default dbi:mysql:test)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dsn
 - id: in_user
   doc: <user>       Username for mysql authentication
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --user
 - id: in_pass
   doc: <password>   Password for mysql authentication
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pass
 - id: in_proxy
   doc: <proxy>      Proxy server to use for remote access
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --proxy
 - id: in_stdout
   doc: direct output to STDOUT
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --stdout
 - id: in_adaptor
   doc: <adaptor>    adaptor to use (eg dbi::mysql, dbi::pg, dbi::oracle)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --adaptor
 - id: in_viral
   doc: "the genome you are loading is viral (changes tag\nchoices)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --viral
 - id: in_source
@@ -49,13 +49,14 @@ inputs:
     \           Accession numbers (not gi!) in a file (one per line,\nno punc.)\n\
     OR --acc_pipe           Accession numbers (not gi!) from a STDIN pipe (one\nper\
     \ line)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --source
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bp_genbank2gff.pl

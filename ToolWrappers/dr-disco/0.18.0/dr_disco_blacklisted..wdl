@@ -12,6 +12,9 @@ task DrdiscoBlacklisted {
       ~{var_command} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dr_disco: ""
     var_command: ""

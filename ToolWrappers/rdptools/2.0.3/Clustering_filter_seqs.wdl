@@ -12,6 +12,9 @@ task ClusteringFilterseqs {
       ~{seq_file} \
       ~{remove}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ids_file: ""
     seq_file: ""

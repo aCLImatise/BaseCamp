@@ -1,30 +1,30 @@
 class: CommandLineTool
 id: gretel_snpper.cwl
 inputs:
-- id: in_contig
-  doc: "[-s S] [-e E]\n[--depth DEPTH]"
-  type: string
-  inputBinding:
-    prefix: --contig
 - id: in_bam
   doc: bam of reads aligned to (psuedo)-reference
-  type: string
+  type: string?
   inputBinding:
     prefix: --bam
+- id: in_contig
+  doc: name of contig to generate a VCF for
+  type: string?
+  inputBinding:
+    prefix: --contig
 - id: in_start_default_
   doc: start (default = 1)
-  type: long
+  type: long?
   inputBinding:
     prefix: -s
 - id: in_end_default_length
   doc: end (default = length of the reference)
-  type: long
+  type: long?
   inputBinding:
     prefix: -e
 - id: in_depth
   doc: "number of reads that must feature a read to call that base\nas a possible\
     \ variant (default = 0)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --depth
 - id: in_aggressively
@@ -71,6 +71,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gretel-snpper

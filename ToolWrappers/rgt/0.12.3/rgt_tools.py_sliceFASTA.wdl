@@ -16,6 +16,9 @@ task RgttoolspySliceFASTA {
       ~{if defined(the_start_position) then ("-p " +  '"' + the_start_position + '"') else ""} \
       ~{if (reverse) then "--reverse" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_file: "Input FASTA file"
     length_slice_sequence: "Length of the slice sequence"

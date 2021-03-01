@@ -18,6 +18,9 @@ task OutputResults {
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
       ~{if (b) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version: ""
     p: ""

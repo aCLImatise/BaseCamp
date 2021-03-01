@@ -2,7 +2,7 @@ version 1.0
 
 task Srf2fastq {
   input {
-    Boolean? use_calibrated_cnf
+    Boolean? use_calibrated_values
     Boolean? ignore_bad_reads
     String? split_fastq_files
     Boolean? sequentially_display_regions
@@ -16,7 +16,7 @@ task Srf2fastq {
   command <<<
     srf2fastq \
       ~{archive_name} \
-      ~{if (use_calibrated_cnf) then "-c" else ""} \
+      ~{if (use_calibrated_values) then "-c" else ""} \
       ~{if (ignore_bad_reads) then "-C" else ""} \
       ~{if defined(split_fastq_files) then ("-s " +  '"' + split_fastq_files + '"') else ""} \
       ~{if (sequentially_display_regions) then "-S" else ""} \
@@ -26,8 +26,11 @@ task Srf2fastq {
       ~{if defined(comma_separated_list) then ("-r " +  '"' + comma_separated_list + '"') else ""} \
       ~{if (p) then "-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    use_calibrated_cnf: "Use calibrated quality values (CNF1)"
+    use_calibrated_values: "Use calibrated quality values (CNF1)"
     ignore_bad_reads: "Ignore bad reads"
     split_fastq_files: "Split the fastq files, one for each region in the REGN chunk.\\nThe files are named root_ + the name of the region."
     sequentially_display_regions: "Sequentially display regions rather than append them into\\none long read. (conflicts with -s)"

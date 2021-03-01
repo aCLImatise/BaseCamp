@@ -26,6 +26,9 @@ task CheckPrimerBarcodeDimerspy {
       ~{if defined(primer_two) then ("--primer2 " +  '"' + primer_two + '"') else ""} \
       ~{if defined(energy_parameters) then ("--energy_parameters " +  '"' + energy_parameters + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     annealing_temp: "Specify an annealing temperature in degrees Celsius.\\n[default: 50]"

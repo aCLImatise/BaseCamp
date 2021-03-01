@@ -1,0 +1,84 @@
+!Command
+command:
+- sambamba
+- merge
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sambamba-merge
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: output.bam
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: input1.bam
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: input2.bam
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --nthreads
+  description: number of threads to use for compression/decompression
+  args: !SimpleFlagArg
+    name: NTHREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --compression-level
+  description: level of compression for merged BAM file, number from 0 to 9
+  args: !SimpleFlagArg
+    name: COMPRESSION_LEVEL
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --header
+  description: output merged header to stdout in SAM format, other options are ignored;
+    mainly for debug purposes
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --show-progress
+  description: show progress bar in STDERR
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --filter
+  description: "keep only reads that satisfy FILTER\n"
+  args: !SimpleFlagArg
+    name: FILTER
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n  \
+  \  LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler (0.17.6)\n\
+  \nUsage: sambamba-merge [options] <output.bam> <input1.bam> <input2.bam> [...]\n\
+  \nOptions: -t, --nthreads=NTHREADS\n               number of threads to use for\
+  \ compression/decompression\n         -l, --compression-level=COMPRESSION_LEVEL\n\
+  \               level of compression for merged BAM file, number from 0 to 9\n \
+  \        -H, --header\n               output merged header to stdout in SAM format,\
+  \ other options are ignored; mainly for debug purposes\n         -p, --show-progress\n\
+  \               show progress bar in STDERR\n         -F, --filter=FILTER\n    \
+  \           keep only reads that satisfy FILTER\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0

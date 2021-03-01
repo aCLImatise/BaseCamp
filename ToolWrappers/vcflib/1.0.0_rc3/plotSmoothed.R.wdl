@@ -4,6 +4,9 @@ task PlotSmoothedR {
   command <<<
     plotSmoothed_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

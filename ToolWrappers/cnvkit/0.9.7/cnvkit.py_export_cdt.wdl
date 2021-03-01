@@ -10,6 +10,9 @@ task CnvkitpyExportCdt {
       ~{filenames} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_name: "Output file name.\\n"
     filenames: "Log2 copy ratio data file(s) (*.cnr), the output of\\nthe 'fix' sub-command."

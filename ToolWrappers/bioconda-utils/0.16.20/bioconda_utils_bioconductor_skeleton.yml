@@ -4,109 +4,109 @@ command:
 - bioconductor-skeleton
 positional:
 - !Positional
-  description: "Path to folder containing recipes (default: recipes/)\n(default: -)"
+  optional: false
   position: 0
   name: recipe_folder
-  optional: false
+  description: "Path to folder containing recipes (default: recipes/)\n(default: -)"
 - !Positional
-  description: "Path to Bioconda config (default: config.yml)\n(default: -)"
+  optional: false
   position: 1
   name: config
-  optional: false
+  description: "Path to Bioconda config (default: config.yml)\n(default: -)"
 - !Positional
+  optional: false
+  position: 2
+  name: package
   description: "Bioconductor package name. This is case-sensitive, and\nmust match\
     \ the package name on the Bioconductor site.\nIf \"update-all-packages\" is specified,\
     \ then all\npackages in a given bioconductor release will be\ncreated/updated\
     \ (--force is then implied)."
-  position: 2
-  name: package
-  optional: false
 named:
 - !Flag
-  description: "If specified, recipe will be created in\nRECIPES/<package>/<version>\
-    \ (default: False)"
+  optional: true
   synonyms:
   - --versioned
+  description: "If specified, recipe will be created in\nRECIPES/<package>/<version>\
+    \ (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Overwrite the contents of an existing recipe. If
+  optional: true
   synonyms:
   - --force
+  description: Overwrite the contents of an existing recipe. If
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: also used, then overwrite *all* recipes
+  optional: true
   synonyms:
   - --recursive
+  description: also used, then overwrite *all* recipes
   args: !SimpleFlagArg
     name: is
-  optional: true
 - !Flag
-  description: "Package version to use instead of the current one\n(default: -)"
+  optional: true
   synonyms:
   - --pkg-version
+  description: "Package version to use instead of the current one\n(default: -)"
   args: !SimpleFlagArg
     name: PKG_VERSION
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bioc-version
   description: "Version of Bioconductor to target. If not specified,\nthen automatically\
     \ finds the latest version of\nBioconductor with the specified version in --pkg-\n\
     version, or if --pkg-version not specified, then finds\nthe the latest package\
     \ version in the latest\nBioconductor version (default: -)"
-  synonyms:
-  - --bioc-version
   args: !SimpleFlagArg
     name: BIOC_VERSION
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --skip-if-in-channels
   description: "[SKIP_IF_IN_CHANNELS [SKIP_IF_IN_CHANNELS ...]]\nWhen --recursive\
     \ is used, it will build *all* recipes.\nUse this argument to skip recursive building\
     \ for\npackages that already exist in the packages listed\nhere. (default: ['conda-forge',\
     \ 'bioconda'])"
-  synonyms:
-  - --skip-if-in-channels
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Set logging level (debug, info, warning, error,\ncritical) (default:\
-    \ 'debug')"
+  optional: true
   synonyms:
   - --loglevel
+  description: "Set logging level (debug, info, warning, error,\ncritical) (default:\
+    \ 'debug')"
   args: !SimpleFlagArg
     name: LOGLEVEL
-  optional: true
 - !Flag
-  description: 'Write log to file (default: -)'
+  optional: true
   synonyms:
   - --logfile
+  description: 'Write log to file (default: -)'
   args: !SimpleFlagArg
     name: LOGFILE
-  optional: true
 - !Flag
-  description: "Log level for log file (default: 'debug')"
+  optional: true
   synonyms:
   - --logfile-level
+  description: "Log level for log file (default: 'debug')"
   args: !SimpleFlagArg
     name: LOGFILE_LEVEL
-  optional: true
 - !Flag
-  description: "Limit lines emitted for commands executed (default: -)\n"
+  optional: true
   synonyms:
   - --log-command-max-lines
+  description: "Limit lines emitted for commands executed (default: -)\n"
   args: !SimpleFlagArg
     name: LOG_COMMAND_MAX_LINES
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: bioconda-utils bioconductor-skeleton [-h] [--versioned] [--force]\n\
@@ -161,3 +161,4 @@ help_text: "usage: bioconda-utils bioconductor-skeleton [-h] [--versioned] [--fo
   \                Limit lines emitted for commands executed (default: -)\n"
 generated_using:
 - --help
+docker_image:

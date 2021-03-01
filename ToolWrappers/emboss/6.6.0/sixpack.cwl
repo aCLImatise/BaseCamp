@@ -3,7 +3,7 @@ id: sixpack.cwl
 inputs:
 - id: in_out_seq
   doc: seqoutall  [<sequence>.<format>] ORF sequence output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -outseq
 - id: in_table
@@ -16,13 +16,13 @@ inputs:
     \ (Flatworm\nMitochondrial); 15 (Blepharisma\nMacronuclear); 16 (Chlorophycean\n\
     Mitochondrial); 21 (Trematode\nMitochondrial); 22 (Scenedesmus obliquus);\n23\
     \ (Thraustochytrium Mitochondrial))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -table
 - id: in_or_fm_in_size
   doc: "integer    [1] Minimum protein size of Open Reading\nFrames (ORFs) to display\
     \ in the\ntranslations. (Integer 1 or more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -orfminsize
 - id: in_uppercase
@@ -31,7 +31,7 @@ inputs:
     \ is left alone.\nA set of regions is specified by a set of\npairs of positions.\n\
     The positions are integers.\nThey are separated by any non-digit,\nnon-alpha character.\n\
     Examples of region specifications are:\n24-45, 56-78\n1:45, 67=99;765..888\n1,5,8,10,23,45,57,99"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -uppercase
 - id: in_highlight
@@ -41,34 +41,34 @@ inputs:
     \ are followed by any valid HTML font\ncolour.\nExamples of region specifications\
     \ are:\n24-45 blue 56-78 orange\n1-100 green 120-156 red\nA file of ranges to\
     \ colour (one range per\nline) can be specified as '@filename'."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -highlight
 - id: in_width
   doc: "integer    [60] Number of nucleotides displayed on each\nline (Integer 1 or\
     \ more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -width
 - id: in_length
   doc: "integer    [0] Line length of page (0 for indefinite)\n(Integer 0 or more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -length
 - id: in_margin
   doc: "integer    [10] Margin around sequence for numbering.\n(Integer 0 or more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -margin
 - id: in_offset
   doc: "integer    [1] Number from which you want the DNA\nsequence to be numbered.\
     \ (Any integer value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -offset
 - id: in_html
   doc: boolean    [N] Use HTML formatting
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -html
 - id: in_size_dot
@@ -80,6 +80,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sixpack

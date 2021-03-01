@@ -3,149 +3,149 @@ command:
 - subsample_bam
 positional:
 - !Positional
-  description: input bam file.
+  optional: false
   position: 0
   name: bam
-  optional: false
+  description: input bam file.
 - !Positional
-  description: Target depth.
+  optional: false
   position: 1
   name: depth
-  optional: false
+  description: Target depth.
 named:
 - !Flag
-  description: 'Output prefix (default: sub_sampled)'
+  optional: true
   synonyms:
   - -o
   - --output_prefix
+  description: 'Output prefix (default: sub_sampled)'
   args: !SimpleFlagArg
     name: OUTPUT_PREFIX
-  optional: true
 - !Flag
-  description: 'Only process given regions. (default: None)'
+  optional: true
   synonyms:
   - -r
   - --regions
+  description: 'Only process given regions. (default: None)'
   args: !RepeatFlagArg
     name: REGIONS
-  optional: true
 - !Flag
-  description: "Stride in genomic coordinates for depth profile.\n(default: 1000)"
+  optional: true
   synonyms:
   - -p
   - --profile
+  description: "Stride in genomic coordinates for depth profile.\n(default: 1000)"
   args: !SimpleFlagArg
     name: PROFILE
-  optional: true
 - !Flag
-  description: 'Sample only forward or reverse reads. (default: None)'
+  optional: true
   synonyms:
   - -O
   - --orientation
+  description: 'Sample only forward or reverse reads. (default: None)'
   args: !ChoiceFlagArg
     choices: !!set
       fwd:
       rev:
-  optional: true
 - !Flag
-  description: 'Number of threads to use. (default: -1)'
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: 'Number of threads to use. (default: -1)'
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: 'Filter reads by mean qscore. (default: None)'
+  optional: true
   synonyms:
   - -q
   - --quality
+  description: 'Filter reads by mean qscore. (default: None)'
   args: !SimpleFlagArg
     name: QUALITY
-  optional: true
 - !Flag
-  description: 'Filter reads by accuracy. (default: None)'
+  optional: true
   synonyms:
   - -a
   - --accuracy
+  description: 'Filter reads by accuracy. (default: None)'
   args: !SimpleFlagArg
     name: ACCURACY
-  optional: true
 - !Flag
-  description: "Filter reads by coverage (what fraction of the read\naligns). (default:\
-    \ None)"
+  optional: true
   synonyms:
   - -c
   - --coverage
+  description: "Filter reads by coverage (what fraction of the read\naligns). (default:\
+    \ None)"
   args: !SimpleFlagArg
     name: COVERAGE
-  optional: true
 - !Flag
-  description: 'Filter reads by read length. (default: None)'
+  optional: true
   synonyms:
   - -l
   - --length
+  description: 'Filter reads by read length. (default: None)'
   args: !SimpleFlagArg
     name: LENGTH
-  optional: true
 - !Flag
-  description: "Exit with an error if any region has insufficient\ncoverage. (default:\
-    \ False)"
+  optional: true
   synonyms:
   - --any_fail
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Exit with an error if all regions have insufficient\ncoverage. (default:\
+  description: "Exit with an error if any region has insufficient\ncoverage. (default:\
     \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --all_fail
+  description: "Exit with an error if all regions have insufficient\ncoverage. (default:\
+    \ False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Maximum iterations with no change in median coverage\nbefore aborting.\
-    \ (default: 5)"
+  optional: true
   synonyms:
   - -x
   - --patience
+  description: "Maximum iterations with no change in median coverage\nbefore aborting.\
+    \ (default: 5)"
   args: !SimpleFlagArg
     name: PATIENCE
-  optional: true
 - !Flag
-  description: "Stride in genomic coordinates when searching for new\nreads. Smaller\
-    \ can lead to more compact pileup.\n(default: 1000)"
+  optional: true
   synonyms:
   - -s
   - --stride
+  description: "Stride in genomic coordinates when searching for new\nreads. Smaller\
+    \ can lead to more compact pileup.\n(default: 1000)"
   args: !SimpleFlagArg
     name: STRIDE
-  optional: true
 - !Flag
-  description: "Activate proportional sampling, thus keeping depth\nvariations of\
-    \ the pileup. (default: False)"
+  optional: true
   synonyms:
   - -P
   - --proportional
+  description: "Activate proportional sampling, thus keeping depth\nvariations of\
+    \ the pileup. (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Random seed for proportional downsampling of reads.\n(default: None)\n"
+  optional: true
   synonyms:
   - -S
   - --seed
+  description: "Random seed for proportional downsampling of reads.\n(default: None)\n"
   args: !SimpleFlagArg
     name: SEED
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: subsample_bam [-h] [-o OUTPUT_PREFIX] [-r REGIONS [REGIONS ...]]\n\
@@ -183,3 +183,4 @@ help_text: "usage: subsample_bam [-h] [-o OUTPUT_PREFIX] [-r REGIONS [REGIONS ..
   \ for proportional downsampling of reads.\n                        (default: None)\n"
 generated_using:
 - --help
+docker_image:

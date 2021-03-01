@@ -16,6 +16,9 @@ task MedakaConsensusFromFeatures {
       ~{if defined(model) then ("--model " +  '"' + model + '"') else ""} \
       ~{if (disable_cu_dnn) then "--disable_cudnn" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Verbose logging of debug information. (default: 20)"
     quiet: "Minimal logging; warnings only). (default: 20)"

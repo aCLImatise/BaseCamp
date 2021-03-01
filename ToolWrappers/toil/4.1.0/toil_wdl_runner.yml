@@ -3,46 +3,62 @@ command:
 - toil-wdl-runner
 positional:
 - !Positional
-  description: A WDL workflow file.
+  optional: false
   position: 0
   name: wdl_file
-  optional: false
+  description: A WDL workflow file.
 - !Positional
-  description: A secondary data file (json).
+  optional: false
   position: 1
   name: secondary_file
-  optional: false
+  description: A secondary data file (json).
 named:
 - !Flag
-  description: 1. Creates "AST.out", which holds the printed AST and
-  synonyms:
-  - --dev_mode
-  args: !SimpleFlagArg
-    name: DEV_MODE
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: OUTDIR
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - --jobStore
+  - -o
+  - --outdir
+  description: "Optionally specify the directory that outputs are\nwritten to. Default\
+    \ is the current working dir."
   args: !SimpleFlagArg
     name: JOBSTORE
+- !Flag
   optional: true
+  synonyms:
+  - --dev_mode
+  description: "1. Creates \"AST.out\", which holds the printed AST and\n\"mappings.out\"\
+    , which holds the parsed task, workflow\ndictionaries that were generated. 2.\
+    \ Saves the\ncompiled toil script generated from the wdl/json files\nfrom deletion.\
+    \ 3. Skips autorunning the compiled\npython file."
+  args: !SimpleFlagArg
+    name: DEV_MODE
+- !Flag
+  optional: true
+  synonyms:
+  - --docker_user
+  description: "The user permissions that the docker containers will\nbe run with\
+    \ (and the permissions set on any output\nfiles produced). Default is \"root\"\
+    . Setting this to\nNone will set this to the current user."
+  args: !SimpleFlagArg
+    name: DOCKER_USER
+- !Flag
+  optional: true
+  synonyms:
+  - --destBucket
+  description: "Specify a cloud bucket endpoint for output files.\n"
+  args: !SimpleFlagArg
+    name: DESTBUCKET
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: toil-wdl-runner [-h] [--jobStore JOBSTORE] [-o OUTDIR]\n      \
@@ -67,3 +83,4 @@ help_text: "usage: toil-wdl-runner [-h] [--jobStore JOBSTORE] [-o OUTDIR]\n     
   \ files.\n"
 generated_using:
 - --help
+docker_image:

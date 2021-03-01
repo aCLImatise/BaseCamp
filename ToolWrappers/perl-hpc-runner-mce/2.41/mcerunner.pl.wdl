@@ -8,6 +8,9 @@ task Mcerunnerpl {
     mcerunner_pl \
       ~{if (using_mce) then "--using_mce" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     using_mce: "- Bool. Default=1."
   }

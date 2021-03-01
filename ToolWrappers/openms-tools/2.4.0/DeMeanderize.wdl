@@ -20,6 +20,9 @@ task DeMeanderize {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*              Input experiment file, containing the wrongly sorted spectra. (valid formats: 'mzML')"
     out: "*             Output experiment file with correctly sorted spectra. (valid formats: 'mzML')"

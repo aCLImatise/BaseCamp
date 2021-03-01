@@ -14,6 +14,9 @@ task TransposcopeAlignMeReference {
       ~{if defined(group_one) then ("--group1 " +  '"' + group_one + '"') else ""} \
       ~{if defined(genes) then ("--genes " +  '"' + genes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     group_one: ""
     genes: ""

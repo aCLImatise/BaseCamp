@@ -4,6 +4,9 @@ task PermuteGPAT {
   command <<<
     permuteGPAT__
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

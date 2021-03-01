@@ -7,7 +7,7 @@ task Mtglinkpy {
     File? bam
     File? fast_q
     File? index
-    Int? minimal_frequence_extracted
+    Int? minimal_frequence_barcodes
     Directory? out
     Directory? ref_dir
     File? line
@@ -29,7 +29,7 @@ task Mtglinkpy {
       ~{if defined(bam) then ("-bam " +  '"' + bam + '"') else ""} \
       ~{if defined(fast_q) then ("-fastq " +  '"' + fast_q + '"') else ""} \
       ~{if defined(index) then ("-index " +  '"' + index + '"') else ""} \
-      ~{if defined(minimal_frequence_extracted) then ("-f " +  '"' + minimal_frequence_extracted + '"') else ""} \
+      ~{if defined(minimal_frequence_barcodes) then ("-f " +  '"' + minimal_frequence_barcodes + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
       ~{if defined(ref_dir) then ("-refDir " +  '"' + ref_dir + '"') else ""} \
       ~{if defined(line) then ("-line " +  '"' + line + '"') else ""} \
@@ -44,13 +44,16 @@ task Mtglinkpy {
       ~{if defined(max_memory) then ("-max-memory " +  '"' + max_memory + '"') else ""} \
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gfa: "Input GFA file (format: xxx.gfa)"
     chunk_size_bp: "Chunk size (bp)"
     bam: "BAM file: linked reads mapped on current genome\\nassembly (format: xxx.bam)"
     fast_q: "File of indexed reads (format: xxx.fastq | xxx.fq)"
     index: "Prefix of barcodes index file (format: xxx.shelve)"
-    minimal_frequence_extracted: "Minimal frequence of barcodes extracted in the chunk\\nof size '-c' [default: 2]"
+    minimal_frequence_barcodes: "Minimal frequence of barcodes extracted in the chunk\\nof size '-c' [default: 2]"
     out: "Output directory [default './mtglink_results']"
     ref_dir: "Directory containing the reference sequences if any"
     line: "Line of GFA file input from which to start analysis\\n(if not provided, start analysis from first line of\\nGFA file input) [optional]"

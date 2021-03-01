@@ -16,6 +16,9 @@ task Csbembd {
       ~{if defined(output_frequency) then ("--output-frequency " +  '"' + output_frequency + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     psf_size: "size of the point spread function (default=15)"
     output_directory_sharpened: "output directory of the sharpened maps (default=.)"

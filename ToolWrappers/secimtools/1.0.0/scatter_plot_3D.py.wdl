@@ -32,6 +32,9 @@ task ScatterPlot3Dpy {
       ~{if defined(rotation) then ("--rotation " +  '"' + rotation + '"') else ""} \
       ~{if defined(elevation) then ("--elevation " +  '"' + elevation + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_0: "[-f FIGURE] [-pal PALETTE] [-col COLOR]"
     input_dataset_wide: "Input dataset in wide format."

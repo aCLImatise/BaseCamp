@@ -40,6 +40,9 @@ task SamtoolsCollate {
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if (ou) then "-Ou" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_to_stdout: "output to stdout"
     output_file_name: "output file name (use prefix if not set)"

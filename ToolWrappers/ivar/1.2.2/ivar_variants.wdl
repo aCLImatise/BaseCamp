@@ -34,6 +34,9 @@ task IvarVariants {
       ~{if (a) then "-A" else ""} \
       ~{if (aa) then "-aa" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minimum_quality_score: "Minimum quality score threshold to count base (Default: 20)"
     minimum_frequency_threshold: "Minimum frequency threshold(0 - 1) to call variants (Default: 0.03)"

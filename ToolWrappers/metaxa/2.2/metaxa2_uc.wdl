@@ -42,6 +42,9 @@ task Metaxa2Uc {
       ~{if (bugs) then "--bugs" else ""} \
       ~{if (license) then "--license" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_count_table: ": Input count table (e.g. derived from metaxa2_dc)"
     base_names_output: ": Base for the names of output file(s)"

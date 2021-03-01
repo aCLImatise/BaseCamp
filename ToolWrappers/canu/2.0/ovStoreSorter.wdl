@@ -4,7 +4,7 @@ task OvStoreSorter {
   input {
     File? path_overlap_store
     File? path_sequence_store
-    File? path_ovstoreconfig_file
+    File? path_ovstoreconfig_configuration
     Int? slice_process_n
     String? maximum_memory_use
     Boolean? delete_early
@@ -17,17 +17,20 @@ task OvStoreSorter {
       ~{opts} \
       ~{if defined(path_overlap_store) then ("-O " +  '"' + path_overlap_store + '"') else ""} \
       ~{if defined(path_sequence_store) then ("-S " +  '"' + path_sequence_store + '"') else ""} \
-      ~{if defined(path_ovstoreconfig_file) then ("-C " +  '"' + path_ovstoreconfig_file + '"') else ""} \
+      ~{if defined(path_ovstoreconfig_configuration) then ("-C " +  '"' + path_ovstoreconfig_configuration + '"') else ""} \
       ~{if defined(slice_process_n) then ("-s " +  '"' + slice_process_n + '"') else ""} \
       ~{if defined(maximum_memory_use) then ("-M " +  '"' + maximum_memory_use + '"') else ""} \
       ~{if (delete_early) then "-deleteearly" else ""} \
       ~{if (delete_late) then "-deletelate" else ""} \
       ~{if (force_recompute_exists) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_overlap_store: "path to overlap store to create"
     path_sequence_store: "path to sequence store"
-    path_ovstoreconfig_file: "path to ovStoreConfig configuration file"
+    path_ovstoreconfig_configuration: "path to ovStoreConfig configuration file"
     slice_process_n: "slice to process (1 ... N)"
     maximum_memory_use: "maximum memory to use, in gigabytes"
     delete_early: "remove intermediates as soon as possible (unsafe)"

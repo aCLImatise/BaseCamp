@@ -3,12 +3,12 @@ id: planemo_brew_env.cwl
 inputs:
 - id: in_brew
   doc: Homebrew 'brew' executable to use.
-  type: File
+  type: File?
   inputBinding:
     prefix: --brew
 - id: in_skip_install
   doc: Skip installation - only source requirements already
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip_install
 - id: in_dependencies_dot
@@ -16,15 +16,11 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_available_dot
-  doc: --shell
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - planemo

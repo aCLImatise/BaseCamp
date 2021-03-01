@@ -3,77 +3,77 @@ id: prepare_prot_topo_edit.py.cwl
 inputs:
 - id: in_input_pdb_file
   doc: Input PDB file
-  type: File
+  type: File?
   inputBinding:
     prefix: -f
 - id: in_input_topology_file
   doc: Input topology file
-  type: File
+  type: File?
   inputBinding:
     prefix: -p
 - id: in_output_directory
   doc: Output Directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
 - id: in_output_file_name
   doc: Output file name
-  type: File
+  type: File?
   inputBinding:
     prefix: -n
 - id: in_no_v_site
   doc: Use virtual site for hydrogens
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -no_vsite
 - id: in_ion_concentration_mm
   doc: Ion concentration (mM), default = 0.15 (150mM)
-  type: double
+  type: double?
   inputBinding:
     prefix: -C
 - id: in_m_steps
   doc: Minimisation nsteps, default=10000
-  type: long
+  type: long?
   inputBinding:
     prefix: -m_steps
 - id: in_ha_time
   doc: "Equilibration with HA constraint time(ns), default =\n2.5 ns"
-  type: double
+  type: double?
   inputBinding:
     prefix: -HA_time
 - id: in_ca_time
   doc: Equilibration with HA constraint time(ns), default = 5
-  type: long
+  type: long?
   inputBinding:
     prefix: -CA_time
 - id: in_max_warn
   doc: "Total number of warnings allowed for the\nequilibration, default=0"
-  type: long
+  type: long?
   inputBinding:
     prefix: -maxwarn
 - id: in_dt_ha
   doc: Equi HA dt, default=0.002 (2 fs)
-  type: double
+  type: double?
   inputBinding:
     prefix: -dt_HA
 - id: in_dt
   doc: Equi CA, CA_LOW, dt, default=0.005 (5 fs)
-  type: double
+  type: double?
   inputBinding:
     prefix: -dt
 - id: in_nt
   doc: Total number of threads to start, default=0
-  type: long
+  type: long?
   inputBinding:
     prefix: -nt
 - id: in_nt_mpi
   doc: Number of thread-MPI threads to start, default=0
-  type: long
+  type: long?
   inputBinding:
     prefix: -ntmpi
 - id: in_gpu_id
   doc: List of GPU device id-s to use, default=""
-  type: string
+  type: string?
   inputBinding:
     prefix: -gpu_id
 - id: in_ns
@@ -87,14 +87,15 @@ outputs:
   type: stdout
 - id: out_output_directory
   doc: Output Directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_directory)
 - id: out_output_file_name
   doc: Output file name
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file_name)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - prepare_prot_topo_edit.py

@@ -8,6 +8,9 @@ task PslCatFile {
     pslCat file \
       ~{match}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     match: "match           count   bases   count   bases           name            size    start   end     name            size    start   end     count"
   }

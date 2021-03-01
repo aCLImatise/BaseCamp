@@ -8,6 +8,9 @@ task Dxjobutildxlink {
     dx_jobutil_dxlink \
       ~{data_object_id}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_object_id: "Data object ID or \\\"<Project ID>:<Data object ID>\\\" to package\\ninto a DNAnexus link"
   }

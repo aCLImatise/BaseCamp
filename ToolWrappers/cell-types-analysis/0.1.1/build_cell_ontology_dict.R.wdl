@@ -20,6 +20,9 @@ task BuildCellOntologyDictR {
       ~{if defined(output_dict_path) then ("--output-dict-path " +  '"' + output_dict_path + '"') else ""} \
       ~{if defined(output_text_path) then ("--output-text-path " +  '"' + output_text_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dir: "Path to the directory with condensed SDRF files"
     condensed_sd_rf: "Boolean: is the provided SDRF file in a condensed form? Default: TRUE"

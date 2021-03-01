@@ -3,62 +3,57 @@ id: bunwarpj.cwl
 inputs:
 - id: in_align
   doc: ': ALIGN TWO IMAGES'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -align
-- id: in_landmarks
-  doc: "Landmark_weight  : Weight of the landmarks\nLandmark_file    : Landmark file"
-  type: boolean
-  inputBinding:
-    prefix: -landmarks
 - id: in_elastic_transform
   doc: ': TRANSFORM A SOURCE IMAGE WITH A GIVEN ELASTIC DEFORMATION'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -elastic_transform
 - id: in_raw_transform
   doc: ': TRANSFORM A SOURCE IMAGE WITH A GIVEN RAW DEFORMATION'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -raw_transform
 - id: in_compare_elastic
   doc: ': COMPARE 2 OPPOSITE ELASTIC DEFORMATIONS (BY WARPING INDEX)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -compare_elastic
 - id: in_compare_elastic_raw
   doc: ': COMPARE AN ELASTIC DEFORMATION WITH A RAW DEFORMATION (BY WARPING INDEX)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -compare_elastic_raw
 - id: in_compare_raw
   doc: ': COMPARE 2 ELASTIC DEFORMATIONS (BY WARPING INDEX)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -compare_raw
 - id: in_convert_to_raw
   doc: ': CONVERT AN ELASTIC DEFORMATION INTO RAW FORMAT'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -convert_to_raw
 - id: in_compose_elastic
   doc: ': COMPOSE TWO ELASTIC DEFORMATIONS'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -compose_elastic
 - id: in_compose_raw
   doc: ': COMPOSE TWO RAW DEFORMATIONS'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -compose_raw
 - id: in_compose_raw_elastic
   doc: ': COMPOSE A RAW DEFORMATION WITH AN ELASTIC DEFORMATION'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -compose_raw_elastic
 - id: in_adapt_transform
   doc: ': ADAPT AN ELASTIC DEFORMATION GIVEN A NEW IMAGE SIZE'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -adapt_transform
 - id: in_bun_war_pj
@@ -66,7 +61,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_var_13
+- id: in_var_12
   doc: ': In any image format'
   type: string
   inputBinding:
@@ -76,7 +71,7 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_var_15
+- id: in_var_14
   doc: ': In any image format'
   type: string
   inputBinding:
@@ -121,6 +116,16 @@ inputs:
   type: string
   inputBinding:
     position: 11
+- id: in_landmark_weight
+  doc: ': Weight of the landmarks'
+  type: string
+  inputBinding:
+    position: 0
+- id: in_landmark_file
+  doc: ': Landmark file'
+  type: string
+  inputBinding:
+    position: 1
 - id: in_affine_file_one
   doc: ': Initial source affine matrix transformation'
   type: long
@@ -131,102 +136,102 @@ inputs:
   type: long
   inputBinding:
     position: 1
-- id: in_var_26
-  doc: ': In any image format'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_var_27
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 1
+    position: 0
 - id: in_var_28
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 0
+    position: 1
 - id: in_var_29
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 1
+    position: 0
 - id: in_var_30
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 0
+    position: 1
 - id: in_var_31
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 1
+    position: 0
 - id: in_var_32
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 0
+    position: 1
 - id: in_var_33
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 1
+    position: 0
 - id: in_var_34
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 0
+    position: 1
 - id: in_var_35
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 1
+    position: 0
 - id: in_var_36
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 0
+    position: 1
 - id: in_var_37
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 1
+    position: 0
 - id: in_var_38
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 0
+    position: 1
 - id: in_var_39
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 1
+    position: 0
 - id: in_var_40
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 0
+    position: 1
 - id: in_var_41
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 1
+    position: 0
 - id: in_var_42
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 0
+    position: 1
 - id: in_var_43
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 1
+    position: 0
 - id: in_var_44
   doc: ': In any image format'
   type: string
   inputBinding:
-    position: 0
+    position: 1
 - id: in_var_45
+  doc: ': In any image format'
+  type: string
+  inputBinding:
+    position: 0
+- id: in_var_46
   doc: ': In any image format'
   type: string
   inputBinding:
@@ -235,6 +240,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bunwarpj

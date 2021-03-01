@@ -12,6 +12,9 @@ task TransferAnnotationToGroups {
       ~{if defined(clusters_filename) then ("-g " +  '"' + clusters_filename + '"') else ""} \
       ~{if (verbose_output_stdout) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_filename: "output filename [reannotated_groups]"
     clusters_filename: "clusters filename [clustered_proteins]"

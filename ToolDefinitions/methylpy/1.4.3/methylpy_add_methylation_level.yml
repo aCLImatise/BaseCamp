@@ -5,100 +5,103 @@ command:
 positional: []
 named:
 - !Flag
-  description: "ALLC_FILES [ALLC_FILES ...]\n[--samples SAMPLES [SAMPLES ...]]\n[--mc-type\
-    \ MC_TYPE [MC_TYPE ...]]\n[--extra-info EXTRA_INFO]\n[--num-procs NUM_PROCS]\n\
-    [--min-cov MIN_COV] [--max-cov MAX_COV]\n[--buffer-line-number BUFFER_LINE_NUMBER]\n\
-    [--input-no-header INPUT_NO_HEADER]"
-  synonyms:
-  - --output-file
-  - --allc-files
-  args: !SimpleFlagArg
-    name: OUTPUT_FILE
   optional: true
-- !Flag
+  synonyms:
+  - --input-tsv-file
   description: "A tab-separate file that specifies genomic intervals.\nThe file contains\
     \ a header.First three columns are\nrequired to be chromosome, start and end,\
     \ which are\n1-based cooridates. It may contain additional\ncolumn(s). (default:\
     \ None)"
-  synonyms:
-  - --input-tsv-file
   args: !SimpleFlagArg
     name: INPUT_TSV_FILE
-  optional: true
 - !Flag
-  description: "List of space separated samples matching allc files.\nBy default sample\
-    \ names will be inferred from allc\nfilenames (default: None)"
+  optional: true
+  synonyms:
+  - --output-file
+  description: 'Name of output file (default: None)'
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --allc-files
+  description: 'List of allc files. (default: None)'
+  args: !RepeatFlagArg
+    name: ALLC_FILES
+- !Flag
+  optional: true
   synonyms:
   - --samples
+  description: "List of space separated samples matching allc files.\nBy default sample\
+    \ names will be inferred from allc\nfilenames (default: None)"
   args: !RepeatFlagArg
     name: SAMPLES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mc-type
   description: "List of space separated mc nucleotide contexts for\nwhich you want\
     \ to look for DMRs. These classifications\nmay use the wildcards H (indicating\
     \ anything but a G)\nand N (indicating any nucleotide). (default: ['CGN'])"
-  synonyms:
-  - --mc-type
   args: !RepeatFlagArg
     name: MC_TYPE
-  optional: true
 - !Flag
-  description: "Boolean to indicate whether to generate two output\nextra files with\
-    \ the total basecalls and covered sites\nin each of the regions. (default: False)"
+  optional: true
   synonyms:
   - --extra-info
+  description: "Boolean to indicate whether to generate two output\nextra files with\
+    \ the total basecalls and covered sites\nin each of the regions. (default: False)"
   args: !SimpleFlagArg
     name: EXTRA_INFO
-  optional: true
 - !Flag
-  description: "Number of processors you wish to use to parallelize\nthis function\
-    \ (default: 1)"
+  optional: true
   synonyms:
   - --num-procs
+  description: "Number of processors you wish to use to parallelize\nthis function\
+    \ (default: 1)"
   args: !SimpleFlagArg
     name: NUM_PROCS
-  optional: true
 - !Flag
-  description: "Minimum coverage for a site to be included (default:\n0)"
+  optional: true
   synonyms:
   - --min-cov
+  description: "Minimum coverage for a site to be included (default:\n0)"
   args: !SimpleFlagArg
     name: MIN_COV
-  optional: true
 - !Flag
-  description: "Maximum coverage for a site to be included. By default\nthis cutoff\
-    \ is not applied. (default: None)"
+  optional: true
   synonyms:
   - --max-cov
+  description: "Maximum coverage for a site to be included. By default\nthis cutoff\
+    \ is not applied. (default: None)"
   args: !SimpleFlagArg
     name: MAX_COV
-  optional: true
 - !Flag
-  description: "size of buffer for reads to be written on hard drive.\n(default: 100000)"
+  optional: true
   synonyms:
   - --buffer-line-number
+  description: "size of buffer for reads to be written on hard drive.\n(default: 100000)"
   args: !SimpleFlagArg
     name: BUFFER_LINE_NUMBER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --input-no-header
   description: "Indicating whether input tsv file contains a header.\nIf this is set\
     \ to True, a header will be automatically\ngenerated in the output file. (default:\
     \ False)\n"
-  synonyms:
-  - --input-no-header
   args: !SimpleFlagArg
     name: INPUT_NO_HEADER
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: methylpy add-methylation-level [-h] [--input-tsv-file INPUT_TSV_FILE]\n\
@@ -142,3 +145,4 @@ help_text: "usage: methylpy add-methylation-level [-h] [--input-tsv-file INPUT_T
   \                        generated in the output file. (default: False)\n"
 generated_using:
 - --help
+docker_image:

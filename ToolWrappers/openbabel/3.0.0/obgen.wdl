@@ -10,6 +10,9 @@ task Obgen {
       ~{filename} \
       ~{if (ff) then "-ff" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ff: "select a forcefield"
     filename: ""

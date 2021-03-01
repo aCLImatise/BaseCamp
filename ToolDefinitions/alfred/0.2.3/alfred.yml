@@ -1,0 +1,1040 @@
+&id001 !Command
+command:
+- alfred
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - alfred
+  - replication
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: g1b.bam
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: s1.bam
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: s2.bam
+    description: ''
+  - !Positional
+    optional: false
+    position: 3
+    name: s3.bam
+    description: ''
+  - !Positional
+    optional: false
+    position: 4
+    name: s4.bam
+    description: ''
+  - !Positional
+    optional: false
+    position: 5
+    name: g2.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    description: '[ --qual ] arg (=1)          min. mapping quality'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    description: '[ --window ] arg (=50000)    sliding window size'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: '[ --step ] arg (=1000)       window offset (step size)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: '[ --reference ] arg          reference fasta file (required)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: '[ --outprefix ] arg (=pref)  output file prefix'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: alfred replication [OPTIONS] -r <ref.fa> -o outprefix <g1b.bam>\
+    \ <s1.bam> <s2.bam> <s3.bam> <s4.bam> <g2.bam>\n\nGeneric options:\n  -? [ --help\
+    \ ]                   show help message\n  -q [ --qual ] arg (=1)          min.\
+    \ mapping quality\n  -w [ --window ] arg (=50000)    sliding window size\n  -s\
+    \ [ --step ] arg (=1000)       window offset (step size)\n  -r [ --reference ]\
+    \ arg          reference fasta file (required)\n  -o [ --outprefix ] arg (=pref)\
+    \  output file prefix\n\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/alfred:0.2.3--hf3ca161_0
+- !Command
+  command:
+  - alfred
+  - qc
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: aligned.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: '[ --reference ] arg   reference fasta file (required)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: '[ --bed ] arg         bed file with target regions (optional)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: '[ --name ] arg        sample name (optional, otherwise SM tag is
+      used)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    description: '[ --jsonout ] arg     gzipped json output file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: '[ --outfile ] arg     gzipped tsv output file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: '[ --secondary ]       evaluate secondary alignments'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: '[ --supplementary ]   evaluate supplementary alignments'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: '[ --rg ] arg          only analyze this read group (optional)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: '[ --ignore ]          ignore read-groups'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: alfred qc [OPTIONS] -r <ref.fa> -j <qc.json.gz> <aligned.bam>\n\
+    \nGeneric options:\n  -? [ --help ]            show help message\n  -r [ --reference\
+    \ ] arg   reference fasta file (required)\n  -b [ --bed ] arg         bed file\
+    \ with target regions (optional)\n  -a [ --name ] arg        sample name (optional,\
+    \ otherwise SM tag is used)\n  -j [ --jsonout ] arg     gzipped json output file\n\
+    \  -o [ --outfile ] arg     gzipped tsv output file\n  -s [ --secondary ]    \
+    \   evaluate secondary alignments\n  -u [ --supplementary ]   evaluate supplementary\
+    \ alignments\n\nRead-group options:\n  -g [ --rg ] arg          only analyze this\
+    \ read group (optional)\n  -i [ --ignore ]          ignore read-groups\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/alfred:0.2.3--hf3ca161_0
+- !Command
+  command:
+  - alfred
+  - tracks
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: aligned.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: '[ --map-qual ] arg (=10)           min. mapping quality'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: "[ --normalize ] arg (=30000000)    #pairs to normalize to (0: no\n\
+      normalization)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: "[ --covtype ] arg (=0)             coverage type (0: sequencing\
+      \ coverage,\n1: spanning coverage, 2: footprinting)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: "[ --resolution ] arg (=0.200000003)\nfractional resolution ]0,1]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: '[ --outfile ] arg (="track.gz")    track file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: '[ --format ] arg (=bedgraph)       output format [bedgraph|bed|wiggle|raw]'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: alfred tracks [OPTIONS] <aligned.bam>\n\nGeneric options:\n\
+    \  -? [ --help ]                         show help message\n  -m [ --map-qual\
+    \ ] arg (=10)           min. mapping quality\n  -n [ --normalize ] arg (=30000000)\
+    \    #pairs to normalize to (0: no \n                                        normalization)\n\
+    \  -c [ --covtype ] arg (=0)             coverage type (0: sequencing coverage,\
+    \ \n                                        1: spanning coverage, 2: footprinting)\n\
+    \nResolution options (bedgraph/bed format):\n  -r [ --resolution ] arg (=0.200000003)\n\
+    \                                        fractional resolution ]0,1]\n\nOutput\
+    \ options:\n  -o [ --outfile ] arg (=\"track.gz\")    track file\n  -f [ --format\
+    \ ] arg (=bedgraph)       output format [bedgraph|bed|wiggle|raw]\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/alfred:0.2.3--hf3ca161_0
+- !Command
+  command:
+  - alfred
+  - ase
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: '[ --map-qual ] arg (=10)      min. mapping quality'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: '[ --base-qual ] arg (=10)     min. base quality'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: '[ --reference ] arg           reference fasta file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: '[ --sample ] arg (=NA12878)   sample name'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: '[ --ase ] arg (="as.tsv.gz")  allele-specific output file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    description: '[ --vcffile ] arg             input (phased) BCF file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: '[ --phased ]                  BCF file is phased and BAM is haplo-tagged'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: '[ --full ]                    output all het. input SNPs'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: alfred ase [OPTIONS] -r <ref.fa> -s NA12878 -v <snps.bcf> -a\
+    \ <ase.tsv> <input.bam>\n\nGeneric options:\n  -? [ --help ]                 \
+    \   show help message\n  -m [ --map-qual ] arg (=10)      min. mapping quality\n\
+    \  -b [ --base-qual ] arg (=10)     min. base quality\n  -r [ --reference ] arg\
+    \           reference fasta file\n  -s [ --sample ] arg (=NA12878)   sample name\n\
+    \  -a [ --ase ] arg (=\"as.tsv.gz\")  allele-specific output file\n  -v [ --vcffile\
+    \ ] arg             input (phased) BCF file\n  -p [ --phased ]               \
+    \   BCF file is phased and BAM is haplo-tagged\n  -f [ --full ]              \
+    \      output all het. input SNPs\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/alfred:0.2.3--hf3ca161_0
+- !Command
+  command:
+  - alfred
+  - count_jct
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: aligned.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: '[ --map-qual ] arg (=10)           min. mapping quality'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: "[ --stranded ] arg (=0)            strand-specific counting (0:\n\
+      unstranded, 1: stranded, 2: reverse\nstranded)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: '[ --outintra ] arg (="intra.tsv")  intra-gene exon-exon junction
+      reads'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: '[ --outinter ] arg (="inter.tsv")  inter-gene exon-exon junction
+      reads'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: "[ --outnovel ] arg                 output file for not annotated\n\
+      intra-chromosomal junction reads"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: '[ --gtf ] arg                      gtf/gff3 file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: '[ --id ] arg (=gene_id)            gtf/gff3 attribute'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: '[ --feature ] arg (=exon)          gtf/gff3 feature'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: '[ --bed ] arg                      bed file'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: alfred count_jct [OPTIONS] -g <hg19.gtf.gz> <aligned.bam>\n\
+    \nGeneric options:\n  -? [ --help ]                         show help message\n\
+    \  -m [ --map-qual ] arg (=10)           min. mapping quality\n  -s [ --stranded\
+    \ ] arg (=0)            strand-specific counting (0: \n                      \
+    \                  unstranded, 1: stranded, 2: reverse \n                    \
+    \                    stranded)\n  -o [ --outintra ] arg (=\"intra.tsv\")  intra-gene\
+    \ exon-exon junction reads\n  -p [ --outinter ] arg (=\"inter.tsv\")  inter-gene\
+    \ exon-exon junction reads\n  -n [ --outnovel ] arg                 output file\
+    \ for not annotated \n                                        intra-chromosomal\
+    \ junction reads\n\nGTF/GFF3 input file options:\n  -g [ --gtf ] arg         \
+    \             gtf/gff3 file\n  -i [ --id ] arg (=gene_id)            gtf/gff3\
+    \ attribute\n  -f [ --feature ] arg (=exon)          gtf/gff3 feature\n\nBED input\
+    \ file options, columns chr, start, end, name [, score, strand]:\n  -b [ --bed\
+    \ ] arg                      bed file\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/alfred:0.2.3--hf3ca161_0
+- !Command
+  command:
+  - alfred
+  - consensus
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: consensus
+    description: -t [ --seqtype ] arg (=ill)           seq. type [ill|ont|pacbio|custom]
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: '[ --format ] arg (=bam)            input format [bam|fasta]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: '[ --called ] arg (=0.5)            fraction of reads required for'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    description: '[ --mapqual ] arg (=10)            min. mapping quality'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: '[ --position ] arg (=chr4:500500)  position to generate consensus'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    description: '[ --window ] arg (=5)              window around position to fetch
+      reads'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: '[ --secondary ]                    consider secondary alignments'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: '[ --trimreads ]                    trim reads to window'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: '[ --gapopen ] arg (=-10)           gap open'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    description: '[ --gapext ] arg (=-1)             gap extension'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: '[ --match ] arg (=5)               match'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: '[ --mismatch ] arg (=-4)           mismatch'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: '[ --outformat ] arg (=v)           output format [v|h]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: '[ --alignment ] arg (="al.fa.gz")  vertical/horizontal alignment'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: '[ --consensus ] arg (="cs.fa.gz")  consensus'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: alfred consensus [OPTIONS] <input.bam|input.fa.gz>\n\nGeneric\
+    \ options:\n  -? [ --help ]                         show help message\n  -f [\
+    \ --format ] arg (=bam)            input format [bam|fasta]\n  -d [ --called ]\
+    \ arg (=0.5)            fraction of reads required for \n                    \
+    \                    consensus\n  -t [ --seqtype ] arg (=ill)           seq. type\
+    \ [ill|ont|pacbio|custom]\n\nBAM input options:\n  -q [ --mapqual ] arg (=10)\
+    \            min. mapping quality\n  -p [ --position ] arg (=chr4:500500)  position\
+    \ to generate consensus\n  -w [ --window ] arg (=5)              window around\
+    \ position to fetch reads\n  -s [ --secondary ]                    consider secondary\
+    \ alignments\n  -r [ --trimreads ]                    trim reads to window\n\n\
+    Alignment scoring options for 'custom' sequencing type:\n  -g [ --gapopen ] arg\
+    \ (=-10)           gap open\n  -e [ --gapext ] arg (=-1)             gap extension\n\
+    \  -m [ --match ] arg (=5)               match\n  -n [ --mismatch ] arg (=-4)\
+    \           mismatch\n\nOutput options:\n  -u [ --outformat ] arg (=v)       \
+    \    output format [v|h]\n  -a [ --alignment ] arg (=\"al.fa.gz\")  vertical/horizontal\
+    \ alignment\n  -c [ --consensus ] arg (=\"cs.fa.gz\")  consensus\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/alfred:0.2.3--hf3ca161_0
+- !Command
+  command:
+  - alfred
+  - count_rna
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: aligned.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: '[ --map-qual ] arg (=10)           min. mapping quality'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: "[ --stranded ] arg (=0)            strand-specific counting (0:\n\
+      unstranded, 1: stranded, 2: reverse\nstranded)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: '[ --normalize ] arg (=raw)         normalization [raw|fpkm|fpkm_uq]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: '[ --outfile ] arg (="gene.count")  output file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: '[ --ambiguous ]                    count ambiguous readsd'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: '[ --gtf ] arg                      gtf/gff3 file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: '[ --id ] arg (=gene_id)            gtf/gff3 attribute'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: '[ --feature ] arg (=exon)          gtf/gff3 feature'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: '[ --bed ] arg                      bed file'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: alfred count_rna [OPTIONS] -g <hg19.gtf.gz> <aligned.bam>\n\
+    Usage: alfred count_rna [OPTIONS] -b <hg19.bed.gz> <aligned.bam>\n\nGeneric options:\n\
+    \  -? [ --help ]                         show help message\n  -m [ --map-qual\
+    \ ] arg (=10)           min. mapping quality\n  -s [ --stranded ] arg (=0)   \
+    \         strand-specific counting (0: \n                                    \
+    \    unstranded, 1: stranded, 2: reverse \n                                  \
+    \      stranded)\n  -n [ --normalize ] arg (=raw)         normalization [raw|fpkm|fpkm_uq]\n\
+    \  -o [ --outfile ] arg (=\"gene.count\")  output file\n  -a [ --ambiguous ] \
+    \                   count ambiguous readsd\n\nGTF/GFF3 input file options:\n \
+    \ -g [ --gtf ] arg                      gtf/gff3 file\n  -i [ --id ] arg (=gene_id)\
+    \            gtf/gff3 attribute\n  -f [ --feature ] arg (=exon)          gtf/gff3\
+    \ feature\n\nBED input file options, columns chr, start, end, name [, score, strand,\
+    \ gene_biotype]:\n  -b [ --bed ] arg                      bed file\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/alfred:0.2.3--hf3ca161_0
+- !Command
+  command:
+  - alfred
+  - count_dna
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: aligned.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: '[ --map-qual ] arg (=10)          min. mapping quality'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: '[ --outfile ] arg (="cov.gz")     coverage output file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: "[ --fragments ] arg               count illumina PE fragments using\
+      \ lower\nand upper bound on insert size, i.e. -f\n0,10000"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: '[ --window-size ] arg (=10000)    window size'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: '[ --window-offset ] arg (=10000)  window offset'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: '[ --window-num ] arg (=0)         #windows per chr, used if #n>0'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: '[ --interval-file ] arg           interval file, used if present'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: alfred count_dna [OPTIONS] <aligned.bam>\n\nGeneric options:\n\
+    \  -? [ --help ]                        show help message\n  -m [ --map-qual ]\
+    \ arg (=10)          min. mapping quality\n  -o [ --outfile ] arg (=\"cov.gz\"\
+    )     coverage output file\n  -f [ --fragments ] arg               count illumina\
+    \ PE fragments using lower \n                                       and upper\
+    \ bound on insert size, i.e. -f \n                                       0,10000\n\
+    \nWindow options:\n  -s [ --window-size ] arg (=10000)    window size\n  -t [\
+    \ --window-offset ] arg (=10000)  window offset\n  -n [ --window-num ] arg (=0)\
+    \         #windows per chr, used if #n>0\n  -i [ --interval-file ] arg       \
+    \    interval file, used if present\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/alfred:0.2.3--hf3ca161_0
+- !Command
+  command:
+  - alfred
+  - pwalign
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: seq1.fasta
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: seq2.fasta
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: '[ --gapopen ] arg (=-10)           gap open'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    description: '[ --gapext ] arg (=-1)             gap extension'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: '[ --match ] arg (=5)               match'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: '[ --mismatch ] arg (=-4)           mismatch'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: '[ --endsfree1 ]                    leading/trailing gaps free for
+      seq1'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    description: '[ --endsfree2 ]                    leading/trailing gaps free for
+      seq2'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: '[ --local ]                        local alignment'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    description: '[ --ambiguous ]                    allow IUPAC ambiguity codes'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: '[ --format ] arg (=h)              output format [v|h]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: '[ --alignment ] arg (="al.fa.gz")  vertical/horizontal alignment'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: alfred pwalign [OPTIONS] <seq1.fasta> <seq2.fasta>\n\nGeneric\
+    \ options:\n  -? [ --help ]                         show help message\n  -g [\
+    \ --gapopen ] arg (=-10)           gap open\n  -e [ --gapext ] arg (=-1)     \
+    \        gap extension\n  -m [ --match ] arg (=5)               match\n  -n [\
+    \ --mismatch ] arg (=-4)           mismatch\n  -p [ --endsfree1 ]            \
+    \        leading/trailing gaps free for seq1\n  -q [ --endsfree2 ]           \
+    \         leading/trailing gaps free for seq2\n  -l [ --local ]              \
+    \          local alignment\n  -k [ --ambiguous ]                    allow IUPAC\
+    \ ambiguity codes\n\nOutput options:\n  -f [ --format ] arg (=h)             \
+    \ output format [v|h]\n  -a [ --alignment ] arg (=\"al.fa.gz\")  vertical/horizontal\
+    \ alignment\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/alfred:0.2.3--hf3ca161_0
+- !Command
+  command:
+  - alfred
+  - bam2match
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: contig.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: '[ --map-qual ] arg (=0)          min. mapping quality'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: '[ --reference ] arg              reference fasta file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: '[ --outfile ] arg (="match.gz")  gzipped output file'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: alfred bam2match [OPTIONS] -r <ref.fa> <contig.bam>\n\nGeneric\
+    \ options:\n  -? [ --help ]                       show help message\n  -m [ --map-qual\
+    \ ] arg (=0)          min. mapping quality\n  -r [ --reference ] arg         \
+    \     reference fasta file\n  -o [ --outfile ] arg (=\"match.gz\")  gzipped output\
+    \ file\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/alfred:0.2.3--hf3ca161_0
+- !Command
+  command:
+  - alfred
+  - split
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: unphased.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: '[ --map-qual ] arg (=10)     min. mapping quality'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: '[ --reference ] arg          reference fasta file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: '[ --hap1 ] arg (="h1.bam")   haplotype1 output file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    description: '[ --hap2 ] arg (="h2.bam")   haplotype2 output file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: '[ --sample ] arg (=NA12878)  sample name (as in BCF)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    description: '[ --vcffile ] arg            input phased VCF/BCF file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: '[ --assign ]                 assign unphased reads randomly'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: '[ --interleaved ]            single haplotype-tagged BAM'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: alfred split [OPTIONS] -r <ref.fa> -s NA12878 -v <snps.bcf>\
+    \ <unphased.bam>\n\nGeneric options:\n  -? [ --help ]                   show help\
+    \ message\n  -m [ --map-qual ] arg (=10)     min. mapping quality\n  -r [ --reference\
+    \ ] arg          reference fasta file\n  -p [ --hap1 ] arg (=\"h1.bam\")   haplotype1\
+    \ output file\n  -q [ --hap2 ] arg (=\"h2.bam\")   haplotype2 output file\n  -s\
+    \ [ --sample ] arg (=NA12878)  sample name (as in BCF)\n  -v [ --vcffile ] arg\
+    \            input phased VCF/BCF file\n  -a [ --assign ]                 assign\
+    \ unphased reads randomly\n  -i [ --interleaved ]            single haplotype-tagged\
+    \ BAM\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/alfred:0.2.3--hf3ca161_0
+- !Command
+  command:
+  - alfred
+  - annotate
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: peaks.bed
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: "[ --distance ] arg (=0)            max. distance (0: overlapping\
+      \ features\nonly)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: '[ --outgene ] arg (="gene.bed")    gene/motif-level output'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: '[ --outfile ] arg (="anno.bed")    annotated peaks output'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: '[ --nearest ]                      nearest feature only'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: '[ --gtf ] arg                      gtf/gff3 file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: '[ --id ] arg (=gene_name)          gtf/gff3 attribute'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: '[ --feature ] arg (=gene)          gtf/gff3 feature'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: '[ --bed ] arg                      bed file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: '[ --motif ] arg                    motif file in jaspar or raw format'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: '[ --reference ] arg                reference file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    description: '[ --quantile ] arg (=0.949999988)  motif quantile score [0,1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: '[ --position ] arg                 gzipped output file of motif
+      hits'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    description: "[ --exclude ]                      exclude overlapping hits of the\
+      \ same\nmotif\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: alfred annotate [OPTIONS] -g <hg19.gtf.gz> <peaks.bed>\nUsage:\
+    \ alfred annotate [OPTIONS] -b <hg19.bed.gz> <peaks.bed>\nUsage: alfred annotate\
+    \ [OPTIONS] -m <motif.jaspar.gz> -r <genome.fa> <peaks.bed>\n\nGeneric options:\n\
+    \  -? [ --help ]                         show help message\n  -d [ --distance\
+    \ ] arg (=0)            max. distance (0: overlapping features \n            \
+    \                            only)\n  -u [ --outgene ] arg (=\"gene.bed\")   \
+    \ gene/motif-level output\n  -o [ --outfile ] arg (=\"anno.bed\")    annotated\
+    \ peaks output\n  -n [ --nearest ]                      nearest feature only\n\
+    \nGTF/GFF3 annotation file options:\n  -g [ --gtf ] arg                      gtf/gff3\
+    \ file\n  -i [ --id ] arg (=gene_name)          gtf/gff3 attribute\n  -f [ --feature\
+    \ ] arg (=gene)          gtf/gff3 feature\n\nBED annotation file options, columns\
+    \ chr, start, end, name:\n  -b [ --bed ] arg                      bed file\n\n\
+    Motif annotation file options:\n  -m [ --motif ] arg                    motif\
+    \ file in jaspar or raw format\n  -r [ --reference ] arg                reference\
+    \ file\n  -q [ --quantile ] arg (=0.949999988)  motif quantile score [0,1]\n \
+    \ -p [ --position ] arg                 gzipped output file of motif hits\n  -x\
+    \ [ --exclude ]                      exclude overlapping hits of the same \n \
+    \                                       motif\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/alfred:0.2.3--hf3ca161_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "**********************************************************************\n\
+  Program: Alfred\nThis is free software, and you are welcome to redistribute it under\n\
+  certain conditions (BSD License); for license details use '-l'.\nThis program comes\
+  \ with ABSOLUTELY NO WARRANTY; for details use '-w'.\n\nAlfred (Version: 0.2.3)\n\
+  Contact: Gear Genomics Team (gear_genomics@embl.de)\nWeb Application: https://www.gear-genomics.com/alfred/\n\
+  Documentation: https://www.gear-genomics.com/docs/alfred/\nCitation: https://doi.org/10.1093/bioinformatics/bty1007\n\
+  **********************************************************************\n\nUsage:\
+  \ alfred <command> <arguments>\n\nCommands:\n\n    qc           alignment quality\
+  \ control\n    count_dna    counting DNA reads in windows\n    count_rna    counting\
+  \ RNA reads in features\n    count_jct    counting RNA split-reads at exon junctions\n\
+  \    tracks       create browser tracks\n    annotate     annotate peaks\n    spaced_motif\
+  \ find spaced motifs\n    split        split BAM into haplotypes\n    consensus\
+  \    consensus computation for error-prone reads\n    pwalign      pairwise alignment\
+  \ using dynamic programming\n    bam2match    convert contig alignments in BAM format\
+  \ to pairwise matches\n    ase          allele-specific expression\n    replication\
+  \  replication timing (Repli-Seq)\n\n\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/alfred:0.2.3--hf3ca161_0

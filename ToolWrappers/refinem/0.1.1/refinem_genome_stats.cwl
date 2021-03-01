@@ -3,12 +3,12 @@ id: refinem_genome_stats.cwl
 inputs:
 - id: in_cpus
   doc: 'number of CPUs to use (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --cpus
 - id: in_silent
   doc: 'suppress output of logger (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --silent
 - id: in_scaffold_stats_file
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - refinem

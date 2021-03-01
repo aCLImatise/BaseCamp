@@ -38,6 +38,9 @@ task Infoseq {
       ~{if (pgc) then "-pgc" else ""} \
       ~{if (description) then "-description" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "outfile    [stdout] If you enter the name of a file\\nhere then this program will write the\\nsequence details into that file."
     html: "boolean    [N] Format output as an HTML table"

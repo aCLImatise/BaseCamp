@@ -2,42 +2,56 @@
 command:
 - rgi
 - tm
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input_file
+  description: -o OUTPUT_FILE, --output_file OUTPUT_FILE
 named:
 - !Flag
-  description: ''
+  optional: true
+  synonyms:
+  - --clean
+  description: removes temporary files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: debug mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -t
+  description: ''
   args: !SimpleFlagArg
     name: FILTER_TEMPERATURE
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -o
+  description: ''
   args: !SimpleFlagArg
     name: OUTPUT_FILE
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -i
+  description: ''
   args: !SimpleFlagArg
     name: INPUT_FILE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-i INPUT_FILE, --input_file INPUT_FILE\n\
-    input_file\n-o OUTPUT_FILE, --output_file OUTPUT_FILE\noutput_file\n-t FILTER_TEMPERATURE,\
-    \ --filter_temperature FILTER_TEMPERATURE\ndesired melting temperature (default=65).\n\
-    --clean               removes temporary files\n--debug               debug mode\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: rgi tm [-h] [-i INPUT_FILE] [-o OUTPUT_FILE] [-t FILTER_TEMPERATURE]\n\
@@ -50,3 +64,4 @@ help_text: "usage: rgi tm [-h] [-i INPUT_FILE] [-o OUTPUT_FILE] [-t FILTER_TEMPE
   \ mode\n"
 generated_using:
 - --help
+docker_image:

@@ -14,6 +14,9 @@ task MakeStreamingPrefilterpyRange {
       ~{out_file} \
       ~{range}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     make_streaming_prefilter_do_tpy: ""
     reference_file: ""

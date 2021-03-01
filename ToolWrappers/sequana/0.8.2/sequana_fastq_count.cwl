@@ -3,7 +3,7 @@ id: sequana_fastq_count.cwl
 inputs:
 - id: in_input_fastq_gzipped
   doc: "input fastq gzipped or not\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_fast_q_count
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sequana_fastq_count

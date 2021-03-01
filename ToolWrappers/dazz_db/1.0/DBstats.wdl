@@ -8,6 +8,9 @@ task DBstats {
     DBstats \
       ~{if (nu) then "-nu" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nu: ""
   }

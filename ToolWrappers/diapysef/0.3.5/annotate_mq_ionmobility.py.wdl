@@ -12,6 +12,9 @@ task AnnotateMqIonmobilitypy {
       ~{pas_ef_analysis_dir} \
       ~{output_prefix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mq_out_dir: ""
     pas_ef_analysis_dir: ""

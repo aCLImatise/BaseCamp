@@ -10,6 +10,9 @@ task GetTargetFastaRecordspl {
       ~{this} \
       ~{all_dot_fa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this: ""
     all_dot_fa: ""

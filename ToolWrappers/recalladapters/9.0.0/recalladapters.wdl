@@ -8,7 +8,6 @@ task Recalladapters {
     Int? number_threads_parallel_bam
     Boolean? inline_pbi
     Boolean? silent
-    Boolean? disable_adapter_finding
     Int? min_adapter_score
     Int? min_sub_length
     Float? mins_nr
@@ -22,12 +21,14 @@ task Recalladapters {
       ~{if defined(number_threads_parallel_bam) then ("-b " +  '"' + number_threads_parallel_bam + '"') else ""} \
       ~{if (inline_pbi) then "--inlinePbi" else ""} \
       ~{if (silent) then "--silent" else ""} \
-      ~{if (disable_adapter_finding) then "--disableAdapterFinding" else ""} \
       ~{if defined(min_adapter_score) then ("--minAdapterScore " +  '"' + min_adapter_score + '"') else ""} \
       ~{if defined(min_sub_length) then ("--minSubLength " +  '"' + min_sub_length + '"') else ""} \
       ~{if defined(mins_nr) then ("--minSnr " +  '"' + mins_nr + '"') else ""} \
       ~{if defined(whitelist_z_mw_num) then ("--whitelistZmwNum " +  '"' + whitelist_z_mw_num + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix_output_filenames: "Prefix of output filenames"
     sub_read_set: "Input subreadset.xml"
@@ -35,7 +36,6 @@ task Recalladapters {
     number_threads_parallel_bam: "Number of threads for parallel BAM compression, can only\\nbe set when not generating pbindex inline with --inlinePbi"
     inline_pbi: "Generate pbindex inline with BAM writing"
     silent: "No progress output."
-    disable_adapter_finding: "--adapters=adapterSequences.fasta\\n--globalAlnFlanking\\n--flankLength=INT\\n--minSoftAccuracy=FLOAT\\n--minHardAccuracy=FLOAT\\n--minFlankingScore=FLOAT\\n--disableAdapterCorrection\\n--adpqc"
     min_adapter_score: "Minimal score for an adapter"
     min_sub_length: "Minimal subread length. Default: 50"
     mins_nr: "Minimal SNR across channels. Default: 3.75"

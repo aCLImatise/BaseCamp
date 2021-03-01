@@ -10,7 +10,7 @@ task Tbl2asn {
     Boolean? recurse_optionaldefault_f
     Boolean? template_file_optional
     Boolean? file_typea_anyru
-    Boolean? read_fastas_set
+    Boolean? read_fastas_optionaldefault
     Boolean? genomic_product_set
     Boolean? delayed_genomic_product
     Boolean? feature_id_linkso
@@ -23,8 +23,8 @@ task Tbl2asn {
     Boolean? descriptors_file_optional
     Boolean? single_table_file
     Boolean? cds_flags_combine
-    Boolean? verification_combine_validate
-    Boolean? validate_obsolete_use
+    Boolean? verification_combine_following
+    Boolean? validate_use_v
     Boolean? generate_genbank_file
     Boolean? seq_id_file
     Boolean? genprodset_nucprotset_optionaldefault
@@ -32,9 +32,9 @@ task Tbl2asn {
     Boolean? remote_sequence_record
     Boolean? smart_feature_annotation
     Boolean? mrna_title_policys
-    Boolean? remove_xref_optionaldefault
+    Boolean? remove_unnecessary_gene
     Boolean? force_local_proteinidtranscriptid
-    Boolean? remote_taxonomy_optionaldefault
+    Boolean? remote_taxonomy_lookup
     Boolean? remote_publication_lookup
     Boolean? log_progress_optionaldefault
     Boolean? save_bioseqset_optionaldefault
@@ -46,7 +46,7 @@ task Tbl2asn {
     Boolean? project_version_number
     Boolean? single_structured_comment
     Boolean? master_genome_flagsn
-    Boolean? add_type_evidence
+    Boolean? add_type_used
     Boolean? lineage_use_discrepancy
     String paired_ends
     String align_x_genus
@@ -67,7 +67,7 @@ task Tbl2asn {
       ~{if (recurse_optionaldefault_f) then "-E" else ""} \
       ~{if (template_file_optional) then "-t" else ""} \
       ~{if (file_typea_anyru) then "-a" else ""} \
-      ~{if (read_fastas_set) then "-s" else ""} \
+      ~{if (read_fastas_optionaldefault) then "-s" else ""} \
       ~{if (genomic_product_set) then "-g" else ""} \
       ~{if (delayed_genomic_product) then "-J" else ""} \
       ~{if (feature_id_linkso) then "-F" else ""} \
@@ -80,8 +80,8 @@ task Tbl2asn {
       ~{if (descriptors_file_optional) then "-D" else ""} \
       ~{if (single_table_file) then "-f" else ""} \
       ~{if (cds_flags_combine) then "-k" else ""} \
-      ~{if (verification_combine_validate) then "-V" else ""} \
-      ~{if (validate_obsolete_use) then "-v" else ""} \
+      ~{if (verification_combine_following) then "-V" else ""} \
+      ~{if (validate_use_v) then "-v" else ""} \
       ~{if (generate_genbank_file) then "-b" else ""} \
       ~{if (seq_id_file) then "-q" else ""} \
       ~{if (genprodset_nucprotset_optionaldefault) then "-u" else ""} \
@@ -89,9 +89,9 @@ task Tbl2asn {
       ~{if (remote_sequence_record) then "-R" else ""} \
       ~{if (smart_feature_annotation) then "-S" else ""} \
       ~{if (mrna_title_policys) then "-Q" else ""} \
-      ~{if (remove_xref_optionaldefault) then "-U" else ""} \
+      ~{if (remove_unnecessary_gene) then "-U" else ""} \
       ~{if (force_local_proteinidtranscriptid) then "-L" else ""} \
-      ~{if (remote_taxonomy_optionaldefault) then "-T" else ""} \
+      ~{if (remote_taxonomy_lookup) then "-T" else ""} \
       ~{if (remote_publication_lookup) then "-P" else ""} \
       ~{if (log_progress_optionaldefault) then "-W" else ""} \
       ~{if (save_bioseqset_optionaldefault) then "-K" else ""} \
@@ -103,9 +103,12 @@ task Tbl2asn {
       ~{if (project_version_number) then "-N" else ""} \
       ~{if (single_structured_comment) then "-w" else ""} \
       ~{if (master_genome_flagsn) then "-M" else ""} \
-      ~{if (add_type_evidence) then "-l" else ""} \
+      ~{if (add_type_used) then "-l" else ""} \
       ~{if (lineage_use_discrepancy) then "-m" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_files_optional: "Path to Files [String]  Optional"
     path_results_optional: "Path for Results [String]  Optional"
@@ -115,7 +118,7 @@ task Tbl2asn {
     recurse_optionaldefault_f: "Recurse [T/F]  Optional\\ndefault = F"
     template_file_optional: "Template File [File In]  Optional"
     file_typea_anyru: "File Type\\na Any\\nr20u Runs of 20+ Ns are gaps, 100 Ns are unknown length\\nr20k Runs of 20+ Ns are gaps, 100 Ns are known length\\nr10u Runs of 10+ Ns are gaps, 100 Ns are unknown length\\nr10k Runs of 10+ Ns are gaps, 100 Ns are known length\\ns FASTA Set (s Batch, s1 Pop, s2 Phy, s3 Mut, s4 Eco, s9 Small-genome)\\nd FASTA Delta, di FASTA Delta with Implicit Gaps\\nl FASTA+Gap Alignment (l Batch, l1 Pop, l2 Phy, l3 Mut, l4 Eco, l9 Small-genome)\\nz FASTA with Gap Lines\\ne PHRAP/ACE\\nb ASN.1 for -M flag"
-    read_fastas_set: "Read FASTAs as Set [T/F]  Optional\\ndefault = F"
+    read_fastas_optionaldefault: "Read FASTAs as Set [T/F]  Optional\\ndefault = F"
     genomic_product_set: "Genomic Product Set [T/F]  Optional\\ndefault = F"
     delayed_genomic_product: "Delayed Genomic Product Set [T/F]  Optional\\ndefault = F"
     feature_id_linkso: "Feature ID Links\\no By Overlap\\np By Product\\nl By Label and Location\\ns Suppress links forced by -M"
@@ -128,8 +131,8 @@ task Tbl2asn {
     descriptors_file_optional: "Descriptors File [File In]  Optional"
     single_table_file: "Single Table File [File In]  Optional"
     cds_flags_combine: "CDS Flags (combine any of the following letters)\\nc Annotate Longest ORF\\nr Allow Runon ORFs\\nm Allow Alternative Starts\\nk Set Conflict on Mismatch"
-    verification_combine_validate: "Verification (combine any of the following letters)\\nv Validate with Normal Stringency\\nr Validate without Country Check\\nc BarCode Validation\\nb Generate GenBank Flatfile\\ng Generate Gene Report\\nt Validate with TSA Check"
-    validate_obsolete_use: "Validate (obsolete: use -V v) [T/F]  Optional\\ndefault = F"
+    verification_combine_following: "Verification (combine any of the following letters)\\nv Validate with Normal Stringency\\nr Validate without Country Check\\nc BarCode Validation\\nb Generate GenBank Flatfile\\ng Generate Gene Report\\nt Validate with TSA Check"
+    validate_use_v: "Validate (obsolete: use -V v) [T/F]  Optional\\ndefault = F"
     generate_genbank_file: "Generate GenBank File (obsolete: use -V b) [T/F]  Optional\\ndefault = F"
     seq_id_file: "Seq ID from File Name [T/F]  Optional\\ndefault = F"
     genprodset_nucprotset_optionaldefault: "GenProdSet to NucProtSet [T/F]  Optional\\ndefault = F"
@@ -137,9 +140,9 @@ task Tbl2asn {
     remote_sequence_record: "Remote Sequence Record Fetching from ID [T/F]  Optional\\ndefault = F"
     smart_feature_annotation: "Smart Feature Annotation [T/F]  Optional\\ndefault = F"
     mrna_title_policys: "mRNA Title Policy\\ns Special mRNA Titles\\nr RefSeq mRNA Titles"
-    remove_xref_optionaldefault: "Remove Unnecessary Gene Xref [T/F]  Optional\\ndefault = F"
+    remove_unnecessary_gene: "Remove Unnecessary Gene Xref [T/F]  Optional\\ndefault = F"
     force_local_proteinidtranscriptid: "Force Local protein_id/transcript_id [T/F]  Optional\\ndefault = F"
-    remote_taxonomy_optionaldefault: "Remote Taxonomy Lookup [T/F]  Optional\\ndefault = F"
+    remote_taxonomy_lookup: "Remote Taxonomy Lookup [T/F]  Optional\\ndefault = F"
     remote_publication_lookup: "Remote Publication Lookup [T/F]  Optional\\ndefault = F"
     log_progress_optionaldefault: "Log Progress [T/F]  Optional\\ndefault = F"
     save_bioseqset_optionaldefault: "Save Bioseq-set [T/F]  Optional\\ndefault = F"
@@ -151,7 +154,7 @@ task Tbl2asn {
     project_version_number: "Project Version Number [Integer]  Optional\\ndefault = 0"
     single_structured_comment: "Single Structured Comment File (overrides the use of -X C) [File In]  Optional"
     master_genome_flagsn: "Master Genome Flags\\nn Normal\\nb Big Sequence\\np Power Option\\nt TSA"
-    add_type_evidence: "Add type of evidence used to assert linkage across assembly gaps (only for TSA records). Must be one of the following:"
+    add_type_used: "Add type of evidence used to assert linkage across assembly gaps (only for TSA records). Must be one of the following:"
     lineage_use_discrepancy: "Lineage to use for Discrepancy Report tests"
     paired_ends: "align-genus"
     align_x_genus: "align-trnscpt"

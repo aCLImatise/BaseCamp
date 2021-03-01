@@ -1,0 +1,1825 @@
+&id001 !Command
+command:
+- sketchy
+positional: []
+named: []
+parent:
+subcommands:
+- &id002 !Command
+  command:
+  - sketchy
+  - feature
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - sketchy
+    - feature
+    - prepare
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --index
+      description: Path to feature index input file  [required]
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      - --drop
+      description: Comma separated string of columns to drop
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      - --prefix
+      description: Prefix for prepared feature index output files
+      args: !SimpleFlagArg
+        name: PATH
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy feature prepare [OPTIONS]\n\n  Prepare a feature index\
+      \ file for evaluation in Rust\n\nOptions:\n  -i, --index PATH   Path to feature\
+      \ index input file  [required]\n  -d, --drop TEXT    Comma separated string\
+      \ of columns to drop\n  -p, --prefix PATH  Prefix for prepared feature index\
+      \ output files\n  --help             Show this message and exit.\n"
+    generated_using: &id003
+    - --help
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  - !Command
+    command:
+    - sketchy
+    - feature
+    - merge
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: sketch
+      description: '[required]'
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --sketch
+      description: "Path to sketch file to parse indices from\n[required]"
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --features
+      description: Path to genotype feature file to merge indices with
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -k
+      - --key
+      description: Legacy key file to translate UUIDs [dep.]
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --index_column
+      description: Feature index column to merge indices on [idx]
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -m
+      - --mash_column
+      description: Mash index column to merge indices on [ids]
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      - --prefix
+      description: 'Prefix for output file: {prefix}.tsv [sketchy]'
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -v
+      - --verbose
+      description: Enable verbose output for merge operations
+      args: !EmptyFlagArg {}
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy feature merge [OPTIONS]\n\n  Merge sketch and feature\
+      \ data by common indices\n\nOptions:\n  -s, --sketch PATH        Path to sketch\
+      \ file to parse indices from\n                           [required]\n\n  -f,\
+      \ --features PATH      Path to genotype feature file to merge indices with\n\
+      \                           sketch  [required]\n\n  -k, --key PATH         \
+      \  Legacy key file to translate UUIDs [dep.]\n  -i, --index_column TEXT  Feature\
+      \ index column to merge indices on [idx]\n  -m, --mash_column TEXT   Mash index\
+      \ column to merge indices on [ids]\n  -p, --prefix TEXT        Prefix for output\
+      \ file: {prefix}.tsv [sketchy]\n  -v, --verbose            Enable verbose output\
+      \ for merge operations\n  --help                   Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  - !Command
+    command:
+    - sketchy
+    - feature
+    - lineage
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      - --data
+      description: "Path to data file to summarize trait data from\n[required]  [required]"
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -l
+      - --lineage
+      description: "Trait to show summary for; columns in data file\n[required]"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --output
+      description: "Path to legacy key file to extract identifiers\n[lineage.index.tsv]"
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --summary
+      description: Print summary of lineage features to terminal [false]
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --file_path
+      description: Path to collect files for this lineage from [none]
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      - --pattern
+      description: "Pattern to match files with their name identifier\n[*.fastq.gz]"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -k
+      - --key
+      description: Path to legacy key file to extract identifiers [none]
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -r
+      - --reindex
+      description: Reindex the lineage table [none]
+      args: !EmptyFlagArg {}
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy feature lineage [OPTIONS]\n\n  Show a summary of a\
+      \ lineage from the reference sketch data\n\nOptions:\n  -d, --data PATH    \
+      \   Path to data file to summarize trait data from\n                       \
+      \ [required]  [required]\n\n  -l, --lineage TEXT    Trait to show summary for;\
+      \ columns in data file\n                        [required]\n\n  -o, --output\
+      \ PATH     Path to legacy key file to extract identifiers\n                \
+      \        [lineage.index.tsv]\n\n  -s, --summary         Print summary of lineage\
+      \ features to terminal [false]\n  -f, --file_path PATH  Path to collect files\
+      \ for this lineage from [none]\n  -p, --pattern TEXT    Pattern to match files\
+      \ with their name identifier\n                        [*.fastq.gz]\n\n  -k,\
+      \ --key PATH        Path to legacy key file to extract identifiers [none]\n\
+      \  -r, --reindex         Reindex the lineage table [none]\n  --help        \
+      \        Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  - !Command
+    command:
+    - sketchy
+    - feature
+    - drop
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --index
+      description: Path to feature index input file.  [required]
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --output
+      description: "Path to dropped feature index output file\n[index.dropped.tsv]"
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -c
+      - --columns
+      description: "Comma-delimited string of columns to drop or \"clean\"\n[clean]"
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy feature drop [OPTIONS]\n\n  Drop columns from the feature\
+      \ index file\n\nOptions:\n  -i, --index PATH    Path to feature index input\
+      \ file.  [required]\n  -o, --output PATH   Path to dropped feature index output\
+      \ file\n                      [index.dropped.tsv]\n\n  -c, --columns TEXT  Comma-delimited\
+      \ string of columns to drop or \"clean\"\n                      [clean]\n\n\
+      \  --help              Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show the version and exit.
+    args: !EmptyFlagArg {}
+  help_text: "Usage: sketchy feature [OPTIONS] COMMAND [ARGS]...\n\n  Tasks for: feature\
+    \ index preparation and population mapping\n\nOptions:\n  --version  Show the\
+    \ version and exit.\n  --help     Show this message and exit.\n\nCommands:\n \
+    \ drop     Drop columns from the feature index file\n  lineage  Show a summary\
+    \ of a lineage from the reference sketch data\n  merge    Merge sketch and feature\
+    \ data by common indices\n  prepare  Prepare a feature index file for evaluation\
+    \ in Rust\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+- &id004 !Command
+  command:
+  - sketchy
+  - utils
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - sketchy
+    - utils
+    - fx-sort
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --fastx
+      description: Path to Fast{a,q} input file.  [required]
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --output
+      description: Output to Fast{a,q} file. Default stdout [-]
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy utils fx-sort [OPTIONS]\n\n  Sort reads by 'start_time'\
+      \ in basecalled header from Guppy\n\nOptions:\n  -f, --fastx PATH   Path to\
+      \ Fast{a,q} input file.  [required]\n  -o, --output TEXT  Output to Fast{a,q}\
+      \ file. Default stdout [-]\n  --help             Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  - !Command
+    command:
+    - sketchy
+    - utils
+    - fx-time
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --fastq
+      description: "Path to Fast{a,q} input file used in evaluation NOTE:\nThis argument\
+        \ is mutually exclusive with  arguments:\n[index].  [required]"
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --index
+      description: "Path to input file read index from `sketchy utils fx-\nsort` NOTE:\
+        \ This argument is mutually exclusive with\narguments: [fastx]."
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -e
+      - --evaluation
+      description: "Path to evaluation file containing predictions\n(data.tsv)"
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      - --prefix
+      description: "Output prefix for time data: {prefix}.time.tsv\n[skecthy]"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      - --delta
+      description: "Compute time delta between 'first' read or start time\nof run\
+        \ !! GMT !! in format: '20/11/20 16:20:00'\n[first]"
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy utils fx-time [OPTIONS]\n\n  Compute time of prediction\
+      \ from reads and evaluations\n\nOptions:\n  -f, --fastq PATH       Path to Fast{a,q}\
+      \ input file used in evaluation NOTE:\n                         This argument\
+      \ is mutually exclusive with  arguments:\n                         [index].\
+      \  [required]\n\n  -i, --index PATH       Path to input file read index from\
+      \ `sketchy utils fx-\n                         sort` NOTE: This argument is\
+      \ mutually exclusive with\n                         arguments: [fastx].\n\n\
+      \  -e, --evaluation PATH  Path to evaluation file containing predictions\n \
+      \                        (data.tsv)\n\n  -p, --prefix TEXT      Output prefix\
+      \ for time data: {prefix}.time.tsv\n                         [skecthy]\n\n \
+      \ -d, --delta TEXT       Compute time delta between 'first' read or start time\n\
+      \                         of run !! GMT !! in format: '20/11/20 16:20:00'\n\
+      \                         [first]\n\n  --help                 Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  - !Command
+    command:
+    - sketchy
+    - utils
+    - fx-sample
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --fastx
+      description: Path to Fast{a,q} input file.  [required]
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --output
+      description: Output to Fast{a,q} file. Default stdout [-]
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --sample
+      description: Sample size in number of reads [1000].
+      args: !SimpleFlagArg
+        name: INTEGER
+    - !Flag
+      optional: true
+      synonyms:
+      - -r
+      - --replacement
+      description: Sample with replacement [false].
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --seed
+      description: Seed for sampling function [none].
+      args: !EmptyFlagArg {}
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy utils fx-sample [OPTIONS]\n\n  Sample reads with or\
+      \ without replacement (samples held in memory)\n\nOptions:\n  -f, --fastx PATH\
+      \      Path to Fast{a,q} input file.  [required]\n  -o, --output TEXT     Output\
+      \ to Fast{a,q} file. Default stdout [-]\n  -s, --sample INTEGER  Sample size\
+      \ in number of reads [1000].\n  -r, --replacement     Sample with replacement\
+      \ [false].\n  --seed                Seed for sampling function [none].\n  --help\
+      \                Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  - !Command
+    command:
+    - sketchy
+    - utils
+    - fx-index
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --fastx
+      description: "Path to Fast{a,q} input file to index reads from headers\n[required]"
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --sort_by
+      description: "Sort read index by column: runid, sampleid, barcode,\nname, start_time\
+        \ [start_time]"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --output
+      description: "Output sorted read index to tab-delimited file\n[read_index.tsv]"
+      args: !SimpleFlagArg
+        name: PATH
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy utils fx-index [OPTIONS]\n\n  Create read index from\
+      \ information in read headers (Guppy)\n\nOptions:\n  -f, --fastx PATH    Path\
+      \ to Fast{a,q} input file to index reads from headers\n                    \
+      \  [required]\n\n  -s, --sort_by TEXT  Sort read index by column: runid, sampleid,\
+      \ barcode,\n                      name, start_time [start_time]\n\n  -o, --output\
+      \ PATH   Output sorted read index to tab-delimited file\n                  \
+      \    [read_index.tsv]\n\n  --help              Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  - !Command
+    command:
+    - sketchy
+    - utils
+    - plot-kraken
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -r
+      - --report
+      description: Path or file glob to tax report files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      - --prefix
+      description: Output prefix for plot file.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -l
+      - --level
+      description: 'Taxonomic level to assess: species [S]'
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --top
+      description: Show top taxonomic levels in plots [10]
+      args: !SimpleFlagArg
+        name: INTEGER
+    - !Flag
+      optional: true
+      synonyms:
+      - -c
+      - --color
+      description: Color palette for central donut plot.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --title
+      description: Row titles for center plot, comma separated string.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --sub
+      description: Add subplot titles for each column.
+      args: !EmptyFlagArg {}
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy utils plot-kraken [OPTIONS]\n\n  Generate metagenomic\
+      \ report plots from Kraken2 in Sketchy Nextflow\n\nOptions:\n  -r, --report\
+      \ TEXT  Path or file glob to tax report files\n  -p, --prefix TEXT  Output prefix\
+      \ for plot file.\n  -l, --level TEXT   Taxonomic level to assess: species [S]\n\
+      \  -t, --top INTEGER  Show top taxonomic levels in plots [10]\n  -c, --color\
+      \ TEXT   Color palette for central donut plot.\n  -t, --title TEXT   Row titles\
+      \ for center plot, comma separated string.\n  -s, --sub          Add subplot\
+      \ titles for each column.\n  --help             Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  - !Command
+    command:
+    - sketchy
+    - utils
+    - fx-filter
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --fpath
+      description: Path to Fast{a,q} input file.  [required]
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --output
+      description: Output to Fast{a,q} file. Default stdout [-]
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --ids
+      description: "Path to file containing the read IDs to get from\nFast{a,q}. \
+        \  [required]"
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -c
+      - --column
+      description: Column index that contains the IDs (0-based). [1]
+      args: !SimpleFlagArg
+        name: INTEGER
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --sep
+      description: File separator to read columns. ['\t']
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy utils fx-filter [OPTIONS]\n\n  Filter reads by external\
+      \ file of read header names\n\nOptions:\n  -f, --fpath PATH      Path to Fast{a,q}\
+      \ input file.  [required]\n  -o, --output TEXT     Output to Fast{a,q} file.\
+      \ Default stdout [-]\n  -i, --ids PATH        Path to file containing the read\
+      \ IDs to get from\n                        Fast{a,q}.   [required]\n\n  -c,\
+      \ --column INTEGER  Column index that contains the IDs (0-based). [1]\n  -s,\
+      \ --sep TEXT        File separator to read columns. ['\\t']\n  --help      \
+      \          Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show the version and exit.
+    args: !EmptyFlagArg {}
+  help_text: "Usage: sketchy utils [OPTIONS] COMMAND [ARGS]...\n\n  Tasks for: supplementary\
+    \ utility functions\n\nOptions:\n  --version  Show the version and exit.\n  --help\
+    \     Show this message and exit.\n\nCommands:\n  fx-filter    Filter reads by\
+    \ external file of read header names\n  fx-index     Create read index from information\
+    \ in read headers (Guppy)\n  fx-sample    Sample reads with or without replacement\
+    \ (samples held in...\n  fx-sort      Sort reads by 'start_time' in basecalled\
+    \ header from Guppy\n  fx-time      Compute time of prediction from reads and\
+    \ evaluations\n  plot-kraken  Generate metagenomic report plots from Kraken2 in\
+    \ Sketchy...\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+- !Command
+  command:
+  - sketchy
+  - pull
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --path
+    - --p
+    description: Path to sketchy home directory [~/.sketchy ]
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --full
+    description: Pull the full default sketch collections [false]
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: sketchy pull [OPTIONS]\n\n  Pull default sketch collection into\
+    \ local storage\n\nOptions:\n  --path, --p PATH  Path to sketchy home directory\
+    \ [~/.sketchy ]\n  -f, --full        Pull the full default sketch collections\
+    \ [false]\n  --help            Show this message and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+- &id005 !Command
+  command:
+  - sketchy
+  - survey
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - sketchy
+    - survey
+    - construct
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: Survey
+      description: '[required]'
+    - !Positional
+      optional: false
+      position: 1
+      name: mtuberculosis
+      description: -m, --missing TEXT    Set a missing character [-]
+    - !Positional
+      optional: false
+      position: 2
+      name: values
+      description: --help                Show this message and exit.
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      - --directory
+      description: Input directory with collected output from Pathfinder
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --output
+      description: Tab-delimited genotype feature index for Sketchy
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --template
+      description: 'Use a configuration template: saureus, kpneumoniae,'
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --intersect
+      description: Take minimum intersection of all specified column
+      args: !EmptyFlagArg {}
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy survey construct [OPTIONS]\n\n  Construct genotype\
+      \ feature data from Pathfinder Survey\n\nOptions:\n  -d, --directory PATH  Input\
+      \ directory with collected output from Pathfinder\n                        Survey\
+      \  [required]\n\n  -o, --output PATH     Tab-delimited genotype feature index\
+      \ for Sketchy\n  -t, --template TEXT   Use a configuration template: saureus,\
+      \ kpneumoniae,\n                        mtuberculosis\n\n  -m, --missing TEXT\
+      \    Set a missing character [-]\n  -i, --intersect       Take minimum intersection\
+      \ of all specified column\n                        values\n\n  --help      \
+      \          Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  - !Command
+    command:
+    - sketchy
+    - survey
+    - mashdist
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --fasta
+      description: "Path to list containing path to genomes per line\n[required] \
+        \ [required]"
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --index
+      description: Path to lineage index file [required]  [required]
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --output
+      description: Path to output file [required]
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -k
+      - --kmer_size
+      description: "K-mer size to estimate genome distance between\nall genomes"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --sketch_size
+      description: "Sketch size to estimate genome distance between\nall genomes"
+      args: !SimpleFlagArg
+        name: INTEGER
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy survey mashdist [OPTIONS]\n\n  Experimental: compute\
+      \ a population graph with NetView and Mash\n\nOptions:\n  -f, --fasta PATH \
+      \          Path to list containing path to genomes per line\n              \
+      \               [required]  [required]\n\n  -i, --index PATH           Path\
+      \ to lineage index file [required]  [required]\n  -o, --output PATH        \
+      \  Path to output file [required]\n  -k, --kmer_size TEXT       K-mer size to\
+      \ estimate genome distance between\n                             all genomes\n\
+      \n  -s, --sketch_size INTEGER  Sketch size to estimate genome distance between\n\
+      \                             all genomes\n\n  --help                     Show\
+      \ this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  - !Command
+    command:
+    - sketchy
+    - survey
+    - link
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --iid
+      description: Path to isolate ID file from Pathfinder Survey
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      - --directory
+      description: Path to directory from which to extract files
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -c
+      - --column
+      description: "Use a header and column name to parse isolate IDs\n[None]"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -e
+      - --extension
+      description: File extension to link isolate IDs to file [.fasta]
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --symlink
+      description: Symlink the detected files to the output directory.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --outdir
+      description: "If symlink, output directory for symbolic links to\nfiles [sketchy_link]"
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -b
+      - --bootstrap
+      description: Bootstrap sample isolate IDs
+      args: !SimpleFlagArg
+        name: INTEGER
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy survey link [OPTIONS]\n\n  Link ID file to FASTA, e.g.\
+      \ from filtered Pathfinder Survey\n\nOptions:\n  -i, --iid PATH           Path\
+      \ to isolate ID file from Pathfinder Survey\n  -d, --directory PATH     Path\
+      \ to directory from which to extract files\n  -c, --column TEXT        Use a\
+      \ header and column name to parse isolate IDs\n                           [None]\n\
+      \n  -e, --extension TEXT     File extension to link isolate IDs to file [.fasta]\n\
+      \  -s, --symlink            Symlink the detected files to the output directory.\n\
+      \  -o, --outdir PATH        If symlink, output directory for symbolic links\
+      \ to\n                           files [sketchy_link]\n\n  -b, --bootstrap INTEGER\
+      \  Bootstrap sample isolate IDs\n  --help                   Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  - !Command
+    command:
+    - sketchy
+    - survey
+    - popmap
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --ssh
+      description: "Path to sum of shared hashes file to map to population\n[required]\
+        \  [required]"
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --tree
+      description: "Path to phylogeny [newick] to use as population map\n[required]\
+        \ NOTE: This argument is mutually exclusive with\narguments: [graph]."
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -g
+      - --graph
+      description: "Path to a population graph to use as population map\n[none] NOTE:\
+        \ This argument is mutually exclusive with\narguments: [tree]."
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --index
+      description: "Path to lineage index file to use as validation\npopulation [required]\
+        \  [required]"
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -c
+      - --column
+      description: "Column in index file that map the indices from the sum of\nshared\
+        \ hashes file to the population"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --output
+      description: Path to a output GIF [pop.gif]
+      args: !SimpleFlagArg
+        name: PATH
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy survey popmap [OPTIONS]\n\n  Experimental: map reference\
+      \ sketch hits against population structures\n\nOptions:\n  -s, --ssh PATH  \
+      \   Path to sum of shared hashes file to map to population\n               \
+      \      [required]  [required]\n\n  -t, --tree PATH    Path to phylogeny [newick]\
+      \ to use as population map\n                     [required] NOTE: This argument\
+      \ is mutually exclusive with\n                     arguments: [graph].\n\n \
+      \ -g, --graph PATH   Path to a population graph to use as population map\n \
+      \                    [none] NOTE: This argument is mutually exclusive with\n\
+      \                     arguments: [tree].\n\n  -i, --index PATH   Path to lineage\
+      \ index file to use as validation\n                     population [required]\
+      \  [required]\n\n  -c, --column TEXT  Column in index file that map the indices\
+      \ from the sum of\n                     shared hashes file to the population\n\
+      \n  -o, --output PATH  Path to a output GIF [pop.gif]\n  --help            \
+      \ Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show the version and exit.
+    args: !EmptyFlagArg {}
+  help_text: "Usage: sketchy survey [OPTIONS] COMMAND [ARGS]...\n\n  Tasks for: creating\
+    \ feature index files from Pathfinder Survey\n\nOptions:\n  --version  Show the\
+    \ version and exit.\n  --help     Show this message and exit.\n\nCommands:\n \
+    \ construct  Construct genotype feature data from Pathfinder Survey\n  link  \
+    \     Link ID file to FASTA, e.g.\n  mashdist   Experimental: compute a population\
+    \ graph with NetView and Mash\n  popmap     Experimental: map reference sketch\
+    \ hits against population...\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+- !Command
+  command:
+  - sketchy
+  - plot
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: evaluate
+    description: '[required]'
+  - !Positional
+    optional: false
+    position: 1
+    name: prediction
+    description: '-st, --stable INTEGER  Stability parameter passed to: sketchy evaluate'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --index
+    description: 'Path to genotype feature index used in: sketchy'
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --key
+    description: "Path to genotype feature index key for translation\nfrom numeric.\
+      \  [required]"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -ss
+    - --sssh
+    description: "Path to sum of ranked sums shared hashes data file\nfrom evaluation\
+      \  [required]"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --ssh
+    description: Path to sum of shared hashes data file from
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --palette
+    description: Color palette for output plots [YlGnBu]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --prefix
+    description: Output prefix for all files [sketchy]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --format
+    description: Output image format [png]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: Verbose logging output [false]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --mpl_backend
+    description: Matplotlib backend [default]
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: sketchy plot [OPTIONS]\n\n  Plot output from Sketchy Rust pipeline\n\
+    \nOptions:\n  -i, --index PATH       Path to genotype feature index used in: sketchy\n\
+    \                         evaluate  [required]\n\n  -k, --key PATH         Path\
+    \ to genotype feature index key for translation\n                         from\
+    \ numeric.  [required]\n\n  -ss, --sssh PATH       Path to sum of ranked sums\
+    \ shared hashes data file\n                         from evaluation  [required]\n\
+    \n  -s, --ssh PATH         Path to sum of shared hashes data file from\n     \
+    \                    prediction\n\n  -st, --stable INTEGER  Stability parameter\
+    \ passed to: sketchy evaluate\n  -c, --palette TEXT     Color palette for output\
+    \ plots [YlGnBu]\n  -p, --prefix TEXT      Output prefix for all files [sketchy]\n\
+    \  -f, --format TEXT      Output image format [png]\n  -v, --verbose         \
+    \ Verbose logging output [false]\n  --mpl_backend TEXT     Matplotlib backend\
+    \ [default]\n  --help                 Show this message and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+- &id006 !Command
+  command:
+  - sketchy
+  - online
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - sketchy
+    - online
+    - monitor
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --interval
+      description: Interval in seconds to check on resource usage
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --terminate
+      description: Terminate monitoring if no more processes are active
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -e
+      - --early
+      description: Terminate early after this amount of seconds
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      - --prefix
+      description: Prefix for data output file when completed or stopped
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -l
+      - --log
+      description: Output to log file instead of terminal
+      args: !EmptyFlagArg {}
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy online monitor [OPTIONS]\n\n  Monitor benchmarks during\
+      \ a Sketchy execution (Mash, Sketchy)\n\nOptions:\n  -i, --interval FLOAT  Interval\
+      \ in seconds to check on resource usage\n  -t, --terminate       Terminate monitoring\
+      \ if no more processes are active\n  -e, --early FLOAT     Terminate early after\
+      \ this amount of seconds\n  -p, --prefix TEXT     Prefix for data output file\
+      \ when completed or stopped\n  -l, --log             Output to log file instead\
+      \ of terminal\n  --help                Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  - !Command
+    command:
+    - sketchy
+    - online
+    - watch
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      - --directory
+      description: Path to directory to watch [required]  [required]
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -r
+      - --regex
+      description: Regex to identify read files [.*\.fastq$]
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -n
+      - --now
+      description: Disable waiting for file completion.
+      args: !EmptyFlagArg {}
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy online watch [OPTIONS]\n\n  Watch a directory and output\
+      \ file paths to pipe into Sketchy\n\nOptions:\n  -d, --directory PATH  Path\
+      \ to directory to watch [required]  [required]\n  -r, --regex TEXT      Regex\
+      \ to identify read files [.*\\.fastq$]\n  -n, --now             Disable waiting\
+      \ for file completion.\n  --help                Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  - !Command
+    command:
+    - sketchy
+    - online
+    - simulate
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: headers.
+      description: --barcode_regex TEXT          Barcode regex to parse from read
+        headers.
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --fastx
+      description: "Path to Fast{a,q} file to simulate run\n[required]  [required]"
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --index
+      description: "Path to Fast{a,q} index file from previous\nsimulation [none]"
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --outdir
+      description: Output directory for run simulation [run_sim]
+      args: !SimpleFlagArg
+        name: PATH
+    - !Flag
+      optional: true
+      synonyms:
+      - -r
+      - --reads_per_file
+      description: "Number of reads per Fast{a,q} to simulate live\nbasecalling [4000]"
+      args: !SimpleFlagArg
+        name: INTEGER
+    - !Flag
+      optional: true
+      synonyms:
+      - -b
+      - --barcodes
+      description: "Barcode integers, comma-separated e.g. 1,2,3,4\n[None]"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --speedup
+      description: Speed up the simulation by this factor [1.0]
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --start_time_regex
+      description: Read start time regex to parse from read
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --test
+      description: Run simple test mode; see docs [false]
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sketchy online simulate [OPTIONS]\n\n  Experimental: simulate\
+      \ a live sequencing run with optional barcodes\n\nOptions:\n  -f, --fastx PATH\
+      \              Path to Fast{a,q} file to simulate run\n                    \
+      \            [required]  [required]\n\n  -i, --index PATH              Path\
+      \ to Fast{a,q} index file from previous\n                                simulation\
+      \ [none]\n\n  -o, --outdir PATH             Output directory for run simulation\
+      \ [run_sim]\n  -r, --reads_per_file INTEGER  Number of reads per Fast{a,q} to\
+      \ simulate live\n                                basecalling [4000]\n\n  -b,\
+      \ --barcodes TEXT           Barcode integers, comma-separated e.g. 1,2,3,4\n\
+      \                                [None]\n\n  -s, --speedup FLOAT           Speed\
+      \ up the simulation by this factor [1.0]\n  --start_time_regex TEXT       Read\
+      \ start time regex to parse from read\n                                headers.\n\
+      \n  --barcode_regex TEXT          Barcode regex to parse from read headers.\n\
+      \  --test TEXT                   Run simple test mode; see docs [false]\n  --help\
+      \                        Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show the version and exit.
+    args: !EmptyFlagArg {}
+  help_text: "Usage: sketchy online [OPTIONS] COMMAND [ARGS]...\n\n  Tasks for: online\
+    \ sequence run monitoring and simulation\n\nOptions:\n  --version  Show the version\
+    \ and exit.\n  --help     Show this message and exit.\n\nCommands:\n  monitor\
+    \   Monitor benchmarks during a Sketchy execution (Mash, Sketchy)\n  simulate\
+    \  Experimental: simulate a live sequencing run with optional...\n  watch    \
+    \ Watch a directory and output file paths to pipe into Sketchy\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+- !Command
+  command:
+  - sketchy
+  - collect
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --directory
+    description: Path to directory to collect {prefix}.data.tsv
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --nextflow
+    description: Predictions are from Sketchy Nextflow
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --prefix
+    description: Prefix for summary files [summary]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -su
+    - --subset
+    description: "When using Nextflow use a subset string for\nspecific configurationsof\
+      \ ranks & reads: 10,1000 -\nor a sample prefix: isolate1  [None]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --reference
+    description: "Genotype matrix in same format as output containing\nfeature truths"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --heatmap
+    description: Visualize results as heatmap
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -ti
+    - --time
+    description: Parse the time enhanced output files for Nextflow
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -th
+    - --threshold
+    description: "Apply threshold value to median preference score\nsummary; values\
+      \ below are set to 0 [0.6]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -st
+    - --statistics
+    description: "Read the *.filtered.stats.txt files from the\nNextflow output and\
+      \ summarise by prefix."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -sc
+    - --scale
+    description: Scale plot sizes [1.0]
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --coverage
+    description: "Collect coverage information *.coverage.txt from\nCoverM in Nextflow"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --image_format
+    description: Output image format [pdf]
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: sketchy collect [OPTIONS]\n\n  Collect predictions and summarize\
+    \ results\n\nOptions:\n  -d, --directory PATH     Path to directory to collect\
+    \ {prefix}.data.tsv\n  -n, --nextflow           Predictions are from Sketchy Nextflow\n\
+    \  -p, --prefix TEXT        Prefix for summary files [summary]\n  -su, --subset\
+    \ TEXT       When using Nextflow use a subset string for\n                   \
+    \        specific configurationsof ranks & reads: 10,1000 -\n                \
+    \           or a sample prefix: isolate1  [None]\n\n  -r, --reference PATH   \
+    \  Genotype matrix in same format as output containing\n                     \
+    \      feature truths\n\n  -m, --heatmap            Visualize results as heatmap\n\
+    \  -ti, --time              Parse the time enhanced output files for Nextflow\n\
+    \  -th, --threshold FLOAT   Apply threshold value to median preference score\n\
+    \                           summary; values below are set to 0 [0.6]\n\n  -st,\
+    \ --statistics        Read the *.filtered.stats.txt files from the\n         \
+    \                  Nextflow output and summarise by prefix.\n\n  -sc, --scale\
+    \ FLOAT       Scale plot sizes [1.0]\n  -c, --coverage           Collect coverage\
+    \ information *.coverage.txt from\n                           CoverM in Nextflow\n\
+    \n  -i, --image_format TEXT  Output image format [pdf]\n  --help             \
+    \      Show this message and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+- !Command
+  command:
+  - sketchy
+  - list
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --path
+    description: Path to sketchy home directory [~/.sketchy]
+    args: !SimpleFlagArg
+      name: PATH
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: sketchy list [OPTIONS]\n\n  List currently available database\
+    \ sketches in repository\n\nOptions:\n  -p, --path PATH  Path to sketchy home\
+    \ directory [~/.sketchy]\n  --help           Show this message and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+- !Command
+  command:
+  - sketchy
+  - run
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: reads
+    description: '[required]'
+  - !Positional
+    optional: false
+    position: 1
+    name: template
+    description: '[required]'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --fastq
+    description: Path to input Fastq containing basecalled nanopore
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sketch
+    description: Path to reference sketch local files or species
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --ranks
+    description: Output highest ranking sum of shared hashes [10]
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outdir
+    description: Output directory for data and plots [sketchy]
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --prefix
+    description: Prefix for output files [sketchy].
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --limit
+    description: Maximum number of reads to predict on [all]
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --palette
+    description: Brewer color palette for plots [YlGnBu]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --stable
+    description: "Stability parameter to compute stable breakpoints, in\nreads [1000]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: Threads for sketch queries in Mash [4]
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --home
+    description: "Sketchy path to reference sketch home directory. Can\nbe set via\
+      \ environmental variable: SKETCHY_PATH"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quiet
+    description: Run without logging output or progress bar.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no_plot
+    description: Do not plot the results; output only table [false]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --mpl_backend
+    description: Use this Matplotlib backend [default]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --image_format
+    description: Use this image format [png]
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: sketchy run [OPTIONS]\n\n  Sketchy main access wrapper for Rust\
+    \ pipeline\n\nOptions:\n  -f, --fastq PATH       Path to input Fastq containing\
+    \ basecalled nanopore\n                         reads  [required]\n\n  -s, --sketch\
+    \ PATH      Path to reference sketch local files or species\n                \
+    \         template  [required]\n\n  -r, --ranks INTEGER    Output highest ranking\
+    \ sum of shared hashes [10]\n  -o, --outdir PATH      Output directory for data\
+    \ and plots [sketchy]\n  -p, --prefix TEXT      Prefix for output files [sketchy].\n\
+    \  -l, --limit INTEGER    Maximum number of reads to predict on [all]\n  -c, --palette\
+    \ TEXT     Brewer color palette for plots [YlGnBu]\n  -b, --stable FLOAT     Stability\
+    \ parameter to compute stable breakpoints, in\n                         reads\
+    \ [1000]\n\n  -t, --threads INTEGER  Threads for sketch queries in Mash [4]\n\
+    \  -h, --home PATH        Sketchy path to reference sketch home directory. Can\n\
+    \                         be set via environmental variable: SKETCHY_PATH\n\n\
+    \  -q, --quiet            Run without logging output or progress bar.\n  --no_plot\
+    \              Do not plot the results; output only table [false]\n  --mpl_backend\
+    \ TEXT     Use this Matplotlib backend [default]\n  --image_format TEXT    Use\
+    \ this image format [png]\n  --help                 Show this message and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: sketchy [OPTIONS] COMMAND [ARGS]...\n\n  Sketchy: online lineage\
+  \ and genotype matching using MinHash\n\nOptions:\n  --version  Show the version\
+  \ and exit.\n  --help     Show this message and exit.\n\nCommands:\n  collect  Collect\
+  \ predictions and summarize results\n  feature  Tasks for: feature index preparation\
+  \ and population mapping\n  list     List currently available database sketches\
+  \ in repository\n  online   Tasks for: online sequence run monitoring and simulation\n\
+  \  plot     Plot output from Sketchy Rust pipeline\n  pull     Pull default sketch\
+  \ collection into local storage\n  run      Sketchy main access wrapper for Rust\
+  \ pipeline\n  survey   Tasks for: creating feature index files from Pathfinder Survey\n\
+  \  utils    Tasks for: supplementary utility functions\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/sketchy:0.4.5--py37h9a982cc_0

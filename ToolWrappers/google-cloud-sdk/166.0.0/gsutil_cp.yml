@@ -4,66 +4,69 @@ command:
 - cp
 positional:
 - !Positional
-  description: Copies spanning locations and/or storage classes cause data to be rewritten
+  optional: false
   position: 0
   name: metadata.
-  optional: false
+  description: Copies spanning locations and/or storage classes cause data to be rewritten
 - !Positional
-  description: Note that by default, the gsutil cp command does not copy the object
+  optional: false
   position: 0
   name: identical.
-  optional: false
+  description: Note that by default, the gsutil cp command does not copy the object
 - !Positional
-  description: 'obj:'
+  optional: false
   position: 0
   name: Hashing
-  optional: false
+  description: 'obj:'
 - !Positional
-  description: 'gs://your-bucket/obj:                                182 b/182 B'
+  optional: false
   position: 0
   name: Uploading
-  optional: false
+  description: 'gs://your-bucket/obj:                                182 b/182 B'
 - !Positional
-  description: This feature is only available for Google Cloud Storage objects because
-    it
+  optional: false
   position: 0
   name: operation.
-  optional: false
+  description: This feature is only available for Google Cloud Storage objects because
+    it
 - !Positional
-  description: -I             Causes gsutil to read the list of files or objects to
-    copy from
+  optional: false
   position: 0
   name: copied.
-  optional: false
+  description: -I             Causes gsutil to read the list of files or objects to
+    copy from
 named:
 - !Flag
-  description: "Sets named canned_acl when uploaded objects created. See\n\"gsutil\
-    \ help acls\" for further details."
+  optional: true
   synonyms:
   - -a
+  description: "Sets named canned_acl when uploaded objects created. See\n\"gsutil\
+    \ help acls\" for further details."
   args: !SimpleFlagArg
     name: canned_acl
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -A
   description: "Copy all source versions from a source buckets/folders.\nIf not set,\
     \ only the live version of each source object is\ncopied. Note: this option is\
     \ only useful when the destination\nbucket has versioning enabled."
-  synonyms:
-  - -A
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
   description: "If an error occurs, continue to attempt to copy the remaining\nfiles.\
     \ If any copies were unsuccessful, gsutil's exit status\nwill be non-zero even\
     \ if this flag is set. This option is\nimplicitly set when running \"gsutil -m\
     \ cp...\". Note: -c only\napplies to the actual copying operation. If an error\
     \ occurs\nwhile iterating over the files in the local directory (e.g.,\ninvalid\
     \ Unicode file name) gsutil will print an error message\nand abort."
-  synonyms:
-  - -c
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -D
   description: "Copy in \"daisy chain\" mode, i.e., copying between two buckets\n\
     by hooking a download to an upload, via the machine where\ngsutil is run. This\
     \ stands in contrast to the default, where\ndata are copied between two buckets\
@@ -74,17 +77,17 @@ named:
     gsutil cp -D -p gs://bucket/obj gs://bucket/obj_tmp\ngsutil mv -p gs://bucket/obj_tmp\
     \ gs://bucket/obj\nNote: Daisy chain mode is automatically used when copying\n\
     between providers (e.g., to copy data from Google Cloud Storage\nto another provider)."
-  synonyms:
-  - -D
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Exclude symlinks. When specified, symbolic links will not be
+  optional: true
   synonyms:
   - -e
+  description: Exclude symlinks. When specified, symbolic links will not be
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -L
   description: "Outputs a manifest log file with detailed information about\neach\
     \ item that was copied. This manifest contains the following\ninformation for\
     \ each item:\n- Source path.\n- Destination path.\n- Source size.\n- Bytes transferred.\n\
@@ -105,23 +108,23 @@ named:
     \ status (such a\nstatus indicates there was at least one failure during the\n\
     gsutil run).\nNote: If you're trying to synchronize the contents of a\ndirectory\
     \ and a bucket (or two buckets), see\n\"gsutil help rsync\"."
-  synonyms:
-  - -L
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -n
   description: "No-clobber. When specified, existing files or objects at the\ndestination\
     \ will not be overwritten. Any items that are skipped\nby this option will be\
     \ reported as being skipped. This option\nwill perform an additional GET request\
     \ to check if an item\nexists before attempting to upload the data. This will\
     \ save\nretransmitting data, but the additional HTTP requests may make\nsmall\
     \ object transfers slower and more expensive."
-  synonyms:
-  - -n
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
   description: "Causes ACLs to be preserved when copying in the cloud. Note\nthat\
     \ this option has performance and cost implications when\nusing  the XML API,\
     \ as it requires separate HTTP calls for\ninteracting with ACLs. (There are no\
@@ -133,11 +136,11 @@ named:
     \ bucket to end\nup with the same ACL by setting a default object ACL on that\n\
     bucket instead of using cp -p. See \"gsutil help defacl\".\nNote that it's not\
     \ valid to specify both the -a and -p options\ntogether."
-  synonyms:
-  - -p
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -P
   description: "Causes POSIX attributes to be preserved when objects are\ncopied.\
     \ With this feature enabled, gsutil cp will copy fields\nprovided by stat. These\
     \ are the user ID of the owner, the group\nID of the owning group, the mode (permissions)\
@@ -145,48 +148,48 @@ named:
     attributes will only be set if the source objects were uploaded\nwith this flag\
     \ enabled.\nOn Windows, this flag will only set and restore access time and\n\
     modification time. This is because Windows doesn't have a\nnotion of POSIX uid/gid/mode."
-  synonyms:
-  - -P
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -R
+  - -r
   description: "The -R and -r options are synonymous. Causes directories,\nbuckets,\
     \ and bucket subdirectories to be copied recursively.\nIf you neglect to use this\
     \ option for an upload, gsutil will\ncopy any files it finds and skip any directories.\
     \ Similarly,\nneglecting to specify this option for a download will cause\ngsutil\
     \ to copy any objects at the current bucket directory\nlevel, and skip any subdirectories."
-  synonyms:
-  - -R
-  - -r
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
   description: "The storage class of the destination object(s). If not\nspecified,\
     \ the default storage class of the destination bucket\nis used. Not valid for\
     \ copying to non-cloud destinations."
-  synonyms:
-  - -s
   args: !SimpleFlagArg
     name: class
-  optional: true
 - !Flag
-  description: "Skip objects with unsupported object types instead of failing.\nUnsupported\
-    \ object types are Amazon S3 Objects in the GLACIER\nstorage class."
+  optional: true
   synonyms:
   - -U
+  description: "Skip objects with unsupported object types instead of failing.\nUnsupported\
+    \ object types are Amazon S3 Objects in the GLACIER\nstorage class."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -v
   description: "Requests that the version-specific URL for each uploaded object\n\
     be printed. Given this URL you can make future upload requests\nthat are safe\
     \ in the face of concurrent updates, because Google\nCloud Storage will refuse\
     \ to perform the update if the current\nobject version doesn't match the version-specific\
     \ URL. See\n\"gsutil help versions\" for more details."
-  synonyms:
-  - -v
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -z
   description: "<ext,...>   Applies gzip content-encoding to any file upload whose\n\
     extension matches the -z extension list. This is useful when\nuploading files\
     \ with compressible content (such as .js, .css,\nor .html files) because it saves\
@@ -208,20 +211,17 @@ named:
     \ HTML based on\nthe Content-Type header.\nNote that if you download an object\
     \ with Content-Encoding:gzip\ngsutil will decompress the content before writing\
     \ the local\nfile."
-  synonyms:
-  - -z
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -Z
   description: "Applies gzip content-encoding to file uploads. This option\nworks\
     \ like the -z option described above, but it applies to\nall uploaded files, regardless\
     \ of extension.\nWarning: If you use this option and some of the source files\n\
     don't compress well (e.g., that's often true of binary data),\nthis option may\
     \ result in files taking up more space in the\ncloud than they would if left uncompressed.\n"
-  synonyms:
-  - -Z
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -638,3 +638,4 @@ help_text: "NAME\n  cp - Copy files and objects\n\n\nSYNOPSIS\n\n  gsutil cp [OP
   \ would if left uncompressed.\n"
 generated_using:
 - --help
+docker_image:

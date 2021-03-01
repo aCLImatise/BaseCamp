@@ -30,6 +30,9 @@ task PoppunkSketch {
       ~{if defined(min_count) then ("--min-count " +  '"' + min_count + '"') else ""} \
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sketch: "Create a database of sketches"
     query: "Find distances between two sketch databases"

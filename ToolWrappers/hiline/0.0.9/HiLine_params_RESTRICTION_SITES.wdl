@@ -14,6 +14,9 @@ task HiLineParamsRESTRICTIONSITES {
       ~{reference} \
       ~{restriction_sites}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hi_line: ""
     params: ""

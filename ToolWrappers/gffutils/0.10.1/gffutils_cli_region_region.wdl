@@ -12,6 +12,9 @@ task GffutilscliRegionRegion {
       ~{region} \
       ~{db}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff_utils_cli: ""
     region: ""

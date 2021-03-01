@@ -3,225 +3,225 @@ command:
 - pysamstats
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: FILE
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --type
   description: "Type of statistics to print, one of: alignment_binned,\nbaseq, baseq_ext,\
     \ baseq_ext_strand, baseq_strand,\ncoverage, coverage_binned, coverage_ext,\n\
     coverage_ext_binned, coverage_ext_strand, coverage_gc,\ncoverage_strand, mapq,\
     \ mapq_binned, mapq_strand, tlen,\ntlen_binned, tlen_strand, variation, variation_strand."
-  synonyms:
-  - -t
-  - --type
   args: !SimpleFlagArg
     name: TYPE
-  optional: true
 - !Flag
-  description: Chromosome name.
+  optional: true
   synonyms:
   - -c
   - --chromosome
+  description: Chromosome name.
   args: !SimpleFlagArg
     name: CHROMOSOME
-  optional: true
 - !Flag
-  description: Start position (1-based).
+  optional: true
   synonyms:
   - -s
   - --start
+  description: Start position (1-based).
   args: !SimpleFlagArg
     name: START
-  optional: true
 - !Flag
-  description: End position (1-based).
+  optional: true
   synonyms:
   - -e
   - --end
+  description: End position (1-based).
   args: !SimpleFlagArg
     name: END
-  optional: true
 - !Flag
-  description: "Use zero-based coordinates (default is false, i.e.,\nuse one-based\
-    \ coords)."
+  optional: true
   synonyms:
   - -z
   - --zero-based
+  description: "Use zero-based coordinates (default is false, i.e.,\nuse one-based\
+    \ coords)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Truncate pileup-based stats so no records are emitted\noutside the\
-    \ specified range."
+  optional: true
   synonyms:
   - -u
   - --truncate
+  description: "Truncate pileup-based stats so no records are emitted\noutside the\
+    \ specified range."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --stepper
   description: "Stepper to provide to underlying pysam call. Options\nare:\"all\"\
     \ (default): all reads are returned, except\nwhere flags BAM_FUNMAP, BAM_FSECONDARY,\
     \ BAM_FQCFAIL,\nBAM_FDUP set; \"nofilter\" applies no filter to returned\nreads;\
     \ \"samtools\": filter & read processing as in\n_csamtools_ pileup. This requires\
     \ a fasta file. For\ncomplete details see the pysam documentation."
-  synonyms:
-  - -S
-  - --stepper
   args: !SimpleFlagArg
     name: STEPPER
-  optional: true
 - !Flag
-  description: "Pad pileup-based stats so a record is emitted for\nevery position\
-    \ (default is only covered positions)."
+  optional: true
   synonyms:
   - -d
   - --pad
+  description: "Pad pileup-based stats so a record is emitted for\nevery position\
+    \ (default is only covered positions)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Maximum read depth permitted in pileup-based\nstatistics. The default\
-    \ limit is 8000."
+  optional: true
   synonyms:
   - -D
   - --max-depth
+  description: "Maximum read depth permitted in pileup-based\nstatistics. The default\
+    \ limit is 8000."
   args: !SimpleFlagArg
     name: MAX_DEPTH
-  optional: true
 - !Flag
-  description: "Reference sequence file, only required for some\nstatistics."
+  optional: true
   synonyms:
   - -f
   - --fasta
+  description: "Reference sequence file, only required for some\nstatistics."
   args: !SimpleFlagArg
     name: FASTA
-  optional: true
 - !Flag
-  description: Omit header row from output.
+  optional: true
   synonyms:
   - -o
   - --omit-header
+  description: Omit header row from output.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Report progress every N rows.
+  optional: true
   synonyms:
   - -p
   - --progress
+  description: Report progress every N rows.
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Size of window for binned statistics (default is 300).
+  optional: true
   synonyms:
   - --window-size
+  description: Size of window for binned statistics (default is 300).
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Window offset to use for deciding which genome\nposition to report\
-    \ binned statistics against. The\ndefault is 150, i.e., the middle of 300bp window."
+  optional: true
   synonyms:
   - --window-offset
+  description: "Window offset to use for deciding which genome\nposition to report\
+    \ binned statistics against. The\ndefault is 150, i.e., the middle of 300bp window."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Output format, one of {tsv, csv, hdf5} (defaults to\ntsv). N.B., hdf5\
-    \ requires PyTables to be installed."
+  optional: true
   synonyms:
   - --format
+  description: "Output format, one of {tsv, csv, hdf5} (defaults to\ntsv). N.B., hdf5\
+    \ requires PyTables to be installed."
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
-  description: Path to output file. If not provided, write to stdout.
+  optional: true
   synonyms:
   - --output
+  description: Path to output file. If not provided, write to stdout.
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: "Comma-separated list of fields to output (defaults to\nall fields)."
+  optional: true
   synonyms:
   - --fields
+  description: "Comma-separated list of fields to output (defaults to\nall fields)."
   args: !SimpleFlagArg
     name: FIELDS
-  optional: true
 - !Flag
-  description: "Name of HDF5 group to write to (defaults to the root\ngroup)."
+  optional: true
   synonyms:
   - --hdf5-group
+  description: "Name of HDF5 group to write to (defaults to the root\ngroup)."
   args: !SimpleFlagArg
     name: HDF5_GROUP
-  optional: true
 - !Flag
-  description: Name of HDF5 dataset to create (defaults to "data").
+  optional: true
   synonyms:
   - --hdf5-dataset
+  description: Name of HDF5 dataset to create (defaults to "data").
   args: !SimpleFlagArg
     name: HDF5_DATASET
-  optional: true
 - !Flag
-  description: HDF5 compression library (defaults to zlib).
+  optional: true
   synonyms:
   - --hdf5-complib
+  description: HDF5 compression library (defaults to zlib).
   args: !SimpleFlagArg
     name: HDF5_COMPLIB
-  optional: true
 - !Flag
-  description: HDF5 compression level (defaults to 5).
+  optional: true
   synonyms:
   - --hdf5-complevel
+  description: HDF5 compression level (defaults to 5).
   args: !SimpleFlagArg
     name: HDF5_COMPLEVEL
-  optional: true
 - !Flag
-  description: Size of chunks in number of bytes (defaults to 2**20).
+  optional: true
   synonyms:
   - --hdf5-chunksize
+  description: Size of chunks in number of bytes (defaults to 2**20).
   args: !SimpleFlagArg
     name: HDF5_CHUNKSIZE
-  optional: true
 - !Flag
-  description: "Only reads with mapping quality equal to or greater\nthan this value\
-    \ will be counted (0 by default)."
+  optional: true
   synonyms:
   - --min-mapq
+  description: "Only reads with mapping quality equal to or greater\nthan this value\
+    \ will be counted (0 by default)."
   args: !SimpleFlagArg
     name: MIN_MAPQ
-  optional: true
 - !Flag
-  description: "Only reads with base quality equal to or greater than\nthis value\
-    \ will be counted (0 by default). Only\napplies to pileup-based statistics."
+  optional: true
   synonyms:
   - --min-baseq
+  description: "Only reads with base quality equal to or greater than\nthis value\
+    \ will be counted (0 by default). Only\napplies to pileup-based statistics."
   args: !SimpleFlagArg
     name: MIN_BASEQ
-  optional: true
 - !Flag
-  description: Don't count reads flagged as duplicate.
+  optional: true
   synonyms:
   - --no-dup
+  description: Don't count reads flagged as duplicate.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Don't count reads aligned with a deletion at the given\nposition.\
-    \ Only applies to pileup-based statistics."
+  optional: true
   synonyms:
   - --no-del
+  description: "Don't count reads aligned with a deletion at the given\nposition.\
+    \ Only applies to pileup-based statistics."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: pysamstats [options] FILE\n\nCalculate statistics against genome\
@@ -305,3 +305,4 @@ help_text: "Usage: pysamstats [options] FILE\n\nCalculate statistics against gen
   \ (pysam 0.15.4)\n\n"
 generated_using:
 - --help
+docker_image:

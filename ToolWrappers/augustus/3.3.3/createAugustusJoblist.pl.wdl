@@ -30,6 +30,9 @@ task CreateAugustusJoblistpl {
       ~{if defined(job_prefix) then ("--jobprefix " +  '"' + job_prefix + '"') else ""} \
       ~{if (partition_hints) then "--partitionHints" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequences: "input sequences, format: each line contains one sequence including the full path and its size, e.g.\\n/cluster/data/panTro2/1/chr1.fa    1       229974691\\n/cluster/data/panTro2/1/chr1_random        1       9420409\\n/cluster/data/panTro2/2/chr2a      1       114460064\\nor\\n/cluster/data/panTro2/1/chr1_random        /hints/chr1_random      1       9420409\\n/cluster/data/panTro2/2/chr2a      /hints/chr2a    1       114460064"
     output_dir: "directory, in which later the AUGUSTUS output will be written."

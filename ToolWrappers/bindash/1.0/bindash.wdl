@@ -8,6 +8,9 @@ task Bindash {
     bindash \
       ~{com_mm_and}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     com_mm_and: ""
   }

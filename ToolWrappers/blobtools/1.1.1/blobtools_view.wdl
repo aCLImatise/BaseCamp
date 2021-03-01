@@ -26,6 +26,9 @@ task BlobtoolsView {
       ~{if defined(experimental) then ("--experimental " +  '"' + experimental + '"') else ""} \
       ~{if (notable) then "--notable" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     blobdb_file_created: "BlobDB file (created with \\\"blobtools create\\\")"
     out: "Output prefix"

@@ -1,0 +1,71 @@
+!Command
+command:
+- falconc
+- ipa-shard-blocks-m4
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: jobs
+  description: -s=, --shard-prefix=  string  "shard"          The output. Shard files
+    are
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --help-syntax
+  description: 'advanced: prepend,plurals,..'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: =, --max-nshards=   int     REQUIRED         Maximum number of distributed
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: "=, --block-prefix=  string  \"block\"          Block files are\n(prefix).(block_id).m4\n\
+    (prepared previously)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "=, --out-ids-fn=    string  \"all_shard_ids\"  If given, this lists\
+    \ the\nshard_ids, 0 thru N-1,\ncorresponding to the\nshard-prefix.block_id files.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this cligen-erated help
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage:\n  ipa-shard-blocks-m4 [required&optional-params] \nGiven several\
+  \ {block_prefix}.(block_id).m4 files, create up to {max_nshards}\nfiles that each\
+  \ contain a list of block_ids (one per line).  For now, they are\nbalanced by the\
+  \ number of reads in each .m4 file.  (Later, the contents of each\nshard will be\
+  \ processed linearly, one block at a time, on a given compute node.)\n(Used to shard\
+  \ the phasing jobs.)\nOptions:\n  -h, --help                                   \
+  \  print this cligen-erated help\n  --help-syntax                              \
+  \    advanced: prepend,plurals,..\n  -m=, --max-nshards=   int     REQUIRED    \
+  \     Maximum number of distributed\n                                          \
+  \       jobs\n  -s=, --shard-prefix=  string  \"shard\"          The output. Shard\
+  \ files are\n                                                 (prefix).(shard_id).block_ids\n\
+  \  -b=, --block-prefix=  string  \"block\"          Block files are\n          \
+  \                                       (prefix).(block_id).m4\n               \
+  \                                  (prepared previously)\n  -o=, --out-ids-fn= \
+  \   string  \"all_shard_ids\"  If given, this lists the\n                      \
+  \                           shard_ids, 0 thru N-1,\n                           \
+  \                      corresponding to the\n                                  \
+  \               shard-prefix.block_id files.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0

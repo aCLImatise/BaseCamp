@@ -2,8 +2,8 @@ version 1.0
 
 task Glam2scan {
   input {
-    Directory? output_directory_will
-    Directory? output_directory_glamscanout
+    Directory? output_directory_clobber
+    Directory? output_directory_allow
     Boolean? output_text_only
     Boolean? number_alignments_report
     Boolean? examine_strands_forward
@@ -22,8 +22,8 @@ task Glam2scan {
       ~{alphabet} \
       ~{my_motif_dot_glam_two} \
       ~{my_seqs_dot_fa} \
-      ~{if (output_directory_will) then "-o" else ""} \
-      ~{if (output_directory_glamscanout) then "-O" else ""} \
+      ~{if (output_directory_clobber) then "-o" else ""} \
+      ~{if (output_directory_allow) then "-O" else ""} \
       ~{if (output_text_only) then "-t" else ""} \
       ~{if (number_alignments_report) then "-n" else ""} \
       ~{if (examine_strands_forward) then "-2" else ""} \
@@ -34,9 +34,12 @@ task Glam2scan {
       ~{if (dirichlet_mixture_file) then "-d" else ""} \
       ~{if (print_version_exit) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    output_directory_will: ": output directory; will not clobber existing files"
-    output_directory_glamscanout: ": output directory (glam2scan_out); allow clobbering"
+    output_directory_clobber: ": output directory; will not clobber existing files"
+    output_directory_allow: ": output directory (glam2scan_out); allow clobbering"
     output_text_only: ": output text only to stdout"
     number_alignments_report: ": number of alignments to report (25)"
     examine_strands_forward: ": examine both strands - forward and reverse complement"
@@ -52,7 +55,7 @@ task Glam2scan {
   }
   output {
     File out_stdout = stdout()
-    Directory out_output_directory_will = "${in_output_directory_will}"
-    Directory out_output_directory_glamscanout = "${in_output_directory_glamscanout}"
+    Directory out_output_directory_clobber = "${in_output_directory_clobber}"
+    Directory out_output_directory_allow = "${in_output_directory_allow}"
   }
 }

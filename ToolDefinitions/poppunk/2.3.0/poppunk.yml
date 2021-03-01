@@ -1,0 +1,420 @@
+!Command
+command:
+- poppunk
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sequences
+  description: --fit-model {bgmm,dbscan,refine,lineage,threshold}
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --create-db
+  description: Create pairwise distances database between reference
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-model
+  description: "Apply a fitted model to a reference database to\nrestore database\
+    \ files"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ref-db
+  description: Location of built reference database
+  args: !SimpleFlagArg
+    name: REF_DB
+- !Flag
+  optional: true
+  synonyms:
+  - --r-files
+  description: File listing reference input assemblies
+  args: !SimpleFlagArg
+    name: R_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --distances
+  description: Prefix of input pickle of pre-calculated distances
+  args: !SimpleFlagArg
+    name: DISTANCES
+- !Flag
+  optional: true
+  synonyms:
+  - --external-clustering
+  description: "File with cluster definitions or other labels\ngenerated with any\
+    \ other method."
+  args: !SimpleFlagArg
+    name: EXTERNAL_CLUSTERING
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: Prefix for output files
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --plot-fit
+  description: "Create this many plots of some fits relating k-mer to\ncore/accessory\
+    \ distances [default = 0]"
+  args: !SimpleFlagArg
+    name: PLOT_FIT
+- !Flag
+  optional: true
+  synonyms:
+  - --overwrite
+  description: Overwrite any existing database files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --graph-weights
+  description: Save within-strain Euclidean distances into the graph
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-k
+  description: Minimum kmer length [default = 13]
+  args: !SimpleFlagArg
+    name: MIN_K
+- !Flag
+  optional: true
+  synonyms:
+  - --max-k
+  description: Maximum kmer length [default = 29]
+  args: !SimpleFlagArg
+    name: MAX_K
+- !Flag
+  optional: true
+  synonyms:
+  - --k-step
+  description: K-mer step size [default = 4]
+  args: !SimpleFlagArg
+    name: K_STEP
+- !Flag
+  optional: true
+  synonyms:
+  - --sketch-size
+  description: Kmer sketch size [default = 10000]
+  args: !SimpleFlagArg
+    name: SKETCH_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --codon-phased
+  description: Used codon phased seeds X--X--X [default = False]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-kmer-count
+  description: "Minimum k-mer count when using reads as input [default\n= 0]"
+  args: !SimpleFlagArg
+    name: MIN_KMER_COUNT
+- !Flag
+  optional: true
+  synonyms:
+  - --exact-count
+  description: "Use the exact k-mer counter with reads [default = use\ncountmin counter]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --strand-preserved
+  description: "Treat input as being on the same strand, and ignore\nreverse complement\
+    \ k-mers [default = use canonical\nk-mers]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --qc-filter
+  description: "Behaviour following sequence QC step: \"stop\"\n[default], \"prune\"\
+    \ (analyse data passing QC), or\n\"continue\" (analyse all data)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      prune:
+      continue:
+      stop:
+- !Flag
+  optional: true
+  synonyms:
+  - --retain-failures
+  description: "Retain sketches of genomes that do not pass QC filters\nin separate\
+    \ database [default = False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-a-dist
+  description: Maximum accessory distance to permit [default = 0.5]
+  args: !SimpleFlagArg
+    name: MAX_A_DIST
+- !Flag
+  optional: true
+  synonyms:
+  - --length-sigma
+  description: "Number of standard deviations of length distribution\nbeyond which\
+    \ sequences will be excluded [default = 5]"
+  args: !SimpleFlagArg
+    name: LENGTH_SIGMA
+- !Flag
+  optional: true
+  synonyms:
+  - --length-range
+  description: "LENGTH_RANGE\nAllowed length range, outside of which sequences will\n\
+    be excluded [two values needed - lower and upper\nbounds]"
+  args: !SimpleFlagArg
+    name: LENGTH_RANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --prop-n
+  description: "Threshold ambiguous base proportion above which\nsequences will be\
+    \ excluded [default = 0.1]"
+  args: !SimpleFlagArg
+    name: PROP_N
+- !Flag
+  optional: true
+  synonyms:
+  - --upper-n
+  description: "Threshold ambiguous base count above which sequences\nwill be excluded"
+  args: !SimpleFlagArg
+    name: UPPER_N
+- !Flag
+  optional: true
+  synonyms:
+  - --K
+  description: Maximum number of mixture components [default = 2]
+  args: !SimpleFlagArg
+    name: K
+- !Flag
+  optional: true
+  synonyms:
+  - --D
+  description: "Maximum number of clusters in DBSCAN fitting [default\n= 100]"
+  args: !SimpleFlagArg
+    name: D
+- !Flag
+  optional: true
+  synonyms:
+  - --min-cluster-prop
+  description: "Minimum proportion of points in a cluster in DBSCAN\nfitting [default\
+    \ = 0.0001]"
+  args: !SimpleFlagArg
+    name: MIN_CLUSTER_PROP
+- !Flag
+  optional: true
+  synonyms:
+  - --threshold
+  description: Cutoff if using --fit-model threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --pos-shift
+  description: "Maximum amount to move the boundary away from origin\n[default = to\
+    \ between-strain mean]"
+  args: !SimpleFlagArg
+    name: POS_SHIFT
+- !Flag
+  optional: true
+  synonyms:
+  - --neg-shift
+  description: "Maximum amount to move the boundary towards the origin\n[default =\
+    \ to within-strain mean]"
+  args: !SimpleFlagArg
+    name: NEG_SHIFT
+- !Flag
+  optional: true
+  synonyms:
+  - --manual-start
+  description: "A file containing information for a start point. See\ndocumentation\
+    \ for help."
+  args: !SimpleFlagArg
+    name: MANUAL_START
+- !Flag
+  optional: true
+  synonyms:
+  - --indiv-refine
+  description: "Also run refinement for core and accessory\nindividually"
+  args: !ChoiceFlagArg
+    choices: !!set
+      both:
+      accessory:
+      core:
+- !Flag
+  optional: true
+  synonyms:
+  - --no-local
+  description: "Do not perform the local optimization step (speed up\non very large\
+    \ datasets)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --model-dir
+  description: "Directory containing model to use for assigning\nqueries to clusters\
+    \ [default = reference database\ndirectory]"
+  args: !SimpleFlagArg
+    name: MODEL_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --core-only
+  description: Save the core distance fit (with
+  args: !SimpleFlagArg
+    name: CORE_ONLY
+- !Flag
+  optional: true
+  synonyms:
+  - --ranks
+  description: "Comma separated list of ranks used in lineage\nclustering [default\
+    \ = 1,2,3]"
+  args: !SimpleFlagArg
+    name: RANKS
+- !Flag
+  optional: true
+  synonyms:
+  - --use-accessory
+  description: "Use accessory distances for lineage definitions\n[default = use core\
+    \ distances]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of threads to use [default = 1]
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --gpu-sketch
+  description: "Use a GPU when calculating sketches (read data only)\n[default = False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gpu-dist
+  description: Use a GPU when calculating distances [default = False]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --deviceid
+  description: CUDA device ID, if using GPU [default = 0]
+  args: !SimpleFlagArg
+    name: DEVICEID
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: poppunk [-h]\n               (--create-db | --fit-model {bgmm,dbscan,refine,lineage,threshold}\
+  \ | --use-model)\n               [--ref-db REF_DB] [--r-files R_FILES] [--distances\
+  \ DISTANCES]\n               [--external-clustering EXTERNAL_CLUSTERING] [--output\
+  \ OUTPUT]\n               [--plot-fit PLOT_FIT] [--overwrite] [--graph-weights]\n\
+  \               [--min-k MIN_K] [--max-k MAX_K] [--k-step K_STEP]\n            \
+  \   [--sketch-size SKETCH_SIZE] [--codon-phased]\n               [--min-kmer-count\
+  \ MIN_KMER_COUNT] [--exact-count]\n               [--strand-preserved] [--qc-filter\
+  \ {stop,prune,continue}]\n               [--retain-failures] [--max-a-dist MAX_A_DIST]\n\
+  \               [--length-sigma LENGTH_SIGMA]\n               [--length-range LENGTH_RANGE\
+  \ LENGTH_RANGE] [--prop-n PROP_N]\n               [--upper-n UPPER_N] [--K K] [--D\
+  \ D]\n               [--min-cluster-prop MIN_CLUSTER_PROP] [--threshold THRESHOLD]\n\
+  \               [--pos-shift POS_SHIFT] [--neg-shift NEG_SHIFT]\n              \
+  \ [--manual-start MANUAL_START]\n               [--indiv-refine {both,core,accessory}]\
+  \ [--no-local]\n               [--model-dir MODEL_DIR] [--core-only CORE_ONLY] [--ranks\
+  \ RANKS]\n               [--use-accessory] [--threads THREADS] [--gpu-sketch]\n\
+  \               [--gpu-dist] [--deviceid DEVICEID] [--version]\n\nPopPUNK (POPulation\
+  \ Partitioning Using Nucleotide Kmers)\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n\nMode of operation:\n  --create-db  \
+  \         Create pairwise distances database between reference\n               \
+  \         sequences\n  --fit-model {bgmm,dbscan,refine,lineage,threshold}\n    \
+  \                    Fit a mixture model to a reference database\n  --use-model\
+  \           Apply a fitted model to a reference database to\n                  \
+  \      restore database files\n\nInput files:\n  --ref-db REF_DB       Location\
+  \ of built reference database\n  --r-files R_FILES     File listing reference input\
+  \ assemblies\n  --distances DISTANCES\n                        Prefix of input pickle\
+  \ of pre-calculated distances\n  --external-clustering EXTERNAL_CLUSTERING\n   \
+  \                     File with cluster definitions or other labels\n          \
+  \              generated with any other method.\n\nOutput options:\n  --output OUTPUT\
+  \       Prefix for output files\n  --plot-fit PLOT_FIT   Create this many plots\
+  \ of some fits relating k-mer to\n                        core/accessory distances\
+  \ [default = 0]\n  --overwrite           Overwrite any existing database files\n\
+  \  --graph-weights       Save within-strain Euclidean distances into the graph\n\
+  \nCreate DB options:\n  --min-k MIN_K         Minimum kmer length [default = 13]\n\
+  \  --max-k MAX_K         Maximum kmer length [default = 29]\n  --k-step K_STEP \
+  \      K-mer step size [default = 4]\n  --sketch-size SKETCH_SIZE\n            \
+  \            Kmer sketch size [default = 10000]\n  --codon-phased        Used codon\
+  \ phased seeds X--X--X [default = False]\n  --min-kmer-count MIN_KMER_COUNT\n  \
+  \                      Minimum k-mer count when using reads as input [default\n\
+  \                        = 0]\n  --exact-count         Use the exact k-mer counter\
+  \ with reads [default = use\n                        countmin counter]\n  --strand-preserved\
+  \    Treat input as being on the same strand, and ignore\n                     \
+  \   reverse complement k-mers [default = use canonical\n                       \
+  \ k-mers]\n\nQuality control options:\n  --qc-filter {stop,prune,continue}\n   \
+  \                     Behaviour following sequence QC step: \"stop\"\n         \
+  \               [default], \"prune\" (analyse data passing QC), or\n           \
+  \             \"continue\" (analyse all data)\n  --retain-failures     Retain sketches\
+  \ of genomes that do not pass QC filters\n                        in separate database\
+  \ [default = False]\n  --max-a-dist MAX_A_DIST\n                        Maximum\
+  \ accessory distance to permit [default = 0.5]\n  --length-sigma LENGTH_SIGMA\n\
+  \                        Number of standard deviations of length distribution\n\
+  \                        beyond which sequences will be excluded [default = 5]\n\
+  \  --length-range LENGTH_RANGE LENGTH_RANGE\n                        Allowed length\
+  \ range, outside of which sequences will\n                        be excluded [two\
+  \ values needed - lower and upper\n                        bounds]\n  --prop-n PROP_N\
+  \       Threshold ambiguous base proportion above which\n                      \
+  \  sequences will be excluded [default = 0.1]\n  --upper-n UPPER_N     Threshold\
+  \ ambiguous base count above which sequences\n                        will be excluded\n\
+  \nModel fit options:\n  --K K                 Maximum number of mixture components\
+  \ [default = 2]\n  --D D                 Maximum number of clusters in DBSCAN fitting\
+  \ [default\n                        = 100]\n  --min-cluster-prop MIN_CLUSTER_PROP\n\
+  \                        Minimum proportion of points in a cluster in DBSCAN\n \
+  \                       fitting [default = 0.0001]\n  --threshold THRESHOLD\n  \
+  \                      Cutoff if using --fit-model threshold\n\nRefine model options:\n\
+  \  --pos-shift POS_SHIFT\n                        Maximum amount to move the boundary\
+  \ away from origin\n                        [default = to between-strain mean]\n\
+  \  --neg-shift NEG_SHIFT\n                        Maximum amount to move the boundary\
+  \ towards the origin\n                        [default = to within-strain mean]\n\
+  \  --manual-start MANUAL_START\n                        A file containing information\
+  \ for a start point. See\n                        documentation for help.\n  --indiv-refine\
+  \ {both,core,accessory}\n                        Also run refinement for core and\
+  \ accessory\n                        individually\n  --no-local            Do not\
+  \ perform the local optimization step (speed up\n                        on very\
+  \ large datasets)\n  --model-dir MODEL_DIR\n                        Directory containing\
+  \ model to use for assigning\n                        queries to clusters [default\
+  \ = reference database\n                        directory]\n  --core-only CORE_ONLY\n\
+  \                        Save the core distance fit (with\n\nLineage analysis options:\n\
+  \  --ranks RANKS         Comma separated list of ranks used in lineage\n       \
+  \                 clustering [default = 1,2,3]\n  --use-accessory       Use accessory\
+  \ distances for lineage definitions\n                        [default = use core\
+  \ distances]\n\nOther options:\n  --threads THREADS     Number of threads to use\
+  \ [default = 1]\n  --gpu-sketch          Use a GPU when calculating sketches (read\
+  \ data only)\n                        [default = False]\n  --gpu-dist          \
+  \  Use a GPU when calculating distances [default = False]\n  --deviceid DEVICEID\
+  \   CUDA device ID, if using GPU [default = 0]\n  --version             show program's\
+  \ version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/poppunk:2.3.0--py_0

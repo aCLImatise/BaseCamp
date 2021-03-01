@@ -2,13 +2,13 @@ version 1.0
 
 task Fgwas {
   input {
-    Boolean? input_file_w
+    Boolean? input_file_zscores
     Boolean? stem_names_output
     Boolean? annotations_use_annotations
     Boolean? dists
     Boolean? block_size_number
     Boolean? bed
-    Boolean? variance_prior_separate
+    Boolean? variance_prior_normalized
     Boolean? penalty_sum_squared
     String? print
     Int? xv
@@ -20,13 +20,13 @@ task Fgwas {
   }
   command <<<
     fgwas \
-      ~{if (input_file_w) then "-i" else ""} \
+      ~{if (input_file_zscores) then "-i" else ""} \
       ~{if (stem_names_output) then "-o" else ""} \
       ~{if (annotations_use_annotations) then "-w" else ""} \
       ~{if (dists) then "-dists" else ""} \
       ~{if (block_size_number) then "-k" else ""} \
       ~{if (bed) then "-bed" else ""} \
-      ~{if (variance_prior_separate) then "-v" else ""} \
+      ~{if (variance_prior_normalized) then "-v" else ""} \
       ~{if (penalty_sum_squared) then "-p" else ""} \
       ~{if defined(print) then ("-print " +  '"' + print + '"') else ""} \
       ~{if defined(xv) then ("-xv " +  '"' + xv + '"') else ""} \
@@ -36,14 +36,17 @@ task Fgwas {
       ~{if defined(only_p) then ("-onlyp " +  '"' + only_p + '"') else ""} \
       ~{if (cond) then "-cond" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    input_file_w: "[file name] input file w/ Z-scores"
+    input_file_zscores: "[file name] input file w/ Z-scores"
     stem_names_output: "[string] stem for names of output files"
     annotations_use_annotations: "[string] which annotation(s) to use. Separate multiple annotations with plus signs"
     dists: "[string:string] the name of the distance annotation(s) and the file(s) containing the distance model(s)"
     block_size_number: "[integer] block size in number of SNPs (5000)"
     bed: "[string] read block positions from a .bed file"
-    variance_prior_separate: "[float] variance of prior on normalized effect size. To average priors, separate with commas (0.01,0.1,0.5)"
+    variance_prior_normalized: "[float] variance of prior on normalized effect size. To average priors, separate with commas (0.01,0.1,0.5)"
     penalty_sum_squared: "[float] penalty on sum of squared lambdas, only relevant for -print (0.2)"
     print: "the per-SNP output"
     xv: "10-fold cross-validation"

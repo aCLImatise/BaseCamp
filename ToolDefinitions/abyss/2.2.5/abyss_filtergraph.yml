@@ -1,0 +1,249 @@
+!Command
+command:
+- abyss-filtergraph
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ADJ
+  description: contig adjacency graph
+- !Positional
+  optional: false
+  position: 1
+  name: FASTA
+  description: contigs to check consistency of ADJ edges
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: k-mer size
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --SS
+  description: expect contigs to be oriented correctly
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-SS
+  description: no assumption about contig orientation
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --island
+  description: remove islands shorter than N [0]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tip
+  description: remove tips shorter than N [0]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --length
+  description: remove contigs shorter than N [0]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --max-length
+  description: remove contigs longer than N [0]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --coverage
+  description: remove contigs with mean k-mer coverage less than FLOAT [0]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --max-coverage
+  description: remove contigs with mean k-mer coverage at least FLOAT [0]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --shim
+  description: "remove filler contigs that only contribute\nto adjacency [default]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-shim
+  description: disable filler contigs removal
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --shim-max-degree
+  description: "only remove shims where the smaller of\nin/out degree is smaller than\
+    \ N [1]"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-overlap
+  description: require a minimum overlap of N bases [10]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --assemble
+  description: assemble unambiguous paths
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-assemble
+  description: disable assembling of paths [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --graph
+  description: write the contig adjacency graph to FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --ignore
+  description: ignore contigs seen in FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --remove
+  description: remove contigs seen in FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --adj
+  description: output the graph in ADJ format [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --asqg
+  description: output the graph in ASQG format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dot
+  description: output the graph in GraphViz format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gfa
+  description: output the graph in GFA1 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gfa1
+  description: output the graph in GFA1 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gfa2
+  description: output the graph in GFA2 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gv
+  description: output the graph in GraphViz format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sam
+  description: output the graph in SAM format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: display verbose output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: display this help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: output version information and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: abyss-filtergraph -k<kmer> [OPTION]... ADJ [FASTA]\nRemove short\
+  \ contigs that do not contribute any relevant\ninformation to the assembly.\n\n\
+  \ Arguments:\n\n  ADJ    contig adjacency graph\n  FASTA  contigs to check consistency\
+  \ of ADJ edges\n\n Options:\n\n  -k, --kmer=N            k-mer size\n      --SS\
+  \                expect contigs to be oriented correctly\n      --no-SS        \
+  \     no assumption about contig orientation\n  -T, --island=N          remove islands\
+  \ shorter than N [0]\n  -t, --tip=N             remove tips shorter than N [0]\n\
+  \  -l, --length=N          remove contigs shorter than N [0]\n  -L, --max-length=N\
+  \      remove contigs longer than N [0]\n  -c, --coverage=FLOAT    remove contigs\
+  \ with mean k-mer coverage less than FLOAT [0]\n  -C, --max-coverage=FLOAT remove\
+  \ contigs with mean k-mer coverage at least FLOAT [0]\n      --shim            \
+  \  remove filler contigs that only contribute\n                          to adjacency\
+  \ [default]\n      --no-shim           disable filler contigs removal\n      --shim-max-degree=N\
+  \ only remove shims where the smaller of \n                          in/out degree\
+  \ is smaller than N [1]\n  -m, --min-overlap=N     require a minimum overlap of\
+  \ N bases [10]\n      --assemble          assemble unambiguous paths\n      --no-assemble\
+  \       disable assembling of paths [default]\n  -g, --graph=FILE        write the\
+  \ contig adjacency graph to FILE\n  -i, --ignore=FILE       ignore contigs seen\
+  \ in FILE\n  -r, --remove=FILE       remove contigs seen in FILE\n      --adj  \
+  \             output the graph in ADJ format [default]\n      --asqg           \
+  \   output the graph in ASQG format\n      --dot               output the graph\
+  \ in GraphViz format\n      --gfa               output the graph in GFA1 format\n\
+  \      --gfa1              output the graph in GFA1 format\n      --gfa2       \
+  \       output the graph in GFA2 format\n      --gv                output the graph\
+  \ in GraphViz format\n      --sam               output the graph in SAM format\n\
+  \  -v, --verbose           display verbose output\n      --help              display\
+  \ this help and exit\n      --version           output version information and exit\n\
+  \nReport bugs to <abyss-users@bcgsc.ca>.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/abyss:2.2.5--ha4ec83a_0

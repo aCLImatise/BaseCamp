@@ -4,6 +4,9 @@ task PLEKGenerateScriptsR {
   command <<<
     PLEK_generate_scripts_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

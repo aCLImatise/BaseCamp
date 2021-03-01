@@ -36,6 +36,9 @@ task Multiparagraphpy {
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "BAM file name"
     output_file_name: "Output file name"

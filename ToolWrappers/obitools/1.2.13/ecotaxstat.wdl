@@ -14,6 +14,9 @@ task Ecotaxstat {
       ~{if defined(eco_pcr_db) then ("--ecopcrdb " +  '"' + eco_pcr_db + '"') else ""} \
       ~{if defined(required) then ("--required " +  '"' + required + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Set logging in debug mode"
     without_progress_bar: "desactivate progress bar"

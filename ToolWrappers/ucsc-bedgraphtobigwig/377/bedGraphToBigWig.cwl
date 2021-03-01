@@ -3,17 +3,17 @@ id: bedGraphToBigWig.cwl
 inputs:
 - id: in_block_size
   doc: '- Number of items to bundle in r-tree.  Default 256'
-  type: long
+  type: long?
   inputBinding:
     prefix: -blockSize
 - id: in_items_per_slot
   doc: '- Number of data points bundled at lowest level. Default 1024'
-  type: long
+  type: long?
   inputBinding:
     prefix: -itemsPerSlot
 - id: in_unc
   doc: '- If set, do not use compression.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -unc
 - id: in_in_dot_bed_graph
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bedGraphToBigWig

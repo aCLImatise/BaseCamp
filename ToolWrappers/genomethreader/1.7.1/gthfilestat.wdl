@@ -18,6 +18,9 @@ task Gthfilestat {
       ~{if (be_verbosedefault_no) then "-v" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_alignment_score: "the minimum alignment score for spliced alignments to be\\nincluded into the set of spliced alignments\\ndefault: 0.00"
     max_alignment_score: "the maximum alignment score for spliced alignments to be\\nincluded into the set of spliced alignments\\ndefault: 1.00"

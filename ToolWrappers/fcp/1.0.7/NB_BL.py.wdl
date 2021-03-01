@@ -12,6 +12,9 @@ task NBBLpy {
       ~{blastn_results} \
       ~{results_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nb_results: ""
     blastn_results: ""

@@ -4,81 +4,81 @@ command:
 - sr-test
 positional:
 - !Positional
-  description: "VCF of variant calls. Standardized to include CHR2,\nEND, SVTYPE,\
-    \ STRANDS in INFO."
+  optional: false
   position: 0
   name: vcf
-  optional: false
+  description: "VCF of variant calls. Standardized to include CHR2,\nEND, SVTYPE,\
+    \ STRANDS in INFO."
 - !Positional
-  description: "Tabix indexed file of split counts. Columns:\nchrom,pos,clip,count,sample"
+  optional: false
   position: 1
   name: countfile
-  optional: false
+  description: "Tabix indexed file of split counts. Columns:\nchrom,pos,clip,count,sample"
 - !Positional
-  description: Output table of most significant start/endpositions.
+  optional: false
   position: 2
   name: fout
-  optional: false
+  description: Output table of most significant start/endpositions.
 named:
 - !Flag
-  description: "Window around variant start/end to consider for split\nread support.\
-    \ [100]"
+  optional: true
   synonyms:
   - -w
   - --window
+  description: "Window around variant start/end to consider for split\nread support.\
+    \ [100]"
   args: !SimpleFlagArg
     name: WINDOW
-  optional: true
 - !Flag
-  description: "Number of background samples to choose for comparison\nin t-test.\
-    \ [160]"
+  optional: true
   synonyms:
   - -b
   - --background
+  description: "Number of background samples to choose for comparison\nin t-test.\
+    \ [160]"
   args: !SimpleFlagArg
     name: BACKGROUND
-  optional: true
 - !Flag
-  description: Whitelist of samples to restrict testing to.
+  optional: true
   synonyms:
   - -s
   - --samples
+  description: Whitelist of samples to restrict testing to.
   args: !SimpleFlagArg
     name: SAMPLES
-  optional: true
 - !Flag
-  description: "Tabix index of discordant pair file. Required if\ndiscordant pair\
-    \ file is hosted remotely."
+  optional: true
   synonyms:
   - --index
+  description: "Tabix index of discordant pair file. Required if\ndiscordant pair\
+    \ file is hosted remotely."
   args: !SimpleFlagArg
     name: INDEX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --medianfile
   description: "Median coverage statistics for each library\n(optional). If provided,\
     \ each sample's split counts\nwill be normalized accordingly. Same format as RdTest,\n\
     one column per sample."
-  synonyms:
-  - --medianfile
   args: !SimpleFlagArg
     name: MEDIANFILE
-  optional: true
 - !Flag
-  description: Print progress log to stderr.
+  optional: true
   synonyms:
   - --log
+  description: Print progress log to stderr.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: svtk sr-test [-h] [-w WINDOW] [-b BACKGROUND] [-s SAMPLES]\n  \
@@ -104,3 +104,4 @@ help_text: "usage: svtk sr-test [-h] [-w WINDOW] [-b BACKGROUND] [-s SAMPLES]\n 
   \ to stderr.\n"
 generated_using:
 - --help
+docker_image:

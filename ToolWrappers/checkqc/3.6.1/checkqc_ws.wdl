@@ -16,6 +16,9 @@ task Checkqcws {
       ~{if defined(log_config) then ("--log_config " +  '"' + log_config + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     port: "Port which checkqc-ws will listen to (default: 9999)."
     config: "Path to the checkQC configuration file (optional)"

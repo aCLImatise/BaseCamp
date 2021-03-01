@@ -12,6 +12,9 @@ task Pepwindowall {
       ~{if (window) then "-window" else ""} \
       ~{if (normalize) then "-normalize" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_file: "datafile   [Enakai.dat] AAINDEX entry data file"
     window: "integer    [19] Window size (Integer 1 or more)"

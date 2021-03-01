@@ -12,6 +12,9 @@ task GsutilWeb {
       ~{if defined(specifies_object_name) then ("-m " +  '"' + specifies_object_name + '"') else ""} \
       ~{if defined(specifies_error_page) then ("-e " +  '"' + specifies_error_page + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specifies_object_name: "Specifies the object name to serve when a bucket\\nlisting is requested via the CNAME alias to\\nc.storage.googleapis.com."
     specifies_error_page: "Specifies the error page to serve when a request is made\\nfor a non-existent object via the CNAME alias to\\nc.storage.googleapis.com."

@@ -24,6 +24,9 @@ task AlignCollectpy {
       ~{stats} \
       ~{files}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     script: ""
     to: ""

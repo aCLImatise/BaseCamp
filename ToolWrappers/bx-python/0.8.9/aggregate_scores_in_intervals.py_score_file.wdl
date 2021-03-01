@@ -10,6 +10,9 @@ task AggregateScoresInIntervalspyScoreFile {
       ~{files} \
       ~{if (binned) then "--binned" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     binned: "'score_file' is actually a directory of binned array"
     files: "-m MASK, --mask=MASK  bed file containing regions not to consider valid"

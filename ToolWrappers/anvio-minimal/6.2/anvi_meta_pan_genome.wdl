@@ -16,6 +16,9 @@ task Anvimetapangenome {
       ~{if defined(fraction_of_median_coverage) then ("--fraction-of-median-coverage " +  '"' + fraction_of_median_coverage + '"') else ""} \
       ~{if defined(min_detection) then ("--min-detection " +  '"' + min_detection + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_db: "Anvi'o pan database"
     genomes_storage: "Anvi'o genomes storage file"

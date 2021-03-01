@@ -2,7 +2,6 @@ version 1.0
 
 task GcloudDeploymentmanagerDeployments {
   input {
-    String? config
     String deployments
     String cancel_preview
     String create
@@ -21,11 +20,12 @@ task GcloudDeploymentmanagerDeployments {
       ~{describe} \
       ~{list} \
       ~{stop} \
-      ~{update} \
-      ~{if defined(config) then ("--config " +  '"' + config + '"') else ""}
+      ~{update}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    config: "To update a deployment, run:\\n$ gcloud deployment-manager deployments update my-deployment \\\\n--config new_config.yaml\\nTo stop a deployment create or update in progress, run:\\n$ gcloud deployment-manager deployments stop my-deployment\\nTo cancel a previewed create or update, run:\\n$ gcloud deployment-manager deployments cancel-preview my-deployment\\nTo delete a deployment, run:\\n$ gcloud deployment-manager deployments delete my-deployment\\nTo view the details of a deployment, run:\\n$ gcloud deployment-manager deployments describe my-deployment\\nTo see the list of all deployments, run:\\n$ gcloud deployment-manager deployments list\\n"
     deployments: "SYNOPSIS"
     cancel_preview: "Cancel a pending or running deployment preview."
     create: "Create a deployment."

@@ -8,6 +8,9 @@ task IprUpdateGff {
     ipr_update_gff \
       ~{in_place}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_place: "Modify GFF3 files inplace, otherwise it prints to STDOUT"
   }

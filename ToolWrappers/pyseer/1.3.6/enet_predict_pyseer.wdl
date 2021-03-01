@@ -32,6 +32,9 @@ task EnetPredictPyseer {
       ~{if defined(covariates) then ("--covariates " +  '"' + covariates + '"') else ""} \
       ~{if (use_covariates) then "--use-covariates" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threshold: "Threshold to pick binary predictions"
     lineage_clusters: "Custom clusters to use as lineages to report\\nstratified accuracy"

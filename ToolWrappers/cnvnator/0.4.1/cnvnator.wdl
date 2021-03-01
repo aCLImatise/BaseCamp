@@ -18,6 +18,9 @@ task Cnvnator {
       ~{if defined(genome) then ("-genome " +  '"' + genome + '"') else ""} \
       ~{if defined(root) then ("-root " +  '"' + root + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     lite: ""
     tree: ""

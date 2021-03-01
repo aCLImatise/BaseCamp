@@ -3,69 +3,167 @@ command:
 - normalize-by-median.py
 positional:
 - !Positional
-  description: 'Example:'
-  position: 0
-  name: tests/test-data/test-abund-read-paired.fa
   optional: false
-- !Positional
-  description: 'Example:'
   position: 0
-  name: tests/test-data/test-fastq-reads.fq
-  optional: false
+  name: input_sequence_filename
+  description: Input FAST[AQ] sequence filename.
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -k
-  args: !SimpleFlagArg
-    name: KSIZE
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - --info
+  description: print citation information
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -k
+  - --ksize
+  description: 'k-mer size to use (default: 32)'
+  args: !SimpleFlagArg
+    name: KSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  - --unique-kmers
+  description: "approximate number of unique kmers in the input set\n(default: 0)"
+  args: !SimpleFlagArg
+    name: UNIQUE_KMERS
+- !Flag
+  optional: true
+  synonyms:
+  - --fp-rate
+  description: "Override the automatic FP rate setting for the current\nscript (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: FP_RATE
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --max-memory-usage
+  description: "maximum amount of memory to use for data structure\n(default: None)"
+  args: !SimpleFlagArg
+    name: MAX_MEMORY_USAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --small-count
+  description: "Reduce memory usage by using a smaller counter for\nindividual kmers.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  - -C
+  - --cutoff
+  description: "when the median k-mer coverage level is above this\nnumber the read\
+    \ is not kept. (default: 20)"
+  args: !SimpleFlagArg
+    name: CUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --paired
+  description: "require that all sequences be properly paired\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force_single
+  description: "treat all sequences as single-ended/unpaired (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --unpaired-reads
+  description: "include a file of unpaired reads to which -p/--paired\ndoes not apply.\
+    \ (default: None)"
+  args: !SimpleFlagArg
+    name: unpaired_reads_filename
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --savegraph
+  description: "save the k-mer countgraph to disk after all reads are\nloaded. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --report
+  description: "write progress report to report_filename (default:\nNone)"
+  args: !SimpleFlagArg
+    name: report_filename
+- !Flag
+  optional: true
+  synonyms:
+  - --report-frequency
+  description: "report progress every report_frequency reads (default:\n100000)"
+  args: !SimpleFlagArg
+    name: report_frequency
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: 'continue past file reading errors (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "only output a single file with the specified filename;\nuse a single\
+    \ dash \"-\" to specify that output should go\nto STDOUT (the terminal) (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --loadgraph
+  description: "load a precomputed k-mer graph from disk (default:\nNone)"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --gzip
+  description: 'Compress output using gzip (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bzip
+  description: 'Compress output using bzip2 (default: False)'
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: "show program's version number and exit\n--info                print\
-    \ citation information\n-h, --help            show this help message and exit\n\
-    -k KSIZE, --ksize KSIZE\nk-mer size to use (default: 32)\n-U UNIQUE_KMERS, --unique-kmers\
-    \ UNIQUE_KMERS\napproximate number of unique kmers in the input set\n(default:\
-    \ 0)\n--fp-rate FP_RATE     Override the automatic FP rate setting for the current\n\
-    script (default: None)\n-M MAX_MEMORY_USAGE, --max-memory-usage MAX_MEMORY_USAGE\n\
-    maximum amount of memory to use for data structure\n(default: None)\n--small-count\
-    \         Reduce memory usage by using a smaller counter for\nindividual kmers.\
-    \ (default: False)\n-q, --quiet\n-C CUTOFF, --cutoff CUTOFF\nwhen the median k-mer\
-    \ coverage level is above this\nnumber the read is not kept. (default: 20)\n-p,\
-    \ --paired          require that all sequences be properly paired\n(default: False)\n\
-    --force_single        treat all sequences as single-ended/unpaired (default:\n\
-    False)\n-u unpaired_reads_filename, --unpaired-reads unpaired_reads_filename\n\
-    include a file of unpaired reads to which -p/--paired\ndoes not apply. (default:\
-    \ None)\n-s filename, --savegraph filename\nsave the k-mer countgraph to disk\
-    \ after all reads are\nloaded. (default: None)\n-R report_filename, --report report_filename\n\
-    write progress report to report_filename (default:\nNone)\n--report-frequency\
-    \ report_frequency\nreport progress every report_frequency reads (default:\n100000)\n\
-    -f, --force           continue past file reading errors (default: False)\n-o filename,\
-    \ --output filename\nonly output a single file with the specified filename;\n\
-    use a single dash \"-\" to specify that output should go\nto STDOUT (the terminal)\
-    \ (default: None)\n-l filename, --loadgraph filename\nload a precomputed k-mer\
-    \ graph from disk (default:\nNone)\n--gzip                Compress output using\
-    \ gzip (default: False)\n--bzip                Compress output using bzip2 (default:\
-    \ False)"
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: normalize-by-median.py [--version] [--info] [-h] [-k KSIZE]\n \
   \                             [-U UNIQUE_KMERS] [--fp-rate FP_RATE]\n          \
   \                    [-M MAX_MEMORY_USAGE] [--small-count] [-q]\n              \
@@ -132,3 +230,4 @@ help_text: "usage: normalize-by-median.py [--version] [--info] [-h] [-k KSIZE]\n
   \ \\\n    tests/test-data/test-fastq-reads.fq\n"
 generated_using:
 - --help
+docker_image:

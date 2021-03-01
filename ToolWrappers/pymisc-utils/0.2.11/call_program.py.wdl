@@ -8,6 +8,9 @@ task CallProgrampy {
     call_program_py \
       ~{cmd}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cmd: "optional arguments:"
   }

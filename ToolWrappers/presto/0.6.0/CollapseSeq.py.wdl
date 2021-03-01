@@ -10,7 +10,7 @@ task CollapseSeqpy {
     Boolean? failed
     Boolean? fast_a
     String? delim
-    Int? maximum_number_consider
+    Int? maximum_number_missing
     Array[String] uf
     Array[String] cf
     String? act
@@ -37,7 +37,7 @@ task CollapseSeqpy {
       ~{if (failed) then "--failed" else ""} \
       ~{if (fast_a) then "--fasta" else ""} \
       ~{if defined(delim) then ("--delim " +  '"' + delim + '"') else ""} \
-      ~{if defined(maximum_number_consider) then ("-n " +  '"' + maximum_number_consider + '"') else ""} \
+      ~{if defined(maximum_number_missing) then ("-n " +  '"' + maximum_number_missing + '"') else ""} \
       ~{if defined(uf) then ("--uf " +  '"' + uf + '"') else ""} \
       ~{if defined(cf) then ("--cf " +  '"' + cf + '"') else ""} \
       ~{if defined(act) then ("--act " +  '"' + act + '"') else ""} \
@@ -46,6 +46,9 @@ task CollapseSeqpy {
       ~{if defined(max_f) then ("--maxf " +  '"' + max_f + '"') else ""} \
       ~{if defined(minf) then ("--minf " +  '"' + minf + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_fastafastq_files: "A list of FASTA/FASTQ files containing sequences to\\nprocess. (default: None)"
     explicit_output_file: "Explicit output file name(s). Note, this argument\\ncannot be used with the --failed, --outdir, or\\n--outname arguments. If unspecified, then the output\\nfilename will be based on the input filename(s).\\n(default: None)"
@@ -55,7 +58,7 @@ task CollapseSeqpy {
     failed: "If specified create files containing records that fail\\nprocessing. (default: False)"
     fast_a: "Specify to force output as FASTA rather than FASTQ.\\n(default: None)"
     delim: "DELIMITER DELIMITER\\nA list of the three delimiters that separate\\nannotation blocks, field names and values, and values\\nwithin a field, respectively. (default: ('|', '=',\\n','))"
-    maximum_number_consider: "Maximum number of missing nucleotides to consider for\\ncollapsing sequences. A sequence will be considered\\nundetermined if it contains too many missing\\nnucleotides. (default: 0)"
+    maximum_number_missing: "Maximum number of missing nucleotides to consider for\\ncollapsing sequences. A sequence will be considered\\nundetermined if it contains too many missing\\nnucleotides. (default: 0)"
     uf: "Specifies a set of annotation fields that must match\\nfor sequences to be considered duplicates. (default:\\nNone)"
     cf: "Specifies a set of annotation fields to copy into the\\nunique sequence output. (default: None)"
     act: "[{min,max,sum,set} ...]\\nList of actions to take for each copy field which\\ndefines how each annotation will be combined into a\\nsingle value. The actions \\\"min\\\", \\\"max\\\", \\\"sum\\\" perform\\nthe corresponding mathematical operation on numeric\\nannotations. The action \\\"set\\\" collapses annotations\\ninto a comma delimited list of unique values.\\n(default: None)"

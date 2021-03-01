@@ -56,6 +56,9 @@ task Demuxlet {
       ~{if (min_uniq) then "--min-uniq" else ""} \
       ~{if (min_snp) then "--min-snp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sam: "[STR: ]             : Input SAM/BAM/CRAM file. Must be sorted by coordinates and indexed"
     tag_group: "[STR: CB]           : Tag representing readgroup or cell barcodes, in the case to partition the BAM file into multiple groups. For 10x genomics, use CB"

@@ -12,6 +12,9 @@ task RNAcentralHTTPRequest {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sequence: "input sequence"
     verbose: "Loud verbosity"

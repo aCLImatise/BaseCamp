@@ -9,7 +9,7 @@ task Mergefastqp {
     String files
     String into
     String one
-    File file
+    File var_file
   }
   command <<<
     mergefastq_p \
@@ -20,8 +20,11 @@ task Mergefastqp {
       ~{files} \
       ~{into} \
       ~{one} \
-      ~{file}
+      ~{var_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     merge: ""
     separate: ""
@@ -30,7 +33,7 @@ task Mergefastqp {
     files: ""
     into: ""
     one: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

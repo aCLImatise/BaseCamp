@@ -14,6 +14,9 @@ task SnaptoolsSnapaddbmat {
       ~{if defined(tmp_folder) then ("--tmp-folder " +  '"' + tmp_folder + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     snap_file: "snap file. (default: None)"
     bin_size_list: "a list of bin size(s) to create the cell-by-bin count\\nmatrix. The genome will be divided into bins of the\\nequal size of --bin-size-list to create the cell x bin\\ncount matrix. If more than one bin size are given,\\nsnaptools will generate a list of cell x bin matrices\\nof different resolutions and stored in the same snap\\nfile. (default: [5000])"

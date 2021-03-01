@@ -16,6 +16,9 @@ task MentaLiSTjlCallAlgorithm {
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
     db: ""

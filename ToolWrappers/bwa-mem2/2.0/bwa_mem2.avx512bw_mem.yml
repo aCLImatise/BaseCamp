@@ -4,272 +4,274 @@ command:
 - mem
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: idxbase
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: in1.fq
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 2
   name: in2.fq
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: Output SAM file name
+  optional: true
   synonyms:
   - -o
+  description: Output SAM file name
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: number of threads [1]
+  optional: true
   synonyms:
   - -t
+  description: number of threads [1]
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: minimum seed length [19]
+  optional: true
   synonyms:
   - -k
+  description: minimum seed length [19]
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: band width for banded alignment [100]
+  optional: true
   synonyms:
   - -w
+  description: band width for banded alignment [100]
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: off-diagonal X-dropoff [100]
+  optional: true
   synonyms:
   - -d
+  description: off-diagonal X-dropoff [100]
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: look for internal seeds inside a seed longer than {-k} * FLOAT [1.5]
+  optional: true
   synonyms:
   - -r
+  description: look for internal seeds inside a seed longer than {-k} * FLOAT [1.5]
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: seed occurrence for the 3rd round seeding [20]
+  optional: true
   synonyms:
   - -y
+  description: seed occurrence for the 3rd round seeding [20]
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: skip seeds with more than INT occurrences [500]
+  optional: true
   synonyms:
   - -c
+  description: skip seeds with more than INT occurrences [500]
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: drop chains shorter than FLOAT fraction of the longest overlapping
-    chain [0.50]
+  optional: true
   synonyms:
   - -D
+  description: drop chains shorter than FLOAT fraction of the longest overlapping
+    chain [0.50]
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: discard a chain if seeded bases shorter than INT [0]
+  optional: true
   synonyms:
   - -W
+  description: discard a chain if seeded bases shorter than INT [0]
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: perform at most INT rounds of mate rescues for each read [50]
+  optional: true
   synonyms:
   - -m
+  description: perform at most INT rounds of mate rescues for each read [50]
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: skip mate rescue
+  optional: true
   synonyms:
   - -S
+  description: skip mate rescue
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: skip pairing; mate rescue performed unless -S also in use
+  optional: true
   synonyms:
   - -P
+  description: skip pairing; mate rescue performed unless -S also in use
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: score for a sequence match, which scales options -TdBOELU unless overridden
-    [1]
+  optional: true
   synonyms:
   - -A
+  description: score for a sequence match, which scales options -TdBOELU unless overridden
+    [1]
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: penalty for a mismatch [4]
+  optional: true
   synonyms:
   - -B
+  description: penalty for a mismatch [4]
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: gap open penalties for deletions and insertions [6,6]
+  optional: true
   synonyms:
   - -O
+  description: gap open penalties for deletions and insertions [6,6]
   args: !OptionalFlagArg
     names:
     - INT
     - INT
     separator: ','
-  optional: true
 - !Flag
-  description: gap extension penalty; a gap of size k cost '{-O} + {-E}*k' [1,1]
+  optional: true
   synonyms:
   - -E
+  description: gap extension penalty; a gap of size k cost '{-O} + {-E}*k' [1,1]
   args: !OptionalFlagArg
     names:
     - INT
     - INT
     separator: ','
-  optional: true
 - !Flag
-  description: penalty for 5'- and 3'-end clipping [5,5]
+  optional: true
   synonyms:
   - -L
+  description: penalty for 5'- and 3'-end clipping [5,5]
   args: !OptionalFlagArg
     names:
     - INT
     - INT
     separator: ','
-  optional: true
 - !Flag
-  description: penalty for an unpaired read pair [17]
+  optional: true
   synonyms:
   - -U
+  description: penalty for an unpaired read pair [17]
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: smart pairing (ignoring in2.fq)
+  optional: true
   synonyms:
   - -p
+  description: smart pairing (ignoring in2.fq)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: read group header line such as '@RG\tID:foo\tSM:bar' [null]
+  optional: true
   synonyms:
   - -R
+  description: read group header line such as '@RG\tID:foo\tSM:bar' [null]
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: insert STR to header if it starts with @; or insert lines in FILE [null]
+  optional: true
   synonyms:
   - -H
+  description: /FILE   insert STR to header if it starts with @; or insert lines in
+    FILE [null]
   args: !SimpleFlagArg
-    name: STR/FILE
-  optional: true
+    name: STR
 - !Flag
-  description: treat ALT contigs as part of the primary assembly (i.e. ignore <idxbase>.alt
-    file)
+  optional: true
   synonyms:
   - -j
+  description: treat ALT contigs as part of the primary assembly (i.e. ignore <idxbase>.alt
+    file)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: for split alignment, take the alignment with the smallest coordinate
-    as primary
+  optional: true
   synonyms:
   - '-5'
+  description: for split alignment, take the alignment with the smallest coordinate
+    as primary
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: don't modify mapQ of supplementary alignments
+  optional: true
   synonyms:
   - -q
+  description: don't modify mapQ of supplementary alignments
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: process INT input bases in each batch regardless of nThreads (for reproducibility)
-    []
+  optional: true
   synonyms:
   - -K
+  description: process INT input bases in each batch regardless of nThreads (for reproducibility)
+    []
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: 'verbose level: 1=error, 2=warning, 3=message, 4+=debugging [3]'
+  optional: true
   synonyms:
   - -v
+  description: 'verbose level: 1=error, 2=warning, 3=message, 4+=debugging [3]'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: minimum score to output [30]
+  optional: true
   synonyms:
   - -T
+  description: minimum score to output [30]
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: if there are <INT hits with score >80% of the max score, output all
-    in XA [5,200]
+  optional: true
   synonyms:
   - -h
+  description: if there are <INT hits with score >80% of the max score, output all
+    in XA [5,200]
   args: !OptionalFlagArg
     names:
     - INT
     - INT
     separator: ','
-  optional: true
 - !Flag
-  description: output all alignments for SE or unpaired PE
+  optional: true
   synonyms:
   - -a
+  description: output all alignments for SE or unpaired PE
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: append FASTA/FASTQ comment to SAM output
+  optional: true
   synonyms:
   - -C
+  description: append FASTA/FASTQ comment to SAM output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: output the reference FASTA header in the XR tag
+  optional: true
   synonyms:
   - -V
+  description: output the reference FASTA header in the XR tag
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: use soft clipping for supplementary alignments
+  optional: true
   synonyms:
   - -Y
+  description: use soft clipping for supplementary alignments
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: mark shorter split hits as secondary
+  optional: true
   synonyms:
   - -M
+  description: mark shorter split hits as secondary
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -I
   description: "specify the mean, standard deviation (10% of the mean if absent),\
     \ max\n(4 sigma from the mean if absent) and min of the insert size distribution.\n\
     FR orientation only. [inferred]"
-  synonyms:
-  - -I
   args: !OptionalFlagArg
     names:
     - FLOAT
@@ -277,7 +279,6 @@ named:
     - INT
     - INT
     separator: ','
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -325,3 +326,4 @@ help_text: "-----------------------------\nExecuting in AVX512 mode!!\n---------
   \tMAX_SEQ_LEN8: 128\n\tSEEDS_PER_READ: 500\n\tSIMD_WIDTH8 X: 64\n\tSIMD_WIDTH16\
   \ X: 32\n\tAVG_SEEDS_PER_READ: 64\n"
 generated_using: []
+docker_image:

@@ -38,6 +38,9 @@ task RAMBOKpy {
       ~{if (delete_temp) then "--delete_temp" else ""} \
       ~{if defined(file_type) then ("--filetype " +  '"' + file_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_file_one: "Reference file of species 1 in fasta-format. Should\\npair with name1"
     ref_file_two: "Reference file of species 2 in fasta-format. Should\\npair with name2"

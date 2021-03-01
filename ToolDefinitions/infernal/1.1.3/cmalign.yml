@@ -1,0 +1,270 @@
+!Command
+command:
+- cmalign
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: cmfile
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: seqfile
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ': output the alignment to file <f>, not stdout'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: ': configure CM for global alignment [default: local]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --optacc
+  description: ': use the Holmes/Durbin optimal accuracy algorithm  [default]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cyk
+  description: ': use the CYK algorithm'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sample
+  description: ': sample alignment of each seq from posterior distribution'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: ': w/--sample, set RNG seed to <n> (if 0: one-time arbitrary seed)'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --notrunc
+  description: ': do not use truncated alignment algorithm'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sub
+  description: ': build sub CM for columns b/t HMM predicted start/end points'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hbanded
+  description: ': accelerate using CM plan 9 HMM derived bands  [default]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tau
+  description: ': set tail loss prob for HMM bands to <x>  [1e-7]  (1e-18<x<1)'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --mxsize
+  description: ': set maximum allowable DP matrix size to <x> Mb  [1028.0]  (x>0.)'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --fixedtau
+  description: ': do not adjust tau (tighten bands) until mx size is < limit'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --maxtau
+  description: ': set max tau <x> when tightening HMM bands  [0.05]  (0<x<0.5)'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --nonbanded
+  description: ': do not use HMM bands for faster alignment'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --small
+  description: ': use small memory divide and conquer (d&c) algorithm'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sfile
+  description: ': dump alignment score information to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --tfile
+  description: ': dump individual sequence parsetrees to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --ifile
+  description: ': dump information on per-sequence inserts to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --elfile
+  description: ': dump information on per-sequence EL inserts to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --mapali
+  description: ': include alignment in file <f> (same ali that CM came from)'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --mapstr
+  description: ': include structure (w/pknots) from <f> from --mapali <f>'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noss
+  description: ': cmbuild --noss option was used w/aln from --mapali <f>'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --informat
+  description: ': assert <seqfile> is in format <s>: no autodetection'
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --outformat
+  description: ': output alignment in format <s>  [Stockholm]'
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --dnaout
+  description: ': output alignment as DNA (not RNA) sequence data'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noprob
+  description: ': do not include posterior probabilities in the alignment'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --matchonly
+  description: ': include only match columns in output alignment'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ileaved
+  description: ': force output in interleaved Stockholm format'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --regress
+  description: ': save regression test data to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: ': report extra information; mainly useful for debugging'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cpu
+  description: ': number of parallel CPU workers to use for multithreads  (n>=0)'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -options
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ': show brief help on version and usage'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "# cmalign :: align sequences to a CM\n# INFERNAL 1.1.3 (Nov 2019)\n# Copyright\
+  \ (C) 2019 Howard Hughes Medical Institute.\n# Freely distributed under the BSD\
+  \ open source license.\n# - - - - - - - - - - - - - - - - - - - - - - - - - - -\
+  \ - - - - - - - - -\nUsage: cmalign [-options] <cmfile> <seqfile>\n\nBasic options:\n\
+  \  -h     : show brief help on version and usage\n  -o <f> : output the alignment\
+  \ to file <f>, not stdout\n  -g     : configure CM for global alignment [default:\
+  \ local]\n\nOptions controlling alignment algorithm:\n  --optacc   : use the Holmes/Durbin\
+  \ optimal accuracy algorithm  [default]\n  --cyk      : use the CYK algorithm\n\
+  \  --sample   : sample alignment of each seq from posterior distribution\n  --seed\
+  \ <n> : w/--sample, set RNG seed to <n> (if 0: one-time arbitrary seed)\n  --notrunc\
+  \  : do not use truncated alignment algorithm\n  --sub      : build sub CM for columns\
+  \ b/t HMM predicted start/end points\n\nOptions controlling speed and memory requirements:\n\
+  \  --hbanded    : accelerate using CM plan 9 HMM derived bands  [default]\n  --tau\
+  \ <x>    : set tail loss prob for HMM bands to <x>  [1e-7]  (1e-18<x<1)\n  --mxsize\
+  \ <x> : set maximum allowable DP matrix size to <x> Mb  [1028.0]  (x>0.)\n  --fixedtau\
+  \   : do not adjust tau (tighten bands) until mx size is < limit\n  --maxtau <x>\
+  \ : set max tau <x> when tightening HMM bands  [0.05]  (0<x<0.5)\n  --nonbanded\
+  \  : do not use HMM bands for faster alignment\n  --small      : use small memory\
+  \ divide and conquer (d&c) algorithm\n\nOptional output files:\n  --sfile <f>  :\
+  \ dump alignment score information to file <f>\n  --tfile <f>  : dump individual\
+  \ sequence parsetrees to file <f>\n  --ifile <f>  : dump information on per-sequence\
+  \ inserts to file <f>\n  --elfile <f> : dump information on per-sequence EL inserts\
+  \ to file <f>\n\nOther options:\n  --mapali <f>    : include alignment in file <f>\
+  \ (same ali that CM came from)\n  --mapstr        : include structure (w/pknots)\
+  \ from <f> from --mapali <f>\n  --noss          : cmbuild --noss option was used\
+  \ w/aln from --mapali <f>\n  --informat <s>  : assert <seqfile> is in format <s>:\
+  \ no autodetection\n  --outformat <s> : output alignment in format <s>  [Stockholm]\n\
+  \  --dnaout        : output alignment as DNA (not RNA) sequence data\n  --noprob\
+  \        : do not include posterior probabilities in the alignment\n  --matchonly\
+  \     : include only match columns in output alignment\n  --ileaved       : force\
+  \ output in interleaved Stockholm format\n  --regress <f>   : save regression test\
+  \ data to file <f>\n  --verbose       : report extra information; mainly useful\
+  \ for debugging\n  --cpu <n>       : number of parallel CPU workers to use for multithreads\
+  \  (n>=0)\n\nSequence input formats:   FASTA, GenBank\nAlignment output formats:\
+  \ Stockholm, Pfam, AFA (aligned FASTA), A2M, Clustal, PHYLIP\n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/infernal:1.1.3--h516909a_0

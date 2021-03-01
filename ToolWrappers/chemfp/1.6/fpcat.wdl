@@ -22,6 +22,9 @@ task Fpcat {
       ~{if (preserve_order) then "--preserve-order" else ""} \
       ~{if (show_progress) then "--show-progress" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "input fingerprint format. One of fps or fps.gz.\\n(default guesses from filename or is fps)"
     merge: "assume the input fingerprint files are in popcount\\norder and do a merge sort"

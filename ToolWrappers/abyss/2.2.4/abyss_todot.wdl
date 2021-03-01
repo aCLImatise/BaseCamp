@@ -16,11 +16,11 @@ task Abysstodot {
     String? estimate
     String? add_complements
     Boolean? verbose
-    File? file
+    File? var_file
   }
   command <<<
     abyss_todot \
-      ~{file} \
+      ~{var_file} \
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
       ~{if (adj) then "--adj" else ""} \
       ~{if (as_qg) then "--asqg" else ""} \
@@ -36,6 +36,9 @@ task Abysstodot {
       ~{if defined(add_complements) then ("--add-complements " +  '"' + add_complements + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: "report the mean k-mer coverage, otherwise\\nthe sum k-mer coverage is reported"
     adj: "output the graph in adj format"
@@ -51,7 +54,7 @@ task Abysstodot {
     estimate: "distance estimates"
     add_complements: "missing complementary edges"
     verbose: "display verbose output"
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

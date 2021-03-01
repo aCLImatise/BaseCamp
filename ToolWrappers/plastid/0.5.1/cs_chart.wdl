@@ -34,6 +34,9 @@ task CsChart {
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
       ~{if (stylesheet) then "--stylesheet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "input files, made by 'count' subprogram"
     bins: "Bins into which features are partitioned based on\\ncounts"

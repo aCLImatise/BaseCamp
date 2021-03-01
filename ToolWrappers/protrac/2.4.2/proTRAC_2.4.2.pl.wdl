@@ -3,7 +3,7 @@ version 1.0
 task ProTRAC242pl {
   input {
     File? genome
-    File? name_file_contains_reads
+    File? name_file_contains
     File? format
     Boolean? repeatmasker
     Boolean? gene_set
@@ -45,7 +45,7 @@ task ProTRAC242pl {
       ~{clusters_dot} \
       ~{sites_dot} \
       ~{if defined(genome) then ("-genome " +  '"' + genome + '"') else ""} \
-      ~{if defined(name_file_contains_reads) then ("-map " +  '"' + name_file_contains_reads + '"') else ""} \
+      ~{if defined(name_file_contains) then ("-map " +  '"' + name_file_contains + '"') else ""} \
       ~{if defined(format) then ("-format " +  '"' + format + '"') else ""} \
       ~{if (repeatmasker) then "-repeatmasker" else ""} \
       ~{if (gene_set) then "-geneset" else ""} \
@@ -76,9 +76,12 @@ task ProTRAC242pl {
       ~{if (pti) then "-pti" else ""} \
       ~{if defined(option) then ("-option " +  '"' + option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "[file]    Name of the file that contains the genomic sequence\\nand that was used for mapping the sequence reads."
-    name_file_contains_reads: "[file]       Name of the file that contains mapped reads in SAM\\nor ELAND3 format. We recommend to use SeqMap with\\noption /output_all_matches or sRNAmapper with default\\nsettings to create an appropriate file. When using a\\nmore popular mapper you should make sure to allow for\\nmulti-mapping."
+    name_file_contains: "[file]       Name of the file that contains mapped reads in SAM\\nor ELAND3 format. We recommend to use SeqMap with\\noption /output_all_matches or sRNAmapper with default\\nsettings to create an appropriate file. When using a\\nmore popular mapper you should make sure to allow for\\nmulti-mapping."
     format: "[s]       Specify the input format. Allowed values are SAM and\\nELAND3. This is only required if the input file\\ncontains less than 1000 hits."
     repeatmasker: "[file]    Name of the file that contains the RepeatMasker\\nannotation. Make sure that the names for the\\nchromosomes/scaffolds are identical in your Repeat-\\nMasker and genome file."
     gene_set: "[file]         Name of the file that contains gene annotation (GTF-\\nfile from Ensembl database). Make sure that the names\\nfor the chromosomes/scaffolds are identical in your\\nGTF- and genome file."

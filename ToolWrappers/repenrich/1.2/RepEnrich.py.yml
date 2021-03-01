@@ -3,128 +3,128 @@ command:
 - RepEnrich.py
 positional:
 - !Positional
-  description: "List RepeatMasker.org annotation file for your\norganism. The file\
-    \ may be downloaded from the\nRepeatMasker.org website. Example:\n/data/annotation/hg19/hg19_repeatmasker.txt"
+  optional: false
   position: 0
   name: annotation_file
-  optional: false
+  description: "List RepeatMasker.org annotation file for your\norganism. The file\
+    \ may be downloaded from the\nRepeatMasker.org website. Example:\n/data/annotation/hg19/hg19_repeatmasker.txt"
 - !Positional
-  description: 'List folder to contain results. Example: /outputfolder'
+  optional: false
   position: 1
   name: outputfolder
-  optional: false
+  description: 'List folder to contain results. Example: /outputfolder'
 - !Positional
-  description: 'Enter prefix name for data. Example:'
+  optional: false
   position: 2
   name: outputprefix
-  optional: false
+  description: 'Enter prefix name for data. Example:'
 - !Positional
-  description: setup_folder          List folder that contains the repeat element
+  optional: false
   position: 3
   name: HeLa_InputChIPseq_Rep1
-  optional: false
+  description: setup_folder          List folder that contains the repeat element
 - !Positional
-  description: "Enter file for the fastq reads that map to multiple\nlocations. Example\
-    \ /data/multimap.fastq"
+  optional: false
   position: 0
   name: fastqfile
-  optional: false
+  description: "Enter file for the fastq reads that map to multiple\nlocations. Example\
+    \ /data/multimap.fastq"
 - !Positional
-  description: "Enter bamfile output for reads that map uniquely.\nExample /bamfiles/old.bam"
+  optional: false
   position: 1
   name: alignment_bam
-  optional: false
+  description: "Enter bamfile output for reads that map uniquely.\nExample /bamfiles/old.bam"
 named:
 - !Flag
-  description: "Designate this option for paired-end sequencing.\nDefault FALSE change\
-    \ to TRUE"
+  optional: true
   synonyms:
   - --pairedend
+  description: "Designate this option for paired-end sequencing.\nDefault FALSE change\
+    \ to TRUE"
   args: !SimpleFlagArg
     name: PAIREDEND
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --collapserepeat
   description: "Designate this option to generate a collapsed repeat\ntype. Uncollapsed\
     \ output is generated in addition to\ncollapsed repeat type. Simple_repeat is\
     \ default to\nsimplify downstream analysis. You can change the\ndefault to another\
     \ repeat name to collapse a seperate\nspecific repeat instead or if the name of\n\
     Simple_repeat is different for your organism. Default\nSimple_repeat"
-  synonyms:
-  - --collapserepeat
   args: !SimpleFlagArg
     name: collapserepeat
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --threshold
   description: "This option specifies overlap between repetitive\nelements and reads\
     \ that map uniquely to the genome.\nYou should change the option depending on\
     \ the read\nlength. We felt that the the value should be close to\nhalf read length.\
     \ Default 21"
-  synonyms:
-  - --threshold
   args: !SimpleFlagArg
     name: threshold
-  optional: true
 - !Flag
-  description: "This option helps to modifies the scrutiny of the\nregion sorter.\
-    \ Default 500"
+  optional: true
   synonyms:
   - --tolerance
+  description: "This option helps to modifies the scrutiny of the\nregion sorter.\
+    \ Default 500"
   args: !SimpleFlagArg
     name: tolerance
-  optional: true
 - !Flag
-  description: "Enter fastqfile2 when using paired-end option. Default\nnone"
+  optional: true
   synonyms:
   - --fastqfile2
+  description: "Enter fastqfile2 when using paired-end option. Default\nnone"
   args: !SimpleFlagArg
     name: fastqfile2
-  optional: true
 - !Flag
-  description: "Enter available cpus per node. The more cpus the\nfaster RepEnrich\
-    \ performs. RepEnrich is designed to\nonly work on one node. Default: \"1\""
+  optional: true
   synonyms:
   - --cpus
+  description: "Enter available cpus per node. The more cpus the\nfaster RepEnrich\
+    \ performs. RepEnrich is designed to\nonly work on one node. Default: \"1\""
   args: !SimpleFlagArg
     name: cpus
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --allcountmethod
   description: "By default the pipeline only outputs the fraction\ncount method. Consdidered\
     \ to be the best way to count\nmultimapped reads. Changing this option will include\n\
     the unique count method, a conservative count, and the\ntotal count method, a\
     \ liberal counting strategy. Our\nevaluation of simulated data indicated fraction\n\
     counting is best. Default = FALSE, change to TRUE"
-  synonyms:
-  - --allcountmethod
   args: !SimpleFlagArg
     name: allcountmethod
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --is_bed
   description: "Is the annotation file a bed file. This is also a\ncompatible format.\
     \ The file needs to be a tab\nseperated bed with optional fields. Ex. format chr\n\
     start end Name_element class family. The class and\nfamily should identical to\
     \ name_element if not\napplicable. Default FALSE change to TRUE\n"
-  synonyms:
-  - --is_bed
   args: !SimpleFlagArg
     name: is_bed
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: RepEnrich.py [-h] [--version] [--pairedend PAIREDEND]\n       \
   \             [--collapserepeat collapserepeat] [--threshold threshold]\n      \
   \              [--tolerance tolerance] [--fastqfile2 fastqfile2]\n             \
@@ -188,3 +188,4 @@ help_text: "usage: RepEnrich.py [-h] [--version] [--pairedend PAIREDEND]\n      
   \           applicable. Default FALSE change to TRUE\n"
 generated_using:
 - --help
+docker_image:

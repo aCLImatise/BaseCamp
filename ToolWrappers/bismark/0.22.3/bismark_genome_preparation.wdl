@@ -26,6 +26,9 @@ task BismarkGenomePreparation {
       ~{if (slam) then "--slam" else ""} \
       ~{if (large_index) then "--large-index" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print verbose output for more details or debugging."
     path_to_aligner: "</../> The full path to the Bowtie 2 or HISAT2 installation folder on your system\\n(depending on which aligner/indexer you intend to use; please note that this\\nis the folder and not any executable). Unless this path is specified, it is\\nassumed that the aligner in question (Bowtie 2/HISAT2) is in the PATH."

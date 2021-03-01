@@ -15,7 +15,7 @@ task Cegma2zff {
     String training_dot
     String gff
     String var_12
-    File file
+    File var_file
     String files
     String are
     String from
@@ -40,7 +40,7 @@ task Cegma2zff {
       ~{training_dot} \
       ~{gff} \
       ~{var_12} \
-      ~{file} \
+      ~{var_file} \
       ~{files} \
       ~{are} \
       ~{from} \
@@ -50,6 +50,9 @@ task Cegma2zff {
       ~{into} \
       ~{z_ff}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this: ""
     ce_gma_gff: ""
@@ -64,7 +67,7 @@ task Cegma2zff {
     training_dot: ""
     gff: ""
     var_12: ""
-    file: ""
+    var_file: ""
     files: ""
     are: ""
     from: ""

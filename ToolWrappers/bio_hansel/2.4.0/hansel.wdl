@@ -5,8 +5,8 @@ task Hansel {
     File? scheme
     String? scheme_name
     File? scheme_metadata
-    String? reversereads__pairedreads
-    File? genomename__inputfastagenomename
+    String? reversereads__forwardreads
+    File? _inputfastagenomename_fastapath
     Directory? input_directory
     File? output_summary
     File? output_km_er_results
@@ -29,8 +29,8 @@ task Hansel {
       ~{if defined(scheme) then ("--scheme " +  '"' + scheme + '"') else ""} \
       ~{if defined(scheme_name) then ("--scheme-name " +  '"' + scheme_name + '"') else ""} \
       ~{if defined(scheme_metadata) then ("--scheme-metadata " +  '"' + scheme_metadata + '"') else ""} \
-      ~{if defined(reversereads__pairedreads) then ("-p " +  '"' + reversereads__pairedreads + '"') else ""} \
-      ~{if defined(genomename__inputfastagenomename) then ("-i " +  '"' + genomename__inputfastagenomename + '"') else ""} \
+      ~{if defined(reversereads__forwardreads) then ("-p " +  '"' + reversereads__forwardreads + '"') else ""} \
+      ~{if defined(_inputfastagenomename_fastapath) then ("-i " +  '"' + _inputfastagenomename_fastapath + '"') else ""} \
       ~{if defined(input_directory) then ("--input-directory " +  '"' + input_directory + '"') else ""} \
       ~{if defined(output_summary) then ("--output-summary " +  '"' + output_summary + '"') else ""} \
       ~{if defined(output_km_er_results) then ("--output-kmer-results " +  '"' + output_km_er_results + '"') else ""} \
@@ -48,12 +48,15 @@ task Hansel {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     scheme: "Scheme to use for subtyping (built-in: \\\"heidelberg\\\",\\n\\\"enteritidis\\\", \\\"typhi\\\", \\\"typhimurium\\\", \\\"tb_lineage\\\";\\nOR user-specified: /path/to/user/scheme)"
     scheme_name: "Custom user-specified SNP substyping scheme name"
     scheme_metadata: "Scheme subtype metadata table (tab-delimited file with\\n\\\".tsv\\\" or \\\".tab\\\" extension or CSV with \\\".csv\\\"\\nextension format accepted; MUST contain column called\\n\\\"subtype\\\")"
-    reversereads__pairedreads: "reverse_reads, --paired-reads forward_reads reverse_reads\\nFASTQ paired-end reads"
-    genomename__inputfastagenomename: "genome_name, --input-fasta-genome-name fasta_path genome_name\\ninput fasta file path AND genome name"
+    reversereads__forwardreads: "reverse_reads, --paired-reads forward_reads reverse_reads\\nFASTQ paired-end reads"
+    _inputfastagenomename_fastapath: "genome_name, --input-fasta-genome-name fasta_path genome_name\\ninput fasta file path AND genome name"
     input_directory: "directory of input fasta files (.fasta|.fa|.fna) or\\nFASTQ files (paired FASTQ should have same basename\\nwith \\\"_\\d\\.(fastq|fq)\\\" postfix to be automatically\\npaired) (files can be Gzipped)"
     output_summary: "Subtyping summary output path (tab-delimited)"
     output_km_er_results: "Subtyping kmer matching output path (tab-delimited)"

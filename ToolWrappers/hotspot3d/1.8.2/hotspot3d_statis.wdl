@@ -8,6 +8,9 @@ task Hotspot3dStatis {
     hotspot3d statis \
       ~{if (output_dir) then "--output-dir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Output directory of proximity files"
   }

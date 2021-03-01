@@ -4,12 +4,12 @@ inputs:
 - id: in_use_long_format
   doc: "use a long listing format that includes descriptions, file sizes,\ndbkeys\
     \ and paths)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_show_id
   doc: include internal Galaxy IDs for data libraries, folders and
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --show_id
 - id: in_datasets_dot
@@ -21,6 +21,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nebulizer

@@ -20,6 +20,9 @@ task MultiParallelPickOtuspy {
       ~{if defined(job_name) then ("--job_name " +  '"' + job_name + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fna: "The names of the sequence files that will be have job\\nscripts generated to process them. The expected input\\nis from the split_sequence_data.py script (e.g. 0.fna,\\n1.fna, ..., n.fna)."
     similarity: "Sequence similarity threshold [default: 0.97]"

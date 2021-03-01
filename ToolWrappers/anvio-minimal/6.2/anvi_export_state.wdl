@@ -14,6 +14,9 @@ task Anviexportstate {
       ~{if defined(state) then ("--state " +  '"' + state + '"') else ""} \
       ~{if (list_states) then "--list-states" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_or_profile_db: "Anvi'o pan or profile database (and even genes\\ndatabase in appropriate contexts)."
     output_file: "File path to store results."

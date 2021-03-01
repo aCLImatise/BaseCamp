@@ -3,7 +3,7 @@ id: gcpp.py.cwl
 inputs:
 - id: in_ref
   doc: reference genetic code
-  type: string
+  type: string?
   inputBinding:
     prefix: --ref
 - id: in_list
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcpp.py

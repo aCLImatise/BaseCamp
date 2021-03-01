@@ -3,12 +3,12 @@ id: rgt_tools.py_encode.cwl
 inputs:
 - id: in_input_file_list
   doc: Input file list downloaded from ENCODE
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_output_directory
   doc: Output directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_directory
   doc: Output directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_directory)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rgt-tools.py

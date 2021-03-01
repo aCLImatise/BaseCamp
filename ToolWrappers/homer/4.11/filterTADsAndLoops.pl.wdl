@@ -14,7 +14,6 @@ task FilterTADsAndLoopspl {
     Boolean? min_loop_score
     Boolean? min_coverage_tad
     Boolean? min_coverage_anchor
-    File? tad_score
   }
   command <<<
     filterTADsAndLoops_pl \
@@ -29,9 +28,11 @@ task FilterTADsAndLoopspl {
       ~{if (mint_a_dir) then "-minTADir" else ""} \
       ~{if (min_loop_score) then "-minLoopScore" else ""} \
       ~{if (min_coverage_tad) then "-minCoverageTAD" else ""} \
-      ~{if (min_coverage_anchor) then "-minCoverageAnchor" else ""} \
-      ~{if defined(tad_score) then ("-TADscore " +  '"' + tad_score + '"') else ""}
+      ~{if (min_coverage_anchor) then "-minCoverageAnchor" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     def_out: "(def: out)"
     loop: "(input loop file, 2D BED format)"
@@ -45,7 +46,6 @@ task FilterTADsAndLoopspl {
     min_loop_score: "<#> (minimum int score, def: 0)"
     min_coverage_tad: "<#> (minimum TAD coverage ratio relative to average, def: 0.25)"
     min_coverage_anchor: "<#> (minimum int coverage ratio relative to average, def: 0.25)"
-    tad_score: "-LoopScore <loop score file>"
   }
   output {
     File out_stdout = stdout()

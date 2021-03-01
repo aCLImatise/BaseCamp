@@ -12,6 +12,9 @@ task AribaTestOutdir {
       ~{var_command} \
       ~{options}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ariba: ""
     var_command: ""

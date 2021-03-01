@@ -42,6 +42,9 @@ task Futurize {
       ~{if (write_unchanged_files) then "--write-unchanged-files" else ""} \
       ~{if defined(add_suffix) then ("--add-suffix " +  '"' + add_suffix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all_imports: "Add all __future__ and future imports to each module"
     stage_one: "Modernize Python 2 code only; no compatibility with\\nPython 3 (or dependency on ``future``)"

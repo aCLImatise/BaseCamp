@@ -4,6 +4,9 @@ task Lordectrimsplit {
   command <<<
     lordec_trim_split
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

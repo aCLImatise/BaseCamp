@@ -3,12 +3,12 @@ version 1.0
 task ViReMapy {
   input {
     Int? host_index
-    Int? number_tolerated_inmapped
+    Int? number_mismatches_tolerated
     Int? seed
     Int? five_pad
-    Int? of_segment_overrides
+    Int? of_segment_seperatethreepad
     Int? host_seed
-    Boolean? select_data_fasta
+    Boolean? select_data_is
     Int? de_fuzz
     Int? max_fuzz
     Boolean? ded_up
@@ -36,12 +36,12 @@ task ViReMapy {
       ~{two_five_dot} \
       ~{bowtie_dot} \
       ~{if defined(host_index) then ("--Host_Index " +  '"' + host_index + '"') else ""} \
-      ~{if defined(number_tolerated_inmapped) then ("--N " +  '"' + number_tolerated_inmapped + '"') else ""} \
+      ~{if defined(number_mismatches_tolerated) then ("--N " +  '"' + number_mismatches_tolerated + '"') else ""} \
       ~{if defined(seed) then ("--Seed " +  '"' + seed + '"') else ""} \
       ~{if defined(five_pad) then ("--FivePad " +  '"' + five_pad + '"') else ""} \
-      ~{if defined(of_segment_overrides) then ("--X " +  '"' + of_segment_overrides + '"') else ""} \
+      ~{if defined(of_segment_seperatethreepad) then ("--X " +  '"' + of_segment_seperatethreepad + '"') else ""} \
       ~{if defined(host_seed) then ("--Host_Seed " +  '"' + host_seed + '"') else ""} \
-      ~{if (select_data_fasta) then "-F" else ""} \
+      ~{if (select_data_is) then "-F" else ""} \
       ~{if defined(de_fuzz) then ("--Defuzz " +  '"' + de_fuzz + '"') else ""} \
       ~{if defined(max_fuzz) then ("--MaxFuzz " +  '"' + max_fuzz + '"') else ""} \
       ~{if (ded_up) then "-DeDup" else ""} \
@@ -56,14 +56,17 @@ task ViReMapy {
       ~{if (bed) then "-BED" else ""} \
       ~{if (win) then "-Win" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     host_index: "Host genome reference index key, e.g.\\nd_melanogaster_fb5_22"
-    number_tolerated_inmapped: "Number of mismatches tolerated in mapped seed and in\\nmapped segments. Default is 1."
+    number_mismatches_tolerated: "Number of mismatches tolerated in mapped seed and in\\nmapped segments. Default is 1."
     seed: "Number of nucleotides in the Seed region. Default is"
     five_pad: "Number of nucleotides not allowed to have mismatches\\nat 5' end of segment. Default is 5."
-    of_segment_overrides: "Number of nucleotides not allowed to have mismatches\\nat 3' end and 5' of segment. Overrides seperate\\nThreePad and FivePad settings. Default is 5."
+    of_segment_seperatethreepad: "Number of nucleotides not allowed to have mismatches\\nat 3' end and 5' of segment. Overrides seperate\\nThreePad and FivePad settings. Default is 5."
     host_seed: "Number of nucleotides in the Seed region when mapping\\nto the Host Genome. Default is same as Seed value."
-    select_data_fasta: "Select '-F' if data is in FASTA format fasta. Default\\nis FASTQ."
+    select_data_is: "Select '-F' if data is in FASTA format fasta. Default\\nis FASTQ."
     de_fuzz: "Choose how to defuzz data: '5' to report at 5' end of\\nfuzzy region, '3' to report at 3' end, or '0' to\\nreport in centre of fuzzy region. Default is no fuzz\\nhandling (similar to choosing Right - see Routh et\\nal)."
     max_fuzz: "Select maximum allowed length of fuzzy region.\\nRecombination events with longer fuzzy regions will\\nnot be reported. Default is Seed Length."
     ded_up: "Remove potential PCR duplicates. Default is 'off'."

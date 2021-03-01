@@ -4,6 +4,9 @@ task Rsemevalestimatetranscriptlengthdistribution {
   command <<<
     rsem_eval_estimate_transcript_length_distribution
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

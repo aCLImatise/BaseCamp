@@ -1,49 +1,49 @@
 class: CommandLineTool
 id: covels_SE.cwl
 inputs:
-- id: in_complementary_strand_too
+- id: in_do_complementary_strand
   doc: ': do complementary strand too'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_set_background_expected
   doc: ': set background expected GC content (0.5 default)'
-  type: double
+  type: double?
   inputBinding:
     prefix: -g
 - id: in_save_hits_file
   doc: ': save hits in <file>'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
-- id: in_set_score_threshold
+- id: in_set_reporting_threshold
   doc: ': set score reporting threshold'
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
-- id: in_set_window_size
+- id: in_set_scanning_size
   doc: ': set scanning window size'
-  type: long
+  type: long?
   inputBinding:
     prefix: -w
-- id: in_save_name_processed
+- id: in_save_name_last
   doc: ': save name of last sequence processed'
-  type: File
+  type: File?
   inputBinding:
     prefix: -D
 - id: in_set_epsilon_fast
   doc: ': set epsilon for fast search'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -E
 - id: in_fast_heuristic_search
   doc: ': fast heuristic search'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -F
 - id: in_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -options
 - id: in_cove_ls
@@ -65,6 +65,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - covels-SE

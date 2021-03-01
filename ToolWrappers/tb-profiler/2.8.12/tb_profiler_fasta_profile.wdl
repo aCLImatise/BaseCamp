@@ -26,6 +26,9 @@ task TbprofilerFastaProfile {
       ~{if defined(add_columns) then ("--add_columns " +  '"' + add_columns + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Mutation panel name (default: tbdb)"
     external_db: "Path to db files prefix (overrides \\\"--db\\\" parameter)\\n(default: None)"

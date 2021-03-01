@@ -22,6 +22,9 @@ task IitDump {
       ~{if (debug) then "--debug" else ""} \
       ~{if (an_not_only) then "--annotonly" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sort: "Sort results by coordinates"
     tags: "Show tags present in iit file"

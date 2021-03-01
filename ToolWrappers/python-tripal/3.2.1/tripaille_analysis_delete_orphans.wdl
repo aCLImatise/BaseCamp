@@ -12,6 +12,9 @@ task TripailleAnalysisDeleteOrphans {
       ~{if defined(job_name) then ("--job_name " +  '"' + job_name + '"') else ""} \
       ~{if (no_wait) then "--no_wait" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     job_name: "Name of the job"
     no_wait: "Return immediately without waiting for job completion"

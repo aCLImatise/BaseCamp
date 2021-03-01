@@ -4,7 +4,7 @@ task IvaQc {
   input {
     Directory? embl_dir
     Directory? ref_db
-    File? name_reads_fasta
+    File? name_forwards_reads
     File? name_reverse_reads
     File? fr
     Int? cds_min_hit_length
@@ -30,7 +30,7 @@ task IvaQc {
       ~{reference} \
       ~{if defined(embl_dir) then ("--embl_dir " +  '"' + embl_dir + '"') else ""} \
       ~{if defined(ref_db) then ("--ref_db " +  '"' + ref_db + '"') else ""} \
-      ~{if defined(name_reads_fasta) then ("-f " +  '"' + name_reads_fasta + '"') else ""} \
+      ~{if defined(name_forwards_reads) then ("-f " +  '"' + name_forwards_reads + '"') else ""} \
       ~{if defined(name_reverse_reads) then ("-r " +  '"' + name_reverse_reads + '"') else ""} \
       ~{if defined(fr) then ("--fr " +  '"' + fr + '"') else ""} \
       ~{if defined(cds_min_hit_length) then ("--cds_min_hit_length " +  '"' + cds_min_hit_length + '"') else ""} \
@@ -48,10 +48,13 @@ task IvaQc {
       ~{if (no_clean) then "--noclean" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     embl_dir: "Directory of reference EMBL files. If not used, must\\nuse --ref_db"
     ref_db: "Directory of database made by iva_qc_make_db. If not\\nused, must use --embl_dir"
-    name_reads_fasta: "[.gz], --reads_fwd filename[.gz]\\nName of forwards reads fasta or fastq file. Must be\\nused with --reads_rev"
+    name_forwards_reads: "[.gz], --reads_fwd filename[.gz]\\nName of forwards reads fasta or fastq file. Must be\\nused with --reads_rev"
     name_reverse_reads: "[.gz], --reads_rev filename[.gz]\\nName of reverse reads fasta or fastq file. Must be\\nused with --reads_rev"
     fr: "[.gz]    Name of interleaved fasta/q file"
     cds_min_hit_length: "Minimum hit length when running nucmer of CDS\\nsequences against contigs [30]"

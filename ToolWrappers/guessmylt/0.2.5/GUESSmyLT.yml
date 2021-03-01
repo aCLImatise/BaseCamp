@@ -3,102 +3,102 @@ command:
 - GUESSmyLT
 positional:
 - !Positional
-  description: -n                    (Snakemake dryrun option) Allows to see the scheduling
+  optional: false
   position: 0
   name: directory.
-  optional: false
+  description: -n                    (Snakemake dryrun option) Allows to see the scheduling
 named:
 - !Flag
-  description: "Mandatory when no annotation provided. What organism\nare you dealing\
-    \ with? prokaryote or eukaryote."
+  optional: true
   synonyms:
   - --organism
+  description: "Mandatory when no annotation provided. What organism\nare you dealing\
+    \ with? prokaryote or eukaryote."
   args: !SimpleFlagArg
     name: ORGANISM
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --reads
   description: "One or two read files in .fastq or .fastq.gz format.\nFiles can be\
     \ compressed or uncrompressed. Handles\ninterleaved read files and any known .fastq\
     \ header\nformat."
-  synonyms:
-  - --reads
   args: !RepeatFlagArg
     name: READS
-  optional: true
 - !Flag
-  description: "Number of subsampled reads that will be used for\nanalysis. Must be\
-    \ an even number."
+  optional: true
   synonyms:
   - --subsample
+  description: "Number of subsampled reads that will be used for\nanalysis. Must be\
+    \ an even number."
   args: !SimpleFlagArg
     name: SUBSAMPLE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --reference
   description: "Mandatory when --mapped used or when no reads provided\n(--reads).\
     \ Reference file in .fa/.fasta format.\nReference can be either transcriptome\
     \ or genome."
-  synonyms:
-  - --reference
   args: !SimpleFlagArg
     name: REFERENCE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mode
   description: "Mode can be genome or transcriptome (default genome).\nIt defines\
     \ how the reference fasta file will be\nhandled by BUSCO. This option is used\
     \ when no\nannotation is provided (--annotation)."
-  synonyms:
-  - --mode
   args: !SimpleFlagArg
     name: MODE
-  optional: true
 - !Flag
-  description: "Annotation file in .gff format. Needs to contain\ngenes."
+  optional: true
   synonyms:
   - --annotation
+  description: "Annotation file in .gff format. Needs to contain\ngenes."
   args: !SimpleFlagArg
     name: ANNOTATION
-  optional: true
 - !Flag
-  description: "Mapped file in .bam format (Will be sorted). Reference\nthat reads\
-    \ have been mapped to has to be provided."
+  optional: true
   synonyms:
   - --mapped
+  description: "Mapped file in .bam format (Will be sorted). Reference\nthat reads\
+    \ have been mapped to has to be provided."
   args: !SimpleFlagArg
     name: MAPPED
-  optional: true
 - !Flag
-  description: "The number of threads that can be used by GUESSmyLT.\nNeeds to be\
-    \ an integer. Defualt value is 2."
+  optional: true
   synonyms:
   - --threads
+  description: "The number of threads that can be used by GUESSmyLT.\nNeeds to be\
+    \ an integer. Defualt value is 2."
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: "Maximum memory that can be used by GUESSmyLT in GB.\nE.g. '10G'. Default\
-    \ value is 8G."
+  optional: true
   synonyms:
   - --memory
+  description: "Maximum memory that can be used by GUESSmyLT in GB.\nE.g. '10G'. Default\
+    \ value is 8G."
   args: !SimpleFlagArg
     name: MEMORY
-  optional: true
 - !Flag
-  description: Full path to output directory. Default is working
+  optional: true
   synonyms:
   - --output
+  description: Full path to output directory. Default is working
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: GUESSmyLT [-h] [--organism ORGANISM] [--reads READS [READS ...]]\n\
@@ -135,3 +135,4 @@ help_text: "usage: GUESSmyLT [-h] [--organism ORGANISM] [--reads READS [READS ..
   \ the scheduling\n                        plan including the assigned priorities.\n"
 generated_using:
 - --help
+docker_image:

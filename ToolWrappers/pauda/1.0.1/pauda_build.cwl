@@ -8,13 +8,14 @@ inputs:
     position: 0
 - id: in_p_aud_a_index_directory
   doc: ''
-  type: Directory
+  type: Directory?
   inputBinding:
     position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pauda-build

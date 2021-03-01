@@ -5,195 +5,195 @@ command:
 positional: []
 named:
 - !Flag
-  description: generate a Hi-C specific quality plot from FASTQ and exits
+  optional: true
   synonyms:
   - --skip_mapping
+  description: generate a Hi-C specific quality plot from FASTQ and exits
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: path to an output folder.
+  optional: true
   synonyms:
   - -w
   - --workdir
+  description: path to an output folder.
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: path to a FASTQ files (can be compressed files)
+  optional: true
   synonyms:
   - --fastq
+  description: path to a FASTQ files (can be compressed files)
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "(beta) path to a FASTQ file of read 2 (can be compressed files).\n\
-    Needed for fast_fragment"
+  optional: true
   synonyms:
   - --fastq2
+  description: "(beta) path to a FASTQ file of read 2 (can be compressed files).\n\
+    Needed for fast_fragment"
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: paths to file(s) with indexed FASTA files of the reference genome.
+  optional: true
   synonyms:
   - --index
+  description: paths to file(s) with indexed FASTA files of the reference genome.
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --genome
   description: "paths to file(s) with FASTA files of the reference genome. Needed\n\
     for fast_fragment mapping. If many, files will be concatenated.\nI.e.: --genome\
     \ chr_1.fa chr_2.fa In this last case, order is\nimportant or the rest of the\
     \ analysis. Note: it can also be the path\nto a previously parsed genome in pickle\
     \ format."
-  synonyms:
-  - --genome
   args: !RepeatFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: read number
+  optional: true
   synonyms:
   - --read
+  description: read number
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "restriction enzyme name(s). Use \"--renz CHECK\" to search for most\n\
-    probable and exit; and use \"--renz NONE\" to avoid using RE site\ninformation."
+  optional: true
   synonyms:
   - --renz
+  description: "restriction enzyme name(s). Use \"--renz CHECK\" to search for most\n\
+    probable and exit; and use \"--renz NONE\" to avoid using RE site\ninformation."
   args: !RepeatFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: '[fasta header] chromosome name(s). Used in the same order as data.'
+  optional: true
   synonyms:
   - --chr_name
+  description: '[fasta header] chromosome name(s). Used in the same order as data.'
   args: !RepeatFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: path to a temporary directory (default next to "workdir" directory)
+  optional: true
   synonyms:
   - --tmp
+  description: path to a temporary directory (default next to "workdir" directory)
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: if provided uses this directory to manipulate the database
+  optional: true
   synonyms:
   - --tmpdb
+  description: if provided uses this directory to manipulate the database
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: no display server (X screen)
+  optional: true
   synonyms:
   - --noX
+  description: no display server (X screen)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[DEBUG] in case already mapped.'
+  optional: true
   synonyms:
   - --skip
+  description: '[DEBUG] in case already mapped.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[DEBUG] keep temporary files.'
+  optional: true
   synonyms:
   - --keep_tmp
+  description: '[DEBUG] keep temporary files.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "default mapping strategy is fragment based use this flag for\niterative\
-    \ mapping"
+  optional: true
   synonyms:
   - --iterative
+  description: "default mapping strategy is fragment based use this flag for\niterative\
+    \ mapping"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fast_fragment
   description: "(beta) use fast fragment mapping. Both fastq files are mapped using\n\
     fragment based mapping in GEM v3. The output file is an intersected\nread file\
     \ than can be used directly in tadbit filter (no tadbit\nparse needed). Access\
     \ to samtools is needed for fast_fragment to\nwork. --fastq2 and --genome needs\
     \ to be specified and --read value\nshould be 0."
-  synonyms:
-  - --fast_fragment
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --windows
   description: "defines windows to be used to trim the input FASTQ reads, for\nexample\
     \ an iterative mapping can be defined as: \"--windows 1:20 1:25\n1:30 1:35 1:40\
     \ 1:45 1:50\". But this parameter can also be used for\nfragment based mapping\
     \ if for example pair-end reads are both in the\nsame FASTQ, for example: \"--windows\
     \ 1:50\" (if the length of the\nreads is 100). Note: that the numbers are both\
     \ inclusive."
-  synonyms:
-  - --windows
   args: !RepeatFlagArg
     name: WINDOWS
-  optional: true
 - !Flag
-  description: "[8] Maximum number of CPU cores available in the execution host. If\n\
-    higher than 1, tasks with multi-threading capabilities will enabled\n(if 0 all\
-    \ available) cores will be used"
+  optional: true
   synonyms:
   - -C
   - --cpus
+  description: "[8] Maximum number of CPU cores available in the execution host. If\n\
+    higher than 1, tasks with multi-threading capabilities will enabled\n(if 0 all\
+    \ available) cores will be used"
   args: !SimpleFlagArg
     name: CPUS
-  optional: true
 - !Flag
-  description: '[gem] mapper used, options are gem, bowtie2 or hisat2'
+  optional: true
   synonyms:
   - --mapper
+  description: '[gem] mapper used, options are gem, bowtie2 or hisat2'
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: '[None] path to mapper binary'
+  optional: true
   synonyms:
   - --mapper_binary
+  description: '[None] path to mapper binary'
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mapper_param
   description: "any parameter that could be passed to the GEM, BOWTIE2 or HISAT2\n\
     mapper. e.g. if we want to set the proportion of mismatches to 0.05\nand the maximum\
     \ indel length to 10, (in GEM it would be: -e 0.05\n--max-big-indel-length 10),\
     \ here we could write: \"--gem_param e:0.05\nmax-big-indel-length:10\". IMPORTANT:\
     \ some options are incompatible\nwith 3C-derived experiments."
-  synonyms:
-  - --mapper_param
   args: !RepeatFlagArg
     name: MAPPER_PARAM
-  optional: true
 - !Flag
-  description: species name
+  optional: true
   synonyms:
   - --species
+  description: species name
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: "extra descriptive fields each filed separated by coma, and inside\n\
-    each, name and value separated by column:\n--descr=cell:lymphoblast,flowcell:C68AEACXX,index:24nf\n"
+  optional: true
   synonyms:
   - --descr
+  description: "extra descriptive fields each filed separated by coma, and inside\n\
+    each, name and value separated by column:\n--descr=cell:lymphoblast,flowcell:C68AEACXX,index:24nf\n"
   args: !RepeatFlagArg
     name: LIST
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: tadbit map [-h] [--skip_mapping] -w PATH --fastq PATH [--fastq2\
@@ -259,3 +259,4 @@ help_text: "usage: tadbit map [-h] [--skip_mapping] -w PATH --fastq PATH [--fast
   \ by column:\n                           --descr=cell:lymphoblast,flowcell:C68AEACXX,index:24nf\n"
 generated_using:
 - --help
+docker_image:

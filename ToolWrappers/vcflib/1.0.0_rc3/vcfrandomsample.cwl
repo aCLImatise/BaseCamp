@@ -3,33 +3,34 @@ id: vcfrandomsample.cwl
 inputs:
 - id: in_rate
   doc: base sampling probability per locus
-  type: string
+  type: string?
   inputBinding:
     prefix: --rate
 - id: in_scale_by
   doc: scale sampling likelihood by this Float info field
-  type: double
+  type: double?
   inputBinding:
     prefix: --scale-by
 - id: in_random_seed
   doc: use this random seed (by default read from /dev/random)
-  type: string
+  type: string?
   inputBinding:
     prefix: --random-seed
 - id: in_pseudorandom_seed
   doc: use a pseudorandom seed (by default read from /dev/random)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pseudorandom-seed
 - id: in_vcf_file
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vcfrandomsample

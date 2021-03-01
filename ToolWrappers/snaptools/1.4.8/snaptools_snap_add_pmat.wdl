@@ -16,6 +16,9 @@ task SnaptoolsSnapaddpmat {
       ~{if defined(tmp_folder) then ("--tmp-folder " +  '"' + tmp_folder + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     snap_file: "snap file. (default: None)"
     peak_file: "bed file contains peaks. (default: None)"

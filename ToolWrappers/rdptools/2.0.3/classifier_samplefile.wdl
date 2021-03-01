@@ -24,6 +24,9 @@ task ClassifierSamplefile {
       ~{train} \
       ~{version}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     classify: "- classify one or multiple samples"
     lib_compare: "- compare two samples"

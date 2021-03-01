@@ -1,0 +1,88 @@
+!Command
+command:
+- kaiju-mergeOutputs
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: Name of first input file
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  description: Name of second input file
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Name of output file.
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: 'Conflict resolution mode, must be 1, 2,  lca, or lowest (default:
+    lca)'
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: Name of nodes.dmp file, only required when -c is set to lca
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: Use 4th column with classification score to give precedence to taxon
+    with better score.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: Enable verbose output, which will print a summary in the end.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Enable debug output.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "kaiju-mergeOutputs: invalid option -- '-'\nKaiju 1.7.4\nCopyright 2015-2020\
+  \ Peter Menzel, Anders Krogh\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
+  \nUsage:\n   kaiju-mergeOutputs -i in1.tsv -j in2.tsv [-o outfile.tsv] [-c 1|2|lca|lowest]\
+  \ [-s] [-t nodes.dmp] [-v] [-d]\n\nMandatory arguments:\n   -i FILENAME   Name of\
+  \ first input file\n   -j FILENAME   Name of second input file\n\nOptional arguments:\n\
+  \   -o FILENAME   Name of output file.\n   -c STRING     Conflict resolution mode,\
+  \ must be 1, 2,  lca, or lowest (default: lca)\n   -t FILENAME   Name of nodes.dmp\
+  \ file, only required when -c is set to lca\n   -s            Use 4th column with\
+  \ classification score to give precedence to taxon with better score.\n   -v   \
+  \         Enable verbose output, which will print a summary in the end.\n   -d \
+  \           Enable debug output.\n\nNOTE: Both input files need to be sorted by\
+  \ the read name in the second column.\n\nThe option -c determines the method of\
+  \ resolving conflicts in the taxonomic assignment for a read.\nPossible values are\
+  \ '1', '2', 'lca', 'lowest':\n  '1' -> the taxon id from the first input file is\
+  \ used.\n  '2' -> the taxon id from the second input file is used.\n  'lca' -> the\
+  \ least common ancestor of the two taxon ids from both input files is used.\n  'lowest'\
+  \ -> the lower rank of the two taxa is used if they are within the same lineage.\
+  \ Otherwise the LCA is used.\nWhen using values 'lca' or 'lowest', the path to the\
+  \ file nodes.dmp needs to be specified via option -t.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/kaiju:1.7.4--h8b12597_0

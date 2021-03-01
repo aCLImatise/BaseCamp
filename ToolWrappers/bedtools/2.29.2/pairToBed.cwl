@@ -4,59 +4,59 @@ inputs:
 - id: in_a_bam
   doc: "The A input file is in BAM format.  Output will be BAM as well. Replaces -a.\n\
     - Requires BAM to be grouped or sorted by query."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -abam
 - id: in_ub_am
   doc: "Write uncompressed BAM output. Default writes compressed BAM.\nis to write\
     \ output in BAM when using -abam."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ubam
 - id: in_bed_pe
   doc: "When using BAM input (-abam), write output as BEDPE. The default\nis to write\
     \ output in BAM when using -abam."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bedpe
 - id: in_ed
   doc: "Use BAM total edit distance (NM tag) for BEDPE score.\n- Default for BEDPE\
     \ is to use the minimum of\nof the two mapping qualities for the pair.\n- When\
     \ -ed is used the total edit distance\nfrom the two mates is reported as the score."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ed
 - id: in_minimum_overlap_required
   doc: "Minimum overlap required as fraction of A (e.g. 0.05).\nDefault is 1E-9 (effectively\
     \ 1bp)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_require_same_strandedness
   doc: "Require same strandedness when finding overlaps.\nDefault is to ignore stand.\n\
     Not applicable with -type inspan or -type outspan."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_require_different_strandedness
   doc: "Require different strandedness when finding overlaps.\nDefault is to ignore\
     \ stand.\nNot applicable with -type inspan or -type outspan."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -S
 - id: in_type
   doc: Approach to reporting overlaps between BEDPE and BED.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -type
 - id: in_b
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -b
 - id: in_a
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -a
 - id: in_either
@@ -102,6 +102,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pairToBed

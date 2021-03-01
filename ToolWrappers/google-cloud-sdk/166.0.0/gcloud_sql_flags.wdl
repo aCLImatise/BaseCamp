@@ -12,6 +12,9 @@ task GcloudSqlFlags {
       ~{flags} \
       ~{var_command}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     optional: ""
     flags: ""

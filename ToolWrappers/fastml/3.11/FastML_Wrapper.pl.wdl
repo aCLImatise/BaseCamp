@@ -4,6 +4,9 @@ task FastMLWrapperpl {
   command <<<
     FastML_Wrapper_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

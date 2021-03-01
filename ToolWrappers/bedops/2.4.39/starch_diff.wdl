@@ -4,6 +4,9 @@ task Starchdiff {
   command <<<
     starch_diff
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

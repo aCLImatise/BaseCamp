@@ -4,59 +4,59 @@ command:
 - rewrite
 positional:
 - !Positional
-  description: "For example, the command:\ngsutil rewrite -k gs://bucket/**"
+  optional: false
   position: 0
   name: objects.
-  optional: false
+  description: "For example, the command:\ngsutil rewrite -k gs://bucket/**"
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -f
   description: "Continues silently (without printing error messages) despite\nerrors\
     \ when rewriting multiple objects. If some of the objects\ncould not be rewritten,\
     \ gsutil's exit status will be non-zero\neven if this flag is set. This option\
     \ is implicitly set when\nrunning \"gsutil -m rewrite ...\"."
-  synonyms:
-  - -f
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Causes gsutil to read the list of objects to rewrite from stdin.\n\
-    This allows you to run a program that generates the list of\nobjects to rewrite."
+  optional: true
   synonyms:
   - -I
+  description: "Causes gsutil to read the list of objects to rewrite from stdin.\n\
+    This allows you to run a program that generates the list of\nobjects to rewrite."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -k
   description: "Rewrite the objects to the current encryption key specific in\nyour\
     \ boto configuration file. If encryption_key is specified,\nencrypt all objects\
     \ with this key. If encryption_key is\nunspecified, decrypt all objects. See `gsutil\
     \ help encryption`\nfor details on encryption configuration."
-  synonyms:
-  - -k
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -O
   description: "Rewrite objects with the bucket's default object ACL instead of\n\
     the existing object ACL. This is needed if you do not have\nOWNER permission on\
     \ the object."
-  synonyms:
-  - -O
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The -R and -r options are synonymous. Causes bucket or bucket\nsubdirectory\
-    \ contents to be rewritten recursively."
+  optional: true
   synonyms:
   - -R
   - -r
+  description: "The -R and -r options are synonymous. Causes bucket or bucket\nsubdirectory\
+    \ contents to be rewritten recursively."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Rewrite objects using the specified storage class.
+  optional: true
   synonyms:
   - -s
+  description: Rewrite objects using the specified storage class.
   args: !SimpleFlagArg
     name: class
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -119,3 +119,4 @@ help_text: "NAME\n  rewrite - Rewrite objects\n\n\nSYNOPSIS\n\n  gsutil rewrite 
   \ storage class.\n"
 generated_using:
 - --help
+docker_image:

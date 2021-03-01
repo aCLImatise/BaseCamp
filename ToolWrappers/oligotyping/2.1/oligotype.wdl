@@ -4,6 +4,9 @@ task Oligotype {
   command <<<
     oligotype
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

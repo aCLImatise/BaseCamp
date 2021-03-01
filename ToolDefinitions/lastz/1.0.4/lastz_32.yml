@@ -3,205 +3,205 @@ command:
 - lastz_32
 positional:
 - !Positional
-  description: (by default no chaining is performed)
+  optional: false
   position: 0
   name: anti-diagonal
-  optional: false
+  description: (by default no chaining is performed)
 named:
 - !Flag
-  description: "the target sequence is also the query\n(this replaces the query file)"
+  optional: true
   synonyms:
   - --self
+  description: "the target sequence is also the query\n(this replaces the query file)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <length>   use a word with no gaps instead of a seed pattern
+  optional: true
   synonyms:
   - --seed
+  description: <length>   use a word with no gaps instead of a seed pattern
   args: !SimpleFlagArg
     name: match
-  optional: true
 - !Flag
-  description: set step length (default is 1)
+  optional: true
   synonyms:
   - --step
+  description: set step length (default is 1)
   args: !SimpleFlagArg
     name: length
-  optional: true
 - !Flag
-  description: =<diag,anti>    perform chaining with given penalties for diagonal
-    and
+  optional: true
   synonyms:
   - --chain
+  description: =<diag,anti>    perform chaining with given penalties for diagonal
+    and
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "do not output a trivial self-alignment block if the\ntarget and query\
-    \ happen to be identical"
+  optional: true
   synonyms:
   - --notrivial
+  description: "do not output a trivial self-alignment block if the\ntarget and query\
+    \ happen to be identical"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "read substitution scores from a file\n(default is HOXD70)"
+  optional: true
   synonyms:
   - --scores
+  description: "read substitution scores from a file\n(default is HOXD70)"
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: ',<P>        scores are +R/-P for match/mismatch'
+  optional: true
   synonyms:
   - --match
+  description: ',<P>        scores are +R/-P for match/mismatch'
   args: !SimpleFlagArg
     name: R
-  optional: true
 - !Flag
-  description: =<open,extend>    set gap open and extend penalties (default is 400,30)
+  optional: true
   synonyms:
   - --gap
+  description: =<open,extend>    set gap open and extend penalties (default is 400,30)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: set x-drop threshold (default is 10*sub[A][A])
+  optional: true
   synonyms:
   - --xdrop
+  description: set x-drop threshold (default is 10*sub[A][A])
   args: !SimpleFlagArg
     name: score
-  optional: true
 - !Flag
-  description: set y-drop threshold (default is open+300extend)
+  optional: true
   synonyms:
   - --ydrop
+  description: set y-drop threshold (default is open+300extend)
   args: !SimpleFlagArg
     name: score
-  optional: true
 - !Flag
-  description: "if x-drop extension encounters end of sequence, don't\ntrim back to\
-    \ peak score (use this for short reads)"
+  optional: true
   synonyms:
   - --noxtrim
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "if y-drop extension encounters end of sequence, don't\ntrim back to\
+  description: "if x-drop extension encounters end of sequence, don't\ntrim back to\
     \ peak score (use this for short reads)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --noytrim
+  description: "if y-drop extension encounters end of sequence, don't\ntrim back to\
+    \ peak score (use this for short reads)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "set threshold for high scoring pairs (default is 3000)\nungapped extensions\
-    \ scoring lower are discarded\n<score> can also be a percentage or base count"
+  optional: true
   synonyms:
   - --hspthresh
+  description: "set threshold for high scoring pairs (default is 3000)\nungapped extensions\
+    \ scoring lower are discarded\n<score> can also be a percentage or base count"
   args: !SimpleFlagArg
     name: score
-  optional: true
 - !Flag
-  description: "set threshold for exact matches\nif specified, exact matches are found\
-    \ rather than high\nscoring pairs (replaces --hspthresh)"
+  optional: true
   synonyms:
   - --exact
+  description: "set threshold for exact matches\nif specified, exact matches are found\
+    \ rather than high\nscoring pairs (replaces --hspthresh)"
   args: !SimpleFlagArg
     name: length
-  optional: true
 - !Flag
-  description: "set threshold for HSPs during interpolation\n(default is no interpolation)"
+  optional: true
   synonyms:
   - --inner
+  description: "set threshold for HSPs during interpolation\n(default is no interpolation)"
   args: !SimpleFlagArg
     name: score
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gappedthresh
   description: "set threshold for gapped alignments\ngapped extensions scoring lower\
     \ are discarded\n<score> can also be a percentage or base count\n(default is to\
     \ use same value as --hspthresh)"
-  synonyms:
-  - --gappedthresh
   args: !SimpleFlagArg
     name: score
-  optional: true
 - !Flag
-  description: "don't report mirror-image alignments when using --self\n(default is\
-    \ to skip processing them, but recreate them\nin the output)"
+  optional: true
   synonyms:
   - --nomirror
+  description: "don't report mirror-image alignments when using --self\n(default is\
+    \ to skip processing them, but recreate them\nin the output)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ":traceback=<bytes>  space for trace-back information\n(default is\
-    \ 80.0M)"
+  optional: true
   synonyms:
   - --allocate
+  description: ":traceback=<bytes>  space for trace-back information\n(default is\
+    \ 80.0M)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "mask any position in target hit this many times\nzero indicates no\
-    \ masking\n(default is no masking)"
+  optional: true
   synonyms:
   - --masking
+  description: "mask any position in target hit this many times\nzero indicates no\
+    \ masking\n(default is no masking)"
   args: !SimpleFlagArg
     name: count
-  optional: true
 - !Flag
-  description: "[..<max>] filter alignments by percent identity\n0<=min<=max<=100;\
-    \  blocks (or HSPs) outside min..max\nare discarded\n(default is no identity filtering)"
+  optional: true
   synonyms:
   - --identity
+  description: "[..<max>] filter alignments by percent identity\n0<=min<=max<=100;\
+    \  blocks (or HSPs) outside min..max\nare discarded\n(default is no identity filtering)"
   args: !SimpleFlagArg
     name: min
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --coverage
   description: "[..<max>] filter alignments by percentage of query covered\n0<=min<=max<=100;\
     \  blocks (or HSPs) outside min..max\nare discarded\n(default is no query coverage\
     \ filtering)"
-  synonyms:
-  - --coverage
   args: !SimpleFlagArg
     name: min
-  optional: true
 - !Flag
-  description: "specify output alignment file;  otherwise alignments\nare written\
-    \ to stdout"
+  optional: true
   synonyms:
   - --output
+  description: "specify output alignment file;  otherwise alignments\nare written\
+    \ to stdout"
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "specify output format; one of lav, axt, maf, cigar,\nrdotplot, text\
-    \ or general\n(use --help=formats for more details)\n(by default output is LAV)"
+  optional: true
   synonyms:
   - --format
+  description: "specify output format; one of lav, axt, maf, cigar,\nrdotplot, text\
+    \ or general\n(use --help=formats for more details)\n(by default output is LAV)"
   args: !SimpleFlagArg
     name: type
-  optional: true
 - !Flag
-  description: create an output file suitable for plotting in R.
+  optional: true
   synonyms:
   - --rdotplot
+  description: create an output file suitable for plotting in R.
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: report processing of every nth query
+  optional: true
   synonyms:
   - --progress
+  description: report processing of every nth query
   args: !SimpleFlagArg
     name: n
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag
-  description: report the program version and quit
+  optional: true
   synonyms:
   - --version
+  description: report the program version and quit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "NOTE: the following list is not comprehensive.  The most up-to-date list\
   \ is\n      available at http://www.bx.psu.edu/~rsharris/lastz\n\n  target[[start..end]]\
   \   spec/file containing target sequence (fasta, fastq,\n                      \
@@ -278,3 +278,4 @@ help_text: "NOTE: the following list is not comprehensive.  The most up-to-date 
   \ list is\n      available at http://www.bx.psu.edu/~rsharris/lastz\n"
 generated_using:
 - --help
+docker_image:

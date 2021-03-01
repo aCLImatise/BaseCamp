@@ -10,7 +10,7 @@ task FlyesamtoolsMerge {
     Boolean? compress_level
     Int? compression_level_from
     File? merge_file_str
-    File? copy_header_file
+    File? copy_header_outbam
     Boolean? combine_rg_headers
     Boolean? combine_pg_headers
     String? override_random_seed
@@ -42,7 +42,7 @@ task FlyesamtoolsMerge {
       ~{if (compress_level) then "-1" else ""} \
       ~{if defined(compression_level_from) then ("-l " +  '"' + compression_level_from + '"') else ""} \
       ~{if defined(merge_file_str) then ("-R " +  '"' + merge_file_str + '"') else ""} \
-      ~{if defined(copy_header_file) then ("-h " +  '"' + copy_header_file + '"') else ""} \
+      ~{if defined(copy_header_outbam) then ("-h " +  '"' + copy_header_outbam + '"') else ""} \
       ~{if (combine_rg_headers) then "-c" else ""} \
       ~{if (combine_pg_headers) then "-p" else ""} \
       ~{if defined(override_random_seed) then ("-s " +  '"' + override_random_seed + '"') else ""} \
@@ -54,6 +54,9 @@ task FlyesamtoolsMerge {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (n_url_f) then "-nurlf" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_files_sorted_read: "Input files are sorted by read name"
     input_files_sorted_tag: "Input files are sorted by TAG value"
@@ -63,7 +66,7 @@ task FlyesamtoolsMerge {
     compress_level: "Compress level 1"
     compression_level_from: "Compression level, from 0 to 9 [-1]"
     merge_file_str: "Merge file in the specified region STR [all]"
-    copy_header_file: "Copy the header in FILE to <out.bam> [in1.bam]"
+    copy_header_outbam: "Copy the header in FILE to <out.bam> [in1.bam]"
     combine_rg_headers: "Combine @RG headers with colliding IDs [alter IDs to be distinct]"
     combine_pg_headers: "Combine @PG headers with colliding IDs [alter IDs to be distinct]"
     override_random_seed: "Override random seed"
@@ -82,7 +85,7 @@ task FlyesamtoolsMerge {
   }
   output {
     File out_stdout = stdout()
-    File out_copy_header_file = "${in_copy_header_file}"
+    File out_copy_header_outbam = "${in_copy_header_outbam}"
     File out_output_fmt_option = "${in_output_fmt_option}"
   }
 }

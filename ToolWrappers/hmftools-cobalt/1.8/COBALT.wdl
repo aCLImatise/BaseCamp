@@ -26,6 +26,9 @@ task COBALT {
       ~{if defined(tumor_bam) then ("-tumor_bam " +  '"' + tumor_bam + '"') else ""} \
       ~{if defined(validation_stringency) then ("-validation_stringency " +  '"' + validation_stringency + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_quality: "Min quality [10]"
     output_dir: "Output directory"

@@ -36,6 +36,9 @@ task QualimapClustering {
       ~{if defined(sample) then ("-sample " +  '"' + sample + '"') else ""} \
       ~{if defined(viz) then ("-viz " +  '"' + viz + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bin_size: "Size of the bin (default is 100)"
     clusters: "Comma-separated list of cluster sizes"

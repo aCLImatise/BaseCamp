@@ -16,6 +16,9 @@ task KneaddataBuildDatabase {
       ~{if defined(make_blast_db_path) then ("--makeblastdb-path " +  '"' + make_blast_db_path + '"') else ""} \
       ~{if defined(logdir) then ("--logdir " +  '"' + logdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_prefix: "prefix for all output files"
     bm_tool_path: "path to bmtool executable"

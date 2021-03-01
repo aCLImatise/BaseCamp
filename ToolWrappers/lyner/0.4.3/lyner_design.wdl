@@ -8,6 +8,9 @@ task LynerDesign {
     lyner design \
       ~{design}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     design: ""
   }

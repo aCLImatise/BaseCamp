@@ -56,6 +56,9 @@ task Transabyss {
       ~{if defined(walk) then ("--walk " +  '"' + walk + '"') else ""} \
       ~{if (no_ref) then "--noref" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     se: "single-end read files"
     pe: "paired-end read files"

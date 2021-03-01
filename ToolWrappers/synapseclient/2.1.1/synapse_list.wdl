@@ -14,6 +14,9 @@ task SynapseList {
       ~{if (long) then "--long" else ""} \
       ~{if (modified) then "--modified" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     recursive: "recursively list contents of the subtree descending from\\nthe given Synapse ID"
     long: "List synapse entities in long format"

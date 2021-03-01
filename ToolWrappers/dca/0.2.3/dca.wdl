@@ -86,6 +86,9 @@ task Dca {
       ~{if (tensor_board) then "--tensorboard" else ""} \
       ~{if defined(de_noise_subset) then ("--denoisesubset " +  '"' + de_noise_subset + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     norm_type: "Type of size factor estimation. Possible values:\\ndeseq, zheng. (default: zheng)"
     transpose: "Transpose input matrix (default: False)"

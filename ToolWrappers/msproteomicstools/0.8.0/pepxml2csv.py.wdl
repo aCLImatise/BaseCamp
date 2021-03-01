@@ -8,6 +8,9 @@ task Pepxml2csvpy {
     pepxml2csv_py \
       ~{in_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "= sys.argv[1]"
   }

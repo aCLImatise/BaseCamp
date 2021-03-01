@@ -1,46 +1,46 @@
 class: CommandLineTool
 id: qualityScores.cwl
 inputs:
-- id: in_name_input_file
+- id: in_name_including_data
   doc: Name of input file including read data. The default format is
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_gz_fast_q_input
   doc: file is in gzipped Fastq format.
-  type: File
+  type: File?
   inputBinding:
     prefix: --gzFASTQinput
 - id: in_bam_input
   doc: Input file is in BAM format.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --BAMinput
 - id: in_sam_input
   doc: Input file is in SAM format.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --SAMinput
 - id: in_first_end
   doc: "Use only first reads in paired-end data. Only applicable for\npaired-end BAM/SAM\
     \ input."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --first-end
 - id: in_second_end
   doc: "Use only second reads in paired-end data. Only applicable for\npaired-end\
     \ BAM/SAM input."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --second-end
 - id: in_counted_reads
   doc: "Total number of reads to be extracted from the input\nfile. 10,000 by default."
-  type: long
+  type: long?
   inputBinding:
     prefix: --counted-reads
 - id: in_phred_offset
   doc: refer to subread aligner.
-  type: long
+  type: long?
   inputBinding:
     prefix: --phred-offset
 - id: in_fast_q_dot
@@ -52,6 +52,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - qualityScores

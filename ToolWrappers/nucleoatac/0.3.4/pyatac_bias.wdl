@@ -16,6 +16,9 @@ task PyatacBias {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "Accepts fasta file"
     pwm: "PWM descriptor file. Default is Human.PWM.txt included\\nin package"

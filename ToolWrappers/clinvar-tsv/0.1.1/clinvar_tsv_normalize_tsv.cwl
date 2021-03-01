@@ -3,17 +3,17 @@ id: clinvar_tsv_normalize_tsv.cwl
 inputs:
 - id: in_reference
   doc: Path to reference FASTA file
-  type: File
+  type: File?
   inputBinding:
     prefix: --reference
 - id: in_input_tsv
   doc: Path to input TSV file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-tsv
 - id: in_output_tsv
   doc: "Path to output TSV file.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-tsv
 - id: in_clin_var_tsv
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_output_tsv
   doc: "Path to output TSV file.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_tsv)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - clinvar_tsv

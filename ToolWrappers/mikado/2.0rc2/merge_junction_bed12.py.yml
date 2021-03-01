@@ -3,54 +3,54 @@ command:
 - merge_junction_bed12.py
 positional:
 - !Positional
-  description: Input BED files. Use "-" for stdin.
+  optional: false
   position: 0
   name: bed
-  optional: false
+  description: Input BED files. Use "-" for stdin.
 named:
 - !Flag
-  description: 'Delimiter for merged names. Default: ;'
+  optional: true
   synonyms:
   - --delim
+  description: 'Delimiter for merged names. Default: ;'
   args: !SimpleFlagArg
     name: DELIM
-  optional: true
 - !Flag
-  description: "Number of threads to use for multiprocessing. Default:\n1"
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: "Number of threads to use for multiprocessing. Default:\n1"
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --tophat
   description: "Flag. If set, tophat-like junction style is assumed.\nThis means that\
     \ junctions are defined using the\nblockSizes rather than thickStart/End. The\
     \ script will\nconvert the lines to this latter format. By default,\nthe script\
     \ assumes that the intron start/end are\ndefined using thickStart/End like in\
     \ portcullis.\nMixed-type input files are not supported."
-  synonyms:
-  - --tophat
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output file. Default: stdout\n"
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "Output file. Default: stdout\n"
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: Script to merge BED12 files *based on the thickStart/End features*.\n\
@@ -70,3 +70,4 @@ help_text: "usage: Script to merge BED12 files *based on the thickStart/End feat
   \ --output OUTPUT\n                        Output file. Default: stdout\n"
 generated_using:
 - --help
+docker_image:

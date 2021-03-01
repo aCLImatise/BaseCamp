@@ -116,6 +116,9 @@ task Minia {
       ~{if (skip_links) then "-skip-links" else ""} \
       ~{if (nb_glue_partitions) then "-nb-glue-partitions" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "(1 arg) :    input reads (fasta/fastq/compressed) or hdf5 file  [default '']"
     keep_isolated: "(0 arg) :    keep short (<= max(2k, 150 bp)) isolated output sequences"

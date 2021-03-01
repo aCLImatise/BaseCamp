@@ -11,7 +11,7 @@ task Du {
     Boolean? dereference_args
     Int? max_depth
     Int? files_zero_from
-    Boolean? equivalent__dereferenceargs
+    Boolean? equivalent_dereferenceargs_d
     Boolean? inodes
     Boolean? like__blocksizek
     Boolean? dereference
@@ -38,7 +38,7 @@ task Du {
       ~{if (dereference_args) then "--dereference-args" else ""} \
       ~{if defined(max_depth) then ("--max-depth " +  '"' + max_depth + '"') else ""} \
       ~{if defined(files_zero_from) then ("--files0-from " +  '"' + files_zero_from + '"') else ""} \
-      ~{if (equivalent__dereferenceargs) then "-H" else ""} \
+      ~{if (equivalent_dereferenceargs_d) then "-H" else ""} \
       ~{if (inodes) then "--inodes" else ""} \
       ~{if (like__blocksizek) then "-k" else ""} \
       ~{if (dereference) then "--dereference" else ""} \
@@ -54,6 +54,9 @@ task Du {
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
       ~{if (one_file_system) then "--one-file-system" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     null: "end each output line with NUL, not newline"
     all: "write counts for all files, not just directories"
@@ -64,7 +67,7 @@ task Du {
     dereference_args: "dereference only symlinks that are listed on the\\ncommand line"
     max_depth: "print the total for a directory (or file, with --all)\\nonly if it is N or fewer levels below the command\\nline argument;  --max-depth=0 is the same as\\n--summarize"
     files_zero_from: "summarize disk usage of the\\nNUL-terminated file names specified in file F;\\nif F is -, then read names from standard input"
-    equivalent__dereferenceargs: "equivalent to --dereference-args (-D)"
+    equivalent_dereferenceargs_d: "equivalent to --dereference-args (-D)"
     inodes: "list inode usage information instead of block usage"
     like__blocksizek: "like --block-size=1K"
     dereference: "dereference all symbolic links"

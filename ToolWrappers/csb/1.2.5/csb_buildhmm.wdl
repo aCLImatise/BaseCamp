@@ -22,6 +22,9 @@ task Csbbuildhmm {
       ~{if (no_pseudo) then "--no-pseudo" else ""} \
       ~{if (no_calibration) then "--no-calibration" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query_id: "ID of the query, in PDB-like format\\n(accessionCHAIN).Used for naming the output files.\\nAlso, if the input is a PDB file with multiple chains,\\nCHAIN is used to pull the required chain from the\\nfile."
     tk_root: "path to the ToolkitRoot folder in your HHsuite setup\\n(default=/ebio/abt1_toolkit/share/wye)"

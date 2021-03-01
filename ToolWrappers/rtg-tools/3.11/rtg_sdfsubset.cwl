@@ -3,28 +3,28 @@ id: rtg_sdfsubset.cwl
 inputs:
 - id: in_input
   doc: SDF containing sequences
-  type: string
+  type: string?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: output SDF
-  type: string
+  type: string?
   inputBinding:
     prefix: --output
 - id: in_end_id
   doc: exclusive upper bound on sequence id
-  type: long
+  type: long?
   inputBinding:
     prefix: --end-id
 - id: in_id_file
   doc: "file containing sequence ids, or sequence names if --names\nflag is set, one\
     \ per line"
-  type: File
+  type: File?
   inputBinding:
     prefix: --id-file
 - id: in_names
   doc: interpret supplied sequence as names instead of numeric
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --names
 - id: in_ids
@@ -36,6 +36,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rtg

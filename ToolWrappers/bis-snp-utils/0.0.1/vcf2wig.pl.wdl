@@ -12,6 +12,9 @@ task Vcf2wigpl {
       ~{cg} \
       ~{if defined(min_ct) then ("--minCT " +  '"' + min_ct + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_ct: ": minimum number of CT reads, otherwise, methy column will be '.' (default: 1)"
     input_file_name: ""

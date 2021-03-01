@@ -4,7 +4,7 @@ task RadHaplotyperpl {
   input {
     File? input_vcf_file
     Boolean? bed_file_containing
-    Boolean? optionally_specify_haplotyped
+    Boolean? optionally_specify_sample
     Boolean? _reference_genome
     Boolean? remove_loci_more
     Boolean? cutoff_proportion_included
@@ -50,7 +50,7 @@ task RadHaplotyperpl {
     rad_haplotyper_pl \
       ~{if defined(input_vcf_file) then ("-v " +  '"' + input_vcf_file + '"') else ""} \
       ~{if (bed_file_containing) then "-b" else ""} \
-      ~{if (optionally_specify_haplotyped) then "-s" else ""} \
+      ~{if (optionally_specify_sample) then "-s" else ""} \
       ~{if (_reference_genome) then "-r" else ""} \
       ~{if (remove_loci_more) then "-u" else ""} \
       ~{if (cutoff_proportion_included) then "-m" else ""} \
@@ -92,10 +92,13 @@ task RadHaplotyperpl {
       ~{if (parent_two) then "--parent2" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_vcf_file: "input vcf file"
     bed_file_containing: "[bedfile]               BED file containing regions to be haplotyped"
-    optionally_specify_haplotyped: "[samples]               optionally specify an individual sample to be haplotyped"
+    optionally_specify_sample: "[samples]               optionally specify an individual sample to be haplotyped"
     _reference_genome: "[reference]             reference genome"
     remove_loci_more: "[snp_cutoff]            remove loci with more than a specified number of SNPs"
     cutoff_proportion_included: "[miss_cutoff]           cutoff for proportion of missing data for loci to be included in the output"

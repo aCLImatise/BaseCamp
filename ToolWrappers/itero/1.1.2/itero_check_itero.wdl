@@ -8,6 +8,9 @@ task IteroCheckItero {
     itero check itero \
       ~{check}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     check: ""
   }

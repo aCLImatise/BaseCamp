@@ -8,6 +8,9 @@ task RiboraptorUniqmappingcount {
     riboraptor uniq_mapping_count \
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Path to BAM file  [required]"
   }

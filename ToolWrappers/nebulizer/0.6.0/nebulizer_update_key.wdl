@@ -14,6 +14,9 @@ task NebulizerUpdateKey {
       ~{if defined(new_api_key) then ("--new-api-key " +  '"' + new_api_key + '"') else ""} \
       ~{if (fetch_api_key) then "--fetch-api-key" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     new_url: "specify new URL for Galaxy instance"
     new_api_key: "specify new API key for Galaxy instance"

@@ -30,6 +30,9 @@ task Meryllookup {
       ~{if defined(mers) then ("-mers " +  '"' + mers + '"') else ""} \
       ~{if defined(sequence) then ("-sequence " +  '"' + sequence + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequence_two: "only required for -include and -exclude"
     min: "m    Ignore kmers with value below m"

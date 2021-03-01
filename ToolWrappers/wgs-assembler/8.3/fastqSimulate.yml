@@ -4,123 +4,126 @@ command:
 positional: []
 named:
 - !Flag
-  description: Use sequences in ref.fasta as the genome.
+  optional: true
   synonyms:
   - -f
+  description: Use sequences in ref.fasta as the genome.
   args: !SimpleFlagArg
     name: ref.fasta
-  optional: true
 - !Flag
-  description: Create outputs name.1.fastq and name.2.fastq (and maybe others).
+  optional: true
   synonyms:
   - -o
+  description: Create outputs name.1.fastq and name.2.fastq (and maybe others).
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
-  description: Create reads of length 'len' bases.
+  optional: true
   synonyms:
   - -l
+  description: Create reads of length 'len' bases.
   args: !SimpleFlagArg
     name: len
-  optional: true
 - !Flag
-  description: Create 'n' reads (for -se) or 'n' pairs of reads (for -pe and -mp).
+  optional: true
   synonyms:
   - -n
+  description: Create 'n' reads (for -se) or 'n' pairs of reads (for -pe and -mp).
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: Set 'np' to create reads that sample the genome to 'read-cov' read
-    coverage.
+  optional: true
   synonyms:
   - -x
+  description: Set 'np' to create reads that sample the genome to 'read-cov' read
+    coverage.
   args: !SimpleFlagArg
     name: read-cov
-  optional: true
 - !Flag
-  description: Set 'np' to create reads that sample the genome to 'clone-cov' clone
-    coverage.
+  optional: true
   synonyms:
   - -X
+  description: Set 'np' to create reads that sample the genome to 'clone-cov' clone
+    coverage.
   args: !SimpleFlagArg
     name: clone-cov
-  optional: true
 - !Flag
-  description: Reads will contain fraction mismatch  error 'e' (0.01 == 1% error).
+  optional: true
   synonyms:
   - -em
+  description: Reads will contain fraction mismatch  error 'e' (0.01 == 1% error).
   args: !SimpleFlagArg
     name: err
-  optional: true
 - !Flag
-  description: Reads will contain fraction insertion error 'e' (0.01 == 1% error).
+  optional: true
   synonyms:
   - -ei
+  description: Reads will contain fraction insertion error 'e' (0.01 == 1% error).
   args: !SimpleFlagArg
     name: err
-  optional: true
 - !Flag
-  description: Reads will contain fraction deletion  error 'e' (0.01 == 1% error).
+  optional: true
   synonyms:
   - -ed
+  description: Reads will contain fraction deletion  error 'e' (0.01 == 1% error).
   args: !SimpleFlagArg
     name: err
-  optional: true
 - !Flag
-  description: "Allow pairs to span N regions in the reference.  By default, pairs\n\
-    are not allowed to span a gap.  Reads are never allowed to cover N's."
+  optional: true
   synonyms:
   - -allowgaps
+  description: "Allow pairs to span N regions in the reference.  By default, pairs\n\
+    are not allowed to span a gap.  Reads are never allowed to cover N's."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Allow reads to contain N regions.  Implies -allowgaps
+  optional: true
   synonyms:
   - -allowns
+  description: Allow reads to contain N regions.  Implies -allowgaps
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "For -mp, do not create chimeric junction reads.  Create only fully\
-    \ PE or\nfully MP reads."
+  optional: true
   synonyms:
   - -nojunction
+  description: "For -mp, do not create chimeric junction reads.  Create only fully\
+    \ PE or\nfully MP reads."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output a normal-oriented (both forward or both reverse) pair with\n\
-    probability p.  Only for -pe and -mp."
+  optional: true
   synonyms:
   - -normal
+  description: "Output a normal-oriented (both forward or both reverse) pair with\n\
+    probability p.  Only for -pe and -mp."
   args: !SimpleFlagArg
     name: p
-  optional: true
 - !Flag
-  description: Create single-end reads.
+  optional: true
   synonyms:
   - -se
+  description: Create single-end reads.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -cc
   description: "junkStdDev false\nCreate chimeric single-end reads.  The chimer is\
     \ formed from two uniformly\ndistributed positions in the reference.  Some amount\
     \ of random junk is inserted\nat the junction.  With probability 'false' the read\
     \ is not chimeric, but still\nthe junk bases inserted in the middle."
-  synonyms:
-  - -cc
   args: !SimpleFlagArg
     name: junkSize
-  optional: true
 - !Flag
-  description: "shearStdDev\nCreate paired-end reads, from fragments of size 'shearSize\
-    \ +- shearStdDev'."
+  optional: true
   synonyms:
   - -pe
+  description: "shearStdDev\nCreate paired-end reads, from fragments of size 'shearSize\
+    \ +- shearStdDev'."
   args: !SimpleFlagArg
     name: shearSize
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -mp
   description: "insertStdDev shearSize shearStdDev enrichment\nCreate mate-pair reads.\
     \  The pairs will be 'insertSize +- insertStdDev'\napart.  The circularized insert\
     \ is then sheared into fragments of size\n'shearSize +- shearStdDev'.  With probability\
@@ -129,11 +132,8 @@ named:
     Reads are labeled as:\ntMP - a MP pair\nfMP - a PE pair\naMP - a MP pair with\
     \ junction in the first read\nbMP - a MP pair with junction in the second read\n\
     cMP - a MP pair with junction in both reads (the reads overlap)"
-  synonyms:
-  - -mp
   args: !SimpleFlagArg
     name: insertSize
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -179,3 +179,4 @@ help_text: "Unknown arg '--help'\nusage: fastqSimulate -f reference.fasta -o out
   \  No type (-se or -pe or -mp) selected.\n"
 generated_using:
 - --help
+docker_image:

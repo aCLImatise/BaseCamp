@@ -3,53 +3,53 @@ id: vdb_diff.cwl
 inputs:
 - id: in_rows
   doc: set of rows to be comparend (default all)
-  type: string
+  type: string?
   inputBinding:
     prefix: --rows
 - id: in_columns
   doc: "set of columns to be compared (default\nall)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --columns
 - id: in_table
   doc: name of table (in case of database to be
-  type: string
+  type: string?
   inputBinding:
     prefix: --table
 - id: in_max_err
   doc: max errors im comparing (default 1)
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxerr
 - id: in_intersect
   doc: intersect column-set from both runs
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --intersect
 - id: in_exclude
   doc: exclude these columns from comapring
-  type: string
+  type: string?
   inputBinding:
     prefix: --exclude
 - id: in_col_by_col
   doc: exclude these columns from comapring
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --col-by-col
 - id: in_verbose
   doc: "Increase the verbosity of the program\nstatus messages. Use multiple times\
     \ for more\nverbosity. Negates quiet."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_quiet
   doc: "Turn off all status messages for the\nprogram. Negated by verbose."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_option_file
   doc: Read more options and parameters from the
-  type: File
+  type: File?
   inputBinding:
     prefix: --option-file
 - id: in_compared
@@ -71,6 +71,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vdb-diff

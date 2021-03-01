@@ -8,6 +8,9 @@ task OrthomclSortGroupsFile {
     orthomclSortGroupsFile \
       ~{groups_dot_txt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     groups_dot_txt: ""
   }

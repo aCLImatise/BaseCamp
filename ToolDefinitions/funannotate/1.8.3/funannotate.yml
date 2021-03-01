@@ -1,0 +1,1905 @@
+&id001 !Command
+command:
+- funannotate
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - funannotate
+  - sort
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: arguments
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: Multi-fasta genome file. (Required)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out
+    description: Sorted by size and relabeled output file. (Required)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --base
+    description: 'Base name to relabel contigs. Default: scaffold'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minlen
+    description: 'Shorter contigs are discarded. Default: 0'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:       funannotate sort <arguments>\nversion:     1.8.3\n\n\
+    Description: This script sorts the input contigs by size (longest->shortest) and\
+    \ then relabels\n             the contigs with a simple name (e.g. scaffold_1).\
+    \  Augustus can have problems with\n             some complicated contig names.\n\
+    \nArguments:\n  -i, --input    Multi-fasta genome file. (Required)\n  -o, --out\
+    \      Sorted by size and relabeled output file. (Required)\n  -b, --base    \
+    \ Base name to relabel contigs. Default: scaffold\n  --minlen       Shorter contigs\
+    \ are discarded. Default: 0\n        \n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0
+- !Command
+  command:
+  - funannotate
+  - compare
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: arguments
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: List of funannotate genome folders or GBK files
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out
+    description: 'Output folder name. Default: funannotate_compare'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --database
+    description: 'Path to funannotate database. Default: $FUNANNOTATE_DB'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cpus
+    description: 'Number of CPUs to use. Default: 2'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --run_dnds
+    description: Calculate dN/dS ratio on all orthologs. [estimate,full]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --go_fdr
+    description: 'P-value for FDR GO-enrichment. Default: 0.05'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --heatmap_stdev
+    description: 'Cut-off for heatmap. Default: 1.0'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --num_orthos
+    description: 'Number of Single-copy orthologs to use for ML. Default: 500'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --bootstrap
+    description: 'Number of boostrap replicates to run with RAxML. Default: 100'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --outgroup
+    description: 'Name of species to use for ML outgroup. Default: no outgroup'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --proteinortho
+    description: Proteinortho POFF results. in TSV format.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ml_method
+    description: 'Maxmimum Liklihood method: Default: iqtree [raxml,iqtree]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-progress
+    description: Do not print progress to stdout for long sub jobs
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:       funannotate compare <arguments>\nversion:     1.8.3\n\
+    \nDescription: Script does light-weight comparative genomics between funannotated\
+    \ genomes.  Output\n             is graphs, phylogeny, CSV files, etc --> visualized\
+    \ in web-browser.\n\nRequired:\n  -i, --input         List of funannotate genome\
+    \ folders or GBK files\n\nOptional:\n  -o, --out           Output folder name.\
+    \ Default: funannotate_compare\n  -d, --database      Path to funannotate database.\
+    \ Default: $FUNANNOTATE_DB\n  --cpus              Number of CPUs to use. Default:\
+    \ 2\n  --run_dnds          Calculate dN/dS ratio on all orthologs. [estimate,full]\n\
+    \  --go_fdr            P-value for FDR GO-enrichment. Default: 0.05\n  --heatmap_stdev\
+    \     Cut-off for heatmap. Default: 1.0\n  --num_orthos        Number of Single-copy\
+    \ orthologs to use for ML. Default: 500\n  --bootstrap         Number of boostrap\
+    \ replicates to run with RAxML. Default: 100\n  --outgroup          Name of species\
+    \ to use for ML outgroup. Default: no outgroup\n  --proteinortho      Proteinortho\
+    \ POFF results. in TSV format.\n  --ml_method         Maxmimum Liklihood method:\
+    \ Default: iqtree [raxml,iqtree]\n  --no-progress       Do not print progress\
+    \ to stdout for long sub jobs\n          \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0
+- !Command
+  command:
+  - funannotate
+  - iprscan
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: arguments
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: Funannotate folder or FASTA protein file. (Required)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --method
+    description: 'Search method to use: [local, docker] (Required)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --num
+    description: 'Number of fasta files per chunk. Default: 1000'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out
+    description: Output XML InterProScan5 file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug
+    description: Keep intermediate files
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-progress
+    description: Do not print progress to stdout for long sub jobs
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cpus
+    description: 'Number of CPUs (total). Default: 12'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cpus_per_chunk
+    description: 'Number of cpus per Docker instance. Default: 4'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --iprscan_path
+    description: 'Path to interproscan.sh. Default: which(interproscan.sh)'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:       funannotate iprscan <arguments>\nversion:     1.8.3\n\
+    \nDescription: This script is a wrapper for running InterProScan5 using Docker\
+    \ or from a\n             local installation. The script splits proteins into\
+    \ smaller chunks and then\n             launches several interproscan.sh \"processes\"\
+    . It then combines the results.\n\nArguments:\n  -i, --input        Funannotate\
+    \ folder or FASTA protein file. (Required)\n  -m, --method       Search method\
+    \ to use: [local, docker] (Required)\n  -n, --num          Number of fasta files\
+    \ per chunk. Default: 1000\n  -o, --out          Output XML InterProScan5 file\n\
+    \  --debug            Keep intermediate files\n  --no-progress      Do not print\
+    \ progress to stdout for long sub jobs\n\nDocker arguments:\n  -c, --cpus    \
+    \     Number of CPUs (total). Default: 12\n  --cpus_per_chunk   Number of cpus\
+    \ per Docker instance. Default: 4\n\nLocal arguments:\n  --iprscan_path     Path\
+    \ to interproscan.sh. Default: which(interproscan.sh)\n  -c, --cpus         Number\
+    \ of InterProScan instances to run\n                     (configure cpu/thread\
+    \ control in interproscan.properties file)\n        \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0
+- !Command
+  command:
+  - funannotate
+  - annotate
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: arguments
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: Folder from funannotate predict
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out
+    description: Output folder for results
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fasta
+    description: Genome in multi-fasta format
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --species
+    description: Species name, use quotes for binomial, e.g. "Aspergillus fumigatus"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sbt
+    description: NCBI submission template file. (Recommended)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --annotations
+    description: Custom annotations (3 column tsv file)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --eggnog
+    description: Eggnog-mapper annotations file (if NOT installed)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --antismash
+    description: antiSMASH secondary metabolism results (GBK file from output)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --iprscan
+    description: InterProScan5 XML file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --phobius
+    description: Phobius pre-computed results (if phobius NOT installed)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --isolate
+    description: Isolate name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --strain
+    description: Strain name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --rename
+    description: Rename GFF gene models with locus_tag from NCBI.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fix
+    description: 'Gene/Product names fixed (TSV: GeneID      Name    Product)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --remove
+    description: 'Gene/Product names to remove (TSV: Gene    Product)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --busco_db
+    description: 'BUSCO models. Default: dikarya'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --tbl2asn
+    description: 'Additional parameters for tbl2asn. Default: "-l paired-ends"'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --database
+    description: 'Path to funannotate database. Default: $FUNANNOTATE_DB'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --force
+    description: Force over-write of output folder
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cpus
+    description: 'Number of CPUs to use. Default: 2'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-progress
+    description: Do not print progress to stdout for long sub jobs
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:       funannotate annotate <arguments>\nversion:     1.8.3\n\
+    \nDescription: Script functionally annotates the results from funannotate predict.\
+    \  It pulls\n             annotation from PFAM, InterPro, EggNog, UniProtKB, MEROPS,\
+    \ CAZyme, and GO ontology.\n\nRequired:\n  -i, --input        Folder from funannotate\
+    \ predict\n    or\n  --genbank          Genome in GenBank format\n  -o, --out\
+    \          Output folder for results\n    or\n  --gff              Genome GFF3\
+    \ annotation file\n  --fasta            Genome in multi-fasta format\n  -s, --species\
+    \      Species name, use quotes for binomial, e.g. \"Aspergillus fumigatus\"\n\
+    \  -o, --out          Output folder for results\n\nOptional:\n  --sbt        \
+    \      NCBI submission template file. (Recommended)\n  -a, --annotations  Custom\
+    \ annotations (3 column tsv file)\n  --eggnog           Eggnog-mapper annotations\
+    \ file (if NOT installed)\n  --antismash        antiSMASH secondary metabolism\
+    \ results (GBK file from output)\n  --iprscan          InterProScan5 XML file\n\
+    \  --phobius          Phobius pre-computed results (if phobius NOT installed)\n\
+    \  --isolate          Isolate name\n  --strain           Strain name\n  --rename\
+    \           Rename GFF gene models with locus_tag from NCBI.\n  --fix        \
+    \      Gene/Product names fixed (TSV: GeneID\tName\tProduct)\n  --remove     \
+    \      Gene/Product names to remove (TSV: Gene\tProduct)\n  --busco_db       \
+    \  BUSCO models. Default: dikarya\n  -t, --tbl2asn      Additional parameters\
+    \ for tbl2asn. Default: \"-l paired-ends\"\n  -d, --database     Path to funannotate\
+    \ database. Default: $FUNANNOTATE_DB\n  --force            Force over-write of\
+    \ output folder\n  --cpus             Number of CPUs to use. Default: 2\n  --no-progress\
+    \            Do not print progress to stdout for long sub jobs\n         \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0
+- !Command
+  command:
+  - funannotate
+  - clean
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: arguments
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: Multi-fasta genome file (Required)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out
+    description: Cleaned multi-fasta output file (Required)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --pident
+    description: Percent identity of overlap. Default = 95
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cov
+    description: Percent coverage of overlap. Default = 95
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --minlen
+    description: Minimum length of contig to keep. Default = 500
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --exhaustive
+    description: Test every contig. Default is to stop at N50 value.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:       funannotate clean <arguments>\nversion:     1.8.3\n\n\
+    Description: The script sorts contigs by size, starting with shortest contigs\
+    \ it uses minimap2\n             to find contigs duplicated elsewhere, and then\
+    \ removes duplicated contigs.\n\nArguments:\n  -i, --input    Multi-fasta genome\
+    \ file (Required)\n  -o, --out      Cleaned multi-fasta output file (Required)\n\
+    \  -p, --pident   Percent identity of overlap. Default = 95\n  -c, --cov     \
+    \ Percent coverage of overlap. Default = 95\n  -m, --minlen   Minimum length of\
+    \ contig to keep. Default = 500\n  --exhaustive   Test every contig. Default is\
+    \ to stop at N50 value.\n        \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0
+- !Command
+  command:
+  - funannotate
+  - train
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: arguments
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: Genome multi-fasta file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out
+    description: Output folder name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --left
+    description: Left/Forward FASTQ Illumina reads (R1)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --right
+    description: Right/Reverse FASTQ Illumina reads (R2)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --single
+    description: Single ended FASTQ reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --stranded
+    description: If RNA-seq library stranded. [RF,FR,F,R,no]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --left_norm
+    description: Normalized left FASTQ reads (R1)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --right_norm
+    description: Normalized right FASTQ reads (R2)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --single_norm
+    description: Normalized single-ended FASTQ reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --pacbio_isoseq
+    description: PacBio long-reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --nanopore_cdna
+    description: Nanopore cDNA long-reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --nanopore_mrna
+    description: Nanopore mRNA direct long-reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --trinity
+    description: Pre-computed Trinity transcripts (FASTA)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --jaccard_clip
+    description: Turn on jaccard clip for dense genomes [Recommended for fungi]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no_normalize_reads
+    description: Skip read Normalization
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no_trimmomatic
+    description: Skip Quality Trimming of reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --memory
+    description: 'RAM to use for Jellyfish. Default: 50G'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --coverage
+    description: 'Depth to normalize reads. Default: 50'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --min_coverage
+    description: 'Min depth for normalizing reads. Default: 5'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --pasa_db
+    description: 'Database to use. Default: sqlite [mysql,sqlite]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --aligners
+    description: 'Aligners to use with PASA: Default: minimap2 blat [gmap]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --pasa_min_pct_aligned
+    description: 'PASA --MIN_PERCENT_ALIGNED. Default: 90'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --pasa_min_avg_per_id
+    description: 'PASA --MIN_AVG_PER_ID. Default: 95'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --pasa_num_bp_splice
+    description: 'PASA --NUM_BP_PERFECT_SPLICE_BOUNDARY. Default: 3'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max_intronlen
+    description: 'Maximum intron length. Default: 3000'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --species
+    description: Species name, use quotes for binomial, e.g. "Aspergillus fumigatus"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --strain
+    description: Strain name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --isolate
+    description: Isolate name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cpus
+    description: 'Number of CPUs to use. Default: 2'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-progress
+    description: Do not print progress to stdout for long sub jobs
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:       funannotate train <arguments>\nversion:     1.8.3\n\n\
+    Description: Script is a wrapper for de novo genome-guided transcriptome assembly\
+    \ using\n             Trinity followed by PASA. Illumina and Long-read (nanopore/pacbio)\
+    \ RNA-seq\n             is also supported. Dependencies are hisat2, Trinity, samtools,\
+    \ fasta,\n             minimap2, PASA.\n\nRequired:\n  -i, --input           \
+    \   Genome multi-fasta file\n  -o, --out                Output folder name\n \
+    \ -l, --left               Left/Forward FASTQ Illumina reads (R1)\n  -r, --right\
+    \              Right/Reverse FASTQ Illumina reads (R2)\n  -s, --single       \
+    \      Single ended FASTQ reads\n\nOptional:\n  --stranded               If RNA-seq\
+    \ library stranded. [RF,FR,F,R,no]\n  --left_norm              Normalized left\
+    \ FASTQ reads (R1)\n  --right_norm             Normalized right FASTQ reads (R2)\n\
+    \  --single_norm            Normalized single-ended FASTQ reads\n  --pacbio_isoseq\
+    \          PacBio long-reads\n  --nanopore_cdna          Nanopore cDNA long-reads\n\
+    \  --nanopore_mrna          Nanopore mRNA direct long-reads\n  --trinity     \
+    \           Pre-computed Trinity transcripts (FASTA)\n  --jaccard_clip       \
+    \    Turn on jaccard clip for dense genomes [Recommended for fungi]\n  --no_normalize_reads\
+    \     Skip read Normalization\n  --no_trimmomatic         Skip Quality Trimming\
+    \ of reads\n  --memory                 RAM to use for Jellyfish. Default: 50G\n\
+    \  -c, --coverage           Depth to normalize reads. Default: 50\n  -m, --min_coverage\
+    \       Min depth for normalizing reads. Default: 5\n  --pasa_db             \
+    \   Database to use. Default: sqlite [mysql,sqlite]\n  --pasa_alignment_overlap\
+    \ PASA --stringent_alignment_overlap. Default: 30.0\n  --aligners            \
+    \   Aligners to use with PASA: Default: minimap2 blat [gmap]\n  --pasa_min_pct_aligned\
+    \   PASA --MIN_PERCENT_ALIGNED. Default: 90\n  --pasa_min_avg_per_id    PASA --MIN_AVG_PER_ID.\
+    \ Default: 95\n  --pasa_num_bp_splice     PASA --NUM_BP_PERFECT_SPLICE_BOUNDARY.\
+    \ Default: 3\n  --max_intronlen          Maximum intron length. Default: 3000\n\
+    \  --species                Species name, use quotes for binomial, e.g. \"Aspergillus\
+    \ fumigatus\"\n  --strain                 Strain name\n  --isolate           \
+    \     Isolate name\n  --cpus                   Number of CPUs to use. Default:\
+    \ 2\n  --no-progress            Do not print progress to stdout for long sub jobs\n\
+    \nENV Vars:  If not passed, will try to load from your $PATH.\n  --PASAHOME\n\
+    \  --TRINITYHOME\n           \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0
+- !Command
+  command:
+  - funannotate
+  - species
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: species.py
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: ''
+    args: !SimpleFlagArg
+      name: DATABASE
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: ''
+    args: !SimpleFlagArg
+      name: PARAMETERS
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: ''
+    args: !SimpleFlagArg
+      name: ADD
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: ''
+    args: !SimpleFlagArg
+      name: SPECIES
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: species.py [-h] [-s SPECIES] [-a ADD] [-p PARAMETERS] [-d DATABASE]\n\
+    species.py: error: unrecognized arguments: --usage\n"
+  generated_using:
+  - --usage
+  docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0
+- !Command
+  command:
+  - funannotate
+  - update
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: or
+    description: -f, --fasta              Genome in FASTA format
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: Funannotate folder or Genome in GenBank format (.gbk,.gbff).
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gff
+    description: Annotation in GFF3 format
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --species
+    description: Species name, use quotes for binomial, e.g. "Aspergillus fumigatus"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out
+    description: Output folder name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --left
+    description: Left/Forward FASTQ Illumina reads (R1)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --right
+    description: Right/Reverse FASTQ Illumina reads (R2)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --single
+    description: Single ended FASTQ reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --stranded
+    description: If RNA-seq library stranded. [RF,FR,F,R,no]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --left_norm
+    description: Normalized left FASTQ reads (R1)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --right_norm
+    description: Normalized right FASTQ reads (R2)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --single_norm
+    description: Normalized single-ended FASTQ reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --pacbio_isoseq
+    description: PacBio long-reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --nanopore_cdna
+    description: Nanopore cDNA long-reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --nanopore_mrna
+    description: Nanopore mRNA direct long-reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --trinity
+    description: Pre-computed Trinity transcripts (FASTA)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --jaccard_clip
+    description: Turn on jaccard clip for dense genomes [Recommended for fungi]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no_normalize_reads
+    description: Skip read Normalization
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no_trimmomatic
+    description: Skip Quality Trimming of reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --memory
+    description: 'RAM to use for Jellyfish. Default: 50G'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --coverage
+    description: 'Depth to normalize reads. Default: 50'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --min_coverage
+    description: 'Min depth for normalizing reads. Default: 5'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --pasa_config
+    description: PASA assembly config file, i.e. from previous PASA run
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --pasa_db
+    description: 'Database to use. Default: sqlite [mysql,sqlite]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --aligners
+    description: 'Aligners to use with PASA: Default: minimap2 blat [gmap]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --pasa_min_pct_aligned
+    description: 'PASA --MIN_PERCENT_ALIGNED. Default: 90'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --pasa_min_avg_per_id
+    description: 'PASA --MIN_AVG_PER_ID. Default: 95'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --pasa_num_bp_splice
+    description: 'PASA --NUM_BP_PERFECT_SPLICE_BOUNDARY. Default: 3'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max_intronlen
+    description: 'Maximum intron length. Default: 3000'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_protlen
+    description: 'Minimum protein length. Default: 50'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --alt_transcripts
+    description: 'Expression threshold (percent) to keep alt transcripts. Default:
+      0.1 [0-1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --p2g
+    description: NCBI p2g file (if updating NCBI annotation)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --tbl2asn
+    description: 'Assembly parameters for tbl2asn. Example: "-l paired-ends"'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --name
+    description: 'Locus tag name (assigned by NCBI?). Default: use existing'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sbt
+    description: NCBI Submission file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --strain
+    description: Strain name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --isolate
+    description: Isolate name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --SeqCenter
+    description: 'Sequencing facilty for NCBI tbl file. Default: CFMR'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --SeqAccession
+    description: 'Sequence accession number for NCBI tbl file. Default: 12345'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cpus
+    description: 'Number of CPUs to use. Default: 2'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-progress
+    description: Do not print progress to stdout for long sub jobs
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:       funannotate update <arguments>\nversion:     1.8.3\n\n\
+    Description: Script will run PASA mediated update of gene models. It can directly\
+    \ update\n             the annotation from an NCBI downloaded GenBank file using\
+    \ RNA-seq data or can be\n             used after funannotate predict to refine\
+    \ UTRs and gene model predictions. Kallisto\n             is used to evidence\
+    \ filter most likely PASA gene models. Dependencies are\n             hisat2,\
+    \ Trinity, samtools, fasta, minimap2, PASA, kallisto, bedtools.\n\nRequired:\n\
+    \  -i, --input              Funannotate folder or Genome in GenBank format (.gbk,.gbff).\n\
+    \    or\n  -f, --fasta              Genome in FASTA format\n  -g, --gff      \
+    \          Annotation in GFF3 format\n  --species                Species name,\
+    \ use quotes for binomial, e.g. \"Aspergillus fumigatus\"\n\nOptional:\n  -o,\
+    \ --out                Output folder name\n  -l, --left               Left/Forward\
+    \ FASTQ Illumina reads (R1)\n  -r, --right              Right/Reverse FASTQ Illumina\
+    \ reads (R2)\n  -s, --single             Single ended FASTQ reads\n  --stranded\
+    \               If RNA-seq library stranded. [RF,FR,F,R,no]\n  --left_norm   \
+    \           Normalized left FASTQ reads (R1)\n  --right_norm             Normalized\
+    \ right FASTQ reads (R2)\n  --single_norm            Normalized single-ended FASTQ\
+    \ reads\n  --pacbio_isoseq          PacBio long-reads\n  --nanopore_cdna     \
+    \     Nanopore cDNA long-reads\n  --nanopore_mrna          Nanopore mRNA direct\
+    \ long-reads\n  --trinity                Pre-computed Trinity transcripts (FASTA)\n\
+    \  --jaccard_clip           Turn on jaccard clip for dense genomes [Recommended\
+    \ for fungi]\n  --no_normalize_reads     Skip read Normalization\n  --no_trimmomatic\
+    \         Skip Quality Trimming of reads\n  --memory                 RAM to use\
+    \ for Jellyfish. Default: 50G\n  -c, --coverage           Depth to normalize reads.\
+    \ Default: 50\n  -m, --min_coverage       Min depth for normalizing reads. Default:\
+    \ 5\n  --pasa_config            PASA assembly config file, i.e. from previous\
+    \ PASA run\n  --pasa_db                Database to use. Default: sqlite [mysql,sqlite]\n\
+    \  --pasa_alignment_overlap PASA --stringent_alignment_overlap. Default: 30.0\n\
+    \  --aligners               Aligners to use with PASA: Default: minimap2 blat\
+    \ [gmap]\n  --pasa_min_pct_aligned   PASA --MIN_PERCENT_ALIGNED. Default: 90\n\
+    \  --pasa_min_avg_per_id    PASA --MIN_AVG_PER_ID. Default: 95\n  --pasa_num_bp_splice\
+    \     PASA --NUM_BP_PERFECT_SPLICE_BOUNDARY. Default: 3\n  --max_intronlen   \
+    \       Maximum intron length. Default: 3000\n  --min_protlen            Minimum\
+    \ protein length. Default: 50\n  --alt_transcripts        Expression threshold\
+    \ (percent) to keep alt transcripts. Default: 0.1 [0-1]\n  --p2g             \
+    \       NCBI p2g file (if updating NCBI annotation)\n  -t, --tbl2asn         \
+    \   Assembly parameters for tbl2asn. Example: \"-l paired-ends\"\n  --name   \
+    \                Locus tag name (assigned by NCBI?). Default: use existing\n \
+    \ --sbt                    NCBI Submission file\n  --species                Species\
+    \ name, use quotes for binomial, e.g. \"Aspergillus fumigatus\"\n  --strain  \
+    \               Strain name\n  --isolate                Isolate name\n  --SeqCenter\
+    \              Sequencing facilty for NCBI tbl file. Default: CFMR\n  --SeqAccession\
+    \           Sequence accession number for NCBI tbl file. Default: 12345\n  --cpus\
+    \                   Number of CPUs to use. Default: 2\n  --no-progress       \
+    \     Do not print progress to stdout for long sub jobs\n\nENV Vars:  If not passed,\
+    \ will try to load from your $PATH.\n  --PASAHOME\n  --TRINITYHOME\n        \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0
+- !Command
+  command:
+  - funannotate
+  - remote
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: or
+    description: -g, --genbank       GenBank file (must be annotated).
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --methods
+    description: Which services to run, space separated [phobius,antismash,all]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --email
+    description: Email address to identify yourself to services.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: Funannotate input folder.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out
+    description: Output folder name.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --force
+    description: Force query even if antiSMASH server looks busy
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:       funannotate remote <arguments>\nversion:     1.8.3\n\n\
+    Description: Script runs remote server functional annotation for Phobius and\n\
+    \             antiSMASH (fungi).  These searches are slow, if you can setup these\
+    \ services\n             locally it will be much faster to do that.  PLEASE do\
+    \ not abuse services!\n\nRequired:\n  -m, --methods       Which services to run,\
+    \ space separated [phobius,antismash,all]\n  -e, --email         Email address\
+    \ to identify yourself to services.\n\n  -i, --input         Funannotate input\
+    \ folder.\n    or\n  -g, --genbank       GenBank file (must be annotated).\n \
+    \ -o, --out           Output folder name.\n\n  --force             Force query\
+    \ even if antiSMASH server looks busy\n            \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0
+- !Command
+  command:
+  - funannotate
+  - outgroups
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: arguments
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: Proteome multi-fasta file. Required.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --species
+    description: Species name for adding a species. Required.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --busco_db
+    description: BUSCO db to use. Default. dikarya
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cpus
+    description: Number of CPUs to use for BUSCO search.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --database
+    description: 'Path to funannotate database. Default: $FUNANNOTATE_DB'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:       funannotate outgroups <arguments>\nversion:     1.8.3\n\
+    \nDescription: Managing the outgroups folder for funannotate compare\n\nArguments:\n\
+    \  -i, --input            Proteome multi-fasta file. Required.\n  -s, --species\
+    \          Species name for adding a species. Required.\n  -b, --busco_db    \
+    \     BUSCO db to use. Default. dikarya\n  -c, --cpus             Number of CPUs\
+    \ to use for BUSCO search.\n  -d, --database         Path to funannotate database.\
+    \ Default: $FUNANNOTATE_DB\n          \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0
+- !Command
+  command:
+  - funannotate
+  - setup
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: arguments
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --install
+    description: "Download format databases. Default: all\n[merops,uniprot,dbCAN,pfam,repeats,go,\n\
+      mibig,interpro,busco_outgroups,gene2product]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --busco_db
+    description: 'Busco Databases to install. Default: dikarya [all,fungi,aves,etc]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --database
+    description: Path to funannotate database
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    - --update
+    description: Check remote md5 and update if newer version found
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --force
+    description: Force overwriting database
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --wget
+    description: Use wget to download instead of python requests
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --local
+    description: Use local resource JSON file instead of current on github
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:       funannotate setup <arguments>\nversion:     1.8.3\n\n\
+    Description: Script will download/format necessary databases for funannotate.\n\
+    \nOptions:\n  -i, --install    Download format databases. Default: all\n     \
+    \                [merops,uniprot,dbCAN,pfam,repeats,go,\n                    \
+    \  mibig,interpro,busco_outgroups,gene2product]\n  -b, --busco_db   Busco Databases\
+    \ to install. Default: dikarya [all,fungi,aves,etc]\n  -d, --database   Path to\
+    \ funannotate database\n  -u, --update     Check remote md5 and update if newer\
+    \ version found\n  -f, --force      Force overwriting database\n  -w, --wget \
+    \      Use wget to download instead of python requests\n  -l, --local      Use\
+    \ local resource JSON file instead of current on github\n        \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0
+- !Command
+  command:
+  - funannotate
+  - test
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: arguments
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --tests
+    description: Test sets to run. [all,clean,mask,predict,busco,rna-seq,annotate,compare]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cpus
+    description: 'Number of cpus to use. Default: 2'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug
+    description: Keep output files
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:       funannotate test <arguments>\nversion:     1.8.3\n\n\
+    Description: This is a script that runs several unit tests.  It will download\
+    \ data and run\n             several different tests to determine if installion\
+    \ is functioning properly. If\n             you cannot download from the machine\
+    \ funannotate is installed at - then download\n             the 7 tar.gz files\
+    \ from https://osf.io/bj7v4/files/ and run script from directory\n\nArguments:\n\
+    \  -t, --tests    Test sets to run. [all,clean,mask,predict,busco,rna-seq,annotate,compare]\n\
+    \  --cpus         Number of cpus to use. Default: 2\n  --debug        Keep output\
+    \ files\n        \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0
+- !Command
+  command:
+  - funannotate
+  - mask
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: arguments
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: Multi-FASTA genome file. (Required)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out
+    description: Output softmasked FASTA file. (Required)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --method
+    description: 'Method to use. Default: tantan [repeatmasker, repeatmodeler]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --repeatmasker_species
+    description: Species to use for RepeatMasker
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --repeatmodeler_lib
+    description: Custom repeat database (FASTA format)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cpus
+    description: 'Number of cpus to use. Default: 2'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug
+    description: Keep intermediate files
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:       funannotate mask <arguments>\nversion:     1.8.3\n\n\
+    Description: This script is a wrapper for repeat masking. Default is to run very\
+    \ simple\n             repeat masking with tantan. The script can also run RepeatMasker\
+    \ and/or\n             RepeatModeler. It will generate a softmasked genome. Tantan\
+    \ is probably not\n             sufficient for soft-masking an assembly, but with\
+    \ RepBase no longer being\n             available RepeatMasker/Modeler may not\
+    \ be functional for many users.\n\nArguments:\n  -i, --input                 \
+    \ Multi-FASTA genome file. (Required)\n  -o, --out                    Output softmasked\
+    \ FASTA file. (Required)\n\nOptional:\n  -m, --method                 Method to\
+    \ use. Default: tantan [repeatmasker, repeatmodeler]\n  -s, --repeatmasker_species\
+    \   Species to use for RepeatMasker\n  -l, --repeatmodeler_lib      Custom repeat\
+    \ database (FASTA format)\n  --cpus                       Number of cpus to use.\
+    \ Default: 2\n  --debug                      Keep intermediate files\n       \
+    \      \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0
+- !Command
+  command:
+  - funannotate
+  - predict
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: arguments
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: Genome multi-FASTA file (softmasked repeats)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out
+    description: Output folder name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --species
+    description: Species name, use quotes for binomial, e.g. "Aspergillus fumigatus"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parameters
+    description: Ab intio parameters JSON file to use for gene predictors
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --isolate
+    description: Isolate name, e.g. Af293
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --strain
+    description: Strain name, e.g. FGSCA4
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --name
+    description: 'Locus tag name (assigned by NCBI?). Default: FUN_'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --numbering
+    description: 'Specify where gene numbering starts. Default: 1'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --maker_gff
+    description: MAKER2 GFF file. Parse results directly to EVM.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --pasa_gff
+    description: PASA generated gene models. filename:weight
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --other_gff
+    description: Annotation pass-through to EVM. filename:weight
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --rna_bam
+    description: RNA-seq mapped to genome to train Augustus/GeneMark-ET
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --stringtie
+    description: StringTie GTF result
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --weights
+    description: 'Ab-initio predictor and EVM weight. Example: augustus:2 or pasa:10'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --augustus_species
+    description: 'Augustus species config. Default: uses species name'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_training_models
+    description: 'Minimum number of models to train Augustus. Default: 200'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --genemark_mode
+    description: 'GeneMark mode. Default: ES [ES,ET]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --genemark_mod
+    description: GeneMark ini mod file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --busco_seed_species
+    description: 'Augustus pre-trained species to start BUSCO. Default: anidulans'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --optimize_augustus
+    description: Run 'optimze_augustus.pl' to refine training (long runtime)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --busco_db
+    description: 'BUSCO models. Default: dikarya. `funannotate outgroups --show_buscos`'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --organism
+    description: 'Fungal-specific options. Default: fungus. [fungus,other]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ploidy
+    description: 'Ploidy of assembly. Default: 1'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --tbl2asn
+    description: 'Assembly parameters for tbl2asn. Default: "-l paired-ends"'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --database
+    description: 'Path to funannotate database. Default: $FUNANNOTATE_DB'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --protein_evidence
+    description: 'Proteins to map to genome (prot1.fa prot2.fa uniprot.fa). Default:
+      uniprot.fa'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --protein_alignments
+    description: Pre-computed protein alignments in GFF3 format
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --p2g_pident
+    description: 'Exonerate percent identity. Default: 80'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --p2g_diamond_db
+    description: Premade diamond genome database for protein2genome mapping
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --p2g_prefilter
+    description: 'Pre-filter hits software selection. Default: diamond [tblastn]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --transcript_evidence
+    description: 'mRNA/ESTs to align to genome (trans1.fa ests.fa trinity.fa). Default:
+      none'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --transcript_alignments
+    description: Pre-computed transcript alignments in GFF3 format
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --augustus_gff
+    description: Pre-computed AUGUSTUS GFF3 results (must use --stopCodonExcludedFromCDS=False)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --genemark_gtf
+    description: Pre-computed GeneMark GTF results
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --trnascan
+    description: Pre-computed tRNAscanSE results
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_intronlen
+    description: 'Minimum intron length. Default: 10'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max_intronlen
+    description: 'Maximum intron length. Default: 3000'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --soft_mask
+    description: 'Softmasked length threshold for GeneMark. Default: 2000'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_protlen
+    description: 'Minimum protein length. Default: 50'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --repeats2evm
+    description: Use repeats in EVM consensus model building
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --repeat_filter
+    description: 'Repetitive gene model filtering. Default: overlap blast [overlap,blast,none]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep_no_stops
+    description: Keep gene models without valid stops
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep_evm
+    description: Keep existing EVM results (for rerunning pipeline)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --SeqCenter
+    description: 'Sequencing facilty for NCBI tbl file. Default: CFMR'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --SeqAccession
+    description: 'Sequence accession number for NCBI tbl file. Default: 12345'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --force
+    description: Annotated unmasked genome
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cpus
+    description: 'Number of CPUs to use. Default: 2'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-progress
+    description: Do not print progress to stdout for long sub jobs
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:       funannotate predict <arguments>\nversion:     1.8.3\n\
+    \nDescription: Script takes genome multi-fasta file and a variety of inputs to\
+    \ do a comprehensive whole\n             genome gene prediction.  Uses AUGUSTUS,\
+    \ GeneMark, Snap, GlimmerHMM, BUSCO, EVidence Modeler,\n             tbl2asn,\
+    \ tRNAScan-SE, Exonerate, minimap2.\nRequired:\n  -i, --input              Genome\
+    \ multi-FASTA file (softmasked repeats)\n  -o, --out                Output folder\
+    \ name\n  -s, --species            Species name, use quotes for binomial, e.g.\
+    \ \"Aspergillus fumigatus\"\n\nOptional:\n  -p, --parameters         Ab intio\
+    \ parameters JSON file to use for gene predictors\n  --isolate               \
+    \ Isolate name, e.g. Af293\n  --strain                 Strain name, e.g. FGSCA4\n\
+    \  --name                   Locus tag name (assigned by NCBI?). Default: FUN_\n\
+    \  --numbering              Specify where gene numbering starts. Default: 1\n\
+    \  --maker_gff              MAKER2 GFF file. Parse results directly to EVM.\n\
+    \  --pasa_gff               PASA generated gene models. filename:weight\n  --other_gff\
+    \              Annotation pass-through to EVM. filename:weight\n  --rna_bam  \
+    \              RNA-seq mapped to genome to train Augustus/GeneMark-ET\n  --stringtie\
+    \              StringTie GTF result\n  -w, --weights            Ab-initio predictor\
+    \ and EVM weight. Example: augustus:2 or pasa:10\n  --augustus_species       Augustus\
+    \ species config. Default: uses species name\n  --min_training_models    Minimum\
+    \ number of models to train Augustus. Default: 200\n  --genemark_mode        \
+    \  GeneMark mode. Default: ES [ES,ET]\n  --genemark_mod           GeneMark ini\
+    \ mod file\n  --busco_seed_species     Augustus pre-trained species to start BUSCO.\
+    \ Default: anidulans\n  --optimize_augustus      Run 'optimze_augustus.pl' to\
+    \ refine training (long runtime)\n  --busco_db               BUSCO models. Default:\
+    \ dikarya. `funannotate outgroups --show_buscos`\n  --organism               Fungal-specific\
+    \ options. Default: fungus. [fungus,other]\n  --ploidy                 Ploidy\
+    \ of assembly. Default: 1\n  -t, --tbl2asn            Assembly parameters for\
+    \ tbl2asn. Default: \"-l paired-ends\"\n  -d, --database           Path to funannotate\
+    \ database. Default: $FUNANNOTATE_DB\n\n  --protein_evidence       Proteins to\
+    \ map to genome (prot1.fa prot2.fa uniprot.fa). Default: uniprot.fa\n  --protein_alignments\
+    \     Pre-computed protein alignments in GFF3 format\n  --p2g_pident         \
+    \    Exonerate percent identity. Default: 80\n  --p2g_diamond_db         Premade\
+    \ diamond genome database for protein2genome mapping\n  --p2g_prefilter      \
+    \    Pre-filter hits software selection. Default: diamond [tblastn]\n  --transcript_evidence\
+    \    mRNA/ESTs to align to genome (trans1.fa ests.fa trinity.fa). Default: none\n\
+    \  --transcript_alignments  Pre-computed transcript alignments in GFF3 format\n\
+    \  --augustus_gff           Pre-computed AUGUSTUS GFF3 results (must use --stopCodonExcludedFromCDS=False)\n\
+    \  --genemark_gtf           Pre-computed GeneMark GTF results\n  --trnascan  \
+    \             Pre-computed tRNAscanSE results\n\n  --min_intronlen          Minimum\
+    \ intron length. Default: 10\n  --max_intronlen          Maximum intron length.\
+    \ Default: 3000\n  --soft_mask              Softmasked length threshold for GeneMark.\
+    \ Default: 2000\n  --min_protlen            Minimum protein length. Default: 50\n\
+    \  --repeats2evm            Use repeats in EVM consensus model building\n  --repeat_filter\
+    \          Repetitive gene model filtering. Default: overlap blast [overlap,blast,none]\n\
+    \  --keep_no_stops          Keep gene models without valid stops\n  --keep_evm\
+    \               Keep existing EVM results (for rerunning pipeline)\n  --SeqCenter\
+    \              Sequencing facilty for NCBI tbl file. Default: CFMR\n  --SeqAccession\
+    \           Sequence accession number for NCBI tbl file. Default: 12345\n  --force\
+    \                  Annotated unmasked genome\n  --cpus                   Number\
+    \ of CPUs to use. Default: 2\n  --no-progress            Do not print progress\
+    \ to stdout for long sub jobs\n\nENV Vars:  If not specified at runtime, will\
+    \ be loaded from your $PATH\n  --EVM_HOME\n  --AUGUSTUS_CONFIG_PATH\n  --GENEMARK_PATH\n\
+    \  --BAMTOOLS_PATH\n           \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0
+- !Command
+  command:
+  - funannotate
+  - fix
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: arguments
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: Annotated genome in GenBank format.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --tbl
+    description: NCBI tbl annotation file.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --drop
+    description: Gene models to remove/drop from annotation. File with locus_tag 1
+      per line.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out
+    description: Output folder
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --tbl2asn
+    description: 'Parameters for tbl2asn. Default: "-l paired-ends"'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:       funannotate fix <arguments>\nversion:     1.8.3\n\nDescription:\
+    \ Script takes a GenBank genome annotation file and an NCBI tbl file to\n    \
+    \         generate updated annotation. Script is used to fix problematic gene\
+    \ models\n             after running funannotate predict or funannotate update.\n\
+    \nRequired:\n  -i, --input    Annotated genome in GenBank format.\n  -t, --tbl\
+    \      NCBI tbl annotation file.\n  -d, --drop     Gene models to remove/drop\
+    \ from annotation. File with locus_tag 1 per line.\n\nOptional:\n  -o, --out \
+    \     Output folder\n  --tbl2asn      Parameters for tbl2asn. Default: \"-l paired-ends\"\
+    \n        \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage:       funannotate <command> <arguments>\nversion:     1.8.3\n\
+  \nDescription: Funannotate is a genome prediction, annotation, and comparison pipeline.\n\
+  \nCommands:\n  clean       Find/remove small repetitive contigs\n  sort        Sort\
+  \ by size and rename contig headers\n  mask        Repeatmask genome assembly\n\n\
+  \  train       RNA-seq mediated training of Augustus/GeneMark\n  predict     Run\
+  \ gene prediction pipeline\n  fix         Fix annotation errors (generate new GenBank\
+  \ file)\n  update      RNA-seq/PASA mediated gene model refinement\n  remote   \
+  \   Partial functional annotation using remote servers\n  iprscan     InterProScan5\
+  \ search (Docker or local)\n  annotate    Assign functional annotation to gene predictions\n\
+  \  compare     Compare funannotated genomes\n\n  util        Format conversion and\
+  \ misc utilities\n  setup       Setup/Install databases\n  test        Download/Run\
+  \ funannotate installation tests\n  check       Check Python, Perl, and External\
+  \ dependencies [--show-versions]\n  species     list pre-trained Augustus species\n\
+  \  database    Manage databases\n  outgroups   Manage outgroups for funannotate\
+  \ compare\n\nWritten by Jon Palmer (2016-2019) nextgenusfs@gmail.com\n        \n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/funannotate:1.8.3--pyh3252c3a_0

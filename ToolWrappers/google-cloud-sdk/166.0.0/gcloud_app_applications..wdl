@@ -8,6 +8,9 @@ task GcloudAppApplications {
     gcloud app applications_ \
       ~{versions}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     versions: "command may be         browse | create | deploy | describe | open-console"
   }

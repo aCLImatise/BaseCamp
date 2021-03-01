@@ -8,6 +8,9 @@ task FastxLenFilterpy {
     fastx_len_filter_py \
       ~{if defined(min_len) then ("--min_len " +  '"' + min_len + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_len: ""
   }

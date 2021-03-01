@@ -12,6 +12,9 @@ task Paths2gfapy {
       ~{if defined(paths) then ("-paths " +  '"' + paths + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "FASTA file containing the sequences of the scaffolds obtained from the assembly (format: 'xxx.fasta')"
     paths: "File containing the paths between scaffolds (obtained from the matrix) (format: 'xxx.paths.txt')"

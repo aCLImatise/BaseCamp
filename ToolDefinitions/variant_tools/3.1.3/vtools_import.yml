@@ -4,15 +4,18 @@ command:
 - import
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: input_files
   description: "A list of files that will be imported. The file should\nbe delimiter\
     \ separated with format described by\nparameter --format. Gzipped files are acceptable.\
     \ If a\npreprocessor is defined in the format, input files\nwill be processed\
     \ by the preprocessor before they are\nimported."
-  position: 0
-  name: input_files
-  optional: false
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --build
   description: "Build version of the reference genome (e.g. hg18) of\nthe input data.\
     \ If unspecified, it is assumed to be\nthe primary reference genome of the project.\
     \ If a\nreference genome that is different from the primary\nreference genome\
@@ -22,24 +25,24 @@ named:
     \ you are\nuncertain about the reference genome used in the data,\nuse a recent\
     \ standard reference genome (e.g. hg19) and\nvalidate it after the data is imported\
     \ (c.f. \"vtools\nadmin --validate_build\")."
-  synonyms:
-  - --build
   args: !SimpleFlagArg
     name: BUILD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --format
   description: "Format of the input text file. It can be one of the\nvariant tools\
     \ supported file types such as VCF (cf.\n'vtools show formats'), or a local format\n\
     specification file (with extension .fmt). If\nunspecified, variant tools will\
     \ try to guess format\nfrom file extension. Some file formats accept\nparameters\
     \ (cf. 'vtools show format FMT') and allow\nyou to import additional or alternative\
     \ fields defined\nfor the format."
-  synonyms:
-  - --format
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sample_name
   description: "[SAMPLE_NAME [SAMPLE_NAME ...]], --sample-name [SAMPLE_NAME [SAMPLE_NAME\
     \ ...]]\nName of the samples imported by the input files. The\nsame names will\
     \ be used for all files if multiple\nfiles are imported. If unspecified, headers\
@@ -49,60 +52,57 @@ named:
     \ be created without genotype. If\nsample names cannot be determined from input\
     \ file and\ntheir is no ambiguity (only one sample is imported), a\nsample with\
     \ empty sample name will be created."
-  synonyms:
-  - --sample_name
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Import files even if the files have been imported\nbefore. This option\
-    \ can be used to import from updated\nfile or continue disrupted import, but will\
-    \ not remove\nwrongfully imported variants from the master variant\ntable."
+  optional: true
   synonyms:
   - -f
   - --force
+  description: "Import files even if the files have been imported\nbefore. This option\
+    \ can be used to import from updated\nfile or continue disrupted import, but will\
+    \ not remove\nwrongfully imported variants from the master variant\ntable."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
   description: "Number of processes to import input file. Variant\ntools by default\
     \ uses four processes to import\nvariants and samples genotypes in parallel, and\
     \ you\ncan use more or less processes by adjusting this\nparameter. Due to the\
     \ overhead of inter-process\ncommunication, more jobs do not automatically lead\
     \ to\nbetter performance."
-  synonyms:
-  - -j
-  - --jobs
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Import another VCF file.
+  optional: true
   synonyms:
   - --sort
+  description: Import another VCF file.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
-    \ to standard output (default to\n1).\n"
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1).\n"
   args: !ChoiceFlagArg
     choices: !!set
+      '3':
       '2':
       '0':
-      '3':
       '1':
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: vtools import [-h] [--build BUILD] [--format FORMAT]\n        \
@@ -165,3 +165,4 @@ help_text: "usage: vtools import [-h] [--build BUILD] [--format FORMAT]\n       
   \ output (default to\n                        1).\n"
 generated_using:
 - --help
+docker_image:

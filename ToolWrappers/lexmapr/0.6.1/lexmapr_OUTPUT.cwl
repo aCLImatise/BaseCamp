@@ -3,38 +3,39 @@ id: lexmapr_OUTPUT.cwl
 inputs:
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_no_cache
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-cache
 - id: in_b
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in_c
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -c
 - id: in_f
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_o
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -o
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - lexmapr

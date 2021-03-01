@@ -16,6 +16,9 @@ task ExpansionHunterDenovoMerge {
       ~{if defined(min_unit_len) then ("--min-unit-len " +  '"' + min_unit_len + '"') else ""} \
       ~{if defined(max_unit_len) then ("--max-unit-len " +  '"' + max_unit_len + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "FASTA file with reference assembly"
     manifest: "TSV with sample names and absolute paths"

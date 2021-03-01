@@ -28,6 +28,9 @@ task BedtoolsGroupby {
       ~{if (prec) then "-prec" else ""} \
       ~{if (delim) then "-delim" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_assumes: "Input file. Assumes \\\"stdin\\\" if omitted."
     grp: "Specify the columns (1-based) for the grouping.\\nThe columns must be comma separated.\\n- Default: 1,2,3"

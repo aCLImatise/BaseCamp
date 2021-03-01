@@ -36,6 +36,9 @@ task RefMappl {
       ~{if (min_populations) then "--min-populations" else ""} \
       ~{if (time_components) then "--time-components" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     samples: ": path to the directory containing the samples BAM (or SAM) alignment files."
     pop_map: ": path to a population map file (format is \\\"<name> TAB <pop>\\\", one sample per line)."

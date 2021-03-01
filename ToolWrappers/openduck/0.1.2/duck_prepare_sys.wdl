@@ -20,6 +20,9 @@ task DuckPrepareSys {
       ~{if defined(gpu_id) then ("--gpu-id " +  '"' + gpu_id + '"') else ""} \
       ~{if defined(force_constant_eq) then ("--force-constant-eq " +  '"' + force_constant_eq + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     protein: "Apoprotein in PDB format"
     ligand: "Ligand in mol format"

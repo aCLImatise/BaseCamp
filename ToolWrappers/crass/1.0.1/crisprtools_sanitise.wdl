@@ -18,6 +18,9 @@ task CrisprtoolsSanitise {
       ~{if (sanitise_flanking_sequences) then "-f" else ""} \
       ~{if (sanitise_the_contigs) then "-c" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_name: "Output file name, creates a sanitised copy of the input file  [default: sanitise input file inplace]"
     sanitise_features_equivelent: "Sanitise all features. Equivelent to -sdfc"

@@ -1,0 +1,203 @@
+!Command
+command:
+- scHicPlotClusterProfiles
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: scHi-C
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: matrix
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --ticks
+  description: "Plot the cluster names as ticks. Use legend if they\noverlap. (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --legend
+  description: "Plot the cluster names as legend. Might be helpful if\nthe ticks overlap.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  description: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction\
+    \ matrices to\ninvestigate for QC. Needs to be in scool format\n(default: None)"
+  args: !SimpleFlagArg
+    name: scool
+- !Flag
+  optional: true
+  synonyms:
+  - --clusters
+  description: "file, -c cluster file\nText file which contains per matrix the associated\n\
+    cluster. (default: None)"
+  args: !SimpleFlagArg
+    name: cluster
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosomes
+  description: 'List of to be plotted chromosomes (default: None)'
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+- !Flag
+  optional: true
+  synonyms:
+  - --maximalDistance
+  - -md
+  description: "Maximal distance in bases to consider for ratio\ncomputation. (default:\
+    \ 50000000)"
+  args: !SimpleFlagArg
+    name: MAXIMALDISTANCE
+- !Flag
+  optional: true
+  synonyms:
+  - --distanceShortRange
+  - -ds
+  description: "Distance which should be considered as lower distance\nfor svl ordering.\
+    \ Values from distances smaller this\nvalue are not considered. Default 2MB. (default:\n\
+    2000000)"
+  args: !SimpleFlagArg
+    name: DISTANCESHORTRANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --distanceLongRange
+  - -dl
+  description: "Distance which should be considered as upper distance\nfor svl ordering.\
+    \ Values from distances greater this\nvalue are not considered. Default 12MB.\
+    \ (default:\n12000000)"
+  args: !SimpleFlagArg
+    name: DISTANCELONGRANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --orderBy
+  - -ob
+  description: 'Algorithm to cluster the Hi-C matrices (default: svl)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      svl:
+      orderByFile:
+- !Flag
+  optional: true
+  synonyms:
+  - --fontsize
+  description: 'Fontsize in the plot for x and y axis. (default: 10)'
+  args: !SimpleFlagArg
+    name: FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --rotationX
+  description: "Rotation in degrees for the labels of x axis.\n(default: 0)"
+  args: !SimpleFlagArg
+    name: ROTATIONX
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: "File name to save the resulting cluster profile.\n(default: clusters_profile.png)"
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  - -d
+  description: 'The dpi of the plot. (default: 300)'
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - --colorMap
+  description: "Color map to use for the heatmap. Available values can\nbe seen here:\
+    \ http://matplotlib.org/examples/color/col\normaps_reference.html (default: RdYlBu_r)"
+  args: !SimpleFlagArg
+    name: COLORMAP
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
+    \ 4)"
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: scHicPlotClusterProfiles --matrix scool scHi-C matrix --clusters\n\
+  \                                cluster file\n                                [--chromosomes\
+  \ CHROMOSOMES [CHROMOSOMES ...]]\n                                [--maximalDistance\
+  \ MAXIMALDISTANCE]\n                                [--distanceShortRange DISTANCESHORTRANGE]\n\
+  \                                [--distanceLongRange DISTANCELONGRANGE]\n     \
+  \                           [--orderBy {svl,orderByFile}]\n                    \
+  \            [--fontsize FONTSIZE] [--rotationX ROTATIONX]\n                   \
+  \             [--ticks | --legend]\n                                [--outFileName\
+  \ OUTFILENAME] [--dpi DPI]\n                                [--colorMap COLORMAP]\
+  \ [--threads THREADS]\n                                [--help] [--version]\n\n\
+  optional arguments:\n  --ticks               Plot the cluster names as ticks. Use\
+  \ legend if they\n                        overlap. (default: False)\n  --legend\
+  \              Plot the cluster names as legend. Might be helpful if\n         \
+  \               the ticks overlap. (default: False)\n\nRequired arguments:\n  --matrix\
+  \ scool scHi-C matrix, -m scool scHi-C matrix\n                        The single\
+  \ cell Hi-C interaction matrices to\n                        investigate for QC.\
+  \ Needs to be in scool format\n                        (default: None)\n  --clusters\
+  \ cluster file, -c cluster file\n                        Text file which contains\
+  \ per matrix the associated\n                        cluster. (default: None)\n\n\
+  Optional arguments:\n  --chromosomes CHROMOSOMES [CHROMOSOMES ...]\n           \
+  \             List of to be plotted chromosomes (default: None)\n  --maximalDistance\
+  \ MAXIMALDISTANCE, -md MAXIMALDISTANCE\n                        Maximal distance\
+  \ in bases to consider for ratio\n                        computation. (default:\
+  \ 50000000)\n  --distanceShortRange DISTANCESHORTRANGE, -ds DISTANCESHORTRANGE\n\
+  \                        Distance which should be considered as lower distance\n\
+  \                        for svl ordering. Values from distances smaller this\n\
+  \                        value are not considered. Default 2MB. (default:\n    \
+  \                    2000000)\n  --distanceLongRange DISTANCELONGRANGE, -dl DISTANCELONGRANGE\n\
+  \                        Distance which should be considered as upper distance\n\
+  \                        for svl ordering. Values from distances greater this\n\
+  \                        value are not considered. Default 12MB. (default:\n   \
+  \                     12000000)\n  --orderBy {svl,orderByFile}, -ob {svl,orderByFile}\n\
+  \                        Algorithm to cluster the Hi-C matrices (default: svl)\n\
+  \  --fontsize FONTSIZE   Fontsize in the plot for x and y axis. (default: 10)\n\
+  \  --rotationX ROTATIONX\n                        Rotation in degrees for the labels\
+  \ of x axis.\n                        (default: 0)\n  --outFileName OUTFILENAME,\
+  \ -o OUTFILENAME\n                        File name to save the resulting cluster\
+  \ profile.\n                        (default: clusters_profile.png)\n  --dpi DPI,\
+  \ -d DPI     The dpi of the plot. (default: 300)\n  --colorMap COLORMAP   Color\
+  \ map to use for the heatmap. Available values can\n                        be seen\
+  \ here: http://matplotlib.org/examples/color/col\n                        ormaps_reference.html\
+  \ (default: RdYlBu_r)\n  --threads THREADS, -t THREADS\n                       \
+  \ Number of threads. Using the python multiprocessing\n                        module.\
+  \ (default: 4)\n  --help, -h            show this help message and exit\n  --version\
+  \             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/schicexplorer:7--py_0

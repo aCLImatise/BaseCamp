@@ -10,6 +10,9 @@ task SeqhaxRebarcode {
       ~{r_one} \
       ~{if defined(output_interleaved_reads) then ("-o " +  '"' + output_interleaved_reads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_interleaved_reads: "Output interleaved reads to FILE. Use - for stdout. (default: no output)"
     r_one: ""

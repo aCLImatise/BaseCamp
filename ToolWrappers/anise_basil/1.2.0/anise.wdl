@@ -108,6 +108,9 @@ task Anise {
       ~{if defined(consensus_min_base_support) then ("--consensus-min-base-support " +  '"' + consensus_min_base_support + '"') else ""} \
       ~{if defined(consensus_min_contig_length_rate) then ("--consensus-min-contig-length-rate " +  '"' + consensus_min_contig_length_rate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Set verbosity to a minimum."
     verbose: "Enable verbose output."

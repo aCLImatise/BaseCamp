@@ -18,6 +18,9 @@ task SsueslshuffleMsafile {
       ~{if (q) then "-Q" else ""} \
       ~{if (a) then "-A" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     g: ""
     q: ""

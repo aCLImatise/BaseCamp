@@ -3,12 +3,12 @@ id: color_chrs.pl.cwl
 inputs:
 - id: in_colors
   doc: File with list of "chr hap color".
-  type: File
+  type: File?
   inputBinding:
     prefix: --colors
 - id: in_prefix
   doc: Prefix of output files.
-  type: string
+  type: string?
   inputBinding:
     prefix: --prefix
 - id: in_output_dot_dat
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - color-chrs.pl

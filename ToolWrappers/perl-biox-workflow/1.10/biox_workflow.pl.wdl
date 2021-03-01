@@ -2,7 +2,7 @@ version 1.0
 
 task Bioxworkflowpl {
   input {
-    Boolean? existingfile_configuration_workflow
+    Boolean? existingfile_your_configuration
     Boolean? by_sample_outdir
     Boolean? samples
     Boolean? file_rule
@@ -23,7 +23,7 @@ task Bioxworkflowpl {
     Boolean? select_rules
     Boolean? counter_rules
     Boolean? man
-    Boolean? config_file
+    Boolean? comment_char
     Boolean? rule_based
     Boolean? sample_based
     Boolean? stash
@@ -37,7 +37,7 @@ task Bioxworkflowpl {
       ~{file_dot} \
       ~{sample} \
       ~{processes} \
-      ~{if (existingfile_configuration_workflow) then "--workflow" else ""} \
+      ~{if (existingfile_your_configuration) then "--workflow" else ""} \
       ~{if (by_sample_outdir) then "--by_sample_outdir" else ""} \
       ~{if (samples) then "--samples" else ""} \
       ~{if (file_rule) then "--file_rule" else ""} \
@@ -58,14 +58,17 @@ task Bioxworkflowpl {
       ~{if (select_rules) then "--select_rules" else ""} \
       ~{if (counter_rules) then "--counter_rules" else ""} \
       ~{if (man) then "--man" else ""} \
-      ~{if (config_file) then "--configfile" else ""} \
+      ~{if (comment_char) then "--comment_char" else ""} \
       ~{if (rule_based) then "--rule_based" else ""} \
       ~{if (sample_based) then "--sample_based" else ""} \
       ~{if (stash) then "--stash" else ""} \
       ~{if (plugins) then "--plugins" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    existingfile_configuration_workflow: "- ExistingFile. Your configuration workflow"
+    existingfile_your_configuration: "- ExistingFile. Your configuration workflow"
     by_sample_outdir: "- Bool. Default=0. When you want your output by"
     samples: "- ArrayRef. Supply samples on the command line\\nas --samples sample1 --samples sample2, or\\nfind through file_rule."
     file_rule: "- Str."
@@ -86,7 +89,7 @@ task Bioxworkflowpl {
     select_rules: "- ArrayRef[Str]. Select a subselection of rules."
     counter_rules: "- Num. Default=1."
     man: "- Bool. Display man page"
-    config_file: "- Path|Undef."
+    comment_char: "- Str. Default=#."
     rule_based: "- Bool. Default=1."
     sample_based: "- Bool. Default=0."
     stash: "- HashRef."

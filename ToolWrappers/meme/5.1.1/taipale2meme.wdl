@@ -18,6 +18,9 @@ task Taipale2meme {
       ~{if (log_odds) then "-logodds" else ""} \
       ~{if defined(url) then ("-url " +  '"' + url + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     postfix: "text to append to motif names."
     strands: "|2            print '+ -' or '+' on the MEME strand line;\\ndefault: 2 (prints '+ -')"

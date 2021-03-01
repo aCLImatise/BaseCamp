@@ -8,6 +8,9 @@ task RnftoolsCheck {
     rnftools check \
       ~{rnf_tools}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rnf_tools: ""
   }

@@ -14,6 +14,9 @@ task PhyluceAlignOutputListOfTaxonCounts {
       ~{if defined(min_count) then ("--min-count " +  '"' + min_count + '"') else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_as: "The directory containing fastas to checked. (default:\\nNone)"
     input_format: "The input file format. (default: fasta)"

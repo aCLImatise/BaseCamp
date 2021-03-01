@@ -2,14 +2,17 @@ version 1.0
 
 task FinalReportpy {
   input {
-    File? file
+    File? configuration_file
   }
   command <<<
     finalReport_py \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""}
+      ~{if defined(configuration_file) then ("--file " +  '"' + configuration_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: "configuration file"
+    configuration_file: "configuration file"
   }
   output {
     File out_stdout = stdout()

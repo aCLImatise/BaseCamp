@@ -14,6 +14,9 @@ task KallistoIndex {
       ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
       ~{if defined(km_er_size) then ("--kmer-size " +  '"' + km_er_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index: "Filename for the kallisto index to be constructed"
     km_er_size: "k-mer (odd) length (default: 31, max value: 31)\\n--make-unique           Replace repeated target names with unique names\\n"

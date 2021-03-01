@@ -3,12 +3,15 @@ command:
 - convertSFS_CODE
 positional:
 - !Positional
-  description: Examples are the overall site-frequency spectrum, or
+  optional: false
   position: 0
   name: form.
-  optional: false
+  description: Examples are the overall site-frequency spectrum, or
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --alignment
   description: "(-a) [A] [F <filename>] [P <#pops> <P1>..<P#pops>]\n[I <#indiv> <I1>..<I#indiv>]\
     \ [P.I <#comb> <P1.I1>..<Pn.In>]\n[L <#loci> <L1>..<L#loci>] [ITS <#its>]\nPrint\
     \ the alignment in fasta format.  Use \"A\" option to print\nancestral sequences.\
@@ -19,11 +22,11 @@ named:
     \ only first <#its> iterations.  Note: cannot use\nboth \"P\" and \"I\" options\
     \ (use \"P.I\" instead).  By\ndefault, a fasta style alignment of all individuals\
     \ across\nall loci and iterations will be printed to the screen."
-  synonyms:
-  - --alignment
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --MK
   description: "(-m) <ingroup> <outgroup> [OBS] [F [a] <file>]\n[L <#loci> <L1>..<L#loc>]\
     \ [ITS [#its]] [OGSS <OG_size>\nExtract McDonald-Kreitman (MK) tables for comparing\
     \ <ingroup>\nto <outgroup>.  By default, will print the MK table for the\ntrue\
@@ -40,11 +43,11 @@ named:
     \ a fixed difference (setting\n<OG_size> = -1 is uses the entire sample size).\n\
     Each MK table is printed in the following order:\n<PS> <PN> <FS> <FN>, where 'P'\
     \ refers to polymorphic,\n'F' fixed, 'S' synonymous and 'N' is nonsynonymous."
-  synonyms:
-  - --MK
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --SFS
   description: "(-s) [OBS <P1> <P2> [OG_size]] [T <0/1/2>] [F [a] <file>]\n[L <#loci>\
     \ <L1>..<L#loc>] [P <#pops> <P1>..<P#pops>]\n[ITS [#its]]\nExtract Site-Frequency\
     \ Spectra.  By default, will print the\nSFS for the true data (saved during simulation)\
@@ -60,19 +63,16 @@ named:
     \ for true data, i.e. not when using\nOBS flag).  To print each iteration indepdently,\
     \ use 'ITS'\nflag (to print only a subset of iterations, include the\nnumber of\
     \ iterations [#its].\n"
-  synonyms:
-  - --SFS
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "(-h)\nPrint this help menu"
+  optional: true
   synonyms:
   - --help
+  description: "(-h)\nPrint this help menu"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "PROGRAM:       convertSFS_CODE\nDEVELOPER:     Ryan D. Hernandez\nRELEASE\
@@ -125,3 +125,4 @@ help_text: "PROGRAM:       convertSFS_CODE\nDEVELOPER:     Ryan D. Hernandez\nRE
   \ only a subset of iterations, include the\n\t\tnumber of iterations [#its].\n"
 generated_using:
 - --help
+docker_image:

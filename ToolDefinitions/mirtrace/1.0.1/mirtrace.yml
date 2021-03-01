@@ -3,161 +3,161 @@ command:
 - mirtrace
 positional:
 - !Positional
-  description: miRNA trace mode. Produces a clade report. --species is ignored.
+  optional: false
   position: 0
   name: trace
-  optional: false
+  description: miRNA trace mode. Produces a clade report. --species is ignored.
 - !Positional
-  description: Quality control mode (full set of reports). --species must be given.
+  optional: false
   position: 1
   name: qc
-  optional: false
+  description: Quality control mode (full set of reports). --species must be given.
 named:
 - !Flag
-  description: "Species (miRBase encoding). EXAMPLE: \"hsa\" for Homo sapiens.\nTo\
-    \ list all codes, run \"miRTrace --list-species\"."
+  optional: true
   synonyms:
   - -s
   - --species
+  description: "Species (miRBase encoding). EXAMPLE: \"hsa\" for Homo sapiens.\nTo\
+    \ list all codes, run \"miRTrace --list-species\"."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config
   description: "List of FASTQ files to process. This is a CSV (comma separated\nvalue)\
     \ file, i.e. with one entry per row.\nEach row consists of the following columns\n\
     (only the first is required):\nfilename,name-displayed-in-report,adapter,PHRED-ASCII-offset\n\
     NOTE: the PHRED ASCII offset can typically be reliably\nauto-detected and is not\
     \ necessary to specify.\nEXAMPLE CONFIG FILE:\npath/sample1.fastq,sample 1 (control),TGGAATTC\n\
     path/sample2.fastq,sample 2 (+drug X),TGGAATTC"
-  synonyms:
-  - -c
-  - --config
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<DNA sequence>. [DEFAULT: none].'
+  optional: true
   synonyms:
   - -a
   - --adapter
+  description: '<DNA sequence>. [DEFAULT: none].'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --protocol
   description: "One of the following (read structure schematic in parens):\nillumina\
     \ (miRNA--3'-adapter--index) [DEFAULT]\nqiaseq (miRNA--3'-adapter--UMI--3'-adapter--index)\n\
     NOTE: Only the first (leftmost) 3' adapter should be specified.\ncats (NNN--miRNA--poly-A--3'-adapter--index)\n\
     NOTE: It's not possible to specify an adapter for -p cats.\nnextflex (NNNN--miRNA--NNNN--3'-adapter--index)"
-  synonyms:
-  - -p
-  - --protocol
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Directory for output files. [DEFAULT: <file listing>.output]'
+  optional: true
   synonyms:
   - -o
   - --output-dir
+  description: 'Directory for output files. [DEFAULT: <file listing>.output]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Overwrite output directory if it exists.
+  optional: true
   synonyms:
   - -f
   - --force
+  description: Overwrite output directory if it exists.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --enable-pipes
   description: "Enable support for named pipes (fifos) as input.\nNOTE: Requires a\
     \ config file with PHRED and adapter\ngiven for each entry. Input must not be\
     \ compressed."
-  synonyms:
-  - --enable-pipes
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Write QC-passed reads and unknown reads (as defined\nin the RNA type\
-    \ plot) to the output folder.\nIdentical reads are collapsed. Entries are sorted\
-    \ by abundance."
+  optional: true
   synonyms:
   - -w
   - --write-fasta
+  description: "Write QC-passed reads and unknown reads (as defined\nin the RNA type\
+    \ plot) to the output folder.\nIdentical reads are collapsed. Entries are sorted\
+    \ by abundance."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Write one FASTA entry per original FASTQ entry.
+  optional: true
   synonyms:
   - --uncollapse-fasta
+  description: Write one FASTA entry per original FASTQ entry.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Set the report title.
+  optional: true
   synonyms:
   - --title
+  description: Set the report title.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Add a comment to the generated report. Multiple\narguments can be\
-    \ given."
+  optional: true
   synonyms:
   - --comment
+  description: "Add a comment to the generated report. Multiple\narguments can be\
+    \ given."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Maximum number of processing threads to use.\n[DEFAULT: <number of\
-    \ virtual cores>]"
+  optional: true
   synonyms:
   - -t
   - --num-threads
+  description: "Maximum number of processing threads to use.\n[DEFAULT: <number of\
+    \ virtual cores>]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Level of detail for debug messages. [default: 1]'
+  optional: true
   synonyms:
   - --verbosity-level
+  description: 'Level of detail for debug messages. [default: 1]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --global-mem-reserve
   description: "Amount of Java memory reserved for\n\"housekeeping\" tasks (in MB).\n\
     Increase only if OutOfMemoryErrors are occurring.\nDecrease only if available\
     \ system memory is very low.\n[Current value: 400 MB]"
-  synonyms:
-  - --global-mem-reserve
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Folder containing user-generated reference databases.
+  optional: true
   synonyms:
   - --custom-db-folder
+  description: Folder containing user-generated reference databases.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: List all species that miRTrace has reference databases for.
+  optional: true
   synonyms:
   - --list-species
+  description: List all species that miRTrace has reference databases for.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Show information about how to cite our paper.
+  optional: true
   synonyms:
   - --cite
+  description: Show information about how to cite our paper.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Display this help text.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Display this help text.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Display miRTrace version number.
+  optional: true
   synonyms:
   - -v
   - --version
+  description: Display miRTrace version number.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "USAGE: mirtrace MODE [-s SPECIES] [-a ADAPTER] [OTHER OPTIONS]... [FASTQ\
   \ filenames]...\n\nSIMPLE USAGE EXAMPLE (QUALITY CONTROL MODE):\nmirtrace qc --adapter\
   \ ACGTACGT --species hsa sample_A.fq sample_B.fq.gz\n\nSIMPLE USAGE EXAMPLE (TRACE\
@@ -215,3 +215,4 @@ help_text: "USAGE: mirtrace MODE [-s SPECIES] [-a ADAPTER] [OTHER OPTIONS]... [F
   \    -v, --version          Display miRTrace version number.\n\n"
 generated_using:
 - --help
+docker_image:

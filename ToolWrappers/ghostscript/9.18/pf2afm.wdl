@@ -10,6 +10,9 @@ task Pf2afm {
       ~{gs} \
       ~{if (d_no_display) then "-dNODISPLAY" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d_no_display: ""
     gs: ""

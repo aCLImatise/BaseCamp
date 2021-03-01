@@ -4,25 +4,28 @@ command:
 - admin
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: TYPE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
-    \ to standard output (default to\n1)."
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1)."
   args: !ChoiceFlagArg
     choices: !!set
+      '3':
       '2':
       '0':
-      '3':
       '1':
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --update_resource
   description: "[TYPE], --update-resource [TYPE]\nDownload resources of specified\
     \ type, which can be\n'current' (latest version of all resources), 'all'\n(all\
     \ resources including obsolete databases),\n'existing' (only update resources\
@@ -32,65 +35,65 @@ named:
     available locally (under ~/.variant_tools or runtime\noption $local_resource)\
     \ are ignored. Note that option\n'all' will download all versions of annotation\n\
     databases which can be slow and take a lot of disk\nspaces."
-  synonyms:
-  - --update_resource
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Mirror the main variant tools repository to a local\ndirectory. This\
-    \ command will check files under dest,\ndownload all missing or outdated files.\
-    \ Existing files\nthat do not belong to the repository will not be\nremoved."
+  optional: true
   synonyms:
   - --mirror_repository
   - --mirror-repository
+  description: "Mirror the main variant tools repository to a local\ndirectory. This\
+    \ command will check files under dest,\ndownload all missing or outdated files.\
+    \ Existing files\nthat do not belong to the repository will not be\nremoved."
   args: !SimpleFlagArg
     name: dest
-  optional: true
 - !Flag
-  description: "Merge samples with the same sample names by combining\ngenotypes belonging\
-    \ to these samples. Phenotypes\nrelated to individual samples will be merged."
+  optional: true
   synonyms:
   - --merge_samples
   - --merge-samples
+  description: "Merge samples with the same sample names by combining\ngenotypes belonging\
+    \ to these samples. Phenotypes\nrelated to individual samples will be merged."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --rename_samples
+  - --rename-samples
   description: "This argument takes a condition by which samples are\nselected, followed\
     \ by either a new sample name (assign\na new name to selected samples) or an OLDNAME\
     \ NEWNAME\npair of patterns for which the first instance of\nOLDNAME in sample\
     \ names will be replaced by NEWNAME."
-  synonyms:
-  - --rename_samples
-  - --rename-samples
   args: !RepeatFlagArg
     name: COND
-  optional: true
 - !Flag
-  description: "NEW_NAME, --rename-table NAME NEW_NAME\nChange table NAME to a NEW_NAME."
+  optional: true
   synonyms:
   - --rename_table
+  description: "NEW_NAME, --rename-table NAME NEW_NAME\nChange table NAME to a NEW_NAME."
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: "NEW_DESCRIPTION, --describe-table TABLE NEW_DESCRIPTION\nUpdate description\
-    \ for TABLE with a NEW_DESCRIPTION."
+  optional: true
   synonyms:
   - --describe_table
+  description: "NEW_DESCRIPTION, --describe-table TABLE NEW_DESCRIPTION\nUpdate description\
+    \ for TABLE with a NEW_DESCRIPTION."
   args: !SimpleFlagArg
     name: TABLE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --validate_build
+  - --validate-build
   description: "Validate the build of project's reference genome by\nchecking if the\
     \ reference alleles of variants agree\nwith the reference genome sequence. A reference\
     \ genome\nwill be automatically downloaded if it does not exist\nin the local\
     \ resource directory."
-  synonyms:
-  - --validate_build
-  - --validate-build
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --validate_sex
   description: "[{report,force-heterozygote}], --validate-sex [{report,force-heterozygote}]\n\
     Validate the sex of samples by checking the genotypes\nof samples on sex chromosomes\
     \ (excluding pseudo-\nautosomal regions). Sex of samples are determined by a\n\
@@ -99,71 +102,71 @@ named:
     Y. This argument accepts an option argument, which is\nreport by default (report\
     \ inconsistent genotype or\nsex), but can also be 'force-heterozygote' for male\n\
     individuals on chromosome X."
-  synonyms:
-  - --validate_sex
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --save_snapshot
   description: "MESSAGE, --save-snapeshot NAME MESSAGE\nCreate a snapshot of the current\
     \ project with NAME,\nwhich could be re-loaded using command 'vtools admin\n--load_snapshot'.\
     \ A filename with extension .tar, .tgz\nor .tar.gz can be used to save the snapshot\
     \ to a\nspecific directory with compression but such snapshots\nare not listed\
     \ by command 'vtools show snapshots'."
-  synonyms:
-  - --save_snapshot
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extra_files
   description: "[FILE [FILE ...]], --extra-files [FILE [FILE ...]]\nAdditional files\
     \ that will be saved along with the\nproject and genotype databases. This could\
     \ include\ncustomized format files, project-specific annotations,\nand results.\
     \ Files outside of the current project\ndirectory are not allowed due to security\n\
     considerations."
-  synonyms:
-  - --extra_files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --load_snapshot
+  - --load-snapshot
   description: "Revert the current project to specified snapshot. All\nchanges since\
     \ the that snapshot will be lost. The NAME\nshould be one of the project snapshots\
     \ or online\nsnapshots listed by command 'vtools show snapshots',\nor name of\
     \ a local snapshot file (with extension .tar,\n.tgz or .tar.gz)."
-  synonyms:
-  - --load_snapshot
-  - --load-snapshot
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --set_runtime_option
+  - --set-runtime-option
   description: "Set value to internal options such as the batch size\nfor database\
     \ options. The default values of these\noptions were chosen to fit most usage\
     \ patterns but\ntweaking them might provide better performance under\ncertain\
     \ circumstances. Please use command \"vtools show\nruntime_options\" to list all\
     \ currently supported\nruntime options."
-  synonyms:
-  - --set_runtime_option
-  - --set-runtime-option
   args: !RepeatFlagArg
     name: OPTION
-  optional: true
 - !Flag
-  description: Reset value to a runtime option to its default value.
+  optional: true
   synonyms:
   - --reset_runtime_option
   - --reset-runtime-option
+  description: Reset value to a runtime option to its default value.
   args: !SimpleFlagArg
     name: OPT
-  optional: true
 - !Flag
-  description: "Save option to user_options.py so that it will be\nautomatically set\
-    \ for all user projects."
+  optional: true
   synonyms:
   - -g
   - --global
+  description: "Save option to user_options.py so that it will be\nautomatically set\
+    \ for all user projects."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fasta2crr
   description: "Convert fasta files to a crr file (a binary format for\nfaster access)\
     \ that can be used by variant tools. This\nis only needed if you are working with\
     \ a reference\ngenome that is not supported by variant tools. This\nparameter\
@@ -171,21 +174,18 @@ named:
     \ by the name of the\n.crr file. The .crr file should be put under the\nproject\
     \ directory or the local resource directory\n(under directory reference) to be\
     \ usable by variant\ntools.\n"
-  synonyms:
-  - --fasta2crr
   args: !RepeatFlagArg
     name: FASTA
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: vtools admin [-h] [--update_resource [TYPE]] [--mirror_repository\
@@ -291,3 +291,4 @@ help_text: "usage: vtools admin [-h] [--update_resource [TYPE]] [--mirror_reposi
   \                       tools.\n"
 generated_using:
 - --help
+docker_image:

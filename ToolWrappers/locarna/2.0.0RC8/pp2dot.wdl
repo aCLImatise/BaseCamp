@@ -12,6 +12,9 @@ task Pp2dot {
       ~{if defined(colors_two) then ("--colors2 " +  '"' + colors_two + '"') else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     colors: "Color palette. Use --colors2 to define a second palette for the\\nlower-left triangle. Default: \\\"black\\\",\\\"cyan\\\",\\\"green\\\",\\\"yellow\\\",\\\"red\\\""
     colors_two: "Color palette for lower left triangle."

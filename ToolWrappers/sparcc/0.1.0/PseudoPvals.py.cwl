@@ -3,12 +3,12 @@ id: PseudoPvals.py.cwl
 inputs:
 - id: in_type
   doc: "Type of p-values to computed.  oned-sided | two-sided\n(default)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --type
 - id: in_outfile
   doc: "Name of file to which p-values will be written.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outfile
 - id: in_compute
@@ -80,6 +80,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - PseudoPvals.py

@@ -22,6 +22,9 @@ task Hlama {
       ~{if (disable_checks) then "--disable-checks" else ""} \
       ~{if defined(num_threads) then ("--num-threads " +  '"' + num_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tumor_normal: "Path to tumor/normal TSV file, starts tumor/normal\\nmode"
     pedigree: "Path to pedigree file, starts pedigree mode"

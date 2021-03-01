@@ -158,6 +158,9 @@ task Packmolmemgen {
       ~{if defined(imbalance_ion) then ("--imbalance_ion " +  '"' + imbalance_ion + '"') else ""} \
       ~{if (h) then "-h" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "prints this help message and exits"
     available_lipids: "list of available lipids and corresponding charges"

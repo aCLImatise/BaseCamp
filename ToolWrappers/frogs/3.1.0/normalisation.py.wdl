@@ -24,6 +24,9 @@ task Normalisationpy {
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_reads: "Number of reads per sample after normalisation"
     debug: "Keep temporary files to debug program."

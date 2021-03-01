@@ -44,6 +44,9 @@ task GraftMCreate {
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     taxonomy: "File containing two tab separated columns, the first with the ID of the sequences, the second with the taxonomy string (required unless --rerooted_annotated_tree or --taxtastic_taxonomy and --taxtastic_seqinfo are specified)"
     sequences: "Unaligned sequences (required)"

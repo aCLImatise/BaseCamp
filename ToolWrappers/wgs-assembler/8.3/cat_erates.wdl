@@ -10,6 +10,9 @@ task Caterates {
       ~{if defined(file_containing_names) then ("-L " +  '"' + file_containing_names + '"') else ""} \
       ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_containing_names: "a file containing names of erate files"
     output_file: "output file"

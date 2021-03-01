@@ -9,7 +9,7 @@ task CloseGapsperl {
     Boolean? min_km_er_len
     Boolean? max_km_er_len
     Boolean? num_threads
-    Boolean? _same_
+    Boolean? same__numthreads
     Boolean? contig_length_for_joining
     Boolean? use_all_k_unit_igs
     Boolean? max_nodes
@@ -28,7 +28,7 @@ task CloseGapsperl {
       ~{if (min_km_er_len) then "--min-kmer-len" else ""} \
       ~{if (max_km_er_len) then "--max-kmer-len" else ""} \
       ~{if (num_threads) then "--num-threads" else ""} \
-      ~{if (_same_) then "-t" else ""} \
+      ~{if (same__numthreads) then "-t" else ""} \
       ~{if (contig_length_for_joining) then "--contig-length-for-joining" else ""} \
       ~{if (use_all_k_unit_igs) then "--use-all-kunitigs" else ""} \
       ~{if (max_nodes) then "--maxnodes" else ""} \
@@ -38,6 +38,9 @@ task CloseGapsperl {
       ~{if (contig_length_for_fishing) then "--contig-length-for-fishing" else ""} \
       ~{if (no_clean) then "--noclean" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     celera_terminator_directory: ": specify the Celera terminator directory\\nwhere the assembly whose gaps must be closed exists"
     reads_file: ": specify a read file to use (multiple files allowed,\\nso long as the flag is repeated)"
@@ -46,7 +49,7 @@ task CloseGapsperl {
     min_km_er_len: "# : specify the min kmer len used (default: 17)"
     max_km_er_len: "# : specify the max kmer len used (default: 31)"
     num_threads: "# : specify the number of threads (default: 1)"
-    _same_: "# : same as --num-threads #"
+    same__numthreads: "# : same as --num-threads #"
     contig_length_for_joining: "# : The length of sequence at the ends of the contigs\\nwhich create the faux mate pairs which are joined (default: 100)"
     use_all_k_unit_igs: ": Use k-unitigs which are the k-mer length as well as all those longer than\\nthe k-mer length. (The default is not to use k-unis of the k-mer length)"
     max_nodes: "# : The maximum number of nodes allowed when trying to join the\\nfaux reads (default: 2000)"

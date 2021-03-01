@@ -3,22 +3,22 @@ id: pre_tophat.pl.cwl
 inputs:
 - id: in_file_containing_files
   doc: "file containing input files and ids\nid [tab] path.to/file"
-  type: File
+  type: File?
   inputBinding:
     prefix: -l
 - id: in_diegoformated_annotation_file
   doc: DIEGO-formated annotation file
-  type: File
+  type: File?
   inputBinding:
     prefix: -a
 - id: in_output_file_name
   doc: output file name (default:junction_tophat_DIEGO )
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_usefull_help_message
   doc: this (usefull) help message
-  type: File
+  type: File?
   inputBinding:
     prefix: -h
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output_file_name
   doc: output file name (default:junction_tophat_DIEGO )
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file_name)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pre_tophat.pl

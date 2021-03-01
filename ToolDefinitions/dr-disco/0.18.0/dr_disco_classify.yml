@@ -4,63 +4,63 @@ command:
 - classify
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: TABLE_INPUT_FILE
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: TABLE_OUTPUT_FILE
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: Only return results marked as 'valid'
+  optional: true
   synonyms:
   - --only-valid
+  description: Only return results marked as 'valid'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Blacklist these regions (BED file)
+  optional: true
   synonyms:
   - --blacklist-regions
+  description: Blacklist these regions (BED file)
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Blacklist these region-to-region junctions\n(custom format, see files\
-    \ in ./share/)"
+  optional: true
   synonyms:
   - --blacklist-junctions
+  description: "Blacklist these region-to-region junctions\n(custom format, see files\
+    \ in ./share/)"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min-chim-overhang
   description: "Minimum alignment length on each side of the\njunction. May need to\
     \ be set to smaller values\nfor read lengths smaller than 75bp. Larger\nvalues\
     \ are more stringent. [default=50]"
-  synonyms:
-  - --min-chim-overhang
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ffpe
   description: "Lowers the threshold for the relative amount of\nmismatches, as often\
     \ found in FFPE material.\nNote that enabling this option will\nconsequently result\
     \ in more false positives."
-  synonyms:
-  - --ffpe
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: dr-disco classify [OPTIONS] TABLE_INPUT_FILE TABLE_OUTPUT_FILE\n\
@@ -78,3 +78,4 @@ help_text: "Usage: dr-disco classify [OPTIONS] TABLE_INPUT_FILE TABLE_OUTPUT_FIL
   \  --help                       Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

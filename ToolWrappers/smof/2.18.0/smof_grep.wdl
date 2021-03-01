@@ -3,7 +3,7 @@ version 1.0
 task SmofGrep {
   input {
     Boolean? match_sequence
-    File? file
+    File? obtain_patterns_file
     Boolean? files_without_match
     Boolean? files_with_matches
     String? wrap
@@ -30,14 +30,14 @@ task SmofGrep {
     String? gff_type
     String? fasta_in
     String pattern
-    String input_fasta_default
+    String input_fasta_sequence
   }
   command <<<
     smof grep \
       ~{pattern} \
-      ~{input_fasta_default} \
+      ~{input_fasta_sequence} \
       ~{if (match_sequence) then "--match-sequence" else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(obtain_patterns_file) then ("--file " +  '"' + obtain_patterns_file + '"') else ""} \
       ~{if (files_without_match) then "--files-without-match" else ""} \
       ~{if (files_with_matches) then "--files-with-matches" else ""} \
       ~{if defined(wrap) then ("--wrap " +  '"' + wrap + '"') else ""} \
@@ -64,9 +64,12 @@ task SmofGrep {
       ~{if defined(gff_type) then ("--gff-type " +  '"' + gff_type + '"') else ""} \
       ~{if defined(fasta_in) then ("--fastain " +  '"' + fasta_in + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     match_sequence: "match sequence rather than header"
-    file: "obtain patterns from FILE, one per line"
+    obtain_patterns_file: "obtain patterns from FILE, one per line"
     files_without_match: "print names files with no matches"
     files_with_matches: "print names input files with matches"
     wrap: "a regular expression to capture patterns"
@@ -93,7 +96,7 @@ task SmofGrep {
     gff_type: "name of searched feature"
     fasta_in: "Search for exact sequence matches against FASTA"
     pattern: "pattern to match"
-    input_fasta_default: "input fasta sequence (default = stdin)"
+    input_fasta_sequence: "input fasta sequence (default = stdin)"
   }
   output {
     File out_stdout = stdout()

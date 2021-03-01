@@ -4,7 +4,7 @@ inputs:
 - id: in_naming
   doc: "[csv|seq_range|csv_seq_range]\nOptions regarding how each new fasta record\n\
     will be named. See main help-text for\nexplainations of options. [default='csv']"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --naming
 - id: in_record_name
@@ -58,6 +58,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - extract_genome_region

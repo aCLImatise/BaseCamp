@@ -22,6 +22,9 @@ task Touch {
       ~{if defined(use_current_time) then ("-t " +  '"' + use_current_time + '"') else ""} \
       ~{if defined(time) then ("--time " +  '"' + time + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     change_only_access_time: "change only the access time"
     no_create: "do not create any files"

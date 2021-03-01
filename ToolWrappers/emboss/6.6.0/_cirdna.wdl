@@ -42,6 +42,9 @@ task Cirdna {
       ~{if (gap_group) then "-gapgroup" else ""} \
       ~{if (post_ext) then "-postext" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     blocktype: "menu       [Filled] Type of blocks (Values: Open (Open\\nblocks); Filled (Filled blocks); Outline\\n(Black border))"
     po_sticks: "selection  [Out] Ticks inside or outside the circle"

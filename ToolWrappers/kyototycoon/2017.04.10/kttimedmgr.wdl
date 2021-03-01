@@ -40,6 +40,9 @@ task Kttimedmgr {
       ~{vacuum} \
       ~{if (otr) then "-otr" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     otr: ""
     bgs_inform: ""

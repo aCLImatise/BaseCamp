@@ -52,6 +52,9 @@ task PearRM {
       ~{if (threads) then "--threads" else ""} \
       ~{if (n_base) then "--nbase" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     forward_fast_q: "<str>     Forward paired-end FASTQ file."
     reverse_fast_q: "<str>     Reverse paired-end FASTQ file."

@@ -8,6 +8,9 @@ task Hicup2juicer {
     hicup2juicer \
       ~{if (zip) then "--zip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     zip: "Write output to a gzip file"
   }

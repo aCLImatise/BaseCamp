@@ -3,22 +3,22 @@ id: truncate.cwl
 inputs:
 - id: in_no_create
   doc: do not create any files
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-create
 - id: in_io_blocks
   doc: treat SIZE as number of IO blocks instead of bytes
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --io-blocks
 - id: in_reference
   doc: base size on RFILE
-  type: File
+  type: File?
   inputBinding:
     prefix: --reference
 - id: in_size
   doc: set or adjust the file size by SIZE bytes
-  type: long
+  type: long?
   inputBinding:
     prefix: --size
 - id: in_option_dot_dot_dot
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - truncate

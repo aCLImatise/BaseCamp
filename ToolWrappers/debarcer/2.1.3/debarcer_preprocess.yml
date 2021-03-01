@@ -1,0 +1,107 @@
+!Command
+command:
+- debarcer
+- preprocess
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --OutDir
+  description: Output directory. Available from command or config
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -r1
+  - --Read1
+  description: Path to first FASTQ file.
+  args: !SimpleFlagArg
+    name: READ1
+- !Flag
+  optional: true
+  synonyms:
+  - -r2
+  - --Read2
+  description: Path to second FASTQ file, if applicable
+  args: !SimpleFlagArg
+    name: READ2
+- !Flag
+  optional: true
+  synonyms:
+  - -r3
+  - --Read3
+  description: Path to third FASTQ file, if applicable
+  args: !SimpleFlagArg
+    name: READ3
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --Prepname
+  description: "Name of library prep to use (defined in\nlibrary_prep_types.ini)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      EPIC-DS:
+      HALOPLEX:
+      SIMSENSEQ-SE:
+      SURESELECT:
+      SIMSENSEQ-PE:
+- !Flag
+  optional: true
+  synonyms:
+  - -pf
+  - --Prepfile
+  description: Path to your library_prep_types.ini file
+  args: !SimpleFlagArg
+    name: PREPFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --Config
+  description: Path to your config file
+  args: !SimpleFlagArg
+    name: CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - -px
+  - --Prefix
+  description: "Prefix for naming umi-reheradered fastqs. Use Prefix\nfrom Read1 if\
+    \ not provided\n"
+  args: !SimpleFlagArg
+    name: PREFIX
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: debarcer.py preprocess [-h] [-o OUTDIR] -r1 READ1 [-r2 READ2]\n\
+  \                              [-r3 READ3] -p\n                              {HALOPLEX,SURESELECT,EPIC-DS,SIMSENSEQ-PE,SIMSENSEQ-SE}\n\
+  \                              [-pf PREPFILE] [-c CONFIG] [-px PREFIX]\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -o OUTDIR,\
+  \ --OutDir OUTDIR\n                        Output directory. Available from command\
+  \ or config\n  -r1 READ1, --Read1 READ1\n                        Path to first FASTQ\
+  \ file.\n  -r2 READ2, --Read2 READ2\n                        Path to second FASTQ\
+  \ file, if applicable\n  -r3 READ3, --Read3 READ3\n                        Path\
+  \ to third FASTQ file, if applicable\n  -p {HALOPLEX,SURESELECT,EPIC-DS,SIMSENSEQ-PE,SIMSENSEQ-SE},\
+  \ --Prepname {HALOPLEX,SURESELECT,EPIC-DS,SIMSENSEQ-PE,SIMSENSEQ-SE}\n         \
+  \               Name of library prep to use (defined in\n                      \
+  \  library_prep_types.ini)\n  -pf PREPFILE, --Prepfile PREPFILE\n              \
+  \          Path to your library_prep_types.ini file\n  -c CONFIG, --Config CONFIG\n\
+  \                        Path to your config file\n  -px PREFIX, --Prefix PREFIX\n\
+  \                        Prefix for naming umi-reheradered fastqs. Use Prefix\n\
+  \                        from Read1 if not provided\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/debarcer:2.1.3--py_0

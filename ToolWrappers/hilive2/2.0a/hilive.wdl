@@ -9,7 +9,7 @@ task Hilive {
     File? arg_path_config
     File? run_info
     File? continue
-    Boolean? arg_specify_considered
+    Boolean? arg_specify_tiles
     Boolean? arg_specify_number
     Boolean? arg_barcodes_beconsidered
     String? run_id
@@ -60,7 +60,7 @@ task Hilive {
       ~{if (arg_path_config) then "-c" else ""} \
       ~{if defined(run_info) then ("--runinfo " +  '"' + run_info + '"') else ""} \
       ~{if defined(continue) then ("--continue " +  '"' + continue + '"') else ""} \
-      ~{if (arg_specify_considered) then "-t" else ""} \
+      ~{if (arg_specify_tiles) then "-t" else ""} \
       ~{if (arg_specify_number) then "-T" else ""} \
       ~{if (arg_barcodes_beconsidered) then "-B" else ""} \
       ~{if defined(run_id) then ("--run-id " +  '"' + run_id + '"') else ""} \
@@ -100,6 +100,9 @@ task Hilive {
       ~{if (arg_number_spawn) then "-n" else ""} \
       ~{if (arg_maximum_number) then "-N" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     illuminas_basecalls_directory: "[--bcl-dir]        Illumina's BaseCalls directory which contains the sequence information of the reads."
     path_hilive_index: "[--index]          Path to the HiLive index."
@@ -108,7 +111,7 @@ task Hilive {
     arg_path_config: "[ --config ] arg               Path to a config file. Config file is in\\n.ini format. Duplicate keys are not\\npermitted. Instead, use comma-separated\\nlists. Parameters obtained from the command\\nline are prioritized over settings made in\\nthe config file.\\nExample for a config.ini:\\nbcl-dir=./BaseCalls\\nlanes=1\\nout-cycle=50,100"
     run_info: "Path to Illumina's runInfo.xml file. If\\nspecified, read lengths, lane count and\\ntile count are automatically set in\\naccordance with the sequencing run.\\nParameters obtained from the command line\\nor config file are prioritized over\\nsettings obtained from the runInfo.xml."
     continue: "Continue an interrupted HiLive run from a\\nspecified cycle. We strongly recommend to\\nload the config file that was automatically\\ncreated for the original run to continue\\nwith identical settings. This config file\\n(hilive_config.ini) can be found in the\\ntemporary directory specified with\\n--temp-dir."
-    arg_specify_considered: "[ --tiles ] arg                Specify the tiles to be considered for read\\nalignment. [Default: [1-2][1-3][01-16] (96\\ntiles)]"
+    arg_specify_tiles: "[ --tiles ] arg                Specify the tiles to be considered for read\\nalignment. [Default: [1-2][1-3][01-16] (96\\ntiles)]"
     arg_specify_number: "[ --max-tile ] arg             Specify the highest tile number. The tile\\nnumbers will be computed by this number,\\nconsidering the correct surface count,\\nswath count and tile count for Illumina\\nsequencing.\\nThis parameter serves as a shortcut for\\n--tiles.\\nExample:\\n--max-tile 2216\\nwill activate all tiles in\\n[1-2][1-2][01-16]."
     arg_barcodes_beconsidered: "[ --barcodes ] arg             Barcode(s) of the sample(s) to be\\nconsidered for read alignment. Barcodes\\nmust match the barcode length(s) as\\nspecified with --reads. Delimit different\\nsegments of the same barcodes by '-' and\\ndifferent barcodes by ','. [Default: All\\nbarcodes]\\nExample:\\n-b ACCG-ATTG,ATGT-TGAC\\nfor two different barcodes of length 2x4bp."
     run_id: "ID of the sequencing run. Should be\\nobtained from runInfo.xml."

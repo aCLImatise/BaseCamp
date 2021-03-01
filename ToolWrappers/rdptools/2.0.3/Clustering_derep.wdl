@@ -28,6 +28,9 @@ task ClusteringDerep {
       ~{if (sorted) then "--sorted" else ""} \
       ~{if (unaligned) then "--unaligned" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aligned: "Dereplicate aligned sequences"
     formatted: "Dereplicate formated (uppercase/- = comparable,\\nlowercase/. = non-comparable) aligned sequences"

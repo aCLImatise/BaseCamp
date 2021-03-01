@@ -16,6 +16,9 @@ task VsnpRemoveFromAnalysispy {
       ~{if defined(extension) then ("--extension " +  '"' + extension + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     codes: "Excel file containing samples to remove from analysis\\nColumn 1: to match sample name minus extension. No\\nheader allowed"
     cwd: "Optional: path to VCF files"

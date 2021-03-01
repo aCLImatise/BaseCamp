@@ -26,6 +26,9 @@ task NanorawPlotMultiCorrection {
       ~{if defined(num_obs) then ("--num-obs " +  '"' + num_obs + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_five_based_irs: "Directories containing fast5 files."
     corrected_group: "FAST5 group to access/plot created by\\ngenome_resquiggle script. Default:\\nRawGenomeCorrected_000"

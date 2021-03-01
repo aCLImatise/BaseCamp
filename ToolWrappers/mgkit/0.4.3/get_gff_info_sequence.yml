@@ -4,32 +4,63 @@ command:
 - sequence
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: GFF_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: FASTA_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-r, --reverse             Reverse complement sequences on the - strand\n\
-    -w, --no-wrap             Write the sequences on one line\n-s, --split       \
-    \        Split the sequence header of the reference at the\nfirst space, to emulate\
-    \ BLAST behaviour\n-f, --reference FILENAME  Fasta file containing the reference\
-    \ sequences of\nthe GFF file\n--progress                Shows Progress Bar\n--help\
-    \                    Show this message and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  - -r
+  - --reverse
+  description: Reverse complement sequences on the - strand
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -w
+  - --no-wrap
+  description: Write the sequences on one line
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --split
+  description: "Split the sequence header of the reference at the\nfirst space, to\
+    \ emulate BLAST behaviour"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --reference
+  description: "Fasta file containing the reference sequences of\nthe GFF file"
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: Shows Progress Bar
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: get-gff-info sequence [OPTIONS] [GFF_FILE] [FASTA_FILE]\n\n  Extract\
@@ -43,3 +74,4 @@ help_text: "Usage: get-gff-info sequence [OPTIONS] [GFF_FILE] [FASTA_FILE]\n\n  
   \                    Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

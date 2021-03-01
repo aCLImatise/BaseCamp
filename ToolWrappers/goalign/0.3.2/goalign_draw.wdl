@@ -2,7 +2,7 @@ version 1.0
 
 task GoalignDraw {
   input {
-    File? alignment_draw_default
+    File? alignment_draw_output
     File? align
     Boolean? auto_detect
     Boolean? clustal
@@ -20,7 +20,7 @@ task GoalignDraw {
   command <<<
     goalign draw \
       ~{bio_js} \
-      ~{if defined(alignment_draw_default) then ("--output " +  '"' + alignment_draw_default + '"') else ""} \
+      ~{if defined(alignment_draw_output) then ("--output " +  '"' + alignment_draw_output + '"') else ""} \
       ~{if defined(align) then ("--align " +  '"' + align + '"') else ""} \
       ~{if (auto_detect) then "--auto-detect" else ""} \
       ~{if (clustal) then "--clustal" else ""} \
@@ -34,8 +34,11 @@ task GoalignDraw {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    alignment_draw_default: "Alignment draw output file (default \\\"stdout\\\")"
+    alignment_draw_output: "Alignment draw output file (default \\\"stdout\\\")"
     align: "Alignment input file (default \\\"stdin\\\")"
     auto_detect: "Auto detects input format (overrides -p, -x and -u)"
     clustal: "Alignment is in clustal? default fasta"
@@ -52,6 +55,6 @@ task GoalignDraw {
   }
   output {
     File out_stdout = stdout()
-    File out_alignment_draw_default = "${in_alignment_draw_default}"
+    File out_alignment_draw_output = "${in_alignment_draw_output}"
   }
 }

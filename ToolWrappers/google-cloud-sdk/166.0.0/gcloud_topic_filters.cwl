@@ -3,14 +3,9 @@ id: gcloud_topic_filters.cwl
 inputs:
 - id: in_format
   doc: '[ATTRIBUTES](PROJECTION) and --filter=EXPRESSION flags along'
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
-- id: in_filter
-  doc: ="createTime.date('%Y-%m-%d', Z)='2016-05-11'"
-  type: boolean
-  inputBinding:
-    prefix: --filter
 - id: in_logic_operator
   doc: "Expressions containing both AND and OR must be parenthesized to\ndisambiguate\
     \ precedence.\nNOT term-1\nTrue if term-1 is False, otherwise False.\nterm-1 AND\
@@ -39,6 +34,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

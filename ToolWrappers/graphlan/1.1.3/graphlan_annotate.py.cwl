@@ -3,12 +3,12 @@ id: graphlan_annotate.py.cwl
 inputs:
 - id: in_an_not
   doc: specify the annotation file
-  type: File
+  type: File?
   inputBinding:
     prefix: --annot
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_input_tree
@@ -26,6 +26,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - graphlan_annotate.py

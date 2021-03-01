@@ -12,6 +12,9 @@ task RiboStructure {
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     k: ""
     g: ""

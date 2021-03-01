@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File
+
+Fpenny_V0_1_0 = CommandToolBuilder(tool="fpenny", base_command=["fpenny"], inputs=[ToolInput(tag="in_weights", input_type=Boolean(optional=True), prefix="-weights", doc=InputDocumentation(doc="properties Phylip weights file (optional)")), ToolInput(tag="in_anc_file", input_type=Boolean(optional=True), prefix="-ancfile", doc=InputDocumentation(doc="properties Phylip ancestral states file (optional)")), ToolInput(tag="in_mix_file", input_type=File(optional=True), prefix="-mixfile", doc=InputDocumentation(doc="properties Phylip mix output file (optional)")), ToolInput(tag="in_method", input_type=Boolean(optional=True), prefix="-method", doc=InputDocumentation(doc="menu       [Wagner] Choose the method to use (Values:\nWag (Wagner); Cam (Camin-Sokal); Mix\n(Mixed))")), ToolInput(tag="in_out_gr_no", input_type=Boolean(optional=True), prefix="-outgrno", doc=InputDocumentation(doc="integer    [0] Species number to use as outgroup\n(Integer 0 or more)")), ToolInput(tag="in_how_many", input_type=Boolean(optional=True), prefix="-howmany", doc=InputDocumentation(doc="integer    [1000] How many groups of trees (Any integer\nvalue)")), ToolInput(tag="in_how_often", input_type=Boolean(optional=True), prefix="-howoften", doc=InputDocumentation(doc="integer    [100] How often to report, in trees (Any\ninteger value)")), ToolInput(tag="in_simple", input_type=Boolean(optional=True), prefix="-simple", doc=InputDocumentation(doc="boolean    Branch and bound is simple")), ToolInput(tag="in_threshold", input_type=Boolean(optional=True), prefix="-threshold", doc=InputDocumentation(doc="float      [$(infile.discretesize)] Threshold value\n(Number 1.000 or more)")), ToolInput(tag="in_print_data", input_type=Boolean(optional=True), prefix="-printdata", doc=InputDocumentation(doc="boolean    [N] Print data at start of run")), ToolInput(tag="in_step_box", input_type=Boolean(optional=True), prefix="-stepbox", doc=InputDocumentation(doc="boolean    [N] Print out steps in each site")), ToolInput(tag="in_an_cseq", input_type=Boolean(optional=True), prefix="-ancseq", doc=InputDocumentation(doc="boolean    [N] Print states at all nodes of tree"))], outputs=[ToolOutput(tag="out_mix_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_mix_file", type_hint=File()), doc=OutputDocumentation(doc="properties Phylip mix output file (optional)"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Fpenny_V0_1_0().translate("wdl", allow_empty_container=True)
+

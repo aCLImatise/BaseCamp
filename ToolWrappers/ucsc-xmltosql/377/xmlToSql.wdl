@@ -18,6 +18,9 @@ task XmlToSql {
       ~{if defined(text_field) then ("-textField " +  '"' + text_field + '"') else ""} \
       ~{if defined(max_promote_size) then ("-maxPromoteSize " +  '"' + max_promote_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "- A name to prefix all tables with"
     text_field: "- Name to use for text field (default 'text')"

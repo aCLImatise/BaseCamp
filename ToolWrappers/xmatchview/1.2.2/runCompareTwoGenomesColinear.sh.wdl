@@ -1,15 +1,11 @@
 version 1.0
 
 task RunCompareTwoGenomesColinearsh {
-  input {
-    Int cross_match_slash_minimap_two
-  }
   command <<<
-    runCompareTwoGenomesColinear_sh \
-      ~{cross_match_slash_minimap_two}
+    runCompareTwoGenomesColinear_sh
   >>>
-  parameter_meta {
-    cross_match_slash_minimap_two: "PATH-TO-FONTS"
+  runtime {
+    docker: "None"
   }
   output {
     File out_stdout = stdout()

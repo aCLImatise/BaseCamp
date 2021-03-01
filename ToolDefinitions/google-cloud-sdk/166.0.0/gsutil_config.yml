@@ -4,181 +4,191 @@ command:
 - config
 positional:
 - !Positional
-  description: If you want to use credentials based on access key and secret (the
-    older
+  optional: false
   position: 0
   name: scopes.
-  optional: false
+  description: If you want to use credentials based on access key and secret (the
+    older
 - !Positional
-  description: aws_secret_access_key
+  optional: false
   position: 0
   name: aws_access_key_id
-  optional: false
+  description: aws_secret_access_key
 - !Positional
-  description: gs_host
+  optional: false
   position: 1
   name: gs_access_key_id
-  optional: false
+  description: gs_host
 - !Positional
-  description: gs_json_port
+  optional: false
   position: 2
   name: gs_json_host
-  optional: false
+  description: gs_json_port
 - !Positional
-  description: '[Boto]'
+  optional: false
   position: 3
-  name: s3_port
-  optional: false
+  name: gs_oauth2_refresh_token
+  description: gs_port
 - !Positional
-  description: proxy_port
+  optional: false
   position: 4
-  name: proxy
-  optional: false
+  name: gs_secret_access_key
+  description: s3_host
 - !Positional
-  description: proxy_pass
+  optional: false
   position: 5
-  name: proxy_user
-  optional: false
+  name: proxy
+  description: proxy_port
 - !Positional
-  description: http_socket_timeout
+  optional: false
   position: 6
-  name: proxy_rdns
-  optional: false
+  name: proxy_user
+  description: proxy_pass
 - !Positional
-  description: debug
+  optional: false
   position: 7
   name: https_validate_certificates
-  optional: false
+  description: debug
 - !Positional
-  description: '[GSUtil]'
+  optional: false
+  position: 8
+  name: max_retry_delay
+  description: num_retries
+- !Positional
+  optional: false
   position: 0
   name: service_account
-  optional: false
+  description: '[GSUtil]'
 - !Positional
-  description: content_language
+  optional: false
   position: 1
   name: check_hashes
-  optional: false
+  description: content_language
 - !Positional
-  description: default_project_id
+  optional: false
   position: 0
   name: default_api_version
-  optional: false
+  description: default_project_id
 - !Positional
-  description: encryption_key
+  optional: false
   position: 1
-  name: disable_analytics_prompt
-  optional: false
-- !Positional
-  description: parallel_composite_upload_component_size
-  position: 2
   name: json_api_version
-  optional: false
+  description: parallel_composite_upload_component_size
 - !Positional
-  description: sliced_object_download_component_size
-  position: 3
-  name: parallel_composite_upload_threshold
   optional: false
-- !Positional
-  description: sliced_object_download_threshold
-  position: 4
-  name: sliced_object_download_max_components
-  optional: false
-- !Positional
-  description: parallel_thread_count
-  position: 5
-  name: parallel_process_count
-  optional: false
-- !Positional
-  description: resumable_threshold
-  position: 6
-  name: prefer_api
-  optional: false
-- !Positional
-  description: '[OAuth2]'
-  position: 0
-  name: use_magicfile
-  optional: false
-- !Positional
-  description: client_secret
-  position: 1
-  name: client_id
-  optional: false
-- !Positional
-  description: provider_authorization_uri
   position: 2
-  name: oauth2_refresh_retries
-  optional: false
+  name: parallel_composite_upload_threshold
+  description: sliced_object_download_component_size
 - !Positional
-  description: UPDATING TO THE LATEST CONFIGURATION FILE
-  position: 3
-  name: token_cache
   optional: false
+  position: 3
+  name: sliced_object_download_max_components
+  description: sliced_object_download_threshold
+- !Positional
+  optional: false
+  position: 4
+  name: parallel_process_count
+  description: parallel_thread_count
+- !Positional
+  optional: false
+  position: 5
+  name: prefer_api
+  description: resumable_threshold
+- !Positional
+  optional: false
+  position: 0
+  name: state_dir
+  description: tab_completion_time_logs
+- !Positional
+  optional: false
+  position: 1
+  name: tab_completion_timeout
+  description: task_estimation_threshold
+- !Positional
+  optional: false
+  position: 2
+  name: client_id
+  description: client_secret
+- !Positional
+  optional: false
+  position: 3
+  name: oauth2_refresh_retries
+  description: provider_authorization_uri
+- !Positional
+  optional: false
+  position: 4
+  name: provider_label
+  description: provider_token_uri
+- !Positional
+  optional: false
+  position: 5
+  name: token_cache
+  description: UPDATING TO THE LATEST CONFIGURATION FILE
 named:
 - !Flag
-  description: (see OPTIONS below) cause gsutil config to request a token
+  optional: true
   synonyms:
   - -f
+  description: (see OPTIONS below) cause gsutil config to request a token
   args: !SimpleFlagArg
     name: options
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -a
   description: "Prompt for Google Cloud Storage access key and secret (the older\n\
     authentication method before OAuth2 was supported) instead of\nobtaining an OAuth2\
     \ token."
-  synonyms:
-  - -a
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -b
   description: "Causes gsutil config to launch a browser to obtain OAuth2 approval\n\
     and the project ID instead of showing the URL for each and asking\nthe user to\
     \ open the browser. This will probably not work as\nexpected if you are running\
     \ gsutil from an ssh window, or using\ngsutil on Windows."
-  synonyms:
-  - -b
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Prompt for service account credentials. This option requires that
+  optional: true
   synonyms:
   - -e
+  description: Prompt for service account credentials. This option requires that
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Write the configuration file without authentication configured.\n\
-    This flag is mutually exlusive with all flags other than -o."
+  optional: true
   synonyms:
   - -n
+  description: "Write the configuration file without authentication configured.\n\
+    This flag is mutually exlusive with all flags other than -o."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Write the configuration to <file> instead of ~/.boto.\nUse '-' for\
-    \ stdout."
+  optional: true
   synonyms:
   - -o
+  description: "Write the configuration to <file> instead of ~/.boto.\nUse '-' for\
+    \ stdout."
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: Request token restricted to read-only access.
+  optional: true
   synonyms:
   - -r
+  description: Request token restricted to read-only access.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Request additional OAuth2 <scope>.
+  optional: true
   synonyms:
   - -s
+  description: Request additional OAuth2 <scope>.
   args: !SimpleFlagArg
     name: scope
-  optional: true
 - !Flag
-  description: Request token restricted to read-write access.
+  optional: true
   synonyms:
   - -w
+  description: Request token restricted to read-write access.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -294,3 +304,4 @@ help_text: "NAME\n  config - Obtain credentials and create configuration file\n\
   \ <scope>.\n\n  -w          Request token restricted to read-write access.\n"
 generated_using:
 - --help
+docker_image:

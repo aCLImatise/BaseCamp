@@ -20,6 +20,9 @@ task MsstitchPerco2psm {
       ~{if defined(per_co) then ("--perco " +  '"' + per_co + '"') else ""} \
       ~{if defined(filt_pep) then ("--filtpep " +  '"' + filt_pep + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_to_output: "Directory to output in"
     output_file: "Output file"

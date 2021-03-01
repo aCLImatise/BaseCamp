@@ -98,6 +98,9 @@ task Mcxdump {
       ~{if defined(sep_cat) then ("-sep-cat " +  '"' + sep_cat + '"') else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     imx: "read matrix from file <fname>"
     icl: "read clustering from file <fname>, dump lines"

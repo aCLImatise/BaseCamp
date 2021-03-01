@@ -16,85 +16,85 @@ inputs:
 - id: in_outdir
   doc: "Specify to changes the output directory to the\nlocation specified. The input\
     \ file directory is used\nif this is not specified. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_out_name
   doc: "Changes the prefix of the successfully processed\noutput file to the string\
     \ specified. May not be\nspecified with multiple input files. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outname
 - id: in_log
   doc: "Specify to write verbose logging to a file. May not be\nspecified with multiple\
     \ input files. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --log
 - id: in_failed
   doc: "If specified create files containing records that fail\nprocessing. (default:\
     \ False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --failed
 - id: in_fast_a
   doc: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fasta
 - id: in_delim
   doc: "DELIMITER DELIMITER\nA list of the three delimiters that separate\nannotation\
     \ blocks, field names and values, and values\nwithin a field, respectively. (default:\
     \ ('|', '=',\n','))"
-  type: string
+  type: string?
   inputBinding:
     prefix: --delim
 - id: in_nproc
   doc: "The number of simultaneous computational processes to\nexecute (CPU cores\
     \ to utilized). (default: 8)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --nproc
 - id: in_minimum_number_sequences
   doc: "The minimum number of sequences needed to define a\nvalid consensus. (default:\
     \ 1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: -n
 - id: in_bf
   doc: "Position of description barcode field to group\nsequences by. (default: BARCODE)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --bf
 - id: in_consensus_quality_score
   doc: "Consensus quality score cut-off under which an\nambiguous character is assigned;\
     \ does not apply when\nquality scores are unavailable. (default: 0)"
-  type: long
+  type: long?
   inputBinding:
     prefix: -q
 - id: in_freq
   doc: "Fraction of character occurrences under which an\nambiguous character is assigned.\
     \ (default: 0.6)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --freq
 - id: in_max_gap
   doc: "If specified, this defines a cut-off for the frequency\nof allowed gap values\
     \ for each position. Positions\nexceeding the threshold are deleted from the\n\
     consensus. If not defined, positions are always\nretained. (default: None)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxgap
 - id: in_pf
   doc: "Specifies the field name of the primer annotations\n(default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --pf
 - id: in_pr_cons
   doc: "Specify to define a minimum primer frequency required\nto assign a consensus\
     \ primer, and filter out sequences\nwith minority primers from the consensus building\n\
     step. (default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --prcons
 - id: in_cf
@@ -113,13 +113,13 @@ inputs:
     the most frequent annotation to the consensus\nannotation and adds an annotation\
     \ named <FIELD>_FREQ\nspecifying the frequency of the majority value.\n(default:\
     \ None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --act
 - id: in_dep
   doc: "Specify to calculate consensus quality with a non-\nindependence assumption\
     \ (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dep
 - id: in_max_div
@@ -128,7 +128,7 @@ inputs:
     Diversity is calculate for all positions within the\nread group, ignoring any\
     \ character filtering imposed\nby the -q, --freq and --maxgap arguments. Mutually\n\
     exclusive with --maxerror. (default: None)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxdiv
 - id: in_max_error
@@ -138,7 +138,7 @@ inputs:
     \ masked positions due to the -q and --freq\narguments and may have deleted positions\
     \ due to the\n--maxgap argument. Mutually exclusive with --maxdiv.\n(default:\
     \ None)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxerror
 - id: in_consensus_pass
@@ -183,6 +183,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - BuildConsensus.py

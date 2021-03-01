@@ -16,6 +16,9 @@ task GsutilRm {
       ~{if (r_r_options) then "-R" else ""} \
       ~{if (delete_versions_object) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     continues_silently_printing: "Continues silently (without printing error messages) despite\\nerrors when removing multiple objects. If some of the objects\\ncould not be removed, gsutil's exit status will be non-zero even\\nif this flag is set. Execution will still halt if an inaccessible\\nbucket is encountered. This option is implicitly set when running\\n\\\"gsutil -m rm ...\\\"."
     causes_gsutil_read: "Causes gsutil to read the list of objects to remove from stdin.\\nThis allows you to run a program that generates the list of\\nobjects to remove."

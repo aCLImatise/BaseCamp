@@ -10,6 +10,9 @@ task MegalodonExtrasVariantsHeterozygousFactor {
       ~{calls_dot} \
       ~{megalodon_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     calls_dot: "megalodon_variants    VCF file containing diploid variant calls from"
     megalodon_dot: "optional arguments:"

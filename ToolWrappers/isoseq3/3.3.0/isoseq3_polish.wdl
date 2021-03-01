@@ -48,6 +48,9 @@ task Isoseq3Polish {
       ~{if (log_file) then "--log-file" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rq_cut_off: "FLOAT  RQ cutoff for fastx output. [0.99]"
     coverage: "INT    Maximum number of subreads used for polishing. [60]"

@@ -18,6 +18,9 @@ task Gvcf2bed {
       ~{if defined(non_variant_quality) then ("--non-variant-quality " +  '"' + non_variant_quality + '"') else ""} \
       ~{if (bed_graph) then "--bedgraph" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_gvcf: "Input gVCF"
     output_bed_file: "Output bed file"

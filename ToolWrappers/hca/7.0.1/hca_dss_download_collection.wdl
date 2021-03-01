@@ -12,6 +12,9 @@ task HcaDssDownloadcollection {
       ~{if defined(replica) then ("--replica " +  '"' + replica + '"') else ""} \
       ~{if defined(download_dir) then ("--download-dir " +  '"' + download_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     uuid: "The uuid of the collection to download"
     replica: "the replica to download from. The supported\\nreplicas are: aws for Amazon Web Services, and gcp for\\nGoogle Cloud Platform. [aws, gcp]"

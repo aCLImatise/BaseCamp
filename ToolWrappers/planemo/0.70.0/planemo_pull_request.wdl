@@ -10,6 +10,9 @@ task PlanemoPullRequest {
       ~{project} \
       ~{if defined(message) then ("--message " +  '"' + message + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     message: "Message describing the pull request to create."
     project: ""

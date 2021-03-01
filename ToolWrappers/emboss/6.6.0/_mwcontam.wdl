@@ -8,6 +8,9 @@ task Mwcontam {
     _mwcontam \
       ~{if (tolerance) then "-tolerance" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tolerance: "float      [50.0] Ppm tolerance (Any numeric value)"
   }

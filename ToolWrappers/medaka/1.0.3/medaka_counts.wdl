@@ -16,6 +16,9 @@ task MedakaCounts {
       ~{if defined(d_types) then ("--dtypes " +  '"' + d_types + '"') else ""} \
       ~{if defined(norm) then ("--norm " +  '"' + norm + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print: "print counts. (default: False)"
     d_types: "perform a multi-datatype tests. (default: None)"

@@ -10,6 +10,9 @@ task Cgatreportbuild {
       ~{if defined(num_jobs) then ("--num-jobs " +  '"' + num_jobs + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_jobs: "number of parallel jobs to run [default=2]"
     verbose: "loglevel. The higher, the more output [default=10]\\n"

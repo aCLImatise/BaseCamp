@@ -8,6 +8,9 @@ task DB2quiva {
     DB2quiva \
       ~{if (vu) then "-vU" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vu: ""
   }

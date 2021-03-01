@@ -1,0 +1,163 @@
+!Command
+command:
+- RNAPKplex
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --detailed-help
+  description: "Print help, including all details and hidden\noptions, and exit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cutoff
+  description: "Report only base pairs with an average probability\n> cutoff in the\
+    \ dot plot\n(default=`0.01')"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --temp
+  description: "Rescale energy parameters to a temperature of temp\nC. Default is\
+    \ 37C."
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - '-4'
+  - --noTetra
+  description: "Do not include special stabilizing energies for\ncertain tetra-loops.\
+    \ Mostly for testing.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noLP
+  description: "Produce structures without lonely pairs (helices\nof length 1).\n\
+    (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noGU
+  description: "Do not allow GU pairs\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noClosingGU
+  description: "Do not allow GU pairs at the end of helices\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noconv
+  description: "Do not automatically substitude nucleotide \"T\"\nwith \"U\"\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nsp
+  description: "Allow other pairs in addition to the usual\nAU,GC,and GU pairs.\n\
+    (default=`empty')"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --energyCutoff
+  description: "Energy cutoff or pseudoknot initiation cost.\nMinimum energy gain\
+    \ of a pseudoknot interaction\nfor it to be returned. Pseudoknots with smaller\n\
+    energy gains are rejected.\n(default=`-8.10')"
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --paramFile
+  description: "Read energy parameters from paramfile, instead of\nusing the default\
+    \ parameter set."
+  args: !SimpleFlagArg
+    name: paramfile
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: "print verbose output\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --subopts
+  description: "print suboptimal structures whose energy\ndifference of the pseudoknot\
+    \ to the optimum\npseudoknot is smaller than the given value.\n(default=`0.0')"
+  args: !SimpleFlagArg
+    name: DOUBLE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: RNAPKplex [OPTION]...\npredicts RNA secondary structures including\
+  \ pseudoknots\n\nComputes RNA secondary structures by first making two sequence\
+  \ intervals\naccessible and unpaired using the algorithm of RNAplfold and then calculating\n\
+  the energy of the interaction of those two intervals. The algorithm uses\nO(n^2*w^4)\
+  \ CPU time and O(n*w^2) memory space.\nThe algorithm furthermore always considers\
+  \ dangle=2 model.\n\n\n  -h, --help                 Print help and exit\n      --detailed-help\
+  \        Print help, including all details and hidden\n                        \
+  \       options, and exit\n  -V, --version              Print version and exit\n\
+  \  -c, --cutoff=FLOAT         Report only base pairs with an average probability\n\
+  \                               > cutoff in the dot plot\n\n                   \
+  \              (default=`0.01')\n  -T, --temp=DOUBLE          Rescale energy parameters\
+  \ to a temperature of temp\n                               C. Default is 37C.\n\n\
+  \n  -4, --noTetra              Do not include special stabilizing energies for\n\
+  \                               certain tetra-loops. Mostly for testing.\n\n   \
+  \                              (default=off)\n      --noLP                 Produce\
+  \ structures without lonely pairs (helices\n                               of length\
+  \ 1).\n                                 (default=off)\n      --noGU            \
+  \     Do not allow GU pairs\n\n                                 (default=off)\n\
+  \      --noClosingGU          Do not allow GU pairs at the end of helices\n\n  \
+  \                               (default=off)\n      --noconv               Do not\
+  \ automatically substitude nucleotide \"T\"\n                               with\
+  \ \"U\"\n\n                                 (default=off)\n      --nsp=STRING  \
+  \         Allow other pairs in addition to the usual\n                         \
+  \      AU,GC,and GU pairs.\n                                 (default=`empty')\n\
+  \  -e, --energyCutoff=DOUBLE  Energy cutoff or pseudoknot initiation cost.\n   \
+  \                            Minimum energy gain of a pseudoknot interaction\n \
+  \                              for it to be returned. Pseudoknots with smaller\n\
+  \                               energy gains are rejected.\n\n                 \
+  \                (default=`-8.10')\n  -P, --paramFile=paramfile  Read energy parameters\
+  \ from paramfile, instead of\n                               using the default parameter\
+  \ set.\n\n  -v, --verbose              print verbose output\n\n                \
+  \                 (default=off)\n  -s, --subopts=DOUBLE       print suboptimal structures\
+  \ whose energy\n                               difference of the pseudoknot to the\
+  \ optimum\n                               pseudoknot is smaller than the given value.\n\
+  \                                 (default=`0.0')\n\nIf in doubt our program is\
+  \ right, nature is at fault.\nComments should be sent to rna@tbi.univie.ac.at.\n\
+  \n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/viennarna:2.4.17--py36hd181a71_0

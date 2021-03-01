@@ -4,6 +4,9 @@ task ClstrMergepl {
   command <<<
     clstr_merge_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -3,22 +3,22 @@ id: bioformats_rmout2bed.cwl
 inputs:
 - id: in_color
   doc: "how to choose colors of BED repeat records (default:\nclass)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --color
 - id: in_name
   doc: "how to choose names of BED repeat records (default:\nid)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --name
 - id: in_short
   doc: "output only repeat loci (the output is a BED3 file)\n(default: False)\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --short
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_rm_out_file
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_short
   doc: "output only repeat loci (the output is a BED3 file)\n(default: False)\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_short)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bioformats

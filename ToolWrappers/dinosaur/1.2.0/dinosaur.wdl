@@ -14,6 +14,9 @@ task Dinosaur {
       ~{out_name} \
       ~{targets}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     adv_params: "path to adv param file"
     outdir: "output directory (by default same as input mzML)"

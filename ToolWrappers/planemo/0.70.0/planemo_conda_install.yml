@@ -4,69 +4,70 @@ command:
 - conda_install
 positional:
 - !Positional
-  description: --conda_prefix DIRECTORY        Conda prefix to use for conda dependency
+  optional: false
   position: 0
   name: subdirectories.
-  optional: false
+  description: --conda_prefix DIRECTORY        Conda prefix to use for conda dependency
 - !Positional
-  description: --conda_exec FILE               Location of conda executable.
+  optional: false
   position: 1
   name: commands.
-  optional: false
+  description: --conda_exec FILE               Location of conda executable.
 named:
 - !Flag
-  description: Recursively perform command for
+  optional: true
   synonyms:
   - -r
   - --recursive
+  description: Recursively perform command for
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Enable more verbose conda logging.
+  optional: true
   synonyms:
   - --conda_debug
+  description: Enable more verbose conda logging.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Ensure conda is configured with specified\ncomma separated list of\
-    \ channels."
+  optional: true
   synonyms:
   - --conda_channels
   - --conda_ensure_channels
+  description: "Ensure conda is configured with specified\ncomma separated list of\
+    \ channels."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Use locally built packages while building\nConda environments."
+  optional: true
   synonyms:
   - --conda_use_local
+  description: "Use locally built packages while building\nConda environments."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --global
   description: "Install Conda dependencies globally instead\nof in requirement specific\
     \ environments\npackaged for tools. If the Conda bin\ndirectory is on your PATH,\
     \ tools may still\nuse binaries but this is more designed for\ninteractive testing\
     \ and debugging."
-  synonyms:
-  - --global
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ --no_conda_auto_init\nConda dependency resolution for Galaxy will\n\
-    auto install conda itself using miniconda if\nnot availabe on conda_prefix."
+  optional: true
   synonyms:
   - --conda_auto_init
+  - --no_conda_auto_init
+  description: "Conda dependency resolution for Galaxy will\nauto install conda itself\
+    \ using miniconda if\nnot availabe on conda_prefix."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: planemo conda_install [OPTIONS] TARGET\n\n  Install conda packages\
@@ -91,3 +92,4 @@ help_text: "Usage: planemo conda_install [OPTIONS] TARGET\n\n  Install conda pac
   \  --help                          Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

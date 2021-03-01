@@ -24,6 +24,9 @@ task OrientContigs {
       ~{if (all) then "-all" else ""} \
       ~{if (b) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     skip: ""
     repeats: ""

@@ -22,6 +22,9 @@ task Feht {
       ~{if (correction) then "--correction" else ""} \
       ~{if (ratio_filter) then "--ratioFilter" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     info_file: "File of metadata information"
     data_file: "File of binary or single-nucleotide variant data"

@@ -3,7 +3,7 @@ id: gdtools_VCF2GD.cwl
 inputs:
 - id: in_output
   doc: name of output Genome Diff file (DEFAULT=output.gd)
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -12,9 +12,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: name of output Genome Diff file (DEFAULT=output.gd)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gdtools

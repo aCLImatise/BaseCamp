@@ -12,6 +12,9 @@ task MakeBadgerMatrix {
       ~{output_badger_file} \
       ~{lcb_coordinate_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_x_mfa: ""
     output_badger_file: ""

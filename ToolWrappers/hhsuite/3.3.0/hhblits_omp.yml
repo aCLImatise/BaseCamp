@@ -1,0 +1,850 @@
+!Command
+command:
+- hhblits_omp
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: hhblits
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "input/query: single sequence or multiple sequence alignment (MSA)\n\
+    in a3m, a2m, or FASTA format, or HMM in hhm format"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "database name (e.g. uniprot20_29Feb2012)\nMultiple databases may be\
+    \ specified with '-d <db1> -d <db2> ...'"
+  args: !SimpleFlagArg
+    name: name
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: '[1,8]   number of iterations (default=2)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: '[0,1]   E-value cutoff for inclusion in result alignment (def=0.001)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tags
+  - -notags
+  description: "do NOT / do neutralize His-, C-myc-, FLAG-tags, and trypsin\nrecognition\
+    \ sequence to background distribution (def=-notags)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: write results in standard format to file (default=<infile.hhr>)
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -oa3m
+  description: write result MSA with significant matches in a3m format
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -opsi
+  description: write result MSA of significant matches in PSI-BLAST format
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -ohhm
+  description: write HHM file for result MSA of significant matches
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -oalis
+  description: write MSAs in A3M format after each iteration
+  args: !SimpleFlagArg
+    name: name
+- !Flag
+  optional: true
+  synonyms:
+  - -blasttab
+  description: "write result in tabular BLAST format (compatible to -m 8 or -outfmt\
+    \ 6 output)\n1      2      3           4         5        6      8    9      10\
+    \   11   12\n'query target #match/tLen #mismatch #gapOpen qstart qend tstart tend\
+    \ eval score'"
+  args: !SimpleFlagArg
+    name: name
+- !Flag
+  optional: true
+  synonyms:
+  - -add_cons
+  description: generate consensus sequence as master sequence of query MSA (default=don't)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -hide_cons
+  description: don't show consensus sequence in alignments (default=show)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -hide_pred
+  description: don't show predicted 2ndary structure in alignments (default=show)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -hide_dssp
+  description: don't show DSSP 2ndary structure in alignments (default=show)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -show_ssconf
+  description: show confidences for predicted 2ndary structure in alignments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Ofas
+  description: write pairwise alignments in FASTA xor A2M (-Oa2m) xor A3M (-Oa3m)
+    format
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -seq
+  description: max. number of query/template sequences displayed (default=1)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -aliw
+  description: number of columns per line in alignment list (default=80)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: '[0,100]     minimum probability in summary and alignment list (default=20)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  description: '[0,inf[     maximum E-value in summary and alignment list (default=1E+06)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Z
+  description: maximum number of lines in summary hit list (default=500)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: minimum number of lines in summary hit list (default=10)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  description: maximum number of alignments in alignment list (default=500)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: minimum number of alignments in alignment list (default=10)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -noprefilt
+  description: disable all filter steps
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -noaddfilter
+  description: disable all filter steps (except for fast prefiltering)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -maxfilt
+  description: max number of hits allowed to pass 2nd prefilter (default=20000)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -min_prefilter_hits
+  description: min number of hits to pass prefilter (default=100)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -prepre_smax_thresh
+  description: min score threshold of ungapped prefilter (default=10)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pre_evalue_thresh
+  description: max E-value threshold of Smith-Waterman prefilter score (default=1000.0)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pre_bitfactor
+  description: prefilter scores are in units of 1 bit / pre_bitfactor (default=4)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pre_gap_open
+  description: gap open penalty in prefilter Smith-Waterman alignment (default=20)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pre_gap_extend
+  description: gap extend penalty in prefilter Smith-Waterman alignment (default=4)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pre_score_offset
+  description: offset on sequence profile scores in prefilter S-W alignment (default=50)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -all
+  description: show all sequences in result MSA; do not filter result MSA
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -interim_filter
+  description: "|FULL\nfilter sequences of query MSA during merging to avoid early\
+    \ stop (default: FULL)\nNONE: disables the intermediate filter\nFULL: if an early\
+    \ stop occurs compare filter seqs in an all vs. all comparison"
+  args: !SimpleFlagArg
+    name: NONE
+- !Flag
+  optional: true
+  synonyms:
+  - -id
+  description: '[0,100]  maximum pairwise sequence identity (def=90)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -diff
+  description: "[0,inf[  filter MSAs by selecting most diverse set of sequences, keeping\n\
+    at least this many seqs in each MSA block of length 50\nZero and non-numerical\
+    \ values turn off the filtering. (def=1000)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cov
+  description: '[0,100]  minimum coverage with master sequence (%) (def=0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -qid
+  description: '[0,100]  minimum sequence identity with master sequence (%) (def=0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -qsc
+  description: '[0,100]  minimum score per column with master sequence (default=-20.0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -neff
+  description: '[1,inf]  target diversity of multiple sequence alignment (default=off)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mark
+  description: do not filter out sequences marked by ">@"in their name line
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -norealign
+  description: do NOT realign displayed hits with MAC algorithm (def=realign)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -realign_old_hits
+  description: realign hits from previous iterations
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mact
+  description: "[0,1[          posterior prob threshold for MAC realignment controlling\
+    \ greedi-\nness at alignment ends: 0:global >0.1:local (default=0.35)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -glob
+  - -loc
+  description: use global/local alignment mode for searching/ranking (def=local)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -realign
+  description: realign displayed hits with max. accuracy (MAC) algorithm
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -realign_max
+  description: realign max. <int> hits (default=500)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -ovlp
+  description: 'banded alignment: forbid <ovlp> largest diagonals |i-j| of DP matrix
+    (def=0)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -alt
+  description: show up to this many alternative alignments with raw score > smin(def=4)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -premerge
+  description: merge <int> hits to query MSA before aligning remaining hits (def=3)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -smin
+  description: minimum raw score for alternative alignments (def=20.0)
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -shift
+  description: '[-1,1]        profile-profile score offset (def=-0.03)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -corr
+  description: '[0,1]          weight of term for pair correlations (def=0.10)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -sc
+  description: "<int>          amino acid score         (tja: template HMM at column\
+    \ j) (def=1)\n0       = log2 Sum(tja*qia/pa)   (pa: aa background frequencies)\n\
+    1       = log2 Sum(tja*qia/pqa)  (pqa = 1/2*(pa+ta) )\n2       = log2 Sum(tja*qia/ta)\
+    \   (ta: av. aa freqs in template)\n3       = log2 Sum(tja*qia/qa)   (qa: av.\
+    \ aa freqs in query)\n5       local amino acid composition correction"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ssm
+  description: "{0,..,4}        0:   no ss scoring\n1,2: ss scoring after or during\
+    \ alignment  [default=2]\n3,4: ss scoring after or during alignment, predicted\
+    \ vs. predicted"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ssw
+  description: '[0,1]           weight of ss score  (def=0.11)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ssa
+  description: '[0,1]           ss confusion matrix = (1-ssa)*I + ssa*psipred-confusion-matrix
+    [def=1.00)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -wg
+  description: use global sequence weighting for realignment!
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gapb
+  description: '[0,inf[  Transition pseudocount admixture (def=1.00)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gapd
+  description: '[0,inf[  Transition pseudocount admixture for open gap (default=0.15)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gape
+  description: '[0,1.5]  Transition pseudocount admixture for extend gap (def=1.00)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gapf
+  description: ']0,inf]  factor to increase/reduce gap open penalty for deletes (def=0.60)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gapg
+  description: ']0,inf]  factor to increase/reduce gap open penalty for inserts (def=0.60)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gaph
+  description: ']0,inf]  factor to increase/reduce gap extend penalty for deletes(def=0.60)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gapi
+  description: ']0,inf]  factor to increase/reduce gap extend penalty for inserts(def=0.60)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -egq
+  description: '[0,inf[  penalty (bits) for end gaps aligned to query residues (def=0.00)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -egt
+  description: '[0,inf[  penalty (bits) for end gaps aligned to template residues
+    (def=0.00)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_hhm_contxt_mode
+  description: "{0,..,3}   position dependence of pc admixture 'tau' (pc mode, default=2)\n\
+    0: no pseudo counts:    tau = 0\n1: constant             tau = a\n2: diversity-dependent:\
+    \ tau = a/(1+((Neff[i]-1)/b)^c)\n3: CSBlast admixture:   tau = a(1+b)/(Neff[i]+b)\n\
+    (Neff[i]: number of effective seqs in local MSA around column i)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_hhm_contxt_a
+  description: '[0,1]        overall pseudocount admixture (def=0.9)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_hhm_contxt_b
+  description: '[1,inf[      Neff threshold value for mode 2 (def=4.0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_hhm_contxt_c
+  description: '[0,3]        extinction exponent c for mode 2 (def=1.0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_hhm_nocontxt_mode
+  description: "{0,..,3}   position dependence of pc admixture 'tau' (pc mode, default=2)\n\
+    0: no pseudo counts:    tau = 0\n1: constant             tau = a\n2: diversity-dependent:\
+    \ tau = a/(1+((Neff[i]-1)/b)^c)\n(Neff[i]: number of effective seqs in local MSA\
+    \ around column i)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_hhm_nocontxt_a
+  description: '[0,1]        overall pseudocount admixture (def=1.0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_hhm_nocontxt_b
+  description: '[1,inf[      Neff threshold value for mode 2 (def=1.5)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_hhm_nocontxt_c
+  description: '[0,3]        extinction exponent c for mode 2 (def=1.0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_prefilter_contxt_mode
+  description: "{0,..,3}   position dependence of pc admixture 'tau' (pc mode, default=3)\n\
+    0: no pseudo counts:    tau = 0\n1: constant             tau = a\n2: diversity-dependent:\
+    \ tau = a/(1+((Neff[i]-1)/b)^c)\n3: CSBlast admixture:   tau = a(1+b)/(Neff[i]+b)\n\
+    (Neff[i]: number of effective seqs in local MSA around column i)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_prefilter_contxt_a
+  description: '[0,1]        overall pseudocount admixture (def=0.8)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_prefilter_contxt_b
+  description: '[1,inf[      Neff threshold value for mode 2 (def=2.0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_prefilter_contxt_c
+  description: '[0,3]        extinction exponent c for mode 2 (def=1.0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_prefilter_nocontxt_mode
+  description: "{0,..,3}   position dependence of pc admixture 'tau' (pc mode, default=2)\n\
+    0: no pseudo counts:    tau = 0\n1: constant             tau = a\n2: diversity-dependent:\
+    \ tau = a/(1+((Neff[i]-1)/b)^c)\n(Neff[i]: number of effective seqs in local MSA\
+    \ around column i)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_prefilter_nocontxt_a
+  description: '[0,1]        overall pseudocount admixture (def=1.0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_prefilter_nocontxt_b
+  description: '[1,inf[      Neff threshold value for mode 2 (def=1.5)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pc_prefilter_nocontxt_c
+  description: '[0,3]        extinction exponent c for mode 2 (def=1.0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nocontxt
+  description: use substitution-matrix instead of context-specific pseudocounts
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -contxt
+  description: context file for computing context-specific pseudocounts (default=)
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -csw
+  description: '[0,inf]  weight of central position in cs pseudocount mode (def=1.6)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -csb
+  description: '[0,1]    weight decay parameter for positions in cs pc mode (def=0.9)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'verbose mode: 0:no screen output  1:only warings  2: verbose (def=2)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -neffmax
+  description: "]1,20] skip further search iterations when diversity Neff of query\
+    \ MSA\nbecomes larger than neffmax (default=20.0)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cpu
+  description: number of CPUs to use (for shared memory SMPs) (default=2)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -scores
+  description: write scores for all pairwise comparisons to file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -filter_matrices
+  description: matrices for similarity to output at most 100 matrices
+  args: !SimpleFlagArg
+    name: filter
+- !Flag
+  optional: true
+  synonyms:
+  - -atab
+  description: <file> write all alignments in tabular layout to file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -maxseq
+  description: max number of input rows (def=65535)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -maxres
+  description: max number of HMM columns (def=20001)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -maxmem
+  description: '[1,inf[ limit memory for realignment (in GB) (def=3.0)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "HHblits 3.3.0:\nHMM-HMM-based lightning-fast iterative sequence search\n\
+  HHblits is a sensitive, general-purpose, iterative sequence search tool that represents\n\
+  both query and database sequences by HMMs. You can search HHblits databases starting\n\
+  with a single query sequence, a multiple sequence alignment (MSA), or an HMM. HHblits\n\
+  prints out a ranked list of database HMMs/MSAs and can also generate an MSA by merging\n\
+  the significant database HMMs/MSAs onto the query MSA.\n\nSteinegger M, Meier M,\
+  \ Mirdita M, Vöhringer H, Haunsberger S J, and Söding J (2019)\nHH-suite3 for fast\
+  \ remote homology detection and deep protein annotation.\nBMC Bioinformatics, doi:10.1186/s12859-019-3019-7\n\
+  (c) The HH-suite development team\n\nUsage: hhblits -i query [options] \n -i <file>\
+  \      input/query: single sequence or multiple sequence alignment (MSA)\n     \
+  \           in a3m, a2m, or FASTA format, or HMM in hhm format\n\n<file> may be\
+  \ 'stdin' or 'stdout' throughout.\n\nOptions:                                  \
+  \                                      \n -d <name>      database name (e.g. uniprot20_29Feb2012)\
+  \                        \n                Multiple databases may be specified with\
+  \ '-d <db1> -d <db2> ...'\n -n     [1,8]   number of iterations (default=2)    \
+  \                           \n -e     [0,1]   E-value cutoff for inclusion in result\
+  \ alignment (def=0.001)       \n\nInput alignment format:                      \
+  \                                 \n -M a2m         use A2M/A3M (default): upper\
+  \ case = Match; lower case = Insert;\n               ' -' = Delete; '.' = gaps aligned\
+  \ to inserts (may be omitted)   \n -M first       use FASTA: columns with residue\
+  \ in 1st sequence are match states\n -M [0,100]     use FASTA: columns with fewer\
+  \ than X% gaps are match states   \n -tags/-notags  do NOT / do neutralize His-,\
+  \ C-myc-, FLAG-tags, and trypsin \n                recognition sequence to background\
+  \ distribution (def=-notags)  \n\nOutput options: \n -o <file>      write results\
+  \ in standard format to file (default=<infile.hhr>)\n -oa3m <file>   write result\
+  \ MSA with significant matches in a3m format\n -opsi <file>   write result MSA of\
+  \ significant matches in PSI-BLAST format\n -ohhm <file>   write HHM file for result\
+  \ MSA of significant matches\n -oalis <name>  write MSAs in A3M format after each\
+  \ iteration\n -blasttab <name> write result in tabular BLAST format (compatible\
+  \ to -m 8 or -outfmt 6 output)\n                  1      2      3           4  \
+  \       5        6      8    9      10   11   12\n                  'query target\
+  \ #match/tLen #mismatch #gapOpen qstart qend tstart tend eval score'\n -add_cons\
+  \      generate consensus sequence as master sequence of query MSA (default=don't)\n\
+  \ -hide_cons     don't show consensus sequence in alignments (default=show)    \
+  \ \n -hide_pred     don't show predicted 2ndary structure in alignments (default=show)\n\
+  \ -hide_dssp     don't show DSSP 2ndary structure in alignments (default=show) \
+  \ \n -show_ssconf   show confidences for predicted 2ndary structure in alignments\n\
+  \ -Ofas <file>   write pairwise alignments in FASTA xor A2M (-Oa2m) xor A3M (-Oa3m)\
+  \ format   \n -seq <int>     max. number of query/template sequences displayed (default=1)\
+  \  \n -aliw <int>    number of columns per line in alignment list (default=80) \
+  \      \n -p [0,100]     minimum probability in summary and alignment list (default=20)\
+  \  \n -E [0,inf[     maximum E-value in summary and alignment list (default=1E+06)\
+  \      \n -Z <int>       maximum number of lines in summary hit list (default=500)\
+  \        \n -z <int>       minimum number of lines in summary hit list (default=10)\
+  \        \n -B <int>       maximum number of alignments in alignment list (default=500)\
+  \     \n -b <int>       minimum number of alignments in alignment list (default=10)\
+  \     \n\nPrefilter options                                                    \
+  \           \n -noprefilt                disable all filter steps              \
+  \                          \n -noaddfilter              disable all filter steps\
+  \ (except for fast prefiltering)         \n -maxfilt                  max number\
+  \ of hits allowed to pass 2nd prefilter (default=20000)   \n -min_prefilter_hits\
+  \       min number of hits to pass prefilter (default=100)               \n -prepre_smax_thresh\
+  \       min score threshold of ungapped prefilter (default=10)               \n\
+  \ -pre_evalue_thresh        max E-value threshold of Smith-Waterman prefilter score\
+  \ (default=1000.0)\n -pre_bitfactor            prefilter scores are in units of\
+  \ 1 bit / pre_bitfactor (default=4)\n -pre_gap_open             gap open penalty\
+  \ in prefilter Smith-Waterman alignment (default=20)\n -pre_gap_extend         \
+  \  gap extend penalty in prefilter Smith-Waterman alignment (default=4)\n -pre_score_offset\
+  \         offset on sequence profile scores in prefilter S-W alignment (default=50)\n\
+  \nFilter options applied to query MSA, database MSAs, and result MSA           \
+  \   \n -all           show all sequences in result MSA; do not filter result MSA\
+  \      \n -interim_filter NONE|FULL  \n                filter sequences of query\
+  \ MSA during merging to avoid early stop (default: FULL)\n                  NONE:\
+  \ disables the intermediate filter \n                  FULL: if an early stop occurs\
+  \ compare filter seqs in an all vs. all comparison\n -id   [0,100]  maximum pairwise\
+  \ sequence identity (def=90)\n -diff [0,inf[  filter MSAs by selecting most diverse\
+  \ set of sequences, keeping \n                at least this many seqs in each MSA\
+  \ block of length 50 \n                Zero and non-numerical values turn off the\
+  \ filtering. (def=1000) \n -cov  [0,100]  minimum coverage with master sequence\
+  \ (%) (def=0)             \n -qid  [0,100]  minimum sequence identity with master\
+  \ sequence (%) (def=0)    \n -qsc  [0,100]  minimum score per column with master\
+  \ sequence (default=-20.0)    \n -neff [1,inf]  target diversity of multiple sequence\
+  \ alignment (default=off)   \n -mark          do not filter out sequences marked\
+  \ by \">@\"in their name line  \n\nHMM-HMM alignment options:                  \
+  \                                     \n -norealign           do NOT realign displayed\
+  \ hits with MAC algorithm (def=realign)   \n -realign_old_hits    realign hits from\
+  \ previous iterations                          \n -mact [0,1[          posterior\
+  \ prob threshold for MAC realignment controlling greedi- \n                    \
+  \  ness at alignment ends: 0:global >0.1:local (default=0.35)       \n -glob/-loc\
+  \           use global/local alignment mode for searching/ranking (def=local)\n\
+  \ -realign             realign displayed hits with max. accuracy (MAC) algorithm\
+  \ \n -realign_max <int>   realign max. <int> hits (default=500)                \
+  \        \n -ovlp <int>          banded alignment: forbid <ovlp> largest diagonals\
+  \ |i-j| of DP matrix (def=0)\n -alt <int>           show up to this many alternative\
+  \ alignments with raw score > smin(def=4)  \n -premerge <int> merge <int> hits to\
+  \ query MSA before aligning remaining hits (def=3)\n -smin <float>        minimum\
+  \ raw score for alternative alignments (def=20.0)  \n -shift [-1,1]        profile-profile\
+  \ score offset (def=-0.03)                         \n -corr [0,1]          weight\
+  \ of term for pair correlations (def=0.10)                \n -sc   <int>       \
+  \   amino acid score         (tja: template HMM at column j) (def=1)\n         \
+  \     0       = log2 Sum(tja*qia/pa)   (pa: aa background frequencies)    \n   \
+  \           1       = log2 Sum(tja*qia/pqa)  (pqa = 1/2*(pa+ta) )              \
+  \ \n              2       = log2 Sum(tja*qia/ta)   (ta: av. aa freqs in template)\
+  \     \n              3       = log2 Sum(tja*qia/qa)   (qa: av. aa freqs in query)\
+  \        \n              5       local amino acid composition correction       \
+  \              \n -ssm {0,..,4}        0:   no ss scoring                      \
+  \                       \n                      1,2: ss scoring after or during\
+  \ alignment  [default=2]         \n                      3,4: ss scoring after or\
+  \ during alignment, predicted vs. predicted\n -ssw [0,1]           weight of ss\
+  \ score  (def=0.11)                                  \n -ssa [0,1]           ss\
+  \ confusion matrix = (1-ssa)*I + ssa*psipred-confusion-matrix [def=1.00)\n -wg \
+  \                 use global sequence weighting for realignment!               \
+  \    \n\nGap cost options:                                                     \
+  \           \n -gapb [0,inf[  Transition pseudocount admixture (def=1.00)      \
+  \               \n -gapd [0,inf[  Transition pseudocount admixture for open gap\
+  \ (default=0.15)    \n -gape [0,1.5]  Transition pseudocount admixture for extend\
+  \ gap (def=1.00)      \n -gapf ]0,inf]  factor to increase/reduce gap open penalty\
+  \ for deletes (def=0.60) \n -gapg ]0,inf]  factor to increase/reduce gap open penalty\
+  \ for inserts (def=0.60) \n -gaph ]0,inf]  factor to increase/reduce gap extend\
+  \ penalty for deletes(def=0.60)\n -gapi ]0,inf]  factor to increase/reduce gap extend\
+  \ penalty for inserts(def=0.60)\n -egq  [0,inf[  penalty (bits) for end gaps aligned\
+  \ to query residues (def=0.00) \n -egt  [0,inf[  penalty (bits) for end gaps aligned\
+  \ to template residues (def=0.00)\n\nPseudocount (pc) options:                 \
+  \                                       \n Context specific hhm pseudocounts:\n\
+  \  -pc_hhm_contxt_mode {0,..,3}   position dependence of pc admixture 'tau' (pc\
+  \ mode, default=2) \n               0: no pseudo counts:    tau = 0            \
+  \                      \n               1: constant             tau = a        \
+  \                          \n               2: diversity-dependent: tau = a/(1+((Neff[i]-1)/b)^c)\
+  \            \n               3: CSBlast admixture:   tau = a(1+b)/(Neff[i]+b) \
+  \                \n               (Neff[i]: number of effective seqs in local MSA\
+  \ around column i) \n  -pc_hhm_contxt_a  [0,1]        overall pseudocount admixture\
+  \ (def=0.9)                        \n  -pc_hhm_contxt_b  [1,inf[      Neff threshold\
+  \ value for mode 2 (def=4.0)                      \n  -pc_hhm_contxt_c  [0,3]  \
+  \      extinction exponent c for mode 2 (def=1.0)                     \n\n Context\
+  \ independent hhm pseudocounts (used for templates; used for query if contxt file\
+  \ is not available):\n  -pc_hhm_nocontxt_mode {0,..,3}   position dependence of\
+  \ pc admixture 'tau' (pc mode, default=2) \n               0: no pseudo counts:\
+  \    tau = 0                                  \n               1: constant     \
+  \        tau = a                                  \n               2: diversity-dependent:\
+  \ tau = a/(1+((Neff[i]-1)/b)^c)            \n               (Neff[i]: number of\
+  \ effective seqs in local MSA around column i) \n  -pc_hhm_nocontxt_a  [0,1]   \
+  \     overall pseudocount admixture (def=1.0)                        \n  -pc_hhm_nocontxt_b\
+  \  [1,inf[      Neff threshold value for mode 2 (def=1.5)                      \n\
+  \  -pc_hhm_nocontxt_c  [0,3]        extinction exponent c for mode 2 (def=1.0) \
+  \                    \n\n Context specific prefilter pseudocounts:\n  -pc_prefilter_contxt_mode\
+  \ {0,..,3}   position dependence of pc admixture 'tau' (pc mode, default=3) \n \
+  \              0: no pseudo counts:    tau = 0                                 \
+  \ \n               1: constant             tau = a                             \
+  \     \n               2: diversity-dependent: tau = a/(1+((Neff[i]-1)/b)^c)   \
+  \         \n               3: CSBlast admixture:   tau = a(1+b)/(Neff[i]+b)    \
+  \             \n               (Neff[i]: number of effective seqs in local MSA around\
+  \ column i) \n  -pc_prefilter_contxt_a  [0,1]        overall pseudocount admixture\
+  \ (def=0.8)                        \n  -pc_prefilter_contxt_b  [1,inf[      Neff\
+  \ threshold value for mode 2 (def=2.0)                      \n  -pc_prefilter_contxt_c\
+  \  [0,3]        extinction exponent c for mode 2 (def=1.0)                     \n\
+  \n Context independent prefilter pseudocounts (used if context file is not available):\n\
+  \  -pc_prefilter_nocontxt_mode {0,..,3}   position dependence of pc admixture 'tau'\
+  \ (pc mode, default=2) \n               0: no pseudo counts:    tau = 0        \
+  \                          \n               1: constant             tau = a    \
+  \                              \n               2: diversity-dependent: tau = a/(1+((Neff[i]-1)/b)^c)\
+  \            \n               (Neff[i]: number of effective seqs in local MSA around\
+  \ column i) \n  -pc_prefilter_nocontxt_a  [0,1]        overall pseudocount admixture\
+  \ (def=1.0)                        \n  -pc_prefilter_nocontxt_b  [1,inf[      Neff\
+  \ threshold value for mode 2 (def=1.5)                      \n  -pc_prefilter_nocontxt_c\
+  \  [0,3]        extinction exponent c for mode 2 (def=1.0)                     \n\
+  \n Context-specific pseudo-counts:                                             \
+  \     \n  -nocontxt      use substitution-matrix instead of context-specific pseudocounts\
+  \ \n  -contxt <file> context file for computing context-specific pseudocounts (default=)\n\
+  \  -csw  [0,inf]  weight of central position in cs pseudocount mode (def=1.6)\n\
+  \  -csb  [0,1]    weight decay parameter for positions in cs pc mode (def=0.9)\n\
+  \nOther options:                                                               \
+  \    \n -v <int>       verbose mode: 0:no screen output  1:only warings  2: verbose\
+  \ (def=2)\n -neffmax ]1,20] skip further search iterations when diversity Neff of\
+  \ query MSA \n                becomes larger than neffmax (default=20.0)\n -cpu\
+  \ <int>     number of CPUs to use (for shared memory SMPs) (default=2)      \n -scores\
+  \ <file> write scores for all pairwise comparisons to file               \n -filter_matrices\
+  \ filter matrices for similarity to output at most 100 matrices\n -atab   <file>\
+  \ write all alignments in tabular layout to file                   \n -maxseq <int>\
+  \  max number of input rows (def=65535)\n -maxres <int>  max number of HMM columns\
+  \ (def=20001)\n -maxmem [1,inf[ limit memory for realignment (in GB) (def=3.0) \
+  \         \n\nExamples:\nhhblits -i query.fas -o query.hhr -d ./uniclust30\n\nhhblits\
+  \ -i query.fas -o query.hhr -oa3m query.a3m -n 1 -d ./uniclust30\n\nDownload databases\
+  \ from <http://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/>.\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/hhsuite:3.3.0--py38pl526h6ed170a_0

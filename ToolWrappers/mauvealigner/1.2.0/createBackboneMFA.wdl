@@ -10,6 +10,9 @@ task CreateBackboneMFA {
       ~{input_interval_file} \
       ~{output_mfa_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_interval_file: ""
     output_mfa_name: ""

@@ -14,6 +14,9 @@ task Anviimporttaxonomyforlayers {
       ~{if defined(s_input_files) then ("-i " +  '"' + s_input_files + '"') else ""} \
       ~{if defined(min_abundance) then ("--min-abundance " +  '"' + min_abundance + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     profile_db: "Anvi'o profile database"
     parser: "Parser to make sense of the input files. There are 1\\nparsers readily available: ['krakenuniq']."

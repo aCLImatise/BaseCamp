@@ -1,0 +1,69 @@
+!Command
+command:
+- taxaranks
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "A file can be a list of ncbi taxa id or species names (or higher\n\
+    ranks, e.g. Family, Order), or a mixture of them."
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: outfile
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: Also print out the taxid for each rank
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: "Also print out the records without lineage information found to\n\
+    the '-o <file>'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: verbose output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: taxaranks [-h] [-i <file>] [-o <file>] [-t] [-e] [-v]\n\nTo get\
+  \ the lineage information of input taxid, species name, or higher ranks\n(e.g.,\
+  \ Family, Order) with ETE3 package.\n\nThe ete3 package will automatically download\
+  \ the NCBI Taxonomy database during\n the first time using of this program.\n\n\
+  Please be informed:\n\n(1) A rank name may have more than one taxids, e.g., Pieris\
+  \ can means:\nPieris <butterfly> and Pieris <angiosperm>. I will search the lineages\
+  \ for\nboth of them.\n\n(2) When you give a species name, if I can not find the\
+  \ taxid for the species\nname, I will try to search the first word (Genus).\n\n\
+  (3) Any input without result found will be output in outfile.err ('-o' option).\n\
+  \    \n\noptional arguments:\n  -h, --help  show this help message and exit\n  -i\
+  \ <file>   A file can be a list of ncbi taxa id or species names (or higher\n  \
+  \            ranks, e.g. Family, Order), or a mixture of them.\n  -o <file>   outfile\n\
+  \  -t          Also print out the taxid for each rank\n  -e          Also print\
+  \ out the records without lineage information found to\n              the '-o <file>'\n\
+  \  -v          verbose output\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/taxonomy_ranks:0.0.10--py_0

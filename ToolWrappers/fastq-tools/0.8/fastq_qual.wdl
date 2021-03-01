@@ -4,6 +4,9 @@ task Fastqqual {
   command <<<
     fastq_qual
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

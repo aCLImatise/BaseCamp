@@ -16,6 +16,9 @@ task SynapseGetannotationsAccessing {
       ~{if (o) then "-o" else ""} \
       ~{if defined(id) then ("--id " +  '"' + id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     id: ""

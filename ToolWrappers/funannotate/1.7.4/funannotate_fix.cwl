@@ -3,27 +3,27 @@ id: funannotate_fix.cwl
 inputs:
 - id: in_input
   doc: Annotated genome in GenBank format.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input
 - id: in_tbl
   doc: NCBI tbl annotation file.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tbl
 - id: in_drop
   doc: Gene models to remove/drop from annotation. File with locus_tag 1 per line.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --drop
 - id: in_out
   doc: Output folder
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --out
 - id: in_tbl_two_asn
   doc: 'Parameters for tbl2asn. Default: "-l paired-ends"'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tbl2asn
 - id: in_arguments
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Output folder
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - funannotate

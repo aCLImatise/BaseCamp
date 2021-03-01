@@ -3,58 +3,58 @@ id: IDMerger.cwl
 inputs:
 - id: in_in
   doc: "*               Input files separated by blanks (valid formats: 'idXML')"
-  type: string
+  type: string?
   inputBinding:
     prefix: -in
 - id: in_out
   doc: "*               Output file (valid formats: 'idXML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
 - id: in_add_to
   doc: "Optional input file. IDs from 'in' are added to this file, but only if the\
     \ (modified) peptide sequences are not present yet (considering only best hits\
     \ per spectrum). (valid formats: 'idXML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -add_to
 - id: in_annotate_file_origin
   doc: 'Store the original filename in each protein/peptide identification (meta value:
     file_origin).'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -annotate_file_origin
 - id: in_pep_xml_prot_xml
   doc: "Merge idXML files derived from a pepXML and corresponding protXML file.\n\
     Exactly two input files are expected in this case. Not compatible with 'add_to'."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pepxml_protxml
 - id: in_merge_proteins_add_psms
   doc: Merge all identified proteins by accession into one protein identification
     run but keep all the PSMs with updated links to potential new protein ID#s. Not
     compatible with 'add_to'.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -merge_proteins_add_PSMs
 - id: in_ini
   doc: Use the given TOPP INI file
-  type: File
+  type: File?
   inputBinding:
     prefix: -ini
 - id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -threads
 - id: in_write_ini
   doc: Writes the default configuration file
-  type: File
+  type: File?
   inputBinding:
     prefix: -write_ini
 - id: in_helphelp
   doc: Shows all options (including advanced)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --helphelp
 outputs:
@@ -63,9 +63,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: "*               Output file (valid formats: 'idXML')"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - IDMerger

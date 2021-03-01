@@ -14,6 +14,9 @@ task KrocusDatabaseDownloader {
       ~{if defined(output_directory) then ("--output_directory " +  '"' + output_directory + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_species: "List all available species (default: False)"
     species: "Species to download (default: None)"

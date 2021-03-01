@@ -3,7 +3,7 @@ id: wtdbgConvert.cwl
 inputs:
 - id: in_output_prefix
   doc: output prefix
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_file_dot_dbg_dot_lay
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - wtdbgConvert

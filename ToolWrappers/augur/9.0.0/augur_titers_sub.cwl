@@ -18,23 +18,24 @@ inputs:
     prefix: --gene-names
 - id: in_tree
   doc: optional tree to annotate fit titer model to
-  type: string
+  type: string?
   inputBinding:
     prefix: --tree
 - id: in_allow_empty_model
   doc: allow model to be empty
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --allow-empty-model
 - id: in_output
   doc: "JSON file to save titer model\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - augur

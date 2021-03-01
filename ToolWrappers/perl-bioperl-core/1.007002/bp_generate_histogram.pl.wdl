@@ -22,6 +22,9 @@ task BpGenerateHistogrampl {
       ~{if (sort) then "--sort" else ""} \
       ~{if (merge) then "--merge" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dsn: "<dsn>       Data source (default dbi:mysql:test)"
     adaptor: "<adaptor>   Schema adaptor (default dbi::mysqlopt)"

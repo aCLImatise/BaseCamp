@@ -10,6 +10,9 @@ task Mean {
       ~{option_dot_dot_dot} \
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threshold: "The minimum probability threshold (default=1e-30)"
     option_dot_dot_dot: ""

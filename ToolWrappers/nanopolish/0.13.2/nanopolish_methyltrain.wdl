@@ -42,6 +42,9 @@ task NanopolishMethyltrain {
       ~{if (std_v) then "--stdv" else ""} \
       ~{if defined(max_events) then ("--max-events " +  '"' + max_events + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     models_fof_n: "read the models to be trained from the FOFN"

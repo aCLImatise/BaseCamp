@@ -26,6 +26,9 @@ task Heatmappy {
       ~{if defined(column_metric) then ("--column_metric " +  '"' + column_metric + '"') else ""} \
       ~{if defined(sample_f) then ("--sample_f " +  '"' + sample_f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     secondary_model_tar: "secondary model tar if combining the prediction of two\\ndifferent phenotype collections into one heatmap"
     row_method: "method to use for the row dendrogram"

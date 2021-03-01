@@ -2,8 +2,8 @@ version 1.0
 
 task TomboDetectModificationsLevelSampleCompare {
   input {
-    Boolean? statistics_file_basename
     Array[Int] fast_five_based_irs
+    File? file_base_name
     Array[Int] alternate_fast_five_based_irs
     Int? fishers_method_context
     Int? minimum_test_reads
@@ -15,11 +15,13 @@ task TomboDetectModificationsLevelSampleCompare {
     Int? corrected_group
     Array[String] base_call_subgroups
     Boolean? quiet
+    String _alternatefastbasedirs
   }
   command <<<
     tombo detect_modifications level_sample_compare \
-      ~{if (statistics_file_basename) then "--statistics-file-basename" else ""} \
+      ~{_alternatefastbasedirs} \
       ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
+      ~{if defined(file_base_name) then ("--statistics-file-basename " +  '"' + file_base_name + '"') else ""} \
       ~{if defined(alternate_fast_five_based_irs) then ("--alternate-fast5-basedirs " +  '"' + alternate_fast_five_based_irs + '"') else ""} \
       ~{if defined(fishers_method_context) then ("--fishers-method-context " +  '"' + fishers_method_context + '"') else ""} \
       ~{if defined(minimum_test_reads) then ("--minimum-test-reads " +  '"' + minimum_test_reads + '"') else ""} \
@@ -32,9 +34,12 @@ task TomboDetectModificationsLevelSampleCompare {
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    statistics_file_basename: "STATISTICS_FILE_BASENAME\\n--alternate-fast5-basedirs\\nALTERNATE_FAST5_BASEDIRS\\n[ALTERNATE_FAST5_BASEDIRS ...]\\n[--fishers-method-context FISHERS_METHOD_CONTEXT]\\n[--minimum-test-reads MINIMUM_TEST_READS]\\n[--statistic-type {ks,u,t}]\\n[--store-p-value]\\n[--num-most-significant-stored NUM_MOST_SIGNIFICANT_STORED]\\n[--multiprocess-region-size MULTIPROCESS_REGION_SIZE]\\n[--processes PROCESSES]\\n[--corrected-group CORRECTED_GROUP]\\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\\n[--quiet] [--help]"
     fast_five_based_irs: "Directories containing fast5 files."
+    file_base_name: "File base name to save base by base statistics from\\ntesting. Filenames will be [--statistics-file-\\nbasename].[--alternate-bases]?.tombo.stats"
     alternate_fast_five_based_irs: "Set of directories containing fast5 files for\\nalternate set of reads."
     fishers_method_context: "Number of context bases up and downstream over which\\nto compute Fisher's method combined p-values. Note:\\nNot applicable for alternative model likelihood ratio\\ntests. Default: 1."
     minimum_test_reads: "Number of reads required at a position to perform\\nsignificance testing or contribute to model\\nestimation. Default: 50"
@@ -46,6 +51,7 @@ task TomboDetectModificationsLevelSampleCompare {
     corrected_group: "FAST5 group created by resquiggle command. Default:\\nRawGenomeCorrected_000"
     base_call_subgroups: "FAST5 subgroup(s) (under /Analyses/[--basecall-\\ngroup]/) containing basecalls and created within\\n[--corrected-group] containing re-squiggle results.\\nDefault: ['BaseCalled_template']"
     quiet: "Don't print status information."
+    _alternatefastbasedirs: "--alternate-fast5-basedirs"
   }
   output {
     File out_stdout = stdout()

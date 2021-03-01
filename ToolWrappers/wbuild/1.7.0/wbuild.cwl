@@ -3,7 +3,7 @@ id: wbuild.cwl
 inputs:
 - id: in_verbosity
   doc: Either CRITICAL, ERROR, WARNING, INFO or DEBUG
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbosity
 - id: in_demo
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - wbuild

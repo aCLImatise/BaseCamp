@@ -12,6 +12,9 @@ task Bfmtx2m4pl {
       ~{m_four_dot_pre} \
       ~{all_norm_dot_fa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this: ""
     m_four_dot_pre: ""

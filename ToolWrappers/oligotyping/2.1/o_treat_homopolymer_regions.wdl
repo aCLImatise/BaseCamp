@@ -12,6 +12,9 @@ task Otreathomopolymerregions {
       ~{if defined(output_fast_a) then ("--output-fasta " +  '"' + output_fast_a + '"') else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_alignment: "align2first output (.paf file)"
     output_fast_a: "Output FASTA file to store homopolymer-treated\\nsequences"

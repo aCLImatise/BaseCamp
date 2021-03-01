@@ -7,7 +7,7 @@ inputs:
     correspond file-for-file and read-for-read with those specified in <mates2>.\n\
     Reads may be a mix of different lengths. Bismark will produce one mapping result\n\
     and one report file per paired-end input file pair."
-  type: long
+  type: long?
   inputBinding:
     prefix: '-1'
 - id: in_commaseparated_list_files
@@ -15,63 +15,63 @@ inputs:
     \"_2\"), e.g. flyA_2.fq,flyB_2.fq). Sequences specified with this option must\n\
     correspond file-for-file and read-for-read with those specified in <mates1>.\n\
     Reads may be a mix of different lengths."
-  type: long
+  type: long?
   inputBinding:
     prefix: '-2'
-- id: in_se_slash_single_end
+- id: in_single_end
   doc: "Sets single-end mapping mode explicitly giving a list of file names as <list>.\n\
     The filenames may be provided as a comma [,] or colon [:] separated list."
-  type: File
+  type: File?
   inputBinding:
-    prefix: --se/--single_end
-- id: in_q_slash_fast_q
+    prefix: --single_end
+- id: in_fast_q
   doc: "The query input files (specified as <mate1>,<mate2> or <singles> are FASTQ\n\
     files (usually having extension .fg or .fastq). This is the default. See also\n\
     --solexa-quals."
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -q/--fastq
-- id: in_f_slash_fast_a
+    prefix: --fastq
+- id: in_fast_a
   doc: "The query input files (specified as <mate1>,<mate2> or <singles> are FASTA\n\
     files (usually having extensions .fa, .mfa, .fna or similar). All quality values\n\
     are assumed to be 40 on the Phred scale. FASTA files are expected to contain both\n\
     the read name and the sequence on a single line (and not spread over several lines)."
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -f/--fasta
-- id: in_s_slash_skip
+    prefix: --fasta
+- id: in_skip
   doc: Skip (i.e. do not align) the first <int> reads or read pairs from the input.
-  type: long
+  type: long?
   inputBinding:
-    prefix: -s/--skip
-- id: in_us_lash_up_to
+    prefix: --skip
+- id: in_up_to
   doc: 'Only aligns the first <int> reads or read pairs from the input. Default: no
     limit.'
-  type: long
+  type: long?
   inputBinding:
-    prefix: -u/--upto
+    prefix: --upto
 - id: in_phred_three_three_quals
   doc: 'FASTQ qualities are ASCII chars equal to the Phred quality plus 33. Default:
     ON.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --phred33-quals
 - id: in_phred_six_four_quals
   doc: 'FASTQ qualities are ASCII chars equal to the Phred quality plus 64. Default:
     off.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --phred64-quals
 - id: in_path_to_bowtie_two
   doc: "The full path </../../> to the Bowtie 2 installation on your system. If not\n\
     specified it is assumed that Bowtie 2 is in the PATH."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --path_to_bowtie2
 - id: in_path_to_his_at_two
   doc: "The full path </../../> to the HISAT2 installation on your system. If not\n\
     specified it is assumed that HISAT2 is in the PATH."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --path_to_hisat2
 - id: in_sets_number_allowed
@@ -79,7 +79,7 @@ inputs:
     \ alignment.\nCan be set to 0 or 1. Setting this higher makes alignment slower\
     \ (often much slower)\nbut increases sensitivity. Default: 0. This option is only\
     \ available for Bowtie 2 (for\nBowtie 1 see -n)."
-  type: long
+  type: long?
   inputBinding:
     prefix: -N
 - id: in_sets_length_align
@@ -89,7 +89,7 @@ inputs:
     \ be set to 32. The length of the seed\nwould effect the alignment speed dramatically\
     \ while the larger L, the faster the aligment.\nThis option is only available\
     \ for Bowtie 2 (for Bowtie 1 see -l)."
-  type: long
+  type: long?
   inputBinding:
     prefix: -L
 - id: in_ignore_quals
@@ -98,27 +98,27 @@ inputs:
     \ value. I.e. input is treated\nas though all quality values are high. This is\
     \ also the default behavior when the input\ndoesn't specify quality values (e.g.\
     \ in -f mode). This option is invariable and on by default."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ignore-quals
-- id: in_i_slash_mini_ns
+- id: in_mini_ns
   doc: "The minimum insert size for valid paired-end alignments. E.g. if -I 60 is\
     \ specified and\na paired-end alignment consists of two 20-bp alignments in the\
     \ appropriate orientation\nwith a 20-bp gap between them, that alignment is considered\
     \ valid (as long as -X is also\nsatisfied). A 19-bp gap would not be valid in\
     \ that case. Default: 0."
-  type: long
+  type: long?
   inputBinding:
-    prefix: -I/--minins
-- id: in_x_slash_max_ins
+    prefix: --minins
+- id: in_max_ins
   doc: "The maximum insert size for valid paired-end alignments. E.g. if -X 100 is\
     \ specified and\na paired-end alignment consists of two 20-bp alignments in the\
     \ proper orientation with a\n60-bp gap between them, that alignment is considered\
     \ valid (as long as -I is also satisfied).\nA 61-bp gap would not be valid in\
     \ that case. Default: 500."
-  type: long
+  type: long?
   inputBinding:
-    prefix: -X/--maxins
+    prefix: --maxins
 - id: in_parallel
   doc: "(May also be --multicore <int>) Sets the number of parallel instances of Bismark\
     \ to be run concurrently.\nThis forks the Bismark alignment step very early on\
@@ -136,7 +136,7 @@ inputs:
     \ to a linear increase in compute and memory requirements, so --parallel 4 for\n\
     e.g. the GRCm38 mouse genome will probably use ~20 cores and eat ~40GB or RAM,\
     \ but at the same time\nreduce the alignment time to ~25-30%. You have been warned."
-  type: long
+  type: long?
   inputBinding:
     prefix: --parallel
 - id: in_local
@@ -147,7 +147,7 @@ inputs:
     alignment score is equal to the match bonus (--ma) times the length of the read.\
     \ This is mutually exclusive with\nend-to-end alignments. For HISAT2, it is currently\
     \ not exactly known how the best alignment is calculated.\nDEFAULT: OFF."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --local
 - id: in_non_directional
@@ -158,7 +158,7 @@ inputs:
     \ Specifying directional\nalignments (which is the default) will only run 2 alignment\
     \ threads to the original top (OT)\nor bottom (OB) strands in parallel and report\
     \ these alignments. This is the recommended option\nfor sprand-specific libraries)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --non_directional
 - id: in_pb_at
@@ -170,14 +170,14 @@ inputs:
     a PBAT protocol (if you don't know what PBAT-Seq is you should not specify this\
     \ option). The option\n--pbat works only for FastQ files (in both Bowtie and Bowtie\
     \ 2 mode) and using uncompressed\ntemporary files only)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pbat
 - id: in_sam_no_hd
   doc: "Suppress SAM header lines (starting with @). This might be useful when very\
     \ large input files are\nsplit up into several smaller files to run concurrently\
     \ and the output files are to be merged."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sam-no-hd
 - id: in_rg_tag
@@ -185,21 +185,21 @@ inputs:
     \ the following line to the\nSAM header: @RG PL: ILLUMINA ID:SAMPLE SM:SAMPLE\
     \ ; to set ID and SM see --rg_id and --rg_sample.\nIn addition each read receives\
     \ an RG:Z:RG-ID tag. Default: OFF."
-  type: File
+  type: File?
   inputBinding:
     prefix: --rg_tag
 - id: in_rg_id
   doc: Sets the ID field in the @RG header line. The default is 'SAMPLE'.
-  type: string
+  type: string?
   inputBinding:
     prefix: --rg_id
 - id: in_rg_sample
   doc: "Sets the SM field in the @RG header line; can't be set without setting --rg_id\
     \ as well. The default is\n'SAMPLE'."
-  type: string
+  type: string?
   inputBinding:
     prefix: --rg_sample
-- id: in_un_slash_unmapped
+- id: in_unmapped
   doc: "Write all reads that could not be aligned to a file in the output directory.\
     \ Written reads will\nappear as they did in the input, without any translation\
     \ of quality values that may have\ntaken place within Bowtie or Bismark. Paired-end\
@@ -208,9 +208,9 @@ inputs:
     \ more than one valid alignment with the same number of lowest mismatches (ambiguous\
     \ mapping)\nare also written to _unmapped_reads.txt unless the option --ambiguous\
     \ is specified as well."
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -un/--unmapped
+    prefix: --unmapped
 - id: in_ambiguous
   doc: "Write all reads which produce more than one valid alignment with the same\
     \ number of lowest\nmismatches or other reads that fail to align uniquely to a\
@@ -220,23 +220,23 @@ inputs:
     \ files with _1 and _2 inserted in their filenames, i.e. _ambiguous_reads_1.txt\
     \ and\n_ambiguous_reads_2.txt. These reads are not written to the file specified\
     \ with --un."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ambiguous
-- id: in_oslash_output_dir
+- id: in_output_dir
   doc: "Write all output files into this directory. By default the output files will\
     \ be written into\nthe same folder as the input file(s). If the specified folder\
     \ does not exist, Bismark will attempt\nto create it first. The path to the output\
     \ folder can be either relative or absolute."
-  type: File
+  type: File?
   inputBinding:
-    prefix: -o/--output_dir
+    prefix: --output_dir
 - id: in_temp_dir
   doc: "Write temporary files to this directory instead of into the same directory\
     \ as the input files. If\nthe specified folder does not exist, Bismark will attempt\
     \ to create it first. The path to the\ntemporary folder can be either relative\
     \ or absolute."
-  type: File
+  type: File?
   inputBinding:
     prefix: --temp_dir
 - id: in_non_bs_mm
@@ -246,7 +246,7 @@ inputs:
     \ insertions or deletions.\nThe format for single-end reads and read 1 of paired-end\
     \ reads is 'XA:Z:number of mismatches'\nand 'XB:Z:number of mismatches' for read\
     \ 2 of paired-end reads."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --non_bs_mm
 - id: in_gzip
@@ -254,14 +254,14 @@ inputs:
     \ form to save disk\nspace. This option is available for most alignment modes\
     \ but is not available for paired-end FastA\nfiles. This option might be somewhat\
     \ slower than writing out uncompressed files, but this awaits\nfurther testing."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gzip
 - id: in_sam
   doc: "The output will be written out in SAM format instead of the default BAM format.\
     \ Be warned that this\nrequires ~10 times more disk space. --sam is not compatible\
     \ with the option --parallel."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sam
 - id: in_bam
@@ -269,13 +269,13 @@ inputs:
     \ or, if it hasn't\nbeen specified, attempt to find Samtools in the PATH. If no\
     \ installation of Samtools can be found,\nthe SAM output will be compressed with\
     \ GZIP instead (yielding a .sam.gz output file). Default: ON."
-  type: File
+  type: File?
   inputBinding:
     prefix: --bam
 - id: in_cram
   doc: Writes the output to a CRAM file instead of BAM. This requires the use of Samtools
     1.2 or higher.
-  type: File
+  type: File?
   inputBinding:
     prefix: --cram
 - id: in_cram_ref
@@ -283,32 +283,32 @@ inputs:
     \ If this single-FastA\nreference file is not supplied explicitly it will be regenerated\
     \ from the genome .fa sequence(s)\nused for the Bismark run and written to a file\
     \ called 'Bismark_genome_CRAM_reference.mfa' into the\noputput directory."
-  type: File
+  type: File?
   inputBinding:
     prefix: --cram_ref
 - id: in_sam_tools_path
   doc: "The path to your Samtools installation, e.g. /home/user/samtools/. Does not\
     \ need to be specified\nexplicitly if Samtools is in the PATH already."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --samtools_path
 - id: in_prefix
   doc: "Prefixes <prefix> to the output filenames. Trailing dots will be replaced\
     \ by a single one. For\nexample, '--prefix test' with 'file.fq' would result in\
     \ the output file 'test.file.fq_bismark.sam' etc."
-  type: File
+  type: File?
   inputBinding:
     prefix: --prefix
-- id: in_b_slash_basename
+- id: in_basename
   doc: "Write all output to files starting with this base file name. For example,\
     \ '--basename foo'\nwould result in the files 'foo.bam' and 'foo_SE_report.txt'\
     \ (or its paired-end equivalent). Takes\nprecedence over --prefix. Be advised\
     \ that you should not use this option in conjunction with supplying\nlists of\
     \ files to be processed consecutively, as all output files will constantly overwrite\
     \ each other."
-  type: File
+  type: File?
   inputBinding:
-    prefix: -B/--basename
+    prefix: --basename
 - id: in_old_flag
   doc: "Only in paired-end SAM mode, uses the FLAG values used by Bismark v0.8.2 and\
     \ before. In addition,\nthis options appends /1 and /2 to the read IDs for reads\
@@ -320,7 +320,7 @@ inputs:
     \                67          131\nOB:         83          163                \
     \ 115          179\nCTOT:      147           99                  67          131\n\
     CTOB:      163           83                 115          179"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --old_flag
 - id: in_am_big_bam
@@ -329,7 +329,7 @@ inputs:
     \ format and do not any contain Bismark specific\nentries such as the methylation\
     \ call etc. These ambiguous BAM files are intended to be used as\ncoverage estimators\
     \ for variant callers."
-  type: File
+  type: File?
   inputBinding:
     prefix: --ambig_bam
 - id: in_nucleotide_coverage
@@ -342,7 +342,7 @@ inputs:
     \ again. If a file 'nucleotide_stats.txt' is\nfound with the Bismark reports it\
     \ will be automatically detected and used for the Bismark HTML report.\nThis option\
     \ works only for BAM or CRAM files."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nucleotide_coverage
 - id: in_icpc
@@ -355,19 +355,9 @@ inputs:
     \ same read ID). Paired-end mapping already creates BAM files with identical read\
     \ IDs.\nFor more information please see here: https://github.com/FelixKrueger/Bismark/issues/236.\
     \ Default: OFF."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --icpc
-- id: in_h_slash_help
-  doc: Displays this help file.
-  type: boolean
-  inputBinding:
-    prefix: -h/--help
-- id: in_v_slash_version
-  doc: Displays version information.
-  type: boolean
-  inputBinding:
-    prefix: -v/--version
 - id: in_bowtie_two
   doc: "Default: ON. Uses Bowtie 2 as default aligner. Bismark limits Bowtie 2 to\
     \ only perform end-to-end\nalignments, i.e. searches for alignments involving\
@@ -375,7 +365,7 @@ inputs:
     \ assumes that raw sequence data is adapter\nand/or quality trimmed where appropriate.\
     \ Both small (.bt2) and large (.bt2l) Bowtie 2\nindexes are supported. To use\
     \ HISAT2 instead of Bowtie 2 please see option --hisat2."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bowtie2
 - id: in_no_dovetail
@@ -388,7 +378,7 @@ inputs:
     \ as\nconcordant. This becomes relevant whenever reads are clipped from their\
     \ 5' end prior to mapping,\ne.g. because of quality or bias issues.\nSpecify --no_dovetail\
     \ to turn off this behaviour for paired-end libraries. Default: OFF."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_dovetail
 - id: in_his_at_two
@@ -399,24 +389,24 @@ inputs:
     \ From v0.22.0 onwards, Bismark also supports the local alignment mode of\nHISAT2\
     \ (please see --local). Both small (.ht2) and large (.ht2l) HISAT2 indexes are\
     \ supported. Default: OFF."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --hisat2
 - id: in_no_spliced_alignment
   doc: 'Disable spliced alignment. Default: spliced-alignments are performed.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-spliced-alignment
 - id: in_known_splice_site_in_file
   doc: Provide a list of known splice sites.
-  type: File
+  type: File?
   inputBinding:
     prefix: --known-splicesite-infile
 - id: in_no_mixed
   doc: "This option disables the behavior to try to find alignments for the individual\
     \ mates if\nit cannot find a concordant or discordant alignment for a pair. This\
     \ option is invariably on by default."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-mixed
 - id: in_no_discordant
@@ -425,14 +415,14 @@ inputs:
     \ mates align uniquely, but that does not\nsatisfy the paired-end constraints\
     \ (--fr/--rf/--ff, -I, -X). This option disables that behavior\nand it is on by\
     \ default."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-discordant
-- id: in_int_consecutive_attempts
+- id: in_int_consecutive_seed
   doc: "Up to <int> consecutive seed extension attempts can \"fail\" before Bowtie\
     \ 2 moves on, using\nthe alignments found so far. A seed extension \"fails\" if\
     \ it does not yield a new best or a\nnew second-best alignment. Default: 15."
-  type: long
+  type: long?
   inputBinding:
     prefix: -D
 - id: in_int_maximum_number
@@ -442,7 +432,7 @@ inputs:
     \ and searches for more alignments. A read is considered\nto have repetitive seeds\
     \ if the total number of seed hits divided by the number of seeds\nthat aligned\
     \ at least once is greater than 300. Default: 2."
-  type: long
+  type: long?
   inputBinding:
     prefix: -R
 - id: in_launch_nthreads_parallel
@@ -461,7 +451,7 @@ inputs:
     \ and use somewhat more memory then\nif --reorder were not specified. Has no effect\
     \ if -p is set to 1, since output order will naturally\ncorrespond to input order\
     \ in that case."
-  type: File
+  type: File?
   inputBinding:
     prefix: -p
 - id: in_score_min
@@ -476,20 +466,20 @@ inputs:
     \ function f to f(x) = 20 + 8 * ln(x), where x is the read length.\nThe default\
     \ is for local alignments in Bowtie 2 mode is: G,20,8.\nSee also: setting function\
     \ options at http://bowtie-bio.sourceforge.net/bowtie2."
-  type: long
+  type: long?
   inputBinding:
     prefix: --score_min
 - id: in_rdg
   doc: ",<int2>      Sets the read gap open (<int1>) and extend (<int2>) penalties.\
     \ A read gap of length N gets a penalty\nof <int1> + N * <int2>. Default: 5, 3."
-  type: long
+  type: long?
   inputBinding:
     prefix: --rdg
 - id: in_rfg
   doc: ",<int2>      Sets the reference gap open (<int1>) and extend (<int2>) penalties.\
     \ A reference gap of length N gets\na penalty of <int1> + N * <int2>. Default:\
     \ 5, 3."
-  type: long
+  type: long?
   inputBinding:
     prefix: --rfg
 - id: in_genome_folder
@@ -506,7 +496,7 @@ outputs:
     \ the following line to the\nSAM header: @RG PL: ILLUMINA ID:SAMPLE SM:SAMPLE\
     \ ; to set ID and SM see --rg_id and --rg_sample.\nIn addition each read receives\
     \ an RG:Z:RG-ID tag. Default: OFF."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_rg_tag)
 - id: out_bam
@@ -514,13 +504,13 @@ outputs:
     \ or, if it hasn't\nbeen specified, attempt to find Samtools in the PATH. If no\
     \ installation of Samtools can be found,\nthe SAM output will be compressed with\
     \ GZIP instead (yielding a .sam.gz output file). Default: ON."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_bam)
 - id: out_cram
   doc: Writes the output to a CRAM file instead of BAM. This requires the use of Samtools
     1.2 or higher.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_cram)
 - id: out_cram_ref
@@ -528,35 +518,36 @@ outputs:
     \ If this single-FastA\nreference file is not supplied explicitly it will be regenerated\
     \ from the genome .fa sequence(s)\nused for the Bismark run and written to a file\
     \ called 'Bismark_genome_CRAM_reference.mfa' into the\noputput directory."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_cram_ref)
 - id: out_prefix
   doc: "Prefixes <prefix> to the output filenames. Trailing dots will be replaced\
     \ by a single one. For\nexample, '--prefix test' with 'file.fq' would result in\
     \ the output file 'test.file.fq_bismark.sam' etc."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_prefix)
-- id: out_b_slash_basename
+- id: out_basename
   doc: "Write all output to files starting with this base file name. For example,\
     \ '--basename foo'\nwould result in the files 'foo.bam' and 'foo_SE_report.txt'\
     \ (or its paired-end equivalent). Takes\nprecedence over --prefix. Be advised\
     \ that you should not use this option in conjunction with supplying\nlists of\
     \ files to be processed consecutively, as all output files will constantly overwrite\
     \ each other."
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_b_slash_basename)
+    glob: $(inputs.in_basename)
 - id: out_am_big_bam
   doc: "For reads that have multiple alignments a random alignment is written out\
     \ to a special file ending in\n'.ambiguous.bam'. The alignments are in Bowtie2\
     \ format and do not any contain Bismark specific\nentries such as the methylation\
     \ call etc. These ambiguous BAM files are intended to be used as\ncoverage estimators\
     \ for variant callers."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_am_big_bam)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bismark

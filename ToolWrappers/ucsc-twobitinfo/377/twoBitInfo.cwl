@@ -3,22 +3,22 @@ id: twoBitInfo.cwl
 inputs:
 - id: in_mask_bed
   doc: "of seq sizes, output BED records that define\nareas with masked sequence"
-  type: string
+  type: string?
   inputBinding:
     prefix: -maskBed
 - id: in_n_bed
   doc: "instead of seq sizes, output BED records that define\nareas with N's in sequence"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nBed
 - id: in_non_s
   doc: outputs the length of each sequence, but does not count Ns
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -noNs
 - id: in_udc_dir
   doc: =/dir/to/cache - place to put cache for remote bigBed/bigWigs
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -udcDir
 - id: in_input_dot_two_bit
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - twoBitInfo

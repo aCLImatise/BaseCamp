@@ -98,6 +98,9 @@ task RtgVcffilter {
       ~{if (no_gzip) then "--no-gzip" else ""} \
       ~{if (no_header) then "--no-header" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clear_failed_samples: ", and --fail-samples options for alternatives."
     all_samples: "apply sample-specific criteria to all\\nsamples contained in the input VCF"

@@ -4,16 +4,42 @@ command:
 positional: []
 named:
 - !Flag
-  description: "-o fastq-prefix     write files fastq-prefix.1.fastq, fastq-prefix.2.fastq,\
-    \ fastq-prefix.paired.fastq, fastq-prefix.unmated.fastq\n-l libToDump        output\
-    \ only fragments in library number libToDump (NOT IMPLEMENTED)\n-b iid       \
-    \       output starting at fragment iid\n-e iid              output stopping after\
-    \ fragment iid\n-c clrName          output clear range 'clrName'"
+  optional: true
   synonyms:
   - -g
+  - -o
+  description: write files fastq-prefix.1.fastq, fastq-prefix.2.fastq, fastq-prefix.paired.fastq,
+    fastq-prefix.unmated.fastq
   args: !SimpleFlagArg
     name: gkpStore
+- !Flag
   optional: true
+  synonyms:
+  - -l
+  description: output only fragments in library number libToDump (NOT IMPLEMENTED)
+  args: !SimpleFlagArg
+    name: libToDump
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: output starting at fragment iid
+  args: !SimpleFlagArg
+    name: iid
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: output stopping after fragment iid
+  args: !SimpleFlagArg
+    name: iid
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: output clear range 'clrName'
+  args: !SimpleFlagArg
+    name: clrName
 parent:
 subcommands: []
 usage: []
@@ -30,3 +56,4 @@ help_text: "ERROR: unknown option '--help'\nusage: gkpStoreDumpFASTQ [...] -o fa
   \ prefix (-o) supplied.\n"
 generated_using:
 - --help
+docker_image:

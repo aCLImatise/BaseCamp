@@ -10,8 +10,11 @@ task HcaAuthPutv1user {
       ~{if defined(user_id) then ("--user-id " +  '"' + user_id + '"') else ""} \
       ~{if defined(status) then ("--status " +  '"' + status + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    user_id: "User ID (email).\\n--status STATUS\\n"
+    user_id: "User ID (email)."
     status: ""
   }
   output {

@@ -24,7 +24,7 @@ task Coalescent {
     Boolean? output_mutation_ages
     Boolean? output_recombination_locations
     Boolean? output_arg_edges
-    Boolean? position_mutation_contexts
+    Boolean? position_output_mutation
     Boolean? print_version_info
     Boolean? _show_progress
     Boolean? arg_log_file
@@ -32,13 +32,13 @@ task Coalescent {
     Boolean? arg_delta_factor
     Boolean? compute_tree_size
     Boolean? print_number_recombs
-    Boolean? _simulation_quit
+    Boolean? do_simulation_quit
     Boolean? output_sim_times
     Boolean? output_end_gens
     Int? stop_after_minutes
     Boolean? custom_stats
     Int? custom_stats_exclude_pop
-    String n_arg_number
+    String arg_number_simulations
     String delta
     String fraction
     String sim
@@ -50,7 +50,7 @@ task Coalescent {
   }
   command <<<
     coalescent \
-      ~{n_arg_number} \
+      ~{arg_number_simulations} \
       ~{delta} \
       ~{fraction} \
       ~{sim} \
@@ -81,7 +81,7 @@ task Coalescent {
       ~{if (output_mutation_ages) then "-M" else ""} \
       ~{if (output_recombination_locations) then "-L" else ""} \
       ~{if (output_arg_edges) then "-e" else ""} \
-      ~{if (position_mutation_contexts) then "-C" else ""} \
+      ~{if (position_output_mutation) then "-C" else ""} \
       ~{if (print_version_info) then "-V" else ""} \
       ~{if (_show_progress) then "-g" else ""} \
       ~{if (arg_log_file) then "-l" else ""} \
@@ -89,13 +89,16 @@ task Coalescent {
       ~{if (arg_delta_factor) then "-d" else ""} \
       ~{if (compute_tree_size) then "-t" else ""} \
       ~{if (print_number_recombs) then "-k" else ""} \
-      ~{if (_simulation_quit) then "-S" else ""} \
+      ~{if (do_simulation_quit) then "-S" else ""} \
       ~{if (output_sim_times) then "--output-sim-times" else ""} \
       ~{if (output_end_gens) then "--output-end-gens" else ""} \
       ~{if defined(stop_after_minutes) then ("--stop-after-minutes " +  '"' + stop_after_minutes + '"') else ""} \
       ~{if (custom_stats) then "--custom-stats" else ""} \
       ~{if defined(custom_stats_exclude_pop) then ("--custom-stats-exclude-pop " +  '"' + custom_stats_exclude_pop + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_parameter_file: "[ --paramfile ] arg                parameter file"
     arg_genetic_map: "[ --recombfile ] arg               genetic map file (if specified,\\noverrides the one in paramfile)"
@@ -119,7 +122,7 @@ task Coalescent {
     output_mutation_ages: "[ --write-mut-ages ]               output mutation ages"
     output_recombination_locations: "[ --write-recomb-locs ]            output recombination locations"
     output_arg_edges: "[ --output-ARG ]                   output ARG edges.  Edges are written in\\nms output format (see -m option), one\\nper line, after the '//' line but\\nbefore the 'segsites: ' line of each\\nsimulation. Format is:\\nE <edgeKind> <node_1_id> <node_2_id>\\n<node_1_generation> <node_2_generation>\\n<seg_1_beg> <seg_1_end> ... <seg_k_beg>\\n<seg_k_end>.\\nEdge kinds are: R, recombination; G,\\ngene conversion; C, coalescence.\\nseg_i_beg, seg_i_end give chromosomal\\nsegments inherited along the edge;\\nlocations are values in [0.0,1.0]\\nrepresenting locations within the\\nsimulated region."
-    position_mutation_contexts: "[ --write-mut-contexts ] position  output mutation contexts for these"
+    position_output_mutation: "[ --write-mut-contexts ] position  output mutation contexts for these"
     print_version_info: "[ --version ]                      print version info and compile-time"
     _show_progress: "[ --show-progress ] [=arg(=10)]    show progress"
     arg_log_file: "[ --logfile ] arg                  log file"
@@ -127,13 +130,13 @@ task Coalescent {
     arg_delta_factor: "[ --deltaTfactor ] arg (=1)        delta factor for sweep"
     compute_tree_size: "[ --tree-size-only ]               compute tree size only"
     print_number_recombs: "[ --show-num-recombs ]             print number of recombs"
-    _simulation_quit: "[ --sim-and-quit ]                 do simulation and quit"
+    do_simulation_quit: "[ --sim-and-quit ]                 do simulation and quit"
     output_sim_times: "for each sim output the time it took"
     output_end_gens: "for each sim output the generation at\\nwhich it ended"
     stop_after_minutes: "(=0)         stop simulation after this many minutes"
     custom_stats: "compute custom stats"
     custom_stats_exclude_pop: "(=-1)  when computing custom stats, exclude\\nthis pop\\n"
-    n_arg_number: "-n [ --nsims ] arg (=1)               number of simulations to output"
+    arg_number_simulations: "-n [ --nsims ] arg (=1)               number of simulations to output"
     delta: "-E [ --sweep-frac-sample ]            sweep end freq specifies exact sample "
     fraction: "--apx-with-traj-ok                    enable coalapx even when pop size traj "
     sim: "--pois-max-steps arg (=100000)        max # of steps when evaluating waiting "

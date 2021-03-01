@@ -8,6 +8,9 @@ task Abundancebin {
     abundancebin \
       ~{if (bin_num) then "-bin_num" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bin_num: "(bin number)"
   }

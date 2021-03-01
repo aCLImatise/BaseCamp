@@ -1,0 +1,91 @@
+!Command
+command:
+- filter-gff
+- overlap
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: annotations
+  description: -a, --sort-attr [bitscore|identity|length]
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  - -s
+  - --size
+  description: "Size of the overlap that triggers the filter\n[default: 100]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --sorted
+  description: "If the GFF file is sorted (all of a sequence\nannotations are contiguos\
+    \ and sorted by\nstrand) can use less memory, `sort -s -k 1,1\n-k 7,7` can be\
+    \ used"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --choose-func
+  description: Function to choose between two overlapping
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --no-strand
+  description: "Strand information is not used, if '-t' is\nused, sort GFF file with\
+    \ `sort -s -k 1,1`"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --iterations
+  description: "RANGE  Max number of iteration over which filter\nthe overlaps"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: Shows Progress Bar
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: filter-gff overlap [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Use\
+  \ overlapping filter\n\nOptions:\n  -v, --verbose\n  -s, --size INTEGER        \
+  \      Size of the overlap that triggers the filter\n                          \
+  \        [default: 100]\n\n  -t, --sorted                    If the GFF file is\
+  \ sorted (all of a sequence\n                                  annotations are contiguos\
+  \ and sorted by\n                                  strand) can use less memory,\
+  \ `sort -s -k 1,1\n                                  -k 7,7` can be used\n\n  -c,\
+  \ --choose-func TEXT          Function to choose between two overlapping\n     \
+  \                             annotations\n\n  -a, --sort-attr [bitscore|identity|length]\n\
+  \                                  Attribute to sort annotations before\n      \
+  \                            filtering (default bitscore)  [default:\n         \
+  \                         bitscore]\n\n  -d, --no-strand                 Strand\
+  \ information is not used, if '-t' is\n                                  used, sort\
+  \ GFF file with `sort -s -k 1,1`\n\n  -n, --iterations INTEGER RANGE  Max number\
+  \ of iteration over which filter\n                                  the overlaps\n\
+  \n  --progress                      Shows Progress Bar\n  --help               \
+  \           Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0

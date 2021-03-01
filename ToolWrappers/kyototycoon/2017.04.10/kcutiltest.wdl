@@ -8,7 +8,7 @@ task Kcutiltest {
     Int? th
     Int? iv
     String cond
-    File file
+    File var_file
     String lh_map
     String misc
     String mutex
@@ -20,7 +20,7 @@ task Kcutiltest {
   command <<<
     kcutiltest \
       ~{cond} \
-      ~{file} \
+      ~{var_file} \
       ~{lh_map} \
       ~{misc} \
       ~{mutex} \
@@ -34,6 +34,9 @@ task Kcutiltest {
       ~{if defined(th) then ("-th " +  '"' + th + '"') else ""} \
       ~{if defined(iv) then ("-iv " +  '"' + iv + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rnd: ""
     b_num: ""
@@ -41,7 +44,7 @@ task Kcutiltest {
     th: ""
     iv: ""
     cond: ""
-    file: ""
+    var_file: ""
     lh_map: ""
     misc: ""
     mutex: ""

@@ -26,6 +26,9 @@ task Logcombiner {
       ~{if defined(strip) then ("-strip " +  '"' + strip + '"') else ""} \
       ~{if defined(re_number) then ("-renumber " +  '"' + re_number + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     trees: "this option to combine tree log files"
     decimal: "option converts numbers from scientific to decimal notation"

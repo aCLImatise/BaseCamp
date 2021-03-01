@@ -3,7 +3,7 @@ id: cooler_ls.cwl
 inputs:
 - id: in_long
   doc: Long listing format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --long
 - id: in_cool_path
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cooler

@@ -2,8 +2,6 @@ version 1.0
 
 task PreprocesspyIllumina {
   input {
-    Array[File] input_r_one
-    File? input_archive
     String? merge_software
     Boolean? keep_un_merged
     Int? min_amplicon_size
@@ -20,6 +18,8 @@ task PreprocesspyIllumina {
     Int? nb_cpus
     Boolean? debug
     Array[String] samples_names
+    File? input_archive
+    Array[Int] input_r_one
     Array[Int] input_r_two
     Int? output_de_replicated
     File? output_count
@@ -36,8 +36,6 @@ task PreprocesspyIllumina {
       ~{samples} \
       ~{archive} \
       ~{files} \
-      ~{if defined(input_r_one) then ("--input-R1 " +  '"' + input_r_one + '"') else ""} \
-      ~{if defined(input_archive) then ("--input-archive " +  '"' + input_archive + '"') else ""} \
       ~{if defined(merge_software) then ("--merge-software " +  '"' + merge_software + '"') else ""} \
       ~{if (keep_un_merged) then "--keep-unmerged" else ""} \
       ~{if defined(min_amplicon_size) then ("--min-amplicon-size " +  '"' + min_amplicon_size + '"') else ""} \
@@ -54,15 +52,18 @@ task PreprocesspyIllumina {
       ~{if defined(nb_cpus) then ("--nb-cpus " +  '"' + nb_cpus + '"') else ""} \
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(samples_names) then ("--samples-names " +  '"' + samples_names + '"') else ""} \
+      ~{if defined(input_archive) then ("--input-archive " +  '"' + input_archive + '"') else ""} \
+      ~{if defined(input_r_one) then ("--input-R1 " +  '"' + input_r_one + '"') else ""} \
       ~{if defined(input_r_two) then ("--input-R2 " +  '"' + input_r_two + '"') else ""} \
       ~{if defined(output_de_replicated) then ("--output-dereplicated " +  '"' + output_de_replicated + '"') else ""} \
       ~{if defined(output_count) then ("--output-count " +  '"' + output_count + '"') else ""} \
       ~{if defined(summary) then ("--summary " +  '"' + summary + '"') else ""} \
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    input_r_one: "--already-contiged | --input-R2 R2_FILE [R2_FILE ...] --R1-size R1_SIZE --R2-size R2_SIZE [--mismatch-rate RATE ] [--quality-scale SCALE ] [--merge-software {vsearch,flash,pear} [--expected-amplicon-size]] [--keep-unmerged]\\n--min-amplicon-size MIN_AMPLICON_SIZE\\n--max-amplicon-size MAX_AMPLICON_SIZE\\n--without-primers | --five-prim-primer FIVE_PRIM_PRIMER --three-prim-primer THREE_PRIM_PRIMER\\n[--fungi {ITS1,ITS2}] [--keep-unmerged]\\n[--samples-names SAMPLE_NAME [SAMPLE_NAME ...]]\\n[-p NB_CPUS] [--debug] [-v]\\n[-d DEREPLICATED_FILE] [-c COUNT_FILE]\\n[-s SUMMARY_FILE] [-l LOG_FILE]"
-    input_archive: "--already-contiged | --R1-size R1_SIZE --R2-size R2_SIZE [--mismatch-rate RATE ] [--quality-scale SCALE ] [--merge-software {vsearch,flash,pear} [--expected-amplicon-size] ] [--keep-unmerged]\\n--min-amplicon-size MIN_AMPLICON_SIZE\\n--max-amplicon-size MAX_AMPLICON_SIZE\\n--without-primers | --five-prim-primer FIVE_PRIM_PRIMER --three-prim-primer THREE_PRIM_PRIMER\\n[--fungi {ITS1,ITS2}]\\n[-p NB_CPUS] [--debug] [-v]\\n[-d DEREPLICATED_FILE] [-c COUNT_FILE] [-c COUNT_FILE] [--artComb-output-dereplicated ART_DEREPLICATED_FILE] [--artComb-output-count ART_COUNT_FILE]\\n[-s SUMMARY_FILE] [-l LOG_FILE]"
     merge_software: "Software used to merge paired reads"
     keep_un_merged: "In case of uncontiged paired reads, keep unmerged, and\\nartificially combined them with 100 Ns."
     min_amplicon_size: "The minimum size for the amplicons (with primers)."
@@ -79,6 +80,8 @@ task PreprocesspyIllumina {
     nb_cpus: "The maximum number of CPUs used. [Default: 1]"
     debug: "Keep temporary files to debug program."
     samples_names: "The sample name for each R1/R2-files."
+    input_archive: "The tar file containing R1 file and R2 file for each\\nsample."
+    input_r_one: "The R1 sequence file for each sample (format: fastq)."
     input_r_two: "The R2 sequence file for each sample (format: fastq)."
     output_de_replicated: "Fasta file with unique sequences. Each sequence has an\\nID ended with the number of initial sequences\\nrepresented (example : \\\">a0101;size=10\\\"). [Default:\\ndereplication.fasta]"
     output_count: "TSV file with count by sample for each unique sequence\\n(example with 3 samples : \\\"a0101<TAB>5<TAB>8<TAB>0\\\").\\n[Default: count.tsv]"

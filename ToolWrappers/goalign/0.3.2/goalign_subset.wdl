@@ -42,6 +42,9 @@ task GoalignSubset {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     indices: "If true, extracts given sequence indices instead of sequence names (0-based)"
     name_file: "File containing names of sequences to keep (default \\\"stdin\\\")"

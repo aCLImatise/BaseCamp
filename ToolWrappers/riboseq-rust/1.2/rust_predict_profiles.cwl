@@ -3,12 +3,12 @@ id: rust_predict_profiles.cwl
 inputs:
 - id: in_directory_path_outputfile
   doc: directory  path to outputfile, default is "predict_profiles"
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_writes_profiles_produce
   doc: writes all profiles in csv files, may produce >10,000
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_correlation_observed_predicted
@@ -52,6 +52,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rust_predict_profiles

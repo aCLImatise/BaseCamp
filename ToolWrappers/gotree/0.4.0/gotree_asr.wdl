@@ -26,6 +26,9 @@ task GotreeAsr {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     algo: "Parsimony algorithm for resolving ambiguities: acctran, deltran, or downpass (default \\\"acctran\\\")"
     align: "Alignment input file (default \\\"stdin\\\")"

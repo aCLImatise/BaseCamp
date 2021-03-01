@@ -3,233 +3,238 @@ command:
 - bogart
 positional:
 - !Positional
-  description: overlapsUsed
+  optional: false
   position: 0
   name: overlapQuality
-  optional: false
+  description: overlapsUsed
 - !Positional
-  description: intersections
+  optional: false
   position: 1
   name: chunkGraph
-  optional: false
+  description: intersections
 - !Positional
-  description: intersectionBreaking
+  optional: false
   position: 2
   name: populate
-  optional: false
+  description: intersectionBreaking
 - !Positional
-  description: intersectionBubblesDebug
+  optional: false
   position: 3
   name: intersectionBubbles
-  optional: false
+  description: intersectionBubblesDebug
 - !Positional
-  description: intersectionJoiningDebug
+  optional: false
   position: 4
   name: intersectionJoining
-  optional: false
+  description: intersectionJoiningDebug
 - !Positional
-  description: happiness
+  optional: false
   position: 5
   name: containedPlacement
-  optional: false
+  description: happiness
 - !Positional
-  description: mateSplitAnalysis
+  optional: false
   position: 6
   name: intermediateUnitigs
-  optional: false
+  description: mateSplitAnalysis
 - !Positional
-  description: setParentAndHang
+  optional: false
   position: 7
-  name: mateSplitCoveragePlot
-  optional: false
+  name: mateSplitDiscontinuous
+  description: mateSplitUnhappyContains
 - !Positional
-  description: No output prefix name (-o option) supplied.
-  position: 8
-  name: stderr
   optional: false
+  position: 8
+  name: mateSplitCoveragePlot
+  description: setParentAndHang
+- !Positional
+  optional: false
+  position: 9
+  name: stderr
+  description: No output prefix name (-o option) supplied.
 named:
 - !Flag
-  description: Mandatory path to an ovlStore.
+  optional: true
   synonyms:
   - -O
+  description: Mandatory path to an ovlStore.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Mandatory path to a gkpStore.
+  optional: true
   synonyms:
   - -G
+  description: Mandatory path to a gkpStore.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Mandatory path to a tigStore (can exist or not).
+  optional: true
   synonyms:
   - -T
+  description: Mandatory path to a tigStore (can exist or not).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Mandatory name for the output files
+  optional: true
   synonyms:
   - -o
+  description: Mandatory name for the output files
   args: !SimpleFlagArg
     name: prefix
-  optional: true
 - !Flag
-  description: Target number of fragments per tigStore (consensus) partition
+  optional: true
   synonyms:
   - -B
+  description: Target number of fragments per tigStore (consensus) partition
   args: !SimpleFlagArg
     name: b
-  optional: true
 - !Flag
-  description: Remove edges to spur reads from best overlap graph.
+  optional: true
   synonyms:
   - -RS
+  description: Remove edges to spur reads from best overlap graph.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Don't seed promiscuous unitigs with suspicious reads.
+  optional: true
   synonyms:
   - -NS
+  description: Don't seed promiscuous unitigs with suspicious reads.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Don't place contained reads in singleton unitigs.
+  optional: true
   synonyms:
   - -CS
+  description: Don't place contained reads in singleton unitigs.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Remove weak overlaps, those in the lower t fraction of erates per overlap
-    end.
+  optional: true
   synonyms:
   - -RW
+  description: Remove weak overlaps, those in the lower t fraction of erates per overlap
+    end.
   args: !SimpleFlagArg
     name: t
-  optional: true
 - !Flag
-  description: Join promiscuous unitigs using unused best edges.
+  optional: true
   synonyms:
   - -J
+  description: Join promiscuous unitigs using unused best edges.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Shatter repeats.  Enabled with -R and -E; if neither are supplied,\n\
-    repeat fragments are promoted to singleton unitigs (unless -DP)."
+  optional: true
   synonyms:
   - -SR
+  description: "Shatter repeats.  Enabled with -R and -E; if neither are supplied,\n\
+    repeat fragments are promoted to singleton unitigs (unless -DP)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Shatter repeats, rebuild
+  optional: true
   synonyms:
   - -R
+  description: Shatter repeats, rebuild
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Shatter repeats, extend unique unitigs
+  optional: true
   synonyms:
   - -E
+  description: Shatter repeats, extend unique unitigs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "When -R or -E, don't promote shattered leftovers to unitigs.\nThis\
-    \ WILL cause CGW to fail; diagnostic only."
+  optional: true
   synonyms:
   - -DP
+  description: "When -R or -E, don't promote shattered leftovers to unitigs.\nThis\
+    \ WILL cause CGW to fail; diagnostic only."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Force reads below 'len' bases to be singletons.\nThis WILL cause CGW\
-    \ to fail; diagnostic only."
+  optional: true
   synonyms:
   - -RL
+  description: "Force reads below 'len' bases to be singletons.\nThis WILL cause CGW\
+    \ to fail; diagnostic only."
   args: !SimpleFlagArg
     name: len
-  optional: true
 - !Flag
-  description: "Use N compute threads during repeat detection.\n0 - use OpenMP default\
-    \ (default)\n1 - use one thread"
+  optional: true
   synonyms:
   - -threads
+  description: "Use N compute threads during repeat detection.\n0 - use OpenMP default\
+    \ (default)\n1 - use one thread"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: no more than 0.020 fraction (2.0%) error
+  optional: true
   synonyms:
   - -eg
+  description: no more than 0.020 fraction (2.0%) error
   args: !SimpleFlagArg
     name: '0.020'
-  optional: true
 - !Flag
-  description: no more than 2 errors (useful with short reads)
+  optional: true
   synonyms:
   - -Eg
+  description: no more than 2 errors (useful with short reads)
   args: !SimpleFlagArg
     name: '2'
-  optional: true
 - !Flag
-  description: no more than 0.045 fraction (4.5%) error when bubble popping and repeat
-    splitting
+  optional: true
   synonyms:
   - -em
+  description: no more than 0.045 fraction (4.5%) error when bubble popping and repeat
+    splitting
   args: !SimpleFlagArg
     name: '0.045'
-  optional: true
 - !Flag
-  description: no more than r errors (useful with short reads)
+  optional: true
   synonyms:
   - -Em
+  description: no more than r errors (useful with short reads)
   args: !SimpleFlagArg
     name: '4'
-  optional: true
 - !Flag
-  description: no shorter than 40 bases; AS_OVERLAP_MIN_LEN
+  optional: true
   synonyms:
   - -el
+  description: no shorter than 40 bases; AS_OVERLAP_MIN_LEN
   args: !SimpleFlagArg
     name: '40'
-  optional: true
 - !Flag
-  description: Use at most 'gb' gigabytes of memory for storing overlaps.
+  optional: true
   synonyms:
   - -M
+  description: Use at most 'gb' gigabytes of memory for storing overlaps.
   args: !SimpleFlagArg
     name: gb
-  optional: true
 - !Flag
-  description: Load at most 'num' overlaps per read.
+  optional: true
   synonyms:
   - -N
+  description: Load at most 'num' overlaps per read.
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
-  description: Only create the overlap graph, save to disk and quit.
+  optional: true
   synonyms:
   - -create
+  description: Only create the overlap graph, save to disk and quit.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Save the overlap graph to disk, and continue.
+  optional: true
   synonyms:
   - -save
+  description: Save the overlap graph to disk, and continue.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: enable logging/debugging for a specific component.
+  optional: true
   synonyms:
   - -D
+  description: enable logging/debugging for a specific component.
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
-  description: disable logging/debugging for a specific component.
+  optional: true
   synonyms:
   - -d
+  description: disable logging/debugging for a specific component.
   args: !SimpleFlagArg
     name: name
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -280,3 +285,4 @@ help_text: "usage: bogart -o outputName -O ovlStore -G gkpStore -T tigStore\n\n 
   \ (-T option) supplied.\n"
 generated_using:
 - --help
+docker_image:

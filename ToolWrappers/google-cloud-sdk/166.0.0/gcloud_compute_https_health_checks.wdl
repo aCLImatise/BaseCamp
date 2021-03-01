@@ -16,6 +16,9 @@ task GcloudComputeHttpshealthchecks {
       ~{list} \
       ~{update}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create an HTTPS health check to monitor load balanced instances."
     delete: "Delete HTTPS health checks."

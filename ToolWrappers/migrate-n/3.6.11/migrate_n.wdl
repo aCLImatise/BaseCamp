@@ -12,6 +12,9 @@ task Migraten {
       ~{if (no_menu) then "-nomenu" else ""} \
       ~{if (menu) then "-menu" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version: "# shows the current version and exits"
     no_menu: "# does not display menu, use this for batch jobs"

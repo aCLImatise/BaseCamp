@@ -4,6 +4,9 @@ task Belresources {
   command <<<
     bel_resources
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

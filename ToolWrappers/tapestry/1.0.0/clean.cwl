@@ -3,17 +3,17 @@ id: clean.cwl
 inputs:
 - id: in_assembly
   doc: filename of assembly in FASTA format
-  type: File
+  type: File?
   inputBinding:
     prefix: --assembly
 - id: in_csv
   doc: Tapestry CSV output
-  type: string
+  type: string?
   inputBinding:
     prefix: --csv
 - id: in_output
   doc: "filename of output contigs, default\nfiltered_assembly.fasta\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "filename of output contigs, default\nfiltered_assembly.fasta\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - clean

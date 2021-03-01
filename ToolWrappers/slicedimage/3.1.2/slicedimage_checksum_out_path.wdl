@@ -16,6 +16,9 @@ task SlicedimageChecksumOutPath {
       ~{out_path} \
       ~{if (pretty) then "--pretty" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pretty: ""
     sliced_image: ""

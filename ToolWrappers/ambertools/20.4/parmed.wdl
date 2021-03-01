@@ -2,7 +2,7 @@ version 1.0
 
 task Parmed {
   input {
-    File? script_execute_stdin
+    File? script_parmed_commands
     String? parm
     String? in_pc_rd
     Boolean? overwrite
@@ -16,7 +16,7 @@ task Parmed {
   }
   command <<<
     parmed \
-      ~{if defined(script_execute_stdin) then ("--input " +  '"' + script_execute_stdin + '"') else ""} \
+      ~{if defined(script_parmed_commands) then ("--input " +  '"' + script_parmed_commands + '"') else ""} \
       ~{if defined(parm) then ("--parm " +  '"' + parm + '"') else ""} \
       ~{if defined(in_pc_rd) then ("--inpcrd " +  '"' + in_pc_rd + '"') else ""} \
       ~{if (overwrite) then "--overwrite" else ""} \
@@ -28,8 +28,11 @@ task Parmed {
       ~{if (relaxed) then "--relaxed" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    script_execute_stdin: "Script with ParmEd commands to execute. Default reads\\nfrom stdin. Can be specified multiple times to process\\nmultiple input files."
+    script_parmed_commands: "Script with ParmEd commands to execute. Default reads\\nfrom stdin. Can be specified multiple times to process\\nmultiple input files."
     parm: "List of topology files to load into ParmEd. Can be\\nspecified multiple times to process multiple\\ntopologies."
     in_pc_rd: "List of inpcrd files to load into ParmEd. They are\\npaired with the topology files in the same order that\\neach set of files is specified on the command-line."
     overwrite: "Allow ParmEd to overwrite existing files."

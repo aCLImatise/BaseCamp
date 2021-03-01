@@ -16,6 +16,9 @@ task FastqQualityConverter {
       ~{if (n) then "-n" else ""} \
       ~{if (a) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
     i: ""

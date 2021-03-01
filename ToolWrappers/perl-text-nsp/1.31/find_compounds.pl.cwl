@@ -3,7 +3,7 @@ id: find_compounds.pl.cwl
 inputs:
 - id: in_new_line
   doc: Find compound words in one line.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --newline
 - id: in_output_file
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - find-compounds.pl

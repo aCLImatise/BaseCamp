@@ -20,6 +20,9 @@ task AtlasValidationpy {
       ~{if (microarray) then "--microarray" else ""} \
       ~{if (skip_file_checks) then "--skip-file-checks" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_dir: "Path to the directory with SDRF and data files"
     verbose: "Option to output detailed logging (debug level)."

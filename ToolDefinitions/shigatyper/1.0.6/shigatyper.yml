@@ -11,24 +11,24 @@ subcommands:
   - read1
   positional:
   - !Positional
-    description: read2
+    optional: false
     position: 0
     name: read1
-    optional: false
+    description: read2
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - --verbose
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
     description: ''
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
     synonyms:
     - -n
+    description: ''
     args: !SimpleFlagArg
       name: SAMPLE_NAME
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -39,24 +39,24 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: read2
+        optional: false
         position: 0
         name: read1
-        optional: false
+        description: read2
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --verbose
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
         description: ''
+        args: !EmptyFlagArg {}
+      - !Flag
+        optional: true
         synonyms:
         - -n
+        description: ''
         args: !SimpleFlagArg
           name: SAMPLE_NAME
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -67,24 +67,24 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: read2
+            optional: false
             position: 0
             name: read1
-            optional: false
+            description: read2
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --verbose
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
             description: ''
+            args: !EmptyFlagArg {}
+          - !Flag
+            optional: true
             synonyms:
             - -n
+            description: ''
             args: !SimpleFlagArg
               name: SAMPLE_NAME
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -95,84 +95,190 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: read2
+                optional: false
                 position: 0
                 name: read1
-                optional: false
+                description: read2
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --verbose
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
                 description: ''
+                args: !EmptyFlagArg {}
+              - !Flag
+                optional: true
                 synonyms:
                 - -n
+                description: ''
                 args: !SimpleFlagArg
                   name: SAMPLE_NAME
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --verbose
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -n
-                  args: !SimpleFlagArg
-                    name: SAMPLE_NAME
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: read2
+                    optional: false
                     position: 0
                     name: read1
-                    optional: false
+                    description: read2
                   named:
                   - !Flag
-                    description: ''
-                    synonyms:
-                    - -n
-                    - --name
-                    args: !SimpleFlagArg
-                      name: SAMPLE_NAME
                     optional: true
-                  - !Flag
-                    description: ''
                     synonyms:
                     - --verbose
-                    - -v
+                    description: ''
                     args: !EmptyFlagArg {}
+                  - !Flag
                     optional: true
-                  parent: *id003
+                    synonyms:
+                    - -n
+                    description: ''
+                    args: !SimpleFlagArg
+                      name: SAMPLE_NAME
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --verbose
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -n
+                      description: ''
+                      args: !SimpleFlagArg
+                        name: SAMPLE_NAME
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: read1
+                        description: read2
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -n
+                        - --name
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: SAMPLE_NAME
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --verbose
+                        - -v
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --version
+                        description: show program's version number and exit
+                        args: !EmptyFlagArg {}
+                      help_text: "usage: shigatyper [-h] [-n SAMPLE_NAME] [--verbose]\
+                        \ [--version] read1 read2\n\nShigaTyper v. 1.0.6, 2019\n\n\
+                        A WGS-based genoserotyping pipeline for Shigella spp.\n\n\
+                        Yun Wu, Henry K Lau, Teresa Lee, David K Lau, Justin Payne\n\
+                        \n    The bacteria Shigella spp., consisting of 4 species\
+                        \ and >50\nserotypes, cause shigellosis, a foodborne disease\
+                        \ of significant\nmorbidity, mortality, and economic loss\
+                        \ worldwide. Classical Shigella\nidentification based on selective\
+                        \ media and serology is tedious,\ntime-consuming, expensive,\
+                        \ and not always accurate. Molecular diagnostic\nassay does\
+                        \ not distinguish Shigella at species level or from\nenteroinvasive\
+                        \ Escherichia coli (EIEC). We inspected the whole genome\n\
+                        sequencing (WGS) data from 219 Shigella isolates and observed\
+                        \ low\nconcordance rate between conventional designation and\
+                        \ molecular\nserotyping, 86.8% and 78.9% at species and serotype\
+                        \ level, respectively.\nSerotype determinants for 6 additional\
+                        \ serotypes were identified.\nExamination of differentiation\
+                        \ gene markers commonly perceived as\ncharacteristic hallmarks\
+                        \ in Shigella showed high variability among\ndifferent serotypes.\
+                        \ Using this information, we developed ShigaTyper, an\nautomated\
+                        \ workflow that utilizes limited computational resources to\n\
+                        accurately and rapidly determine 58 Shigella serotypes using\
+                        \ Illumina\npaired end WGS reads. Shigella serotype determinants\
+                        \ and species-specific\ndiagnostic markers were first identified\
+                        \ through read alignment to an\nin-house curated reference\
+                        \ sequence database. Relying on sequence hits\nthat passed\
+                        \ a threshold level of coverage and accuracy, serotype can\
+                        \ be\nunambiguously predicted within 1 min for an average\
+                        \ sized WGS sample of\n~500 MB. Validation with WGS data from\
+                        \ 112 isolates show an accuracy of\n98.2%. This pipeline is\
+                        \ the first step towards building a comprehensive\nWGS-based\
+                        \ analysis pipeline of Shigella spp. in a field laboratory\n\
+                        setting, where speed is essential and resources need to be\
+                        \ more\ncost-effectively dedicated.\n\npositional arguments:\n\
+                        \  read1\n  read2\n\noptional arguments:\n  -h, --help   \
+                        \         show this help message and exit\n  -n SAMPLE_NAME,\
+                        \ --name SAMPLE_NAME\n  --verbose, -v\n  --version       \
+                        \      show program's version number and exit\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --version
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    help_text: "usage: shigatyper [-h] [-n SAMPLE_NAME] [--verbose]\
+                      \ [--version] read1 read2\nshigatyper: error: the following\
+                      \ arguments are required: read1, read2\n"
+                    generated_using: &id005 []
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: "show this help message and exit\n-n SAMPLE_NAME,\
+                      \ --name SAMPLE_NAME\n--verbose, -v\n--version             show\
+                      \ program's version number and exit\n"
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag: !Flag
-                    description: show program's version number and exit
+                    optional: true
                     synonyms:
                     - --version
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   help_text: "usage: shigatyper [-h] [-n SAMPLE_NAME] [--verbose]\
                     \ [--version] read1 read2\n\nShigaTyper v. 1.0.6, 2019\n\nA WGS-based\
                     \ genoserotyping pipeline for Shigella spp.\n\nYun Wu, Henry K\
@@ -209,44 +315,35 @@ subcommands:
                     \ this help message and exit\n  -n SAMPLE_NAME, --name SAMPLE_NAME\n\
                     \  --verbose, -v\n  --version             show program's version\
                     \ number and exit\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: ''
-                  synonyms:
-                  - -h
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: ''
-                  synonyms:
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "usage: shigatyper [-h] [-n SAMPLE_NAME] [--verbose] [--version]\
                   \ read1 read2\nshigatyper: error: the following arguments are required:\
                   \ read1, read2\n"
-                generated_using: &id005 []
+                generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: "show this help message and exit\n-n SAMPLE_NAME, --name\
-                  \ SAMPLE_NAME\n--verbose, -v\n--version             show program's\
-                  \ version number and exit\n"
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: "show this help message and exit\n-n SAMPLE_NAME, --name\
+                  \ SAMPLE_NAME\n--verbose, -v\n--version             show program's\
+                  \ version number and exit\n"
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --version
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               help_text: "usage: shigatyper [-h] [-n SAMPLE_NAME] [--verbose] [--version]\
                 \ read1 read2\n\nShigaTyper v. 1.0.6, 2019\n\nA WGS-based genoserotyping\
                 \ pipeline for Shigella spp.\n\nYun Wu, Henry K Lau, Teresa Lee, David\
@@ -282,6 +379,7 @@ subcommands:
                 \ SAMPLE_NAME\n  --verbose, -v\n  --version             show program's\
                 \ version number and exit\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -290,24 +388,25 @@ subcommands:
               \ read1 read2\nshigatyper: error: the following arguments are required:\
               \ read1, read2\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: "show this help message and exit\n-n SAMPLE_NAME, --name\
-              \ SAMPLE_NAME\n--verbose, -v\n--version             show program's version\
-              \ number and exit\n"
+            optional: true
             synonyms:
             - -h
             - --help
+            description: "show this help message and exit\n-n SAMPLE_NAME, --name\
+              \ SAMPLE_NAME\n--verbose, -v\n--version             show program's version\
+              \ number and exit\n"
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - --version
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           help_text: "usage: shigatyper [-h] [-n SAMPLE_NAME] [--verbose] [--version]\
             \ read1 read2\n\nShigaTyper v. 1.0.6, 2019\n\nA WGS-based genoserotyping\
             \ pipeline for Shigella spp.\n\nYun Wu, Henry K Lau, Teresa Lee, David\
@@ -341,6 +440,7 @@ subcommands:
             \  --verbose, -v\n  --version             show program's version number\
             \ and exit\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -349,23 +449,24 @@ subcommands:
           \ read1 read2\nshigatyper: error: the following arguments are required:\
           \ read1, read2\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: "show this help message and exit\n-n SAMPLE_NAME, --name SAMPLE_NAME\n\
-          --verbose, -v\n--version             show program's version number and exit\n"
+        optional: true
         synonyms:
         - -h
         - --help
+        description: "show this help message and exit\n-n SAMPLE_NAME, --name SAMPLE_NAME\n\
+          --verbose, -v\n--version             show program's version number and exit\n"
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - --version
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       help_text: "usage: shigatyper [-h] [-n SAMPLE_NAME] [--verbose] [--version]\
         \ read1 read2\n\nShigaTyper v. 1.0.6, 2019\n\nA WGS-based genoserotyping pipeline\
         \ for Shigella spp.\n\nYun Wu, Henry K Lau, Teresa Lee, David K Lau, Justin\
@@ -397,6 +498,7 @@ subcommands:
         \  -n SAMPLE_NAME, --name SAMPLE_NAME\n  --verbose, -v\n  --version      \
         \       show program's version number and exit\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -404,23 +506,28 @@ subcommands:
     help_text: "usage: shigatyper [-h] [-n SAMPLE_NAME] [--verbose] [--version] read1\
       \ read2\nshigatyper: error: the following arguments are required: read1, read2\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: "show this help message and exit\n-n SAMPLE_NAME, --name SAMPLE_NAME\n\
-      --verbose, -v\n--version             show program's version number and exit\n"
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag: !Flag
-    description: ''
-    synonyms:
-    - --version
-    args: !EmptyFlagArg {}
     optional: true
+    synonyms:
+    - -n
+    - --name
+    - --verbose
+    - -v
+    - --version
+    description: show program's version number and exit
+    args: !SimpleFlagArg
+      name: SAMPLE_NAME
   help_text: "usage: shigatyper [-h] [-n SAMPLE_NAME] [--verbose] [--version] read1\
     \ read2\n\nShigaTyper v. 1.0.6, 2019\n\nA WGS-based genoserotyping pipeline for\
     \ Shigella spp.\n\nYun Wu, Henry K Lau, Teresa Lee, David K Lau, Justin Payne\n\
@@ -450,6 +557,7 @@ subcommands:
     \            show this help message and exit\n  -n SAMPLE_NAME, --name SAMPLE_NAME\n\
     \  --verbose, -v\n  --version             show program's version number and exit\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -457,3 +565,4 @@ version_flag:
 help_text: "usage: shigatyper [-h] [-n SAMPLE_NAME] [--verbose] [--version] read1\
   \ read2\nshigatyper: error: the following arguments are required: read1, read2\n"
 generated_using: *id005
+docker_image:

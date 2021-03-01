@@ -24,6 +24,9 @@ task FlyesamtoolsSplit {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_filename_format: "output filename format string [\\\"%*_%#.%.\\\"]"
     verbose_output: "verbose output"

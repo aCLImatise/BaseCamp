@@ -3,53 +3,53 @@ id: locarnate.cwl
 inputs:
 - id: in_pairwise_parameters
   doc: parameters for the pairwise alignment step
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pairwise_parameters
 - id: in_t_coffee_params
   doc: parameters for tcoffee
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tcoffee_params
 - id: in_pp_calculator_params
   doc: parameters for locarna_rnafold_pp
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pp_calculator_params
 - id: in_output
   doc: path to output folder
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_library_only
   doc: "if given only a t-coffee library will be written without actual\ncomputation"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --library-only
 - id: in_library_name
   doc: "the file name of the produced t-coffee library (default:\n\"input.lib\")"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --library-name
 - id: in_additional_libraries
   doc: "a comma separated list of paths to t-coffee library files that\nshould be\
     \ given to t-coffee in addition to the one generated during\nthis run"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --additional-libraries
 - id: in_pairwise_aligner
   doc: 'which pairwise aligner to use (default: locarna)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pairwise_aligner
 - id: in_scaling_factor
   doc: each edge from each EPM gets the same weight (exparnap only!)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --scaling_factor
 - id: in_pp_calculater_params
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --pp_calculater_params
 - id: in_creates
@@ -123,9 +123,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: path to output folder
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - locarnate

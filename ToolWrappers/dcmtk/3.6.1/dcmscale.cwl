@@ -3,100 +3,110 @@ id: dcmscale.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --arguments
-- id: in__quiet_quiet
-  doc: --quiet                quiet mode, print no warnings and errors
-  type: boolean
+- id: in_quiet
+  doc: quiet mode, print no warnings and errors
+  type: boolean?
   inputBinding:
-    prefix: -q
-- id: in__verbose_details
-  doc: --verbose              verbose mode, print processing details
-  type: boolean
+    prefix: --quiet
+- id: in_verbose
+  doc: verbose mode, print processing details
+  type: boolean?
   inputBinding:
-    prefix: -v
-- id: in__debug_information
-  doc: --debug                debug mode, print debug information
-  type: boolean
+    prefix: --verbose
+- id: in_debug
+  doc: debug mode, print debug information
+  type: boolean?
   inputBinding:
-    prefix: -d
-- id: in_ll
-  doc: "--log-level            [l]evel: string constant\n(fatal, error, warn, info,\
-    \ debug, trace)\nuse level l for the logger"
-  type: boolean
+    prefix: --debug
+- id: in_log_level
+  doc: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\nuse level\
+    \ l for the logger"
+  type: boolean?
   inputBinding:
-    prefix: -ll
-- id: in_lc
-  doc: "--log-config           [f]ilename: string\nuse config file f for the logger"
-  type: boolean
+    prefix: --log-level
+- id: in_log_config
+  doc: "[f]ilename: string\nuse config file f for the logger"
+  type: boolean?
   inputBinding:
-    prefix: -lc
-- id: in__readdataset_read
-  doc: --read-dataset         read data set without file meta information
-  type: boolean
+    prefix: --log-config
+- id: in_read_dataset
+  doc: read data set without file meta information
+  type: boolean?
   inputBinding:
-    prefix: -f
+    prefix: --read-dataset
 - id: in__readxferauto_use
   doc: =   --read-xfer-auto       use TS recognition (default)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
-- id: in_td
-  doc: --read-xfer-detect     ignore TS specified in the file meta header
-  type: boolean
+- id: in_read_xfer_detect
+  doc: ignore TS specified in the file meta header
+  type: boolean?
   inputBinding:
-    prefix: -td
-- id: in_te
-  doc: --read-xfer-little     read with explicit VR little endian TS
-  type: boolean
+    prefix: --read-xfer-detect
+- id: in_read_xfer_little
+  doc: read with explicit VR little endian TS
+  type: boolean?
   inputBinding:
-    prefix: -te
-- id: in_tb
-  doc: --read-xfer-big        read with explicit VR big endian TS
-  type: boolean
+    prefix: --read-xfer-little
+- id: in_read_xfer_big
+  doc: read with explicit VR big endian TS
+  type: boolean?
   inputBinding:
-    prefix: -tb
-- id: in_ti
-  doc: --read-xfer-implicit   read with implicit VR little endian TS
-  type: boolean
+    prefix: --read-xfer-big
+- id: in_read_xfer_implicit
+  doc: read with implicit VR little endian TS
+  type: boolean?
   inputBinding:
-    prefix: -ti
-- id: in__ignoreaspect_ignore
-  doc: --ignore-aspect        ignore pixel aspect ratio when scaling
-  type: boolean
+    prefix: --read-xfer-implicit
+- id: in_ignore_aspect
+  doc: ignore pixel aspect ratio when scaling
+  type: boolean?
   inputBinding:
-    prefix: -a
-- id: in__nointerpolation_interpolation
-  doc: --no-interpolation     no interpolation when scaling
-  type: boolean
+    prefix: --ignore-aspect
+- id: in_no_interpolation
+  doc: no interpolation when scaling
+  type: boolean?
   inputBinding:
-    prefix: -i
-- id: in__noscaling_scaling
-  doc: --no-scaling           no scaling, ignore pixel aspect ratio (default)
-  type: boolean
+    prefix: --no-interpolation
+- id: in_no_scaling
+  doc: no scaling, ignore pixel aspect ratio (default)
+  type: boolean?
   inputBinding:
-    prefix: -S
-- id: in__writedataset_write
-  doc: --write-dataset        write data set without file meta information
-  type: boolean
+    prefix: --no-scaling
+- id: in_write_dataset
+  doc: write data set without file meta information
+  type: boolean?
   inputBinding:
-    prefix: -F
-- id: in__disablenewvr_disable
-  doc: --disable-new-vr       disable support for new VRs, convert to OB
-  type: boolean
+    prefix: --write-dataset
+- id: in_disable_new_vr
+  doc: disable support for new VRs, convert to OB
+  type: boolean?
   inputBinding:
-    prefix: -u
-- id: in__grouplengthremove_always
-  doc: --group-length-remove  always write without group length elements
-  type: boolean
+    prefix: --disable-new-vr
+- id: in_group_length_remove
+  doc: always write without group length elements
+  type: boolean?
   inputBinding:
-    prefix: -g
-- id: in__lengthundefined_write
-  doc: --length-undefined     write with undefined lengths
-  type: boolean
+    prefix: --group-length-remove
+- id: in_length_undefined
+  doc: write with undefined lengths
+  type: boolean?
   inputBinding:
-    prefix: -e
+    prefix: --length-undefined
+- id: in__paddingretain_change
+  doc: "=   --padding-retain       do not change padding\n(default if not --write-dataset)"
+  type: boolean?
+  inputBinding:
+    prefix: -p
+- id: in_padding_off
+  doc: no padding (implicit if --write-dataset)
+  type: boolean?
+  inputBinding:
+    prefix: --padding-off
 - id: in_dcm_file_in
   doc: DICOM input filename to be scaled
   type: string
@@ -116,6 +126,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dcmscale

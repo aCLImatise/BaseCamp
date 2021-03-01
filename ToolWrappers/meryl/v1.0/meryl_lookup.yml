@@ -3,57 +3,60 @@ command:
 - meryl-lookup
 positional:
 - !Positional
-  description: If the lookup table requires more memory than allowed, the program
+  optional: false
   position: 0
   name: speed.
-  optional: false
+  description: If the lookup table requires more memory than allowed, the program
 named:
 - !Flag
-  description: only required for -include and -exclude
+  optional: true
   synonyms:
   - -sequence2
   - -r2
+  description: only required for -include and -exclude
   args: !SimpleFlagArg
     name: and
-  optional: true
 - !Flag
-  description: m    Ignore kmers with value below m
+  optional: true
   synonyms:
   - -min
+  description: m    Ignore kmers with value below m
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: m    Ignore kmers with value above m
+  optional: true
   synonyms:
   - -max
+  description: m    Ignore kmers with value above m
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Number of threads to use when constructing lookup table.
+  optional: true
   synonyms:
   - -threads
+  description: Number of threads to use when constructing lookup table.
   args: !SimpleFlagArg
     name: t
-  optional: true
 - !Flag
-  description: Don't use more than m GB memory
+  optional: true
   synonyms:
   - -memory
+  description: Don't use more than m GB memory
   args: !SimpleFlagArg
     name: m
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -existence
   description: "Report a tab-delimited line for each sequence showing\nthe number\
     \ of kmers in the sequence, in the database,\nand in both.\noutput:  seqName <tab>\
     \ mersInSeq <tab> mersInDB <tab> mersInBoth\nseqName    - name of the sequence\n\
     mersInSeq  - number of mers in the sequence\nmersInDB   - number of mers in the\
     \ meryl database\nmersInBoth - number of mers in the sequence that are\nalso in\
     \ the database"
-  synonyms:
-  - -existence
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -dump
   description: "Report a tab-delimited line reporting each kmer in the input\nsequences,\
     \ in order, annotated with the value of the kmer in\nthe input database.  If the\
     \ kmer does not exist in the database\nits value will be reported as zero.\noutput:\
@@ -64,45 +67,42 @@ named:
     \ the database, 'F' if it does not\nfwd-mer    - forward mer sequence\nfwd-val\
     \    - value of the forward mer in the database\nrev-mer    - reverse mer sequence\n\
     rev-val    - value of the reverse mer in the database"
-  synonyms:
-  - -dump
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -include
   description: "Extract sequences *containing* kmers in <input.meryl>.\noutput:  sequence\
     \ given format (fasta or fastq) with the number of overlapping kmers appended\n\
     if pairs of sequences are given, R1 will be stdout and R2 be named as <output.r2>\n\
     <output.r2> will be automatically compressed if ends with .gz, .bz2, or xs\nseqName\
     \    - name of the sequence this kmer is from\nmersInBoth - number of mers in\
     \ both sequence and in the database"
-  synonyms:
-  - -include
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -exclude
   description: "Extract sequences *NOT containing* kmers in <input.meryl>.\noutput:\
     \  sequence given format (fasta or fastq) without reads containing kmers\nif pairs\
     \ of sequences are given, R1 will be stdout and R2 be named as <output.r2>\n<output.r2>\
     \ will be automatically compressed if ends with .gz, .bz2, or xs\nseqName    -\
     \ name of the sequence this kmer is from"
-  synonyms:
-  - -exclude
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -mers
+  description: ''
   args: !SimpleFlagArg
     name: input.meryl
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -sequence
+  description: ''
   args: !SimpleFlagArg
     name: input.fasta
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -153,3 +153,4 @@ help_text: "usage: meryl-lookup <report-type> -sequence <input.fasta> -mers <inp
   No query meryl database (-mers) supplied.\nNo report-type (-existence, etc) supplied.\n"
 generated_using:
 - --help
+docker_image:

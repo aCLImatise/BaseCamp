@@ -10,6 +10,9 @@ task Hallascatter {
       ~{if defined(halla_output_directory) then ("--input " +  '"' + halla_output_directory + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     halla_output_directory: "HAllA output directory"
     outfile: "output file name"

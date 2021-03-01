@@ -3,42 +3,42 @@ id: chado_export_gff.cwl
 inputs:
 - id: in_verbose
   doc: verbose mode
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_config
   doc: YAML file containing connection details
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_use_password
   doc: 'connect with password (default: no password)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use_password
 - id: in_output_file
   doc: GFF output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_file
 - id: in_abbreviation
   doc: abbreviation/short name of the organism
-  type: string
+  type: string?
   inputBinding:
     prefix: --abbreviation
 - id: in_export_fast_a
   doc: export FASTA sequences along with annotations
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --export_fasta
 - id: in_fast_a_file
   doc: "FASTA output file with sequences (default: paste to\nend of GFF file)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta_file
 - id: in_include_obsolete
   doc: export all features, including obsoletes
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --include_obsolete
 outputs:
@@ -47,14 +47,15 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: GFF output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
 - id: out_fast_a_file
   doc: "FASTA output file with sequences (default: paste to\nend of GFF file)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_fast_a_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - chado

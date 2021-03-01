@@ -38,6 +38,9 @@ task PrepareProtTopoEditpy {
       ~{if defined(nt_mpi) then ("-ntmpi " +  '"' + nt_mpi + '"') else ""} \
       ~{if defined(gpu_id) then ("-gpu_id " +  '"' + gpu_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_pdb_file: "Input PDB file"
     input_topology_file: "Input topology file"

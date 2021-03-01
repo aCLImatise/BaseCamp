@@ -12,6 +12,9 @@ task CnvUpdaterpy {
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
       ~{if defined(suffix) then ("--suffix " +  '"' + suffix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Directory to write output .cnn files."
     suffix: "Filename suffix to add before the '.cnn' extension in\\noutput files. [Default: .updated]\\n"

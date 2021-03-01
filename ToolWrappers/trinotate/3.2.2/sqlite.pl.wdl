@@ -4,6 +4,9 @@ task Sqlitepl {
   command <<<
     sqlite_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

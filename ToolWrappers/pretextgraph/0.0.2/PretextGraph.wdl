@@ -4,6 +4,9 @@ task PretextGraph {
   command <<<
     PretextGraph
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

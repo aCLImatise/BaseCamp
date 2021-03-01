@@ -18,6 +18,9 @@ task PoppunkCalculateSilhouettepy {
       ~{if defined(id_col) then ("--id-col " +  '"' + id_col + '"') else ""} \
       ~{if defined(sub) then ("--sub " +  '"' + sub + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     distances: "Prefix of input pickle of pre-calculated distances\\n(required)"
     cluster_csv: "Cluster assignments"

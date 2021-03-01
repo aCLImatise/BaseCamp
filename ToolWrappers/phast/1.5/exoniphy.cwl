@@ -6,7 +6,7 @@ inputs:
     \ models must correspond to order of states in\nHMM file.  By default, a set of\
     \ models appropriate for human,\nmouse, and rat are used (estimated as described\
     \ in Siepel &\nHaussler, 2004)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --tree-models
 - id: in_hmm
@@ -14,7 +14,7 @@ inputs:
     \ the 60-state HMM described in Siepel & Haussler\n(2004) is used, with transition\
     \ probabilities appropriate for\nmammalian genomes (estimated as described in\
     \ that paper)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --hmm
 - id: in_cat_map
@@ -22,7 +22,7 @@ inputs:
     a filename or an \"inline\" description of a simple category\nmap, e.g., --catmap\
     \ \"NCATS = 3 ; CDS 1-3\".  By default, a\ncategory map is used that is appropriate\
     \ for the 60-state HMM\nmentioned above."
-  type: File
+  type: File?
   inputBinding:
     prefix: --catmap
 - id: in_extrapolate
@@ -36,19 +36,19 @@ inputs:
     default\"\nis given instead of a filename, then a phylogeny for 25\nvertebrate\
     \ species, estimated from sequence data for Target 1\n(CFTR) of the NISC Comparative\
     \ Sequencing Program (Thomas et\nal., 2003), will be assumed."
-  type: long
+  type: long?
   inputBinding:
     prefix: --extrapolate
 - id: in_data_path
   doc: "Path to the directory with phast data. Exoniphy default models should\nbe\
     \ in <path>/exoniphy/. Default is set at compile time."
-  type: File
+  type: File?
   inputBinding:
     prefix: --data-path
 - id: in_msa_format
   doc: "|PHYLIP|MPM|MAF|SS\nFile format of input alignment.  Default is to guess alignment\n\
     format from file contents."
-  type: File
+  type: File?
   inputBinding:
     prefix: --msa-format
 - id: in_score
@@ -56,27 +56,27 @@ inputs:
     \ under an exon model minus their log total\nprobability under a background model.\
     \  The exon model can be\naltered using --cds-types and --signal-types and the\n\
     background model can be altered using --backgd-types (see below)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --score
 - id: in_seqname
   doc: "Use specified string as \"seqname\" field in GFF output.\nDefault is obtained\
     \ from input file name (double filename\nroot, e.g., \"chr22\" if input file is\
     \ \"chr22.35.ss\")."
-  type: File
+  type: File?
   inputBinding:
     prefix: --seqname
 - id: in_id_pref
   doc: "Use specified string as prefix of generated ids in GFF output.\nCan be used\
     \ to ensure ids are unique.  Default is obtained\nfrom input file name (single\
     \ filename root, e.g., \"chr22.35\"\nif input file is \"chr22.35.ss\")."
-  type: File
+  type: File?
   inputBinding:
     prefix: --idpref
 - id: in_group_tag
   doc: "Use specified string as the tag denoting groups in GFF output\n(default is\
     \ \"transcript_id\")."
-  type: string
+  type: string?
   inputBinding:
     prefix: --grouptag
 - id: in_alias
@@ -86,13 +86,13 @@ inputs:
     \"rat\".  This option allows a mapping to be established\nbetween the leaves of\
     \ trees in these files and the sequences\nof an alignment that uses an alternative\
     \ naming convention.)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --alias
 - id: in_no_cns
   doc: "Eliminate the state/category for conserved noncoding sequence\nfrom the default\
     \ HMM and category map.  Ignored if non-default\nHMM and category map are selected."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-cns
 - id: in_reflect_strand
@@ -101,7 +101,7 @@ inputs:
     \ with background categories\n(see --backgd-cats).  The new HMM will be used for\
     \ predictions\non both strands.  If the default HMM is used, then this option\n\
     will be used automatically."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reflect-strand
 - id: in_bias
@@ -113,7 +113,7 @@ inputs:
     \ to\nimprove, at some cost to specificity; if it is negative, then\nfewer predictions\
     \ will tend to be made, and specificity will\ntend to improve, at some cost to\
     \ sensitivity."
-  type: double
+  type: double?
   inputBinding:
     prefix: --bias
 - id: in_sens_spec
@@ -121,19 +121,19 @@ inputs:
     \ write results to files with given\nfilename root.  This allows the sensitivity/specificity\n\
     tradeoff to be examined.  The range is fixed at -20 to 10,\nand 10 different sets\
     \ of predictions are produced."
-  type: File
+  type: File?
   inputBinding:
     prefix: --sens-spec
 - id: in_back_gd_types
   doc: "Feature types to be considered \"background\" (default value:\n\"background,CNS\"\
     ).  Affects --reflect-strand,\n--score, and --bias."
-  type: string
+  type: string?
   inputBinding:
     prefix: --backgd-types
 - id: in_cds_types
   doc: "(for use with --score) Feature types that represent protein-coding\nregions\
     \ (default value: \"CDS\")."
-  type: string
+  type: string?
   inputBinding:
     prefix: --cds-types
 - id: in_signal_types
@@ -141,12 +141,12 @@ inputs:
     \ scoring (default value:\n\"start_codon,stop_codon,5'splice,3'splice,prestart,cds5'ss,cds3'ss\"\
     ).\nOne score is produced for a CDS feature (as defined by\n--cds-types) and the\
     \ adjacent signal features; the score is\nthen assigned to the CDS feature."
-  type: long
+  type: long?
   inputBinding:
     prefix: --signal-types
 - id: in_indels
   doc: Use the indel model described in Siepel & Haussler (2004).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --indels
 - id: in_no_gaps
@@ -156,7 +156,7 @@ inputs:
     \ AG positions of splice\nsites (with or without --indels).  In all other cases,\
     \ the\ndefault behavior is to treat gaps as missing data, or to address\nthem\
     \ with the indel model (--indels)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --no-gaps
 - id: in_require_informative
@@ -168,7 +168,7 @@ inputs:
     \ and the canonical GT and AG\npositions of splice sites.  Note that alignment\
     \ gaps *are*\nconsidered informative; the way they are handled is defined by\n\
     --indels and --no-gaps."
-  type: long
+  type: long?
   inputBinding:
     prefix: --require-informative
 - id: in_not_informative
@@ -177,12 +177,12 @@ inputs:
     \ that are very close to the\nreference sequence and thus do not contribute much\
     \ in the way\nof phylogenetic information.  E.g., one might use\n\"--not-informative\
     \ chimp\" with a human-referenced multiple\nalignment including chimp sequence."
-  type: string
+  type: string?
   inputBinding:
     prefix: --not-informative
 - id: in_quiet
   doc: Proceed quietly (without messages to stderr).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_msa_fname
@@ -194,6 +194,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - exoniphy

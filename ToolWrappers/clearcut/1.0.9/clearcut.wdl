@@ -46,6 +46,9 @@ task Clearcut {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(in) then ("--in " +  '"' + in + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "More output. (Default: OFF)"
     quiet: "Silent operation. (Default: ON)"

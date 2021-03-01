@@ -1,26 +1,42 @@
 !Command
 command:
 - diri_sampler
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: files
+  description: -i <input data file>
+- !Positional
+  optional: false
+  position: 1
+  name: parameters
+  description: -j <sampling iterations>
 named:
 - !Flag
-  description: "parameters\n-j <sampling iterations>\n-a <alpha>\n-K <startvalue for\
-    \ number of clusters> not compat. with -k\n-k <avg. number of reads in each startcluster>\
-    \ not compat. with -K\n-t <history time>\n-R <randomseed>"
-  synonyms:
-  - -i
-  args: !SimpleFlagArg
-    name: input data file
   optional: true
+  synonyms:
+  - -a
+  - -K
+  description: not compat. with -k
+  args: !SimpleFlagArg
+    name: alpha
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: not compat. with -K
+  args: !SimpleFlagArg
+    name: avg. number of reads in each startcluster
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: this help!
+  optional: true
   synonyms:
   - -h
+  description: this help!
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "diri_sampler [options]\n\n  files\n\t-i <input data file>\n  parameters\n\
@@ -30,3 +46,4 @@ help_text: "diri_sampler [options]\n\n  files\n\t-i <input data file>\n  paramet
   \t-h\t\t this help!\n"
 generated_using:
 - --help
+docker_image:

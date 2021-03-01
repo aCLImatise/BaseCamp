@@ -42,6 +42,9 @@ task PhyloFlashHeatmapR {
       ~{if (library_name_from_file) then "--library-name-from-file" else ""} \
       ~{if defined(custom_distance_matrix_sample) then ("--custom-distance-matrix-sample " +  '"' + custom_distance_matrix_sample + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Be more talkative"
     quiet: "Be less talkative"

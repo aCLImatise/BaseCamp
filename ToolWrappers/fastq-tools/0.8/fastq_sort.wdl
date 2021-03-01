@@ -22,6 +22,9 @@ task Fastqsort {
       ~{if (gc) then "--gc" else ""} \
       ~{if (mean_qual) then "--mean-qual" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reverse: "sort in reverse (i.e., descending) order"
     id: "sort alphabetically by read identifier"

@@ -3,17 +3,17 @@ id: gnali.cwl
 inputs:
 - id: in_input_file
   doc: 'File of genes to test. Accepted formats: csv, txt'
-  type: File
+  type: File?
   inputBinding:
     prefix: --input_file
 - id: in_output_dir
   doc: 'Name of output directory. Default: results-ID/'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output_dir
 - id: in_force
   doc: Force existing output folder to be overwritten
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --force
 outputs:
@@ -22,14 +22,15 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: 'Name of output directory. Default: results-ID/'
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_dir)
 - id: out_force
   doc: Force existing output folder to be overwritten
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_force)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gnali

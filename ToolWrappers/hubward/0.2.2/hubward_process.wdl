@@ -10,6 +10,9 @@ task HubwardProcess {
       ~{or} \
       ~{items}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     or: "- a file called metadata-builder.py (in which case it is executed and"
     items: "Path to directory containing metadata.yaml file or metadata-\\nbuilder.yaml file, or path to a group config YAML file. Can\\nspecify multiple."

@@ -3,7 +3,7 @@ id: plot_bmprobs.cwl
 inputs:
 - id: in_quiet
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --quiet
 - id: in_read
@@ -220,6 +220,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - plot-bmprobs

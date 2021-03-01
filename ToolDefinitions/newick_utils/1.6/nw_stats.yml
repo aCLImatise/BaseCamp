@@ -12,11 +12,11 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: '[lc]: format in lines (l) or columns (c). Default is l.'
+    optional: true
     synonyms:
     - -f
+    description: '[lc]: format in lines (l) or columns (c). Default is l.'
     args: !EmptyFlagArg {}
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -28,11 +28,11 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: '[lc]: format in lines (l) or columns (c). Default is l.'
+        optional: true
         synonyms:
         - -f
+        description: '[lc]: format in lines (l) or columns (c). Default is l.'
         args: !EmptyFlagArg {}
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -44,11 +44,11 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: '[lc]: format in lines (l) or columns (c). Default is l.'
+            optional: true
             synonyms:
             - -f
+            description: '[lc]: format in lines (l) or columns (c). Default is l.'
             args: !EmptyFlagArg {}
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -60,22 +60,16 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: '[lc]: format in lines (l) or columns (c). Default is
-                  l.'
+                optional: true
                 synonyms:
                 - -f
+                description: '[lc]: format in lines (l) or columns (c). Default is
+                  l.'
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -fHh
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
@@ -83,21 +77,78 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: '[lc]: format in lines (l) or columns (c). Default
-                      is l.'
+                    optional: true
                     synonyms:
                     - -f
+                    description: '[lc]: format in lines (l) or columns (c). Default
+                      is l.'
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -fHh
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        description: '[lc]: format in lines (l) or columns (c). Default
+                          is l.'
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ': print this message and exit'
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Prints statistics about trees\n\nSynopsis\n--------\n\
+                        \nnw_stats [-hHf:] <newick trees filename|->\n\nInput\n-----\n\
+                        \nArgument is the name of a file that contains Newick trees,\
+                        \ or '-' (in\nwhich case trees are read from standard input).\n\
+                        \nOutput\n------\n\nPrints information about the trees in\
+                        \ the input. The info is printed:\nTree type, number of nodes,\
+                        \ number of leaves, number of dichotomies,\nnumber of leaf\
+                        \ labels, number of inner labels. By default, the fields\n\
+                        are printed on a line, like this:\nType:\tPhylogram\n#nodes:\t\
+                        19\n#leaves:\t10\n#dichotomies:\t9\n#leaf labels:\t10\n#inner\
+                        \ labels:\t6\n\nOptions\n-------\n\n    -h: print this message\
+                        \ and exit\n    -f [lc]: format in lines (l) or columns (c).\
+                        \ Default is l.\n\nExamples\n--------\n\n# default statistics:\n\
+                        \n$ nw_stats data/catarrhini.nw\n"
+                      generated_using: &id004
+                      - -h
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: nw_stats [-fHh] <filename|->\n"
+                    generated_using: &id005 []
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ': print this message and exit'
+                    optional: true
                     synonyms:
                     - -h
+                    description: ': print this message and exit'
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Prints statistics about trees\n\nSynopsis\n--------\n\
@@ -113,22 +164,23 @@ subcommands:
                     \    -h: print this message and exit\n    -f [lc]: format in lines\
                     \ (l) or columns (c). Default is l.\n\nExamples\n--------\n\n\
                     # default statistics:\n\n$ nw_stats data/catarrhini.nw\n"
-                  generated_using: &id004
-                  - -h
+                  generated_using: *id004
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "Usage: nw_stats [-fHh] <filename|->\n"
-                generated_using: &id005 []
+                generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ': print this message and exit'
+                optional: true
                 synonyms:
                 - -h
+                description: ': print this message and exit'
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Prints statistics about trees\n\nSynopsis\n--------\n\n\
@@ -144,20 +196,22 @@ subcommands:
                 \ -f [lc]: format in lines (l) or columns (c). Default is l.\n\nExamples\n\
                 --------\n\n# default statistics:\n\n$ nw_stats data/catarrhini.nw\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
             version_flag:
             help_text: "Usage: nw_stats [-fHh] <filename|->\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ': print this message and exit'
+            optional: true
             synonyms:
             - -h
+            description: ': print this message and exit'
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Prints statistics about trees\n\nSynopsis\n--------\n\nnw_stats\
@@ -173,20 +227,22 @@ subcommands:
             \ (c). Default is l.\n\nExamples\n--------\n\n# default statistics:\n\n\
             $ nw_stats data/catarrhini.nw\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
         version_flag:
         help_text: "Usage: nw_stats [-fHh] <filename|->\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ': print this message and exit'
+        optional: true
         synonyms:
         - -h
+        description: ': print this message and exit'
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Prints statistics about trees\n\nSynopsis\n--------\n\nnw_stats\
@@ -201,20 +257,22 @@ subcommands:
         \    -f [lc]: format in lines (l) or columns (c). Default is l.\n\nExamples\n\
         --------\n\n# default statistics:\n\n$ nw_stats data/catarrhini.nw\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
     version_flag:
     help_text: "Usage: nw_stats [-fHh] <filename|->\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ': print this message and exit'
+    optional: true
     synonyms:
     - -h
+    description: ': print this message and exit'
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Prints statistics about trees\n\nSynopsis\n--------\n\nnw_stats [-hHf:]\
@@ -229,9 +287,11 @@ subcommands:
     \ (c). Default is l.\n\nExamples\n--------\n\n# default statistics:\n\n$ nw_stats\
     \ data/catarrhini.nw\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
 version_flag:
 help_text: "Usage: nw_stats [-fHh] <filename|->\n"
 generated_using: *id005
+docker_image:

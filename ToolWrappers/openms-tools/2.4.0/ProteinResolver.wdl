@@ -28,6 +28,9 @@ task ProteinResolver {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "*                       Input database file (valid formats: 'fasta')"
     in: "<file(s)>                        Input file(s) holding experimental data (valid formats: 'idXML', 'consensusXML')"

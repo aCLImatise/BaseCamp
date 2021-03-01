@@ -26,6 +26,9 @@ task SvtkPetest {
       ~{if defined(median_file) then ("--medianfile " +  '"' + median_file + '"') else ""} \
       ~{if (log) then "--log" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window_out: "Window outside breakpoint to query for discordant\\npairs. [500]"
     window_in: "Window inside breakpoint to query for discordant\\npairs. [50]"

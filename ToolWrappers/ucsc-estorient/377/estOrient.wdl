@@ -20,6 +20,9 @@ task EstOrient {
       ~{if defined(est_orient_info) then ("-estOrientInfo " +  '"' + est_orient_info + '"') else ""} \
       ~{if defined(info) then ("-info " +  '"' + info + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chrom: "- process this chromosome, maybe repeated"
     keep_disoriented: "- don't drop ESTs where orientation can't\\nbe determined."

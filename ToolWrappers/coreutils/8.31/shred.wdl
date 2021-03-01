@@ -24,6 +24,9 @@ task Shred {
       ~{if (exact) then "--exact" else ""} \
       ~{if (add_final_overwrite) then "--zero" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "change permissions to allow writing if necessary"
     iterations: "overwrite N times instead of the default (3)"

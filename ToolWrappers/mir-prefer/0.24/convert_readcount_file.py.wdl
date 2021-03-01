@@ -8,6 +8,9 @@ task Convertreadcountfilepy {
     convert_readcount_file_py \
       ~{rcn}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rcn: ""
   }

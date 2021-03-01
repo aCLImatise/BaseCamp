@@ -3,7 +3,7 @@ id: planemo_brew.cwl
 inputs:
 - id: in_brew
   doc: Homebrew 'brew' executable to use.
-  type: File
+  type: File?
   inputBinding:
     prefix: --brew
 - id: in_tool_path
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - planemo

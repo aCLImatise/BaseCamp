@@ -30,6 +30,9 @@ task RepeatClassifier {
       ~{if defined(trf_prgm) then ("-trf_prgm " +  '"' + trf_prgm + '"') else ""} \
       ~{if defined(cd_hit_dir) then ("-cdhit_dir " +  '"' + cd_hit_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     maff_t_dir: "The path to the installation of the MAFFT multiple alignment\\nprogram."
     genome_tools_dir: "The path to the installation of the GenomeTools package."

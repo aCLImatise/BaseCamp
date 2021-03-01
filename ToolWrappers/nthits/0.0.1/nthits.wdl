@@ -18,6 +18,9 @@ task Nthits {
       ~{if (out_bloom) then "--outbloom" else ""} \
       ~{if (solid) then "--solid" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "use N parallel threads [16]"
     km_er: "the length of kmer [64]"

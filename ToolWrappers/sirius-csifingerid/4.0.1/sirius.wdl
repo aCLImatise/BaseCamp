@@ -8,6 +8,9 @@ task Sirius {
     sirius \
       ~{arguments_dot_dot_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arguments_dot_dot_dot: ""
   }

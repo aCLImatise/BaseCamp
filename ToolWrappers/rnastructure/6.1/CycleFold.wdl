@@ -30,6 +30,9 @@ task CycleFold {
       ~{if (gamma) then "--gamma" else ""} \
       ~{if (iterations) then "--iterations" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     big_loops: "Toggle whether large hairpins and internal loops are permitted in the\\nstructure.\\nDefault: off"
     fast_a_constraints: "Specify that the input fasta file contains secondary structure constraints\\n(in dot-bracket format) to be applied to each structure.\\nDefault: off."

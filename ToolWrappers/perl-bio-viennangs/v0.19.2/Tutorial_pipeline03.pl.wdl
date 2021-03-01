@@ -22,6 +22,9 @@ task TutorialPipeline03pl {
       ~{if (man) then "--man" else ""} \
       ~{if (i) then "-I" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "Destination folder for the output Track Hub."
     baseurl: "BaseURL used within the Track Hub. This URL will be included\\nverbatim in the resulting Track Hub. It is crucial that this URl is\\nvalid, else the resulting Track Hub will be broken."

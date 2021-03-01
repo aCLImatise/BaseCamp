@@ -11,7 +11,7 @@ task SuppapyClusterEvents {
     Int? min_pts
     String? metric
     String? clustering
-    Boolean? ranges_column_numbers
+    Boolean? ranges_specifying_numbers
     File? name_output_file
   }
   command <<<
@@ -25,9 +25,12 @@ task SuppapyClusterEvents {
       ~{if defined(min_pts) then ("--min-pts " +  '"' + min_pts + '"') else ""} \
       ~{if defined(metric) then ("--metric " +  '"' + metric + '"') else ""} \
       ~{if defined(clustering) then ("--clustering " +  '"' + clustering + '"') else ""} \
-      ~{if (ranges_column_numbers) then "-g" else ""} \
+      ~{if (ranges_specifying_numbers) then "-g" else ""} \
       ~{if defined(name_output_file) then ("--output " +  '"' + name_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dps_i: "Input file of delta-PSI values (.dpsi format)"
     psi_vec: "Input file with PSI values (.psivec format)"
@@ -38,7 +41,7 @@ task SuppapyClusterEvents {
     min_pts: "Minimum number of events required per cluster.\\n(Default: 20)."
     metric: "Distance function to be used.Options: euclidean\\n(Default), manhattan, cosine."
     clustering: "Clustering method to use.Options: OPTICS , DBSCAN\\n(Default)."
-    ranges_column_numbers: "[INDEXES [INDEXES ...]], --groups [INDEXES [INDEXES ...]]\\nRanges of column numbers specifying the replicates per\\ncondition. Column numbers have to be continuous, with\\nno overlapping or missing columns between them. Ex:\\n1-3,4-6"
+    ranges_specifying_numbers: "[INDEXES [INDEXES ...]], --groups [INDEXES [INDEXES ...]]\\nRanges of column numbers specifying the replicates per\\ncondition. Column numbers have to be continuous, with\\nno overlapping or missing columns between them. Ex:\\n1-3,4-6"
     name_output_file: "Name of the output file.\\n"
   }
   output {

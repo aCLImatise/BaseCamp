@@ -5,85 +5,85 @@ command:
 - load_gff
 positional:
 - !Positional
-  description: 'Options:'
+  optional: false
   position: 0
   name: None
-  optional: false
+  description: 'Options:'
 named:
 - !Flag
-  description: "Type of the landmarks (will speed up loading if\nprovided, e.g. contig,\
-    \ should be a term of the\nSequence ontology)"
+  optional: true
   synonyms:
   - --landmark_type
+  description: "Type of the landmarks (will speed up loading if\nprovided, e.g. contig,\
+    \ should be a term of the\nSequence ontology)"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Replacement string for the protein name using\ncapturing groups defined\
-    \ by --re_protein_capture"
+  optional: true
   synonyms:
   - --re_protein
+  description: "Replacement string for the protein name using\ncapturing groups defined\
+    \ by --re_protein_capture"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Regular expression to capture groups in mRNA name\nto use in --re_protein\
-    \ (e.g. \"^(.*?)-R([A-Z]+)$\",\ndefault=\"^(.*?)$\")  [default: ^(.*?)$]"
+  optional: true
   synonyms:
   - --re_protein_capture
+  description: "Regular expression to capture groups in mRNA name\nto use in --re_protein\
+    \ (e.g. \"^(.*?)-R([A-Z]+)$\",\ndefault=\"^(.*?)$\")  [default: ^(.*?)$]"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fasta
   description: "Path to a Fasta containing sequences for some\nfeatures. When creating\
     \ a feature, if its\nsequence is in this fasta file it will be loaded.\nOtherwise\
     \ for mRNA and polypeptides it will be\ncomputed from the genome sequence (if\
     \ available),\notherwise it will be left empty."
-  synonyms:
-  - --fasta
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Disable the computation of mRNA and polypeptides\nsequences based\
-    \ on genome sequence and positions."
+  optional: true
   synonyms:
   - --no_seq_compute
+  description: "Disable the computation of mRNA and polypeptides\nsequences based\
+    \ on genome sequence and positions."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Hide progress information
+  optional: true
   synonyms:
   - --quiet
+  description: Hide progress information
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --add_only
   description: "Use this flag if you're not updating existing\nfeatures, but just\
     \ adding new features to the\nselected analysis and organism. It will speedup\n\
     loading, and reduce memory usage, but might\nproduce errors in case of already\
     \ existing\nfeature."
-  synonyms:
-  - --add_only
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Attribute containing the protein uniquename. It\nis searched at the\
-    \ mRNA level, and if not found\nat CDS level."
+  optional: true
   synonyms:
   - --protein_id_attr
+  description: "Attribute containing the protein uniquename. It\nis searched at the\
+    \ mRNA level, and if not found\nat CDS level."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: chakin feature load_gff [OPTIONS] GFF ANALYSIS_ID ORGANISM_ID\n\
@@ -114,3 +114,4 @@ help_text: "Usage: chakin feature load_gff [OPTIONS] GFF ANALYSIS_ID ORGANISM_ID
   \          at CDS level.\n\n  -h, --help                 Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

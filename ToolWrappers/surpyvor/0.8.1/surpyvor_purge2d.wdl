@@ -12,6 +12,9 @@ task SurpyvorPurge2d {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(sambam_file_write) then ("--output " +  '"' + sambam_file_write + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print out more information while running."
     sambam_file_write: "sam/bam file to write filtered alignments to [stdout]\\n"

@@ -4,47 +4,71 @@ command:
 - utrrates
 positional:
 - !Positional
-  description: Bam file(s)
+  optional: false
   position: 0
   name: bam
-  optional: false
+  description: Bam file(s)
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -m
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -mq
-  args: !SimpleFlagArg
-    name: MQ
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -r
-  args: !SimpleFlagArg
-    name: REFERENCEFILE
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -o
+  - --outputDir
+  description: Output directory for mapped BAM files.
   args: !SimpleFlagArg
     name: OUTPUTDIR
+- !Flag
   optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: Reference fasta file
+  args: !SimpleFlagArg
+    name: REFERENCEFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -mq
+  - --min-basequality
+  description: 'Minimal base quality for SNPs (default: 27)'
+  args: !SimpleFlagArg
+    name: MQ
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --multiTCStringency
+  - -t
+  - --threads
+  description: 'Thread number (default: 1)'
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bed
+  description: BED file
+  args: !SimpleFlagArg
+    name: BED
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --max-read-length
+  description: "Max read length in BAM file (default: None)\n"
+  args: !SimpleFlagArg
+    name: MAXLENGTH
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: alleyoop utrrates [-h] -o OUTPUTDIR -r REFERENCEFILE [-mq MQ] [-m]\n\
@@ -60,3 +84,4 @@ help_text: "usage: alleyoop utrrates [-h] -o OUTPUTDIR -r REFERENCEFILE [-mq MQ]
   \                        Max read length in BAM file (default: None)\n"
 generated_using:
 - --help
+docker_image:

@@ -14,6 +14,9 @@ task MafExtractChromRangespy {
       ~{if defined(min_cols) then ("--mincols " +  '"' + min_cols + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_cols: "Minimum length (columns) required for alignment to be\\noutput"
     prefix: "Prefix\\n"

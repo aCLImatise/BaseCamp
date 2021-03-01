@@ -3,12 +3,12 @@ id: stats.cwl
 inputs:
 - id: in_prefix_output_stats
   doc: 'Prefix for output stats files [default: stats]'
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_h
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -h
 - id: in_show
@@ -55,6 +55,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - stats

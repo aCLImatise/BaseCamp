@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, Int, String
+
+Cfsan_Snp_Pipeline_Collect_Metrics_V0_1_0 = CommandToolBuilder(tool="cfsan_snp_pipeline_collect_metrics", base_command=["cfsan_snp_pipeline", "collect_metrics"], inputs=[ToolInput(tag="in_force", input_type=Boolean(optional=True), prefix="--force", doc=InputDocumentation(doc="Force processing even when result files already exist\nand are newer than inputs (default: False)")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="--output", doc=InputDocumentation(doc="Output file. Relative or absolute path to the metrics\nfile (default: metrics)")), ToolInput(tag="in_max_snps", input_type=Int(optional=True), prefix="--maxsnps", doc=InputDocumentation(doc="Maximum allowed number of SNPs per sample (default:\n-1)")), ToolInput(tag="in_file_name_consensus_fasta", input_type=File(optional=True), prefix="-c", doc=InputDocumentation(doc="File name of the consensus fasta file which must exist\nin the sample directory (default: consensus.fasta)")), ToolInput(tag="in_file_name_fasta", input_type=File(optional=True), prefix="-C", doc=InputDocumentation(doc="File name of the consensus preserved fasta file which\nmust exist in the sample directory (default:\nconsensus_preserved.fasta)")), ToolInput(tag="in_file_name_consensus_vcf", input_type=File(optional=True), prefix="-v", doc=InputDocumentation(doc="File name of the consensus vcf file which must exist\nin the sample directory (default: consensus.vcf)")), ToolInput(tag="in_file_name_vcf", input_type=File(optional=True), prefix="-V", doc=InputDocumentation(doc="File name of the consensus preserved vcf file which\nmust exist in the sample directory (default:\nconsensus_preserved.vcf)")), ToolInput(tag="in_verbose", input_type=Int(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Verbose message level (0=no info, 5=lots) (default: 1)")), ToolInput(tag="in_sample_dir", input_type=String(), position=0, doc=InputDocumentation(doc="Relative or absolute directory of the sample")), ToolInput(tag="in_reference_file", input_type=String(), position=1, doc=InputDocumentation(doc="Relative or absolute path to the reference fasta file"))], outputs=[ToolOutput(tag="out_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="Output file. Relative or absolute path to the metrics\nfile (default: metrics)"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Cfsan_Snp_Pipeline_Collect_Metrics_V0_1_0().translate("wdl", allow_empty_container=True)
+

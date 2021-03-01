@@ -8,6 +8,9 @@ task AribaFlag {
     ariba flag \
       ~{flag}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     flag: "Flag to be translated (an integer)"
   }

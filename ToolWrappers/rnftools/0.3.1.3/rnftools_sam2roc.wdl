@@ -12,6 +12,9 @@ task RnftoolsSam2roc {
       ~{if defined(roc) then ("--roc " +  '"' + roc + '"') else ""} \
       ~{if defined(allowed_delta) then ("--allowed-delta " +  '"' + allowed_delta + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sam: "SAM/BAM with aligned RNF reads(- for standard input)."
     roc: "Output ROC file (- for standard output)."

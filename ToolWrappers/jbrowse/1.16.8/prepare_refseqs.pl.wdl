@@ -32,6 +32,9 @@ task Preparerefseqspl {
       ~{if defined(seqtype) then ("--seqType " +  '"' + seqtype + '"') else ""} \
       ~{if (track_config) then "--trackConfig" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_sort: "If using GFF or FASTA input, preserve the order of the reference\\nsequences (sorts alphabetically by default)."
     conf: "biodb-to-json.pl configuration file that defines a database from\\nwhich to get reference sequence information."

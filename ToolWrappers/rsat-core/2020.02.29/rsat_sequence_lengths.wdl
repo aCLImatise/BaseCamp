@@ -24,6 +24,9 @@ task RsatSequencelengths {
       ~{if defined(specified_standard_output) then ("-o " +  '"' + specified_standard_output + '"') else ""} \
       ~{if (sum) then "-sum" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "(must be first argument) display options"
     verbose: "verbose"

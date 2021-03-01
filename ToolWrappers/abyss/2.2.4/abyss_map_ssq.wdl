@@ -54,6 +54,9 @@ task Abyssmapssq {
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_align: "find matches at least N bp [1]"
     threads: "use N parallel threads [1]"

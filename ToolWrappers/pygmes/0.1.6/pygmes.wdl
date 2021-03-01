@@ -2,7 +2,7 @@ version 1.0
 
 task Pygmes {
   input {
-    File? path_fasta_file
+    File? path_tobin_folder
     File? path_output_folder
     File? db
     Boolean? no_clean
@@ -14,7 +14,7 @@ task Pygmes {
   }
   command <<<
     pygmes \
-      ~{if defined(path_fasta_file) then ("--input " +  '"' + path_fasta_file + '"') else ""} \
+      ~{if defined(path_tobin_folder) then ("--input " +  '"' + path_tobin_folder + '"') else ""} \
       ~{if defined(path_output_folder) then ("--output " +  '"' + path_output_folder + '"') else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if (no_clean) then "--noclean" else ""} \
@@ -24,8 +24,11 @@ task Pygmes {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    path_fasta_file: "path to the fasta file, or in metagenome mode path to\\nbin folder"
+    path_tobin_folder: "path to the fasta file, or in metagenome mode path to\\nbin folder"
     path_output_folder: "Path to the output folder"
     db: "Path to the diamond DB"
     no_clean: "GeneMark-ES needs clean fasta headers and will fail if\\nyou dont proveide them. Set this flag if you don't\\nwant pygmes to clean your headers"

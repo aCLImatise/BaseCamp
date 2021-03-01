@@ -3,17 +3,17 @@ id: h5diff.cwl
 inputs:
 - id: in_report
   doc: Report mode. Print differences.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --report
 - id: in_quiet
   doc: Quiet mode. Do not produce output.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_enable_error_stack
   doc: Prints messages from the HDF5 error stack as they occur.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --enable-error-stack
 - id: in_follow_symlinks
@@ -32,7 +32,7 @@ inputs:
     \ point to existing objects, h5diff compares the\ntwo objects.\nIf any symbolic\
     \ link specified in the call to h5diff does not exist,\nh5diff treats it as an\
     \ error and returns an exit code of 2."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --follow-symlinks
 - id: in_no_dangling_links
@@ -41,36 +41,36 @@ inputs:
     \ or external links) that do not\nresolve to an existing object (dataset, group,\
     \ or named datatype).\nIf any dangling link is found, this situation is treated\
     \ as an error\nand h5diff returns an exit code of 2."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-dangling-links
 - id: in_compare
   doc: List objects that are not comparable
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --compare
 - id: in_nan
   doc: Avoid NaNs detection
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nan
 - id: in_count
   doc: Print differences up to C. C must be a positive integer.
-  type: long
+  type: long?
   inputBinding:
     prefix: --count
 - id: in_delta
   doc: "Print difference if (|a-b| > D). D must be a positive number. Where a\nis\
     \ the data point value in file1 and b is the data point value in file2.\nCan not\
     \ use with '-p' or '--use-system-epsilon'."
-  type: long
+  type: long?
   inputBinding:
     prefix: --delta
 - id: in_relative
   doc: "Print difference if (|(a-b)/b| > R). R must be a positive number. Where a\n\
     is the data point value in file1 and b is the data point value in file2.\nCan\
     \ not use with '-d' or '--use-system-epsilon'."
-  type: long
+  type: long?
   inputBinding:
     prefix: --relative
 - id: in_use_system_epsilon
@@ -79,7 +79,7 @@ inputs:
     If the system epsilon is not defined,one of the following predefined\nvalues will\
     \ be used:\nFLT_EPSILON = 1.19209E-07 for floating-point type\nDBL_EPSILON = 2.22045E-16\
     \ for double precision type\nCan not use with '-p' or '-d'."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use-system-epsilon
 - id: in_exclude_path
@@ -97,12 +97,12 @@ inputs:
     \ to an object, only the specified path(s)\nwill be excluded; the comparison will\
     \ include any path not explicitly\nexcluded.\nThis option can be used repeatedly\
     \ to exclude multiple paths."
-  type: File
+  type: File?
   inputBinding:
     prefix: --exclude-path
 - id: in_mode_print_above
   doc: 'mode: print the above plus a list of objects and warnings'
-  type: string
+  type: string?
   inputBinding:
     prefix: -v
 - id: in_file_one
@@ -139,9 +139,10 @@ outputs:
     \ to an object, only the specified path(s)\nwill be excluded; the comparison will\
     \ include any path not explicitly\nexcluded.\nThis option can be used repeatedly\
     \ to exclude multiple paths."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_exclude_path)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - h5diff

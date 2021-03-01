@@ -24,6 +24,9 @@ task Samtools0118Targetcut {
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(q) then ("-Q " +  '"' + q + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
     two: ""

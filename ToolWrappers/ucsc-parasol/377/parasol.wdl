@@ -30,6 +30,9 @@ task Parasol {
       ~{if defined(ram) then ("-ram " +  '"' + ram + '"') else ""} \
       ~{if defined(host) then ("-host " +  '"' + host + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "- Where to get stdin, default /dev/null"
     out: "- Where to put stdout, default /dev/null"

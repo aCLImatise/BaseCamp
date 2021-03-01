@@ -8,6 +8,9 @@ task Bam2fasta {
     bam2fasta \
       ~{optional_arguments}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     optional_arguments: "optional arguments:"
   }

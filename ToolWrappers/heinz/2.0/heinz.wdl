@@ -13,7 +13,7 @@ task Heinz {
     File? node_file
     File? output_file
     Boolean? enable_preprocessing
-    String? specifies_root_optional
+    String? specifies_root_node
     File? stp_node_file
     Int? time_limit_seconds
     Int? verbosity
@@ -32,12 +32,15 @@ task Heinz {
       ~{if defined(node_file) then ("-n " +  '"' + node_file + '"') else ""} \
       ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""} \
       ~{if (enable_preprocessing) then "-p" else ""} \
-      ~{if defined(specifies_root_optional) then ("-r " +  '"' + specifies_root_optional + '"') else ""} \
+      ~{if defined(specifies_root_node) then ("-r " +  '"' + specifies_root_node + '"') else ""} \
       ~{if defined(stp_node_file) then ("-s " +  '"' + stp_node_file + '"') else ""} \
       ~{if defined(time_limit_seconds) then ("-t " +  '"' + time_limit_seconds + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fdr: "Specifies fdr"
     specifies_a: "Specifies a"
@@ -50,7 +53,7 @@ task Heinz {
     node_file: "Node file"
     output_file: "Output file"
     enable_preprocessing: "Enable preprocessing"
-    specifies_root_optional: "Specifies the root node (optional)"
+    specifies_root_node: "Specifies the root node (optional)"
     stp_node_file: "STP node file"
     time_limit_seconds: "Time limit (in seconds, default: -1)"
     verbosity: "Specifies the verbosity level:\\n0 - No output\\n1 - Only necessary output\\n2 - More verbose output (default)\\n3 - Debug output"

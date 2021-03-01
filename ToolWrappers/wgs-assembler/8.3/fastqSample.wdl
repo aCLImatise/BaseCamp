@@ -11,10 +11,10 @@ task FastqSample {
     String? ignore_reads_shorter
     Boolean? max
     Int? genome_size
-    String? desired_coverage_reads
+    String? desired_coverage_output
     Int? mated_reads_output
-    Float? output_f_t
-    String? output_readspairs_exceeded
+    Float? output_t_pairs
+    String? output_readspairs_b
     String? opts
   }
   command <<<
@@ -29,11 +29,14 @@ task FastqSample {
       ~{if defined(ignore_reads_shorter) then ("-m " +  '"' + ignore_reads_shorter + '"') else ""} \
       ~{if (max) then "-max" else ""} \
       ~{if defined(genome_size) then ("-g " +  '"' + genome_size + '"') else ""} \
-      ~{if defined(desired_coverage_reads) then ("-c " +  '"' + desired_coverage_reads + '"') else ""} \
+      ~{if defined(desired_coverage_output) then ("-c " +  '"' + desired_coverage_output + '"') else ""} \
       ~{if defined(mated_reads_output) then ("-p " +  '"' + mated_reads_output + '"') else ""} \
-      ~{if defined(output_f_t) then ("-f " +  '"' + output_f_t + '"') else ""} \
-      ~{if defined(output_readspairs_exceeded) then ("-b " +  '"' + output_readspairs_exceeded + '"') else ""}
+      ~{if defined(output_t_pairs) then ("-f " +  '"' + output_t_pairs + '"') else ""} \
+      ~{if defined(output_readspairs_b) then ("-b " +  '"' + output_readspairs_b + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_name_prefix: "input name (prefix) of the reads"
     total_number_supplied: "total number of mate pairs in the input (if not supplied, will be counted)"
@@ -44,10 +47,10 @@ task FastqSample {
     ignore_reads_shorter: "ignore reads shorter than L bases"
     max: "don't sample randomly, pick the longest reads"
     genome_size: "genome size"
-    desired_coverage_reads: "desired coverage in the output reads"
+    desired_coverage_output: "desired coverage in the output reads"
     mated_reads_output: "for mated reads, output 2N reads, or N pairs of reads\\nfor unmated reads, output N reads"
-    output_f_t: "output F * T pairs of reads (T as above in -t option)\\n0.0 < F <= 1.0"
-    output_readspairs_exceeded: "output reads/pairs until B bases is exceeded"
+    output_t_pairs: "output F * T pairs of reads (T as above in -t option)\\n0.0 < F <= 1.0"
+    output_readspairs_b: "output reads/pairs until B bases is exceeded"
     opts: ""
   }
   output {

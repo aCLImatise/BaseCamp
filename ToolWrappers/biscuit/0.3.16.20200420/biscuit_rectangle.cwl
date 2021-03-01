@@ -3,12 +3,12 @@ id: biscuit_rectangle.cwl
 inputs:
 - id: in_output_file
   doc: output file [stdout]
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_ref_dot_fa
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: output file [stdout]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - biscuit

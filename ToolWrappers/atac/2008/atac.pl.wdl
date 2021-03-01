@@ -20,6 +20,9 @@ task Atacpl {
       ~{if (cross_species) then "-crossspecies" else ""} \
       ~{if defined(segment_id) then ("-segmentid " +  '"' + segment_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_dir: "-- path to the GENOMES directory"
     num_threads: "-- number of threads to use per search\\n(slight increase in memory usage)"

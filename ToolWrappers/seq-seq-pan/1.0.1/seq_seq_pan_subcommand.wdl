@@ -8,6 +8,9 @@ task SeqseqpanSubcommand {
     seq_seq_pan subcommand \
       ~{seq_seq_pando_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_seq_pando_tpy: ""
   }

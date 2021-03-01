@@ -8,6 +8,9 @@ task DRAMsetuppyExportConfig {
     DRAM_setup_py export_config \
       ~{if defined(output_file) then ("--output_file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "File to save exported CONFIG file to, by default\\nwillprint CONFIG (default: None)\\n"
   }

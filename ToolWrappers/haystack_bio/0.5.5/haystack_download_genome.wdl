@@ -8,6 +8,9 @@ task HaystackDownloadGenome {
     haystack_download_genome \
       ~{name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "genome name. Example: haystack_download_genome hg19."
   }

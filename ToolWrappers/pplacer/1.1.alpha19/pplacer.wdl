@@ -34,7 +34,7 @@ task Pplacer {
     File? specify_output_name
     Boolean? pretend
     Boolean? check_like
-    Boolean? number_child_spawn
+    Boolean? number_child_processes
     Boolean? timing
     Boolean? no_pre_mask
     File? write_pre_masked
@@ -84,7 +84,7 @@ task Pplacer {
       ~{if (specify_output_name) then "-o" else ""} \
       ~{if (pretend) then "--pretend" else ""} \
       ~{if (check_like) then "--check-like" else ""} \
-      ~{if (number_child_spawn) then "-j" else ""} \
+      ~{if (number_child_processes) then "-j" else ""} \
       ~{if (timing) then "--timing" else ""} \
       ~{if (no_pre_mask) then "--no-pre-mask" else ""} \
       ~{if (write_pre_masked) then "--write-pre-masked" else ""} \
@@ -100,6 +100,9 @@ task Pplacer {
       ~{if (discard_non_overlapped) then "--discard-nonoverlapped" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specify_path_reference: "Specify the path to the reference package."
     specify_tree_filename: "Specify the reference tree filename."
@@ -133,7 +136,7 @@ task Pplacer {
     specify_output_name: "Specify the output file name"
     pretend: "Only check out the files then report. Do not run the analysis."
     check_like: "Write out the likelihood of the reference tree, calculated two ways."
-    number_child_spawn: "The number of child processes to spawn when doing placements. Default is 2."
+    number_child_processes: "The number of child processes to spawn when doing placements. Default is 2."
     timing: "Display timing information after the pplacer run finishes."
     no_pre_mask: "Don't pre-mask sequences before placement."
     write_pre_masked: "Write out the pre-masked sequences to the specified fasta file before placement."

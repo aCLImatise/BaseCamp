@@ -18,6 +18,9 @@ task CnvkitpyExportVcf {
       ~{if (haploid_x_reference) then "--haploid-x-reference" else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cnr: "Bin-level copy ratios (*.cnr). Used to indicate fuzzy\\nboundaries for segments in the output VCF via the\\nCIPOS and CIEND tags."
     sample_id: "Sample name to write in the genotype field of the\\noutput VCF file. [Default: use the sample ID, taken\\nfrom the file name]"

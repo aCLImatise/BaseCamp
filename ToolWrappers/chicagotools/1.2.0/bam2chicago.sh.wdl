@@ -16,6 +16,9 @@ task Bam2chicagosh {
       ~{sample_name} \
       ~{no_delete}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam_file: ""
     bait_map_file: ""

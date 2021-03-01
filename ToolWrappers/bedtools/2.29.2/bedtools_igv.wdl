@@ -22,6 +22,9 @@ task BedtoolsIgv {
       ~{if (img) then "-img" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path: "The full path to which the IGV snapshots should be written.\\n(STRING) Default: ./"
     sess: "The full path to an existing IGV session file to be\\nloaded prior to taking snapshots.\\n(STRING) Default is for no session to be loaded."

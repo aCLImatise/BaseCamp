@@ -12,6 +12,9 @@ task FastaMultigreppl {
       ~{if (fa) then "--fa" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list: "Colon (:) separated list of Fasta IDs to extract (mandatory)"
     fa: "Input file in Fasta format (mandatory)"

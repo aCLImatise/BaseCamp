@@ -16,6 +16,9 @@ task SamtoolsReheader {
       ~{if (in_place) then "--in-place" else ""} \
       ~{if defined(pass_header_sam) then ("--command " +  '"' + pass_header_sam + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_pg: "Do not generate a @PG header line."
     in_place: "Modify the CRAM file directly, if possible.\\n(Defaults to outputting to stdout.)"

@@ -16,6 +16,9 @@ task PipitsRereplicate {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(uc) then ("--uc " +  '"' + uc + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: "[REQUIRED]"
     o: "[REQUIRED]"

@@ -12,6 +12,9 @@ task NanoLyse {
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "Specify a reference fasta file against which to filter."
     log_file: "Specify the path and filename for the log file."

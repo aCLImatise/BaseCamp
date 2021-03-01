@@ -20,6 +20,9 @@ task DaisySuiteTarget {
       ~{if (print_shell_cmds) then "--printshellcmds" else ""} \
       ~{if defined(config_file) then ("--configfile " +  '"' + config_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cores: "number of cores"
     keep_going: "go on with independent jobs if a job fails"

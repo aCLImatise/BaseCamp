@@ -26,6 +26,9 @@ task Fastadigeststatspy {
       ~{if defined(max) then ("--max " +  '"' + max + '"') else ""} \
       ~{if (parallel) then "--parallel" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads_to_run: "Threads to run"
     fasta_file_operate: "[FASTA], --fasta [FASTA]\\nThe fasta file to operate on."

@@ -18,6 +18,9 @@ task CtseqCallMolecules {
       ~{if defined(umi_threshold) then ("--umiThreshold " +  '"' + umi_threshold + '"') else ""} \
       ~{if defined(umi_collapse_alg) then ("--umiCollapseAlg " +  '"' + umi_collapse_alg + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_dir: "Full path to directory where you have already built\\nyour methylation reference files. If no '--refDir' is\\nspecified, ctseq will look in your current directory."
     dir: "Full path to directory where your .sam files are\\nlocated. If no '--dir' is specified, ctseq will look\\nin your current directory."

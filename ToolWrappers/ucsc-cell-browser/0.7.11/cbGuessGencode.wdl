@@ -10,6 +10,9 @@ task CbGuessGencode {
       ~{filename} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "show debug messages"
     filename: ""

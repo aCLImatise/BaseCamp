@@ -16,6 +16,9 @@ task BiomValidatetable {
       ~{if defined(format_version) then ("--format-version " +  '"' + format_version + '"') else ""} \
       ~{if (detailed_report) then "--detailed-report" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fp: "The input filpath to validate against the BIOM\\nformat specification  [required]"
     format_version: "The specific format version to validate against"

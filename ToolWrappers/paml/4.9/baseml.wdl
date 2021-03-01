@@ -4,6 +4,9 @@ task Baseml {
   command <<<
     baseml
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

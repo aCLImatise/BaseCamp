@@ -3,12 +3,12 @@ id: pipits_funguild.py.cwl
 inputs:
 - id: in_input_otu_table
   doc: '[REQUIRED] Input OTU table generated from pipits_process.'
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_output_funguild_formatted
   doc: '[REQUIRED] Output FUNGuild formatted OTU table.'
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_converts
@@ -50,6 +50,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pipits_funguild.py

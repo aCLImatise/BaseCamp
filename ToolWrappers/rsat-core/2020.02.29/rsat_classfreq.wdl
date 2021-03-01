@@ -4,7 +4,7 @@ task RsatClassfreq {
   input {
     Boolean? help
     Boolean? verbose
-    File? only_numbers_will
+    File? only_numbers_read
     File? specified_standard_output
     Boolean? ci
     Boolean? col
@@ -26,7 +26,7 @@ task RsatClassfreq {
       ~{d_cum} \
       ~{if (help) then "-help" else ""} \
       ~{if (verbose) then "-v" else ""} \
-      ~{if defined(only_numbers_will) then ("-i " +  '"' + only_numbers_will + '"') else ""} \
+      ~{if defined(only_numbers_read) then ("-i " +  '"' + only_numbers_read + '"') else ""} \
       ~{if defined(specified_standard_output) then ("-o " +  '"' + specified_standard_output + '"') else ""} \
       ~{if (ci) then "-ci" else ""} \
       ~{if (col) then "-col" else ""} \
@@ -36,10 +36,13 @@ task RsatClassfreq {
       ~{if (to) then "-to" else ""} \
       ~{if (thr) then "-thr" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "(must be first argument) display options"
     verbose: "verbose"
-    only_numbers_will: "Only the numbers will be read, other words are ignored.\\nif not specified, the standard input is used.\\nThis allows to place the command within a pipe."
+    only_numbers_read: "Only the numbers will be read, other words are ignored.\\nif not specified, the standard input is used.\\nThis allows to place the command within a pipe."
     specified_standard_output: "if not specified, the standard output is used.\\nThis allows to place the command within a pipe."
     ci: "class interval. If not specified, takes the value\\n(max - min)/20\\nso that 21 classes are specified."
     col: "column to which apply the program. This option can\\nbe used iteratively."

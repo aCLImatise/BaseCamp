@@ -8,7 +8,7 @@ task Fetch {
     Boolean? generate_crc_checksums
     Boolean? reverse_complement_sequence
     Boolean? keep_query_name
-    Boolean? print_entries_found
+    Boolean? print_entries_when
     Boolean? append_sequence_length
   }
   command <<<
@@ -19,9 +19,12 @@ task Fetch {
       ~{if (generate_crc_checksums) then "-s" else ""} \
       ~{if (reverse_complement_sequence) then "-r" else ""} \
       ~{if (keep_query_name) then "-k" else ""} \
-      ~{if (print_entries_found) then "-m" else ""} \
+      ~{if (print_entries_when) then "-m" else ""} \
       ~{if (append_sequence_length) then "-l" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Use <file> as configuration file"
     width_fasta_output: "Width of FASTA output [80]"
@@ -29,7 +32,7 @@ task Fetch {
     generate_crc_checksums: "Generate CRC64 checksums"
     reverse_complement_sequence: "Reverse complement sequence (implies -f)"
     keep_query_name: "Keep query name as FASTA header (implies -f)"
-    print_entries_found: "Print all entries when multiple are found"
+    print_entries_when: "Print all entries when multiple are found"
     append_sequence_length: "Append sequence length (; LEN=n) to the FASTA header"
   }
   output {

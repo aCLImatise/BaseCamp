@@ -3,101 +3,105 @@ command:
 - clean_genes
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: gff_fname
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: msa_fname
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: Require conserved start codons (all species)
+  optional: true
   synonyms:
   - --start
   - -s
+  description: Require conserved start codons (all species)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Require conserved stop codons (all species)
+  optional: true
   synonyms:
   - --stop
   - -t
+  description: Require conserved stop codons (all species)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Require conserved splice sites (all species).  By default,\nonly GT-AG,\
-    \ GC-AG, and AT-AC splice sites are allowed (see also\n--splice-strict)"
+  optional: true
   synonyms:
   - --splice
   - -l
+  description: "Require conserved splice sites (all species).  By default,\nonly GT-AG,\
+    \ GC-AG, and AT-AC splice sites are allowed (see also\n--splice-strict)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fshift
+  - -f
   description: "Require that no frame-shift gap is present in any species.  Frame\n\
     shifts are evaluated with respect to the reference sequence.  Gaps\nthat have\
     \ non-multiple-of-three lengths are allowed if\ncompensatory gaps occur nearby\
     \ (see source code for details)."
-  synonyms:
-  - --fshift
-  - -f
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Require that no premature stop codon is present in any species.
+  optional: true
   synonyms:
   - --nonsense
   - -n
+  description: Require that no premature stop codon is present in any species.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Implies --start, --stop, --splice, --fshift, and --nonsense.\nRecommended\
-    \ option for cross-species analysis."
+  optional: true
   synonyms:
   - --conserved
   - -c
+  description: "Implies --start, --stop, --splice, --fshift, and --nonsense.\nRecommended\
+    \ option for cross-species analysis."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Maximum fraction of bases aligned to CDSs that are Ns in any\nspecies\
-    \ (<f> must be between 0 and 1).  Default is 0.05.  Set to 1\nto allow any number\
-    \ of Ns."
+  optional: true
   synonyms:
   - --N-limit
   - -N
+  description: "Maximum fraction of bases aligned to CDSs that are Ns in any\nspecies\
+    \ (<f> must be between 0 and 1).  Default is 0.05.  Set to 1\nto allow any number\
+    \ of Ns."
   args: !SimpleFlagArg
     name: f
-  optional: true
 - !Flag
-  description: "Require all cds gaps to be multiples of three in length.  Can be\n\
-    used with --conserved."
+  optional: true
   synonyms:
   - --clean-gaps
   - -e
+  description: "Require all cds gaps to be multiples of three in length.  Can be\n\
+    used with --conserved."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --indel-strict
+  - -I
   description: "Implies --clean_gaps, usually used with --conserved.  Prohibits\n\
     overlapping cds gaps in different sequences, gaps near cds\nboundaries, and gaps\
     \ in the reference sequence within and between\nflanking features (splice sites,\
     \ etc.; see code for details).\nDesigned for use in training a phylo-HMM with\
     \ an indel model."
-  synonyms:
-  - --indel-strict
-  - -I
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Implies --splice.  Allow only GT-AG canonical splice sites.  Useful\n\
-    when training a gene finder with a simple model for splice sites."
+  optional: true
   synonyms:
   - --splice-strict
   - -C
+  description: "Implies --splice.  Allow only GT-AG canonical splice sites.  Useful\n\
+    when training a gene finder with a simple model for splice sites."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --groupby
+  - -g
   description: "Group features according to specified tag (default\n\"transcript_id\"\
     ).  If any feature within a group fails, the\nentire group will be discarded.\
     \  By choosing to group features\naccording to different criteria, you can make\
@@ -105,99 +109,95 @@ named:
     clean at the level of individual exons, add a tag like\n\"exon_id\" to indicate\
     \ exons (see the program \"refeature\"),\nand then invoke clean_genes with \"\
     --groupby exon_id\"."
-  synonyms:
-  - --groupby
-  - -g
   args: !SimpleFlagArg
     name: tag
-  optional: true
 - !Flag
-  description: "|PHYLIP|MPM|MAF|SS\nAlignment file format.  Default is to guess format\
-    \ from file\ncontents."
+  optional: true
   synonyms:
   - --msa-format
   - -i
+  description: "|PHYLIP|MPM|MAF|SS\nAlignment file format.  Default is to guess format\
+    \ from file\ncontents."
   args: !SimpleFlagArg
     name: FASTA
-  optional: true
 - !Flag
-  description: "(Required with --msa-format MAF)  Complete reference\nsequence for\
-    \ alignment (FASTA format)."
+  optional: true
   synonyms:
   - --refseq
   - -r
+  description: "(Required with --msa-format MAF)  Complete reference\nsequence for\
+    \ alignment (FASTA format)."
   args: !SimpleFlagArg
     name: seqfile.fa
-  optional: true
 - !Flag
-  description: "(Default 0)  Offset of canonical \"GT\" with respect to boundary\n\
-    on *intron side* of annotated 5' splice sites.  Useful with\nannotations that\
-    \ describe a window around the canonical splice site."
+  optional: true
   synonyms:
   - --offset5
   - -o
+  description: "(Default 0)  Offset of canonical \"GT\" with respect to boundary\n\
+    on *intron side* of annotated 5' splice sites.  Useful with\nannotations that\
+    \ describe a window around the canonical splice site."
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: "(Default 0)  Offset of canonical \"AG\" with respect to boundary\n\
-    on intron side of annotated 3' splice sites."
+  optional: true
   synonyms:
   - --offset3
   - -p
+  description: "(Default 0)  Offset of canonical \"AG\" with respect to boundary\n\
+    on intron side of annotated 3' splice sites."
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: Write human-readable log to specified file.
+  optional: true
   synonyms:
   - --log
   - -L
+  description: Write human-readable log to specified file.
   args: !SimpleFlagArg
     name: fname
-  optional: true
 - !Flag
-  description: Like --log, but produces more concise, machine-readable log.
+  optional: true
   synonyms:
   - --machine-log
   - -M
+  description: Like --log, but produces more concise, machine-readable log.
   args: !SimpleFlagArg
     name: fname
-  optional: true
 - !Flag
-  description: Write statistics on retained and discarded features to specified file.
+  optional: true
   synonyms:
   - --stats
   - -S
+  description: Write statistics on retained and discarded features to specified file.
   args: !SimpleFlagArg
     name: fname
-  optional: true
 - !Flag
-  description: Write discarded features to specified file.
+  optional: true
   synonyms:
   - --discards
   - -d
+  description: Write discarded features to specified file.
   args: !SimpleFlagArg
     name: fname
-  optional: true
 - !Flag
-  description: "Suppress output of \"cleaned\" features to stdout.  Useful if only\n\
-    log file and/or stats are of interest."
+  optional: true
   synonyms:
   - --no-output
   - -x
+  description: "Suppress output of \"cleaned\" features to stdout.  Useful if only\n\
+    log file and/or stats are of interest."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message.
+  optional: true
   synonyms:
   - --help
   - -h
+  description: Print this help message.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nPROGRAM:        clean_genes\n\nDESCRIPTION:    Given a GFF describing\
@@ -276,3 +276,4 @@ help_text: "\nPROGRAM:        clean_genes\n\nDESCRIPTION:    Given a GFF describ
   \ frame of the reference\n        sequence.\n"
 generated_using:
 - --help
+docker_image:

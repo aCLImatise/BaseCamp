@@ -44,6 +44,9 @@ task CentroidAlifold {
       ~{if (arg_maximum_number) then "-c" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_specify_default: "[ --engine ] arg     specify the inference engine (default: \\\"McCaskill &\\nAlifold\\\")"
     arg_mixture_weights: "[ --mixture ] arg    mixture weights of inference engines"

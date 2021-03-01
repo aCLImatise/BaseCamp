@@ -4,45 +4,109 @@ command:
 positional: []
 named:
 - !Flag
-  description: "--taxon-group TAXON_GROUP --output\nOUTPUT [--incomplete-matrix]\n\
-    [--verbosity {INFO,WARN,CRITICAL}]\n[--log-path LOG_PATH] [--optimize]\n[--random]\
-    \ [--samples SAMPLES]\n[--sample-size SAMPLE_SIZE]\n[--extend-locus-db EXTEND_LOCUS_DB]\n\
-    [--silent] [--keep-counts]"
-  synonyms:
-  - --taxon-list-config
-  args: !SimpleFlagArg
-    name: TAXON_LIST_CONFIG
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - --locus-db
+  description: "The SQL database file holding probe matches to\ntargeted loci (usually\
+    \ \"lastz/probe.matches.sqlite\".)"
   args: !SimpleFlagArg
     name: LOCUS_DB
+- !Flag
   optional: true
+  synonyms:
+  - --taxon-list-config
+  description: "The config file containing lists of the taxa you want\nto include\
+    \ in matrices."
+  args: !SimpleFlagArg
+    name: TAXON_LIST_CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - --taxon-group
+  description: "The [group] in the config file whose specific data\nmatrix you want\
+    \ to create."
+  args: !SimpleFlagArg
+    name: TAXON_GROUP
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: The path to the output file you want to create.
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --incomplete-matrix
+  description: Generate an incomplete matrix of data.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: The logging level to use.
+  args: !ChoiceFlagArg
+    choices: !!set
+      INFO:
+      WARN:
+      CRITICAL:
+- !Flag
+  optional: true
+  synonyms:
+  - --log-path
+  description: The path to a directory to hold logs.
+  args: !SimpleFlagArg
+    name: LOG_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --optimize
+  description: "Return optimum groups of probes by enumeration\n(default) or sampling."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --random
+  description: Optimize by sampling.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --samples
+  description: The number of samples to take.
+  args: !SimpleFlagArg
+    name: SAMPLES
+- !Flag
+  optional: true
+  synonyms:
+  - --sample-size
+  description: The group size of samples.
+  args: !SimpleFlagArg
+    name: SAMPLE_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --extend-locus-db
+  description: "An SQLlite database file holding probe matches to\nother targeted\
+    \ loci"
+  args: !SimpleFlagArg
+    name: EXTEND_LOCUS_DB
+- !Flag
+  optional: true
+  synonyms:
+  - --silent
+  description: Don't print probe names.
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--locus-db LOCUS_DB   The SQL database\
-    \ file holding probe matches to\ntargeted loci (usually \"lastz/probe.matches.sqlite\"\
-    .)\n--taxon-list-config TAXON_LIST_CONFIG\nThe config file containing lists of\
-    \ the taxa you want\nto include in matrices.\n--taxon-group TAXON_GROUP\nThe [group]\
-    \ in the config file whose specific data\nmatrix you want to create.\n--output\
-    \ OUTPUT       The path to the output file you want to create.\n--incomplete-matrix\
-    \   Generate an incomplete matrix of data.\n--verbosity {INFO,WARN,CRITICAL}\n\
-    The logging level to use.\n--log-path LOG_PATH   The path to a directory to hold\
-    \ logs.\n--optimize            Return optimum groups of probes by enumeration\n\
-    (default) or sampling.\n--random              Optimize by sampling.\n--samples\
-    \ SAMPLES     The number of samples to take.\n--sample-size SAMPLE_SIZE\nThe group\
-    \ size of samples.\n--extend-locus-db EXTEND_LOCUS_DB\nAn SQLlite database file\
-    \ holding probe matches to\nother targeted loci\n--silent              Don't print\
-    \ probe names.\n--keep-counts\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: phyluce_assembly_get_match_counts [-h] --locus-db LOCUS_DB\n  \
@@ -75,3 +139,4 @@ help_text: "usage: phyluce_assembly_get_match_counts [-h] --locus-db LOCUS_DB\n 
   \ loci\n  --silent              Don't print probe names.\n  --keep-counts\n"
 generated_using:
 - --help
+docker_image:

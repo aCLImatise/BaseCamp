@@ -24,6 +24,9 @@ task MimoddVarcall {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index_files: "FILE [INDEX FILE ...]\\npre-computed index files for all input files"
     ofile: "redirect the output (variant sites) to the specified\\nfile (default: stdout)"

@@ -3,17 +3,17 @@ id: div_snp_table_chr.py.cwl
 inputs:
 - id: in_mask
   doc: Mask AR and features with this file
-  type: File
+  type: File?
   inputBinding:
     prefix: --mask
 - id: in_suffix
   doc: "append suffix to chromosomes to get filenames from\ndiv_directory"
-  type: string
+  type: string?
   inputBinding:
     prefix: --suffix
 - id: in_lens
   doc: Set chromosome ends using LEN file
-  type: File
+  type: File?
   inputBinding:
     prefix: --lens
 - id: in_feature_dot_bed
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - div_snp_table_chr.py

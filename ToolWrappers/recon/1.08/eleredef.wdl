@@ -14,6 +14,9 @@ task Eleredef {
       ~{start} \
       ~{clan_ct}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     re_def: ""
     seq_list: ""

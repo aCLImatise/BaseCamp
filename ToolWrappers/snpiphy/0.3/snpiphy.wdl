@@ -30,6 +30,9 @@ task Snpiphy {
       ~{if (force) then "--force" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q_dir: "Path to a directory with your interleaved fastq\\nsequencing reads or fasta assemblies."
     output_directory: "Path to the output directory. A directory will be\\ncreated if one does not exist."

@@ -14,6 +14,9 @@ task FusioncatchertoCG {
       ~{if defined(output_filename_stdout) then ("--output " +  '"' + output_filename_stdout + '"') else ""} \
       ~{if (v) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_format: "File type of the file to convert"
     data_directory: "FusionCatcher's data dir\\n(/opt/fusioncatcher/data/ensembl_v...)"

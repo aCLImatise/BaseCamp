@@ -8,6 +8,9 @@ task Snpitrunpy {
     snpit_run_py \
       ~{if defined(path_read_classifyeither) then ("--input " +  '"' + path_read_classifyeither + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_read_classifyeither: "the path to the VCF or FASTA file to read and classify\\n(either can be bzip2ed/gzipped)\\n"
   }

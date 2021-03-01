@@ -4,6 +4,9 @@ task Emtoolspy {
   command <<<
     emtools_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

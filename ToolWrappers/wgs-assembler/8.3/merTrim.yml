@@ -4,29 +4,150 @@ command:
 positional: []
 named:
 - !Flag
-  description: "input reads\n-o reads.fastq       output reads\n-T reads.fasta   \
-    \    truth reads for validation\n-m ms                mer size\n-mc counts   \
-    \        kmer database (in 'counts.mcdat' and 'counts.mcidx')\n-enablecache  \
-    \       dump the final kmer data to 'counts.merTrimDB'\n-coverage C\n-correct\
-    \ n           mers with count below n can be changed\n(that is, count >= n are\
-    \ correct mers)\n-evidence n          mers with count at least n will be used\
-    \ for changes\n-mC adapter.fasta    screen for these adapter sequences\n-mCillumina\
-    \          screen for common Illumina adapter sequences\n-mC454              \
-    \ screen for common 454 adapter and linker sequences\n-endtrim             (undocumented)\n\
-    -notrimming          do only correction, no trimming\n-discardzero         trash\
-    \ the whole read if coverage drops to zero in the middle\n-discardimperfect  \
-    \  trash the whole read if coverage isn't perfect\n-notrimimperfect     do NOT\
-    \ trim off ends that make the coverage imperfect\n-endtrimqv Q         trim ends\
-    \ of reads if they are below qv Q (Sanger encoded; default '2')\n-NM         \
-    \         do NOT correct mismatch errors\n-NI                  do NOT correct\
-    \ indel errors\n-t T                 use T CPU cores\n-v                   report\
-    \ progress to stderr\n-V                   report trimming evidence to stdout\
-    \ (more -V -> more reports)\n"
+  optional: true
   synonyms:
   - -F
+  description: input reads
   args: !SimpleFlagArg
     name: reads.fastq
+- !Flag
   optional: true
+  synonyms:
+  - -o
+  description: output reads
+  args: !SimpleFlagArg
+    name: reads.fastq
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: truth reads for validation
+  args: !SimpleFlagArg
+    name: reads.fasta
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: mer size
+  args: !SimpleFlagArg
+    name: ms
+- !Flag
+  optional: true
+  synonyms:
+  - -mc
+  description: kmer database (in 'counts.mcdat' and 'counts.mcidx')
+  args: !SimpleFlagArg
+    name: counts
+- !Flag
+  optional: true
+  synonyms:
+  - -enablecache
+  description: dump the final kmer data to 'counts.merTrimDB'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -coverage
+  - -correct
+  description: "mers with count below n can be changed\n(that is, count >= n are correct\
+    \ mers)"
+  args: !SimpleFlagArg
+    name: C
+- !Flag
+  optional: true
+  synonyms:
+  - -evidence
+  description: mers with count at least n will be used for changes
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -mC
+  description: screen for these adapter sequences
+  args: !SimpleFlagArg
+    name: adapter.fasta
+- !Flag
+  optional: true
+  synonyms:
+  - -mCillumina
+  description: screen for common Illumina adapter sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mC454
+  description: screen for common 454 adapter and linker sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -endtrim
+  description: (undocumented)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -notrimming
+  description: do only correction, no trimming
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -discardzero
+  description: trash the whole read if coverage drops to zero in the middle
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -discardimperfect
+  description: trash the whole read if coverage isn't perfect
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -notrimimperfect
+  description: do NOT trim off ends that make the coverage imperfect
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -endtrimqv
+  description: trim ends of reads if they are below qv Q (Sanger encoded; default
+    '2')
+  args: !SimpleFlagArg
+    name: Q
+- !Flag
+  optional: true
+  synonyms:
+  - -NM
+  description: do NOT correct mismatch errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -NI
+  description: do NOT correct indel errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: use T CPU cores
+  args: !SimpleFlagArg
+    name: T
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: report progress to stderr
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  description: report trimming evidence to stdout (more -V -> more reports)
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
@@ -54,3 +175,4 @@ help_text: "unknown option '--help'\nusage: merTrim ...\n\n  -F reads.fastq     
   \     report trimming evidence to stdout (more -V -> more reports)\n\n"
 generated_using:
 - --help
+docker_image:

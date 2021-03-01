@@ -5,87 +5,87 @@ command:
 positional: []
 named:
 - !Flag
-  description: "The ggd channel of the recipe to find. (Default =\ngenomics)"
+  optional: true
   synonyms:
   - -c
   - --channel
+  description: "The ggd channel of the recipe to find. (Default =\ngenomics)"
   args: !ChoiceFlagArg
     choices: !!set
       genomics:
-  optional: true
 - !Flag
-  description: "(Optional) species recipe is for. Use '*' for any\nspecies"
+  optional: true
   synonyms:
   - -s
   - --species
+  description: "(Optional) species recipe is for. Use '*' for any\nspecies"
   args: !ChoiceFlagArg
     choices: !!set
-      Drosophila_melanogaster:
-      Homo_sapiens:
-      Canis_familiaris:
       Danio_rerio:
       Mus_musculus:
-  optional: true
+      Homo_sapiens:
+      Drosophila_melanogaster:
+      Canis_familiaris:
 - !Flag
-  description: "(Optional) genome build the recipe is for. Use '*' for\nany genome\
-    \ build."
+  optional: true
   synonyms:
   - -g
   - --genome-build
+  description: "(Optional) genome build the recipe is for. Use '*' for\nany genome\
+    \ build."
   args: !ChoiceFlagArg
     choices: !!set
-      GRCh38:
-      GRCh37:
       hg38:
-      mm9:
-      GRCz10:
-      canFam3:
-      danRer10:
-      dm3:
-      hg19:
       mm10:
       dm6:
+      hg19:
+      GRCz10:
       GRCz11:
+      danRer10:
+      GRCh38:
+      dm3:
       danRer11:
-  optional: true
+      GRCh37:
+      canFam3:
+      mm9:
 - !Flag
-  description: "(Optional) pattern to match the name of the file\ndesired. To list\
-    \ all files for a ggd package, do not\nuse the -p option"
+  optional: true
   synonyms:
   - -p
   - --pattern
+  description: "(Optional) pattern to match the name of the file\ndesired. To list\
+    \ all files for a ggd package, do not\nuse the -p option"
   args: !SimpleFlagArg
     name: PATTERN
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --prefix
   description: "(Optional) The name or the full directory path to an\nconda environment\
     \ where a ggd recipe is stored. (Only\nneeded if not getting file paths for files\
     \ in the\ncurrent conda enviroment)\n"
-  synonyms:
-  - --prefix
   args: !SimpleFlagArg
     name: PREFIX
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: "(Optional) pattern to match the version of the file\ndesired. Use\
-    \ '*' for any version"
+  optional: true
   synonyms:
   - -v
   - --version
+  description: "(Optional) pattern to match the version of the file\ndesired. Use\
+    \ '*' for any version"
   args: !SimpleFlagArg
     name: VERSION
-  optional: true
 help_text: "usage: ggd get-files [-h] [-c {genomics}]\n                     [-s {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus}]\n\
   \                     [-g {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,mm10,mm9}]\n\
   \                     [-v VERSION] [-p PATTERN] [--prefix PREFIX]\n            \
@@ -110,3 +110,4 @@ help_text: "usage: ggd get-files [-h] [-c {genomics}]\n                     [-s 
   \ file paths for files in the\n                        current conda enviroment)\n"
 generated_using:
 - --help
+docker_image:

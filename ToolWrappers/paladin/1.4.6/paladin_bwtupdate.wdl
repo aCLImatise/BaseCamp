@@ -8,6 +8,9 @@ task PaladinBwtupdate {
     paladin bwtupdate \
       ~{the_dot_bwt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     the_dot_bwt: ""
   }

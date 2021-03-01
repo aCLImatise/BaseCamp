@@ -6,8 +6,8 @@ task Bl2seq {
     Boolean? second_sequence
     Boolean? program_name_blastp
     Boolean? gapped_default_t
-    File? alignment_output_file
-    Boolean? theor_db_size
+    File? alignment_file_default
+    Boolean? theor_size_zero
     File? text_asn_output
     Boolean? cost_open_gap
     Boolean? cost_extend_gap
@@ -26,8 +26,8 @@ task Bl2seq {
     Boolean? location_first_optional
     Boolean? location_second_optional
     Boolean? output_format_traditional
-    Boolean? use_lower_case
-    Boolean? input_sequences_f
+    Boolean? use_case_filtering
+    Boolean? input_sequences_form
     Boolean? force_use_legacy
   }
   command <<<
@@ -36,8 +36,8 @@ task Bl2seq {
       ~{if (second_sequence) then "-j" else ""} \
       ~{if (program_name_blastp) then "-p" else ""} \
       ~{if (gapped_default_t) then "-g" else ""} \
-      ~{if (alignment_output_file) then "-o" else ""} \
-      ~{if (theor_db_size) then "-d" else ""} \
+      ~{if (alignment_file_default) then "-o" else ""} \
+      ~{if (theor_size_zero) then "-d" else ""} \
       ~{if (text_asn_output) then "-a" else ""} \
       ~{if (cost_open_gap) then "-G" else ""} \
       ~{if (cost_extend_gap) then "-E" else ""} \
@@ -56,17 +56,20 @@ task Bl2seq {
       ~{if (location_first_optional) then "-I" else ""} \
       ~{if (location_second_optional) then "-J" else ""} \
       ~{if (output_format_traditional) then "-D" else ""} \
-      ~{if (use_lower_case) then "-U" else ""} \
-      ~{if (input_sequences_f) then "-A" else ""} \
+      ~{if (use_case_filtering) then "-U" else ""} \
+      ~{if (input_sequences_form) then "-A" else ""} \
       ~{if (force_use_legacy) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     first_sequence: "First sequence [File In]"
     second_sequence: "Second sequence [File In]"
     program_name_blastp: "Program name: blastp, blastn, blastx, tblastn, tblastx. For blastx 1st sequence should be nucleotide, tblastn 2nd sequence nucleotide [String]"
     gapped_default_t: "Gapped [T/F]\\ndefault = T"
-    alignment_output_file: "alignment output file [File Out]\\ndefault = stdout"
-    theor_db_size: "theor. db size (zero is real size) [Real]\\ndefault = 0"
+    alignment_file_default: "alignment output file [File Out]\\ndefault = stdout"
+    theor_size_zero: "theor. db size (zero is real size) [Real]\\ndefault = 0"
     text_asn_output: "Text ASN.1 output file [File Out]  Optional"
     cost_open_gap: "Cost to open a gap (-1 invokes default behavior) [Integer]\\ndefault = -1"
     cost_extend_gap: "Cost to extend a gap (-1 invokes default behavior) [Integer]\\ndefault = -1"
@@ -85,13 +88,13 @@ task Bl2seq {
     location_first_optional: "Location on first sequence [String]  Optional"
     location_second_optional: "Location on second sequence [String]  Optional"
     output_format_traditional: "Output format: 0 - traditional, 1 - tabular [Integer]\\ndefault = 0"
-    use_lower_case: "Use lower case filtering for the query sequence [T/F]  Optional\\ndefault = F"
-    input_sequences_f: "Input sequences in the form of accession.version [T/F]\\ndefault = F"
+    use_case_filtering: "Use lower case filtering for the query sequence [T/F]  Optional\\ndefault = F"
+    input_sequences_form: "Input sequences in the form of accession.version [T/F]\\ndefault = F"
     force_use_legacy: "Force use of the legacy BLAST engine [T/F]  Optional\\ndefault = F\\n"
   }
   output {
     File out_stdout = stdout()
-    File out_alignment_output_file = "${in_alignment_output_file}"
+    File out_alignment_file_default = "${in_alignment_file_default}"
     File out_text_asn_output = "${in_text_asn_output}"
   }
 }

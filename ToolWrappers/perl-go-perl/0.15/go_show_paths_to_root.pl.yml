@@ -3,39 +3,37 @@ command:
 - go-show-paths-to-root.pl
 positional:
 - !Positional
-  description: "SYNOPSIS\ngo-show-paths-to-root.pl -id GO:0008021 ontology/gene_ontology.obo\n\
-    go-show-paths-to-root.pl -names -id GO:0008021 ontology/gene_ontology.obo"
+  optional: false
   position: 0
   name: top
-  optional: false
+  description: "SYNOPSIS\ngo-show-paths-to-root.pl -id GO:0008021 ontology/gene_ontology.obo\n\
+    go-show-paths-to-root.pl -names -id GO:0008021 ontology/gene_ontology.obo"
 - !Positional
-  description: Subsequent parses can be speeded up using the use_cache option
+  optional: false
   position: 0
   name: time
-  optional: false
-- !Positional
-  description: <http://www.godatabase.org/dev>
-  position: 0
-  name: DOCUMENTATION
-  optional: false
+  description: Subsequent parses can be speeded up using the use_cache option
 named:
 - !Flag
-  description: "writes parse errors in XML - defaults to STDERR (there should be no\n\
-    parse errors in well formed files)"
+  optional: true
   synonyms:
   - -e
+  description: "writes parse errors in XML - defaults to STDERR (there should be no\n\
+    parse errors in well formed files)"
   args: !SimpleFlagArg
     name: ERRFILE
-  optional: true
 - !Flag
-  description: "determines which parser to use; if left unspecified, will make a guess\n\
-    based on file suffix. See below for formats"
+  optional: true
   synonyms:
   - -p
+  description: "determines which parser to use; if left unspecified, will make a guess\n\
+    based on file suffix. See below for formats"
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -use_cache
   description: "If this switch is specified, then caching mode is turned on.\nWith\
     \ caching mode, the first time you parse a file, then an additional\nfile will\
     \ be exported in a special format that is fast to parse. This\nfile will have\
@@ -44,10 +42,7 @@ named:
     for the existence of the \".cache\" file. If it exists, and is more recent\nthan\
     \ the file you specified, this is parsed instead. If it does not\nexist, it is\
     \ rebuilt."
-  synonyms:
-  - -use_cache
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -75,3 +70,4 @@ help_text: "NAME\n    go-show-paths-to-root.pl - shows all possible paths from a
   \n  DOCUMENTATION\n    <http://www.godatabase.org/dev>\n\n"
 generated_using:
 - --help
+docker_image:

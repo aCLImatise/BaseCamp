@@ -5,6 +5,9 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -r
   description: "Causes gsutil to output just the specified byte range of the\nobject.\
     \ Ranges are can be of these forms:\nstart-end (e.g., -r 256-5939)\nstart-   \
     \ (e.g., -r 256-)\n-numbytes (e.g., -r -5)\nwhere offsets start at 0, start-end\
@@ -13,22 +16,19 @@ named:
     last numbytes of the object. For example:\ngsutil cat -r 256-939 gs://bucket/object\n\
     returns bytes 256 through 939, while:\ngsutil cat -r -5 gs://bucket/object\nreturns\
     \ the final 5 bytes of the object.\n"
-  synonyms:
-  - -r
   args: !SimpleFlagArg
     name: range
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
   description: "Prints short header for each object. For example:\ngsutil cat -h gs://bucket/meeting_notes/2012_Feb/*.txt\n\
     This would print a header with the object name before the contents\nof each text\
     \ object that matched the wildcard."
-  synonyms:
-  - -h
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "NAME\n  cat - Concatenate object content to stdout\n\n\nSYNOPSIS\n\n \
@@ -55,3 +55,4 @@ help_text: "NAME\n  cat - Concatenate object content to stdout\n\n\nSYNOPSIS\n\n
   \  returns the final 5 bytes of the object.\n"
 generated_using:
 - --help
+docker_image:

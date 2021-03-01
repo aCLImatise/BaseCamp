@@ -14,6 +14,9 @@ task ChadoAdminCreate {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if (use_password) then "--use_password" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "verbose mode"
     config: "YAML file containing connection details"

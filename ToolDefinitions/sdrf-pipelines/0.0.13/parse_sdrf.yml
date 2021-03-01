@@ -1,0 +1,331 @@
+&id001 !Command
+command:
+- parse_sdrf
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - parse_sdrf
+  - convert-maxquant
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: identifications
+    description: -pef, --peptidefdr FLOAT     posterior error probability calculation
+      based
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sdrf
+    description: SDRF file  [required]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --fastafilepath
+    description: protein database file path  [required]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -mcf
+    - --mqconfdir
+    description: MaxQuant default configure path
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --matchbetweenruns
+    description: via matching between runs to boosts number of
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -prf
+    - --proteinfdr
+    description: "protein score = product of peptide PEPs (one\nfor each sequence)"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --tempfolder
+    description: "temporary folder: place on SSD (if possible)\nfor faster search"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --raw_folder
+    description: spectrum raw data folder  [required]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --numthreads
+    description: "each thread needs at least 2 GB of RAM,number\nof threads should\
+      \ be ≤ number of logical cores\navailable (otherwise, MaxQuant can crash)"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -o1
+    - --output1
+    description: parameters .xml file  output file path
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o2
+    - --output2
+    description: maxquant experimental design .txt file
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: parse_sdrf convert-maxquant [OPTIONS]\n\nOptions:\n  -s, --sdrf\
+    \ TEXT              SDRF file  [required]\n  -f, --fastafilepath TEXT     protein\
+    \ database file path  [required]\n  -mcf, --mqconfdir TEXT       MaxQuant default\
+    \ configure path\n  -m, --matchbetweenruns TEXT  via matching between runs to\
+    \ boosts number of\n                               identifications\n\n  -pef,\
+    \ --peptidefdr FLOAT     posterior error probability calculation based\n     \
+    \                          on target-decoy search\n\n  -prf, --proteinfdr FLOAT\
+    \     protein score = product of peptide PEPs (one\n                         \
+    \      for each sequence)\n\n  -t, --tempfolder TEXT        temporary folder:\
+    \ place on SSD (if possible)\n                               for faster search\n\
+    \n  -r, --raw_folder TEXT        spectrum raw data folder  [required]\n  -n, --numthreads\
+    \ INTEGER     each thread needs at least 2 GB of RAM,number\n                \
+    \               of threads should be ≤ number of logical cores\n             \
+    \                  available (otherwise, MaxQuant can crash)\n\n  -o1, --output1\
+    \ TEXT          parameters .xml file  output file path\n  -o2, --output2 TEXT\
+    \          maxquant experimental design .txt file\n  -h, --help              \
+    \     Show this message and exit.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/sdrf-pipelines:0.0.13--py_0
+- !Command
+  command:
+  - parse_sdrf
+  - validate-sdrf
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sdrf_file
+    description: SDRF file to be validated
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --template
+    description: "[default|human|vertebrates|nonvertebrates|plants|cell_lines]\nselect\
+      \ the template that will be use to\nvalidate the file (default: default)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --check_ms
+    description: "check mass spectrometry fields in SDRF (e.g.\npostranslational modifications)"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: parse_sdrf validate-sdrf [OPTIONS]\n\nOptions:\n  -s, --sdrf_file\
+    \ TEXT            SDRF file to be validated\n  -t, --template [default|human|vertebrates|nonvertebrates|plants|cell_lines]\n\
+    \                                  select the template that will be use to\n \
+    \                                 validate the file (default: default)\n\n  --check_ms\
+    \                      check mass spectrometry fields in SDRF (e.g.\n        \
+    \                          postranslational modifications)\n\n  -h, --help   \
+    \                   Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/sdrf-pipelines:0.0.13--py_0
+- !Command
+  command:
+  - parse_sdrf
+  - split-sdrf
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sdrf_file
+    description: SDRF file to be splited  [required]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --attribute
+    description: "property to split, Multiple attributes are separated\nby commas\
+      \  [required]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --prefix
+    description: file prefix to be added to the sdrf file name
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: parse_sdrf split-sdrf [OPTIONS]\n\nOptions:\n  -s, --sdrf_file\
+    \ TEXT  SDRF file to be splited  [required]\n  -a, --attribute TEXT  property\
+    \ to split, Multiple attributes are separated\n                        by commas\
+    \  [required]\n\n  -p, --prefix TEXT     file prefix to be added to the sdrf file\
+    \ name\n  -h, --help            Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/sdrf-pipelines:0.0.13--py_0
+- !Command
+  command:
+  - parse_sdrf
+  - convert-openms
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sdrf
+    description: SDRF file
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --raw
+    description: "Keep filenames in experimental design output\nas raw."
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --legacy
+    - -m
+    - --modern
+    description: "legacy=Create artificial sample column not\nneeded in OpenMS 2.6."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t1
+    - --onetable
+    - -t2
+    - --twotables
+    description: Create one-table or two-tables format.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -q
+    - --quiet
+    description: Output debug information.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --conditionsfromcolumns
+    description: "Create conditions from provided (e.g.,\nfactor) columns."
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: parse_sdrf convert-openms [OPTIONS]\n\nOptions:\n  -s, --sdrf\
+    \ TEXT                 SDRF file\n  -r, --raw TEXT                  Keep filenames\
+    \ in experimental design output\n                                  as raw.\n\n\
+    \  -l, --legacy / -m, --modern     legacy=Create artificial sample column not\n\
+    \                                  needed in OpenMS 2.6.\n\n  -t1, --onetable\
+    \ / -t2, --twotables\n                                  Create one-table or two-tables\
+    \ format.\n  -v, --verbose / -q, --quiet     Output debug information.\n  -c,\
+    \ --conditionsfromcolumns TEXT\n                                  Create conditions\
+    \ from provided (e.g.,\n                                  factor) columns.\n\n\
+    \  -h, --help                      Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/sdrf-pipelines:0.0.13--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: parse_sdrf [OPTIONS] COMMAND [ARGS]...\n\n  This is the main tool\
+  \ that gives access to all commands to convert SDRF\n  files into pipelines specific\
+  \ configuration files\n\nOptions:\n  -h, --help  Show this message and exit.\n\n\
+  Commands:\n  convert-maxquant  convert sdrf to maxquant parameters file and generate\
+  \ an\n                    experimental design file\n\n  convert-openms    convert\
+  \ sdrf to openms file output\n  split-sdrf        Command to split the sdrf file\n\
+  \  validate-sdrf     Command to validate the sdrf file\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/sdrf-pipelines:0.0.13--py_0

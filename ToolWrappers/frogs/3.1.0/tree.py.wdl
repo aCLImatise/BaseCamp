@@ -20,6 +20,9 @@ task Treepy {
       ~{if defined(html) then ("--html " +  '"' + html + '"') else ""} \
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Keep temporary files to debug program."
     nb_cpus: "The maximum number of CPUs used. [Default: 1]"

@@ -36,6 +36,9 @@ task Googleapi {
       ~{if defined(request_or_id) then ("--requestor-id " +  '"' + request_or_id + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     scope: "Set the OAuth scope"
     client_id: "Set the OAuth client id or key"

@@ -10,6 +10,9 @@ task SvtoolsFrequency {
       ~{svtools} \
       ~{if (support) then "--support" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     support: ""
     svtools: ""

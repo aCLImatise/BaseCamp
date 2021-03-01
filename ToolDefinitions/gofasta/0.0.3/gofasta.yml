@@ -1,0 +1,451 @@
+&id001 !Command
+command:
+- gofasta
+positional: []
+named: []
+parent:
+subcommands:
+- &id002 !Command
+  command:
+  - gofasta
+  - sam
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --reference
+    description: Reference fasta file used to generate the sam file
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --samfile
+    description: samfile to read. If none is specified, will read from stdin
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: Number of threads to use (default 1)
+    args: !SimpleFlagArg
+      name: int
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - gofasta
+    - sam
+    - toPairAlign
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -g
+      - --genbank
+      description: Genbank format annotation of a sequence in the same coordinates
+        as the alignment
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - --feature
+      description: 'Feature to output (choose one of: gene, CDS). If none is specified,
+        will output the entire alignment'
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --outpath
+      description: Output path where fasta files will be written
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - --omit-reference
+      description: Omit the reference sequences from the output alignments
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --skip-insertions
+      description: Skip insertions relative to the reference
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -r
+      - --reference
+      description: Reference fasta file used to generate the sam file
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --samfile
+      description: samfile to read. If none is specified, will read from stdin
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --threads
+      description: Number of threads to use (default 1)
+      args: !SimpleFlagArg
+        name: int
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for toPairAlign
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "convert a SAM file to pairwise alignments in fasta format\n\nUsage:\n\
+      \  gofasta sam toPairAlign [flags]\n\nFlags:\n  -g, --genbank string    Genbank\
+      \ format annotation of a sequence in the same coordinates as the alignment\n\
+      \      --feature string    Feature to output (choose one of: gene, CDS). If\
+      \ none is specified, will output the entire alignment\n  -o, --outpath string\
+      \    Output path where fasta files will be written\n      --omit-reference \
+      \   Omit the reference sequences from the output alignments\n      --skip-insertions\
+      \   Skip insertions relative to the reference\n  -h, --help              help\
+      \ for toPairAlign\n\nGlobal Flags:\n  -r, --reference string   Reference fasta\
+      \ file used to generate the sam file\n  -s, --samfile string     samfile to\
+      \ read. If none is specified, will read from stdin\n  -t, --threads int    \
+      \    Number of threads to use (default 1)\n"
+    generated_using: &id003
+    - --help
+    docker_image: quay.io/biocontainers/gofasta:0.0.3--0
+  - !Command
+    command:
+    - gofasta
+    - sam
+    - indels
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --insertions-out
+      description: Where to write the insertions (default "insertions.txt")
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - --deletions-out
+      description: Where to write the deletions (default "deletions.txt")
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - --threshold
+      description: Minimum count for an indel to be included in the output (default
+        2)
+      args: !SimpleFlagArg
+        name: int
+    - !Flag
+      optional: true
+      synonyms:
+      - -r
+      - --reference
+      description: Reference fasta file used to generate the sam file
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --samfile
+      description: samfile to read. If none is specified, will read from stdin
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --threads
+      description: Number of threads to use (default 1)
+      args: !SimpleFlagArg
+        name: int
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for indels
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Parse a SAM file for raw indel information\n\nParse a sam file for\
+      \ raw insertion and deletion information stored in the CIGAR. No attempt\nis\
+      \ made to consolidate indels within one query sequence's sam lines, so there\
+      \ may be some conflict.\n\nTwo files (default: insertions.txt and deletions.txt)\
+      \ are written, which contain a list of insertions\nor deletions represented\
+      \ in more than a threshold (default: 2) number of queries.\n\nThe format of\
+      \ insertions.txt is a three-column, tab-separated file with the headers: ref_start\t\
+      insertion\tsamples\nThe format of deletions.txt is a three-column, tab-separated\
+      \ file with the headers: ref_start\tlength\tsamples\n\nthe 'samples' column\
+      \ is a \"|\"-separated list of the queries with the insertion/deletion described\
+      \ by the first two columns.\n\nExample usage:\n\tgofasta sam indels -s aligned.sam\
+      \ --threshold 2 --insertions-out insertions.txt --deletions-out deletions.txt\n\
+      \nUsage:\n  gofasta sam indels [flags]\n\nFlags:\n      --insertions-out string\
+      \   Where to write the insertions (default \"insertions.txt\")\n      --deletions-out\
+      \ string    Where to write the deletions (default \"deletions.txt\")\n     \
+      \ --threshold int           Minimum count for an indel to be included in the\
+      \ output (default 2)\n  -h, --help                    help for indels\n\nGlobal\
+      \ Flags:\n  -r, --reference string   Reference fasta file used to generate the\
+      \ sam file\n  -s, --samfile string     samfile to read. If none is specified,\
+      \ will read from stdin\n  -t, --threads int        Number of threads to use\
+      \ (default 1)\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gofasta:0.0.3--0
+  - !Command
+    command:
+    - gofasta
+    - sam
+    - variants
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -g
+      - --genbank
+      description: Genbank format annotation of a sequence in the same coordinates
+        as the alignment
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --outfile
+      description: Where to write the variants (default "stdout")
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -r
+      - --reference
+      description: Reference fasta file used to generate the sam file
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --samfile
+      description: samfile to read. If none is specified, will read from stdin
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --threads
+      description: Number of threads to use (default 1)
+      args: !SimpleFlagArg
+        name: int
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for variants
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Call variants between a reference sequence and query sequences aligned\
+      \ in sam format\n\nExample usage:\n\tgofasta sam variants -s aligned.sam -r\
+      \ reference.fasta -g annotation.gb -o variants.csv\n\nThe output is a csv-format\
+      \ file with one line per query sequence, and two columns: 'query' and\n'variants',\
+      \ the second of which is a \"|\"-delimited list of amino acid changes and synonymous\
+      \ SNPs\nin that query relative to the reference sequence specified using --reference/-r.\n\
+      \nIf input sam and output csv files are not specified, the behaviour is to read\
+      \ the sam from stdin and write\nthe variants to stdout.\n\nUsage:\n  gofasta\
+      \ sam variants [flags]\n\nFlags:\n  -g, --genbank string   Genbank format annotation\
+      \ of a sequence in the same coordinates as the alignment\n  -o, --outfile string\
+      \   Where to write the variants (default \"stdout\")\n  -h, --help         \
+      \    help for variants\n\nGlobal Flags:\n  -r, --reference string   Reference\
+      \ fasta file used to generate the sam file\n  -s, --samfile string     samfile\
+      \ to read. If none is specified, will read from stdin\n  -t, --threads int \
+      \       Number of threads to use (default 1)\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gofasta:0.0.3--0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help for sam
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Do things with sam files\n\nUsage:\n  gofasta sam [flags]\n  gofasta\
+    \ sam [command]\n\nAvailable Commands:\n  indels       Parse a SAM file for raw\
+    \ indel information\n  toMultiAlign Convert a SAM file to a multiple alignment\
+    \ in fasta format\n  toPairAlign  convert a SAM file to pairwise alignments in\
+    \ fasta format\n  variants     Call variants between ref and query from a SAM\
+    \ file\n\nFlags:\n  -h, --help               help for sam\n  -r, --reference string\
+    \   Reference fasta file used to generate the sam file\n  -s, --samfile string\
+    \     samfile to read. If none is specified, will read from stdin\n  -t, --threads\
+    \ int        Number of threads to use (default 1)\n\nUse \"gofasta sam [command]\
+    \ --help\" for more information about a command.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/gofasta:0.0.3--0
+- !Command
+  command:
+  - gofasta
+  - snps
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outfile
+    description: Output to write (default "stdout")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --query
+    description: Alignment of sequences to find snps in, in fasta format (default
+      "stdin")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --reference
+    description: Reference sequence, in fasta format
+    args: !SimpleFlagArg
+      name: string
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help for snps
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Find snps relative to a reference.\n\nExample usage:\n\tgofasta snps\
+    \ -r reference.fasta -q alignment.fasta -o snps.csv\n\nThe output is a csv-format\
+    \ file with one line per query sequence, and two columns:\n'query' and 'SNPs',\
+    \ the second of which is a \"|\"-delimited list of snps in that query.\n\nIf input\
+    \ and output files are not specified, the behaviour is to read the query alignment\n\
+    from stdin and write the snps file to stdout, e.g. you could do this:\n\tcat alignment.fasta\
+    \ | gofasta snps -r reference.fasta > snps.csv\n\nUsage:\n  gofasta snps [flags]\n\
+    \nFlags:\n  -h, --help               help for snps\n  -o, --outfile string   \
+    \  Output to write (default \"stdout\")\n  -q, --query string       Alignment\
+    \ of sequences to find snps in, in fasta format (default \"stdin\")\n  -r, --reference\
+    \ string   Reference sequence, in fasta format\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/gofasta:0.0.3--0
+- !Command
+  command:
+  - gofasta
+  - closest
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outfile
+    description: The output file to write (default "snps.csv")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --query
+    description: Alignment of sequences to find matches for, in fasta format
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --target
+    description: Alignment of sequences to search for matches in, in fasta format
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: Number of threads to use (default 1)
+    args: !SimpleFlagArg
+      name: int
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help for closest
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Find the closest sequence to a query by raw distance\n\nUsage:\n  gofasta\
+    \ closest [flags]\n\nFlags:\n  -h, --help             help for closest\n  -o,\
+    \ --outfile string   The output file to write (default \"snps.csv\")\n      --query\
+    \ string     Alignment of sequences to find matches for, in fasta format\n   \
+    \   --target string    Alignment of sequences to search for matches in, in fasta\
+    \ format\n  -t, --threads int      Number of threads to use (default 1)\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/gofasta:0.0.3--0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for gofasta
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "some functions for working with alignments\n\nUsage:\n  gofasta [command]\n\
+  \nAvailable Commands:\n  closest     Find the closest sequence to a query by raw\
+  \ distance\n  help        Help about any command\n  sam         Do things with sam\
+  \ files\n  snps        Find snps relative to a reference\n\nFlags:\n  -h, --help\
+  \   help for gofasta\n\nUse \"gofasta [command] --help\" for more information about\
+  \ a command.\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/gofasta:0.0.3--0

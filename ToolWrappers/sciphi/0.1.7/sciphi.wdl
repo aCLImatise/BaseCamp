@@ -78,6 +78,9 @@ task Sciphi {
       ~{if defined(mnc) then ("--mnc " +  '"' + mnc + '"') else ""} \
       ~{if defined(unc) then ("--unc " +  '"' + unc + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Name of the BAM files used to create the mpileup."
     il: "Directory from which to read intermediate results."

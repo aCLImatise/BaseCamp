@@ -4,6 +4,9 @@ task UniqPolishes {
   command <<<
     uniqPolishes
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

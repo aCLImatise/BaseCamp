@@ -14,6 +14,9 @@ task FaTrans {
       ~{if defined(offset) then ("-offset " +  '"' + offset + '"') else ""} \
       ~{if (cds_upper) then "-cdsUpper" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stop: "at first stop codon (otherwise puts in Z for stop codons)"
     offset: "start at a particular offset."

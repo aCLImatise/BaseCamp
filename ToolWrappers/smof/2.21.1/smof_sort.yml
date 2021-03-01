@@ -1,0 +1,98 @@
+!Command
+command:
+- smof
+- sort
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT
+  description: input fasta sequence (default = stdin)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --regex
+  description: sort by single regex capture
+  args: !SimpleFlagArg
+    name: REG
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reverse
+  description: reverse sort
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --numeric-sort
+  description: numeric sort
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --length-sort
+  description: sort by sequence length
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --random-sort
+  description: randomly sort sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --key
+  description: Key to sort on (column number or tag)
+  args: !SimpleFlagArg
+    name: KEY
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --field-separator
+  description: "The field separator (default: '|')"
+  args: !SimpleFlagArg
+    name: FIELD_SEPARATOR
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pair-separator
+  description: "The separator between a tag and value (default: '=')\n"
+  args: !SimpleFlagArg
+    name: PAIR_SEPARATOR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: <fastafile> | smof sort <options>\n\nSorts the entries in a fasta\
+  \ file. By default, it sorts by the header strings.\n`sort` reads the entire file\
+  \ into memory, so should not be used for extremely\nlarge files.\n\npositional arguments:\n\
+  \  INPUT                 input fasta sequence (default = stdin)\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -x REG, --regex REG\
+  \   sort by single regex capture\n  -r, --reverse         reverse sort\n  -n, --numeric-sort\
+  \    numeric sort\n  -l, --length-sort     sort by sequence length\n  -R, --random-sort\
+  \     randomly sort sequences\n  -k KEY, --key KEY     Key to sort on (column number\
+  \ or tag)\n  -t FIELD_SEPARATOR, --field-separator FIELD_SEPARATOR\n           \
+  \             The field separator (default: '|')\n  -p PAIR_SEPARATOR, --pair-separator\
+  \ PAIR_SEPARATOR\n                        The separator between a tag and value\
+  \ (default: '=')\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/smof:2.21.1--py_0

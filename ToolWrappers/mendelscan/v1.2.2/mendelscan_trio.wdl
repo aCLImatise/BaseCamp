@@ -26,6 +26,9 @@ task MendelscanTrio {
       ~{if defined(output_de_novo) then ("--output-denovo " +  '"' + output_de_novo + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vep_file: "Variant annotation in VEP format"
     ped_file: "Pedigree file in 6-column tab-delimited format"

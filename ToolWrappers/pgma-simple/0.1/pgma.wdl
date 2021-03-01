@@ -10,6 +10,9 @@ task Pgma {
       ~{names} \
       ~{distances}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     names: ""
     distances: ""

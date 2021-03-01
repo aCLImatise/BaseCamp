@@ -4,6 +4,9 @@ task Sgen {
   command <<<
     sgen
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

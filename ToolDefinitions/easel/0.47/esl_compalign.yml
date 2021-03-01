@@ -1,0 +1,158 @@
+&id001 !Command
+command:
+- esl-compalign
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: ': print per column statistics instead of per sequence stats'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: ': print stats on accuracy versus posterior probability (PP)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --p-mask
+  description: ": with -p, only consider columns within mask ('1' columns) in <f>"
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --c2dfile
+  description: ': print per column stats to esl-ssdraw --dfile file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --amino
+  description: ': <msafile> contains protein alignments'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dna
+  description: ': <msafile> contains DNA alignments'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rna
+  description: ': <msafile> contains RNA alignments'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -options
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - esl-compalign
+  - trusted file
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: test file
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -options
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Incorrect number of command line arguments.\nUsage: esl-compalign [-options]\
+    \ <trusted file> <test file>\n  Both files must be in Stockholm format with #=GC\
+    \ RF markup.\n  Sequences must occur in the same order in the two files.\n  Number\
+    \ of non-gap characters in #=GC RF markup must be identical.\n  Note: accuracy\
+    \ is computed differently than in Squid's compalign.\n  See the manual page for\
+    \ details on how accuracy is computed.\n\nTo see more help on available options,\
+    \ do esl-compalign -h\n\n"
+  generated_using: &id002 []
+  docker_image: quay.io/biocontainers/easel:0.47--h516909a_0
+- !Command
+  command:
+  - esl-compalign
+  - test file
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: esl-compalign
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: trusted file
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: test file
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -options
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Incorrect number of command line arguments.\nUsage: esl-compalign [-options]\
+    \ <trusted file> <test file>\n  Both files must be in Stockholm format with #=GC\
+    \ RF markup.\n  Sequences must occur in the same order in the two files.\n  Number\
+    \ of non-gap characters in #=GC RF markup must be identical.\n  Note: accuracy\
+    \ is computed differently than in Squid's compalign.\n  See the manual page for\
+    \ details on how accuracy is computed.\n\nTo see more help on available options,\
+    \ do esl-compalign -h\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/easel:0.47--h516909a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ': help; show brief info on version and usage'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "# esl-compalign :: compare two multiple sequence alignments\n# Easel 0.47\
+  \ (Jul 2020)\n# Copyright (C) 2020 Howard Hughes Medical Institute\n# Freely distributed\
+  \ under the BSD open source license.\n# - - - - - - - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - - - - - -\nUsage: esl-compalign [-options] <trusted file>\
+  \ <test file>\n  Both files must be in Stockholm format with #=GC RF markup.\n \
+  \ Sequences must occur in the same order in the two files.\n  Number of non-gap\
+  \ characters in #=GC RF markup must be identical.\n  Note: accuracy is computed\
+  \ differently than in Squid's compalign.\n  See the manual page for details on how\
+  \ accuracy is computed.\n\n where options are:\n  -h            : help; show brief\
+  \ info on version and usage\n  -c            : print per column statistics instead\
+  \ of per sequence stats\n  -p            : print stats on accuracy versus posterior\
+  \ probability (PP)\n  --p-mask <f>  : with -p, only consider columns within mask\
+  \ ('1' columns) in <f>\n  --c2dfile <f> : print per column stats to esl-ssdraw --dfile\
+  \ file <f>\n  --amino : <msafile> contains protein alignments\n  --dna   : <msafile>\
+  \ contains DNA alignments\n  --rna   : <msafile> contains RNA alignments\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/easel:0.47--h516909a_0

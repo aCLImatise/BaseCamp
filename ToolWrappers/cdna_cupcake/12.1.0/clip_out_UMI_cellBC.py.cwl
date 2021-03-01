@@ -3,32 +3,32 @@ id: clip_out_UMI_cellBC.py.cwl
 inputs:
 - id: in_umi_len
   doc: Length of UMI
-  type: long
+  type: long?
   inputBinding:
     prefix: --umi_len
 - id: in_bc_len
   doc: Length of cell barcode
-  type: long
+  type: long?
   inputBinding:
     prefix: --bc_len
 - id: in_tso_len
   doc: Length of TSO (for G5-10X only)
-  type: long
+  type: long?
   inputBinding:
     prefix: --tso_len
 - id: in_umi_type
   doc: Location of the UMI
-  type: string
+  type: string?
   inputBinding:
     prefix: --umi_type
 - id: in_g_five_clip_seq
   doc: Sequence before UMI for G5-clip (for G5-clip only)
-  type: long
+  type: long?
   inputBinding:
     prefix: --g5_clip_seq
 - id: in_bc_rank_file
   doc: "(Optional) cell barcode rank file from short read data\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --bc_rank_file
 - id: in_bam_filename
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - clip_out_UMI_cellBC.py

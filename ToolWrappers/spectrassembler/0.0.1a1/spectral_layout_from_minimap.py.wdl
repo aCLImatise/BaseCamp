@@ -26,6 +26,9 @@ task SpectralLayoutFromMinimappy {
       ~{if (verbosity) then "--verbosity" else ""} \
       ~{if defined(ref_pos_csv_f) then ("--ref_pos_csvf " +  '"' + ref_pos_csv_f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     root: "directory where to store layout files."
     fast_afn: "reads file path (fasta format))"

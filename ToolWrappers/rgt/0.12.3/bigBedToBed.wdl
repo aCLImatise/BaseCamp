@@ -4,6 +4,9 @@ task BigBedToBed {
   command <<<
     bigBedToBed
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

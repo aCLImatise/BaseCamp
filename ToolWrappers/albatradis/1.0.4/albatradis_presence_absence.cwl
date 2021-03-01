@@ -3,17 +3,17 @@ id: albatradis_presence_absence.cwl
 inputs:
 - id: in_prefix
   doc: 'Output directory prefix (default: output)'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --prefix
 - id: in_verbose
   doc: "Print out more information about the analysis while it\nruns (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_debug
   doc: 'Turn on debugging (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_embl_file
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_prefix
   doc: 'Output directory prefix (default: output)'
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_prefix)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - albatradis-presence_absence

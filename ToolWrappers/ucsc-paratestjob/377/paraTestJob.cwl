@@ -3,32 +3,32 @@ id: paraTestJob.cwl
 inputs:
 - id: in_crash
   doc: Try to write to NULL when done.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -crash
 - id: in_err
   doc: Return -1 error code when done.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -err
 - id: in_output
   doc: Make some output in file as well.
-  type: File
+  type: File?
   inputBinding:
     prefix: -output
 - id: in_heavy
   doc: 'Make output heavy: n extra lumberjack lines.'
-  type: string
+  type: string?
   inputBinding:
     prefix: -heavy
 - id: in_input
   doc: Make it read in a file too.
-  type: File
+  type: File?
   inputBinding:
     prefix: -input
 - id: in_sleep
   doc: Sleep for N seconds.
-  type: string
+  type: string?
   inputBinding:
     prefix: -sleep
 outputs:
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Make some output in file as well.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - paraTestJob

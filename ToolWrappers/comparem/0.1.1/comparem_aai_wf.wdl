@@ -36,6 +36,9 @@ task ComparemAaiWf {
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     evalue: "e-value cutoff for identifying initial blast hits\\n(default: 0.001)"
     per_identity: "percent identity for defining homology (default: 30.0)"

@@ -1,0 +1,202 @@
+!Command
+command:
+- IDFilter
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: "*                                               Input file  (valid\
+    \ formats: 'idXML', 'consensusXML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: "*                                              Output file  (valid\
+    \ formats: 'idXML', 'consensusXML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -in_silico_digestion
+  description: ":fasta <file>                         Fasta protein sequence database.\
+    \ (valid formats: 'fasta')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -missed_cleavages
+  description: ":number_of_missed_cleavages [min]:[max]  Range of allowed missed cleavages\
+    \ in the peptide sequences.\nFor example: 0:1 -> peptides with two or more missed\
+    \ cleavages will be removed,\n0:0 -> peptides with any missed cleavages will be\
+    \ removed (default: ':')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -var_mods
+  description: Keep only peptide hits with variable modifications (as defined in the
+    'SearchParameters' section of the input file).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -remove_shared_peptides
+  description: Only peptides matching exactly one protein are kept. Remember that
+    isoforms count as different proteins!
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -keep_unreferenced_protein_hits
+  description: Proteins not referenced by a peptide are retained in the IDs.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -remove_decoys
+  description: Remove proteins according to the information in the user parameters.
+    Usually used in combination with 'delete_unreferenced_peptide_hits'.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -delete_unreferenced_peptide_hits
+  description: Peptides not referenced by any protein are deleted in the IDs. Usually
+    used in combination with 'score:prot' or 'thresh:prot'.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ini
+  description: Use the given TOPP INI file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -threads
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -write_ini
+  description: Writes the default configuration file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --helphelp
+  description: Shows all options (including advanced)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows options
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nIDFilter -- Filters\
+  \ results from protein or peptide identification engines based on different criteria.\n\
+  Full documentation: http://www.openms.de/documentation/TOPP_IDFilter.html\nVersion:\
+  \ 2.6.0-pre-exported-20201001 Oct  1 2020, 01:37:06\nTo cite OpenMS:\n  Rost HL,\
+  \ Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible open-source software\
+  \ platform for mass spectrometry data analysis. Nat Meth. 2016; 13, 9: 741-748.\
+  \ doi:10.1038/nmeth.3959.\n\nUsage:\n  IDFilter <options>\n\nOptions (mandatory\
+  \ options marked with '*'):\n  -in <file>*                                     \
+  \          Input file  (valid formats: 'idXML', 'consensusXML')\n  -out <file>*\
+  \                                              Output file  (valid formats: 'idXML',\
+  \ 'consensusXML')\n\nFiltering by precursor attributes (RT, m/z, charge, length):\n\
+  \  -precursor:rt [min]:[max]                                 Retention time range\
+  \ to extract. (default: ':')\n  -precursor:mz [min]:[max]                      \
+  \           Mass-to-charge range to extract. (default: ':')\n  -precursor:length\
+  \ [min]:[max]                             Keep only peptide hits with a sequence\
+  \ length in this range. (default: ':')\n  -precursor:charge [min]:[max]        \
+  \                     Keep only peptide hits with charge states in this range. (default:\
+  \ ':')\n\nFiltering by peptide/protein score.:\n  -score:pep <score>           \
+  \                             The score which should be reached by a peptide hit\
+  \ to be kept. (default: '0.0')\n  -score:prot <score>                          \
+  \             The score which should be reached by a protein hit to be kept. All\
+  \ proteins are filtered based on their singleton scores irrespective of grouping.\
+  \ Use in combination with 'delete_unreferenced_peptide_hits' to remove affected\
+  \ peptides. (default: '0.0')\n  -score:protgroup <score>                       \
+  \           The score which should be reached by a protein group to be kept. Performs\
+  \ group level score filtering (including groups of single proteins). Use in combination\
+  \ with 'delete_unreferenced_peptide_hits' to remove affected peptides. (default:\
+  \ '0.0')\n\nFiltering by whitelisting (only peptides/proteins from a given set can\
+  \ pass):\n  -whitelist:proteins <file>                                Filename of\
+  \ a FASTA file containing protein sequences.\n                                 \
+  \                           All peptides that are not referencing a protein in this\
+  \ file are removed.\n                                                          \
+  \  All proteins whose accessions are not present in this file are removed. (valid\
+  \ formats: 'fasta')\n  -whitelist:protein_accessions <accessions>              \
+  \  All peptides that do not reference at least one of the provided protein accession\
+  \ are removed.\n                                                            Only\
+  \ proteins of the provided list are retained.\n  -whitelist:peptides <file>    \
+  \                            Only peptides with the same sequence and modification\
+  \ assignment as any peptide in this file are kept. Use with 'whitelist:ignore_modifications'\
+  \ to only compare by sequence.\n                                               \
+  \             (valid formats: 'idXML')\n\nFiltering by blacklisting (only peptides/proteins\
+  \ NOT present in a given set can pass):\n  -blacklist:proteins <file>          \
+  \                      Filename of a FASTA file containing protein sequences.\n\
+  \                                                            All peptides that are\
+  \ referencing a protein in this file are removed.\n                            \
+  \                                All proteins whose accessions are present in this\
+  \ file are removed. (valid formats: 'fasta')\n  -blacklist:protein_accessions <accessions>\
+  \                All peptides that reference at least one of the provided protein\
+  \ accession are removed.\n                                                     \
+  \       Only proteins not in the provided list are retained.\n  -blacklist:peptides\
+  \ <file>                                Peptides with the same sequence and modification\
+  \ assignment as any peptide in this file are filtered out. Use with 'blacklist:ignore_modifications'\
+  \ to only compare by sequence.\n                                               \
+  \             (valid formats: 'idXML')\n\nThis filter option removes peptide hits\
+  \ which are not in the list of in silico peptides generated by the rules specified\
+  \ below:\n  -in_silico_digestion:fasta <file>                         Fasta protein\
+  \ sequence database. (valid formats: 'fasta')\n\nThis filter option removes peptide\
+  \ hits which do not confirm with the allowed missed cleavages specified below.:\n\
+  \  -missed_cleavages:number_of_missed_cleavages [min]:[max]  Range of allowed missed\
+  \ cleavages in the peptide sequences.\n                                        \
+  \                    For example: 0:1 -> peptides with two or more missed cleavages\
+  \ will be removed,\n                                                           \
+  \ 0:0 -> peptides with any missed cleavages will be removed (default: ':')\n\nFiltering\
+  \ best hits per spectrum (for peptides) or from proteins:\n  -best:n_peptide_hits\
+  \ <integer>                            Keep only the 'n' highest scoring peptide\
+  \ hits per spectrum (for n > 0). (default: '0' min: '0')\n  -best:n_protein_hits\
+  \ <integer>                            Keep only the 'n' highest scoring protein\
+  \ hits (for n > 0). (default: '0' min: '0')\n  -best:strict                    \
+  \                          Keep only the highest scoring peptide hit.\n        \
+  \                                                    Similar to n_peptide_hits=1,\
+  \ but if there are ties between two or more highest scoring hits, none are kept.\n\
+  \n  -var_mods                                                 Keep only peptide\
+  \ hits with variable modifications (as defined in the 'SearchParameters' section\
+  \ of the input file).\n  -remove_shared_peptides                               \
+  \    Only peptides matching exactly one protein are kept. Remember that isoforms\
+  \ count as different proteins!\n  -keep_unreferenced_protein_hits              \
+  \             Proteins not referenced by a peptide are retained in the IDs.\n  -remove_decoys\
+  \                                            Remove proteins according to the information\
+  \ in the user parameters. Usually used in combination with 'delete_unreferenced_peptide_hits'.\n\
+  \  -delete_unreferenced_peptide_hits                         Peptides not referenced\
+  \ by any protein are deleted in the IDs. Usually used in combination with 'score:prot'\
+  \ or 'thresh:prot'.\n                                                          \
+  \  \nCommon TOPP options:\n  -ini <file>                                       \
+  \        Use the given TOPP INI file\n  -threads <n>                           \
+  \                   Sets the number of threads allowed to be used by the TOPP tool\
+  \ (default: '1')\n  -write_ini <file>                                         Writes\
+  \ the default configuration file\n  --help                                     \
+  \               Shows options\n  --helphelp                                    \
+  \            Shows all options (including advanced)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/openms:2.6.0--h4afb90d_0

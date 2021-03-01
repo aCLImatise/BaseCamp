@@ -2,9 +2,9 @@ version 1.0
 
 task RsatSupportedorganismsensemblgenomes {
   input {
+    String? i_find_them
     String supported_organisms_ensembl_genomes
     String expressions_dot
-    String jacques_dot_van_helden_backslash_at_univ_am_udot_fr
     String util
     String attribute_dot
   }
@@ -12,14 +12,17 @@ task RsatSupportedorganismsensemblgenomes {
     rsat supported_organisms_ensemblgenomes \
       ~{supported_organisms_ensembl_genomes} \
       ~{expressions_dot} \
-      ~{jacques_dot_van_helden_backslash_at_univ_am_udot_fr} \
       ~{util} \
-      ~{attribute_dot}
+      ~{attribute_dot} \
+      ~{if defined(i_find_them) then ("-q " +  '"' + i_find_them + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
+    i_find_them: "(I did not find them yet)"
     supported_organisms_ensembl_genomes: "[1mVERSION[0m"
     expressions_dot: "[1mspecies_taxid[0m"
-    jacques_dot_van_helden_backslash_at_univ_am_udot_fr: "[1mCATEGORY[0m"
     util: "[1mUSAGE[0m"
     attribute_dot: "[1mSEE ALSO[0m"
   }

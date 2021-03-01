@@ -10,6 +10,9 @@ task TreeGen {
       ~{or} \
       ~{assignment_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     or: "treeGen '*speciesFile' ['*groupFile'] > outfile"
     assignment_dot: "The integers should appear in the same order as the"

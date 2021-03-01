@@ -20,6 +20,9 @@ task Any2fasta {
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_version_exit: "Print version and exit"
     output_running_errors: "No output while running, only errors"

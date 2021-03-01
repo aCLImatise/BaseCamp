@@ -10,6 +10,9 @@ task Sortsam {
       ~{if (pos) then "-pos" else ""} \
       ~{if (idx) then "-idx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pos: "-- Sort by chromosome position"
     idx: "-- Sort by read_index position"

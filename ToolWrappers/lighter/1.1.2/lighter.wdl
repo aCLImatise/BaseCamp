@@ -4,7 +4,7 @@ task Lighter {
   input {
     File? seqfile_path_sequence
     Int? genomesize_alpha_see
-    Int? number_use_default
+    Int? number_threads_use
     Int? max_cor
     Boolean? trim
     Boolean? discard
@@ -21,7 +21,7 @@ task Lighter {
       ~{or} \
       ~{if defined(seqfile_path_sequence) then ("-r " +  '"' + seqfile_path_sequence + '"') else ""} \
       ~{if defined(genomesize_alpha_see) then ("-k " +  '"' + genomesize_alpha_see + '"') else ""} \
-      ~{if defined(number_use_default) then ("-t " +  '"' + number_use_default + '"') else ""} \
+      ~{if defined(number_threads_use) then ("-t " +  '"' + number_threads_use + '"') else ""} \
       ~{if defined(max_cor) then ("-maxcor " +  '"' + max_cor + '"') else ""} \
       ~{if (trim) then "-trim" else ""} \
       ~{if (discard) then "-discard" else ""} \
@@ -32,10 +32,13 @@ task Lighter {
       ~{if defined(zlib) then ("-zlib " +  '"' + zlib + '"') else ""} \
       ~{if (print_version_information) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seqfile_path_sequence: ": seq_file is the path to the sequence file. Can use multiple -r to specifiy multiple sequence files\\nThe file can be fasta and fastq, and can be gzip'ed with extension *.gz.\\nWhen the input file is *.gz, the corresponding output file will also be gzip'ed."
     genomesize_alpha_see: "genome_size alpha: (see README for information on setting alpha)"
-    number_use_default: ": number of threads to use (default: 1)"
+    number_threads_use: ": number of threads to use (default: 1)"
     max_cor: ": the maximum number of corrections within a 20bp window (default: 4)"
     trim: ": allow trimming (default: false)"
     discard: ": discard unfixable reads. Will LOSE paired-end matching when discarding (default: false)"

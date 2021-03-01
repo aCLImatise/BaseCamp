@@ -16,6 +16,9 @@ task HaphpipeAssemble02 {
       ~{samp_id} \
       ~{outdir}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_one: ""
     read_two: ""

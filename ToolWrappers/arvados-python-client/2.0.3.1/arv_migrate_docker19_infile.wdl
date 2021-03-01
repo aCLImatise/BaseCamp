@@ -12,6 +12,9 @@ task Arvmigratedocker19Infile {
       ~{if (force) then "--force" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: ""
     verbose: ""

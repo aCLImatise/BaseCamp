@@ -12,8 +12,11 @@ task TranscovGeneratelength {
       ~{bed_file} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    output_file: "-m, --max-length INTEGER RANGE\\n--help                          Show this message and exit.\\n"
+    output_file: "RANGE"
     bam_file: ""
     bed_file: ""
   }

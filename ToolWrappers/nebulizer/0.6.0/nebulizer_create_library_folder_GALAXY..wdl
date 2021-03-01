@@ -14,6 +14,9 @@ task NebulizerCreateLibraryFolderGALAXY {
       ~{galaxy} \
       ~{path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nebulizer: ""
     create_library_folder: ""

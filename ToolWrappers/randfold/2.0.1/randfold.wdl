@@ -18,6 +18,9 @@ task Randfold {
       ~{if defined(shuffling) then ("-d " +  '"' + shuffling + '"') else ""} \
       ~{if defined(chain__shuffling) then ("-m " +  '"' + chain__shuffling + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mononucleotide_shuffling: "mononucleotide shuffling"
     shuffling: "shuffling"

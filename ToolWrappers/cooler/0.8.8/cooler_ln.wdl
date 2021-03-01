@@ -14,6 +14,9 @@ task CoolerLn {
       ~{if (overwrite) then "--overwrite" else ""} \
       ~{if (soft) then "--soft" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     overwrite: "Truncate and replace destination file if it already exists."
     soft: "Creates a soft link rather than a hard link if the source\\nand destination file are the same. Otherwise, creates an\\nexternal link. This type of link uses a path rather than a\\npointer."

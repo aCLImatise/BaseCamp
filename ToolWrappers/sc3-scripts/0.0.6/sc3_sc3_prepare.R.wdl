@@ -34,6 +34,9 @@ task Sc3sc3prepareR {
       ~{if defined(k_means_iter_max) then ("--kmeans-iter-max " +  '"' + k_means_iter_max + '"') else ""} \
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name in which a serialized R SingleCellExperiment object where object matrix found"
     gene_filter: "A boolean variable which defines whether to perform gene filtering before SC3 clustering."

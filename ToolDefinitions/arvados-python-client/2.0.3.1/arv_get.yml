@@ -3,127 +3,127 @@ command:
 - arv-get
 positional:
 - !Positional
-  description: Collection locator, optionally with a file path or
+  optional: false
   position: 0
   name: locator
-  optional: false
+  description: Collection locator, optionally with a file path or
 - !Positional
-  description: destination        Local file or directory where the data is to be
-    written.
+  optional: false
   position: 1
   name: prefix.
-  optional: false
+  description: destination        Local file or directory where the data is to be
+    written.
 - !Positional
-  description: 'optional arguments:'
+  optional: false
   position: 0
   name: stdout.
-  optional: false
+  description: 'optional arguments:'
 - !Positional
-  description: -n                 Do not write any data -- just read from Keep, and
-    report
+  optional: false
   position: 1
   name: Keep.
-  optional: false
+  description: -n                 Do not write any data -- just read from Keep, and
+    report
 named:
 - !Flag
-  description: "Maximum number of times to retry server requests that\nencounter temporary\
-    \ failures (e.g., server down). Default\n3."
+  optional: true
   synonyms:
   - --retries
+  description: "Maximum number of times to retry server requests that\nencounter temporary\
+    \ failures (e.g., server down). Default\n3."
   args: !SimpleFlagArg
     name: RETRIES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --progress
   description: "Display human-readable progress on stderr (bytes and, if\npossible,\
     \ percentage of total data size). This is the\ndefault behavior when it is not\
     \ expected to interfere\nwith the output: specifically, stderr is a tty _and_\n\
     either stdout is not a tty, or output is being written to\nnamed files rather\
     \ than stdout."
-  synonyms:
-  - --progress
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not display human-readable progress on stderr.
+  optional: true
   synonyms:
   - --no-progress
+  description: Do not display human-readable progress on stderr.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Display machine-readable progress on stderr (bytes and,\nif known,\
-    \ total data size)."
+  optional: true
   synonyms:
   - --batch-progress
+  description: "Display machine-readable progress on stderr (bytes and,\nif known,\
+    \ total data size)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --hash
   description: "Display the hash of each file as it is read from Keep,\nusing the\
     \ given hash algorithm. Supported algorithms\ninclude md5, sha1, sha224, sha256,\
     \ sha384, and sha512."
-  synonyms:
-  - --hash
   args: !SimpleFlagArg
     name: HASH
-  optional: true
 - !Flag
-  description: Display the MD5 hash of each file as it is read from
+  optional: true
   synonyms:
   - --md5sum
+  description: Display the MD5 hash of each file as it is read from
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Retrieve all files in the specified collection/prefix.\nThis is the\
-    \ default behavior if the \"locator\" argument\nends with a forward slash."
+  optional: true
   synonyms:
   - -r
+  description: "Retrieve all files in the specified collection/prefix.\nThis is the\
+    \ default behavior if the \"locator\" argument\nends with a forward slash."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
   description: "Overwrite existing files while writing. The default\nbehavior is to\
     \ refuse to write *anything* if any of the\noutput files already exist. As a special\
     \ case, -f is not\nneeded to write to stdout."
-  synonyms:
-  - -f
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Once for verbose mode, twice for debug mode.
+  optional: true
   synonyms:
   - -v
+  description: Once for verbose mode, twice for debug mode.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --skip-existing
   description: "Skip files that already exist. The default behavior is to\nrefuse\
     \ to write *anything* if any files exist that would\nhave to be overwritten. This\
     \ option causes even devices,\nsockets, and fifos to be skipped."
-  synonyms:
-  - --skip-existing
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "When getting a collection manifest, strip its access\ntokens before\
-    \ writing it.\n"
+  optional: true
   synonyms:
   - --strip-manifest
+  description: "When getting a collection manifest, strip its access\ntokens before\
+    \ writing it.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Print version and exit.
+  optional: true
   synonyms:
   - --version
+  description: Print version and exit.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: arv-get [-h] [--retries RETRIES] [--version]\n               [--progress\
   \ | --no-progress | --batch-progress]\n               [--hash HASH | --md5sum] [-n]\
   \ [-r]\n               [-f | -v | --skip-existing | --strip-manifest]\n        \
@@ -163,3 +163,4 @@ help_text: "usage: arv-get [-h] [--retries RETRIES] [--version]\n               
   \                  tokens before writing it.\n"
 generated_using:
 - --help
+docker_image:

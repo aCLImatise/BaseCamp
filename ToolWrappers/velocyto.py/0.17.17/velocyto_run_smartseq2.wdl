@@ -22,6 +22,9 @@ task VelocytoRunsmartseq2 {
       ~{if defined(dump) then ("--dump " +  '"' + dump + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_folder: "Output folder, if it does not exist it will be created."
     sample_id: "The sample name that will be used as a the filename of the output."

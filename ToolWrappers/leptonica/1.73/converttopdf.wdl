@@ -4,6 +4,9 @@ task Converttopdf {
   command <<<
     converttopdf
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

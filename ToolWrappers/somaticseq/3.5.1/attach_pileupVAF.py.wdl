@@ -26,6 +26,9 @@ task AttachPileupVAFpy {
       ~{if (pile_up_dp_four) then "--pileup-DP4" else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     my_vcf_file: "My VCF (default: None)"
     normal_sample_name: "Normal Sample Name (default: NORMAL)"

@@ -8,6 +8,9 @@ task PolyA2hintspl {
     polyA2hints_pl \
       ~{swap_strand}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     swap_strand: "swap strand, currently use this for polyT files"
   }

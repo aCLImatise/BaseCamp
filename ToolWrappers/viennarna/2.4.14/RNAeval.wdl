@@ -64,6 +64,9 @@ task RNAeval {
       ~{if (ribo_sum_scoring) then "--ribosum_scoring" else ""} \
       ~{if (old) then "--old" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     full_help: "Print help, including hidden options, and exit"
@@ -84,7 +87,7 @@ task RNAeval {
     log_ml: "Recalculate energies of structures using a\\nlogarithmic energy function for multi-loops\\nbefore output.\\n(default=off)"
     shape: "file        Use SHAPE reactivity data in the folding\\nrecursions (does not work for PF yet)"
     shape_method: "=[D/Z/W] + [optional parameters]\\nSpecify the method how to convert SHAPE\\nreactivity data to pseudo energy\\ncontributions\\n(default=`D')"
-    shape_conversion: "+ [optional parameters]\\nSpecify the method used to convert SHAPE\\nreactivities to pairing probabilities when\\nusing the SHAPE approach of Zarringhalam et\\nal.\\n(default=`O')"
+    shape_conversion: "/C/S/L/O  + [optional parameters]\\nSpecify the method used to convert SHAPE\\nreactivities to pairing probabilities when\\nusing the SHAPE approach of Zarringhalam et\\nal.\\n(default=`O')"
     mis: "Output \\\"most informative sequence\\\" instead of\\nsimple consensus: For each column of the\\nalignment output the set of nucleotides with\\nfrequency greater than average in IUPAC\\nnotation.\\n(default=off)"
     c_factor: "Set the weight of the covariance term in the\\nenergy function\\n(default=`1.0')"
     n_factor: "Set the penalty for non-compatible sequences in\\nthe covariance term of the energy function\\n(default=`1.0')"

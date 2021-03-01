@@ -12,6 +12,9 @@ task ScHicCorrectMatrices {
       ~{if defined(out_filename) then ("--outFileName " +  '"' + out_filename + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "Matrix to reduce in h5 format. (default: None)"
     out_filename: "File name to save the resulting matrix, please add the\\nscool prefix. (default: None)"

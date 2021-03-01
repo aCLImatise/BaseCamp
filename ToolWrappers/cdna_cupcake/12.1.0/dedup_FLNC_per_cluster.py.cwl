@@ -3,12 +3,12 @@ id: dedup_FLNC_per_cluster.py.cwl
 inputs:
 - id: in_gff
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --gff
 - id: in_fast_a
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --fasta
 - id: in_de_duplicate
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dedup_FLNC_per_cluster.py

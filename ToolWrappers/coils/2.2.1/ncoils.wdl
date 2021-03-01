@@ -4,6 +4,9 @@ task Ncoils {
   command <<<
     ncoils
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

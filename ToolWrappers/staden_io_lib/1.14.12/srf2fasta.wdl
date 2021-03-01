@@ -10,6 +10,9 @@ task Srf2fasta {
       ~{archive_name} \
       ~{if (c) then "-C" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     c: ""
     archive_name: ""

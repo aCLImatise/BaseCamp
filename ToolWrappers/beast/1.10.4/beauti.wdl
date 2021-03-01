@@ -16,6 +16,9 @@ task Beauti {
       ~{if defined(advanced) then ("-advanced " +  '"' + advanced + '"') else ""} \
       ~{if defined(version) then ("-version " +  '"' + version + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     advanced: "advanced & developer features"
     version: "the version and credits and stop"

@@ -1,15 +1,11 @@
 class: CommandLineTool
 id: blastdb_convert.cwl
-inputs:
-- id: in_out
-  doc: '[-logfile File_Name] [-version]'
-  type: string
-  inputBinding:
-    prefix: -out
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - blastdb_convert

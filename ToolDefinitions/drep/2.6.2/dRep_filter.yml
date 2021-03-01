@@ -5,100 +5,100 @@ command:
 positional: []
 named:
 - !Flag
-  description: 'threads (default: 6)'
+  optional: true
   synonyms:
   - -p
   - --processors
+  description: 'threads (default: 6)'
   args: !SimpleFlagArg
     name: PROCESSORS
-  optional: true
 - !Flag
-  description: 'make extra debugging output (default: False)'
+  optional: true
   synonyms:
   - -d
   - --debug
+  description: 'make extra debugging output (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Minimum genome length (default: 50000)'
+  optional: true
   synonyms:
   - -l
   - --length
+  description: 'Minimum genome length (default: 50000)'
   args: !SimpleFlagArg
     name: LENGTH
-  optional: true
 - !Flag
-  description: 'Minumum genome completeness (default: 75)'
+  optional: true
   synonyms:
   - -comp
   - --completeness
+  description: 'Minumum genome completeness (default: 75)'
   args: !SimpleFlagArg
     name: COMPLETENESS
-  optional: true
 - !Flag
-  description: 'Maximum genome contamination (default: 25)'
+  optional: true
   synonyms:
   - -con
   - --contamination
+  description: 'Maximum genome contamination (default: 25)'
   args: !SimpleFlagArg
     name: CONTAMINATION
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ignoreGenomeQuality
   description: "Don't run checkM or do any quality filtering. NOT\nRECOMMENDED! This\
     \ is useful for use with\nbacteriophages or eukaryotes or things where checkM\n\
     scoring does not work. Will only choose genomes based\non length and N50 (default:\
     \ False)"
-  synonyms:
-  - --ignoreGenomeQuality
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -g
   description: "[GENOMES [GENOMES ...]], --genomes [GENOMES [GENOMES ...]]\ngenomes\
     \ to filter in .fasta format. Not necessary if\nBdb or Wdb already exist (default:\
     \ None)"
-  synonyms:
-  - -g
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --genomeInfo
   description: "location of .csv file containing quality information\non the genomes.\
     \ Must contain: [\"genome\"(basename of\n.fasta file of that genome), \"completeness\"\
     (0-100\nvalue for completeness of the genome),\n\"contamination\"(0-100 value\
     \ of the contamination of\nthe genome)] (default: None)"
-  synonyms:
-  - --genomeInfo
   args: !SimpleFlagArg
     name: GENOMEINFO
-  optional: true
 - !Flag
-  description: "Either lineage_wf (more accurate) or taxonomy_wf\n(faster) (default:\
-    \ lineage_wf)"
+  optional: true
   synonyms:
   - --checkM_method
+  description: "Either lineage_wf (more accurate) or taxonomy_wf\n(faster) (default:\
+    \ lineage_wf)"
   args: !ChoiceFlagArg
     choices: !!set
       taxonomy_wf:
       lineage_wf:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --set_recursion
   description: "Increases the python recursion limit. NOT RECOMMENDED\nunless checkM\
     \ is crashing due to recursion issues.\nRecommended to set to 2000 if needed,\
     \ but setting this\ncould crash python (default: 0)\n"
-  synonyms:
-  - --set_recursion
   args: !SimpleFlagArg
     name: SET_RECURSION
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: dRep filter [-p PROCESSORS] [-d] [-h] [-l LENGTH] [-comp COMPLETENESS]\n\
@@ -137,3 +137,4 @@ help_text: "usage: dRep filter [-p PROCESSORS] [-d] [-h] [-l LENGTH] [-comp COMP
   \                        could crash python (default: 0)\n"
 generated_using:
 - --help
+docker_image:

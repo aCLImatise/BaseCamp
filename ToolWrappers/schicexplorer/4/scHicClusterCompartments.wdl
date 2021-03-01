@@ -2,9 +2,9 @@ version 1.0
 
 task ScHicClusterCompartments {
   input {
-    File? out_filename
     String? schic_matrix_m
     Int? number_of_clusters
+    File? out_filename
     String? cluster_method
     Array[String] chromosomes
     Boolean? norm
@@ -19,9 +19,9 @@ task ScHicClusterCompartments {
     scHicClusterCompartments \
       ~{sch_i_c} \
       ~{var_11} \
-      ~{if defined(out_filename) then ("--outFileName " +  '"' + out_filename + '"') else ""} \
       ~{if defined(schic_matrix_m) then ("--matrix " +  '"' + schic_matrix_m + '"') else ""} \
       ~{if defined(number_of_clusters) then ("--numberOfClusters " +  '"' + number_of_clusters + '"') else ""} \
+      ~{if defined(out_filename) then ("--outFileName " +  '"' + out_filename + '"') else ""} \
       ~{if defined(cluster_method) then ("--clusterMethod " +  '"' + cluster_method + '"') else ""} \
       ~{if defined(chromosomes) then ("--chromosomes " +  '"' + chromosomes + '"') else ""} \
       ~{if (norm) then "--norm" else ""} \
@@ -30,10 +30,13 @@ task ScHicClusterCompartments {
       ~{if defined(hist_on_mark_type) then ("--histonMarkType " +  '"' + hist_on_mark_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    out_filename: "File name to save the resulting clusters (default:\\nclusters.txt)"
     schic_matrix_m: "scHi-C matrix, -m scool scHi-C matrix\\nThe single cell Hi-C interaction matrices to cluster.\\nNeeds to be in scool format (default: None)"
     number_of_clusters: "Number of to be computed clusters (default: 12)"
+    out_filename: "File name to save the resulting clusters (default:\\nclusters.txt)"
     cluster_method: "Algorithm to cluster the Hi-C matrices (default:\\nspectral)"
     chromosomes: "List of chromosomes to be included in the correlation.\\n(default: None)"
     norm: "Different obs-exp normalization as used by Homer\\nsoftware. (default: False)"

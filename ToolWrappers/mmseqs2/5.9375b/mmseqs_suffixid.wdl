@@ -16,6 +16,9 @@ task MmseqsSuffixid {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "Use this prefix for all entries"
     mapping_file: "specify a file that translates the keys of a DB to new keys, TSV format"

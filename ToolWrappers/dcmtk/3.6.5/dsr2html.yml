@@ -1,0 +1,254 @@
+!Command
+command:
+- dsr2html
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: dsrfile-in
+  description: DICOM SR input filename to be rendered
+- !Positional
+  optional: false
+  position: 1
+  name: htmlfile-out
+  description: 'HTML/XHTML output filename (default: stdout)'
+- !Positional
+  optional: false
+  position: 0
+  name: string
+  description: assume charset c if no extended charset declared
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --arguments
+  description: print expanded command line arguments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: quiet mode, print no warnings and errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: verbose mode, print processing details
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: debug mode, print debug information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ll
+  - --log-level
+  description: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\n\
+    use level l for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lc
+  - --log-config
+  description: "[f]ilename: string\nuse config file f for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --read-dataset
+  description: read data set without file meta information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: =  --read-xfer-auto        use TS recognition (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -td
+  - --read-xfer-detect
+  description: ignore TS specified in the file meta header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -te
+  - --read-xfer-little
+  description: read with explicit VR little endian TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tb
+  - --read-xfer-big
+  description: read with explicit VR big endian TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ti
+  - --read-xfer-implicit
+  description: read with implicit VR little endian TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Ip
+  - --processing-details
+  description: show currently processed content item
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Er
+  - --unknown-relationship
+  description: accept unknown/missing relationship type
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Ev
+  - --invalid-item-value
+  description: "accept invalid content item value\n(e.g. violation of VR or VM definition)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Ec
+  - --ignore-constraints
+  description: ignore relationship content constraints
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Ee
+  - --ignore-item-errors
+  description: "do not abort on content item errors, just warn\n(e.g. missing value\
+    \ type specific attributes)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Ei
+  - --skip-invalid-items
+  description: skip invalid content items (incl. sub-tree)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Dv
+  - --disable-vr-checker
+  description: disable check for VR-conformant string values
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --charset-check-all
+  description: "check all data elements with string values\n(default: only PN, LO,\
+    \ LT, SH, ST, UC and UT)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Ri
+  - --never-expand-inline
+  description: never expand content items inline
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Dh
+  - --no-document-header
+  description: do not render general document information
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this help text and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version information and exit
+  args: !EmptyFlagArg {}
+help_text: "$dcmtk: dsr2html v3.6.5 2019-10-28 $\n\ndsr2html: Render DICOM SR file\
+  \ and data set to HTML/XHTML\nusage: dsr2html [options] dsrfile-in [htmlfile-out]\n\
+  \nparameters:\n  dsrfile-in                     DICOM SR input filename to be rendered\n\
+  \  htmlfile-out                   HTML/XHTML output filename (default: stdout)\n\
+  \ngeneral options:\n  -h     --help                  print this help text and exit\n\
+  \         --version               print version information and exit\n         --arguments\
+  \             print expanded command line arguments\n  -q     --quiet          \
+  \       quiet mode, print no warnings and errors\n  -v     --verbose           \
+  \    verbose mode, print processing details\n  -d     --debug                 debug\
+  \ mode, print debug information\n  -ll    --log-level             [l]evel: string\
+  \ constant\n                                 (fatal, error, warn, info, debug, trace)\n\
+  \                                 use level l for the logger\n  -lc    --log-config\
+  \            [f]ilename: string\n                                 use config file\
+  \ f for the logger\ninput options:\n  input file format:\n    +f   --read-file \
+  \            read file format or data set (default)\n    +fo  --read-file-only \
+  \       read file format only\n    -f   --read-dataset          read data set without\
+  \ file meta information\n  input transfer syntax:\n    -t=  --read-xfer-auto   \
+  \     use TS recognition (default)\n    -td  --read-xfer-detect      ignore TS specified\
+  \ in the file meta header\n    -te  --read-xfer-little      read with explicit VR\
+  \ little endian TS\n    -tb  --read-xfer-big         read with explicit VR big endian\
+  \ TS\n    -ti  --read-xfer-implicit    read with implicit VR little endian TS\n\
+  processing options:\n  additional information:\n    -Ip  --processing-details  \
+  \  show currently processed content item\n  error handling:\n    -Er  --unknown-relationship\
+  \  accept unknown/missing relationship type\n    -Ev  --invalid-item-value    accept\
+  \ invalid content item value\n                                 (e.g. violation of\
+  \ VR or VM definition)\n    -Ec  --ignore-constraints    ignore relationship content\
+  \ constraints\n    -Ee  --ignore-item-errors    do not abort on content item errors,\
+  \ just warn\n                                 (e.g. missing value type specific\
+  \ attributes)\n    -Ei  --skip-invalid-items    skip invalid content items (incl.\
+  \ sub-tree)\n    -Dv  --disable-vr-checker    disable check for VR-conformant string\
+  \ values\n  character set:\n    +Cr  --charset-require       require declaration\
+  \ of ext. charset (default)\n    +Ca  --charset-assume        [c]harset: string\n\
+  \                                 assume charset c if no extended charset declared\n\
+  \         --charset-check-all     check all data elements with string values\n \
+  \                                (default: only PN, LO, LT, SH, ST, UC and UT)\n\
+  \    +U8  --convert-to-utf8       convert all element values that are affected\n\
+  \                                 by Specific Character Set (0008,0005) to UTF-8\n\
+  output options:\n  HTML/XHTML compatibility:\n    +H3  --html-3.2              use\
+  \ only HTML version 3.2 compatible features\n    +H4  --html-4.0              allow\
+  \ all HTML version 4.01 features (default)\n    +X1  --xhtml-1.1             comply\
+  \ with XHTML version 1.1 specification\n    +Hd  --add-document-type     add reference\
+  \ to SGML document type definition\n  cascading style sheet (CSS), not with HTML\
+  \ 3.2:\n    +Sr  --css-reference         URL: string\n                         \
+  \        add reference to specified CSS to document\n    +Sf  --css-file       \
+  \       [f]ilename: string\n                                 embed content of specified\
+  \ CSS into document\n  general rendering:\n    +Ri  --expand-inline         expand\
+  \ short content items inline (default)\n    -Ri  --never-expand-inline   never expand\
+  \ content items inline\n    +Ra  --always-expand-inline  always expand content items\
+  \ inline\n    +Rd  --render-full-data      render full data of content items\n \
+  \   +Rt  --section-title-inline  render section titles inline, not separately\n\
+  \  document rendering:\n    +Dt  --document-type-title   use document type as document\
+  \ title (default)\n    +Dp  --patient-info-title    use patient information as document\
+  \ title\n    -Dh  --no-document-header    do not render general document information\n\
+  \  code rendering:\n    +Ci  --render-inline-codes   render codes in continuous\
+  \ text blocks\n    +Cn  --concept-name-codes    render code of concept names\n \
+  \   +Cu  --numeric-unit-codes    render code of numeric measurement units\n    +Cv\
+  \  --code-value-unit       use code value as measurement unit (default)\n    +Cm\
+  \  --code-meaning-unit     use code meaning as measurement unit\n    +Cc  --render-all-codes\
+  \      render all codes (implies +Ci, +Cn and +Cu)\n    +Ct  --code-details-tooltip\
+  \  render code details as a tooltip (implies +Cc)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dcmtk:3.6.5--h5fca97b_0

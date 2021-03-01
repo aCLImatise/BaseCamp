@@ -14,6 +14,9 @@ task Graph2asqg {
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
       ~{if (optional_use_ids) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     b: "# (required)"
     optional_default_basename: "# (optional, default: <basename>)"

@@ -3,17 +3,17 @@ id: webSync.cwl
 inputs:
 - id: in_debug
   doc: show debug messages
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_connections
   doc: "Maximum number of parallel connections to the server,\ndefault 10"
-  type: long
+  type: long?
   inputBinding:
     prefix: --connections
 - id: in_skip_scan
   doc: "Do not scan local file sizes again, in case you know\nit is up to date\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skipScan
 - id: in_url
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - webSync

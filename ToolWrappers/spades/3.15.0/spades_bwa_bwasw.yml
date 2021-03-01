@@ -1,0 +1,186 @@
+!Command
+command:
+- spades-bwa
+- bwasw
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: bwa
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: bwasw
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: target.prefix
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: query.fa
+  description: ''
+- !Positional
+  optional: true
+  position: 4
+  name: query2.fa
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: score for a match [1]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: mismatch penalty [3]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: gap open penalty [5]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: gap extension penalty [2]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: band width [50]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: mask level [0.50]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: number of threads [1]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: file to output results to instead of stdout
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  description: in SAM output, use hard clipping instead of soft clipping
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  description: copy FASTA/Q comment to SAM output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: mark multi-part alignments as secondary
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: skip Smith-Waterman read pairing
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  description: ignore pairs with insert >=INT for inferring the size distr [20000]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: score threshold divided by a [30]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: coefficient of length-threshold adjustment [5.5]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: Z-best [1]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: maximum seeding interval size [3]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  description: '# seeds to trigger rev aln; 2*INT is also the chaining threshold [5]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  description: maximum gap size during chaining [10000]
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage:   bwa bwasw [options] <target.prefix> <query.fa> [query2.fa]\n\
+  \nOptions: -a INT   score for a match [1]\n         -b INT   mismatch penalty [3]\n\
+  \         -q INT   gap open penalty [5]\n         -r INT   gap extension penalty\
+  \ [2]\n         -w INT   band width [50]\n         -m FLOAT mask level [0.50]\n\n\
+  \         -t INT   number of threads [1]\n         -f FILE  file to output results\
+  \ to instead of stdout\n         -H       in SAM output, use hard clipping instead\
+  \ of soft clipping\n         -C       copy FASTA/Q comment to SAM output\n     \
+  \    -M       mark multi-part alignments as secondary\n         -S       skip Smith-Waterman\
+  \ read pairing\n         -I INT   ignore pairs with insert >=INT for inferring the\
+  \ size distr [20000]\n\n         -T INT   score threshold divided by a [30]\n  \
+  \       -c FLOAT coefficient of length-threshold adjustment [5.5]\n         -z INT\
+  \   Z-best [1]\n         -s INT   maximum seeding interval size [3]\n         -N\
+  \ INT   # seeds to trigger rev aln; 2*INT is also the chaining threshold [5]\n \
+  \        -G INT   maximum gap size during chaining [10000]\n\nNote: For long Illumina,\
+  \ 454 and Sanger reads, assembly contigs, fosmids and\n      BACs, the default setting\
+  \ usually works well. For the current PacBio\n      reads (end of 2010), '-b5 -q2\
+  \ -r1 -z10' is recommended. One may also\n      increase '-z' for better sensitivity.\n\
+  \n"
+generated_using: []
+docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0

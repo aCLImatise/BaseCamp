@@ -12,12 +12,12 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: not a valid option
+    optional: true
     synonyms:
     - -h
+    description: not a valid option
     args: !SimpleFlagArg
       name: is
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -29,12 +29,12 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: not a valid option
+        optional: true
         synonyms:
         - -h
+        description: not a valid option
         args: !SimpleFlagArg
           name: is
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -46,12 +46,12 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: not a valid option
+            optional: true
             synonyms:
             - -h
+            description: not a valid option
             args: !SimpleFlagArg
               name: is
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -63,60 +63,16 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: not a valid option
+                optional: true
                 synonyms:
                 - -h
+                description: not a valid option
                 args: !SimpleFlagArg
                   name: is
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: 'Check this table only.  (Default: all tables)'
-                  synonyms:
-                  - -table
-                  args: !SimpleFlagArg
-                    name: tableName
-                  optional: true
-                - !Flag
-                  description: Check tables that have been modified at most N days
-                    ago.
-                  synonyms:
-                  - -daysOld
-                  args: !SimpleFlagArg
-                    name: N
-                  optional: true
-                - !Flag
-                  description: "Check tables that have been modified at most N hours\
-                    \ ago.\n(days and hours are additive)"
-                  synonyms:
-                  - -hoursOld
-                  args: !SimpleFlagArg
-                    name: N
-                  optional: true
-                - !Flag
-                  description: Exclude tables matching any pattern in comma-separated
-                  synonyms:
-                  - -exclude
-                  args: !SimpleFlagArg
-                    name: patList
-                  optional: true
-                - !Flag
-                  description: To save time (but lose coverage), skip block coord
-                    checks.
-                  synonyms:
-                  - -ignoreBlocks
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Print out more details about illegal block coords,\
-                    \ since\nthey can't be found by simple SQL queries.\n"
-                  synonyms:
-                  - -verboseBlocks
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
@@ -124,21 +80,118 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: not a valid option
+                    optional: true
                     synonyms:
                     - -h
+                    description: not a valid option
                     args: !SimpleFlagArg
                       name: is
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -table
+                      description: 'Check this table only.  (Default: all tables)'
+                      args: !SimpleFlagArg
+                        name: tableName
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -daysOld
+                      description: Check tables that have been modified at most N
+                        days ago.
+                      args: !SimpleFlagArg
+                        name: N
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -hoursOld
+                      description: "Check tables that have been modified at most N\
+                        \ hours ago.\n(days and hours are additive)"
+                      args: !SimpleFlagArg
+                        name: N
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -exclude
+                      description: Exclude tables matching any pattern in comma-separated
+                      args: !SimpleFlagArg
+                        name: patList
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -ignoreBlocks
+                      description: To save time (but lose coverage), skip block coord
+                        checks.
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -verboseBlocks
+                      description: "Print out more details about illegal block coords,\
+                        \ since\nthey can't be found by simple SQL queries.\n"
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: not a valid option
+                        args: !SimpleFlagArg
+                          name: is
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "-h is not a valid option\n"
+                      generated_using: &id004
+                      - -h
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "checkTableCoords - check invariants on genomic coords\
+                      \ in table(s).\nusage:\n  checkTableCoords database [tableName]\n\
+                      Searches for illegal genomic coordinates in all tables in database\n\
+                      unless narrowed down using options.  Uses ~/.hg.conf to determine\n\
+                      genome database connection info.  For psl/alignment tables,\
+                      \ checks\ntarget coords only.\noptions:\n  -table=tableName\
+                      \  Check this table only.  (Default: all tables)\n  -daysOld=N\
+                      \        Check tables that have been modified at most N days\
+                      \ ago.\n  -hoursOld=N       Check tables that have been modified\
+                      \ at most N hours ago.\n                    (days and hours\
+                      \ are additive)\n  -exclude=patList  Exclude tables matching\
+                      \ any pattern in comma-separated\n                    patList.\
+                      \  patList can contain wildcards (*?) but should\n         \
+                      \           be escaped or single-quoted if it does.  patList\
+                      \ can\n                    contain \"genbank\" which will be\
+                      \ expanded to all tables\n                    generated by the\
+                      \ automated genbank build process.\n  -ignoreBlocks     To save\
+                      \ time (but lose coverage), skip block coord checks.\n  -verboseBlocks\
+                      \    Print out more details about illegal block coords, since\
+                      \ \n                    they can't be found by simple SQL queries.\n\
+                      \n"
+                    generated_using: &id005 []
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "-h is not a valid option\n"
-                  generated_using: &id004
-                  - -h
+                  generated_using: *id004
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -163,7 +216,8 @@ subcommands:
                   \    Print out more details about illegal block coords, since \n\
                   \                    they can't be found by simple SQL queries.\n\
                   \n"
-                generated_using: &id005 []
+                generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -171,6 +225,7 @@ subcommands:
               version_flag:
               help_text: "-h is not a valid option\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -194,6 +249,7 @@ subcommands:
               \ more details about illegal block coords, since \n                \
               \    they can't be found by simple SQL queries.\n\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -201,6 +257,7 @@ subcommands:
           version_flag:
           help_text: "-h is not a valid option\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -223,6 +280,7 @@ subcommands:
           \    Print out more details about illegal block coords, since \n       \
           \             they can't be found by simple SQL queries.\n\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -230,6 +288,7 @@ subcommands:
       version_flag:
       help_text: "-h is not a valid option\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -252,6 +311,7 @@ subcommands:
       \ coords, since \n                    they can't be found by simple SQL queries.\n\
       \n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -259,6 +319,7 @@ subcommands:
   version_flag:
   help_text: "-h is not a valid option\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -280,3 +341,4 @@ help_text: "checkTableCoords - check invariants on genomic coords in table(s).\n
   \ block coords, since \n                    they can't be found by simple SQL queries.\n\
   \n"
 generated_using: *id005
+docker_image:

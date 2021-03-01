@@ -34,6 +34,9 @@ task Pullseq {
       ~{if (count) then "--count" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fastafastq_file: ",       Input fasta/fastq file (required)"
     names: ",       File of header id names to search for"

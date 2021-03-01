@@ -8,6 +8,9 @@ task TbprofilerLoadLibrary {
     tb_profiler load_library \
       ~{prefix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "Prefix to the library files"
   }

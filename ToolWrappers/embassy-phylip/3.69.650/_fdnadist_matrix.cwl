@@ -5,22 +5,22 @@ inputs:
   doc: "menu       [F84 distance model] Choose the method to\nuse (Values: f (F84\
     \ distance model); k\n(Kimura 2-parameter distance); j\n(Jukes-Cantor distance);\
     \ l (LogDet\ndistance); s (Similarity table))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -method
 - id: in_weights
   doc: properties Weights file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -weights
 - id: in_lower
   doc: boolean    [N] Output as a lower triangular distance
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -lower
 - id: in_print_data
   doc: boolean    [N] Print data at start of run
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -printdata
 - id: in_file
@@ -37,6 +37,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _fdnadist

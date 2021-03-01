@@ -4,52 +4,52 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Alignment file in BAM or SAM format. BAM file should\nbe sorted and\
-    \ indexed."
+  optional: true
   synonyms:
   - -i
   - --input-file
+  description: "Alignment file in BAM or SAM format. BAM file should\nbe sorted and\
+    \ indexed."
   args: !SimpleFlagArg
     name: INPUT_FILE
-  optional: true
 - !Flag
-  description: "Gene list in bed foramt. All reads hits to exon\nregions (defined\
-    \ by this gene list) will be saved into\none BAM file, the remaining reads will\
-    \ saved into\nanother BAM file."
+  optional: true
   synonyms:
   - -r
   - --genelist
+  description: "Gene list in bed foramt. All reads hits to exon\nregions (defined\
+    \ by this gene list) will be saved into\none BAM file, the remaining reads will\
+    \ saved into\nanother BAM file."
   args: !SimpleFlagArg
     name: GENE_LIST
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-prefix
   description: "Prefix of output BAM files. \"prefix.in.bam\" file\ncontains reads\
     \ mapped to the gene list specified by\n\"-r\", \"prefix.ex.bam\" contains reads\
     \ that cannot\nmapped to gene list. \"prefix.junk.bam\" contains\nqcfailed or\
     \ unmapped reads.\n"
-  synonyms:
-  - -o
-  - --out-prefix
   args: !SimpleFlagArg
     name: OUTPUT_PREFIX
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: split_bam.py [options]\n-------------------------------------------------------------------------------------------------\n\
   Split bam file according to input gene list (bed).\n-------------------------------------------------------------------------------------------------\n\
   \n\nOptions:\n  --version             show program's version number and exit\n \
@@ -67,3 +67,4 @@ help_text: "Usage: split_bam.py [options]\n-------------------------------------
   \                  qcfailed or unmapped reads.\n"
 generated_using:
 - --help
+docker_image:

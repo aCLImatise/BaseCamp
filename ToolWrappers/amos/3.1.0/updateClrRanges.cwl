@@ -3,7 +3,7 @@ id: updateClrRanges.cwl
 inputs:
 - id: in_i
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_bank_name
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - updateClrRanges

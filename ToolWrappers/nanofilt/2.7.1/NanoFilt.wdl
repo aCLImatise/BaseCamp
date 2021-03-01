@@ -30,6 +30,9 @@ task NanoFilt {
       ~{if defined(read_type) then ("--readtype " +  '"' + read_type + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_file: "Specify the path and filename for the log file."
     length: "Filter on a minimum read length"

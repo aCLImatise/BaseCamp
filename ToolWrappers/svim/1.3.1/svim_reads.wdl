@@ -68,6 +68,9 @@ task SvimReads {
       ~{if (read_names) then "--read_names" else ""} \
       ~{if (z_mws) then "--zmws" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_mapq: "Minimum mapping quality of reads to consider (default:\\n20). Reads with a lower mapping quality are ignored."
     min_sv_size: "Minimum SV size to detect (default: 40). SVIM can\\npotentially detect events of any size but is limited\\nby the signal-to-noise ratio in the input alignments.\\nThat means that more accurate reads and alignments\\nenable the detection of smaller events. For current\\nPacBio or Nanopore data, we would recommend a minimum\\nsize of 40bp or larger."

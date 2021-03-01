@@ -16,6 +16,9 @@ task FindMotif {
       ~{if (bed_output) then "-bedOutput" else ""} \
       ~{if (wig_output) then "-wigOutput" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     motif: "- search for this specified motif (case ignored, [acgt] only)"
     chr: "- process only this one chrN from the sequence"

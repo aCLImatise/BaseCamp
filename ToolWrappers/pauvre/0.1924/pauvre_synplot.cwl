@@ -3,19 +3,19 @@ id: pauvre_synplot.cwl
 inputs:
 - id: in_quiet
   doc: Do not output warnings to stderr
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_aln_dir
   doc: The directory where all the fasta alignments are
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --aln_dir
-- id: in_dpi
+- id: in_center_on
   doc: Change the dpi from the default 600 if you need it
-  type: long
+  type: long?
   inputBinding:
-    prefix: --dpi
+    prefix: --center_on
 - id: in_gff_paths
   doc: "The input filepath. for the gff annotation to plot.\nIndividual filepaths\
     \ separated by spaces. For example,\n--gff_paths sp1.gff sp2.gff sp3.gff"
@@ -30,7 +30,7 @@ inputs:
     prefix: --gff_labels
 - id: in_no_timestamp
   doc: Turn off time stamps in the filename output.
-  type: File
+  type: File?
   inputBinding:
     prefix: --no_timestamp
 - id: in_optimum_order
@@ -38,13 +38,13 @@ inputs:
     \ are input into gff_paths. Instead,\nit uses the first gff file as the top-most\
     \ sequence in\nthe plot, and reorganizes the remaining gff files to\nminimize\
     \ the number of intersections."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --optimum_order
 - id: in_output_basename
   doc: "Specify a base name for the output file(s). The input\nfile base name is the\
     \ default."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-basename
 - id: in_ratio
@@ -56,32 +56,27 @@ inputs:
 - id: in_sandwich
   doc: "Put an additional copy of the first gff file on the\nbottom of the plot for\
     \ comparison."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sandwich
 - id: in_start_with_aligned_genes
   doc: "Minimizes the number of intersections but only selects\ncombos where the first\
     \ gene in each sequence is\naligned."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --start_with_aligned_genes
 - id: in_stop_codons
   doc: "Performs some internal corrections if the gff\nannotation includes the stop\
     \ codons in the coding\nsequences."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --stop_codons
 - id: in_transparent
   doc: "Specify this option if you DON'T want a transparent\nbackground. Default is\
     \ on.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --transparent
-- id: in_center_on
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --center_on
 - id: in_contained_dot
   doc: --center_on CENTER_ON
   type: string
@@ -99,9 +94,10 @@ outputs:
   type: stdout
 - id: out_no_timestamp
   doc: Turn off time stamps in the filename output.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_no_timestamp)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pauvre

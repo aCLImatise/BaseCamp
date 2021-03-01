@@ -3,17 +3,17 @@ id: transfer_annotation_to_groups.cwl
 inputs:
 - id: in_output_filename
   doc: output filename [reannotated_groups]
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_clusters_filename
   doc: clusters filename [clustered_proteins]
-  type: File
+  type: File?
   inputBinding:
     prefix: -g
 - id: in_verbose_output_stdout
   doc: verbose output to STDOUT
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_filename
   doc: output filename [reannotated_groups]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - transfer_annotation_to_groups

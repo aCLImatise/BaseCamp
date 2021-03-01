@@ -1,66 +1,122 @@
 !Command
 command:
 - fuma
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Output-format
+  description: -g LONG_GENE_SIZE, --long-gene-size LONG_GENE_SIZE
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -m
-  args: !ChoiceFlagArg
-    choices: !!set
-      overlap:
-      egm:
-      subset:
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - --formats
+  description: show accepted dataset formats
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
+  synonyms:
+  - -m
+  - --matching-method
+  description: "The used method to match two gene sets. Overlap\nmatches when two\
+    \ gene set have one or more genes\noverlapping. Subset matches when one gene set\
+    \ is a\nsubset of the other. EGM is exact gene matching; all\ngenes in both sets\
+    \ need to be identical to match."
+  args: !ChoiceFlagArg
+    choices: !!set
+      subset:
+      egm:
+      overlap:
+- !Flag
+  optional: true
+  synonyms:
+  - --strand-specific-matching
+  description: "Consider fusion genes distinct when the breakpoints\nhave different\
+    \ strands: (A<-,B<-) != (->A,B<-);\ndefault"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-strand-specific-matching
+  description: "Consider fusion genes identical when the breakpoints\nhave different\
+    \ strands: (A<-,B<-) == (->A,B<-)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --acceptor-donor-order-specific-matching
+  description: "Consider fusion genes distinct when the donor and\nacceptor sites\
+    \ are swapped: (A,B) != (B,A)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-acceptor-donor-order-specific-matching
+  description: "Consider fusion genes identical when the donor and\nacceptor sites\
+    \ are swapped: (A,B) == (B,A); default"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: increase output verbosity
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: "[ADD_GENE_ANNOTATION [ADD_GENE_ANNOTATION ...]], --add-gene-annotation\
+    \ [ADD_GENE_ANNOTATION [ADD_GENE_ANNOTATION ...]]\nannotation_alias:filename *\
+    \ file in BED format"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --add-sample
+  description: "sample_alias:format:filename (available formats: fuma\n--formats)"
+  args: !RepeatFlagArg
+    name: ADD_SAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: "[LINK_SAMPLE_TO_ANNOTATION [LINK_SAMPLE_TO_ANNOTATION ...]], --link-sample-to-annotation\
+    \ [LINK_SAMPLE_TO_ANNOTATION [LINK_SAMPLE_TO_ANNOTATION ...]]\nsample_alias:annotation_alias"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: output filename; '-' for stdout
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
   synonyms:
   - -V
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-V, --version         show program's\
-    \ version number and exit\n--formats             show accepted dataset formats\n\
-    -m {overlap,subset,egm}, --matching-method {overlap,subset,egm}\nThe used method\
-    \ to match two gene sets. Overlap\nmatches when two gene set have one or more\
-    \ genes\noverlapping. Subset matches when one gene set is a\nsubset of the other.\
-    \ EGM is exact gene matching; all\ngenes in both sets need to be identical to\
-    \ match.\n--strand-specific-matching\nConsider fusion genes distinct when the\
-    \ breakpoints\nhave different strands: (A<-,B<-) != (->A,B<-);\ndefault\n--no-strand-specific-matching\n\
-    Consider fusion genes identical when the breakpoints\nhave different strands:\
-    \ (A<-,B<-) == (->A,B<-)\n--acceptor-donor-order-specific-matching\nConsider fusion\
-    \ genes distinct when the donor and\nacceptor sites are swapped: (A,B) != (B,A)\n\
-    --no-acceptor-donor-order-specific-matching\nConsider fusion genes identical when\
-    \ the donor and\nacceptor sites are swapped: (A,B) == (B,A); default\n--verbose\
-    \             increase output verbosity\n-a [ADD_GENE_ANNOTATION [ADD_GENE_ANNOTATION\
-    \ ...]], --add-gene-annotation [ADD_GENE_ANNOTATION [ADD_GENE_ANNOTATION ...]]\n\
-    annotation_alias:filename * file in BED format\n-s ADD_SAMPLE [ADD_SAMPLE ...],\
-    \ --add-sample ADD_SAMPLE [ADD_SAMPLE ...]\nsample_alias:format:filename (available\
-    \ formats: fuma\n--formats)\n-l [LINK_SAMPLE_TO_ANNOTATION [LINK_SAMPLE_TO_ANNOTATION\
-    \ ...]], --link-sample-to-annotation [LINK_SAMPLE_TO_ANNOTATION [LINK_SAMPLE_TO_ANNOTATION\
-    \ ...]]\nsample_alias:annotation_alias\n-f {summary,list,extensive}, --format\
-    \ {summary,list,extensive}\nOutput-format\n-g LONG_GENE_SIZE, --long-gene-size\
-    \ LONG_GENE_SIZE\nGene-name based matching is more sensitive to long\ngenes. This\
-    \ is the gene size used to mark fusion genes\nspanning a 'long gene' as reported\
-    \ the output. Use 0\nto disable this feature.\n-o OUTPUT, --output OUTPUT\noutput\
-    \ filename; '-' for stdout"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
 help_text: "usage: fuma [-h] [-V] [--formats] [-m {overlap,subset,egm}]\n        \
   \    [--strand-specific-matching] [--no-strand-specific-matching]\n            [--acceptor-donor-order-specific-matching]\n\
   \            [--no-acceptor-donor-order-specific-matching] [--verbose]\n       \
@@ -101,3 +157,4 @@ help_text: "usage: fuma [-h] [-V] [--formats] [-m {overlap,subset,egm}]\n       
   \ '-' for stdout\n\nFor more info please visit:\n<https://github.com/yhoogstrate/fuma>\n"
 generated_using:
 - --help
+docker_image:

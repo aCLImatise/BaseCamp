@@ -38,6 +38,9 @@ task Socru {
       ~{if (debug) then "--debug" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db_dir: "Base directory for species databases, defaults to\\nbundled (default: None)"
     threads: "No. of threads to use (default: 1)"

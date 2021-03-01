@@ -11,56 +11,56 @@ inputs:
   doc: "[SKIP_ADDITIONAL_CHANNELS [SKIP_ADDITIONAL_CHANNELS ...]]\nSkip updating/bumping\
     \ packges that are already built\nwith compatible pinnings in one of the given\
     \ channels\nin addition to those listed in 'config'. (default: -)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip-additional-channels
 - id: in_bump_only_python
   doc: "Bump package build numbers even if the only applicable\npinning change is\
     \ the python version. This is\ngenerally required unless you plan on building\n\
     everything. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bump-only-python
 - id: in_skip_variants
   doc: "[SKIP_VARIANTS [SKIP_VARIANTS ...]]\nSkip packages that use one of the given\
     \ variant keys.\n(default: -)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip-variants
 - id: in_cache
   doc: "To speed up debugging, use repodata cached locally in\nthe provided filename.\
     \ If the file does not exist, it\nwill be created the first time. (default: -)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --cache
 - id: in_pdb
   doc: 'Drop into debugger on exception (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pdb
 - id: in_threads
   doc: 'Limit maximum number of processes used. (default: 16)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_loglevel
   doc: "Set logging level (debug, info, warning, error,\ncritical) (default: 'info')"
-  type: string
+  type: string?
   inputBinding:
     prefix: --loglevel
 - id: in_log_file
   doc: 'Write log to file (default: -)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --logfile
 - id: in_log_file_level
   doc: "Log level for log file (default: 'debug')"
-  type: File
+  type: File?
   inputBinding:
     prefix: --logfile-level
 - id: in_log_command_max_lines
   doc: "Limit lines emitted for commands executed (default: -)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --log-command-max-lines
 - id: in_recipe_folder
@@ -77,6 +77,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bioconda-utils

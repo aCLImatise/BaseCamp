@@ -48,6 +48,9 @@ task Pdb4amber {
       ~{if (no_conect) then "--no-conect" else ""} \
       ~{if (noter) then "--noter" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "PDB input file (default: stdin)"
     out: "PDB output file (default: stdout)"

@@ -8,6 +8,9 @@ task GetRandomReadspl {
     getRandomReads_pl \
       ~{tag_directory}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tag_directory: ""
   }

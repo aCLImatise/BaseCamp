@@ -20,6 +20,9 @@ task MethylpyBamqualityfilter {
       ~{if defined(max_mch_level) then ("--max-mch-level " +  '"' + max_mch_level + '"') else ""} \
       ~{if defined(buffer_line_number) then ("--buffer-line-number " +  '"' + buffer_line_number + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "BAM file to filter. (default: None)"
     output_file: "Name of output file (default: None)"

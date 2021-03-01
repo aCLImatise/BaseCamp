@@ -16,6 +16,9 @@ task RunCodeml {
       ~{if defined(code_ml_zip) then ("--codeml-zip " +  '"' + code_ml_zip + '"') else ""} \
       ~{if defined(dnds_stats) then ("--dnds-stats " +  '"' + dnds_stats + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genomes_a: "file with GenBank Project IDs from complete genomes table on each line for taxon A"
     genomes_b: "file with GenBank Project IDs from complete genomes table on each line for taxon B"

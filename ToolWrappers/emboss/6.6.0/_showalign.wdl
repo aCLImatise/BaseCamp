@@ -32,6 +32,9 @@ task Showalign {
       ~{if (set_case) then "-setcase" else ""} \
       ~{if (identity) then "-identity" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "matrix     [EBLOSUM62 for protein, EDNAFULL for DNA]\\nThis is the scoring matrix file used when\\ncomparing sequences. By default it is the\\nfile 'EBLOSUM62' (for proteins) or the file\\n'EDNAFULL' (for nucleic sequences). These\\nfiles are found in the 'data' directory of\\nthe EMBOSS installation."
     refseq: "string     [0] If you give the number in the alignment\\nor the name of a sequence, it will be taken\\nto be the reference sequence. The reference\\nsequence is always shown in full and is the\\none against which all the other sequences\\nare compared. If this is set to 0 then the\\nconsensus sequence will be used as the\\nreference sequence. By default the consensus\\nsequence is used as the reference sequence.\\n(Any string)"

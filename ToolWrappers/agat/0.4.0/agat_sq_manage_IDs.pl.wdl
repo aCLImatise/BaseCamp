@@ -14,6 +14,9 @@ task AgatSqManageIDspl {
       ~{if (of) then "--of" else ""} \
       ~{if defined(string_output_file) then ("--output " +  '"' + string_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_input_gtfgff: "STRING: Input GTF/GFF file."
     of: "Output format, if no ouput format is given, the same as the\\ninput one detected will be used. Otherwise you can force to have\\na gff version 1 or 2 or 3 by giving the corresponding number."

@@ -12,6 +12,9 @@ task ClusteringAlignseqmatch {
       ~{seed_seqs} \
       ~{query_seqs}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id_mapping: ""
     seed_seqs: ""

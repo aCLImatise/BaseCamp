@@ -22,6 +22,9 @@ task BaseEvolve {
       ~{if defined(cat_map) then ("--catmap " +  '"' + cat_map + '"') else ""} \
       ~{if defined(embed) then ("--embed " +  '"' + embed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_sites: "Generate an alignment with <nsites> columns.  Default is 1000."
     msa_format: "|PHYLIP|MPM|SS\\nOutput alignment in specified format.  Default is FASTA."

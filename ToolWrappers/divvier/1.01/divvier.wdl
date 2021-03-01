@@ -24,6 +24,9 @@ task Divvier {
       ~{if defined(min_col) then ("-mincol " +  '"' + min_col + '"') else ""} \
       ~{if (divvy_gap) then "-divvygap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     divvy: ": do standard divvying (DEFAULT)"
     partial: ": do partial filtering by testing removal of individual characters"

@@ -14,6 +14,9 @@ task Happer {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "write haplotype sequences to the specified file;\\ndefault is the terminal (stdout)\\n"
     v: ""

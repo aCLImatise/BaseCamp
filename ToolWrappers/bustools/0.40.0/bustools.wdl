@@ -10,6 +10,9 @@ task Bustools {
       ~{cmd} \
       ~{arguments}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cmd: ""
     arguments: ""

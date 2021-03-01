@@ -3,12 +3,12 @@ id: metaphlan2krona.py.cwl
 inputs:
 - id: in_profile
   doc: The input file is the MetaPhlAn standard result file
-  type: File
+  type: File?
   inputBinding:
     prefix: --profile
 - id: in_krona
   doc: "the Krons output file name\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --krona
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_krona
   doc: "the Krons output file name\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_krona)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - metaphlan2krona.py

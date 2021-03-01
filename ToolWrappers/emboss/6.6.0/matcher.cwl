@@ -6,7 +6,7 @@ inputs:
     \ matrix file used when\ncomparing sequences. By default it is the\nfile 'EBLOSUM62'\
     \ (for proteins) or the file\n'EDNAFULL' (for nucleic sequences). These\nfiles\
     \ are found in the 'data' directory of\nthe EMBOSS installation."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -datafile
 - id: in_alternatives
@@ -15,7 +15,7 @@ inputs:
     \ reasonable alignments. In\nsome cases, for example multidomain proteins\nof\
     \ cDNA and genomic DNA comparisons, there\nmay be other interesting and significant\n\
     alignments. (Integer 1 or more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -alternatives
 - id: in_gap_open
@@ -24,7 +24,7 @@ inputs:
     \ comparison matrix. The default\nvalue of 14 assumes you are using the\nEBLOSUM62\
     \ matrix for protein sequences, or a\nvalue of 16 and the EDNAFULL matrix for\n\
     nucleotide sequences. (Positive integer)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -gapopen
 - id: in_gap_extend
@@ -37,13 +37,14 @@ inputs:
     \ base gaps. You can\nget this result by setting the gap penalty\nto zero (or\
     \ very low) and using the gap\nextension penalty to control gap scoring.\n(Positive\
     \ integer)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -gapextend
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - matcher

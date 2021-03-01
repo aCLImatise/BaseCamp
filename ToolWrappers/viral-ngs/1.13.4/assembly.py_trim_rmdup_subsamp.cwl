@@ -5,23 +5,23 @@ inputs:
   doc: "Subsample reads to no more than this many individual\nreads. Note that paired\
     \ reads are given priority, and\nunpaired reads are included to reach the count\
     \ if\nthere are too few paired reads to reach n_reads.\n(default 100000)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --n_reads
 - id: in_loglevel
   doc: 'Verboseness of output. [default: DEBUG]'
-  type: string
+  type: string?
   inputBinding:
     prefix: --loglevel
 - id: in_tmp_dir
   doc: 'Base directory for temp files. [default: /tmp]'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --tmp_dir
 - id: in_tmp_dir_keep
   doc: "Keep the tmp_dir if an exception occurs while running.\nDefault is to delete\
     \ all temp files at the end, even\nif there's a failure.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tmp_dirKeep
 - id: in_in_bam
@@ -44,6 +44,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - assembly.py

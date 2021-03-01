@@ -4,38 +4,38 @@ inputs:
 - id: in_output_probes
   doc: "The file to which all final probes should be written;\nthey are written in\
     \ FASTA format"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-probes
 - id: in_probe_length
   doc: (Optional) Make probes be PROBE_LENGTH nt long
-  type: long
+  type: long?
   inputBinding:
     prefix: --probe-length
 - id: in_probe_stride
   doc: "(Optional) Generate candidate probes from the input\nthat are separated by\
     \ PROBE_STRIDE nt"
-  type: string
+  type: string?
   inputBinding:
     prefix: --probe-stride
 - id: in_mismatches
   doc: "(Optional) Allow for MISMATCHES mismatches when\ndetermining whether a probe\
     \ covers a sequence"
-  type: string
+  type: string?
   inputBinding:
     prefix: --mismatches
 - id: in_lcf_th_res
   doc: "(Optional) Say that a portion of a probe covers a\nportion of a sequence if\
     \ the two share a substring\nwith at most MISMATCHES mismatches that has length\
     \ >=\nLCF_THRES nt; if unspecified, this is set to\nPROBE_LENGTH"
-  type: long
+  type: long?
   inputBinding:
     prefix: --lcf-thres
 - id: in_island_of_exact_match
   doc: "(Optional) When determining whether a probe covers a\nsequence, require that\
     \ there be an exact match (i.e.,\nno mismatches) of length at least\nISLAND_OF_EXACT_MATCH\
     \ nt between a portion of the\nprobe and a portion of the sequence"
-  type: long
+  type: long?
   inputBinding:
     prefix: --island-of-exact-match
 - id: in_custom_hybridization_fn
@@ -62,7 +62,7 @@ inputs:
     \ where start is an int giving the start\nposition in the probe (equivalently,\
     \ in the target\nsubsequence) at which the probe will hybridize to the\ntarget\
     \ subsequence, and end is an int (exclusive)\ngiving the end position of the hybridization."
-  type: long
+  type: long?
   inputBinding:
     prefix: --custom-hybridization-fn
 - id: in_coverage
@@ -70,7 +70,7 @@ inputs:
     \ that must be covered by the\nselected probes; if this is an int > 1, it gives\
     \ the\nnumber of bp of each target genome that must be\ncovered by the selected\
     \ probes"
-  type: double
+  type: double?
   inputBinding:
     prefix: --coverage
 - id: in_cover_extension
@@ -81,14 +81,14 @@ inputs:
     \ the region targeted by the\nprobe, along with surrounding portions of the\n\
     sequence. Increasing its value should reduce the\nnumber of probes required to\
     \ achieve the desired\ncoverage."
-  type: long
+  type: long?
   inputBinding:
     prefix: --cover-extension
 - id: in_identify
   doc: "Design probes meant to make it possible to identify\nnucleic acid from a particular\
     \ input dataset against\nthe other datasets; when set, the coverage should\ngenerally\
     \ be small"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --identify
 - id: in_blacklist_genomes
@@ -104,14 +104,14 @@ inputs:
     \ than the value of MISMATCHES.\nAllows for capturing more possible hybridizations\n\
     (i.e., more sensitivity) when designing probes for\nidentification or when genomes\
     \ are blacklisted."
-  type: string
+  type: string?
   inputBinding:
     prefix: --mismatches-tolerant
 - id: in_lcf_th_res_tolerant
   doc: "(Optional) A more tolerant value for 'lcf_thres'; this\nshould be less than\
     \ LCF_THRES. Allows for capturing\nmore possible hybridizations (i.e., more sensitivity)\n\
     when designing probes for identification or when\ngenomes are blacklisted."
-  type: string
+  type: string?
   inputBinding:
     prefix: --lcf-thres-tolerant
 - id: in_island_of_exact_match_tolerant
@@ -119,7 +119,7 @@ inputs:
     \ be less than\nISLAND_OF_ EXACT_MATCH. Allows for capturing more\npossible hybridizations\
     \ (i.e., more sensitivity) when\ndesigning probes for identification or when genomes\n\
     are blacklisted."
-  type: string
+  type: string?
   inputBinding:
     prefix: --island-of-exact-match-tolerant
 - id: in_custom_hybridization_fn_tolerant
@@ -128,24 +128,24 @@ inputs:
     \ hybridizations (i.e., be more\nsensitive) when designing probes for identification\
     \ or\nwhen genomes are blacklisted. See --custom-\nhybridization-fn for details\
     \ of how this function\nshould be implemented and provided."
-  type: string
+  type: string?
   inputBinding:
     prefix: --custom-hybridization-fn-tolerant
 - id: in_print_analysis
   doc: Print analysis of the probe set's coverage
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --print-analysis
 - id: in_write_analysis_to_tsv
   doc: "(Optional) The file to which to write a TSV-formatted\nmatrix of the probe\
     \ set's coverage analysis"
-  type: File
+  type: File?
   inputBinding:
     prefix: --write-analysis-to-tsv
 - id: in_write_sliding_window_coverage
   doc: "(Optional) The file to which to write the average\ncoverage achieved by the\
     \ probe set within sliding\nwindows of each target genome"
-  type: File
+  type: File?
   inputBinding:
     prefix: --write-sliding-window-coverage
 - id: in_filter_from_fast_a
@@ -162,46 +162,46 @@ inputs:
     \ containing those probes,\nwe can provide a path to that FASTA file for this\n\
     argument, and also provide the --skip-set-cover\nargument, in order to add adapters\
     \ to those probes\nwithout having to re-run the set cover filter."
-  type: File
+  type: File?
   inputBinding:
     prefix: --filter-from-fasta
 - id: in_skip_set_cover
   doc: "Skip the set cover filter; this is useful when we wish\nto see the probes\
     \ generated from only the duplicate\nand reverse complement filters, to gauge\
     \ the effects\nof the set cover filter"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip-set-cover
 - id: in_add_adapters
   doc: "Add adapters to the ends of probes; to specify adapter\nsequences, use --adapter-a\
     \ and --adapter-b"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --add-adapters
 - id: in_adapter_a
   doc: "ADAPTER_A\n(Optional) Args: <X> <Y>; Custom A adapter to use; two\nordered\
     \ where X is the A adapter sequence to place on\nthe 5' end of a probe and Y is\
     \ the A adapter sequence\nto place on the 3' end of a probe"
-  type: long
+  type: long?
   inputBinding:
     prefix: --adapter-a
 - id: in_adapter_b
   doc: "ADAPTER_B\n(Optional) Args: <X> <Y>; Custom B adapter to use; two\nordered\
     \ where X is the B adapter sequence to place on\nthe 5' end of a probe and Y is\
     \ the B adapter sequence\nto place on the 3' end of a probe"
-  type: long
+  type: long?
   inputBinding:
     prefix: --adapter-b
 - id: in_filter_polya
   doc: "FILTER_POLYA\n(Optional) Args: <X> <Y> (integers); do not output any\nprobe\
     \ that contains a stretch of X or more 'A' bases,\ntolerating up to Y mismatches\
     \ (and likewise for 'T'\nbases)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --filter-polya
 - id: in_add_reverse_complements
   doc: Add to the output the reverse complement of each probe
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --add-reverse-complements
 - id: in_expand_n
@@ -212,19 +212,19 @@ inputs:
     \ bases in a\nprobe. If followed by a command- line argument (INT),\nthis only\
     \ expands at most INT randomly selected N\nbases, and the rest are replaced with\
     \ random\nunambiguous bases (default INT is 3)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --expand-n
 - id: in_limit_target_genomes
   doc: "(Optional) Use only the first LIMIT_TARGET_GENOMES\ntarget genomes in the\
     \ dataset"
-  type: string
+  type: string?
   inputBinding:
     prefix: --limit-target-genomes
 - id: in_limit_target_genomes_randomly_with_replacement
   doc: "(Optional) Randomly select\nLIMIT_TARGET_GENOMES_RANDOMLY_WITH_REPLACMENT\
     \ target\ngenomes in the dataset with replacement"
-  type: string
+  type: string?
   inputBinding:
     prefix: --limit-target-genomes-randomly-with-replacement
 - id: in_cluster_and_design_separately
@@ -240,7 +240,7 @@ inputs:
     \ in one group. Therefore, genomes will not be\ngrouped as specified in the input\
     \ and sequences will\nnot be grouped by genome, and differential\nidentification\
     \ is not supported"
-  type: double
+  type: double?
   inputBinding:
     prefix: --cluster-and-design-separately
 - id: in_cluster_from_fragments
@@ -249,7 +249,7 @@ inputs:
     input with especially large genomes, in which probes\nfor different fragments\
     \ can be designed separately.\nValues should generally be around 10,000. For this\
     \ to\nbe used, --cluster-and-design-separately must also be\nset."
-  type: long
+  type: long?
   inputBinding:
     prefix: --cluster-from-fragments
 - id: in_filter_with_lsh_hamming
@@ -264,7 +264,7 @@ inputs:
     coverage (COVERAGE) when that desired coverage is the\ncomplete genome; it is\
     \ recommended to also use\n--print-analysis or --write-analysis-to-tsv with this\n\
     to see the coverage that is obtained."
-  type: long
+  type: long?
   inputBinding:
     prefix: --filter-with-lsh-hamming
 - id: in_filter_with_lsh_min_hash
@@ -280,21 +280,21 @@ inputs:
     same caveats mentioned in help for --filter-with-lsh-\nhamming also apply here.\
     \ Values of\nFILTER_WITH_LSH_MINHASH above ~0.7 may start to\nrequire significant\
     \ memory and runtime for near-\nduplicate detection."
-  type: long
+  type: long?
   inputBinding:
     prefix: --filter-with-lsh-minhash
 - id: in_cover_groupings_separately
   doc: "Run a separate instance of set cover with the target\ngenomes from each grouping\
     \ and pool (union) the\nresulting probes. When set, the software will run\nfaster\
     \ than when not set, but it may yield more probes\nthan when it is not set."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cover-groupings-separately
 - id: in_small_seq_skip
   doc: "(Optional) Do not create candidate probes from\nsequences whose length is\
     \ <= SMALL_SEQ_SKIP. If set to\n(PROBE_LENGTH - 1), this avoids the error raised\
     \ when\nsequences are less than the probe length"
-  type: long
+  type: long?
   inputBinding:
     prefix: --small-seq-skip
 - id: in_small_seq_min
@@ -309,14 +309,14 @@ inputs:
     is treated as being min(LCF_THRES, p_l, s_l) so that a\nprobe is able to 'cover'\
     \ a sequence shorter than the\nprobe and so that a probe shorter than lcf_thres\
     \ is\nable to 'cover' a sequence"
-  type: long
+  type: long?
   inputBinding:
     prefix: --small-seq-min
 - id: in_max_num_processes
   doc: "(Optional) An int >= 1 that gives the maximum number\nof processes to use\
     \ in multiprocessing pools; uses\nmin(number of CPUs in the system, MAX_NUM_PROCESSES)\n\
     processes"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-num-processes
 - id: in_km_er_probe_map_k
@@ -333,7 +333,7 @@ inputs:
     \ KMER_PROBE_LENGTH_K as the\nk-mer length. If --custom-hybridization-fn is set,\
     \ it\nwill always use the randomized approach with\nKMER_PROBE_LENGTH_K (by default,\
     \ 20) as the k-mer\nlength."
-  type: long
+  type: long?
   inputBinding:
     prefix: --kmer-probe-map-k
 - id: in_use_native_dict_when_finding_tolerant_coverage
@@ -344,17 +344,17 @@ inputs:
     if there are many candidate probes) this may result in\nsubstantial memory usage;\
     \ but it may provide an\nimprovement in runtime when there are relatively few\n\
     candidate probes and a very large blacklisted input"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use-native-dict-when-finding-tolerant-coverage
 - id: in_debug
   doc: Debug output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_verbose
   doc: Verbose output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_dataset
@@ -387,9 +387,10 @@ outputs:
     \ containing those probes,\nwe can provide a path to that FASTA file for this\n\
     argument, and also provide the --skip-set-cover\nargument, in order to add adapters\
     \ to those probes\nwithout having to re-run the set cover filter."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_filter_from_fast_a)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - design.py

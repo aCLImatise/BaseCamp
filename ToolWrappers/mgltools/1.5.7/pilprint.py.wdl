@@ -14,6 +14,9 @@ task Pilprintpy {
       ~{if (print_lpr_default) then "-p" else ""} \
       ~{if defined(same_p_use) then ("-P " +  '"' + same_p_use + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     colour_printer_default: "colour printer (default is monochrome)"
     print_lpr_default: "print via lpr (default is stdout)"

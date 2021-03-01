@@ -8,6 +8,9 @@ task PvacseqDownloadExampleData {
     pvacseq download_example_data \
       ~{destination_directory}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     destination_directory: "Directory for downloading example data"
   }

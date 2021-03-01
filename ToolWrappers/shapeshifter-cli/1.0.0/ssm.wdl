@@ -18,6 +18,9 @@ task Ssm {
       ~{if defined(on_column) then ("--on_column " +  '"' + on_column + '"') else ""} \
       ~{if defined(how) then ("--how " +  '"' + how + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_files: "List of files that will be merged together. Files must\\nhave appropriate extensions to be recognized properly."
     output_file: "File path to which results are exported"

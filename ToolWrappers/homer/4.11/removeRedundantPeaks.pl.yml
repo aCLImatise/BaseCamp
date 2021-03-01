@@ -3,27 +3,43 @@ command:
 - removeRedundantPeaks.pl
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: peakfile
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "(will remove peaks that overlap >50% and are on separate strands,\n\
-    that are likely representative of palindromic motif recognition)"
+  optional: true
   synonyms:
   - -palindromic
+  description: "(will remove peaks that overlap >50% and are on separate strands,\n\
+    that are likely representative of palindromic motif recognition)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<#> (Where % is the percentage match to be considered redundant, default=0.33)\n\
-    -size <#> (size of peaks to be used for sequence similarity, default=given)\n\
-    -genome <directory of FASTA files> (genome for extracting sequence)\n-mask (use\
-    \ repeat masked sequence)\n-ignoreStrand\n"
+  optional: true
   synonyms:
   - -blat
+  description: <#> (Where % is the percentage match to be considered redundant, default=0.33)
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -size
+  description: <#> (size of peaks to be used for sequence similarity, default=given)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -genome
+  description: (genome for extracting sequence)
+  args: !SimpleFlagArg
+    name: directory of FASTA files
+- !Flag
+  optional: true
+  synonyms:
+  - -mask
+  description: (use repeat masked sequence)
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
@@ -41,3 +57,4 @@ help_text: "\n\tUsage: removeRedundantPeaks.pl <peakfile> [options]\n\n\tBy defa
   \ <directory of FASTA files> (genome for extracting sequence)\n\t\t-mask (use repeat\
   \ masked sequence)\n\t\t-ignoreStrand\n\n"
 generated_using: []
+docker_image:

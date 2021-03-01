@@ -12,6 +12,9 @@ task VirsorterSetup {
       ~{if defined(db_dir) then ("--db-dir " +  '"' + db_dir + '"') else ""} \
       ~{if defined(jobs) then ("--jobs " +  '"' + jobs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db_dir: "diretory path for databases  [required]"
     jobs: "number of simultaneous downloads  [default: 8]"

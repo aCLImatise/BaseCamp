@@ -4,36 +4,39 @@ command:
 positional: []
 named:
 - !Flag
-  description: Generate GFF formatted output.
+  optional: true
   synonyms:
   - -g
   - --gff
+  description: Generate GFF formatted output.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Generate BED formatted output.
+  optional: true
   synonyms:
   - -b
   - --bed
+  description: Generate BED formatted output.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
   description: "#:LABEL, --col #:LABEL\nAppend a column named LABEL to the HTML-table\
     \ holding the data\nfrom the input file column with index #. e.g. \"rnazIndex.pl\n\
     --html --col 19:Alifoldz --col 20:RNAmicro annotated.dat\""
-  synonyms:
-  - -c
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Get sequences in FASTA format for loci or windows. See options\n\"\
-    --seq-dir\", \"--forward\", \"--reverse\"!"
+  optional: true
   synonyms:
   - -f
   - --fasta
+  description: "Get sequences in FASTA format for loci or windows. See options\n\"\
+    --seq-dir\", \"--forward\", \"--reverse\"!"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --seq-dir
   description: "Directory with sequence files. You only need this for FASTA\noutput\
     \ (see option \"--fasta\"). The files should be named with\nthe sequence identifier\
     \ and the extension \".fa\" or \".fasta\". If\nyour identifier in your input file\
@@ -41,73 +44,70 @@ named:
     . (If your\nidentifier is of the form ``assembly.chromosome\" as for example\n\
     used by UCSC alignments, it is also possible to name the file\n\"chr22.fa\" for\
     \ a sequence identifier \"hg17.chr22\")."
-  synonyms:
-  - --seq-dir
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --forward
+  - --reverse
   description: "Only relevant for FASTA output (see option \"--fasta\"). You can\n\
     set if you want the forward or reverse complement of the\nsequence corresponding\
     \ to a locus. Since loci don't have strand\ninformation you might consider both\
     \ strands for further\nanalysis. Windows have strand information, so if you export\n\
     windows as FASTA these options are ignored."
-  synonyms:
-  - --forward
-  - --reverse
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ucsc
   description: "In UCSC MAF alignment files it is common to use sequence\nidentifiers\
     \ like for example ``hg17.chr22\". However, in BED are\nusually specific for a\
     \ given assembly and therefore only\n``chr22\" is used in the BED files. With\
     \ this option you change\nany identifier of the form ``X.Y\" into ``Y\". Moreover,\
     \ the\nscores are multiplied by 1000 and rounded to integers since the\nUCSC genome\
     \ browser expects scores between 0 and 1000."
-  synonyms:
-  - --ucsc
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use the locus information to generate the lines for the GFF and\n\
-    BED files. This is the default."
+  optional: true
   synonyms:
   - -l
   - --loci
+  description: "Use the locus information to generate the lines for the GFF and\n\
+    BED files. This is the default."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Print the \"windows\" and not the \"loci\". Probably, rarely used\n\
-    function."
+  optional: true
   synonyms:
   - -w
   - --windows
+  description: "Print the \"windows\" and not the \"loci\". Probably, rarely used\n\
+    function."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --html
   description: "With this option you get a HTML table which links to the the\nHTML\
     \ pages which you can create by using the \"--html\" option in\n\"rnazCluster.pl\"\
     . Redirect the output to some file which resides\nin the \"results\" directory\
     \ created by \"rnazCluster.pl\" and open\nthe file with your favourite web-browser."
-  synonyms:
-  - --html
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Prints a detailed manual page and exits.
+  optional: true
   synonyms:
   - --man
+  description: Prints a detailed manual page and exits.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Prints a short help message and exits.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Prints a short help message and exits.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage:\n     rnazIndex.pl [options] [file]\n\nOptions:\n    -g, --gff\n\
@@ -149,3 +149,4 @@ help_text: "Usage:\n     rnazIndex.pl [options] [file]\n\nOptions:\n    -g, --gf
   \ manual page and exits.\n\n"
 generated_using:
 - --help
+docker_image:

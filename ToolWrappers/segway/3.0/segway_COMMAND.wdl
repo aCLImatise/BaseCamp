@@ -14,6 +14,9 @@ task SegwayCOMMAND {
       ~{var_command} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     segway: ""
     global_args: ""

@@ -4,6 +4,9 @@ task Codcmp {
   command <<<
     codcmp
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

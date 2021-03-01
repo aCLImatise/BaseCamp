@@ -5,23 +5,23 @@ inputs:
   doc: "Out of bounds feature behavior. False: drop all\nfeatures that are completely\
     \ or partly out of bounds\nTrue: drop all features completely out of bounds but\n\
     truncate any features that are partly out of bounds"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --oob_clip
 - id: in_tmp_dir
   doc: 'Base directory for temp files. [default: /tmp]'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --tmp_dir
 - id: in_tmp_dir_keep
   doc: "Keep the tmp_dir if an exception occurs while running.\nDefault is to delete\
     \ all temp files at the end, even\nif there's a failure."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tmp_dirKeep
 - id: in_loglevel
   doc: 'Verboseness of output. [default: DEBUG]'
-  type: string
+  type: string?
   inputBinding:
     prefix: --loglevel
 - id: in_ref_fast_a
@@ -48,6 +48,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ncbi.py

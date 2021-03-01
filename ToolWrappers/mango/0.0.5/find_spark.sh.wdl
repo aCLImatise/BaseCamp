@@ -10,6 +10,9 @@ task Findsparksh {
       ~{which} \
       ~{var_command}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     which: ""
     var_command: ""

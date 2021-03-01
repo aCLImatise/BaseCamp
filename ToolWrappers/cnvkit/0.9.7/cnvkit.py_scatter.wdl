@@ -44,6 +44,9 @@ task CnvkitpyScatter {
       ~{if defined(min_variant_depth) then ("--min-variant-depth " +  '"' + min_variant_depth + '"') else ""} \
       ~{if (ignore_vcfs_genotypes) then "-z" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     segment: "Segmentation calls (.cns), the output of the 'segment'\\ncommand."
     chromosome: "Chromosome or chromosomal range, e.g. 'chr1' or\\n'chr1:2333000-2444000', to display. If a range is\\ngiven, all targeted genes in this range will be shown,\\nunless -g/--gene is also given."

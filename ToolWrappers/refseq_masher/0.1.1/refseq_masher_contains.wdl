@@ -22,6 +22,9 @@ task RefseqMasherContains {
       ~{if defined(max_p_value) then ("--max-pvalue " +  '"' + max_p_value + '"') else ""} \
       ~{if defined(parallelism) then ("--parallelism " +  '"' + parallelism + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mash_bin: "Mash binary path (default=\\\"mash\\\")"
     output_file_path: "Output file path (default=\\\"-\\\"/stdout)"

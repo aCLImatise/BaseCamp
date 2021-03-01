@@ -14,6 +14,9 @@ task Vcf2sequence {
       ~{if defined(region) then ("--region " +  '"' + region + '"') else ""} \
       ~{if defined(region_file) then ("--region-file " +  '"' + region_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf: "Path to input VCF  [required]"
     sample: "Sample to consider. If not given, take fist sample\\nin VCF"

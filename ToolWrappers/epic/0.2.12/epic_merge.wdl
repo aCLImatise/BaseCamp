@@ -18,6 +18,9 @@ task Epicmerge {
       ~{if defined(path_write_matrix) then ("--output " +  '"' + path_write_matrix + '"') else ""} \
       ~{if defined(number_cores) then ("--number-cores " +  '"' + number_cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrixes: "epic-count matrixes to merge."
     regions: "Bed file(s) with regions to use. Does not work with\\n--keep-nonenriched."

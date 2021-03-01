@@ -48,6 +48,9 @@ task MageckCount {
       ~{if defined(day_zero_label) then ("--day0-label " +  '"' + day_zero_label + '"') else ""} \
       ~{if defined(gmt_file) then ("--gmt-file " +  '"' + gmt_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_seq: "A file containing the list of sgRNA names, their\\nsequences and associated genes. Support file format:\\ncsv and txt. Provide an empty file for collecting all\\npossible sgRNA counts."
     fast_q: "Sample fastq files (or fastq.gz files, or SAM/BAM\\nfiles after v0.5.5), separated by space; use comma (,)\\nto indicate technical replicates of the same sample.\\nFor example, \\\"--fastq\\nsample1_replicate1.fastq,sample1_replicate2.fastq\\nsample2_replicate1.fastq,sample2_replicate2.fastq\\\"\\nindicates two samples with 2 technical replicates for\\neach sample."

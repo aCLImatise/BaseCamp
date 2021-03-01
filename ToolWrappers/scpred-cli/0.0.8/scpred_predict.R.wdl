@@ -22,6 +22,9 @@ task ScpredPredictR {
       ~{if defined(plot_path) then ("--plot-path " +  '"' + plot_path + '"') else ""} \
       ~{if defined(confusion_table) then ("--confusion-table " +  '"' + confusion_table + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object: "Path to the input object of scPred or seurat class in .rds format"
     pred_data: "Path to the input prediction matrix in .rds format"

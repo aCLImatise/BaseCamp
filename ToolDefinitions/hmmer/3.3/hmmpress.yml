@@ -12,11 +12,11 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -options
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -28,11 +28,11 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -options
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -44,11 +44,11 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -options
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -60,27 +60,15 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -options
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ': force: overwrite any previous pressed files'
-                  synonyms:
-                  - -f
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -options
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
@@ -88,12 +76,71 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -options
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -f
+                      description: ': force: overwrite any previous pressed files'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -options
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -options
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Incorrect number of command line arguments.\nUsage:\
+                        \ hmmpress [-options] <hmmfile>\n\nTo see more help on available\
+                        \ options, do hmmpress -h\n\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      description: ': show brief help on version and usage'
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "# hmmpress :: prepare an HMM database for faster hmmscan\
+                      \ searches\n# HMMER 3.3 (Nov 2019); http://hmmer.org/\n# Copyright\
+                      \ (C) 2019 Howard Hughes Medical Institute.\n# Freely distributed\
+                      \ under the BSD open source license.\n# - - - - - - - - - -\
+                      \ - - - - - - - - - - - - - - - - - - - - - - - - - -\nUsage:\
+                      \ hmmpress [-options] <hmmfile>\n\nOptions:\n  -h : show brief\
+                      \ help on version and usage\n  -f : force: overwrite any previous\
+                      \ pressed files\n"
+                    generated_using: &id005
+                    - -h
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -102,15 +149,10 @@ subcommands:
                   help_text: "Incorrect number of command line arguments.\nUsage:\
                     \ hmmpress [-options] <hmmfile>\n\nTo see more help on available\
                     \ options, do hmmpress -h\n\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: ': show brief help on version and usage'
-                  synonyms:
-                  - -h
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "# hmmpress :: prepare an HMM database for faster hmmscan\
@@ -120,8 +162,8 @@ subcommands:
                   \ - - - - - - - - - - - - - - - - - - - - - - - -\nUsage: hmmpress\
                   \ [-options] <hmmfile>\n\nOptions:\n  -h : show brief help on version\
                   \ and usage\n  -f : force: overwrite any previous pressed files\n"
-                generated_using: &id005
-                - -h
+                generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -131,6 +173,7 @@ subcommands:
                 \ [-options] <hmmfile>\n\nTo see more help on available options, do\
                 \ hmmpress -h\n\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -143,6 +186,7 @@ subcommands:
               Options:\n  -h : show brief help on version and usage\n  -f : force:\
               \ overwrite any previous pressed files\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -152,6 +196,7 @@ subcommands:
             \ [-options] <hmmfile>\n\nTo see more help on available options, do hmmpress\
             \ -h\n\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -164,6 +209,7 @@ subcommands:
           \ help on version and usage\n  -f : force: overwrite any previous pressed\
           \ files\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -172,6 +218,7 @@ subcommands:
       help_text: "Incorrect number of command line arguments.\nUsage: hmmpress [-options]\
         \ <hmmfile>\n\nTo see more help on available options, do hmmpress -h\n\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -183,6 +230,7 @@ subcommands:
       Usage: hmmpress [-options] <hmmfile>\n\nOptions:\n  -h : show brief help on\
       \ version and usage\n  -f : force: overwrite any previous pressed files\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -191,6 +239,7 @@ subcommands:
   help_text: "Incorrect number of command line arguments.\nUsage: hmmpress [-options]\
     \ <hmmfile>\n\nTo see more help on available options, do hmmpress -h\n\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -202,3 +251,4 @@ help_text: "# hmmpress :: prepare an HMM database for faster hmmscan searches\n#
   \ [-options] <hmmfile>\n\nOptions:\n  -h : show brief help on version and usage\n\
   \  -f : force: overwrite any previous pressed files\n"
 generated_using: *id005
+docker_image:

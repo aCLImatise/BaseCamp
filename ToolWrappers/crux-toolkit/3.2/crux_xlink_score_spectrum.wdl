@@ -20,6 +20,9 @@ task CruxXlinkscorespectrum {
       ~{charge_state} \
       ~{scan_number}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     peptide_a: ""
     peptide_b: ""

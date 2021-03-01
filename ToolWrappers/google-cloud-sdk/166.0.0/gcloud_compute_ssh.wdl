@@ -28,6 +28,9 @@ task GcloudComputeSsh {
       ~{if defined(strict_host_key_checking) then ("--strict-host-key-checking " +  '"' + strict_host_key_checking + '"') else ""} \
       ~{if defined(zone) then ("--zone " +  '"' + zone + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     instance: ":%INSTANCE%:80"
     command_run_command: "A command to run on the virtual machine.\\nRuns the command on the target instance and then exits."

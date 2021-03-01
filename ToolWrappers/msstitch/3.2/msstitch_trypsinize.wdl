@@ -18,6 +18,9 @@ task MsstitchTrypsinize {
       ~{if defined(min_len) then ("--minlen " +  '"' + min_len + '"') else ""} \
       ~{if (cut_proline) then "--cutproline" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_format: "Input file of {} format"
     directory_to_output: "Directory to output in"

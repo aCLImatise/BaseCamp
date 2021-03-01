@@ -16,6 +16,9 @@ task XsvTable {
       ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     width: "The minimum width of each column.\\n[default: 2]"
     pad: "The minimum number of spaces between each column.\\n[default: 2]"

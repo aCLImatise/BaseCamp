@@ -54,6 +54,9 @@ task GtftkSelectByKey {
       ~{if (logger_file) then "--logger-file" else ""} \
       ~{if (write_message_to_file) then "--write-message-to-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     value: "A comma-separated list of values. (default: None)"
     file_with_values: "A file containing values as a single column. (default: None)"

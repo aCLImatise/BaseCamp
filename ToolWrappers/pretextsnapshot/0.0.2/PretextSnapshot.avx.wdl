@@ -2,13 +2,13 @@ version 1.0
 
 task PretextSnapshotavx {
   input {
-    File? m_slash_map
-    String? f_slash_format
-    Int? r_slash_resolution
-    Int? c_slash_colour_map
+    File? path_pretext_option
+    String? format
+    Int? resolution
+    Int? colour_map
     Boolean? print_colour_map_names
     Int? jpegquality
-    File? oslash_folder
+    File? folder
     String? prefix
     String? sequences
     Boolean? sequence_help
@@ -22,13 +22,13 @@ task PretextSnapshotavx {
   }
   command <<<
     PretextSnapshot_avx \
-      ~{if defined(m_slash_map) then ("-m/--map " +  '"' + m_slash_map + '"') else ""} \
-      ~{if defined(f_slash_format) then ("-f/--format " +  '"' + f_slash_format + '"') else ""} \
-      ~{if defined(r_slash_resolution) then ("-r/--resolution " +  '"' + r_slash_resolution + '"') else ""} \
-      ~{if defined(c_slash_colour_map) then ("-c/--colourMap " +  '"' + c_slash_colour_map + '"') else ""} \
+      ~{if defined(path_pretext_option) then ("--map " +  '"' + path_pretext_option + '"') else ""} \
+      ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
+      ~{if defined(resolution) then ("--resolution " +  '"' + resolution + '"') else ""} \
+      ~{if defined(colour_map) then ("--colourMap " +  '"' + colour_map + '"') else ""} \
       ~{if (print_colour_map_names) then "--printColourMapNames" else ""} \
       ~{if defined(jpegquality) then ("--jpegQuality " +  '"' + jpegquality + '"') else ""} \
-      ~{if defined(oslash_folder) then ("-o/--folder " +  '"' + oslash_folder + '"') else ""} \
+      ~{if defined(folder) then ("--folder " +  '"' + folder + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(sequences) then ("--sequences " +  '"' + sequences + '"') else ""} \
       ~{if (sequence_help) then "--sequenceHelp" else ""} \
@@ -40,14 +40,17 @@ task PretextSnapshotavx {
       ~{if (licence) then "--licence" else ""} \
       ~{if (third_party) then "--thirdParty" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    m_slash_map: ":           Path to a pretext map.\\nThis option is required, except when using:\\n--help,\\n--sequenceHelp,\\n--printColourMapNames,\\n--version,\\n--licence,\\n--thirdParty"
-    f_slash_format: ":        Image format, one of \\\"png\\\"(default) \\\"bmp\\\" or \\\"jpeg\\\"."
-    r_slash_resolution: ":    Image resolution, a positive integer, default 1080.\\nFor non-square images this will be the resolution\\nof the longest dimension."
-    c_slash_colour_map: ":    Either, a non-negative integer, indexing the colour map to use.\\nOr, the name of the colour map to use.\\nDefaults to \\\"Three Wave Blue-Green-Yellow\\\" i.e. \\\"5\\\"."
+    path_pretext_option: ":           Path to a pretext map.\\nThis option is required, except when using:\\n--help,\\n--sequenceHelp,\\n--printColourMapNames,\\n--version,\\n--licence,\\n--thirdParty"
+    format: ":        Image format, one of \\\"png\\\"(default) \\\"bmp\\\" or \\\"jpeg\\\"."
+    resolution: ":    Image resolution, a positive integer, default 1080.\\nFor non-square images this will be the resolution\\nof the longest dimension."
+    colour_map: ":    Either, a non-negative integer, indexing the colour map to use.\\nOr, the name of the colour map to use.\\nDefaults to \\\"Three Wave Blue-Green-Yellow\\\" i.e. \\\"5\\\"."
     print_colour_map_names: ":  Prints a list of the available colour maps.\\nCannot be used with any other option."
     jpegquality: ":     JPEG quality factor, an integer between 1 and 100, default 80.\\nLarger values result in increased image quality and file size.\\nOnly applicable to JPEG images."
-    oslash_folder: ":       Output folder path, will be created if it doesn't exist.\\nDefaults to the name of the pretext map."
+    folder: ":       Output folder path, will be created if it doesn't exist.\\nDefaults to the name of the pretext map."
     prefix: ":           Prefix name for all image files.\\nDefaults to the name of the pretext map + \\\"_\\\"."
     sequences: ":      Sequence specification string. Each entry, except for \\\"=all\\\", corresponds to one output image.\\nDefaults to \\\"=full, =all\\\"."
     sequence_help: ":         Sequence specification string format documentation.\\nCannot be used with any other option."
@@ -61,6 +64,6 @@ task PretextSnapshotavx {
   }
   output {
     File out_stdout = stdout()
-    File out_oslash_folder = "${in_oslash_folder}"
+    File out_folder = "${in_folder}"
   }
 }

@@ -4,6 +4,9 @@ task ParaNodeStop {
   command <<<
     paraNodeStop
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

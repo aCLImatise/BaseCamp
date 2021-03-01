@@ -8,6 +8,9 @@ task RearrangeSeqs {
     rearrangeSeqs \
       ~{good_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     good_dot: ""
   }

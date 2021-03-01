@@ -16,6 +16,9 @@ task Svdb {
       ~{if (merge) then "--merge" else ""} \
       ~{if (export) then "--export" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     build: "create a db"
     query: "query a db"

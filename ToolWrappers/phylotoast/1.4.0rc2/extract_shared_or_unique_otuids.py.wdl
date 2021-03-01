@@ -18,6 +18,9 @@ task ExtractSharedOrUniqueOtuidspy {
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(reverse) then ("--reverse " +  '"' + reverse + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "Provide specific text to prepend the output file\\nnames. By default, the 'unique' will be added in front\\nof output filenames, for uniques calculations only."
     reverse: "Get shared OTUIDs among all unique combinations of\\ngroups and write out the results to path provided to\\nthis option.\\n"

@@ -14,6 +14,9 @@ task TgtshiftboundariespyFile {
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
       ~{if defined(e) then ("-e " +  '"' + e + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     f: ""

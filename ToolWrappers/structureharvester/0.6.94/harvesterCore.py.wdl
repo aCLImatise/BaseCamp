@@ -4,6 +4,9 @@ task HarvesterCorepy {
   command <<<
     harvesterCore_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -8,6 +8,9 @@ task Readfq {
     readfq \
       ~{in_dot_seq}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_seq: ""
   }

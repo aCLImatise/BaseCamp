@@ -3,7 +3,7 @@ version 1.0
 task GoalignTranslate {
   input {
     String? genetic_code
-    File? output_translated_default
+    File? output_translated_alignment
     Int? phase
     Boolean? unaligned
     File? align
@@ -22,7 +22,7 @@ task GoalignTranslate {
   command <<<
     goalign translate \
       ~{if defined(genetic_code) then ("--genetic-code " +  '"' + genetic_code + '"') else ""} \
-      ~{if defined(output_translated_default) then ("--output " +  '"' + output_translated_default + '"') else ""} \
+      ~{if defined(output_translated_alignment) then ("--output " +  '"' + output_translated_alignment + '"') else ""} \
       ~{if defined(phase) then ("--phase " +  '"' + phase + '"') else ""} \
       ~{if (unaligned) then "--unaligned" else ""} \
       ~{if defined(align) then ("--align " +  '"' + align + '"') else ""} \
@@ -38,9 +38,12 @@ task GoalignTranslate {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genetic_code: "Genetic Code: standard, mitoi (invertebrate mitochondrial) or mitov (vertebrate mitochondrial) (default \\\"standard\\\")"
-    output_translated_default: "Output translated alignment file (default \\\"stdout\\\")"
+    output_translated_alignment: "Output translated alignment file (default \\\"stdout\\\")"
     phase: "Number of characters to drop from the start of the alignment (if -1: Translate in the 3 phases, from positions 0, 1, and 2)"
     unaligned: "Considers sequences as unaligned and format fasta (phylip, nexus,... options are ignored)"
     align: "Alignment input file (default \\\"stdin\\\")"
@@ -58,6 +61,6 @@ task GoalignTranslate {
   }
   output {
     File out_stdout = stdout()
-    File out_output_translated_default = "${in_output_translated_default}"
+    File out_output_translated_alignment = "${in_output_translated_alignment}"
   }
 }

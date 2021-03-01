@@ -30,6 +30,9 @@ task AquilaStep1Multilibs {
       ~{if defined(block_threshold) then ("--block_threshold " +  '"' + block_threshold + '"') else ""} \
       ~{if defined(block_len_use) then ("--block_len_use " +  '"' + block_len_use + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam_file_list: "Required parameter, BAM file list, each BAM file is\\nseperately by comma \\\",\\\". For example: 1.bam,2.bam"
     vcf_file_list: "Required parameter, VCF file list, each VCF file is\\nseperately by comma \\\",\\\" . For example: 1.vcf,2.vcf"

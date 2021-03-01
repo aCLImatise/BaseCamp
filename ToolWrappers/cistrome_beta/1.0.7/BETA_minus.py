@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Directory, Int, Boolean
+
+Beta_Minus_V0_1_0 = CommandToolBuilder(tool="BETA_minus", base_command=["BETA", "minus"], inputs=[ToolInput(tag="in_peak_file", input_type=File(optional=True), prefix="--peakfile", doc=InputDocumentation(doc="The bed format of peaks binding sites. (BETA support 3\nor 5 columns bed format, CHROM, START, END (NAME,\nSCORE))")), ToolInput(tag="in_genome", input_type=String(optional=True), prefix="--genome", doc=InputDocumentation(doc="Specify your species, hg38,hg19,hg18,mm10,mm9. For\nother genome assembily versions of human and mouse or\nother species, ignore this paramter")), ToolInput(tag="in_reference", input_type=File(optional=True), prefix="--reference", doc=InputDocumentation(doc="the refgene info file downloaded from UCSC genome\nbrowser.input this file only if your genome is neither\nhg19 nor mm9")), ToolInput(tag="in_name", input_type=File(optional=True), prefix="--name", doc=InputDocumentation(doc="this argument is used as the prefix of the result\nfile. If not set, 'NA' will be used instead")), ToolInput(tag="in_output", input_type=Directory(optional=True), prefix="--output", doc=InputDocumentation(doc="the directory to store all the output files, if you\ndon't set this, files will be output into the current\ndirectory")), ToolInput(tag="in_distance", input_type=Int(optional=True), prefix="--distance", doc=InputDocumentation(doc="Set a number which unit is 'base'. It will get peaks\nwithin this distance from gene TSS. default:100000\n(100kb)")), ToolInput(tag="in_bl", input_type=Boolean(optional=True), prefix="--bl", doc=InputDocumentation(doc="whether or not use CTCF boundary to filter peaks\naround a gene, DEFAULT=FALSE")), ToolInput(tag="in_bf", input_type=File(optional=True), prefix="--bf", doc=InputDocumentation(doc="CTCF conserved peaks bed file, use this only when you\nset --bl and the genome is neither hg19 nor mm9")), ToolInput(tag="in_pn", input_type=Int(optional=True), prefix="--pn", doc=InputDocumentation(doc="the number of peaks you want to consider,\nDEFAULT=10000\n"))], outputs=[ToolOutput(tag="out_output", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="the directory to store all the output files, if you\ndon't set this, files will be output into the current\ndirectory"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Beta_Minus_V0_1_0().translate("wdl", allow_empty_container=True)
+

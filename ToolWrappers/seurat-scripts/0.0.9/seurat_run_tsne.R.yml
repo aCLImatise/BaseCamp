@@ -1,0 +1,179 @@
+!Command
+command:
+- seurat-run-tsne.R
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-object-file
+  description: File name in which a serialized R matrix object may be found.
+  args: !SimpleFlagArg
+    name: INPUT-OBJECT-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --input-format
+  description: Either loom, seurat, anndata or singlecellexperiment for the input
+    format to read.
+  args: !SimpleFlagArg
+    name: INPUT-FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --output-format
+  description: Either loom, seurat, anndata or singlecellexperiment for the output
+    format.
+  args: !SimpleFlagArg
+    name: OUTPUT-FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reduction-use
+  description: Which dimensional reduction (e.g. PCA, ICA) to use for the tSNE. Default
+    is PCA.
+  args: !SimpleFlagArg
+    name: REDUCTION-USE
+- !Flag
+  optional: true
+  synonyms:
+  - --tsne-method
+  description: 'Select the method to use to compute the tSNE. Available methods are:
+    Rtsne, Flt-SNE'
+  args: !SimpleFlagArg
+    name: TSNE-METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - --perplexity
+  description: Perplexity value for tSNE, if none is set, the default from seurat,
+    30, is used.
+  args: !SimpleFlagArg
+    name: PERPLEXITY
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cells-use
+  description: File to be used to derive a vector of which cells to analyze (default,
+    all cells).
+  args: !SimpleFlagArg
+    name: CELLS-USE
+- !Flag
+  optional: true
+  synonyms:
+  - --dim_embed
+  description: The dimensional space of the resulting tSNE embedding (default is 2).
+    For example, set to 3 for a 3d tSNE
+  args: !SimpleFlagArg
+    name: DIM_EMBED
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dims-use
+  description: A comma-separated list of the which dimensions to use as input features.
+  args: !SimpleFlagArg
+    name: DIMS-USE
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --genes-use
+  description: File to be used to derive a vector of gene names. If set, run the tSNE
+    on this subset of genes (instead of running on a set of reduced dimensions). Not
+    set (NULL) by default.
+  args: !SimpleFlagArg
+    name: GENES-USE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-object-file
+  description: File name in which to store serialized R object of type 'Seurat'.'
+  args: !SimpleFlagArg
+    name: OUTPUT-OBJECT-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --output-embeddings-file
+  description: File name in which to store a csv-format embeddings table with PCs
+    by cell.
+  args: !SimpleFlagArg
+    name: OUTPUT-EMBEDDINGS-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --random-seed
+  description: Seed of the random number generator
+  args: !SimpleFlagArg
+    name: RANDOM-SEED
+- !Flag
+  optional: true
+  synonyms:
+  - --add-iter
+  description: If an existing tSNE has already been computed, uses the current tSNE
+    to seed the algorithm and then adds additional iterations on top of this
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reduction-key
+  description: "KEY\ndimensional reduction key, specifies the string before the number\
+    \ for the dimension names. tSNE_ by default"
+  args: !SimpleFlagArg
+    name: REDUCTIO
+- !Flag
+  optional: true
+  synonyms:
+  - --reduction-name
+  description: "NAME\ndimensional reduction name, specifies the position in the object$dr\
+    \ list. tsne by default"
+  args: !SimpleFlagArg
+    name: REDUCTION
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: "Show this help message and exit\n"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/seurat-run-tsne.R [options]\n\n\nOptions:\n\t-i\
+  \ INPUT-OBJECT-FILE, --input-object-file=INPUT-OBJECT-FILE\n\t\tFile name in which\
+  \ a serialized R matrix object may be found.\n\n\t--input-format=INPUT-FORMAT\n\t\
+  \tEither loom, seurat, anndata or singlecellexperiment for the input format to read.\n\
+  \n\t--output-format=OUTPUT-FORMAT\n\t\tEither loom, seurat, anndata or singlecellexperiment\
+  \ for the output format.\n\n\t-r REDUCTION-USE, --reduction-use=REDUCTION-USE\n\t\
+  \tWhich dimensional reduction (e.g. PCA, ICA) to use for the tSNE. Default is PCA.\n\
+  \n\t--tsne-method=TSNE-METHOD\n\t\tSelect the method to use to compute the tSNE.\
+  \ Available methods are: Rtsne, Flt-SNE\n\n\t--perplexity=PERPLEXITY\n\t\tPerplexity\
+  \ value for tSNE, if none is set, the default from seurat, 30, is used.\n\n\t-c\
+  \ CELLS-USE, --cells-use=CELLS-USE\n\t\tFile to be used to derive a vector of which\
+  \ cells to analyze (default, all cells).\n\n\t--dim_embed=DIM_EMBED\n\t\tThe dimensional\
+  \ space of the resulting tSNE embedding (default is 2). For example, set to 3 for\
+  \ a 3d tSNE\n\n\t-d DIMS-USE, --dims-use=DIMS-USE\n\t\tA comma-separated list of\
+  \ the which dimensions to use as input features.\n\n\t-e GENES-USE, --genes-use=GENES-USE\n\
+  \t\tFile to be used to derive a vector of gene names. If set, run the tSNE on this\
+  \ subset of genes (instead of running on a set of reduced dimensions). Not set (NULL)\
+  \ by default.\n\n\t-o OUTPUT-OBJECT-FILE, --output-object-file=OUTPUT-OBJECT-FILE\n\
+  \t\tFile name in which to store serialized R object of type 'Seurat'.'\n\n\t-b OUTPUT-EMBEDDINGS-FILE,\
+  \ --output-embeddings-file=OUTPUT-EMBEDDINGS-FILE\n\t\tFile name in which to store\
+  \ a csv-format embeddings table with PCs by cell.\n\n\t--random-seed=RANDOM-SEED\n\
+  \t\tSeed of the random number generator\n\n\t--add-iter\n\t\tIf an existing tSNE\
+  \ has already been computed, uses the current tSNE to seed the algorithm and then\
+  \ adds additional iterations on top of this\n\n\t--reduction-key=REDUCTIO KEY\n\t\
+  \tdimensional reduction key, specifies the string before the number for the dimension\
+  \ names. tSNE_ by default\n\n\t--reduction-name=REDUCTION NAME\n\t\tdimensional\
+  \ reduction name, specifies the position in the object$dr list. tsne by default\n\
+  \n\t-h, --help\n\t\tShow this help message and exit\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seurat-scripts:0.0.9--0

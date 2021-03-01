@@ -38,6 +38,9 @@ task CsvtkXlsx2csv {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_sheets: "list all sheets"
     sheet_index: "Nth sheet to retrieve (default 1)"

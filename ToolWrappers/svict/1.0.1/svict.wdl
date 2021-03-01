@@ -4,7 +4,7 @@ task Svict {
   input {
     Boolean? input_alignment_file
     Boolean? reference
-    File? prefix_output_file
+    File? prefix_file_default
     Boolean? annotation
     Boolean? min_support
     Boolean? max_support
@@ -30,7 +30,7 @@ task Svict {
       ~{svc_it} \
       ~{if (input_alignment_file) then "--input" else ""} \
       ~{if (reference) then "--reference" else ""} \
-      ~{if (prefix_output_file) then "--output" else ""} \
+      ~{if (prefix_file_default) then "--output" else ""} \
       ~{if (annotation) then "--annotation" else ""} \
       ~{if (min_support) then "--min_support" else ""} \
       ~{if (max_support) then "--max_support" else ""} \
@@ -50,10 +50,13 @@ task Svict {
       ~{if (dump_contigs) then "--dump_contigs" else ""} \
       ~{if (resume) then "--resume" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_alignment_file: "[FILE]\\nInput alignment file. This file should be a sorted SAM or BAM file."
     reference: "[FILE]\\nReference geneome that the reads are algined to."
-    prefix_output_file: "[STRING]\\nPrefix of output file (default out)"
+    prefix_file_default: "[STRING]\\nPrefix of output file (default out)"
     annotation: "[FILE]\\nGTF file. Enables annotation of SV calls and fusion identification."
     min_support: "[INT]\\nThe minimum number of supporting reads required to be considered a SV (default 2)."
     max_support: "[INT]\\nThe maximum number of supporting reads required to be considered a SV, could be used to filter out germline calls (default unlimited)."
@@ -76,6 +79,6 @@ task Svict {
   }
   output {
     File out_stdout = stdout()
-    File out_prefix_output_file = "${in_prefix_output_file}"
+    File out_prefix_file_default = "${in_prefix_file_default}"
   }
 }

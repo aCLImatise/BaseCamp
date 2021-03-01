@@ -4,6 +4,9 @@ task FilterChrompy {
   command <<<
     filterChrom_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

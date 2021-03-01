@@ -2,16 +2,16 @@ version 1.0
 
 task StarfishValidateExperiment {
   input {
-    Boolean? fuzz
     String json_file_or_url
   }
   command <<<
     starfish validate experiment \
-      ~{json_file_or_url} \
-      ~{if (fuzz) then "--fuzz" else ""}
+      ~{json_file_or_url}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    fuzz: "--help  Show this message and exit.\\n"
     json_file_or_url: ""
   }
   output {

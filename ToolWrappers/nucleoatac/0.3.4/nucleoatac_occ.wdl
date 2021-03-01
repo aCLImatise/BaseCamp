@@ -32,6 +32,9 @@ task NucleoatacOcc {
       ~{if defined(nuc_sep) then ("--nuc_sep " +  '"' + nuc_sep + '"') else ""} \
       ~{if defined(step) then ("--step " +  '"' + step + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "Peaks in bed format"
     bam: "Sorted (and indexed) BAM file"

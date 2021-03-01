@@ -10,6 +10,9 @@ task TreebestDistmat {
       ~{dn_vertical_line_ds_vertical_line_dm_vertical_line_jtt_vertical_line_kimura_vertical_line_mm_vertical_line_dns} \
       ~{alignment}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dn_vertical_line_ds_vertical_line_dm_vertical_line_jtt_vertical_line_kimura_vertical_line_mm_vertical_line_dns: ""
     alignment: ""

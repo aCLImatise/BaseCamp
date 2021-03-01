@@ -48,6 +48,9 @@ task Counterr {
       ~{if defined(num_pts_max) then ("-num_pts_max " +  '"' + num_pts_max + '"') else ""} \
       ~{if defined(report_name) then ("-report_name " +  '"' + report_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "the input bam file (default: None)"
     genome: "the input fasta file (default: None)"

@@ -16,6 +16,9 @@ task DnaseCutCounterpyOutput {
       ~{var_output} \
       ~{if (a) then "-A" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a: ""
     dnase_cut_counter_do_tpy: ""

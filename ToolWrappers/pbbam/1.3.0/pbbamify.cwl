@@ -4,13 +4,13 @@ inputs:
 - id: in_input
   doc: FILE  The aligned non-PacBio BAM file. If not provided, stdin will be used
     as input.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: FILE  Path to the output BAM file. If not specified, output will be to the
     stdout.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_verbose_level
@@ -18,17 +18,17 @@ inputs:
     \ 0 turns all output off, 1\noutputs only warnings, while levels 2 and above outputs\
     \ a status message every 1000000 (2),\n100000 (3), 1000 (4), 100 (5), 10 (6) and\
     \ 1 (7) reads. [3]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose-level
 - id: in_log_level
   doc: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [INFO]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --log-level
 - id: in_log_file
   doc: FILE  Log to a file, instead of stderr.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --log-file
 - id: in_ref_dot_fa
@@ -48,9 +48,10 @@ outputs:
 - id: out_output
   doc: FILE  Path to the output BAM file. If not specified, output will be to the
     stdout.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pbbamify

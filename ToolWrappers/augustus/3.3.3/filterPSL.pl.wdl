@@ -28,6 +28,9 @@ task FilterPSLpl {
       ~{if defined(max_intron_len) then ("--maxintronlen " +  '"' + max_intron_len + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pair_bed: "file name of pairedness coverage:\\na .bed format file in which for each position the number of filtered\\nread pairs is reported that contain the position in or between the reads"
     mini_d: "minimal percentage of identity (default 92)"

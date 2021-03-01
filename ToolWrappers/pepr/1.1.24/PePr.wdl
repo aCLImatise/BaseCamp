@@ -42,6 +42,9 @@ task PePr {
       ~{if defined(normalization) then ("--normalization " +  '"' + normalization + '"') else ""} \
       ~{if defined(keep_max_dup) then ("--keep-max-dup " +  '"' + keep_max_dup + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     parameter_file: "provide a file that contain the parameters"
     chip_one: "chip1 file names separated by comma"

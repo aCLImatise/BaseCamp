@@ -4,7 +4,7 @@ task Koekenpy {
   input {
     Boolean? debug
     String? var_input
-    Directory? location_place_resulting
+    Directory? location_place_folder
     File? location_mapping_file
     String? level
     String? class
@@ -25,7 +25,7 @@ task Koekenpy {
     koeken_py \
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(var_input) then ("--input " +  '"' + var_input + '"') else ""} \
-      ~{if defined(location_place_resulting) then ("--output " +  '"' + location_place_resulting + '"') else ""} \
+      ~{if defined(location_place_folder) then ("--output " +  '"' + location_place_folder + '"') else ""} \
       ~{if defined(location_mapping_file) then ("--map " +  '"' + location_mapping_file + '"') else ""} \
       ~{if defined(level) then ("--level " +  '"' + level + '"') else ""} \
       ~{if defined(class) then ("--class " +  '"' + class + '"') else ""} \
@@ -42,10 +42,13 @@ task Koekenpy {
       ~{if (pic_rust) then "--picrust" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Enable debugging"
     var_input: "Location of the OTU Table for main analysis. (Must be\\n.biom format)"
-    location_place_resulting: "Location of the folder to place all resulting files.\\nIf folder does not exist, the program will create it."
+    location_place_folder: "Location of the folder to place all resulting files.\\nIf folder does not exist, the program will create it."
     location_mapping_file: "Location of the mapping file associated with OTU\\nTable."
     level: "Level for which to use for summarize_taxa.py. [default\\n= 6]"
     class: "Location of the OTU Table for main analysis. (Must be\\n.biom format)"

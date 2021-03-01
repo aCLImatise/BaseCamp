@@ -3,17 +3,17 @@ id: filter_overlap_file.cwl
 inputs:
 - id: in_threads
   doc: Number of threads (1)
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_output
   doc: Output file (/dev/fd/1)
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_dump
   doc: Fragment in raw -dumpfragment format (false)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dump
 - id: in_filter_overlap_file_cmdline
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output file (/dev/fd/1)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - filter_overlap_file

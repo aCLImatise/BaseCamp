@@ -9,12 +9,12 @@ task Fkitsch {
     Boolean? replicates
     Boolean? print_data
     String matrices
-    File file
+    File additional_optional_qualifiers
   }
   command <<<
     _fkitsch \
       ~{matrices} \
-      ~{file} \
+      ~{additional_optional_qualifiers} \
       ~{if (matrix_type) then "-matrixtype" else ""} \
       ~{if (mine_v) then "-minev" else ""} \
       ~{if (power) then "-power" else ""} \
@@ -22,6 +22,9 @@ task Fkitsch {
       ~{if (replicates) then "-replicates" else ""} \
       ~{if (print_data) then "-printdata" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix_type: "menu       [s] Type of data matrix (Values: s (Square);\\nu (Upper triangular); l (Lower triangular))"
     mine_v: "boolean    [N] Minimum evolution"
@@ -30,7 +33,7 @@ task Fkitsch {
     replicates: "boolean    [N] Subreplicates"
     print_data: "boolean    [N] Print data at start of run"
     matrices: "[-intreefile]        tree       Phylip tree file (optional)"
-    file: "Additional (Optional) qualifiers (* if not always prompted):"
+    additional_optional_qualifiers: "Additional (Optional) qualifiers (* if not always prompted):"
   }
   output {
     File out_stdout = stdout()

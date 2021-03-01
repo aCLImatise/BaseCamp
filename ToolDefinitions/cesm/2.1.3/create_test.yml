@@ -3,335 +3,335 @@ command:
 - create_test
 positional:
 - !Positional
-  description: Tests or test suites to run. Testname form is TEST.GRID.COMPSET[.MACHINE_COMPILER]
+  optional: false
   position: 0
   name: testargs
-  optional: false
+  description: Tests or test suites to run. Testname form is TEST.GRID.COMPSET[.MACHINE_COMPILER]
 named:
 - !Flag
-  description: Print debug information (very verbose) to file /create_test.log
+  optional: true
   synonyms:
   - -d
   - --debug
+  description: Print debug information (very verbose) to file /create_test.log
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Add additional context (time and file) to log messages
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: Add additional context (time and file) to log messages
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Print only warnings and error messages
+  optional: true
   synonyms:
   - -s
   - --silent
+  description: Print only warnings and error messages
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not run generated tests
+  optional: true
   synonyms:
   - --no-run
+  description: Do not run generated tests
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not build generated tests, implies --no-run
+  optional: true
   synonyms:
   - --no-build
+  description: Do not build generated tests, implies --no-run
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not setup generated tests, implies --no-build and --no-run
+  optional: true
   synonyms:
   - --no-setup
+  description: Do not setup generated tests, implies --no-build and --no-run
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use pre-existing case directories they will pick up at the\nlatest\
-    \ PEND state or re-run the first failed state. Requires test-id"
+  optional: true
   synonyms:
   - -u
   - --use-existing
+  description: "Use pre-existing case directories they will pick up at the\nlatest\
+    \ PEND state or re-run the first failed state. Requires test-id"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Enable archiving of performance data.
+  optional: true
   synonyms:
   - --save-timing
+  description: Enable archiving of performance data.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not submit jobs to batch system, run locally.\nIf false, this will\
-    \ default to machine setting."
+  optional: true
   synonyms:
   - --no-batch
+  description: "Do not submit jobs to batch system, run locally.\nIf false, this will\
+    \ default to machine setting."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use a single interactive allocation to run all the tests. This can\n\
-    drastically reduce queue waiting but only makes sense on batch machines."
+  optional: true
   synonyms:
   - --single-submit
+  description: "Use a single interactive allocation to run all the tests. This can\n\
+    drastically reduce queue waiting but only makes sense on batch machines."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Where test cases will be created. The default is output root\nas defined\
-    \ in the config_machines file"
+  optional: true
   synonyms:
   - -r
   - --test-root
+  description: "Where test cases will be created. The default is output root\nas defined\
+    \ in the config_machines file"
   args: !SimpleFlagArg
     name: TEST_ROOT
-  optional: true
 - !Flag
-  description: Where the case output is written.
+  optional: true
   synonyms:
   - --output-root
+  description: Where the case output is written.
   args: !SimpleFlagArg
     name: OUTPUT_ROOT
-  optional: true
 - !Flag
-  description: "Specifies a root directory for baseline datasets that will\nbe used\
-    \ for Bit-for-bit generate and/or compare testing."
+  optional: true
   synonyms:
   - --baseline-root
+  description: "Specifies a root directory for baseline datasets that will\nbe used\
+    \ for Bit-for-bit generate and/or compare testing."
   args: !SimpleFlagArg
     name: BASELINE_ROOT
-  optional: true
 - !Flag
-  description: "Specifies if tests should be cleaned after run. If set, all object\n\
-    executables and data files will be removed after the tests are run."
+  optional: true
   synonyms:
   - --clean
+  description: "Specifies if tests should be cleaned after run. If set, all object\n\
+    executables and data files will be removed after the tests are run."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --machine
   description: "The machine for creating and building tests. This machine must be\
     \ defined\nin the config_machines.xml file for the given model. The default is\
     \ to\nto match the name of the machine in the test name or the name of the\nmachine\
     \ this script is run on to the NODENAME_REGEX field in\nconfig_machines.xml. WARNING:\
     \ This option is highly unsafe and should\nonly be used if you are an expert."
-  synonyms:
-  - -m
-  - --machine
   args: !SimpleFlagArg
     name: MACHINE
-  optional: true
 - !Flag
-  description: "Specify the mpilib. To see list of supported MPI libraries for each\
-    \ machine,\ninvoke ./query_config. The default is the first listing ."
+  optional: true
   synonyms:
   - --mpilib
+  description: "Specify the mpilib. To see list of supported MPI libraries for each\
+    \ machine,\ninvoke ./query_config. The default is the first listing ."
   args: !SimpleFlagArg
     name: MPILIB
-  optional: true
 - !Flag
-  description: "If comparing or generating baselines, use this directory under baseline\
-    \ root.\nDefault will be current branch name."
+  optional: true
   synonyms:
   - -b
   - --baseline-name
+  description: "If comparing or generating baselines, use this directory under baseline\
+    \ root.\nDefault will be current branch name."
   args: !SimpleFlagArg
     name: BASELINE_NAME
-  optional: true
 - !Flag
-  description: While testing, compare baselines
+  optional: true
   synonyms:
   - -c
   - --compare
+  description: While testing, compare baselines
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "While testing, generate baselines.\nNOTE: this can also be done after\
-    \ the fact with bless_test_results"
+  optional: true
   synonyms:
   - -g
   - --generate
+  description: "While testing, generate baselines.\nNOTE: this can also be done after\
+    \ the fact with bless_test_results"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Compiler for building cime. Default will be the name in the\nTestname\
-    \ or the default defined for the machine."
+  optional: true
   synonyms:
   - --compiler
+  description: "Compiler for building cime. Default will be the name in the\nTestname\
+    \ or the default defined for the machine."
   args: !SimpleFlagArg
     name: COMPILER
-  optional: true
 - !Flag
-  description: Only perform namelist actions for tests
+  optional: true
   synonyms:
   - -n
   - --namelists-only
+  description: Only perform namelist actions for tests
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify a project id for the case (optional).\nUsed for accounting\
-    \ when on a batch system.\nThe default is user-specified environment variable\
-    \ PROJECT"
+  optional: true
   synonyms:
   - -p
   - --project
+  description: "Specify a project id for the case (optional).\nUsed for accounting\
+    \ when on a batch system.\nThe default is user-specified environment variable\
+    \ PROJECT"
   args: !SimpleFlagArg
     name: PROJECT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --test-id
   description: "Specify an 'id' for the test. This is simply a string that is appended\n\
     to the end of a test name. If no test-id is specified, a time stamp plus a\nrandom\
     \ string will be used (ensuring a high probability of uniqueness).\nIf a test-id\
     \ is specified, it is the user's responsibility to ensure that\neach run of create_test\
     \ uses a unique test-id. WARNING: problems will occur\nif you use the same test-id\
     \ twice on the same file system, even if the test\nlists are completely different."
-  synonyms:
-  - -t
-  - --test-id
   args: !SimpleFlagArg
     name: TEST_ID
-  optional: true
 - !Flag
-  description: "Number of tasks create_test should perform simultaneously. The default\n\
-    is min(num_cores, num_tests)."
+  optional: true
   synonyms:
   - -j
   - --parallel-jobs
+  description: "Number of tasks create_test should perform simultaneously. The default\n\
+    is min(num_cores, num_tests)."
   args: !SimpleFlagArg
     name: PARALLEL_JOBS
-  optional: true
 - !Flag
-  description: "The size of the processor pool that create_test can use. The default\
-    \ is\nMAX_MPITASKS_PER_NODE + 25 percent."
+  optional: true
   synonyms:
   - --proc-pool
+  description: "The size of the processor pool that create_test can use. The default\
+    \ is\nMAX_MPITASKS_PER_NODE + 25 percent."
   args: !SimpleFlagArg
     name: PROC_POOL
-  optional: true
 - !Flag
-  description: "Set the wallclock limit for all tests in the suite.\nUse the variable\
-    \ CIME_GLOBAL_WALLTIME to set this for all tests."
+  optional: true
   synonyms:
   - --walltime
+  description: "Set the wallclock limit for all tests in the suite.\nUse the variable\
+    \ CIME_GLOBAL_WALLTIME to set this for all tests."
   args: !SimpleFlagArg
     name: WALLTIME
-  optional: true
 - !Flag
-  description: Force batch system to use a certain queue
+  optional: true
   synonyms:
   - -q
   - --queue
+  description: Force batch system to use a certain queue
   args: !SimpleFlagArg
     name: QUEUE
-  optional: true
 - !Flag
-  description: A file containing an ascii list of tests to run
+  optional: true
   synonyms:
   - -f
   - --testfile
+  description: A file containing an ascii list of tests to run
   args: !SimpleFlagArg
     name: TESTFILE
-  optional: true
 - !Flag
-  description: "If the --generate option is given, then an attempt to overwrite\n\
-    an existing baseline directory will raise an error. WARNING: Specifying this\n\
-    option will allow existing baseline directories to be silently overwritten."
+  optional: true
   synonyms:
   - -o
   - --allow-baseline-overwrite
+  description: "If the --generate option is given, then an attempt to overwrite\n\
+    an existing baseline directory will raise an error. WARNING: Specifying this\n\
+    option will allow existing baseline directories to be silently overwritten."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: On batch systems, wait for submitted jobs to complete
+  optional: true
   synonyms:
   - --wait
+  description: On batch systems, wait for submitted jobs to complete
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: If waiting, fail if throughput check fails
+  optional: true
   synonyms:
   - --wait-check-throughput
+  description: If waiting, fail if throughput check fails
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: If waiting, fail if memory check fails
+  optional: true
   synonyms:
   - --wait-check-memory
+  description: If waiting, fail if memory check fails
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: If waiting, ignore if namelist diffs
+  optional: true
   synonyms:
   - --wait-ignore-namelists
+  description: If waiting, ignore if namelist diffs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: If waiting, ignore if there's a memleak
+  optional: true
   synonyms:
   - --wait-ignore-memleak
+  description: If waiting, ignore if there's a memleak
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: For all tests to run with this number of processors
+  optional: true
   synonyms:
   - --force-procs
+  description: For all tests to run with this number of processors
   args: !SimpleFlagArg
     name: FORCE_PROCS
-  optional: true
 - !Flag
-  description: For all tests to run with this number of threads
+  optional: true
   synonyms:
   - --force-threads
+  description: For all tests to run with this number of threads
   args: !SimpleFlagArg
     name: FORCE_THREADS
-  optional: true
 - !Flag
-  description: Use a non-default location for input files
+  optional: true
   synonyms:
   - -i
   - --input-dir
+  description: Use a non-default location for input files
   args: !SimpleFlagArg
     name: INPUT_DIR
-  optional: true
 - !Flag
-  description: "Full pathname of an optional pes specification file. The file\ncan\
-    \ follow either the config_pes.xml or the env_mach_pes.xml format."
+  optional: true
   synonyms:
   - --pesfile
+  description: "Full pathname of an optional pes specification file. The file\ncan\
+    \ follow either the config_pes.xml or the env_mach_pes.xml format."
   args: !SimpleFlagArg
     name: PESFILE
-  optional: true
 - !Flag
-  description: Automatically retry failed tests. >0 implies --wait
+  optional: true
   synonyms:
   - --retry
+  description: Automatically retry failed tests. >0 implies --wait
   args: !SimpleFlagArg
     name: RETRY
-  optional: true
 - !Flag
-  description: Email to be used for batch notification.
+  optional: true
   synonyms:
   - --mail-user
+  description: Email to be used for batch notification.
   args: !SimpleFlagArg
     name: MAIL_USER
-  optional: true
 - !Flag
-  description: "When to send user email. Options are: never, all, begin, end, fail.\n\
-    You can specify multiple types with either comma-separated args or multiple -M\
-    \ flags.\n"
+  optional: true
   synonyms:
   - -M
   - --mail-type
+  description: "When to send user email. Options are: never, all, begin, end, fail.\n\
+    You can specify multiple types with either comma-separated args or multiple -M\
+    \ flags.\n"
   args: !SimpleFlagArg
     name: MAIL_TYPE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: create_test [-h] [-d] [-v] [-s] [--no-run] [--no-build] [--no-setup]\n\
@@ -441,3 +441,4 @@ help_text: "usage: create_test [-h] [-d] [-v] [-s] [--no-run] [--no-build] [--no
   \ can specify multiple types with either comma-separated args or multiple -M flags.\n"
 generated_using:
 - --help
+docker_image:

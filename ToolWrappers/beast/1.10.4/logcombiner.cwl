@@ -3,38 +3,38 @@ id: logcombiner.cwl
 inputs:
 - id: in_trees
   doc: this option to combine tree log files
-  type: string
+  type: string?
   inputBinding:
     prefix: -trees
 - id: in_decimal
   doc: option converts numbers from scientific to decimal notation
-  type: double
+  type: double?
   inputBinding:
     prefix: -decimal
 - id: in_burnin
   doc: number of states to be considered as 'burn-in'
-  type: long
+  type: long?
   inputBinding:
     prefix: -burnin
 - id: in_resample
   doc: the log files to this frequency (the original sampling frequency must be a
     factor of this value)
-  type: string
+  type: string?
   inputBinding:
     prefix: -resample
 - id: in_scale
   doc: scaling factor that will multiply any time units by this value
-  type: string
+  type: string?
   inputBinding:
     prefix: -scale
 - id: in_strip
   doc: out all annotations (trees only)
-  type: string
+  type: string?
   inputBinding:
     prefix: -strip
 - id: in_re_number
   doc: option renumbers output states consecutively
-  type: string
+  type: string?
   inputBinding:
     prefix: -renumber
 - id: in_by
@@ -56,6 +56,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - logcombiner

@@ -1,9 +1,9 @@
 class: CommandLineTool
 id: nextflow.bak_drop.cwl
 inputs:
-- id: in_delete_repository_taking
+- id: in_delete_repository_false
   doc: "Delete the repository without taking care of local changes\nDefault: false"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_drop
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nextflow.bak

@@ -46,6 +46,9 @@ task Krakenbuild {
       ~{if defined(shrink_block_offset) then ("--shrink-block-offset " +  '"' + shrink_block_offset + '"') else ""} \
       ~{if (work_on_disk) then "--work-on-disk" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     download_taxonomy: "Download NCBI taxonomic information"
     download_library: "Download partial library\\n(TYPE = one of \\\"archaea\\\", \\\"bacteria\\\", \\\"plasmid\\\",\\n\\\"viral\\\", \\\"human\\\")"
@@ -56,15 +59,15 @@ task Krakenbuild {
     shrink: "Shrink an existing DB to have only NEW_CT k-mers"
     standard: "Download and create default database"
     upgrade: "Upgrade an existing older database to use scrambled\\nminimizer ordering (see README for details)"
-    db: "Kraken DB/library name (mandatory except for\\n--help/--version)"
+    db: "Kraken DB/library name (mandatory except for"
     threads: "#                Number of threads (def: 1)"
     new_db: "New Kraken DB name (shrink task only; mandatory\\nfor shrink task)"
     km_er_len: "K-mer length in bp (build/shrink tasks only;\\ndef: 31)"
     minimizer_len: "Minimizer length in bp (build/shrink tasks only;\\ndef: 15)"
     jellyfish_hash_size: "Pass a specific hash size argument to jellyfish\\nwhen building database (build task only)"
     max_db_size: "Shrink the DB before full build, making sure\\ndatabase and index together use <= SIZE gigabytes\\n(build task only)"
-    use_wget: "Use wget for downloading instead of RSYNC; used with\\n--download-library/--standard"
-    shrink_block_offset: "When shrinking, select the k-mer that is NUM\\npositions from the end of a block of k-mers\\n(default: 1)"
+    use_wget: "Use wget for downloading instead of RSYNC; used with"
+    shrink_block_offset: "When shrinking, select the k-mer that is NUM"
     work_on_disk: "Perform most operations on disk rather than in\\nRAM (will slow down build in most cases)\\n"
     var_task: ""
   }

@@ -1,0 +1,115 @@
+!Command
+command:
+- ggd
+- get-files
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --channel
+  description: "The ggd channel of the recipe to find. (Default =\ngenomics)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      genomics:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --species
+  description: "(Optional) species recipe is for. Use '*' for any\nspecies"
+  args: !ChoiceFlagArg
+    choices: !!set
+      Danio_rerio:
+      Canis_familiaris:
+      Mus_musculus:
+      Homo_sapiens:
+      Drosophila_melanogaster:
+      meta-recipe:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome-build
+  description: "(Optional) genome build the recipe is for. Use '*' for\nany genome\
+    \ build."
+  args: !ChoiceFlagArg
+    choices: !!set
+      GRCz11:
+      hg19:
+      dm6:
+      danRer11:
+      GRCz10:
+      canFam3:
+      hg38:
+      mm9:
+      mm10:
+      GRCh37:
+      danRer10:
+      dm3:
+      GRCh38:
+      meta-recipe:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pattern
+  description: "(Optional) pattern to match the name of the file\ndesired. To list\
+    \ all files for a ggd package, do not\nuse the -p option"
+  args: !SimpleFlagArg
+    name: PATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  description: "(Optional) The name or the full directory path to an\nconda environment\
+    \ where a ggd recipe is stored. (Only\nneeded if not getting file paths for files\
+    \ in the\ncurrent conda environment)\n"
+  args: !SimpleFlagArg
+    name: PREFIX
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: "(Optional) pattern to match the version of the file\ndesired. Use\
+    \ '*' for any version"
+  args: !SimpleFlagArg
+    name: VERSION
+help_text: "usage: ggd get-files [-h] [-c {genomics}]\n                     [-s {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus,meta-recipe}]\n\
+  \                     [-g {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,meta-recipe,mm10,mm9}]\n\
+  \                     [-v VERSION] [-p PATTERN] [--prefix PREFIX]\n            \
+  \         name\n\nGet a list of file(s) for a specific installed ggd package\n\n\
+  positional arguments:\n  name                  recipe name\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -c {genomics}, --channel\
+  \ {genomics}\n                        The ggd channel of the recipe to find. (Default\
+  \ =\n                        genomics)\n  -s {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus,meta-recipe},\
+  \ --species {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus,meta-recipe}\n\
+  \                        (Optional) species recipe is for. Use '*' for any\n   \
+  \                     species\n  -g {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,meta-recipe,mm10,mm9},\
+  \ --genome-build {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,meta-recipe,mm10,mm9}\n\
+  \                        (Optional) genome build the recipe is for. Use '*' for\n\
+  \                        any genome build.\n  -v VERSION, --version VERSION\n  \
+  \                      (Optional) pattern to match the version of the file\n   \
+  \                     desired. Use '*' for any version\n  -p PATTERN, --pattern\
+  \ PATTERN\n                        (Optional) pattern to match the name of the file\n\
+  \                        desired. To list all files for a ggd package, do not\n\
+  \                        use the -p option\n  --prefix PREFIX       (Optional) The\
+  \ name or the full directory path to an\n                        conda environment\
+  \ where a ggd recipe is stored. (Only\n                        needed if not getting\
+  \ file paths for files in the\n                        current conda environment)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ggd:1.1.2--pyh3252c3a_0

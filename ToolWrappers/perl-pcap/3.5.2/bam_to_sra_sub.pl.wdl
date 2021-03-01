@@ -3,33 +3,27 @@ version 1.0
 task BamToSraSubpl {
   input {
     Directory? outdir
-    Boolean? g_gnos_upload
+    Boolean? gnos_upload_server
     Boolean? study_reference_repository
     Boolean? type
     Boolean? man
-    String? o
-    String? s
-    Boolean? m
-    Boolean? var_8
-    Boolean? t
-    Boolean? g
+    Boolean? var_5
     String brief
-    File var_12
+    File var_7
     Directory folder
-    String var_14
-    String var_15
+    String var_9
+    String var_10
     String only
     String optional
     String other
-    String var_19
-    String var_20
+    String var_14
+    String var_15
     String https
-    String my_donor_slash_tumour_slash
-    String var_23
+    String var_17
     String list
     String parameters
     String reference
-    String var_27
+    String var_21
     String to
     String upload
     String can
@@ -42,8 +36,8 @@ task BamToSraSubpl {
     String repository
     String result
     String encoded
-    String var_40
-    File var_41
+    String var_34
+    File var_35
     String names
     String read_group
     String lb
@@ -52,22 +46,21 @@ task BamToSraSubpl {
   command <<<
     bam_to_sra_sub_pl \
       ~{brief} \
-      ~{var_12} \
+      ~{var_7} \
       ~{folder} \
-      ~{var_14} \
-      ~{var_15} \
+      ~{var_9} \
+      ~{var_10} \
       ~{only} \
       ~{optional} \
       ~{other} \
-      ~{var_19} \
-      ~{var_20} \
+      ~{var_14} \
+      ~{var_15} \
       ~{https} \
-      ~{my_donor_slash_tumour_slash} \
-      ~{var_23} \
+      ~{var_17} \
       ~{list} \
       ~{parameters} \
       ~{reference} \
-      ~{var_27} \
+      ~{var_21} \
       ~{to} \
       ~{upload} \
       ~{can} \
@@ -80,53 +73,45 @@ task BamToSraSubpl {
       ~{repository} \
       ~{result} \
       ~{encoded} \
-      ~{var_40} \
-      ~{var_41} \
+      ~{var_34} \
+      ~{var_35} \
       ~{names} \
       ~{read_group} \
       ~{lb} \
       ~{tag_dot} \
       ~{if (outdir) then "-outdir" else ""} \
-      ~{if (g_gnos_upload) then "-gnos" else ""} \
+      ~{if (gnos_upload_server) then "-gnos" else ""} \
       ~{if (study_reference_repository) then "-study" else ""} \
       ~{if (type) then "-type" else ""} \
       ~{if (man) then "-man" else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
-      ~{if (m) then "-m" else ""} \
-      ~{if (var_8) then "-help" else ""} \
-      ~{if (t) then "-t" else ""} \
-      ~{if (g) then "-g" else ""}
+      ~{if (var_5) then "-help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    outdir: "-o   Folder to output result to."
-    g_gnos_upload: "-g   GNOS upload server, e.g.\\nhttps://gtrepo-ebi.annailabs.com"
-    study_reference_repository: "-s   Study reference in repository [icgc_pancancer]"
-    type: "-t   Only required if not encoded in readgroup LB tag.\\n[WGS|WXS|RNA-seq]\\nSee '-m' for details"
-    man: "-m   Full documentation."
-    o: ""
-    s: ""
-    m: ""
-    var_8: ""
-    t: ""
-    g: ""
+    outdir: "Folder to output result to."
+    gnos_upload_server: "GNOS upload server, e.g.\\nhttps://gtrepo-ebi.annailabs.com"
+    study_reference_repository: "Study reference in repository [icgc_pancancer]"
+    type: "Only required if not encoded in readgroup LB tag.\\n[WGS|WXS|RNA-seq]\\nSee '-m' for details"
+    man: "Full documentation."
+    var_5: ""
     brief: ""
-    var_12: ""
+    var_7: ""
     folder: ""
-    var_14: ""
-    var_15: ""
+    var_9: ""
+    var_10: ""
     only: ""
     optional: ""
     other: ""
-    var_19: ""
-    var_20: ""
+    var_14: ""
+    var_15: ""
     https: ""
-    my_donor_slash_tumour_slash: ""
-    var_23: ""
+    var_17: ""
     list: ""
     parameters: ""
     reference: ""
-    var_27: ""
+    var_21: ""
     to: ""
     upload: ""
     can: ""
@@ -139,8 +124,8 @@ task BamToSraSubpl {
     repository: ""
     result: ""
     encoded: ""
-    var_40: ""
-    var_41: ""
+    var_34: ""
+    var_35: ""
     names: ""
     read_group: ""
     lb: ""

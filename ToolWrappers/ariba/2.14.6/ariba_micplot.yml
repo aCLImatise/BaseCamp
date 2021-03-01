@@ -1,0 +1,309 @@
+!Command
+command:
+- ariba
+- micplot
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: prepareref_dir
+  description: Name of output directory when "ariba prepareref" was
+- !Positional
+  optional: false
+  position: 1
+  name: run
+  description: antibiotic            Antibiotic name. Must exactly match a column
+    from the
+- !Positional
+  optional: false
+  position: 0
+  name: mic_file
+  description: "File containing MIC data for each sample and one or\nmore antibiotics"
+- !Positional
+  optional: false
+  position: 1
+  name: summary_file
+  description: File made by running "ariba summary"
+- !Positional
+  optional: false
+  position: 2
+  name: outprefix
+  description: Prefix of output files
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --out_format
+  description: "Output format of image file. Use anything that\nmatplotlib can save\
+    \ to, eg pdf or png [pdf]"
+  args: !SimpleFlagArg
+    name: OUT_FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --main_title
+  description: "\"title in quotes\"\nMain title of plot. Default is to use the antibiotic\n\
+    name"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --plot_height
+  description: Height of plot in inches [7]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --plot_width
+  description: Width of plot in inches [7]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --use_hets
+  description: "How to deal with HET snps. Choose from yes,no,exclude.\nyes: count\
+    \ a het SNP as present. no: do not count a\nhet SNP as present. exclude: completely\
+    \ remove any\nsample with any het SNP [yes]"
+  args: !ChoiceFlagArg
+    choices: !!set
+      no:
+      exclude:
+      yes:
+- !Flag
+  optional: true
+  synonyms:
+  - --interrupted
+  description: "Include interrupted genes (as in the assembled column\nof the ariba\
+    \ summary files)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_samples
+  description: "Minimum number of samples in each column required to\ninclude in plot\
+    \ [1]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --no_combinations
+  description: "Do not show combinations of variants. Instead separate\nout into one\
+    \ box/violin plot per variant."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --panel_heights
+  description: ",height2\nTwo integers that determine relative height of top and\n\
+    bottom plots. eg 5,1 means ratio of 5:1 between top\nand bottom panel heights\
+    \ [9,2]"
+  args: !SimpleFlagArg
+    name: height1
+- !Flag
+  optional: true
+  synonyms:
+  - --panel_widths
+  description: ",width2\nTwo integers that determine relative width of plots\nand\
+    \ space used by counts legend. eg 5,1 means ratio of\n5:1 between top and bottom\
+    \ panel widths. Only applies\nwhen plotting points and --point_size 0 [5,1]"
+  args: !SimpleFlagArg
+    name: width1
+- !Flag
+  optional: true
+  synonyms:
+  - --count_legend_x
+  description: "Control x position of counts legend when plotting\npoints and --point_size\
+    \ 0 [-2]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --p_cutoff
+  description: p-value cutoff for Mann-Whitney tests [0.05]
+  args: !SimpleFlagArg
+    name: P_CUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - --xkcd
+  description: Best used with xkcd font installed ;)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --colourmap
+  description: "name\nColours to use. See\nhttp://matplotlib.org/users/colormaps.html\
+    \ [Accent]"
+  args: !SimpleFlagArg
+    name: colourmap
+- !Flag
+  optional: true
+  synonyms:
+  - --number_of_colours
+  description: "Number of colours in plot. 0:same number as columns in\nthe plot.\
+    \ 1:all black. >1: take the first N colours\nfrom the colourmap specified by --colourmap\
+    \ and cycle\nthem [0]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --colour_skip
+  description: ",FLOAT2\nIf using a continuous colourmap, --colour_skip a,b\n(where\
+    \ 0 <= a < b <= 1) will skip the range between a\nand b. Useful for excluding\
+    \ near-white colours"
+  args: !SimpleFlagArg
+    name: FLOAT1
+- !Flag
+  optional: true
+  synonyms:
+  - --plot_types
+  description: ",type2,...\nTypes of plots to make, separated by commas. Choose\n\
+    from violin,point [violin,point]"
+  args: !SimpleFlagArg
+    name: type1
+- !Flag
+  optional: true
+  synonyms:
+  - --hlines
+  description: ",float2,...\nComma-separated list of positions at which to draw\n\
+    horizontal lines. Default is to draw no lines."
+  args: !SimpleFlagArg
+    name: float1
+- !Flag
+  optional: true
+  synonyms:
+  - --jitter_width
+  description: Jitter width option when plotting points [0.1]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --log_y
+  description: "Base of log applied to y values. Set to zero to not\nlog [2]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --point_size
+  description: "Size of points when --plot_types includes point. If\nzero, will group\
+    \ points and size them proportional to\nthe group size [4]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --point_scale
+  description: "Scale point sizes when --point_size 0. All point sizes\nare multiplied\
+    \ by this number. Useful if you have\nlarge data set [1]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --violin_width
+  description: Width of violins [0.75]
+  args: !SimpleFlagArg
+    name: VIOLIN_WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - --dot_size
+  description: Size of dots in lower part of plot [100]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --dot_outline
+  description: "Black outline around all dots (whether coloured or\nnot) in lower\
+    \ part of plots"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dot_y_text_size
+  description: "Text size of labels [7]\n"
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: ariba prepareref [options] <prepareref_dir> <antibiotic> <MIC file>\
+  \ <summary file> <outprefix>\n\nMakes a violin and scatter plot of MIC per variant\
+  \ in the summary file\n\npositional arguments:\n  prepareref_dir        Name of\
+  \ output directory when \"ariba prepareref\" was\n                        run\n\
+  \  antibiotic            Antibiotic name. Must exactly match a column from the\n\
+  \                        MIC file\n  mic_file              File containing MIC data\
+  \ for each sample and one or\n                        more antibiotics\n  summary_file\
+  \          File made by running \"ariba summary\"\n  outprefix             Prefix\
+  \ of output files\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n\nGeneral options:\n  --out_format OUT_FORMAT\n            \
+  \            Output format of image file. Use anything that\n                  \
+  \      matplotlib can save to, eg pdf or png [pdf]\n  --main_title \"title in quotes\"\
+  \n                        Main title of plot. Default is to use the antibiotic\n\
+  \                        name\n  --plot_height FLOAT   Height of plot in inches\
+  \ [7]\n  --plot_width FLOAT    Width of plot in inches [7]\n  --use_hets {yes,no,exclude}\n\
+  \                        How to deal with HET snps. Choose from yes,no,exclude.\n\
+  \                        yes: count a het SNP as present. no: do not count a\n \
+  \                       het SNP as present. exclude: completely remove any\n   \
+  \                     sample with any het SNP [yes]\n  --interrupted         Include\
+  \ interrupted genes (as in the assembled column\n                        of the\
+  \ ariba summary files)\n  --min_samples INT     Minimum number of samples in each\
+  \ column required to\n                        include in plot [1]\n  --no_combinations\
+  \     Do not show combinations of variants. Instead separate\n                 \
+  \       out into one box/violin plot per variant.\n  --panel_heights height1,height2\n\
+  \                        Two integers that determine relative height of top and\n\
+  \                        bottom plots. eg 5,1 means ratio of 5:1 between top\n \
+  \                       and bottom panel heights [9,2]\n  --panel_widths width1,width2\n\
+  \                        Two integers that determine relative width of plots\n \
+  \                       and space used by counts legend. eg 5,1 means ratio of\n\
+  \                        5:1 between top and bottom panel widths. Only applies\n\
+  \                        when plotting points and --point_size 0 [5,1]\n  --count_legend_x\
+  \ FLOAT\n                        Control x position of counts legend when plotting\n\
+  \                        points and --point_size 0 [-2]\n  --p_cutoff P_CUTOFF \
+  \  p-value cutoff for Mann-Whitney tests [0.05]\n  --xkcd                Best used\
+  \ with xkcd font installed ;)\n\nColour options:\n  --colourmap colourmap name\n\
+  \                        Colours to use. See\n                        http://matplotlib.org/users/colormaps.html\
+  \ [Accent]\n  --number_of_colours INT\n                        Number of colours\
+  \ in plot. 0:same number as columns in\n                        the plot. 1:all\
+  \ black. >1: take the first N colours\n                        from the colourmap\
+  \ specified by --colourmap and cycle\n                        them [0]\n  --colour_skip\
+  \ FLOAT1,FLOAT2\n                        If using a continuous colourmap, --colour_skip\
+  \ a,b\n                        (where 0 <= a < b <= 1) will skip the range between\
+  \ a\n                        and b. Useful for excluding near-white colours\n\n\
+  Upper plot options:\n  --plot_types type1,type2,...\n                        Types\
+  \ of plots to make, separated by commas. Choose\n                        from violin,point\
+  \ [violin,point]\n  --hlines float1,float2,...\n                        Comma-separated\
+  \ list of positions at which to draw\n                        horizontal lines.\
+  \ Default is to draw no lines.\n  --jitter_width FLOAT  Jitter width option when\
+  \ plotting points [0.1]\n  --log_y FLOAT         Base of log applied to y values.\
+  \ Set to zero to not\n                        log [2]\n  --point_size FLOAT    Size\
+  \ of points when --plot_types includes point. If\n                        zero,\
+  \ will group points and size them proportional to\n                        the group\
+  \ size [4]\n  --point_scale FLOAT   Scale point sizes when --point_size 0. All point\
+  \ sizes\n                        are multiplied by this number. Useful if you have\n\
+  \                        large data set [1]\n  --violin_width VIOLIN_WIDTH\n   \
+  \                     Width of violins [0.75]\n\nLower plot options:\n  --dot_size\
+  \ FLOAT      Size of dots in lower part of plot [100]\n  --dot_outline         Black\
+  \ outline around all dots (whether coloured or\n                        not) in\
+  \ lower part of plots\n  --dot_y_text_size INT\n                        Text size\
+  \ of labels [7]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ariba:2.14.6--py36hf0b53f7_0

@@ -16,6 +16,9 @@ task NGSDImportHGNC {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "HGNC flat file (download ftp://ftp.ebi.ac.uk/pub/databases/genenames/hgnc/tsv/hgnc_complete_set.txt)"
     test: "Uses the test database instead of on the production database.\\nDefault value: 'false'"

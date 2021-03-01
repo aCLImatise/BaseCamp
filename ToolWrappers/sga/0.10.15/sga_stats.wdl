@@ -26,6 +26,9 @@ task SgaStats {
       ~{if (km_er_distribution) then "--kmer-distribution" else ""} \
       ~{if (no_overlap) then "--no-overlap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     prefix: "use PREFIX for the names of the index files (default: prefix of the input file)"

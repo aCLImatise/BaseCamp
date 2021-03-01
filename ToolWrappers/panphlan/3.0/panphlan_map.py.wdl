@@ -30,6 +30,9 @@ task PanphlanMappy {
       ~{if (fast_a) then "--fasta" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metagenomic_sample_map: "Metagenomic sample to map"
     indexes: "Bowtie2 indexes path and file prefix"

@@ -38,6 +38,9 @@ task CsvtkSort {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_case: "ignore-case"
     keys: "keys (multiple values supported). sort type supported, \\\"N\\\" for natural order, \\\"n\\\" for number, \\\"u\\\" for user-defined order and \\\"r\\\" for reverse. e.g., \\\"-k 1\\\" or \\\"-k A:r\\\" or \\\"\\\"-k 1:nr -k 2\\\" (default [1])"

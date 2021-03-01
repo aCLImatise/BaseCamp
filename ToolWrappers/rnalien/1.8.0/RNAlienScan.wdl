@@ -44,6 +44,9 @@ task RNAlienScan {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fast_a_file_path: "Path to input fasta file"
     input_alignment_file_path: "Path to input alignment file"

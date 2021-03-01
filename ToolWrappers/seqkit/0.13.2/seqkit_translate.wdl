@@ -40,6 +40,9 @@ task SeqkitTranslate {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     allow_unknown_codon: "translate unknown code to 'X'. And you may not use flag --trim which removes 'X'"
     clean: "change all STOP codon positions from the '*' character to 'X' (an unknown residue)"

@@ -8,6 +8,9 @@ task Multilign {
     multilign \
       ~{configuration_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     configuration_file: ""
   }

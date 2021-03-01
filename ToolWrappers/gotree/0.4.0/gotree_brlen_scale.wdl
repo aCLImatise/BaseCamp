@@ -18,6 +18,9 @@ task GotreeBrlenScale {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     factor: "Branch length scaling factor (default 1)"
     scaled_length_output: "Scaled length output tree file (default \\\"stdout\\\")"

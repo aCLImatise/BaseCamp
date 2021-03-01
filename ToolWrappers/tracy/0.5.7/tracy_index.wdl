@@ -10,6 +10,9 @@ task TracyIndex {
       ~{genome_dot_fado_tgz} \
       ~{if (arg_output_file) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_output_file: "[ --output ] arg (=\\\"genome.fm9\\\")  output file"
     genome_dot_fado_tgz: ""

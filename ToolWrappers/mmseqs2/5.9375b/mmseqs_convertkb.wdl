@@ -16,6 +16,9 @@ task MmseqsConvertkb {
       ~{if (kb_columns) then "--kb-columns" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mapping_file: "specify a file that translates the keys of a DB to new keys, TSV format"
     kb_columns: "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16        list of indices of UniprotKB columns to be extracted"

@@ -22,6 +22,9 @@ task Abiview {
       ~{if (string_base_graphs) then "-bases" else ""} \
       ~{if (separate) then "-separate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graph: "xygraph    [$EMBOSS_GRAPHICS value, or png] Graph type\\n(ps, hpgl, hp7470, hp7580, meta, cps, tek,\\ntekt, none, data, png, gif, svg)"
     start_base: "integer    [0] First base to report or display (Integer\\n0 or more)"

@@ -34,6 +34,9 @@ task RtgChildsim {
       ~{if defined(sex) then ("--sex " +  '"' + sex + '"') else ""} \
       ~{if (show_crossovers) then "--show-crossovers" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     father: "name of the existing sample to use as the father"
     input_vcf_containing: "input VCF containing parent variants"

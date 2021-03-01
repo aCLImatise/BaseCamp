@@ -4,115 +4,115 @@ command:
 - learnGraph
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: input_object
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: output_object
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: 'Format of input object. [Default: cds3]'
+  optional: true
   synonyms:
   - -f
   - --input-object-format
+  description: 'Format of input object. [Default: cds3]'
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: 'Format of output object. [Default: cds3]'
+  optional: true
   synonyms:
   - -F
   - --output-object-format
+  description: 'Format of output object. [Default: cds3]'
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: Print introspective information of the output object.
+  optional: true
   synonyms:
   - -I
   - --introspective
+  description: Print introspective information of the output object.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-partition
   description: When this option is set, learn a single tree structure for all the
     partitions. If not set, use the partitions calculated when clustering and identify
     disjoint graphs in each.
-  synonyms:
-  - --no-partition
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-close-loop
   description: When this option is set, skip the additional run of loop closing after
     computing the principal graphs to identify potential loop structure in the data
     space.
-  synonyms:
-  - --no-close-loop
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --euclidean-distance-ratio
   description: 'The maximal ratio between the euclidean distance of two tip nodes
     in the spanning tree inferred from SimplePPT algorithm and that of the maximum
     distance between any connecting points on the spanning tree allowed to be connected
     during the loop closure procedure. [Default: 1]'
-  synonyms:
-  - --euclidean-distance-ratio
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --geodesic-distance-ratio
   description: The minimal ratio between the geodestic distance of two tip nodes in
     the spanning tree inferred from SimplePPT algorithm and that of the length of
     the diameter path on the spanning tree allowed to be connected during the loop
     closure procedure. (Both euclidean_distance_ratio and geodestic_distance_ratio
     need to be satisfied to introduce the edge for loop closure.)
-  synonyms:
-  - --geodesic-distance-ratio
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: When this option is set, perform an additional run of graph pruning
-    to remove smaller insignificant branches.
+  optional: true
   synonyms:
   - --no-prune-graph
+  description: When this option is set, perform an additional run of graph pruning
+    to remove smaller insignificant branches.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'The minimal length of the diameter path for a branch to be preserved
-    during graph pruning procedure. [Default: 10]'
+  optional: true
   synonyms:
   - --minimal-branch-len
+  description: 'The minimal length of the diameter path for a branch to be preserved
+    during graph pruning procedure. [Default: 10]'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: When this option is set, perform orthogonal projection for cells corresponding
-    to the tip principal points.
+  optional: true
   synonyms:
   - --orthogonal-proj-tip
+  description: When this option is set, perform orthogonal projection for cells corresponding
+    to the tip principal points.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Emit verbose output.
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: Emit verbose output.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "Show this help message and exit\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: "Show this help message and exit\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: monocle3 learnGraph [options] <input_object> <output_object>\n\n\
@@ -145,3 +145,4 @@ help_text: "Usage: monocle3 learnGraph [options] <input_object> <output_object>\
   Emit verbose output.\n\n\t-h, --help\n\t\tShow this help message and exit\n\n\n"
 generated_using:
 - --help
+docker_image:

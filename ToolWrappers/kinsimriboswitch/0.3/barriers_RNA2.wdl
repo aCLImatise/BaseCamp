@@ -52,6 +52,9 @@ task BarriersRNA2 {
       ~{if (sb_map) then "--sbmap" else ""} \
       ~{if (trans) then "--trans" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     full_help: "Print help, including hidden options, and exit"
     quiet: "be quiet, inhibit PS output  (default=off)"

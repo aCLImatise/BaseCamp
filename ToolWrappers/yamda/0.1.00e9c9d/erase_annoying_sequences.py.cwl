@@ -3,12 +3,12 @@ id: erase_annoying_sequences.py.cwl
 inputs:
 - id: in_input
   doc: Input FASTA file
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: Output FASTA file of negative sequences
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output FASTA file of negative sequences
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - erase_annoying_sequences.py

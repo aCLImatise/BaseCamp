@@ -12,6 +12,9 @@ task NfcoreBumpversion {
       ~{new_version} \
       ~{if (next_flow) then "--nextflow" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     next_flow: "Bump required nextflow version instead of pipeline version"
     pipeline_directory: ""

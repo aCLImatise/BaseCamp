@@ -8,6 +8,9 @@ task Refseqget {
     refseqget \
       ~{if (ref_sequence) then "-refsequence" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_sequence: ": enter refseq value: Error: Unable to get reply from user - end of standard input"
   }

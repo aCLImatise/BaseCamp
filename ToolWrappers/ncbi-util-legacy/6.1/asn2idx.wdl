@@ -20,6 +20,9 @@ task Asn2idx {
       ~{if (bioseqsets_binary_optionaldefault) then "-b" else ""} \
       ~{if (recurse_optionaldefault_f) then "-t" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_to_files: "Path to Files [String]"
     path_results_optional: "Path for Results [String]  Optional"

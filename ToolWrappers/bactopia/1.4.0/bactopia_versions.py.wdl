@@ -2,7 +2,7 @@ version 1.0
 
 task Bactopiaversionspy {
   input {
-    Directory? directory_where_stored
+    Directory? directory_where_repository
     String var_1
     String versions
   }
@@ -10,10 +10,13 @@ task Bactopiaversionspy {
     bactopia_versions_py \
       ~{var_1} \
       ~{versions} \
-      ~{if defined(directory_where_stored) then ("--bactopia " +  '"' + directory_where_stored + '"') else ""}
+      ~{if defined(directory_where_repository) then ("--bactopia " +  '"' + directory_where_repository + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    directory_where_stored: "Directory where Bactopia repository is stored."
+    directory_where_repository: "Directory where Bactopia repository is stored."
     var_1: ""
     versions: ""
   }

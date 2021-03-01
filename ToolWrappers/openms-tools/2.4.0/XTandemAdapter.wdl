@@ -56,6 +56,9 @@ task XTandemAdapter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                        Input file containing MS2 spectra (valid formats: 'mzML')"
     out: "Output file containing search results (valid formats: 'idXML')"

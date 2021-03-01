@@ -10,6 +10,9 @@ task PyfastxStatFastx {
       ~{py_fast_x} \
       ~{var_command}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     py_fast_x: ""
     var_command: ""

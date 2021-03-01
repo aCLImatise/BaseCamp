@@ -8,6 +8,9 @@ task Newcpgseek {
     newcpgseek \
       ~{if (score) then "-score" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     score: "integer    [17] CpG score (Integer from 1 to 200)"
   }

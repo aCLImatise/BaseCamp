@@ -1,0 +1,147 @@
+!Command
+command:
+- hicQuickQC
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sam
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: files
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: two
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --restrictionCutFile
+  description: file [BED file ...]
+  args: !SimpleFlagArg
+    name: BED
+- !Flag
+  optional: true
+  synonyms:
+  - --samFiles
+  description: "sam files two sam files, -s two sam files two sam files\nThe two PE\
+    \ alignment sam files to process. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: two
+- !Flag
+  optional: true
+  synonyms:
+  - --QCfolder
+  description: "Path of folder to save the quality control data of the\nmatrix. The\
+    \ log files produced this way can be loaded\ninto `hicQC` in order to compare\
+    \ the quality of\nmultiple Hi-C libraries. (default: None)"
+  args: !SimpleFlagArg
+    name: FOLDER
+- !Flag
+  optional: true
+  synonyms:
+  - --restrictionSequence
+  - -seq
+  description: "Sequence of the restriction site, if multiple are\nused, please list\
+    \ them space seperated. If a dangling\nsequence is listed at the same time, please\
+    \ preserve\nthe same order. (default: None)"
+  args: !RepeatFlagArg
+    name: RESTRICTIONSEQUENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --danglingSequence
+  description: "Sequence left by the restriction enzyme after cutting,\nif multiple\
+    \ are used, please list them space seperated\nand preserve the order. Each restriction\
+    \ enzyme\nrecognizes a different DNA sequence and, after\ncutting, they leave\
+    \ behind a specific \"sticky\" end or\ndangling end sequence. For example, for\
+    \ HindIII the\nrestriction site is AAGCTT and the dangling end is\nAGCT. For DpnII,\
+    \ the restriction site and dangling end\nsequence are the same: GATC. This information\
+    \ is\neasily found on the description of the restriction\nenzyme. The dangling\
+    \ sequence is used to classify and\nreport reads whose 5' end starts with such\
+    \ sequence as\ndangling-end reads. A significant portion of dangling-\nend reads\
+    \ in a sample are indicative of a problem with\nthe re-ligation step of the protocol.\
+    \ (default: None)"
+  args: !RepeatFlagArg
+    name: DANGLINGSEQUENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --lines
+  description: "Number of lines to consider for the QC test run\n(Default: 1000000)."
+  args: !SimpleFlagArg
+    name: LINES
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicQuickQC --samFiles two sam files two sam files --QCfolder FOLDER\n\
+  \                  --restrictionCutFile BED file [BED file ...]\n              \
+  \    --restrictionSequence RESTRICTIONSEQUENCE\n                  [RESTRICTIONSEQUENCE\
+  \ ...] --danglingSequence\n                  DANGLINGSEQUENCE [DANGLINGSEQUENCE\
+  \ ...] [--lines LINES]\n                  [--help] [--version]\n\nThe tool hicQuickQC\
+  \ considers the first n lines of two bam/sam files to get a\nfirst estimate of the\
+  \ quality of the data. It is highly recommended to set the\nrestriction enzyme and\
+  \ dangling end parameter to get a good quality report.\n\nRequired arguments:\n\
+  \  --samFiles two sam files two sam files, -s two sam files two sam files\n    \
+  \                    The two PE alignment sam files to process. (default:\n    \
+  \                    None)\n  --QCfolder FOLDER     Path of folder to save the quality\
+  \ control data of the\n                        matrix. The log files produced this\
+  \ way can be loaded\n                        into `hicQC` in order to compare the\
+  \ quality of\n                        multiple Hi-C libraries. (default: None)\n\
+  \  --restrictionCutFile BED file [BED file ...], -rs BED file [BED file ...]\n \
+  \                       BED file(s) with all restriction cut places (output of\n\
+  \                        \"findRestSite\" command). Should contain only mappable\n\
+  \                        restriction sites. If given, the bins are set to match\n\
+  \                        the restriction fragments (i.e. the region between one\n\
+  \                        restriction site and the next). Alternatively, a fixed\n\
+  \                        binSize can be defined instead. However, either\n     \
+  \                   binSize or restrictionCutFile must be defined. To use\n    \
+  \                    more than one restriction enzyme, generate for each\n     \
+  \                   one a restrictionCutFile and list them space\n             \
+  \           seperated. (default: None)\n  --restrictionSequence RESTRICTIONSEQUENCE\
+  \ [RESTRICTIONSEQUENCE ...], -seq RESTRICTIONSEQUENCE [RESTRICTIONSEQUENCE ...]\n\
+  \                        Sequence of the restriction site, if multiple are\n   \
+  \                     used, please list them space seperated. If a dangling\n  \
+  \                      sequence is listed at the same time, please preserve\n  \
+  \                      the same order. (default: None)\n  --danglingSequence DANGLINGSEQUENCE\
+  \ [DANGLINGSEQUENCE ...]\n                        Sequence left by the restriction\
+  \ enzyme after cutting,\n                        if multiple are used, please list\
+  \ them space seperated\n                        and preserve the order. Each restriction\
+  \ enzyme\n                        recognizes a different DNA sequence and, after\n\
+  \                        cutting, they leave behind a specific \"sticky\" end or\n\
+  \                        dangling end sequence. For example, for HindIII the\n \
+  \                       restriction site is AAGCTT and the dangling end is\n   \
+  \                     AGCT. For DpnII, the restriction site and dangling end\n \
+  \                       sequence are the same: GATC. This information is\n     \
+  \                   easily found on the description of the restriction\n       \
+  \                 enzyme. The dangling sequence is used to classify and\n      \
+  \                  report reads whose 5' end starts with such sequence as\n    \
+  \                    dangling-end reads. A significant portion of dangling-\n  \
+  \                      end reads in a sample are indicative of a problem with\n\
+  \                        the re-ligation step of the protocol. (default: None)\n\
+  \nOptional arguments:\n  --lines LINES         Number of lines to consider for the\
+  \ QC test run\n                        (Default: 1000000).\n  --help, -h       \
+  \     show this help message and exit\n  --version             show program's version\
+  \ number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

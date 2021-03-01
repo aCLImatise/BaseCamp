@@ -8,6 +8,9 @@ task SeqmagickHelp {
     seqmagick help \
       ~{action}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     action: "optional arguments:"
   }

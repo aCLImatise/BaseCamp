@@ -10,6 +10,9 @@ task DeepacExplainDetails {
       ~{deep_ac} \
       ~{explain}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     deep_ac: ""
     explain: ""

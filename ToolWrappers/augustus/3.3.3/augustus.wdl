@@ -2,7 +2,14 @@ version 1.0
 
 task Augustus {
   input {
-    Int? max_tracks
+    String? strand
+    String? gene_model
+    String? single_strand
+    File? hints_file
+    File? augustus_config_path
+    String? alternatives_from_evidence
+    String? alternatives_from_sampling
+    Int? min_mean_exon_intron_prob
     File? protein_profile
     String? progress
     Int? gff_three
@@ -12,20 +19,21 @@ task Augustus {
     String? no_prediction
     String? unique_geneid
     String? species
-    String partial
-    String intron_less
-    String complete
-    String at_least_one
-    String exactly_one
+    String? parameters
+    String query_filename
   }
   command <<<
     augustus \
-      ~{partial} \
-      ~{intron_less} \
-      ~{complete} \
-      ~{at_least_one} \
-      ~{exactly_one} \
-      ~{if defined(max_tracks) then ("--maxtracks " +  '"' + max_tracks + '"') else ""} \
+      ~{parameters} \
+      ~{query_filename} \
+      ~{if defined(strand) then ("--strand " +  '"' + strand + '"') else ""} \
+      ~{if defined(gene_model) then ("--genemodel " +  '"' + gene_model + '"') else ""} \
+      ~{if defined(single_strand) then ("--singlestrand " +  '"' + single_strand + '"') else ""} \
+      ~{if defined(hints_file) then ("--hintsfile " +  '"' + hints_file + '"') else ""} \
+      ~{if defined(augustus_config_path) then ("--AUGUSTUS_CONFIG_PATH " +  '"' + augustus_config_path + '"') else ""} \
+      ~{if defined(alternatives_from_evidence) then ("--alternatives-from-evidence " +  '"' + alternatives_from_evidence + '"') else ""} \
+      ~{if defined(alternatives_from_sampling) then ("--alternatives-from-sampling " +  '"' + alternatives_from_sampling + '"') else ""} \
+      ~{if defined(min_mean_exon_intron_prob) then ("--minmeanexonintronprob " +  '"' + min_mean_exon_intron_prob + '"') else ""} \
       ~{if defined(protein_profile) then ("--proteinprofile " +  '"' + protein_profile + '"') else ""} \
       ~{if defined(progress) then ("--progress " +  '"' + progress + '"') else ""} \
       ~{if defined(gff_three) then ("--gff3 " +  '"' + gff_three + '"') else ""} \
@@ -36,22 +44,29 @@ task Augustus {
       ~{if defined(unique_geneid) then ("--uniqueGeneId " +  '"' + unique_geneid + '"') else ""} \
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    max_tracks: "For a description of these parameters see section 4 of README.TXT."
+    strand: "or --strand=backward"
+    gene_model: "or --genemodel=exactlyone\\npartial      : allow prediction of incomplete genes at the sequence boundaries (default)\\nintronless   : only predict single-exon genes like in prokaryotes and some eukaryotes\\ncomplete     : only predict complete genes\\natleastone   : predict at least one complete gene\\nexactlyone   : predict exactly one complete gene"
+    single_strand: "predict genes independently on each strand, allow overlapping genes on opposite strands\\nThis option is turned off by default."
+    hints_file: "When this option is used the prediction considering hints (extrinsic information) is turned on.\\nhintsfilename contains the hints in gff format."
+    augustus_config_path: "path to config directory (if not specified as environment variable)"
+    alternatives_from_evidence: "/false\\nreport alternative transcripts when they are suggested by hints"
+    alternatives_from_sampling: "/false\\nreport alternative transcripts generated through probabilistic sampling"
+    min_mean_exon_intron_prob: "For a description of these parameters see section 4 of README.TXT."
     protein_profile: "When this option is used the prediction will consider the protein profile provided as parameter.\\nThe protein profile extension is described in section 7 of README.TXT."
     progress: "show a progressmeter"
-    gff_three: "output in gff3 format"
+    gff_three: "/off\\noutput in gff3 format"
     prediction_start: "A and B define the range of the sequence for which predictions should be found."
-    utr: "predict the untranslated regions in addition to the coding sequence. This currently works only for a subset of species."
-    no_in_frames_top: "Do not report transcripts with in-frame stop codons. Otherwise, intron-spanning stop codons could occur. Default: false"
-    no_prediction: "If true and input is in genbank format, no prediction is made. Useful for getting the annotated protein sequences."
-    unique_geneid: "If true, output gene identifyers like this: seqname.gN"
+    utr: "/off\\npredict the untranslated regions in addition to the coding sequence. This currently works only for a subset of species."
+    no_in_frames_top: "/false\\nDo not report transcripts with in-frame stop codons. Otherwise, intron-spanning stop codons could occur. Default: false"
+    no_prediction: "/false\\nIf true and input is in genbank format, no prediction is made. Useful for getting the annotated protein sequences."
+    unique_geneid: "/false\\nIf true, output gene identifyers like this: seqname.gN"
     species: ""
-    partial: ": allow prediction of incomplete genes at the sequence boundaries (default)"
-    intron_less: ": only predict single-exon genes like in prokaryotes and some eukaryotes"
-    complete: ": only predict complete genes"
-    at_least_one: ": predict at least one complete gene"
-    exactly_one: ": predict exactly one complete gene"
+    parameters: ""
+    query_filename: ""
   }
   output {
     File out_stdout = stdout()

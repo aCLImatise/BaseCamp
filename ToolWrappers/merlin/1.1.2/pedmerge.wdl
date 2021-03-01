@@ -8,6 +8,9 @@ task Pedmerge {
     pedmerge \
       ~{var_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_output: ""
   }

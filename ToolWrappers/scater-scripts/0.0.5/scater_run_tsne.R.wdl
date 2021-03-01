@@ -30,6 +30,9 @@ task ScaterruntsneR {
       ~{if defined(initial_dims) then ("--initial-dims " +  '"' + initial_dims + '"') else ""} \
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "singleCellExperiment object containing expression values and experimental information. Must have been appropriately prepared."
     n_components: "Numeric scalar indicating the number of principal components to obtain."

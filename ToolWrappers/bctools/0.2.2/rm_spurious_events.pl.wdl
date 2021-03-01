@@ -108,6 +108,9 @@ task RmSpuriousEventspl {
       ~{if (enable_debug_output) then "--debug" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filter_alignments_supported: "filter out alignments supported by less reads than this fraction of the maximum number of reads per position"
     enable_debug_output: "enable debug output"

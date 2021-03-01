@@ -22,6 +22,9 @@ task Refevalestimatetrueassembly {
       ~{if defined(min_alignment_prob) then ("--min-alignment-prob " +  '"' + min_alignment_prob + '"') else ""} \
       ~{if defined(alignment_policy) then ("--alignment-policy " +  '"' + alignment_policy + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "The prefix of the reference built by rsem-prepare-reference.\\nRequired."
     expression: "The prefix of the expression built by\\nrsem-calculate-expression. Required."

@@ -8,6 +8,9 @@ task PARTS {
     PARTS \
       ~{configuration_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     configuration_file: ""
   }

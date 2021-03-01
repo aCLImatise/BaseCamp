@@ -4,6 +4,9 @@ task ISOTOPEDAT {
   command <<<
     ISOTOPE_DAT
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

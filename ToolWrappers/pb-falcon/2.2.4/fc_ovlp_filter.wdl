@@ -34,6 +34,9 @@ task FcOvlpFilter {
       ~{if (debug) then "--debug" else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_fn: "Output filename (default: preads.m4)"
     n_core: "number of processes used for generating consensus; 0 for main process only (default: 4)"

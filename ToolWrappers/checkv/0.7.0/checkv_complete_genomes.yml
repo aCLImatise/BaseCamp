@@ -1,0 +1,88 @@
+!Command
+command:
+- checkv
+- complete_genomes
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input
+  description: Input viral sequences in FASTA format
+- !Positional
+  optional: false
+  position: 1
+  name: output
+  description: Output directory
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --tr_min_len
+  description: Min length of TR (20)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --tr_max_count
+  description: Max occurences of TR per contig (8)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --tr_max_ambig
+  description: Max fraction of TR composed of Ns (0.20)
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --tr_max_basefreq
+  description: "Max fraction of TR composed of single nucleotide\n(0.75)"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer_max_freq
+  description: "Max kmer frequency (1.5). Computed by splitting genome\ninto kmers,\
+    \ counting occurence of each kmer, and\ntaking the average count. Expected value\
+    \ of 1.0 for no\nduplicated regions; 2.0 for the same genome repeated\nback-to-back"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Suppress logging messages
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Identify complete genomes based on terminal repeats and flanking host\
+  \ regions\n\nusage: checkv complete_genomes <input> <output> [options]\n\npositional\
+  \ arguments:\n  input                 Input viral sequences in FASTA format\n  output\
+  \                Output directory\n\noptional arguments:\n  -h, --help         \
+  \   show this help message and exit\n  --tr_min_len INT      Min length of TR (20)\n\
+  \  --tr_max_count INT    Max occurences of TR per contig (8)\n  --tr_max_ambig FLOAT\
+  \  Max fraction of TR composed of Ns (0.20)\n  --tr_max_basefreq FLOAT\n       \
+  \                 Max fraction of TR composed of single nucleotide\n           \
+  \             (0.75)\n  --kmer_max_freq FLOAT\n                        Max kmer\
+  \ frequency (1.5). Computed by splitting genome\n                        into kmers,\
+  \ counting occurence of each kmer, and\n                        taking the average\
+  \ count. Expected value of 1.0 for no\n                        duplicated regions;\
+  \ 2.0 for the same genome repeated\n                        back-to-back\n  --quiet\
+  \               Suppress logging messages\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/checkv:0.7.0--py_1

@@ -22,6 +22,9 @@ task MakeGenome {
       ~{if defined(parquet_page_size) then ("-parquet_page_size " +  '"' + parquet_page_size + '"') else ""} \
       ~{if (print_metrics) then "-print_metrics" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     parquet_block_size: ": Parquet block size (default = 128mb) (default: 134217728)"
     parquet_compression_codec: "[UNCOMPRESSED | SNAPPY | GZIP | LZO | BROTLI   : Parquet compression codec (default: GZIP)"

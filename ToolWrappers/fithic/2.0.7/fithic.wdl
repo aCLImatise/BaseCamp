@@ -36,6 +36,9 @@ task Fithic {
       ~{if defined(bias_lower_bound) then ("--biasLowerBound " +  '"' + bias_lower_bound + '"') else ""} \
       ~{if defined(bias_upper_bound) then ("--biasUpperBound " +  '"' + bias_upper_bound + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     interactions: "REQUIRED: interactions between fragment pairs are read\\nfrom INTERSFILE"
     fragments: "REQUIRED: midpoints (or start indices) of the\\nfragments are read from FRAGSFILE"

@@ -14,6 +14,9 @@ task Merge2Dbedpl {
       ~{if (tad) then "-tad" else ""} \
       ~{if defined(prefix) then ("-prefix " +  '"' + prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     res: "<#> (maximum distance between endpoints to merge, default: 15000)\\nUsually for loops -res should be set to the window/superRes size, for TADs 2x window/superRes"
     loop: "(treat 2D bed input files as loops, default)"

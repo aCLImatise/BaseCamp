@@ -20,6 +20,9 @@ task GetHiCcorrDiffpl {
       ~{if (max_dist) then "-maxDist" else ""} \
       ~{if (cpu) then "-cpu" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     res: "<#> (resolution in bp, default: 50000)"
     window: "<#> (window resolution in bp, i.e. window size, default: 100000)"

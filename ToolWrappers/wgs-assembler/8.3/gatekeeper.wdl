@@ -3,9 +3,9 @@ version 1.0
 task Gatekeeper {
   input {
     Boolean? append_existing_store
-    String? append_to_create
+    String? append_create_gkpstore
     Boolean? check_minimum_length
-    Boolean? fix_invalid_insert
+    Boolean? fix_size_estimates
     String? load_vector_clear
     File? list_partition_fragiid
     String? dump_starting_read
@@ -42,9 +42,9 @@ task Gatekeeper {
   command <<<
     gatekeeper \
       ~{if (append_existing_store) then "-a" else ""} \
-      ~{if defined(append_to_create) then ("-o " +  '"' + append_to_create + '"') else ""} \
+      ~{if defined(append_create_gkpstore) then ("-o " +  '"' + append_create_gkpstore + '"') else ""} \
       ~{if (check_minimum_length) then "-T" else ""} \
-      ~{if (fix_invalid_insert) then "-F" else ""} \
+      ~{if (fix_size_estimates) then "-F" else ""} \
       ~{if defined(load_vector_clear) then ("-v " +  '"' + load_vector_clear + '"') else ""} \
       ~{if defined(list_partition_fragiid) then ("-P " +  '"' + list_partition_fragiid + '"') else ""} \
       ~{if defined(dump_starting_read) then ("-b " +  '"' + dump_starting_read + '"') else ""} \
@@ -78,11 +78,14 @@ task Gatekeeper {
       ~{if defined(dump_fast_q) then ("-dumpfastq " +  '"' + dump_fast_q + '"') else ""} \
       ~{if (with_libname) then "-withlibname" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     append_existing_store: "append to existing store"
-    append_to_create: "append to or create gkpStore"
+    append_create_gkpstore: "append to or create gkpStore"
     check_minimum_length: "do not check minimum length (for OBT)"
-    fix_invalid_insert: "fix invalid insert size estimates"
+    fix_size_estimates: "fix invalid insert size estimates"
     load_vector_clear: "load vector clear ranges into each read.\\nMUST be done on an existing, complete store.\\nexample: -a -v vectorfile -o that.gkpStore\\nformat: 'UID vec-clr-begin vec-clr-end'"
     list_partition_fragiid: "a list of (partition fragiid)"
     dump_starting_read: "dump starting at this library or read"

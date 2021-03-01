@@ -18,6 +18,9 @@ task PysradbSearch {
       ~{if (detailed) then "--detailed" else ""} \
       ~{if (expand) then "--expand" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     save_to: "Save metadata dataframe to file"
     db: "Path to SRAmetadb.sqlite file"

@@ -8,6 +8,9 @@ task Prepgen {
     prepgen \
       ~{if defined(rn) then ("-rn " +  '"' + rn + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rn: "optional"
   }

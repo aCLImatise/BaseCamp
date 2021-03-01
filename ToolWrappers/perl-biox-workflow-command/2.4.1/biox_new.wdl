@@ -4,7 +4,7 @@ task BioxNew {
   input {
     Boolean? plugins
     Boolean? plugins_opts
-    Boolean? no_configs
+    String? no_configs
     Boolean? config
     Boolean? search
     Boolean? search_path
@@ -21,7 +21,7 @@ task BioxNew {
       ~{help} \
       ~{if (plugins) then "--plugins" else ""} \
       ~{if (plugins_opts) then "--plugins_opts" else ""} \
-      ~{if (no_configs) then "--no_configs" else ""} \
+      ~{if defined(no_configs) then ("--no_configs " +  '"' + no_configs + '"') else ""} \
       ~{if (config) then "--config" else ""} \
       ~{if (search) then "--search" else ""} \
       ~{if (search_path) then "--search_path" else ""} \
@@ -30,10 +30,13 @@ task BioxNew {
       ~{if (outfile) then "--outfile" else ""} \
       ~{if (supply_a_workflow) then "--workflow" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     plugins: "Load aplication plugins [Multiple; Split by \\\",\\\"]"
     plugins_opts: "Options for application plugins [Key-Value]"
-    no_configs: "--no_configs tells HPC::Runner not to load any\\nconfigs [Flag]"
+    no_configs: "HPC::Runner not to load any\\nconfigs [Flag]"
     config: "Override the search paths and supply your own"
     search: "Search for config files in ~/.config.(ext) and in\\nyour current working directory. [Flag]"
     search_path: "Enable a search path for configs. Default is the\\nhome dir and your cwd. [Multiple]"

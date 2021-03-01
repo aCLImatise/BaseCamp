@@ -3,12 +3,12 @@ id: alleyoop_summary.cwl
 inputs:
 - id: in_output
   doc: Output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_t_count_dir
   doc: "Folder containing tcount files\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --tcountDir
 - id: in_bam
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - alleyoop

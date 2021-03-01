@@ -12,6 +12,9 @@ task Filterstoptagspy {
       ~{if defined(k_size) then ("--ksize " +  '"' + k_size + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     info: "print citation information"
     k_size: "k-mer size (default: 32)"

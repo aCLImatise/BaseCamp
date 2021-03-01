@@ -20,6 +20,9 @@ task FastqFilterpair {
       ~{unpaired} \
       ~{sorted}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filter_pair: ""
     fast_q_one: ""

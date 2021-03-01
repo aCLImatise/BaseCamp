@@ -3,46 +3,40 @@ id: velveth.cwl
 inputs:
 - id: in_interleaved
   doc: ': File contains paired reads interleaved in the one file (default)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -interleaved
 - id: in_separate
   doc: ': Read 2 separate files for paired reads'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -separate
-- id: in_short_paired
-  doc: "-short2 -shortPaired2\n-short3 -shortPaired3\n-short4 -shortPaired4\n-long\
-    \   -longPaired\n-reference"
-  type: boolean
-  inputBinding:
-    prefix: -shortPaired
 - id: in_strand_specific
   doc: ': for strand specific transcriptome sequencing data (default: off)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -strand_specific
 - id: in_reuse_sequences
   doc: ': reuse Sequences file (or link) already in directory (no need to provide
     original filenames in this case (default: off)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -reuse_Sequences
 - id: in_reuse_binary
   doc: ': reuse binary sequences file (or link) already in directory (no need to provide
     original filenames in this case (default: off)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -reuse_binary
 - id: in_no_hash
   doc: ': simply prepare Sequences file, do not hash reads or prepare Roadmaps file
     (default: off)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -noHash
 - id: in_create_binary
   doc: ': create binary CnyUnifiedSeq file (default: off)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -create_binary
 - id: in_directory
@@ -67,6 +61,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - velveth

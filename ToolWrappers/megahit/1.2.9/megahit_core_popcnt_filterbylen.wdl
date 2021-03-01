@@ -10,6 +10,9 @@ task MegahitCorePopcntFilterbylen {
       ~{cat} \
       ~{contigs_dot_fa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cat: ""
     contigs_dot_fa: ""

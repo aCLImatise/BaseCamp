@@ -18,6 +18,9 @@ task NebulizerInstallRepositories {
       ~{if defined(timeout) then ("--timeout " +  '"' + timeout + '"') else ""} \
       ~{if (no_wait) then "--no-wait" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     install_tool_dependencies: "[yes|no]\\ninstall tool dependencies via the toolshed,\\nif any are defined (default is 'yes')"
     install_repository_dependencies: "[yes|no]\\ninstall repository dependencies via the\\ntoolshed, if any are defined (default is\\n'yes')"

@@ -8,8 +8,11 @@ task LynerDendro {
     lyner dendro \
       ~{if defined(axis) then ("--axis " +  '"' + axis + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    axis: "RANGE\\n-m, --methods LIST\\n--mode [consensus|each]\\n-c, --num-components LIST\\n-r, --num-runs INTEGER\\n--help                     Show this message and exit.\\n"
+    axis: "RANGE"
   }
   output {
     File out_stdout = stdout()

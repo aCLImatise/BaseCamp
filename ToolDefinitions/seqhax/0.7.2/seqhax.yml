@@ -12,18 +12,18 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: Use base-16 sequence IDs.
+    optional: true
     synonyms:
     - -x
+    description: Use base-16 sequence IDs.
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Treat reads as pairs, add /1 or /2 to headers.
+    optional: true
     synonyms:
     - -p
+    description: Treat reads as pairs, add /1 or /2 to headers.
     args: !EmptyFlagArg {}
-    optional: true
-  parent: &id016 !Command
+  parent: &id017 !Command
     command: *id001
     positional: []
     named: []
@@ -34,18 +34,18 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: Use base-16 sequence IDs.
+        optional: true
         synonyms:
         - -x
+        description: Use base-16 sequence IDs.
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Treat reads as pairs, add /1 or /2 to headers.
+        optional: true
         synonyms:
         - -p
+        description: Treat reads as pairs, add /1 or /2 to headers.
         args: !EmptyFlagArg {}
-        optional: true
-      parent: &id015 !Command
+      parent: &id016 !Command
         command: *id001
         positional: []
         named: []
@@ -56,18 +56,18 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: Use base-16 sequence IDs.
+            optional: true
             synonyms:
             - -x
+            description: Use base-16 sequence IDs.
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Treat reads as pairs, add /1 or /2 to headers.
+            optional: true
             synonyms:
             - -p
+            description: Treat reads as pairs, add /1 or /2 to headers.
             args: !EmptyFlagArg {}
-            optional: true
-          parent: &id014 !Command
+          parent: &id015 !Command
             command: *id001
             positional: []
             named: []
@@ -78,18 +78,18 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: Use base-16 sequence IDs.
+                optional: true
                 synonyms:
                 - -x
+                description: Use base-16 sequence IDs.
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Treat reads as pairs, add /1 or /2 to headers.
+                optional: true
                 synonyms:
                 - -p
+                description: Treat reads as pairs, add /1 or /2 to headers.
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: &id014 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -100,18 +100,526 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: Use base-16 sequence IDs.
+                    optional: true
                     synonyms:
                     - -x
+                    description: Use base-16 sequence IDs.
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Treat reads as pairs, add /1 or /2 to headers.
+                    optional: true
                     synonyms:
                     - -p
+                    description: Treat reads as pairs, add /1 or /2 to headers.
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -x
+                        description: Use base-16 sequence IDs.
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -p
+                        description: Treat reads as pairs, add /1 or /2 to headers.
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "anon: invalid option -- '-'\nUSAGE:\n    seqhax\
+                        \ anon [options] FILE\n\nOPTIONS:\n    -x     Use base-16\
+                        \ sequence IDs.\n    -p     Treat reads as pairs, add /1 or\
+                        \ /2 to headers.\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - seqhax
+                      - randseq
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: seqhax
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -n
+                        description: Number of reads. Use 0 for infinite. [default
+                          1000]
+                        args: !SimpleFlagArg
+                          name: READS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        description: Seed for RNG.
+                        args: !SimpleFlagArg
+                          name: SEED
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        description: Length of each read. [default 100]
+                        args: !SimpleFlagArg
+                          name: LENGTH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -p
+                        description: Paired reads [default false]
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        description: Output as fasta (no qualities)
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "randseq: invalid option -- '-'\nUSAGE:\n    seqhax\
+                        \ randseq [options]\n\nOPTIONS:\n    -n READS   Number of\
+                        \ reads. Use 0 for infinite. [default 1000]\n    -s SEED \
+                        \   Seed for RNG.\n    -l LENGTH  Length of each read. [default\
+                        \ 100]\n    -p         Paired reads [default false]\n    -f\
+                        \         Output as fasta (no qualities)\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - seqhax
+                      - stats
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: FILE
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: Number
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: of
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 2
+                        name: parallel
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 3
+                        name: jobs
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        description: Number of parallel jobs [1]
+                        args: !SimpleFlagArg
+                          name: THREADS
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "stats: invalid option -- '-'\nUSAGE:\n    seqhax\
+                        \ stats FILE ...\n\nOPTIONS:\n    -t THREADS  Number of parallel\
+                        \ jobs [1]\n\nFILEs must be FASTQs, optionally gzip-compressed\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - seqhax
+                      - preapp
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: seqhax
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: seq
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -P
+                        description: Add SEQ as prefix, adding quality charachters
+                          if fastq.
+                        args: !SimpleFlagArg
+                          name: SEQ
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -S
+                        description: Add SEQ as suffix, adding quality charachters
+                          if fastq.
+                        args: !SimpleFlagArg
+                          name: SEQ
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -p
+                        description: 'Paired mode: reads are kept/discared in pairs'
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "preapp: invalid option -- '-'\nUSAGE:\n    seqhax\
+                        \ seq [options] FILE\n\nOPTIONS:\n    -P SEQ     Add SEQ as\
+                        \ prefix, adding quality charachters if fastq.\n    -S SEQ\
+                        \     Add SEQ as suffix, adding quality charachters if fastq.\n\
+                        \    -p         Paired mode: reads are kept/discared in pairs\n\
+                        \nFILE should be a sequence file in FASTA or FASTQ format.\n\
+                        To accept reads from standard input, use '/dev/stdin' as\n\
+                        the input file.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id008
+                      - seqhax
+                      - rebarcode
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: r1
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        description: 'Output interleaved reads to FILE. Use - for
+                          stdout. (default: no output)'
+                        args: !SimpleFlagArg
+                          name: FILE
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "rebarcode: invalid option -- '-'\nUSAGE:\n    seqhax\
+                        \ rebarcode [-o OUTPUT] r1 r2\n\nOPTIONS:\n    -o FILE   \
+                        \ Output interleaved reads to FILE. Use - for stdout. (default:\
+                        \ no output)\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id009
+                      - seqhax
+                      - filter
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        description: Minimum length of each read. [default 1]
+                        args: !SimpleFlagArg
+                          name: LENGTH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        description: Output as fasta (no qualities)
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -p
+                        description: 'Paired mode: reads are kept/discared in pairs'
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "filter: invalid option -- '-'\nUSAGE:\n    seqhax\
+                        \ filter [options] FILE\n\nOPTIONS:\n    -l LENGTH  Minimum\
+                        \ length of each read. [default 1]\n    -f         Output\
+                        \ as fasta (no qualities)\n    -p         Paired mode: reads\
+                        \ are kept/discared in pairs\n\nFILE should be a sequence\
+                        \ file in FASTA or FASTQ format.\nTo accept reads from standard\
+                        \ input, use '/dev/stdin' as\nthe input file.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id010
+                      - seqhax
+                      - convert
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -a
+                        description: Output FASTA.
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -q
+                        description: Output FASTQ (adding qualities).
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "convert: invalid option -- '-'\nUSAGE:\n    seqhax\
+                        \ convert [options] FILE\n\nOPTIONS:\n    -a     Output FASTA.\n\
+                        \    -q     Output FASTQ (adding qualities).\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id011
+                      - seqhax
+                      - pecheck
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: r1fq
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: r2fq
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        description: "Output interleaved reads to FILE. Use - for\
+                          \ stdout.\nAll sets of paired end files will end up in same\n\
+                          output!!! (default: no output)"
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -i
+                        description: Interleaved inputs
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -q
+                        description: Don't print tabular summary
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        description: 'Number of parallel threads (default: no output)'
+                        args: !SimpleFlagArg
+                          name: THREADS
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "pecheck: invalid option -- '-'\nUSAGE:\n    seqhax\
+                        \ pecheck [OPTIONS] r1fq r2fq [r1fq r2fq ...]\n    seqhax\
+                        \ pecheck [OPTIONS] -i ilfq [ilfq ilfq ...]\n\nOPTIONS:\n\
+                        \    -o FILE        Output interleaved reads to FILE. Use\
+                        \ - for stdout.\n                   All sets of paired end\
+                        \ files will end up in same\n                   output!!!\
+                        \ (default: no output)\n    -i             Interleaved inputs\n\
+                        \    -q             Don't print tabular summary\n    -t THREADS\
+                        \     Number of parallel threads (default: no output)\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id012
+                      - seqhax
+                      - pairs
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: FILE
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        description: Force output to existing files.
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        description: Minimum length of each read. [default 1]
+                        args: !SimpleFlagArg
+                          name: LENGTH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - '-1'
+                        description: Pair first mate output
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - '-2'
+                        description: Pair second mate output
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -p
+                        description: Interleaved pairs-only output
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -u
+                        description: Unpaired read output
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        description: '"Strict interleaved" output, all reads'
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -b
+                        description: '"Broken paired" output, all reads'
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -y
+                        description: Output statistics to FILE.
+                        args: !SimpleFlagArg
+                          name: FILE
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "pairs: invalid option -- '-'\nUSAGE:\n    seqhax\
+                        \ pairs [options] FILE [FILE2]\n\nOPTIONS:\n    -f       \
+                        \  Force output to existing files.\n    -l LENGTH  Minimum\
+                        \ length of each read. [default 1]\n    -1 FILE    Pair first\
+                        \ mate output\n    -2 FILE    Pair second mate output\n  \
+                        \  -p FILE    Interleaved pairs-only output\n    -u FILE \
+                        \   Unpaired read output\n    -s FILE    \"Strict interleaved\"\
+                        \ output, all reads\n    -b FILE    \"Broken paired\" output,\
+                        \ all reads\n    -y FILE    Output statistics to FILE.\n\n\
+                        Output files are NOT compressed. To apply compression, please\
+                        \ use\nSubprocess streams, e.g.:\n\n  seqhax pairs -1 >(gzip\
+                        \ > read1.fq.gz) -2 >(gzip > read2.fq.gz) \\\n      -u >(gzip\
+                        \ > unapired.fq.gz) reads.fq.gz\n\nOne can of course use other\
+                        \ compression algorithms, e.g zstd.\n\nFILE should be a sequence\
+                        \ file in FASTA or FASTQ format.\nTo accept reads from standard\
+                        \ input, use '/dev/stdin' as\nthe input file. To output to\
+                        \ standard output, use '-'.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id013
+                      - seqhax
+                      - trunc
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        description: Fixed (integer) length to truncate at.
+                        args: !SimpleFlagArg
+                          name: LEN
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -p
+                        description: Truncate at PROP * length bases
+                        args: !SimpleFlagArg
+                          name: PROP
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "trunc: invalid option -- '-'\nUSAGE:\n    seqhax\
+                        \ trunc [options] FILE\n\nOPTIONS:\n    -l LEN     Fixed (integer)\
+                        \ length to truncate at.\n    -p PROP    Truncate at PROP\
+                        \ * length bases\n\nAt least one of `-l` and `-p` MUST be\
+                        \ given.\nFILE should be a sequence file in FASTA or FASTQ\
+                        \ format.\nTo accept reads from standard input, use '/dev/stdin'\
+                        \ as\nthe input file.\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "Invalid program name '--help'\nUSAGE:\n    seqhax\
+                      \ PROGRAM [options]\n\nwhere PROGRAM is one of:\n    anon  \
+                      \     -- Rename sequences by a sequential number\n    convert\
+                      \    -- Convert between FASTA and FASTQ formats\n    clihist\
+                      \    -- Records a histogram of stdin.\n    filter     -- Filter\
+                      \ reads from a sequence file\n    pairs      -- (De)interleave\
+                      \ paired end reads\n    pecheck    -- Check that paired end\
+                      \ reads match properly\n    preapp     -- Prepend or append\
+                      \ string to sequences\n    randseq    -- Generate a random sequence\
+                      \ file\n    rebarcode  -- Add index sequences from header to\
+                      \ the start of reads\n    stats      -- Basic statistics about\
+                      \ sequence files\n    trunc      -- Truncate sequences\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -120,52 +628,50 @@ subcommands:
                   help_text: "anon: invalid option -- '-'\nUSAGE:\n    seqhax anon\
                     \ [options] FILE\n\nOPTIONS:\n    -x     Use base-16 sequence\
                     \ IDs.\n    -p     Treat reads as pairs, add /1 or /2 to headers.\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - seqhax
-                  - randseq
+                  command: *id005
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: seqhax
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: Number of reads. Use 0 for infinite. [default 1000]
+                    optional: true
                     synonyms:
                     - -n
+                    description: Number of reads. Use 0 for infinite. [default 1000]
                     args: !SimpleFlagArg
                       name: READS
-                    optional: true
                   - !Flag
-                    description: Seed for RNG.
+                    optional: true
                     synonyms:
                     - -s
+                    description: Seed for RNG.
                     args: !SimpleFlagArg
                       name: SEED
-                    optional: true
                   - !Flag
-                    description: Length of each read. [default 100]
+                    optional: true
                     synonyms:
                     - -l
+                    description: Length of each read. [default 100]
                     args: !SimpleFlagArg
                       name: LENGTH
-                    optional: true
                   - !Flag
-                    description: Paired reads [default false]
+                    optional: true
                     synonyms:
                     - -p
+                    description: Paired reads [default false]
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Output as fasta (no qualities)
+                    optional: true
                     synonyms:
                     - -f
+                    description: Output as fasta (no qualities)
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -179,44 +685,43 @@ subcommands:
                     \      Paired reads [default false]\n    -f         Output as\
                     \ fasta (no qualities)\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - seqhax
-                  - stats
+                  command: *id006
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: FILE
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 0
                     name: Number
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: of
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 2
                     name: parallel
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 3
                     name: jobs
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: Number of parallel jobs [1]
+                    optional: true
                     synonyms:
                     - -t
+                    description: Number of parallel jobs [1]
                     args: !SimpleFlagArg
                       name: THREADS
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -227,44 +732,43 @@ subcommands:
                     \ FILE ...\n\nOPTIONS:\n    -t THREADS  Number of parallel jobs\
                     \ [1]\n\nFILEs must be FASTQs, optionally gzip-compressed\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - seqhax
-                  - preapp
+                  command: *id007
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: seqhax
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: seq
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: Add SEQ as prefix, adding quality charachters if
-                      fastq.
+                    optional: true
                     synonyms:
                     - -P
+                    description: Add SEQ as prefix, adding quality charachters if
+                      fastq.
                     args: !SimpleFlagArg
                       name: SEQ
-                    optional: true
                   - !Flag
-                    description: Add SEQ as suffix, adding quality charachters if
-                      fastq.
+                    optional: true
                     synonyms:
                     - -S
+                    description: Add SEQ as suffix, adding quality charachters if
+                      fastq.
                     args: !SimpleFlagArg
                       name: SEQ
-                    optional: true
                   - !Flag
-                    description: 'Paired mode: reads are kept/discared in pairs'
+                    optional: true
                     synonyms:
                     - -p
+                    description: 'Paired mode: reads are kept/discared in pairs'
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -279,25 +783,24 @@ subcommands:
                     \ be a sequence file in FASTA or FASTQ format.\nTo accept reads\
                     \ from standard input, use '/dev/stdin' as\nthe input file.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id008
-                  - seqhax
-                  - rebarcode
+                  command: *id008
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: r1
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: 'Output interleaved reads to FILE. Use - for stdout.
-                      (default: no output)'
+                    optional: true
                     synonyms:
                     - -o
+                    description: 'Output interleaved reads to FILE. Use - for stdout.
+                      (default: no output)'
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -308,31 +811,30 @@ subcommands:
                     \ rebarcode [-o OUTPUT] r1 r2\n\nOPTIONS:\n    -o FILE    Output\
                     \ interleaved reads to FILE. Use - for stdout. (default: no output)\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id009
-                  - seqhax
-                  - filter
+                  command: *id009
                   positional: []
                   named:
                   - !Flag
-                    description: Minimum length of each read. [default 1]
+                    optional: true
                     synonyms:
                     - -l
+                    description: Minimum length of each read. [default 1]
                     args: !SimpleFlagArg
                       name: LENGTH
-                    optional: true
                   - !Flag
-                    description: Output as fasta (no qualities)
+                    optional: true
                     synonyms:
                     - -f
+                    description: Output as fasta (no qualities)
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: 'Paired mode: reads are kept/discared in pairs'
+                    optional: true
                     synonyms:
                     - -p
+                    description: 'Paired mode: reads are kept/discared in pairs'
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -347,24 +849,23 @@ subcommands:
                     \ accept reads from standard input, use '/dev/stdin' as\nthe input\
                     \ file.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id010
-                  - seqhax
-                  - convert
+                  command: *id010
                   positional: []
                   named:
                   - !Flag
-                    description: Output FASTA.
+                    optional: true
                     synonyms:
                     - -a
+                    description: Output FASTA.
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Output FASTQ (adding qualities).
+                    optional: true
                     synonyms:
                     - -q
+                    description: Output FASTQ (adding qualities).
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -375,50 +876,49 @@ subcommands:
                     \ [options] FILE\n\nOPTIONS:\n    -a     Output FASTA.\n    -q\
                     \     Output FASTQ (adding qualities).\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id011
-                  - seqhax
-                  - pecheck
+                  command: *id011
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: r1fq
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: r2fq
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -o
                     description: "Output interleaved reads to FILE. Use - for stdout.\n\
                       All sets of paired end files will end up in same\noutput!!!\
                       \ (default: no output)"
-                    synonyms:
-                    - -o
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: Interleaved inputs
+                    optional: true
                     synonyms:
                     - -i
+                    description: Interleaved inputs
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Don't print tabular summary
+                    optional: true
                     synonyms:
                     - -q
+                    description: Don't print tabular summary
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: 'Number of parallel threads (default: no output)'
+                    optional: true
                     synonyms:
                     - -t
+                    description: 'Number of parallel threads (default: no output)'
                     args: !SimpleFlagArg
                       name: THREADS
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -435,79 +935,78 @@ subcommands:
                     \ summary\n    -t THREADS     Number of parallel threads (default:\
                     \ no output)\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id012
-                  - seqhax
-                  - pairs
+                  command: *id012
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: FILE
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: Force output to existing files.
+                    optional: true
                     synonyms:
                     - -f
+                    description: Force output to existing files.
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Minimum length of each read. [default 1]
+                    optional: true
                     synonyms:
                     - -l
+                    description: Minimum length of each read. [default 1]
                     args: !SimpleFlagArg
                       name: LENGTH
-                    optional: true
                   - !Flag
-                    description: Pair first mate output
+                    optional: true
                     synonyms:
                     - '-1'
+                    description: Pair first mate output
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: Pair second mate output
+                    optional: true
                     synonyms:
                     - '-2'
+                    description: Pair second mate output
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: Interleaved pairs-only output
+                    optional: true
                     synonyms:
                     - -p
+                    description: Interleaved pairs-only output
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: Unpaired read output
+                    optional: true
                     synonyms:
                     - -u
+                    description: Unpaired read output
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: '"Strict interleaved" output, all reads'
+                    optional: true
                     synonyms:
                     - -s
+                    description: '"Strict interleaved" output, all reads'
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: '"Broken paired" output, all reads'
+                    optional: true
                     synonyms:
                     - -b
+                    description: '"Broken paired" output, all reads'
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: Output statistics to FILE.
+                    optional: true
                     synonyms:
                     - -y
+                    description: Output statistics to FILE.
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -531,26 +1030,25 @@ subcommands:
                     \ input, use '/dev/stdin' as\nthe input file. To output to standard\
                     \ output, use '-'.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id013
-                  - seqhax
-                  - trunc
+                  command: *id013
                   positional: []
                   named:
                   - !Flag
-                    description: Fixed (integer) length to truncate at.
+                    optional: true
                     synonyms:
                     - -l
+                    description: Fixed (integer) length to truncate at.
                     args: !SimpleFlagArg
                       name: LEN
-                    optional: true
                   - !Flag
-                    description: Truncate at PROP * length bases
+                    optional: true
                     synonyms:
                     - -p
+                    description: Truncate at PROP * length bases
                     args: !SimpleFlagArg
                       name: PROP
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -564,6 +1062,7 @@ subcommands:
                     \ a sequence file in FASTA or FASTQ format.\nTo accept reads from\
                     \ standard input, use '/dev/stdin' as\nthe input file.\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -580,6 +1079,7 @@ subcommands:
                   \ from header to the start of reads\n    stats      -- Basic statistics\
                   \ about sequence files\n    trunc      -- Truncate sequences\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -589,49 +1089,50 @@ subcommands:
                 \ FILE\n\nOPTIONS:\n    -x     Use base-16 sequence IDs.\n    -p \
                 \    Treat reads as pairs, add /1 or /2 to headers.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: seqhax
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: Number of reads. Use 0 for infinite. [default 1000]
+                optional: true
                 synonyms:
                 - -n
+                description: Number of reads. Use 0 for infinite. [default 1000]
                 args: !SimpleFlagArg
                   name: READS
-                optional: true
               - !Flag
-                description: Seed for RNG.
+                optional: true
                 synonyms:
                 - -s
+                description: Seed for RNG.
                 args: !SimpleFlagArg
                   name: SEED
-                optional: true
               - !Flag
-                description: Length of each read. [default 100]
+                optional: true
                 synonyms:
                 - -l
+                description: Length of each read. [default 100]
                 args: !SimpleFlagArg
                   name: LENGTH
-                optional: true
               - !Flag
-                description: Paired reads [default false]
+                optional: true
                 synonyms:
                 - -p
+                description: Paired reads [default false]
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Output as fasta (no qualities)
+                optional: true
                 synonyms:
                 - -f
+                description: Output as fasta (no qualities)
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id014
               subcommands: []
               usage: []
               help_flag:
@@ -643,43 +1144,44 @@ subcommands:
                 \  Length of each read. [default 100]\n    -p         Paired reads\
                 \ [default false]\n    -f         Output as fasta (no qualities)\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: FILE
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 0
                 name: Number
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: of
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 2
                 name: parallel
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 3
                 name: jobs
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: Number of parallel jobs [1]
+                optional: true
                 synonyms:
                 - -t
+                description: Number of parallel jobs [1]
                 args: !SimpleFlagArg
                   name: THREADS
-                optional: true
-              parent: *id003
+              parent: *id014
               subcommands: []
               usage: []
               help_flag:
@@ -689,41 +1191,42 @@ subcommands:
                 \ ...\n\nOPTIONS:\n    -t THREADS  Number of parallel jobs [1]\n\n\
                 FILEs must be FASTQs, optionally gzip-compressed\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: seqhax
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: seq
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: Add SEQ as prefix, adding quality charachters if fastq.
+                optional: true
                 synonyms:
                 - -P
+                description: Add SEQ as prefix, adding quality charachters if fastq.
                 args: !SimpleFlagArg
                   name: SEQ
-                optional: true
               - !Flag
-                description: Add SEQ as suffix, adding quality charachters if fastq.
+                optional: true
                 synonyms:
                 - -S
+                description: Add SEQ as suffix, adding quality charachters if fastq.
                 args: !SimpleFlagArg
                   name: SEQ
-                optional: true
               - !Flag
-                description: 'Paired mode: reads are kept/discared in pairs'
+                optional: true
                 synonyms:
                 - -p
+                description: 'Paired mode: reads are kept/discared in pairs'
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id014
               subcommands: []
               usage: []
               help_flag:
@@ -737,24 +1240,25 @@ subcommands:
                 \ FASTA or FASTQ format.\nTo accept reads from standard input, use\
                 \ '/dev/stdin' as\nthe input file.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id008
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: r1
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: 'Output interleaved reads to FILE. Use - for stdout.
-                  (default: no output)'
+                optional: true
                 synonyms:
                 - -o
+                description: 'Output interleaved reads to FILE. Use - for stdout.
+                  (default: no output)'
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
-              parent: *id003
+              parent: *id014
               subcommands: []
               usage: []
               help_flag:
@@ -764,30 +1268,31 @@ subcommands:
                 \ [-o OUTPUT] r1 r2\n\nOPTIONS:\n    -o FILE    Output interleaved\
                 \ reads to FILE. Use - for stdout. (default: no output)\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id009
               positional: []
               named:
               - !Flag
-                description: Minimum length of each read. [default 1]
+                optional: true
                 synonyms:
                 - -l
+                description: Minimum length of each read. [default 1]
                 args: !SimpleFlagArg
                   name: LENGTH
-                optional: true
               - !Flag
-                description: Output as fasta (no qualities)
+                optional: true
                 synonyms:
                 - -f
+                description: Output as fasta (no qualities)
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: 'Paired mode: reads are kept/discared in pairs'
+                optional: true
                 synonyms:
                 - -p
+                description: 'Paired mode: reads are kept/discared in pairs'
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id014
               subcommands: []
               usage: []
               help_flag:
@@ -800,23 +1305,24 @@ subcommands:
                 FILE should be a sequence file in FASTA or FASTQ format.\nTo accept\
                 \ reads from standard input, use '/dev/stdin' as\nthe input file.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id010
               positional: []
               named:
               - !Flag
-                description: Output FASTA.
+                optional: true
                 synonyms:
                 - -a
+                description: Output FASTA.
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Output FASTQ (adding qualities).
+                optional: true
                 synonyms:
                 - -q
+                description: Output FASTQ (adding qualities).
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id014
               subcommands: []
               usage: []
               help_flag:
@@ -826,49 +1332,50 @@ subcommands:
                 \ [options] FILE\n\nOPTIONS:\n    -a     Output FASTA.\n    -q   \
                 \  Output FASTQ (adding qualities).\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id011
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: r1fq
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: r2fq
-                optional: false
+                description: ''
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - -o
                 description: "Output interleaved reads to FILE. Use - for stdout.\n\
                   All sets of paired end files will end up in same\noutput!!! (default:\
                   \ no output)"
-                synonyms:
-                - -o
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: Interleaved inputs
+                optional: true
                 synonyms:
                 - -i
+                description: Interleaved inputs
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Don't print tabular summary
+                optional: true
                 synonyms:
                 - -q
+                description: Don't print tabular summary
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: 'Number of parallel threads (default: no output)'
+                optional: true
                 synonyms:
                 - -t
+                description: 'Number of parallel threads (default: no output)'
                 args: !SimpleFlagArg
                   name: THREADS
-                optional: true
-              parent: *id003
+              parent: *id014
               subcommands: []
               usage: []
               help_flag:
@@ -883,78 +1390,79 @@ subcommands:
                 \  -q             Don't print tabular summary\n    -t THREADS    \
                 \ Number of parallel threads (default: no output)\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id012
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: FILE
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: Force output to existing files.
+                optional: true
                 synonyms:
                 - -f
+                description: Force output to existing files.
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Minimum length of each read. [default 1]
+                optional: true
                 synonyms:
                 - -l
+                description: Minimum length of each read. [default 1]
                 args: !SimpleFlagArg
                   name: LENGTH
-                optional: true
               - !Flag
-                description: Pair first mate output
+                optional: true
                 synonyms:
                 - '-1'
+                description: Pair first mate output
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: Pair second mate output
+                optional: true
                 synonyms:
                 - '-2'
+                description: Pair second mate output
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: Interleaved pairs-only output
+                optional: true
                 synonyms:
                 - -p
+                description: Interleaved pairs-only output
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: Unpaired read output
+                optional: true
                 synonyms:
                 - -u
+                description: Unpaired read output
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: '"Strict interleaved" output, all reads'
+                optional: true
                 synonyms:
                 - -s
+                description: '"Strict interleaved" output, all reads'
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: '"Broken paired" output, all reads'
+                optional: true
                 synonyms:
                 - -b
+                description: '"Broken paired" output, all reads'
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: Output statistics to FILE.
+                optional: true
                 synonyms:
                 - -y
+                description: Output statistics to FILE.
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
-              parent: *id003
+              parent: *id014
               subcommands: []
               usage: []
               help_flag:
@@ -976,25 +1484,26 @@ subcommands:
                 \ reads from standard input, use '/dev/stdin' as\nthe input file.\
                 \ To output to standard output, use '-'.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id013
               positional: []
               named:
               - !Flag
-                description: Fixed (integer) length to truncate at.
+                optional: true
                 synonyms:
                 - -l
+                description: Fixed (integer) length to truncate at.
                 args: !SimpleFlagArg
                   name: LEN
-                optional: true
               - !Flag
-                description: Truncate at PROP * length bases
+                optional: true
                 synonyms:
                 - -p
+                description: Truncate at PROP * length bases
                 args: !SimpleFlagArg
                   name: PROP
-                optional: true
-              parent: *id003
+              parent: *id014
               subcommands: []
               usage: []
               help_flag:
@@ -1007,6 +1516,7 @@ subcommands:
                 \ in FASTA or FASTQ format.\nTo accept reads from standard input,\
                 \ use '/dev/stdin' as\nthe input file.\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -1023,6 +1533,7 @@ subcommands:
               \    stats      -- Basic statistics about sequence files\n    trunc\
               \      -- Truncate sequences\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -1032,49 +1543,50 @@ subcommands:
             \ FILE\n\nOPTIONS:\n    -x     Use base-16 sequence IDs.\n    -p     Treat\
             \ reads as pairs, add /1 or /2 to headers.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: seqhax
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: Number of reads. Use 0 for infinite. [default 1000]
+            optional: true
             synonyms:
             - -n
+            description: Number of reads. Use 0 for infinite. [default 1000]
             args: !SimpleFlagArg
               name: READS
-            optional: true
           - !Flag
-            description: Seed for RNG.
+            optional: true
             synonyms:
             - -s
+            description: Seed for RNG.
             args: !SimpleFlagArg
               name: SEED
-            optional: true
           - !Flag
-            description: Length of each read. [default 100]
+            optional: true
             synonyms:
             - -l
+            description: Length of each read. [default 100]
             args: !SimpleFlagArg
               name: LENGTH
-            optional: true
           - !Flag
-            description: Paired reads [default false]
+            optional: true
             synonyms:
             - -p
+            description: Paired reads [default false]
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Output as fasta (no qualities)
+            optional: true
             synonyms:
             - -f
+            description: Output as fasta (no qualities)
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id014
+          parent: *id015
           subcommands: []
           usage: []
           help_flag:
@@ -1086,43 +1598,44 @@ subcommands:
             \ [default 100]\n    -p         Paired reads [default false]\n    -f \
             \        Output as fasta (no qualities)\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: FILE
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 0
             name: Number
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: of
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 2
             name: parallel
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 3
             name: jobs
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: Number of parallel jobs [1]
+            optional: true
             synonyms:
             - -t
+            description: Number of parallel jobs [1]
             args: !SimpleFlagArg
               name: THREADS
-            optional: true
-          parent: *id014
+          parent: *id015
           subcommands: []
           usage: []
           help_flag:
@@ -1132,41 +1645,42 @@ subcommands:
             \ ...\n\nOPTIONS:\n    -t THREADS  Number of parallel jobs [1]\n\nFILEs\
             \ must be FASTQs, optionally gzip-compressed\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: seqhax
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: seq
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: Add SEQ as prefix, adding quality charachters if fastq.
+            optional: true
             synonyms:
             - -P
+            description: Add SEQ as prefix, adding quality charachters if fastq.
             args: !SimpleFlagArg
               name: SEQ
-            optional: true
           - !Flag
-            description: Add SEQ as suffix, adding quality charachters if fastq.
+            optional: true
             synonyms:
             - -S
+            description: Add SEQ as suffix, adding quality charachters if fastq.
             args: !SimpleFlagArg
               name: SEQ
-            optional: true
           - !Flag
-            description: 'Paired mode: reads are kept/discared in pairs'
+            optional: true
             synonyms:
             - -p
+            description: 'Paired mode: reads are kept/discared in pairs'
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id014
+          parent: *id015
           subcommands: []
           usage: []
           help_flag:
@@ -1179,24 +1693,25 @@ subcommands:
             \nFILE should be a sequence file in FASTA or FASTQ format.\nTo accept\
             \ reads from standard input, use '/dev/stdin' as\nthe input file.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id008
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: r1
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: 'Output interleaved reads to FILE. Use - for stdout. (default:
-              no output)'
+            optional: true
             synonyms:
             - -o
+            description: 'Output interleaved reads to FILE. Use - for stdout. (default:
+              no output)'
             args: !SimpleFlagArg
               name: FILE
-            optional: true
-          parent: *id014
+          parent: *id015
           subcommands: []
           usage: []
           help_flag:
@@ -1206,30 +1721,31 @@ subcommands:
             \ [-o OUTPUT] r1 r2\n\nOPTIONS:\n    -o FILE    Output interleaved reads\
             \ to FILE. Use - for stdout. (default: no output)\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id009
           positional: []
           named:
           - !Flag
-            description: Minimum length of each read. [default 1]
+            optional: true
             synonyms:
             - -l
+            description: Minimum length of each read. [default 1]
             args: !SimpleFlagArg
               name: LENGTH
-            optional: true
           - !Flag
-            description: Output as fasta (no qualities)
+            optional: true
             synonyms:
             - -f
+            description: Output as fasta (no qualities)
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: 'Paired mode: reads are kept/discared in pairs'
+            optional: true
             synonyms:
             - -p
+            description: 'Paired mode: reads are kept/discared in pairs'
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id014
+          parent: *id015
           subcommands: []
           usage: []
           help_flag:
@@ -1242,23 +1758,24 @@ subcommands:
             \ file in FASTA or FASTQ format.\nTo accept reads from standard input,\
             \ use '/dev/stdin' as\nthe input file.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id010
           positional: []
           named:
           - !Flag
-            description: Output FASTA.
+            optional: true
             synonyms:
             - -a
+            description: Output FASTA.
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Output FASTQ (adding qualities).
+            optional: true
             synonyms:
             - -q
+            description: Output FASTQ (adding qualities).
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id014
+          parent: *id015
           subcommands: []
           usage: []
           help_flag:
@@ -1268,49 +1785,50 @@ subcommands:
             \ FILE\n\nOPTIONS:\n    -a     Output FASTA.\n    -q     Output FASTQ\
             \ (adding qualities).\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id011
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: r1fq
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: r2fq
-            optional: false
+            description: ''
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - -o
             description: "Output interleaved reads to FILE. Use - for stdout.\nAll\
               \ sets of paired end files will end up in same\noutput!!! (default:\
               \ no output)"
-            synonyms:
-            - -o
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: Interleaved inputs
+            optional: true
             synonyms:
             - -i
+            description: Interleaved inputs
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Don't print tabular summary
+            optional: true
             synonyms:
             - -q
+            description: Don't print tabular summary
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: 'Number of parallel threads (default: no output)'
+            optional: true
             synonyms:
             - -t
+            description: 'Number of parallel threads (default: no output)'
             args: !SimpleFlagArg
               name: THREADS
-            optional: true
-          parent: *id014
+          parent: *id015
           subcommands: []
           usage: []
           help_flag:
@@ -1325,78 +1843,79 @@ subcommands:
             \ tabular summary\n    -t THREADS     Number of parallel threads (default:\
             \ no output)\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id012
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: FILE
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: Force output to existing files.
+            optional: true
             synonyms:
             - -f
+            description: Force output to existing files.
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Minimum length of each read. [default 1]
+            optional: true
             synonyms:
             - -l
+            description: Minimum length of each read. [default 1]
             args: !SimpleFlagArg
               name: LENGTH
-            optional: true
           - !Flag
-            description: Pair first mate output
+            optional: true
             synonyms:
             - '-1'
+            description: Pair first mate output
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: Pair second mate output
+            optional: true
             synonyms:
             - '-2'
+            description: Pair second mate output
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: Interleaved pairs-only output
+            optional: true
             synonyms:
             - -p
+            description: Interleaved pairs-only output
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: Unpaired read output
+            optional: true
             synonyms:
             - -u
+            description: Unpaired read output
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: '"Strict interleaved" output, all reads'
+            optional: true
             synonyms:
             - -s
+            description: '"Strict interleaved" output, all reads'
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: '"Broken paired" output, all reads'
+            optional: true
             synonyms:
             - -b
+            description: '"Broken paired" output, all reads'
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: Output statistics to FILE.
+            optional: true
             synonyms:
             - -y
+            description: Output statistics to FILE.
             args: !SimpleFlagArg
               name: FILE
-            optional: true
-          parent: *id014
+          parent: *id015
           subcommands: []
           usage: []
           help_flag:
@@ -1417,25 +1936,26 @@ subcommands:
             To accept reads from standard input, use '/dev/stdin' as\nthe input file.\
             \ To output to standard output, use '-'.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id013
           positional: []
           named:
           - !Flag
-            description: Fixed (integer) length to truncate at.
+            optional: true
             synonyms:
             - -l
+            description: Fixed (integer) length to truncate at.
             args: !SimpleFlagArg
               name: LEN
-            optional: true
           - !Flag
-            description: Truncate at PROP * length bases
+            optional: true
             synonyms:
             - -p
+            description: Truncate at PROP * length bases
             args: !SimpleFlagArg
               name: PROP
-            optional: true
-          parent: *id014
+          parent: *id015
           subcommands: []
           usage: []
           help_flag:
@@ -1448,6 +1968,7 @@ subcommands:
             \ or FASTQ format.\nTo accept reads from standard input, use '/dev/stdin'\
             \ as\nthe input file.\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -1463,6 +1984,7 @@ subcommands:
           \ from header to the start of reads\n    stats      -- Basic statistics\
           \ about sequence files\n    trunc      -- Truncate sequences\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -1472,49 +1994,50 @@ subcommands:
         \nOPTIONS:\n    -x     Use base-16 sequence IDs.\n    -p     Treat reads as\
         \ pairs, add /1 or /2 to headers.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: seqhax
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: Number of reads. Use 0 for infinite. [default 1000]
+        optional: true
         synonyms:
         - -n
+        description: Number of reads. Use 0 for infinite. [default 1000]
         args: !SimpleFlagArg
           name: READS
-        optional: true
       - !Flag
-        description: Seed for RNG.
+        optional: true
         synonyms:
         - -s
+        description: Seed for RNG.
         args: !SimpleFlagArg
           name: SEED
-        optional: true
       - !Flag
-        description: Length of each read. [default 100]
+        optional: true
         synonyms:
         - -l
+        description: Length of each read. [default 100]
         args: !SimpleFlagArg
           name: LENGTH
-        optional: true
       - !Flag
-        description: Paired reads [default false]
+        optional: true
         synonyms:
         - -p
+        description: Paired reads [default false]
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Output as fasta (no qualities)
+        optional: true
         synonyms:
         - -f
+        description: Output as fasta (no qualities)
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id015
+      parent: *id016
       subcommands: []
       usage: []
       help_flag:
@@ -1526,43 +2049,44 @@ subcommands:
         \ 100]\n    -p         Paired reads [default false]\n    -f         Output\
         \ as fasta (no qualities)\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: FILE
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 0
         name: Number
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: of
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 2
         name: parallel
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 3
         name: jobs
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: Number of parallel jobs [1]
+        optional: true
         synonyms:
         - -t
+        description: Number of parallel jobs [1]
         args: !SimpleFlagArg
           name: THREADS
-        optional: true
-      parent: *id015
+      parent: *id016
       subcommands: []
       usage: []
       help_flag:
@@ -1572,41 +2096,42 @@ subcommands:
         \nOPTIONS:\n    -t THREADS  Number of parallel jobs [1]\n\nFILEs must be FASTQs,\
         \ optionally gzip-compressed\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: seqhax
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: seq
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: Add SEQ as prefix, adding quality charachters if fastq.
+        optional: true
         synonyms:
         - -P
+        description: Add SEQ as prefix, adding quality charachters if fastq.
         args: !SimpleFlagArg
           name: SEQ
-        optional: true
       - !Flag
-        description: Add SEQ as suffix, adding quality charachters if fastq.
+        optional: true
         synonyms:
         - -S
+        description: Add SEQ as suffix, adding quality charachters if fastq.
         args: !SimpleFlagArg
           name: SEQ
-        optional: true
       - !Flag
-        description: 'Paired mode: reads are kept/discared in pairs'
+        optional: true
         synonyms:
         - -p
+        description: 'Paired mode: reads are kept/discared in pairs'
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id015
+      parent: *id016
       subcommands: []
       usage: []
       help_flag:
@@ -1619,24 +2144,25 @@ subcommands:
         \nFILE should be a sequence file in FASTA or FASTQ format.\nTo accept reads\
         \ from standard input, use '/dev/stdin' as\nthe input file.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id008
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: r1
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: 'Output interleaved reads to FILE. Use - for stdout. (default:
-          no output)'
+        optional: true
         synonyms:
         - -o
+        description: 'Output interleaved reads to FILE. Use - for stdout. (default:
+          no output)'
         args: !SimpleFlagArg
           name: FILE
-        optional: true
-      parent: *id015
+      parent: *id016
       subcommands: []
       usage: []
       help_flag:
@@ -1646,30 +2172,31 @@ subcommands:
         \ OUTPUT] r1 r2\n\nOPTIONS:\n    -o FILE    Output interleaved reads to FILE.\
         \ Use - for stdout. (default: no output)\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id009
       positional: []
       named:
       - !Flag
-        description: Minimum length of each read. [default 1]
+        optional: true
         synonyms:
         - -l
+        description: Minimum length of each read. [default 1]
         args: !SimpleFlagArg
           name: LENGTH
-        optional: true
       - !Flag
-        description: Output as fasta (no qualities)
+        optional: true
         synonyms:
         - -f
+        description: Output as fasta (no qualities)
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: 'Paired mode: reads are kept/discared in pairs'
+        optional: true
         synonyms:
         - -p
+        description: 'Paired mode: reads are kept/discared in pairs'
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id015
+      parent: *id016
       subcommands: []
       usage: []
       help_flag:
@@ -1682,23 +2209,24 @@ subcommands:
         \ or FASTQ format.\nTo accept reads from standard input, use '/dev/stdin'\
         \ as\nthe input file.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id010
       positional: []
       named:
       - !Flag
-        description: Output FASTA.
+        optional: true
         synonyms:
         - -a
+        description: Output FASTA.
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Output FASTQ (adding qualities).
+        optional: true
         synonyms:
         - -q
+        description: Output FASTQ (adding qualities).
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id015
+      parent: *id016
       subcommands: []
       usage: []
       help_flag:
@@ -1708,48 +2236,49 @@ subcommands:
         \ FILE\n\nOPTIONS:\n    -a     Output FASTA.\n    -q     Output FASTQ (adding\
         \ qualities).\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id011
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: r1fq
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: r2fq
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: "Output interleaved reads to FILE. Use - for stdout.\nAll sets\
-          \ of paired end files will end up in same\noutput!!! (default: no output)"
+        optional: true
         synonyms:
         - -o
+        description: "Output interleaved reads to FILE. Use - for stdout.\nAll sets\
+          \ of paired end files will end up in same\noutput!!! (default: no output)"
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: Interleaved inputs
+        optional: true
         synonyms:
         - -i
+        description: Interleaved inputs
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Don't print tabular summary
+        optional: true
         synonyms:
         - -q
+        description: Don't print tabular summary
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: 'Number of parallel threads (default: no output)'
+        optional: true
         synonyms:
         - -t
+        description: 'Number of parallel threads (default: no output)'
         args: !SimpleFlagArg
           name: THREADS
-        optional: true
-      parent: *id015
+      parent: *id016
       subcommands: []
       usage: []
       help_flag:
@@ -1763,78 +2292,79 @@ subcommands:
         \           Interleaved inputs\n    -q             Don't print tabular summary\n\
         \    -t THREADS     Number of parallel threads (default: no output)\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id012
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: FILE
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: Force output to existing files.
+        optional: true
         synonyms:
         - -f
+        description: Force output to existing files.
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Minimum length of each read. [default 1]
+        optional: true
         synonyms:
         - -l
+        description: Minimum length of each read. [default 1]
         args: !SimpleFlagArg
           name: LENGTH
-        optional: true
       - !Flag
-        description: Pair first mate output
+        optional: true
         synonyms:
         - '-1'
+        description: Pair first mate output
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: Pair second mate output
+        optional: true
         synonyms:
         - '-2'
+        description: Pair second mate output
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: Interleaved pairs-only output
+        optional: true
         synonyms:
         - -p
+        description: Interleaved pairs-only output
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: Unpaired read output
+        optional: true
         synonyms:
         - -u
+        description: Unpaired read output
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: '"Strict interleaved" output, all reads'
+        optional: true
         synonyms:
         - -s
+        description: '"Strict interleaved" output, all reads'
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: '"Broken paired" output, all reads'
+        optional: true
         synonyms:
         - -b
+        description: '"Broken paired" output, all reads'
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: Output statistics to FILE.
+        optional: true
         synonyms:
         - -y
+        description: Output statistics to FILE.
         args: !SimpleFlagArg
           name: FILE
-        optional: true
-      parent: *id015
+      parent: *id016
       subcommands: []
       usage: []
       help_flag:
@@ -1854,25 +2384,26 @@ subcommands:
         \ in FASTA or FASTQ format.\nTo accept reads from standard input, use '/dev/stdin'\
         \ as\nthe input file. To output to standard output, use '-'.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id013
       positional: []
       named:
       - !Flag
-        description: Fixed (integer) length to truncate at.
+        optional: true
         synonyms:
         - -l
+        description: Fixed (integer) length to truncate at.
         args: !SimpleFlagArg
           name: LEN
-        optional: true
       - !Flag
-        description: Truncate at PROP * length bases
+        optional: true
         synonyms:
         - -p
+        description: Truncate at PROP * length bases
         args: !SimpleFlagArg
           name: PROP
-        optional: true
-      parent: *id015
+      parent: *id016
       subcommands: []
       usage: []
       help_flag:
@@ -1884,6 +2415,7 @@ subcommands:
         \ `-p` MUST be given.\nFILE should be a sequence file in FASTA or FASTQ format.\n\
         To accept reads from standard input, use '/dev/stdin' as\nthe input file.\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -1899,6 +2431,7 @@ subcommands:
       \    stats      -- Basic statistics about sequence files\n    trunc      --\
       \ Truncate sequences\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -1908,49 +2441,50 @@ subcommands:
     \nOPTIONS:\n    -x     Use base-16 sequence IDs.\n    -p     Treat reads as pairs,\
     \ add /1 or /2 to headers.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: seqhax
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: Number of reads. Use 0 for infinite. [default 1000]
+    optional: true
     synonyms:
     - -n
+    description: Number of reads. Use 0 for infinite. [default 1000]
     args: !SimpleFlagArg
       name: READS
-    optional: true
   - !Flag
-    description: Seed for RNG.
+    optional: true
     synonyms:
     - -s
+    description: Seed for RNG.
     args: !SimpleFlagArg
       name: SEED
-    optional: true
   - !Flag
-    description: Length of each read. [default 100]
+    optional: true
     synonyms:
     - -l
+    description: Length of each read. [default 100]
     args: !SimpleFlagArg
       name: LENGTH
-    optional: true
   - !Flag
-    description: Paired reads [default false]
+    optional: true
     synonyms:
     - -p
+    description: Paired reads [default false]
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Output as fasta (no qualities)
+    optional: true
     synonyms:
     - -f
+    description: Output as fasta (no qualities)
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id016
+  parent: *id017
   subcommands: []
   usage: []
   help_flag:
@@ -1962,43 +2496,44 @@ subcommands:
     \    -p         Paired reads [default false]\n    -f         Output as fasta (no\
     \ qualities)\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: FILE
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 0
     name: Number
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: of
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 2
     name: parallel
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 3
     name: jobs
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: Number of parallel jobs [1]
+    optional: true
     synonyms:
     - -t
+    description: Number of parallel jobs [1]
     args: !SimpleFlagArg
       name: THREADS
-    optional: true
-  parent: *id016
+  parent: *id017
   subcommands: []
   usage: []
   help_flag:
@@ -2008,41 +2543,42 @@ subcommands:
     OPTIONS:\n    -t THREADS  Number of parallel jobs [1]\n\nFILEs must be FASTQs,\
     \ optionally gzip-compressed\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: seqhax
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: seq
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: Add SEQ as prefix, adding quality charachters if fastq.
+    optional: true
     synonyms:
     - -P
+    description: Add SEQ as prefix, adding quality charachters if fastq.
     args: !SimpleFlagArg
       name: SEQ
-    optional: true
   - !Flag
-    description: Add SEQ as suffix, adding quality charachters if fastq.
+    optional: true
     synonyms:
     - -S
+    description: Add SEQ as suffix, adding quality charachters if fastq.
     args: !SimpleFlagArg
       name: SEQ
-    optional: true
   - !Flag
-    description: 'Paired mode: reads are kept/discared in pairs'
+    optional: true
     synonyms:
     - -p
+    description: 'Paired mode: reads are kept/discared in pairs'
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id016
+  parent: *id017
   subcommands: []
   usage: []
   help_flag:
@@ -2055,24 +2591,25 @@ subcommands:
     \ file in FASTA or FASTQ format.\nTo accept reads from standard input, use '/dev/stdin'\
     \ as\nthe input file.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id008
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: r1
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: 'Output interleaved reads to FILE. Use - for stdout. (default: no
-      output)'
+    optional: true
     synonyms:
     - -o
+    description: 'Output interleaved reads to FILE. Use - for stdout. (default: no
+      output)'
     args: !SimpleFlagArg
       name: FILE
-    optional: true
-  parent: *id016
+  parent: *id017
   subcommands: []
   usage: []
   help_flag:
@@ -2082,30 +2619,31 @@ subcommands:
     \ r1 r2\n\nOPTIONS:\n    -o FILE    Output interleaved reads to FILE. Use - for\
     \ stdout. (default: no output)\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id009
   positional: []
   named:
   - !Flag
-    description: Minimum length of each read. [default 1]
+    optional: true
     synonyms:
     - -l
+    description: Minimum length of each read. [default 1]
     args: !SimpleFlagArg
       name: LENGTH
-    optional: true
   - !Flag
-    description: Output as fasta (no qualities)
+    optional: true
     synonyms:
     - -f
+    description: Output as fasta (no qualities)
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: 'Paired mode: reads are kept/discared in pairs'
+    optional: true
     synonyms:
     - -p
+    description: 'Paired mode: reads are kept/discared in pairs'
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id016
+  parent: *id017
   subcommands: []
   usage: []
   help_flag:
@@ -2117,23 +2655,24 @@ subcommands:
     \ kept/discared in pairs\n\nFILE should be a sequence file in FASTA or FASTQ format.\n\
     To accept reads from standard input, use '/dev/stdin' as\nthe input file.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id010
   positional: []
   named:
   - !Flag
-    description: Output FASTA.
+    optional: true
     synonyms:
     - -a
+    description: Output FASTA.
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Output FASTQ (adding qualities).
+    optional: true
     synonyms:
     - -q
+    description: Output FASTQ (adding qualities).
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id016
+  parent: *id017
   subcommands: []
   usage: []
   help_flag:
@@ -2143,48 +2682,49 @@ subcommands:
     \ FILE\n\nOPTIONS:\n    -a     Output FASTA.\n    -q     Output FASTQ (adding\
     \ qualities).\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id011
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: r1fq
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: r2fq
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: "Output interleaved reads to FILE. Use - for stdout.\nAll sets of\
-      \ paired end files will end up in same\noutput!!! (default: no output)"
+    optional: true
     synonyms:
     - -o
+    description: "Output interleaved reads to FILE. Use - for stdout.\nAll sets of\
+      \ paired end files will end up in same\noutput!!! (default: no output)"
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: Interleaved inputs
+    optional: true
     synonyms:
     - -i
+    description: Interleaved inputs
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Don't print tabular summary
+    optional: true
     synonyms:
     - -q
+    description: Don't print tabular summary
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: 'Number of parallel threads (default: no output)'
+    optional: true
     synonyms:
     - -t
+    description: 'Number of parallel threads (default: no output)'
     args: !SimpleFlagArg
       name: THREADS
-    optional: true
-  parent: *id016
+  parent: *id017
   subcommands: []
   usage: []
   help_flag:
@@ -2198,78 +2738,79 @@ subcommands:
     \    -q             Don't print tabular summary\n    -t THREADS     Number of\
     \ parallel threads (default: no output)\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id012
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: FILE
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: Force output to existing files.
+    optional: true
     synonyms:
     - -f
+    description: Force output to existing files.
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Minimum length of each read. [default 1]
+    optional: true
     synonyms:
     - -l
+    description: Minimum length of each read. [default 1]
     args: !SimpleFlagArg
       name: LENGTH
-    optional: true
   - !Flag
-    description: Pair first mate output
+    optional: true
     synonyms:
     - '-1'
+    description: Pair first mate output
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: Pair second mate output
+    optional: true
     synonyms:
     - '-2'
+    description: Pair second mate output
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: Interleaved pairs-only output
+    optional: true
     synonyms:
     - -p
+    description: Interleaved pairs-only output
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: Unpaired read output
+    optional: true
     synonyms:
     - -u
+    description: Unpaired read output
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: '"Strict interleaved" output, all reads'
+    optional: true
     synonyms:
     - -s
+    description: '"Strict interleaved" output, all reads'
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: '"Broken paired" output, all reads'
+    optional: true
     synonyms:
     - -b
+    description: '"Broken paired" output, all reads'
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: Output statistics to FILE.
+    optional: true
     synonyms:
     - -y
+    description: Output statistics to FILE.
     args: !SimpleFlagArg
       name: FILE
-    optional: true
-  parent: *id016
+  parent: *id017
   subcommands: []
   usage: []
   help_flag:
@@ -2289,25 +2830,26 @@ subcommands:
     \ standard input, use '/dev/stdin' as\nthe input file. To output to standard output,\
     \ use '-'.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id013
   positional: []
   named:
   - !Flag
-    description: Fixed (integer) length to truncate at.
+    optional: true
     synonyms:
     - -l
+    description: Fixed (integer) length to truncate at.
     args: !SimpleFlagArg
       name: LEN
-    optional: true
   - !Flag
-    description: Truncate at PROP * length bases
+    optional: true
     synonyms:
     - -p
+    description: Truncate at PROP * length bases
     args: !SimpleFlagArg
       name: PROP
-    optional: true
-  parent: *id016
+  parent: *id017
   subcommands: []
   usage: []
   help_flag:
@@ -2319,6 +2861,7 @@ subcommands:
     \ given.\nFILE should be a sequence file in FASTA or FASTQ format.\nTo accept\
     \ reads from standard input, use '/dev/stdin' as\nthe input file.\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -2333,3 +2876,4 @@ help_text: "Invalid program name '--help'\nUSAGE:\n    seqhax PROGRAM [options]\
   \ Add index sequences from header to the start of reads\n    stats      -- Basic\
   \ statistics about sequence files\n    trunc      -- Truncate sequences\n"
 generated_using: *id004
+docker_image:

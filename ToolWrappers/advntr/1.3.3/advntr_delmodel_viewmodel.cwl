@@ -1,21 +1,16 @@
 class: CommandLineTool
 id: advntr_delmodel_viewmodel.cwl
 inputs:
-- id: in_vid_slash_vntr_id
+- id: in_vntr_id
   doc: VNTR ID
-  type: string
+  type: string?
   inputBinding:
-    prefix: -vid/--vntr_id
-- id: in_m_slash_models
+    prefix: --vntr_id
+- id: in_models
   doc: VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]
-  type: File
+  type: File?
   inputBinding:
-    prefix: -m/--models
-- id: in_h_slash_help
-  doc: show this help message and exit
-  type: boolean
-  inputBinding:
-    prefix: -h/--help
+    prefix: --models
 - id: in_ad_vntr
   doc: ''
   type: string
@@ -30,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - advntr

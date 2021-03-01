@@ -1,15 +1,11 @@
 version 1.0
 
 task Merlin {
-  input {
-    Boolean? tabulate
-  }
   command <<<
-    merlin \
-      ~{if (tabulate) then "--tabulate" else ""}
+    merlin
   >>>
-  parameter_meta {
-    tabulate: "[merlin]"
+  runtime {
+    docker: "None"
   }
   output {
     File out_stdout = stdout()

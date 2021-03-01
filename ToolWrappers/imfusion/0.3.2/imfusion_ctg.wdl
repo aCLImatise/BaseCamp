@@ -28,6 +28,9 @@ task Imfusionctg {
       ~{if defined(expression) then ("--expression " +  '"' + expression + '"') else ""} \
       ~{if defined(de_threshold) then ("--de_threshold " +  '"' + de_threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     insertions: "Path to the merged insertions file from imfusion-\\nmerge."
     reference: "Path to the reference genome sequence (in fasta\\nformat). Can either be the augmented reference genome\\nor the original reference."

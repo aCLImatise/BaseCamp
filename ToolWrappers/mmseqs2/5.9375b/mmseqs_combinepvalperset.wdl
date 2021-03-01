@@ -12,6 +12,9 @@ task MmseqsCombinepvalperset {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alpha: "0.001           Set alpha for combining p-values during aggregation"
     threads: "8               number of cores used for the computation (uses all cores by default)"

@@ -1,0 +1,66 @@
+!Command
+command:
+- hicFindRestSite
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  - -f
+  description: Path to fasta file for the organism genome.
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --searchPattern
+  - -p
+  description: "Search pattern. For example, for HindIII this pattern\nis \"AAGCTT\"\
+    . Both, forward and reverse strand are\nsearched for a match. The pattern is a\
+    \ regexp and can\ncontain regexp specif syntax (see\nhttps://docs.python.org/2/library/re.html).\
+    \ For\nexample the patternCG..GC will find all occurrence of\nCG followed by any\
+    \ two bases and then GC."
+  args: !SimpleFlagArg
+    name: SEARCHPATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - --outFile
+  - -o
+  description: Name for the resulting bed file.
+  args: !SimpleFlagArg
+    name: OUTFILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicFindRestSite --fasta mm10.fa --searchPattern AAGCTT -o rest_site_positions.bed\n\
+  \nIdentifies the genomic locations of restriction sites.\n\nRequired arguments:\n\
+  \  --fasta FASTA, -f FASTA\n                        Path to fasta file for the organism\
+  \ genome.\n  --searchPattern SEARCHPATTERN, -p SEARCHPATTERN\n                 \
+  \       Search pattern. For example, for HindIII this pattern\n                \
+  \        is \"AAGCTT\". Both, forward and reverse strand are\n                 \
+  \       searched for a match. The pattern is a regexp and can\n                \
+  \        contain regexp specif syntax (see\n                        https://docs.python.org/2/library/re.html).\
+  \ For\n                        example the patternCG..GC will find all occurrence\
+  \ of\n                        CG followed by any two bases and then GC.\n  --outFile\
+  \ OUTFILE, -o OUTFILE\n                        Name for the resulting bed file.\n\
+  \nOptional arguments:\n  --help, -h            show this help message and exit\n\
+  \  --version             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

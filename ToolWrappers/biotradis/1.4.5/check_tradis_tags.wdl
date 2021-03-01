@@ -10,6 +10,9 @@ task CheckTradisTags {
       ~{check_tags} \
       ~{if (bam_file_tradis) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam_file_tradis: ": bam file with tradis tags"
     check_tags: ""

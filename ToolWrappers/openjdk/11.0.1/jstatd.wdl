@@ -12,6 +12,9 @@ task Jstatd {
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
       ~{if (nr) then "-nr" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n: ""
     p: ""

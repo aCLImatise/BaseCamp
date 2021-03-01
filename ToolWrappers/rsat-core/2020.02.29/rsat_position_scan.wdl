@@ -16,6 +16,9 @@ task RsatPositionscan {
       ~{specified_dot} \
       ~{done_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     position_scan: "[1mVERSION[0m"
     j_dotado_tc_dot_mondragon_atncmmdotuiodotno: "[1mCATEGORY[0m"

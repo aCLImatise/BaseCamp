@@ -12,6 +12,9 @@ task UpdateClrRanges {
       ~{seqname_do_tend_five_do_tend_three_dot_txt} \
       ~{if (i) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: ""
     bank_name: ""

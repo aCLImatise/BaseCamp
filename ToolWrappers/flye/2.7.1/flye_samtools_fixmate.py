@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String, Int
+
+Flye_Samtools_Fixmate_V0_1_0 = CommandToolBuilder(tool="flye_samtools_fixmate", base_command=["flye-samtools", "fixmate"], inputs=[ToolInput(tag="in_remove_unmapped_reads", input_type=Boolean(optional=True), prefix="-r", doc=InputDocumentation(doc="Remove unmapped reads and secondary alignments")), ToolInput(tag="in_disable_fr_proper", input_type=Boolean(optional=True), prefix="-p", doc=InputDocumentation(doc="Disable FR proper pair check")), ToolInput(tag="in_add_cigar_tag", input_type=Boolean(optional=True), prefix="-c", doc=InputDocumentation(doc="Add template cigar ct tag")), ToolInput(tag="in_add_mate_score", input_type=Boolean(optional=True), prefix="-m", doc=InputDocumentation(doc="Add mate score tag")), ToolInput(tag="in_input_fmt_option", input_type=File(optional=True), prefix="--input-fmt-option", doc=InputDocumentation(doc="[=VAL]\nSpecify a single input file format option in the form\nof OPTION or OPTION=VALUE")), ToolInput(tag="in_output_fmt", input_type=String(optional=True), prefix="--output-fmt", doc=InputDocumentation(doc="[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)")), ToolInput(tag="in_output_fmt_option", input_type=File(optional=True), prefix="--output-fmt-option", doc=InputDocumentation(doc="[=VAL]\nSpecify a single output file format option in the form\nof OPTION or OPTION=VALUE")), ToolInput(tag="in_reference", input_type=File(optional=True), prefix="--reference", doc=InputDocumentation(doc="Reference sequence FASTA FILE [null]")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="Number of additional threads to use [0]")), ToolInput(tag="in_sam_tools", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_fix_mate", input_type=String(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_in_dot_names_rt_dot_bam", input_type=String(), position=2, doc=InputDocumentation(doc="")), ToolInput(tag="in_out_dot_names_rt_dot_bam", input_type=String(), position=3, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_output_fmt_option", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_fmt_option", type_hint=File()), doc=OutputDocumentation(doc="[=VAL]\nSpecify a single output file format option in the form\nof OPTION or OPTION=VALUE"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Flye_Samtools_Fixmate_V0_1_0().translate("wdl", allow_empty_container=True)
+

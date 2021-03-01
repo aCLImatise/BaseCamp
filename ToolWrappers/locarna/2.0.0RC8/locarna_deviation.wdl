@@ -12,6 +12,9 @@ task LocarnaDeviation {
       ~{aln_file} \
       ~{ref_aln_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     deviation: ""
     aln_file: ""

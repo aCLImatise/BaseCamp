@@ -1,0 +1,215 @@
+!Command
+command:
+- reformat.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: disabled; to filter reads with any of a symbol type, set to 0.
+  args: !SimpleFlagArg
+    name: means
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eoom
+  description: This flag will cause the process to exit if an out-of-memory exception
+    occurs.  Requires Java 8u92+.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: Disable assertions.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified January 26, 2021\n\nDescription:\
+  \  Reformats reads to change ASCII quality encoding, interleaving, file format,\
+  \ or compression format.\nOptionally performs additional functions such as quality\
+  \ trimming, subsetting, and subsampling.\nSupports fastq, fasta, fasta+qual, scarf,\
+  \ oneline, sam, bam, gzip, bz2.\nPlease read bbmap/docs/guides/ReformatGuide.txt\
+  \ for more information.\n\nUsage:  reformat.sh in=<file> in2=<file2> out=<outfile>\
+  \ out2=<outfile2>\n\nin2 and out2 are for paired reads and are optional.\nIf input\
+  \ is paired and there is only one output file, it will be written interleaved.\n\
+  \nParameters and their defaults:\n\now=f                    (overwrite) Overwrites\
+  \ files that already exist.\napp=f                   (append) Append to files that\
+  \ already exist.\nzl=4                    (ziplevel) Set compression level, 1 (low)\
+  \ to 9 (max).\nint=f                   (interleaved) Determines whether INPUT file\
+  \ is considered interleaved.\nfastawrap=70            Length of lines in fasta output.\n\
+  fastareadlen=0          Set to a non-zero number to break fasta files into reads\
+  \ of at most this length.\nfastaminlen=1           Ignore fasta reads shorter than\
+  \ this.\nqin=auto                ASCII offset for input quality.  May be 33 (Sanger),\
+  \ 64 (Illumina), or auto.\nqout=auto               ASCII offset for output quality.\
+  \  May be 33 (Sanger), 64 (Illumina), or auto (same as input).\nqfake=30       \
+  \         Quality value used for fasta to fastq reformatting.\nqfin=<.qual file>\
+  \       Read qualities from this qual file, for the reads coming from 'in=<fasta\
+  \ file>'\nqfin2=<.qual file>      Read qualities from this qual file, for the reads\
+  \ coming from 'in2=<fasta file>'\nqfout=<.qual file>      Write qualities from this\
+  \ qual file, for the reads going to 'out=<fasta file>'\nqfout2=<.qual file>    \
+  \ Write qualities from this qual file, for the reads coming from 'out2=<fasta file>'\n\
+  outsingle=<file>        (outs) If a read is longer than minlength and its mate is\
+  \ shorter, the longer one goes here.\ndeleteinput=f           Delete input upon\
+  \ successful completion.\nref=<file>              Optional reference fasta for sam\
+  \ processing.\n\nProcessing Parameters:\n\nverifypaired=f          (vpair) When\
+  \ true, checks reads to see if the names look paired.  Prints an error message if\
+  \ not.\nverifyinterleaved=f     (vint) sets 'vpair' to true and 'interleaved' to\
+  \ true.\nallowidenticalnames=f   (ain) When verifying pair names, allows identical\
+  \ names, instead of requiring /1 and /2 or 1: and 2:\ntossbrokenreads=f       (tbr)\
+  \ Discard reads that have different numbers of bases and qualities.  By default\
+  \ this will be detected and cause a crash.\nignorebadquality=f      (ibq) Fix out-of-range\
+  \ quality values instead of crashing with a warning.\naddslash=f              Append\
+  \ ' /1' and ' /2' to read names, if not already present.  Please include the flag\
+  \ 'int=t' if the reads are interleaved.\nspaceslash=t            Put a space before\
+  \ the slash in addslash mode.\naddcolon=f              Append ' 1:' and ' 2:' to\
+  \ read names, if not already present.  Please include the flag 'int=t' if the reads\
+  \ are interleaved.\nunderscore=f            Change whitespace in read names to underscores.\n\
+  rcomp=f                 (rc) Reverse-complement reads.\nrcompmate=f            \
+  \ (rcm) Reverse-complement read 2 only.\ncomp=f                  (complement) Reverse-complement\
+  \ reads.\nchangequality=t         (cq) N bases always get a quality of 0 and ACGT\
+  \ bases get a min quality of 2.\nquantize=f              Quantize qualities to a\
+  \ subset of values like NextSeq.  Can also be used with comma-delimited list, like\
+  \ quantize=0,8,13,22,27,32,37\ntuc=f                   (touppercase) Change lowercase\
+  \ letters in reads to uppercase.\nuniquenames=f           Make duplicate names unique\
+  \ by appending _<number>.\nremap=                  A set of pairs: remap=CTGN will\
+  \ transform C>T and G>N.\n                        Use remap1 and remap2 to specify\
+  \ read 1 or 2.\niupacToN=f              (itn) Convert non-ACGTN symbols to N.\n\
+  monitor=f               Kill this process if it crashes.  monitor=600,0.01 would\
+  \ kill after 600 seconds under 1% usage.\ncrashjunk=t             Crash when encountering\
+  \ reads with invalid bases.\ntossjunk=f              Discard reads with invalid\
+  \ characters as bases.\nfixjunk=f               Convert invalid bases to N (or X\
+  \ for amino acids).\ndotdashxton=f           Specifically convert . - and X to N\
+  \ (or X for amino acids).\nfixheaders=f            Convert nonstandard header characters\
+  \ to standard ASCII.\nrecalibrate=f           (recal) Recalibrate quality scores.\
+  \  Must first generate matrices with CalcTrueQuality.\nmaxcalledquality=41     Quality\
+  \ scores capped at this upper bound.\nmincalledquality=2      Quality scores of\
+  \ ACGT bases will be capped at lower bound.\ntrimreaddescription=f   (trd) Trim\
+  \ the names of reads after the first whitespace.\ntrimrname=f             For sam/bam\
+  \ files, trim rname/rnext fields after the first space.\nfixheaders=f          \
+  \  Replace characters in headers such as space, *, and | to make them valid file\
+  \ names.\nwarnifnosequence=t      For fasta, issue a warning if a sequenceless header\
+  \ is encountered.\nwarnfirsttimeonly=t     Issue a warning for only the first sequenceless\
+  \ header.\nutot=f                  Convert U to T (for RNA -> DNA translation).\n\
+  padleft=0               Pad the left end of sequences with this many symbols.\n\
+  padright=0              Pad the right end of sequences with this many symbols.\n\
+  pad=0                   Set padleft and padright to the same value.\npadsymbol=N\
+  \             Symbol to use for padding.\n\nHistogram output parameters:\n\nbhist=<file>\
+  \            Base composition histogram by position.\nqhist=<file>            Quality\
+  \ histogram by position.\nqchist=<file>           Count of bases with each quality\
+  \ value.\naqhist=<file>           Histogram of average read quality.\nbqhist=<file>\
+  \           Quality histogram designed for box plots.\nlhist=<file>            Read\
+  \ length histogram.\ngchist=<file>           Read GC content histogram.\ngcbins=100\
+  \              Number gchist bins.  Set to 'auto' to use read length.\ngcplot=f\
+  \                Add a graphical representation to the gchist.\nmaxhistlen=6000\
+  \         Set an upper bound for histogram lengths; higher uses more memory.\n \
+  \                       The default is 6000 for some histograms and 80000 for others.\n\
+  \nHistograms for sam files only (requires sam format 1.4 or higher):\n\nehist=<file>\
+  \            Errors-per-read histogram.\nqahist=<file>           Quality accuracy\
+  \ histogram of error rates versus quality score.\nindelhist=<file>        Indel\
+  \ length histogram.\nmhist=<file>            Histogram of match, sub, del, and ins\
+  \ rates by read location.\nihist=<file>            Insert size histograms.  Requires\
+  \ paired reads in a sam file.\nidhist=<file>           Histogram of read count versus\
+  \ percent identity.\nidbins=100              Number idhist bins.  Set to 'auto'\
+  \ to use read length.\n\nSampling parameters:\n\nreads=-1                Set to\
+  \ a positive number to only process this many INPUT reads (or pairs), then quit.\n\
+  skipreads=-1            Skip (discard) this many INPUT reads before processing the\
+  \ rest.\nsamplerate=1            Randomly output only this fraction of reads; 1\
+  \ means sampling is disabled.\nsampleseed=-1           Set to a positive number\
+  \ to use that prng seed for sampling (allowing deterministic sampling).\nsamplereadstarget=0\
+  \     (srt) Exact number of OUTPUT reads (or pairs) desired.\nsamplebasestarget=0\
+  \     (sbt) Exact number of OUTPUT bases desired.\n                        Important:\
+  \ srt/sbt flags should not be used with stdin, samplerate, qtrim, minlength, or\
+  \ minavgquality.\nupsample=f              Allow srt/sbt to upsample (duplicate reads)\
+  \ when the target is greater than input.\nprioritizelength=f      If true, calculate\
+  \ a length threshold to reach the target, and retain all reads of at least that\
+  \ length (must set srt or sbt).\n\nTrimming and filtering parameters:\n\nqtrim=f\
+  \                 Trim read ends to remove bases with quality below trimq.\n   \
+  \                     Values: t (trim both ends), f (neither end), r (right end\
+  \ only), l (left end only), w (sliding window).\ntrimq=6                 Regions\
+  \ with average quality BELOW this will be trimmed.  Can be a floating-point number\
+  \ like 7.3.\nminlength=0             (ml) Reads shorter than this after trimming\
+  \ will be discarded.  Pairs will be discarded only if both are shorter.\nmlf=0 \
+  \                  (mlf) Reads shorter than this fraction of original length after\
+  \ trimming will be discarded.\nmaxlength=0             If nonzero, reads longer\
+  \ than this after trimming will be discarded.\nbreaklength=0           If nonzero,\
+  \ reads longer than this will be broken into multiple reads of this length.  Does\
+  \ not work for paired reads.\nrequirebothbad=t        (rbb) Only discard pairs if\
+  \ both reads are shorter than minlen.\ninvertfilters=f         (invert) Output failing\
+  \ reads instead of passing reads.\nminavgquality=0         (maq) Reads with average\
+  \ quality (after trimming) below this will be discarded.\nmaqb=0               \
+  \   If positive, calculate maq from this many initial bases.\nchastityfilter=f \
+  \       (cf) Reads with names  containing ' 1:Y:' or ' 2:Y:' will be discarded.\n\
+  barcodefilter=f         Remove reads with unexpected barcodes if barcodes is set,\
+  \ or barcodes containing 'N' otherwise.  \n                        A barcode must\
+  \ be the last part of the read header.\nbarcodes=               Comma-delimited\
+  \ list of barcodes or files of barcodes.\nmaxns=-1                If 0 or greater,\
+  \ reads with more Ns than this (after trimming) will be discarded.\nminconsecutivebases=0\
+  \   (mcb) Discard reads without at least this many consecutive called bases.\nforcetrimleft=0\
+  \         (ftl) If nonzero, trim left bases of the read to this position (exclusive,\
+  \ 0-based).\nforcetrimright=0        (ftr) If nonzero, trim right bases of the read\
+  \ after this position (exclusive, 0-based).\nforcetrimright2=0       (ftr2) If positive,\
+  \ trim this many bases on the right end.\nforcetrimmod=5          (ftm) If positive,\
+  \ trim length to be equal to zero modulo this number.\nmingc=0                 Discard\
+  \ reads with GC content below this.\nmaxgc=1                 Discard reads with\
+  \ GC content above this.\ngcpairs=t               Use average GC of paired reads.\n\
+  \                        Also affects gchist.\n\nSam and bam processing options:\n\
+  \nmappedonly=f            Toss unmapped reads.\nunmappedonly=f          Toss mapped\
+  \ reads.\npairedonly=f            Toss reads that are not mapped as proper pairs.\n\
+  unpairedonly=f          Toss reads that are mapped as proper pairs.\nprimaryonly=f\
+  \           Toss secondary alignments.  Set this to true for sam to fastq conversion.\n\
+  minmapq=-1              If non-negative, toss reads with mapq under this.\nmaxmapq=-1\
+  \              If non-negative, toss reads with mapq over this.\nrequiredbits=0\
+  \          (rbits) Toss sam lines with any of these flag bits unset.  Similar to\
+  \ samtools -f.\nfilterbits=0            (fbits) Toss sam lines with any of these\
+  \ flag bits set.  Similar to samtools -F.\nstoptag=f               Set to true to\
+  \ write a tag indicating read stop location, prefixed by YS:i:\nsam=           \
+  \         Set to 'sam=1.3' to convert '=' and 'X' cigar symbols (from sam 1.4+ format)\
+  \ to 'M'.\n                        Set to 'sam=1.4' to convert 'M' to '=' and 'X'\
+  \ (sam=1.4 requires MD tags to be present, or ref to be specified).\n\nSam and bam\
+  \ alignment filtering options:\nThese require = and X symbols in cigar strings,\
+  \ or MD tags, or a reference fasta.\n-1 means disabled; to filter reads with any\
+  \ of a symbol type, set to 0.\n\nsubfilter=-1            Discard reads with more\
+  \ than this many substitutions.\nminsubs=-1              Discard reads with fewer\
+  \ than this many substitutions.\ninsfilter=-1            Discard reads with more\
+  \ than this many insertions.\ndelfilter=-1            Discard reads with more than\
+  \ this many deletions.\nindelfilter=-1          Discard reads with more than this\
+  \ many indels.\neditfilter=-1           Discard reads with more than this many edits.\n\
+  inslenfilter=-1         Discard reads with an insertion longer than this.\ndellenfilter=-1\
+  \         Discard reads with a deletion longer than this.\nminidfilter=-1.0    \
+  \    Discard reads with identity below this (0-1).\nmaxidfilter=1.0         Discard\
+  \ reads with identity above this (0-1).\nclipfilter=-1           Discard reads with\
+  \ more than this many soft-clipped bases.\n\nKmer counting and cardinality estimation:\n\
+  k=0                     If positive, count the total number of kmers.\ncardinality=f\
+  \           (loglog) Count unique kmers using the LogLog algorithm.\nloglogbuckets=1999\
+  \      Use this many buckets for cardinality estimation.\n\nShortcuts: \nThe # symbol\
+  \ will be substituted for 1 and 2.  The % symbol in out will be substituted for\
+  \ input name minus extensions.\nFor example:\nreformat.sh in=read#.fq out=%.fa\n\
+  ...is equivalent to:\nreformat.sh in1=read1.fq in2=read2.fq out1=read1.fa out2=read2.fa\n\
+  \nJava Parameters:\n-Xmx                    This will set Java's memory usage, overriding\
+  \ autodetection.\n                        -Xmx20g will specify 20 gigs of RAM, and\
+  \ -Xmx200m will specify 200 megs.\n                        The max is typically\
+  \ 85% of physical memory.\n-eoom                   This flag will cause the process\
+  \ to exit if an out-of-memory exception occurs.  Requires Java 8u92+.\n-da     \
+  \                Disable assertions.\n\nPlease contact Brian Bushnell at bbushnell@lbl.gov\
+  \ if you encounter any problems.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

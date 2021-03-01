@@ -24,6 +24,9 @@ task Metacherchantsh {
       ~{if (continue) then "--continue" else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_size_mandatory: "k-mer size (MANDATORY)"
     seq: "FASTA file with sequences (MANDATORY)"

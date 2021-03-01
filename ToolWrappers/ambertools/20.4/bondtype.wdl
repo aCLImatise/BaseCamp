@@ -4,6 +4,9 @@ task Bondtype {
   command <<<
     bondtype
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

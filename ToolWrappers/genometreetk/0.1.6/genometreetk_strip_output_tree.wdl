@@ -16,6 +16,9 @@ task GenometreetkStripOutputTree {
       ~{output_tree} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     silent: ""
     genome_tree_tk: ""

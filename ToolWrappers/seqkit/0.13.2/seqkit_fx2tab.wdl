@@ -48,6 +48,9 @@ task SeqkitFx2tab {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alphabet: "print alphabet letters"
     avg_qual: "print average quality of a read"

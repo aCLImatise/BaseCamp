@@ -3,237 +3,237 @@ command:
 - htseq-count
 positional:
 - !Positional
-  description: "Path to the SAM/BAM files containing the mapped reads.\nIf '-' is\
-    \ selected, read from standard input"
+  optional: false
   position: 0
   name: samfilenames
-  optional: false
+  description: "Path to the SAM/BAM files containing the mapped reads.\nIf '-' is\
+    \ selected, read from standard input"
 - !Positional
-  description: Path to the GTF file containing the features
+  optional: false
   position: 1
   name: featuresfilename
-  optional: false
+  description: Path to the GTF file containing the features
 named:
 - !Flag
-  description: "Type of <alignment_file> data. DEPRECATED: file format\nis detected\
-    \ automatically. This option is ignored."
+  optional: true
   synonyms:
   - -f
   - --format
+  description: "Type of <alignment_file> data. DEPRECATED: file format\nis detected\
+    \ automatically. This option is ignored."
   args: !ChoiceFlagArg
     choices: !!set
-      bam:
       sam:
+      bam:
       auto:
-  optional: true
 - !Flag
-  description: "'pos' or 'name'. Sorting order of <alignment_file>\n(default: name).\
-    \ Paired-end sequencing data must be\nsorted either by position or by read name,\
-    \ and the\nsorting order must be specified. Ignored for single-\nend data."
+  optional: true
   synonyms:
   - -r
   - --order
+  description: "'pos' or 'name'. Sorting order of <alignment_file>\n(default: name).\
+    \ Paired-end sequencing data must be\nsorted either by position or by read name,\
+    \ and the\nsorting order must be specified. Ignored for single-\nend data."
   args: !ChoiceFlagArg
     choices: !!set
       name:
       pos:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-reads-in-buffer
   description: "When <alignment_file> is paired end sorted by\nposition, allow only\
     \ so many reads to stay in memory\nuntil the mates are found (raising this number\
     \ will\nuse more memory). Has no effect for single end or\npaired end sorted by\
     \ name"
-  synonyms:
-  - --max-reads-in-buffer
   args: !SimpleFlagArg
     name: MAX_BUFFER_SIZE
-  optional: true
 - !Flag
-  description: "Whether the data is from a strand-specific assay.\nSpecify 'yes',\
-    \ 'no', or 'reverse' (default: yes).\n'reverse' means 'yes' with reversed strand\n\
-    interpretation"
+  optional: true
   synonyms:
   - -s
   - --stranded
+  description: "Whether the data is from a strand-specific assay.\nSpecify 'yes',\
+    \ 'no', or 'reverse' (default: yes).\n'reverse' means 'yes' with reversed strand\n\
+    interpretation"
   args: !ChoiceFlagArg
     choices: !!set
-      yes:
       reverse:
       no:
-  optional: true
+      yes:
 - !Flag
-  description: "Skip all reads with MAPQ alignment quality lower than\nthe given minimum\
-    \ value (default: 10). MAPQ is the 5th\ncolumn of a SAM/BAM file and its usage\
-    \ depends on the\nsoftware used to map the reads."
+  optional: true
   synonyms:
   - -a
   - --minaqual
+  description: "Skip all reads with MAPQ alignment quality lower than\nthe given minimum\
+    \ value (default: 10). MAPQ is the 5th\ncolumn of a SAM/BAM file and its usage\
+    \ depends on the\nsoftware used to map the reads."
   args: !SimpleFlagArg
     name: MINAQUAL
-  optional: true
 - !Flag
-  description: "Feature type (3rd column in GTF file) to be used, all\nfeatures of\
-    \ other type are ignored (default, suitable\nfor Ensembl GTF files: exon)"
+  optional: true
   synonyms:
   - -t
   - --type
+  description: "Feature type (3rd column in GTF file) to be used, all\nfeatures of\
+    \ other type are ignored (default, suitable\nfor Ensembl GTF files: exon)"
   args: !SimpleFlagArg
     name: FEATURETYPE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --idattr
   description: "GTF attribute to be used as feature ID (default,\nsuitable for Ensembl\
     \ GTF files: gene_id). All feature\nof the right type (see -t option) within the\
     \ same GTF\nattribute will be added together. The typical way of\nusing this option\
     \ is to count all exonic reads from\neach gene and add the exons but other uses\
     \ are\npossible as well."
-  synonyms:
-  - -i
-  - --idattr
   args: !SimpleFlagArg
     name: IDATTR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --additional-attr
   description: "Additional feature attributes (default: none, suitable\nfor Ensembl\
     \ GTF files: gene_name). Use multiple times\nfor more than one additional attribute.\
     \ These\nattributes are only used as annotations in the output,\nwhile the determination\
     \ of how the counts are added\ntogether is done based on option -i."
-  synonyms:
-  - --additional-attr
   args: !SimpleFlagArg
     name: ADDITIONAL_ATTR
-  optional: true
 - !Flag
-  description: "Mode to handle reads overlapping more than one feature\n(choices:\
-    \ union, intersection-strict, intersection-\nnonempty; default: union)"
+  optional: true
   synonyms:
   - -m
   - --mode
+  description: "Mode to handle reads overlapping more than one feature\n(choices:\
+    \ union, intersection-strict, intersection-\nnonempty; default: union)"
   args: !ChoiceFlagArg
     choices: !!set
-      union:
       intersection-strict:
+      union:
       intersection-nonempty:
-  optional: true
 - !Flag
-  description: "Whether and how to score reads that are not uniquely\naligned or ambiguously\
-    \ assigned to features (choices:\nnone, all, fraction, random; default: none)"
+  optional: true
   synonyms:
   - --nonunique
+  description: "Whether and how to score reads that are not uniquely\naligned or ambiguously\
+    \ assigned to features (choices:\nnone, all, fraction, random; default: none)"
   args: !ChoiceFlagArg
     choices: !!set
+      all:
       none:
       random:
-      all:
       fraction:
-  optional: true
 - !Flag
-  description: Whether to score secondary alignments (0x100 flag)
+  optional: true
   synonyms:
   - --secondary-alignments
+  description: Whether to score secondary alignments (0x100 flag)
   args: !ChoiceFlagArg
     choices: !!set
-      score:
       ignore:
-  optional: true
+      score:
 - !Flag
-  description: Whether to score supplementary alignments (0x800 flag)
+  optional: true
   synonyms:
   - --supplementary-alignments
+  description: Whether to score supplementary alignments (0x800 flag)
   args: !ChoiceFlagArg
     choices: !!set
-      score:
       ignore:
-  optional: true
+      score:
 - !Flag
-  description: "Write out all SAM alignment records into SAM/BAM files\n(one per input\
-    \ file needed), annotating each line with\nits feature assignment (as an optional\
-    \ field with tag\n'XF'). See the -p option to use BAM instead of SAM."
+  optional: true
   synonyms:
   - -o
   - --samout
+  description: "Write out all SAM alignment records into SAM/BAM files\n(one per input\
+    \ file needed), annotating each line with\nits feature assignment (as an optional\
+    \ field with tag\n'XF'). See the -p option to use BAM instead of SAM."
   args: !SimpleFlagArg
     name: SAMOUTS
-  optional: true
 - !Flag
-  description: Format to use with the --samout option.
+  optional: true
   synonyms:
   - -p
   - --samout-format
+  description: Format to use with the --samout option.
   args: !ChoiceFlagArg
     choices: !!set
-      SAM:
       BAM:
       bam:
+      SAM:
       sam:
-  optional: true
 - !Flag
-  description: 'Column delimiter in output (default: TAB).'
+  optional: true
   synonyms:
   - -d
   - --delimiter
+  description: 'Column delimiter in output (default: TAB).'
   args: !SimpleFlagArg
     name: OUTPUT_DELIMITER
-  optional: true
 - !Flag
-  description: Filename to output the counts to instead of stdout.
+  optional: true
   synonyms:
   - -c
   - --counts_output
+  description: Filename to output the counts to instead of stdout.
   args: !SimpleFlagArg
     name: OUTPUT_FILENAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --append-output
   description: "Append counts output. This option is useful if you\nhave already creates\
     \ a TSV/CSV/similar file with a\nheader for your samples (with additional columns\
     \ for\nthe feature name and any additionl attributes) and\nwant to fill in the\
     \ rest of the file."
-  synonyms:
-  - --append-output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Number of parallel CPU processes to use (default: 1).'
+  optional: true
   synonyms:
   - -n
   - --nprocesses
+  description: 'Number of parallel CPU processes to use (default: 1).'
   args: !SimpleFlagArg
     name: NPROCESSES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --feature-query
   description: "Restrict to features descibed in this expression.\nCurrently supports\
     \ a single kind of expression:\nattribute == \"one attr\" to restrict the GFF\
     \ to a\nsingle gene or transcript, e.g. --feature-query\n'gene_name == \"ACTB\"\
     ' - notice the single quotes\naround the argument of this option and the double\n\
     quotes around the gene name. Broader queries might\nbecome available in the future."
-  synonyms:
-  - --feature-query
   args: !SimpleFlagArg
     name: FEATURE_QUERY
-  optional: true
 - !Flag
-  description: Suppress progress report
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: Suppress progress report
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Show software version and exit
+  optional: true
   synonyms:
   - --version
+  description: Show software version and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: htseq-count [options] alignment_file gff_file\n\nThis script takes\
   \ one or more alignment files in SAM/BAM format and a feature\nfile in GFF format\
   \ and calculates for each feature the number of reads mapping\nto it. See http://htseq.readthedocs.io/en/master/count.html\
@@ -318,3 +318,4 @@ help_text: "usage: htseq-count [options] alignment_file gff_file\n\nThis script 
   \ version 0.12.4.\n"
 generated_using:
 - --help
+docker_image:

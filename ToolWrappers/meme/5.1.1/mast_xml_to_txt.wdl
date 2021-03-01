@@ -8,6 +8,9 @@ task MastXmlToTxt {
     mast_xml_to_txt \
       ~{mast_xml_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mast_xml_file: ""
   }

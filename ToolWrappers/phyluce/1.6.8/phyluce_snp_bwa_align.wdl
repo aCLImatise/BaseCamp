@@ -22,6 +22,9 @@ task PhyluceSnpBwaAlign {
       ~{if (no_remove_duplicates) then "--no-remove-duplicates" else ""} \
       ~{if (mem) then "--mem" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "A configuration file containing"
     directory_store_files: "The directory in which to store the SNPs files"

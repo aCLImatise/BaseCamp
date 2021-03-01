@@ -14,6 +14,9 @@ task InteropIndexsummary {
       ~{if defined(option_two) then ("--option2 " +  '"' + option_two + '"') else ""} \
       ~{if defined(option_one) then ("--option1 " +  '"' + option_one + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     csv: "[0]: Format output as CSV only"
     option_two: ""

@@ -4,6 +4,9 @@ task Vcfecho {
   command <<<
     vcfecho
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -8,6 +8,9 @@ task Txt2ftblpyFLUXNAME {
     txt2ftbl_py FLUX_NAME \
       ~{txttwoftbldotpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     txttwoftbldotpy: ""
   }

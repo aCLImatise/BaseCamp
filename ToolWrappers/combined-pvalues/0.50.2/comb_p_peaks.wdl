@@ -32,6 +32,9 @@ task CombpPeaks {
       ~{if (invert) then "--invert" else ""} \
       ~{if defined(column_number_containing) then ("-c " +  '"' + column_number_containing + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dist: "Maximum dist to skip before finding a seed/thresh\\nvalue. If this number is exceeded, the region is\\nended."
     seed: "A value must be at least this large/small in order to\\nseed a region."

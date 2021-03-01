@@ -24,6 +24,9 @@ task BcftoolsIndex {
       ~{if (n_records) then "--nrecords" else ""} \
       ~{if (stats) then "--stats" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     csi: "generate CSI-format index for VCF/BCF files [default]"
     force: "overwrite index if it already exists"

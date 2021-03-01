@@ -10,6 +10,9 @@ task Stubmakerpl {
       ~{if (verbose_outputbe_quiet) then "-v" else ""} \
       ~{if defined(output_directory) then ("-d " +  '"' + output_directory + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose_outputbe_quiet: "Verbose Outputbe quiet"
     output_directory: "Output directory"

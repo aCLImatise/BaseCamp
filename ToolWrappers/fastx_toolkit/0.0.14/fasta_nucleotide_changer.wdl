@@ -18,6 +18,9 @@ task FastaNucleotideChanger {
       ~{if (v) then "-v" else ""} \
       ~{if (z) then "-z" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d: ""
     r: ""

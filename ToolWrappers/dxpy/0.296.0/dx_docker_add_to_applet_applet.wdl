@@ -16,6 +16,9 @@ task DxdockerAddtoappletApplet {
       ~{applet} \
       ~{if (alternative_export) then "--alternative_export" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alternative_export: ""
     dx_docker: ""

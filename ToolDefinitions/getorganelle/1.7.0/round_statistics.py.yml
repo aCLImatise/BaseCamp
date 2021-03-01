@@ -1,56 +1,103 @@
 !Command
 command:
 - round_statistics.py
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: installed.
+  description: --max-coverage-tick=MAX_COV_TICK
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: output
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -i
-  args: !SimpleFlagArg
-    name: Initial_mapped.fq
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -d
-  args: !SimpleFlagArg
-    name: output_per_round_folder
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -f
+  description: input fasta file.
   args: !SimpleFlagArg
-    name: fasta_file
+    name: FASTA
+- !Flag
   optional: true
+  synonyms:
+  - -d
+  description: output per round directory.
+  args: !SimpleFlagArg
+    name: OUTPUT_PER_ROUND_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: seed fastq.
+  args: !SimpleFlagArg
+    name: INITIAL_MAPPED
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: output folder.
+  args: !SimpleFlagArg
+    name: OUTPUT_BASE
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: rounds to check. default:automatic stop!
+  args: !SimpleFlagArg
+    name: ROUND
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: threads.
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --which-bowtie2
+  description: "Assign the path to Bowtie2 binary files if not added\nto the path.\
+    \ Default: try\nGetOrganelleDep/linux/bowtie2 first, then $PATH"
+  args: !SimpleFlagArg
+    name: WHICH_BOWTIE2
+- !Flag
+  optional: true
+  synonyms:
+  - --random-seed
+  description: 'seed for random generator for bowtie2. Default: 12345'
+  args: !SimpleFlagArg
+    name: RANDOM_SEED
+- !Flag
+  optional: true
+  synonyms:
+  - --threshold
+  description: "sites with coverage above the threshold would be\nmarked as covered.\
+    \ default: 0,10"
+  args: !SimpleFlagArg
+    name: THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --continue
+  - --keep-temp
+  - --draw
+  description: Draw density plot using matplotlib, which should be
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Debug mode.
+  args: !SimpleFlagArg
+    name: DEBUG
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-f FASTA              input fasta\
-    \ file.\n-d OUTPUT_PER_ROUND_DIR\noutput per round directory.\n-i INITIAL_MAPPED\
-    \     seed fastq.\n-o OUTPUT_BASE        output folder.\n-R ROUND            \
-    \  rounds to check. default:automatic stop!\n-t THREADS            threads.\n\
-    --which-bowtie2=WHICH_BOWTIE2\nAssign the path to Bowtie2 binary files if not\
-    \ added\nto the path. Default: try\nGetOrganelleDep/linux/bowtie2 first, then\
-    \ $PATH\n--random-seed=RANDOM_SEED\nseed for random generator for bowtie2. Default:\
-    \ 12345\n--threshold=THRESHOLD\nsites with coverage above the threshold would\
-    \ be\nmarked as covered. default: 0,10\n--continue\n--keep-temp\n--draw      \
-    \          Draw density plot using matplotlib, which should be\ninstalled.\n--max-coverage-tick=MAX_COV_TICK\n\
-    --debug=DEBUG         Debug mode.\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: round_statistics.py -f fasta_file -d output_per_round_folder -i\
@@ -70,3 +117,4 @@ help_text: "Usage: round_statistics.py -f fasta_file -d output_per_round_folder 
   \  --debug=DEBUG         Debug mode.\n"
 generated_using:
 - --help
+docker_image:

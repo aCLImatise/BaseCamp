@@ -3,7 +3,6 @@ version 1.0
 task Bunwarpj {
   input {
     Boolean? align
-    Boolean? landmarks
     Boolean? elastic_transform
     Boolean? raw_transform
     Boolean? compare_elastic
@@ -15,9 +14,9 @@ task Bunwarpj {
     Boolean? compose_raw_elastic
     Boolean? adapt_transform
     String bun_war_pj
-    String var_13
+    String var_12
     String target_mask
-    String var_15
+    String var_14
     String source_mask
     String min_scale_def
     String max_scale_def
@@ -26,9 +25,10 @@ task Bunwarpj {
     String curl_weight
     String image_weight
     String consistency_weight
+    String landmark_weight
+    String landmark_file
     Int affine_file_one
     Int affine_file_two
-    String var_26
     String var_27
     String var_28
     String var_29
@@ -48,13 +48,14 @@ task Bunwarpj {
     String var_43
     String var_44
     String var_45
+    String var_46
   }
   command <<<
     bunwarpj \
       ~{bun_war_pj} \
-      ~{var_13} \
+      ~{var_12} \
       ~{target_mask} \
-      ~{var_15} \
+      ~{var_14} \
       ~{source_mask} \
       ~{min_scale_def} \
       ~{max_scale_def} \
@@ -63,9 +64,10 @@ task Bunwarpj {
       ~{curl_weight} \
       ~{image_weight} \
       ~{consistency_weight} \
+      ~{landmark_weight} \
+      ~{landmark_file} \
       ~{affine_file_one} \
       ~{affine_file_two} \
-      ~{var_26} \
       ~{var_27} \
       ~{var_28} \
       ~{var_29} \
@@ -85,8 +87,8 @@ task Bunwarpj {
       ~{var_43} \
       ~{var_44} \
       ~{var_45} \
+      ~{var_46} \
       ~{if (align) then "-align" else ""} \
-      ~{if (landmarks) then "-landmarks" else ""} \
       ~{if (elastic_transform) then "-elastic_transform" else ""} \
       ~{if (raw_transform) then "-raw_transform" else ""} \
       ~{if (compare_elastic) then "-compare_elastic" else ""} \
@@ -98,9 +100,11 @@ task Bunwarpj {
       ~{if (compose_raw_elastic) then "-compose_raw_elastic" else ""} \
       ~{if (adapt_transform) then "-adapt_transform" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     align: ": ALIGN TWO IMAGES"
-    landmarks: "Landmark_weight  : Weight of the landmarks\\nLandmark_file    : Landmark file"
     elastic_transform: ": TRANSFORM A SOURCE IMAGE WITH A GIVEN ELASTIC DEFORMATION"
     raw_transform: ": TRANSFORM A SOURCE IMAGE WITH A GIVEN RAW DEFORMATION"
     compare_elastic: ": COMPARE 2 OPPOSITE ELASTIC DEFORMATIONS (BY WARPING INDEX)"
@@ -112,9 +116,9 @@ task Bunwarpj {
     compose_raw_elastic: ": COMPOSE A RAW DEFORMATION WITH AN ELASTIC DEFORMATION"
     adapt_transform: ": ADAPT AN ELASTIC DEFORMATION GIVEN A NEW IMAGE SIZE"
     bun_war_pj: "-help                       : SHOW THIS MESSAGE"
-    var_13: ": In any image format"
+    var_12: ": In any image format"
     target_mask: ": In any image format"
-    var_15: ": In any image format"
+    var_14: ": In any image format"
     source_mask: ": In any image format"
     min_scale_def: ": Scale of the coarsest deformation\\n0 is the coarsest possible"
     max_scale_def: ": Scale of the finest deformation"
@@ -123,9 +127,10 @@ task Bunwarpj {
     curl_weight: ": Weight of the curl term"
     image_weight: ": Weight of the image term"
     consistency_weight: ": Weight of the deformation consistency"
+    landmark_weight: ": Weight of the landmarks"
+    landmark_file: ": Landmark file"
     affine_file_one: ": Initial source affine matrix transformation"
     affine_file_two: ": Initial target affine matrix transformation"
-    var_26: ": In any image format"
     var_27: ": In any image format"
     var_28: ": In any image format"
     var_29: ": In any image format"
@@ -145,6 +150,7 @@ task Bunwarpj {
     var_43: ": In any image format"
     var_44: ": In any image format"
     var_45: ": In any image format"
+    var_46: ": In any image format"
   }
   output {
     File out_stdout = stdout()

@@ -1,0 +1,73 @@
+!Command
+command:
+- coverage_from_bam
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --regions
+  description: 'Only process given regions. (default: None)'
+  args: !RepeatFlagArg
+    name: REGIONS
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --prefix
+  description: "Prefix for output, defaults to basename of bam.\n(default: None)"
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --one_file
+  description: "Single output file with \"region\" column. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: ONE_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --stride
+  description: 'Stride in genomic coordinate. (default: 1000)'
+  args: !SimpleFlagArg
+    name: STRIDE
+- !Flag
+  optional: true
+  synonyms:
+  - --summary_only
+  description: "Output only the depth_summary.txt file (default:\nFalse)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: coverage_from_bam [-h] [-r REGIONS [REGIONS ...]]\n           \
+  \              [-p PREFIX | -o ONE_FILE] [-s STRIDE]\n                         [--summary_only]\n\
+  \                         bam\n\nCalculate read coverage depth from a bam.\n\npositional\
+  \ arguments:\n  bam                   .fasta/fastq file.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -r REGIONS [REGIONS\
+  \ ...], --regions REGIONS [REGIONS ...]\n                        Only process given\
+  \ regions. (default: None)\n  -p PREFIX, --prefix PREFIX\n                     \
+  \   Prefix for output, defaults to basename of bam.\n                        (default:\
+  \ None)\n  -o ONE_FILE, --one_file ONE_FILE\n                        Single output\
+  \ file with \"region\" column. (default:\n                        None)\n  -s STRIDE,\
+  \ --stride STRIDE\n                        Stride in genomic coordinate. (default:\
+  \ 1000)\n  --summary_only        Output only the depth_summary.txt file (default:\n\
+  \                        False)\n\nBy default a file is written per reference sequence,\
+  \ this can be changed with\nthe `--one_file` option. If overlapping regions are\
+  \ specified, `--one_file`\nshould not be used.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pomoxis:0.3.6--py_0

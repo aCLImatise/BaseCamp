@@ -58,6 +58,9 @@ task BAMscaleScale {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Input BAM file. This has to be specified at least two times."
     lib_type: "Sequencing type to be used. Can be: single, paired, and auto (default: autodetect)"

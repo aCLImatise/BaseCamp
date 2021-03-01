@@ -30,6 +30,9 @@ task PancakeSeeddb {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     split_blocks: "Write seeds for each block into a separate file."
     km_er_size: "INT   Kmer size for indexing. [30]"

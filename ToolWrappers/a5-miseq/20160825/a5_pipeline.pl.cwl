@@ -3,32 +3,32 @@ id: a5_pipeline.pl.cwl
 inputs:
 - id: in_meta_genome
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --metagenome
 - id: in_debug
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_threads
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_preprocessed
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --preprocessed
 - id: in_end
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: --end
 - id: in_begin
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: --begin
 - id: in_lib_file
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - a5_pipeline.pl

@@ -1,28 +1,37 @@
 class: CommandLineTool
 id: add_gff_info_exp_syn.cwl
 inputs:
-- id: in_verbose
-  doc: "-r, --reference FILENAME  reference sequence in fasta format  [required]\n\
-    -s, --split               Split the sequence header of the reference at the\n\
-    first space, to emulate BLAST behaviour\n--progress                Shows Progress\
-    \ Bar\n--help                    Show this message and exit.\n"
-  type: boolean
+- id: in_reference
+  doc: reference sequence in fasta format  [required]
+  type: File?
   inputBinding:
-    prefix: --verbose
+    prefix: --reference
+- id: in_split
+  doc: "Split the sequence header of the reference at the\nfirst space, to emulate\
+    \ BLAST behaviour"
+  type: boolean?
+  inputBinding:
+    prefix: --split
+- id: in_progress
+  doc: Shows Progress Bar
+  type: boolean?
+  inputBinding:
+    prefix: --progress
 - id: in_input_file
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 - id: in_output_file
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - add-gff-info

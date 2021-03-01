@@ -14,6 +14,9 @@ task AgatConvertSpGff2zffpl {
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
       ~{if (outfile) then "--outfile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GTF/GFF file"
     fast_a: "fasta file"

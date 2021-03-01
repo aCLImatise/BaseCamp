@@ -5,7 +5,7 @@ inputs:
   doc: "The XML FILE to generate.\nIf not specified, will create a set of files in\n\
     the curent directory based on the //AssemblyInfo/\nAssemblyName values within\
     \ the documentation.\nUse '-' to write to standard output."
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_mdoc
@@ -26,9 +26,10 @@ outputs:
   doc: "The XML FILE to generate.\nIf not specified, will create a set of files in\n\
     the curent directory based on the //AssemblyInfo/\nAssemblyName values within\
     \ the documentation.\nUse '-' to write to standard output."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - monodocs2slashdoc

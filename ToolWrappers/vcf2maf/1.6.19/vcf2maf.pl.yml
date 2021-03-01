@@ -1,0 +1,223 @@
+!Command
+command:
+- vcf2maf.pl
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --input-vcf
+  description: Path to input file in VCF format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output-maf
+  description: Path to output MAF file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp-dir
+  description: 'Folder to retain intermediate VCFs after runtime [Default: Folder
+    containing input VCF]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tumor-id
+  description: Tumor_Sample_Barcode to report in the MAF [TUMOR]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --normal-id
+  description: Matched_Norm_Sample_Barcode to report in the MAF [NORMAL]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vcf-tumor-id
+  description: Tumor sample ID used in VCF's genotype columns [--tumor-id]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vcf-normal-id
+  description: Matched normal ID used in VCF's genotype columns [--normal-id]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --custom-enst
+  description: List of custom ENST IDs that override canonical selection
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vep-path
+  description: Folder containing the vep script [~/vep]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vep-data
+  description: VEP's base cache/plugin directory [~/.vep]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vep-forks
+  description: Number of forked processes to use when running VEP [4]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --buffer-size
+  description: Number of variants VEP loads at a time; Reduce this for low memory
+    systems [5000]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --any-allele
+  description: When reporting co-located variants, allow mismatched variant alleles
+    too
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --inhibit-vep
+  description: Skip running VEP, but extract VEP annotation in VCF if found
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --online
+  description: Use useastdb.ensembl.org instead of local cache (supports only GRCh38
+    VCFs listing <100 events)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ref-fasta
+  description: Reference FASTA file [~/.vep/homo_sapiens/101_GRCh37/Homo_sapiens.GRCh37.dna.toplevel.fa.gz]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-vcf
+  description: A VCF for FILTER tag common_variant; Disabled by default []
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-filter-ac
+  description: Use tag common_variant if the filter-vcf reports a subpopulation AC
+    higher than this [10]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --species
+  description: Ensembl-friendly name of species (e.g. mus_musculus for mouse) [homo_sapiens]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ncbi-build
+  description: NCBI reference assembly of variants MAF (e.g. GRCm38 for mouse) [GRCh37]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cache-version
+  description: 'Version of offline cache to use with VEP (e.g. 75, 91, 101) [Default:
+    Installed version]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --maf-center
+  description: Variant calling center to report in MAF [.]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --retain-info
+  description: Comma-delimited names of INFO fields to retain as extra columns in
+    MAF []
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --retain-fmt
+  description: Comma-delimited names of FORMAT fields to retain as extra columns in
+    MAF []
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-hom-vaf
+  description: If GT undefined in VCF, minimum allele fraction to call a variant homozygous
+    [0.7]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --remap-chain
+  description: Chain file to remap variants to a different assembly before running
+    VEP
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --man
+  description: Print the detailed manual
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print a brief help message and quit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage:\n     perl vcf2maf.pl --help\n     perl vcf2maf.pl --input-vcf\
+  \ WD4086.vcf --output-maf WD4086.maf --tumor-id WD4086 --normal-id NB4086\n\nOptions:\n\
+  \     --input-vcf      Path to input file in VCF format\n     --output-maf     Path\
+  \ to output MAF file\n     --tmp-dir        Folder to retain intermediate VCFs after\
+  \ runtime [Default: Folder containing input VCF]\n     --tumor-id       Tumor_Sample_Barcode\
+  \ to report in the MAF [TUMOR]\n     --normal-id      Matched_Norm_Sample_Barcode\
+  \ to report in the MAF [NORMAL]\n     --vcf-tumor-id   Tumor sample ID used in VCF's\
+  \ genotype columns [--tumor-id]\n     --vcf-normal-id  Matched normal ID used in\
+  \ VCF's genotype columns [--normal-id]\n     --custom-enst    List of custom ENST\
+  \ IDs that override canonical selection\n     --vep-path       Folder containing\
+  \ the vep script [~/vep]\n     --vep-data       VEP's base cache/plugin directory\
+  \ [~/.vep]\n     --vep-forks      Number of forked processes to use when running\
+  \ VEP [4]\n     --buffer-size    Number of variants VEP loads at a time; Reduce\
+  \ this for low memory systems [5000]\n     --any-allele     When reporting co-located\
+  \ variants, allow mismatched variant alleles too\n     --inhibit-vep    Skip running\
+  \ VEP, but extract VEP annotation in VCF if found\n     --online         Use useastdb.ensembl.org\
+  \ instead of local cache (supports only GRCh38 VCFs listing <100 events)\n     --ref-fasta\
+  \      Reference FASTA file [~/.vep/homo_sapiens/101_GRCh37/Homo_sapiens.GRCh37.dna.toplevel.fa.gz]\n\
+  \     --filter-vcf     A VCF for FILTER tag common_variant; Disabled by default\
+  \ []\n     --max-filter-ac  Use tag common_variant if the filter-vcf reports a subpopulation\
+  \ AC higher than this [10]\n     --species        Ensembl-friendly name of species\
+  \ (e.g. mus_musculus for mouse) [homo_sapiens]\n     --ncbi-build     NCBI reference\
+  \ assembly of variants MAF (e.g. GRCm38 for mouse) [GRCh37]\n     --cache-version\
+  \  Version of offline cache to use with VEP (e.g. 75, 91, 101) [Default: Installed\
+  \ version]\n     --maf-center     Variant calling center to report in MAF [.]\n\
+  \     --retain-info    Comma-delimited names of INFO fields to retain as extra columns\
+  \ in MAF []\n     --retain-fmt     Comma-delimited names of FORMAT fields to retain\
+  \ as extra columns in MAF []\n     --min-hom-vaf    If GT undefined in VCF, minimum\
+  \ allele fraction to call a variant homozygous [0.7]\n     --remap-chain    Chain\
+  \ file to remap variants to a different assembly before running VEP\n     --help\
+  \           Print a brief help message and quit\n     --man            Print the\
+  \ detailed manual\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/vcf2maf:1.6.19--0

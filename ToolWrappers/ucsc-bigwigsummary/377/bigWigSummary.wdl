@@ -18,6 +18,9 @@ task BigWigSummary {
       ~{if defined(type) then ("-type " +  '"' + type + '"') else ""} \
       ~{if (udc_dir) then "-udcDir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type: "where X is one of:\\nmean - average value in region (default)\\nmin - minimum value in region\\nmax - maximum value in region\\nstd - standard deviation in region\\ncoverage - % of region that is covered"
     udc_dir: "=/dir/to/cache - place to put cache for remote bigBed/bigWigs"

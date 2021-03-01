@@ -1,0 +1,196 @@
+!Command
+command:
+- ganon
+- report
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "[ [ ...]], --db-prefix [ [ ...]]\nDatabase prefix[es] used for classification\
+    \ (in any\norder). Only \".tax\" file is required. If not provided,\nnew taxonomy\
+    \ will be downloaded"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --output-format
+  description: "Output format [text, tsv, csv]. text outputs a\ntabulated formatted\
+    \ text file for better\nvisualization. Default: tsv"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --report-type
+  description: 'Type of report to generate [reads, matches]. Default:'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sort
+  description: "Sort report by [rank, lineage, count, unique].\nDefault: rank (with\
+    \ custom --ranks) or lineage (with\n--ranks all)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --split-hierarchy
+  description: "Split output reports by hierarchy (from ganon classify\n--hierarchy-labels).\
+    \ If activated, the output files\nwill be named as \"{output_prefix}.{hierarchy}.tre\""
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "[ [ ...]], --skip-hierarchy [ [ ...]]\nOne or more hierarchies to\
+    \ skip in the report (from\nganon classify --hierarchy-labels)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: "[ [ ...]], --keep-hierarchy [ [ ...]]\nOne or more hierarchies to\
+    \ keep in the report (from\nganon classify --hierarchy-labels)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --taxdump-file
+  description: "[ [ ...]]\nForce use of a specific version of the\n(taxdump.tar.gz)\
+    \ or (nodes.dmp names.dmp [merged.dmp])\nfile(s) from NCBI Taxonomy (otherwise\
+    \ it will be\nautomatically downloaded)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --input-directory
+  description: Directory containing input files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --input-extension
+  description: "Extension of files to use with --input-directory\n(provide it without\
+    \ * expansion, e.g. \".rep\")"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Verbose output mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Quiet output mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-count
+  description: Minimum number of counts to keep the taxa
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-percentage
+  description: Minimum percentage of counts to keep the taxa [0-1]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --names
+  description: '[ [ ...]]     Show only entries matching exact names of the provided'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --taxids
+  description: '[ [ ...]]    One or more taxids to report (including children taxa)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "[REP_FILES [REP_FILES ...]], --rep-files [REP_FILES [REP_FILES ...]]\n\
+    One or more *.rep files from ganon classify"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-prefix
+  description: "Output prefix for report file \"{output_prefix}.tre\".\nIn case of\
+    \ multiple files, the base input filename\nwill be appended at the end of the\
+    \ output file\n\"{output_prefix + FILENAME}.tre\"\n"
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: ganon report [-h] [--min-count] [--min-percentage] [--names [[...]]]\n\
+  \                    [--names-with [[...]]] [--taxids [[...]]]\n               \
+  \     [-i [REP_FILES [REP_FILES ...]]] -o OUTPUT_PREFIX\n                    [-d\
+  \ [[...]]] [-f] [-e] [-r [[...]]] [-s] [-y] [-p [[...]]]\n                    [-k\
+  \ [[...]]] [--taxdump-file [[...]]] [--input-directory]\n                    [--input-extension]\
+  \ [--verbose] [--quiet]\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -d [ [ ...]], --db-prefix [ [ ...]]\n               \
+  \         Database prefix[es] used for classification (in any\n                \
+  \        order). Only \".tax\" file is required. If not provided,\n            \
+  \            new taxonomy will be downloaded\n  -f , --output-format \n        \
+  \                Output format [text, tsv, csv]. text outputs a\n              \
+  \          tabulated formatted text file for better\n                        visualization.\
+  \ Default: tsv\n  -e , --report-type    Type of report to generate [reads, matches].\
+  \ Default:\n                        reads\n  -r [ [ ...]], --ranks [ [ ...]]\n \
+  \                       Ranks to report [\"\", \"all\", custom list] \"all\" for\
+  \ all\n                        possible ranks. empty for default ranks (superkingdom\n\
+  \                        phylum class order family genus species assembly).\n  \
+  \                      Default: \"\"\n  -s , --sort           Sort report by [rank,\
+  \ lineage, count, unique].\n                        Default: rank (with custom --ranks)\
+  \ or lineage (with\n                        --ranks all)\n  -y, --split-hierarchy\n\
+  \                        Split output reports by hierarchy (from ganon classify\n\
+  \                        --hierarchy-labels). If activated, the output files\n \
+  \                       will be named as \"{output_prefix}.{hierarchy}.tre\"\n \
+  \ -p [ [ ...]], --skip-hierarchy [ [ ...]]\n                        One or more\
+  \ hierarchies to skip in the report (from\n                        ganon classify\
+  \ --hierarchy-labels)\n  -k [ [ ...]], --keep-hierarchy [ [ ...]]\n            \
+  \            One or more hierarchies to keep in the report (from\n             \
+  \           ganon classify --hierarchy-labels)\n  --taxdump-file [ [ ...]]\n   \
+  \                     Force use of a specific version of the\n                 \
+  \       (taxdump.tar.gz) or (nodes.dmp names.dmp [merged.dmp])\n               \
+  \         file(s) from NCBI Taxonomy (otherwise it will be\n                   \
+  \     automatically downloaded)\n  --input-directory     Directory containing input\
+  \ files\n  --input-extension     Extension of files to use with --input-directory\n\
+  \                        (provide it without * expansion, e.g. \".rep\")\n  --verbose\
+  \             Verbose output mode\n  --quiet               Quiet output mode\n\n\
+  filter arguments:\n  --min-count           Minimum number of counts to keep the\
+  \ taxa\n  --min-percentage      Minimum percentage of counts to keep the taxa [0-1]\n\
+  \  --names [ [ ...]]     Show only entries matching exact names of the provided\n\
+  \                        list\n  --names-with [ [ ...]]\n                      \
+  \  Show entries containing full or partial names of the\n                      \
+  \  provided list\n  --taxids [ [ ...]]    One or more taxids to report (including\
+  \ children taxa)\n\nrequired arguments:\n  -i [REP_FILES [REP_FILES ...]], --rep-files\
+  \ [REP_FILES [REP_FILES ...]]\n                        One or more *.rep files from\
+  \ ganon classify\n  -o OUTPUT_PREFIX, --output-prefix OUTPUT_PREFIX\n          \
+  \              Output prefix for report file \"{output_prefix}.tre\".\n        \
+  \                In case of multiple files, the base input filename\n          \
+  \              will be appended at the end of the output file\n                \
+  \        \"{output_prefix + FILENAME}.tre\"\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ganon:0.4.0--py38hb45e0f6_0

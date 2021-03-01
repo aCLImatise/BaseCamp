@@ -18,6 +18,9 @@ task CheckvCompleteness {
       ~{if (restart) then "--restart" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_database_path: "Reference database path. By default the CHECKVDB environment\\nvariable is used"
     number_threads_use: "Number of threads to use for Prodigal and DIAMOND"

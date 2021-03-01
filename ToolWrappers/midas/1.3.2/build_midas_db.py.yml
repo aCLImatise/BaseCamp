@@ -3,67 +3,67 @@ command:
 - build_midas_db.py
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: indir
   description: "Path to directory of input genomes\nEach subdirectory should be named\
     \ according to a genome_id\nEach subdirectory should contain (replace genome_id):\n\
     genome_id.fna: Genomic DNA sequence in FASTA format\ngenome_id.ffn: Gene DNA sequences\
     \ in FASTA format\ngenome_id.faa: Translated genes in FASTA format"
-  position: 0
-  name: indir
-  optional: false
 - !Positional
+  optional: false
+  position: 1
+  name: mapfile
   description: "Path to mapping file that specifies which genomes belonging to the\
     \ same species.\nThe file should be tab-delimited file with a header and 3 fields:\n\
     genome_id (CHAR): corresponds to subdirectory within INDIR\nspecies_id (CHAR):\
     \ species identifier for genome_id\nrep_genome (0 or 1): indicator if genome_id\
     \ should be used for SNP calling"
-  position: 1
-  name: mapfile
-  optional: false
 - !Positional
-  description: Directory to store MIDAS database
+  optional: false
   position: 2
   name: outdir
-  optional: false
+  description: Directory to store MIDAS database
 named:
 - !Flag
-  description: Number of threads to use (1)
+  optional: true
   synonyms:
   - --threads
+  description: Number of threads to use (1)
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: Compress output files with gzip (False)
+  optional: true
   synonyms:
   - --compress
+  description: Compress output files with gzip (False)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Maximum number of species to process from input (use all).\nUseful\
-    \ for quick tests"
+  optional: true
   synonyms:
   - --max_species
+  description: "Maximum number of species to process from input (use all).\nUseful\
+    \ for quick tests"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Maximum number of genomes to process per species (use all).\nUseful\
-    \ for quick tests\n"
+  optional: true
   synonyms:
   - --max_genomes
+  description: "Maximum number of genomes to process per species (use all).\nUseful\
+    \ for quick tests\n"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Description:\nThis script will allow you to build your own custom MIDAS\
@@ -88,3 +88,4 @@ help_text: "Description:\nThis script will allow you to build your own custom MI
   \ all).\n                     Useful for quick tests\n"
 generated_using:
 - --help
+docker_image:

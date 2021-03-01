@@ -24,6 +24,9 @@ task FunannotateIprscan {
       ~{if (cpus_per_chunk) then "--cpus_per_chunk" else ""} \
       ~{if (iprs_can_path) then "--iprscan_path" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     funannotate_folder_fasta: "Funannotate folder or FASTA protein file. (Required)"
     method: "Search method to use: [local, docker] (Required)"

@@ -14,6 +14,9 @@ task Bwcat {
       ~{if (include_na) then "--include-na" else ""} \
       ~{if (var_output) then "--output" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_path: "[file]                          Path to the input bigwig file"
     region: "[string]                            Region or bw file to print to screen format. NB start should be 0 based: (contig:start-stop)"

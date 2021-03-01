@@ -22,6 +22,9 @@ task GapToLift {
       ~{if (allow_bridged) then "-allowBridged" else ""} \
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chr: "- work only on given chrom"
     min_gap: "- examine gaps only >= than M"

@@ -26,6 +26,9 @@ task Rbcavity {
       ~{if (write_moe_grid) then "--write-moe-grid" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     receptor_param: "receptor param file (contains active site\\nparams)"
     write_docking_cavities: "write docking cavities (plus distance grid)\\nto .as file"

@@ -1,18 +1,12 @@
 class: CommandLineTool
 id: anvi_dereplicate_genomes.cwl
 inputs:
-- id: in_similarity_threshold
-  doc: "[--cluster-method {simple_greedy}]\n[--representative-method {Qscore,length,centrality}]\n\
-    [-T NUM_THREADS] [--just-do-it]\n[--log-file FILE_PATH]"
-  type: long
-  inputBinding:
-    prefix: --similarity-threshold
 - id: in_internal_genomes
   doc: "A five-column TAB-delimited flat text file. The header\nline must contain\
     \ these columns: 'name', 'bin_id',\n'collection_id', 'profile_db_path', 'contigs_db_path'.\n\
     Each line should list a single entry, where 'name' can\nbe any name to describe\
     \ the anvi'o bin identified as\n'bin_id' that is stored in a collection."
-  type: File
+  type: File?
   inputBinding:
     prefix: --internal-genomes
 - id: in_external_genomes
@@ -21,7 +15,7 @@ inputs:
     \ read\n'contigs_db_path'. Each line in the file should\ndescribe a single entry,\
     \ where the first column is the\nname of the genome (or MAG), and the second column\
     \ is\nthe anvi'o contigs database generated for this genome."
-  type: File
+  type: File?
   inputBinding:
     prefix: --external-genomes
 - id: in_fast_a_text_file
@@ -32,37 +26,37 @@ inputs:
     \ should\ndescribe a single entry, where the first column is the\nname of the\
     \ FASTA file or corresponding sequence, and\nthe second column is the path to\
     \ the FASTA file\nitself."
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta-text-file
 - id: in_ani_dir
   doc: "You can import the directory created by `anvi-compute-\ngenome-similarity`\
     \ if `--program` parameter was set to\n`fastANI` or `pyANI` and use it for dereplication"
-  type: File
+  type: File?
   inputBinding:
     prefix: --ani-dir
 - id: in_mash_dir
   doc: "You can import the directory created by `anvi-compute-\ngenome-similarity`\
     \ if `--program` parameter was set to\n`sourmash` and use it for dereplication"
-  type: File
+  type: File?
   inputBinding:
     prefix: --mash-dir
 - id: in_output_dir
   doc: Directory path for output files
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-dir
 - id: in_skip_fast_a_report
   doc: "By default, if any sequence source is provided, FASTA\nfiles of non-redundant\
     \ genomes are reported. With this\nflag, no FASTA files are reported."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip-fasta-report
 - id: in_report_all
   doc: "By default, only FASTA files of non-redundant genomes\nare reported, i.e.\
     \ single representatives from each\ncluster. With this flag, all genome FASTAS\
     \ will be\nreported."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --report-all
 - id: in_program
@@ -72,24 +66,24 @@ inputs:
     \ similar,\npyANI is what we recommend. However, fastANI is much\nfaster. If you\
     \ for some reason want to use mash\nsimilarity, you can use sourmash, but its\
     \ really not\nintended for genome comparisons."
-  type: string
+  type: string?
   inputBinding:
     prefix: --program
 - id: in_fast_ani_km_er_size
   doc: Choose a kmer. The default is 16.
-  type: long
+  type: long?
   inputBinding:
     prefix: --fastani-kmer-size
 - id: in_fragment_length
   doc: Choose a fragment length. The default is 3000.
-  type: long
+  type: long?
   inputBinding:
     prefix: --fragment-length
 - id: in_min_fraction
   doc: "Minimum fraction of alignment to be shared between\ngenome pairs to calculate\
     \ ANI. If reference and query\ngenome size differ, smaller one among the two is\n\
     considered. The default is 0.25."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-fraction
 - id: in_method
@@ -100,7 +94,7 @@ inputs:
     \ of the input sequences. 'ANIblastall': uses\nthe legacy BLASTN to align 1020nt\
     \ fragments Finally,\n'TETRA': calculates tetranucleotide frequencies of\neach\
     \ input sequence"
-  type: string
+  type: string?
   inputBinding:
     prefix: --method
 - id: in_min_alignment_fraction
@@ -112,7 +106,7 @@ inputs:
     \ and set percent identity\nscores between two genomes to 0 if the alignment\n\
     fraction *between either of them* is less than the\nparameter described here.\
     \ The default is 0.25."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-alignment-fraction
 - id: in_significant_alignment_length
@@ -127,7 +121,7 @@ inputs:
     \ if\n--min-alignment-fraction is your shield to protect\nyourself from incoming\
     \ garbage, --significant-\nalignment-length is your chopstick to pick out those\n\
     that may be interesting, and you are a true warrior\nhere."
-  type: long
+  type: long?
   inputBinding:
     prefix: --significant-alignment-length
 - id: in_use_full_percent_identity
@@ -143,7 +137,7 @@ inputs:
     \ by the alignment\ncoverage. For example, if the alignment is a whopping\n97\
     \ percent identity but only 8 percent of the genome\naligned, the *full* percent\
     \ identity is 0.970 * 0.080\n= 0.078, which is just 7.8 percent."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use-full-percent-identity
 - id: in_min_full_percent_identity
@@ -160,21 +154,33 @@ inputs:
     \ When you set a value, anvi'o will go\nthrough the ANI results, and set all ANI\
     \ measures\nbetween two genomes to 0 if the *full* percent\nidentity *between\
     \ either of them* is less than the\nparameter described here. The default is 20."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-full-percent-identity
 - id: in_km_er_size
   doc: "Set the k-mer size for mash similarity checks. The\ndefault is 13."
-  type: long
+  type: long?
   inputBinding:
     prefix: --kmer-size
 - id: in_scale
   doc: "Set the compression ratio for fasta signature file\ncomputations. The default\
     \ is 1000. Smaller ratios\ndecrease sensitivity, while larger ratios will lead\
     \ to\nlarge fasta signatures."
-  type: long
+  type: long?
   inputBinding:
     prefix: --scale
+- id: in_similarity_threshold
+  doc: "If two genomes have a similarity greater than or equal\nto this threshold,\
+    \ they will belong to the same\ncluster. Since measures of 'similarity' depend\n\
+    strongly on what method is used for calculation, and\nsince the threshold at which\
+    \ two genomes should be\nconsidered 'similar enough' to be considered redundant\n\
+    will depend on the application, anvi'o refuses to\nprovide a default parameter.\
+    \ If you're using pyANI,\nmaybe 0.90 is what you're after. If you're using\nsourmash,\
+    \ maybe 0.25 is what you're after. Or maybe\nnot? Anvi'o is feeling nervous about\
+    \ this decision."
+  type: double?
+  inputBinding:
+    prefix: --similarity-threshold
 - id: in_cluster_method
   doc: "Currently, genomes are clustered based on a simple\ngreedy algorithm. Let's\
     \ say your similarity threshold\nis 0.90. If genome A is 0.95 similar to B, and\
@@ -182,7 +188,7 @@ inputs:
     \ a cluster. This is *even though* D\nmay share a similarity to A of merely 0.80,\
     \ which is\nbelow similarity threshold. You want better\nalternatives? Contact\
     \ the developers."
-  type: string
+  type: string?
   inputBinding:
     prefix: --cluster-method
 - id: in_representative_method
@@ -192,7 +198,7 @@ inputs:
     \ returns the longest\ngenome. 'centrality' returns the genome with the\nhighest\
     \ average similarity to everything in the\ncluster, i.e. the most central. The\
     \ default is\ncentrality"
-  type: string
+  type: string?
   inputBinding:
     prefix: --representative-method
 - id: in_num_threads
@@ -202,12 +208,12 @@ inputs:
     \ you are running your commands on a SGE\n--if you are clusterizing your runs,\
     \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
     \ fast."
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-threads
 - id: in_just_do_it
   doc: Don't bother me with questions or warnings, just do
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --just-do-it
 - id: in_it_dot
@@ -221,9 +227,10 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: Directory path for output files
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-dereplicate-genomes

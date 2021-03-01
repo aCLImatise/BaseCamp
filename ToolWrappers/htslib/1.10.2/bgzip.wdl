@@ -14,11 +14,11 @@ task Bgzip {
     Int? size
     Int? threads
     Boolean? test
-    File? file
+    File? var_file
   }
   command <<<
     bgzip \
-      ~{file} \
+      ~{var_file} \
       ~{if defined(offset) then ("--offset " +  '"' + offset + '"') else ""} \
       ~{if (stdout) then "--stdout" else ""} \
       ~{if (decompress) then "--decompress" else ""} \
@@ -32,6 +32,9 @@ task Bgzip {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (test) then "--test" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     offset: "decompress at virtual file pointer (0-based uncompressed offset)"
     stdout: "write on standard output, keep original files unchanged"
@@ -45,7 +48,7 @@ task Bgzip {
     size: "decompress INT bytes (uncompressed size)"
     threads: "number of compression threads to use [1]"
     test: "test integrity of compressed file"
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

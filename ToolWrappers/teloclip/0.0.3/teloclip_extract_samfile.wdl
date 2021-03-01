@@ -12,6 +12,9 @@ task TeloclipextractSamfile {
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(ref_idx) then ("--refIdx " +  '"' + ref_idx + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: ""
     ref_idx: ""

@@ -42,6 +42,9 @@ task Tqdm {
       ~{if defined(delim) then ("--delim " +  '"' + delim + '"') else ""} \
       ~{if defined(buf_size) then ("--buf_size " +  '"' + buf_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     desc: ": str, optional\\nPrefix for the progressbar."
     total: ": int, optional\\nThe number of expected iterations. If unspecified,\\nlen(iterable) is used if possible. As a last resort, only basic\\nprogress statistics are displayed (no ETA, no progressbar).\\nIf `gui` is True and this parameter needs subsequent updating,\\nspecify an initial arbitrary large positive integer,\\ne.g. int(9e9)."

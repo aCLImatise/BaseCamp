@@ -42,6 +42,9 @@ task AssemblypyRefineAssembly {
       ~{if defined(tmp_dir) then ("--tmp_dir " +  '"' + tmp_dir + '"') else ""} \
       ~{if (tmp_dir_keep) then "--tmp_dirKeep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     already_realigned_bam: "BAM with reads that are already aligned to inFasta.\\nThis bypasses the alignment process by novoalign and\\ninstead uses the given BAM to make an assembly. When\\nset, outBam is ignored."
     out_bam: "Reads aligned to inFasta. Unaligned and duplicate\\nreads have been removed. GATK indel realigned."

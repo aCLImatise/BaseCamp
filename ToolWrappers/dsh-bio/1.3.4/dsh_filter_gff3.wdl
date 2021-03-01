@@ -18,6 +18,9 @@ task Dshfiltergff3 {
       ~{if (input_gff_three_file) then "--input-gff3-file" else ""} \
       ~{if (output_gff_three_file) then "--output-gff3-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     range: "[class java.lang.String]  filter by range, specify as chrom:start-end in 0-based coordindates [optional]"

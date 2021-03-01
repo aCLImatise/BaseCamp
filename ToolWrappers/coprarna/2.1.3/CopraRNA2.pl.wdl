@@ -42,6 +42,9 @@ task CopraRNA2pl {
       ~{if (root) then "--root" else ""} \
       ~{if (top_count) then "--topcount" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     srna_seq: "FASTA file with small RNA sequences (def:input_sRNA.fa)"
     region: "region to scan in whole genome target prediction (def:5utr)\\n'5utr' for start codon\\n'3utr' for stop codon\\n'cds' for entire transcript"

@@ -18,6 +18,9 @@ task SonLibKvDatabaseTest {
       ~{if defined(user) then ("--user " +  '"' + user + '"') else ""} \
       ~{if defined(pass) then ("--pass " +  '"' + pass + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type: "- one of 'KyotoTycoon', 'TokyoCabinet' or 'MySql'.\\nValues area case-insensitive, defaults to TokyoCabinet."
     db: "- database directory for TokyoCabinet or database name\\nfor SQL databases. Defaults to testTCDatabase for TokyoCabinet,\\nSQL databases must specify."

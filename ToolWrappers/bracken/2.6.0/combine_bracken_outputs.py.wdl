@@ -12,6 +12,9 @@ task CombineBrackenOutputspy {
       ~{if defined(names) then ("--names " +  '"' + names + '"') else ""} \
       ~{if defined(name_output_file) then ("--output " +  '"' + name_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     files: "Bracken output files to combine."
     names: "Names for each input file - to be used in column\\nheaders of output [separate names with commas]"

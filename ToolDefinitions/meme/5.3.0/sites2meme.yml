@@ -1,0 +1,100 @@
+!Command
+command:
+- sites2meme
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: directory
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -ext
+  description: "the file extension (with '.') of the sites files;\nthe file name minus\
+    \ the extension will be\nused as the motif identifer;\ndefault: expect an extension\
+    \ of \".txt\""
+  args: !SimpleFlagArg
+    name: input files extension
+- !Flag
+  optional: true
+  synonyms:
+  - -map
+  description: tab separated file containing id, name pairs.
+  args: !SimpleFlagArg
+    name: id mapping file
+- !Flag
+  optional: true
+  synonyms:
+  - -protein
+  description: "Sets the expected alphabet to protein;\ndefault: the expected alphabet\
+    \ is DNA"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -alph
+  description: "Set the expected alphabet to the defintion\nin the file; default:\
+    \ DNA"
+  args: !SimpleFlagArg
+    name: alphabet file
+- !Flag
+  optional: true
+  synonyms:
+  - -bg
+  description: "file with background frequencies of letters;\ndefault: use uniform\
+    \ background"
+  args: !SimpleFlagArg
+    name: background file
+- !Flag
+  optional: true
+  synonyms:
+  - -pseudo
+  description: "add <total pseudocounts> times letter\nbackground to each frequency;\
+    \ default: 0"
+  args: !SimpleFlagArg
+    name: total pseudocounts
+- !Flag
+  optional: true
+  synonyms:
+  - -logodds
+  description: "print log-odds matrix, too;\ndefault: print frequency matrix only"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -url
+  description: "website for the motif; The motif id is\nsubstituted for MOTIF_NAME"
+  args: !SimpleFlagArg
+    name: website
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Unknown option: help\nUsage:\n    sites2meme [options] <directory>\n\n\
+  \     Options:\n      -ext <input files extension>  the file extension (with '.')\
+  \ of the sites files;\n                                     the file name minus\
+  \ the extension will be\n                                     used as the motif\
+  \ identifer;\n                                     default: expect an extension\
+  \ of \".txt\"\n\n      -map <id mapping file>        tab separated file containing\
+  \ id, name pairs.\n\n      -protein                      Sets the expected alphabet\
+  \ to protein;\n                                     default: the expected alphabet\
+  \ is DNA\n\n      -alph <alphabet file>         Set the expected alphabet to the\
+  \ defintion\n                                     in the file; default: DNA\n\n\
+  \      -bg <background file>         file with background frequencies of letters;\
+  \ \n                                     default: use uniform background\n\n   \
+  \   -pseudo <total pseudocounts>  add <total pseudocounts> times letter\n      \
+  \                              background to each frequency; default: 0\n\n    \
+  \  -logodds                      print log-odds matrix, too;\n                 \
+  \                   default: print frequency matrix only\n\n      -url <website>\
+  \                website for the motif; The motif id is\n                      \
+  \               substituted for MOTIF_NAME\n\n     Each file in the directory is\
+  \ assumed to match the pattern ID.txt where ID is\n     the motif identifier. Each\
+  \ file should contain a newline separated list of sites.\n\n     Writes to standard\
+  \ output.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/meme:5.3.0--py38pl526hc1f1133_0

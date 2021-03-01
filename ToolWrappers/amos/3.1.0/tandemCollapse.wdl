@@ -12,6 +12,9 @@ task TandemCollapse {
       ~{if defined(config_file_specifies) then ("-c " +  '"' + config_file_specifies + '"') else ""} \
       ~{if defined(output_location_misassemblies) then ("-m " +  '"' + output_location_misassemblies + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     location_bank_directory: "- location of bank directory"
     config_file_specifies: "- config file that specifies locations of tandems"

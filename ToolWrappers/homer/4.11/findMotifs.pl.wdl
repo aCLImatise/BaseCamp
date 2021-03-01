@@ -7,8 +7,8 @@ task FindMotifspl {
     Boolean? start
     Boolean? end
     Boolean? rna
-    Boolean? mask_slash_no_mask
-    Boolean? number_optimize_default
+    Boolean? no_mask
+    Boolean? number_motifs_optimize
     Boolean? mis
     Boolean? no_convert
     Boolean? norev_opp
@@ -51,8 +51,8 @@ task FindMotifspl {
     Boolean? nmax
     Boolean? neutral
     Boolean? olen
-    Boolean? number_use_default
-    Boolean? maximum_expected_motif
+    Boolean? number_processors_use
+    Boolean? maximum_expected_instance
     Boolean? cache
     Boolean? quick_mask
     Boolean? homer_one
@@ -75,8 +75,8 @@ task FindMotifspl {
       ~{if (start) then "-start" else ""} \
       ~{if (end) then "-end" else ""} \
       ~{if (rna) then "-rna" else ""} \
-      ~{if (mask_slash_no_mask) then "-mask/-nomask" else ""} \
-      ~{if (number_optimize_default) then "-S" else ""} \
+      ~{if (no_mask) then "-nomask" else ""} \
+      ~{if (number_motifs_optimize) then "-S" else ""} \
       ~{if (mis) then "-mis" else ""} \
       ~{if (no_convert) then "-noconvert" else ""} \
       ~{if (norev_opp) then "-norevopp" else ""} \
@@ -119,8 +119,8 @@ task FindMotifspl {
       ~{if (nmax) then "-nmax" else ""} \
       ~{if (neutral) then "-neutral" else ""} \
       ~{if (olen) then "-olen" else ""} \
-      ~{if (number_use_default) then "-p" else ""} \
-      ~{if (maximum_expected_motif) then "-e" else ""} \
+      ~{if (number_processors_use) then "-p" else ""} \
+      ~{if (maximum_expected_instance) then "-e" else ""} \
       ~{if (cache) then "-cache" else ""} \
       ~{if (quick_mask) then "-quickMask" else ""} \
       ~{if (homer_one) then "-homer1" else ""} \
@@ -128,14 +128,17 @@ task FindMotifspl {
       ~{if (allow_adjustment_degeneracy) then "-float" else ""} \
       ~{if (depth) then "-depth" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     len: "<#>[,<#>,<#>...] (motif length, default=8,10,12) [NOTE: values greater 12 may cause the program\\nto run out of memmory - in these cases decrease the number of sequences analyzed]"
     bg: "(ids to use as background, default: all genes)"
     start: "<#> (offset from TSS, default=-300) [max=based on Promoter Set]"
     end: "<#> (offset from TSS, default=50) [max=based on Promoter Set]"
     rna: "(output RNA motif logos and compare to RNA motif database, automatically sets -norevopp)"
-    mask_slash_no_mask: "(use/don't use repeatmasked files, default: -mask)"
-    number_optimize_default: "<#> (Number of motifs to optimize, default: 25)"
+    no_mask: "(use/don't use repeatmasked files, default: -mask)"
+    number_motifs_optimize: "<#> (Number of motifs to optimize, default: 25)"
     mis: "<#> (global optimization: searches for strings with # mismatches, default: 1)"
     no_convert: "(will not worry about converting input files into unigene ids)"
     norev_opp: "(do not search the reverse strand for motifs)"
@@ -178,8 +181,8 @@ task FindMotifspl {
     nmax: "<#> (Max normalization iterations, default: 160)"
     neutral: "(weight sequences to neutral frequencies, i.e. 25%, 6.25%, etc.)"
     olen: "<#> (lower-order oligo normalization for oligo table, use if -nlen isn't working well)"
-    number_use_default: "<#> (Number of processors to use, default: 1)"
-    maximum_expected_motif: "<#> (Maximum expected motif instance per bp in random sequence, default: 0.01)"
+    number_processors_use: "<#> (Number of processors to use, default: 1)"
+    maximum_expected_instance: "<#> (Maximum expected motif instance per bp in random sequence, default: 0.01)"
     cache: "<#> (size in MB for statistics cache, default: 500)"
     quick_mask: "(skip full masking after finding motifs, similar to original homer)"
     homer_one: "(to force the use of the original homer)"

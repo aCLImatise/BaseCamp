@@ -39,7 +39,7 @@ task GmvalueutlScaf {
     String match
     String overlap
     String threads
-    File file
+    File var_file
     String gaps
     String in
     Int length
@@ -91,7 +91,7 @@ task GmvalueutlScaf {
       ~{match} \
       ~{overlap} \
       ~{threads} \
-      ~{file} \
+      ~{var_file} \
       ~{gaps} \
       ~{in} \
       ~{length} \
@@ -132,6 +132,9 @@ task GmvalueutlScaf {
       ~{if defined(thread) then ("--thread " +  '"' + thread + '"') else ""} \
       ~{if defined(var_13) then ("--help " +  '"' + var_13 + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_scaffold_fasta: "input scaffold fasta file (e.g., scaf1.fa)"
     ref: "input reference file (e.g., ref.fa)"
@@ -170,7 +173,7 @@ task GmvalueutlScaf {
     match: ""
     overlap: ""
     threads: ""
-    file: ""
+    var_file: ""
     gaps: ""
     in: ""
     length: ""

@@ -1,0 +1,128 @@
+!Command
+command:
+- BamClipOverlap
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: Input BAM/CRAM file. Needs to be sorted by name.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: Output BAM file.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -overlap_mismatch_mapq
+  description: "Set mapping quality of pair to 0 if mismatch is found in overlapping\
+    \ reads.\nDefault value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -overlap_mismatch_remove
+  description: "Remove pair if mismatch is found in overlapping reads.\nDefault value:\
+    \ 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -overlap_mismatch_baseq
+  description: "Reduce base quality if mismatch is found in overlapping reads.\nDefault\
+    \ value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -overlap_mismatch_basen
+  description: "Set base to N if mismatch is found in overlapping reads.\nDefault\
+    \ value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ignore_indels
+  description: "Turn off indel detection in overlap.\nDefault value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: "Verbose mode.\nDefault value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ref
+  description: "Reference genome for CRAM support (mandatory if CRAM is used).\nDefault\
+    \ value: ''"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -write_cram
+  description: "Writes a CRAM file as output.\nDefault value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --changelog
+  description: Prints changeloge and exits.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tdx
+  description: Writes a Tool Definition Xml file. The file name is the application
+    name with the suffix '.tdx'.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows this help and exits.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Prints version and exits.
+  args: !EmptyFlagArg {}
+help_text: "BamClipOverlap (2020_12)\n\nSoftclipping of overlapping reads.\n\nOverlapping\
+  \ reads will be soft-clipped from start to end. There are several parameters available\
+  \ for handling of mismatches in overlapping reads. Within the overlap the higher\
+  \ base quality will be kept for each basepair.\n\nMandatory parameters:\n  -in <file>\
+  \                Input BAM/CRAM file. Needs to be sorted by name.\n  -out <file>\
+  \               Output BAM file.\n\nOptional parameters:\n  -overlap_mismatch_mapq\
+  \    Set mapping quality of pair to 0 if mismatch is found in overlapping reads.\n\
+  \                            Default value: 'false'\n  -overlap_mismatch_remove\
+  \  Remove pair if mismatch is found in overlapping reads.\n                    \
+  \        Default value: 'false'\n  -overlap_mismatch_baseq   Reduce base quality\
+  \ if mismatch is found in overlapping reads.\n                            Default\
+  \ value: 'false'\n  -overlap_mismatch_basen   Set base to N if mismatch is found\
+  \ in overlapping reads.\n                            Default value: 'false'\n  -ignore_indels\
+  \            Turn off indel detection in overlap.\n                            Default\
+  \ value: 'false'\n  -v                        Verbose mode.\n                  \
+  \          Default value: 'false'\n  -ref <string>             Reference genome\
+  \ for CRAM support (mandatory if CRAM is used).\n                            Default\
+  \ value: ''\n  -write_cram               Writes a CRAM file as output.\n       \
+  \                     Default value: 'false'\n\nSpecial parameters:\n  --help  \
+  \                  Shows this help and exits.\n  --version                 Prints\
+  \ version and exits.\n  --changelog               Prints changeloge and exits.\n\
+  \  --tdx                     Writes a Tool Definition Xml file. The file name is\
+  \ the application name with the suffix '.tdx'.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ngs-bits:2020_12--py39h5902420_0

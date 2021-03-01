@@ -40,6 +40,9 @@ task HisatgenotypeExtractReadspy {
       ~{if (extract_whole) then "--extract-whole" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base_fname: "base filename for genotype genome"
     read_dir: "Directory name for read files"

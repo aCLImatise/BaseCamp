@@ -1,0 +1,83 @@
+&id001 !Command
+command:
+- pyensembl
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --overwrite
+  description: "Force download and indexing even if files already\nexist locally\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - pyensembl
+  - genomes.
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: Manipulate
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: pyensembl
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: \nManipulate pyensembl's local cache.\n\n    pyensembl {install,\
+    \ delete, delete-sequence-cache} [--release XXX --species human...]\n\nTo install\
+    \ particular Ensembl human release(s):\n    pyensembl install --release 75 77\n\
+    \nTo install particular Ensembl mouse release(s):\n    pyensembl install --release\
+    \ 75 77 --species mouse\n\nTo delete all downloaded and cached data for a particular\
+    \ Ensembl release:\n    pyensembl delete-all-files --release 75 --species human\n\
+    \nTo delete only cached data related to transcript and protein sequences:\n  \
+    \  pyensembl delete-index-files --release 75\n\nTo list all installed genomes:\n\
+    \    pyensembl list\n\nTo install a genome from source files:\n    pyensembl install\
+    \  --reference-name \"GRCh38\"  --gtf URL_OR_PATH  --transcript-fasta URL_OR_PATH\
+    \  --protein-fasta URL_OR_PATH\npyensembl: error: argument action: invalid choice:\
+    \ 'genomes.' (choose from 'install', 'delete-all-files', 'delete-index-files',\
+    \ 'list')\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/pyensembl:1.9.1--pyh3252c3a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: \nManipulate pyensembl's local cache.\n\n    pyensembl {install,\
+  \ delete, delete-sequence-cache} [--release XXX --species human...]\n\nTo install\
+  \ particular Ensembl human release(s):\n    pyensembl install --release 75 77\n\n\
+  To install particular Ensembl mouse release(s):\n    pyensembl install --release\
+  \ 75 77 --species mouse\n\nTo delete all downloaded and cached data for a particular\
+  \ Ensembl release:\n    pyensembl delete-all-files --release 75 --species human\n\
+  \nTo delete only cached data related to transcript and protein sequences:\n    pyensembl\
+  \ delete-index-files --release 75\n\nTo list all installed genomes:\n    pyensembl\
+  \ list\n\nTo install a genome from source files:\n    pyensembl install  --reference-name\
+  \ \"GRCh38\"  --gtf URL_OR_PATH  --transcript-fasta URL_OR_PATH  --protein-fasta\
+  \ URL_OR_PATH\n\npositional arguments:\n  {install,delete-all-files,delete-index-files,list}\n\
+  \                        \"install\" will download and index any data that is not\n\
+  \                        currently downloaded or indexed. \"delete-all-files\"\n\
+  \                        will delete all data associated with a genome\n       \
+  \                 annotation. \"delete-index-files\" deletes all files\n       \
+  \                 other than the original GTF and FASTA files for a\n          \
+  \              genome. \"list\" will show you all installed Ensembl\n          \
+  \              genomes.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --overwrite           Force download and indexing even\
+  \ if files already\n                        exist locally\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/pyensembl:1.9.1--pyh3252c3a_0

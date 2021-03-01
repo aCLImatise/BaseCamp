@@ -3,17 +3,17 @@ id: probabilistic2020_genes..cwl
 inputs:
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_l
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -l
 - id: in_ll
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -ll
 - id: in_probabilistic_two_zero_two_zero
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - probabilistic2020

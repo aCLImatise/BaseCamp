@@ -16,19 +16,19 @@ task Scramble {
     Boolean? embed_reference_sequence
     Boolean? nonreference_based_encoding
     Boolean? use_multiple_references
-    Boolean? generate_md_tags
-    Boolean? also_compress_using_v
+    Boolean? generate_md_nm
+    Boolean? also_compress_using_coder
     Boolean? also_compress_using_bzip
     Boolean? also_compress_using_lzma
-    Boolean? also_compression_using_fqzcomp_v
-    Boolean? also_compression_using_tokeniser_v
+    Boolean? also_compression_using_v
+    Boolean? also_compression_using_name
     Boolean? discard_read_names
-    Boolean? preserve_aux_tags
+    Boolean? preserve_aux_incl
     Boolean? preserve_aux_tag
     Boolean? add_scramble_line
     Int? stop_decoding_sequences
     String? use_n_threads
-    Boolean? enable_illumina_lossy
+    Boolean? enable_illumina_qualitybinning
     File? convert_using_filegzi
     File? output_bam_index
     String? mode_fast_normal
@@ -53,23 +53,26 @@ task Scramble {
       ~{if (embed_reference_sequence) then "-e" else ""} \
       ~{if (nonreference_based_encoding) then "-x" else ""} \
       ~{if (use_multiple_references) then "-M" else ""} \
-      ~{if (generate_md_tags) then "-m" else ""} \
-      ~{if (also_compress_using_v) then "-a" else ""} \
+      ~{if (generate_md_nm) then "-m" else ""} \
+      ~{if (also_compress_using_coder) then "-a" else ""} \
       ~{if (also_compress_using_bzip) then "-j" else ""} \
       ~{if (also_compress_using_lzma) then "-Z" else ""} \
-      ~{if (also_compression_using_fqzcomp_v) then "-f" else ""} \
-      ~{if (also_compression_using_tokeniser_v) then "-T" else ""} \
+      ~{if (also_compression_using_v) then "-f" else ""} \
+      ~{if (also_compression_using_name) then "-T" else ""} \
       ~{if (discard_read_names) then "-n" else ""} \
-      ~{if (preserve_aux_tags) then "-P" else ""} \
+      ~{if (preserve_aux_incl) then "-P" else ""} \
       ~{if (preserve_aux_tag) then "-p" else ""} \
       ~{if (add_scramble_line) then "-q" else ""} \
       ~{if defined(stop_decoding_sequences) then ("-N " +  '"' + stop_decoding_sequences + '"') else ""} \
       ~{if defined(use_n_threads) then ("-t " +  '"' + use_n_threads + '"') else ""} \
-      ~{if (enable_illumina_lossy) then "-B" else ""} \
+      ~{if (enable_illumina_qualitybinning) then "-B" else ""} \
       ~{if defined(convert_using_filegzi) then ("-g " +  '"' + convert_using_filegzi + '"') else ""} \
       ~{if defined(output_bam_index) then ("-G " +  '"' + output_bam_index + '"') else ""} \
       ~{if defined(mode_fast_normal) then ("-X " +  '"' + mode_fast_normal + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     set_input_format: "Set input format:  \\\"bam\\\", \\\"sam\\\" or \\\"cram\\\"."
     set_output_format: "Set output format: \\\"bam\\\", \\\"sam\\\" or \\\"cram\\\"."
@@ -85,19 +88,19 @@ task Scramble {
     embed_reference_sequence: "[Cram] Embed reference sequence."
     nonreference_based_encoding: "[Cram] Non-reference based encoding."
     use_multiple_references: "[Cram] Use multiple references per slice."
-    generate_md_tags: "[Cram] Generate MD and NM tags."
-    also_compress_using_v: "[Cram] Also compress using arithmetic coder (V3.1+)."
+    generate_md_nm: "[Cram] Generate MD and NM tags."
+    also_compress_using_coder: "[Cram] Also compress using arithmetic coder (V3.1+)."
     also_compress_using_bzip: "[Cram] Also compress using bzip2."
     also_compress_using_lzma: "[Cram] Also compress using lzma."
-    also_compression_using_fqzcomp_v: "[Cram] Also compression using fqzcomp (V3.1+)"
-    also_compression_using_tokeniser_v: "[Cram] Also compression using name tokeniser (V3.1+)"
+    also_compression_using_v: "[Cram] Also compression using fqzcomp (V3.1+)"
+    also_compression_using_name: "[Cram] Also compression using name tokeniser (V3.1+)"
     discard_read_names: "[Cram] Discard read names where possible."
-    preserve_aux_tags: "Preserve all aux tags (incl RG,NM,MD)"
+    preserve_aux_incl: "Preserve all aux tags (incl RG,NM,MD)"
     preserve_aux_tag: "Preserve aux tag sizes ('i', 's', 'c')"
     add_scramble_line: "Don't add scramble @PG header line"
     stop_decoding_sequences: "Stop decoding after 'integer' sequences"
     use_n_threads: "Use N threads (availability varies by format)"
-    enable_illumina_lossy: "Enable Illumina 8 quality-binning system (lossy)"
+    enable_illumina_qualitybinning: "Enable Illumina 8 quality-binning system (lossy)"
     convert_using_filegzi: "Convert to Bam using index (file.gzi)"
     output_bam_index: "Output Bam index when bam input(file.gzi)"
     mode_fast_normal: "[Cram] Mode is fast, normal, small or archive."

@@ -3,91 +3,69 @@ command:
 - fastspar_reduce
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: reduce
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: Correlation input table
-  synonyms:
-  - -r/--correlation_table
-  args: !SimpleFlagArg
-    name: path
   optional: true
-- !Flag
-  description: Number of bootstrap samples to generate
   synonyms:
-  - -p/--pvalue_table
-  args: !SimpleFlagArg
-    name: path
-  optional: true
-- !Flag
-  description: Output prefix
-  synonyms:
-  - -o/--output_prefix
-  args: !SimpleFlagArg
-    name: path
-  optional: true
-- !Flag
-  description: 'Absolute (sign is ignored) correlation threshold (default: 0.1)'
-  synonyms:
-  - -t/--correlation
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: 'P-value threshold (default: 0.05)'
-  synonyms:
-  - -l/--pvalue
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: "--version\nDisplay version information and exit\n"
-  synonyms:
-  - -v
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --pvalue
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --correlation
-  args: !SimpleFlagArg
-    name: path
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --pvalue_table
-  args: !SimpleFlagArg
-    name: path
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
+  - -r
   - --correlation_table
+  description: Correlation input table
   args: !SimpleFlagArg
     name: path
+- !Flag
   optional: true
+  synonyms:
+  - -p
+  - --pvalue_table
+  description: Number of bootstrap samples to generate
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_prefix
+  description: Output prefix
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --correlation
+  description: 'Absolute (sign is ignored) correlation threshold (default: 0.1)'
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --pvalue
+  description: 'P-value threshold (default: 0.05)'
+  args: !SimpleFlagArg
+    name: float
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "--help\nDisplay this help and exit"
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: Display this help and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: "Display version information and exit\n"
+  args: !EmptyFlagArg {}
 help_text: "Program: Filter correlation and p-value table. Output as sparse matrices\n\
   Version 0.0.10\nContact: Stephen Watts (s.watts2@student.unimelb.edu.au)\n\nUsage:\n\
   \  reduce --correlation_table <path> --pvalue_table <path> --correlation <path>\
@@ -101,3 +79,4 @@ help_text: "Program: Filter correlation and p-value table. Output as sparse matr
   \                Display version information and exit\n"
 generated_using:
 - --help
+docker_image:

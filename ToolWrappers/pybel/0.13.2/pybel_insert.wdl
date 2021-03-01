@@ -8,6 +8,9 @@ task PybelInsert {
     pybel insert \
       ~{path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path: ""
   }

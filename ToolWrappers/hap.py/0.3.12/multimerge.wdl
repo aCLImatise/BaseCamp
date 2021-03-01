@@ -48,6 +48,9 @@ task Multimerge {
       ~{if defined(primitives) then ("--primitives " +  '"' + primitives + '"') else ""} \
       ~{if defined(process_formats) then ("--process-formats " +  '"' + process_formats + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "The input files"
     arg_output_file: "[ --output-file ] arg   The output file name."

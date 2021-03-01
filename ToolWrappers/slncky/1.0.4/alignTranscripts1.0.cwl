@@ -1,21 +1,36 @@
 class: CommandLineTool
 id: alignTranscripts1.0.cwl
 inputs:
+- id: in_gene_a
+  doc: if bedA has more than one entry, specify which gene to
+  type: string?
+  inputBinding:
+    prefix: --geneA
+- id: in_gap_extend
+  doc: unmask repeats when aligning
+  type: string?
+  inputBinding:
+    prefix: --gap_extend
+- id: in_orf
+  doc: flag for checking for orfs in alignment
+  type: boolean?
+  inputBinding:
+    prefix: --orf
+- id: in_bed_tools_path
+  doc: "Aligns genes to random background and removes\nnonsignificant alignments"
+  type: File?
+  inputBinding:
+    prefix: --bedtools_path
 - id: in_pad
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --pad
 - id: in_gene_b
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --geneB
-- id: in_gene_a
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --geneA
 - id: in_bed_a
   doc: bed file A
   type: string
@@ -45,6 +60,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - alignTranscripts1.0

@@ -40,6 +40,9 @@ task BcbioNextgenpy {
       ~{if (force_single) then "--force-single" else ""} \
       ~{if defined(separators) then ("--separators " +  '"' + separators + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_cores: "Total cores to use for processing"
     parallel_type: "Approach to parallelization"

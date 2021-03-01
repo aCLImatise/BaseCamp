@@ -22,6 +22,9 @@ task RnasambaTrain {
       ~{if defined(epochs) then ("--epochs " +  '"' + epochs + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     early_stopping: "number of epochs after lowest validation loss before\\nstopping training (a fraction of 0.1 of the training\\nset is set apart for validation and the model with the\\nlowest validation loss will be saved). (default: 0)"
     batch_size: "number of samples per gradient update. (default: 128)"

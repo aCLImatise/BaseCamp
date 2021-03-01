@@ -4,28 +4,28 @@ inputs:
 - id: in_to_files
   doc: print everything to files instead of stdout files are called OrthoGroup**.fasta
     for a proteinortho.tsv file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -tofiles
 - id: in_enables_regex_matching
   doc: enables regex matching otherwise the string is escaped (e.g. | -> \|)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -E
 - id: in_exact
   doc: search patters are extended with a \b, that indicates end of word.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -exact
 - id: in_source
   doc: adds the filename (FASTA1,...) to the found gene-name
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -source
-- id: in_char_delimiter_multiple
+- id: in_char_delimiter_is
   doc: "char delimiter for multiple identifier if QUERY is a string input (default:\
     \ ',')"
-  type: string
+  type: string?
   inputBinding:
     prefix: -F
 - id: in_query
@@ -50,6 +50,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - proteinortho_grab_proteins.pl

@@ -52,6 +52,9 @@ task SeqkitFish {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "search all"
     aln_params: "alignment parameters in format \\\"<match>,<mismatch>,<gap_open>,<gap_extend>\\\" (default \\\"4,-4,-2,-1\\\")"

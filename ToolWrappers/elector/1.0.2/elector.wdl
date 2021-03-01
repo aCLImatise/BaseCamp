@@ -32,6 +32,9 @@ task Elector {
       ~{if (remap) then "-remap" else ""} \
       ~{if (minsize) then "-minsize" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "[THREADS]    Number of threads"
     corrected: "[CORRECTED]\\nFasta file with corrected reads (each read sequence on\\none line)"

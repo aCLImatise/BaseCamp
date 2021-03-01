@@ -12,6 +12,9 @@ task Certsync {
       ~{if (user) then "--user" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     user: ""
     quiet: ""

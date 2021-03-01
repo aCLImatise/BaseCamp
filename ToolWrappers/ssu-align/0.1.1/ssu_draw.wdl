@@ -3,11 +3,11 @@ version 1.0
 task Ssudraw {
   input {
     Boolean? commandline_argument_stockholm
-    Boolean? force_windi_draw
-    Boolean? display_default_masks
+    Boolean? force_draw_seqs
+    Boolean? display_default_ssualign
     File? display_single_mask
     String? display_masks_modelnamesmask
-    File? cm_file_f
+    File? cm_file_created
     File? use_template_file
     Boolean? i_used_ssualign
     Int? pstwo_pdf
@@ -40,11 +40,11 @@ task Ssudraw {
   command <<<
     ssu_draw \
       ~{if (commandline_argument_stockholm) then "-a" else ""} \
-      ~{if (force_windi_draw) then "-f" else ""} \
-      ~{if (display_default_masks) then "-d" else ""} \
+      ~{if (force_draw_seqs) then "-f" else ""} \
+      ~{if (display_default_ssualign) then "-d" else ""} \
       ~{if defined(display_single_mask) then ("-s " +  '"' + display_single_mask + '"') else ""} \
       ~{if defined(display_masks_modelnamesmask) then ("-k " +  '"' + display_masks_modelnamesmask + '"') else ""} \
-      ~{if defined(cm_file_f) then ("-m " +  '"' + cm_file_f + '"') else ""} \
+      ~{if defined(cm_file_created) then ("-m " +  '"' + cm_file_created + '"') else ""} \
       ~{if defined(use_template_file) then ("-t " +  '"' + use_template_file + '"') else ""} \
       ~{if (i_used_ssualign) then "-i" else ""} \
       ~{if defined(pstwo_pdf) then ("--ps2pdf " +  '"' + pstwo_pdf + '"') else ""} \
@@ -74,13 +74,16 @@ task Ssudraw {
       ~{if (no_foot) then "--no-foot" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     commandline_argument_stockholm: ": the command-line argument is a stockholm alignment, not a directory"
-    force_windi_draw: ": force; w/--indi, draw all seqs, even if predicted output >100 Mb"
-    display_default_masks: ": display default ssu-align-0.1 masks on drawings"
+    force_draw_seqs: ": force; w/--indi, draw all seqs, even if predicted output >100 Mb"
+    display_default_ssualign: ": display default ssu-align-0.1 masks on drawings"
     display_single_mask: ": display single mask in file <f> for single alignment (requires -a)"
     display_masks_modelnamesmask: ": display masks from files named <modelname>.<s>.mask on drawings\\n(<modelname> might be 'archaea', 'bacteria' or 'eukarya')"
-    cm_file_f: ": CM file <f> created the alignment(s) (with ssu-align -m <f>)"
+    cm_file_created: ": CM file <f> created the alignment(s) (with ssu-align -m <f>)"
     use_template_file: ": use template file <f>, not the default template file"
     i_used_ssualign: ": -i used with ssu-align, alignments are interleaved"
     pstwo_pdf: ": <s> (!= \\\"ps2pdf\\\") is the command for converting ps to pdf"

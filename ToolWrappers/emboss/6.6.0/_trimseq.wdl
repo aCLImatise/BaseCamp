@@ -14,6 +14,9 @@ task Trimseq {
       ~{if (strict) then "-strict" else ""} \
       ~{if (star) then "-star" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window: "integer    [1] This determines the size of the region\\nthat is considered when deciding whether the\\npercentage of ambiguity is greater than the\\nthreshold. A value of 5 means that a region\\nof 5 letters in the sequence is shifted\\nalong the sequence from the ends and\\ntrimming is done only if there is a greater\\nor equal percentage of ambiguity than the\\nthreshold percentage. (Integer 1 or more)"
     percent: "float      [100.0] This is the threshold of the\\npercentage ambiguity in the window required\\nin order to trim a sequence. (Any numeric\\nvalue)"

@@ -54,6 +54,9 @@ task Kget2 {
       ~{if (reliable) then "--reliable" else ""} \
       ~{if (full) then "--full" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Increase the verbosity of the program\\nstatus messages. Use multiple times for more\\nverbosity. Negates quiet."
     quiet: "Turn off all status messages for the\\nprogram. Negated by verbose."

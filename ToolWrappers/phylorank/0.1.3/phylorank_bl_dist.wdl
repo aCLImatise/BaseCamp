@@ -16,6 +16,9 @@ task PhylorankBlDist {
       ~{if defined(min_children) then ("--min_children " +  '"' + min_children + '"') else ""} \
       ~{if defined(taxonomy_file) then ("--taxonomy_file " +  '"' + taxonomy_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     trusted_tax_a_file: "file indicating trusted taxonomic groups to use for\\ninferring distribution (default: all taxa)"
     min_children: "minimum required child taxa to consider taxa when\\ninferring distribution (default: 2)"

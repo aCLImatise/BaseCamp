@@ -1,0 +1,305 @@
+!Command
+command:
+- busco
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: SEQUENCE_FILE
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: LINEAGE
+  description: ''
+- !Positional
+  optional: true
+  position: 2
+  name: OUTPUT_NAME
+  description: ''
+- !Positional
+  optional: true
+  position: 3
+  name: MODE
+  description: ''
+- !Positional
+  optional: true
+  position: 4
+  name: OTHER
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "FILE, --in FASTA FILE\nInput sequence file in FASTA format. Can be\
+    \ an assembled genome or transcriptome (DNA), or protein sequences from an annotated\
+    \ gene set."
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: 'Give your analysis run a recognisable short name. Output folders and
+    files will be labelled with this name. WARNING: do not provide a path'
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mode
+  description: "Specify which BUSCO analysis mode to run.\nThere are three valid modes:\n\
+    - geno or genome, for genome assemblies (DNA)\n- tran or transcriptome, for transcriptome\
+    \ assemblies (DNA)\n- prot or proteins, for annotated gene sets (protein)"
+  args: !SimpleFlagArg
+    name: MODE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --lineage_dataset
+  description: Specify the name of the BUSCO lineage to be used.
+  args: !SimpleFlagArg
+    name: LINEAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --auto-lineage
+  description: Run auto-lineage to find optimum lineage path
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --auto-lineage-prok
+  description: Run auto-lineage just on non-eukaryote trees to find optimum lineage
+    path
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --auto-lineage-euk
+  description: Run auto-placement just on eukaryote tree to find optimum lineage path
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cpu
+  description: Specify the number (N=integer) of threads/cores to use.
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: Force rewriting of existing files. Must be used when output files with
+    the provided name already exist.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --restart
+  description: Continue a run that had already partially completed.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: Disable the info logs, displays only errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --out_path
+  description: Optional location for results folder, excluding results folder name.
+    Default is current working directory.
+  args: !SimpleFlagArg
+    name: OUTPUT_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --download_path
+  description: Specify local filepath for storing BUSCO dataset downloads
+  args: !SimpleFlagArg
+    name: DOWNLOAD_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --datasets_version
+  description: Specify the version of BUSCO datasets, e.g. odb10
+  args: !SimpleFlagArg
+    name: DATASETS_VERSION
+- !Flag
+  optional: true
+  synonyms:
+  - --download_base_url
+  description: Set the url to the remote BUSCO dataset location
+  args: !SimpleFlagArg
+    name: DOWNLOAD_BASE_URL
+- !Flag
+  optional: true
+  synonyms:
+  - --update-data
+  description: Download and replace with last versions all lineages datasets and files
+    necessary to their automated selection
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --offline
+  description: To indicate that BUSCO cannot attempt to download files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --metaeuk_parameters
+  description: Pass additional arguments to Metaeuk for the first run. All arguments
+    should be contained within a single pair of quotation marks, separated by commas.
+    E.g. "--param1=1,--param2=2"
+  args: !SimpleFlagArg
+    name: METAEUK_PARAMETERS
+- !Flag
+  optional: true
+  synonyms:
+  - --metaeuk_rerun_parameters
+  description: Pass additional arguments to Metaeuk for the second run. All arguments
+    should be contained within a single pair of quotation marks, separated by commas.
+    E.g. "--param1=1,--param2=2"
+  args: !SimpleFlagArg
+    name: METAEUK_RERUN_PARAMETERS
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --evalue
+  description: 'E-value cutoff for BLAST searches. Allowed formats, 0.001 or 1e-03
+    (Default: 1e-03)'
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --limit
+  description: 'How many candidate regions (contig or transcript) to consider per
+    BUSCO (default: 3)'
+  args: !SimpleFlagArg
+    name: REGION_LIMIT
+- !Flag
+  optional: true
+  synonyms:
+  - --augustus
+  description: Use augustus gene predictor for eukaryote runs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --augustus_parameters
+  description: Pass additional arguments to Augustus. All arguments should be contained
+    within a single pair of quotation marks, separated by commas. E.g. "--param1=1,--param2=2"
+  args: !SimpleFlagArg
+    name: AUGUSTUS_PARAMETERS
+- !Flag
+  optional: true
+  synonyms:
+  - --augustus_species
+  description: Specify a species for Augustus training.
+  args: !SimpleFlagArg
+    name: AUGUSTUS_SPECIES
+- !Flag
+  optional: true
+  synonyms:
+  - --long
+  description: 'Optimization Augustus self-training mode (Default: Off); adds considerably
+    to the run time, but can improve results for some non-model organisms'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --config
+  description: Provide a config file
+  args: !SimpleFlagArg
+    name: CONFIG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --list-datasets
+  description: Print the list of available BUSCO datasets
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Show this version and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: busco -i [SEQUENCE_FILE] -l [LINEAGE] -o [OUTPUT_NAME] -m [MODE]\
+  \ [OTHER OPTIONS]\n\nWelcome to BUSCO 5.0.0: the Benchmarking Universal Single-Copy\
+  \ Ortholog assessment tool.\nFor more detailed usage information, please review\
+  \ the README file provided with this distribution and the BUSCO user guide.\n\n\
+  optional arguments:\n  -i FASTA FILE, --in FASTA FILE\n                        Input\
+  \ sequence file in FASTA format. Can be an assembled genome or transcriptome (DNA),\
+  \ or protein sequences from an annotated gene set.\n  -o OUTPUT, --out OUTPUT\n\
+  \                        Give your analysis run a recognisable short name. Output\
+  \ folders and files will be labelled with this name. WARNING: do not provide a path\n\
+  \  -m MODE, --mode MODE  Specify which BUSCO analysis mode to run.\n           \
+  \             There are three valid modes:\n                        - geno or genome,\
+  \ for genome assemblies (DNA)\n                        - tran or transcriptome,\
+  \ for transcriptome assemblies (DNA)\n                        - prot or proteins,\
+  \ for annotated gene sets (protein)\n  -l LINEAGE, --lineage_dataset LINEAGE\n \
+  \                       Specify the name of the BUSCO lineage to be used.\n  --auto-lineage\
+  \        Run auto-lineage to find optimum lineage path\n  --auto-lineage-prok  \
+  \ Run auto-lineage just on non-eukaryote trees to find optimum lineage path\n  --auto-lineage-euk\
+  \    Run auto-placement just on eukaryote tree to find optimum lineage path\n  -c\
+  \ N, --cpu N         Specify the number (N=integer) of threads/cores to use.\n \
+  \ -f, --force           Force rewriting of existing files. Must be used when output\
+  \ files with the provided name already exist.\n  -r, --restart         Continue\
+  \ a run that had already partially completed.\n  -q, --quiet           Disable the\
+  \ info logs, displays only errors\n  --out_path OUTPUT_PATH\n                  \
+  \      Optional location for results folder, excluding results folder name. Default\
+  \ is current working directory.\n  --download_path DOWNLOAD_PATH\n             \
+  \           Specify local filepath for storing BUSCO dataset downloads\n  --datasets_version\
+  \ DATASETS_VERSION\n                        Specify the version of BUSCO datasets,\
+  \ e.g. odb10\n  --download_base_url DOWNLOAD_BASE_URL\n                        Set\
+  \ the url to the remote BUSCO dataset location\n  --update-data         Download\
+  \ and replace with last versions all lineages datasets and files necessary to their\
+  \ automated selection\n  --offline             To indicate that BUSCO cannot attempt\
+  \ to download files\n  --metaeuk_parameters METAEUK_PARAMETERS\n               \
+  \         Pass additional arguments to Metaeuk for the first run. All arguments\
+  \ should be contained within a single pair of quotation marks, separated by commas.\
+  \ E.g. \"--param1=1,--param2=2\"\n  --metaeuk_rerun_parameters METAEUK_RERUN_PARAMETERS\n\
+  \                        Pass additional arguments to Metaeuk for the second run.\
+  \ All arguments should be contained within a single pair of quotation marks, separated\
+  \ by commas. E.g. \"--param1=1,--param2=2\"\n  -e N, --evalue N      E-value cutoff\
+  \ for BLAST searches. Allowed formats, 0.001 or 1e-03 (Default: 1e-03)\n  --limit\
+  \ REGION_LIMIT  How many candidate regions (contig or transcript) to consider per\
+  \ BUSCO (default: 3)\n  --augustus            Use augustus gene predictor for eukaryote\
+  \ runs\n  --augustus_parameters AUGUSTUS_PARAMETERS\n                        Pass\
+  \ additional arguments to Augustus. All arguments should be contained within a single\
+  \ pair of quotation marks, separated by commas. E.g. \"--param1=1,--param2=2\"\n\
+  \  --augustus_species AUGUSTUS_SPECIES\n                        Specify a species\
+  \ for Augustus training.\n  --long                Optimization Augustus self-training\
+  \ mode (Default: Off); adds considerably to the run time, but can improve results\
+  \ for some non-model organisms\n  --config CONFIG_FILE  Provide a config file\n\
+  \  -v, --version         Show this version and exit\n  -h, --help            Show\
+  \ this help message and exit\n  --list-datasets       Print the list of available\
+  \ BUSCO datasets\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/busco:5.0.0--py_0

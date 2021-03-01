@@ -1,0 +1,301 @@
+!Command
+command:
+- cuteSV
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: reference
+  description: The reference genome in fasta format.
+- !Positional
+  optional: false
+  position: 1
+  name: output
+  description: Output VCF format file.
+- !Positional
+  optional: false
+  position: 2
+  name: work_dir
+  description: Work-directory for distributed jobs
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads to use.[16]
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --batches
+  description: Batch of genome segmentation interval.[10000000]
+  args: !SimpleFlagArg
+    name: BATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --sample
+  description: Sample name/id
+  args: !SimpleFlagArg
+    name: SAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - --retain_work_dir
+  description: Enable to retain temporary folder and files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --report_readid
+  description: Enable to report supporting read ids for each SV.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --max_split_parts
+  description: "Maximum number of split segments a read may be aligned\nbefore it\
+    \ is ignored.[7]"
+  args: !SimpleFlagArg
+    name: MAX_SPLIT_PARTS
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --min_mapq
+  description: "Minimum mapping quality value of alignment to be taken\ninto account.[20]"
+  args: !SimpleFlagArg
+    name: MIN_MAPQ
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --min_read_len
+  description: "Ignores reads that only report alignments with not\nlonger than bp.[500]"
+  args: !SimpleFlagArg
+    name: MIN_READ_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -md
+  - --merge_del_threshold
+  description: "Maximum distance of deletion signals to be merged. In\nour paper,\
+    \ I used -md 500 to process HG002 real human\nsample data.[0]"
+  args: !SimpleFlagArg
+    name: MERGE_DEL_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -mi
+  - --merge_ins_threshold
+  description: "Maximum distance of insertion signals to be merged. In\nour paper,\
+    \ I used -mi 500 to process HG002 real human\nsample data.[100]"
+  args: !SimpleFlagArg
+    name: MERGE_INS_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --min_support
+  description: "Minimum number of reads that support a SV to be\nreported.[10]"
+  args: !SimpleFlagArg
+    name: MIN_SUPPORT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --min_size
+  description: Minimum size of SV to be reported.[30]
+  args: !SimpleFlagArg
+    name: MIN_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --max_size
+  description: Maximum size of SV to be reported.[100000]
+  args: !SimpleFlagArg
+    name: MAX_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -sl
+  - --min_siglength
+  description: Minimum length of SV signal to be extracted.[10]
+  args: !SimpleFlagArg
+    name: MIN_SIGLENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --genotype
+  description: Enable to generate genotypes.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gt_round
+  description: "Maximum round of iteration for alignments searching if\nperform genotyping.[500]"
+  args: !SimpleFlagArg
+    name: GT_ROUND
+- !Flag
+  optional: true
+  synonyms:
+  - -Ivcf
+  description: "Optional given vcf file. Enable to perform force\ncalling. [NULL]"
+  args: !SimpleFlagArg
+    name: IVCF
+- !Flag
+  optional: true
+  synonyms:
+  - --max_cluster_bias_INS
+  description: "Maximum distance to cluster read together for\ninsertion.[100]"
+  args: !SimpleFlagArg
+    name: MAX_CLUSTER_BIAS_INS
+- !Flag
+  optional: true
+  synonyms:
+  - --diff_ratio_merging_INS
+  description: "Do not merge breakpoints with basepair identity more\nthan [0.3] for\
+    \ insertion."
+  args: !SimpleFlagArg
+    name: DIFF_RATIO_MERGING_INS
+- !Flag
+  optional: true
+  synonyms:
+  - --max_cluster_bias_DEL
+  description: "Maximum distance to cluster read together for\ndeletion.[200]"
+  args: !SimpleFlagArg
+    name: MAX_CLUSTER_BIAS_DEL
+- !Flag
+  optional: true
+  synonyms:
+  - --diff_ratio_merging_DEL
+  description: "Do not merge breakpoints with basepair identity more\nthan [0.5] for\
+    \ deletion."
+  args: !SimpleFlagArg
+    name: DIFF_RATIO_MERGING_DEL
+- !Flag
+  optional: true
+  synonyms:
+  - --max_cluster_bias_INV
+  description: "Maximum distance to cluster read together for\ninversion.[500]"
+  args: !SimpleFlagArg
+    name: MAX_CLUSTER_BIAS_INV
+- !Flag
+  optional: true
+  synonyms:
+  - --max_cluster_bias_DUP
+  description: "Maximum distance to cluster read together for\nduplication.[500]"
+  args: !SimpleFlagArg
+    name: MAX_CLUSTER_BIAS_DUP
+- !Flag
+  optional: true
+  synonyms:
+  - --max_cluster_bias_TRA
+  description: "Maximum distance to cluster read together for\ntranslocation.[50]"
+  args: !SimpleFlagArg
+    name: MAX_CLUSTER_BIAS_TRA
+- !Flag
+  optional: true
+  synonyms:
+  - --diff_ratio_filtering_TRA
+  description: "Filter breakpoints with basepair identity less than\n[0.6] for translocation.\n"
+  args: !SimpleFlagArg
+    name: DIFF_RATIO_FILTERING_TRA
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -v
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: cuteSV [-h] [--version] [-t THREADS] [-b BATCHES] [-S SAMPLE]\n\
+  \              [--retain_work_dir] [--report_readid] [-p MAX_SPLIT_PARTS]\n    \
+  \          [-q MIN_MAPQ] [-r MIN_READ_LEN] [-md MERGE_DEL_THRESHOLD]\n         \
+  \     [-mi MERGE_INS_THRESHOLD] [-s MIN_SUPPORT] [-l MIN_SIZE]\n              [-L\
+  \ MAX_SIZE] [-sl MIN_SIGLENGTH] [--genotype]\n              [--gt_round GT_ROUND]\
+  \ [-Ivcf IVCF]\n              [--max_cluster_bias_INS MAX_CLUSTER_BIAS_INS]\n  \
+  \            [--diff_ratio_merging_INS DIFF_RATIO_MERGING_INS]\n              [--max_cluster_bias_DEL\
+  \ MAX_CLUSTER_BIAS_DEL]\n              [--diff_ratio_merging_DEL DIFF_RATIO_MERGING_DEL]\n\
+  \              [--max_cluster_bias_INV MAX_CLUSTER_BIAS_INV]\n              [--max_cluster_bias_DUP\
+  \ MAX_CLUSTER_BIAS_DUP]\n              [--max_cluster_bias_TRA MAX_CLUSTER_BIAS_TRA]\n\
+  \              [--diff_ratio_filtering_TRA DIFF_RATIO_FILTERING_TRA]\n         \
+  \     [BAM] reference output work_dir\n\n\t\t\n\tCurrent version: v1.0.10\n\tAuthor:\
+  \ Tao Jiang\n\tContact: tjiang@hit.edu.cn\n\n\tIf you use cuteSV in your work, please\
+  \ cite:\n\t\tJiang T et al. Long-read-based human genomic structural variation detection\
+  \ with cuteSV. \n\t\tGenome Biol 21,189(2020). https://doi.org/10.1186/s13059-020-02107-y\n\
+  \n\tSuggestions:\n\n\tFor PacBio CLR data:\n\t\t--max_cluster_bias_INS\t\t100\n\t\
+  \t--diff_ratio_merging_INS\t0.3\n\t\t--max_cluster_bias_DEL\t200\n\t\t--diff_ratio_merging_DEL\t\
+  0.5\n\n\tFor PacBio CCS(HIFI) data:\n\t\t--max_cluster_bias_INS\t\t1000\n\t\t--diff_ratio_merging_INS\t\
+  0.9\n\t\t--max_cluster_bias_DEL\t1000\n\t\t--diff_ratio_merging_DEL\t0.5\n\n\tFor\
+  \ ONT data:\n\t\t--max_cluster_bias_INS\t\t100\n\t\t--diff_ratio_merging_INS\t0.3\n\
+  \t\t--max_cluster_bias_DEL\t100\n\t\t--diff_ratio_merging_DEL\t0.3\n\n\t\n\npositional\
+  \ arguments:\n  [BAM]                 Sorted .bam file form NGMLR or Minimap2.\n\
+  \  reference             The reference genome in fasta format.\n  output       \
+  \         Output VCF format file.\n  work_dir              Work-directory for distributed\
+  \ jobs\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  --version, -v         show program's version number and exit\n  -t THREADS,\
+  \ --threads THREADS\n                        Number of threads to use.[16]\n  -b\
+  \ BATCHES, --batches BATCHES\n                        Batch of genome segmentation\
+  \ interval.[10000000]\n  -S SAMPLE, --sample SAMPLE\n                        Sample\
+  \ name/id\n  --retain_work_dir     Enable to retain temporary folder and files.\n\
+  \  --report_readid       Enable to report supporting read ids for each SV.\n\nCollection\
+  \ of SV signatures:\n  -p MAX_SPLIT_PARTS, --max_split_parts MAX_SPLIT_PARTS\n \
+  \                       Maximum number of split segments a read may be aligned\n\
+  \                        before it is ignored.[7]\n  -q MIN_MAPQ, --min_mapq MIN_MAPQ\n\
+  \                        Minimum mapping quality value of alignment to be taken\n\
+  \                        into account.[20]\n  -r MIN_READ_LEN, --min_read_len MIN_READ_LEN\n\
+  \                        Ignores reads that only report alignments with not\n  \
+  \                      longer than bp.[500]\n  -md MERGE_DEL_THRESHOLD, --merge_del_threshold\
+  \ MERGE_DEL_THRESHOLD\n                        Maximum distance of deletion signals\
+  \ to be merged. In\n                        our paper, I used -md 500 to process\
+  \ HG002 real human\n                        sample data.[0]\n  -mi MERGE_INS_THRESHOLD,\
+  \ --merge_ins_threshold MERGE_INS_THRESHOLD\n                        Maximum distance\
+  \ of insertion signals to be merged. In\n                        our paper, I used\
+  \ -mi 500 to process HG002 real human\n                        sample data.[100]\n\
+  \nGeneration of SV clusters:\n  -s MIN_SUPPORT, --min_support MIN_SUPPORT\n    \
+  \                    Minimum number of reads that support a SV to be\n         \
+  \               reported.[10]\n  -l MIN_SIZE, --min_size MIN_SIZE\n            \
+  \            Minimum size of SV to be reported.[30]\n  -L MAX_SIZE, --max_size MAX_SIZE\n\
+  \                        Maximum size of SV to be reported.[100000]\n  -sl MIN_SIGLENGTH,\
+  \ --min_siglength MIN_SIGLENGTH\n                        Minimum length of SV signal\
+  \ to be extracted.[10]\n\nComputing genotypes:\n  --genotype            Enable to\
+  \ generate genotypes.\n  --gt_round GT_ROUND   Maximum round of iteration for alignments\
+  \ searching if\n                        perform genotyping.[500]\n\nForce calling:\n\
+  \  -Ivcf IVCF            Optional given vcf file. Enable to perform force\n    \
+  \                    calling. [NULL]\n\nAdvanced:\n  --max_cluster_bias_INS MAX_CLUSTER_BIAS_INS\n\
+  \                        Maximum distance to cluster read together for\n       \
+  \                 insertion.[100]\n  --diff_ratio_merging_INS DIFF_RATIO_MERGING_INS\n\
+  \                        Do not merge breakpoints with basepair identity more\n\
+  \                        than [0.3] for insertion.\n  --max_cluster_bias_DEL MAX_CLUSTER_BIAS_DEL\n\
+  \                        Maximum distance to cluster read together for\n       \
+  \                 deletion.[200]\n  --diff_ratio_merging_DEL DIFF_RATIO_MERGING_DEL\n\
+  \                        Do not merge breakpoints with basepair identity more\n\
+  \                        than [0.5] for deletion.\n  --max_cluster_bias_INV MAX_CLUSTER_BIAS_INV\n\
+  \                        Maximum distance to cluster read together for\n       \
+  \                 inversion.[500]\n  --max_cluster_bias_DUP MAX_CLUSTER_BIAS_DUP\n\
+  \                        Maximum distance to cluster read together for\n       \
+  \                 duplication.[500]\n  --max_cluster_bias_TRA MAX_CLUSTER_BIAS_TRA\n\
+  \                        Maximum distance to cluster read together for\n       \
+  \                 translocation.[50]\n  --diff_ratio_filtering_TRA DIFF_RATIO_FILTERING_TRA\n\
+  \                        Filter breakpoints with basepair identity less than\n \
+  \                       [0.6] for translocation.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cutesv:1.0.10--py_0

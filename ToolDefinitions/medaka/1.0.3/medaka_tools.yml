@@ -13,17 +13,17 @@ subcommands:
   - subtype.
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: medaka
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: tools
-    optional: false
+    description: ''
   named: []
-  parent: &id011 !Command
+  parent: &id012 !Command
     command: *id001
     positional: []
     named: []
@@ -33,17 +33,17 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: medaka
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: tools
-        optional: false
+        description: ''
       named: []
-      parent: &id010 !Command
+      parent: &id011 !Command
         command: *id001
         positional: []
         named: []
@@ -53,17 +53,17 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: medaka
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: tools
-            optional: false
+            description: ''
           named: []
-          parent: &id009 !Command
+          parent: &id010 !Command
             command: *id001
             positional: []
             named: []
@@ -73,1328 +73,1615 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: medaka
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: tools
-                optional: false
+                description: ''
               named: []
-              parent: &id005 !Command
+              parent: &id009 !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: 'Verbose logging of debug information. (default: 20)'
-                  synonyms:
-                  - --debug
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: 'Minimal logging; warnings only). (default: 20)'
-                  synonyms:
-                  - --quiet
-                  args: !EmptyFlagArg {}
-                  optional: true
-                parent: &id003 !Command
-                  command:
-                  - medaka
-                  positional: []
-                  named: []
-                  parent:
-                  subcommands:
-                  - !Command
-                    command:
-                    - medaka
-                    - features.
-                    positional:
-                    - !Positional
-                      description: ''
-                      position: 0
-                      name: medaka
-                      optional: false
-                    named: []
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
-                      description: ''
-                      synonyms:
-                      - -h
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag: !Flag
-                      description: ''
-                      synonyms:
-                      - --version
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    help_text: "usage: medaka [-h] [--version]\n              {compress_bam,features,train,consensus,smolecule,consensus_from_features,fastrle,stitch,variant,snp,methylation,tools}\n\
-                      \              ...\nmedaka: error: argument command: invalid\
-                      \ choice: 'features.' (choose from 'compress_bam', 'features',\
-                      \ 'train', 'consensus', 'smolecule', 'consensus_from_features',\
-                      \ 'fastrle', 'stitch', 'variant', 'snp', 'methylation', 'tools')\n"
-                    generated_using: &id004
-                    - --help
-                  - !Command
-                    command:
-                    - medaka
-                    - compress_bam
-                    positional:
-                    - !Positional
-                      description: Bam file to compress.
-                      position: 0
-                      name: bam_input
-                      optional: false
-                    - !Positional
-                      description: Output bam file.
-                      position: 1
-                      name: bam_output
-                      optional: false
-                    - !Positional
-                      description: Reference fasta file used for `bam_input`.
-                      position: 2
-                      name: ref_fname
-                      optional: false
-                    named:
-                    - !Flag
-                      description: 'Verbose logging of debug information. (default:
-                        20)'
-                      synonyms:
-                      - --debug
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Minimal logging; warnings only). (default: 20)'
-                      synonyms:
-                      - --quiet
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Number of threads for parallel execution. (default:
-                        1)'
-                      synonyms:
-                      - --threads
-                      args: !SimpleFlagArg
-                        name: THREADS
-                      optional: true
-                    - !Flag
-                      description: "Genomic regions to analyse, or .bed file. (default:\n\
-                        None)"
-                      synonyms:
-                      - --regions
-                      args: !RepeatFlagArg
-                        name: REGIONS
-                      optional: true
-                    - !Flag
-                      description: "<index> <fast5_dir> <index>\nRoot directory containing\
-                        \ the fast5 files and .tsv\nfile with columns filename and\
-                        \ read_id. (default:\nNone)\n"
-                      synonyms:
-                      - --use_fast5_info
-                      args: !SimpleFlagArg
-                        name: fast5_dir
-                      optional: true
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
-                      description: show this help message and exit
-                      synonyms:
-                      - -h
-                      - --help
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag:
-                    help_text: "usage: medaka compress_bam [-h] [--debug | --quiet]\
-                      \ [--threads THREADS]\n                           [--regions\
-                      \ REGIONS [REGIONS ...]]\n                           [--use_fast5_info\
-                      \ <fast5_dir> <index> <fast5_dir> <index>]\n               \
-                      \            bam_input bam_output ref_fname\n\npositional arguments:\n\
-                      \  bam_input             Bam file to compress.\n  bam_output\
-                      \            Output bam file.\n  ref_fname             Reference\
-                      \ fasta file used for `bam_input`.\n\noptional arguments:\n\
-                      \  -h, --help            show this help message and exit\n \
-                      \ --debug               Verbose logging of debug information.\
-                      \ (default: 20)\n  --quiet               Minimal logging; warnings\
-                      \ only). (default: 20)\n  --threads THREADS     Number of threads\
-                      \ for parallel execution. (default: 1)\n  --regions REGIONS\
-                      \ [REGIONS ...]\n                        Genomic regions to\
-                      \ analyse, or .bed file. (default:\n                       \
-                      \ None)\n  --use_fast5_info <fast5_dir> <index> <fast5_dir>\
-                      \ <index>\n                        Root directory containing\
-                      \ the fast5 files and .tsv\n                        file with\
-                      \ columns filename and read_id. (default:\n                \
-                      \        None)\n"
-                    generated_using: *id004
-                  - !Command
-                    command:
-                    - medaka
-                    - variant
-                    positional:
-                    - !Positional
-                      description: Reference sequence .fasta file.
-                      position: 0
-                      name: ref_fasta
-                      optional: false
-                    - !Positional
-                      description: Consensus .hdf files.
-                      position: 1
-                      name: inputs
-                      optional: false
-                    - !Positional
-                      description: Output .vcf.
-                      position: 2
-                      name: output
-                      optional: false
-                    named:
-                    - !Flag
-                      description: 'Verbose logging of debug information. (default:
-                        20)'
-                      synonyms:
-                      - --debug
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Minimal logging; warnings only). (default: 20)'
-                      synonyms:
-                      - --quiet
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: "Limit variant calling to these reference names\n\
-                        (default: None)"
-                      synonyms:
-                      - --regions
-                      args: !RepeatFlagArg
-                        name: REGIONS
-                      optional: true
-                    - !Flag
-                      description: 'Populate VCF info fields. (default: False)'
-                      synonyms:
-                      - --verbose
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
-                      description: show this help message and exit
-                      synonyms:
-                      - -h
-                      - --help
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag:
-                    help_text: "usage: medaka variant [-h] [--debug | --quiet]\n \
-                      \                     [--regions REGIONS [REGIONS ...]] [--verbose]\n\
-                      \                      ref_fasta inputs [inputs ...] output\n\
-                      \npositional arguments:\n  ref_fasta             Reference sequence\
-                      \ .fasta file.\n  inputs                Consensus .hdf files.\n\
-                      \  output                Output .vcf.\n\noptional arguments:\n\
-                      \  -h, --help            show this help message and exit\n \
-                      \ --debug               Verbose logging of debug information.\
-                      \ (default: 20)\n  --quiet               Minimal logging; warnings\
-                      \ only). (default: 20)\n  --regions REGIONS [REGIONS ...]\n\
-                      \                        Limit variant calling to these reference\
-                      \ names\n                        (default: None)\n  --verbose\
-                      \             Populate VCF info fields. (default: False)\n"
-                    generated_using: *id004
-                  - !Command
-                    command:
-                    - medaka
-                    - snp
-                    positional:
-                    - !Positional
-                      description: Reference sequence .fasta file.
-                      position: 0
-                      name: ref_fasta
-                      optional: false
-                    - !Positional
-                      description: Consensus .hdf files.
-                      position: 1
-                      name: inputs
-                      optional: false
-                    - !Positional
-                      description: Output .vcf.
-                      position: 2
-                      name: output
-                      optional: false
-                    named:
-                    - !Flag
-                      description: 'Verbose logging of debug information. (default:
-                        20)'
-                      synonyms:
-                      - --debug
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Minimal logging; warnings only). (default: 20)'
-                      synonyms:
-                      - --quiet
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: "Limit variant calling to these reference names\n\
-                        (default: None)"
-                      synonyms:
-                      - --regions
-                      args: !RepeatFlagArg
-                        name: REGIONS
-                      optional: true
-                    - !Flag
-                      description: "Threshold for considering secondary calls. A value\
-                        \ of\n1 will result in haploid decoding. (default: 0.04)"
-                      synonyms:
-                      - --threshold
-                      args: !SimpleFlagArg
-                        name: THRESHOLD
-                      optional: true
-                    - !Flag
-                      description: 'Reference vcf. (default: None)'
-                      synonyms:
-                      - --ref_vcf
-                      args: !SimpleFlagArg
-                        name: REF_VCF
-                      optional: true
-                    - !Flag
-                      description: 'Populate VCF info fields. (default: False)'
-                      synonyms:
-                      - --verbose
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
-                      description: show this help message and exit
-                      synonyms:
-                      - -h
-                      - --help
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag:
-                    help_text: "usage: medaka snp [-h] [--debug | --quiet] [--regions\
-                      \ REGIONS [REGIONS ...]]\n                  [--threshold THRESHOLD]\
-                      \ [--ref_vcf REF_VCF] [--verbose]\n                  ref_fasta\
-                      \ inputs [inputs ...] output\n\npositional arguments:\n  ref_fasta\
-                      \             Reference sequence .fasta file.\n  inputs    \
-                      \            Consensus .hdf files.\n  output               \
-                      \ Output .vcf.\n\noptional arguments:\n  -h, --help        \
-                      \    show this help message and exit\n  --debug            \
-                      \   Verbose logging of debug information. (default: 20)\n  --quiet\
-                      \               Minimal logging; warnings only). (default: 20)\n\
-                      \  --regions REGIONS [REGIONS ...]\n                       \
-                      \ Limit variant calling to these reference names\n         \
-                      \               (default: None)\n  --threshold THRESHOLD\n \
-                      \                       Threshold for considering secondary\
-                      \ calls. A value of\n                        1 will result in\
-                      \ haploid decoding. (default: 0.04)\n  --ref_vcf REF_VCF   \
-                      \  Reference vcf. (default: None)\n  --verbose             Populate\
-                      \ VCF info fields. (default: False)\n"
-                    generated_using: *id004
-                  - !Command
-                    command:
-                    - medaka
-                    - train
-                    positional:
-                    - !Positional
-                      description: Paths to training data.
-                      position: 0
-                      name: features
-                      optional: false
-                    named:
-                    - !Flag
-                      description: 'Verbose logging of debug information. (default:
-                        20)'
-                      synonyms:
-                      - --debug
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Minimal logging; warnings only). (default: 20)'
-                      synonyms:
-                      - --quiet
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Name for training run. (default: keras_train)'
-                      synonyms:
-                      - --train_name
-                      args: !SimpleFlagArg
-                        name: TRAIN_NAME
-                      optional: true
-                    - !Flag
-                      description: "Model definition and initial weights .hdf, or\
-                        \ .yml\nwith kwargs to build model. {r103_min_high_g345,\n\
-                        r103_min_high_g360, r103_prom_high_g360,\nr103_prom_snp_g3210,\
-                        \ r103_prom_variant_g3210,\nr10_min_high_g303, r10_min_high_g340,\n\
-                        r941_min_fast_g303, r941_min_high_g303,\nr941_min_high_g330,\
-                        \ r941_min_high_g340_rle,\nr941_min_high_g344, r941_min_high_g351,\n\
-                        r941_min_high_g360, r941_prom_fast_g303,\nr941_prom_high_g303,\
-                        \ r941_prom_high_g330,\nr941_prom_high_g344, r941_prom_high_g360,\n\
-                        r941_prom_snp_g303, r941_prom_snp_g322,\nr941_prom_snp_g360,\
-                        \ r941_prom_variant_g303,\nr941_prom_variant_g322, r941_prom_variant_g360}\n\
-                        (default: None)"
-                      synonyms:
-                      - --model
-                      args: !SimpleFlagArg
-                        name: MODEL
-                      optional: true
-                    - !Flag
-                      description: 'Maximum number of trainig epochs. (default: 5000)'
-                      synonyms:
-                      - --epochs
-                      args: !SimpleFlagArg
-                        name: EPOCHS
-                      optional: true
-                    - !Flag
-                      description: 'Training batch size. (default: 100)'
-                      synonyms:
-                      - --batch_size
-                      args: !SimpleFlagArg
-                        name: BATCH_SIZE
-                      optional: true
-                    - !Flag
-                      description: 'Only train on max_samples. (default: inf)'
-                      synonyms:
-                      - --max_samples
-                      args: !SimpleFlagArg
-                        name: MAX_SAMPLES
-                      optional: true
-                    - !Flag
-                      description: "Reduce fraction of data per epoch by this factor\n\
-                        (default: 1)"
-                      synonyms:
-                      - --mini_epochs
-                      args: !SimpleFlagArg
-                        name: MINI_EPOCHS
-                      optional: true
-                    - !Flag
-                      description: 'Seed for random batch shuffling. (default: None)'
-                      synonyms:
-                      - --seed
-                      args: !SimpleFlagArg
-                        name: SEED
-                      optional: true
-                    - !Flag
-                      description: 'Number of threads for parallel IO. (default: 1)'
-                      synonyms:
-                      - --threads_io
-                      args: !SimpleFlagArg
-                        name: THREADS_IO
-                      optional: true
-                    - !Flag
-                      description: 'GPU device to use. (default: 0)'
-                      synonyms:
-                      - --device
-                      args: !SimpleFlagArg
-                        name: DEVICE
-                      optional: true
-                    - !Flag
-                      description: 'Optimizer to use. (default: rmsprop)'
-                      synonyms:
-                      - --optimizer
-                      args: !ChoiceFlagArg
-                        choices: !!set
-                          ? rmsprop
-                          ? nadam
-                      optional: true
-                    - !Flag
-                      description: "=VAL1,KEY2=VAL2... [KEY1=VAL1,KEY2=VAL2... ...]\n\
-                        Optimizer key-word arguments. (default: None)"
-                      synonyms:
-                      - --optim_args
-                      args: !SimpleFlagArg
-                        name: KEY1
-                      optional: true
-                    - !Flag
-                      description: 'Fraction of data to validate on. (default: 0.2)'
-                      synonyms:
-                      - --validation_split
-                      args: !SimpleFlagArg
-                        name: VALIDATION_SPLIT
-                      optional: true
-                    - !Flag
-                      description: "Paths to validation data (default: None)\n"
-                      synonyms:
-                      - --validation_features
-                      args: !RepeatFlagArg
-                        name: VALIDATION_FEATURES
-                      optional: true
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
-                      description: show this help message and exit
-                      synonyms:
-                      - -h
-                      - --help
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag:
-                    help_text: "usage: medaka train [-h] [--debug | --quiet] [--train_name\
-                      \ TRAIN_NAME]\n                    [--model MODEL] [--epochs\
-                      \ EPOCHS]\n                    [--batch_size BATCH_SIZE] [--max_samples\
-                      \ MAX_SAMPLES]\n                    [--mini_epochs MINI_EPOCHS]\
-                      \ [--seed SEED]\n                    [--threads_io THREADS_IO]\
-                      \ [--device DEVICE]\n                    [--optimizer {nadam,rmsprop}]\n\
-                      \                    [--optim_args KEY1=VAL1,KEY2=VAL2... [KEY1=VAL1,KEY2=VAL2...\
-                      \ ...]]\n                    [--validation_split VALIDATION_SPLIT\
-                      \ | --validation_features VALIDATION_FEATURES [VALIDATION_FEATURES\
-                      \ ...]]\n                    features [features ...]\n\npositional\
-                      \ arguments:\n  features              Paths to training data.\n\
-                      \noptional arguments:\n  -h, --help            show this help\
-                      \ message and exit\n  --debug               Verbose logging\
-                      \ of debug information. (default: 20)\n  --quiet           \
-                      \    Minimal logging; warnings only). (default: 20)\n  --train_name\
-                      \ TRAIN_NAME\n                        Name for training run.\
-                      \ (default: keras_train)\n  --model MODEL         Model definition\
-                      \ and initial weights .hdf, or .yml\n                      \
-                      \  with kwargs to build model. {r103_min_high_g345,\n      \
-                      \                  r103_min_high_g360, r103_prom_high_g360,\n\
-                      \                        r103_prom_snp_g3210, r103_prom_variant_g3210,\n\
-                      \                        r10_min_high_g303, r10_min_high_g340,\n\
-                      \                        r941_min_fast_g303, r941_min_high_g303,\n\
-                      \                        r941_min_high_g330, r941_min_high_g340_rle,\n\
-                      \                        r941_min_high_g344, r941_min_high_g351,\n\
-                      \                        r941_min_high_g360, r941_prom_fast_g303,\n\
-                      \                        r941_prom_high_g303, r941_prom_high_g330,\n\
-                      \                        r941_prom_high_g344, r941_prom_high_g360,\n\
-                      \                        r941_prom_snp_g303, r941_prom_snp_g322,\n\
-                      \                        r941_prom_snp_g360, r941_prom_variant_g303,\n\
-                      \                        r941_prom_variant_g322, r941_prom_variant_g360}\n\
-                      \                        (default: None)\n  --epochs EPOCHS\
-                      \       Maximum number of trainig epochs. (default: 5000)\n\
-                      \  --batch_size BATCH_SIZE\n                        Training\
-                      \ batch size. (default: 100)\n  --max_samples MAX_SAMPLES\n\
-                      \                        Only train on max_samples. (default:\
-                      \ inf)\n  --mini_epochs MINI_EPOCHS\n                      \
-                      \  Reduce fraction of data per epoch by this factor\n      \
-                      \                  (default: 1)\n  --seed SEED           Seed\
-                      \ for random batch shuffling. (default: None)\n  --threads_io\
-                      \ THREADS_IO\n                        Number of threads for\
-                      \ parallel IO. (default: 1)\n  --device DEVICE       GPU device\
-                      \ to use. (default: 0)\n  --optimizer {nadam,rmsprop}\n    \
-                      \                    Optimizer to use. (default: rmsprop)\n\
-                      \  --optim_args KEY1=VAL1,KEY2=VAL2... [KEY1=VAL1,KEY2=VAL2...\
-                      \ ...]\n                        Optimizer key-word arguments.\
-                      \ (default: None)\n  --validation_split VALIDATION_SPLIT\n \
-                      \                       Fraction of data to validate on. (default:\
-                      \ 0.2)\n  --validation_features VALIDATION_FEATURES [VALIDATION_FEATURES\
-                      \ ...]\n                        Paths to validation data (default:\
-                      \ None)\n"
-                    generated_using: *id004
-                  - !Command
-                    command:
-                    - medaka
-                    - consensus
-                    positional:
-                    - !Positional
-                      description: Input alignments.
-                      position: 0
-                      name: bam
-                      optional: false
-                    - !Positional
-                      description: Output file.
-                      position: 1
-                      name: output
-                      optional: false
-                    named:
-                    - !Flag
-                      description: 'Verbose logging of debug information. (default:
-                        20)'
-                      synonyms:
-                      - --debug
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Minimal logging; warnings only). (default: 20)'
-                      synonyms:
-                      - --quiet
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Inference batch size. (default: 100)'
-                      synonyms:
-                      - --batch_size
-                      args: !SimpleFlagArg
-                        name: BATCH_SIZE
-                      optional: true
-                    - !Flag
-                      description: "Genomic regions to analyse, or a bed file. (default:\n\
-                        None)"
-                      synonyms:
-                      - --regions
-                      args: !RepeatFlagArg
-                        name: REGIONS
-                      optional: true
-                    - !Flag
-                      description: 'Chunk length of samples. (default: 10000)'
-                      synonyms:
-                      - --chunk_len
-                      args: !SimpleFlagArg
-                        name: CHUNK_LEN
-                      optional: true
-                    - !Flag
-                      description: 'Overlap of chunks. (default: 1000)'
-                      synonyms:
-                      - --chunk_ovlp
-                      args: !SimpleFlagArg
-                        name: CHUNK_OVLP
-                      optional: true
-                    - !Flag
-                      description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
-                        r103_prom_high_g360, r103_prom_snp_g3210,\nr103_prom_variant_g3210,\
-                        \ r10_min_high_g303,\nr10_min_high_g340, r941_min_fast_g303,\n\
-                        r941_min_high_g303, r941_min_high_g330,\nr941_min_high_g340_rle,\
-                        \ r941_min_high_g344,\nr941_min_high_g351, r941_min_high_g360,\n\
-                        r941_prom_fast_g303, r941_prom_high_g303,\nr941_prom_high_g330,\
-                        \ r941_prom_high_g344,\nr941_prom_high_g360, r941_prom_snp_g303,\n\
-                        r941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
-                        \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default:\
-                        \ r941_min_high_g360)"
-                      synonyms:
-                      - --model
-                      args: !SimpleFlagArg
-                        name: MODEL
-                      optional: true
-                    - !Flag
-                      description: 'Disable use of cuDNN model layers. (default: False)'
-                      synonyms:
-                      - --disable_cudnn
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Number of threads used by inference. (default:
-                        1)'
-                      synonyms:
-                      - --threads
-                      args: !SimpleFlagArg
-                        name: THREADS
-                      optional: true
-                    - !Flag
-                      description: "Verify integrity of output file after inference.\n\
-                        (default: False)"
-                      synonyms:
-                      - --check_output
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: "Save features with consensus probabilities. (default:\n\
-                        False)"
-                      synonyms:
-                      - --save_features
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Read group to select. (default: None)'
-                      synonyms:
-                      - --RG
-                      args: !SimpleFlagArg
-                        name: READGROUP
-                      optional: true
-                    - !Flag
-                      description: 'Two-letter tag name. (default: None)'
-                      synonyms:
-                      - --tag_name
-                      args: !SimpleFlagArg
-                        name: TAG_NAME
-                      optional: true
-                    - !Flag
-                      description: 'Value of tag. (default: None)'
-                      synonyms:
-                      - --tag_value
-                      args: !SimpleFlagArg
-                        name: TAG_VALUE
-                      optional: true
-                    - !Flag
-                      description: 'Keep alignments when tag is missing. (default:
-                        False)'
-                      synonyms:
-                      - --tag_keep_missing
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
-                      description: show this help message and exit
-                      synonyms:
-                      - -h
-                      - --help
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag:
-                    help_text: "usage: medaka consensus [-h] [--debug | --quiet] [--batch_size\
-                      \ BATCH_SIZE]\n                        [--regions REGIONS [REGIONS\
-                      \ ...]]\n                        [--chunk_len CHUNK_LEN] [--chunk_ovlp\
-                      \ CHUNK_OVLP]\n                        [--model MODEL] [--disable_cudnn]\
-                      \ [--RG READGROUP]\n                        [--threads THREADS]\
-                      \ [--check_output] [--save_features]\n                     \
-                      \   [--tag_name TAG_NAME] [--tag_value TAG_VALUE]\n        \
-                      \                [--tag_keep_missing]\n                    \
-                      \    bam output\n\npositional arguments:\n  bam            \
-                      \       Input alignments.\n  output                Output file.\n\
-                      \noptional arguments:\n  -h, --help            show this help\
-                      \ message and exit\n  --debug               Verbose logging\
-                      \ of debug information. (default: 20)\n  --quiet           \
-                      \    Minimal logging; warnings only). (default: 20)\n  --batch_size\
-                      \ BATCH_SIZE\n                        Inference batch size.\
-                      \ (default: 100)\n  --regions REGIONS [REGIONS ...]\n      \
-                      \                  Genomic regions to analyse, or a bed file.\
-                      \ (default:\n                        None)\n  --chunk_len CHUNK_LEN\n\
-                      \                        Chunk length of samples. (default:\
-                      \ 10000)\n  --chunk_ovlp CHUNK_OVLP\n                      \
-                      \  Overlap of chunks. (default: 1000)\n  --model MODEL     \
-                      \    Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
-                      \                        r103_prom_high_g360, r103_prom_snp_g3210,\n\
-                      \                        r103_prom_variant_g3210, r10_min_high_g303,\n\
-                      \                        r10_min_high_g340, r941_min_fast_g303,\n\
-                      \                        r941_min_high_g303, r941_min_high_g330,\n\
-                      \                        r941_min_high_g340_rle, r941_min_high_g344,\n\
-                      \                        r941_min_high_g351, r941_min_high_g360,\n\
-                      \                        r941_prom_fast_g303, r941_prom_high_g303,\n\
-                      \                        r941_prom_high_g330, r941_prom_high_g344,\n\
-                      \                        r941_prom_high_g360, r941_prom_snp_g303,\n\
-                      \                        r941_prom_snp_g322, r941_prom_snp_g360,\n\
-                      \                        r941_prom_variant_g303, r941_prom_variant_g322,\n\
-                      \                        r941_prom_variant_g360} (default: r941_min_high_g360)\n\
-                      \  --disable_cudnn       Disable use of cuDNN model layers.\
-                      \ (default: False)\n  --threads THREADS     Number of threads\
-                      \ used by inference. (default: 1)\n  --check_output        Verify\
-                      \ integrity of output file after inference.\n              \
-                      \          (default: False)\n  --save_features       Save features\
-                      \ with consensus probabilities. (default:\n                \
-                      \        False)\n\nread group:\n  Filtering alignments the read\
-                      \ group (RG) tag, expected to be string value.\n\n  --RG READGROUP\
-                      \        Read group to select. (default: None)\n\nfilter tag:\n\
-                      \  Filtering alignments by an integer valued tag.\n\n  --tag_name\
-                      \ TAG_NAME   Two-letter tag name. (default: None)\n  --tag_value\
-                      \ TAG_VALUE\n                        Value of tag. (default:\
-                      \ None)\n  --tag_keep_missing    Keep alignments when tag is\
-                      \ missing. (default: False)\n"
-                    generated_using: *id004
-                  - !Command
-                    command:
-                    - medaka
-                    - stitch
-                    positional:
-                    - !Positional
-                      description: Consensus .hdf files.
-                      position: 0
-                      name: inputs
-                      optional: false
-                    - !Positional
-                      description: Output .fasta.
-                      position: 1
-                      name: output
-                      optional: false
-                    named:
-                    - !Flag
-                      description: 'Verbose logging of debug information. (default:
-                        20)'
-                      synonyms:
-                      - --debug
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Minimal logging; warnings only). (default: 20)'
-                      synonyms:
-                      - --quiet
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: "Limit stitching to these reference names (default:\n\
-                        None)"
-                      synonyms:
-                      - --regions
-                      args: !RepeatFlagArg
-                        name: REGIONS
-                      optional: true
-                    - !Flag
-                      description: 'Number of worker processes to use. (default: 1)'
-                      synonyms:
-                      - --jobs
-                      args: !SimpleFlagArg
-                        name: JOBS
-                      optional: true
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
-                      description: show this help message and exit
-                      synonyms:
-                      - -h
-                      - --help
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag:
-                    help_text: "usage: medaka stitch [-h] [--debug | --quiet]\n  \
-                      \                   [--regions REGIONS [REGIONS ...]] [--jobs\
-                      \ JOBS]\n                     inputs [inputs ...] output\n\n\
-                      positional arguments:\n  inputs                Consensus .hdf\
-                      \ files.\n  output                Output .fasta.\n\noptional\
-                      \ arguments:\n  -h, --help            show this help message\
-                      \ and exit\n  --debug               Verbose logging of debug\
-                      \ information. (default: 20)\n  --quiet               Minimal\
-                      \ logging; warnings only). (default: 20)\n  --regions REGIONS\
-                      \ [REGIONS ...]\n                        Limit stitching to\
-                      \ these reference names (default:\n                        None)\n\
-                      \  --jobs JOBS           Number of worker processes to use.\
-                      \ (default: 1)\n"
-                    generated_using: *id004
-                  - !Command
-                    command:
-                    - medaka
-                    - features
-                    positional:
-                    - !Positional
-                      description: Input alignments.
-                      position: 0
-                      name: bam
-                      optional: false
-                    - !Positional
-                      description: Output features file.
-                      position: 1
-                      name: output
-                      optional: false
-                    named:
-                    - !Flag
-                      description: 'Verbose logging of debug information. (default:
-                        20)'
-                      synonyms:
-                      - --debug
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Minimal logging; warnings only). (default: 20)'
-                      synonyms:
-                      - --quiet
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Inference batch size. (default: 100)'
-                      synonyms:
-                      - --batch_size
-                      args: !SimpleFlagArg
-                        name: BATCH_SIZE
-                      optional: true
-                    - !Flag
-                      description: "Genomic regions to analyse, or a bed file. (default:\n\
-                        None)"
-                      synonyms:
-                      - --regions
-                      args: !RepeatFlagArg
-                        name: REGIONS
-                      optional: true
-                    - !Flag
-                      description: 'Chunk length of samples. (default: 10000)'
-                      synonyms:
-                      - --chunk_len
-                      args: !SimpleFlagArg
-                        name: CHUNK_LEN
-                      optional: true
-                    - !Flag
-                      description: 'Overlap of chunks. (default: 1000)'
-                      synonyms:
-                      - --chunk_ovlp
-                      args: !SimpleFlagArg
-                        name: CHUNK_OVLP
-                      optional: true
-                    - !Flag
-                      description: "Bam of truth aligned to ref to create features\
-                        \ for\ntraining. (default: None)"
-                      synonyms:
-                      - --truth
-                      args: !SimpleFlagArg
-                        name: TRUTH
-                      optional: true
-                    - !Flag
-                      description: "Two-letter tag defining haplotype of alignments\
-                        \ for\npolyploidy labels. (default: None)"
-                      synonyms:
-                      - --truth_haplotag
-                      args: !SimpleFlagArg
-                        name: TRUTH_HAPLOTAG
-                      optional: true
-                    - !Flag
-                      description: 'Number of threads for parallel execution. (default:
-                        1)'
-                      synonyms:
-                      - --threads
-                      args: !SimpleFlagArg
-                        name: THREADS
-                      optional: true
-                    - !Flag
-                      description: 'Labelling scheme. (default: HaploidLabelScheme)'
-                      synonyms:
-                      - --label_scheme
-                      args: !ChoiceFlagArg
-                        choices: !!set
-                          ? DiploidLabelScheme
-                          ? DiploidZygosityLabelScheme
-                          ? RLELabelScheme
-                          ? HaploidLabelScheme
-                      optional: true
-                    - !Flag
-                      description: "=VAL1 KEY2=VAL2a,VAL2b... [KEY1=VAL1 KEY2=VAL2a,VAL2b...\
-                        \ ...]\nLabel scheme key-word arguments. (default: {})"
-                      synonyms:
-                      - --label_scheme_args
-                      args: !SimpleFlagArg
-                        name: KEY1
-                      optional: true
-                    - !Flag
-                      description: "FeatureEncoder used to create the features. (default:\n\
-                        CountsFeatureEncoder)"
-                      synonyms:
-                      - --feature_encoder
-                      args: !ChoiceFlagArg
-                        choices: !!set
-                          ? SymHardRLEFeatureEncoder
-                          ? CountsFeatureEncoder
-                          ? SoftRLEFeatureEncoder
-                          ? HardRLEFeatureEncoder
-                      optional: true
-                    - !Flag
-                      description: "=VAL1 KEY2=VAL2a,VAL2b... [KEY1=VAL1 KEY2=VAL2a,VAL2b...\
-                        \ ...]\nFeature encoder key-word arguments. (default: {})\n"
-                      synonyms:
-                      - --feature_encoder_args
-                      args: !SimpleFlagArg
-                        name: KEY1
-                      optional: true
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
-                      description: show this help message and exit
-                      synonyms:
-                      - -h
-                      - --help
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag:
-                    help_text: "usage: medaka features [-h] [--debug | --quiet] [--batch_size\
-                      \ BATCH_SIZE]\n                       [--regions REGIONS [REGIONS\
-                      \ ...]]\n                       [--chunk_len CHUNK_LEN] [--chunk_ovlp\
-                      \ CHUNK_OVLP]\n                       [--truth TRUTH] [--truth_haplotag\
-                      \ TRUTH_HAPLOTAG]\n                       [--threads THREADS]\n\
-                      \                       [--label_scheme {DiploidLabelScheme,DiploidZygosityLabelScheme,HaploidLabelScheme,RLELabelScheme}]\n\
-                      \                       [--label_scheme_args KEY1=VAL1 KEY2=VAL2a,VAL2b...\
-                      \ [KEY1=VAL1 KEY2=VAL2a,VAL2b... ...]]\n                   \
-                      \    [--feature_encoder {CountsFeatureEncoder,HardRLEFeatureEncoder,SoftRLEFeatureEncoder,SymHardRLEFeatureEncoder}]\n\
-                      \                       [--feature_encoder_args KEY1=VAL1 KEY2=VAL2a,VAL2b...\
-                      \ [KEY1=VAL1 KEY2=VAL2a,VAL2b... ...]]\n                   \
-                      \    bam output\n\npositional arguments:\n  bam            \
-                      \       Input alignments.\n  output                Output features\
-                      \ file.\n\noptional arguments:\n  -h, --help            show\
-                      \ this help message and exit\n  --debug               Verbose\
-                      \ logging of debug information. (default: 20)\n  --quiet   \
-                      \            Minimal logging; warnings only). (default: 20)\n\
-                      \  --batch_size BATCH_SIZE\n                        Inference\
-                      \ batch size. (default: 100)\n  --regions REGIONS [REGIONS ...]\n\
-                      \                        Genomic regions to analyse, or a bed\
-                      \ file. (default:\n                        None)\n  --chunk_len\
-                      \ CHUNK_LEN\n                        Chunk length of samples.\
-                      \ (default: 10000)\n  --chunk_ovlp CHUNK_OVLP\n            \
-                      \            Overlap of chunks. (default: 1000)\n  --truth TRUTH\
-                      \         Bam of truth aligned to ref to create features for\n\
-                      \                        training. (default: None)\n  --truth_haplotag\
-                      \ TRUTH_HAPLOTAG\n                        Two-letter tag defining\
-                      \ haplotype of alignments for\n                        polyploidy\
-                      \ labels. (default: None)\n  --threads THREADS     Number of\
-                      \ threads for parallel execution. (default: 1)\n  --label_scheme\
-                      \ {DiploidLabelScheme,DiploidZygosityLabelScheme,HaploidLabelScheme,RLELabelScheme}\n\
-                      \                        Labelling scheme. (default: HaploidLabelScheme)\n\
-                      \  --label_scheme_args KEY1=VAL1 KEY2=VAL2a,VAL2b... [KEY1=VAL1\
-                      \ KEY2=VAL2a,VAL2b... ...]\n                        Label scheme\
-                      \ key-word arguments. (default: {})\n  --feature_encoder {CountsFeatureEncoder,HardRLEFeatureEncoder,SoftRLEFeatureEncoder,SymHardRLEFeatureEncoder}\n\
-                      \                        FeatureEncoder used to create the features.\
-                      \ (default:\n                        CountsFeatureEncoder)\n\
-                      \  --feature_encoder_args KEY1=VAL1 KEY2=VAL2a,VAL2b... [KEY1=VAL1\
-                      \ KEY2=VAL2a,VAL2b... ...]\n                        Feature\
-                      \ encoder key-word arguments. (default: {})\n"
-                    generated_using: *id004
-                  - !Command
-                    command:
-                    - medaka
-                    - smolecule
-                    positional:
-                    - !Positional
-                      description: Single-molecule reads, one file per read.
-                      position: 0
-                      name: fasta
-                      optional: false
-                    - !Positional
-                      description: Output directory.
-                      position: 1
-                      name: output
-                      optional: false
-                    named:
-                    - !Flag
-                      description: 'Verbose logging of debug information. (default:
-                        20)'
-                      synonyms:
-                      - --debug
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Minimal logging; warnings only). (default: 20)'
-                      synonyms:
-                      - --quiet
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Inference batch size. (default: 100)'
-                      synonyms:
-                      - --batch_size
-                      args: !SimpleFlagArg
-                        name: BATCH_SIZE
-                      optional: true
-                    - !Flag
-                      description: "Genomic regions to analyse, or a bed file. (default:\n\
-                        None)"
-                      synonyms:
-                      - --regions
-                      args: !RepeatFlagArg
-                        name: REGIONS
-                      optional: true
-                    - !Flag
-                      description: 'Chunk length of samples. (default: 1000)'
-                      synonyms:
-                      - --chunk_len
-                      args: !SimpleFlagArg
-                        name: CHUNK_LEN
-                      optional: true
-                    - !Flag
-                      description: 'Overlap of chunks. (default: 500)'
-                      synonyms:
-                      - --chunk_ovlp
-                      args: !SimpleFlagArg
-                        name: CHUNK_OVLP
-                      optional: true
-                    - !Flag
-                      description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
-                        r103_prom_high_g360, r103_prom_snp_g3210,\nr103_prom_variant_g3210,\
-                        \ r10_min_high_g303,\nr10_min_high_g340, r941_min_fast_g303,\n\
-                        r941_min_high_g303, r941_min_high_g330,\nr941_min_high_g340_rle,\
-                        \ r941_min_high_g344,\nr941_min_high_g351, r941_min_high_g360,\n\
-                        r941_prom_fast_g303, r941_prom_high_g303,\nr941_prom_high_g330,\
-                        \ r941_prom_high_g344,\nr941_prom_high_g360, r941_prom_snp_g303,\n\
-                        r941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
-                        \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default:\
-                        \ r941_min_high_g360)"
-                      synonyms:
-                      - --model
-                      args: !SimpleFlagArg
-                        name: MODEL
-                      optional: true
-                    - !Flag
-                      description: 'Disable use of cuDNN model layers. (default: False)'
-                      synonyms:
-                      - --disable_cudnn
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Minimum subread count. (default: 3)'
-                      synonyms:
-                      - --depth
-                      args: !SimpleFlagArg
-                        name: DEPTH
-                      optional: true
-                    - !Flag
-                      description: 'Minimum median subread length. (default: 400)'
-                      synonyms:
-                      - --length
-                      args: !SimpleFlagArg
-                        name: LENGTH
-                      optional: true
-                    - !Flag
-                      description: 'Number of threads used by inference. (default:
-                        1)'
-                      synonyms:
-                      - --threads
-                      args: !SimpleFlagArg
-                        name: THREADS
-                      optional: true
-                    - !Flag
-                      description: "Verify integrity of output file after inference.\n\
-                        (default: False)"
-                      synonyms:
-                      - --check_output
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: "Save features with consensus probabilities. (default:\n\
-                        False)\n"
-                      synonyms:
-                      - --save_features
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
-                      description: show this help message and exit
-                      synonyms:
-                      - -h
-                      - --help
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag:
-                    help_text: "usage: medaka smolecule [-h] [--debug | --quiet] [--batch_size\
-                      \ BATCH_SIZE]\n                        [--regions REGIONS [REGIONS\
-                      \ ...]]\n                        [--chunk_len CHUNK_LEN] [--chunk_ovlp\
-                      \ CHUNK_OVLP]\n                        [--model MODEL] [--disable_cudnn]\
-                      \ [--depth DEPTH]\n                        [--length LENGTH]\
-                      \ [--threads THREADS] [--check_output]\n                   \
-                      \     [--save_features]\n                        fasta [fasta\
-                      \ ...] output\n\npositional arguments:\n  fasta            \
-                      \     Single-molecule reads, one file per read.\n  output  \
-                      \              Output directory.\n\noptional arguments:\n  -h,\
-                      \ --help            show this help message and exit\n  --debug\
-                      \               Verbose logging of debug information. (default:\
-                      \ 20)\n  --quiet               Minimal logging; warnings only).\
-                      \ (default: 20)\n  --batch_size BATCH_SIZE\n               \
-                      \         Inference batch size. (default: 100)\n  --regions\
-                      \ REGIONS [REGIONS ...]\n                        Genomic regions\
-                      \ to analyse, or a bed file. (default:\n                   \
-                      \     None)\n  --chunk_len CHUNK_LEN\n                     \
-                      \   Chunk length of samples. (default: 1000)\n  --chunk_ovlp\
-                      \ CHUNK_OVLP\n                        Overlap of chunks. (default:\
-                      \ 500)\n  --model MODEL         Model to use. {r103_min_high_g345,\
-                      \ r103_min_high_g360,\n                        r103_prom_high_g360,\
-                      \ r103_prom_snp_g3210,\n                        r103_prom_variant_g3210,\
-                      \ r10_min_high_g303,\n                        r10_min_high_g340,\
-                      \ r941_min_fast_g303,\n                        r941_min_high_g303,\
-                      \ r941_min_high_g330,\n                        r941_min_high_g340_rle,\
-                      \ r941_min_high_g344,\n                        r941_min_high_g351,\
-                      \ r941_min_high_g360,\n                        r941_prom_fast_g303,\
-                      \ r941_prom_high_g303,\n                        r941_prom_high_g330,\
-                      \ r941_prom_high_g344,\n                        r941_prom_high_g360,\
-                      \ r941_prom_snp_g303,\n                        r941_prom_snp_g322,\
-                      \ r941_prom_snp_g360,\n                        r941_prom_variant_g303,\
-                      \ r941_prom_variant_g322,\n                        r941_prom_variant_g360}\
-                      \ (default: r941_min_high_g360)\n  --disable_cudnn       Disable\
-                      \ use of cuDNN model layers. (default: False)\n  --depth DEPTH\
-                      \         Minimum subread count. (default: 3)\n  --length LENGTH\
-                      \       Minimum median subread length. (default: 400)\n  --threads\
-                      \ THREADS     Number of threads used by inference. (default:\
-                      \ 1)\n  --check_output        Verify integrity of output file\
-                      \ after inference.\n                        (default: False)\n\
-                      \  --save_features       Save features with consensus probabilities.\
-                      \ (default:\n                        False)\n"
-                    generated_using: *id004
-                  - !Command
-                    command:
-                    - medaka
-                    - methylation
-                    positional:
-                    - !Positional
-                      description: "Convert Guppy .fast5 files with methylation calls\
-                        \ to .sam\nfile, output to stdout."
-                      position: 0
-                      name: guppy2sam
-                      optional: false
-                    - !Positional
-                      description: Call methylation from .bam file.
-                      position: 1
-                      name: call
-                      optional: false
-                    named:
-                    - !Flag
-                      description: 'Verbose logging of debug information. (default:
-                        20)'
-                      synonyms:
-                      - --debug
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Minimal logging; warnings only). (default: 20)'
-                      synonyms:
-                      - --quiet
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
-                      description: show this help message and exit
-                      synonyms:
-                      - -h
-                      - --help
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag:
-                    help_text: "usage: medaka methylation [-h] [--debug | --quiet]\
-                      \ {guppy2sam,call} ...\n\noptional arguments:\n  -h, --help\
-                      \        show this help message and exit\n  --debug        \
-                      \   Verbose logging of debug information. (default: 20)\n  --quiet\
-                      \           Minimal logging; warnings only). (default: 20)\n\
-                      \nmethylation:\n  valid methylation commands\n\n  {guppy2sam,call}\
-                      \  additional help\n    guppy2sam       Convert Guppy .fast5\
-                      \ files with methylation calls to .sam\n                   \
-                      \ file, output to stdout.\n    call            Call methylation\
-                      \ from .bam file.\n"
-                    generated_using: *id004
-                  - !Command
-                    command:
-                    - medaka
-                    - consensus_from_features
-                    positional:
-                    - !Positional
-                      description: Pregenerated features (from medaka features).
-                      position: 0
-                      name: features
-                      optional: false
-                    named:
-                    - !Flag
-                      description: 'Verbose logging of debug information. (default:
-                        20)'
-                      synonyms:
-                      - --debug
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: 'Minimal logging; warnings only). (default: 20)'
-                      synonyms:
-                      - --quiet
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    - !Flag
-                      description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
-                        r103_prom_high_g360, r103_prom_snp_g3210,\nr103_prom_variant_g3210,\
-                        \ r10_min_high_g303,\nr10_min_high_g340, r941_min_fast_g303,\
-                        \ r941_min_high_g303,\nr941_min_high_g330, r941_min_high_g340_rle,\n\
-                        r941_min_high_g344, r941_min_high_g351, r941_min_high_g360,\n\
-                        r941_prom_fast_g303, r941_prom_high_g303,\nr941_prom_high_g330,\
-                        \ r941_prom_high_g344,\nr941_prom_high_g360, r941_prom_snp_g303,\n\
-                        r941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
-                        \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default:\
-                        \ r941_min_high_g360)"
-                      synonyms:
-                      - --model
-                      args: !SimpleFlagArg
-                        name: MODEL
-                      optional: true
-                    - !Flag
-                      description: 'Disable use of cuDNN model layers. (default: False)'
-                      synonyms:
-                      - --disable_cudnn
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
-                      description: show this help message and exit
-                      synonyms:
-                      - -h
-                      - --help
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag:
-                    help_text: "usage: medaka consensus_from_features [-h] [--debug\
-                      \ | --quiet] [--model MODEL]\n                             \
-                      \         [--disable_cudnn]\n                              \
-                      \        features [features ...]\n\npositional arguments:\n\
-                      \  features         Pregenerated features (from medaka features).\n\
-                      \noptional arguments:\n  -h, --help       show this help message\
-                      \ and exit\n  --debug          Verbose logging of debug information.\
-                      \ (default: 20)\n  --quiet          Minimal logging; warnings\
-                      \ only). (default: 20)\n  --model MODEL    Model to use. {r103_min_high_g345,\
-                      \ r103_min_high_g360,\n                   r103_prom_high_g360,\
-                      \ r103_prom_snp_g3210,\n                   r103_prom_variant_g3210,\
-                      \ r10_min_high_g303,\n                   r10_min_high_g340,\
-                      \ r941_min_fast_g303, r941_min_high_g303,\n                \
-                      \   r941_min_high_g330, r941_min_high_g340_rle,\n          \
-                      \         r941_min_high_g344, r941_min_high_g351, r941_min_high_g360,\n\
-                      \                   r941_prom_fast_g303, r941_prom_high_g303,\n\
-                      \                   r941_prom_high_g330, r941_prom_high_g344,\n\
-                      \                   r941_prom_high_g360, r941_prom_snp_g303,\n\
-                      \                   r941_prom_snp_g322, r941_prom_snp_g360,\n\
-                      \                   r941_prom_variant_g303, r941_prom_variant_g322,\n\
-                      \                   r941_prom_variant_g360} (default: r941_min_high_g360)\n\
-                      \  --disable_cudnn  Disable use of cuDNN model layers. (default:\
-                      \ False)\n"
-                    generated_using: *id004
-                  - *id005
-                  usage: []
-                  help_flag: !Flag
-                    description: show this help message and exit
-                    synonyms:
-                    - -h
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  usage_flag:
-                  version_flag: !Flag
-                    description: show program's version number and exit
-                    synonyms:
-                    - --version
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  help_text: "usage: medaka [-h] [--version]\n              {compress_bam,features,train,consensus,smolecule,consensus_from_features,fastrle,stitch,variant,snp,methylation,tools}\n\
-                    \              ...\n\noptional arguments:\n  -h, --help      \
-                    \      show this help message and exit\n  --version          \
-                    \   show program's version number and exit\n\nsubcommands:\n \
-                    \ valid commands\n\n  {compress_bam,features,train,consensus,smolecule,consensus_from_features,fastrle,stitch,variant,snp,methylation,tools}\n\
-                    \                        additional help\n    compress_bam   \
-                    \     Compress an alignment into RLE form.\n    features     \
-                    \       Create features for inference.\n    train            \
-                    \   Train a model from features.\n    consensus           Run\
-                    \ inference from a trained model and alignments.\n    smolecule\
-                    \           Create consensus sequences from single-molecule reads.\n\
-                    \    consensus_from_features\n                        Run inference\
-                    \ from a trained model on existing\n                        features.\n\
-                    \    fastrle             Create run-length encoded fastq (lengths\
-                    \ in quality\n                        track).\n    stitch    \
-                    \          Stitch together output from medaka consensus into\n\
-                    \                        final output.\n    variant          \
-                    \   Decode probabilities to VCF.\n    snp                 Decode\
-                    \ probabilities to SNPs.\n    methylation         methylation\
-                    \ subcommand.\n    tools               tools subcommand.\n"
-                  generated_using: *id004
+                named: []
+                parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: medaka
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: tools
-                    optional: false
+                    description: ''
                   named: []
-                  parent: *id005
+                  parent: &id005 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --debug
+                      description: 'Verbose logging of debug information. (default:
+                        20)'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --quiet
+                      description: 'Minimal logging; warnings only). (default: 20)'
+                      args: !EmptyFlagArg {}
+                    parent: &id003 !Command
+                      command:
+                      - medaka
+                      positional: []
+                      named: []
+                      parent:
+                      subcommands:
+                      - !Command
+                        command:
+                        - medaka
+                        - features.
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: medaka
+                          description: ''
+                        named: []
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          description: ''
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - --version
+                          description: ''
+                          args: !EmptyFlagArg {}
+                        help_text: "usage: medaka [-h] [--version]\n             \
+                          \ {compress_bam,features,train,consensus,smolecule,consensus_from_features,fastrle,stitch,variant,snp,methylation,tools}\n\
+                          \              ...\nmedaka: error: argument command: invalid\
+                          \ choice: 'features.' (choose from 'compress_bam', 'features',\
+                          \ 'train', 'consensus', 'smolecule', 'consensus_from_features',\
+                          \ 'fastrle', 'stitch', 'variant', 'snp', 'methylation',\
+                          \ 'tools')\n"
+                        generated_using: &id004
+                        - --help
+                        docker_image:
+                      - !Command
+                        command:
+                        - medaka
+                        - compress_bam
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: bam_input
+                          description: Bam file to compress.
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: bam_output
+                          description: Output bam file.
+                        - !Positional
+                          optional: false
+                          position: 2
+                          name: ref_fname
+                          description: Reference fasta file used for `bam_input`.
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --debug
+                          description: 'Verbose logging of debug information. (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --quiet
+                          description: 'Minimal logging; warnings only). (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --threads
+                          description: 'Number of threads for parallel execution.
+                            (default: 1)'
+                          args: !SimpleFlagArg
+                            name: THREADS
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --regions
+                          description: "Genomic regions to analyse, or .bed file.\
+                            \ (default:\nNone)"
+                          args: !RepeatFlagArg
+                            name: REGIONS
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --use_fast5_info
+                          description: "<index> <fast5_dir> <index>\nRoot directory\
+                            \ containing the fast5 files and .tsv\nfile with columns\
+                            \ filename and read_id. (default:\nNone)\n"
+                          args: !SimpleFlagArg
+                            name: fast5_dir
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: medaka compress_bam [-h] [--debug | --quiet]\
+                          \ [--threads THREADS]\n                           [--regions\
+                          \ REGIONS [REGIONS ...]]\n                           [--use_fast5_info\
+                          \ <fast5_dir> <index> <fast5_dir> <index>]\n           \
+                          \                bam_input bam_output ref_fname\n\npositional\
+                          \ arguments:\n  bam_input             Bam file to compress.\n\
+                          \  bam_output            Output bam file.\n  ref_fname \
+                          \            Reference fasta file used for `bam_input`.\n\
+                          \noptional arguments:\n  -h, --help            show this\
+                          \ help message and exit\n  --debug               Verbose\
+                          \ logging of debug information. (default: 20)\n  --quiet\
+                          \               Minimal logging; warnings only). (default:\
+                          \ 20)\n  --threads THREADS     Number of threads for parallel\
+                          \ execution. (default: 1)\n  --regions REGIONS [REGIONS\
+                          \ ...]\n                        Genomic regions to analyse,\
+                          \ or .bed file. (default:\n                        None)\n\
+                          \  --use_fast5_info <fast5_dir> <index> <fast5_dir> <index>\n\
+                          \                        Root directory containing the fast5\
+                          \ files and .tsv\n                        file with columns\
+                          \ filename and read_id. (default:\n                    \
+                          \    None)\n"
+                        generated_using: *id004
+                        docker_image:
+                      - !Command
+                        command:
+                        - medaka
+                        - variant
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: ref_fasta
+                          description: Reference sequence .fasta file.
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: inputs
+                          description: Consensus .hdf files.
+                        - !Positional
+                          optional: false
+                          position: 2
+                          name: output
+                          description: Output .vcf.
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --debug
+                          description: 'Verbose logging of debug information. (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --quiet
+                          description: 'Minimal logging; warnings only). (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --regions
+                          description: "Limit variant calling to these reference names\n\
+                            (default: None)"
+                          args: !RepeatFlagArg
+                            name: REGIONS
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --verbose
+                          description: 'Populate VCF info fields. (default: False)'
+                          args: !EmptyFlagArg {}
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: medaka variant [-h] [--debug | --quiet]\n\
+                          \                      [--regions REGIONS [REGIONS ...]]\
+                          \ [--verbose]\n                      ref_fasta inputs [inputs\
+                          \ ...] output\n\npositional arguments:\n  ref_fasta    \
+                          \         Reference sequence .fasta file.\n  inputs    \
+                          \            Consensus .hdf files.\n  output           \
+                          \     Output .vcf.\n\noptional arguments:\n  -h, --help\
+                          \            show this help message and exit\n  --debug\
+                          \               Verbose logging of debug information. (default:\
+                          \ 20)\n  --quiet               Minimal logging; warnings\
+                          \ only). (default: 20)\n  --regions REGIONS [REGIONS ...]\n\
+                          \                        Limit variant calling to these\
+                          \ reference names\n                        (default: None)\n\
+                          \  --verbose             Populate VCF info fields. (default:\
+                          \ False)\n"
+                        generated_using: *id004
+                        docker_image:
+                      - !Command
+                        command:
+                        - medaka
+                        - snp
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: ref_fasta
+                          description: Reference sequence .fasta file.
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: inputs
+                          description: Consensus .hdf files.
+                        - !Positional
+                          optional: false
+                          position: 2
+                          name: output
+                          description: Output .vcf.
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --debug
+                          description: 'Verbose logging of debug information. (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --quiet
+                          description: 'Minimal logging; warnings only). (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --regions
+                          description: "Limit variant calling to these reference names\n\
+                            (default: None)"
+                          args: !RepeatFlagArg
+                            name: REGIONS
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --threshold
+                          description: "Threshold for considering secondary calls.\
+                            \ A value of\n1 will result in haploid decoding. (default:\
+                            \ 0.04)"
+                          args: !SimpleFlagArg
+                            name: THRESHOLD
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --ref_vcf
+                          description: 'Reference vcf. (default: None)'
+                          args: !SimpleFlagArg
+                            name: REF_VCF
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --verbose
+                          description: 'Populate VCF info fields. (default: False)'
+                          args: !EmptyFlagArg {}
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: medaka snp [-h] [--debug | --quiet] [--regions\
+                          \ REGIONS [REGIONS ...]]\n                  [--threshold\
+                          \ THRESHOLD] [--ref_vcf REF_VCF] [--verbose]\n         \
+                          \         ref_fasta inputs [inputs ...] output\n\npositional\
+                          \ arguments:\n  ref_fasta             Reference sequence\
+                          \ .fasta file.\n  inputs                Consensus .hdf files.\n\
+                          \  output                Output .vcf.\n\noptional arguments:\n\
+                          \  -h, --help            show this help message and exit\n\
+                          \  --debug               Verbose logging of debug information.\
+                          \ (default: 20)\n  --quiet               Minimal logging;\
+                          \ warnings only). (default: 20)\n  --regions REGIONS [REGIONS\
+                          \ ...]\n                        Limit variant calling to\
+                          \ these reference names\n                        (default:\
+                          \ None)\n  --threshold THRESHOLD\n                     \
+                          \   Threshold for considering secondary calls. A value of\n\
+                          \                        1 will result in haploid decoding.\
+                          \ (default: 0.04)\n  --ref_vcf REF_VCF     Reference vcf.\
+                          \ (default: None)\n  --verbose             Populate VCF\
+                          \ info fields. (default: False)\n"
+                        generated_using: *id004
+                        docker_image:
+                      - !Command
+                        command:
+                        - medaka
+                        - train
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: features
+                          description: Paths to training data.
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --debug
+                          description: 'Verbose logging of debug information. (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --quiet
+                          description: 'Minimal logging; warnings only). (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --train_name
+                          description: 'Name for training run. (default: keras_train)'
+                          args: !SimpleFlagArg
+                            name: TRAIN_NAME
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --model
+                          description: "Model definition and initial weights .hdf,\
+                            \ or .yml\nwith kwargs to build model. {r103_min_high_g345,\n\
+                            r103_min_high_g360, r103_prom_high_g360,\nr103_prom_snp_g3210,\
+                            \ r103_prom_variant_g3210,\nr10_min_high_g303, r10_min_high_g340,\n\
+                            r941_min_fast_g303, r941_min_high_g303,\nr941_min_high_g330,\
+                            \ r941_min_high_g340_rle,\nr941_min_high_g344, r941_min_high_g351,\n\
+                            r941_min_high_g360, r941_prom_fast_g303,\nr941_prom_high_g303,\
+                            \ r941_prom_high_g330,\nr941_prom_high_g344, r941_prom_high_g360,\n\
+                            r941_prom_snp_g303, r941_prom_snp_g322,\nr941_prom_snp_g360,\
+                            \ r941_prom_variant_g303,\nr941_prom_variant_g322, r941_prom_variant_g360}\n\
+                            (default: None)"
+                          args: !SimpleFlagArg
+                            name: MODEL
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --epochs
+                          description: 'Maximum number of trainig epochs. (default:
+                            5000)'
+                          args: !SimpleFlagArg
+                            name: EPOCHS
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --batch_size
+                          description: 'Training batch size. (default: 100)'
+                          args: !SimpleFlagArg
+                            name: BATCH_SIZE
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --max_samples
+                          description: 'Only train on max_samples. (default: inf)'
+                          args: !SimpleFlagArg
+                            name: MAX_SAMPLES
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --mini_epochs
+                          description: "Reduce fraction of data per epoch by this\
+                            \ factor\n(default: 1)"
+                          args: !SimpleFlagArg
+                            name: MINI_EPOCHS
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --seed
+                          description: 'Seed for random batch shuffling. (default:
+                            None)'
+                          args: !SimpleFlagArg
+                            name: SEED
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --threads_io
+                          description: 'Number of threads for parallel IO. (default:
+                            1)'
+                          args: !SimpleFlagArg
+                            name: THREADS_IO
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --device
+                          description: 'GPU device to use. (default: 0)'
+                          args: !SimpleFlagArg
+                            name: DEVICE
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --optimizer
+                          description: 'Optimizer to use. (default: rmsprop)'
+                          args: !ChoiceFlagArg
+                            choices: !!set
+                              ? rmsprop
+                              ? nadam
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --optim_args
+                          description: "=VAL1,KEY2=VAL2... [KEY1=VAL1,KEY2=VAL2...\
+                            \ ...]\nOptimizer key-word arguments. (default: None)"
+                          args: !SimpleFlagArg
+                            name: KEY1
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --validation_split
+                          description: 'Fraction of data to validate on. (default:
+                            0.2)'
+                          args: !SimpleFlagArg
+                            name: VALIDATION_SPLIT
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --validation_features
+                          description: "Paths to validation data (default: None)\n"
+                          args: !RepeatFlagArg
+                            name: VALIDATION_FEATURES
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: medaka train [-h] [--debug | --quiet] [--train_name\
+                          \ TRAIN_NAME]\n                    [--model MODEL] [--epochs\
+                          \ EPOCHS]\n                    [--batch_size BATCH_SIZE]\
+                          \ [--max_samples MAX_SAMPLES]\n                    [--mini_epochs\
+                          \ MINI_EPOCHS] [--seed SEED]\n                    [--threads_io\
+                          \ THREADS_IO] [--device DEVICE]\n                    [--optimizer\
+                          \ {nadam,rmsprop}]\n                    [--optim_args KEY1=VAL1,KEY2=VAL2...\
+                          \ [KEY1=VAL1,KEY2=VAL2... ...]]\n                    [--validation_split\
+                          \ VALIDATION_SPLIT | --validation_features VALIDATION_FEATURES\
+                          \ [VALIDATION_FEATURES ...]]\n                    features\
+                          \ [features ...]\n\npositional arguments:\n  features  \
+                          \            Paths to training data.\n\noptional arguments:\n\
+                          \  -h, --help            show this help message and exit\n\
+                          \  --debug               Verbose logging of debug information.\
+                          \ (default: 20)\n  --quiet               Minimal logging;\
+                          \ warnings only). (default: 20)\n  --train_name TRAIN_NAME\n\
+                          \                        Name for training run. (default:\
+                          \ keras_train)\n  --model MODEL         Model definition\
+                          \ and initial weights .hdf, or .yml\n                  \
+                          \      with kwargs to build model. {r103_min_high_g345,\n\
+                          \                        r103_min_high_g360, r103_prom_high_g360,\n\
+                          \                        r103_prom_snp_g3210, r103_prom_variant_g3210,\n\
+                          \                        r10_min_high_g303, r10_min_high_g340,\n\
+                          \                        r941_min_fast_g303, r941_min_high_g303,\n\
+                          \                        r941_min_high_g330, r941_min_high_g340_rle,\n\
+                          \                        r941_min_high_g344, r941_min_high_g351,\n\
+                          \                        r941_min_high_g360, r941_prom_fast_g303,\n\
+                          \                        r941_prom_high_g303, r941_prom_high_g330,\n\
+                          \                        r941_prom_high_g344, r941_prom_high_g360,\n\
+                          \                        r941_prom_snp_g303, r941_prom_snp_g322,\n\
+                          \                        r941_prom_snp_g360, r941_prom_variant_g303,\n\
+                          \                        r941_prom_variant_g322, r941_prom_variant_g360}\n\
+                          \                        (default: None)\n  --epochs EPOCHS\
+                          \       Maximum number of trainig epochs. (default: 5000)\n\
+                          \  --batch_size BATCH_SIZE\n                        Training\
+                          \ batch size. (default: 100)\n  --max_samples MAX_SAMPLES\n\
+                          \                        Only train on max_samples. (default:\
+                          \ inf)\n  --mini_epochs MINI_EPOCHS\n                  \
+                          \      Reduce fraction of data per epoch by this factor\n\
+                          \                        (default: 1)\n  --seed SEED   \
+                          \        Seed for random batch shuffling. (default: None)\n\
+                          \  --threads_io THREADS_IO\n                        Number\
+                          \ of threads for parallel IO. (default: 1)\n  --device DEVICE\
+                          \       GPU device to use. (default: 0)\n  --optimizer {nadam,rmsprop}\n\
+                          \                        Optimizer to use. (default: rmsprop)\n\
+                          \  --optim_args KEY1=VAL1,KEY2=VAL2... [KEY1=VAL1,KEY2=VAL2...\
+                          \ ...]\n                        Optimizer key-word arguments.\
+                          \ (default: None)\n  --validation_split VALIDATION_SPLIT\n\
+                          \                        Fraction of data to validate on.\
+                          \ (default: 0.2)\n  --validation_features VALIDATION_FEATURES\
+                          \ [VALIDATION_FEATURES ...]\n                        Paths\
+                          \ to validation data (default: None)\n"
+                        generated_using: *id004
+                        docker_image:
+                      - !Command
+                        command:
+                        - medaka
+                        - consensus
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: bam
+                          description: Input alignments.
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: output
+                          description: Output file.
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --debug
+                          description: 'Verbose logging of debug information. (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --quiet
+                          description: 'Minimal logging; warnings only). (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --batch_size
+                          description: 'Inference batch size. (default: 100)'
+                          args: !SimpleFlagArg
+                            name: BATCH_SIZE
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --regions
+                          description: "Genomic regions to analyse, or a bed file.\
+                            \ (default:\nNone)"
+                          args: !RepeatFlagArg
+                            name: REGIONS
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --chunk_len
+                          description: 'Chunk length of samples. (default: 10000)'
+                          args: !SimpleFlagArg
+                            name: CHUNK_LEN
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --chunk_ovlp
+                          description: 'Overlap of chunks. (default: 1000)'
+                          args: !SimpleFlagArg
+                            name: CHUNK_OVLP
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --model
+                          description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
+                            r103_prom_high_g360, r103_prom_snp_g3210,\nr103_prom_variant_g3210,\
+                            \ r10_min_high_g303,\nr10_min_high_g340, r941_min_fast_g303,\n\
+                            r941_min_high_g303, r941_min_high_g330,\nr941_min_high_g340_rle,\
+                            \ r941_min_high_g344,\nr941_min_high_g351, r941_min_high_g360,\n\
+                            r941_prom_fast_g303, r941_prom_high_g303,\nr941_prom_high_g330,\
+                            \ r941_prom_high_g344,\nr941_prom_high_g360, r941_prom_snp_g303,\n\
+                            r941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
+                            \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default:\
+                            \ r941_min_high_g360)"
+                          args: !SimpleFlagArg
+                            name: MODEL
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --disable_cudnn
+                          description: 'Disable use of cuDNN model layers. (default:
+                            False)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --threads
+                          description: 'Number of threads used by inference. (default:
+                            1)'
+                          args: !SimpleFlagArg
+                            name: THREADS
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --check_output
+                          description: "Verify integrity of output file after inference.\n\
+                            (default: False)"
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --save_features
+                          description: "Save features with consensus probabilities.\
+                            \ (default:\nFalse)"
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --RG
+                          description: 'Read group to select. (default: None)'
+                          args: !SimpleFlagArg
+                            name: READGROUP
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --tag_name
+                          description: 'Two-letter tag name. (default: None)'
+                          args: !SimpleFlagArg
+                            name: TAG_NAME
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --tag_value
+                          description: 'Value of tag. (default: None)'
+                          args: !SimpleFlagArg
+                            name: TAG_VALUE
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --tag_keep_missing
+                          description: 'Keep alignments when tag is missing. (default:
+                            False)'
+                          args: !EmptyFlagArg {}
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: medaka consensus [-h] [--debug | --quiet]\
+                          \ [--batch_size BATCH_SIZE]\n                        [--regions\
+                          \ REGIONS [REGIONS ...]]\n                        [--chunk_len\
+                          \ CHUNK_LEN] [--chunk_ovlp CHUNK_OVLP]\n               \
+                          \         [--model MODEL] [--disable_cudnn] [--RG READGROUP]\n\
+                          \                        [--threads THREADS] [--check_output]\
+                          \ [--save_features]\n                        [--tag_name\
+                          \ TAG_NAME] [--tag_value TAG_VALUE]\n                  \
+                          \      [--tag_keep_missing]\n                        bam\
+                          \ output\n\npositional arguments:\n  bam               \
+                          \    Input alignments.\n  output                Output file.\n\
+                          \noptional arguments:\n  -h, --help            show this\
+                          \ help message and exit\n  --debug               Verbose\
+                          \ logging of debug information. (default: 20)\n  --quiet\
+                          \               Minimal logging; warnings only). (default:\
+                          \ 20)\n  --batch_size BATCH_SIZE\n                     \
+                          \   Inference batch size. (default: 100)\n  --regions REGIONS\
+                          \ [REGIONS ...]\n                        Genomic regions\
+                          \ to analyse, or a bed file. (default:\n               \
+                          \         None)\n  --chunk_len CHUNK_LEN\n             \
+                          \           Chunk length of samples. (default: 10000)\n\
+                          \  --chunk_ovlp CHUNK_OVLP\n                        Overlap\
+                          \ of chunks. (default: 1000)\n  --model MODEL         Model\
+                          \ to use. {r103_min_high_g345, r103_min_high_g360,\n   \
+                          \                     r103_prom_high_g360, r103_prom_snp_g3210,\n\
+                          \                        r103_prom_variant_g3210, r10_min_high_g303,\n\
+                          \                        r10_min_high_g340, r941_min_fast_g303,\n\
+                          \                        r941_min_high_g303, r941_min_high_g330,\n\
+                          \                        r941_min_high_g340_rle, r941_min_high_g344,\n\
+                          \                        r941_min_high_g351, r941_min_high_g360,\n\
+                          \                        r941_prom_fast_g303, r941_prom_high_g303,\n\
+                          \                        r941_prom_high_g330, r941_prom_high_g344,\n\
+                          \                        r941_prom_high_g360, r941_prom_snp_g303,\n\
+                          \                        r941_prom_snp_g322, r941_prom_snp_g360,\n\
+                          \                        r941_prom_variant_g303, r941_prom_variant_g322,\n\
+                          \                        r941_prom_variant_g360} (default:\
+                          \ r941_min_high_g360)\n  --disable_cudnn       Disable use\
+                          \ of cuDNN model layers. (default: False)\n  --threads THREADS\
+                          \     Number of threads used by inference. (default: 1)\n\
+                          \  --check_output        Verify integrity of output file\
+                          \ after inference.\n                        (default: False)\n\
+                          \  --save_features       Save features with consensus probabilities.\
+                          \ (default:\n                        False)\n\nread group:\n\
+                          \  Filtering alignments the read group (RG) tag, expected\
+                          \ to be string value.\n\n  --RG READGROUP        Read group\
+                          \ to select. (default: None)\n\nfilter tag:\n  Filtering\
+                          \ alignments by an integer valued tag.\n\n  --tag_name TAG_NAME\
+                          \   Two-letter tag name. (default: None)\n  --tag_value\
+                          \ TAG_VALUE\n                        Value of tag. (default:\
+                          \ None)\n  --tag_keep_missing    Keep alignments when tag\
+                          \ is missing. (default: False)\n"
+                        generated_using: *id004
+                        docker_image:
+                      - !Command
+                        command:
+                        - medaka
+                        - stitch
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: inputs
+                          description: Consensus .hdf files.
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: output
+                          description: Output .fasta.
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --debug
+                          description: 'Verbose logging of debug information. (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --quiet
+                          description: 'Minimal logging; warnings only). (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --regions
+                          description: "Limit stitching to these reference names (default:\n\
+                            None)"
+                          args: !RepeatFlagArg
+                            name: REGIONS
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --jobs
+                          description: 'Number of worker processes to use. (default:
+                            1)'
+                          args: !SimpleFlagArg
+                            name: JOBS
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: medaka stitch [-h] [--debug | --quiet]\n\
+                          \                     [--regions REGIONS [REGIONS ...]]\
+                          \ [--jobs JOBS]\n                     inputs [inputs ...]\
+                          \ output\n\npositional arguments:\n  inputs            \
+                          \    Consensus .hdf files.\n  output                Output\
+                          \ .fasta.\n\noptional arguments:\n  -h, --help         \
+                          \   show this help message and exit\n  --debug         \
+                          \      Verbose logging of debug information. (default: 20)\n\
+                          \  --quiet               Minimal logging; warnings only).\
+                          \ (default: 20)\n  --regions REGIONS [REGIONS ...]\n   \
+                          \                     Limit stitching to these reference\
+                          \ names (default:\n                        None)\n  --jobs\
+                          \ JOBS           Number of worker processes to use. (default:\
+                          \ 1)\n"
+                        generated_using: *id004
+                        docker_image:
+                      - !Command
+                        command:
+                        - medaka
+                        - features
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: bam
+                          description: Input alignments.
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: output
+                          description: Output features file.
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --debug
+                          description: 'Verbose logging of debug information. (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --quiet
+                          description: 'Minimal logging; warnings only). (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --batch_size
+                          description: 'Inference batch size. (default: 100)'
+                          args: !SimpleFlagArg
+                            name: BATCH_SIZE
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --regions
+                          description: "Genomic regions to analyse, or a bed file.\
+                            \ (default:\nNone)"
+                          args: !RepeatFlagArg
+                            name: REGIONS
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --chunk_len
+                          description: 'Chunk length of samples. (default: 10000)'
+                          args: !SimpleFlagArg
+                            name: CHUNK_LEN
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --chunk_ovlp
+                          description: 'Overlap of chunks. (default: 1000)'
+                          args: !SimpleFlagArg
+                            name: CHUNK_OVLP
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --truth
+                          description: "Bam of truth aligned to ref to create features\
+                            \ for\ntraining. (default: None)"
+                          args: !SimpleFlagArg
+                            name: TRUTH
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --truth_haplotag
+                          description: "Two-letter tag defining haplotype of alignments\
+                            \ for\npolyploidy labels. (default: None)"
+                          args: !SimpleFlagArg
+                            name: TRUTH_HAPLOTAG
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --threads
+                          description: 'Number of threads for parallel execution.
+                            (default: 1)'
+                          args: !SimpleFlagArg
+                            name: THREADS
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --label_scheme
+                          description: 'Labelling scheme. (default: HaploidLabelScheme)'
+                          args: !ChoiceFlagArg
+                            choices: !!set
+                              ? DiploidLabelScheme
+                              ? DiploidZygosityLabelScheme
+                              ? RLELabelScheme
+                              ? HaploidLabelScheme
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --label_scheme_args
+                          description: "=VAL1 KEY2=VAL2a,VAL2b... [KEY1=VAL1 KEY2=VAL2a,VAL2b...\
+                            \ ...]\nLabel scheme key-word arguments. (default: {})"
+                          args: !SimpleFlagArg
+                            name: KEY1
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --feature_encoder
+                          description: "FeatureEncoder used to create the features.\
+                            \ (default:\nCountsFeatureEncoder)"
+                          args: !ChoiceFlagArg
+                            choices: !!set
+                              ? SymHardRLEFeatureEncoder
+                              ? CountsFeatureEncoder
+                              ? SoftRLEFeatureEncoder
+                              ? HardRLEFeatureEncoder
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --feature_encoder_args
+                          description: "=VAL1 KEY2=VAL2a,VAL2b... [KEY1=VAL1 KEY2=VAL2a,VAL2b...\
+                            \ ...]\nFeature encoder key-word arguments. (default:\
+                            \ {})\n"
+                          args: !SimpleFlagArg
+                            name: KEY1
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: medaka features [-h] [--debug | --quiet]\
+                          \ [--batch_size BATCH_SIZE]\n                       [--regions\
+                          \ REGIONS [REGIONS ...]]\n                       [--chunk_len\
+                          \ CHUNK_LEN] [--chunk_ovlp CHUNK_OVLP]\n               \
+                          \        [--truth TRUTH] [--truth_haplotag TRUTH_HAPLOTAG]\n\
+                          \                       [--threads THREADS]\n          \
+                          \             [--label_scheme {DiploidLabelScheme,DiploidZygosityLabelScheme,HaploidLabelScheme,RLELabelScheme}]\n\
+                          \                       [--label_scheme_args KEY1=VAL1 KEY2=VAL2a,VAL2b...\
+                          \ [KEY1=VAL1 KEY2=VAL2a,VAL2b... ...]]\n               \
+                          \        [--feature_encoder {CountsFeatureEncoder,HardRLEFeatureEncoder,SoftRLEFeatureEncoder,SymHardRLEFeatureEncoder}]\n\
+                          \                       [--feature_encoder_args KEY1=VAL1\
+                          \ KEY2=VAL2a,VAL2b... [KEY1=VAL1 KEY2=VAL2a,VAL2b... ...]]\n\
+                          \                       bam output\n\npositional arguments:\n\
+                          \  bam                   Input alignments.\n  output   \
+                          \             Output features file.\n\noptional arguments:\n\
+                          \  -h, --help            show this help message and exit\n\
+                          \  --debug               Verbose logging of debug information.\
+                          \ (default: 20)\n  --quiet               Minimal logging;\
+                          \ warnings only). (default: 20)\n  --batch_size BATCH_SIZE\n\
+                          \                        Inference batch size. (default:\
+                          \ 100)\n  --regions REGIONS [REGIONS ...]\n            \
+                          \            Genomic regions to analyse, or a bed file.\
+                          \ (default:\n                        None)\n  --chunk_len\
+                          \ CHUNK_LEN\n                        Chunk length of samples.\
+                          \ (default: 10000)\n  --chunk_ovlp CHUNK_OVLP\n        \
+                          \                Overlap of chunks. (default: 1000)\n  --truth\
+                          \ TRUTH         Bam of truth aligned to ref to create features\
+                          \ for\n                        training. (default: None)\n\
+                          \  --truth_haplotag TRUTH_HAPLOTAG\n                   \
+                          \     Two-letter tag defining haplotype of alignments for\n\
+                          \                        polyploidy labels. (default: None)\n\
+                          \  --threads THREADS     Number of threads for parallel\
+                          \ execution. (default: 1)\n  --label_scheme {DiploidLabelScheme,DiploidZygosityLabelScheme,HaploidLabelScheme,RLELabelScheme}\n\
+                          \                        Labelling scheme. (default: HaploidLabelScheme)\n\
+                          \  --label_scheme_args KEY1=VAL1 KEY2=VAL2a,VAL2b... [KEY1=VAL1\
+                          \ KEY2=VAL2a,VAL2b... ...]\n                        Label\
+                          \ scheme key-word arguments. (default: {})\n  --feature_encoder\
+                          \ {CountsFeatureEncoder,HardRLEFeatureEncoder,SoftRLEFeatureEncoder,SymHardRLEFeatureEncoder}\n\
+                          \                        FeatureEncoder used to create the\
+                          \ features. (default:\n                        CountsFeatureEncoder)\n\
+                          \  --feature_encoder_args KEY1=VAL1 KEY2=VAL2a,VAL2b...\
+                          \ [KEY1=VAL1 KEY2=VAL2a,VAL2b... ...]\n                \
+                          \        Feature encoder key-word arguments. (default: {})\n"
+                        generated_using: *id004
+                        docker_image:
+                      - !Command
+                        command:
+                        - medaka
+                        - smolecule
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: fasta
+                          description: Single-molecule reads, one file per read.
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: output
+                          description: Output directory.
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --debug
+                          description: 'Verbose logging of debug information. (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --quiet
+                          description: 'Minimal logging; warnings only). (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --batch_size
+                          description: 'Inference batch size. (default: 100)'
+                          args: !SimpleFlagArg
+                            name: BATCH_SIZE
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --regions
+                          description: "Genomic regions to analyse, or a bed file.\
+                            \ (default:\nNone)"
+                          args: !RepeatFlagArg
+                            name: REGIONS
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --chunk_len
+                          description: 'Chunk length of samples. (default: 1000)'
+                          args: !SimpleFlagArg
+                            name: CHUNK_LEN
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --chunk_ovlp
+                          description: 'Overlap of chunks. (default: 500)'
+                          args: !SimpleFlagArg
+                            name: CHUNK_OVLP
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --model
+                          description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
+                            r103_prom_high_g360, r103_prom_snp_g3210,\nr103_prom_variant_g3210,\
+                            \ r10_min_high_g303,\nr10_min_high_g340, r941_min_fast_g303,\n\
+                            r941_min_high_g303, r941_min_high_g330,\nr941_min_high_g340_rle,\
+                            \ r941_min_high_g344,\nr941_min_high_g351, r941_min_high_g360,\n\
+                            r941_prom_fast_g303, r941_prom_high_g303,\nr941_prom_high_g330,\
+                            \ r941_prom_high_g344,\nr941_prom_high_g360, r941_prom_snp_g303,\n\
+                            r941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
+                            \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default:\
+                            \ r941_min_high_g360)"
+                          args: !SimpleFlagArg
+                            name: MODEL
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --disable_cudnn
+                          description: 'Disable use of cuDNN model layers. (default:
+                            False)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --depth
+                          description: 'Minimum subread count. (default: 3)'
+                          args: !SimpleFlagArg
+                            name: DEPTH
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --length
+                          description: 'Minimum median subread length. (default: 400)'
+                          args: !SimpleFlagArg
+                            name: LENGTH
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --threads
+                          description: 'Number of threads used by inference. (default:
+                            1)'
+                          args: !SimpleFlagArg
+                            name: THREADS
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --check_output
+                          description: "Verify integrity of output file after inference.\n\
+                            (default: False)"
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --save_features
+                          description: "Save features with consensus probabilities.\
+                            \ (default:\nFalse)\n"
+                          args: !EmptyFlagArg {}
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: medaka smolecule [-h] [--debug | --quiet]\
+                          \ [--batch_size BATCH_SIZE]\n                        [--regions\
+                          \ REGIONS [REGIONS ...]]\n                        [--chunk_len\
+                          \ CHUNK_LEN] [--chunk_ovlp CHUNK_OVLP]\n               \
+                          \         [--model MODEL] [--disable_cudnn] [--depth DEPTH]\n\
+                          \                        [--length LENGTH] [--threads THREADS]\
+                          \ [--check_output]\n                        [--save_features]\n\
+                          \                        fasta [fasta ...] output\n\npositional\
+                          \ arguments:\n  fasta                 Single-molecule reads,\
+                          \ one file per read.\n  output                Output directory.\n\
+                          \noptional arguments:\n  -h, --help            show this\
+                          \ help message and exit\n  --debug               Verbose\
+                          \ logging of debug information. (default: 20)\n  --quiet\
+                          \               Minimal logging; warnings only). (default:\
+                          \ 20)\n  --batch_size BATCH_SIZE\n                     \
+                          \   Inference batch size. (default: 100)\n  --regions REGIONS\
+                          \ [REGIONS ...]\n                        Genomic regions\
+                          \ to analyse, or a bed file. (default:\n               \
+                          \         None)\n  --chunk_len CHUNK_LEN\n             \
+                          \           Chunk length of samples. (default: 1000)\n \
+                          \ --chunk_ovlp CHUNK_OVLP\n                        Overlap\
+                          \ of chunks. (default: 500)\n  --model MODEL         Model\
+                          \ to use. {r103_min_high_g345, r103_min_high_g360,\n   \
+                          \                     r103_prom_high_g360, r103_prom_snp_g3210,\n\
+                          \                        r103_prom_variant_g3210, r10_min_high_g303,\n\
+                          \                        r10_min_high_g340, r941_min_fast_g303,\n\
+                          \                        r941_min_high_g303, r941_min_high_g330,\n\
+                          \                        r941_min_high_g340_rle, r941_min_high_g344,\n\
+                          \                        r941_min_high_g351, r941_min_high_g360,\n\
+                          \                        r941_prom_fast_g303, r941_prom_high_g303,\n\
+                          \                        r941_prom_high_g330, r941_prom_high_g344,\n\
+                          \                        r941_prom_high_g360, r941_prom_snp_g303,\n\
+                          \                        r941_prom_snp_g322, r941_prom_snp_g360,\n\
+                          \                        r941_prom_variant_g303, r941_prom_variant_g322,\n\
+                          \                        r941_prom_variant_g360} (default:\
+                          \ r941_min_high_g360)\n  --disable_cudnn       Disable use\
+                          \ of cuDNN model layers. (default: False)\n  --depth DEPTH\
+                          \         Minimum subread count. (default: 3)\n  --length\
+                          \ LENGTH       Minimum median subread length. (default:\
+                          \ 400)\n  --threads THREADS     Number of threads used by\
+                          \ inference. (default: 1)\n  --check_output        Verify\
+                          \ integrity of output file after inference.\n          \
+                          \              (default: False)\n  --save_features     \
+                          \  Save features with consensus probabilities. (default:\n\
+                          \                        False)\n"
+                        generated_using: *id004
+                        docker_image:
+                      - !Command
+                        command:
+                        - medaka
+                        - methylation
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: guppy2sam
+                          description: "Convert Guppy .fast5 files with methylation\
+                            \ calls to .sam\nfile, output to stdout."
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: call
+                          description: Call methylation from .bam file.
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --debug
+                          description: 'Verbose logging of debug information. (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --quiet
+                          description: 'Minimal logging; warnings only). (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: medaka methylation [-h] [--debug | --quiet]\
+                          \ {guppy2sam,call} ...\n\noptional arguments:\n  -h, --help\
+                          \        show this help message and exit\n  --debug    \
+                          \       Verbose logging of debug information. (default:\
+                          \ 20)\n  --quiet           Minimal logging; warnings only).\
+                          \ (default: 20)\n\nmethylation:\n  valid methylation commands\n\
+                          \n  {guppy2sam,call}  additional help\n    guppy2sam   \
+                          \    Convert Guppy .fast5 files with methylation calls to\
+                          \ .sam\n                    file, output to stdout.\n  \
+                          \  call            Call methylation from .bam file.\n"
+                        generated_using: *id004
+                        docker_image:
+                      - !Command
+                        command:
+                        - medaka
+                        - consensus_from_features
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: features
+                          description: Pregenerated features (from medaka features).
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --debug
+                          description: 'Verbose logging of debug information. (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --quiet
+                          description: 'Minimal logging; warnings only). (default:
+                            20)'
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --model
+                          description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
+                            r103_prom_high_g360, r103_prom_snp_g3210,\nr103_prom_variant_g3210,\
+                            \ r10_min_high_g303,\nr10_min_high_g340, r941_min_fast_g303,\
+                            \ r941_min_high_g303,\nr941_min_high_g330, r941_min_high_g340_rle,\n\
+                            r941_min_high_g344, r941_min_high_g351, r941_min_high_g360,\n\
+                            r941_prom_fast_g303, r941_prom_high_g303,\nr941_prom_high_g330,\
+                            \ r941_prom_high_g344,\nr941_prom_high_g360, r941_prom_snp_g303,\n\
+                            r941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
+                            \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default:\
+                            \ r941_min_high_g360)"
+                          args: !SimpleFlagArg
+                            name: MODEL
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --disable_cudnn
+                          description: 'Disable use of cuDNN model layers. (default:
+                            False)'
+                          args: !EmptyFlagArg {}
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: medaka consensus_from_features [-h] [--debug\
+                          \ | --quiet] [--model MODEL]\n                         \
+                          \             [--disable_cudnn]\n                      \
+                          \                features [features ...]\n\npositional arguments:\n\
+                          \  features         Pregenerated features (from medaka features).\n\
+                          \noptional arguments:\n  -h, --help       show this help\
+                          \ message and exit\n  --debug          Verbose logging of\
+                          \ debug information. (default: 20)\n  --quiet          Minimal\
+                          \ logging; warnings only). (default: 20)\n  --model MODEL\
+                          \    Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
+                          \                   r103_prom_high_g360, r103_prom_snp_g3210,\n\
+                          \                   r103_prom_variant_g3210, r10_min_high_g303,\n\
+                          \                   r10_min_high_g340, r941_min_fast_g303,\
+                          \ r941_min_high_g303,\n                   r941_min_high_g330,\
+                          \ r941_min_high_g340_rle,\n                   r941_min_high_g344,\
+                          \ r941_min_high_g351, r941_min_high_g360,\n            \
+                          \       r941_prom_fast_g303, r941_prom_high_g303,\n    \
+                          \               r941_prom_high_g330, r941_prom_high_g344,\n\
+                          \                   r941_prom_high_g360, r941_prom_snp_g303,\n\
+                          \                   r941_prom_snp_g322, r941_prom_snp_g360,\n\
+                          \                   r941_prom_variant_g303, r941_prom_variant_g322,\n\
+                          \                   r941_prom_variant_g360} (default: r941_min_high_g360)\n\
+                          \  --disable_cudnn  Disable use of cuDNN model layers. (default:\
+                          \ False)\n"
+                        generated_using: *id004
+                        docker_image:
+                      - *id005
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --version
+                        description: show program's version number and exit
+                        args: !EmptyFlagArg {}
+                      help_text: "usage: medaka [-h] [--version]\n              {compress_bam,features,train,consensus,smolecule,consensus_from_features,fastrle,stitch,variant,snp,methylation,tools}\n\
+                        \              ...\n\noptional arguments:\n  -h, --help  \
+                        \          show this help message and exit\n  --version  \
+                        \           show program's version number and exit\n\nsubcommands:\n\
+                        \  valid commands\n\n  {compress_bam,features,train,consensus,smolecule,consensus_from_features,fastrle,stitch,variant,snp,methylation,tools}\n\
+                        \                        additional help\n    compress_bam\
+                        \        Compress an alignment into RLE form.\n    features\
+                        \            Create features for inference.\n    train   \
+                        \            Train a model from features.\n    consensus \
+                        \          Run inference from a trained model and alignments.\n\
+                        \    smolecule           Create consensus sequences from single-molecule\
+                        \ reads.\n    consensus_from_features\n                  \
+                        \      Run inference from a trained model on existing\n  \
+                        \                      features.\n    fastrle            \
+                        \ Create run-length encoded fastq (lengths in quality\n  \
+                        \                      track).\n    stitch              Stitch\
+                        \ together output from medaka consensus into\n           \
+                        \             final output.\n    variant             Decode\
+                        \ probabilities to VCF.\n    snp                 Decode probabilities\
+                        \ to SNPs.\n    methylation         methylation subcommand.\n\
+                        \    tools               tools subcommand.\n"
+                      generated_using: *id004
+                      docker_image:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: medaka
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: tools
+                        description: ''
+                      named: []
+                      parent: *id005
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: medaka tools [-h] [--debug | --quiet]\n \
+                        \                   {haploid2diploid,diploid2haploid,classify_variants,annotate,vcf2tsv,homozygous_regions,resolve_model,is_rle_model,get_alignment_params,rlebam,list_models,hdf_to_bed,download_models}\n\
+                        \                    ...\nmedaka tools: error: argument tool_command:\
+                        \ invalid choice: 'subtype.' (choose from 'haploid2diploid',\
+                        \ 'diploid2haploid', 'classify_variants', 'annotate', 'vcf2tsv',\
+                        \ 'homozygous_regions', 'resolve_model', 'is_rle_model', 'get_alignment_params',\
+                        \ 'rlebam', 'list_models', 'hdf_to_bed', 'download_models')\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - medaka
+                      - tools
+                      - fields.
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: medaka
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: tools
+                        description: ''
+                      named: []
+                      parent: *id005
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: medaka tools [-h] [--debug | --quiet]\n \
+                        \                   {haploid2diploid,diploid2haploid,classify_variants,annotate,vcf2tsv,homozygous_regions,resolve_model,is_rle_model,get_alignment_params,rlebam,list_models,hdf_to_bed,download_models}\n\
+                        \                    ...\nmedaka tools: error: argument tool_command:\
+                        \ invalid choice: 'fields.' (choose from 'haploid2diploid',\
+                        \ 'diploid2haploid', 'classify_variants', 'annotate', 'vcf2tsv',\
+                        \ 'homozygous_regions', 'resolve_model', 'is_rle_model', 'get_alignment_params',\
+                        \ 'rlebam', 'list_models', 'hdf_to_bed', 'download_models')\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - medaka
+                      - tools
+                      - get_alignment_params
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --model
+                        description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
+                          r103_prom_high_g360, r103_prom_snp_g3210,\nr103_prom_variant_g3210,\
+                          \ r10_min_high_g303,\nr10_min_high_g340, r941_min_fast_g303,\
+                          \ r941_min_high_g303,\nr941_min_high_g330, r941_min_high_g340_rle,\n\
+                          r941_min_high_g344, r941_min_high_g351, r941_min_high_g360,\n\
+                          r941_prom_fast_g303, r941_prom_high_g303,\nr941_prom_high_g330,\
+                          \ r941_prom_high_g344,\nr941_prom_high_g360, r941_prom_snp_g303,\n\
+                          r941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
+                          \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default:\
+                          \ r941_min_high_g360)"
+                        args: !SimpleFlagArg
+                          name: MODEL
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --disable_cudnn
+                        description: 'Disable use of cuDNN model layers. (default:
+                          False)'
+                        args: !EmptyFlagArg {}
+                      parent: *id005
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: medaka tools get_alignment_params [-h] [--model\
+                        \ MODEL]\n                                         [--disable_cudnn]\n\
+                        \noptional arguments:\n  -h, --help       show this help message\
+                        \ and exit\n  --model MODEL    Model to use. {r103_min_high_g345,\
+                        \ r103_min_high_g360,\n                   r103_prom_high_g360,\
+                        \ r103_prom_snp_g3210,\n                   r103_prom_variant_g3210,\
+                        \ r10_min_high_g303,\n                   r10_min_high_g340,\
+                        \ r941_min_fast_g303, r941_min_high_g303,\n              \
+                        \     r941_min_high_g330, r941_min_high_g340_rle,\n      \
+                        \             r941_min_high_g344, r941_min_high_g351, r941_min_high_g360,\n\
+                        \                   r941_prom_fast_g303, r941_prom_high_g303,\n\
+                        \                   r941_prom_high_g330, r941_prom_high_g344,\n\
+                        \                   r941_prom_high_g360, r941_prom_snp_g303,\n\
+                        \                   r941_prom_snp_g322, r941_prom_snp_g360,\n\
+                        \                   r941_prom_variant_g303, r941_prom_variant_g322,\n\
+                        \                   r941_prom_variant_g360} (default: r941_min_high_g360)\n\
+                        \  --disable_cudnn  Disable use of cuDNN model layers. (default:\
+                        \ False)\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id008
+                      - medaka
+                      - tools
+                      - is_rle_model
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --model
+                        description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
+                          r103_prom_high_g360, r103_prom_snp_g3210,\nr103_prom_variant_g3210,\
+                          \ r10_min_high_g303,\nr10_min_high_g340, r941_min_fast_g303,\
+                          \ r941_min_high_g303,\nr941_min_high_g330, r941_min_high_g340_rle,\n\
+                          r941_min_high_g344, r941_min_high_g351, r941_min_high_g360,\n\
+                          r941_prom_fast_g303, r941_prom_high_g303,\nr941_prom_high_g330,\
+                          \ r941_prom_high_g344,\nr941_prom_high_g360, r941_prom_snp_g303,\n\
+                          r941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
+                          \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default:\
+                          \ r941_min_high_g360)"
+                        args: !SimpleFlagArg
+                          name: MODEL
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --disable_cudnn
+                        description: 'Disable use of cuDNN model layers. (default:
+                          False)'
+                        args: !EmptyFlagArg {}
+                      parent: *id005
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: medaka tools is_rle_model [-h] [--model MODEL]\
+                        \ [--disable_cudnn]\n\noptional arguments:\n  -h, --help \
+                        \      show this help message and exit\n  --model MODEL  \
+                        \  Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
+                        \                   r103_prom_high_g360, r103_prom_snp_g3210,\n\
+                        \                   r103_prom_variant_g3210, r10_min_high_g303,\n\
+                        \                   r10_min_high_g340, r941_min_fast_g303,\
+                        \ r941_min_high_g303,\n                   r941_min_high_g330,\
+                        \ r941_min_high_g340_rle,\n                   r941_min_high_g344,\
+                        \ r941_min_high_g351, r941_min_high_g360,\n              \
+                        \     r941_prom_fast_g303, r941_prom_high_g303,\n        \
+                        \           r941_prom_high_g330, r941_prom_high_g344,\n  \
+                        \                 r941_prom_high_g360, r941_prom_snp_g303,\n\
+                        \                   r941_prom_snp_g322, r941_prom_snp_g360,\n\
+                        \                   r941_prom_variant_g303, r941_prom_variant_g322,\n\
+                        \                   r941_prom_variant_g360} (default: r941_min_high_g360)\n\
+                        \  --disable_cudnn  Disable use of cuDNN model layers. (default:\
+                        \ False)\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: medaka tools [-h] [--debug | --quiet]\n   \
+                      \                 {haploid2diploid,diploid2haploid,classify_variants,annotate,vcf2tsv,homozygous_regions,resolve_model,is_rle_model,get_alignment_params,rlebam,list_models,hdf_to_bed,download_models}\n\
+                      \                    ...\n\noptional arguments:\n  -h, --help\
+                      \            show this help message and exit\n  --debug    \
+                      \           Verbose logging of debug information. (default:\
+                      \ 20)\n  --quiet               Minimal logging; warnings only).\
+                      \ (default: 20)\n\ntools:\n  valid tool commands\n\n  {haploid2diploid,diploid2haploid,classify_variants,annotate,vcf2tsv,homozygous_regions,resolve_model,is_rle_model,get_alignment_params,rlebam,list_models,hdf_to_bed,download_models}\n\
+                      \                        additional help\n    haploid2diploid\
+                      \     Merge two haploid VCFs into a diploid VCF.\n    diploid2haploid\
+                      \     Split a diploid VCF into two haploid VCFs.\n    classify_variants\
+                      \   Classify variants and write vcf for each type and\n    \
+                      \                    subtype.\n    annotate            Annotate\
+                      \ vcf with read depth and supporting reads info\n          \
+                      \              fields.\n    vcf2tsv             convert vcf\
+                      \ to tsv, unpacking info and sample columns.\n    homozygous_regions\
+                      \  Find homozygous regions from a diploid vcf.\n    resolve_model\
+                      \       Resolve model and print full file path.\n    is_rle_model\
+                      \        Check if a model is an RLE model.\n    get_alignment_params\n\
+                      \                        Get alignment parameters appropriate\
+                      \ for a model\n    list_models         List all models.\n  \
+                      \  hdf_to_bed          Write a bed file of regions spanned by\
+                      \ a hdf file.\n    download_models     Download model files\
+                      \ for any models not already\n                        installed.\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: medaka tools [-h] [--debug | --quiet]\n     \
@@ -1405,32 +1692,30 @@ subcommands:
                     \ 'resolve_model', 'is_rle_model', 'get_alignment_params', 'rlebam',\
                     \ 'list_models', 'hdf_to_bed', 'download_models')\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - medaka
-                  - tools
-                  - fields.
+                  command: *id006
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: medaka
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: tools
-                    optional: false
+                    description: ''
                   named: []
                   parent: *id005
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: medaka tools [-h] [--debug | --quiet]\n     \
@@ -1441,14 +1726,15 @@ subcommands:
                     \ 'resolve_model', 'is_rle_model', 'get_alignment_params', 'rlebam',\
                     \ 'list_models', 'hdf_to_bed', 'download_models')\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - medaka
-                  - tools
-                  - get_alignment_params
+                  command: *id007
                   positional: []
                   named:
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --model
                     description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
                       r103_prom_high_g360, r103_prom_snp_g3210,\nr103_prom_variant_g3210,\
                       \ r10_min_high_g303,\nr10_min_high_g340, r941_min_fast_g303,\
@@ -1459,27 +1745,24 @@ subcommands:
                       r941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
                       \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default:\
                       \ r941_min_high_g360)"
-                    synonyms:
-                    - --model
                     args: !SimpleFlagArg
                       name: MODEL
-                    optional: true
                   - !Flag
-                    description: 'Disable use of cuDNN model layers. (default: False)'
+                    optional: true
                     synonyms:
                     - --disable_cudnn
+                    description: 'Disable use of cuDNN model layers. (default: False)'
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id005
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: medaka tools get_alignment_params [-h] [--model\
@@ -1501,14 +1784,15 @@ subcommands:
                     \  --disable_cudnn  Disable use of cuDNN model layers. (default:\
                     \ False)\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id008
-                  - medaka
-                  - tools
-                  - is_rle_model
+                  command: *id008
                   positional: []
                   named:
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --model
                     description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
                       r103_prom_high_g360, r103_prom_snp_g3210,\nr103_prom_variant_g3210,\
                       \ r10_min_high_g303,\nr10_min_high_g340, r941_min_fast_g303,\
@@ -1519,27 +1803,24 @@ subcommands:
                       r941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
                       \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default:\
                       \ r941_min_high_g360)"
-                    synonyms:
-                    - --model
                     args: !SimpleFlagArg
                       name: MODEL
-                    optional: true
                   - !Flag
-                    description: 'Disable use of cuDNN model layers. (default: False)'
+                    optional: true
                     synonyms:
                     - --disable_cudnn
+                    description: 'Disable use of cuDNN model layers. (default: False)'
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id005
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: medaka tools is_rle_model [-h] [--model MODEL]\
@@ -1560,14 +1841,9 @@ subcommands:
                     \  --disable_cudnn  Disable use of cuDNN model layers. (default:\
                     \ False)\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "usage: medaka tools [-h] [--debug | --quiet]\n       \
@@ -1594,14 +1870,15 @@ subcommands:
                   \     Download model files for any models not already\n        \
                   \                installed.\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: medaka tools [-h] [--debug | --quiet]\n         \
@@ -1612,29 +1889,30 @@ subcommands:
                 \ 'resolve_model', 'is_rle_model', 'get_alignment_params', 'rlebam',\
                 \ 'list_models', 'hdf_to_bed', 'download_models')\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: medaka
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: tools
-                optional: false
+                description: ''
               named: []
-              parent: *id005
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: medaka tools [-h] [--debug | --quiet]\n         \
@@ -1645,11 +1923,15 @@ subcommands:
                 \ 'resolve_model', 'is_rle_model', 'get_alignment_params', 'rlebam',\
                 \ 'list_models', 'hdf_to_bed', 'download_models')\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional: []
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - --model
                 description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
                   r103_prom_high_g360, r103_prom_snp_g3210,\nr103_prom_variant_g3210,\
                   \ r10_min_high_g303,\nr10_min_high_g340, r941_min_fast_g303, r941_min_high_g303,\n\
@@ -1659,27 +1941,24 @@ subcommands:
                   r941_prom_high_g360, r941_prom_snp_g303,\nr941_prom_snp_g322, r941_prom_snp_g360,\n\
                   r941_prom_variant_g303, r941_prom_variant_g322,\nr941_prom_variant_g360}\
                   \ (default: r941_min_high_g360)"
-                synonyms:
-                - --model
                 args: !SimpleFlagArg
                   name: MODEL
-                optional: true
               - !Flag
-                description: 'Disable use of cuDNN model layers. (default: False)'
+                optional: true
                 synonyms:
                 - --disable_cudnn
+                description: 'Disable use of cuDNN model layers. (default: False)'
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id005
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: medaka tools get_alignment_params [-h] [--model MODEL]\n\
@@ -1699,11 +1978,15 @@ subcommands:
                 \            r941_prom_variant_g360} (default: r941_min_high_g360)\n\
                 \  --disable_cudnn  Disable use of cuDNN model layers. (default: False)\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id008
               positional: []
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - --model
                 description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
                   r103_prom_high_g360, r103_prom_snp_g3210,\nr103_prom_variant_g3210,\
                   \ r10_min_high_g303,\nr10_min_high_g340, r941_min_fast_g303, r941_min_high_g303,\n\
@@ -1713,27 +1996,24 @@ subcommands:
                   r941_prom_high_g360, r941_prom_snp_g303,\nr941_prom_snp_g322, r941_prom_snp_g360,\n\
                   r941_prom_variant_g303, r941_prom_variant_g322,\nr941_prom_variant_g360}\
                   \ (default: r941_min_high_g360)"
-                synonyms:
-                - --model
                 args: !SimpleFlagArg
                   name: MODEL
-                optional: true
               - !Flag
-                description: 'Disable use of cuDNN model layers. (default: False)'
+                optional: true
                 synonyms:
                 - --disable_cudnn
+                description: 'Disable use of cuDNN model layers. (default: False)'
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id005
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: medaka tools is_rle_model [-h] [--model MODEL] [--disable_cudnn]\n\
@@ -1752,6 +2032,7 @@ subcommands:
                 \            r941_prom_variant_g360} (default: r941_min_high_g360)\n\
                 \  --disable_cudnn  Disable use of cuDNN model layers. (default: False)\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -1779,14 +2060,15 @@ subcommands:
               \     Download model files for any models not already\n            \
               \            installed.\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: medaka tools [-h] [--debug | --quiet]\n             \
@@ -1797,29 +2079,30 @@ subcommands:
             \ 'is_rle_model', 'get_alignment_params', 'rlebam', 'list_models', 'hdf_to_bed',\
             \ 'download_models')\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: medaka
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: tools
-            optional: false
+            description: ''
           named: []
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: medaka tools [-h] [--debug | --quiet]\n             \
@@ -1830,11 +2113,15 @@ subcommands:
             \ 'is_rle_model', 'get_alignment_params', 'rlebam', 'list_models', 'hdf_to_bed',\
             \ 'download_models')\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional: []
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - --model
             description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
               r103_prom_high_g360, r103_prom_snp_g3210,\nr103_prom_variant_g3210,\
               \ r10_min_high_g303,\nr10_min_high_g340, r941_min_fast_g303, r941_min_high_g303,\n\
@@ -1843,27 +2130,24 @@ subcommands:
               \ r941_prom_high_g344,\nr941_prom_high_g360, r941_prom_snp_g303,\nr941_prom_snp_g322,\
               \ r941_prom_snp_g360,\nr941_prom_variant_g303, r941_prom_variant_g322,\n\
               r941_prom_variant_g360} (default: r941_min_high_g360)"
-            synonyms:
-            - --model
             args: !SimpleFlagArg
               name: MODEL
-            optional: true
           - !Flag
-            description: 'Disable use of cuDNN model layers. (default: False)'
+            optional: true
             synonyms:
             - --disable_cudnn
+            description: 'Disable use of cuDNN model layers. (default: False)'
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: medaka tools get_alignment_params [-h] [--model MODEL]\n\
@@ -1882,11 +2166,15 @@ subcommands:
             \                   r941_prom_variant_g360} (default: r941_min_high_g360)\n\
             \  --disable_cudnn  Disable use of cuDNN model layers. (default: False)\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id008
           positional: []
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - --model
             description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\n\
               r103_prom_high_g360, r103_prom_snp_g3210,\nr103_prom_variant_g3210,\
               \ r10_min_high_g303,\nr10_min_high_g340, r941_min_fast_g303, r941_min_high_g303,\n\
@@ -1895,27 +2183,24 @@ subcommands:
               \ r941_prom_high_g344,\nr941_prom_high_g360, r941_prom_snp_g303,\nr941_prom_snp_g322,\
               \ r941_prom_snp_g360,\nr941_prom_variant_g303, r941_prom_variant_g322,\n\
               r941_prom_variant_g360} (default: r941_min_high_g360)"
-            synonyms:
-            - --model
             args: !SimpleFlagArg
               name: MODEL
-            optional: true
           - !Flag
-            description: 'Disable use of cuDNN model layers. (default: False)'
+            optional: true
             synonyms:
             - --disable_cudnn
+            description: 'Disable use of cuDNN model layers. (default: False)'
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: medaka tools is_rle_model [-h] [--model MODEL] [--disable_cudnn]\n\
@@ -1933,6 +2218,7 @@ subcommands:
             \                   r941_prom_variant_g360} (default: r941_min_high_g360)\n\
             \  --disable_cudnn  Disable use of cuDNN model layers. (default: False)\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -1958,14 +2244,15 @@ subcommands:
           \ regions spanned by a hdf file.\n    download_models     Download model\
           \ files for any models not already\n                        installed.\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: medaka tools [-h] [--debug | --quiet]\n                 \
@@ -1975,29 +2262,30 @@ subcommands:
         \ 'annotate', 'vcf2tsv', 'homozygous_regions', 'resolve_model', 'is_rle_model',\
         \ 'get_alignment_params', 'rlebam', 'list_models', 'hdf_to_bed', 'download_models')\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: medaka
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: tools
-        optional: false
+        description: ''
       named: []
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: medaka tools [-h] [--debug | --quiet]\n                 \
@@ -2007,11 +2295,15 @@ subcommands:
         \ 'annotate', 'vcf2tsv', 'homozygous_regions', 'resolve_model', 'is_rle_model',\
         \ 'get_alignment_params', 'rlebam', 'list_models', 'hdf_to_bed', 'download_models')\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional: []
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - --model
         description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\nr103_prom_high_g360,\
           \ r103_prom_snp_g3210,\nr103_prom_variant_g3210, r10_min_high_g303,\nr10_min_high_g340,\
           \ r941_min_fast_g303, r941_min_high_g303,\nr941_min_high_g330, r941_min_high_g340_rle,\n\
@@ -2019,27 +2311,24 @@ subcommands:
           \ r941_prom_high_g303,\nr941_prom_high_g330, r941_prom_high_g344,\nr941_prom_high_g360,\
           \ r941_prom_snp_g303,\nr941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
           \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default: r941_min_high_g360)"
-        synonyms:
-        - --model
         args: !SimpleFlagArg
           name: MODEL
-        optional: true
       - !Flag
-        description: 'Disable use of cuDNN model layers. (default: False)'
+        optional: true
         synonyms:
         - --disable_cudnn
+        description: 'Disable use of cuDNN model layers. (default: False)'
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: medaka tools get_alignment_params [-h] [--model MODEL]\n\
@@ -2057,11 +2346,15 @@ subcommands:
         \               r941_prom_variant_g360} (default: r941_min_high_g360)\n  --disable_cudnn\
         \  Disable use of cuDNN model layers. (default: False)\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id008
       positional: []
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - --model
         description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\nr103_prom_high_g360,\
           \ r103_prom_snp_g3210,\nr103_prom_variant_g3210, r10_min_high_g303,\nr10_min_high_g340,\
           \ r941_min_fast_g303, r941_min_high_g303,\nr941_min_high_g330, r941_min_high_g340_rle,\n\
@@ -2069,27 +2362,24 @@ subcommands:
           \ r941_prom_high_g303,\nr941_prom_high_g330, r941_prom_high_g344,\nr941_prom_high_g360,\
           \ r941_prom_snp_g303,\nr941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
           \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default: r941_min_high_g360)"
-        synonyms:
-        - --model
         args: !SimpleFlagArg
           name: MODEL
-        optional: true
       - !Flag
-        description: 'Disable use of cuDNN model layers. (default: False)'
+        optional: true
         synonyms:
         - --disable_cudnn
+        description: 'Disable use of cuDNN model layers. (default: False)'
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: medaka tools is_rle_model [-h] [--model MODEL] [--disable_cudnn]\n\
@@ -2107,6 +2397,7 @@ subcommands:
         \ r941_min_high_g360)\n  --disable_cudnn  Disable use of cuDNN model layers.\
         \ (default: False)\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -2132,14 +2423,15 @@ subcommands:
       \     Download model files for any models not already\n                    \
       \    installed.\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: medaka tools [-h] [--debug | --quiet]\n                    {haploid2diploid,diploid2haploid,classify_variants,annotate,vcf2tsv,homozygous_regions,resolve_model,is_rle_model,get_alignment_params,rlebam,list_models,hdf_to_bed,download_models}\n\
@@ -2148,29 +2440,30 @@ subcommands:
     \ 'annotate', 'vcf2tsv', 'homozygous_regions', 'resolve_model', 'is_rle_model',\
     \ 'get_alignment_params', 'rlebam', 'list_models', 'hdf_to_bed', 'download_models')\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: medaka
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: tools
-    optional: false
+    description: ''
   named: []
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: medaka tools [-h] [--debug | --quiet]\n                    {haploid2diploid,diploid2haploid,classify_variants,annotate,vcf2tsv,homozygous_regions,resolve_model,is_rle_model,get_alignment_params,rlebam,list_models,hdf_to_bed,download_models}\n\
@@ -2179,11 +2472,15 @@ subcommands:
     \ 'annotate', 'vcf2tsv', 'homozygous_regions', 'resolve_model', 'is_rle_model',\
     \ 'get_alignment_params', 'rlebam', 'list_models', 'hdf_to_bed', 'download_models')\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional: []
   named:
   - !Flag
+    optional: true
+    synonyms:
+    - --model
     description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\nr103_prom_high_g360,\
       \ r103_prom_snp_g3210,\nr103_prom_variant_g3210, r10_min_high_g303,\nr10_min_high_g340,\
       \ r941_min_fast_g303, r941_min_high_g303,\nr941_min_high_g330, r941_min_high_g340_rle,\n\
@@ -2191,27 +2488,24 @@ subcommands:
       \ r941_prom_high_g303,\nr941_prom_high_g330, r941_prom_high_g344,\nr941_prom_high_g360,\
       \ r941_prom_snp_g303,\nr941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
       \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default: r941_min_high_g360)"
-    synonyms:
-    - --model
     args: !SimpleFlagArg
       name: MODEL
-    optional: true
   - !Flag
-    description: 'Disable use of cuDNN model layers. (default: False)'
+    optional: true
     synonyms:
     - --disable_cudnn
+    description: 'Disable use of cuDNN model layers. (default: False)'
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: medaka tools get_alignment_params [-h] [--model MODEL]\n    \
@@ -2229,11 +2523,15 @@ subcommands:
     \ (default: r941_min_high_g360)\n  --disable_cudnn  Disable use of cuDNN model\
     \ layers. (default: False)\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id008
   positional: []
   named:
   - !Flag
+    optional: true
+    synonyms:
+    - --model
     description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\nr103_prom_high_g360,\
       \ r103_prom_snp_g3210,\nr103_prom_variant_g3210, r10_min_high_g303,\nr10_min_high_g340,\
       \ r941_min_fast_g303, r941_min_high_g303,\nr941_min_high_g330, r941_min_high_g340_rle,\n\
@@ -2241,27 +2539,24 @@ subcommands:
       \ r941_prom_high_g303,\nr941_prom_high_g330, r941_prom_high_g344,\nr941_prom_high_g360,\
       \ r941_prom_snp_g303,\nr941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
       \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default: r941_min_high_g360)"
-    synonyms:
-    - --model
     args: !SimpleFlagArg
       name: MODEL
-    optional: true
   - !Flag
-    description: 'Disable use of cuDNN model layers. (default: False)'
+    optional: true
     synonyms:
     - --disable_cudnn
+    description: 'Disable use of cuDNN model layers. (default: False)'
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: medaka tools is_rle_model [-h] [--model MODEL] [--disable_cudnn]\n\
@@ -2278,6 +2573,7 @@ subcommands:
     \           r941_prom_variant_g360} (default: r941_min_high_g360)\n  --disable_cudnn\
     \  Disable use of cuDNN model layers. (default: False)\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -2301,3 +2597,4 @@ help_text: "usage: medaka tools [-h] [--debug | --quiet]\n                    {h
   \ file.\n    download_models     Download model files for any models not already\n\
   \                        installed.\n"
 generated_using: *id004
+docker_image:

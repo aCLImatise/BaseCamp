@@ -8,6 +8,9 @@ task MetageneOUTBASEMasktxt {
     metagene OUTBASE_mask_txt \
       ~{meta_gene}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     meta_gene: ""
   }

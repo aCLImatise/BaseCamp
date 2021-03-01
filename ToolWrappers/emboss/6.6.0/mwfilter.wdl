@@ -12,6 +12,9 @@ task Mwfilter {
       ~{if (show_del) then "-showdel" else ""} \
       ~{if (data_file) then "-datafile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tolerance: "float      [50.0] Ppm tolerance (Any numeric value)"
     show_del: "boolean    [N] Output deleted mwts"

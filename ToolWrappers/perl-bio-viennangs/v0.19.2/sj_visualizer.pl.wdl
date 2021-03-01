@@ -22,6 +22,9 @@ task SjVisualizerpl {
       ~{if (relative_output_path) then "-o" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     splice_junctions_mapped: "Splice junctions from mapped RNA-seq data in BED6 format"
     chromosome_sizes_files: "Chromosome sizes files"

@@ -12,6 +12,9 @@ task Espgenpy {
       ~{if defined(output_file_name) then ("-o " +  '"' + output_file_name + '"') else ""} \
       ~{if defined(software_version_default) then ("-v " +  '"' + software_version_default + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_name: "Input file name"
     output_file_name: "Output file name"

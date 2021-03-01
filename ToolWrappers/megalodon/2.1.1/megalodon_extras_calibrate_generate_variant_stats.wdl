@@ -9,7 +9,7 @@ task MegalodonExtrasCalibrateGenerateVariantStats {
     Float? guppy_timeout
     Directory? guppy_logs_output_directory
     File? reference
-    File? filename_output_default
+    File? filename_output_statistics
     File? read_ids_filename
     Array[String] devices
     Boolean? not_recursive
@@ -28,7 +28,7 @@ task MegalodonExtrasCalibrateGenerateVariantStats {
       ~{if defined(guppy_timeout) then ("--guppy-timeout " +  '"' + guppy_timeout + '"') else ""} \
       ~{if defined(guppy_logs_output_directory) then ("--guppy-logs-output-directory " +  '"' + guppy_logs_output_directory + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
-      ~{if defined(filename_output_default) then ("--output " +  '"' + filename_output_default + '"') else ""} \
+      ~{if defined(filename_output_statistics) then ("--output " +  '"' + filename_output_statistics + '"') else ""} \
       ~{if defined(read_ids_filename) then ("--read-ids-filename " +  '"' + read_ids_filename + '"') else ""} \
       ~{if defined(devices) then ("--devices " +  '"' + devices + '"') else ""} \
       ~{if (not_recursive) then "--not-recursive" else ""} \
@@ -36,6 +36,9 @@ task MegalodonExtrasCalibrateGenerateVariantStats {
       ~{if (suppress_progress) then "--suppress-progress" else ""} \
       ~{if (compute_false_reference_scores) then "--compute-false-reference-scores" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     guppy_config: "Guppy config. Default: dna_r9.4.1_450bps_modbases_dam-\\ndcm-cpg_hac.cfg"
     guppy_server_path: "Path to guppy server executable. Default: ./ont-\\nguppy/bin/guppy_basecall_server"
@@ -44,7 +47,7 @@ task MegalodonExtrasCalibrateGenerateVariantStats {
     guppy_timeout: "Timeout to wait for guppy server to call a single read\\nin seconds. Default: 5.000000"
     guppy_logs_output_directory: "Directory to output guppy logs. Default: guppy_logs"
     reference: "Reference FASTA file used for mapping called reads."
-    filename_output_default: "Filename to output statistics. Default:"
+    filename_output_statistics: "Filename to output statistics. Default:"
     read_ids_filename: "File containing read ids to process (one per line).\\nDefault: All reads"
     devices: "GPU devices for guppy or taiyaki basecalling backends."
     not_recursive: "Only search for fast5 read files directly found within\\nthe fast5 directory. Default: search recursively"
@@ -56,6 +59,6 @@ task MegalodonExtrasCalibrateGenerateVariantStats {
   output {
     File out_stdout = stdout()
     Directory out_guppy_logs_output_directory = "${in_guppy_logs_output_directory}"
-    File out_filename_output_default = "${in_filename_output_default}"
+    File out_filename_output_statistics = "${in_filename_output_statistics}"
   }
 }

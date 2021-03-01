@@ -27,7 +27,7 @@ task Sumtreespy {
     String? labels
     Boolean? suppress_annotations
     Boolean? percentages
-    Boolean? _decimals_number
+    Boolean? decimals_number_decimal
     File? output_tree_file_path
     String? output_tree_format
     String? extended_output
@@ -72,7 +72,7 @@ task Sumtreespy {
       ~{if defined(labels) then ("--labels " +  '"' + labels + '"') else ""} \
       ~{if (suppress_annotations) then "--suppress-annotations" else ""} \
       ~{if (percentages) then "--percentages" else ""} \
-      ~{if (_decimals_number) then "-d" else ""} \
+      ~{if (decimals_number_decimal) then "-d" else ""} \
       ~{if defined(output_tree_file_path) then ("--output-tree-filepath " +  '"' + output_tree_file_path + '"') else ""} \
       ~{if defined(output_tree_format) then ("--output-tree-format " +  '"' + output_tree_format + '"') else ""} \
       ~{if defined(extended_output) then ("--extended-output " +  '"' + extended_output + '"') else ""} \
@@ -88,6 +88,9 @@ task Sumtreespy {
       ~{if (usage_examples) then "--usage-examples" else ""} \
       ~{if (describe) then "--describe" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     source_format: "Format of all input trees (defaults to handling either\\nNEXUS or NEWICK through inspection; it is more\\nefficient to explicitly specify the format if it is\\nknown)."
     burnin: "Number of trees to skip from the beginning of *each*\\ntree file when counting support (default: 0)."
@@ -114,7 +117,7 @@ task Sumtreespy {
     labels: "Set the node labels of the summary or target tree(s):\\n- 'support'\\nNode labels will be set to the support value for\\nthe clade represented by the node. This is the\\nDEFAULT.\\n- 'keep'\\nDo not change the existing node labels.\\n- 'clear'\\nNode labels will be cleared from the target\\ntrees if they are present."
     suppress_annotations: "Do NOT annotate nodes and edges with any summarization\\ninformation metadata such as.support values, edge\\nlength and/or node age summary statistcs, etc."
     percentages: "Indicate branch support as percentages (otherwise,\\nwill report as proportions by default)."
-    _decimals_number: "#, --decimals #    Number of decimal places in indication of support\\nvalues (default: 8)."
+    decimals_number_decimal: "#, --decimals #    Number of decimal places in indication of support\\nvalues (default: 8)."
     output_tree_file_path: "Path to output file (if not specified, will print to\\nstandard output)."
     output_tree_format: "Format of the output tree file (if not specifed,\\ndefaults to input format, if this has been explicitly\\nspecified, or 'nexus' otherwise)."
     extended_output: "If specified, extended summarization information will\\nbe generated, consisting of the following files:\\n- '<PREFIX>.topologies.trees'\\nA collection of topologies found in the sources\\nreported with their associated posterior\\nprobabilities as metadata annotations.\\n- '<PREFIX>.bipartitions.trees'\\nA collection of bipartitions, each represented\\nas a tree, with associated information as\\nmetadataannotations.\\n- '<PREFIX>.bipartitions.tsv'\\nTable listing bipartitions as a group pattern as\\nthe key column, and information regarding each\\nthe bipartitions as the remaining columns.\\n- '<PREFIX>.edge-lengths.tsv'\\nList of bipartitions and corresponding edge\\nlengths. Only generated if edge lengths are\\nsummarized.\\n- '<PREFIX>.node-ages.tsv'\\nList of bipartitions and corresponding ages.\\nOnly generated if node ages are summarized."

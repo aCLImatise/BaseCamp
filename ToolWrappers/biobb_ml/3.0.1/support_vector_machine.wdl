@@ -16,6 +16,9 @@ task SupportVectorMachine {
       ~{if defined(input_dataset_path) then ("--input_dataset_path " +  '"' + input_dataset_path + '"') else ""} \
       ~{if defined(output_model_path) then ("--output_model_path " +  '"' + output_model_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Configuration file"
     output_test_table_path: "Path to the test table file. Accepted formats: csv."

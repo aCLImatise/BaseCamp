@@ -14,6 +14,9 @@ task BroadUtilspyGetBustardDir {
       ~{get_bustard_dir} \
       ~{if defined(loglevel) then ("--loglevel " +  '"' + loglevel + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: "Verboseness of output. [default: ERROR]\\n"
     broad_utils_do_tpy: ""

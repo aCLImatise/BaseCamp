@@ -34,6 +34,9 @@ task Kinwalker {
       ~{if (transcription_rate) then "--transcription_rate" else ""} \
       ~{if (window_size) then "--windowsize" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_it_structure: "Start with a structure other than the open chain."
     interrupt: "Allow interrupted folding trajectories when the barrier is exceeded."

@@ -1,14 +1,14 @@
 class: CommandLineTool
 id: obenergy.cwl
 inputs:
-- id: in_verbose_print_interactions
+- id: in_verbose_print_indivual
   doc: 'verbose: print out indivual energy interactions'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_ff
   doc: "select a forcefield\navailable forcefields:"
-  type: string
+  type: string?
   inputBinding:
     prefix: -ff
 - id: in_filename
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - obenergy

@@ -20,6 +20,9 @@ task Coverage36Annotate {
       ~{if defined(debug) then ("--debug " +  '"' + debug + '"') else ""} \
       ~{if defined(rcfile) then ("--rcfile " +  '"' + rcfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory: "Write the output files to DIR."
     ignore_errors: "Ignore errors while reading source files."

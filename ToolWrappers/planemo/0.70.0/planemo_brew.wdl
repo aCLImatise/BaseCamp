@@ -10,6 +10,9 @@ task PlanemoBrew {
       ~{tool_path} \
       ~{if defined(brew) then ("--brew " +  '"' + brew + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     brew: "Homebrew 'brew' executable to use."
     tool_path: ""

@@ -3,17 +3,17 @@ id: vsnp_bruc_mlst.py.cwl
 inputs:
 - id: in_read_one
   doc: 'Required: single read'
-  type: long
+  type: long?
   inputBinding:
     prefix: --read1
 - id: in_read_two
   doc: 'Optional: paired read'
-  type: long
+  type: long?
   inputBinding:
     prefix: --read2
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_prog
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vsnp_bruc_mlst.py

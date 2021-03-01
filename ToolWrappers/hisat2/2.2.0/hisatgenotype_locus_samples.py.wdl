@@ -26,6 +26,9 @@ task HisatgenotypeLocusSamplespy {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (platinum_check) then "--platinum-check" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_type: "Reference type: gene, chromosome, and genome (default:\\ngene)"
     region_list: "A comma-separated list of regions (default: empty)"

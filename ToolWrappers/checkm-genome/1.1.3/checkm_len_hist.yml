@@ -1,0 +1,101 @@
+!Command
+command:
+- checkm
+- len_hist
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: bin_dir
+  description: directory containing bins to plot (fasta format)
+- !Positional
+  optional: false
+  position: 1
+  name: output_dir
+  description: directory to hold plots
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --image_type
+  description: 'desired image type (default: png)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      eps:
+      svg:
+      png:
+      pdf:
+      ps:
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  description: 'desired DPI of output image (default: 600)'
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - --font_size
+  description: 'Desired font size (default: 8)'
+  args: !SimpleFlagArg
+    name: FONT_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --extension
+  description: 'extension of bins (other files in directory are ignored) (default:
+    fna)'
+  args: !SimpleFlagArg
+    name: EXTENSION
+- !Flag
+  optional: true
+  synonyms:
+  - --width
+  description: 'width of output image (default: 6.5)'
+  args: !SimpleFlagArg
+    name: WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - --height
+  description: 'height of output image (default: 6.5)'
+  args: !SimpleFlagArg
+    name: HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: suppress console output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: checkm len_hist [-h] [--image_type {eps,pdf,png,ps,svg}] [--dpi\
+  \ DPI]\n                       [--font_size FONT_SIZE] [-x EXTENSION] [--width WIDTH]\n\
+  \                       [--height HEIGHT] [-q]\n                       bin_dir output_dir\n\
+  \nSequence length histogram.\n\npositional arguments:\n  bin_dir               directory\
+  \ containing bins to plot (fasta format)\n  output_dir            directory to hold\
+  \ plots\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  --image_type {eps,pdf,png,ps,svg}\n                        desired image\
+  \ type (default: png)\n  --dpi DPI             desired DPI of output image (default:\
+  \ 600)\n  --font_size FONT_SIZE\n                        Desired font size (default:\
+  \ 8)\n  -x, --extension EXTENSION\n                        extension of bins (other\
+  \ files in directory are ignored) (default: fna)\n  --width WIDTH         width\
+  \ of output image (default: 6.5)\n  --height HEIGHT       height of output image\
+  \ (default: 6.5)\n  -q, --quiet           suppress console output\n\nExample: checkm\
+  \ len_hist ./bins ./plots\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/checkm-genome:1.1.3--py_1

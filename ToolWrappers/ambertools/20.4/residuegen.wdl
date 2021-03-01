@@ -4,6 +4,9 @@ task Residuegen {
   command <<<
     residuegen
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -38,6 +38,9 @@ task Gomo {
       ~{if (no_status) then "--nostatus" else ""} \
       ~{if (verbosity) then "--verbosity" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_directory_not: "name of the directory for output. Will not replace\\nan existing directory; default: 'gomo_out'"
     oc: "name of the directory for output. Will replace an\\nexisting directory; default: 'gomo_out'"

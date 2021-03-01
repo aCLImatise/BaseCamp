@@ -18,6 +18,9 @@ task AlbatradisartemisProject {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     control: "control files (can use multiple times) (default: None)"
     output_file: "Output filename (default: project.properties)"

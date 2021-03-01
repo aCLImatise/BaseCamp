@@ -10,6 +10,9 @@ task Hugesplitpl {
       ~{source} \
       ~{if defined(split) then ("--split " +  '"' + split + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     split: "Split the bigram file into smaller files. Every\\nsmaller file contains N bigrams. N must be an integer."
     source: ""

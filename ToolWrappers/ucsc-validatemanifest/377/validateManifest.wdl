@@ -12,6 +12,9 @@ task ValidateManifest {
       ~{if defined(enc_val_data) then ("-encValData " +  '"' + enc_val_data + '"') else ""} \
       ~{if defined(dir) then ("-dir " +  '"' + dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     enc_val_data: ", relative to workingDir, defaults to encValData."
     dir: ""

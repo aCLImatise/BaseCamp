@@ -3,7 +3,7 @@ id: canda.cwl
 inputs:
 - id: in_t
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -t
 - id: in_c_and_file
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - canda

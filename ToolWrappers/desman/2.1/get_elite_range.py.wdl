@@ -4,6 +4,9 @@ task GetEliteRangepy {
   command <<<
     get_elite_range_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

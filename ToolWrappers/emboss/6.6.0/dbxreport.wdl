@@ -12,6 +12,9 @@ task Dbxreport {
       ~{if (index_dir) then "-indexdir" else ""} \
       ~{if (full_report) then "-fullreport" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "outfile    [*.dbxreport] Output file name"
     index_dir: "directory  Index directory (optional)"

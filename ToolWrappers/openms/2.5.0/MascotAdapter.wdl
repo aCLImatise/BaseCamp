@@ -9,7 +9,6 @@ task MascotAdapter {
     String? instrument
     Float? precursor_mass_tolerance
     Float? peak_mass_tolerance
-    String? taxonomy
     String? modifications
     String? variable_modifications
     String? db
@@ -43,7 +42,6 @@ task MascotAdapter {
       ~{if defined(instrument) then ("-instrument " +  '"' + instrument + '"') else ""} \
       ~{if defined(precursor_mass_tolerance) then ("-precursor_mass_tolerance " +  '"' + precursor_mass_tolerance + '"') else ""} \
       ~{if defined(peak_mass_tolerance) then ("-peak_mass_tolerance " +  '"' + peak_mass_tolerance + '"') else ""} \
-      ~{if defined(taxonomy) then ("-taxonomy " +  '"' + taxonomy + '"') else ""} \
       ~{if defined(modifications) then ("-modifications " +  '"' + modifications + '"') else ""} \
       ~{if defined(variable_modifications) then ("-variable_modifications " +  '"' + variable_modifications + '"') else ""} \
       ~{if defined(db) then ("-db " +  '"' + db + '"') else ""} \
@@ -68,6 +66,9 @@ task MascotAdapter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                      Input file in mzData format.\\nNote: In mode 'mascot_out' a Mascot results file (.mascotXML) is read"
     out: "*                     Output file in idXML format.\\nNote: In mode 'mascot_in' Mascot generic format is written."
@@ -76,7 +77,6 @@ task MascotAdapter {
     instrument: "The instrument that was used to measure the spectra (default: 'Default')"
     precursor_mass_tolerance: "The precursor mass tolerance (default: '2.0')"
     peak_mass_tolerance: "The peak mass tolerance (default: '1.0')"
-    taxonomy: "The taxonomy (default: 'All entries' valid: 'All entries', '. . Archaea (Archaeobacteria)', '. . Eukaryota (eucaryotes)', '. . . . Alveolata (alveolates)', '. . . . . . Plasmodium falciparum (malaria parasite)', '. . . . . . Other Alveolata', '. . . . Metazoa (Animals)', '. . . . . . Caenorhabditis elegans', '. . . . . . Drosophila (fruit flies)', '. . . . . . Chordata (vertebrates and relatives)', '. . . . . . . . bony vertebrates', '. . . . . . . . . . lobe-finned fish and tetrapod clade', '. . . . . . . . . . . . Mammalia (mammals)', '. . . . . . . . . . . . . . Primates', '. . . . . . . . . . . . . . . . Homo sapiens (human)', '. . . . . . . . . . . . . . . . Other primates', '. . . . . . . . . . . . . . Rodentia (Rodents)', '. . . . . . . . . . . . . . . . Mus.', '. . . . . . . . . . . . . . . . . . Mus musculus (house mouse)', '. . . . . . . . . . . . . . . . Rattus', '. . . . . . . . . . . . . . . . Other rodentia', '. . . . . . . . . . . . . . Other mammalia', '. . . . . . . . . . . . Xenopus laevis (African clawed frog)', '. . . . . . . . . . . . Other lobe-finned fish and tetrapod clade', '. . . . . . . . . . Actinopterygii (ray-finned fishes)', '. . . . . . . . . . . . Takifugu rubripes (Japanese Pufferfish)', '. . . . . . . . . . . . Danio rerio (zebra fish)', '. . . . . . . . . . . . Other Actinopterygii', '. . . . . . . . Other Chordata', '. . . . . . Other Metazoa', '. . . . Dictyostelium discoideum', '. . . . Fungi', '. . . . . . Saccharomyces Cerevisiae (baker\\'s yeast)', '. . . . . . Schizosaccharomyces pombe (fission yeast)', '. . . . . . Pneumocystis carinii', '. . . . . . Other Fungi', '. . . . Viridiplantae (Green Plants)', '. . . . . . Arabidopsis thaliana (thale cress)', '. . . . . . Oryza sativa (rice)', '. . . . . . Other green plants', '. . . . Other Eukaryota', '. . Bacteria (Eubacteria)', '. . . . Actinobacteria (class)', '. . . . . . Mycobacterium tuberculosis complex', '. . . . . . Other Actinobacteria (class)', '. . . . Firmicutes (gram-positive bacteria)', '. . . . . . Bacillus subtilis', '. . . . . . Mycoplasma', '. . . . . . Streptococcus Pneumoniae', '. . . . . . Streptomyces coelicolor', '. . . . . . Other Firmicutes', '. . . . Proteobacteria (purple bacteria)', '. . . . . . Agrobacterium tumefaciens', '. . . . . . Campylobacter jejuni', '. . . . . . Escherichia coli', '. . . . . . Neisseria meningitidis', '. . . . . . Salmonella', '. . . . . . Other Proteobacteria', '. . . . Other Bacteria', '. . Viruses', '. . . . Hepatitis C virus', '. . . . Other viruses', '. . Other (includes plasmids and artificial sequences)', '. . unclassified', '. . Species information unavailable')"
     modifications: "The modifications i.e. Carboxymethyl (C)"
     variable_modifications: "The variable modifications i.e. Carboxymethyl (C)"
     db: "The database to search in (default: 'MSDB')"

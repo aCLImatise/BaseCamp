@@ -4,6 +4,9 @@ task GetProteinFastapy {
   command <<<
     getProteinFasta_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

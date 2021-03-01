@@ -14,6 +14,9 @@ task SnpSiftSplit {
       ~{if defined(_split_lines) then ("-l " +  '"' + _split_lines + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     join_files_stdout: ": Join all files in command line (output = STDOUT)."
     _split_lines: ": Split by 'num' lines."

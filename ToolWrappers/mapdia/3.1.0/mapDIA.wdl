@@ -4,18 +4,21 @@ task MapDIA {
   input {
     String? var_input
     String? parameter
-    File? file
+    File? var_file
   }
   command <<<
     mapDIA \
       ~{var_input} \
       ~{parameter} \
-      ~{file}
+      ~{var_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_input: ""
     parameter: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

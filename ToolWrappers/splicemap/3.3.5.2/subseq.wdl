@@ -4,6 +4,9 @@ task Subseq {
   command <<<
     subseq
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

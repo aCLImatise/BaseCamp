@@ -12,6 +12,9 @@ task CorrelationMatrix {
       ~{if defined(input_dataset_path) then ("--input_dataset_path " +  '"' + input_dataset_path + '"') else ""} \
       ~{if defined(output_plot_path) then ("--output_plot_path " +  '"' + output_plot_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Configuration file"
     input_dataset_path: "Path to the input dataset. Accepted formats: csv."

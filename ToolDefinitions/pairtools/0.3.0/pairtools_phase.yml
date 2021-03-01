@@ -4,70 +4,77 @@ command:
 - phase
 positional:
 - !Positional
-  description: --nproc-in INTEGER        Number of processes used by the auto-guessed
-    input
+  optional: true
   position: 0
-  name: phase1/2
-  optional: false
+  name: PAIRS_PATH
+  description: ''
 named:
 - !Flag
-  description: "output file. If the path ends with .gz or .lz4,\nthe output is pbgzip-/lz4c-compressed.\
-    \ By default,\nthe output is printed into stdout."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "output file. If the path ends with .gz or .lz4,\nthe output is pbgzip-/lz4c-compressed.\
+    \ By default,\nthe output is printed into stdout."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: phase suffixes.
+  optional: true
   synonyms:
   - --phase-suffixes
+  description: phase suffixes.
   args: !SimpleFlagArg
     name: TEXT...
-  optional: true
 - !Flag
-  description: drop all columns besides the standard ones and
+  optional: true
   synonyms:
   - --clean-output
+  description: "drop all columns besides the standard ones and\nphase1/2"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Number of processes used by the auto-guessed\noutput compressing command.\
-    \  [default: 8]"
+  optional: true
   synonyms:
-  - --nproc-out
+  - --nproc-in
+  description: "Number of processes used by the auto-guessed input\ndecompressing\
+    \ command.  [default: 3]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nproc-out
+  description: "Number of processes used by the auto-guessed\noutput compressing command.\
+    \  [default: 8]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --cmd-in
   description: "A command to decompress the input file. If\nprovided, fully overrides\
     \ the auto-guessed\ncommand. Does not work with stdin. Must read input\nfrom stdin\
     \ and print output into stdout. EXAMPLE:\npbgzip -dc -n 3"
-  synonyms:
-  - --cmd-in
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cmd-out
   description: "A command to compress the output file. If\nprovided, fully overrides\
     \ the auto-guessed\ncommand. Does not work with stdout. Must read\ninput from\
     \ stdin and print output into stdout.\nEXAMPLE: pbgzip -c -n 8"
-  synonyms:
-  - --cmd-out
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: pairtools phase [OPTIONS] [PAIRS_PATH]\n\n  Phase pairs mapped\
@@ -94,3 +101,4 @@ help_text: "Usage: pairtools phase [OPTIONS] [PAIRS_PATH]\n\n  Phase pairs mappe
   \ this message and exit.\n"
 generated_using:
 - --help
+docker_image:

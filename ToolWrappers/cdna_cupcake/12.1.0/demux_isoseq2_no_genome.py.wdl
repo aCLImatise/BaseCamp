@@ -16,6 +16,9 @@ task DemuxIsoseq2NoGenomepy {
       ~{if defined(classify_csv) then ("--classify_csv " +  '"' + classify_csv + '"') else ""} \
       ~{if defined(output_count_filename) then ("--output " +  '"' + output_count_filename + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     job_dir: "Job directory (if given, automatically finds required\\nfiles)"
     hq_fast_q: "HQ isoform fastq (overridden by --job_dir if given)"

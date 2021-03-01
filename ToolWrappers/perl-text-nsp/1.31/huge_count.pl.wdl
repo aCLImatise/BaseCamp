@@ -32,6 +32,9 @@ task Hugecountpl {
       ~{if defined(u_frequency) then ("--ufrequency " +  '"' + u_frequency + '"') else ""} \
       ~{if (new_line) then "--newLine" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     token_list: "This option is required. Print out all bigrams list."
     split: "Number of bigrams for each seperated bigrams file."

@@ -54,6 +54,9 @@ task LdhelmetRjmcmc {
       ~{if defined(max_lk_end) then ("--max_lk_end " +  '"' + max_lk_end + '"') else ""} \
       ~{if defined(max_lk_resolution) then ("--max_lk_resolution " +  '"' + max_lk_resolution + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _display_version: "[ --version ]                      Display version."
     seed: "(=5489)                    Seed for pseudo-random number"

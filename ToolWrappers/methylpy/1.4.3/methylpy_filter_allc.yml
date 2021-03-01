@@ -5,106 +5,104 @@ command:
 positional: []
 named:
 - !Flag
-  description: "[--num-procs NUM_PROCS]\n[--mc-type MC_TYPE [MC_TYPE ...]]\n[--min-cov\
-    \ MIN_COV] [--max-cov MAX_COV]\n[--max-mismatch MAX_MISMATCH [MAX_MISMATCH ...]]\n\
-    [--max-mismatch-frac MAX_MISMATCH_FRAC [MAX_MISMATCH_FRAC ...]]\n[--compress-output\
-    \ COMPRESS_OUTPUT]\n[--chroms CHROMS [CHROMS ...]]"
-  synonyms:
-  - --output-files
-  args: !RepeatFlagArg
-    name: OUTPUT_FILES
   optional: true
-- !Flag
-  description: 'allc files to filter. (default: None)'
   synonyms:
   - --allc-files
+  description: 'allc files to filter. (default: None)'
   args: !RepeatFlagArg
     name: ALLC_FILES
-  optional: true
 - !Flag
-  description: "Number of processors you wish to use to parallelize\nthis function\
-    \ (default: 1)"
+  optional: true
+  synonyms:
+  - --output-files
+  description: "Name of output files. Each output file matches each\nallc file. (default:\
+    \ None)"
+  args: !RepeatFlagArg
+    name: OUTPUT_FILES
+- !Flag
+  optional: true
   synonyms:
   - --num-procs
+  description: "Number of processors you wish to use to parallelize\nthis function\
+    \ (default: 1)"
   args: !SimpleFlagArg
     name: NUM_PROCS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mc-type
   description: "List of space separated cytosine nucleotide contexts\nfor sites to\
     \ be included in output file. These\nclassifications may use the wildcards H (indicating\n\
     anything but a G) and N (indicating any nucleotide).\n(default: None)"
-  synonyms:
-  - --mc-type
   args: !RepeatFlagArg
     name: MC_TYPE
-  optional: true
 - !Flag
-  description: "Minimum number of reads that must cover a site for it\nto be included\
-    \ in the output file. (default: 0)"
+  optional: true
   synonyms:
   - --min-cov
+  description: "Minimum number of reads that must cover a site for it\nto be included\
+    \ in the output file. (default: 0)"
   args: !SimpleFlagArg
     name: MIN_COV
-  optional: true
 - !Flag
-  description: "Maximum number of reads that must cover a site for it\nto be included\
-    \ in the output file. By default this\ncutoff is not applied. (default: None)"
+  optional: true
   synonyms:
   - --max-cov
+  description: "Maximum number of reads that must cover a site for it\nto be included\
+    \ in the output file. By default this\ncutoff is not applied. (default: None)"
   args: !SimpleFlagArg
     name: MAX_COV
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-mismatch
   description: "Maximum numbers of mismatch basecalls allowed in each\nnucleotide\
     \ in the sequence context of a site for it to\nbe included in output file. If\
     \ the sequence context\nhas three nucleotides, an example of this option is \"\
     0\n1 2\". It requires no mismatch basecall at the first\nnucleotide, at most one\
     \ mismatch basecall at the\nsecond nucleotide, and at most two at the third\n\
     nucleotide for a site to be reported. (default: None)"
-  synonyms:
-  - --max-mismatch
   args: !RepeatFlagArg
     name: MAX_MISMATCH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-mismatch-frac
   description: "Maximum fraction of mismatch basecalls out of\nunambiguous basecalls\
     \ allowed in each nucleotide in\nthe sequence context of a site for it to be included\n\
     in output file. If the sequence context has three\nnucleotides, an example of\
     \ this option is \"0 0 0.1\".\nIt requires no mismatch basecall at the first and\n\
     second nucleotide, and at most 10% mismatches out of\nunambiguous basecalls at\
     \ the third nucleotide for a\nsite to be reported. (default: None)"
-  synonyms:
-  - --max-mismatch-frac
   args: !RepeatFlagArg
     name: MAX_MISMATCH_FRAC
-  optional: true
 - !Flag
-  description: "Boolean indicating whether to compress (by gzip) the\nfinal output\
-    \ (default: True)"
+  optional: true
   synonyms:
   - --compress-output
+  description: "Boolean indicating whether to compress (by gzip) the\nfinal output\
+    \ (default: True)"
   args: !SimpleFlagArg
     name: COMPRESS_OUTPUT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --chroms
   description: "Space separated listing of chromosomes to be included\nin the output.\
     \ By default, data of all chromosomes in\ninput allc file will be included. (default:\
     \ None)\n"
-  synonyms:
-  - --chroms
   args: !RepeatFlagArg
     name: CHROMS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: methylpy filter-allc [-h] --allc-files ALLC_FILES [ALLC_FILES ...]\n\
@@ -156,3 +154,4 @@ help_text: "usage: methylpy filter-allc [-h] --allc-files ALLC_FILES [ALLC_FILES
   \                        input allc file will be included. (default: None)\n"
 generated_using:
 - --help
+docker_image:

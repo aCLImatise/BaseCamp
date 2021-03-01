@@ -4,25 +4,82 @@ command:
 positional: []
 named:
 - !Flag
-  description: "optional:\n--------\n-u|--unmask-genome (convert masked bases to upper\
-    \ case and include them in the calculations - default=False)\n-q|--base-quality\
-    \ (default=20)\n-f|--filter-indel (exclude reads with indels default=False)\n\
-    -l|--filter-length (include only reads with x,y range of lengths, default=0, 76)\n\
-    -s|--soft-clip-bypass (Decide when softclipped base is correct(0). Don't use these\
-    \ bases(1). Force use them(2).  default=0)\n-m|--mapping-quality (minimum allowed\
-    \ mapping quality -defailt=0)\n-h|--help\n-g|--fragment-length (use fragments\
-    \ withi these lengths ONLY)\n-o|--output-prefix (use this prefix for the output\
-    \ and logging files)\n-c|--confidence (number of bases in the complement region\
-    \ of the read)\n-d|--debug (create a log file)\n"
-  synonyms:
-  - -r
-  - --reference-fasta
-  args: !EmptyFlagArg {}
   optional: true
+  synonyms:
+  - -u
+  - --unmask-genome
+  description: (convert masked bases to upper case and include them in the calculations
+    - default=False)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --base-quality
+  description: (default=20)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --filter-indel
+  description: (exclude reads with indels default=False)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --filter-length
+  description: (include only reads with x,y range of lengths, default=0, 76)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --soft-clip-bypass
+  description: (Decide when softclipped base is correct(0). Don't use these bases(1).
+    Force use them(2).  default=0)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mapping-quality
+  description: (minimum allowed mapping quality -defailt=0)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-prefix
+  description: (use this prefix for the output and logging files)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --confidence
+  description: (number of bases in the complement region of the read)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: (create a log file)
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  - -g
+  - --fragment-length
+  description: (use fragments withi these lengths ONLY)
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "\n\n        required:\n        --------\n        -r|--reference-fasta\n\
@@ -39,3 +96,4 @@ help_text: "\n\n        required:\n        --------\n        -r|--reference-fast
   \ read) \n        -d|--debug (create a log file) \n    \n"
 generated_using:
 - --help
+docker_image:

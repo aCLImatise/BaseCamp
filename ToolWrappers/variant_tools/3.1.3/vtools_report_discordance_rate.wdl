@@ -18,6 +18,9 @@ task VtoolsReportDiscordanceRate {
       ~{if (genotypes) then "--genotypes" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     samples_dot: "command output a n by n matrix with sample names in the"
     limiting_variants_samples: "[SAMPLES [SAMPLES ...]], --samples [SAMPLES [SAMPLES ...]]\\nLimiting variants from samples that match conditions\\nthat use columns shown in command 'vtools show sample'\\n(e.g. 'aff=1', 'filename like \\\"MG%\\\"')."

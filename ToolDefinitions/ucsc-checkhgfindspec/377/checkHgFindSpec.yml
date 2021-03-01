@@ -12,12 +12,12 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: not a valid option
+    optional: true
     synonyms:
     - -h
+    description: not a valid option
     args: !SimpleFlagArg
       name: is
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -29,12 +29,12 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: not a valid option
+        optional: true
         synonyms:
         - -h
+        description: not a valid option
         args: !SimpleFlagArg
           name: is
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -46,12 +46,12 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: not a valid option
+            optional: true
             synonyms:
             - -h
+            description: not a valid option
             args: !SimpleFlagArg
               name: is
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -63,38 +63,16 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: not a valid option
+                optional: true
                 synonyms:
                 - -h
+                description: not a valid option
                 args: !SimpleFlagArg
                   name: is
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: Show the order in which tables will be searched in
-                  synonyms:
-                  - -showSearches
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "For each search spec that includes a regular\nexpression\
-                    \ for terms, make sure that all values of\nthe table field to\
-                    \ be searched match the regex.  (If\nnot, some of them could be\
-                    \ excluded from searches.)"
-                  synonyms:
-                  - -checkTermRegex
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Make sure that an index is defined on each field to\n\
-                    be searched.\n"
-                  synonyms:
-                  - -checkIndexes
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
@@ -102,21 +80,92 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: not a valid option
+                    optional: true
                     synonyms:
                     - -h
+                    description: not a valid option
                     args: !SimpleFlagArg
                       name: is
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -showSearches
+                      description: Show the order in which tables will be searched
+                        in
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -checkTermRegex
+                      description: "For each search spec that includes a regular\n\
+                        expression for terms, make sure that all values of\nthe table\
+                        \ field to be searched match the regex.  (If\nnot, some of\
+                        \ them could be excluded from searches.)"
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -checkIndexes
+                      description: "Make sure that an index is defined on each field\
+                        \ to\nbe searched.\n"
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: not a valid option
+                        args: !SimpleFlagArg
+                          name: is
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "-h is not a valid option\n"
+                      generated_using: &id004
+                      - -h
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "checkHgFindSpec - test and describe search specs in\
+                      \ hgFindSpec tables.\nusage:\n  checkHgFindSpec database [options\
+                      \ | termToSearch]\nIf given a termToSearch, displays the list\
+                      \ of tables that will be searched\nand how long it took to figure\
+                      \ that out; then performs the search and the\ntime it took.\n\
+                      options:\n  -showSearches       Show the order in which tables\
+                      \ will be searched in\n                      general.  [This\
+                      \ will be done anyway if no\n                      termToSearch\
+                      \ or options are specified.]\n  -checkTermRegex     For each\
+                      \ search spec that includes a regular\n                    \
+                      \  expression for terms, make sure that all values of\n    \
+                      \                  the table field to be searched match the\
+                      \ regex.  (If\n                      not, some of them could\
+                      \ be excluded from searches.)\n  -checkIndexes       Make sure\
+                      \ that an index is defined on each field to\n              \
+                      \        be searched.\n\n"
+                    generated_using: &id005 []
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "-h is not a valid option\n"
-                  generated_using: &id004
-                  - -h
+                  generated_using: *id004
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -136,7 +185,8 @@ subcommands:
                   \ could be excluded from searches.)\n  -checkIndexes       Make\
                   \ sure that an index is defined on each field to\n             \
                   \         be searched.\n\n"
-                generated_using: &id005 []
+                generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -144,6 +194,7 @@ subcommands:
               version_flag:
               help_text: "-h is not a valid option\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -163,6 +214,7 @@ subcommands:
               \       Make sure that an index is defined on each field to\n      \
               \                be searched.\n\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -170,6 +222,7 @@ subcommands:
           version_flag:
           help_text: "-h is not a valid option\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -188,6 +241,7 @@ subcommands:
           \  -checkIndexes       Make sure that an index is defined on each field\
           \ to\n                      be searched.\n\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -195,6 +249,7 @@ subcommands:
       version_flag:
       help_text: "-h is not a valid option\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -212,6 +267,7 @@ subcommands:
       \ could be excluded from searches.)\n  -checkIndexes       Make sure that an\
       \ index is defined on each field to\n                      be searched.\n\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -219,6 +275,7 @@ subcommands:
   version_flag:
   help_text: "-h is not a valid option\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -236,3 +293,4 @@ help_text: "checkHgFindSpec - test and describe search specs in hgFindSpec table
   \       Make sure that an index is defined on each field to\n                  \
   \    be searched.\n\n"
 generated_using: *id005
+docker_image:

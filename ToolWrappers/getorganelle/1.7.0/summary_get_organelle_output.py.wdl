@@ -10,6 +10,9 @@ task SummaryGetOrganelleOutputpy {
       ~{list_of_sample_folders} \
       ~{if defined(output_csv_file) then ("-o " +  '"' + output_csv_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_csv_file: "Output csv file."
     list_of_sample_folders: ""

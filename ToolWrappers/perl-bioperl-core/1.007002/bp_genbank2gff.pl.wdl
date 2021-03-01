@@ -24,6 +24,9 @@ task BpGenbank2gffpl {
       ~{if (viral) then "--viral" else ""} \
       ~{if (source) then "--source" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Force creation and initialization of database"
     dsn: "<dsn>        Data source (default dbi:mysql:test)"

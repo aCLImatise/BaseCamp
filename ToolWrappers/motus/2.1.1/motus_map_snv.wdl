@@ -20,6 +20,9 @@ task MotusMapSnv {
       ~{map_snv} \
       ~{snv_call}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     profile: "Perform a taxonomic profiling (map_tax + calc_mgc + calc_motu)"
     merge: "Merge different taxonomic profiles to create a table"

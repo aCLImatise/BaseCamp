@@ -2,7 +2,7 @@ version 1.0
 
 task Metaxa2 {
   input {
-    String? dna_fasta_file
+    String? dna_fasta_fastq
     File? base_names_output
     String? dna_fastq_first
     String? dna_fastq_second
@@ -74,7 +74,7 @@ task Metaxa2 {
   }
   command <<<
     metaxa2 \
-      ~{if defined(dna_fasta_file) then ("-i " +  '"' + dna_fasta_file + '"') else ""} \
+      ~{if defined(dna_fasta_fastq) then ("-i " +  '"' + dna_fasta_fastq + '"') else ""} \
       ~{if defined(base_names_output) then ("-o " +  '"' + base_names_output + '"') else ""} \
       ~{if defined(dna_fastq_first) then ("-1 " +  '"' + dna_fastq_first + '"') else ""} \
       ~{if defined(dna_fastq_second) then ("-2 " +  '"' + dna_fastq_second + '"') else ""} \
@@ -144,8 +144,11 @@ task Metaxa2 {
       ~{if (bugs) then "--bugs" else ""} \
       ~{if (license) then "--license" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    dna_fasta_file: ": DNA FASTA or FASTQ input file to investigate"
+    dna_fasta_fastq: ": DNA FASTA or FASTQ input file to investigate"
     base_names_output: ": Base for the names of output file(s)"
     dna_fastq_first: ": DNA FASTQ input file containing the first reads in the read pairs to investigate"
     dna_fastq_second: ": DNA FASTQ input file containing the second reads in the pairs to investigate"

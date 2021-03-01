@@ -8,7 +8,7 @@ inputs:
     prefix: --sample_dirs
 - id: in_output
   doc: Output path for merged insertion file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_names
@@ -18,7 +18,7 @@ inputs:
     prefix: --names
 - id: in_output_expression
   doc: "Output path for merged expression file.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_expression
 outputs:
@@ -27,14 +27,15 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output path for merged insertion file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
 - id: out_output_expression
   doc: "Output path for merged expression file.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_expression)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - imfusion-merge

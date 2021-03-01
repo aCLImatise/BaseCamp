@@ -8,6 +8,9 @@ task Matlock {
     matlock \
       ~{var_command}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_command: ""
   }

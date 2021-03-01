@@ -16,6 +16,9 @@ task Humann2SplitTable {
       ~{if defined(taxonomy_index) then ("--taxonomy_index " +  '"' + taxonomy_index + '"') else ""} \
       ~{if defined(taxonomy_level) then ("--taxonomy_level " +  '"' + taxonomy_level + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "additional output is printed"
     gene_table_read: "the gene table to read"

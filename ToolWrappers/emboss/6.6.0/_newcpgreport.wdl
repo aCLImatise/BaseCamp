@@ -16,6 +16,9 @@ task Newcpgreport {
       ~{if (min_oe) then "-minoe" else ""} \
       ~{if (min_pc) then "-minpc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window: "integer    [100] Window size (Integer 1 or more)"
     shift: "integer    [1] Shift increment (Integer 1 or more)"

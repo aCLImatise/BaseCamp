@@ -2,8 +2,7 @@ version 1.0
 
 task Freebayes {
   input {
-    Int? max_complex_gap
-    Int? min_alternate_fraction
+    Boolean? max_complex_gap
     File? bam
     File? bam_list
     Boolean? stdin
@@ -20,6 +19,7 @@ task Freebayes {
     Boolean? only_use_input_alleles
     String? haplotype_basis_alleles
     Boolean? report_all_haplotype_alleles
+    Boolean? report_monomorphic
     Float? p_var
     Boolean? strict_vcf
     Float? theta
@@ -29,6 +29,7 @@ task Freebayes {
     Boolean? use_reference_allele
     Int? reference_quality
     Int? use_best_n_alleles
+    Int? haplotype_length
     Int? min_repeat_size
     Int? min_repeat_entropy
     Boolean? no_partial_observations
@@ -47,6 +48,7 @@ task Freebayes {
     Int? read_max_mismatch_fraction
     String? read_in_del_limit
     Boolean? standard_filters
+    Int? min_alternate_fraction
     Int? min_alternate_count
     Int? min_alternate_q_sum
     Int? min_alternate_total
@@ -76,8 +78,7 @@ task Freebayes {
   }
   command <<<
     freebayes \
-      ~{if defined(max_complex_gap) then ("--max-complex-gap " +  '"' + max_complex_gap + '"') else ""} \
-      ~{if defined(min_alternate_fraction) then ("--min-alternate-fraction " +  '"' + min_alternate_fraction + '"') else ""} \
+      ~{if (max_complex_gap) then "--max-complex-gap" else ""} \
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
       ~{if defined(bam_list) then ("--bam-list " +  '"' + bam_list + '"') else ""} \
       ~{if (stdin) then "--stdin" else ""} \
@@ -94,6 +95,7 @@ task Freebayes {
       ~{if (only_use_input_alleles) then "--only-use-input-alleles" else ""} \
       ~{if defined(haplotype_basis_alleles) then ("--haplotype-basis-alleles " +  '"' + haplotype_basis_alleles + '"') else ""} \
       ~{if (report_all_haplotype_alleles) then "--report-all-haplotype-alleles" else ""} \
+      ~{if (report_monomorphic) then "--report-monomorphic" else ""} \
       ~{if defined(p_var) then ("--pvar " +  '"' + p_var + '"') else ""} \
       ~{if (strict_vcf) then "--strict-vcf" else ""} \
       ~{if defined(theta) then ("--theta " +  '"' + theta + '"') else ""} \
@@ -103,6 +105,7 @@ task Freebayes {
       ~{if (use_reference_allele) then "--use-reference-allele" else ""} \
       ~{if defined(reference_quality) then ("--reference-quality " +  '"' + reference_quality + '"') else ""} \
       ~{if defined(use_best_n_alleles) then ("--use-best-n-alleles " +  '"' + use_best_n_alleles + '"') else ""} \
+      ~{if defined(haplotype_length) then ("--haplotype-length " +  '"' + haplotype_length + '"') else ""} \
       ~{if defined(min_repeat_size) then ("--min-repeat-size " +  '"' + min_repeat_size + '"') else ""} \
       ~{if defined(min_repeat_entropy) then ("--min-repeat-entropy " +  '"' + min_repeat_entropy + '"') else ""} \
       ~{if (no_partial_observations) then "--no-partial-observations" else ""} \
@@ -121,6 +124,7 @@ task Freebayes {
       ~{if defined(read_max_mismatch_fraction) then ("--read-max-mismatch-fraction " +  '"' + read_max_mismatch_fraction + '"') else ""} \
       ~{if defined(read_in_del_limit) then ("--read-indel-limit " +  '"' + read_in_del_limit + '"') else ""} \
       ~{if (standard_filters) then "--standard-filters" else ""} \
+      ~{if defined(min_alternate_fraction) then ("--min-alternate-fraction " +  '"' + min_alternate_fraction + '"') else ""} \
       ~{if defined(min_alternate_count) then ("--min-alternate-count " +  '"' + min_alternate_count + '"') else ""} \
       ~{if defined(min_alternate_q_sum) then ("--min-alternate-qsum " +  '"' + min_alternate_q_sum + '"') else ""} \
       ~{if defined(min_alternate_total) then ("--min-alternate-total " +  '"' + min_alternate_total + '"') else ""} \
@@ -148,9 +152,11 @@ task Freebayes {
       ~{if (debug) then "--debug" else ""} \
       ~{if (dd) then "-dd" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    max_complex_gap: "--haplotype-length N\\nAllow haplotype calls with contiguous embedded matches of up\\nto this length. Set N=-1 to disable clumping. (default: 3)"
-    min_alternate_fraction: "Require at least this fraction of observations supporting\\nan alternate allele within a single individual in the\\nin order to evaluate the position.  default: 0.05"
+    max_complex_gap: ", which defaults to 3bp.  In practice, this can comfortably be"
     bam: "Add FILE to the set of BAM files to be analyzed."
     bam_list: "A file containing a list of BAM files to be analyzed."
     stdin: "Read BAM input on stdin."
@@ -167,6 +173,7 @@ task Freebayes {
     only_use_input_alleles: "Only provide variant calls and genotype likelihoods for sites\\nand alleles which are provided in the VCF input, and provide\\noutput in the VCF for all input alleles, not just those which\\nhave support in the data."
     haplotype_basis_alleles: "When specified, only variant alleles provided in this input\\nVCF will be used for the construction of complex or haplotype\\nalleles."
     report_all_haplotype_alleles: "At sites where genotypes are made over haplotype alleles,\\nprovide information about all alleles in output, not only\\nthose which are called."
+    report_monomorphic: "Report even loci which appear to be monomorphic, and report all\\nconsidered alleles, even those which are not in called genotypes.\\nLoci which do not have any potential alternates have '.' for ALT."
     p_var: "Report sites if the probability that there is a polymorphism\\nat the site is greater than N.  default: 0.0.  Note that post-\\nfiltering is generally recommended over the use of this parameter."
     strict_vcf: "Generate strict VCF format (FORMAT/GQ will be an int)"
     theta: "The expected mutation rate or pairwise nucleotide diversity\\namong the population under analysis.  This serves as the\\nsingle parameter to the Ewens Sampling Formula prior model\\ndefault: 0.001"
@@ -176,6 +183,7 @@ task Freebayes {
     use_reference_allele: "This flag includes the reference allele in the analysis as\\nif it is another sample from the same population."
     reference_quality: ",BQ\\nAssign mapping quality of MQ to the reference allele at each\\nsite and base quality of BQ.  default: 100,60"
     use_best_n_alleles: "Evaluate only the best N SNP alleles, ranked by sum of\\nsupporting quality scores.  (Set to 0 to use all; default: all)"
+    haplotype_length: "Allow haplotype calls with contiguous embedded matches of up\\nto this length. Set N=-1 to disable clumping. (default: 3)"
     min_repeat_size: "When assembling observations across repeats, require the total repeat\\nlength at least this many bp.  (default: 5)"
     min_repeat_entropy: "To detect interrupted repeats, build across sequence until it has\\nentropy > N bits per bp. Set to 0 to turn off. (default: 1)"
     no_partial_observations: "Exclude observations which do not fully span the dynamically-determined\\ndetection window.  (default, use all observations, dividing partial\\nsupport across matching haplotypes when generating haplotypes.)"
@@ -194,6 +202,7 @@ task Freebayes {
     read_max_mismatch_fraction: "Exclude reads with more than N [0,1] fraction of mismatches where\\neach mismatch has base quality >= mismatch-base-quality-threshold\\ndefault: 1.0"
     read_in_del_limit: "Exclude reads with more than N separate gaps.\\ndefault: ~unbounded"
     standard_filters: "Use stringent input base and mapping quality filters\\nEquivalent to -m 30 -q 20 -R 0 -S 0"
+    min_alternate_fraction: "Require at least this fraction of observations supporting\\nan alternate allele within a single individual in the\\nin order to evaluate the position.  default: 0.05"
     min_alternate_count: "Require at least this count of observations supporting\\nan alternate allele within a single individual in order\\nto evaluate the position.  default: 2"
     min_alternate_q_sum: "Require at least this sum of quality of observations supporting\\nan alternate allele within a single individual in order\\nto evaluate the position.  default: 0"
     min_alternate_total: "Require at least this count of observations supporting\\nan alternate allele within the total population in order\\nto use the allele in analysis.  default: 1"

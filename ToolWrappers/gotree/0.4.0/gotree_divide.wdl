@@ -16,6 +16,9 @@ task GotreeDivide {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_trees_file: "Input tree(s) file (default \\\"stdin\\\")"
     divided_trees_output: "Divided trees output file prefix (default \\\"prefix\\\")"

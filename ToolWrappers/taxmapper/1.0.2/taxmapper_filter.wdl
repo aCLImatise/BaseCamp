@@ -20,6 +20,9 @@ task TaxmapperFilter {
       ~{if defined(evalue) then ("--evalue " +  '"' + evalue + '"') else ""} \
       ~{if defined(evalue_diff) then ("--evalue-diff " +  '"' + evalue_diff + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tax: "Taxonomy mapping file (taxa.tsv if not specified\\notherwise)."
     out: "Output file [default: taxa_filtered.tsv]"

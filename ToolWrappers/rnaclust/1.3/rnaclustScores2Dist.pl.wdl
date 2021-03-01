@@ -14,6 +14,9 @@ task RnaclustScores2Distpl {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (quantile) then "--quantile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "full documentation"
     verbose: "be verbose"

@@ -1,0 +1,187 @@
+!Command
+command:
+- flye-samtools
+- merge
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: samtools
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: merge
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: out.bam
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: in1.bam
+  description: ''
+- !Positional
+  optional: true
+  position: 4
+  name: inN.bam
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: Input files are sorted by read name
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: Input files are sorted by TAG value
+  args: !SimpleFlagArg
+    name: TAG
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: Attach RG tag (inferred from file names)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: Uncompressed BAM output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: Overwrite the output BAM if exist
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: Compress level 1
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: Compression level, from 0 to 9 [-1]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: Merge file in the specified region STR [all]
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: Copy the header in FILE to <out.bam> [in1.bam]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: Combine @RG headers with colliding IDs [alter IDs to be distinct]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: Combine @PG headers with colliding IDs [alter IDs to be distinct]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: Override random seed
+  args: !SimpleFlagArg
+    name: VALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: List of input BAM filenames, one per line [null]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --input-fmt-option
+  description: "[=VAL]\nSpecify a single input file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  args: !SimpleFlagArg
+    name: OPT
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --output-fmt
+  description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --output-fmt-option
+  description: "[=VAL]\nSpecify a single output file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  args: !SimpleFlagArg
+    name: OPT
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: Reference sequence FASTA FILE [null]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -@
+  - --threads
+  description: "Number of additional threads to use [0]\n"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -nurlf
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "merge: unrecognized option '--help'\nUsage: samtools merge [-nurlf] [-h\
+  \ inh.sam] [-b <bamlist.fofn>] <out.bam> <in1.bam> [<in2.bam> ... <inN.bam>]\n\n\
+  Options:\n  -n         Input files are sorted by read name\n  -t TAG     Input files\
+  \ are sorted by TAG value\n  -r         Attach RG tag (inferred from file names)\n\
+  \  -u         Uncompressed BAM output\n  -f         Overwrite the output BAM if\
+  \ exist\n  -1         Compress level 1\n  -l INT     Compression level, from 0 to\
+  \ 9 [-1]\n  -R STR     Merge file in the specified region STR [all]\n  -h FILE \
+  \   Copy the header in FILE to <out.bam> [in1.bam]\n  -c         Combine @RG headers\
+  \ with colliding IDs [alter IDs to be distinct]\n  -p         Combine @PG headers\
+  \ with colliding IDs [alter IDs to be distinct]\n  -s VALUE   Override random seed\n\
+  \  -b FILE    List of input BAM filenames, one per line [null]\n      --input-fmt-option\
+  \ OPT[=VAL]\n               Specify a single input file format option in the form\n\
+  \               of OPTION or OPTION=VALUE\n  -O, --output-fmt FORMAT[,OPT[=VAL]]...\n\
+  \               Specify output format (SAM, BAM, CRAM)\n      --output-fmt-option\
+  \ OPT[=VAL]\n               Specify a single output file format option in the form\n\
+  \               of OPTION or OPTION=VALUE\n      --reference FILE\n            \
+  \   Reference sequence FASTA FILE [null]\n  -@, --threads INT\n               Number\
+  \ of additional threads to use [0]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/flye:2.8.3--py38h1c8e9b9_0

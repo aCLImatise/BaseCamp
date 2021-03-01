@@ -4,17 +4,63 @@ command:
 positional: []
 named:
 - !Flag
-  description: "file in sorted BAM format\n-o output directory (optional)\n-d database\
-    \ to extract length. Fasta file used to map against\n-m max depth reported (default\
-    \ 500)\n-p reports genome coverage for all positions in BEDGRAPH format includig\
-    \ 0 positions.\nDefault option is bedtools genomecov that needs the reference\
-    \ genome\n-s sample name\n-g group name (optional). If unset, samples will be\
-    \ gathered in NO_GROUP group\n-v version\n-h display usage message"
+  optional: true
   synonyms:
   - -i
+  description: file in sorted BAM format
   args: !SimpleFlagArg
     name: input
+- !Flag
   optional: true
+  synonyms:
+  - -o
+  description: directory (optional)
+  args: !SimpleFlagArg
+    name: output
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: to extract length. Fasta file used to map against
+  args: !SimpleFlagArg
+    name: database
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: depth reported (default 500)
+  args: !SimpleFlagArg
+    name: max
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "genome coverage for all positions in BEDGRAPH format includig 0 positions.\n\
+    Default option is bedtools genomecov that needs the reference genome"
+  args: !SimpleFlagArg
+    name: reports
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: name
+  args: !SimpleFlagArg
+    name: sample
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: name (optional). If unset, samples will be gathered in NO_GROUP group
+  args: !SimpleFlagArg
+    name: group
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - -h
+  description: usage message
+  args: !SimpleFlagArg
+    name: version
 parent:
 subcommands: []
 usage: []
@@ -34,3 +80,4 @@ help_text: "\nGet_coverage script uses bedtool to obtain coverage data from a BA
   \ get_coverage.sh -i ecoli.bam -p -m 100\n\n"
 generated_using:
 - --help
+docker_image:

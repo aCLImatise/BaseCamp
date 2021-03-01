@@ -3,12 +3,12 @@ id: transposcope_align_index.cwl
 inputs:
 - id: in_group_one
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: --group1
 - id: in_genes
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --genes
 - id: in_transpo_scope
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - transposcope

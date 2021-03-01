@@ -3,111 +3,117 @@ id: dcmsign.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --arguments
-- id: in__quiet_quiet
-  doc: --quiet                quiet mode, print no warnings and errors
-  type: boolean
+- id: in_quiet
+  doc: quiet mode, print no warnings and errors
+  type: boolean?
   inputBinding:
-    prefix: -q
-- id: in__verbose_details
-  doc: --verbose              verbose mode, print processing details
-  type: boolean
+    prefix: --quiet
+- id: in_verbose
+  doc: verbose mode, print processing details
+  type: boolean?
   inputBinding:
-    prefix: -v
-- id: in__debug_information
-  doc: --debug                debug mode, print debug information
-  type: boolean
+    prefix: --verbose
+- id: in_debug
+  doc: debug mode, print debug information
+  type: boolean?
   inputBinding:
-    prefix: -d
-- id: in_ll
-  doc: "--log-level            [l]evel: string constant\n(fatal, error, warn, info,\
-    \ debug, trace)\nuse level l for the logger"
-  type: boolean
+    prefix: --debug
+- id: in_log_level
+  doc: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\nuse level\
+    \ l for the logger"
+  type: boolean?
   inputBinding:
-    prefix: -ll
-- id: in_lc
-  doc: "--log-config           [f]ilename: string\nuse config file f for the logger"
-  type: boolean
+    prefix: --log-level
+- id: in_log_config
+  doc: "[f]ilename: string\nuse config file f for the logger"
+  type: boolean?
   inputBinding:
-    prefix: -lc
-- id: in__readdataset_read
-  doc: --read-dataset         read data set without file meta information
-  type: boolean
+    prefix: --log-config
+- id: in_read_dataset
+  doc: read data set without file meta information
+  type: boolean?
   inputBinding:
-    prefix: -f
+    prefix: --read-dataset
 - id: in__readxferauto_use
   doc: =   --read-xfer-auto       use TS recognition (default)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
-- id: in_td
-  doc: --read-xfer-detect     ignore TS specified in the file meta header
-  type: boolean
+- id: in_read_xfer_detect
+  doc: ignore TS specified in the file meta header
+  type: boolean?
   inputBinding:
-    prefix: -td
-- id: in_te
-  doc: --read-xfer-little     read with explicit VR little endian TS
-  type: boolean
+    prefix: --read-xfer-detect
+- id: in_read_xfer_little
+  doc: read with explicit VR little endian TS
+  type: boolean?
   inputBinding:
-    prefix: -te
-- id: in_tb
-  doc: --read-xfer-big        read with explicit VR big endian TS
-  type: boolean
+    prefix: --read-xfer-little
+- id: in_read_xfer_big
+  doc: read with explicit VR big endian TS
+  type: boolean?
   inputBinding:
-    prefix: -tb
-- id: in_ti
-  doc: --read-xfer-implicit   read with implicit VR little endian TS
-  type: boolean
+    prefix: --read-xfer-big
+- id: in_read_xfer_implicit
+  doc: read with implicit VR little endian TS
+  type: boolean?
   inputBinding:
-    prefix: -ti
+    prefix: --read-xfer-implicit
 - id: in_verify
   doc: verify all signatures (default)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verify
-- id: in_pw
-  doc: --null-passwd          use empty string as password
-  type: boolean
+- id: in_null_passwd
+  doc: use empty string as password
+  type: boolean?
   inputBinding:
-    prefix: -pw
+    prefix: --null-passwd
 - id: in_pem_keys
   doc: read keys/certificates as PEM file (default)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pem-keys
 - id: in_der_keys
   doc: read keys/certificates as DER file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --der-keys
-- id: in_pf
-  doc: --profile-none         don't enforce any signature profile (default)
-  type: boolean
+- id: in_profile_none
+  doc: don't enforce any signature profile (default)
+  type: boolean?
   inputBinding:
-    prefix: -pf
-- id: in_tf
-  doc: "--tag-file             [f]ilename: string\nread list of tags from text file"
-  type: boolean
+    prefix: --profile-none
+- id: in_tag
+  doc: "[t]ag: \"gggg,eeee\" or dictionary name\nsign only specified tag\n(this option\
+    \ can be specified multiple times)"
+  type: boolean?
   inputBinding:
-    prefix: -tf
-- id: in_fn
-  doc: --format-new           use correct DICOM signature format (default)
-  type: boolean
+    prefix: --tag
+- id: in_tag_file
+  doc: "[f]ilename: string\nread list of tags from text file"
+  type: boolean?
   inputBinding:
-    prefix: -fn
-- id: in_fo
-  doc: "--format-old           use old (pre-3.5.4) DCMTK signature format,\nnon-conformant\
-    \ if signature includes\ncompressed pixel data"
-  type: boolean
+    prefix: --tag-file
+- id: in_format_new
+  doc: use correct DICOM signature format (default)
+  type: boolean?
   inputBinding:
-    prefix: -fo
-- id: in__lengthundefined_write
-  doc: --length-undefined     write with undefined lengths
-  type: boolean
+    prefix: --format-new
+- id: in_format_old
+  doc: "use old (pre-3.5.4) DCMTK signature format,\nnon-conformant if signature includes\n\
+    compressed pixel data"
+  type: boolean?
   inputBinding:
-    prefix: -e
+    prefix: --format-old
+- id: in_length_undefined
+  doc: write with undefined lengths
+  type: boolean?
+  inputBinding:
+    prefix: --length-undefined
 - id: in_dcm_file_in
   doc: DICOM input filename to be processed
   type: string
@@ -127,6 +133,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dcmsign

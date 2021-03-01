@@ -16,6 +16,9 @@ task Taxtreepy {
       ~{if defined(nodes) then ("--nodes " +  '"' + nodes + '"') else ""} \
       ~{if defined(mergeddmp_file_use) then ("--merged " +  '"' + mergeddmp_file_use + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gb_dir: "genbank directory"
     names: "names.dmp file to use"

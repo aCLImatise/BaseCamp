@@ -14,6 +14,9 @@ task SequenzautilsSeqzMerge {
       ~{if defined(seq_z_two) then ("--seqz2 " +  '"' + seq_z_two + '"') else ""} \
       ~{if defined(tab_ix) then ("--tabix " +  '"' + tab_ix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_gzip: "Output file. For gzip compressed output name the file\\nending in .gz. Default STDOUT"
     seq_zone: "First input file. If both input files contain the same\\nline, the information in the first file will be used"

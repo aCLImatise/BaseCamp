@@ -22,6 +22,9 @@ task CramtoolsMerge {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (validation_level) then "--validation-level" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "Path to the output BAM file. Omit for stdout."
     reference_fast_a_file: "Path to the reference fasta file, it must be uncompressed and indexed (use 'samtools faidx' for example)."

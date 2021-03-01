@@ -14,6 +14,9 @@ task Ace2sam {
       ~{if (write_contig_sequence) then "-c" else ""} \
       ~{if (pc) then "-pc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_padded_sam: "output padded SAM"
     write_contig_sequence: "write the contig sequence in SAM"

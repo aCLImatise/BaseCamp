@@ -3,12 +3,12 @@ id: iu_filter_merged_reads.cwl
 inputs:
 - id: in_output
   doc: "Where filtered reads will be written (default:\n[-i]-MAX-MISMATCH-[-m]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_max_mismatches
   doc: "Maximum number of mismatches allowed in the overlapped\nregion\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-mismatches
 - id: in_file_path
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - iu-filter-merged-reads

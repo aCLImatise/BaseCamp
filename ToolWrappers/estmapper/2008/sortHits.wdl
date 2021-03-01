@@ -14,6 +14,9 @@ task SortHits {
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
     m: ""

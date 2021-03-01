@@ -4,129 +4,129 @@ command:
 positional: []
 named:
 - !Flag
-  description: "The full reference tree in newick format containing\nboth study sequences\
-    \ (i.e. ASVs or OTUs) and reference\nsequences."
+  optional: true
   synonyms:
   - -t
   - --tree
+  description: "The full reference tree in newick format containing\nboth study sequences\
+    \ (i.e. ASVs or OTUs) and reference\nsequences."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Output table with predicted abundances per study\nsequence in input\
-    \ tree. If the extension \".gz\" is\nadded the table will automatically be gzipped."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "Output table with predicted abundances per study\nsequence in input\
+    \ tree. If the extension \".gz\" is\nadded the table will automatically be gzipped."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Specifies which default trait table should be used.\nUse the --observed_trait_table\
-    \ option to input a non-\ndefault trait table."
+  optional: true
   synonyms:
   - -i
   - --in_trait
+  description: "Specifies which default trait table should be used.\nUse the --observed_trait_table\
+    \ option to input a non-\ndefault trait table."
   args: !ChoiceFlagArg
     choices: !!set
-      PFAM:
+      16S:
       PHENO:
+      COG:
+      PFAM:
       KO:
       TIGRFAM:
       EC:
-      COG:
-      16S:
-  optional: true
 - !Flag
-  description: "The input trait table describing directly observed\ntraits (e.g. sequenced\
-    \ genomes) in tab-delimited\nformat. Necessary if you want to use a custom table."
+  optional: true
   synonyms:
   - --observed_trait_table
+  description: "The input trait table describing directly observed\ntraits (e.g. sequenced\
+    \ genomes) in tab-delimited\nformat. Necessary if you want to use a custom table."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --chunk_size
   description: "Number of functions to run at a time on one processor.\nNote that\
     \ you should consider how many processes you\nhave specified before changing this\
     \ option. E.g. if\nyou specify the chunk_size to be the total number of\nfunctions,\
     \ 1 processor will be used even if you\nspecified more so the job will be substantially\
     \ slower\n(default: 500)."
-  synonyms:
-  - --chunk_size
   args: !SimpleFlagArg
     name: CHUNK_SIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --hsp_method
   description: "HSP method to use.\"mp\": predict discrete traits using\nmax parsimony.\
     \ \"emp_prob\": predict discrete traits\nbased on empirical state probabilities\
     \ across tips.\n\"subtree_average\": predict continuous traits using\nsubtree\
     \ averaging. \"pic\": predict continuous traits\nwith phylogentic independent\
     \ contrast. \"scp\":\nreconstruct continuous traits using squared-change\nparsimony\
     \ (default: mp)."
-  synonyms:
-  - -m
-  - --hsp_method
   args: !ChoiceFlagArg
     choices: !!set
-      emp_prob:
-      pic:
       mp:
+      pic:
       subtree_average:
       scp:
-  optional: true
+      emp_prob:
 - !Flag
-  description: Calculate NSTI and add to output file.
+  optional: true
   synonyms:
   - -n
   - --calculate_NSTI
+  description: Calculate NSTI and add to output file.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Check input trait table before HSP.
+  optional: true
   synonyms:
   - --check
+  description: Check input trait table before HSP.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Number of processes to run in parallel (default: 1).'
+  optional: true
   synonyms:
   - -p
   - --processes
+  description: 'Number of processes to run in parallel (default: 1).'
   args: !SimpleFlagArg
     name: PROCESSES
-  optional: true
 - !Flag
-  description: "Seed to make output reproducible, which is necessary\nfor the emp_prob\
-    \ method (default: 100)."
+  optional: true
   synonyms:
   - --seed
+  description: "Seed to make output reproducible, which is necessary\nfor the emp_prob\
+    \ method (default: 100)."
   args: !SimpleFlagArg
     name: SEED
-  optional: true
 - !Flag
-  description: "If specified, print out wrapped commands and other\ndetails to screen."
+  optional: true
   synonyms:
   - --verbose
+  description: "If specified, print out wrapped commands and other\ndetails to screen."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -v
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: hsp.py [-h] -t PATH -o PATH [-i {16S,COG,EC,KO,PFAM,TIGRFAM,PHENO}]\n\
   \              [--observed_trait_table PATH] [--chunk_size CHUNK_SIZE]\n       \
   \       [-m {mp,emp_prob,pic,scp,subtree_average}] [-n] [--check]\n            \
@@ -173,3 +173,4 @@ help_text: "usage: hsp.py [-h] -t PATH -o PATH [-i {16S,COG,EC,KO,PFAM,TIGRFAM,P
   hsp.py -n -t out.tre -i 16S -o 16S_predicted_and_nsti.tsv.gz --processes 1\n"
 generated_using:
 - --help
+docker_image:

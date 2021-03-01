@@ -42,6 +42,9 @@ task TomboModelResquiggle {
       ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_five_based_irs: "Directories containing fast5 files."
     stouffer_z_context: "Number of context bases up and downstream over which\\nto compute Stouffer's Z combined z-scores. Default: 1."

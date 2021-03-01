@@ -14,6 +14,9 @@ task ConfindrCreateDb {
       ~{if defined(genus) then ("--genus " +  '"' + genus + '"') else ""} \
       ~{if defined(desired_number_genes) then ("--desired_number_genes " +  '"' + desired_number_genes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_folder: "Folder to first store temporary files, and eventually\\nstore the created database."
     input_folder: "Folder with your input files to try to find core\\ngenes. Each gene should be in a FASTA file. Expected\\nextension is .fasta"

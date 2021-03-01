@@ -34,6 +34,9 @@ task RtgFormat {
       ~{if (no_quality) then "--no-quality" else ""} \
       ~{if defined(sam_rg) then ("--sam-rg " +  '"' + sam_rg + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "format of input. Allowed values are [fasta,\\nfastq, fastq-interleaved, sam-se, sam-pe]\\n(Default is fasta)"
     input_list_file: "file containing a list of input read files (1\\nper line)"

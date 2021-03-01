@@ -4,7 +4,7 @@ inputs:
 - id: in_masked
   doc: "- if specified, repeats are in lower case cases, otherwise entire\nsequence\
     \ is loader case.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -masked
 - id: in_in_dot_psl
@@ -26,6 +26,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pslToPslx

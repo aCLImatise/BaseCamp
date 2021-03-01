@@ -4,7 +4,7 @@ task Obidistribute {
   input {
     Boolean? debug
     Boolean? without_progress_bar
-    Boolean? _numbernumber_distribute
+    Boolean? _numbernumber_files
     File? prefix
     String? skip
     String? only
@@ -28,7 +28,7 @@ task Obidistribute {
     obidistribute \
       ~{if (debug) then "--DEBUG" else ""} \
       ~{if (without_progress_bar) then "--without-progress-bar" else ""} \
-      ~{if (_numbernumber_distribute) then "-n" else ""} \
+      ~{if (_numbernumber_files) then "-n" else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(skip) then ("--skip " +  '"' + skip + '"') else ""} \
       ~{if defined(only) then ("--only " +  '"' + only + '"') else ""} \
@@ -48,10 +48,13 @@ task Obidistribute {
       ~{if defined(eco_pcr_db_output) then ("--ecopcrdb-output " +  '"' + eco_pcr_db_output + '"') else ""} \
       ~{if (uppercase) then "--uppercase" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Set logging in debug mode"
     without_progress_bar: "desactivate progress bar"
-    _numbernumber_distribute: "###, --number=###\\nNumber of files to distribute over"
+    _numbernumber_files: "###, --number=###\\nNumber of files to distribute over"
     prefix: "prefix added at each file name"
     skip: "skip the N first sequences"
     only: "treat only N sequences"

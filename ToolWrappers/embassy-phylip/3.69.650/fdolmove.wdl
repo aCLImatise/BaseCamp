@@ -24,6 +24,9 @@ task Fdolmove {
       ~{if (screen_lines) then "-screenlines" else ""} \
       ~{if (out_tree_file) then "-outtreefile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     weights: "properties Weights file"
     anc_file: "properties Ancestral states file"

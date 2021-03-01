@@ -1,0 +1,100 @@
+!Command
+command:
+- ivar
+- trim
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: (Required) Sorted bam file, with aligned reads, to trim primers and
+    quality
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: BED file with primer sequences and positions. If no BED file is specified,
+    only quality trimming will be done.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "[EXPERIMENTAL] Primer pair information file containing left and right\
+    \ primer names for the same amplicon separated by a tab\nIf provided, reads that\
+    \ do not fall within atleat one amplicon will be ignored prior to primer trimming."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: 'Primer position offset (Default: 0). Reads that occur at the specified
+    offset positions relative to primer positions will also be trimmed.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: 'Minimum length of read to retain after trimming (Default: 30)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: 'Minimum quality threshold for sliding window to pass (Default: 20)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: 'Width of sliding window (Default: 4)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: Include reads with no primers. By default, reads with no primers are
+    excluded
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: "Keep reads to allow for reanalysis: keep reads which would be dropped\
+    \ by\nalignment length filter or primer requirements, but mark them QCFAIL"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: (Required) Prefix for the output BAM file
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: ivar trim -i <input.bam> -b <primers.bed> -p <prefix> [-m <min-length>]\
+  \ [-q <min-quality>] [-s <sliding-window-width>]\n\nInput Options    Description\n\
+  \           -i    (Required) Sorted bam file, with aligned reads, to trim primers\
+  \ and quality\n           -b    BED file with primer sequences and positions. If\
+  \ no BED file is specified, only quality trimming will be done.\n           -f \
+  \   [EXPERIMENTAL] Primer pair information file containing left and right primer\
+  \ names for the same amplicon separated by a tab\n                 If provided,\
+  \ reads that do not fall within atleat one amplicon will be ignored prior to primer\
+  \ trimming.\n           -x    Primer position offset (Default: 0). Reads that occur\
+  \ at the specified offset positions relative to primer positions will also be trimmed.\n\
+  \           -m    Minimum length of read to retain after trimming (Default: 30)\n\
+  \           -q    Minimum quality threshold for sliding window to pass (Default:\
+  \ 20)\n           -s    Width of sliding window (Default: 4)\n           -e    Include\
+  \ reads with no primers. By default, reads with no primers are excluded\n      \
+  \     -k    Keep reads to allow for reanalysis: keep reads which would be dropped\
+  \ by\n                 alignment length filter or primer requirements, but mark\
+  \ them QCFAIL\n\nOutput Options   Description\n           -p    (Required) Prefix\
+  \ for the output BAM file\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ivar:1.3.1--h089eab3_0

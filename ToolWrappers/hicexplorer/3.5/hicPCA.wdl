@@ -30,6 +30,9 @@ task HicPCA {
       ~{if defined(obs_exp_matrix) then ("--obsexpMatrix " +  '"' + obs_exp_matrix + '"') else ""} \
       ~{if (ignore_masked_bins) then "--ignoreMaskedBins" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "HiCExplorer matrix in h5 format. (default: None)"
     output_file_name: "File names for the result of the pca.Number of output\\nfiles must match the number of computed eigenvectors.\\n(default: ['pca1', 'pca2'])"

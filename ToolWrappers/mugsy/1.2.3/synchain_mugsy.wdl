@@ -14,6 +14,9 @@ task Synchainmugsy {
       ~{min_lcb_span} \
       ~{min_stats_len}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mugsy_chaining: ""
     max_distance: ""

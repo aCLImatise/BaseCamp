@@ -44,6 +44,9 @@ task PhastBias {
       ~{if defined(informative_fn) then ("--informative-fn " +  '"' + informative_fn + '"') else ""} \
       ~{if (informative_only) then "--informative-only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     msa_format: ").  The neutral model must be in the .mod format"
     bgc: "The B parameter describes the strength of gBGC.  It must be > 0.\\nToo low of a value may yield false positives, as the gBGC model\\nbecomes indistinguishable from the non-gBGC model.\\nDefault: 3"

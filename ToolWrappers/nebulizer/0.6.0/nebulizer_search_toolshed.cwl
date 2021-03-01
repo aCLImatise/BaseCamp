@@ -4,12 +4,12 @@ inputs:
 - id: in_toolshed
   doc: "specify a toolshed URL to search, or 'main' (the main\nGalaxy toolshed, the\
     \ default) or 'test' (the test\nGalaxy toolshed)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --toolshed
 - id: in_galaxy
   doc: check if tool repositories are installed in GALAXY
-  type: string
+  type: string?
   inputBinding:
     prefix: --galaxy
 - id: in_query_string_dot
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nebulizer

@@ -10,6 +10,9 @@ task Gif2h5 {
       ~{gif_file} \
       ~{hdf_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gif_file: ""
     hdf_file: ""

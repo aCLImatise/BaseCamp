@@ -46,6 +46,9 @@ task TOBIASATACorrect {
       ~{if defined(split) then ("--split " +  '"' + split + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "A .bam-file containing reads to be corrected"
     genome: "A .fasta-file containing whole genomic sequence"

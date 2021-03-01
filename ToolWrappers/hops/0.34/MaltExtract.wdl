@@ -44,6 +44,9 @@ task MaltExtract {
       ~{if (use_top_alignment) then "--useTopAlignment" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     top: "Use top scoring 0.XX of alignments by defualt 0.01"
     de_stacking_off: "Turn Off automated stacked Read Removal only useful in >1 coverage data"

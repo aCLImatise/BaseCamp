@@ -12,6 +12,9 @@ task PlanemoA {
       ~{var_command} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     plane_mo: ""
     var_command: ""

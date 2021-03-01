@@ -66,6 +66,9 @@ task JobTreeTestDependenciespy {
       ~{if defined(max_log_file_size) then ("--maxLogFileSize " +  '"' + max_log_file_size + '"') else ""} \
       ~{if defined(command_run_generate) then ("--command " +  '"' + command_run_generate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sleep_time: "sleep [default=5] seconds"
     tree: "tree [balanced|comb|star|fly]"

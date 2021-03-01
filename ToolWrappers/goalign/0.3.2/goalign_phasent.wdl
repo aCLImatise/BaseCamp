@@ -60,6 +60,9 @@ task GoalignPhasent {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aa_output: "Output translated sequences FASTA file (default \\\"none\\\")"
     cut_end: "If true, then also remove the end of sequences that do not align with orf"

@@ -3,22 +3,22 @@ id: cactus_getReferenceSeq.cwl
 inputs:
 - id: in_loglevel
   doc: ': Set the log level'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --logLevel
 - id: in_name
   doc: ": name of the reference sequence's event"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --name
 - id: in_cactus_disk
   doc: ': The location of the flower disk directory'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cactusDisk
 - id: in_output_file
   doc: ': Name of output fasta file'
-  type: File
+  type: File?
   inputBinding:
     prefix: --outputFile
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: ': Name of output fasta file'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cactus_getReferenceSeq

@@ -20,6 +20,9 @@ task TransIndelBuildRNApy {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_genome_used: ":reference genome used for analyzing RNAseq data (required)"
     gtf_gene_annotatino: ":gtf gene annotatino file used for analyzing RNAseq data (required)"

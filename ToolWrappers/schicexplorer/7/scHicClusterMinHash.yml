@@ -1,0 +1,552 @@
+!Command
+command:
+- scHicClusterMinHash
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: scHi-C
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: matrix
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  description: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction\
+    \ matrices to cluster.\nNeeds to be in scool format (default: None)"
+  args: !SimpleFlagArg
+    name: scool
+- !Flag
+  optional: true
+  synonyms:
+  - --numberOfClusters
+  - -c
+  description: 'Number of to be computed clusters (default: 12)'
+  args: !SimpleFlagArg
+    name: NUMBEROFCLUSTERS
+- !Flag
+  optional: true
+  synonyms:
+  - --clusterMethod
+  - -cm
+  description: "Algorithm to cluster the Hi-C matrices (default:\nspectral)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      spectral:
+      agglomerative_ward:
+      agglomerative_complete:
+      birch:
+      kmeans:
+      agglomerative_single:
+      agglomerative_average:
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: "File name to save the resulting clusters (default:\nclusters.txt)"
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --euclideanModeMinHash
+  - -em
+  description: "This option uses the number of hash collisions is only\nfor a candidate\
+    \ set selection and computes on them the\neuclidean distance. (default: True)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --intraChromosomalContactsOnly
+  - -ic
+  description: "This option loads only the intra-chromosomal contacts.\nCan improve\
+    \ the cluster result if data is very noisy.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --saveIntermediateRawMatrix
+  - -sirm
+  description: "This option activates the save of the intermediate raw\nscHi-C matrix.\
+    \ (default: None)"
+  args: !SimpleFlagArg
+    name: SAVEINTERMEDIATERAWMATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --createScatterPlot
+  - -csp
+  description: "Create a scatter plot for the clustering, the x and y\nare the first\
+    \ and second principal component of the\ncomputed k-nn graph. (default: scatterPlot.eps)"
+  args: !SimpleFlagArg
+    name: CREATESCATTERPLOT
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  description: 'The dpi of the scatter plot. (default: 300)'
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - --numberOfHashFunctions
+  - -nh
+  description: "Number of to be used hash functions for minHash\n(default: 4000)"
+  args: !SimpleFlagArg
+    name: NUMBEROFHASHFUNCTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --numberOfNearestNeighbors
+  - -k
+  description: "Number of to be used computed nearest neighbors for\nthe knn graph.\
+    \ (default: None)"
+  args: !SimpleFlagArg
+    name: NUMBEROFNEARESTNEIGHBORS
+- !Flag
+  optional: true
+  synonyms:
+  - --shareOfMatrixToBeTransferred
+  - -s
+  description: "Which share of rows shall be transferred from Python\nto C++ at once.\
+    \ If `--saveMemory` is active, value is\ninterpreted as the share to loaded at\
+    \ once to memory.\nValues between 0 and 1, the more are transferred at\nonce,\
+    \ the larger the memory usage is. The less rows\nare transferred, the slower the\
+    \ computation is.\n(default: 0.25)"
+  args: !SimpleFlagArg
+    name: SHAREOFMATRIXTOBETRANSFERRED
+- !Flag
+  optional: true
+  synonyms:
+  - --saveMemory
+  - -sm
+  description: "Load data only with one core, this method saves memory\nbut is significantly\
+    \ slower. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cell_coloring_type
+  - -cct
+  description: "A two column list, first colum the cell names as\nstored in the scool\
+    \ file, second column the associated\ncoloring for the scatter plot (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: CELL_COLORING_TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - --cell_coloring_batch
+  - -ccb
+  description: "A two column list, first colum the cell names as\nstored in the scool\
+    \ file, second column the associated\ncoloring for the scatter plot (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: CELL_COLORING_BATCH
+- !Flag
+  optional: true
+  synonyms:
+  - --noPCA
+  description: 'Do not computes PCA on top of a k-nn. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noUMAP
+  description: "Do not computes UMP on top of a k-nn/PCA. (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dimensionsPCA
+  - -dim_pca
+  description: "The number of dimensions from the PCA matrix that\nshould be considered\
+    \ for clustering. Can improve the\ncluster result. (default: 100)"
+  args: !SimpleFlagArg
+    name: DIMENSIONSPCA
+- !Flag
+  optional: true
+  synonyms:
+  - --colorMap
+  description: "Color map to use for the heatmap, supported are the\ncategorical colormaps\
+    \ from holoviews:\nhttp://holoviews.org/user_guide/Colormaps.html\n(default: glasbey_dark)"
+  args: !SimpleFlagArg
+    name: COLORMAP
+- !Flag
+  optional: true
+  synonyms:
+  - --fontsize
+  description: 'Fontsize in the plot for x and y axis. (default: 15)'
+  args: !SimpleFlagArg
+    name: FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --distance
+  - -d
+  description: 'Contact distance to consider (default: None)'
+  args: !SimpleFlagArg
+    name: DISTANCE
+- !Flag
+  optional: true
+  synonyms:
+  - --figuresize
+  description: "y-size\nFontsize in the plot for x and y axis. (default: (15,\n6))"
+  args: !SimpleFlagArg
+    name: x-size
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosomes
+  description: 'List of to be computed chromosomes (default: None)'
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+- !Flag
+  optional: true
+  synonyms:
+  - --absoluteValues
+  - -av
+  description: "Return the number of hash collisions as measure\ninstead of 0 - 1\
+    \ normalized values. (default: None)"
+  args: !SimpleFlagArg
+    name: ABSOLUTEVALUES
+- !Flag
+  optional: true
+  synonyms:
+  - --latexTable
+  - -lt
+  description: "Return the overlap statistics if --cell_coloring_type\nis given as\
+    \ a latex table. (default: None)"
+  args: !SimpleFlagArg
+    name: LATEXTABLE
+- !Flag
+  optional: true
+  synonyms:
+  - --runInHyperoptMode
+  description: "Compute the correct associated average of the given\nclusters to (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
+    \ 8)"
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_n_neighbors
+  description: 'Number of neighbors (default: 30)'
+  args: !SimpleFlagArg
+    name: UMAP_N_NEIGHBORS
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_n_components
+  description: 'Number of components (default: 2)'
+  args: !SimpleFlagArg
+    name: UMAP_N_COMPONENTS
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_metric
+  description: 'Metric of umap. (default: canberra)'
+  args: !SimpleFlagArg
+    name: UMAP_METRIC
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_n_epochs
+  description: 'Number of epochs (default: None)'
+  args: !SimpleFlagArg
+    name: UMAP_N_EPOCHS
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_learning_rate
+  description: 'Learning rate (default: 1.0)'
+  args: !SimpleFlagArg
+    name: UMAP_LEARNING_RATE
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_init
+  description: 'Initialization method (default: spectral)'
+  args: !SimpleFlagArg
+    name: UMAP_INIT
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_min_dist
+  description: 'Minimum distance of two neighbors (default: 0.3)'
+  args: !SimpleFlagArg
+    name: UMAP_MIN_DIST
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_spread
+  description: 'Spread (default: 1.0)'
+  args: !SimpleFlagArg
+    name: UMAP_SPREAD
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_set_op_mix_ratio
+  description: 'set_op_mix_ratio (default: 1.0)'
+  args: !SimpleFlagArg
+    name: UMAP_SET_OP_MIX_RATIO
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_local_connectivity
+  description: 'local connectivity (default: 1.0)'
+  args: !SimpleFlagArg
+    name: UMAP_LOCAL_CONNECTIVITY
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_repulsion_strength
+  description: 'repulsion strength (default: 1.0)'
+  args: !SimpleFlagArg
+    name: UMAP_REPULSION_STRENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_negative_sample_rate
+  description: 'negative sample rate (default: 5)'
+  args: !SimpleFlagArg
+    name: UMAP_NEGATIVE_SAMPLE_RATE
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_transform_queue_size
+  description: 'transform queue size (default: 4.0)'
+  args: !SimpleFlagArg
+    name: UMAP_TRANSFORM_QUEUE_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_a
+  description: 'a (default: None)'
+  args: !SimpleFlagArg
+    name: UMAP_A
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_b
+  description: 'b (default: None)'
+  args: !SimpleFlagArg
+    name: UMAP_B
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_angular_rp_forest
+  description: 'angular rp forest (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_target_n_neighbors
+  description: 'target number of neighbors (default: -1)'
+  args: !SimpleFlagArg
+    name: UMAP_TARGET_N_NEIGHBORS
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_target_metric
+  description: 'target metric (default: categorical)'
+  args: !SimpleFlagArg
+    name: UMAP_TARGET_METRIC
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_target_weight
+  description: 'target weight (default: 0.5)'
+  args: !SimpleFlagArg
+    name: UMAP_TARGET_WEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_force_approximation_algorithm
+  description: 'force approximation algorithm (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_verbose
+  description: 'verbose (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_unique
+  description: 'Contact distance to consider (default: False)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: scHicClusterMinHash --matrix scool scHi-C matrix\n            \
+  \               [--numberOfClusters NUMBEROFCLUSTERS]\n                        \
+  \   [--clusterMethod {spectral,kmeans,agglomerative_ward,agglomerative_complete,agglomerative_average,agglomerative_single,birch}]\n\
+  \                           --outFileName OUTFILENAME [--euclideanModeMinHash]\n\
+  \                           [--intraChromosomalContactsOnly]\n                 \
+  \          [--saveIntermediateRawMatrix SAVEINTERMEDIATERAWMATRIX]\n           \
+  \                [--createScatterPlot CREATESCATTERPLOT] [--dpi DPI]\n         \
+  \                  [--numberOfHashFunctions NUMBEROFHASHFUNCTIONS]\n           \
+  \                [--numberOfNearestNeighbors NUMBEROFNEARESTNEIGHBORS]\n       \
+  \                    [--shareOfMatrixToBeTransferred SHAREOFMATRIXTOBETRANSFERRED]\n\
+  \                           [--saveMemory]\n                           [--cell_coloring_type\
+  \ CELL_COLORING_TYPE]\n                           [--cell_coloring_batch CELL_COLORING_BATCH]\n\
+  \                           [--noPCA] [--noUMAP]\n                           [--dimensionsPCA\
+  \ DIMENSIONSPCA]\n                           [--colorMap COLORMAP] [--fontsize FONTSIZE]\n\
+  \                           [--distance DISTANCE] [--figuresize x-size y-size]\n\
+  \                           [--chromosomes CHROMOSOMES [CHROMOSOMES ...]]\n    \
+  \                       [--absoluteValues ABSOLUTEVALUES]\n                    \
+  \       [--latexTable LATEXTABLE] [--runInHyperoptMode]\n                      \
+  \     [--threads THREADS] [--help] [--version]\n                           [--umap_n_neighbors\
+  \ UMAP_N_NEIGHBORS]\n                           [--umap_n_components UMAP_N_COMPONENTS]\n\
+  \                           [--umap_metric UMAP_METRIC]\n                      \
+  \     [--umap_n_epochs UMAP_N_EPOCHS]\n                           [--umap_learning_rate\
+  \ UMAP_LEARNING_RATE]\n                           [--umap_init UMAP_INIT]\n    \
+  \                       [--umap_min_dist UMAP_MIN_DIST]\n                      \
+  \     [--umap_spread UMAP_SPREAD]\n                           [--umap_set_op_mix_ratio\
+  \ UMAP_SET_OP_MIX_RATIO]\n                           [--umap_local_connectivity\
+  \ UMAP_LOCAL_CONNECTIVITY]\n                           [--umap_repulsion_strength\
+  \ UMAP_REPULSION_STRENGTH]\n                           [--umap_negative_sample_rate\
+  \ UMAP_NEGATIVE_SAMPLE_RATE]\n                           [--umap_transform_queue_size\
+  \ UMAP_TRANSFORM_QUEUE_SIZE]\n                           [--umap_a UMAP_A] [--umap_b\
+  \ UMAP_B]\n                           [--umap_angular_rp_forest]\n             \
+  \              [--umap_target_n_neighbors UMAP_TARGET_N_NEIGHBORS]\n           \
+  \                [--umap_target_metric UMAP_TARGET_METRIC]\n                   \
+  \        [--umap_target_weight UMAP_TARGET_WEIGHT]\n                           [--umap_force_approximation_algorithm]\n\
+  \                           [--umap_verbose] [--umap_unique]\n\nscHicClusterMinHash\
+  \ uses kmeans, spectral, agglomerative (ward, complete,\naverage or single) or birch\
+  \ clustering to associate each cell to a cluster and\ntherefore to its cell cycle.\
+  \ The clustering is applied on dimension reduced\ndata based on an approximate kNN\
+  \ search with the local sensitive hashing\ntechnique MinHash. This approach reduces\
+  \ the number of dimensions from samples\n* (number of bins)^2 to samples * samples.\
+  \ Please consider also the other\nclustering and dimension reduction approaches\
+  \ of the scHicExplorer suite. They\ncan give you better results, can be faster or\
+  \ less memory demanding.\n\nRequired arguments:\n  --matrix scool scHi-C matrix,\
+  \ -m scool scHi-C matrix\n                        The single cell Hi-C interaction\
+  \ matrices to cluster.\n                        Needs to be in scool format (default:\
+  \ None)\n  --numberOfClusters NUMBEROFCLUSTERS, -c NUMBEROFCLUSTERS\n          \
+  \              Number of to be computed clusters (default: 12)\n  --clusterMethod\
+  \ {spectral,kmeans,agglomerative_ward,agglomerative_complete,agglomerative_average,agglomerative_single,birch},\
+  \ -cm {spectral,kmeans,agglomerative_ward,agglomerative_complete,agglomerative_average,agglomerative_single,birch}\n\
+  \                        Algorithm to cluster the Hi-C matrices (default:\n    \
+  \                    spectral)\n  --outFileName OUTFILENAME, -o OUTFILENAME\n  \
+  \                      File name to save the resulting clusters (default:\n    \
+  \                    clusters.txt)\n\nOptional arguments:\n  --euclideanModeMinHash,\
+  \ -em\n                        This option uses the number of hash collisions is\
+  \ only\n                        for a candidate set selection and computes on them\
+  \ the\n                        euclidean distance. (default: True)\n  --intraChromosomalContactsOnly,\
+  \ -ic\n                        This option loads only the intra-chromosomal contacts.\n\
+  \                        Can improve the cluster result if data is very noisy.\n\
+  \                        (default: False)\n  --saveIntermediateRawMatrix SAVEINTERMEDIATERAWMATRIX,\
+  \ -sirm SAVEINTERMEDIATERAWMATRIX\n                        This option activates\
+  \ the save of the intermediate raw\n                        scHi-C matrix. (default:\
+  \ None)\n  --createScatterPlot CREATESCATTERPLOT, -csp CREATESCATTERPLOT\n     \
+  \                   Create a scatter plot for the clustering, the x and y\n    \
+  \                    are the first and second principal component of the\n     \
+  \                   computed k-nn graph. (default: scatterPlot.eps)\n  --dpi DPI\
+  \             The dpi of the scatter plot. (default: 300)\n  --numberOfHashFunctions\
+  \ NUMBEROFHASHFUNCTIONS, -nh NUMBEROFHASHFUNCTIONS\n                        Number\
+  \ of to be used hash functions for minHash\n                        (default: 4000)\n\
+  \  --numberOfNearestNeighbors NUMBEROFNEARESTNEIGHBORS, -k NUMBEROFNEARESTNEIGHBORS\n\
+  \                        Number of to be used computed nearest neighbors for\n \
+  \                       the knn graph. (default: None)\n  --shareOfMatrixToBeTransferred\
+  \ SHAREOFMATRIXTOBETRANSFERRED, -s SHAREOFMATRIXTOBETRANSFERRED\n              \
+  \          Which share of rows shall be transferred from Python\n              \
+  \          to C++ at once. If `--saveMemory` is active, value is\n             \
+  \           interpreted as the share to loaded at once to memory.\n            \
+  \            Values between 0 and 1, the more are transferred at\n             \
+  \           once, the larger the memory usage is. The less rows\n              \
+  \          are transferred, the slower the computation is.\n                   \
+  \     (default: 0.25)\n  --saveMemory, -sm     Load data only with one core, this\
+  \ method saves memory\n                        but is significantly slower. (default:\
+  \ False)\n  --cell_coloring_type CELL_COLORING_TYPE, -cct CELL_COLORING_TYPE\n \
+  \                       A two column list, first colum the cell names as\n     \
+  \                   stored in the scool file, second column the associated\n   \
+  \                     coloring for the scatter plot (default: None)\n  --cell_coloring_batch\
+  \ CELL_COLORING_BATCH, -ccb CELL_COLORING_BATCH\n                        A two column\
+  \ list, first colum the cell names as\n                        stored in the scool\
+  \ file, second column the associated\n                        coloring for the scatter\
+  \ plot (default: None)\n  --noPCA               Do not computes PCA on top of a\
+  \ k-nn. (default: False)\n  --noUMAP              Do not computes UMP on top of\
+  \ a k-nn/PCA. (default:\n                        False)\n  --dimensionsPCA DIMENSIONSPCA,\
+  \ -dim_pca DIMENSIONSPCA\n                        The number of dimensions from\
+  \ the PCA matrix that\n                        should be considered for clustering.\
+  \ Can improve the\n                        cluster result. (default: 100)\n  --colorMap\
+  \ COLORMAP   Color map to use for the heatmap, supported are the\n             \
+  \           categorical colormaps from holoviews:\n                        http://holoviews.org/user_guide/Colormaps.html\n\
+  \                        (default: glasbey_dark)\n  --fontsize FONTSIZE   Fontsize\
+  \ in the plot for x and y axis. (default: 15)\n  --distance DISTANCE, -d DISTANCE\n\
+  \                        Contact distance to consider (default: None)\n  --figuresize\
+  \ x-size y-size\n                        Fontsize in the plot for x and y axis.\
+  \ (default: (15,\n                        6))\n  --chromosomes CHROMOSOMES [CHROMOSOMES\
+  \ ...]\n                        List of to be computed chromosomes (default: None)\n\
+  \  --absoluteValues ABSOLUTEVALUES, -av ABSOLUTEVALUES\n                       \
+  \ Return the number of hash collisions as measure\n                        instead\
+  \ of 0 - 1 normalized values. (default: None)\n  --latexTable LATEXTABLE, -lt LATEXTABLE\n\
+  \                        Return the overlap statistics if --cell_coloring_type\n\
+  \                        is given as a latex table. (default: None)\n  --runInHyperoptMode\
+  \   Compute the correct associated average of the given\n                      \
+  \  clusters to (default: False)\n  --threads THREADS, -t THREADS\n             \
+  \           Number of threads. Using the python multiprocessing\n              \
+  \          module. (default: 8)\n  --help, -h            show this help message\
+  \ and exit\n  --version             show program's version number and exit\n\nOptional\
+  \ umap arguments:\n  Arguments for umap embedding. Please consider its documentation\
+  \ for\n  details: https://umap-\n  learn.readthedocs.io/en/latest/api.html#umap.umap_.UMAP\n\
+  \n  --umap_n_neighbors UMAP_N_NEIGHBORS\n                        Number of neighbors\
+  \ (default: 30)\n  --umap_n_components UMAP_N_COMPONENTS\n                     \
+  \   Number of components (default: 2)\n  --umap_metric UMAP_METRIC\n           \
+  \             Metric of umap. (default: canberra)\n  --umap_n_epochs UMAP_N_EPOCHS\n\
+  \                        Number of epochs (default: None)\n  --umap_learning_rate\
+  \ UMAP_LEARNING_RATE\n                        Learning rate (default: 1.0)\n  --umap_init\
+  \ UMAP_INIT\n                        Initialization method (default: spectral)\n\
+  \  --umap_min_dist UMAP_MIN_DIST\n                        Minimum distance of two\
+  \ neighbors (default: 0.3)\n  --umap_spread UMAP_SPREAD\n                      \
+  \  Spread (default: 1.0)\n  --umap_set_op_mix_ratio UMAP_SET_OP_MIX_RATIO\n    \
+  \                    set_op_mix_ratio (default: 1.0)\n  --umap_local_connectivity\
+  \ UMAP_LOCAL_CONNECTIVITY\n                        local connectivity (default:\
+  \ 1.0)\n  --umap_repulsion_strength UMAP_REPULSION_STRENGTH\n                  \
+  \      repulsion strength (default: 1.0)\n  --umap_negative_sample_rate UMAP_NEGATIVE_SAMPLE_RATE\n\
+  \                        negative sample rate (default: 5)\n  --umap_transform_queue_size\
+  \ UMAP_TRANSFORM_QUEUE_SIZE\n                        transform queue size (default:\
+  \ 4.0)\n  --umap_a UMAP_A       a (default: None)\n  --umap_b UMAP_B       b (default:\
+  \ None)\n  --umap_angular_rp_forest\n                        angular rp forest (default:\
+  \ False)\n  --umap_target_n_neighbors UMAP_TARGET_N_NEIGHBORS\n                \
+  \        target number of neighbors (default: -1)\n  --umap_target_metric UMAP_TARGET_METRIC\n\
+  \                        target metric (default: categorical)\n  --umap_target_weight\
+  \ UMAP_TARGET_WEIGHT\n                        target weight (default: 0.5)\n  --umap_force_approximation_algorithm\n\
+  \                        force approximation algorithm (default: False)\n  --umap_verbose\
+  \        verbose (default: False)\n  --umap_unique         Contact distance to consider\
+  \ (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/schicexplorer:7--py_0

@@ -70,6 +70,9 @@ task Maltbuild {
       ~{if (hash_scale_factor) then "--hashScaleFactor" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_reference_files: "[string(s)]              Input reference files in FastA format (or specify a single directory). Mandatory option."
     sequence_type: "[string]          Sequence type. Mandatory option. Legal values: DNA, Protein"

@@ -12,6 +12,9 @@ task CruxPsmconvertAuto {
       ~{psm_convert} \
       ~{input_psm_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     psm_convert: ""

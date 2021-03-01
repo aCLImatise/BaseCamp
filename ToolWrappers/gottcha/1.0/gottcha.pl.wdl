@@ -22,7 +22,6 @@ task Gottchapl {
     Boolean? c_cov
     Boolean? min_len
     Boolean? min_hits
-    Boolean? help_slash_h_slash
   }
   command <<<
     gottcha_pl \
@@ -45,9 +44,11 @@ task Gottchapl {
       ~{if (min_ml_hl) then "--minMLHL" else ""} \
       ~{if (c_cov) then "--cCov" else ""} \
       ~{if (min_len) then "--minLen" else ""} \
-      ~{if (min_hits) then "--minHits" else ""} \
-      ~{if (help_slash_h_slash) then "--help/h/" else ""}
+      ~{if (min_hits) then "--minHits" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i_string_input: "|i    <STRING>  Input one or multiple FASTQ file(s). Use comma (,)\\nto separate multiple input files."
     database: "|d <STRING>  The path of signature database. The database can be\\nin FASTA format or BWA index (5 files)."
@@ -69,7 +70,6 @@ task Gottchapl {
     c_cov: "<FLOAT>   Critical coverage below which --minMLHL will cause an\\norganism to fail [default: 0.006]"
     min_len: "<INT>     Minimum unique length to be considered valid in\\nabundance calculation [default: 100]"
     min_hits: "<INT>     Minimum number of hits to be considered valid in\\nabundance calculation [10]"
-    help_slash_h_slash: "?             display this help"
   }
   output {
     File out_stdout = stdout()

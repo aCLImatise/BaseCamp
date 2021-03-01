@@ -12,6 +12,9 @@ task AssemblypyTrimFasta {
       ~{out_fast_a} \
       ~{if defined(loglevel) then ("--loglevel " +  '"' + loglevel + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: "Verboseness of output. [default: DEBUG]"
     in_fasta: "Input fasta file"

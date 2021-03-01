@@ -12,6 +12,9 @@ task CirclatorRequiredarguments {
       ~{var_command} \
       ~{required_arguments}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     circ_lator: ""
     var_command: ""

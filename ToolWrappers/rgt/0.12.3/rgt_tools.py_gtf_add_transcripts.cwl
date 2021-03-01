@@ -3,12 +3,12 @@ id: rgt_tools.py_gtf_add_transcripts.cwl
 inputs:
 - id: in_input_gtf_file
   doc: Input GTF file
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_output_gtf_file
   doc: Output GTF file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_gtf_file
   doc: Output GTF file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_gtf_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rgt-tools.py

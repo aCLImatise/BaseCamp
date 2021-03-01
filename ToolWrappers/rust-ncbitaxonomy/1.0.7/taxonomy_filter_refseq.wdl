@@ -18,6 +18,9 @@ task TaxonomyFilterRefseq {
       ~{if (no_predicted) then "--no_predicted" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_curated: "Don't accept curated RNAs and proteins (NM_, NR_ and NP_ accessions)"
     no_predicted: "Don't accept computationally predicted RNAs and proteins (XM_, XR_ and XP_ accessions)"

@@ -4,7 +4,7 @@ task Blrandomize {
   input {
     Boolean? specify_multiple_input_files
     Boolean? specify_multiple_output_files
-    Boolean? use_order_readorder
+    Boolean? use_order_order
     Boolean? write_random_order
     String randomize
   }
@@ -13,13 +13,16 @@ task Blrandomize {
       ~{randomize} \
       ~{if (specify_multiple_input_files) then "-i" else ""} \
       ~{if (specify_multiple_output_files) then "-o" else ""} \
-      ~{if (use_order_readorder) then "-r" else ""} \
+      ~{if (use_order_order) then "-r" else ""} \
       ~{if (write_random_order) then "-w" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specify_multiple_input_files: "specify multiple INPUT files"
     specify_multiple_output_files: "specify multiple OUTPUT files"
-    use_order_readorder: "use the order in READ-ORDER instead of a random order"
+    use_order_order: "use the order in READ-ORDER instead of a random order"
     write_random_order: "write the random order to WRITE-ORDER"
     randomize: ""
   }

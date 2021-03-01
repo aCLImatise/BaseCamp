@@ -18,6 +18,9 @@ task ScpredEigenDecompR {
       ~{if defined(random_seed) then ("--random-seed " +  '"' + random_seed + '"') else ""} \
       ~{if defined(output_path) then ("--output-path " +  '"' + output_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     training_matrix: "Path to the training matrix in .rds format"
     log_transform: "Should log-transform be performed on the matrix? Default: TRUE"

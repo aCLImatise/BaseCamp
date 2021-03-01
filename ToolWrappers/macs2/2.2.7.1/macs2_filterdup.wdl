@@ -28,6 +28,9 @@ task Macs2Filterdup {
       ~{if defined(ofile) then ("--ofile " +  '"' + ofile + '"') else ""} \
       ~{if (dry_run) then "--dry-run" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i_file: "Alignment file. If multiple files are given as '-t A B\\nC', then they will all be read and combined. Note that\\npair-end data is not supposed to work with this\\ncommand. REQUIRED."
     format: "Format of tag file, \\\"AUTO\\\", \\\"BED\\\" or \\\"ELAND\\\" or\\n\\\"ELANDMULTI\\\" or \\\"ELANDEXPORT\\\" or \\\"SAM\\\" or \\\"BAM\\\" or\\n\\\"BOWTIE\\\" or \\\"BAMPE\\\" or \\\"BEDPE\\\". The default AUTO\\noption will let 'macs2 filterdup' decide which format\\nthe file is. Please check the definition in README\\nfile if you choose\\nELAND/ELANDMULTI/ELANDEXPORT/SAM/BAM/BOWTIE or\\nBAMPE/BEDPE. DEFAULT: \\\"AUTO\\\""

@@ -22,6 +22,9 @@ task LogAndGlogTransformationpy {
       ~{if defined(o_name) then ("--oname " +  '"' + o_name + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dataset_wide: "Input dataset in wide format."
     design: "Design file."

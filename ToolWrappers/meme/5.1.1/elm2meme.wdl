@@ -13,7 +13,7 @@ task Elm2meme {
     String add
     String allow
     String default
-    File file
+    File var_file
     String is
     String print
     String website
@@ -49,7 +49,7 @@ task Elm2meme {
       ~{add} \
       ~{allow} \
       ~{default} \
-      ~{file} \
+      ~{var_file} \
       ~{is} \
       ~{print} \
       ~{website} \
@@ -82,6 +82,9 @@ task Elm2meme {
       ~{if (print_logodds_matrix) then "-logodds" else ""} \
       ~{if defined(url) then ("-url " +  '"' + url + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     allow_anchored_motifs: "allow anchored motifs;\\ndefault: skip anchored motifs"
     bg: "file with background frequencies of letters;\\ndefault: uniform background"
@@ -94,7 +97,7 @@ task Elm2meme {
     add: ""
     allow: ""
     default: ""
-    file: ""
+    var_file: ""
     is: ""
     print: ""
     website: ""

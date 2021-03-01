@@ -4,160 +4,160 @@ inputs:
 - id: in_alignment_size
   doc: "max alignment subset size of N [default: 10% of the\ntotal number of taxa\
     \ or the placement subset size if\ngiven]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --alignmentSize
 - id: in_placement_size
   doc: "max placement subset size of N [default: 10% of the\ntotal number of taxa\
     \ or the alignment length\n(whichever bigger)]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --placementSize
 - id: in_fragment_chunksize
   doc: "maximum fragment chunk size of N. Helps controlling\nmemory. [default: 20000]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --fragmentChunkSize
 - id: in_distance
   doc: "minimum p-distance before stopping the\ndecomposition[default: 1]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --distance
 - id: in_diameter
   doc: "maximum tree diameter before stopping the\ndecomposition[default: None]"
-  type: string
+  type: string?
   inputBinding:
     prefix: --diameter
 - id: in_decomp_strategy
   doc: "decomposition strategy [default: using tree branch\nlength]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --decomp_strategy
 - id: in_tempdir
   doc: "Tempfile files will be written to DIR. Full-path\nrequired. [default: /tmp/sepp]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --tempdir
 - id: in_output
   doc: 'output files with prefix OUTPUT. [default: output]'
-  type: string
+  type: string?
   inputBinding:
     prefix: --output
 - id: in_outdir
   doc: "output to OUTPUT_DIR directory. full-path required.\n[default: .]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_config
   doc: "A config file, including options used to run SEPP.\nOptions provided as command\
     \ line arguments overwrite\nconfig file values for those options. [default: None]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_tree
   doc: 'Input tree file (newick format) [default: None]'
-  type: File
+  type: File?
   inputBinding:
     prefix: --tree
 - id: in_ra_xml
   doc: "RAxML_info file including model parameters, generated\nby RAxML.[default:\
     \ None]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --raxml
 - id: in_alignment
   doc: 'Aligned fasta file [default: None]'
-  type: File
+  type: File?
   inputBinding:
     prefix: --alignment
 - id: in_fragment
   doc: 'fragment file [default: None]'
-  type: File
+  type: File?
   inputBinding:
     prefix: --fragment
 - id: in_molecule
   doc: "Molecule type of sequences. Can be amino, dna, or rna\n[default: dna]"
-  type: string
+  type: string?
   inputBinding:
     prefix: --molecule
 - id: in_cpu
   doc: "Use N cpus [default: number of cpus available on the\nmachine]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --cpu
 - id: in_checkpoint
   doc: 'checkpoint file [default: no checkpointing]'
-  type: File
+  type: File?
   inputBinding:
     prefix: --checkpoint
 - id: in_interval
   doc: "Interval (in seconds) between checkpoint writes. Has\neffect only with -cp\
     \ provided. [default: 3600]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --interval
 - id: in_random_seed
   doc: 'random seed number. [default: 297834]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --randomseed
 - id: in_reference_pkg
   doc: 'Use a pre-computed reference package [default: None]'
-  type: string
+  type: string?
   inputBinding:
     prefix: --reference_pkg
 - id: in_alignment_threshold
   doc: "Enough alignment subsets are selected to reach a\ncommulative probability\
     \ of N. This should be a number\nbetween 0 and 1 [default: 0.95]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --alignmentThreshold
 - id: in_dist
   doc: Treat fragments as distribution
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dist
 - id: in_placement_threshold
   doc: "Enough placements are selected to reach a commulative\nprobability of N. This\
     \ should be a number between 0\nand 1 [default: 0.95]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --placementThreshold
 - id: in_push_down
   doc: "Whether to classify based on children below or above\ninsertion point. [default:\
     \ True]"
-  type: string
+  type: string?
   inputBinding:
     prefix: --push_down
 - id: in_taxonomy
   doc: "A file describing the taxonomy. This is a comma-\nseparated text file that\
     \ has the following fields:\ntaxon_id,parent_id,taxon_name,rank. If there are\
     \ other\ncolumns, they are ignored. The first line is also\nignored."
-  type: File
+  type: File?
   inputBinding:
     prefix: --taxonomy
 - id: in_taxonomy_name_mapping
   doc: "A comma-separated text file mapping alignment sequence\nnames to taxonomic\
     \ ids. Formats (each line):\nsequence_name,taxon_id. If there are other columns,\n\
     they are ignored. The first line is also ignored."
-  type: File
+  type: File?
   inputBinding:
     prefix: --taxonomyNameMapping
 - id: in_alignment_decomposition_tree
   doc: "A newick tree file used for decomposing taxa into\nalignment subsets. [default:\
     \ the backbone tree]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --alignmentDecompositionTree
 - id: in_cut_off
   doc: "Placement probability requirement to count toward the\ndistribution. This\
     \ should be a number between 0 and 1\n[default: 0.0]\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --cutoff
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
@@ -166,9 +166,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: "output to OUTPUT_DIR directory. full-path required.\n[default: .]"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - run_tipp.py

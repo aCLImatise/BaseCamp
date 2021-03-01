@@ -8,6 +8,9 @@ task TreebestOrtho {
     treebest ortho \
       ~{tree}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree: ""
   }

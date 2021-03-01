@@ -10,6 +10,9 @@ task LoadBalanceMerspl {
       ~{mer_count_file} \
       ~{num_of_prefix_blocks}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mer_count_file: ""
     num_of_prefix_blocks: ""

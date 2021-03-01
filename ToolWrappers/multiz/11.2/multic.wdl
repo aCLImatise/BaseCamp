@@ -4,6 +4,9 @@ task Multic {
   command <<<
     multic
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

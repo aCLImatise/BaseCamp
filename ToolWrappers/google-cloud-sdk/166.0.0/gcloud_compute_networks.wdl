@@ -22,6 +22,9 @@ task GcloudComputeNetworks {
       ~{list} \
       ~{switch_mode}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     networks: "SYNOPSIS"
     peering_s: "List, create, and delete Google Compute Engine network peerings."

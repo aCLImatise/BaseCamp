@@ -16,6 +16,9 @@ task VariantFilterAnnotations {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input variant list in GSvar format."
     out: "Output variant list in GSvar format."

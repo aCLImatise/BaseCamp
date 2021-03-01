@@ -28,10 +28,12 @@ task RnaQUASTpy {
     Boolean? disable_infer_transcripts
     File? busco
     String used
+    String assemblies
   }
   command <<<
     rnaQUAST_py \
       ~{used} \
+      ~{assemblies} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(gtf) then ("--gtf " +  '"' + gtf + '"') else ""} \
       ~{if defined(gene_db) then ("--gene_db " +  '"' + gene_db + '"') else ""} \
@@ -58,6 +60,9 @@ task RnaQUASTpy {
       ~{if (disable_infer_transcripts) then "--disable_infer_transcripts" else ""} \
       ~{if defined(busco) then ("--busco " +  '"' + busco + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "Single file (or several files for meta RNA) with\\nreference genome in FASTA format or *.txt file with\\none-per-line list of FASTA files with reference\\nsequences"
     gtf: "File with gene coordinates (or several files or *.txt\\nfile with one-per-line list of GTF / GFF files for\\nmeta RNA). We recommend to use files downloaded from\\nGENCODE or Ensembl [GTF/GFF]"
@@ -85,6 +90,7 @@ task RnaQUASTpy {
     disable_infer_transcripts: "Use this option if your GTF already contains\\ntranscripts records"
     busco: "Run with BUSCO tool (http://busco.ezlab.org/).\\nAutomated lineage selection [auto-lineage], BUSCO\\ndataset name or a path to the lineage data to be used"
     used: "-c TRANSCRIPTS [TRANSCRIPTS ...], --transcripts TRANSCRIPTS [TRANSCRIPTS ...]"
+    assemblies: "--lower_threshold LOWER_THRESHOLD"
   }
   output {
     File out_stdout = stdout()

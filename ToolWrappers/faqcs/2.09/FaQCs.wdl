@@ -15,7 +15,7 @@ task FaQCs {
     Boolean? artifact_file
     Boolean? min_l
     Boolean? avg_q
-    Boolean? int_trimmed_read_greater
+    Boolean? int_trimmed_read_has
     Boolean? lc
     Boolean? phi_x
     Boolean? ascii
@@ -51,7 +51,7 @@ task FaQCs {
       ~{if (artifact_file) then "--artifactFile" else ""} \
       ~{if (min_l) then "--min_L" else ""} \
       ~{if (avg_q) then "--avg_q" else ""} \
-      ~{if (int_trimmed_read_greater) then "-n" else ""} \
+      ~{if (int_trimmed_read_has) then "-n" else ""} \
       ~{if (lc) then "--lc" else ""} \
       ~{if (phi_x) then "--phiX" else ""} \
       ~{if (ascii) then "--ascii" else ""} \
@@ -72,6 +72,9 @@ task FaQCs {
       ~{if (five_trim_off) then "--5trim_off" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_unpaired_reads: "<File> Unpaired reads"
     file_first_paired: "<File> First paired read file"
@@ -86,7 +89,7 @@ task FaQCs {
     artifact_file: "<File> additional artifact (adapters/primers/contaminations) reference file in fasta format"
     min_l: "<INT> Trimmed read should have to be at least this minimum length (default:50)"
     avg_q: "<NUM> Average quality cutoff (default:0, no filtering)"
-    int_trimmed_read_greater: "<INT> Trimmed read has greater than or equal to this number of continuous base \\\"N\\\" will be discarded.\\n(default: 2, \\\"NN\\\")"
+    int_trimmed_read_has: "<INT> Trimmed read has greater than or equal to this number of continuous base \\\"N\\\" will be discarded.\\n(default: 2, \\\"NN\\\")"
     lc: "<FLOAT> Low complexity filter ratio, Maximum fraction of mono-/di-nucleotide sequence  (default: 0.85)"
     phi_x: "<bool> Filter phiX reads (slow)"
     ascii: "Encoding type: 33 or 64 or autoCheck (default)\\nType of ASCII encoding: 33 (standard) or 64 (illumina 1.3+)"

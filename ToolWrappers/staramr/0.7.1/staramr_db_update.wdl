@@ -16,6 +16,9 @@ task StaramrDbUpdate {
       ~{if defined(point_finder_commit) then ("--pointfinder-commit " +  '"' + point_finder_commit + '"') else ""} \
       ~{if defined(plasmid_finder_commit) then ("--plasmidfinder-commit " +  '"' + plasmid_finder_commit + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     update_default: "Updates default database directory (/usr/local/lib/python3.7/site-packages/staramr/databases/data)."
     res_finder_commit: "The specific git commit for the resfinder database [latest]."

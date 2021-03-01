@@ -84,6 +84,9 @@ task ProgressiveMauve {
       ~{if defined(disable_cache) then ("--disable-cache " +  '"' + disable_cache + '"') else ""} \
       ~{if defined(no_recursion) then ("--no-recursion " +  '"' + no_recursion + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     island_gap_size: "Alignment gaps above this size in nucleotides are considered to be islands [20]"
     profile: "(Not yet implemented) Read an existing sequence alignment in XMFA format and align it to other sequences or alignments"

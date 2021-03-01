@@ -42,6 +42,9 @@ task MakeEmperorpy {
       ~{if defined(input_coords) then ("--input_coords " +  '"' + input_coords + '"') else ""} \
       ~{if defined(map_fp) then ("--map_fp " +  '"' + map_fp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     number_of_axes: "Number of axes to be incorporated in the plot. Only 3\\nwill be displayed at any given time but this option\\nmodifies how many axes you can use for your\\nvisualization. Note that Emperor will only use the\\naxes that explain more than 0.5% (this will be shown\\nas 1% in the GUI)of the variability [default: 10]"

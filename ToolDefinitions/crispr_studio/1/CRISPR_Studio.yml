@@ -4,41 +4,45 @@ command:
 positional: []
 named:
 - !Flag
-  description: "GFF3 file generated with CRISPRDetect (Local\ninstallation or web\
-    \ platform http://brownlabtools.otag\no.ac.nz/CRISPRDetect/predict_crispr_array.html)."
+  optional: true
   synonyms:
   - -i
   - --inFile
+  description: "GFF3 file generated with CRISPRDetect (Local\ninstallation or web\
+    \ platform http://brownlabtools.otag\no.ac.nz/CRISPRDetect/predict_crispr_array.html)."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "CRISPR_Studio will generate the figure with a subset\nof isolates\
-    \ listed in the file (Optional: By default,\nCRISPR_Studio will generate a figure\
-    \ with all the\nisolates)."
+  optional: true
   synonyms:
   - -l
   - --listOfIsolates
+  description: "CRISPR_Studio will generate the figure with a subset\nof isolates\
+    \ listed in the file (Optional: By default,\nCRISPR_Studio will generate a figure\
+    \ with all the\nisolates)."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "The unique spacers will be grayed (Optional: by\ndefault, CRISPR_Studio\
-    \ attributes a unique color to\neach group of spacer and unique spacers.)"
+  optional: true
   synonyms:
   - -gU
   - --grayOutUnique
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "The conserved spacers will be grayed (Optional: by\ndefault, CRISPR_Studio\
+  description: "The unique spacers will be grayed (Optional: by\ndefault, CRISPR_Studio\
     \ attributes a unique color to\neach group of spacer and unique spacers.)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -gS
   - --grayOutSimilar
+  description: "The conserved spacers will be grayed (Optional: by\ndefault, CRISPR_Studio\
+    \ attributes a unique color to\neach group of spacer and unique spacers.)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --checkFasta
   description: "Verification of the fasta file generated from the GFF\nfile will be\
     \ skipped if this flag is provided. The\nverification is mainly based on the length\
     \ of the\nspacer sequences. If a spacer is 1.5 time shorter or\nlonger than the\
@@ -46,58 +50,54 @@ named:
     \ (Verification\nis ran by default). Correction can be either made in\nthe initial\
     \ gff file or in the fasta file. If the\nlater, provide the name of the fasta\
     \ file after the\nflag (ex. -f corrected_sequences.fasta"
-  synonyms:
-  - -f
-  - --checkFasta
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sort
   description: "The order of the isolates in the figure: Available\noption: CRISPRDetect,\
     \ DistMatrix or File providing a\nlist of the isolates in the desired order.\n\
     CRISPRDetect = order in the gff file. DistMatrix =\nOrder extracted from a distance\
     \ matrix based on the\nsimilarity of the arrays in the isolates. File = Order\n\
     privided in a single column file with the isolates\nnames as the should appear\
     \ in the figure. The option\n-l override this option (Default: DistMatrix)"
-  synonyms:
-  - -s
-  - --sort
   args: !SimpleFlagArg
     name: SORT
-  optional: true
 - !Flag
-  description: "Use this option to keep the same color attributed to\nthe spacer during\
-    \ a previous analysis"
+  optional: true
   synonyms:
   - -r
   - --rerun
+  description: "Use this option to keep the same color attributed to\nthe spacer during\
+    \ a previous analysis"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Set to score cutoff for pairing of the spacers\n(default = 2)"
+  optional: true
   synonyms:
   - -c
   - --cutoff
+  description: "Set to score cutoff for pairing of the spacers\n(default = 2)"
   args: !SimpleFlagArg
     name: CUTOFF
-  optional: true
 - !Flag
-  description: "Show the size of the spacers over the boxed diamonds.\nWe recommend\
-    \ to use this option only for experimental\nanalysis of the data\n"
+  optional: true
   synonyms:
   - -n
   - --spacerSize
+  description: "Show the size of the spacers over the boxed diamonds.\nWe recommend\
+    \ to use this option only for experimental\nanalysis of the data\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: CRISPR_Studio [-h] [-i FILE] [-l FILE] [-gU] [-gS] [-f] [-s SORT]\
@@ -144,3 +144,4 @@ help_text: "usage: CRISPR_Studio [-h] [-i FILE] [-l FILE] [-gU] [-gS] [-f] [-s S
   \ only for experimental\n                        analysis of the data\n"
 generated_using:
 - --help
+docker_image:

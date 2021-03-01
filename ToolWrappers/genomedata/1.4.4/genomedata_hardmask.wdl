@@ -20,6 +20,9 @@ task Genomedatahardmask {
       ~{if (dry_run) then "--dry-run" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     track_name: "Track(s) to be filtered (default: all)"
     hard_mask: "Specify a comparison operation on a value to mask out\\n(e.g. \\\"lt0.5\\\" will mask all values less than 0.5). See\\nthe bash comparison operators for the two letter\\noperations (default: all values masked)"

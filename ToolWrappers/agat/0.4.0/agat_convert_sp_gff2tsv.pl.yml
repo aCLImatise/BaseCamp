@@ -3,31 +3,35 @@ command:
 - agat_convert_sp_gff2tsv.pl
 positional:
 - !Positional
-  description: 'Description:'
+  optional: false
   position: 0
   name: agat_convert_sp_gff2tsv.pl
-  optional: false
+  description: 'Description:'
 named:
 - !Flag
-  description: Input GTF/GFF file.
+  optional: true
   synonyms:
   - --gff
   - -f
+  description: Input GTF/GFF file.
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --ct
   description: "When the features doesn't have Parent/ID relationships, the\nparser\
     \ will try to group features using a common/shared\nattribute (i.e. a locus tag.).\
     \ By default locus_tag and gene_id.\nYou can provide another specific common/shared\
     \ attribute using\nthis option."
-  synonyms:
-  - -c
-  - --ct
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ml
+  - --merge_loci
   description: "Merge loci parameter, default deactivated. You turn on the\nparameter\
     \ if you want to merge loci into one locus when they\noverlap. (at CDS level for\
     \ mRNA, at exon level for other level2\nfeatures. Strand has to be the same).\
@@ -35,30 +39,30 @@ named:
     annotation. In eukaryote, loci rarely overlap. Overlaps could be\ndue to error\
     \ in the file, mRNA can be merged under the same\nparent gene if you acticate\
     \ the option."
-  synonyms:
-  - --ml
-  - --merge_loci
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: ", --output , --out or --outfile\nOutput GFF file. If no output file\
-    \ is specified, the output will\nbe written to STDOUT."
+  optional: true
   synonyms:
   - -o
-  args: !EmptyFlagArg {}
-  optional: true
+  - --output
+  - --out
+  - --outfile
+  description: "Output GFF file. If no output file is specified, the output will\n\
+    be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Display this helpful text.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Display this helpful text.
   args: !SimpleFlagArg
     name: or
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\n ------------------------------------------------------------------------------\n\
@@ -98,3 +102,4 @@ help_text: "\n -----------------------------------------------------------------
   \n"
 generated_using:
 - --help
+docker_image:

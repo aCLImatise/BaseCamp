@@ -1,42 +1,42 @@
 class: CommandLineTool
 id: SOAPdenovo_63mer_pregraph.cwl
 inputs:
-- id: in_configfile_config_file
+- id: in_config_file_solexa
   doc: 'configFile: the config file of solexa reads'
-  type: File
+  type: File?
   inputBinding:
     prefix: -s
 - id: in_outputgraph_prefix_output
   doc: 'outputGraph: prefix of output graph file name'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
-- id: in_kmermin_max_kmer
+- id: in_kmermin_max_size
   doc: 'kmer(min 13, max 63): kmer size, [23]'
-  type: long
+  type: long?
   inputBinding:
     prefix: -K
-- id: in_number_cpu_use
+- id: in_ncpu_number_cpu
   doc: 'n_cpu: number of cpu for use, [8]'
-  type: long
+  type: long?
   inputBinding:
     prefix: -p
 - id: in_initmemoryassumption_memory_assumption
   doc: 'initMemoryAssumption: memory assumption initialized to avoid further reallocation,
     unit GB, [0]'
-  type: long
+  type: long?
   inputBinding:
     prefix: -a
 - id: in_optional_output_information
   doc: (optional)    output extra information for resolving repeats in contig step,
     [NO]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -R
 - id: in_kmerfreqcutoff_kmers_larger
   doc: 'KmerFreqCutoff: kmers with frequency no larger than KmerFreqCutoff will be
     deleted, [0]'
-  type: long
+  type: long?
   inputBinding:
     prefix: -d
 - id: in_pre_graph
@@ -51,9 +51,10 @@ outputs:
   type: stdout
 - id: out_outputgraph_prefix_output
   doc: 'outputGraph: prefix of output graph file name'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outputgraph_prefix_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - SOAPdenovo-63mer

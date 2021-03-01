@@ -30,6 +30,9 @@ task TrainSeqstructhmm {
       ~{if (no_model_state) then "--no_model_state" else ""} \
       ~{if (only_best_shape) then "--only_best_shape" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     motif_length: "length of the motif that shall be found (default: 6)"
     random: "Initialize the model randomly (default: initialize\\nwith Baum-Welch optimized sequence motif)"

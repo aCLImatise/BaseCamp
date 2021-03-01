@@ -4,6 +4,9 @@ task ChainMergeSort {
   command <<<
     chainMergeSort
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

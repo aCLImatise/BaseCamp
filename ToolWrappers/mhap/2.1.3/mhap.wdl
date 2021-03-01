@@ -20,11 +20,11 @@ task Mhap {
     File? store_full_id
     Boolean? supress_noise
     Boolean? threshold
-    File? default_kmer_filter
-    Boolean? default_kmer_size
-    Boolean? only_directory_directory
+    File? default_kmer_file
+    Boolean? default_size_used
+    Boolean? only_directory_containing
     File? default_usage_fasta
-    Boolean? only_fasta_file
+    Boolean? only_fasta_binary
   }
   command <<<
     mhap \
@@ -46,12 +46,15 @@ task Mhap {
       ~{if (store_full_id) then "--store-full-id" else ""} \
       ~{if (supress_noise) then "--supress-noise" else ""} \
       ~{if (threshold) then "--threshold" else ""} \
-      ~{if (default_kmer_filter) then "-f" else ""} \
-      ~{if (default_kmer_size) then "-k" else ""} \
-      ~{if (only_directory_directory) then "-p" else ""} \
+      ~{if (default_kmer_file) then "-f" else ""} \
+      ~{if (default_size_used) then "-k" else ""} \
+      ~{if (only_directory_containing) then "-p" else ""} \
       ~{if (default_usage_fasta) then "-q" else ""} \
-      ~{if (only_fasta_file) then "-s" else ""}
+      ~{if (only_fasta_binary) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filter_threshold: ", default = 1.0E-5\\n[double], The cutoff at which the k-mer in the k-mer filter file is considered repetitive. This value for a specific k-mer is specified in the second column in the filter file. If no filter file is provided, this option is ignored."
     max_shift: ", default = 0.2\\n[double], Region size to the left and right of the estimated overlap, as derived from the median shift and sequence length, where a k-mer matches are still considered valid. Second stage filter only."
@@ -71,16 +74,16 @@ task Mhap {
     store_full_id: ", default = false\\nStore full IDs as seen in FASTA files, rather than storing just the sequence position in the file. Some FASTA files have long IDS, slowing output of results. This options is ignored when using compressed file format. Indexed file (-s) is indexed first, followed by -q files in alphabetical order."
     supress_noise: ", default = 0\\n[int] 0) Does nothing, 1) completely removes any k-mers not specified in the filter file, 2) supresses k-mers not specified in the filter file, similar to repeats."
     threshold: ", default = 0.78\\n[double], The threshold cutoff for the second stage sort-merge filter. This is based on the identity score computed from the Jaccard distance of k-mers (size given by ordered-kmer-size) in the overlapping regions."
-    default_kmer_filter: ", default = \\\"\\\"\\nk-mer filter file used for filtering out highly repetative k-mers. Must be sorted in descending order of frequency (second column)."
-    default_kmer_size: ", default = 16\\n[int], k-mer size used for MinHashing. The k-mer size for second stage filter is seperate, and can also be modified."
-    only_directory_directory: ", default = \\\"\\\"\\nUsage 2 only. The directory containing FASTA files that should be converted to binary format for storage."
+    default_kmer_file: ", default = \\\"\\\"\\nk-mer filter file used for filtering out highly repetative k-mers. Must be sorted in descending order of frequency (second column)."
+    default_size_used: ", default = 16\\n[int], k-mer size used for MinHashing. The k-mer size for second stage filter is seperate, and can also be modified."
+    only_directory_containing: ", default = \\\"\\\"\\nUsage 2 only. The directory containing FASTA files that should be converted to binary format for storage."
     default_usage_fasta: ", default = \\\"\\\"\\nUsage 1: The FASTA file of reads, or a directory of files, that will be compared to the set of reads in the box (see -s). Usage 2: The output directory for the binary formatted dat files."
-    only_fasta_file: ", default = \\\"\\\"\\nUsage 1 only. The FASTA or binary dat file (see Usage 2) of reads that will be stored in a box, and that all subsequent reads will be compared to.\\n"
+    only_fasta_binary: ", default = \\\"\\\"\\nUsage 1 only. The FASTA or binary dat file (see Usage 2) of reads that will be stored in a box, and that all subsequent reads will be compared to.\\n"
   }
   output {
     File out_stdout = stdout()
     File out_store_full_id = "${in_store_full_id}"
-    File out_default_kmer_filter = "${in_default_kmer_filter}"
+    File out_default_kmer_file = "${in_default_kmer_file}"
     File out_default_usage_fasta = "${in_default_usage_fasta}"
   }
 }

@@ -24,6 +24,9 @@ task HgLoadNet {
       ~{if defined(warn) then ("-warn " +  '"' + warn + '"') else ""} \
       ~{if defined(test) then ("-test " +  '"' + test + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_bin: "suppress bin field"
     old_table: "to existing table"

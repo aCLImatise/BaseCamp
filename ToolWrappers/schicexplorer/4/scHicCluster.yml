@@ -3,105 +3,105 @@ command:
 - scHicCluster
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: scHi-C
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: matrix
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "File name to save the resulting clusters (default:\nclusters.txt)"
-  synonyms:
-  - --outFileName
-  - -o
-  args: !SimpleFlagArg
-    name: OUTFILENAME
   optional: true
-- !Flag
-  description: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction\
-    \ matrices to cluster.\nNeeds to be in scool format (default: None)"
   synonyms:
   - --matrix
+  description: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction\
+    \ matrices to cluster.\nNeeds to be in scool format (default: None)"
   args: !SimpleFlagArg
     name: scool
-  optional: true
 - !Flag
-  description: 'Number of to be computed clusters (default: 12)'
+  optional: true
   synonyms:
   - --numberOfClusters
   - -c
+  description: 'Number of to be computed clusters (default: 12)'
   args: !SimpleFlagArg
     name: NUMBEROFCLUSTERS
-  optional: true
 - !Flag
-  description: "Algorithm to cluster the Hi-C matrices (default:\nspectral)"
+  optional: true
   synonyms:
   - --clusterMethod
   - -cm
+  description: "Algorithm to cluster the Hi-C matrices (default:\nspectral)"
   args: !ChoiceFlagArg
     choices: !!set
-      kmeans:
       spectral:
-  optional: true
+      kmeans:
 - !Flag
-  description: 'List of to be plotted chromosomes (default: None)'
+  optional: true
   synonyms:
   - --chromosomes
+  description: 'List of to be plotted chromosomes (default: None)'
   args: !RepeatFlagArg
     name: CHROMOSOMES
-  optional: true
 - !Flag
-  description: "Dimension reduction methods, knn with euclidean\ndistance, pca (default:\
-    \ none)"
+  optional: true
   synonyms:
   - --dimensionReductionMethod
   - -drm
+  description: "Dimension reduction methods, knn with euclidean\ndistance, pca (default:\
+    \ none)"
   args: !ChoiceFlagArg
     choices: !!set
+      pca:
       none:
       knn:
-      pca:
-  optional: true
 - !Flag
-  description: "Number of to be used computed nearest neighbors for\nthe knn graph.\
-    \ Default is either the default value or\nthe number of the provided cells, whatever\
-    \ is smaller.\n(default: 100)"
+  optional: true
   synonyms:
   - --numberOfNearestNeighbors
   - -k
+  description: "Number of to be used computed nearest neighbors for\nthe knn graph.\
+    \ Default is either the default value or\nthe number of the provided cells, whatever\
+    \ is smaller.\n(default: 100)"
   args: !SimpleFlagArg
     name: NUMBEROFNEARESTNEIGHBORS
-  optional: true
 - !Flag
-  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
-    \ 4)"
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: "File name to save the resulting clusters (default:\nclusters.txt)"
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
   synonyms:
   - --threads
   - -t
+  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
+    \ 4)"
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: scHicCluster --matrix scool scHi-C matrix\n                   \
   \ [--numberOfClusters NUMBEROFCLUSTERS]\n                    [--clusterMethod {spectral,kmeans}]\n\
   \                    [--chromosomes CHROMOSOMES [CHROMOSOMES ...]]\n           \
@@ -136,3 +136,4 @@ help_text: "usage: scHicCluster --matrix scool scHi-C matrix\n                  
   \ exit\n"
 generated_using:
 - --help
+docker_image:

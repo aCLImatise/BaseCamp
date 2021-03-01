@@ -16,6 +16,9 @@ task GcloudMlengineVersions {
       ~{list} \
       ~{set_default}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create a new Cloud ML Engine version."
     delete: "Delete an existing Cloud ML Engine version."

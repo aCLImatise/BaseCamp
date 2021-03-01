@@ -4,22 +4,26 @@ command:
 positional: []
 named:
 - !Flag
-  description: "input file. The computation is done per chromosome.\n(default: None)"
+  optional: true
   synonyms:
   - --matrix
   - -m
+  description: "input file. The computation is done per chromosome.\n(default: None)"
   args: !SimpleFlagArg
     name: MATRIX
-  optional: true
 - !Flag
-  description: 'File name to save the exported matrix. (default: None)'
+  optional: true
   synonyms:
   - --outFileName
   - -o
+  description: 'File name to save the exported matrix. (default: None)'
   args: !SimpleFlagArg
     name: OUTFILENAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --method
+  - -me
   description: "Transformation methods to use for input matrix.\nTransformation is\
     \ computed per chromosome.obs_exp\ncomputes the expected matrix as the sum per\
     \ genomic\ndistance j divided by maximal possible contacts:\nsum(diagonal(j) /\
@@ -34,59 +38,55 @@ named:
     \ *\nC_j,j) and C is the covariance matrixcovariance\ncomputes the Covariance\
     \ of the input matrix: Cov_i,j =\nE[M_i, M_j] - my_i * my_j where M is the input\
     \ matrix\nand my the mean. (default: obs_exp)"
-  synonyms:
-  - --method
-  - -me
   args: !ChoiceFlagArg
     choices: !!set
-      obs_exp:
-      pearson:
       covariance:
-      obs_exp_lieberman:
       obs_exp_non_zero:
-  optional: true
+      obs_exp_lieberman:
+      pearson:
+      obs_exp:
 - !Flag
+  optional: true
+  synonyms:
+  - --ligation_factor
   description: "Setting this flag, multiplies a scaling factor to each\nentry of the\
     \ expected matrix to take care of the\nproximity ligation as has been explained\
     \ in Homer\nsoftware. This flag is only affective with\nobs_exp_non_zero method\
     \ and will be ignored if any\nother obs/exp method is chosen. (default: False)"
-  synonyms:
-  - --ligation_factor
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "List of chromosomes to be included in the computation.\n(default:\
-    \ None)"
+  optional: true
   synonyms:
   - --chromosomes
+  description: "List of chromosomes to be included in the computation.\n(default:\
+    \ None)"
   args: !RepeatFlagArg
     name: CHROMOSOMES
-  optional: true
 - !Flag
-  description: "Each chromosome is processed individually, inter-\nchromosomal interactions\
-    \ are ignored. Option not valid\nfor obs_exp_lieberman. (default: False)"
+  optional: true
   synonyms:
   - --perChromosome
   - -pc
+  description: "Each chromosome is processed individually, inter-\nchromosomal interactions\
+    \ are ignored. Option not valid\nfor obs_exp_lieberman. (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this help message and exit.
+  optional: true
   synonyms:
   - --help
   - -h
+  description: Show this help message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: hicTransform --matrix MATRIX --outFileName OUTFILENAME\n      \
   \              [--method {obs_exp,obs_exp_lieberman,obs_exp_non_zero,pearson,covariance}]\n\
   \                    [--ligation_factor]\n                    [--chromosomes CHROMOSOMES\
@@ -132,3 +132,4 @@ help_text: "usage: hicTransform --matrix MATRIX --outFileName OUTFILENAME\n     
   \    show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

@@ -66,6 +66,9 @@ task CaperSubmit {
       ~{if defined(pbs_queue) then ("--pbs-queue " +  '"' + pbs_queue + '"') else ""} \
       ~{if defined(pbs_extra_param) then ("--pbs-extra-param " +  '"' + pbs_extra_param + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dry_run: "Caper does not take any action."
     debug: "Prints all logs >= DEBUG level"

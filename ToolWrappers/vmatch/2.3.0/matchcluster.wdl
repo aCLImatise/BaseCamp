@@ -4,6 +4,9 @@ task Matchcluster {
   command <<<
     matchcluster
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

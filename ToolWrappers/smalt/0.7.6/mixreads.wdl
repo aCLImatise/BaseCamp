@@ -8,6 +8,9 @@ task Mixreads {
     mixreads \
       ~{root_name_fast_q_file_a}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     root_name_fast_q_file_a: ""
   }

@@ -3,12 +3,12 @@ id: obprobe.cwl
 inputs:
 - id: in_step_size
   doc: step size
-  type: long
+  type: long?
   inputBinding:
     prefix: -s
 - id: in_padding
   doc: padding
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_hydroxyl_hydrogen_hbd
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - obprobe

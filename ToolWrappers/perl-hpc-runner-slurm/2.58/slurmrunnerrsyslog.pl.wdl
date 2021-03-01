@@ -3,9 +3,9 @@ version 1.0
 task Slurmrunnerrsyslogpl {
   input {
     Boolean? in_file
-    Boolean? config_file
     Boolean? module
     Boolean? after_ok
+    Boolean? cpus_per_task
     Boolean? man
     Boolean? commands_per_node
     Boolean? nodes_count
@@ -35,9 +35,9 @@ task Slurmrunnerrsyslogpl {
   command <<<
     slurmrunnerrsyslog_pl \
       ~{if (in_file) then "--infile" else ""} \
-      ~{if (config_file) then "--configfile" else ""} \
       ~{if (module) then "--module" else ""} \
       ~{if (after_ok) then "--afterok" else ""} \
+      ~{if (cpus_per_task) then "--cpus_per_task" else ""} \
       ~{if (man) then "--man" else ""} \
       ~{if (commands_per_node) then "--commands_per_node" else ""} \
       ~{if (nodes_count) then "--nodes_count" else ""} \
@@ -64,11 +64,14 @@ task Slurmrunnerrsyslogpl {
       ~{if (job_scheduler_id) then "--job_scheduler_id" else ""} \
       ~{if (job_name) then "--jobname" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "- Str. File of commands separated by newline.\\nThe command 'wait' indicates all previous\\ncommands should finish before starting the\\nnext one."
-    config_file: "- Path|Undef."
     module: "- ArrayRef. List of modules to load ex. R2,\\nsamtools, etc"
     after_ok: "- ArrayRef."
+    cpus_per_task: "- Str. Default=4."
     man: "- Bool. Display man page"
     commands_per_node: "- Str. Default=8. Commands to run on each node.\\nThis is not the same as\\nconcurrent_commands_per_node!"
     nodes_count: "- Str. Default=1. Number of nodes requested.\\nYou should only use this if submitting\\nparallel jobs."

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, File, Boolean, String
+
+Hal2Chain_V0_1_0 = CommandToolBuilder(tool="hal2chain", base_command=["hal2chain"], inputs=[ToolInput(tag="in_cache_bytes", input_type=Int(optional=True), prefix="--cacheBytes", doc=InputDocumentation(doc=":   maximum size in bytes of regular hdf5 cache [default =\n15728640]")), ToolInput(tag="in_cache_mdc", input_type=Int(optional=True), prefix="--cacheMDC", doc=InputDocumentation(doc=":     number of metadata slots in hdf5 cache [default = 113]")), ToolInput(tag="in_cacher_dc", input_type=Int(optional=True), prefix="--cacheRDC", doc=InputDocumentation(doc=":     number of regular slots in hdf5 cache.  should be a prime\nnumber ~= 10 * DefaultCacheRDCBytes / chunk [default =\n599999]")), ToolInput(tag="in_cache_w_zero", input_type=Int(optional=True), prefix="--cacheW0", doc=InputDocumentation(doc=":      w0 parameter fro hdf5 cache [default = 0.75]")), ToolInput(tag="in_chain_file", input_type=File(optional=True), prefix="--chainFile", doc=InputDocumentation(doc=":    path for output file.  stdout if not specified [default = '']")), ToolInput(tag="in_in_memory", input_type=Boolean(optional=True), prefix="--inMemory", doc=InputDocumentation(doc=":             load all data in memory (and disable hdf5 cache) [default =\n0]")), ToolInput(tag="in_length", input_type=Int(optional=True), prefix="--length", doc=InputDocumentation(doc=":       maximum length of chain to output. [default = 0]")), ToolInput(tag="in_max_gap", input_type=Int(optional=True), prefix="--maxGap", doc=InputDocumentation(doc=":       maximum indel length to be considered a gap within a chain.\n[default = 20]")), ToolInput(tag="in_sequence", input_type=String(optional=True), prefix="--sequence", doc=InputDocumentation(doc=":     sequence name in query genome (all sequences if not\nspecified) [default = '']")), ToolInput(tag="in_start", input_type=Int(optional=True), prefix="--start", doc=InputDocumentation(doc=":        start position in query genome [default = 0]")), ToolInput(tag="in_hal_file", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_genome", input_type=String(), position=1, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_chain_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_chain_file", type_hint=File()), doc=OutputDocumentation(doc=":    path for output file.  stdout if not specified [default = '']"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Hal2Chain_V0_1_0().translate("wdl", allow_empty_container=True)
+

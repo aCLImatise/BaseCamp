@@ -3,7 +3,7 @@ id: ReadSeq_select_seqs.cwl
 inputs:
 - id: in_seq_length
   doc: minimum length of sequence
-  type: long
+  type: long?
   inputBinding:
     prefix: --seq_length
 - id: in_ids_file
@@ -28,7 +28,7 @@ inputs:
     position: 3
 - id: in_y_vertical_linen
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 4
 - id: in_seq_file
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ReadSeq

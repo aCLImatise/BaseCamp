@@ -28,6 +28,9 @@ task NcbipyFetchFastas {
       ~{if (tmp_dir_keep) then "--tmp_dirKeep" else ""} \
       ~{if defined(loglevel) then ("--loglevel " +  '"' + loglevel + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force_overwrite: "Overwrite existing files, if present."
     combined_file_prefix: "The prefix of the file containing the combined\\nconcatenated results returned by the list of accession\\nIDs, in the order provided."

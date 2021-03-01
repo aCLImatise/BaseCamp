@@ -38,6 +38,9 @@ task GoalignAddid {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "String to add to sequence names (default \\\"none\\\")"
     out_align: "Renamed alignment output file (default \\\"stdout\\\")"

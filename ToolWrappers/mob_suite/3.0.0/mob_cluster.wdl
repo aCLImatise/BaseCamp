@@ -30,6 +30,9 @@ task MobCluster {
       ~{if defined(secondary_cluster_dist) then ("--secondary_cluster_dist " +  '"' + secondary_cluster_dist + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: "Build: Create a new database from scratch, Update:\\nUpdate an existing database with one or more sequences"
     in_file: "Fasta file of sequences to cluster"

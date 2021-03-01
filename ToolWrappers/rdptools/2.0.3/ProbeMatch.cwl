@@ -3,12 +3,12 @@ id: ProbeMatch.cwl
 inputs:
 - id: in_max_dist
   doc: Give a max distance
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxDist
 - id: in_outfile
   doc: Write output to a file
-  type: File
+  type: File?
   inputBinding:
     prefix: --outFile
 - id: in_primer_match
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: Write output to a file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ProbeMatch

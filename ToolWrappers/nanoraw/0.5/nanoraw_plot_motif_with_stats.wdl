@@ -2,11 +2,11 @@ version 1.0
 
 task NanorawPlotMotifWithStats {
   input {
-    Int? motif
     Array[String] base_call_subgroups
     Boolean? two_d
     Array[Int] fast_five_based_irs
     Array[Int] fast_five_based_irs_two
+    String? motif
     Int? corrected_group
     Int? over_plot_threshold
     String? over_plot_type
@@ -23,11 +23,11 @@ task NanorawPlotMotifWithStats {
   }
   command <<<
     nanoraw plot_motif_with_stats \
-      ~{if defined(motif) then ("--motif " +  '"' + motif + '"') else ""} \
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (two_d) then "--2d" else ""} \
       ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
       ~{if defined(fast_five_based_irs_two) then ("--fast5-basedirs2 " +  '"' + fast_five_based_irs_two + '"') else ""} \
+      ~{if defined(motif) then ("--motif " +  '"' + motif + '"') else ""} \
       ~{if defined(corrected_group) then ("--corrected-group " +  '"' + corrected_group + '"') else ""} \
       ~{if defined(over_plot_threshold) then ("--overplot-threshold " +  '"' + over_plot_threshold + '"') else ""} \
       ~{if defined(over_plot_type) then ("--overplot-type " +  '"' + over_plot_type + '"') else ""} \
@@ -42,12 +42,15 @@ task NanorawPlotMotifWithStats {
       ~{if defined(num_statistics) then ("--num-statistics " +  '"' + num_statistics + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    motif: "[--corrected-group CORRECTED_GROUP]\\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]\\n| --2d]\\n[--overplot-threshold OVERPLOT_THRESHOLD]\\n[--overplot-type {Downsample,Boxplot,Quantile,Violin}]\\n[--obs-per-base-filter OBS_PER_BASE_FILTER [OBS_PER_BASE_FILTER ...]]\\n[--test-type {mw_utest,ttest}]\\n[--fishers-method-offset FISHERS_METHOD_OFFSET]\\n[--minimum-test-reads MINIMUM_TEST_READS]\\n[--pdf-filename PDF_FILENAME]\\n[--statistics-filename STATISTICS_FILENAME]\\n[--num-regions NUM_REGIONS]\\n[--num-context NUM_CONTEXT]\\n[--num-statistics NUM_STATISTICS]\\n[--quiet] [--help]"
     base_call_subgroups: "FAST5 subgroup (under Analyses/[corrected-group])\\nwhere individual template and/or complement reads are\\nstored. Default: ['BaseCalled_template']"
     two_d: "Input contains 2D reads. Equivalent to `--basecall-\\nsubgroups BaseCalled_template BaseCalled_complement`"
     fast_five_based_irs: "Directories containing fast5 files."
     fast_five_based_irs_two: "Second set of directories containing fast5 files to\\ncompare."
+    motif: "A motif to plot the most significant regions genomic\\nregions as well as statistic distributions at each\\ngenomic base in the region. Supports single letter\\ncodes."
     corrected_group: "FAST5 group to access/plot created by\\ngenome_resquiggle script. Default:\\nRawGenomeCorrected_000"
     over_plot_threshold: "Number of reads to trigger alternative plot type\\ninstead of raw signal due to overplotting. Default: 50"
     over_plot_type: "Plot type for regions with higher coverage. Choices:\\nDownsample (default), Boxplot , Quantile, Violin"

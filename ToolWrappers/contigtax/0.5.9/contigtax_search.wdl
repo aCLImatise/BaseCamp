@@ -30,6 +30,9 @@ task ContigtaxSearch {
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""} \
       ~{if defined(taxon_map) then ("--taxonmap " +  '"' + taxon_map + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: "Choice of search mode for diamond: 'blastx' (default)\\nfor DNA query sequences or 'blastp' for amino acid\\nquery sequences"
     cpus: "Number of cpus to use for diamond"

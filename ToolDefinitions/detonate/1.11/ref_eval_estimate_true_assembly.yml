@@ -3,47 +3,50 @@ command:
 - ref-eval-estimate-true-assembly
 positional:
 - !Positional
-  description: '[1] Bo Li*, Nathanael Fillmore*, Yongsheng Bai, Mike Collins, James'
+  optional: false
   position: 0
   name: alignments.
-  optional: false
+  description: '[1] Bo Li*, Nathanael Fillmore*, Yongsheng Bai, Mike Collins, James'
 named:
 - !Flag
-  description: "The prefix of the reference built by rsem-prepare-reference.\nRequired."
+  optional: true
   synonyms:
   - --reference
+  description: "The prefix of the reference built by rsem-prepare-reference.\nRequired."
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "The prefix of the expression built by\nrsem-calculate-expression.\
-    \ Required."
+  optional: true
   synonyms:
   - --expression
+  description: "The prefix of the expression built by\nrsem-calculate-expression.\
+    \ Required."
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --paired-end
   description: "If you have paired-end data, and you want to estimate the\n\"true\"\
     \ scaffolded assembly, then include the --paired-end\nflag. In this case, rsem-calculate-expression\
     \ needs to have\nbeen run with the --paired-end flag. (However, even if\nrsem-calculate-expression\
     \ was run with the --paired-end flag,\nyou can omit it here in order to generate\
     \ an unscaffolded\nassembly. In this case, each mate will be treated as an\nindependent\
     \ read.)"
-  synonyms:
-  - --paired-end
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --assembly
   description: "A prefix to write the \"true\" assembly or sequence of\nassemblies\
     \ to. The suffix _x.fa will be appended to this\nprefix, where x is the minimum\
     \ overlap size. Required."
-  synonyms:
-  - --assembly
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min-overlap
   description: "Either:\n* An integer that specifies how much overlap between two\n\
     reads is required to merge two reads. For example, if\n--min-overlap=3, then only\
     \ reads whose chosen alignments\noverlap by at least 3 bases will be joined into\
@@ -54,22 +57,22 @@ named:
     will be produced, corresponding to --min-overlap=2,\n--min-overlap=3, and --min-overlap=4\
     \ You might use this\noption to compute ideal assemblies at all overlap sizes,\n\
     e.g., --min-overlap=0,76 for 76-length reads.\nDefault: 0."
-  synonyms:
-  - --min-overlap
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min-alignment-prob
   description: "A number between 0 and 1 (inclusive). Any alignment (of a\nread to\
     \ a reference transcript) with posterior probability,\nas calculated by RSEM,\
     \ strictly less than this value will be\ndiscarded. Noise reads, with posterior\
     \ probability exactly 0,\nare always discarded. Default: 0."
-  synonyms:
-  - --min-alignment-prob
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --alignment-policy
   description: "The policy used to choose which alignment(s) of each read to\nuse\
     \ in constructing the \"true\" assembly. Options:\n* sample: For each read, sample\
     \ a single alignment (to\nsome reference transcript) according to the posterior\n\
@@ -88,11 +91,8 @@ named:
     \ example, if\n\"--min-alignment-prob=0.90 --alignment-policy=all\" is given,\n\
     then all alignments with posterior probability at least 0.90\nwill be used.\n\
     Default: sample.\n"
-  synonyms:
-  - --alignment-policy
   args: !SimpleFlagArg
     name: arg
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -180,3 +180,4 @@ help_text: "REF-EVAL-ESTIMATE-TRUE-ASSEMBLY: A program to estimate the \"true\" 
   \n"
 generated_using:
 - --help
+docker_image:

@@ -36,6 +36,9 @@ task ALE {
       ~{if defined(min_qual) then ("--minQual " +  '"' + min_qual + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: ": Kmer depth for kmer stats [4]"
     q_off: ": Quality ascii offset (illumina) [33] or 64 (or 0)"

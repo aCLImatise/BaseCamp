@@ -58,6 +58,9 @@ task TadbitSegment {
       ~{if defined(ev_index) then ("--ev_index " +  '"' + ev_index + '"') else ""} \
       ~{if defined(max_tad_size) then ("--max_tad_size " +  '"' + max_tad_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     workdir: "path to working directory (generated with the tool tadbit mapper)"
     tmp_db: "if provided uses this directory to manipulate the database"

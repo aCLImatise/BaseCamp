@@ -32,6 +32,9 @@ task RgiMain {
       ~{if defined(data) then ("--data " +  '"' + data + '"') else ""} \
       ~{if (split_prodigal_jobs) then "--split_prodigal_jobs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sequence: "input file must be in either FASTA (contig and\\nprotein) or gzip format! e.g myFile.fasta,\\nmyFasta.fasta.gz"
     output_file: "output folder and base filename"

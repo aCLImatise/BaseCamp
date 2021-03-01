@@ -4,41 +4,183 @@ command:
 positional: []
 named:
 - !Flag
-  description: "-t FORMAT, -w FORMAT  --to=FORMAT, --write=FORMAT\n-o FILE       \
-    \        --output=FILE\n--data-dir=DIRECTORY\n--base-header-level=NUMBER\n--strip-empty-paragraphs\n\
-    --indented-code-classes=STRING\n-F PROGRAM            --filter=PROGRAM\n--lua-filter=SCRIPTPATH\n\
-    -p                    --preserve-tabs\n--tab-stop=NUMBER\n--track-changes=accept|reject|all\n\
-    --file-scope\n--extract-media=PATH\n-s                    --standalone\n--template=FILE\n\
-    -M KEY[:VALUE]        --metadata=KEY[:VALUE]\n-V KEY[:VALUE]        --variable=KEY[:VALUE]\n\
-    -D FORMAT             --print-default-template=FORMAT\n--print-default-data-file=FILE\n\
-    --print-highlight-style=STYLE|FILE\n--dpi=NUMBER\n--eol=crlf|lf|native\n--wrap=auto|none|preserve\n\
-    --columns=NUMBER\n--strip-comments\n--toc, --table-of-contents\n--toc-depth=NUMBER\n\
-    --no-highlight\n--highlight-style=STYLE|FILE\n--syntax-definition=FILE\n-H FILE\
-    \               --include-in-header=FILE\n-B FILE               --include-before-body=FILE\n\
-    -A FILE               --include-after-body=FILE\n--resource-path=SEARCHPATH\n\
-    --request-header=NAME:VALUE\n--self-contained\n--html-q-tags\n--ascii\n--reference-links\n\
-    --reference-location=block|section|document\n--atx-headers\n--top-level-division=section|chapter|part\n\
-    -N                    --number-sections\n--number-offset=NUMBERS\n--listings\n\
-    -i                    --incremental\n--slide-level=NUMBER\n--section-divs\n--default-image-extension=extension\n\
-    --email-obfuscation=none|javascript|references\n--id-prefix=STRING\n-T STRING\
-    \             --title-prefix=STRING\n-c URL                --css=URL\n--reference-doc=FILE\n\
-    --epub-subdirectory=DIRNAME\n--epub-cover-image=FILE\n--epub-metadata=FILE\n--epub-embed-font=FILE\n\
-    --epub-chapter-level=NUMBER\n--pdf-engine=PROGRAM\n--pdf-engine-opt=STRING\n--bibliography=FILE\n\
-    --csl=FILE\n--citation-abbreviations=FILE\n--natbib\n--biblatex\n--mathml\n--webtex[=URL]\n\
-    --mathjax[=URL]\n--katex[=URL]\n-m[URL]               --latexmathml[=URL], --asciimathml[=URL]\n\
-    --mimetex[=URL]\n--jsmath[=URL]\n--gladtex\n--abbreviations=FILE\n--trace\n--dump-args\n\
-    --ignore-args\n--verbose\n--quiet\n--fail-if-warnings\n--log=FILE\n--bash-completion\n\
-    --list-input-formats\n--list-output-formats\n--list-extensions[=FORMAT]\n--list-highlight-languages\n\
-    --list-highlight-styles\n-v                    --version\n-h                 \
-    \   --help\n"
+  optional: true
   synonyms:
   - -f
   - -r
   - --from
   - --read
+  - -t
+  - -w
+  - --to
+  - --write
+  - -o
+  - --output
+  - --data-dir
+  - --base-header-level
+  - --strip-empty-paragraphs
+  - --indented-code-classes
+  - -F
+  - --filter
+  - --lua-filter
+  - -p
+  - --preserve-tabs
+  - --tab-stop
+  - --track-changes
+  description: '|reject|all'
   args: !SimpleFlagArg
     name: FORMAT
+- !Flag
   optional: true
+  synonyms:
+  - -V
+  description: '[:VALUE]        --variable=KEY[:VALUE]'
+  args: !SimpleFlagArg
+    name: KEY
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --print-default-template
+  - --print-default-data-file
+  - --print-highlight-style
+  description: '|FILE'
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  - --eol
+  description: '|lf|native'
+  args: !SimpleFlagArg
+    name: NUMBER
+- !Flag
+  optional: true
+  synonyms:
+  - --wrap
+  description: '|none|preserve'
+  args: !SimpleFlagArg
+    name: auto
+- !Flag
+  optional: true
+  synonyms:
+  - --columns
+  - --strip-comments
+  - --toc
+  - --table-of-contents
+  - --toc-depth
+  - --no-highlight
+  - --highlight-style
+  description: '|FILE'
+  args: !SimpleFlagArg
+    name: NUMBER
+- !Flag
+  optional: true
+  synonyms:
+  - --syntax-definition
+  - -H
+  - --include-in-header
+  - -B
+  - --include-before-body
+  - -A
+  - --include-after-body
+  - --resource-path
+  - --request-header
+  description: :VALUE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --self-contained
+  - --html-q-tags
+  - --ascii
+  - --reference-links
+  - --reference-location
+  description: '|section|document'
+  args: !SimpleFlagArg
+    name: block
+- !Flag
+  optional: true
+  synonyms:
+  - --atx-headers
+  - --top-level-division
+  description: '|chapter|part'
+  args: !SimpleFlagArg
+    name: section
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --number-sections
+  - --number-offset
+  - --listings
+  - -i
+  - --incremental
+  - --slide-level
+  - --section-divs
+  - --default-image-extension
+  - --email-obfuscation
+  description: '|javascript|references'
+  args: !SimpleFlagArg
+    name: NUMBERS
+- !Flag
+  optional: true
+  synonyms:
+  - --id-prefix
+  - -T
+  - --title-prefix
+  - -c
+  - --css
+  - --reference-doc
+  - --epub-subdirectory
+  - --epub-cover-image
+  - --epub-metadata
+  - --epub-embed-font
+  - --epub-chapter-level
+  - --pdf-engine
+  - --pdf-engine-opt
+  - --bibliography
+  - --csl
+  - --citation-abbreviations
+  - --natbib
+  - --biblatex
+  - --mathml
+  - --webtex
+  description: '[=URL]'
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --mathjax
+  description: '[=URL]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --katex
+  description: '[=URL]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: '[URL]               --latexmathml[=URL], --asciimathml[=URL]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mimetex
+  description: '[=URL]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --jsmath
+  description: '[=URL]'
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
@@ -132,3 +274,4 @@ help_text: "pandoc [OPTIONS] [FILES]\n  -f FORMAT, -r FORMAT  --from=FORMAT, --r
   \  -h                    --help                                          \n"
 generated_using:
 - --help
+docker_image:

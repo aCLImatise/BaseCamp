@@ -16,7 +16,7 @@ task Plotbmprobs {
     String in
     File in_file
     String script
-    File file
+    File var_file
     String is
     String requires
     String supposed
@@ -61,7 +61,7 @@ task Plotbmprobs {
       ~{in} \
       ~{in_file} \
       ~{script} \
-      ~{file} \
+      ~{var_file} \
       ~{is} \
       ~{requires} \
       ~{supposed} \
@@ -92,6 +92,9 @@ task Plotbmprobs {
       ~{ps} \
       ~{if defined(quiet) then ("--quiet " +  '"' + quiet + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: ""
     read: ""
@@ -107,7 +110,7 @@ task Plotbmprobs {
     in: ""
     in_file: ""
     script: ""
-    file: ""
+    var_file: ""
     is: ""
     requires: ""
     supposed: ""

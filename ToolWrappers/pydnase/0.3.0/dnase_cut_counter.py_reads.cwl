@@ -3,7 +3,7 @@ id: dnase_cut_counter.py_reads.cwl
 inputs:
 - id: in_a
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -A
 - id: in_dnase_cut_counter_do_tpy
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dnase_cut_counter.py

@@ -20,6 +20,9 @@ task RunBowtiepy {
       ~{if defined(var_id) then ("-var_id " +  '"' + var_id + '"') else ""} \
       ~{if defined(job_id) then ("-job_id " +  '"' + job_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bis_map: "Run bowtie with --norc"
     var_id: "HPC environmental variable for JOB ID"

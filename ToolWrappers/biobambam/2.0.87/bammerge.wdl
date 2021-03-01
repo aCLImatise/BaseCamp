@@ -4,6 +4,9 @@ task Bammerge {
   command <<<
     bammerge
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

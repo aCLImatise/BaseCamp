@@ -26,6 +26,9 @@ task XsvStats {
       ~{if (no_headers) then "--no-headers" else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     select: "Select a subset of columns to compute stats for.\\nSee 'xsv select --help' for the format details.\\nThis is provided here because piping 'xsv select'\\ninto 'xsv stats' will disable the use of indexing."
     everything: "Show all statistics available."

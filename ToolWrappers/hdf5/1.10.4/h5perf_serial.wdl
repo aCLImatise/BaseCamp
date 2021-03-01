@@ -32,6 +32,9 @@ task H5perfSerial {
       ~{if (perform_write_tests) then "-w" else ""} \
       ~{if defined(dimensions_sizes_transfer) then ("-x " +  '"' + dimensions_sizes_transfer + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     which_apis_test: "Which APIs to test\\n[default: all of them]"
     selects_chunked_storage: "Selects chunked storage and defines chunks dimensions\\nand sizes\\n[default: Off]"

@@ -3,12 +3,12 @@ id: segmentation_fold_utils_extract_boxed_sequences.cwl
 inputs:
 - id: in_max_inner_dist
   doc: "Maximal distance between the boxes\n(default=250bp)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-inner-dist
 - id: in_bp_extension
   doc: "Extend extracted sequences with this number of\nbases (default: 10bp)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --bp-extension
 - id: in_fast_a_input_file
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - segmentation-fold-utils

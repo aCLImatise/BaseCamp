@@ -4,8 +4,9 @@ task GetDifferentialPeaksReplicatespl {
   input {
     Int? b
     Int? i
-    Boolean? fold_enrichment_bg
+    Boolean? fold_enrichment_default
     Boolean? fdr_bg_default
+    Boolean? fdr
     String? genome
     Boolean? de_seq_two
     Boolean? balanced
@@ -24,8 +25,9 @@ task GetDifferentialPeaksReplicatespl {
       ~{tag_dir_two} \
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
-      ~{if (fold_enrichment_bg) then "-f" else ""} \
+      ~{if (fold_enrichment_default) then "-f" else ""} \
       ~{if (fdr_bg_default) then "-q" else ""} \
+      ~{if (fdr) then "-fdr" else ""} \
       ~{if defined(genome) then ("-genome " +  '"' + genome + '"') else ""} \
       ~{if (de_seq_two) then "-DESeq2" else ""} \
       ~{if (balanced) then "-balanced" else ""} \
@@ -36,13 +38,17 @@ task GetDifferentialPeaksReplicatespl {
       ~{if defined(use_specific_file) then ("-p " +  '"' + use_specific_file + '"') else ""} \
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     b: "[background tagdir2] ..."
     i: "[Input tagdir2] ..."
-    fold_enrichment_bg: "<#> (fold enrichment over bg, default: 2)"
+    fold_enrichment_default: "<#> (fold enrichment over bg, default: 2)"
     fdr_bg_default: "<#> (FDR over bg, default: 0.05)"
+    fdr: "<#>, -F <#>, -L <#> (parameters for findPeaks)"
     genome: "(genome version to use for annotation)"
-    de_seq_two: "| -DESeq | -edgeR (differential stats algorithm, default: DESeq2)"
+    de_seq_two: "(differential stats algorithm, default: DESeq2)"
     balanced: "(normalize signal across peaks, default: normalize to read totals)"
     frag_length: "<#> (standardize estimated fragment length across analysis)"
     all: "(report all peaks, not just differentially regulated)"

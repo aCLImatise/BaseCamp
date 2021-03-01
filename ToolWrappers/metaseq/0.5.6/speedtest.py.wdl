@@ -4,6 +4,9 @@ task Speedtestpy {
   command <<<
     speedtest_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

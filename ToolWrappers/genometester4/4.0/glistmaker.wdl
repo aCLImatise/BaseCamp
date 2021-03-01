@@ -22,6 +22,9 @@ task Glistmaker {
       ~{if (table_size) then "--table_size" else ""} \
       ~{if (increase_debug_level) then "-D" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     word_length: "- specify index wordsize (1-32) (default 16)"
     cut_off: "- specify frequency cut-off (default 1)"

@@ -4,7 +4,7 @@ task Rcf {
   input {
     File? nodes_path
     Int? format
-    File? file
+    File? centrifuge_output_files
     File? generic
     File? lm_at
     File? clark
@@ -33,7 +33,7 @@ task Rcf {
       ~{checks} \
       ~{if defined(nodes_path) then ("--nodespath " +  '"' + nodes_path + '"') else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(centrifuge_output_files) then ("--file " +  '"' + centrifuge_output_files + '"') else ""} \
       ~{if defined(generic) then ("--generic " +  '"' + generic + '"') else ""} \
       ~{if defined(lm_at) then ("--lmat " +  '"' + lm_at + '"') else ""} \
       ~{if defined(clark) then ("--clark " +  '"' + clark + '"') else ""} \
@@ -56,10 +56,13 @@ task Rcf {
       ~{if (sequential) then "--sequential" else ""} \
       ~{if (v) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nodes_path: "path for the nodes information files (nodes.dmp and\\nnames.dmp from NCBI)"
     format: "Format of the output files from a generic classifier\\nincluded with the option -g. It is a string like\\n\\\"TYP:csv,TID:1,LEN:3,SCO:6,UNC:0\\\" where valid file\\nTYPes are csv/tsv/ssv, and the rest of fields indicate\\nthe number of column used (starting in 1) for the\\nTaxIDs assigned, the LENgth of the read, the SCOre\\ngiven to the assignment, and the taxid code used for\\nUNClassified reads"
-    file: "Centrifuge output files. If a single directory is\\nentered, every .out file inside will be taken as a\\ndifferent sample. Multiple -f is available to include\\nseveral Centrifuge samples."
+    centrifuge_output_files: "Centrifuge output files. If a single directory is\\nentered, every .out file inside will be taken as a\\ndifferent sample. Multiple -f is available to include\\nseveral Centrifuge samples."
     generic: "Output file from a generic classifier. It requires the\\nflag --format (see such option for details). Multiple\\n-g is available to include several generic samples."
     lm_at: "LMAT output dir or file prefix. If just \\\".\\\" is\\nentered, every subdirectory under the current\\ndirectory will be taken as a sample and scanned\\nlooking for LMAT output files. Multiple -l is\\navailable to include several samples."
     clark: "CLARK full-mode output files. If a single directory is\\nentered, every .csv file inside will be taken as a\\ndifferent sample. Multiple -r is available to include\\nseveral CLARK, CLARK-l, and CLARK-S full-mode samples."
@@ -85,7 +88,7 @@ task Rcf {
   }
   output {
     File out_stdout = stdout()
-    File out_file = "${in_file}"
+    File out_centrifuge_output_files = "${in_centrifuge_output_files}"
     File out_generic = "${in_generic}"
     File out_lm_at = "${in_lm_at}"
     File out_clark = "${in_clark}"

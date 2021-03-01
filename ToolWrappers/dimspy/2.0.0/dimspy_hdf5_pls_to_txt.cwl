@@ -4,23 +4,24 @@ inputs:
 - id: in_input
   doc: "HDF5 file that contains a list of peaklist objects\nfrom one of the processing\
     \ steps."
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: Directory to write to.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 - id: in_delimiter
   doc: "Values on each line of the file are separated by this\ncharacter.\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --delimiter
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dimspy

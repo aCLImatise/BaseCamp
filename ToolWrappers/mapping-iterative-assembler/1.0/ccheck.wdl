@@ -24,6 +24,9 @@ task Ccheck {
       ~{if (table) then "--table" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "FASTA file with the likely contaminant (default: builtin mt311)"
     ancient: "Treat DNA as ancient (i.e. likely deaminated)"

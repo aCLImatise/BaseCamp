@@ -29,13 +29,13 @@ task Aragorn {
     Boolean? gc_thr_aust
     Boolean? gcp_tero
     Boolean? gcg_rac
-    Boolean? assume_sequence_circulartopology
-    Boolean? assume_sequence_lineartopology
+    Boolean? circulartopology_search_wraps
+    Boolean? assume_lineartopology_search
     Boolean? double_search_strands
-    Boolean? s_single_search
+    Boolean? single_search_strand
     String? sc
     Boolean? io
-    Boolean? same_fix_intron
+    Boolean? same_i_intron
     Boolean? if_o
     Boolean? ir
     Boolean? c_seven
@@ -47,7 +47,7 @@ task Aragorn {
     Boolean? f_on
     Boolean? fos
     Boolean? fons
-    Boolean? verbose_prints_out
+    Boolean? verbose_prints_information
     Boolean? print_trna_domain
     Boolean? a_seven
     Boolean? aa
@@ -91,13 +91,13 @@ task Aragorn {
       ~{if (gc_thr_aust) then "-gcthraust" else ""} \
       ~{if (gcp_tero) then "-gcptero" else ""} \
       ~{if (gcg_rac) then "-gcgrac" else ""} \
-      ~{if (assume_sequence_circulartopology) then "-c" else ""} \
-      ~{if (assume_sequence_lineartopology) then "-l" else ""} \
+      ~{if (circulartopology_search_wraps) then "-c" else ""} \
+      ~{if (assume_lineartopology_search) then "-l" else ""} \
       ~{if (double_search_strands) then "-d" else ""} \
-      ~{if (s_single_search) then "-s" else ""} \
+      ~{if (single_search_strand) then "-s" else ""} \
       ~{if defined(sc) then ("-sc " +  '"' + sc + '"') else ""} \
       ~{if (io) then "-io" else ""} \
-      ~{if (same_fix_intron) then "-if" else ""} \
+      ~{if (same_i_intron) then "-if" else ""} \
       ~{if (if_o) then "-ifo" else ""} \
       ~{if (ir) then "-ir" else ""} \
       ~{if (c_seven) then "-c7" else ""} \
@@ -109,7 +109,7 @@ task Aragorn {
       ~{if (f_on) then "-fon" else ""} \
       ~{if (fos) then "-fos" else ""} \
       ~{if (fons) then "-fons" else ""} \
-      ~{if (verbose_prints_out) then "-v" else ""} \
+      ~{if (verbose_prints_information) then "-v" else ""} \
       ~{if (print_trna_domain) then "-a" else ""} \
       ~{if (a_seven) then "-a7" else ""} \
       ~{if (aa) then "-aa" else ""} \
@@ -122,6 +122,9 @@ task Aragorn {
       ~{if (w_unix) then "-wunix" else ""} \
       ~{if (if_ro) then "-ifro" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "<filename>"
     search_tmrna_genes: "Search for tmRNA genes."
@@ -150,13 +153,13 @@ task Aragorn {
     gc_thr_aust: "Use Thraustochytrium mitochondrial genetic code."
     gcp_tero: "Use Pterobranchia mitochondrial genetic code."
     gcg_rac: "Use Gracilibacteria genetic code.\\nIndividual modifications can be appended using"
-    assume_sequence_circulartopology: "Assume that each sequence has a circular\\ntopology. Search wraps around each end.\\nDefault setting."
-    assume_sequence_lineartopology: "Assume that each sequence has a linear\\ntopology. Search does not wrap."
+    circulartopology_search_wraps: "Assume that each sequence has a circular\\ntopology. Search wraps around each end.\\nDefault setting."
+    assume_lineartopology_search: "Assume that each sequence has a linear\\ntopology. Search does not wrap."
     double_search_strands: "Double. Search both strands of each\\nsequence. Default setting."
-    s_single_search: "or -s+    Single. Do not search the complementary\\n(antisense) strand of each sequence."
+    single_search_strand: "or -s+    Single. Do not search the complementary\\n(antisense) strand of each sequence."
     sc: "Single complementary. Do not search the sense\\nstrand of each sequence."
     io: "Same as -i, but allow tRNA genes with long\\nintrons to overlap shorter tRNA genes."
-    same_fix_intron: "Same as -i, but fix intron between positions\\n37 and 38 on C-loop (one base after anticodon)."
+    same_i_intron: "Same as -i, but fix intron between positions\\n37 and 38 on C-loop (one base after anticodon)."
     if_o: "Same as -if and -io combined."
     ir: "Same as -i, but report tRNA genes with minimum\\nlength <min> bases rather than search for\\ntRNA genes with minimum length <min> bases.\\nWith this switch, <min> acts as an output filter,\\nminimum intron length for searching is still 0 bases."
     c_seven: "Search for tRNA genes with 7 base C-loops only."
@@ -168,7 +171,7 @@ task Aragorn {
     f_on: "Same as -fo, with sequence and gene numbering in header."
     fos: "Same as -fo, with no spaces in header."
     fons: "Same as -fo, with sequence and gene numbering, but no spaces.\\nas (<species>|<species>) instead of ???"
-    verbose_prints_out: "Verbose. Prints out information during\\nsearch to STDERR."
+    verbose_prints_information: "Verbose. Prints out information during\\nsearch to STDERR."
     print_trna_domain: "Print out tRNA domain for tmRNA genes."
     a_seven: "Restrict tRNA astem length to a maximum of 7 bases"
     aa: "Display message if predicted iso-acceptor species\\ndoes not match species in sequence name (if present)."

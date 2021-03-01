@@ -38,6 +38,9 @@ task PyScaf {
       ~{if defined(load) then ("--load " +  '"' + load + '"') else ""} \
       ~{if defined(mapq) then ("--mapq " +  '"' + mapq + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "assembly FASTA file"
     output_stream: "output stream [scaffolds.fa]"

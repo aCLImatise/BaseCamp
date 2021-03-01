@@ -22,6 +22,9 @@ task Ecodbtaxstat {
       ~{if defined(required) then ("--required " +  '"' + required + '"') else ""} \
       ~{if defined(ignore) then ("--ignore " +  '"' + ignore + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Set logging in debug mode"
     without_progress_bar: "desactivate progress bar"

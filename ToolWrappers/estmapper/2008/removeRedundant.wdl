@@ -10,6 +10,9 @@ task RemoveRedundant {
       ~{polishes_file} \
       ~{if (gff_three) then "-gff3" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff_three: ""
     polishes_file: ""

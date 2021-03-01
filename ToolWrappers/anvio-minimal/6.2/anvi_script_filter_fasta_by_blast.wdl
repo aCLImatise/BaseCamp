@@ -18,6 +18,9 @@ task Anviscriptfilterfastabyblast {
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
       ~{if (just_do_it) then "--just-do-it" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_file: "A FASTA-formatted input file"
     output_file: "File path to store results."

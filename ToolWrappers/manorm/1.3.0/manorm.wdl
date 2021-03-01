@@ -46,6 +46,9 @@ task Manorm {
       ~{if (write_all) then "--write-all" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Enable verbose log messages."
     peak_one: "Peak file of sample 1."

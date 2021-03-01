@@ -1,15 +1,11 @@
 version 1.0
 
 task GcloudTopicResourcekeys {
-  input {
-    String foo
-  }
   command <<<
-    gcloud topic resource_keys \
-      ~{foo}
+    gcloud topic resource_keys
   >>>
-  parameter_meta {
-    foo: "foo.bar"
+  runtime {
+    docker: "None"
   }
   output {
     File out_stdout = stdout()

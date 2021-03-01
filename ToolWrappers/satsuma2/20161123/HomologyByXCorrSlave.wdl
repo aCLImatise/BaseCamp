@@ -8,6 +8,9 @@ task HomologyByXCorrSlave {
     HomologyByXCorrSlave \
       ~{if (master) then "-master" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     master: "<string> : name of the submit host"
   }

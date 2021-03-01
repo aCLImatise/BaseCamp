@@ -16,6 +16,9 @@ task MotifRaptorCelltype {
       ~{if defined(workdir) then ("--workdir " +  '"' + workdir + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     snp_hit_with_seq: "need header and columns in this text file with\\nsequence (CHR is only a number): ID CHR POS REF ALT"
     snp_hit: "need header and columns in this text file (CHR is only\\na number): ID CHR POS"

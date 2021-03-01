@@ -22,6 +22,9 @@ task AmptkSummarize {
       ~{if (percent) then "--percent" else ""} \
       ~{if (font_size) then "--font_size" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     table: "OTU Table containing Taxonomy information (Required)"
     out: "Base name for output files. Default: amptk-summary"

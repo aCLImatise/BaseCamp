@@ -50,6 +50,9 @@ task GtftkMkMatrix {
       ~{if (logger_file) then "--logger-file" else ""} \
       ~{if (write_message_to_file) then "--write-message-to-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "A GTF file or bed file. A GTF if <stdin>. (default: <stdin>)"
     bigwig_list: "A list of Bigwig files (last argument). (default: None)"

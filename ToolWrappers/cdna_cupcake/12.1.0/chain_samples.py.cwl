@@ -3,22 +3,22 @@ id: chain_samples.py.cwl
 inputs:
 - id: in_fuzzy_junction
   doc: "Max allowed distance in junction to be considered\nidentical (default: 0 bp)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --fuzzy_junction
 - id: in_dun_merge_five_shorter
   doc: "Don't collapse shorter 5' transcripts (default: off)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dun-merge-5-shorter
 - id: in_max_three_diff
   doc: "Maximum 3' difference allowed (default: 30bp)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_3_diff
 - id: in_cpus
   doc: 'Number of CPUs to use for multi-threading (default: 8)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --cpus
 - id: in_config_file
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - chain_samples.py

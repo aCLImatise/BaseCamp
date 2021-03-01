@@ -42,6 +42,9 @@ task BpGenbankRefExtractor {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (very_verbose) then "--very-verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly: "When retrieving the sequence, a specific assemly can be defined. The\\nvalue expected is a regex that will be case-insensitive. If it\\nmatches more than one assembly, it will use the first match. It\\ndefauls to \\\"(primary|reference) assembly\\\"."
     debug: "If set, even more output will be printed that may help on debugging.\\nUnlike the messages from --verbose and --very-verbose, these will\\nnot appear on the log file unless this option is selected. This\\noption also sets --very-verbose."

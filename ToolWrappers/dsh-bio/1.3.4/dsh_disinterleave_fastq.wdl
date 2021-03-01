@@ -16,6 +16,9 @@ task Dshdisinterleavefastq {
       ~{if (first_fast_q_file) then "--first-fastq-file" else ""} \
       ~{if (second_fast_q_file) then "--second-fastq-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     paired_file: "[class java.io.File]  interleaved paired FASTQ input file [required]"

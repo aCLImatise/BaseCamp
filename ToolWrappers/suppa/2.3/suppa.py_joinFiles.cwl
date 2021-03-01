@@ -9,12 +9,12 @@ inputs:
     prefix: --input-files
 - id: in_file_extension
   doc: Extension of the output file. Required.
-  type: File
+  type: File?
   inputBinding:
     prefix: --file-extension
 - id: in_output
   doc: "Name of the output file.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -23,14 +23,15 @@ outputs:
   type: stdout
 - id: out_file_extension
   doc: Extension of the output file. Required.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_file_extension)
 - id: out_output
   doc: "Name of the output file.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - suppa.py

@@ -4,21 +4,242 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - --base
+  - --base-fname
+  description: "base filename for backbone sequence, variants, and\nlinking info (default:\
+    \ hla)"
   args: !SimpleFlagArg
     name: BASE_FNAME
+- !Flag
   optional: true
+  synonyms:
+  - --locus-list
+  description: "A comma-separated list of genes (default: empty, all\ngenes)"
+  args: !SimpleFlagArg
+    name: LOCUS_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - --genotype-genome
+  description: "Base name for genotype genome, which the program will\nuse instead\
+    \ of region-based small indexes (default:\nempty)"
+  args: !SimpleFlagArg
+    name: GENOTYPE_GENOME
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: FASTA format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  description: filename for single-end reads
+  args: !SimpleFlagArg
+    name: READ_FNAME_U
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: filename for paired-end reads
+  args: !SimpleFlagArg
+    name: READ_FNAME_1
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: filename for paired-end reads
+  args: !SimpleFlagArg
+    name: READ_FNAME_2
+- !Flag
+  optional: true
+  synonyms:
+  - --alignment
+  description: BAM file name
+  args: !SimpleFlagArg
+    name: ALIGNMENT_FNAME
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --threads
+  description: Number of threads
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --no-partial
+  description: Include partial alleles (e.g. A_nuc.fasta)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --aligner-list
+  description: "A comma-separated list of aligners such as\nhisat2.graph,hisat2.linear,bowtie2.linear\
+    \ (default:\nhisat2.graph)"
+  args: !SimpleFlagArg
+    name: ALIGNERS
+- !Flag
+  optional: true
+  synonyms:
+  - --simulate-interval
+  description: "Reads simulated at every these base pairs (default:\n10)"
+  args: !SimpleFlagArg
+    name: SIMULATE_INTERVAL
+- !Flag
+  optional: true
+  synonyms:
+  - --read-len
+  description: 'Length of simulated reads (default: 100)'
+  args: !SimpleFlagArg
+    name: READ_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - --fragment-len
+  description: 'Length of fragments (default: 350)'
+  args: !SimpleFlagArg
+    name: FRAGMENT_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - --best-alleles
+  - --random-seed
+  description: 'A seeding number for randomness (default: 1)'
+  args: !SimpleFlagArg
+    name: RANDOM_SEED
+- !Flag
+  optional: true
+  synonyms:
+  - --num-editdist
+  description: "Maximum number of mismatches per read alignment to be\nconsidered\
+    \ (default: 2)"
+  args: !SimpleFlagArg
+    name: NUM_EDITDIST
+- !Flag
+  optional: true
+  synonyms:
+  - --perbase-errorrate
+  description: "Per basepair error rate in percentage when simulating\nreads (default:\
+    \ 0.0)"
+  args: !SimpleFlagArg
+    name: PERBASE_ERRORRATE
+- !Flag
+  optional: true
+  synonyms:
+  - --perbase-snprate
+  description: "Per basepair SNP rate in percentage when simulating\nreads (default:\
+    \ 0.0)"
+  args: !SimpleFlagArg
+    name: PERBASE_SNPRATE
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-fragment-regions
+  description: "A comma-separated list of regions from which no reads\noriginate,\
+    \ e.g., 500-600,1200-1400 (default: None)."
+  args: !SimpleFlagArg
+    name: SKIP_FRAGMENT_REGIONS
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: also print some statistics to stderr
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose-level
+  description: 'also print some statistics to stderr (default: 0)'
+  args: !SimpleFlagArg
+    name: VERBOSE_LEVEL
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: e.g., test_id:10,read_id:10000,basic_test
+  args: !SimpleFlagArg
+    name: DEBUG
+- !Flag
+  optional: true
+  synonyms:
+  - --output-base
+  - --assembly-base
+  description: 'base file name (default: assembly_graph)'
+  args: !SimpleFlagArg
+    name: OUTPUT_BASE
+- !Flag
+  optional: true
+  synonyms:
+  - --assembly
+  description: Perform assembly
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-error-correction
+  description: Correct sequencing errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-alignment
+  description: Keep alignment file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --only-locus-list
+  description: "A comma-separated list of genes (default: empty, all\ngenes)"
+  args: !SimpleFlagArg
+    name: ONLY_LOCUS_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - --discordant
+  description: Allow discordantly mapped pairs or singletons
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --type-primary-exons
+  description: Look at primary exons first
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-low-abundance-alleles
+  description: "Do not remove alleles with low abundance while\nperforming typing"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --assembly-verbose
+  description: Output intermediate assembly information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --display-alleles
+  description: "A comma-separated list of alleles to display in HTML\n(default: empty)\n"
+  args: !SimpleFlagArg
+    name: DISPLAY_ALLELES
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: hisatgenotype_locus.py [-h] [--base BASE_FNAME]\n             \
@@ -85,3 +306,4 @@ help_text: "usage: hisatgenotype_locus.py [-h] [--base BASE_FNAME]\n            
   \ list of alleles to display in HTML\n                        (default: empty)\n"
 generated_using:
 - --help
+docker_image:

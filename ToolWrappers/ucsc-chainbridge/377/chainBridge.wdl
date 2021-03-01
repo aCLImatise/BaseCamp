@@ -18,6 +18,9 @@ task ChainBridge {
       ~{if defined(score_scheme) then ("-scoreScheme " +  '"' + score_scheme + '"') else ""} \
       ~{if defined(linear_gap) then ("-linearGap " +  '"' + linear_gap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_gap: "Maximum size of double-sided gap to try to bridge (default: 6000)\\nNote: there is no size limit for exact sequence matches"
     score_scheme: "Read the scoring matrix from a blastz-format file"

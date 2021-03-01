@@ -16,6 +16,9 @@ task BiomSummarizetable {
       ~{if (qualitative) then "--qualitative" else ""} \
       ~{if (observations) then "--observations" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fp: "The input BIOM table  [required]"
     output_fp: "An output file-path"

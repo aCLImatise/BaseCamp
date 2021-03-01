@@ -20,6 +20,9 @@ task Showaligns {
       ~{if defined(set_screen_width) then ("-w " +  '"' + set_screen_width + '"') else ""} \
       ~{if defined(set_matrix_type) then ("-x " +  '"' + set_matrix_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sort_alignments_query: "Sort alignments by the query start coordinate"
     sort_alignments_reference: "Sort alignments by the reference start coordinate"

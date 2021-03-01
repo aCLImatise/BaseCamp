@@ -3,115 +3,199 @@ command:
 - visualize_rna.py
 positional:
 - !Positional
-  description: "One or more files containing one or more RNAs each.\nSupported Filetypes\
-    \ are: pdb files, forgi cg files"
+  optional: false
   position: 0
   name: rna
-  optional: false
+  description: "One or more files containing one or more RNAs each.\nSupported Filetypes\
+    \ are: pdb files, forgi cg files"
 named:
 - !Flag
-  description: "Allow pseudoknots when extracting the structure from\nPDB files."
+  optional: true
+  synonyms:
+  - --keep-length-one-stems
+  description: "For all input formats except forgi bg/cg files, this\ncontrolls whether\
+    \ stems of length one are dissolved to\nunpaired regions (default) or kept (if\
+    \ this option is\npresent). In the case of input in forgi-format, the\nRNA from\
+    \ the file is not modified."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --thin-cylinders
+  description: Make coarse_grain RNA thinner
+  args: !SimpleFlagArg
+    name: THIN_CYLINDERS
+- !Flag
+  optional: true
+  synonyms:
+  - --virtual-atoms
+  - --rainbow
+  description: Color virtual atoms (if displayed) depending on the
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --virtual-residues
+  description: Display the virtual residues as spheres
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --only-elements
+  description: Display only these elements, separated by commas
+  args: !SimpleFlagArg
+    name: ONLY_ELEMENTS
+- !Flag
+  optional: true
+  synonyms:
+  - --no-loops
+  description: Don't display the coarse-grain hairpin loops
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --longrange
+  description: Display long-range interactions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stem-color
+  description: The default stem color in coarse-grain drawings
+  args: !SimpleFlagArg
+    name: STEM_COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - --multiloop-color
+  description: The default multiloop color in coarse-grain drawings
+  args: !SimpleFlagArg
+    name: MULTILOOP_COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --text
+  description: Add labels indicating the element names to the figure.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --labels
+  description: "Add labels to elements. Expects a comma seperated\nstring of element:label,\
+    \ like 'm0:LookHere' to display\n'LookHere' at the center of 'm0'."
+  args: !SimpleFlagArg
+    name: LABELS
+- !Flag
+  optional: true
+  synonyms:
+  - --sidechain-atoms
+  description: Include the sidechain atoms. Automatically enables
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --element-colors
+  description: "Specify a color for certain elements (comma-separated\nelement names\
+    \ or element_name:color)Example: \"m1,m2\"\n(makes m1, m2 purple) or\n\"m0:red,m1:green,s0:AA11GG,default:black\"\
+    , where\n\"AA11GG\" is a hex value and \"default\" addresses all\nother elements.\
+    \ Warning: colors not understood by\nPYMOL will be interpreted as black."
+  args: !SimpleFlagArg
+    name: ELEMENT_COLORS
+- !Flag
+  optional: true
+  synonyms:
+  - --align
+  description: Align the RNAs (if multiple are provided)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Create a picture of the scene and exit
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --batch
+  description: Start pymol in batch mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --pseudoknots
+  description: "Allow pseudoknots when extracting the structure from\nPDB files."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "When reading pdb-files: Only extract the given\nchain(s). Comma-seperated"
+  optional: true
   synonyms:
   - --chains
+  description: "When reading pdb-files: Only extract the given\nchain(s). Comma-seperated"
   args: !SimpleFlagArg
     name: CHAINS
-  optional: true
 - !Flag
-  description: "When reading a single chain from a pdb-files: Enforce\nthe secondary\
-    \ structure given as dotbracket string.\n(This only works, if --chain is given!)"
+  optional: true
   synonyms:
   - --pdb-secondary-structure
+  description: "When reading a single chain from a pdb-files: Enforce\nthe secondary\
+    \ structure given as dotbracket string.\n(This only works, if --chain is given!)"
   args: !SimpleFlagArg
     name: PDB_SECONDARY_STRUCTURE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pdb-annotation-tool
   description: "What program to use for detecting basepairs in PDB/\nMMCIF structures.\
     \ This commandline option overrides\nthe value in the config file (if present).If\
     \ this is\nnot present and no config-file is given, we try to\ndetect the installed\
     \ programs."
-  synonyms:
-  - --pdb-annotation-tool
   args: !SimpleFlagArg
     name: PDB_ANNOTATION_TOOL
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pdb-allow-www-query
   description: "Usually, if modified residues/ ligand with an unknown\n3-letter code\
     \ are encountered in PDB files, they are\nremoved from the chain and a log message\
     \ of severity\nINFO is issued. With this option, we first try to\nquery the PDBeChem\
     \ database for the 3-letter code, to\nsee whether or not it is a modified residue\
     \ that can\nbe converted to its standard parent and should be part\nof the chain."
-  synonyms:
-  - --pdb-allow-www-query
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Show verbose output (Output logged at level\nlogging.INFO)"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: "Show verbose output (Output logged at level\nlogging.INFO)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --debug
   description: "[DEBUG]       A comma-seperated list of logger names for which debug\n\
     output will be activated.WARNING: If you misspell the\nlogger name, this argument\
     \ will be ignored"
-  synonyms:
-  - --debug
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -q
   description: "[QUIET], --quiet [QUIET]\nA comma-seperated list of logger names for\
     \ which only\nmessages logged at the level 'CRITICAL' will be\nshown.Use this\
     \ without arguments if everything should\nbe quiet.\n"
-  synonyms:
-  - -q
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --keep-length-one-stems
-  args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--keep-length-one-stems\nFor all\
-    \ input formats except forgi bg/cg files, this\ncontrolls whether stems of length\
-    \ one are dissolved to\nunpaired regions (default) or kept (if this option is\n\
-    present). In the case of input in forgi-format, the\nRNA from the file is not\
-    \ modified.\n--thin-cylinders THIN_CYLINDERS\nMake coarse_grain RNA thinner\n\
-    --virtual-atoms       Display the virtual atoms\n--virtual-residues    Display\
-    \ the virtual residues as spheres\n--only-elements ONLY_ELEMENTS\nDisplay only\
-    \ these elements, separated by commas\n--no-loops            Don't display the\
-    \ coarse-grain hairpin loops\n--longrange           Display long-range interactions\n\
-    --stem-color STEM_COLOR\nThe default stem color in coarse-grain drawings\n--multiloop-color\
-    \ MULTILOOP_COLOR\nThe default multiloop color in coarse-grain drawings\n-x, --text\
-    \            Add labels indicating the element names to the figure.\n--labels\
-    \ LABELS       Add labels to elements. Expects a comma seperated\nstring of element:label,\
-    \ like 'm0:LookHere' to display\n'LookHere' at the center of 'm0'.\n--sidechain-atoms\
-    \     Include the sidechain atoms. Automatically enables\n--virtual-atoms\n--rainbow\
-    \             Color virtual atoms (if displayed) depending on the\nnucleotide\
-    \ position.\n--element-colors ELEMENT_COLORS\nSpecify a color for certain elements\
-    \ (comma-separated\nelement names or element_name:color)Example: \"m1,m2\"\n(makes\
-    \ m1, m2 purple) or\n\"m0:red,m1:green,s0:AA11GG,default:black\", where\n\"AA11GG\"\
-    \ is a hex value and \"default\" addresses all\nother elements. Warning: colors\
-    \ not understood by\nPYMOL will be interpreted as black.\n--align            \
-    \   Align the RNAs (if multiple are provided)\n-o OUTPUT, --output OUTPUT\nCreate\
-    \ a picture of the scene and exit\n--batch               Start pymol in batch\
-    \ mode"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: visualize_rna.py [-h] [--keep-length-one-stems] [--pseudoknots]\n\
@@ -188,3 +272,4 @@ help_text: "usage: visualize_rna.py [-h] [--keep-length-one-stems] [--pseudoknot
   \ if everything should\n                        be quiet.\n"
 generated_using:
 - --help
+docker_image:

@@ -54,6 +54,9 @@ task SamtoolsCoverage {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam_list: "list of input BAM filenames, one per line"
     min_read_len: "ignore reads shorter than INT bp [0]"

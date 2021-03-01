@@ -54,6 +54,9 @@ task CsvtkGrep {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     delete_matched: "delete a pattern right after being matched, this keeps the firstly matched data and speedups when using regular expressions"
     fields: "comma separated key fields, column name or index. e.g. -f 1-3 or -f id,id2 or -F -f \\\"group*\\\" (default \\\"1\\\")"

@@ -22,6 +22,9 @@ task TaxonkitName2taxid {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_field: "field index of name. data should be tab-separated (default 1)"
     sci_name: "only searching scientific names"

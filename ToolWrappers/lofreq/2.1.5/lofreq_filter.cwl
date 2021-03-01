@@ -1,145 +1,144 @@
 class: CommandLineTool
 id: lofreq_filter.cwl
 inputs:
-- id: in__file_vcf_input
-  doc: '| --in FILE                 VCF input file (no streaming supported; gzip supported)'
-  type: boolean
+- id: in_in
+  doc: VCF input file (no streaming supported; gzip supported)
+  type: File?
   inputBinding:
-    prefix: -i
-- id: in__file_vcf_output
-  doc: '| --out FILE                VCF output file (default: - for stdout; gzip supported).'
-  type: File
+    prefix: --in
+- id: in_out
+  doc: 'VCF output file (default: - for stdout; gzip supported).'
+  type: File?
   inputBinding:
-    prefix: -o
-- id: in__covmin_coverage
-  doc: '| --cov-min INT             Minimum coverage allowed (<1=off)'
-  type: boolean
+    prefix: --out
+- id: in_cov_min
+  doc: Minimum coverage allowed (<1=off)
+  type: long?
   inputBinding:
-    prefix: -v
-- id: in__covmax_int
-  doc: '| --cov-max INT             Maximum coverage allowed (<1=off)'
-  type: boolean
+    prefix: --cov-min
+- id: in_cov_max
+  doc: Maximum coverage allowed (<1=off)
+  type: long?
   inputBinding:
-    prefix: -V
-- id: in__afmin_float
-  doc: '| --af-min FLOAT            Minimum allele freq allowed (<1=off)'
-  type: boolean
+    prefix: --cov-max
+- id: in_af_min
+  doc: Minimum allele freq allowed (<1=off)
+  type: double?
   inputBinding:
-    prefix: -a
-- id: in__afmax_float
-  doc: '| --af-max FLOAT            Maximum allele freq allowed (<1=off)'
-  type: boolean
+    prefix: --af-min
+- id: in_af_max
+  doc: Maximum allele freq allowed (<1=off)
+  type: double?
   inputBinding:
-    prefix: -A
-- id: in__sbthresh_int
-  doc: '| --sb-thresh INT           Maximum phred-value allowed. Conflicts with -b.'
-  type: boolean
+    prefix: --af-max
+- id: in_sb_thresh
+  doc: Maximum phred-value allowed. Conflicts with -b.
+  type: long?
   inputBinding:
-    prefix: -B
-- id: in__sbmtc_string
-  doc: "| --sb-mtc STRING           Multiple testing correction type. One of 'bonf',\
-    \ 'holm' or 'fdr'. Conflicts with -B"
-  type: boolean
+    prefix: --sb-thresh
+- id: in_sb_mtc
+  doc: Multiple testing correction type. One of 'bonf', 'holm' or 'fdr'. Conflicts
+    with -B
+  type: string?
   inputBinding:
-    prefix: -b
-- id: in__sbalpha_float
-  doc: '| --sb-alpha FLOAT          Multiple testing correction pvalue threshold'
-  type: boolean
+    prefix: --sb-mtc
+- id: in_sb_alpha
+  doc: Multiple testing correction pvalue threshold
+  type: double?
   inputBinding:
-    prefix: -c
+    prefix: --sb-alpha
 - id: in_sb_no_compound
   doc: Don't use compound filter
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sb-no-compound
 - id: in_sb_incl_indels
   doc: Apply SB filter to indels as well
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sb-incl-indels
-- id: in__snvqualthresh_int
-  doc: '| --snvqual-thresh INT      Minimum phred-value allowed. Conflicts with -q'
-  type: boolean
+- id: in_snv_qual_thresh
+  doc: Minimum phred-value allowed. Conflicts with -q
+  type: long?
   inputBinding:
-    prefix: -Q
-- id: in__snvqualmtc_string
-  doc: "| --snvqual-mtc STRING      Multiple testing correction type. One of 'bonf',\
-    \ 'holm' or 'fdr'. Conflicts with -Q"
-  type: boolean
+    prefix: --snvqual-thresh
+- id: in_snv_qual_mtc
+  doc: Multiple testing correction type. One of 'bonf', 'holm' or 'fdr'. Conflicts
+    with -Q
+  type: string?
   inputBinding:
-    prefix: -q
-- id: in__snvqualalpha_float
-  doc: '| --snvqual-alpha FLOAT     Multiple testing correction pvalue threshold'
-  type: boolean
+    prefix: --snvqual-mtc
+- id: in_snv_qual_alpha
+  doc: Multiple testing correction pvalue threshold
+  type: double?
   inputBinding:
-    prefix: -r
-- id: in__snvqualntests_int
-  doc: '| --snvqual-ntests INT      Number of performed SNV tests for multiple testing
-    correction'
-  type: boolean
+    prefix: --snvqual-alpha
+- id: in_snv_qual_n_tests
+  doc: Number of performed SNV tests for multiple testing correction
+  type: long?
   inputBinding:
-    prefix: -s
-- id: in__indelqualthresh_int
-  doc: '| --indelqual-thresh INT    Minimum phred-value allowed. Conflicts with -q'
-  type: boolean
+    prefix: --snvqual-ntests
+- id: in_in_del_qual_thresh
+  doc: Minimum phred-value allowed. Conflicts with -q
+  type: long?
   inputBinding:
-    prefix: -K
-- id: in__indelqualmtc_string
-  doc: "| --indelqual-mtc STRING    Multiple testing correction type. One of 'bonf',\
-    \ 'holm' or 'fdr'. Conflicts with -Q"
-  type: boolean
+    prefix: --indelqual-thresh
+- id: in_in_del_qual_mtc
+  doc: Multiple testing correction type. One of 'bonf', 'holm' or 'fdr'. Conflicts
+    with -Q
+  type: string?
   inputBinding:
-    prefix: -k
-- id: in__indelqualalpha_float
-  doc: '| --indelqual-alpha FLOAT   Multiple testing correction pvalue threshold'
-  type: boolean
+    prefix: --indelqual-mtc
+- id: in_in_del_qual_alpha
+  doc: Multiple testing correction pvalue threshold
+  type: double?
   inputBinding:
-    prefix: -l
-- id: in__indelqualntests_int
-  doc: '| --indelqual-ntests INT    Number of performed indel tests for multiple testing
-    correction'
-  type: boolean
+    prefix: --indelqual-alpha
+- id: in_in_del_qual_n_tests
+  doc: Number of performed indel tests for multiple testing correction
+  type: long?
   inputBinding:
-    prefix: -m
+    prefix: --indelqual-ntests
 - id: in_only_indels
   doc: Keep InDels only
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --only-indels
 - id: in_only_sn_vs
   doc: Keep SNVs only
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --only-snvs
 - id: in_print_all
   doc: Print all, not just passed variants
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --print-all
 - id: in_no_defaults
   doc: Remove all default filter settings
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-defaults
 - id: in_verbose
   doc: Be verbose
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_debug
   doc: Enable debugging
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out__file_vcf_output
-  doc: '| --out FILE                VCF output file (default: - for stdout; gzip supported).'
-  type: File
+- id: out_out
+  doc: 'VCF output file (default: - for stdout; gzip supported).'
+  type: File?
   outputBinding:
-    glob: $(inputs.in__file_vcf_output)
+    glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - lofreq

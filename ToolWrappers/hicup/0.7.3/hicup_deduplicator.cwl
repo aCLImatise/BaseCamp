@@ -3,28 +3,28 @@ id: hicup_deduplicator.cwl
 inputs:
 - id: in_config
   doc: Specify the configuration file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --config
 - id: in_outdir
   doc: Directory to write output files
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_quiet
   doc: Suppress progress reports (except warnings)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_threads
   doc: "Number of threads to use, allowing simultaneous processing  of\ndifferent\
     \ files"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --threads
 - id: in_zip
   doc: Compress output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --zip
 outputs:
@@ -33,9 +33,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: Directory to write output files
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicup_deduplicator

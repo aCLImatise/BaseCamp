@@ -48,6 +48,9 @@ task SeqkitScat {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     allow_gaps: "allow gap character (-) in sequences"
     delta: "minimum size increase in kilobytes to trigger parsing (default 5)"

@@ -3,51 +3,50 @@ command:
 - BuildDatabase
 positional:
 - !Positional
-  description: '- Providing the name of a directory containing FASTA files '
+  optional: false
   position: 0
   name: line.
-  optional: false
+  description: '- Providing the name of a directory containing FASTA files '
 named:
 - !Flag
-  description: The name of the database to create.
-  synonyms:
-  - -name
-  args: !SimpleFlagArg
-    name: database name
   optional: true
-- !Flag
-  description: "The name of the search engine we are using. I.e abblast/wublast or\n\
-    rmblast."
-  synonyms:
-  - -engine
-  args: !SimpleFlagArg
-    name: engine name
-  optional: true
-- !Flag
-  description: "The name of a directory containing fasta files to be processed. The\n\
-    files are recognized by their suffix. Only *.fa and *.fasta files\nare processed."
   synonyms:
   - -dir
-  args: !SimpleFlagArg
-    name: directory
-  optional: true
+  description: "<dir containing fasta files *.fa, *.fasta,\n*.fast, *.FA, *.FASTA,\
+    \ *.FAST, *.dna,\nand  *.DNA >"
+  args: !EmptyFlagArg {}
 - !Flag
-  description: "The name of a file which contains the names of fasta files to\nprocess.\
-    \ The files names are listed one per line and should be fully\nqualified."
+  optional: true
+  synonyms:
+  - -name
+  description: The name of the database to create.
+  args: !SimpleFlagArg
+    name: database name
+- !Flag
+  optional: true
+  synonyms:
+  - -engine
+  description: "The name of the search engine we are using. I.e abblast/wublast or\n\
+    rmblast."
+  args: !SimpleFlagArg
+    name: engine name
+- !Flag
+  optional: true
   synonyms:
   - -batch
+  description: "The name of a file which contains the names of fasta files to\nprocess.\
+    \ The files names are listed one per line and should be fully\nqualified."
   args: !SimpleFlagArg
     name: file
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "(elp)\nDetailed help"
+  optional: true
   synonyms:
   - -h
+  description: "(elp)\nDetailed help"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "No query sequence file indicated\n\n/usr/local/share/RepeatModeler/BuildDatabase\
@@ -81,3 +80,4 @@ help_text: "No query sequence file indicated\n\n/usr/local/share/RepeatModeler/B
   AUTHOR\n    Robert Hubley <rhubley@systemsbiology.org>\n\n"
 generated_using:
 - --help
+docker_image:

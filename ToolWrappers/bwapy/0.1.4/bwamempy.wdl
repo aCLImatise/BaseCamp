@@ -20,6 +20,9 @@ task Bwamempy {
       ~{me_mdot} \
       ~{index}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     align: ""
     a: ""

@@ -3,12 +3,12 @@ id: sqStoreDumpMetaData.cwl
 inputs:
 - id: in_dump_reads_from
   doc: dump reads from 'seqStore'
-  type: string
+  type: string?
   inputBinding:
     prefix: -S
 - id: in_libs
   doc: dump information about libraries
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -libs
 - id: in_reads
@@ -20,58 +20,59 @@ inputs:
     \   - corrected sequence, trimmed.\nExample:\nRR--c--- - Raw version exists and\
     \ is used.  Corrected\nversion doesn't exist.\nRR--CCTt - Both raw and corrected\
     \ versions exist and are used.\nCorrected trimmed version exists, but is ignored."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -reads
 - id: in_stats
   doc: dump summary statistics on reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -stats
 - id: in_histogram
   doc: dump a length histogram
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -histogram
 - id: in_lengths
   doc: dump just the (sorted) read lengths
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -lengths
 - id: in_output_readslibraies_end
   doc: '[-end]     output reads/libraies from `bgn` to `end`, inclusive'
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
 - id: in_raw
   doc: restrict to 'raw' reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -raw
 - id: in_corrected
   doc: restrict to 'corrected' reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -corrected
 - id: in_trimmed
   doc: restrict to 'trimmed' reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -trimmed
 - id: in_compressed
   doc: restrict to 'compressed' reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -compressed
 - id: in_p
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sqStoreDumpMetaData

@@ -4,6 +4,9 @@ task VcfConcordance {
   command <<<
     vcfConcordance
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

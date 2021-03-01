@@ -16,6 +16,9 @@ task VsnpFilterFinderpy {
       ~{if defined(group) then ("--group " +  '"' + group + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cwd: "Working directoy to be added as path to dependency\\nfiles."
     filters: "Defining SNPs/Filter file"

@@ -28,6 +28,9 @@ task ORFcount {
       ~{if defined(max_read) then ("--max_read " +  '"' + max_read + '"') else ""} \
       ~{if defined(write_orf_counts) then ("--output " +  '"' + write_orf_counts + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stranded: "whether the data is strand-specific, reverse means\\nreversed strand interpretation. (default: yes)"
     mina_qual: "skip all reads with alignment quality lower than the\\ngiven minimum value (default:10)"

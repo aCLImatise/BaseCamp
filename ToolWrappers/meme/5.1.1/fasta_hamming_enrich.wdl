@@ -16,6 +16,9 @@ task Fastahammingenrich {
       ~{if defined(alphabet_definition_file) then ("-a " +  '"' + alphabet_definition_file + '"') else ""} \
       ~{if (refine_consensus_branching) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     word_required: "word (required)"
     positive_sequences_fasta: "positive sequences FASTA file name (required)"

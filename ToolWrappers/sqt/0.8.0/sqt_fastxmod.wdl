@@ -42,6 +42,9 @@ task SqtFastxmod {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(substitution_rate) then ("--substitution-rate " +  '"' + substitution_rate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     names: "Keep only records whose name occurs in FILE (one per\\nline)"
     not_names: "Discard records whose name occurs in FILE (one per\\nline)"

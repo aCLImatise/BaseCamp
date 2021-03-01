@@ -26,6 +26,9 @@ task Biopetextractadaptersfastqc {
       ~{if defined(adapter_cut_off) then ("--adapterCutoff " +  '"' + adapter_cut_off + '"') else ""} \
       ~{if (output_as_fast_a) then "--outputAsFasta" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_level: "Level of log information printed. Possible levels: 'debug', 'info', 'warn', 'error'"
     input_file: "Fastqc data file (i.e., fastqc_data.txt file in the FastQC output)"

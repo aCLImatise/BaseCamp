@@ -1,0 +1,180 @@
+!Command
+command:
+- CollapseTagWithContext
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: value.
+  description: 'OUT_TAG=String                The output tag for the newly collapsed
+    tag values  Required. '
+- !Positional
+  optional: false
+  position: 0
+  name: counts.
+  description: For example, if your context tags were cell and gene and you were collapsing
+    UMI
+- !Positional
+  optional: false
+  position: 0
+  name: value.
+  description: MUTATIONAL_COLLAPSE=Boolean   Instead of using the default fixed edit
+    distance, use a mutational collapse strategy.  For
+- !Positional
+  optional: false
+  position: 0
+  name: EDIT_DISTANCE.
+  description: "Default value: false. This option can be set to 'null' to clear the"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: (default 4g)
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: final command line before executing
+  args: !SimpleFlagArg
+    name: echo
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: /usr/local/bin/CollapseTagWithContext [-m <jvm_heap_size>] [-v]\
+  \ program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
+  \ command line before executing\n\nProgram options:\nUSAGE: CollapseTagWithContext\
+  \ [options]\n\nCollapse set of barcodes that all share the same BAM tags.  For example,\
+  \ collapse all UMIs that have the same cell,\ngene, and gene strand tags.  This\
+  \ would be equivilent to collapsing the UMIs in DGE.\nVersion: 2.4.0(3d2b3d8_1600201514)\n\
+  \n\nOptions:\n\n--help\n-h                            Displays options specific\
+  \ to this tool.\n\n--stdhelp\n-H                            Displays options specific\
+  \ to this tool AND options common to all Picard command line\n                 \
+  \             tools.\n\n--version                     Displays program version.\n\
+  \nINPUT=File\nI=File                        The input SAM or BAM file to analyze.\
+  \  Must be coordinate sorted.   Required. \n\nCOLLAPSE_TAG=String           Collapse\
+  \ tags that are within , and have the same CONTEXT_TAGS.  For example, if your\n\
+  \                              context tags were cell and gene, you could collapse\
+  \ UMI tags.  Required. \n\nCONTEXT_TAGS=String           Group reads by these read\
+  \ tags.  Collapse the COLLAPSE_TAG values that have the same\n                 \
+  \             CONTEXT_TAGS values.  Reads with unset CONTEXT_TAGS that will be grouped\
+  \ together and\n                              loaded into memory together.  This\
+  \ can cause a large amount of memory usage if you pick a\n                     \
+  \         lot of tags that are all mostly not set.  Default value: null. This option\
+  \ must be\n                              specified at least 1 times. \n\nCOUNT_TAGS=String\
+  \             By default, groups of reads are gathered by their CONTEXT_TAGS and\
+  \ ordered by the number\n                              of total reads.  Contexts\
+  \ with larger numbers of reads are potential 'parents' of smaller\n            \
+  \                  context objects. If this option is used, the count of a context\
+  \ to determine it's ordering\n                              is the unique count\
+  \ of values of the TAG(S) added here.  For example, if you wanted to\n         \
+  \                     collapse by UMI counts instead of read counts, you could put\
+  \ the UMI tag here.  Default\n                              value: null. This option\
+  \ may be specified 0 or more times. \n\nCOUNT_TAGS_EDIT_DISTANCE=Integer\n     \
+  \                         If COUNT_TAGS is set and COUNT_TAGS_EDIT_DISTANCE>0, then\
+  \ collapse the COUNT_TAGS in a\n                              CONTEXT by the given\
+  \ edit distance.  For example, if you wanted to collapse by UMIs\n             \
+  \                 instead of read counts, and you wanted to further collapse UMIs\
+  \ by edit distance 1, you'd\n                              set COUNT_TAGS_EDIT_DISTANCE\
+  \ to 1.  This doesn't do much unless MIN_COUNT is also set as\n                \
+  \              collapse would only be affected if there is a minimum number of counts\
+  \ for each CONTEXT to\n                              be in a COLLAPSE.  Default\
+  \ value: 0. This option can be set to 'null' to clear the default\n            \
+  \                  value. \n\nOUT_TAG=String                The output tag for the\
+  \ newly collapsed tag values  Required. \n\nOUTPUT=File\nO=File                \
+  \        Output BAM file with the new collapsed tag.  Required. \n\nEDIT_DISTANCE=Integer\
+  \         The edit distance to collapse tags.  If adaptive edit distance is used,\
+  \ this is the\n                              default edit distance used if no adaptive\
+  \ edit distance is discovered.  If mutational\n                              collapse\
+  \ is used, this is the maximum edit distance two barcodes in a network can be apart\n\
+  \                              (but they must have network neighbors at ED=1 for\
+  \ the entire path).  Default value: 1.\n                              This option\
+  \ can be set to 'null' to clear the default value. \n\nFIND_INDELS=Boolean     \
+  \      Should indels be considered in edit distance calculations?  Doing this correctly\
+  \ is far\n                              slower than a simple edit distance test,\
+  \ but is a more aggressive method that may be\n                              useful\
+  \ in some situations.  Default value: false. This option can be set to 'null' to\n\
+  \                              clear the default value. Possible values: {true,\
+  \ false} \n\nREAD_MQ=Integer               Read quality filter.  Filters all reads\
+  \ lower than this mapping quality.  Defaults to 10. \n                         \
+  \     Set to 0 to not filter reads by map quality.  Default value: 10. This option\
+  \ can be set to\n                              'null' to clear the default value.\
+  \ \n\nMIN_COUNT=Integer             The minumum number of reads (unless using the\
+  \ COUNT_TAGS option) for a context to be\n                              eligible\
+  \ for collapse.  Must be >= 1.  Default value: 1. This option can be set to 'null'\n\
+  \                              to clear the default value. \n\nDROP_SMALL_COUNTS=Boolean\
+  \     When collapsing a CONTEXT_TAG, do not emit CONTEXT reads that have fewer than\
+  \ MIN_COUNT\n                              counts.  For example, if your context\
+  \ tags were cell and gene and you were collapsing UMI\n                        \
+  \      tags and had a MIN_COUNT of 5, then cell/gene pairs with fewer than 5 UMIs\
+  \ would not have\n                              their reads emiited in the output\
+  \ BAM.  Default value: false. This option can be set to\n                      \
+  \        'null' to clear the default value. Possible values: {true, false} \n\n\
+  NUM_THREADS=Integer           Number of threads to use.  Defaults to 1.  Default\
+  \ value: 1. This option can be set to\n                              'null' to clear\
+  \ the default value. \n\nADAPTIVE_EDIT_DISTANCE=BooleanInstead of using the default\
+  \ fixed edit distance, use an adaptive edit distance.  For each\n              \
+  \                mergable entity, this tries to determine if there are 2 clusters\
+  \ of data by edit distance,\n                              and only merge the close-by\
+  \ neighbors.  Default value: false. This option can be set to\n                \
+  \              'null' to clear the default value. Possible values: {true, false}\
+  \ \n\nADAPTIVE_ED_MAX=Integer       If adaptive edit distance is used, this is the\
+  \ maximum edit distance allowed.  Default\n                              value:\
+  \ -1. This option can be set to 'null' to clear the default value. \n\nADAPTIVE_ED_MIN=Integer\
+  \       If adaptive edit distance is used, this is the minimum edit distance allowed.\
+  \  Default\n                              value: -1. This option can be set to 'null'\
+  \ to clear the default value. \n\nADAPTIVE_ED_METRICS_FILE=File If provided, writes\
+  \ out some metrics about each barcode that is merged by adaptive edit\n        \
+  \                      distance collapse.  Default value: null. \n\nADAPTIVE_ED_METRICS_ED_LIST=Boolean\n\
+  \                              If true, add an additional column that contains a\
+  \ comma separated list of edit distances\n                              from the\
+  \ current CONTEXT_TAG to all other CONTEXT_TAGS.  This will make files\n       \
+  \                       significantly larger!  Default value: false. This option\
+  \ can be set to 'null' to clear the\n                              default value.\
+  \ Possible values: {true, false} \n\nMUTATIONAL_COLLAPSE_PATH_ED=Integer\n     \
+  \                         The maximium distance mutational path collapse searches\
+  \ for the next nearest neighbors in\n                              the network.\
+  \  Default value: 1. This option can be set to 'null' to clear the default\n   \
+  \                           value. \n\nMUTATIONAL_COLLAPSE=Boolean   Instead of\
+  \ using the default fixed edit distance, use a mutational collapse strategy.  For\n\
+  \                              the single largest barcode in the context, find all\
+  \ neighbors within edit distance (ED) . \n                              For example,\
+  \ set MUTATIONAL_COLLAPSE_PATH_ED=1.find neighbors to those neighbors at ED=1\n\
+  \                              that are ALSO ED=2 to the original barcode.  Search\
+  \ out to a maximum edit distance of\n                              EDIT_DISTANCE.\
+  \  Default value: false. This option can be set to 'null' to clear the\n       \
+  \                       default value. Possible values: {true, false} \n\nMUTATIONAL_COLLAPSE_METRICS_FILE=File\n\
+  \                              If provided, writes out some metrics about each barcode\
+  \ that is merged by mutational edit\n                              distance collapse.\
+  \  Default value: null. \n\nLOW_MEMORY_MODE=Boolean       Use less memory but more\
+  \ time.  Useful if your context groups are huge - very large cells\n           \
+  \                   with lots of sequence data, etc.  Default value: false. This\
+  \ option can be set to 'null'\n                              to clear the default\
+  \ value. Possible values: {true, false} \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/dropseq_tools:2.4.0--0

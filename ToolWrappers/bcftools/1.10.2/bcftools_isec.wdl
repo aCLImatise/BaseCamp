@@ -42,6 +42,9 @@ task BcftoolsIsec {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write) then ("--write " +  '"' + write + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     collapse: "treat as identical records with <snps|indels|both|all|some|none>, see man page for details [none]"
     complement: "output positions present only in the first file but missing in the others"

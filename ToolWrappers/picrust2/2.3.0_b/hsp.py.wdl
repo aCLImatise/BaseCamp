@@ -3,7 +3,7 @@ version 1.0
 task Hsppy {
   input {
     File? tree
-    File? output_table_predicted
+    File? output_table_isadded
     String? in_trait
     File? observed_trait_table
     Int? chunk_size
@@ -17,7 +17,7 @@ task Hsppy {
   command <<<
     hsp_py \
       ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""} \
-      ~{if defined(output_table_predicted) then ("--output " +  '"' + output_table_predicted + '"') else ""} \
+      ~{if defined(output_table_isadded) then ("--output " +  '"' + output_table_isadded + '"') else ""} \
       ~{if defined(in_trait) then ("--in_trait " +  '"' + in_trait + '"') else ""} \
       ~{if defined(observed_trait_table) then ("--observed_trait_table " +  '"' + observed_trait_table + '"') else ""} \
       ~{if defined(chunk_size) then ("--chunk_size " +  '"' + chunk_size + '"') else ""} \
@@ -28,9 +28,12 @@ task Hsppy {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree: "The full reference tree in newick format containing\\nboth study sequences (i.e. ASVs or OTUs) and reference\\nsequences."
-    output_table_predicted: "Output table with predicted abundances per study\\nsequence in input tree. If the extension \\\".gz\\\" is\\nadded the table will automatically be gzipped."
+    output_table_isadded: "Output table with predicted abundances per study\\nsequence in input tree. If the extension \\\".gz\\\" is\\nadded the table will automatically be gzipped."
     in_trait: "Specifies which default trait table should be used.\\nUse the --observed_trait_table option to input a non-\\ndefault trait table."
     observed_trait_table: "The input trait table describing directly observed\\ntraits (e.g. sequenced genomes) in tab-delimited\\nformat. Necessary if you want to use a custom table."
     chunk_size: "Number of functions to run at a time on one processor.\\nNote that you should consider how many processes you\\nhave specified before changing this option. E.g. if\\nyou specify the chunk_size to be the total number of\\nfunctions, 1 processor will be used even if you\\nspecified more so the job will be substantially slower\\n(default: 500)."

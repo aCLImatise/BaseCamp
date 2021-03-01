@@ -54,6 +54,9 @@ task CompareSTR {
       ~{if defined(num_records) then ("--numrecords " +  '"' + num_records + '"') else ""} \
       ~{if (no_plot) then "--noplot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_one: "First VCF file to compare (must be sorted, bgzipped,\\nand indexed)"
     vcf_two: "Second VCF file to compare (must be sorted, bgzipped,\\nand indexed)"

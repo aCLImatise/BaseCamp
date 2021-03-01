@@ -4,6 +4,9 @@ task EMBLmyGFF3prokkaexample {
   command <<<
     EMBLmyGFF3_prokka_example
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

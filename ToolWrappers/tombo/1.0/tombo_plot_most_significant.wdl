@@ -3,7 +3,7 @@ version 1.0
 task TomboPlotMostSignificant {
   input {
     Array[Int] fast_five_based_irs
-    File? file_saveload_base
+    File? statistics_filename
     Array[Int] control_fast_five_based_irs
     File? tombo_model_filename
     File? alternate_model_filename
@@ -20,13 +20,11 @@ task TomboPlotMostSignificant {
     Int? corrected_group
     Array[String] base_call_subgroups
     Boolean? quiet
-    String var_18
   }
   command <<<
     tombo plot_most_significant \
-      ~{var_18} \
       ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
-      ~{if defined(file_saveload_base) then ("--statistics-filename " +  '"' + file_saveload_base + '"') else ""} \
+      ~{if defined(statistics_filename) then ("--statistics-filename " +  '"' + statistics_filename + '"') else ""} \
       ~{if defined(control_fast_five_based_irs) then ("--control-fast5-basedirs " +  '"' + control_fast_five_based_irs + '"') else ""} \
       ~{if defined(tombo_model_filename) then ("--tombo-model-filename " +  '"' + tombo_model_filename + '"') else ""} \
       ~{if defined(alternate_model_filename) then ("--alternate-model-filename " +  '"' + alternate_model_filename + '"') else ""} \
@@ -44,9 +42,12 @@ task TomboPlotMostSignificant {
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_five_based_irs: "Directories containing fast5 files."
-    file_saveload_base: "File to save/load base by base statistics."
+    statistics_filename: "File to save/load base by base statistics."
     control_fast_five_based_irs: "Control set of directories containing fast5 files.\\nThese reads should contain only standard nucleotides."
     tombo_model_filename: "Tombo model for event-less resquiggle and significance\\ntesting. If no model is provided the default DNA or\\nRNA tombo model will be used."
     alternate_model_filename: "Tombo model for alternative likelihood ratio\\nsignificance testing."
@@ -63,7 +64,6 @@ task TomboPlotMostSignificant {
     corrected_group: "FAST5 group created by resquiggle command. Default:\\nRawGenomeCorrected_000"
     base_call_subgroups: "FAST5 subgroup(s) (under Analyses/[corrected-group])\\ncontaining basecalls. Default: ['BaseCalled_template']"
     quiet: "Don't print status information."
-    var_18: "[--control-fast5-basedirs CONTROL_FAST5_BASEDIRS [CONTROL_FAST5_BASEDIRS ...]]"
   }
   output {
     File out_stdout = stdout()

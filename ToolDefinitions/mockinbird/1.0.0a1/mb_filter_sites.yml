@@ -11,19 +11,19 @@ subcommands:
   - gff_file
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: mb-filter-sites
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - --padding_bp
+    description: ''
     args: !SimpleFlagArg
       name: PADDING_BP
-    optional: true
-  parent: &id009 !Command
+  parent: &id010 !Command
     command: *id001
     positional: []
     named: []
@@ -33,19 +33,19 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: mb-filter-sites
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --padding_bp
+        description: ''
         args: !SimpleFlagArg
           name: PADDING_BP
-        optional: true
-      parent: &id008 !Command
+      parent: &id009 !Command
         command: *id001
         positional: []
         named: []
@@ -55,19 +55,19 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: mb-filter-sites
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --padding_bp
+            description: ''
             args: !SimpleFlagArg
               name: PADDING_BP
-            optional: true
-          parent: &id007 !Command
+          parent: &id008 !Command
             command: *id001
             positional: []
             named: []
@@ -77,63 +77,199 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: mb-filter-sites
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --padding_bp
+                description: ''
                 args: !SimpleFlagArg
                   name: PADDING_BP
-                optional: true
-              parent: &id003 !Command
+              parent: &id007 !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: bp added to the annotation start and ends
-                  synonyms:
-                  - --padding_bp
-                  args: !SimpleFlagArg
-                    name: PADDING_BP
-                  optional: true
-                - !Flag
-                  description: "comma separated list of gff features\n"
-                  synonyms:
-                  - --filter_features
-                  args: !RepeatFlagArg
-                    name: FILTER_FEATURES
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: mb-filter-sites
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --padding_bp
+                    description: ''
                     args: !SimpleFlagArg
                       name: PADDING_BP
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --padding_bp
+                      description: bp added to the annotation start and ends
+                      args: !SimpleFlagArg
+                        name: PADDING_BP
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --filter_features
+                      description: "comma separated list of gff features\n"
+                      args: !RepeatFlagArg
+                        name: FILTER_FEATURES
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: mb-filter-sites
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --padding_bp
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: PADDING_BP
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n\
+                        \                       [--filter_features FILTER_FEATURES\
+                        \ [FILTER_FEATURES ...]]\n                       parclip_sites\
+                        \ filtered_file gff_file\nmb-filter-sites: error: argument\
+                        \ parclip_sites: 'gff_file' does not exist\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - mb-filter-sites
+                      - filtered_file
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: mb-filter-sites
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --padding_bp
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: PADDING_BP
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n\
+                        \                       [--filter_features FILTER_FEATURES\
+                        \ [FILTER_FEATURES ...]]\n                       parclip_sites\
+                        \ filtered_file gff_file\nmb-filter-sites: error: argument\
+                        \ parclip_sites: 'filtered_file' does not exist\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - mb-filter-sites
+                      - parclip_sites
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: mb-filter-sites
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --padding_bp
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: PADDING_BP
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n\
+                        \                       [--filter_features FILTER_FEATURES\
+                        \ [FILTER_FEATURES ...]]\n                       parclip_sites\
+                        \ filtered_file gff_file\nmb-filter-sites: error: argument\
+                        \ parclip_sites: 'parclip_sites' does not exist\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n\
+                      \                       [--filter_features FILTER_FEATURES [FILTER_FEATURES\
+                      \ ...]]\n                       parclip_sites filtered_file\
+                      \ gff_file\n\npositional arguments:\n  parclip_sites       \
+                      \  path to parclip sites\n  filtered_file         path to filtered\
+                      \ output file\n  gff_file              path to gff annotation\
+                      \ file\n\noptional arguments:\n  -h, --help            show\
+                      \ this help message and exit\n  --padding_bp PADDING_BP\n  \
+                      \                      bp added to the annotation start and\
+                      \ ends\n  --filter_features FILTER_FEATURES [FILTER_FEATURES\
+                      \ ...]\n                        comma separated list of gff\
+                      \ features\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n\
@@ -141,35 +277,33 @@ subcommands:
                     \ ...]]\n                       parclip_sites filtered_file gff_file\n\
                     mb-filter-sites: error: argument parclip_sites: 'gff_file' does\
                     \ not exist\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - mb-filter-sites
-                  - filtered_file
+                  command: *id005
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: mb-filter-sites
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --padding_bp
+                    description: ''
                     args: !SimpleFlagArg
                       name: PADDING_BP
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n\
@@ -178,33 +312,32 @@ subcommands:
                     mb-filter-sites: error: argument parclip_sites: 'filtered_file'\
                     \ does not exist\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - mb-filter-sites
-                  - parclip_sites
+                  command: *id006
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: mb-filter-sites
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --padding_bp
+                    description: ''
                     args: !SimpleFlagArg
                       name: PADDING_BP
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n\
@@ -213,14 +346,9 @@ subcommands:
                     mb-filter-sites: error: argument parclip_sites: 'parclip_sites'\
                     \ does not exist\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n\
@@ -235,14 +363,15 @@ subcommands:
                   \ [FILTER_FEATURES ...]\n                        comma separated\
                   \ list of gff features\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n\
@@ -251,31 +380,32 @@ subcommands:
                 mb-filter-sites: error: argument parclip_sites: 'gff_file' does not\
                 \ exist\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: mb-filter-sites
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --padding_bp
+                description: ''
                 args: !SimpleFlagArg
                   name: PADDING_BP
-                optional: true
-              parent: *id003
+              parent: *id007
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n\
@@ -284,31 +414,32 @@ subcommands:
                 mb-filter-sites: error: argument parclip_sites: 'filtered_file' does\
                 \ not exist\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: mb-filter-sites
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --padding_bp
+                description: ''
                 args: !SimpleFlagArg
                   name: PADDING_BP
-                optional: true
-              parent: *id003
+              parent: *id007
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n\
@@ -317,6 +448,7 @@ subcommands:
                 mb-filter-sites: error: argument parclip_sites: 'parclip_sites' does\
                 \ not exist\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -332,14 +464,15 @@ subcommands:
               \ and ends\n  --filter_features FILTER_FEATURES [FILTER_FEATURES ...]\n\
               \                        comma separated list of gff features\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n    \
@@ -347,31 +480,32 @@ subcommands:
             \ ...]]\n                       parclip_sites filtered_file gff_file\n\
             mb-filter-sites: error: argument parclip_sites: 'gff_file' does not exist\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: mb-filter-sites
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --padding_bp
+            description: ''
             args: !SimpleFlagArg
               name: PADDING_BP
-            optional: true
-          parent: *id007
+          parent: *id008
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n    \
@@ -380,31 +514,32 @@ subcommands:
             mb-filter-sites: error: argument parclip_sites: 'filtered_file' does not\
             \ exist\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: mb-filter-sites
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --padding_bp
+            description: ''
             args: !SimpleFlagArg
               name: PADDING_BP
-            optional: true
-          parent: *id007
+          parent: *id008
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n    \
@@ -413,6 +548,7 @@ subcommands:
             mb-filter-sites: error: argument parclip_sites: 'parclip_sites' does not\
             \ exist\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -428,14 +564,15 @@ subcommands:
           \ FILTER_FEATURES [FILTER_FEATURES ...]\n                        comma separated\
           \ list of gff features\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n        \
@@ -443,31 +580,32 @@ subcommands:
         \                       parclip_sites filtered_file gff_file\nmb-filter-sites:\
         \ error: argument parclip_sites: 'gff_file' does not exist\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: mb-filter-sites
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --padding_bp
+        description: ''
         args: !SimpleFlagArg
           name: PADDING_BP
-        optional: true
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n        \
@@ -475,31 +613,32 @@ subcommands:
         \                       parclip_sites filtered_file gff_file\nmb-filter-sites:\
         \ error: argument parclip_sites: 'filtered_file' does not exist\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: mb-filter-sites
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --padding_bp
+        description: ''
         args: !SimpleFlagArg
           name: PADDING_BP
-        optional: true
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n        \
@@ -507,6 +646,7 @@ subcommands:
         \                       parclip_sites filtered_file gff_file\nmb-filter-sites:\
         \ error: argument parclip_sites: 'parclip_sites' does not exist\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -521,14 +661,15 @@ subcommands:
       \ start and ends\n  --filter_features FILTER_FEATURES [FILTER_FEATURES ...]\n\
       \                        comma separated list of gff features\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n            \
@@ -536,31 +677,32 @@ subcommands:
     \                 parclip_sites filtered_file gff_file\nmb-filter-sites: error:\
     \ argument parclip_sites: 'gff_file' does not exist\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: mb-filter-sites
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - --padding_bp
+    description: ''
     args: !SimpleFlagArg
       name: PADDING_BP
-    optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n            \
@@ -568,31 +710,32 @@ subcommands:
     \                 parclip_sites filtered_file gff_file\nmb-filter-sites: error:\
     \ argument parclip_sites: 'filtered_file' does not exist\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: mb-filter-sites
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - --padding_bp
+    description: ''
     args: !SimpleFlagArg
       name: PADDING_BP
-    optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n            \
@@ -600,6 +743,7 @@ subcommands:
     \                 parclip_sites filtered_file gff_file\nmb-filter-sites: error:\
     \ argument parclip_sites: 'parclip_sites' does not exist\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -614,3 +758,4 @@ help_text: "usage: mb-filter-sites [-h] [--padding_bp PADDING_BP]\n             
   \ FILTER_FEATURES [FILTER_FEATURES ...]\n                        comma separated\
   \ list of gff features\n"
 generated_using: *id004
+docker_image:

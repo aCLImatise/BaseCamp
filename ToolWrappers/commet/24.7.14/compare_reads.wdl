@@ -20,6 +20,9 @@ task CompareReads {
       ~{if defined(number_shared_kmers) then ("-t " +  '"' + number_shared_kmers + '"') else ""} \
       ~{if (prints_version_number) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_containing_files: ": A file containing the list of files to index (comma separated) - MANDATORY\\nEach line of the file corresponds to a set of files (comma separated)"
     file_containing_file: ": A file containing the list of file sets to search - MANDATORY\\nEach line of the file corresponds to a set of files (comma separated)"

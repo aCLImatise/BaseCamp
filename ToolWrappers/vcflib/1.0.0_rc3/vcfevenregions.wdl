@@ -20,6 +20,9 @@ task Vcfevenregions {
       ~{if defined(overlap) then ("--overlap " +  '"' + overlap + '"') else ""} \
       ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_reference: "FASTA reference file to use to obtain primer sequences."
     number_of_regions: "The number of desired regions."

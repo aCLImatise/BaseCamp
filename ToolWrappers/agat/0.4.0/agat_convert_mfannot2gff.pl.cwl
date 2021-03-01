@@ -3,12 +3,12 @@ id: agat_convert_mfannot2gff.pl.cwl
 inputs:
 - id: in_m_fan_not
   doc: The mfannot input file
-  type: File
+  type: File?
   inputBinding:
     prefix: --mfannot
 - id: in_gff
   doc: the gff output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --gff
 - id: in_gaas_convert_mfannottwogffdotpl
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_gff
   doc: the gff output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_gff)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agat_convert_mfannot2gff.pl

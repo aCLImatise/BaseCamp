@@ -14,6 +14,9 @@ task Iuinterleavefastq {
       ~{if defined(two) then ("-2 " +  '"' + two + '"') else ""} \
       ~{if defined(output_file_path) then ("--output-file-path " +  '"' + output_file_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     one: "FASTQ, --input-r1 R1 FASTQ\\nRead 1"
     two: "FASTQ, --input-r2 R2 FASTQ\\nRead 1"

@@ -20,6 +20,9 @@ task Treeannotator {
       ~{if defined(force_discrete) then ("-forceDiscrete " +  '"' + force_discrete + '"') else ""} \
       ~{if defined(hpd_two_d) then ("-hpd2D " +  '"' + hpd_two_d + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     heights: "option of 'keep' (default), 'median', 'mean' or 'ca'"
     burnin: "number of states to be considered as 'burn-in'"

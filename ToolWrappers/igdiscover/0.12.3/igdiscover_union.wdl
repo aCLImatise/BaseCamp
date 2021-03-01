@@ -8,6 +8,9 @@ task IgdiscoverUnion {
     igdiscover union \
       ~{fast_a}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "FASTA file"
   }

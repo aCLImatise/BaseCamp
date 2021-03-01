@@ -3,22 +3,22 @@ id: CMVJson.cwl
 inputs:
 - id: in_input_model_file
   doc: Path to input
-  type: File
+  type: File?
   inputBinding:
     prefix: --inputmodelfile
 - id: in_output_directory_path
   doc: Path to output directory
-  type: File
+  type: File?
   inputBinding:
     prefix: --outputdirectorypath
 - id: in_verbose
   doc: Loud verbosity
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_quiet
   doc: Quiet verbosity
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output_directory_path
   doc: Path to output directory
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_directory_path)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - CMVJson

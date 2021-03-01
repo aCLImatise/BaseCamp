@@ -1,0 +1,134 @@
+!Command
+command:
+- create_instance.sh
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --gcp-loc-dir
+  description: ': gs:// bucket dir path for localization.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gcp-region
+  description: ': Region for Google Life Sciences API. us-central1 by default. CHECK
+    SUPPORTED REGIONS. This is different from --zone, which is used for instance creation
+    only. us-central1 by default.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --postgresql-db-ip
+  description: ': localhost by default.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --postgresql-db-port
+  description: ': 5432 by default.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --postgresql-db-user
+  description: ': cromwell by default.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --postgresql-db-password
+  description: ': cromwell by default.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --postgresql-db-name
+  description: ': cromwell by default.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --zone
+  description: ': Zone. Check available zones: gcloud compute zones list. us-central1-a
+    by default.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --machine-type
+  description: ': Machine type. Check available machine-types: gcloud compute machine-types
+    list. n1-standard-4 by default.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --boot-disk-size
+  description: ': Boot disk size. Use a suffix for unit. e.g. GB and MB. 100GB by
+    default.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --boot-disk-type
+  description: ': Boot disk type. pd-standard (Standard persistent disk) by default.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --image
+  description: ': Image. Check available images: gcloud compute images list. ubuntu-1804-bionic-v20200716
+    by default.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --image-project
+  description: ': Image project. ubuntu-os-cloud by default.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --startup-script
+  description: ': Startup script CONTENTS (NOT A FILE). These command lines should
+    sudo-install Java, PostgreSQL, Python3 and pip3. DO NOT INSTALL CAPER HERE. some
+    apt-get command lines by default.'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Automated shell script to create Caper server instance with PostgreSQL\
+  \ on Google Cloud.\n\nUsage: ./create_instance.sh [INSTANCE_NAME] [GCP_PRJ]\n  \
+  \                          [GCP_SERVICE_ACCOUNT_SECRET_JSON_FILE] [GCP_OUT_DIR]\n\
+  \                            <OPTIONAL_ARGUMENTS>\n\nPositional arguments:\n  [INSTANCE_NAME]:\
+  \ New instance's name.\n  [GCP_PRJ]: Your project's ID on Google Cloud Platform.\
+  \ --gcp-prj in Caper.\n  [GCP_SERVICE_ACCOUNT_KEY_JSON_FILE]: Service account's\
+  \ secret key JSON file. --gcp-service-account-key-json in Caper.\n  [GCP_OUT_DIR]:\
+  \ gs:// bucket dir path for outputs. --gcp-out-dir in Caper.\n\nOptional arguments\
+  \ for Caper:\n  -l, --gcp-loc-dir: gs:// bucket dir path for localization.\n  --gcp-region:\
+  \ Region for Google Life Sciences API. us-central1 by default. CHECK SUPPORTED REGIONS.\
+  \ This is different from --zone, which is used for instance creation only. us-central1\
+  \ by default.\n  --postgresql-db-ip: localhost by default.\n  --postgresql-db-port:\
+  \ 5432 by default.\n  --postgresql-db-user: cromwell by default.\n  --postgresql-db-password:\
+  \ cromwell by default.\n  --postgresql-db-name: cromwell by default.\n\nOptional\
+  \ arguments for instance creation (gcloud compute instances create):\n  -z, --zone:\
+  \ Zone. Check available zones: gcloud compute zones list. us-central1-a by default.\n\
+  \  -m, --machine-type: Machine type. Check available machine-types: gcloud compute\
+  \ machine-types list. n1-standard-4 by default.\n  -b, --boot-disk-size: Boot disk\
+  \ size. Use a suffix for unit. e.g. GB and MB. 100GB by default.\n  --boot-disk-type:\
+  \ Boot disk type. pd-standard (Standard persistent disk) by default.\n  --image:\
+  \ Image. Check available images: gcloud compute images list. ubuntu-1804-bionic-v20200716\
+  \ by default.\n  --image-project: Image project. ubuntu-os-cloud by default.\n \
+  \ --startup-script: Startup script CONTENTS (NOT A FILE). These command lines should\
+  \ sudo-install Java, PostgreSQL, Python3 and pip3. DO NOT INSTALL CAPER HERE. some\
+  \ apt-get command lines by default.\n\nDefine all positional arguments.\n"
+generated_using: []
+docker_image: quay.io/biocontainers/caper:1.1.0--py_0

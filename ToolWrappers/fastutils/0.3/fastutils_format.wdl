@@ -34,6 +34,9 @@ task FastutilsFormat {
       ~{if (pac_bio) then "--pacbio" else ""} \
       ~{if (fof_n) then "--fofn" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "input file in fasta/q format [stdin]"
     out: "output file [stdout]"

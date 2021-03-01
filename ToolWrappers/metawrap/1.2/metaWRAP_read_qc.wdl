@@ -24,6 +24,9 @@ task MetaWRAPReadQc {
       ~{if (skip_pre_qc_report) then "--skip-pre-qc-report" else ""} \
       ~{if (skip_post_qc_report) then "--skip-post-qc-report" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     forward_fastq_reads: "forward fastq reads"
     reverse_fastq_reads: "reverse fastq reads"

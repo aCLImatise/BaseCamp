@@ -12,6 +12,9 @@ task RefgenieList {
       ~{if defined(genome_config) then ("--genome-config " +  '"' + genome_config + '"') else ""} \
       ~{if (reference_assembly_id) then "-g" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_config: "Path to local genome configuration file. Optional if\\nREFGENIE environment variable is set."
     reference_assembly_id: "[GENOME [GENOME ...]], --genome [GENOME [GENOME ...]]\\nReference assembly ID, e.g. mm10.\\n"

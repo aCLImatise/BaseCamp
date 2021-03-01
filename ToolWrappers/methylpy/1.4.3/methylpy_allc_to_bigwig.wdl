@@ -32,6 +32,9 @@ task MethylpyAllctobigwig {
       ~{if defined(remove_chr_prefix) then ("--remove-chr-prefix " +  '"' + remove_chr_prefix + '"') else ""} \
       ~{if defined(add_chr_prefix) then ("--add-chr-prefix " +  '"' + add_chr_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all_c_file: "input allc file to be converted to bigwig format\\n(default: None)"
     output_file: "Name of output file (default: None)"

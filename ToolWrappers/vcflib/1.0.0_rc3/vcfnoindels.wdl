@@ -4,6 +4,9 @@ task Vcfnoindels {
   command <<<
     vcfnoindels
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -20,6 +20,9 @@ task Fastqgrep {
       ~{if (trim_before) then "--trim_before" else ""} \
       ~{if (trim_match) then "--trim_match" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id: "match the read id (by default, sequence is matched)"
     invert_match: "select nonmatching entries"

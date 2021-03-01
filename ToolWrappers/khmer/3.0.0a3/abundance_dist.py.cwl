@@ -1,36 +1,37 @@
 class: CommandLineTool
 id: abundance_dist.py.cwl
 inputs:
-- id: in_q
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -q
-- id: in_f
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -f
-- id: in_b
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -b
-- id: in_s
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -s
-- id: in_z
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -z
 - id: in_info
-  doc: ''
-  type: boolean
+  doc: print citation information
+  type: boolean?
   inputBinding:
     prefix: --info
+- id: in_no_zero
+  doc: 'Do not output zero-count bins (default: True)'
+  type: boolean?
+  inputBinding:
+    prefix: --no-zero
+- id: in_squash
+  doc: "Overwrite existing output_histogram_filename (default:\nFalse)"
+  type: boolean?
+  inputBinding:
+    prefix: --squash
+- id: in_no_big_count
+  doc: 'Do not count k-mers past 255 (default: True)'
+  type: boolean?
+  inputBinding:
+    prefix: --no-bigcount
+- id: in_force
+  doc: "Continue even if specified input files do not exist or\nare empty. (default:\
+    \ False)"
+  type: boolean?
+  inputBinding:
+    prefix: --force
+- id: in_q
+  doc: ''
+  type: boolean?
+  inputBinding:
+    prefix: -q
 - id: in_calculate_abundance_distribution
   doc: Calculate abundance distribution of the k-mers in the sequence file using a
   type: string
@@ -52,15 +53,11 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_tests_slash_test_data_slash_test_abund_read_two_dot_fa
-  doc: abundance-dist.py counts tests/test-data/test-abund-read-2.fa test-dist
-  type: long
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - abundance-dist.py

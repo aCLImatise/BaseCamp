@@ -48,6 +48,9 @@ task SeuratdimplotR {
       ~{if defined(png_height) then ("--png-height " +  '"' + png_height + '"') else ""} \
       ~{if defined(output_image_file) then ("--output-image-file " +  '"' + output_image_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name in which a serialized R matrix object may be found."
     input_format: "Either loom, seurat, anndata or singlecellexperiment for the input format to read."

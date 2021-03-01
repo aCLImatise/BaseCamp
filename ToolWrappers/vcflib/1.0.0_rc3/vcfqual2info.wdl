@@ -10,6 +10,9 @@ task Vcfqual2info {
       ~{key} \
       ~{vcf_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     key: ""
     vcf_file: ""

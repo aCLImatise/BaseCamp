@@ -3,12 +3,12 @@ id: assess_homopolymers_count_bam.cwl
 inputs:
 - id: in_output_dir
   doc: "Output directory (will be created). (default:\nhomopolymers)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output_dir
 - id: in_homo_len
   doc: "Minimum homopolymer length, default 3 (default: 3)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --homo_len
 - id: in_bam
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: "Output directory (will be created). (default:\nhomopolymers)"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - assess_homopolymers

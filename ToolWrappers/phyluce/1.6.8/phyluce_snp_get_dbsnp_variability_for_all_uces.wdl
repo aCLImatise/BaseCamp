@@ -14,6 +14,9 @@ task PhyluceSnpGetDbsnpVariabilityForAllUces {
       ~{if defined(the_output_file) then ("--output " +  '"' + the_output_file + '"') else ""} \
       ~{if defined(dupe_file) then ("--dupefile " +  '"' + dupe_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dbsnp: "CSV input from dbSNP giving SNP positions within UCE"
     xml: "The XML file holiding locus data from dbSNP"

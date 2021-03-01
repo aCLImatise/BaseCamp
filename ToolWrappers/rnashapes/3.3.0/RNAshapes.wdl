@@ -43,7 +43,6 @@ task RNAshapes {
     String probing
     String probabilities_dot
     String intercept_dot
-    Float one_zero_do_tone_one_eight_six_slash_one_seven_four_eight_seven_one_eight_eight_six_two_six_dot
     String hofacker_dot
   }
   command <<<
@@ -60,7 +59,6 @@ task RNAshapes {
       ~{probing} \
       ~{probabilities_dot} \
       ~{intercept_dot} \
-      ~{one_zero_do_tone_one_eight_six_slash_one_seven_four_eight_seven_one_eight_eight_six_two_six_dot} \
       ~{hofacker_dot} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
       ~{if defined(absolute_deviation) then ("--absoluteDeviation " +  '"' + absolute_deviation + '"') else ""} \
@@ -92,6 +90,9 @@ task RNAshapes {
       ~{if defined(modifier) then ("--modifier " +  '"' + modifier + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: ": Select the computation mode. Available modes are \\\"mfe\\\",\\n\\\"subopt\\\", \\\"shapes\\\", \\\"probs\\\", \\\"sample\\\", \\\"cast\\\", \\\"eval\\\",\\n\\\"abstract\\\", \\\"outside\\\", \\\"mea\\\", \\\"probing\\\". Omit the ticks on\\ninput.\\nDefault is \\\"shapes\\\"."
     absolute_deviation: ": This sets the energy range as an absolute value\\nof the minimum free energy. For example, when\\n--absoluteDeviation 10.0 is specified, and the\\nminimum free energy is -10.0 kcal/mol, the\\nenergy range is set to 0.0 to -10.0 kcal/mol.\\n<float> must be a positive floating point\\nnumber.\\nConnot be combined with --relativeDeviation.\\nOnly available in modes: \\\"subopt\\\", \\\"shapes\\\",\\n\\\"cast\\\"."
@@ -134,7 +135,6 @@ task RNAshapes {
     probing: ": Structural probing is a wet-lab method to obtain hints about the\\nlikelihood of a nucleotide in a structure to be unpaired, a so\\ncalled 'reactivity' [12]. We use the reactivities to enrich the\\nthermodynamic model. To circumvent the challenge of properly\\nweighting free energies and reactivities, as in e.g. RNAstructure\\n[13], we compute a pareto front of both optimization criteria\\n[14]'. This returns a set of equally good candidates, which\\nrepresent interesting spots of the structural ensemble. Finally,\\nthe user has to pick his/her favorite."
     probabilities_dot: "<int> must be a positive integer number."
     intercept_dot: "Default is centroid."
-    one_zero_do_tone_one_eight_six_slash_one_seven_four_eight_seven_one_eight_eight_six_two_six_dot: "[2] Andreas R Gruber, Ronny Lorenz, Stephan H Bernhart, Richard Neuboeck, Ivo L"
     hofacker_dot: "\\\"The Vienna RNA Websuite.\\\""
   }
   output {

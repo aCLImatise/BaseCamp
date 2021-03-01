@@ -60,6 +60,9 @@ task AssemblePairspySequential {
       ~{if defined(exec) then ("--exec " +  '"' + exec + '"') else ""} \
       ~{if defined(db_exec) then ("--dbexec " +  '"' + db_exec + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ordered_list_containingheadprimary: "An ordered list of FASTA/FASTQ files containing\\nhead/primary sequences. (default: None)"
     ordered_list_containingtailsecondary: "An ordered list of FASTA/FASTQ files containing\\ntail/secondary sequences. (default: None)"

@@ -14,6 +14,9 @@ task ProkkahamapToHmm {
       ~{if defined(sep) then ("--sep " +  '"' + sep + '"') else ""} \
       ~{if defined(blank) then ("--blank " +  '"' + blank + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "!      Verbose progress (default '0')."
     datadir: "Path to downloaded HAMAP folder (ftp://ftp.expasy.org/databases/hamap/) (default '')."

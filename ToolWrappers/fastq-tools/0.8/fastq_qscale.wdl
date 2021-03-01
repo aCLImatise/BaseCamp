@@ -4,6 +4,9 @@ task Fastqqscale {
   command <<<
     fastq_qscale
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

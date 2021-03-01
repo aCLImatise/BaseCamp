@@ -12,12 +12,12 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - --fasta
+    description: ''
     args: !SimpleFlagArg
       name: FASTA
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -29,12 +29,12 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --fasta
+        description: ''
         args: !SimpleFlagArg
           name: FASTA
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -46,12 +46,12 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --fasta
+            description: ''
             args: !SimpleFlagArg
               name: FASTA
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -63,47 +63,16 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --fasta
+                description: ''
                 args: !SimpleFlagArg
                   name: FASTA
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: Include this flag to trigger debug-level logging.
-                  synonyms:
-                  - -v
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: Path to FASTA database file.
-                  synonyms:
-                  - -f
-                  - --fasta
-                  args: !SimpleFlagArg
-                    name: FASTA
-                  optional: true
-                - !Flag
-                  description: "Sampling interval for index generation. Smaller =\
-                    \ more memory usage, slightly  faster queries. Larger = less\n\
-                    memory usage slightly slower queries. [default: 32]"
-                  synonyms:
-                  - --sample-interval
-                  args: !SimpleFlagArg
-                    name: FM_SAMPLE_INTERVAL
-                  optional: true
-                - !Flag
-                  description: Absolute path to mtsv index file.
-                  synonyms:
-                  - -i
-                  - --index
-                  args: !SimpleFlagArg
-                    name: INDEX
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
@@ -111,13 +80,105 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --fasta
+                    description: ''
                     args: !SimpleFlagArg
                       name: FASTA
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -v
+                      description: Include this flag to trigger debug-level logging.
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -f
+                      - --fasta
+                      description: Path to FASTA database file.
+                      args: !SimpleFlagArg
+                        name: FASTA
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --sample-interval
+                      description: "Sampling interval for index generation. Smaller\
+                        \ = more memory usage, slightly  faster queries. Larger =\
+                        \ less\nmemory usage slightly slower queries. [default: 32]"
+                      args: !SimpleFlagArg
+                        name: FM_SAMPLE_INTERVAL
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -i
+                      - --index
+                      description: Absolute path to mtsv index file.
+                      args: !SimpleFlagArg
+                        name: INDEX
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --fasta
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: FASTA
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "error: Found argument 'FLAGS' which wasn't expected,\
+                        \ or isn't valid in this context\n\nUSAGE:\n    mtsv-build\
+                        \ [FLAGS] [OPTIONS] --fasta <FASTA> --index <INDEX>\n\nFor\
+                        \ more information try --help\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: Prints help information
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -V
+                      - --version
+                      description: Prints version information
+                      args: !EmptyFlagArg {}
+                    help_text: "mtsv-build 0.4.0\nAdam Perry <adam.n.perry@gmail.com>:Tsosie\
+                      \ Schneider <tes87@nau.edu>\nIndex construction for mtsv metagenomics\
+                      \ binning tool.\n\nUSAGE:\n    mtsv-build [FLAGS] [OPTIONS]\
+                      \ --fasta <FASTA> --index <INDEX>\n\nFLAGS:\n    -v        \
+                      \       Include this flag to trigger debug-level logging.\n\
+                      \    -h, --help       Prints help information\n    -V, --version\
+                      \    Prints version information\n\nOPTIONS:\n    -f, --fasta\
+                      \ <FASTA>                           Path to FASTA database file.\n\
+                      \        --sample-interval <FM_SAMPLE_INTERVAL>\n          \
+                      \  Sampling interval for index generation. Smaller = more memory\
+                      \ usage, slightly  faster queries. Larger = less\n         \
+                      \   memory usage slightly slower queries. [default: 32]\n  \
+                      \  -i, --index <INDEX>                           Absolute path\
+                      \ to mtsv index file.\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -127,24 +188,12 @@ subcommands:
                     \ or isn't valid in this context\n\nUSAGE:\n    mtsv-build [FLAGS]\
                     \ [OPTIONS] --fasta <FASTA> --index <INDEX>\n\nFor more information\
                     \ try --help\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: Prints help information
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: Prints version information
-                  synonyms:
-                  - -V
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "mtsv-build 0.4.0\nAdam Perry <adam.n.perry@gmail.com>:Tsosie\
                   \ Schneider <tes87@nau.edu>\nIndex construction for mtsv metagenomics\
                   \ binning tool.\n\nUSAGE:\n    mtsv-build [FLAGS] [OPTIONS] --fasta\
@@ -159,6 +208,7 @@ subcommands:
                   \ [default: 32]\n    -i, --index <INDEX>                       \
                   \    Absolute path to mtsv index file.\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -168,6 +218,7 @@ subcommands:
                 \ isn't valid in this context\n\nUSAGE:\n    mtsv-build [FLAGS] [OPTIONS]\
                 \ --fasta <FASTA> --index <INDEX>\n\nFor more information try --help\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -185,6 +236,7 @@ subcommands:
               \  memory usage slightly slower queries. [default: 32]\n    -i, --index\
               \ <INDEX>                           Absolute path to mtsv index file.\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -194,6 +246,7 @@ subcommands:
             \ valid in this context\n\nUSAGE:\n    mtsv-build [FLAGS] [OPTIONS] --fasta\
             \ <FASTA> --index <INDEX>\n\nFor more information try --help\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -211,6 +264,7 @@ subcommands:
           \ --index <INDEX>                           Absolute path to mtsv index\
           \ file.\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -220,6 +274,7 @@ subcommands:
         \ in this context\n\nUSAGE:\n    mtsv-build [FLAGS] [OPTIONS] --fasta <FASTA>\
         \ --index <INDEX>\n\nFor more information try --help\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -236,6 +291,7 @@ subcommands:
       \ slower queries. [default: 32]\n    -i, --index <INDEX>                   \
       \        Absolute path to mtsv index file.\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -245,6 +301,7 @@ subcommands:
     \ in this context\n\nUSAGE:\n    mtsv-build [FLAGS] [OPTIONS] --fasta <FASTA>\
     \ --index <INDEX>\n\nFor more information try --help\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -260,3 +317,4 @@ help_text: "mtsv-build 0.4.0\nAdam Perry <adam.n.perry@gmail.com>:Tsosie Schneid
   \ = less\n            memory usage slightly slower queries. [default: 32]\n    -i,\
   \ --index <INDEX>                           Absolute path to mtsv index file.\n"
 generated_using: *id004
+docker_image:

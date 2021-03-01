@@ -48,6 +48,9 @@ task Twofeat {
       ~{if (order) then "-order" else ""} \
       ~{if (two_out) then "-twoout" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_type: "string     [*] By default every feature in the feature\\ntable is allowed. You can set this to be any\\nfeature type you wish to allow.\\nSee http://www.ebi.ac.uk/embl/WebFeat/ for a\\nlist of the EMBL feature types and see\\nAppendix A of the Swissprot user manual in\\nhttp://www.expasy.org/sprot/userman.html for\\na list of the Swissprot feature types.\\nThe type may be wildcarded by using '*'.\\nIf you wish to allow more than one type,\\nseparate their names with the character '|',\\neg:\\n*UTR | intron (Any string)"
     b_type: "string     [*] By default every feature in the feature\\ntable is allowed. You can set this to be any\\nfeature type you wish to allow.\\nSee http://www.ebi.ac.uk/embl/WebFeat/ for a\\nlist of the EMBL feature types and see\\nAppendix A of the Swissprot user manual in\\nhttp://www.expasy.org/sprot/userman.html for\\na list of the Swissprot feature types.\\nThe type may be wildcarded by using '*'.\\nIf you wish to allow more than one type,\\nseparate their names with the character '|',\\neg:\\n*UTR | intron (Any string)"

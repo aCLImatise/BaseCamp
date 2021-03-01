@@ -22,6 +22,9 @@ task SeqseqpanRealign {
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if defined(x_mfa) then ("--xmfa " +  '"' + x_mfa + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Suppress warnings."
     order: "Ordering of blocks in XMFA/FASTA output (0,1,2,...)\\n[default: 0]"

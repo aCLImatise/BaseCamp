@@ -16,31 +16,31 @@ inputs:
 - id: in_outdir
   doc: "Specify to changes the output directory to the\nlocation specified. The input\
     \ file directory is used\nif this is not specified. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_out_name
   doc: "Changes the prefix of the successfully processed\noutput file to the string\
     \ specified. May not be\nspecified with multiple input files. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outname
 - id: in_failed
   doc: "If specified create files containing records that fail\nprocessing. (default:\
     \ False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --failed
 - id: in_fast_a
   doc: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fasta
 - id: in_delim
   doc: "DELIMITER DELIMITER\nA list of the three delimiters that separate\nannotation\
     \ blocks, field names and values, and values\nwithin a field, respectively. (default:\
     \ ('|', '=',\n','))"
-  type: string
+  type: string?
   inputBinding:
     prefix: --delim
 - id: in_one_f
@@ -67,13 +67,13 @@ inputs:
     \ values. The\naction \"cat\" concatenates the values together into a\nsingle\
     \ string. Only applies if the field already\nexists in the header before being\
     \ copying from the\nother file. (default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --act
 - id: in_coord
   doc: "The format of the sequence identifier which defines\nshared coordinate information\
     \ across mate pairs.\n(default: presto)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --coord
 - id: in_pair_pass
@@ -90,6 +90,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - PairSeq.py

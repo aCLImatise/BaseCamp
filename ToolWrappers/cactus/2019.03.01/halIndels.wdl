@@ -24,6 +24,9 @@ task HalIndels {
       ~{if (in_memory) then "--inMemory" else ""} \
       ~{if (only_extant_targets) then "--onlyExtantTargets" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     adjacent_bases: ":       # of adjacent bases to examine while filtering\\n[default = 5]"
     cache_bytes: ":          maximum size in bytes of regular hdf5 cache [default =\\n15728640]"

@@ -9,7 +9,7 @@ task Lwpdownload {
     String use
     String http
     String the
-    File file
+    File var_file
     String headers
     String in
     String to
@@ -24,7 +24,7 @@ task Lwpdownload {
       ~{use} \
       ~{http} \
       ~{the} \
-      ~{file} \
+      ~{var_file} \
       ~{headers} \
       ~{in} \
       ~{to} \
@@ -34,6 +34,9 @@ task Lwpdownload {
       ~{if (save_file_ascii) then "-a" else ""} \
       ~{if (use_http_headers) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     save_file_ascii: "save the file in ASCII mode"
     use_http_headers: "use HTTP headers to guess output filename"
@@ -42,7 +45,7 @@ task Lwpdownload {
     use: ""
     http: ""
     the: ""
-    file: ""
+    var_file: ""
     headers: ""
     in: ""
     to: ""

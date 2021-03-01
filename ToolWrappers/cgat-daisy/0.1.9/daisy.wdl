@@ -4,6 +4,9 @@ task Daisy {
   command <<<
     daisy
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

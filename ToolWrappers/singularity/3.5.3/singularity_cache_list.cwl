@@ -4,23 +4,24 @@ inputs:
 - id: in_type
   doc: "a list of cache types to display, possible entries:\nlibrary, oci, shub, blob(s),\
     \ all (default [all])"
-  type: string
+  type: string?
   inputBinding:
     prefix: --type
 - id: in_verbose
   doc: include cache entries in the output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_list
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - singularity

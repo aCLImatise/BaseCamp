@@ -44,6 +44,9 @@ task Tardis {
       ~{if defined(user_config) then ("--userconfig " +  '"' + user_config + '"') else ""} \
       ~{if (no_sysconfig) then "--no-sysconfig" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_workflow: "Run the command as part of a workflow. After launching\\nall of the jobs, tardis waits for all outputs, which\\nare then collated and merged into a single output\\nfile, as specified by the output file path in the\\noriginal command; all of the temporary input files\\n(for example chunks of uncompressed fastq) are deleted\\nprovided all prior steps completed without error (if\\nthere was an error they are left there to assist with\\ndebugging). Without this option, the program exits\\nimmediately after launching all of the jobs, and\\noutput is left un-collated in the scratch folder\\ncreated by this script, and no cleanup is done."
     chunksize: "When conditioning the input file(s), split into files\\neach containing N logical records. (A logical record\\nfor a sequence file is a complete sequence. For a text\\nfile it is a line of text). (If the -s option is used\\nto sample the inputs, the chunksize relates to the\\nfull un-sampled file . so the same chunk-size can be\\nused whether random sampling or not. For example a\\nchunksize of 1,000,000 is specified in combination\\nwith a sampling rate of .0001, then each chunk would\\ncontain 100 sequences . i.e. you should not adjust the\\nchunk-size, for the sampling rate. Note that to avoid\\na race-condition that could be caused by a very small\\nchunk-size resulting in launching a very large number\\nof jobs, tardis will throw an exception if the chunk-\\nsize used would result in launching more than\\nMAX_DIMENSION jobs (currently 5000) )"

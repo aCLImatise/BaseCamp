@@ -18,6 +18,9 @@ task MetileneInputpl {
       ~{if (pathexecutable_bedtools_executable) then "-b" else ""} \
       ~{if defined(in_one) then ("--in1 " +  '"' + in_one + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_two: "comma-seperated list of sorted (!) bedgraph input files of group 2"
     out: "path/file of out file (metilene input) (default: metilene_g1_g2.input, g1 set by -h1 option, g2 set by -h2 option)"

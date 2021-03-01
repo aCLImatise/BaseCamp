@@ -3,102 +3,102 @@ id: krakenuniq.cwl
 inputs:
 - id: in_db
   doc: 'Name for Kraken DB (default: none)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --db
 - id: in_threads
   doc: 'Number of threads (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_fast_a_input
   doc: Input is FASTA format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fasta-input
 - id: in_fast_q_input
   doc: Input is FASTQ format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fastq-input
 - id: in_gzip_compressed
   doc: Input is gzip compressed
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gzip-compressed
 - id: in_bzip_two_compressed
   doc: Input is bzip2 compressed
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bzip2-compressed
 - id: in_hll_precision
   doc: 'Precision for HyperLogLog k-mer cardinality estimation, between 10 and 18
     (default: 12)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --hll-precision
 - id: in_exact
   doc: Compute exact cardinality instead of estimate (slower, requires memory proportional
     to cardinality!)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --exact
 - id: in_quick
   doc: Quick operation (use first hit or hits)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quick
 - id: in_min_hits
   doc: "In quick op., number of hits req'd for classification\nNOTE: this is ignored\
     \ if --quick is not specified"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-hits
 - id: in_unclassified_out
   doc: Print unclassified sequences to filename
-  type: File
+  type: File?
   inputBinding:
     prefix: --unclassified-out
 - id: in_classified_out
   doc: Print classified sequences to filename
-  type: File
+  type: File?
   inputBinding:
     prefix: --classified-out
 - id: in_output
   doc: "Print output to filename (default: stdout); \"off\" will\nsuppress normal\
     \ output"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_only_classified_output
   doc: Print no Kraken output for unclassified sequences
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --only-classified-output
 - id: in_preload
   doc: Loads DB into memory before classification
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --preload
 - id: in_paired
   doc: The two filenames provided are paired-end reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --paired
 - id: in_check_names
   doc: "Ensure each pair of reads have names that agree\nwith each other; ignored\
     \ if --paired is not specified"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --check-names
 - id: in_uid_mapping
   doc: Map using UID database
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --uid-mapping
 - id: in_report_file
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: --report-file
 outputs:
@@ -108,9 +108,10 @@ outputs:
 - id: out_output
   doc: "Print output to filename (default: stdout); \"off\" will\nsuppress normal\
     \ output"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - krakenuniq

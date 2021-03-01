@@ -1,0 +1,245 @@
+!Command
+command:
+- phylophlan_write_config_file
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Specify the output file where to write the\nconfigurations (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --db_type
+  description: "Specify the type of the database, where \"n\" stands for\nnucleotides\
+    \ and \"a\" for amino acids (default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      a:
+      n:
+- !Flag
+  optional: true
+  synonyms:
+  - --db_dna
+  description: "Add the \"db_dna\" section of the selected software that\nwill be\
+    \ used for building the indexed database\n(default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      makeblastdb:
+- !Flag
+  optional: true
+  synonyms:
+  - --db_aa
+  description: "Add the \"db_aa\" section of the selected software that\nwill be used\
+    \ for building the indexed database\n(default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      diamond:
+      usearch:
+- !Flag
+  optional: true
+  synonyms:
+  - --map_dna
+  description: "Add the \"map_dna\" section of the selected software\nthat will be\
+    \ used for mapping the database against the\ninput genomes (default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      blastn:
+      tblastn:
+      diamond:
+- !Flag
+  optional: true
+  synonyms:
+  - --map_aa
+  description: "Add the \"map_aa\" section of the selected software that\nwill be\
+    \ used for mapping the database against the\ninput proteomes (default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      diamond:
+      usearch:
+- !Flag
+  optional: true
+  synonyms:
+  - --msa
+  description: "Add the \"msa\" section of the selected software that\nwill be used\
+    \ for producing the MSAs (default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      opal:
+      upp:
+      mafft:
+      muscle:
+- !Flag
+  optional: true
+  synonyms:
+  - --trim
+  description: "Add the \"trim\" section of the selected software that\nwill be used\
+    \ for the gappy regions removal of the MSAs\n(default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      trimal:
+- !Flag
+  optional: true
+  synonyms:
+  - --gene_tree1
+  description: "Add the \"gene_tree1\" section of the selected software\nthat will\
+    \ be used for building the phylogenies for the\nmarkers in the database (default:\
+    \ None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      iqtree:
+      raxml:
+      fasttree:
+- !Flag
+  optional: true
+  synonyms:
+  - --gene_tree2
+  description: "Add the \"gene_tree2\" section of the selected software\nthat will\
+    \ be used for refining the phylogenies\npreviously built with what specified in\
+    \ the\n\"gene_tree1\" section (default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      raxml:
+- !Flag
+  optional: true
+  synonyms:
+  - --tree1
+  description: "Add the \"tree1\" section of the selected software that\nwill be used\
+    \ for building the first phylogeny\n(default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      fasttree:
+      raxml:
+      iqtree:
+      astral:
+      astrid:
+- !Flag
+  optional: true
+  synonyms:
+  - --tree2
+  description: "Add the \"tree2\" section of the selected software that\nwill be used\
+    \ for refining the phylogeny previously\nbuilt with what specified in the \"tree1\"\
+    \ section\n(default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      raxml:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --absolute_path
+  description: "Write the absolute path to the executable instead of\nthe executable\
+    \ name as found in the system path\nenvironment (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force_nucleotides
+  description: "If specified sets parameters for phylogenetic analysis\nsoftware so\
+    \ that they use nucleotide sequences, even\nin the case of a database of amino\
+    \ acids (default:\nNone)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --overwrite
+  description: 'Overwrite output file if it exists (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --citation
+  description: Show citation
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: 'Prints more stuff (default: False)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: "Prints the current phylophlan_write_config_file.py\nversion and exit\n"
+  args: !EmptyFlagArg {}
+help_text: "usage: phylophlan_write_config_file [-h] -o OUTPUT -d {n,a}\n        \
+  \                            (--db_dna {makeblastdb} | --db_aa {usearch,diamond})\n\
+  \                                    [--map_dna {blastn,tblastn,diamond}]\n    \
+  \                                [--map_aa {usearch,diamond}] --msa\n          \
+  \                          {muscle,mafft,opal,upp} [--trim {trimal}]\n         \
+  \                           [--gene_tree1 {fasttree,raxml,iqtree}]\n           \
+  \                         [--gene_tree2 {raxml}] --tree1\n                     \
+  \               {fasttree,raxml,iqtree,astral,astrid}\n                        \
+  \            [--tree2 {raxml}] [-a]\n                                    [--force_nucleotides]\
+  \ [--overwrite]\n                                    [--citation] [--verbose] [-v]\n\
+  \nThe phylophlan_write_config_file.py script generates a configuration file to\n\
+  be used with the phylophlan.py script. It implements some standard parameters\n\
+  for the software integrated, but if needed, the parameters of the selected\nsoftware\
+  \ can be added/modified/removed by editing the generated configuration\nfile using\
+  \ a text editor\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -o OUTPUT, --output OUTPUT\n                        Specify the output\
+  \ file where to write the\n                        configurations (default: None)\n\
+  \  -d {n,a}, --db_type {n,a}\n                        Specify the type of the database,\
+  \ where \"n\" stands for\n                        nucleotides and \"a\" for amino\
+  \ acids (default: None)\n  --db_dna {makeblastdb}\n                        Add the\
+  \ \"db_dna\" section of the selected software that\n                        will\
+  \ be used for building the indexed database\n                        (default: None)\n\
+  \  --db_aa {usearch,diamond}\n                        Add the \"db_aa\" section\
+  \ of the selected software that\n                        will be used for building\
+  \ the indexed database\n                        (default: None)\n  --map_dna {blastn,tblastn,diamond}\n\
+  \                        Add the \"map_dna\" section of the selected software\n\
+  \                        that will be used for mapping the database against the\n\
+  \                        input genomes (default: None)\n  --map_aa {usearch,diamond}\n\
+  \                        Add the \"map_aa\" section of the selected software that\n\
+  \                        will be used for mapping the database against the\n   \
+  \                     input proteomes (default: None)\n  --msa {muscle,mafft,opal,upp}\n\
+  \                        Add the \"msa\" section of the selected software that\n\
+  \                        will be used for producing the MSAs (default: None)\n \
+  \ --trim {trimal}       Add the \"trim\" section of the selected software that\n\
+  \                        will be used for the gappy regions removal of the MSAs\n\
+  \                        (default: None)\n  --gene_tree1 {fasttree,raxml,iqtree}\n\
+  \                        Add the \"gene_tree1\" section of the selected software\n\
+  \                        that will be used for building the phylogenies for the\n\
+  \                        markers in the database (default: None)\n  --gene_tree2\
+  \ {raxml}  Add the \"gene_tree2\" section of the selected software\n           \
+  \             that will be used for refining the phylogenies\n                 \
+  \       previously built with what specified in the\n                        \"\
+  gene_tree1\" section (default: None)\n  --tree1 {fasttree,raxml,iqtree,astral,astrid}\n\
+  \                        Add the \"tree1\" section of the selected software that\n\
+  \                        will be used for building the first phylogeny\n       \
+  \                 (default: None)\n  --tree2 {raxml}       Add the \"tree2\" section\
+  \ of the selected software that\n                        will be used for refining\
+  \ the phylogeny previously\n                        built with what specified in\
+  \ the \"tree1\" section\n                        (default: None)\n  -a, --absolute_path\
+  \   Write the absolute path to the executable instead of\n                     \
+  \   the executable name as found in the system path\n                        environment\
+  \ (default: False)\n  --force_nucleotides   If specified sets parameters for phylogenetic\
+  \ analysis\n                        software so that they use nucleotide sequences,\
+  \ even\n                        in the case of a database of amino acids (default:\n\
+  \                        None)\n  --overwrite           Overwrite output file if\
+  \ it exists (default: False)\n  --citation            Show citation\n  --verbose\
+  \             Prints more stuff (default: False)\n  -v, --version         Prints\
+  \ the current phylophlan_write_config_file.py\n                        version and\
+  \ exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/phylophlan:3.0.2--py_0

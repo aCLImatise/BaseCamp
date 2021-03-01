@@ -10,6 +10,9 @@ task ArbHelp2xml {
       ~{arb_help_file} \
       ~{xml_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arb_help_file: ""
     xml_output: ""

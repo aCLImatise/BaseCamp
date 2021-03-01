@@ -4,6 +4,9 @@ task Fastqqc {
   command <<<
     fastqqc
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

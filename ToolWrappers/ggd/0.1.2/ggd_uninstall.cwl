@@ -3,7 +3,7 @@ id: ggd_uninstall.cwl
 inputs:
 - id: in_channel
   doc: "The ggd channel of the recipe to uninstall. (Default =\ngenomics)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --channel
 - id: in_name
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ggd

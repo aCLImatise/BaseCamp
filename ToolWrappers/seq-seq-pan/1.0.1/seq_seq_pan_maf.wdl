@@ -20,6 +20,9 @@ task SeqseqpanMaf {
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     g: ""
     x: ""

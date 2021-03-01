@@ -14,6 +14,9 @@ task GenometreetkPropagate {
       ~{output_taxonomy} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     silent: "suppress output"
     input_taxonomy: "input taxonomy file"

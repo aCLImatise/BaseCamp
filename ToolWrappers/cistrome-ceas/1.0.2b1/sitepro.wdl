@@ -22,6 +22,9 @@ task Sitepro {
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if defined(label) then ("--label " +  '"' + label + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     wig: "input WIG file. WARNING: both fixedStep and\\nvariableStep WIG formats are accepted. Multiple WIG\\nfiles can be given via -w (--wig) individually (eg -w\\nWIG1.wig, -w WIG2.wig). WARNING! multiple wig and bed\\nfiles are not allowed."
     bed: "BED file of regions of interest. (eg, binding sites or\\nmotif locations) Multiple BED files can be given via\\n-b (--bed) individually (eg -b BED1.bed -b BED2.bed).\\nWARNING! multiple wig and bed files are not allowed."

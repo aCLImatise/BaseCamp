@@ -14,6 +14,9 @@ task HailctlDataprocConnect {
       ~{if defined(zone) then ("--zone " +  '"' + zone + '"') else ""} \
       ~{if defined(port) then ("--port " +  '"' + port + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dry_run: ""
     zone: ""

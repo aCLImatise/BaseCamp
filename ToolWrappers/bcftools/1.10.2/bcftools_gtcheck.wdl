@@ -32,6 +32,9 @@ task BcftoolsGtcheck {
       ~{if defined(targets) then ("--targets " +  '"' + targets + '"') else ""} \
       ~{if defined(targets_file) then ("--targets-file " +  '"' + targets_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all_sites: "output comparison for all sites"
     cluster: "<min,max>         min inter- and max intra-sample error [0.23,-0.3]"

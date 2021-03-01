@@ -26,6 +26,9 @@ task VcfToMatrix {
       ~{if defined(num_threads) then ("--num-threads " +  '"' + num_threads + '"') else ""} \
       ~{if defined(d_to_file) then ("--dto-file " +  '"' + d_to_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: "Data passing mode, must be set to 'commandline' or\\n'xml'."
     reference_fast_a: "Path to input reference fasta file."

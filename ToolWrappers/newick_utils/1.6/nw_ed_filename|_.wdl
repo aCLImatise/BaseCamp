@@ -12,6 +12,9 @@ task NwEdFilename {
       ~{if (visit_tree_starting) then "-r" else ""} \
       ~{if (stop_processing_clade) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_modified_tree: ": do not print the (possibly modified) tree at the end of the run\\n(modeled after sed -n)"
     visit_tree_starting: ": visit tree in preorder (starting at root, and visiting a node\\nbefore any of its descendants). Default is post-order (ends at root\\nand visits a node after all its descendats)."

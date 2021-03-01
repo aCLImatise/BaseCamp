@@ -12,6 +12,9 @@ task MafToSnpBed {
       ~{input_dot_maf} \
       ~{input_do_tgp}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: ""
     input_dot_maf: ""

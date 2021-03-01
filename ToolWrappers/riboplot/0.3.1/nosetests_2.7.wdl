@@ -8,6 +8,9 @@ task Nosetests27 {
     nosetests_2_7 \
       ~{at_call_aside}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     at_call_aside: "File \\\"/usr/local/lib/python2.7/site-packages/pkg_resources/__init__.py\\\", line 3079, in _call_aside"
   }

@@ -14,6 +14,9 @@ task PypgatkClipyThreeframetranslation {
       ~{if defined(translation_table) then ("--translation_table " +  '"' + translation_table + '"') else ""} \
       ~{if defined(output_file) then ("--output " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: "Configuration to perform conversion between\\nENSEMBL Files"
     input_fast_a: "input_fasta file to perform the translation"

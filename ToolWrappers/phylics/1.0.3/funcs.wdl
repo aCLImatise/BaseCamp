@@ -4,6 +4,9 @@ task Funcs {
   command <<<
     funcs
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

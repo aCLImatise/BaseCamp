@@ -3,17 +3,17 @@ id: gil2bin.cwl
 inputs:
 - id: in_input_gilist
   doc: Input gilist [File In]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_output_binary_gilist
   doc: output (binary) gilist [File In]
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_reverse_mode_binary
   doc: "Reverse mode (binary to text) [T/F]  Optional\ndefault = F\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_binary_gilist
   doc: output (binary) gilist [File In]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_binary_gilist)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gil2bin

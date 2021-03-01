@@ -8,6 +8,9 @@ task Genotypepl {
     genotype_pl \
       ~{if defined(tmp) then ("--tmp " +  '"' + tmp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tmp: ": the tmp directory; If unspecified, use /usr/local/bin/tmp/"
   }

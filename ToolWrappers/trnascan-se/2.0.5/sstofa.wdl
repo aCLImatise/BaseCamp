@@ -8,6 +8,9 @@ task Sstofa {
     sstofa \
       ~{sec_struct_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sec_struct_file: ""
   }

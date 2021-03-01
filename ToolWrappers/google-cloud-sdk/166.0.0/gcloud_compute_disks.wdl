@@ -26,6 +26,9 @@ task GcloudComputeDisks {
       ~{snapshot} \
       ~{update}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_labels: "Add labels to Google Compute Engine persistent disks."
     create: "Create Google Compute Engine persistent disks."

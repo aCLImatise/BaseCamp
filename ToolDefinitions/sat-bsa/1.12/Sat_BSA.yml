@@ -1,0 +1,172 @@
+!Command
+command:
+- Sat-BSA
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: Required
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: arguments
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: ': Chromosome name for selecting the aligned reads.'
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: ': Start position for selecting the aligned reads.'
+  args: !SimpleFlagArg
+    name: Int
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: ': End position for selecting the aligned reads.'
+  args: !SimpleFlagArg
+    name: Int
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: ': Full path of bam_list.txt listing bam files (Input format 1).'
+  args: !SimpleFlagArg
+    name: Path
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: ': Full path of fa_list.txt listing fasta.gz files (Input format 2).'
+  args: !SimpleFlagArg
+    name: Path
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: ': Thread number. Default=[1]'
+  args: !SimpleFlagArg
+    name: Int
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: ': Full path of Canu.'
+  args: !SimpleFlagArg
+    name: Path
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: ': Genome size in Mb set in Canu.'
+  args: !SimpleFlagArg
+    name: Int
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: ': Read status set in Canu. Default=[-nanopore-raw].'
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: ': The mapping quality value excluded from analysis. Default=[0]'
+  args: !SimpleFlagArg
+    name: Int
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: 'or pb  : The used sequence reads type (Oxford Nanopore Technologies[ont]
+    or PacBio[pb]).'
+  args: !SimpleFlagArg
+    name: ont
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: ': Defining promoter size applied for identifying SVs. Default=[0]'
+  args: !SimpleFlagArg
+    name: Int
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ': Threshold for P-value from Fishers exact test. Default=[0.05]'
+  args: !SimpleFlagArg
+    name: Int
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: ''
+  args: !SimpleFlagArg
+    name: command
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n    oooo                        ooooooo      oooo      oo    \n   o   oo                       oo    oo    o   oo     oo    \n\
+  \  oo                 o          oo    oo   oo          ooo   \n  oo                 o          oo    oo   oo         oo o   \n\
+  \  ooo       oooo   ooooo        oo    oo   ooo        o  o   \n   oooo    oo   o    o          ooooooo     oooo     oo  oo  \n\
+  \     oooo       o    o    oooo  oo    oo      oooo   o    o  \n       oo    ooooo   o          oo     o        oo   ooooooo \n\
+  \        oo oo   oo   o          oo     oo        oo oo    oo \n        oo o    oo   o          oo     o         oo o      o \n\
+  \  oo   oo  oo  ooo   o          oo    oo   oo   oo oo      oo\n   ooooo    oooooo   ooo        ooooooo     ooooo  oo      oo\n\
+  \n\n  Description:\n  This is Sat-BSA version 1.12.\n  Sat-BSA is a package used\
+  \ for applying local de novo assembly and identifying the structural variants in\
+  \ the assembled contigs.\n\nUsage:\n  Sat-BSA -w command [Required arguments] [Additional\
+  \ options]\n\ncommand : Local_reads_selection\n  This command is applied for selecting\
+  \ long reads alined at target region.\n  Required arguments:\n    -c String    \
+  \ : Chromosome name for selecting the aligned reads.\n    -s Int        : Start\
+  \ position for selecting the aligned reads.\n    -e Int        : End position for\
+  \ selecting the aligned reads.\n    -b Path       : Full path of bam_list.txt listing\
+  \ bam files (Input format 1).\n    -f Path       : Full path of fa_list.txt listing\
+  \ fasta.gz files (Input format 2).\n  Additional options:\n    -t Int        : Thread\
+  \ number. Default=[1]\n\ncommand : Local_de_novo_assembly\n  This command is applied\
+  \ for selecting long reads alined at target region and assembling the selected long\
+  \ reads with Canu (https://github.com/marbl/canu).\n  Required arguments:\n    -c\
+  \ String     : Chromosome name for selecting the aligned reads.\n    -s Int    \
+  \    : Start position for selecting the aligned reads.\n    -e Int        : End\
+  \ position for selecting the aligned reads.\n    -b Path       : Full path of bam_list.txt\
+  \ listing bam files (Input format 1).\n    -f Path       : Full path of fa_list.txt\
+  \ listing fasta.gz files (Input format 2).\n    -d Path       : Full path of Canu.\n\
+  \  Additional options:\n    -g Int        : Genome size in Mb set in Canu.\n   \
+  \ -r String     : Read status set in Canu. Default=[-nanopore-raw].\n\ncommand :\
+  \ Long_reads_alignment\n  This command is applied for aligning long reads with Minimap2.\n\
+  \  Required arguments:\n    -f Path       : Full path of aligned_read_list.txt listing\
+  \ sequence reads applied to Minimap2 (Input format 3).\n    -r Path       : Full\
+  \ path of fasta file used as reference.\n  Additional options:\n    -q Int     \
+  \   : The mapping quality value excluded from analysis. Default=[0]\n    -t Int\
+  \        : Thread number. Default=[1]\n    -i ont or pb  : The used sequence reads\
+  \ type (Oxford Nanopore Technologies[ont] or PacBio[pb]).\n\ncommand : SVs_detection\n\
+  \   This command is applied for identifying structural variants between samples\
+  \ by comparing the alignment depth of long reads in the contigs constructed by local\
+  \ de novo assembly.\n  Required arguments:\n    -g Path       : Full path of gtf\
+  \ file (Input format 4).\n    -c Path       : Full path of samples.txt listing the\
+  \ compared samples (Input format 5).\n    -r Path       : Full path of fasta files\
+  \ used as refarence genome.\n  Additional options:\n    -p Int        : Defining\
+  \ promoter size applied for identifying SVs. Default=[0]\n    -t Int        : Thread\
+  \ number Default=[1]\n    -v Int        : Threshold for P-value from Fishers exact\
+  \ test. Default=[0.05]\n    -f Int        : The minimum length of insertion or deletion\
+  \ applied for analysis. Default=[5]\n\ncommand : Graph\n  This command is applied\
+  \ for drawing graph with the result from SVs_detections.\n  Required arguments:\n\
+  \    -r Path       : Full path of result.txt which is an output from SVs_detection\
+  \ command.\n    -c Path       : Full path of graph_data.txt listing the path to\
+  \ directory constructed by SVs_detection command and color used for the line of\
+  \ graph (Input format 6).\n  Additional options:\n    -t Int        : Thread number.\
+  \ Default=[1]\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sat-bsa:1.12--0

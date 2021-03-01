@@ -14,6 +14,9 @@ task Workflowtotools {
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
       ~{if defined(panel_label) then ("--panel_label " +  '"' + panel_label + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     space_separated_list: "A space separated list of galaxy workflow description\\nfiles in json format"
     output_file: "The output file with a yml tool list"

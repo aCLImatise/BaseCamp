@@ -11,12 +11,12 @@ task HaarzxMethylstring {
     File? unique_only
     Int? threads
     String haar_z_do_tx
-    File? file
+    File? var_file
   }
   command <<<
     haarz_x methylstring \
       ~{haar_z_do_tx} \
-      ~{file} \
+      ~{var_file} \
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
       ~{if defined(annotation_files) then ("--annotationfiles " +  '"' + annotation_files + '"') else ""} \
@@ -26,6 +26,9 @@ task HaarzxMethylstring {
       ~{if (unique_only) then "--uniqueonly" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: "[<file>]         list of path/filename(s) of fasta database sequence(s) (default:none)"
     bam: "path/filename of sorted and indexed (!) bamfile (default:none)"
@@ -36,7 +39,7 @@ task HaarzxMethylstring {
     unique_only: "generate a bam output (-o <filename> required)"
     threads: "start <n> threads (default:10)"
     haar_z_do_tx: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

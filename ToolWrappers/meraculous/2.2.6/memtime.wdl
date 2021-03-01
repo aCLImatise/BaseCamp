@@ -4,6 +4,9 @@ task Memtime {
   command <<<
     memtime
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

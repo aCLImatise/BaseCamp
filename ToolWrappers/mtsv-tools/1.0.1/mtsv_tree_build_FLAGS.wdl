@@ -8,6 +8,9 @@ task MtsvtreebuildFLAGS {
     mtsv_tree_build FLAGS \
       ~{if defined(index) then ("--index " +  '"' + index + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index: ""
   }

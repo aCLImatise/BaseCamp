@@ -60,6 +60,9 @@ task Whiptail {
       ~{if (scroll_text) then "--scrolltext" else ""} \
       ~{if (top_left) then "--topleft" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     msgbox: "<height> <width>"
     yes_no: "<text> <height> <width>"

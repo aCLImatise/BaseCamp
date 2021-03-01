@@ -4,6 +4,9 @@ task FasterRepspy {
   command <<<
     faster_reps_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

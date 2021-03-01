@@ -30,6 +30,9 @@ task PbsvDiscover {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample: "STR   Override sample name tag from BAM read group."
     min_mapq: "INT   Ignore alignments with mapping quality < N. [20]"

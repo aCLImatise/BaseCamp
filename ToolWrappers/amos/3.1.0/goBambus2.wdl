@@ -30,6 +30,9 @@ task GoBambus2 {
       ~{if (prints_caff) then "--printscaff" else ""} \
       ~{if (reps) then "--reps" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: ": run ALL steps (irrespective of flags)"
     contigs: ": indicates to start with pre-assembled contigs"

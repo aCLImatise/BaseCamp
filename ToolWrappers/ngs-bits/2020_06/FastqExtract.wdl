@@ -18,6 +18,9 @@ task FastqExtract {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input FASTQ file (gzipped or plain)."
     ids: "Input TSV file containing IDs (without the '@') in the first column and optional length in the second column."

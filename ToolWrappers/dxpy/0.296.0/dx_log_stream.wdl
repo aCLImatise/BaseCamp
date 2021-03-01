@@ -8,6 +8,9 @@ task Dxlogstream {
     dx_log_stream \
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     l: ""
   }

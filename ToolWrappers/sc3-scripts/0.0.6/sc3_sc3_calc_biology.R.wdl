@@ -16,6 +16,9 @@ task Sc3sc3calcbiologyR {
       ~{if defined(regime) then ("--regime " +  '"' + regime + '"') else ""} \
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name in which a SC3 'SingleCellExperiment' object has been stored after kmeans clustering."
     output_text_file: "A text file file to write marker matrices to. A 'k' column will defined from which value of 'k' the markers are derived."

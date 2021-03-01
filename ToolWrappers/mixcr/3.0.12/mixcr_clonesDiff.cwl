@@ -3,40 +3,40 @@ id: mixcr_clonesDiff.cwl
 inputs:
 - id: in_verbose
   doc: Verbose warning messages.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
-- id: in_use_c_gene_include
+- id: in_use_c_gene
   doc: "Use C gene in clone comparison (include it as a clone key along with a clone\n\
     sequence)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_force_overwrite
   doc: Force overwrite of output file(s).
-  type: File
+  type: File?
   inputBinding:
     prefix: --force-overwrite
-- id: in_use_j_gene_include
+- id: in_use_j_gene
   doc: "Use J gene in clone comparison (include it as a clone key along with a clone\n\
     sequence)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -j
 - id: in_no_warnings
   doc: Suppress all warning messages.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-warnings
-- id: in_use_v_gene_include
+- id: in_use_v_gene
   doc: "Use V gene in clone comparison (include it as a clone key along with a clone\n\
     sequence).\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_cf_jv
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -cfjv
 - id: in_scr
@@ -61,7 +61,7 @@ inputs:
     position: 3
 - id: in_report
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 4
 outputs:
@@ -70,9 +70,10 @@ outputs:
   type: stdout
 - id: out_force_overwrite
   doc: Force overwrite of output file(s).
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_force_overwrite)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mixcr

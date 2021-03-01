@@ -20,6 +20,9 @@ task SlamdunkFilter {
       ~{if defined(max_nm) then ("--max-nm " +  '"' + max_nm + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Output directory for mapped BAM files."
     bed: "BED file, overrides MQ filter to 0"

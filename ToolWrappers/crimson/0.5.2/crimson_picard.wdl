@@ -10,6 +10,9 @@ task CrimsonPicard {
       ~{var_input} \
       ~{var_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_input: ""
     var_output: ""

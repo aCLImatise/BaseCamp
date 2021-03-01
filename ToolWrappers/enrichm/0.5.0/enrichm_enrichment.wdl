@@ -58,6 +58,9 @@ task EnrichmEnrichment {
       ~{if (ca_zy) then "--cazy" else ""} \
       ~{if (ec) then "--ec" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log: "Output logging information to this file."
     verbosity: "Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent"

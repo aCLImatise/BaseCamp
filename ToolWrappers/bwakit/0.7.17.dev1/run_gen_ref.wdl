@@ -16,6 +16,9 @@ task Rungenref {
       ~{hs_three_seven} \
       ~{hs_three_seven_d_five}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hs_three_eight: "primary assembly of GRCh38 (incl. chromosomes, unplaced and unlocalized contigs) and EBV"
     hs_three_eight_a: "hs38 plus ALT contigs"

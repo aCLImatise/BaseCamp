@@ -5,8 +5,8 @@ task Laser {
     Boolean? extra_sensitive
     String? threads
     Int? maximum_deletion_length
-    Int? length_alignment_mapped
-    File? filename_fastq_givena
+    Int? length_alignment_seeds
+    File? filename_fastq_file
     Directory? tmpdir
     String? core_options
     String? recal_options
@@ -23,8 +23,8 @@ task Laser {
       ~{if (extra_sensitive) then "--extra-sensitive" else ""} \
       ~{if defined(threads) then ("-T " +  '"' + threads + '"') else ""} \
       ~{if defined(maximum_deletion_length) then ("-M " +  '"' + maximum_deletion_length + '"') else ""} \
-      ~{if defined(length_alignment_mapped) then ("-s " +  '"' + length_alignment_mapped + '"') else ""} \
-      ~{if defined(filename_fastq_givena) then ("-S " +  '"' + filename_fastq_givena + '"') else ""} \
+      ~{if defined(length_alignment_seeds) then ("-s " +  '"' + length_alignment_seeds + '"') else ""} \
+      ~{if defined(filename_fastq_file) then ("-S " +  '"' + filename_fastq_file + '"') else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""} \
       ~{if defined(core_options) then ("--core-options " +  '"' + core_options + '"') else ""} \
       ~{if defined(recal_options) then ("--recal-options " +  '"' + recal_options + '"') else ""} \
@@ -36,12 +36,15 @@ task Laser {
       ~{if (dont_recalibrate) then "--dont-recalibrate" else ""} \
       ~{if (inter_chromosomal) then "--interchromosomal" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     extra_sensitive: "Be more sensitive (at the expense of runtime)."
     threads: "Threads."
     maximum_deletion_length: "Maximum deletion length to look for (default: 1000 in\\nregular mode, 10000 when using --extra-sensitive)."
-    length_alignment_mapped: "Length of alignment seeds to be mapped by external\\nread mapper (BWA), default: 40."
-    filename_fastq_givena: "Filename of FASTQ file with split reads (if not given,\\na temporary such file be produced)."
+    length_alignment_seeds: "Length of alignment seeds to be mapped by external\\nread mapper (BWA), default: 40."
+    filename_fastq_file: "Filename of FASTQ file with split reads (if not given,\\na temporary such file be produced)."
     tmpdir: "Directory to use for temporary files (if not given,\\nsystem default is used)."
     core_options: "Additional options to pass on to LASER core algorithm.\\nCall \\\"laser-core\\\" without parameters for a list of\\noptions."
     recal_options: "Additional options to pass on to LASER's recalibration\\nalgorithm. Call \\\"laser-recalibrate\\\" without parameters\\nfor a list of options."

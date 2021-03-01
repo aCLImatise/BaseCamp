@@ -4,22 +4,22 @@ inputs:
 - id: in_ribot_ricer_index
   doc: "Path to the index file of ribotricer This file\nshould be generated using\
     \ ribotricer prepare-orfs\n[required]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --ribotricer_index
 - id: in_fast_a
   doc: Path to FASTA file  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta
 - id: in_protein
   doc: Output protein sequence instead of nucleotide
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --protein
 - id: in_save_to
   doc: Path to output file  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --saveto
 outputs:
@@ -28,9 +28,10 @@ outputs:
   type: stdout
 - id: out_save_to
   doc: Path to output file  [required]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_save_to)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ribotricer

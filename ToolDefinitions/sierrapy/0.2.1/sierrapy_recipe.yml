@@ -14,13 +14,13 @@ subcommands:
   positional: []
   named:
   - !Flag
+    optional: true
+    synonyms:
+    - --gap-handling
     description: "[squeeze|hxb2strip]\nSpecify how you want the recipe to handle\n\
       the gaps.\nSpecify \"squeeze\" to keep every\ngap in the result alignment; \"\
       hxb2_strip\" to\nstrip out non-HXB2 columns."
-    synonyms:
-    - --gap-handling
     args: !EmptyFlagArg {}
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -32,13 +32,13 @@ subcommands:
       positional: []
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - --gap-handling
         description: "[squeeze|hxb2strip]\nSpecify how you want the recipe to handle\n\
           the gaps.\nSpecify \"squeeze\" to keep every\ngap in the result alignment;\
           \ \"hxb2_strip\" to\nstrip out non-HXB2 columns."
-        synonyms:
-        - --gap-handling
         args: !EmptyFlagArg {}
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -50,13 +50,13 @@ subcommands:
           positional: []
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - --gap-handling
             description: "[squeeze|hxb2strip]\nSpecify how you want the recipe to\
               \ handle\nthe gaps.\nSpecify \"squeeze\" to keep every\ngap in the result\
               \ alignment; \"hxb2_strip\" to\nstrip out non-HXB2 columns."
-            synonyms:
-            - --gap-handling
             args: !EmptyFlagArg {}
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -68,274 +68,341 @@ subcommands:
               positional: []
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - --gap-handling
                 description: "[squeeze|hxb2strip]\nSpecify how you want the recipe\
                   \ to handle\nthe gaps.\nSpecify \"squeeze\" to keep every\ngap in\
                   \ the result alignment; \"hxb2_strip\" to\nstrip out non-HXB2 columns."
-                synonyms:
-                - --gap-handling
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id005 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: JSON result from Sierra web service.
-                  synonyms:
-                  - --input
-                  args: !SimpleFlagArg
-                    name: FILENAME
-                  optional: true
-                - !Flag
-                  description: File path to store the result.
-                  synonyms:
-                  - --output
-                  args: !SimpleFlagArg
-                    name: FILENAME
-                  optional: true
-                parent: &id003 !Command
-                  command:
-                  - sierrapy
-                  positional: []
-                  named:
-                  - !Flag
-                    description: URL of Sierra GraphQL Web Service.
-                    synonyms:
-                    - --url
-                    args: !SimpleFlagArg
-                      name: TEXT
-                    optional: true
-                  parent:
-                  subcommands:
-                  - !Command
-                    command:
-                    - sierrapy
-                    - introspection
-                    positional: []
-                    named:
-                    - !Flag
-                      description: File path to store the JSON result.
-                      synonyms:
-                      - -o
-                      - --output
-                      args: !SimpleFlagArg
-                        name: FILENAME
-                      optional: true
-                    - !Flag
-                      description: Output compressed JSON result.
-                      synonyms:
-                      - --ugly
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
-                      description: Show this message and exit.
-                      synonyms:
-                      - --help
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag:
-                    help_text: "Usage: sierrapy introspection [OPTIONS]\n\n  Output\
-                      \ introspection of Sierra GraphQL web service.\n\nOptions:\n\
-                      \  -o, --output FILENAME  File path to store the JSON result.\n\
-                      \  --ugly                 Output compressed JSON result.\n \
-                      \ --help                 Show this message and exit.\n"
-                    generated_using: &id004
-                    - --help
-                  - !Command
-                    command:
-                    - sierrapy
-                    - fasta
-                    positional:
-                    - !Positional
-                      description: ''
-                      position: 0
-                      name: FASTA...
-                      optional: false
-                    named:
-                    - !Flag
-                      description: "A file contains GraphQL fragment definition on\n\
-                        `SequenceAnalysis`."
-                      synonyms:
-                      - -q
-                      - --query
-                      args: !SimpleFlagArg
-                        name: FILENAME
-                      optional: true
-                    - !Flag
-                      description: File path to store the JSON result.
-                      synonyms:
-                      - -o
-                      - --output
-                      args: !SimpleFlagArg
-                        name: FILENAME
-                      optional: true
-                    - !Flag
-                      description: Output compressed JSON result.
-                      synonyms:
-                      - --ugly
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
-                      description: Show this message and exit.
-                      synonyms:
-                      - --help
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag:
-                    help_text: "Usage: sierrapy fasta [OPTIONS] FASTA...\n\n  Run\
-                      \ alignment, drug resistance and other analysis for one or more\
-                      \ FASTA-\n  format files contained HIV-1 pol DNA sequences.\n\
-                      \nOptions:\n  -q, --query FILENAME   A file contains GraphQL\
-                      \ fragment definition on\n                         `SequenceAnalysis`.\n\
-                      \  -o, --output FILENAME  File path to store the JSON result.\n\
-                      \  --ugly                 Output compressed JSON result.\n \
-                      \ --help                 Show this message and exit.\n"
-                    generated_using: *id004
-                  - !Command
-                    command:
-                    - sierrapy
-                    - mutations
-                    positional:
-                    - !Positional
-                      description: ''
-                      position: 0
-                      name: MUTATIONS...
-                      optional: false
-                    named:
-                    - !Flag
-                      description: "A file contains GraphQL fragment definition on\n\
-                        `MutationsAnalysis`."
-                      synonyms:
-                      - -q
-                      - --query
-                      args: !SimpleFlagArg
-                        name: FILENAME
-                      optional: true
-                    - !Flag
-                      description: File path to store the JSON result.
-                      synonyms:
-                      - -o
-                      - --output
-                      args: !SimpleFlagArg
-                        name: FILENAME
-                      optional: true
-                    - !Flag
-                      description: Output compressed JSON result.
-                      synonyms:
-                      - --ugly
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
-                      description: Show this message and exit.
-                      synonyms:
-                      - --help
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag:
-                    help_text: "Usage: sierrapy mutations [OPTIONS] MUTATIONS...\n\
-                      \n  Run drug resistance and other analysis for PR, RT and/or\
-                      \ IN mutations. For\n  Example:\n\n  sierrapy mutations PR:E35E_D\
-                      \ RT:T67- IN:M50MI\n\n  Use command \"sierrapy patterns\" instead\
-                      \ if you want to run multiple sets\n  of mutations in one request.\n\
-                      \nOptions:\n  -q, --query FILENAME   A file contains GraphQL\
-                      \ fragment definition on\n                         `MutationsAnalysis`.\n\
-                      \  -o, --output FILENAME  File path to store the JSON result.\n\
-                      \  --ugly                 Output compressed JSON result.\n \
-                      \ --help                 Show this message and exit.\n"
-                    generated_using: *id004
-                  - *id005
-                  - !Command
-                    command:
-                    - sierrapy
-                    - IN...
-                    positional:
-                    - !Positional
-                      description: ''
-                      position: 0
-                      name: sierrapy
-                      optional: false
-                    - !Positional
-                      description: ''
-                      position: 1
-                      name: COMMAND
-                      optional: false
-                    - !Positional
-                      description: ''
-                      position: 2
-                      name: ARGS
-                      optional: true
-                    named: []
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag:
-                    usage_flag:
-                    version_flag:
-                    help_text: "Usage: sierrapy [OPTIONS] COMMAND [ARGS]...\nTry \"\
-                      sierrapy --help\" for help.\n\nError: No such command \"IN...\"\
-                      .\n"
-                    generated_using: *id004
-                  usage: []
-                  help_flag: !Flag
-                    description: Show this message and exit.
-                    synonyms:
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  usage_flag:
-                  version_flag: !Flag
-                    description: Show client and the HIVDB algorithm version.
-                    synonyms:
-                    - --version
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  help_text: "Usage: sierrapy [OPTIONS] COMMAND [ARGS]...\n\n  A Client\
-                    \ of HIVDB Sierra GraphQL Web Service\n\nOptions:\n  --url TEXT\
-                    \  URL of Sierra GraphQL Web Service.\n  --version   Show client\
-                    \ and the HIVDB algorithm version.\n  --help      Show this message\
-                    \ and exit.\n\nCommands:\n  fasta          Run alignment, drug\
-                    \ resistance and other analysis for one...\n  introspection  Output\
-                    \ introspection of Sierra GraphQL web service.\n  mutations  \
-                    \    Run drug resistance and other analysis for PR, RT and/or\n\
-                    \                 IN...\n  patterns       Run drug resistance\
-                    \ and other analysis for one or more...\n  recipe         Post\
-                    \ process Sierra web service output.\n"
-                  generated_using: *id004
+                named: []
+                parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional: []
                   named:
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --gap-handling
                     description: "[squeeze|hxb2strip]\nSpecify how you want the recipe\
                       \ to handle\nthe gaps.\nSpecify \"squeeze\" to keep every\n\
                       gap in the result alignment; \"hxb2_strip\" to\nstrip out non-HXB2\
                       \ columns."
-                    synonyms:
-                    - --gap-handling
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id005
+                  parent: &id005 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --input
+                      description: JSON result from Sierra web service.
+                      args: !SimpleFlagArg
+                        name: FILENAME
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --output
+                      description: File path to store the result.
+                      args: !SimpleFlagArg
+                        name: FILENAME
+                    parent: &id003 !Command
+                      command:
+                      - sierrapy
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --url
+                        description: URL of Sierra GraphQL Web Service.
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      parent:
+                      subcommands:
+                      - !Command
+                        command:
+                        - sierrapy
+                        - introspection
+                        positional: []
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -o
+                          - --output
+                          description: File path to store the JSON result.
+                          args: !SimpleFlagArg
+                            name: FILENAME
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --ugly
+                          description: Output compressed JSON result.
+                          args: !EmptyFlagArg {}
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - --help
+                          description: Show this message and exit.
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "Usage: sierrapy introspection [OPTIONS]\n\n  Output\
+                          \ introspection of Sierra GraphQL web service.\n\nOptions:\n\
+                          \  -o, --output FILENAME  File path to store the JSON result.\n\
+                          \  --ugly                 Output compressed JSON result.\n\
+                          \  --help                 Show this message and exit.\n"
+                        generated_using: &id004
+                        - --help
+                        docker_image:
+                      - !Command
+                        command:
+                        - sierrapy
+                        - fasta
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: FASTA...
+                          description: ''
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -q
+                          - --query
+                          description: "A file contains GraphQL fragment definition\
+                            \ on\n`SequenceAnalysis`."
+                          args: !SimpleFlagArg
+                            name: FILENAME
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -o
+                          - --output
+                          description: File path to store the JSON result.
+                          args: !SimpleFlagArg
+                            name: FILENAME
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --ugly
+                          description: Output compressed JSON result.
+                          args: !EmptyFlagArg {}
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - --help
+                          description: Show this message and exit.
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "Usage: sierrapy fasta [OPTIONS] FASTA...\n\n \
+                          \ Run alignment, drug resistance and other analysis for\
+                          \ one or more FASTA-\n  format files contained HIV-1 pol\
+                          \ DNA sequences.\n\nOptions:\n  -q, --query FILENAME   A\
+                          \ file contains GraphQL fragment definition on\n       \
+                          \                  `SequenceAnalysis`.\n  -o, --output FILENAME\
+                          \  File path to store the JSON result.\n  --ugly       \
+                          \          Output compressed JSON result.\n  --help    \
+                          \             Show this message and exit.\n"
+                        generated_using: *id004
+                        docker_image:
+                      - !Command
+                        command:
+                        - sierrapy
+                        - mutations
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: MUTATIONS...
+                          description: ''
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -q
+                          - --query
+                          description: "A file contains GraphQL fragment definition\
+                            \ on\n`MutationsAnalysis`."
+                          args: !SimpleFlagArg
+                            name: FILENAME
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -o
+                          - --output
+                          description: File path to store the JSON result.
+                          args: !SimpleFlagArg
+                            name: FILENAME
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --ugly
+                          description: Output compressed JSON result.
+                          args: !EmptyFlagArg {}
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - --help
+                          description: Show this message and exit.
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "Usage: sierrapy mutations [OPTIONS] MUTATIONS...\n\
+                          \n  Run drug resistance and other analysis for PR, RT and/or\
+                          \ IN mutations. For\n  Example:\n\n  sierrapy mutations\
+                          \ PR:E35E_D RT:T67- IN:M50MI\n\n  Use command \"sierrapy\
+                          \ patterns\" instead if you want to run multiple sets\n\
+                          \  of mutations in one request.\n\nOptions:\n  -q, --query\
+                          \ FILENAME   A file contains GraphQL fragment definition\
+                          \ on\n                         `MutationsAnalysis`.\n  -o,\
+                          \ --output FILENAME  File path to store the JSON result.\n\
+                          \  --ugly                 Output compressed JSON result.\n\
+                          \  --help                 Show this message and exit.\n"
+                        generated_using: *id004
+                        docker_image:
+                      - *id005
+                      - !Command
+                        command:
+                        - sierrapy
+                        - IN...
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: sierrapy
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: COMMAND
+                          description: ''
+                        - !Positional
+                          optional: true
+                          position: 2
+                          name: ARGS
+                          description: ''
+                        named: []
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag:
+                        usage_flag:
+                        version_flag:
+                        help_text: "Usage: sierrapy [OPTIONS] COMMAND [ARGS]...\n\
+                          Try \"sierrapy --help\" for help.\n\nError: No such command\
+                          \ \"IN...\".\n"
+                        generated_using: *id004
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --version
+                        description: Show client and the HIVDB algorithm version.
+                        args: !EmptyFlagArg {}
+                      help_text: "Usage: sierrapy [OPTIONS] COMMAND [ARGS]...\n\n\
+                        \  A Client of HIVDB Sierra GraphQL Web Service\n\nOptions:\n\
+                        \  --url TEXT  URL of Sierra GraphQL Web Service.\n  --version\
+                        \   Show client and the HIVDB algorithm version.\n  --help\
+                        \      Show this message and exit.\n\nCommands:\n  fasta \
+                        \         Run alignment, drug resistance and other analysis\
+                        \ for one...\n  introspection  Output introspection of Sierra\
+                        \ GraphQL web service.\n  mutations      Run drug resistance\
+                        \ and other analysis for PR, RT and/or\n                 IN...\n\
+                        \  patterns       Run drug resistance and other analysis for\
+                        \ one or more...\n  recipe         Post process Sierra web\
+                        \ service output.\n"
+                      generated_using: *id004
+                      docker_image:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --gap-handling
+                        description: "[squeeze|hxb2strip]\nSpecify how you want the\
+                          \ recipe to handle\nthe gaps.\nSpecify \"squeeze\" to keep\
+                          \ every\ngap in the result alignment; \"hxb2_strip\" to\n\
+                          strip out non-HXB2 columns."
+                        args: !EmptyFlagArg {}
+                      parent: *id005
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: sierrapy recipe alignment [OPTIONS]\n\n \
+                        \ Export aligned pol sequences from Sierra result.\n\nOptions:\n\
+                        \  --gap-handling [squeeze|hxb2strip]\n                  \
+                        \                Specify how you want the recipe to handle\n\
+                        \                                  the gaps.\n           \
+                        \                       \n                               \
+                        \   Specify \"squeeze\" to keep every\n                  \
+                        \                gap in the result alignment; \"hxb2_strip\"\
+                        \ to\n                                  strip out non-HXB2\
+                        \ columns.\n  --help                          Show this message\
+                        \ and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --help
+                      description: Show this message and exit.
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: sierrapy recipe [OPTIONS] COMMAND [ARGS]...\n\
+                      \n  Post process Sierra web service output.\n\nOptions:\n  --input\
+                      \ FILENAME   JSON result from Sierra web service.\n  --output\
+                      \ FILENAME  File path to store the result.\n  --help       \
+                      \      Show this message and exit.\n\nCommands:\n  alignment\
+                      \  Export aligned pol sequences from Sierra result.\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: sierrapy recipe alignment [OPTIONS]\n\n  Export\
@@ -349,13 +416,9 @@ subcommands:
                     \ non-HXB2 columns.\n  --help                          Show this\
                     \ message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "Usage: sierrapy recipe [OPTIONS] COMMAND [ARGS]...\n\n\
@@ -365,14 +428,15 @@ subcommands:
                   \ message and exit.\n\nCommands:\n  alignment  Export aligned pol\
                   \ sequences from Sierra result.\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: sierrapy recipe alignment [OPTIONS]\n\n  Export aligned\
@@ -385,6 +449,7 @@ subcommands:
                 \ to\n                                  strip out non-HXB2 columns.\n\
                 \  --help                          Show this message and exit.\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -396,14 +461,15 @@ subcommands:
               \ and exit.\n\nCommands:\n  alignment  Export aligned pol sequences\
               \ from Sierra result.\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: sierrapy recipe alignment [OPTIONS]\n\n  Export aligned\
@@ -415,6 +481,7 @@ subcommands:
             \ \"hxb2_strip\" to\n                                  strip out non-HXB2\
             \ columns.\n  --help                          Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -425,14 +492,15 @@ subcommands:
           \ result.\n  --help             Show this message and exit.\n\nCommands:\n\
           \  alignment  Export aligned pol sequences from Sierra result.\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: sierrapy recipe alignment [OPTIONS]\n\n  Export aligned pol\
@@ -444,6 +512,7 @@ subcommands:
         \ to\n                                  strip out non-HXB2 columns.\n  --help\
         \                          Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -454,14 +523,15 @@ subcommands:
       \  --help             Show this message and exit.\n\nCommands:\n  alignment\
       \  Export aligned pol sequences from Sierra result.\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: sierrapy recipe alignment [OPTIONS]\n\n  Export aligned pol sequences\
@@ -473,6 +543,7 @@ subcommands:
     \                                 strip out non-HXB2 columns.\n  --help      \
     \                    Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -483,3 +554,4 @@ help_text: "Usage: sierrapy recipe [OPTIONS] COMMAND [ARGS]...\n\n  Post process
   \           Show this message and exit.\n\nCommands:\n  alignment  Export aligned\
   \ pol sequences from Sierra result.\n"
 generated_using: *id004
+docker_image:

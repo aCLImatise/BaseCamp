@@ -16,6 +16,9 @@ task Refold {
       ~{if (percent) then "--percent" else ""} \
       ~{if (window) then "--window" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     maximum: "Specify a maximum number of structures.\\nDefault is 20 structures."
     percent: "Specify a maximum percent energy difference.\\nDefault is 10 percent (specified as 10, not 0.1)."

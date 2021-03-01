@@ -3,50 +3,54 @@ command:
 - initializeTranscriptDatasource
 positional:
 - !Positional
-  description: 'Location of the gtf files.  Multiple files can be specified as a comma
-    separated list (e.g. file1,file2) without spaces '
+  optional: false
   position: 0
   name: gtf_files
-  optional: false
+  description: 'Location of the gtf files.  Multiple files can be specified as a comma
+    separated list (e.g. file1,file2) without spaces '
 - !Positional
-  description: Location of the fasta file (cDNA) associated with the gtf files.  Multiple
-    files can be specified as a comma separated list (e.g. file1,file2) without spaces
+  optional: false
   position: 1
   name: fasta_files
-  optional: false
+  description: Location of the fasta file (cDNA) associated with the gtf files.  Multiple
+    files can be specified as a comma separated list (e.g. file1,file2) without spaces
 - !Positional
-  description: Datasource output location.  This directory should NOT already exist.
+  optional: false
   position: 2
   name: output_dir
-  optional: false
+  description: Datasource output location.  This directory should NOT already exist.
 - !Positional
-  description: Genome build -- this must be specified correctly by the user.  For
-    example, hg19.
+  optional: false
   position: 3
   name: genome_build
-  optional: false
+  description: Genome build -- this must be specified correctly by the user.  For
+    example, hg19.
 - !Positional
-  description: version.  For example, v18
+  optional: false
   position: 4
   name: version
-  optional: false
+  description: version.  For example, v18
 named:
 - !Flag
-  description: name of the datasource.  For example, ensembl.  Or GENCODE
+  optional: true
   synonyms:
   - --name
+  description: name of the datasource.  For example, ensembl.  Or GENCODE
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: "Filter to use from ['dummy', 'basic'].  For non-GENCODE ENSEMBL, this\
-    \ should be set to dummy. default: basic"
+  optional: true
   synonyms:
   - --filter
+  description: "Filter to use from ['dummy', 'basic'].  For non-GENCODE ENSEMBL, this\
+    \ should be set to dummy. default: basic"
   args: !SimpleFlagArg
     name: FILTER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --protein-map-file
   description: "Protein mapping file (a tsv with transcript ID to protein ID ....\
     \ Typically, for ENSEMBL or GENCODE a file with ENST to ENSP mappings).\nThis\
     \ utility can require a lot of RAM (~4GB for gencode.v18).\nCreation of a gencode\
@@ -58,22 +62,18 @@ named:
     \ so if a filter change is needed to a datasource that has\nalready been generated,\
     \ you can edit the config file, instead of re-creating the entire datasource.\n\
     IF you wish to have HGVS support, you must provide the protein mapping file (--protein-map-file).\n"
-  synonyms:
-  - -p
-  - --protein-map-file
   args: !SimpleFlagArg
     name: PROTEIN_MAP_FILE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: initializeTranscriptDatasource [-h] [--name NAME] [--filter FILTER]\n\
@@ -106,3 +106,4 @@ help_text: "usage: initializeTranscriptDatasource [-h] [--name NAME] [--filter F
   \ (--protein-map-file).\n\n    \n"
 generated_using:
 - --help
+docker_image:

@@ -10,6 +10,9 @@ task NibIntervalsToFastapy {
       ~{range_file} \
       ~{nib_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     range_file: ""
     nib_file: ""

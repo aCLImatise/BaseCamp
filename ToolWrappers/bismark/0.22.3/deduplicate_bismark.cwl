@@ -1,34 +1,34 @@
 class: CommandLineTool
 id: deduplicate_bismark.cwl
 inputs:
-- id: in_s_slash_single
+- id: in_single
   doc: 'deduplicate single-end BAM/SAM Bismark files. Default: [AUTO-DETECT]'
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -s/--single
-- id: in_p_slash_paired
+    prefix: --single
+- id: in_paired
   doc: 'deduplicate paired-end BAM/SAM Bismark files. Default: [AUTO-DETECT]'
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -p/--paired
-- id: in_oslash_outfile
+    prefix: --paired
+- id: in_outfile
   doc: "[filename] The basename of a desired output file. This basename is modified\
     \ to end in '.deduplicated.bam',\nor '.multiple.deduplicated.bam' in '--multiple'\
     \ mode, for consistency reasons."
-  type: File
+  type: File?
   inputBinding:
-    prefix: -o/--outfile
+    prefix: --outfile
 - id: in_output_dir
   doc: "[path]     Output directory, either relative or absolute. Output is written\
     \ to the current directory if not\nspecified explicitly."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_dir
 - id: in_barcode
   doc: "In addition to chromosome, start position and orientation this will also take\
     \ a potential barcode into\nconsideration while deduplicating. The barcode needs\
     \ to be the last element of the read ID and separated\nby a ':', e.g.: MISEQ:14:000000000-A55D0:1:1101:18024:2858_1:N:0:CTCCT"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --barcode
 - id: in_bam
@@ -37,12 +37,12 @@ inputs:
     \ it hasn't been specified, attempt to find Samtools\nin the PATH. If no installation\
     \ of Samtools can be found, a GZIP compressed output is written out\ninstead (yielding\
     \ a .sam.gz output file). Default: ON."
-  type: File
+  type: File?
   inputBinding:
     prefix: --bam
 - id: in_sam
   doc: 'The output will be written out in SAM format. Default: OFF.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sam
 - id: in_multiple
@@ -52,30 +52,30 @@ inputs:
     \ or CRAM, all input files must be the same format as each other.\nThe sequence\
     \ dictionary of each input file must be identical, although this command does\
     \ not check this.\nBy default the header is taken from the first file to be concatenated."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --multiple
 - id: in_sam_tools_path
   doc: "[path]  The path to your Samtools installation, e.g. /home/user/samtools/.\
     \ Does not need to be specified\nexplicitly if Samtools is in the PATH already"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --samtools_path
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_oslash_outfile
+- id: out_outfile
   doc: "[filename] The basename of a desired output file. This basename is modified\
     \ to end in '.deduplicated.bam',\nor '.multiple.deduplicated.bam' in '--multiple'\
     \ mode, for consistency reasons."
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_oslash_outfile)
+    glob: $(inputs.in_outfile)
 - id: out_output_dir
   doc: "[path]     Output directory, either relative or absolute. Output is written\
     \ to the current directory if not\nspecified explicitly."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_dir)
 - id: out_bam
@@ -84,9 +84,10 @@ outputs:
     \ it hasn't been specified, attempt to find Samtools\nin the PATH. If no installation\
     \ of Samtools can be found, a GZIP compressed output is written out\ninstead (yielding\
     \ a .sam.gz output file). Default: ON."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_bam)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - deduplicate_bismark

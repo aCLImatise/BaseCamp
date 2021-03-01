@@ -3,22 +3,22 @@ id: table_filter.py.cwl
 inputs:
 - id: in_header
   doc: keep header in output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --header
 - id: in_comments
   doc: keep comments in output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --comments
 - id: in_force_header
   doc: "assume the first line is a header even if it does not\nstart with \"#\""
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force-header
 - id: in_cols
   doc: names or indexes of columns to keep
-  type: string
+  type: string?
   inputBinding:
     prefix: --cols
 - id: in_expression
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - table_filter.py

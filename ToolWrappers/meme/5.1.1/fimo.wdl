@@ -3,6 +3,14 @@ version 1.0
 task Fimo {
   input {
     Float? alpha
+    File? b_file
+    Int? max_stored_scores
+    Int? max_strand
+    Float? motif_pseudo
+    String? no_q_value
+    String? oc
+    File? parse_genomic_coord
+    File? prior_dist
     File motif_file
     File sequence_file
   }
@@ -10,10 +18,29 @@ task Fimo {
     fimo \
       ~{motif_file} \
       ~{sequence_file} \
-      ~{if defined(alpha) then ("--alpha " +  '"' + alpha + '"') else ""}
+      ~{if defined(alpha) then ("--alpha " +  '"' + alpha + '"') else ""} \
+      ~{if defined(b_file) then ("--bfile " +  '"' + b_file + '"') else ""} \
+      ~{if defined(max_stored_scores) then ("--max-stored-scores " +  '"' + max_stored_scores + '"') else ""} \
+      ~{if defined(max_strand) then ("--max-strand " +  '"' + max_strand + '"') else ""} \
+      ~{if defined(motif_pseudo) then ("--motif-pseudo " +  '"' + motif_pseudo + '"') else ""} \
+      ~{if defined(no_q_value) then ("--no-qvalue " +  '"' + no_q_value + '"') else ""} \
+      ~{if defined(oc) then ("--oc " +  '"' + oc + '"') else ""} \
+      ~{if defined(parse_genomic_coord) then ("--parse-genomic-coord " +  '"' + parse_genomic_coord + '"') else ""} \
+      ~{if defined(prior_dist) then ("--prior-dist " +  '"' + prior_dist + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    alpha: "(default 1.0)\\n--bfile <background file> (DNA and protein use NRDB by default)\\n--max-stored-scores <int> (default=100000)\\n--max-strand\\n--motif <id> (default=all)\\n--motif-pseudo <float> (default=0.1)\\n--no-qvalue\\n--norc\\n--o <output dir> (default=fimo_out)\\n--oc <output dir> (default=fimo_out)\\n--parse-genomic-coord\\n--psp <PSP filename> (default none)\\n--prior-dist <PSP distribution filename> (default none)\\n--qv-thresh\\n--skip-matched-sequence\\n--text\\n--thresh <float> (default = 1e-4)\\n--verbosity [1|2|3|4] (default 2)\\n--version (print the version and exit)"
+    alpha: "(default 1.0)"
+    b_file: "(DNA and protein use NRDB by default)"
+    max_stored_scores: "(default=100000)"
+    max_strand: "(default=all)"
+    motif_pseudo: "(default=0.1)"
+    no_q_value: "(default=fimo_out)"
+    oc: "(default=fimo_out)"
+    parse_genomic_coord: "(default none)"
+    prior_dist: "(default none)"
     motif_file: ""
     sequence_file: ""
   }

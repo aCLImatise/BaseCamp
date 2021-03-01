@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Directory, String, Int, Boolean
+
+Secapr_Assemble_Reads_V0_1_0 = CommandToolBuilder(tool="secapr_assemble_reads", base_command=["secapr", "assemble_reads"], inputs=[ToolInput(tag="in_input", input_type=Directory(optional=True), prefix="--input", doc=InputDocumentation(doc="Call the folder that contains the trimmed reads,\norganized in a separate subfolder for each sample. The\nname of the subfolder has to start with the sample\nname, delimited with an underscore [_]")), ToolInput(tag="in_output", input_type=Directory(optional=True), prefix="--output", doc=InputDocumentation(doc="The output directory where results will be saved")), ToolInput(tag="in_assembler", input_type=String(optional=True), prefix="--assembler", doc=InputDocumentation(doc="The assembler to use (default = abyss).")), ToolInput(tag="in_km_er", input_type=String(optional=True), prefix="--kmer", doc=InputDocumentation(doc="Set the kmer value")), ToolInput(tag="in_contig_length", input_type=Int(optional=True), prefix="--contig_length", doc=InputDocumentation(doc="Set the minimum contig length for the assembly.\nContigs that are shorter than this threshold will be\ndiscarded.")), ToolInput(tag="in_max_memory", input_type=Int(optional=True), prefix="--max_memory", doc=InputDocumentation(doc="[Option only for Trinity assembler] Set the maximum\nmemory for Trinity to use in this format: 1G or 1000M\n(default: 8G).")), ToolInput(tag="in_single_reads", input_type=Boolean(optional=True), prefix="--single_reads", doc=InputDocumentation(doc="Use this flag if you additionally want to use single\nreads for the assembly")), ToolInput(tag="in_disable_stats", input_type=Boolean(optional=True), prefix="--disable_stats", doc=InputDocumentation(doc="Use this flag if you want to disabel generation of\nstats (can be necessary because previous stats files\ncan't be found if reads are used that were not\npreviously processed with SECAPR)")), ToolInput(tag="in_cores", input_type=Int(optional=True), prefix="--cores", doc=InputDocumentation(doc="For parallel processing you can set the number of\ncores you want to run the assembly on.\n"))], outputs=[ToolOutput(tag="out_output", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="The output directory where results will be saved"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Secapr_Assemble_Reads_V0_1_0().translate("wdl", allow_empty_container=True)
+

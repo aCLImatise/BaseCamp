@@ -60,6 +60,9 @@ task Centrimo {
       ~{if (no_seq) then "--noseq" else ""} \
       ~{if (verbosity) then "--verbosity" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_directory_default: "output directory; default: 'centrimo_out'"
     oc: "allow overwriting; default: 'centrimo_out'"

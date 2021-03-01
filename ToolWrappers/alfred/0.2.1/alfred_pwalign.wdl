@@ -28,6 +28,9 @@ task AlfredPwalign {
       ~{if (f) then "-f" else ""} \
       ~{if (arg_verticalhorizontal_alignment) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_gap_open: "[ --gapopen ] arg (=-10)           gap open"
     arg_gap_extension: "[ --gapext ] arg (=-1)             gap extension"

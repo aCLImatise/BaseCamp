@@ -48,6 +48,9 @@ task Anvidisplaypan {
       ~{if (password_protected) then "--password-protected" else ""} \
       ~{if (user_server_shutdown) then "--user-server-shutdown" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_db: "Anvi'o pan database"
     genomes_storage: "Anvi'o genomes storage file"

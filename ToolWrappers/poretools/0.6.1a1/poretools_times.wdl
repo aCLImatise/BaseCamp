@@ -12,6 +12,9 @@ task PoretoolsTimes {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (utc) then "--utc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     utc: "Show timestamps in UTC."

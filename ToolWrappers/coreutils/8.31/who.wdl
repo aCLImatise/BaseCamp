@@ -2,6 +2,7 @@ version 1.0
 
 task Who {
   input {
+    Boolean? all
     Boolean? boot
     Boolean? dead
     Boolean? heading
@@ -20,6 +21,7 @@ task Who {
   }
   command <<<
     who \
+      ~{if (all) then "--all" else ""} \
       ~{if (boot) then "--boot" else ""} \
       ~{if (dead) then "--dead" else ""} \
       ~{if (heading) then "--heading" else ""} \
@@ -36,7 +38,11 @@ task Who {
       ~{if (message) then "--message" else ""} \
       ~{if (writable) then "--writable" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
+    all: "same as -b -d --login -p -r -t -T -u"
     boot: "time of last system boot"
     dead: "print dead processes"
     heading: "print line of column headings"

@@ -3,17 +3,17 @@ id: gatc.track.maker.pl.cwl
 inputs:
 - id: in_mi_to
   doc: Process mitochondrial chromosome (not recommended)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mito
 - id: in_name
   doc: Name of organism (for output file)
-  type: File
+  type: File?
   inputBinding:
     prefix: --name
 - id: in_scaffolds
   doc: Process scaffold assemblies (not recommended)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --scaffolds
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_name
   doc: Name of organism (for output file)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_name)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gatc.track.maker.pl

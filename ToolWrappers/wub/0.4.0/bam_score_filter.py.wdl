@@ -16,6 +16,9 @@ task BamScoreFilterpy {
       ~{if defined(filtering_strategy_topperquery) then ("-s " +  '"' + filtering_strategy_topperquery + '"') else ""} \
       ~{if defined(minimum_query_coverage) then ("-q " +  '"' + minimum_query_coverage + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     inputoutput_format_sam: "Input/output format (SAM)."
     filtering_strategy_topperquery: "Filtering strategy: top_per_query, query_coverage,\\nref_coverage (top_per_query)."

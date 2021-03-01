@@ -1,0 +1,173 @@
+!Command
+command:
+- UpdHunter
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: Input VCF file of trio.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: Header name of child.
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: Header name of father.
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: Header name of mother.
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: Output TSV file containing the detected UPDs.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -exclude
+  description: "BED file with regions to exclude, e.g. copy-number variant regions.\n\
+    Default value: ''"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -var_min_dp
+  description: "Minimum depth (DP) of a variant (in all three samples).\nDefault value:\
+    \ '20'"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -var_min_q
+  description: "Minimum quality (QUAL) of a variant.\nDefault value: '30'"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -var_use_indels
+  description: "Also use InDels. The default is to use SNVs only.\nDefault value:\
+    \ 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ext_marker_perc
+  description: "Percentage of markers that can be spanned when merging adjacent regions\
+    \ .\nDefault value: '1'"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -ext_size_perc
+  description: "Percentage of base size that can be spanned when merging adjacent\
+    \ regions.\nDefault value: '20'"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -reg_min_kb
+  description: "Mimimum size in kilo-bases required for a UPD region.\nDefault value:\
+    \ '1000'"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -reg_min_markers
+  description: "Mimimum number of UPD markers required in a region.\nDefault value:\
+    \ '15'"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -reg_min_q
+  description: "Mimimum Q-score required for a UPD region.\nDefault value: '20'"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -debug
+  description: "Enable verbose debug output.\nDefault value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --changelog
+  description: Prints changeloge and exits.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tdx
+  description: Writes a Tool Definition Xml file. The file name is the application
+    name with the suffix '.tdx'.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows this help and exits.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Prints version and exits.
+  args: !EmptyFlagArg {}
+help_text: "UpdHunter (2020_12)\n\nUPD detection from trio variant data.\n\nMandatory\
+  \ parameters:\n  -in <file>               Input VCF file of trio.\n  -c <string>\
+  \              Header name of child.\n  -f <string>              Header name of\
+  \ father.\n  -m <string>              Header name of mother.\n  -out <file>    \
+  \          Output TSV file containing the detected UPDs.\n\nOptional parameters:\n\
+  \  -exclude <file>          BED file with regions to exclude, e.g. copy-number variant\
+  \ regions.\n                           Default value: ''\n  -var_min_dp <int>  \
+  \      Minimum depth (DP) of a variant (in all three samples).\n               \
+  \            Default value: '20'\n  -var_min_q <float>       Minimum quality (QUAL)\
+  \ of a variant.\n                           Default value: '30'\n  -var_use_indels\
+  \          Also use InDels. The default is to use SNVs only.\n                 \
+  \          Default value: 'false'\n  -ext_marker_perc <float> Percentage of markers\
+  \ that can be spanned when merging adjacent regions .\n                        \
+  \   Default value: '1'\n  -ext_size_perc <float>   Percentage of base size that\
+  \ can be spanned when merging adjacent regions.\n                           Default\
+  \ value: '20'\n  -reg_min_kb <float>      Mimimum size in kilo-bases required for\
+  \ a UPD region.\n                           Default value: '1000'\n  -reg_min_markers\
+  \ <int>   Mimimum number of UPD markers required in a region.\n                \
+  \           Default value: '15'\n  -reg_min_q <float>       Mimimum Q-score required\
+  \ for a UPD region.\n                           Default value: '20'\n  -debug  \
+  \                 Enable verbose debug output.\n                           Default\
+  \ value: 'false'\n\nSpecial parameters:\n  --help                   Shows this help\
+  \ and exits.\n  --version                Prints version and exits.\n  --changelog\
+  \              Prints changeloge and exits.\n  --tdx                    Writes a\
+  \ Tool Definition Xml file. The file name is the application name with the suffix\
+  \ '.tdx'.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ngs-bits:2020_12--py39h5902420_0

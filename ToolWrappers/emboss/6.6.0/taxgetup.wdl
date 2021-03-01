@@ -8,6 +8,9 @@ task Taxgetup {
     taxgetup \
       ~{if (hidden) then "-hidden" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hidden: "boolean    [N] Show taxons hidden in GenBank"
   }

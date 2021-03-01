@@ -3,27 +3,27 @@ id: skmer_query_estimated..cwl
 inputs:
 - id: in_p
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_t
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
 - id: in_e
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -e
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_a
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_sk_mer
@@ -50,6 +50,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - skmer

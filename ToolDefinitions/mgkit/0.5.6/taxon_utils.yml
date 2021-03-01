@@ -1,0 +1,496 @@
+&id001 !Command
+command:
+- taxon-utils
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - taxon-utils
+  - get
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: TAXONOMY_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -d
+    - --header
+    description: Include header in the output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --separator
+    description: column separator
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --only-names
+    description: Only get matched taxon names
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --partial
+    description: Use partial matches if any found (implies -o)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --include-children
+    description: "Include taxa that are children of the requested\n(implies -o)"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: taxon-utils get [OPTIONS] TAXONOMY_FILE [OUTPUT_FILE]\n\n  Extract\
+    \ the taxonomy as a CSV file\n\nOptions:\n  -v, --verbose\n  -d, --header    \
+    \        Include header in the output\n  -s, --separator TEXT    column separator\n\
+    \  -o, --only-names TEXT   Only get matched taxon names\n  -p, --partial     \
+    \      Use partial matches if any found (implies -o)\n  -c, --include-children\
+    \  Include taxa that are children of the requested\n                         \
+    \ (implies -o)\n\n  --help                  Show this message and exit.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - taxon-utils
+  - filter
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: INPUT_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -p
+    - --table
+    - -t
+    - --taxonomy
+    description: Taxonomy file  [required]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --include-taxon-id
+    description: Include only taxon_ids
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -in
+    - --include-taxon-name
+    description: Include only taxon_names
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --exclude-taxon-id
+    description: Exclude taxon_ids
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -en
+    - --exclude-taxon-name
+    description: Exclude taxon_names
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --progress
+    description: Shows Progress Bar
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: taxon-utils filter [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n \
+    \ Filter a GFF file or a table based on taxonomy\n\nOptions:\n  -v, --verbose\n\
+    \  -p, --table\n  -t, --taxonomy TEXT             Taxonomy file  [required]\n\
+    \  -i, --include-taxon-id INTEGER  Include only taxon_ids\n  -in, --include-taxon-name\
+    \ TEXT  Include only taxon_names\n  -e, --exclude-taxon-id INTEGER  Exclude taxon_ids\n\
+    \  -en, --exclude-taxon-name TEXT  Exclude taxon_names\n  --progress         \
+    \             Shows Progress Bar\n  --help                          Show this\
+    \ message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - taxon-utils
+  - lca_line
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: INPUT_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -t
+    - --taxonomy
+    description: Taxonomy file  [required]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --no-lca
+    description: File to which write records with no LCA
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --only-ranked
+    description: "If set, only taxa that have a rank will be used in\nthe lineageself.\
+      \ This is not advised for lineages\nsuch as Viruses, where the top levels have\
+      \ no rank"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --separator
+    description: separator for taxon_ids (defaults to TAB)
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: taxon-utils lca_line [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n\
+    \  Finds the last common ancestor for all IDs in a text file line\n\nOptions:\n\
+    \  -v, --verbose\n  -t, --taxonomy TEXT    Taxonomy file  [required]\n  -n, --no-lca\
+    \ FILENAME  File to which write records with no LCA\n  -a, --only-ranked     \
+    \ If set, only taxa that have a rank will be used in\n                       \
+    \  the lineageself. This is not advised for lineages\n                       \
+    \  such as Viruses, where the top levels have no rank\n\n  -s, --separator TEXT\
+    \   separator for taxon_ids (defaults to TAB)\n  --help                 Show this\
+    \ message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - taxon-utils
+  - lca
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: GFF_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -t
+    - --taxonomy
+    description: Taxonomy file  [required]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --no-lca
+    description: File to which write records with no LCA
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --only-ranked
+    description: "If set, only taxa that have a rank will be\nused in the lineageself.\
+      \ This is not advised\nfor lineages such as Viruses, where the top\nlevels have\
+      \ no rank"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --bitscore
+    description: 'Minimum bitscore accepted  [default: 0]'
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --rename
+    description: "Emulates BLAST behaviour for headers (keep\nleft of first space)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sorted
+    description: "If the GFF file is sorted (all of a sequence\nannotations are contiguos)\
+      \ can use less\nmemory, `sort -s -k 1,1` can be used"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -ft
+    - --feat-type
+    description: "Feature type used if the output is a GFF\n(default is *LCA*)  [default:\
+      \ LCA]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --reference
+    description: "Required reference file for the GFF, if\nkrona is the format, contig\
+      \ lengths are\nadded"
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --simple-table
+    description: "Uses a 2 column table format (seq_id\ntaxon_id) TAB separated"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -kt
+    - --krona-total
+    description: "Total number of raw sequences (used to\noutput correct percentages\
+      \ in Krona"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --out-format
+    description: "[krona|json|tab|gff]\nFormat of output file  [default: tab]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --progress
+    description: Shows Progress Bar
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: taxon-utils lca [OPTIONS] [GFF_FILE] [OUTPUT_FILE]\n\n  Finds\
+    \ the last common ancestor for each sequence in a GFF file\n\nOptions:\n  -v,\
+    \ --verbose\n  -t, --taxonomy TEXT             Taxonomy file  [required]\n  -n,\
+    \ --no-lca FILENAME           File to which write records with no LCA\n  -a, --only-ranked\
+    \               If set, only taxa that have a rank will be\n                 \
+    \                 used in the lineageself. This is not advised\n             \
+    \                     for lineages such as Viruses, where the top\n          \
+    \                        levels have no rank\n\n  -b, --bitscore FLOAT       \
+    \     Minimum bitscore accepted  [default: 0]\n  -m, --rename                \
+    \    Emulates BLAST behaviour for headers (keep\n                            \
+    \      left of first space)\n\n  -s, --sorted                    If the GFF file\
+    \ is sorted (all of a sequence\n                                  annotations\
+    \ are contiguos) can use less\n                                  memory, `sort\
+    \ -s -k 1,1` can be used\n\n  -ft, --feat-type TEXT           Feature type used\
+    \ if the output is a GFF\n                                  (default is *LCA*)\
+    \  [default: LCA]\n\n  -r, --reference FILENAME        Required reference file\
+    \ for the GFF, if\n                                  krona is the format, contig\
+    \ lengths are\n                                  added\n\n  -p, --simple-table\
+    \              Uses a 2 column table format (seq_id\n                        \
+    \          taxon_id) TAB separated\n\n  -kt, --krona-total INTEGER      Total\
+    \ number of raw sequences (used to\n                                  output correct\
+    \ percentages in Krona\n\n  -f, --out-format [krona|json|tab|gff]\n          \
+    \                        Format of output file  [default: tab]\n  --progress \
+    \                     Shows Progress Bar\n  --help                          Show\
+    \ this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - taxon-utils
+  - to_hdf
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: INPUT_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -n
+    - --table-name
+    description: 'Name of the table/storage to use  [default: taxa]'
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --overwrite
+    description: Overwrite the file, instead of appending to it
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --index-size
+    description: "Maximum number of characters for the gene_id\n[default: 12]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --chunk-size
+    description: "Chunk size to use when reading the input file\n[default: 5000000]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --progress
+    description: Shows Progress Bar
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: taxon-utils to_hdf [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n \
+    \ Convert a taxa table to HDF5, with the input as tabular format, defaults\n \
+    \ to stdin. Output file, defaults to (taxa-table.hf5)\n\nOptions:\n  -v, --verbose\n\
+    \  -n, --table-name TEXT     Name of the table/storage to use  [default: taxa]\n\
+    \  -w, --overwrite           Overwrite the file, instead of appending to it\n\
+    \  -s, --index-size INTEGER  Maximum number of characters for the gene_id\n  \
+    \                          [default: 12]\n\n  -c, --chunk-size INTEGER  Chunk\
+    \ size to use when reading the input file\n                            [default:\
+    \ 5000000]\n\n  --progress                Shows Progress Bar\n  --help       \
+    \             Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --cite
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: taxon-utils [OPTIONS] COMMAND [ARGS]...\n\n  Main function\n\n\
+  Options:\n  --version  Show the version and exit.\n  --cite\n  --help     Show this\
+  \ message and exit.\n\nCommands:\n  filter    Filter a GFF file or a table based\
+  \ on taxonomy\n  get       Extract the taxonomy as a CSV file\n  lca       Finds\
+  \ the last common ancestor for each sequence in a GFF file\n  lca_line  Finds the\
+  \ last common ancestor for all IDs in a text file line\n  to_hdf    Convert a taxa\
+  \ table to HDF5, with the input as tabular format,...\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0

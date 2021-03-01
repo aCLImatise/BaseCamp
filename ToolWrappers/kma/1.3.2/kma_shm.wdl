@@ -4,6 +4,9 @@ task KmaShm {
   command <<<
     kma_shm
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -24,6 +24,9 @@ task ChakinFeatureLoadGff {
       ~{if (add_only) then "--add_only" else ""} \
       ~{if defined(protein_id_attr) then ("--protein_id_attr " +  '"' + protein_id_attr + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     landmark_type: "Type of the landmarks (will speed up loading if\\nprovided, e.g. contig, should be a term of the\\nSequence ontology)"
     re_protein: "Replacement string for the protein name using\\ncapturing groups defined by --re_protein_capture"

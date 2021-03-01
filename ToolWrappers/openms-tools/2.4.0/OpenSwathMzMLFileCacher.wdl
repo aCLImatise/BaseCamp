@@ -28,6 +28,9 @@ task OpenSwathMzMLFileCacher {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                Input mzML file (valid formats: 'mzML', 'sqMass')"
     in_type: "Input file type -- default: determined from file extension or content\\n(valid: 'mzML', 'sqMass')"

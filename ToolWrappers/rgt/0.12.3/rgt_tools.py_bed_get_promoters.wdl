@@ -14,6 +14,9 @@ task RgttoolspyBedGetPromoters {
       ~{if defined(organism) then ("-organism " +  '"' + organism + '"') else ""} \
       ~{if defined(define_length_promoters) then ("-l " +  '"' + define_length_promoters + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_bed: "Input file (BED or gene list)"
     output_bed_file: "Output BED file"

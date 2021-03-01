@@ -12,6 +12,9 @@ task Sidebyside {
       ~{if defined(same) then ("-same " +  '"' + same + '"') else ""} \
       ~{if defined(dif) then ("-dif " +  '"' + dif + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     width: ": line width for each file (default: 50)"
     same: ": marker for lines that are the same (default: ==)"

@@ -12,6 +12,9 @@ task RasusaFLAGS {
       ~{if defined(genome_size) then ("--genome-size " +  '"' + genome_size + '"') else ""} \
       ~{if defined(coverage) then ("--coverage " +  '"' + coverage + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_input: ""
     genome_size: ""

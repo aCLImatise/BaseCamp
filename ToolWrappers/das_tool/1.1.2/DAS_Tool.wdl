@@ -2,6 +2,7 @@ version 1.0
 
 task DASTool {
   input {
+    String? methodn_c_contigsfa
     Boolean? bins
     Boolean? contigs
     Boolean? output_basename
@@ -22,6 +23,7 @@ task DASTool {
   }
   command <<<
     DAS_Tool \
+      ~{if defined(methodn_c_contigsfa) then ("-l " +  '"' + methodn_c_contigsfa + '"') else ""} \
       ~{if (bins) then "--bins" else ""} \
       ~{if (contigs) then "--contigs" else ""} \
       ~{if (output_basename) then "--outputbasename" else ""} \
@@ -40,7 +42,11 @@ task DASTool {
       ~{if (resume) then "--resume" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
+    methodn_c_contigsfa: ",...,methodN -c contigs.fa -o myOutput"
     bins: "Comma separated list of tab separated scaffolds to bin tables."
     contigs: "Contigs in fasta format."
     output_basename: "Basename of output files."

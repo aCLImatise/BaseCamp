@@ -18,6 +18,9 @@ task MentalistDownloadEnterobase {
       ~{if defined(scheme) then ("--scheme " +  '"' + scheme + '"') else ""} \
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Output file (kmer database)"
     kmer_size_type: "Kmer size (type: Int8)"

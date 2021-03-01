@@ -8,6 +8,9 @@ task CheckReference {
     check_reference \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "samtools reference sequence (required)"
   }

@@ -14,6 +14,9 @@ task AlignmentProjector {
       ~{mfa_seq_input} \
       ~{mfa_seq_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_x_mfa: ""
     output_x_mfa: ""

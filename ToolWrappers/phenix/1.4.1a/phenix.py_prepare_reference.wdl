@@ -12,6 +12,9 @@ task PhenixpyPrepareReference {
       ~{if defined(mapper) then ("--mapper " +  '"' + mapper + '"') else ""} \
       ~{if defined(variant) then ("--variant " +  '"' + variant + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "Path to reference file to prepare."
     mapper: "Available mappers: ['bwa', 'bowtie2']"

@@ -10,6 +10,9 @@ task SecaprJoinExons {
       ~{if defined(directory_containing_fastaalignmentfiles) then ("--input " +  '"' + directory_containing_fastaalignmentfiles + '"') else ""} \
       ~{if defined(output_directory_saved) then ("--output " +  '"' + output_directory_saved + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_containing_fastaalignmentfiles: "The directory containing the fasta-alignment-files"
     output_directory_saved: "The output directory where results will be saved"

@@ -14,6 +14,9 @@ task LabelAnalysisRunPostInstallTestsbats {
       ~{if (pretty) then "--pretty" else ""} \
       ~{if (tap) then "--tap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count: "Count the number of test cases without running any tests"
     pretty: "Show results in pretty format (default for terminals)"

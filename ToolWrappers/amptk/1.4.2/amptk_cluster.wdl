@@ -30,6 +30,9 @@ task AmptkCluster {
       ~{if (cpus) then "--cpus" else ""} \
       ~{if (u_search) then "--usearch" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "Input FASTQ file (Required)"
     out: "Output base name. Default: out"

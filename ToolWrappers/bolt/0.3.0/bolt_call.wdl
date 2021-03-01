@@ -16,6 +16,9 @@ task BoltCall {
       ~{if (output_path_required) then "-o" else ""} \
       ~{if (number_threads_use) then "-t" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample_file_path: "sample file path (*required)"
     reference_file_path: "reference file path (*required)"

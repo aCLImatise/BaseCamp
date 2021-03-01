@@ -4,157 +4,157 @@ command:
 - run
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: BAMFILE...
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: GTFFILE
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "Valid barcodes file, to filter the bam. If --bcfile is not specified\
-    \ all the cell barcodes will be included.\nCell barcodes should be specified in\
-    \ the bcfile as the `CB` tag for each read"
+  optional: true
   synonyms:
   - -b
   - --bcfile
+  description: "Valid barcodes file, to filter the bam. If --bcfile is not specified\
+    \ all the cell barcodes will be included.\nCell barcodes should be specified in\
+    \ the bcfile as the `CB` tag for each read"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: Output folder, if it does not exist it will be created.
+  optional: true
   synonyms:
   - -o
   - --outputfolder
+  description: Output folder, if it does not exist it will be created.
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: The sample name that will be used to retrieve informations from metadatatable
+  optional: true
   synonyms:
   - -e
   - --sampleid
+  description: The sample name that will be used to retrieve informations from metadatatable
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: Table containing metadata of the various samples (csv formatted, rows
-    are samples and cols are entries)
+  optional: true
   synonyms:
   - -s
   - --metadatatable
+  description: Table containing metadata of the various samples (csv formatted, rows
+    are samples and cols are entries)
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: .gtf file containing intervals to mask
+  optional: true
   synonyms:
   - -m
   - --mask
+  description: .gtf file containing intervals to mask
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --onefilepercell
   description: "If this flag is used every bamfile passed is interpreted as an independent\
     \ cell, otherwise multiple files are interpreted as batch of different cells to\
     \ be analyzed together.\nImportant: cells reads should not be distributed over\
     \ multiple bamfiles is not supported!!\n(default: off)"
-  synonyms:
-  - -c
-  - --onefilepercell
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'The logic to use for the filtering (default: Default)'
+  optional: true
   synonyms:
   - -l
   - --logic
+  description: 'The logic to use for the filtering (default: Default)'
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: 'If this flag is used the data is assumed UMI-less and reads are counted
-    instead of molecules (default: off)'
+  optional: true
   synonyms:
   - -U
   - --without-umi
+  description: 'If this flag is used the data is assumed UMI-less and reads are counted
+    instead of molecules (default: off)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --umi-extension
   description: "In case UMI is too short to guarantee uniqueness (without information\
     \ from the ampping) set this parameter to `chr`, `Gene` ro `[N]bp`\nIf set to\
     \ `chr` the mapping position (binned to 10Gb intervals) will be appended to `UB`\
     \ (ideal for InDrops+dropEst). If set to\n`Gene` then the `GX` tag will be appended\
     \ to the `UB` tag.\nIf set to `[N]bp` the first N bases of the sequence will be\
     \ used to extend `UB` (ideal for STRT). (Default: `no`)"
-  synonyms:
-  - -u
-  - --umi-extension
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Consider not unique mappings (not reccomended)
+  optional: true
   synonyms:
   - -M
   - --multimap
+  description: Consider not unique mappings (not reccomended)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The number of threads to use to sort the bam by cellID file using samtools
+  optional: true
   synonyms:
   - -@
   - --samtools-threads
+  description: The number of threads to use to sort the bam by cellID file using samtools
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: The number of MB used for every thread by samtools to sort the bam
-    file
+  optional: true
   synonyms:
   - --samtools-memory
+  description: The number of MB used for every thread by samtools to sort the bam
+    file
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: 'The dtype of the loom file layers - if more than 6000 molecules/reads
-    per gene per cell are expected set uint32 to avoid truncation (default run: uint32)'
+  optional: true
   synonyms:
   - -t
   - --dtype
+  description: 'The dtype of the loom file layers - if more than 6000 molecules/reads
+    per gene per cell are expected set uint32 to avoid truncation (default run: uint32)'
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: 'For debugging purposes only: it will dump a molecular mapping report
-    to hdf5. --dump N, saves a cell every N cells. If p is prepended a more complete
-    (but huge) pickle report is printed (default: 0)'
+  optional: true
   synonyms:
   - -d
   - --dump
+  description: 'For debugging purposes only: it will dump a molecular mapping report
+    to hdf5. --dump N, saves a cell every N cells. If p is prepended a more complete
+    (but huge) pickle report is printed (default: 0)'
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: 'Set the vebosity level: -v (only warnings) -vv (warnings and info)
-    -vvv (warnings, info and debug)'
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: 'Set the vebosity level: -v (only warnings) -vv (warnings and info)
+    -vvv (warnings, info and debug)'
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: velocyto run [OPTIONS] BAMFILE... GTFFILE\n\n  Runs the velocity\
@@ -197,3 +197,4 @@ help_text: "Usage: velocyto run [OPTIONS] BAMFILE... GTFFILE\n\n  Runs the veloc
   \ and exit.\n"
 generated_using:
 - --help
+docker_image:

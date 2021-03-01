@@ -2,185 +2,170 @@
 command:
 - ggd
 - make-recipe
-positional:
-- !Positional
-  description: "bash script that contains the commands to obtain and\nprocess the\
-    \ data\n"
-  position: 0
-  name: script
-  optional: false
+positional: []
 named:
 - !Flag
-  description: "{GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,mm10,mm9}\n\
-    [--authors AUTHORS] -pv PACKAGE_VERSION -dv\nDATA_VERSION -dp DATA_PROVIDER --summary\
-    \ SUMMARY -k\nKEYWORD -cb\n{0-based-inclusive,0-based-exclusive,1-based-inclusive,1-based-exclusive,NA}\n\
-    -n NAME\nscript"
-  synonyms:
-  - -g
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: the ggd channel to use. (Default = genomics)
   synonyms:
   - -c
   - --channel
+  description: the ggd channel to use. (Default = genomics)
   args: !ChoiceFlagArg
     choices: !!set
       genomics:
-  optional: true
 - !Flag
-  description: "any software dependencies (in bioconda, conda-forge)\nor data-dependency\
-    \ (in ggd). May be as many times as\nneeded."
+  optional: true
   synonyms:
   - -d
   - --dependency
+  description: "any software dependencies (in bioconda, conda-forge)\nor data-dependency\
+    \ (in ggd). May be as many times as\nneeded."
   args: !SimpleFlagArg
     name: DEPENDENCY
-  optional: true
 - !Flag
-  description: "any files that the recipe creates that are not a *.gz\nand *.gz.tbi\
-    \ pair or *.fa and *.fai pair. May be used\nmore than once"
+  optional: true
   synonyms:
   - -e
   - --extra-file
+  description: "any files that the recipe creates that are not a *.gz\nand *.gz.tbi\
+    \ pair or *.fa and *.fai pair. May be used\nmore than once"
   args: !SimpleFlagArg
     name: EXTRA_FILE
-  optional: true
 - !Flag
-  description: "Whether to use noarch as the platfrom or the system\nplatform. If\
-    \ set to 'none' the system platform will be\nused. (Default = noarch. Noarch means\
-    \ no architecture\nand is platform agnostic.)"
+  optional: true
   synonyms:
   - -p
   - --platform
+  description: "Whether to use noarch as the platfrom or the system\nplatform. If\
+    \ set to 'none' the system platform will be\nused. (Default = noarch. Noarch means\
+    \ no architecture\nand is platform agnostic.)"
   args: !ChoiceFlagArg
     choices: !!set
-      none:
       noarch:
-  optional: true
+      none:
 - !Flag
-  description: The species recipe is for
+  optional: true
   synonyms:
   - -s
   - --species
+  description: The species recipe is for
   args: !ChoiceFlagArg
     choices: !!set
-      Drosophila_melanogaster:
-      Homo_sapiens:
-      Canis_familiaris:
       Danio_rerio:
       Mus_musculus:
-  optional: true
+      Homo_sapiens:
+      Drosophila_melanogaster:
+      Canis_familiaris:
 - !Flag
-  description: The genome build the recipe is for
+  optional: true
   synonyms:
   - -g
   - --genome-build
+  description: The genome build the recipe is for
   args: !ChoiceFlagArg
     choices: !!set
-      GRCh38:
-      GRCh37:
       hg38:
-      mm9:
-      GRCz10:
-      canFam3:
-      danRer10:
-      dm3:
-      hg19:
       mm10:
       dm6:
+      hg19:
+      GRCz10:
       GRCz11:
+      danRer10:
+      GRCh38:
+      dm3:
       danRer11:
-  optional: true
+      GRCh37:
+      canFam3:
+      mm9:
 - !Flag
-  description: "The author(s) of the data recipe being created, (This\nrecipe)"
+  optional: true
   synonyms:
   - --authors
+  description: "The author(s) of the data recipe being created, (This\nrecipe)"
   args: !SimpleFlagArg
     name: AUTHORS
-  optional: true
 - !Flag
-  description: "The version of the ggd package. (First time package =\n1, updated\
-    \ package > 1)"
+  optional: true
   synonyms:
   - -pv
   - --package-version
+  description: "The version of the ggd package. (First time package =\n1, updated\
+    \ package > 1)"
   args: !SimpleFlagArg
     name: PACKAGE_VERSION
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -dv
+  - --data-version
   description: "The version of the data (itself) being downloaded and\nprocessed (EX:\
     \ dbsnp-127) If there is no data version\napparent we recommend you use the date\
     \ associated with\nthe files or something else that can uniquely identify\nthe\
     \ 'version' of the data"
-  synonyms:
-  - -dv
-  - --data-version
   args: !SimpleFlagArg
     name: DATA_VERSION
-  optional: true
 - !Flag
-  description: "The data provider where the data was accessed.\n(Example: UCSC, Ensembl,\
-    \ gnomAD, etc.)"
+  optional: true
   synonyms:
   - -dp
   - --data-provider
+  description: "The data provider where the data was accessed.\n(Example: UCSC, Ensembl,\
+    \ gnomAD, etc.)"
   args: !SimpleFlagArg
     name: DATA_PROVIDER
-  optional: true
 - !Flag
-  description: A detailed comment describing the recipe
+  optional: true
   synonyms:
   - --summary
+  description: A detailed comment describing the recipe
   args: !SimpleFlagArg
     name: SUMMARY
-  optional: true
 - !Flag
-  description: "A keyword to associate with the recipe. May be\nspecified more that\
-    \ once. Please add enough keywords\nto better describe and distinguish the recipe"
+  optional: true
   synonyms:
   - -k
   - --keyword
+  description: "A keyword to associate with the recipe. May be\nspecified more that\
+    \ once. Please add enough keywords\nto better describe and distinguish the recipe"
   args: !SimpleFlagArg
     name: KEYWORD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -cb
+  - --coordinate-base
   description: "The genomic coordinate basing for the file(s) in the\nrecipe. That\
     \ is, the coordianances start at genomic\ncoordinate 0 or 1, and the end coordinate\
     \ is either\ninclusive (everything up to and including the end\ncoordinate) or\
     \ exlcusive (everthing up to but not\nincluding the end coordinate) Files that\
     \ do not have\ncoordiante basing, like fasta files, specify NA for\nnot applicable."
-  synonyms:
-  - -cb
-  - --coordinate-base
   args: !ChoiceFlagArg
     choices: !!set
-      0-based-inclusive:
-      NA:
-      0-based-exclusive:
       1-based-exclusive:
+      0-based-inclusive:
+      0-based-exclusive:
       1-based-inclusive:
-  optional: true
+      NA:
 - !Flag
-  description: "The sub-name of the recipe being created. (e.g. cpg-\nislands, pfam-domains,\
-    \ gaps, etc.) This will not be\nthe final name of the recipe, but will describe\
-    \ what\ndata the recipe gets"
+  optional: true
   synonyms:
   - -n
   - --name
+  description: "The sub-name of the recipe being created. (e.g. cpg-\nislands, pfam-domains,\
+    \ gaps, etc.) This will not be\nthe final name of the recipe, but will describe\
+    \ what\ndata the recipe gets"
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: ggd make-recipe [-h] [-c {genomics}] [-d DEPENDENCY] [-e EXTRA_FILE]\n\
@@ -239,3 +224,4 @@ help_text: "usage: ggd make-recipe [-h] [-c {genomics}] [-d DEPENDENCY] [-e EXTR
   \                process the data\n"
 generated_using:
 - --help
+docker_image:

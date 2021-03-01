@@ -4,17 +4,17 @@ inputs:
 - id: in_verbose
   doc: "Increase the verbosity of the program\nstatus messages. Use multiple times\
     \ for more\nverbosity. Negates quiet."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_quiet
   doc: "Turn off all status messages for the\nprogram. Negated by verbose."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_option_file
   doc: Read more options and parameters from the
-  type: File
+  type: File?
   inputBinding:
     prefix: --option-file
 - id: in_quit_dot
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rcexplain

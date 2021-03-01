@@ -5,76 +5,152 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Reference annotation file. By default, an index will\nbe crated and\
-    \ saved with the suffix \".midx\"."
+  optional: true
+  synonyms:
+  - --distance
+  description: "Maximum distance for a transcript to be considered a\npolymerase run-on.\
+    \ Default: 2000"
+  args: !SimpleFlagArg
+    name: DISTANCE
+- !Flag
+  optional: true
+  synonyms:
+  - -pc
+  - --protein-coding
+  description: "Flag. If set, only transcripts with a CDS (both in\nreference and\
+    \ prediction) will be considered."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: 'Prefix for the output files. Default: mikado_compare'
+  args: !SimpleFlagArg
+    name: OUT
+- !Flag
+  optional: true
+  synonyms:
+  - -fm
+  - --fuzzy-intron-match
+  description: "This parameter controls whether an intron should be\nconsidered as\
+    \ \"matched\" even if its splices are within\nN bases from the annotated splice\
+    \ junctions. By\ndefault this is set to 0 (ie only proper matches\ncount)."
+  args: !SimpleFlagArg
+    name: FUZZYMATCH
+- !Flag
+  optional: true
+  synonyms:
+  - --lenient
+  description: "If set, exonic statistics will be calculated leniently\nin the TMAP\
+    \ as well - ie they will consider an exon as\nmatch even if only the internal\
+    \ junction has been\nrecovered."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nF
+  - --do-not-report-fusions
+  description: "Flag. If invoked, Mikado compare will not report\nfusions in the input.\
+    \ Useful when the reference\ntranscripts have not been clustered properly into\n\
+    genes (e.g. a Mikado prepare run)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eu
+  - --exclude-utr
+  description: "Flag. If set, reference and prediction transcripts\nwill be stripped\
+    \ of their UTRs (if they are coding)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --no-index
+  - --no-save-index
+  description: "Unless this flag is set, compare will save an index of\nthe reference\
+    \ to quicken multiple calls."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -erm
+  - --extended-refmap
+  description: "Flag. If set, the RefMap will also contain recall and\nprecision statistics\
+    \ - not just the F1."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -upa
+  - --use-prediction-alias
+  description: "Flag. If set, Mikado Compare will use the alias -\nrather than the\
+    \ transcript ID - to report the results\nfor prediction transcripts in the TMAP\
+    \ and REFMAP\nfiles."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log
+  - -v
+  - --verbose
+  - -z
+  - --gzip
+  description: Flag. If set, TMAP and REFMAP files will be GZipped.
+  args: !SimpleFlagArg
+    name: LOG
+- !Flag
+  optional: true
   synonyms:
   - -r
   - --reference
+  description: "Reference annotation file. By default, an index will\nbe crated and\
+    \ saved with the suffix \".midx\"."
   args: !SimpleFlagArg
     name: REFERENCE
-  optional: true
 - !Flag
-  description: Prediction annotation file.
+  optional: true
   synonyms:
   - -p
   - --prediction
+  description: Prediction annotation file.
   args: !SimpleFlagArg
     name: PREDICTION
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --self
   description: "Flag. If set, the reference will be compared with\nitself. Useful\
     \ for understanding how the reference\ntranscripts interact with each other. If\
     \ this option\nis selected, the stats file will not be produced."
-  synonyms:
-  - --self
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --internal
   description: "Flag. If set, for each gene with more than one\ntranscript isoform\
     \ each will be compared to the\nothers. Useful for understanding the structural\n\
     relationships between the transcripts in each gene."
-  synonyms:
-  - --internal
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Flag. If set, compare will stop after having generated\nthe GFF index\
-    \ for the reference.\n"
+  optional: true
   synonyms:
   - --index
+  description: "Flag. If set, compare will stop after having generated\nthe GFF index\
+    \ for the reference.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--distance DISTANCE   Maximum distance\
-    \ for a transcript to be considered a\npolymerase run-on. Default: 2000\n-pc,\
-    \ --protein-coding\nFlag. If set, only transcripts with a CDS (both in\nreference\
-    \ and prediction) will be considered.\n-o OUT, --out OUT     Prefix for the output\
-    \ files. Default: mikado_compare\n-fm FUZZYMATCH, --fuzzy-intron-match FUZZYMATCH\n\
-    This parameter controls whether an intron should be\nconsidered as \"matched\"\
-    \ even if its splices are within\nN bases from the annotated splice junctions.\
-    \ By\ndefault this is set to 0 (ie only proper matches\ncount).\n--lenient   \
-    \          If set, exonic statistics will be calculated leniently\nin the TMAP\
-    \ as well - ie they will consider an exon as\nmatch even if only the internal\
-    \ junction has been\nrecovered.\n-nF, --do-not-report-fusions\nFlag. If invoked,\
-    \ Mikado compare will not report\nfusions in the input. Useful when the reference\n\
-    transcripts have not been clustered properly into\ngenes (e.g. a Mikado prepare\
-    \ run).\n-eu, --exclude-utr    Flag. If set, reference and prediction transcripts\n\
-    will be stripped of their UTRs (if they are coding).\n-n, --no-index, --no-save-index\n\
-    Unless this flag is set, compare will save an index of\nthe reference to quicken\
-    \ multiple calls.\n-erm, --extended-refmap\nFlag. If set, the RefMap will also\
-    \ contain recall and\nprecision statistics - not just the F1.\n-upa, --use-prediction-alias\n\
-    Flag. If set, Mikado Compare will use the alias -\nrather than the transcript\
-    \ ID - to report the results\nfor prediction transcripts in the TMAP and REFMAP\n\
-    files.\n-l LOG, --log LOG\n-v, --verbose\n-z, --gzip            Flag. If set,\
-    \ TMAP and REFMAP files will be GZipped.\n--processes PROCESSES"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: Mikado compare [-h] -r REFERENCE\n                      (-p PREDICTION\
@@ -126,3 +202,4 @@ help_text: "usage: Mikado compare [-h] -r REFERENCE\n                      (-p P
   \                        the GFF index for the reference.\n"
 generated_using:
 - --help
+docker_image:

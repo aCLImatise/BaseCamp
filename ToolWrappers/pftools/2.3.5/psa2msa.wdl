@@ -7,7 +7,7 @@ task Psa2msa {
     Boolean? replace_dashes_periods
     Boolean? replace_lower_case_letters
     Boolean? valuemaximal_insertion_length
-    Boolean? valuespecifies_width_default
+    Boolean? valuespecifies_output_width
     Boolean? dhl_pum_w
   }
   command <<<
@@ -17,16 +17,19 @@ task Psa2msa {
       ~{if (replace_dashes_periods) then "-p" else ""} \
       ~{if (replace_lower_case_letters) then "-u" else ""} \
       ~{if (valuemaximal_insertion_length) then "-M" else ""} \
-      ~{if (valuespecifies_width_default) then "-W" else ""} \
+      ~{if (valuespecifies_output_width) then "-W" else ""} \
       ~{if (dhl_pum_w) then "-dhlpuMW" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     replace_periods_dashes: ": replace periods by dashes on output."
     replace_upper_case_letters: ": replace upper case letters by lower case."
     replace_dashes_periods: ": replace dashes by periods on output."
     replace_lower_case_letters: ": replace lower case letters by upper case."
     valuemaximal_insertion_length: "<value>:\\nmaximal insertion length (default: -1)."
-    valuespecifies_width_default: "<value>:\\nspecifies the output width (default: 60)."
+    valuespecifies_output_width: "<value>:\\nspecifies the output width (default: 60)."
     dhl_pum_w: ""
   }
   output {

@@ -40,6 +40,9 @@ task SvimasmDiploid {
       ~{if (duplications_as_insertions) then "--duplications_as_insertions" else ""} \
       ~{if (query_names) then "--query_names" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_mapq: "Minimum mapping quality of alignments to consider\\n(default: 20). Alignments with a lower mapping quality\\nare ignored."
     min_sv_size: "Minimum SV size to detect (default: 40). SVIM can\\npotentially detect events of any size but is limited\\nby the signal-to-noise ratio in the input alignments.\\nThat means that more accurate assemblies and\\nalignments enable the detection of smaller events."

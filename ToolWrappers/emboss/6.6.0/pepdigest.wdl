@@ -22,6 +22,9 @@ task Pepdigest {
       ~{if (overlap) then "-overlap" else ""} \
       ~{if (all_partials) then "-allpartials" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     menu: "menu       [1] Select number (Values: 1 (Trypsin); 2\\n(Lys-C); 3 (Arg-C); 4 (Asp-N); 5\\n(V8-bicarb); 6 (V8-phosph); 7\\n(Chymotrypsin); 8 (CNBr))"
     mono: "boolean    [N] Use monoisotopic weights"

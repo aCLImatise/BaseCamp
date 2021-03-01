@@ -16,6 +16,9 @@ task SvmClassify {
       ~{if (verbosity_level_default) then "-v" else ""} \
       ~{if (old_output_format) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbosity_level_default: "[0..3]  -> verbosity level (default 2)"
     old_output_format: "[0,1]   -> 0: old output format of V1.0\\n-> 1: output the value of decision function (default)\\n"

@@ -16,14 +16,14 @@ task AssemblypyModifyContig {
     Boolean? tmp_dir_keep
     String? loglevel
     String r_seal_fondo_t
-    String input_alignment_reference
+    String input_alignment_shouldcontain
     String destination_file_modified
     String ref
   }
   command <<<
     assembly_py modify_contig \
       ~{r_seal_fondo_t} \
-      ~{input_alignment_reference} \
+      ~{input_alignment_shouldcontain} \
       ~{destination_file_modified} \
       ~{ref} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
@@ -40,6 +40,9 @@ task AssemblypyModifyContig {
       ~{if (tmp_dir_keep) then "--tmp_dirKeep" else ""} \
       ~{if defined(loglevel) then ("--loglevel " +  '"' + loglevel + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "fasta header output name (default: existing header)"
     call_reference_ns: "should the reference sequence be called if there is an\\nN in the contig and a more specific base in the\\nreference (default: False)"
@@ -55,7 +58,7 @@ task AssemblypyModifyContig {
     tmp_dir_keep: "Keep the tmp_dir if an exception occurs while running.\\nDefault is to delete all temp files at the end, even\\nif there's a failure."
     loglevel: "Verboseness of output. [default: DEBUG]"
     r_seal_fondo_t: "positional arguments:"
-    input_alignment_reference: "input alignment of reference and contig (should\\ncontain exactly 2 sequences)"
+    input_alignment_shouldcontain: "input alignment of reference and contig (should\\ncontain exactly 2 sequences)"
     destination_file_modified: "Destination file for modified contigs"
     ref: "reference sequence name (exact match required)"
   }

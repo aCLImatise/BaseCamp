@@ -66,6 +66,9 @@ task Mast {
       ~{if (no_html) then "-nohtml" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     b_file: "read background frequencies from <bf>"
     db_list: "the file specified as database contains a list of databases"

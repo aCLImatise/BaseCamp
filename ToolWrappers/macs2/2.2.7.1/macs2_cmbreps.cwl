@@ -15,18 +15,18 @@ inputs:
     \ 3) mean: take the average value. Note,\nexcept for Fisher's method, max or mean\
     \ will take\nscores AS IS which means they won't convert scores\nfrom log scale\
     \ to linear scale or vice versa."
-  type: string
+  type: string?
   inputBinding:
     prefix: --method
 - id: in_outdir
   doc: "If specified all output files will be written to that\ndirectory. Default:\
     \ the current working directory"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_ofile
   doc: "Output BEDGraph filename for combined scores.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --ofile
 outputs:
@@ -36,14 +36,15 @@ outputs:
 - id: out_outdir
   doc: "If specified all output files will be written to that\ndirectory. Default:\
     \ the current working directory"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
 - id: out_ofile
   doc: "Output BEDGraph filename for combined scores.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_ofile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - macs2

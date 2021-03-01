@@ -42,6 +42,9 @@ task Ambpdb {
       ~{if (no_box) then "-nobox" else ""} \
       ~{if defined(offset) then ("-offset " +  '"' + offset + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     topology_file_default: "'Top'       Topology file (default: prmtop)."
     _coordinate_file: "'Coords'    Coordinate file."

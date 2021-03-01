@@ -3,12 +3,12 @@ id: synapse_query.cwl
 inputs:
 - id: in_p
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_u
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -u
 - id: in_synapse
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - synapse

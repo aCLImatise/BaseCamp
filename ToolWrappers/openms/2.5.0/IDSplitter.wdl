@@ -20,6 +20,9 @@ task IDSplitter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*        Input file (data annotated with identifications) (valid formats: 'mzML', 'featureXML', 'consensusXML')"
     out: "Output file (data without identifications). Either 'out' or 'id_out' are required. They can be used together. (valid formats: 'mzML', 'featureXML', 'consensusXML')"

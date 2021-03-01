@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Int, Boolean, Float
+
+Fastqsample_V0_1_0 = CommandToolBuilder(tool="fastqSample", base_command=["fastqSample"], inputs=[ToolInput(tag="in_input_name_prefix", input_type=String(optional=True), prefix="-I", doc=InputDocumentation(doc="input name (prefix) of the reads")), ToolInput(tag="in_total_number_supplied", input_type=Int(optional=True), prefix="-T", doc=InputDocumentation(doc="total number of mate pairs in the input (if not supplied, will be counted)")), ToolInput(tag="in_length_single_supplied", input_type=Int(optional=True), prefix="-L", doc=InputDocumentation(doc="length of a single read (if not supplied, will be determined)")), ToolInput(tag="in_reads_unmated_expected", input_type=Boolean(optional=True), prefix="-U", doc=InputDocumentation(doc="reads are unmated, expected in *.u.fastq")), ToolInput(tag="in_output_name_prefix", input_type=String(optional=True), prefix="-O", doc=InputDocumentation(doc="output name (prefix) of the reads (default is same as -I)")), ToolInput(tag="in_automatically_include_coverage", input_type=Boolean(optional=True), prefix="-A", doc=InputDocumentation(doc="automatically include coverage or number of reads in the output name")), ToolInput(tag="in_ignore_reads_shorter", input_type=String(optional=True), prefix="-m", doc=InputDocumentation(doc="ignore reads shorter than L bases")), ToolInput(tag="in_max", input_type=Boolean(optional=True), prefix="-max", doc=InputDocumentation(doc="don't sample randomly, pick the longest reads")), ToolInput(tag="in_genome_size", input_type=Int(optional=True), prefix="-g", doc=InputDocumentation(doc="genome size")), ToolInput(tag="in_desired_coverage_output", input_type=String(optional=True), prefix="-c", doc=InputDocumentation(doc="desired coverage in the output reads")), ToolInput(tag="in_mated_reads_output", input_type=Int(optional=True), prefix="-p", doc=InputDocumentation(doc="for mated reads, output 2N reads, or N pairs of reads\nfor unmated reads, output N reads")), ToolInput(tag="in_output_t_pairs", input_type=Float(optional=True), prefix="-f", doc=InputDocumentation(doc="output F * T pairs of reads (T as above in -t option)\n0.0 < F <= 1.0")), ToolInput(tag="in_output_readspairs_b", input_type=String(optional=True), prefix="-b", doc=InputDocumentation(doc="output reads/pairs until B bases is exceeded")), ToolInput(tag="in_opts", input_type=String(optional=True), position=0, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Fastqsample_V0_1_0().translate("wdl", allow_empty_container=True)
+

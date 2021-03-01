@@ -6,17 +6,17 @@ inputs:
     \ id (must be unique) The\nsecond column contains the fasta path. The abundances\n\
     must be present into this file. The third, the rdp\npath. Paths can be absolute\
     \ or relative to the current\nworking directory."
-  type: File
+  type: File?
   inputBinding:
     prefix: --samples_file
 - id: in_ouput_contingency_table
   doc: Output a table with the abundance for each sequence
-  type: string
+  type: string?
   inputBinding:
     prefix: --ouput_contingency_table
-- id: in_output_comparaison_taxonomy
+- id: in_output_table_taxonomy
   doc: "Output a comparaison table (taxonomy vs samples)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --ouput_comparaison_table
 - id: in_script_let_compare
@@ -29,6 +29,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - matam_compare_samples.py

@@ -20,6 +20,9 @@ task GetAnnoFastaFromJoingenespy {
       ~{if defined(gtf) then ("--gtf " +  '"' + gtf + '"') else ""} \
       ~{if defined(gff_three) then ("--gff3 " +  '"' + gff_three + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "genome sequence file (FASTA-format)"
     out: "name stem pf output file with coding sequences and\\nprotein sequences (FASTA-format); will be extended by\\n.codingseq/.aa"

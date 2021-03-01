@@ -50,7 +50,7 @@ task ModifyColumnpl {
     String? rescale
     Int? rescale_limits
     Boolean? pd
-    Int? precision_take_sig
+    Int? precision_take_default
     Int? res
     String? astr
     String? bstr
@@ -114,7 +114,7 @@ task ModifyColumnpl {
       ~{if defined(rescale) then ("-rescale " +  '"' + rescale + '"') else ""} \
       ~{if defined(rescale_limits) then ("-rescale_limits " +  '"' + rescale_limits + '"') else ""} \
       ~{if (pd) then "-pd" else ""} \
-      ~{if defined(precision_take_sig) then ("-p " +  '"' + precision_take_sig + '"') else ""} \
+      ~{if defined(precision_take_default) then ("-p " +  '"' + precision_take_default + '"') else ""} \
       ~{if defined(res) then ("-res " +  '"' + res + '"') else ""} \
       ~{if defined(astr) then ("-astr " +  '"' + astr + '"') else ""} \
       ~{if defined(bstr) then ("-bstr " +  '"' + bstr + '"') else ""} \
@@ -128,6 +128,9 @@ task ModifyColumnpl {
       ~{if (cumul) then "-cumul" else ""} \
       ~{if defined(when_dividing_zero) then ("-zero " +  '"' + when_dividing_zero + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     column_modify_default: "The column to modify (default: 0; specify multiple columns using commas) (zero-based)"
     rows_modify_default: "The rows to modify (default: All except -skipped; specify multiple rows using commas) (zero-based)"
@@ -177,7 +180,7 @@ task ModifyColumnpl {
     rescale: "given as 'bottom,top'. linearly rescales the data in the column so that the smallest value will\\nbe <bottom> and the largest will be <top>. If the data is equal in all entries, all entries\\nwill be set to <bottom>."
     rescale_limits: ": given as 'min,max'. when used with -rescale assumes that the maximal value of the column is\\nmax and the minimal value is min."
     pd: "makes the column a probability distribution by changing negative values to zero and\\nthen dividing by the sum of the column."
-    precision_take_sig: "Precision (take only <num> sig. digits. default: don't fix)"
+    precision_take_default: "Precision (take only <num> sig. digits. default: don't fix)"
     res: "Convert numbers to a <num> resolution (e.g., 0.05)"
     astr: "Add <str> to the end of the column (default: \\\"\\\")"
     bstr: "Add <str> to the beginning of the column (default: \\\"\\\")"

@@ -12,6 +12,9 @@ task CentreseqGenome {
       ~{var_command} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     centre_seq: ""
     var_command: ""

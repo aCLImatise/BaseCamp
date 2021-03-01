@@ -8,6 +8,9 @@ task Fermi2Sub {
     fermi2 sub \
       ~{if (cs) then "-cs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cs: ""
   }

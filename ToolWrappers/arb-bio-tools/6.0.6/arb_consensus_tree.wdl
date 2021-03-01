@@ -10,6 +10,9 @@ task ArbConsensusTree {
       ~{tree} \
       ~{if defined(write_consensus_tree) then ("-w " +  '"' + write_consensus_tree + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     write_consensus_tree: "write consensus tree to outfile"
     tree: ""

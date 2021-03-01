@@ -3,17 +3,17 @@ id: kmc_tools_simple.cwl
 inputs:
 - id: in_ci
   doc: <value>  - exclude k-mers occurring less than <value> times
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ci
 - id: in_cx
   doc: <value>  - exclude k-mers occurring more of than <value> times
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -cx
 - id: in_cs
   doc: <value>  - maximal value of a counter
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -cs
 - id: in_oc
@@ -23,7 +23,7 @@ inputs:
     \ databases\ndiff  - get difference between counters (default for counters_subtract\
     \ operation)\nleft  - get counter from first database (input1)\nright - get counter\
     \ from second database (input2)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -oc
 - id: in_intersect
@@ -65,6 +65,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kmc_tools

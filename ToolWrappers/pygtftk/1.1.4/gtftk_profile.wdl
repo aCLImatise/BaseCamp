@@ -80,6 +80,9 @@ task GtftkProfile {
       ~{if (logger_file) then "--logger-file" else ""} \
       ~{if (write_message_to_file) then "--write-message-to-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "A zip file containing a matrix as produced by mk_matrix. (default: None)"
     out_dir: "Output directory name. (default: draw_profile)"

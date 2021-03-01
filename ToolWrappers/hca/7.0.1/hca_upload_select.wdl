@@ -8,6 +8,9 @@ task HcaUploadSelect {
     hca upload select \
       ~{uri_or_alias}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     uri_or_alias: "S3 URI of an upload area, or short alias."
   }

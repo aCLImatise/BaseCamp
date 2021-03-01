@@ -4,6 +4,9 @@ task StatsGenerator {
   command <<<
     statsGenerator
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -14,6 +14,9 @@ task FragmentDepth {
       ~{if defined(max) then ("-max " +  '"' + max + '"') else ""} \
       ~{if defined(step_size) then ("-stepSize " +  '"' + step_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min: "use scaffolds at least N bases long."
     max: "use scaffolds at most N bases long."

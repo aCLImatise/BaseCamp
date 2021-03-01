@@ -10,6 +10,9 @@ task NebulizerListKeys {
       ~{wild_cards_dot} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "list only aliases matching name. Can include glob-style"
     wild_cards_dot: "-s, --show-api-keys  show the API key string associated with each alias"

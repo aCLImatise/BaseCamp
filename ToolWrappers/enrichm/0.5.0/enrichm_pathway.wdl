@@ -34,6 +34,9 @@ task EnrichmPathway {
       ~{if defined(filter) then ("--filter " +  '"' + filter + '"') else ""} \
       ~{if defined(enrichment_output) then ("--enrichment_output " +  '"' + enrichment_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "KO matrix. REQUIRED."
     genome_metadata: "Metadata file with two columns, the first with the genome name, the second with the groupings to compare."

@@ -11,17 +11,17 @@ subcommands:
   - FILE
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: FILE
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: trifile
-    optional: false
+    description: ''
   named: []
-  parent: &id009 !Command
+  parent: &id010 !Command
     command: *id001
     positional: []
     named: []
@@ -31,17 +31,17 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: FILE
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: trifile
-        optional: false
+        description: ''
       named: []
-      parent: &id008 !Command
+      parent: &id009 !Command
         command: *id001
         positional: []
         named: []
@@ -51,17 +51,17 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: FILE
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: trifile
-            optional: false
+            description: ''
           named: []
-          parent: &id007 !Command
+          parent: &id008 !Command
             command: *id001
             positional: []
             named: []
@@ -71,65 +71,158 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: FILE
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: trifile
-                optional: false
+                description: ''
               named: []
-              parent: &id003 !Command
+              parent: &id007 !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: =VAL      Set variable
-                  synonyms:
-                  - -v
-                  args: !SimpleFlagArg
-                    name: VAR
-                  optional: true
-                - !Flag
-                  description: Use SEP as field separator
-                  synonyms:
-                  - -F
-                  args: !SimpleFlagArg
-                    name: SEP
-                  optional: true
-                - !Flag
-                  description: Read program from FILE
-                  synonyms:
-                  - -f
-                  args: !SimpleFlagArg
-                    name: FILE
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -e
-                  args: !SimpleFlagArg
-                    name: AWK_PROGRAM
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: FILE
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: trifile
-                    optional: false
+                    description: ''
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -v
+                      description: =VAL      Set variable
+                      args: !SimpleFlagArg
+                        name: VAR
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -F
+                      description: Use SEP as field separator
+                      args: !SimpleFlagArg
+                        name: SEP
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -f
+                      description: Read program from FILE
+                      args: !SimpleFlagArg
+                        name: FILE
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -e
+                      description: ''
+                      args: !SimpleFlagArg
+                        name: AWK_PROGRAM
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: FILE
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: trifile
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Fix non-zero cardinality of continuous variables\
+                        \ in trifiles\nUsage: FILE trifile\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - fixTri.sh
+                      - awk
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: awk
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: trifile
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Fix non-zero cardinality of continuous variables\
+                        \ in trifiles\nUsage: awk trifile\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - fixTri.sh
+                      - AWK_PROGRAM
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: AWK_PROGRAM
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: trifile
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Fix non-zero cardinality of continuous variables\
+                        \ in trifiles\nUsage: AWK_PROGRAM trifile\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "awk: unrecognized option '--help'\nBusyBox v1.22.1\
+                      \ (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: awk\
+                      \ [OPTIONS] [AWK_PROGRAM] [FILE]...\n\n\t-v VAR=VAL\tSet variable\n\
+                      \t-F SEP\t\tUse SEP as field separator\n\t-f FILE\t\tRead program\
+                      \ from FILE\n\t-e AWK_PROGRAM\n\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -137,23 +230,21 @@ subcommands:
                   version_flag:
                   help_text: "Fix non-zero cardinality of continuous variables in\
                     \ trifiles\nUsage: FILE trifile\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - fixTri.sh
-                  - awk
+                  command: *id005
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: awk
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: trifile
-                    optional: false
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
@@ -164,21 +255,20 @@ subcommands:
                   help_text: "Fix non-zero cardinality of continuous variables in\
                     \ trifiles\nUsage: awk trifile\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - fixTri.sh
-                  - AWK_PROGRAM
+                  command: *id006
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: AWK_PROGRAM
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: trifile
-                    optional: false
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
@@ -189,6 +279,7 @@ subcommands:
                   help_text: "Fix non-zero cardinality of continuous variables in\
                     \ trifiles\nUsage: AWK_PROGRAM trifile\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -199,6 +290,7 @@ subcommands:
                   \ field separator\n\t-f FILE\t\tRead program from FILE\n\t-e AWK_PROGRAM\n\
                   \n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -207,21 +299,22 @@ subcommands:
               help_text: "Fix non-zero cardinality of continuous variables in trifiles\n\
                 Usage: FILE trifile\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: awk
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: trifile
-                optional: false
+                description: ''
               named: []
-              parent: *id003
+              parent: *id007
               subcommands: []
               usage: []
               help_flag:
@@ -230,21 +323,22 @@ subcommands:
               help_text: "Fix non-zero cardinality of continuous variables in trifiles\n\
                 Usage: awk trifile\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: AWK_PROGRAM
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: trifile
-                optional: false
+                description: ''
               named: []
-              parent: *id003
+              parent: *id007
               subcommands: []
               usage: []
               help_flag:
@@ -253,6 +347,7 @@ subcommands:
               help_text: "Fix non-zero cardinality of continuous variables in trifiles\n\
                 Usage: AWK_PROGRAM trifile\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -263,6 +358,7 @@ subcommands:
               \ separator\n\t-f FILE\t\tRead program from FILE\n\t-e AWK_PROGRAM\n\
               \n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -271,21 +367,22 @@ subcommands:
           help_text: "Fix non-zero cardinality of continuous variables in trifiles\n\
             Usage: FILE trifile\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: awk
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: trifile
-            optional: false
+            description: ''
           named: []
-          parent: *id007
+          parent: *id008
           subcommands: []
           usage: []
           help_flag:
@@ -294,21 +391,22 @@ subcommands:
           help_text: "Fix non-zero cardinality of continuous variables in trifiles\n\
             Usage: awk trifile\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: AWK_PROGRAM
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: trifile
-            optional: false
+            description: ''
           named: []
-          parent: *id007
+          parent: *id008
           subcommands: []
           usage: []
           help_flag:
@@ -317,6 +415,7 @@ subcommands:
           help_text: "Fix non-zero cardinality of continuous variables in trifiles\n\
             Usage: AWK_PROGRAM trifile\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -326,6 +425,7 @@ subcommands:
           \ [FILE]...\n\n\t-v VAR=VAL\tSet variable\n\t-F SEP\t\tUse SEP as field\
           \ separator\n\t-f FILE\t\tRead program from FILE\n\t-e AWK_PROGRAM\n\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -334,21 +434,22 @@ subcommands:
       help_text: "Fix non-zero cardinality of continuous variables in trifiles\nUsage:\
         \ FILE trifile\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: awk
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: trifile
-        optional: false
+        description: ''
       named: []
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag:
@@ -357,21 +458,22 @@ subcommands:
       help_text: "Fix non-zero cardinality of continuous variables in trifiles\nUsage:\
         \ awk trifile\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: AWK_PROGRAM
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: trifile
-        optional: false
+        description: ''
       named: []
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag:
@@ -380,6 +482,7 @@ subcommands:
       help_text: "Fix non-zero cardinality of continuous variables in trifiles\nUsage:\
         \ AWK_PROGRAM trifile\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -389,6 +492,7 @@ subcommands:
       \t-v VAR=VAL\tSet variable\n\t-F SEP\t\tUse SEP as field separator\n\t-f FILE\t\
       \tRead program from FILE\n\t-e AWK_PROGRAM\n\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -397,21 +501,22 @@ subcommands:
   help_text: "Fix non-zero cardinality of continuous variables in trifiles\nUsage:\
     \ FILE trifile\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: awk
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: trifile
-    optional: false
+    description: ''
   named: []
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag:
@@ -420,21 +525,22 @@ subcommands:
   help_text: "Fix non-zero cardinality of continuous variables in trifiles\nUsage:\
     \ awk trifile\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: AWK_PROGRAM
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: trifile
-    optional: false
+    description: ''
   named: []
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag:
@@ -443,6 +549,7 @@ subcommands:
   help_text: "Fix non-zero cardinality of continuous variables in trifiles\nUsage:\
     \ AWK_PROGRAM trifile\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -452,3 +559,4 @@ help_text: "awk: unrecognized option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24
   -v VAR=VAL\tSet variable\n\t-F SEP\t\tUse SEP as field separator\n\t-f FILE\t\t\
   Read program from FILE\n\t-e AWK_PROGRAM\n\n"
 generated_using: *id004
+docker_image:

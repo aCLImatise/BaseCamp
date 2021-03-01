@@ -4,48 +4,48 @@ inputs:
 - id: in_min_intron_ol
   doc: "Minimum intron overlap of a site to be reported as\nintron overlapping (intersectBed\
     \ -f parameter)\n(default: 0.9)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --min-intron-ol
 - id: in_min_len
   doc: "Minimum input site length for filtering --in BED file\n(default: False)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-len
 - id: in_max_len
   doc: "Maximum input site length for filtering --in BED file\n(default: False)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-len
 - id: in_thr
   doc: "Filter out --in BED regions < --thr column 5 score\n(default: no filtering)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --thr
 - id: in_rev_filter
   doc: "Reverse filtering (keep values <= --thr and prefer\nsites with smaller values)\
     \ (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rev-filter
 - id: in_in
   doc: CLIP peak regions input BED file (6-column format)
-  type: File
+  type: File?
   inputBinding:
     prefix: --in
 - id: in_tr
   doc: Transcript sequence IDs list file to define intron
-  type: File
+  type: File?
   inputBinding:
     prefix: --tr
 - id: in_out
   doc: "CLIP peak regions overlapping with introns output BED\nfile\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_gtf
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --gtf
 - id: in_regions
@@ -59,9 +59,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: "CLIP peak regions overlapping with introns output BED\nfile\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - clipcontext

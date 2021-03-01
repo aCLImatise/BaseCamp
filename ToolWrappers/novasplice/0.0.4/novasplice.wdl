@@ -28,6 +28,9 @@ task Novasplice {
       ~{if defined(temp) then ("--temp " +  '"' + temp + '"') else ""} \
       ~{if defined(library_name) then ("--libraryname " +  '"' + library_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf: "Full path to the sorted vcf file being used"
     zipped_vcf: "Full path to the sorted zipped vcf file being used"

@@ -8,6 +8,9 @@ task RecomapHapmap2 {
     recomap_hapmap2 \
       ~{one_kg_map_directory}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     one_kg_map_directory: ""
   }

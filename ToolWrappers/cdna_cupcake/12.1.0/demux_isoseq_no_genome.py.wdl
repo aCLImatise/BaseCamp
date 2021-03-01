@@ -18,6 +18,9 @@ task DemuxIsoseqNoGenomepy {
       ~{if defined(primer_names) then ("--primer_names " +  '"' + primer_names + '"') else ""} \
       ~{if defined(output_count_filename) then ("--output " +  '"' + output_count_filename + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     job_dir: "Job directory (if given, automatically finds required\\nfiles)"
     hq_faf_q: "HQ isoform fasta/fastq (overridden by --job_dir if\\ngiven)"

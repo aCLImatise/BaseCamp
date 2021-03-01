@@ -12,6 +12,9 @@ task PhyluceUtilitiesGetBedFromFasta {
       ~{if defined(bed_file_create) then ("--output " +  '"' + bed_file_create + '"') else ""} \
       ~{if defined(locus_prefix) then ("--locus-prefix " +  '"' + locus_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fasta_file_parse: "The fasta file to parse"
     bed_file_create: "The BED file to create"

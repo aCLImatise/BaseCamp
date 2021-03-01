@@ -16,6 +16,9 @@ task AlbatradispresenceAbsence {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "Output directory prefix (default: output)"
     verbose: "Print out more information about the analysis while it\\nruns (default: False)"

@@ -8,6 +8,9 @@ task RunSpliceMap {
     runSpliceMap \
       ~{run_dot_cfg}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run_dot_cfg: "--  Configuration options for this run, see comments in file for details"
   }

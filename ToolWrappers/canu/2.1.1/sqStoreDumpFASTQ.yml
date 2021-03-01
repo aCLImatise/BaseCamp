@@ -1,0 +1,124 @@
+!Command
+command:
+- sqStoreDumpFASTQ
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - -o
+  description: "write files out-prefix.(libname).fastq, ...\nif out-prefix is '-',\
+    \ all sequences output to stdout\nif out-prefix ends in .gz, .bz2 or .xz, output\
+    \ is compressed"
+  args: !SimpleFlagArg
+    name: seqStore
+- !Flag
+  optional: true
+  synonyms:
+  - -fastq
+  description: "output is FASTQ format (with extension .fastq, default)\n(note that\
+    \ QVs are not stored, and are invalid)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fasta
+  description: output is FASTA format (with extension .fasta)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nolibname
+  description: don't include the library name in the output file name
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -noreadname
+  description: "don't include the read name in the sequence header.  header will be:\n\
+    '>original-name id=<seqID> clr=<bgn>,<end>   with names\n'>read<seqID> clr=<bgn>,<end>\
+    \                without names"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -reverse
+  description: Dump the reverse-complement of the read.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: output only read in library number 'id'
+  args: !SimpleFlagArg
+    name: id
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "[-id]          output only the single read 'id', or the specified\
+    \ range of ids"
+  args: !SimpleFlagArg
+    name: id
+- !Flag
+  optional: true
+  synonyms:
+  - -raw
+  description: Dump raw reads.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -corrected
+  description: Dump corrected reads.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -trimmed
+  description: Dump the trimmed version of the raw/corrected read.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -compressed
+  description: Dump the compressed version of the raw/corrected read.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -normal
+  description: "Dump the uncompressed version of the raw/corrected read.\n(for stores\
+    \ that are by default compressing homopolymers)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "ERROR: unknown option '--help'\nusage: sqStoreDumpFASTQ [...] -o out-prefix\
+  \ -g seqStore\n  -S seqStore\n  -o out-prefix       write files out-prefix.(libname).fastq,\
+  \ ...\n                      if out-prefix is '-', all sequences output to stdout\n\
+  \                      if out-prefix ends in .gz, .bz2 or .xz, output is compressed\n\
+  \n  -fastq              output is FASTQ format (with extension .fastq, default)\n\
+  \                      (note that QVs are not stored, and are invalid)\n\n  -fasta\
+  \              output is FASTA format (with extension .fasta)\n\n  -nolibname  \
+  \        don't include the library name in the output file name\n\n  -noreadname\
+  \         don't include the read name in the sequence header.  header will be:\n\
+  \                        '>original-name id=<seqID> clr=<bgn>,<end>   with names\n\
+  \                        '>read<seqID> clr=<bgn>,<end>                without names\n\
+  \n -reverse             Dump the reverse-complement of the read.\n\n  -l id    \
+  \           output only read in library number 'id'\n  -r id[-id]          output\
+  \ only the single read 'id', or the specified range of ids\n\n The default is to\
+  \ dump the latest version of each read.  You can force it to dump:\n  -raw     \
+  \           Dump raw reads.\n  -corrected          Dump corrected reads.\n\n  -trimmed\
+  \            Dump the trimmed version of the raw/corrected read.\n  -compressed\
+  \         Dump the compressed version of the raw/corrected read.\n  -normal    \
+  \         Dump the uncompressed version of the raw/corrected read.\n           \
+  \             (for stores that are by default compressing homopolymers)\n\nERROR:\
+  \ no seqStore (-S) supplied.\nERROR: no output prefix (-o) supplied.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/canu:2.1.1--he1b5a44_1

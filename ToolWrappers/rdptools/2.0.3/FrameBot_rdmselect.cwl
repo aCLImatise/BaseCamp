@@ -3,12 +3,12 @@ id: FrameBot_rdmselect.cwl
 inputs:
 - id: in_num_selection
   doc: number of sequence IDs for each sample. Default is the smallest sample size
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-selection
 - id: in_exclude_samples
   doc: list of sample names to be excluded from selection
-  type: string
+  type: string?
   inputBinding:
     prefix: --exclude-samples
 - id: in_rdm_select_sample_mapping
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - FrameBot

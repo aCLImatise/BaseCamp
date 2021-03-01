@@ -8,7 +8,7 @@ task Ls {
     Boolean? escape
     Int? block_size
     Boolean? ignore_backups
-    Boolean? lt_sort_ctime
+    Boolean? sort_by_ctime
     Boolean? list_entries_columns
     Boolean? color
     Boolean? directory
@@ -30,7 +30,7 @@ task Ls {
     Boolean? inode
     String? ignore
     Boolean? kib_i_bytes
-    Boolean? use_long_format
+    Boolean? use_listing_format
     Boolean? dereference
     Boolean? fill_width_comma
     Boolean? numeric_uid_gid
@@ -49,7 +49,7 @@ task Ls {
     String? time_style
     Boolean? sort_modification_time
     Int? tab_size
-    Boolean? lt_sort_access
+    Boolean? sort_by_access
     Boolean? sort_list_entries
     Boolean? natural_sort_version
     Int? width
@@ -66,7 +66,7 @@ task Ls {
       ~{if (escape) then "--escape" else ""} \
       ~{if defined(block_size) then ("--block-size " +  '"' + block_size + '"') else ""} \
       ~{if (ignore_backups) then "--ignore-backups" else ""} \
-      ~{if (lt_sort_ctime) then "-c" else ""} \
+      ~{if (sort_by_ctime) then "-c" else ""} \
       ~{if (list_entries_columns) then "-C" else ""} \
       ~{if (color) then "--color" else ""} \
       ~{if (directory) then "--directory" else ""} \
@@ -88,7 +88,7 @@ task Ls {
       ~{if (inode) then "--inode" else ""} \
       ~{if defined(ignore) then ("--ignore " +  '"' + ignore + '"') else ""} \
       ~{if (kib_i_bytes) then "--kibibytes" else ""} \
-      ~{if (use_long_format) then "-l" else ""} \
+      ~{if (use_listing_format) then "-l" else ""} \
       ~{if (dereference) then "--dereference" else ""} \
       ~{if (fill_width_comma) then "-m" else ""} \
       ~{if (numeric_uid_gid) then "--numeric-uid-gid" else ""} \
@@ -107,7 +107,7 @@ task Ls {
       ~{if defined(time_style) then ("--time-style " +  '"' + time_style + '"') else ""} \
       ~{if (sort_modification_time) then "-t" else ""} \
       ~{if defined(tab_size) then ("--tabsize " +  '"' + tab_size + '"') else ""} \
-      ~{if (lt_sort_access) then "-u" else ""} \
+      ~{if (sort_by_access) then "-u" else ""} \
       ~{if (sort_list_entries) then "-U" else ""} \
       ~{if (natural_sort_version) then "-v" else ""} \
       ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
@@ -116,6 +116,9 @@ task Ls {
       ~{if (context) then "--context" else ""} \
       ~{if (list_one_file) then "-1" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "do not ignore entries starting with ."
     almost_all: "do not list implied . and .."
@@ -123,7 +126,7 @@ task Ls {
     escape: "print C-style escapes for nongraphic characters"
     block_size: "with -l, scale sizes by SIZE when printing them;\\ne.g., '--block-size=M'; see SIZE format below"
     ignore_backups: "do not list implied entries ending with ~"
-    lt_sort_ctime: "with -lt: sort by, and show, ctime (time of last\\nmodification of file status information);\\nwith -l: show ctime and sort by name;\\notherwise: sort by ctime, newest first"
+    sort_by_ctime: "with -lt: sort by, and show, ctime (time of last\\nmodification of file status information);\\nwith -l: show ctime and sort by name;\\notherwise: sort by ctime, newest first"
     list_entries_columns: "list entries by columns"
     color: "[=WHEN]         colorize the output; WHEN can be 'always' (default\\nif omitted), 'auto', or 'never'; more info below"
     directory: "list directories themselves, not their contents"
@@ -145,7 +148,7 @@ task Ls {
     inode: "print the index number of each file"
     ignore: "do not list implied entries matching shell PATTERN"
     kib_i_bytes: "default to 1024-byte blocks for disk usage;\\nused only with -s and per directory totals"
-    use_long_format: "use a long listing format"
+    use_listing_format: "use a long listing format"
     dereference: "when showing file information for a symbolic\\nlink, show information for the file the link\\nreferences rather than for the link itself"
     fill_width_comma: "fill width with a comma separated list of entries"
     numeric_uid_gid: "like -l, but list numeric user and group IDs"
@@ -164,7 +167,7 @@ task Ls {
     time_style: "time/date format with -l; see TIME_STYLE below"
     sort_modification_time: "sort by modification time, newest first"
     tab_size: "assume tab stops at each COLS instead of 8"
-    lt_sort_access: "with -lt: sort by, and show, access time;\\nwith -l: show access time and sort by name;\\notherwise: sort by access time, newest first"
+    sort_by_access: "with -lt: sort by, and show, access time;\\nwith -l: show access time and sort by name;\\notherwise: sort by access time, newest first"
     sort_list_entries: "do not sort; list entries in directory order"
     natural_sort_version: "natural sort of (version) numbers within text"
     width: "set output width to COLS.  0 means no limit"

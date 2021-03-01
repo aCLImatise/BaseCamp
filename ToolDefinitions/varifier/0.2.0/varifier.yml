@@ -1,0 +1,243 @@
+&id001 !Command
+command:
+- varifier
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: More verbose logging, and less file cleaning
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - varifier
+  - vcf_eval
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: truth_fasta
+    description: FASTA file of truth genome
+  - !Positional
+    optional: false
+    position: 1
+    name: vcf_fasta
+    description: FASTA file corresponding to vcf_file
+  - !Positional
+    optional: false
+    position: 2
+    name: vcf_in
+    description: VCF file to evaluate
+  - !Positional
+    optional: false
+    position: 3
+    name: outdir
+    description: Name of output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --flank_length
+    description: "Length of sequence to add either side of variant when\nmaking probe\
+      \ sequences [100]"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --force
+    description: Replace outdir if it already exists
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --filter_pass
+    description: "[,FILTER2[,...]]\nDefines how to handle FILTER column of input VCF\
+      \ file.\nComma-separated list of filter names. A VCF line is\nkept if any of\
+      \ its FILTER entries are in the provided\nlist. Put '.' in the list to keep\
+      \ records where the\nfilter column is '.'. Default behaviour is to ignore\n\
+      the filter column and use all records"
+    args: !SimpleFlagArg
+      name: FILTER1
+  - !Flag
+    optional: true
+    synonyms:
+    - --ref_mask
+    description: "BED file of ref regions to mask. Any variants in the\nVCF overlapping\
+      \ the mask are removed at the start of\nthe pipeline"
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --truth_mask
+    description: "BED file of truth genome regions to mask. Any variants\nin the VCF\
+      \ matching to the mask are flagged and do not\ncount towards precision or recall"
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --truth_vcf
+    description: "VCF file of variant calls between vcf_fasta and\ntruth_fasta, where\
+      \ reference of this VCF file is\ntruth_fasta. If provided, used to calculate\
+      \ recall"
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --max_recall_ref_len
+    description: "For recall, do not look for expected variants where\nREF length\
+      \ is more than this number. Default is no\nlimit. This option will not work\
+      \ if you use\n--truth_vcf"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --use_ref_calls
+    description: "Include 0/0 genotype calls when calculating TPs and\nprecision.\
+      \ By default they are ignored\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: varifier vcf_eval [options] <truth_fasta> <vcf_fasta> <vcf_file>\
+    \ <outdir>\n\nEvaluate VCF file\n\npositional arguments:\n  truth_fasta      \
+    \     FASTA file of truth genome\n  vcf_fasta             FASTA file corresponding\
+    \ to vcf_file\n  vcf_in                VCF file to evaluate\n  outdir        \
+    \        Name of output directory\n\noptional arguments:\n  -h, --help       \
+    \     show this help message and exit\n  --flank_length INT    Length of sequence\
+    \ to add either side of variant when\n                        making probe sequences\
+    \ [100]\n  --force               Replace outdir if it already exists\n  --filter_pass\
+    \ FILTER1[,FILTER2[,...]]\n                        Defines how to handle FILTER\
+    \ column of input VCF file.\n                        Comma-separated list of filter\
+    \ names. A VCF line is\n                        kept if any of its FILTER entries\
+    \ are in the provided\n                        list. Put '.' in the list to keep\
+    \ records where the\n                        filter column is '.'. Default behaviour\
+    \ is to ignore\n                        the filter column and use all records\n\
+    \  --ref_mask FILENAME   BED file of ref regions to mask. Any variants in the\n\
+    \                        VCF overlapping the mask are removed at the start of\n\
+    \                        the pipeline\n  --truth_mask FILENAME\n             \
+    \           BED file of truth genome regions to mask. Any variants\n         \
+    \               in the VCF matching to the mask are flagged and do not\n     \
+    \                   count towards precision or recall\n  --truth_vcf FILENAME\
+    \  VCF file of variant calls between vcf_fasta and\n                        truth_fasta,\
+    \ where reference of this VCF file is\n                        truth_fasta. If\
+    \ provided, used to calculate recall\n  --max_recall_ref_len INT\n           \
+    \             For recall, do not look for expected variants where\n          \
+    \              REF length is more than this number. Default is no\n          \
+    \              limit. This option will not work if you use\n                 \
+    \       --truth_vcf\n  --use_ref_calls       Include 0/0 genotype calls when calculating\
+    \ TPs and\n                        precision. By default they are ignored\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/varifier:0.2.0--py_0
+- !Command
+  command:
+  - varifier
+  - make_truth_vcf
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: truth_fasta
+    description: FASTA file of truth genome
+  - !Positional
+    optional: false
+    position: 1
+    name: ref_fasta
+    description: FASTA file of reference genome
+  - !Positional
+    optional: false
+    position: 2
+    name: outdir
+    description: Name of output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --max_recall_ref_len
+    description: "Do not include variants where REF length is more than\nthis number.\
+      \ Default is no limit"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --flank_length
+    description: "Length of sequence to add either side of variant when\nmaking probe\
+      \ sequences [100]"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --truth_mask
+    description: "BED file of truth genome regions to mask. Any variants\nin the VCF\
+      \ matching to the mask are flagged and will\nnot count towards precision or\
+      \ recall if the output\nVCF is used with vcf_eval\n"
+    args: !SimpleFlagArg
+      name: FILENAME
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: varifier make_truth_vcf [options] <truth_fasta> <ref_fasta> <outdir>\n\
+    \nMake truth VCF file\n\npositional arguments:\n  truth_fasta           FASTA\
+    \ file of truth genome\n  ref_fasta             FASTA file of reference genome\n\
+    \  outdir                Name of output directory\n\noptional arguments:\n  -h,\
+    \ --help            show this help message and exit\n  --max_recall_ref_len INT\n\
+    \                        Do not include variants where REF length is more than\n\
+    \                        this number. Default is no limit\n  --flank_length INT\
+    \    Length of sequence to add either side of variant when\n                 \
+    \       making probe sequences [100]\n  --truth_mask FILENAME\n              \
+    \          BED file of truth genome regions to mask. Any variants\n          \
+    \              in the VCF matching to the mask are flagged and will\n        \
+    \                not count towards precision or recall if the output\n       \
+    \                 VCF is used with vcf_eval\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/varifier:0.2.0--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: varifier <command> <options>\n\nvarifier: variant call adjudication\n\
+  \noptional arguments:\n  -h, --help      show this help message and exit\n  --version\
+  \       show program's version number and exit\n  --debug         More verbose logging,\
+  \ and less file cleaning\n\nAvailable commands:\n  \n    make_truth_vcf\n      \
+  \            Make truth VCF file\n    vcf_eval      Evaluate VCF file\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/varifier:0.2.0--py_0

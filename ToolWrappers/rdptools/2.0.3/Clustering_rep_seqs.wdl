@@ -22,6 +22,9 @@ task ClusteringRepseqs {
       ~{if defined(pref_seq_ids) then ("--pref-seqids " +  '"' + pref_seq_ids + '"') else ""} \
       ~{if (one_rep_per_otu) then "--one-rep-per-otu" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     use_cluster_id: "Use the cluster id as the seq id."
     invert: "Invert preferential sequence id (give preference\\nto seqids not in the file)"

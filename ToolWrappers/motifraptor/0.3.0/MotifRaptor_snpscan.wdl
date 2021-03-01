@@ -14,6 +14,9 @@ task MotifRaptorSnpscan {
       ~{if defined(motifscan_output) then ("--motifscan_output " +  '"' + motifscan_output + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     indexed_genome_db: "indexed genome_database_folder"
     pfm_folder: "motif pmf files folder"

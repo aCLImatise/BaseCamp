@@ -12,6 +12,9 @@ task RnazMAF2BEDpl {
       ~{if (cluster) then "--cluster" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_id: "Specify the sequence identifier of the sequence which should be\\nused as a reference to create the output. Use for example \\\"hg17\\\"\\nif you want to get all sequences containing \\\"hg17\\\" in the\\nidenitfier (e.g. \\\"hg17.chr10\\\", \\\"hg17.chr22\\\",...). If this option\\nis omitted, the first sequence identifier of the first sequence\\nin the first alignment block is used."
     cluster: "Combine overlapping alignments and report non-overlapping\\nregions in the BED output."

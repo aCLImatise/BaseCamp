@@ -1,31 +1,31 @@
 class: CommandLineTool
 id: scHicQualityControl.cwl
 inputs:
-- id: in_schic_matrix_m
+- id: in_schic_matrix_scool
   doc: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction matrices\
     \ to\ninvestigate for QC. Needs to be in scool format\n(default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --matrix
 - id: in_outputs_cool
   doc: "scool matrix which contains only the filtered matrices\n(default: filtered_matrices.scool)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --outputScool
 - id: in_minimum_read_coverage
   doc: "Remove all samples with a lower read coverage as this\nvalue. (default: 1000000)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --minimumReadCoverage
 - id: in_minimum_density
   doc: "Remove all samples with a lower read coverage as this\nvalue. (default: 0.001)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --minimumDensity
 - id: in_maximum_region_to_consider
   doc: "To compute the density, consider only this genomic\ndistance around the diagonal.\
     \ (default: 30000000)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maximumRegionToConsider
 - id: in_chromosomes
@@ -37,32 +37,32 @@ inputs:
     prefix: --chromosomes
 - id: in_out_filename_density
   doc: "File name of the density histogram (default:\ndensity.png)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outFileNameDensity
 - id: in_out_filename_read_coverage
   doc: "File name of the read coverage (default:\nreadCoverage.png)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outFileNameReadCoverage
 - id: in_out_filename_qc_report
   doc: "File name of the quality report (default:\nqc_report.txt)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outFileNameQCReport
 - id: in_plot_only
   doc: "Do not create a new matrix, create only the plots.\n(default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --plotOnly
 - id: in_dpi
   doc: 'The dpi of the plot. (default: 300)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --dpi
 - id: in_threads
   doc: "Number of threads. Using the python multiprocessing\nmodule. (default: 4)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_sch_i_c
@@ -81,19 +81,20 @@ outputs:
   type: stdout
 - id: out_out_filename_density
   doc: "File name of the density histogram (default:\ndensity.png)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_filename_density)
 - id: out_out_filename_read_coverage
   doc: "File name of the read coverage (default:\nreadCoverage.png)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_filename_read_coverage)
 - id: out_out_filename_qc_report
   doc: "File name of the quality report (default:\nqc_report.txt)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_filename_qc_report)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - scHicQualityControl

@@ -2,7 +2,7 @@ version 1.0
 
 task Asn2ff {
   input {
-    Boolean? filename_asn_input
+    Boolean? filename_input_optionaldefault
     Boolean? input_seqentry_optionaldefault
     Boolean? input_asnfile_binary
     File? output_filename_optionaldefault
@@ -10,12 +10,12 @@ task Asn2ff {
     Boolean? output_format_b
     Boolean? output_mode_r
     Boolean? input_seqsubmit_optionaldefault
-    Boolean? show_gi_numbers
+    Boolean? show_numbers_optionaldefault
     Boolean? nonstrict_genebinding_optionaldefault
     Boolean? show_error_messages
-    Boolean? show_verbose_f
+    Boolean? show_verbose_text
     Boolean? use_html_format
-    Boolean? output_one_
+    Boolean? output_only_
     Boolean? only_in_view
     Boolean? output_map_bioseqs
     File? output_error_logfile
@@ -33,7 +33,7 @@ task Asn2ff {
   }
   command <<<
     asn2ff \
-      ~{if (filename_asn_input) then "-a" else ""} \
+      ~{if (filename_input_optionaldefault) then "-a" else ""} \
       ~{if (input_seqentry_optionaldefault) then "-e" else ""} \
       ~{if (input_asnfile_binary) then "-b" else ""} \
       ~{if (output_filename_optionaldefault) then "-o" else ""} \
@@ -41,12 +41,12 @@ task Asn2ff {
       ~{if (output_format_b) then "-f" else ""} \
       ~{if (output_mode_r) then "-m" else ""} \
       ~{if (input_seqsubmit_optionaldefault) then "-s" else ""} \
-      ~{if (show_gi_numbers) then "-g" else ""} \
+      ~{if (show_numbers_optionaldefault) then "-g" else ""} \
       ~{if (nonstrict_genebinding_optionaldefault) then "-n" else ""} \
       ~{if (show_error_messages) then "-v" else ""} \
-      ~{if (show_verbose_f) then "-t" else ""} \
+      ~{if (show_verbose_text) then "-t" else ""} \
       ~{if (use_html_format) then "-w" else ""} \
-      ~{if (output_one_) then "-q" else ""} \
+      ~{if (output_only_) then "-q" else ""} \
       ~{if (only_in_view) then "-G" else ""} \
       ~{if (output_map_bioseqs) then "-M" else ""} \
       ~{if (output_error_logfile) then "-r" else ""} \
@@ -62,8 +62,11 @@ task Asn2ff {
       ~{if (genbank_release_optionaldefault) then "-R" else ""} \
       ~{if (new_locus_line) then "-L" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    filename_asn_input: "Filename for asn.1 input [File In]  Optional\\ndefault = stdin"
+    filename_input_optionaldefault: "Filename for asn.1 input [File In]  Optional\\ndefault = stdin"
     input_seqentry_optionaldefault: "Input is a Seq-entry [T/F]  Optional\\ndefault = F"
     input_asnfile_binary: "Input asnfile in binary mode [T/F]  Optional\\ndefault = F"
     output_filename_optionaldefault: "Output Filename [File Out]  Optional\\ndefault = stdout"
@@ -71,12 +74,12 @@ task Asn2ff {
     output_format_b: "Output Format?: b for GenBank, p for GenPept, e for EMBL, s for PseudoEMBL, x for   GenBankSelect, z for EMBLPEPT [String]  Optional\\ndefault = b"
     output_mode_r: "Output mode?: r for release, d for dump, s for Sequin, c for Chromoscope, k for dir-sub-debug, l for dir-sub, e for revise, p for partial report [String]  Optional\\ndefault = r"
     input_seqsubmit_optionaldefault: "Input is a Seq-submit [T/F]  Optional\\ndefault = F"
-    show_gi_numbers: "Show gi numbers? [T/F]  Optional\\ndefault = F"
+    show_numbers_optionaldefault: "Show gi numbers? [T/F]  Optional\\ndefault = F"
     nonstrict_genebinding_optionaldefault: "Non-Strict gene_binding [T/F]  Optional\\ndefault = T"
     show_error_messages: "Show error messages [T/F]  Optional\\ndefault = T"
-    show_verbose_f: "Show verbose message text [T/F]  Optional\\ndefault = F"
+    show_verbose_text: "Show verbose message text [T/F]  Optional\\ndefault = F"
     use_html_format: "Use HTML output format? [T/F]  Optional\\ndefault = F"
-    output_one_: "Output is one top bioseq only [T/F]  Optional\\ndefault = F"
+    output_only_: "Output is one top bioseq only [T/F]  Optional\\ndefault = F"
     only_in_view: "Output is one top bioseq only in genome view [T/F]  Optional\\ndefault = F"
     output_map_bioseqs: "Output is map bioseqs only  [T/F]  Optional\\ndefault = F"
     output_error_logfile: "Output error logfile [File Out]  Optional\\ndefault = stderr"

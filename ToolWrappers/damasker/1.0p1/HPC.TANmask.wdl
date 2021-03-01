@@ -8,6 +8,9 @@ task HPCTANmask {
     HPC_TANmask \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
   }

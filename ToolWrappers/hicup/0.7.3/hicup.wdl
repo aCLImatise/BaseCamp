@@ -38,6 +38,9 @@ task Hicup {
       ~{if (threads) then "--threads" else ""} \
       ~{if (zip) then "--zip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bowtie: "Specify the path to Bowtie"
     bowtie_two: "Specify the path to Bowtie 2"

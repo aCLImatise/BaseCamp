@@ -104,6 +104,9 @@ task Blasr {
       ~{if defined(stride) then ("-stride " +  '"' + stride + '"') else ""} \
       ~{if (subsample) then "-subsample" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ctab: "A table of tuple counts used to estimate match significance.  This is\\nby the program 'printTupleCountTable'.  While it is quick to generate on\\nthe fly, if there are many invocations of blasr, it is useful to\\nprecompute the ctab."
     region_table: "Read in a read-region table in HDF format for masking portions of reads.\\nThis may be a single table if there is just one input file,\\nor a fofn.  When a region table is specified, any region table inside\\nthe reads.plx.h5 or reads.bax.h5 files are ignored."

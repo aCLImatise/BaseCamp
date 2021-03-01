@@ -32,6 +32,9 @@ task CargoPublish {
       ~{if (frozen) then "--frozen" else ""} \
       ~{if (locked) then "--locked" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     host: "Host to upload the package to"
     token: "Token to use when uploading"

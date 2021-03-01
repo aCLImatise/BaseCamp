@@ -84,6 +84,9 @@ task Cathsuperpose {
       ~{if defined(show_dna_within_dist) then ("--show-dna-within-dist " +  '"' + show_dna_within_dist + '"') else ""} \
       ~{if defined(show_organic_within_dist) then ("--show-organic-within-dist " +  '"' + show_organic_within_dist + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_version_information: "[ --version ]                         Output version information"
     res_name_align: "Align residues by simply matching their names (numbers+insert)\\n(for multiple models of the same structure)"

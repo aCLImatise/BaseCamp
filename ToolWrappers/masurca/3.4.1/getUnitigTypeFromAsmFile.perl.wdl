@@ -8,6 +8,9 @@ task GetUnitigTypeFromAsmFileperl {
     getUnitigTypeFromAsmFile_perl \
       ~{grep}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     grep: ""
   }

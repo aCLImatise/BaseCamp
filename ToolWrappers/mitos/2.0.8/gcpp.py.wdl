@@ -16,6 +16,9 @@ task Gcpppy {
       ~{codes} \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "reference genetic code"
     list: ""

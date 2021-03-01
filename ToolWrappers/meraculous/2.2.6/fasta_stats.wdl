@@ -18,6 +18,9 @@ task FastaStats {
       ~{if (exact_length_signal) then "-N" else ""} \
       ~{if (minimum_length_signal) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     size_big_scaffold: "##   size of big scaffold cutoff in kb [50]"
     minimum_for_gaps: "##   minimum size bin to display for gaps [none]"

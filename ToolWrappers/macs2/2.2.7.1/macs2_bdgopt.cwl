@@ -4,7 +4,7 @@ inputs:
 - id: in_i_file
   doc: "MACS score in bedGraph. Note: this must be a bedGraph\nfile covering the ENTIRE\
     \ genome. REQUIRED"
-  type: File
+  type: File?
   inputBinding:
     prefix: --ifile
 - id: in_method
@@ -20,24 +20,24 @@ inputs:
     \ using Benjamini-Hochberg process.\nThe EXTRAPARAM is not required. This method\
     \ assumes\nthe scores are -log10 p-value from MACS2. Any other\ntypes of score\
     \ will cause unexpected errors."
-  type: string
+  type: string?
   inputBinding:
     prefix: --method
-- id: in_extra_parameter_detail
+- id: in_extra_parameter_method
   doc: "[EXTRAPARAM [EXTRAPARAM ...]], --extra-param [EXTRAPARAM [EXTRAPARAM ...]]\n\
     The extra parameter for METHOD. Check the detail of -m\noption."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_outdir
   doc: "If specified all output files will be written to that\ndirectory. Default:\
     \ the current working directory"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_output_bedgraph_filename
   doc: "Output BEDGraph filename.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --ofile
 - id: in_optional_arguments
@@ -52,14 +52,15 @@ outputs:
 - id: out_outdir
   doc: "If specified all output files will be written to that\ndirectory. Default:\
     \ the current working directory"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
 - id: out_output_bedgraph_filename
   doc: "Output BEDGraph filename.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_bedgraph_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - macs2

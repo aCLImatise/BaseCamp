@@ -3,12 +3,12 @@ id: mimodd_header.cwl
 inputs:
 - id: in_ofile
   doc: "redirect the output to the specified file (default:\nstdout)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --ofile
 - id: in_relaxed
   doc: "do not enforce a sample name to be specified for every\nread group"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --relaxed
 - id: in_rg_id
@@ -59,7 +59,7 @@ inputs:
     prefix: --rg-pu
 - id: in_co
   doc: "[COMMENT [COMMENT ...]]\nan arbitrary number of one-line comment strings\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --co
 - id: in_header
@@ -73,9 +73,10 @@ outputs:
   type: stdout
 - id: out_ofile
   doc: "redirect the output to the specified file (default:\nstdout)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_ofile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mimodd

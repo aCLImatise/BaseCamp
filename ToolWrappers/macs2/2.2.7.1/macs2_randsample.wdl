@@ -26,6 +26,9 @@ task Macs2Randsample {
       ~{if defined(buffer_size) then ("--buffer-size " +  '"' + buffer_size + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i_file: "Alignment file. If multiple files are given as '-t A B\\nC', then they will all be read and combined. Note that\\npair-end data is not supposed to work with this\\ncommand. REQUIRED."
     percentage: "Percentage of tags you want to keep. Input 80.0 for\\n80%. This option can't be used at the same time with\\n-n/--num. REQUIRED"

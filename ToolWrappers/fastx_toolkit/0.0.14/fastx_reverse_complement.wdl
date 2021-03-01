@@ -16,6 +16,9 @@ task FastxReverseComplement {
       ~{if (z) then "-z" else ""} \
       ~{if (r) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     i: ""

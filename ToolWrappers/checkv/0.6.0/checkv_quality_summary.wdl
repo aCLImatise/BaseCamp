@@ -12,6 +12,9 @@ task CheckvQualitySummary {
       ~{output_directory} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Suppress logging messages"
     input_viral_sequences: "Input viral sequences in FASTA format"

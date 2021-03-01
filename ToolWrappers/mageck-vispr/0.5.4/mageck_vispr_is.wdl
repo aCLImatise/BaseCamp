@@ -14,6 +14,9 @@ task MageckvisprIs {
       ~{quality} \
       ~{control}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a: ""
     comprehensive: ""

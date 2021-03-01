@@ -4,6 +4,9 @@ task Tblastx {
   command <<<
     tblastx
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

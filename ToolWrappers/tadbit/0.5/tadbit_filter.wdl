@@ -40,6 +40,9 @@ task TadbitFilter {
       ~{if defined(min_frag_size) then ("--min_frag_size " +  '"' + min_frag_size + '"') else ""} \
       ~{if defined(re_proximity) then ("--re_proximity " +  '"' + re_proximity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "overwrite previously run job"
     resume: "use filters of previously run job"

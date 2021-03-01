@@ -18,6 +18,9 @@ task RiboraptorExportgenecoverages {
       ~{if defined(offset_three_p) then ("--offset_3p " +  '"' + offset_three_p + '"') else ""} \
       ~{if (ignore_tx_version) then "--ignore_tx_version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bigwig: "Path to bigwig  [required]"
     region_bed: "Path to bed file  [required]"

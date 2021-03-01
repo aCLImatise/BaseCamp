@@ -40,6 +40,9 @@ task RepeatModeler {
       ~{if defined(ninja_dir) then ("-ninja_dir " +  '"' + ninja_dir + '"') else ""} \
       ~{if defined(recon_dir) then ("-recon_dir " +  '"' + recon_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: "The name of the sequence database to run an analysis on. This is the\\nname that was provided to the BuildDatabase script using the \\\"-name\\\"\\noption."
     pa: "#\\nSpecify the number of parallel search jobs to run. RMBlast jobs will\\nuse 4 cores each and ABBlast jobs will use a single core each. i.e.\\non a machine with 12 cores and running with RMBlast you would use\\n-pa 3 to fully utilize the machine."

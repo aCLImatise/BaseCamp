@@ -14,6 +14,9 @@ task SortedMerge {
       ~{if defined(output_file_devfd) then ("--output " +  '"' + output_file_devfd + '"') else ""} \
       ~{if (numerical) then "--numerical" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     key: "Key (1 base column number) for sorting (1)"
     output_file_devfd: "Output file instead of stdout (/dev/fd/1)"

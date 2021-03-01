@@ -4,7 +4,7 @@ inputs:
 - id: in_split
   doc: "Split the bigram file into smaller files. Every\nsmaller file contains N bigrams.\
     \ N must be an integer."
-  type: long
+  type: long?
   inputBinding:
     prefix: --split
 - id: in_source
@@ -16,6 +16,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - huge-split.pl

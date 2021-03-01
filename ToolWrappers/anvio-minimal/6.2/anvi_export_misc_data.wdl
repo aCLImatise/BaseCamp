@@ -14,6 +14,9 @@ task Anviexportmiscdata {
       ~{if defined(target_data_group) then ("--target-data-group " +  '"' + target_data_group + '"') else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_or_profile_db: "Anvi'o pan or profile database (and even genes\\ndatabase in appropriate contexts)."
     target_data_table: "The target table is the table you are interested in\\naccessing. Currently it can be 'items','layers', or\\n'layer_orders'. Please see most up-to-date online\\ndocumentation for more information."

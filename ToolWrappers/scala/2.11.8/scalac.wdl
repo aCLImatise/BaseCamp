@@ -72,6 +72,9 @@ task Scalac {
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d_property: "Pass -Dproperty=value directly to the runtime system."
     flag_pass_flag: "<flag>                        Pass <flag> directly to the runtime system."

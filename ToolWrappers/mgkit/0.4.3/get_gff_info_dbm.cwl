@@ -1,27 +1,21 @@
 class: CommandLineTool
 id: get_gff_info_dbm.cwl
 inputs:
-- id: in_verbose
-  doc: "-d, --output-dir TEXT  Directory for the database  [default: gff-dbm]\n--help\
-    \                 Show this message and exit.\n"
-  type: Directory
+- id: in_output_dir
+  doc: 'Directory for the database  [default: gff-dbm]'
+  type: Directory?
   inputBinding:
-    prefix: --verbose
+    prefix: --output-dir
 - id: in_gff_file
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_verbose
-  doc: "-d, --output-dir TEXT  Directory for the database  [default: gff-dbm]\n--help\
-    \                 Show this message and exit.\n"
-  type: Directory
-  outputBinding:
-    glob: $(inputs.in_verbose)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - get-gff-info

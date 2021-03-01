@@ -3,22 +3,22 @@ version 1.0
 task Dcmmkdir {
   input {
     Boolean? arguments
-    Boolean? _quiet_quiet
-    Boolean? _verbose_details
-    Boolean? _debug_information
-    Boolean? ll
-    Boolean? lc
-    Boolean? _keepfilenames_expect
-    Boolean? _norecurse_recurse
-    Boolean? _noconsistencycheck_check
-    Boolean? _abort_first
-    Boolean? _strict_exit
+    Boolean? quiet
+    Boolean? verbose
+    Boolean? debug
+    Boolean? log_level
+    Boolean? log_config
+    Boolean? keep_filenames
+    Boolean? no_recurse
+    Boolean? no_consistency_check
+    Boolean? abort_in_consist_file
+    Boolean? strict
     Boolean? no_xfer_check
     Boolean? no_encoding_check
     Boolean? no_resolution_check
-    Boolean? xs
-    Boolean? xi
-    Boolean? xd
+    Boolean? icon_image_size
+    Boolean? icon_file_prefix
+    Boolean? default_icon
     Boolean? general_purpose
     Boolean? general_dvd_jpeg
     Boolean? general_dvd_j_two_k
@@ -48,35 +48,35 @@ task Dcmmkdir {
     Boolean? ultrasound_cc_mf
     Boolean? one_two_lead_ecg
     Boolean? hemodynamic_waveform
-    Boolean? _replace_replace
-    Boolean? _discard_write
+    Boolean? replace
+    Boolean? discard
     Boolean? create_backup
-    Boolean? nb
-    Boolean? _disablenewvr_disable
-    Boolean? _grouplengthremove_write
-    Boolean? _lengthundefined_write
+    Boolean? no_backup
+    Boolean? disable_new_vr
+    Boolean? group_length_remove
+    Boolean? length_undefined
     String dcm_file_in
   }
   command <<<
     dcmmkdir \
       ~{dcm_file_in} \
       ~{if (arguments) then "--arguments" else ""} \
-      ~{if (_quiet_quiet) then "-q" else ""} \
-      ~{if (_verbose_details) then "-v" else ""} \
-      ~{if (_debug_information) then "-d" else ""} \
-      ~{if (ll) then "-ll" else ""} \
-      ~{if (lc) then "-lc" else ""} \
-      ~{if (_keepfilenames_expect) then "-m" else ""} \
-      ~{if (_norecurse_recurse) then "-r" else ""} \
-      ~{if (_noconsistencycheck_check) then "-W" else ""} \
-      ~{if (_abort_first) then "-a" else ""} \
-      ~{if (_strict_exit) then "-I" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (log_level) then "--log-level" else ""} \
+      ~{if (log_config) then "--log-config" else ""} \
+      ~{if (keep_filenames) then "--keep-filenames" else ""} \
+      ~{if (no_recurse) then "--no-recurse" else ""} \
+      ~{if (no_consistency_check) then "--no-consistency-check" else ""} \
+      ~{if (abort_in_consist_file) then "--abort-inconsist-file" else ""} \
+      ~{if (strict) then "--strict" else ""} \
       ~{if (no_xfer_check) then "--no-xfer-check" else ""} \
       ~{if (no_encoding_check) then "--no-encoding-check" else ""} \
       ~{if (no_resolution_check) then "--no-resolution-check" else ""} \
-      ~{if (xs) then "-Xs" else ""} \
-      ~{if (xi) then "-Xi" else ""} \
-      ~{if (xd) then "-Xd" else ""} \
+      ~{if (icon_image_size) then "--icon-image-size" else ""} \
+      ~{if (icon_file_prefix) then "--icon-file-prefix" else ""} \
+      ~{if (default_icon) then "--default-icon" else ""} \
       ~{if (general_purpose) then "--general-purpose" else ""} \
       ~{if (general_dvd_jpeg) then "--general-dvd-jpeg" else ""} \
       ~{if (general_dvd_j_two_k) then "--general-dvd-j2k" else ""} \
@@ -106,32 +106,35 @@ task Dcmmkdir {
       ~{if (ultrasound_cc_mf) then "--ultrasound-cc-mf" else ""} \
       ~{if (one_two_lead_ecg) then "--12-lead-ecg" else ""} \
       ~{if (hemodynamic_waveform) then "--hemodynamic-waveform" else ""} \
-      ~{if (_replace_replace) then "-A" else ""} \
-      ~{if (_discard_write) then "-w" else ""} \
+      ~{if (replace) then "--replace" else ""} \
+      ~{if (discard) then "--discard" else ""} \
       ~{if (create_backup) then "--create-backup" else ""} \
-      ~{if (nb) then "-nb" else ""} \
-      ~{if (_disablenewvr_disable) then "-u" else ""} \
-      ~{if (_grouplengthremove_write) then "-g" else ""} \
-      ~{if (_lengthundefined_write) then "-e" else ""}
+      ~{if (no_backup) then "--no-backup" else ""} \
+      ~{if (disable_new_vr) then "--disable-new-vr" else ""} \
+      ~{if (group_length_remove) then "--group-length-remove" else ""} \
+      ~{if (length_undefined) then "--length-undefined" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arguments: "print expanded command line arguments"
-    _quiet_quiet: "--quiet                  quiet mode, print no warnings and errors"
-    _verbose_details: "--verbose                verbose mode, print processing details"
-    _debug_information: "--debug                  debug mode, print debug information"
-    ll: "--log-level              [l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
-    lc: "--log-config             [f]ilename: string\\nuse config file f for the logger"
-    _keepfilenames_expect: "--keep-filenames         expect filenames to be in DICOM format (def.)"
-    _norecurse_recurse: "--no-recurse             do not recurse within directories (default)"
-    _noconsistencycheck_check: "--no-consistency-check   do not check files for consistency"
-    _abort_first: "--abort-inconsist-file   abort on first inconsistent file"
-    _strict_exit: "--strict                 exit with error if DICOMDIR type 1 attributes\\nare missing in DICOM file (default)"
+    quiet: "quiet mode, print no warnings and errors"
+    verbose: "verbose mode, print processing details"
+    debug: "debug mode, print debug information"
+    log_level: "[l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
+    log_config: "[f]ilename: string\\nuse config file f for the logger"
+    keep_filenames: "expect filenames to be in DICOM format (def.)"
+    no_recurse: "do not recurse within directories (default)"
+    no_consistency_check: "do not check files for consistency"
+    abort_in_consist_file: "abort on first inconsistent file"
+    strict: "exit with error if DICOMDIR type 1 attributes\\nare missing in DICOM file (default)"
     no_xfer_check: "do not reject images with non-standard\\ntransfer syntax (just warn)"
     no_encoding_check: "do not reject images with non-standard\\npixel encoding (just warn)"
     no_resolution_check: "do not reject images with non-standard\\nspatial resolution (just warn)"
-    xs: "--icon-image-size        [s]ize: integer (1..128)\\nwidth and height of the icon image (in pixel)\\n(fixed: 128 for XA, 64 for CT/MR profile)"
-    xi: "--icon-file-prefix       [p]refix: string\\nuse PGM image 'prefix'+'dcmfile-in' as icon\\n(default: create icon from DICOM image)"
-    xd: "--default-icon           [f]ilename: string\\nuse specified PGM image if icon cannot be\\ncreated automatically (default: black image)"
+    icon_image_size: "[s]ize: integer (1..128)\\nwidth and height of the icon image (in pixel)\\n(fixed: 128 for XA, 64 for CT/MR profile)"
+    icon_file_prefix: "[p]refix: string\\nuse PGM image 'prefix'+'dcmfile-in' as icon\\n(default: create icon from DICOM image)"
+    default_icon: "[f]ilename: string\\nuse specified PGM image if icon cannot be\\ncreated automatically (default: black image)"
     general_purpose: "General Purpose Interchange on CD-R or\\nDVD-RAM Media (STD-GEN-CD/DVD-RAM, default)"
     general_dvd_jpeg: "General Purpose DVD Interchange with JPEG\\n(STD-GEN-DVD-JPEG)"
     general_dvd_j_two_k: "General Purpose DVD Interchange with JPEG\\n2000 (STD-GEN-DVD-J2K)"
@@ -161,13 +164,13 @@ task Dcmmkdir {
     ultrasound_cc_mf: "Ultrasound Single & Multi-Frame with Combined\\nCalibration (STD-UD-CC-MF-xxxx)"
     one_two_lead_ecg: "12-lead ECG Interchange on Diskette\\n(STD-WVFM-ECG-FD)"
     hemodynamic_waveform: "Hemodynamic Waveform Interchange on Diskette\\n(STD-WVFM-HD-FD)"
-    _replace_replace: "--replace                replace existing DICOMDIR (default)"
-    _discard_write: "--discard                do not write out DICOMDIR"
+    replace: "replace existing DICOMDIR (default)"
+    discard: "do not write out DICOMDIR"
     create_backup: "create a backup of existing DICOMDIR (def.)"
-    nb: "--no-backup              do not create a backup of existing DICOMDIR"
-    _disablenewvr_disable: "--disable-new-vr         disable support for new VRs, convert to OB"
-    _grouplengthremove_write: "--group-length-remove    write without group length elements (default)"
-    _lengthundefined_write: "--length-undefined       write with undefined lengths"
+    no_backup: "do not create a backup of existing DICOMDIR"
+    disable_new_vr: "disable support for new VRs, convert to OB"
+    group_length_remove: "write without group length elements (default)"
+    length_undefined: "write with undefined lengths"
     dcm_file_in: "ref. DICOM file (or directory to be scanned)"
   }
   output {

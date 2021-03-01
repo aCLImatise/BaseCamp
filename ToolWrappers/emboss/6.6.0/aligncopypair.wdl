@@ -12,6 +12,9 @@ task Aligncopypair {
       ~{if (comment) then "-comment" else ""} \
       ~{if (append) then "-append" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "string     Name of the alignment (Any string)"
     comment: "string     Comment on the alignment (Any string)"

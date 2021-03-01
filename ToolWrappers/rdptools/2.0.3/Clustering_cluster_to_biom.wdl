@@ -10,6 +10,9 @@ task ClusteringClustertobiom {
       ~{cluster_file} \
       ~{cut_off}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cluster_file: ""
     cut_off: ""

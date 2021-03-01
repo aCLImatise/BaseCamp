@@ -1,135 +1,142 @@
 !Command
 command:
 - phyluce_probe_get_tiled_probe_from_multiple_inputs
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: MULTI_FASTA_OUTPUT
+  description: --output OUTPUT
+- !Positional
+  optional: false
+  position: 1
+  name: PROBE_PREFIX
+  description: --designer DESIGNER
 named:
 - !Flag
-  description: "MULTI_FASTA_OUTPUT\n--output OUTPUT\n--probe-prefix\nPROBE_PREFIX\n\
-    --designer DESIGNER\n--design DESIGN\n[--probe-length LENGTH]\n[--tiling-density\
-    \ DENSITY]\n[--overlap {middle,flush-left}]\n[--probe-bed PROBE_BED]\n[--locus-bed\
-    \ LOCUS_BED]\n[--masking MASK]\n[--do-not-remove-ambiguous]\n[--remove-gc]\n[--start-index\
-    \ START_INDEX]\n[--two-probes]"
-  synonyms:
-  - --multi-fasta-output
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: The folder of fasta files from which to design probes
   synonyms:
   - --fastas
+  description: The folder of fasta files from which to design probes
   args: !SimpleFlagArg
     name: FASTAS
-  optional: true
 - !Flag
-  description: The file in which to store the output
+  optional: true
+  synonyms:
+  - --multi-fasta-output
+  description: The output config file from query_multi_fasta_table.py
+  args: !SimpleFlagArg
+    name: MULTI_FASTA_OUTPUT
+- !Flag
+  optional: true
   synonyms:
   - --output
+  description: The file in which to store the output
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: The prefix (e.g. "uce-") to add to all probes designed
+  optional: true
   synonyms:
   - --probe-prefix
+  description: The prefix (e.g. "uce-") to add to all probes designed
   args: !SimpleFlagArg
     name: PROBE_PREFIX
-  optional: true
 - !Flag
-  description: Your last name (to indicate who designed the probes)
+  optional: true
   synonyms:
   - --designer
+  description: Your last name (to indicate who designed the probes)
   args: !SimpleFlagArg
     name: DESIGNER
-  optional: true
 - !Flag
-  description: The design name.
+  optional: true
   synonyms:
   - --design
+  description: The design name.
   args: !SimpleFlagArg
     name: DESIGN
-  optional: true
 - !Flag
-  description: The length of the probes sequence to design
+  optional: true
   synonyms:
   - --probe-length
+  description: The length of the probes sequence to design
   args: !SimpleFlagArg
     name: LENGTH
-  optional: true
 - !Flag
-  description: The tiling density
+  optional: true
   synonyms:
   - --tiling-density
+  description: The tiling density
   args: !SimpleFlagArg
     name: DENSITY
-  optional: true
 - !Flag
-  description: The method of tiling
+  optional: true
   synonyms:
   - --overlap
+  description: The method of tiling
   args: !ChoiceFlagArg
     choices: !!set
-      flush-left:
       middle:
-  optional: true
+      flush-left:
 - !Flag
-  description: "The path to an output file for outputting the probe\ncoordinates in\
-    \ BED format"
+  optional: true
   synonyms:
   - --probe-bed
+  description: "The path to an output file for outputting the probe\ncoordinates in\
+    \ BED format"
   args: !SimpleFlagArg
     name: PROBE_BED
-  optional: true
 - !Flag
-  description: "The path to an output file for outputting the locus\ncoordinates in\
-    \ BED format"
+  optional: true
   synonyms:
   - --locus-bed
+  description: "The path to an output file for outputting the locus\ncoordinates in\
+    \ BED format"
   args: !SimpleFlagArg
     name: LOCUS_BED
-  optional: true
 - !Flag
-  description: "The maximum frequency of per-probe masking allowed\ncontaining the\
-    \ sequence"
+  optional: true
   synonyms:
   - --masking
+  description: "The maximum frequency of per-probe masking allowed\ncontaining the\
+    \ sequence"
   args: !SimpleFlagArg
     name: MASK
-  optional: true
 - !Flag
-  description: "Do not remove loci with probes containing ambiguous\nbases"
+  optional: true
   synonyms:
   - --do-not-remove-ambiguous
+  description: "Do not remove loci with probes containing ambiguous\nbases"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Remove loci with GC content outside 30 <= GC <= 70
+  optional: true
   synonyms:
   - --remove-gc
+  description: Remove loci with GC content outside 30 <= GC <= 70
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The starting UCE index number to use.
+  optional: true
   synonyms:
   - --start-index
+  description: The starting UCE index number to use.
   args: !SimpleFlagArg
     name: START_INDEX
-  optional: true
 - !Flag
-  description: Design only two probes for a given locus.
+  optional: true
   synonyms:
   - --two-probes
+  description: Design only two probes for a given locus.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: phyluce_probe_get_tiled_probe_from_multiple_inputs [-h] --fastas\
@@ -174,3 +181,4 @@ help_text: "usage: phyluce_probe_get_tiled_probe_from_multiple_inputs [-h] --fas
   \      Design only two probes for a given locus.\n"
 generated_using:
 - --help
+docker_image:

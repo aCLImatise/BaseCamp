@@ -8,6 +8,9 @@ task NanocomporePlot {
     nanocompore plot \
       ~{nano_compo_re}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nano_compo_re: ""
   }

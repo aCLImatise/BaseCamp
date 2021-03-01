@@ -18,6 +18,9 @@ task ArrowGroupsUpdateOrganismPermissions {
       ~{if (read) then "--read" else ""} \
       ~{if (export) then "--export" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     administrate: "Should the group have administrate privileges"
     write: "Should the group have write privileges"

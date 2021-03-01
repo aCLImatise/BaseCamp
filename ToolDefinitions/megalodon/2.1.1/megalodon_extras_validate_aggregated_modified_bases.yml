@@ -5,83 +5,80 @@ command:
 - aggregated_modified_bases
 positional:
 - !Positional
-  description: --out-filename OUT_FILENAME
+  optional: false
   position: 0
   name: megalodon_agg_validation.pdf
-  optional: false
+  description: --out-filename OUT_FILENAME
 named:
 - !Flag
-  description: "MODIFIED_BED_METHYL_FILES\n[MODIFIED_BED_METHYL_FILES ...]\n[--ground-truth-csvs\
-    \ GROUND_TRUTH_CSVS [GROUND_TRUTH_CSVS ...]]\n[--control-bed-methyl-files CONTROL_BED_METHYL_FILES\
-    \ [CONTROL_BED_METHYL_FILES ...]]\n[--valid-positions VALID_POSITIONS]\n[--coverage-threshold\
-    \ COVERAGE_THRESHOLD]\n[--strand-offset STRAND_OFFSET]\n[--allow-unbalance-classes]\n\
-    [--out-pdf OUT_PDF]\n[--out-filename OUT_FILENAME]"
+  optional: true
   synonyms:
   - --modified-bed-methyl-files
-  args: !EmptyFlagArg {}
-  optional: true
+  description: Bed methyl files from modified sample(s).
+  args: !RepeatFlagArg
+    name: MODIFIED_BED_METHYL_FILES
 - !Flag
-  description: "Ground truth csvs with (chrm, strand, pos, is_mod)\nvalues. To collapse\
-    \ to forward strand coordinates,\nstrand should be \".\"."
+  optional: true
   synonyms:
   - --ground-truth-csvs
+  description: "Ground truth csvs with (chrm, strand, pos, is_mod)\nvalues. To collapse\
+    \ to forward strand coordinates,\nstrand should be \".\"."
   args: !RepeatFlagArg
     name: GROUND_TRUTH_CSVS
-  optional: true
 - !Flag
-  description: Bed methyl files from control sample(s).
+  optional: true
   synonyms:
   - --control-bed-methyl-files
+  description: Bed methyl files from control sample(s).
   args: !RepeatFlagArg
     name: CONTROL_BED_METHYL_FILES
-  optional: true
 - !Flag
-  description: "BED file containing positions to be considered.\nMultiple files may\
-    \ be provided"
+  optional: true
   synonyms:
   - --valid-positions
+  description: "BED file containing positions to be considered.\nMultiple files may\
+    \ be provided"
   args: !SimpleFlagArg
     name: VALID_POSITIONS
-  optional: true
 - !Flag
-  description: "Only include sites with sufficient coverage. Default:\n1 (= All sites)"
+  optional: true
   synonyms:
   - --coverage-threshold
+  description: "Only include sites with sufficient coverage. Default:\n1 (= All sites)"
   args: !SimpleFlagArg
     name: COVERAGE_THRESHOLD
-  optional: true
 - !Flag
-  description: "Offset to combine stranded results. Positive value\nindicates reverse\
-    \ strand sites have higher position\nvalues. Default treat strands independently."
+  optional: true
   synonyms:
   - --strand-offset
+  description: "Offset to combine stranded results. Positive value\nindicates reverse\
+    \ strand sites have higher position\nvalues. Default treat strands independently."
   args: !SimpleFlagArg
     name: STRAND_OFFSET
-  optional: true
 - !Flag
-  description: "Allow unbalanced classes in modified base metric\ncomputation. Default:\
-    \ Balance size of modified and\ncanonical classes for each comparison made."
+  optional: true
   synonyms:
   - --allow-unbalance-classes
+  description: "Allow unbalanced classes in modified base metric\ncomputation. Default:\
+    \ Balance size of modified and\ncanonical classes for each comparison made."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Output pdf filename. Default:'
+  optional: true
   synonyms:
   - --out-pdf
+  description: 'Output pdf filename. Default:'
   args: !SimpleFlagArg
     name: OUT_PDF
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: megalodon_extras validate aggregated_modified_bases [-h]\n    \
@@ -121,3 +118,4 @@ help_text: "usage: megalodon_extras validate aggregated_modified_bases [-h]\n   
   \ summary. Default: stdout\n"
 generated_using:
 - --help
+docker_image:

@@ -22,6 +22,9 @@ task EigenstratQTL {
       ~{if (j) then "-j" else ""} \
       ~{if (i) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     p: ""

@@ -14,6 +14,9 @@ task CactusCoverage {
       ~{if (depth_by_id) then "--depthById" else ""} \
       ~{if defined(from) then ("--from " +  '"' + from + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     only_contig_one: ": Only print coverage that occurs when a sequence from the fasta is in the contig1 field of the CIGAR."
     only_contig_two: ": Only print coverage that occurs when a sequence from the fasta is in the contig2 field of the CIGAR."

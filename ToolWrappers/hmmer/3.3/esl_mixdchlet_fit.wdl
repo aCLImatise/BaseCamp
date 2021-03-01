@@ -16,6 +16,9 @@ task EslmixdchletFit {
       ~{if defined(set_random_seed) then ("-s " +  '"' + set_random_seed + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     set_random_seed: ": set random number seed to <n>  [0]"
     options: ""

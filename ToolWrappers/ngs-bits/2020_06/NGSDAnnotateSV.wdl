@@ -24,6 +24,9 @@ task NGSDAnnotateSV {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "BEDPE file containing structural variants."
     out: "Output BEDPE file containing annotated structural variants."

@@ -3,12 +3,12 @@ id: samtools_0.1.18_sort.cwl
 inputs:
 - id: in_m
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -m
 - id: in_on
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -on
 - id: in_sam_tools
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - samtools_0.1.18

@@ -34,6 +34,9 @@ task ClusterMassTracesByPrecursor {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_ms_one: "*                    MS1 mass traces (valid formats: 'consensusXML')"
     in_swath: "*                  MS2 / SWATH mass traces (valid formats: 'consensusXML')"

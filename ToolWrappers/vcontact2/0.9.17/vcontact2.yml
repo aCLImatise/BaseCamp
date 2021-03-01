@@ -4,395 +4,395 @@ command:
 positional: []
 named:
 - !Flag
-  description: "FASTA-formatted proteins file. If provided alongside\n--proteins-fn,\
-    \ vConTACT will start prior to PC\ngeneration. (default: None)"
+  optional: true
   synonyms:
   - -r
   - --raw-proteins
+  description: "FASTA-formatted proteins file. If provided alongside\n--proteins-fn,\
+    \ vConTACT will start prior to PC\ngeneration. (default: None)"
   args: !SimpleFlagArg
     name: RAW_PROTEINS
-  optional: true
 - !Flag
-  description: "Method to use to create the protein-protein similarity\nedge file.\
-    \ This is what the PC clustering is applied\nagainst. (default: Diamond)"
+  optional: true
   synonyms:
   - --rel-mode
+  description: "Method to use to create the protein-protein similarity\nedge file.\
+    \ This is what the PC clustering is applied\nagainst. (default: Diamond)"
   args: !ChoiceFlagArg
     choices: !!set
+      MMSeqs2:
       Diamond:
       BLASTP:
-      MMSeqs2:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --blast-fp
   description: "Blast results file in CSV or TSV format. Used for\ngenerating the\
     \ protein clusters. If provided alongside\n--proteins-fn, vConTACT will start\
     \ from the PC-\ngeneration step. If raw proteins are provided, THIS\nWILL BE SKIPPED.\
     \ Reference DBs CANNOT BE USED IF THIS\nOPTION IS ENABLED!! (default: None)"
-  synonyms:
-  - -b
-  - --blast-fp
   args: !SimpleFlagArg
     name: BLAST_FP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --proteins-fp
   description: "A file linking the protein name (as in the blast file)\nand the genome\
     \ names (csv or tsv). If provided\nalongside --blast-fp, vConTACT will start from\
     \ the PC-\ngeneration step. If provided alongside --raw-proteins,\nvConTACT will\
     \ start from creating the all-verses-all\nprotein comparison and then generate\
     \ protein clusters.\n(default: None)"
-  synonyms:
-  - -p
-  - --proteins-fp
   args: !SimpleFlagArg
     name: PROTEINS_FP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --db
   description: "Select a reference database to de novo cluster\nproteins against.\
     \ If 'None' selected, be aware that\nthere will be no references included in the\
     \ analysis.\n(default: ProkaryoticViralRefSeq85-ICTV)"
-  synonyms:
-  - --db
   args: !ChoiceFlagArg
     choices: !!set
+      ProkaryoticViralRefSeq88-Merged:
+      ArchaeaViralRefSeq97-Merged:
+      None:
+      ProkaryoticViralRefSeq85-ICTV:
+      ProkaryoticViralRefSeq94-Merged:
+      ArchaeaViralRefSeq85-Merged:
       ProkaryoticViralRefSeq97-Merged:
       ArchaeaViralRefSeq94-Merged:
-      ProkaryoticViralRefSeq94-Merged:
-      ArchaeaViralRefSeq97-Merged:
-      ProkaryoticViralRefSeq85-ICTV:
-      None:
-      ProkaryoticViralRefSeq88-Merged:
-      ArchaeaViralRefSeq85-Merged:
       ProkaryoticViralRefSeq85-Merged:
-  optional: true
 - !Flag
-  description: "Whether to use ClusterONE or MCL for Protein Cluster\n(PC) generation.\
-    \ (default: MCL)"
+  optional: true
   synonyms:
   - --pcs-mode
+  description: "Whether to use ClusterONE or MCL for Protein Cluster\n(PC) generation.\
+    \ (default: MCL)"
   args: !ChoiceFlagArg
     choices: !!set
       ClusterONE:
       MCL:
-  optional: true
 - !Flag
-  description: "Whether to use ClusterONE or MCL for Viral Cluster\n(VC) generation.\
-    \ (default: ClusterONE)"
+  optional: true
   synonyms:
   - --vcs-mode
+  description: "Whether to use ClusterONE or MCL for Viral Cluster\n(VC) generation.\
+    \ (default: ClusterONE)"
   args: !ChoiceFlagArg
     choices: !!set
       ClusterONE:
       MCL:
-  optional: true
 - !Flag
-  description: "Location for clusterONE java file. This MUST SPECIFY\nthe full path\
-    \ to \"cluster_one-1.0.jar\". (default:\nNone)"
+  optional: true
   synonyms:
   - --c1-bin
+  description: "Location for clusterONE java file. This MUST SPECIFY\nthe full path\
+    \ to \"cluster_one-1.0.jar\". (default:\nNone)"
   args: !SimpleFlagArg
     name: CLUSTER_ONE
-  optional: true
 - !Flag
-  description: "Location for BLASTP executable. Path only used if\nvConTACT cant find\
-    \ in $PATH. (default: None)"
+  optional: true
   synonyms:
   - --blastp-bin
+  description: "Location for BLASTP executable. Path only used if\nvConTACT cant find\
+    \ in $PATH. (default: None)"
   args: !SimpleFlagArg
     name: BLASTP_FP
-  optional: true
 - !Flag
-  description: "Location for DIAMOND executable. Path only used if\nvConTACT cant\
-    \ find in $PATH. (default: None)"
+  optional: true
   synonyms:
   - --diamond-bin
+  description: "Location for DIAMOND executable. Path only used if\nvConTACT cant\
+    \ find in $PATH. (default: None)"
   args: !SimpleFlagArg
     name: DIAMOND_FP
-  optional: true
 - !Flag
-  description: 'Output directory (default: vContact_Output)'
+  optional: true
   synonyms:
   - -o
   - --output-dir
+  description: 'Output directory (default: vContact_Output)'
   args: !SimpleFlagArg
     name: OUTPUT_DIR
-  optional: true
 - !Flag
-  description: "Number of CPUs to use. If nothing is provided,\nvConTACT will attempt\
-    \ to identify the number of\navailable CPUs. (default: 1)"
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: "Number of CPUs to use. If nothing is provided,\nvConTACT will attempt\
+    \ to identify the number of\navailable CPUs. (default: 1)"
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: "E-value used by BLASTP when creating the protein-\nprotein similarity\
-    \ network. (--rel-mode BLASTP only)\n(default: 0.0001)"
+  optional: true
   synonyms:
   - --blast-evalue
+  description: "E-value used by BLASTP when creating the protein-\nprotein similarity\
+    \ network. (--rel-mode BLASTP only)\n(default: 0.0001)"
   args: !SimpleFlagArg
     name: EVALUE
-  optional: true
 - !Flag
-  description: "Specifies the maximum allowed overlap between two\nclusters. (ClusterONE\
-    \ only) (default: 0.8)"
+  optional: true
   synonyms:
   - --max-overlap
+  description: "Specifies the maximum allowed overlap between two\nclusters. (ClusterONE\
+    \ only) (default: 0.8)"
   args: !SimpleFlagArg
     name: PC_OVERLAP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --penalty
   description: "Sets a penalty value for the inclusion of each node.\nIt can be used\
     \ to model the possibility of uncharted\nconnections for each node, so nodes with\
     \ only a single\nweak connection to a cluster will not be added to the\ncluster\
     \ as the penalty value will outweigh the\nbenefits of adding the node. (ClusterONE\
     \ only)\n(default: 2.0)"
-  synonyms:
-  - --penalty
   args: !SimpleFlagArg
     name: PC_PENALTY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --haircut
   description: "Apply a haircut transformation as a post-processing\nstep on the detected\
     \ clusters. A haircut\ntransformation removes dangling nodes from a cluster.\n\
     (ClusterONE only) (default: 0.1)"
-  synonyms:
-  - --haircut
   args: !SimpleFlagArg
     name: PC_HAIRCUT
-  optional: true
 - !Flag
-  description: "Inflation value to define proteins clusters with MCL.\n(default: 2.0)\
-    \ (MCL only) (default: 2.0)"
+  optional: true
   synonyms:
   - --pc-inflation
+  description: "Inflation value to define proteins clusters with MCL.\n(default: 2.0)\
+    \ (MCL only) (default: 2.0)"
   args: !SimpleFlagArg
     name: PC_INFLATION
-  optional: true
 - !Flag
-  description: "Inflation parameter to define contig clusters with\nMCL. (MCL only)\
-    \ (default: 2.0)"
+  optional: true
   synonyms:
   - --vc-inflation
+  description: "Inflation parameter to define contig clusters with\nMCL. (MCL only)\
+    \ (default: 2.0)"
   args: !SimpleFlagArg
     name: VC_INFLATION
-  optional: true
 - !Flag
-  description: "Sets the minimum density of predicted complexes.\n(ClusterONE only)\
-    \ (default: 0.3)"
+  optional: true
   synonyms:
   - --min-density
+  description: "Sets the minimum density of predicted complexes.\n(ClusterONE only)\
+    \ (default: 0.3)"
   args: !SimpleFlagArg
     name: VC_DENSITY
-  optional: true
 - !Flag
-  description: 'Minimum size for the Viral Cluster. (default: 2)'
+  optional: true
   synonyms:
   - --min-size
+  description: 'Minimum size for the Viral Cluster. (default: 2)'
   args: !SimpleFlagArg
     name: VC_SIZE
-  optional: true
 - !Flag
-  description: "Specifies the maximum allowed overlap between two\nclusters. (ClusterONE\
-    \ only) (default: 0.9)"
+  optional: true
   synonyms:
   - --vc-overlap
+  description: "Specifies the maximum allowed overlap between two\nclusters. (ClusterONE\
+    \ only) (default: 0.9)"
   args: !SimpleFlagArg
     name: VC_OVERLAP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --vc-penalty
   description: "Sets a penalty value for the inclusion of each node.\nIt can be used\
     \ to model the possibility of uncharted\nconnections for each node, so nodes with\
     \ only a single\nweak connection to a cluster will not be added to the\ncluster\
     \ as the penalty value will outweigh the\nbenefits of adding the node. (ClusterONE\
     \ only)\n(default: 2.0)"
-  synonyms:
-  - --vc-penalty
   args: !SimpleFlagArg
     name: VC_PENALTY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --vc-haircut
   description: "Apply a haircut transformation as a post-processing\nstep on the detected\
     \ clusters. A haircut\ntransformation removes dangling nodes from a cluster.\n\
     (ClusterONE only) (default: 0.55)"
-  synonyms:
-  - --vc-haircut
   args: !SimpleFlagArg
     name: VC_HAIRCUT
-  optional: true
 - !Flag
-  description: "Specifies the method to be used to merge highly\noverlapping complexes.\
-    \ (ClusterONE only) (default:\nsingle)"
+  optional: true
   synonyms:
   - --merge-method
+  description: "Specifies the method to be used to merge highly\noverlapping complexes.\
+    \ (ClusterONE only) (default:\nsingle)"
   args: !ChoiceFlagArg
     choices: !!set
       single:
       multi:
-  optional: true
 - !Flag
-  description: "Specifies the similarity function to be used in the\nmerging step.\
-    \ (ClusterONE only) (default: match)"
+  optional: true
   synonyms:
   - --similarity
+  description: "Specifies the similarity function to be used in the\nmerging step.\
+    \ (ClusterONE only) (default: match)"
   args: !ChoiceFlagArg
     choices: !!set
       simpson:
-      dice:
       jaccard:
       match:
-  optional: true
+      dice:
 - !Flag
-  description: "Specifies the seed generation method to use.\n(ClusterONE only) (default:\
-    \ nodes)"
+  optional: true
   synonyms:
   - --seed-method
+  description: "Specifies the seed generation method to use.\n(ClusterONE only) (default:\
+    \ nodes)"
   args: !ChoiceFlagArg
     choices: !!set
-      unused_nodes:
-      edges:
-      cliques:
       nodes:
-  optional: true
+      cliques:
+      edges:
+      unused_nodes:
 - !Flag
-  description: "Optimize hierarchical distances during second-pass of\nthe viral clusters\
-    \ (default: False)"
+  optional: true
   synonyms:
   - --optimize
+  description: "Optimize hierarchical distances during second-pass of\nthe viral clusters\
+    \ (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Significance threshold in the contig similarity\nnetwork. (default:\
-    \ 1.0)"
+  optional: true
   synonyms:
   - --sig
+  description: "Significance threshold in the contig similarity\nnetwork. (default:\
+    \ 1.0)"
   args: !SimpleFlagArg
     name: SIG
-  optional: true
 - !Flag
-  description: "Significance threshold in the contig similarity\nnetwork. (default:\
-    \ 300)"
+  optional: true
   synonyms:
   - --max-sig
+  description: "Significance threshold in the contig similarity\nnetwork. (default:\
+    \ 300)"
   args: !SimpleFlagArg
     name: MAX_SIG
-  optional: true
 - !Flag
-  description: "Use permissive affiliation for associating VCs with\nreference sequences.\
-    \ (default: False)"
+  optional: true
   synonyms:
   - --permissive
+  description: "Use permissive affiliation for associating VCs with\nreference sequences.\
+    \ (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Inflation parameter to define protein modules with\nMCL. (default:\
-    \ 5.0)"
+  optional: true
   synonyms:
   - --mod-inflation
+  description: "Inflation parameter to define protein modules with\nMCL. (default:\
+    \ 5.0)"
   args: !SimpleFlagArg
     name: MOD_INFLATION
-  optional: true
 - !Flag
-  description: "Significance threshold in the protein cluster\nsimilarity network.\
-    \ (default: 1.0)"
+  optional: true
   synonyms:
   - --mod-sig
+  description: "Significance threshold in the protein cluster\nsimilarity network.\
+    \ (default: 1.0)"
   args: !SimpleFlagArg
     name: MOD_SIG
-  optional: true
 - !Flag
-  description: "Minimal number (inclusive) of contigs a PC must appear\ninto to be\
-    \ taken into account in the modules\ncomputing. (default: 3)"
+  optional: true
   synonyms:
   - --mod-shared-min
+  description: "Minimal number (inclusive) of contigs a PC must appear\ninto to be\
+    \ taken into account in the modules\ncomputing. (default: 3)"
   args: !SimpleFlagArg
     name: MOD_SHARED_MIN
-  optional: true
 - !Flag
-  description: "Significitaivity threshold to link a cluster and a\nmodule (default:\
-    \ 1.0)"
+  optional: true
   synonyms:
   - --link-sig
+  description: "Significitaivity threshold to link a cluster and a\nmodule (default:\
+    \ 1.0)"
   args: !SimpleFlagArg
     name: LINK_SIG
-  optional: true
 - !Flag
-  description: "Proportion of a module's PC a contig must have to be\nconsidered as\
-    \ displaying this module. (default: 0.5)"
+  optional: true
   synonyms:
   - --link-prop
+  description: "Proportion of a module's PC a contig must have to be\nconsidered as\
+    \ displaying this module. (default: 0.5)"
   args: !SimpleFlagArg
     name: LINK_PROP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
   description: "[EXPORTS [EXPORTS ...]], --exports [EXPORTS [EXPORTS ...]]\nExport\
     \ backend. Suported values are \"csv\", \"krona\" and\n\"cytoscape\" (default:\
     \ ['csv'])"
-  synonyms:
-  - -e
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[CLUSTER_FILTER [CLUSTER_FILTER ...]]\nId of the clusters to export\
-    \ (Cytoscape export only).\n(default: [0])"
+  optional: true
   synonyms:
   - --cluster-filter
+  description: "[CLUSTER_FILTER [CLUSTER_FILTER ...]]\nId of the clusters to export\
+    \ (Cytoscape export only).\n(default: [0])"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Pooling criterion for cluster export (Cytoscape export\nonly). (default:\
-    \ predicted_family)"
+  optional: true
   synonyms:
   - --criterion
+  description: "Pooling criterion for cluster export (Cytoscape export\nonly). (default:\
+    \ predicted_family)"
   args: !SimpleFlagArg
     name: CRITERION
-  optional: true
 - !Flag
-  description: 'Contig info file (tsv or csv) (default: None)'
+  optional: true
   synonyms:
   - --contigs
+  description: 'Contig info file (tsv or csv) (default: None)'
   args: !SimpleFlagArg
     name: CONTIGS
-  optional: true
 - !Flag
-  description: "Protein clusters info file (tsv or csv) (default:\nNone)"
+  optional: true
   synonyms:
   - --pcs
+  description: "Protein clusters info file (tsv or csv) (default:\nNone)"
   args: !SimpleFlagArg
     name: PCS
-  optional: true
 - !Flag
-  description: "Protein cluster profiles of the contigs (tsv or csv)\n(default: None)"
+  optional: true
   synonyms:
   - --pc-profiles
+  description: "Protein cluster profiles of the contigs (tsv or csv)\n(default: None)"
   args: !SimpleFlagArg
     name: PCPROFILES
-  optional: true
 - !Flag
-  description: "Verbosity level : -v warning, -vv info, -vvv debug,\n(default info)\
-    \ (default: -2)"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: "Verbosity level : -v warning, -vv info, -vvv debug,\n(default info)\
+    \ (default: -2)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Overwrite existing files (default: False)\n"
+  optional: true
   synonyms:
   - -f
   - --force-overwrite
+  description: "Overwrite existing files (default: False)\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: vcontact2 [-h] [-r RAW_PROTEINS] [--rel-mode {BLASTP,Diamond,MMSeqs2}]\n\
@@ -534,3 +534,4 @@ help_text: "usage: vcontact2 [-h] [-r RAW_PROTEINS] [--rel-mode {BLASTP,Diamond,
   \     Overwrite existing files (default: False)\n"
 generated_using:
 - --help
+docker_image:

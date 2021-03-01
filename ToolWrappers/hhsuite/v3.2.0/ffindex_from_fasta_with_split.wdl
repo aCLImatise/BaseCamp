@@ -10,6 +10,9 @@ task FfindexFromFastaWithSplit {
       ~{if (sort_index_file) then "-s" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sort_index_file: "sort index file"
     v: ""

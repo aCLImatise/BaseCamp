@@ -16,6 +16,9 @@ task SingularityOciDelete {
       ~{oci} \
       ~{delete}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

@@ -2,7 +2,7 @@ version 1.0
 
 task Rbconvgrid {
   input {
-    Boolean? inputfile_input_filename
+    Boolean? inputfile_input_rbtvdwgridsf
     File? outputfile_output_insightii
     Boolean? gridnum_grid_number
     String input_file
@@ -14,12 +14,15 @@ task Rbconvgrid {
       ~{input_file} \
       ~{output_file} \
       ~{grid_num} \
-      ~{if (inputfile_input_filename) then "-i" else ""} \
+      ~{if (inputfile_input_rbtvdwgridsf) then "-i" else ""} \
       ~{if (outputfile_output_insightii) then "-o" else ""} \
       ~{if (gridnum_grid_number) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    inputfile_input_filename: "<InputFile> - input RbtVdwGridSF binary grid filename"
+    inputfile_input_rbtvdwgridsf: "<InputFile> - input RbtVdwGridSF binary grid filename"
     outputfile_output_insightii: "<OutputFile> - output InsightII ascii grid filename"
     gridnum_grid_number: "<GridNum> - grid number to convert (default = list grids)"
     input_file: ""

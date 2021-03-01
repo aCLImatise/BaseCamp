@@ -4,7 +4,7 @@ inputs:
 - id: in_junk_out_seq
   doc: "seqoutall  [/dev/null] This file collects the sequences\nwhich you have excluded\
     \ from the main\noutput file of sequences."
-  type: File
+  type: File?
   inputBinding:
     prefix: -junkoutseq
 - id: in_parameter_dot
@@ -19,9 +19,10 @@ outputs:
 - id: out_junk_out_seq
   doc: "seqoutall  [/dev/null] This file collects the sequences\nwhich you have excluded\
     \ from the main\noutput file of sequences."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_junk_out_seq)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - notseq

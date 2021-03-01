@@ -3,168 +3,168 @@ command:
 - CreateGermlines.py
 positional:
 - !Positional
-  description: database with assigned germline sequences.
+  optional: false
   position: 0
   name: germ-pass
-  optional: false
+  description: database with assigned germline sequences.
 - !Positional
-  description: database with records failing germline assignment.
+  optional: false
   position: 1
   name: germ-fail
-  optional: false
+  description: database with records failing germline assignment.
 - !Positional
-  description: 'output fields:'
+  optional: false
   position: 0
   name: clone_id
-  optional: false
+  description: 'output fields:'
 named:
 - !Flag
-  description: "A list of tab delimited database files. (default:\nNone)"
+  optional: true
   synonyms:
   - -d
+  description: "A list of tab delimited database files. (default:\nNone)"
   args: !RepeatFlagArg
     name: DB_FILES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
   description: "Explicit output file name. Note, this argument cannot\nbe used with\
     \ the --failed, --outdir, or --outname\narguments. If unspecified, then the output\
     \ filename\nwill be based on the input filename(s). (default:\nNone)"
-  synonyms:
-  - -o
   args: !RepeatFlagArg
     name: OUT_FILES
-  optional: true
 - !Flag
-  description: "Specify to changes the output directory to the\nlocation specified.\
-    \ The input file directory is used\nif this is not specified. (default: None)"
+  optional: true
   synonyms:
   - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
   args: !SimpleFlagArg
     name: OUT_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outname
   description: "Changes the prefix of the successfully processed\noutput file to the\
     \ string specified. May not be\nspecified with multiple input files. (default:\
     \ None)"
-  synonyms:
-  - --outname
   args: !SimpleFlagArg
     name: OUT_NAME
-  optional: true
 - !Flag
-  description: "Specify to write verbose logging to a file. May not be\nspecified\
-    \ with multiple input files. (default: None)"
+  optional: true
   synonyms:
   - --log
+  description: "Specify to write verbose logging to a file. May not be\nspecified\
+    \ with multiple input files. (default: None)"
   args: !SimpleFlagArg
     name: LOG_FILE
-  optional: true
 - !Flag
-  description: "If specified create files containing records that fail\nprocessing.\
-    \ (default: False)"
+  optional: true
   synonyms:
   - --failed
+  description: "If specified create files containing records that fail\nprocessing.\
+    \ (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Specify input and output format. (default: airr)'
+  optional: true
   synonyms:
   - --format
+  description: 'Specify input and output format. (default: airr)'
   args: !ChoiceFlagArg
     choices: !!set
-      airr:
       changeo:
-  optional: true
+      airr:
 - !Flag
+  optional: true
+  synonyms:
+  - -r
   description: "List of folders and/or fasta files (with .fasta, .fna\nor .fa extension)\
     \ with germline sequences. When using\nthe default Change-O sequence and coordinate\
     \ fields,\nthese reference sequences must contain IMGT-numbering\nspacers (gaps)\
     \ in the V segment. Alternative numbering\nschemes, or no numbering, may work\
     \ for alternative\nsequence and coordinate definitions that define a\nvalid alignment,\
     \ but a warning will be issued.\n(default: None)"
-  synonyms:
-  - -r
   args: !RepeatFlagArg
     name: REFERENCES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -g
   description: "[{full,dmask,vonly,regions} ...]\nSpecify type(s) of germlines to\
     \ include full germline,\ngermline with D segment masked, or germline for V\n\
     segment only. (default: ['dmask'])"
-  synonyms:
-  - -g
   args: !ChoiceFlagArg
     choices: !!set
-      regions:
-      dmask:
       full:
+      dmask:
+      regions:
       vonly:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cloned
   description: "Specify to create only one germline per clone. Note,\nif allele calls\
     \ are ambiguous within a clonal group,\nthis will place the germline call used\
     \ for the entire\nclone within the germline_v_call, germline_d_call and\ngermline_j_call\
     \ fields. (default: False)"
-  synonyms:
-  - --cloned
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Field containing the aligned sequence. Defaults to\nsequence_alignment\
-    \ (airr) or SEQUENCE_IMGT (changeo).\n(default: None)"
+  optional: true
   synonyms:
   - --sf
+  description: "Field containing the aligned sequence. Defaults to\nsequence_alignment\
+    \ (airr) or SEQUENCE_IMGT (changeo).\n(default: None)"
   args: !SimpleFlagArg
     name: SEQ_FIELD
-  optional: true
 - !Flag
-  description: "Field containing the germline V segment call. Defaults\nto v_call\
-    \ (airr) or V_CALL (changeo). (default: None)"
+  optional: true
   synonyms:
   - --vf
+  description: "Field containing the germline V segment call. Defaults\nto v_call\
+    \ (airr) or V_CALL (changeo). (default: None)"
   args: !SimpleFlagArg
     name: V_FIELD
-  optional: true
 - !Flag
-  description: "Field containing the germline D segment call. Defaults\nto d_call\
-    \ (airr) or D_CALL (changeo). (default: None)"
+  optional: true
   synonyms:
   - --df
+  description: "Field containing the germline D segment call. Defaults\nto d_call\
+    \ (airr) or D_CALL (changeo). (default: None)"
   args: !SimpleFlagArg
     name: D_FIELD
-  optional: true
 - !Flag
-  description: "Field containing the germline J segment call. Defaults\nto j_call\
-    \ (airr) or J_CALL (changeo). (default: None)"
+  optional: true
   synonyms:
   - --jf
+  description: "Field containing the germline J segment call. Defaults\nto j_call\
+    \ (airr) or J_CALL (changeo). (default: None)"
   args: !SimpleFlagArg
     name: J_FIELD
-  optional: true
 - !Flag
-  description: Field containing clone identifiers. Ignored if
+  optional: true
   synonyms:
   - --cf
+  description: Field containing clone identifiers. Ignored if
   args: !SimpleFlagArg
     name: CLONE_FIELD
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: CreateGermlines.py [--version] [-h] -d DB_FILES [DB_FILES ...]\n\
   \                          [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n \
   \                         [--outname OUT_NAME] [--log LOG_FILE] [--failed]\n   \
@@ -232,3 +232,4 @@ help_text: "usage: CreateGermlines.py [--version] [-h] -d DB_FILES [DB_FILES ...
   \ \n"
 generated_using:
 - --help
+docker_image:

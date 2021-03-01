@@ -10,6 +10,9 @@ task TgTigDisplay {
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
       ~{if defined(s) then ("-S " +  '"' + s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
     s: ""

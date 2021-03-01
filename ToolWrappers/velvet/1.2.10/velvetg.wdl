@@ -27,18 +27,10 @@ task Velvetg {
     Boolean? short_mate_paired
     String? conserve_long
     Directory directory
-    Directory directory_slash_contigs_dot_fa
-    Directory directory_slash_stats_dot_txt
-    Directory directory_slash_last_graph
-    Directory directory_slash_velvet_as_mdot_afg
   }
   command <<<
     velvetg \
       ~{directory} \
-      ~{directory_slash_contigs_dot_fa} \
-      ~{directory_slash_stats_dot_txt} \
-      ~{directory_slash_last_graph} \
-      ~{directory_slash_velvet_as_mdot_afg} \
       ~{if defined(cov_cut_off) then ("-cov_cutoff " +  '"' + cov_cut_off + '"') else ""} \
       ~{if defined(ins_length) then ("-ins_length " +  '"' + ins_length + '"') else ""} \
       ~{if defined(read_tr_kg) then ("-read_trkg " +  '"' + read_tr_kg + '"') else ""} \
@@ -64,6 +56,9 @@ task Velvetg {
       ~{if (short_mate_paired) then "-shortMatePaired" else ""} \
       ~{if defined(conserve_long) then ("-conserveLong " +  '"' + conserve_long + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cov_cut_off: ": removal of low coverage nodes AFTER tour bus or allow the system to infer it\\n(default: no removal)"
     ins_length: ": expected distance between two paired end reads (default: no read pairing)"
@@ -90,10 +85,6 @@ task Velvetg {
     short_mate_paired: "* <yes|no>      : for mate-pair libraries, indicate that the library might be contaminated with paired-end reads (default no)"
     conserve_long: ": preserve sequences with long reads in them (default no)"
     directory: ": working directory name"
-    directory_slash_contigs_dot_fa: ": fasta file of contigs longer than twice hash length"
-    directory_slash_stats_dot_txt: ": stats file (tab-spaced) useful for determining appropriate coverage cutoff"
-    directory_slash_last_graph: ": special formatted file with all the information on the final graph"
-    directory_slash_velvet_as_mdot_afg: ": (if requested) AMOS compatible assembly file"
   }
   output {
     File out_stdout = stdout()

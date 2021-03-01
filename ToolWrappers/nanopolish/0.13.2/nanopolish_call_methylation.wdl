@@ -30,6 +30,9 @@ task NanopolishCallmethylation {
       ~{if (progress) then "--progress" else ""} \
       ~{if defined(batch_size) then ("--batchsize " +  '"' + batch_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     reads: "the ONT reads are in fasta/fastq FILE"

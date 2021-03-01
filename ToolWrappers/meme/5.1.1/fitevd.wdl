@@ -8,6 +8,9 @@ task Fitevd {
     fitevd \
       ~{q}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     q: ""
   }

@@ -18,6 +18,9 @@ task Deltadupssh {
       ~{if (recurse) then "-R" else ""} \
       ~{if (irf) then "-irf" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     always_prompt_removing: "Always prompt before removing"
     never_prompt: "Never prompt"

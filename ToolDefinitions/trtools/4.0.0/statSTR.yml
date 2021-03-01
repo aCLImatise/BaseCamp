@@ -1,0 +1,244 @@
+!Command
+command:
+- statSTR
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Tool
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: for
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: computing
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: stats
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: on
+  description: ''
+- !Positional
+  optional: false
+  position: 5
+  name: a
+  description: ''
+- !Positional
+  optional: false
+  position: 6
+  name: TR
+  description: ''
+- !Positional
+  optional: false
+  position: 7
+  name: VCF
+  description: ''
+- !Positional
+  optional: false
+  position: 8
+  name: file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --vcf
+  description: Input STR VCF file
+  args: !SimpleFlagArg
+    name: VCF
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: "Output file prefix. Use stdout to print file to\nstandard output.\
+    \ In addition, if not stdout then\ntiming diagnostics are print to stdout."
+  args: !SimpleFlagArg
+    name: OUT
+- !Flag
+  optional: true
+  synonyms:
+  - --vcftype
+  description: "Options=['gangstr', 'advntr', 'hipstr', 'eh',\n'popstr'] (default:\
+    \ auto)"
+  args: !SimpleFlagArg
+    name: VCFTYPE
+- !Flag
+  optional: true
+  synonyms:
+  - --precision
+  description: "How much precision to use when printing decimals\n(default: 3)"
+  args: !SimpleFlagArg
+    name: PRECISION
+- !Flag
+  optional: true
+  synonyms:
+  - --samples
+  description: "File containing list of samples to include. Or a\ncomma-separated\
+    \ list of files to compute stats\nseparate for each group of samples"
+  args: !SimpleFlagArg
+    name: SAMPLES
+- !Flag
+  optional: true
+  synonyms:
+  - --sample-prefixes
+  description: "Prefixes to name output for each samples group. By\ndefault uses 1,2,3\
+    \ etc."
+  args: !SimpleFlagArg
+    name: SAMPLE_PREFIXES
+- !Flag
+  optional: true
+  synonyms:
+  - --region
+  description: "Restrict to the region chrom:start-end. Requires file\nto bgzipped\
+    \ and tabix indexed."
+  args: !SimpleFlagArg
+    name: REGION
+- !Flag
+  optional: true
+  synonyms:
+  - --thresh
+  description: "Output threshold field (max allele size, used for\nGangSTR strinfo).\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --afreq
+  description: 'Output allele frequencies (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --acount
+  description: 'Output allele counts (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hwep
+  description: 'Output HWE p-values per loci. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --het
+  description: "Output the heterozygosity of each locus. (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --entropy
+  description: 'Output the entropy of each locus. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mean
+  description: "Output mean of the allele frequencies. (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mode
+  description: "Output mode of the allele frequencies. (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --var
+  description: "Output variance of the allele frequencies. (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --numcalled
+  description: 'Output number of samples called. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-length
+  description: "Calculate per-locus stats (het, HWE) collapsing\nalleles by length.\
+    \ This is implicitly true for\ngenotypers which only emit length based genotypes.\n\
+    (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --plot-afreq
+  description: "Output allele frequency plot. Will only do for a\nmaximum of 10 TRs.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: \nTool for computing stats on a TR VCF file\n [-h] --vcf VCF --out\
+  \ OUT\n                                                   [--vcftype VCFTYPE]\n\
+  \                                                   [--precision PRECISION]\n  \
+  \                                                 [--samples SAMPLES]\n        \
+  \                                           [--sample-prefixes SAMPLE_PREFIXES]\n\
+  \                                                   [--region REGION]\n        \
+  \                                           [--thresh] [--afreq]\n             \
+  \                                      [--acount] [--hwep] [--het]\n           \
+  \                                        [--entropy] [--mean]\n                \
+  \                                   [--mode] [--var]\n                         \
+  \                          [--numcalled]\n                                     \
+  \              [--use-length]\n                                                \
+  \   [--plot-afreq] [--version]\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n\nInput/output:\n  --vcf VCF             Input STR\
+  \ VCF file\n  --out OUT             Output file prefix. Use stdout to print file\
+  \ to\n                        standard output. In addition, if not stdout then\n\
+  \                        timing diagnostics are print to stdout.\n  --vcftype VCFTYPE\
+  \     Options=['gangstr', 'advntr', 'hipstr', 'eh',\n                        'popstr']\
+  \ (default: auto)\n  --precision PRECISION\n                        How much precision\
+  \ to use when printing decimals\n                        (default: 3)\n\nFiltering\
+  \ group:\n  --samples SAMPLES     File containing list of samples to include. Or\
+  \ a\n                        comma-separated list of files to compute stats\n  \
+  \                      separate for each group of samples\n  --sample-prefixes SAMPLE_PREFIXES\n\
+  \                        Prefixes to name output for each samples group. By\n  \
+  \                      default uses 1,2,3 etc.\n  --region REGION       Restrict\
+  \ to the region chrom:start-end. Requires file\n                        to bgzipped\
+  \ and tabix indexed.\n\nStats group:\n  --thresh              Output threshold field\
+  \ (max allele size, used for\n                        GangSTR strinfo). (default:\
+  \ False)\n  --afreq               Output allele frequencies (default: False)\n \
+  \ --acount              Output allele counts (default: False)\n  --hwep        \
+  \        Output HWE p-values per loci. (default: False)\n  --het               \
+  \  Output the heterozygosity of each locus. (default:\n                        False)\n\
+  \  --entropy             Output the entropy of each locus. (default: False)\n  --mean\
+  \                Output mean of the allele frequencies. (default:\n            \
+  \            False)\n  --mode                Output mode of the allele frequencies.\
+  \ (default:\n                        False)\n  --var                 Output variance\
+  \ of the allele frequencies. (default:\n                        False)\n  --numcalled\
+  \           Output number of samples called. (default: False)\n  --use-length  \
+  \        Calculate per-locus stats (het, HWE) collapsing\n                     \
+  \   alleles by length. This is implicitly true for\n                        genotypers\
+  \ which only emit length based genotypes.\n                        (default: False)\n\
+  \nPlotting group:\n  --plot-afreq          Output allele frequency plot. Will only\
+  \ do for a\n                        maximum of 10 TRs. (default: False)\n\nVersion:\n\
+  \  --version             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/trtools:4.0.0--py_0

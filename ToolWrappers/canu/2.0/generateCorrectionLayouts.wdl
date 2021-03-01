@@ -2,8 +2,8 @@ version 1.0
 
 task GenerateCorrectionLayouts {
   input {
-    File? mandatory_path_to_seqstore
-    File? mandatory_path_to_ovlstore
+    File? mandatory_path_seqstore
+    File? mandatory_path_ovlstore
     String? scores
     String? output_layouts_store
     Boolean? write_verbose_logging
@@ -16,8 +16,8 @@ task GenerateCorrectionLayouts {
   }
   command <<<
     generateCorrectionLayouts \
-      ~{if defined(mandatory_path_to_seqstore) then ("-S " +  '"' + mandatory_path_to_seqstore + '"') else ""} \
-      ~{if defined(mandatory_path_to_ovlstore) then ("-O " +  '"' + mandatory_path_to_ovlstore + '"') else ""} \
+      ~{if defined(mandatory_path_seqstore) then ("-S " +  '"' + mandatory_path_seqstore + '"') else ""} \
+      ~{if defined(mandatory_path_ovlstore) then ("-O " +  '"' + mandatory_path_ovlstore + '"') else ""} \
       ~{if defined(scores) then ("-scores " +  '"' + scores + '"') else ""} \
       ~{if defined(output_layouts_store) then ("-C " +  '"' + output_layouts_store + '"') else ""} \
       ~{if (write_verbose_logging) then "-V" else ""} \
@@ -28,9 +28,12 @@ task GenerateCorrectionLayouts {
       ~{if defined(ee) then ("-eE " +  '"' + ee + '"') else ""} \
       ~{if defined(ec) then ("-eC " +  '"' + ec + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    mandatory_path_to_seqstore: "mandatory path to seqStore"
-    mandatory_path_to_ovlstore: "mandatory path to ovlStore"
+    mandatory_path_seqstore: "mandatory path to seqStore"
+    mandatory_path_ovlstore: "mandatory path to ovlStore"
     scores: "overlap score thresholds (from filterCorrectionOverlaps)\\nif not supplied, will be estimated from ovlStore"
     output_layouts_store: "output layouts to store 'corStore'"
     write_verbose_logging: "write extremely verbose logging to 'corStore.log'"

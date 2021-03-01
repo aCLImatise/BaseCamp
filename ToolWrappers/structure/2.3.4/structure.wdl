@@ -4,6 +4,9 @@ task Structure {
   command <<<
     structure
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

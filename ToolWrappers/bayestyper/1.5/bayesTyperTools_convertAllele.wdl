@@ -2,7 +2,7 @@ version 1.0
 
 task BayesTyperToolsConvertAllele {
   input {
-    Boolean? arg_variant_format
+    Boolean? arg_variant_file
     Boolean? arg_reference_genome
     Boolean? arg_output_prefix
     File? compress_output_files
@@ -13,7 +13,7 @@ task BayesTyperToolsConvertAllele {
   }
   command <<<
     bayesTyperTools convertAllele \
-      ~{if (arg_variant_format) then "-v" else ""} \
+      ~{if (arg_variant_file) then "-v" else ""} \
       ~{if (arg_reference_genome) then "-g" else ""} \
       ~{if (arg_output_prefix) then "-o" else ""} \
       ~{if (compress_output_files) then "-z" else ""} \
@@ -22,8 +22,11 @@ task BayesTyperToolsConvertAllele {
       ~{if (keep_imprecise) then "--keep-imprecise" else ""} \
       ~{if (keep_partial) then "--keep-partial" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    arg_variant_format: "[ --variant-file ] arg             variant file (vcf format)."
+    arg_variant_file: "[ --variant-file ] arg             variant file (vcf format)."
     arg_reference_genome: "[ --genome-file ] arg              reference genome file (fasta format)."
     arg_output_prefix: "[ --output-prefix ] arg            output prefix."
     compress_output_files: "[ --gzip-output ] [=arg(=1)] (=0)  compress output file(s) using gzip."

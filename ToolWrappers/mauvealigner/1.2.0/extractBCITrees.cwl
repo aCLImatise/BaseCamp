@@ -35,6 +35,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_nexus_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - extractBCITrees

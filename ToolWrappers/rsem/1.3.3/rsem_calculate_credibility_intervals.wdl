@@ -20,6 +20,9 @@ task Rsemcalculatecredibilityintervals {
       ~{ns_pc} \
       ~{nmb}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_name: ""
     imd_name: ""

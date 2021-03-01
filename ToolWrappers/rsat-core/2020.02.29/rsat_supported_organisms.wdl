@@ -32,6 +32,9 @@ task RsatSupportedorganisms {
       ~{if (unique_genus) then "-unique_genus" else ""} \
       ~{if defined(server) then ("-server " +  '"' + server + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "(must be first argument) display options"
     format: "format\\nsupported: tab,tree,html_tree,newick\\ntab: tab-delimited text format, with one row per\\norganism and one column per field (see option\\n-return).\\ntree: a textual representation of the tree, with\\nhyphen-based indentation to indicate taxon depth.\\nhtml_tree: same as tree, but wiht HTML tags (organism\\nnames in italics, taxon names in bold)."

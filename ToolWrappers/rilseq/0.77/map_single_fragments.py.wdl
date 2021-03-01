@@ -3,7 +3,7 @@ version 1.0
 task MapSingleFragmentspy {
   input {
     Array[Int] fast_q_one
-    Boolean? list_second_read
+    Boolean? list_second_optionaldefault
     File? genes_gff
     Boolean? reverse_complement
     File? feature
@@ -22,7 +22,7 @@ task MapSingleFragmentspy {
   command <<<
     map_single_fragments_py \
       ~{if defined(fast_q_one) then ("--fastq_1 " +  '"' + fast_q_one + '"') else ""} \
-      ~{if (list_second_read) then "-2" else ""} \
+      ~{if (list_second_optionaldefault) then "-2" else ""} \
       ~{if defined(genes_gff) then ("--genes_gff " +  '"' + genes_gff + '"') else ""} \
       ~{if (reverse_complement) then "--reverse_complement" else ""} \
       ~{if defined(feature) then ("--feature " +  '"' + feature + '"') else ""} \
@@ -38,9 +38,12 @@ task MapSingleFragmentspy {
       ~{if defined(sam_se_params) then ("--samse_params " +  '"' + sam_se_params + '"') else ""} \
       ~{if (create_wig) then "--create_wig" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q_one: "A list of the first read of the sequencing. (default:\\nNone)"
-    list_second_read: "[FASTQ_2 [FASTQ_2 ...]], --fastq_2 [FASTQ_2 [FASTQ_2 ...]]\\nA list of the second read of the sequencing. The order\\nof these files should be as same as -1. Optional.\\n(default: None)"
+    list_second_optionaldefault: "[FASTQ_2 [FASTQ_2 ...]], --fastq_2 [FASTQ_2 [FASTQ_2 ...]]\\nA list of the second read of the sequencing. The order\\nof these files should be as same as -1. Optional.\\n(default: None)"
     genes_gff: "Name of gff file to count the reads per gene. If not\\ngiven or not readable, skip this stage. (default:\\nNone)"
     reverse_complement: "Treat the reads as reverse complement only when\\ncounting number of reads per gene and generating wig\\nfile. The resulting BAM files will be the original\\nones. Use this when treating libraries built using\\nLivny's protocol. (default: False)"
     feature: "Name of features to count on the GTF file (column 2).\\n(default: exon)"

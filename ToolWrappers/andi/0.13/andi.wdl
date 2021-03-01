@@ -30,6 +30,9 @@ task Andi {
       ~{if defined(truncate_names) then ("--truncate-names " +  '"' + truncate_names + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bootstrap: "Print additional bootstrap matrices"
     file_of_filenames: "Read additional filenames from FILE; one per line"

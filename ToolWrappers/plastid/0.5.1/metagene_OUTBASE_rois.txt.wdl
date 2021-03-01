@@ -8,6 +8,9 @@ task MetageneOUTBASERoistxt {
     metagene OUTBASE_rois_txt \
       ~{meta_gene}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     meta_gene: ""
   }

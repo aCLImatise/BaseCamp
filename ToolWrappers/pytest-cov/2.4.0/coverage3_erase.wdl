@@ -10,6 +10,9 @@ task Coverage3Erase {
       ~{if defined(debug) then ("--debug " +  '"' + debug + '"') else ""} \
       ~{if defined(rcfile) then ("--rcfile " +  '"' + rcfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Debug options, separated by commas"
     rcfile: "Specify configuration file.  Defaults to '.coveragerc'"

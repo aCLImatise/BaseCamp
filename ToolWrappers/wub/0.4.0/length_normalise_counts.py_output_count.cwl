@@ -3,7 +3,7 @@ id: length_normalise_counts.py_output_count.cwl
 inputs:
 - id: in_f
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_length_normalise_counts_do_tpy
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - length_normalise_counts.py

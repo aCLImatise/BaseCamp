@@ -42,6 +42,9 @@ task PanGenomePostAnalysis {
       ~{if defined(number_of_threads) then ("-z " +  '"' + number_of_threads + '"') else ""} \
       ~{if (verbose_output_stdout) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     delete_intermediate_files: "dont delete intermediate files"
     create_r_plots: "dont create R plots"

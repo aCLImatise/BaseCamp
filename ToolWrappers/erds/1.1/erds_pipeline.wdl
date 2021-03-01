@@ -4,6 +4,9 @@ task ErdsPipeline {
   command <<<
     erds_pipeline
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

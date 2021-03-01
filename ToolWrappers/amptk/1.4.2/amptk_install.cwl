@@ -3,12 +3,12 @@ id: amptk_install.cwl
 inputs:
 - id: in_install_databases_choices
   doc: 'Install Databases. Choices: ITS, 16S, LSU, COI'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_force
   doc: Over-write existing databases
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_arguments
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - amptk

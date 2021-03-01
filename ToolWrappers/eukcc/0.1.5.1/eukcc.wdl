@@ -58,6 +58,9 @@ task Eukcc {
       ~{if defined(diamond) then ("--diamond " +  '"' + diamond + '"') else ""} \
       ~{if (plot) then "--plot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Path to EukCC DB"
     outdir: "Location for the output. Names will be prefixed using\\nthe bin filenames"

@@ -1,0 +1,793 @@
+!Command
+command:
+- maCMD
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: alignments.
+  description: '-h, --Help <bool> [true]                       Print the complete
+    help text. '
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --Presetting
+  description: "[default]              Optimize aligner parameters for a selected\n\
+    sequencing technique. Available presettings are:\n'Default', 'Illumina', 'Illumina_Paired',\n\
+    'Nanopore', 'PacBio'."
+  args: !SimpleFlagArg
+    name: name
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --Index
+  description: "[]                     Filename of FMD-index. (A FMD-index can be\n\
+    generated via the --Create_Index option.) This\noption must be set."
+  args: !SimpleFlagArg
+    name: file_name
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --In
+  description: "[]                        Filenames of Fasta/Fastq files containing\
+    \ reads.\ngz-compressed files are automatically decompressed.\nMultiple files\
+    \ can be specified by a comma\nseparated list. One file name must be provided\
+    \ at\nleast."
+  args: !SimpleFlagArg
+    name: file_name
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --Mate_In
+  description: "[]                   Filenames of the mates in the case of paired\
+    \ reads.\nIf this option is set, the aligner switches to\npaired mode automatically.\
+    \ The number of reads\ngiven as mates must match the accumulated number of\nreads\
+    \ provided via the 'in'-option."
+  args: !SimpleFlagArg
+    name: file_name
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --Create_Index
+  description: "<fasta_file_name,output_folder,index_name> []\nGenerate a FMD-index\
+    \ for a Fasta file.\n'fasta_file_name' has to be the file-path of the\nFasta file\
+    \ holding the genome used for index\ncreation. 'output_folder' is the folder-path\
+    \ of the\nlocation used for index storage. 'index_name' is\nthe name used for\
+    \ identifying the new FMD-Index. In\nthe context of alignments, the genome-name\
+    \ is used\nfor FMD-index selection."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --SAM_File_name
+  description: "[ma_out.sam]\nName of the SAM file that is used for the output of\n\
+    alignments. Use /dev/stdout for printing to stdout."
+  args: !SimpleFlagArg
+    name: file_name
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --Number_of_Threads
+  description: '[8]              Number of threads used in the context of'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Use_Paired_Reads
+  description: '[false]              For paired reads set this flag to true.'
+  args: !SimpleFlagArg
+    name: bool
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --Mean_Distance_of_Paired_Reads
+  description: "[400]\nTwo reads can be paired, if they are within mean +-\n(standard\
+    \ deviation)*3 distance from one another on\nthe expected strands (depends on\
+    \ Use Mate Pair\non/off) Used in the context of the computation of\nthe mapping\
+    \ quality and for picking optimal\nalignment pairs."
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --Standard_Deviation_of_Paired_Reads
+  description: "[150]\n<val> represents the standard deviation for the\ndistance between\
+    \ paired reads. Used in the context\nof the computation of the mapping quality\
+    \ and for\npicking optimal alignment pairs."
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - --Score_Factor_for_Paired_Reads
+  description: "[1.25]\nThis factor is multiplied to the score of\nsuccessfully paired\
+    \ reads. Used in the context of\nthe computation of the mapping quality and for\n\
+    picking optimal alignment pairs. <val> < 1 results\nin penalty; <val> > 1 results\
+    \ in bonus."
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - --Check_for_Consistency
+  description: "[false]         Check if both paired read files comprise the same\n\
+    number of reads. (Intended for debugging.)"
+  args: !SimpleFlagArg
+    name: bool
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --Seeding_Technique
+  description: "[maxSpan]       Technique used for the initial seeding. Available\n\
+    techniques are: maxSpan and SMEMs."
+  args: !SimpleFlagArg
+    name: name
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --Minimal_Seed_Length
+  description: "[16]           All seeds with size smaller than 'minimal seed\nlength'\
+    \ are discarded."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Minimal_Ambiguity
+  description: "[0]                  During the extension of seeds using the FMD-index:\n\
+    With increasing extension width, the number of\noccurrences of corresponding seeds\
+    \ on the reference\nmonotonically decreases. Keep extending, while the\nnumber\
+    \ of occurrences is higher than 'Minimal\nAmbiguity'."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Maximal_Ambiguity
+  description: "[100]                Discard seeds that occur more than 'Maximal\n\
+    ambiguity' time on the reference. Set this option\nto zero in order to disable\
+    \ it."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Skip_Ambiguous_Seeds
+  description: "[false]          Enabled: Discard all seeds that are more ambiguous\n\
+    than <Maximal Ambiguity>. Disabled: sample <Maximal\nAmbiguity> random seeds from\
+    \ too ambiguous seeds."
+  args: !SimpleFlagArg
+    name: bool
+- !Flag
+  optional: true
+  synonyms:
+  - --Seeding_Drop-off_A_-_Minimal_Seed_Size
+  description: "[15]\nHeuristic runtime optimization: For a given read R,\nlet N be\
+    \ the number of seeds of size >= <val>.\nDiscard R, if N < <length(R)> * <Seeding\
+    \ drop-off\nB>."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Seeding_Drop-off_B_-_Factor
+  description: "[0.005]\nHeuristic runtime optimization: Factor for seed\ndrop-off\
+    \ calculation. For more information see the\nparameter Seeding drop-off A."
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --Maximal_Number_of_SoCs
+  description: "[30]        Consider the <val> best scored SoCs merely. 0 =\nConsider\
+    \ all SoCs."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --Minimal_Number_of_SoCs
+  description: "[1]         Always consider the first <val> SoCs no matter the\nHeuristic\
+    \ optimizations. Increasing this parameter\nmight improve the quality of supplementary\n\
+    alignments."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Fixed_SoC_Width
+  description: "[0]                    Set the SoC width to a fixed value. 0 = use\
+    \ the\nformula given in the paper. (for debugging\npurposes.)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --Maximal_Number_of_Reported_Alignments
+  description: "[0]\nDo not output more than <val> alignments. Set to\nzero for unlimited\
+    \ output."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Minimal_Alignment_Score
+  description: "[75]           Suppress the output of alignments with a score\nbelow\
+    \ <val>."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Omit_Secondary_Alignments
+  description: '[false]     Suppress the output of secondary alignments.'
+  args: !SimpleFlagArg
+    name: bool
+- !Flag
+  optional: true
+  synonyms:
+  - --Omit_Supplementary_Alignments
+  description: "[false]\nSuppress the output of supplementary alignments."
+  args: !SimpleFlagArg
+    name: bool
+- !Flag
+  optional: true
+  synonyms:
+  - --Maximal_Supplementary_Overlap
+  description: "[0.1]\nA non-primary alignment A is considered\nsupplementary, if\
+    \ less than <val> percent of A\noverlap with the primary alignment on the query.\n\
+    Otherwise A is considered secondary."
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - --Number_Supplementary_Alignments
+  description: "[1]\nMaximal Number of supplementary alignments per\nprimary alignment."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Emulate_NGMLR
+  description: "'s_tag_output <bool> [false]\nOutput SAM tags as NGMLR would. Enable\
+    \ this flag if\nyou want to use MA in combination with Sniffles.\nEnabling this\
+    \ flag will drastically increase the\nsize of the SAM output file."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --Use_M_in_CIGAR
+  description: "[true]                 Disabled: Distinguish matches and mismatches\
+    \ in\nCIGARs using '=' and 'X' operations. Enabled: Use\nthe 'M' operation in\
+    \ CIGARs."
+  args: !SimpleFlagArg
+    name: bool
+- !Flag
+  optional: true
+  synonyms:
+  - --Output_long_cigars_in_CG_tag
+  description: "[true]\nSome programs crash, if cigars become too long. If\nthis flag\
+    \ is enabled, the CG:B:I tag is used for\nthe output of long cigars (cigars with\
+    \ more than\n65536 operations)."
+  args: !SimpleFlagArg
+    name: bool
+- !Flag
+  optional: true
+  synonyms:
+  - --Soft_clip
+  description: "[false]                     Output the full query for each alignment,\
+    \ instead\nof omitting the sequence before and after the\nalignment."
+  args: !SimpleFlagArg
+    name: bool
+- !Flag
+  optional: true
+  synonyms:
+  - --SoC_Score_Drop-off
+  description: "[0.1]            Let x be the maximal encountered SoC score. Stop\n\
+    harmonizing SoCs if there is a SoC with a score\nsmaller than <val>*x."
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - --Minimal_Harmonization_Score
+  description: "[18]       Discard all harmonized SoCs with scores smaller\nthan <val>.\
+    \ Only keep detected inversions with a\nscore >= <val> * <Match Score>."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Relative_Minimal_Harmonization_Score
+  description: "[0.002]\nDiscard all harmonized SoCs with scores smaller\nthan length(read)*<val>."
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - --Harmonization_Drop-off_A_-_Score_Difference
+  description: "[0.0001]\nLet x be the maximal encountered harmonization\nscore. Stop\
+    \ harmonizing further SoCs, if\n<Harmonization Drop-off B> many SoCs with scores\n\
+    below x - <readlength> * <val> occur consecutively."
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - --Harmonization_Drop-off_B_-_Lookahead
+  description: "[3]\nSee Harmonization Drop-off A."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Harmonization_Score_Drop-off_-_Minimal_Query_Length
+  description: "[800]\nFor reads of length >= <val>: Ignore all SoCs with\nharmonization\
+    \ scores smaller than the current\nmaximal score. 0 = disabled."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Artifact_Filter_A_-_Maximal_Delta_Distance
+  description: "[0.1]\nFilter a seed, if the difference between the delta\ndistance\
+    \ to its predecessor and successor is less\nthen <val> percent (set to 1 to disable\
+    \ filter) and\nthe delta distance to its pre- and successor is\nmore than <Artifact\
+    \ Filter B> nt."
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - --Artifact_Filter_B_-_Minimal_Delta_Distance
+  description: "[16]\nSee Artifact Filter A"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Pick_Local_Seed_Set_A_-_Enabled
+  description: "[false]\nEnable this flag for local seed set computation.\n(See Pick_Local_Seed_Set_B)"
+  args: !SimpleFlagArg
+    name: bool
+- !Flag
+  optional: true
+  synonyms:
+  - --Pick_Local_Seed_Set_B_-_Optimistic_Gap_Estimation
+  description: "[true]\nAfter the harmonization MA checks weather it is\npossible\
+    \ to compute a positively scored alignment\nfrom the seed set. Gaps between seeds\
+    \ can be\nestimated in two ways: Optimistic [true]: Assume\nthat the gap can be\
+    \ filled using merely matches and\na single insertion/deletion. Pessimistic [false]:\n\
+    Assume that the gap can be filled using matches and\nmismatches that add up to\
+    \ a score of 0 and a single\ninsertion/deletion."
+  args: !SimpleFlagArg
+    name: bool
+- !Flag
+  optional: true
+  synonyms:
+  - --Pick_Local_Seed_Set_C_-_Maximal_Gap_Penalty
+  description: "[100]\nMaximal gap cost penalty during local seed set\ncomputation."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Maximal_Gap_Size
+  description: "[20]                  If the gap between seeds is larger than <val>\
+    \ on\nquery or reference, a dual extension process is\nused for filling the gap.\
+    \ Dual extension is more\nexpensive, if the extension does not Z-drop, but\nmore\
+    \ efficient otherwise."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Minimum_Genome_Size_for_Heuristics
+  description: "[10000000]\nSome heuristics can only be applied on genomes of\nsufficient\
+    \ size. The parameter disables the SoC\nscore Drop-off, if the genome is shorter\
+    \ than\n<val>."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Disable_All_Heuristics
+  description: "[false]        Disables all runtime heuristics. (For debugging\npurposes)"
+  args: !SimpleFlagArg
+    name: bool
+- !Flag
+  optional: true
+  synonyms:
+  - --Match_Score
+  description: "[2]                        Match score. (Used in the context of Dynamic\n\
+    Programming and for SoC width computation.)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Mismatch_Penalty
+  description: '[4]                   Penalty for mismatch.'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Gap_penalty
+  description: "[4]                        First penalty for gap opening. (Two piece\
+    \ affine\ngap costs)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Extend_Penalty
+  description: "[2]                     First penalty for gap extension. (Two piece\
+    \ affine\ngap costs)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Second_Gap_Penalty
+  description: "[24]                Second penalty for gap opening. (Two piece affine\n\
+    gap costs)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Second_Extend_Penalty
+  description: "[1]              Second penalty for gap extension. (Two piece affine\n\
+    gap costs)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Padding
+  description: "[1000]                         If an alignment does not reach its\
+    \ read's\nendpoints, the missing parts can be computed via\ndynamic programming.\
+    \ If the length of the missing\nparts is smaller than 'Padding', dynamic\nprogramming\
+    \ is used to extend the alignment towards\nthe endpoints of the read. Otherwise,\
+    \ the unaligned\nparts of the read are ignored and the alignment\nstays unextended."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Bandwidth_for_Extensions
+  description: "[512]         Bandwidth used in the context of the extension of\n\
+    an alignment towards the endpoints of its read.\n(See 'Padding')"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Minimal_Bandwidth_in_Gaps
+  description: "[20]         Gaps between seeds are generally filled using\ndynamic\
+    \ programming. This option determines the\nminimal bandwidth used in the context\
+    \ of fillin\ngaps."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Z_Drop
+  description: "[200]                           If the running score during dynamic\
+    \ programming\ndrops faster than <val> stop the extension process."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --Detect_Small_Inversions
+  description: "[false]       Use dynamic programming to search for small\ninversions\
+    \ that do not contain any seeds. (Flag\ndisabled = off)"
+  args: !SimpleFlagArg
+    name: bool
+- !Flag
+  optional: true
+  synonyms:
+  - --Z_Drop_Inversions
+  description: "[100]                Check for an inversion, if the running score\
+    \ during\ndynamic programming drops faster than <val>."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --Minimizer_Size
+  description: "[15]                Compute Minimizers with a size of <val>nt. A\n\
+    Minimizer index is built for the specific k and w\nchosen during index generation;\
+    \ To change the\nminimizer size or window size, a separate index has\nto be built.\
+    \ 'Seeding Technique' has to be set to\nminimizers in order to use this."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --Minimizer_Window_Size
+  description: "[10]         Compute Minimizers using a window of <val>nt. Two\nconsecutive\
+    \ minimizers can be at most w-k nt apart.\nSee 'Minimizer Size' for further information."
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "========================================= The Modular Aligner =========================================\n\
+  Available presettings:\n    -p, --Presetting <name> [default]              Optimize\
+  \ aligner parameters for a selected \n                                         \
+  \          sequencing technique. Available presettings are: \n                 \
+  \                                  'Default', 'Illumina', 'Illumina_Paired', \n\
+  \                                                   'Nanopore', 'PacBio'. \n\nGeneral\
+  \ options: (these options are not affected by presettings)\n    -x, --Index <file_name>\
+  \ []                     Filename of FMD-index. (A FMD-index can be \n         \
+  \                                          generated via the --Create_Index option.)\
+  \ This \n                                                   option must be set.\
+  \ \n\n    -i, --In <file_name> []                        Filenames of Fasta/Fastq\
+  \ files containing reads. \n                                                   gz-compressed\
+  \ files are automatically decompressed. \n                                     \
+  \              Multiple files can be specified by a comma \n                   \
+  \                                separated list. One file name must be provided\
+  \ at \n                                                   least. \n\n    -m, --Mate_In\
+  \ <file_name> []                   Filenames of the mates in the case of paired\
+  \ reads. \n                                                   If this option is\
+  \ set, the aligner switches to \n                                              \
+  \     paired mode automatically. The number of reads \n                        \
+  \                           given as mates must match the accumulated number of\
+  \ \n                                                   reads provided via the 'in'-option.\
+  \ \n\n    -X, --Create_Index <fasta_file_name,output_folder,index_name> []\n   \
+  \                                                Generate a FMD-index for a Fasta\
+  \ file. \n                                                   'fasta_file_name' has\
+  \ to be the file-path of the \n                                                \
+  \   Fasta file holding the genome used for index \n                            \
+  \                       creation. 'output_folder' is the folder-path of the \n \
+  \                                                  location used for index storage.\
+  \ 'index_name' is \n                                                   the name\
+  \ used for identifying the new FMD-Index. In \n                                \
+  \                   the context of alignments, the genome-name is used \n      \
+  \                                             for FMD-index selection. \n\n    -o,\
+  \ --SAM_File_name <file_name> [ma_out.sam]\n                                   \
+  \                Name of the SAM file that is used for the output of \n        \
+  \                                           alignments. Use /dev/stdout for printing\
+  \ to stdout. \n\n    -t, --Number_of_Threads <int> [8]              Number of threads\
+  \ used in the context of \n                                                   alignments.\
+  \ \n\n    -h, --Help <bool> [true]                       Print the complete help\
+  \ text. \n\nPaired Reads options:\n    --Use_Paired_Reads <bool> [false]       \
+  \       For paired reads set this flag to true. \n\n    -d, --Mean_Distance_of_Paired_Reads\
+  \ <double> [400]\n                                                   Two reads can\
+  \ be paired, if they are within mean +- \n                                     \
+  \              (standard deviation)*3 distance from one another on \n          \
+  \                                         the expected strands (depends on Use Mate\
+  \ Pair \n                                                   on/off) Used in the\
+  \ context of the computation of \n                                             \
+  \      the mapping quality and for picking optimal \n                          \
+  \                         alignment pairs. \n\n    -S, --Standard_Deviation_of_Paired_Reads\
+  \ <double> [150]\n                                                   <val> represents\
+  \ the standard deviation for the \n                                            \
+  \       distance between paired reads. Used in the context \n                  \
+  \                                 of the computation of the mapping quality and\
+  \ for \n                                                   picking optimal alignment\
+  \ pairs. \n\n    --Score_Factor_for_Paired_Reads <double> [1.25]\n             \
+  \                                      This factor is multiplied to the score of\
+  \ \n                                                   successfully paired reads.\
+  \ Used in the context of \n                                                   the\
+  \ computation of the mapping quality and for \n                                \
+  \                   picking optimal alignment pairs. <val> < 1 results \n      \
+  \                                             in penalty; <val> > 1 results in bonus.\
+  \ \n\n    --Check_for_Consistency <bool> [false]         Check if both paired read\
+  \ files comprise the same \n                                                   number\
+  \ of reads. (Intended for debugging.) \n\nSeeding options:\n    -s, --Seeding_Technique\
+  \ <name> [maxSpan]       Technique used for the initial seeding. Available \n  \
+  \                                                 techniques are: maxSpan and SMEMs.\
+  \ \n\n    -l, --Minimal_Seed_Length <int> [16]           All seeds with size smaller\
+  \ than 'minimal seed \n                                                   length'\
+  \ are discarded. \n\n    --Minimal_Ambiguity <int> [0]                  During the\
+  \ extension of seeds using the FMD-index: \n                                   \
+  \                With increasing extension width, the number of \n             \
+  \                                      occurrences of corresponding seeds on the\
+  \ reference \n                                                   monotonically decreases.\
+  \ Keep extending, while the \n                                                 \
+  \  number of occurrences is higher than 'Minimal \n                            \
+  \                       Ambiguity'. \n\n    --Maximal_Ambiguity <int> [100]    \
+  \            Discard seeds that occur more than 'Maximal \n                    \
+  \                               ambiguity' time on the reference. Set this option\
+  \ \n                                                   to zero in order to disable\
+  \ it. \n\n    --Skip_Ambiguous_Seeds <bool> [false]          Enabled: Discard all\
+  \ seeds that are more ambiguous \n                                             \
+  \      than <Maximal Ambiguity>. Disabled: sample <Maximal \n                  \
+  \                                 Ambiguity> random seeds from too ambiguous seeds.\
+  \ \n\n    --Seeding_Drop-off_A_-_Minimal_Seed_Size <int> [15]\n                \
+  \                                   Heuristic runtime optimization: For a given\
+  \ read R, \n                                                   let N be the number\
+  \ of seeds of size >= <val>. \n                                                \
+  \   Discard R, if N < <length(R)> * <Seeding drop-off \n                       \
+  \                            B>. \n\n    --Seeding_Drop-off_B_-_Factor <double>\
+  \ [0.005]\n                                                   Heuristic runtime\
+  \ optimization: Factor for seed \n                                             \
+  \      drop-off calculation. For more information see the \n                   \
+  \                                parameter Seeding drop-off A. \n\nStrip of Consideration\
+  \ options:\n    -N, --Maximal_Number_of_SoCs <int> [30]        Consider the <val>\
+  \ best scored SoCs merely. 0 = \n                                              \
+  \     Consider all SoCs. \n\n    -M, --Minimal_Number_of_SoCs <int> [1]        \
+  \ Always consider the first <val> SoCs no matter the \n                        \
+  \                           Heuristic optimizations. Increasing this parameter \n\
+  \                                                   might improve the quality of\
+  \ supplementary \n                                                   alignments.\
+  \ \n\n    --Fixed_SoC_Width <int> [0]                    Set the SoC width to a\
+  \ fixed value. 0 = use the \n                                                  \
+  \ formula given in the paper. (for debugging \n                                \
+  \                   purposes.) \n\nSAM Output options:\n    -n, --Maximal_Number_of_Reported_Alignments\
+  \ <int> [0]\n                                                   Do not output more\
+  \ than <val> alignments. Set to \n                                             \
+  \      zero for unlimited output. \n\n    --Minimal_Alignment_Score <int> [75] \
+  \          Suppress the output of alignments with a score \n                   \
+  \                                below <val>. \n\n    --Omit_Secondary_Alignments\
+  \ <bool> [false]     Suppress the output of secondary alignments. \n\n    --Omit_Supplementary_Alignments\
+  \ <bool> [false]\n                                                   Suppress the\
+  \ output of supplementary alignments. \n\n    --Maximal_Supplementary_Overlap <double>\
+  \ [0.1]\n                                                   A non-primary alignment\
+  \ A is considered \n                                                   supplementary,\
+  \ if less than <val> percent of A \n                                           \
+  \        overlap with the primary alignment on the query. \n                   \
+  \                                Otherwise A is considered secondary. \n\n    --Number_Supplementary_Alignments\
+  \ <int> [1]\n                                                   Maximal Number of\
+  \ supplementary alignments per \n                                              \
+  \     primary alignment. \n\n    --Emulate_NGMLR's_tag_output <bool> [false]\n \
+  \                                                  Output SAM tags as NGMLR would.\
+  \ Enable this flag if \n                                                   you want\
+  \ to use MA in combination with Sniffles. \n                                   \
+  \                Enabling this flag will drastically increase the \n           \
+  \                                        size of the SAM output file. \n\n    --Use_M_in_CIGAR\
+  \ <bool> [true]                 Disabled: Distinguish matches and mismatches in\
+  \ \n                                                   CIGARs using '=' and 'X'\
+  \ operations. Enabled: Use \n                                                  \
+  \ the 'M' operation in CIGARs. \n\n    --Output_long_cigars_in_CG_tag <bool> [true]\n\
+  \                                                   Some programs crash, if cigars\
+  \ become too long. If \n                                                   this\
+  \ flag is enabled, the CG:B:I tag is used for \n                               \
+  \                    the output of long cigars (cigars with more than \n       \
+  \                                            65536 operations). \n\n    --Soft_clip\
+  \ <bool> [false]                     Output the full query for each alignment, instead\
+  \ \n                                                   of omitting the sequence\
+  \ before and after the \n                                                   alignment.\
+  \ \n\nHeuristics options:\n    --SoC_Score_Drop-off <double> [0.1]            Let\
+  \ x be the maximal encountered SoC score. Stop \n                              \
+  \                     harmonizing SoCs if there is a SoC with a score \n       \
+  \                                            smaller than <val>*x. \n\n    --Minimal_Harmonization_Score\
+  \ <int> [18]       Discard all harmonized SoCs with scores smaller \n          \
+  \                                         than <val>. Only keep detected inversions\
+  \ with a \n                                                   score >= <val> * <Match\
+  \ Score>. \n\n    --Relative_Minimal_Harmonization_Score <double> [0.002]\n    \
+  \                                               Discard all harmonized SoCs with\
+  \ scores smaller \n                                                   than length(read)*<val>.\
+  \ \n\n    --Harmonization_Drop-off_A_-_Score_Difference <double> [0.0001]\n    \
+  \                                               Let x be the maximal encountered\
+  \ harmonization \n                                                   score. Stop\
+  \ harmonizing further SoCs, if \n                                              \
+  \     <Harmonization Drop-off B> many SoCs with scores \n                      \
+  \                             below x - <readlength> * <val> occur consecutively.\
+  \ \n\n    --Harmonization_Drop-off_B_-_Lookahead <int> [3]\n                   \
+  \                                See Harmonization Drop-off A. \n\n    --Harmonization_Score_Drop-off_-_Minimal_Query_Length\
+  \ <int> [800]\n                                                   For reads of length\
+  \ >= <val>: Ignore all SoCs with \n                                            \
+  \       harmonization scores smaller than the current \n                       \
+  \                            maximal score. 0 = disabled. \n\n    --Artifact_Filter_A_-_Maximal_Delta_Distance\
+  \ <double> [0.1]\n                                                   Filter a seed,\
+  \ if the difference between the delta \n                                       \
+  \            distance to its predecessor and successor is less \n              \
+  \                                     then <val> percent (set to 1 to disable filter)\
+  \ and \n                                                   the delta distance to\
+  \ its pre- and successor is \n                                                 \
+  \  more than <Artifact Filter B> nt. \n\n    --Artifact_Filter_B_-_Minimal_Delta_Distance\
+  \ <int> [16]\n                                                   See Artifact Filter\
+  \ A \n\n    --Pick_Local_Seed_Set_A_-_Enabled <bool> [false]\n                 \
+  \                                  Enable this flag for local seed set computation.\
+  \ \n                                                   (See Pick_Local_Seed_Set_B)\
+  \ \n\n    --Pick_Local_Seed_Set_B_-_Optimistic_Gap_Estimation <bool> [true]\n  \
+  \                                                 After the harmonization MA checks\
+  \ weather it is \n                                                   possible to\
+  \ compute a positively scored alignment \n                                     \
+  \              from the seed set. Gaps between seeds can be \n                 \
+  \                                  estimated in two ways: Optimistic [true]: Assume\
+  \ \n                                                   that the gap can be filled\
+  \ using merely matches and \n                                                  \
+  \ a single insertion/deletion. Pessimistic [false]: \n                         \
+  \                          Assume that the gap can be filled using matches and \n\
+  \                                                   mismatches that add up to a\
+  \ score of 0 and a single \n                                                   insertion/deletion.\
+  \ \n\n    --Pick_Local_Seed_Set_C_-_Maximal_Gap_Penalty <int> [100]\n          \
+  \                                         Maximal gap cost penalty during local\
+  \ seed set \n                                                   computation. \n\n\
+  \    --Maximal_Gap_Size <int> [20]                  If the gap between seeds is\
+  \ larger than <val> on \n                                                   query\
+  \ or reference, a dual extension process is \n                                 \
+  \                  used for filling the gap. Dual extension is more \n         \
+  \                                          expensive, if the extension does not\
+  \ Z-drop, but \n                                                   more efficient\
+  \ otherwise. \n\n    --Minimum_Genome_Size_for_Heuristics <int> [10000000]\n   \
+  \                                                Some heuristics can only be applied\
+  \ on genomes of \n                                                   sufficient\
+  \ size. The parameter disables the SoC \n                                      \
+  \             score Drop-off, if the genome is shorter than \n                 \
+  \                                  <val>. \n\n    --Disable_All_Heuristics <bool>\
+  \ [false]        Disables all runtime heuristics. (For debugging \n            \
+  \                                       purposes) \n\nDynamic Programming options:\n\
+  \    --Match_Score <int> [2]                        Match score. (Used in the context\
+  \ of Dynamic \n                                                   Programming and\
+  \ for SoC width computation.) \n\n    --Mismatch_Penalty <int> [4]             \
+  \      Penalty for mismatch. \n\n    --Gap_penalty <int> [4]                   \
+  \     First penalty for gap opening. (Two piece affine \n                      \
+  \                             gap costs) \n\n    --Extend_Penalty <int> [2]    \
+  \                 First penalty for gap extension. (Two piece affine \n        \
+  \                                           gap costs) \n\n    --Second_Gap_Penalty\
+  \ <int> [24]                Second penalty for gap opening. (Two piece affine \n\
+  \                                                   gap costs) \n\n    --Second_Extend_Penalty\
+  \ <int> [1]              Second penalty for gap extension. (Two piece affine \n\
+  \                                                   gap costs) \n\n    --Padding\
+  \ <int> [1000]                         If an alignment does not reach its read's\
+  \ \n                                                   endpoints, the missing parts\
+  \ can be computed via \n                                                   dynamic\
+  \ programming. If the length of the missing \n                                 \
+  \                  parts is smaller than 'Padding', dynamic \n                 \
+  \                                  programming is used to extend the alignment towards\
+  \ \n                                                   the endpoints of the read.\
+  \ Otherwise, the unaligned \n                                                  \
+  \ parts of the read are ignored and the alignment \n                           \
+  \                        stays unextended. \n\n    --Bandwidth_for_Extensions <int>\
+  \ [512]         Bandwidth used in the context of the extension of \n           \
+  \                                        an alignment towards the endpoints of its\
+  \ read. \n                                                   (See 'Padding') \n\n\
+  \    --Minimal_Bandwidth_in_Gaps <int> [20]         Gaps between seeds are generally\
+  \ filled using \n                                                   dynamic programming.\
+  \ This option determines the \n                                                \
+  \   minimal bandwidth used in the context of fillin \n                         \
+  \                          gaps. \n\n    --Z_Drop <int> [200]                  \
+  \         If the running score during dynamic programming \n                   \
+  \                                drops faster than <val> stop the extension process.\
+  \ \n\n    --Detect_Small_Inversions <bool> [false]       Use dynamic programming\
+  \ to search for small \n                                                   inversions\
+  \ that do not contain any seeds. (Flag \n                                      \
+  \             disabled = off) \n\n    --Z_Drop_Inversions <int> [100]          \
+  \      Check for an inversion, if the running score during \n                  \
+  \                                 dynamic programming drops faster than <val>. \n\
+  \nMinimizer options:\n    -k, --Minimizer_Size <int> [15]                Compute\
+  \ Minimizers with a size of <val>nt. A \n                                      \
+  \             Minimizer index is built for the specific k and w \n             \
+  \                                      chosen during index generation; To change\
+  \ the \n                                                   minimizer size or window\
+  \ size, a separate index has \n                                                \
+  \   to be built. 'Seeding Technique' has to be set to \n                       \
+  \                            minimizers in order to use this. \n\n    -w, --Minimizer_Window_Size\
+  \ <int> [10]         Compute Minimizers using a window of <val>nt. Two \n      \
+  \                                             consecutive minimizers can be at most\
+  \ w-k nt apart. \n                                                   See 'Minimizer\
+  \ Size' for further information. \n\nVersion 1.1.4-d2d8fc1-O\nBy Markus Schmidt\
+  \ & Arne Kutzner\nCompiled with following switches: WITH_ZLIB\nFor more information\
+  \ visit: https://github.com/ITBE-Lab/ma\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ma:1.1.4--py37h8270d21_1

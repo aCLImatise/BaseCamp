@@ -60,6 +60,9 @@ task FindEnrichmentpy {
       ~{if (ev_help) then "--ev_help" else ""} \
       ~{if (ev_help_short) then "--ev_help_short" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alpha: ": test-wise alpha; for each GO term, what significance level to apply\\n(most often you don't need to change this other than 0.05 or 0.01)"
     pval: ": experiment-wise alpha; for the entire experiment, what significance\\nlevel to apply after Bonferroni correction"

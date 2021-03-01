@@ -14,6 +14,9 @@ task GetLowestCommonAncestorpl {
       ~{if (a) then "-a" else ""} \
       ~{if (b) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     obo_input_file: "OBO input file"
     a: "term 1 ID"

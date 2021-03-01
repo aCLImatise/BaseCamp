@@ -18,6 +18,9 @@ task FastutilsRevcomp {
       ~{if (comment) then "--comment" else ""} \
       ~{if (lex) then "--lex" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "input file in fasta/q format [stdin]"
     out: "output file [stdout]"

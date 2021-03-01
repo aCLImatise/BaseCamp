@@ -10,6 +10,9 @@ task StripGapColumns {
       ~{input_x_mfa} \
       ~{output_x_mfa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_x_mfa: ""
     output_x_mfa: ""

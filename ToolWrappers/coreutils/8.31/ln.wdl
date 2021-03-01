@@ -34,6 +34,9 @@ task Ln {
       ~{if (no_target_directory) then "--no-target-directory" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     backup: "[=CONTROL]      make a backup of each existing destination file"
     _backup_accept: "like --backup but does not accept an argument"

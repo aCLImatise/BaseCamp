@@ -9,12 +9,12 @@ inputs:
 - id: in_names
   doc: "Names for each input file - to be used in column\nheaders of output [separate\
     \ names with commas]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --names
 - id: in_output
   doc: "Name of output file with combined Bracken results.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -23,9 +23,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Name of output file with combined Bracken results.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - combine_bracken_outputs.py

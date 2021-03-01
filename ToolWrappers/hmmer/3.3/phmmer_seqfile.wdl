@@ -10,6 +10,9 @@ task PhmmerSeqfile {
       ~{seq_db} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
     seq_db: ""

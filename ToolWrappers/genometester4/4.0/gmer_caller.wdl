@@ -34,6 +34,9 @@ task GmerCaller {
       ~{if defined(coverage) then ("--coverage " +  '"' + coverage + '"') else ""} \
       ~{if (increase_debug_level) then "-D" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     training_size: "- Use NUM markers for training (default 100000)"
     runs: "- Perfom NUMBER runs of model training (use 0 for no training)"

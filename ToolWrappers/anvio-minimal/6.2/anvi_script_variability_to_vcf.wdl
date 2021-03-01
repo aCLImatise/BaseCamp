@@ -10,6 +10,9 @@ task Anviscriptvariabilitytovcf {
       ~{if defined(filepath_snv_table) then ("--input " +  '"' + filepath_snv_table + '"') else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filepath_snv_table: "Filepath to the SNV table. This is the output from the\\nanvi-gen-variability-profile program with the\\nnucleotide engine (which is the default engine)."
     output_file: "File path to store results.\\n"

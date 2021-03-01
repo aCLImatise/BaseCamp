@@ -12,6 +12,9 @@ task Sqm {
       ~{if defined(input_file) then ("-i " +  '"' + input_file + '"') else ""} \
       ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     overwrite_output_file: "Overwrite output file if it exists"
     input_file: "Input file"

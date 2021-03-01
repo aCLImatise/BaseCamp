@@ -18,6 +18,9 @@ task CtseqCallMethylation {
       ~{if defined(cisc_g) then ("--cisCG " +  '"' + cisc_g + '"') else ""} \
       ~{if defined(molecule_threshold) then ("--moleculeThreshold " +  '"' + molecule_threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_dir: "Full path to directory where you have already built\\nyour methylation reference files. If no '--refDir' is\\nspecified, ctseq will look in your current directory."
     dir: "Full path to directory where your '*allMolecules.txt'\\nfiles are located. If no '--dir' is specified, ctseq\\nwill look in your current directory."

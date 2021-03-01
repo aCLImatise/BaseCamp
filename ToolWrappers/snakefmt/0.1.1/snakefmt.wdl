@@ -24,6 +24,9 @@ task Snakefmt {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     line_length: "Lines longer than INT will be wrapped.  [default: 88]"
     check: "Don't write the files back, just return the status.\\nReturn code 0 means nothing would change. Return code\\n1 means some files would be reformatted. Return code\\n123 means there was an error."

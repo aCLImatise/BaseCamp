@@ -3,12 +3,12 @@ id: gfa2fasta.py.cwl
 inputs:
 - id: in_in
   doc: "GFA 1.0 file (format: 'xxx.gfa')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -in
 - id: in_out
   doc: Output directory for saving the FASTA file
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Output directory for saving the FASTA file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gfa2fasta.py

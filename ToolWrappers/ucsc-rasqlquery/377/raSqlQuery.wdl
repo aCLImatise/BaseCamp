@@ -2,7 +2,6 @@ version 1.0
 
 task RaSqlQuery {
   input {
-    File? query_file
     Boolean? add_file
     Boolean? add_db
     Boolean? strict
@@ -17,7 +16,6 @@ task RaSqlQuery {
   }
   command <<<
     raSqlQuery \
-      ~{if defined(query_file) then ("-queryFile " +  '"' + query_file + '"') else ""} \
       ~{if (add_file) then "-addFile" else ""} \
       ~{if (add_db) then "-addDb" else ""} \
       ~{if (strict) then "-strict" else ""} \
@@ -30,8 +28,10 @@ task RaSqlQuery {
       ~{if defined(restrict) then ("-restrict " +  '"' + restrict + '"') else ""} \
       ~{if defined(db) then ("-db " +  '"' + db + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    query_file: "\\\"-query=select list,of,fields from file where field='this'\\\""
     add_file: "- Add 'file' field to say where record is defined"
     add_db: "- Add 'db' field to say where record is defined"
     strict: "- Used only with db option.  Only report tracks that exist in db"

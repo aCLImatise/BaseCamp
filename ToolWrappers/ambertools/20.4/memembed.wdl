@@ -6,7 +6,7 @@ task Memembed {
     String? comma_separated_list
     Boolean? output_chains_regardless
     File? use_alternative_file
-    String? comma_seperated_list_used
+    String? comma_seperated_list_helix
     String? comma_seperated_list_skip
     String? chain_topology_refers
     Int? maximum_cbcb_distance
@@ -26,7 +26,7 @@ task Memembed {
       ~{if defined(comma_separated_list) then ("-c " +  '"' + comma_separated_list + '"') else ""} \
       ~{if (output_chains_regardless) then "-x" else ""} \
       ~{if defined(use_alternative_file) then ("-m " +  '"' + use_alternative_file + '"') else ""} \
-      ~{if defined(comma_seperated_list_used) then ("-t " +  '"' + comma_seperated_list_used + '"') else ""} \
+      ~{if defined(comma_seperated_list_helix) then ("-t " +  '"' + comma_seperated_list_helix + '"') else ""} \
       ~{if defined(comma_seperated_list_skip) then ("-f " +  '"' + comma_seperated_list_skip + '"') else ""} \
       ~{if defined(chain_topology_refers) then ("-r " +  '"' + chain_topology_refers + '"') else ""} \
       ~{if defined(maximum_cbcb_distance) then ("-v " +  '"' + maximum_cbcb_distance + '"') else ""} \
@@ -40,12 +40,15 @@ task Memembed {
       ~{if (just_compute_energy) then "-e" else ""} \
       ~{if (just_compute_helix) then "-z" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_pdb_file: "Output pdb file. Default <input pdb file>_EMBED.pdb"
     comma_separated_list: "Comma separated list of transmembrane chains. Default all"
     output_chains_regardless: "Output all chains regardless of chains passed by -c parameter."
     use_alternative_file: "Use alternative potential file."
-    comma_seperated_list_used: "Comma seperated list of helix boundaries used to calculate helix tilt angles."
+    comma_seperated_list_helix: "Comma seperated list of helix boundaries used to calculate helix tilt angles."
     comma_seperated_list_skip: "Comma seperated list of residues to skip."
     chain_topology_refers: "Chain that topology refers to. Default 'A'"
     maximum_cbcb_distance: "Maximum Cb-Cb distance to allow."

@@ -30,6 +30,9 @@ task Fpenny {
       ~{if (step_box) then "-stepbox" else ""} \
       ~{if (an_cseq) then "-ancseq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     weights: "properties Phylip weights file (optional)"
     anc_file: "properties Phylip ancestral states file (optional)"

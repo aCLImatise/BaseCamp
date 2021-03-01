@@ -22,6 +22,9 @@ task RgtfilterVCF {
       ~{if defined(lower_bound) then ("--lowerBound " +  '"' + lower_bound + '"') else ""} \
       ~{if defined(upper_bound) then ("--upperBound " +  '"' + upper_bound + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t_mq: "Threshold for mapping quality (MQ) [default: 20]"
     t_dp: "Threshold for combined depth (DP) [default: 20]"

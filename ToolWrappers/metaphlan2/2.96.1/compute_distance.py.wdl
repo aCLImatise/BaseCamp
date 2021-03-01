@@ -10,6 +10,9 @@ task ComputeDistancepy {
       ~{if (of_n_prefix) then "--ofn_prefix" else ""} \
       ~{if defined(ifn_alignment) then ("--ifn_alignment " +  '"' + ifn_alignment + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     of_n_prefix: ""
     ifn_alignment: ""

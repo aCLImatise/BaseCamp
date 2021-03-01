@@ -1,0 +1,80 @@
+!Command
+command:
+- tadbit
+- clean
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --change_workdir
+  description: In case folder was moved, input the new path
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --workdir
+  description: path to working directory (generated with the tool tadbit mapper)
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobids
+  description: jobids of the files and entries to be removed
+  args: !RepeatFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --delete
+  description: delete files, otherwise only DB entries.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --compress
+  description: compress files and update paths accordingly
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noX
+  description: no display server (X screen)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdb
+  description: if provided uses this directory to manipulate the database
+  args: !SimpleFlagArg
+    name: PATH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: tadbit clean [-h] [-w PATH] [-j INT [INT ...]] [--delete] [--compress]\
+  \ [--noX]\n                    [--change_workdir PATH] [--tmpdb PATH]\n\nDelete\
+  \ jobs and results of a given list of jobids in a given directories\n\noptional\
+  \ arguments:\n  -h, --help               show this help message and exit\n  --change_workdir\
+  \ PATH    In case folder was moved, input the new path\n\nGeneral options:\n  -w\
+  \ PATH, --workdir PATH  path to working directory (generated with the tool tadbit\
+  \ mapper)\n  -j INT [INT ...], --jobids INT [INT ...]\n                        \
+  \   jobids of the files and entries to be removed\n  --delete                 delete\
+  \ files, otherwise only DB entries.\n  --compress               compress files and\
+  \ update paths accordingly\n  --noX                    no display server (X screen)\n\
+  \  --tmpdb PATH             if provided uses this directory to manipulate the database\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tadbit:1.0.1--py38h6ed170a_0

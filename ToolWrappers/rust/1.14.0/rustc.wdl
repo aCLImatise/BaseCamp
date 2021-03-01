@@ -10,8 +10,8 @@ task Rustc {
     Boolean? emit
     Boolean? print
     Boolean? equivalent_c_debuginfo
-    Boolean? equivalent_to_c
-    File? write_output_filename
+    Boolean? equivalent_c_optlevel
+    File? write_output_to_filename
     File? out_dir
     String? explain
     Boolean? test
@@ -37,8 +37,8 @@ task Rustc {
       ~{if (emit) then "--emit" else ""} \
       ~{if (print) then "--print" else ""} \
       ~{if (equivalent_c_debuginfo) then "-g" else ""} \
-      ~{if (equivalent_to_c) then "-O" else ""} \
-      ~{if defined(write_output_filename) then ("-o " +  '"' + write_output_filename + '"') else ""} \
+      ~{if (equivalent_c_optlevel) then "-O" else ""} \
+      ~{if defined(write_output_to_filename) then ("-o " +  '"' + write_output_to_filename + '"') else ""} \
       ~{if defined(out_dir) then ("--out-dir " +  '"' + out_dir + '"') else ""} \
       ~{if defined(explain) then ("--explain " +  '"' + explain + '"') else ""} \
       ~{if (test) then "--test" else ""} \
@@ -52,6 +52,9 @@ task Rustc {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(print_internal_options) then ("-Z " +  '"' + print_internal_options + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cfg: "Configure the compilation environment"
     path_add_directory: "[KIND=]PATH      Add a directory to the library search path. The\\noptional KIND can be one of dependency, crate, native,\\nframework or all (the default)."
@@ -61,8 +64,8 @@ task Rustc {
     emit: "[asm|llvm-bc|llvm-ir|obj|link|dep-info]\\nComma separated list of types of output for the\\ncompiler to emit"
     print: "[crate-name|file-names|sysroot|cfg|target-list|target-cpus|target-features|relocation-models|code-models]\\nComma separated list of compiler information to print\\non stdout"
     equivalent_c_debuginfo: "Equivalent to -C debuginfo=2"
-    equivalent_to_c: "Equivalent to -C opt-level=2"
-    write_output_filename: "Write output to <filename>"
+    equivalent_c_optlevel: "Equivalent to -C opt-level=2"
+    write_output_to_filename: "Write output to <filename>"
     out_dir: "Write output to compiler-chosen filename in <dir>"
     explain: "Provide a detailed explanation of an error message"
     test: "Build a test harness"
@@ -79,7 +82,7 @@ task Rustc {
   }
   output {
     File out_stdout = stdout()
-    File out_write_output_filename = "${in_write_output_filename}"
+    File out_write_output_to_filename = "${in_write_output_to_filename}"
     File out_out_dir = "${in_out_dir}"
   }
 }

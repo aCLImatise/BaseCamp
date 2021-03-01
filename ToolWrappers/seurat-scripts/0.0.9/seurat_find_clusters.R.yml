@@ -1,0 +1,162 @@
+!Command
+command:
+- seurat-find-clusters.R
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-object-file
+  description: File name in which a serialized R matrix object may be found.
+  args: !SimpleFlagArg
+    name: INPUT-OBJECT-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --input-format
+  description: Either loom, seurat, anndata or singlecellexperiment for the input
+    format to read.
+  args: !SimpleFlagArg
+    name: INPUT-FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --output-format
+  description: Either loom, seurat, anndata or singlecellexperiment for the output
+    format.
+  args: !SimpleFlagArg
+    name: OUTPUT-FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --resolution
+  description: Value of the resolution parameter, use a value above (below) 1.0 if
+    you want to obtain a larger (smaller) number of communities.
+  args: !SimpleFlagArg
+    name: RESOLUTION
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --algorithm
+  description: Algorithm for modularity optimization (1 = original Louvain algorithm;
+    2 = Louvain algorithm with multilevel refinement; 3 = SLM algorithm; 4 Leiden).
+  args: !SimpleFlagArg
+    name: ALGORITHM
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --tmp-file-location
+  description: Directory where intermediate files will be written. Specify the ABSOLUTE
+    path.
+  args: !SimpleFlagArg
+    name: TMP-FILE-LOCATION
+- !Flag
+  optional: true
+  synonyms:
+  - --modularity-fxn
+  description: 'Modularity function: 1 standard, 2 alternative.'
+  args: !SimpleFlagArg
+    name: MODULARITY-FXN
+- !Flag
+  optional: true
+  synonyms:
+  - --method
+  description: Method for leiden  (defaults to matrix which is fast for small datasets).
+    Enable method = "igraph" to avoid casting large data to a dense matrix.
+  args: !SimpleFlagArg
+    name: METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-object-file
+  description: File name in which to store serialized R object of type 'Seurat'.'
+  args: !SimpleFlagArg
+    name: OUTPUT-OBJECT-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --output-text-file
+  description: File name in which to store text format set of clusters.
+  args: !SimpleFlagArg
+    name: OUTPUT-TEXT-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --graph-name
+  description: Name of graph to use for the clustering algorithm.
+  args: !SimpleFlagArg
+    name: GRAPH-NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --nrandom-starts
+  description: Number of random starts
+  args: !SimpleFlagArg
+    name: NRANDOM-STARTS
+- !Flag
+  optional: true
+  synonyms:
+  - --n-iterations
+  description: Maximal number of iterations per random start
+  args: !SimpleFlagArg
+    name: N-ITERATIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --group-singletons
+  description: Group singletons into nearest cluster. If FALSE, assign all singletons
+    to a "singleton" group
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --random-seed
+  description: Seed of the random number generator
+  args: !SimpleFlagArg
+    name: RANDOM-SEED
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: "Show this help message and exit\n"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/seurat-find-clusters.R [options]\n\n\nOptions:\n\
+  \t-i INPUT-OBJECT-FILE, --input-object-file=INPUT-OBJECT-FILE\n\t\tFile name in\
+  \ which a serialized R matrix object may be found.\n\n\t--input-format=INPUT-FORMAT\n\
+  \t\tEither loom, seurat, anndata or singlecellexperiment for the input format to\
+  \ read.\n\n\t--output-format=OUTPUT-FORMAT\n\t\tEither loom, seurat, anndata or\
+  \ singlecellexperiment for the output format.\n\n\t-r RESOLUTION, --resolution=RESOLUTION\n\
+  \t\tValue of the resolution parameter, use a value above (below) 1.0 if you want\
+  \ to obtain a larger (smaller) number of communities.\n\n\t-a ALGORITHM, --algorithm=ALGORITHM\n\
+  \t\tAlgorithm for modularity optimization (1 = original Louvain algorithm; 2 = Louvain\
+  \ algorithm with multilevel refinement; 3 = SLM algorithm; 4 Leiden).\n\n\t-m TMP-FILE-LOCATION,\
+  \ --tmp-file-location=TMP-FILE-LOCATION\n\t\tDirectory where intermediate files\
+  \ will be written. Specify the ABSOLUTE path.\n\n\t--modularity-fxn=MODULARITY-FXN\n\
+  \t\tModularity function: 1 standard, 2 alternative.\n\n\t--method=METHOD\n\t\tMethod\
+  \ for leiden  (defaults to matrix which is fast for small datasets). Enable method\
+  \ = \"igraph\" to avoid casting large data to a dense matrix.\n\n\t-o OUTPUT-OBJECT-FILE,\
+  \ --output-object-file=OUTPUT-OBJECT-FILE\n\t\tFile name in which to store serialized\
+  \ R object of type 'Seurat'.'\n\n\t-t OUTPUT-TEXT-FILE, --output-text-file=OUTPUT-TEXT-FILE\n\
+  \t\tFile name in which to store text format set of clusters.\n\n\t--graph-name=GRAPH-NAME\n\
+  \t\tName of graph to use for the clustering algorithm.\n\n\t-s NRANDOM-STARTS, --nrandom-starts=NRANDOM-STARTS\n\
+  \t\tNumber of random starts\n\n\t--n-iterations=N-ITERATIONS\n\t\tMaximal number\
+  \ of iterations per random start\n\n\t--group-singletons\n\t\tGroup singletons into\
+  \ nearest cluster. If FALSE, assign all singletons to a \"singleton\" group\n\n\t\
+  --random-seed=RANDOM-SEED\n\t\tSeed of the random number generator\n\n\t-h, --help\n\
+  \t\tShow this help message and exit\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seurat-scripts:0.0.9--0

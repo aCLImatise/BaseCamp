@@ -22,6 +22,9 @@ task VSNPStep1py {
       ~{if defined(group) then ("--group " +  '"' + group + '"') else ""} \
       ~{if (skip_assembly) then "--skip_assembly" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_one: "Required: single read, R1 when Illumina read"
     read_two: "Optional: R2 Illumina read"

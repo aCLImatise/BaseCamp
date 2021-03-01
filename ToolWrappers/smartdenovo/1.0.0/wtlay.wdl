@@ -14,9 +14,9 @@ task Wtlay {
     Boolean? use_number_matches
     Float? best_score_cutoff
     Float? minimum_coverage_similar
-    Int? min_nodes_layout
+    Int? min_nodes_be
     Int? maximum_step_tracing
-    Float? variance_threshold_overlap
+    Float? variance_threshold_alignment
     String? commands_g_printdotstrgraphg
   }
   command <<<
@@ -33,11 +33,14 @@ task Wtlay {
       ~{if (use_number_matches) then "-R" else ""} \
       ~{if defined(best_score_cutoff) then ("-r " +  '"' + best_score_cutoff + '"') else ""} \
       ~{if defined(minimum_coverage_similar) then ("-q " +  '"' + minimum_coverage_similar + '"') else ""} \
-      ~{if defined(min_nodes_layout) then ("-u " +  '"' + min_nodes_layout + '"') else ""} \
+      ~{if defined(min_nodes_be) then ("-u " +  '"' + min_nodes_be + '"') else ""} \
       ~{if defined(maximum_step_tracing) then ("-B " +  '"' + maximum_step_tracing + '"') else ""} \
-      ~{if defined(variance_threshold_overlap) then ("-S " +  '"' + variance_threshold_overlap + '"') else ""} \
+      ~{if defined(variance_threshold_alignment) then ("-S " +  '"' + variance_threshold_alignment + '"') else ""} \
       ~{if defined(commands_g_printdotstrgraphg) then ("-Q " +  '"' + commands_g_printdotstrgraphg + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     long_reads_files: "Long reads sequences file(s), + *"
     long_reads_region: "Long reads retained region, often from wtobt, +\\nFormat: read_name\\toffset\\tlength\\toriginal_len"
@@ -51,9 +54,9 @@ task Wtlay {
     use_number_matches: "Use number of matches as alignment score"
     best_score_cutoff: "Best score cutoff, say best overlap MUST have alignment score >= <-r> * read's best score [0.95]"
     minimum_coverage_similar: "Minimum coverage for similar unitig detection, say the aligned length of unitig A by unitig B, divided by total length of unitig A, [0.4]"
-    min_nodes_layout: "Min nodes of a layout to be output as independent unitig, [4]"
+    min_nodes_be: "Min nodes of a layout to be output as independent unitig, [4]"
     maximum_step_tracing: "Maximum step in tracing bubbles, [20]"
-    variance_threshold_overlap: "Variance threshold of (alignment score / overlap) between ture and false overlaps, [0.50]\\nUsed in better_overlap_strgraph"
+    variance_threshold_alignment: "Variance threshold of (alignment score / overlap) between ture and false overlaps, [0.50]\\nUsed in better_overlap_strgraph"
     commands_g_printdotstrgraphg: "Commands, [gCwgBgRURg]\\nG: print_dot_strgraph\\ng: print_simple_dot_strgraph\\nw: mask_low_cov_edge_strgraph\\nC: mask_contained_reads_strgraph\\nB: best_overlap_strgraph\\nt: bog_cut_tips_strgraph\\nM: bog_merge_bubbles_strgraph\\nU: recover_edges_inter_unitigs_strgraph\\nR: repair_best_overlap_strgraph\\nb: better_overlap_strgraph\\nO: mask_self_circle_reads_strgraph\\nT: reduce_transitive_strgraph\\nL: longest_overlap_strgraph\\n.: exit program"
   }
   output {

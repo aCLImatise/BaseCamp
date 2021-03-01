@@ -6,7 +6,7 @@ task Ssualign {
     File? use_cm_file
     Int? set_bit_score
     Int? set_minimum_length
-    Boolean? output_alignments_interleaved
+    Boolean? output_alignments_lineseq
     File? only_search_align
     Boolean? dna
     Boolean? rf_only
@@ -32,7 +32,7 @@ task Ssualign {
       ~{if defined(use_cm_file) then ("-m " +  '"' + use_cm_file + '"') else ""} \
       ~{if defined(set_bit_score) then ("-b " +  '"' + set_bit_score + '"') else ""} \
       ~{if defined(set_minimum_length) then ("-l " +  '"' + set_minimum_length + '"') else ""} \
-      ~{if (output_alignments_interleaved) then "-i" else ""} \
+      ~{if (output_alignments_lineseq) then "-i" else ""} \
       ~{if defined(only_search_align) then ("-n " +  '"' + only_search_align + '"') else ""} \
       ~{if (dna) then "--dna" else ""} \
       ~{if (rf_only) then "--rfonly" else ""} \
@@ -48,12 +48,15 @@ task Ssualign {
       ~{if defined(mx_size) then ("--mxsize " +  '"' + mx_size + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force_dir_named: ": force; if dir named <output dir> already exists, empty it first"
     use_cm_file: ": use CM file <f> instead of the default CM file"
     set_bit_score: ": set minimum bit score of a surviving subsequence as <x> [default: 50]"
     set_minimum_length: ": set minimum length    of a surviving subsequence as <n> [default: 1]"
-    output_alignments_interleaved: ": output alignments in interleaved Stockholm format (not 1 line/seq)"
+    output_alignments_lineseq: ": output alignments in interleaved Stockholm format (not 1 line/seq)"
     only_search_align: ": only search with and align to single CM named <s> in CM file\\n(default CM file includes 'archaea', 'bacteria', 'eukarya')"
     dna: ": output alignments as DNA, default is RNA (even if input is DNA)"
     rf_only: ": discard inserts, only keep consensus (nongap RF) columns in alignments\\n(alignments will be fixed width but won't include all target nucleotides)"

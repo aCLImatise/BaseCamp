@@ -3,7 +3,7 @@ version 1.0
 task PhenixpyVcf2fasta {
   input {
     Directory? directory
-    Array[String] list_vcf_process
+    Array[String] list_vcf_files
     Directory? regexp
     File? out
     String? with_mixtures
@@ -22,7 +22,7 @@ task PhenixpyVcf2fasta {
   command <<<
     phenix_py vcf2fasta \
       ~{if defined(directory) then ("--directory " +  '"' + directory + '"') else ""} \
-      ~{if defined(list_vcf_process) then ("--input " +  '"' + list_vcf_process + '"') else ""} \
+      ~{if defined(list_vcf_files) then ("--input " +  '"' + list_vcf_files + '"') else ""} \
       ~{if defined(regexp) then ("--regexp " +  '"' + regexp + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(with_mixtures) then ("--with-mixtures " +  '"' + with_mixtures + '"') else ""} \
@@ -38,9 +38,12 @@ task PhenixpyVcf2fasta {
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
       ~{if defined(with_stats) then ("--with-stats " +  '"' + with_stats + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory: "Path to the directory with .vcf files."
-    list_vcf_process: "List of VCF files to process."
+    list_vcf_files: "List of VCF files to process."
     regexp: "Regular expression for finding VCFs in a directory."
     out: "Path to the output FASTA file."
     with_mixtures: "Specify this option with a threshold to output\\nmixtures above this threshold."

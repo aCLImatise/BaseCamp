@@ -12,6 +12,9 @@ task MmseqsSummarizeheaders {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     header_type: "1               Header Type: 1 Uniclust, 2 Metaclust"
     threads: "8               number of cores used for the computation (uses all cores by default)"

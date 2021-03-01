@@ -3,469 +3,512 @@ command:
 - vardict-java
 positional:
 - !Positional
-  description: 'Default: 4'
+  optional: false
   position: 0
   name: INSERT_STD.
-  optional: false
+  description: 'Default: 4'
 - !Positional
-  description: For
+  optional: false
   position: 1
   name: guide.
-  optional: false
+  description: For
 - !Positional
-  description: Valid only for bowtie2/TopHat or BWA aln followed by sampe.  BWA mem
-    is calculated as NM - Indels.
+  optional: false
   position: 0
   name: mismatches.
-  optional: false
+  description: Valid only for bowtie2/TopHat or BWA aln followed by sampe.  BWA mem
+    is calculated as NM - Indels.
 - !Positional
-  description: 'Default: 5'
+  optional: false
   position: 0
   name: positive.
-  optional: false
+  description: 'Default: 5'
 - !Positional
-  description: '- throw an exception if something looks wrong.'
+  optional: false
   position: 1
   name: STRICT
-  optional: false
+  description: '- throw an exception if something looks wrong.'
 - !Positional
-  description: '- Emit warnings but keep going if possible.'
+  optional: false
   position: 2
   name: LENIENT
-  optional: false
+  description: '- Emit warnings but keep going if possible.'
 - !Positional
-  description: "- Like LENIENT, only don't emit warning messages."
+  optional: false
   position: 3
   name: SILENT
+  description: "- Like LENIENT, only don't emit warning messages."
+- !Positional
   optional: false
+  position: 0
+  name: LENIENT
+  description: '-W,--insert-std <INT>               The insert size STD.  Used for
+    SV calling.  Default: 100'
+- !Positional
+  optional: false
+  position: 1
+  name: caution.
+  description: The
 named:
 - !Flag
-  description: Indicate to move indels to 3-prime if alternative alignment can be
-    achieved.
+  optional: true
   synonyms:
   - '-3'
+  description: Indicate to move indels to 3-prime if alternative alignment can be
+    achieved.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The number of STD. A pair will be considered for DEL if INSERT > INSERT_SIZE
-    + INSERT_STD_AMT *
+  optional: true
   synonyms:
   - -A
+  description: The number of STD. A pair will be considered for DEL if INSERT > INSERT_SIZE
+    + INSERT_STD_AMT *
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --amplicon
   description: "<int:float>           Indicate it's amplicon based calling.  Reads\
     \ that don't map to the amplicon will be skipped.  A read pair\nis considered\
     \ belonging  to the amplicon if the edges are less than int bp to the amplicon,\
     \ and overlap\nfraction is at least float.  Default: 10:0.95"
-  synonyms:
-  - -a
-  - --amplicon
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -adaptor
   description: "Filter adaptor sequences so that they are not used in realignment.\
     \ Multiple adaptors can be supplied by\nsetting them with comma, like: --adaptor\
     \ ACGTTGCTC,ACGGGGTCTC,ACGCGGCTAG ."
-  synonyms:
-  - -adaptor
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: 'The minimum # of reads to determine strand bias, default 2'
+  optional: true
   synonyms:
   - -B
+  description: 'The minimum # of reads to determine strand bias, default 2'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: The indexed BAM file
+  optional: true
   synonyms:
   - -b
+  description: The indexed BAM file
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: Indicate the chromosome names are just numbers, such as 1, 2, not chr1,
-    chr2 (deprecated)
+  optional: true
   synonyms:
   - -C
+  description: Indicate the chromosome names are just numbers, such as 1, 2, not chr1,
+    chr2 (deprecated)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The column for chromosome
+  optional: true
   synonyms:
   - -c
+  description: The column for chromosome
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: Indicate to turn off chimeric reads filtering.
+  optional: true
   synonyms:
   - -chimeric
+  description: Indicate to turn off chimeric reads filtering.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Debug mode.  Will print some error messages and append full genotype
-    at the end.
+  optional: true
   synonyms:
   - -D
   - --debug
+  description: Debug mode.  Will print some error messages and append full genotype
+    at the end.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The delimiter for split region_info, default to tab "\t"
+  optional: true
   synonyms:
   - -d
+  description: The delimiter for split region_info, default to tab "\t"
   args: !SimpleFlagArg
     name: delemiter
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -deldupvar
   description: "Turn on deleting of duplicate variants. Variants in this mode are\
     \ considered and outputted only if start\nposition of variant is inside the region\
     \ interest."
-  synonyms:
-  - -deldupvar
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'The printer type used for different outputs. Default: OUT (i.e. System.out).'
+  optional: true
   synonyms:
   - -DP
   - --default-printer
+  description: 'The printer type used for different outputs. Default: OUT (i.e. System.out).'
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: The column for region end, e.g. gene end
+  optional: true
   synonyms:
   - -E
+  description: The column for region end, e.g. gene end
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: The column for segment ends in the region, e.g. exon ends
+  optional: true
   synonyms:
   - -e
+  description: The column for segment ends in the region, e.g. exon ends
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "The hexical to filter reads using samtools. Default: 0x504 (filter\
-    \ 2nd alignments, unmapped reads and\nduplicates).  Use -F 0 to turn it off."
+  optional: true
   synonyms:
   - -F
+  description: "The hexical to filter reads using samtools. Default: 0x504 (filter\
+    \ 2nd alignments, unmapped reads and\nduplicates).  Use -F 0 to turn it off."
   args: !SimpleFlagArg
     name: bit
-  optional: true
 - !Flag
-  description: 'The threshold for allele frequency, default: 0.01 or 1%'
+  optional: true
   synonyms:
   - -f
+  description: 'The threshold for allele frequency, default: 0.01 or 1%'
   args: !SimpleFlagArg
     name: double
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -G
   description: "The reference fasta. Should be indexed (.fai).\nDefaults to: /ngs/reference_data/genomes/Hsapiens/hg19/seq/hg19.fa.\
     \  Also short commands can be used to\nset path to:\nhg19 - /ngs/reference_data/genomes/Hsapiens/hg19/seq/hg19.fa\n\
     hg38 - /ngs/reference_data/genomes/Hsapiens/hg38/seq/hg38.fa\nmm10 - /ngs/reference_data/genomes/Mmusculus/mm10/seq/mm10.fa"
-  synonyms:
-  - -G
   args: !SimpleFlagArg
     name: Genome fasta
-  optional: true
 - !Flag
-  description: The column for gene name, or segment annotation
+  optional: true
   synonyms:
   - -g
+  description: The column for gene name, or segment annotation
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: ',--?                              Print this help page'
+  optional: true
   synonyms:
   - -H
+  description: ',--?                              Print this help page'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'The indel size.  Default: 50bp'
+  optional: true
   synonyms:
   - -I
+  description: 'The indel size.  Default: 50bp'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: Output splicing read counts
+  optional: true
   synonyms:
   - -i
   - --splice
+  description: Output splicing read counts
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The genomic position that CRISPR/Cas9 suppose to cut, typically 3bp
-    from the PAM NGG site and within the
+  optional: true
   synonyms:
   - -J
   - --crispr
+  description: The genomic position that CRISPR/Cas9 suppose to cut, typically 3bp
+    from the PAM NGG site and within the
   args: !SimpleFlagArg
     name: CRISPR_cutting_site
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -j
   description: "In CRISPR mode, the minimum amount in bp that a read needs to overlap\
     \ with cutting site.  If a read does\nnot meet the criteria,\nit will not be used\
     \ for variant calling, since it is likely just a partially amplified PCR.  Default:\
     \ not\nset, or no filtering"
-  synonyms:
-  - -j
   args: !SimpleFlagArg
     name: CRISPR_filtering_bp
-  optional: true
 - !Flag
-  description: Include Ns in the total depth calculation
+  optional: true
   synonyms:
   - -K
+  description: Include Ns in the total depth calculation
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Indicate whether to perform local realignment.  Default: 1.  Set to\
-    \ 0 to disable it.  For Ion or PacBio,\n0 is recommended."
+  optional: true
   synonyms:
   - -k
+  description: "Indicate whether to perform local realignment.  Default: 1.  Set to\
+    \ 0 to disable it.  For Ion or PacBio,\n0 is recommended."
   args: !SimpleFlagArg
     name: 0/1
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -L
   description: "The minimum structural variant length to be presented using <DEL>\
     \ <DUP> <INV> <INS>, etc. Default: 1000.\nAny indel, complex variants less than\
     \ this will be spelled out with exact nucleotides."
-  synonyms:
-  - -L
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -M
   description: "The minimum matches for a read to be considered. If, after soft-clipping,\
     \ the matched bp is less than\nINT, then the read is discarded. It's meant for\
     \ PCR based targeted sequencing where there's no insert and\nthe matching is only\
     \ the primers.\nDefault: 0, or no filtering"
-  synonyms:
-  - -M
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: If set, reads with mismatches more than INT will be filtered and ignored.  Gaps
-    are not counted as
+  optional: true
   synonyms:
   - -m
+  description: If set, reads with mismatches more than INT will be filtered and ignored.  Gaps
+    are not counted as
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: 'The variant frequency threshold to determine variant as good in case
-    of monomer MSI. Default: 0.25'
+  optional: true
   synonyms:
   - -mfreq
+  description: 'The variant frequency threshold to determine variant as good in case
+    of monomer MSI. Default: 0.25'
   args: !SimpleFlagArg
     name: double
-  optional: true
 - !Flag
-  description: The sample name to be used directly.  Will overwrite -n option
+  optional: true
   synonyms:
   - -N
+  description: The sample name to be used directly.  Will overwrite -n option
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: 'The regular expression to extract sample name from BAM filenames.  Default
-    to: /([^\/\._]+?)_[^\/]*.bam/'
+  optional: true
   synonyms:
   - -n
+  description: 'The regular expression to extract sample name from BAM filenames.  Default
+    to: /([^\/\._]+?)_[^\/]*.bam/'
   args: !SimpleFlagArg
     name: regular_expression
-  optional: true
 - !Flag
-  description: 'The variant frequency threshold to determine variant as good in case
-    of non-monomer MSI. Default: 0.1'
+  optional: true
   synonyms:
   - -nmfreq
+  description: 'The variant frequency threshold to determine variant as good in case
+    of non-monomer MSI. Default: 0.1'
   args: !SimpleFlagArg
     name: double
-  optional: true
 - !Flag
-  description: 'The reads should have at least mean MapQ to be considered a valid
-    variant.  Default: no filtering'
+  optional: true
   synonyms:
   - -O
+  description: 'The reads should have at least mean MapQ to be considered a valid
+    variant.  Default: no filtering'
   args: !SimpleFlagArg
     name: MapQ
-  optional: true
 - !Flag
-  description: "The Qratio of (good_quality_reads)/(bad_quality_reads+0.5).  The quality\
-    \ is defined by -q option.\nDefault: 1.5"
+  optional: true
   synonyms:
   - -o
+  description: "The Qratio of (good_quality_reads)/(bad_quality_reads+0.5).  The quality\
+    \ is defined by -q option.\nDefault: 1.5"
   args: !SimpleFlagArg
     name: Qratio
-  optional: true
 - !Flag
-  description: The read position filter.  If the mean variants position is less that
-    specified, it's considered false
+  optional: true
   synonyms:
   - -P
+  description: The read position filter.  If the mean variants position is less that
+    specified, it's considered false
   args: !SimpleFlagArg
     name: number
-  optional: true
 - !Flag
-  description: Do pileup regardless of the frequency
+  optional: true
   synonyms:
   - -p
+  description: Do pileup regardless of the frequency
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: If set, reads with mapping quality less than INT will be filtered and
-    ignored
+  optional: true
   synonyms:
   - -Q
+  description: If set, reads with mapping quality less than INT will be filtered and
+    ignored
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -q
   description: "The phred score for a base to be considered a good call.  Default:\
     \ 25 (for Illumina)\nFor PGM, set it to ~15, as PGM tends to under estimate base\
     \ quality."
-  synonyms:
-  - -q
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "The region of interest.  In the format of chr:start-end.  If end is\
-    \ omitted, then a single position.  No\nBED is needed."
+  optional: true
   synonyms:
   - -R
+  description: "The region of interest.  In the format of chr:start-end.  If end is\
+    \ omitted, then a single position.  No\nBED is needed."
   args: !SimpleFlagArg
     name: Region
-  optional: true
 - !Flag
-  description: 'The minimum # of variant reads, default 2'
+  optional: true
   synonyms:
   - -r
+  description: 'The minimum # of variant reads, default 2'
   args: !SimpleFlagArg
     name: minimum reads
-  optional: true
 - !Flag
-  description: The column for region start, e.g. gene start
+  optional: true
   synonyms:
   - -S
+  description: The column for region start, e.g. gene start
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: The column for segment starts in the region, e.g. exon starts
+  optional: true
   synonyms:
   - -s
+  description: The column for segment starts in the region, e.g. exon starts
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: Trim bases after [INT] bases in the reads
+  optional: true
   synonyms:
   - -T
   - --trim
+  description: Trim bases after [INT] bases in the reads
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: Indicate to remove duplicated reads.  Only one pair with same start
-    positions will be kept
+  optional: true
   synonyms:
   - -t
   - --dedup
+  description: Indicate to remove duplicated reads.  Only one pair with same start
+    positions will be kept
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Threads count.
+  optional: true
   synonyms:
   - -th
+  description: Threads count.
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: Turn off structural variant calling.
+  optional: true
   synonyms:
   - -U
   - --nosv
+  description: Turn off structural variant calling.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Indicate unique mode, which when mate pairs overlap, the overlapping\
-    \ part will be counted only once using\nforward read only."
+  optional: true
   synonyms:
   - -u
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: "Indicate unique mode, which when mate pairs overlap, the overlapping\
-    \ part will be counted only once using\nfirst read only."
+    \ part will be counted only once using\nforward read only."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -UN
+  description: "Indicate unique mode, which when mate pairs overlap, the overlapping\
+    \ part will be counted only once using\nfirst read only."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The lowest frequency in the normal sample allowed for a putative somatic
-    mutation.  Defaults to 0.05
+  optional: true
   synonyms:
   - -V
+  description: The lowest frequency in the normal sample allowed for a putative somatic
+    mutation.  Defaults to 0.05
   args: !SimpleFlagArg
     name: freq
-  optional: true
 - !Flag
-  description: VCF format output
+  optional: true
   synonyms:
   - -v
+  description: VCF format output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: How strict to be when reading a SAM or BAM.
+  optional: true
   synonyms:
   - -VS
+  description: How strict to be when reading a SAM or BAM.
   args: !SimpleFlagArg
     name: STRICT | LENIENT | SILENT
-  optional: true
 - !Flag
-  description: "The insert size STD.  Used for SV calling.  Default: 100\n-w,--insert-size\
-    \ <INT>              The insert size.  Used for SV calling.  Default: 300\n-X\
-    \ <INT>                            Extension of bp to look for mismatches after\
-    \ insersion or deletion.  Default to 2 bp, or only calls when\nthey're within\
-    \ 2 bp.\n-x <INT>                            The number of nucleotide to extend\
-    \ for each segment, default: 0\n-Y,--ref-extension <INT>            Extension\
-    \ of bp of reference to build lookup table. Default to 1200 bp. Increase the number\
-    \ will slowdown\nthe program. The main purpose is to call large indels with 1000\
-    \ bp that can be missed by discordant mate\npairs.\n-y,--verbose\n-Z,--downsample\
-    \ <double>            For downsampling fraction.  e.g. 0.7 means roughly 70% downsampling.\
-    \  Default: No downsampling.  Use with\ncaution.  The\ndownsampling will be random\
-    \ and non-reproducible.\n-z <0/1>                            Indicate whether\
-    \ coordinates are zero-based, as IGV uses.  Default: 1 for BED file or amplicon\
-    \ BED file.\nUse 0 to turn it off. When using the -R option, it's set to 0"
+  optional: true
   synonyms:
-  - -W
-  - --insert-std
+  - -w
+  - --insert-size
+  description: 'The insert size.  Used for SV calling.  Default: 300'
   args: !SimpleFlagArg
     name: INT
+- !Flag
   optional: true
+  synonyms:
+  - -X
+  description: "Extension of bp to look for mismatches after insersion or deletion.\
+    \  Default to 2 bp, or only calls when\nthey're within 2 bp."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: 'The number of nucleotide to extend for each segment, default: 0'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -Y
+  - --ref-extension
+  description: "Extension of bp of reference to build lookup table. Default to 1200\
+    \ bp. Increase the number will slowdown\nthe program. The main purpose is to call\
+    \ large indels with 1000 bp that can be missed by discordant mate\npairs."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --verbose
+  - -Z
+  - --downsample
+  description: 'For downsampling fraction.  e.g. 0.7 means roughly 70% downsampling.  Default:
+    No downsampling.  Use with'
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: "Indicate whether coordinates are zero-based, as IGV uses.  Default:\
+    \ 1 for BED file or amplicon BED file.\nUse 0 to turn it off. When using the -R\
+    \ option, it's set to 0"
+  args: !SimpleFlagArg
+    name: 0/1
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print a header row describing columns
+  optional: true
   synonyms:
   - -h
   - --header
+  description: Print a header row describing columns
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: vardict [-n name_reg] [-b bam] [-c chr] [-S start] [-E end] [-s\
@@ -619,3 +662,4 @@ help_text: "usage: vardict [-n name_reg] [-b bam] [-c chr] [-S start] [-E end] [
   \ is NO WARRANTY, to the extent permitted by law.\n"
 generated_using:
 - -h
+docker_image:

@@ -8,6 +8,9 @@ task GffCheck {
     gff_check \
       ~{gff}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: ""
   }

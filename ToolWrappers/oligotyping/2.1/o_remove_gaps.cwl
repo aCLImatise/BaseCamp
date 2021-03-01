@@ -3,7 +3,7 @@ id: o_remove_gaps.cwl
 inputs:
 - id: in_output
   doc: "Path for output.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_fast_a_file_path
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Path for output.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - o-remove-gaps

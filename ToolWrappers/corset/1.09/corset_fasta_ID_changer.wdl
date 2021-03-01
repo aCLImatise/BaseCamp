@@ -10,6 +10,9 @@ task CorsetFastaIDChanger {
       ~{cluster_file} \
       ~{fast_a_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cluster_file: ""
     fast_a_file: ""

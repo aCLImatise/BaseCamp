@@ -16,6 +16,9 @@ task UropaSummaryR {
       ~{if (all_hits) then "--allhits" else ""} \
       ~{if (original_command_line) then "--call" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     final_hits: "file containing the final hits from UROPA."
     config: "file containing the json formatted configuration from the UROPA run."

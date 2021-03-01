@@ -16,6 +16,9 @@ task FEELncPipelinesh {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(candidate) then ("--candidate " +  '"' + candidate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: ""
     out_name: ""

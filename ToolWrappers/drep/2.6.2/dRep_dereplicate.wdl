@@ -30,7 +30,7 @@ task DRepDereplicate {
     Float? warn_dist
     Float? warn_sim
     Float? warn_aln
-    Boolean? genomes_cluster_fasta
+    Boolean? genomes_cluster_format
     String? check_m_method
     File? genome_info
   }
@@ -64,10 +64,13 @@ task DRepDereplicate {
       ~{if defined(warn_dist) then ("--warn_dist " +  '"' + warn_dist + '"') else ""} \
       ~{if defined(warn_sim) then ("--warn_sim " +  '"' + warn_sim + '"') else ""} \
       ~{if defined(warn_aln) then ("--warn_aln " +  '"' + warn_aln + '"') else ""} \
-      ~{if (genomes_cluster_fasta) then "-g" else ""} \
+      ~{if (genomes_cluster_format) then "-g" else ""} \
       ~{if defined(check_m_method) then ("--checkM_method " +  '"' + check_m_method + '"') else ""} \
       ~{if defined(genome_info) then ("--genomeInfo " +  '"' + genome_info + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     processors: "threads (default: 6)"
     debug: "make extra debugging output (default: False)"
@@ -97,7 +100,7 @@ task DRepDereplicate {
     warn_dist: "How far from the threshold to throw cluster warnings\\n(default: 0.25)"
     warn_sim: "Similarity threshold for warnings between dereplicated\\ngenomes (default: 0.98)"
     warn_aln: "Minimum aligned fraction for warnings between\\ndereplicated genomes (ANIn) (default: 0.25)"
-    genomes_cluster_fasta: "[GENOMES [GENOMES ...]], --genomes [GENOMES [GENOMES ...]]\\ngenomes to cluster in .fasta format; can pass a number\\nof .fasta files or a single text file listing the\\nlocations of all .fasta files (default: None)"
+    genomes_cluster_format: "[GENOMES [GENOMES ...]], --genomes [GENOMES [GENOMES ...]]\\ngenomes to cluster in .fasta format; can pass a number\\nof .fasta files or a single text file listing the\\nlocations of all .fasta files (default: None)"
     check_m_method: "Either lineage_wf (more accurate) or taxonomy_wf\\n(faster) (default: lineage_wf)"
     genome_info: "location of .csv file containing quality information\\non the genomes. Must contain: [\\\"genome\\\"(basename of\\n.fasta file of that genome), \\\"completeness\\\"(0-100\\nvalue for completeness of the genome),\\n\\\"contamination\\\"(0-100 value of the contamination of\\nthe genome)] (default: None)"
   }

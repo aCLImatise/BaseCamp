@@ -32,6 +32,9 @@ task Monocle3Preprocess {
       ~{if (no_scaling) then "--no-scaling" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_format: "Format of input object. [Default: cds3]"
     output_object_format: "Format of output object. [Default: cds3]"

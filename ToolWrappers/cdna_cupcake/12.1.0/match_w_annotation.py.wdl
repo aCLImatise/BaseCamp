@@ -20,6 +20,9 @@ task MatchWAnnotationpy {
       ~{if defined(min_gene_overlap_bp) then ("--min_gene_overlap_bp " +  '"' + min_gene_overlap_bp + '"') else ""} \
       ~{if defined(min_gene_overlap) then ("--min_gene_overlap " +  '"' + min_gene_overlap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_query_overlap: "Minimum query overlap, in ratio (default: 0.0)"
     min_gene_overlap_bp: "Minimum gene overlap, in bp (default: 0 bp)"

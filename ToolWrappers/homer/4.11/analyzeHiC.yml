@@ -3,341 +3,385 @@ command:
 - analyzeHiC
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: PE tag directory
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: '<#> (Resolution of matrix in bp or use "-res site" [see below], default:
-    10000000)'
+  optional: true
   synonyms:
   - -res
+  description: '<#> (Resolution of matrix in bp or use "-res site" [see below], default:
+    10000000)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (size of region to count tags for overlapping windows, default:
-    same as res)'
+  optional: true
   synonyms:
   - -window
+  description: '<#> (size of region to count tags for overlapping windows, default:
+    same as res)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '(create matrix on this chromosome, default: whole genome)'
+  optional: true
   synonyms:
   - -chr
+  description: '(create matrix on this chromosome, default: whole genome)'
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
-  description: <#> (start matrix at this position, default:0)
+  optional: true
   synonyms:
   - -start
+  description: <#> (start matrix at this position, default:0)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (end matrix at this position, default: no limit)'
+  optional: true
   synonyms:
   - -end
+  description: '<#> (end matrix at this position, default: no limit)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: :xxxxxx-yyyyyy (UCSC formatted position instead of -chr/-start/-end)
+  optional: true
   synonyms:
   - -pos
+  description: :xxxxxx-yyyyyy (UCSC formatted position instead of -chr/-start/-end)
   args: !SimpleFlagArg
     name: chrN
-  optional: true
 - !Flag
-  description: "<#>, -end2 <#>, or -pos2 (Use these positions on the\ny-axis of the\
-    \ matrix.  Otherwise the matrix will be sysmetric)"
+  optional: true
   synonyms:
   - -chr2
   - -start2
+  description: "<#>, -end2 <#>, or -pos2 (Use these positions on the\ny-axis of the\
+    \ matrix.  Otherwise the matrix will be sysmetric)"
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
-  description: (specify regions to make matrix, unbalanced, use -p2 <peak file>)
+  optional: true
   synonyms:
   - -p
+  description: (specify regions to make matrix, unbalanced, use -p2 <peak file>)
   args: !SimpleFlagArg
     name: peak file
-  optional: true
 - !Flag
-  description: (normally makes a square matrix, this will force 2nd set of peaks to
-    be the genome)
+  optional: true
   synonyms:
   - -vsGenome
+  description: (normally makes a square matrix, this will force 2nd set of peaks to
+    be the genome)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '(divide up peaks into regions the size of the resolution, default:
-    use peak midpoints)'
+  optional: true
   synonyms:
   - -chopify
+  description: '(divide up peaks into regions the size of the resolution, default:
+    use peak midpoints)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (use with -maxDist <#>, outputs diagonal of matrix up to maxDistance)
+  optional: true
   synonyms:
   - -relative
+  description: (use with -maxDist <#>, outputs diagonal of matrix up to maxDistance)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (output peaks used for analysis as a peak file, -pout2 <file> for 2nd
-    set)
+  optional: true
   synonyms:
   - -pout
+  description: (output peaks used for analysis as a peak file, -pout2 <file> for 2nd
+    set)
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -ihskb
   description: "<#> (normalize counts to \"interactions per hundred square kilobases\
     \ per billion, default)\nUse '-normTotal <#>' and '-normArea <#>' to modify normalization\
     \ constants, area in bp^2\nUse '-normTotal given' and '-normArea given' to disable\
     \ normalizations"
-  synonyms:
-  - -ihskb
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (report raw interaction counts)
+  optional: true
   synonyms:
   - -raw
+  description: (report raw interaction counts)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (Only adjust reads based on total interactions per region, default)
+  optional: true
   synonyms:
   - -coverageNorm
+  description: (Only adjust reads based on total interactions per region, default)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (balance resulting matrix - row/column totals the same)
+  optional: true
   synonyms:
   - -balance
+  description: (balance resulting matrix - row/column totals the same)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (return log2 obs/expected counts normalized for interaction distance)
+  optional: true
   synonyms:
   - -distNorm
+  description: (return log2 obs/expected counts normalized for interaction distance)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '| -nolog (force matrix to be linear or log2 transformed)'
+  optional: true
   synonyms:
   - -log
+  - -nolog
+  description: (force matrix to be linear or log2 transformed)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (report Pearson's correlation coeff, use "-corrIters <#>" to recursively
-    calculate)
+  optional: true
   synonyms:
   - -corr
+  description: (report Pearson's correlation coeff, use "-corrIters <#>" to recursively
+    calculate)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (merge regions in correlation so that minimum # expected tags
-    per data point)'
+  optional: true
   synonyms:
   - -corrDepth
+  description: '<#> (merge regions in correlation so that minimum # expected tags
+    per data point)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '(Output file name, default: sent to stdout)'
+  optional: true
   synonyms:
   - -o
+  description: '(Output file name, default: sent to stdout)'
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
-  description: (calculates DLR and ICF compaction scores)
+  optional: true
   synonyms:
   - -compactionStats
+  description: (calculates DLR and ICF compaction scores)
   args: !SimpleFlagArg
     name: output BEDGRAPH file prefix
-  optional: true
 - !Flag
-  description: '<#> (Cutoff distance for distal vs. local interactions for DLR, default:
-    3Mb'
+  optional: true
   synonyms:
   - -dlrDistance
+  description: '<#> (Cutoff distance for distal vs. local interactions for DLR, default:
+    3Mb'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (outputs interaction frequence curve for regions, can set to "auto")
+  optional: true
   synonyms:
   - -ifc
+  description: (outputs interaction frequence curve for regions, can set to "auto")
   args: !SimpleFlagArg
     name: outputFile
-  optional: true
 - !Flag
-  description: (outputs tags interacting with specified regions)
+  optional: true
   synonyms:
   - -4C
+  description: (outputs tags interacting with specified regions)
   args: !SimpleFlagArg
     name: output BED file
-  optional: true
 - !Flag
-  description: '<#> (number of CPUs to use, default: 1)'
+  optional: true
   synonyms:
   - -cpu
+  description: '<#> (number of CPUs to use, default: 1)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (skip matrix creation - use if more than 100,000 loci)
+  optional: true
   synonyms:
   - -nomatrix
+  description: (skip matrix creation - use if more than 100,000 loci)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <#> (# of std deviations from mean interactions per region to exclude,
-    default:8)
+  optional: true
   synonyms:
   - -std
+  description: <#> (# of std deviations from mean interactions per region to exclude,
+    default:8)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (minimum fraction of average read depth to include in analysis,
-    default: 0.05)'
+  optional: true
   synonyms:
   - -min
+  description: '<#> (minimum fraction of average read depth to include in analysis,
+    default: 0.05)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (minimum fraction of average read depth to use for coverage normalization,
-    default: 0.75)'
+  optional: true
   synonyms:
   - -minExpect
+  description: '<#> (minimum fraction of average read depth to use for coverage normalization,
+    default: 0.75)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (Allow very large matrices to be created... be carful using this)
+  optional: true
   synonyms:
   - -override
+  description: (Allow very large matrices to be created... be carful using this)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (force the creation of a fresh genome-wide background model)
+  optional: true
   synonyms:
   - -force
+  description: (force the creation of a fresh genome-wide background model)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (quit after creating the background model)
+  optional: true
   synonyms:
   - -bgonly
+  description: (quit after creating the background model)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (Create custome bg from regions specified, i.e. -p/-pos)
+  optional: true
   synonyms:
   - -createModel
+  description: (Create custome bg from regions specified, i.e. -p/-pos)
   args: !SimpleFlagArg
     name: custom bg model output file
-  optional: true
 - !Flag
-  description: (Use Custom background model, -modelBg for -ped)
+  optional: true
   synonyms:
   - -model
+  description: (Use Custom background model, -modelBg for -ped)
   args: !SimpleFlagArg
     name: custom bg model input file
-  optional: true
 - !Flag
-  description: "<# reads> (and the output is a PE tag file, initail PE tag directory\
-    \ not used\nUse makeTagDirectory ... -t outputfile to create the new directory)"
+  optional: true
   synonyms:
   - -randomize
+  description: "<# reads> (and the output is a PE tag file, initail PE tag directory\
+    \ not used\nUse makeTagDirectory ... -t outputfile to create the new directory)"
   args: !SimpleFlagArg
     name: bgmodel
-  optional: true
 - !Flag
-  description: (output log p-values from old-style interaction calculations)
+  optional: true
   synonyms:
   - -logp
+  description: (output log p-values from old-style interaction calculations)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (report expected interaction counts based on average profile)
+  optional: true
   synonyms:
   - -expected
+  description: (report expected interaction counts based on average profile)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (raw counts sent to stdout)
+  optional: true
   synonyms:
   - -rawAndExpected
+  description: (raw counts sent to stdout)
   args: !SimpleFlagArg
     name: filename for expectd matrix
-  optional: true
 - !Flag
-  description: '(cluster regions, uses "-o" to name cdt/gtr files, default: out.cdt)'
+  optional: true
   synonyms:
   - -cluster
+  description: '(cluster regions, uses "-o" to name cdt/gtr files, default: out.cdt)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (clusters adjacent regions, good for linear domains)
+  optional: true
   synonyms:
   - -clusterFixed
+  description: (clusters adjacent regions, good for linear domains)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (output interactions, add "-center" to adjust pos to avg of reads)
+  optional: true
   synonyms:
   - -interactions
+  description: (output interactions, add "-center" to adjust pos to avg of reads)
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
-  description: <#> (p-value cutoff for interactions, default 0.001)
+  optional: true
   synonyms:
   - -pvalue
+  description: <#> (p-value cutoff for interactions, default 0.001)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <#> (z-score cutoff for interactions, default 1.0)
+  optional: true
   synonyms:
   - -zscore
+  description: <#> (z-score cutoff for interactions, default 1.0)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Minimum interaction distance, default: resolution/2)'
+  optional: true
   synonyms:
   - -minDist
+  description: '<#> (Minimum interaction distance, default: resolution/2)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Maximum interaction distance, default: -1=none)'
+  optional: true
   synonyms:
   - -maxDist
+  description: '<#> (Maximum interaction distance, default: -1=none)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <#> (score boundaries at the given scale i.e. 100000)
+  optional: true
   synonyms:
   - -boundary
+  description: <#> (score boundaries at the given scale i.e. 100000)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Creating BED file to view with Wash U Epigenome Browser:\n-washu (Both\
-    \ matrix and interaction outputs will be in WashH BED format)\nCreating Circos\
-    \ Diagrams:\n-circos <filename prefix> (creates circos files with the given prefix)\n\
-    -d <tag directory 1> [tag directory 2] ... (will plot tag densities with circos)\n\
-    -b <peak/BED file> (similar to visiualization of genes/-g, but no labels)\n-g\
-    \ <gene location file> (shows gene locations)\nMaking Histograms:\n-hist <#> (create\
-    \ a histogram matrix around peak positions, # is the resolution)\n-size <#> (size\
-    \ of region in histogram, default = 100 * resolution)\nGiven Interaction Analysis\
-    \ Mode (no matrix is produced):\n-i <interaction input file> (for analyzing specific\
-    \ sets of interactions)\n-iraw <output BED filename> (output raw reads from interactions,\
-    \ or -irawtags <file>)\n"
-  synonyms:
-  - -ped
-  args: !SimpleFlagArg
-    name: background PE tag directory
   optional: true
+  synonyms:
+  - -washu
+  description: (Both matrix and interaction outputs will be in WashH BED format)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -circos
+  description: (creates circos files with the given prefix)
+  args: !SimpleFlagArg
+    name: filename prefix
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: '[tag directory 2] ... (will plot tag densities with circos)'
+  args: !SimpleFlagArg
+    name: tag directory 1
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: (similar to visiualization of genes/-g, but no labels)
+  args: !SimpleFlagArg
+    name: peak/BED file
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: (shows gene locations)
+  args: !SimpleFlagArg
+    name: gene location file
+- !Flag
+  optional: true
+  synonyms:
+  - -hist
+  description: '<#> (create a histogram matrix around peak positions, # is the resolution)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -size
+  description: <#> (size of region in histogram, default = 100 * resolution)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: (for analyzing specific sets of interactions)
+  args: !SimpleFlagArg
+    name: interaction input file
+- !Flag
+  optional: true
+  synonyms:
+  - -iraw
+  description: (output raw reads from interactions, or -irawtags <file>)
+  args: !SimpleFlagArg
+    name: output BED filename
 parent:
 subcommands: []
 usage: []
@@ -415,3 +459,4 @@ help_text: "\n!!!!!!!!!!!!\n\tNEED to specify paired-end tag directory with firs
   \ (output raw reads from interactions, or -irawtags <file>)\n\n"
 generated_using:
 - --help
+docker_image:

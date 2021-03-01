@@ -10,6 +10,9 @@ task NfcoreLicences {
       ~{pipeline_name} \
       ~{if (json) then "--json" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     json: "Print output in JSON"
     pipeline_name: ""

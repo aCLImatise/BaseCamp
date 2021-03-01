@@ -3,49 +3,49 @@ id: flye_samtools_depad.cwl
 inputs:
 - id: in_output_sam_default
   doc: Output is SAM (default is BAM)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_input_sam_default
   doc: Input is SAM (default is BAM)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -S
 - id: in_uncompressed_bam_output
   doc: Uncompressed BAM output (can't use with -s)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -u
 - id: in_fast_compression_bam
   doc: Fast compression BAM output (can't use with -s)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: '-1'
 - id: in_reference
   doc: Padded reference sequence file [null]
-  type: File
+  type: File?
   inputBinding:
     prefix: --reference
 - id: in_output_file_name
   doc: Output file name [stdout]
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_input_fmt_option
   doc: "[=VAL]\nSpecify a single input file format option in the form\nof OPTION or\
     \ OPTION=VALUE"
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-fmt-option
 - id: in_output_fmt
   doc: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --output-fmt
 - id: in_output_fmt_option
   doc: "[=VAL]\nSpecify a single output file format option in the form\nof OPTION\
     \ or OPTION=VALUE"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-fmt-option
 - id: in_sam_tools
@@ -69,15 +69,16 @@ outputs:
   type: stdout
 - id: out_output_file_name
   doc: Output file name [stdout]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file_name)
 - id: out_output_fmt_option
   doc: "[=VAL]\nSpecify a single output file format option in the form\nof OPTION\
     \ or OPTION=VALUE"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_fmt_option)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - flye-samtools

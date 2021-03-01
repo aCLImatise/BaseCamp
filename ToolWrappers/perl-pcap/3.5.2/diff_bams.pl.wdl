@@ -8,43 +8,35 @@ task DiffBamspl {
     Boolean? count_flag_differences
     Boolean? skip_z
     Boolean? man
-    Boolean? m
-    Boolean? var_7
-    Boolean? s
-    Boolean? c
-    Boolean? r
-    Boolean? b
-    Boolean? var_12
+    Boolean? var_6
     Int one_dot
     Int two_dot
     String brief
-    String var_16
+    String var_10
     String don
     String full
-    String var_19
+    String var_13
     String other
     String required
     String run
-    String var_23
+    String var_17
     String you
-    String input_slash_output
+    String var_input
     String processing
     String relevant
     String all
-    String var_29
+    String var_23
     String first
     String flag
     String for
-    String var_33
+    String var_27
     String information
     String is
     String parameters
-    String paths_dot
     String second
     String with
     String bam_vertical_line_cram
     String cram
-    String var_42
     String able
     String being
     Int number
@@ -54,31 +46,25 @@ task DiffBamspl {
     String are
     String var_as
     String incorporated
-    String program
     String that
     String bam
     String compare
     String in
     String into
     String order
-    String works
-    String var_60
-    String around
+    String a
     String files
     String of
-    String var_64
-    String var_65
+    String var_53
+    String var_54
     String at_sq
     String can
     String header
-    String var_69
     String be
-    String by
     String such
     String vs
     String compared
-    String var_75
-    String only
+    String var_62
     String via
     Int md_five
     String due
@@ -89,33 +75,31 @@ task DiffBamspl {
       ~{one_dot} \
       ~{two_dot} \
       ~{brief} \
-      ~{var_16} \
+      ~{var_10} \
       ~{don} \
       ~{full} \
-      ~{var_19} \
+      ~{var_13} \
       ~{other} \
       ~{required} \
       ~{run} \
-      ~{var_23} \
+      ~{var_17} \
       ~{you} \
-      ~{input_slash_output} \
+      ~{var_input} \
       ~{processing} \
       ~{relevant} \
       ~{all} \
-      ~{var_29} \
+      ~{var_23} \
       ~{first} \
       ~{flag} \
       ~{for} \
-      ~{var_33} \
+      ~{var_27} \
       ~{information} \
       ~{is} \
       ~{parameters} \
-      ~{paths_dot} \
       ~{second} \
       ~{with} \
       ~{bam_vertical_line_cram} \
       ~{cram} \
-      ~{var_42} \
       ~{able} \
       ~{being} \
       ~{number} \
@@ -125,31 +109,25 @@ task DiffBamspl {
       ~{are} \
       ~{var_as} \
       ~{incorporated} \
-      ~{program} \
       ~{that} \
       ~{bam} \
       ~{compare} \
       ~{in} \
       ~{into} \
       ~{order} \
-      ~{works} \
-      ~{var_60} \
-      ~{around} \
+      ~{a} \
       ~{files} \
       ~{of} \
-      ~{var_64} \
-      ~{var_65} \
+      ~{var_53} \
+      ~{var_54} \
       ~{at_sq} \
       ~{can} \
       ~{header} \
-      ~{var_69} \
       ~{be} \
-      ~{by} \
       ~{such} \
       ~{vs} \
       ~{compared} \
-      ~{var_75} \
-      ~{only} \
+      ~{var_62} \
       ~{via} \
       ~{md_five} \
       ~{due} \
@@ -160,58 +138,47 @@ task DiffBamspl {
       ~{if (count_flag_differences) then "-count" else ""} \
       ~{if (skip_z) then "-skipz" else ""} \
       ~{if (man) then "-man" else ""} \
-      ~{if (m) then "-m" else ""} \
-      ~{if (var_7) then "-help" else ""} \
-      ~{if (s) then "-s" else ""} \
-      ~{if (c) then "-c" else ""} \
-      ~{if (r) then "-r" else ""} \
-      ~{if (b) then "-b" else ""} \
-      ~{if (var_12) then "-a" else ""}
+      ~{if (var_6) then "-help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    bam_a: "-a    The first BAM|CRAM file."
-    bam_b: "-b    The second BAM|CRAM file."
-    ref: "-r    Required for CRAM, genome.fa with co-located fai."
-    count_flag_differences: "-c    Count flag differences"
-    skip_z: "-s    Don't include reads with MAPQ=0 in comparison"
-    man: "-m    Full documentation."
-    m: ""
-    var_7: ""
-    s: ""
-    c: ""
-    r: ""
-    b: ""
-    var_12: ""
+    bam_a: "The first BAM|CRAM file."
+    bam_b: "The second BAM|CRAM file."
+    ref: "Required for CRAM, genome.fa with co-located fai."
+    count_flag_differences: "Count flag differences"
+    skip_z: "Don't include reads with MAPQ=0 in comparison"
+    man: "Full documentation."
+    var_6: ""
     one_dot: ""
     two_dot: ""
     brief: ""
-    var_16: ""
+    var_10: ""
     don: ""
     full: ""
-    var_19: ""
+    var_13: ""
     other: ""
     required: ""
     run: ""
-    var_23: ""
+    var_17: ""
     you: ""
-    input_slash_output: ""
+    var_input: ""
     processing: ""
     relevant: ""
     all: ""
-    var_29: ""
+    var_23: ""
     first: ""
     flag: ""
     for: ""
-    var_33: ""
+    var_27: ""
     information: ""
     is: ""
     parameters: ""
-    paths_dot: ""
     second: ""
     with: ""
     bam_vertical_line_cram: ""
     cram: ""
-    var_42: ""
     able: ""
     being: ""
     number: ""
@@ -221,31 +188,25 @@ task DiffBamspl {
     are: ""
     var_as: ""
     incorporated: ""
-    program: ""
     that: ""
     bam: ""
     compare: ""
     in: ""
     into: ""
     order: ""
-    works: ""
-    var_60: ""
-    around: ""
+    a: ""
     files: ""
     of: ""
-    var_64: ""
-    var_65: ""
+    var_53: ""
+    var_54: ""
     at_sq: ""
     can: ""
     header: ""
-    var_69: ""
     be: ""
-    by: ""
     such: ""
     vs: ""
     compared: ""
-    var_75: ""
-    only: ""
+    var_62: ""
     via: ""
     md_five: ""
     due: ""

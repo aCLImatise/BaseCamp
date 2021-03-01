@@ -2,7 +2,7 @@ version 1.0
 
 task QualityScores {
   input {
-    File? name_input_file
+    File? name_including_data
     File? gz_fast_q_input
     Boolean? bam_input
     Boolean? sam_input
@@ -15,7 +15,7 @@ task QualityScores {
   command <<<
     qualityScores \
       ~{fast_q_dot} \
-      ~{if defined(name_input_file) then ("-i " +  '"' + name_input_file + '"') else ""} \
+      ~{if defined(name_including_data) then ("-i " +  '"' + name_including_data + '"') else ""} \
       ~{if defined(gz_fast_q_input) then ("--gzFASTQinput " +  '"' + gz_fast_q_input + '"') else ""} \
       ~{if (bam_input) then "--BAMinput" else ""} \
       ~{if (sam_input) then "--SAMinput" else ""} \
@@ -24,8 +24,11 @@ task QualityScores {
       ~{if defined(counted_reads) then ("--counted-reads " +  '"' + counted_reads + '"') else ""} \
       ~{if defined(phred_offset) then ("--phred-offset " +  '"' + phred_offset + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    name_input_file: "Name of input file including read data. The default format is"
+    name_including_data: "Name of input file including read data. The default format is"
     gz_fast_q_input: "file is in gzipped Fastq format."
     bam_input: "Input file is in BAM format."
     sam_input: "Input file is in SAM format."

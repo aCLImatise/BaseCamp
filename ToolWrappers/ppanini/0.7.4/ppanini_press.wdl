@@ -18,6 +18,9 @@ task PpaniniPress {
       ~{if defined(scale) then ("--scale " +  '"' + scale + '"') else ""} \
       ~{if defined(memory) then ("--memory " +  '"' + memory + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene_path: "a directory path to ppanini_gene_caller outputs which includes txt, gff, and faa files for each sample."
     path_for_outputs: "Path for outputs"

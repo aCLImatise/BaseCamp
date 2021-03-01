@@ -11,7 +11,7 @@ task AgatSpManageIDspl {
     Boolean? tair
     Boolean? nb
     Int? primary_tag_option
-    File? _output_
+    File? outfile
     String agat_sp_manage_ids_do_tpl
   }
   command <<<
@@ -26,8 +26,11 @@ task AgatSpManageIDspl {
       ~{if (tair) then "--tair" else ""} \
       ~{if (nb) then "--nb" else ""} \
       ~{if defined(primary_tag_option) then ("-p " +  '"' + primary_tag_option + '"') else ""} \
-      ~{if (_output_) then "-o" else ""}
+      ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GTF/GFF file."
     gap: "Integer - Increment the next gene (level1 feature) suffix with\\nthis value. Defauft 0."
@@ -38,11 +41,11 @@ task AgatSpManageIDspl {
     tair: "Boolean - Tair like Output:\\nNbV1Ch01 TAIR10 gene 5928 8737 . - . ID=AT1G01020 NbV1Ch01\\nTAIR10 mRNA 5928 8737 . - . ID=AT1G01020.1 NbV1Ch01 TAIR10 exon\\n5928 8737 . - . ID=AT1G01020.1-exon1"
     nb: "Integer - Start numbering to this value. Default 1."
     primary_tag_option: "primary tag option, case insensitive, list. Allow to specied the\\nfeature types that will be handled. You can specified a specific\\nfeature by given its primary tag name (column 3) as: cds, Gene,\\nMrNa You can specify directly all the feature of a particular\\nlevel: level2=mRNA,ncRNA,tRNA,etc level3=CDS,exon,UTR,etc By\\ndefault all feature are taken into account. fill the option by\\nthe value \\\"all\\\" will have the same behaviour."
-    _output_: ", --output , --out or --outfile\\nString - Output GFF file. If no output file is specified, the\\noutput will be written to STDOUT."
+    outfile: "String - Output GFF file. If no output file is specified, the\\noutput will be written to STDOUT."
     agat_sp_manage_ids_do_tpl: "Description:"
   }
   output {
     File out_stdout = stdout()
-    File out__output_ = "${in__output_}"
+    File out_outfile = "${in_outfile}"
   }
 }

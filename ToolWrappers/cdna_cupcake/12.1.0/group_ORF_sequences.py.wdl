@@ -20,6 +20,9 @@ task GroupORFSequencespy {
       ~{output_prefix} \
       ~{if (is_p_bid) then "--is_pbid" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     is_p_bid: ""
     de_duplicate: ""

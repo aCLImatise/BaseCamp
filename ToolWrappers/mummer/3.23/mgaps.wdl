@@ -2,7 +2,7 @@ version 1.0
 
 task Mgaps {
   input {
-    Boolean? check_fasta_labels
+    Boolean? check_header_labels
     Int? fixed_diagonal_difference
     Boolean? use_extent_start
     Int? fraction_separation_diagonal
@@ -11,15 +11,18 @@ task Mgaps {
   }
   command <<<
     mgaps \
-      ~{if (check_fasta_labels) then "-C" else ""} \
+      ~{if (check_header_labels) then "-C" else ""} \
       ~{if defined(fixed_diagonal_difference) then ("-d " +  '"' + fixed_diagonal_difference + '"') else ""} \
       ~{if (use_extent_start) then "-e" else ""} \
       ~{if defined(fraction_separation_diagonal) then ("-f " +  '"' + fraction_separation_diagonal + '"') else ""} \
       ~{if defined(minimum_length_cluster) then ("-l " +  '"' + minimum_length_cluster + '"') else ""} \
       ~{if defined(maximum_separation_matches) then ("-s " +  '"' + maximum_separation_matches + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    check_fasta_labels: "Check that fasta header labels alternately have \\\"Reverse\\\""
+    check_header_labels: "Check that fasta header labels alternately have \\\"Reverse\\\""
     fixed_diagonal_difference: "Fixed diagonal difference to join matches"
     use_extent_start: "Use extent of match (end - start) rather than sum of piece\\nlengths to determine length of cluster"
     fraction_separation_diagonal: "Fraction of separation for diagonal difference"

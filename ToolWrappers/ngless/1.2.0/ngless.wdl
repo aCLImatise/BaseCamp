@@ -2,8 +2,6 @@ version 1.0
 
 task Ngless {
   input {
-    File? local_file
-    File? install_reference_data
     Boolean? version_short
     Boolean? version_debug
     Boolean? date_short
@@ -42,8 +40,6 @@ task Ngless {
       ~{filename_script_interpret} \
       ~{deprecated} \
       ~{ref} \
-      ~{if defined(local_file) then ("--local-file " +  '"' + local_file + '"') else ""} \
-      ~{if defined(install_reference_data) then ("--install-reference-data " +  '"' + install_reference_data + '"') else ""} \
       ~{if (version_short) then "--version-short" else ""} \
       ~{if (version_debug) then "--version-debug" else ""} \
       ~{if (date_short) then "--date-short" else ""} \
@@ -74,9 +70,10 @@ task Ngless {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(color) then ("--color " +  '"' + color + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    local_file: "| --download-demo DEMO-NAME |"
-    install_reference_data: "| --print-path EXEC | --check-install"
     version_short: "print just version string (useful for scripting)"
     version_debug: "print detailed version information"
     date_short: "print just release date string (useful for scripting)"

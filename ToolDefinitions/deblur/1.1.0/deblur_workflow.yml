@@ -5,195 +5,195 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --seqs-fp
   description: "Either a Demultiplexed FASTA or FASTQ file\nincluding all samples,\
     \ or a directory of\nper-sample FASTA or FASTQ files. Gzip'd\nfiles are acceptable\
     \ (e.g., .fastq.gz).\n[required]"
-  synonyms:
-  - --seqs-fp
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Directory path to store output including\nBIOM table  [required]"
+  optional: true
   synonyms:
   - --output-dir
+  description: "Directory path to store output including\nBIOM table  [required]"
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Sequence trim length. All reads shorter than\nthe trim-length will\
-    \ be discarded. A value\nof -1 can be specified to skip trimming;\nthis assumes\
-    \ all sequences have an identical\nlength.  [required]"
+  optional: true
   synonyms:
   - -t
   - --trim-length
+  description: "Sequence trim length. All reads shorter than\nthe trim-length will\
+    \ be discarded. A value\nof -1 can be specified to skip trimming;\nthis assumes\
+    \ all sequences have an identical\nlength.  [required]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Trim the first N bases from every sequence.\nA value of 0 disables\
-    \ this trim.  [default:\n0]"
+  optional: true
   synonyms:
   - --left-trim-length
+  description: "Trim the first N bases from every sequence.\nA value of 0 disables\
+    \ this trim.  [default:\n0]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pos-ref-fp
   description: "Positive reference filtering database. Keep\nall sequences permissively\
     \ aligning to any\nsequence in this FASTA file; these results\nare stored in the\
     \ reference-hit.biom output\nfile. This defaults to the Greengenes 13_8\nOTUs\
     \ at 88% identity. An e-value threshold\nof 10 is used with SortMeRNA against\
     \ the\nreference. For multiple databases, specify\nthe argument multiple times,\
     \ e.g., --pos-\nref-fp db1.fa --pos-ref-fp db2.fa"
-  synonyms:
-  - --pos-ref-fp
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pos-ref-db-fp
   description: "An indexed version of the positive filtering\ndatabase. This can be\
     \ useful to avoid\nincurring the expense of reindexing on every\nrun. If not supplied,\
     \ deblur will index the\ndatabase. For multiple databases, the order\nmust follow\
     \ that of --pos-ref-fp, for\nexample, --pos-ref-db-fp db1.idx --pos-ref-\ndb-fp\
     \ db2.idx .."
-  synonyms:
-  - --pos-ref-db-fp
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --neg-ref-fp
   description: "Negative (artifacts) filtering database.\nDrop all sequences which\
     \ align to any record\nin this FASTA file. This defaults to a\ndatabase composed\
     \ of multiple PhiX genomes\nand known Illumina adapters. For multiple\ndatabases,\
     \ specify the argument mutiple\ntimes, e.g., --neg-ref-fp db1.fa --neg-ref-\n\
     fp db2.fa"
-  synonyms:
-  - --neg-ref-fp
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --neg-ref-db-fp
   description: "An indexed version of the negative filtering\ndatabase. If not supplied,\
     \ deblur will index\nthe database.For multiple databases, the\norder must follow\
     \ that of --neg-ref-fp, for\nexample, --neg-ref-db-fp db1.idx --neg-ref-\ndb-fp\
     \ db2.idx .."
-  synonyms:
-  - --neg-ref-db-fp
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Overwrite output directory if exists.\n[default: False]"
+  optional: true
   synonyms:
   - -w
   - --overwrite
+  description: "Overwrite output directory if exists.\n[default: False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The mean per nucleotide error rate, used for\noriginal sequence estimate.\
-    \ If not passed\ntypical illumina error rate is used.\n[default: 0.005]"
+  optional: true
   synonyms:
   - -m
   - --mean-error
+  description: "The mean per nucleotide error rate, used for\noriginal sequence estimate.\
+    \ If not passed\ntypical illumina error rate is used.\n[default: 0.005]"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --error-dist
   description: "A comma separated list of error\nprobabilities for each Hamming distance.\
     \ The\nlength of the list determines the number of\nHamming distances taken into\
     \ account.\n[default: 1, 0.06, 0.02, 0.02, 0.01, 0.005,\n0.005, 0.005, 0.001,\
     \ 0.001, 0.001, 0.0005]"
-  synonyms:
-  - -d
-  - --error-dist
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Insertion/deletion (indel) probability. This\nprobability consistent\
-    \ for multiple indels;\nthere is not an added elongation penalty.\n[default: 0.01]"
+  optional: true
   synonyms:
   - -i
   - --indel-prob
+  description: "Insertion/deletion (indel) probability. This\nprobability consistent\
+    \ for multiple indels;\nthere is not an added elongation penalty.\n[default: 0.01]"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Maximum number of allowed indels.  [default:\n3]"
+  optional: true
   synonyms:
   - --indel-max
+  description: "Maximum number of allowed indels.  [default:\n3]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Keep only the sequences which appear at\nleast min-reads study wide\
-    \ (as opposed to\nper-sample).  [default: 10]"
+  optional: true
   synonyms:
   - --min-reads
+  description: "Keep only the sequences which appear at\nleast min-reads study wide\
+    \ (as opposed to\nper-sample).  [default: 10]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Keep only sequences which appear at least\nmin-size times per-sample\
-    \ (as opposed to\nstudy wide).  [default: 2]"
+  optional: true
   synonyms:
   - --min-size
+  description: "Keep only sequences which appear at least\nmin-size times per-sample\
+    \ (as opposed to\nstudy wide).  [default: 2]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Number of threads to use per sample (0 to\nuse all)  [default: 1]"
+  optional: true
   synonyms:
   - -a
   - --threads-per-sample
+  description: "Number of threads to use per sample (0 to\nuse all)  [default: 1]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Keep temporary files (useful for debugging)\n[default: False]"
+  optional: true
   synonyms:
   - --keep-tmp-files
+  description: "Keep temporary files (useful for debugging)\n[default: False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "RANGE       Level of messages for log file(range 1-debug\nto 5-critical\
-    \  [default: 2]"
+  optional: true
   synonyms:
   - --log-level
+  description: "RANGE       Level of messages for log file(range 1-debug\nto 5-critical\
+    \  [default: 2]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: 'log file name  [default: deblur.log]'
+  optional: true
   synonyms:
   - --log-file
+  description: 'log file name  [default: deblur.log]'
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Number of jobs to start (if to run in\nparallel)  [default: 1]"
+  optional: true
   synonyms:
   - -O
   - --jobs-to-start
+  description: "Number of jobs to start (if to run in\nparallel)  [default: 1]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "indicates this is not the main deblur\nprocess (used by the parallel\
-    \ deblur - do\nnot use manually)  [default: False]"
+  optional: true
   synonyms:
   - --is-worker-thread
+  description: "indicates this is not the main deblur\nprocess (used by the parallel\
+    \ deblur - do\nnot use manually)  [default: False]"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: deblur workflow [OPTIONS]\n\n  Launch deblur workflow\n\nOptions:\n\
@@ -276,3 +276,4 @@ help_text: "Usage: deblur workflow [OPTIONS]\n\n  Launch deblur workflow\n\nOpti
   \ Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

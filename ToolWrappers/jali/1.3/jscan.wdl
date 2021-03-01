@@ -24,6 +24,9 @@ task Jscan {
       ~{if (run_verbose_mode) then "-o" else ""} \
       ~{if (print_version) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     amino_acid_similarity: "//amino acid similarity matrix"
     i: "//must be smaller or equal to zero"

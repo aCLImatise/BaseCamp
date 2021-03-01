@@ -8,6 +8,9 @@ task ProteinorthoExtractFromGraphpl {
     proteinortho_extract_from_graph_pl \
       ~{protein_ortho_table}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     protein_ortho_table: ""
   }

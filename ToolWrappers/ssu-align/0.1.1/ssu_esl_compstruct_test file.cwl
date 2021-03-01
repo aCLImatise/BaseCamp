@@ -3,7 +3,7 @@ id: ssu_esl_compstruct_test file.cwl
 inputs:
 - id: in_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -options
 - id: in_ssu_esl_comp_struct
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ssu-esl-compstruct

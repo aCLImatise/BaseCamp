@@ -70,6 +70,9 @@ task EqtlbmaBf {
       ~{if (sb_grp) then "--sbgrp" else ""} \
       ~{if defined(wrt_size) then ("--wrtsize " +  '"' + wrt_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "level (0/default=1/2/3)"
     geno: "file with absolute paths to genotype files\\ntwo columns: subgroup identifier<space/tab>path to file\\nadd '#' at the beginning of a line to comment it\\nsubgroup file: can be in three formats (VCF/IMPUTE/custom)\\nVCF: see specifications on 1kG website\\nIMPUTE: row 1 is a header chr<del>name<del>coord<del>a1<del>a2\\nfollowed by >sample1_a1a1<del>sample1_a1a2<del>sample1_a2a2<del>...\\ncustom: genotypes as allele dose, same as for MatrixEQTL\\nand missing data can be NA or -1 (as used by vcftools --012)"

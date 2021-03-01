@@ -24,6 +24,9 @@ task GnosPullpl {
       ~{if (debug) then "--debug" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     analysis: "(-a)  ALIGNMENTS or CALLS"
     outdir: "(-o)  Where to save jsonl and resulting GNOS downloads"

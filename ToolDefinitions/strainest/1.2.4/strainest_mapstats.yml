@@ -13,10 +13,10 @@ subcommands:
   - MAPPED
   positional:
   - !Positional
-    description: strainest mapstats mapped.fna stats
+    optional: false
     position: 0
     name: EXAMPLES
-    optional: false
+    description: strainest mapstats mapped.fna stats
   named: []
   parent: !Command
     command: *id001
@@ -28,10 +28,10 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: strainest mapstats mapped.fna stats
+        optional: false
         position: 0
         name: EXAMPLES
-        optional: false
+        description: strainest mapstats mapped.fna stats
       named: []
       parent: !Command
         command: *id001
@@ -43,10 +43,10 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: strainest mapstats mapped.fna stats
+            optional: false
             position: 0
             name: EXAMPLES
-            optional: false
+            description: strainest mapstats mapped.fna stats
           named: []
           parent: !Command
             command: *id001
@@ -58,310 +58,358 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: strainest mapstats mapped.fna stats
+                optional: false
                 position: 0
                 name: EXAMPLES
-                optional: false
+                description: strainest mapstats mapped.fna stats
               named: []
-              parent: &id004 !Command
+              parent: !Command
                 command: *id001
                 positional: []
                 named: []
-                parent: &id003 !Command
-                  command:
-                  - strainest
-                  positional: []
-                  named: []
-                  parent:
-                  subcommands:
-                  - !Command
-                    command:
-                    - strainest
-                    - snpdist
-                    positional:
-                    - !Positional
-                      description: ''
-                      position: 0
-                      name: SNP
-                      optional: false
-                    - !Positional
-                      description: ''
-                      position: 1
-                      name: DIST
-                      optional: false
-                    - !Positional
-                      description: ''
-                      position: 2
-                      name: HIST
-                      optional: false
-                    named: []
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag:
-                    usage_flag:
-                    version_flag:
-                    help_text: "Usage: strainest snpdist [OPTIONS] SNP DIST HIST\n\
-                      Try \"strainest snpdist --help\" for help.\n\nError: no such\
-                      \ option: -h\n"
-                    generated_using: &id005
-                    - -h
-                  - *id004
-                  - !Command
-                    command:
-                    - strainest
-                    - map2snp
-                    positional:
-                    - !Positional
-                      description: ''
-                      position: 0
-                      name: REFERENCE
-                      optional: false
-                    - !Positional
-                      description: ''
-                      position: 1
-                      name: MAPPED
-                      optional: false
-                    - !Positional
-                      description: ''
-                      position: 2
-                      name: OUTPUT
-                      optional: false
-                    named: []
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag:
-                    usage_flag:
-                    version_flag:
-                    help_text: "Usage: strainest map2snp [OPTIONS] REFERENCE MAPPED\
-                      \ OUTPUT\nTry \"strainest map2snp --help\" for help.\n\nError:\
-                      \ no such option: -h\n"
-                    generated_using: *id005
-                  - !Command
-                    command:
-                    - strainest
-                    - est
-                    positional:
-                    - !Positional
-                      description: "EXAMPLES\nstrainest est snp.dgrp align.bam align\
-                        \ -t 4"
-                      position: 0
-                      name: indexed.
-                      optional: false
-                    named:
-                    - !Flag
-                      description: 'base quality threshold  [default: 20]'
-                      synonyms:
-                      - -q
-                      - --quality-thr
-                      args: !SimpleFlagArg
-                        name: INTEGER
-                      optional: true
-                    - !Flag
-                      description: "discard positions where the depth of\ncoverage\
-                        \ is lower than the\nMIN_DEPTH_PERCENTILE percentile  [default:\n\
-                        10]"
-                      synonyms:
-                      - -p
-                      - --min-depth-percentile
-                      args: !SimpleFlagArg
-                        name: FLOAT
-                      optional: true
-                    - !Flag
-                      description: "discard positions where the depth of\ncoverage\
-                        \ is higher than the\nMAX_DEPTH_PERCENTILE percentile  [default:\n\
-                        90]"
-                      synonyms:
-                      - -P
-                      - --max-depth-percentile
-                      args: !SimpleFlagArg
-                        name: FLOAT
-                      optional: true
-                    - !Flag
-                      description: "discard positions where the depth of\ncoverage\
-                        \ is lower than the\nMIN_DEPTH_ABSOLUTE  [default: 6]"
-                      synonyms:
-                      - -a
-                      - --min-depth-absolute
-                      args: !SimpleFlagArg
-                        name: INTEGER
-                      optional: true
-                    - !Flag
-                      description: "filter base counts (set to 0) where they are\n\
-                        lower then MIN_DEPTH_BASE x DoC (applied\nindependently for\
-                        \ each allelic position)\n[default: 0.01]"
-                      synonyms:
-                      - -b
-                      - --min-depth-base
-                      args: !SimpleFlagArg
-                        name: FLOAT
-                      optional: true
-                    - !Flag
-                      description: "discard genomes with less than MAX_IDENT_THR\n\
-                        maximum identity  [default: 0.95]"
-                      synonyms:
-                      - -d
-                      - --max-ident-thr
-                      args: !SimpleFlagArg
-                        name: FLOAT
-                      optional: true
-                    - !Flag
-                      description: "number of threads to use in model selection\n\
-                        [default: 1]"
-                      synonyms:
-                      - -t
-                      - --threads
-                      args: !SimpleFlagArg
-                        name: INTEGER
-                      optional: true
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
-                      description: Show this message and exit.
-                      synonyms:
-                      - --help
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag:
-                    help_text: "Usage: strainest est [OPTIONS] SNP BAM OUTPUT\n\n\
-                      \  Estimate relative abundance of strains. The BAM file must\
-                      \ be sorted and\n  indexed.\n\n  EXAMPLES\n\n      strainest\
-                      \ est snp.dgrp align.bam align -t 4\n\nOptions:\n  -q, --quality-thr\
-                      \ INTEGER       base quality threshold  [default: 20]\n  -p,\
-                      \ --min-depth-percentile FLOAT\n                           \
-                      \       discard positions where the depth of\n             \
-                      \                     coverage is lower than the\n         \
-                      \                         MIN_DEPTH_PERCENTILE percentile  [default:\n\
-                      \                                  10]\n  -P, --max-depth-percentile\
-                      \ FLOAT\n                                  discard positions\
-                      \ where the depth of\n                                  coverage\
-                      \ is higher than the\n                                  MAX_DEPTH_PERCENTILE\
-                      \ percentile  [default:\n                                  90]\n\
-                      \  -a, --min-depth-absolute INTEGER\n                      \
-                      \            discard positions where the depth of\n        \
-                      \                          coverage is lower than the\n    \
-                      \                              MIN_DEPTH_ABSOLUTE  [default:\
-                      \ 6]\n  -b, --min-depth-base FLOAT      filter base counts (set\
-                      \ to 0) where they are\n                                  lower\
-                      \ then MIN_DEPTH_BASE x DoC (applied\n                     \
-                      \             independently for each allelic position)\n   \
-                      \                               [default: 0.01]\n  -d, --max-ident-thr\
-                      \ FLOAT       discard genomes with less than MAX_IDENT_THR\n\
-                      \                                  maximum identity  [default:\
-                      \ 0.95]\n  -t, --threads INTEGER           number of threads\
-                      \ to use in model selection\n                              \
-                      \    [default: 1]\n  --help                          Show this\
-                      \ message and exit.\n"
-                    generated_using: &id006
-                    - --help
-                  - !Command
-                    command:
-                    - strainest
-                    - snpclust
-                    positional:
-                    - !Positional
-                      description: ''
-                      position: 0
-                      name: SNP
-                      optional: false
-                    - !Positional
-                      description: ''
-                      position: 1
-                      name: DIST
-                      optional: false
-                    - !Positional
-                      description: ''
-                      position: 2
-                      name: SNPOUT
-                      optional: false
-                    - !Positional
-                      description: ''
-                      position: 3
-                      name: CLUST
-                      optional: false
-                    named: []
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag:
-                    usage_flag:
-                    version_flag:
-                    help_text: "Usage: strainest snpclust [OPTIONS] SNP DIST SNPOUT\
-                      \ CLUST\nTry \"strainest snpclust --help\" for help.\n\nError:\
-                      \ no such option: -h\n"
-                    generated_using: *id005
-                  - !Command
-                    command:
-                    - strainest
-                    - mapgenomes
-                    positional:
-                    - !Positional
-                      description: ''
-                      position: 0
-                      name: GENOMES...
-                      optional: false
-                    - !Positional
-                      description: ''
-                      position: 1
-                      name: REFERENCE
-                      optional: false
-                    - !Positional
-                      description: ''
-                      position: 2
-                      name: MAPPED
-                      optional: false
-                    named: []
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag:
-                    usage_flag:
-                    version_flag:
-                    help_text: "Usage: strainest mapgenomes [OPTIONS] GENOMES... REFERENCE\
-                      \ MAPPED\nTry \"strainest mapgenomes --help\" for help.\n\n\
-                      Error: no such option: -h\n"
-                    generated_using: *id005
-                  usage: []
-                  help_flag: !Flag
-                    description: Show this message and exit.
-                    synonyms:
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  usage_flag:
-                  version_flag:
-                  help_text: "Usage: strainest [OPTIONS] COMMAND [ARGS]...\n\n  StrainEst\
-                    \ - abundance estimation of strains\n\nOptions:\n  --help  Show\
-                    \ this message and exit.\n\nCommands:\n  est         Estimate\
-                    \ relative abundance of strains.\n  map2snp     Build the SNP\
-                    \ matrix in DGRP format.\n  mapgenomes  Map genomes to a reference.\n\
-                    \  mapstats    Compute basic statistics on the mapped genomes\
-                    \ file.\n  snpclust    Given a SNP matrix (in DGRP format) and\
-                    \ a distance matrix,...\n  snpdist     Compute the Hamming distances\
-                    \ between sequences in SNP matrix...\n"
-                  generated_using: *id006
+                parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: strainest mapstats mapped.fna stats
+                    optional: false
                     position: 0
                     name: EXAMPLES
-                    optional: false
+                    description: strainest mapstats mapped.fna stats
                   named: []
-                  parent: *id004
+                  parent: &id004 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent: &id003 !Command
+                      command:
+                      - strainest
+                      positional: []
+                      named: []
+                      parent:
+                      subcommands:
+                      - !Command
+                        command:
+                        - strainest
+                        - snpdist
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: SNP
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: DIST
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 2
+                          name: HIST
+                          description: ''
+                        named: []
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag:
+                        usage_flag:
+                        version_flag:
+                        help_text: "Usage: strainest snpdist [OPTIONS] SNP DIST HIST\n\
+                          Try \"strainest snpdist --help\" for help.\n\nError: no\
+                          \ such option: -h\n"
+                        generated_using: &id005
+                        - -h
+                        docker_image:
+                      - *id004
+                      - !Command
+                        command:
+                        - strainest
+                        - map2snp
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: REFERENCE
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: MAPPED
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 2
+                          name: OUTPUT
+                          description: ''
+                        named: []
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag:
+                        usage_flag:
+                        version_flag:
+                        help_text: "Usage: strainest map2snp [OPTIONS] REFERENCE MAPPED\
+                          \ OUTPUT\nTry \"strainest map2snp --help\" for help.\n\n\
+                          Error: no such option: -h\n"
+                        generated_using: *id005
+                        docker_image:
+                      - !Command
+                        command:
+                        - strainest
+                        - est
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: indexed.
+                          description: "EXAMPLES\nstrainest est snp.dgrp align.bam\
+                            \ align -t 4"
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -q
+                          - --quality-thr
+                          description: 'base quality threshold  [default: 20]'
+                          args: !SimpleFlagArg
+                            name: INTEGER
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -p
+                          - --min-depth-percentile
+                          description: "discard positions where the depth of\ncoverage\
+                            \ is lower than the\nMIN_DEPTH_PERCENTILE percentile \
+                            \ [default:\n10]"
+                          args: !SimpleFlagArg
+                            name: FLOAT
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -P
+                          - --max-depth-percentile
+                          description: "discard positions where the depth of\ncoverage\
+                            \ is higher than the\nMAX_DEPTH_PERCENTILE percentile\
+                            \  [default:\n90]"
+                          args: !SimpleFlagArg
+                            name: FLOAT
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -a
+                          - --min-depth-absolute
+                          description: "discard positions where the depth of\ncoverage\
+                            \ is lower than the\nMIN_DEPTH_ABSOLUTE  [default: 6]"
+                          args: !SimpleFlagArg
+                            name: INTEGER
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -b
+                          - --min-depth-base
+                          description: "filter base counts (set to 0) where they are\n\
+                            lower then MIN_DEPTH_BASE x DoC (applied\nindependently\
+                            \ for each allelic position)\n[default: 0.01]"
+                          args: !SimpleFlagArg
+                            name: FLOAT
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -d
+                          - --max-ident-thr
+                          description: "discard genomes with less than MAX_IDENT_THR\n\
+                            maximum identity  [default: 0.95]"
+                          args: !SimpleFlagArg
+                            name: FLOAT
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -t
+                          - --threads
+                          description: "number of threads to use in model selection\n\
+                            [default: 1]"
+                          args: !SimpleFlagArg
+                            name: INTEGER
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - --help
+                          description: Show this message and exit.
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "Usage: strainest est [OPTIONS] SNP BAM OUTPUT\n\
+                          \n  Estimate relative abundance of strains. The BAM file\
+                          \ must be sorted and\n  indexed.\n\n  EXAMPLES\n\n     \
+                          \ strainest est snp.dgrp align.bam align -t 4\n\nOptions:\n\
+                          \  -q, --quality-thr INTEGER       base quality threshold\
+                          \  [default: 20]\n  -p, --min-depth-percentile FLOAT\n \
+                          \                                 discard positions where\
+                          \ the depth of\n                                  coverage\
+                          \ is lower than the\n                                  MIN_DEPTH_PERCENTILE\
+                          \ percentile  [default:\n                              \
+                          \    10]\n  -P, --max-depth-percentile FLOAT\n         \
+                          \                         discard positions where the depth\
+                          \ of\n                                  coverage is higher\
+                          \ than the\n                                  MAX_DEPTH_PERCENTILE\
+                          \ percentile  [default:\n                              \
+                          \    90]\n  -a, --min-depth-absolute INTEGER\n         \
+                          \                         discard positions where the depth\
+                          \ of\n                                  coverage is lower\
+                          \ than the\n                                  MIN_DEPTH_ABSOLUTE\
+                          \  [default: 6]\n  -b, --min-depth-base FLOAT      filter\
+                          \ base counts (set to 0) where they are\n              \
+                          \                    lower then MIN_DEPTH_BASE x DoC (applied\n\
+                          \                                  independently for each\
+                          \ allelic position)\n                                  [default:\
+                          \ 0.01]\n  -d, --max-ident-thr FLOAT       discard genomes\
+                          \ with less than MAX_IDENT_THR\n                       \
+                          \           maximum identity  [default: 0.95]\n  -t, --threads\
+                          \ INTEGER           number of threads to use in model selection\n\
+                          \                                  [default: 1]\n  --help\
+                          \                          Show this message and exit.\n"
+                        generated_using: &id006
+                        - --help
+                        docker_image:
+                      - !Command
+                        command:
+                        - strainest
+                        - snpclust
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: SNP
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: DIST
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 2
+                          name: SNPOUT
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 3
+                          name: CLUST
+                          description: ''
+                        named: []
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag:
+                        usage_flag:
+                        version_flag:
+                        help_text: "Usage: strainest snpclust [OPTIONS] SNP DIST SNPOUT\
+                          \ CLUST\nTry \"strainest snpclust --help\" for help.\n\n\
+                          Error: no such option: -h\n"
+                        generated_using: *id005
+                        docker_image:
+                      - !Command
+                        command:
+                        - strainest
+                        - mapgenomes
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: GENOMES...
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: REFERENCE
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 2
+                          name: MAPPED
+                          description: ''
+                        named: []
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag:
+                        usage_flag:
+                        version_flag:
+                        help_text: "Usage: strainest mapgenomes [OPTIONS] GENOMES...\
+                          \ REFERENCE MAPPED\nTry \"strainest mapgenomes --help\"\
+                          \ for help.\n\nError: no such option: -h\n"
+                        generated_using: *id005
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: strainest [OPTIONS] COMMAND [ARGS]...\n\n\
+                        \  StrainEst - abundance estimation of strains\n\nOptions:\n\
+                        \  --help  Show this message and exit.\n\nCommands:\n  est\
+                        \         Estimate relative abundance of strains.\n  map2snp\
+                        \     Build the SNP matrix in DGRP format.\n  mapgenomes \
+                        \ Map genomes to a reference.\n  mapstats    Compute basic\
+                        \ statistics on the mapped genomes file.\n  snpclust    Given\
+                        \ a SNP matrix (in DGRP format) and a distance matrix,...\n\
+                        \  snpdist     Compute the Hamming distances between sequences\
+                        \ in SNP matrix...\n"
+                      generated_using: *id006
+                      docker_image:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: EXAMPLES
+                        description: strainest mapstats mapped.fna stats
+                      named: []
+                      parent: *id004
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: strainest mapstats [OPTIONS] MAPPED OUTPUT\n\
+                        \n  Compute basic statistics on the mapped genomes file.\n\
+                        \n  EXAMPLES\n\n      strainest mapstats mapped.fna stats\n\
+                        \nOptions:\n  --help  Show this message and exit.\n"
+                      generated_using: *id006
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: strainest mapstats [OPTIONS] MAPPED OUTPUT\n\
+                      Try \"strainest mapstats --help\" for help.\n\nError: no such\
+                      \ option: -h\n"
+                    generated_using: *id005
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: strainest mapstats [OPTIONS] MAPPED OUTPUT\n\n\
@@ -369,6 +417,7 @@ subcommands:
                     \n      strainest mapstats mapped.fna stats\n\nOptions:\n  --help\
                     \  Show this message and exit.\n"
                   generated_using: *id006
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -377,14 +426,15 @@ subcommands:
                   \ \"strainest mapstats --help\" for help.\n\nError: no such option:\
                   \ -h\n"
                 generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: strainest mapstats [OPTIONS] MAPPED OUTPUT\n\n  Compute\
@@ -392,6 +442,7 @@ subcommands:
                 \     strainest mapstats mapped.fna stats\n\nOptions:\n  --help  Show\
                 \ this message and exit.\n"
               generated_using: *id006
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -399,14 +450,15 @@ subcommands:
             help_text: "Usage: strainest mapstats [OPTIONS] MAPPED OUTPUT\nTry \"\
               strainest mapstats --help\" for help.\n\nError: no such option: -h\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: strainest mapstats [OPTIONS] MAPPED OUTPUT\n\n  Compute\
@@ -414,6 +466,7 @@ subcommands:
             \ strainest mapstats mapped.fna stats\n\nOptions:\n  --help  Show this\
             \ message and exit.\n"
           generated_using: *id006
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -421,20 +474,22 @@ subcommands:
         help_text: "Usage: strainest mapstats [OPTIONS] MAPPED OUTPUT\nTry \"strainest\
           \ mapstats --help\" for help.\n\nError: no such option: -h\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: strainest mapstats [OPTIONS] MAPPED OUTPUT\n\n  Compute basic\
         \ statistics on the mapped genomes file.\n\n  EXAMPLES\n\n      strainest\
         \ mapstats mapped.fna stats\n\nOptions:\n  --help  Show this message and exit.\n"
       generated_using: *id006
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -442,20 +497,22 @@ subcommands:
     help_text: "Usage: strainest mapstats [OPTIONS] MAPPED OUTPUT\nTry \"strainest\
       \ mapstats --help\" for help.\n\nError: no such option: -h\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: strainest mapstats [OPTIONS] MAPPED OUTPUT\n\n  Compute basic\
     \ statistics on the mapped genomes file.\n\n  EXAMPLES\n\n      strainest mapstats\
     \ mapped.fna stats\n\nOptions:\n  --help  Show this message and exit.\n"
   generated_using: *id006
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -463,3 +520,4 @@ version_flag:
 help_text: "Usage: strainest mapstats [OPTIONS] MAPPED OUTPUT\nTry \"strainest mapstats\
   \ --help\" for help.\n\nError: no such option: -h\n"
 generated_using: *id005
+docker_image:

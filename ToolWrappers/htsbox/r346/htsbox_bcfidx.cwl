@@ -3,7 +3,7 @@ id: htsbox_bcfidx.cwl
 inputs:
 - id: in_s
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -s
 - id: in_bam_idx
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - htsbox

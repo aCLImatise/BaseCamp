@@ -10,6 +10,9 @@ task SplitPairedBampy {
       ~{if defined(input_file) then ("--input-file " +  '"' + input_file + '"') else ""} \
       ~{if defined(out_prefix) then ("--out-prefix " +  '"' + out_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Alignment file in BAM or SAM format. BAM file should\\nbe sorted and indexed"
     out_prefix: "Prefix of output BAM files. \\\"prefix.R1.bam\\\" file\\ncontains the 1st read, \\\"prefix.R2.bam\\\" file contains\\nthe 2nd read\\n"

@@ -18,6 +18,9 @@ task TestTableEquality {
       ~{if (no_header) then "--no_header" else ""} \
       ~{if defined(to_l) then ("--tol " +  '"' + to_l + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     give_verbose_output: "Give verbose output"
     sort_keys: "If specified, values will be sorted by the column(s)\\ncorresponding to these name or numbers (0-indexed)\\nbefore comparison"

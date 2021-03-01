@@ -26,6 +26,9 @@ task VtoolsInit {
       ~{if (genotypes) then "--genotypes" else ""} \
       ~{if defined(children) then ("--children " +  '"' + children + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "Remove a project if it already exists."
     build: "Set the build (hg18 or hg19) of the primary reference\\ngenome of the project."

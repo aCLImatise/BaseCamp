@@ -3,18 +3,18 @@ id: Mobius.py.cwl
 inputs:
 - id: in_force_trans
   doc: Force blocks where annotated transcripts start and end
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -forceTrans
 - id: in_an_no_trans
   doc: Flattened SuperTranscript annotation file
-  type: File
+  type: File?
   inputBinding:
     prefix: -AnnoTrans
 - id: in_read_thresh
   doc: "The minimum number of reads in all combined samples\nrequired to support a\
     \ splice junction (default=5)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: -readThresh
 - id: in_splice_junctions
@@ -37,6 +37,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - Mobius.py

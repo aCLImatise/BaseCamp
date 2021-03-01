@@ -34,6 +34,9 @@ task MsstitchPeptides {
       ~{if defined(q_val_threshold) then ("--qvalthreshold " +  '"' + q_val_threshold + '"') else ""} \
       ~{if defined(min_pep_nr) then ("--minpepnr " +  '"' + min_pep_nr + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_format: "Input file of {} format"
     directory_to_output: "Directory to output in"

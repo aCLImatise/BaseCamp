@@ -36,6 +36,9 @@ task Bindpl {
       ~{if (recursively_apply_default) then "-r" else ""} \
       ~{if (xml) then "-xml" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     def: ": Unbound variables in the template will be filled in by the values in\\nthe default file DEFAULT_FILE."
     depth: ": Set the maximum recursion depth to DEPTH (default is infinite).  Setting to -1\\ntells the script to perform infinite-depth recursion.\\n** -detect not implemented yet **"

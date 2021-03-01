@@ -16,6 +16,9 @@ task NucleoatacMerge {
       ~{if defined(sep) then ("--sep " +  '"' + sep + '"') else ""} \
       ~{if defined(min_occ) then ("--min_occ " +  '"' + min_occ + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     occ_peaks: "Output from occ utility"
     nuc_pos: "Output from nuc utility"

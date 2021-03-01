@@ -3,34 +3,34 @@ id: tadbit_filter.cwl
 inputs:
 - id: in_force
   doc: overwrite previously run job
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_resume
   doc: use filters of previously run job
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --resume
 - id: in_workdir
   doc: path to working directory (generated with the tool tadbit mapper)
-  type: File
+  type: File?
   inputBinding:
     prefix: --workdir
 - id: in_cpus
   doc: "[8] Maximum number of CPU cores available in the execution host. If\nhigher\
     \ than 1, tasks with multi-threading capabilities will enabled\n(if 0 all available)\
     \ cores will be used"
-  type: long
+  type: long?
   inputBinding:
     prefix: --cpus
 - id: in_nox
   doc: no display server (X screen)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noX
 - id: in_tmp_db
   doc: if provided uses this directory to manipulate the database
-  type: File
+  type: File?
   inputBinding:
     prefix: --tmpdb
 - id: in_path_ids
@@ -44,29 +44,29 @@ inputs:
 - id: in_compress_input
   doc: "Compress input mapped files when parsing is done. This is done in\nbackground,\
     \ while next MAP file is processed, or while reads are\nsorted."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --compress_input
 - id: in_sam_tools
   doc: path samtools binary
-  type: File
+  type: File?
   inputBinding:
     prefix: --samtools
 - id: in_format
   doc: "[mid] for compression into pseudo-BAM format. Short contains only\npositions\
     \ of reads mapped, mid everything but restriction sites."
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
 - id: in_valid
   doc: stores only valid-pairs discards filtered out reads.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --valid
 - id: in_clean
   doc: "remove intermediate files. WARNING: together with format \"short\" or\nvalid\
     \ options, this may results in losing data"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --clean
 - id: in_apply
@@ -81,29 +81,30 @@ inputs:
 - id: in_over_represented
   doc: "[0.001%] percentage of restriction-enzyme (RE) genomic fragments\nwith more\
     \ coverage to exclude (possible PCR artifact)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --over_represented
 - id: in_max_frag_size
   doc: "[100000] to exclude large genomic RE fragments (probably resulting\nfrom gaps\
     \ in the reference genome)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_frag_size
 - id: in_min_frag_size
   doc: "[50] to exclude small genomic RE fragments (smaller than sequenced\nreads)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_frag_size
 - id: in_re_proximity
   doc: "[5] to exclude read-ends falling too close from RE site (pseudo-\ndangling-ends)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --re_proximity
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tadbit

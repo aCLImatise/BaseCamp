@@ -4,6 +4,9 @@ task Pyadam {
   command <<<
     pyadam
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

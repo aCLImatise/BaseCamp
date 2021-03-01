@@ -18,6 +18,9 @@ task CactusHalGenerator {
       ~{if (output_file) then "--outputFile" else ""} \
       ~{if (show_only_substitutions_with_respect_to_reference) then "--showOnlySubstitutionsWithRespectToReference" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: ": Set the log level"
     cactus_disk: ": The location of the flower disk directory"

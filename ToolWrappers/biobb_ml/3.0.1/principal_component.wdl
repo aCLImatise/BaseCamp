@@ -14,6 +14,9 @@ task PrincipalComponent {
       ~{if defined(input_dataset_path) then ("--input_dataset_path " +  '"' + input_dataset_path + '"') else ""} \
       ~{if defined(output_results_path) then ("--output_results_path " +  '"' + output_results_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Configuration file"
     output_plot_path: "Path to the Principal Component plot, only if number of components is 2 or 3. Accepted formats: png."

@@ -36,6 +36,9 @@ task RtgVcfannotate {
       ~{if (no_gzip) then "--no-gzip" else ""} \
       ~{if (no_header) then "--no-header" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_regions: "if set, only read VCF records that overlap the\\nranges contained in the specified BED file"
     vcf_file_containing: "VCF file containing variants to annotate. Use\\n'-' to read from standard input"

@@ -16,6 +16,9 @@ task Trindex {
       ~{if defined(var_1) then ("-d " +  '"' + var_1 + '"') else ""} \
       ~{if defined(var_2) then ("-D " +  '"' + var_2 + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     c: ""
     var_1: ""

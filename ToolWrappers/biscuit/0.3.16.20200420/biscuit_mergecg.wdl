@@ -14,6 +14,9 @@ task BiscuitMergecg {
       ~{if (nomeseq_mode_only) then "-n" else ""} \
       ~{if defined(minimum_depth_merging) then ("-k " +  '"' + minimum_depth_merging + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nomeseq_mode_only: "NOMe-seq mode, only merge C,G both in HCGD context"
     minimum_depth_merging: "minimum depth after merging (0). This applies to the maximum depth\\nacross samples."

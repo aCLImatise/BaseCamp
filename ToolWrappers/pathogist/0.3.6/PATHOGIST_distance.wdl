@@ -12,6 +12,9 @@ task PATHOGISTDistance {
       ~{output_path} \
       ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "bed file of unwanted SNP positions in the genome"
     calls_path: "path to file containing paths to signal calls (e.g.\\nMLST calls, CNV calls, etc)"

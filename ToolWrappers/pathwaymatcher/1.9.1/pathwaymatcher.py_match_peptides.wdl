@@ -2,7 +2,6 @@ version 1.0
 
 task PathwaymatcherpyMatchpeptides {
   input {
-    File? iinputpath
     File? mapping
     File? fast_a
     Boolean? graph
@@ -10,7 +9,7 @@ task PathwaymatcherpyMatchpeptides {
     String? graph_proteo_form
     Boolean? graph_uniprot
     File? input_file_path
-    File? path_prefix_output
+    File? path_prefix_analysis
     Boolean? top_level_pathways
     Boolean? gt
     String? jar
@@ -21,7 +20,6 @@ task PathwaymatcherpyMatchpeptides {
     pathwaymatcher_py match_peptides \
       ~{java} \
       ~{match_peptides} \
-      ~{if defined(iinputpath) then ("-f " +  '"' + iinputpath + '"') else ""} \
       ~{if defined(mapping) then ("--mapping " +  '"' + mapping + '"') else ""} \
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
       ~{if (graph) then "--graph" else ""} \
@@ -29,13 +27,15 @@ task PathwaymatcherpyMatchpeptides {
       ~{if defined(graph_proteo_form) then ("--graphProteoform " +  '"' + graph_proteo_form + '"') else ""} \
       ~{if (graph_uniprot) then "--graphUniprot" else ""} \
       ~{if defined(input_file_path) then ("--input " +  '"' + input_file_path + '"') else ""} \
-      ~{if defined(path_prefix_output) then ("--output " +  '"' + path_prefix_output + '"') else ""} \
+      ~{if defined(path_prefix_analysis) then ("--output " +  '"' + path_prefix_analysis + '"') else ""} \
       ~{if (top_level_pathways) then "--topLevelPathways" else ""} \
       ~{if (gt) then "-gT" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    iinputpath: "-i=<input_path>\\n[-o=<output_prefix>]"
     mapping: "Path to directory with the static mapping files. By\\ndefault uses the mapping files integrated in the jar\\nfile."
     fast_a: "Path and name of the fasta file containing the Proteins\\nwhere to find the peptides."
     graph: "Create default connection graph according to input type."
@@ -43,7 +43,7 @@ task PathwaymatcherpyMatchpeptides {
     graph_proteo_form: "proteoform connection graph"
     graph_uniprot: "Create protein connection graph"
     input_file_path: "Input file with path"
-    path_prefix_output: "Path and prefix for the output files: search.tsv (list\\nof reactions and pathways containing the input),\\nanalysis.tsv (over-representation analysis) and\\nnetworks files."
+    path_prefix_analysis: "Path and prefix for the output files: search.tsv (list\\nof reactions and pathways containing the input),\\nanalysis.tsv (over-representation analysis) and\\nnetworks files."
     top_level_pathways: "Show Top Level Pathways in the search result."
     gt: ""
     jar: ""

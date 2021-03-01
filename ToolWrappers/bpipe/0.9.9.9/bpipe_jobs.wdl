@@ -14,6 +14,9 @@ task BpipeJobs {
       ~{if defined(sleep) then ("-sleep " +  '"' + sleep + '"') else ""} \
       ~{if (watch) then "-watch" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "Show completed  as well as running jobs"
     sleep: "Sleep time when watching continuously"

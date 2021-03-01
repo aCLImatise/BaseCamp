@@ -10,6 +10,9 @@ task Mccortex {
       ~{k} \
       ~{cmd}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     k: ""
     cmd: ""

@@ -16,6 +16,9 @@ task ClassifyMatesPairwise {
       ~{if defined(var_3) then ("-O " +  '"' + var_3 + '"') else ""} \
       ~{if defined(g) then ("-G " +  '"' + g + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     test: ""
     trusted: ""

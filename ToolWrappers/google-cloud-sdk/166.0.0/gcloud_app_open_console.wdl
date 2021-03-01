@@ -10,6 +10,9 @@ task GcloudAppOpenconsole {
       ~{if (logs) then "--logs" else ""} \
       ~{if defined(service) then ("--service " +  '"' + service + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     logs: "Open the log viewer instead of the App Engine dashboard."
     service: "The service to consider. If not specified, use the default service."

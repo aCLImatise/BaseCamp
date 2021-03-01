@@ -16,6 +16,9 @@ task PvacseqGenerateProteinFasta {
       ~{output_fasta_file} \
       ~{if defined(downstream_sequence_length) then ("--downstream-sequence-length " +  '"' + downstream_sequence_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     downstream_sequence_length: "Cap to limit the downstream sequence length for\\nframeshifts when creating the fasta file. Use 'full'\\nto include the full downstream sequence. Default: 1000\\n"
     positional_arguments: "positional arguments:"

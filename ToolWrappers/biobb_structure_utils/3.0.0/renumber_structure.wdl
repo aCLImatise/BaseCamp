@@ -14,6 +14,9 @@ task RenumberStructure {
       ~{if defined(output_structure_path) then ("--output_structure_path " +  '"' + output_structure_path + '"') else ""} \
       ~{if defined(output_mapping_json_path) then ("--output_mapping_json_path " +  '"' + output_mapping_json_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "This file can be a YAML file, JSON file or JSON string"
     input_structure_path: "Input structure file name"

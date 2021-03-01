@@ -34,6 +34,9 @@ task Methplotlib {
       ~{if defined(qc_file) then ("--qcfile " +  '"' + qc_file + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     methylation: "methylation data in nanopolish, nanocompore or ont-\\ncram format"
     names: "names of datasets in --methylation"

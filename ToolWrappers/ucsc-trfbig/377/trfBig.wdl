@@ -22,6 +22,9 @@ task TrfBig {
       ~{if (keep) then "-keep" else ""} \
       ~{if defined(when_used_here) then ("-l " +  '"' + when_used_here + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "a bed file in current dir"
     bed_at: "- create a bed file at explicit location"

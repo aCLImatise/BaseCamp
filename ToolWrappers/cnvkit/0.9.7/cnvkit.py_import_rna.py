@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, File, Float, Array, String, Boolean
+
+Cnvkit_Py_Import_Rna_V0_1_0 = CommandToolBuilder(tool="cnvkit.py_import_rna", base_command=["cnvkit.py", "import-rna"], inputs=[ToolInput(tag="in_format", input_type=Int(optional=True), prefix="--format", doc=InputDocumentation(doc="Input format name: 'rsem' for RSEM gene-level read\ncounts (*_rsem.genes.results), or 'counts' for generic\n2-column gene IDs and their read counts (e.g. TCGA\nlevel 2 RNA expression).")), ToolInput(tag="in_gene_resource", input_type=File(optional=True), prefix="--gene-resource", doc=InputDocumentation(doc="Location of gene info table from Ensembl BioMart.")), ToolInput(tag="in_correlations", input_type=File(optional=True), prefix="--correlations", doc=InputDocumentation(doc="Correlation of each gene's copy number with\nexpression. Output of cnv_expression_correlate.py.")), ToolInput(tag="in_max_log_two", input_type=Float(optional=True), prefix="--max-log2", doc=InputDocumentation(doc="Maximum log2 ratio in output. Observed values above\nthis limit will be replaced with this value. [Default:\n3.0]")), ToolInput(tag="in_normal", input_type=Array(t=String(), optional=True), prefix="--normal", doc=InputDocumentation(doc="Normal samples (same format as `gene_counts`) to be\nused as a control to when normalizing and re-centering\ngene read depth ratios. All filenames following this\noption will be used.")), ToolInput(tag="in_output_dir", input_type=File(optional=True), prefix="--output-dir", doc=InputDocumentation(doc="Directory to write a CNVkit .cnr file for each input\nsample. [Default: .]")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="--output", doc=InputDocumentation(doc="Output file name (summary table).")), ToolInput(tag="in_no_gc", input_type=Boolean(optional=True), prefix="--no-gc", doc=InputDocumentation(doc="Skip GC correction.")), ToolInput(tag="in_no_tx_len", input_type=Boolean(optional=True), prefix="--no-txlen", doc=InputDocumentation(doc="Skip transcript length correction.")), ToolInput(tag="in_files", input_type=String(), position=0, doc=InputDocumentation(doc="Tabular files with Ensembl gene ID and number of reads\nmapped to each gene, from RSEM or another transcript\nquantifier."))], outputs=[ToolOutput(tag="out_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="Output file name (summary table)."))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Cnvkit_Py_Import_Rna_V0_1_0().translate("wdl", allow_empty_container=True)
+

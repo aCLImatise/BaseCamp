@@ -24,6 +24,9 @@ task GenometreetkJkTaxa {
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_group_ids: "file indicating outgroup taxa"
     model: "model of evolution to use (default: wag)"

@@ -38,6 +38,9 @@ task PyatacSignal {
       ~{if (scale) then "--scale" else ""} \
       ~{if (norm) then "--norm" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "Positions around which to generate VPlot"
     bg: "Accepts bedgraph file that is tabix indexed"

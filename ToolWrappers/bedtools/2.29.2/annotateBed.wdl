@@ -26,6 +26,9 @@ task AnnotateBed {
       ~{if defined(files) then ("-files " +  '"' + files + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     names: "A list of names (one / file) to describe each file in -i.\\nThese names will be printed as a header line."
     counts: "the count of features in each file that overlap -i.\\n- Default is to report the fraction of -i covered by each file."

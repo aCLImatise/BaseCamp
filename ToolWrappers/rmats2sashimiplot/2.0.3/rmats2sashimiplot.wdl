@@ -4,7 +4,7 @@ task Rmats2sashimiplot {
   input {
     String? type_event_rmats
     File? rmats_output_event
-    File? coordinate_genome_region
+    File? coordinate_annotation_ofgenes
     Int? lone
     Int? l_two
     Directory? the_output_directory
@@ -18,7 +18,6 @@ task Rmats2sashimiplot {
     Int? min_counts
     Int? color
     Int? font_size
-    Boolean? hide_number
     String usage
   }
   command <<<
@@ -26,7 +25,7 @@ task Rmats2sashimiplot {
       ~{usage} \
       ~{if defined(type_event_rmats) then ("-t " +  '"' + type_event_rmats + '"') else ""} \
       ~{if defined(rmats_output_event) then ("-e " +  '"' + rmats_output_event + '"') else ""} \
-      ~{if defined(coordinate_genome_region) then ("-c " +  '"' + coordinate_genome_region + '"') else ""} \
+      ~{if defined(coordinate_annotation_ofgenes) then ("-c " +  '"' + coordinate_annotation_ofgenes + '"') else ""} \
       ~{if defined(lone) then ("--l1 " +  '"' + lone + '"') else ""} \
       ~{if defined(l_two) then ("--l2 " +  '"' + l_two + '"') else ""} \
       ~{if defined(the_output_directory) then ("-o " +  '"' + the_output_directory + '"') else ""} \
@@ -39,13 +38,15 @@ task Rmats2sashimiplot {
       ~{if defined(group_info) then ("--group-info " +  '"' + group_info + '"') else ""} \
       ~{if defined(min_counts) then ("--min-counts " +  '"' + min_counts + '"') else ""} \
       ~{if defined(color) then ("--color " +  '"' + color + '"') else ""} \
-      ~{if defined(font_size) then ("--font-size " +  '"' + font_size + '"') else ""} \
-      ~{if (hide_number) then "--hide-number" else ""}
+      ~{if defined(font_size) then ("--font-size " +  '"' + font_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type_event_rmats: "Type of event from rMATS result used in the\\nanalysis.eventType is 'SE', 'A5SS', 'A3SS', 'MXE' or\\n'RI'.'SE' is for skipped exon events,'A5SS' is for\\nalternative 5' splice site events,'A3SS' is for\\nalternative 3' splice site events,'MXE' is for\\nmutually exclusive exons events and 'RI' is for\\nretained intron events (Only if using rMATS format\\nresult as event file)."
     rmats_output_event: "The rMATS output event file (Only if using rMATS\\nformat result as event file)."
-    coordinate_genome_region: "The coordinate of genome region and an annotation of\\ngenes and transcripts in GFF3 format. Coordinateand\\nannotation file must be colon separated(Only if using\\ncoordinate and annotation file)."
+    coordinate_annotation_ofgenes: "The coordinate of genome region and an annotation of\\ngenes and transcripts in GFF3 format. Coordinateand\\nannotation file must be colon separated(Only if using\\ncoordinate and annotation file)."
     lone: "The label for first sample."
     l_two: "The label for second sample."
     the_output_directory: "The output directory."
@@ -59,7 +60,6 @@ task Rmats2sashimiplot {
     min_counts: "If the junction count is smaller than this number,\\nthis single junction's count would be omitted in the\\nplot."
     color: "Set the color in format(\\\"#CC0011\\\"[,\\\"#CC0011\\\"]). The\\nnumber of the colors equal to the total number of bam\\nfiles in different samples."
     font_size: "Set the font size."
-    hide_number: "--no-text-background\\n"
     usage: ""
   }
   output {

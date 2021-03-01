@@ -46,6 +46,9 @@ task CargoBuild {
       ~{if (frozen) then "--frozen" else ""} \
       ~{if (locked) then "--locked" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     package: "to build"
     jobs: "Number of parallel jobs, defaults to # of CPUs"

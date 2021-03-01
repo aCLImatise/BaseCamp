@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String
+
+Addtobox_V0_1_0 = CommandToolBuilder(tool="AddToBox", base_command=["AddToBox"], inputs=[ToolInput(tag="in_molecule_cell_pdb", input_type=Boolean(optional=True), prefix="-c", doc=InputDocumentation(doc=": the molecule cell (PDB format)")), ToolInput(tag="in__molecule_add", input_type=Boolean(optional=True), prefix="-a", doc=InputDocumentation(doc=": the molecule to add")), ToolInput(tag="in_na", input_type=Boolean(optional=True), prefix="-na", doc=InputDocumentation(doc=": the number of copies to add")), ToolInput(tag="in_upper_limit_protein", input_type=Boolean(optional=True), prefix="-P", doc=InputDocumentation(doc=": the upper limit of protein atoms")), ToolInput(tag="in_output_file_pdb", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc=": output file (PDB format)")), ToolInput(tag="in_rw", input_type=Boolean(optional=True), prefix="-RW", doc=InputDocumentation(doc=": Clipping radius for solvent atoms")), ToolInput(tag="in_rp", input_type=Boolean(optional=True), prefix="-RP", doc=InputDocumentation(doc=": Clipping radius for protein atoms")), ToolInput(tag="in_ig", input_type=Boolean(optional=True), prefix="-IG", doc=InputDocumentation(doc=": Random number seed")), ToolInput(tag="in_no", input_type=Boolean(optional=True), prefix="-NO", doc=InputDocumentation(doc=": flag for no PDB output (stops after determining the\nprotein fraction of the box)")), ToolInput(tag="in_grid_spacing_search", input_type=Boolean(optional=True), prefix="-G", doc=InputDocumentation(doc=": Grid spacing for search (default 0.2)")), ToolInput(tag="in_recursively_call_addtobox", input_type=Boolean(optional=True), prefix="-V", doc=InputDocumentation(doc=": Recursively call AddToBox until all residues have been")), ToolInput(tag="in_path", input_type=Boolean(optional=True), prefix="-path", doc=InputDocumentation(doc=": Path for AddToBox program on subsequent calls\n(default ${AMBERHOME}/bin/AddToBox)\n")), ToolInput(tag="in_added_dot", input_type=String(), position=0, doc=InputDocumentation(doc="(Default 0 ; any other setting activates recursion)"))], outputs=[ToolOutput(tag="out_output_file_pdb", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_file_pdb", type_hint=File()), doc=OutputDocumentation(doc=": output file (PDB format)"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Addtobox_V0_1_0().translate("wdl", allow_empty_container=True)
+

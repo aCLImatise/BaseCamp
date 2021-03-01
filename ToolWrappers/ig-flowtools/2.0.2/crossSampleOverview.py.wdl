@@ -22,6 +22,9 @@ task CrossSampleOverviewpy {
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
       ~{if defined(var_6) then ("-I " +  '"' + var_6 + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_location_summary: "File location for the summary statistics from"
     file_location_html: "File location for the HTML output file."

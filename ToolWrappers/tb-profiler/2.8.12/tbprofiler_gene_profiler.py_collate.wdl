@@ -10,6 +10,9 @@ task TbprofilerGeneProfilerpyCollate {
       ~{if defined(dir) then ("--dir " +  '"' + dir + '"') else ""} \
       ~{if defined(suffix) then ("--suffix " +  '"' + suffix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "Result directory (default: .)"
     suffix: "Output file suffix (default: .results.json)"

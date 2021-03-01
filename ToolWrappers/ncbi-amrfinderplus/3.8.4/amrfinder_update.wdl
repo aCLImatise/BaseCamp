@@ -16,6 +16,9 @@ task AmrfinderUpdate {
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: "Directory for all versions of AMRFinder databases\\nDefault: /usr/local/bin/data"
     quiet: "Suppress messages to STDERR"

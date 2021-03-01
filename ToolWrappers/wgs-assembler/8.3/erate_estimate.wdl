@@ -4,6 +4,9 @@ task Erateestimate {
   command <<<
     erate_estimate
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

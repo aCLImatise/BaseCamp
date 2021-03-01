@@ -3,7 +3,7 @@ id: faRandomize.cwl
 inputs:
 - id: in_seed
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -seed
 - id: in_in_dot_fa
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - faRandomize

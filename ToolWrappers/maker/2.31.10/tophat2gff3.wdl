@@ -13,7 +13,7 @@ task Tophat2gff3 {
     String use
     String juc_tions
     String with
-    File file
+    File var_file
     String product_ed
     String by
     String top_hat
@@ -31,11 +31,14 @@ task Tophat2gff3 {
       ~{use} \
       ~{juc_tions} \
       ~{with} \
-      ~{file} \
+      ~{var_file} \
       ~{product_ed} \
       ~{by} \
       ~{top_hat}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     description: ""
     gff_three: ""
@@ -48,7 +51,7 @@ task Tophat2gff3 {
     use: ""
     juc_tions: ""
     with: ""
-    file: ""
+    var_file: ""
     product_ed: ""
     by: ""
     top_hat: ""

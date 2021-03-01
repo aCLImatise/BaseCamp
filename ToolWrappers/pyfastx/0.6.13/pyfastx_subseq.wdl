@@ -16,6 +16,9 @@ task PyfastxSubseq {
       ~{if defined(bed_file) then ("--bed-file " +  '"' + bed_file + '"') else ""} \
       ~{if defined(out_file) then ("--out-file " +  '"' + out_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     region_file: "tab-delimited file, one region per line, both start\\nand end position are 1-based"
     bed_file: "tab-delimited BED file, 0-based start position and\\n1-based end position"

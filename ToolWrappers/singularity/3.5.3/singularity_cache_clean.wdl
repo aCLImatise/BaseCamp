@@ -16,6 +16,9 @@ task SingularityCacheClean {
       ~{if (force) then "--force" else ""} \
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "specify a container cache to clean (will clear all\\ncache with the same name)"
     dry_run: "operate in dry run mode and do not actually clean\\nthe cache"

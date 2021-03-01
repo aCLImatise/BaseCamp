@@ -16,6 +16,9 @@ task BiomToStdBiompy {
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_biom: "The abundance file (format: BIOM)."
     output_biom: "The fully compatible abundance file (format: BIOM).\\n[Default: abundance.biom]"

@@ -4,6 +4,9 @@ task Rucs {
   command <<<
     rucs
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

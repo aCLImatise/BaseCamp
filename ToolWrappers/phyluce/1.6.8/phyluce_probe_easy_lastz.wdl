@@ -18,6 +18,9 @@ task PhyluceProbeEasyLastz {
       ~{if defined(coverage) then ("--coverage " +  '"' + coverage + '"') else ""} \
       ~{if defined(min_match) then ("--min_match " +  '"' + min_match + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target: "The path to the target file (2bit/fasta)"
     query: "The path to the query file (2bit/fasta)"

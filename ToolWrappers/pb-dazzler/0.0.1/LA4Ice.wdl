@@ -8,6 +8,9 @@ task LA4Ice {
     LA4Ice \
       ~{if (car_me_uf) then "-carmEUF" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     car_me_uf: ""
   }

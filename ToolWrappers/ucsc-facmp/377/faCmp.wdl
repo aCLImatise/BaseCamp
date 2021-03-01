@@ -14,6 +14,9 @@ task FaCmp {
       ~{if (sort_name) then "-sortName" else ""} \
       ~{if (peptide) then "-peptide" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     soft_mask: "- use the soft masking information during the compare\\nDifferences will be noted if the masking is different."
     sort_name: "- sort input files by name before comparing"

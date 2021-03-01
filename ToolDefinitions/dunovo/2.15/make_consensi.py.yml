@@ -3,107 +3,115 @@ command:
 - make-consensi.py
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: families.msa.tsv
   description: "The output of align_families.py. 6 columns:\n1. (canonical) barcode\n\
     2. order (\"ab\" or \"ba\")\n3. mate (\"1\" or \"2\")\n4. read name\n5. aligned\
     \ sequence\n6. aligned quality scores."
-  position: 0
-  name: families.msa.tsv
+- !Positional
   optional: false
+  position: 0
+  name: run.
+  description: 'Logging:'
 named:
 - !Flag
-  description: "The file to output the first mates of the\nduplex consensus sequences\
-    \ into. Warning: This\nwill be overwritten if it exists!"
+  optional: true
   synonyms:
   - '-1'
   - --dcs1
+  description: "The file to output the first mates of the\nduplex consensus sequences\
+    \ into. Warning: This\nwill be overwritten if it exists!"
   args: !SimpleFlagArg
     name: duplex_1.fa
-  optional: true
 - !Flag
-  description: Same, but for mate 2.
+  optional: true
   synonyms:
   - '-2'
   - --dcs2
+  description: Same, but for mate 2.
   args: !SimpleFlagArg
     name: duplex_2.fa
-  optional: true
 - !Flag
-  description: "Save the single-strand consensus sequences\n(mate 1) in this file\
-    \ (FASTA format). Warning:\nThis will be overwritten if it exists!"
+  optional: true
   synonyms:
   - --sscs1
+  description: "Save the single-strand consensus sequences\n(mate 1) in this file\
+    \ (FASTA format). Warning:\nThis will be overwritten if it exists!"
   args: !SimpleFlagArg
     name: sscs_1.fa
-  optional: true
 - !Flag
-  description: "Save the single-strand consensus sequences\n(mate 2) in this file\
-    \ (FASTA format). Warning:\nThis will be overwritten if it exists!"
+  optional: true
   synonyms:
   - --sscs2
+  description: "Save the single-strand consensus sequences\n(mate 2) in this file\
+    \ (FASTA format). Warning:\nThis will be overwritten if it exists!"
   args: !SimpleFlagArg
     name: sscs_2.fa
-  optional: true
 - !Flag
-  description: "FASTQ quality score format. Sanger scores are\nassumed to begin at\
-    \ '33' (!). Default:\nsanger."
+  optional: true
   synonyms:
   - -F
   - --qual-format
+  description: "FASTQ quality score format. Sanger scores are\nassumed to begin at\
+    \ '33' (!). Default:\nsanger."
   args: !ChoiceFlagArg
     choices: !!set
       solexa:
       sanger:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fastq-out
   description: "Output in FASTQ instead of FASTA. You must\nspecify the quality score\
     \ to give to all\nbases. There is no meaningful quality score we\ncan automatically\
     \ give, so you will have to\nspecify an artificial one. A good choice is\n40,\
     \ the maximum score normally output by\nsequencers."
-  synonyms:
-  - --fastq-out
   args: !SimpleFlagArg
     name: PHRED_SCORE
-  optional: true
 - !Flag
-  description: "The minimum number of reads (from each strand)\nrequired to form a\
-    \ single-strand consensus.\nStrands with fewer reads will be skipped.\nDefault:\
-    \ 3."
+  optional: true
   synonyms:
   - -r
   - --min-reads
+  description: "The minimum number of reads (from each strand)\nrequired to form a\
+    \ single-strand consensus.\nStrands with fewer reads will be skipped.\nDefault:\
+    \ 3."
   args: !SimpleFlagArg
     name: MIN_READS
-  optional: true
 - !Flag
-  description: "Base quality threshold. Bases below this\nquality will not be counted.\
-    \ Default:\n20."
+  optional: true
   synonyms:
   - -q
   - --qual
+  description: "Base quality threshold. Bases below this\nquality will not be counted.\
+    \ Default:\n20."
   args: !SimpleFlagArg
     name: PHRED_SCORE
-  optional: true
 - !Flag
-  description: "The fractional threshold to use when making\nconsensus sequences.\
-    \ The consensus base must\nbe present in more than this fraction of the\nreads,\
-    \ or N will be used as the consensus base\ninstead. Default: 0.5"
+  optional: true
   synonyms:
   - -c
   - --cons-thres
+  description: "The fractional threshold to use when making\nconsensus sequences.\
+    \ The consensus base must\nbe present in more than this fraction of the\nreads,\
+    \ or N will be used as the consensus base\ninstead. Default: 0.5"
   args: !SimpleFlagArg
     name: THRES
-  optional: true
 - !Flag
-  description: "The absolute threshold to use when making\nconsensus sequences. The\
-    \ consensus base must\nbe present in more than this number of reads,\nor N will\
-    \ be used as the consensus base\ninstead. Default: 0"
+  optional: true
   synonyms:
   - -C
   - --min-cons-reads
+  description: "The absolute threshold to use when making\nconsensus sequences. The\
+    \ consensus base must\nbe present in more than this number of reads,\nor N will\
+    \ be used as the consensus base\ninstead. Default: 0"
   args: !SimpleFlagArg
     name: MIN_CONS_READS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --phone-home
   description: "Report helpful usage data to the developer, to\nbetter understand\
     \ the use cases and\nperformance of the tool. The only data which\nwill be recorded\
     \ is the name and version of\nthe tool, the size of the input data, the time\n\
@@ -112,75 +120,65 @@ named:
     \ and the line of code it\noccurred in. No filenames are sent, and the\nonly parameters\
     \ reported are the number of\n--processes and the --queue-size. All the\nreporting\
     \ and recording code is available at\nhttps://github.com/NickSto/ET."
-  synonyms:
-  - --phone-home
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Tell the script it's running on Galaxy.\nCurrently this only affects\
-    \ data reported when\nphoning home."
+  optional: true
   synonyms:
   - --galaxy
+  description: "Tell the script it's running on Galaxy.\nCurrently this only affects\
+    \ data reported when\nphoning home."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If reporting usage data, mark this as a test\nrun."
+  optional: true
   synonyms:
   - --test
+  description: If reporting usage data, mark this as a test
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Print log messages to this file instead of to\nstderr. Warning: Will\
-    \ overwrite the file."
+  optional: true
   synonyms:
   - -l
   - --log
+  description: "Print log messages to this file instead of to\nstderr. Warning: Will\
+    \ overwrite the file."
   args: !SimpleFlagArg
     name: LOG
-  optional: true
 - !Flag
-  description: "-V, --verbose\n-D, --debug"
-  synonyms:
-  - -Q
-  - --quiet
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: "Number of worker subprocesses to use. If 0, no\nsubprocesses will\
-    \ be started and everything\nwill be done inside one process. Give \"auto\"\n\
-    to use as many processes as there are CPU\ncores. Default: 0."
   synonyms:
   - -p
   - --processes
+  description: "Number of worker subprocesses to use. If 0, no\nsubprocesses will\
+    \ be started and everything\nwill be done inside one process. Give \"auto\"\n\
+    to use as many processes as there are CPU\ncores. Default: 0."
   args: !SimpleFlagArg
     name: PROCESSES
-  optional: true
 - !Flag
-  description: "How long to go accumulating responses from\nworker subprocesses before\
-    \ dealing with all of\nthem. Default: 8 * the number of worker\n--processes."
+  optional: true
   synonyms:
   - --queue-size
+  description: "How long to go accumulating responses from\nworker subprocesses before\
+    \ dealing with all of\nthem. Default: 8 * the number of worker\n--processes."
   args: !SimpleFlagArg
     name: QUEUE_SIZE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this text on usage and arguments.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Print this text on usage and arguments.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Print the version number and exit.
+  optional: true
   synonyms:
   - -v
   - --version
+  description: Print the version number and exit.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: $ make-consensi.py [options] families.msa.tsv -1 duplexes_1.fa\
   \ -2 duplexes_2.fa\n       $ cat families.msa.tsv | make-consensi.py [options] -1\
   \ duplexes_1.fa -2 duplexes_2.fa\n\nBuild consensus sequences from read aligned\
@@ -267,3 +265,4 @@ help_text: "usage: $ make-consensi.py [options] families.msa.tsv -1 duplexes_1.f
   \ and exit.\n  -h, --help            Print this text on usage and arguments.\n"
 generated_using:
 - --help
+docker_image:

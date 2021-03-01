@@ -68,6 +68,9 @@ task StaramrSearch {
       ~{if defined(output_hits_dir) then ("--output-hits-dir " +  '"' + output_hits_dir + '"') else ""} \
       ~{if defined(output_mlst) then ("--output-mlst " +  '"' + output_mlst + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     point_finder_organism: "The organism to use for pointfinder {salmonella, campylobacter}. Defaults to disabling search for point mutations. [None]."
     plasmid_finder_database_type: "The database type to use for plasmidfinder {gram_positive, enterobacteriaceae}. Defaults to using all available database types to search for plasmids. [None]."

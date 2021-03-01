@@ -4,6 +4,9 @@ task PlotBugpy {
   command <<<
     plot_bug_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

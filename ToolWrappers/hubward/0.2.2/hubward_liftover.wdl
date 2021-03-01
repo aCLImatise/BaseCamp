@@ -14,6 +14,9 @@ task HubwardLiftover {
       ~{if defined(from_assembly) then ("--from_assembly " +  '"' + from_assembly + '"') else ""} \
       ~{if defined(to_assembly) then ("--to_assembly " +  '"' + to_assembly + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     from_assembly: "Source assembly (default: -)"
     to_assembly: "Destination assembly (default: -)\\n"

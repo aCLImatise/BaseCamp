@@ -4,6 +4,9 @@ task ExtractPIRs {
   command <<<
     extractPIRs
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

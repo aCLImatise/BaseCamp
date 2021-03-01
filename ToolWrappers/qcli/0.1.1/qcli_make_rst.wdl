@@ -12,6 +12,9 @@ task QcliMakeRst {
       ~{if defined(input_fps) then ("--input_fps " +  '"' + input_fps + '"') else ""} \
       ~{if defined(output_dir) then ("--output_dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     input_fps: "the input file(s) to generate rst files for [REQUIRED]"

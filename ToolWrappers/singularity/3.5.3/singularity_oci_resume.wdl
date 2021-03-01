@@ -16,6 +16,9 @@ task SingularityOciResume {
       ~{oci} \
       ~{resume}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

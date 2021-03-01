@@ -14,6 +14,9 @@ task Fido {
       ~{alpha} \
       ~{beta}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graph_file: ""
     gamma: ""

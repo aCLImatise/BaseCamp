@@ -10,6 +10,9 @@ task NfcoreLint {
       ~{pipeline_directory} \
       ~{if (release) then "--release" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     release: "Execute additional checks for release-ready workflows."
     pipeline_directory: ""

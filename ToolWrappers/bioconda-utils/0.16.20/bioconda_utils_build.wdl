@@ -54,6 +54,9 @@ task BiocondautilsBuild {
       ~{if defined(log_file_level) then ("--logfile-level " +  '"' + log_file_level + '"') else ""} \
       ~{if defined(log_command_max_lines) then ("--log-command-max-lines " +  '"' + log_command_max_lines + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     packages: "Glob for package[s] to build. Default is to build all\\npackages. Can be specified more than once (default:\\n'*')"
     git_range: "Git range (e.g. commits or something like \\\"master\\nHEAD\\\" to check commits in HEAD vs master, or just\\n\\\"HEAD\\\" to include uncommitted changes). All recipes\\nmodified within this range will be built if not\\npresent in the channel. (default: -)"

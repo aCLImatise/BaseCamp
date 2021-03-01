@@ -14,6 +14,9 @@ task ClassifyMatesApply {
       ~{if (also_dump_results) then "-p" else ""} \
       ~{if defined(output_gatekeeper_edit) then ("-o " +  '"' + output_gatekeeper_edit + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_fragments_here: "Read fragments from here"
     read_results_here: "Read results from here; any number of -r options can be supplied"

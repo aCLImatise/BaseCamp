@@ -46,6 +46,9 @@ task Abyssscaffold {
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_pairs: "minimum number of pairs [0]\\nor -n A-B:S       Find the value of n in [A,B] with step size S\\nthat maximizes the scaffold N50.\\nDefault value for the step size is 1, if unspecified."
     seed_length: "minimum contig length [1000]\\nor -s A-B         Find the value of s in [A,B]\\nthat maximizes the scaffold N50.\\n--grid            optimize using a grid search [default]\\n--line            optimize using a line search"

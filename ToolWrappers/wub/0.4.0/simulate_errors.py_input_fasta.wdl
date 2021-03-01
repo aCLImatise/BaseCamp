@@ -12,6 +12,9 @@ task SimulateErrorspyInputFasta {
       ~{if defined(w) then ("-w " +  '"' + w + '"') else ""} \
       ~{if defined(e) then ("-e " +  '"' + e + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     w: ""
     e: ""

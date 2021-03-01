@@ -11,7 +11,7 @@ task Pairix {
     Int? v
     Boolean? delimiter_space_instead
     Boolean? query_region_string
-    Int? skip_first_int
+    Int? skip_first_lines
     String? symbol_commentmeta_lines
     String? symbol_query_region
     File? replace_header_content
@@ -23,7 +23,7 @@ task Pairix {
     Boolean? list_chromosome_names
     Boolean? print_only_count
     Boolean? force_overwrite_index
-    Boolean? autoflip_query_exist
+    Boolean? autoflip_query_pair
     String in_dot_pairs_do_tgz
   }
   command <<<
@@ -38,7 +38,7 @@ task Pairix {
       ~{if defined(v) then ("-v " +  '"' + v + '"') else ""} \
       ~{if (delimiter_space_instead) then "-T" else ""} \
       ~{if (query_region_string) then "-L" else ""} \
-      ~{if defined(skip_first_int) then ("-S " +  '"' + skip_first_int + '"') else ""} \
+      ~{if defined(skip_first_lines) then ("-S " +  '"' + skip_first_lines + '"') else ""} \
       ~{if defined(symbol_commentmeta_lines) then ("-c " +  '"' + symbol_commentmeta_lines + '"') else ""} \
       ~{if defined(symbol_query_region) then ("-w " +  '"' + symbol_query_region + '"') else ""} \
       ~{if defined(replace_header_content) then ("-r " +  '"' + replace_header_content + '"') else ""} \
@@ -50,8 +50,11 @@ task Pairix {
       ~{if (list_chromosome_names) then "-l" else ""} \
       ~{if (print_only_count) then "-n" else ""} \
       ~{if (force_overwrite_index) then "-f" else ""} \
-      ~{if (autoflip_query_exist) then "-a" else ""}
+      ~{if (autoflip_query_pair) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     preset_pairs_mergednodups: "preset: pairs, merged_nodups, old_merged_nodups, gff, bed, sam, vcf, psltbl [gff]"
     sequence_name_column: "sequence name column [1]"
@@ -62,7 +65,7 @@ task Pairix {
     v: "end2 column; can be identical to '-u' [null or identical to the start2 specified by -u]"
     delimiter_space_instead: "delimiter is space instead of tab."
     query_region_string: "query region is not a string but a file listing query regions"
-    skip_first_int: "skip first INT lines [0]"
+    skip_first_lines: "skip first INT lines [0]"
     symbol_commentmeta_lines: "symbol for comment/meta lines [#]"
     symbol_query_region: "symbol for query region separator [|]"
     replace_header_content: "replace the header with the content of FILE [null]"
@@ -74,7 +77,7 @@ task Pairix {
     list_chromosome_names: "list chromosome names"
     print_only_count: "print only the total line count (same as gunzip -c | wc -l but much faster)"
     force_overwrite_index: "force to overwrite the index"
-    autoflip_query_exist: "autoflip query when the matching chromosome pair doesn't exist"
+    autoflip_query_pair: "autoflip query when the matching chromosome pair doesn't exist"
     in_dot_pairs_do_tgz: ""
   }
   output {

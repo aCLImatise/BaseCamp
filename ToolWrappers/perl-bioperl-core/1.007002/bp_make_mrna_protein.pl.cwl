@@ -1,65 +1,66 @@
 class: CommandLineTool
 id: bp_make_mrna_protein.pl.cwl
 inputs:
-- id: in_f_slash_frame
+- id: in_frame
   doc: Translation Frame (0,1,2) are valid (defaults to '0')
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -f/--frame
-- id: in_t_slash_terminator
+    prefix: --frame
+- id: in_terminator
   doc: Stop Codon Character ('*' by default)
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -t/--terminator
-- id: in_us_lash_unknown
+    prefix: --terminator
+- id: in_unknown
   doc: Unknown Protein character (defaults to 'X')
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -u/--unknown
-- id: in_ct_slash_codon_table
+    prefix: --unknown
+- id: in_codon_table
   doc: "Codon table to use (defaults to '1')\n(see Bio::PrimarySeq for more information)"
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -ct/--codontable
-- id: in_cds_slash_full_cds
+    prefix: --codontable
+- id: in_full_cds
   doc: Expected Full CDS (with start and Stop codon)
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -cds/--fullcds
+    prefix: --fullcds
 - id: in_throw_on_error
   doc: Throw an error if no Full CDS (defaults to 0)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -throwOnError
-- id: in_if_slash_i_format
+- id: in_i_format
   doc: Input format (defaults to FASTA/Pearson)
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -if/--iformat
-- id: in_of_slash_o_format
+    prefix: --iformat
+- id: in_o_format
   doc: Output format (defaults to FASTA/Pearson)
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -of/--oformat
-- id: in_oslash_output
+    prefix: --oformat
+- id: in_output
   doc: Output Filename (defaults to STDOUT)
-  type: File
+  type: File?
   inputBinding:
-    prefix: -o/--output
-- id: in_i_slash_input
+    prefix: --output
+- id: in_input
   doc: Input Filename (defaults to STDIN)
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -i/--input
+    prefix: --input
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_oslash_output
+- id: out_output
   doc: Output Filename (defaults to STDOUT)
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_oslash_output)
+    glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bp_make_mrna_protein.pl

@@ -4,53 +4,53 @@ inputs:
 - id: in_string_list_include
   doc: "<STRING>  A list of seqids to include or exclude while\nsampling insert and\
     \ depth.  For humans you should\nuse the standard chromosomes 1,2,3...X,Y."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -e
 - id: in_string_comma_separated
   doc: "<STRING>  Comma separated list of bam files or a file with\none bam (full\
     \ path) per line."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_string_reference_genome
   doc: <STRING>  The reference genome (indexed fasta).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_flag_exits_program
   doc: "<FLAG>    Exits the program after the stats are\ngathered. [false]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_string_file_write
   doc: <STRING>  File to write graph to (very large output). [false]
-  type: File
+  type: File?
   inputBinding:
     prefix: -g
-- id: in_string_region_format
+- id: in_string_region_seqidstartend
   doc: '<STRING>  Region in format: seqid:start-end [whole genome]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_int_mapping_quality
   doc: <INT>     Mapping quality filter [20].
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
-- id: in_string_non_standard
+- id: in_string_split_read
   doc: <STRING>  non standard split read tag [SA]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_flag_sample_reads
   doc: <FLAG>    Sample reads until success. [false]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -z
 - id: in_int_minimum_number
   doc: <INT>     Minimum number of matching bases (both reads).[100]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 outputs:
@@ -59,9 +59,10 @@ outputs:
   type: stdout
 - id: out_string_file_write
   doc: <STRING>  File to write graph to (very large output). [false]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_string_file_write)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - whamg

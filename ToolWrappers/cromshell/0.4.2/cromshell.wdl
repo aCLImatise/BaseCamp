@@ -8,7 +8,7 @@ task Cromshell {
     Boolean? expand_subworkflow_information
     Boolean? color_output_completion
     Boolean? check_completion_status
-    String? provided_will_only
+    String? provided_only_remove
     String included_wdl_zip_file
     String jobs_dot
     String email
@@ -28,8 +28,11 @@ task Cromshell {
       ~{if (expand_subworkflow_information) then "-x" else ""} \
       ~{if (color_output_completion) then "-c" else ""} \
       ~{if (check_completion_status) then "-u" else ""} \
-      ~{if defined(provided_will_only) then ("-s " +  '"' + provided_will_only + '"') else ""}
+      ~{if defined(provided_only_remove) then ("-s " +  '"' + provided_only_remove + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     set_curl_connect: "Set the curl connect timeout to TIMEOUT seconds.\\nAlso sets the curl max timeout to 2*TIMEOUT seconds.\\nTIMEOUT must be an integer."
     wait_workflow_transition: "Wait for workflow to transition from 'Submitted' to some other status\\nbefore cromshell exits"
@@ -37,7 +40,7 @@ task Cromshell {
     expand_subworkflow_information: "Expand sub-workflow information."
     color_output_completion: "Color the output by completion status."
     check_completion_status: "Check completion status of all unfinished jobs."
-    provided_will_only: "If provided, will only remove jobs with the given STATUS from the local list."
+    provided_only_remove: "If provided, will only remove jobs with the given STATUS from the local list."
     included_wdl_zip_file: "Zip file containing any WDL files included in the input WDL"
     jobs_dot: "Query workflow status:"
     email: "Email address to which to send the notification."

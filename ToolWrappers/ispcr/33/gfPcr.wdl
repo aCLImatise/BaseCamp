@@ -26,6 +26,9 @@ task GfPcr {
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
       ~{if defined(name) then ("-name " +  '"' + name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     maxsize: "- Maximum size of PCR product (default 4000)"
     min_perfect: "- Minimum size of perfect match at 3' end of primer (default 15)"

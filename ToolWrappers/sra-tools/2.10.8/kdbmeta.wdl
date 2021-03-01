@@ -15,7 +15,6 @@ task Kdbmeta {
     File path_to_column
     String accession
     String name
-    File path_slash_name
     String quit_dot
     File file_dot
   }
@@ -26,7 +25,6 @@ task Kdbmeta {
       ~{path_to_column} \
       ~{accession} \
       ~{name} \
-      ~{path_slash_name} \
       ~{quit_dot} \
       ~{file_dot} \
       ~{if defined(table) then ("--table " +  '"' + table + '"') else ""} \
@@ -38,6 +36,9 @@ task Kdbmeta {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     table: "table-name"
     unsigned: "print numeric values as unsigned"
@@ -52,7 +53,6 @@ task Kdbmeta {
     path_to_column: "access column metadata"
     accession: "sra global access id"
     name: "a named root node and children"
-    path_slash_name: "an internal node and children"
     quit_dot: "-L|--log-level <level>           Logging level as number or enum string. One "
     file_dot: "kdbmeta : 2.10.8"
   }

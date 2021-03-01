@@ -14,6 +14,9 @@ task HalTreeNITurnoverpy {
       ~{if defined(conserved_bed_name) then ("--conservedBedName " +  '"' + conserved_bed_name + '"') else ""} \
       ~{if defined(root) then ("--root " +  '"' + root + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     conserved_bed_name: "Name function for output bed files where genome name\\nis specifed as %s (default: %%s_cons.bed)"
     root: "root (default: None)"

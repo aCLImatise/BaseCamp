@@ -12,6 +12,9 @@ task Getmlstpy {
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""} \
       ~{if (force_scheme_name) then "--force_scheme_name" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     repository_url: "URL for MLST repository XML index"
     species: "The name of the species that you want to download\\n(e.g. \\\"Escherichia coli\\\")"

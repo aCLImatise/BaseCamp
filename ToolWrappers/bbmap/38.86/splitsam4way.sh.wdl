@@ -16,6 +16,9 @@ task Splitsam4waysh {
       ~{out_chimeric} \
       ~{out_unmapped}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_input: ""
     out_plus: ""

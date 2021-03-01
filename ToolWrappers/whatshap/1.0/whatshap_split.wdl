@@ -24,6 +24,9 @@ task WhatshapSplit {
       ~{if (discard_unknown_reads) then "--discard-unknown-reads" else ""} \
       ~{if defined(read_lengths_histogram) then ("--read-lengths-histogram " +  '"' + read_lengths_histogram + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_hone: "Output file to write reads from Haplotype 1 to. Use\\nending .gz to create gzipped file."
     output_h_two: "Output file to write reads from Haplotype 2 to. Use\\nending .gz to create gzipped file."

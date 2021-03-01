@@ -8,6 +8,9 @@ task Varda2clientSeq {
     varda2_client seq \
       ~{if defined(sequence) then ("--sequence " +  '"' + sequence + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequence: "Sequence\\n"
   }

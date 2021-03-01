@@ -28,6 +28,9 @@ task Wordfinder {
       ~{if (low_align) then "-lowalign" else ""} \
       ~{if (errfile) then "-errfile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gap_open: "float      [10.0 for any sequence type] Gap opening\\npenalty (Number from 0.000 to 1000.000)"
     gap_extend: "float      [0.5 for any sequence type] Gap extension\\npenalty (Number from 0.000 to 10.000)"

@@ -5,7 +5,7 @@ task OutriggerIndex {
     File? name_folder_saved
     Boolean? sjouttab_files_star
     File? junction_reads_csv
-    Boolean? location_files_use
+    Boolean? location_bam_use
     Int? min_reads
     Boolean? ignore_multi_mapping
     Int? max_de_novo_exon_length
@@ -23,7 +23,7 @@ task OutriggerIndex {
       ~{if defined(name_folder_saved) then ("--output " +  '"' + name_folder_saved + '"') else ""} \
       ~{if (sjouttab_files_star) then "-j" else ""} \
       ~{if defined(junction_reads_csv) then ("--junction-reads-csv " +  '"' + junction_reads_csv + '"') else ""} \
-      ~{if (location_files_use) then "-b" else ""} \
+      ~{if (location_bam_use) then "-b" else ""} \
       ~{if defined(min_reads) then ("--min-reads " +  '"' + min_reads + '"') else ""} \
       ~{if (ignore_multi_mapping) then "--ignore-multimapping" else ""} \
       ~{if defined(max_de_novo_exon_length) then ("--max-de-novo-exon-length " +  '"' + max_de_novo_exon_length + '"') else ""} \
@@ -36,11 +36,14 @@ task OutriggerIndex {
       ~{if (force) then "--force" else ""} \
       ~{if (resume) then "--resume" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_folder_saved: "Name of the folder where you saved the output from\\n\\\"outrigger index\\\" (default is ./outrigger_output,\\nwhich is relative to the directory where you called\\nthe program)\\\". You will need this file for the next\\nstep, \\\"outrigger psi\\\""
     sjouttab_files_star: "[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab [SJ_OUT_TAB [SJ_OUT_TAB ...]]\\nSJ.out.tab files from STAR aligner output. Not\\nrequired if you specify \\\"--compiled-junction-reads\\\""
     junction_reads_csv: "Name of the splice junction files to detect novel\\nexons and build an index of alternative splicing\\nevents from. Not required if you specify SJ.out.tab\\nfile with '--sj-out-tab'"
-    location_files_use: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\\nLocation of bam files to use for finding events."
+    location_bam_use: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\\nLocation of bam files to use for finding events."
     min_reads: "Minimum number of reads per junction for that junction\\nto count in creating the index of splicing events\\n(default=10)"
     ignore_multi_mapping: "Applies to STAR SJ.out.tab files only. If this flag is\\nused, then do not include reads that mapped to\\nmultiple locations in the genome, not uniquely to a\\nlocus, in the read count for a junction. If inputting\\n\\\"bam\\\" files, then this means that reads with a mapping\\nquality (MAPQ) of less than 255 are considered\\n\\\"multimapped.\\\" This is the same thing as what the STAR\\naligner does. By default, this is off, and all reads\\nare used."
     max_de_novo_exon_length: "Maximum length of an exon detected *de novo* from the\\ndataset. This is to prevent multiple kilobase long\\nexons from being accidentally created. (default=100)"

@@ -1,0 +1,120 @@
+!Command
+command:
+- map_gff_coords
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: source genome
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: source GFF file
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: target genome
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --type
+  description: only look at features of particular type
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --data
+  description: path to map, genome and alignment files
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --map
+  description: path to map and genome files
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --align
+  description: path to alignment files
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --lazy
+  description: warn, rather than die, if the subalignment can't be obtained
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  - --truncate
+  description: truncate unmappable sequence (rather than skipping) and show truncated
+    subalignment
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force-entry
+  description: if a feature can't be mapped, then add an empty entry to the GFF file
+    (rather than skipping it entirely); implies --lazy
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --verbose
+  description: report progress
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "map_gff_coords from FSA 1.15.9\n\nUsage: map_gff_coords [options] <source\
+  \ genome> <source GFF file> <target genome>\n\nMap coordinates of GFF features from\
+  \ one genome to another using a Mercator multiple alignment.\n\nOptions:\n    -h,\
+  \ --help                  show this message\n\n    -t, --type <string>         only\
+  \ look at features of particular type\n\n    -D, --data <directory>      path to\
+  \ map, genome and alignment files\n    -M, --map <directory>       path to map and\
+  \ genome files\n    -A, --align <directory>     path to alignment files\n    -L,\
+  \ --lazy                  warn, rather than die, if the subalignment can't be obtained\n\
+  \    -U, --truncate              truncate unmappable sequence (rather than skipping)\
+  \ and show truncated subalignment\n\n    -f, --force-entry           if a feature\
+  \ can't be mapped, then add an empty entry to the GFF file (rather than skipping\
+  \ it entirely); implies --lazy\n\n    -e, --verbose               report progress\n\
+  \nPLEASE NOTE: While this program is reasonably fast if the GFF is properly\nordered\
+  \ by chromosome and the start and end coordinates of features, it\nwill be *very\
+  \ slow* if the GFF is not sorted.\nAssumes that the \"seqid\" or \"name\" field\
+  \ (the first field) of the GFF entries\nholds the chromosome name.\n\nNote that\
+  \ the GFF specification defines coordinates to be 1-based\nand fully-closed, therefore\
+  \ representing the interval [start, end].\nConformance to this specification is\
+  \ assumed internally.\n\nIf requested, unmappable sequence will be truncated to\
+  \ the mappable portion;\nnote that the truncation will favor the beginning of the\
+  \ requested sequence.\n\nIf a GFF feature is on the + strand for the source genome\
+  \ but\nthe corresponding homologous region in the target genome is on the - strand,\n\
+  then the mapped GFF feature will be reported as on the - strand.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fsa:1.15.9--h8b12597_1

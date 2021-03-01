@@ -10,6 +10,9 @@ task Mafswap {
       ~{my_alignments_dot_maf} \
       ~{if defined(move_nth_sequence) then ("-n " +  '"' + move_nth_sequence + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     move_nth_sequence: "move the Nth sequence to the top (default: 2)"
     my_alignments_dot_maf: ""

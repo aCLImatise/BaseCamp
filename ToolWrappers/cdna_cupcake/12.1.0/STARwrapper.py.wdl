@@ -16,6 +16,9 @@ task STARwrapperpy {
       ~{star_long_dot} \
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cpus: ""
     wrapper: ""

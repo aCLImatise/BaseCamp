@@ -8,6 +8,9 @@ task Sickle {
     sickle \
       ~{var_command}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_command: ""
   }

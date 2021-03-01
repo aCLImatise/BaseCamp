@@ -48,6 +48,9 @@ task TrainNetworkpyEvents {
       ~{if defined(drop) then ("--drop " +  '"' + drop + '"') else ""} \
       ~{if defined(win_len) then ("--winlen " +  '"' + win_len + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     adam: "decay1 decay2\\nParameters for Exponential Decay Adaptive Momementum\\n(default: Values(rate=0.001, decay1=0.9,\\ndecay2=0.999))"
     no_bad: "Force blocks marked as bad to be stays (Default:"

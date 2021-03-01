@@ -3,48 +3,48 @@ id: structure.py.cwl
 inputs:
 - id: in_number_of_populations
   doc: (number of populations)
-  type: long
+  type: long?
   inputBinding:
     prefix: -K
 - id: in_input
   doc: (/path/to/input/file)
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: (/path/to/output/file)
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_to_l
   doc: '(convergence criterion; default: 10e-6)'
-  type: double
+  type: double?
   inputBinding:
     prefix: --tol
 - id: in_prior
   doc: '(choice of prior; default: simple)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --prior
 - id: in_cv
   doc: '(number of test sets for cross-validation, 0 implies no CV step; default:
     0)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --cv
 - id: in_format
   doc: '(format of input file; default: bed)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
 - id: in_full
   doc: (to output all variational parameters; optional)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --full
 - id: in_seed
   doc: (manually specify seed for random number generator; optional)
-  type: long
+  type: long?
   inputBinding:
     prefix: --seed
 - id: in_python
@@ -58,9 +58,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: (/path/to/output/file)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - structure.py

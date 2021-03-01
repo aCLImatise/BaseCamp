@@ -19,8 +19,8 @@ task WhatsGNUMainpy {
     Boolean? faa_gnu_zero
     Boolean? blastp
     Boolean? output_blastp
-    Boolean? select_blastp_percent_cutoff_value
-    Boolean? select_blastp_percent_coverage_value
+    Boolean? select_percent_value
+    Boolean? select_coverage_value
     Boolean? quiet
   }
   command <<<
@@ -42,10 +42,13 @@ task WhatsGNUMainpy {
       ~{if (faa_gnu_zero) then "--faa_GNU_0" else ""} \
       ~{if (blastp) then "--blastp" else ""} \
       ~{if (output_blastp) then "--output_blastp" else ""} \
-      ~{if (select_blastp_percent_cutoff_value) then "-w" else ""} \
-      ~{if (select_blastp_percent_coverage_value) then "-c" else ""} \
+      ~{if (select_percent_value) then "-w" else ""} \
+      ~{if (select_coverage_value) then "-c" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mk_database: "you have to provide path to faa file or a folder of\\nmultiple faa files for compression"
     database: "you have to provide path to your compressed database"
@@ -64,8 +67,8 @@ task WhatsGNUMainpy {
     faa_gnu_zero: "get a fasta (.faa) file of all proteins with GNU score\\nof zero"
     blastp: "run blastp on the proteins with GNU score of zero and\\nmodify the report with ortholog_info, blastp has to be\\ninstalled"
     output_blastp: "get the output report of blastp run, it has to be used\\nwith -b"
-    select_blastp_percent_cutoff_value: "[PERCENT_IDENTITY], --percent_identity [PERCENT_IDENTITY]\\nselect a blastp percent identity cutoff value [80],\\nrange(0,100)"
-    select_blastp_percent_coverage_value: "[PERCENT_COVERAGE], --percent_coverage [PERCENT_COVERAGE]\\nselect a blastp percent coverage cutoff value [80],\\nrange(0,100)"
+    select_percent_value: "[PERCENT_IDENTITY], --percent_identity [PERCENT_IDENTITY]\\nselect a blastp percent identity cutoff value [80],\\nrange(0,100)"
+    select_coverage_value: "[PERCENT_COVERAGE], --percent_coverage [PERCENT_COVERAGE]\\nselect a blastp percent coverage cutoff value [80],\\nrange(0,100)"
     quiet: "No screen output [default OFF]"
   }
   output {

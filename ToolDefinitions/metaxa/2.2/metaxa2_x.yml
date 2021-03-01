@@ -4,348 +4,348 @@ command:
 positional: []
 named:
 - !Flag
-  description: ': DNA FASTA input file to investigate'
+  optional: true
   synonyms:
   - -i
+  description: ': DNA FASTA input file to investigate'
   args: !ChoiceFlagArg
     choices: !!set
       file:
-  optional: true
 - !Flag
-  description: ': Base for the names of output file(s)'
+  optional: true
   synonyms:
   - -o
+  description: ': Base for the names of output file(s)'
   args: !ChoiceFlagArg
     choices: !!set
       file:
-  optional: true
 - !Flag
-  description: ': A path to a directory of HMM-profile collections representing rRNA
-    conserved regions, default is in the same directory as metaxa itself'
+  optional: true
   synonyms:
   - -p
+  description: ': A path to a directory of HMM-profile collections representing rRNA
+    conserved regions, default is in the same directory as metaxa itself'
   args: !ChoiceFlagArg
     choices: !!set
       directory:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --hmmsearch
   description: ': If the hmmsearch has already been performed, this option can be
     used as the base for the hmmsearch output files, and the hmmsearch step will be
     skipped. Overrides the -o option, while a DNA FASTA file must still be supplied!'
-  synonyms:
-  - --hmmsearch
   args: !ChoiceFlagArg
     choices: !!set
       file:
-  optional: true
 - !Flag
-  description: ': Adds a date and time stamp to the output directory, off (F) by default'
+  optional: true
   synonyms:
   - --date
+  description: ': Adds a date and time stamp to the output directory, off (F) by default'
   args: !ChoiceFlagArg
     choices: !!set
+      F:
       T:
       or:
-      F:
-  optional: true
 - !Flag
-  description: ': Rebuilds the HMM database. Useful if HMMER has been updated or searches
-    seem to fail mysteriously, off (F) by default'
+  optional: true
   synonyms:
   - --reset
+  description: ': Rebuilds the HMM database. Useful if HMMER has been updated or searches
+    seem to fail mysteriously, off (F) by default'
   args: !ChoiceFlagArg
     choices: !!set
+      F:
       T:
       or:
-      F:
-  optional: true
 - !Flag
-  description: ': Profile set to use for the search (comma-separated), default is
-    all'
+  optional: true
   synonyms:
   - -t
+  description: ': Profile set to use for the search (comma-separated), default is
+    all'
   args: !ChoiceFlagArg
     choices: !!set
-      mitochondrial:
-      A:
-      c:
-      all:
-      chloroplast:
-      archaea:
-      b:
-      bacteria:
-      a:
-      e:
-      eukaryota:
-      o:
       other:
+      c:
+      e:
+      all:
+      b:
+      o:
+      mitochondrial:
+      bacteria:
+      A:
+      eukaryota:
+      archaea:
+      a:
       m:
-  optional: true
+      chloroplast:
 - !Flag
-  description: ': Specifies the barcoding gene Metaxa should look for, default is
-    ssu'
+  optional: true
   synonyms:
   - -g
+  description: ': Specifies the barcoding gene Metaxa should look for, default is
+    ssu'
   args: !ChoiceFlagArg
     choices: !!set
-      string:
       lsu:
+      string:
       ssu:
-  optional: true
 - !Flag
-  description: ': Controls the Metaxa2 operating mode, default = metagenome'
+  optional: true
   synonyms:
   - --mode
+  description: ': Controls the Metaxa2 operating mode, default = metagenome'
   args: !ChoiceFlagArg
     choices: !!set
       genome:
-      a:
-      m:
-      auto:
       metagenome:
+      auto:
+      m:
+      a:
       g:
-  optional: true
 - !Flag
-  description: ': Domain E-value cutoff for a sequence to be included in the output,
-    default = 1'
+  optional: true
   synonyms:
   - -E
+  description: ': Domain E-value cutoff for a sequence to be included in the output,
+    default = 1'
   args: !ChoiceFlagArg
     choices: !!set
       value:
-  optional: true
 - !Flag
-  description: ': Domain score cutoff for a sequence to be included in the output,
-    default = 12'
+  optional: true
   synonyms:
   - -S
+  description: ': Domain score cutoff for a sequence to be included in the output,
+    default = 12'
   args: !ChoiceFlagArg
     choices: !!set
       value:
-  optional: true
 - !Flag
-  description: ': The minimal number of domains that must match a sequence before
-    it is included, default = 2'
+  optional: true
   synonyms:
   - -N
+  description: ': The minimal number of domains that must match a sequence before
+    it is included, default = 2'
   args: !ChoiceFlagArg
     choices: !!set
       value:
-  optional: true
 - !Flag
-  description: ': Selects what will be of highest priority when determining the origin
-    of the sequence, default is sum'
+  optional: true
   synonyms:
   - --selection_priority
+  description: ': Selects what will be of highest priority when determining the origin
+    of the sequence, default is sum'
   args: !ChoiceFlagArg
     choices: !!set
-      domains:
-      score:
-      eval:
       sum:
-  optional: true
+      domains:
+      eval:
+      score:
 - !Flag
+  optional: true
+  synonyms:
+  - --search_eval
   description: ': The E-value cutoff used in the HMMER search, high numbers may slow
     down the process, cannot be used with the --search_score option, default is to
     use score cutoff, not E-value'
-  synonyms:
-  - --search_eval
   args: !ChoiceFlagArg
     choices: !!set
       value:
-  optional: true
 - !Flag
-  description: ': The score cutoff used in the HMMER search, low numbers may slow
-    down the process, cannot be used with the --search_eval option, default = 0'
+  optional: true
   synonyms:
   - --search_score
+  description: ': The score cutoff used in the HMMER search, low numbers may slow
+    down the process, cannot be used with the --search_eval option, default = 0'
   args: !ChoiceFlagArg
     choices: !!set
       value:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --allow_single_domain
   description: ': Allow inclusion of sequences that only find a single domain, given
     that they meet the given E-value and score thresholds, on with parameters 1e-10,0
     by default'
-  synonyms:
-  - --allow_single_domain
   args: !ChoiceFlagArg
     choices: !!set
       e-value:
-      score:
       or:
       F:
-  optional: true
+      score:
 - !Flag
-  description: ': Allows profiles to be in the wrong order on extracted sequences,
-    on (T) by default'
+  optional: true
   synonyms:
   - --allow_reorder
+  description: ': Allows profiles to be in the wrong order on extracted sequences,
+    on (T) by default'
   args: !ChoiceFlagArg
     choices: !!set
+      F:
       T:
       or:
-      F:
-  optional: true
 - !Flag
-  description: ': Checks both DNA strands against the database, creating reverse complements,
-    on (T) by default'
+  optional: true
   synonyms:
   - --complement
+  description: ': Checks both DNA strands against the database, creating reverse complements,
+    on (T) by default'
   args: !ChoiceFlagArg
     choices: !!set
+      F:
       T:
       or:
-      F:
-  optional: true
 - !Flag
-  description: ': the number of CPU threads to use, default is 1'
+  optional: true
   synonyms:
   - --cpu
+  description: ': the number of CPU threads to use, default is 1'
   args: !ChoiceFlagArg
     choices: !!set
       value:
-  optional: true
 - !Flag
-  description: ': Multi-thread the HMMER-search, on (T) if number of CPUs (--cpu option
-    > 1), else off (F) by default'
+  optional: true
   synonyms:
   - --multi_thread
+  description: ': Multi-thread the HMMER-search, on (T) if number of CPUs (--cpu option
+    > 1), else off (F) by default'
   args: !ChoiceFlagArg
     choices: !!set
+      F:
       T:
       or:
-      F:
-  optional: true
 - !Flag
-  description: ": Selects whether to use HMMER's heuristic filtering, on (T) by default"
+  optional: true
   synonyms:
   - --heuristics
+  description: ": Selects whether to use HMMER's heuristic filtering, on (T) by default"
   args: !ChoiceFlagArg
     choices: !!set
+      F:
       T:
       or:
-      F:
-  optional: true
 - !Flag
-  description: ': Summary of results output, on (T) by default'
+  optional: true
   synonyms:
   - --summary
+  description: ': Summary of results output, on (T) by default'
   args: !ChoiceFlagArg
     choices: !!set
+      F:
       T:
       or:
-      F:
-  optional: true
 - !Flag
-  description: ": 'Graphical' output, on (T) by default"
+  optional: true
   synonyms:
   - --graphical
+  description: ": 'Graphical' output, on (T) by default"
   args: !ChoiceFlagArg
     choices: !!set
+      F:
       T:
       or:
-      F:
-  optional: true
 - !Flag
-  description: ': FASTA-format output of extracted rRNA sequences, on (T) by default'
+  optional: true
   synonyms:
   - --fasta
+  description: ': FASTA-format output of extracted rRNA sequences, on (T) by default'
   args: !ChoiceFlagArg
     choices: !!set
+      F:
       T:
       or:
-      F:
-  optional: true
 - !Flag
-  description: ': Table format output of sequences containing probable rRNAs, off
-    (F) by default'
+  optional: true
   synonyms:
   - --table
+  description: ': Table format output of sequences containing probable rRNAs, off
+    (F) by default'
   args: !ChoiceFlagArg
     choices: !!set
+      F:
       T:
       or:
-      F:
-  optional: true
 - !Flag
-  description: ': Saves a list of non-found entries, off (F) by default'
+  optional: true
   synonyms:
   - --not_found
+  description: ': Saves a list of non-found entries, off (F) by default'
   args: !ChoiceFlagArg
     choices: !!set
+      F:
       T:
       or:
-      F:
-  optional: true
 - !Flag
-  description: ': Truncates the FASTA output to only contain the putative rRNA sequence
-    found, on (T) by default'
+  optional: true
   synonyms:
   - --truncate
+  description: ': Truncates the FASTA output to only contain the putative rRNA sequence
+    found, on (T) by default'
   args: !ChoiceFlagArg
     choices: !!set
+      F:
       T:
       or:
-      F:
-  optional: true
 - !Flag
-  description: ': Supresses printing progress info to stderr, off (F) by default'
+  optional: true
   synonyms:
   - --silent
+  description: ': Supresses printing progress info to stderr, off (F) by default'
   args: !ChoiceFlagArg
     choices: !!set
+      F:
       T:
       or:
-      F:
-  optional: true
 - !Flag
-  description: ': Sets the scale of the graph output, if value is zero, a percentage
-    view is shown, default = 0'
+  optional: true
   synonyms:
   - --graph_scale
+  description: ': Sets the scale of the graph output, if value is zero, a percentage
+    view is shown, default = 0'
   args: !ChoiceFlagArg
     choices: !!set
       value:
-  optional: true
 - !Flag
-  description: ': Saves all raw data for searches etc. instead of removing it on finish,
-    off (F) by default'
+  optional: true
   synonyms:
   - --save_raw
+  description: ': Saves all raw data for searches etc. instead of removing it on finish,
+    off (F) by default'
   args: !ChoiceFlagArg
     choices: !!set
+      F:
       T:
       or:
-      F:
-  optional: true
 - !Flag
-  description: ': displays this help message'
+  optional: true
   synonyms:
   - --help
+  description: ': displays this help message'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': displays the bug fixes and known bugs in this version of Metaxa'
+  optional: true
   synonyms:
   - --bugs
+  description: ': displays the bug fixes and known bugs in this version of Metaxa'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': displays licensing information'
+  optional: true
   synonyms:
   - --license
+  description: ': displays licensing information'
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ': displays this help message'
+  optional: true
   synonyms:
   - -h
+  description: ': displays this help message'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: metaxa2_x -i <input file> -o <output file>\nOptions:\n-i {file}\
@@ -397,3 +397,4 @@ help_text: "Usage: metaxa2_x -i <input file> -o <output file>\nOptions:\n-i {fil
   \ information\n-----------------------------------------------------------------\n"
 generated_using:
 - --help
+docker_image:

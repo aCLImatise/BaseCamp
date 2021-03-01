@@ -3,7 +3,7 @@ version 1.0
 task Ssucmalign {
   input {
     File? output_alignment_file
-    Boolean? align_locally_wrt
+    Boolean? align_locally_model
     Boolean? quiet_suppress_banner
     String? metacm_mode_cmfile
     Boolean? i_leaved
@@ -44,7 +44,7 @@ task Ssucmalign {
       ~{cm_file} \
       ~{sequence_file} \
       ~{if defined(output_alignment_file) then ("-o " +  '"' + output_alignment_file + '"') else ""} \
-      ~{if (align_locally_wrt) then "-l" else ""} \
+      ~{if (align_locally_model) then "-l" else ""} \
       ~{if (quiet_suppress_banner) then "-q" else ""} \
       ~{if defined(metacm_mode_cmfile) then ("-M " +  '"' + metacm_mode_cmfile + '"') else ""} \
       ~{if (i_leaved) then "--ileaved" else ""} \
@@ -78,9 +78,12 @@ task Ssucmalign {
       ~{if defined(s_file) then ("--sfile " +  '"' + s_file + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_alignment_file: ": output the alignment to file <f>, not stdout"
-    align_locally_wrt: ": align locally w.r.t. the model"
+    align_locally_model: ": align locally w.r.t. the model"
     quiet_suppress_banner: ": quiet; suppress banner and scores, print only the alignment"
     metacm_mode_cmfile: ": meta-cm mode: <cmfile> is a meta-cm built from aln in <f>"
     i_leaved: ": output alnment in interleaved Stockholm format (not 1 line/seq)"

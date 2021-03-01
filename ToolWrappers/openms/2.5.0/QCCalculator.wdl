@@ -26,6 +26,9 @@ task QCCalculator {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                  Raw data input file (this is relevant if you want to look at MS1, MS2 and precursor peak information) (valid formats: 'mzML')"
     out: "*                 Your qcML file. (valid formats: 'qcML')"

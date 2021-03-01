@@ -10,6 +10,9 @@ task Addfims {
       ~{run_name} \
       ~{if defined(option) then ("-option " +  '"' + option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     option: ""
     run_name: ""

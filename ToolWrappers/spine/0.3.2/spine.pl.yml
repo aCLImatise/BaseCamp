@@ -4,6 +4,10 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --file
   description: "file with list of input sequence files. Accepted file\nformats include\
     \ fasta sequence files, genbank sequence +\nannotation files, or separate fasta\
     \ sequence files with\ncorresponding gff3-formatted annotation files.\nThis file\
@@ -23,46 +27,46 @@ named:
     joining multiple files within a strain, please ensure that\nall chromosome/plasmid/contig\
     \ IDs are unique across files\nwithin a single genome. If sequence IDs are duplicated,\
     \ the\nresults are likely to be wrong."
-  synonyms:
-  - -f
-  - --file
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: "percentage of input genomes in which a region must be\nfound in order\
-    \ to be considered core\n(default: 100)"
+  optional: true
   synonyms:
   - -a
   - --pctcore
+  description: "percentage of input genomes in which a region must be\nfound in order\
+    \ to be considered core\n(default: 100)"
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: "maximum distance between core genome segments. Distances\nless than\
-    \ this between adjacent segments will result in\ncombination of fragments with\
-    \ N's rather than separating\ninto two or more fragments.\n(default: 10)"
+  optional: true
   synonyms:
   - -g
   - --maxdist
+  description: "maximum distance between core genome segments. Distances\nless than\
+    \ this between adjacent segments will result in\ncombination of fragments with\
+    \ N's rather than separating\ninto two or more fragments.\n(default: 10)"
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: or --license  print license information and quit
+  optional: true
   synonyms:
   - -l
+  description: or --license  print license information and quit
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
   description: "or --nucpath  full path to folder containing MUMmer scripts and\n\
     executables, i.e. /home/applications/MUMmer/bin\n(default: tries to find MUMmer\
     \ in your PATH)"
-  synonyms:
-  - -m
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --refs
   description: "reference genome sequence(s) to use as primary output\nsource(s).\
     \ This should be one or more integers corresponding\nto the order of the genomes\
     \ given in the file above, i.e.\n\"1\" would use the first-listed sequence, \"\
@@ -81,113 +85,109 @@ named:
     \ of 10 genomes, but not present in the first\nreference genome.\n(default: reference\
     \ priority will be the same as the order\nof genomes entered, with the first genome\
     \ having the highest\npriority and the last genome having the lowest priority)"
-  synonyms:
-  - -r
-  - --refs
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mini
   description: "produce only limited output, i.e. just the backbone sequence\nderived\
     \ from the reference genome(s). This saves time on\nlarge data sets, especially\
     \ if you only need the backbone\nsequence to get accessory sequences from AGEnt.\n\
     (default: core and accessory sequence sets will be output\nfor all included genomes)"
-  synonyms:
-  - --mini
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pangenome
   description: "produce a pangenome sequence and characteristics from\nsequences in\
     \ the order given. This option will be ignored\nif '--mini' option is given.\n\
     (default: no pangenome information will be output)"
-  synonyms:
-  - --pangenome
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output prefix\n(default: \"output\")"
+  optional: true
   synonyms:
   - -o
   - --prefix
+  description: "Output prefix\n(default: \"output\")"
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: minimum percent identity for regions to be considered
+  optional: true
   synonyms:
   - -p
   - --pctid
+  description: minimum percent identity for regions to be considered
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: "minimum size of sequences to be output, in bases\n(default: 10)"
+  optional: true
   synonyms:
   - -s
   - --minout
+  description: "minimum size of sequences to be output, in bases\n(default: 10)"
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
   description: "Number of parallel processes to run. Careful: This script\ndoes not\
     \ perform any verification of the number of\nprocessers available. If you set\
     \ this number higher than\nthe number of processors you have, performance is likely\
     \ to\nbe significantly degraded.\n(default: 4)"
-  synonyms:
-  - -t
-  - --threads
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: 'Integer (default: 200)'
+  optional: true
   synonyms:
   - --breaklen
+  description: 'Integer (default: 200)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Integer (default: 65)'
+  optional: true
   synonyms:
   - --mincluster
+  description: 'Integer (default: 65)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Integer (default: 5)'
+  optional: true
   synonyms:
   - --diagdiff
+  description: 'Integer (default: 5)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Float (default: 0.12)'
+  optional: true
   synonyms:
   - --diagfactor
+  description: 'Float (default: 0.12)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Integer (default: 20)'
+  optional: true
   synonyms:
   - --minmatch
+  description: 'Integer (default: 20)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '(default: simplify)'
+  optional: true
   synonyms:
   - --nosimplify
+  description: '(default: simplify)'
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag
-  description: print version information and quit
+  optional: true
   synonyms:
   - -v
   - --version
+  description: print version information and quit
   args: !SimpleFlagArg
     name: or
-  optional: true
 help_text: "Unknown option: help\n\nSpine (version 0.3.2);\n\nThis is a wrapper script\
   \ to run the Spine algorithm\n\nPREREQUISITES:\n- Perl 5.10 or above\n- MUMmer version\
   \ 3.22 or above\n- Mac OSX or Linux. No guarantees that this will work on Windows\
@@ -278,3 +278,4 @@ help_text: "Unknown option: help\n\nSpine (version 0.3.2);\n\nThis is a wrapper 
   \        Integer (default: 20)\n  --nosimplify      (default: simplify)\n\n"
 generated_using:
 - --help
+docker_image:

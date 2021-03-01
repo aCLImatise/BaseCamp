@@ -26,6 +26,9 @@ task Isocorcli {
       ~{if (correct_na_tracer) then "--correct_NA_tracer" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_metabolites_database: "path to metabolites database"
     path_derivatives_database: "path to derivatives database"

@@ -18,6 +18,9 @@ task BiscuitTview {
       ~{if defined(highlight_reads_read) then ("-n " +  '"' + highlight_reads_read + '"') else ""} \
       ~{if defined(flanking_sequence_length) then ("-f " +  '"' + flanking_sequence_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pos_go_directly: ":pos     go directly to this position"
     max_number_reads: "max number of reads to load per position [50]"

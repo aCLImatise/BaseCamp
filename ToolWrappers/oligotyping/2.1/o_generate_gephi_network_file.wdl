@@ -22,6 +22,9 @@ task Ogenerategephinetworkfile {
       ~{if (skip_sample_labels) then "--skip-sample-labels" else ""} \
       ~{if (skip_unit_labels) then "--skip-unit-labels" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample_mapping: "Providing a sample mapping file will make Gephi file\\nmuch more useful."
     unit_mapping: "Structurally, unit mapping is identical to sample\\nmapping file, instead, it describes properties of\\nunits."

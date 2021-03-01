@@ -8,14 +8,14 @@ task Collectcolumns {
     Boolean? names_corresponding_order
     Boolean? header
     String? feature_attribute
-    String path_output_will
+    String path_output_written
     String table
     String false_dot
     String specified_dot
   }
   command <<<
     collect_columns \
-      ~{path_output_will} \
+      ~{path_output_written} \
       ~{table} \
       ~{false_dot} \
       ~{specified_dot} \
@@ -26,6 +26,9 @@ task Collectcolumns {
       ~{if (header) then "--header" else ""} \
       ~{if defined(feature_attribute) then ("--feature-attribute " +  '"' + feature_attribute + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     feature_column: "The position of the column with the (unique) feature\\nids. Default to 0."
     value_column: "The position of the column with the values of\\ninterest. Defaults to 1."
@@ -33,7 +36,7 @@ task Collectcolumns {
     names_corresponding_order: "[NAME [NAME ...]], --names [NAME [NAME ...]]\\nThe names of the samples corresponding to the tables\\n(in the same order as the tables). These will be used\\nas headers in the merged table. If not specified the\\nbasenames of tables will be used."
     header: "Whether or not the tables have a header. Defaults to"
     feature_attribute: "The attribute from the GTF/GFF used for matching the\\nfeature records with the rows in the table. Ignored if\\n-a is not specified. Defaults to 'gene_id'.\\n"
-    path_output_will: "The path the output will be written to."
+    path_output_written: "The path the output will be written to."
     table: "The tables to be merged."
     false_dot: "-a ATTR [ATTR ...], --additional-attributes ATTR [ATTR ...]"
     specified_dot: "-g FILE, --gtf FILE, --gff FILE"

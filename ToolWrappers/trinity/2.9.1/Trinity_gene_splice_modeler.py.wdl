@@ -26,6 +26,9 @@ task TrinityGeneSpliceModelerpy {
       ~{if (incl_dot) then "--incl_dot" else ""} \
       ~{if defined(restrict_gene_id) then ("--restrict_gene_id " +  '"' + restrict_gene_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     trinity_fast_a: "Trinity.fasta file (default: )"
     out_prefix: "output prefix for fasta and gtf outputs (default:\\ntrinity_genes)"

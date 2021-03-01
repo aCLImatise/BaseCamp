@@ -10,6 +10,9 @@ task Fastqtofasta {
       ~{in_fast_q_file} \
       ~{out_fast_a_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_fast_q_file: ""
     out_fast_a_file: ""

@@ -20,6 +20,9 @@ task MultiLengthHistpy {
       ~{if defined(maximum_read_length) then ("-u " +  '"' + maximum_read_length + '"') else ""} \
       ~{if (log_transform_lengths) then "-L" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report_pdf: "Report PDF."
     input_format_fastq: "Input format (fastq)."

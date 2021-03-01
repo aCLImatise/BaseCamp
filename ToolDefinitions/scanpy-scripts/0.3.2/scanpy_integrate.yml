@@ -1,0 +1,917 @@
+&id001 !Command
+command:
+- scanpy-integrate
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - scanpy-integrate
+  - combat
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input_obj
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: output_obj
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --input-format
+    description: "[anndata|loom]\nInput object format.  [default: anndata]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --output-format
+    description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -z
+    - --zarr-chunk-size
+    description: Chunk size for writing output in zarr
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --loom-write-obsm-varm
+    description: "Write obsm and varm to the Loom file?\n[default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -X
+    - --export-mtx
+    description: "When specified, using it as prefix for\nexporting mtx files. If\
+      \ not empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --show-obj
+    description: "[stdout|stderr]      Print output object summary info to\nspecified\
+      \ stream."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --batch-key
+    description: "The name of the column in adata.obs that\ndifferentiates among experiments/batches.\n\
+      [required]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --layer
+    description: "Layer to batch correct. By default corrects\nthe contents of .X."
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --key-added
+    description: "Key under which to add the computed results.\nBy default a new layer\
+      \ will be created\ncalled 'combat', 'combat_{layer}' or\n'combat_layer_{key_added}'\
+      \ where those\nparameters were specified. A value of 'X'\ncauses batch-corrected\
+      \ values to overwrite\nthe original content of .X."
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --covariates
+    description: "Comma-separated list of additional\ncovariates besides the batch\
+      \ variable such\nas adjustment variables or biological\ncondition. This parameter\
+      \ refers to the\ndesign matrix X in Equation 2.1 in\n[Johnson07] and to the\
+      \ mod argument in the\noriginal combat function in the sva R\npackage.  Note\
+      \ that not including covariates\nmay introduce bias or lead to the removal of\n\
+      biological signal in unbalanced designs."
+    args: !OptionalFlagArg
+      names:
+      - TEXT
+      - TEXT...
+      separator: ','
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: scanpy-integrate combat [OPTIONS] <input_obj> <output_obj>\n\n\
+    \  ComBat function for batch effect correction\n\n  <input_obj>:   input file\
+    \ in format specfied by --input-format\n  <output_obj>:  output file in format\
+    \ specfied by --output-format\n\nOptions:\n  -f, --input-format [anndata|loom]\n\
+    \                                  Input object format.  [default: anndata]\n\
+    \  -F, --output-format [anndata|loom|zarr]\n                                 \
+    \ Output object format.  [default: anndata]\n  -z, --zarr-chunk-size INTEGER \
+    \  Chunk size for writing output in zarr\n                                  format.\
+    \  [default: 1000]\n\n  -b, --loom-write-obsm-varm      Write obsm and varm to\
+    \ the Loom file?\n                                  [default: False]\n\n  -X,\
+    \ --export-mtx PATH           When specified, using it as prefix for\n       \
+    \                           exporting mtx files. If not empty and not\n      \
+    \                            ending with \"/\" or \"_\", a \"_\" will be\n   \
+    \                               appended.\n\n  --show-obj [stdout|stderr]    \
+    \  Print output object summary info to\n                                  specified\
+    \ stream.\n\n  --batch-key TEXT                The name of the column in adata.obs\
+    \ that\n                                  differentiates among experiments/batches.\n\
+    \                                  [required]\n\n  -l, --layer TEXT          \
+    \      Layer to batch correct. By default corrects\n                         \
+    \         the contents of .X.\n\n  --key-added TEXT                Key under which\
+    \ to add the computed results.\n                                  By default a\
+    \ new layer will be created\n                                  called 'combat',\
+    \ 'combat_{layer}' or\n                                  'combat_layer_{key_added}'\
+    \ where those\n                                  parameters were specified. A\
+    \ value of 'X'\n                                  causes batch-corrected values\
+    \ to overwrite\n                                  the original content of .X.\n\
+    \n  --covariates TEXT[,TEXT...]     Comma-separated list of additional\n     \
+    \                             covariates besides the batch variable such\n   \
+    \                               as adjustment variables or biological\n      \
+    \                            condition. This parameter refers to the\n       \
+    \                           design matrix X in Equation 2.1 in\n             \
+    \                     [Johnson07] and to the mod argument in the\n           \
+    \                       original combat function in the sva R\n              \
+    \                    package.  Note that not including covariates\n          \
+    \                        may introduce bias or lead to the removal of\n      \
+    \                            biological signal in unbalanced designs.\n\n  --help\
+    \                          Show this message and exit.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/scanpy-scripts:0.3.2--py_0
+- !Command
+  command:
+  - scanpy-integrate
+  - harmony
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input_obj
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: output_obj
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --input-format
+    description: "[anndata|loom]\nInput object format.  [default: anndata]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --output-format
+    description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -z
+    - --zarr-chunk-size
+    description: Chunk size for writing output in zarr
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --loom-write-obsm-varm
+    description: "Write obsm and varm to the Loom file?\n[default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -X
+    - --export-mtx
+    description: "When specified, using it as prefix for\nexporting mtx files. If\
+      \ not empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --show-obj
+    description: "[stdout|stderr]      Print output object summary info to\nspecified\
+      \ stream."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --batch-key
+    description: "The name of the column in adata.obs that\ndifferentiates among experiments/batches.\n\
+      [required]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --basis
+    description: "The name of the field in adata.obsm where\nthe PCA table is stored.\
+      \ Defaults to\n'X_pca', which is the default for\nsc.tl.pca().  [default: X_pca]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --adjusted-basis
+    description: "The name of the field in adata.obsm where\nthe adjusted PCA table\
+      \ will be stored after\nrunning this function.  [default:\nX_pca_harmony]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --theta
+    description: "Diversity clustering penalty parameter.\ntheta=0 does not encourage\
+      \ any diversity.\nLarger values of theta result in more\ndiverse clusters. \
+      \ [default: 2]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --lambda
+    description: "Ridge regression penalty parameter. Lambda\nmust be strictly positive.\
+      \  Smaller values\nresult in more aggressive correction.\n[default: 1]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --sigma
+    description: "Width of soft kmeans clusters. Sigma scales\nthe distance from a\
+      \ cell to cluster\ncentroids. Larger values of sigma result in\ncells assigned\
+      \ to more clusters. Smaller\nvalues of sigma make soft kmeans cluster\napproach\
+      \ hard clustering.  [default: 0.1]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --n-clust
+    description: "Number of clusters in model. nclust=1\nequivalent to simple linear\
+      \ regression."
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --tau
+    description: "Protection against overclustering small\ndatasets with large ones.\
+      \ tau is the\nexpected number of cells per cluster.\n[default: 0]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --block-size
+    description: "What proportion of cells to update during\nclustering. Between 0\
+      \ to 1, default 0.05.\nLarger values may be faster but less\naccurate.  [default:\
+      \ 0.05]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-iter-cluster
+    description: "Maximum number of rounds to run clustering\nat each round of Harmony.\
+      \  [default: 20]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-iter-harmony
+    description: "Maximum number of rounds to run Harmony. One\nround of Harmony involves\
+      \ one clustering and\none correction step.  [default: 10]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --epsilon-cluster
+    description: "Convergence tolerance for clustering round\nof Harmony Set to -Inf\
+      \ to never stop early.\n[default: 1e-05]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --epsilon-harmony
+    description: "Convergence tolerance for clustering round\nof Harmony Set to -Inf\
+      \ to never stop early.\n[default: 1e-05]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    - --random-state
+    description: "Seed for random number generator.  [default:\n0]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: scanpy-integrate harmony [OPTIONS] <input_obj> <output_obj>\n\
+    \n  Use harmonypy [Korunsky19] to integrate different experiments.\n\n  <input_obj>:\
+    \   input file in format specfied by --input-format\n  <output_obj>:  output file\
+    \ in format specfied by --output-format\n\nOptions:\n  -f, --input-format [anndata|loom]\n\
+    \                                  Input object format.  [default: anndata]\n\
+    \  -F, --output-format [anndata|loom|zarr]\n                                 \
+    \ Output object format.  [default: anndata]\n  -z, --zarr-chunk-size INTEGER \
+    \  Chunk size for writing output in zarr\n                                  format.\
+    \  [default: 1000]\n\n  -b, --loom-write-obsm-varm      Write obsm and varm to\
+    \ the Loom file?\n                                  [default: False]\n\n  -X,\
+    \ --export-mtx PATH           When specified, using it as prefix for\n       \
+    \                           exporting mtx files. If not empty and not\n      \
+    \                            ending with \"/\" or \"_\", a \"_\" will be\n   \
+    \                               appended.\n\n  --show-obj [stdout|stderr]    \
+    \  Print output object summary info to\n                                  specified\
+    \ stream.\n\n  --batch-key TEXT                The name of the column in adata.obs\
+    \ that\n                                  differentiates among experiments/batches.\n\
+    \                                  [required]\n\n  --basis TEXT              \
+    \      The name of the field in adata.obsm where\n                           \
+    \       the PCA table is stored. Defaults to\n                               \
+    \   'X_pca', which is the default for\n                                  sc.tl.pca().\
+    \  [default: X_pca]\n\n  --adjusted-basis TEXT           The name of the field\
+    \ in adata.obsm where\n                                  the adjusted PCA table\
+    \ will be stored after\n                                  running this function.\
+    \  [default:\n                                  X_pca_harmony]\n\n  --theta FLOAT\
+    \                   Diversity clustering penalty parameter.\n                \
+    \                  theta=0 does not encourage any diversity.\n               \
+    \                   Larger values of theta result in more\n                  \
+    \                diverse clusters.  [default: 2]\n\n  --lambda FLOAT         \
+    \         Ridge regression penalty parameter. Lambda\n                       \
+    \           must be strictly positive.  Smaller values\n                     \
+    \             result in more aggressive correction.\n                        \
+    \          [default: 1]\n\n  --sigma FLOAT                   Width of soft kmeans\
+    \ clusters. Sigma scales\n                                  the distance from\
+    \ a cell to cluster\n                                  centroids. Larger values\
+    \ of sigma result in\n                                  cells assigned to more\
+    \ clusters. Smaller\n                                  values of sigma make soft\
+    \ kmeans cluster\n                                  approach hard clustering.\
+    \  [default: 0.1]\n\n  --n-clust INTEGER               Number of clusters in model.\
+    \ nclust=1\n                                  equivalent to simple linear regression.\n\
+    \n  --tau INTEGER                   Protection against overclustering small\n\
+    \                                  datasets with large ones. tau is the\n    \
+    \                              expected number of cells per cluster.\n       \
+    \                           [default: 0]\n\n  --block-size FLOAT             \
+    \ What proportion of cells to update during\n                                \
+    \  clustering. Between 0 to 1, default 0.05.\n                               \
+    \   Larger values may be faster but less\n                                  accurate.\
+    \  [default: 0.05]\n\n  --max-iter-cluster INTEGER      Maximum number of rounds\
+    \ to run clustering\n                                  at each round of Harmony.\
+    \  [default: 20]\n\n  --max-iter-harmony INTEGER      Maximum number of rounds\
+    \ to run Harmony. One\n                                  round of Harmony involves\
+    \ one clustering and\n                                  one correction step. \
+    \ [default: 10]\n\n  --epsilon-cluster FLOAT         Convergence tolerance for\
+    \ clustering round\n                                  of Harmony Set to -Inf to\
+    \ never stop early.\n                                  [default: 1e-05]\n\n  --epsilon-harmony\
+    \ FLOAT         Convergence tolerance for clustering round\n                 \
+    \                 of Harmony Set to -Inf to never stop early.\n              \
+    \                    [default: 1e-05]\n\n  -S, --random-state INTEGER      Seed\
+    \ for random number generator.  [default:\n                                  0]\n\
+    \n  --help                          Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/scanpy-scripts:0.3.2--py_0
+- !Command
+  command:
+  - scanpy-integrate
+  - bbknn
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input_obj
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: output_obj
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --input-format
+    description: "[anndata|loom]\nInput object format.  [default: anndata]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --output-format
+    description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -z
+    - --zarr-chunk-size
+    description: Chunk size for writing output in zarr
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --loom-write-obsm-varm
+    description: "Write obsm and varm to the Loom file?\n[default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -X
+    - --export-mtx
+    description: "When specified, using it as prefix for\nexporting mtx files. If\
+      \ not empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --show-obj
+    description: "[stdout|stderr]      Print output object summary info to\nspecified\
+      \ stream."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --key-added
+    description: Key under which to add the computed results
+    args: !OptionalFlagArg
+      names:
+      - TEXT
+      - TEXT...
+      separator: ','
+  - !Flag
+    optional: true
+    synonyms:
+    - --batch-key
+    description: "The name of the column in adata.obs that\ndifferentiates among experiments/batches.\n\
+      [required]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    - --use-rep
+    description: "The dimensionality reduction in .obsm to use\nfor neighbour detection.\
+      \  [default: X_pca]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --n-pcs
+    description: "Use this many PCs. Use `.X` if --n-pcs is 0\nwhen --use-rep is None."
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-approx
+    description: "Default behaviour is to use annoy’s\napproximate neighbour finding.\
+      \ This results\nin a quicker run time for large datasets\nwhile also potentially\
+      \ increasing the degree\nof batch correction. Use this flag to\ndisable that\
+      \ behaviour."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --metric
+    description: "[angular|cityblock|cosine|euclidean|l1|l2|manhattan|braycurtis|canberra|chebyshev|correlation|dice|hamming|jaccard|kulsinski|mahalanobis|minkowski|rogerstanimoto|russellrao|seuclidean|sokalmichener|sokalsneath|sqeuclidean|yule]\n\
+      A known metric’s name.  [default: angular]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --neighbors-within-batch
+    description: "How many top neighbours to report for each\nbatch; total number\
+      \ of neighbours will be\nthis number times the number of batches.\n[default:\
+      \ 3]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --trim
+    description: "Trim the neighbours of each cell to these\nmany top connectivities.\
+      \ May help with\npopulation independence and improve the\ntidiness of clustering.\
+      \ The lower the value\nthe more independent the individual\npopulations, at\
+      \ the cost of more conserved\nbatch effect. If None, sets the parameter\nvalue\
+      \ automatically to 10 times the total\nnumber of neighbours for each cell. Set\
+      \ to 0\nto skip."
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --n-trees
+    description: "Only used when approx=True. The number of\ntrees to construct in\
+      \ the annoy forest. More\ntrees give higher precision when querying,\nat the\
+      \ cost of increased run time and\nresource intensity.  [default: 10]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-use-faiss
+    description: "Default behaviour If approx=False and the\nmetric is “euclidean”,\
+      \ is to use the faiss\npackage to compute nearest neighbours if\ninstalled.\
+      \ This improves performance at a\nminor cost to numerical precision as faiss\n\
+      operates on float32. Use this flag to\ndisable that behaviour."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --set-op-mix-ratio
+    description: "UMAP connectivity computation parameter,\nfloat between 0 and 1,\
+      \ controlling the blend\nbetween a connectivity matrix formed\nexclusively from\
+      \ mutual nearest neighbour\npairs (0) and a union of all observed\nneighbour\
+      \ relationships with the mutual\npairs emphasised (1).  [default: 1]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --local-connectivity
+    description: "UMAP connectivity computation parameter, how\nmany nearest neighbors\
+      \ of each cell are\nassumed to be fully connected (and given a\nconnectivity\
+      \ value of 1)  [default: 1]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: scanpy-integrate bbknn [OPTIONS] <input_obj> <output_obj>\n\n\
+    \  Batch balanced kNN [Polanski19].\n\n  <input_obj>:   input file in format specfied\
+    \ by --input-format\n  <output_obj>:  output file in format specfied by --output-format\n\
+    \nOptions:\n  -f, --input-format [anndata|loom]\n                            \
+    \      Input object format.  [default: anndata]\n  -F, --output-format [anndata|loom|zarr]\n\
+    \                                  Output object format.  [default: anndata]\n\
+    \  -z, --zarr-chunk-size INTEGER   Chunk size for writing output in zarr\n   \
+    \                               format.  [default: 1000]\n\n  -b, --loom-write-obsm-varm\
+    \      Write obsm and varm to the Loom file?\n                               \
+    \   [default: False]\n\n  -X, --export-mtx PATH           When specified, using\
+    \ it as prefix for\n                                  exporting mtx files. If\
+    \ not empty and not\n                                  ending with \"/\" or \"\
+    _\", a \"_\" will be\n                                  appended.\n\n  --show-obj\
+    \ [stdout|stderr]      Print output object summary info to\n                 \
+    \                 specified stream.\n\n  --key-added TEXT[,TEXT...]      Key under\
+    \ which to add the computed results\n  --batch-key TEXT                The name\
+    \ of the column in adata.obs that\n                                  differentiates\
+    \ among experiments/batches.\n                                  [required]\n\n\
+    \  -u, --use-rep TEXT              The dimensionality reduction in .obsm to use\n\
+    \                                  for neighbour detection.  [default: X_pca]\n\
+    \n  -n, --n-pcs INTEGER             Use this many PCs. Use `.X` if --n-pcs is\
+    \ 0\n                                  when --use-rep is None.\n\n  --no-approx\
+    \                     Default behaviour is to use annoy’s\n                  \
+    \                approximate neighbour finding. This results\n               \
+    \                   in a quicker run time for large datasets\n               \
+    \                   while also potentially increasing the degree\n           \
+    \                       of batch correction. Use this flag to\n              \
+    \                    disable that behaviour.\n\n  -t, --metric [angular|cityblock|cosine|euclidean|l1|l2|manhattan|braycurtis|canberra|chebyshev|correlation|dice|hamming|jaccard|kulsinski|mahalanobis|minkowski|rogerstanimoto|russellrao|seuclidean|sokalmichener|sokalsneath|sqeuclidean|yule]\n\
+    \                                  A known metric’s name.  [default: angular]\n\
+    \  --neighbors-within-batch INTEGER\n                                  How many\
+    \ top neighbours to report for each\n                                  batch;\
+    \ total number of neighbours will be\n                                  this number\
+    \ times the number of batches.\n                                  [default: 3]\n\
+    \n  --trim INTEGER                  Trim the neighbours of each cell to these\n\
+    \                                  many top connectivities. May help with\n  \
+    \                                population independence and improve the\n   \
+    \                               tidiness of clustering. The lower the value\n\
+    \                                  the more independent the individual\n     \
+    \                             populations, at the cost of more conserved\n   \
+    \                               batch effect. If None, sets the parameter\n  \
+    \                                value automatically to 10 times the total\n \
+    \                                 number of neighbours for each cell. Set to 0\n\
+    \                                  to skip.\n\n  --n-trees INTEGER           \
+    \    Only used when approx=True. The number of\n                             \
+    \     trees to construct in the annoy forest. More\n                         \
+    \         trees give higher precision when querying,\n                       \
+    \           at the cost of increased run time and\n                          \
+    \        resource intensity.  [default: 10]\n\n  --no-use-faiss              \
+    \    Default behaviour If approx=False and the\n                             \
+    \     metric is “euclidean”, is to use the faiss\n                           \
+    \       package to compute nearest neighbours if\n                           \
+    \       installed. This improves performance at a\n                          \
+    \        minor cost to numerical precision as faiss\n                        \
+    \          operates on float32. Use this flag to\n                           \
+    \       disable that behaviour.\n\n  --set-op-mix-ratio FLOAT        UMAP connectivity\
+    \ computation parameter,\n                                  float between 0 and\
+    \ 1, controlling the blend\n                                  between a connectivity\
+    \ matrix formed\n                                  exclusively from mutual nearest\
+    \ neighbour\n                                  pairs (0) and a union of all observed\n\
+    \                                  neighbour relationships with the mutual\n \
+    \                                 pairs emphasised (1).  [default: 1]\n\n  --local-connectivity\
+    \ INTEGER    UMAP connectivity computation parameter, how\n                  \
+    \                many nearest neighbors of each cell are\n                   \
+    \               assumed to be fully connected (and given a\n                 \
+    \                 connectivity value of 1)  [default: 1]\n\n  --help         \
+    \                 Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/scanpy-scripts:0.3.2--py_0
+- !Command
+  command:
+  - scanpy-integrate
+  - mnn
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input_obj
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: output_obj
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --input-format
+    description: "[anndata|loom]\nInput object format.  [default: anndata]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --output-format
+    description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -z
+    - --zarr-chunk-size
+    description: Chunk size for writing output in zarr
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --loom-write-obsm-varm
+    description: "Write obsm and varm to the Loom file?\n[default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -X
+    - --export-mtx
+    description: "When specified, using it as prefix for\nexporting mtx files. If\
+      \ not empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --show-obj
+    description: "[stdout|stderr]      Print output object summary info to\nspecified\
+      \ stream."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --batch-key
+    description: "The name of the column in adata.obs that\ndifferentiates among experiments/batches.\n\
+      [required]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --layer
+    description: "Layer to batch correct. By default corrects\nthe contents of .X."
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --key-added
+    description: "Key under which to add the computed results.\nBy default a new layer\
+      \ will be created\ncalled 'mnn', 'mnn_{layer}' or\n'mnn_layer_{key_added}' where\
+      \ those\nparameters were specified. A value of 'X'\ncauses batch-corrected values\
+      \ to overwrite\nthe original content of .X."
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --var-subset
+    description: "<TEXT TEXT[,TEXT...]>...\nThe subset of vars (list of str) to be\
+      \ used\nwhen performing MNN correction in the format\nof '--var-subset <name>\
+      \ <values>'.\nTypically, use the highly variable genes\n(HVGs) like '--var-subset\
+      \ highly_variable\nTrue'. When unset, uses all vars."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --n-neighbors
+    description: "Number of mutual nearest neighbors.\n[default: 20]"
+    args: !OptionalFlagArg
+      names:
+      - INTEGER
+      - INTEGER...
+      separator: ','
+  - !Flag
+    optional: true
+    synonyms:
+    - --sigma
+    description: "The bandwidth of the Gaussian smoothing\nkernel used to compute\
+      \ the correction\nvectors.  [default: 1.0]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-cos_norm_in
+    description: "Default behaviour is to perform cosine\nnormalization on the input\
+      \ data prior to\ncalculating distances between cells. Use\nthis flag to disable\
+      \ that behaviour."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-cos_norm_out
+    description: "Default behaviour is to perform cosine\nnormalization prior to computing\
+      \ corrected\nexpression values. Use this flag to disable\nthat behaviour."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --svd-dim
+    description: "The number of dimensions to use for\nsummarizing biological substructure\
+      \ within\neach batch. If not set, biological\ncomponents will not be removed\
+      \ from the\ncorrection vectors."
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-var-adj
+    description: "Default behaviour is to adjust variance of\nthe correction vectors.\
+      \ Use this flag to\ndisable that behaviour. Note this step takes\nmost computing\
+      \ time."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --compute-angle
+    description: "When set, compute the angle between each\ncell’s correction vector\
+      \ and the biological\nsubspace of the reference batch."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --svd-mode
+    description: "[svd|rsvd|irlb]      'svd' computes SVD using a non-randomized\n\
+      SVD-via-ID algorithm, while 'rsvd' uses a\nrandomized version. 'irlb' performs\n\
+      truncated SVD by implicitly restarted\nLanczos bidiagonalization (forked from\n\
+      https://github.com/airysen/irlbpy).\n[default: rsvd]"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: scanpy-integrate mnn [OPTIONS] <input_obj> <output_obj>\n\n \
+    \ Correct batch effects by matching mutual nearest neighbors [Haghverdi18]\n \
+    \ [Kang18].\n\n  <input_obj>:   input file in format specfied by --input-format\n\
+    \  <output_obj>:  output file in format specfied by --output-format\n\nOptions:\n\
+    \  -f, --input-format [anndata|loom]\n                                  Input\
+    \ object format.  [default: anndata]\n  -F, --output-format [anndata|loom|zarr]\n\
+    \                                  Output object format.  [default: anndata]\n\
+    \  -z, --zarr-chunk-size INTEGER   Chunk size for writing output in zarr\n   \
+    \                               format.  [default: 1000]\n\n  -b, --loom-write-obsm-varm\
+    \      Write obsm and varm to the Loom file?\n                               \
+    \   [default: False]\n\n  -X, --export-mtx PATH           When specified, using\
+    \ it as prefix for\n                                  exporting mtx files. If\
+    \ not empty and not\n                                  ending with \"/\" or \"\
+    _\", a \"_\" will be\n                                  appended.\n\n  --show-obj\
+    \ [stdout|stderr]      Print output object summary info to\n                 \
+    \                 specified stream.\n\n  --batch-key TEXT                The name\
+    \ of the column in adata.obs that\n                                  differentiates\
+    \ among experiments/batches.\n                                  [required]\n\n\
+    \  -l, --layer TEXT                Layer to batch correct. By default corrects\n\
+    \                                  the contents of .X.\n\n  --key-added TEXT \
+    \               Key under which to add the computed results.\n               \
+    \                   By default a new layer will be created\n                 \
+    \                 called 'mnn', 'mnn_{layer}' or\n                           \
+    \       'mnn_layer_{key_added}' where those\n                                \
+    \  parameters were specified. A value of 'X'\n                               \
+    \   causes batch-corrected values to overwrite\n                             \
+    \     the original content of .X.\n\n  --var-subset <TEXT TEXT[,TEXT...]>...\n\
+    \                                  The subset of vars (list of str) to be used\n\
+    \                                  when performing MNN correction in the format\n\
+    \                                  of '--var-subset <name> <values>'.\n      \
+    \                            Typically, use the highly variable genes\n      \
+    \                            (HVGs) like '--var-subset highly_variable\n     \
+    \                             True'. When unset, uses all vars.\n\n  -k, --n-neighbors\
+    \ INTEGER[,INTEGER...]\n                                  Number of mutual nearest\
+    \ neighbors.\n                                  [default: 20]\n\n  --sigma FLOAT\
+    \                   The bandwidth of the Gaussian smoothing\n                \
+    \                  kernel used to compute the correction\n                   \
+    \               vectors.  [default: 1.0]\n\n  --no-cos_norm_in               \
+    \ Default behaviour is to perform cosine\n                                  normalization\
+    \ on the input data prior to\n                                  calculating distances\
+    \ between cells. Use\n                                  this flag to disable that\
+    \ behaviour.\n\n  --no-cos_norm_out               Default behaviour is to perform\
+    \ cosine\n                                  normalization prior to computing corrected\n\
+    \                                  expression values. Use this flag to disable\n\
+    \                                  that behaviour.\n\n  --svd-dim INTEGER    \
+    \           The number of dimensions to use for\n                            \
+    \      summarizing biological substructure within\n                          \
+    \        each batch. If not set, biological\n                                \
+    \  components will not be removed from the\n                                 \
+    \ correction vectors.\n\n  --no-var-adj                    Default behaviour is\
+    \ to adjust variance of\n                                  the correction vectors.\
+    \ Use this flag to\n                                  disable that behaviour.\
+    \ Note this step takes\n                                  most computing time.\n\
+    \n  --compute-angle                 When set, compute the angle between each\n\
+    \                                  cell’s correction vector and the biological\n\
+    \                                  subspace of the reference batch.\n\n  --svd-mode\
+    \ [svd|rsvd|irlb]      'svd' computes SVD using a non-randomized\n           \
+    \                       SVD-via-ID algorithm, while 'rsvd' uses a\n          \
+    \                        randomized version. 'irlb' performs\n               \
+    \                   truncated SVD by implicitly restarted\n                  \
+    \                Lanczos bidiagonalization (forked from\n                    \
+    \              https://github.com/airysen/irlbpy).\n                         \
+    \         [default: rsvd]\n\n  --help                          Show this message\
+    \ and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/scanpy-scripts:0.3.2--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: scanpy-integrate [OPTIONS] COMMAND [ARGS]...\n\n  Integrate cells\
+  \ from different experimental batches.\n\nOptions:\n  --help  Show this message\
+  \ and exit.\n\nCommands:\n  harmony  Use harmonypy [Korunsky19] to integrate different\
+  \ experiments.\n  bbknn    Batch balanced kNN [Polanski19].\n  mnn      Correct\
+  \ batch effects by matching mutual nearest neighbors...\n  combat   ComBat function\
+  \ for batch effect correction \b <input_obj>: input...\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/scanpy-scripts:0.3.2--py_0

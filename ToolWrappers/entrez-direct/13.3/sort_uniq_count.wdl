@@ -22,6 +22,9 @@ task Sortuniqcount {
       ~{if defined(compare_n_characters) then ("-w " +  '"' + compare_n_characters + '"') else ""} \
       ~{if (cdu) then "-cdu" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix_lines_number: "Prefix lines by the number of occurrences"
     only_print_duplicate: "Only print duplicate lines"

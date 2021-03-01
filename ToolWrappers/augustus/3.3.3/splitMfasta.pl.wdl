@@ -2,14 +2,20 @@ version 1.0
 
 task SplitMfastapl {
   input {
-    Float s_slash_input_dot_split_dot_one_dot_fa
+    File? minsize
+    File? output_path
   }
   command <<<
     splitMfasta_pl \
-      ~{s_slash_input_dot_split_dot_one_dot_fa}
+      ~{if defined(minsize) then ("--minsize " +  '"' + minsize + '"') else ""} \
+      ~{if defined(output_path) then ("--outputpath " +  '"' + output_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    s_slash_input_dot_split_dot_one_dot_fa: "s/input.split.2.fa"
+    minsize: "each split output fasta file total to at least this man base pairs.\\nset this to 0 to split the input in single sequence files."
+    output_path: "prefix to output path. Output files are\\ns/input.split.1.fa\\ns/input.split.2.fa\\ns/input.split.3.fa\\n...\\n"
   }
   output {
     File out_stdout = stdout()

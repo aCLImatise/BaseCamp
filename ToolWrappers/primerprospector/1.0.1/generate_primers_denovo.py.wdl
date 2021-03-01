@@ -28,6 +28,9 @@ task GeneratePrimersDenovopy {
       ~{if defined(target_seqs) then ("--target_seqs " +  '"' + target_seqs + '"') else ""} \
       ~{if defined(output_file_path) then ("--output_filepath " +  '"' + output_file_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     exclude_fast_a: "Excluded aligned fasta file(s).  To pass multiple\\nfiles, separate each file with a colon.  Example: -e\\ntest1.fasta:test2.fasta.  If not specified, will skip\\nexclusion step [default: none]"

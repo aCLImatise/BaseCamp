@@ -20,6 +20,9 @@ task ClinvarTsvMain {
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     b_three_seven_path: "Path to GRCh37 FAI-indexed FASTA file."
     b_three_eight_path: "Path to GRCh38 FAI-indexed FASTA file."

@@ -28,6 +28,9 @@ task BedAnnotateFromBed {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_two: "BED file that is used as annotation source."
     in: "Input BED file. If unset, reads from STDIN.\\nDefault value: ''"

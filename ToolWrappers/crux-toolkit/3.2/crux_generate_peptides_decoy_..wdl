@@ -10,6 +10,9 @@ task CruxGeneratepeptidesDecoy_ {
       ~{crux} \
       ~{generate_peptides}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     generate_peptides: ""

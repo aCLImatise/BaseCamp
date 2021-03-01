@@ -22,6 +22,9 @@ task CheckmLineageSet {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     unique: "minimum number of unique phylogenetic markers required to use lineage-specific marker set (default: 10)"
     multi: "maximum number of multi-copy phylogenetic markers before defaulting to domain-level marker set (default: 10)"

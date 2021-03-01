@@ -8,6 +8,9 @@ task RnazBEDstatspl {
     rnazBEDstats_pl \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "Prints a detailed manual page and exits."
   }

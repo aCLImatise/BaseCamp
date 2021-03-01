@@ -5,54 +5,54 @@ inputs:
   doc: "GTF attribute that defines a transposable element\nlocus. GTF features that\
     \ share the same value for\n--attribute will be considered as part of the same\n\
     locus. (default: locus)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --attribute
 - id: in_no_feature_key
   doc: "Used internally to represent alignments. Must be\ndifferent from all other\
     \ feature names. (default:\n__no_feature)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --no_feature_key
 - id: in_n_cpu
   doc: "Number of cores to use. (Multiple cores not supported\nyet). (default: 1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --ncpu
 - id: in_tempdir
   doc: "Path to temporary directory. Temporary files will be\nstored here. Default\
     \ uses python tempfile package to\ncreate the temporary directory. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --tempdir
 - id: in_quiet
   doc: 'Silence (most) output. (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_debug
   doc: 'Print debug messages. (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_log_file
   doc: 'Log output to this file. (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --logfile
 - id: in_outdir
   doc: 'Output directory. (default: .)'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_exp_tag
   doc: 'Experiment tag (default: telescope)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --exp_tag
 - id: in_updated_sam
   doc: 'Generate an updated alignment file. (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --updated_sam
 - id: in_reassign_mode
@@ -68,64 +68,64 @@ inputs:
     \ using all assignment modes are\nincluded in the Telescope report by default.\
     \ This\nargument determines what mode will be used for the\n\"final counts\" column.\
     \ (default: exclude)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --reassign_mode
 - id: in_conf_prob
   doc: "Minimum probability for high confidence assignment.\n(default: 0.9)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --conf_prob
 - id: in_overlap_mode
   doc: "Overlap mode. The method used to determine whether a\nfragment overlaps feature.\
     \ (default: threshold)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --overlap_mode
 - id: in_overlap_threshold
   doc: "Fraction of fragment that must be contained within a\nfeature to be assigned\
     \ to that locus. Ignored if\n--overlap_method is not \"threshold\". (default:\
     \ 0.2)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --overlap_threshold
 - id: in_annotation_class
   doc: "Annotation class to use for finding overlaps. Both\nhtseq and intervaltree\
     \ appear to yield identical\nresults. Performance differences are TBD. (default:\n\
     intervaltree)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --annotation_class
 - id: in_pi_prior
   doc: "Prior on π. Equivalent to adding n unique reads.\n(default: 0)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --pi_prior
 - id: in_theta_prior
   doc: "Prior on θ. Equivalent to adding n non-unique reads.\nNOTE: It is recommended\
     \ to set this prior to a large\nvalue. This increases the penalty for non-unique\
     \ reads\nand improves accuracy. (default: 200000)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --theta_prior
 - id: in_em_epsilon
   doc: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
-  type: double
+  type: double?
   inputBinding:
     prefix: --em_epsilon
 - id: in_max_iter
   doc: 'EM Algorithm maximum iterations (default: 100)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_iter
 - id: in_use_likelihood
   doc: "Use difference in log-likelihood as convergence\ncriteria. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use_likelihood
 - id: in_skip_em
   doc: "Exits after loading alignment and saving checkpoint\nfile. (default: False)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip_em
 - id: in_sam_file
@@ -146,14 +146,15 @@ outputs:
   type: stdout
 - id: out_log_file
   doc: 'Log output to this file. (default: None)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_log_file)
 - id: out_outdir
   doc: 'Output directory. (default: .)'
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - telescope

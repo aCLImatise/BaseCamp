@@ -3,96 +3,95 @@ command:
 - align2hints.pl
 positional:
 - !Positional
-  description: --out                contains CDSpart, CDS and intron hints
+  optional: false
   position: 0
   name: output
-  optional: false
+  description: --out                contains CDSpart, CDS and intron hints
 - !Positional
-  description: --genome_file=s          if prg is exonerate and start hints shall
-    be
+  optional: false
   position: 0
   name: hints.
-  optional: false
+  description: --genome_file=s          if prg is exonerate and start hints shall
+    be
 named:
 - !Flag
-  description: '... -o gthfile'
+  optional: true
   synonyms:
   - -skipalignmentout
+  description: '... -o gthfile'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: input file from gth (gff3), spaln (gff3) or exonerate
-  synonyms:
-  - --in
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: "This many bp are cut off of each CDSpart hint\nw.r.t. the cds (default\
-    \ 15)."
-  synonyms:
-  - --CDSpart_cutoff
-  args: !SimpleFlagArg
-    name: n
-  optional: true
-- !Flag
-  description: "Alignments with longer gaps are discarded\n(default 350000)."
-  synonyms:
-  - --maxintronlen
-  args: !SimpleFlagArg
-    name: n
-  optional: true
-- !Flag
-  description: "Alignments with gaps shorter than this and longer\nthan maxgaplen\
-    \ are discarded (default 41)."
-  synonyms:
-  - --minintronlen
-  args: !SimpleFlagArg
-    name: n
-  optional: true
-- !Flag
-  description: Priority of hint group (default 4).
-  synonyms:
-  - --priority
-  args: !SimpleFlagArg
-    name: n
-  optional: true
-- !Flag
-  description: "Alignment program of input file, either 'gth',\n'spaln', 'exonerate',\
-    \ 'scipio', or 'gemoma'."
   synonyms:
   - --prg
+  description: '|exonerate|spaln|scipio'
   args: !SimpleFlagArg
-    name: s
-  optional: true
+    name: gth
 - !Flag
-  description: Source identifier (default 'P')
+  optional: true
+  synonyms:
+  - --in
+  description: input file from gth (gff3), spaln (gff3) or exonerate
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --CDSpart_cutoff
+  description: "This many bp are cut off of each CDSpart hint\nw.r.t. the cds (default\
+    \ 15)."
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --maxintronlen
+  description: "Alignments with longer gaps are discarded\n(default 350000)."
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --minintronlen
+  description: "Alignments with gaps shorter than this and longer\nthan maxgaplen\
+    \ are discarded (default 41)."
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --priority
+  description: Priority of hint group (default 4).
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
   synonyms:
   - --source
+  description: Source identifier (default 'P')
   args: !SimpleFlagArg
     name: s
-  optional: true
 - !Flag
-  description: Do not output CDSpart hints, but complete CDS
+  optional: true
   synonyms:
   - --CDS
+  description: Do not output CDSpart hints, but complete CDS
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message.
+  optional: true
   synonyms:
   - --help
+  description: Print this help message.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: print version of align2hints.pl
+  optional: true
   synonyms:
   - --version
+  description: print version of align2hints.pl
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "\nalign2hints.pl    generate hints from spaln [O0 (=gff3)], exonerate,\n\
   \                  GenomeThreader (gth), scipio\n                  or GEMOMA output.\n\
   \                  Spaln2 run like this: spaln -O0 ... > spalnfile\n           \
@@ -126,3 +125,4 @@ help_text: "\nalign2hints.pl    generate hints from spaln [O0 (=gff3)], exonerat
   \ --prg=gth\n\n"
 generated_using:
 - --help
+docker_image:

@@ -14,6 +14,9 @@ task SrfList {
       ~{if (verbose_gives_data) then "-v" else ""} \
       ~{if (list_long_format) then "-l" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count_only_list: "Count only - do not list filenames"
     verbose_gives_data: "Verbose - gives summary data per file too"

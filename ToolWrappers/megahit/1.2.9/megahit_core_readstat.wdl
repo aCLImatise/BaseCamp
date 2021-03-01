@@ -8,6 +8,9 @@ task MegahitCoreReadstat {
     megahit_core readstat \
       ~{cat}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cat: ""
   }

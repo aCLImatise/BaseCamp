@@ -4,6 +4,9 @@ task DrawFusionsR {
   command <<<
     draw_fusions_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

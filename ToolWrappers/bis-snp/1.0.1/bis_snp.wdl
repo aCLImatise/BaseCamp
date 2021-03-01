@@ -130,6 +130,9 @@ task Bissnp {
       ~{if defined(max_runtime) then ("-maxRuntime " +  '"' + max_runtime + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     analysis_type: "Type of analysis to run"
     input_file: "Input file containing sequence\\ndata (BAM or CRAM)"

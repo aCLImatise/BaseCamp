@@ -22,6 +22,9 @@ task RoarypanGenomeReorderSpreadsheet {
       ~{if defined(sorting_method_heightcreationalpharevalpha) then ("-b " +  '"' + sorting_method_heightcreationalpharevalpha + '"') else ""} \
       ~{if (verbose_output_stdout) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree_filename: "tree filename []"
     output_filename: "output filename [reordered_spreadsheet.csv]"

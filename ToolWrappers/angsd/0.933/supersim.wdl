@@ -2,6 +2,7 @@ version 1.0
 
 task Supersim {
   input {
+    String? out_files
     Boolean? n_pop
     Boolean? n_ind
     Int? n_sites
@@ -16,6 +17,7 @@ task Supersim {
   }
   command <<<
     supersim \
+      ~{if defined(out_files) then ("-outfiles " +  '"' + out_files + '"') else ""} \
       ~{if (n_pop) then "-npop" else ""} \
       ~{if (n_ind) then "-nind" else ""} \
       ~{if defined(n_sites) then ("-nsites " +  '"' + n_sites + '"') else ""} \
@@ -28,7 +30,11 @@ task Supersim {
       ~{if (simpler_and) then "-simpleRand" else ""} \
       ~{if (base_freq) then "-base_freq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
+    out_files: "PREFIX.seq PREFIX.glf PREFIX.frq PREFIX.arg"
     n_pop: "Number of populations. This MUST be set before -nind [1]"
     n_ind: "Number of diploid individuals for each population [10]"
     n_sites: "of sites [500000]"

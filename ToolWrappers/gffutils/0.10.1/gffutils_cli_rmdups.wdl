@@ -10,6 +10,9 @@ task GffutilscliRmdups {
       ~{filename} \
       ~{if (in_place) then "--in-place" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_place: "Remove duplicates in place (overwrite current file.) (default:\\nFalse)\\n"
     filename: "GFF or GTF file to use."

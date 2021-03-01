@@ -10,6 +10,9 @@ task PsassConvert {
       ~{var_input} \
       ~{if (output_file) then "--output-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "TEXT    Write to an output file instead of stdout"
     var_input: ""

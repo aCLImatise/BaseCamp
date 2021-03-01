@@ -1,0 +1,84 @@
+!Command
+command:
+- iu-subsample-fastq
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --r1
+  description: "FASTQ file to be subsampled. If you are subsampling a\nmerged FASTQ\
+    \ or you don't have reverse reads, provide\nthe filepath here and do not supply\
+    \ an argument for\n--r2. If you have forward and reverse reads, supply\nthe filepaths\
+    \ as the arguments for --r1 and --r2,\nrespectively."
+  args: !SimpleFlagArg
+    name: FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --r2
+  description: "FASTQ file for the reverse reads. Should be provided\nonly if you\
+    \ are subsampling forward and reverse reads."
+  args: !SimpleFlagArg
+    name: FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --output1
+  description: "The output filepath for the forward read. By default,\nthe suffix\
+    \ \"_{n}randomreads\" is appended to the input\nfilename"
+  args: !SimpleFlagArg
+    name: FILEPATH
+- !Flag
+  optional: true
+  synonyms:
+  - --output2
+  description: "The output filepath for the reverse read. By default,\nthe suffix\
+    \ \"_{n}randomreads\" is appended to the input\nfilename, where {n} is the argument\
+    \ of --num-reads. If\nyou do not provide an argument for --r2 do not provide\n\
+    an argument for --output2."
+  args: !SimpleFlagArg
+    name: FILEPATH
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --num-reads
+  description: "Number of FASTQ entries to randomly sample\n"
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: iu-subsample-fastq [-h] --r1 FILE_PATH [--r2 FILE_PATH]\n     \
+  \                     [--output1 FILEPATH] [--output2 FILEPATH] -n INT\n\nRandomly\
+  \ subsample (without replacement) a FASTQ, or a pair of forward and\nreverse FASTQs.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --r1 FILE_PATH        FASTQ file to be subsampled. If you are subsampling a\n\
+  \                        merged FASTQ or you don't have reverse reads, provide\n\
+  \                        the filepath here and do not supply an argument for\n \
+  \                       --r2. If you have forward and reverse reads, supply\n  \
+  \                      the filepaths as the arguments for --r1 and --r2,\n     \
+  \                   respectively.\n  --r2 FILE_PATH        FASTQ file for the reverse\
+  \ reads. Should be provided\n                        only if you are subsampling\
+  \ forward and reverse reads.\n  --output1 FILEPATH    The output filepath for the\
+  \ forward read. By default,\n                        the suffix \"_{n}randomreads\"\
+  \ is appended to the input\n                        filename\n  --output2 FILEPATH\
+  \    The output filepath for the reverse read. By default,\n                   \
+  \     the suffix \"_{n}randomreads\" is appended to the input\n                \
+  \        filename, where {n} is the argument of --num-reads. If\n              \
+  \          you do not provide an argument for --r2 do not provide\n            \
+  \            an argument for --output2.\n  -n INT, --num-reads INT\n           \
+  \             Number of FASTQ entries to randomly sample\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/illumina-utils:2.10--py_0

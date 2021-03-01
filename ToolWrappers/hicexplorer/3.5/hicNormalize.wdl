@@ -16,6 +16,9 @@ task HicNormalize {
       ~{if defined(multiplicative_value) then ("--multiplicativeValue " +  '"' + multiplicative_value + '"') else ""} \
       ~{if defined(set_to_zero_threshold) then ("--setToZeroThreshold " +  '"' + set_to_zero_threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrices: "The matrix (or multiple matrices) to get information\\nabout. HiCExplorer supports the following file\\nformats: h5 (native HiCExplorer format) and cool."
     normalize: "Normalize to a) 0 to 1 range, b) all matrices to the\\nlowest read count of the given matrices."

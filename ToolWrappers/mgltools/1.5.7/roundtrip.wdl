@@ -4,6 +4,9 @@ task Roundtrip {
   command <<<
     roundtrip
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

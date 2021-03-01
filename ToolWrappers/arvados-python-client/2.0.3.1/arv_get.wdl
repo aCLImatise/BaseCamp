@@ -10,7 +10,7 @@ task Arvget {
     Boolean? md_five_sum
     Boolean? retrieve_files_specified
     Boolean? overwrite_existing_files
-    Boolean? verbose_mode_twice
+    Boolean? once_verbose_mode
     Boolean? skip_existing
     Boolean? strip_manifest
     String locator
@@ -32,10 +32,13 @@ task Arvget {
       ~{if (md_five_sum) then "--md5sum" else ""} \
       ~{if (retrieve_files_specified) then "-r" else ""} \
       ~{if (overwrite_existing_files) then "-f" else ""} \
-      ~{if (verbose_mode_twice) then "-v" else ""} \
+      ~{if (once_verbose_mode) then "-v" else ""} \
       ~{if (skip_existing) then "--skip-existing" else ""} \
       ~{if (strip_manifest) then "--strip-manifest" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     retries: "Maximum number of times to retry server requests that\\nencounter temporary failures (e.g., server down). Default\\n3."
     progress: "Display human-readable progress on stderr (bytes and, if\\npossible, percentage of total data size). This is the\\ndefault behavior when it is not expected to interfere\\nwith the output: specifically, stderr is a tty _and_\\neither stdout is not a tty, or output is being written to\\nnamed files rather than stdout."
@@ -45,7 +48,7 @@ task Arvget {
     md_five_sum: "Display the MD5 hash of each file as it is read from"
     retrieve_files_specified: "Retrieve all files in the specified collection/prefix.\\nThis is the default behavior if the \\\"locator\\\" argument\\nends with a forward slash."
     overwrite_existing_files: "Overwrite existing files while writing. The default\\nbehavior is to refuse to write *anything* if any of the\\noutput files already exist. As a special case, -f is not\\nneeded to write to stdout."
-    verbose_mode_twice: "Once for verbose mode, twice for debug mode."
+    once_verbose_mode: "Once for verbose mode, twice for debug mode."
     skip_existing: "Skip files that already exist. The default behavior is to\\nrefuse to write *anything* if any files exist that would\\nhave to be overwritten. This option causes even devices,\\nsockets, and fifos to be skipped."
     strip_manifest: "When getting a collection manifest, strip its access\\ntokens before writing it.\\n"
     locator: "Collection locator, optionally with a file path or"

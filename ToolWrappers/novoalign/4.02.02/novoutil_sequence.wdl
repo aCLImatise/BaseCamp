@@ -12,6 +12,9 @@ task NovoutilSequence {
       ~{from} \
       ~{to}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_id: "is either a numerical seqidx or a unique string from the desired sequence header."
     from: "is first base to extracted (1 based counting)."

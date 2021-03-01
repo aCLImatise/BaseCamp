@@ -3,27 +3,27 @@ id: funannotate_remote.cwl
 inputs:
 - id: in_methods
   doc: Which services to run, space separated [phobius,antismash,all]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --methods
 - id: in_email
   doc: Email address to identify yourself to services.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --email
 - id: in_input
   doc: Funannotate input folder.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input
 - id: in_out
   doc: Output folder name.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --out
 - id: in_force
   doc: Force query even if antiSMASH server looks busy
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_or
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Output folder name.
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - funannotate

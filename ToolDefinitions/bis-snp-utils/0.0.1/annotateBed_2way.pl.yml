@@ -3,91 +3,86 @@ command:
 - annotateBed_2way.pl
 positional:
 - !Positional
-  description: Input bed/gff file which requires the annotation.
+  optional: false
   position: 0
-  name: bed/gff_file
-  optional: false
-- !Positional
-  description: Summary statistics about annotation result.
-  position: 1
   name: summary_file.txt
-  optional: false
+  description: Summary statistics about annotation result.
 named:
 - !Flag
-  description: ": genomic features' bed files, which are used to annotate input bed\
-    \ files, allow multiple files"
+  optional: true
   synonyms:
   - --anno
+  description: ": genomic features' bed files, which are used to annotate input bed\
+    \ files, allow multiple files"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: ': genome fasta index file, used to generate random number in each
-    of the chromosome'
+  optional: true
   synonyms:
   - --genome
+  description: ': genome fasta index file, used to generate random number in each
+    of the chromosome'
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: ':  how many bp upstream from  align start position (Default: 0)'
+  optional: true
   synonyms:
   - --upstream
+  description: ':  how many bp upstream from  align start position (Default: 0)'
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: ':   how many bp downstream from  align start position (Default: 0)'
+  optional: true
   synonyms:
   - --downstream
+  description: ':   how many bp downstream from  align start position (Default: 0)'
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: ': only genomic feature overlapped with .bed region will be taken into
-    account'
+  optional: true
   synonyms:
   - --overlap_only
+  description: ': only genomic feature overlapped with .bed region will be taken into
+    account'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ':  minimum percentage of .bed regions overlapped with genomic features
-    will be taken into account (Default: 0)'
+  optional: true
   synonyms:
   - --overlap_percentage
+  description: ':  minimum percentage of .bed regions overlapped with genomic features
+    will be taken into account (Default: 0)'
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: ': Require same strandedness.  That is, only counts overlaps on the
-    _same_ strand (Default: both strand).'
+  optional: true
   synonyms:
   - --same_strand
+  description: ': Require same strandedness.  That is, only counts overlaps on the
+    _same_ strand (Default: both strand).'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': Require different strandedness.  That is, only count overlaps on
-    the _opposite_ strand (Default: both strand).'
+  optional: true
   synonyms:
   - --reverse_strand
+  description: ': Require different strandedness.  That is, only count overlaps on
+    the _opposite_ strand (Default: both strand).'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': path to BEDtools/bin/.if not specified in PATH environment variable'
+  optional: true
   synonyms:
   - --bedtools_path
+  description: ': path to BEDtools/bin/.if not specified in PATH environment variable'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --align_start
   description: ": (Default: --align_start 1)\n1) extend upstream, downstream from\
     \ both of 5', 3' border\n2) extend upstream, downstream from 5' border\n3) extend\
     \ upstream, downstream from 3' border\n4) extend upstream, downstream from center\
     \ of .bed region\n"
-  synonyms:
-  - --align_start
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -122,3 +117,4 @@ help_text: "\nUsage:\nperl annotateBed.pl [Options] bed/gff_file summary_file.tx
   \ center of .bed region\n"
 generated_using:
 - --help
+docker_image:

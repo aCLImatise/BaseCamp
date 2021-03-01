@@ -30,6 +30,9 @@ task FlyesamtoolsFlags {
       ~{zero_x_four_zero_zero} \
       ~{zero_x_eight_zero_zero}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     zero_x_one: "PAIRED        .. paired-end (or multiple-segment) sequencing technology"
     zero_x_two: "PROPER_PAIR   .. each segment properly aligned according to the aligner"

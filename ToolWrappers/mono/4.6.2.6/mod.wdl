@@ -8,6 +8,9 @@ task Mod {
     mod \
       ~{url}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     url: ""
   }

@@ -30,6 +30,9 @@ task Hmm2gffpy {
       ~{gene} \
       ~{prediction}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_map: ""
     features: ""

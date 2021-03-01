@@ -30,6 +30,9 @@ task Hotspot3dSearch {
       ~{if (transcript_id_header) then "--transcript-id-header" else ""} \
       ~{if (amino_acid_header) then "--amino-acid-header" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prep_dir: "HotSpot3D preprocessing results directory\\nREQUIRE AT LEAST ONE"
     maf_file: "Input MAF file used to search proximity results"

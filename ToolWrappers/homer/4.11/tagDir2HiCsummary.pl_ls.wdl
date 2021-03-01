@@ -22,6 +22,9 @@ task TagDir2HiCsummaryplLs {
       ~{if (number_cpus_use) then "-p" else ""} \
       ~{if defined(short) then ("-short " +  '"' + short + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     juicer: "(create *.hic file with juicer, \\\"-juicer auto\\\" places file in tagdir)"
     genome: "(genome is passed on to juicer_tools - if using a normal genome, i.e. hg38,\\nmm10, etc. it's probably best to specify the genome code - if juicer_tools can recognize it.\\nOtherwise specify the path to a chrom.sizes file instead of the genome code)"

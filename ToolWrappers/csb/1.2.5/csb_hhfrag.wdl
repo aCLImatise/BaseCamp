@@ -32,6 +32,9 @@ task Csbhhfrag {
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(output_directory_default) then ("--output " +  '"' + output_directory_default + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hh_search: "path to the HHsearch executable (default=hhsearch)"
     database: "database directory (containing PDBS25.hhm)"

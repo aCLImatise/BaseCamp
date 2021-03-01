@@ -16,6 +16,9 @@ task ScatercalculatecpmR {
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""} \
       ~{if defined(output_text_file) then ("--output-text-file " +  '"' + output_text_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name containing serialized SingleCellExperiment object or count matrix."
     exprs_values: "A string specifying the assay of ‘object’ containing the count matrix, if ‘object’ is a SingleCellExperiment."

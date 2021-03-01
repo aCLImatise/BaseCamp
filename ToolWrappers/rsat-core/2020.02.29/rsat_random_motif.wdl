@@ -2,12 +2,12 @@ version 1.0
 
 task RsatRandommotif {
   input {
-    Boolean? _verbosity_set
-    Boolean? _output_output
-    Boolean? _length_motif
-    Boolean? _conserv_motif
-    Boolean? _mutiplier_mutliply
-    Boolean? _motifs_generate
+    Boolean? verbosity_set_verbosity
+    Boolean? _output_results
+    Boolean? length_motif_length
+    Boolean? conserv_motif_conservation
+    Boolean? mutiplier_mutliply_cell
+    Boolean? motifs_generate_motifs
     Boolean? round
     String random_motif
     Int author
@@ -20,21 +20,24 @@ task RsatRandommotif {
       ~{author} \
       ~{motifs} \
       ~{random_sites} \
-      ~{if (_verbosity_set) then "-v" else ""} \
-      ~{if (_output_output) then "-o" else ""} \
-      ~{if (_length_motif) then "-l" else ""} \
-      ~{if (_conserv_motif) then "-c" else ""} \
-      ~{if (_mutiplier_mutliply) then "-m" else ""} \
-      ~{if (_motifs_generate) then "-n" else ""} \
+      ~{if (verbosity_set_verbosity) then "-v" else ""} \
+      ~{if (_output_results) then "-o" else ""} \
+      ~{if (length_motif_length) then "-l" else ""} \
+      ~{if (conserv_motif_conservation) then "-c" else ""} \
+      ~{if (mutiplier_mutliply_cell) then "-m" else ""} \
+      ~{if (motifs_generate_motifs) then "-n" else ""} \
       ~{if (round) then "--round" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _verbosity_set: "#, --verbosity=#   set verbosity to level #\\n0 no verbosity\\n1 max verbosity"
-    _output_output: "#, --output=#      output results to #\\nif not specified, the standard output is used"
-    _length_motif: "#, --length=#      motif length"
-    _conserv_motif: "#, --conserv=#     motif conservation (0.91 or low)"
-    _mutiplier_mutliply: "#, --mutiplier=#   mutliply each cell by #"
-    _motifs_generate: "#, --motifs=#      generate # motifs (one by default)"
+    verbosity_set_verbosity: "#, --verbosity=#   set verbosity to level #\\n0 no verbosity\\n1 max verbosity"
+    _output_results: "#, --output=#      output results to #\\nif not specified, the standard output is used"
+    length_motif_length: "#, --length=#      motif length"
+    conserv_motif_conservation: "#, --conserv=#     motif conservation (0.91 or low)"
+    mutiplier_mutliply_cell: "#, --mutiplier=#   mutliply each cell by #"
+    motifs_generate_motifs: "#, --motifs=#      generate # motifs (one by default)"
     round: "use integer values"
     random_motif: "VERSION"
     author: "AUTHOR"

@@ -28,6 +28,9 @@ task PrimedLAMPCustom {
       ~{if defined(t_spacer_len) then ("--TspacerLen " +  '"' + t_spacer_len + '"') else ""} \
       ~{if defined(inclusivity_check) then ("--InclusivityCheck " +  '"' + inclusivity_check + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run_id: "Desired Run ID"
     input_file: "Path to Custom Sets Input File (CSV)"

@@ -8,6 +8,9 @@ task Abyssdbtxt {
     abyss_db_txt \
       ~{sqlite_repository}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sqlite_repository: ""
   }

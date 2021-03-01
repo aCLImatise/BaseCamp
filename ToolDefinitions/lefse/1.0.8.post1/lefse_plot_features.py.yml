@@ -3,47 +3,96 @@ command:
 - lefse-plot_features.py
 positional:
 - !Positional
-  description: "the file for the output (the zip file if an archive is\nrequired,\
-    \ the output directory otherwise)"
+  optional: false
   position: 2
   name: OUTPUT_FILE
-  optional: false
+  description: "the file for the output (the zip file if an archive is\nrequired,\
+    \ the output directory otherwise)"
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --height
-  args: !SimpleFlagArg
-    name: HEIGHT
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - --width
+  - --height
+  - --top
+  description: set maximum y limit (-1.0 means automatic limit)
   args: !SimpleFlagArg
     name: WIDTH
+- !Flag
   optional: true
+  synonyms:
+  - --bot
+  description: "set minimum y limit (default 0.0, -1.0 means automatic\nlimit)"
+  args: !SimpleFlagArg
+    name: BOT
+- !Flag
+  optional: true
+  synonyms:
+  - --title_font_size
+  - --class_font_size
+  - --class_label_pos
+  - --subcl_mean
+  - --subcl_median
+  - --font_size
+  - -n
+  description: unused
+  args: !SimpleFlagArg
+    name: TITLE_FONT_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: the format for the output file
+  args: !ChoiceFlagArg
+    choices: !!set
+      svg:
+      pdf:
+      png:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "wheter to plot all features (all), only those\ndifferentially abundant\
+    \ according to LEfSe or only one\n(the one given with --feature_name)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      one:
+      all:
+      diff:
+- !Flag
+  optional: true
+  synonyms:
+  - --feature_name
+  description: "The name of the feature to plot (levels separated by\n.)"
+  args: !SimpleFlagArg
+    name: FEATURE_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --feature_num
+  description: The number of the feature to plot
+  args: !SimpleFlagArg
+    name: FEATURE_NUM
+- !Flag
+  optional: true
+  synonyms:
+  - --archive
+  - --background_color
+  description: set the color of the background
+  args: !ChoiceFlagArg
+    choices: !!set
+      none:
+      zip:
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--width WIDTH\n--height HEIGHT\n\
-    --top TOP             set maximum y limit (-1.0 means automatic limit)\n--bot\
-    \ BOT             set minimum y limit (default 0.0, -1.0 means automatic\nlimit)\n\
-    --title_font_size TITLE_FONT_SIZE\n--class_font_size CLASS_FONT_SIZE\n--class_label_pos\
-    \ {up,down}\n--subcl_mean {y,n}\n--subcl_median {y,n}\n--font_size FONT_SIZE\n\
-    -n flt                unused\n--format {png,pdf,svg}\nthe format for the output\
-    \ file\n-f {all,diff,one}     wheter to plot all features (all), only those\n\
-    differentially abundant according to LEfSe or only one\n(the one given with --feature_name)\n\
-    --feature_name FEATURE_NAME\nThe name of the feature to plot (levels separated\
-    \ by\n.)\n--feature_num FEATURE_NUM\nThe number of the feature to plot\n--archive\
-    \ {zip,none}\n--background_color {k,w}\nset the color of the background\n--dpi\
-    \ DPI\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: lefse-plot_features.py [-h] [--width WIDTH] [--height HEIGHT]\n\
@@ -76,3 +125,4 @@ help_text: "usage: lefse-plot_features.py [-h] [--width WIDTH] [--height HEIGHT]
   \        set the color of the background\n  --dpi DPI\n"
 generated_using:
 - --help
+docker_image:

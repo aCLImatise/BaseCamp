@@ -2,9 +2,9 @@ version 1.0
 
 task Hmmbuild {
   input {
-    String? name_hmm_s
+    String? _name_hmm
     File? direct_summary_output
-    File? resave_annotated_modified
+    File? annotated_possibly_modified
     Boolean? amino
     Boolean? dna
     Boolean? rna
@@ -54,9 +54,9 @@ task Hmmbuild {
     hmmbuild \
       ~{hmm_file_out} \
       ~{msa_file} \
-      ~{if defined(name_hmm_s) then ("-n " +  '"' + name_hmm_s + '"') else ""} \
+      ~{if defined(_name_hmm) then ("-n " +  '"' + _name_hmm + '"') else ""} \
       ~{if defined(direct_summary_output) then ("-o " +  '"' + direct_summary_output + '"') else ""} \
-      ~{if defined(resave_annotated_modified) then ("-O " +  '"' + resave_annotated_modified + '"') else ""} \
+      ~{if defined(annotated_possibly_modified) then ("-O " +  '"' + annotated_possibly_modified + '"') else ""} \
       ~{if (amino) then "--amino" else ""} \
       ~{if (dna) then "--dna" else ""} \
       ~{if (rna) then "--rna" else ""} \
@@ -100,10 +100,13 @@ task Hmmbuild {
       ~{if defined(max_insert_len) then ("--maxinsertlen " +  '"' + max_insert_len + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    name_hmm_s: ": name the HMM <s>"
+    _name_hmm: ": name the HMM <s>"
     direct_summary_output: ": direct summary output to file <f>, not stdout"
-    resave_annotated_modified: ": resave annotated, possibly modified MSA to file <f>"
+    annotated_possibly_modified: ": resave annotated, possibly modified MSA to file <f>"
     amino: ": input alignment is protein sequence data"
     dna: ": input alignment is DNA sequence data"
     rna: ": input alignment is RNA sequence data"

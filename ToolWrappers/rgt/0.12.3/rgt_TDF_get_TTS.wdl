@@ -30,6 +30,9 @@ task RgtTDFGetTTS {
       ~{if (mf) then "-mf" else ""} \
       ~{if (rm) then "-rm" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bed_file: "Input BED file of the target regions"
     tts: "Output BED file of the TTSs"

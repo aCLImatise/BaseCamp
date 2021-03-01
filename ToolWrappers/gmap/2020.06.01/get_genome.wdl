@@ -66,6 +66,9 @@ task Getgenome {
       ~{if (for_sam) then "--forsam" else ""} \
       ~{if (contigs) then "--contigs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "Genome directory"
     db: "Genome database.  If argument is '?' (with\\nthe quotes), this command lists available databases."

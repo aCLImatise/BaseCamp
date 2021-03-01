@@ -3,12 +3,12 @@ id: cactus_filterSmallFastaSequences.py.cwl
 inputs:
 - id: in_prefix
   doc: only filter sequences with prefix in name
-  type: string
+  type: string?
   inputBinding:
     prefix: --prefix
 - id: in_length
   doc: filter shorter than length [default=1000]
-  type: long
+  type: long?
   inputBinding:
     prefix: --length
 - id: in_fast_a_input_file
@@ -30,6 +30,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_fast_a_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cactus_filterSmallFastaSequences.py

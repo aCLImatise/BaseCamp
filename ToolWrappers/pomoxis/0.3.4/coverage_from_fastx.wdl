@@ -14,6 +14,9 @@ task CoverageFromFastx {
       ~{if defined(coverage) then ("--coverage " +  '"' + coverage + '"') else ""} \
       ~{if (longest) then "--longest" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     coverage: "Calculate fraction of reads required for this coverage.\\n(default: None)"
     longest: "Use the longest reads when calculating fraction reads\\nrequired for a given coverage. (default: False)\\n"

@@ -22,6 +22,9 @@ task ArrowAnnotationsLoadGff3 {
       ~{if (disable_cds_recalculation) then "--disable_cds_recalculation" else ""} \
       ~{if (timing) then "--timing" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     source: "URL where the input dataset can be found."
     batch_size: "Size of batches before writing  [default: 1]"

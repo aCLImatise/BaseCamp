@@ -12,6 +12,9 @@ task Hicup2fithic {
       ~{if (maximum) then "--maximum" else ""} \
       ~{if (minimum) then "--minimum" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     digest: "HiCUP Digester generated digest file"
     maximum: "The maximum allowed distance separation (bps) between contacts\\n(selecting this option also removes trans contacts)"

@@ -8,6 +8,9 @@ task ScmapmaketestdataR {
     scmap_make_test_data_R \
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_object_file: "file name in which to store serialized R object of type 'SingleCellExperiment'."
   }

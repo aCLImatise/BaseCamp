@@ -22,6 +22,9 @@ task Scaffold {
       ~{if defined(similar) then ("--similar " +  '"' + similar + '"') else ""} \
       ~{if defined(min_pairs) then ("--min_pairs " +  '"' + min_pairs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "(=out)                   output directory"
     num_threads: "(=0)             number of threads"

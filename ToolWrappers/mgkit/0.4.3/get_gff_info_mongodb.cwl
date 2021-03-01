@@ -1,28 +1,41 @@
 class: CommandLineTool
 id: get_gff_info_mongodb.cwl
 inputs:
-- id: in_verbose
-  doc: "-t, --taxonomy FILENAME  Taxonomy used to populate the lineage\n-c, --no-cache\
-    \           No cache for the lineage function\n-i, --indent INTEGER     If used,\
-    \ the json will be written in a human\nreadble form\n--progress              \
-    \ Shows Progress Bar\n--help                   Show this message and exit.\n"
-  type: boolean
+- id: in_taxonomy
+  doc: Taxonomy used to populate the lineage
+  type: File?
   inputBinding:
-    prefix: --verbose
+    prefix: --taxonomy
+- id: in_no_cache
+  doc: No cache for the lineage function
+  type: boolean?
+  inputBinding:
+    prefix: --no-cache
+- id: in_indent
+  doc: "If used, the json will be written in a human\nreadble form"
+  type: long?
+  inputBinding:
+    prefix: --indent
+- id: in_progress
+  doc: Shows Progress Bar
+  type: boolean?
+  inputBinding:
+    prefix: --progress
 - id: in_gff_file
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 - id: in_output_file
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - get-gff-info

@@ -11,25 +11,25 @@ subcommands:
   - infile
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: PhiSpy.py
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -m
+    description: ''
     args: !SimpleFlagArg
       name: MAKE_TRAINING_DATA
-    optional: true
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -o
+    description: ''
     args: !SimpleFlagArg
       name: OUTPUT_DIR
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -40,25 +40,25 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: PhiSpy.py
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -m
+        description: ''
         args: !SimpleFlagArg
           name: MAKE_TRAINING_DATA
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -o
+        description: ''
         args: !SimpleFlagArg
           name: OUTPUT_DIR
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -69,25 +69,25 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: PhiSpy.py
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -m
+            description: ''
             args: !SimpleFlagArg
               name: MAKE_TRAINING_DATA
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -o
+            description: ''
             args: !SimpleFlagArg
               name: OUTPUT_DIR
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -98,268 +98,431 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: PhiSpy.py
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -m
+                description: ''
                 args: !SimpleFlagArg
                   name: MAKE_TRAINING_DATA
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -o
+                description: ''
                 args: !SimpleFlagArg
                   name: OUTPUT_DIR
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: The output directory to write the results
-                  synonyms:
-                  - -o
-                  - --output_dir
-                  args: !SimpleFlagArg
-                    name: OUTPUT_DIR
-                  optional: true
-                - !Flag
-                  description: "Create training data from a set of annotated genome\n\
-                    files. Requires is_phage=1 qualifier in prophage's\nCDSs"
-                  synonyms:
-                  - -m
-                  - --make_training_data
-                  args: !SimpleFlagArg
-                    name: MAKE_TRAINING_DATA
-                  optional: true
-                - !Flag
-                  description: "Choose the most closely related set to your genome.\n\
-                    [Default data/trainSet_genericAll.txt]"
-                  synonyms:
-                  - -t
-                  - --training_set
-                  args: !SimpleFlagArg
-                    name: TRAINING_SET
-                  optional: true
-                - !Flag
-                  description: List the available training sets and exit
-                  synonyms:
-                  - -l
-                  - --list
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "An optional prefix to prepend to all of the output\n\
-                    files"
-                  synonyms:
-                  - -p
-                  - --file_prefix
-                  args: !SimpleFlagArg
-                    name: FILE_PREFIX
-                  optional: true
-                - !Flag
-                  description: "[EVALUATE], --evaluate [EVALUATE]\nRun in evaluation\
-                    \ mode -- does not generate new data,\nbut reruns the evaluation"
-                  synonyms:
-                  - -e
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Number of consecutive genes in a region of window\
-                    \ size\nthat must be prophage genes to be called. [Default: 5]"
-                  synonyms:
-                  - -n
-                  - --number
-                  args: !SimpleFlagArg
-                    name: NUMBER
-                  optional: true
-                - !Flag
-                  description: "Minimum contig size (in bp) to be included in the\n\
-                    analysis. Smaller contigs will be dropped. [Default:\n30]"
-                  synonyms:
-                  - -u
-                  - --min_contig_size
-                  args: !SimpleFlagArg
-                    name: MIN_CONTIG_SIZE
-                  optional: true
-                - !Flag
-                  description: "Window size of consecutive genes to look through to\n\
-                    find phages. [Default: 30]"
-                  synonyms:
-                  - -w
-                  - --window_size
-                  args: !SimpleFlagArg
-                    name: WINDOW_SIZE
-                  optional: true
-                - !Flag
-                  description: "The number of non phage genes betweeen prophages.\n\
-                    [Default: 10]"
-                  synonyms:
-                  - -g
-                  - --nonprophage_genegaps
-                  args: !SimpleFlagArg
-                    name: NONPROPHAGE_GENEGAPS
-                  optional: true
-                - !Flag
-                  description: "The minimum number of genes that must be identified\
-                    \ as\nbelonging to a phage for the region to be included.\nThe\
-                    \ default is 2 or more genes."
-                  synonyms:
-                  - --phage_genes
-                  args: !SimpleFlagArg
-                    name: PHAGE_GENES
-                  optional: true
-                - !Flag
-                  description: "The set of metrics to consider during classification.\n\
-                    If not set, all metrics (orf_length_med,\nshannon_slope, at_skew,\
-                    \ gc_skew, max_direction) will\nbe considered."
-                  synonyms:
-                  - --metrics
-                  args: !RepeatFlagArg
-                    name: METRICS
-                  optional: true
-                - !Flag
-                  description: "Number of trees generated by Random Forest classifier.\n\
-                    [Default: 500]"
-                  synonyms:
-                  - -r
-                  - --randomforest_trees
-                  args: !SimpleFlagArg
-                    name: RANDOMFOREST_TREES
-                  optional: true
-                - !Flag
-                  description: "Use the product of the slope of the Shannon scores\
-                    \ in\nmaking test sets"
-                  synonyms:
-                  - --expand_slope
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Type of kmers used for calculating Shannon scores.\n\
-                    [Default: all]"
-                  synonyms:
-                  - --kmers_type
-                  args: !ChoiceFlagArg
-                    choices: !!set
-                      ? simple
-                      ? codon
-                      ? all
-                  optional: true
-                - !Flag
-                  description: "Phage HMM profile database (like pVOGs) will be mapped\n\
-                    against the genome of interest and used as additional\nfeature\
-                    \ to identify prophages. Note that this is\nexperimental at the\
-                    \ moment"
-                  synonyms:
-                  - --phmms
-                  args: !SimpleFlagArg
-                    name: PHMMS
-                  optional: true
-                - !Flag
-                  description: "If set, within the output GenBank file CDSs with phmms\n\
-                    hits will be colored (for viewing in Artemis)."
-                  synonyms:
-                  - --color
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Number of threads to use while searching with phmms\n\
-                    and the random forest. [default: 2]"
-                  synonyms:
-                  - --threads
-                  args: !SimpleFlagArg
-                    name: THREADS
-                  optional: true
-                - !Flag
-                  description: "Sum of codes for files to output. For more details\
-                    \ see\nthe README.md file at\nhttps://github.com/linsalrob/PhiSpy#choosing-which-\n\
-                    output-files-are-created. [default: 3]"
-                  synonyms:
-                  - --output_choice
-                  args: !SimpleFlagArg
-                    name: OUTPUT_CHOICE
-                  optional: true
-                - !Flag
-                  description: include all repeats in the genbank output
-                  synonyms:
-                  - --include_all_repeats
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "additional DNA flanking the predicted prophage to\
-                    \ test\nfor repeats [Default 2000]"
-                  synonyms:
-                  - --extra_dna
-                  args: !SimpleFlagArg
-                    name: EXTRA_DNA
-                  optional: true
-                - !Flag
-                  description: 'minimum repeat length to search for [Default: 10]'
-                  synonyms:
-                  - --min_repeat_len
-                  args: !SimpleFlagArg
-                    name: MIN_REPEAT_LEN
-                  optional: true
-                - !Flag
-                  description: "Name of the log file to write details to [Default:\n\
-                    phispy.log]"
-                  synonyms:
-                  - --log
-                  args: !SimpleFlagArg
-                    name: LOG
-                  optional: true
-                - !Flag
-                  description: Run in quiet mode
-                  synonyms:
-                  - --quiet
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "[KEEP], --keep [KEEP]\nDo not delete temp files"
-                  synonyms:
-                  - -k
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: PhiSpy.py
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -m
+                    description: ''
                     args: !SimpleFlagArg
                       name: MAKE_TRAINING_DATA
-                    optional: true
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -o
+                    description: ''
                     args: !SimpleFlagArg
                       name: OUTPUT_DIR
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -o
+                      - --output_dir
+                      description: The output directory to write the results
+                      args: !SimpleFlagArg
+                        name: OUTPUT_DIR
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -m
+                      - --make_training_data
+                      description: "Create training data from a set of annotated genome\n\
+                        files. Requires is_phage=1 qualifier in prophage's\nCDSs"
+                      args: !SimpleFlagArg
+                        name: MAKE_TRAINING_DATA
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -t
+                      - --training_set
+                      description: "Choose the most closely related set to your genome.\n\
+                        [Default data/trainSet_genericAll.txt]"
+                      args: !SimpleFlagArg
+                        name: TRAINING_SET
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -l
+                      - --list
+                      description: List the available training sets and exit
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -p
+                      - --file_prefix
+                      description: "An optional prefix to prepend to all of the output\n\
+                        files"
+                      args: !SimpleFlagArg
+                        name: FILE_PREFIX
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -e
+                      description: "[EVALUATE], --evaluate [EVALUATE]\nRun in evaluation\
+                        \ mode -- does not generate new data,\nbut reruns the evaluation"
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -n
+                      - --number
+                      description: "Number of consecutive genes in a region of window\
+                        \ size\nthat must be prophage genes to be called. [Default:\
+                        \ 5]"
+                      args: !SimpleFlagArg
+                        name: NUMBER
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -u
+                      - --min_contig_size
+                      description: "Minimum contig size (in bp) to be included in\
+                        \ the\nanalysis. Smaller contigs will be dropped. [Default:\n\
+                        30]"
+                      args: !SimpleFlagArg
+                        name: MIN_CONTIG_SIZE
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -w
+                      - --window_size
+                      description: "Window size of consecutive genes to look through\
+                        \ to\nfind phages. [Default: 30]"
+                      args: !SimpleFlagArg
+                        name: WINDOW_SIZE
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -g
+                      - --nonprophage_genegaps
+                      description: "The number of non phage genes betweeen prophages.\n\
+                        [Default: 10]"
+                      args: !SimpleFlagArg
+                        name: NONPROPHAGE_GENEGAPS
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --phage_genes
+                      description: "The minimum number of genes that must be identified\
+                        \ as\nbelonging to a phage for the region to be included.\n\
+                        The default is 2 or more genes."
+                      args: !SimpleFlagArg
+                        name: PHAGE_GENES
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --metrics
+                      description: "The set of metrics to consider during classification.\n\
+                        If not set, all metrics (orf_length_med,\nshannon_slope, at_skew,\
+                        \ gc_skew, max_direction) will\nbe considered."
+                      args: !RepeatFlagArg
+                        name: METRICS
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -r
+                      - --randomforest_trees
+                      description: "Number of trees generated by Random Forest classifier.\n\
+                        [Default: 500]"
+                      args: !SimpleFlagArg
+                        name: RANDOMFOREST_TREES
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --expand_slope
+                      description: "Use the product of the slope of the Shannon scores\
+                        \ in\nmaking test sets"
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --kmers_type
+                      description: "Type of kmers used for calculating Shannon scores.\n\
+                        [Default: all]"
+                      args: !ChoiceFlagArg
+                        choices: !!set
+                          ? simple
+                          ? codon
+                          ? all
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --phmms
+                      description: "Phage HMM profile database (like pVOGs) will be\
+                        \ mapped\nagainst the genome of interest and used as additional\n\
+                        feature to identify prophages. Note that this is\nexperimental\
+                        \ at the moment"
+                      args: !SimpleFlagArg
+                        name: PHMMS
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --color
+                      description: "If set, within the output GenBank file CDSs with\
+                        \ phmms\nhits will be colored (for viewing in Artemis)."
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --threads
+                      description: "Number of threads to use while searching with\
+                        \ phmms\nand the random forest. [default: 2]"
+                      args: !SimpleFlagArg
+                        name: THREADS
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --output_choice
+                      description: "Sum of codes for files to output. For more details\
+                        \ see\nthe README.md file at\nhttps://github.com/linsalrob/PhiSpy#choosing-which-\n\
+                        output-files-are-created. [default: 3]"
+                      args: !SimpleFlagArg
+                        name: OUTPUT_CHOICE
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --include_all_repeats
+                      description: include all repeats in the genbank output
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --extra_dna
+                      description: "additional DNA flanking the predicted prophage\
+                        \ to test\nfor repeats [Default 2000]"
+                      args: !SimpleFlagArg
+                        name: EXTRA_DNA
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --min_repeat_len
+                      description: 'minimum repeat length to search for [Default:
+                        10]'
+                      args: !SimpleFlagArg
+                        name: MIN_REPEAT_LEN
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --log
+                      description: "Name of the log file to write details to [Default:\n\
+                        phispy.log]"
+                      args: !SimpleFlagArg
+                        name: LOG
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --quiet
+                      description: Run in quiet mode
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -k
+                      description: "[KEEP], --keep [KEEP]\nDo not delete temp files"
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: PhiSpy.py
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -m
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: MAKE_TRAINING_DATA
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: OUTPUT_DIR
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: PhiSpy.py [-h] [-o OUTPUT_DIR] [-m MAKE_TRAINING_DATA]\n\
+                        \                 [-t TRAINING_SET] [-l] [-p FILE_PREFIX]\
+                        \ [-e [EVALUATE]]\n                 [-n NUMBER] [-u MIN_CONTIG_SIZE]\
+                        \ [-w WINDOW_SIZE]\n                 [-g NONPROPHAGE_GENEGAPS]\
+                        \ [--phage_genes PHAGE_GENES]\n                 [--metrics\
+                        \ METRICS [METRICS ...]] [-r RANDOMFOREST_TREES]\n       \
+                        \          [--expand_slope] [--kmers_type {all,codon,simple}]\n\
+                        \                 [--phmms PHMMS] [--color] [--threads THREADS]\n\
+                        \                 [--output_choice OUTPUT_CHOICE] [--include_all_repeats]\n\
+                        \                 [--extra_dna EXTRA_DNA] [--min_repeat_len\
+                        \ MIN_REPEAT_LEN]\n                 [--log LOG] [--quiet]\
+                        \ [-k [KEEP]] [-v]\n                 [infile]\nPhiSpy.py:\
+                        \ error: argument infile: Checking for validity: infile does\
+                        \ not exist\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -v
+                      - --version
+                      description: show program's version number and exit
+                      args: !EmptyFlagArg {}
+                    help_text: "usage: PhiSpy.py [-h] [-o OUTPUT_DIR] [-m MAKE_TRAINING_DATA]\n\
+                      \                 [-t TRAINING_SET] [-l] [-p FILE_PREFIX] [-e\
+                      \ [EVALUATE]]\n                 [-n NUMBER] [-u MIN_CONTIG_SIZE]\
+                      \ [-w WINDOW_SIZE]\n                 [-g NONPROPHAGE_GENEGAPS]\
+                      \ [--phage_genes PHAGE_GENES]\n                 [--metrics METRICS\
+                      \ [METRICS ...]] [-r RANDOMFOREST_TREES]\n                 [--expand_slope]\
+                      \ [--kmers_type {all,codon,simple}]\n                 [--phmms\
+                      \ PHMMS] [--color] [--threads THREADS]\n                 [--output_choice\
+                      \ OUTPUT_CHOICE] [--include_all_repeats]\n                 [--extra_dna\
+                      \ EXTRA_DNA] [--min_repeat_len MIN_REPEAT_LEN]\n           \
+                      \      [--log LOG] [--quiet] [-k [KEEP]] [-v]\n            \
+                      \     [infile]\n\nphiSpy is a program for identifying prophages\
+                      \ from among microbial genome\nsequences\n\npositional arguments:\n\
+                      \  infile                Input file in genbank format\n\noptional\
+                      \ arguments:\n  -h, --help            show this help message\
+                      \ and exit\n  -o OUTPUT_DIR, --output_dir OUTPUT_DIR\n     \
+                      \                   The output directory to write the results\n\
+                      \  -m MAKE_TRAINING_DATA, --make_training_data MAKE_TRAINING_DATA\n\
+                      \                        Create training data from a set of\
+                      \ annotated genome\n                        files. Requires\
+                      \ is_phage=1 qualifier in prophage's\n                     \
+                      \   CDSs\n  -t TRAINING_SET, --training_set TRAINING_SET\n \
+                      \                       Choose the most closely related set\
+                      \ to your genome.\n                        [Default data/trainSet_genericAll.txt]\n\
+                      \  -l, --list            List the available training sets and\
+                      \ exit\n  -p FILE_PREFIX, --file_prefix FILE_PREFIX\n      \
+                      \                  An optional prefix to prepend to all of the\
+                      \ output\n                        files\n  -e [EVALUATE], --evaluate\
+                      \ [EVALUATE]\n                        Run in evaluation mode\
+                      \ -- does not generate new data,\n                        but\
+                      \ reruns the evaluation\n  -n NUMBER, --number NUMBER\n    \
+                      \                    Number of consecutive genes in a region\
+                      \ of window size\n                        that must be prophage\
+                      \ genes to be called. [Default: 5]\n  -u MIN_CONTIG_SIZE, --min_contig_size\
+                      \ MIN_CONTIG_SIZE\n                        Minimum contig size\
+                      \ (in bp) to be included in the\n                        analysis.\
+                      \ Smaller contigs will be dropped. [Default:\n             \
+                      \           30]\n  -w WINDOW_SIZE, --window_size WINDOW_SIZE\n\
+                      \                        Window size of consecutive genes to\
+                      \ look through to\n                        find phages. [Default:\
+                      \ 30]\n  -g NONPROPHAGE_GENEGAPS, --nonprophage_genegaps NONPROPHAGE_GENEGAPS\n\
+                      \                        The number of non phage genes betweeen\
+                      \ prophages.\n                        [Default: 10]\n  --phage_genes\
+                      \ PHAGE_GENES\n                        The minimum number of\
+                      \ genes that must be identified as\n                       \
+                      \ belonging to a phage for the region to be included.\n    \
+                      \                    The default is 2 or more genes.\n  --metrics\
+                      \ METRICS [METRICS ...]\n                        The set of\
+                      \ metrics to consider during classification.\n             \
+                      \           If not set, all metrics (orf_length_med,\n     \
+                      \                   shannon_slope, at_skew, gc_skew, max_direction)\
+                      \ will\n                        be considered.\n  -r RANDOMFOREST_TREES,\
+                      \ --randomforest_trees RANDOMFOREST_TREES\n                \
+                      \        Number of trees generated by Random Forest classifier.\n\
+                      \                        [Default: 500]\n  --expand_slope  \
+                      \      Use the product of the slope of the Shannon scores in\n\
+                      \                        making test sets\n  --kmers_type {all,codon,simple}\n\
+                      \                        Type of kmers used for calculating\
+                      \ Shannon scores.\n                        [Default: all]\n\
+                      \  --phmms PHMMS         Phage HMM profile database (like pVOGs)\
+                      \ will be mapped\n                        against the genome\
+                      \ of interest and used as additional\n                     \
+                      \   feature to identify prophages. Note that this is\n     \
+                      \                   experimental at the moment\n  --color  \
+                      \             If set, within the output GenBank file CDSs with\
+                      \ phmms\n                        hits will be colored (for viewing\
+                      \ in Artemis).\n  --threads THREADS     Number of threads to\
+                      \ use while searching with phmms\n                        and\
+                      \ the random forest. [default: 2]\n  --output_choice OUTPUT_CHOICE\n\
+                      \                        Sum of codes for files to output. For\
+                      \ more details see\n                        the README.md file\
+                      \ at\n                        https://github.com/linsalrob/PhiSpy#choosing-which-\n\
+                      \                        output-files-are-created. [default:\
+                      \ 3]\n  --include_all_repeats\n                        include\
+                      \ all repeats in the genbank output\n  --extra_dna EXTRA_DNA\n\
+                      \                        additional DNA flanking the predicted\
+                      \ prophage to test\n                        for repeats [Default\
+                      \ 2000]\n  --min_repeat_len MIN_REPEAT_LEN\n               \
+                      \         minimum repeat length to search for [Default: 10]\n\
+                      \  --log LOG             Name of the log file to write details\
+                      \ to [Default:\n                        phispy.log]\n  --quiet\
+                      \               Run in quiet mode\n  -k [KEEP], --keep [KEEP]\n\
+                      \                        Do not delete temp files\n  -v, --version\
+                      \         show program's version number and exit\n\n(c) 2008-2018\
+                      \ Sajia Akhter, Katelyn McNair, Przemysław Decewicz, Rob Edwards,\n\
+                      San Diego State University, San Diego, CA\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: PhiSpy.py [-h] [-o OUTPUT_DIR] [-m MAKE_TRAINING_DATA]\n\
@@ -375,24 +538,12 @@ subcommands:
                     \    [--log LOG] [--quiet] [-k [KEEP]] [-v]\n                \
                     \ [infile]\nPhiSpy.py: error: argument infile: Checking for validity:\
                     \ infile does not exist\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: show program's version number and exit
-                  synonyms:
-                  - -v
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "usage: PhiSpy.py [-h] [-o OUTPUT_DIR] [-m MAKE_TRAINING_DATA]\n\
                   \                 [-t TRAINING_SET] [-l] [-p FILE_PREFIX] [-e [EVALUATE]]\n\
                   \                 [-n NUMBER] [-u MIN_CONTIG_SIZE] [-w WINDOW_SIZE]\n\
@@ -476,14 +627,15 @@ subcommands:
                   \ Decewicz, Rob Edwards,\nSan Diego State University, San Diego,\
                   \ CA\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: PhiSpy.py [-h] [-o OUTPUT_DIR] [-m MAKE_TRAINING_DATA]\n\
@@ -499,6 +651,7 @@ subcommands:
                 \          [infile]\nPhiSpy.py: error: argument infile: Checking for\
                 \ validity: infile does not exist\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -581,14 +734,15 @@ subcommands:
               \ number and exit\n\n(c) 2008-2018 Sajia Akhter, Katelyn McNair, Przemysław\
               \ Decewicz, Rob Edwards,\nSan Diego State University, San Diego, CA\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: PhiSpy.py [-h] [-o OUTPUT_DIR] [-m MAKE_TRAINING_DATA]\n\
@@ -604,6 +758,7 @@ subcommands:
             \      [infile]\nPhiSpy.py: error: argument infile: Checking for validity:\
             \ infile does not exist\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -683,14 +838,15 @@ subcommands:
           \ Katelyn McNair, Przemysław Decewicz, Rob Edwards,\nSan Diego State University,\
           \ San Diego, CA\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: PhiSpy.py [-h] [-o OUTPUT_DIR] [-m MAKE_TRAINING_DATA]\n\
@@ -706,6 +862,7 @@ subcommands:
         PhiSpy.py: error: argument infile: Checking for validity: infile does not\
         \ exist\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -781,14 +938,15 @@ subcommands:
       \ and exit\n\n(c) 2008-2018 Sajia Akhter, Katelyn McNair, Przemysław Decewicz,\
       \ Rob Edwards,\nSan Diego State University, San Diego, CA\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: PhiSpy.py [-h] [-o OUTPUT_DIR] [-m MAKE_TRAINING_DATA]\n    \
@@ -802,6 +960,7 @@ subcommands:
     \                 [--log LOG] [--quiet] [-k [KEEP]] [-v]\n                 [infile]\n\
     PhiSpy.py: error: argument infile: Checking for validity: infile does not exist\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -874,3 +1033,4 @@ help_text: "usage: PhiSpy.py [-h] [-o OUTPUT_DIR] [-m MAKE_TRAINING_DATA]\n     
   \ Sajia Akhter, Katelyn McNair, Przemysław Decewicz, Rob Edwards,\nSan Diego State\
   \ University, San Diego, CA\n"
 generated_using: *id004
+docker_image:

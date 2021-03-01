@@ -8,6 +8,9 @@ task CruxParammedic {
     crux param_medic \
       ~{spectrum_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     spectrum_file: ""
   }

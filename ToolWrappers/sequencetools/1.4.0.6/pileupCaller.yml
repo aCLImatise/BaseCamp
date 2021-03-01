@@ -3,44 +3,51 @@ command:
 - pileupCaller
 positional:
 - !Positional
-  description: This tool is part of sequenceTools version 1.4.0.5
+  optional: false
   position: 0
   name: data.
-  optional: false
+  description: This tool is part of sequenceTools version 1.4.0.5
 named:
 - !Flag
-  description: ) [--keepIncongruentReads]
-  synonyms:
-  - --randomDiploid
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
+  synonyms:
+  - --randomHaploid
   description: "This method samples one read at random at each site,\nand uses the\
     \ allele on that read as the one for the\nactual genotype. This results in a haploid\
     \ call"
-  synonyms:
-  - --randomHaploid
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --majorityCall
   description: "Pick the allele supported by the most reads at a\nsite. If an equal\
     \ numbers of alleles fulfil this,\npick one at random. This results in a haploid\
     \ call.\nSee --downSampling for best practices for calling\nrare variants"
-  synonyms:
-  - --majorityCall
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --downSampling
   description: "When this switch is given, the MajorityCalling mode\nwill downsample\
     \ from the total number of reads a\nnumber of reads (without replacement) equal\
     \ to the\n--minDepth given. This mitigates reference bias in\nthe MajorityCalling\
     \ model, which increases with\nhigher coverage. The recommendation for rare-allele\n\
     calling is --majorityCall --downsampling --minDepth 3"
-  synonyms:
-  - --downSampling
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --randomDiploid
+  description: "Sample two reads at random (without replacement) at\neach site and\
+    \ represent the individual by a diploid\ngenotype constructed from those two random\
+    \ picks.\nThis will always assign missing data to positions\nwhere only one read\
+    \ is present, even if minDepth=1.\nThe main use case for this option is for estimating\n\
+    mean heterozygosity across sites."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keepIncongruentReads
   description: "By default, pileupCaller now removes reads with\ntri-allelic alleles\
     \ that are neither of the two\nalleles specified in the SNP file. To keep those\n\
     reads for sampling, set this flag. With this option\ngiven, if the sampled read\
@@ -49,50 +56,51 @@ named:
     \ has changed in\npileupCaller version 1.4.0. If you want to emulate\nthe previous\
     \ behaviour, use this flag. I recommend\nnow to NOT set this flag and use the\
     \ new behaviour."
-  synonyms:
-  - --keepIncongruentReads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "random seed used for the random number generator. If\nnot given, use\
-    \ system clock to seed the random number\ngenerator."
+  optional: true
   synonyms:
   - --seed
+  description: "random seed used for the random number generator. If\nnot given, use\
+    \ system clock to seed the random number\ngenerator."
   args: !SimpleFlagArg
     name: RANDOM_SEED
-  optional: true
 - !Flag
-  description: "specify the minimum depth for a call. For sites with\nfewer reads\
-    \ than this number, declare\nMissing (default: 1)"
+  optional: true
   synonyms:
   - -d
   - --minDepth
+  description: "specify the minimum depth for a call. For sites with\nfewer reads\
+    \ than this number, declare\nMissing (default: 1)"
   args: !SimpleFlagArg
     name: DEPTH
-  optional: true
 - !Flag
-  description: "skip transition SNPs entirely in the output,\nresulting in a dataset\
-    \ with fewer sites."
+  optional: true
   synonyms:
   - --skipTransitions
+  description: "skip transition SNPs entirely in the output,\nresulting in a dataset\
+    \ with fewer sites."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "mark transitions as missing in the output, but do\noutput the sites."
+  optional: true
   synonyms:
   - --transitionsMissing
+  description: "mark transitions as missing in the output, but do\noutput the sites."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --singleStrandMode
   description: "[THIS IS CURRENTLY AN EXPERIMENTAL FEATURE]. At C/T\npolymorphisms,\
     \ ignore reads aligning to the forward\nstrand. At G/A polymorphisms, ignore reads\
     \ aligning\nto the reverse strand. This should remove post-mortem\ndamage in ancient\
     \ DNA libraries prepared with the\nnon-UDG single-stranded protocol."
-  synonyms:
-  - --singleStrandMode
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --snpFile
   description: "an Eigenstrat-formatted SNP list file for the\npositions and alleles\
     \ to call. All positions in the\nSNP file will be output, adding missing data\
     \ where\nthere is no data. Note that pileupCaller\nautomatically checks whether\
@@ -109,65 +117,61 @@ named:
     \ widely used encoding\nin Eigenstrat databases for human data, so using a\nSNP\
     \ file with that encoding will automatically be\ncorrectly aligned to pileup data\
     \ with actual\nchromosome names X, Y and MT (or chrX, chrY and\nchrMT, respectively)."
-  synonyms:
-  - -f
-  - --snpFile
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --eigenstratOut
   description: "Set Eigenstrat as output format. Specify the\nfilenames for the EigenStrat\
     \ SNP and IND file\noutputs: <FILE_PREFIX>.snp.txt and\n<FILE_PREFIX>.ind.txt\
     \ If not set, output will be\nFreqSum (Default). Note that freqSum format,\ndescribed\
     \ at\nhttps://rarecoal-docs.readthedocs.io/en/latest/rarecoal-tools.html#vcf2freqsum,\n\
     is useful for testing your pipeline, since it's\noutput to standard out"
-  synonyms:
-  - -e
-  - --eigenstratOut
   args: !SimpleFlagArg
     name: FILE_PREFIX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --samplePopName
   description: "specify the population name of the samples, which is\nincluded in\
     \ the output *.ind.txt file in Eigenstrat\noutput. This will be ignored if the\
     \ output format is\nnot Eigenstrat (default: \"Unknown\")"
-  synonyms:
-  - --samplePopName
   args: !SimpleFlagArg
     name: POP
-  optional: true
 - !Flag
-  description: ",NAME2,...\ngive the names of the samples as comma-separated list\n\
-    (no spaces)"
+  optional: true
   synonyms:
   - --sampleNames
+  description: ",NAME2,...\ngive the names of the samples as comma-separated list\n\
+    (no spaces)"
   args: !SimpleFlagArg
     name: NAME1
-  optional: true
 - !Flag
-  description: "give the names of the samples in a file with one name\nper line\n"
+  optional: true
   synonyms:
   - --sampleNameFile
+  description: "give the names of the samples in a file with one name\nper line\n"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this help text
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this help text
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Print version and exit
+  optional: true
   synonyms:
   - --version
+  description: Print version and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: pileupCaller [--version] \n                    (--randomHaploid\
   \ | --majorityCall [--downSampling] | \n                      --randomDiploid) [--keepIncongruentReads]\
   \ \n                    [--seed <RANDOM_SEED>] [-d|--minDepth <DEPTH>] \n      \
@@ -272,3 +276,4 @@ help_text: "Usage: pileupCaller [--version] \n                    (--randomHaplo
   \ in a file with one name\n                           per line\n"
 generated_using:
 - --help
+docker_image:

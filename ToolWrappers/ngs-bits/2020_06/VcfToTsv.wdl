@@ -14,6 +14,9 @@ task VcfToTsv {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input variant list in VCF format."
     out: "Output variant list in TSV format."

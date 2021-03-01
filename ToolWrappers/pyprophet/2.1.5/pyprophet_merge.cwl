@@ -3,22 +3,22 @@ id: pyprophet_merge.cwl
 inputs:
 - id: in_out
   doc: Merged OSW output file.  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
-- id: in_same_run
-  doc: "/ --no-same_run  Assume input files are from same run (deletes\nrun information)."
-  type: boolean
+- id: in_no_same_run
+  doc: "Assume input files are from same run (deletes\nrun information)."
+  type: boolean?
   inputBinding:
-    prefix: --same_run
+    prefix: --no-same_run
 - id: in_template
   doc: Template OSW file.  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --template
 - id: in_in_files
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Merged OSW output file.  [required]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pyprophet

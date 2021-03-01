@@ -3,22 +3,22 @@ id: kmc_tools_transform.cwl
 inputs:
 - id: in_ci
   doc: <value> - exclude k-mers occurring less than <value> times
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ci
 - id: in_cx
   doc: <value> - exclude k-mers occurring more of than <value> times
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -cx
 - id: in_cs
   doc: <value> - maximal value of a counter
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -cs
 - id: in__sorted_output
   doc: '- sorted output'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_sort
@@ -51,6 +51,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kmc_tools

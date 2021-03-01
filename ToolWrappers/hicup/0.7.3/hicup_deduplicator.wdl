@@ -16,6 +16,9 @@ task HicupDeduplicator {
       ~{if (threads) then "--threads" else ""} \
       ~{if (zip) then "--zip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Specify the configuration file"
     outdir: "Directory to write output files"

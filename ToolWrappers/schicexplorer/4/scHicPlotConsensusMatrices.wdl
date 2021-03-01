@@ -22,6 +22,9 @@ task ScHicPlotConsensusMatrices {
       ~{if defined(chromosomes) then ("--chromosomes " +  '"' + chromosomes + '"') else ""} \
       ~{if defined(colormap) then ("--colorMap " +  '"' + colormap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     schic_matrix_m: "scHi-C matrix, -m scool scHi-C matrix\\nThe consensus matrix created by scHicConsensusMatrices\\n(default: None)"
     out_filename: "File name to save the resulting cluster profile.\\n(default: consensus_matrices.png)"

@@ -1,19 +1,19 @@
 class: CommandLineTool
 id: getmesh.cwl
 inputs:
-- id: in_input_data_data
+- id: in_input_data_type
   doc: "Input data [Data In]\nData Type = Medline-entry"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_input_data_binary
   doc: "Input data is binary [T/F]  Optional\ndefault = F"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in_output_list
   doc: Output list [File Out]
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_list
   doc: Output list [File Out]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_list)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - getmesh

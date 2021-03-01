@@ -24,6 +24,9 @@ task BcbioVmpyTemplate {
       ~{if defined(num_cores) then ("--numcores " +  '"' + num_cores + '"') else ""} \
       ~{if (rel_paths) then "--relpaths" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     only_metadata: "Ignore samples not present in metadata CSV file"
     force_single: "Treat all files as single reads"

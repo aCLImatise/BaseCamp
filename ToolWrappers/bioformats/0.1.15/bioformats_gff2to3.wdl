@@ -14,6 +14,9 @@ task BioformatsGff2to3 {
       ~{if (ignore_incorrect_records) then "--ignore_incorrect_records" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_incorrect_records: "ignore incorrect records in the specified input GFF2\\nfile\\n"
     v: ""

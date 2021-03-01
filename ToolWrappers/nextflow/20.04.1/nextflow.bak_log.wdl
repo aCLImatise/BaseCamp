@@ -9,7 +9,7 @@ task NextflowbakLog {
     Boolean? filter
     Boolean? list_fields
     Boolean? quiet
-    Boolean? character_used_separate
+    Boolean? character_used_valuesdefault
     Boolean? template
     String log
   }
@@ -23,9 +23,12 @@ task NextflowbakLog {
       ~{if (filter) then "-filter" else ""} \
       ~{if (list_fields) then "-list-fields" else ""} \
       ~{if (quiet) then "-quiet" else ""} \
-      ~{if (character_used_separate) then "-s" else ""} \
+      ~{if (character_used_valuesdefault) then "-s" else ""} \
       ~{if (template) then "-template" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     after: "Show log entries for runs executed after the specified one"
     before: "Show log entries for runs executed before the specified one"
@@ -34,7 +37,7 @@ task NextflowbakLog {
     filter: "Filter log entries by a custom expression e.g. process =~ /foo.*/ &&\\nstatus == 'COMPLETED'"
     list_fields: "Show all available fields\\nDefault: false"
     quiet: "Show only run names\\nDefault: false"
-    character_used_separate: "Character used to separate column values\\nDefault:"
+    character_used_valuesdefault: "Character used to separate column values\\nDefault:"
     template: "Text template used to each record in the log\\n"
     log: ""
   }

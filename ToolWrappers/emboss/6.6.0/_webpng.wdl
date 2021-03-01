@@ -18,6 +18,9 @@ task Webpng {
       ~{if (reports_dimensions_characteristics) then "-d" else ""} \
       ~{if (prints_alpha_channels) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     turns_onoff_interlace: "Turns on/off interlace"
     prints_table_color: "Prints the table of color indexes"

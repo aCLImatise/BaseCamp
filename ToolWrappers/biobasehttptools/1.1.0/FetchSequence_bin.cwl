@@ -36,15 +36,21 @@ inputs:
   type: string
   inputBinding:
     position: 6
+- id: in_response_time_out
+  doc: = ResponseTimeoutDefault
+  type: string
+  inputBinding:
+    position: 7
 - id: in_request_version
   doc: = HTTP/1.1
   type: string
   inputBinding:
-    position: 7
+    position: 8
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - FetchSequence-bin

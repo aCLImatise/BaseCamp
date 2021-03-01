@@ -8,7 +8,7 @@ inputs:
     prefix: --matrices
 - id: in_out_filename
   doc: 'File name to save the exported matrix. (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --outFileName
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_out_filename
   doc: 'File name to save the exported matrix. (default: None)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - scHicMergeToSCool

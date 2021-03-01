@@ -16,6 +16,9 @@ task Segtoolsflatten {
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(filter) then ("--filter " +  '"' + filter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not print diagnostic messages."
     mnemonic_file: "Save mapping information to FILE instead of\\nflat.mnemonics (default). This file complies with the\\nmnemonic file format."

@@ -8,6 +8,9 @@ task Dxjobutilreporterror {
     dx_jobutil_report_error \
       ~{message}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     message: "Error message for the job"
   }

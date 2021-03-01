@@ -16,6 +16,9 @@ task Runquakepy {
       ~{in} \
       ~{spec_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     parameters: ""
     are: ""

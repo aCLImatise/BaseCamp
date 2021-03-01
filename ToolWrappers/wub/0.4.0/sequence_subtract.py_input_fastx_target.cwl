@@ -3,12 +3,12 @@ id: sequence_subtract.py_input_fastx_target.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_i
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -i
 - id: in_sequence_subtract_do_tpy
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sequence_subtract.py

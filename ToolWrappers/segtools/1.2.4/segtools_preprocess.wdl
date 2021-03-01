@@ -16,6 +16,9 @@ task Segtoolspreprocess {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (annotation) then "--annotation" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clobber: "Overwrite any existing output files."
     quiet: "Do not print diagnostic messages."

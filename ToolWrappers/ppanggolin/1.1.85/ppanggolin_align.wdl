@@ -2,9 +2,8 @@ version 1.0
 
 task PpanggolinAlign {
   input {
-    String? p
     File? pan_genome
-    File? output_directory_where
+    File? output_directory_be
     String? proteins
     File? annotation
     Boolean? defrag
@@ -21,9 +20,8 @@ task PpanggolinAlign {
   }
   command <<<
     ppanggolin align \
-      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
       ~{if defined(pan_genome) then ("--pangenome " +  '"' + pan_genome + '"') else ""} \
-      ~{if defined(output_directory_where) then ("--output " +  '"' + output_directory_where + '"') else ""} \
+      ~{if defined(output_directory_be) then ("--output " +  '"' + output_directory_be + '"') else ""} \
       ~{if defined(proteins) then ("--proteins " +  '"' + proteins + '"') else ""} \
       ~{if defined(annotation) then ("--annotation " +  '"' + annotation + '"') else ""} \
       ~{if (defrag) then "--defrag" else ""} \
@@ -38,10 +36,12 @@ task PpanggolinAlign {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    p: "[--defrag]"
     pan_genome: "The pangenome .h5 file (default: None)"
-    output_directory_where: "Output directory where the file(s) will be written\\n(default: None)"
+    output_directory_be: "Output directory where the file(s) will be written\\n(default: None)"
     proteins: "proteins sequences to align on the pangenome gene\\nfamilies (default: None)"
     annotation: "annotation input file (gff or gbff) from which to\\npredict RGPs and partitions (default: None)"
     defrag: "Use the defragmentation strategy to associate\\npotential fragments with their original gene family.\\n(default: False)"
@@ -58,7 +58,7 @@ task PpanggolinAlign {
   }
   output {
     File out_stdout = stdout()
-    File out_output_directory_where = "${in_output_directory_where}"
+    File out_output_directory_be = "${in_output_directory_be}"
     File out_log = "${in_log}"
     File out_force = "${in_force}"
   }

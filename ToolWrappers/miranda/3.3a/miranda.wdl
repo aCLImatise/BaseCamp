@@ -38,6 +38,9 @@ task Miranda {
       ~{if defined(restrict) then ("-restrict " +  '"' + restrict + '"') else ""} \
       ~{if (keyval) then "-keyval" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     license: "Display license information"
     sc: "Set score threshold to S                [DEFAULT: 140.0]"

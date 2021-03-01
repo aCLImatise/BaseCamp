@@ -10,6 +10,9 @@ task Countsam {
       ~{in_file_dots_am} \
       ~{ref_flat_dot_txt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file_dots_am: ""
     ref_flat_dot_txt: ""

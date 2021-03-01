@@ -18,6 +18,9 @@ task PhyluceProbeGetGenomeSequencesFromBed {
       ~{if defined(max_n) then ("--max-n " +  '"' + max_n + '"') else ""} \
       ~{if defined(buffer_to) then ("--buffer-to " +  '"' + buffer_to + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "The input BED file"
     two_bit: "The input genome to slice in UCSC 2bit format"

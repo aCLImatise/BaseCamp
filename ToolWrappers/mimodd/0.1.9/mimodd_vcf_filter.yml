@@ -4,103 +4,103 @@ command:
 - vcf-filter
 positional:
 - !Positional
-  description: 'a vcf input file (default: stdin)'
+  optional: false
   position: 0
   name: input_file
-  optional: false
+  description: 'a vcf input file (default: stdin)'
 named:
 - !Flag
-  description: "redirect the output to the specified file (default:\nstdout)"
+  optional: true
   synonyms:
   - -o
   - --ofile
+  description: "redirect the output to the specified file (default:\nstdout)"
   args: !SimpleFlagArg
     name: OFILE
-  optional: true
 - !Flag
-  description: "one or more sample names that the sample-specific\nfilters --gt, --dp,\
-    \ and --gq should work on."
+  optional: true
   synonyms:
   - -s
   - --samples
+  description: "one or more sample names that the sample-specific\nfilters --gt, --dp,\
+    \ and --gq should work on."
   args: !RepeatFlagArg
     name: SAMPLE_NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gt
   description: "genotype patterns (one per sample, use ANY to skip the\nrequirement\
     \ for a given sample) to be included in the\noutput; format: x/x where x = 0 and\
     \ x = 1 stand for\nthe reference and the variant allele, respectively;\nmultiple\
     \ allowed genotypes for a sample can be\nspecified as a comma-separated list"
-  synonyms:
-  - --gt
   args: !RepeatFlagArg
     name: GT_PATTERN
-  optional: true
 - !Flag
-  description: "minimal coverage (one per sample, use 0 to skip the\nrequirement for\
-    \ a given sample) required to include a\nsite in the output"
+  optional: true
   synonyms:
   - --dp
+  description: "minimal coverage (one per sample, use 0 to skip the\nrequirement for\
+    \ a given sample) required to include a\nsite in the output"
   args: !RepeatFlagArg
     name: DP_THRESHOLD
-  optional: true
 - !Flag
-  description: "minimal genotype quality (one per sample, use 0 to\nskip the requirement\
-    \ for a given sample) required to\ninclude a site in the output"
+  optional: true
   synonyms:
   - --gq
+  description: "minimal genotype quality (one per sample, use 0 to\nskip the requirement\
+    \ for a given sample) required to\ninclude a site in the output"
   args: !RepeatFlagArg
     name: GQ_THRESHOLD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --af
   description: "#:MIN_FRACTION:MAX_FRACTION [ALLELE#:MIN_FRACTION:MAX_FRACTION ...]\n\
     the fraction of reads supporting a specific ALLELE#\nmust be between MIN_FRACTION\
     \ and MAX_FRACTION to\ninclude the site in the output"
-  synonyms:
-  - --af
   args: !SimpleFlagArg
     name: ALLELE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
   description: "[REGION_FILTER [REGION_FILTER ...]], --region [REGION_FILTER [REGION_FILTER\
     \ ...]]\nkeep only variants that fall in one of the given\nchromsomal regions\
     \ (specified in the format\nCHROM:START-STOP or CHROM: for a whole chromosome)"
-  synonyms:
-  - -r
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: skip indels in the output
+  optional: true
   synonyms:
   - -I
   - --no-indels
+  description: skip indels in the output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: keep only indels in the output
+  optional: true
   synonyms:
   - -i
   - --indels-only
+  description: keep only indels in the output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "vertical sample names filter; if given, only sample\ncolumns specified\
-    \ by name will be retained in the\noutput"
+  optional: true
   synonyms:
   - --vfilter
+  description: "vertical sample names filter; if given, only sample\ncolumns specified\
+    \ by name will be retained in the\noutput"
   args: !RepeatFlagArg
     name: V_FILTER
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage:  vcf-filter [-h] [-o OFILE] [-s SAMPLE_NAME [SAMPLE_NAME ...]]\n\
@@ -148,3 +148,4 @@ help_text: "usage:  vcf-filter [-h] [-o OFILE] [-s SAMPLE_NAME [SAMPLE_NAME ...]
   \ and sample2 show at least 3-fold coverage\n\t\t(sample2's genotype doesn't matter)\n"
 generated_using:
 - --help
+docker_image:

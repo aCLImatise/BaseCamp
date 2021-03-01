@@ -52,6 +52,9 @@ task Biopetvcfstats {
       ~{if defined(spark_executor_memory) then ("--sparkExecutorMemory " +  '"' + spark_executor_memory + '"') else ""} \
       ~{if (spark_config_value) then "--sparkConfigValue" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_level: "Level of log information printed. Possible levels: 'debug', 'info', 'warn', 'error'"
     input_file: "Input VCF file (required)"

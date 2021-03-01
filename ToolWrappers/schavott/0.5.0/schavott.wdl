@@ -14,7 +14,7 @@ task Schavott {
     String? skip
     Int? intensity
     Boolean? plot
-    File? set_filename_schavott
+    File? set_output_filename
   }
   command <<<
     schavott \
@@ -30,8 +30,11 @@ task Schavott {
       ~{if defined(skip) then ("--skip " +  '"' + skip + '"') else ""} \
       ~{if defined(intensity) then ("--intensity " +  '"' + intensity + '"') else ""} \
       ~{if (plot) then "--plot" else ""} \
-      ~{if defined(set_filename_schavott) then ("--output " +  '"' + set_filename_schavott + '"') else ""}
+      ~{if defined(set_output_filename) then ("--output " +  '"' + set_output_filename + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run_mode: "Run scaffolding or assembly"
     scaffold_er: "Which scaffolder to use."
@@ -45,10 +48,10 @@ task Schavott {
     skip: "Skips the first j read of the sequencing"
     intensity: "How often the scaffolding process should run. If run\\nmode is set to reads, scaffolding will run every i:th\\nread. If run mode is time, scaffolding will run every\\ni:th second. [100 reads]"
     plot: "Plot result in web-browser"
-    set_filename_schavott: "Set output filename. (Defaut: schavott)\\n"
+    set_output_filename: "Set output filename. (Defaut: schavott)\\n"
   }
   output {
     File out_stdout = stdout()
-    File out_set_filename_schavott = "${in_set_filename_schavott}"
+    File out_set_output_filename = "${in_set_output_filename}"
   }
 }

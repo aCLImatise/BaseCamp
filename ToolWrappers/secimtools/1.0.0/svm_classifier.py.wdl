@@ -2,7 +2,6 @@ version 1.0
 
 task SvmClassifierpy {
   input {
-    String? ted
     String? train_wide
     String? train_design
     String? test_wide
@@ -24,7 +23,6 @@ task SvmClassifierpy {
   }
   command <<<
     svm_classifier_py \
-      ~{if defined(ted) then ("-ted " +  '"' + ted + '"') else ""} \
       ~{if defined(train_wide) then ("--train_wide " +  '"' + train_wide + '"') else ""} \
       ~{if defined(train_design) then ("--train_design " +  '"' + train_design + '"') else ""} \
       ~{if defined(test_wide) then ("--test_wide " +  '"' + test_wide + '"') else ""} \
@@ -44,8 +42,10 @@ task SvmClassifierpy {
       ~{if defined(out_prediction) then ("--outPrediction " +  '"' + out_prediction + '"') else ""} \
       ~{if defined(out_prediction_accuracy) then ("--outPredictionAccuracy " +  '"' + out_prediction_accuracy + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    ted: "DEGREE -c C -cv CROSS_VALIDATION\\n[-c_lower_bound C_LOWER_BOUND]\\n[-c_upper_bound C_UPPER_BOUND] -a A -b B -oc\\nOUTCLASSIFICATION -oca OUTCLASSIFICATIONACCURACY -op\\nOUTPREDICTION -opa OUTPREDICTIONACCURACY"
     train_wide: "wide part of the train dataset."
     train_design: "design part of the train dataset."
     test_wide: "wide part of the test dataset."

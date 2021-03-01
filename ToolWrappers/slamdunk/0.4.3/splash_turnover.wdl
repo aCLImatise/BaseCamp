@@ -14,6 +14,9 @@ task SplashTurnover {
       ~{if defined(max_half_life) then ("--max-halflife " +  '"' + max_half_life + '"') else ""} \
       ~{if defined(output_dir) then ("--outputDir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "BED file"
     min_half_life: "Lower bound for the simulated half lifes in minutes"

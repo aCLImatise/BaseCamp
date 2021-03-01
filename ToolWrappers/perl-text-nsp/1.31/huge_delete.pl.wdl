@@ -18,6 +18,9 @@ task Hugedeletepl {
       ~{if defined(frequency) then ("--frequency " +  '"' + frequency + '"') else ""} \
       ~{if defined(u_frequency) then ("--ufrequency " +  '"' + u_frequency + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     remove: "Bigrams with counts < L will be removed from sample."
     u_remove: "Bigrams with counts > L will be removed from sample."

@@ -18,6 +18,9 @@ task Sbgcwlrunner {
       ~{if defined(project) then ("--project " +  '"' + project + '"') else ""} \
       ~{if defined(poll_interval) then ("--poll-interval " +  '"' + poll_interval + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "Directory to put results in [default: ./]"
     quiet: "Suppress logging messages"

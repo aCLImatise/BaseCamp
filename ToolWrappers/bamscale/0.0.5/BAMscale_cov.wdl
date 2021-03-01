@@ -46,6 +46,9 @@ task BAMscaleCov {
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "Input BED file"
     bam: "Input BAM file. This can be specified multiple times in case of multiple BAM files"

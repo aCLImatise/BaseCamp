@@ -42,6 +42,9 @@ task Stellar {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(out_disabled) then ("--outDisabled " +  '"' + out_disabled + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version_check: "Turn this option off to disable version update notifications of the\\napplication. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\\nDefault: 1."
     epsilon: "Maximal error rate (max 0.25). In range [0.0000001..0.25]. Default:\\n0.05."

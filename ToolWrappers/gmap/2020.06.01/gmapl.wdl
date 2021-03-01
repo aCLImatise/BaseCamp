@@ -33,7 +33,7 @@ task Gmapl {
     Float? micro_exon_splice_prob
     Directory? c_met_dir
     Directory? atoi_dir
-    String? alignment_mode_default
+    String? alignment_mode_standard
     Boolean? prune_level
     Boolean? summary
     Boolean? align
@@ -92,11 +92,11 @@ task Gmapl {
     Float? min_trimmed_coverage
     Float? min_identity
     Boolean? check
-    String positions_genome_mmap
+    String positions_mmap_mmap
   }
   command <<<
     gmapl \
-      ~{positions_genome_mmap} \
+      ~{positions_mmap_mmap} \
       ~{if defined(dir) then ("--dir " +  '"' + dir + '"') else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
@@ -128,7 +128,7 @@ task Gmapl {
       ~{if defined(micro_exon_splice_prob) then ("--microexon-spliceprob " +  '"' + micro_exon_splice_prob + '"') else ""} \
       ~{if defined(c_met_dir) then ("--cmetdir " +  '"' + c_met_dir + '"') else ""} \
       ~{if defined(atoi_dir) then ("--atoidir " +  '"' + atoi_dir + '"') else ""} \
-      ~{if defined(alignment_mode_default) then ("--mode " +  '"' + alignment_mode_default + '"') else ""} \
+      ~{if defined(alignment_mode_standard) then ("--mode " +  '"' + alignment_mode_standard + '"') else ""} \
       ~{if (prune_level) then "--prunelevel" else ""} \
       ~{if (summary) then "--summary" else ""} \
       ~{if (align) then "--align" else ""} \
@@ -188,6 +188,9 @@ task Gmapl {
       ~{if defined(min_identity) then ("--min-identity " +  '"' + min_identity + '"') else ""} \
       ~{if (check) then "--check" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "Genome directory.  Default (as specified by --with-gmapdb to the configure program) is\\n/usr/local/share"
     db: "Genome database.  If argument is '?' (with\\nthe quotes), this command lists available databases."
@@ -197,7 +200,7 @@ task Gmapl {
     self_align: "Align one sequence against itself in FASTA format via stdin\\n(Useful for getting protein translation of a nucleotide sequence)"
     pair_align: "Align two sequences in FASTA format via stdin, first one being\\ngenomic and second one being cDNA"
     cmdline: ",STRING        Align these two sequences provided on the command line,\\nfirst one being genomic and second one being cDNA"
-    part: "Process only the i-th out of every n sequences\\ne.g., 0/100 or 99/100 (useful for distributing jobs\\nto a computer farm)."
+    part: "/INT             Process only the i-th out of every n sequences\\ne.g., 0/100 or 99/100 (useful for distributing jobs\\nto a computer farm)."
     input_buffer_size: "Size of input buffer (program reads this many sequences\\nat a time for efficiency) (default 1000)"
     batch: "Batch mode (default = 2)"
     use_shared_memory: "If 1, then allocated memory is shared among all processes on this node\\nIf 0 (default), then each process has private allocated memory"
@@ -220,7 +223,7 @@ task Gmapl {
     micro_exon_splice_prob: "Allow microexons only if one of the splice site probabilities is\\ngreater than this value (default 0.95)"
     c_met_dir: "Directory for methylcytosine index files (created using cmetindex)\\n(default is location of genome index files specified using -D, -V, and -d)"
     atoi_dir: "Directory for A-to-I RNA editing index files (created using atoiindex)\\n(default is location of genome index files specified using -D, -V, and -d)"
-    alignment_mode_default: "Alignment mode: standard (default), cmet-stranded, cmet-nonstranded,\\natoi-stranded, atoi-nonstranded, ttoc-stranded, or ttoc-nonstranded.\\nNon-standard modes requires you to have previously run the cmetindex\\nor atoiindex programs (which also cover the ttoc modes) on the genome"
+    alignment_mode_standard: "Alignment mode: standard (default), cmet-stranded, cmet-nonstranded,\\natoi-stranded, atoi-nonstranded, ttoc-stranded, or ttoc-nonstranded.\\nNon-standard modes requires you to have previously run the cmetindex\\nor atoiindex programs (which also cover the ttoc modes) on the genome"
     prune_level: "Pruning level: 0=no pruning (default), 1=poor seqs,\\n2=repetitive seqs, 3=poor and repetitive"
     summary: "Show summary of alignments only"
     align: "Show alignments"
@@ -279,7 +282,7 @@ task Gmapl {
     min_trimmed_coverage: "Do not print alignments with trimmed coverage less\\nthis value (default=0.0, which means no filtering)\\nNote that chimeric alignments will be output regardless\\nof this filter"
     min_identity: "Do not print alignments with identity less\\nthis value (default=0.0, which means no filtering)\\nNote that chimeric alignments will be output regardless\\nof this filter"
     check: "Check compiler assumptions"
-    positions_genome_mmap: "Positions       Genome\\n0      mmap            mmap\\n1      mmap & preload  mmap"
+    positions_mmap_mmap: "Positions       Genome\\n0      mmap            mmap\\n1      mmap & preload  mmap"
   }
   output {
     File out_stdout = stdout()

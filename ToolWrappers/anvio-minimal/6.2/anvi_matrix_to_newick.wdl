@@ -16,6 +16,9 @@ task Anvimatrixtonewick {
       ~{if defined(distance) then ("--distance " +  '"' + distance + '"') else ""} \
       ~{if defined(linkage) then ("--linkage " +  '"' + linkage + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "File path to store results."
     items_order_file: "PATH\\nIn addition to a newick formatted output file, you can\\nask anvi'o to report the order of items in the\\nresulting tree in a separate file. The content of this\\nfile will be a single-column item names the way they\\nare ordered in the output newick dendrogram."

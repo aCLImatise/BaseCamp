@@ -3,12 +3,12 @@ id: msstitch_concat.cwl
 inputs:
 - id: in_directory_to_output
   doc: Directory to output in
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -d
 - id: in_output_file
   doc: Output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_multiple_input_files
@@ -22,14 +22,15 @@ outputs:
   type: stdout
 - id: out_directory_to_output
   doc: Directory to output in
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_directory_to_output)
 - id: out_output_file
   doc: Output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - msstitch

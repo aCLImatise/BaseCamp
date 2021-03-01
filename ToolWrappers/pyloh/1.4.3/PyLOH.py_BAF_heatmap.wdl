@@ -8,6 +8,9 @@ task PyLOHpyBAFHeatmap {
     PyLOH_py BAF_heatmap \
       ~{filename_base}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename_base: "Base name of preprocessed files created."
   }

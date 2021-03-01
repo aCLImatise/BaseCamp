@@ -4,6 +4,9 @@ task Dreamtoolslayout {
   command <<<
     dreamtools_layout
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -5,132 +5,132 @@ command:
 positional: []
 named:
 - !Flag
-  description: "FAST5 subgroup (under Analyses/[corrected-group])\nwhere individual\
-    \ template and/or complement reads are\nstored. Default: ['BaseCalled_template']"
+  optional: true
   synonyms:
   - --basecall-subgroups
+  description: "FAST5 subgroup (under Analyses/[corrected-group])\nwhere individual\
+    \ template and/or complement reads are\nstored. Default: ['BaseCalled_template']"
   args: !RepeatFlagArg
     name: BASECALL_SUBGROUPS
-  optional: true
 - !Flag
-  description: "Input contains 2D reads. Equivalent to `--basecall-\nsubgroups BaseCalled_template\
-    \ BaseCalled_complement`"
+  optional: true
   synonyms:
   - --2d
+  description: "Input contains 2D reads. Equivalent to `--basecall-\nsubgroups BaseCalled_template\
+    \ BaseCalled_complement`"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Directories containing fast5 files.
+  optional: true
   synonyms:
   - --fast5-basedirs
+  description: Directories containing fast5 files.
   args: !RepeatFlagArg
     name: FAST5_BASEDIRS
-  optional: true
 - !Flag
-  description: "Second set of directories containing fast5 files to\ncompare."
+  optional: true
   synonyms:
   - --fast5-basedirs2
+  description: "Second set of directories containing fast5 files to\ncompare."
   args: !RepeatFlagArg
     name: FAST5_BASEDIRS2
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --wiggle-basename
   description: "Basename for output files. Two files (plus and minus\nstrand) will\
     \ be produced for each --wiggle-types\nsupplied. Filenames will be formatted as\
     \ \"[wiggle-\nbasename].[wiggle-type].[group1/2]?.[plus/minus].wig\".\nDefault:\
     \ Nanopore_data"
-  synonyms:
-  - --wiggle-basename
   args: !SimpleFlagArg
     name: WIGGLE_BASENAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --wiggle-types
   description: "[{coverage,signal,signal_sd,length,pvals,qvals,difference} ...]\n\
     Data types for which wiggles should be created (select\none or more data types).\
     \ Choices: coverage, signal,\nsignal_sd, length, pvals, qvals (both negative log10),\n\
     difference. Note that signal, signal_sd and length\n(number of observations per\
     \ base) are means over all\nreads at each base. Default: \"coverage, pvals\""
-  synonyms:
-  - --wiggle-types
   args: !ChoiceFlagArg
     choices: !!set
-      coverage:
-      signal_sd:
-      difference:
-      pvals:
       qvals:
       length:
+      signal_sd:
       signal:
-  optional: true
+      difference:
+      coverage:
+      pvals:
 - !Flag
-  description: "FAST5 group to access/plot created by\ngenome_resquiggle script. Default:\n\
-    RawGenomeCorrected_000"
+  optional: true
   synonyms:
   - --corrected-group
+  description: "FAST5 group to access/plot created by\ngenome_resquiggle script. Default:\n\
+    RawGenomeCorrected_000"
   args: !SimpleFlagArg
     name: CORRECTED_GROUP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --obs-per-base-filter
   description: "Filter reads for plotting baseed on threshold of\npercentiles of the\
     \ number of observations assigned to\na base (default no filter). Format thresholds\
     \ as\n\"percentile:thresh [pctl2:thresh2 ...]\" E.g. reads\nwith 99th pctl <200\
     \ obs and max <5k obs would be\n\"99:200 100:5000\"."
-  synonyms:
-  - --obs-per-base-filter
   args: !RepeatFlagArg
     name: OBS_PER_BASE_FILTER
-  optional: true
 - !Flag
-  description: "Type of significance test to apply. Choices are:\nmw_utest (default;\
-    \ mann-whitney u-test), ttest."
+  optional: true
   synonyms:
   - --test-type
+  description: "Type of significance test to apply. Choices are:\nmw_utest (default;\
+    \ mann-whitney u-test), ttest."
   args: !ChoiceFlagArg
     choices: !!set
-      ttest:
       mw_utest:
-  optional: true
+      ttest:
 - !Flag
-  description: "Offset up and downstream over which to compute\ncombined p-values\
-    \ using Fisher's method. Default: 2."
+  optional: true
   synonyms:
   - --fishers-method-offset
+  description: "Offset up and downstream over which to compute\ncombined p-values\
+    \ using Fisher's method. Default: 2."
   args: !SimpleFlagArg
     name: FISHERS_METHOD_OFFSET
-  optional: true
 - !Flag
-  description: "Number of reads required from both samples to test for\nsignificant\
-    \ difference in signal level. Default: 5"
+  optional: true
   synonyms:
   - --minimum-test-reads
+  description: "Number of reads required from both samples to test for\nsignificant\
+    \ difference in signal level. Default: 5"
   args: !SimpleFlagArg
     name: MINIMUM_TEST_READS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --statistics-filename
   description: "Filename to save/load base by base signal difference\nstatistics.\
     \ If file exists it will try to be loaded,\nif it does not exist it will be created\
     \ to save\nstatistics. Default: Don't save/load."
-  synonyms:
-  - --statistics-filename
   args: !SimpleFlagArg
     name: STATISTICS_FILENAME
-  optional: true
 - !Flag
-  description: Don't print status information.
+  optional: true
   synonyms:
   - --quiet
   - -q
+  description: Don't print status information.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: Print this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: nanoraw write_wiggles --fast5-basedirs FAST5_BASEDIRS\n       \
@@ -193,3 +193,4 @@ help_text: "usage: nanoraw write_wiggles --fast5-basedirs FAST5_BASEDIRS\n      
   \ and exit\n"
 generated_using:
 - --help
+docker_image:

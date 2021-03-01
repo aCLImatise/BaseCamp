@@ -14,6 +14,9 @@ task BannerSubcommand {
       ~{version} \
       ~{subcommand}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     train: "Train takes a banner-matrix file from hulk and uses it to train a Random Forest Classifier"
     predict: "Predict collects sketches from STDIN and classifies them using a RFC"

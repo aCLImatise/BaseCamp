@@ -2,8 +2,8 @@ version 1.0
 
 task TomboEstimateKmerReference {
   input {
-    Boolean? tombo_model_filename
     Array[Int] fast_five_based_irs
+    File? tombo_model_filename
     Boolean? estimate_mean
     Boolean? km_er_specific_sd
     String? downstream_bases
@@ -20,8 +20,8 @@ task TomboEstimateKmerReference {
   command <<<
     tombo estimate_kmer_reference \
       ~{individually_dot} \
-      ~{if (tombo_model_filename) then "--tombo-model-filename" else ""} \
       ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
+      ~{if defined(tombo_model_filename) then ("--tombo-model-filename " +  '"' + tombo_model_filename + '"') else ""} \
       ~{if (estimate_mean) then "--estimate-mean" else ""} \
       ~{if (km_er_specific_sd) then "--kmer-specific-sd" else ""} \
       ~{if defined(downstream_bases) then ("--downstream-bases " +  '"' + downstream_bases + '"') else ""} \
@@ -34,9 +34,12 @@ task TomboEstimateKmerReference {
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    tombo_model_filename: "TOMBO_MODEL_FILENAME [--estimate-mean]\\n[--kmer-specific-sd]\\n[--upstream-bases {0,1,2,3,4}]\\n[--downstream-bases {0,1,2,3,4}]\\n[--minimum-test-reads MINIMUM_TEST_READS]\\n[--coverage-threshold COVERAGE_THRESHOLD]\\n[--minimum-kmer-observations MINIMUM_KMER_OBSERVATIONS]\\n[--multiprocess-region-size MULTIPROCESS_REGION_SIZE]\\n[--processes PROCESSES]\\n[--corrected-group CORRECTED_GROUP]\\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\\n[--quiet] [--help]"
     fast_five_based_irs: "Directories containing fast5 files."
+    tombo_model_filename: "Tombo model for event-less resquiggle and significance\\ntesting. If no model is provided the default DNA or\\nRNA tombo model will be used."
     estimate_mean: "Use the mean instead of median for model level\\nestimation. Note:This can cause poor fits due to\\noutliers"
     km_er_specific_sd: "Estimate standard deviation for each k-mers"
     downstream_bases: "Downstream bases in k-mer. Default: 2"

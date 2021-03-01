@@ -3,39 +3,39 @@ id: average_dot.pl.cwl
 inputs:
 - id: in_man
   doc: full documentation
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --man
 - id: in_verbose
   doc: be verbose
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_quiet
   doc: be quiet
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_alignment
   doc: pp file representing the (Lo)Carna alignment
-  type: File
+  type: File?
   inputBinding:
     prefix: --alignment
 - id: in_sequences
   doc: pp files for the input sequences
-  type: File
+  type: File?
   inputBinding:
     prefix: --sequences
 - id: in_outfile
   doc: 'output file (DEFAULT: averagedot)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --outfile
 - id: in_given_threshold_option
   doc: "for each given threshold (this option can be specified more than once)\na\
     \ copy of the orginal dotplots is created where the dots are\nhighlighted that\
     \ have in the average plot a probability above the\nthreshold.\n"
-  type: double
+  type: double?
   inputBinding:
     prefix: --threshold
 - id: in_a
@@ -194,9 +194,10 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: 'output file (DEFAULT: averagedot)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - average-dot.pl

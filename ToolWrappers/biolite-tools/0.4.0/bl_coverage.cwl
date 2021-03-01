@@ -1,19 +1,19 @@
 class: CommandLineTool
 id: bl_coverage.cwl
 inputs:
-- id: in_specify_sam_file
+- id: in_specify_input_file
   doc: specify SAM input file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
-- id: in_sam_input_single
+- id: in_sam_input_has
   doc: "SAM input has a single reference: report coverage for each index\nin the reference\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: '-1'
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_coverage
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bl-coverage

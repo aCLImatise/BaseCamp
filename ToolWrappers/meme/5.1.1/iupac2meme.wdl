@@ -3,7 +3,7 @@ version 1.0
 task Iupac2meme {
   input {
     Boolean? use_dna_iupac_alphabet
-    Boolean? use_rna_alphabet
+    Boolean? use_rna_iupac_alphabet
     Boolean? use_protein_iupac_alphabet
     File? alph
     Int? num_seqs
@@ -16,7 +16,7 @@ task Iupac2meme {
     String add
     String assume
     String default
-    File file
+    File var_file
     String iupac_motif
     String var_output
     String use
@@ -46,7 +46,7 @@ task Iupac2meme {
       ~{add} \
       ~{assume} \
       ~{default} \
-      ~{file} \
+      ~{var_file} \
       ~{iupac_motif} \
       ~{var_output} \
       ~{use} \
@@ -71,7 +71,7 @@ task Iupac2meme {
       ~{letters} \
       ~{many} \
       ~{if (use_dna_iupac_alphabet) then "-dna" else ""} \
-      ~{if (use_rna_alphabet) then "-rna" else ""} \
+      ~{if (use_rna_iupac_alphabet) then "-rna" else ""} \
       ~{if (use_protein_iupac_alphabet) then "-protein" else ""} \
       ~{if defined(alph) then ("-alph " +  '"' + alph + '"') else ""} \
       ~{if defined(num_seqs) then ("-numseqs " +  '"' + num_seqs + '"') else ""} \
@@ -82,9 +82,12 @@ task Iupac2meme {
       ~{if (no_sort) then "-nosort" else ""} \
       ~{if (named) then "-named" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     use_dna_iupac_alphabet: "use DNA IUPAC alphabet"
-    use_rna_alphabet: "use RNA IUPAC alphabet"
+    use_rna_iupac_alphabet: "use RNA IUPAC alphabet"
     use_protein_iupac_alphabet: "use protein IUPAC alphabet"
     alph: "file with alphabet definition;\\ndefault: use DNA IUPAC alphabet"
     num_seqs: "assume frequencies based on this many\\nsequences; default: 20"
@@ -97,7 +100,7 @@ task Iupac2meme {
     add: ""
     assume: ""
     default: ""
-    file: ""
+    var_file: ""
     iupac_motif: ""
     var_output: ""
     use: ""

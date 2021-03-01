@@ -16,6 +16,9 @@ task Spadeskmercount {
       ~{if defined(workdir) then ("--workdir " +  '"' + workdir + '"') else ""} \
       ~{if defined(bufsize) then ("--bufsize " +  '"' + bufsize + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: "K-mer length"
     dataset: "Dataset description (in YAML), input files ignored"

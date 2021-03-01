@@ -4,14 +4,14 @@ task TRNAscanSE {
   input {
     Boolean? search_eukaryotic_trnas
     Boolean? search_bacterial_trnas
-    Boolean? _search_archaeal
+    Boolean? search_archaeal_trnas
     String? search_mitochondrial_trnasoptions
-    Boolean? search_other_trnas
-    Boolean? use_model_cytoslic
+    Boolean? search_other_organellar
+    Boolean? use_general_trnas
     String? mt
-    Boolean? search_using_use
+    Boolean? search_using_infernaldefault
     Boolean? max
-    Boolean? search_using_method_trnascan
+    Boolean? search_using_method
     Boolean? cove
     Boolean? breakdown
     Boolean? no_pseudo
@@ -55,14 +55,14 @@ task TRNAscanSE {
     tRNAscan_SE \
       ~{if (search_eukaryotic_trnas) then "-E" else ""} \
       ~{if (search_bacterial_trnas) then "-B" else ""} \
-      ~{if (_search_archaeal) then "-A" else ""} \
+      ~{if (search_archaeal_trnas) then "-A" else ""} \
       ~{if defined(search_mitochondrial_trnasoptions) then ("-M " +  '"' + search_mitochondrial_trnasoptions + '"') else ""} \
-      ~{if (search_other_trnas) then "-O" else ""} \
-      ~{if (use_model_cytoslic) then "-G" else ""} \
+      ~{if (search_other_organellar) then "-O" else ""} \
+      ~{if (use_general_trnas) then "-G" else ""} \
       ~{if defined(mt) then ("--mt " +  '"' + mt + '"') else ""} \
-      ~{if (search_using_use) then "-I" else ""} \
+      ~{if (search_using_infernaldefault) then "-I" else ""} \
       ~{if (max) then "--max" else ""} \
-      ~{if (search_using_method_trnascan) then "-L" else ""} \
+      ~{if (search_using_method) then "-L" else ""} \
       ~{if (cove) then "--cove" else ""} \
       ~{if (breakdown) then "--breakdown" else ""} \
       ~{if (no_pseudo) then "--nopseudo" else ""} \
@@ -102,17 +102,20 @@ task TRNAscanSE {
       ~{if defined(thread) then ("--thread " +  '"' + thread + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     search_eukaryotic_trnas: ": search for eukaryotic tRNAs (default)"
     search_bacterial_trnas: ": search for bacterial tRNAs"
-    _search_archaeal: ": search for archaeal tRNAs"
+    search_archaeal_trnas: ": search for archaeal tRNAs"
     search_mitochondrial_trnasoptions: ": search for mitochondrial tRNAs\\noptions: mammal, vert"
-    search_other_trnas: ": search for other organellar tRNAs"
-    use_model_cytoslic: ": use general tRNA model (cytoslic tRNAs from all 3 domains included)"
+    search_other_organellar: ": search for other organellar tRNAs"
+    use_general_trnas: ": use general tRNA model (cytoslic tRNAs from all 3 domains included)"
     mt: ": use mito tRNA models for cytosolic/mito detemination\\n(if not specified, only cytosolic isotype-specific model scan will be performed)"
-    search_using_use: ": search using Infernal\\ndefault use with -E, -B, -A, or -G; optional for -O"
+    search_using_infernaldefault: ": search using Infernal\\ndefault use with -E, -B, -A, or -G; optional for -O"
     max: ": maximum sensitivity mode - search using Infernal without hmm filter (very slow)"
-    search_using_method_trnascan: ": search using the legacy method (tRNAscan, EufindtRNA, and COVE)\\nuse with -E, -B, -A or -G"
+    search_using_method: ": search using the legacy method (tRNAscan, EufindtRNA, and COVE)\\nuse with -E, -B, -A or -G"
     cove: ": search using COVE analysis only (legacy, extremely slow)\\ndefault use with -O"
     breakdown: ": show breakdown of primary and secondary structure components to\\ncovariance model bit scores"
     no_pseudo: ": disable pseudogene checking"

@@ -16,6 +16,9 @@ task TomboFilterQScore {
       ~{if defined(base_call_group) then ("--basecall-group " +  '"' + base_call_group + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_five_based_irs: "Directories containing fast5 files."
     q_score: "Q-score threshold for filtering low quality reads.\\nDefault: 7.000000"

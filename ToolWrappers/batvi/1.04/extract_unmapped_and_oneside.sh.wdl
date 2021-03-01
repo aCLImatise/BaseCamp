@@ -4,6 +4,9 @@ task ExtractUnmappedAndOnesidesh {
   command <<<
     extract_unmapped_and_oneside_sh
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -48,6 +48,9 @@ task RunSomaticseqpy {
       ~{if (keep_intermediates) then "--keep-intermediates" else ""} \
       ~{if (somatic_seq_train) then "--somaticseq-train" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_directory: "output directory (default: .)"
     genome_reference: ".fasta.fai file to get the contigs (default: None)"

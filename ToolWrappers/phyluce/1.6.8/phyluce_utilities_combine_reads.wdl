@@ -12,6 +12,9 @@ task PhyluceUtilitiesCombineReads {
       ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""} \
       ~{if defined(subfolder) then ("--subfolder " +  '"' + subfolder + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "The configuration file for reads we are combining"
     var_output: "The configuration file for reads we are combining"

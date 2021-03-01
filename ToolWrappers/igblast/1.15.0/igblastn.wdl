@@ -4,6 +4,9 @@ task Igblastn {
   command <<<
     igblastn
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

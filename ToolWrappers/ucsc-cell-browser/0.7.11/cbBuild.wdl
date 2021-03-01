@@ -20,6 +20,9 @@ task CbBuild {
       ~{if (recursive) then "--recursive" else ""} \
       ~{if defined(redo) then ("--redo " +  '"' + redo + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_it: "copy sample cellbrowser.conf and desc.conf to current"
     in_conf: "a cellbrowser.conf file that specifies labels and all\\ninput files, default is ./cellbrowser.conf, can be\\nspecified multiple times"

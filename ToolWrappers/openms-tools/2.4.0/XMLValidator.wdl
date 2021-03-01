@@ -18,6 +18,9 @@ task XMLValidator {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*        File to validate (valid formats: 'mzML', 'mzData', 'featureXML', 'mzid', 'idXML', 'consensusXML', 'mzXML', 'ini', 'pepXML', 'TraML', 'xml')"
     schema: "Schema to validate against.\\nIf no schema is given, the file is validated against the latest schema of the file type. (valid formats: 'xsd')"

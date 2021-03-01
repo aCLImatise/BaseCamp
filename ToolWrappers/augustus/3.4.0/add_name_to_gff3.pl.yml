@@ -1,0 +1,63 @@
+!Command
+command:
+- add_name_to_gff3.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: EvidenceModeler
+  description: SYNOPSIS
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: gff3 output file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --filter
+  description: print only the features gene, mRNA, CDS and exon
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n    add_name_to_gff3.pl - add name of feature of a gff3 file that\
+  \ produced\n    by gtf2gff.pl from Augustus/scripts to ensure compatibilty with\
+  \ e.g.\n    EvidenceModeler\n\nSYNOPSIS\n    add_name_to_gff3.pl <in.gff3 --out=out.gff3\n\
+  \nOPTIONS\n      --out=file          gff3 output file\n      --filter          \
+  \  print only the features gene, mRNA, CDS and exon\n\nDESCRIPTION\n        example\
+  \ input:\n\n        chr1 AUGUSTUS  gene                     12656   14013   0.04\
+  \    +   .   ID=g50;\n        chr1 AUGUSTUS  mRNA                     12656   14013\
+  \   0.04    +   .   ID=g50.t1;Parent=g50;\n        chr1 AUGUSTUS  transcription_start_site\
+  \ 12656   12656   .       +   .   ID=g50.t1.tss1;Parent=g50.t1;\n        chr1 AUGUSTUS\
+  \  five_prime_utr           12656   12867   0.2     +   .   ID=g50.t1.5UTR1;Parent=g50.t1;\n\
+  \        chr1 AUGUSTUS  exon                     12656   12993   .       +   . \
+  \  ID=g50.t1.exon1;Parent=g50.t1;\n        chr1 AUGUSTUS  start_codon          \
+  \    12868   12870   .       +   0   ID=g50.t1.start1;Parent=g50.t1;\n        chr1\
+  \ AUGUSTUS  CDS                      12868   12993   0.8     +   0   ID=g50.t1.CDS1;Parent=g50.t1;\n\
+  \        chr1 AUGUSTUS  intron                   12994   13248   1       +   . \
+  \  ID=g50.t1.intron1;Parent=g50.t1;\n        chr1 AUGUSTUS  CDS                \
+  \      13249   13479   1       +   0   ID=g50.t1.CDS2;Parent=g50.t1;\n        chr1\
+  \ AUGUSTUS  exon                     13249   14013   .       +   .   ID=g50.t1.exon2;Parent=g50.t1;\n\
+  \        chr1 AUGUSTUS  stop_codon               13477   13479   .       +   0 \
+  \  ID=g50.t1.stop1;Parent=g50.t1;\n        chr1 AUGUSTUS  three_prime_utr      \
+  \    13480   14013   0.17    +   .   ID=g50.t1.3UTR1;Parent=g50.t1;\n        chr1\
+  \ AUGUSTUS  transcription_end_site   14013   14013   .       +   .   ID=g50.t1.tts1;Parent=g50.t1;\n\
+  \n        example output (with --filter):\n\n        chr1    AUGUSTUS        gene\
+  \    12656   14013   0.04    +       .       ID=g50;Name=g50\n        chr1    AUGUSTUS\
+  \        mRNA    12656   14013   0.04    +       .       ID=g50.t1;Parent=g50;Name=g50.t1\n\
+  \        chr1    AUGUSTUS        exon    12656   12993   .       +       .     \
+  \  ID=g50.t1.exon1;Parent=g50.t1\n        chr1    AUGUSTUS        CDS     12868\
+  \   12993   0.8     +       0       ID=g50.t1.CDS1;Parent=g50.t1\n        chr1 \
+  \   AUGUSTUS        CDS     13249   13479   1       +       0       ID=g50.t1.CDS2;Parent=g50.t1\n\
+  \        chr1    AUGUSTUS        exon    13249   14013   .       +       .     \
+  \  ID=g50.t1.exon2;Parent=g50.t1\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/augustus:3.4.0--pl526h0faeac2_0

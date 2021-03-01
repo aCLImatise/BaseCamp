@@ -14,6 +14,9 @@ task Humann2Test {
       ~{if (bypass_unit_tests) then "--bypass-unit-tests" else ""} \
       ~{if (run_all_tests) then "--run-all-tests" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run_functional_tests_tools: "run the functional tests for tools"
     run_functional_tests_end_to_end: "run the humann2 end to end functional tests"

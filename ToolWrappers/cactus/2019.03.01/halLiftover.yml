@@ -3,146 +3,146 @@ command:
 - halLiftover
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: halFile
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: srcGenome
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: srcBed
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 3
   name: tgtGenome
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 4
   name: tgtBed
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: ':                     append results to tgtBed [default = 0]'
+  optional: true
   synonyms:
   - --append
+  description: ':                     append results to tgtBed [default = 0]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ":         maximum size in bytes of regular hdf5 cache [default =\n\
-    15728640]"
+  optional: true
   synonyms:
   - --cacheBytes
+  description: ":         maximum size in bytes of regular hdf5 cache [default =\n\
+    15728640]"
   args: !SimpleFlagArg
     name: value
-  optional: true
 - !Flag
-  description: ':           number of metadata slots in hdf5 cache [default = 113]'
+  optional: true
   synonyms:
   - --cacheMDC
+  description: ':           number of metadata slots in hdf5 cache [default = 113]'
   args: !SimpleFlagArg
     name: value
-  optional: true
 - !Flag
-  description: ":           number of regular slots in hdf5 cache.  should be a\n\
-    prime number ~= 10 * DefaultCacheRDCBytes / chunk\n[default = 599999]"
+  optional: true
   synonyms:
   - --cacheRDC
+  description: ":           number of regular slots in hdf5 cache.  should be a\n\
+    prime number ~= 10 * DefaultCacheRDCBytes / chunk\n[default = 599999]"
   args: !SimpleFlagArg
     name: value
-  optional: true
 - !Flag
-  description: ':            w0 parameter fro hdf5 cache [default = 0.75]'
+  optional: true
   synonyms:
   - --cacheW0
+  description: ':            w0 parameter fro hdf5 cache [default = 0.75]'
   args: !SimpleFlagArg
     name: value
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --coalescenceLimit
   description: ":   coalescence limit genome: the genome at or above the\nMRCA of\
     \ source and target at which we stop looking for\nhomologies (default: MRCA) [default\
     \ = ]"
-  synonyms:
-  - --coalescenceLimit
   args: !SimpleFlagArg
     name: value
-  optional: true
 - !Flag
-  description: ":       bed version of input file as integer between 3 and 9 or\n\
-    12 reflecting the number of columns (see bed format"
+  optional: true
   synonyms:
   - --inBedVersion
+  description: ":       bed version of input file as integer between 3 and 9 or\n\
+    12 reflecting the number of columns (see bed format"
   args: !SimpleFlagArg
     name: value
-  optional: true
 - !Flag
-  description: ":                   load all data in memory (and disable hdf5 cache)\n\
-    [default = 0]"
+  optional: true
   synonyms:
   - --inMemory
+  description: ":                   load all data in memory (and disable hdf5 cache)\n\
+    [default = 0]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --keepExtra
   description: ":                  keep extra columns. these are columns in the input\n\
     beyond the specified or detected bed version, and which\nare cut by default. [default\
     \ = 0]"
-  synonyms:
-  - --keepExtra
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ':                    do not map between duplications in graph. [default
-    = 0]'
+  optional: true
   synonyms:
   - --noDupes
+  description: ':                    do not map between duplications in graph. [default
+    = 0]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outBedVersion
   description: ":      bed version of output file as integer between 3 and 9\nor 12\
     \ reflecting the number of columns (see bed format\nspecification for more details).\
     \ Will be same as input\nby default. [default = 0]"
-  synonyms:
-  - --outBedVersion
   args: !SimpleFlagArg
     name: value
-  optional: true
 - !Flag
-  description: ":                     write output in PSL instead of bed format. overrides\n\
-    --outBedVersion when specified. [default = 0]"
+  optional: true
   synonyms:
   - --outPSL
+  description: ":                     write output in PSL instead of bed format. overrides\n\
+    --outBedVersion when specified. [default = 0]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ":             write output as input BED name followed by PSL line\n\
-    instead of bed format. overrides --outBedVersion when\nspecified. [default = 0]"
+  optional: true
   synonyms:
   - --outPSLWithName
+  description: ":             write output as input BED name followed by PSL line\n\
+    instead of bed format. overrides --outBedVersion when\nspecified. [default = 0]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --tab
   description: ":                        input is tab-separated. this allows column\
     \ entries to\ncontain spaces.  if this flag is not set, both spaces\nand tabs\
     \ are used to separate input columns. [default =\n0]\n"
-  synonyms:
-  - --tab
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ':                       dsiplay this help page [default = 0]'
+  optional: true
   synonyms:
   - --help
+  description: ':                       dsiplay this help page [default = 0]'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: " \n\nhalLiftover v2.1: Map BED genome interval coordinates between two\
@@ -186,3 +186,4 @@ help_text: " \n\nhalLiftover v2.1: Map BED genome interval coordinates between t
   \ =\n                               0]\n\n\n"
 generated_using:
 - --help
+docker_image:

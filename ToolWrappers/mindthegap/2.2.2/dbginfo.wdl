@@ -8,6 +8,9 @@ task Dbginfo {
     dbginfo \
       ~{if (in) then "-in" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "(1 arg) :    graph file"
   }

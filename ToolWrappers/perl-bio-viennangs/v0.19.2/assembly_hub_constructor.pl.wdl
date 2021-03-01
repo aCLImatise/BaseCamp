@@ -20,6 +20,9 @@ task AssemblyHubConstructorpl {
       ~{if (man) then "--man" else ""} \
       ~{if (url) then "-URL" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fa: "Input file in Fasta format."
     in_folder: "Directory which contains all track files in BED/bigBed format. The\\nresulting Assembly Hub will contain these files in their respective\\nbigFile version."

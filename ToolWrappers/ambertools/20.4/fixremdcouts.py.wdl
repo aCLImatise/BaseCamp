@@ -16,6 +16,9 @@ task Fixremdcoutspy {
       ~{if (couts) then "-couts" else ""} \
       ~{if defined(prefix) then ("-prefix " +  '"' + prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     author: "show the program's author name and exit"
     overwrite: "Allow existing outputs to be overwritten. Default:"

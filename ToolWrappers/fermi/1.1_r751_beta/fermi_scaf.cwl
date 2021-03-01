@@ -3,17 +3,17 @@ id: fermi_scaf.cwl
 inputs:
 - id: in_number_of_threads
   doc: number of threads [1]
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_minimum_number_supporting
   doc: minimum number of supporting reads [5]
-  type: long
+  type: long?
   inputBinding:
     prefix: -m
 - id: in_print_links_unitigs
   doc: print the links between unitigs
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -P
 - id: in_in_dot_fmd
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fermi

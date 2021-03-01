@@ -26,6 +26,9 @@ task IitStore {
       ~{if defined(sort) then ("--sort " +  '"' + sort + '"') else ""} \
       ~{if defined(i_it_version) then ("--iitversion " +  '"' + i_it_version + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_output_iit: "Name of output iit file"
     old_format: "Old format for intervals:\\n<start> <optional end> <optional div> <optional type>"

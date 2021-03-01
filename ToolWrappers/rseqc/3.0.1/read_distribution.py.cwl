@@ -3,12 +3,12 @@ id: read_distribution.py.cwl
 inputs:
 - id: in_input_file
   doc: Alignment file in BAM or SAM format.
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-file
 - id: in_ref_gene
   doc: "Reference gene model in bed format.\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --refgene
 - id: in_qc_failed
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - read_distribution.py

@@ -14,6 +14,9 @@ task SgaOview {
       ~{if defined(max_overhang) then ("--max-overhang " +  '"' + max_overhang + '"') else ""} \
       ~{if defined(default_padding) then ("--default-padding " +  '"' + default_padding + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     id: "only show overlaps for read with ID"

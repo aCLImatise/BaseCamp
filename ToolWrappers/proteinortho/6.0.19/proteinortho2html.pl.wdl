@@ -8,6 +8,9 @@ task Proteinortho2htmlpl {
     proteinortho2html_pl \
       ~{my_project_dot_protein_ortho}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     my_project_dot_protein_ortho: ""
   }

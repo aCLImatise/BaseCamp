@@ -14,6 +14,9 @@ task GenometreetkPull {
       ~{if (no_validation) then "--no_validation" else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_validation: "do not assume decorated nodes adhear to standard taxonomy"
     silent: "suppress output"

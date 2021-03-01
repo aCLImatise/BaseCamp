@@ -15,6 +15,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_probability_that_line_goes_to_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - random_split

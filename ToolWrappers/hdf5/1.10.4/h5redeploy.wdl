@@ -22,6 +22,9 @@ task H5redeploy {
       ~{if defined(tool) then ("-tool " +  '"' + tool + '"') else ""} \
       ~{if (show) then "-show" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     echo: "Show all the shell commands executed"
     force: "No prompt, just do it"

@@ -11,12 +11,12 @@ subcommands:
   - view
   positional:
   - !Positional
-    description: The path to the web directory created by the align tool.
+    optional: false
     position: 0
     name: web_directory
-    optional: false
+    description: The path to the web directory created by the align tool.
   named: []
-  parent: &id016 !Command
+  parent: &id018 !Command
     command: *id001
     positional: []
     named: []
@@ -26,12 +26,12 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: The path to the web directory created by the align tool.
+        optional: false
         position: 0
         name: web_directory
-        optional: false
+        description: The path to the web directory created by the align tool.
       named: []
-      parent: &id014 !Command
+      parent: &id016 !Command
         command: *id001
         positional: []
         named: []
@@ -41,12 +41,12 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: The path to the web directory created by the align tool.
+            optional: false
             position: 0
             name: web_directory
-            optional: false
+            description: The path to the web directory created by the align tool.
           named: []
-          parent: &id012 !Command
+          parent: &id014 !Command
             command: *id001
             positional: []
             named: []
@@ -56,12 +56,12 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: The path to the web directory created by the align tool.
+                optional: false
                 position: 0
                 name: web_directory
-                optional: false
+                description: The path to the web directory created by the align tool.
               named: []
-              parent: &id003 !Command
+              parent: &id012 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -71,107 +71,451 @@ subcommands:
                   command: *id002
                   positional:
                   - !Positional
-                    description: The path to the web directory created by the align
-                      tool.
+                    optional: false
                     position: 0
                     name: web_directory
-                    optional: false
+                    description: The path to the web directory created by the align
+                      tool.
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: web_directory
+                        description: The path to the web directory created by the
+                          align tool.
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: TranspoScope view [-h] web_directory\n\n\
+                        positional arguments:\n  web_directory  The path to the web\
+                        \ directory created by the align tool.\n\noptional arguments:\n\
+                        \  -h, --help     show this help message and exit\n"
+                      generated_using: &id005
+                      - --help
+                      docker_image:
+                    - &id004 !Command
+                      command: &id006
+                      - transposcope
+                      - align
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --genes
+                        description: "Path to refFlat.txt (If information regarding\
+                          \ the\nnearest gene should be included.)"
+                        args: !SimpleFlagArg
+                          name: GENES
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --group1
+                        description: 'First level group tag (default: ungrouped)'
+                        args: !SimpleFlagArg
+                          name: GROUP1
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --group2
+                        description: 'Second level group tag (default: ungrouped)'
+                        args: !SimpleFlagArg
+                          name: GROUP2
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --keep_files
+                        description: "Flag which determines whether intermediate bam\
+                          \ files\nand fasta files are deleted (default: False)\n"
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands:
+                      - !Command
+                        command: &id007
+                        - transposcope
+                        - align
+                        - sample_id
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: TranspoScope
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: align
+                          description: ''
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --group1
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: GROUP1
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --genes
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: GENES
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          description: ''
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: TranspoScope align [-h] [--genes GENES]\
+                          \ [--group1 GROUP1]\n                          [--group2\
+                          \ GROUP2] [--keep_files]\n                          {melt,tipseqhunter}\
+                          \ index bam me_reference\n                          host_reference\
+                          \ sample_id\nTranspoScope align: error: argument index_type:\
+                          \ invalid choice: 'sample_id' (choose from 'melt', 'tipseqhunter')\n"
+                        generated_using: *id005
+                        docker_image:
+                      - !Command
+                        command: &id008
+                        - transposcope
+                        - align
+                        - me_reference
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: TranspoScope
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: align
+                          description: ''
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --group1
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: GROUP1
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --genes
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: GENES
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          description: ''
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: TranspoScope align [-h] [--genes GENES]\
+                          \ [--group1 GROUP1]\n                          [--group2\
+                          \ GROUP2] [--keep_files]\n                          {melt,tipseqhunter}\
+                          \ index bam me_reference\n                          host_reference\
+                          \ sample_id\nTranspoScope align: error: argument index_type:\
+                          \ invalid choice: 'me_reference' (choose from 'melt', 'tipseqhunter')\n"
+                        generated_using: *id005
+                        docker_image:
+                      - !Command
+                        command: &id009
+                        - transposcope
+                        - align
+                        - host_reference
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: TranspoScope
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: align
+                          description: ''
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --group1
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: GROUP1
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --genes
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: GENES
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          description: ''
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: TranspoScope align [-h] [--genes GENES]\
+                          \ [--group1 GROUP1]\n                          [--group2\
+                          \ GROUP2] [--keep_files]\n                          {melt,tipseqhunter}\
+                          \ index bam me_reference\n                          host_reference\
+                          \ sample_id\nTranspoScope align: error: argument index_type:\
+                          \ invalid choice: 'host_reference' (choose from 'melt',\
+                          \ 'tipseqhunter')\n"
+                        generated_using: *id005
+                        docker_image:
+                      - !Command
+                        command: &id010
+                        - transposcope
+                        - align
+                        - index
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: TranspoScope
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: align
+                          description: ''
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --group1
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: GROUP1
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --genes
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: GENES
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          description: ''
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: TranspoScope align [-h] [--genes GENES]\
+                          \ [--group1 GROUP1]\n                          [--group2\
+                          \ GROUP2] [--keep_files]\n                          {melt,tipseqhunter}\
+                          \ index bam me_reference\n                          host_reference\
+                          \ sample_id\nTranspoScope align: error: argument index_type:\
+                          \ invalid choice: 'index' (choose from 'melt', 'tipseqhunter')\n"
+                        generated_using: *id005
+                        docker_image:
+                      - !Command
+                        command: &id011
+                        - transposcope
+                        - align
+                        - bam
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: TranspoScope
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: align
+                          description: ''
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --group1
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: GROUP1
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --genes
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: GENES
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          description: ''
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: TranspoScope align [-h] [--genes GENES]\
+                          \ [--group1 GROUP1]\n                          [--group2\
+                          \ GROUP2] [--keep_files]\n                          {melt,tipseqhunter}\
+                          \ index bam me_reference\n                          host_reference\
+                          \ sample_id\nTranspoScope align: error: argument index_type:\
+                          \ invalid choice: 'bam' (choose from 'melt', 'tipseqhunter')\n"
+                        generated_using: *id005
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1\
+                        \ GROUP1]\n                          [--group2 GROUP2] [--keep_files]\n\
+                        \                          {melt,tipseqhunter} index bam me_reference\n\
+                        \                          host_reference sample_id\n\npositional\
+                        \ arguments:\n  {melt,tipseqhunter}  The software used to\
+                        \ identify insertions\n  index                The path to\
+                        \ the index file which describes the\n                   \
+                        \    coordinates of insertion sites\n  bam               \
+                        \   path to bam file\n  me_reference         path to the mobile\
+                        \ element's FASTA file\n  host_reference       path to a folder\
+                        \ containing all of the chromosome FASTA\n               \
+                        \        files for the host genome\n  sample_id          \
+                        \  Unique name to for the given experiment. This is used\n\
+                        \                       to label the output.\n\noptional arguments:\n\
+                        \  -h, --help           show this help message and exit\n\
+                        \  --genes GENES        Path to refFlat.txt (If information\
+                        \ regarding the\n                       nearest gene should\
+                        \ be included.)\n  --group1 GROUP1      First level group\
+                        \ tag (default: ungrouped)\n  --group2 GROUP2      Second\
+                        \ level group tag (default: ungrouped)\n  --keep_files   \
+                        \      Flag which determines whether intermediate bam files\n\
+                        \                       and fasta files are deleted (default:\
+                        \ False)\n"
+                      generated_using: *id005
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: TranspoScope [-h] {align,view} ...\n\nA tool\
+                      \ for visualizing mobile elements supportingread coverage within\
+                      \ a genome\n\npositional arguments:\n  {align,view}\n    align\
+                      \       Align performs a local realignment using reads flanking\
+                      \ a\n                potential insertion site and a reference\
+                      \ sequence which\n                includes the sequence for\
+                      \ the mobile element\n    view        Launch a web page to view\
+                      \ the aligned output.\n\noptional arguments:\n  -h, --help \
+                      \   show this help message and exit\n"
+                    generated_using: *id005
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: TranspoScope view [-h] web_directory\n\npositional\
                     \ arguments:\n  web_directory  The path to the web directory created\
                     \ by the align tool.\n\noptional arguments:\n  -h, --help    \
                     \ show this help message and exit\n"
-                  generated_using: &id005
-                  - --help
-                - &id004 !Command
-                  command: &id006
-                  - transposcope
-                  - align
+                  generated_using: *id005
+                  docker_image:
+                - &id013 !Command
+                  command: *id006
                   positional: []
-                  named:
-                  - !Flag
-                    description: "Path to refFlat.txt (If information regarding the\n\
-                      nearest gene should be included.)"
-                    synonyms:
-                    - --genes
-                    args: !SimpleFlagArg
-                      name: GENES
-                    optional: true
-                  - !Flag
-                    description: 'First level group tag (default: ungrouped)'
-                    synonyms:
-                    - --group1
-                    args: !SimpleFlagArg
-                      name: GROUP1
-                    optional: true
-                  - !Flag
-                    description: 'Second level group tag (default: ungrouped)'
-                    synonyms:
-                    - --group2
-                    args: !SimpleFlagArg
-                      name: GROUP2
-                    optional: true
-                  - !Flag
-                    description: "Flag which determines whether intermediate bam files\n\
-                      and fasta files are deleted (default: False)\n"
-                    synonyms:
-                    - --keep_files
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  named: []
                   parent: *id003
                   subcommands:
                   - !Command
-                    command: &id007
-                    - transposcope
-                    - align
-                    - sample_id
+                    command: *id007
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: TranspoScope
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 1
                       name: align
-                      optional: false
+                      description: ''
                     named:
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - --group1
+                      description: ''
                       args: !SimpleFlagArg
                         name: GROUP1
-                      optional: true
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - --genes
+                      description: ''
                       args: !SimpleFlagArg
                         name: GENES
-                      optional: true
                     parent: *id004
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - -h
+                      description: ''
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag:
                     help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1\
@@ -181,46 +525,44 @@ subcommands:
                       \ align: error: argument index_type: invalid choice: 'sample_id'\
                       \ (choose from 'melt', 'tipseqhunter')\n"
                     generated_using: *id005
+                    docker_image:
                   - !Command
-                    command: &id008
-                    - transposcope
-                    - align
-                    - me_reference
+                    command: *id008
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: TranspoScope
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 1
                       name: align
-                      optional: false
+                      description: ''
                     named:
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - --group1
+                      description: ''
                       args: !SimpleFlagArg
                         name: GROUP1
-                      optional: true
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - --genes
+                      description: ''
                       args: !SimpleFlagArg
                         name: GENES
-                      optional: true
                     parent: *id004
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - -h
+                      description: ''
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag:
                     help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1\
@@ -230,46 +572,44 @@ subcommands:
                       \ align: error: argument index_type: invalid choice: 'me_reference'\
                       \ (choose from 'melt', 'tipseqhunter')\n"
                     generated_using: *id005
+                    docker_image:
                   - !Command
-                    command: &id009
-                    - transposcope
-                    - align
-                    - host_reference
+                    command: *id009
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: TranspoScope
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 1
                       name: align
-                      optional: false
+                      description: ''
                     named:
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - --group1
+                      description: ''
                       args: !SimpleFlagArg
                         name: GROUP1
-                      optional: true
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - --genes
+                      description: ''
                       args: !SimpleFlagArg
                         name: GENES
-                      optional: true
                     parent: *id004
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - -h
+                      description: ''
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag:
                     help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1\
@@ -279,46 +619,44 @@ subcommands:
                       \ align: error: argument index_type: invalid choice: 'host_reference'\
                       \ (choose from 'melt', 'tipseqhunter')\n"
                     generated_using: *id005
+                    docker_image:
                   - !Command
-                    command: &id010
-                    - transposcope
-                    - align
-                    - index
+                    command: *id010
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: TranspoScope
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 1
                       name: align
-                      optional: false
+                      description: ''
                     named:
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - --group1
+                      description: ''
                       args: !SimpleFlagArg
                         name: GROUP1
-                      optional: true
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - --genes
+                      description: ''
                       args: !SimpleFlagArg
                         name: GENES
-                      optional: true
                     parent: *id004
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - -h
+                      description: ''
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag:
                     help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1\
@@ -328,46 +666,44 @@ subcommands:
                       \ align: error: argument index_type: invalid choice: 'index'\
                       \ (choose from 'melt', 'tipseqhunter')\n"
                     generated_using: *id005
+                    docker_image:
                   - !Command
-                    command: &id011
-                    - transposcope
-                    - align
-                    - bam
+                    command: *id011
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: TranspoScope
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 1
                       name: align
-                      optional: false
+                      description: ''
                     named:
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - --group1
+                      description: ''
                       args: !SimpleFlagArg
                         name: GROUP1
-                      optional: true
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - --genes
+                      description: ''
                       args: !SimpleFlagArg
                         name: GENES
-                      optional: true
                     parent: *id004
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - -h
+                      description: ''
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag:
                     help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1\
@@ -377,14 +713,9 @@ subcommands:
                       \ align: error: argument index_type: invalid choice: 'bam' (choose\
                       \ from 'melt', 'tipseqhunter')\n"
                     generated_using: *id005
+                    docker_image:
                   usage: []
-                  help_flag: !Flag
-                    description: show this help message and exit
-                    synonyms:
-                    - -h
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1\
@@ -409,14 +740,9 @@ subcommands:
                     \ intermediate bam files\n                       and fasta files\
                     \ are deleted (default: False)\n"
                   generated_using: *id005
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "usage: TranspoScope [-h] {align,view} ...\n\nA tool for\
@@ -428,15 +754,16 @@ subcommands:
                   \  Launch a web page to view the aligned output.\n\noptional arguments:\n\
                   \  -h, --help    show this help message and exit\n"
                 generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: TranspoScope view [-h] web_directory\n\npositional\
@@ -444,49 +771,50 @@ subcommands:
                 \ by the align tool.\n\noptional arguments:\n  -h, --help     show\
                 \ this help message and exit\n"
               generated_using: *id005
-            - &id013 !Command
+              docker_image:
+            - &id015 !Command
               command: *id006
               positional: []
               named: []
-              parent: *id003
+              parent: *id012
               subcommands:
               - !Command
                 command: *id007
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: TranspoScope
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: align
-                  optional: false
+                  description: ''
                 named:
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - --group1
+                  description: ''
                   args: !SimpleFlagArg
                     name: GROUP1
-                  optional: true
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - --genes
+                  description: ''
                   args: !SimpleFlagArg
                     name: GENES
-                  optional: true
-                parent: *id004
+                parent: *id013
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - -h
+                  description: ''
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag:
                 help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1\
@@ -496,43 +824,44 @@ subcommands:
                   \ align: error: argument index_type: invalid choice: 'sample_id'\
                   \ (choose from 'melt', 'tipseqhunter')\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id008
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: TranspoScope
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: align
-                  optional: false
+                  description: ''
                 named:
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - --group1
+                  description: ''
                   args: !SimpleFlagArg
                     name: GROUP1
-                  optional: true
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - --genes
+                  description: ''
                   args: !SimpleFlagArg
                     name: GENES
-                  optional: true
-                parent: *id004
+                parent: *id013
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - -h
+                  description: ''
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag:
                 help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1\
@@ -542,43 +871,44 @@ subcommands:
                   \ align: error: argument index_type: invalid choice: 'me_reference'\
                   \ (choose from 'melt', 'tipseqhunter')\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id009
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: TranspoScope
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: align
-                  optional: false
+                  description: ''
                 named:
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - --group1
+                  description: ''
                   args: !SimpleFlagArg
                     name: GROUP1
-                  optional: true
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - --genes
+                  description: ''
                   args: !SimpleFlagArg
                     name: GENES
-                  optional: true
-                parent: *id004
+                parent: *id013
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - -h
+                  description: ''
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag:
                 help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1\
@@ -588,43 +918,44 @@ subcommands:
                   \ align: error: argument index_type: invalid choice: 'host_reference'\
                   \ (choose from 'melt', 'tipseqhunter')\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id010
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: TranspoScope
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: align
-                  optional: false
+                  description: ''
                 named:
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - --group1
+                  description: ''
                   args: !SimpleFlagArg
                     name: GROUP1
-                  optional: true
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - --genes
+                  description: ''
                   args: !SimpleFlagArg
                     name: GENES
-                  optional: true
-                parent: *id004
+                parent: *id013
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - -h
+                  description: ''
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag:
                 help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1\
@@ -634,43 +965,44 @@ subcommands:
                   \ align: error: argument index_type: invalid choice: 'index' (choose\
                   \ from 'melt', 'tipseqhunter')\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id011
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: TranspoScope
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: align
-                  optional: false
+                  description: ''
                 named:
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - --group1
+                  description: ''
                   args: !SimpleFlagArg
                     name: GROUP1
-                  optional: true
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - --genes
+                  description: ''
                   args: !SimpleFlagArg
                     name: GENES
-                  optional: true
-                parent: *id004
+                parent: *id013
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - -h
+                  description: ''
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag:
                 help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1\
@@ -680,6 +1012,7 @@ subcommands:
                   \ align: error: argument index_type: invalid choice: 'bam' (choose\
                   \ from 'melt', 'tipseqhunter')\n"
                 generated_using: *id005
+                docker_image:
               usage: []
               help_flag:
               usage_flag:
@@ -705,6 +1038,7 @@ subcommands:
                 \         Flag which determines whether intermediate bam files\n \
                 \                      and fasta files are deleted (default: False)\n"
               generated_using: *id005
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -718,64 +1052,66 @@ subcommands:
               \ to view the aligned output.\n\noptional arguments:\n  -h, --help \
               \   show this help message and exit\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: TranspoScope view [-h] web_directory\n\npositional arguments:\n\
             \  web_directory  The path to the web directory created by the align tool.\n\
             \noptional arguments:\n  -h, --help     show this help message and exit\n"
           generated_using: *id005
-        - &id015 !Command
+          docker_image:
+        - &id017 !Command
           command: *id006
           positional: []
           named: []
-          parent: *id012
+          parent: *id014
           subcommands:
           - !Command
             command: *id007
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: TranspoScope
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: align
-              optional: false
+              description: ''
             named:
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - --group1
+              description: ''
               args: !SimpleFlagArg
                 name: GROUP1
-              optional: true
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - --genes
+              description: ''
               args: !SimpleFlagArg
                 name: GENES
-              optional: true
-            parent: *id013
+            parent: *id015
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: ''
+              optional: true
               synonyms:
               - -h
+              description: ''
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag:
             help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n\
@@ -785,43 +1121,44 @@ subcommands:
               \ error: argument index_type: invalid choice: 'sample_id' (choose from\
               \ 'melt', 'tipseqhunter')\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id008
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: TranspoScope
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: align
-              optional: false
+              description: ''
             named:
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - --group1
+              description: ''
               args: !SimpleFlagArg
                 name: GROUP1
-              optional: true
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - --genes
+              description: ''
               args: !SimpleFlagArg
                 name: GENES
-              optional: true
-            parent: *id013
+            parent: *id015
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: ''
+              optional: true
               synonyms:
               - -h
+              description: ''
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag:
             help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n\
@@ -831,43 +1168,44 @@ subcommands:
               \ error: argument index_type: invalid choice: 'me_reference' (choose\
               \ from 'melt', 'tipseqhunter')\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id009
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: TranspoScope
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: align
-              optional: false
+              description: ''
             named:
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - --group1
+              description: ''
               args: !SimpleFlagArg
                 name: GROUP1
-              optional: true
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - --genes
+              description: ''
               args: !SimpleFlagArg
                 name: GENES
-              optional: true
-            parent: *id013
+            parent: *id015
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: ''
+              optional: true
               synonyms:
               - -h
+              description: ''
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag:
             help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n\
@@ -877,43 +1215,44 @@ subcommands:
               \ error: argument index_type: invalid choice: 'host_reference' (choose\
               \ from 'melt', 'tipseqhunter')\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id010
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: TranspoScope
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: align
-              optional: false
+              description: ''
             named:
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - --group1
+              description: ''
               args: !SimpleFlagArg
                 name: GROUP1
-              optional: true
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - --genes
+              description: ''
               args: !SimpleFlagArg
                 name: GENES
-              optional: true
-            parent: *id013
+            parent: *id015
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: ''
+              optional: true
               synonyms:
               - -h
+              description: ''
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag:
             help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n\
@@ -923,43 +1262,44 @@ subcommands:
               \ error: argument index_type: invalid choice: 'index' (choose from 'melt',\
               \ 'tipseqhunter')\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id011
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: TranspoScope
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: align
-              optional: false
+              description: ''
             named:
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - --group1
+              description: ''
               args: !SimpleFlagArg
                 name: GROUP1
-              optional: true
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - --genes
+              description: ''
               args: !SimpleFlagArg
                 name: GENES
-              optional: true
-            parent: *id013
+            parent: *id015
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: ''
+              optional: true
               synonyms:
               - -h
+              description: ''
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag:
             help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n\
@@ -969,6 +1309,7 @@ subcommands:
               \ error: argument index_type: invalid choice: 'bam' (choose from 'melt',\
               \ 'tipseqhunter')\n"
             generated_using: *id005
+            docker_image:
           usage: []
           help_flag:
           usage_flag:
@@ -993,6 +1334,7 @@ subcommands:
             \   Flag which determines whether intermediate bam files\n           \
             \            and fasta files are deleted (default: False)\n"
           generated_using: *id005
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -1006,64 +1348,66 @@ subcommands:
           \ output.\n\noptional arguments:\n  -h, --help    show this help message\
           \ and exit\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: TranspoScope view [-h] web_directory\n\npositional arguments:\n\
         \  web_directory  The path to the web directory created by the align tool.\n\
         \noptional arguments:\n  -h, --help     show this help message and exit\n"
       generated_using: *id005
-    - &id017 !Command
+      docker_image:
+    - &id019 !Command
       command: *id006
       positional: []
       named: []
-      parent: *id014
+      parent: *id016
       subcommands:
       - !Command
         command: *id007
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: TranspoScope
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: align
-          optional: false
+          description: ''
         named:
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - --group1
+          description: ''
           args: !SimpleFlagArg
             name: GROUP1
-          optional: true
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - --genes
+          description: ''
           args: !SimpleFlagArg
             name: GENES
-          optional: true
-        parent: *id015
+        parent: *id017
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: ''
+          optional: true
           synonyms:
           - -h
+          description: ''
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag:
         help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n\
@@ -1072,43 +1416,44 @@ subcommands:
           \                host_reference sample_id\nTranspoScope align: error: argument\
           \ index_type: invalid choice: 'sample_id' (choose from 'melt', 'tipseqhunter')\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id008
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: TranspoScope
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: align
-          optional: false
+          description: ''
         named:
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - --group1
+          description: ''
           args: !SimpleFlagArg
             name: GROUP1
-          optional: true
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - --genes
+          description: ''
           args: !SimpleFlagArg
             name: GENES
-          optional: true
-        parent: *id015
+        parent: *id017
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: ''
+          optional: true
           synonyms:
           - -h
+          description: ''
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag:
         help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n\
@@ -1117,43 +1462,44 @@ subcommands:
           \                host_reference sample_id\nTranspoScope align: error: argument\
           \ index_type: invalid choice: 'me_reference' (choose from 'melt', 'tipseqhunter')\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id009
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: TranspoScope
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: align
-          optional: false
+          description: ''
         named:
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - --group1
+          description: ''
           args: !SimpleFlagArg
             name: GROUP1
-          optional: true
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - --genes
+          description: ''
           args: !SimpleFlagArg
             name: GENES
-          optional: true
-        parent: *id015
+        parent: *id017
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: ''
+          optional: true
           synonyms:
           - -h
+          description: ''
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag:
         help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n\
@@ -1162,43 +1508,44 @@ subcommands:
           \                host_reference sample_id\nTranspoScope align: error: argument\
           \ index_type: invalid choice: 'host_reference' (choose from 'melt', 'tipseqhunter')\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id010
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: TranspoScope
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: align
-          optional: false
+          description: ''
         named:
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - --group1
+          description: ''
           args: !SimpleFlagArg
             name: GROUP1
-          optional: true
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - --genes
+          description: ''
           args: !SimpleFlagArg
             name: GENES
-          optional: true
-        parent: *id015
+        parent: *id017
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: ''
+          optional: true
           synonyms:
           - -h
+          description: ''
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag:
         help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n\
@@ -1207,43 +1554,44 @@ subcommands:
           \                host_reference sample_id\nTranspoScope align: error: argument\
           \ index_type: invalid choice: 'index' (choose from 'melt', 'tipseqhunter')\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id011
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: TranspoScope
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: align
-          optional: false
+          description: ''
         named:
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - --group1
+          description: ''
           args: !SimpleFlagArg
             name: GROUP1
-          optional: true
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - --genes
+          description: ''
           args: !SimpleFlagArg
             name: GENES
-          optional: true
-        parent: *id015
+        parent: *id017
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: ''
+          optional: true
           synonyms:
           - -h
+          description: ''
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag:
         help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n\
@@ -1252,6 +1600,7 @@ subcommands:
           \                host_reference sample_id\nTranspoScope align: error: argument\
           \ index_type: invalid choice: 'bam' (choose from 'melt', 'tipseqhunter')\n"
         generated_using: *id005
+        docker_image:
       usage: []
       help_flag:
       usage_flag:
@@ -1275,6 +1624,7 @@ subcommands:
         \         Flag which determines whether intermediate bam files\n         \
         \              and fasta files are deleted (default: False)\n"
       generated_using: *id005
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -1287,64 +1637,66 @@ subcommands:
       \        Launch a web page to view the aligned output.\n\noptional arguments:\n\
       \  -h, --help    show this help message and exit\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: TranspoScope view [-h] web_directory\n\npositional arguments:\n\
     \  web_directory  The path to the web directory created by the align tool.\n\n\
     optional arguments:\n  -h, --help     show this help message and exit\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id006
   positional: []
   named: []
-  parent: *id016
+  parent: *id018
   subcommands:
   - !Command
     command: *id007
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: TranspoScope
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 1
       name: align
-      optional: false
+      description: ''
     named:
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - --group1
+      description: ''
       args: !SimpleFlagArg
         name: GROUP1
-      optional: true
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - --genes
+      description: ''
       args: !SimpleFlagArg
         name: GENES
-      optional: true
-    parent: *id017
+    parent: *id019
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: ''
+      optional: true
       synonyms:
       - -h
+      description: ''
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag:
     help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n\
@@ -1353,43 +1705,44 @@ subcommands:
       \        host_reference sample_id\nTranspoScope align: error: argument index_type:\
       \ invalid choice: 'sample_id' (choose from 'melt', 'tipseqhunter')\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id008
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: TranspoScope
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 1
       name: align
-      optional: false
+      description: ''
     named:
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - --group1
+      description: ''
       args: !SimpleFlagArg
         name: GROUP1
-      optional: true
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - --genes
+      description: ''
       args: !SimpleFlagArg
         name: GENES
-      optional: true
-    parent: *id017
+    parent: *id019
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: ''
+      optional: true
       synonyms:
       - -h
+      description: ''
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag:
     help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n\
@@ -1398,43 +1751,44 @@ subcommands:
       \        host_reference sample_id\nTranspoScope align: error: argument index_type:\
       \ invalid choice: 'me_reference' (choose from 'melt', 'tipseqhunter')\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id009
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: TranspoScope
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 1
       name: align
-      optional: false
+      description: ''
     named:
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - --group1
+      description: ''
       args: !SimpleFlagArg
         name: GROUP1
-      optional: true
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - --genes
+      description: ''
       args: !SimpleFlagArg
         name: GENES
-      optional: true
-    parent: *id017
+    parent: *id019
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: ''
+      optional: true
       synonyms:
       - -h
+      description: ''
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag:
     help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n\
@@ -1443,43 +1797,44 @@ subcommands:
       \        host_reference sample_id\nTranspoScope align: error: argument index_type:\
       \ invalid choice: 'host_reference' (choose from 'melt', 'tipseqhunter')\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id010
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: TranspoScope
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 1
       name: align
-      optional: false
+      description: ''
     named:
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - --group1
+      description: ''
       args: !SimpleFlagArg
         name: GROUP1
-      optional: true
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - --genes
+      description: ''
       args: !SimpleFlagArg
         name: GENES
-      optional: true
-    parent: *id017
+    parent: *id019
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: ''
+      optional: true
       synonyms:
       - -h
+      description: ''
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag:
     help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n\
@@ -1488,43 +1843,44 @@ subcommands:
       \        host_reference sample_id\nTranspoScope align: error: argument index_type:\
       \ invalid choice: 'index' (choose from 'melt', 'tipseqhunter')\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id011
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: TranspoScope
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 1
       name: align
-      optional: false
+      description: ''
     named:
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - --group1
+      description: ''
       args: !SimpleFlagArg
         name: GROUP1
-      optional: true
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - --genes
+      description: ''
       args: !SimpleFlagArg
         name: GENES
-      optional: true
-    parent: *id017
+    parent: *id019
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: ''
+      optional: true
       synonyms:
       - -h
+      description: ''
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag:
     help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n\
@@ -1533,6 +1889,7 @@ subcommands:
       \        host_reference sample_id\nTranspoScope align: error: argument index_type:\
       \ invalid choice: 'bam' (choose from 'melt', 'tipseqhunter')\n"
     generated_using: *id005
+    docker_image:
   usage: []
   help_flag:
   usage_flag:
@@ -1555,6 +1912,7 @@ subcommands:
     \ ungrouped)\n  --keep_files         Flag which determines whether intermediate\
     \ bam files\n                       and fasta files are deleted (default: False)\n"
   generated_using: *id005
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -1567,3 +1925,4 @@ help_text: "usage: TranspoScope [-h] {align,view} ...\n\nA tool for visualizing 
   \ web page to view the aligned output.\n\noptional arguments:\n  -h, --help    show\
   \ this help message and exit\n"
 generated_using: *id005
+docker_image:

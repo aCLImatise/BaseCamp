@@ -5,7 +5,7 @@ task Dsk {
     Boolean? nb_cores
     Boolean? verbose
     Boolean? version
-    Boolean? file
+    Boolean? arg_reads_file
     Boolean? km_er_size
     Boolean? abundance_min
     Boolean? abundance_max
@@ -32,7 +32,7 @@ task Dsk {
       ~{if (nb_cores) then "-nb-cores" else ""} \
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (version) then "-version" else ""} \
-      ~{if (file) then "-file" else ""} \
+      ~{if (arg_reads_file) then "-file" else ""} \
       ~{if (km_er_size) then "-kmer-size" else ""} \
       ~{if (abundance_min) then "-abundance-min" else ""} \
       ~{if (abundance_max) then "-abundance-max" else ""} \
@@ -54,11 +54,14 @@ task Dsk {
       ~{if (minimizer_size) then "-minimizer-size" else ""} \
       ~{if (repartition_type) then "-repartition-type" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nb_cores: "(1 arg) :    number of cores  [default '0']"
     verbose: "(1 arg) :    verbosity level  [default '1']"
     version: "(0 arg) :    version"
-    file: "(1 arg) :    reads file"
+    arg_reads_file: "(1 arg) :    reads file"
     km_er_size: "(1 arg) :    size of a kmer  [default '31']"
     abundance_min: "(1 arg) :    min abundance threshold for solid kmers  [default '2']"
     abundance_max: "(1 arg) :    max abundance threshold for solid kmers  [default '2147483647']"

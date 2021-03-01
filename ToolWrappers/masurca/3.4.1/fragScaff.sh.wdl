@@ -16,6 +16,9 @@ task FragScaffsh {
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     b: ""
     c: ""

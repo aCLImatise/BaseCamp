@@ -3,37 +3,40 @@ version 1.0
 task Dcmprscp {
   input {
     Boolean? arguments
-    Boolean? _quiet_quiet
-    Boolean? _verbose_details
-    Boolean? _debug_information
+    Boolean? quiet
+    Boolean? verbose
+    Boolean? debug
     Boolean? log_level
     Boolean? log_config
-    Boolean? _logfile_write
-    Boolean? _config_stringprocess
-    Boolean? _printer_ame
+    Boolean? log_file
+    Boolean? config
+    Boolean? printer
   }
   command <<<
     dcmprscp \
       ~{if (arguments) then "--arguments" else ""} \
-      ~{if (_quiet_quiet) then "-q" else ""} \
-      ~{if (_verbose_details) then "-v" else ""} \
-      ~{if (_debug_information) then "-d" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (debug) then "--debug" else ""} \
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_config) then "--log-config" else ""} \
-      ~{if (_logfile_write) then "-l" else ""} \
-      ~{if (_config_stringprocess) then "-c" else ""} \
-      ~{if (_printer_ame) then "-p" else ""}
+      ~{if (log_file) then "--logfile" else ""} \
+      ~{if (config) then "--config" else ""} \
+      ~{if (printer) then "--printer" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arguments: "print expanded command line arguments"
-    _quiet_quiet: "--quiet       quiet mode, print no warnings and errors"
-    _verbose_details: "--verbose     verbose mode, print processing details"
-    _debug_information: "--debug       debug mode, print debug information"
+    quiet: "quiet mode, print no warnings and errors"
+    verbose: "verbose mode, print processing details"
+    debug: "debug mode, print debug information"
     log_level: "[l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
     log_config: "[f]ilename: string\\nuse config file f for the logger"
-    _logfile_write: "--logfile     write a log file (not with --log-config)"
-    _config_stringprocess: "--config      [f]ilename: string\\nprocess using settings from configuration file"
-    _printer_ame: "--printer     [n]ame: string (default: 1st printer in config file)\\nselect printer with identifier n from config file"
+    log_file: "write a log file (not with --log-config)"
+    config: "[f]ilename: string\\nprocess using settings from configuration file"
+    printer: "[n]ame: string (default: 1st printer in config file)\\nselect printer with identifier n from config file"
   }
   output {
     File out_stdout = stdout()

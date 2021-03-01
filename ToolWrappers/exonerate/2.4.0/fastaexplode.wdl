@@ -4,6 +4,9 @@ task Fastaexplode {
   command <<<
     fastaexplode
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

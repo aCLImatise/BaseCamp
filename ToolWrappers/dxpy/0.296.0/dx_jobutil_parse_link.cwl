@@ -3,7 +3,7 @@ id: dx_jobutil_parse_link.cwl
 inputs:
 - id: in_no_project
   doc: "Ignore project ID in an extended dxlink - just print the\nobject ID\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-project
 - id: in_dx_link
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dx-jobutil-parse-link

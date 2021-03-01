@@ -22,6 +22,9 @@ task PoretoolsYieldPlot {
       ~{if defined(saved_f) then ("--savedf " +  '"' + saved_f + '"') else ""} \
       ~{if defined(plot_type) then ("--plot-type " +  '"' + plot_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     save_as: "Save the plot to a file. Extension (.pdf or .png) drives"

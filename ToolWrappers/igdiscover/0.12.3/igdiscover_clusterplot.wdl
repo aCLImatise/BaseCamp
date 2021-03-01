@@ -24,6 +24,9 @@ task IgdiscoverClusterplot {
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
       ~{if (no_title) then "--no-title" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minimum_group_size: "Do not plot if there are less than N sequences for a\\ngene. Default: 200"
     gene: "Plot GENE. Can be given multiple times. Default: Plot\\nall genes."

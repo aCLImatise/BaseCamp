@@ -12,6 +12,9 @@ task SingularityRemoteLogin {
       ~{options_dot_dot_dot} \
       ~{if defined(token_file) then ("--tokenfile " +  '"' + token_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     token_file: "path to the file holding token"
     login: ""

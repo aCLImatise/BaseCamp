@@ -24,6 +24,9 @@ task GetGWASoverlappl {
       ~{if defined(snp_out) then ("-snpOut " +  '"' + snp_out + '"') else ""} \
       ~{if (snp_out_all) then "-snpOutAll" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     overlap_distance_default: "<#> (Overlap distance, default: 1000)"
     min: "<#> (minimum number of significant SNPs to consider study, default: 10)"

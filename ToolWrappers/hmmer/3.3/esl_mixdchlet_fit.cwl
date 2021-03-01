@@ -3,12 +3,12 @@ id: esl_mixdchlet_fit.cwl
 inputs:
 - id: in_set_random_seed
   doc: ': set random number seed to <n>  [0]'
-  type: long
+  type: long?
   inputBinding:
     prefix: -s
 - id: in_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -options
 - id: in_q
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - esl-mixdchlet

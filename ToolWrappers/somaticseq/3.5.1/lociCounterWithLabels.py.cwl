@@ -3,24 +3,24 @@ id: lociCounterWithLabels.py.cwl
 inputs:
 - id: in_fai_file
   doc: '.fa.fai file (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --fai-file
 - id: in_beds
   doc: "[BED_FILES [BED_FILES ...]], --bed-files [BED_FILES [BED_FILES ...]]\nBED\
     \ files (default: None)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -beds
 - id: in_bed_out
   doc: 'BED file out (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --bed-out
 - id: in_labels
   doc: "[BED_LABELS [BED_LABELS ...]], --bed-labels [BED_LABELS [BED_LABELS ...]]\n\
     Use these labels instead of bed file names (default:\nNone)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -labels
 outputs:
@@ -29,9 +29,10 @@ outputs:
   type: stdout
 - id: out_bed_out
   doc: 'BED file out (default: None)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_bed_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - lociCounterWithLabels.py

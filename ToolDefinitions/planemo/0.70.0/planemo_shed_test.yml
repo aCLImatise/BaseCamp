@@ -4,275 +4,277 @@ command:
 - shed_test
 positional:
 - !Positional
-  description: --galaxy_email TEXT             E-mail address to use when launching
-    single-
+  optional: false
   position: 0
   name: Galaxy.
-  optional: false
+  description: --galaxy_email TEXT             E-mail address to use when launching
+    single-
 named:
 - !Flag
-  description: "Recursively perform command for nested\nrepository directories."
+  optional: true
   synonyms:
   - -r
   - --recursive
+  description: "Recursively perform command for nested\nrepository directories."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If multiple repositories are specified and\nan error occurs stop immediately\
-    \ instead of\nprocessing remaining repositories."
+  optional: true
   synonyms:
   - --fail_fast
+  description: "If multiple repositories are specified and\nan error occurs stop immediately\
+    \ instead of\nprocessing remaining repositories."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Tool Shed repository owner (username).
+  optional: true
   synonyms:
   - --owner
+  description: Tool Shed repository owner (username).
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Tool Shed repository name (defaults to the\ninferred tool directory\
-    \ name)."
+  optional: true
   synonyms:
   - --name
+  description: "Tool Shed repository name (defaults to the\ninferred tool directory\
+    \ name)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "E-mail for Tool Shed auth (required unless\nshed_key is specified)."
+  optional: true
   synonyms:
   - --shed_email
+  description: "E-mail for Tool Shed auth (required unless\nshed_key is specified)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --shed_key
   description: "API key for Tool Shed access. An API key is\nrequired unless e-mail\
     \ and password is\nspecified. This key can be specified with\neither --shed_key\
     \ or --shed_key_from_env."
-  synonyms:
-  - --shed_key
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Environment variable to read API key for\nTool Shed access from."
+  optional: true
   synonyms:
   - --shed_key_from_env
+  description: "Environment variable to read API key for\nTool Shed access from."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Password for Tool Shed auth (required unless\nshed_key is specified)."
+  optional: true
   synonyms:
   - --shed_password
+  description: "Password for Tool Shed auth (required unless\nshed_key is specified)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Tool Shed to target (this can be 'toolshed',\n'testtoolshed', 'local'\
-    \ (alias for\nhttp://localhost:9009/), an arbitrary url or\nmappings defined ~/.planemo.yml."
+  optional: true
   synonyms:
   - -t
   - --shed_target
+  description: "Tool Shed to target (this can be 'toolshed',\n'testtoolshed', 'local'\
+    \ (alias for\nhttp://localhost:9009/), an arbitrary url or\nmappings defined ~/.planemo.yml."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Root of development galaxy directory to\nexecute command with."
+  optional: true
   synonyms:
   - --galaxy_root
+  description: "Root of development galaxy directory to\nexecute command with."
   args: !SimpleFlagArg
     name: DIRECTORY
-  optional: true
 - !Flag
-  description: "[2|2.7|3|3.5|3.6|3.7|3.8]\nPython version to start Galaxy under"
+  optional: true
   synonyms:
   - --galaxy_python_version
+  description: "[2|2.7|3|3.5|3.6|3.7|3.8]\nPython version to start Galaxy under"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extra_tools
   description: "Extra tool sources to include in Galaxy's\ntool panel (file or directory).\
     \ These will\nnot be linted/tested/etc... but they will be\navailable to workflows\
     \ and for interactive\nuse."
-  synonyms:
-  - --extra_tools
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Download and configure a disposable copy of\nGalaxy from github."
+  optional: true
   synonyms:
   - --install_galaxy
+  description: "Download and configure a disposable copy of\nGalaxy from github."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Branch of Galaxy to target (defaults to\nmaster) if a Galaxy root\
-    \ isn't specified."
+  optional: true
   synonyms:
   - --galaxy_branch
+  description: "Branch of Galaxy to target (defaults to\nmaster) if a Galaxy root\
+    \ isn't specified."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Git source of Galaxy to target (defaults to\nthe official galaxyproject\
-    \ github source if\na Galaxy root isn't specified."
+  optional: true
   synonyms:
   - --galaxy_source
+  description: "Git source of Galaxy to target (defaults to\nthe official galaxyproject\
+    \ github source if\na Galaxy root isn't specified."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --skip_venv
   description: "Do not create or source a virtualenv\nenvironment for Galaxy, this\
     \ should be used\nor instance to preserve an externally\nconfigured virtual environment\
     \ or conda\nenvironment."
-  synonyms:
-  - --skip_venv
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no_cache_galaxy
   description: "Skip caching of Galaxy source and\ndependencies obtained with --install_galaxy.\n\
     Not caching this results in faster downloads\n(no git) - so is better on throw\
     \ away\ninstances such with TravisCI."
-  synonyms:
-  - --no_cache_galaxy
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not cleanup temp files created for and by
+  optional: true
   synonyms:
   - --no_cleanup
+  description: Do not cleanup temp files created for and by
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: / --no_docker          Run Galaxy tools in Docker if enabled.
+  optional: true
   synonyms:
   - --docker
+  - --no_docker
+  description: Run Galaxy tools in Docker if enabled.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Command used to launch docker (defaults to\ndocker)."
+  optional: true
   synonyms:
   - --docker_cmd
+  description: "Command used to launch docker (defaults to\ndocker)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "/ --no_docker_sudo\nFlag to use sudo when running docker."
+  optional: true
   synonyms:
   - --docker_sudo
+  - --no_docker_sudo
+  description: Flag to use sudo when running docker.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Docker host to target when executing docker\ncommands (defaults to\
-    \ localhost)."
+  optional: true
   synonyms:
   - --docker_host
+  description: "Docker host to target when executing docker\ncommands (defaults to\
+    \ localhost)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "sudo command to use when --docker_sudo is\nenabled (defaults to sudo)."
+  optional: true
   synonyms:
   - --docker_sudo_cmd
+  description: "sudo command to use when --docker_sudo is\nenabled (defaults to sudo)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Test tools against mulled containers (forces\n--docker)."
+  optional: true
   synonyms:
   - --mulled_containers
   - --biocontainers
+  description: "Test tools against mulled containers (forces\n--docker)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Job configuration file for Galaxy to target.
+  optional: true
   synonyms:
   - --job_config_file
+  description: Job configuration file for Galaxy to target.
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: Tool dependency dir for Galaxy to target.
+  optional: true
   synonyms:
   - --tool_dependency_dir
+  description: Tool dependency dir for Galaxy to target.
   args: !SimpleFlagArg
     name: DIRECTORY
-  optional: true
 - !Flag
-  description: "Update test-data directory with job outputs\n(normally written to\
-    \ directory\n--job_output_files if specified.)"
+  optional: true
   synonyms:
   - --update_test_data
+  description: "Update test-data directory with job outputs\n(normally written to\
+    \ directory\n--job_output_files if specified.)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ --no_paste_test_data_paths\nBy default Planemo will use or not use\n\
-    Galaxy's path paste option to load test data\ninto a history based on the engine\
-    \ type it\nis targeting. This can override the logic to\nexplicitly enable or\
-    \ disable path pasting."
+  optional: true
   synonyms:
   - --paste_test_data_paths
+  - --no_paste_test_data_paths
+  description: "By default Planemo will use or not use\nGalaxy's path paste option\
+    \ to load test data\ninto a history based on the engine type it\nis targeting.\
+    \ This can override the logic to\nexplicitly enable or disable path pasting."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output test report (HTML - for humans)\ndefaults to tool_test_output.html."
+  optional: true
   synonyms:
   - --test_output
+  description: "Output test report (HTML - for humans)\ndefaults to tool_test_output.html."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Output test report (Basic text - for display\nin CI)"
+  optional: true
   synonyms:
   - --test_output_text
+  description: "Output test report (Basic text - for display\nin CI)"
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Output test report (Markdown style - for\nhumans & computers)"
+  optional: true
   synonyms:
   - --test_output_markdown
+  description: "Output test report (Markdown style - for\nhumans & computers)"
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: Output test report (xunit style - for CI
+  optional: true
   synonyms:
   - --test_output_xunit
+  description: Output test report (xunit style - for CI
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: Write job outputs to specified directory.
+  optional: true
   synonyms:
   - --job_output_files
+  description: Write job outputs to specified directory.
   args: !SimpleFlagArg
     name: DIRECTORY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --summary
   description: "[none|minimal|compact]\nSummary style printed to planemo's standard\n\
     output (see output reports for more complete\nsummary). Set to 'none' to disable\n\
     completely."
-  synonyms:
-  - --summary
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not install shed dependencies as part of\nrepository installation."
+  optional: true
   synonyms:
   - --skip_dependencies
+  description: "Do not install shed dependencies as part of\nrepository installation."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: planemo shed_test [OPTIONS] PROJECT\n\n  Run tests of published\
@@ -366,3 +368,4 @@ help_text: "Usage: planemo shed_test [OPTIONS] PROJECT\n\n  Run tests of publish
   \ installation.\n  --help                          Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

@@ -94,6 +94,9 @@ task FunannotatePredict {
       ~{if (force) then "--force" else ""} \
       ~{if (cpus) then "--cpus" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_multifasta_file: "Genome multi-FASTA file (softmasked repeats)"
     out: "Output folder name"

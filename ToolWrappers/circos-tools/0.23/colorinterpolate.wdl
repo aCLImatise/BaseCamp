@@ -8,6 +8,9 @@ task Colorinterpolate {
     colorinterpolate \
       ~{if defined(start) then ("-start " +  '"' + start + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     start: ",y1,z1 -end x2,y2,z2 -steps STEPS"
   }

@@ -2,7 +2,7 @@ version 1.0
 
 task ExtractSam {
   input {
-    Int? name_target_contig
+    Int? name_target_
     Boolean? print_more_information
     File? input_sambam_file
     File? output_fasta_file
@@ -16,7 +16,7 @@ task ExtractSam {
   }
   command <<<
     extract_sam \
-      ~{if defined(name_target_contig) then ("-t " +  '"' + name_target_contig + '"') else ""} \
+      ~{if defined(name_target_) then ("-t " +  '"' + name_target_ + '"') else ""} \
       ~{if (print_more_information) then "-v" else ""} \
       ~{if defined(input_sambam_file) then ("-i " +  '"' + input_sambam_file + '"') else ""} \
       ~{if defined(output_fasta_file) then ("-o " +  '"' + output_fasta_file + '"') else ""} \
@@ -28,8 +28,11 @@ task ExtractSam {
       ~{if (output_sequences_translated) then "-p" else ""} \
       ~{if (output_sequences_trait) then "-T" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    name_target_contig: "Name of target contig, e.g. HXB2:2253-2256"
+    name_target_: "Name of target contig, e.g. HXB2:2253-2256"
     print_more_information: "Print more information (such as subsequences in references)"
     input_sambam_file: "Input SAM/BAM file"
     output_fasta_file: "Output FASTA file"

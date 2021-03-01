@@ -19,11 +19,11 @@ task Trinity {
     Boolean? lines_terminated_newline
     Boolean? mst
     Boolean? nrugmcszbdfimstokt
-    String sort
+    Float trinity_v_two_dot_nine_dot_one
   }
   command <<<
     Trinity \
-      ~{sort} \
+      ~{trinity_v_two_dot_nine_dot_one} \
       ~{if (ignore_leading_blanks) then "-b" else ""} \
       ~{if (check_input_sorted) then "-c" else ""} \
       ~{if (dictionary_order_blank) then "-d" else ""} \
@@ -42,6 +42,9 @@ task Trinity {
       ~{if (mst) then "-mST" else ""} \
       ~{if (nrugmcszbdfimstokt) then "-nrugMcszbdfimSTokt" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_leading_blanks: "Ignore leading blanks"
     check_input_sorted: "Check whether input is sorted"
@@ -60,7 +63,7 @@ task Trinity {
     lines_terminated_newline: "Lines are terminated by NUL, not newline"
     mst: "Ignored for GNU compatibility"
     nrugmcszbdfimstokt: ""
-    sort: ""
+    trinity_v_two_dot_nine_dot_one: "#"
   }
   output {
     File out_stdout = stdout()

@@ -24,6 +24,9 @@ task PrimedLAMPTmUpdate {
       ~{if defined(oligo_conc_pair) then ("--OligoConcPair " +  '"' + oligo_conc_pair + '"') else ""} \
       ~{if defined(threads) then ("--Threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run_id: "Desired Run ID"
     path_prior_generated: "Path to Prior Generated Oligo Sites"

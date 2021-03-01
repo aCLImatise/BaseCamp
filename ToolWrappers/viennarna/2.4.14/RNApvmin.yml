@@ -3,87 +3,90 @@ command:
 - RNApvmin
 positional:
 - !Positional
-  description: "-j, --numThreads=INT          Set the number of threads used for calculations\n\
-    (only available when compiled with OpenMP\nsupport)"
+  optional: false
   position: 0
   name: program
-  optional: false
+  description: "-j, --numThreads=INT          Set the number of threads used for calculations\n\
+    (only available when compiled with OpenMP\nsupport)"
 named:
 - !Flag
-  description: "Print help, including all details and hidden\noptions, and exit"
+  optional: true
   synonyms:
   - --detailed-help
+  description: "Print help, including all details and hidden\noptions, and exit"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Print help, including hidden options, and exit
+  optional: true
   synonyms:
   - --full-help
+  description: Print help, including hidden options, and exit
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "+ [optional parameters]\nSpecify the method used to convert SHAPE\n\
-    reactivities to pairing probabilities.\n(default=`O')"
+  optional: true
   synonyms:
   - --shapeConversion
+  description: "/C/S/L/O  + [optional parameters]\nSpecify the method used to convert\
+    \ SHAPE\nreactivities to pairing probabilities.\n(default=`O')"
   args: !SimpleFlagArg
-    name: M/C/S/L/O
-  optional: true
+    name: M
 - !Flag
-  description: "Ratio of the weighting factors tau and sigma.\n(default=`1.0')"
+  optional: true
   synonyms:
   - --tauSigmaRatio
+  description: "Ratio of the weighting factors tau and sigma.\n(default=`1.0')"
   args: !SimpleFlagArg
     name: DOUBLE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --objectiveFunction
   description: "The energies of the perturbation vector and the\ndiscripancies between\
     \ predicted and observed\npairing probabilities contribute to the\nobjective function.\
     \ This parameter defines,\nwhich function is used to process the\ncontributions\
     \ before summing them up.\n0 square\n1 absolute\n(default=`0')"
-  synonyms:
-  - --objectiveFunction
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sampleSize
   description: "The iterative minimization process requires to\nevaluate the gradient\
     \ of the objective\nfunction. A sample size of 0 leads to an\nanalytical evaluation\
     \ which scales as O(N^4).\nChoosing a sample size >0 estimates the\ngradient by\
     \ sampling the given number of\nsequences from the ensemble, which is much\nfaster.\n\
     (default=`1000')"
-  synonyms:
-  - --sampleSize
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Enable non-redundant sampling strategy.\n(default=off)"
+  optional: true
   synonyms:
   - -N
   - --nonRedundant
+  description: "Enable non-redundant sampling strategy.\n(default=off)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --intermediatePath
   description: "Write an output file for each iteration of the\nminimization process.\
     \ Each file contains the\nused perturbation vector and the score of the\nobjective\
     \ function. The number of the\niteration will be appended to the given path."
-  synonyms:
-  - --intermediatePath
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --initialVector
   description: "Defines the initial perturbation vector which\nwill be used as starting\
     \ vector for the\nminimization process. The value 0 results in\na null vector.\
     \ Every other value x will be\nused to populate the initial vector with\nrandom\
     \ numbers from the interval [-x,x].\n(default=`0')"
-  synonyms:
-  - --initialVector
   args: !SimpleFlagArg
     name: DOUBLE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --minimizer
   description: "Set the minimizing algorithm used for finding\nan appropriate perturbation\
     \ vector. The\ndefault option uses a custom implementation\nof the gradient descent\
     \ algorithms while all\nother options represent various algorithms\nimplemented\
@@ -91,90 +94,87 @@ named:
     found, only the default minimizer is\navailable.\n(possible values=\"conjugate_fr\"\
     ,\n\"conjugate_pr\", \"vector_bfgs\",\n\"vector_bfgs2\", \"steepest_descent\"\
     ,\n\"default\" default=`default')"
-  synonyms:
-  - --minimizer
   args: !SimpleFlagArg
     name: ENUM
-  optional: true
 - !Flag
-  description: "Rescale energy parameters to a temperature of\ntemp C. Default is\
-    \ 37C."
+  optional: true
   synonyms:
   - -T
   - --temp
+  description: "Rescale energy parameters to a temperature of\ntemp C. Default is\
+    \ 37C."
   args: !SimpleFlagArg
     name: DOUBLE
-  optional: true
 - !Flag
-  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
-    \ and hexaloop\nhairpins. Mostly for testing.\n(default=off)"
+  optional: true
   synonyms:
   - '-4'
   - --noTetra
+  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
+    \ and hexaloop\nhairpins. Mostly for testing.\n(default=off)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "How to treat \"dangling end\" energies for\nbases adjacent to helices\
-    \ in free ends and\nmulti-loops\n(default=`2')"
+  optional: true
   synonyms:
   - -d
   - --dangles
+  description: "How to treat \"dangling end\" energies for\nbases adjacent to helices\
+    \ in free ends and\nmulti-loops\n(default=`2')"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Produce structures without lonely pairs\n(helices of length 1).\n\
-    (default=off)"
+  optional: true
   synonyms:
   - --noLP
+  description: "Produce structures without lonely pairs\n(helices of length 1).\n\
+    (default=off)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not allow GU pairs\n(default=off)"
+  optional: true
   synonyms:
   - --noGU
+  description: "Do not allow GU pairs\n(default=off)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not allow GU pairs at the end of helices\n(default=off)"
+  optional: true
   synonyms:
   - --noClosingGU
+  description: "Do not allow GU pairs at the end of helices\n(default=off)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Read energy parameters from paramfile, instead\nof using the default\
-    \ parameter set."
+  optional: true
   synonyms:
   - -P
   - --paramFile
+  description: "Read energy parameters from paramfile, instead\nof using the default\
+    \ parameter set."
   args: !SimpleFlagArg
     name: paramfile
-  optional: true
 - !Flag
-  description: "Set the maximum base pair span\n(default=`-1')"
+  optional: true
   synonyms:
   - --maxBPspan
+  description: "Set the maximum base pair span\n(default=`-1')"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print help and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Print help and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Print version and exit
+  optional: true
   synonyms:
   - -V
   - --version
+  description: Print version and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "RNApvmin 2.4.14\n\nCalculate a perturbation vector that minimizes discripancies\
   \ between predicted\nand observed pairing probabilities\n\nUsage: RNApvmin [options]\
   \ <file.shape>\n\nThe program reads a RNA sequence from stdin and uses an iterative\
@@ -261,3 +261,4 @@ help_text: "RNApvmin 2.4.14\n\nCalculate a perturbation vector that minimizes di
   \ to rna@tbi.univie.ac.at.\n\n\n"
 generated_using:
 - --help
+docker_image:

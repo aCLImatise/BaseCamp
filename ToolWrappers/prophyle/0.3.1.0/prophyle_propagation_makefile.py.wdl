@@ -8,6 +8,9 @@ task ProphylePropagationMakefilepy {
     prophyle_propagation_makefile_py \
       ~{if defined(kmer_length) then ("-k " +  '"' + kmer_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_length: "k-mer length"
   }

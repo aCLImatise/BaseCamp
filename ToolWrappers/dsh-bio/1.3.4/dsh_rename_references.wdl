@@ -14,6 +14,9 @@ task Dshrenamereferences {
       ~{if (input_gff_three_file) then "--input-gff3-file" else ""} \
       ~{if (output_gff_three_file) then "--output-gff3-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     chr: "add \\\"chr\\\" to chromosome names [optional]"

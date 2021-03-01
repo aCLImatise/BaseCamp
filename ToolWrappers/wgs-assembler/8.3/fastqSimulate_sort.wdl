@@ -14,6 +14,9 @@ task FastqSimulatesort {
       ~{if defined(i_two) then ("-i2 " +  '"' + i_two + '"') else ""} \
       ~{if defined(i_one) then ("-i1 " +  '"' + i_one + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o_two: ""
     o_one: ""

@@ -15,7 +15,7 @@ task Sortgrcd {
     Boolean? maximum_total_number_unpaired
     Boolean? ln
     Boolean? maximum_allowed_missmatches
-    Boolean? _allow_boundary
+    Boolean? allow_noncanonical_boundary
     Boolean? maximum_allowed_bases
     Boolean? gs
     Boolean? sa
@@ -38,7 +38,7 @@ task Sortgrcd {
       ~{if (maximum_total_number_unpaired) then "-UN" else ""} \
       ~{if (ln) then "-lN" else ""} \
       ~{if (maximum_allowed_missmatches) then "-mN" else ""} \
-      ~{if (_allow_boundary) then "-nN" else ""} \
+      ~{if (allow_noncanonical_boundary) then "-nN" else ""} \
       ~{if (maximum_allowed_bases) then "-uN" else ""} \
       ~{if (gs) then "-gS" else ""} \
       ~{if (sa) then "-Sa" else ""} \
@@ -46,6 +46,9 @@ task Sortgrcd {
       ~{if (sc) then "-Sc" else ""} \
       ~{if (sr) then "-Sr" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cn: ":    Minimum % of coverage (0-100)"
     en: ":    Report only the best (N=1) or all (N=2) results per gene locus (1)"
@@ -60,7 +63,7 @@ task Sortgrcd {
     maximum_total_number_unpaired: ":    Maximum total number of unpaired bases in gaps"
     ln: ":    Number of residues per line for -O6 or -O7 (60)"
     maximum_allowed_missmatches: ":    Maximum allowed missmatches at both exon boundaries"
-    _allow_boundary: ":    allow non-canonical boundary? [0: no; 1: AT-AN; 2: 1bp mismatch; 3: any]"
+    allow_noncanonical_boundary: ":    allow non-canonical boundary? [0: no; 1: AT-AN; 2: 1bp mismatch; 3: any]"
     maximum_allowed_bases: ":    Maximum allowed unpaired bases in gaps at both exon boundaries"
     gs: ":    Specify the .grp file name"
     sa: ":    sort chromosomes in the alphabetical order of identifier (default)"

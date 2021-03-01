@@ -12,6 +12,9 @@ task HcaDssGetbundlescheckout {
       ~{if defined(replica) then ("--replica " +  '"' + replica + '"') else ""} \
       ~{if defined(rfccompliant_id_checkout) then ("--checkout-job-id " +  '"' + rfccompliant_id_checkout + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     replica: "Replica to fetch from."
     rfccompliant_id_checkout: "A RFC4122-compliant ID for the checkout job request.\\n"

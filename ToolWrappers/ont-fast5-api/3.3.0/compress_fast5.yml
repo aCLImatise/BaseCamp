@@ -1,0 +1,105 @@
+!Command
+command:
+- compress_fast5
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: files
+  description: -v, --version         show program's version number and exit
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input_path
+  description: Folder containing single read fast5 files
+  args: !SimpleFlagArg
+    name: INPUT_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --save_path
+  description: Folder to output multi read files to
+  args: !SimpleFlagArg
+    name: SAVE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --in_place
+  description: Replace the old files with new files in place
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --compression
+  description: Target output compression type
+  args: !ChoiceFlagArg
+    choices: !!set
+      gzip:
+      vbz:
+      vbz_legacy_v0:
+- !Flag
+  optional: true
+  synonyms:
+  - --sanitize
+  description: "Clean output files of optional groups and datasets\n(e.g. 'Analyses')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Maximum number of threads to use
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --recursive
+  description: "Search recursively through folders for single_read\nfast5 files"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore_symlinks
+  description: Ignore symlinks when searching recursively for fast5
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: Tool for changing the compression of Fast5 files [-h] -i INPUT_PATH\n\
+  \                                                        (-s SAVE_PATH | --in_place)\n\
+  \                                                        -c\n                  \
+  \                                      {vbz,vbz_legacy_v0,gzip}\n              \
+  \                                          [--sanitize]\n                      \
+  \                                  [-t THREADS]\n                              \
+  \                          [--recursive]\n                                     \
+  \                   [--ignore_symlinks]\n                                      \
+  \                  [-v]\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -i INPUT_PATH, --input_path INPUT_PATH\n            \
+  \            Folder containing single read fast5 files\n  -s SAVE_PATH, --save_path\
+  \ SAVE_PATH\n                        Folder to output multi read files to\n  --in_place\
+  \            Replace the old files with new files in place\n  -c {vbz,vbz_legacy_v0,gzip},\
+  \ --compression {vbz,vbz_legacy_v0,gzip}\n                        Target output\
+  \ compression type\n  --sanitize            Clean output files of optional groups\
+  \ and datasets\n                        (e.g. 'Analyses')\n  -t THREADS, --threads\
+  \ THREADS\n                        Maximum number of threads to use\n  --recursive\
+  \           Search recursively through folders for single_read\n               \
+  \         fast5 files\n  --ignore_symlinks     Ignore symlinks when searching recursively\
+  \ for fast5\n                        files\n  -v, --version         show program's\
+  \ version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ont-fast5-api:3.3.0--py_0

@@ -10,18 +10,18 @@ inputs:
     \ Yeast Nuclear);\n13 (Ascidian Mitochondrial); 14 (Flatworm\nMitochondrial);\
     \ 15 (Blepharisma\nMacronuclear); 16 (Chlorophycean\nMitochondrial); 21 (Trematode\n\
     Mitochondrial); 22 (Scenedesmus obliquus);\n23 (Thraustochytrium Mitochondrial))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -table
 - id: in_minsize
   doc: "integer    [30] Minimum nucleotide size of ORF to\nreport (Any integer value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -minsize
 - id: in_maxsize
   doc: "integer    [1000000] Maximum nucleotide size of ORF to\nreport (Any integer\
     \ value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -maxsize
 - id: in_find
@@ -38,12 +38,12 @@ inputs:
     between STOP codons); 3 (Nucleic sequences\nbetween START and STOP codons); 4\n\
     (Nucleotides flanking START codons); 5\n(Nucleotides flanking initial STOP codons);\n\
     6 (Nucleotides flanking ending STOP codons))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -find
 - id: in_circular
   doc: boolean    [N] Is the sequence circular
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -circular
 - id: in_flanking
@@ -52,13 +52,14 @@ inputs:
     \ allows you to set the number of\nnucleotides either side of that codon to\n\
     output. If the region of flanking\nnucleotides crosses the start or end of the\n\
     sequence, no output is given for this codon.\n(Any integer value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -flanking
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _getorf

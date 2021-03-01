@@ -104,6 +104,9 @@ task Bedmap {
       ~{if (echo_ref_size) then "--echo-ref-size" else ""} \
       ~{if (indicator) then "--indicator" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chrom: "Jump to and process data for given <chromosome> only."
     delim: "Change output delimiter from '|' to <delim> between columns (e.g. '\\t')."

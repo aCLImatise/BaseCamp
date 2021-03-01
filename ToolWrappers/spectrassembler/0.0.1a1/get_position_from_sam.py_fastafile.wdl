@@ -14,6 +14,9 @@ task GetPositionFromSampyFastafile {
       ~{fast_a_file} \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     get_position_from_sam_do_tpy: ""

@@ -38,6 +38,9 @@ task MergeContigs {
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: "k-mer size"
     out: "output the merged contigs to FILE [stdout]"

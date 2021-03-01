@@ -46,6 +46,9 @@ task Elink {
       ~{if (batch) then "-batch" else ""} \
       ~{if (label) then "-label" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     related: "Neighbors in same database"
     target: "Links in different database"

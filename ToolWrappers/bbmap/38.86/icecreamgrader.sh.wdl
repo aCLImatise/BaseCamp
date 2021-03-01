@@ -8,6 +8,9 @@ task Icecreamgradersh {
     icecreamgrader_sh \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
   }

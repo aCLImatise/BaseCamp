@@ -44,6 +44,9 @@ task Methratiopy {
       ~{if defined(ct_snp) then ("--ct-snp " +  '"' + ct_snp + '"') else ""} \
       ~{if defined(context) then ("--context " +  '"' + context + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "output methylation ratio file name. [default: STDOUT]"
     alignment_copy: "save a copy of input alignment for BSMAP pipe input.\\n(in BAM format) [default: none]"

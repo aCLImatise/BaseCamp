@@ -10,17 +10,17 @@ inputs:
 - id: in_normalize
   doc: "Normalize to a) 0 to 1 range, b) all matrices to the\nlowest read count of\
     \ the given matrices."
-  type: string
+  type: string?
   inputBinding:
     prefix: --normalize
 - id: in_out_filename
   doc: Output file name for the Hi-C matrix.
-  type: File
+  type: File?
   inputBinding:
     prefix: --outFileName
 - id: in_multiplicative_value
   doc: show this help message and exit
-  type: string
+  type: string?
   inputBinding:
     prefix: --multiplicativeValue
 - id: in_set_to_zero_threshold
@@ -29,7 +29,7 @@ inputs:
     \ the\nnormalize mode \"smallest\" to 1.0. This parameter will\ninfluence the\
     \ sparsity of the matrix by removing many\nvalues close to 0 in smallest normalization\
     \ mode."
-  type: double
+  type: double?
   inputBinding:
     prefix: --setToZeroThreshold
 outputs:
@@ -38,9 +38,10 @@ outputs:
   type: stdout
 - id: out_out_filename
   doc: Output file name for the Hi-C matrix.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicNormalize

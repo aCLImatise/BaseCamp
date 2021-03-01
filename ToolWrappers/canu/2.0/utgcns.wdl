@@ -28,7 +28,7 @@ task Utgcns {
     String s_g_load
     String algorithm
     String aligner
-    String o_results_write
+    String results_write_computed
     String parameters
     String logging
   }
@@ -37,7 +37,7 @@ task Utgcns {
       ~{s_g_load} \
       ~{algorithm} \
       ~{aligner} \
-      ~{o_results_write} \
+      ~{results_write_computed} \
       ~{parameters} \
       ~{logging} \
       ~{if defined(load_reads_partition) then ("-R " +  '"' + load_reads_partition + '"') else ""} \
@@ -64,6 +64,9 @@ task Utgcns {
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if (enable_debugging_option) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     load_reads_partition: "Load reads from partition file 'f'"
     load_tig_tgstore: "v          Load tig from tgStore 't'."
@@ -91,7 +94,7 @@ task Utgcns {
     s_g_load: "-S g            Load reads from sqStore 'g'"
     algorithm: "-quick          Stitch reads together to cover the contig.  The bases in the contig\\nis formed from exactly one read; no consensus sequence is computed.\\nThis is useful for checking intermediate assembly structure by mapping\\nto reference, or as input to a polishing step.  Read positions will be\\nincorrect, and no BAM output is possible."
     aligner: "-edlib          Myers' O(ND) algorithm from Edlib (https://github.com/Martinsos/edlib).\\nThis is the default (and, yes, there is no non-default aligner)."
-    o_results_write: "-O results      Write computed tigs to binary output file 'results'"
+    results_write_computed: "-O results      Write computed tigs to binary output file 'results'"
     parameters: "-e e            Expect alignments at up to fraction e error"
     logging: "-v              Show multialigns."
   }

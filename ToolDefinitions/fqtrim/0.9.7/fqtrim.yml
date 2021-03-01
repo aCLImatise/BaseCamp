@@ -4,232 +4,233 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -n
   description: "rename the reads using the <prefix> followed by a read counter;\n\
     if -C option was also provided, the suffix \"_x<N>\" is appended\n(where <N> is\
     \ the read duplication count)"
-  synonyms:
-  - -n
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
   description: "write the trimmed/filtered reads to file(s) named <input>.<outsuffix>\n\
     which will be created in the current (working) directory (unless --outdir\nis\
     \ used); this suffix should include the file extension; if this extension\nis\
     \ .gz, .gzip or .bz2 then the output will be compressed accordingly.\nNOTE: if\
     \ the input file is '-' (stdin) then this is the full name of the\noutput file,\
     \ not just the suffix."
-  synonyms:
-  - -o
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ', write the output file(s) to <outdir> directory instead'
+  optional: true
   synonyms:
   - --outdir
   - -o
+  description: ', write the output file(s) to <outdir> directory instead'
   args: !SimpleFlagArg
     name: for
-  optional: true
 - !Flag
-  description: "file with adapter sequences to trim, each line having this format:\n\
-    [<5_adapter_sequence>][ <3_adapter_sequence>]"
+  optional: true
   synonyms:
   - -f
+  description: "file with adapter sequences to trim, each line having this format:\n\
+    [<5_adapter_sequence>][ <3_adapter_sequence>]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "trim the given adapter or primer sequence at the 5' end of each read\n\
-    (e.g. -5 CGACAGGTTCAGAGTTCTACAGTCCGACGATC)"
+  optional: true
   synonyms:
   - '-5'
+  description: "trim the given adapter or primer sequence at the 5' end of each read\n\
+    (e.g. -5 CGACAGGTTCAGAGTTCTACAGTCCGACGATC)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "trim the given adapter sequence at the 3' end of each read\n(e.g.\
-    \ -3 TCGTATGCCGTCTTCTGCTTG)"
+  optional: true
   synonyms:
   - '-3'
+  description: "trim the given adapter sequence at the 3' end of each read\n(e.g.\
+    \ -3 TCGTATGCCGTCTTCTGCTTG)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: disable polyA/T trimming (enabled by default)
+  optional: true
   synonyms:
   - -A
+  description: disable polyA/T trimming (enabled by default)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "trim polyA/T at both ends (default: only poly-A at 3' end, poly-T\
-    \ at 5')"
+  optional: true
   synonyms:
   - -B
+  description: "trim polyA/T at both ends (default: only poly-A at 3' end, poly-T\
+    \ at 5')"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: output only reads affected by trimming (discard clean reads!)
+  optional: true
   synonyms:
   - -O
+  description: output only reads affected by trimming (discard clean reads!)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: minimum length of poly-A/T run to remove (6)
+  optional: true
   synonyms:
   - -y
+  description: minimum length of poly-A/T run to remove (6)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: trim read ends where the quality value drops below <minq>
+  optional: true
   synonyms:
   - -q
+  description: trim read ends where the quality value drops below <minq>
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: for -q, sliding window size for calculating avg. quality (default 6)
+  optional: true
   synonyms:
   - -w
+  description: for -q, sliding window size for calculating avg. quality (default 6)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: for -q, limit maximum trimming at either end to <trim_max_len>
+  optional: true
   synonyms:
   - -t
+  description: for -q, limit maximum trimming at either end to <trim_max_len>
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: maximum percentage of Ns allowed in a read after trimming (default
-    5)
+  optional: true
   synonyms:
   - -m
+  description: maximum percentage of Ns allowed in a read after trimming (default
+    5)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "minimum read length after trimming (if the remaining sequence is shorter\n\
-    than this, the read will be discarded (trashed)(default: 16)"
+  optional: true
   synonyms:
   - -l
+  description: "minimum read length after trimming (if the remaining sequence is shorter\n\
+    than this, the read will be discarded (trashed)(default: 16)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "write a \"trimming report\" file listing the affected reads with a\
-    \ list\nof trimming operations"
+  optional: true
   synonyms:
   - -r
+  description: "write a \"trimming report\" file listing the affected reads with a\
+    \ list\nof trimming operations"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s1
+  - -s2
   description: ":  for paired reads, one of the reads (1 or 2) is not being processed\n\
     (no attempt to trim it) but the pair is discarded if the other read is\ntrashed\
     \ by the trimming process"
-  synonyms:
-  - -s1/-s2
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --aidx
   description: "can only be given with -r and -f options and it makes all the\nvector/adapter\
     \ trimming operations encoded as a,b,c,.. instead of V,\ncorresponding to the\
     \ order of adapter sequences in the -f file"
-  synonyms:
-  - --aidx
   args: !SimpleFlagArg
     name: option
-  optional: true
 - !Flag
-  description: "write the number of bases trimmed at 5' and 3' ends after the read\
-    \ names\nin the FASTA/FASTQ output file(s)"
+  optional: true
   synonyms:
   - -T
+  description: "write the number of bases trimmed at 5' and 3' ends after the read\
+    \ names\nin the FASTA/FASTQ output file(s)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "pass reads through a low-complexity (dust) filter and discard any\
-    \ read\nthat has over 50% of its length masked as low complexity"
+  optional: true
   synonyms:
   - -D
+  description: "pass reads through a low-complexity (dust) filter and discard any\
+    \ read\nthat has over 50% of its length masked as low complexity"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "is the same with -D but fqtrim will actually mask the low\ncomplexity\
-    \ regions with Ns in the output sequence"
+  optional: true
   synonyms:
   - --dmask
+  description: "is the same with -D but fqtrim will actually mask the low\ncomplexity\
+    \ regions with Ns in the output sequence"
   args: !SimpleFlagArg
     name: option
-  optional: true
 - !Flag
-  description: "collapse duplicate reads and append a _x<N>count suffix to the read\n\
-    name (where <N> is the duplication count)"
+  optional: true
   synonyms:
   - -C
+  description: "collapse duplicate reads and append a _x<N>count suffix to the read\n\
+    name (where <N> is the duplication count)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: use <numcpus> CPUs (threads) on the local machine
+  optional: true
   synonyms:
   - -p
+  description: use <numcpus> CPUs (threads) on the local machine
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: input is phred64/phred33 (use -P64 or -P33)
+  optional: true
   synonyms:
   - -P
+  description: input is phred64/phred33 (use -P64 or -P33)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: convert quality values to the other Phred qv type
+  optional: true
   synonyms:
   - -Q
+  description: convert quality values to the other Phred qv type
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: disable read name consistency check for paired reads
+  optional: true
   synonyms:
   - -M
+  description: disable read name consistency check for paired reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: show verbose trimming summary
+  optional: true
   synonyms:
   - -V
+  description: show verbose trimming summary
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "minimum length of exact suffix-prefix match with adapter sequence\
-    \ that\ncan be trimmed at either end of the read (default: 6)"
+  optional: true
   synonyms:
   - -a
+  description: "minimum length of exact suffix-prefix match with adapter sequence\
+    \ that\ncan be trimmed at either end of the read (default: 6)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: minimum percent identity for adapter match at 5' end (default 96.0)
+  optional: true
   synonyms:
   - --pid5
+  description: minimum percent identity for adapter match at 5' end (default 96.0)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: minimum percent identity for adapter match at 3' end (default 94.0)
+  optional: true
   synonyms:
   - --pid3
+  description: minimum percent identity for adapter match at 3' end (default 94.0)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: mismatch penalty for scoring the adapter alignment (default 3)
+  optional: true
   synonyms:
   - --mism
+  description: mismatch penalty for scoring the adapter alignment (default 3)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: reward for scoring the adapter alignment (default 1)
+  optional: true
   synonyms:
   - --match
+  description: reward for scoring the adapter alignment (default 1)
   args: !SimpleFlagArg
     name: match
-  optional: true
 - !Flag
-  description: "also look for terminal alignments with the reverse complement\nof\
-    \ the adapter sequence(s)"
+  optional: true
   synonyms:
   - -R
+  description: "also look for terminal alignments with the reverse complement\nof\
+    \ the adapter sequence(s)"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -292,3 +293,4 @@ help_text: "fqtrim v0.9.7. Usage:\nfqtrim [{-5 <5adapter> -3 <3adapter>|-f <adap
   \          of the adapter sequence(s)\n \nInvalid argument: --help\n"
 generated_using:
 - --help
+docker_image:

@@ -20,6 +20,9 @@ task ScrantrendvarR {
       ~{if defined(use_spikes) then ("--use-spikes " +  '"' + use_spikes + '"') else ""} \
       ~{if defined(output_trend_var) then ("--output-trend-var " +  '"' + output_trend_var + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sce_object: "Path to the input SCE object in rds format."
     min_mean: "A numeric scalar specifying the minimum mean to use for trend fitting."

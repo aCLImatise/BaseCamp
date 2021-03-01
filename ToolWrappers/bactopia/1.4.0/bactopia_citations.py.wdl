@@ -2,7 +2,7 @@ version 1.0
 
 task Bactopiacitationspy {
   input {
-    Directory? directory_where_stored
+    Directory? directory_where_repository
     String var_1
     String citations
   }
@@ -10,10 +10,13 @@ task Bactopiacitationspy {
     bactopia_citations_py \
       ~{var_1} \
       ~{citations} \
-      ~{if defined(directory_where_stored) then ("--bactopia " +  '"' + directory_where_stored + '"') else ""}
+      ~{if defined(directory_where_repository) then ("--bactopia " +  '"' + directory_where_repository + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    directory_where_stored: "Directory where Bactopia repository is stored."
+    directory_where_repository: "Directory where Bactopia repository is stored."
     var_1: ""
     citations: ""
   }

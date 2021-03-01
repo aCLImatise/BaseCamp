@@ -4,6 +4,9 @@ task Fastarevcomp {
   command <<<
     fastarevcomp
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

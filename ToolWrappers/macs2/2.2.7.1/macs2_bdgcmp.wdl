@@ -22,6 +22,9 @@ task Macs2Bdgcmp {
       ~{if defined(o_prefix) then ("--o-prefix " +  '"' + o_prefix + '"') else ""} \
       ~{if defined(ofile) then ("--ofile " +  '"' + ofile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t_file: "Treatment bedGraph file, e.g. *_treat_pileup.bdg from\\nMACSv2. REQUIRED"
     c_file: "Control bedGraph file, e.g. *_control_lambda.bdg from\\nMACSv2. REQUIRED"

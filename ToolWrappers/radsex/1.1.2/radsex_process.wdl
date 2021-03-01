@@ -14,6 +14,9 @@ task RadsexProcess {
       ~{if (threads) then "--threads" else ""} \
       ~{if (min_depth) then "--min-depth" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dir: "TEXT:DIR                  Path to a directory contains demultiplexed sequence files              [REQUIRED]"
     output_file: "TEXT                      Path to the output file (table of marker depths in each individual)    [REQUIRED]"

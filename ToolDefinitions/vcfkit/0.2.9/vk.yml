@@ -1,0 +1,167 @@
+&id001 !Command
+command:
+- vk
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - vk
+  - phylo
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: fasta
+    description: ''
+  - !Positional
+    optional: false
+    position: 0
+    name: tree
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: vcf
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this screen.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show version.
+    args: !EmptyFlagArg {}
+  help_text: "usage:\n  vk phylo fasta <vcf> [<region>]\n  vk phylo tree (nj|upgma)\
+    \ [--plot] <vcf> [<region>]\n\noptions:\n  -h --help                   Show this\
+    \ screen.\n  --version                   Show version.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/vcfkit:0.2.9--pyh5bfb8f1_0
+- !Command
+  command:
+  - vk
+  - genome
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: location
+    description: ''
+  - !Positional
+    optional: false
+    position: 0
+    name: ncbi
+    description: ''
+  - !Positional
+    optional: false
+    position: 0
+    name: wormbase
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --directory
+    description: Set Genome Directory
+    args: !SimpleFlagArg
+      name: dir
+  - !Flag
+    optional: true
+    synonyms:
+    - --ref
+    description: ''
+    args: !SimpleFlagArg
+      name: asm_name
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this screen.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage:\n  vk genome location [<path>]\n  vk genome list\n  vk genome\
+    \ --search=<term>\n  vk genome ncbi [options] --ref=<asm_name> [--accession-chrom-names]\n\
+    \  vk genome wormbase [options] --ref=<asm_name>\n\noptions:\n  -h --help    \
+    \               Show this screen.\n  --directory=<dir>           Set Genome Directory\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/vcfkit:0.2.9--pyh5bfb8f1_0
+- !Command
+  command:
+  - vk
+  - calc
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: genotypes
+    description: ''
+  - !Positional
+    optional: false
+    position: 0
+    name: sample_hom_gt
+    description: ''
+  - !Positional
+    optional: false
+    position: 0
+    name: spectrum
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --frequency
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this screen.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show version.
+    args: !EmptyFlagArg {}
+  help_text: "usage:\n  vk calc sample_hom_gt <vcf>\n  vk calc genotypes [--frequency]\
+    \ <vcf>\n  vk calc spectrum <vcf>\n\nExample\n\noptions:\n  -h --help        \
+    \           Show this screen.\n  --version                   Show version.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/vcfkit:0.2.9--pyh5bfb8f1_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ''
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage:\n  vk <command> [<args>...] \n  vk setup\n  vk -h | --help\n  vk\
+  \ --version\n\ncommands:\n  calc\n  call\n  filter\n  geno\n  genome\n  hmm\n  phylo\n\
+  \  primer\n  rename\n  tajima\n  vcf2tsv\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/vcfkit:0.2.9--pyh5bfb8f1_0

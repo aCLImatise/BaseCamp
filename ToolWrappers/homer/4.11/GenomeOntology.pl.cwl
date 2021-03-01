@@ -3,12 +3,12 @@ id: GenomeOntology.pl.cwl
 inputs:
 - id: in_g_size
   doc: <#> (Genome size used for significance calculations)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -gsize
 - id: in_bg
   doc: "(Performs additional significance calculations\nrelative to Control Peaks/Tags)\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: -bg
 - id: in_peak_file_slash_tag_directory
@@ -28,7 +28,7 @@ inputs:
     position: 2
 - id: in_additional
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 3
 outputs:
@@ -40,6 +40,7 @@ outputs:
   type: Directory
   outputBinding:
     glob: $(inputs.in_output_directory)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - GenomeOntology.pl

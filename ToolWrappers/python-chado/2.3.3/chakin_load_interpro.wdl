@@ -16,6 +16,9 @@ task ChakinLoadInterpro {
       ~{if defined(query_type) then ("--query_type " +  '"' + query_type + '"') else ""} \
       ~{if (match_on_name) then "--match_on_name" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     parse_go: "Load GO annotation to the database"
     re_name: "Regular expression to extract the feature name from the\\ninput file (first capturing group will be used)."

@@ -20,6 +20,9 @@ task AlignmentToolsRmpartialseq {
       ~{if defined(knn) then ("--knn " +  '"' + knn + '"') else ""} \
       ~{if defined(alignment_out) then ("--alignment-out " +  '"' + alignment_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignment_mode: "Alignment mode: overlap, glocal, local or global.\\ndefault = overlap"
     min_gaps: "The minimum number of continuous gaps in the\\nbeginning or end of the query alignment. If above\\nthe cutoff, the query is marked as partial. default\\n= 50"

@@ -1,0 +1,63 @@
+!Command
+command:
+- sqStoreCreate
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: load raw reads into new seqStore
+  args: !SimpleFlagArg
+    name: seqStore
+- !Flag
+  optional: true
+  synonyms:
+  - -minlength
+  description: discard reads shorter than L
+  args: !SimpleFlagArg
+    name: L
+- !Flag
+  optional: true
+  synonyms:
+  - -genomesize
+  description: expected genome size, for keeping only the longest reads
+  args: !SimpleFlagArg
+    name: G
+- !Flag
+  optional: true
+  synonyms:
+  - -coverage
+  description: desired coverage in long reads
+  args: !SimpleFlagArg
+    name: C
+- !Flag
+  optional: true
+  synonyms:
+  - -pacbio-raw
+  description: ''
+  args: !RepeatFlagArg
+    name: file1
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: sqStoreCreate -o seqStore [-minlength L] [-genomesize G -coverage\
+  \ C] [-pacbio-raw NAME file1 ...]\n  -o seqStore            load raw reads into\
+  \ new seqStore\n  \n  -minlength L           discard reads shorter than L\n  \n\
+  \  -genomesize G          expected genome size, for keeping only the longest reads\n\
+  \  -coverage C            desired coverage in long reads\n  \n  Reads are supplied\
+  \ as a collection of libraries.  Each library should\n  contain all the reads from\
+  \ one sequencing experiment (e.g., sample collection,\n  sample preperation, sequencing\
+  \ run).\n  \n  The library is specified as a sequencing technology, a read processing\
+  \ status,\n  and a unique library name.\n    -technology-status LIBRARY_NAME seqFile1\
+  \ [seqFile2] [...] \n  \n  Valid combinations of technology and status are:\n  \
+  \  -pacbio-raw\n    -pacbio-corrected\n    -pacbio-trimmed\n    -pacbio-raw\n  \
+  \  -nanopore-raw\n    -nanopore-corrected\n    -nanopore-trimmed\n\nUnknown option\
+  \ '--help'.\nERROR: no seqStore (-o) supplied.\nERROR: no input libraries (-pacbio-raw,\
+  \ etc) supplied.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/canu:2.1.1--he1b5a44_1

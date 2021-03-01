@@ -18,6 +18,9 @@ task OstackbarR {
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
       ~{if defined(legend_pos) then ("--legend_pos " +  '"' + legend_pos + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_prefix: "Output file prefix for visualization files [default \\\"unknown\\\"]"
     colors_file: "Colors file"

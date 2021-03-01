@@ -5,7 +5,7 @@ task SynapseSubmit {
     File? evaluation_id
     File? evaluation_name
     String? entity_id
-    File? file
+    File? file_submitted_challenge
     Directory? parentid
     String? name
     String? team_name
@@ -19,7 +19,7 @@ task SynapseSubmit {
       ~{if defined(evaluation_id) then ("--evaluationID " +  '"' + evaluation_id + '"') else ""} \
       ~{if defined(evaluation_name) then ("--evaluationName " +  '"' + evaluation_name + '"') else ""} \
       ~{if defined(entity_id) then ("--entityId " +  '"' + entity_id + '"') else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(file_submitted_challenge) then ("--file " +  '"' + file_submitted_challenge + '"') else ""} \
       ~{if defined(parentid) then ("--parentId " +  '"' + parentid + '"') else ""} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if defined(team_name) then ("--teamName " +  '"' + team_name + '"') else ""} \
@@ -28,11 +28,14 @@ task SynapseSubmit {
       ~{if (executed) then "--executed" else ""} \
       ~{if defined(limit_search) then ("--limitSearch " +  '"' + limit_search + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     evaluation_id: "Evaluation ID where the entity/file will be submitted"
     evaluation_name: "Evaluation Name where the entity/file will be\\nsubmitted"
     entity_id: "Synapse ID of the entity to be submitted"
-    file: "File to be submitted to the challenge"
+    file_submitted_challenge: "File to be submitted to the challenge"
     parentid: "Synapse ID of project or folder where to upload data"
     name: "Name of the submission"
     team_name: "Submit of behalf of a registered team"

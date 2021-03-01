@@ -5,123 +5,123 @@ command:
 - variants
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: reference.fasta
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --omit-insert-size
   description: "Do not consider insert size when calculating support for a variant.\
     \ Use this flag when\nprocessing amplicon data, where indels do not impact the\
     \ observed insert size"
-  synonyms:
-  - --omit-insert-size
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Alignment properties JSON file for sample. If not provided, properties\
-    \ will be estimated from the given BAM\nfile."
+  optional: true
   synonyms:
   - --alignment-properties
+  description: "Alignment properties JSON file for sample. If not provided, properties\
+    \ will be estimated from the given BAM\nfile."
   args: !SimpleFlagArg
     name: alignment-properties
-  optional: true
 - !Flag
-  description: BAM file with aligned reads from a single sample.
+  optional: true
   synonyms:
   - --bam
+  description: BAM file with aligned reads from a single sample.
   args: !SimpleFlagArg
     name: bam
-  optional: true
 - !Flag
-  description: VCF/BCF file to process (if omitted, read from STDIN).
+  optional: true
   synonyms:
   - --candidates
+  description: VCF/BCF file to process (if omitted, read from STDIN).
   args: !SimpleFlagArg
     name: candidates
-  optional: true
 - !Flag
-  description: "Maximum number of observations to use for calling. If locus is exceeding\
-    \ this number, downsampling is\nperformed. [default: 200]"
+  optional: true
   synonyms:
   - --max-depth
+  description: "Maximum number of observations to use for calling. If locus is exceeding\
+    \ this number, downsampling is\nperformed. [default: 200]"
   args: !SimpleFlagArg
     name: max-depth
-  optional: true
 - !Flag
-  description: BCF file that shall contain the results (if omitted, write to STDOUT).
+  optional: true
   synonyms:
   - --output
+  description: BCF file that shall contain the results (if omitted, write to STDOUT).
   args: !SimpleFlagArg
     name: output
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --strandedness
   description: "Strandedness of sequencing protocol in case of paired-end (opposite\
     \ strand as usual or same strand as with\nmate-pair sequencing.) [default: opposite]\
     \  [possible values: opposite, same]"
-  synonyms:
-  - --strandedness
   args: !SimpleFlagArg
     name: protocol-strandedness
-  optional: true
 - !Flag
-  description: "Number of bases to consider left and right of breakpoint when calculating\
-    \ read support. Currently\nimplemented maximum value is 64. [default: 64]"
+  optional: true
   synonyms:
   - --indel-window
+  description: "Number of bases to consider left and right of breakpoint when calculating\
+    \ read support. Currently\nimplemented maximum value is 64. [default: 64]"
   args: !SimpleFlagArg
     name: realignment-window
-  optional: true
 - !Flag
-  description: "Rate of spuriosly deleted bases by the sequencer (Illumina: 5.1e-6,\
-    \ see Schirmer et al. BMC Bioinformatics\n2016). [default: 5.1e-6]"
+  optional: true
   synonyms:
   - --spurious-del-rate
+  description: "Rate of spuriosly deleted bases by the sequencer (Illumina: 5.1e-6,\
+    \ see Schirmer et al. BMC Bioinformatics\n2016). [default: 5.1e-6]"
   args: !SimpleFlagArg
     name: spurious-del-rate
-  optional: true
 - !Flag
-  description: "Extension rate of spurious deletions by the sequencer (Illumina: 0.0,\
-    \ see Schirmer et al. BMC Bioinformatics\n2016) [default: 0.0]"
+  optional: true
   synonyms:
   - --spurious-delext-rate
+  description: "Extension rate of spurious deletions by the sequencer (Illumina: 0.0,\
+    \ see Schirmer et al. BMC Bioinformatics\n2016) [default: 0.0]"
   args: !SimpleFlagArg
     name: spurious-delext-rate
-  optional: true
 - !Flag
-  description: "Rate of spuriously inserted bases by the sequencer (Illumina: 2.8e-6,\
-    \ see Schirmer et al. BMC Bioinformatics\n2016). [default: 2.8e-6]"
+  optional: true
   synonyms:
   - --spurious-ins-rate
+  description: "Rate of spuriously inserted bases by the sequencer (Illumina: 2.8e-6,\
+    \ see Schirmer et al. BMC Bioinformatics\n2016). [default: 2.8e-6]"
   args: !SimpleFlagArg
     name: spurious-ins-rate
-  optional: true
 - !Flag
-  description: "Extension rate of spurious insertions by the sequencer (Illumina:\
-    \ 0.0, see Schirmer et al. BMC\nBioinformatics 2016) [default: 0.0]"
+  optional: true
   synonyms:
   - --spurious-insext-rate
+  description: "Extension rate of spurious insertions by the sequencer (Illumina:\
+    \ 0.0, see Schirmer et al. BMC\nBioinformatics 2016) [default: 0.0]"
   args: !SimpleFlagArg
     name: spurious-insext-rate
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Prints help information
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Prints help information
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Prints version information
+  optional: true
   synonyms:
   - -V
   - --version
+  description: Prints version information
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "varlociraptor-preprocess-variants 2.0.0\nPreprocess given variants by\
   \ obtaining internal observations (allele likelihoods, strand information, ...)for\
   \ each\nfragment. The obtained observations are printed to STDOUT in BCF format.\
@@ -162,3 +162,4 @@ help_text: "varlociraptor-preprocess-variants 2.0.0\nPreprocess given variants b
   \ faidx.\n"
 generated_using:
 - --help
+docker_image:

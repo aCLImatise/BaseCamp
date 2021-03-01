@@ -18,6 +18,9 @@ task Gtf2gffpl {
       ~{if (gff_three) then "--gff3" else ""} \
       ~{if (include_stop_in_cds) then "--includeStopInCDS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_exon: "print exon features (may include CDS and UTR parts)"
     print_utr: "print UTR features"

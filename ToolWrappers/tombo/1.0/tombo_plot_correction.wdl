@@ -22,6 +22,9 @@ task TomboPlotCorrection {
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_five_based_irs: "Directories containing fast5 files."
     region_type: "Region to plot within each read. Default: random"

@@ -34,6 +34,9 @@ task GetDifferentialPeaks {
       ~{if (tbp) then "-tbp" else ""} \
       ~{if (tbp_bg) then "-tbpBg" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fold_enrichment_background: "<#> (fold enrichment over background tag count, default: 4.0)"
     poisson_enrichment_pvalue: "<#> (poisson enrichment p-value over background tag count, default: 0.0001)"

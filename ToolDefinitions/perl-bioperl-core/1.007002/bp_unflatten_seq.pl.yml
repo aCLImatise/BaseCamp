@@ -3,11 +3,14 @@ command:
 - bp_unflatten_seq.pl
 positional:
 - !Positional
-  description: This is most easily illustrated with the default output format,
+  optional: false
   position: 0
   name: for.
-  optional: false
+  description: This is most easily illustrated with the default output format,
 - !Positional
+  optional: false
+  position: 1
+  name: asciitree
   description: "An unflattened genbank feature set may look like this (AB077698)\n\
     Seq: AB077698\ndatabank_entry                                   1..2701[+]\ngene\n\
     mRNA\nCDS hCHCR-G                                  80..1144[+]\nexon         \
@@ -18,10 +21,10 @@ positional:
     \       725..778[+]\nthree_prime_UTR                                1145..2659[+]\n\
     polyA_site                                     1606..1606[+]\npolyA_site     \
     \                                2660..2660[+]"
-  position: 1
-  name: asciitree
-  optional: false
 - !Positional
+  optional: false
+  position: 0
+  name: gene
   description: "mRNA CG3320-RA                                 \nCDS CG3320-PA   \
     \                             53126..54971[-]\nexon                          \
     \               52204..53323[-]\nexon                                        \
@@ -32,82 +35,79 @@ positional:
     \                  52204..53631[-]\nexon                                     \
     \    53688..53735[-]\nexon                                         53798..53918[-]\n\
     exon                                         54949..55287[-]"
-  position: 0
-  name: gene
-  optional: false
 - !Positional
-  description: COMMAND LINE ARGUMENTS
+  optional: false
   position: 0
   name: TypeMapper
-  optional: false
+  description: COMMAND LINE ARGUMENTS
 - !Positional
-  description: '- General discussion'
+  optional: false
   position: 0
   name: bioperl-l@bioperl.org
-  optional: false
+  description: '- General discussion'
 named:
 - !Flag
-  description: "|input FILE\ninput file (can also be specified as last argument)"
+  optional: true
   synonyms:
   - -i
+  description: "|input FILE\ninput file (can also be specified as last argument)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "input format (defaults to genbank)\nprobably doesn't make so much\
-    \ sense to use this for non-flat\nformats; ie other than embl/genbank"
+  optional: true
   synonyms:
   - -from
+  description: "input format (defaults to genbank)\nprobably doesn't make so much\
+    \ sense to use this for non-flat\nformats; ie other than embl/genbank"
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
-  description: "output format (defaults to asciitree)\nshould really be a format that\
-    \ is nested SeqFeature aware; I think\nthis is only asciitree, chadoxml and gff3"
+  optional: true
   synonyms:
   - -to
+  description: "output format (defaults to asciitree)\nshould really be a format that\
+    \ is nested SeqFeature aware; I think\nthis is only asciitree, chadoxml and gff3"
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
-  description: "with export to GFF3 format (pre-3 GFFs make no sense with\nunflattened\
-    \ sequences, as they have no set way of representing\nfeature graphs)"
+  optional: true
   synonyms:
   - -gff
+  description: "with export to GFF3 format (pre-3 GFFs make no sense with\nunflattened\
+    \ sequences, as they have no set way of representing\nfeature graphs)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "|output FILE\noutfile defaults to STDOUT"
+  optional: true
   synonyms:
   - -o
+  description: "|output FILE\noutfile defaults to STDOUT"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: show extra detail on features (asciitree mode only)
+  optional: true
   synonyms:
   - -detail
+  description: show extra detail on features (asciitree mode only)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
   description: "|ethresh INT\nsets the error threshold on unflattening\nby default\
     \ this script will throw a wobbly if it encounters weird\nstuff in the genbank\
     \ file - raise the error threshold to signal\nthese to be ignored (and reported\
     \ on STDERR)"
-  synonyms:
-  - -e
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "suppress use_magic in unflattening (see\nBio::SeqFeature::Tools::Unflattener"
+  optional: true
   synonyms:
   - -nomagic
+  description: "suppress use_magic in unflattening (see\nBio::SeqFeature::Tools::Unflattener"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: suppress type mapping (see Bio::SeqFeature::Tools::TypeMapper
+  optional: true
   synonyms:
   - -notypemap
+  description: suppress type mapping (see Bio::SeqFeature::Tools::TypeMapper
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -183,3 +183,4 @@ help_text: "NAME\n    bp_unflatten_seq - unflatten a genbank or genbank-style fe
   \nAUTHOR\n     Chris Mungall E<lt>cjm-at-bioperl.orgE<gt>\n\n"
 generated_using:
 - --help
+docker_image:

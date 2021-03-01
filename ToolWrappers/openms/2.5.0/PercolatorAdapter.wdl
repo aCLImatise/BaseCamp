@@ -36,6 +36,9 @@ task PercolatorAdapter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input file(s) (valid formats: 'mzid', 'idXML')"
     in_decoy: "Input decoy file(s) in case of separate searches (valid formats: 'mzid', 'idXML')"

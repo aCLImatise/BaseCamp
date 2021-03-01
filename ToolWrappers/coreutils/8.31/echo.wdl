@@ -14,6 +14,9 @@ task Echo {
       ~{if (enable_interpretation_backslash) then "-e" else ""} \
       ~{if (disable_interpretation_backslash) then "-E" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_trailing_newline: "do not output the trailing newline"
     enable_interpretation_backslash: "enable interpretation of backslash escapes"

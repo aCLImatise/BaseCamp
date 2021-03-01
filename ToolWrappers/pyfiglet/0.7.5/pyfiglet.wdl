@@ -24,6 +24,9 @@ task Pyfiglet {
       ~{if (list_fonts) then "--list_fonts" else ""} \
       ~{if (info_font) then "--info_font" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     font: "font to render with (default: standard)"
     direction: "set direction text will be formatted in (default:\\nauto)"

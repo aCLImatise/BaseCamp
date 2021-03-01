@@ -22,6 +22,9 @@ task Bactopiapreparepy {
       ~{if defined(assembly_pattern) then ("--assembly_pattern " +  '"' + assembly_pattern + '"') else ""} \
       ~{if (long_reads) then "--long_reads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q_ext: "Extension of the FASTQs. Default: .fastq.gz"
     assembly_ext: "Extension of the FASTA assemblies. Default: .fna.gz"

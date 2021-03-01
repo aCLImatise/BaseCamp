@@ -36,6 +36,9 @@ task RbtCollapsereadstofragmentsFastq {
       ~{if defined(std_dev) then ("--std-dev " +  '"' + std_dev + '"') else ""} \
       ~{if defined(umi_len) then ("--umi-len " +  '"' + umi_len + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _length_umi: "\\                    # length of UMI"
     max_hamming_distance_umis: "\\                     # max hamming distance of UMIs within a cluster"

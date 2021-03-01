@@ -16,6 +16,9 @@ task TerminusGroup {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(tolerance) then ("--tolerance " +  '"' + tolerance + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "directory to read input from"
     min_spread: "the minimum spread a transcript must exhibit to enable an attached edge to be a\\ncollapse candidate [default: 0.1]"

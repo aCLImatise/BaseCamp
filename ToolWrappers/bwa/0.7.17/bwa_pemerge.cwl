@@ -3,32 +3,32 @@ id: bwa_pemerge.cwl
 inputs:
 - id: in_output_merged_reads
   doc: output merged reads only
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
 - id: in_output_unmerged_reads
   doc: output unmerged reads only
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -u
 - id: in_number_of_threads
   doc: number of threads [1]
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_minimum_end_overlap
   doc: minimum end overlap [10]
-  type: long
+  type: long?
   inputBinding:
     prefix: -T
 - id: in_max_sum_errors
   doc: max sum of errors [70]
-  type: long
+  type: long?
   inputBinding:
     prefix: -Q
 - id: in_mu
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -mu
 - id: in_read_one_dot_fq
@@ -38,13 +38,14 @@ inputs:
     position: 0
 - id: in_read_two_dot_fq
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bwa

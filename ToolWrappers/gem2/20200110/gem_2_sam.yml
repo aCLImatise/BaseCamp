@@ -1,0 +1,166 @@
+!Command
+command:
+- gem-2-sam
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: gem-2-sam
+  description: -I|--index <file>                (mandatory with options -l or -s)
+- !Positional
+  optional: false
+  position: 1
+  name: with
+  description: "<field> := <name> '=' <value>\n<name>  := 'ID' | 'CN' | 'DS' | 'DT'\
+    \ | 'FO' | 'KS'\n'LB' | 'PG' | 'PI' | 'PL' | 'PU' | 'SM'\n(ID and SM must not\
+    \ be empty,\ndefault: ID='0',        PG='GEM',\nPL='ILLUMINA', SM='0')\n<value>\
+    \ := <string>     (see SAM specification; no check performed!)"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: (default=stdin)
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --expect-single-end-reads
+  description: (override automatic SE/PE detection)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --expect-paired-end-reads
+  description: (override automatic SE/PE detection)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quality-format
+  description: "'offset-33'|'offset-64'\n(mandatory when qualities are present)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: (default=stdout)
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --sequence-lengths
+  description: "(add sequence lengths to SAM header.\nRequires option -I)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --read-group
+  description: ', ...      (specify the RG of the reads)'
+  args: !SimpleFlagArg
+    name: field_1
+- !Flag
+  optional: true
+  synonyms:
+  - --comment
+  description: (add a comment to SAM header)
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --compact
+  description: "(lump all alignments on the same line,\ndefault=false)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --emit-correct-flags
+  description: "(emit correct flags for unpaired reads\nwhen any fragment has no primary\
+    \ alignment;\nbreaks compliance with PICARD tests)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --strandedness-from-consensus
+  description: ", ... ,<couple_s>\nwith <couple> := <donor_consensus>+<acceptor_consensus>\n\
+    (list of couples of donor/acceptor\nsplice site consensus sequences,\ndefault=GT+AG.\n\
+    Requires option -I)"
+  args: !SimpleFlagArg
+    name: couple_1
+- !Flag
+  optional: true
+  synonyms:
+  - --max-memory
+  description: (default=1000000000)
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --threads
+  description: (default=1)
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --show-license
+  description: (show license and exit)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: (print usage and exit)
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Welcome to GEM-2-sam build 1.922 (beta) - (2019-12-26 00:28:27 GMT)\n\
+  \ (c) 2008-2013 Paolo Ribeca <paolo.ribeca@gmail.com>\n (c) 2010-2013 Santiago Marco\
+  \ Sola <santiagomsola@gmail.com>\n (c) 2010-2013 Leonor Frias Moya <leonor.frias@gmail.com>\n\
+  For the terms of use, run the program with the option --show-license.\n************************************************************************\n\
+  * WARNING: this is a beta version, provided for testing purposes only; *\n*    \
+  \      check for updates at <http://gemlibrary.sourceforge.net>.   *\n************************************************************************\n\
+  Usage:\n gem-2-sam\n  -I|--index <file>                (mandatory with options -l\
+  \ or -s)\n  -i|--input <file>                (default=stdin)\n  --expect-single-end-reads\
+  \        (override automatic SE/PE detection)\n  --expect-paired-end-reads     \
+  \   (override automatic SE/PE detection)\n  -q|--quality-format 'offset-33'|'offset-64'\n\
+  \                                   (mandatory when qualities are present)\n  -o|--output\
+  \ <file>               (default=stdout)\n  -l|--sequence-lengths            (add\
+  \ sequence lengths to SAM header.\n                                    Requires\
+  \ option -I)\n  --read-group <field_1>, ...      (specify the RG of the reads)\n\
+  \     with  <field> := <name> '=' <value>\n           <name>  := 'ID' | 'CN' | 'DS'\
+  \ | 'DT' | 'FO' | 'KS'\n                      'LB' | 'PG' | 'PI' | 'PL' | 'PU' |\
+  \ 'SM'\n                                   (ID and SM must not be empty,\n     \
+  \                               default: ID='0',        PG='GEM',\n            \
+  \                                 PL='ILLUMINA', SM='0')\n           <value> :=\
+  \ <string>     (see SAM specification; no check performed!)\n  --comment <string>\
+  \               (add a comment to SAM header)\n  -c|--compact                  \
+  \   (lump all alignments on the same line,\n                                   \
+  \ default=false)\n  --emit-correct-flags             (emit correct flags for unpaired\
+  \ reads\n                                    when any fragment has no primary alignment;\n\
+  \                                    breaks compliance with PICARD tests)\n  -s|--strandedness-from-consensus\
+  \ <couple_1>, ... ,<couple_s>\n     with <couple> := <donor_consensus>+<acceptor_consensus>\n\
+  \                                   (list of couples of donor/acceptor\n       \
+  \                              splice site consensus sequences,\n              \
+  \                      default=GT+AG.\n                                    Requires\
+  \ option -I)\n  --max-memory <number>            (default=1000000000)\n  -T|--threads\
+  \ <number>            (default=1)\n  --show-license                   (show license\
+  \ and exit)\n  -h|--help                        (print usage and exit)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gem2:20200110--0

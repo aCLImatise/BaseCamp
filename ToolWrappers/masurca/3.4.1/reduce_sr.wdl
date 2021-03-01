@@ -14,6 +14,9 @@ task ReduceSr {
       ~{if defined(maximum_search_depth) then ("--maximum-search-depth " +  '"' + maximum_search_depth + '"') else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     maximum_search_depth: "Check at most this many possible containing SuperReads (100)"
     output_file_name: "Output file name (reduce.tmp)"

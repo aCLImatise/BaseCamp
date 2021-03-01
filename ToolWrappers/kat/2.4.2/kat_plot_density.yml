@@ -4,46 +4,128 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -t
-  args: !SimpleFlagArg
-    name: TITLE
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -p
-  args: !SimpleFlagArg
-    name: OUTPUT_TYPE
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -o
+  - --output
+  description: The path to the output file.
   args: !SimpleFlagArg
     name: OUTPUT
+- !Flag
   optional: true
+  synonyms:
+  - -p
+  - --output_type
+  description: "The plot file type to create (default is based on\ngiven output name)."
+  args: !SimpleFlagArg
+    name: OUTPUT_TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --title
+  description: Title for plot
+  args: !SimpleFlagArg
+    name: TITLE
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --x_label
+  description: Label for x-axis
+  args: !SimpleFlagArg
+    name: X_LABEL
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --y_label
+  description: Label for y-axis
+  args: !SimpleFlagArg
+    name: Y_LABEL
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --z_label
+  description: Label for z-axis
+  args: !SimpleFlagArg
+    name: Z_LABEL
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --x_max
+  description: Maximum value for x-axis
+  args: !SimpleFlagArg
+    name: X_MAX
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --y_max
+  description: Maximum value for y-axis
+  args: !SimpleFlagArg
+    name: Y_MAX
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --z_max
+  description: Maximum value for z-axis
+  args: !SimpleFlagArg
+    name: Z_MAX
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --width
+  description: Width of canvas
+  args: !SimpleFlagArg
+    name: WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --height
+  description: Height of canvas
+  args: !SimpleFlagArg
+    name: HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - --contours
+  - --not_rasterised
+  description: Don't rasterise graphics (slower).
+  args: !ChoiceFlagArg
+    choices: !!set
+      normal:
+      none:
+      smooth:
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  description: Resolution in dots per inch of output graphic.
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Print extra information
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-o OUTPUT, --output OUTPUT\nThe path\
-    \ to the output file.\n-p OUTPUT_TYPE, --output_type OUTPUT_TYPE\nThe plot file\
-    \ type to create (default is based on\ngiven output name).\n-t TITLE, --title\
-    \ TITLE\nTitle for plot\n-a X_LABEL, --x_label X_LABEL\nLabel for x-axis\n-b Y_LABEL,\
-    \ --y_label Y_LABEL\nLabel for y-axis\n-c Z_LABEL, --z_label Z_LABEL\nLabel for\
-    \ z-axis\n-x X_MAX, --x_max X_MAX\nMaximum value for x-axis\n-y Y_MAX, --y_max\
-    \ Y_MAX\nMaximum value for y-axis\n-z Z_MAX, --z_max Z_MAX\nMaximum value for\
-    \ z-axis\n-w WIDTH, --width WIDTH\nWidth of canvas\n-l HEIGHT, --height HEIGHT\n\
-    Height of canvas\n--contours {none,normal,smooth}\n--not_rasterised      Don't\
-    \ rasterise graphics (slower).\n--dpi DPI             Resolution in dots per inch\
-    \ of output graphic.\n-v, --verbose         Print extra information\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: kat_plot_density [-h] [-o OUTPUT] [-p OUTPUT_TYPE] [-t TITLE]\n\
@@ -74,3 +156,4 @@ help_text: "usage: kat_plot_density [-h] [-o OUTPUT] [-p OUTPUT_TYPE] [-t TITLE]
   \ per inch of output graphic.\n  -v, --verbose         Print extra information\n"
 generated_using:
 - --help
+docker_image:

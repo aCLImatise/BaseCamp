@@ -12,6 +12,9 @@ task OverlapStats {
       ~{if defined(var_1) then ("-O " +  '"' + var_1 + '"') else ""} \
       ~{if defined(g) then ("-G " +  '"' + g + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_0: ""
     var_1: ""

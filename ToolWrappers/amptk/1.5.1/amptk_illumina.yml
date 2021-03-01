@@ -1,0 +1,168 @@
+!Command
+command:
+- amptk
+- illumina
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: arguments
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --fastq
+  description: Input folder of FASTQ files (Required)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: 'Output folder name. Default: amptk-data'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mapping_file
+  description: QIIME-like mapping file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fwd_primer
+  description: 'Forward primer sequence. Default: fITS7'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rev_primer
+  description: 'Reverse primer sequence Default: ITS4'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --trim_len
+  description: 'Length to trim/pad reads. Default: 300'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pad
+  description: 'Pad reads with Ns if shorter than --trim_len. Default: off [on,off]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_len
+  description: 'Minimum length read to keep. Default: 100'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --full_length
+  description: Keep only full length sequences.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reads
+  description: 'Paired-end or forward reads. Default: paired [paired, forward]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --read_length
+  description: 'Illumina Read length (250 if 2 x 250 bp run). Default: auto detect'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rescue_forward
+  description: 'Rescue Forward Reads if PE do not merge, e.g. long amplicons. Default:
+    on [on,off]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --require_primer
+  description: 'Require the Forward primer to be present. Default: on [on,off]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --primer_mismatch
+  description: 'Number of mismatches in primers to allow. Default: 2'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --barcode_mismatch
+  description: 'Number of mismatches in barcode to allow. Default: 1'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cpus
+  description: 'Number of CPUs to use. Default: all'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cleanup
+  description: Remove intermediate files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --merge_method
+  description: 'Software to use for PE merging. Default: usearch [usearch,vsearch]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --usearch
+  description: 'USEARCH executable. Default: usearch9'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage:       amptk illumina <arguments>\nversion:     1.5.1\n\nDescription:\
+  \ Script takes a folder of Illumina MiSeq data that is already de-multiplexed\n\
+  \             and processes it for clustering using AMPtk.  The default behavior\
+  \ is to:\n             1) merge the PE reads using USEARCH, 2) find and trim primers,\
+  \ 3) rename reads\n             according to sample name, 4) trim/pad reads to a\
+  \ set length.\n\nArguments:   -i, --fastq         Input folder of FASTQ files (Required)\n\
+  \             -o, --out           Output folder name. Default: amptk-data\n    \
+  \         -m, --mapping_file  QIIME-like mapping file\n             -f, --fwd_primer\
+  \    Forward primer sequence. Default: fITS7\n             -r, --rev_primer    Reverse\
+  \ primer sequence Default: ITS4\n             -l, --trim_len      Length to trim/pad\
+  \ reads. Default: 300\n             -p, --pad           Pad reads with Ns if shorter\
+  \ than --trim_len. Default: off [on,off]\n             --min_len           Minimum\
+  \ length read to keep. Default: 100\n             --full_length       Keep only\
+  \ full length sequences.\n             --reads             Paired-end or forward\
+  \ reads. Default: paired [paired, forward]\n             --read_length       Illumina\
+  \ Read length (250 if 2 x 250 bp run). Default: auto detect\n             --rescue_forward\
+  \    Rescue Forward Reads if PE do not merge, e.g. long amplicons. Default: on [on,off]\n\
+  \             --require_primer    Require the Forward primer to be present. Default:\
+  \ on [on,off]\n             --primer_mismatch   Number of mismatches in primers\
+  \ to allow. Default: 2\n             --barcode_mismatch   Number of mismatches in\
+  \ barcode to allow. Default: 1\n             --cpus              Number of CPUs\
+  \ to use. Default: all\n             --cleanup           Remove intermediate files.\n\
+  \             --merge_method      Software to use for PE merging. Default: usearch\
+  \ [usearch,vsearch]\n             -u, --usearch       USEARCH executable. Default:\
+  \ usearch9\n        \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/amptk:1.5.1--py_1

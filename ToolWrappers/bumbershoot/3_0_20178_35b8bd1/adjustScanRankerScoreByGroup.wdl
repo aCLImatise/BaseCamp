@@ -8,6 +8,9 @@ task AdjustScanRankerScoreByGroup {
     adjustScanRankerScoreByGroup \
       ~{group_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     group_file: ""
   }

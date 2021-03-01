@@ -40,6 +40,9 @@ task Srastat2 {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     xml: "output as XML, default is text"
     start: "starting spot id, default is 1"

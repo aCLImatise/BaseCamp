@@ -1,155 +1,155 @@
 class: CommandLineTool
 id: nasm.cwl
 inputs:
-- id: in_assemble_tasm_mode
+- id: in_assemble_scitech_compatible
   doc: assemble in SciTech TASM compatible mode
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
 - id: in_generate_debug_information
   doc: generate debug information in selected format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
 - id: in_e_preprocess_only
   doc: (or -e)  preprocess only (writes output to stdout by default)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -E
 - id: in_preprocess_assemble_only
   doc: don't preprocess (assemble only)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_generate_makefile_dependencies
   doc: generate Makefile dependencies on stdout
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -M
 - id: in_mg
   doc: d:o, missing files assumed generated
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -MG
 - id: in_mf
   doc: set Makefile dependency file
-  type: File
+  type: File?
   inputBinding:
     prefix: -MF
 - id: in_md
   doc: assemble and generate dependencies
-  type: File
+  type: File?
   inputBinding:
     prefix: -MD
 - id: in_mt
   doc: dependency target name
-  type: File
+  type: File?
   inputBinding:
     prefix: -MT
 - id: in_mq
   doc: dependency target name (quoted)
-  type: File
+  type: File?
   inputBinding:
     prefix: -MQ
 - id: in_mp
   doc: emit phony target
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -MP
 - id: in_file_redirect_messages
   doc: <file>    redirect error messages to file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -Z
 - id: in_redirect_error_messages
   doc: redirect error messages to stdout
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_select_debugging_format
   doc: select a debugging format
-  type: string
+  type: string?
   inputBinding:
     prefix: -F
 - id: in_write_output_outfile
   doc: write output to an outfile
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_select_output_format
   doc: select an output format
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_write_listing_listfile
   doc: write listing to a listfile
-  type: File
+  type: File?
   inputBinding:
     prefix: -l
 - id: in_path_adds_pathname
   doc: <path>    adds a pathname to the include file path
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -I
-- id: in_digit_optimize_branch
+- id: in_digit_branch_offsets
   doc: <digit>   optimize branch offsets
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -O
 - id: in_o_zero
   doc: ': No optimization'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -O0
 - id: in_o_one
   doc: ': Minimal optimization'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -O1
 - id: in_ox
   doc: ': Multipass optimization (default)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -Ox
 - id: in_file_preincludes_file
   doc: <file>    pre-includes a file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -P
 - id: in_macro_predefines_macro
   doc: <macro>[=<value>] pre-defines a macro
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -D
 - id: in_macro_undefines_macro
   doc: <macro>   undefines a macro
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -U
 - id: in_format_specifies_gnu
   doc: <format>  specifies error reporting format (gnu or vc)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -X
-- id: in_foo_enables_wfoo
+- id: in_foo_enables_warning
   doc: +foo      enables warning foo (equiv. -Wfoo)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -w
 - id: in_w_foo
   doc: disable warning foo (equiv. -Wno-foo)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -w-foo
 - id: in_postfix
   doc: "this options prepend or append the given argument to all\nextern and global\
     \ variables"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --postfix
 - id: in_at
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -@
 - id: in_error
@@ -231,6 +231,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nasm

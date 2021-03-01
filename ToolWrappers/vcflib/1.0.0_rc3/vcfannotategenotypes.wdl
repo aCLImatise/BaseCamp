@@ -10,6 +10,9 @@ task Vcfannotategenotypes {
       ~{annotation_tag} \
       ~{vcf_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     annotation_tag: ""
     vcf_file: ""

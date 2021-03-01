@@ -20,6 +20,9 @@ task PlncproFormatFfsh {
       ~{if (overwrite_existing_file) then "-n" else ""} \
       ~{if (fin) then "-fin" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     do_prompt_overwriting: "Don't prompt before overwriting"
     interactive_prompt_overwrite: "Interactive, prompt before overwrite"

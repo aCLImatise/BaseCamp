@@ -3,29 +3,32 @@ command:
 - compseq
 positional:
 - !Positional
-  description: Thus if you want to count codon frequencies
+  optional: false
   position: 0
   name: count.
-  optional: false
+  description: Thus if you want to count codon frequencies
 named:
 - !Flag
-  description: integer    [2] This is the size of word (n-mer) to
+  optional: true
   synonyms:
   - -word
+  description: integer    [2] This is the size of word (n-mer) to
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -infile
   description: "infile     This is a file previously produced by\n'compseq' that can\
     \ be used to set the\nexpected frequencies of words in this\nanalysis.\nThe word\
     \ size in the current run must be the\nsame as the one in this results file.\n\
     Obviously, you should use a file produced\nfrom protein sequences if you are counting\n\
     protein sequence word frequencies, and you\nmust use one made from nucleotide\n\
     frequencies if you are analysing a\nnucleotide sequence."
-  synonyms:
-  - -infile
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -frame
   description: "integer    [0] The normal behaviour of 'compseq' is to\ncount the\
     \ frequencies of all words that\noccur by moving a window of length 'word' up\n\
     by one each time.\nThis option allows you to move the window up\nby the length\
@@ -34,11 +37,11 @@ named:
     value to a number other than zero.\nIf you set it to 1 it will only count the\n\
     words in frame 1, 2 will only count the\nwords in frame 2 and so on. (Integer\
     \ 0 or\nmore)"
-  synonyms:
-  - -frame
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -calcfreq
   description: "boolean    [N] If this is set true then the expected\nfrequencies\
     \ of words are calculated from the\nobserved frequency of single bases or\nresidues\
     \ in the sequences.\nIf you are reporting a word size of 1\n(single bases or residues)\
@@ -50,20 +53,17 @@ named:
     \ specified then the values from that\nfile will be used instead of this\ncalculation\
     \ of expected frequency from the\nsequence, even if 'calcfreq' is set to be\n\
     true."
-  synonyms:
-  - -calcfreq
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "boolean    Report command line options and exit. More\ninformation\
-    \ on associated and general\nqualifiers can be found with -help -verbose\n"
+  optional: true
   synonyms:
   - -help
+  description: "boolean    Report command line options and exit. More\ninformation\
+    \ on associated and general\nqualifiers can be found with -help -verbose\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Calculate the composition of unique words in sequences\nVersion: EMBOSS:6.6.0.0\n\
@@ -134,3 +134,4 @@ help_text: "Calculate the composition of unique words in sequences\nVersion: EMB
   \                             qualifiers can be found with -help -verbose\n\n"
 generated_using:
 - --help
+docker_image:

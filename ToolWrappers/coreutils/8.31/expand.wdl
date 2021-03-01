@@ -8,6 +8,9 @@ task Expand {
     expand \
       ~{if (initial) then "--initial" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     initial: "do not convert tabs after non blanks"
   }

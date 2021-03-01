@@ -10,6 +10,9 @@ task ProteinorthoFormatUsearchpl {
       ~{format_udot_pl} \
       ~{file_a}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format_udot_pl: ""
     file_a: ""

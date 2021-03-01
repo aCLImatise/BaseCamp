@@ -16,6 +16,9 @@ task GffParentTypes {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exclude: "Feature types to exclude from consideration"
     quiet: "Suppress all warning messages. Cannot use with '-v'."

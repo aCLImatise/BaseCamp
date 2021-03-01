@@ -14,6 +14,9 @@ task Dshvcfheader {
       ~{if (output_vcf_header_file) then "--output-vcf-header-file" else ""} \
       ~{if (validate) then "--validate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     input_vcf_file: "[class java.io.File]  input VCF file, default stdin [optional]"

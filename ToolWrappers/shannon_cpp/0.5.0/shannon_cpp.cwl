@@ -3,7 +3,7 @@ id: shannon_cpp.cwl
 inputs:
 - id: in_subcommand
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 - id: in_see
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - shannon_cpp

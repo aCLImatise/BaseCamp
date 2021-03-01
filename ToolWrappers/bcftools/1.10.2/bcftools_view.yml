@@ -4,221 +4,217 @@ command:
 - view
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: in.vcf.gz
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: ',   --drop-genotypes              drop individual genotype information
-    (after subsetting if -s option set)'
+  optional: true
   synonyms:
   - -G
+  - --drop-genotypes
+  description: drop individual genotype information (after subsetting if -s option
+    set)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: print the header only/suppress the header in VCF output
-  synonyms:
-  - -h/H
-  - --header-only/--no-header
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ',   --compression-level [0-9]     compression level: 0 uncompressed,
-    1 best speed, 9 best compression [-1]'
   synonyms:
   - -l
+  - --compression-level
+  description: '[0-9]     compression level: 0 uncompressed, 1 best speed, 9 best
+    compression [-1]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: do not append version and command line to the header
+  optional: true
   synonyms:
   - --no-version
+  description: do not append version and command line to the header
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ',   --output-file <file>          output file name [stdout]'
+  optional: true
   synonyms:
   - -o
-  args: !EmptyFlagArg {}
-  optional: true
+  - --output-file
+  description: output file name [stdout]
+  args: !SimpleFlagArg
+    name: file
 - !Flag
-  description: ',   --output-type <b|u|z|v>       b: compressed BCF, u: uncompressed
-    BCF, z: compressed VCF, v: uncompressed VCF [v]'
+  optional: true
   synonyms:
   - -O
-  args: !EmptyFlagArg {}
-  optional: true
+  - --output-type
+  description: 'b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed
+    VCF [v]'
+  args: !SimpleFlagArg
+    name: b|u|z|v
 - !Flag
-  description: restrict to comma-separated list of regions
+  optional: true
   synonyms:
   - -r
   - --regions
+  description: restrict to comma-separated list of regions
   args: !SimpleFlagArg
     name: region
-  optional: true
 - !Flag
-  description: restrict to regions listed in a file
+  optional: true
   synonyms:
   - -R
   - --regions-file
+  description: restrict to regions listed in a file
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: '[^]<region>           similar to -r but streams rather than index-jumps.
-    Exclude regions with "^" prefix'
+  optional: true
   synonyms:
   - -t
   - --targets
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '[^]<file>        similar to -R but streams rather than index-jumps.
+  description: '[^]<region>           similar to -r but streams rather than index-jumps.
     Exclude regions with "^" prefix'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -T
   - --targets-file
+  description: '[^]<file>        similar to -R but streams rather than index-jumps.
+    Exclude regions with "^" prefix'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: use multithreading with <int> worker threads [0]
+  optional: true
   synonyms:
   - --threads
+  description: use multithreading with <int> worker threads [0]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: trim ALT alleles not seen in the genotype fields (or their subset with
-    -s/-S)
+  optional: true
   synonyms:
   - -a
   - --trim-alt-alleles
+  description: trim ALT alleles not seen in the genotype fields (or their subset with
+    -s/-S)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: do not (re)calculate INFO fields for the subset (currently INFO/AC
-    and INFO/AN)
+  optional: true
   synonyms:
   - -I
   - --no-update
+  description: do not (re)calculate INFO fields for the subset (currently INFO/AC
+    and INFO/AN)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[^]<list>       comma separated list of samples to include (or exclude
-    with "^" prefix)'
+  optional: true
   synonyms:
   - -s
   - --samples
+  description: '[^]<list>       comma separated list of samples to include (or exclude
+    with "^" prefix)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[^]<file>  file of samples to include (or exclude with "^" prefix)'
+  optional: true
   synonyms:
   - -S
   - --samples-file
+  description: '[^]<file>  file of samples to include (or exclude with "^" prefix)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: only warn about unknown subset samples
+  optional: true
   synonyms:
   - --force-samples
+  description: only warn about unknown subset samples
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[:<type>]      minimum/maximum count for non-reference (nref), 1st\
-    \ alternate (alt1), least frequent\n(minor), most frequent (major) or sum of all\
-    \ but most frequent (nonmajor) alleles [nref]"
+  optional: true
   synonyms:
-  - -c/C
-  - --min-ac/--max-ac
-  args: !SimpleFlagArg
-    name: int
-  optional: true
+  - -c
+  description: "/C, --min-ac/--max-ac <int>[:<type>]      minimum/maximum count for\
+    \ non-reference (nref), 1st alternate (alt1), least frequent\n(minor), most frequent\
+    \ (major) or sum of all but most frequent (nonmajor) alleles [nref]"
+  args: !EmptyFlagArg {}
 - !Flag
-  description: ',   --apply-filters <list>                require at least one of
-    the listed FILTER strings (e.g. "PASS,.")'
+  optional: true
   synonyms:
   - -f
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ',   --genotype [^]<hom|het|miss>          require one or more hom/het/missing
-    genotype or, if prefixed with "^", exclude sites with hom/het/missing genotypes'
-  synonyms:
-  - -g
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: select/exclude sites for which the expression is true (see man page
-    for details)
-  synonyms:
-  - -i/e
-  - --include/--exclude
-  args: !SimpleFlagArg
-    name: expr
-  optional: true
-- !Flag
-  description: select known/novel sites only (ID is not/is '.')
-  synonyms:
-  - -k/n
-  - --known/--novel
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: minimum/maximum number of alleles listed in REF and ALT (e.g. -m2 -M2
-    for biallelic sites)
-  synonyms:
-  - -m/M
-  - --min-alleles/--max-alleles
-  args: !SimpleFlagArg
-    name: int
-  optional: true
-- !Flag
-  description: select/exclude sites where all samples are phased
-  synonyms:
-  - -p/P
-  - --phased/--exclude-phased
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "[:<type>]    minimum/maximum frequency for non-reference (nref), 1st\
-    \ alternate (alt1), least frequent\n(minor), most frequent (major) or sum of all\
-    \ but most frequent (nonmajor) alleles [nref]"
-  synonyms:
-  - -q/Q
-  - --min-af/--max-af
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: select/exclude sites without a called genotype
-  synonyms:
-  - -u/U
-  - --uncalled/--exclude-uncalled
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'select/exclude comma-separated list of variant types: snps,indels,mnps,ref,bnd,other
-    [null]'
-  synonyms:
-  - -v/V
-  - --types/--exclude-types
+  - --apply-filters
+  description: require at least one of the listed FILTER strings (e.g. "PASS,.")
   args: !SimpleFlagArg
     name: list
-  optional: true
 - !Flag
-  description: select/exclude sites where the non-reference alleles are exclusive
-    (private) to the subset samples
-  synonyms:
-  - -x/X
-  - --private/--exclude-private
-  args: !EmptyFlagArg {}
   optional: true
+  synonyms:
+  - -g
+  - --genotype
+  description: '[^]<hom|het|miss>          require one or more hom/het/missing genotype
+    or, if prefixed with "^", exclude sites with hom/het/missing genotypes'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: /e, --include/--exclude <expr>            select/exclude sites for
+    which the expression is true (see man page for details)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: /n, --known/--novel                       select known/novel sites
+    only (ID is not/is '.')
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: /M, --min-alleles/--max-alleles <int>     minimum/maximum number of
+    alleles listed in REF and ALT (e.g. -m2 -M2 for biallelic sites)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: /P, --phased/--exclude-phased             select/exclude sites where
+    all samples are phased
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: "/Q, --min-af/--max-af <float>[:<type>]    minimum/maximum frequency\
+    \ for non-reference (nref), 1st alternate (alt1), least frequent\n(minor), most\
+    \ frequent (major) or sum of all but most frequent (nonmajor) alleles [nref]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: /U, --uncalled/--exclude-uncalled         select/exclude sites without
+    a called genotype
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: '/V, --types/--exclude-types <list>        select/exclude comma-separated
+    list of variant types: snps,indels,mnps,ref,bnd,other [null]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: /X, --private/--exclude-private           select/exclude sites where
+    the non-reference alleles are exclusive (private) to the subset samples
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: /H, --header-only/--no-header     print the header only/suppress the
+    header in VCF output
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "view: unrecognized option '--help'\n\nAbout:   VCF/BCF conversion, view,\
@@ -266,3 +262,4 @@ help_text: "view: unrecognized option '--help'\n\nAbout:   VCF/BCF conversion, v
   \ the non-reference alleles are exclusive (private) to the subset samples\n\n"
 generated_using:
 - --help
+docker_image:

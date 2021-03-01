@@ -8,6 +8,9 @@ task DiscovarDeNovo {
     DiscovarDeNovo \
       ~{arg_one}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_one: ""
   }

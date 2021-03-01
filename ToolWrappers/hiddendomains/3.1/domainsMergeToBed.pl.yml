@@ -3,60 +3,60 @@ command:
 - domainsMergeToBed.pl
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: domainFile.txt
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "BIN_WIDTH\nThe width of the bin.  Default is 1000bp."
+  optional: true
   synonyms:
   - -b
+  description: "BIN_WIDTH\nThe width of the bin.  Default is 1000bp."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
   description: "MIN_POSTERIOR\nToss out parts of domains that have posterior values\
     \ that are less\nthan MIN_POSTERIOR. You can set this to any value you want, but\
     \ for\nreference, domainsToBed bins according the following scale:\n>= 0.9\n0.9\
     \ > posterior >= 0.8\n0.8 > posterior >= 0.7\n0.7 > posterior >= min posterior\
     \ for significance\nThe default value is 0; everything is merged by default."
-  synonyms:
-  - -p
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -g
   description: "ChromInfo.txt\nIf you get an out of bounds error when uploading a\
     \ bed file to the UCSC\ngenome browser, you can use this option to trim the bounds\
     \ to the size of\nthe chromosomes.\nChromInfo.txt should be a tab delimited file\
     \ with the chromosome names\nin the first column and their sizes in the second\
     \ column.  Here is an\nexample ChromInfo.txt file for a genome with 3 chromosomes:\n\
     chr1    197195432\nchr2    181748087\nchr3    159599783"
-  synonyms:
-  - -g
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Create a trackline.
+  optional: true
   synonyms:
   - -t
+  description: Create a trackline.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "TRACK_NAME\nThe name you want to give your track. The default is to\
-    \ use the name of\nthe domainFile (without the .txt suffix)\n"
+  optional: true
   synonyms:
   - -n
+  description: "TRACK_NAME\nThe name you want to give your track. The default is to\
+    \ use the name of\nthe domainFile (without the .txt suffix)\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help information.
+  optional: true
   synonyms:
   - -h
+  description: Print this help information.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nUsage: domainsMergeToBed.pl [options] domainFile.txt > domainFile.bed\n\
@@ -80,3 +80,4 @@ help_text: "\nUsage: domainsMergeToBed.pl [options] domainFile.txt > domainFile.
   \ the domainFile (without the .txt suffix)\n\n"
 generated_using:
 - -h
+docker_image:

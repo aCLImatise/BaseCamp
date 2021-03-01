@@ -4,6 +4,9 @@ task Contamination {
   command <<<
     contamination
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

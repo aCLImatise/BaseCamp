@@ -3,213 +3,213 @@ command:
 - snp_diversity.py
 positional:
 - !Positional
-  description: "path to output from `merge_midas.py snps` for one species\ndirectory\
-    \ should be named according to a species_id and contains files 'snps_*.txt')"
+  optional: false
   position: 0
   name: PATH
-  optional: false
+  description: "path to output from `merge_midas.py snps` for one species\ndirectory\
+    \ should be named according to a species_id and contains files 'snps_*.txt')"
 named:
 - !Flag
-  description: path to output file (/dev/stdout)
+  optional: true
   synonyms:
   - --out
+  description: path to output file (/dev/stdout)
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: compute diversity for individual genes or genome-wide (genome-wide)
+  optional: true
   synonyms:
   - --genomic_type
+  description: compute diversity for individual genes or genome-wide (genome-wide)
   args: !ChoiceFlagArg
     choices: !!set
       per-gene:
       genome-wide:
-  optional: true
 - !Flag
-  description: compute diversity for individual samples or for pooled reads across
-    samples (per-sample)
+  optional: true
   synonyms:
   - --sample_type
+  description: compute diversity for individual samples or for pooled reads across
+    samples (per-sample)
   args: !ChoiceFlagArg
     choices: !!set
-      per-sample:
       pooled-samples:
-  optional: true
+      per-sample:
 - !Flag
-  description: weight data from samples by sequencing depth when --sample_type=pooled-samples
+  optional: true
   synonyms:
   - --weight_by_depth
+  description: weight data from samples by sequencing depth when --sample_type=pooled-samples
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: randomly select N reads from each sample for each genomic site
+  optional: true
   synonyms:
   - --rand_reads
+  description: randomly select N reads from each sample for each genomic site
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: reads drawn with replacement
+  optional: true
   synonyms:
   - --replace_reads
+  description: reads drawn with replacement
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: randomly select N samples from each genomic site
+  optional: true
   synonyms:
   - --rand_samples
+  description: randomly select N samples from each genomic site
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: randomly select X proportion of high-quality genomic sites
+  optional: true
   synonyms:
   - --rand_sites
+  description: randomly select X proportion of high-quality genomic sites
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: minor allele frequency cutoff for determining if a site is a SNP (0.01)
+  optional: true
   synonyms:
   - --snp_maf
+  description: minor allele frequency cutoff for determining if a site is a SNP (0.01)
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: call consensus alleles prior to calling SNPs
+  optional: true
   synonyms:
   - --consensus
+  description: call consensus alleles prior to calling SNPs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: minimum average read depth per sample (0.0)
+  optional: true
   synonyms:
   - --sample_depth
+  description: minimum average read depth per sample (0.0)
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: fraction of reference sites covered by at least 1 read (0.0)
+  optional: true
   synonyms:
   - --sample_cov
+  description: fraction of reference sites covered by at least 1 read (0.0)
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "maximum number of samples to process.\nuseful for quick tests (use\
-    \ all)"
+  optional: true
   synonyms:
   - --max_samples
+  description: "maximum number of samples to process.\nuseful for quick tests (use\
+    \ all)"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "comma-separated list of samples to use for computing diversity metrics.\n\
-    samples will still be subject to other filters"
+  optional: true
   synonyms:
   - --keep_samples
+  description: "comma-separated list of samples to use for computing diversity metrics.\n\
+    samples will still be subject to other filters"
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: "comma-separated list of samples to exclude from computing diversity\
-    \ metrics.\nsamples will still be subject to other filters"
+  optional: true
   synonyms:
   - --exclude_samples
+  description: "comma-separated list of samples to exclude from computing diversity\
+    \ metrics.\nsamples will still be subject to other filters"
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: "path to file containing newline-delimited list of genomic sites to\
-    \ include.\nother filters will still apply"
+  optional: true
   synonyms:
   - --site_list
+  description: "path to file containing newline-delimited list of genomic sites to\
+    \ include.\nother filters will still apply"
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: minimum number of mapped reads per site (2)
+  optional: true
   synonyms:
   - --site_depth
+  description: minimum number of mapped reads per site (2)
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --site_prev
   description: "site has at least <site_depth> coverage in at least <site_prev> proportion\
     \ of samples (0.0)\na value of 1.0 will select sites that have sufficent coverage\
     \ in all samples.\na value of 0.0 will select all sites, including those with\
     \ low coverage in many samples\nNAs recorded for included sites with less than\
     \ <site_depth> in a sample"
-  synonyms:
-  - --site_prev
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --site_maf
   description: "minimum average-minor-allele-frequency of site across samples (0.0)\n\
     setting this above zero (e.g. 0.01, 0.02, 0.05) will only retain variable sites\n\
     by default invariant sites are also retained."
-  synonyms:
-  - --site_maf
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "maximum ratio of site-depth to mean-genome-depth (None)\na value of\
-    \ 10 will filter genomic sites with 10x greater coverage than the genomic background"
+  optional: true
   synonyms:
   - --site_ratio
+  description: "maximum ratio of site-depth to mean-genome-depth (None)\na value of\
+    \ 10 will filter genomic sites with 10x greater coverage than the genomic background"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: minimum fraction of reads supporting consensus allele (0.50)
+  optional: true
   synonyms:
   - --allele_support
+  description: minimum fraction of reads supporting consensus allele (0.50)
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "use genomic sites that intersect: 'CDS': coding genes, 'RNA': rRNA\
-    \ and tRNA genes, 'IGS': intergenic regions"
+  optional: true
   synonyms:
   - --locus_type
+  description: "use genomic sites that intersect: 'CDS': coding genes, 'RNA': rRNA\
+    \ and tRNA genes, 'IGS': intergenic regions"
   args: !ChoiceFlagArg
     choices: !!set
       CDS:
       RNA:
       IGR:
-  optional: true
 - !Flag
-  description: "if locus_type == 'CDS', use genomic sites with specified degeneracy:\
-    \ 4D indicates synonymous and 1D non-synonymous sites"
+  optional: true
   synonyms:
   - --site_type
+  description: "if locus_type == 'CDS', use genomic sites with specified degeneracy:\
+    \ 4D indicates synonymous and 1D non-synonymous sites"
   args: !ChoiceFlagArg
     choices: !!set
       4D:
       1D:
-      2D:
       3D:
-  optional: true
+      2D:
 - !Flag
-  description: "maximum number of sites to include in output (use all)\nuseful for\
-    \ quick tests"
+  optional: true
   synonyms:
   - --max_sites
+  description: "maximum number of sites to include in output (use all)\nuseful for\
+    \ quick tests"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Description:\nQuantify the genomic diversity of a bacterial population\n\
@@ -278,3 +278,4 @@ help_text: "Description:\nQuantify the genomic diversity of a bacterial populati
   \ /path/to/snps --max_sites 10000  --out /path/to/output\n"
 generated_using:
 - --help
+docker_image:

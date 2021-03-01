@@ -3,135 +3,135 @@ command:
 - run_microbe_census.py
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: SEQFILES
   description: "path to input metagenome(s); for paired-end\nmetagenomes use commas\
     \ to specify each file (ex:\nread_1.fq.gz,read_2.fq.gz); can be FASTQ/FASTA; can\
     \ be\ngzip (.gz) or bzip (.bz2) compressed"
-  position: 0
-  name: SEQFILES
-  optional: false
 - !Positional
-  description: path to output file containing results
+  optional: false
   position: 1
   name: OUTFILE
-  optional: false
+  description: path to output file containing results
 named:
 - !Flag
-  description: print program's progress to stdout (default = False)
+  optional: true
   synonyms:
   - -v
+  description: print program's progress to stdout (default = False)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "path to external RAPsearch2 v2.15 binary; useful if\nprecompiled RAPsearch2\
-    \ v2.15 binary included with\nMicrobeCensus does not work on your system"
+  optional: true
   synonyms:
   - -r
+  description: "path to external RAPsearch2 v2.15 binary; useful if\nprecompiled RAPsearch2\
+    \ v2.15 binary included with\nMicrobeCensus does not work on your system"
   args: !SimpleFlagArg
     name: RAPSEARCH
-  optional: true
 - !Flag
-  description: "number of reads to sample from SEQFILES and use for\naverage genome\
-    \ size estimation. to use all reads set\nto 100000000. (default = 2000000)"
+  optional: true
   synonyms:
   - -n
+  description: "number of reads to sample from SEQFILES and use for\naverage genome\
+    \ size estimation. to use all reads set\nto 100000000. (default = 2000000)"
   args: !SimpleFlagArg
     name: NREADS
-  optional: true
 - !Flag
-  description: "number of threads to use for database search (default\n= 1)"
+  optional: true
   synonyms:
   - -t
+  description: "number of threads to use for database search (default\n= 1)"
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
   description: "quit after average genome size is obtained and do not\nestimate the\
     \ number of genome equivalents in SEQFILES.\nuseful in combination with -n for\
     \ quick tests (default\n= False)"
-  synonyms:
-  - -e
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "all reads trimmed to this length; reads shorter than\nthis discarded\
-    \ (default = median read length)"
+  optional: true
   synonyms:
   - -l
+  description: "all reads trimmed to this length; reads shorter than\nthis discarded\
+    \ (default = median read length)"
   args: !ChoiceFlagArg
     choices: !!set
+      '450':
+      '400':
+      '250':
+      '110':
+      '50':
+      '150':
+      '225':
+      '100':
+      '80':
+      '90':
+      '130':
       '500':
       '70':
-      '80':
-      '150':
-      '175':
-      '110':
-      '250':
-      '400':
-      '100':
-      '130':
       '140':
+      '175':
       '300':
-      '50':
-      '350':
-      '90':
-      '120':
       '60':
-      '450':
-      '225':
       '200':
-  optional: true
+      '120':
+      '350':
 - !Flag
-  description: "minimum base-level PHRED quality score (default = -5;\nno filtering)"
+  optional: true
   synonyms:
   - -q
+  description: "minimum base-level PHRED quality score (default = -5;\nno filtering)"
   args: !SimpleFlagArg
     name: MIN_QUALITY
-  optional: true
 - !Flag
-  description: "minimum read-level PHRED quality score (default = -5;\nno filtering)"
+  optional: true
   synonyms:
   - -m
+  description: "minimum read-level PHRED quality score (default = -5;\nno filtering)"
   args: !SimpleFlagArg
     name: MEAN_QUALITY
-  optional: true
 - !Flag
-  description: filter duplicate reads (default = False)
+  optional: true
   synonyms:
   - -d
+  description: filter duplicate reads (default = False)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "max percent of unknown bases per read (default = 100\npercent; no\
-    \ filtering)\n"
+  optional: true
   synonyms:
   - -u
+  description: "max percent of unknown bases per read (default = 100\npercent; no\
+    \ filtering)\n"
   args: !SimpleFlagArg
     name: MAX_UNKNOWN
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -V
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -V
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: run_microbe_census.py [-h] [-v] [-V] [-r RAPSEARCH] [-n NREADS]\n\
   \                             [-t THREADS] [-e]\n                             [-l\
   \ {50,60,70,80,90,100,110,120,130,140,150,175,200,225,250,300,350,400,450,500}]\n\
@@ -167,3 +167,4 @@ help_text: "usage: run_microbe_census.py [-h] [-v] [-V] [-r RAPSEARCH] [-n NREAD
   \ filtering)\n"
 generated_using:
 - --help
+docker_image:

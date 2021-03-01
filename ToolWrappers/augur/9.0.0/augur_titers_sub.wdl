@@ -18,6 +18,9 @@ task AugurTitersSub {
       ~{if (allow_empty_model) then "--allow-empty-model" else ""} \
       ~{if defined(json_file_save) then ("--output " +  '"' + json_file_save + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     titers: "file with titer measurements"
     alignment: "sequence to be used in the substitution model,\\nsupplied as fasta files"

@@ -4,7 +4,7 @@ inputs:
 - id: in_discard_gaps
   doc: "Discard gaps in the PBS.  Gaps in the input data are assumed\nto be represented\
     \ by rows consisting of a single \"-\" character."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --discard-gaps
 - id: in_pbs_train_dot
@@ -16,6 +16,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pbsEncode

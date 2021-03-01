@@ -8,6 +8,9 @@ task PancakeStatus {
     pancake status \
       ~{pan_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_file: "Name of PanCake Data Object File"
   }

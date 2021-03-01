@@ -12,6 +12,9 @@ task GcloudProjectsDelete {
       ~{optional} \
       ~{flags}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     project_id: ""
     optional: ""

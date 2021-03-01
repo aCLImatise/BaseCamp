@@ -1,0 +1,1067 @@
+&id001 !Command
+command:
+- refgenie
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --silent
+  description: Silence logging. Overrides verbosity.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: Set logging level (1-5 or logging module level name)
+  args: !SimpleFlagArg
+    name: V
+- !Flag
+  optional: true
+  synonyms:
+  - --logdev
+  description: Expand content of logging message format.
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - refgenie
+  - listr
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: GENOME
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --genome-config
+    description: "Path to local genome configuration file. Optional if\nREFGENIE environment\
+      \ variable is set."
+    args: !SimpleFlagArg
+      name: C
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: "[GENOME [GENOME ...]], --genome [GENOME [GENOME ...]]\nReference\
+      \ assembly ID, e.g. mm10.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refgenie listr [-h] [-c C] [-g [GENOME [GENOME ...]]]\n\nList\
+    \ available remote assets.\n\noptional arguments:\n  -h, --help            show\
+    \ this help message and exit\n  -c C, --genome-config C\n                    \
+    \    Path to local genome configuration file. Optional if\n                  \
+    \      REFGENIE environment variable is set.\n  -g [GENOME [GENOME ...]], --genome\
+    \ [GENOME [GENOME ...]]\n                        Reference assembly ID, e.g. mm10.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/refgenie:0.9.3--py_0
+- !Command
+  command:
+  - refgenie
+  - pull
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: asset-registry-paths
+    description: "One or more registry path strings that identify assets\n(e.g. hg38/fasta\
+      \ or hg38/fasta:tag)."
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --genome-config
+    description: "Path to local genome configuration file. Optional if\nREFGENIE environment\
+      \ variable is set."
+    args: !SimpleFlagArg
+      name: C
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --genome
+    description: Reference assembly ID, e.g. mm10.
+    args: !SimpleFlagArg
+      name: G
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-overwrite
+    description: Do not overwrite if asset exists.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --force-overwrite
+    description: Overwrite if asset exists.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-large
+    description: Do not pull archives over 5GB.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --pull-large
+    description: Pull any archive, regardless of its size.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --size-cutoff
+    description: "Maximum archive file size to download with no\nconfirmation required\
+      \ (in GB, default: 10)"
+    args: !SimpleFlagArg
+      name: S
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --batch
+    description: 'Use batch mode: pull large archives, do no overwrite'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refgenie pull [-h] [-c C] [-g G] [--no-overwrite | --force-overwrite]\n\
+    \                     [--no-large | --pull-large] [--size-cutoff S] [-b]\n   \
+    \                  asset-registry-paths [asset-registry-paths ...]\n\nDownload\
+    \ assets.\n\npositional arguments:\n  asset-registry-paths  One or more registry\
+    \ path strings that identify assets\n                        (e.g. hg38/fasta\
+    \ or hg38/fasta:tag).\n\noptional arguments:\n  -h, --help            show this\
+    \ help message and exit\n  -c C, --genome-config C\n                        Path\
+    \ to local genome configuration file. Optional if\n                        REFGENIE\
+    \ environment variable is set.\n  -g G, --genome G      Reference assembly ID,\
+    \ e.g. mm10.\n\nPrompt handling:\n  These flags configure the pull prompt responses.\n\
+    \n  --no-overwrite        Do not overwrite if asset exists.\n  --force-overwrite\
+    \     Overwrite if asset exists.\n  --no-large            Do not pull archives\
+    \ over 5GB.\n  --pull-large          Pull any archive, regardless of its size.\n\
+    \  --size-cutoff S       Maximum archive file size to download with no\n     \
+    \                   confirmation required (in GB, default: 10)\n  -b, --batch\
+    \           Use batch mode: pull large archives, do no overwrite\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refgenie:0.9.3--py_0
+- !Command
+  command:
+  - refgenie
+  - tag
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: asset-registry-paths
+    description: "One or more registry path strings that identify assets\n(e.g. hg38/fasta\
+      \ or hg38/fasta:tag)."
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --genome-config
+    description: "Path to local genome configuration file. Optional if\nREFGENIE environment\
+      \ variable is set."
+    args: !SimpleFlagArg
+      name: C
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --genome
+    description: Reference assembly ID, e.g. mm10.
+    args: !SimpleFlagArg
+      name: G
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --tag
+    description: Tag to assign to an asset.
+    args: !SimpleFlagArg
+      name: TAG
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --default
+    description: Set the selected asset tag as the default one.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refgenie tag [-h] [-c C] [-g G] (-t TAG | -d)\n             \
+    \       asset-registry-paths [asset-registry-paths ...]\n\nTag an asset.\n\npositional\
+    \ arguments:\n  asset-registry-paths  One or more registry path strings that identify\
+    \ assets\n                        (e.g. hg38/fasta or hg38/fasta:tag).\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  -c C,\
+    \ --genome-config C\n                        Path to local genome configuration\
+    \ file. Optional if\n                        REFGENIE environment variable is\
+    \ set.\n  -g G, --genome G      Reference assembly ID, e.g. mm10.\n  -t TAG, --tag\
+    \ TAG     Tag to assign to an asset.\n  -d, --default         Set the selected\
+    \ asset tag as the default one.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refgenie:0.9.3--py_0
+- !Command
+  command:
+  - refgenie
+  - id
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: asset-registry-paths
+    description: "One or more registry path strings that identify assets\n(e.g. hg38/fasta\
+      \ or hg38/fasta:tag)."
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --genome-config
+    description: "Path to local genome configuration file. Optional if\nREFGENIE environment\
+      \ variable is set."
+    args: !SimpleFlagArg
+      name: C
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --genome
+    description: Reference assembly ID, e.g. mm10.
+    args: !SimpleFlagArg
+      name: G
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refgenie id [-h] [-c C] [-g G]\n                   asset-registry-paths\
+    \ [asset-registry-paths ...]\n\nReturn the asset digest.\n\npositional arguments:\n\
+    \  asset-registry-paths  One or more registry path strings that identify assets\n\
+    \                        (e.g. hg38/fasta or hg38/fasta:tag).\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -c C, --genome-config\
+    \ C\n                        Path to local genome configuration file. Optional\
+    \ if\n                        REFGENIE environment variable is set.\n  -g G, --genome\
+    \ G      Reference assembly ID, e.g. mm10.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refgenie:0.9.3--py_0
+- !Command
+  command:
+  - refgenie
+  - init
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --genome-config
+    description: "Path to local genome configuration file. Optional if\nREFGENIE environment\
+      \ variable is set."
+    args: !SimpleFlagArg
+      name: C
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --genome-server
+    description: "URL(s) to use for the genome_servers attribute in\nconfig file.\
+      \ Default: http://refgenomes.databio.org."
+    args: !RepeatFlagArg
+      name: GENOME_SERVER
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --genome-folder
+    description: "Absolute path to parent folder refgenie-managed\nassets."
+    args: !SimpleFlagArg
+      name: GENOME_FOLDER
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --genome-archive-folder
+    description: "Absolute path to parent archive folder refgenie-\nmanaged assets;\
+      \ used by refgenieserver."
+    args: !SimpleFlagArg
+      name: GENOME_ARCHIVE_FOLDER
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --genome-archive-config
+    description: "Absolute path to desired archive config file; used by\nrefgenieserver."
+    args: !SimpleFlagArg
+      name: GENOME_ARCHIVE_CONFIG
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    - --remote-url-base
+    description: "URL to use as an alternative, remote archive location;\nused by\
+      \ refgenieserver."
+    args: !SimpleFlagArg
+      name: REMOTE_URL_BASE
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --settings-json
+    description: "Absolute path to a JSON file with the key value pairs\nto inialize\
+      \ the configuration file with. Overwritten\nby itemized specifications.\n"
+    args: !SimpleFlagArg
+      name: SETTINGS_JSON
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refgenie init [-h] -c C [-s GENOME_SERVER [GENOME_SERVER ...]]\n\
+    \                     [-f GENOME_FOLDER] [-a GENOME_ARCHIVE_FOLDER]\n        \
+    \             [-b GENOME_ARCHIVE_CONFIG] [-u REMOTE_URL_BASE]\n              \
+    \       [-j SETTINGS_JSON]\n\nInitialize a genome configuration.\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -c C, --genome-config\
+    \ C\n                        Path to local genome configuration file. Optional\
+    \ if\n                        REFGENIE environment variable is set.\n  -s GENOME_SERVER\
+    \ [GENOME_SERVER ...], --genome-server GENOME_SERVER [GENOME_SERVER ...]\n   \
+    \                     URL(s) to use for the genome_servers attribute in\n    \
+    \                    config file. Default: http://refgenomes.databio.org.\n  -f\
+    \ GENOME_FOLDER, --genome-folder GENOME_FOLDER\n                        Absolute\
+    \ path to parent folder refgenie-managed\n                        assets.\n  -a\
+    \ GENOME_ARCHIVE_FOLDER, --genome-archive-folder GENOME_ARCHIVE_FOLDER\n     \
+    \                   Absolute path to parent archive folder refgenie-\n       \
+    \                 managed assets; used by refgenieserver.\n  -b GENOME_ARCHIVE_CONFIG,\
+    \ --genome-archive-config GENOME_ARCHIVE_CONFIG\n                        Absolute\
+    \ path to desired archive config file; used by\n                        refgenieserver.\n\
+    \  -u REMOTE_URL_BASE, --remote-url-base REMOTE_URL_BASE\n                   \
+    \     URL to use as an alternative, remote archive location;\n               \
+    \         used by refgenieserver.\n  -j SETTINGS_JSON, --settings-json SETTINGS_JSON\n\
+    \                        Absolute path to a JSON file with the key value pairs\n\
+    \                        to inialize the configuration file with. Overwritten\n\
+    \                        by itemized specifications.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refgenie:0.9.3--py_0
+- !Command
+  command:
+  - refgenie
+  - list
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: GENOME
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --genome-config
+    description: "Path to local genome configuration file. Optional if\nREFGENIE environment\
+      \ variable is set."
+    args: !SimpleFlagArg
+      name: C
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: "[GENOME [GENOME ...]], --genome [GENOME [GENOME ...]]\nReference\
+      \ assembly ID, e.g. mm10.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refgenie list [-h] [-c C] [-g [GENOME [GENOME ...]]]\n\nList\
+    \ available local assets.\n\noptional arguments:\n  -h, --help            show\
+    \ this help message and exit\n  -c C, --genome-config C\n                    \
+    \    Path to local genome configuration file. Optional if\n                  \
+    \      REFGENIE environment variable is set.\n  -g [GENOME [GENOME ...]], --genome\
+    \ [GENOME [GENOME ...]]\n                        Reference assembly ID, e.g. mm10.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refgenie:0.9.3--py_0
+- &id003 !Command
+  command:
+  - refgenie
+  - add
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --genome-config
+    description: "Path to local genome configuration file. Optional if\nREFGENIE environment\
+      \ variable is set."
+    args: !SimpleFlagArg
+      name: C
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --genome
+    description: Reference assembly ID, e.g. mm10.
+    args: !SimpleFlagArg
+      name: G
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --force
+    description: Do not prompt before action, approve upfront.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --path
+    description: Relative local path to asset.
+    args: !SimpleFlagArg
+      name: P
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --seek-keys
+    description: "String representation of a JSON object with seek_keys,\ne.g. '{\"\
+      seek_key1\": \"file.txt\"}')\n"
+    args: !SimpleFlagArg
+      name: S
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - refgenie
+    - add
+    - asset-registry-paths
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: refgenie
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: add
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      description: ''
+      args: !SimpleFlagArg
+        name: S
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      description: ''
+      args: !SimpleFlagArg
+        name: P
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      description: ''
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -g
+      description: ''
+      args: !SimpleFlagArg
+        name: G
+    - !Flag
+      optional: true
+      synonyms:
+      - -c
+      description: ''
+      args: !SimpleFlagArg
+        name: C
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      description: ''
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: refgenie add [-h] [-c C] [-g G] [-f] -p P [-s S]\n        \
+      \            asset-registry-paths [asset-registry-paths ...]\nrefgenie add:\
+      \ error: the following arguments are required: -p/--path\n"
+    generated_using: []
+    docker_image: quay.io/biocontainers/refgenie:0.9.3--py_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refgenie add [-h] [-c C] [-g G] [-f] -p P [-s S]\n          \
+    \          asset-registry-paths [asset-registry-paths ...]\n\nAdd local asset\
+    \ to the config file.\n\npositional arguments:\n  asset-registry-paths  One or\
+    \ more registry path strings that identify assets\n                        (e.g.\
+    \ hg38/fasta or hg38/fasta:tag).\n\noptional arguments:\n  -h, --help        \
+    \    show this help message and exit\n  -c C, --genome-config C\n            \
+    \            Path to local genome configuration file. Optional if\n          \
+    \              REFGENIE environment variable is set.\n  -g G, --genome G     \
+    \ Reference assembly ID, e.g. mm10.\n  -f, --force           Do not prompt before\
+    \ action, approve upfront.\n  -p P, --path P        Relative local path to asset.\n\
+    \  -s S, --seek-keys S   String representation of a JSON object with seek_keys,\n\
+    \                        e.g. '{\"seek_key1\": \"file.txt\"}')\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refgenie:0.9.3--py_0
+- !Command
+  command:
+  - refgenie
+  - remove
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: asset-registry-paths
+    description: "One or more registry path strings that identify assets\n(e.g. hg38/fasta\
+      \ or hg38/fasta:tag)."
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --genome-config
+    description: "Path to local genome configuration file. Optional if\nREFGENIE environment\
+      \ variable is set."
+    args: !SimpleFlagArg
+      name: C
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --genome
+    description: Reference assembly ID, e.g. mm10.
+    args: !SimpleFlagArg
+      name: G
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --force
+    description: Do not prompt before action, approve upfront.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refgenie remove [-h] [-c C] [-g G] [-f]\n                   \
+    \    asset-registry-paths [asset-registry-paths ...]\n\nRemove a local asset.\n\
+    \npositional arguments:\n  asset-registry-paths  One or more registry path strings\
+    \ that identify assets\n                        (e.g. hg38/fasta or hg38/fasta:tag).\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -c C, --genome-config C\n                        Path to local genome configuration\
+    \ file. Optional if\n                        REFGENIE environment variable is\
+    \ set.\n  -g G, --genome G      Reference assembly ID, e.g. mm10.\n  -f, --force\
+    \           Do not prompt before action, approve upfront.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refgenie:0.9.3--py_0
+- !Command
+  command:
+  - refgenie
+  - seek
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: asset-registry-paths
+    description: "One or more registry path strings that identify assets\n(e.g. hg38/fasta\
+      \ or hg38/fasta:tag or\nhg38/fasta.fai:tag)."
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --genome-config
+    description: "Path to local genome configuration file. Optional if\nREFGENIE environment\
+      \ variable is set."
+    args: !SimpleFlagArg
+      name: C
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --genome
+    description: Reference assembly ID, e.g. mm10.
+    args: !SimpleFlagArg
+      name: G
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --check-exists
+    description: "Whether the returned asset path should be checked for\nexistence\
+      \ on disk.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refgenie seek [-h] [-c C] [-g G] [-e]\n                     asset-registry-paths\
+    \ [asset-registry-paths ...]\n\nGet the path to a local asset.\n\npositional arguments:\n\
+    \  asset-registry-paths  One or more registry path strings that identify assets\n\
+    \                        (e.g. hg38/fasta or hg38/fasta:tag or\n             \
+    \           hg38/fasta.fai:tag).\n\noptional arguments:\n  -h, --help        \
+    \    show this help message and exit\n  -c C, --genome-config C\n            \
+    \            Path to local genome configuration file. Optional if\n          \
+    \              REFGENIE environment variable is set.\n  -g G, --genome G     \
+    \ Reference assembly ID, e.g. mm10.\n  -e, --check-exists    Whether the returned\
+    \ asset path should be checked for\n                        existence on disk.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refgenie:0.9.3--py_0
+- !Command
+  command:
+  - refgenie
+  - unsubscribe
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --genome-config
+    description: "Path to local genome configuration file. Optional if\nREFGENIE environment\
+      \ variable is set."
+    args: !SimpleFlagArg
+      name: C
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --genome-server
+    description: "One or more URLs to remove from the genome_servers\nattribute in\
+      \ config file.\n"
+    args: !RepeatFlagArg
+      name: GENOME_SERVER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refgenie unsubscribe [-h] [-c C] -s GENOME_SERVER [GENOME_SERVER\
+    \ ...]\n\nRemove a refgenieserver URL from the config.\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -c C, --genome-config\
+    \ C\n                        Path to local genome configuration file. Optional\
+    \ if\n                        REFGENIE environment variable is set.\n  -s GENOME_SERVER\
+    \ [GENOME_SERVER ...], --genome-server GENOME_SERVER [GENOME_SERVER ...]\n   \
+    \                     One or more URLs to remove from the genome_servers\n   \
+    \                     attribute in config file.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refgenie:0.9.3--py_0
+- !Command
+  command:
+  - refgenie
+  - build
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: asset-registry-paths
+    description: "One or more registry path strings that identify assets\n(e.g. hg38/fasta\
+      \ or hg38/fasta:tag)."
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --genome-config
+    description: "Path to local genome configuration file. Optional if\nREFGENIE environment\
+      \ variable is set."
+    args: !SimpleFlagArg
+      name: C
+  - !Flag
+    optional: true
+    synonyms:
+    - -R
+    - --recover
+    description: Overwrite locks to recover from previous failed run
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -C
+    - --config
+    description: "Pipeline configuration file (YAML). Relative paths are\nwith respect\
+      \ to the pipeline script."
+    args: !SimpleFlagArg
+      name: CONFIG_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -N
+    - --new-start
+    description: Overwrite all results to start a fresh run
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --tag-description
+    description: "Add tag level description (e.g. built with version\n0.3.2)."
+    args: !SimpleFlagArg
+      name: TAG_DESCRIPTION
+  - !Flag
+    optional: true
+    synonyms:
+    - --genome-description
+    description: "Add genome level description (e.g. The mouse\nmitochondrial genome,\
+      \ released in Dec 2013)."
+    args: !SimpleFlagArg
+      name: GENOME_DESCRIPTION
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --docker
+    description: Run all commands in the refgenie docker container.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --assets
+    description: "Override the default genome, asset and tag of the\nparents (e.g.\
+      \ fasta=hg38/fasta:default\ngtf=mm10/gencode_gtf:default)."
+    args: !RepeatFlagArg
+      name: ASSETS
+  - !Flag
+    optional: true
+    synonyms:
+    - --files
+    description: "Provide paths to the required files (e.g.\nfasta=/path/to/file.fa.gz)."
+    args: !RepeatFlagArg
+      name: FILES
+  - !Flag
+    optional: true
+    synonyms:
+    - --params
+    description: "Provide required parameter values (e.g.\nparam1=value1)."
+    args: !RepeatFlagArg
+      name: PARAMS
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --volumes
+    description: If using docker, also mount these folders as volumes.
+    args: !RepeatFlagArg
+      name: VOLUMES
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outfolder
+    description: "Override the default path to genomes folder, which is\nthe genome_folder\
+      \ attribute in the genome\nconfiguration file."
+    args: !SimpleFlagArg
+      name: OUTFOLDER
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --requirements
+    description: "Show the build requirements for the specified asset\nand exit."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --recipe
+    description: Provide a recipe to use.
+    args: !SimpleFlagArg
+      name: RECIPE
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --genome
+    description: Reference assembly ID, e.g. mm10.
+    args: !SimpleFlagArg
+      name: G
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refgenie build [-h] [-c C] [-R] [-C CONFIG_FILE] [-N]\n     \
+    \                 [--tag-description TAG_DESCRIPTION]\n                      [--genome-description\
+    \ GENOME_DESCRIPTION] [-d]\n                      [--assets ASSETS [ASSETS ...]]\n\
+    \                      [--files FILES [FILES ...]]\n                      [--params\
+    \ PARAMS [PARAMS ...]]\n                      [-v VOLUMES [VOLUMES ...]] [-o OUTFOLDER]\
+    \ [-q]\n                      [-r RECIPE] [-g G]\n                      asset-registry-paths\
+    \ [asset-registry-paths ...]\n\nBuild genome assets.\n\npositional arguments:\n\
+    \  asset-registry-paths  One or more registry path strings that identify assets\n\
+    \                        (e.g. hg38/fasta or hg38/fasta:tag).\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -c C, --genome-config\
+    \ C\n                        Path to local genome configuration file. Optional\
+    \ if\n                        REFGENIE environment variable is set.\n  -R, --recover\
+    \         Overwrite locks to recover from previous failed run\n  -C CONFIG_FILE,\
+    \ --config CONFIG_FILE\n                        Pipeline configuration file (YAML).\
+    \ Relative paths are\n                        with respect to the pipeline script.\n\
+    \  -N, --new-start       Overwrite all results to start a fresh run\n  --tag-description\
+    \ TAG_DESCRIPTION\n                        Add tag level description (e.g. built\
+    \ with version\n                        0.3.2).\n  --genome-description GENOME_DESCRIPTION\n\
+    \                        Add genome level description (e.g. The mouse\n      \
+    \                  mitochondrial genome, released in Dec 2013).\n  -d, --docker\
+    \          Run all commands in the refgenie docker container.\n  --assets ASSETS\
+    \ [ASSETS ...]\n                        Override the default genome, asset and\
+    \ tag of the\n                        parents (e.g. fasta=hg38/fasta:default\n\
+    \                        gtf=mm10/gencode_gtf:default).\n  --files FILES [FILES\
+    \ ...]\n                        Provide paths to the required files (e.g.\n  \
+    \                      fasta=/path/to/file.fa.gz).\n  --params PARAMS [PARAMS\
+    \ ...]\n                        Provide required parameter values (e.g.\n    \
+    \                    param1=value1).\n  -v VOLUMES [VOLUMES ...], --volumes VOLUMES\
+    \ [VOLUMES ...]\n                        If using docker, also mount these folders\
+    \ as volumes.\n  -o OUTFOLDER, --outfolder OUTFOLDER\n                       \
+    \ Override the default path to genomes folder, which is\n                    \
+    \    the genome_folder attribute in the genome\n                        configuration\
+    \ file.\n  -q, --requirements    Show the build requirements for the specified\
+    \ asset\n                        and exit.\n  -r RECIPE, --recipe RECIPE\n   \
+    \                     Provide a recipe to use.\n  -g G, --genome G      Reference\
+    \ assembly ID, e.g. mm10.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refgenie:0.9.3--py_0
+- !Command
+  command:
+  - refgenie
+  - subscribe
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --genome-config
+    description: "Path to local genome configuration file. Optional if\nREFGENIE environment\
+      \ variable is set."
+    args: !SimpleFlagArg
+      name: C
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --reset
+    description: Overwrite the current list of server URLs.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --genome-server
+    description: "One or more URLs to add to the genome_servers\nattribute in config\
+      \ file.\n"
+    args: !RepeatFlagArg
+      name: GENOME_SERVER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refgenie subscribe [-h] [-c C] [-r] -s GENOME_SERVER\n      \
+    \                    [GENOME_SERVER ...]\n\nAdd a refgenieserver URL to the config.\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -c C, --genome-config C\n                        Path to local genome configuration\
+    \ file. Optional if\n                        REFGENIE environment variable is\
+    \ set.\n  -r, --reset           Overwrite the current list of server URLs.\n \
+    \ -s GENOME_SERVER [GENOME_SERVER ...], --genome-server GENOME_SERVER [GENOME_SERVER\
+    \ ...]\n                        One or more URLs to add to the genome_servers\n\
+    \                        attribute in config file.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refgenie:0.9.3--py_0
+- !Command
+  command:
+  - refgenie
+  - getseq
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --genome-config
+    description: "Path to local genome configuration file. Optional if\nREFGENIE environment\
+      \ variable is set."
+    args: !SimpleFlagArg
+      name: C
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --genome
+    description: Reference assembly ID, e.g. mm10.
+    args: !SimpleFlagArg
+      name: G
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --locus
+    description: "Coordinates of desired sequence; e.g.\n'chr1:50000-50200'.\n"
+    args: !SimpleFlagArg
+      name: LOCUS
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refgenie getseq [-h] [-c C] -g G -l LOCUS\n\nGet sequences from\
+    \ a genome.\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  -c C, --genome-config C\n                        Path to local genome\
+    \ configuration file. Optional if\n                        REFGENIE environment\
+    \ variable is set.\n  -g G, --genome G      Reference assembly ID, e.g. mm10.\n\
+    \  -l LOCUS, --locus LOCUS\n                        Coordinates of desired sequence;\
+    \ e.g.\n                        'chr1:50000-50200'.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refgenie:0.9.3--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "version: 0.9.3\nusage: refgenie [-h] [--version] [--silent] [--verbosity\
+  \ V] [--logdev]\n                {init,list,listr,pull,build,seek,add,remove,getseq,tag,id,subscribe,unsubscribe}\n\
+  \                ...\n\nrefgenie - reference genome asset manager\n\npositional\
+  \ arguments:\n  {init,list,listr,pull,build,seek,add,remove,getseq,tag,id,subscribe,unsubscribe}\n\
+  \    init                Initialize a genome configuration.\n    list          \
+  \      List available local assets.\n    listr               List available remote\
+  \ assets.\n    pull                Download assets.\n    build               Build\
+  \ genome assets.\n    seek                Get the path to a local asset.\n    add\
+  \                 Add local asset to the config file.\n    remove              Remove\
+  \ a local asset.\n    getseq              Get sequences from a genome.\n    tag\
+  \                 Tag an asset.\n    id                  Return the asset digest.\n\
+  \    subscribe           Add a refgenieserver URL to the config.\n    unsubscribe\
+  \         Remove a refgenieserver URL from the config.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --version          \
+  \   show program's version number and exit\n  --silent              Silence logging.\
+  \ Overrides verbosity.\n  --verbosity V         Set logging level (1-5 or logging\
+  \ module level name)\n  --logdev              Expand content of logging message\
+  \ format.\n\nhttps://refgenie.databio.org\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/refgenie:0.9.3--py_0

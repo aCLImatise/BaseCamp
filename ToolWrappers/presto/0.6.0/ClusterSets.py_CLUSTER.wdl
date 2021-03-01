@@ -8,6 +8,9 @@ task ClusterSetspyCLUSTER {
     ClusterSets_py CLUSTER \
       ~{cluster_sets_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cluster_sets_do_tpy: ""
   }

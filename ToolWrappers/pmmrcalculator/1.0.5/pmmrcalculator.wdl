@@ -14,6 +14,9 @@ task Pmmrcalculator {
       ~{if defined(suffix) then ("--Suffix " +  '"' + suffix + '"') else ""} \
       ~{if (json) then "--json" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     desired_input_file_prefix: "The desired input file prefix. Input files are assumed\\nto be <INPUT PREFIX>.geno, <INPUT PREFIX>.snp and\\n<INPUT PREFIX>.ind ."
     desired_output_file: "The desired output file name. Omit to print to stdout."

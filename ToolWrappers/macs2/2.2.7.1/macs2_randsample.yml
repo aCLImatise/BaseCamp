@@ -5,92 +5,95 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Alignment file. If multiple files are given as '-t A B\nC', then they\
-    \ will all be read and combined. Note that\npair-end data is not supposed to work\
-    \ with this\ncommand. REQUIRED."
+  optional: true
   synonyms:
   - -i
   - --ifile
+  description: "Alignment file. If multiple files are given as '-t A B\nC', then they\
+    \ will all be read and combined. Note that\npair-end data is not supposed to work\
+    \ with this\ncommand. REQUIRED."
   args: !RepeatFlagArg
     name: IFILE
-  optional: true
 - !Flag
-  description: "Percentage of tags you want to keep. Input 80.0 for\n80%. This option\
-    \ can't be used at the same time with\n-n/--num. REQUIRED"
+  optional: true
   synonyms:
   - -p
   - --percentage
+  description: "Percentage of tags you want to keep. Input 80.0 for\n80%. This option\
+    \ can't be used at the same time with\n-n/--num. REQUIRED"
   args: !SimpleFlagArg
     name: PERCENTAGE
-  optional: true
 - !Flag
-  description: "Number of tags you want to keep. Input 8000000 or 8e+6\nfor 8 million.\
-    \ This option can't be used at the same\ntime with -p/--percent. Note that the\
-    \ number of tags\nin output is approximate as the number specified here.\nREQUIRED"
+  optional: true
   synonyms:
   - -n
   - --number
+  description: "Number of tags you want to keep. Input 8000000 or 8e+6\nfor 8 million.\
+    \ This option can't be used at the same\ntime with -p/--percent. Note that the\
+    \ number of tags\nin output is approximate as the number specified here.\nREQUIRED"
   args: !SimpleFlagArg
     name: NUMBER
-  optional: true
 - !Flag
-  description: "Set the random seed while down sampling data. Must be\na non-negative\
-    \ integer in order to be effective.\nDEFAULT: not set"
+  optional: true
   synonyms:
   - --seed
+  description: "Set the random seed while down sampling data. Must be\na non-negative\
+    \ integer in order to be effective.\nDEFAULT: not set"
   args: !SimpleFlagArg
     name: SEED
-  optional: true
 - !Flag
-  description: "Output BED file name. If not specified, will write to\nstandard output.\
-    \ Note, if the input format is BAMPE or\nBEDPE, the output will be in BEDPE format.\
-    \ DEFAULT:\nstdout"
+  optional: true
   synonyms:
   - -o
   - --ofile
+  description: "Output BED file name. If not specified, will write to\nstandard output.\
+    \ Note, if the input format is BAMPE or\nBEDPE, the output will be in BEDPE format.\
+    \ DEFAULT:\nstdout"
   args: !SimpleFlagArg
     name: OUTPUTFILE
-  optional: true
 - !Flag
-  description: "If specified all output files will be written to that\ndirectory.\
-    \ Default: the current working directory"
+  optional: true
   synonyms:
   - --outdir
+  description: "If specified all output files will be written to that\ndirectory.\
+    \ Default: the current working directory"
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
-  description: "Tag size. This will override the auto detected tag\nsize. DEFAULT:\
-    \ Not set"
+  optional: true
   synonyms:
   - -s
   - --tsize
+  description: "Tag size. This will override the auto detected tag\nsize. DEFAULT:\
+    \ Not set"
   args: !SimpleFlagArg
     name: TSIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
   description: "Format of tag file, \"AUTO\", \"BED\" or \"ELAND\" or\n\"ELANDMULTI\"\
     \ or \"ELANDEXPORT\" or \"SAM\" or \"BAM\" or\n\"BOWTIE\" or \"BAMPE\" or \"BEDPE\"\
     . The default AUTO\noption will macs2 randsample decide which format the\nfile\
     \ is. Please check the definition in README file if\nyou choose ELAND/ELANDMULTI/ELANDEXPORT/SAM/BAM/BOWTIE\n\
     or BAMPE/BEDPE. DEFAULT: \"AUTO\""
-  synonyms:
-  - -f
-  - --format
   args: !ChoiceFlagArg
     choices: !!set
-      SAM:
-      AUTO:
-      ELAND:
-      BAMPE:
-      BOWTIE:
-      BAM:
       ELANDMULTI:
+      SAM:
+      BOWTIE:
       BEDPE:
+      BAM:
       ELANDEXPORT:
       BED:
-  optional: true
+      ELAND:
+      BAMPE:
+      AUTO:
 - !Flag
+  optional: true
+  synonyms:
+  - --buffer-size
   description: "Buffer size for incrementally increasing internal\narray size to store\
     \ reads alignment information. In\nmost cases, you don't have to change this parameter.\n\
     However, if there are large number of\nchromosomes/contigs/scaffolds in your alignment,\
@@ -98,30 +101,27 @@ named:
     \ usage (but it will take longer time\nto read alignment files). Minimum memory\
     \ requested for\nreading an alignment file is about # of CHROMOSOME *\nBUFFER_SIZE\
     \ * 8 Bytes. DEFAULT: 100000"
-  synonyms:
-  - --buffer-size
   args: !SimpleFlagArg
     name: BUFFER_SIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --verbose
   description: "Set verbose level. 0: only show critical message, 1:\nshow additional\
     \ warning message, 2: show process\ninformation, 3: show debug messages. If you\
     \ want to\nknow where are the duplicate reads, use 3. DEFAULT:2\n"
-  synonyms:
-  - --verbose
   args: !SimpleFlagArg
     name: VERBOSE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: macs2 randsample [-h] -i IFILE [IFILE ...] (-p PERCENTAGE | -n\
@@ -175,3 +175,4 @@ help_text: "usage: macs2 randsample [-h] -i IFILE [IFILE ...] (-p PERCENTAGE | -
   \ the duplicate reads, use 3. DEFAULT:2\n"
 generated_using:
 - --help
+docker_image:

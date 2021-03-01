@@ -3,35 +3,35 @@ id: pauvre_browser.cwl
 inputs:
 - id: in_quiet
   doc: Do not output warnings to stderr
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_chromosome_id
   doc: "The fasta sequence to observe. Use the header name of\nthe fasta file without\
     \ the '>' character"
-  type: File
+  type: File?
   inputBinding:
     prefix: --chromosomeid
 - id: in_dpi
   doc: Change the dpi from the default 600 if you need it
-  type: long
+  type: long?
   inputBinding:
     prefix: --dpi
 - id: in_no_timestamp
   doc: Turn off time stamps in the filename output.
-  type: File
+  type: File?
   inputBinding:
     prefix: --no_timestamp
 - id: in_output_base_name
   doc: "Specify a base name for the output file( s). The input\nfile base name is\
     \ the default."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-base-name
 - id: in_path
   doc: "Set an explicit filepath for the output. Only do this\nif you have selected\
     \ one output type."
-  type: File
+  type: File?
   inputBinding:
     prefix: --path
 - id: in_plot_commands
@@ -50,23 +50,23 @@ inputs:
     prefix: --ratio
 - id: in_reference
   doc: The reference fasta file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --reference
 - id: in_start
   doc: "The start position to observe on the fasta file. Uses\n1-based indexing."
-  type: File
+  type: File?
   inputBinding:
     prefix: --start
 - id: in_stop
   doc: "The stop position to observe on the fasta file. Uses\n1-based indexing."
-  type: File
+  type: File?
   inputBinding:
     prefix: --stop
 - id: in_transparent
   doc: "Specify this option if you DON'T want a transparent\nbackground. Default is\
     \ on.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --transparent
 - id: in_higher
@@ -80,15 +80,16 @@ outputs:
   type: stdout
 - id: out_no_timestamp
   doc: Turn off time stamps in the filename output.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_no_timestamp)
 - id: out_path
   doc: "Set an explicit filepath for the output. Only do this\nif you have selected\
     \ one output type."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_path)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pauvre

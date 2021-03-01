@@ -4,130 +4,130 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
   description: "File of the reference molecule with 3D coordinates.\nOnly the first\
     \ molecule in the reference file will be used.\nShape-it can also handle a gzipped\
     \ files if the extension is '.gz'\nAll input formats which are recognized by OpenBabel\
     \ are allowed."
-  synonyms:
-  - -r
-  - --reference
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "File of the database molecules with 3D coordinates.\nShape-it can\
-    \ also handle gzipped files if the extension is '.gz'\nAll input formats which\
-    \ are recognized by OpenBabel are allowed."
+  optional: true
   synonyms:
   - -d
   - --dbase
+  description: "File of the database molecules with 3D coordinates.\nShape-it can\
+    \ also handle gzipped files if the extension is '.gz'\nAll input formats which\
+    \ are recognized by OpenBabel are allowed."
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
   description: "File to write all database or the N best molecules such that their\n\
     coordinates correspond to the best alignment with the reference molecule.\nThe\
     \ first molecule in the file is the reference molecule. When this file\nif of\
     \ type 'sdf', then each molecule contains a set of properties in which\nthe respective\
     \ scores are reported. These fields are labeled with an\nidentifier starting with\
     \ the tag Shape-it::"
-  synonyms:
-  - -o
-  - --out
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "Tab-delimited text file with the scores of molecules.\nWhen the N\
-    \ best scoring molecules are reported the molecules are ranked\nwith the descending\
-    \ scores."
+  optional: true
   synonyms:
   - -s
   - --scores
+  description: "Tab-delimited text file with the scores of molecules.\nWhen the N\
+    \ best scoring molecules are reported the molecules are ranked\nwith the descending\
+    \ scores."
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "Specifies the format of the reference, database and output files.\
-    \ If not\nprovided, then the formats are determined from the respective file extensions.\n\
-    The specified format string should be one of the formats recognised\nby OpenBabel."
+  optional: true
   synonyms:
   - -f
   - --format
+  description: "Specifies the format of the reference, database and output files.\
+    \ If not\nprovided, then the formats are determined from the respective file extensions.\n\
+    The specified format string should be one of the formats recognised\nby OpenBabel."
   args: !SimpleFlagArg
     name: format
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --best
   description: "When this option is used, only the N best scoring alignments will\
     \ be\nreported. The scoring function is defined by the --rankBy option.\nBy default\
     \ all molecules in the database are reported with their\nrespective scores without\
     \ any ordering."
-  synonyms:
-  - --best
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "When this option is used the molecules are not aligned, only the volume\n\
-    overlap between the reference and the given pose is computed."
+  optional: true
   synonyms:
   - --scoreOnly
+  description: "When this option is used the molecules are not aligned, only the volume\n\
+    overlap between the reference and the given pose is computed."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --addIterations
   description: "Sets the number of additional iterations in the simulated annealing\n\
     optimization step. The default value is set to 0, which refers to only\na local\
     \ gradient ascent. Increasing the number of iterations will add\nadditional steps,\
     \ and might give better alignments but it also takes\nmore time."
-  synonyms:
-  - --addIterations
   args: !SimpleFlagArg
     name: nbr
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --rankBy
   description: "This option can be used in combination with --best of --cutoff to\
     \ rank\nthe molecules according to a given scoring function. The type of scoring\n\
     function is indicated with a code:\n- TANIMOTO = Taninoto\n- TVERSKY_REF = reference\
     \ Tversky\n- TVERSKY_DB = database Tversky\nBy default TANIMOTO is used."
-  synonyms:
-  - --rankBy
   args: !SimpleFlagArg
     name: code
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cutoff
   description: "Defines a cutoff value. Only molecules with a score higher than the\n\
     cutoff are reported in the results files. Default value is set to\n0.0. The scoring\
     \ function is defined by the --rankBy option."
-  synonyms:
-  - --cutoff
   args: !SimpleFlagArg
     name: value
-  optional: true
 - !Flag
-  description: "By default the reference molecule is written in the output files.\n\
-    Use this option to switch off this behavior."
+  optional: true
   synonyms:
   - --noRef
+  description: "By default the reference molecule is written in the output files.\n\
+    Use this option to switch off this behavior."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Prints this help overview.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Prints this help overview.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: "Prints the version of the program.\n"
+  optional: true
   synonyms:
   - -v
   - --version
+  description: "Prints the version of the program.\n"
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\
   \  Shape-it v1.0.1 | May  3 2019 20:53:20\n\n  -> GCC:       7.3.0\n  -> OpenBabel:\
   \ 2.4.1\n\n  Copyright 2012 by Silicos-it, a division of Imacosi BVBA\n\n  Shape-it\
@@ -187,3 +187,4 @@ help_text: "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   \n  -v, --version\n           Prints the version of the program.\n\n"
 generated_using:
 - --help
+docker_image:

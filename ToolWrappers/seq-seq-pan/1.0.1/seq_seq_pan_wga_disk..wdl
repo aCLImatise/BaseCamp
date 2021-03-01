@@ -16,6 +16,9 @@ task SeqseqpanwgaDisk {
       ~{if (timestamp) then "--timestamp" else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dry_run: "do not execute anything"
     print_shell_cmds: "print out the shell commands that will be executed"

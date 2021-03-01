@@ -52,6 +52,9 @@ task Srapileup {
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aligned_region: "<name[:from-to]>[,...]\\nFilter by position on genome. Name can\\neither be file specific name (ex: \\\"chr1\\\"\\nor \\\"1\\\"). \\\"from\\\" and \\\"to\\\" (inclusive) are\\n1-based coordinates"
     outfile: "Output will be written to this file\\ninstead of std-out"

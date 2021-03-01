@@ -4,118 +4,121 @@ command:
 - count
 positional:
 - !Positional
-  description: "File assigning positions to genes or transcripts (made\nusing 'generate'\
-    \ subcommand)"
+  optional: false
   position: 0
   name: file.positions
-  optional: false
+  description: "File assigning positions to genes or transcripts (made\nusing 'generate'\
+    \ subcommand)"
 - !Positional
-  description: Basename for output files
+  optional: false
   position: 1
   name: outbase
-  optional: false
+  description: Basename for output files
 named:
 - !Flag
-  description: Suppress all warning messages. Cannot use with '-v'.
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: Suppress all warning messages. Cannot use with '-v'.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn\
-    \ warnings into exceptions. Cannot use\nwith '-q'. (Default: show each type of\
-    \ warning once)"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn\
+    \ warnings into exceptions. Cannot use\nwith '-q'. (Default: show each type of\
+    \ warning once)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "One or more count or alignment file(s) from a single\nsample or set\
-    \ of samples to be pooled."
+  optional: true
   synonyms:
   - --count_files
+  description: "One or more count or alignment file(s) from a single\nsample or set\
+    \ of samples to be pooled."
   args: !RepeatFlagArg
     name: COUNT_FILES
-  optional: true
 - !Flag
-  description: "Format of file containing alignments or counts\n(Default: BAM)"
+  optional: true
   synonyms:
   - --countfile_format
+  description: "Format of file containing alignments or counts\n(Default: BAM)"
   args: !ChoiceFlagArg
     choices: !!set
+      bowtie:
       BAM:
       bigwig:
-      bowtie:
       wiggle:
-  optional: true
 - !Flag
-  description: "Sum used in normalization of counts and RPKM/RPNT\ncalculations (Default:\
-    \ total mapped reads/counts in\ndataset)"
+  optional: true
   synonyms:
   - --sum
+  description: "Sum used in normalization of counts and RPKM/RPNT\ncalculations (Default:\
+    \ total mapped reads/counts in\ndataset)"
   args: !SimpleFlagArg
     name: SUM
-  optional: true
 - !Flag
-  description: "Minimum read length required to be included (BAM &\nbowtie files only.\
-    \ Default: 25)"
+  optional: true
   synonyms:
   - --min_length
+  description: "Minimum read length required to be included (BAM &\nbowtie files only.\
+    \ Default: 25)"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Maximum read length permitted to be included (BAM &\nbowtie files\
-    \ only. Default: 100)"
+  optional: true
   synonyms:
   - --max_length
+  description: "Maximum read length permitted to be included (BAM &\nbowtie files\
+    \ only. Default: 100)"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Maximum desired memory footprint in MB to devote to\nBigBed/BigWig\
-    \ files. May be exceeded by large queries.\n(Default: 0, No maximum)"
+  optional: true
   synonyms:
   - --maxmem
+  description: "Maximum desired memory footprint in MB to devote to\nBigBed/BigWig\
+    \ files. May be exceeded by large queries.\n(Default: 0, No maximum)"
   args: !SimpleFlagArg
     name: MAXMEM
-  optional: true
 - !Flag
-  description: "Use slower but memory-efficient implementation for big\ngenomes or\
-    \ for memory-limited computers. For wiggle &\nbowtie files only."
+  optional: true
   synonyms:
   - --big_genome
+  description: "Use slower but memory-efficient implementation for big\ngenomes or\
+    \ for memory-limited computers. For wiggle &\nbowtie files only."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Map read alignment to a variable offset from 5'\nposition of read,\
-    \ with offset determined by read\nlength. Requires `--offset` below"
+  optional: true
   synonyms:
   - --fiveprime_variable
+  description: "Map read alignment to a variable offset from 5'\nposition of read,\
+    \ with offset determined by read\nlength. Requires `--offset` below"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Map read alignment to 5' position.
+  optional: true
   synonyms:
   - --fiveprime
+  description: Map read alignment to 5' position.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Map read alignment to 3' position
+  optional: true
   synonyms:
   - --threeprime
+  description: Map read alignment to 3' position
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Subtract N positions from each end of read, and add\n1/(length-N),\
-    \ to each remaining position, where N is\nspecified by `--nibble`"
+  optional: true
   synonyms:
   - --center
+  description: "Subtract N positions from each end of read, and add\n1/(length-N),\
+    \ to each remaining position, where N is\nspecified by `--nibble`"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --offset
   description: "For `--fiveprime` or `--threeprime`, provide an\ninteger representing\
     \ the offset into the read,\nstarting from either the 5' or 3' end, at which data\n\
     should be plotted. For `--fiveprime_variable`, provide\nthe filename of a two-column\
@@ -123,29 +126,26 @@ named:
     special keyword `'default'`, and the second column\nrepresents the offset from\
     \ the five prime end of that\nread length at which the read should be mapped.\n\
     (Default: 0)"
-  synonyms:
-  - --offset
   args: !SimpleFlagArg
     name: OFFSET
-  optional: true
 - !Flag
-  description: "For use with `--center` only. nt to remove from each\nend of read\
-    \ before mapping (Default: 0)\n"
+  optional: true
   synonyms:
   - --nibble
+  description: "For use with `--center` only. nt to remove from each\nend of read\
+    \ before mapping (Default: 0)\n"
   args: !SimpleFlagArg
     name: N
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: cs count [-h] [-q] [-v] [--count_files COUNT_FILES [COUNT_FILES\
@@ -204,3 +204,4 @@ help_text: "usage: cs count [-h] [-q] [-v] [--count_files COUNT_FILES [COUNT_FIL
   \ (Default: 0)\n"
 generated_using:
 - --help
+docker_image:

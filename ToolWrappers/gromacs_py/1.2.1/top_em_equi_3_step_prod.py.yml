@@ -1,0 +1,135 @@
+!Command
+command:
+- top_em_equi_3_step_prod.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: 0.25ns
+  description: -CA_time CA_TIME      Equilibration with HA constraint time(ns), default
+    =
+- !Positional
+  optional: false
+  position: 1
+  name: 1ns
+  description: -CA_LOW_time CA_LOW_TIME
+- !Positional
+  optional: false
+  position: 0
+  name: 5ns
+  description: -prod_time PROD_TIME  Production time, default=10
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: Input PDB file
+  args: !SimpleFlagArg
+    name: F
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Output Directory
+  args: !SimpleFlagArg
+    name: O
+- !Flag
+  optional: true
+  synonyms:
+  - -vsite
+  description: Use virtual site for hydrogens
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  description: Ion concentration (mM), default = 0.15 (150mM)
+  args: !SimpleFlagArg
+    name: CONC
+- !Flag
+  optional: true
+  synonyms:
+  - -m_steps
+  description: Minimisation nsteps, default=1000
+  args: !SimpleFlagArg
+    name: MIN_STEPS
+- !Flag
+  optional: true
+  synonyms:
+  - -HA_time
+  description: Equilibration with HA constraint time(ns), default =
+  args: !SimpleFlagArg
+    name: HA_TIME
+- !Flag
+  optional: true
+  synonyms:
+  - -dt_HA
+  description: Equi HA dt, default=0.005 (5 fs)
+  args: !SimpleFlagArg
+    name: DT_HA
+- !Flag
+  optional: true
+  synonyms:
+  - -dt
+  description: Equi CA, CA_LOW, dt, default=0.005 (5 fs)
+  args: !SimpleFlagArg
+    name: DT
+- !Flag
+  optional: true
+  synonyms:
+  - -nt
+  description: Total number of threads to start, default=0
+  args: !SimpleFlagArg
+    name: NT
+- !Flag
+  optional: true
+  synonyms:
+  - -ntmpi
+  description: Number of thread-MPI threads to start, default=0
+  args: !SimpleFlagArg
+    name: NTMPI
+- !Flag
+  optional: true
+  synonyms:
+  - -gpu_id
+  description: List of GPU device id-s to use, default=""
+  args: !SimpleFlagArg
+    name: GPUID
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: top_em_equi_3_step_prod.py [-h] -f F -o O [-vsite] [-C CONC]\n\
+  \                                  [-m_steps MIN_STEPS] [-HA_time HA_TIME]\n   \
+  \                               [-CA_time CA_TIME]\n                           \
+  \       [-CA_LOW_time CA_LOW_TIME]\n                                  [-prod_time\
+  \ PROD_TIME] [-dt_HA DT_HA]\n                                  [-dt DT] [-nt NT]\
+  \ [-ntmpi NTMPI]\n                                  [-gpu_id GPUID]\n\nEquilibrate\
+  \ in 3 steps a system (coor+top), (i) first equilibration with heavy\natoms position\
+  \ restraints, (ii) second equilibration with alpha carbon\nposition restraints and\
+  \ (iii) finaly equilibration with weak alpha carbon\nposition restraints\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -f F  \
+  \                Input PDB file\n  -o O                  Output Directory\n  -vsite\
+  \                Use virtual site for hydrogens\n  -C CONC               Ion concentration\
+  \ (mM), default = 0.15 (150mM)\n  -m_steps MIN_STEPS    Minimisation nsteps, default=1000\n\
+  \  -HA_time HA_TIME      Equilibration with HA constraint time(ns), default =\n\
+  \                        0.25ns\n  -CA_time CA_TIME      Equilibration with HA constraint\
+  \ time(ns), default =\n                        1ns\n  -CA_LOW_time CA_LOW_TIME\n\
+  \                        Equilibration with HA constraint time(ns), default =\n\
+  \                        5ns\n  -prod_time PROD_TIME  Production time, default=10\n\
+  \  -dt_HA DT_HA          Equi HA dt, default=0.005 (5 fs)\n  -dt DT            \
+  \    Equi CA, CA_LOW, dt, default=0.005 (5 fs)\n  -nt NT                Total number\
+  \ of threads to start, default=0\n  -ntmpi NTMPI          Number of thread-MPI threads\
+  \ to start, default=0\n  -gpu_id GPUID         List of GPU device id-s to use, default=\"\
+  \"\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gromacs_py:1.2.1--py_0

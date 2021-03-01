@@ -10,6 +10,9 @@ task ModuleEnrichmentpyPerms {
       ~{if defined(perms) then ("--perms " +  '"' + perms + '"') else ""} \
       ~{if defined(correl_s) then ("--correls " +  '"' + correl_s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     perms: ""
     correl_s: ""

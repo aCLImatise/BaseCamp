@@ -4,38 +4,70 @@ command:
 - local
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: local
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "contig file\n-l, --lib_file_prefix arg              lib file prefix\n\
-    --kmin arg (=11)\n--kmax arg (=41)\n--step arg (=6)\n--seed_kmer arg (=31)   \
-    \           kmer size for seeding alignments\n--min_contig_len arg (=200)\n--min_mapping_len\
-    \ arg (=75)\n--sparsity arg (=8)                sparsity of hash mapper\n--similarity\
-    \ arg (=0.8)            alignment similarity threshold\n-t, --num_threads arg\
-    \ (=0)\n-o, --output_file arg\n"
+  optional: true
   synonyms:
   - -c
   - --contig_file
+  description: contig file
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: ''
+  optional: true
+  synonyms:
+  - -l
+  - --lib_file_prefix
+  description: lib file prefix
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --seed_kmer
+  description: (=31)              kmer size for seeding alignments
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --sparsity
+  description: (=8)                sparsity of hash mapper
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --similarity
+  description: (=0.8)            alignment similarity threshold
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --num_threads
+  description: (=0)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
   synonyms:
   - -o
+  description: ''
   args: !SimpleFlagArg
     name: out.local_contig.fa
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -r
+  description: ''
   args: !SimpleFlagArg
     name: reads.fq
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -54,3 +86,4 @@ help_text: "local: unrecognized option '--help'\nuknown option\nUsage: local -c 
   \  -o, --output_file arg                  \n\n"
 generated_using:
 - --help
+docker_image:

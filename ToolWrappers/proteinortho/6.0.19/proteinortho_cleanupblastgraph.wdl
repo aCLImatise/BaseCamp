@@ -8,6 +8,9 @@ task ProteinorthoCleanupblastgraph {
     proteinortho_cleanupblastgraph \
       ~{blast_graph}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     blast_graph: ""
   }

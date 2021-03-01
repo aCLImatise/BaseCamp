@@ -16,6 +16,9 @@ task ProphyleDownload {
       ~{if (rewrite_library_files) then "-F" else ""} \
       ~{if (advanced_configuration_json) then "-c" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_tree_sequences: "directory for the tree and the sequences [~/prophyle]"
     log_file: "log file"

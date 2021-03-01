@@ -8,6 +8,9 @@ task Hardklor {
     hardklor \
       ~{config_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: ""
   }

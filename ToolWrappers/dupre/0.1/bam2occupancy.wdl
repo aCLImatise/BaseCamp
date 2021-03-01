@@ -14,6 +14,9 @@ task Bam2occupancy {
       ~{if defined(hash_file) then ("--hashfile " +  '"' + hash_file + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "name for this occupancy vector (prepended to occupancy\\nvector)"
     hash_file: "for .bam input, write sorted hash file to the given\\npath"

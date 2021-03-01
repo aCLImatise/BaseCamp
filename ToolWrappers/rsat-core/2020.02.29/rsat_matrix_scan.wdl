@@ -48,6 +48,9 @@ task RsatMatrixscan {
       ~{if (two_str) then "-2str" else ""} \
       ~{if defined(return) then ("-return " +  '"' + return + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     last_seq: "order to select a subset of sequences for quick"
     two_str: "). The maximum size for a CRER is defined by the"

@@ -8,6 +8,9 @@ task RMETLTjianghiteducn {
     rMETL tjiang_hit_edu_cn \
       ~{rm_etl}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rm_etl: ""
   }

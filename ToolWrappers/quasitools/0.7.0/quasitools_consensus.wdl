@@ -2,7 +2,8 @@ version 1.0
 
 task QuasitoolsConsensus {
   input {
-    File? percentage
+    Int? percentage
+    String? id
     String bam
     String reference
   }
@@ -10,15 +11,19 @@ task QuasitoolsConsensus {
     quasitools consensus \
       ~{bam} \
       ~{reference} \
-      ~{if defined(percentage) then ("--percentage " +  '"' + percentage + '"') else ""}
+      ~{if defined(percentage) then ("--percentage " +  '"' + percentage + '"') else ""} \
+      ~{if defined(id) then ("--id " +  '"' + id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    percentage: "percentage to include base in mixture.\\n-i, --id TEXT             specify default FASTA sequence identifier to be\\nused for sequences without an RG tag.\\n-o, --output FILENAME\\n--help                    Show this message and exit.\\n"
+    percentage: "percentage to include base in mixture."
+    id: "specify default FASTA sequence identifier to be\\nused for sequences without an RG tag."
     bam: ""
     reference: ""
   }
   output {
     File out_stdout = stdout()
-    File out_percentage = "${in_percentage}"
   }
 }

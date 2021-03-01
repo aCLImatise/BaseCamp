@@ -19,7 +19,7 @@ task Humann2Barplot {
     Int? width
     Int? size__dimensions
     String? limit_ylims_limit
-    Boolean? _legendstretchstretchcompress_legend
+    Boolean? legend_stretch
   }
   command <<<
     humann2_barplot \
@@ -40,8 +40,11 @@ task Humann2Barplot {
       ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
       ~{if defined(size__dimensions) then ("-d " +  '"' + size__dimensions + '"') else ""} \
       ~{if defined(limit_ylims_limit) then ("-y " +  '"' + limit_ylims_limit + '"') else ""} \
-      ~{if (_legendstretchstretchcompress_legend) then "-e" else ""}
+      ~{if (legend_stretch) then "--legend-stretch" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     humann_table_optional: "HUMAnN2 table with optional metadata"
     focal_feature: "Feature ID of interest (give ID not full name)"
@@ -60,7 +63,7 @@ task Humann2Barplot {
     width: "Relative width of the plot vs. legend (default: 5)"
     size__dimensions: "<size>, --dimensions <size> <size>\\nImage height and width in inches (default: 8 4)"
     limit_ylims_limit: "<limit>, --ylims <limit> <limit>\\nFix limits for y-axis"
-    _legendstretchstretchcompress_legend: ", --legend-stretch\\nStretch/compress legend elements\\n"
+    legend_stretch: "Stretch/compress legend elements\\n"
   }
   output {
     File out_stdout = stdout()

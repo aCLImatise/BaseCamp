@@ -8,7 +8,7 @@ task FilterCorrectionLayouts {
     Boolean? cc
     Boolean? cl
     Boolean? estimated_genome_size
-    Boolean? desired_coverage_corrected
+    Boolean? desired_coverage_reads
     Boolean? rescue
   }
   command <<<
@@ -19,9 +19,12 @@ task FilterCorrectionLayouts {
       ~{if (cc) then "-cc" else ""} \
       ~{if (cl) then "-cl" else ""} \
       ~{if (estimated_genome_size) then "-g" else ""} \
-      ~{if (desired_coverage_corrected) then "-c" else ""} \
+      ~{if (desired_coverage_reads) then "-c" else ""} \
       ~{if (rescue) then "-rescue" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_reads: "input reads"
     input_correction_layouts: "input correction layouts"
@@ -29,7 +32,7 @@ task FilterCorrectionLayouts {
     cc: "minimum coverage of evidence reads"
     cl: "minimum length of a corrected read"
     estimated_genome_size: "estimated genome size"
-    desired_coverage_corrected: "desired coverage in corrected reads"
+    desired_coverage_reads: "desired coverage in corrected reads"
     rescue: "enable rescue - if read not used as evidence\\nforce it to be corrected"
   }
   output {

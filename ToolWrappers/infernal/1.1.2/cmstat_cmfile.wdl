@@ -8,6 +8,9 @@ task CmstatCmfile {
     cmstat cmfile \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
   }

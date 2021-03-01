@@ -38,7 +38,7 @@ task NucmerSubcontigValidatepl {
     String match
     String overlap
     String threads
-    File file
+    File var_file
     String in
     Int length
     String var_output
@@ -88,7 +88,7 @@ task NucmerSubcontigValidatepl {
       ~{match} \
       ~{overlap} \
       ~{threads} \
-      ~{file} \
+      ~{var_file} \
       ~{in} \
       ~{length} \
       ~{var_output} \
@@ -126,6 +126,9 @@ task NucmerSubcontigValidatepl {
       ~{if defined(thread) then ("--thread " +  '"' + thread + '"') else ""} \
       ~{if defined(var_12) then ("--help " +  '"' + var_12 + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_scaffold_fasta: "input scaffold fasta file (e.g., scaf1.fa)"
     ref: "input reference file (e.g., ref.fa)"
@@ -163,7 +166,7 @@ task NucmerSubcontigValidatepl {
     match: ""
     overlap: ""
     threads: ""
-    file: ""
+    var_file: ""
     in: ""
     length: ""
     var_output: ""

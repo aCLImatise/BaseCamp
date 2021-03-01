@@ -16,6 +16,9 @@ task TreebestSimulate {
       ~{if defined(max_height) then ("-m " +  '"' + max_height + '"') else ""} \
       ~{if (show_internal_name) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     duplication_probability: "duplication probability [0.05]"
     loss_probability: "loss probability [0.01]"

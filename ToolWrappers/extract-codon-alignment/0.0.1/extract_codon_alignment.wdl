@@ -14,6 +14,9 @@ task ExtractCodonAlignment {
       ~{if defined(codon_poses) then ("--codonPoses " +  '"' + codon_poses + '"') else ""} \
       ~{if defined(out_aln) then ("--outAln " +  '"' + out_aln + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aligned_cds: "The CDS alignment."
     aln_format: "the file format for the CDS alignment. Anything\\naccepted by BioPython is fine [fasta]"

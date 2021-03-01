@@ -1,0 +1,251 @@
+!Command
+command:
+- gem-mapper
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: gem-mapper
+  description: '[File input/output]'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  description: (mandatory)
+  args: !SimpleFlagArg
+    name: index_file
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --emulate-complement
+  description: (for indices lacking it)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - '-1'
+  - '-2'
+  description: (FASTA, FASTQ or MAP, default=stdin)
+  args: !SimpleFlagArg
+    name: input
+- !Flag
+  optional: true
+  synonyms:
+  - --granularity
+  description: "(default=10000 lines from stdin,\n2500000 bytes from file)"
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: (default=stdout)
+  args: !SimpleFlagArg
+    name: output_prefix
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quality-format
+  description: "'ignore'|'offset-33'|'offset-64'\n(mandatory with FASTQ input)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gem-quality-threshold
+  description: (default=26, that is e<=2e-3)
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --mismatch-alphabet
+  description: (default="ACGT")
+  args: !SimpleFlagArg
+    name: symbols
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: '|<%_mismatches>       (default=0.04)'
+  args: !SimpleFlagArg
+    name: max_mismatches
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: '|<%_differences>   (default=0.04)'
+  args: !SimpleFlagArg
+    name: max_edit_distance
+- !Flag
+  optional: true
+  synonyms:
+  - --min-matched-bases
+  description: '|<%>         (default=0.80)'
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --max-big-indel-length
+  description: (default=15)
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --strata-after-best
+  description: (default=0)
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --fast-mapping
+  description: "|'adaptive'       (default=false)"
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --unique-mapping
+  description: (default=false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --max-decoded-matches
+  description: "|'all'  (default=20)"
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --min-decoded-strata
+  description: (default=1)
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --paired-end-alignment
+  description: (default=false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --map-both-ends
+  description: (default=false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-insert-size
+  description: (default=0)
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  description: '|<%_differences>   (default=0.30)'
+  args: !SimpleFlagArg
+    name: max_edit_distance
+- !Flag
+  optional: true
+  synonyms:
+  - --max-extendable-matches
+  description: "|'all'  (default=20)"
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --max-extensions-per-match
+  description: (default=1)
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --unique-pairing
+  description: (default=false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --threads
+  description: (default=1)
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: (default=false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --show-license
+  description: (print license)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: (print usage)
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Welcome to GEM-mapper build 1.859 (beta) - (2019-12-20 02:39:18 GMT)\n\
+  \ (c) 2008-2013 Paolo Ribeca <paolo.ribeca@gmail.com>\n (c) 2010-2013 Santiago Marco\
+  \ Sola <santiagomsola@gmail.com>\n (c) 2010-2013 Leonor Frias Moya <leonor.frias@gmail.com>\n\
+  For the terms of use, run the program with the option --show-license.\n************************************************************************\n\
+  * WARNING: this is a beta version, provided for testing purposes only; *\n*    \
+  \      check for updates at <http://gemlibrary.sourceforge.net>.   *\n************************************************************************\n\
+  Usage:\n gem-mapper\n   [File input/output]\n     -I <index_file>              \
+  \            (mandatory)\n     -C|--emulate-complement                  (for indices\
+  \ lacking it)\n     -i <input> | -1 <input> -2 <input>       (FASTA, FASTQ or MAP,\
+  \ default=stdin)\n     --granularity <number>                   (default=10000 lines\
+  \ from stdin,\n                                                       2500000 bytes\
+  \ from file)\n     -o <output_prefix>                       (default=stdout)\n \
+  \  [Qualities]\n     -q|--quality-format 'ignore'|'offset-33'|'offset-64'\n    \
+  \                                          (mandatory with FASTQ input)\n     --gem-quality-threshold\
+  \ <number>         (default=26, that is e<=2e-3)\n   [Single-end alignment]\n  \
+  \   --mismatch-alphabet <symbols>            (default=\"ACGT\")\n     -m <max_mismatches>|<%_mismatches>\
+  \       (default=0.04)\n     -e <max_edit_distance>|<%_differences>   (default=0.04)\n\
+  \     --min-matched-bases <number>|<%>         (default=0.80)\n     --max-big-indel-length\
+  \ <number>          (default=15)\n     -s|--strata-after-best <number>         \
+  \ (default=0)\n     --fast-mapping <number>|'adaptive'       (default=false)\n \
+  \    --unique-mapping                         (default=false)\n     --allow-incomplete-strata\
+  \ <number>|<%>   (default=0.00)\n   [Selecting alignments for output (single-end\
+  \ mode) or pairing (paired-end mode)]\n     -d|--max-decoded-matches <number>|'all'\
+  \  (default=20)\n     -D|--min-decoded-strata <number>         (default=1)\n   [Paired-end\
+  \ alignment]\n     -p|--paired-end-alignment                (default=false)\n  \
+  \   -b|--map-both-ends                       (default=false)\n     --min-insert-size\
+  \ <number>               (default=0)\n     --max-insert-size <number>          \
+  \     (default=1000)\n     -E <max_edit_distance>|<%_differences>   (default=0.30)\n\
+  \     --max-extendable-matches <number>|'all'  (default=20)\n     --max-extensions-per-match\
+  \ <number>      (default=1)\n     --unique-pairing                         (default=false)\n\
+  \   [Miscellaneous]\n     -T|--threads <number>                    (default=1)\n\
+  \     -v|--verbose                             (default=false)\n     --show-license\
+  \                           (print license)\n     -h|--help                    \
+  \            (print usage)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gem2:20200110--0

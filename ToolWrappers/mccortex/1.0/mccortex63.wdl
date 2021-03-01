@@ -76,6 +76,9 @@ task Mccortex63 {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(paths) then ("--paths " +  '"' + paths + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Silence status output normally printed to STDERR"
     force: "Overwrite output files if they already exist"

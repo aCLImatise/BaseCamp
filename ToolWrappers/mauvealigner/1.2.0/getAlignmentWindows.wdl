@@ -14,6 +14,9 @@ task GetAlignmentWindows {
       ~{window_shift_amount} \
       ~{base_output_filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     x_mfa_alignment: ""
     window_length: ""

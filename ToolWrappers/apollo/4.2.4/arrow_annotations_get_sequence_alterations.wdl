@@ -10,6 +10,9 @@ task ArrowAnnotationsGetSequenceAlterations {
       ~{if defined(organism) then ("--organism " +  '"' + organism + '"') else ""} \
       ~{if defined(sequence) then ("--sequence " +  '"' + sequence + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     organism: "Organism Common Name"
     sequence: "Sequence Name"

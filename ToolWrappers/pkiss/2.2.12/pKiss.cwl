@@ -5,7 +5,7 @@ inputs:
   doc: ": Select the computation mode. Available modes are \"mfe\",\n\"subopt\", \"\
     enforce\", \"local\", \"shapes\", \"probs\", \"cast\",\n\"eval\", \"abstract\"\
     . Omit the ticks on input.\nDefault is \"subopt\"."
-  type: string
+  type: string?
   inputBinding:
     prefix: --mode
 - id: in_absolute_deviation
@@ -14,7 +14,7 @@ inputs:
     \ energy is -10.0 kcal/mol, the\nenergy range is set to 0.0 to -10.0 kcal/mol.\n\
     <float> must be a positive floating point\nnumber.\nConnot be combined with --relativeDeviation.\n\
     Only available in modes: \"subopt\", \"local\",\n\"shapes\", \"cast\"."
-  type: double
+  type: double?
   inputBinding:
     prefix: --absoluteDeviation
 - id: in_relative_deviation
@@ -24,7 +24,7 @@ inputs:
     <float> must be a positive floating point\nnumber.\nBy default, --relativeDeviation\
     \ is set to 10 %.\nCannot be combined with --absoluteDeviation.\nOnly available\
     \ in modes: \"subopt\", \"local\",\n\"shapes\", \"cast\"."
-  type: double
+  type: double?
   inputBinding:
     prefix: --relativeDeviation
 - id: in_shape_level
@@ -33,7 +33,7 @@ inputs:
     \ concrete one.\n<int> must be a number between 5 and 1.\nDefault is 5 (the most\
     \ abstract one).\nOnly available in modes: \"shapes\", \"probs\", \"cast\",\n\"\
     eval\", \"abstract\"."
-  type: long
+  type: long?
   inputBinding:
     prefix: --shapeLevel
 - id: in_low_prob_filter
@@ -43,7 +43,7 @@ inputs:
     \ filter\ncan have a slight influence on the overall results.\nTo disable this\
     \ filter, use option --lowProbFilter\n0.\n<float> must be a positive floating\
     \ point number\nsmaller than 1.\nOnly available in mode: \"probs\"."
-  type: double
+  type: double?
   inputBinding:
     prefix: --lowProbFilter
 - id: in_output_low_prob_filter
@@ -53,7 +53,7 @@ inputs:
     \ value. To disable this filter, use\noption --outputLowProbFilter 0.\n<float>\
     \ must be a positive floating point\nnumber smaller than 1.\nOnly available in\
     \ mode: \"probs\"."
-  type: double
+  type: double?
   inputBinding:
     prefix: --outputLowProbFilter
 - id: in_window_size
@@ -63,7 +63,7 @@ inputs:
     <int> must be a non-zero positive integer, smaller than\nthe input length.\nOnly\
     \ available in modes: \"mfe\", \"subopt\", \"enforce\",\n\"local\", \"shapes\"\
     , \"probs\"."
-  type: long
+  type: long?
   inputBinding:
     prefix: --windowSize
 - id: in_window_increment
@@ -71,7 +71,7 @@ inputs:
     \ to <int> bases.\n<int> must be a non-zero positive integer, smaller\nthan --windowSize.\n\
     Default is 1.\nOnly available in modes: \"mfe\", \"subopt\",\n\"enforce\", \"\
     local\", \"shapes\", \"probs\"."
-  type: long
+  type: long?
   inputBinding:
     prefix: --windowIncrement
 - id: in_strategy
@@ -81,7 +81,7 @@ inputs:
     \ strategies are 'A','B','C','D' and 'P'. On\ninput omit the ticks.\nDefault is\
     \ 'A'.\nOnly available in modes: \"mfe\", \"subopt\", \"enforce\",\n\"local\"\
     , \"shapes\", \"probs\", \"cast\"."
-  type: long
+  type: long?
   inputBinding:
     prefix: --strategy
 - id: in_min_hairpin_length
@@ -91,7 +91,7 @@ inputs:
     \ of <int>. The\nhigher the value, the faster the program, but also\nthe less\
     \ accurate. This affects only the stems of\nboth hairpins, not their kissing helix!\n\
     <int> must be a positive number.\nDefault is 2."
-  type: long
+  type: long?
   inputBinding:
     prefix: --minHairpinLength
 - id: in_max_knot_size
@@ -101,7 +101,7 @@ inputs:
     \ limitation, i.e. --maxKnotSize\nis set to input length.\nOnly available in modes:\
     \ \"mfe\", \"subopt\", \"enforce\",\n\"local\", \"shapes\", \"probs\", \"cast\"\
     ."
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxKnotSize
 - id: in_h_penalty
@@ -111,7 +111,7 @@ inputs:
     <float> must be a floating point number.\nDefault is 9 kcal/mol.\nOnly available\
     \ in modes: \"mfe\", \"subopt\", \"enforce\",\n\"local\", \"shapes\", \"probs\"\
     , \"cast\", \"eval\"."
-  type: double
+  type: double?
   inputBinding:
     prefix: --Hpenalty
 - id: in_k_penalty
@@ -121,7 +121,7 @@ inputs:
     <float> must be a floating point number.\nDefault is 12 kcal/mol.\nOnly available\
     \ in modes: \"mfe\", \"subopt\", \"enforce\",\n\"local\", \"shapes\", \"probs\"\
     , \"cast\", \"eval\"."
-  type: double
+  type: double?
   inputBinding:
     prefix: --Kpenalty
 - id: in_allow_lp
@@ -130,7 +130,7 @@ inputs:
     \ we normally forbid them.\nShould you want to allow them set <int> to 1.\n<int>\
     \ must be 0 (=don't allow lonely base pairs) or 1 (=\nallow them).\nDefault is\
     \ 0, i.e. no lonely base pairs."
-  type: long
+  type: long?
   inputBinding:
     prefix: --allowLP
 - id: in_temperature
@@ -138,7 +138,7 @@ inputs:
     \ floating point number.\nDefault is 37 C.\nOnly available in modes: \"mfe\",\
     \ \"subopt\", \"enforce\",\n\"local\", \"shapes\", \"probs\", \"cast\", \"eval\"\
     ."
-  type: double
+  type: double?
   inputBinding:
     prefix: --temperature
 - id: in_param
@@ -147,14 +147,14 @@ inputs:
     \ format.\nDefault are parameters released by the Turner group in\n2004 (see [5]\
     \ and [6]).\nOnly available in modes: \"mfe\", \"subopt\", \"enforce\",\n\"local\"\
     , \"shapes\", \"probs\", \"cast\", \"eval\"."
-  type: File
+  type: File?
   inputBinding:
     prefix: --param
 - id: in_bin_path
   doc: ": pKiss expects that according Bellman's GAP compiled\nbinaries are located\
     \ in the same directory as the Perl\nwrapper is. Should you moved them into another\n\
     directory, you must set --binPath to this new location!"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --binPath
 - id: in_bin_prefix
@@ -163,29 +163,29 @@ inputs:
     followed by \"_window\" for the window mode version.\nThus, for non-window mode\
     \ \"subopt\" the name would be\n\"pKiss_subopt\". With --binPrefix you can change\
     \ the\nprefix into some arbitary one."
-  type: string
+  type: string?
   inputBinding:
     prefix: --binPrefix
 - id: in_prob_decimals
   doc: ': Sets the number of digits used for printing shape'
-  type: long
+  type: long?
   inputBinding:
     prefix: --probDecimals
 - id: in_verbose
   doc: ": Prints the actual command for Bellman's GAP binary."
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbose
 - id: in_varna
   doc: ": Provide a file name to which a HTML formatted version of\nthe output should\
     \ be saved in.\nOnly available in modes: \"mfe\", \"subopt\", \"enforce\",\n\"\
     local\", \"shapes\", \"probs\", \"cast\", \"eval\"."
-  type: File
+  type: File?
   inputBinding:
     prefix: --varna
 - id: in_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -options
 - id: in_mfe
@@ -271,9 +271,10 @@ outputs:
   doc: ": Provide a file name to which a HTML formatted version of\nthe output should\
     \ be saved in.\nOnly available in modes: \"mfe\", \"subopt\", \"enforce\",\n\"\
     local\", \"shapes\", \"probs\", \"cast\", \"eval\"."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_varna)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pKiss

@@ -8,6 +8,9 @@ task TreebestRoot {
     treebest root \
       ~{tree}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree: ""
   }

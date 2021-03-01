@@ -3,18 +3,19 @@ id: phyloFlash.pl.cwl
 inputs:
 - id: in_read_one
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -read1
 - id: in_lib
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -lib
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phyloFlash.pl

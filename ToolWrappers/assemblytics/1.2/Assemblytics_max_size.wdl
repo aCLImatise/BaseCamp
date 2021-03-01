@@ -18,6 +18,9 @@ task AssemblyticsMaxSize {
       ~{min_size} \
       ~{max_size}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly_tics: ""
     delta: ""

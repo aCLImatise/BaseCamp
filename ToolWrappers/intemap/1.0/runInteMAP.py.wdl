@@ -32,6 +32,9 @@ task RunInteMAPpy {
       ~{if defined(high_cov_abyss) then ("--high_cov_abyss " +  '"' + high_cov_abyss + '"') else ""} \
       ~{if (clearance) then "--clearance" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "Output contig file"
     thread_num: "number of threads, default=2"

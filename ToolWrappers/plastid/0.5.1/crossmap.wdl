@@ -40,6 +40,9 @@ task Crossmap {
       ~{if defined(sequence_file) then ("--sequence_file " +  '"' + sequence_file + '"') else ""} \
       ~{if defined(sequence_format) then ("--sequence_format " +  '"' + sequence_format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_length_generate: "K-mer length to generate from input file. (Default:\\n29)"
     offset: "Offset from 5' end of plus-strand read at which to\\nattribute score (Default: 14)"

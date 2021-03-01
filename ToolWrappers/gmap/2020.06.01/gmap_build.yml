@@ -3,34 +3,38 @@ command:
 - gmap_build
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: options...
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: genome_fasta_files
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "Destination directory for installation (defaults to gmapdb\ndirectory\
-    \ specified at configure time)"
+  optional: true
   synonyms:
   - -D
   - --dir
+  description: "Destination directory for installation (defaults to gmapdb\ndirectory\
+    \ specified at configure time)"
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: Genome name (required)
+  optional: true
   synonyms:
   - -d
   - --genomedb
+  description: Genome name (required)
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --names
   description: "Substitute names for contigs, provided in a file.\nThe file can have\
     \ two formats:\n1.  A file with one column per line, with each line\ncorresponding\
     \ to a FASTA file, in the order given to\ngmap_build.  The chromosome name for\
@@ -46,148 +50,144 @@ named:
     \ same as column 1).  The option of a blank\ncolumn 2 is allowed only when specifying\
     \ --sort=names,\nbecause otherwise, the program cannot distinguish between a\n\
     1-column and 2-column names file."
-  synonyms:
-  - -n
-  - --names
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: 'k-mer value for genomic index (allowed: 15 or less, default is 15)'
+  optional: true
   synonyms:
   - -k
   - --kmer
+  description: 'k-mer value for genomic index (allowed: 15 or less, default is 15)'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: 'sampling interval for genomoe (allowed: 1-3, default 3)'
+  optional: true
   synonyms:
   - -q
+  description: 'sampling interval for genomoe (allowed: 1-3, default 3)'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sort
   description: "Sort chromosomes using given method:\nnone - use chromosomes as found\
     \ in FASTA file(s) (default)\nalpha - sort chromosomes alphabetically (chr10 before\
     \ chr 1)\nnumeric-alpha - chr1, chr1U, chr2, chrM, chrU, chrX, chrY\nchrom - chr1,\
     \ chr2, chrM, chrX, chrY, chr1U, chrU\nnames - sort chromosomes based on file\
     \ provided to --names flag"
-  synonyms:
-  - -s
-  - --sort
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: Files are gzipped, so need to gunzip each file first
+  optional: true
   synonyms:
   - -g
   - --gunzip
+  description: Files are gzipped, so need to gunzip each file first
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Interpret argument as a command, instead of a list of FASTA files
+  optional: true
   synonyms:
   - -E
   - --fasta-pipe
+  description: Interpret argument as a command, instead of a list of FASTA files
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: Files are in FASTQ format
+  optional: true
   synonyms:
   - -Q
   - --fastq
+  description: Files are in FASTQ format
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Reverse complement all contigs
+  optional: true
   synonyms:
   - -R
   - --revcomp
+  description: Reverse complement all contigs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Wait (sleep) this many seconds after each step (default 2)
+  optional: true
   synonyms:
   - -w
+  description: Wait (sleep) this many seconds after each step (default 2)
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --circular
   description: "Circular chromosomes (either a list of chromosomes separated\nby a\
     \ comma, or a filename containing circular chromosomes,\none per line).  If you\
     \ use the --names feature, then you\nshould use the original name of the chromosome,\
     \ not the\nsubstitute name, for this option."
-  synonyms:
-  - -o
-  - --circular
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  - --altscaffold
   description: "File with alt scaffold info, listing alternate scaffolds,\none per\
     \ line, tab-delimited, with the following fields:\n(1) alt_scaf_acc, (2) parent_name,\
     \ (3) orientation,\n(4) alt_scaf_start, (5) alt_scaf_stop, (6) parent_start, (7)\
     \ parent_end."
-  synonyms:
-  - '-2'
-  - --altscaffold
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: Maximum number of messages (warnings, contig reports) to report (default
-    50)
+  optional: true
   synonyms:
   - -e
   - --nmessages
+  description: Maximum number of messages (warnings, contig reports) to report (default
+    50)
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Use MD file from NCBI for mapping contigs to\nchromosomal coordinates"
+  optional: true
   synonyms:
   - -M
   - --mdflag
+  description: "Use MD file from NCBI for mapping contigs to\nchromosomal coordinates"
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: "Find a chromosomal region in each FASTA header line.\nUseful for contigs\
-    \ that have been mapped\nto chromosomal coordinates.  Ignored if the --mdflag\
-    \ is provided."
+  optional: true
   synonyms:
   - -C
   - --contigs-are-mapped
+  description: "Find a chromosomal region in each FASTA header line.\nUseful for contigs\
+    \ that have been mapped\nto chromosomal coordinates.  Ignored if the --mdflag\
+    \ is provided."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Transcriptome name
+  optional: true
   synonyms:
   - -c
   - --transcriptomedb
+  description: Transcriptome name
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: FASTA file containing transcripts (required if specifying
+  optional: true
   synonyms:
   - -T
   - --transcripts
+  description: FASTA file containing transcripts (required if specifying
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Number of threads for GMAP alignment of transcripts to genome\n(default\
-    \ 8)\n"
+  optional: true
   synonyms:
   - -t
   - --nthreads
+  description: "Number of threads for GMAP alignment of transcripts to genome\n(default\
+    \ 8)\n"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -259,3 +259,4 @@ help_text: "\ngmap_build: Builds a gmap database for a genome to be used by GMAP
   \                         (default 8)\n\n"
 generated_using:
 - --help
+docker_image:

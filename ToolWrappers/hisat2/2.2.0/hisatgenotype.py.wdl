@@ -32,6 +32,9 @@ task Hisatgenotypepy {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(debug) then ("--debug " +  '"' + debug + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base_name: "base filename for genotype genome"
     region_list: "A comma-separated list of regions (default: empty)"

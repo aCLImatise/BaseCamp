@@ -3,17 +3,17 @@ id: anvi_script_compute_ani_for_fasta.cwl
 inputs:
 - id: in_fast_a_file
   doc: A FASTA-formatted input file
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta-file
 - id: in_output_dir
   doc: Directory path for output files
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-dir
 - id: in_pan_db
   doc: Anvi'o pan database
-  type: string
+  type: string?
   inputBinding:
     prefix: --pan-db
 - id: in_num_threads
@@ -23,12 +23,12 @@ inputs:
     \ you are running your commands on a SGE\n--if you are clusterizing your runs,\
     \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
     \ fast."
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-threads
 - id: in_log_file
   doc: File path to store debug/output messages.
-  type: File
+  type: File?
   inputBinding:
     prefix: --log-file
 - id: in_method
@@ -39,24 +39,24 @@ inputs:
     \ of the input sequences. 'ANIblastall': uses\nthe legacy BLASTN to align 1020nt\
     \ fragments Finally,\n'TETRA': calculates tetranucleotide frequencies of\neach\
     \ input sequence"
-  type: string
+  type: string?
   inputBinding:
     prefix: --method
 - id: in_distance
   doc: "The distance metric for the hierarchical clustering.\nThe default is \"euclidean\"\
     ."
-  type: string
+  type: string?
   inputBinding:
     prefix: --distance
 - id: in_linkage
   doc: "The linkage method for the hierarchical clustering.\nThe default is \"ward\"\
     ."
-  type: string
+  type: string?
   inputBinding:
     prefix: --linkage
 - id: in_just_do_it
   doc: "Don't bother me with questions or warnings, just do\nit.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --just-do-it
 outputs:
@@ -65,14 +65,15 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: Directory path for output files
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_dir)
 - id: out_log_file
   doc: File path to store debug/output messages.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_log_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-script-compute-ani-for-fasta

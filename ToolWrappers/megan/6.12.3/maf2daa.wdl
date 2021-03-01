@@ -24,6 +24,9 @@ task Maf2daa {
       ~{if (tmp) then "--tmp" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "sets path to MAF-File (can also be piped in, no gzip allowed here)"
     _reads_sets: ", -- reads             sets path to query-file in FASTA or FASTQ format (can also be gzipped)"

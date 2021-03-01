@@ -1,0 +1,397 @@
+&id001 !Command
+command:
+- chips
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - chips
+  - simreads
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: ': BED file with peak regions'
+    args: !SimpleFlagArg
+      name: peaks.bed
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: ': The file format of your input peak file. Only `homer` or `bed`
+      are supported. You can use -t wce with no BED file to simulate whole cell extract
+      control data.'
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: ': FASTA file with reference genome'
+    args: !SimpleFlagArg
+      name: ref.fa
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: ': Prefix for output files'
+    args: !SimpleFlagArg
+      name: outprefix
+  - !Flag
+    optional: true
+    synonyms:
+    - --numcopies
+    description: ": Number of copies of the genome to simulate\nDefault: 100"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --numreads
+    description: ": Number of reads (or read pairs) to simulate\nDefault: 1000000"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --readlen
+    description: ": Read length to generate\nDefault: 36"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --paired
+    description: ": Simulate paired-end reads\nDefault: false"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --model
+    description: ": JSON file with model parameters (e.g. from running learn\nSetting\
+      \ parameters below overrides anything in the JSON file"
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --gamma-frag
+    description: ",<float>: Parameters for fragment length distribution (alpha, beta).\n\
+      Default: 15.67,15.49"
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - --spot
+    description: ": SPOT score (fraction of reads in peaks)\nDefault: 0.17594"
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - --frac
+    description: ": Fraction of the genome that is bound\nDefault: 0.03713"
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - --recomputeF
+    description: ': Recompute --frac param based on input peaks.'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --pcr_rate
+    description: ": The rate of geometric distribution for PCR simulation\nDefault:\
+      \ 0.85"
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: ": Read BAM file used to score each peak\n: Default: None (use the\
+      \ scores from the peak file)"
+    args: !SimpleFlagArg
+      name: reads.bam
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: ": The index of the BED file column used to score each peak (index\
+      \ starting from 1). Required if -b not used.\n: Default: -1"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --noscale
+    description: ": Don't scale peak scores by the max score."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --scale-outliers
+    description: ': Set all peaks with scores >2*median score to have binding prob
+      1. Recommended with real peak files'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --seed
+    description: ": the seed for initiating randomization opertions\nDefault or 0:\
+      \ current time"
+    args: !SimpleFlagArg
+      name: unsigned
+  - !Flag
+    optional: true
+    synonyms:
+    - --region
+    description: ": Only simulate reads from this region chrom:start-end\nDefault:\
+      \ genome-wide"
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --binsize
+    description: ": Consider bins of this size when simulating\n: Default: 100000"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --thread
+    description: ": Number of threads used for computing\n: Default: 1"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --sequencer
+    description: ": Sequencing error values\n: Default: None (no sequencing errors)"
+    args: !SimpleFlagArg
+      name: std
+  - !Flag
+    optional: true
+    synonyms:
+    - --sub
+    description: ': Customized substitution value in sequecing'
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - --ins
+    description: ': Customized insertion value in sequecing'
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - --del
+    description: ': Customized deletion value in sequecing'
+    args: !SimpleFlagArg
+      name: float
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Print this help menu.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "\nTool:    chips simreads\nVersion: 2.3\nSummary: Simulate ChIP-seq\
+    \ reads for a set of peaks.\n\nUsage:   chips simreads -p peaks.bed -f ref.fa\
+    \ -o outprefix [OPTIONS] \n\n[Required arguments]: \n     -p <peaks.bed>: BED\
+    \ file with peak regions\n     -t <str>: The file format of your input peak file.\
+    \ Only `homer` or `bed` are supported. You can use -t wce with no BED file to\
+    \ simulate whole cell extract control data.\n     -f <ref.fa>: FASTA file with\
+    \ reference genome\n     -o <outprefix>: Prefix for output files\n\n[Experiment\
+    \ parameters]: \n     --numcopies <int>: Number of copies of the genome to simulate\n\
+    \                        Default: 100\n     --numreads <int> : Number of reads\
+    \ (or read pairs) to simulate\n                        Default: 1000000\n    \
+    \ --readlen <int>  : Read length to generate\n                        Default:\
+    \ 36\n     --paired         : Simulate paired-end reads\n                    \
+    \    Default: false \n\n[Model parameters]: \n     --model <str>             \
+    \  : JSON file with model parameters (e.g. from running learn\n              \
+    \                     Setting parameters below overrides anything in the JSON\
+    \ file\n     --gamma-frag <float>,<float>: Parameters for fragment length distribution\
+    \ (alpha, beta).\n                                   Default: 15.67,15.49\n  \
+    \   --spot <float>              : SPOT score (fraction of reads in peaks) \n \
+    \                                  Default: 0.17594\n     --frac <float>     \
+    \         : Fraction of the genome that is bound \n                          \
+    \         Default: 0.03713\n     --recomputeF                : Recompute --frac\
+    \ param based on input peaks.\n     --pcr_rate <float>          : The rate of\
+    \ geometric distribution for PCR simulation\n                                \
+    \   Default: 0.85\n\n[Peak scoring: choose one]: \n     -b <reads.bam>       \
+    \       : Read BAM file used to score each peak\n                            \
+    \     : Default: None (use the scores from the peak file)\n     -c <int>     \
+    \               : The index of the BED file column used to score each peak (index\
+    \ starting from 1). Required if -b not used.\n                               \
+    \  : Default: -1\n     --noscale                   : Don't scale peak scores by\
+    \ the max score.\n     --scale-outliers            : Set all peaks with scores\
+    \ >2*median score to have binding prob 1. Recommended with real peak files\n\n\
+    [Other options]: \n     --seed <unsigned>           : the seed for initiating\
+    \ randomization opertions\n                                   Default or 0: current\
+    \ time \n     --region <str>              : Only simulate reads from this region\
+    \ chrom:start-end\n                                   Default: genome-wide \n\
+    \     --binsize <int>             : Consider bins of this size when simulating\n\
+    \                                 : Default: 100000\n     --thread <int>     \
+    \         : Number of threads used for computing\n                           \
+    \      : Default: 1\n     --sequencer <std>           : Sequencing error values\n\
+    \                                 : Default: None (no sequencing errors)\n   \
+    \  --sub <float>               : Customized substitution value in sequecing\n\
+    \     --ins <float>               : Customized insertion value in sequecing\n\
+    \     --del <float>               : Customized deletion value in sequecing\n\n\
+    [ General help ]:\n    --help        Print this help menu.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/chips:2.3--h5ef6573_0
+- !Command
+  command:
+  - chips
+  - learn
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: ':     BAM file with ChIP reads (.bai index required)'
+    args: !SimpleFlagArg
+      name: reads.bam
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: ':     BED file with peak regions (Homer format or BED format)'
+    args: !SimpleFlagArg
+      name: peaks.bed
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: ': File type of the input peak file. Only `homer` or `bed` supported.'
+    args: !SimpleFlagArg
+      name: peakfile_type
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: ':     Prefix for output files'
+    args: !SimpleFlagArg
+      name: outprefix
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: ':           The index of the BED file column used to score each
+      peak (index starting from 1)'
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: ":         Ratio of high score peaks to ignore\nDefault: 0"
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - --est
+    description: ":        Estimated fragment length\nDefault: 200"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --noscale
+    description: ":          Don't scale peak scores by the max score."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --scale-outliers
+    description: ':   Set all peaks with scores >2*median score to have binding prob
+      1. Recommended with real data'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --paired
+    description: ":           Loading paired-end reads\nDefault: false"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --thres
+    description: ":    Threshold for peak scores in single-end read length estimation\n\
+      Default: 100"
+    args: !SimpleFlagArg
+      name: float
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Print this help menu.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "\n******ERROR: Unrecognized parameter: --help ******\n\n****** ERROR:\
+    \ Must specify peaks file with -p ******\n****** ERROR: Must specify outprefix\
+    \ with -o ******\n****** ERROR: Must specify peakfiletype with -t ******\n\nTool:\
+    \    chips learn\nVersion: 2.3\nSummary: Learn parameters from a ChIP dataset.\n\
+    \nUsage:   chips learn -b reads.bam -p peak.bed -o outprefix [OPTIONS] \n\n[Required\
+    \ arguments]: \n         -b <reads.bam>:     BAM file with ChIP reads (.bai index\
+    \ required)\n         -p <peaks.bed>:     BED file with peak regions (Homer format\
+    \ or BED format)\n         -t <peakfile_type>: File type of the input peak file.\
+    \ Only `homer` or `bed` supported.\n         -o <outprefix>:     Prefix for output\
+    \ files\n         -c <int>:           The index of the BED file column used to\
+    \ score each peak (index starting from 1)\n[Optional arguments]: \n         -r\
+    \ <float>:         Ratio of high score peaks to ignore\n                     \
+    \        Default: 0\n         --est <int>:        Estimated fragment length\n\
+    \                             Default: 200\n         --noscale:          Don't\
+    \ scale peak scores by the max score.\n         --scale-outliers:   Set all peaks\
+    \ with scores >2*median score to have binding prob 1. Recommended with real data\n\
+    [BAM-file arguments]: \n         --paired:           Loading paired-end reads\n\
+    \                             Default: false\n         --thres <float>:    Threshold\
+    \ for peak scores in single-end read length estimation\n                     \
+    \        Default: 100\n\n[ General help ]:\n    --help        Print this help\
+    \ menu.\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/chips:2.3--h5ef6573_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help menu.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: What version are you using?.
+  args: !EmptyFlagArg {}
+help_text: "chips: Simulator for ChIP-seq and other -seq experiments.\nusage:   chips\
+  \ <subcommand> [options]\n\nThe chips sub-commands include:\n     simreads     \
+  \ Simulate ChIP-seq reads given a set of intervals.\n     learn         Learn model\
+  \ from real ChIP data.\n\n[ General help ]:\n    --help        Print this help menu.\n\
+  \    --version     What version are you using?.\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/chips:2.3--h5ef6573_0

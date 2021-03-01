@@ -12,6 +12,9 @@ task QscoresFromSummary {
       ~{if (median) then "--median" else ""} \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     median: "Use median. If false, use mean. (default: False)"
     ref: "process single ref, rather than overall result (default: None)"

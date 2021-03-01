@@ -4,162 +4,165 @@ command:
 positional: []
 named:
 - !Flag
-  description: mode in {no-bc, 3p-bc, 5p-bc}
+  optional: true
   synonyms:
   - -geom
+  description: mode in {no-bc, 3p-bc, 5p-bc}
   args: !SimpleFlagArg
     name: mode
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -meta
   description: "file with geometry-dependent format. Required columns:\nGeometry \
     \   Columns:\nno-bc          3p-ad     -       -      -    tabu\n3p-bc       \
     \   3p-ad  barcode  3p-si    -    tabu\n5p-bc          3p-ad  barcode    -   \
     \ 5p-si  tabu"
-  synonyms:
-  - -meta
   args: !SimpleFlagArg
     name: fname
-  optional: true
 - !Flag
-  description: input stream (gzipped file allowed) (default STDIN)
+  optional: true
   synonyms:
   - -i
+  description: input stream (gzipped file allowed) (default STDIN)
   args: !SimpleFlagArg
     name: fname
-  optional: true
 - !Flag
-  description: minimum allowed clean length (default 0)
+  optional: true
   synonyms:
   - -clean-length
+  description: minimum allowed clean length (default 0)
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: protect first <int> bases in read from adapter and tabu matching
+  optional: true
   synonyms:
   - -guard
+  description: protect first <int> bases in read from adapter and tabu matching
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "only use the first <int> bases of adapter or tabu sequence (default\
-    \ 18)\nThis is to avoid false positive matches"
+  optional: true
   synonyms:
   - -restrict
+  description: "only use the first <int> bases of adapter or tabu sequence (default\
+    \ 18)\nThis is to avoid false positive matches"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "filter out reads with tri-nt score > threshold\na reasonable <threshold>\
-    \ is 35"
+  optional: true
   synonyms:
   - -tri
+  description: "filter out reads with tri-nt score > threshold\na reasonable <threshold>\
+    \ is 35"
   args: !SimpleFlagArg
     name: threshold
-  optional: true
 - !Flag
-  description: dust theshold for read suffix (default 0, suggested 20)
+  optional: true
   synonyms:
   - -dust-suffix
+  description: dust theshold for read suffix (default 0, suggested 20)
   args: !SimpleFlagArg
     name: threshold
-  optional: true
 - !Flag
-  description: "/<outof> (default 0/0)\ndisregard read onwards from seeing <count>\
-    \ N's in <outof> bases"
+  optional: true
   synonyms:
   - -nnn-check
+  description: "/<outof> (default 0/0)\ndisregard read onwards from seeing <count>\
+    \ N's in <outof> bases"
   args: !SimpleFlagArg
     name: count
-  optional: true
 - !Flag
-  description: l/e[/g[/o]]  (default 14/2/1/0)
+  optional: true
   synonyms:
   - -3p-global
+  description: l/e[/g[/o]]  (default 14/2/1/0)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: l/e[/g[/o]]  (default 8/2/0/2)
+  optional: true
   synonyms:
   - -3p-prefix
+  description: l/e[/g[/o]]  (default 8/2/0/2)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[/g[/o]]  (default 0/6/1/0)'
+  optional: true
   synonyms:
   - -3p-barcode
+  description: /e[/g[/o]]  (default 0/6/1/0)
   args: !SimpleFlagArg
-    name: l/e
-  optional: true
+    name: l
 - !Flag
-  description: '[/g[/o]]  (default 0/0/0/2)'
+  optional: true
   synonyms:
   - -5p-barcode
+  description: /e[/g[/o]]  (default 0/0/0/2)
   args: !SimpleFlagArg
-    name: l/e
-  optional: true
+    name: l
 - !Flag
-  description: l/e[/g[/o]]  (default 16/2/1/0)
+  optional: true
   synonyms:
   - -mr-tabu
+  description: l/e[/g[/o]]  (default 16/2/1/0)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -3p-head-to-tail
   description: "minimal trailing perfect match length (default 0)\nsyntax used in\
     \ the above:\nl  <int> minimum length required to count sub-alignment as match\n\
     e  <int> maximum allowed edit distance\ng  <int> [optional, not active when set\
     \ to 0] maximum allowed number of gaps\no  <int> [optional, not active when set\
     \ to 0] offset:\no= 5  requires alignment to start in the first five bases of\
     \ adaptor\no=-5  requires alignment to end in the last five bases of adaptor"
-  synonyms:
-  - -3p-head-to-tail
   args: !SimpleFlagArg
     name: l
-  optional: true
 - !Flag
-  description: match/substitution/gap gain/cost/cost (default 4/1/3)
+  optional: true
   synonyms:
   - -swp
+  description: /S/G match/substitution/gap gain/cost/cost (default 4/1/3)
   args: !SimpleFlagArg
-    name: M/S/G
-  optional: true
+    name: M
 - !Flag
-  description: read FASTA input
+  optional: true
   synonyms:
   - --fasta-in
+  description: read FASTA input
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(record description, default @%I%A%n%R%n+%#%Q%n)\n[ -record-format\
-    \ syntax is output when supplying --record-format ]"
+  optional: true
   synonyms:
   - -record-format
+  description: "(record description, default @%I%A%n%R%n+%#%Q%n)\n[ -record-format\
+    \ syntax is output when supplying --record-format ]"
   args: !SimpleFlagArg
     name: format string
-  optional: true
 - !Flag
-  description: "(simple line formats, one field per line):\nR  read\nI  read identifier\n\
-    Q  quality scores\nD  discard field"
+  optional: true
   synonyms:
   - -record-format2
+  description: "(simple line formats, one field per line):\nR  read\nI  read identifier\n\
+    Q  quality scores\nD  discard field"
   args: !SimpleFlagArg
     name: format string
-  optional: true
 - !Flag
-  description: pfx.lint.gz, pfx.clean.gz pfx.report etc will be constructed
+  optional: true
   synonyms:
   - -basename
+  description: pfx.lint.gz, pfx.clean.gz pfx.report etc will be constructed
   args: !SimpleFlagArg
     name: pfx
-  optional: true
 - !Flag
-  description: (output for clean reads)
+  optional: true
   synonyms:
   - -format-clean
+  description: (output for clean reads)
   args: !SimpleFlagArg
     name: format string
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -format-lint
   description: "(output for filtered reads)\n-format-clean/lint specification syntax:\n\
     %R  read\n%C  clean read\n%Z  clean read padded with Ns if necessary\n%V  reverse\
     \ complement of clean read\n%I  read identifier\n%Q  clean or input read quality\
@@ -173,82 +176,79 @@ named:
     %n  newline\n%J  record offset, unique for each read. Use to match paired-end\
     \ reads\n%f  fastq line number based on standard fastq format\n%t  tab\n%%  percent\
     \ sign\nAnything else is copied verbatim"
-  synonyms:
-  - -format-lint
   args: !SimpleFlagArg
     name: format string
-  optional: true
 - !Flag
-  description: '[acl]+     a=alignments c=clean l=lint'
+  optional: true
   synonyms:
   - -debug
+  description: '[acl]+     a=alignments c=clean l=lint'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: if debug, sample every c/l clean/lint read
+  optional: true
   synonyms:
   - -sample
+  description: /l       if debug, sample every c/l clean/lint read
   args: !SimpleFlagArg
-    name: c/l
-  optional: true
+    name: c
 - !Flag
-  description: do not output gzipped files
+  optional: true
   synonyms:
   - --nozip
+  description: do not output gzipped files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: do not output quality report files
+  optional: true
   synonyms:
   - --noqc
+  description: do not output quality report files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: perform early 'B' quality filtering (when reading sequences)
+  optional: true
   synonyms:
   - --bcq-early
+  description: perform early 'B' quality filtering (when reading sequences)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: perform late 'B' quality filtering (before outputting sequences)
+  optional: true
   synonyms:
   - --bcq-late
+  description: perform late 'B' quality filtering (before outputting sequences)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: only allow reads not shortened in any filter step
+  optional: true
   synonyms:
   - --full-length
+  description: only allow reads not shortened in any filter step
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: delete rather than discard reads (e.g. tabu match, missing 5p-sinsert)
+  optional: true
   synonyms:
   - --keep-all
+  description: delete rather than discard reads (e.g. tabu match, missing 5p-sinsert)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: cut reads back to length <int>
+  optional: true
   synonyms:
   - -trim-length
+  description: cut reads back to length <int>
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: remove trailing A's if length exceeds <int>
+  optional: true
   synonyms:
   - -polya
+  description: remove trailing A's if length exceeds <int>
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: threshold for complexity of suffix following prefix match (default
-    0.25)
+  optional: true
   synonyms:
   - -sc-max
+  description: threshold for complexity of suffix following prefix match (default
+    0.25)
   args: !SimpleFlagArg
     name: f
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -319,3 +319,4 @@ help_text: "\nRequired options\n-geom <mode>   mode in {no-bc, 3p-bc, 5p-bc}\n-m
   \ adaptor>\n-5psi <five prime sequence insert>\n-tabu <tabu sequence>\n\n"
 generated_using:
 - -h
+docker_image:

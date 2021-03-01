@@ -3,17 +3,17 @@ id: hailctl_dataproc_connect.cwl
 inputs:
 - id: in_dry_run
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dry-run
 - id: in_zone
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --zone
 - id: in_port
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --port
 - id: in_name
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hailctl

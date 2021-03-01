@@ -4,84 +4,84 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Print information during execution -- useful for\ndebugging [default:\
-    \ False]"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: "Print information during execution -- useful for\ndebugging [default:\
+    \ False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ignore
   description: "Ignore the comma separated list of names. For\ninstance, specifying\n\
     --ignore_unknown=unknown,unclassified will ignore\nthose labels while collapsing.\
     \ The default is to not\nignore anything. [default: none]"
-  synonyms:
-  - --ignore
   args: !SimpleFlagArg
     name: IGNORE
-  optional: true
 - !Flag
-  description: "output the predicted metagenome table in tab-delimited\nformat [default:\
-    \ False]"
+  optional: true
   synonyms:
   - -f
   - --format_tab_delimited
+  description: "output the predicted metagenome table in tab-delimited\nformat [default:\
+    \ False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: the predicted metagenome table [REQUIRED]
+  optional: true
   synonyms:
   - -i
   - --input_fp
+  description: the predicted metagenome table [REQUIRED]
   args: !SimpleFlagArg
     name: INPUT_FP
-  optional: true
 - !Flag
-  description: the resulting table [REQUIRED]
+  optional: true
   synonyms:
   - -o
   - --output_fp
+  description: the resulting table [REQUIRED]
   args: !SimpleFlagArg
     name: OUTPUT_FP
-  optional: true
 - !Flag
-  description: "the metadata category that describes the hierarchy\n(e.g. KEGG_Pathways,\
-    \ COG_Category, etc.). Note: RFAM\npredictions can not be collapsed because there\
-    \ are no\ncategories to group them into. [REQUIRED]"
+  optional: true
   synonyms:
   - -c
   - --metadata_category
+  description: "the metadata category that describes the hierarchy\n(e.g. KEGG_Pathways,\
+    \ COG_Category, etc.). Note: RFAM\npredictions can not be collapsed because there\
+    \ are no\ncategories to group them into. [REQUIRED]"
   args: !SimpleFlagArg
     name: METADATA_CATEGORY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --level
   description: "the level in the hierarchy to collapse to. A value of\n0 is not allowed,\
     \ a value of 1 is the highest level,\nand any higher value nears the leaves of\
     \ the\nhierarchy. For instance, if the hierarchy contains 4\nlevels, specifying\
     \ 3 would collapse at one level above\nbeing fully specified. [REQUIRED]\n"
-  synonyms:
-  - -l
-  - --level
   args: !SimpleFlagArg
     name: LEVEL
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: categorize_by_function.py [options] {-i/--input_fp INPUT_FP -o/--output_fp\
   \ OUTPUT_FP -c/--metadata_category METADATA_CATEGORY -l/--level LEVEL}\n\n[] indicates\
   \ optional input (order unimportant)\n{} indicates required input (order unimportant)\n\
@@ -124,3 +124,4 @@ help_text: "Usage: categorize_by_function.py [options] {-i/--input_fp INPUT_FP -
   \                        being fully specified. [REQUIRED]\n"
 generated_using:
 - --help
+docker_image:

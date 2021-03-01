@@ -3,12 +3,12 @@ id: alleyoop_collapse.cwl
 inputs:
 - id: in_output_dir
   doc: Output directory for mapped BAM files.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outputDir
 - id: in_threads
   doc: "Thread number (default: 1)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_t_count
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: Output directory for mapped BAM files.
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - alleyoop

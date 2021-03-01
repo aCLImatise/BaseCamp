@@ -10,6 +10,9 @@ task RnazFilterpl {
       ~{if (count) then "--count" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count: "Count the windows/loci instead of printing them."
     man: "Prints a detailed manual page and exits."

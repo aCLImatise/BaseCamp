@@ -4,17 +4,56 @@ command:
 positional: []
 named:
 - !Flag
-  description: "/path/to/foo.bam\n--chr chromosome\n--outd /path/to/outoput-dir\n\
-    --indelsize maximal indel-size\n--reffa /path/to/ref.fa\n--baseq [20]\n--mapq\
-    \ [20]\n--within [3]\n--pair-within [5]\n--alt-read-depth [5]\n--support-reads\
-    \ [3]\n--clip-length [5]\n--support-clip-length [5]\n--glsearch [glsearch36]\n\
-    --glsearch-mat [data/mydna.mat]\n--mafft [mafft]\n--samtools [samtools]\n--temp\
-    \ [/temp]\n--thread [1]\n--output-consensus-seq /path/to/output-dir\n--exclude-region\
-    \ /path/to/exclude-list\n"
+  optional: true
   synonyms:
   - --bam
+  description: /path/to/foo.bam
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - --chr
+  - --outd
+  description: /path/to/outoput-dir
+  args: !SimpleFlagArg
+    name: chromosome
+- !Flag
+  optional: true
+  synonyms:
+  - --indelsize
+  description: indel-size
+  args: !SimpleFlagArg
+    name: maximal
+- !Flag
+  optional: true
+  synonyms:
+  - --reffa
+  description: /path/to/ref.fa
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --glsearch
+  description: '[glsearch36]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --samtools
+  description: '[samtools]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output-consensus-seq
+  description: /path/to/output-dir
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude-region
+  description: /path/to/exclude-list
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
@@ -32,3 +71,4 @@ help_text: "Usage: imsindel [options]\n        --bam /path/to/foo.bam\n        -
   \    --exclude-region /path/to/exclude-list\n"
 generated_using:
 - --help
+docker_image:

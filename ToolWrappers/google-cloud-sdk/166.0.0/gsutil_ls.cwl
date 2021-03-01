@@ -3,31 +3,31 @@ id: gsutil_ls.cwl
 inputs:
 - id: in_prints_long_listing
   doc: Prints long listing (owner, length).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
-- id: in_prints_more_detail
+- id: in_prints_even_more
   doc: "Prints even more detail than -l.  Note: If you use this option\nwith the (non-default)\
     \ XML API it will generate an additional\nrequest per object being listed, which\
     \ makes the -L option run\nmuch more slowly (and cost more) using the XML API\
     \ than the\ndefault JSON API."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -L
-- id: in_list_matching_names
+- id: in_list_matching_subdirectory
   doc: "List matching subdirectory names instead of contents, and do not\nrecurse\
     \ into matching subdirectories even if the -R option is\nspecified."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_prints_info_used
   doc: Prints info about the bucket when used with a bucket URL.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in_specifies_project_id
   doc: Specifies the project ID to use for listing buckets.
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_requests_recursive_listing
@@ -36,19 +36,19 @@ inputs:
     \ recursive-style output ordering,\nyou may be able to instead use wildcards to\
     \ perform a flat\nlisting, e.g.  `gsutil ls gs://mybucket/**`, which will generally\n\
     perform fewer listing operations."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -R
-- id: in_includes_object_versions
+- id: in_includes_noncurrent_versions
   doc: "Includes non-current object versions / generations in the listing\n(only useful\
     \ with a versioning-enabled bucket). If combined with\n-l option also prints metageneration\
     \ for each listed object."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_include_etag_long
   doc: Include ETag in long listing (-l) output.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -e
 - id: in_two_two_seven_six_two_two_four
@@ -65,6 +65,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gsutil

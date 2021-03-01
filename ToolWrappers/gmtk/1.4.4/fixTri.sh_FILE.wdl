@@ -2,16 +2,19 @@ version 1.0
 
 task FixTrishFILE {
   input {
-    File file
+    File var_file
     String tri_file
   }
   command <<<
     fixTri_sh FILE \
-      ~{file} \
+      ~{var_file} \
       ~{tri_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: ""
+    var_file: ""
     tri_file: ""
   }
   output {

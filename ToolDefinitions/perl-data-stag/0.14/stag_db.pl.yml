@@ -3,102 +3,102 @@ command:
 - stag-db.pl
 positional:
 - !Positional
-  description: "-i INDEXFILE\nThis file will be used as the persistent index for storage/retrieval"
+  optional: false
   position: 0
   name: ARGUMENTS
-  optional: false
+  description: "-i INDEXFILE\nThis file will be used as the persistent index for storage/retrieval"
 - !Positional
-  description: For more complex stag to database mapping, see DBIx::DBStag and the
+  optional: false
   position: 0
   name: Stag
-  optional: false
+  description: For more complex stag to database mapping, see DBIx::DBStag and the
 - !Positional
-  description: stag-storenode
+  optional: false
   position: 1
   name: scripts
-  optional: false
+  description: stag-storenode
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -r
   description: "This is the name of the stag node (XML element) that will be stored\
     \ in\nthe index; for example, with the XML below you may want to use the node\n\
     name person and the unique key id\n<person_set>\n<person>\n<id>...</id>\n</person>\n\
     <person>\n<id>...</id>\n</person>\n...\n</person_set>\nThis flag should only be\
     \ used when you want to store data"
-  synonyms:
-  - -r
   args: !SimpleFlagArg
     name: RELATION-NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -k
   description: "This node will be used as the unique/primary key for the data\nThis\
     \ node should be nested directly below the node that is being stored\nin the index\
     \ - if it is more that one below, specify a path\nThis flag should only be used\
     \ when you want to store data"
-  synonyms:
-  - -k
   args: !SimpleFlagArg
     name: UNIQUE-KEY
-  optional: true
 - !Flag
-  description: Synonym for -k
+  optional: true
   synonyms:
   - -u
+  description: Synonym for -k
   args: !SimpleFlagArg
     name: UNIQUE-KEY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
   description: "This can be the name of a stag supported format (xml, sxpr, itext)\
     \ - XML\nis assumed by default\nIt can also be a module name - this module is\
     \ used to parse the input\nfile into a stag stream; see Data::Stag::BaseGenerator\
     \ for details on\nwriting your own parsers/event generators\nThis flag should\
     \ only be used when you want to store data"
-  synonyms:
-  - -p
   args: !SimpleFlagArg
     name: PARSER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -q
   description: "Fetches the relation/node with unique key value equal to query-id\n\
     Multiple arguments can be passed by specifying -q multple times\nThis flag should\
     \ only be used when you want to query data"
-  synonyms:
-  - -q
   args: !SimpleFlagArg
     name: QUERY-ID
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -top
   description: "If this is specified in conjunction with -q or -qf then all the query\n\
     result nodes will be nested inside a node with this name (ie this\nprovides a\
     \ root for the resulting document tree)"
-  synonyms:
-  - -top
   args: !SimpleFlagArg
     name: NODE-NAME
-  optional: true
 - !Flag
-  description: "This is a file of newline-seperated IDs; this is useful for querying\
-    \ the\nindex in batch"
+  optional: true
   synonyms:
   - -qf
+  description: "This is a file of newline-seperated IDs; this is useful for querying\
+    \ the\nindex in batch"
   args: !SimpleFlagArg
     name: QUERY-FILE
-  optional: true
 - !Flag
-  description: This will write a list of all primary keys in the index
+  optional: true
   synonyms:
   - -keys
+  description: This will write a list of all primary keys in the index
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -w
   description: "This format will be used to write the data; can be any stag format\
     \ (xml,\nsxpr, itext) - default XML.\nCan also be a module that catches the incoming\
     \ stag event stream and\ndoes something with it (for example, this could be a\
     \ module you write\nyourself that transforms the stag events into HTML)"
-  synonyms:
-  - -w
   args: !SimpleFlagArg
     name: WRITER
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -155,3 +155,4 @@ help_text: "NAME\n    stag-db - persistent storage and retrieval for stag data (
   \n    stag-storenode\n\n    selectall_xml\n\n"
 generated_using:
 - --help
+docker_image:

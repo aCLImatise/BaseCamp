@@ -20,6 +20,9 @@ task SamToCollapsedGffpy {
       ~{format} \
       ~{sam_filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     convert: ""
     sam: ""

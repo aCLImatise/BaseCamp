@@ -5,73 +5,73 @@ command:
 positional: []
 named:
 - !Flag
-  description: The TABIX'ed BED file containing the annotations
+  optional: true
   synonyms:
   - -f
+  description: The TABIX'ed BED file containing the annotations
   args: !SimpleFlagArg
     name: ANNO_FILE
-  optional: true
 - !Flag
-  description: "The name(s) of the BED column(s) to be added to the\nvariant table.If\
-    \ the input file is a VCF, then this is\nthe name of the info field to pull."
+  optional: true
   synonyms:
   - -c
+  description: "The name(s) of the BED column(s) to be added to the\nvariant table.If\
+    \ the input file is a VCF, then this is\nthe name of the info field to pull."
   args: !SimpleFlagArg
     name: COL_NAMES
-  optional: true
 - !Flag
-  description: How should the annotation file be used? (def. extract)
+  optional: true
   synonyms:
   - -a
+  description: How should the annotation file be used? (def. extract)
   args: !ChoiceFlagArg
     choices: !!set
+      boolean:
       extract:
       count:
-      boolean:
-  optional: true
 - !Flag
-  description: "Column(s) to extract information from for list\nannotations.If the\
-    \ input is VCF, then this defaults to\nthe fields specified in `-c`."
+  optional: true
   synonyms:
   - -e
+  description: "Column(s) to extract information from for list\nannotations.If the\
+    \ input is VCF, then this defaults to\nthe fields specified in `-c`."
   args: !SimpleFlagArg
     name: COL_EXTRACTS
-  optional: true
 - !Flag
-  description: "What data type(s) should be used to represent the new\nvalues in the\
-    \ database? Any of {integer, float, text}"
+  optional: true
   synonyms:
   - -t
+  description: "What data type(s) should be used to represent the new\nvalues in the\
+    \ database? Any of {integer, float, text}"
   args: !SimpleFlagArg
     name: COL_TYPES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
   description: "Operation(s) to apply to the extract column values in\nthe event that\
     \ a variant overlaps multiple annotations\nin your annotation file (-f).Any of\
     \ {sum, mean,\nmedian, min, max, mode, list, uniq_list, first, last}"
-  synonyms:
-  - -o
   args: !SimpleFlagArg
     name: COL_OPERATIONS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --region-only
   description: "If set, only region coordinates will be considered\nwhen annotating\
     \ variants.The default is to annotate\nusing region coordinates as well as REF\
     \ and ALT\nvariant valuesThis option is only valid if annotation\nis a VCF file\n"
-  synonyms:
-  - --region-only
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: oncogemini annotate [-h] -f ANNO_FILE [-c COL_NAMES]\n        \
@@ -100,3 +100,4 @@ help_text: "usage: oncogemini annotate [-h] -f ANNO_FILE [-c COL_NAMES]\n       
   \ file\n"
 generated_using:
 - --help
+docker_image:

@@ -3,15 +3,15 @@ id: mhcflurry_calibrate_percentile_ranks.cwl
 inputs:
 - id: in_predictor_kind
   doc: Type of predictor to calibrate
-  type: string
+  type: string?
   inputBinding:
     prefix: --predictor-kind
 - id: in_models_dir
   doc: Directory to read and write models
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --models-dir
-- id: in_alleles_calibrate_percentile
+- id: in_alleles_calibrate_ranks
   doc: "Alleles to calibrate percentile ranks for. If not\nspecified all alleles are\
     \ used"
   type: string[]
@@ -21,90 +21,110 @@ inputs:
   doc: "Sample random peptides from the amino acid\ndistribution of the peptides listed\
     \ in the supplied\nCSV file, which must have a 'peptide' column. If not\nspecified\
     \ a uniform distribution is used."
-  type: File
+  type: File?
   inputBinding:
     prefix: --match-amino-acid-distribution-data
 - id: in_alleles_file
   doc: "Use alleles in supplied CSV file, which must have an\n'allele' column."
-  type: File
+  type: File?
   inputBinding:
     prefix: --alleles-file
 - id: in_num_peptides_per_length
   doc: "Number of peptides per length to use to calibrate\npercent ranks. Default:\
     \ 100000."
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-peptides-per-length
 - id: in_num_genotypes
   doc: "Used when calibrrating a presentation predictor.\nNumber of genotypesto sample"
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-genotypes
 - id: in_alleles_per_genotype
   doc: "Used when calibrating a presentation predictor. Number\nof alleles per genotype.\
     \ Use 1 to calibrate for single\nalleles. Default: 6"
-  type: long
+  type: long?
   inputBinding:
     prefix: --alleles-per-genotype
 - id: in_motif_summary
   doc: Calculate motifs and length preferences for each
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --motif-summary
 - id: in_length_range
   doc: "LENGTH_RANGE\nMin and max peptide length to calibrate, inclusive.\nDefault:\
     \ (8, 15)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --length-range
 - id: in_prediction_batch_size
   doc: Keras batch size for predictions
-  type: long
+  type: long?
   inputBinding:
     prefix: --prediction-batch-size
 - id: in_alleles_per_work_chunk
   doc: 'Number of alleles per work chunk. Default: 1.'
-  type: long
+  type: long?
   inputBinding:
     prefix: --alleles-per-work-chunk
 - id: in_verbosity
   doc: 'Keras verbosity. Default: 0'
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbosity
 - id: in_num_jobs
   doc: "Number of local processes to parallelize training\nover. Set to 0 for serial\
     \ run. Default: 0."
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-jobs
 - id: in_backend
   doc: "Keras backend. If not specified will use system\ndefault."
-  type: string
+  type: string?
   inputBinding:
     prefix: --backend
 - id: in_gpus
   doc: "Number of GPUs to attempt to parallelize across.\nRequires running in parallel."
-  type: long
+  type: long?
   inputBinding:
     prefix: --gpus
 - id: in_max_workers_per_gpu
   doc: "Maximum number of workers to assign to a GPU.\nAdditional tasks will run on\
     \ CPU."
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-workers-per-gpu
 - id: in_max_tasks_per_worker
   doc: "Restart workers after N tasks. Workaround for\ntensorflow memory leaks. Requires\
     \ Python >=3.2."
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-tasks-per-worker
 - id: in_worker_log_dir
   doc: "Write worker stdout and stderr logs to given\ndirectory."
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --worker-log-dir
+- id: in_cluster_submit_command
+  doc: 'Default: sh'
+  type: string?
+  inputBinding:
+    prefix: --cluster-submit-command
+- id: in_cluster_results_workdir
+  doc: 'Default: ./cluster-workdir'
+  type: string?
+  inputBinding:
+    prefix: --cluster-results-workdir
+- id: in_additional_complete_file
+  doc: "Additional file to monitor for job completion.\nDefault: STDERR"
+  type: File?
+  inputBinding:
+    prefix: --additional-complete-file
+- id: in_cluster_script_prefix_path
+  doc: "How many times to rerun failing jobs. Default: 3\n"
+  type: File?
+  inputBinding:
+    prefix: --cluster-script-prefix-path
 - id: in__summarytoppeptidefraction_x
   doc: --summary-top-peptide-fraction X [X ...]
   type: string
@@ -114,6 +134,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mhcflurry-calibrate-percentile-ranks

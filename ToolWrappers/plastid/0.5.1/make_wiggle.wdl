@@ -52,6 +52,9 @@ task MakeWiggle {
       ~{if defined(track_name) then ("--track_name " +  '"' + track_name + '"') else ""} \
       ~{if defined(output_format) then ("--output_format " +  '"' + output_format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "Base name for output files"
     window_size: "Size of nucleotides to fetch at once for export. Large\\nvalues are faster but require more memory (Default:\\n100000)"

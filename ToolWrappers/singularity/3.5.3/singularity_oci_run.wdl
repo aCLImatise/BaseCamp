@@ -18,6 +18,9 @@ task SingularityOciRun {
       ~{if defined(pid_file) then ("--pid-file " +  '"' + pid_file + '"') else ""} \
       ~{if defined(sync_socket) then ("--sync-socket " +  '"' + sync_socket + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bundle: "specify the OCI bundle path (required)"
     log_format: "specify the log file format. Available\\nformats are basic, kubernetes and json\\n(default \\\"kubernetes\\\")"

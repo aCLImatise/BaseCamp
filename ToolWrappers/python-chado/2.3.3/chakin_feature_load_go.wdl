@@ -18,6 +18,9 @@ task ChakinFeatureLoadGo {
       ~{if defined(re_name) then ("--re_name " +  '"' + re_name + '"') else ""} \
       ~{if (skip_missing) then "--skip_missing" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query_type: "The feature type (e.g. 'gene', 'mRNA', 'polypeptide',\\n'contig') of the query. It must be a valid Sequence\\nOntology term.  [default: polypeptide]"
     match_on_name: "Match features using their name instead of their"

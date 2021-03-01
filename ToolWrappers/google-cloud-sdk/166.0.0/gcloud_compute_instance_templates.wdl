@@ -14,6 +14,9 @@ task GcloudComputeInstancetemplates {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create a Compute Engine virtual machine instance template."
     delete: "Delete Google Compute Engine virtual machine instance templates."

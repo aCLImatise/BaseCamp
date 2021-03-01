@@ -28,6 +28,9 @@ task SNPsplitGenomePreparation {
       ~{if (no_n_masking) then "--no_nmasking" else ""} \
       ~{if (genome_build) then "--genome_build" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file: "Mandatory file specifying SNP information for mouse strains from the Mouse Genomes Project\\n(http://www.sanger.ac.uk/science/data/mouse-genomes-project). The file used and approved is\\ncalled 'mgp.v5.merged.snps_all.dbSNP142.vcf.gz'. Please note that future versions\\nof this file or entirely different VCF files might not work out-of-the-box but may require some\\ntweaking. SNP calls are read from the VCF files, and high confidence SNPs are written into\\na folder in the current working directory called SNPs_<strain_name>/chr<chromosome>.txt,\\nin the following format:\\nSNP-ID     Chromosome  Position    Strand   Ref/SNP\\nexample:   33941939        9       68878541       1       T/G"
     strain: "The strain you would like to use as SNP (ALT) genome. Mandatory. For an overview of strain names\\njust run SNPsplit_genome_preparation selecting '--list_strains'."

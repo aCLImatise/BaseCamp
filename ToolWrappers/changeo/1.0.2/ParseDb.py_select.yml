@@ -1,0 +1,119 @@
+!Command
+command:
+- ParseDb.py
+- select
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "A list of tab delimited database files. (default:\nNone)"
+  args: !RepeatFlagArg
+    name: DB_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Explicit output file name. Note, this argument cannot\nbe used with\
+    \ the --failed, --outdir, or --outname\narguments. If unspecified, then the output\
+    \ filename\nwill be based on the input filename(s). (default:\nNone)"
+  args: !RepeatFlagArg
+    name: OUT_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --outname
+  description: "Changes the prefix of the successfully processed\noutput file to the\
+    \ string specified. May not be\nspecified with multiple input files. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "The name of the fields to check for selection\ncriteria. (default:\
+    \ None)"
+  args: !RepeatFlagArg
+    name: FIELDS
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: "The values defining with records to select. A value\nmay appear in\
+    \ any of the fields specified with -f.\n(default: None)"
+  args: !RepeatFlagArg
+    name: VALUES
+- !Flag
+  optional: true
+  synonyms:
+  - --logic
+  description: "Defines whether a value may appear in any field (any)\nor whether\
+    \ it must appear in all fields (all).\n(default: any)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      all:
+      any:
+- !Flag
+  optional: true
+  synonyms:
+  - --regex
+  description: "If specified, treat values as regular expressions and\nallow partial\
+    \ string matches. (default: False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: ParseDb.py select [--version] [-h] -d DB_FILES [DB_FILES ...]\n\
+  \                         [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n  \
+  \                       [--outname OUT_NAME] -f FIELDS [FIELDS ...] -u VALUES\n\
+  \                         [VALUES ...] [--logic {any,all}] [--regex]\n\nSelects\
+  \ specific records.\n\nhelp:\n  --version             show program's version number\
+  \ and exit\n  -h, --help            show this help message and exit\n\nstandard\
+  \ arguments:\n  -d DB_FILES [DB_FILES ...]\n                        A list of tab\
+  \ delimited database files. (default:\n                        None)\n  -o OUT_FILES\
+  \ [OUT_FILES ...]\n                        Explicit output file name. Note, this\
+  \ argument cannot\n                        be used with the --failed, --outdir,\
+  \ or --outname\n                        arguments. If unspecified, then the output\
+  \ filename\n                        will be based on the input filename(s). (default:\n\
+  \                        None)\n  --outdir OUT_DIR      Specify to changes the output\
+  \ directory to the\n                        location specified. The input file directory\
+  \ is used\n                        if this is not specified. (default: None)\n \
+  \ --outname OUT_NAME    Changes the prefix of the successfully processed\n     \
+  \                   output file to the string specified. May not be\n          \
+  \              specified with multiple input files. (default: None)\n\nparsing arguments:\n\
+  \  -f FIELDS [FIELDS ...]\n                        The name of the fields to check\
+  \ for selection\n                        criteria. (default: None)\n  -u VALUES\
+  \ [VALUES ...]\n                        The values defining with records to select.\
+  \ A value\n                        may appear in any of the fields specified with\
+  \ -f.\n                        (default: None)\n  --logic {any,all}     Defines\
+  \ whether a value may appear in any field (any)\n                        or whether\
+  \ it must appear in all fields (all).\n                        (default: any)\n\
+  \  --regex               If specified, treat values as regular expressions and\n\
+  \                        allow partial string matches. (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/changeo:1.0.2--py_0

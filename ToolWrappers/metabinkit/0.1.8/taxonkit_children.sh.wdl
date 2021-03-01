@@ -12,6 +12,9 @@ task TaxonkitChildrensh {
       ~{out_file} \
       ~{path_to_folder_with_taxonomy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_tax_ids: ""
     out_file: ""

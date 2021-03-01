@@ -14,6 +14,9 @@ task BcbioVmpyAwsAnsible {
       ~{if defined(network) then ("--network " +  '"' + network + '"') else ""} \
       ~{if defined(cluster) then ("--cluster " +  '"' + cluster + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     key_pair: "Create new keypair for access (default: False)"
     network: "network to use for the VPC, in CIDR notation\\n(a.b.c.d/e) (default: 10.0.0.0/16)"

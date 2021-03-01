@@ -8,6 +8,9 @@ task PlanemoShedBuild {
     planemo shed_build \
       ~{tool_path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tool_path: ""
   }

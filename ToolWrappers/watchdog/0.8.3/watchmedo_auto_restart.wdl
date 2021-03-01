@@ -26,6 +26,9 @@ task WatchmedoAutorestart {
       ~{if defined(signal) then ("--signal " +  '"' + signal + '"') else ""} \
       ~{if defined(kill_after) then ("--kill-after " +  '"' + kill_after + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory: "Directory to watch. Use another -d or --directory\\noption for each directory. (default: -)"
     patterns: "matches event paths with these patterns (separated by\\n;). (default: '*')"

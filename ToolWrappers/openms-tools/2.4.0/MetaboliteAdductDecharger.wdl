@@ -22,6 +22,9 @@ task MetaboliteAdductDecharger {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*        Input file  (valid formats: 'featureXML')"
     out_cm: "*    Output consensus map (valid formats: 'consensusXML')"

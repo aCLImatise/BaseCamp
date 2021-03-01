@@ -3,12 +3,12 @@ id: neurodocker.cwl
 inputs:
 - id: in_var_0
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -V
 - id: in_var_1
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -v
 - id: in_generate
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - neurodocker

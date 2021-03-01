@@ -3,134 +3,139 @@ id: PURPLE.cwl
 inputs:
 - id: in_circo_s
   doc: "Location of\ncircos binary"
-  type: string
+  type: string?
   inputBinding:
     prefix: -circos
 - id: in_cobalt
   doc: Path to COBALT
-  type: File
+  type: File?
   inputBinding:
     prefix: -cobalt
 - id: in_db_user
   doc: Database user
-  type: string
+  type: string?
   inputBinding:
     prefix: -db_user
 - id: in_hotspots
   doc: Database user
-  type: string
+  type: string?
   inputBinding:
     prefix: -hotspots
 - id: in_max_purity
   doc: "Maximum purity\n(default 1.0)"
-  type: double
+  type: double?
   inputBinding:
     prefix: -max_purity
 - id: in_min_diploid_tumor_ratio_count
   doc: "Minimum ratio\ncount while\nsmoothing\nbefore diploid\nregions become\nsuspect."
-  type: string
+  type: string?
   inputBinding:
     prefix: -min_diploid_tumor_ratio_count
 - id: in_min_diploid_tumor_ratio_count_centromere
   doc: "Minimum ratio\ncount while\nsmoothing\nbefore diploid\nregions become\nsuspect\
     \ while\napproaching\ncentromere."
-  type: string
+  type: string?
   inputBinding:
     prefix: -min_diploid_tumor_ratio_count_centromere
 - id: in_min_norm_factor
   doc: "Minimum norm\nfactor (default\n0.33)"
-  type: double
+  type: double?
   inputBinding:
     prefix: -min_norm_factor
 - id: in_min_purity
   doc: "Minimum purity\n(default 0.08)"
-  type: double
+  type: double?
   inputBinding:
     prefix: -min_purity
 - id: in_no_charts
   doc: Disable charts
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -no_charts
 - id: in_norm_factor_increment
   doc: Norm factor
-  type: string
+  type: string?
   inputBinding:
     prefix: -norm_factor_increment
 - id: in_output_dir
   doc: Path to the
-  type: File
+  type: File?
   inputBinding:
     prefix: -output_dir
+- id: in_ploidy_penalty_factor
+  doc: "Penalty factor\nto apply to the\nnumber of copy\nnumber events"
+  type: long?
+  inputBinding:
+    prefix: -ploidy_penalty_factor
 - id: in_ploidy_penalty_min
   doc: Minimum ploidy
-  type: string
+  type: string?
   inputBinding:
     prefix: -ploidy_penalty_min
 - id: in_ploidy_penalty_sub_min_additional
   doc: "Additional\npenalty to\napply to major\nallele < 1 or\nminor allele <\n0"
-  type: long
+  type: long?
   inputBinding:
     prefix: -ploidy_penalty_sub_min_additional
 - id: in_ploidy_penalty_sub_one_major_allele_multiplier
   doc: Penalty
-  type: string
+  type: string?
   inputBinding:
     prefix: -ploidy_penalty_sub_one_major_allele_multiplier
 - id: in_purity_increment
   doc: Purity
-  type: string
+  type: string?
   inputBinding:
     prefix: -purity_increment
 - id: in_ref_genome
   doc: "Path to the ref\ngenome fasta\nfile."
-  type: File
+  type: File?
   inputBinding:
     prefix: -ref_genome
 - id: in_name_of_the
   doc: Name of the
-  type: string
+  type: string?
   inputBinding:
     prefix: -reference
 - id: in_somatic_min_purity_spread
   doc: Minimum spread
-  type: string
+  type: string?
   inputBinding:
     prefix: -somatic_min_purity_spread
 - id: in_somatic_penalty_weight
   doc: Proportion of
-  type: string
+  type: string?
   inputBinding:
     prefix: -somatic_penalty_weight
 - id: in_structural_vcf
   doc: "Optional\nlocation of\nstructural\nvariant vcf for\nmore accurate\nsegmentation."
-  type: string
+  type: string?
   inputBinding:
     prefix: -structural_vcf
 - id: in_sv_recovery_vcf
   doc: "Optional\nlocation of\nfailing\nstructural\nvariants that\nmay be\nrecovered."
-  type: string
+  type: string?
   inputBinding:
     prefix: -sv_recovery_vcf
 - id: in_number_of
   doc: Number of
-  type: long
+  type: long?
   inputBinding:
     prefix: -threads
 - id: in_tumor
   doc: "Name of the\ntumor sample.\nThis should\ncorrespond to\nthe value used\nin\
     \ AMBER and\nCOBALT."
-  type: string
+  type: string?
   inputBinding:
     prefix: -tumor
 - id: in_tumor_only
   doc: "Tumor only\nmode. Disables\nsomatic\nfitting."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -tumor_only
 - id: in_version
   doc: Exit after
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -version
 - id: in_purity_ploidy_estimate_application
@@ -188,11 +193,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_run_dir_slash_purple_slash
-  doc: -ploidy_penalty_factor <arg>                              Penalty factor
-  type: string
-  inputBinding:
-    position: 0
 - id: in_applied
   doc: -ploidy_penalty_standard_deviation <arg>                  Standard
   type: string
@@ -282,6 +282,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - PURPLE

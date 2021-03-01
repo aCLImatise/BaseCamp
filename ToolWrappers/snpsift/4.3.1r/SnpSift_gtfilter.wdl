@@ -2,12 +2,12 @@ version 1.0
 
 task SnpSiftGtfilter {
   input {
-    Boolean? _exprfile_file
-    Boolean? _file_inputvcf
-    Boolean? gn
-    Boolean? gv
-    Boolean? _inverse_inverse
-    Boolean? _set_create
+    File? expr_file
+    File? vcf_input_file
+    String? field
+    String? value
+    Boolean? inverse
+    File? set
     Boolean? err_missing
     Int? format
     String? jar
@@ -18,23 +18,26 @@ task SnpSiftGtfilter {
     SnpSift gtfilter \
       ~{java} \
       ~{filter} \
-      ~{if (_exprfile_file) then "-e" else ""} \
-      ~{if (_file_inputvcf) then "-f" else ""} \
-      ~{if (gn) then "-gn" else ""} \
-      ~{if (gv) then "-gv" else ""} \
-      ~{if (_inverse_inverse) then "-n" else ""} \
-      ~{if (_set_create) then "-s" else ""} \
+      ~{if defined(expr_file) then ("--exprFile " +  '"' + expr_file + '"') else ""} \
+      ~{if defined(vcf_input_file) then ("--file " +  '"' + vcf_input_file + '"') else ""} \
+      ~{if defined(field) then ("--field " +  '"' + field + '"') else ""} \
+      ~{if defined(value) then ("--value " +  '"' + value + '"') else ""} \
+      ~{if (inverse) then "--inverse" else ""} \
+      ~{if defined(set) then ("--set " +  '"' + set + '"') else ""} \
       ~{if (err_missing) then "--errMissing" else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _exprfile_file: "| --exprFile <file>    : Read expression from a file"
-    _file_inputvcf: "| --file <input.vcf>   : VCF input file. Default: STDIN"
-    gn: "| --field <name>       : Field name to replace if filter is true. Default: 'GT'"
-    gv: "| --value <value>      : Field value to replace if filter is true. Default: '.'"
-    _inverse_inverse: "| --inverse            : Inverse. Show lines that do not match filter expression"
-    _set_create: "| --set <file>         : Create a SET using 'file'"
+    expr_file: ": Read expression from a file"
+    vcf_input_file: ": VCF input file. Default: STDIN"
+    field: ": Field name to replace if filter is true. Default: 'GT'"
+    value: ": Field value to replace if filter is true. Default: '.'"
+    inverse: ": Inverse. Show lines that do not match filter expression"
+    set: ": Create a SET using 'file'"
     err_missing: ": Error is a field is missing. Default: false"
     format: ": SnpEff format version: {2, 3}. Default: Auto"
     jar: ""

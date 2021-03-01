@@ -32,6 +32,9 @@ task SamtoolsAddreplacerg {
       ~{if (write_index) then "--write-index" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     set_mode_orphanonly: "Set the mode of operation from one of overwrite_all, orphan_only [overwrite_all]"
     where_write_output: "Where to write output to [stdout]"

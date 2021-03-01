@@ -2,7 +2,7 @@ version 1.0
 
 task Unpack200 {
   input {
-    Boolean? override_transmitted_deflate
+    Boolean? override_transmitted_hinttrue
     Boolean? remove_pack_file
     Boolean? verbose
     Boolean? quiet
@@ -10,14 +10,17 @@ task Unpack200 {
   }
   command <<<
     unpack200 \
-      ~{if (override_transmitted_deflate) then "-H" else ""} \
+      ~{if (override_transmitted_hinttrue) then "-H" else ""} \
       ~{if (remove_pack_file) then "--remove-pack-file" else ""} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (output_given_log) then "-l" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    override_transmitted_deflate: "{h}, --deflate-hint={h}     override transmitted deflate hint:\\ntrue, false, or keep (default)"
+    override_transmitted_hinttrue: "{h}, --deflate-hint={h}     override transmitted deflate hint:\\ntrue, false, or keep (default)"
     remove_pack_file: "remove input file after unpacking"
     verbose: "increase program verbosity"
     quiet: "set verbosity to lowest level"

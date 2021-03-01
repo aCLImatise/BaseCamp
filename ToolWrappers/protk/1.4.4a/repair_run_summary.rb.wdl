@@ -14,6 +14,9 @@ task RepairRunSummaryrb {
       ~{if defined(raw_type) then ("--raw-type " +  '"' + raw_type + '"') else ""} \
       ~{if defined(om_ssa_it_ol) then ("--omssa-itol " +  '"' + om_ssa_it_ol + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base_name: "Original MSMS spectrum file used for search"
     raw_type: "Raw data type used for search"

@@ -10,6 +10,9 @@ task VarlociraptorFiltercallsPosteriorodds {
       ~{if defined(events) then ("--events " +  '"' + events + '"') else ""} \
       ~{if defined(odds) then ("--odds " +  '"' + odds + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     events: "...    Events to consider."
     odds: "Kass-Raftery score to filter against. [possible values: none, barely, positive, strong,\\nvery-strong]\\n"

@@ -4,14 +4,14 @@ inputs:
 - id: in_sets_named_cannedacl
   doc: "Sets named canned_acl when uploaded objects created. See\n\"gsutil help acls\"\
     \ for further details."
-  type: string
+  type: string?
   inputBinding:
     prefix: -a
 - id: in_copy_source_versions
   doc: "Copy all source versions from a source buckets/folders.\nIf not set, only\
     \ the live version of each source object is\ncopied. Note: this option is only\
     \ useful when the destination\nbucket has versioning enabled."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -A
 - id: in_error_occurs_continue
@@ -21,7 +21,7 @@ inputs:
     . Note: -c only\napplies to the actual copying operation. If an error occurs\n\
     while iterating over the files in the local directory (e.g.,\ninvalid Unicode\
     \ file name) gsutil will print an error message\nand abort."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_copy_mode_ie
@@ -35,12 +35,12 @@ inputs:
     gsutil cp -D -p gs://bucket/obj gs://bucket/obj_tmp\ngsutil mv -p gs://bucket/obj_tmp\
     \ gs://bucket/obj\nNote: Daisy chain mode is automatically used when copying\n\
     between providers (e.g., to copy data from Google Cloud Storage\nto another provider)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -D
-- id: in_exclude_symlinks_when
+- id: in_exclude_symlinks_specified
   doc: Exclude symlinks. When specified, symbolic links will not be
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -e
 - id: in_outputs_manifest_file
@@ -64,7 +64,7 @@ inputs:
     \ status (such a\nstatus indicates there was at least one failure during the\n\
     gsutil run).\nNote: If you're trying to synchronize the contents of a\ndirectory\
     \ and a bucket (or two buckets), see\n\"gsutil help rsync\"."
-  type: File
+  type: File?
   inputBinding:
     prefix: -L
 - id: in_noclobber_when_specified
@@ -74,7 +74,7 @@ inputs:
     \ to check if an item\nexists before attempting to upload the data. This will\
     \ save\nretransmitting data, but the additional HTTP requests may make\nsmall\
     \ object transfers slower and more expensive."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_causes_acls_preserved
@@ -89,7 +89,7 @@ inputs:
     up with the same ACL by setting a default object ACL on that\nbucket instead of\
     \ using cp -p. See \"gsutil help defacl\".\nNote that it's not valid to specify\
     \ both the -a and -p options\ntogether."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_causes_posix_attributes
@@ -100,7 +100,7 @@ inputs:
     attributes will only be set if the source objects were uploaded\nwith this flag\
     \ enabled.\nOn Windows, this flag will only set and restore access time and\n\
     modification time. This is because Windows doesn't have a\nnotion of POSIX uid/gid/mode."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -P
 - id: in_r_r_options
@@ -109,32 +109,32 @@ inputs:
     \ for an upload, gsutil will\ncopy any files it finds and skip any directories.\
     \ Similarly,\nneglecting to specify this option for a download will cause\ngsutil\
     \ to copy any objects at the current bucket directory\nlevel, and skip any subdirectories."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -R
-- id: in_storage_class_notspecified
+- id: in_storage_class_destination
   doc: "The storage class of the destination object(s). If not\nspecified, the default\
     \ storage class of the destination bucket\nis used. Not valid for copying to non-cloud\
     \ destinations."
-  type: string
+  type: string?
   inputBinding:
     prefix: -s
-- id: in_skip_objects_unsupported
+- id: in_skip_objects_objects
   doc: "Skip objects with unsupported object types instead of failing.\nUnsupported\
     \ object types are Amazon S3 Objects in the GLACIER\nstorage class."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -U
-- id: in_requests_versionspecific_url
+- id: in_requests_given_make
   doc: "Requests that the version-specific URL for each uploaded object\nbe printed.\
     \ Given this URL you can make future upload requests\nthat are safe in the face\
     \ of concurrent updates, because Google\nCloud Storage will refuse to perform\
     \ the update if the current\nobject version doesn't match the version-specific\
     \ URL. See\n\"gsutil help versions\" for more details."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
-- id: in_applies_gzip_contentencoding_file_upload
+- id: in_ext_applies_gzip
   doc: "<ext,...>   Applies gzip content-encoding to any file upload whose\nextension\
     \ matches the -z extension list. This is useful when\nuploading files with compressible\
     \ content (such as .js, .css,\nor .html files) because it saves network bandwidth\
@@ -155,16 +155,16 @@ inputs:
     \ render it as HTML based on\nthe Content-Type header.\nNote that if you download\
     \ an object with Content-Encoding:gzip\ngsutil will decompress the content before\
     \ writing the local\nfile."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -z
-- id: in_applies_gzip_contentencoding_file_uploads
+- id: in_applies_gzip_contentencoding
   doc: "Applies gzip content-encoding to file uploads. This option\nworks like the\
     \ -z option described above, but it applies to\nall uploaded files, regardless\
     \ of extension.\nWarning: If you use this option and some of the source files\n\
     don't compress well (e.g., that's often true of binary data),\nthis option may\
     \ result in files taking up more space in the\ncloud than they would if left uncompressed.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -Z
 - id: in_metadata_dot
@@ -201,6 +201,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gsutil

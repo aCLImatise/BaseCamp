@@ -1,0 +1,143 @@
+!Command
+command:
+- hailctl
+- dataproc
+- modify
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: time.
+  description: --dry-run             Print gcloud dataproc command, but don't run
+    it.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --num-workers
+  - --n-workers
+  - -w
+  description: New number of worker machines (min. 2).
+  args: !SimpleFlagArg
+    name: NUM_WORKERS
+- !Flag
+  optional: true
+  synonyms:
+  - --num-secondary-workers
+  - --num-preemptible-workers
+  - --n-pre-workers
+  - -p
+  description: New number of secondary (preemptible) worker machines.
+  args: !SimpleFlagArg
+    name: NUM_SECONDARY_WORKERS
+- !Flag
+  optional: true
+  synonyms:
+  - --graceful-decommission-timeout
+  - --graceful
+  description: "If set, cluster size downgrade will use graceful\ndecommissioning\
+    \ with the given timeout (e.g. \"60m\")."
+  args: !SimpleFlagArg
+    name: GRACEFUL_DECOMMISSION_TIMEOUT
+- !Flag
+  optional: true
+  synonyms:
+  - --max-idle
+  description: New maximum idle time before shutdown (e.g. "60m").
+  args: !SimpleFlagArg
+    name: MAX_IDLE
+- !Flag
+  optional: true
+  synonyms:
+  - --no-max-idle
+  description: Disable auto deletion after idle time.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --expiration-time
+  description: "The time when cluster will be auto-deleted. (e.g.\n\"2020-01-01T20:00:00Z\"\
+    ). Execute gcloud topic\ndatatimes for more information."
+  args: !SimpleFlagArg
+    name: EXPIRATION_TIME
+- !Flag
+  optional: true
+  synonyms:
+  - --max-age
+  description: "If the cluster is older than this, it will be auto-\ndeleted. (e.g.\
+    \ \"2h\")Execute gcloud topic datatimes for\nmore information."
+  args: !SimpleFlagArg
+    name: MAX_AGE
+- !Flag
+  optional: true
+  synonyms:
+  - --no-max-age
+  description: Disable auto-deletion due to max age or expiration
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --zone
+  - -z
+  description: Compute zone for Dataproc cluster.
+  args: !SimpleFlagArg
+    name: ZONE
+- !Flag
+  optional: true
+  synonyms:
+  - --update-hail-version
+  description: "Update the version of hail running on cluster to match\nthe currently\
+    \ installed version."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --wheel
+  description: New Hail installation.
+  args: !SimpleFlagArg
+    name: WHEEL
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: hailctl dataproc modify [-h] [--num-workers NUM_WORKERS]\n    \
+  \                           [--num-secondary-workers NUM_SECONDARY_WORKERS]\n  \
+  \                             [--graceful-decommission-timeout GRACEFUL_DECOMMISSION_TIMEOUT]\n\
+  \                               [--max-idle MAX_IDLE | --no-max-idle]\n        \
+  \                       [--expiration-time EXPIRATION_TIME | --max-age MAX_AGE |\
+  \ --no-max-age]\n                               [--dry-run] [--zone ZONE]\n    \
+  \                           [--update-hail-version | --wheel WHEEL]\n          \
+  \                     name\n\nModify active Dataproc clusters.\n\npositional arguments:\n\
+  \  name                  Cluster name.\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n  --num-workers NUM_WORKERS, --n-workers\
+  \ NUM_WORKERS, -w NUM_WORKERS\n                        New number of worker machines\
+  \ (min. 2).\n  --num-secondary-workers NUM_SECONDARY_WORKERS, --num-preemptible-workers\
+  \ NUM_SECONDARY_WORKERS, --n-pre-workers NUM_SECONDARY_WORKERS, -p NUM_SECONDARY_WORKERS\n\
+  \                        New number of secondary (preemptible) worker machines.\n\
+  \  --graceful-decommission-timeout GRACEFUL_DECOMMISSION_TIMEOUT, --graceful GRACEFUL_DECOMMISSION_TIMEOUT\n\
+  \                        If set, cluster size downgrade will use graceful\n    \
+  \                    decommissioning with the given timeout (e.g. \"60m\").\n  --max-idle\
+  \ MAX_IDLE   New maximum idle time before shutdown (e.g. \"60m\").\n  --no-max-idle\
+  \         Disable auto deletion after idle time.\n  --expiration-time EXPIRATION_TIME\n\
+  \                        The time when cluster will be auto-deleted. (e.g.\n   \
+  \                     \"2020-01-01T20:00:00Z\"). Execute gcloud topic\n        \
+  \                datatimes for more information.\n  --max-age MAX_AGE     If the\
+  \ cluster is older than this, it will be auto-\n                        deleted.\
+  \ (e.g. \"2h\")Execute gcloud topic datatimes for\n                        more\
+  \ information.\n  --no-max-age          Disable auto-deletion due to max age or\
+  \ expiration\n                        time.\n  --dry-run             Print gcloud\
+  \ dataproc command, but don't run it.\n  --zone ZONE, -z ZONE  Compute zone for\
+  \ Dataproc cluster.\n  --update-hail-version\n                        Update the\
+  \ version of hail running on cluster to match\n                        the currently\
+  \ installed version.\n  --wheel WHEEL         New Hail installation.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1

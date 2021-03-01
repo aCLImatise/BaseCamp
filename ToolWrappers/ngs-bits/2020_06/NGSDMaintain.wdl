@@ -16,6 +16,9 @@ task NGSDMaintain {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "Output file. If unset, writes to STDOUT.\\nDefault value: ''"
     fix: "Correct found errors/inconstistencies.\\nDefault value: 'false'"

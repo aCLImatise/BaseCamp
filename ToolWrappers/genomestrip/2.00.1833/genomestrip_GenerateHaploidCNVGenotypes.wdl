@@ -34,6 +34,9 @@ task GenomestripGenerateHaploidCNVGenotypes {
       ~{if defined(logging_level) then ("--logging_level " +  '"' + logging_level + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file: "Input file (vcf)"
     output_file: "Output file (vcf)"

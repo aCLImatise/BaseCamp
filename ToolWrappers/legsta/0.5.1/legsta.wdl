@@ -16,6 +16,9 @@ task Legsta {
       ~{if (csv) then "--csv" else ""} \
       ~{if (noheader) then "--noheader" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Don't print anything to stderr."
     debug: "+     Verbose debug output to stderr (default '0')."

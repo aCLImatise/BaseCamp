@@ -2,9 +2,8 @@ class: CommandLineTool
 id: transcov_generate_length.cwl
 inputs:
 - id: in_output_file
-  doc: "-m, --max-length INTEGER RANGE\n--help                          Show this\
-    \ message and exit.\n"
-  type: File
+  doc: RANGE
+  type: File?
   inputBinding:
     prefix: --output-file
 - id: in_bam_file
@@ -22,11 +21,11 @@ outputs:
   doc: Standard output stream
   type: stdout
 - id: out_output_file
-  doc: "-m, --max-length INTEGER RANGE\n--help                          Show this\
-    \ message and exit.\n"
-  type: File
+  doc: RANGE
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - transcov

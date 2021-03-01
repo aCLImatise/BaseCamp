@@ -40,6 +40,9 @@ task TraceConvert {
       ~{if defined(compress) then ("-compress " +  '"' + compress + '"') else ""} \
       ~{if defined(abi_data) then ("-abi_data " +  '"' + abi_data + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format_input_defaults: "Format for input (defaults to any"
     format_output_default: "Format for output (default ztr)"

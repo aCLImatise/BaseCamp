@@ -4,6 +4,9 @@ task GmtkTime {
   command <<<
     gmtkTime
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

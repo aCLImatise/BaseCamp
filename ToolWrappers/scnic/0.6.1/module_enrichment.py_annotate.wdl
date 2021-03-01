@@ -10,6 +10,9 @@ task ModuleEnrichmentpyAnnotate {
       ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""} \
       ~{if defined(correl_s) then ("--correls " +  '"' + correl_s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree: ""
     correl_s: ""

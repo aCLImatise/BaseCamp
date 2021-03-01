@@ -24,6 +24,9 @@ task PhosphoScoring {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                       Input file with MS/MS spectra (valid formats: 'mzML')"
     id: "*                       Identification input file which contains a search against a concatenated sequence database (valid formats: 'idXML')"

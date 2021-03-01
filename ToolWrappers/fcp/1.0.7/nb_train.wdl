@@ -14,6 +14,9 @@ task Nbtrain {
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contact: "Print contact information."
     desired_oligonucleotide_length: "Desired oligonucleotide length (default = 8)."

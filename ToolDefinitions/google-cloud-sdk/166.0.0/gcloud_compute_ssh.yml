@@ -5,107 +5,107 @@ command:
 - ssh
 positional:
 - !Positional
-  description: This command ensures that the user's public SSH key is present in the
+  optional: false
   position: 0
   name: address.
-  optional: false
+  description: This command ensures that the user's public SSH key is present in the
 named:
 - !Flag
-  description: :%INSTANCE%:80
+  optional: true
   synonyms:
   - -L
+  description: :%INSTANCE%:80
   args: !SimpleFlagArg
     name: '80'
-  optional: true
 - !Flag
-  description: "A command to run on the virtual machine.\nRuns the command on the\
-    \ target instance and then exits."
+  optional: true
   synonyms:
   - --command
+  description: "A command to run on the virtual machine.\nRuns the command on the\
+    \ target instance and then exits."
   args: !SimpleFlagArg
     name: COMMAND
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --container
   description: "The name or ID of a container inside of the virtual machine instance\
     \ to\nconnect to. This only applies to virtual machines that are using a\nGoogle\
     \ Container-Optimized virtual machine image. For more information,\nsee https://cloud.google.com/compute/docs/containers"
-  synonyms:
-  - --container
   args: !SimpleFlagArg
     name: CONTAINER
-  optional: true
 - !Flag
-  description: "If provided, prints the command that would be run to standard out\n\
-    instead of executing it."
+  optional: true
   synonyms:
   - --dry-run
+  description: "If provided, prints the command that would be run to standard out\n\
+    instead of executing it."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --force-key-file-overwrite
   description: "If enabled gcloud will regenerate and overwrite the files associated\n\
     with a broken SSH key without asking for confirmation in both\ninteractive and\
     \ non-interactive environment.\nIf disabled gcloud will not attempt to regenerate\
     \ the files associated\nwith a broken SSH key and fail in both interactive and\
     \ non-interactive\nenvironment."
-  synonyms:
-  - --force-key-file-overwrite
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --plain
   description: "Suppresses the automatic addition of ssh(1)/scp(1) flags. This flag\
     \ is\nuseful if you want to take care of authentication yourself or use\nspecific\
     \ ssh/scp features."
-  synonyms:
-  - --plain
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ssh-flag
   description: "Additional flags to be passed to ssh(1). It is recommended that flags\n\
     be passed using an assignment operator and quotes. This flag will\nreplace occurences\
     \ of %USER% and %INSTANCE% with their dereferenced\nvalues. Example:\n$ gcloud\
     \ compute ssh example-instance --zone us-central1-a \\\n--ssh-flag=\"-vvv\" --ssh-flag=\"\
     -L 80:%INSTANCE%:80\"\nis equivalent to passing the flags --vvv and -L 80:162.222.181.197:80\n\
     to ssh(1) if the external IP address of 'example-instance' is\n162.222.181.197."
-  synonyms:
-  - --ssh-flag
   args: !SimpleFlagArg
     name: SSH_FLAG
-  optional: true
 - !Flag
-  description: "The path to the SSH key file. By default, this is\n~/.ssh/google_compute_engine."
+  optional: true
   synonyms:
   - --ssh-key-file
+  description: "The path to the SSH key file. By default, this is\n~/.ssh/google_compute_engine."
   args: !SimpleFlagArg
     name: SSH_KEY_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --strict-host-key-checking
   description: "Override the default behavior of StrictHostKeyChecking. By default,\n\
     StrictHostKeyChecking is set to 'no' the first time you connect to an\ninstance\
     \ and will be set to 'yes' for all subsequent connections. Use\nthis flag to specify\
     \ a value for the connection.\nSTRICT_HOST_KEY_CHECKING must be one of: yes, no,\
     \ ask."
-  synonyms:
-  - --strict-host-key-checking
   args: !SimpleFlagArg
     name: STRICT_HOST_KEY_CHECKING
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --zone
   description: "The zone of the instance to connect to. If not specified, you may\
     \ be\nprompted to select a zone.\nTo avoid prompting when this flag is omitted,\
     \ you can set the\ncompute/zone property:\n$ gcloud config set compute/zone ZONE\n\
     A list of zones can be fetched by running:\n$ gcloud compute zones list\nTo unset\
     \ the property, run:\n$ gcloud config unset compute/zone\nAlternatively, the zone\
     \ can be stored in the environment variable\nCLOUDSDK_COMPUTE_ZONE."
-  synonyms:
-  - --zone
   args: !SimpleFlagArg
     name: ZONE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: $ gcloud help for details.
+  optional: true
   synonyms:
   - --flatten
   - --format
@@ -116,9 +116,9 @@ help_flag: !Flag
   - --trace-token
   - --user-output-enabled
   - --verbosity.
+  description: $ gcloud help for details.
   args: !SimpleFlagArg
     name: Run
-  optional: true
 usage_flag:
 version_flag:
 help_text: "NAME\n    gcloud compute ssh - SSH into a virtual machine instance\n\n\
@@ -188,3 +188,4 @@ help_text: "NAME\n    gcloud compute ssh - SSH into a virtual machine instance\n
   \ --zone us-central1-a \\\n            --container CONTAINER\n"
 generated_using:
 - --help
+docker_image:

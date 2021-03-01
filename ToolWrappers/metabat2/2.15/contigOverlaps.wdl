@@ -14,6 +14,9 @@ task ContigOverlaps {
       ~{second_assembly_bams_dot_fof_n} \
       ~{if (percent_identity) then "--percentIdentity" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     percent_identity: "arg  The minimum end-to-end % identity of qualifying reads (default: 97)"
     options: ""

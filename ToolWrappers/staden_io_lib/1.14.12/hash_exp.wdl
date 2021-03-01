@@ -8,6 +8,9 @@ task HashExp {
     hash_exp \
       ~{exp_file_ball}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exp_file_ball: ""
   }

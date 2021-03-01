@@ -24,6 +24,9 @@ task PyqiMakeoptparse {
       ~{if defined(command_module) then ("--command-module " +  '"' + command_module + '"') else ""} \
       ~{if defined(output_fp) then ("--output-fp " +  '"' + output_fp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     author: "author/maintainer name [default: none]"
     email: "maintainer email address [default: none]"

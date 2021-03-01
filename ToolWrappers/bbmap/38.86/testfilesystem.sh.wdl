@@ -18,6 +18,9 @@ task Testfilesystemsh {
       ~{ways} \
       ~{interval_in_seconds}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
     out: ""

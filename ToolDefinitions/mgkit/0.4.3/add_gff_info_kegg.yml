@@ -4,30 +4,57 @@ command:
 - kegg
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: INPUT_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: OUTPUT_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-c, --email TEXT    Contact email  [required]\n-d, --description \
-    \  Add Kegg description\n-p, --pathways      Add pathways ID involved\n-m, --kegg-id\
-    \ TEXT  In which attribute the Kegg ID is stored (defaults to\n*gene_id*)\n--help\
-    \              Show this message and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
-  args: !EmptyFlagArg {}
+  - -c
+  - --email
+  description: Contact email  [required]
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
   optional: true
+  synonyms:
+  - -d
+  - --description
+  description: Add Kegg description
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pathways
+  description: Add pathways ID involved
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --kegg-id
+  description: "In which attribute the Kegg ID is stored (defaults to\n*gene_id*)"
+  args: !SimpleFlagArg
+    name: TEXT
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: add-gff-info kegg [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Adds\
@@ -38,3 +65,4 @@ help_text: "Usage: add-gff-info kegg [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  A
   \n  --help              Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

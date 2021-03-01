@@ -28,6 +28,9 @@ task PlanemoShedCreate {
       ~{if defined(message) then ("--message " +  '"' + message + '"') else ""} \
       ~{if (skip_upload) then "--skip_upload" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     recursive: "Recursively perform command for nested repository"
     owner: "Tool Shed repository owner (username)."

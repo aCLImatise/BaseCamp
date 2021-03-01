@@ -38,6 +38,9 @@ task GmerCounter {
       ~{if (prefetch) then "--prefetch" else ""} \
       ~{if (increase_debug_level) then "-D" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "- SNP/KMER database file"
     dbb: "- binary database file"

@@ -184,6 +184,9 @@ task MixcrExportAlignments {
       ~{if (v_identity_percents) then "-vIdentityPercents" else ""} \
       ~{if (fv) then "-fv" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Verbose warning messages."
     aa_feature: "Export amino acid sequence of specified gene feature"

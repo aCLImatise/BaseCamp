@@ -38,6 +38,9 @@ task Gthconsensus {
       ~{if (intermediate) then "-intermediate" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     translation_table: "set the codon translation table used for codon translation in\\nmatching, DP, and output\\ndefault: 1"
     be_verbosedefault_no: "be verbose\\ndefault: no"

@@ -14,6 +14,9 @@ task RsatPermutematrix {
       ~{util} \
       ~{convert_matrix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     permute_matrix: "[1mVERSION[0m"
     jacques_do_tv_and_otheldenatulbdotacdotbe: "[1mCATEGORY[0m"

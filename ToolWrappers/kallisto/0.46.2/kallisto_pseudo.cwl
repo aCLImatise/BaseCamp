@@ -3,45 +3,45 @@ id: kallisto_pseudo.cwl
 inputs:
 - id: in_index
   doc: "Filename for the kallisto index to be used for\npseudoalignment"
-  type: File
+  type: File?
   inputBinding:
     prefix: --index
 - id: in_output_dir
   doc: Directory to write output to
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output-dir
 - id: in_umi
   doc: First file in pair is a UMI file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --umi
 - id: in_batch
   doc: "Process files listed in FILE\n--quant                   Quantify using EM\
     \ algorithm (only in batch mode)\n--single                  Quantify single-end\
     \ reads"
-  type: File
+  type: File?
   inputBinding:
     prefix: --batch
 - id: in_fragment_length
   doc: Estimated average fragment length
-  type: long
+  type: long?
   inputBinding:
     prefix: --fragment-length
 - id: in_sd
   doc: "Estimated standard deviation of fragment length\n(default: -l, -s values are\
     \ estimated from paired\nend data, but are required when using --single)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --sd
 - id: in_threads
   doc: 'Number of threads to use (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_arguments
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 - id: in_fast_q_files
@@ -55,9 +55,10 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: Directory to write output to
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kallisto

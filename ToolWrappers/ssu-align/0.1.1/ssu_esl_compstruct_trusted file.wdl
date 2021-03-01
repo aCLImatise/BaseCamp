@@ -10,6 +10,9 @@ task SsueslcompstructTrustedfile {
       ~{test_file} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
     test_file: ""

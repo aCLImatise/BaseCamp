@@ -36,6 +36,9 @@ task UVP {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "Input FASTQ file"
     reference: "Reference genome in FASTA format."

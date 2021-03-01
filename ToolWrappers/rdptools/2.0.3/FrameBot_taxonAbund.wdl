@@ -16,6 +16,9 @@ task FrameBotTaxonAbund {
       ~{if defined(seq_coverage) then ("--seqCoverage " +  '"' + seq_coverage + '"') else ""} \
       ~{if defined(identity) then ("--identity " +  '"' + identity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_coverage: "contains the ID and coverage separated by space or\\ntab. Used to adjust the sequence abundance"
     identity: "the minimum protein identity, default is 0, range\\n[0-100]"

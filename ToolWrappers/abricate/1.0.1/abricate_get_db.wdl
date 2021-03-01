@@ -14,6 +14,9 @@ task AbricategetDb {
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "!        Verbose debug output (default '0')."
     db_dir: "Parent folder (default '/usr/local/db')."

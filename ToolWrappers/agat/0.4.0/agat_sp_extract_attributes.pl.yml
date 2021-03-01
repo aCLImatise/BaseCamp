@@ -3,78 +3,82 @@ command:
 - agat_sp_extract_attributes.pl
 positional:
 - !Positional
-  description: 'Description:'
+  optional: false
   position: 0
   name: agat_sp_extract_attributes.pl
-  optional: false
+  description: 'Description:'
 named:
 - !Flag
-  description: Input GTF/GFF file.
+  optional: true
   synonyms:
   - --gff
   - -f
+  description: Input GTF/GFF file.
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - -t
+  - -l
   description: "primary tag option, case insensitive, list. Allow to specied the\n\
     feature types that will be handled. You can specified a specific\nfeature by given\
     \ its primary tag name (column 3) as: cds, Gene,\nMrNa You can specify directly\
     \ all the feature of a particular\nlevel: level2=mRNA,ncRNA,tRNA,etc level3=CDS,exon,UTR,etc\
     \ By\ndefault all feature are taking in account. fill the option by\nthe value\
     \ \"all\" will have the same behaviour."
-  synonyms:
-  - -p
-  - -t
-  - -l
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: "attribute tag. The value of the attribute tag specified will be\n\
-    extracted from the feature type specified by the option -p. List\nof attributes\
-    \ must be coma separated."
+  optional: true
   synonyms:
   - --attribute
   - --att
   - -a
+  description: "attribute tag. The value of the attribute tag specified will be\n\
+    extracted from the feature type specified by the option -p. List\nof attributes\
+    \ must be coma separated."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "By default the values of each attribute tag is writen in its\ndedicated\
-    \ file. To write the values of all tags in only one file\nuse this option."
+  optional: true
   synonyms:
   - --merge
   - -m
+  description: "By default the values of each attribute tag is writen in its\ndedicated\
+    \ file. To write the values of all tags in only one file\nuse this option."
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -d
   description: "By default when an attribute is not found for a feature, a dot\n(.)\
     \ is reported. If you don't want anything to be printed in\nsuch case use this\
     \ option."
-  synonyms:
-  - -d
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ", --output , --out or --outfile\nOutput GFF file. If no output file\
-    \ is specified, the output will\nbe written to STDOUT."
+  optional: true
   synonyms:
   - -o
-  args: !EmptyFlagArg {}
-  optional: true
+  - --output
+  - --out
+  - --outfile
+  description: "Output GFF file. If no output file is specified, the output will\n\
+    be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Display this helpful text.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Display this helpful text.
   args: !SimpleFlagArg
     name: or
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\n ------------------------------------------------------------------------------\n\
@@ -120,3 +124,4 @@ help_text: "\n -----------------------------------------------------------------
   \n"
 generated_using:
 - --help
+docker_image:

@@ -5,121 +5,124 @@ command:
 positional: []
 named:
 - !Flag
-  description: PyProphet input file.  [required]
+  optional: true
   synonyms:
   - --in
+  description: PyProphet input file.  [required]
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: PyProphet output file.
+  optional: true
   synonyms:
   - --out
+  description: PyProphet output file.
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "[run-specific|experiment-wide|global]\nContext to estimate protein-level\
-    \ FDR\ncontrol.  [default: run-specific]"
+  optional: true
   synonyms:
   - --context
+  description: "[run-specific|experiment-wide|global]\nContext to estimate protein-level\
+    \ FDR\ncontrol.  [default: run-specific]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ --no-parametric  Do parametric estimation of p-values.\n[default:\
-    \ False]"
+  optional: true
   synonyms:
   - --parametric
+  - --no-parametric
+  description: "Do parametric estimation of p-values.\n[default: False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ --no-pfdr              Compute positive false discovery rate (pFDR)\n\
-    instead of FDR.  [default: False]"
+  optional: true
   synonyms:
   - --pfdr
+  - --no-pfdr
+  description: "Compute positive false discovery rate (pFDR)\ninstead of FDR.  [default:\
+    \ False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pi0_lambda
   description: "...\nUse non-parametric estimation of p-values.\nEither use <START\
     \ END STEPS>, e.g. 0.1, 1.0,\n0.1 or set to fixed value, e.g. 0.4, 0, 0.\n[default:\
     \ 0.1, 0.5, 0.05]"
-  synonyms:
-  - --pi0_lambda
   args: !SimpleFlagArg
     name: FLOAT FLOAT FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pi0_method
   description: "[smoother|bootstrap]\nEither \"smoother\" or \"bootstrap\"; the method\n\
     for automatically choosing tuning parameter\nin the estimation of pi_0, the proportion\
     \ of\ntrue null hypotheses.  [default: bootstrap]"
-  synonyms:
-  - --pi0_method
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Number of degrees-of-freedom to use when\nestimating pi_0 with a smoother.\
-    \  [default:\n3]"
+  optional: true
   synonyms:
   - --pi0_smooth_df
+  description: "Number of degrees-of-freedom to use when\nestimating pi_0 with a smoother.\
+    \  [default:\n3]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "/ --no-pi0_smooth_log_pi0\nIf True and pi0_method = \"smoother\",\
-    \ pi0\nwill be estimated by applying a smoother to\na scatterplot of log(pi0)\
-    \ estimates against\nthe tuning parameter lambda.  [default:\nFalse]"
+  optional: true
   synonyms:
   - --pi0_smooth_log_pi0
+  - --no-pi0_smooth_log_pi0
+  description: "If True and pi0_method = \"smoother\", pi0\nwill be estimated by applying\
+    \ a smoother to\na scatterplot of log(pi0) estimates against\nthe tuning parameter\
+    \ lambda.  [default:\nFalse]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ --no-lfdr_truncate\nIf True, local FDR values >1 are set to 1.\n\
-    [default: True]"
+  optional: true
   synonyms:
   - --lfdr_truncate
+  - --no-lfdr_truncate
+  description: "If True, local FDR values >1 are set to 1.\n[default: True]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ --no-lfdr_monotone\nIf True, local FDR values are non-decreasing\n\
-    with increasing p-values.  [default: True]"
+  optional: true
   synonyms:
   - --lfdr_monotone
+  - --no-lfdr_monotone
+  description: "If True, local FDR values are non-decreasing\nwith increasing p-values.\
+    \  [default: True]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --lfdr_transformation
   description: "[probit|logit]\nEither a \"probit\" or \"logit\" transformation\n\
     is applied to the p-values so that a local\nFDR estimate can be formed that does\
     \ not\ninvolve edge effects of the [0,1] interval\nin which the p-values lie.\
     \  [default:\nprobit]"
-  synonyms:
-  - --lfdr_transformation
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Numeric value that is applied as a multiple\nof the smoothing bandwidth\
-    \ used in the\ndensity estimation.  [default: 1.5]"
+  optional: true
   synonyms:
   - --lfdr_adj
+  description: "Numeric value that is applied as a multiple\nof the smoothing bandwidth\
+    \ used in the\ndensity estimation.  [default: 1.5]"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Numeric value that is threshold for the\ntails of the empirical p-value\
-    \ distribution.\n[default: 1e-08]"
+  optional: true
   synonyms:
   - --lfdr_eps
+  description: "Numeric value that is threshold for the\ntails of the empirical p-value\
+    \ distribution.\n[default: 1e-08]"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: pyprophet peptide [OPTIONS]\n\n  Infer peptides and conduct error-rate\
@@ -167,3 +170,4 @@ help_text: "Usage: pyprophet peptide [OPTIONS]\n\n  Infer peptides and conduct e
   \ and exit.\n"
 generated_using:
 - --help
+docker_image:

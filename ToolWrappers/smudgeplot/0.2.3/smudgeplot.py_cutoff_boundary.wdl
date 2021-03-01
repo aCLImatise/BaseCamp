@@ -14,6 +14,9 @@ task SmudgeplotpyCutoffBoundary {
       ~{in_file} \
       ~{boundary}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     smudge_plot: ""
     cut_off: ""

@@ -3,22 +3,22 @@ id: pal2nal.pl.cwl
 inputs:
 - id: in_output
   doc: "(clustal|paml|fasta|codon)\nOutput format; default = clustal"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -output
 - id: in_block_only
   doc: "Show only user specified blocks\n'#' under CLUSTAL alignment (see example)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -blockonly
 - id: in_no_gap
   doc: remove columns with gaps and inframe stop codons
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nogap
 - id: in_no_mismatch
   doc: "remove mismatched codons (mismatch between\npep and cDNA) from the output"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nomismatch
 - id: in_codon_table
@@ -26,17 +26,17 @@ inputs:
     \ mitochondrial code\n4  Mold, Protozoan, and Coelenterate Mitochondrial code\n\
     and Mycoplasma/Spiroplasma code\n5  Invertebrate mitochondrial\n6  Ciliate, Dasycladacean\
     \ and Hexamita nuclear code\n9  Echinoderm and Flatworm mitochondrial code"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -codontable
 - id: in_html
   doc: HTML output (only for the web server)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -html
 - id: in_no_stderr
   doc: No STDERR messages (only for the web server)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nostderr
 - id: in_euplotid_nuclear_code
@@ -79,7 +79,7 @@ inputs:
   type: long
   inputBinding:
     position: 7
-- id: in_scenedesmus_obliquus_mitochondrial
+- id: in_scenedesmus_obliquus_code
   doc: Scenedesmus obliquus mitochondrial code
   type: long
   inputBinding:
@@ -93,6 +93,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pal2nal.pl

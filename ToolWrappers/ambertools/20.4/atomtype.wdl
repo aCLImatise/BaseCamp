@@ -4,6 +4,9 @@ task Atomtype {
   command <<<
     atomtype
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

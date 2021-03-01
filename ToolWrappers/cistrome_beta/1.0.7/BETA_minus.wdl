@@ -24,6 +24,9 @@ task BETAMinus {
       ~{if defined(bf) then ("--bf " +  '"' + bf + '"') else ""} \
       ~{if defined(pn) then ("--pn " +  '"' + pn + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     peak_file: "The bed format of peaks binding sites. (BETA support 3\\nor 5 columns bed format, CHROM, START, END (NAME,\\nSCORE))"
     genome: "Specify your species, hg38,hg19,hg18,mm10,mm9. For\\nother genome assembily versions of human and mouse or\\nother species, ignore this paramter"

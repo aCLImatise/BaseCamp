@@ -2,42 +2,237 @@
 command:
 - vsyasm
 positional: []
-named: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --license
+  description: show license text
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --arch
+  description: select architecture (list with -a help)
+  args: !SimpleFlagArg
+    name: arch
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --parser
+  description: select parser (list with -p help)
+  args: !SimpleFlagArg
+    name: arch
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --preproc
+  description: select preprocessor (list with -r help)
+  args: !SimpleFlagArg
+    name: parser
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --oformat
+  description: select object format (list with -f help)
+  args: !SimpleFlagArg
+    name: preproc
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --dformat
+  description: select debugging format (list with -g help)
+  args: !SimpleFlagArg
+    name: format
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --lformat
+  description: select list format (list with -L help)
+  args: !SimpleFlagArg
+    name: debug
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --list
+  description: name of list-file output directory
+  args: !SimpleFlagArg
+    name: list
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --objdir
+  description: name of object-file output directory
+  args: !SimpleFlagArg
+    name: pathname
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --mapdir
+  description: name of map-file output directory
+  args: !SimpleFlagArg
+    name: pathname
+- !Flag
+  optional: true
+  synonyms:
+  - --listext
+  description: list-file extension (default `lst')
+  args: !SimpleFlagArg
+    name: ext
+- !Flag
+  optional: true
+  synonyms:
+  - --objext
+  description: object-file extension (default is by object format)
+  args: !SimpleFlagArg
+    name: ext
+- !Flag
+  optional: true
+  synonyms:
+  - --mapext
+  description: map-file extension (default `map')
+  args: !SimpleFlagArg
+    name: ext
+- !Flag
+  optional: true
+  synonyms:
+  - --machine
+  description: select machine (list with -m help)
+  args: !SimpleFlagArg
+    name: machine
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --force-strict
+  description: treat all sized operands as if `strict' was used
+  args: !SimpleFlagArg
+    name: machine
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: inhibits warning messages
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  description: enables/disables warning
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  description: redirect error messages to file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: redirect error messages to stdout
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: add include path
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  description: add include path
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  description: pre-include file
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: <macro[=value]>      pre-define a macro, optionally to value
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  description: <macro[=value]>      pre-define a macro, optionally to value
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: undefine a macro
+  args: !SimpleFlagArg
+    name: macro
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  description: undefine a macro
+  args: !SimpleFlagArg
+    name: macro
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  description: select error/warning message style (`gnu' or `vc')
+  args: !SimpleFlagArg
+    name: style
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  description: prepend argument to name of all external symbols
+  args: !SimpleFlagArg
+    name: prefix
+- !Flag
+  optional: true
+  synonyms:
+  - --suffix
+  description: append argument to name of all external symbols
+  args: !SimpleFlagArg
+    name: suffix
+- !Flag
+  optional: true
+  synonyms:
+  - --postfix
+  description: append argument to name of all external symbols
+  args: !SimpleFlagArg
+    name: suffix
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show help text
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag: !Flag
-  description: "show version text\n--license               show license text\n-h,\
-    \ --help              show help text\n--arch=<arch>           select architecture\
-    \ (list with -a help)\n-a <arch>\n--parser=<parser>       select parser (list\
-    \ with -p help)\n-p <parser>\n--preproc=<preproc>     select preprocessor (list\
-    \ with -r help)\n-r <preproc>\n--oformat=<format>      select object format (list\
-    \ with -f help)\n-f <format>\n--dformat=<debug>       select debugging format\
-    \ (list with -g help)\n-g <debug>\n--lformat=<list>        select list format\
-    \ (list with -L help)\n-L <list>\n--list=<pathname>       name of list-file output\
-    \ directory\n-l <pathname>\n--objdir=<pathname>     name of object-file output\
-    \ directory\n-o <pathname>\n--mapdir=<pathname>     name of map-file output directory\n\
-    --listext=<ext>         list-file extension (default `lst')\n--objext=<ext>  \
-    \        object-file extension (default is by object format)\n--mapext=<ext> \
-    \         map-file extension (default `map')\n--machine=<machine>     select machine\
-    \ (list with -m help)\n-m <machine>\n--force-strict          treat all sized operands\
-    \ as if `strict' was used\n-w                      inhibits warning messages\n\
-    -W                      enables/disables warning\n-E <file>               redirect\
-    \ error messages to file\n-s                      redirect error messages to stdout\n\
-    -i <path>               add include path\n-I <path>               add include\
-    \ path\n-P <filename>           pre-include file\n-d <macro[=value]>      pre-define\
-    \ a macro, optionally to value\n-D <macro[=value]>      pre-define a macro, optionally\
-    \ to value\n-u <macro>              undefine a macro\n-U <macro>             \
-    \ undefine a macro\n-X <style>              select error/warning message style\
-    \ (`gnu' or `vc')\n--prefix=<prefix>       prepend argument to name of all external\
-    \ symbols\n--suffix=<suffix>       append argument to name of all external symbols\n\
-    --postfix=<suffix>      append argument to name of all external symbols"
+  optional: true
   synonyms:
   - --version
+  description: show version text
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: vsyasm [option]* file...\nOptions:\n    --version             \
   \  show version text\n    --license               show license text\n    -h, --help\
   \              show help text\n    --arch=<arch>           select architecture (list\
@@ -70,3 +265,4 @@ help_text: "usage: vsyasm [option]* file...\nOptions:\n    --version            
   \ apply to all files.\n\nReport bugs to bug-yasm@tortall.net\n"
 generated_using:
 - --help
+docker_image:

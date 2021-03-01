@@ -4,83 +4,83 @@ command:
 - split
 positional:
 - !Positional
-  description: Input FASTQ/BAM file with reads (FASTQ can be gzipped)
+  optional: false
   position: 0
   name: READS
-  optional: false
+  description: Input FASTQ/BAM file with reads (FASTQ can be gzipped)
 - !Positional
+  optional: false
+  position: 1
+  name: LIST
   description: "Tab-separated list with (at least) two columns\n<readname> and <haplotype>\
     \ (can be gzipped).\nCurrently, the two haplotypes have to be named H1 and\nH2\
     \ (or none). Alternatively, the output of the\n\"haplotag\" command can be used\
     \ (4 columns), and this\nis required for using the \"--only-largest-block\"\n\
     option (need phaseset and chromosome info)."
-  position: 1
-  name: LIST
-  optional: false
 - !Positional
-  description: --only-largest-block  Only consider reads to be tagged if they belong
-    to the
+  optional: false
   position: 0
   name: streams.
-  optional: false
+  description: --only-largest-block  Only consider reads to be tagged if they belong
+    to the
 named:
 - !Flag
-  description: "Output file to write reads from Haplotype 1 to. Use\nending .gz to\
-    \ create gzipped file."
+  optional: true
   synonyms:
   - --output-h1
+  description: "Output file to write reads from Haplotype 1 to. Use\nending .gz to\
+    \ create gzipped file."
   args: !SimpleFlagArg
     name: OUTPUT_H1
-  optional: true
 - !Flag
-  description: "Output file to write reads from Haplotype 2 to. Use\nending .gz to\
-    \ create gzipped file."
+  optional: true
   synonyms:
   - --output-h2
+  description: "Output file to write reads from Haplotype 2 to. Use\nending .gz to\
+    \ create gzipped file."
   args: !SimpleFlagArg
     name: OUTPUT_H2
-  optional: true
 - !Flag
-  description: "Output file to write untagged reads to. Use ending .gz\nto create\
-    \ gzipped file."
+  optional: true
   synonyms:
   - --output-untagged
+  description: "Output file to write untagged reads to. Use ending .gz\nto create\
+    \ gzipped file."
   args: !SimpleFlagArg
     name: OUTPUT_UNTAGGED
-  optional: true
 - !Flag
-  description: Add reads without tag to both H1 and H2 output
+  optional: true
   synonyms:
   - --add-untagged
+  description: Add reads without tag to both H1 and H2 output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --discard-unknown-reads
   description: "Only check the haplotype of reads listed in the\nhaplotag list file.\
     \ Reads (read names) not contained\nin this file will be discarded. In the default\
     \ case (=\nkeep unknown reads), those reads would be considered\nuntagged and\
     \ end up in the respective output file.\nPlease be sure that the read names match\
     \ between the\ninput FASTQ/BAM and the haplotag list file."
-  synonyms:
-  - --discard-unknown-reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output file to write read lengths histogram to in tab\nseparated format.\n"
+  optional: true
   synonyms:
   - --read-lengths-histogram
+  description: "Output file to write read lengths histogram to in tab\nseparated format.\n"
   args: !SimpleFlagArg
     name: READ_LENGTHS_HISTOGRAM
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: whatshap split [-h] [--output-h1 OUTPUT_H1] [--output-h2 OUTPUT_H2]\n\
@@ -120,3 +120,4 @@ help_text: "usage: whatshap split [-h] [--output-h1 OUTPUT_H1] [--output-h2 OUTP
   \ histogram to in tab\n                        separated format.\n"
 generated_using:
 - --help
+docker_image:

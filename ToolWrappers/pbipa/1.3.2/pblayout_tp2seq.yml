@@ -1,0 +1,105 @@
+!Command
+command:
+- pblayout
+- tp2seq
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in_reads_fn
+  description: STR   Path to a SeqDB file with reads which will be used to compose
+    the sequences.
+- !Positional
+  optional: false
+  position: 1
+  name: in_tiling_path_fn
+  description: STR   Path to a TilingPath file.
+- !Positional
+  optional: false
+  position: 2
+  name: out_fn
+  description: STR   Output FASTA filename.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --use-seq-ids
+  description: The input tiling path contains sequence IDs instead of read names.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-hpc
+  description: "Assumes that the input tiling paths were constructed in the homopolymer-compressed\
+    \ space,\nand expands the sequences during sequence construction."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --realign
+  description: Realigns the tiling path edges to improve tiling coordinates.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --batch-mb
+  description: "INT   Batch size in Mbp. Reads for a batch of contigs are loaded at\
+    \ once so that all reads total\nin roughly this size. [1000]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --num-threads
+  description: INT   Number of threads to use, 0 means autodetection. [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [WARN]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE  Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "tp2seq - Construct contig sequences from a given tiling path file.\n\n\
+  Usage:\n  tp2seq [options] <in_reads_fn> <in_tiling_path_fn> <out_fn>\n\n  in_reads_fn\
+  \        STR   Path to a SeqDB file with reads which will be used to compose the\
+  \ sequences.\n  in_tiling_path_fn  STR   Path to a TilingPath file.\n  out_fn  \
+  \           STR   Output FASTA filename.\n\nAlgorithm Options:\n  --use-seq-ids\
+  \            The input tiling path contains sequence IDs instead of read names.\n\
+  \  --use-hpc                Assumes that the input tiling paths were constructed\
+  \ in the homopolymer-compressed space,\n                           and expands the\
+  \ sequences during sequence construction.\n  --realign                Realigns the\
+  \ tiling path edges to improve tiling coordinates.\n  --batch-mb         INT   Batch\
+  \ size in Mbp. Reads for a batch of contigs are loaded at once so that all reads\
+  \ total\n                           in roughly this size. [1000]\n\n  -h,--help\
+  \                Show this help and exit.\n  --version                Show application\
+  \ version and exit.\n  -j,--num-threads   INT   Number of threads to use, 0 means\
+  \ autodetection. [0]\n  --log-level        STR   Set log level. Valid choices: (TRACE,\
+  \ DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file         FILE  Log to a file, instead\
+  \ of stderr.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0

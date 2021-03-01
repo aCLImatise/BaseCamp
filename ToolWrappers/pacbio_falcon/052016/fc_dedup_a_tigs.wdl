@@ -10,6 +10,9 @@ task FcDedupATigs {
       ~{if defined(max_aln_cov) then ("--max_aln_cov " +  '"' + max_aln_cov + '"') else ""} \
       ~{if defined(max_idt) then ("--max_idt " +  '"' + max_idt + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_aln_cov: ""
     max_idt: ""

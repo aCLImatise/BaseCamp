@@ -46,6 +46,9 @@ task Nanovar {
       ~{if defined(wmk) then ("--wmk " +  '"' + wmk + '"') else ""} \
       ~{if defined(hsb) then ("--hsb " +  '"' + hsb + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_type: "type of long-read data [ont]\\nont - Oxford Nanopore Technologies\\npacbio-clr - Pacific Biosciences CLR\\npacbio-ccs - Pacific Biosciences CCS"
     filter_bed: "BED file with genomic regions to be excluded [None]\\n(e.g. telomeres and centromeres) Either specify name of in-built\\nreference genome filter (i.e. hg38, hg19, mm10) or provide full\\npath to own BED file."

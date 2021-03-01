@@ -8,6 +8,9 @@ task RunMetaphylerpl {
     runMetaphyler_pl \
       ~{prefix_dot_classification}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix_dot_classification: "Classification results."
   }

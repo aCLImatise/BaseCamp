@@ -10,6 +10,9 @@ task DeepacGwpaDetails {
       ~{deep_ac} \
       ~{gwp_a}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     deep_ac: ""
     gwp_a: ""

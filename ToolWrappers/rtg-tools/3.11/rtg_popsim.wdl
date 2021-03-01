@@ -14,6 +14,9 @@ task RtgPopsim {
       ~{if (no_gzip) then "--no-gzip" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_vcf_file: "output VCF file name"
     reference: "SDF containing the reference genome"

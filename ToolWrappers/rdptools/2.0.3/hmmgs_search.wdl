@@ -2,7 +2,7 @@ version 1.0
 
 task HmmgsSearch {
   input {
-    Boolean? do_normalize_input
+    Boolean? normalize_hmm_input
     Int? prune_search_improve
     String limit_in_seconds
     String bloom_filter
@@ -13,11 +13,14 @@ task HmmgsSearch {
       ~{limit_in_seconds} \
       ~{bloom_filter} \
       ~{km_ers} \
-      ~{if (do_normalize_input) then "-u" else ""} \
+      ~{if (normalize_hmm_input) then "-u" else ""} \
       ~{if defined(prune_search_improve) then ("-p " +  '"' + prune_search_improve + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    do_normalize_input: "don't normalize the hmm input"
+    normalize_hmm_input: "don't normalize the hmm input"
     prune_search_improve: "prune the search if the score does not improve after n_nodes (default 20, set to 0 to disable pruning)"
     limit_in_seconds: "dtime limit for individual searches (conservative suggestion = 100)"
     bloom_filter: "bloom filter built using hmmgs build"

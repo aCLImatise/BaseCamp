@@ -26,7 +26,14 @@ task Export2graphlanpy {
     File? lefse_output
     File? tree
     File? annotation
-    Int? sep
+    File? out_table
+    Int? fname_row
+    Int? sname_row
+    String? metadata_rows
+    File? skip_rows
+    String? s_perc
+    Int? f_top
+    String? def_na
   }
   command <<<
     export2graphlan_py \
@@ -54,8 +61,18 @@ task Export2graphlanpy {
       ~{if defined(lefse_output) then ("--lefse_output " +  '"' + lefse_output + '"') else ""} \
       ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""} \
       ~{if defined(annotation) then ("--annotation " +  '"' + annotation + '"') else ""} \
-      ~{if defined(sep) then ("--sep " +  '"' + sep + '"') else ""}
+      ~{if defined(out_table) then ("--out_table " +  '"' + out_table + '"') else ""} \
+      ~{if defined(fname_row) then ("--fname_row " +  '"' + fname_row + '"') else ""} \
+      ~{if defined(sname_row) then ("--sname_row " +  '"' + sname_row + '"') else ""} \
+      ~{if defined(metadata_rows) then ("--metadata_rows " +  '"' + metadata_rows + '"') else ""} \
+      ~{if defined(skip_rows) then ("--skip_rows " +  '"' + skip_rows + '"') else ""} \
+      ~{if defined(s_perc) then ("--sperc " +  '"' + s_perc + '"') else ""} \
+      ~{if defined(f_top) then ("--ftop " +  '"' + f_top + '"') else ""} \
+      ~{if defined(def_na) then ("--def_na " +  '"' + def_na + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     annotations: "List which levels should be annotated in the tree. Use\\na comma separate values form, e.g.,\\n--annotation_levels 1,2,3. Default is None"
     external_annotations: "List which levels should use the external legend for\\nthe annotation. Use a comma separate values form,\\ne.g., --annotation_levels 1,2,3. Default is None"
@@ -81,7 +98,14 @@ task Export2graphlanpy {
     lefse_output: "LEfSe output result data. The result of LEfSe analysis\\nperformed on the lefse_input file"
     tree: "Output filename where save the input tree for GraPhlAn"
     annotation: "Output filename where save GraPhlAn annotation"
-    sep: "--out_table OUT_TABLE\\nWrite processed data matrix to file\\n--fname_row FNAME_ROW\\nrow number containing the names of the features\\n[default 0, specify -1 if no names are present in the\\nmatrix\\n--sname_row SNAME_ROW\\ncolumn number containing the names of the samples\\n[default 0, specify -1 if no names are present in the\\nmatrix\\n--metadata_rows METADATA_ROWS\\nRow numbers to use as metadata[default None, meaning\\nno metadata\\n--skip_rows SKIP_ROWS\\nRow numbers to skip (0-indexed, comma separated) from\\nthe input file[default None, meaning no rows skipped\\n--sperc SPERC         Percentile of sample value distribution for sample\\nselection\\n--fperc FPERC         Percentile of feature value distribution for sample\\nselection\\n--stop STOP           Number of top samples to select (ordering based on\\npercentile specified by --sperc)\\n--ftop FTOP           Number of top features to select (ordering based on\\npercentile specified by --fperc)\\n--def_na DEF_NA       Set the default value for missing values [default None\\nwhich means no replacement]\\n"
+    out_table: "Write processed data matrix to file"
+    fname_row: "row number containing the names of the features\\n[default 0, specify -1 if no names are present in the\\nmatrix"
+    sname_row: "column number containing the names of the samples\\n[default 0, specify -1 if no names are present in the\\nmatrix"
+    metadata_rows: "Row numbers to use as metadata[default None, meaning\\nno metadata"
+    skip_rows: "Row numbers to skip (0-indexed, comma separated) from\\nthe input file[default None, meaning no rows skipped"
+    s_perc: "Percentile of sample value distribution for sample"
+    f_top: "Number of top features to select (ordering based on\\npercentile specified by --fperc)"
+    def_na: "Set the default value for missing values [default None\\nwhich means no replacement]\\n"
   }
   output {
     File out_stdout = stdout()

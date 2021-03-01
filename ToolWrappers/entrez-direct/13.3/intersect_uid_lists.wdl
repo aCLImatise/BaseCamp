@@ -42,6 +42,9 @@ task Intersectuidlists {
       ~{if (mst) then "-mST" else ""} \
       ~{if (nrugmcszbdfimstokt) then "-nrugMcszbdfimSTokt" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_leading_blanks: "Ignore leading blanks"
     check_input_sorted: "Check whether input is sorted"

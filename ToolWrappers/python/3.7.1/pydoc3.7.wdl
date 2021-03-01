@@ -10,6 +10,9 @@ task Pydoc37 {
       ~{package_dot} \
       ~{directory_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     package_dot: "If <name> contains a '/', it is used as the path to a"
     directory_dot: "If <name> contains a '/', it is treated as a filename; if"

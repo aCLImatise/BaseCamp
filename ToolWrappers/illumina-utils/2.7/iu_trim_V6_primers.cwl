@@ -3,12 +3,12 @@ id: iu_trim_V6_primers.cwl
 inputs:
 - id: in_archaea
   doc: When set, primers for arhacea is used instead of bacteria.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --archaea
 - id: in_debug
   doc: Turn on debug prints.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_input_fast_a
@@ -23,6 +23,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - iu-trim-V6-primers

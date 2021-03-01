@@ -10,6 +10,9 @@ task Anviscripttransposematrix {
       ~{matrix_file} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "File path to store results.\\n"
     matrix_file: "Input matrix."

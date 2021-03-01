@@ -20,6 +20,9 @@ task Gempmemd {
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if (var_5) then "-O" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     c: ""

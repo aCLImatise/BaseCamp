@@ -38,6 +38,9 @@ task Ataqv {
       ~{if (autosomal_reference_file) then "--autosomal-reference-file" else ""} \
       ~{if (mitochondrial_reference_name) then "--mitochondrial-reference-name" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: ": show more details and progress updates."
     threads: ": the maximum number of threads to use (right now, only for calculating TSS enrichment)."

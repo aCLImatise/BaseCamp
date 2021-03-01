@@ -26,6 +26,9 @@ task FindHiCInteractionsByChrplLs {
       ~{if (std) then "-std" else ""} \
       ~{if (min) then "-min" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     res: "<#> (resolution in bp, default: 2000)"
     window: "<#> (window resolution in bp, i.e. superRes, default: 10000)"

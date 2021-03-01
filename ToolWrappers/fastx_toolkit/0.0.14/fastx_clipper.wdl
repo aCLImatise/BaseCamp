@@ -28,6 +28,9 @@ task FastxClipper {
       ~{if (var_9) then "-D" else ""} \
       ~{if defined(a) then ("-a " +  '"' + a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     i: ""

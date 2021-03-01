@@ -10,6 +10,9 @@ task Xtermcolor {
       ~{if defined(color) then ("--color " +  '"' + color + '"') else ""} \
       ~{if defined(compat) then ("--compat " +  '"' + compat + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     color: "Color to convert"
     compat: "Compatibility mode. Defaults to xterm.\\n"

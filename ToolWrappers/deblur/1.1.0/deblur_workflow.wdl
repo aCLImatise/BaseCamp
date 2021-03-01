@@ -48,6 +48,9 @@ task DeblurWorkflow {
       ~{if defined(jobs_to_start) then ("--jobs-to-start " +  '"' + jobs_to_start + '"') else ""} \
       ~{if (is_worker_thread) then "--is-worker-thread" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seqs_fp: "Either a Demultiplexed FASTA or FASTQ file\\nincluding all samples, or a directory of\\nper-sample FASTA or FASTQ files. Gzip'd\\nfiles are acceptable (e.g., .fastq.gz).\\n[required]"
     output_dir: "Directory path to store output including\\nBIOM table  [required]"

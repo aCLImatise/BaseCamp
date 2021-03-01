@@ -16,6 +16,9 @@ task DeepacGwpaGranking {
       ~{if (extended) then "--extended" else ""} \
       ~{if defined(n_cpus) then ("--n-cpus " +  '"' + n_cpus + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     patho_dir: "Directory containing the pathogenicity scores over all\\ngenomic regions per species (.bedgraph)"
     gff_dir: "Directory containing the annotation data of the\\nspecies (.gff)"

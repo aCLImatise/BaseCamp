@@ -20,6 +20,9 @@ task SynapseSetprovenance {
       ~{if (executed) then "-executed" else ""} \
       ~{if defined(limit_search) then ("--limitSearch " +  '"' + limit_search + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id: "Synapse ID of entity whose provenance we are\\naccessing."
     name: "Name of the activity that generated the entity"

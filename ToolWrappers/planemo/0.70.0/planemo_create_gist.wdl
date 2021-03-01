@@ -10,6 +10,9 @@ task PlanemoCreateGist {
       ~{file_path} \
       ~{if (link_type) then "--link_type" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     link_type: "[raw|html]  Link type to generate for the file."
     file_path: ""

@@ -34,6 +34,9 @@ task LTRPipeline {
       ~{if defined(recon_dir) then ("-recon_dir " +  '"' + recon_dir + '"') else ""} \
       ~{if defined(rmb_last_dir) then ("-rmblast_dir " +  '"' + rmb_last_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version: "Displays the version of the program"
     trf_prgm: "The full path including the name for the TRF program ( 4.0.9 or\\nhigher )"

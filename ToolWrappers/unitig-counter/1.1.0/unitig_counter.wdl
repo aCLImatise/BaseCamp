@@ -20,6 +20,9 @@ task Unitigcounter {
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gzip: "(0 arg) :    Compress unitig output using gzip."
     strains: "(1 arg) :    A text file describing the strains containing 2 columns: 1) ID of the strain; 2) Path to a multi-fasta file containing the sequences of the strain. This file needs a header."

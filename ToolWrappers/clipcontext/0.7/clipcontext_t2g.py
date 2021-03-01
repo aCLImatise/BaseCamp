@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Float, Boolean, Int, File, Directory
+
+Clipcontext_T2G_V0_1_0 = CommandToolBuilder(tool="clipcontext_t2g", base_command=["clipcontext", "t2g"], inputs=[ToolInput(tag="in_thr", input_type=Float(optional=True), prefix="--thr", doc=InputDocumentation(doc="Site score threshold for filtering --in BED file (default:\nNone)")), ToolInput(tag="in_rev_filter", input_type=Boolean(optional=True), prefix="--rev-filter", doc=InputDocumentation(doc="Reverse filtering (keep values <= threshold and prefer sites\nwith smaller values) (default: False)")), ToolInput(tag="in_min_len", input_type=Int(optional=True), prefix="--min-len", doc=InputDocumentation(doc="Minimum input site length for filtering --in BED file\n(default: False)")), ToolInput(tag="in_max_len", input_type=Int(optional=True), prefix="--max-len", doc=InputDocumentation(doc="Maximum input site length for filtering --in BED file\n(default: False)")), ToolInput(tag="in_seq_ext", input_type=Int(optional=True), prefix="--seq-ext", doc=InputDocumentation(doc="Up- and downstream extension of centered sites for context\nsequence extraction (default: 30)")), ToolInput(tag="in_gen_uniq_ids", input_type=Boolean(optional=True), prefix="--gen-uniq-ids", doc=InputDocumentation(doc="Generate unique column 4 IDs for --in BED file entries\n(default: False)")), ToolInput(tag="in_report", input_type=Boolean(optional=True), prefix="--report", doc=InputDocumentation(doc="Output an .html report with statistics and plots comparing\ntranscript and genomic sequences (default: False)")), ToolInput(tag="in_in", input_type=File(optional=True), prefix="--in", doc=InputDocumentation(doc="Transcript regions BED file (6-column format) (transcript\nIDs need to be in --gtf)")), ToolInput(tag="in_out", input_type=Directory(optional=True), prefix="--out", doc=InputDocumentation(doc="Output results folder")), ToolInput(tag="in_gtf", input_type=File(optional=True), prefix="--gtf", doc=InputDocumentation(doc="Genomic annotations (hg38) GTF file (.gtf or .gtf.gz)")), ToolInput(tag="in_gen", input_type=File(optional=True), prefix="--gen", doc=InputDocumentation(doc="Genomic sequences (hg38) .2bit file"))], outputs=[ToolOutput(tag="out_out", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_out", type_hint=File()), doc=OutputDocumentation(doc="Output results folder"))], container="quay.io/biocontainers/clipcontext:0.7--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Clipcontext_T2G_V0_1_0().translate("wdl")
+

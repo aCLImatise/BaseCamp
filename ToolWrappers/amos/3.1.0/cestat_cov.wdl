@@ -30,6 +30,9 @@ task Cestatcov {
       ~{if defined(use_library_stdev) then ("-d " +  '"' + use_library_stdev + '"') else ""} \
       ~{if defined(only_use_pairs) then ("-r " +  '"' + only_use_pairs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     display_compatible_version: "Display the compatible bank version"
     disregard_bank_locks: "Disregard bank locks and write permissions (spy mode)"

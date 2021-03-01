@@ -12,6 +12,9 @@ task Varda2clientSnv {
       ~{if defined(inserted) then ("--inserted " +  '"' + inserted + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     position: "Locus position"
     inserted: "Inserted base"

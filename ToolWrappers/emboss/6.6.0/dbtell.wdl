@@ -12,6 +12,9 @@ task Dbtell {
       ~{if (outfile) then "-outfile" else ""} \
       ~{if (server) then "-server" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     full: "boolean    [N] The default behaviour is to report for\\nrelevant databases only basic information\\nfrom the EMBOSS database definition"
     outfile: "outfile    [stdout] Output file name"

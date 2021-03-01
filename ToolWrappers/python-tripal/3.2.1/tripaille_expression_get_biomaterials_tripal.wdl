@@ -8,6 +8,9 @@ task TripailleExpressionGetBiomaterialsTripal {
     tripaille expression get_biomaterials_tripal \
       ~{if defined(biomaterial_id) then ("--biomaterial_id " +  '"' + biomaterial_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     biomaterial_id: "A biomaterial entity ID"
   }

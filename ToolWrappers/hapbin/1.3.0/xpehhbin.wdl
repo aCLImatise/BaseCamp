@@ -26,6 +26,9 @@ task Xpehhbin {
       ~{if (bin_om) then "--binom" else ""} \
       ~{if (max_extend) then "--max-extend" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hapa: "Hap file for population A"
     hap_b: "Hap file for population B"

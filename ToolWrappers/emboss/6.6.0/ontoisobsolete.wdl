@@ -8,6 +8,9 @@ task Ontoisobsolete {
     ontoisobsolete \
       ~{if (obo_terms) then "-oboterms" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     obo_terms: ": enter obo value: Error: Unable to get reply from user - end of standard input"
   }

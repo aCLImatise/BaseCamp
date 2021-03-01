@@ -28,13 +28,14 @@ inputs:
     position: 4
 - id: in_end
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 5
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nebulizer

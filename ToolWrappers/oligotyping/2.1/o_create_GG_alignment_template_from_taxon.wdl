@@ -16,6 +16,9 @@ task OcreateGGalignmenttemplatefromtaxon {
       ~{path_greengenes_alignment} \
       ~{if defined(path_output_folder) then ("--output " +  '"' + path_output_folder + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_output_folder: "Path to the output folder\\n"
     create_greengenes_alignment: "Create GreenGenes Alignment Template"

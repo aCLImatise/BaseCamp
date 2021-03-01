@@ -8,6 +8,9 @@ task TransposcopeView {
     transposcope view \
       ~{web_directory}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     web_directory: "The path to the web directory created by the align tool."
   }

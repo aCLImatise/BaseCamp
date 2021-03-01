@@ -4,33 +4,59 @@ command:
 - run_dirichlet_mixture_model
 positional:
 - !Positional
-  description: '[--lower_bound_file LOWER_BOUND_FILE]'
+  optional: false
   position: 0
   name: CONFIG_FILE
-  optional: false
+  description: '[--lower_bound_file LOWER_BOUND_FILE]'
 named:
 - !Flag
-  description: Set random seed so results can be reproduced. By
-  synonyms:
-  - --seed
-  args: !SimpleFlagArg
-    name: SEED
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - --config_file
-  args: !EmptyFlagArg {}
+  description: Path to YAML format configuration file.
+  args: !SimpleFlagArg
+    name: CONFIG_FILE
+- !Flag
   optional: true
+  synonyms:
+  - --lower_bound_file
+  description: Path of file where lower bound will be written.
+  args: !SimpleFlagArg
+    name: LOWER_BOUND_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --out_dir
+  description: Path where output files will be written.
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --convergence_tolerance
+  - --max_num_iters
+  - --seed
+  description: "Set random seed so results can be reproduced. By\ndefault a random\
+    \ seed is chosen."
+  args: !SimpleFlagArg
+    name: CONVERGENCE_TOLERANCE
+- !Flag
+  optional: true
+  synonyms:
+  - --labels_file
+  description: "Path of file with initial labels to use.\n"
+  args: !SimpleFlagArg
+    name: LABELS_FILE
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: Single Cell Genotyper run_dirichlet_mixture_model [-h] --config_file\n\
@@ -52,3 +78,4 @@ help_text: "usage: Single Cell Genotyper run_dirichlet_mixture_model [-h] --conf
   \  Path of file with initial labels to use.\n"
 generated_using:
 - --help
+docker_image:

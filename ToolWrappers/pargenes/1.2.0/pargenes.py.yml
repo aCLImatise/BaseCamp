@@ -1,0 +1,313 @@
+!Command
+command:
+- pargenes.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: checkpoint
+  description: --msa-filter MSA_FILTER
+- !Positional
+  optional: false
+  position: 0
+  name: process
+  description: -d {nt,aa}, --datatype {nt,aa}
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --dry-run
+  - -a
+  - --alignments-dir
+  description: Directory containing the fasta files
+  args: !SimpleFlagArg
+    name: ALIGNMENTS_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-dir
+  description: Output directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cores
+  description: "The number of computational cores available for\ncomputation. Should\
+    \ at least 2."
+  args: !SimpleFlagArg
+    name: CORES
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: "Random seed, for reproductibility of RAxML-NG runs.\nSet to 0 by default"
+  args: !SimpleFlagArg
+    name: SEED
+- !Flag
+  optional: true
+  synonyms:
+  - --continue
+  description: Allow pargenes to continue the analysis from the last
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --scheduler
+  description: Expert-user only.
+  args: !ChoiceFlagArg
+    choices: !!set
+      split:
+      fork:
+      onecore:
+- !Flag
+  optional: true
+  synonyms:
+  - --core-assignment
+  description: "Policy to decide the per-job number of cores (low\nfavors a low per-job\
+    \ number of cores)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      high:
+      low:
+      medium:
+- !Flag
+  optional: true
+  synonyms:
+  - --valgrind
+  description: Run the scheduler with valgrind
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --job-failure-fatal
+  description: Stop ParGenes when a job fails
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --per-msa-raxml-parameters
+  description: A file containing per-msa raxml parameters
+  args: !SimpleFlagArg
+    name: PER_MSA_RAXML_PARAMETERS
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --random-starting-trees
+  description: The number of starting trees
+  args: !SimpleFlagArg
+    name: RANDOM_STARTING_TREES
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --parsimony-starting-trees
+  description: The number of starting parsimony trees
+  args: !SimpleFlagArg
+    name: PARSIMONY_STARTING_TREES
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --raxml-global-parameters
+  description: A file containing the parameters to pass to raxml
+  args: !SimpleFlagArg
+    name: RAXML_GLOBAL_PARAMETERS
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --raxml-global-parameters-string
+  description: "List of parameters to pass to raxml (see also --raxml-\nglobal-parameters)"
+  args: !SimpleFlagArg
+    name: RAXML_GLOBAL_PARAMETERS_STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bs-trees
+  description: The number of bootstrap trees to compute
+  args: !SimpleFlagArg
+    name: BOOTSTRAPS
+- !Flag
+  optional: true
+  synonyms:
+  - --autoMRE
+  description: "Stop computing bootstrap trees after autoMRE bootstrap\nconvergence\
+    \ test. You have to specify the maximum\nnumber of bootstrap trees with -b or\
+    \ --bs-tree"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --raxml-binary
+  description: "Custom path to raxml-ng executable. Please refer to\nthe wiki before\
+    \ setting this variable yourself."
+  args: !SimpleFlagArg
+    name: RAXML_BINARY
+- !Flag
+  optional: true
+  synonyms:
+  - --percentage-jobs-double-cores
+  description: "Percentage (between 0 and 1) of jobs that will receive\ntwice more\
+    \ cores"
+  args: !SimpleFlagArg
+    name: PERCENTAGE_JOBS_DOUBLE_CORES
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --use-modeltest
+  description: Autodetect the model with modeltest
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --modeltest-global-parameters
+  description: A file containing the parameters to pass to modeltest
+  args: !SimpleFlagArg
+    name: MODELTEST_GLOBAL_PARAMETERS
+- !Flag
+  optional: true
+  synonyms:
+  - --per-msa-modeltest-parameters
+  description: A file containing per-msa modeltest parameters
+  args: !SimpleFlagArg
+    name: PER_MSA_MODELTEST_PARAMETERS
+- !Flag
+  optional: true
+  synonyms:
+  - --modeltest-criteria
+  description: Alignments datatype
+  args: !ChoiceFlagArg
+    choices: !!set
+      AIC:
+      BIC:
+      AICc:
+- !Flag
+  optional: true
+  synonyms:
+  - --modeltest-perjob-cores
+  description: "Number of cores to assign to each modeltest core (at\nleast 4)"
+  args: !SimpleFlagArg
+    name: MODELTEST_CORES
+- !Flag
+  optional: true
+  synonyms:
+  - --modeltest-binary
+  description: "Custom path to modeltest-ng executable. Please refer\nto the wiki\
+    \ before setting this variable yourself."
+  args: !SimpleFlagArg
+    name: MODELTEST_BINARY
+- !Flag
+  optional: true
+  synonyms:
+  - --use-astral
+  description: Infer a species tree with astral
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --astral-global-parameters
+  description: "A file containing additional parameters to pass to\nastral"
+  args: !SimpleFlagArg
+    name: ASTRAL_GLOBAL_PARAMETERS
+- !Flag
+  optional: true
+  synonyms:
+  - --experiment-disable-jobs-sorting
+  description: "For experimenting only! Removes the sorting step in\nthe scheduler"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --retry
+  description: "Number of time the scheduler should try to restart\nafter an error\n"
+  args: !SimpleFlagArg
+    name: RETRY
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: ['/usr/local/bin/pargenes.py', '--help', '--scheduler', 'fork']\n\
+  \       [-h] [-V] [--dry-run] [-a ALIGNMENTS_DIR] [-o OUTPUT_DIR] [-c CORES]\n \
+  \      [--seed SEED] [--continue] [--msa-filter MSA_FILTER] [-d {nt,aa}]\n     \
+  \  [--scheduler {split,onecore,fork}]\n       [--core-assignment {high,medium,low}]\
+  \ [--valgrind]\n       [--job-failure-fatal]\n       [--per-msa-raxml-parameters\
+  \ PER_MSA_RAXML_PARAMETERS]\n       [-s RANDOM_STARTING_TREES] [-p PARSIMONY_STARTING_TREES]\n\
+  \       [-r RAXML_GLOBAL_PARAMETERS] [-R RAXML_GLOBAL_PARAMETERS_STRING]\n     \
+  \  [-b BOOTSTRAPS] [--autoMRE] [--raxml-binary RAXML_BINARY]\n       [--percentage-jobs-double-cores\
+  \ PERCENTAGE_JOBS_DOUBLE_CORES] [-m]\n       [--modeltest-global-parameters MODELTEST_GLOBAL_PARAMETERS]\n\
+  \       [--per-msa-modeltest-parameters PER_MSA_MODELTEST_PARAMETERS]\n       [--modeltest-criteria\
+  \ {AICc,AIC,BIC}]\n       [--modeltest-perjob-cores MODELTEST_CORES]\n       [--modeltest-binary\
+  \ MODELTEST_BINARY] [--use-astral]\n       [--astral-global-parameters ASTRAL_GLOBAL_PARAMETERS]\n\
+  \       [--experiment-disable-jobs-sorting] [--retry RETRY]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -V, --version      \
+  \   show program's version number and exit\n  --dry-run\n  -a ALIGNMENTS_DIR, --alignments-dir\
+  \ ALIGNMENTS_DIR\n                        Directory containing the fasta files\n\
+  \  -o OUTPUT_DIR, --output-dir OUTPUT_DIR\n                        Output directory\n\
+  \  -c CORES, --cores CORES\n                        The number of computational\
+  \ cores available for\n                        computation. Should at least 2.\n\
+  \  --seed SEED           Random seed, for reproductibility of RAxML-NG runs.\n \
+  \                       Set to 0 by default\n  --continue            Allow pargenes\
+  \ to continue the analysis from the last\n                        checkpoint\n \
+  \ --msa-filter MSA_FILTER\n                        A file containing the names of\
+  \ the msa files to\n                        process\n  -d {nt,aa}, --datatype {nt,aa}\n\
+  \                        Alignments datatype\n  --scheduler {split,onecore,fork}\n\
+  \                        Expert-user only.\n  --core-assignment {high,medium,low}\n\
+  \                        Policy to decide the per-job number of cores (low\n   \
+  \                     favors a low per-job number of cores)\n  --valgrind      \
+  \      Run the scheduler with valgrind\n  --job-failure-fatal   Stop ParGenes when\
+  \ a job fails\n  --per-msa-raxml-parameters PER_MSA_RAXML_PARAMETERS\n         \
+  \               A file containing per-msa raxml parameters\n  -s RANDOM_STARTING_TREES,\
+  \ --random-starting-trees RANDOM_STARTING_TREES\n                        The number\
+  \ of starting trees\n  -p PARSIMONY_STARTING_TREES, --parsimony-starting-trees PARSIMONY_STARTING_TREES\n\
+  \                        The number of starting parsimony trees\n  -r RAXML_GLOBAL_PARAMETERS,\
+  \ --raxml-global-parameters RAXML_GLOBAL_PARAMETERS\n                        A file\
+  \ containing the parameters to pass to raxml\n  -R RAXML_GLOBAL_PARAMETERS_STRING,\
+  \ --raxml-global-parameters-string RAXML_GLOBAL_PARAMETERS_STRING\n            \
+  \            List of parameters to pass to raxml (see also --raxml-\n          \
+  \              global-parameters)\n  -b BOOTSTRAPS, --bs-trees BOOTSTRAPS\n    \
+  \                    The number of bootstrap trees to compute\n  --autoMRE     \
+  \        Stop computing bootstrap trees after autoMRE bootstrap\n              \
+  \          convergence test. You have to specify the maximum\n                 \
+  \       number of bootstrap trees with -b or --bs-tree\n  --raxml-binary RAXML_BINARY\n\
+  \                        Custom path to raxml-ng executable. Please refer to\n \
+  \                       the wiki before setting this variable yourself.\n  --percentage-jobs-double-cores\
+  \ PERCENTAGE_JOBS_DOUBLE_CORES\n                        Percentage (between 0 and\
+  \ 1) of jobs that will receive\n                        twice more cores\n  -m,\
+  \ --use-modeltest   Autodetect the model with modeltest\n  --modeltest-global-parameters\
+  \ MODELTEST_GLOBAL_PARAMETERS\n                        A file containing the parameters\
+  \ to pass to modeltest\n  --per-msa-modeltest-parameters PER_MSA_MODELTEST_PARAMETERS\n\
+  \                        A file containing per-msa modeltest parameters\n  --modeltest-criteria\
+  \ {AICc,AIC,BIC}\n                        Alignments datatype\n  --modeltest-perjob-cores\
+  \ MODELTEST_CORES\n                        Number of cores to assign to each modeltest\
+  \ core (at\n                        least 4)\n  --modeltest-binary MODELTEST_BINARY\n\
+  \                        Custom path to modeltest-ng executable. Please refer\n\
+  \                        to the wiki before setting this variable yourself.\n  --use-astral\
+  \          Infer a species tree with astral\n  --astral-global-parameters ASTRAL_GLOBAL_PARAMETERS\n\
+  \                        A file containing additional parameters to pass to\n  \
+  \                      astral\n  --experiment-disable-jobs-sorting\n           \
+  \             For experimenting only! Removes the sorting step in\n            \
+  \            the scheduler\n  --retry RETRY         Number of time the scheduler\
+  \ should try to restart\n                        after an error\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pargenes:1.2.0--py37hf7b2935_0

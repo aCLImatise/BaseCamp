@@ -3,7 +3,7 @@ id: megalodon_extras_variants_atomize.cwl
 inputs:
 - id: in_out_vcf
   doc: 'Output VCF file. Default:'
-  type: File
+  type: File?
   inputBinding:
     prefix: --out-vcf
 - id: in_in_vcf
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_out_vcf
   doc: 'Output VCF file. Default:'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_vcf)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - megalodon_extras

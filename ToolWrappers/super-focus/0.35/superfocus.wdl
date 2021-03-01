@@ -40,6 +40,9 @@ task Superfocus {
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query: "Path to FAST(A/Q) file or directory with these files."
     output_directory: "Path to output files"

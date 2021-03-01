@@ -28,6 +28,9 @@ task NanopolishExtract {
       ~{if defined(base_caller) then ("--basecaller " +  '"' + base_caller + '"') else ""} \
       ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     recurse: "recurse into subdirectories"

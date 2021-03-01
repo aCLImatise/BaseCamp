@@ -8,6 +8,9 @@ task PvacseqInstallVepPlugin {
     pvacseq install_vep_plugin \
       ~{vep_plugins_path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vep_plugins_path: "Path to your VEP_plugins directory"
   }

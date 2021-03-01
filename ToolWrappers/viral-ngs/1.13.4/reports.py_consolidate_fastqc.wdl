@@ -12,6 +12,9 @@ task ReportspyConsolidateFastqc {
       ~{subcommand} \
       ~{consolidate_fast_qc}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reports_do_tpy: ""
     subcommand: ""

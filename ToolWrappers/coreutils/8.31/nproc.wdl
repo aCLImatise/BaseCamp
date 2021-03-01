@@ -10,6 +10,9 @@ task Nproc {
       ~{if (all) then "--all" else ""} \
       ~{if defined(ignore) then ("--ignore " +  '"' + ignore + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "print the number of installed processors"
     ignore: "if possible, exclude N processing units"

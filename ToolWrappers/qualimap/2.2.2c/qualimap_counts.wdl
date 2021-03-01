@@ -24,6 +24,9 @@ task QualimapCounts {
       ~{if defined(r_script_path) then ("--rscriptpath " +  '"' + r_script_path + '"') else ""} \
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compare: "Perform comparison of conditions. Currently 2 maximum\\nis possible."
     data: "File describing the input data. Format of the file is\\na 4-column tab-delimited table.\\nColumn 1: sample name\\nColumn 2: condition of the sample\\nColumn 3: path to the counts data for the sample\\nColumn 4: index of the column with counts"

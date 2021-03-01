@@ -14,6 +14,9 @@ task Vcfsamplediff {
       ~{vcf_file} \
       ~{if (strict) then "--strict" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     strict: "Require that no observations in the germline support the somatic alternate."
     tag: ""

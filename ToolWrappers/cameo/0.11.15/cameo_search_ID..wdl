@@ -12,6 +12,9 @@ task CameoSearchID {
       ~{search} \
       ~{product}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cameo: ""
     search: ""

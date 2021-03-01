@@ -38,6 +38,9 @@ task Rbdock {
       ~{if defined(target) then ("-target " +  '"' + target + '"') else ""} \
       ~{if (cont) then "-cont" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "input file"
     output_file: "output file"

@@ -16,6 +16,9 @@ task RsatComparequalities {
       ~{evaluation} \
       ~{all}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compare_qualities: "[1mVERSION[0m"
     comparison_dot: "[1mAUTHORS[0m"

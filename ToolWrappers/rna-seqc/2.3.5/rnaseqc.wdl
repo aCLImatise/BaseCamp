@@ -22,7 +22,6 @@ task Rnaseqc {
     Boolean? rp_km
     Boolean? coverage
     Boolean? coverage_mask
-    Boolean? d
     Boolean? detection_threshold
     String gtf
     String bam
@@ -55,9 +54,11 @@ task Rnaseqc {
       ~{if (rp_km) then "--rpkm" else ""} \
       ~{if (coverage) then "--coverage" else ""} \
       ~{if (coverage_mask) then "--coverage-mask" else ""} \
-      ~{if (d) then "-d" else ""} \
       ~{if (detection_threshold) then "--detection-threshold" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_current_sample: "[sample], --sample=[sample]     The name of the current sample. Default:\\nThe bam's filename"
     bed: "=[BEDFILE]                   Optional input BED file containing\\nnon-overlapping exons used for fragment\\nsize calculations"
@@ -79,7 +80,6 @@ task Rnaseqc {
     rp_km: "Output gene RPKM values instead of TPMs"
     coverage: "If this flag is provided, coverage\\nstatistics for each transcript will be\\nwritten to a table. Otherwise, only\\nsummary coverage statistics are\\ngenerated and added to the metrics table"
     coverage_mask: "=[SIZE]            Sets how many bases at both ends of a\\ntranscript are masked out when computing\\nper-base exon coverage. Default: 500bp"
-    d: "[threshold],"
     detection_threshold: "=[threshold] Number of counts on a gene to consider\\nthe gene 'detected'. Additionally, genes\\nbelow this limit are excluded from 3'\\nbias computation. Default: 5 reads"
     gtf: "The input GTF file containing features\\nto check the bam against"
     bam: "The input SAM/BAM file containing reads\\nto process"

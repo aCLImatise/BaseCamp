@@ -44,6 +44,9 @@ task RefinemOutliers {
       ~{if defined(height) then ("--height " +  '"' + height + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gc_perc: "percentile for identify scaffolds with divergent GC\\ncontent (default: 98)"
     td_perc: "percentile for identify scaffolds with divergent\\ntetranucleotide signatures (default: 98)"

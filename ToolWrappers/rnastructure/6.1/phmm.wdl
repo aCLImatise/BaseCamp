@@ -16,6 +16,9 @@ task Phmm {
       ~{if (log_probability) then "--logprobability" else ""} \
       ~{if (max_likelihood) then "--maxlikelihood" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_probability: "Specify that program should output probabilities as logs (base 10).\\nDefault is to output probabilties."
     max_likelihood: "Specify that program should output a maximum likelihood alignment.\\nDefault is to output pairwise probabilities."

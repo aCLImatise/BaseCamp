@@ -10,6 +10,9 @@ task LofreqCheckref {
       ~{ref_dot_fa} \
       ~{in_dot_bam}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_dot_fa: ""
     in_dot_bam: ""

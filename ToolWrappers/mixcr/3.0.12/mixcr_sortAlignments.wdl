@@ -22,6 +22,9 @@ task MixcrSortAlignments {
       ~{if (force_overwrite) then "--force-overwrite" else ""} \
       ~{if (no_warnings) then "--no-warnings" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     overwrite_if_required: "Overwrite output file if it is corrupted or if it was generated from\\ndifferent input file or with different parameters. -f / --force-overwrite\\noverrides this option."
     verbose: "Verbose warning messages."

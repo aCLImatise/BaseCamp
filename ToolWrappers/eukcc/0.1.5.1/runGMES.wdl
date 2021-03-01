@@ -3,18 +3,21 @@ version 1.0
 task RunGMES {
   input {
     String basename
-    File file
+    File var_file
     String? suffix
   }
   command <<<
     runGMES \
       ~{basename} \
-      ~{file} \
+      ~{var_file} \
       ~{suffix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     basename: ""
-    file: ""
+    var_file: ""
     suffix: ""
   }
   output {

@@ -32,6 +32,9 @@ task ParseStbpy {
       ~{if defined(output_base_name) then ("--output " +  '"' + output_base_name + '"') else ""} \
       ~{if (reverse) then "--reverse" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stb: "scaffold to bin file (default: None)"
     fasta_file_extract: "[FASTA [FASTA ...]], --fasta [FASTA [FASTA ...]]\\nfasta file to extract scaffolds from. Will treat as\\ncompressed if ends in .gz (default: None)"

@@ -24,6 +24,9 @@ task ChicQualityControl {
       ~{if defined(fixate_range) then ("--fixateRange " +  '"' + fixate_range + '"') else ""} \
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrices: "The input matrices to apply the QC on."
     reference_points: "Bed file contains all reference points which are\\nchecked for a sufficient number of interactions."

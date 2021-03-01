@@ -20,6 +20,9 @@ task BlobtoolsBamfilter {
       ~{if defined(read_format) then ("--read_format " +  '"' + read_format + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "BAM file (sorted by name)"
     include: "List of contigs whose reads are included\\n- writes FASTAs of pairs where at least\\none read maps sequences in list\\n(InUn.fq, InIn.fq, ExIn.fq)"

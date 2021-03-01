@@ -18,6 +18,9 @@ task StrideIndex {
       ~{if (no_reverse) then "--no-reverse" else ""} \
       ~{if (no_forward) then "--no-forward" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     algorithm: "BWT construction algorithm. STR can be:\\nsais - induced sort algorithm, slower but works for very long sequences\\nropebwt - Li's ropebwt algorithm, suitable for short reads (<200bp)\\nropebwt2 - Li's ropebwt2 algorithm, suitable for short and long reads (default)"

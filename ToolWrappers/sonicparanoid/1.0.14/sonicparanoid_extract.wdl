@@ -32,6 +32,9 @@ task Sonicparanoidextract {
       ~{if defined(gene_col_id) then ("--gene-col-id " +  '"' + gene_col_id + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_table: "Table with output groups generated using\\nSonicParanoid. NOTE: the headers must not be modified\\nor removed."
     output_directory: "The directory in which the results will be stored."

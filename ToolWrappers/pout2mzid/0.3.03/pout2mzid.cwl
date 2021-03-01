@@ -1,78 +1,79 @@
 class: CommandLineTool
 id: pout2mzid.cwl
 inputs:
-- id: in_percolator_xml_result
+- id: in_percolator_out_xml
   doc: '[ --percolatorfile ] [Value] Percolator Out XML result file'
-  type: File
+  type: File?
   inputBinding:
     prefix: -p
 - id: in_mzidentml_input_file
   doc: '[ --mzidfile ] [Value]       MzIdentML input file'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
-- id: in_sets_input_directory
+- id: in_sets_inputfiles_be
   doc: "[ --inputdir ] [Value]       Sets the mzIdentML input directory. All\nmzIdentML\
     \ inputfiles must be in that\ndirectory"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
-- id: in_change_outputfile_originalfilenamemziddefault
+- id: in_change_outputfile_stdout
   doc: "[ --changeoutput ] [Value]   Change the outputfile to original\nfilename+[Value]+.mzid.\n\
     DEFAULT: output to stdout"
-  type: File
+  type: File?
   inputBinding:
     prefix: -c
 - id: in_sets_output_directory
   doc: "[ --outputdir ] [Value]      Sets the output directory if none exist, it\n\
     will be created."
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
 - id: in_file_containing_list
   doc: '[ --filesmzid ] [Value]      File containing a list of mzIdentML filenames'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_only_adds_results
   doc: "[ --decoy ]                  Only adds results to entries with decoy set\n\
     to true. DEFAULT: false"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
-- id: in_sets_validation_performed
+- id: in_sets_validation_notbe
   doc: "[ --validate ]               Sets that validation of XML schema should not\n\
     be performed. Faster parsing."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
-- id: in_sets_warning_shouldterminate
+- id: in_sets_warning_software
   doc: "[ --warning ]                Sets that upon warning the software should\n\
     terminate.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -w
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_percolator_xml_result
+- id: out_percolator_out_xml
   doc: '[ --percolatorfile ] [Value] Percolator Out XML result file'
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_percolator_xml_result)
-- id: out_change_outputfile_originalfilenamemziddefault
+    glob: $(inputs.in_percolator_out_xml)
+- id: out_change_outputfile_stdout
   doc: "[ --changeoutput ] [Value]   Change the outputfile to original\nfilename+[Value]+.mzid.\n\
     DEFAULT: output to stdout"
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_change_outputfile_originalfilenamemziddefault)
+    glob: $(inputs.in_change_outputfile_stdout)
 - id: out_sets_output_directory
   doc: "[ --outputdir ] [Value]      Sets the output directory if none exist, it\n\
     will be created."
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_sets_output_directory)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pout2mzid

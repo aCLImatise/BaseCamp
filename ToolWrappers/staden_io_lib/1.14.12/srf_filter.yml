@@ -3,30 +3,33 @@ command:
 - srf_filter
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: input
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -c
   description: "Chunk types to output given as a comma delimited list of types.\n\
     The following types are allowed: \"ALL\", \"BASE\", \"CNF1\", \"CNF4\"\n\"SAMP\"\
     , \"SMP4\".\nThe default is \"ALL\"."
-  synonyms:
-  - -c
   args: !SimpleFlagArg
     name: chunk_types
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
   description: "SAMP/SMP4 mdata types to output given as a comma delimited list of\
     \ types.\nThe following types are allowed: \"ALL\", \"PROC\", \"SLXI\", \"SLXN\"\
     \n\"0FAM\", \"1CY3\", \"2TXR\", \"3CY5\".\nThe default is \"ALL\"."
-  synonyms:
-  - -m
   args: !SimpleFlagArg
     name: mdata_types
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
   description: "The filter to apply to reads in the archive.  If reads match the\n\
     filter they are dumped.\nThe filter takes the form of <name>=<value>, where <name>\
     \ can be\n\"read\", \"prefix\", \"file\".\nIf the <name> is \"read\" the value\
@@ -36,42 +39,39 @@ named:
     \ is \"file\" the value is a file name where any\nnumber of \"read\" and \"prefix\"\
     \ name value pairs can be included,\none per line.\nThe default is no filter,\
     \ which means all reads are dumped."
-  synonyms:
-  - -f
   args: !SimpleFlagArg
     name: read_filter
-  optional: true
 - !Flag
-  description: exclude bad reads using readsFlags bitmask in data block header.
+  optional: true
   synonyms:
   - -b
+  description: exclude bad reads using readsFlags bitmask in data block header.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: use this option to add a Illumina-style REGN chunk.
+  optional: true
   synonyms:
   - '-2'
+  description: use this option to add a Illumina-style REGN chunk.
   args: !SimpleFlagArg
     name: cyc
-  optional: true
 - !Flag
-  description: Print verbose messages.
+  optional: true
   synonyms:
   - -v
+  description: Print verbose messages.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -o
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -C
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -104,3 +104,4 @@ help_text: "Unrecognised option: --\nUnrecognised option: -h\nUnrecognised optio
   \ output name to read from stdin or write to stdout.\n\n"
 generated_using:
 - --help
+docker_image:

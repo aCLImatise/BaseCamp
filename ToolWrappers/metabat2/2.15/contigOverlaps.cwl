@@ -3,7 +3,7 @@ id: contigOverlaps.cwl
 inputs:
 - id: in_percent_identity
   doc: 'arg  The minimum end-to-end % identity of qualifying reads (default: 97)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --percentIdentity
 - id: in_options
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - contigOverlaps

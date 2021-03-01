@@ -2,7 +2,7 @@ version 1.0
 
 task CtatMutations {
   input {
-    File? path_one_left
+    File? path_left_left
     File? path_right_right
     Directory? out_dir
     File? reference
@@ -32,7 +32,7 @@ task CtatMutations {
   }
   command <<<
     ctat_mutations \
-      ~{if defined(path_one_left) then ("--left " +  '"' + path_one_left + '"') else ""} \
+      ~{if defined(path_left_left) then ("--left " +  '"' + path_left_left + '"') else ""} \
       ~{if defined(path_right_right) then ("--right " +  '"' + path_right_right + '"') else ""} \
       ~{if defined(out_dir) then ("--out_dir " +  '"' + out_dir + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
@@ -60,8 +60,11 @@ task CtatMutations {
       ~{if (no_recalibrate_bam) then "--no_recalibrate_bam" else ""} \
       ~{if defined(sequencing_platform) then ("--sequencing_platform " +  '"' + sequencing_platform + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    path_one_left: "Path to one of the two paired RNAseq samples (left)"
+    path_left_left: "Path to one of the two paired RNAseq samples (left)"
     path_right_right: "Path to one of the two paired RNAseq samples (right)"
     out_dir: "output directory"
     reference: "Path to the reference genome to use in the analysis\\npipeline."

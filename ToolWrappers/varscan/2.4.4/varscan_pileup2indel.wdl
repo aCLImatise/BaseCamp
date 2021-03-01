@@ -13,14 +13,14 @@ task VarscanPileup2indel {
     String java
     Int pile_up_two_cns
     String? pile_up
-    File? file
+    File? var_file
   }
   command <<<
     varscan pileup2indel \
       ~{java} \
       ~{pile_up_two_cns} \
       ~{pile_up} \
-      ~{file} \
+      ~{var_file} \
       ~{if (min_coverage) then "--min-coverage" else ""} \
       ~{if (min_reads_two) then "--min-reads2" else ""} \
       ~{if (min_avg_qual) then "--min-avg-qual" else ""} \
@@ -30,6 +30,9 @@ task VarscanPileup2indel {
       ~{if (variants) then "--variants" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_coverage: "Minimum read depth at a position to make a call [8]"
     min_reads_two: "Minimum supporting reads at a position to call variants [2]"
@@ -42,7 +45,7 @@ task VarscanPileup2indel {
     java: ""
     pile_up_two_cns: ""
     pile_up: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

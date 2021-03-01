@@ -12,6 +12,9 @@ task Primerclip {
       ~{if (bed_pe) then "--bedpe" else ""} \
       ~{if (single_end) then "--single-end" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_pe: "add this switch to use BEDPE coordinate input format\\n(default format is master file)"
     single_end: "add this switch to trim primers from single-end\\nalignments\\n"

@@ -26,6 +26,9 @@ task BamToBed {
       ~{if (cigar) then "-cigar" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_pe: "Write BEDPE format.\\n- Requires BAM to be grouped or sorted by query."
     mate_one: "When writing BEDPE (-bedpe) format,\\nalways report mate one as the first BEDPE \\\"block\\\"."

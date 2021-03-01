@@ -22,6 +22,9 @@ task FPKMCountpy {
       ~{if defined(mapq) then ("--mapq " +  '"' + mapq + '"') else ""} \
       ~{if defined(single_read) then ("--single-read " +  '"' + single_read + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Alignment file in BAM format (SAM is not supported).\\n[required]"
     out_prefix: "Prefix of output files(s). [required]"

@@ -44,6 +44,9 @@ task PhylorankOutliers {
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
       ~{if (verbose_table) then "--verbose_table" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     viral: "indicates a viral input tree and taxonomy"
     fixed_root: "use single fixed root to infer outliers"

@@ -11,22 +11,22 @@ subcommands:
   - hapmap2vcf
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: vcfutils.pl
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: in.ucsc.snp
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 2
     name: in.hapmap
-    optional: false
+    description: ''
   named: []
-  parent: &id011 !Command
+  parent: &id012 !Command
     command: *id001
     positional: []
     named: []
@@ -36,22 +36,22 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: vcfutils.pl
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: in.ucsc.snp
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 2
         name: in.hapmap
-        optional: false
+        description: ''
       named: []
-      parent: &id010 !Command
+      parent: &id011 !Command
         command: *id001
         positional: []
         named: []
@@ -61,22 +61,22 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: vcfutils.pl
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: in.ucsc.snp
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 2
             name: in.hapmap
-            optional: false
+            description: ''
           named: []
-          parent: &id009 !Command
+          parent: &id010 !Command
             command: *id001
             positional: []
             named: []
@@ -86,22 +86,22 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: vcfutils.pl
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: in.ucsc.snp
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 2
                 name: in.hapmap
-                optional: false
+                description: ''
               named: []
-              parent: &id003 !Command
+              parent: &id009 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -111,52 +111,211 @@ subcommands:
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: vcfutils.pl
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: in.ucsc.snp
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 2
                     name: in.hapmap
-                    optional: false
+                    description: ''
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: vcfutils.pl
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: in.ucsc.snp
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 2
+                        name: in.hapmap
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: vcfutils.pl <in.ucsc.snp> <in.hapmap>\n"
+                      generated_using: &id004 []
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - vcfutils.pl
+                      - varFilter
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: vcfutils.pl
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -MORE_OPTIONS
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -OPTIONS
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "/usr/local/bin/vcfutils.pl version [unknown] calling\
+                        \ Getopt::Std::getopts (version 1.12 [paranoid]),\nrunning\
+                        \ under Perl version 5.26.2.\n\nUsage: vcfutils.pl [-OPTIONS\
+                        \ [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]\n\nThe following\
+                        \ single-character options are accepted:\n\tWith arguments:\
+                        \ -d -D -W -Q -w -a -1 -2 -3 -4 -G -S -e\n\tBoolean (without\
+                        \ arguments): -p\n\nOptions may be merged together.  -- stops\
+                        \ processing of options.\nSpace is not required between options\
+                        \ and their arguments.\n  [Now continuing due to backward\
+                        \ compatibility and excessive paranoia.\n   See 'perldoc Getopt::Std'\
+                        \ about $Getopt::Std::STANDARD_HELP_VERSION.]\n"
+                      generated_using: &id005
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - vcfutils.pl
+                      - subsam
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: in.vcf
+                        description: ''
+                      - !Positional
+                        optional: true
+                        position: 1
+                        name: samples
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: vcfutils.pl subsam <in.vcf> [samples]\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id008
+                      - vcfutils.pl
+                      - qstats
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: vcfutils.pl
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -MORE_OPTIONS
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -OPTIONS
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "/usr/local/bin/vcfutils.pl version [unknown] calling\
+                        \ Getopt::Std::getopts (version 1.12 [paranoid]),\nrunning\
+                        \ under Perl version 5.26.2.\n\nUsage: vcfutils.pl [-OPTIONS\
+                        \ [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]\n\nThe following\
+                        \ single-character options are accepted:\n\tWith arguments:\
+                        \ -r -s\n\tBoolean (without arguments): -v\n\nOptions may\
+                        \ be merged together.  -- stops processing of options.\nSpace\
+                        \ is not required between options and their arguments.\n \
+                        \ [Now continuing due to backward compatibility and excessive\
+                        \ paranoia.\n   See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n\
+                        Illegal division by zero at /usr/local/bin/vcfutils.pl line\
+                        \ 225.\n"
+                      generated_using: *id005
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "\nUsage:   vcfutils.pl <command> [<arguments>]\n\n\
+                      Command: subsam       get a subset of samples\n         listsam\
+                      \      list the samples\n         fillac       fill the allele\
+                      \ count field\n         qstats       SNP stats stratified by\
+                      \ QUAL\n\n         hapmap2vcf   convert the hapmap format to\
+                      \ VCF\n         ucscsnp2vcf  convert UCSC SNP SQL dump to VCF\n\
+                      \n         varFilter    filtering short variants (*)\n     \
+                      \    vcf2fq       VCF->fastq (**)\n\nNotes: Commands with description\
+                      \ endting with (*) may need bcftools\n       specific annotations.\n\
+                      \n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: vcfutils.pl <in.ucsc.snp> <in.hapmap>\n"
-                  generated_using: &id004 []
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - vcfutils.pl
-                  - varFilter
+                  command: *id006
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: vcfutils.pl
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -MORE_OPTIONS
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
                     description: ''
+                    args: !EmptyFlagArg {}
+                  - !Flag
+                    optional: true
                     synonyms:
                     - -OPTIONS
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -173,23 +332,21 @@ subcommands:
                     \ is not required between options and their arguments.\n  [Now\
                     \ continuing due to backward compatibility and excessive paranoia.\n\
                     \   See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n"
-                  generated_using: &id005
-                  - --help
+                  generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - vcfutils.pl
-                  - subsam
+                  command: *id007
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: in.vcf
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: true
                     position: 1
                     name: samples
-                    optional: true
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
@@ -199,29 +356,28 @@ subcommands:
                   version_flag:
                   help_text: "Usage: vcfutils.pl subsam <in.vcf> [samples]\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id008
-                  - vcfutils.pl
-                  - qstats
+                  command: *id008
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: vcfutils.pl
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -MORE_OPTIONS
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
                     description: ''
+                    args: !EmptyFlagArg {}
+                  - !Flag
+                    optional: true
                     synonyms:
                     - -OPTIONS
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -239,6 +395,7 @@ subcommands:
                     \ paranoia.\n   See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n\
                     Illegal division by zero at /usr/local/bin/vcfutils.pl line 225.\n"
                   generated_using: *id005
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -253,6 +410,7 @@ subcommands:
                   Notes: Commands with description endting with (*) may need bcftools\n\
                   \       specific annotations.\n\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -260,28 +418,29 @@ subcommands:
               version_flag:
               help_text: "Usage: vcfutils.pl <in.ucsc.snp> <in.hapmap>\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: vcfutils.pl
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -MORE_OPTIONS
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
                 description: ''
+                args: !EmptyFlagArg {}
+              - !Flag
+                optional: true
                 synonyms:
                 - -OPTIONS
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag:
@@ -297,21 +456,22 @@ subcommands:
                 \ their arguments.\n  [Now continuing due to backward compatibility\
                 \ and excessive paranoia.\n   See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id007
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: in.vcf
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: true
                 position: 1
                 name: samples
-                optional: true
+                description: ''
               named: []
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag:
@@ -319,28 +479,29 @@ subcommands:
               version_flag:
               help_text: "Usage: vcfutils.pl subsam <in.vcf> [samples]\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id008
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: vcfutils.pl
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -MORE_OPTIONS
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
                 description: ''
+                args: !EmptyFlagArg {}
+              - !Flag
+                optional: true
                 synonyms:
                 - -OPTIONS
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag:
@@ -357,6 +518,7 @@ subcommands:
                 \ Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\nIllegal\
                 \ division by zero at /usr/local/bin/vcfutils.pl line 225.\n"
               generated_using: *id005
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -371,6 +533,7 @@ subcommands:
               \ with description endting with (*) may need bcftools\n       specific\
               \ annotations.\n\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -378,28 +541,29 @@ subcommands:
           version_flag:
           help_text: "Usage: vcfutils.pl <in.ucsc.snp> <in.hapmap>\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: vcfutils.pl
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -MORE_OPTIONS
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
             description: ''
+            args: !EmptyFlagArg {}
+          - !Flag
+            optional: true
             synonyms:
             - -OPTIONS
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag:
@@ -415,21 +579,22 @@ subcommands:
             \ due to backward compatibility and excessive paranoia.\n   See 'perldoc\
             \ Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id007
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: in.vcf
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: true
             position: 1
             name: samples
-            optional: true
+            description: ''
           named: []
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag:
@@ -437,28 +602,29 @@ subcommands:
           version_flag:
           help_text: "Usage: vcfutils.pl subsam <in.vcf> [samples]\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id008
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: vcfutils.pl
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -MORE_OPTIONS
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
             description: ''
+            args: !EmptyFlagArg {}
+          - !Flag
+            optional: true
             synonyms:
             - -OPTIONS
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag:
@@ -474,6 +640,7 @@ subcommands:
             \ and excessive paranoia.\n   See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n\
             Illegal division by zero at /usr/local/bin/vcfutils.pl line 225.\n"
           generated_using: *id005
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -487,6 +654,7 @@ subcommands:
           \     VCF->fastq (**)\n\nNotes: Commands with description endting with (*)\
           \ may need bcftools\n       specific annotations.\n\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -494,28 +662,29 @@ subcommands:
       version_flag:
       help_text: "Usage: vcfutils.pl <in.ucsc.snp> <in.hapmap>\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: vcfutils.pl
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -MORE_OPTIONS
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
         description: ''
+        args: !EmptyFlagArg {}
+      - !Flag
+        optional: true
         synonyms:
         - -OPTIONS
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag:
@@ -531,21 +700,22 @@ subcommands:
         \ compatibility and excessive paranoia.\n   See 'perldoc Getopt::Std' about\
         \ $Getopt::Std::STANDARD_HELP_VERSION.]\n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id007
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: in.vcf
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: true
         position: 1
         name: samples
-        optional: true
+        description: ''
       named: []
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag:
@@ -553,28 +723,29 @@ subcommands:
       version_flag:
       help_text: "Usage: vcfutils.pl subsam <in.vcf> [samples]\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id008
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: vcfutils.pl
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -MORE_OPTIONS
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
         description: ''
+        args: !EmptyFlagArg {}
+      - !Flag
+        optional: true
         synonyms:
         - -OPTIONS
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag:
@@ -590,6 +761,7 @@ subcommands:
         \   See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n\
         Illegal division by zero at /usr/local/bin/vcfutils.pl line 225.\n"
       generated_using: *id005
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -603,6 +775,7 @@ subcommands:
       \ (**)\n\nNotes: Commands with description endting with (*) may need bcftools\n\
       \       specific annotations.\n\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -610,28 +783,29 @@ subcommands:
   version_flag:
   help_text: "Usage: vcfutils.pl <in.ucsc.snp> <in.hapmap>\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: vcfutils.pl
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -MORE_OPTIONS
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
     description: ''
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
     synonyms:
     - -OPTIONS
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -646,21 +820,22 @@ subcommands:
     \ arguments.\n  [Now continuing due to backward compatibility and excessive paranoia.\n\
     \   See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id007
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: in.vcf
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: true
     position: 1
     name: samples
-    optional: true
+    description: ''
   named: []
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -668,28 +843,29 @@ subcommands:
   version_flag:
   help_text: "Usage: vcfutils.pl subsam <in.vcf> [samples]\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id008
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: vcfutils.pl
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -MORE_OPTIONS
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
     description: ''
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
     synonyms:
     - -OPTIONS
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -705,6 +881,7 @@ subcommands:
     \ about $Getopt::Std::STANDARD_HELP_VERSION.]\nIllegal division by zero at /usr/local/bin/vcfutils.pl\
     \ line 225.\n"
   generated_using: *id005
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -717,3 +894,4 @@ help_text: "\nUsage:   vcfutils.pl <command> [<arguments>]\n\nCommand: subsam   
   \ (*)\n         vcf2fq       VCF->fastq (**)\n\nNotes: Commands with description\
   \ endting with (*) may need bcftools\n       specific annotations.\n\n"
 generated_using: *id004
+docker_image:

@@ -14,6 +14,9 @@ task AquilaStLFRFastqPreprocess {
       ~{if defined(fast_q_two) then ("--fastq_2 " +  '"' + fast_q_two + '"') else ""} \
       ~{if defined(out_file) then ("--out_file " +  '"' + out_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q_one: "origin stLFR fastq 1 (gz file)"
     fast_q_two: "origin stLFR fastq 2 (gz file)"

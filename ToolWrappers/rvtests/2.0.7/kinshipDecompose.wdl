@@ -10,6 +10,9 @@ task KinshipDecompose {
       ~{if (in) then "--in" else ""} \
       ~{if (out) then "--out" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ": Input kinship file"
     out: ": Output prefix for autosomal kinship calculation"

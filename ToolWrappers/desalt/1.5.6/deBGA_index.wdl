@@ -10,6 +10,9 @@ task DeBGAIndex {
       ~{reference_dot_fast_a} \
       ~{index_route}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_dot_fast_a: ""
     index_route: ""

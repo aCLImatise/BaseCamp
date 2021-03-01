@@ -3,7 +3,7 @@ id: filter_seq.cwl
 inputs:
 - id: in_index
   doc: an index file of the copy file
-  type: File
+  type: File?
   inputBinding:
     prefix: -index
 - id: in_good_dot
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - filter_seq

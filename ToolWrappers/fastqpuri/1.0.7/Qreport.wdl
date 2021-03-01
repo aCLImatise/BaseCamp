@@ -28,6 +28,9 @@ task Qreport {
       ~{if defined(value_quality_score) then ("-0 " +  '"' + value_quality_score + '"') else ""} \
       ~{if defined(values_low_quality) then ("-Q " +  '"' + values_low_quality + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     package_version: "package version."
     help_dialog: "help dialog."

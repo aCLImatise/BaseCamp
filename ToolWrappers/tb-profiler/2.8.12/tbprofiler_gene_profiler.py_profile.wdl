@@ -22,6 +22,9 @@ task TbprofilerGeneProfilerpyProfile {
       ~{if defined(external_db) then ("--external_db " +  '"' + external_db + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "BAM file (default: None)"
     prefix: "Sample prefix for all results generated (default:\\nNone)"

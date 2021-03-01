@@ -10,7 +10,7 @@ task DlcparSearch {
     Float? loss_cost
     Float? coal_cost
     Boolean? explicit
-    Boolean? iterations_iter_iterationsnumber
+    Boolean? iterations__iterationsnumber
     Boolean? n_prescreen
     File? in_it_locus_tree
     Int? seed
@@ -28,12 +28,15 @@ task DlcparSearch {
       ~{if defined(loss_cost) then ("--losscost " +  '"' + loss_cost + '"') else ""} \
       ~{if defined(coal_cost) then ("--coalcost " +  '"' + coal_cost + '"') else ""} \
       ~{if (explicit) then "--explicit" else ""} \
-      ~{if (iterations_iter_iterationsnumber) then "-i" else ""} \
+      ~{if (iterations__iterationsnumber) then "-i" else ""} \
       ~{if (n_prescreen) then "--nprescreen" else ""} \
       ~{if defined(in_it_locus_tree) then ("--init-locus-tree " +  '"' + in_it_locus_tree + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if (log) then "--log" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stree: "species tree file in newick format"
     s_map: "gene to species map"
@@ -43,7 +46,7 @@ task DlcparSearch {
     loss_cost: "loss cost (default: 1.0)"
     coal_cost: "deep coalescence cost (default: 0.5)"
     explicit: "set to ignore extra lineages at implied speciation"
-    iterations_iter_iterationsnumber: "<# iterations>, --iter=<# iterations>\\nnumber of search iterations (default: 10)"
+    iterations__iterationsnumber: "<# iterations>, --iter=<# iterations>\\nnumber of search iterations (default: 10)"
     n_prescreen: "=<# prescreens>\\nnumber of prescreening iterations (default: 20)"
     in_it_locus_tree: "initial locus tree for search"
     seed: "random number seed"

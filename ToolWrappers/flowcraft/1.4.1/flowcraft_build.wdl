@@ -5,7 +5,7 @@ task FlowcraftBuild {
     String? tasks
     String? recipe
     File? name_pipeline_file
-    String? provide_name_pipeline
+    String? provide_name_your
     Boolean? merge_params
     Boolean? pipeline_only
     Boolean? no_depend_ecy
@@ -27,7 +27,7 @@ task FlowcraftBuild {
       ~{if defined(tasks) then ("--tasks " +  '"' + tasks + '"') else ""} \
       ~{if defined(recipe) then ("--recipe " +  '"' + recipe + '"') else ""} \
       ~{if defined(name_pipeline_file) then ("-o " +  '"' + name_pipeline_file + '"') else ""} \
-      ~{if defined(provide_name_pipeline) then ("-n " +  '"' + provide_name_pipeline + '"') else ""} \
+      ~{if defined(provide_name_your) then ("-n " +  '"' + provide_name_your + '"') else ""} \
       ~{if (merge_params) then "--merge-params" else ""} \
       ~{if (pipeline_only) then "--pipeline-only" else ""} \
       ~{if (no_depend_ecy) then "--no-dependecy" else ""} \
@@ -38,11 +38,14 @@ task FlowcraftBuild {
       ~{if (export_directives) then "--export-directives" else ""} \
       ~{if (fetch_tags) then "--fetch-tags" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tasks: "Space separated tasks of the pipeline"
     recipe: "Use one of the available recipes"
     name_pipeline_file: "Name of the pipeline file"
-    provide_name_pipeline: "Provide a name for your pipeline."
+    provide_name_your: "Provide a name for your pipeline."
     merge_params: "Merges identical parameters from multiple components\\ninto the same one. Otherwise, the parameters will be\\nseparated and unique to each component."
     pipeline_only: "Write only the pipeline files and not the templates,\\nbin, and lib folders."
     no_depend_ecy: "Do not automatically add dependencies to the pipeline."

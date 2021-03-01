@@ -3,12 +3,12 @@ id: vcf_filter.py_this.cwl
 inputs:
 - id: in_no_filtered
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-filtered
 - id: in_no_short_circuit
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-short-circuit
 - id: in_vcf_filter_do_tpy
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vcf_filter.py

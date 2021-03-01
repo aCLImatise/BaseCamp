@@ -14,6 +14,9 @@ task Bam2msaOUTPUT {
       ~{var_output} \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     bam_two_msa: ""

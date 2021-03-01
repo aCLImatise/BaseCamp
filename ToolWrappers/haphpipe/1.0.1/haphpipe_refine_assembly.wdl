@@ -36,6 +36,9 @@ task HaphpipeRefineAssembly {
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_fa: "[--outdir OUTDIR]"
     fq_one: "Fastq file with read 1"

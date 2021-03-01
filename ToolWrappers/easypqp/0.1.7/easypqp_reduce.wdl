@@ -14,6 +14,9 @@ task EasypqpReduce {
       ~{if defined(bins) then ("--bins " +  '"' + bins + '"') else ""} \
       ~{if defined(peptides) then ("--peptides " +  '"' + peptides + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input PQP file.  [required]"
     out: "Output PQP file.  [required]"

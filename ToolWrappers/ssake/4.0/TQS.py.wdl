@@ -20,6 +20,9 @@ task TQSpy {
       ~{if defined(consec) then ("--consec " +  '"' + consec + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequence: "=SEQFILE\\nIllumina sequence file - Output format from the 1G\\nGenome Analyzer (_seq.txt):\\n7       1       255     669\\nAACCCCCACTCCTACAACGCCATCATTCCCCTCGAC"
     qual: "=QUALFILE\\nA prb file containing all the Illumina intensities, as\\noutputted by the 1G Genome Analyzer (_prb.txt)"

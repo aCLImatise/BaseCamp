@@ -4,6 +4,9 @@ task GmtkNGramIndex {
   command <<<
     gmtkNGramIndex
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -3,58 +3,59 @@ command:
 - hicQuickQC
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: sam
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: files
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: two
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "file [BED file ...]\n--restrictionSequence RESTRICTIONSEQUENCE\n[RESTRICTIONSEQUENCE\
-    \ ...] --danglingSequence\nDANGLINGSEQUENCE [DANGLINGSEQUENCE ...] [--lines LINES]\n\
-    [--help] [--version]"
+  optional: true
   synonyms:
   - --restrictionCutFile
+  description: file [BED file ...]
   args: !SimpleFlagArg
     name: BED
-  optional: true
 - !Flag
-  description: "sam files two sam files, -s two sam files two sam files\nThe two PE\
-    \ alignment sam files to process. (default:\nNone)"
+  optional: true
   synonyms:
   - --samFiles
+  description: "sam files two sam files, -s two sam files two sam files\nThe two PE\
+    \ alignment sam files to process. (default:\nNone)"
   args: !SimpleFlagArg
     name: two
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --QCfolder
   description: "Path of folder to save the quality control data of the\nmatrix. The\
     \ log files produced this way can be loaded\ninto `hicQC` in order to compare\
     \ the quality of\nmultiple Hi-C libraries. (default: None)"
-  synonyms:
-  - --QCfolder
   args: !SimpleFlagArg
     name: FOLDER
-  optional: true
 - !Flag
-  description: "Sequence of the restriction site, if multiple are\nused, please list\
-    \ them space seperated. If a dangling\nsequence is listed at the same time, please\
-    \ preserve\nthe same order. (default: None)"
+  optional: true
   synonyms:
   - --restrictionSequence
   - -seq
+  description: "Sequence of the restriction site, if multiple are\nused, please list\
+    \ them space seperated. If a dangling\nsequence is listed at the same time, please\
+    \ preserve\nthe same order. (default: None)"
   args: !RepeatFlagArg
     name: RESTRICTIONSEQUENCE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --danglingSequence
   description: "Sequence left by the restriction enzyme after cutting,\nif multiple\
     \ are used, please list them space seperated\nand preserve the order. Each restriction\
     \ enzyme\nrecognizes a different DNA sequence and, after\ncutting, they leave\
@@ -66,35 +67,32 @@ named:
     \ sequence as\ndangling-end reads. A significant portion of dangling-\nend reads\
     \ in a sample are indicative of a problem with\nthe re-ligation step of the protocol.\
     \ (default: None)"
-  synonyms:
-  - --danglingSequence
   args: !RepeatFlagArg
     name: DANGLINGSEQUENCE
-  optional: true
 - !Flag
-  description: "Number of lines to consider for the QC test run.\n(default: 1000000)"
+  optional: true
   synonyms:
   - --lines
+  description: "Number of lines to consider for the QC test run.\n(default: 1000000)"
   args: !SimpleFlagArg
     name: LINES
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: hicQuickQC --samFiles two sam files two sam files --QCfolder FOLDER\n\
   \                  --restrictionCutFile BED file [BED file ...]\n              \
   \    --restrictionSequence RESTRICTIONSEQUENCE\n                  [RESTRICTIONSEQUENCE\
@@ -146,3 +144,4 @@ help_text: "usage: hicQuickQC --samFiles two sam files two sam files --QCfolder 
   \ number and exit\n"
 generated_using:
 - --help
+docker_image:

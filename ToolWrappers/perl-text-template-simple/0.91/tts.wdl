@@ -32,7 +32,7 @@ task Tts {
     String either
     String pass
     String a
-    File file
+    File var_file
     String name
     String or
   }
@@ -44,7 +44,7 @@ task Tts {
       ~{either} \
       ~{pass} \
       ~{a} \
-      ~{file} \
+      ~{var_file} \
       ~{name} \
       ~{or} \
       ~{if (string_template_execute) then "-e" else ""} \
@@ -72,6 +72,9 @@ task Tts {
       ~{if (compile_map_keys) then "--compile-map-keys" else ""} \
       ~{if (compile_chk_mt) then "--compile-chkmt" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_template_execute: "String template to execute"
     http_header: "Print a HTTP Header?"
@@ -103,7 +106,7 @@ task Tts {
     either: ""
     pass: ""
     a: ""
-    file: ""
+    var_file: ""
     name: ""
     or: ""
   }

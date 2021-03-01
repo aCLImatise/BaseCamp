@@ -36,6 +36,9 @@ task PacbioPostProcess {
       ~{if defined(reassembly_dir) then ("--reassembly_dir " +  '"' + reassembly_dir + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_contig_length: "Minimum length of contigs [2000]"
     contained_percent_match: "Percent match identity when determining if a contig is\\ncontained in another [90]"

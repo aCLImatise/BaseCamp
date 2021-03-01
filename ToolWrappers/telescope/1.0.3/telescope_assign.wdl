@@ -52,6 +52,9 @@ task TelescopeAssign {
       ~{if (use_likelihood) then "--use_likelihood" else ""} \
       ~{if (skip_em) then "--skip_em" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     attribute: "GTF attribute that defines a transposable element\\nlocus. GTF features that share the same value for\\n--attribute will be considered as part of the same\\nlocus. (default: locus)"
     no_feature_key: "Used internally to represent alignments. Must be\\ndifferent from all other feature names. (default:\\n__no_feature)"

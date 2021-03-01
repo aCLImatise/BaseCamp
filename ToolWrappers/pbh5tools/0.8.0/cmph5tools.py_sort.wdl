@@ -16,6 +16,9 @@ task Cmph5toolspySort {
       ~{if (use_python_indexer) then "--usePythonIndexer" else ""} \
       ~{if (in_place) then "--inPlace" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "output filename"
     deep: "whether a deep sorting should be conducted, i.e. sort\\ntheAlignmentArrays [False]"

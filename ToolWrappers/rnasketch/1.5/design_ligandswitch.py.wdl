@@ -2,7 +2,7 @@ version 1.0
 
 task Designligandswitchpy {
   input {
-    File? file
+    File? read_file_inp
     Boolean? read_custom_structures
     Float? ligand
     String? temperature
@@ -20,7 +20,7 @@ task Designligandswitchpy {
   command <<<
     design_ligandswitch_py \
       ~{stdin} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(read_file_inp) then ("--file " +  '"' + read_file_inp + '"') else ""} \
       ~{if (read_custom_structures) then "--input" else ""} \
       ~{if defined(ligand) then ("--ligand " +  '"' + ligand + '"') else ""} \
       ~{if defined(temperature) then ("--temperature " +  '"' + temperature + '"') else ""} \
@@ -34,8 +34,11 @@ task Designligandswitchpy {
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: "Read file in *.inp format"
+    read_file_inp: "Read file in *.inp format"
     read_custom_structures: "Read custom structures and sequence constraints from"
     ligand: "Binding motif and energy of the ligand (default:\\n\\\"GAUACCAG&CCCUUGGCAGC;(...((((&)...)))...);-9.22\\\")"
     temperature: "Temperature of the energy calculations."

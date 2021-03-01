@@ -5,95 +5,100 @@ command:
 positional: []
 named:
 - !Flag
-  description: 'Generate reads having a length of LEN.  Default: 100'
+  optional: true
   synonyms:
   - -l
   - --read-len
+  description: 'Generate reads having a length of LEN.  Default: 100'
   args: !SimpleFlagArg
     name: LEN
-  optional: true
 - !Flag
-  description: "Set the average sequencing coverage (sometimes called depth).\nIt\
-    \ may be either a floating-point number or an integer."
+  optional: true
   synonyms:
   - -x
   - --coverage
+  description: "Set the average sequencing coverage (sometimes called depth).\nIt\
+    \ may be either a floating-point number or an integer."
   args: !SimpleFlagArg
     name: VAL
-  optional: true
 - !Flag
-  description: "Generate inserts (fragments) having an average length of LEN.\nDefault:\
-    \ 180"
+  optional: true
   synonyms:
   - -m
   - --insert-len-mean
+  description: "Generate inserts (fragments) having an average length of LEN.\nDefault:\
+    \ 180"
   args: !SimpleFlagArg
     name: LEN
-  optional: true
 - !Flag
-  description: "Set the standard deviation of the insert (fragment) length.\nDefault:\
-    \ 10% of insert length mean."
+  optional: true
   synonyms:
   - -v
   - --insert-len-sd
+  description: "Set the standard deviation of the insert (fragment) length.\nDefault:\
+    \ 10% of insert length mean."
   args: !SimpleFlagArg
     name: LEN
-  optional: true
 - !Flag
-  description: "Make the paired-end reads face away from either other, as\nin a jumping\
-    \ library.  Default: the reads face towards each\nother."
+  optional: true
   synonyms:
   - -j
   - --jumping
   - --cyclicize
+  description: "Make the paired-end reads face away from either other, as\nin a jumping\
+    \ library.  Default: the reads face towards each\nother."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --diploid
   description: "This option asserts that reads are being simulated from a\ndiploid\
     \ genome.  It causes the program to abort if there\nare not exactly two reference\
     \ sequences; in addition, the\ncoverage is divided in half, since the two reference\n\
     sequences are in reality the same genome.  This option\nis not required to simulate\
     \ diploid reads, but you must\nset the coverage correctly otherwise (it will be\
     \ half\nas much as you think)."
-  synonyms:
-  - -d
-  - --diploid
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use FILE as the base-calling profile.  This profile will be\nused\
-    \ to simulate substitution errors.  Default:\n/usr/local/share/pirs/Base-Calling_Profiles/humNew.PE100.matrix.gz"
+  optional: true
   synonyms:
   - -B
   - --base-calling-profile
   - --subst-error-profile
+  description: "Use FILE as the base-calling profile.  This profile will be\nused\
+    \ to simulate substitution errors.  Default:\n/usr/local/share/pirs/Base-Calling_Profiles/humNew.PE100.matrix.gz"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Use FILE as the indel-error profile.  This profile will be\nused to\
-    \ simulate insertions and deletions in the reads that\nare artifacts of the sequencing\
-    \ process.  Default:\n/usr/local/share/pirs/InDel_Profiles/phixv2.InDel.matrix"
+  optional: true
   synonyms:
   - -I
   - --indel-error-profile
   - --indel-profile
+  description: "Use FILE as the indel-error profile.  This profile will be\nused to\
+    \ simulate insertions and deletions in the reads that\nare artifacts of the sequencing\
+    \ process.  Default:\n/usr/local/share/pirs/InDel_Profiles/phixv2.InDel.matrix"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Use FILE as the GC content bias profile.  This profile will\nadjust\
-    \ the read coverage based on the GC content of\nfragments.  Defaults:\n/usr/local/share/pirs/GC-depth_Profiles/humNew.gcdep_100.dat,\n\
-    /usr/local/share/pirs/GC-depth_Profiles/humNew.gcdep_150.dat,\n/usr/local/share/pirs/GC-depth_Profiles/humNew.gcdep_200.dat,\n\
-    depending on the mean insert length."
+  optional: true
   synonyms:
   - -G
   - --gc-bias-profile
   - --gc-content-bias-profile
+  description: "Use FILE as the GC content bias profile.  This profile will\nadjust\
+    \ the read coverage based on the GC content of\nfragments.  Defaults:\n/usr/local/share/pirs/GC-depth_Profiles/humNew.gcdep_100.dat,\n\
+    /usr/local/share/pirs/GC-depth_Profiles/humNew.gcdep_150.dat,\n/usr/local/share/pirs/GC-depth_Profiles/humNew.gcdep_200.dat,\n\
+    depending on the mean insert length."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --error-rate
+  - --subst-error-rate
   description: "Set the substitution error rate.  The base-calling profile\nwill still\
     \ be used, but the average frequency of errors will\nbe changed to RATE.  Set\
     \ to 0 to disable substitution errors\ncompletely.  In that case, the base-calling\
@@ -105,14 +110,14 @@ named:
     \ on your input sequences, the actual\nerror rate simulated by pIRS could be off\
     \ by 20% or more.\nPlease check the informational output to see the final error\n\
     rate that was actually simulated."
-  synonyms:
-  - -e
-  - --error-rate
-  - --subst-error-rate
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --substitution-error-algorithm
+  - --subst-error-algo
   description: "Set the algorithm used for simulating substitition errors.\nIt may\
     \ be set to the string \"dist\" or \"qtrans\".  The\ndefault is \"qtrans\".\n\
     The \"dist\" algorithm looks up the substitution error rate\nfor each base pair\
@@ -125,73 +130,145 @@ named:
     \ as\n[QTransMatrix] in the base-calling profile. Then, the the\nDistMatrix is\
     \ used to find a called base for the quality score.\nThe DistMatrix is also used\
     \ to call the base in the first\ncycle."
-  synonyms:
-  - -A
-  - --substitution-error-algorithm
-  - --subst-error-algo
   args: !SimpleFlagArg
     name: ALGO
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --mask
+  - --eamss
   description: "Use the EAMSS algorithm for masking read quality.  MODE may be\nthe\
     \ string \"quality\" or \"lowercase\".  The EAMSS algorithm\nidentifies low-quality,\
     \ GC-rich regions near the ends of reads.\n\"quality\" mode will change the quality\
     \ scores on these\nregions to (2 + quality_shift), while \"lowercase\" mode\n\
     will change the base pairs to lower case, but not change\nthe quality values.\
     \  Default: Do not use EAMSS."
-  synonyms:
-  - -M
-  - --mask
-  - --eamss
   args: !SimpleFlagArg
     name: MODE
-  optional: true
 - !Flag
-  description: "Set the ASCII shift of the quality value (usually 64 or 33 for\nIllumina\
-    \ data).  Default: 33"
+  optional: true
   synonyms:
   - -Q
   - --quality-shift
   - --phred-offset
+  description: "Set the ASCII shift of the quality value (usually 64 or 33 for\nIllumina\
+    \ data).  Default: 33"
   args: !SimpleFlagArg
     name: VAL
-  optional: true
 - !Flag
-  description: "--fasta\nDo not simulate quality values.  The simulated reads will\
-    \ be\nwritten as a FASTA file rather than a FASTQ file.\nSubstitution errors may\
-    \ still be done; if you do not want\nto simulate any substition errors, provide\
-    \ --error-rate=0 or\n--no-substitution-errors.\n--no-subst-errors\n--no-substitution-errors\n\
-    Do not simulate substitution errors.  Equivalent to\n--error-rate=0.\n--no-indels\n\
-    --no-indel-errors\nDo not simulate indels.  The indel error profile will not be\n\
-    used.\n--no-gc-bias\n--no-gc-content-bias\nDo not simulate GC bias.  The GC bias\
-    \ profile will not be\nused.\n-o PREFIX, --output-prefix=PREFIX\nUse PREFIX as\
-    \ the prefix of the output files.  Default:\n\"pirs_reads\"\n-c TYPE, --output-file-type=TYPE\n\
-    The string \"text\" or \"gzip\" to specify the type of\nthe output FASTQ files\
-    \ containing the simulated reads\nof the genome, as well as the log files.  Default:\
-    \ \"text\"\n-z, --compress\nEquivalent to -c gzip.\n-n, --no-logs, --no-log-files\n\
-    Do not write the log files.\n-S SEED, --random-seed=SEED\nUse SEED as the random\
-    \ seed. Default:\ntime(NULL) * getpid().  Note: If pIRS was not compiled with\n\
-    --disable-threads, each thread actually uses its own random\nnumber generator\
-    \ that is seeded by this base seed added to\nthe thread number; also, if you need\
-    \ pIRS's output to be\nexactly reproducible, you must specify the random seed\
-    \ as well\nas use only 1 simulator thread (--threads=1, or configure\nwith --disable-threads,\
-    \ or run on system with 4 or fewer\nprocessors).\n-t, --threads=NUM_THREADS\n\
-    Use NUM_THREADS threads to simulate reads.  This option is\nnot available if pIRS\
-    \ was compiled with the --disable-threads\noption.  Default: number of processors\
-    \ minus 2 if writing\nuncompressed output, or number of processors minus 3 if\n\
-    writing compressed output, or 1 if there are not this many\nprocessors.\n-q, --quiet\
-    \    Do not print informational messages.\n-h, --help     Show this help and exit.\n\
-    -V, --version  Show version information and exit.\n"
+  optional: true
   synonyms:
   - --no-quality-values
+  - --fasta
+  description: "Do not simulate quality values.  The simulated reads will be\nwritten\
+    \ as a FASTA file rather than a FASTQ file.\nSubstitution errors may still be\
+    \ done; if you do not want\nto simulate any substition errors, provide --error-rate=0\
+    \ or\n--no-substitution-errors."
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - --no-subst-errors
+  - --no-substitution-errors
+  description: "Do not simulate substitution errors.  Equivalent to\n--error-rate=0."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-indels
+  - --no-indel-errors
+  description: "Do not simulate indels.  The indel error profile will not be\nused."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-gc-bias
+  - --no-gc-content-bias
+  description: "Do not simulate GC bias.  The GC bias profile will not be\nused."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-prefix
+  description: "Use PREFIX as the prefix of the output files.  Default:\n\"pirs_reads\""
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --output-file-type
+  description: "The string \"text\" or \"gzip\" to specify the type of\nthe output\
+    \ FASTQ files containing the simulated reads\nof the genome, as well as the log\
+    \ files.  Default: \"text\""
+  args: !SimpleFlagArg
+    name: TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --compress
+  description: Equivalent to -c gzip.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --no-logs
+  - --no-log-files
+  description: Do not write the log files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --random-seed
+  description: "Use SEED as the random seed. Default:\ntime(NULL) * getpid().  Note:\
+    \ If pIRS was not compiled with\n--disable-threads, each thread actually uses\
+    \ its own random\nnumber generator that is seeded by this base seed added to\n\
+    the thread number; also, if you need pIRS's output to be\nexactly reproducible,\
+    \ you must specify the random seed as well\nas use only 1 simulator thread (--threads=1,\
+    \ or configure\nwith --disable-threads, or run on system with 4 or fewer\nprocessors)."
+  args: !SimpleFlagArg
+    name: SEED
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: "Use NUM_THREADS threads to simulate reads.  This option is\nnot available\
+    \ if pIRS was compiled with the --disable-threads\noption.  Default: number of\
+    \ processors minus 2 if writing\nuncompressed output, or number of processors\
+    \ minus 3 if\nwriting compressed output, or 1 if there are not this many\nprocessors."
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: Do not print informational messages.
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Show version information and exit.
+  args: !EmptyFlagArg {}
 help_text: "Usage: ./pirs simulate [OPTION]... REFERENCE.FASTA...\n\npIRS is a program\
   \ for simulating paired-end reads from a genome.  It is\noptimized for simulating\
   \ reads from the Illumina platform.  The input to\npIRS is any number of reference\
@@ -315,3 +392,4 @@ help_text: "Usage: ./pirs simulate [OPTION]... REFERENCE.FASTA...\n\npIRS is a p
   \ and exit.\n"
 generated_using:
 - --help
+docker_image:

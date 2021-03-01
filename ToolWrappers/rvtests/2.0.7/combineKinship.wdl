@@ -12,6 +12,9 @@ task CombineKinship {
       ~{if (pc_a) then "--pca" else ""} \
       ~{if (thread) then "--thread" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: ": Output prefix for autosomal kinship calculation"
     pc_a: ": Decomoposite calculated kinship matrix."

@@ -5,7 +5,7 @@ task FindMotifsGenomepl {
     Boolean? mask
     File? bg
     Boolean? len
-    Boolean? number_optimize_default
+    Boolean? number_motifs_optimize
     Boolean? mis
     Boolean? norev_opp
     Boolean? no_motif
@@ -43,8 +43,8 @@ task FindMotifsGenomepl {
     Boolean? nmax
     Boolean? neutral
     Boolean? olen
-    Boolean? number_use_default
-    Boolean? maximum_expected_motif
+    Boolean? number_processors_use
+    Boolean? maximum_expected_instance
     Boolean? cache
     Boolean? quick_mask
     Boolean? min_lp
@@ -64,7 +64,7 @@ task FindMotifsGenomepl {
       ~{if (mask) then "-mask" else ""} \
       ~{if defined(bg) then ("-bg " +  '"' + bg + '"') else ""} \
       ~{if (len) then "-len" else ""} \
-      ~{if (number_optimize_default) then "-S" else ""} \
+      ~{if (number_motifs_optimize) then "-S" else ""} \
       ~{if (mis) then "-mis" else ""} \
       ~{if (norev_opp) then "-norevopp" else ""} \
       ~{if (no_motif) then "-nomotif" else ""} \
@@ -102,19 +102,22 @@ task FindMotifsGenomepl {
       ~{if (nmax) then "-nmax" else ""} \
       ~{if (neutral) then "-neutral" else ""} \
       ~{if (olen) then "-olen" else ""} \
-      ~{if (number_use_default) then "-p" else ""} \
-      ~{if (maximum_expected_motif) then "-e" else ""} \
+      ~{if (number_processors_use) then "-p" else ""} \
+      ~{if (maximum_expected_instance) then "-e" else ""} \
       ~{if (cache) then "-cache" else ""} \
       ~{if (quick_mask) then "-quickMask" else ""} \
       ~{if (min_lp) then "-minlp" else ""} \
       ~{if (homer_one) then "-homer1" else ""} \
       ~{if (depth) then "-depth" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mask: "(mask repeats/lower case sequence, can also add 'r' to genome, i.e. mm9r)"
     bg: "(genomic positions to be used as background, default=automatic)\\nremoves background positions overlapping with target positions unless -keepOverlappingBg is used\\n-chopify (chop up large background regions to the avg size of target regions)"
     len: "<#>[,<#>,<#>...] (motif length, default=8,10,12) [NOTE: values greater 12 may cause the program\\nto run out of memory - in these cases decrease the number of sequences analyzed (-N),\\nor try analyzing shorter sequence regions (i.e. -size 100)]"
-    number_optimize_default: "<#> (Number of motifs to optimize, default: 25)"
+    number_motifs_optimize: "<#> (Number of motifs to optimize, default: 25)"
     mis: "<#> (global optimization: searches for strings with # mismatches, default: 2)"
     norev_opp: "(don't search reverse strand for motifs)"
     no_motif: "(don't search for de novo motif enrichment)"
@@ -152,8 +155,8 @@ task FindMotifsGenomepl {
     nmax: "<#> (Max normalization iterations, default: 160)"
     neutral: "(weight sequences to neutral frequencies, i.e. 25%, 6.25%, etc.)"
     olen: "<#> (lower-order oligo normalization for oligo table, use if -nlen isn't working well)"
-    number_use_default: "<#> (Number of processors to use, default: 1)"
-    maximum_expected_motif: "<#> (Maximum expected motif instance per bp in random sequence, default: 0.01)"
+    number_processors_use: "<#> (Number of processors to use, default: 1)"
+    maximum_expected_instance: "<#> (Maximum expected motif instance per bp in random sequence, default: 0.01)"
     cache: "<#> (size in MB for statistics cache, default: 500)"
     quick_mask: "(skip full masking after finding motifs, similar to original homer)"
     min_lp: "<#> (stop looking for motifs when seed logp score gets above #, default: -10)"

@@ -3,64 +3,64 @@ id: NanoComp.cwl
 inputs:
 - id: in_threads
   doc: Set the allowed number of threads to be used by the script
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_outdir
   doc: Specify directory in which output has to be created.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_prefix
   doc: Specify an optional prefix to be used for the output files.
-  type: string
+  type: string?
   inputBinding:
     prefix: --prefix
 - id: in_verbose
   doc: Write log messages also to terminal.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_raw
   doc: Store the extracted data in tab separated file.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --raw
 - id: in_store
   doc: Store the extracted data in a pickle file for future plotting.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --store
 - id: in_read_type
   doc: "Which read type to extract information about from summary. Options are 1D,\
     \ 2D,\n1D2"
-  type: string
+  type: string?
   inputBinding:
     prefix: --readtype
 - id: in_maxlength
   doc: Drop reads longer than length specified.
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxlength
 - id: in_minlength
   doc: Drop reads shorter than length specified.
-  type: long
+  type: long?
   inputBinding:
     prefix: --minlength
 - id: in_barcoded
   doc: Barcoded experiment in summary format, splitting per barcode.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --barcoded
 - id: in_split_runs
   doc: "File: Split the summary on run IDs and use names in tsv file. Mandatory header\n\
     fields are 'NAME' and 'RUN_ID'."
-  type: File
+  type: File?
   inputBinding:
     prefix: --split_runs
 - id: in_format
   doc: Specify the output format of the plots.
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
 - id: in_names
@@ -76,17 +76,17 @@ inputs:
 - id: in_plot
   doc: "Which plot type to use: 'box', 'violin' (default), 'ridge' (joyplot) or 'false'\n\
     (no plots)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --plot
 - id: in_title
   doc: Add a title to all plots, requires quoting if using spaces
-  type: string
+  type: string?
   inputBinding:
     prefix: --title
 - id: in_dpi
   doc: Set the dpi for saving images
-  type: string
+  type: string?
   inputBinding:
     prefix: --dpi
 - id: in_fast_a
@@ -126,7 +126,7 @@ inputs:
     prefix: --pickle
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
@@ -135,9 +135,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: Specify directory in which output has to be created.
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - NanoComp

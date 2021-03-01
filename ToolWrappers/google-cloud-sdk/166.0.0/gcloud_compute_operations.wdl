@@ -12,6 +12,9 @@ task GcloudComputeOperations {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     operations: "SYNOPSIS"
     describe: "Describe a Google Compute Engine operation."

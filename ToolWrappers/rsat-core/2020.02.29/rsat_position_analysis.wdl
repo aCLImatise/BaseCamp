@@ -92,6 +92,9 @@ task RsatPositionanalysis {
       ~{if (clust_nb) then "-clust_nb" else ""} \
       ~{if (clust_suffix) then "-clust_suffix" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specified_standard_input: "if not specified, the standard input is used.\\nThis allows to place the command within a pipe."
     seqtype: "|any\\nSequence type"

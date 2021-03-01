@@ -16,6 +16,9 @@ task Dxbuildreporthtml {
       ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
       ~{if defined(height) then ("--height " +  '"' + height + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     remote: "Destination route. Can be: (1) a project ID, (2) a\\npath, with or without object name (e.g.\\n/PATH/REPORT_NAME), (3) project ID + path (e.g.\\nPROJECT:/PATH/REPORT_NAME)"
     local: "Local file to save baked HTML to"

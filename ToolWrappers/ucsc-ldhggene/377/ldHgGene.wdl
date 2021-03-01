@@ -15,13 +15,13 @@ task LdHgGene {
     Boolean? implied_stop_after_cds
     String database
     String table
-    File file
+    File var_file
   }
   command <<<
     ldHgGene \
       ~{database} \
       ~{table} \
-      ~{file} \
+      ~{var_file} \
       ~{if (bin) then "-bin" else ""} \
       ~{if (no_bin) then "-nobin" else ""} \
       ~{if defined(exon) then ("-exon " +  '"' + exon + '"') else ""} \
@@ -34,6 +34,9 @@ task LdHgGene {
       ~{if defined(gene_pred_ext) then ("-genePredExt " +  '"' + gene_pred_ext + '"') else ""} \
       ~{if (implied_stop_after_cds) then "-impliedStopAfterCds" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bin: "Add bin column (now the default)"
     no_bin: "don't add binning (you probably don't want this)"
@@ -48,7 +51,7 @@ task LdHgGene {
     implied_stop_after_cds: "- implied stop codon in GFF/GTF after CDS"
     database: ""
     table: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

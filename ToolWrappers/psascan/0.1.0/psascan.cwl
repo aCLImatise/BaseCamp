@@ -3,22 +3,22 @@ id: psascan.cwl
 inputs:
 - id: in_gap
   doc: "specify the file holding the gap array (default:\nFILE.sa5.gap)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --gap
 - id: in_mem
   doc: 'limit RAM usage to LIMIT MiB (default: 3072)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --mem
 - id: in_output
   doc: 'specify the output file (default: FILE.sa5)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_verbose
   doc: print detailed information during internal sufsort
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: 'specify the output file (default: FILE.sa5)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - psascan

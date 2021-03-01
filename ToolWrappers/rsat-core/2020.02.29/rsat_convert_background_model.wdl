@@ -20,6 +20,9 @@ task RsatConvertbackgroundmodel {
       ~{formats_dot} \
       ~{words_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     convert_background_model: "[1mDESCRIPTION[0m"
     util: "[1mUSAGE[0m"

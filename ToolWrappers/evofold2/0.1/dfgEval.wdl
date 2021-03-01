@@ -16,11 +16,11 @@ task DfgEval {
     String? state_map_file
     String? fac_pot_file
     File? sub_var_file
-    File file
+    File arg_output_precision
   }
   command <<<
     dfgEval \
-      ~{file} \
+      ~{arg_output_precision} \
       ~{if (arg_calculate_posterior) then "-o" else ""} \
       ~{if (arg_calculate_normalization) then "-n" else ""} \
       ~{if (arg_calculate_state) then "-m" else ""} \
@@ -36,6 +36,9 @@ task DfgEval {
       ~{if defined(fac_pot_file) then ("--facPotFile " +  '"' + fac_pot_file + '"') else ""} \
       ~{if defined(sub_var_file) then ("--subVarFile " +  '"' + sub_var_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_calculate_posterior: "[ --ppFile ] arg                   Calculate posterior probabilities for\\neach state of each random variable and\\noutput to file."
     arg_calculate_normalization: "[ --ncFile ] arg                   Calculate normalization constant output\\nto file."
@@ -51,7 +54,7 @@ task DfgEval {
     state_map_file: "(=stateMaps.txt)   Specification of state maps."
     fac_pot_file: "(=factorPotentials.txt)\\nSpecification of factor potentials."
     sub_var_file: "Input subscribed variables file in\\nnamed data format. Must use same\\nidentifiers in same order as varFile\\n"
-    file: "-p [ --precision ] arg (=5)           Output precision of real numbers."
+    arg_output_precision: "-p [ --precision ] arg (=5)           Output precision of real numbers."
   }
   output {
     File out_stdout = stdout()

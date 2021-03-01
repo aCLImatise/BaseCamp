@@ -32,6 +32,9 @@ task SamtoolsDepad {
       ~{if (write_index) then "--write-index" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_sam_default: "Output is SAM (default is BAM)"
     input_sam_default: "Input is SAM (default is BAM)"

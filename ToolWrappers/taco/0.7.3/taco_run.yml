@@ -3,199 +3,199 @@ command:
 - taco_run
 positional:
 - !Positional
-  description: 'optional arguments:'
+  optional: false
   position: 0
   name: sample_file
-  optional: false
+  description: 'optional arguments:'
 named:
 - !Flag
-  description: "directory where output files will be stored (if\nalready exists then\
-    \ --resume must be specified)\n[default=output]"
+  optional: true
   synonyms:
   - -o
   - --output-dir
+  description: "directory where output files will be stored (if\nalready exists then\
+    \ --resume must be specified)\n[default=output]"
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
-  description: Run TACO in parallel with N processes [default=1]
+  optional: true
   synonyms:
   - -p
   - --num-processes
+  description: Run TACO in parallel with N processes [default=1]
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Enabled detailed logging (for debugging)
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: Enabled detailed logging (for debugging)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Resumes an existing run that may have ended\nprematurely. Specify\
-    \ the location of the run using the\n-o/--output-dir option."
+  optional: true
   synonyms:
   - --resume
+  description: "Resumes an existing run that may have ended\nprematurely. Specify\
+    \ the location of the run using the\n-o/--output-dir option."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Assemble transfrags produced by a previous TACO run,\nbypassing the\
-    \ GTF aggregation step. Accepts a taco-\nformatted BED file."
+  optional: true
   synonyms:
   - --assemble
+  description: "Assemble transfrags produced by a previous TACO run,\nbypassing the\
+    \ GTF aggregation step. Accepts a taco-\nformatted BED file."
   args: !SimpleFlagArg
     name: BED
-  optional: true
 - !Flag
-  description: "GTF attribute field containing expression\n[default=FPKM]"
+  optional: true
   synonyms:
   - --gtf-expr-attr
+  description: "GTF attribute field containing expression\n[default=FPKM]"
   args: !SimpleFlagArg
     name: ATTR
-  optional: true
 - !Flag
-  description: "Filter input transfrags with length < N prior to\nassembly [default=200]"
+  optional: true
   synonyms:
   - --filter-min-length
+  description: "Filter input transfrags with length < N prior to\nassembly [default=200]"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Filter input transfrags with expression (FPKM/TPM) < X\nprior to assembly\
-    \ [default=0.5]"
+  optional: true
   synonyms:
   - --filter-min-expr
+  description: "Filter input transfrags with expression (FPKM/TPM) < X\nprior to assembly\
+    \ [default=0.5]"
   args: !SimpleFlagArg
     name: X
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filter-splice-juncs
   description: "Filter input transfrags that possess non-canonical\nsplice motifs\
     \ prior to assembly. Splice motifs are\nGTAG, GCAG, and ATAC are allowed [default=False].\n\
     Requires genome sequence to be specified using --ref-\ngenome-fasta."
-  synonyms:
-  - --filter-splice-juncs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --add-splice-motif
   description: "Add additional splice junction motifs to permit when\nusing the --filter-splice-juncs\
     \ flag. Use this flag\nmultiple times for each additional junction motif.\nMotif\
     \ must be 4 bases."
-  synonyms:
-  - --add-splice-motif
   args: !SimpleFlagArg
     name: ADD_SPLICE_MOTIF
-  optional: true
 - !Flag
-  description: "Reference genome sequence in FASTA format needed to\nassess splice\
-    \ junction motif sequences. Use in\nconjunction with --filter-splice-juncs."
+  optional: true
   synonyms:
   - --ref-genome-fasta
+  description: "Reference genome sequence in FASTA format needed to\nassess splice\
+    \ junction motif sequences. Use in\nconjunction with --filter-splice-juncs."
   args: !SimpleFlagArg
     name: REF_GENOME_FASTA_FILE
-  optional: true
 - !Flag
-  description: "Report transcript isoforms with expression fraction >=\nFRAC (0.0-1.0)\
-    \ relative to the major isoform within\neach gene [default=0.05]"
+  optional: true
   synonyms:
   - --isoform-frac
+  description: "Report transcript isoforms with expression fraction >=\nFRAC (0.0-1.0)\
+    \ relative to the major isoform within\neach gene [default=0.05]"
   args: !SimpleFlagArg
     name: FRAC
-  optional: true
 - !Flag
-  description: Maximum isoforms to report for each gene [default=0]
+  optional: true
   synonyms:
   - --max-isoforms
+  description: Maximum isoforms to report for each gene [default=0]
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Enable assembly of unstranded transfrags\n[default=False]"
+  optional: true
   synonyms:
   - --assemble-unstranded
+  description: "Enable assembly of unstranded transfrags\n[default=False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Disable assembly of unstranded transfrags
+  optional: true
   synonyms:
   - --no-assemble-unstranded
+  description: Disable assembly of unstranded transfrags
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Enable change point detection [default=True]
+  optional: true
   synonyms:
   - --change-point
+  description: Enable change point detection [default=True]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Disable change point detection
+  optional: true
   synonyms:
   - --no-change-point
+  description: Disable change point detection
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Mann-Whitney-U p-value threshold for calling change\npoints [default=0.01]"
+  optional: true
   synonyms:
   - --change-point-pvalue
+  description: "Mann-Whitney-U p-value threshold for calling change\npoints [default=0.01]"
   args: !SimpleFlagArg
     name: float 0.0-1.0
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --change-point-fold-change
   description: "Fold change threshold between the means of two\nputative segments\
     \ on either side of a change point. A\nvalue of 0.0 is the most strict setting,\
     \ effectively\ncalling no change points. Conversely, setting the\nvalue to 1.0\
     \ calls allchange points [default=0.85]"
-  synonyms:
-  - --change-point-fold-change
   args: !SimpleFlagArg
     name: float 0.0-1.0
-  optional: true
 - !Flag
-  description: Trim transfrags around change points [default=True]
+  optional: true
   synonyms:
   - --change-point-trim
+  description: Trim transfrags around change points [default=True]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Disable trimming around change points
+  optional: true
   synonyms:
   - --no-change-point-trim
+  description: Disable trimming around change points
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Limit optimization for choosing parameter k for path\ngraph (DeBruijn\
-    \ graph) to k <= kmax [default=0]"
+  optional: true
   synonyms:
   - --path-kmax
+  description: "Limit optimization for choosing parameter k for path\ngraph (DeBruijn\
+    \ graph) to k <= kmax [default=0]"
   args: !SimpleFlagArg
     name: kmax
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --path-frac
   description: "dynamic programming algorithm will stop finding\nsuboptimal paths\
     \ when path expression drops below a\nfraction X (0.0-1.0) of the total locus\
     \ expression\n[default=0.0]"
-  synonyms:
-  - --path-frac
   args: !SimpleFlagArg
     name: X
-  optional: true
 - !Flag
-  description: "dynamic programming algorithm will stop after finding\nN paths [default=0]\n"
+  optional: true
   synonyms:
   - --max-paths
+  description: "dynamic programming algorithm will stop after finding\nN paths [default=0]\n"
   args: !SimpleFlagArg
     name: N
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: taco_run [-h] [-o DIR] [-p N] [-v] [--resume] [--assemble BED]\n\
@@ -263,3 +263,4 @@ help_text: "usage: taco_run [-h] [-o DIR] [-p N] [-v] [--resume] [--assemble BED
   \            N paths [default=0]\n"
 generated_using:
 - --help
+docker_image:

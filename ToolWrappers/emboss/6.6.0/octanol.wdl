@@ -14,6 +14,9 @@ task Octanol {
       ~{if (plot_octanol) then "-plotoctanol" else ""} \
       ~{if (plot_interface) then "-plotinterface" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_file: "datafile   [Ewhite-wimley.dat] White-Wimley data file"
     width: "integer    [19] Window size (Integer from 1 to 200)"

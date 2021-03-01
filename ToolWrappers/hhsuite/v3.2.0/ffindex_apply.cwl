@@ -3,22 +3,22 @@ id: ffindex_apply.cwl
 inputs:
 - id: in_i
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_d
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -d
 - id: in_k
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -k
 - id: in_q
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
 - id: in_data_filename
@@ -37,14 +37,15 @@ outputs:
   type: stdout
 - id: out_i
   doc: ''
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_i)
 - id: out_d
   doc: ''
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_d)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ffindex_apply

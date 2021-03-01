@@ -3,22 +3,22 @@ id: acpype_params_gmx_opls.cwl
 inputs:
 - id: in_config
   doc: Configuration file
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_input_path
   doc: 'Path to the input file. Accepted formats: pdb, mdl, mol2.'
-  type: File
+  type: File?
   inputBinding:
     prefix: --input_path
 - id: in_output_path_itp
   doc: 'Path to the ITP output file. Accepted formats: itp.'
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_path_itp
 - id: in_output_path_top
   doc: "Path to the TOP output file. Accepted formats: top.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_path_top
 outputs:
@@ -27,14 +27,15 @@ outputs:
   type: stdout
 - id: out_output_path_itp
   doc: 'Path to the ITP output file. Accepted formats: itp.'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_path_itp)
 - id: out_output_path_top
   doc: "Path to the TOP output file. Accepted formats: top.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_path_top)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - acpype_params_gmx_opls

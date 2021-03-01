@@ -4,7 +4,7 @@ inputs:
 - id: in_layout_type
   doc: "Choose the layout algorithm. Simple radial\nlayout if 0, or naview if 1\n\
     (default=`1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: --layout-type
 - id: in_output_format
@@ -12,20 +12,20 @@ inputs:
     \ Graph Meta Language (gml),\nScalable Vector Graphics (svg), and XRNA save\n\
     file (xrna). Output filenames will end in\n\".ps\" \".gml\" \".svg\" \".ss\",\n\
     respectively.\n(default=`ps')"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-format
 - id: in_pre
   doc: "Add annotation macros to postscript file, and\nadd the postscript code in\
     \ \"string\" just\nbefore the code to draw the structure. This\nis an easy way\
     \ to add annotation."
-  type: File
+  type: File?
   inputBinding:
     prefix: --pre
 - id: in_post
   doc: "Same as --pre but in contrast to adding the\nannotation macros. E.g to mark\
     \ position 15\nwith circle use --post \"15 cmark\""
-  type: long
+  type: long?
   inputBinding:
     prefix: --post
 outputs:
@@ -37,9 +37,10 @@ outputs:
     \ Graph Meta Language (gml),\nScalable Vector Graphics (svg), and XRNA save\n\
     file (xrna). Output filenames will end in\n\".ps\" \".gml\" \".svg\" \".ss\",\n\
     respectively.\n(default=`ps')"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_format)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - RNAplot

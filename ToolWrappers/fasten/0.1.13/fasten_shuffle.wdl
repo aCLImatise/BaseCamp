@@ -18,6 +18,9 @@ task FastenShuffle {
       ~{if defined(one) then ("-1 " +  '"' + one + '"') else ""} \
       ~{if defined(two) then ("-2 " +  '"' + two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_cpus: "Number of CPUs (default: 1)"
     paired_end: "The input reads are interleaved paired-end"

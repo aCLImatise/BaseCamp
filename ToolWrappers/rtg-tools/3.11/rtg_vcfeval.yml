@@ -5,177 +5,177 @@ command:
 positional: []
 named:
 - !Flag
-  description: VCF file containing baseline variants
+  optional: true
   synonyms:
   - -b
   - --baseline
+  description: VCF file containing baseline variants
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "if set, only read VCF records that overlap the\nranges contained in\
-    \ the specified BED file"
+  optional: true
   synonyms:
   - --bed-regions
+  description: "if set, only read VCF records that overlap the\nranges contained in\
+    \ the specified BED file"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: VCF file containing called variants
+  optional: true
   synonyms:
   - -c
   - --calls
+  description: VCF file containing called variants
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "if set, evaluate within regions contained in\nthe supplied BED file,\
-    \ allowing transborder\nmatches. To be used for truth-set\nhigh-confidence regions\
-    \ or other regions of\ninterest where region boundary effects should\nbe minimized"
+  optional: true
   synonyms:
   - -e
   - --evaluation-regions
+  description: "if set, evaluate within regions contained in\nthe supplied BED file,\
+    \ allowing transborder\nmatches. To be used for truth-set\nhigh-confidence regions\
+    \ or other regions of\ninterest where region boundary effects should\nbe minimized"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: directory for output
+  optional: true
   synonyms:
   - -o
   - --output
+  description: directory for output
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --region
   description: "if set, only read VCF records within the\nspecified range. The format\
     \ is one of\n<sequence_name>, <sequence_name>:<start>-<end>,\n<sequence_name>:<pos>+<length>\
     \ or\n<sequence_name>:<pos>~<padding>"
-  synonyms:
-  - --region
   args: !SimpleFlagArg
     name: REGION
-  optional: true
 - !Flag
-  description: "SDF of the reference genome the variants are\ncalled against"
+  optional: true
   synonyms:
   - -t
   - --template
+  description: "SDF of the reference genome the variants are\ncalled against"
   args: !SimpleFlagArg
     name: SDF
-  optional: true
 - !Flag
-  description: "use all records regardless of FILTER status\n(Default is to only process\
-    \ records where\nFILTER is \".\" or \"PASS\")"
+  optional: true
   synonyms:
   - --all-records
+  description: "use all records regardless of FILTER status\n(Default is to only process\
+    \ records where\nFILTER is \".\" or \"PASS\")"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "decompose complex variants into smaller\nconstituents to allow partial\
-    \ credit"
+  optional: true
   synonyms:
   - --decompose
+  description: "decompose complex variants into smaller\nconstituents to allow partial\
+    \ credit"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "allow alleles to overlap where bases of either\nallele are same-as-ref\
-    \ (Default is to only\nallow VCF anchor base overlap)"
+  optional: true
   synonyms:
   - --ref-overlap
+  description: "allow alleles to overlap where bases of either\nallele are same-as-ref\
+    \ (Default is to only\nallow VCF anchor base overlap)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sample
   description: "the name of the sample to select. Use\n<baseline_sample>,<calls_sample>\
     \ to select\ndifferent sample names for baseline and calls.\n(Required when using\
     \ multi-sample VCF files)"
-  synonyms:
-  - --sample
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: "treat heterozygous genotypes as homozygous ALT\nin both baseline and\
-    \ calls, to allow matches\nthat ignore zygosity differences"
+  optional: true
   synonyms:
   - --squash-ploidy
+  description: "treat heterozygous genotypes as homozygous ALT\nin both baseline and\
+    \ calls, to allow matches\nthat ignore zygosity differences"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "output summary statistics where precision >=\nsupplied value (Default\
-    \ is to summarize at\nmaximum F-measure)"
+  optional: true
   synonyms:
   - --at-precision
+  description: "output summary statistics where precision >=\nsupplied value (Default\
+    \ is to summarize at\nmaximum F-measure)"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "output summary statistics where sensitivity >=\nsupplied value (Default\
-    \ is to summarize at\nmaximum F-measure)"
+  optional: true
   synonyms:
   - --at-sensitivity
+  description: "output summary statistics where sensitivity >=\nsupplied value (Default\
+    \ is to summarize at\nmaximum F-measure)"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: do not produce ROCs
+  optional: true
   synonyms:
   - --no-roc
+  description: do not produce ROCs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "output reporting mode. Allowed values are\n[split, annotate, combine,\
-    \ ga4gh, roc-only]\n(Default is split)"
+  optional: true
   synonyms:
   - -m
   - --output-mode
+  description: "output reporting mode. Allowed values are\n[split, annotate, combine,\
+    \ ga4gh, roc-only]\n(Default is split)"
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: "the order in which to sort the ROC scores so\nthat \"good\" scores\
-    \ come before \"bad\" scores.\nAllowed values are [ascending, descending]\n(Default\
-    \ is descending)"
+  optional: true
   synonyms:
   - -O
   - --sort-order
+  description: "the order in which to sort the ROC scores so\nthat \"good\" scores\
+    \ come before \"bad\" scores.\nAllowed values are [ascending, descending]\n(Default\
+    \ is descending)"
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: "the name of the VCF FORMAT field to use as the\nROC score. Also valid\
-    \ are \"QUAL\", \"INFO.<name>\"\nor \"FORMAT.<name>\" to select the named VCF\n\
-    FORMAT or INFO field (Default is GQ)"
+  optional: true
   synonyms:
   - -f
   - --vcf-score-field
+  description: "the name of the VCF FORMAT field to use as the\nROC score. Also valid\
+    \ are \"QUAL\", \"INFO.<name>\"\nor \"FORMAT.<name>\" to select the named VCF\n\
+    FORMAT or INFO field (Default is GQ)"
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: do not gzip the output
+  optional: true
   synonyms:
   - -Z
   - --no-gzip
+  description: do not gzip the output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "number of threads (Default is the number of\navailable cores)\n"
+  optional: true
   synonyms:
   - -T
   - --threads
+  description: "number of threads (Default is the number of\navailable cores)\n"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: print help on command-line flag usage
+  optional: true
   synonyms:
   - -h
   - --help
+  description: print help on command-line flag usage
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: rtg vcfeval [OPTION]... -b FILE -c FILE -o DIR -t SDF\n\nEvaluates\
@@ -235,3 +235,4 @@ help_text: "Usage: rtg vcfeval [OPTION]... -b FILE -c FILE -o DIR -t SDF\n\nEval
   \            available cores)\n\n"
 generated_using:
 - --help
+docker_image:

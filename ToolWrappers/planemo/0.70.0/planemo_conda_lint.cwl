@@ -1,19 +1,9 @@
 class: CommandLineTool
 id: planemo_conda_lint.cwl
 inputs:
-- id: in_report_level
-  doc: '[all|warn|error]'
-  type: boolean
-  inputBinding:
-    prefix: --report_level
-- id: in_fail_level
-  doc: '[warn|error]'
-  type: boolean
-  inputBinding:
-    prefix: --fail_level
 - id: in_recursive
   doc: Recursively perform command for nested conda
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --recursive
 - id: in_directories_dot
@@ -25,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - planemo

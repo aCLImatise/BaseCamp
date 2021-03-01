@@ -18,6 +18,9 @@ task Biopetbasecounter {
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_level: "Level of log information printed. Possible levels: 'debug', 'info', 'warn', 'error'"
     ref_flat: "refFlat file. Mandatory"

@@ -8,6 +8,9 @@ task BiscuitAsm {
     biscuit asm \
       ~{input_dot_epi_read}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dot_epi_read: ""
   }

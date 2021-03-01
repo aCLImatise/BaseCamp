@@ -28,6 +28,9 @@ task Wig2hintspl {
       ~{if defined(src) then ("--src " +  '"' + src + '"') else ""} \
       ~{if defined(ucsc) then ("--UCSC " +  '"' + ucsc + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     width: "Default: 40"
     margin: "Default: 20"

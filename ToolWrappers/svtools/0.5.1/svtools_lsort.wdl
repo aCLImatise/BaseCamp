@@ -14,6 +14,9 @@ task SvtoolsLsort {
       ~{if defined(tempdir) then ("--tempdir " +  '"' + tempdir + '"') else ""} \
       ~{if defined(batch_size) then ("--batchsize " +  '"' + batch_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_list: "file containing a line-delimited list of VCF files to\\ncombine and sort"
     include_reference: "whether or not to include homozygous reference or\\nmissing calls in the output."

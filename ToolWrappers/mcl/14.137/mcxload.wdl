@@ -86,6 +86,9 @@ task Mcxload {
       ~{if (debug) then "--debug" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     abc: "input file in abc format"
     input_file_in__format: "input file in 123 format"

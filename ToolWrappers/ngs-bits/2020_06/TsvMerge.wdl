@@ -22,6 +22,9 @@ task TsvMerge {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input TSV files that are merged. If only one file is given, each line in this file is interpreted as an input file path."
     cols: "Comma-separated list of column names used as key for merging."

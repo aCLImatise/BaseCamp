@@ -10,6 +10,9 @@ task TomboBuildModelEstimateScale {
       ~{fast_fives_basedir} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Don't print status information."
     fast_fives_basedir: "Directory containing fast5 files. All files ending in\\n\\\"fast5\\\" found recursively within this base directory will be\\nprocessed."

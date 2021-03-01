@@ -14,6 +14,9 @@ task HgFakeAgp {
       ~{if defined(min_scaffold_gap) then ("-minScaffoldGap " +  '"' + min_scaffold_gap + '"') else ""} \
       ~{if (single_contigs) then "-singleContigs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_contig_gap: "Minimum size for a gap between contigs.  Default 25"
     min_scaffold_gap: "Min size for a gap between scaffolds. Default 50000"

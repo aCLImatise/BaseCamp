@@ -4,7 +4,7 @@ task Ucpp {
   input {
     Boolean? keep_comments_output
     Boolean? keep_when_recognized
-    Boolean? emit_line_numbers
+    Boolean? do_emit_line_numbers
     Boolean? lg
     Boolean? cc
     Boolean? na
@@ -31,14 +31,14 @@ task Ucpp {
     Boolean? emit_defined_macros
     Boolean? emit_assertions
     Boolean? print_version_number
-    File? file
+    File? var_file
   }
   command <<<
     ucpp \
-      ~{file} \
+      ~{var_file} \
       ~{if (keep_comments_output) then "-C" else ""} \
       ~{if (keep_when_recognized) then "-s" else ""} \
-      ~{if (emit_line_numbers) then "-l" else ""} \
+      ~{if (do_emit_line_numbers) then "-l" else ""} \
       ~{if (lg) then "-lg" else ""} \
       ~{if (cc) then "-CC" else ""} \
       ~{if (na) then "-na" else ""} \
@@ -66,10 +66,13 @@ task Ucpp {
       ~{if (emit_assertions) then "-e" else ""} \
       ~{if (print_version_number) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep_comments_output: "keep comments in output"
     keep_when_recognized: "keep '#' when no cpp directive is recognized"
-    emit_line_numbers: "do not emit line numbers"
+    do_emit_line_numbers: "do not emit line numbers"
     lg: "emit gcc-like line numbers"
     cc: "disable C++-like comments"
     na: "handle (or not) assertions"
@@ -96,7 +99,7 @@ task Ucpp {
     emit_defined_macros: "emit defined macros"
     emit_assertions: "emit assertions"
     print_version_number: "print version number and settings"
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

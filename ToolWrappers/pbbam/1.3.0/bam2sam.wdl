@@ -12,6 +12,9 @@ task Bam2sam {
       ~{if (no_header) then "--no-header" else ""} \
       ~{if (header_only) then "--header-only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_header: "Omit header from output."
     header_only: "Print only the header (no records)."

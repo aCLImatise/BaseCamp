@@ -3,23 +3,23 @@ id: wgfastdb.cwl
 inputs:
 - id: in_log
   doc: 'Set log file path (default: ./wgfastdb.log)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --log
 - id: in_no_update
   doc: "Do not sync your collection with the latest assembly\nversions (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_update
 - id: in_no_assembly_update
   doc: "Do not download the latest assembly summary and\ntaxonomy dump and use your\
     \ local copies. (default:\nFalse)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_assembly_update
 - id: in_download_only
   doc: 'Run only the download step. (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --download_only
 - id: in_species
@@ -36,12 +36,12 @@ inputs:
     , \"assembly_size\", and \"distance\". If a\nparameter cell is left blank it will\
     \ be replaced with\nthe default value or a value passed from the command\nline\
     \ (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_curate_only
   doc: 'Run only the curate step (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --curate_only
 - id: in_unknowns
@@ -83,6 +83,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - wgfastdb

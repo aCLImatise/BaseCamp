@@ -3,12 +3,12 @@ id: sketchy_rs_evaluate.cwl
 inputs:
 - id: in_features
   doc: genotype feature index
-  type: File
+  type: File?
   inputBinding:
     prefix: --features
 - id: in_stable
   doc: reads to stable breakpoint
-  type: long
+  type: long?
   inputBinding:
     prefix: --stable
 - id: in_sketchy_rs
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sketchy-rs

@@ -16,6 +16,9 @@ task HeraBuild {
       ~{if (full_index) then "--full_index" else ""} \
       ~{if (gr_ch_three_eight) then "--grch38" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "input reference genome fasta file"
     gtf: "input reference annotation gtf file"

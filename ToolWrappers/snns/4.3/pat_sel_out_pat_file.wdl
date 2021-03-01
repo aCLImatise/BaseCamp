@@ -14,6 +14,9 @@ task PatSelOutPatFile {
       ~{in_pat_file} \
       ~{out_pat_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pat_sel: ""
     no_file: ""

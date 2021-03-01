@@ -16,6 +16,9 @@ task Hops {
       ~{if defined(specify_out_directory) then ("--output " +  '"' + specify_out_directory + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: "Path to Config File"
     specify_input_directory: "Specify input directory or files valid option depend on mode"

@@ -4,17 +4,17 @@ inputs:
 - id: in_file
   doc: "Input file containing a table of pixel RGB values\nsampled for each input\
     \ class."
-  type: File
+  type: File?
   inputBinding:
     prefix: --file
 - id: in_outfile
   doc: Trained classifier output filename.
-  type: File
+  type: File?
   inputBinding:
     prefix: --outfile
 - id: in_plots
   doc: Make output plots.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --plots
 outputs:
@@ -23,9 +23,10 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: Trained classifier output filename.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - plantcv-train.py

@@ -3,45 +3,50 @@ id: rsat_random_seq.cwl
 inputs:
 - id: in_sequence_length
   doc: sequence length
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_number_sequencesgenerate_set
   doc: "Number of sequences.\nGenerate a set of n sequences, each of length l."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_verbose
   doc: verbose.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_specified_standard_output
   doc: "if not specified, the standard output is used.\nThis allows to place the comand\
     \ within a pipe."
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_prefix
   doc: 'for sequence identifiers (default: rand).'
-  type: string
+  type: string?
   inputBinding:
     prefix: -prefix
 - id: in_format
   doc: "format.\nTwo options are available:\nIG      IG suite from IntelliGenetics\n\
     raw     (default)"
-  type: string
+  type: string?
   inputBinding:
     prefix: -format
 - id: in_lw
   doc: "##  Line width. A newline character will be inserted in the\nsequence every\
     \ ## bases. Default is 70.\n-lw 0 will prevent newline insertion."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -lw
+- id: in_type
+  doc: protein|DNA|other
+  type: boolean?
+  inputBinding:
+    prefix: -type
 - id: in_seed
   doc: '# seed for the random generator'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -seed
 - id: in_generate_random_sequences
@@ -49,7 +54,7 @@ inputs:
     \ template types are supported (option -template_format):\nsequences (in fasta),\
     \ genomic coordinates (in bed), sequence\nlengths.\nThis option is incompatible\
     \ with options -l and -n."
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_template_format
@@ -62,7 +67,7 @@ inputs:
     \ indicating, for each\nfeature:\n1. id (ignored)\n2. start coordinate\n3. end\
     \ coordinate\nlen\nTemplates are provided as a tab-delimited file indicating the\n\
     length of each template sequence (this file can be produced by\nsequence-lengths)."
-  type: long
+  type: long?
   inputBinding:
     prefix: -template_format
 - id: in_lf
@@ -72,7 +77,7 @@ inputs:
     \ the command\nsequence-lengths.\nThis option is incompatible with options -l\
     \ and -n.\nThe length file contains two columns :\n-sequence ID (ignored)\n-sequence\
     \ length"
-  type: long
+  type: long?
   inputBinding:
     prefix: -lf
 - id: in_exp_freq
@@ -86,7 +91,7 @@ inputs:
     \ base at position j\nB       is a residue, ie A, C, G or T\nWj-3,j-1\nis a word\
     \ found in the sequence between\npositions j-3 and j-1\nWj-3,j  is the same word\
     \ with the character B\nconcatenated at its end"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -expfreq
 - id: in_bg
@@ -106,32 +111,32 @@ inputs:
     \ to speciy a model organism.\n-bg protein\ngenerate random peptidic sequences\
     \ using a Markov\nchain calibrated on all peptidic sequences of the\nselected\
     \ organism."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bg
 - id: in_org
   doc: "organism\nThis is necessary with the option -bg, to determine\nwhich frequency\
     \ file has to be sued for expected\nfrequency calibration."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -org
 - id: in_markov
   doc: "order for the background model\nNote: options -markov and -ol are mutually\
     \ exclusive."
-  type: string
+  type: string?
   inputBinding:
     prefix: -markov
 - id: in_ol
   doc: "oligo-length\nOligonucleotide length used to train the Markov\nbackground\
     \ model. If the oligo length is k, the markov\norder is m = k-1."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ol
 - id: in_rep
   doc: "Number of repetitions\nThe list if sequence lengths is repeated rep times.\n\
     This option only serves when a length file is used to\nspecify sequence-sise lengths.\n\
     This option is incompatible with the options -l and\n-n."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -rep
 - id: in_random_seq
@@ -158,9 +163,10 @@ outputs:
 - id: out_specified_standard_output
   doc: "if not specified, the standard output is used.\nThis allows to place the comand\
     \ within a pipe."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_specified_standard_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

@@ -10,6 +10,9 @@ task PyfastxFq2fa {
       ~{fast_x} \
       ~{if defined(out_file) then ("--out-file " +  '"' + out_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_file: "output file, default: output to stdout\\n"
     fast_x: "fastq file, gzip support"

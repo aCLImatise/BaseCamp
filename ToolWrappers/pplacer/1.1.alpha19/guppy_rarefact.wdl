@@ -9,7 +9,7 @@ task GuppyRarefact {
     Boolean? csv
     Boolean? variance
     Boolean? weight_as_count
-    Boolean? highest_value_calculate
+    Boolean? highest_value_k
     Boolean? help
     String rare_fact
     String place_file
@@ -25,9 +25,12 @@ task GuppyRarefact {
       ~{if (csv) then "--csv" else ""} \
       ~{if (variance) then "--variance" else ""} \
       ~{if (weight_as_count) then "--weight-as-count" else ""} \
-      ~{if (highest_value_calculate) then "-k" else ""} \
+      ~{if (highest_value_k) then "-k" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pp: "Use posterior probability for the weight."
     specify_filename_write: "Specify the filename to write to."
@@ -36,7 +39,7 @@ task GuppyRarefact {
     csv: "Output the results as csv instead of a padded matrix."
     variance: "Calculate variance of phylogenetic entropy."
     weight_as_count: "Interpret (integer) weights on pqueries as counts."
-    highest_value_calculate: "The highest value of k to calculate."
+    highest_value_k: "The highest value of k to calculate."
     help: "Display this list of options"
     rare_fact: ""
     place_file: ""

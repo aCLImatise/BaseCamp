@@ -3,12 +3,12 @@ id: bedparse_convertChr_bedfile.cwl
 inputs:
 - id: in_target
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --target
 - id: in_assembly
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --assembly
 - id: in_bed_parse
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bedparse

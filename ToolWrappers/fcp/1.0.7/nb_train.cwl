@@ -3,28 +3,29 @@ id: nb_train.cwl
 inputs:
 - id: in_contact
   doc: Print contact information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --contact
 - id: in_desired_oligonucleotide_length
   doc: Desired oligonucleotide length (default = 8).
-  type: long
+  type: long?
   inputBinding:
     prefix: -n
 - id: in_m
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -m
 - id: in_s
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -s
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nb-train

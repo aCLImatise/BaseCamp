@@ -10,6 +10,9 @@ task GcloudIamOptional {
       ~{flags} \
       ~{group_vertical_line_command}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     flags: ""
     group_vertical_line_command: ""

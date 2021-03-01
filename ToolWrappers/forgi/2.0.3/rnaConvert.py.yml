@@ -3,138 +3,138 @@ command:
 - rnaConvert.py
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: rna
   description: "One or more files containing one or more RNAs each.\nSupported Filetypes\
     \ are: pdb files, forgi cg files,\nforgi bg files, fasta files,\ndotbracketfilesAlternatively\
     \ you can supply a\ndotbracket-string (containing only the characters\n'.()[]{}&')\
     \ from the commandline."
-  position: 0
-  name: rna
-  optional: false
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --keep-length-one-stems
   description: "For all input formats except forgi bg/cg files, this\ncontrolls whether\
     \ stems of length one are dissolved to\nunpaired regions (default) or kept (if\
     \ this option is\npresent). In the case of input in forgi-format, the\nRNA from\
     \ the file is not modified."
-  synonyms:
-  - --keep-length-one-stems
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The target file-type to convert into.
+  optional: true
   synonyms:
   - -T
   - --target-type
+  description: The target file-type to convert into.
   args: !ChoiceFlagArg
     choices: !!set
       element_string:
-      dotbracket:
       fasta:
+      forgi:
       bpseq:
+      dotbracket:
       pdb:
       neato:
-      forgi:
-  optional: true
 - !Flag
-  description: "Store the converted RNA in files instead of printing\nthem to stdout.\
-    \ The file-name will be the RNA's name\n(if present), otherwise 'rna001' etc."
+  optional: true
   synonyms:
   - --to-file
+  description: "Store the converted RNA in files instead of printing\nthem to stdout.\
+    \ The file-name will be the RNA's name\n(if present), otherwise 'rna001' etc."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filename
   description: "If this is present, --to-file will automatically be\ntrue.A target\
     \ filename (or path) without extention. If\nit is a filename, use the given filename\
     \ instead of\nthe RNA's name. If more than one input-RNA is present,\nappends\
     \ automatically a increasing number.If it is a\ndirectory, create files in this\
     \ directory."
-  synonyms:
-  - --filename
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
-  description: "Overwrite files, if they already exist. Note: In case\nof race conditions,\
-    \ files could be overwritten even if\nthis flag is not provided."
+  optional: true
   synonyms:
   - -f
   - --force
+  description: "Overwrite files, if they already exist. Note: In case\nof race conditions,\
+    \ files could be overwritten even if\nthis flag is not provided."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Allow pseudoknots when extracting the structure from\nPDB files."
+  optional: true
   synonyms:
   - --pseudoknots
+  description: "Allow pseudoknots when extracting the structure from\nPDB files."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "When reading pdb-files: Only extract the given\nchain(s). Comma-seperated"
+  optional: true
   synonyms:
   - --chains
+  description: "When reading pdb-files: Only extract the given\nchain(s). Comma-seperated"
   args: !SimpleFlagArg
     name: CHAINS
-  optional: true
 - !Flag
-  description: "When reading a single chain from a pdb-files: Enforce\nthe secondary\
-    \ structure given as dotbracket string.\n(This only works, if --chain is given!)"
+  optional: true
   synonyms:
   - --pdb-secondary-structure
+  description: "When reading a single chain from a pdb-files: Enforce\nthe secondary\
+    \ structure given as dotbracket string.\n(This only works, if --chain is given!)"
   args: !SimpleFlagArg
     name: PDB_SECONDARY_STRUCTURE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pdb-annotation-tool
   description: "What program to use for detecting basepairs in PDB/\nMMCIF structures.\
     \ This commandline option overrides\nthe value in the config file (if present).If\
     \ this is\nnot present and no config-file is given, we try to\ndetect the installed\
     \ programs."
-  synonyms:
-  - --pdb-annotation-tool
   args: !SimpleFlagArg
     name: PDB_ANNOTATION_TOOL
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pdb-allow-www-query
   description: "Usually, if modified residues/ ligand with an unknown\n3-letter code\
     \ are encountered in PDB files, they are\nremoved from the chain and a log message\
     \ of severity\nINFO is issued. With this option, we first try to\nquery the PDBeChem\
     \ database for the 3-letter code, to\nsee whether or not it is a modified residue\
     \ that can\nbe converted to its standard parent and should be part\nof the chain."
-  synonyms:
-  - --pdb-allow-www-query
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Show verbose output (Output logged at level\nlogging.INFO)"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: "Show verbose output (Output logged at level\nlogging.INFO)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --debug
   description: "[DEBUG]       A comma-seperated list of logger names for which debug\n\
     output will be activated.WARNING: If you misspell the\nlogger name, this argument\
     \ will be ignored"
-  synonyms:
-  - --debug
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -q
   description: "[QUIET], --quiet [QUIET]\nA comma-seperated list of logger names for\
     \ which only\nmessages logged at the level 'CRITICAL' will be\nshown.Use this\
     \ without arguments if everything should\nbe quiet.\n"
-  synonyms:
-  - -q
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: rnaConvert.py [-h] [--keep-length-one-stems] [--pseudoknots]\n\
@@ -199,3 +199,4 @@ help_text: "usage: rnaConvert.py [-h] [--keep-length-one-stems] [--pseudoknots]\
   \ if everything should\n                        be quiet.\n"
 generated_using:
 - --help
+docker_image:

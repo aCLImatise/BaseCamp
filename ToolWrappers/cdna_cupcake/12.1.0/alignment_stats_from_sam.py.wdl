@@ -16,6 +16,9 @@ task AlignmentStatsFromSampy {
       ~{if defined(output_prefix) then ("--output_prefix " +  '"' + output_prefix + '"') else ""} \
       ~{if defined(gff) then ("--gff " +  '"' + gff + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_fastq: "Input fasta or fastq."
     sam_filename: "Aligned SAM filename."

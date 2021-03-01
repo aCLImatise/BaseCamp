@@ -20,7 +20,7 @@ task Satrap {
     Boolean? int_it_trims_sequences
     Boolean? int_minimum_mean_quality_reads
     Boolean? int_minimum_contig
-    Boolean? float_maximum_tolerated
+    Boolean? float_maximum_fraction
     Boolean? int_minimum_coverage_required
     Boolean? erode
     Boolean? float_zscore_required
@@ -47,13 +47,16 @@ task Satrap {
       ~{if (int_it_trims_sequences) then "-T2" else ""} \
       ~{if (int_minimum_mean_quality_reads) then "-Q" else ""} \
       ~{if (int_minimum_contig) then "-l" else ""} \
-      ~{if (float_maximum_tolerated) then "-n" else ""} \
+      ~{if (float_maximum_fraction) then "-n" else ""} \
       ~{if (int_minimum_coverage_required) then "-c" else ""} \
       ~{if (erode) then "-erode" else ""} \
       ~{if (float_zscore_required) then "-z" else ""} \
       ~{if (erosion) then "-erosion" else ""} \
       ~{if (no_clustering) then "-no_clustering" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     step: "(vector<int>)     PLEASE SELECT THE DESIRED STEP OF THE ANALYSIS USING \\\"-step\\\" parameter:\\n\\\"1\\\" for STEP 1, \\\"2\\\" for STEP 2 etc. For instance the Oases pipeline\\nrequires: \\\"-step 1 2\\\". The steps 3 and 4 are set by default, so the\\nomitting of this parameter will erase the previous results in these steps"
     bin: "(string)        Set the directory path where binaries are located [bin/]"
@@ -73,7 +76,7 @@ task Satrap {
     int_it_trims_sequences: "(int)          it trims sequences at 3' end [0]"
     int_minimum_mean_quality_reads: "(int)          minimum mean quality for reads [9]"
     int_minimum_contig: "(int)          Minimum contig length [100]"
-    float_maximum_tolerated: "(float)         Maximum tolerated fraction of Ns for each translated contig[1]."
+    float_maximum_fraction: "(float)         Maximum tolerated fraction of Ns for each translated contig[1]."
     int_minimum_coverage_required: "(int)          Minimum coverage required to operate the assembly correction\\nIf this parameter is used -z will be not considered."
     erode: "(int)          Minimum coverage considered to erode contig ends [2]"
     float_zscore_required: "(float)         z-score required to calculate the coverage threshold basing on\\nthe statistical analysis of the sequence coverage [3]. Low values\\nare more conservative when the error correction is applied. As\\nconsequence of this fact Ns will be introduced around color\\nincoherence not supported by enough sequence coverage."

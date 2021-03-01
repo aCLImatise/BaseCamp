@@ -3,7 +3,7 @@ id: synapse_get_provenance_accessing..cwl
 inputs:
 - id: in_id
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -id
 - id: in_synapse
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - synapse

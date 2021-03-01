@@ -3,159 +3,159 @@ command:
 - halLodInterpolate.py
 positional:
 - !Positional
-  description: input hal
+  optional: false
   position: 0
   name: hal
-  optional: false
+  description: input hal
 - !Positional
-  description: "output text file with links to interpolated hal files.\nwith each\
-    \ file is associated a value stating its\nminimum suggested query range (in bases)"
+  optional: false
   position: 1
   name: outLodFile
-  optional: false
+  description: "output text file with links to interpolated hal files.\nwith each\
+    \ file is associated a value stating its\nminimum suggested query range (in bases)"
 named:
 - !Flag
-  description: "maximum desired number of blocks to ever display at\nonce. (default:\
-    \ 223)"
+  optional: true
   synonyms:
   - --maxBlock
+  description: "maximum desired number of blocks to ever display at\nonce. (default:\
+    \ 223)"
   args: !SimpleFlagArg
     name: MAXBLOCK
-  optional: true
 - !Flag
-  description: "scaling factor between two successive levels of detail\n(default:\
-    \ 2.5)"
+  optional: true
   synonyms:
   - --scale
+  description: "scaling factor between two successive levels of detail\n(default:\
+    \ 2.5)"
   args: !SimpleFlagArg
     name: SCALE
-  optional: true
 - !Flag
-  description: "path of directory where interpolated hal files are\nstored. By default\
-    \ they will be stored in the same\ndirectory as the input file (default: None)"
+  optional: true
   synonyms:
   - --outHalDir
+  description: "path of directory where interpolated hal files are\nstored. By default\
+    \ they will be stored in the same\ndirectory as the input file (default: None)"
   args: !SimpleFlagArg
     name: OUTHALDIR
-  optional: true
 - !Flag
-  description: "do not overwrite existing hal lod files if they exist.\n(default:\
-    \ False)"
+  optional: true
   synonyms:
   - --resume
+  description: "do not overwrite existing hal lod files if they exist.\n(default:\
+    \ False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxDNA
   description: "maximum DNA sequence query. Generated levels of detail\nwith associated\
     \ minimum query ranges > maxDNA will not\ncontain sequence information. -1 can\
     \ be used to\nspecify that all levels will get sequence (default: 0)"
-  synonyms:
-  - --maxDNA
   args: !SimpleFlagArg
     name: MAXDNA
-  optional: true
 - !Flag
-  description: "write absolute path of created HAL files in the\noutLodFile. By default,\
-    \ the paths are relative to the\npath of the outLodFile. (default: False)"
+  optional: true
   synonyms:
   - --absPath
+  description: "write absolute path of created HAL files in the\noutLodFile. By default,\
+    \ the paths are relative to the\npath of the outLodFile. (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Generate level of detail X from X-1. By default, all\nlevels of detail\
-    \ are generated from the original HAL\n(X=0) (default: False)"
+  optional: true
   synonyms:
   - --trans
+  description: "Generate level of detail X from X-1. By default, all\nlevels of detail\
+    \ are generated from the original HAL\n(X=0) (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Load entire hdf5 arrays into memory, overriding cache.\n(default:\
-    \ False)"
+  optional: true
   synonyms:
   - --inMemory
+  description: "Load entire hdf5 arrays into memory, overriding cache.\n(default:\
+    \ False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --probeFrac
   description: "Fraction of bases in step-interval to sample while\nlooking for most\
     \ aligned column. Use default from\nhalLodExtract if not set. To see default value,\
     \ use\nhalLodExtract --help (default: None)"
-  synonyms:
-  - --probeFrac
   args: !SimpleFlagArg
     name: PROBEFRAC
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --minSeqFrac
   description: "Minumum sequence length to sample as fraction of step\nsize: ie sequences\
     \ with length <= floor(minSeqFrac *\nstep) are ignored.Use default from halLodExtract\
     \ if\nnot set. To see default value, use halLodExtract\n--help (default: 0.5)"
-  synonyms:
-  - --minSeqFrac
   args: !SimpleFlagArg
     name: MINSEQFRAC
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --minCovFrac
   description: "Minimum fraction of a genome that must be covered by\nsequences that\
     \ exceed --minSeqFrac * step. LODs that\nwould violate this threshold will not\
     \ be generated (or\ndisplayed in the browser). This is seen a better than\nthe\
     \ alternative, which is to produce unreasonably\nsparse LODs because half the\
     \ sequences were not\nsampled (default: 0.9)"
-  synonyms:
-  - --minCovFrac
   args: !SimpleFlagArg
     name: MINCOVFRAC
-  optional: true
 - !Flag
-  description: "Correction factor for scaling. Assume that scaling by\n(X * scaleCorFactor)\
-    \ is required to reduce the number\nof blocks by X. (default: 1.0)"
+  optional: true
   synonyms:
   - --scaleCorFac
+  description: "Correction factor for scaling. Assume that scaling by\n(X * scaleCorFactor)\
+    \ is required to reduce the number\nof blocks by X. (default: 1.0)"
   args: !SimpleFlagArg
     name: SCALECORFAC
-  optional: true
 - !Flag
-  description: 'Number of concurrent processes (default: 1)'
+  optional: true
   synonyms:
   - --numProc
+  description: 'Number of concurrent processes (default: 1)'
   args: !SimpleFlagArg
     name: NUMPROC
-  optional: true
 - !Flag
-  description: 'Chunk size of output hal files. (default: None)'
+  optional: true
   synonyms:
   - --chunk
+  description: 'Chunk size of output hal files. (default: None)'
   args: !SimpleFlagArg
     name: CHUNK
-  optional: true
 - !Flag
-  description: "Override other parameters to ensure that Lod0\n(original hal) gets\
-    \ range from 0 to at least the\nspecified value (default: 0)"
+  optional: true
   synonyms:
   - --minLod0
+  description: "Override other parameters to ensure that Lod0\n(original hal) gets\
+    \ range from 0 to at least the\nspecified value (default: 0)"
   args: !SimpleFlagArg
     name: MINLOD0
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cutOff
   description: "Cut-off fraction for determining highest level of\ndetail. Normally,\
     \ --maxBlocks is used to determine the\nstep-size for each LOD, but the exponential\
     \ scaling\ncan cause this to create final (highest) LODs that are\ntoo sparse.\
     \ The lowerthis parameter is (must stay >\n0), the sooner the LOD generation process\
     \ will be cut\noff, and the more fine-grained the highest LOD will be\n(default:\
     \ 0.75)\n"
-  synonyms:
-  - --cutOff
   args: !SimpleFlagArg
     name: CUTOFF
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: halLodInterpolate.py [-h] [--maxBlock MAXBLOCK] [--scale SCALE]\n\
@@ -222,3 +222,4 @@ help_text: "usage: halLodInterpolate.py [-h] [--maxBlock MAXBLOCK] [--scale SCAL
   \ highest LOD will be\n                        (default: 0.75)\n"
 generated_using:
 - --help
+docker_image:

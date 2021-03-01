@@ -50,6 +50,9 @@ task CleanGenes {
       ~{if defined(discards) then ("--discards " +  '"' + discards + '"') else ""} \
       ~{if (no_output) then "--no-output" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     start: "Require conserved start codons (all species)"
     stop: "Require conserved stop codons (all species)"

@@ -12,6 +12,9 @@ task Dig2 {
       ~{fast_a_sequence_database} \
       ~{settings}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dig: ""
     fast_a_sequence_database: ""

@@ -11,45 +11,45 @@ inputs:
 - id: in_outdir
   doc: "Specify to changes the output directory to the\nlocation specified. The input\
     \ file directory is used\nif this is not specified. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_out_name
   doc: "Changes the prefix of the successfully processed\noutput file to the string\
     \ specified. May not be\nspecified with multiple input files. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outname
 - id: in_log
   doc: "Specify to write verbose logging to a file. May not be\nspecified with multiple\
     \ input files. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --log
 - id: in_failed
   doc: "If specified create files containing records that fail\nprocessing. (default:\
     \ False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --failed
 - id: in_format
   doc: 'Specify input and output format. (default: airr)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
 - id: in_ihmmunealign_output_file
   doc: 'iHMMune-Align output file. (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
-- id: in_list_andor_fasta
+- id: in_list_folders_andor
   doc: "List of folders and/or FASTA files containing the set\nof germline sequences\
     \ used by iHMMune-Align. These\nreference sequences must contain IMGT-numbering\n\
     spacers (gaps) in the V segment. (default: None)"
   type: string[]
   inputBinding:
     prefix: -r
-- id: in_list_input_fasta
+- id: in_list_containing_sequences
   doc: "List of input FASTA files (with .fasta, .fna or .fa\nextension) containing\
     \ sequences. (default: None)"
   type: string[]
@@ -67,7 +67,7 @@ inputs:
     annotation format, so this should be specified when\nsequence headers are incompatible\
     \ with the pRESTO\nannotation scheme. Note, unrecognized header formats\nwill\
     \ default to this behavior. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --asis-id
 - id: in_partial
@@ -75,14 +75,14 @@ inputs:
     \ of the fail file. An incomplete\nalignment is defined as a record for which\
     \ a valid\nIMGT-gapped sequence cannot be built or that is\nmissing a V gene assignment,\
     \ J gene assignment,\njunction region, or productivity call. (default:\nFalse)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --partial
 - id: in_extended
   doc: "Specify to include additional aligner specific fields\nin the output. Adds\
     \ the path score of the iHMMune-\nAlign hidden Markov model as vdj_score; adds\
     \ fwr1,\nfwr2, fwr3, fwr4, cdr1, cdr2 and cdr3. (default:\nFalse)\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --extended
 outputs:
@@ -91,16 +91,17 @@ outputs:
   type: stdout
 - id: out_ihmmunealign_output_file
   doc: 'iHMMune-Align output file. (default: None)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_ihmmunealign_output_file)
 - id: out_extended
   doc: "Specify to include additional aligner specific fields\nin the output. Adds\
     \ the path score of the iHMMune-\nAlign hidden Markov model as vdj_score; adds\
     \ fwr1,\nfwr2, fwr3, fwr4, cdr1, cdr2 and cdr3. (default:\nFalse)\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_extended)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - MakeDb.py

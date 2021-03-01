@@ -3,27 +3,119 @@ command:
 - hybrid-min
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: file1
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: file2
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "--maxloop=<maximum bulge/interior loop size> (defaults to 30)\n--nodangle\n\
-    --prefilter=<value1, value2>\n--stream"
+  optional: true
+  synonyms:
+  - -t
+  - --tmin
+  description: (defaults to 37)
+  args: !SimpleFlagArg
+    name: minimum temperature
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --tinc
+  description: (defaults to 1)
+  args: !SimpleFlagArg
+    name: temperature increment
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --tmax
+  description: (defaults to 37)
+  args: !SimpleFlagArg
+    name: maximum temperature
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --suffix
+  - -o
+  - --output
+  - -N
+  - --sodium
+  description: =<[Na+] in M> (defaults to 1)
+  args: !SimpleFlagArg
+    name: free energy suffix
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --magnesium
+  description: =<[Mg++] in M> (defaults to 0)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --polymer
+  - -r
+  - --prohibit
+  description: =<i,j,k>
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  - --energyOnly
+  - -I
+  - --noisolate
+  - -z
+  - --zip
+  - -F
+  - --mfold
+  description: '[=<P,W,MAX>] (defaults to 5,*,100; W determined by sequence length)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  - -c
+  - --constraints
+  description: '[=<name of constraint file>] (defaults to prefix.aux)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --allpairs
-  args: !EmptyFlagArg {}
+  - --maxloop
+  description: (defaults to 30)
+  args: !SimpleFlagArg
+    name: maximum bulge/interior loop size
+- !Flag
   optional: true
+  synonyms:
+  - --nodangle
+  - --prefilter
+  description: =<value1, value2>
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  - -h
+  - --help
+  - -n
+  - --NA
+  description: =(RNA | DNA) (defaults to RNA)
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: hybrid-min [options] file1 file2\n\nOptions:\n-V, --version\n-h,\
@@ -40,3 +132,4 @@ help_text: "Usage: hybrid-min [options] file1 file2\n\nOptions:\n-V, --version\n
   \ markhn@rpi.edu\n"
 generated_using:
 - --help
+docker_image:

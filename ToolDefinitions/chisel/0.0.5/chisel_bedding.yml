@@ -1,0 +1,68 @@
+!Command
+command:
+- chisel_bedding
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT
+  description: "Input file with inferred copy numbers (default:\ncalls/calls.tsv)"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --rundir
+  description: 'Running directory (default: current directory)'
+  args: !SimpleFlagArg
+    name: RUNDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --rawcalls
+  description: "Use raw copy numbers instead of consensus corrected\nones (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noextending
+  description: "Merge consecutive bins only if they are neighboring\n(default: False,\
+    \ segments are extended to fill gaps)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
+  description: "Number of parallele jobs to use (default: equal to\nnumber of available\
+    \ processors)\n"
+  args: !SimpleFlagArg
+    name: JOBS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: chisel_bedding [-h] [-x RUNDIR] [--rawcalls] [--noextending] [-j\
+  \ JOBS]\n                      [INPUT]\n\nCHISEL command to generate a BED file\
+  \ for each cell with the corresponding\nCHISEL's results.\n\npositional arguments:\n\
+  \  INPUT                 Input file with inferred copy numbers (default:\n     \
+  \                   calls/calls.tsv)\n\noptional arguments:\n  -h, --help      \
+  \      show this help message and exit\n  -x RUNDIR, --rundir RUNDIR\n         \
+  \               Running directory (default: current directory)\n  --rawcalls   \
+  \         Use raw copy numbers instead of consensus corrected\n                \
+  \        ones (default: False)\n  --noextending         Merge consecutive bins only\
+  \ if they are neighboring\n                        (default: False, segments are\
+  \ extended to fill gaps)\n  -j JOBS, --jobs JOBS  Number of parallele jobs to use\
+  \ (default: equal to\n                        number of available processors)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/chisel:0.0.5--py_0

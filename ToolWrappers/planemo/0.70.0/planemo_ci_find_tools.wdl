@@ -20,6 +20,9 @@ task PlanemoCiFindTools {
       ~{if defined(chunk) then ("--chunk " +  '"' + chunk + '"') else ""} \
       ~{if defined(file_output_standard) then ("--output " +  '"' + file_output_standard + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exclude: "Paths to exclude."
     exclude_from: "File of paths to exclude."

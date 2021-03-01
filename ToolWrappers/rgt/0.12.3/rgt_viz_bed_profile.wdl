@@ -4,7 +4,7 @@ task RgtvizBedProfile {
   input {
     Boolean? input_experimental_matrix
     Directory? directory_name_output
-    Boolean? title_shown_top
+    Boolean? title_shown_default
     Boolean? organism
     Boolean? biotype
     Boolean? repeats
@@ -21,7 +21,7 @@ task RgtvizBedProfile {
     rgt_viz bed_profile \
       ~{if (input_experimental_matrix) then "-i" else ""} \
       ~{if (directory_name_output) then "-o" else ""} \
-      ~{if (title_shown_top) then "-t" else ""} \
+      ~{if (title_shown_default) then "-t" else ""} \
       ~{if (organism) then "-organism" else ""} \
       ~{if (biotype) then "-biotype" else ""} \
       ~{if (repeats) then "-repeats" else ""} \
@@ -34,10 +34,13 @@ task RgtvizBedProfile {
       ~{if (coverage) then "-coverage" else ""} \
       ~{if (test) then "-test" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_experimental_matrix: "Input experimental matrix or Input BED file or Input\\ndirectory which contains BED files"
     directory_name_output: "The directory name for the output files. For example,\\nproject name. (default: None)"
-    title_shown_top: "The title shown on the top of the plot and also the folder\\nname. (default: bed_profile)"
+    title_shown_default: "The title shown on the top of the plot and also the folder\\nname. (default: bed_profile)"
     organism: "Define the organism. (default: None)"
     biotype: "Define the directory for biotype BED files."
     repeats: "Define the directory for repeats BED files."

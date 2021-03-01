@@ -138,6 +138,9 @@ task Pbwt {
       ~{if defined(read_genetic_map) then ("-readGeneticMap " +  '"' + read_genetic_map + '"') else ""} \
       ~{if (four_haps_stats) then "-4hapsStats" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log: "log file; '-' for stderr"
     check: "do various checks"

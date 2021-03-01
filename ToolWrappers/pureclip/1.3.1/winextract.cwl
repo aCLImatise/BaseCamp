@@ -3,32 +3,32 @@ id: winextract.cwl
 inputs:
 - id: in_genome
   doc: 'Genome reference file. Valid filetypes are: .fa and .fasta.'
-  type: File
+  type: File?
   inputBinding:
     prefix: --genome
 - id: in_in_bed
   doc: 'Input cand-regions. Valid filetype is: .bed.'
-  type: File
+  type: File?
   inputBinding:
     prefix: --in-bed
 - id: in_output
   doc: 'Output file. Valid filetypes are: .fasta and .fa.'
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_window
   doc: Window size to analyse. In range [5..2000].
-  type: long
+  type: long?
   inputBinding:
     prefix: --window
 - id: in_uow
   doc: Use given window.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --uow
 - id: in_asn
   doc: Add score to output sequence name.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --asn
 outputs:
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: 'Output file. Valid filetypes are: .fasta and .fa.'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - winextract

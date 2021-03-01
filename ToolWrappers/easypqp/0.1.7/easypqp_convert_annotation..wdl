@@ -10,6 +10,9 @@ task EasypqpConvertAnnotation {
       ~{easy_pqp} \
       ~{convert}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     easy_pqp: ""
     convert: ""

@@ -3,83 +3,87 @@ command:
 - tombo
 - plot
 - sample_compare_per_read_roc
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: PER_READ_CONTROL_STATISTICS_FILENAMES
+  description: '[PER_READ_CONTROL_STATISTICS_FILENAMES ...]'
 named:
 - !Flag
-  description: "PER_READ_CONTROL_STATISTICS_FILENAMES\n[PER_READ_CONTROL_STATISTICS_FILENAMES\
-    \ ...]\n--motif-descriptions\nMOTIF_DESCRIPTIONS\n[MOTIF_DESCRIPTIONS ...]\n--genome-fasta\
-    \ GENOME_FASTA\n[--pdf-filename PDF_FILENAME]\n[--statistics-per-block STATISTICS_PER_BLOCK]\n\
-    [--total-statistics-limit TOTAL_STATISTICS_LIMIT]\n[--quiet] [--help]"
-  synonyms:
-  - --per-read-control-statistics-filenames
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: "Binary files containing per-read statistics from\nstatistical testing."
   synonyms:
   - --per-read-statistics-filenames
+  description: "Binary files containing per-read statistics from\nstatistical testing."
   args: !RepeatFlagArg
     name: PER_READ_STATISTICS_FILENAMES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --per-read-control-statistics-filenames
+  description: "Binary files containing per-read control statistics\nfrom statistical\
+    \ testing."
+  args: !RepeatFlagArg
+    name: PER_READ_CONTROL_STATISTICS_FILENAMES
+- !Flag
+  optional: true
+  synonyms:
+  - --motif-descriptions
   description: "Ground truth, motif centered, modified base\ndescriptions for computing\
     \ ROC and PR curves. Each\nstatistics file is associated with a set of motif\n\
     descriptions. Format descriptions as:\n\"motif:mod_pos:name[::motif2:mod_pos2:name2...]\"\
     .\nmod_pos indicates the alternate-base within the motif\n(1-based index). Example:\
     \ CCWGG:2:\"dcm\n5mC\"::GATC:2:\"dam 6mA\" would assess the performance of\na\
     \ single Tombo statistics file for identification of\nE. coli dam and dcm methylation."
-  synonyms:
-  - --motif-descriptions
   args: !RepeatFlagArg
     name: MOTIF_DESCRIPTIONS
-  optional: true
 - !Flag
-  description: "FASTA file used to re-squiggle. For faster sequence\naccess."
+  optional: true
   synonyms:
   - --genome-fasta
+  description: "FASTA file used to re-squiggle. For faster sequence\naccess."
   args: !SimpleFlagArg
     name: GENOME_FASTA
-  optional: true
 - !Flag
-  description: "PDF filename to store plot(s). Default:\ntombo_results.sample_compare.roc.pdf"
+  optional: true
   synonyms:
   - --pdf-filename
+  description: "PDF filename to store plot(s). Default:\ntombo_results.sample_compare.roc.pdf"
   args: !SimpleFlagArg
     name: PDF_FILENAME
-  optional: true
 - !Flag
-  description: "Number of randomly selected per-read, per-base\nstatistics to extract\
-    \ from each genomic block for\nplotting. Default: Include all stats"
+  optional: true
   synonyms:
   - --statistics-per-block
+  description: "Number of randomly selected per-read, per-base\nstatistics to extract\
+    \ from each genomic block for\nplotting. Default: Include all stats"
   args: !SimpleFlagArg
     name: STATISTICS_PER_BLOCK
-  optional: true
 - !Flag
-  description: "Total per-read statistics to be extracted for\nplotting. Avoids memory\
-    \ overflow for large runs.\nDefault: 5000000"
+  optional: true
   synonyms:
   - --total-statistics-limit
+  description: "Total per-read statistics to be extracted for\nplotting. Avoids memory\
+    \ overflow for large runs.\nDefault: 5000000"
   args: !SimpleFlagArg
     name: TOTAL_STATISTICS_LIMIT
-  optional: true
 - !Flag
-  description: Don't print status information.
+  optional: true
   synonyms:
   - --quiet
   - -q
+  description: Don't print status information.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: Print this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: tombo plot sample_compare_per_read_roc --per-read-statistics-filenames\n\
@@ -126,3 +130,4 @@ help_text: "usage: tombo plot sample_compare_per_read_roc --per-read-statistics-
   \   Print this help message and exit\n"
 generated_using:
 - --help
+docker_image:

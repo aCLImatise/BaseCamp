@@ -26,6 +26,9 @@ task Dxjobutilnewjob {
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if (depends_on) then "--depends-on" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_added_using: "An input to be added using \\\"<input\\nname>[:<class>]=<input value>\\\" (provide \\\"class\\\" if\\nthere is no input spec; it can be any job IO class,\\ne.g. \\\"string\\\", \\\"array:string\\\", or \\\"array\\\"; if \\\"class\\\"\\nis \\\"array\\\" or not specified, the value will be\\nattempted to be parsed as JSON and is otherwise\\ntreated as a string)"
     input_json: "The full input JSON (keys=input field names,\\nvalues=input field values)"

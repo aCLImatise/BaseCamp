@@ -30,6 +30,9 @@ task EstimateErrorpySet {
       ~{if defined(freq) then ("--freq " +  '"' + freq + '"') else ""} \
       ~{if defined(max_div) then ("--maxdiv " +  '"' + max_div + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_fastafastq_files: "A list of FASTA/FASTQ files containing sequences to\\nprocess. (default: None)"
     outdir: "Specify to changes the output directory to the\\nlocation specified. The input file directory is used\\nif this is not specified. (default: None)"

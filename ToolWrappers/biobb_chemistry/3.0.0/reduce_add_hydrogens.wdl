@@ -12,6 +12,9 @@ task ReduceAddHydrogens {
       ~{if defined(input_path) then ("--input_path " +  '"' + input_path + '"') else ""} \
       ~{if defined(output_path) then ("--output_path " +  '"' + output_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Configuration file"
     input_path: "Path to the input file. Accepted formats: pdb."

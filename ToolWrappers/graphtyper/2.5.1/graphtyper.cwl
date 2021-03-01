@@ -3,17 +3,17 @@ id: graphtyper.cwl
 inputs:
 - id: in_log
   doc: "or -lvalue\nSet path to log file."
-  type: File
+  type: File?
   inputBinding:
     prefix: --log
 - id: in_verbose
   doc: Set to output verbose logging.
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbose
 - id: in_v_verbose
   doc: Set to output very verbose logging.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --vverbose
 - id: in_graph_type_r
@@ -90,6 +90,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - graphtyper

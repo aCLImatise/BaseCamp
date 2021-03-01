@@ -8,6 +8,9 @@ task CpinsimPackage {
     cpinsim package_ \
       ~{cp_in_sim}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cp_in_sim: ""
   }

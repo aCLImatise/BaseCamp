@@ -8,6 +8,9 @@ task Ilasm {
     ilasm \
       ~{if (about) then "--about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "About the Mono ILasm compiler"
   }

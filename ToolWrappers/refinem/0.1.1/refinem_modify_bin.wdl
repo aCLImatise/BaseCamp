@@ -22,6 +22,9 @@ task RefinemModifyBin {
       ~{if defined(outlier_file) then ("--outlier_file " +  '"' + outlier_file + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_len: "minimum length of scaffold to allow it to be added to\\na genome"
     add: "ID of scaffold to add to genome (may specify multiple\\ntimes)"

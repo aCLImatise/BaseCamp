@@ -24,6 +24,9 @@ task TrioMaternalContamination {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam_m: "Input BAM file of mother."
     bam_f: "Input BAM file of father."

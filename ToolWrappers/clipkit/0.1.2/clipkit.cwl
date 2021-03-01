@@ -3,40 +3,40 @@ id: clipkit.cwl
 inputs:
 - id: in_output
   doc: "output file name\n(default: input file named with '.clipkit' suffix)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
-- id: in_gappy_trimming_alias
+- id: in_gappy_trimming_medium
   doc: "<gappy,                         trimming mode\nkpic (alias: medium),     \
     \      (default: gappy)\nkpic-gappy (alias: medium-gappy),\nkpi (alias: heavy),\n\
     kpi-gappy (alias: heavy-gappy)>"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --modes
 - id: in_specifies_gaps_thresholddefault
   doc: "specifies gaps threshold\n(default: 0.9)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --gaps
 - id: in_input_file_format
   doc: "specifies input file format\n(default: auto-detect)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --input_file_format
 - id: in_output_file_format
   doc: "specifies output file format\n(default: same as input file format)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_file_format
-- id: in_creates_log_fileinput_file
+- id: in_creates_fileinput_file
   doc: "creates a log file\n(input file named with '.log' suffix)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --log
 - id: in_creates_complementary_alignment
   doc: "creates complementary alignment of trimmed sequences\n(input file named with\
     \ '.log' suffix)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --complementary
 - id: in_gappy_trim_sites
@@ -55,7 +55,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_creates_log_file_summarizes
+- id: in_creates_log_file
   doc: "Creates a log file that summarizes the characteristics of each position.\n\
     The log file has four columns.\n- Column 1 is the position in the alignment (starting\
     \ at 1),\n- Column 2 reports if the site was trimmed or kept (trim and keep, respectively),\n\
@@ -77,9 +77,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "output file name\n(default: input file named with '.clipkit' suffix)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - clipkit

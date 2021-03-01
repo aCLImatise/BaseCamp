@@ -8,6 +8,9 @@ task Stagitext2sxprpl {
     stag_itext2sxpr_pl \
       ~{if defined(help) then ("-HELP " +  '"' + help + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "processed in rearrange(), did you use a\\nnon-recognized parameter name ?  at /usr/local/lib/site_perl/5.26.2/Data/Stag/BaseGenerator.pm line 454."
   }

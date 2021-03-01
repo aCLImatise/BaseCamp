@@ -16,6 +16,9 @@ task RgttoolspyBedRemoveIfOverlap {
       ~{if defined(define_bed_file) then ("-t " +  '"' + define_bed_file + '"') else ""} \
       ~{if (keep) then "--keep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bed_file: "Input BED file"
     output_bed_file: "Output BED file"

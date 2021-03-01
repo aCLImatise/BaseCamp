@@ -40,6 +40,9 @@ task Sc3sc3R {
       ~{if defined(rand_seed) then ("--rand-seed " +  '"' + rand_seed + '"') else ""} \
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name in which a serialized R SingleCellExperiment object where object matrix found"
     ks: "A comma-separated string or single value representing the number of clusters k to be used for SC3 clustering."

@@ -18,6 +18,9 @@ task TaxmapperSearch {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     forward: "Forward reads in fasta or fastq format"
     reverse: "Reads in fasta or fastq format [optional]"

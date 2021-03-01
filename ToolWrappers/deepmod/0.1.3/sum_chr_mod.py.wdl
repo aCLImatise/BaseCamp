@@ -8,6 +8,9 @@ task SumChrModpy {
     sum_chr_mod_py \
       ~{python}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     python: ""
   }

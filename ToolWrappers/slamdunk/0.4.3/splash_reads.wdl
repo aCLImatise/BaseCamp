@@ -26,6 +26,9 @@ task SplashReads {
       ~{if defined(chase) then ("--chase " +  '"' + chase + '"') else ""} \
       ~{if defined(tc_rate) then ("--tc-rate " +  '"' + tc_rate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Output directory for mapped BAM files."
     sample_name: "Name of sample"

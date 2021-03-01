@@ -12,6 +12,9 @@ task RgttoolspyWigTrimEnd {
       ~{if defined(output_wig_file) then ("-o " +  '"' + output_wig_file + '"') else ""} \
       ~{if (chro_size) then "-chrosize" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_wig_file: "Input WIG file"
     output_wig_file: "Output WIG file"

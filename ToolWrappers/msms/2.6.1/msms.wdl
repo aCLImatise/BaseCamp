@@ -44,6 +44,9 @@ task Msms {
       ~{if (all_components) then "-all_components" else ""} \
       ~{if (one_cavity) then "-one_cavity" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     probe_radius: ": probe sphere radius, [1.5]"
     density: ": surface points density, [1.0]"

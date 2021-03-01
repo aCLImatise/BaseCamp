@@ -112,6 +112,9 @@ task Epydoc {
       ~{if (fail_on_warning) then "--fail-on-warning" else ""} \
       ~{if (fail_on_docstring_warning) then "--fail-on-docstring-warning" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "A configuration file, specifying additional OPTIONS\\nand/or NAMES.  This option may be repeated."
     output_directory_path: "The output directory.  If PATH does not exist, then it\\nwill be created."

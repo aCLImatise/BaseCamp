@@ -28,6 +28,9 @@ task Scanpyread10x {
       ~{if defined(extra_obs) then ("--extra-obs " +  '"' + extra_obs + '"') else ""} \
       ~{if defined(extra_var) then ("--extra-var " +  '"' + extra_var + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_one_zero_x_h_five: "Input 10x data in Cell-Ranger hdf5 format."
     input_one_zero_x_mtx: "Path of input folder containing 10x data in\\nmtx format."

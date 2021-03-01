@@ -3,43 +3,44 @@ id: macpack.cwl
 inputs:
 - id: in_appname
   doc: :appname    Application Name
-  type: string
+  type: string?
   inputBinding:
     prefix: -appname
-- id: in_outputoutput_output_directory
-  doc: -output:OUTPUT      Output directory
-  type: Directory
+- id: in_output
+  doc: :OUTPUT      Output directory
+  type: Directory?
   inputBinding:
-    prefix: -o
+    prefix: -output
 - id: in_assembly_to_pack
   doc: Assembly to pack
-  type: string
+  type: string?
   inputBinding:
     prefix: -a
-- id: in_icon_file_icon
-  doc: -icon file          Icon filename
-  type: File
+- id: in_icon
+  doc: Icon filename
+  type: File?
   inputBinding:
-    prefix: -i
+    prefix: -icon
 - id: in_resource_additional_files
   doc: ',resource2          Additional files to bundle'
-  type: long
+  type: long?
   inputBinding:
     prefix: -r
 - id: in__mode_application
   doc: '[winforms|cocoa|x11|console] The mode for the application'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_outputoutput_output_directory
-  doc: -output:OUTPUT      Output directory
-  type: Directory
+- id: out_output
+  doc: :OUTPUT      Output directory
+  type: Directory?
   outputBinding:
-    glob: $(inputs.in_outputoutput_output_directory)
+    glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - macpack

@@ -4,172 +4,172 @@ command:
 - scatter
 positional:
 - !Positional
-  description: "Processed bin-level copy ratios (*.cnr), the output of\nthe 'fix'\
-    \ sub-command."
+  optional: false
   position: 0
   name: filename
-  optional: false
+  description: "Processed bin-level copy ratios (*.cnr), the output of\nthe 'fix'\
+    \ sub-command."
 named:
 - !Flag
-  description: "Segmentation calls (.cns), the output of the 'segment'\ncommand."
+  optional: true
   synonyms:
   - -s
   - --segment
+  description: "Segmentation calls (.cns), the output of the 'segment'\ncommand."
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
-  description: "Chromosome or chromosomal range, e.g. 'chr1' or\n'chr1:2333000-2444000',\
-    \ to display. If a range is\ngiven, all targeted genes in this range will be shown,\n\
-    unless -g/--gene is also given."
+  optional: true
   synonyms:
   - -c
   - --chromosome
+  description: "Chromosome or chromosomal range, e.g. 'chr1' or\n'chr1:2333000-2444000',\
+    \ to display. If a range is\ngiven, all targeted genes in this range will be shown,\n\
+    unless -g/--gene is also given."
   args: !SimpleFlagArg
     name: RANGE
-  optional: true
 - !Flag
-  description: Name of gene or genes (comma-separated) to display.
+  optional: true
   synonyms:
   - -g
   - --gene
+  description: Name of gene or genes (comma-separated) to display.
   args: !SimpleFlagArg
     name: GENE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --range-list
   description: "File listing the chromosomal ranges to display, as\nBED, interval\
     \ list or 'chr:start-end' text. Creates\nfocal plots similar to -c/--chromosome\
     \ for each listed\nregion, combined into a multi-page PDF. The output\nfilename\
     \ must also be specified (-o/--output)."
-  synonyms:
-  - -l
-  - --range-list
   args: !SimpleFlagArg
     name: RANGE_LIST
-  optional: true
 - !Flag
-  description: "Width of margin to show around the selected gene(s)\n(-g/--gene) or\
-    \ small chromosomal region\n(-c/--chromosome). [Default: 1000000]"
+  optional: true
   synonyms:
   - -w
   - --width
+  description: "Width of margin to show around the selected gene(s)\n(-g/--gene) or\
+    \ small chromosomal region\n(-c/--chromosome). [Default: 1000000]"
   args: !SimpleFlagArg
     name: WIDTH
-  optional: true
 - !Flag
-  description: Output PDF file name.
+  optional: true
   synonyms:
   - -o
   - --output
+  description: Output PDF file name.
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
-  description: "Plot antitargets using this symbol when plotting in a\nselected chromosomal\
-    \ region (-g/--gene or\n-c/--chromosome). [Default: same as targets]"
+  optional: true
   synonyms:
   - -a
   - --antitarget-marker
+  description: "Plot antitargets using this symbol when plotting in a\nselected chromosomal\
+    \ region (-g/--gene or\n-c/--chromosome). [Default: same as targets]"
   args: !SimpleFlagArg
     name: CHARACTER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --by-bin
   description: "Plot data x-coordinates by bin indices instead of\ngenomic coordinates.\
     \ All bins will be shown with equal\nwidth, no blank regions will be shown, and\
     \ x-axis\nvalues indicate bin number (within chromosome) instead\nof genomic position."
-  synonyms:
-  - --by-bin
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Plot segment lines in this color. Value can be any\nstring accepted\
-    \ by matplotlib, e.g. 'red' or\n'#CC0000'."
+  optional: true
   synonyms:
   - --segment-color
+  description: "Plot segment lines in this color. Value can be any\nstring accepted\
+    \ by matplotlib, e.g. 'red' or\n'#CC0000'."
   args: !SimpleFlagArg
     name: SEGMENT_COLOR
-  optional: true
 - !Flag
-  description: 'Plot title. [Default: sample ID, from filename or -i]'
+  optional: true
   synonyms:
   - --title
+  description: 'Plot title. [Default: sample ID, from filename or -i]'
   args: !SimpleFlagArg
     name: TITLE
-  optional: true
 - !Flag
-  description: Draw a smoothed local trendline on the scatter plot.
+  optional: true
   synonyms:
   - -t
   - --trend
+  description: Draw a smoothed local trendline on the scatter plot.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: y-axis upper limit.
+  optional: true
   synonyms:
   - --y-max
+  description: y-axis upper limit.
   args: !SimpleFlagArg
     name: Y_MAX
-  optional: true
 - !Flag
-  description: y-axis lower limit.
+  optional: true
   synonyms:
   - --y-min
+  description: y-axis lower limit.
   args: !SimpleFlagArg
     name: Y_MIN
-  optional: true
 - !Flag
-  description: "VCF file name containing variants to plot for SNV\nb-allele frequencies."
+  optional: true
   synonyms:
   - -v
   - --vcf
+  description: "VCF file name containing variants to plot for SNV\nb-allele frequencies."
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
-  description: "Name of the sample in the VCF to use for b-allele\nfrequency extraction\
-    \ and as the default plot title."
+  optional: true
   synonyms:
   - -i
   - --sample-id
+  description: "Name of the sample in the VCF to use for b-allele\nfrequency extraction\
+    \ and as the default plot title."
   args: !SimpleFlagArg
     name: SAMPLE_ID
-  optional: true
 - !Flag
-  description: "Corresponding normal sample ID in the input VCF. This\nsample is used\
-    \ to select only germline SNVs to plot."
+  optional: true
   synonyms:
   - -n
   - --normal-id
+  description: "Corresponding normal sample ID in the input VCF. This\nsample is used\
+    \ to select only germline SNVs to plot."
   args: !SimpleFlagArg
     name: NORMAL_ID
-  optional: true
 - !Flag
-  description: "Minimum read depth for a SNV to be used in the\nb-allele frequency\
-    \ calculation. [Default: 20]"
+  optional: true
   synonyms:
   - -m
   - --min-variant-depth
+  description: "Minimum read depth for a SNV to be used in the\nb-allele frequency\
+    \ calculation. [Default: 20]"
   args: !SimpleFlagArg
     name: MIN_VARIANT_DEPTH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -z
   description: "[ALT_FREQ], --zygosity-freq [ALT_FREQ]\nIgnore VCF's genotypes (GT\
     \ field) and instead infer\nzygosity from allele frequencies. [Default if used\n\
     without a number: 0.25]\n"
-  synonyms:
-  - -z
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: cnvkit.py scatter [-h] [-s FILENAME] [-c RANGE] [-g GENE]\n   \
@@ -225,3 +225,4 @@ help_text: "usage: cnvkit.py scatter [-h] [-s FILENAME] [-c RANGE] [-g GENE]\n  
   \ [Default if used\n                        without a number: 0.25]\n"
 generated_using:
 - --help
+docker_image:

@@ -3,12 +3,12 @@ id: _fcontrast.cwl
 inputs:
 - id: in_vary_within
   doc: boolean    [N] Within-population variation in data
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -varywithin
 - id: in_print_data
   doc: boolean    [N] Print data at start of run
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -printdata
 - id: in_file
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _fcontrast

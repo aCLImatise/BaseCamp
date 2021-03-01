@@ -24,6 +24,9 @@ task Bash5toolspy {
       ~{if defined(min_read_score) then ("--minReadScore " +  '"' + min_read_score + '"') else ""} \
       ~{if defined(min_passes) then ("--minPasses " +  '"' + min_passes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Set the verbosity level (default: None)"
     profile: "Print runtime profile at exit (default: False)"

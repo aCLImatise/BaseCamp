@@ -30,6 +30,9 @@ task SimkaMinpy {
       ~{if (min_read_size) then "-min-read-size" else ""} \
       ~{if (min_shannon_index) then "-min-shannon-index" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "(1 arg) :    input file of datasets. One sample per line: id1: filename1..."
     out: "(1 arg) :    output directory for result files (distance matrices) [Default: ./simka_results]"

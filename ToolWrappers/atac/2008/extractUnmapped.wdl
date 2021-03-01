@@ -4,6 +4,9 @@ task ExtractUnmapped {
   command <<<
     extractUnmapped
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

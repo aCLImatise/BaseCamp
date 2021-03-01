@@ -14,6 +14,9 @@ task Amb2chmParpy {
       ~{if defined(input_file_parameter) then ("-f " +  '"' + input_file_parameter + '"') else ""} \
       ~{if defined(nat) then ("--nat " +  '"' + nat + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: "[--nat use_new_attype]"
     the_input_file: "The input file"

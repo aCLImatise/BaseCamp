@@ -14,6 +14,9 @@ task EslmixdchletGen {
       ~{if defined(number_countvectors_generate) then ("-N " +  '"' + number_countvectors_generate + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     set_random_seed: ": set random number seed  [0]"
     number_counts_vector: ": number of counts per vector  [100]"

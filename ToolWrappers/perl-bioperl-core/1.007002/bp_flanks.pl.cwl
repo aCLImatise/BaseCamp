@@ -3,10 +3,10 @@ id: bp_flanks.pl.cwl
 inputs:
 - id: in_position_uses_table
   doc: Position uses simple nucleotide sequence feature table
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
-- id: in_define_region_asnp
+- id: in_define_region_repeat
   doc: "to define the region of interest, typically a\nSNP or microsatellite repeat\
     \ around which the flanks are\ndefined.\nThere can be more than one position option\
     \ or you can\ngive a comma separated list to one position option.\nThe format\
@@ -18,18 +18,18 @@ inputs:
     \ output sequence will be truncated and it\nwill print a warning.\nThe optional\
     \ hyphen [-] at the end of the position\nindicates that that you want the retrieved\
     \ sequence to be\nin the opposite strand."
-  type: long
+  type: long?
   inputBinding:
     prefix: --position
 - id: in_defaults_length_nucleotides
   doc: Defaults to 100. This is the length of the nucleotides
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_flank_len
   doc: "retrieved on both sides of the given position.\nIf the source file does not\
     \ contain"
-  type: File
+  type: File?
   inputBinding:
     prefix: --flanklen
 - id: in_var_4
@@ -140,6 +140,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bp_flanks.pl

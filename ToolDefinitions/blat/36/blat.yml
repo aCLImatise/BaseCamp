@@ -3,227 +3,227 @@ command:
 - blat
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: database
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: query
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -ooc
   description: "tells the program to load over-occurring 11-mers from\nan external\
     \ file.  This will increase the speed\nby a factor of 40 in many cases, but is\
     \ not required."
-  synonyms:
-  - -ooc
   args: !SimpleFlagArg
     name: 11.ooc
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
   description: "Database type.  Type is one of:\ndna - DNA sequence\nprot - protein\
     \ sequence\ndnax - DNA sequence translated in six frames to protein\nThe default\
     \ is dna."
-  synonyms:
-  - -t
   args: !SimpleFlagArg
     name: type
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -q
   description: "Query type.  Type is one of:\ndna - DNA sequence\nrna - RNA sequence\n\
     prot - protein sequence\ndnax - DNA sequence translated in six frames to protein\n\
     rnax - DNA sequence translated in three frames to protein\nThe default is dna."
-  synonyms:
-  - -q
   args: !SimpleFlagArg
     name: type
-  optional: true
 - !Flag
-  description: Synonymous with -t=prot -q=prot.
+  optional: true
   synonyms:
   - -prot
+  description: Synonymous with -t=prot -q=prot.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Sets the size of match that triggers an alignment.\nUsually between\
-    \ 8 and 12.\nDefault is 11 for DNA and 5 for protein."
+  optional: true
   synonyms:
   - -tileSize
+  description: "Sets the size of match that triggers an alignment.\nUsually between\
+    \ 8 and 12.\nDefault is 11 for DNA and 5 for protein."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Spacing between tiles. Default is tileSize.
+  optional: true
   synonyms:
   - -stepSize
+  description: Spacing between tiles. Default is tileSize.
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "If set to 1, this allows one mismatch in tile and still\ntriggers\
-    \ an alignment.  Default is 0."
+  optional: true
   synonyms:
   - -oneOff
+  description: "If set to 1, this allows one mismatch in tile and still\ntriggers\
+    \ an alignment.  Default is 0."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Sets the number of tile matches.  Usually set from 2 to 4.\nDefault\
-    \ is 2 for nucleotide, 1 for protein."
+  optional: true
   synonyms:
   - -minMatch
+  description: "Sets the number of tile matches.  Usually set from 2 to 4.\nDefault\
+    \ is 2 for nucleotide, 1 for protein."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Sets minimum score.  This is the matches minus the\nmismatches minus\
-    \ some sort of gap penalty.  Default is 30."
+  optional: true
   synonyms:
   - -minScore
+  description: "Sets minimum score.  This is the matches minus the\nmismatches minus\
+    \ some sort of gap penalty.  Default is 30."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Sets minimum sequence identity (in percent).  Default is\n90 for nucleotide\
-    \ searches, 25 for protein or translated\nprotein searches."
+  optional: true
   synonyms:
   - -minIdentity
+  description: "Sets minimum sequence identity (in percent).  Default is\n90 for nucleotide\
+    \ searches, 25 for protein or translated\nprotein searches."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Sets the size of maximum gap between tiles in a clump.  Usually\n\
-    set from 0 to 3.  Default is 2. Only relevent for minMatch > 1."
+  optional: true
   synonyms:
   - -maxGap
+  description: "Sets the size of maximum gap between tiles in a clump.  Usually\n\
+    set from 0 to 3.  Default is 2. Only relevent for minMatch > 1."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Suppresses .psl header (so it's just a tab-separated file).
+  optional: true
   synonyms:
   - -noHead
+  description: Suppresses .psl header (so it's just a tab-separated file).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Make overused tile file. Target needs to be complete genome.
+  optional: true
   synonyms:
   - -makeOoc
+  description: Make overused tile file. Target needs to be complete genome.
   args: !SimpleFlagArg
     name: N.ooc
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -repMatch
   description: "Sets the number of repetitions of a tile allowed before\nit is marked\
     \ as overused.  Typically this is 256 for tileSize\n12, 1024 for tile size 11,\
     \ 4096 for tile size 10.\nDefault is 1024.  Typically comes into play only with\
     \ makeOoc.\nAlso affected by stepSize: when stepSize is halved, repMatch is\n\
     doubled to compensate."
-  synonyms:
-  - -repMatch
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -mask
   description: "Mask out repeats.  Alignments won't be started in masked region\n\
     but may extend through it in nucleotide searches.  Masked areas\nare ignored entirely\
     \ in protein or translated searches. Types are:\nlower - mask out lower-cased\
     \ sequence\nupper - mask out upper-cased sequence\nout   - mask according to database.out\
     \ RepeatMasker .out file\nfile.out - mask database according to RepeatMasker file.out"
-  synonyms:
-  - -mask
   args: !SimpleFlagArg
     name: type
-  optional: true
 - !Flag
-  description: "Mask out repeats in query sequence.  Similar to -mask above, but\n\
-    for query rather than target sequence."
+  optional: true
   synonyms:
   - -qMask
+  description: "Mask out repeats in query sequence.  Similar to -mask above, but\n\
+    for query rather than target sequence."
   args: !SimpleFlagArg
     name: type
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -repeats
   description: "Type is same as mask types above.  Repeat bases will not be\nmasked\
     \ in any way, but matches in repeat areas will be reported\nseparately from matches\
     \ in other areas in the psl output."
-  synonyms:
-  - -repeats
   args: !SimpleFlagArg
     name: type
-  optional: true
 - !Flag
-  description: "Minimum percent divergence of repeats to allow\nthem to be unmasked.\
-    \  Default is 15.  Only relevant for\nmasking using RepeatMasker .out files."
+  optional: true
   synonyms:
   - -minRepDivergence
+  description: "Minimum percent divergence of repeats to allow\nthem to be unmasked.\
+    \  Default is 15.  Only relevant for\nmasking using RepeatMasker .out files."
   args: !SimpleFlagArg
     name: NN
-  optional: true
 - !Flag
-  description: Output dot every N sequences to show program's progress.
+  optional: true
   synonyms:
   - -dots
+  description: Output dot every N sequences to show program's progress.
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Trim leading poly-T.
+  optional: true
   synonyms:
   - -trimT
+  description: Trim leading poly-T.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Don't trim trailing poly-A.
+  optional: true
   synonyms:
   - -noTrimA
+  description: Don't trim trailing poly-A.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Remove poly-A tail from qSize as well as alignments in\npsl output."
+  optional: true
   synonyms:
   - -trimHardA
+  description: "Remove poly-A tail from qSize as well as alignments in\npsl output."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Run for fast DNA/DNA remapping - not allowing introns,\nrequiring\
-    \ high %ID. Query sizes must not exceed 5000."
+  optional: true
   synonyms:
   - -fastMap
+  description: "Run for fast DNA/DNA remapping - not allowing introns,\nrequiring\
+    \ high %ID. Query sizes must not exceed 5000."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -out
   description: "Controls output file format.  Type is one of:\npsl - Default.  Tab-separated\
     \ format, no sequence\npslx - Tab-separated format with sequence\naxt - blastz-associated\
     \ axt format\nmaf - multiz-associated maf format\nsim4 - similar to sim4 format\n\
     wublast - similar to wublast format\nblast - similar to NCBI blast format\nblast8-\
     \ NCBI blast tabular format\nblast9 - NCBI blast tabular format with comments"
-  synonyms:
-  - -out
   args: !SimpleFlagArg
     name: type
-  optional: true
 - !Flag
-  description: "For high-quality mRNAs, look harder for small initial and\nterminal\
-    \ exons.  Not recommended for ESTs."
+  optional: true
   synonyms:
   - -fine
+  description: "For high-quality mRNAs, look harder for small initial and\nterminal\
+    \ exons.  Not recommended for ESTs."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Sets maximum intron size. Default is 750000.
+  optional: true
   synonyms:
   - -maxIntron
+  description: Sets maximum intron size. Default is 750000.
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Allows extension of alignment through large blocks of Ns.
+  optional: true
   synonyms:
   - -extendThroughN
+  description: Allows extension of alignment through large blocks of Ns.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -301,3 +301,4 @@ help_text: "blat - Standalone BLAT v. 36 fast sequence search command line tool\
   \ maximum intron size. Default is 750000.\n   -extendThroughN  Allows extension\
   \ of alignment through large blocks of Ns.\n"
 generated_using: []
+docker_image:

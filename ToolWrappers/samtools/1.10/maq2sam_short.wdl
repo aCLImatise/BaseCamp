@@ -12,6 +12,9 @@ task Maq2samshort {
       ~{in_dot_map} \
       ~{read_group}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     maq_two_sam: ""
     in_dot_map: ""

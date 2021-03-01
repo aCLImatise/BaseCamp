@@ -3,184 +3,184 @@ command:
 - CollapseSeq.py
 positional:
 - !Positional
-  description: "unique sequences. Contains one representative from each set of\nduplicate\
-    \ sequences. The retained representative is determined by\nuser defined criteria."
+  optional: false
   position: 0
   name: collapse-unique
-  optional: false
+  description: "unique sequences. Contains one representative from each set of\nduplicate\
+    \ sequences. The retained representative is determined by\nuser defined criteria."
 - !Positional
-  description: "raw reads which are duplicates of the sequences retained in the\n\
-    collapse-unique file."
+  optional: false
   position: 1
   name: collapse-duplicate
-  optional: false
+  description: "raw reads which are duplicates of the sequences retained in the\n\
+    collapse-unique file."
 - !Positional
-  description: "raw reads which were excluded from consideration due to having too\n\
-    many N characters in the sequence."
+  optional: false
   position: 2
   name: collapse-undetermined
-  optional: false
+  description: "raw reads which were excluded from consideration due to having too\n\
+    many N characters in the sequence."
 - !Positional
+  optional: false
+  position: 0
+  name: DUPCOUNT
   description: "total number of sequences within the set of duplicates for each\n\
     retained unique sequence. Meaning, the copy number of each unique\nsequence within\
     \ the data file."
-  position: 0
-  name: DUPCOUNT
-  optional: false
 named:
 - !Flag
-  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
-    \ None)"
+  optional: true
   synonyms:
   - -s
+  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
+    \ None)"
   args: !RepeatFlagArg
     name: SEQ_FILES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
   description: "Explicit output file name(s). Note, this argument\ncannot be used\
     \ with the --failed, --outdir, or\n--outname arguments. If unspecified, then the\
     \ output\nfilename will be based on the input filename(s).\n(default: None)"
-  synonyms:
-  - -o
   args: !RepeatFlagArg
     name: OUT_FILES
-  optional: true
 - !Flag
-  description: "Specify to changes the output directory to the\nlocation specified.\
-    \ The input file directory is used\nif this is not specified. (default: None)"
+  optional: true
   synonyms:
   - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
   args: !SimpleFlagArg
     name: OUT_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outname
   description: "Changes the prefix of the successfully processed\noutput file to the\
     \ string specified. May not be\nspecified with multiple input files. (default:\
     \ None)"
-  synonyms:
-  - --outname
   args: !SimpleFlagArg
     name: OUT_NAME
-  optional: true
 - !Flag
-  description: "Specify to write verbose logging to a file. May not be\nspecified\
-    \ with multiple input files. (default: None)"
+  optional: true
   synonyms:
   - --log
+  description: "Specify to write verbose logging to a file. May not be\nspecified\
+    \ with multiple input files. (default: None)"
   args: !SimpleFlagArg
     name: LOG_FILE
-  optional: true
 - !Flag
-  description: "If specified create files containing records that fail\nprocessing.\
-    \ (default: False)"
+  optional: true
   synonyms:
   - --failed
+  description: "If specified create files containing records that fail\nprocessing.\
+    \ (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
+  optional: true
   synonyms:
   - --fasta
+  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --delim
   description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
     annotation blocks, field names and values, and values\nwithin a field, respectively.\
     \ (default: ('|', '=',\n','))"
-  synonyms:
-  - --delim
   args: !SimpleFlagArg
     name: DELIMITER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -n
   description: "Maximum number of missing nucleotides to consider for\ncollapsing\
     \ sequences. A sequence will be considered\nundetermined if it contains too many\
     \ missing\nnucleotides. (default: 0)"
-  synonyms:
-  - -n
   args: !SimpleFlagArg
     name: MAX_MISSING
-  optional: true
 - !Flag
-  description: "Specifies a set of annotation fields that must match\nfor sequences\
-    \ to be considered duplicates. (default:\nNone)"
+  optional: true
   synonyms:
   - --uf
+  description: "Specifies a set of annotation fields that must match\nfor sequences\
+    \ to be considered duplicates. (default:\nNone)"
   args: !RepeatFlagArg
     name: UNIQ_FIELDS
-  optional: true
 - !Flag
-  description: "Specifies a set of annotation fields to copy into the\nunique sequence\
-    \ output. (default: None)"
+  optional: true
   synonyms:
   - --cf
+  description: "Specifies a set of annotation fields to copy into the\nunique sequence\
+    \ output. (default: None)"
   args: !RepeatFlagArg
     name: COPY_FIELDS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --act
   description: "[{min,max,sum,set} ...]\nList of actions to take for each copy field\
     \ which\ndefines how each annotation will be combined into a\nsingle value. The\
     \ actions \"min\", \"max\", \"sum\" perform\nthe corresponding mathematical operation\
     \ on numeric\nannotations. The action \"set\" collapses annotations\ninto a comma\
     \ delimited list of unique values.\n(default: None)"
-  synonyms:
-  - --act
   args: !ChoiceFlagArg
     choices: !!set
-      max:
-      min:
-      set:
       sum:
-  optional: true
+      min:
+      max:
+      set:
 - !Flag
-  description: "If specified, exclude consecutive missing characters\nat either end\
-    \ of the sequence. (default: False)"
+  optional: true
   synonyms:
   - --inner
+  description: "If specified, exclude consecutive missing characters\nat either end\
+    \ of the sequence. (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --keepmiss
   description: "If specified, sequences with more missing characters\nthan the threshold\
     \ set by the -n parameter will be\nwritten to the unique sequence output file\
     \ with a\nDUPCOUNT=1 annotation. If not specified, such\nsequences will be written\
     \ to a separate file.\n(default: False)"
-  synonyms:
-  - --keepmiss
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify the field whose maximum value determines the\nretained sequence;\
-    \ mutually exclusive with --minf.\n(default: None)"
+  optional: true
   synonyms:
   - --maxf
+  description: "Specify the field whose maximum value determines the\nretained sequence;\
+    \ mutually exclusive with --minf.\n(default: None)"
   args: !SimpleFlagArg
     name: MAX_FIELD
-  optional: true
 - !Flag
-  description: "Specify the field whose minimum value determines the\nretained sequence;\
-    \ mutually exclusive with --minf.\n(default: None)"
+  optional: true
   synonyms:
   - --minf
+  description: "Specify the field whose minimum value determines the\nretained sequence;\
+    \ mutually exclusive with --minf.\n(default: None)"
   args: !SimpleFlagArg
     name: MIN_FIELD
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: CollapseSeq.py [--version] [-h] -s SEQ_FILES [SEQ_FILES ...]\n\
   \                      [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n     \
   \                 [--outname OUT_NAME] [--log LOG_FILE] [--failed]\n           \
@@ -252,3 +252,4 @@ help_text: "usage: CollapseSeq.py [--version] [-h] -s SEQ_FILES [SEQ_FILES ...]\
   \ by the --cf parameter.\n"
 generated_using:
 - --help
+docker_image:

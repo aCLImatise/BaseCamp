@@ -4,179 +4,227 @@ command:
 positional: []
 named:
 - !Flag
-  description: "(c)urated genome directory, use all genomes in dir and ignore MUMi?\n\
-    -d SEQUENCES [SEQUENCES ...], --sequences SEQUENCES [SEQUENCES ...]\nA list of\
-    \ files containing genomes/contigs/scaffolds\n-r REFERENCE, --reference REFERENCE\n\
-    (r)eference genome (set to ! to pick random one from sequence dir)\n-g GENBANK\
-    \ [GENBANK ...], --genbank GENBANK [GENBANK ...]\nA list of Genbank file(s) (gbk)\n\
-    -o OUTPUT_DIR, --output-dir OUTPUT_DIR\n-q QUERY, --query QUERY\nSpecify (assembled)\
-    \ query genome to use, in addition to genomes found in genome dir"
+  optional: true
   synonyms:
   - -c
   - --curated
+  description: (c)urated genome directory, use all genomes in dir and ignore MUMi?
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Max MUMi distance value for MUMi distribution
+  optional: true
+  synonyms:
+  - -d
+  - --sequences
+  description: A list of files containing genomes/contigs/scaffolds
+  args: !RepeatFlagArg
+    name: SEQUENCES
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: (r)eference genome (set to ! to pick random one from sequence dir)
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genbank
+  description: A list of Genbank file(s) (gbk)
+  args: !RepeatFlagArg
+    name: GENBANK
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-dir
+  - -q
+  - --query
+  description: Specify (assembled) query genome to use, in addition to genomes found
+    in genome dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
   synonyms:
   - -U
   - --max-mumi-distr-dist
   - --MUMi
+  description: Max MUMi distance value for MUMi distribution
   args: !SimpleFlagArg
     name: MAX_MUMI_DISTR_DIST
-  optional: true
 - !Flag
-  description: 'Max MUMi distance (default: autocutoff based on distribution of MUMi
-    values)'
+  optional: true
   synonyms:
   - -mmd
   - --max-mumi-distance
+  description: 'Max MUMi distance (default: autocutoff based on distribution of MUMi
+    values)'
   args: !SimpleFlagArg
     name: MAX_MUMI_DISTANCE
-  optional: true
 - !Flag
-  description: Fast MUMi calculation
+  optional: true
   synonyms:
   - -F
   - --fastmum
+  description: Fast MUMi calculation
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Calculate MUMi and exit? overrides all other choices!
+  optional: true
   synonyms:
   - -M
   - --mumi_only
   - --onlymumi
+  description: Calculate MUMi and exit? overrides all other choices!
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Use ani for genome recruitment
+  optional: true
   synonyms:
   - --use-ani
+  description: Use ani for genome recruitment
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Min ANI value to allow for genome recruitment.
+  optional: true
   synonyms:
   - --min-ani
+  description: Min ANI value to allow for genome recruitment.
   args: !SimpleFlagArg
     name: MIN_ANI
-  optional: true
 - !Flag
-  description: Use mash for genome recruitment
+  optional: true
   synonyms:
   - --use-mash
+  description: Use mash for genome recruitment
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Max mash distance.
+  optional: true
   synonyms:
   - --max-mash-dist
+  description: Max mash distance.
   args: !SimpleFlagArg
     name: MAX_MASH_DIST
-  optional: true
 - !Flag
-  description: Min (a)NCHOR length (default = 1.1*(Log(S)))
+  optional: true
   synonyms:
   - -a
   - --min-anchor-length
   - --anchorlength
+  description: Min (a)NCHOR length (default = 1.1*(Log(S)))
   args: !SimpleFlagArg
     name: MIN_ANCHOR_LENGTH
-  optional: true
 - !Flag
-  description: Mum length
+  optional: true
   synonyms:
   - -m
   - --mum-length
   - --mumlength
+  description: Mum length
   args: !SimpleFlagArg
     name: MUM_LENGTH
-  optional: true
 - !Flag
-  description: Maximal cluster D value
+  optional: true
   synonyms:
   - -C
   - --max-cluster-d
   - --clusterD
+  description: Maximal cluster D value
   args: !SimpleFlagArg
     name: MAX_CLUSTER_D
-  optional: true
 - !Flag
-  description: Minimum cluster size
+  optional: true
   synonyms:
   - -z
   - --min-cluster-size
   - --minclustersize
+  description: Minimum cluster size
   args: !SimpleFlagArg
     name: MIN_CLUSTER_SIZE
-  optional: true
 - !Flag
-  description: Maximal diagonal difference. Either percentage (e.g. 0.2) or bp (e.g.
-    100bp)
+  optional: true
   synonyms:
   - -D
   - --max-diagonal-difference
   - --DiagonalDiff
+  description: Maximal diagonal difference. Either percentage (e.g. 0.2) or bp (e.g.
+    100bp)
   args: !SimpleFlagArg
     name: MAX_DIAG_DIFF
-  optional: true
 - !Flag
-  description: Alignment program to use
+  optional: true
   synonyms:
   - -n
   - --alignment-program
   - --alignmentprog
+  description: Alignment program to use
   args: !ChoiceFlagArg
     choices: !!set
-      fsa:
-      mafft:
       muscle:
+      fsa:
       prank:
-  optional: true
+      mafft:
 - !Flag
-  description: Ouput unaligned regions
+  optional: true
   synonyms:
   - -u
   - --unaligned
+  description: Ouput unaligned regions
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use fasttree instead of RaxML\n-p THREADS, --threads THREADS\nNumber\
-    \ of threads to use\n-P MAX_PARTITION_SIZE, --max-partition-size MAX_PARTITION_SIZE\n\
-    Max partition size (limits memory usage)\n-v, --verbose         Verbose output\n\
-    -x, --xtrafast\n-i INIFILE, --inifile INIFILE, --ini-file INIFILE\n-e, --extend\n\
-    -V, --version         show program's version number and exit\n"
+  optional: true
   synonyms:
   - --use-fasttree
+  description: Use fasttree instead of RaxML
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
-  - -r
+  - -p
+  - --threads
+  description: Number of threads to use
   args: !SimpleFlagArg
-    name: REFERENCE
-  optional: true
+    name: THREADS
 - !Flag
-  description: ''
-  synonyms:
-  - -d
-  args: !RepeatFlagArg
-    name: SEQUENCES
   optional: true
+  synonyms:
+  - -P
+  - --max-partition-size
+  description: Max partition size (limits memory usage)
+  args: !SimpleFlagArg
+    name: MAX_PARTITION_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Verbose output
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --xtrafast
+  - -i
+  - --inifile
+  - --ini-file
+  - -e
+  - --extend
+  - -V
+  - --version
+  description: show program's version number and exit
+  args: !SimpleFlagArg
+    name: INIFILE
 help_text: "usage: parsnp [-h] [-c] -d SEQUENCES [SEQUENCES ...] [-r REFERENCE]\n\
   \              [-g GENBANK [GENBANK ...]] [-o OUTPUT_DIR] [-q QUERY]\n         \
   \     [-U MAX_MUMI_DISTR_DIST | -mmd MAX_MUMI_DISTANCE] [-F] [-M]\n            \
@@ -229,3 +277,4 @@ help_text: "usage: parsnp [-h] [-c] -d SEQUENCES [SEQUENCES ...] [-r REFERENCE]\
   \  -e, --extend\n  -V, --version         show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

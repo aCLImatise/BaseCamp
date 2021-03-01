@@ -3,142 +3,142 @@ command:
 - bam2wig.sh
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: Files
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "Produce a BED GRAPH instead of a WIGGLE file.\nDefault: false"
+  optional: true
   synonyms:
   - -bg
   - --bedgraph
+  description: "Produce a BED GRAPH instead of a WIGGLE file.\nDefault: false"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "What kind of data should we display ?\nDefault: COVERAGE\nPossible\
-    \ Values: [COVERAGE, CLIPPING, INSERTION, DELETION, READ_GROUPS, CASE_CTRL]"
+  optional: true
   synonyms:
   - --display
+  description: "What kind of data should we display ?\nDefault: COVERAGE\nPossible\
+    \ Values: [COVERAGE, CLIPPING, INSERTION, DELETION, READ_GROUPS, CASE_CTRL]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filter
   description: "A filter expression. Reads matching the expression will be filtered-out.\n\
     Empty String means 'filter out nothing/Accept all'. See https://github.com/lindenb/jvarkit/blob/master/src/main/resources/javacc/com/github/lindenb/jvarkit/util/bio/samfilter/SamFilterParser.jj\n\
     for a complete syntax.\nDefault: mapqlt(1) || MapQUnavailable() || Duplicate()\
     \ || FailsVendorQuality() || NotPrimaryAlignment() || SupplementaryAlignment()"
-  synonyms:
-  - --filter
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "`Printf` Format for the values. see\nhttps://docs.oracle.com/javase/tutorial/java/data/numberformat.html\
-    \ .\nUse \"%.01f\" to print an integer. \"%e\" for scientific notation.\nDefault:\
-    \ %.3f"
+  optional: true
   synonyms:
   - -f
   - --format
+  description: "`Printf` Format for the values. see\nhttps://docs.oracle.com/javase/tutorial/java/data/numberformat.html\
+    \ .\nUse \"%.01f\" to print an integer. \"%e\" for scientific notation.\nDefault:\
+    \ %.3f"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --header
   description: "print a UCSC custom track header: something lile track type=track_type\n\
     name=\"__REPLACE_WIG_NAME__\" description=\"__REPLACE_WIG_DESC__\". Use\n`sed`\
     \ to replace the tokens. e.g: `sed\n'/^track/s/__REPLACE_WIG_NAME__/My data/'`\n\
     Default: false"
-  synonyms:
-  - -t
-  - --header
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: What kind of help. One of [usage,markdown,xml].
+  optional: true
   synonyms:
   - --helpFormat
+  description: What kind of help. One of [usage,markdown,xml].
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --region
+  - --interval
   description: "Limit analysis to this interval. An interval as the following syntax\
     \ :\n\"chrom:start-end\" or \"chrom:middle+extend\"  or \"chrom:start-end+extend\"\
     \nor \"chrom:start-end+extend-percent%\".A program might use a Reference\nsequence\
     \ to fix the chromosome name (e.g: 1->chr1)"
-  synonyms:
-  - --region
-  - --interval
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "When using display READ_GROUPS, What is the minimal read depth that\n\
-    should be considered ?\nDefault: 0"
+  optional: true
   synonyms:
   - --mindepth
   - --mindp
+  description: "When using display READ_GROUPS, What is the minimal read depth that\n\
+    should be considered ?\nDefault: 0"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Output file. Optional . Default: stdout'
+  optional: true
   synonyms:
   - -o
   - --output
+  description: 'Output file. Optional . Default: stdout'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --partition
   description: "When using display READ_GROUPS, how should we partition the ReadGroup\
     \ ?\nData partitioning using the SAM Read Group (see\nhttps://gatkforums.broadinstitute.org/gatk/discussion/6472/\
     \ ) . It can\nbe any combination of sample, library....\nDefault: sample\nPossible\
     \ Values: [readgroup, sample, library, platform, center, sample_by_platform, sample_by_center,\
     \ sample_by_platform_by_center, any]"
-  synonyms:
-  - --partition
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pedigree
+  - -ped
   description: "Pedigree file for CASE_CTRL. A pedigree is a text file delimited with\n\
     tabs. No header. Columns are (1) Family (2) Individual-ID (3) Father Id\nor '0'\
     \ (4) Mother Id or '0' (5) Sex : 1 male/2 female / 0 unknown (6)\nStatus : 0 unaffected,\
     \ 1 affected,-9 unknown"
-  synonyms:
-  - --pedigree
-  - -ped
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "How to group data in the sliding window ?\nDefault: AVERAGE\nPossible\
-    \ Values: [MIN, MAX, MEDIAN, AVERAGE, RANDOM, SUM]"
+  optional: true
   synonyms:
   - --percentile
+  description: "How to group data in the sliding window ?\nDefault: AVERAGE\nPossible\
+    \ Values: [MIN, MAX, MEDIAN, AVERAGE, RANDOM, SUM]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "window shift\nDefault: 25"
+  optional: true
   synonyms:
   - -s
   - --windowShift
+  description: "window shift\nDefault: 25"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "window size\nDefault: 100\n"
+  optional: true
   synonyms:
   - -w
   - --windowSize
+  description: "window size\nDefault: 100\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: print help and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: print help and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: print version and exit
+  optional: true
   synonyms:
   - --version
+  description: print version and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: bam2wig [options] Files\n  Options:\n    -bg, --bedgraph\n    \
   \  Produce a BED GRAPH instead of a WIGGLE file.\n      Default: false\n    --display\n\
   \      What kind of data should we display ?\n      Default: COVERAGE\n      Possible\
@@ -176,3 +176,4 @@ help_text: "Usage: bam2wig [options] Files\n  Options:\n    -bg, --bedgraph\n   
   \ --windowSize\n      window size\n      Default: 100\n\n"
 generated_using:
 - --help
+docker_image:

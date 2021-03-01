@@ -10,6 +10,9 @@ task Specialk {
       ~{reads_file} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     reads_file: ""

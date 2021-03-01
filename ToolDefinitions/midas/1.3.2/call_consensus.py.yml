@@ -3,176 +3,176 @@ command:
 - call_consensus.py
 positional:
 - !Positional
-  description: "path to output from `merge_midas.py snps` for one species\ndirectory\
-    \ should be named according to a species_id and contains files 'snps_*.txt')"
+  optional: false
   position: 0
   name: PATH
-  optional: false
+  description: "path to output from `merge_midas.py snps` for one species\ndirectory\
+    \ should be named according to a species_id and contains files 'snps_*.txt')"
 named:
 - !Flag
-  description: path to output file
+  optional: true
   synonyms:
   - --out
+  description: path to output file
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: minimum average read depth per sample (0.0)
+  optional: true
   synonyms:
   - --sample_depth
+  description: minimum average read depth per sample (0.0)
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: fraction of reference sites covered by at least 1 read (0.0)
+  optional: true
   synonyms:
   - --sample_cov
+  description: fraction of reference sites covered by at least 1 read (0.0)
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "maximum number of samples to process.\nuseful for quick tests (use\
-    \ all)"
+  optional: true
   synonyms:
   - --max_samples
+  description: "maximum number of samples to process.\nuseful for quick tests (use\
+    \ all)"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "comma-separated list of samples to include\nsamples will still be\
-    \ subject to other filters"
+  optional: true
   synonyms:
   - --keep_samples
+  description: "comma-separated list of samples to include\nsamples will still be\
+    \ subject to other filters"
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: "comma-separated list of samples to exclude.\nsamples will still be\
-    \ subject to other filters"
+  optional: true
   synonyms:
   - --exclude_samples
+  description: "comma-separated list of samples to exclude.\nsamples will still be\
+    \ subject to other filters"
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: path to list of sites to include; other filters still apply
+  optional: true
   synonyms:
   - --site_list
+  description: path to list of sites to include; other filters still apply
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: minimum number of mapped reads per site (2)
+  optional: true
   synonyms:
   - --site_depth
+  description: minimum number of mapped reads per site (2)
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --site_prev
   description: "site has at least <site_depth> coverage in at least <site_prev> proportion\
     \ of samples (0.0)\na value of 1.0 will select sites that have sufficent coverage\
     \ in all samples.\na value of 0.0 will select all sites, including those with\
     \ low coverage in many samples\nNAs recorded for included sites with less than\
     \ <site_depth> in a sample"
-  synonyms:
-  - --site_prev
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --site_maf
   description: "minimum average-minor-allele-frequency of site across samples (0.0)\n\
     setting this above zero (e.g. 0.01, 0.02, 0.05) will only retain variable sites\n\
     by default invariant sites are also retained."
-  synonyms:
-  - --site_maf
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "maximum ratio of site-depth to mean-genome-depth (None)\na value of\
-    \ 10 will filter genomic sites with 10x greater coverage than the genomic background"
+  optional: true
   synonyms:
   - --site_ratio
+  description: "maximum ratio of site-depth to mean-genome-depth (None)\na value of\
+    \ 10 will filter genomic sites with 10x greater coverage than the genomic background"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: minimum fraction of reads supporting consensus allele (0.5)
+  optional: true
   synonyms:
   - --allele_support
+  description: minimum fraction of reads supporting consensus allele (0.5)
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "use genomic sites that intersect: 'CDS': coding genes, 'RNA': rRNA\
-    \ and tRNA genes, 'IGS': intergenic regions"
+  optional: true
   synonyms:
   - --locus_type
+  description: "use genomic sites that intersect: 'CDS': coding genes, 'RNA': rRNA\
+    \ and tRNA genes, 'IGS': intergenic regions"
   args: !ChoiceFlagArg
     choices: !!set
       CDS:
       RNA:
       IGR:
-  optional: true
 - !Flag
-  description: "if locus_type == 'CDS', use genomic sites with specified degeneracy:\
-    \ 4D indicates synonymous and 1D non-synonymous sites"
+  optional: true
   synonyms:
   - --site_type
+  description: "if locus_type == 'CDS', use genomic sites with specified degeneracy:\
+    \ 4D indicates synonymous and 1D non-synonymous sites"
   args: !ChoiceFlagArg
     choices: !!set
       4D:
       1D:
-      2D:
       3D:
-  optional: true
+      2D:
 - !Flag
-  description: "maximum number of sites to include in output (use all)\nuseful for\
-    \ quick tests"
+  optional: true
   synonyms:
   - --max_sites
+  description: "maximum number of sites to include in output (use all)\nuseful for\
+    \ quick tests"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: defined as >=5 reads in >=90% of samples
+  optional: true
   synonyms:
   - -core-genome
+  description: defined as >=5 reads in >=90% of samples
   args: !SimpleFlagArg
     name: sites
-  optional: true
 - !Flag
-  description: variable positions (>=1% minor allele frequency across samples)
+  optional: true
   synonyms:
   - -use
+  description: variable positions (>=1% minor allele frequency across samples)
   args: !SimpleFlagArg
     name: only
-  optional: true
 - !Flag
-  description: samples with sufficient data (>=10x mean-depth, >=40% of sites with
-    >=1 mapped read)
+  optional: true
   synonyms:
   - -only
+  description: samples with sufficient data (>=10x mean-depth, >=40% of sites with
+    >=1 mapped read)
   args: !SimpleFlagArg
     name: include
-  optional: true
 - !Flag
-  description: with abnormal depth (>5x mean-depth or <1/5 mean-depth)
+  optional: true
   synonyms:
   - -exclude
+  description: with abnormal depth (>5x mean-depth or <1/5 mean-depth)
   args: !SimpleFlagArg
     name: sites
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Description:\nBuild FASTA file of consensus sequences for a species per\
@@ -222,3 +222,4 @@ help_text: "Description:\nBuild FASTA file of consensus sequences for a species 
   \ --out /path/to/output --max_sites 10000\n"
 generated_using:
 - --help
+docker_image:

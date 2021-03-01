@@ -14,6 +14,9 @@ task Trimmomatic {
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: ""
     version: ""

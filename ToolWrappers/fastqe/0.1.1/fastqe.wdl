@@ -22,6 +22,9 @@ task Fastqe {
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if (scale) then "--scale" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_len: "Minimum length sequence to include in stats (default 0)"
     mean: "show mean quality per position (DEFAULT)"

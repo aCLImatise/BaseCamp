@@ -32,6 +32,9 @@ task VtoolsReportPlotAssociationQq {
       ~{if defined(label_these) then ("--label_these " +  '"' + label_these + '"') else ""} \
       ~{if defined(font_size) then ("--font_size " +  '"' + font_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     shape: "Choose a shape theme (integer 1 to 16) for dots on QQ\\nplot. Default set to 1."
     fixed_shape: "Use the same dot-shape theme for all plots"

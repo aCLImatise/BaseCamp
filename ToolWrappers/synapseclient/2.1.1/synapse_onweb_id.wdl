@@ -12,6 +12,9 @@ task SynapseOnwebId {
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
       ~{if defined(u) then ("-u " +  '"' + u + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     p: ""
     u: ""

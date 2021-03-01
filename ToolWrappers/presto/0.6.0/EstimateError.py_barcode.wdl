@@ -16,6 +16,9 @@ task EstimateErrorpyBarcode {
       ~{if defined(delim) then ("--delim " +  '"' + delim + '"') else ""} \
       ~{if defined(name_barcode_field) then ("-f " +  '"' + name_barcode_field + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_fastafastq_files: "A list of FASTA/FASTQ files containing sequences to\\nprocess. (default: None)"
     outdir: "Specify to changes the output directory to the\\nlocation specified. The input file directory is used\\nif this is not specified. (default: None)"

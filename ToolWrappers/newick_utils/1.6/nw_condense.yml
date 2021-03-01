@@ -4,6 +4,9 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -m
   description: ": uses a group map. This is a text file that lists one\nlabel and\
     \ one group name per line. For example a file with the\nfollowing contents\nHomo\
     \ Africa\nHylobates Asia\nGorilla Africa\nPan Africa\nPongo Asia\nmaps the generic\
@@ -17,27 +20,24 @@ named:
     \ all African apes into a single leaf (since they\nform a clade) with label 'Africa_Homo_3'.\
     \ It would not be able to\ncondense further, however, because Pongo belong to\
     \ group 'Asia'."
-  synonyms:
-  - -m
   args: !SimpleFlagArg
     name: map file
-  optional: true
 - !Flag
-  description: ": unicifies leaf labels by visiting the tree in Newick order and\n\
-    removing any leaf node whose label was already seen."
+  optional: true
   synonyms:
   - -u
+  description: ": unicifies leaf labels by visiting the tree in Newick order and\n\
+    removing any leaf node whose label was already seen."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ': prints this message and exits'
+  optional: true
   synonyms:
   - -h
+  description: ': prints this message and exits'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Simplifies a tree by collapsing certain nodes.\n\nSynopsis\n--------\n\
@@ -70,3 +70,4 @@ help_text: "Simplifies a tree by collapsing certain nodes.\n\nSynopsis\n--------
   \n# condense by geographic origin\n$ nw_condense -m data/catarrhini_geog.map data/catarrhini\n"
 generated_using:
 - --help
+docker_image:

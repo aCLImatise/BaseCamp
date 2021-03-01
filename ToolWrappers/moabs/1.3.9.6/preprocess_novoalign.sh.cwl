@@ -3,107 +3,107 @@ id: preprocess_novoalign.sh.cwl
 inputs:
 - id: in_output_bam
   doc: output BAM
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
-- id: in_print_header_alignments
+- id: in_print_header_only
   doc: print header only (no alignments)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -H
 - id: in_input_is_sam
   doc: input is SAM
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -S
 - id: in_uncompressed_bam_output
   doc: uncompressed BAM output (force -b)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -u
 - id: in_fast_compression_force
   doc: fast compression (force -b)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: '-1'
-- id: in_output_flag_hex
+- id: in_output_flag_hex_specific
   doc: output FLAG in HEX (samtools-C specific)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -x
-- id: in_output_flag_string
+- id: in_output_flag_string_specific
   doc: output FLAG in string (samtools-C specific)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -X
 - id: in_print_only_count
   doc: print only the count of matching records
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
-- id: in_collapse_backward_operation
+- id: in_collapse_cigar_operation
   doc: collapse the backward CIGAR operation
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -B
 - id: in_at
   doc: number of BAM compression threads [0]
-  type: long
+  type: long?
   inputBinding:
     prefix: -@
 - id: in_output_alignments_overlapping
   doc: output alignments overlapping the input BED FILE [null]
-  type: File
+  type: File?
   inputBinding:
     prefix: -L
 - id: in_list_reference_names
   doc: list of reference names and lengths (force -S) [null]
-  type: File
+  type: File?
   inputBinding:
     prefix: -t
 - id: in_reference_sequence_file
   doc: reference sequence file (force -S) [null]
-  type: File
+  type: File?
   inputBinding:
     prefix: -T
 - id: in_output_file_name
   doc: output file name [stdout]
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_list_read_groups
   doc: list of read groups to be outputted [null]
-  type: File
+  type: File?
   inputBinding:
     prefix: -R
 - id: in_required_flag_unset
   doc: required flag, 0 for unset [0]
-  type: long
+  type: long?
   inputBinding:
     prefix: -f
 - id: in_filtering_flag_unset
   doc: filtering flag, 0 for unset [0]
-  type: long
+  type: long?
   inputBinding:
     prefix: -F
 - id: in_minimum_mapping_quality
   doc: minimum mapping quality [0]
-  type: long
+  type: long?
   inputBinding:
     prefix: -q
 - id: in_only_output_reads_library_str
   doc: only output reads in library STR [null]
-  type: string
+  type: string?
   inputBinding:
     prefix: -l
 - id: in_only_output_reads_read_str
   doc: only output reads in read group STR [null]
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
-- id: in_fraction_subsample_part
+- id: in_fraction_templates_subsample
   doc: fraction of templates to subsample; integer part as seed [-1]
-  type: double
+  type: double?
   inputBinding:
     prefix: -s
 - id: in_sam_tools
@@ -127,9 +127,10 @@ outputs:
   type: stdout
 - id: out_output_file_name
   doc: output file name [stdout]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file_name)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - preprocess_novoalign.sh

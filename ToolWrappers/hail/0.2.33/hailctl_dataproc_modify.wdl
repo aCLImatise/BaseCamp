@@ -22,6 +22,9 @@ task HailctlDataprocModify {
       ~{if defined(zone) then ("--zone " +  '"' + zone + '"') else ""} \
       ~{if (update_hail_version) then "--update-hail-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     wheel: "New Hail installation."
     num_workers: "New number of worker machines (min. 2)."

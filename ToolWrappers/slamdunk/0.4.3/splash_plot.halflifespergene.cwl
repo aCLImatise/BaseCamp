@@ -1,25 +1,21 @@
 class: CommandLineTool
 id: splash_plot.halflifespergene.cwl
 inputs:
-- id: in_t
-  doc: ''
-  type: boolean
+- id: in_slam_dunk_dir
+  doc: T->C conversion rate
+  type: string?
   inputBinding:
-    prefix: -t
-- id: in_slam
-  doc: ''
-  type: string
+    prefix: --slamdunkDir
+- id: in_bed
+  doc: BED file
+  type: File?
   inputBinding:
-    prefix: -slam
-- id: in_sim
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -sim
+    prefix: --bed
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - splash

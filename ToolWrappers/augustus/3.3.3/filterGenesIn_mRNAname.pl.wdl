@@ -10,6 +10,9 @@ task FilterGenesInMRNAnamepl {
       ~{gtf_file} \
       ~{dbfile}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gtf_file: ""
     dbfile: ""

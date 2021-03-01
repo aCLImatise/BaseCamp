@@ -8,6 +8,9 @@ task MegahitCoreNoHwAccelReadstat {
     megahit_core_no_hw_accel readstat \
       ~{cat}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cat: ""
   }

@@ -3,12 +3,12 @@ id: _embossversion.cwl
 inputs:
 - id: in_full
   doc: boolean    Show all EMBOSS version information fields
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -full
 - id: in_outfile
   doc: outfile    [stdout] EMBOSS version output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -outfile
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: outfile    [stdout] EMBOSS version output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _embossversion

@@ -56,6 +56,9 @@ task GcloudComputeInstances {
       ~{tail_serial_port_output} \
       ~{update}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_access_config: "Create a Google Compute Engine virtual machine access configuration."
     add_labels: "Add labels to Google Compute Engine virtual machine instances."

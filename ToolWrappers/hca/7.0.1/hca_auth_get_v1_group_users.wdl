@@ -3,13 +3,19 @@ version 1.0
 task HcaAuthGetv1groupusers {
   input {
     String? group_id
+    String? no_paginate
   }
   command <<<
     hca auth get_v1_group_users \
-      ~{if defined(group_id) then ("--group-id " +  '"' + group_id + '"') else ""}
+      ~{if defined(group_id) then ("--group-id " +  '"' + group_id + '"') else ""} \
+      ~{if defined(no_paginate) then ("--no-paginate " +  '"' + no_paginate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    group_id: "The name of the group.\\n--next-token NEXT_TOKEN\\n--per-page PER_PAGE\\n--no-paginate         Do not automatically page the responses\\n"
+    group_id: "The name of the group."
+    no_paginate: "Do not automatically page the responses"
   }
   output {
     File out_stdout = stdout()

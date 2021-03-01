@@ -3,22 +3,22 @@ id: scssim_simuvars.cwl
 inputs:
 - id: in_ref
   doc: reference file (.fasta)
-  type: File
+  type: File?
   inputBinding:
     prefix: --ref
 - id: in_snp
   doc: SNP file containing the SNPs to be simulated [Default:null]
-  type: File
+  type: File?
   inputBinding:
     prefix: --snp
 - id: in_var
   doc: variation file containing the genomic variations to be simulated [Default:null]
-  type: File
+  type: File?
   inputBinding:
     prefix: --var
 - id: in_output
   doc: output file (.fasta) to save generated sequences
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: output file (.fasta) to save generated sequences
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - scssim

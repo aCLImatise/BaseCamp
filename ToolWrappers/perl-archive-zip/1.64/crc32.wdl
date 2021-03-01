@@ -4,6 +4,9 @@ task Crc32 {
   command <<<
     crc32
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

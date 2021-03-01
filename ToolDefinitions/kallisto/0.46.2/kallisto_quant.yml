@@ -4,39 +4,43 @@ command:
 - quant
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: arguments
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: FASTQ-files
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "Filename for the kallisto index to be used for\nquantification"
+  optional: true
   synonyms:
   - -i
   - --index
+  description: "Filename for the kallisto index to be used for\nquantification"
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: Directory to write output to
+  optional: true
   synonyms:
   - -o
   - --output-dir
+  description: Directory to write output to
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: Perform sequence based bias correction
+  optional: true
   synonyms:
   - --bias
+  description: Perform sequence based bias correction
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bootstrap-samples
   description: "Number of bootstrap samples (default: 0)\n--seed=INT             \
     \   Seed for the bootstrap sampling (default: 42)\n--plaintext               Output\
     \ plaintext instead of HDF5\n--fusion                  Search for fusions for\
@@ -44,60 +48,56 @@ named:
     \         Include reads where unobserved rest of fragment is\npredicted to lie\
     \ outside a transcript\n--fr-stranded             Strand specific reads, first\
     \ read forward\n--rf-stranded             Strand specific reads, first read reverse"
-  synonyms:
-  - -b
-  - --bootstrap-samples
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: Estimated average fragment length
+  optional: true
   synonyms:
   - -l
   - --fragment-length
+  description: Estimated average fragment length
   args: !SimpleFlagArg
     name: DOUBLE
-  optional: true
 - !Flag
-  description: "Estimated standard deviation of fragment length\n(default: -l, -s\
-    \ values are estimated from paired\nend data, but are required when using --single)"
+  optional: true
   synonyms:
   - -s
   - --sd
+  description: "Estimated standard deviation of fragment length\n(default: -l, -s\
+    \ values are estimated from paired\nend data, but are required when using --single)"
   args: !SimpleFlagArg
     name: DOUBLE
-  optional: true
 - !Flag
-  description: "Number of threads to use (default: 1)\n--pseudobam               Save\
-    \ pseudoalignments to transcriptome to BAM file\n--genomebam               Project\
-    \ pseudoalignments to genome sorted BAM file"
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: "Number of threads to use (default: 1)\n--pseudobam               Save\
+    \ pseudoalignments to transcriptome to BAM file\n--genomebam               Project\
+    \ pseudoalignments to genome sorted BAM file"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "GTF file for transcriptome information\n(required for --genomebam)"
+  optional: true
   synonyms:
   - -g
   - --gtf
+  description: "GTF file for transcriptome information\n(required for --genomebam)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Tab separated file with chromosome names and lengths\n(optional for\
-    \ --genomebam, but recommended)"
+  optional: true
   synonyms:
   - -c
   - --chromosomes
+  description: "Tab separated file with chromosome names and lengths\n(optional for\
+    \ --genomebam, but recommended)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Print out progress information every 1M proccessed reads
+  optional: true
   synonyms:
   - --verbose
+  description: Print out progress information every 1M proccessed reads
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -130,3 +130,4 @@ help_text: "Usage: kallisto quant [arguments] FASTQ-files\n\nRequired arguments:
   \ information every 1M proccessed reads\n"
 generated_using:
 - --help
+docker_image:

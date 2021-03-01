@@ -3,240 +3,268 @@ command:
 - HMMRATAC
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: java
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: ', --bam <BAM> Sorted BAM file containing the ATAC-seq reads'
+  optional: true
   synonyms:
   - -b
-  args: !EmptyFlagArg {}
-  optional: true
+  - --bam
+  description: Sorted BAM file containing the ATAC-seq reads
+  args: !SimpleFlagArg
+    name: BAM
 - !Flag
-  description: ', --index <BAI> Index file for the sorted BAM File'
+  optional: true
   synonyms:
   - -i
-  args: !EmptyFlagArg {}
-  optional: true
+  - --index
+  description: Index file for the sorted BAM File
+  args: !SimpleFlagArg
+    name: BAI
 - !Flag
-  description: ', --genome <GenomeFile> Two column, tab delimited file containing
-    genome size stats'
+  optional: true
   synonyms:
   - -g
-  args: !EmptyFlagArg {}
-  optional: true
+  - --genome
+  description: Two column, tab delimited file containing genome size stats
+  args: !SimpleFlagArg
+    name: GenomeFile
 - !Flag
-  description: ', --means <double> Comma separated list of initial mean values for
-    the fragment distribution. Default = 50,200,400,600'
+  optional: true
   synonyms:
   - -m
-  args: !EmptyFlagArg {}
-  optional: true
+  - --means
+  description: Comma separated list of initial mean values for the fragment distribution.
+    Default = 50,200,400,600
+  args: !SimpleFlagArg
+    name: double
 - !Flag
-  description: ', --stddev <double> Comma separated list of initial standard deviation
-    values for fragment distribution. Default = 20,20,20,20'
+  optional: true
   synonyms:
   - -s
-  args: !EmptyFlagArg {}
-  optional: true
+  - --stddev
+  description: Comma separated list of initial standard deviation values for fragment
+    distribution. Default = 20,20,20,20
+  args: !SimpleFlagArg
+    name: double
 - !Flag
-  description: ', --fragem <true || false> Whether to perform EM training on the fragment
-    distribution. Default = True'
+  optional: true
   synonyms:
   - -f
-  args: !EmptyFlagArg {}
-  optional: true
+  - --fragem
+  description: Whether to perform EM training on the fragment distribution. Default
+    = True
+  args: !SimpleFlagArg
+    name: true || false
 - !Flag
-  description: ', --minmapq <int> Minimum mapping quality of reads to keep. Default
-    = 30'
+  optional: true
   synonyms:
   - -q
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ', --upper <int> Upper limit on fold change range for choosing training
-    sites. Default = 20'
-  synonyms:
-  - -u
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ', --lower <int> Lower limit on fold change range for choosing training
-    sites. Default = 10'
-  synonyms:
-  - -l
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ', --zscore <int> Zscored read depth to mask during Viterbi decoding.
-    Default = 100'
-  synonyms:
-  - -z
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ', --output <String> Name for output files. Default = NA'
-  synonyms:
-  - -o
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ', --blacklist <BED_File> bed file of blacklisted regions to exclude'
-  synonyms:
-  - -e
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ', --peaks <true || false> Whether to report peaks in bed format. Default
-    = true'
-  synonyms:
-  - -p
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ', --kmeans <int> Number of States in the model. Default = 3. If not
-    k=3, recommend NOT calling peaks, use bedgraph'
-  synonyms:
-  - -k
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ', --training <BED_File> BED file of training regions to use for training
-    model, instead of foldchange settings'
-  synonyms:
-  - -t
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Whether to report whole genome bedgraph of all state anntations. Default
-    = false
-  synonyms:
-  - --bedgraph
-  args: !SimpleFlagArg
-    name: true || false
-  optional: true
-- !Flag
-  description: 'Minimum length of open region to call peak. Note: -p , --peaks must
-    be set. Default = 200'
-  synonyms:
-  - --minlen
+  - --minmapq
+  description: Minimum mapping quality of reads to keep. Default = 30
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: What type of score system to use for peaks. Can be used for ranking
-    peaks. Default = max
+  optional: true
   synonyms:
-  - --score
+  - -u
+  - --upper
+  description: Upper limit on fold change range for choosing training sites. Default
+    = 20
   args: !SimpleFlagArg
-    name: max || ave || med || fc || zscore || all
-  optional: true
+    name: int
 - !Flag
-  description: 'Whether to add the HMMR score to each state annotation in bedgraph.
-    Note: this adds considerable time. Default = False'
+  optional: true
   synonyms:
-  - --bgscore
+  - -l
+  - --lower
+  description: Lower limit on fold change range for choosing training sites. Default
+    = 10
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --zscore
+  description: Zscored read depth to mask during Viterbi decoding. Default = 100
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Name for output files. Default = NA
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --blacklist
+  description: bed file of blacklisted regions to exclude
+  args: !SimpleFlagArg
+    name: BED_File
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --peaks
+  description: Whether to report peaks in bed format. Default = true
   args: !SimpleFlagArg
     name: true || false
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmeans
+  description: Number of States in the model. Default = 3. If not k=3, recommend NOT
+    calling peaks, use bedgraph
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --training
+  description: BED file of training regions to use for training model, instead of
+    foldchange settings
+  args: !SimpleFlagArg
+    name: BED_File
+- !Flag
+  optional: true
+  synonyms:
+  - --bedgraph
+  description: Whether to report whole genome bedgraph of all state anntations. Default
+    = false
+  args: !SimpleFlagArg
+    name: true || false
+- !Flag
+  optional: true
+  synonyms:
+  - --minlen
+  description: 'Minimum length of open region to call peak. Note: -p , --peaks must
+    be set. Default = 200'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --score
+  description: What type of score system to use for peaks. Can be used for ranking
+    peaks. Default = max
+  args: !SimpleFlagArg
+    name: max || ave || med || fc || zscore || all
+- !Flag
+  optional: true
+  synonyms:
+  - --bgscore
+  description: 'Whether to add the HMMR score to each state annotation in bedgraph.
+    Note: this adds considerable time. Default = False'
+  args: !SimpleFlagArg
+    name: true || false
+- !Flag
+  optional: true
+  synonyms:
+  - --trim
   description: How many signals from the end to trim off (ie starting with tri signal
     then di etc). This may be useful if your data doesn't contain many large fragments.
     Default = 0
-  synonyms:
-  - --trim
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --window
   description: "Size of the bins to split the genome into for Viterbi decoding.\n\
     To save memory, the genome is split into <int> long bins and viterbi decoding\
     \ occurs across each bin.\nDefault = 25000000. Note: For machines with limited\
     \ memory, it is recomended to reduce the size of the bins."
-  synonyms:
-  - --window
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Binary model file (generated from previous HMMR run) to use instead
-    of creating new one
+  optional: true
   synonyms:
   - --model
+  description: Binary model file (generated from previous HMMR run) to use instead
+    of creating new one
   args: !SimpleFlagArg
     name: File
-  optional: true
 - !Flag
-  description: Whether or not to stop the program after generating model. Default
-    = false
+  optional: true
   synonyms:
   - --modelonly
+  description: Whether or not to stop the program after generating model. Default
+    = false
   args: !SimpleFlagArg
     name: true || false
-  optional: true
 - !Flag
-  description: Maximum number of training regions to use. Default == 1000
+  optional: true
   synonyms:
   - --maxTrain
+  description: Maximum number of training regions to use. Default == 1000
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Whether or not to remove duplicate reads from analysis. Default = true
+  optional: true
   synonyms:
   - --removeDuplicates
+  description: Whether or not to remove duplicate reads from analysis. Default = true
   args: !SimpleFlagArg
     name: true || false
-  optional: true
 - !Flag
-  description: Whether to output excluded regions into Output_exclude.bed. Default
-    = false
+  optional: true
   synonyms:
   - --printExclude
+  description: Whether to output excluded regions into Output_exclude.bed. Default
+    = false
   args: !SimpleFlagArg
     name: true || false
-  optional: true
 - !Flag
-  description: Whether to output training regions into Output_training.bed. Default
-    = true
+  optional: true
   synonyms:
   - --printTrain
+  description: Whether to output training regions into Output_training.bed. Default
+    = true
   args: !SimpleFlagArg
     name: true || false
-  optional: true
 - !Flag
-  description: Seed to set for random sampling of training regions. Default is 10151
+  optional: true
   synonyms:
   - --randomSeed
+  description: Seed to set for random sampling of training regions. Default is 10151
   args: !SimpleFlagArg
     name: long
-  optional: true
 - !Flag
-  description: threshold for reporting peaks. Only peaks who's score is >= this value
-    will be reported.
+  optional: true
   synonyms:
   - --threshold
+  description: threshold for reporting peaks. Only peaks who's score is >= this value
+    will be reported.
   args: !SimpleFlagArg
     name: double
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -jar
+  description: ''
   args: !SimpleFlagArg
     name: HMMRATAC_V
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ', --help Print this help message and exit.'
+  optional: true
   synonyms:
   - -h
-  args: !EmptyFlagArg {}
-  optional: true
+  - --help
+  description: this help message and exit.
+  args: !SimpleFlagArg
+    name: Print
 usage_flag:
 version_flag:
 help_text: "HMMRATAC Version:\t1.2.10\nUsage: java -jar HMMRATAC_V#_exe.jar\n\nRequired\
@@ -283,3 +311,4 @@ help_text: "HMMRATAC Version:\t1.2.10\nUsage: java -jar HMMRATAC_V#_exe.jar\n\nR
   \ this help message and exit.\n"
 generated_using:
 - --help
+docker_image:

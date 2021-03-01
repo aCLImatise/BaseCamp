@@ -3,37 +3,89 @@ command:
 - perl-reversion
 positional:
 - !Positional
-  description: '"-normal"'
+  optional: false
   position: 0
   name: updated.
-  optional: false
+  description: '"-normal"'
 - !Positional
-  description: Alone, these options control how the current (found) version is
+  optional: false
   position: 0
   name: Version.
-  optional: false
+  description: Alone, these options control how the current (found) version is
 - !Positional
-  description: With "-bump" or "-set", also update version strings to have the
+  optional: false
   position: 1
   name: displayed.
-  optional: false
-named: []
+  description: With "-bump" or "-set", also update version strings to have the
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -man
+  description: view man page for perl-reversion
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -bump
+  description: make the smallest possible increment
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -bump-revision
+  description: increment the specified version component
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -bump-version
+  - -bump-subversion
+  - -bump-alpha
+  - -set
+  description: set the project version number
+  args: !SimpleFlagArg
+    name: version
+- !Flag
+  optional: true
+  synonyms:
+  - -current
+  description: specify the current version
+  args: !SimpleFlagArg
+    name: version
+- !Flag
+  optional: true
+  synonyms:
+  - -normal
+  description: print current version in a specific format OR
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -numify
+  description: force versions to be a specific format,
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -stringify
+  description: with -set or -bump
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dryrun
+  description: "just go through the motions, but don't\nactually save files"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "see this summary\n-man                view man page for perl-reversion\n\
-    -bump               make the smallest possible increment\n-bump-revision     \
-    \ increment the specified version component\n-bump-version\n-bump-subversion\n\
-    -bump-alpha\n-set <version>      set the project version number\n-current <version>\
-    \  specify the current version\n-normal             print current version in a\
-    \ specific format OR\n-numify             force versions to be a specific format,\n\
-    -stringify          with -set or -bump\n-dryrun             just go through the\
-    \ motions, but don't\nactually save files"
+  optional: true
   synonyms:
   - -help
+  description: see this summary
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage:\n    perl-reversion [options] [file ...]\n\n     Options:\n\n \
@@ -70,3 +122,4 @@ help_text: "Usage:\n    perl-reversion [options] [file ...]\n\n     Options:\n\n
   \n"
 generated_using:
 - --help
+docker_image:

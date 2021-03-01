@@ -22,6 +22,9 @@ task RsatComparefeatures {
       ~{all_coordinates} \
       ~{if defined(files) then ("-files " +  '"' + files + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     files: "considered as input files."
     compare_features: "[1mDESCRIPTION[0m"

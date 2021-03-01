@@ -3,27 +3,27 @@ id: biom_normalize_table.cwl
 inputs:
 - id: in_input_fp
   doc: The input BIOM table  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-fp
 - id: in_output_fp
   doc: An output file-path
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-fp
 - id: in_relative_abund
   doc: convert table to relative abundance
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --relative-abund
 - id: in_presence_absence
   doc: convert table to presence/absence
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --presence-absence
 - id: in_axis
   doc: "[sample|observation]\nThe axis to normalize over"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --axis
 outputs:
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_output_fp
   doc: An output file-path
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_fp)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - biom

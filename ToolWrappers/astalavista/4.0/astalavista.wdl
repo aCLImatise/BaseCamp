@@ -4,6 +4,9 @@ task Astalavista {
   command <<<
     astalavista
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

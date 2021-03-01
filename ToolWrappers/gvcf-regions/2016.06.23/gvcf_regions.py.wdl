@@ -18,6 +18,9 @@ task GvcfRegionspy {
       ~{if defined(pass_phrases) then ("--pass_phrases " +  '"' + pass_phrases + '"') else ""} \
       ~{if defined(gvc_f_type) then ("--gvcf_type " +  '"' + gvc_f_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     unreported_is_called: "use this flag to treat unreported sites as called"
     ignore_phrases: "list of phrases considered as discarded, e.g., CNV,\\nME. A line that contains any of the ignore phrases is\\ndiscarded."

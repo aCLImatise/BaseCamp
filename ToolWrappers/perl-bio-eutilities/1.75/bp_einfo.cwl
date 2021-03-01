@@ -1,36 +1,31 @@
 class: CommandLineTool
 id: bp_einfo.cwl
 inputs:
-- id: in_e_slash_email
+- id: in_email
   doc: Valid email (required by NCBI policy)
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -e/--email
-- id: in_d_slash_db_slash_database
+    prefix: --email
+- id: in_database
   doc: "NCBI database to query\n(default = none, which shows available databases)"
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -d/--db/--database
-- id: in_f_slash_field
+    prefix: --database
+- id: in_field
   doc: "print out information about a specific field code\n(default = none)"
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -f/--field
-- id: in_lslash_link
+    prefix: --field
+- id: in_link
   doc: "print out information about a specific link name\n(default = none)"
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -l/--link
-- id: in_oslash_out
-  doc: "outfile\n(default = STDOUT)"
-  type: boolean
+    prefix: --link
+- id: in_outfile
+  doc: (default = STDOUT)
+  type: string
   inputBinding:
-    prefix: -o/--out
-- id: in_h_slash_help
-  doc: show this documentation
-  type: boolean
-  inputBinding:
-    prefix: -h/--help
+    position: 0
 - id: in_bioperl_lat_bioperl_dot_org
   doc: '- General discussion'
   type: string
@@ -49,6 +44,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bp_einfo

@@ -1,0 +1,106 @@
+!Command
+command:
+- ms2pip
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config-file
+  description: config file
+  args: !SimpleFlagArg
+    name: CONFIG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --spectrum-file
+  description: .mgf MS2 spectrum file (optional)
+  args: !SimpleFlagArg
+    name: MGF_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --vector-file
+  description: write feature vectors to FILE.{pkl,h5} (optional)
+  args: !SimpleFlagArg
+    name: FEATURE_VECTOR_OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --retention-time
+  description: "add retention time predictions (requires DeepLC python\npackage)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --correlations
+  description: calculate correlations (if MGF is given)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --match-spectra
+  description: "match peptides to spectra based on predicted spectra\n(if MGF is given)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tableau
+  description: create Tableau Reader file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --num-cpu
+  description: 'number of CPUs to use (default: all available)'
+  args: !SimpleFlagArg
+    name: NUM_CPU
+- !Flag
+  optional: true
+  synonyms:
+  - --sqldb-uri
+  description: "use sql database of observed spectra instead of MGF\nfiles\n"
+  args: !SimpleFlagArg
+    name: SQLDB_URI
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\n __  __ ___  __ ___ ___ ___  \n|  \\/  / __||_ ) _ \\_ _| _ \\ \n| |\\\
+  /| \\__ \\/__|  _/| ||  _/ \n|_|  |_|___/   |_| |___|_|   \n                   \
+  \          \nby CompOmics\nsven.degroeve@ugent.be\nralf.gabriels@ugent.be\n\nhttp://compomics.github.io/projects/ms2pip_c.html\n\
+  \    \nusage: ms2pip [-h] -c CONFIG_FILE [-s MGF_FILE] [-w FEATURE_VECTOR_OUTPUT]\n\
+  \              [-r] [-x] [-m] [-t] [-n NUM_CPU] [--sqldb-uri SQLDB_URI]\n      \
+  \        <PEPREC file>\n\npositional arguments:\n  <PEPREC file>         list of\
+  \ peptides\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -c CONFIG_FILE, --config-file CONFIG_FILE\n                      \
+  \  config file\n  -s MGF_FILE, --spectrum-file MGF_FILE\n                      \
+  \  .mgf MS2 spectrum file (optional)\n  -w FEATURE_VECTOR_OUTPUT, --vector-file\
+  \ FEATURE_VECTOR_OUTPUT\n                        write feature vectors to FILE.{pkl,h5}\
+  \ (optional)\n  -r, --retention-time  add retention time predictions (requires DeepLC\
+  \ python\n                        package)\n  -x, --correlations    calculate correlations\
+  \ (if MGF is given)\n  -m, --match-spectra   match peptides to spectra based on\
+  \ predicted spectra\n                        (if MGF is given)\n  -t, --tableau\
+  \         create Tableau Reader file\n  -n NUM_CPU, --num-cpu NUM_CPU\n        \
+  \                number of CPUs to use (default: all available)\n  --sqldb-uri SQLDB_URI\n\
+  \                        use sql database of observed spectra instead of MGF\n \
+  \                       files\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ms2pip:3.6.2--py38h0213d0e_0

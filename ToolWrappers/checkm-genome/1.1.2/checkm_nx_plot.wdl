@@ -26,6 +26,9 @@ task CheckmNxPlot {
       ~{if defined(step_size) then ("--step_size " +  '"' + step_size + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     image_type: "desired image type (default: png)"
     dpi: "desired DPI of output image (default: 600)"

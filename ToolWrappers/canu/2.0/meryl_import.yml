@@ -3,80 +3,80 @@ command:
 - meryl-import
 positional:
 - !Positional
-  description: A kmer AGTTGCC in the input twice with values 4 and 7
+  optional: false
   position: 0
   name: entries.
-  optional: false
+  description: A kmer AGTTGCC in the input twice with values 4 and 7
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -kmers
   description: "A file consisting of kmers and values, one per line, separated\nby\
     \ white space ('AGTTGCC 4').  Order of kmers is not important.\nDuplicate kmers\
     \ will be handled according to the -multiset\noption.\nA persistent value can\
     \ be specified as '#<value>' (e.g., '#3')\nAll kmers with no value after this\
     \ line will use this value."
-  synonyms:
-  - -kmers
   args: !SimpleFlagArg
     name: input-kmers
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -k
   description: "The size of a kmer, in bases.  Setting this larger than the\nkmers\
     \ in the input will probably lead to a crash.  Setting it\nsmaller will result\
     \ in only the left-most bases being used."
-  synonyms:
-  - -k
   args: !SimpleFlagArg
     name: size
-  optional: true
 - !Flag
-  description: Create (or overwrite) meryl database 'database.meryl'.
+  optional: true
   synonyms:
   - -output
+  description: Create (or overwrite) meryl database 'database.meryl'.
   args: !SimpleFlagArg
     name: db.meryl
-  optional: true
 - !Flag
-  description: Write duplicate kmers in the input to the database as individual
+  optional: true
   synonyms:
   - -multiset
+  description: Write duplicate kmers in the input to the database as individual
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -maxvalue
   description: "An optional memory and time optimization, useful if your values\n\
     are randomly distributed and below some known maximum value.\nFor data whose values\
     \ are the counts from actual data, it is\nprobably best to not set this option."
-  synonyms:
-  - -maxvalue
   args: !SimpleFlagArg
     name: value
-  optional: true
 - !Flag
-  description: By default, the canonical kmer is loaded into the database.  These
+  optional: true
   synonyms:
   - -forward
+  description: By default, the canonical kmer is loaded into the database.  These
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "options force either the forward or reverse-complement kmer to be\n\
-    loaded instead.  These options are mutually exclusive."
+  optional: true
   synonyms:
   - -reverse
+  description: "options force either the forward or reverse-complement kmer to be\n\
+    loaded instead.  These options are mutually exclusive."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Use <t> compute threads when sorting and writing data.
+  optional: true
   synonyms:
   - -threads
+  description: Use <t> compute threads when sorting and writing data.
   args: !SimpleFlagArg
     name: t
-  optional: true
 - !Flag
-  description: (accepted, but not implemented, sorry)
+  optional: true
   synonyms:
   - -memory
+  description: (accepted, but not implemented, sorry)
   args: !SimpleFlagArg
     name: m
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -114,3 +114,4 @@ help_text: "usage: meryl-import [...] -k <kmer-size> -kmers <input-kmers> -outpu
   \ output database name (-output) supplied.\nNo kmer size (-k) supplied.\n"
 generated_using:
 - --help
+docker_image:

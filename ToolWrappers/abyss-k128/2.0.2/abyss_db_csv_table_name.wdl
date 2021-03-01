@@ -12,6 +12,9 @@ task AbyssdbcsvTableName {
       ~{sqlite_repository} \
       ~{table_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     abyss_db_csv: ""
     sqlite_repository: ""

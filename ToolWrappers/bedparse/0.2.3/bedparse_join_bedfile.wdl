@@ -14,6 +14,9 @@ task BedparseJoinBedfile {
       ~{if defined(column) then ("--column " +  '"' + column + '"') else ""} \
       ~{if defined(annotation) then ("--annotation " +  '"' + annotation + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     column: ""
     annotation: ""

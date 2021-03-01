@@ -4,116 +4,119 @@ command:
 - parse
 positional:
 - !Positional
-  description: --drop-seq                      If specified, remove sequences and
-    PHREDs
+  optional: false
   position: 0
   name: output
-  optional: false
+  description: --drop-seq                      If specified, remove sequences and
+    PHREDs
 - !Positional
-  description: By default, statistics is not
+  optional: false
   position: 0
   name: file.
-  optional: false
+  description: By default, statistics is not
 - !Positional
-  description: --report-alignment-end [5|3]    specifies whether the 5' or 3' end
-    of the
+  optional: false
   position: 1
   name: generated.
-  optional: false
+  description: --report-alignment-end [5|3]    specifies whether the 5' or 3' end
+    of the
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chroms-path
   description: "Chromosome order used to flip\ninterchromosomal mates: path to a\n\
     chromosomes file (e.g. UCSC chrom.sizes or\nsimilar) whose first column lists\
     \ scaffold\nnames. Any scaffolds not listed will be\nordered lexicographically\
     \ following the\nnames provided.  [required]"
-  synonyms:
-  - -c
-  - --chroms-path
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "output file.  If the path ends with .gz or\n.lz4, the output is\n\
-    pbgzip-/lz4-compressed.By default, the\noutput is printed into stdout."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "output file.  If the path ends with .gz or\n.lz4, the output is\n\
+    pbgzip-/lz4-compressed.By default, the\noutput is printed into stdout."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Name of genome assembly (e.g. hg19, mm10) to\nstore in the pairs header."
+  optional: true
   synonyms:
   - --assembly
+  description: "Name of genome assembly (e.g. hg19, mm10) to\nstore in the pairs header."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "The minimal MAPQ score to consider a read as\nuniquely mapped  [default:\
-    \ 1]"
+  optional: true
   synonyms:
   - --min-mapq
+  description: "The minimal MAPQ score to consider a read as\nuniquely mapped  [default:\
+    \ 1]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "The maximal size of a Hi-C molecule; used to\nrescue single ligationsfrom\
-    \ molecules with\nthree alignments.  [default: 2000]"
+  optional: true
   synonyms:
   - --max-molecule-size
+  description: "The maximal size of a Hi-C molecule; used to\nrescue single ligationsfrom\
+    \ molecules with\nthree alignments.  [default: 2000]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: If specified, do not add read ids to the
+  optional: true
   synonyms:
   - --drop-readid
+  description: If specified, do not add read ids to the
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: If specified, do not add sams to the output
+  optional: true
   synonyms:
   - --drop-sam
+  description: If specified, do not add sams to the output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --add-columns
   description: "Report extra columns describing alignments\nPossible values (can take\
     \ multiple values as\na comma-separated list): a SAM tag (any pair\nof uppercase\
     \ letters) or mapq, pos5, pos3,\ncigar, read_len, matched_bp, algn_ref_span,\n\
     algn_read_span, dist_to_5, dist_to_3, seq."
-  synonyms:
-  - --add-columns
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --output-parsed-alignments
   description: "output file for all parsed alignments,\nincluding walks. Useful for\
     \ debugging and\nrnalysis of walks. If file exists, it will\nbe open in the append\
     \ mode. If the path ends\nwith .gz or .lz4, the output is\npbgzip-/lz4-compressed.\
     \ By default, not\nused."
-  synonyms:
-  - --output-parsed-alignments
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: output file for various statistics of pairs
+  optional: true
   synonyms:
   - --output-stats
+  description: output file for various statistics of pairs
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-inter-align-gap
   description: "read segments that are not covered by any\nalignment and longer than\
     \ the specified\nvalue are treated as \"null\" alignments.\nThese null alignments\
     \ convert otherwise\nlinear alignments into walks, and affect how\nthey get reported\
     \ as a Hi-C pair (see\n--walks-policy).  [default: 20]"
-  synonyms:
-  - --max-inter-align-gap
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --walks-policy
   description: "[mask|all|5any|5unique|3any|3unique]\nthe policy for reporting unrescuable\
     \ walks\n(reads containing more than one alignment on\none or both sides, that\
     \ can not be explained\nby a single ligation between two mappable\nDNA fragments).\
@@ -123,61 +126,58 @@ named:
     \ on each\nside, if present; \"3any\" - report the\n3'-most alignment on each\
     \ side; \"3unique\" -\nreport the 3'-most unique alignment on each\nside, if present.\
     \  [default: mask]"
-  synonyms:
-  - --walks-policy
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If specified, do not flip pairs in genomic\norder and instead preserve\
-    \ the order in\nwhich they were sequenced."
+  optional: true
   synonyms:
   - --no-flip
+  description: "If specified, do not flip pairs in genomic\norder and instead preserve\
+    \ the order in\nwhich they were sequenced."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Number of processes used by the auto-guessed\ninput decompressing\
-    \ command.  [default: 3]"
+  optional: true
   synonyms:
   - --nproc-in
+  description: "Number of processes used by the auto-guessed\ninput decompressing\
+    \ command.  [default: 3]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Number of processes used by the auto-guessed\noutput compressing command.\
-    \  [default: 8]"
+  optional: true
   synonyms:
   - --nproc-out
+  description: "Number of processes used by the auto-guessed\noutput compressing command.\
+    \  [default: 8]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cmd-in
   description: "A command to decompress the input file. If\nprovided, fully overrides\
     \ the auto-guessed\ncommand. Does not work with stdin. Must read\ninput from stdin\
     \ and print output into\nstdout. EXAMPLE: pbgzip -dc -n 3"
-  synonyms:
-  - --cmd-in
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cmd-out
   description: "A command to compress the output file. If\nprovided, fully overrides\
     \ the auto-guessed\ncommand. Does not work with stdout. Must\nread input from\
     \ stdin and print output into\nstdout. EXAMPLE: pbgzip -c -n 8"
-  synonyms:
-  - --cmd-out
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: pairtools parse [OPTIONS] [SAM_PATH]\n\n  Find ligation junctions\
@@ -262,3 +262,4 @@ help_text: "Usage: pairtools parse [OPTIONS] [SAM_PATH]\n\n  Find ligation junct
   \                      Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

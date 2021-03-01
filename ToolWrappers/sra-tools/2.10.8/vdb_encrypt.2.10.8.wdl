@@ -28,6 +28,9 @@ task Vdbencrypt2108 {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "Force overwrite of existing files"
     ngc: "PATH to ngc file"

@@ -1,30 +1,25 @@
 class: CommandLineTool
 id: AMAS.py_split.cwl
 inputs:
-- id: in_i
-  doc: '{fasta,phylip,nexus,phylip-int,nexus-int} -d {aa,dna}'
-  type: string[]
-  inputBinding:
-    prefix: -i
 - id: in_split_by
   doc: "File name for partitions to be used for alignment\nsplitting."
-  type: File
+  type: File?
   inputBinding:
     prefix: --split-by
 - id: in_remove_empty
   doc: "Remove taxa with sequences composed of only\nundetermined characters? Default:\
     \ Don't remove"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --remove-empty
 - id: in_out_format
   doc: 'File format for the output alignment. Default: fasta'
-  type: File
+  type: File?
   inputBinding:
     prefix: --out-format
 - id: in_check_align
   doc: 'Check if input sequences are aligned. Default: no'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --check-align
 - id: in_in_files
@@ -35,12 +30,12 @@ inputs:
     prefix: --in-files
 - id: in_in_format
   doc: The format of input alignment
-  type: string
+  type: string?
   inputBinding:
     prefix: --in-format
 - id: in_data_type
   doc: "Type of data\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --data-type
 - id: in_check
@@ -54,9 +49,10 @@ outputs:
   type: stdout
 - id: out_out_format
   doc: 'File format for the output alignment. Default: fasta'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_format)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - AMAS.py

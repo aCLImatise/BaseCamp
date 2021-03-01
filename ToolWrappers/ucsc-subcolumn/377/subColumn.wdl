@@ -16,6 +16,9 @@ task SubColumn {
       ~{if (list) then "-list" else ""} \
       ~{if defined(miss) then ("-miss " +  '"' + miss + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list: "- Column is a comma-separated list.  Substitute all elements in list"
     miss: "- Print misses to this file instead of aborting"

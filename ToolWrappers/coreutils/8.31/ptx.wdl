@@ -38,6 +38,9 @@ task Ptx {
       ~{if (typeset_mode) then "--typeset-mode" else ""} \
       ~{if defined(width) then ("--width " +  '"' + width + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     auto_reference: "output automatically generated references"
     traditional: "behave more like System V 'ptx'"

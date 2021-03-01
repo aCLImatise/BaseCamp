@@ -24,6 +24,9 @@ task HtsboxMapchk {
       ~{if (one) then "-1" else ""} \
       ~{if (two) then "-2" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     region: "region [null]"
     threshold_high_quality: "threshold for HIGH quality [20]"

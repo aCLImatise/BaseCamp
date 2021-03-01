@@ -18,6 +18,9 @@ task DiffMotif {
       ~{if (f) then "-f" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     show_overlapped_sequences: ": Show overlapped sequences"
     m: ": Show sequences in motif1 that are not in motif2"

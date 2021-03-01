@@ -3,189 +3,189 @@ command:
 - oncotator
 positional:
 - !Positional
-  description: Input file to be annotated. Type is specified through
+  optional: false
   position: 0
   name: input_file
-  optional: false
+  description: Input file to be annotated. Type is specified through
 - !Positional
-  description: output_file           Output file name of annotated file.
+  optional: false
   position: 1
   name: options.
-  optional: false
+  description: output_file           Output file name of annotated file.
 - !Positional
-  description: 'Genome build. For example: hg19'
+  optional: false
   position: 2
   name: genome_build
-  optional: false
+  description: 'Genome build. For example: hg19'
 - !Positional
-  description: rent/]
+  optional: false
   position: 0
-  name: ga/reference/annotation/db/oncotator_v1_ds_gencode_cur
-  optional: false
-- !Positional
-  description: --prune-filter-cols   Prune mutations from VCF input as based on 'filter'
-  position: 1
   name: field
-  optional: false
+  description: --prune-filter-cols   Prune mutations from VCF input as based on 'filter'
 named:
 - !Flag
-  description: 'set verbosity level [default: 5]'
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: 'set verbosity level [default: 5]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input_format
   description: "Input format. Note that MAFLITE will work for any tsv\nfile with appropriate\
     \ headers, so long as all of the\nrequired headers (or an alias -- see maflite.config)\n\
     are present. Note that \"-i TCGAMAF\" is the same as\nspecifying \"-i MAFLITE\
     \ --prune-tcga-maf-cols --allow-\noverwriting\" [default: MAFLITE]"
-  synonyms:
-  - -i
-  - --input_format
   args: !ChoiceFlagArg
     choices: !!set
-      VCF:
-      TCGAMAF:
       MAFLITE:
+      TCGAMAF:
+      VCF:
       SEG_FILE:
-  optional: true
 - !Flag
-  description: 'Main annotation database directory. [default: /xchip/c'
+  optional: true
   synonyms:
   - --db-dir
+  description: "Main annotation database directory. [default: /xchip/c\nga/reference/annotation/db/oncotator_v1_ds_gencode_cur\n\
+    rent/]"
   args: !SimpleFlagArg
     name: DBDIR
-  optional: true
 - !Flag
-  description: 'Output format. [default: TCGAMAF]'
+  optional: true
   synonyms:
   - -o
   - --output_format
+  description: 'Output format. [default: TCGAMAF]'
   args: !ChoiceFlagArg
     choices: !!set
-      VCF:
-      TCGAVCF:
-      TCGAMAF:
-      SIMPLE_BED:
-      SIMPLE_TSV:
       GENE_LIST:
-  optional: true
+      SIMPLE_TSV:
+      VCF:
+      TCGAMAF:
+      TCGAVCF:
+      SIMPLE_BED:
 - !Flag
-  description: "File path to manual annotations in a config file\nformat (section\
-    \ is 'manual_annotations' and\nannotation:value pairs)."
+  optional: true
   synonyms:
   - --override_config
+  description: "File path to manual annotations in a config file\nformat (section\
+    \ is 'manual_annotations' and\nannotation:value pairs)."
   args: !SimpleFlagArg
     name: OVERRIDE_CONFIG
-  optional: true
 - !Flag
-  description: "File path to default annotation values in a config\nfile format (section\
-    \ is 'manual_annotations' and\nannotation:value pairs)."
+  optional: true
   synonyms:
   - --default_config
+  description: "File path to default annotation values in a config\nfile format (section\
+    \ is 'manual_annotations' and\nannotation:value pairs)."
   args: !SimpleFlagArg
     name: DEFAULT_CONFIG
-  optional: true
 - !Flag
-  description: Disables all multicore functionality.
+  optional: true
   synonyms:
   - --no-multicore
+  description: Disables all multicore functionality.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify annotations to override. Can be specified\nmultiple times.\
-    \ E.g. -a 'name1:value1' -a\n'name2:value2'"
+  optional: true
   synonyms:
   - -a
   - --annotate-manual
+  description: "Specify annotations to override. Can be specified\nmultiple times.\
+    \ E.g. -a 'name1:value1' -a\n'name2:value2'"
   args: !SimpleFlagArg
     name: OVERRIDE_CLI
-  optional: true
 - !Flag
-  description: "Specify default values for annotations. Can be\nspecified multiple\
-    \ times. E.g. -d 'name1:value1' -d\n'name2:value2'"
+  optional: true
   synonyms:
   - -d
   - --annotate-default
+  description: "Specify default values for annotations. Can be\nspecified multiple\
+    \ times. E.g. -d 'name1:value1' -d\n'name2:value2'"
   args: !SimpleFlagArg
     name: DEFAULT_CLI
-  optional: true
 - !Flag
-  description: URL to use for cache. See help for examples.
+  optional: true
   synonyms:
   - -u
   - --cache-url
+  description: URL to use for cache. See help for examples.
   args: !SimpleFlagArg
     name: CACHE_URL
-  optional: true
 - !Flag
-  description: Makes the cache read-only
+  optional: true
   synonyms:
   - -r
   - --read_only_cache
+  description: Makes the cache read-only
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify transcript mode for transcript providing\ndatasources that\
-    \ support multiple modes. [default:\nCANONICAL]"
+  optional: true
   synonyms:
   - --tx-mode
+  description: "Specify transcript mode for transcript providing\ndatasources that\
+    \ support multiple modes. [default:\nCANONICAL]"
   args: !ChoiceFlagArg
     choices: !!set
-      CANONICAL:
       EFFECT:
-  optional: true
+      CANONICAL:
 - !Flag
+  optional: true
+  synonyms:
+  - --infer_genotypes
   description: "Forces the VCF output renderer to populate the output\ngenotypes as\
     \ heterozygous. This option should only be\nused when converting a MAFLITE to\
     \ a VCF; otherwise,\nthe option has no effect. [default: false]"
-  synonyms:
-  - --infer_genotypes
   args: !ChoiceFlagArg
     choices: !!set
-      t:
-      'false':
-      'true':
-      f:
       '0':
-      n:
-      '1':
+      'true':
       no:
+      'false':
+      t:
       y:
+      f:
+      '1':
+      n:
       yes:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --skip-no-alt
   description: "If specified, any mutation with annotation\nalt_allele_seen of 'False'\
     \ will not be annotated or\nrendered. Do not use if output format is a VCF. If\n\
     alt_allele_seen annotation is missing, render the\nmutation."
-  synonyms:
-  - --skip-no-alt
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Specify log output location. Default: oncotator.log'
+  optional: true
   synonyms:
   - --log_name
+  description: 'Specify log output location. Default: oncotator.log'
   args: !SimpleFlagArg
     name: LOG_NAME
-  optional: true
 - !Flag
-  description: "If specified for TCGAMAF output, will put a 'i_' in\nfront of fields\
-    \ that are not directly rendered in\nOncotator TCGA MAFs"
+  optional: true
   synonyms:
   - --prepend
+  description: "If specified for TCGAMAF output, will put a 'i_' in\nfront of fields\
+    \ that are not directly rendered in\nOncotator TCGA MAFs"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --infer-onps
   description: "Will merge adjacent SNPs,DNPs,TNPs,etc if they are in\nthe same sample.\
     \ This assumes that the input file is\nposition sorted. This may cause problems\
     \ with VCF ->\nVCF conversion, and does not guarantee input order is\nmaintained."
-  synonyms:
-  - --infer-onps
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --canonical-tx-file
   description: "Simple text file with list of transcript IDs (one per\nline) to always\
     \ select where possible for variants.\nTranscript IDs must match the ones used\
     \ by the\ntranscript provider in your datasource (e.g. gencode\nENST00000123456).\
@@ -194,74 +194,70 @@ named:
     \ will be selected from this list first,\npossibly superseding a best-effect.\
     \ Note that\ntranscript version number is not considered, whether\nincluded in\
     \ the list or not."
-  synonyms:
-  - -c
-  - --canonical-tx-file
   args: !SimpleFlagArg
     name: CANONICAL_TX_FILE
-  optional: true
 - !Flag
-  description: "Render FILTER columns from VCF input as single\n'filter' column when\
-    \ using TCGAMAF output option."
+  optional: true
   synonyms:
   - --collapse-filter-cols
+  description: "Render FILTER columns from VCF input as single\n'filter' column when\
+    \ using TCGAMAF output option."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --reannotate-tcga-maf-cols
   description: "Prefer new, annotated values to those specified by the\ninput file.\
     \ Only useful when output is TCGA MAF and\nwhen --allow-overwriting is specified.\
     \ Automatically\nturned on with -i TCGAMAF"
-  synonyms:
-  - --reannotate-tcga-maf-cols
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Allow annotations to be overwritten (no\nDuplicateAnnotationException\
-    \ errors). This should only\nbe used in rare cases and user should know when that\n\
-    is. Automatically turned on with -i TCGAMAF"
+  optional: true
   synonyms:
   - -w
   - --allow-overwriting
+  description: "Allow annotations to be overwritten (no\nDuplicateAnnotationException\
+    \ errors). This should only\nbe used in rare cases and user should know when that\n\
+    is. Automatically turned on with -i TCGAMAF"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --collapse-number-annotations
   description: "Advanced: For TCGA MAF output, collapse a set of known\nnumeric fields\
     \ that may have been annotated with a\npipe. This can be useful for downstream\
     \ tools that are\nexpecting a single value."
-  synonyms:
-  - --collapse-number-annotations
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Adds some select field(s) to the other_transcript
+  optional: true
   synonyms:
   - --longer-other-tx
+  description: Adds some select field(s) to the other_transcript
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -V
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -V
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: oncotator [-h] [-v] [-V] [-i {TCGAMAF,SEG_FILE,VCF,MAFLITE}]\n\
   \                 [--db-dir DBDIR]\n                 [-o {TCGAMAF,VCF,SIMPLE_TSV,TCGAVCF,SIMPLE_BED,GENE_LIST}]\n\
   \                 [--override_config OVERRIDE_CONFIG]\n                 [--default_config\
@@ -377,3 +373,4 @@ help_text: "usage: oncotator [-h] [-v] [-V] [-i {TCGAMAF,SEG_FILE,VCF,MAFLITE}]\
   \ licensing information.\n    \n"
 generated_using:
 - --help
+docker_image:

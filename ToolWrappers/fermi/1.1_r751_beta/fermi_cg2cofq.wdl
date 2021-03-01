@@ -8,6 +8,9 @@ task FermiCg2cofq {
     fermi cg2cofq \
       ~{in_do_tcg_fq}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_do_tcg_fq: ""
   }

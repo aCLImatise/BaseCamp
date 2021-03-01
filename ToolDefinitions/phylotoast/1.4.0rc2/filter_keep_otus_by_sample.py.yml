@@ -4,40 +4,40 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -k
-  args: !SimpleFlagArg
-    name: SAMPLES_TO_KEEP_FP
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -i
+  - --otu_map
+  description: "path to the input OTU map (i.e., the output from\npick_otus.py) [REQUIRED]"
   args: !SimpleFlagArg
     name: OTU_MAP
+- !Flag
   optional: true
+  synonyms:
+  - -k
+  - --samples_to_keep_fp
+  description: "path to the file containing Sample IDs to keep in the\nnew OTU map.\
+    \ One Sample ID per line."
+  args: !SimpleFlagArg
+    name: SAMPLES_TO_KEEP_FP
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_otu_map_fp
+  description: path to the output filtered OTU map
+  args: !SimpleFlagArg
+    name: OUTPUT_OTU_MAP_FP
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-i OTU_MAP, --otu_map OTU_MAP\npath\
-    \ to the input OTU map (i.e., the output from\npick_otus.py) [REQUIRED]\n-k SAMPLES_TO_KEEP_FP,\
-    \ --samples_to_keep_fp SAMPLES_TO_KEEP_FP\npath to the file containing Sample\
-    \ IDs to keep in the\nnew OTU map. One Sample ID per line.\n-o OUTPUT_OTU_MAP_FP,\
-    \ --output_otu_map_fp OUTPUT_OTU_MAP_FP\npath to the output filtered OTU map\n\
-    -v, --verbose\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: filter_keep_otus_by_sample.py [-h] -i OTU_MAP -k SAMPLES_TO_KEEP_FP\
@@ -55,3 +55,4 @@ help_text: "usage: filter_keep_otus_by_sample.py [-h] -i OTU_MAP -k SAMPLES_TO_K
   \  -v, --verbose\n"
 generated_using:
 - --help
+docker_image:

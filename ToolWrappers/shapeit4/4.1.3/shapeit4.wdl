@@ -50,6 +50,9 @@ task Shapeit4 {
       ~{if (arg_phased_haplotypes) then "-O" else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seed: "(=15052011)                Seed of the random number generator"
     arg_number_thread: "[ --thread ] arg (=1)              Number of thread used"

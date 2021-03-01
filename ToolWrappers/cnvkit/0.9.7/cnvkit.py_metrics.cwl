@@ -12,12 +12,12 @@ inputs:
 - id: in_drop_low_coverage
   doc: "Drop very-low-coverage bins before calculations to\nreduce negative \"fat\
     \ tail\" of bin log2 values in poor-\nquality tumor samples."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --drop-low-coverage
 - id: in_output
   doc: "Output table file name.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_cn_arrays
@@ -31,9 +31,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output table file name.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cnvkit.py

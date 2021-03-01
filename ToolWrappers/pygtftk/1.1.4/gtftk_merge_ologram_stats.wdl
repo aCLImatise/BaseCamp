@@ -34,6 +34,9 @@ task GtftkMergeOlogramStats {
       ~{if (logger_file) then "--logger-file" else ""} \
       ~{if (write_message_to_file) then "--write-message-to-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pdf_width: "Output pdf file width (inches). (default: None)"
     pdf_height: "Output pdf file height (inches). (default: None)"

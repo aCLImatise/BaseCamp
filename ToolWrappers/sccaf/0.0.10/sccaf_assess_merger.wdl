@@ -12,6 +12,9 @@ task Sccafassessmerger {
       ~{if defined(rounds_file) then ("--rounds-file " +  '"' + rounds_file + '"') else ""} \
       ~{if defined(output_plot) then ("--output-plot " +  '"' + output_plot + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_directory: "Path to input directory where asses results are"
     rounds_file: "File listing rounds ordered"

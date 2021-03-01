@@ -24,6 +24,9 @@ task SurpyvorUpset {
       ~{if defined(keep_merged) then ("--keepmerged " +  '"' + keep_merged + '"') else ""} \
       ~{if defined(plot_out) then ("--plotout " +  '"' + plot_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print out more information while running."
     vcfs_containing_variants: "[VARIANTS [VARIANTS ...]]\\nvcfs containing structural variants"

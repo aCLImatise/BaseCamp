@@ -48,6 +48,9 @@ task FlashLFQ {
       ~{if (mcm) then "--mcm" else ""} \
       ~{if (bur) then "--bur" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     idt: "Required. string; identification file path"
     rep: "Required. string; directory containing spectral data files"

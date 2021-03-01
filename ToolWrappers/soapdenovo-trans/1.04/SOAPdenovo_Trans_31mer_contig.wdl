@@ -12,6 +12,9 @@ task SOAPdenovoTrans31merContig {
       ~{if (int_edgecovcutoff_edges) then "-e" else ""} \
       ~{if (int_mergelevelmin_max) then "-M" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_inputgraph_prefix: "<string>        inputGraph: prefix of input graph file name"
     int_edgecovcutoff_edges: "<int>           EdgeCovCutoff: edges with coverage no larger than EdgeCovCutoff will be deleted, [2]"

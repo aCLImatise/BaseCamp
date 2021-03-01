@@ -8,6 +8,9 @@ task VtoolsReportResults {
     vtools_report results_ \
       ~{v_tools_report}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v_tools_report: ""
   }

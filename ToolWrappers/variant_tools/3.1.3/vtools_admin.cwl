@@ -4,7 +4,7 @@ inputs:
 - id: in_verbosity
   doc: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
     \ to standard output (default to\n1)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbosity
 - id: in_update_resource
@@ -17,20 +17,20 @@ inputs:
     \ ~/.variant_tools or runtime\noption $local_resource) are ignored. Note that\
     \ option\n'all' will download all versions of annotation\ndatabases which can\
     \ be slow and take a lot of disk\nspaces."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --update_resource
 - id: in_mirror_repository
   doc: "Mirror the main variant tools repository to a local\ndirectory. This command\
     \ will check files under dest,\ndownload all missing or outdated files. Existing\
     \ files\nthat do not belong to the repository will not be\nremoved."
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --mirror_repository
 - id: in_merge_samples
   doc: "Merge samples with the same sample names by combining\ngenotypes belonging\
     \ to these samples. Phenotypes\nrelated to individual samples will be merged."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --merge_samples
 - id: in_rename_samples
@@ -43,20 +43,20 @@ inputs:
     prefix: --rename_samples
 - id: in_rename_table
   doc: "NEW_NAME, --rename-table NAME NEW_NAME\nChange table NAME to a NEW_NAME."
-  type: string
+  type: string?
   inputBinding:
     prefix: --rename_table
 - id: in_describe_table
   doc: "NEW_DESCRIPTION, --describe-table TABLE NEW_DESCRIPTION\nUpdate description\
     \ for TABLE with a NEW_DESCRIPTION."
-  type: string
+  type: string?
   inputBinding:
     prefix: --describe_table
 - id: in_validate_build
   doc: "Validate the build of project's reference genome by\nchecking if the reference\
     \ alleles of variants agree\nwith the reference genome sequence. A reference genome\n\
     will be automatically downloaded if it does not exist\nin the local resource directory."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --validate_build
 - id: in_validate_sex
@@ -68,7 +68,7 @@ inputs:
     Y. This argument accepts an option argument, which is\nreport by default (report\
     \ inconsistent genotype or\nsex), but can also be 'force-heterozygote' for male\n\
     individuals on chromosome X."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --validate_sex
 - id: in_save_snapshot
@@ -77,7 +77,7 @@ inputs:
     \ A filename with extension .tar, .tgz\nor .tar.gz can be used to save the snapshot\
     \ to a\nspecific directory with compression but such snapshots\nare not listed\
     \ by command 'vtools show snapshots'."
-  type: File
+  type: File?
   inputBinding:
     prefix: --save_snapshot
 - id: in_extra_files
@@ -85,7 +85,7 @@ inputs:
     \ will be saved along with the\nproject and genotype databases. This could include\n\
     customized format files, project-specific annotations,\nand results. Files outside\
     \ of the current project\ndirectory are not allowed due to security\nconsiderations."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --extra_files
 - id: in_load_snapshot
@@ -93,7 +93,7 @@ inputs:
     \ snapshot will be lost. The NAME\nshould be one of the project snapshots or online\n\
     snapshots listed by command 'vtools show snapshots',\nor name of a local snapshot\
     \ file (with extension .tar,\n.tgz or .tar.gz)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --load_snapshot
 - id: in_set_runtime_option
@@ -107,13 +107,13 @@ inputs:
     prefix: --set_runtime_option
 - id: in_reset_runtime_option
   doc: Reset value to a runtime option to its default value.
-  type: string
+  type: string?
   inputBinding:
     prefix: --reset_runtime_option
 - id: in_global
   doc: "Save option to user_options.py so that it will be\nautomatically set for all\
     \ user projects."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --global
 - id: in_fast_a_two_crr
@@ -129,13 +129,14 @@ inputs:
     prefix: --fasta2crr
 - id: in_type
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vtools

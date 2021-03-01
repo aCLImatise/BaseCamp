@@ -3,105 +3,105 @@ command:
 - statistic.pl
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: STATISTIC_LIBRARY
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: DESTINATION
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: SOURCE
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "Assumes that n-grams in SOURCE file have N\ntokens each. N = 2 by\
-    \ default."
+  optional: true
   synonyms:
   - --ngram
+  description: "Assumes that n-grams in SOURCE file have N\ntokens each. N = 2 by\
+    \ default."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --set_freq_combo
   description: "Uses the frequency combinations in FILE to\ndecode the \"meaning\"\
     \ of the frequency\nvalues in SOURCE. By default, the default\nfrequency combinations\
     \ output by count.pl\nfor ngrams of size N are assumed."
-  synonyms:
-  - --set_freq_combo
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --get_freq_combo
   description: "Prints out the frequency combinations being\nused to FILE. If frequency\
     \ combinations have\nbeen provided through --set_freq_combo switch\nabove these\
     \ are output; otherwise the default\ncombinations being used are output."
-  synonyms:
-  - --get_freq_combo
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: Ignores all n-grams with frequency < N.
+  optional: true
   synonyms:
   - --frequency
+  description: Ignores all n-grams with frequency < N.
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Shows only n-grams with rank <= N.
+  optional: true
   synonyms:
   - --rank
+  description: Shows only n-grams with rank <= N.
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Displays values upto N places of decimal.
+  optional: true
   synonyms:
   - --precision
+  description: Displays values upto N places of decimal.
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Shows only n-grams which have score >= N.
+  optional: true
   synonyms:
   - --score
+  description: Shows only n-grams which have score >= N.
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extended
   description: "Outputs chosen parameters in \"extended\"\nformat, and retains any\
     \ extended data in\nSOURCE. By default, suppresses any extended\ninformation in\
     \ SOURCE, and outputs no new\nparameters."
-  synonyms:
-  - --extended
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Creates formatted output.
+  optional: true
   synonyms:
   - --format
+  description: Creates formatted output.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Prints this help message.
+  optional: true
   synonyms:
   - --help
+  description: Prints this help message.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Prints the version number.
+  optional: true
   synonyms:
   - --version
+  description: Prints the version number.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: statistic.pl [OPTIONS] STATISTIC_LIBRARY DESTINATION SOURCE\n\n\
   Loads the given STATISTIC_LIBRARY, calculates the statistic on n-grams\nin SOURCE\
   \ and outputs results to DESTINATION. SOURCE must be an\nn-gram-frequency file output\
@@ -127,3 +127,4 @@ help_text: "Usage: statistic.pl [OPTIONS] STATISTIC_LIBRARY DESTINATION SOURCE\n
   \ the version number.\n\n   --help            Prints this help message.\n\n"
 generated_using:
 - --help
+docker_image:

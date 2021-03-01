@@ -3,22 +3,22 @@ id: mentalist_call_reads..cwl
 inputs:
 - id: in_kt
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --kt
 - id: in_t
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_db
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --db
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_mentalist
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mentalist

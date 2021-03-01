@@ -3,7 +3,7 @@ id: huge_sort.pl.cwl
 inputs:
 - id: in_keep
   doc: "keep the unsorted file\nThe default is to delete the unsorted file."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep
 - id: in_source
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - huge-sort.pl

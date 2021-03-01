@@ -3,57 +3,57 @@ id: rsat_random_genes.cwl
 inputs:
 - id: in_help
   doc: (must be first argument) display options
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -help
 - id: in_verbose
   doc: verbose
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_specified_standard_output
   doc: "if not specified, the standard output is used.\nThis allows to place the command\
     \ within a pipe."
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_org
   doc: organism
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -org
 - id: in_features
   doc: "alternate feature table. This option allows to speify\nan alternate file where\
     \ the ORF locations are found.\nSee below for a description of the feature file\
     \ format."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -features
 - id: in_feat_type
   doc: "Feature type.\nSupported: gene,mRNA,tRNA,rRNA,scRNA,misc_RNA,CDS,start_codon,stop_codon,exon"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -feattype
 - id: in_replace
   doc: "random selection with replacement\n(a same ORF might appear several times\
     \ in the output)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -replace
 - id: in_number_random_genes
   doc: '#    number of random genes to return'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_groups_number_random
   doc: '#    groups (number of random groups).'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
 - id: in_pairs
   doc: "#\nnumber of random pairs of genes to return. Each row of\nthe output contains\
     \ two genes, separated by a tab."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pairs
 - id: in_fam
@@ -61,14 +61,14 @@ inputs:
     \ (cluster) name in the second column.\n(same format as for multiple-group-analysis).\n\
     The program returns a file of the same size as the\ninput, where input genes have\
     \ been substituted by\nrandom genes."
-  type: long
+  type: long?
   inputBinding:
     prefix: -fam
 - id: in_repeat
   doc: "#\n(requires the option -fam)\nNumber of repetitions for each input group.\n\
     This option generates, for each input group, R output\nrandom gene selections\
     \ of the same size."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -repeat
 - id: in_random_genes
@@ -130,9 +130,10 @@ outputs:
 - id: out_specified_standard_output
   doc: "if not specified, the standard output is used.\nThis allows to place the command\
     \ within a pipe."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_specified_standard_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

@@ -4,6 +4,9 @@ task Maker2chado {
   command <<<
     maker2chado
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

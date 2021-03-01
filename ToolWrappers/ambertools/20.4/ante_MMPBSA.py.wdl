@@ -22,6 +22,9 @@ task AnteMMPBSApy {
       ~{if defined(ligand_mask) then ("--ligand-mask " +  '"' + ligand_mask + '"') else ""} \
       ~{if defined(radii) then ("--radii " +  '"' + radii + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prm_top: "Input \\\"dry\\\" complex topology or solvated complex\\ntopology"
     complex_prm_top: "Complex topology file created by stripping PRMTOP of\\nsolvent"

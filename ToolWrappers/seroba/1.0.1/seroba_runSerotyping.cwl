@@ -3,12 +3,12 @@ id: seroba_runSerotyping.cwl
 inputs:
 - id: in_no_clean
   doc: "Do not clean up intermediate files (assemblies, ariba\nreport)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noclean
 - id: in_coverage
   doc: "threshold for k-mer coverage of the reference sequence\n, default = 20\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --coverage
 - id: in_databases
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - seroba

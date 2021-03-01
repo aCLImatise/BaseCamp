@@ -14,6 +14,9 @@ task Fermi2Interleave {
       ~{in_one_dot_fq} \
       ~{in_two_dot_fq}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fermi: ""
     interleave: ""

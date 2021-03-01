@@ -20,6 +20,9 @@ task GotreeSample {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_reference_trees: "Input reference trees (default \\\"stdin\\\")"
     nb_trees: "Number of trees to sample from input file (default 1)"

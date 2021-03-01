@@ -36,6 +36,9 @@ task AquilaStep1 {
       ~{if defined(mbq_threshold) then ("--mbq_threshold " +  '"' + mbq_threshold + '"') else ""} \
       ~{if defined(boundary) then ("--boundary " +  '"' + boundary + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam_file: "Required parameter; BAM file, called by longranger\\nalign"
     vcf_file: "Required parameter; VCF file, called by FreeBayes"

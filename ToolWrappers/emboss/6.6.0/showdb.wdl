@@ -50,6 +50,9 @@ task Showdb {
       ~{if (all) then "-all" else ""} \
       ~{if (comment) then "-comment" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: "string     Name of a single database to give\\ninformation on (Any string)"
     html: "boolean    [N] Format output as an HTML table"

@@ -16,6 +16,9 @@ task CsfastaToFastq {
       ~{if (warning) then "-warning" else ""} \
       ~{if (log) then "-log" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cs_fast_a: "(string)        input SOLiD csfasta file."
     qual: "(string)        input SOLiD quality file."

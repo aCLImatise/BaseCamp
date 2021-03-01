@@ -104,6 +104,9 @@ task RunPastapy {
       ~{if defined(merger) then ("--merger " +  '"' + merger + '"') else ""} \
       ~{if defined(tree_estimator) then ("--tree-estimator " +  '"' + tree_estimator + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aligned: "If used, then the input file be will treated as\\naligned for the purposes of the first round of tree\\ninference (the algorithm will start with tree\\nsearching on the input before re-aligning). This\\noption only applies if a starting tree is NOT given."
     auto: "This option is mostly for backward compatibility. If\\nused, then automatically identified default values for\\nthe max_subproblem_size, number of cpus, tools,\\nbreaking strategy, masking criteria, and stopping\\ncriteria will be used. This is just like using the\\ndefault options. However, [WARNING] when auto option\\nis used PASTA overrides the value of these options\\neven if you have supplied them; we recommend that you\\nrun this option with --exportconfig to see the exact\\nset of options that will be used in your analysis."

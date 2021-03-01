@@ -14,6 +14,9 @@ task MakeKtaxonomypy {
       ~{if defined(seq_id_two_taxid) then ("--seqid2taxid " +  '"' + seq_id_two_taxid + '"') else ""} \
       ~{if defined(output_taxonomy_file) then ("--output " +  '"' + output_taxonomy_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nodes: "nodes.dmp file from taxonomy"
     names: "names.dmp file from taxonomy"

@@ -1,0 +1,345 @@
+!Command
+command:
+- anvi-gen-contigs-database
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: contigs-db
+  description: '🍺 More on `anvi-gen-contigs-database`:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --contigs-fasta
+  description: "The FASTA file that contains reference sequences you\nmapped your\
+    \ samples against. This could be a reference\ngenome, or contigs from your assembler.\
+    \ Contig names\nin this file must match to those in other input files.\nIf there\
+    \ is a problem anvi'o will gracefully complain\nabout it. (default: None)"
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --project-name
+  description: "Name of the project. Please choose a short but\ndescriptive name (so\
+    \ anvi'o can use it whenever she\nneeds to name an output file, or add a new table\
+    \ in a\ndatabase, or name her first born). (default: None)"
+  args: !SimpleFlagArg
+    name: PROJECT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --num-threads
+  description: "Maximum number of threads to use for multithreading\nwhenever possible.\
+    \ Very conservatively, the default is\n1. It is a good idea to not exceed the\
+    \ number of CPUs\n/ cores on your system. Plus, please be careful with\nthis option\
+    \ if you are running your commands on a SGE\n--if you are clusterizing your runs,\
+    \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
+    \ fast. (default: 1)"
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-db-path
+  description: "Output file path for the new database. (default:\nCONTIGS.db)"
+  args: !SimpleFlagArg
+    name: DB_FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --description
+  description: "A plain text file that contains some description about\nthe project.\
+    \ You can use Markdown syntax. The\ndescription text will be rendered and shown\
+    \ in all\nrelevant interfaces, including the anvi'o interactive\ninterface, or\
+    \ anvi'o summary outputs. (default: None)"
+  args: !SimpleFlagArg
+    name: TEXT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --split-length
+  description: "Anvi'o splits very long contigs into smaller pieces,\nwithout actually\
+    \ splitting them for real. These\n'virtual' splits improve the efficacy of the\n\
+    visualization step, and changing the split size gives\nfreedom to the user to\
+    \ adjust the resolution of their\ndisplay when necessary. The default value is\
+    \ (20000).\nIf you are planning to use your contigs database for\nmetagenomic\
+    \ binning, we advise you to not go below\n10,000 (since the lower the split size\
+    \ is, the more\nitems to show in the display, and decreasing the split\nsize does\
+    \ not really help much to binning). But if you\nare thinking about using this\
+    \ parameter for ad hoc\ninvestigations other than binning, you should ignore\n\
+    our advice, and set the split size as low as you want.\nIf you do not want your\
+    \ contigs to be split, you can\nset the split size to '0' or any other negative\n\
+    integer (lots of unnecessary freedom here, enjoy!)."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-mindful-splitting
+  description: "By default, anvi'o attempts to prevent soft-splitting\nlarge contigs\
+    \ by cutting proper gene calls to make\nsure a single gene is not broken into\
+    \ multiple splits.\nThis requires a careful examination of where genes\nstart\
+    \ and end, and to find best locations to split\ncontigs with respect to this information.\
+    \ So, when the\nuser asks for a split size of, say, 1,000, it serves\nas a mere\
+    \ suggestion. When this flag is used, anvi'o\ndoes what the user wants and creates\
+    \ splits at desired\nlengths (although some functionality may become\nunavailable\
+    \ for the projects that rely on a contigs\ndatabase that is initiated this way).\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  - --kmer-size
+  description: "K-mer size for k-mer frequency calculations. The\ndefault k-mer size\
+    \ for composition-based analyses is\n4, historically. Although tetra-nucleotide\
+    \ frequencies\nseem to offer the the sweet spot of sensitivity,\ninformation density,\
+    \ and manageable number of\ndimensions for clustering approaches, you are welcome\n\
+    to experiment (but maybe you should leave it as is for\nyour first set of analyses).\
+    \ (default: 4)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-gene-calling
+  description: "By default, generating an anvi'o contigs database\nincludes the identification\
+    \ of open reading frames in\ncontigs by running a bacterial gene caller. Declaring\n\
+    this flag will by-pass that process. If you prefer,\nyou can later import your\
+    \ own gene calling results\ninto the database. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --prodigal-translation-table
+  description: "This is a parameter to pass to the Prodigal for a\nspecific translation\
+    \ table. This parameter corresponds\nto the parameter `-g` in Prodigal, the default\
+    \ value\nof which is 11 (so if you do not set anything, it will\nbe set to 11\
+    \ in Prodigal runtime. Please refer to the\nProdigal documentation to determine\
+    \ what is the right\ntranslation table for you if you think you need it.)\n(default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --external-gene-calls
+  description: "A TAB-delimited file to define external gene calls.\nThe file must\
+    \ have these columns: 'gene_callers_id' (a\nunique integer number for each gene\
+    \ call, start from\n1), 'contig' (the contig name the gene call is found),\n'start'\
+    \ (start position, integer), 'stop' (stop\nposition, integer), 'direction' (the\
+    \ direction of the\ngene open reading frame; can be 'f' or 'r'), 'partial'\n(whether\
+    \ it is a complete gene call, or a partial one;\nmust be 1 for partial calls,\
+    \ and 0 for complete\ncalls), 'call_type' (1 if it is coding, 2 if it is\nnoncoding,\
+    \ or 3 if it is unknown (only gene calls with\ncall_type = 1 will have amino acid\
+    \ sequences\ntranslated)), 'source' (the gene caller), and\n'version' (the version\
+    \ of the gene caller, i.e.,\nv2.6.7 or v1.0). An additional 'optional' column\
+    \ is\n'aa_sequence' to explicitly define the amino acid\nseqeuence of a gene call\
+    \ so anvi'o does not attempt to\ntranslate the DNA sequence itself. An EXAMPLE\
+    \ FILE\n(with the optional 'aa_sequence' column (so feel free\nto take it out\
+    \ for your own case)) can be found at the\nURL https://bit.ly/2qEEHuQ. If you\
+    \ are providing\nexternal gene calls, please also see the flag `--skip-\npredict-frame`.\
+    \ (default: None)"
+  args: !SimpleFlagArg
+    name: GENE-CALLS
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-internal-stop-codons
+  description: "This is only relevant when you have an external gene\ncalls file.\
+    \ If anvi'o figures out that your custom\ngene calls result in amino acid sequences\
+    \ with stop\ncodons in the middle, it will complain about it. You\ncan use this\
+    \ flag to tell anvi'o to don't check for\ninternal stop codons, Even though this\
+    \ shouldn't\nhappen in theory, we understand that it almost always\ndoes. In these\
+    \ cases, anvi'o understands that\nsometimes we don't want to care, and will not\
+    \ judge\nyou. Instead, it will replace every stop codon residue\nin the amino\
+    \ acid sequence with an 'X' character.\nPlease let us know if you used this and\
+    \ things failed,\nso we can tell you that you shouldn't have really used\nit if\
+    \ you didn't like failures at the first place\n(smiley). (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-predict-frame
+  description: "When you have provide an external gene calls file,\nanvi'o will predict\
+    \ the correct frame for gene calls\nas best as it can by using a previously-generated\n\
+    Markov model that is trained using the uniprot50\ndatabase (see this for details:\n\
+    https://github.com/merenlab/anvio/pull/1428), UNLESS\nthere is an `aa_sequence`\
+    \ entry for a given gene call\nin the external gene calls file. Please note that\n\
+    PREDICTING FRAMES MAY CHANGE START/STOP POSITIONS OF\nYOUR GENE CALLS SLIGHTLY,\
+    \ if those that are in the\nexternal gene calls file are not describing proper\n\
+    gene calls according to the model. If you use this\nflag, anvi'o will not rely\
+    \ on any model and will\nattempt to translate your DNA sequences by solely\nrelying\
+    \ upon start/stop positions in the file, but it\nwill complain about sequences\
+    \ start/stop positions of\nwhich are not divisible by 3. (default: False)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-gen-contigs-database [-h] -f FASTA [-n PROJECT_NAME]\n   \
+  \                              [-T NUM_THREADS] [-o DB_FILE_PATH]\n            \
+  \                     [--description TEXT_FILE] [-L INT]\n                     \
+  \            [--skip-mindful-splitting] [-K INT]\n                             \
+  \    [--skip-gene-calling]\n                                 [--prodigal-translation-table\
+  \ INT]\n                                 [--external-gene-calls GENE-CALLS]\n  \
+  \                               [--ignore-internal-stop-codons]\n              \
+  \                   [--skip-predict-frame]\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n\nMANDATORY INPUTS:\n  Things you\
+  \ really need to provide to be in business.\n\n  -f FASTA, --contigs-fasta FASTA\n\
+  \                        The FASTA file that contains reference sequences you\n\
+  \                        mapped your samples against. This could be a reference\n\
+  \                        genome, or contigs from your assembler. Contig names\n\
+  \                        in this file must match to those in other input files.\n\
+  \                        If there is a problem anvi'o will gracefully complain\n\
+  \                        about it. (default: None)\n  -n PROJECT_NAME, --project-name\
+  \ PROJECT_NAME\n                        Name of the project. Please choose a short\
+  \ but\n                        descriptive name (so anvi'o can use it whenever she\n\
+  \                        needs to name an output file, or add a new table in a\n\
+  \                        database, or name her first born). (default: None)\n\n\
+  PERFORMANCE:\n  You have multiple cores? WELL, USE THEM MAYBE?.\n\n  -T NUM_THREADS,\
+  \ --num-threads NUM_THREADS\n                        Maximum number of threads to\
+  \ use for multithreading\n                        whenever possible. Very conservatively,\
+  \ the default is\n                        1. It is a good idea to not exceed the\
+  \ number of CPUs\n                        / cores on your system. Plus, please be\
+  \ careful with\n                        this option if you are running your commands\
+  \ on a SGE\n                        --if you are clusterizing your runs, and asking\
+  \ for\n                        multiple threads to use, you may deplete your\n \
+  \                       resources very fast. (default: 1)\n\nOPTIONAL INPUTS:\n\
+  \  Things you may want to tweak.\n\n  -o DB_FILE_PATH, --output-db-path DB_FILE_PATH\n\
+  \                        Output file path for the new database. (default:\n    \
+  \                    CONTIGS.db)\n  --description TEXT_FILE\n                  \
+  \      A plain text file that contains some description about\n                \
+  \        the project. You can use Markdown syntax. The\n                       \
+  \ description text will be rendered and shown in all\n                        relevant\
+  \ interfaces, including the anvi'o interactive\n                        interface,\
+  \ or anvi'o summary outputs. (default: None)\n  -L INT, --split-length INT\n   \
+  \                     Anvi'o splits very long contigs into smaller pieces,\n   \
+  \                     without actually splitting them for real. These\n        \
+  \                'virtual' splits improve the efficacy of the\n                \
+  \        visualization step, and changing the split size gives\n               \
+  \         freedom to the user to adjust the resolution of their\n              \
+  \          display when necessary. The default value is (20000).\n             \
+  \           If you are planning to use your contigs database for\n             \
+  \           metagenomic binning, we advise you to not go below\n               \
+  \         10,000 (since the lower the split size is, the more\n                \
+  \        items to show in the display, and decreasing the split\n              \
+  \          size does not really help much to binning). But if you\n            \
+  \            are thinking about using this parameter for ad hoc\n              \
+  \          investigations other than binning, you should ignore\n              \
+  \          our advice, and set the split size as low as you want.\n            \
+  \            If you do not want your contigs to be split, you can\n            \
+  \            set the split size to '0' or any other negative\n                 \
+  \       integer (lots of unnecessary freedom here, enjoy!).\n  --skip-mindful-splitting\n\
+  \                        By default, anvi'o attempts to prevent soft-splitting\n\
+  \                        large contigs by cutting proper gene calls to make\n  \
+  \                      sure a single gene is not broken into multiple splits.\n\
+  \                        This requires a careful examination of where genes\n  \
+  \                      start and end, and to find best locations to split\n    \
+  \                    contigs with respect to this information. So, when the\n  \
+  \                      user asks for a split size of, say, 1,000, it serves\n  \
+  \                      as a mere suggestion. When this flag is used, anvi'o\n  \
+  \                      does what the user wants and creates splits at desired\n\
+  \                        lengths (although some functionality may become\n     \
+  \                   unavailable for the projects that rely on a contigs\n      \
+  \                  database that is initiated this way). (default: False)\n  -K\
+  \ INT, --kmer-size INT\n                        K-mer size for k-mer frequency calculations.\
+  \ The\n                        default k-mer size for composition-based analyses\
+  \ is\n                        4, historically. Although tetra-nucleotide frequencies\n\
+  \                        seem to offer the the sweet spot of sensitivity,\n    \
+  \                    information density, and manageable number of\n           \
+  \             dimensions for clustering approaches, you are welcome\n          \
+  \              to experiment (but maybe you should leave it as is for\n        \
+  \                your first set of analyses). (default: 4)\n\nGENES IN CONTIGS:\n\
+  \  Expert thingies.\n\n  --skip-gene-calling   By default, generating an anvi'o\
+  \ contigs database\n                        includes the identification of open\
+  \ reading frames in\n                        contigs by running a bacterial gene\
+  \ caller. Declaring\n                        this flag will by-pass that process.\
+  \ If you prefer,\n                        you can later import your own gene calling\
+  \ results\n                        into the database. (default: False)\n  --prodigal-translation-table\
+  \ INT\n                        This is a parameter to pass to the Prodigal for a\n\
+  \                        specific translation table. This parameter corresponds\n\
+  \                        to the parameter `-g` in Prodigal, the default value\n\
+  \                        of which is 11 (so if you do not set anything, it will\n\
+  \                        be set to 11 in Prodigal runtime. Please refer to the\n\
+  \                        Prodigal documentation to determine what is the right\n\
+  \                        translation table for you if you think you need it.)\n\
+  \                        (default: None)\n  --external-gene-calls GENE-CALLS\n \
+  \                       A TAB-delimited file to define external gene calls.\n  \
+  \                      The file must have these columns: 'gene_callers_id' (a\n\
+  \                        unique integer number for each gene call, start from\n\
+  \                        1), 'contig' (the contig name the gene call is found),\n\
+  \                        'start' (start position, integer), 'stop' (stop\n     \
+  \                   position, integer), 'direction' (the direction of the\n    \
+  \                    gene open reading frame; can be 'f' or 'r'), 'partial'\n  \
+  \                      (whether it is a complete gene call, or a partial one;\n\
+  \                        must be 1 for partial calls, and 0 for complete\n     \
+  \                   calls), 'call_type' (1 if it is coding, 2 if it is\n       \
+  \                 noncoding, or 3 if it is unknown (only gene calls with\n     \
+  \                   call_type = 1 will have amino acid sequences\n             \
+  \           translated)), 'source' (the gene caller), and\n                    \
+  \    'version' (the version of the gene caller, i.e.,\n                        v2.6.7\
+  \ or v1.0). An additional 'optional' column is\n                        'aa_sequence'\
+  \ to explicitly define the amino acid\n                        seqeuence of a gene\
+  \ call so anvi'o does not attempt to\n                        translate the DNA\
+  \ sequence itself. An EXAMPLE FILE\n                        (with the optional 'aa_sequence'\
+  \ column (so feel free\n                        to take it out for your own case))\
+  \ can be found at the\n                        URL https://bit.ly/2qEEHuQ. If you\
+  \ are providing\n                        external gene calls, please also see the\
+  \ flag `--skip-\n                        predict-frame`. (default: None)\n  --ignore-internal-stop-codons\n\
+  \                        This is only relevant when you have an external gene\n\
+  \                        calls file. If anvi'o figures out that your custom\n  \
+  \                      gene calls result in amino acid sequences with stop\n   \
+  \                     codons in the middle, it will complain about it. You\n   \
+  \                     can use this flag to tell anvi'o to don't check for\n    \
+  \                    internal stop codons, Even though this shouldn't\n        \
+  \                happen in theory, we understand that it almost always\n       \
+  \                 does. In these cases, anvi'o understands that\n              \
+  \          sometimes we don't want to care, and will not judge\n               \
+  \         you. Instead, it will replace every stop codon residue\n             \
+  \           in the amino acid sequence with an 'X' character.\n                \
+  \        Please let us know if you used this and things failed,\n              \
+  \          so we can tell you that you shouldn't have really used\n            \
+  \            it if you didn't like failures at the first place\n               \
+  \         (smiley). (default: False)\n  --skip-predict-frame  When you have provide\
+  \ an external gene calls file,\n                        anvi'o will predict the\
+  \ correct frame for gene calls\n                        as best as it can by using\
+  \ a previously-generated\n                        Markov model that is trained using\
+  \ the uniprot50\n                        database (see this for details:\n     \
+  \                   https://github.com/merenlab/anvio/pull/1428), UNLESS\n     \
+  \                   there is an `aa_sequence` entry for a given gene call\n    \
+  \                    in the external gene calls file. Please note that\n       \
+  \                 PREDICTING FRAMES MAY CHANGE START/STOP POSITIONS OF\n       \
+  \                 YOUR GENE CALLS SLIGHTLY, if those that are in the\n         \
+  \               external gene calls file are not describing proper\n           \
+  \             gene calls according to the model. If you use this\n             \
+  \           flag, anvi'o will not rely on any model and will\n                 \
+  \       attempt to translate your DNA sequences by solely\n                    \
+  \    relying upon start/stop positions in the file, but it\n                   \
+  \     will complain about sequences start/stop positions of\n                  \
+  \      which are not divisible by 3. (default: False)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   Generate a new anvi'o contigs database\n\
+  \n\U0001F9C0 Can consume: \n\n   contigs-fasta / external-gene-calls\n   \n\U0001F355\
+  \ Can provide: \n\n   contigs-db\n   \n\U0001F37A More on `anvi-gen-contigs-database`:\n\
+  \n   https://merenlab.org/software/anvio/help/7/programs/anvi-gen-contigs-database\n\
+  \n\U0001F37B All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

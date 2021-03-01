@@ -20,6 +20,9 @@ task PancakeCreate {
       ~{if defined(min_len) then ("--min_len " +  '"' + min_len + '"') else ""} \
       ~{if (no_self_alignments) then "--no_self_alignments" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequences: "fasta or multiple fasta file providing input\\nchromosome sequences"
     ids: "gi ids of sequences to download from NCBI"

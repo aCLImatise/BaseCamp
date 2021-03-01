@@ -26,6 +26,9 @@ task GdtoolsRUNFILE {
       ~{if defined(log_dir) then ("--log-dir " +  '"' + log_dir + '"') else ""} \
       ~{if (preserve_pairs) then "--preserve-pairs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: "Type of command file to generate. Valid options are: breseq, breseq-apply, trimmomatic, trimmomatic-PE-unique, read-count. (DEFAULT=breseq)"
     executable: "Alternative executable program to run."

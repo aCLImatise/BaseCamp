@@ -12,6 +12,9 @@ task ProphyleNcbiTreepy {
       ~{if defined(build_reduced_tree) then ("-r " +  '"' + build_reduced_tree + '"') else ""} \
       ~{if defined(root_tree_eg) then ("-u " +  '"' + root_tree_eg + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_file: "log file [stderr]"
     build_reduced_tree: "build reduced tree (one sequence every n)"

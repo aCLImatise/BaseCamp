@@ -2,7 +2,7 @@ version 1.0
 
 task QuasitoolsCallNtvar {
   input {
-    File? error_rate
+    Float? error_rate
     String bam
     String reference
   }
@@ -12,13 +12,15 @@ task QuasitoolsCallNtvar {
       ~{reference} \
       ~{if defined(error_rate) then ("--error_rate " +  '"' + error_rate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    error_rate: "estimated sequencing error rate.\\n-o, --output FILENAME\\n--help                  Show this message and exit.\\n"
+    error_rate: "estimated sequencing error rate."
     bam: ""
     reference: ""
   }
   output {
     File out_stdout = stdout()
-    File out_error_rate = "${in_error_rate}"
   }
 }

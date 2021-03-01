@@ -38,6 +38,9 @@ task SeqkitStats {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "all statistics, including quartiles of seq length, sum_gap, N50"
     basename: "only output basename of files"

@@ -16,6 +16,9 @@ task Moabs {
       ~{if (def) then "--def" else ""} \
       ~{if (boleen_verbose_output) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     str_input_files: "<str>   input files."
     cf: "<str>   configuration file."

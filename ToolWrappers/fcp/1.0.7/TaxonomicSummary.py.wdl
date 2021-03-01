@@ -12,6 +12,9 @@ task TaxonomicSummarypy {
       ~{results_file} \
       ~{summary_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query_file: ""
     results_file: ""

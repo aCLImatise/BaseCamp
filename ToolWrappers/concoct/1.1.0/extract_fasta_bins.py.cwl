@@ -3,7 +3,7 @@ id: extract_fasta_bins.py.cwl
 inputs:
 - id: in_output_path
   doc: "Directory where files will be printed\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_path
 - id: in_fast_a_file
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_path
   doc: "Directory where files will be printed\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_path)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - extract_fasta_bins.py

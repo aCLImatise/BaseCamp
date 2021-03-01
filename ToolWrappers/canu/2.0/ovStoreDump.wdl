@@ -66,6 +66,9 @@ task OvStoreDump {
       ~{if (no_bogart_lopsided) then "-nobogartlopsided" else ""} \
       ~{if (no_bogart_spur) then "-nobogartspur" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mandatory_path_sequence: "mandatory path to a sequence store"
     mandatory_path_overlap: "mandatory path to an overlap store"

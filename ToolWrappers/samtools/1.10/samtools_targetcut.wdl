@@ -24,6 +24,9 @@ task SamtoolsTargetcut {
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(q) then ("-Q " +  '"' + q + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fmt_option: "[=VAL]\\nSpecify a single input file format option in the form\\nof OPTION or OPTION=VALUE"
     reference: "Reference sequence FASTA FILE [null]"

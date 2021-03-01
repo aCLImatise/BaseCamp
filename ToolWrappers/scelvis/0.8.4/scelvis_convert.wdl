@@ -26,6 +26,9 @@ task ScelvisConvert {
       ~{if defined(n_markers) then ("--nmarkers " +  '"' + n_markers + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dir: "path to input/pipeline output directory"
     about_md: "Path to about.md file to embed in the resulting .h5ad\\nfile"

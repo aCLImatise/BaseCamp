@@ -12,6 +12,9 @@ task OutputScaffolds {
       ~{bank_name} \
       ~{if (b) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     b: ""
     an_k: ""

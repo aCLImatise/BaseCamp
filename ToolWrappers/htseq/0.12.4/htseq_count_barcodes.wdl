@@ -48,6 +48,9 @@ task Htseqcountbarcodes {
       ~{if defined(umi) then ("--UMI " +  '"' + umi + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "Type of <alignment_file> data. DEPRECATED: file format\\nis detected automatically. This option is ignored."
     order: "'pos' or 'name'. Sorting order of <alignment_file>\\n(default: name). Paired-end sequencing data must be\\nsorted either by position or by read name, and the\\nsorting order must be specified. Ignored for single-\\nend data."

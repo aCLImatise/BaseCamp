@@ -8,6 +8,9 @@ task Genomedatareport {
     genomedata_report \
       ~{gd_archive}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gd_archive: "genomedata archive"
   }

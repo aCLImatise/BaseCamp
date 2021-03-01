@@ -4,16 +4,55 @@ command:
 positional: []
 named:
 - !Flag
-  description: "file to rename\n-1 original fata file whose names will be finally\
-    \ printed\n-2 new fata file whose names will be replaced\n-o output directory\
-    \ (optional). By default the file is replaced in the same location\n-f output\
-    \ file name (\".rename\" will be added at the end)\n-d dictionary file to be used\
-    \ if fasta files are not supplied\n-v version\n-h display usage message"
+  optional: true
   synonyms:
   - -i
+  description: file to rename
   args: !SimpleFlagArg
     name: input
+- !Flag
   optional: true
+  synonyms:
+  - '-1'
+  description: fata file whose names will be finally printed
+  args: !SimpleFlagArg
+    name: original
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: fata file whose names will be replaced
+  args: !SimpleFlagArg
+    name: new
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: directory (optional). By default the file is replaced in the same location
+  args: !SimpleFlagArg
+    name: output
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: file name (".rename" will be added at the end)
+  args: !SimpleFlagArg
+    name: output
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: file to be used if fasta files are not supplied
+  args: !SimpleFlagArg
+    name: dictionary
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - -h
+  description: usage message
+  args: !SimpleFlagArg
+    name: version
 parent:
 subcommands: []
 usage: []
@@ -32,3 +71,4 @@ help_text: "\nrename_from_fasta script rename any field in a file by either prov
   \ ecoli_clustered.fasta_70 -b ecoli.coverage\n\n"
 generated_using:
 - --help
+docker_image:

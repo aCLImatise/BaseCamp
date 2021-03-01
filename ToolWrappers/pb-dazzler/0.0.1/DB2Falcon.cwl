@@ -3,7 +3,7 @@ id: DB2Falcon.cwl
 inputs:
 - id: in_u
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -U
 - id: in_db_two_fast_a
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - DB2Falcon

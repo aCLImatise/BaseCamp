@@ -14,6 +14,9 @@ task Phame {
       ~{if defined(version_number_exit) then ("-v " +  '"' + version_number_exit + '"') else ""} \
       ~{if defined(v_check) then ("--vcheck " +  '"' + v_check + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help_message_exit: "this help message and exit"
     version_number_exit: "version number and exit"

@@ -10,6 +10,9 @@ task MbnaivebsfinderOutputTable {
       ~{mb_naive_bs_finder} \
       ~{if defined(min_transitions) then ("--min_transitions " +  '"' + min_transitions + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_transitions: ""
     mb_naive_bs_finder: ""

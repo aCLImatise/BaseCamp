@@ -13,22 +13,22 @@ inputs:
     prefix: --regions
 - id: in_keep_non_enriched
   doc: "Keep non-enriched bins also (takes much more\ntime/mem). Not usable with --regions."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep-nonenriched
 - id: in_enriched_per_file
   doc: Keep a column of enrichment info per matrix used.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --enriched-per-file
 - id: in_output
   doc: Path to write gzipped output matrix.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_number_cores
   doc: "Number of cpus to use. Can use at most one per\nchromosome. Default: 1.\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --number-cores
 outputs:
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Path to write gzipped output matrix.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - epic-merge

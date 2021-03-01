@@ -14,6 +14,9 @@ task GraphPlotpy {
       ~{if defined(otu) then ("--OTU " +  '"' + otu + '"') else ""} \
       ~{if defined(drop) then ("--drop " +  '"' + drop + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     swarms: "<FILENAME> contains swarm's results"
     internal_structure: "<FILENAME> contains OTUs' internal structure"

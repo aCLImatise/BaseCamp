@@ -3,62 +3,62 @@ id: elink.cwl
 inputs:
 - id: in_related
   doc: Neighbors in same database
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -related
 - id: in_target
   doc: Links in different database
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -target
 - id: in_name
   doc: Link name (e.g., pubmed_protein_refseq, pubmed_pubmed_citedin, pubmed_pubmed_refs)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -name
 - id: in_db
   doc: Database name
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -db
 - id: in_id
   doc: Unique identifier(s)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -id
 - id: in_cmd
   doc: Command type (returns eLinkResult XML)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -cmd
 - id: in_mode
   doc: "\"ref\" uses LinkOut provider's web site"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -mode
 - id: in_holding
   doc: Name of LinkOut provider
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -holding
 - id: in_cited
   doc: References to this paper
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -cited
 - id: in_cites
   doc: Publication reference list
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -cites
 - id: in_batch
   doc: Bypass Entrez history mechanism
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -batch
 - id: in_label
   doc: Alias for query step
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -label
 - id: in_neighbor
@@ -105,6 +105,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - elink

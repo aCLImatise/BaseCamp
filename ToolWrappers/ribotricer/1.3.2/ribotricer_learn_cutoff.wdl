@@ -24,6 +24,9 @@ task RibotricerLearncutoff {
       ~{if defined(sampling_ratio) then ("--sampling_ratio " +  '"' + sampling_ratio + '"') else ""} \
       ~{if defined(n_bootstraps) then ("--n_bootstraps " +  '"' + n_bootstraps + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ribo_bams: "Path(s) to Ribo-seq BAM file separated by"
     rna_t_svs: "Path(s) to RNA-seq *_translating_ORFs.tsv\\nfile separated by comma"

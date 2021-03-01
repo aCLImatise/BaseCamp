@@ -3,27 +3,27 @@ id: rb.cwl
 inputs:
 - id: in_show_version_exit
   doc: '[ --version ]      Show version and exit.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_run_batch_mode
   doc: '[ --batch ]        Run in batch mode.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in_args
   doc: Command line arguments to initialize RevBayes
-  type: string
+  type: string?
   inputBinding:
     prefix: --args
 - id: in_file
   doc: File(s) to source.
-  type: File
+  type: File?
   inputBinding:
     prefix: --file
 - id: in_setoption
   doc: Set an option key=value.
-  type: string
+  type: string?
   inputBinding:
     prefix: --setOption
 - id: in_variables_dot
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rb

@@ -18,6 +18,9 @@ task Espoca {
       ~{if defined(var_1) then ("--alnfile " +  '"' + var_1 + '"') else ""} \
       ~{if defined(var_2) then ("--species " +  '"' + var_2 + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_0: ""
     var_1: ""

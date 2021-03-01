@@ -20,6 +20,9 @@ task PairtoolsStats {
       ~{if defined(cmd_in) then ("--cmd-in " +  '"' + cmd_in + '"') else ""} \
       ~{if defined(cmd_out) then ("--cmd-out " +  '"' + cmd_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_stats_tsv: "output stats tsv file."
     merge: "If specified, merge multiple input stats files instead\\nof calculating statistics of a .pairs/.pairsam file.\\nMerging is performed via summation of all overlapping\\nstatistics. Non-overlapping statistics are appended to\\nthe end of the file."

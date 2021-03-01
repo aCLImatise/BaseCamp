@@ -3,89 +3,89 @@ command:
 - guess_baits.py
 positional:
 - !Positional
-  description: Sample BAM file(s) to test for target coverage.
+  optional: false
   position: 0
   name: sample_bams
-  optional: false
+  description: Sample BAM file(s) to test for target coverage.
 named:
 - !Flag
-  description: The inferred targets, in BED format.
+  optional: true
   synonyms:
   - -o
   - --output
+  description: The inferred targets, in BED format.
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
-  description: "Filename to output average coverage depths in .cnn\nformat."
+  optional: true
   synonyms:
   - -c
   - --coverage
+  description: "Filename to output average coverage depths in .cnn\nformat."
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
   description: "[CPU], --processes [CPU]\nNumber of subprocesses to segment in parallel.\
     \ If\ngiven without an argument, use the maximum number of\navailable CPUs. [Default:\
     \ use 1 process]"
-  synonyms:
-  - -p
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Potentially targeted genomic regions, e.g. all known\nexons in the\
-    \ reference genome, in BED format. Each of\nthese regions will be tested as a\
-    \ whole for\nenrichment. (Faster method)"
+  optional: true
   synonyms:
   - -t
   - --targets
+  description: "Potentially targeted genomic regions, e.g. all known\nexons in the\
+    \ reference genome, in BED format. Each of\nthese regions will be tested as a\
+    \ whole for\nenrichment. (Faster method)"
   args: !SimpleFlagArg
     name: TARGET_BED
-  optional: true
 - !Flag
-  description: "Sequencing-accessible genomic regions (e.g. from\n'cnvkit.py access'),\
-    \ or known genic regions in the\nreference genome, in BED format. All bases will\
-    \ be\ntested for enrichment. (Slower method)"
+  optional: true
   synonyms:
   - -a
   - --access
+  description: "Sequencing-accessible genomic regions (e.g. from\n'cnvkit.py access'),\
+    \ or known genic regions in the\nreference genome, in BED format. All bases will\
+    \ be\ntested for enrichment. (Slower method)"
   args: !SimpleFlagArg
     name: ACCESS_BED
-  optional: true
 - !Flag
-  description: "Minimum sequencing read depth to accept as captured.\n[Default: 5]"
+  optional: true
   synonyms:
   - -d
   - --min-depth
+  description: "Minimum sequencing read depth to accept as captured.\n[Default: 5]"
   args: !SimpleFlagArg
     name: DEPTH
-  optional: true
 - !Flag
-  description: "Merge regions separated by gaps smaller than this.\n[Default: 25]"
+  optional: true
   synonyms:
   - -g
   - --min-gap
+  description: "Merge regions separated by gaps smaller than this.\n[Default: 25]"
   args: !SimpleFlagArg
     name: GAP_SIZE
-  optional: true
 - !Flag
-  description: "Minimum region length to accept as captured. [Default:\n50]\n"
+  optional: true
   synonyms:
   - -l
   - --min-length
+  description: "Minimum region length to accept as captured. [Default:\n50]\n"
   args: !SimpleFlagArg
     name: TARGET_SIZE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: guess_baits.py [-h] [-o FILENAME] [-c FILENAME] [-p [CPU]]\n  \
@@ -125,3 +125,4 @@ help_text: "usage: guess_baits.py [-h] [-o FILENAME] [-c FILENAME] [-p [CPU]]\n 
   \ length to accept as captured. [Default:\n                        50]\n"
 generated_using:
 - --help
+docker_image:

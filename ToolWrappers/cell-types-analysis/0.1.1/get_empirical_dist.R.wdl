@@ -30,6 +30,9 @@ task GetEmpiricalDistR {
       ~{if defined(semantic_sim_metric) then ("--semantic-sim-metric " +  '"' + semantic_sim_metric + '"') else ""} \
       ~{if defined(output_path) then ("--output-path " +  '"' + output_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_ref_file: "Path to file with reference cell types"
     exclusions: "Path to the yaml file with excluded terms. Must contain fields 'unlabelled' and 'trivial_terms'"

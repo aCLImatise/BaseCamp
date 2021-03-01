@@ -4,6 +4,9 @@ task FilterCtgCov {
   command <<<
     FilterCtgCov
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

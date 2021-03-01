@@ -24,6 +24,9 @@ task NGSDImportHPO {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     obo: "HPO ontology file from 'http://purl.obolibrary.org/obo/hp.obo'."
     an_no: "HPO annotations file from 'http://compbio.charite.de/jenkins/job/hpo.annotations/lastSuccessfulBuild/artifact/util/annotation/phenotype_to_genes.txt'"

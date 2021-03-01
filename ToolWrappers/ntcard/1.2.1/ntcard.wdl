@@ -18,6 +18,9 @@ task Ntcard {
       ~{if defined(pref) then ("--pref " +  '"' + pref + '"') else ""} \
       ~{if defined(name_output_file) then ("--output " +  '"' + name_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "use N parallel threads [1] (N>=2 should be used when input files are >=2)"
     km_er: "the length of kmer"

@@ -10,6 +10,9 @@ task Rsemplotmodel {
       ~{sample_name} \
       ~{output_plot_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample_name: ""
     output_plot_file: ""

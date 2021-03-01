@@ -3,12 +3,12 @@ id: fermi_sub.cwl
 inputs:
 - id: in_t
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_c
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_in_dot_fmd
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fermi

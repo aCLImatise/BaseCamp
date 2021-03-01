@@ -34,6 +34,9 @@ task Snppileup {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (ignore_overlaps) then "--ignore-overlaps" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count_orphans: "Do not discard anomalous read pairs."
     max_depth: "Sets the maximum depth. Default is 4000."

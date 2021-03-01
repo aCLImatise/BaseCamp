@@ -1,0 +1,388 @@
+&id001 !Command
+command:
+- filter-gff
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - filter-gff
+  - sequence
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: INPUT_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -t
+    - --sorted
+    description: "If the GFF file is sorted (all of a sequence\nannotations are contiguos)\
+      \ can use less\nmemory, `sort -s -k 1,1` can be used"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --attribute
+    description: "[evalue|bitscore|identity|length]\nAttribute on which to apply the\
+      \ filter\n[default: bitscore]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --function
+    description: "[mean|median|quantile|std|max|min]\nFunction for filtering  [default:\
+      \ mean]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --value
+    description: "Value for the function (used for *std* and\n*quantile*)"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --comparison
+    description: "[gt|ge|lt|le]  Type of comparison (e.g. ge -> greater than\nor equal\
+      \ to)  [default: ge]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --progress
+    description: Shows Progress Bar
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: filter-gff sequence [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n\
+    \  Filter on a per sequence basis\n\nOptions:\n  -v, --verbose\n  -t, --sorted\
+    \                    If the GFF file is sorted (all of a sequence\n          \
+    \                        annotations are contiguos) can use less\n           \
+    \                       memory, `sort -s -k 1,1` can be used\n\n  -a, --attribute\
+    \ [evalue|bitscore|identity|length]\n                                  Attribute\
+    \ on which to apply the filter\n                                  [default: bitscore]\n\
+    \n  -f, --function [mean|median|quantile|std|max|min]\n                      \
+    \            Function for filtering  [default: mean]\n  -l, --value FLOAT    \
+    \           Value for the function (used for *std* and\n                     \
+    \             *quantile*)\n\n  -c, --comparison [gt|ge|lt|le]  Type of comparison\
+    \ (e.g. ge -> greater than\n                                  or equal to)  [default:\
+    \ ge]\n\n  --progress                      Shows Progress Bar\n  --help      \
+    \                    Show this message and exit.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - filter-gff
+  - cov
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: INPUT_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -f
+    - --reference
+    description: Reference FASTA file for the GFF  [required]
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --strand-specific
+    description: If the coverage must be calculated on each strand
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --sorted
+    description: Assumes the GFF to be correctly sorted
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --min-coverage
+    description: Minimum coverage for the contig/strand
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --rename
+    description: "Emulates BLAST in reading the FASTA file (keeps\nonly the header\
+      \ before the first space)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --progress
+    description: Shows Progress Bar
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: filter-gff cov [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Filter\
+    \ on a per coverage basis\n\nOptions:\n  -v, --verbose\n  -f, --reference FILENAME\
+    \  Reference FASTA file for the GFF  [required]\n  -s, --strand-specific     If\
+    \ the coverage must be calculated on each strand\n  -t, --sorted             \
+    \ Assumes the GFF to be correctly sorted\n  -c, --min-coverage FLOAT  Minimum\
+    \ coverage for the contig/strand\n  -r, --rename              Emulates BLAST in\
+    \ reading the FASTA file (keeps\n                            only the header before\
+    \ the first space)\n\n  --progress                Shows Progress Bar\n  --help\
+    \                    Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - filter-gff
+  - overlap
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: annotations
+    description: -a, --sort-attr [bitscore|identity|length]
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -s
+    - --size
+    description: "Size of the overlap that triggers the filter\n[default: 100]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --sorted
+    description: "If the GFF file is sorted (all of a sequence\nannotations are contiguos\
+      \ and sorted by\nstrand) can use less memory, `sort -s -k 1,1\n-k 7,7` can be\
+      \ used"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --choose-func
+    description: Function to choose between two overlapping
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --no-strand
+    description: "Strand information is not used, if '-t' is\nused, sort GFF file\
+      \ with `sort -s -k 1,1`"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --iterations
+    description: "RANGE  Max number of iteration over which filter\nthe overlaps"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --progress
+    description: Shows Progress Bar
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: filter-gff overlap [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n \
+    \ Use overlapping filter\n\nOptions:\n  -v, --verbose\n  -s, --size INTEGER  \
+    \            Size of the overlap that triggers the filter\n                  \
+    \                [default: 100]\n\n  -t, --sorted                    If the GFF\
+    \ file is sorted (all of a sequence\n                                  annotations\
+    \ are contiguos and sorted by\n                                  strand) can use\
+    \ less memory, `sort -s -k 1,1\n                                  -k 7,7` can\
+    \ be used\n\n  -c, --choose-func TEXT          Function to choose between two\
+    \ overlapping\n                                  annotations\n\n  -a, --sort-attr\
+    \ [bitscore|identity|length]\n                                  Attribute to sort\
+    \ annotations before\n                                  filtering (default bitscore)\
+    \  [default:\n                                  bitscore]\n\n  -d, --no-strand\
+    \                 Strand information is not used, if '-t' is\n               \
+    \                   used, sort GFF file with `sort -s -k 1,1`\n\n  -n, --iterations\
+    \ INTEGER RANGE  Max number of iteration over which filter\n                 \
+    \                 the overlaps\n\n  --progress                      Shows Progress\
+    \ Bar\n  --help                          Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - filter-gff
+  - values
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: than
+    description: --num-lt TEXT  Same as '--num-ge' but 'value' is a number which is
+      less than
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - --str-eq
+    description: "filter by custom key:value, if the argument is 'key:value'\nthe\
+      \ annotation is kept if it contains an attribute 'key'\nwhose value is exactly\
+      \ 'value' as a string"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --str-in
+    description: Same as '--str-eq' but 'value' is contained in the attribute
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --num-eq
+    description: "Same as '--str-eq' but 'value' is a number which is equal or\ngreater\
+      \ than"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --num-ge
+    description: "Same as '--str-eq' but 'value' is a number which is equal or\ngreater\
+      \ than"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --num-le
+    description: "Same as '--num-ge' but 'value' is a number which is equal or\nless\
+      \ than"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --num-gt
+    description: Same as '--str-eq' but 'value' is a number which is greater
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --progress
+    description: Shows Progress Bar
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: filter-gff values [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Filter\
+    \ based on values\n\nOptions:\n  -v, --verbose\n  --str-eq TEXT  filter by custom\
+    \ key:value, if the argument is 'key:value'\n                 the annotation is\
+    \ kept if it contains an attribute 'key'\n                 whose value is exactly\
+    \ 'value' as a string\n\n  --str-in TEXT  Same as '--str-eq' but 'value' is contained\
+    \ in the attribute\n  --num-eq TEXT  Same as '--str-eq' but 'value' is a number\
+    \ which is equal or\n                 greater than\n\n  --num-ge TEXT  Same as\
+    \ '--str-eq' but 'value' is a number which is equal or\n                 greater\
+    \ than\n\n  --num-le TEXT  Same as '--num-ge' but 'value' is a number which is\
+    \ equal or\n                 less than\n\n  --num-gt TEXT  Same as '--str-eq'\
+    \ but 'value' is a number which is greater\n                 than\n\n  --num-lt\
+    \ TEXT  Same as '--num-ge' but 'value' is a number which is less than\n  --progress\
+    \     Shows Progress Bar\n  --help         Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --cite
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: filter-gff [OPTIONS] COMMAND [ARGS]...\n\n  Main function\n\nOptions:\n\
+  \  --version  Show the version and exit.\n  --cite\n  --help     Show this message\
+  \ and exit.\n\nCommands:\n  cov       Filter on a per coverage basis\n  overlap\
+  \   Use overlapping filter\n  sequence  Filter on a per sequence basis\n  values\
+  \    Filter based on values\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0

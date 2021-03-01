@@ -20,6 +20,9 @@ task TabutilsMerge {
       ~{if defined(key_cols) then ("-keycols " +  '"' + key_cols + '"') else ""} \
       ~{if (key_desc) then "-keydesc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     header_comment: "the header is last commented line ('#')"
     noheader: "the files have no header row"

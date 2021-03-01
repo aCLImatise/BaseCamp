@@ -48,6 +48,9 @@ task Reliabilityprofilepl {
       ~{if (show_fit_on_off) then "--show-fitonoff" else ""} \
       ~{if (use_consistency) then "--use-consistency" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "Full documentation"
     seqname: "Project to sequence name"

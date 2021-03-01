@@ -3,22 +3,22 @@ id: compareMS2.cwl
 inputs:
 - id: in_p
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_o
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_two
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: '-2'
 - id: in_one
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: '-1'
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_o
   doc: ''
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_o)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - compareMS2

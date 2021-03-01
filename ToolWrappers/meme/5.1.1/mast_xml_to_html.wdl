@@ -8,6 +8,9 @@ task MastXmlToHtml {
     mast_xml_to_html \
       ~{mast_xml_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mast_xml_file: ""
   }

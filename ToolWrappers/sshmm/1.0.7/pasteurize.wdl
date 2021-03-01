@@ -26,6 +26,9 @@ task Pasteurize {
       ~{if (write) then "--write" else ""} \
       ~{if (no_backups) then "--nobackups" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all_imports: "Adds all __future__ and future imports to each module"
     fix: "Each FIX specifies a transformation; default: all"

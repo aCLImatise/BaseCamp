@@ -4,6 +4,9 @@ task VennMplpyc {
   command <<<
     venn_mpl_pyc
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

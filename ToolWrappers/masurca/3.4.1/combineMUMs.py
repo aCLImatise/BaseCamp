@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Int, String, File
+
+Combinemums_V0_1_0 = CommandToolBuilder(tool="combineMUMs", base_command=["combineMUMs"], inputs=[ToolInput(tag="in_only_output_stdout", input_type=Boolean(optional=True), prefix="-D", doc=InputDocumentation(doc="Only output to stdout the difference positions\nand characters")), ToolInput(tag="in_allow_matches_acgts", input_type=Boolean(optional=True), prefix="-n", doc=InputDocumentation(doc="Allow matches only between nucleotides, i.e., ACGTs")), ToolInput(tag="in_break_matches_num", input_type=Int(optional=True), prefix="-N", doc=InputDocumentation(doc="Break matches at <num> or more consecutive non-ACGTs")), ToolInput(tag="in_used_label_query_match", input_type=String(optional=True), prefix="-q", doc=InputDocumentation(doc="Used to label query match")), ToolInput(tag="in_used_label_reference_match", input_type=String(optional=True), prefix="-r", doc=InputDocumentation(doc="Used to label reference match")), ToolInput(tag="in_output_differences_strings", input_type=Boolean(optional=True), prefix="-S", doc=InputDocumentation(doc="Output all differences in strings")), ToolInput(tag="in_label_query_matches", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc="Label query matches with query fasta header")), ToolInput(tag="in_set_verbose_level", input_type=Int(optional=True), prefix="-v", doc=InputDocumentation(doc="Set verbose level for extra output")), ToolInput(tag="in_reset_default_filename", input_type=File(optional=True), prefix="-W", doc=InputDocumentation(doc="Reset the default output filename witherrors.gaps")), ToolInput(tag="in_do_output_files", input_type=Boolean(optional=True), prefix="-x", doc=InputDocumentation(doc="Don't output .cover files")), ToolInput(tag="in_set_errorrate_cutoff", input_type=Boolean(optional=True), prefix="-e", doc=InputDocumentation(doc="Set error-rate cutoff to e (e.g. 0.02 is two percent)")), ToolInput(tag="in_ref_sequence", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_match_sequences", input_type=String(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_gaps_file", input_type=String(), position=2, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_reset_default_filename", output_type=File(optional=True), selector=InputSelector(input_to_select="in_reset_default_filename", type_hint=File()), doc=OutputDocumentation(doc="Reset the default output filename witherrors.gaps"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Combinemums_V0_1_0().translate("wdl", allow_empty_container=True)
+

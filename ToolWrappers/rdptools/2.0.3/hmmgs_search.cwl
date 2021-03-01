@@ -1,15 +1,15 @@
 class: CommandLineTool
 id: hmmgs_search.cwl
 inputs:
-- id: in_do_normalize_input
+- id: in_normalize_hmm_input
   doc: don't normalize the hmm input
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -u
 - id: in_prune_search_improve
   doc: prune the search if the score does not improve after n_nodes (default 20, set
     to 0 to disable pruning)
-  type: long
+  type: long?
   inputBinding:
     prefix: -p
 - id: in_limit_in_seconds
@@ -32,6 +32,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hmmgs

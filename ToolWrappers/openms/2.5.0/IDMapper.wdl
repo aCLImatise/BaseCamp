@@ -32,6 +32,9 @@ task IDMapper {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id: "*                        Protein/peptide identifications file (valid formats: 'mzid', 'idXML')"
     in: "*                        Feature map/consensus map file (valid formats: 'featureXML', 'consensusXML', 'mzq')"

@@ -12,6 +12,9 @@ task Edalign {
       ~{if defined(mandatory_path_second) then ("-b " +  '"' + mandatory_path_second + '"') else ""} \
       ~{if defined(ref) then ("-ref " +  '"' + ref + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mandatory_path_first: "Mandatory, path to first input file"
     mandatory_path_second: "Mandatory, path to second input file"

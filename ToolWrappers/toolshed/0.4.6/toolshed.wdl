@@ -4,6 +4,9 @@ task Toolshed {
   command <<<
     toolshed
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

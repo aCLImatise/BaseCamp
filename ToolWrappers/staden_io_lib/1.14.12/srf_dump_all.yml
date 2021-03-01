@@ -3,30 +3,33 @@ command:
 - srf_dump_all
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: archive_name
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -c
   description: "Chunk types to output given as a comma delimited list of types.\n\
     The following types are allowed: \"all\", \"seq\", \"prb\",\n\"int\", \"nse\"\
     , \"sig2\".\nThe default is \"all\"."
-  synonyms:
-  - -c
   args: !SimpleFlagArg
     name: chunk_types
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -d
   description: "Distinations to output to.\nThe following types are allowed: \"console\"\
     , \"file\", \"none\".\nThe default is \"console\".  Console and file can be together,\n\
     but none is exclusive."
-  synonyms:
-  - -d
   args: !SimpleFlagArg
     name: destination_types
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
   description: "The filter to apply to reads in the archive.  If reads match the\n\
     filter they are dumped.\nThe filter takes the form of <name>=<value>, where <name>\
     \ can be\n\"read\", \"prefix\", \"file\".\nIf the <name> is \"read\" the value\
@@ -36,37 +39,34 @@ named:
     \ is \"file\" the value is a file name where any\nnumber of \"read\" and \"prefix\"\
     \ name value pairs can be included,\none per line.\nThe default is no filter,\
     \ which means all reads are dumped."
-  synonyms:
-  - -f
   args: !SimpleFlagArg
     name: read_filter
-  optional: true
 - !Flag
-  description: Output the total number of reads at the bottom.
+  optional: true
   synonyms:
   - -n
+  description: Output the total number of reads at the bottom.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Output the total number of reads only.  Nothing else is output.
+  optional: true
   synonyms:
   - -o
+  description: Output the total number of reads only.  Nothing else is output.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Type of output.  Only one value allowed.\nCurrently \"text\" and \"\
-    solexa\" is supported.\nThe default is \"text\"."
+  optional: true
   synonyms:
   - -t
+  description: "Type of output.  Only one value allowed.\nCurrently \"text\" and \"\
+    solexa\" is supported.\nThe default is \"text\"."
   args: !SimpleFlagArg
     name: type_of_output
-  optional: true
 - !Flag
-  description: Print verbose messages.
+  optional: true
   synonyms:
   - -v
+  description: Print verbose messages.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -101,3 +101,4 @@ help_text: "Unrecognised option: --\nUnrecognised option: -h\nUnrecognised optio
   \n"
 generated_using:
 - --help
+docker_image:

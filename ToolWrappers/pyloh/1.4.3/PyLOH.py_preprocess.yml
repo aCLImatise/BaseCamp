@@ -4,81 +4,81 @@ command:
 - preprocess
 positional:
 - !Positional
-  description: FASTA file for reference genome.
+  optional: false
   position: 0
   name: reference_genome
-  optional: false
+  description: FASTA file for reference genome.
 - !Positional
-  description: BAM file for normal sample.
+  optional: false
   position: 1
   name: normal_bam
-  optional: false
+  description: BAM file for normal sample.
 - !Positional
-  description: BAM file for tumor sample.
+  optional: false
   position: 2
   name: tumor_bam
-  optional: false
+  description: BAM file for tumor sample.
 - !Positional
-  description: Base name of preprocessed files to be created.
+  optional: false
   position: 3
   name: filename_base
-  optional: false
+  description: Base name of preprocessed files to be created.
 named:
 - !Flag
-  description: "BED file for segments. If not provided, use autosomes\nas segments.\
-    \ Default is None."
+  optional: true
   synonyms:
   - --segments_bed
+  description: "BED file for segments. If not provided, use autosomes\nas segments.\
+    \ Default is None."
   args: !SimpleFlagArg
     name: SEGMENTS_BED
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --WES
   description: "Flag indicating whether the BAM files are whole exome\nsequencing(WES)\
     \ or not. If not provided, the BAM files\nare assumed to be whole genome sequencing(WGS).\n\
     Default is False."
-  synonyms:
-  - --WES
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum reads depth required for both normal and tumor\nsamples. Default\
-    \ is 20."
+  optional: true
   synonyms:
   - --min_depth
+  description: "Minimum reads depth required for both normal and tumor\nsamples. Default\
+    \ is 20."
   args: !SimpleFlagArg
     name: MIN_DEPTH
-  optional: true
 - !Flag
-  description: Minimum base quality required. Default is 10.
+  optional: true
   synonyms:
   - --min_base_qual
+  description: Minimum base quality required. Default is 10.
   args: !SimpleFlagArg
     name: MIN_BASE_QUAL
-  optional: true
 - !Flag
-  description: Minimum mapping quality required. Default is 10.
+  optional: true
   synonyms:
   - --min_map_qual
+  description: Minimum mapping quality required. Default is 10.
   args: !SimpleFlagArg
     name: MIN_MAP_QUAL
-  optional: true
 - !Flag
-  description: "Number of processes to launch for preprocessing.\nDefault is 1.\n"
+  optional: true
   synonyms:
   - --process_num
+  description: "Number of processes to launch for preprocessing.\nDefault is 1.\n"
   args: !SimpleFlagArg
     name: PROCESS_NUM
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: PyLOH preprocess [-h] [--segments_bed SEGMENTS_BED] [--WES]\n \
@@ -104,3 +104,4 @@ help_text: "usage: PyLOH preprocess [-h] [--segments_bed SEGMENTS_BED] [--WES]\n
   \                    Default is 1.\n"
 generated_using:
 - --help
+docker_image:

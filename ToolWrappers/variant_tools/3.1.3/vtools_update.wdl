@@ -26,6 +26,9 @@ task VtoolsUpdate {
       ~{if (limiting_command_eg) then "-s" else ""} \
       ~{if (genotypes) then "--genotypes" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbosity: "Output error and warning (0), info (1), debug (2) and\\ntrace (3) information to standard output (default to\\n1)."
     from_file: "A list of files that will be used to add or update\\nexisting fields of variants. The file should be\\ndelimiter separated with format described by parameter\\n--format. Gzipped files are acceptable. If input files\\ncontains genotype information, have been inputted\\nbefore, and can be linked to the samples they created\\nwithout ambiguity (e.g. single sample, or samples with\\ndetectable sample names), genotypes and their\\ninformation will also be updated."

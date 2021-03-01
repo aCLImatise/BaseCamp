@@ -54,6 +54,9 @@ task Rustdoc {
       ~{if defined(internal_debugging_options) then ("-Z " +  '"' + internal_debugging_options + '"') else ""} \
       ~{if defined(sys_root) then ("--sysroot " +  '"' + sys_root + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "use verbose output"
     input_format: "[rust]\\nthe input type of the specified file"

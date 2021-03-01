@@ -10,6 +10,9 @@ task Maketable {
       ~{if defined(cols) then ("-cols " +  '"' + cols + '"') else ""} \
       ~{if defined(rows) then ("-rows " +  '"' + rows + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cols: ""
     rows: ""

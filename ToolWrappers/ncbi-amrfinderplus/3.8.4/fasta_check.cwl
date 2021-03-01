@@ -3,12 +3,12 @@ id: fasta_check.cwl
 inputs:
 - id: in_hyphen
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -hyphen
 - id: in_aa
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -aa
 - id: in_in
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fasta_check

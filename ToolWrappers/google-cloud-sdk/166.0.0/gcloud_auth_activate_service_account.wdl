@@ -14,6 +14,9 @@ task GcloudAuthActivateserviceaccount {
       ~{if defined(password_file) then ("--password-file " +  '"' + password_file + '"') else ""} \
       ~{if (prompt_for_password) then "--prompt-for-password" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     key_file: "Path to the private key file."
     password_file: "Path to a file containing the password for the service account private\\nkey (only for a .p12 file)."

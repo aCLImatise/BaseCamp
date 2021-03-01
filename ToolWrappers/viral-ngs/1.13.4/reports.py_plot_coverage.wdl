@@ -42,6 +42,9 @@ task ReportspyPlotCoverage {
       ~{if defined(tmp_dir) then ("--tmp_dir " +  '"' + tmp_dir + '"') else ""} \
       ~{if (tmp_dir_keep) then "--tmp_dirKeep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     plot_format: "File format of the coverage plot. By default it is\\ninferred from the file extension of out_plot_file, but\\nit can be set explicitly via --plotFormat. Valid\\nformats include: ps, jpg, rgba, jpeg, eps, png, raw,\\ntif, tiff, svg, pdf, svgz, pgf"
     plot_data_style: "The plot data display style. Valid options: filled,\\nline, dots (default: filled)"

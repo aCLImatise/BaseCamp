@@ -24,6 +24,9 @@ task Cmasker {
       ~{if (prefix_for_outfiles) then "-p" else ""} \
       ~{if (suppress_fasta_output) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fasta_input: "FASTA Input"
     jellfish_database: "Jellfish Database"

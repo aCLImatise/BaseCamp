@@ -16,6 +16,9 @@ task Meme2images {
       ~{if (png) then "-png" else ""} \
       ~{if (rc) then "-rc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     motif: "output only a selected motif; repeatable"
     eps: "output logos in eps format"

@@ -16,6 +16,9 @@ task ChainSamplespy {
       ~{if defined(max_three_diff) then ("--max_3_diff " +  '"' + max_three_diff + '"') else ""} \
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fuzzy_junction: "Max allowed distance in junction to be considered\\nidentical (default: 0 bp)"
     dun_merge_five_shorter: "Don't collapse shorter 5' transcripts (default: off)"

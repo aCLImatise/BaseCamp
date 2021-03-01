@@ -38,6 +38,9 @@ task Dart {
       ~{if (version) then "-v" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_threads: "number of threads [4]"
     f: "files with #1 mates reads"

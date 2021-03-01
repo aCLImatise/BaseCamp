@@ -24,6 +24,9 @@ task CargoNew {
       ~{if (frozen) then "--frozen" else ""} \
       ~{if (locked) then "--locked" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcs: "Initialize a new repository for the given version\\ncontrol system (git or hg) or do not initialize any version\\ncontrol at all (none) overriding a global configuration."
     bin: "Use a binary (application) template"

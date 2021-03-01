@@ -6,7 +6,7 @@ task Pos2bedpl {
     Boolean? bed
     String? track
     Boolean? set_th_column
-    Boolean? allow_th_column
+    Boolean? allow_column_be
     File? color
     File peak_slash_pos_file
   }
@@ -17,15 +17,18 @@ task Pos2bedpl {
       ~{if (bed) then "-bed" else ""} \
       ~{if defined(track) then ("-track " +  '"' + track + '"') else ""} \
       ~{if (set_th_column) then "-5" else ""} \
-      ~{if (allow_th_column) then "-float" else ""} \
+      ~{if (allow_column_be) then "-float" else ""} \
       ~{if defined(color) then ("-color " +  '"' + color + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_to_file: "(Output to file)"
     bed: "(Output to file with same name as input with *.bed extension)"
     track: "(Include track line with name for uploading to UCSC Genome Browser)"
     set_th_column: "(Set 5th column to the value 1 instead of value in 6th column of pos file)"
-    allow_th_column: "(Allow the 5th column to be a floating point number, default: integer)"
+    allow_column_be: "(Allow the 5th column to be a floating point number, default: integer)"
     color: "(color strands red and blue, will also add a track line to file)"
     peak_slash_pos_file: ""
   }

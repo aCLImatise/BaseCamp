@@ -2,10 +2,10 @@ version 1.0
 
 task Addbamtrackpl {
   input {
+    String? label
+    File? bam_url
     File? in
     File? out
-    File? bam_url
-    String? label
     String? key
     String? classname
     File? bigwig_coverage
@@ -18,10 +18,10 @@ task Addbamtrackpl {
   command <<<
     add_bam_track_pl \
       ~{add_bam_track_do_tpl} \
+      ~{if defined(label) then ("--label " +  '"' + label + '"') else ""} \
+      ~{if defined(bam_url) then ("--bam_url " +  '"' + bam_url + '"') else ""} \
       ~{if defined(in) then ("--in " +  '"' + in + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
-      ~{if defined(bam_url) then ("--bam_url " +  '"' + bam_url + '"') else ""} \
-      ~{if defined(label) then ("--label " +  '"' + label + '"') else ""} \
       ~{if defined(key) then ("--key " +  '"' + key + '"') else ""} \
       ~{if defined(classname) then ("--classname " +  '"' + classname + '"') else ""} \
       ~{if defined(bigwig_coverage) then ("--bigwigCoverage " +  '"' + bigwig_coverage + '"') else ""} \
@@ -30,11 +30,14 @@ task Addbamtrackpl {
       ~{if defined(max_score) then ("--max_score " +  '"' + max_score + '"') else ""} \
       ~{if (config) then "--config" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
+    label: "\\"
+    bam_url: "\\"
     in: "input trackList.json file. Default: data/trackList.json."
     out: "Output trackList.json file. Default: data/trackList.json."
-    bam_url: "URL to BAM file (can be a relative path)"
-    label: "unique track label for the new track."
     key: "key (display name) for track [default: label value]"
     classname: "CSS class for display [default: bam]"
     bigwig_coverage: "URL to BW file correlated to BAM file. Display coverage depth when\\nzoomed out."

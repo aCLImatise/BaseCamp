@@ -18,6 +18,9 @@ task NebulizerCreateBatchUsersEND {
       ~{start} \
       ~{end}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nebulizer: ""
     create_batch_users: ""

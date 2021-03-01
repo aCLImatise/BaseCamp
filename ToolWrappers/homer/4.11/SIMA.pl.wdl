@@ -46,6 +46,9 @@ task SIMApl {
       ~{if defined(d_name) then ("-dname " +  '"' + d_name + '"') else ""} \
       ~{if defined(d_name_two) then ("-dname2 " +  '"' + d_name_two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     domains_perform_analysis: "(Domains to perform analysis on)"
     features_check_enrichment: "[peak file2] ... (features to check for enrichment)"

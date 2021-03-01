@@ -36,6 +36,9 @@ task Nxtrim {
       ~{if defined(min_overlap) then ("--minoverlap " +  '"' + min_overlap + '"') else ""} \
       ~{if defined(minlength) then ("--minlength " +  '"' + minlength + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     one: "[ --r1 ] arg                 read 1 in fastq format (gzip allowed)"
     two: "[ --r2 ] arg                 read 2 in fastq format (gzip allowed)"

@@ -8,6 +8,9 @@ task FsnvizStarfusion {
     fsnviz star_fusion \
       ~{var_input}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_input: ""
   }

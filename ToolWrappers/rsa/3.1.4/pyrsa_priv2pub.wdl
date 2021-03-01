@@ -14,6 +14,9 @@ task Pyrsapriv2pub {
       ~{if defined(inform) then ("--inform " +  '"' + inform + '"') else ""} \
       ~{if defined(out_form) then ("--outform " +  '"' + out_form + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_filename_reads: "Input filename. Reads from stdin if not specified"
     output_filename_writes: "Output filename. Writes to stdout of not specified"

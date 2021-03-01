@@ -12,6 +12,9 @@ task IgdiscoverInit {
       ~{if defined(single_reads) then ("--single-reads " +  '"' + single_reads + '"') else ""} \
       ~{if defined(reads_one) then ("--reads1 " +  '"' + reads_one + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: "Directory with V.fasta, D.fasta and J.fasta files. If\\nnot given, a dialog is shown."
     single_reads: "File with single-end reads (.fasta.gz or .fastq.gz)"

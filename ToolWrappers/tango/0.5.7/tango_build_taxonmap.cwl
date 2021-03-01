@@ -3,12 +3,12 @@ id: tango_build_taxonmap.cwl
 inputs:
 - id: in_p
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_d
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -d
 - id: in_tango
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tango

@@ -1,0 +1,123 @@
+!Command
+command:
+- slice_mercator_alignment
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: genome
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: chromosome
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: start
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: end
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: strand
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --data
+  description: path to map, genome and alignment files
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --map
+  description: path to map and genome files
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --align
+  description: path to alignment files
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --lazy
+  description: warn, rather than die, if the subalignment can't be obtained
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  - --truncate
+  description: truncate unmappable sequence (rather than skipping) and show truncated
+    subalignment
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --stockholm
+  description: use and display Stockholm-format alignments with conservation statistics
+    (default is multi-FASTA)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-0'
+  - --zerobased
+  description: coordinates are 0-based (default is 1-based)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --halfopen
+  description: end coordinate is open, i.e., [start, end)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "slice_mercator_alignment from FSA 1.15.9\n\nUsage: slice_mercator_alignment\
+  \ [options] <genome> <chromosome> <start> <end> <strand>\n\nExtracts the corresponding\
+  \ subalignment from a Mercator multiple alignment.\n\nOptions:\n    -h, --help \
+  \                 show this message\n\n    -D, --data <directory>      path to map,\
+  \ genome and alignment files\n    -M, --map <directory>       path to map and genome\
+  \ files\n    -A, --align <directory>     path to alignment files\n    -L, --lazy\
+  \                  warn, rather than die, if the subalignment can't be obtained\n\
+  \    -U, --truncate              truncate unmappable sequence (rather than skipping)\
+  \ and show truncated subalignment\n\n    -s, --stockholm             use and display\
+  \ Stockholm-format alignments with conservation statistics (default is multi-FASTA)\n\
+  \n    -0, --zerobased             coordinates are 0-based (default is 1-based)\n\
+  \    -o, --halfopen              end coordinate is open, i.e., [start, end)\n\n\
+  Assumes that coordinates are 1-based and fully-closed,\ntherefore representing the\
+  \ interval [start, end].\n\nIf requested, unmappable sequence will be truncated\
+  \ to the mappable portion;\nnote that the truncation will favor the beginning of\
+  \ the requested sequence.\n\nIf the requested sequence is on the - strand, then\
+  \ the corresponding\nsubalignment will be reverse-complemented.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fsa:1.15.9--h8b12597_1

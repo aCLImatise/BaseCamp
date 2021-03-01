@@ -22,6 +22,9 @@ task SgaMerge {
       ~{if (no_forward) then "--no-forward" else ""} \
       ~{if (no_reverse) then "--no-reverse" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     threads: "use NUM threads to merge the indices (default: 1)"

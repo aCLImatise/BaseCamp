@@ -2,7 +2,7 @@ version 1.0
 
 task ExtractFastaSeq {
   input {
-    String? query_list_effect
+    String? query_list_have
     Boolean? s
     Int? s_one
     Int? s_two
@@ -18,7 +18,7 @@ task ExtractFastaSeq {
   command <<<
     extract_fasta_seq \
       ~{option_dot} \
-      ~{if defined(query_list_effect) then ("-q " +  '"' + query_list_effect + '"') else ""} \
+      ~{if defined(query_list_have) then ("-q " +  '"' + query_list_have + '"') else ""} \
       ~{if (s) then "-s" else ""} \
       ~{if defined(s_one) then ("-s1 " +  '"' + s_one + '"') else ""} \
       ~{if defined(s_two) then ("-s2 " +  '"' + s_two + '"') else ""} \
@@ -30,8 +30,11 @@ task ExtractFastaSeq {
       ~{if (lazy) then "--lazy" else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    query_list_effect: "[<str> ...]  query list. \\\"-s1\\\" and \\\"-d1\\\" have no effect on this"
+    query_list_have: "[<str> ...]  query list. \\\"-s1\\\" and \\\"-d1\\\" have no effect on this"
     s: "[<subject file>]   subject file [stdin]"
     s_one: "query file sep_pattern [\\s+]"
     s_two: "subject file sep_pattern [\\s+]"

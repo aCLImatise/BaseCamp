@@ -18,6 +18,9 @@ task SingularityRemoteAdd {
       ~{add} \
       ~{remote_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

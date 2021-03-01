@@ -20,6 +20,9 @@ task VsnpFastaGbkGffByAccpy {
       ~{if (gff) then "--gff" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     accession: "NCBI chromosome number"
     fast_a: "get FASTA file"

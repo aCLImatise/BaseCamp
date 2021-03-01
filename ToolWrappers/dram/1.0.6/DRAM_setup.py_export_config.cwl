@@ -4,7 +4,7 @@ inputs:
 - id: in_output_file
   doc: "File to save exported CONFIG file to, by default\nwillprint CONFIG (default:\
     \ None)\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_file
 outputs:
@@ -14,9 +14,10 @@ outputs:
 - id: out_output_file
   doc: "File to save exported CONFIG file to, by default\nwillprint CONFIG (default:\
     \ None)\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - DRAM-setup.py

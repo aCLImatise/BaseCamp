@@ -9,7 +9,7 @@ inputs:
     \ as a single region of difference.\nThis value may be made smaller (4?) to\n\
     improve the resolution of nearby\ndifferences, but the program will go much\n\
     slower. (Integer 2 or more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -wordsize
 - id: in_global_differences
@@ -21,13 +21,14 @@ inputs:
     sequences. If you have protein sequences or\nshort RNA sequences however, you\
     \ will be\ninterested in differences at the very ends .\nIt this option is set\
     \ to be true then the\ndifferences at the ends will also be\nreported."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -globaldifferences
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _diffseq

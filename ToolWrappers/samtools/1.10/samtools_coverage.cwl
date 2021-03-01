@@ -3,78 +3,78 @@ id: samtools_coverage.cwl
 inputs:
 - id: in_bam_list
   doc: list of input BAM filenames, one per line
-  type: File
+  type: File?
   inputBinding:
     prefix: --bam-list
 - id: in_min_read_len
   doc: ignore reads shorter than INT bp [0]
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-read-len
 - id: in_min_mq
   doc: base quality threshold [0]
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-MQ
 - id: in_min_bq
   doc: mapping quality threshold [0]
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-BQ
 - id: in_rf
   doc: 'required flags: skip reads with mask bits unset []'
-  type: long
+  type: long?
   inputBinding:
     prefix: --rf
 - id: in_ff
   doc: "filter flags: skip reads with mask bits set\n[UNMAP,SECONDARY,QCFAIL,DUP]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --ff
 - id: in_histogram
   doc: show histogram instead of tabular output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --histogram
 - id: in_ascii
   doc: show only ASCII characters in histogram
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ascii
 - id: in_output
   doc: write output to FILE [stdout]
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_no_header
   doc: don't print a header in tabular mode
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-header
 - id: in_n_bins
   doc: number of bins in histogram [terminal width - 40]
-  type: long
+  type: long?
   inputBinding:
     prefix: --n-bins
 - id: in_region
   doc: 'show specified region. Format: chr:start-end.'
-  type: string
+  type: string?
   inputBinding:
     prefix: --region
 - id: in_input_fmt_option
   doc: "[=VAL]\nSpecify a single input file format option in the form\nof OPTION or\
     \ OPTION=VALUE"
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-fmt-option
 - id: in_reference
   doc: Reference sequence FASTA FILE [null]
-  type: File
+  type: File?
   inputBinding:
     prefix: --reference
 - id: in_verbosity
   doc: Set level of verbosity
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbosity
 - id: in_r_name
@@ -128,9 +128,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: write output to FILE [stdout]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - samtools

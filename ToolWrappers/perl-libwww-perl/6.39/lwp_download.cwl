@@ -3,12 +3,12 @@ id: lwp_download.cwl
 inputs:
 - id: in_save_file_ascii
   doc: save the file in ASCII mode
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_use_http_headers
   doc: use HTTP headers to guess output filename
-  type: File
+  type: File?
   inputBinding:
     prefix: -s
 - id: in_save
@@ -77,9 +77,10 @@ outputs:
   type: stdout
 - id: out_use_http_headers
   doc: use HTTP headers to guess output filename
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_use_http_headers)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - lwp-download

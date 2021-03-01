@@ -8,6 +8,9 @@ task FindErrorsDump {
     findErrors_Dump \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
   }

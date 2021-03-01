@@ -12,6 +12,9 @@ task GcloudServicemanagementDelete {
       ~{optional} \
       ~{flags}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     service: ""
     optional: ""

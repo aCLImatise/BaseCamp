@@ -16,6 +16,9 @@ task Subsamplepy {
       ~{if defined(min_fl_count) then ("--min_fl_count " +  '"' + min_fl_count + '"') else ""} \
       ~{if defined(step) then ("--step " +  '"' + step + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     by: "Unique specifier name(default: id)"
     iterations: "Number of iterations (default: 100)"

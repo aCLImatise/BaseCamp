@@ -3,17 +3,17 @@ id: proteins_not_in_library.py.cwl
 inputs:
 - id: in_a_fasta_file
   doc: A fasta file
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta
-- id: in_csv_file_column
+- id: in_csv_file_proteinname
   doc: A csv file with the column ProteinName
-  type: File
+  type: File?
   inputBinding:
     prefix: --in
 - id: in_csv_output_file
   doc: "A csv output file containing all proteins not in the\ncsv file\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_var_3
@@ -167,9 +167,10 @@ outputs:
   type: stdout
 - id: out_csv_output_file
   doc: "A csv output file containing all proteins not in the\ncsv file\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_csv_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - proteins_not_in_library.py

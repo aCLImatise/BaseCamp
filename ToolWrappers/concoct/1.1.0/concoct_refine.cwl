@@ -3,17 +3,17 @@ id: concoct_refine.cwl
 inputs:
 - id: in_expansion_factor
   doc: number of clusters to expand by
-  type: long
+  type: long?
   inputBinding:
     prefix: --expansion_factor
 - id: in_seed
   doc: The seed used for algorithm result reproducibility.
-  type: string
+  type: string?
   inputBinding:
     prefix: --seed
 - id: in_threads
   doc: "number of threads to use defaults to one\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_cluster_file
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - concoct_refine

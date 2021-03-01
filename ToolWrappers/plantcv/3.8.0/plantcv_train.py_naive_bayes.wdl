@@ -14,6 +14,9 @@ task PlantcvtrainpyNaiveBayes {
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if (plots) then "--plots" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     img_dir: "Input directory containing images."
     mask_dir: "Input directory containing black/white masks."

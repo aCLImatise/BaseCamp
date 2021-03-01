@@ -44,6 +44,9 @@ task Ansiblepull {
       ~{if defined(vault_password_file) then ("--vault-password-file " +  '"' + vault_password_file + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     accept_host_key: "adds the hostkey for the repo url if not already added"
     ask_sudo_pass: "ask for sudo password"

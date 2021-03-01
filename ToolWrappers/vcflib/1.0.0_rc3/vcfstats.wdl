@@ -24,6 +24,9 @@ task Vcfstats {
       ~{if defined(gap_open_penalty) then ("--gap-open-penalty " +  '"' + gap_open_penalty + '"') else ""} \
       ~{if defined(gap_extend_penalty) then ("--gap-extend-penalty " +  '"' + gap_extend_penalty + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     region: "specify a region on which to target the stats, requires a BGZF\\ncompressed file which has been indexed with tabix.  any number of\\nregions may be specified."
     add_info: "add the statistics intermediate information to the VCF file,\\nwriting out VCF records instead of summary statistics"

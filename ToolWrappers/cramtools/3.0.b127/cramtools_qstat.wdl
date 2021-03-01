@@ -14,6 +14,9 @@ task CramtoolsQstat {
       ~{if (input_file) then "--input-file" else ""} \
       ~{if (log_level) then "--log-level" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     default_quality_score: "Use this value as a default or missing quality score. Lowest is 0, which corresponds to '!' in fastq. (default: 30)"
     input_file: "The path to the CRAM or BAM file."

@@ -16,6 +16,9 @@ task SnpSiftVcfCheck {
       ~{file_ndot_vcf} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jar: ""
     java: ""

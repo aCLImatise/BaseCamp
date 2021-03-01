@@ -40,6 +40,9 @@ task ProteinQuantifier {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                        Input file (valid formats: 'featureXML', 'consensusXML', 'idXML')"
     protein_groups: "Protein inference results for the identification runs that were used to annotate the input (e.g. from ProteinProphet via IDFileConverter or Fido via FidoAdapter).\\nInformation about indistinguishable proteins will be used for protein quantification. (valid formats: 'idXML')"

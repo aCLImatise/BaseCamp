@@ -3,54 +3,68 @@ command:
 - calc_probe_hit_from_sam.py
 positional:
 - !Positional
-  description: 'optional arguments:'
-  position: 0
-  name: sam_or_gtf
   optional: false
+  position: 0
+  name: bed_filename
+  description: input_fasta_or_fastq
+- !Positional
+  optional: false
+  position: 1
+  name: sam_or_gtf
+  description: 'positional arguments:'
+- !Positional
+  optional: false
+  position: 2
+  name: bed_filename
+  description: input_fasta_or_fastq
+- !Positional
+  optional: false
+  position: 3
+  name: sam_or_gtf
+  description: 'optional arguments:'
 named:
 - !Flag
-  description: "--end_base {0,1}\n[-o OUTPUT]\nbed_filename\ninput_fasta_or_fastq\n\
-    sam_or_gtf"
-  synonyms:
-  - --start_base
-  args: !ChoiceFlagArg
-    choices: !!set
-      '0':
-      '1':
   optional: true
-- !Flag
-  description: Input is GTF instead of SAM
   synonyms:
   - --gtf
+  description: Input is GTF instead of SAM
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: End base is 0 or 1-based index
+  optional: true
   synonyms:
-  - --end_base
+  - --start_base
+  description: Start base is 0 or 1-based index
   args: !ChoiceFlagArg
     choices: !!set
       '0':
       '1':
-  optional: true
 - !Flag
-  description: "Output filename (default: stdout)\n"
+  optional: true
+  synonyms:
+  - --end_base
+  description: End base is 0 or 1-based index
+  args: !ChoiceFlagArg
+    choices: !!set
+      '0':
+      '1':
+- !Flag
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "Output filename (default: stdout)\n"
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: Calculate Probe Hit from SAM alignment + probe BED [-h] [--gtf]\n\
@@ -67,3 +81,4 @@ help_text: "usage: Calculate Probe Hit from SAM alignment + probe BED [-h] [--gt
   \ OUTPUT\n                        Output filename (default: stdout)\n"
 generated_using:
 - --help
+docker_image:

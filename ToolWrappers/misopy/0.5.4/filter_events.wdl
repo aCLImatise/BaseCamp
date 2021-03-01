@@ -28,6 +28,9 @@ task FilterEvents {
       ~{if (apply_both) then "--apply-both" else ""} \
       ~{if defined(votes) then ("--votes " +  '"' + votes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filter: "Comparison file to filter or list of replicate files\\nto filter."
     control: "Control comparison file to filter."

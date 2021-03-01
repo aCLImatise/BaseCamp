@@ -4,17 +4,17 @@ inputs:
 - id: in_schic_matrix_m
   doc: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction matrices\
     \ to cluster.\nNeeds to be in scool format (default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --matrix
 - id: in_out_filename
   doc: 'File name to save the exported matrix. (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --outFileName
 - id: in_threads
   doc: "Number of threads. Using the python multiprocessing\nmodule. (default: 4)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_sch_i_c
@@ -33,9 +33,10 @@ outputs:
   type: stdout
 - id: out_out_filename
   doc: 'File name to save the exported matrix. (default: None)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - scHicCreateBulkMatrix

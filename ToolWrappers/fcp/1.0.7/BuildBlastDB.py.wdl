@@ -10,6 +10,9 @@ task BuildBlastDBpy {
       ~{make_blast_db_path} \
       ~{sequence_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     make_blast_db_path: ""
     sequence_file: ""

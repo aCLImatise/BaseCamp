@@ -128,6 +128,9 @@ task Rnabloom {
       ~{if (debug) then "-debug" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     left_reads_files: "left reads file(s)"
     right_reads_files: "right reads file(s)"

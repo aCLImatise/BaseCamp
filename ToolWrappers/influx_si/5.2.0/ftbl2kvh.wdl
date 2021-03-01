@@ -8,6 +8,9 @@ task Ftbl2kvh {
     ftbl2kvh \
       ~{network}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     network: ""
   }

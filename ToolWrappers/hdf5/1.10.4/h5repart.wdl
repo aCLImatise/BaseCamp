@@ -20,6 +20,9 @@ task H5repart {
       ~{if defined(destination_member_size) then ("-m " +  '"' + destination_member_size + '"') else ""} \
       ~{if (family_to_sec_two) then "-family_to_sec2" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     produce_verbose_output: "Produce verbose output"
     print_version_number: "Print a version number and exit"

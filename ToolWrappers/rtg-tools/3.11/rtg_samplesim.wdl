@@ -26,6 +26,9 @@ task RtgSamplesim {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(sex) then ("--sex " +  '"' + sex + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_vcf_containing: "input VCF containing population variants"
     output_vcf_file: "output VCF file name"

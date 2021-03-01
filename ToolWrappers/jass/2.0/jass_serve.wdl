@@ -8,6 +8,9 @@ task JassServe {
     jass serve \
       ~{jass}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jass: ""
   }

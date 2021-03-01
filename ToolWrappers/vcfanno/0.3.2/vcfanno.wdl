@@ -16,6 +16,9 @@ task Vcfanno {
       ~{if defined(number_use_default) then ("-p " +  '"' + number_use_default + '"') else ""} \
       ~{if (permissive_overlap) then "-permissive-overlap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base_path: "optional base-path to prepend to annotation files in the config"
     ends: "annotate the start and end as well as the interval itself."

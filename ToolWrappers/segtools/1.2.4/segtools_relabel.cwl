@@ -3,12 +3,12 @@ id: segtools_relabel.cwl
 inputs:
 - id: in_quiet
   doc: Do not print diagnostic messages.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_outfile
   doc: "Save relabeled bed file to FILE instead of printing to\nstdout (default)\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outfile
 - id: in_segmentation
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - segtools-relabel

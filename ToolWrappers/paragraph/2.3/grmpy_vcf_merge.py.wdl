@@ -20,6 +20,9 @@ task Grmpyvcfmergepy {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_vcf_file: "Input VCF file of variants."
     gr_mpy: "JSON output from multigrmpy.py / grmpy"

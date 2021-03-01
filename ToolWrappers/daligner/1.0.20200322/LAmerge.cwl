@@ -3,29 +3,30 @@ id: LAmerge.cwl
 inputs:
 - id: in_verbose_mode_output
   doc: ': Verbose mode, output statistics as proceed.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_sort_areadaposition_pairs
   doc: ": sort .las by A-read,A-position pairs for map usecase\noff => sort .las by\
     \ A,B-read pairs for overlap piles"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
-- id: in_intermediate_merging_directory
+- id: in_do_intermediate_merging
   doc: ': Do any intermediate merging in directory -P.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -P
 - id: in_va
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -va
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - LAmerge

@@ -1,0 +1,57 @@
+!Command
+command:
+- dx-download-all-inputs
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --except
+  description: "Do not download the input with this name. (May be used\nmultiple times.)"
+  args: !SimpleFlagArg
+    name: EXCLUDE
+- !Flag
+  optional: true
+  synonyms:
+  - --parallel
+  description: Download the files in parallel
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sequential
+  description: Download the files sequentially
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: dx-download-all-inputs [-h] [--except EXCLUDE] [--parallel]\n \
+  \                             [--sequential]\n\nNote: this is a utility for use\
+  \ by bash apps running in the DNAnexus Platform.\n\nDownloads all files that were\
+  \ supplied as inputs to the app.  By convention,\nif an input parameter \"FOO\"\
+  \ has value\n\n    {\"$dnanexus_link\": \"file-xxxx\"}\n\nand filename INPUT.TXT,\
+  \ then the linked file will be downloaded into the path:\n\n    $HOME/in/FOO/INPUT.TXT\n\
+  \nIf an input is an array of files, then all files will be placed into numbered\n\
+  subdirectories under a parent directory named for the input. For example, if\nthe\
+  \ input key is FOO, and the inputs are {A, B, C}.vcf then, the directory\nstructure\
+  \ will be:\n\n    $HOME/in/FOO/0/A.vcf\n                 1/B.vcf\n             \
+  \    2/C.vcf\n\nZero padding is used to ensure argument order. For example, if there\
+  \ are 12\ninput files {A, B, C, D, E, F, G, H, I, J, K, L}.txt, the directory structure\n\
+  will be:\n\n    $HOME/in/FOO/00/A.vcf\n                 ...\n                 11/L.vcf\n\
+  \nThis allows using shell globbing (FOO/*/*.vcf) to get all the files in the\ninput\
+  \ order.\n\noptional arguments:\n  -h, --help        show this help message and\
+  \ exit\n  --except EXCLUDE  Do not download the input with this name. (May be used\n\
+  \                    multiple times.)\n  --parallel        Download the files in\
+  \ parallel\n  --sequential      Download the files sequentially\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dxpy:0.306.0--pyh3252c3a_0

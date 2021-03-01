@@ -3,59 +3,59 @@ id: correct_subcontigs_coords.pl.cwl
 inputs:
 - id: in_query
   doc: input contig fasta file (e.g., contig1.fa)
-  type: File
+  type: File?
   inputBinding:
     prefix: --query
 - id: in_ref
   doc: input reference file (e.g., ref.fa)
-  type: File
+  type: File?
   inputBinding:
     prefix: --ref
 - id: in_align
   doc: input coords file from Nucmer outputs (e.g., align.coords)
-  type: File
+  type: File?
   inputBinding:
     prefix: --align
 - id: in_min_id
   doc: 'minimum alignment identity (%) [default: 97]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_id
 - id: in_min_cov
   doc: 'minimum coverage (%) of query (contig) aligned to a reference [default: 99]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_cov
 - id: in_min_align
   doc: 'minimum alignment overlap length with the maximum allowable size of indels
     [default: 200]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_align
 - id: in_min_len
   doc: 'minimum contig length to be considered [default: 200]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_len
 - id: in_prefix_name_outputs
   doc: prefix name of outputs
-  type: string
+  type: string?
   inputBinding:
     prefix: --prefix
 - id: in_max_in_del
   doc: 'maximum allowable size of indels (or distance between break points) [default:
     100]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_indel
 - id: in_thread
   doc: 'number of threads to run [default: 1]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --thread
 - id: in_var_10
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --help
 - id: in_gm_value
@@ -232,6 +232,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - correct_subcontigs_coords.pl

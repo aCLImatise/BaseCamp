@@ -12,6 +12,9 @@ task XsvSelect {
       ~{if (no_headers) then "--no-headers" else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     write_output_file: "Write output to <file> instead of stdout."
     no_headers: "When set, the first row will not be interpreted\\nas headers. (i.e., They are not searched, analyzed,\\nsliced, etc.)"

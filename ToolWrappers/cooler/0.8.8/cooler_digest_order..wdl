@@ -16,6 +16,9 @@ task CoolerDigestOrder {
       ~{fast_a_path} \
       ~{enzyme}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cooler: ""
     digest: ""

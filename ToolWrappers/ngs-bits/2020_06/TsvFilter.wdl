@@ -20,6 +20,9 @@ task TsvFilter {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filter: "Filter string with column name, operation and value,e.g. 'depth > 17'."
     in: "Input TSV file. If unset, reads from STDIN.\\nDefault value: ''"

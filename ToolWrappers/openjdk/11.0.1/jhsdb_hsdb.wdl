@@ -12,6 +12,9 @@ task JhsdbHsdb {
       ~{if (core) then "--core" else ""} \
       ~{if (pid) then "--pid" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exe: "executable image name"
     core: "path to coredump"

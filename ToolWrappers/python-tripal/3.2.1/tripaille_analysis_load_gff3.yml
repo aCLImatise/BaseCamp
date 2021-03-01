@@ -5,48 +5,51 @@ command:
 - load_gff3
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: GFF
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: Organism common name or abbreviation
+  optional: true
   synonyms:
   - --organism
+  description: Organism common name or abbreviation
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Organism ID
+  optional: true
   synonyms:
   - --organism_id
+  description: Organism ID
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Analysis name
+  optional: true
   synonyms:
   - --analysis
+  description: Analysis name
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Analysis ID
+  optional: true
   synonyms:
   - --analysis_id
+  description: Analysis ID
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Import mode (add_only=existing features won't\nbe touched, update=existing\
-    \ features will be\nupdated and obsolete attributes kept)')\n[default: update]"
+  optional: true
   synonyms:
   - --import_mode
+  description: "Import mode (add_only=existing features won't\nbe touched, update=existing\
+    \ features will be\nupdated and obsolete attributes kept)')\n[default: update]"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --target_organism
   description: "In case of Target attribute in the GFF3,\nchoose the organism abbreviation\
     \ or common\nname to which target sequences belong. Select\nthis only if target\
     \ sequences belong to a\ndifferent organism than the one specified with\n--organism-id.\
@@ -54,12 +57,12 @@ named:
     the same species. If the targets in the GFF\nfile belong to multiple different\
     \ species then\nthe organism must be specified using the\n'target_organism=genus:species'\
     \ attribute in\nthe GFF file.')"
-  synonyms:
-  - --target_organism
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --target_organism_id
   description: "In case of Target attribute in the GFF3,\nchoose the organism ID to\
     \ which target\nsequences belong. Select this only if target\nsequences belong\
     \ to a different organism than\nthe one specified with --organism-id. And only\n\
@@ -67,98 +70,95 @@ named:
     \ If the\ntargets in the GFF file belong to multiple\ndifferent species then the\
     \ organism must be\nspecified using the\n'target_organism=genus:species' attribute\
     \ in\nthe GFF file.')"
-  synonyms:
-  - --target_organism_id
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --target_type
   description: "In case of Target attribute in the GFF3, if\nthe unique name for a\
     \ target sequence is not\nunique (e.g. a protein and an mRNA have the\nsame name)\
     \ then you must specify the type for\nall targets in the GFF file. If the targets\n\
     are of different types then the type must be\nspecified using the 'target_type=type'\n\
     attribute in the GFF file. This must be a\nvalid Sequence Ontology (SO) term.')"
-  synonyms:
-  - --target_type
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --target_create
   description: "In case of Target attribute in the GFF3, if\nthe target feature cannot\
     \ be found, create one\nusing the organism and type specified above,\nor using\
     \ the 'target_organism' and\n'target_type' fields specified in the GFF\nfile.\
     \ Values specified in the GFF file take\nprecedence over those specified above.')"
-  synonyms:
-  - --target_create
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The line in the GFF file where importing\nshould start"
+  optional: true
   synonyms:
   - --start_line
+  description: "The line in the GFF file where importing\nshould start"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "A Sequence Ontology type for the landmark\nsequences in the GFF fie\
-    \ (e.g. 'chromosome')."
+  optional: true
   synonyms:
   - --landmark_type
+  description: "A Sequence Ontology type for the landmark\nsequences in the GFF fie\
+    \ (e.g. 'chromosome')."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "When ID attribute is absent, specify which\nother attribute can uniquely\
-    \ identify the\nfeature."
+  optional: true
   synonyms:
   - --alt_id_attr
+  description: "When ID attribute is absent, specify which\nother attribute can uniquely\
+    \ identify the\nfeature."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Create organisms when encountering organism\nattribute (these lines\
-    \ will be skip otherwise)"
+  optional: true
   synonyms:
   - --create_organism
+  description: "Create organisms when encountering organism\nattribute (these lines\
+    \ will be skip otherwise)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Regular expression for the mRNA name
+  optional: true
   synonyms:
   - --re_mrna
+  description: Regular expression for the mRNA name
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Replacement string for the protein name
+  optional: true
   synonyms:
   - --re_protein
+  description: Replacement string for the protein name
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Name of the job
+  optional: true
   synonyms:
   - --job_name
+  description: Name of the job
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Do not wait for job to complete
+  optional: true
   synonyms:
   - --no_wait
+  description: Do not wait for job to complete
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: tripaille analysis load_gff3 [OPTIONS] GFF\n\n  Load GFF3 file\n\
@@ -220,3 +220,4 @@ help_text: "Usage: tripaille analysis load_gff3 [OPTIONS] GFF\n\n  Load GFF3 fil
   \ this message and exit.\n"
 generated_using:
 - --help
+docker_image:

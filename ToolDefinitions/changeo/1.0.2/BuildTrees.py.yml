@@ -1,0 +1,306 @@
+!Command
+command:
+- BuildTrees.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: lineages
+  description: successfully processed records.
+- !Positional
+  optional: false
+  position: 1
+  name: lineages-fail
+  description: database records failed processing.
+- !Positional
+  optional: false
+  position: 2
+  name: igphyml-pass
+  description: parameter estimates and lineage trees from running IgPhyML, if specified
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "A list of tab delimited database files. (default:\nNone)"
+  args: !RepeatFlagArg
+    name: DB_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --outname
+  description: "Changes the prefix of the successfully processed\noutput file to the\
+    \ string specified. May not be\nspecified with multiple input files. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: "Specify to write verbose logging to a file. May not be\nspecified\
+    \ with multiple input files. (default: None)"
+  args: !SimpleFlagArg
+    name: LOG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --failed
+  description: "If specified create files containing records that fail\nprocessing.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: 'Specify input and output format. (default: airr)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      airr:
+      changeo:
+- !Flag
+  optional: true
+  synonyms:
+  - --collapse
+  description: "If specified, collapse identical sequences before\nexporting to fasta.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ncdr3
+  description: "If specified, remove CDR3 from all sequences.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nmask
+  description: "If specified, do not attempt to mask split codons.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --md
+  description: "List of fields to containing metadata to include in\noutput fasta\
+    \ file sequence headers. (default: None)"
+  args: !RepeatFlagArg
+    name: META_DATA
+- !Flag
+  optional: true
+  synonyms:
+  - --clones
+  description: "List of clone IDs to output, if specified. (default:\nNone)"
+  args: !RepeatFlagArg
+    name: TARGET_CLONES
+- !Flag
+  optional: true
+  synonyms:
+  - --minseq
+  description: "Minimum number of data sequences. Any clones with\nfewer than the\
+    \ specified number of sequences will be\nexcluded. (default: 1)"
+  args: !SimpleFlagArg
+    name: MIN_SEQ
+- !Flag
+  optional: true
+  synonyms:
+  - --sample
+  description: "Depth of reads to be subsampled (before\ndeduplication). (default:\
+    \ -1)"
+  args: !SimpleFlagArg
+    name: SAMPLE_DEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - --append
+  description: "List of columns to append to sequence ID to ensure\nuniqueness. (default:\
+    \ None)"
+  args: !RepeatFlagArg
+    name: APPEND
+- !Flag
+  optional: true
+  synonyms:
+  - --igphyml
+  description: 'Run IgPhyML on output? (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nproc
+  description: "Number of threads to parallelize IgPhyML across.\n(default: 1)"
+  args: !SimpleFlagArg
+    name: NPROC
+- !Flag
+  optional: true
+  synonyms:
+  - --clean
+  description: "Delete intermediate files? none: leave all\nintermediate files; all:\
+    \ delete all intermediate\nfiles. (default: none)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      all:
+      none:
+- !Flag
+  optional: true
+  synonyms:
+  - --optimize
+  description: "Optimize combination of topology (t) branch lengths\n(l) and parameters\
+    \ (r), or nothing (n), for IgPhyML.\n(default: lr)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      lr:
+      tlr:
+      tl:
+      r:
+      l:
+      n:
+- !Flag
+  optional: true
+  synonyms:
+  - --omega
+  description: "Omega parameters to estimate for FWR,CDR respectively:\ne = estimate,\
+    \ ce = estimate + confidence interval\n(default: e,e)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      e:
+      ce:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "Kappa parameters to estimate: e = estimate, ce =\nestimate + confidence\
+    \ interval (default: e)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      e:
+      ce:
+- !Flag
+  optional: true
+  synonyms:
+  - --motifs
+  description: "Which motifs to estimate mutability. (default:\nWRC_2:0,GYW_0:1,WA_1:2,TW_0:3,SYC_2:4,GRS_0:5)"
+  args: !SimpleFlagArg
+    name: MOTIFS
+- !Flag
+  optional: true
+  synonyms:
+  - --hotness
+  description: "Mutability parameters to estimate: e = estimate, ce =\nestimate +\
+    \ confidence interval (default: e,e,e,e,e,e)"
+  args: !SimpleFlagArg
+    name: HOTNESS
+- !Flag
+  optional: true
+  synonyms:
+  - --oformat
+  description: 'IgPhyML output format. (default: tab)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      tab:
+      txt:
+- !Flag
+  optional: true
+  synonyms:
+  - --nohlp
+  description: "Don't run HLP model? (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --asr
+  description: "Ancestral sequence reconstruction interval (0-1).\n(default: -1)"
+  args: !SimpleFlagArg
+    name: ASR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: BuildTrees.py [--version] [-h] -d DB_FILES [DB_FILES ...]\n   \
+  \                  [--outdir OUT_DIR] [--outname OUT_NAME] [--log LOG_FILE]\n  \
+  \                   [--failed] [--format {airr,changeo}] [--collapse]\n        \
+  \             [--ncdr3] [--nmask] [--md META_DATA [META_DATA ...]]\n           \
+  \          [--clones TARGET_CLONES [TARGET_CLONES ...]]\n                     [--minseq\
+  \ MIN_SEQ] [--sample SAMPLE_DEPTH]\n                     [--append APPEND [APPEND\
+  \ ...]] [--igphyml]\n                     [--nproc NPROC] [--clean {none,all}]\n\
+  \                     [--optimize {n,r,l,lr,tl,tlr}]\n                     [--omega\
+  \ {e,ce,e,e,ce,e,e,ce,ce,ce}] [-t {e,ce}]\n                     [--motifs MOTIFS]\
+  \ [--hotness HOTNESS]\n                     [--oformat {tab,txt}] [--nohlp] [--asr\
+  \ ASR]\n\nConverts TSV files into IgPhyML input files\n\nhelp:\n  --version    \
+  \         show program's version number and exit\n  -h, --help            show this\
+  \ help message and exit\n\nstandard arguments:\n  -d DB_FILES [DB_FILES ...]\n \
+  \                       A list of tab delimited database files. (default:\n    \
+  \                    None)\n  --outdir OUT_DIR      Specify to changes the output\
+  \ directory to the\n                        location specified. The input file directory\
+  \ is used\n                        if this is not specified. (default: None)\n \
+  \ --outname OUT_NAME    Changes the prefix of the successfully processed\n     \
+  \                   output file to the string specified. May not be\n          \
+  \              specified with multiple input files. (default: None)\n  --log LOG_FILE\
+  \        Specify to write verbose logging to a file. May not be\n              \
+  \          specified with multiple input files. (default: None)\n  --failed    \
+  \          If specified create files containing records that fail\n            \
+  \            processing. (default: False)\n  --format {airr,changeo}\n         \
+  \               Specify input and output format. (default: airr)\n\nsequence processing\
+  \ arguments:\n  --collapse            If specified, collapse identical sequences\
+  \ before\n                        exporting to fasta. (default: False)\n  --ncdr3\
+  \               If specified, remove CDR3 from all sequences.\n                \
+  \        (default: False)\n  --nmask               If specified, do not attempt\
+  \ to mask split codons.\n                        (default: False)\n  --md META_DATA\
+  \ [META_DATA ...]\n                        List of fields to containing metadata\
+  \ to include in\n                        output fasta file sequence headers. (default:\
+  \ None)\n  --clones TARGET_CLONES [TARGET_CLONES ...]\n                        List\
+  \ of clone IDs to output, if specified. (default:\n                        None)\n\
+  \  --minseq MIN_SEQ      Minimum number of data sequences. Any clones with\n   \
+  \                     fewer than the specified number of sequences will be\n   \
+  \                     excluded. (default: 1)\n  --sample SAMPLE_DEPTH\n        \
+  \                Depth of reads to be subsampled (before\n                     \
+  \   deduplication). (default: -1)\n  --append APPEND [APPEND ...]\n            \
+  \            List of columns to append to sequence ID to ensure\n              \
+  \          uniqueness. (default: None)\n\nIgPhyML arguments (see igphyml -h for\
+  \ details):\n  --igphyml             Run IgPhyML on output? (default: False)\n \
+  \ --nproc NPROC         Number of threads to parallelize IgPhyML across.\n     \
+  \                   (default: 1)\n  --clean {none,all}    Delete intermediate files?\
+  \ none: leave all\n                        intermediate files; all: delete all intermediate\n\
+  \                        files. (default: none)\n  --optimize {n,r,l,lr,tl,tlr}\n\
+  \                        Optimize combination of topology (t) branch lengths\n \
+  \                       (l) and parameters (r), or nothing (n), for IgPhyML.\n \
+  \                       (default: lr)\n  --omega {e,ce,e,e,ce,e,e,ce,ce,ce}\n  \
+  \                      Omega parameters to estimate for FWR,CDR respectively:\n\
+  \                        e = estimate, ce = estimate + confidence interval\n   \
+  \                     (default: e,e)\n  -t {e,ce}             Kappa parameters to\
+  \ estimate: e = estimate, ce =\n                        estimate + confidence interval\
+  \ (default: e)\n  --motifs MOTIFS       Which motifs to estimate mutability. (default:\n\
+  \                        WRC_2:0,GYW_0:1,WA_1:2,TW_0:3,SYC_2:4,GRS_0:5)\n  --hotness\
+  \ HOTNESS     Mutability parameters to estimate: e = estimate, ce =\n          \
+  \              estimate + confidence interval (default: e,e,e,e,e,e)\n  --oformat\
+  \ {tab,txt}   IgPhyML output format. (default: tab)\n  --nohlp               Don't\
+  \ run HLP model? (default: False)\n  --asr ASR             Ancestral sequence reconstruction\
+  \ interval (0-1).\n                        (default: -1)\n\noutput files:\n    <folder>\n\
+  \      folder containing fasta and partition files for each clone.\n    lineages\n\
+  \       successfully processed records.\n    lineages-fail\n       database records\
+  \ failed processing.\n    igphyml-pass\n       parameter estimates and lineage trees\
+  \ from running IgPhyML, if specified\n\nrequired fields:\n    sequence_id, sequence,\
+  \ sequence_alignment,\n    germline_alignment_d_mask or germline_alignment,\n  \
+  \  v_call, j_call, clone_id, v_sequence_start\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/changeo:1.0.2--py_0

@@ -26,6 +26,9 @@ task CheckmAnalyze {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ali: "generate HMMER alignment file for each bin"
     nt: "generate nucleotide gene sequences for each bin"

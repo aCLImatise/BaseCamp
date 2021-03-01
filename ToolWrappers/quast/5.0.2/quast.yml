@@ -3,96 +3,100 @@ command:
 - quast
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: python
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: '<dirname>       Directory to store all result files [default: quast_results/results_<datetime>]'
+  optional: true
   synonyms:
   - -o
   - --output-dir
+  description: '<dirname>       Directory to store all result files [default: quast_results/results_<datetime>]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <filename>      Reference genome file
+  optional: true
   synonyms:
   - -r
+  description: <filename>      Reference genome file
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[type:]<filename>  File with genomic feature coordinates in the reference\
-    \ (GFF, BED, NCBI or TXT)\nOptional 'type' can be specified for extracting only\
-    \ a specific feature type from GFF"
+  optional: true
   synonyms:
   - -g
   - --features
+  description: "[type:]<filename>  File with genomic feature coordinates in the reference\
+    \ (GFF, BED, NCBI or TXT)\nOptional 'type' can be specified for extracting only\
+    \ a specific feature type from GFF"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<int>           Lower threshold for contig length [default: 500]'
+  optional: true
   synonyms:
   - -m
   - --min-contig
+  description: '<int>           Lower threshold for contig length [default: 500]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<int>           Maximum number of threads [default: 25% of CPUs]'
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: '<int>           Maximum number of threads [default: 25% of CPUs]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Split assemblies by continuous fragments of N's and add such "contigs"
-    to the comparison
+  optional: true
   synonyms:
   - -s
   - --split-scaffolds
+  description: Split assemblies by continuous fragments of N's and add such "contigs"
+    to the comparison
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '"label, label, ..."      Names of assemblies to use in reports, comma-separated.
-    If contain spaces, use quotes'
+  optional: true
   synonyms:
   - -l
   - --labels
+  description: '"label, label, ..."      Names of assemblies to use in reports, comma-separated.
+    If contain spaces, use quotes'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Take assembly names from their parent directory names
+  optional: true
   synonyms:
   - -L
+  description: Take assembly names from their parent directory names
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --eukaryote
   description: "Genome is eukaryotic (primarily affects gene prediction)\n--fungus\
     \                          Genome is fungal (primarily affects gene prediction)\n\
     --large                           Use optimal parameters for evaluation of large\
     \ genomes\nIn particular, imposes '-e -m 3000 -i 500 -x 7000' (can be overridden\
     \ manually)"
-  synonyms:
-  - -e
-  - --eukaryote
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Compute k-mer-based quality metrics (recommended for large genomes)\n\
-    This may significantly increase memory and time consumption on large genomes"
+  optional: true
   synonyms:
   - -k
   - --k-mer-stats
+  description: "Compute k-mer-based quality metrics (recommended for large genomes)\n\
+    This may significantly increase memory and time consumption on large genomes"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Size of k used in --k-mer-stats [default: 101]\n--circos         \
-    \                 Draw Circos plot"
+  optional: true
   synonyms:
   - --k-mer-size
+  description: "Size of k used in --k-mer-stats [default: 101]\n--circos         \
+    \                 Draw Circos plot"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --gene-finding
   description: "Predict genes using GeneMarkS (prokaryotes, default) or GeneMark-ES\
     \ (eukaryotes, use --eukaryote)\n--mgm                             Use MetaGeneMark\
     \ for gene prediction (instead of the default finder, see above)\n--glimmer  \
@@ -100,98 +104,97 @@ named:
     \ finder, see above)\n--gene-thresholds <int,int,...>   Comma-separated list of\
     \ threshold lengths of genes to search with Gene Finding module\n[default: 0,300,1500,3000]\n\
     --rna-finding                     Predict ribosomal RNA genes using Barrnap"
-  synonyms:
-  - -f
-  - --gene-finding
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --conserved-genes-finding
   description: "Count conserved orthologs using BUSCO (only on Linux)\n--operons \
     \ <filename>             File with operon coordinates in the reference (GFF, BED,\
     \ NCBI or TXT)\n--est-ref-size <int>              Estimated reference size (for\
     \ computing NGx metrics without a reference)\n--contig-thresholds <int,int,...>\
     \ Comma-separated list of contig length thresholds [default: 0,1000,5000,10000,25000,50000]"
-  synonyms:
-  - -b
-  - --conserved-genes-finding
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Compute genome fraction, # genes, # operons in QUAST v1.* style.\n\
-    By default, QUAST filters Minimap's alignments to keep only best ones"
+  optional: true
   synonyms:
   - -u
   - --use-all-alignments
+  description: "Compute genome fraction, # genes, # operons in QUAST v1.* style.\n\
+    By default, QUAST filters Minimap's alignments to keep only best ones"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The minimum alignment length [default: 65]\n--min-identity <float>\
-    \            The minimum alignment identity (80.0, 100.0) [default: 95.0]"
+  optional: true
   synonyms:
   - -i
   - --min-alignment
+  description: "The minimum alignment length [default: 65]\n--min-identity <float>\
+    \            The minimum alignment identity (80.0, 100.0) [default: 95.0]"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Use none, one, or all alignments of a contig when all of them\nare\
-    \ almost equally good (see --ambiguity-score) [default: one]"
+  optional: true
   synonyms:
   - -a
   - --ambiguity-usage
+  description: "Use none, one, or all alignments of a contig when all of them\nare\
+    \ almost equally good (see --ambiguity-score) [default: one]"
   args: !SimpleFlagArg
     name: none|one|all
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ambiguity-score
   description: "Score S for defining equally good alignments of a single contig. All\
     \ alignments are sorted\nby decreasing LEN * IDY% value. All alignments with LEN\
     \ * IDY% < S * best(LEN * IDY%) are\ndiscarded. S should be between 0.8 and 1.0\
     \ [default: 0.99]"
-  synonyms:
-  - --ambiguity-score
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: "Break contigs in any misassembly event when compute NAx and NGAx.\n\
-    By default, QUAST breaks contigs only by extensive misassemblies (not local ones)"
+  optional: true
   synonyms:
   - --strict-NA
+  description: "Break contigs in any misassembly event when compute NAx and NGAx.\n\
+    By default, QUAST breaks contigs only by extensive misassemblies (not local ones)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<int>       Lower threshold for extensive misassembly size. All relocations\
-    \ with inconsistency\nless than extensive-mis-size are counted as local misassemblies\
-    \ [default: 1000]"
+  optional: true
   synonyms:
   - -x
   - --extensive-mis-size
+  description: "<int>       Lower threshold for extensive misassembly size. All relocations\
+    \ with inconsistency\nless than extensive-mis-size are counted as local misassemblies\
+    \ [default: 1000]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --scaffold-gap-max-size
   description: "<int>    Max allowed scaffold gap length difference. All relocations\
     \ with inconsistency\nless than scaffold-gap-size are counted as scaffold gap\
     \ misassemblies [default: 10000]"
-  synonyms:
-  - --scaffold-gap-max-size
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --unaligned-part-size
   description: "<int>      Lower threshold for detecting partially unaligned contigs.\
     \ Such contig should have\nat least one unaligned fragment >= the threshold [default:\
     \ 500]"
-  synonyms:
-  - --unaligned-part-size
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not distinguish contigs with >= 50% unaligned bases as a separate\
-    \ group\nBy default, QUAST does not count misassemblies in them"
+  optional: true
   synonyms:
   - --skip-unaligned-mis-contigs
+  description: "Do not distinguish contigs with >= 50% unaligned bases as a separate\
+    \ group\nBy default, QUAST does not count misassemblies in them"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fragmented
   description: "Reference genome may be fragmented into small pieces (e.g. scaffolded\
     \ reference)\n--fragmented-max-indent  <int>    Mark translocation as fake if\
     \ both alignments are located no further than N bases\nfrom the ends of the reference\
@@ -208,19 +211,20 @@ named:
     \                 Create only reports and plots files. Aux files including .stdout,\
     \ .stderr, .coords will not be created.\nThis may significantly reduce space consumption\
     \ on large genomes. Icarus viewers also will not be built"
-  synonyms:
-  - --fragmented
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <filename>              File with forward paired-end reads (in FASTQ
-    format, may be gzipped)
+  optional: true
   synonyms:
   - '-1'
   - --pe1
+  description: <filename>              File with forward paired-end reads (in FASTQ
+    format, may be gzipped)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  - --pe2
   description: "<filename>              File with reverse paired-end reads (in FASTQ\
     \ format, may be gzipped)\n--pe12    <filename>              File with interlaced\
     \ forward and reverse paired-end reads. (in FASTQ format, may be gzipped)\n--mp1\
@@ -241,115 +245,111 @@ named:
     \ same order as for files with contigs)\nReads (or SAM/BAM file) are used for\
     \ structural variation detection and\ncoverage histogram building in Icarus\n\
     --sv-bedpe  <filename>            File with structural variations (in BEDPE format)"
-  synonyms:
-  - '-2'
-  - --pe2
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not check and correct input fasta files. Use at your own risk (see
-    manual)
+  optional: true
   synonyms:
   - --no-check
+  description: Do not check and correct input fasta files. Use at your own risk (see
+    manual)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not draw plots
+  optional: true
   synonyms:
   - --no-plots
+  description: Do not draw plots
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not build html reports and Icarus viewers
+  optional: true
   synonyms:
   - --no-html
+  description: Do not build html reports and Icarus viewers
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not build Icarus viewers
+  optional: true
   synonyms:
   - --no-icarus
+  description: Do not build Icarus viewers
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not report SNPs (may significantly reduce memory consumption on
-    large genomes)
+  optional: true
   synonyms:
   - --no-snps
+  description: Do not report SNPs (may significantly reduce memory consumption on
+    large genomes)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not compute GC% and GC-distribution
+  optional: true
   synonyms:
   - --no-gc
+  description: Do not compute GC% and GC-distribution
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not run structural variation detection (make sense only if reads
-    are specified)
+  optional: true
   synonyms:
   - --no-sv
+  description: Do not run structural variation detection (make sense only if reads
+    are specified)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not compress large output files
+  optional: true
   synonyms:
   - --no-gzip
+  description: Do not compress large output files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-read-stats
   description: "Do not align reads to assemblies\nReads will be aligned to reference\
     \ and used for coverage analysis,\nupper bound assembly simulation, and structural\
     \ variation detection.\nUse this option if you do not need read statistics for\
     \ assemblies."
-  synonyms:
-  - --no-read-stats
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: A combination of all speedup options except --no-check
+  optional: true
   synonyms:
   - --fast
+  description: A combination of all speedup options except --no-check
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not print detailed information about each step to stdout (log file
-    is not affected)
+  optional: true
   synonyms:
   - --silent
+  description: Do not print detailed information about each step to stdout (log file
+    is not affected)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Run QUAST on the data from the test_data folder, output to quast_test_output
+  optional: true
   synonyms:
   - --test
+  description: Run QUAST on the data from the test_data folder, output to quast_test_output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Run QUAST with structural variants detection on the data from the\
-    \ test_data folder,\noutput to quast_test_output"
+  optional: true
   synonyms:
   - --test-sv
+  description: "Run QUAST with structural variants detection on the data from the\
+    \ test_data folder,\noutput to quast_test_output"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print full usage message
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Print full usage message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Print version
+  optional: true
   synonyms:
   - -v
   - --version
+  description: Print version
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "QUAST: Quality Assessment Tool for Genome Assemblies\nVersion: 5.0.2\n\
   \nUsage: python /usr/local/bin/quast [options] <files_with_contigs>\n\nOptions:\n\
   -o  --output-dir  <dirname>       Directory to store all result files [default:\
@@ -479,3 +479,4 @@ help_text: "QUAST: Quality Assessment Tool for Genome Assemblies\nVersion: 5.0.2
   \             Print version\n\nOnline QUAST manual is available at http://quast.sf.net/manual\n"
 generated_using:
 - --help
+docker_image:

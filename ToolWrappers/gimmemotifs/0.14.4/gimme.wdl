@@ -8,6 +8,9 @@ task Gimme {
     gimme \
       ~{subcommand}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     subcommand: ""
   }

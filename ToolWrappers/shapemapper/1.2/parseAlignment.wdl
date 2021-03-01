@@ -4,6 +4,9 @@ task ParseAlignment {
   command <<<
     parseAlignment
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -20,6 +20,9 @@ task SeqseqpanMap {
       ~{if defined(consensus) then ("--consensus " +  '"' + consensus + '"') else ""} \
       ~{if defined(index) then ("--index " +  '"' + index + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Suppress warnings."
     output_path: "path to output directory"

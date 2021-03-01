@@ -28,6 +28,9 @@ task Hallagram {
       ~{if defined(similarity) then ("--similarity " +  '"' + similarity + '"') else ""} \
       ~{if defined(order_by) then ("--orderby " +  '"' + order_by + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     strongest: "isolate the N strongest associations"
     largest: "isolate the N largest associations"

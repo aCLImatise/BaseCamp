@@ -92,6 +92,9 @@ task Humann2 {
       ~{if defined(pathways) then ("--pathways " +  '"' + pathways + '"') else ""} \
       ~{if defined(memory_use) then ("--memory-use " +  '"' + memory_use + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "additional output is printed"
     resume: "bypass commands if the output files exist"

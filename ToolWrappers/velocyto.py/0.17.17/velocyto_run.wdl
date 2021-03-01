@@ -40,6 +40,9 @@ task VelocytoRun {
       ~{if defined(dump) then ("--dump " +  '"' + dump + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bc_file: "Valid barcodes file, to filter the bam. If --bcfile is not specified all the cell barcodes will be included.\\nCell barcodes should be specified in the bcfile as the `CB` tag for each read"
     output_folder: "Output folder, if it does not exist it will be created."

@@ -2,7 +2,7 @@ version 1.0
 
 task Graphembed {
   input {
-    File? specify_input_data
+    File? specify_input_file
     File? specify_classes_data
     Directory? output_directory_name
     Float? class_confidence
@@ -26,7 +26,7 @@ task Graphembed {
   command <<<
     graphembed \
       ~{graph_embed} \
-      ~{if defined(specify_input_data) then ("-i " +  '"' + specify_input_data + '"') else ""} \
+      ~{if defined(specify_input_file) then ("-i " +  '"' + specify_input_file + '"') else ""} \
       ~{if defined(specify_classes_data) then ("-t " +  '"' + specify_classes_data + '"') else ""} \
       ~{if defined(output_directory_name) then ("-o " +  '"' + output_directory_name + '"') else ""} \
       ~{if defined(class_confidence) then ("--class_confidence " +  '"' + class_confidence + '"') else ""} \
@@ -46,8 +46,11 @@ task Graphembed {
       ~{if (do_not_add_timestamp) then "--do_not_add_timestamp" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    specify_input_data: "Specify input data file in CSV format."
+    specify_input_file: "Specify input data file in CSV format."
     specify_classes_data: "Specify classes data file in CSV format."
     output_directory_name: "Output directory name [default: out]."
     class_confidence: "Confidence bias for clustering\\n[default: 1.0]."

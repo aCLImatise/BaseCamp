@@ -3,17 +3,17 @@ id: anvi_help.cwl
 inputs:
 - id: in_requires
   doc: Restrict to programs that require this search term
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --requires
 - id: in_provides
   doc: Restrict to programs that provide this search term
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --provides
 - id: in_name
   doc: "Restrict to programs that contain this search term in\ntheir name"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --name
 - id: in_report
@@ -22,13 +22,14 @@ inputs:
     Provides, Status, and Resources. Add multiple of them\nwith commas (no whitespace).\
     \ For example, if you\nwanted Description and Resources, you would put here\n\
     Description,Resources\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --report
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-help

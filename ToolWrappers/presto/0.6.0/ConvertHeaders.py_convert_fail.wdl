@@ -8,6 +8,9 @@ task ConvertHeaderspyConvertfail {
     ConvertHeaders_py convert_fail \
       ~{convert_headers_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     convert_headers_do_tpy: ""
   }

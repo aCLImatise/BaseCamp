@@ -3,7 +3,7 @@ version 1.0
 task ConvertOrganismIDplCurrentorgansism {
   input {
     String convert_organ_is_middot_pl
-    File file
+    File var_file
     String current_organs_is_m
     String new_organism
     String output_id_type
@@ -11,14 +11,17 @@ task ConvertOrganismIDplCurrentorgansism {
   command <<<
     convertOrganismID_pl current_organsism \
       ~{convert_organ_is_middot_pl} \
-      ~{file} \
+      ~{var_file} \
       ~{current_organs_is_m} \
       ~{new_organism} \
       ~{output_id_type}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     convert_organ_is_middot_pl: ""
-    file: ""
+    var_file: ""
     current_organs_is_m: ""
     new_organism: ""
     output_id_type: ""

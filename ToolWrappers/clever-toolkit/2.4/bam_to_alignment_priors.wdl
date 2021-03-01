@@ -9,7 +9,7 @@ task Bamtoalignmentpriors {
     Boolean? arg_issue_warning
     Boolean? arg_maximal_segment
     Boolean? arg_discard_alignments
-    Boolean? arg_filename_known
+    Boolean? arg_filename_given
     Boolean? arg_filename_write
     Boolean? arg_filename_readgroupwise
     Boolean? arg_number_uniquely
@@ -27,7 +27,7 @@ task Bamtoalignmentpriors {
       ~{if (arg_issue_warning) then "-b" else ""} \
       ~{if (arg_maximal_segment) then "-s" else ""} \
       ~{if (arg_discard_alignments) then "-d" else ""} \
-      ~{if (arg_filename_known) then "-i" else ""} \
+      ~{if (arg_filename_given) then "-i" else ""} \
       ~{if (arg_filename_write) then "-I" else ""} \
       ~{if (arg_filename_readgroupwise) then "-r" else ""} \
       ~{if (arg_number_uniquely) then "-n" else ""} \
@@ -36,6 +36,9 @@ task Bamtoalignmentpriors {
       ~{if (unsorted) then "--unsorted" else ""} \
       ~{if defined(chromosome) then ("--chromosome " +  '"' + chromosome + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     skip_reads_exist: "[ --dont_skip_non_xa ]             Do not skip reads for which other\\nalignments exist (i.e. X0+X1>1, but no\\nXA tag is present)."
     ignore_x_a: "Do not use alternative alignments from\\nXA tags."
@@ -44,7 +47,7 @@ task Bamtoalignmentpriors {
     arg_issue_warning: "[ --bad_alignment_threshold ] arg (=1000)\\nIssue a warning when AS tag is above\\nthis value."
     arg_maximal_segment: "[ --max_span ] arg (=50000)        Maximal internal segment. Read pairs\\nwith larger internal segment will be\\nignored."
     arg_discard_alignments: "[ --discard_reads ] arg (=0)       Discard \\\"concordant\\\" alignments within\\nthe given number of standard deviations\\n(default: disabled)."
-    arg_filename_known: "[ --insert_size_dist ] arg         Filename of known internal segment size\\ndistribution. If not given, this\\ndistribution is estimated."
+    arg_filename_given: "[ --insert_size_dist ] arg         Filename of known internal segment size\\ndistribution. If not given, this\\ndistribution is estimated."
     arg_filename_write: "[ --insert_size_dist_out ] arg     Filename of write estimated internal\\nsegment size distribution to."
     arg_filename_readgroupwise: "[ --rg_insert_size_dist ] arg      Filename of read-group-wise known\\ninternal segment size distributions.\\nExpects two-column text file:\\n<readgroup> <distribution-filename>."
     arg_number_uniquely: "[ --dist_est_count ] arg (=5000000)\\nNumber of uniquely mapping reads that\\nare to be used to estimate internal\\nsegment size distribution."

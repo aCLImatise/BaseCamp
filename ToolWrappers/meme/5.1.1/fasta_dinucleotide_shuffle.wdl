@@ -16,6 +16,9 @@ task Fastadinucleotideshuffle {
       ~{if defined(make_shuffled_copies) then ("-c " +  '"' + make_shuffled_copies + '"') else ""} \
       ~{if defined(alphabet_file_use) then ("-a " +  '"' + alphabet_file_use + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_name_required: "file name (required)"
     added_shuffled_sequence: "added to shuffled sequence names"

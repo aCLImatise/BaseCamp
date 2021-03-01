@@ -8,6 +8,9 @@ task NetSplit {
     netSplit \
       ~{in_dotnet}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dotnet: ""
   }

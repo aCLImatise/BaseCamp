@@ -8,6 +8,9 @@ task MetageneWindow {
     metagene window_ \
       ~{meta_gene}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     meta_gene: ""
   }

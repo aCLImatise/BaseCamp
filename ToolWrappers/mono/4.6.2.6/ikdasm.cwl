@@ -3,22 +3,22 @@ id: ikdasm.cwl
 inputs:
 - id: in_out
   doc: Direct output to file rather than stdout
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
 - id: in_assembly
   doc: Dumps the contents of the Assembly table
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -assembly
 - id: in_assembly_ref
   doc: Dumps the contents of the AssemblyRef table
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -assemblyref
 - id: in_module_ref
   doc: Dumps the contents of the ModuleRef table
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -moduleref
 - id: in_file_name
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Direct output to file rather than stdout
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ikdasm

@@ -3,22 +3,22 @@ id: dsh_compress_bed.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --about
 - id: in_input_bed_file
   doc: '[class java.io.File]  input BED file, default stdin [optional]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input-bed-file
 - id: in_output_bed_file
   doc: '[class java.io.File]  output BED file, default stdout [optional]'
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-bed-file
 - id: in_args
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output_bed_file
   doc: '[class java.io.File]  output BED file, default stdout [optional]'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_bed_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dsh-compress-bed

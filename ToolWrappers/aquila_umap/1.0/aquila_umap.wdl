@@ -26,6 +26,9 @@ task AquilaUmap {
       ~{if defined(chr_thread) then ("--chr_thread " +  '"' + chr_thread + '"') else ""} \
       ~{if defined(bowtie_thread) then ("--bowtie_thread " +  '"' + bowtie_thread + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fa_folder: "Required parameter; The folder path where fasta files\\nare saved eg: /path/to/fasta/"
     fa_name: "Required parameter; The file name of fasta file eg:\\nsample.fa"

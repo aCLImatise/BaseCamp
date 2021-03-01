@@ -8,6 +8,9 @@ task AlleyoopDatasets {
     alleyoop datasets \
       ~{alley_oop}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alley_oop: ""
   }

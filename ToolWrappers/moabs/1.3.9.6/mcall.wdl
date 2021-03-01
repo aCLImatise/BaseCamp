@@ -54,6 +54,9 @@ task Mcall {
       ~{if defined(keep_temp) then ("--keepTemp " +  '"' + keep_temp + '"') else ""} \
       ~{if (arg_number_threads) then "-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_specify_names: "[ --mappedFiles ] arg           Specify the names of RRBS/WGBS alignment\\nfiles for methylation calling. Multiple\\nfiles can be provided to combine them(eg.\\nlanes or replicates) into a single track;"
     sample_name: "If two or more mappedFiles are specifed,\\nthis option generates a merged result;\\nIgnored for one input file;"

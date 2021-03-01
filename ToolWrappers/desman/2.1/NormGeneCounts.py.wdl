@@ -2,17 +2,20 @@ version 1.0
 
 task NormGeneCountspy {
   input {
+    Float? frac_thresh
     File? output_file
-    String? f
   }
   command <<<
     NormGeneCounts_py \
-      ~{if defined(output_file) then ("--output_file " +  '"' + output_file + '"') else ""} \
-      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
+      ~{if defined(frac_thresh) then ("--frac_thresh " +  '"' + frac_thresh + '"') else ""} \
+      ~{if defined(output_file) then ("--output_file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
+    frac_thresh: "threshold for assigning gene to strain as fraction of\\nreads deriving from it, defaults to 0.01"
     output_file: ""
-    f: ""
   }
   output {
     File out_stdout = stdout()

@@ -8,6 +8,9 @@ task SplashRates {
     splash rates \
       ~{splash}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     splash: ""
   }

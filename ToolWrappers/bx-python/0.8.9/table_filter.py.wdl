@@ -16,6 +16,9 @@ task TableFilterpy {
       ~{if (force_header) then "--force-header" else ""} \
       ~{if defined(cols) then ("--cols " +  '"' + cols + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     header: "keep header in output"
     comments: "keep comments in output"

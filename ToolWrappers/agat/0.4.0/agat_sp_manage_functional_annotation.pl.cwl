@@ -2,26 +2,26 @@ class: CommandLineTool
 id: agat_sp_manage_functional_annotation.pl.cwl
 inputs:
 - id: in_ref_file
-  doc: ", --gff or --gff3\nString - Input GTF/GFF file."
-  type: boolean
+  doc: String - Input GTF/GFF file.
+  type: File?
   inputBinding:
     prefix: --reffile
 - id: in_blast
   doc: "String - Input blast ( outfmt 6 = tabular ) file that will be\nused to complement\
     \ the features read from the first file\n(specified with --ref)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --blast
 - id: in_db
   doc: "String - The fasta file that has been used as DB for the blast.\nGene names\
     \ and products/descriptions will be fished from this\nfile."
-  type: File
+  type: File?
   inputBinding:
     prefix: --db
 - id: in_blast_evalue
   doc: "Integer - Maximum e-value to keep the annotation from the blast\nfile. By\
     \ default 1e-6."
-  type: long
+  type: long?
   inputBinding:
     prefix: --blast_evalue
 - id: in_pe
@@ -31,13 +31,13 @@ inputs:
     \ information. Default\n5.\n1. Experimental evidence at protein level 2. Experimental\n\
     evidence at transcript level 3. Protein inferred from homology\n4. Protein predicted\
     \ 5. Protein uncertain"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pe
 - id: in_interpro
   doc: "String - Input interpro file (.tsv) that will be used to\ncomplement the features\
     \ read from the first file (specified with\n--ref)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --interpro
 - id: in_id
@@ -47,30 +47,30 @@ inputs:
     \ Utr. In the case of\ndiscontinuous features (i.e. a single feature that exists\
     \ over\nmultiple genomic locations) the same ID may appear on multiple\nlines.\
     \ All lines that share an ID collectively represent a\nsignle feature."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -id
 - id: in_i_dau
   doc: "Boolean - This option (id all uniq) is similar to -id option but\nId of features\
     \ that share an ID collectively will be change by\ndifferent and uniq ID."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -idau
 - id: in_nb
   doc: "Integer - Usefull only if -id is used. This option is used to\ndefine the\
     \ number that will be used to begin the numbering. By\ndefault begin by 1."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nb
 - id: in_output
   doc: "String - Output GFF file. If no output file is specified, the\noutput will\
     \ be written to STDOUT."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_boolean_verbose_debug
   doc: Boolean - Verbose, for debug purpose.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_agat_sp_manage_functional_annotation_do_tpl
@@ -145,9 +145,10 @@ outputs:
 - id: out_output
   doc: "String - Output GFF file. If no output file is specified, the\noutput will\
     \ be written to STDOUT."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agat_sp_manage_functional_annotation.pl

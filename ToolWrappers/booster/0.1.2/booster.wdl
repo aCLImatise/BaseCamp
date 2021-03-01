@@ -26,6 +26,9 @@ task Booster {
       ~{if (algo) then "--algo" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_tree_file: ": Input tree file"
     boot: ": Bootstrap tree file (1 file containing all bootstrap trees)"

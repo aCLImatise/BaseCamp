@@ -5,38 +5,41 @@ command:
 positional: []
 named:
 - !Flag
-  description: 'input bam, bed or bed.gz file. (default: None)'
+  optional: true
   synonyms:
   - --input-file
+  description: 'input bam, bed or bed.gz file. (default: None)'
   args: !SimpleFlagArg
     name: INPUT_FILE
-  optional: true
 - !Flag
-  description: 'output snap file. (default: None)'
+  optional: true
   synonyms:
   - --output-snap
+  description: 'output snap file. (default: None)'
   args: !SimpleFlagArg
     name: OUTPUT_SNAP
-  optional: true
 - !Flag
-  description: "genome identifier (i.e. hg19, mm10). This tag does not\nchange anything\
-    \ unless merge or compare multiple snap\nfiles. (default: None)"
+  optional: true
   synonyms:
   - --genome-name
+  description: "genome identifier (i.e. hg19, mm10). This tag does not\nchange anything\
+    \ unless merge or compare multiple snap\nfiles. (default: None)"
   args: !SimpleFlagArg
     name: GENOME_NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --genome-size
   description: "a txt file contains corresponding genome sizes. It\nmust be in the\
     \ following format with the first column\nthe chromsome name and the second column\
     \ as chromsome\nlength. This tag does not change anything unless merge\nor compare\
     \ multiple snap files. (default: None)"
-  synonyms:
-  - --genome-size
   args: !SimpleFlagArg
     name: GENOME_SIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --barcode-file
   description: "a txt file contains pre-selected cell barcodes. If\n--barcode-file\
     \ is given, snaptools will ignore any\nbarcodes not present in the --barcode-file.\
     \ If it is\nNone, snaptools will automatically identify barcodes\nfrom bam file.\
@@ -44,20 +47,20 @@ named:
     \ columns could\nbe any attributes of the barcode as desired\n(`ATGCTCTACTAC attr1\
     \ att2`). The attributes, however,\nwill not be kept in the snap file. This tag\
     \ will be\nignored if the output snap file already exists.\n(default: None)"
-  synonyms:
-  - --barcode-file
   args: !SimpleFlagArg
     name: BARCODE_FILE
-  optional: true
 - !Flag
-  description: "min mappability score. Fargments with mappability\nscore less than\
-    \ --min-mapq will be filtered. (default:\n10)"
+  optional: true
   synonyms:
   - --min-mapq
+  description: "min mappability score. Fargments with mappability\nscore less than\
+    \ --min-mapq will be filtered. (default:\n10)"
   args: !SimpleFlagArg
     name: MIN_MAPQ
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min-cov
   description: "min number of fragments per barcode. barcodes of total\nfragments\
     \ fewer than --min-cov will be considered when\ncreating the cell x bin count\
     \ matrix. Note: because\nthe vast majority of barcodes contains very few reads,\n\
@@ -65,98 +68,95 @@ named:
     \ wasting time and storage.\nPlease note that this is not selection of good\n\
     barcodes for downstream clustering analysis, it is\nonly filterationof very low-quality\
     \ barcodes.\n(default: 0)"
-  synonyms:
-  - --min-cov
   args: !SimpleFlagArg
     name: MIN_COV
-  optional: true
 - !Flag
-  description: "max number of barcodes to store. Barcodes are sorted\nbased on the\
-    \ coverage and only the top --max-num\nbarcodes will be stored. (default: 1000000)"
+  optional: true
   synonyms:
   - --max-num
+  description: "max number of barcodes to store. Barcodes are sorted\nbased on the\
+    \ coverage and only the top --max-num\nbarcodes will be stored. (default: 1000000)"
   args: !SimpleFlagArg
     name: MAX_NUM
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --keep-chrm
   description: "a boolen tag indicates whether to keep fragments\nmapped to chrM.\
     \ If set Fasle, fragments aligned to the\nmitochondrial sequence will be filtered.\
     \ (default:\nTrue)"
-  synonyms:
-  - --keep-chrm
   args: !SimpleFlagArg
     name: KEEP_CHRM
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --keep-single
   description: "a boolen tag indicates whether to keep those reads\nwhose mates are\
     \ not mapped or missing. If False,\nunpaired reads will be filtered. If True,\
     \ unpaired\nreads will be simply treated as a fragment. Note: for\nsingle-end\
     \ such as scTHS-seq, --keep-single must be\nTrue. (default: True)"
-  synonyms:
-  - --keep-single
   args: !SimpleFlagArg
     name: KEEP_SINGLE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --keep-secondary
   description: "a boolen tag indicates whether to keep secondary\nalignments. If False,\
     \ secondary alignments will be\nfiltered. If True, a secondary alignments will\
     \ be\ntreated as fragments just single-end. (default: False)"
-  synonyms:
-  - --keep-secondary
   args: !SimpleFlagArg
     name: KEEP_SECONDARY
-  optional: true
 - !Flag
-  description: "a boolen tag indicates whether to keep discordant read\npairs. (default:\
-    \ False)"
+  optional: true
   synonyms:
   - --keep-discordant
+  description: "a boolen tag indicates whether to keep discordant read\npairs. (default:\
+    \ False)"
   args: !SimpleFlagArg
     name: KEEP_DISCORDANT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --tmp-folder
   description: "a directory to store temporary files. If not given,\nsnaptools will\
     \ automatically generate a temporary\nlocation to store temporary files. (default:\
     \ None)"
-  synonyms:
-  - --tmp-folder
   args: !SimpleFlagArg
     name: TMP_FOLDER
-  optional: true
 - !Flag
-  description: "a boolen tag indicates whether to overwrite the matrix\nsession if\
-    \ it already exists. (default: False)"
+  optional: true
   synonyms:
   - --overwrite
+  description: "a boolen tag indicates whether to overwrite the matrix\nsession if\
+    \ it already exists. (default: False)"
   args: !SimpleFlagArg
     name: OVERWRITE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --qc-file
   description: "a boolen tag indicates whether to create a master qc\nfile. This .qc\
     \ file contains basic quality control\nmetrics at the bulk level. Quality control\
     \ is only\nestimated by selected barcodes only. (default: True)"
-  synonyms:
-  - --qc-file
   args: !SimpleFlagArg
     name: QC_FILE
-  optional: true
 - !Flag
-  description: "a boolen tag indicates output the progress. (default:\nTrue)\n"
+  optional: true
   synonyms:
   - --verbose
+  description: "a boolen tag indicates output the progress. (default:\nTrue)\n"
   args: !SimpleFlagArg
     name: VERBOSE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: snaptools snap-pre [-h] --input-file INPUT_FILE --output-snap\n\
@@ -238,3 +238,4 @@ help_text: "usage: snaptools snap-pre [-h] --input-file INPUT_FILE --output-snap
   \  True)\n"
 generated_using:
 - --help
+docker_image:

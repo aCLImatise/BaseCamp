@@ -4,6 +4,9 @@ task Statisticspm {
   command <<<
     Statistics_pm
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

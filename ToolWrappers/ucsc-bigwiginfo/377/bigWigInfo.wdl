@@ -4,6 +4,9 @@ task BigWigInfo {
   command <<<
     bigWigInfo
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

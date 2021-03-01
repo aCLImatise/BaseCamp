@@ -30,6 +30,9 @@ task TomboWriteMostSignificantFasta {
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_saveload_base: "File to save/load base by base statistics."
     fast_five_based_irs: "Directories containing fast5 files."

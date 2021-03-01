@@ -34,8 +34,11 @@ task Findjuncs {
       ~{if defined(gff_exon_types) then ("--gff_exon_types " +  '"' + gff_exon_types + '"') else ""} \
       ~{if defined(gff_cds_types) then ("--gff_cds_types " +  '"' + gff_cds_types + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    annotation_files: "# merge unique annotations from annotation.bed and newly_discovered.bed,\\n# export only unique junctions to 'merged_unique.bed'\\n$ findjuncs merged_unique --annotation_format BED \\\\n--annotation_files annotation.bed newly_discovered.bed"
+    annotation_files: "newly_discovered.bed"
     export_top_hat: "Export tophat `.juncs` file in addition to BED output"
     quiet: "Suppress all warning messages. Cannot use with '-v'."
     verbose: "Increase verbosity. With '-v', show every warning.\\nWith '-vv', turn warnings into exceptions. Cannot use\\nwith '-q'. (Default: show each type of warning once)"

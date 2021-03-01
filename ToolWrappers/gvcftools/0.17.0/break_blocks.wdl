@@ -14,6 +14,9 @@ task BreakBlocks {
       ~{if (exclude_off_target) then "--exclude-off-target" else ""} \
       ~{if (include_variants) then "--include-variants" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     region_file: "A bed file specifying regions where call blocks should\\nbe broken into individual positions (required)"
     ref: "samtools reference sequence (required)"

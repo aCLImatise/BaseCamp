@@ -3,17 +3,17 @@ id: run_bowtie.py.cwl
 inputs:
 - id: in_bis_map
   doc: Run bowtie with --norc
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -Bismap
 - id: in_var_id
   doc: HPC environmental variable for JOB ID
-  type: string
+  type: string?
   inputBinding:
     prefix: -var_id
 - id: in_job_id
   doc: 1-based index for selecting a k-mer file
-  type: File
+  type: File?
   inputBinding:
     prefix: -job_id
 - id: in_km_er_dir
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - run_bowtie.py

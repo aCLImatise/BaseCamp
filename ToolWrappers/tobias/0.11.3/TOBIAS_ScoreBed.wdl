@@ -5,7 +5,7 @@ task TOBIASScoreBed {
     String? math
     Boolean? bed
     Boolean? bigwigs
-    File? path_output_sites
+    File? path_output_default
     Boolean? subset
     Boolean? null
     Boolean? position
@@ -16,17 +16,20 @@ task TOBIASScoreBed {
       ~{if defined(math) then ("--math " +  '"' + math + '"') else ""} \
       ~{if (bed) then "--bed" else ""} \
       ~{if (bigwigs) then "--bigwigs" else ""} \
-      ~{if (path_output_sites) then "--output" else ""} \
+      ~{if (path_output_default) then "--output" else ""} \
       ~{if (subset) then "--subset" else ""} \
       ~{if (null) then "--null" else ""} \
       ~{if (position) then "--position" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     math: "be used to adjust scoring scheme."
     bed: "Sites to score (.bed file)"
     bigwigs: "[ [ ...]]  Scores to assign to regions in .bed (.bw file(s))"
-    path_output_sites: "Path to output .bed-file (default: scored sites are written to\\nstdout)"
+    path_output_default: "Path to output .bed-file (default: scored sites are written to\\nstdout)"
     subset: "Subset scoring to .bed regions and set all other sites to --null\\nvalue (default: all sites in input file will be scored)"
     null: "If --subset is given, which score/label to add to non-scored\\nregions (default: 0)"
     position: "Position in sites to score (start/mid/end/full) (default: full)"
@@ -34,6 +37,6 @@ task TOBIASScoreBed {
   }
   output {
     File out_stdout = stdout()
-    File out_path_output_sites = "${in_path_output_sites}"
+    File out_path_output_default = "${in_path_output_default}"
   }
 }

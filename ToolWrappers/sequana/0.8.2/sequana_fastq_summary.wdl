@@ -10,6 +10,9 @@ task SequanaFastqSummary {
       ~{se_quan_a_fast_q_count} \
       ~{if defined(pattern) then ("--pattern " +  '"' + pattern + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pattern: "input fastq gzipped or not"
     se_quan_a_fast_q_count: ""

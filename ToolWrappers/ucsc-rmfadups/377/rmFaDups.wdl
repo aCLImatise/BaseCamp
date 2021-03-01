@@ -4,6 +4,9 @@ task RmFaDups {
   command <<<
     rmFaDups
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -10,6 +10,9 @@ task FilterContig {
       ~{contig_file} \
       ~{id}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contig_file: ""
     id: ""

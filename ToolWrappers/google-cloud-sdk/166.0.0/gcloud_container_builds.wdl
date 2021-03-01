@@ -16,6 +16,9 @@ task GcloudContainerBuilds {
       ~{log} \
       ~{submit}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cancel: "Cancel an ongoing build."
     describe: "Get information about a particular build."

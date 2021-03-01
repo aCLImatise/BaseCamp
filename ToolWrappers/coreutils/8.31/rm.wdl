@@ -26,6 +26,9 @@ task Rm {
       ~{if (dir) then "--dir" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "ignore nonexistent files and arguments, never prompt"
     prompt_before_removal: "prompt before every removal"

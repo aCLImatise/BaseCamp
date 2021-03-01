@@ -12,6 +12,9 @@ task Miramem {
       ~{if (amm_askpmf_asmps) then "-AS" else ""} \
       ~{if (sk) then "-SK" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     amm_askpmf_asmps: ":amm, -AS:kpmf, -AS:mps"
     sk: ":mhim, -SK:mchr (both runtime); -SK:mhpr (accuracy)"

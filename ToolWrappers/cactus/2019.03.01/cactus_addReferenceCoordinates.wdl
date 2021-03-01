@@ -16,6 +16,9 @@ task CactusAddReferenceCoordinates {
       ~{if (reference_event_string) then "--referenceEventString" else ""} \
       ~{if (bottom_up_phase) then "--bottomUpPhase" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: ": Set the log level"
     cactus_disk: ": The location of the flower disk directory"

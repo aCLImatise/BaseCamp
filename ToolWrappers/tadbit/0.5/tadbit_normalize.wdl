@@ -18,7 +18,7 @@ task TadbitNormalize {
     Int? max_perc
     Boolean? filter_only
     Boolean? fast_filter
-    Int? pospos_extra_regions
+    Int? extra_regions_added
     Array[Int] filter
     Boolean? valid
     String? normalization
@@ -48,7 +48,7 @@ task TadbitNormalize {
       ~{if defined(max_perc) then ("--max_perc " +  '"' + max_perc + '"') else ""} \
       ~{if (filter_only) then "--filter_only" else ""} \
       ~{if (fast_filter) then "--fast_filter" else ""} \
-      ~{if defined(pospos_extra_regions) then ("-B " +  '"' + pospos_extra_regions + '"') else ""} \
+      ~{if defined(extra_regions_added) then ("-B " +  '"' + extra_regions_added + '"') else ""} \
       ~{if defined(filter) then ("--filter " +  '"' + filter + '"') else ""} \
       ~{if (valid) then "--valid" else ""} \
       ~{if defined(normalization) then ("--normalization " +  '"' + normalization + '"') else ""} \
@@ -60,6 +60,9 @@ task TadbitNormalize {
       ~{if defined(prop_data) then ("--prop_data " +  '"' + prop_data + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     workdir: "path to working directory (generated with the tool tadbit mapper)"
     resolution: "resolution at which to output matrices"
@@ -77,7 +80,7 @@ task TadbitNormalize {
     max_perc: "[None] upper percentile until which consider bins as good."
     filter_only: "skip normalization"
     fast_filter: "only filter according to the percentage of zero count or minimum\\ncount of reads"
-    pospos_extra_regions: ":POS1-POS2 [CHR:POS1-POS2 ...], --badcols CHR:POS1-POS2 [CHR:POS1-POS2 ...]\\nextra regions to be added to bad-columns (ingenomic position). e.g.:\\n--badcols 1:150000000-160000000 2:1200000-1300000"
+    extra_regions_added: ":POS1-POS2 [CHR:POS1-POS2 ...], --badcols CHR:POS1-POS2 [CHR:POS1-POS2 ...]\\nextra regions to be added to bad-columns (ingenomic position). e.g.:\\n--badcols 1:150000000-160000000 2:1200000-1300000"
     filter: "[[1, 2, 3, 4, 6, 7, 9, 10]] Use filters to define a set os valid\\npair of reads e.g.: '--apply 1 2 3 4 8 9 10'. Where these\\nnumberscorrespond to: 1: self-circle, 2: dangling-end, 3: error, 4:\\nextra dangling-end, 5: too close from RES, 6: too short, 7: too\\nlarge, 8: over-represented, 9: duplicated, 10: random breaks, 11:\\ntrans-chromosomic"
     valid: "input BAM file contains only valid pairs (already filtered)."
     normalization: "[Vanilla] normalization(s) to apply. Order matters. Choices:\\nVanilla, ICE, SQRT, oneD, custom"

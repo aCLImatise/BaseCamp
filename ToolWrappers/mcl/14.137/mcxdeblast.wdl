@@ -38,6 +38,9 @@ task Mcxdeblast {
       ~{if defined(r_cut) then ("--rcut " +  '"' + r_cut + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     m_nine: "Expect column (-m 9) input."
     line_mode: "Output simple ID1 ID2 SCORE format."

@@ -3,12 +3,12 @@ id: pslSort.cwl
 inputs:
 - id: in_no_head
   doc: Do not write psl header.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nohead
 - id: in_verbose
   doc: Set verbosity level, higher for more output. Default is 1.
-  type: long
+  type: long?
   inputBinding:
     prefix: -verbose
 - id: in_adding
@@ -58,7 +58,7 @@ inputs:
     position: 1
 - id: in_one_vertical_line_two
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     position: 1
 - id: in_across
@@ -220,6 +220,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pslSort

@@ -16,6 +16,9 @@ task A3mDatabaseFilter {
       ~{if (o) then "-o" else ""} \
       ~{if (i) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s: ""
     o: ""

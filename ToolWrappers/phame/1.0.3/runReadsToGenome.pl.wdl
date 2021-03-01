@@ -54,6 +54,9 @@ task RunReadsToGenomepl {
       ~{if (min_depth) then "-min_depth" else ""} \
       ~{if (snp_gap_filter) then "-snp_gap_filter" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     spaceseparated_pairedend_reads: "'leftSequenceFile rightSequenceFile'\\nSpace-separated paired-end reads in quote"
     sequencefileprovides_file_containing: "sequenceFile\\nProvides a file containing single-end reads."

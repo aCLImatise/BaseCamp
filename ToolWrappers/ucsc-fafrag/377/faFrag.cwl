@@ -3,7 +3,7 @@ id: faFrag.cwl
 inputs:
 - id: in_mixed
   doc: '- preserve mixed-case in FASTA file'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -mixed
 - id: in_in_dot_fa
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - faFrag

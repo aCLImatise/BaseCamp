@@ -24,6 +24,9 @@ task Humann2RegroupTable {
       ~{if defined(protected) then ("--protected " +  '"' + protected + '"') else ""} \
       ~{if defined(path_modified_output) then ("--output " +  '"' + path_modified_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     original_output_table: "Original output table (tsv or biom format); default=[TSV/STDIN]"
     groups: "Built-in grouping options"

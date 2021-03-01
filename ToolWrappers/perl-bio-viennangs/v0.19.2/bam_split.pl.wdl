@@ -30,6 +30,9 @@ task BamSplitpl {
       ~{if (log) then "--log" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Input file in BAM format"
     bed: "Create a BED6 file for each split BAM file"

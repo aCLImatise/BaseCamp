@@ -4,100 +4,100 @@ command:
 - seqfetch
 positional:
 - !Positional
-  description: STR   Output file for the fetched sequences.
+  optional: false
   position: 0
   name: out_fn
-  optional: false
+  description: STR   Output file for the fetched sequences.
 - !Positional
-  description: STR   List of sequences to fetch, one per line.
+  optional: false
   position: 1
   name: fetch_list
-  optional: false
+  description: STR   List of sequences to fetch, one per line.
 - !Positional
-  description: 'Algorithm Options:'
+  optional: false
   position: 0
   name: formats.
-  optional: false
+  description: 'Algorithm Options:'
 named:
 - !Flag
-  description: "STR   Output format. If an input file is FASTA and out format is FASTQ,\
-    \ dummy QVs\nwill be added. Valid choices: (fasta, fastq). [fasta]"
+  optional: true
   synonyms:
   - --out-fmt
+  description: "STR   Output format. If an input file is FASTA and out format is FASTQ,\
+    \ dummy QVs\nwill be added. Valid choices: (fasta, fastq). [fasta]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "STR   Dummy QV to be added to sequences when input format is FASTA\
-    \ and output\nFASTQ. [!]"
+  optional: true
   synonyms:
   - --dummy-qv
+  description: "STR   Dummy QV to be added to sequences when input format is FASTA\
+    \ and output\nFASTQ. [!]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "STR   SeqDB file path. If provided, the SeqDB will be used to look-up\
-    \ the\nprovided sequences by their IDs."
+  optional: true
   synonyms:
   - --alias
+  description: "STR   SeqDB file path. If provided, the SeqDB will be used to look-up\
+    \ the\nprovided sequences by their IDs."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Exit non-zero if not all seqs are found.
+  optional: true
   synonyms:
   - --fail
+  description: Exit non-zero if not all seqs are found.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The output sequence names will be replaced by their IDs in the SeqDB,\
-    \ if\nthe SeqDB was provided as input."
+  optional: true
   synonyms:
   - --write-ids
+  description: "The output sequence names will be replaced by their IDs in the SeqDB,\
+    \ if\nthe SeqDB was provided as input."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Fetch homopolymer compressed sequences.
+  optional: true
   synonyms:
   - --use-hpc
+  description: Fetch homopolymer compressed sequences.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --use-rle
   description: "Write a run-length-encoded file alongside to the output file. The\
     \ RLE file\ncontains conversion coordinates from the HPC space to the original\
     \ space\ninstead of the run-length-encoding. This option does not write the HPC\n\
     sequence, for that please specify '--user-hpc'."
-  synonyms:
-  - --use-rle
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
-    [WARN]'
+  optional: true
   synonyms:
   - --log-level
+  description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [WARN]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: FILE  Log to a file, instead of stderr.
+  optional: true
   synonyms:
   - --log-file
+  description: FILE  Log to a file, instead of stderr.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this help and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this help and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Show application version and exit.
+  optional: true
   synonyms:
   - --version
+  description: Show application version and exit.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "pancake seqfetch - Fetches a set of sequences in random access from a\
   \ list of specified indexed sequence files.\n\nUsage:\n  pancake seqfetch [options]\
   \ <out_fn> <fetch_list> <<input.fasta/fastq/bam/fofn> [...]>\n\n  out_fn       \
@@ -129,3 +129,4 @@ help_text: "pancake seqfetch - Fetches a set of sequences in random access from 
   \                          FILE  Log to a file, instead of stderr.\n\n"
 generated_using:
 - --help
+docker_image:

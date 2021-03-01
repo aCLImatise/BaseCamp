@@ -22,6 +22,9 @@ task HgGoldGapGl {
       ~{if (no_load) then "-noLoad" else ""} \
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_gl: "- don't do gl bits"
     chrom: "- just do a single chromosome.  Don't delete old tables."

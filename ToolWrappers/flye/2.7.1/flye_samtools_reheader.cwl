@@ -3,12 +3,12 @@ id: flye_samtools_reheader.cwl
 inputs:
 - id: in_no_pg
   doc: Do not generate an @PG header line.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-PG
 - id: in_in_place
   doc: "Modify the bam/cram file directly.\n(Defaults to outputting to stdout.)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --in-place
 - id: in_or
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - flye-samtools

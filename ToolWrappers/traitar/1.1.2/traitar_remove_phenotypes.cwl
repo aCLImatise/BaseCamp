@@ -3,7 +3,7 @@ id: traitar_remove_phenotypes.cwl
 inputs:
 - id: in_keep
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep
 - id: in_trait_ar
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - traitar

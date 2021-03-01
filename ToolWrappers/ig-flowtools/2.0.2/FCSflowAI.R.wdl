@@ -4,6 +4,9 @@ task FCSflowAIR {
   command <<<
     FCSflowAI_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

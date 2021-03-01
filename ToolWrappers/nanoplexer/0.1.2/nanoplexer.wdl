@@ -6,7 +6,7 @@ task Nanoplexer {
     Boolean? file_dual_barcode
     File? char_output_path
     File? file_output_log
-    Boolean? char_mode_fastq
+    Boolean? char_output_mode
     Boolean? num_batch_size
     Boolean? int_number_threads
     Boolean? int_target_length
@@ -26,7 +26,7 @@ task Nanoplexer {
       ~{if (file_dual_barcode) then "-d" else ""} \
       ~{if (char_output_path) then "-p" else ""} \
       ~{if (file_output_log) then "-l" else ""} \
-      ~{if (char_mode_fastq) then "-M" else ""} \
+      ~{if (char_output_mode) then "-M" else ""} \
       ~{if (num_batch_size) then "-B" else ""} \
       ~{if (int_number_threads) then "-t" else ""} \
       ~{if (int_target_length) then "-L" else ""} \
@@ -38,12 +38,15 @@ task Nanoplexer {
       ~{if (ignore_parameter_estimation) then "-i" else ""} \
       ~{if (show_version_number) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_barcode_file: "FILE    barcode file"
     file_dual_barcode: "FILE    dual barcode pair file"
     char_output_path: "CHAR    output path"
     file_output_log: "FILE    output log file"
-    char_mode_fastq: "CHAR    output mode, fastq or fasta [default fastq]"
+    char_output_mode: "CHAR    output mode, fastq or fasta [default fastq]"
     num_batch_size: "NUM     batch size [default 400M]"
     int_number_threads: "INT     number of threads [default 3]"
     int_target_length: "INT     target length for detecting barcode [default 150]"

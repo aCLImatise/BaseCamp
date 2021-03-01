@@ -3,7 +3,7 @@ id: merge_metaphlan_tables.py.cwl
 inputs:
 - id: in_name_output_file
   doc: Name of output file in which joined tables are saved
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_input_dot_txt
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_name_output_file
   doc: Name of output file in which joined tables are saved
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_name_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - merge_metaphlan_tables.py

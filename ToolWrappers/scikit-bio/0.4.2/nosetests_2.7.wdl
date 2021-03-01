@@ -146,6 +146,9 @@ task Nosetests27 {
       ~{if (all_modules) then "--all-modules" else ""} \
       ~{if (collect_only) then "--collect-only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     plugins: "Output list of available plugins and exit. Combine\\nwith higher verbosity for greater detail"
     verbose: "Be more verbose. [NOSE_VERBOSE]"

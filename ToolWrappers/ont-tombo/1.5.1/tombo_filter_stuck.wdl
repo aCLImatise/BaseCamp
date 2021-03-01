@@ -14,6 +14,9 @@ task TomboFilterStuck {
       ~{if defined(corrected_group) then ("--corrected-group " +  '"' + corrected_group + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_five_based_irs: "Directories containing fast5 files."
     obs_per_base_filter: "Filter reads based on observations per base percentile\\nthresholds. Format thresholds as \\\"percentile:thresh\\n[pctl2:thresh2 ...]\\\". For example to filter reads with\\n99th pctl > 200 obs/base or max > 5k obs/base use\\n\\\"99:200 100:5000\\\"."

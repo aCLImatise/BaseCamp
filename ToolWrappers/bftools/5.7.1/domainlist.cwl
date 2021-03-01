@@ -146,17 +146,12 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_fei_slash_philips
-  doc: Hamamatsu HIS
-  type: string
-  inputBinding:
-    position: 1
 - id: in_hitachi
   doc: JEOL
   type: string
   inputBinding:
-    position: 2
-- id: in_var_31
+    position: 0
+- id: in_var_30
   doc: OME-XML
   type: string
   inputBinding:
@@ -171,7 +166,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_var_34
+- id: in_var_33
   doc: OME-XML
   type: string
   inputBinding:
@@ -196,7 +191,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_noaahrd_gridded_data
+- id: in_gridded_data_format
   doc: NOAA-HRD Gridded Data Format
   type: string
   inputBinding:
@@ -220,6 +215,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - domainlist

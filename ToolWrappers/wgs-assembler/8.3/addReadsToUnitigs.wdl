@@ -10,7 +10,7 @@ task AddReadsToUnitigs {
     Boolean? show_result
     Boolean? verbose
     Boolean? load_all
-    Boolean? work_discard_result
+    Boolean? do_work_discard
     String version
   }
   command <<<
@@ -24,8 +24,11 @@ task AddReadsToUnitigs {
       ~{if (show_result) then "-v" else ""} \
       ~{if (verbose) then "-V" else ""} \
       ~{if (load_all) then "-loadall" else ""} \
-      ~{if (work_discard_result) then "-n" else ""}
+      ~{if (do_work_discard) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gatekeeper_store: "gatekeeper store"
     version_tigstore_version: "version   tigStore and version to modify"
@@ -35,7 +38,7 @@ task AddReadsToUnitigs {
     show_result: "show result"
     verbose: "verbose"
     load_all: "load all reads in gkpStore into memory (faster consensus)"
-    work_discard_result: "do all the work, but discard the result"
+    do_work_discard: "do all the work, but discard the result"
     version: ""
   }
   output {

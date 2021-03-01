@@ -28,6 +28,9 @@ task Opalpy {
       ~{if defined(ranks) then ("--ranks " +  '"' + ranks + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gold_standard_file: "Gold standard file"
     output_dir: "Directory to write the results to"

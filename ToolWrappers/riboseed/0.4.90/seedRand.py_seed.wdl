@@ -8,6 +8,9 @@ task SeedRandpySeed {
     seedRand_py seed \
       ~{n}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n: ""
   }

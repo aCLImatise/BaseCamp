@@ -20,6 +20,9 @@ task MakeDNADatabasepy {
       ~{if defined(k_size) then ("--k_size " +  '"' + k_size + '"') else ""} \
       ~{if (intersect_node_graph) then "--intersect_nodegraph" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prime: "Prime (for modding hashes) (default: 9999999999971)"
     threads: "Number of threads to use (default: 8)"

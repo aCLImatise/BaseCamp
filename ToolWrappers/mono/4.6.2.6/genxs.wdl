@@ -10,6 +10,9 @@ task Genxs {
       ~{config_file_name} \
       ~{destination_path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file_name: ""
     destination_path: ""

@@ -18,6 +18,9 @@ task GcloudServicemanagementList {
       ~{if defined(page_size) then ("--page-size " +  '"' + page_size + '"') else ""} \
       ~{if (sort_by) then "--sort-by" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     enabled: "(DEFAULT) Return the services which the project has enabled. Or use one\\nof --produced or --available."
     produced: "Return the services that the project has produced. Or use one of\\n--enabled or --available."

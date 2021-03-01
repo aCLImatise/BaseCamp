@@ -3,7 +3,7 @@ version 1.0
 task ComparemKmerUsage {
   input {
     Boolean? counts
-    Int? length_kmers_tetranucleotides
+    Int? length_kmers_eg
     File? file_ext
     Int? cpus
     Boolean? silent
@@ -15,14 +15,17 @@ task ComparemKmerUsage {
       ~{genome_files} \
       ~{output_file} \
       ~{if (counts) then "--counts" else ""} \
-      ~{if defined(length_kmers_tetranucleotides) then ("-k " +  '"' + length_kmers_tetranucleotides + '"') else ""} \
+      ~{if defined(length_kmers_eg) then ("-k " +  '"' + length_kmers_eg + '"') else ""} \
       ~{if defined(file_ext) then ("--file_ext " +  '"' + file_ext + '"') else ""} \
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     counts: "output raw counts instead of frequencies"
-    length_kmers_tetranucleotides: "length of kmers, e.g., 4 -> tetranucleotides (default:\\n4)"
+    length_kmers_eg: "length of kmers, e.g., 4 -> tetranucleotides (default:\\n4)"
     file_ext: "extension of files to process (default: fna)"
     cpus: "number of CPUs to use (default: 1)"
     silent: "suppress output"

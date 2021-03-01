@@ -4,6 +4,9 @@ task Xtractprotos {
   command <<<
     xtractprotos
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

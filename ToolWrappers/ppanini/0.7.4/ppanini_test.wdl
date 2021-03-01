@@ -4,6 +4,9 @@ task PpaniniTest {
   command <<<
     ppanini_test
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -58,6 +58,9 @@ task OptimirProcess {
       ~{if defined(bowtie_two_build) then ("--bowtie2_build " +  '"' + bowtie_two_build + '"') else ""} \
       ~{if defined(sam_tools) then ("--samtools " +  '"' + sam_tools + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fq: "Full path of the sample fastq file (accepted formats\\nand extensions: fastq, fq and fq.gz)"
     dir_output: "Full path of the directory where output files are\\ngenerated [default: ./OptimiR_Results_Dir/]"

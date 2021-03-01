@@ -8,6 +8,9 @@ task DBshow {
     DBshow \
       ~{if (unq_uq) then "-unqUQ" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     unq_uq: ""
   }

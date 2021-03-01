@@ -14,6 +14,9 @@ task BamMerge {
       ~{in_two_dot_bam} \
       ~{if (q) then "-Q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     q: ""
     out_dot_bam: ""

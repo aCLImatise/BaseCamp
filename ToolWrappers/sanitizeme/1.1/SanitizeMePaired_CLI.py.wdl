@@ -16,6 +16,9 @@ task SanitizeMePairedCLIpy {
       ~{if (large_reference) then "--LargeReference" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_folder: "Folder containing paired fq, fq.gz, fastq, and\\nfastq.gz files. Program will recursively find paired\\nreads"
     reference: "Host Reference fasta or fasta.gz file"

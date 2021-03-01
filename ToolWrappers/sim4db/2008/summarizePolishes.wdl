@@ -10,6 +10,9 @@ task SummarizePolishes {
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
       ~{if (excel) then "-excel" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     p: ""
     excel: ""

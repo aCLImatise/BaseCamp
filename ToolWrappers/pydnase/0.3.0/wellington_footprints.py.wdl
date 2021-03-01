@@ -36,6 +36,9 @@ task WellingtonFootprintspy {
       ~{if defined(number_use_use) then ("-p " +  '"' + number_use_use + '"') else ""} \
       ~{if (atacseq_mode_default) then "-A" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bonferroni: "Performs a bonferroni correction (default: False)"
     shoulder_sizes: "Range of shoulder sizes to try in format\\n\\\"from,to,step\\\" (default: 35,36,1)"

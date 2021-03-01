@@ -18,6 +18,9 @@ task Minab {
       ~{niter} \
       ~{res_force}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pdb: "= PDB file with initial coordinates"
     prm: "= parameter-topology file name"

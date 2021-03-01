@@ -18,6 +18,9 @@ task NanoQC {
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "Specify directory in which output has to be created."
     rna: "Fastq is from direct RNA-seq and contains U"

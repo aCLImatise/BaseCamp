@@ -12,6 +12,9 @@ task Sdust {
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
       ~{if defined(w) then ("-w " +  '"' + w + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
     w: ""

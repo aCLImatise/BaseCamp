@@ -3,12 +3,12 @@ id: dnase_wig_tracks.py_fw_output.cwl
 inputs:
 - id: in_a
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -A
 - id: in_r
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_dnase_wig_tracks_do_tpy
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dnase_wig_tracks.py

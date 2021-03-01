@@ -34,6 +34,9 @@ task AssignGenespyIgblast {
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(exec) then ("--exec " +  '"' + exec + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicit_output_file: "Explicit output file name. Note, this argument cannot\\nbe used with the --failed, --outdir, or --outname\\narguments. If unspecified, then the output filename\\nwill be based on the input filename(s). (default:\\nNone)"
     outdir: "Specify to changes the output directory to the\\nlocation specified. The input file directory is used\\nif this is not specified. (default: None)"

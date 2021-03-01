@@ -12,6 +12,9 @@ task MatrixToFastapy {
       ~{if defined(output_prefix) then ("--output_prefix " +  '"' + output_prefix + '"') else ""} \
       ~{if defined(filter_frequency) then ("--filter_frequency " +  '"' + filter_frequency + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_matrix: "/path/to/NASP_matrix [REQUIRED]"
     output_prefix: "prefix for outfiles [REQUIRED]"

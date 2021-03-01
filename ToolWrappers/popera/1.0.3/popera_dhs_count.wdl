@@ -16,6 +16,9 @@ task PoperaDhsCount {
       ~{if defined(minlength) then ("--minlength " +  '"' + minlength + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data: "data file, should be sorted bam format,\\nexample=DH_sample1.bam,DH_sample2.bam"
     name: "NH sample name default=DH_sample1,DH_sample2"

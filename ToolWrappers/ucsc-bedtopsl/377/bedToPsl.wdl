@@ -4,6 +4,9 @@ task BedToPsl {
   command <<<
     bedToPsl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

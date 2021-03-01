@@ -4,6 +4,9 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -wordsize
   description: "integer    [10] The similar regions between the two\nsequences are\
     \ found by creating a hash table\nof 'wordsize'd subsequences. 10 is a\nreasonable\
     \ default. Making this value larger\n(20?) may speed up the program slightly,\n\
@@ -11,11 +14,11 @@ named:
     grouped as a single region of difference.\nThis value may be made smaller (4?)\
     \ to\nimprove the resolution of nearby\ndifferences, but the program will go much\n\
     slower. (Integer 2 or more)"
-  synonyms:
-  - -wordsize
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -globaldifferences
   description: "boolean    [N] Normally this program will find regions\nof identity\
     \ that are the length of the\nspecified word-size or greater and will then\nreport\
     \ the regions of difference between\nthese matching regions. This works well and\n\
@@ -24,20 +27,17 @@ named:
     sequences. If you have protein sequences or\nshort RNA sequences however, you\
     \ will be\ninterested in differences at the very ends .\nIt this option is set\
     \ to be true then the\ndifferences at the ends will also be\nreported."
-  synonyms:
-  - -globaldifferences
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "boolean    Report command line options and exit. More\ninformation\
-    \ on associated and general\nqualifiers can be found with -help -verbose\n"
+  optional: true
   synonyms:
   - -help
+  description: "boolean    Report command line options and exit. More\ninformation\
+    \ on associated and general\nqualifiers can be found with -help -verbose\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Compare and report features of two similar sequences\nVersion: EMBOSS:6.6.0.0\n\
@@ -83,3 +83,4 @@ help_text: "Compare and report features of two similar sequences\nVersion: EMBOS
   \n"
 generated_using:
 - --help
+docker_image:

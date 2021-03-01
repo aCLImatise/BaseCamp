@@ -12,6 +12,9 @@ task KrocusInputFastq {
       ~{allele_directory} \
       ~{input_dot_fast_q}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kroc_us: ""
     allele_directory: ""

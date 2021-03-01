@@ -3,7 +3,7 @@ id: arrow_annotations_load_legacy_gff3.cwl
 inputs:
 - id: in_source
   doc: URL where the input dataset can be found.
-  type: string
+  type: string?
   inputBinding:
     prefix: --source
 - id: in_organism
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - arrow

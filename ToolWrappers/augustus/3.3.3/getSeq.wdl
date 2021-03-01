@@ -14,6 +14,9 @@ task GetSeq {
       ~{if defined(start) then ("--start " +  '"' + start + '"') else ""} \
       ~{if defined(end) then ("--end " +  '"' + end + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rc: "output the reverse complement of the sequence"
     start: "retrieve subsequence starting at position N (coordinates are 1-based)"

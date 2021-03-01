@@ -16,6 +16,9 @@ task Catchrpl {
       ~{if (h_prefix) then "-hPrefix" else ""} \
       ~{if (w_keyword) then "-wKeyword" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     n: ""

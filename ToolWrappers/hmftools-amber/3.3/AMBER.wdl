@@ -42,6 +42,9 @@ task AMBER {
       ~{if defined(tumor_only_min_vaf) then ("-tumor_only_min_vaf " +  '"' + tumor_only_min_vaf + '"') else ""} \
       ~{if defined(validation_stringency) then ("-validation_stringency " +  '"' + validation_stringency + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_depth_percent: "Min percentage of median depth [1.5]"
     max_het_af_percent: "Max heterozygous AF% [0.65]"

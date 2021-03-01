@@ -30,6 +30,9 @@ task Cut {
       ~{if (zero_terminated) then "--zero-terminated" else ""} \
       ~{if (first_mth_included) then "-M" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bytes: "select only these bytes"
     characters: "select only these characters"

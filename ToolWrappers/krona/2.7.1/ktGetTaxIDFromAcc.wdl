@@ -26,6 +26,9 @@ task KtGetTaxIDFromAcc {
       ~{if (prepend_tax_ids) then "-p" else ""} \
       ~{if (append_tax_ids) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prepend_tax_ids: "Prepend tax IDs to the original lines (separated by tabs)."
     append_tax_ids: "Append tax IDs to the original lines (separated by tabs)."

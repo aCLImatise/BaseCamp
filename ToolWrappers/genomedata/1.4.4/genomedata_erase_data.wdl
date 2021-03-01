@@ -10,6 +10,9 @@ task Genomedataerasedata {
       ~{if defined(track_name) then ("--trackname " +  '"' + track_name + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     track_name: "tracknames to erase"
     verbose: "Print status updates and diagnostic messages"

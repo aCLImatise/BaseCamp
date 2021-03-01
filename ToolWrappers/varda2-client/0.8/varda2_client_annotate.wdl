@@ -12,6 +12,9 @@ task Varda2clientAnnotate {
       ~{if defined(variants_file) then ("--variants-file " +  '"' + variants_file + '"') else ""} \
       ~{if defined(lab_sample_id) then ("--lab-sample-id " +  '"' + lab_sample_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample_sheet: "Sample sheet file: sample_id, gvcf, vcf, bam"
     variants_file: "Varda variants file"

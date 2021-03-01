@@ -14,6 +14,9 @@ task SsueslcompstructTestfile {
       ~{test_file} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
     ssu_esl_comp_struct: ""

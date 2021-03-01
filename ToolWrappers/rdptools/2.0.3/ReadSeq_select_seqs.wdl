@@ -20,6 +20,9 @@ task ReadSeqSelectseqs {
       ~{seq_file} \
       ~{if defined(seq_length) then ("--seq_length " +  '"' + seq_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_length: "minimum length of sequence"
     ids_file: ""

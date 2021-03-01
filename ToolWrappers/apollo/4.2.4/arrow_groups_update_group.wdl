@@ -10,6 +10,9 @@ task ArrowGroupsUpdateGroup {
       ~{group_id} \
       ~{new_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     group_id: ""
     new_name: ""

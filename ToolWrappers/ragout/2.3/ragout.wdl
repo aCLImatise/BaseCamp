@@ -22,6 +22,9 @@ task Ragout {
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "output directory (default: ragout-out)"
     synteny: "backend for synteny block decomposition (default:\\nsibelia)"

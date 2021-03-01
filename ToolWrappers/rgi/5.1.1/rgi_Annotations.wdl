@@ -36,6 +36,9 @@ task RgiAnnotations {
       ~{km_er_build} \
       ~{km_er_query}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     load: "Loads CARD database, annotations and k-mer database"
     clean: "Removes BLAST databases and temporary files"

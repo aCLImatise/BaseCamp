@@ -16,6 +16,9 @@ task Blexclude {
       ~{if (specify_multiple_input_files) then "-i" else ""} \
       ~{if (specify_multiple_output_files) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     line_excludefile_truncated: "each line in EXCLUDE_FILE is truncated by a space or tab and\\nstored as an id to exclude"
     invert_exclude_file: "invert exclude file to keep entries"

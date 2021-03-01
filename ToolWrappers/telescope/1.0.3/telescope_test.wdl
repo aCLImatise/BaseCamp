@@ -8,6 +8,9 @@ task TelescopeTest {
     telescope test \
       ~{telescope}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     telescope: ""
   }

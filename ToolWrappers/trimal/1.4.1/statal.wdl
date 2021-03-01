@@ -38,6 +38,9 @@ task Statal {
       ~{if defined(sw) then ("-sw " +  '"' + sw + '"') else ""} \
       ~{if defined(cw) then ("-cw " +  '"' + cw + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input file in several formats (clustal, fasta, nexus, phylip, etc)."
     compare_set: "Input list of paths for the alignments to compare."

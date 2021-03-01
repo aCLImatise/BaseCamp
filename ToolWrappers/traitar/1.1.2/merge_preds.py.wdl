@@ -26,6 +26,9 @@ task MergePredspy {
       ~{data} \
       ~{matrices}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     combine: ""
     the: ""

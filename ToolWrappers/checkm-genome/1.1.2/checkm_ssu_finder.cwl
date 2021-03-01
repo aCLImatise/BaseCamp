@@ -3,28 +3,28 @@ id: checkm_ssu_finder.cwl
 inputs:
 - id: in_extension
   doc: 'extension of bins (other files in directory are ignored) (default: fna)'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --extension
 - id: in_evalue
   doc: 'e-value threshold for identifying hits (default: 1e-05)'
-  type: double
+  type: double?
   inputBinding:
     prefix: --evalue
 - id: in_concatenate
   doc: 'concatenate hits that are within the specified number of base pairs (default:
     200)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --concatenate
 - id: in_threads
   doc: 'number of threads (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_quiet
   doc: suppress console output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_seq_file
@@ -46,6 +46,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - checkm

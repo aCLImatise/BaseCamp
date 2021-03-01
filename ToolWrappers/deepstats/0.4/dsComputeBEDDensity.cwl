@@ -9,13 +9,13 @@ inputs:
 - id: in_chrom_size
   doc: "A 2 columns tab-delimited file containing chromosome\nsizes, with one chromosome\
     \ per line."
-  type: File
+  type: File?
   inputBinding:
     prefix: --chromSize
 - id: in_window_size
   doc: "Size of the window used to binify the genome and\ncalculate bed files density.\
     \ Default: 1000."
-  type: long
+  type: long?
   inputBinding:
     prefix: --windowSize
 - id: in_output
@@ -38,6 +38,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dsComputeBEDDensity

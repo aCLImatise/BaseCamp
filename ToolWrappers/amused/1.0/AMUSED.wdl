@@ -36,6 +36,9 @@ task AMUSED {
       ~{if (bc) then "-bc" else ""} \
       ~{if (n_sz) then "-nsz" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _query_sequences: "= query sequences"
     compare_seqs_background: "= compare seqs to these background seqs"

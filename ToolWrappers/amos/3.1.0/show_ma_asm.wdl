@@ -20,6 +20,9 @@ task Showmaasm {
       ~{if (print_alignments_unitigs) then "-u" else ""} \
       ~{if (display_code_version) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count_gaps_printed: "Count gaps in printed consensus positions"
     print_snps_addition: "Print SNPs in addition to multialignments"

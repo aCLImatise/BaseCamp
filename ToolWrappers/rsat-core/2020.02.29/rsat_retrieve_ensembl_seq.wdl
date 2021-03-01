@@ -9,8 +9,8 @@ task RsatRetrieveensemblseq {
     Boolean? feat_type
     Boolean? type
     Int? utr
-    Int? query_should_ensembl
-    Boolean? query_file_first
+    Int? query_be_gene
+    Boolean? query_file_taken
     Boolean? all
     File? name_output_file
     Boolean? from
@@ -23,7 +23,7 @@ task RsatRetrieveensemblseq {
     Boolean? first_intron
     Boolean? noncoding
     Boolean? chrom
-    Boolean? left_limit_retrieve
+    Boolean? left_limit_sequence
     Boolean? right_limit_retrieve
     Int? strand
     File? ft_file
@@ -46,8 +46,8 @@ task RsatRetrieveensemblseq {
       ~{if (feat_type) then "-feattype" else ""} \
       ~{if (type) then "-type" else ""} \
       ~{if defined(utr) then ("-utr " +  '"' + utr + '"') else ""} \
-      ~{if defined(query_should_ensembl) then ("-q " +  '"' + query_should_ensembl + '"') else ""} \
-      ~{if (query_file_first) then "-i" else ""} \
+      ~{if defined(query_be_gene) then ("-q " +  '"' + query_be_gene + '"') else ""} \
+      ~{if (query_file_taken) then "-i" else ""} \
       ~{if (all) then "-all" else ""} \
       ~{if (name_output_file) then "-o" else ""} \
       ~{if (from) then "-from" else ""} \
@@ -60,7 +60,7 @@ task RsatRetrieveensemblseq {
       ~{if (first_intron) then "-firstintron" else ""} \
       ~{if (noncoding) then "-noncoding" else ""} \
       ~{if (chrom) then "-chrom" else ""} \
-      ~{if (left_limit_retrieve) then "-left" else ""} \
+      ~{if (left_limit_sequence) then "-left" else ""} \
       ~{if (right_limit_retrieve) then "-right" else ""} \
       ~{if defined(strand) then ("-strand " +  '"' + strand + '"') else ""} \
       ~{if defined(ft_file) then ("-ftfile " +  '"' + ft_file + '"') else ""} \
@@ -72,6 +72,9 @@ task RsatRetrieveensemblseq {
       ~{if (header_org) then "-header_org" else ""} \
       ~{if defined(label) then ("-label " +  '"' + label + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     org: "underscore between words (eg 'homo_sapiens')\\nIf this option is not used, the option -dbname must be used\\ninstead.\\n(type 'supported-organisms | grep EnsEMBL' to obtain the list of supported\\norganisms)"
     ensembl_host: "address of ensembl database server (default is EBI server)"
@@ -80,8 +83,8 @@ task RsatRetrieveensemblseq {
     feat_type: "Feature type.\\nSupported: cds,exon,gene,intron,mrna,transcript,utr\\nDefaut: mrna"
     type: "sequence type\\nCurrently supported sequence types\\nupstream (default)\\ndownstream\\nfeature"
     utr: "Type(s) of UTR (untranslated region) to return.\\nSupported: all | 5prime | 3prime"
-    query_should_ensembl: "The query should be an EnsEMBL gene identifier (eg 'ENSG00000177799').\\nMultiple queries can be entered by reiteratively using the -q\\noption."
-    query_file_first: "query file. The first word of each line is taken as a query.\\nThis option is incompatible with -q."
+    query_be_gene: "The query should be an EnsEMBL gene identifier (eg 'ENSG00000177799').\\nMultiple queries can be entered by reiteratively using the -q\\noption."
+    query_file_taken: "query file. The first word of each line is taken as a query.\\nThis option is incompatible with -q."
     all: "return all genomic upstream/downstream regions"
     name_output_file: "name of the output file"
     from: "#1 -to #2\\nwhere #1 and #2 are numbers. #2 should be higher than #1.\\nlimits of the region to extract, relative to feattype start or end\\n(=position 0). Use negative values for upstream sequence.\\nexample: -from -800 -to -1\\nwill extract the 800 bp upstream the feattype start or end.\\n(this is the default"
@@ -94,7 +97,7 @@ task RsatRetrieveensemblseq {
     first_intron: "With feattype intron, get only first intron sequence"
     noncoding: "With feattype exon, get only non-coding (part of) exons"
     chrom: "Chromosome name or number (to use with -left and -right)"
-    left_limit_retrieve: "Left limit of sequence to retrieve"
+    left_limit_sequence: "Left limit of sequence to retrieve"
     right_limit_retrieve: "Right limit of sequence to retrieve"
     strand: "of sequence to retrieve when using -left and -right. Values: 1, -1"
     ft_file: "file"

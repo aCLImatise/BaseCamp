@@ -32,6 +32,9 @@ task Svcutil {
       ~{if (target_client_version) then "--targetClientVersion" else ""} \
       ~{if (typed_message) then "--typedMessage" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     async: "Generate async methods."
     config: "Configuration file names to generate."

@@ -22,6 +22,9 @@ task Hotspot3dPrep {
       ~{if (three_d_distance_cut_off) then "--3d-distance-cutoff" else ""} \
       ~{if (linear_cut_off) then "--linear-cutoff" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Output directory of proximity files\\nOPTIONAL"
     start: "What step to start on ( calroi , statis , anno , trans , cosmic , prior ), default is calroi"

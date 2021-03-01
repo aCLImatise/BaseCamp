@@ -12,6 +12,9 @@ task Sonicparanoidsetmmseqs2 {
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mm_seqs_path: "The path to the MMseqs2 binary file."
     debug: "Output debug information."

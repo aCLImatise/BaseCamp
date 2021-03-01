@@ -18,6 +18,9 @@ task Phasedstacks {
       ~{if (minor_allele_freq) then "--minor-allele-freq" else ""} \
       ~{if (min_inform_pairs) then "--min-inform-pairs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     haplotypes: ": data were phased as RAD locus haplotypes."
     d_prime_bin_size: ": size of buckets for binning SNPs at a particular distance to calculate the mean D' value."

@@ -12,6 +12,9 @@ task HcaUploadReport {
       ~{if defined(uuid) then ("--uuid " +  '"' + uuid + '"') else ""} \
       ~{if defined(output_file_name) then ("--output_file_name " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     env: "Environment the upload area was created in (default is\\nbased on currently selected upload area)"
     uuid: "Full UUID of an upload area (default is based on\\ncurrently selected upload area)"

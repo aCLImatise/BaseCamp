@@ -1,0 +1,103 @@
+!Command
+command:
+- LCA
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: assignments of sequences to ref database in blast .m8 tab delimited
+    format
+  args: !SimpleFlagArg
+    name: mapping
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: file with entries corresponding to sequences in ref database, that
+    was mapped against
+  args: !SimpleFlagArg
+    name: taxonomy
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: file containing the sequence name and the assigned taxonomy against
+    the ref database
+  args: !SimpleFlagArg
+    name: output
+- !Flag
+  optional: true
+  synonyms:
+  - -matHigh
+  description: calculate abundance of reads at different taxonomic levels. An extra
+    file (derriving from -o) per tax level is written
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -showHitRead
+  description: if a hit can be uniquely assigned to a single entry in the ref database,
+    this is reported in the -o file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -no_bl_filter
+  description: use only, if custom scripts were used to pre-filter filter -i file
+    and in-built filter should be deactivated
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -readInput
+  description: '[miTag / OTU] changes the tags attached to single reads'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -LCAfrac
+  description: '[0-1] the fraction of matching taxonomies required to accept this
+    taxonomy on the different levels. Default="0.8"'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -id
+  description: comma seperated list of min %identity, to accept a database hit as
+    applicable to this taxonomic level, starting from Species and going to Kingdom.
+    Default="97,95,93,91,88,78,0"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cover
+  description: '[0-1] fraction of query coverage required to accept a hit. Default=0.5'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "LCA help\nUsage: ./LCA [[ optional_args ]] -i [blast m8 output] -r [taxonomy\
+  \ database] -o [output file]\nRequired arguments:\n  -i mapping assignments of sequences\
+  \ to ref database in blast .m8 tab delimited format\n  -r taxonomy file with entries\
+  \ corresponding to sequences in ref database, that was mapped against\n  -o output\
+  \ file containing the sequence name and the assigned taxonomy against the ref database\n\
+  Optional arguments:\n  -matHigh       calculate abundance of reads at different\
+  \ taxonomic levels. An extra file (derriving from -o) per tax level is written\n\
+  \  -showHitRead   if a hit can be uniquely assigned to a single entry in the ref\
+  \ database, this is reported in the -o file.\n  -no_bl_filter  use only, if custom\
+  \ scripts were used to pre-filter filter -i file and in-built filter should be deactivated\n\
+  \  -readInput     [miTag / OTU] changes the tags attached to single reads\n  -LCAfrac\
+  \       [0-1] the fraction of matching taxonomies required to accept this taxonomy\
+  \ on the different levels. Default=\"0.8\"\n  -id            comma seperated list\
+  \ of min %identity, to accept a database hit as applicable to this taxonomic level,\
+  \ starting from Species and going to Kingdom. Default=\"97,95,93,91,88,78,0\"\n\
+  \  -cover         [0-1] fraction of query coverage required to accept a hit. Default=0.5\n\
+  \n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/lca:0.21--he513fc3_0

@@ -44,6 +44,9 @@ task Topas {
       ~{norm_expr_table} \
       ~{phy_cc}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     validate_fast_a: "validate a fasta file"
     correct_fast_a: "correct a fasta file"

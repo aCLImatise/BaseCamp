@@ -54,6 +54,9 @@ task PhyloP {
       ~{if defined(epsilon) then ("--epsilon " +  '"' + epsilon + '"') else ""} \
       ~{if (quantiles) then "--quantiles" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base_by_base: "Like --wig-scores, but outputs multiple values per site, in a\\nmethod-dependent way.  With 'SPH', output includes mean and\\nvariance of posterior distribution, with LRT and SCORE it\\nincludes the estimated scale factor(s) and test statistics, and\\nwith GERP it includes the estimated numbers of neutral,\\nobserved, and rejected substitutions, along with the number of\\nspecies available at each site."
     confidence_interval: "Allow for uncertainty in the estimate of the actual number of\\nsubstitutions by using a (central) confidence interval about the\\nmean of the specified size (0 < val < 1).  To be conservative, the\\nmaximum of this interval is used when computing a p-value of\\nconservation, and the minimum is used when computing a p-value of\\nacceleration.  The variance of the posterior is computed\\nexactly, but the confidence interval is based on the assumption\\nthat the combined distribution will be approximately normal (true\\nfor large numbers of sites by central limit theorem)."

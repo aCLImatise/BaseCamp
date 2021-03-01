@@ -3,27 +3,27 @@ id: kcpolytest.cwl
 inputs:
 - id: in_rnd
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -rnd
 - id: in_th
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -th
 - id: in_ru
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ru
 - id: in_hard
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -hard
 - id: in_it
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -it
 - id: in_index
@@ -65,6 +65,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kcpolytest

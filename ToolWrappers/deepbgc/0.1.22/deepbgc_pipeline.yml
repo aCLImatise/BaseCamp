@@ -1,0 +1,212 @@
+!Command
+command:
+- deepbgc
+- pipeline
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: inputs
+  description: Input sequence file path (FASTA, GenBank, Pfam CSV)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  - -o
+  - --output
+  description: Custom output directory path
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --limit-to-record
+  description: Process only specific record ID. Can be provided multiple times
+  args: !SimpleFlagArg
+    name: LIMIT_TO_RECORD
+- !Flag
+  optional: true
+  synonyms:
+  - --minimal-output
+  description: Produce minimal output with just the GenBank sequence file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --prodigal-meta-mode
+  description: Run Prodigal in '-p meta' mode to enable detecting genes in short contigs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --protein
+  description: Accept amino-acid protein sequences as input (experimental). Will treat
+    each file as a single record with multiple proteins.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --detector
+  description: Trained detection model name (run "deepbgc download" to download models)
+    or path to trained model pickle file. Can be provided multiple times (-d first
+    -d second)
+  args: !SimpleFlagArg
+    name: DETECTORS
+- !Flag
+  optional: true
+  synonyms:
+  - --no-detector
+  description: Disable BGC detection
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --label
+  description: Label for detected clusters (equal to --detector by default). If multiple
+    detectors are provided, a label should be provided for each one
+  args: !SimpleFlagArg
+    name: LABELS
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --score
+  description: 'Average protein-wise DeepBGC score threshold for extracting BGC regions
+    from Pfam sequences (default: 0.5)'
+  args: !SimpleFlagArg
+    name: SCORE
+- !Flag
+  optional: true
+  synonyms:
+  - --merge-max-protein-gap
+  description: 'Merge detected BGCs within given number of proteins (default: 0)'
+  args: !SimpleFlagArg
+    name: MERGE_MAX_PROTEIN_GAP
+- !Flag
+  optional: true
+  synonyms:
+  - --merge-max-nucl-gap
+  description: 'Merge detected BGCs within given number of nucleotides (default: 0)'
+  args: !SimpleFlagArg
+    name: MERGE_MAX_NUCL_GAP
+- !Flag
+  optional: true
+  synonyms:
+  - --min-nucl
+  description: 'Minimum BGC nucleotide length (default: 1)'
+  args: !SimpleFlagArg
+    name: MIN_NUCL
+- !Flag
+  optional: true
+  synonyms:
+  - --min-proteins
+  description: 'Minimum number of proteins in a BGC (default: 1)'
+  args: !SimpleFlagArg
+    name: MIN_PROTEINS
+- !Flag
+  optional: true
+  synonyms:
+  - --min-domains
+  description: 'Minimum number of protein domains in a BGC (default: 1)'
+  args: !SimpleFlagArg
+    name: MIN_DOMAINS
+- !Flag
+  optional: true
+  synonyms:
+  - --min-bio-domains
+  description: 'Minimum number of known biosynthetic (as defined by antiSMASH) protein
+    domains in a BGC (default: 0)'
+  args: !SimpleFlagArg
+    name: MIN_BIO_DOMAINS
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --classifier
+  description: Trained classification model name (run "deepbgc download" to download
+    models) or path to trained model pickle file. Can be provided multiple times (-c
+    first -c second)
+  args: !SimpleFlagArg
+    name: CLASSIFIERS
+- !Flag
+  optional: true
+  synonyms:
+  - --no-classifier
+  description: Disable BGC classification
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --classifier-score
+  description: "DeepBGC classification score threshold for assigning classes to BGCs\
+    \ (default: 0.5)\n"
+  args: !SimpleFlagArg
+    name: CLASSIFIER_SCORE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: deepbgc pipeline [-h] [--debug] [-o OUTPUT]\n                 \
+  \       [--limit-to-record LIMIT_TO_RECORD] [--minimal-output]\n               \
+  \         [--prodigal-meta-mode] [--protein] [-d DETECTORS]\n                  \
+  \      [--no-detector] [-l LABELS] [-s SCORE]\n                        [--merge-max-protein-gap\
+  \ MERGE_MAX_PROTEIN_GAP]\n                        [--merge-max-nucl-gap MERGE_MAX_NUCL_GAP]\n\
+  \                        [--min-nucl MIN_NUCL] [--min-proteins MIN_PROTEINS]\n \
+  \                       [--min-domains MIN_DOMAINS]\n                        [--min-bio-domains\
+  \ MIN_BIO_DOMAINS] [-c CLASSIFIERS]\n                        [--no-classifier]\n\
+  \                        [--classifier-score CLASSIFIER_SCORE]\n               \
+  \         inputs [inputs ...]\n\nRun DeepBGC pipeline: Preparation, BGC detection,\
+  \ BGC classification and generate the report directory.\n    \nExamples:\n    \n\
+  \  # Show detailed help \n  deepbgc pipeline --help \n    \n  # Detect BGCs in a\
+  \ nucleotide FASTA sequence using DeepBGC model \n  deepbgc pipeline sequence.fa\n\
+  \  \n  # Detect BGCs using the ClusterFinder GeneBorder detection model and a higher\
+  \ score threshold\n  deepbgc pipeline --detector clusterfinder_geneborder --score\
+  \ 0.8 sequence.fa\n  \n  # Add additional clusters detected using DeepBGC model\
+  \ with a strict score threshold\n  deepbgc pipeline --continue --output sequence/\
+  \ --label deepbgc_90_score --score 0.9 sequence/sequence.full.gbk\n  \n\npositional\
+  \ arguments:\n  inputs                Input sequence file path (FASTA, GenBank,\
+  \ Pfam CSV)\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --debug\n  -o OUTPUT, --output OUTPUT\n                        Custom\
+  \ output directory path\n  --limit-to-record LIMIT_TO_RECORD\n                 \
+  \       Process only specific record ID. Can be provided multiple times\n  --minimal-output\
+  \      Produce minimal output with just the GenBank sequence file\n  --prodigal-meta-mode\
+  \  Run Prodigal in '-p meta' mode to enable detecting genes in short contigs\n \
+  \ --protein             Accept amino-acid protein sequences as input (experimental).\
+  \ Will treat each file as a single record with multiple proteins.\n\nBGC detection\
+  \ options:\n\n  -d DETECTORS, --detector DETECTORS\n                        Trained\
+  \ detection model name (run \"deepbgc download\" to download models) or path to\
+  \ trained model pickle file. Can be provided multiple times (-d first -d second)\n\
+  \  --no-detector         Disable BGC detection\n  -l LABELS, --label LABELS\n  \
+  \                      Label for detected clusters (equal to --detector by default).\
+  \ If multiple detectors are provided, a label should be provided for each one\n\
+  \  -s SCORE, --score SCORE\n                        Average protein-wise DeepBGC\
+  \ score threshold for extracting BGC regions from Pfam sequences (default: 0.5)\n\
+  \  --merge-max-protein-gap MERGE_MAX_PROTEIN_GAP\n                        Merge\
+  \ detected BGCs within given number of proteins (default: 0)\n  --merge-max-nucl-gap\
+  \ MERGE_MAX_NUCL_GAP\n                        Merge detected BGCs within given number\
+  \ of nucleotides (default: 0)\n  --min-nucl MIN_NUCL   Minimum BGC nucleotide length\
+  \ (default: 1)\n  --min-proteins MIN_PROTEINS\n                        Minimum number\
+  \ of proteins in a BGC (default: 1)\n  --min-domains MIN_DOMAINS\n             \
+  \           Minimum number of protein domains in a BGC (default: 1)\n  --min-bio-domains\
+  \ MIN_BIO_DOMAINS\n                        Minimum number of known biosynthetic\
+  \ (as defined by antiSMASH) protein domains in a BGC (default: 0)\n\nBGC classification\
+  \ options:\n\n  -c CLASSIFIERS, --classifier CLASSIFIERS\n                     \
+  \   Trained classification model name (run \"deepbgc download\" to download models)\
+  \ or path to trained model pickle file. Can be provided multiple times (-c first\
+  \ -c second)\n  --no-classifier       Disable BGC classification\n  --classifier-score\
+  \ CLASSIFIER_SCORE\n                        DeepBGC classification score threshold\
+  \ for assigning classes to BGCs (default: 0.5)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/deepbgc:0.1.22--py_0

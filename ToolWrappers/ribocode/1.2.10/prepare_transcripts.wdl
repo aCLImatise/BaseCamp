@@ -14,6 +14,9 @@ task PrepareTranscripts {
       ~{if defined(out_dir) then ("--out_dir " +  '"' + out_dir + '"') else ""} \
       ~{if (v) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gtf: "Default, suitable for GENCODE and ENSEMBL GTF file,\\nplease refer: https://en.wikipedia.org/wiki/GENCODE,\\nor using GTFupdate command to update your GTF file."
     fast_a: "The genome sequences file in fasta format."

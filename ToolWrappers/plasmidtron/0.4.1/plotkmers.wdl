@@ -24,6 +24,9 @@ task Plotkmers {
       ~{if (keep_files) then "--keep_files" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     plot_filename: "Kmer to use, depends on read length [kmerplot.png]"
     km_er: "Kmer to use, depends on read length [51]"

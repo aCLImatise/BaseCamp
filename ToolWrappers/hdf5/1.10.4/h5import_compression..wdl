@@ -10,6 +10,9 @@ task H5importCompression {
       ~{h_five_import} \
       ~{elp}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     h_five_import: ""
     elp: ""

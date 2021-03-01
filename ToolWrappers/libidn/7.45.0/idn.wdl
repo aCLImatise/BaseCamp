@@ -30,6 +30,9 @@ task Idn {
       ~{if (debug) then "--debug" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stringprep: "Prepare string according to nameprep profile"
     punycode_decode: "Decode Punycode"

@@ -20,6 +20,9 @@ task SortReads {
       ~{if (filter) then "--filter" else ""} \
       ~{if defined(min_length) then ("--min_length " +  '"' + min_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     paired: "if the reads are paired-end in one file"
     merge: "if the reads are paired-end in two files"

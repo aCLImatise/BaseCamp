@@ -14,6 +14,9 @@ task FilterTagDirectorypl {
       ~{if (keep) then "-keep" else ""} \
       ~{if (update) then "-update" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     strand: "(filter reads from the same strand only)"
     tag_adjust: "<#> (adjust reads #bp before assigning overlap of 5' position)"

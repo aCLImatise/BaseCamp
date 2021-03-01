@@ -18,6 +18,9 @@ task CbUpgrade {
       ~{if (code) then "--code" else ""} \
       ~{if (dev) then "--dev" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "show debug messages"
     output_directory_default: "output directory, default can be set through the env.\\nvariable CBOUT, current value: none"

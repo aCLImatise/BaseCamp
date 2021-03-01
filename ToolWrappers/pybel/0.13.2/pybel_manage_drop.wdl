@@ -8,6 +8,9 @@ task PybelManageDrop {
     pybel manage drop \
       ~{if (yes) then "--yes" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     yes: "Confirm the action without prompting."
   }

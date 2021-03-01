@@ -16,6 +16,9 @@ task SynapseSetannotationsAccessing {
       ~{if defined(annotations) then ("--annotations " +  '"' + annotations + '"') else ""} \
       ~{if defined(id) then ("--id " +  '"' + id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     annotations: ""

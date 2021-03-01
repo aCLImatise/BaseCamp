@@ -18,6 +18,9 @@ task RaConsensus {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reads: "(required)\\ninput afg reads file"
     contigs: "(required)\\ninput afg contigs file"

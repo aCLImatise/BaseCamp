@@ -4,17 +4,17 @@ inputs:
 - id: in_threshold
   doc: "any probabilities below this threshold are\nset to the threshold value. (default\
     \ 1e-18)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --threshold
 - id: in_input
   doc: "input file containing probabilities (reads\nfrom stdin by default)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input
 - id: in_debug_level
   doc: determines how much debug output.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug_level
 - id: in_cat
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sum_prob.py

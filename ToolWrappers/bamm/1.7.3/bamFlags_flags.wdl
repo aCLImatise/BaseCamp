@@ -8,6 +8,9 @@ task BamFlagsFlags {
     bamFlags flags \
       ~{flags}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     flags: ""
   }

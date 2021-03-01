@@ -3,24 +3,24 @@ id: build_midas_db.py.cwl
 inputs:
 - id: in_threads
   doc: Number of threads to use (1)
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_compress
   doc: Compress output files with gzip (False)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --compress
 - id: in_max_species
   doc: "Maximum number of species to process from input (use all).\nUseful for quick\
     \ tests"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_species
 - id: in_max_genomes
   doc: "Maximum number of genomes to process per species (use all).\nUseful for quick\
     \ tests\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_genomes
 - id: in_in_dir
@@ -49,6 +49,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - build_midas_db.py

@@ -9,7 +9,7 @@ task RNASeqMATSpy {
     Int? s_two
     Directory? od
     Directory? tmp
-    String? type_read_used
+    String? type_used_forpairedend
     String? lib_type
     Int? read_length
     Boolean? variable_read_length
@@ -35,7 +35,7 @@ task RNASeqMATSpy {
       ~{if defined(s_two) then ("--s2 " +  '"' + s_two + '"') else ""} \
       ~{if defined(od) then ("--od " +  '"' + od + '"') else ""} \
       ~{if defined(tmp) then ("--tmp " +  '"' + tmp + '"') else ""} \
-      ~{if defined(type_read_used) then ("-t " +  '"' + type_read_used + '"') else ""} \
+      ~{if defined(type_used_forpairedend) then ("-t " +  '"' + type_used_forpairedend + '"') else ""} \
       ~{if defined(lib_type) then ("--libType " +  '"' + lib_type + '"') else ""} \
       ~{if defined(read_length) then ("--readLength " +  '"' + read_length + '"') else ""} \
       ~{if (variable_read_length) then "--variable-read-length" else ""} \
@@ -52,6 +52,9 @@ task RNASeqMATSpy {
       ~{if defined(mil) then ("--mil " +  '"' + mil + '"') else ""} \
       ~{if defined(mel) then ("--mel " +  '"' + mel + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gtf: "An annotation of genes and transcripts in GTF format"
     bone: "A text file containing a comma separated list of the\\nBAM files for sample_1. (Only if using BAM)"
@@ -60,7 +63,7 @@ task RNASeqMATSpy {
     s_two: "A text file containing a comma separated list of the\\nFASTQ files for sample_2. If using paired reads the\\nformat is \\\":\\\" to separate pairs and \\\",\\\" to separate\\nreplicates. (Only if using fastq)"
     od: "The directory for final output"
     tmp: "The directory for intermediate output such as \\\".rmats\\\"\\nfiles from the prep step"
-    type_read_used: "Type of read used in the analysis: either \\\"paired\\\" for\\npaired-end data or \\\"single\\\" for single-end data.\\nDefault: paired"
+    type_used_forpairedend: "Type of read used in the analysis: either \\\"paired\\\" for\\npaired-end data or \\\"single\\\" for single-end data.\\nDefault: paired"
     lib_type: "Library type. Use fr-firststrand or fr-secondstrand\\nfor strand-specific data. Default: fr-unstranded"
     read_length: "The length of each read"
     variable_read_length: "Allow reads with lengths that differ from --readLength\\nto be processed. --readLength will still be used to\\ndetermine IncFormLen and SkipFormLen"

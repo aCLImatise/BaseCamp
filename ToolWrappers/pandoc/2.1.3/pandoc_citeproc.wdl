@@ -4,9 +4,8 @@ task Pandocciteproc {
   input {
     Boolean? man
     Boolean? license
-    Boolean? _version_show
-    Boolean? _bibyaml_convert
-    Boolean? _bibjson_convert
+    Boolean? bib_two_yaml
+    Boolean? bib_two_json
     String? format
     File? file_dot_dot
   }
@@ -15,17 +14,18 @@ task Pandocciteproc {
       ~{file_dot_dot} \
       ~{if (man) then "--man" else ""} \
       ~{if (license) then "--license" else ""} \
-      ~{if (_version_show) then "-V" else ""} \
-      ~{if (_bibyaml_convert) then "-y" else ""} \
-      ~{if (_bibjson_convert) then "-j" else ""} \
+      ~{if (bib_two_yaml) then "--bib2yaml" else ""} \
+      ~{if (bib_two_json) then "--bib2json" else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "print man page to stdout"
     license: "print license to stdout"
-    _version_show: "--version        show program version"
-    _bibyaml_convert: "--bib2yaml       convert bibliography to YAML"
-    _bibjson_convert: "--bib2json       convert bibliography to JSON"
+    bib_two_yaml: "convert bibliography to YAML"
+    bib_two_json: "convert bibliography to JSON"
     format: "bibliography format"
     file_dot_dot: ""
   }

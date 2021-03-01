@@ -18,6 +18,9 @@ task VtoolsSimulate {
       ~{if defined(jobs) then ("--jobs " +  '"' + jobs + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seed: "Random seed for the simulation. A random seed will be\\nused by default but a specific seed could be used to\\nreproduce a previously executed simulation."
     replicates: "Number of consecutive replications to simulate"

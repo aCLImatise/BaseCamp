@@ -5,207 +5,207 @@ command:
 positional: []
 named:
 - !Flag
-  description: display verbose output
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: display verbose output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'use PREFIX for the names of the index files (default: prefix of the
-    input file)'
+  optional: true
   synonyms:
   - -p
   - --prefix
+  description: 'use PREFIX for the names of the index files (default: prefix of the
+    input file)'
   args: !SimpleFlagArg
     name: PREFIX
-  optional: true
 - !Flag
-  description: 'write the corrected reads to FILE (default: READSFILE.ec.fa)'
+  optional: true
   synonyms:
   - -o
   - --outfile
+  description: 'write the corrected reads to FILE (default: READSFILE.ec.fa)'
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: 'use NUM threads for the computation (default: 1)'
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: 'use NUM threads for the computation (default: 1)'
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: detect and discard low-quality reads
+  optional: true
   synonyms:
   - --discard
+  description: detect and discard low-quality reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "use occurrence array sample rate of N in the FM-index. Higher values\
-    \ use significantly\nless memory at the cost of higher runtime. This value must\
-    \ be a power of 2 (default: 128)"
+  optional: true
   synonyms:
   - -d
   - --sample-rate
+  description: "use occurrence array sample rate of N in the FM-index. Higher values\
+    \ use significantly\nless memory at the cost of higher runtime. This value must\
+    \ be a power of 2 (default: 128)"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: 'specify the correction algorithm to use. STR must be one of kmer,
-    hybrid, overlap. (default: kmer)'
+  optional: true
   synonyms:
   - -a
   - --algorithm
+  description: 'specify the correction algorithm to use. STR must be one of kmer,
+    hybrid, overlap. (default: kmer)'
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: collect error correction metrics (error rate by position in read, etc)
-    and write them to FILE
+  optional: true
   synonyms:
   - --metrics
+  description: collect error correction metrics (error rate by position in read, etc)
+    and write them to FILE
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: 'The length of the kmer to use. (default: 31)'
+  optional: true
   synonyms:
   - -k
   - --kmer-size
+  description: 'The length of the kmer to use. (default: 31)'
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: 'Attempt to correct kmers that are seen less than N times. (default:
-    3)'
+  optional: true
   synonyms:
   - -x
   - --kmer-threshold
+  description: 'Attempt to correct kmers that are seen less than N times. (default:
+    3)'
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: 'Perform N rounds of k-mer correction, correcting up to N bases (default:
-    10)'
+  optional: true
   synonyms:
   - -i
   - --kmer-rounds
+  description: 'Perform N rounds of k-mer correction, correcting up to N bases (default:
+    10)'
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: 'When correcting a kmer, require the count of the new kmer is at least
-    +N higher than the count of the old kmer. (default: 1)'
+  optional: true
   synonyms:
   - -O
   - --count-offset
+  description: 'When correcting a kmer, require the count of the new kmer is at least
+    +N higher than the count of the old kmer. (default: 1)'
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Attempt to learn the k-mer correction threshold (experimental). Overrides
-    -x parameter.
+  optional: true
   synonyms:
   - --learn
+  description: Attempt to learn the k-mer correction threshold (experimental). Overrides
+    -x parameter.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'the maximum error rate allowed between two sequences to consider them
-    overlapped (default: 0.04)'
+  optional: true
   synonyms:
   - -e
   - --error-rate
+  description: 'the maximum error rate allowed between two sequences to consider them
+    overlapped (default: 0.04)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'minimum overlap required between two reads (default: 45)'
+  optional: true
   synonyms:
   - -m
   - --min-overlap
+  description: 'minimum overlap required between two reads (default: 45)'
   args: !SimpleFlagArg
     name: LEN
-  optional: true
 - !Flag
-  description: "minimum count of the base that has the highest count in overlap correction.\n\
-    The base of the read is only corrected if the maximum base has at least this count.\n\
-    Should avoid mis-corrections in low coverage regions (default: 4)"
+  optional: true
   synonyms:
   - -M
   - --min-count-max-base
+  description: "minimum count of the base that has the highest count in overlap correction.\n\
+    The base of the read is only corrected if the maximum base has at least this count.\n\
+    Should avoid mis-corrections in low coverage regions (default: 4)"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: 'Attempt to correct bases in a read that are seen less than N times
-    (default: 2)'
+  optional: true
   synonyms:
   - -X
   - --base-threshold
+  description: 'Attempt to correct bases in a read that are seen less than N times
+    (default: 2)'
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: 'use INT as the threshold to detect a conflicted base in the multi-overlap
-    (default: 5)'
+  optional: true
   synonyms:
   - -c
   - --conflict
+  description: 'use INT as the threshold to detect a conflicted base in the multi-overlap
+    (default: 5)'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --seed-length
   description: "force the seed length to be LEN. By default, the seed length in the\
     \ overlap step\nis calculated to guarantee all overlaps with --error-rate differences\
     \ are found.\nThis option removes the guarantee but will be (much) faster. As\
     \ SGA can tolerate some\nmissing edges, this option may be preferable for some\
     \ data sets."
-  synonyms:
-  - -l
-  - --seed-length
   args: !SimpleFlagArg
     name: LEN
-  optional: true
 - !Flag
-  description: "force the seed stride to be LEN. This parameter will be ignored unless\
-    \ --seed-length\nis specified (see above). This parameter defaults to the same\
-    \ value as --seed-length"
+  optional: true
   synonyms:
   - -s
   - --seed-stride
+  description: "force the seed stride to be LEN. This parameter will be ignored unless\
+    \ --seed-length\nis specified (see above). This parameter defaults to the same\
+    \ value as --seed-length"
   args: !SimpleFlagArg
     name: LEN
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --branch-cutoff
   description: "stop the overlap search at N branches. This parameter is used to control\
     \ the search time for\nhighly-repetitive reads. If the number of branches exceeds\
     \ N, the search stops and the read\nwill not be corrected. This is not enabled\
     \ by default."
-  synonyms:
-  - -b
-  - --branch-cutoff
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: 'iteratively correct reads up to a maximum of NUM rounds (default:
-    1)'
+  optional: true
   synonyms:
   - -r
   - --rounds
+  description: 'iteratively correct reads up to a maximum of NUM rounds (default:
+    1)'
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: display this help and exit
+  optional: true
   synonyms:
   - --help
+  description: display this help and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: sga correct [OPTION] ... READSFILE\nCorrect sequencing errors in\
@@ -259,3 +259,4 @@ help_text: "Usage: sga correct [OPTION] ... READSFILE\nCorrect sequencing errors
   \n"
 generated_using:
 - --help
+docker_image:

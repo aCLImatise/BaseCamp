@@ -10,6 +10,9 @@ task PhyloFlashpl {
       ~{if defined(read_one) then ("-read1 " +  '"' + read_one + '"') else ""} \
       ~{if defined(lib) then ("-lib " +  '"' + lib + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_one: ""
     lib: ""

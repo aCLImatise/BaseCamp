@@ -16,6 +16,9 @@ task HtsboxSamsort {
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
       ~{if (s) then "-S" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
     l: ""

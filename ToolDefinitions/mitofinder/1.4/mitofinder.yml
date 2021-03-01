@@ -1,0 +1,395 @@
+!Command
+command:
+- mitofinder
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: format.
+  description: --min-contig-size MINCONTIGSIZE
+- !Positional
+  optional: false
+  position: 0
+  name: '1000'
+  description: --max-contig-size MAXCONTIGSIZE
+- !Positional
+  optional: false
+  position: 0
+  name: '25000'
+  description: --rename-contig RENAME
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --megahit
+  description: Use Megahit for assembly. (Default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --idba
+  description: Use IDBA-UD for assembly.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --metaspades
+  description: Use MetaSPAdes for assembly.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tRNA-annotation
+  description: "\"arwen\"/\"mitfi\"/\"trnascan\" tRNA annotater to use.\nDefault =\
+    \ mitfi"
+  args: !SimpleFlagArg
+    name: TRNAANNOTATION
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --seqid
+  description: Sequence ID to be used throughout the process
+  args: !SimpleFlagArg
+    name: PROCESSNAME
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - --Paired-end1
+  description: File with forward paired-end reads
+  args: !SimpleFlagArg
+    name: PE1
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  - --Paired-end2
+  description: File with reverse paired-end reads
+  args: !SimpleFlagArg
+    name: PE2
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --Single-end
+  description: File with single-end reads
+  args: !SimpleFlagArg
+    name: SE
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --assembly
+  description: File with your own assembly
+  args: !SimpleFlagArg
+    name: ASSEMBLY
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --max-memory
+  description: max memory to use in Go (MEGAHIT or MetaSPAdes)
+  args: !SimpleFlagArg
+    name: MEM
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --length
+  description: "Shortest contig length to be used (MEGAHIT). Default =\n100"
+  args: !SimpleFlagArg
+    name: SHORTESTCONTIG
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --processors
+  description: Number of threads Mitofinder will use at most.
+  args: !SimpleFlagArg
+    name: PROCESSORSTOUSE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --refseq
+  description: "Reference mitochondrial genome in GenBank format\n(.gb)."
+  args: !SimpleFlagArg
+    name: REFSEQFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --blast-eval
+  description: "e-value of blast program used for contig\nidentification and annotation.\
+    \ Default = 0.00001"
+  args: !SimpleFlagArg
+    name: BLASTEVAL
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --nwalk
+  description: "Maximum number of codon steps to be tested on each\nsize of the gene\
+    \ to find the start and stop codon\nduring the annotation step. Default = 5 (30\
+    \ bases)"
+  args: !SimpleFlagArg
+    name: NWALK
+- !Flag
+  optional: true
+  synonyms:
+  - --override
+  description: "This option forces MitoFinder to override the previous\noutput directory\
+    \ for the selected assembler."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --adjust-direction
+  description: "This option tells MitoFinder to adjust the direction\nof selected\
+    \ contig(s) (given the reference)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore
+  description: "This option tells MitoFinder to ignore the non-\nstandart mitochondrial\
+    \ genes."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --new-genes
+  description: "This option tells MitoFinder to try to annotate the\nnon-standard\
+    \ animal mitochondrial genes (e.g. rps3 in\nfungi). If several references are\
+    \ used, make sure the\nnon-standard genes have the same names in the several\n\
+    references"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-intron
+  description: "This option tells MitoFinder to search for genes with\nintrons. Recommendation\
+    \ : Use it on mitochondrial\ncontigs previously found with MitoFinder without\
+    \ this\noption."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --numt
+  description: "This option tells MitoFinder to search for both\nmitochondrial genes\
+    \ and NUMTs. Recommendation : Use it\non nuclear contigs previously found with\
+    \ MitoFinder\nwithout this option."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --intron-size
+  description: Size of intron allowed. Default = 5000 bp
+  args: !SimpleFlagArg
+    name: INTRONSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --max-contig
+  description: "Maximum number of contigs matching to the reference to\nkeep. Default\
+    \ = 0 (unlimited)"
+  args: !SimpleFlagArg
+    name: MAXCONTIG
+- !Flag
+  optional: true
+  synonyms:
+  - --cds-merge
+  description: "This option tells MitoFinder to not merge the exons in\nthe NT and\
+    \ AA fasta files."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --out-gb
+  description: Do not create annotation output file in GenBank
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --blast-identity-nucl
+  description: "Nucleotide identity percentage for a hit to be\nretained. Default\
+    \ = 50"
+  args: !SimpleFlagArg
+    name: BLASTIDENTITYNUCL
+- !Flag
+  optional: true
+  synonyms:
+  - --blast-identity-prot
+  description: "Amino acid identity percentage for a hit to be\nretained. Default\
+    \ = 40"
+  args: !SimpleFlagArg
+    name: BLASTIDENTITYPROT
+- !Flag
+  optional: true
+  synonyms:
+  - --blast-size
+  description: "Percentage of overlap in blast best hit to be\nretained. Default =\
+    \ 30"
+  args: !SimpleFlagArg
+    name: ALIGNCUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - --circular-size
+  description: "Size to consider when checking for circularization.\nDefault = 45"
+  args: !SimpleFlagArg
+    name: CIRCULARSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --circular-offset
+  description: "Offset from start and finish to consider when looking\nfor circularization.\
+    \ Default = 200"
+  args: !SimpleFlagArg
+    name: CIRCULAROFFSET
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --organism
+  description: "Organism genetic code following NCBI table (integer):\n1. The Standard\
+    \ Code 2. The Vertebrate Mitochondrial\nCode 3. The Yeast Mitochondrial Code 4.\
+    \ The Mold,\nProtozoan, and Coelenterate Mitochondrial Code and the\nMycoplasma/Spiroplasma\
+    \ Code 5. The Invertebrate\nMitochondrial Code 6. The Ciliate, Dasycladacean and\n\
+    Hexamita Nuclear Code 9. The Echinoderm and Flatworm\nMitochondrial Code 10. The\
+    \ Euplotid Nuclear Code 11.\nThe Bacterial, Archaeal and Plant Plastid Code 12.\
+    \ The\nAlternative Yeast Nuclear Code 13. The Ascidian\nMitochondrial Code 14.\
+    \ The Alternative Flatworm\nMitochondrial Code 16. Chlorophycean Mitochondrial\n\
+    Code 21. Trematode Mitochondrial Code 22. Scenedesmus\nobliquus Mitochondrial\
+    \ Code 23. Thraustochytrium\nMitochondrial Code 24. Pterobranchia Mitochondrial\n\
+    Code 25. Candidate Division SR1 and Gracilibacteria\nCode"
+  args: !SimpleFlagArg
+    name: ORGANISMTYPE
+- !Flag
+  optional: true
+  synonyms:
+  - --example
+  description: Print getting started examples
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --citation
+  description: How to cite MitoFinder
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Version 1.4
+  args: !EmptyFlagArg {}
+help_text: "usage: mitofinder [-h] [--megahit] [--idba] [--metaspades] [-t TRNAANNOTATION]\n\
+  \                  [-j PROCESSNAME] [-1 PE1] [-2 PE2] [-s SE] [-a ASSEMBLY]\n  \
+  \                [-m MEM] [-l SHORTESTCONTIG] [-p PROCESSORSTOUSE]\n           \
+  \       [-r REFSEQFILE] [-e BLASTEVAL] [-n NWALK] [--override]\n               \
+  \   [--adjust-direction] [--ignore] [--new-genes]\n                  [--allow-intron]\
+  \ [--numt] [--intron-size INTRONSIZE]\n                  [--max-contig MAXCONTIG]\
+  \ [--cds-merge] [--out-gb]\n                  [--min-contig-size MINCONTIGSIZE]\n\
+  \                  [--max-contig-size MAXCONTIGSIZE] [--rename-contig RENAME]\n\
+  \                  [--blast-identity-nucl BLASTIDENTITYNUCL]\n                 \
+  \ [--blast-identity-prot BLASTIDENTITYPROT]\n                  [--blast-size ALIGNCUTOFF]\
+  \ [--circular-size CIRCULARSIZE]\n                  [--circular-offset CIRCULAROFFSET]\
+  \ [-o ORGANISMTYPE] [-v]\n                  [--example] [--citation]\n\nMitofinder\
+  \ is a pipeline to assemble and annotate mitochondrial DNA from\ntrimmed sequencing\
+  \ reads.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --megahit             Use Megahit for assembly. (Default)\n  --idba\
+  \                Use IDBA-UD for assembly.\n  --metaspades          Use MetaSPAdes\
+  \ for assembly.\n  -t TRNAANNOTATION, --tRNA-annotation TRNAANNOTATION\n       \
+  \                 \"arwen\"/\"mitfi\"/\"trnascan\" tRNA annotater to use.\n    \
+  \                    Default = mitfi\n  -j PROCESSNAME, --seqid PROCESSNAME\n  \
+  \                      Sequence ID to be used throughout the process\n  -1 PE1,\
+  \ --Paired-end1 PE1\n                        File with forward paired-end reads\n\
+  \  -2 PE2, --Paired-end2 PE2\n                        File with reverse paired-end\
+  \ reads\n  -s SE, --Single-end SE\n                        File with single-end\
+  \ reads\n  -a ASSEMBLY, --assembly ASSEMBLY\n                        File with your\
+  \ own assembly\n  -m MEM, --max-memory MEM\n                        max memory to\
+  \ use in Go (MEGAHIT or MetaSPAdes)\n  -l SHORTESTCONTIG, --length SHORTESTCONTIG\n\
+  \                        Shortest contig length to be used (MEGAHIT). Default =\n\
+  \                        100\n  -p PROCESSORSTOUSE, --processors PROCESSORSTOUSE\n\
+  \                        Number of threads Mitofinder will use at most.\n  -r REFSEQFILE,\
+  \ --refseq REFSEQFILE\n                        Reference mitochondrial genome in\
+  \ GenBank format\n                        (.gb).\n  -e BLASTEVAL, --blast-eval BLASTEVAL\n\
+  \                        e-value of blast program used for contig\n            \
+  \            identification and annotation. Default = 0.00001\n  -n NWALK, --nwalk\
+  \ NWALK\n                        Maximum number of codon steps to be tested on each\n\
+  \                        size of the gene to find the start and stop codon\n   \
+  \                     during the annotation step. Default = 5 (30 bases)\n  --override\
+  \            This option forces MitoFinder to override the previous\n          \
+  \              output directory for the selected assembler.\n  --adjust-direction\
+  \    This option tells MitoFinder to adjust the direction\n                    \
+  \    of selected contig(s) (given the reference).\n  --ignore              This\
+  \ option tells MitoFinder to ignore the non-\n                        standart mitochondrial\
+  \ genes.\n  --new-genes           This option tells MitoFinder to try to annotate\
+  \ the\n                        non-standard animal mitochondrial genes (e.g. rps3\
+  \ in\n                        fungi). If several references are used, make sure\
+  \ the\n                        non-standard genes have the same names in the several\n\
+  \                        references\n  --allow-intron        This option tells MitoFinder\
+  \ to search for genes with\n                        introns. Recommendation : Use\
+  \ it on mitochondrial\n                        contigs previously found with MitoFinder\
+  \ without this\n                        option.\n  --numt                This option\
+  \ tells MitoFinder to search for both\n                        mitochondrial genes\
+  \ and NUMTs. Recommendation : Use it\n                        on nuclear contigs\
+  \ previously found with MitoFinder\n                        without this option.\n\
+  \  --intron-size INTRONSIZE\n                        Size of intron allowed. Default\
+  \ = 5000 bp\n  --max-contig MAXCONTIG\n                        Maximum number of\
+  \ contigs matching to the reference to\n                        keep. Default =\
+  \ 0 (unlimited)\n  --cds-merge           This option tells MitoFinder to not merge\
+  \ the exons in\n                        the NT and AA fasta files.\n  --out-gb \
+  \             Do not create annotation output file in GenBank\n                \
+  \        format.\n  --min-contig-size MINCONTIGSIZE\n                        Minimum\
+  \ size of a contig to be considered. Default =\n                        1000\n \
+  \ --max-contig-size MAXCONTIGSIZE\n                        Maximum size of a contig\
+  \ to be considered. Default =\n                        25000\n  --rename-contig\
+  \ RENAME\n                        \"yes/no\" If \"yes\", the contigs matching the\n\
+  \                        reference(s) are renamed. Default is \"yes\" for de novo\n\
+  \                        assembly and \"no\" for existing assembly (-a option)\n\
+  \  --blast-identity-nucl BLASTIDENTITYNUCL\n                        Nucleotide identity\
+  \ percentage for a hit to be\n                        retained. Default = 50\n \
+  \ --blast-identity-prot BLASTIDENTITYPROT\n                        Amino acid identity\
+  \ percentage for a hit to be\n                        retained. Default = 40\n \
+  \ --blast-size ALIGNCUTOFF\n                        Percentage of overlap in blast\
+  \ best hit to be\n                        retained. Default = 30\n  --circular-size\
+  \ CIRCULARSIZE\n                        Size to consider when checking for circularization.\n\
+  \                        Default = 45\n  --circular-offset CIRCULAROFFSET\n    \
+  \                    Offset from start and finish to consider when looking\n   \
+  \                     for circularization. Default = 200\n  -o ORGANISMTYPE, --organism\
+  \ ORGANISMTYPE\n                        Organism genetic code following NCBI table\
+  \ (integer):\n                        1. The Standard Code 2. The Vertebrate Mitochondrial\n\
+  \                        Code 3. The Yeast Mitochondrial Code 4. The Mold,\n   \
+  \                     Protozoan, and Coelenterate Mitochondrial Code and the\n \
+  \                       Mycoplasma/Spiroplasma Code 5. The Invertebrate\n      \
+  \                  Mitochondrial Code 6. The Ciliate, Dasycladacean and\n      \
+  \                  Hexamita Nuclear Code 9. The Echinoderm and Flatworm\n      \
+  \                  Mitochondrial Code 10. The Euplotid Nuclear Code 11.\n      \
+  \                  The Bacterial, Archaeal and Plant Plastid Code 12. The\n    \
+  \                    Alternative Yeast Nuclear Code 13. The Ascidian\n         \
+  \               Mitochondrial Code 14. The Alternative Flatworm\n              \
+  \          Mitochondrial Code 16. Chlorophycean Mitochondrial\n                \
+  \        Code 21. Trematode Mitochondrial Code 22. Scenedesmus\n               \
+  \         obliquus Mitochondrial Code 23. Thraustochytrium\n                   \
+  \     Mitochondrial Code 24. Pterobranchia Mitochondrial\n                     \
+  \   Code 25. Candidate Division SR1 and Gracilibacteria\n                      \
+  \  Code\n  -v, --version         Version 1.4\n  --example             Print getting\
+  \ started examples\n  --citation            How to cite MitoFinder\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mitofinder:1.4--py27h516909a_0

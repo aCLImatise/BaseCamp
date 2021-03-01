@@ -12,6 +12,9 @@ task FsnvizYes {
       ~{var_command} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fsn_viz: ""
     var_command: ""

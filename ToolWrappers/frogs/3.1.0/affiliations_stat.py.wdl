@@ -32,6 +32,9 @@ task AffiliationsStatpy {
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Keep temporary files to debug program."
     taxonomic_ranks: "[TAXONOMIC_RANKS [TAXONOMIC_RANKS ...]]\\nThe ordered ranks levels used in the metadata\\ntaxonomy. [Default: ['Domain', 'Phylum', 'Class',\\n'Order', 'Family', 'Genus', 'Species']]"

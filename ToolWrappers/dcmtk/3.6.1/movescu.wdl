@@ -3,43 +3,43 @@ version 1.0
 task Movescu {
   input {
     Boolean? arguments
-    Boolean? _quiet_quiet
-    Boolean? _verbose_details
-    Boolean? _debug_information
-    Boolean? ll
-    Boolean? lc
-    Boolean? _key_ggggeeeeoverride
-    Boolean? _patient_use
-    Boolean? _study_model
-    Boolean? _psonly_use
+    Boolean? quiet
+    Boolean? verbose
+    Boolean? debug
+    Boolean? log_level
+    Boolean? log_config
+    Boolean? key
+    Boolean? patient
+    Boolean? study
+    Boolean? ps_only
     Boolean? ae_title
     Boolean? etitle_stringset_called
     Boolean? move
     Boolean? _proposeuncompr_propose
-    Boolean? xe
-    Boolean? xb
-    Boolean? xd
-    Boolean? xi
+    Boolean? propose_little
+    Boolean? propose_big
+    Boolean? propose_deflated
+    Boolean? propose_implicit
     Boolean? no_port
-    Boolean? pi
-    Boolean? pr
-    Boolean? to
-    Boolean? ta
-    Boolean? td
+    Boolean? pending_ignore
+    Boolean? pending_read
+    Boolean? timeout
+    Boolean? acse_timeout
+    Boolean? dim_se_timeout
     Boolean? max_pdu
     Boolean? disable_host_lookup
     Boolean? repeat
     Boolean? abort
     Boolean? ignore
     Boolean? cancel
-    Boolean? up
-    Directory? od
-    Boolean? _normal_allow
-    Boolean? _writedataset_write
-    Boolean? _disablenewvr_disable
-    Boolean? _grouplengthremove_always
-    Boolean? _lengthundefined_write
-    Boolean? _paddingoff_padding
+    Boolean? uid_padding
+    Directory? output_directory
+    Boolean? normal
+    Boolean? write_dataset
+    Boolean? disable_new_vr
+    Boolean? group_length_remove
+    Boolean? length_undefined
+    Boolean? padding_off
     String peer
     String port
     String dcm_file_in
@@ -50,89 +50,92 @@ task Movescu {
       ~{port} \
       ~{dcm_file_in} \
       ~{if (arguments) then "--arguments" else ""} \
-      ~{if (_quiet_quiet) then "-q" else ""} \
-      ~{if (_verbose_details) then "-v" else ""} \
-      ~{if (_debug_information) then "-d" else ""} \
-      ~{if (ll) then "-ll" else ""} \
-      ~{if (lc) then "-lc" else ""} \
-      ~{if (_key_ggggeeeeoverride) then "-k" else ""} \
-      ~{if (_patient_use) then "-P" else ""} \
-      ~{if (_study_model) then "-S" else ""} \
-      ~{if (_psonly_use) then "-O" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (log_level) then "--log-level" else ""} \
+      ~{if (log_config) then "--log-config" else ""} \
+      ~{if (key) then "--key" else ""} \
+      ~{if (patient) then "--patient" else ""} \
+      ~{if (study) then "--study" else ""} \
+      ~{if (ps_only) then "--psonly" else ""} \
       ~{if (ae_title) then "--aetitle" else ""} \
       ~{if (etitle_stringset_called) then "--call" else ""} \
       ~{if (move) then "--move" else ""} \
       ~{if (_proposeuncompr_propose) then "-x" else ""} \
-      ~{if (xe) then "-xe" else ""} \
-      ~{if (xb) then "-xb" else ""} \
-      ~{if (xd) then "-xd" else ""} \
-      ~{if (xi) then "-xi" else ""} \
+      ~{if (propose_little) then "--propose-little" else ""} \
+      ~{if (propose_big) then "--propose-big" else ""} \
+      ~{if (propose_deflated) then "--propose-deflated" else ""} \
+      ~{if (propose_implicit) then "--propose-implicit" else ""} \
       ~{if (no_port) then "--no-port" else ""} \
-      ~{if (pi) then "-pi" else ""} \
-      ~{if (pr) then "-pr" else ""} \
-      ~{if (to) then "-to" else ""} \
-      ~{if (ta) then "-ta" else ""} \
-      ~{if (td) then "-td" else ""} \
+      ~{if (pending_ignore) then "--pending-ignore" else ""} \
+      ~{if (pending_read) then "--pending-read" else ""} \
+      ~{if (timeout) then "--timeout" else ""} \
+      ~{if (acse_timeout) then "--acse-timeout" else ""} \
+      ~{if (dim_se_timeout) then "--dimse-timeout" else ""} \
       ~{if (max_pdu) then "--max-pdu" else ""} \
       ~{if (disable_host_lookup) then "--disable-host-lookup" else ""} \
       ~{if (repeat) then "--repeat" else ""} \
       ~{if (abort) then "--abort" else ""} \
       ~{if (ignore) then "--ignore" else ""} \
       ~{if (cancel) then "--cancel" else ""} \
-      ~{if (up) then "-up" else ""} \
-      ~{if (od) then "-od" else ""} \
-      ~{if (_normal_allow) then "-B" else ""} \
-      ~{if (_writedataset_write) then "-F" else ""} \
-      ~{if (_disablenewvr_disable) then "-u" else ""} \
-      ~{if (_grouplengthremove_always) then "-g" else ""} \
-      ~{if (_lengthundefined_write) then "-e" else ""} \
-      ~{if (_paddingoff_padding) then "-p" else ""}
+      ~{if (uid_padding) then "--uid-padding" else ""} \
+      ~{if (output_directory) then "--output-directory" else ""} \
+      ~{if (normal) then "--normal" else ""} \
+      ~{if (write_dataset) then "--write-dataset" else ""} \
+      ~{if (disable_new_vr) then "--disable-new-vr" else ""} \
+      ~{if (group_length_remove) then "--group-length-remove" else ""} \
+      ~{if (length_undefined) then "--length-undefined" else ""} \
+      ~{if (padding_off) then "--padding-off" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arguments: "print expanded command line arguments"
-    _quiet_quiet: "--quiet                quiet mode, print no warnings and errors"
-    _verbose_details: "--verbose              verbose mode, print processing details"
-    _debug_information: "--debug                debug mode, print debug information"
-    ll: "--log-level            [l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
-    lc: "--log-config           [f]ilename: string\\nuse config file f for the logger"
-    _key_ggggeeeeoverride: "--key                  [k]ey: gggg,eeee=\\\"str\\\" or dict. name=\\\"str\\\"\\noverride matching key"
-    _patient_use: "--patient              use patient root information model (default)"
-    _study_model: "--study                use study root information model"
-    _psonly_use: "--psonly               use patient/study only information model"
+    quiet: "quiet mode, print no warnings and errors"
+    verbose: "verbose mode, print processing details"
+    debug: "debug mode, print debug information"
+    log_level: "[l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
+    log_config: "[f]ilename: string\\nuse config file f for the logger"
+    key: "[k]ey: gggg,eeee=\\\"str\\\" or dict. name=\\\"str\\\"\\noverride matching key"
+    patient: "use patient root information model (default)"
+    study: "use study root information model"
+    ps_only: "use patient/study only information model"
     ae_title: "[a]etitle: string\\nset my calling AE title (default: MOVESCU)"
     etitle_stringset_called: "[a]etitle: string\\nset called AE title of peer (default: ANY-SCP)"
     move: "[a]etitle: string\\nset move destinat. AE title (default: MOVESCU)"
     _proposeuncompr_propose: "=   --propose-uncompr      propose all uncompressed TS, explicit VR\\nwith local byte ordering first (default)"
-    xe: "--propose-little       propose all uncompressed TS, explicit VR\\nlittle endian first"
-    xb: "--propose-big          propose all uncompressed TS, explicit VR\\nbig endian first"
-    xd: "--propose-deflated     propose deflated explicit VR little endian TS\\nand all uncompressed transfer syntaxes"
-    xi: "--propose-implicit     propose implicit VR little endian TS only"
+    propose_little: "propose all uncompressed TS, explicit VR\\nlittle endian first"
+    propose_big: "propose all uncompressed TS, explicit VR\\nbig endian first"
+    propose_deflated: "propose deflated explicit VR little endian TS\\nand all uncompressed transfer syntaxes"
+    propose_implicit: "propose implicit VR little endian TS only"
     no_port: "no port for incoming associations (default)"
-    pi: "--pending-ignore       assume no dataset present (default)"
-    pr: "--pending-read         read and ignore dataset"
-    to: "--timeout              [s]econds: integer (default: unlimited)\\ntimeout for connection requests"
-    ta: "--acse-timeout         [s]econds: integer (default: 30)\\ntimeout for ACSE messages"
-    td: "--dimse-timeout        [s]econds: integer (default: unlimited)\\ntimeout for DIMSE messages"
+    pending_ignore: "assume no dataset present (default)"
+    pending_read: "read and ignore dataset"
+    timeout: "[s]econds: integer (default: unlimited)\\ntimeout for connection requests"
+    acse_timeout: "[s]econds: integer (default: 30)\\ntimeout for ACSE messages"
+    dim_se_timeout: "[s]econds: integer (default: unlimited)\\ntimeout for DIMSE messages"
     max_pdu: "[n]umber of bytes: integer (4096..131072)\\nset max receive pdu to n bytes (default: 16384)"
     disable_host_lookup: "disable hostname lookup"
     repeat: "[n]umber: integer\\nrepeat n times"
     abort: "abort association instead of releasing it"
     ignore: "ignore store data, receive but do not store"
     cancel: "[n]umber: integer\\ncancel after n responses (default: never)"
-    up: "--uid-padding          silently correct space-padded UIDs"
-    od: "--output-directory     [d]irectory: string (default: \\\".\\\")\\nwrite received objects to existing directory d"
-    _normal_allow: "--normal               allow implicit format conversions (default)"
-    _writedataset_write: "--write-dataset        write data set without file meta information"
-    _disablenewvr_disable: "--disable-new-vr       disable support for new VRs, convert to OB"
-    _grouplengthremove_always: "--group-length-remove  always write without group length elements"
-    _lengthundefined_write: "--length-undefined     write with undefined lengths"
-    _paddingoff_padding: "--padding-off          no padding (default)"
+    uid_padding: "silently correct space-padded UIDs"
+    output_directory: "[d]irectory: string (default: \\\".\\\")\\nwrite received objects to existing directory d"
+    normal: "allow implicit format conversions (default)"
+    write_dataset: "write data set without file meta information"
+    disable_new_vr: "disable support for new VRs, convert to OB"
+    group_length_remove: "always write without group length elements"
+    length_undefined: "write with undefined lengths"
+    padding_off: "no padding (default)"
     peer: "hostname of DICOM peer"
     port: "tcp/ip port number of peer"
     dcm_file_in: "DICOM query file(s)"
   }
   output {
     File out_stdout = stdout()
-    Directory out_od = "${in_od}"
+    Directory out_output_directory = "${in_output_directory}"
   }
 }

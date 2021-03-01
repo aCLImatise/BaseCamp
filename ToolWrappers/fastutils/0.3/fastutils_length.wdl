@@ -16,6 +16,9 @@ task FastutilsLength {
       ~{if defined(maxlen) then ("--maxLen " +  '"' + maxlen + '"') else ""} \
       ~{if (total) then "--total" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "input file in fasta/q format [stdin]"
     out: "output file [stdout]"

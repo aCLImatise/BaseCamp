@@ -40,6 +40,9 @@ task Kraken {
       ~{if (paired) then "--paired" else ""} \
       ~{if (check_names) then "--check-names" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Name for Kraken DB\\n(default: none)"
     threads: "Number of threads (default: 1)"

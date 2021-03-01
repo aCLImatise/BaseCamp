@@ -2,31 +2,31 @@ version 1.0
 
 task Mira {
   input {
-    Boolean? _cwd_directory
-    Boolean? _mcheck_only
-    Boolean? _mdcheck_m
-    Boolean? _resume_resume
-    Boolean? _threads_integer
-    Boolean? _version_print
+    Boolean? cwd
+    Boolean? m_check
+    Boolean? md_check
+    Boolean? resume
+    Boolean? threads
     String mira_talk_at_freelists_dot_org
   }
   command <<<
     mira \
       ~{mira_talk_at_freelists_dot_org} \
-      ~{if (_cwd_directory) then "-c" else ""} \
-      ~{if (_mcheck_only) then "-m" else ""} \
-      ~{if (_mdcheck_m) then "-M" else ""} \
-      ~{if (_resume_resume) then "-r" else ""} \
-      ~{if (_threads_integer) then "-t" else ""} \
-      ~{if (_version_print) then "-v" else ""}
+      ~{if (cwd) then "--cwd" else ""} \
+      ~{if (m_check) then "--mcheck" else ""} \
+      ~{if (md_check) then "--mdcheck" else ""} \
+      ~{if (resume) then "--resume" else ""} \
+      ~{if (threads) then "--threads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _cwd_directory: "/ --cwd=           directory       Change working directory"
-    _mcheck_only: "/ --mcheck                         Only check the manifest file, then exit."
-    _mdcheck_m: "/ --mdcheck                        Like -m, but also check existence of\\ndata files."
-    _resume_resume: "/ --resume                         Resume an interrupted assembly"
-    _threads_integer: "/ --threads=       integer         Force number of threads (overrides\\nequivalent -GE:not manifest entry)"
-    _version_print: "/ --version                        Print version and exit"
+    cwd: "=           directory       Change working directory"
+    m_check: "Only check the manifest file, then exit."
+    md_check: "Like -m, but also check existence of\\ndata files."
+    resume: "Resume an interrupted assembly"
+    threads: "=       integer         Force number of threads (overrides\\nequivalent -GE:not manifest entry)"
     mira_talk_at_freelists_dot_org: "To report bugs or ask for features, please use the SourceForge ticketing"
   }
   output {

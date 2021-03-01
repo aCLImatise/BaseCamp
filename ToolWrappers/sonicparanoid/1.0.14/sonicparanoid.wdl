@@ -4,6 +4,9 @@ task Sonicparanoid {
   command <<<
     sonicparanoid
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

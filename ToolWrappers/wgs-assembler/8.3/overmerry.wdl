@@ -32,6 +32,9 @@ task Overmerry {
       ~{if (entertain_user_progress) then "-v" else ""} \
       ~{if defined(output_written_here) then ("-o " +  '"' + output_written_here + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_to_gkpstore: "path to the gkpStore"
     mer_size_bases: "mer size in bases"

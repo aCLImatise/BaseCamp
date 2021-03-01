@@ -3,18 +3,18 @@ id: batchParallel.pl.cwl
 inputs:
 - id: in_cpu
   doc: '<#> (max number of parallel processes, default: 20)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -cpu
-- id: in_file_suffix_ie
+- id: in_file_suffix_stdout
   doc: "<file suffix> (instead of stdout, \"flag file.suffix will be used\")\ni.e.\
     \ -o -o txt"
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_f
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_command
@@ -76,6 +76,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - batchParallel.pl

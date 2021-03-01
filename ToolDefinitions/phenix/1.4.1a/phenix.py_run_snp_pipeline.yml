@@ -5,47 +5,120 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --input
-  args: !SimpleFlagArg
-    name: INPUT
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - --workflow
+  - -w
+  - --input
+  - -i
+  - -r1
+  description: R1/Forward read in Fastq format.
   args: !SimpleFlagArg
     name: WORKFLOW
+- !Flag
   optional: true
+  synonyms:
+  - -r2
+  description: R2/Reverse read in Fastq format.
+  args: !SimpleFlagArg
+    name: R2
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  - -r
+  description: Rerefence to use for mapping.
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --sample-name
+  description: Name of the sample for mapper to include as read groups.
+  args: !SimpleFlagArg
+    name: SAMPLE_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  - -o
+  - --config
+  - -c
+  - --mapper
+  - -m
+  description: "Available mappers: ['bwa', 'bowtie2']"
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --mapper-options
+  description: Custom maper options (advanced)
+  args: !SimpleFlagArg
+    name: MAPPER_OPTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --bam
+  - --variant
+  - -v
+  description: "Available variant callers: ['mpileup', 'gatk']"
+  args: !SimpleFlagArg
+    name: BAM
+- !Flag
+  optional: true
+  synonyms:
+  - --variant-options
+  description: Custom variant options (advanced)
+  args: !SimpleFlagArg
+    name: VARIANT_OPTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --vcf
+  - --filters
+  description: "Filters to be applied to the VCF in key:value pairs, separated by\
+    \ comma (,). Available_filters: ['gq_score', 'dp4_ratio', 'ad_ratio', 'min_depth',\
+    \ 'mq_score', 'mq0_ratio', 'uncall_gt', 'qual_score', 'mq0f_ratio']. Recommendations:\
+    \ GATK: mq_score:30,min_depth:10,ad_ratio:0.9 Mpileup: mq_score:30,min_depth:10,dp4_ratio:0.9"
+  args: !SimpleFlagArg
+    name: VCF
+- !Flag
+  optional: true
+  synonyms:
+  - --annotators
+  description: "List of annotators to run before filters. Available: ['coverage']"
+  args: !RepeatFlagArg
+    name: ANNOTATORS
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-temp
+  description: 'Keep intermediate files like BAMs and VCFs (default: False).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --json
+  description: 'Also write variant positions in filtered vcf as json file (default:
+    False).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --json-info
+  description: 'When writing a json file, log some stats to stdout. (default: False).'
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--workflow WORKFLOW, -w WORKFLOW\n\
-    --input INPUT, -i INPUT\n-r1 R1                R1/Forward read in Fastq format.\n\
-    -r2 R2                R2/Reverse read in Fastq format.\n--reference REFERENCE,\
-    \ -r REFERENCE\nRerefence to use for mapping.\n--sample-name SAMPLE_NAME\nName\
-    \ of the sample for mapper to include as read groups.\n--outdir OUTDIR, -o OUTDIR\n\
-    --config CONFIG, -c CONFIG\n--mapper MAPPER, -m MAPPER\nAvailable mappers: ['bwa',\
-    \ 'bowtie2']\n--mapper-options MAPPER_OPTIONS\nCustom maper options (advanced)\n\
-    --bam BAM\n--variant VARIANT, -v VARIANT\nAvailable variant callers: ['mpileup',\
-    \ 'gatk']\n--variant-options VARIANT_OPTIONS\nCustom variant options (advanced)\n\
-    --vcf VCF\n--filters FILTERS     Filters to be applied to the VCF in key:value\
-    \ pairs, separated by comma (,). Available_filters: ['gq_score', 'dp4_ratio',\
-    \ 'ad_ratio', 'min_depth', 'mq_score', 'mq0_ratio', 'uncall_gt', 'qual_score',\
-    \ 'mq0f_ratio']. Recommendations: GATK: mq_score:30,min_depth:10,ad_ratio:0.9\
-    \ Mpileup: mq_score:30,min_depth:10,dp4_ratio:0.9\n--annotators ANNOTATORS [ANNOTATORS\
-    \ ...]\nList of annotators to run before filters. Available: ['coverage']\n--keep-temp\
-    \           Keep intermediate files like BAMs and VCFs (default: False).\n--json\
-    \                Also write variant positions in filtered vcf as json file (default:\
-    \ False).\n--json-info           When writing a json file, log some stats to stdout.\
-    \ (default: False).\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: phenix.py run_snp_pipeline [-h] [--workflow WORKFLOW] [--input\
@@ -85,3 +158,4 @@ help_text: "usage: phenix.py run_snp_pipeline [-h] [--workflow WORKFLOW] [--inpu
   \ file, log some stats to stdout. (default: False).\n"
 generated_using:
 - --help
+docker_image:

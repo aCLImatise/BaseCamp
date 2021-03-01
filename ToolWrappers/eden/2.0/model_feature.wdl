@@ -14,6 +14,9 @@ task ModelFeature {
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
       ~{if defined(output_format) then ("--output-format " +  '"' + output_format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Path to file containing input. (default: None)"
     model_file: "Path to a fit model file. (default: model)"

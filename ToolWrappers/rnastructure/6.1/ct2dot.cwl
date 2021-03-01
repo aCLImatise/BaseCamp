@@ -4,7 +4,7 @@ inputs:
 - id: in_quiet
   doc: "Suppress unnecessary output. This option is implied when the output file is\n\
     '-' (STDOUT)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --quiet
 - id: in_format
@@ -17,7 +17,7 @@ inputs:
     \ with a Title-Line\n'>TITLE' followed by a Structure-Line.\n(4) full   -- All\
     \ structures written with a full header, including a\n'>TITLE' line followed by\
     \ a Sequence-Line and then a Structure-Line.\nThe default is 'multi'.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --format
 - id: in_ct_file
@@ -42,9 +42,10 @@ outputs:
 - id: out_quiet
   doc: "Suppress unnecessary output. This option is implied when the output file is\n\
     '-' (STDOUT)."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_quiet)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ct2dot

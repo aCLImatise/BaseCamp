@@ -13,7 +13,7 @@ task DBGraphPep2Pro {
     Int? d
     Int? m
     Boolean? soap_when_set
-    Boolean? when_set_default
+    Boolean? fastg_when_set
   }
   command <<<
     DBGraphPep2Pro \
@@ -28,8 +28,11 @@ task DBGraphPep2Pro {
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
       ~{if (soap_when_set) then "-u" else ""} \
-      ~{if (when_set_default) then "-f" else ""}
+      ~{if (fastg_when_set) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_edge_file: ": The input edge file name"
     input_edge_sequence: ": The input edge sequence (contig) file name"
@@ -42,7 +45,7 @@ task DBGraphPep2Pro {
     d: ": default 10"
     m: ": default 100"
     soap_when_set: "(SOAP when set; default off for SOAP2)"
-    when_set_default: "(FastG when set; default off for SOAP2)"
+    fastg_when_set: "(FastG when set; default off for SOAP2)"
   }
   output {
     File out_stdout = stdout()

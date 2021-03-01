@@ -3,7 +3,7 @@ id: getLinesMatching.pl.cwl
 inputs:
 - id: in_use_complement_print
   doc: Use complement. Print all lines NOT matching.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --v
 - id: in_pat_from
@@ -11,12 +11,12 @@ inputs:
     checking for membership in the list.\nWill use the pattern s/$patfrom/$patto/\n\
     Useful for removing modifications, e.g.\ntripping a trailing -1 before performing\
     \ the\ncheck.\nBoth default to empty patterns."
-  type: long
+  type: long?
   inputBinding:
     prefix: --patfrom
 - id: in_whitespace
   doc: Split columns at whitespace rather than tab.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --whitespace
 - id: in_cat
@@ -33,6 +33,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - getLinesMatching.pl

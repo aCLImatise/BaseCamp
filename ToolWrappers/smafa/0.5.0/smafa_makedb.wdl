@@ -18,6 +18,9 @@ task SmafaMakedb {
       ~{if (translate) then "--translate" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     amino_acid: "Sequences are amino acid [default: nucleotide]"
     quiet: "Unless there is an error, do not print logging information"

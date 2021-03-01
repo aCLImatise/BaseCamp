@@ -56,6 +56,9 @@ task BcftoolsRoh {
       ~{if defined(az_to_hw) then ("--az-to-hw " +  '"' + az_to_hw + '"') else ""} \
       ~{if defined(viterbi_training) then ("--viterbi-training " +  '"' + viterbi_training + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     af_dflt: "if AF is not known, use this allele frequency [skip]"
     af_tag: "use TAG for allele frequency"

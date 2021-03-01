@@ -4,6 +4,9 @@ task Stats {
   command <<<
     stats
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

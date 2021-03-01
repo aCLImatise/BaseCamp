@@ -4,7 +4,7 @@ task PrepPoisGAM {
   input {
     File? two_column_read
     Int? fragment_size_estimated
-    Int? read_length_default
+    Int? _length_default
     String? specified_use_output
     File? file_stores_estimates
     Int? bin_size_default
@@ -23,7 +23,7 @@ task PrepPoisGAM {
       ~{fa_file} \
       ~{if defined(two_column_read) then ("-i " +  '"' + two_column_read + '"') else ""} \
       ~{if defined(fragment_size_estimated) then ("-s " +  '"' + fragment_size_estimated + '"') else ""} \
-      ~{if defined(read_length_default) then ("-l " +  '"' + read_length_default + '"') else ""} \
+      ~{if defined(_length_default) then ("-l " +  '"' + _length_default + '"') else ""} \
       ~{if defined(specified_use_output) then ("-o " +  '"' + specified_use_output + '"') else ""} \
       ~{if defined(file_stores_estimates) then ("-e " +  '"' + file_stores_estimates + '"') else ""} \
       ~{if defined(bin_size_default) then ("-b " +  '"' + bin_size_default + '"') else ""} \
@@ -36,10 +36,13 @@ task PrepPoisGAM {
       ~{if (noheader) then "--NoHeader" else ""} \
       ~{if defined(refine) then ("--refine " +  '"' + refine + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     two_column_read: ": a two column read count file(position and count); If unspecified, use <stdin> as input;\\nData should be ordered by position"
     fragment_size_estimated: ": fragment size as estimated from paired end data or by cross correlation of reads on postive and negative strands; Default 300"
-    read_length_default: ": read length; Default 50"
+    _length_default: ": read length; Default 50"
     specified_use_output: ": if specified, use this as output"
     file_stores_estimates: ": the file that stores the estimates of the glm model"
     bin_size_default: ": the bin size; default 100; only valid if -e is specified"

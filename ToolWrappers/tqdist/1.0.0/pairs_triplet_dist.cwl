@@ -3,7 +3,7 @@ id: pairs_triplet_dist.cwl
 inputs:
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_filename_one
@@ -18,7 +18,7 @@ inputs:
     position: 1
 - id: in_output_filename
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     position: 2
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output_filename
   doc: ''
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pairs_triplet_dist

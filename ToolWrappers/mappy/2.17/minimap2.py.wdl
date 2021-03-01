@@ -22,6 +22,9 @@ task Minimap2py {
       ~{if defined(band_width) then ("-r " +  '"' + band_width + '"') else ""} \
       ~{if (output_cs_tag) then "-c" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     preset_sr_mappb: "preset: sr, map-pb, map-ont, asm5, asm10 or splice"
     mininum_number_minimizers: "mininum number of minimizers"

@@ -13,14 +13,14 @@ task VarscanSomaticFilter {
     String java
     String filter
     String? variant
-    File? file
+    File? var_file
   }
   command <<<
     varscan somaticFilter \
       ~{java} \
       ~{filter} \
       ~{variant} \
-      ~{file} \
+      ~{var_file} \
       ~{if (min_coverage) then "--min-coverage" else ""} \
       ~{if (min_reads_two) then "--min-reads2" else ""} \
       ~{if (min_strands_two) then "--min-strands2" else ""} \
@@ -30,6 +30,9 @@ task VarscanSomaticFilter {
       ~{if (output_file) then "--output-file" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_coverage: "Minimum read depth at a position to make a call [10]"
     min_reads_two: "Minimum supporting reads at a position to call variants [4]"
@@ -42,7 +45,7 @@ task VarscanSomaticFilter {
     java: ""
     filter: ""
     variant: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

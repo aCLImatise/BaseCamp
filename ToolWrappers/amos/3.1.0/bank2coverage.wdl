@@ -10,6 +10,9 @@ task Bank2coverage {
       ~{bank_name} \
       ~{out_prefix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bank_name: ""
     out_prefix: ""

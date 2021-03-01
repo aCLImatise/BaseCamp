@@ -26,6 +26,9 @@ task BioformatsRenameseq {
       ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "the input file is of the FASTA format"
     column: "the number of the column that contains sequence names\\nto be changed staring from 1"

@@ -9,20 +9,21 @@ inputs:
     \ you can choose the location of the data\ndirectory somewhere you like. However,\
     \ when it is time\nto run Pfam, you will need to remember that path and\nprovide\
     \ it to the program."
-  type: File
+  type: File?
   inputBinding:
     prefix: --pfam-data-dir
 - id: in_reset
   doc: "This program by default attempts to use previously\ndownloaded files in your\
     \ Pfam data directory if there\nare any. If something is wrong for some reason\
     \ you can\nuse this to tell anvi'o to remove everything, and\nstart over.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reset
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-setup-pfams

@@ -22,6 +22,9 @@ task Bioconda2biocontainer {
       ~{if (sort_by_size) then "--sort_by_size" else ""} \
       ~{if (sort_by_download) then "--sort_by_download" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     package_name: "Bioconda package name"
     package_version: "Bioconda package version"

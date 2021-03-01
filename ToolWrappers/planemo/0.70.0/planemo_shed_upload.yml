@@ -4,129 +4,124 @@ command:
 - shed_upload
 positional:
 - !Positional
-  description: '% tar -tzf shed_upload.tar.gz | wc -l'
+  optional: false
   position: 0
-  name: tools/ncbi_blast_plus/tool_dependencies.xml
-  optional: false
-- !Positional
-  description: 'Options:'
-  position: 1
   name: '117'
-  optional: false
+  description: 'Options:'
 named:
 - !Flag
-  description: "Recursively perform command for nested\nrepository directories."
+  optional: true
   synonyms:
   - -r
   - --recursive
+  description: "Recursively perform command for nested\nrepository directories."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If multiple repositories are specified and an\nerror occurs stop immediately\
-    \ instead of\nprocessing remaining repositories."
+  optional: true
   synonyms:
   - --fail_fast
+  description: "If multiple repositories are specified and an\nerror occurs stop immediately\
+    \ instead of\nprocessing remaining repositories."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Tool Shed repository owner (username).
+  optional: true
   synonyms:
   - --owner
+  description: Tool Shed repository owner (username).
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Tool Shed repository name (defaults to the\ninferred tool directory\
-    \ name)."
+  optional: true
   synonyms:
   - --name
+  description: "Tool Shed repository name (defaults to the\ninferred tool directory\
+    \ name)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "E-mail for Tool Shed auth (required unless\nshed_key is specified)."
+  optional: true
   synonyms:
   - --shed_email
+  description: "E-mail for Tool Shed auth (required unless\nshed_key is specified)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --shed_key
   description: "API key for Tool Shed access. An API key is\nrequired unless e-mail\
     \ and password is\nspecified. This key can be specified with\neither --shed_key\
     \ or --shed_key_from_env."
-  synonyms:
-  - --shed_key
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Environment variable to read API key for Tool\nShed access from."
+  optional: true
   synonyms:
   - --shed_key_from_env
+  description: "Environment variable to read API key for Tool\nShed access from."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Password for Tool Shed auth (required unless\nshed_key is specified)."
+  optional: true
   synonyms:
   - --shed_password
+  description: "Password for Tool Shed auth (required unless\nshed_key is specified)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Tool Shed to target (this can be 'toolshed',\n'testtoolshed', 'local'\
-    \ (alias for\nhttp://localhost:9009/), an arbitrary url or\nmappings defined ~/.planemo.yml."
+  optional: true
   synonyms:
   - -t
   - --shed_target
+  description: "Tool Shed to target (this can be 'toolshed',\n'testtoolshed', 'local'\
+    \ (alias for\nhttp://localhost:9009/), an arbitrary url or\nmappings defined ~/.planemo.yml."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Commit message for tool shed upload.
+  optional: true
   synonyms:
   - -m
   - --message
+  description: Commit message for tool shed upload.
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "If a repository cannot be found for the\nspecified user/repo name\
-    \ pair, then\nautomatically create the repository in the\ntoolshed."
+  optional: true
   synonyms:
   - --force_repository_creation
+  description: "If a repository cannot be found for the\nspecified user/repo name\
+    \ pair, then\nautomatically create the repository in the\ntoolshed."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Skip uploading if the shed_diff detects there\nwould be no 'difference'\
-    \ (only attributes\npopulated by the shed would be updated.)"
+  optional: true
   synonyms:
   - --check_diff
+  description: "Skip uploading if the shed_diff detects there\nwould be no 'difference'\
+    \ (only attributes\npopulated by the shed would be updated.)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Produce tar file for upload but do not publish\nto a tool shed."
+  optional: true
   synonyms:
   - --tar_only
+  description: "Produce tar file for upload but do not publish\nto a tool shed."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify a pre-existing tar file instead of\nautomatically building\
-    \ one as part of this\ncommand."
+  optional: true
   synonyms:
   - --tar
+  description: "Specify a pre-existing tar file instead of\nautomatically building\
+    \ one as part of this\ncommand."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: planemo shed_upload [OPTIONS] PROJECT\n\n  Low-level command to\
@@ -169,3 +164,4 @@ help_text: "Usage: planemo shed_upload [OPTIONS] PROJECT\n\n  Low-level command 
   \            Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

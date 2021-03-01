@@ -3,95 +3,151 @@ command:
 - kalign
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: kalign2
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: INFILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 2
   name: OUTFILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: ",     -gapopen          Gap open penalty\n-gap_open\n-gpo"
+  optional: true
   synonyms:
   - -s
+  - -gapopen
+  description: Gap open penalty
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ",     -gapextension     Gap extension penalty\n-gap_ext\n-gpe"
+  optional: true
   synonyms:
+  - -gap_open
+  - -gpo
   - -e
+  - -gapextension
+  description: Gap extension penalty
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ",     -terminal_gap_extension_penalty Terminal gap penalties\n-tgpe"
+  optional: true
   synonyms:
+  - -gap_ext
+  - -gpe
   - -t
-  args: !EmptyFlagArg {}
-  optional: true
+  - -terminal_gap_extension_penalty
+  description: gap penalties
+  args: !SimpleFlagArg
+    name: Terminal
 - !Flag
-  description: ",     -matrix_bonus     A constant added to the substitution matrix.\n\
-    -bonus"
+  optional: true
   synonyms:
+  - -tgpe
   - -m
+  - -matrix_bonus
+  description: A constant added to the substitution matrix.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ",     -sort            The order in which the sequences appear in\
-    \ the output alignment.\n<input, tree, gaps.>"
+  optional: true
   synonyms:
+  - -bonus
   - -c
+  - -sort
+  description: "The order in which the sequences appear in the output alignment.\n\
+    <input, tree, gaps.>"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ",     -feature          Selects feature mode and specifies which features\
-    \ are to be used:\ne.g. all, maxplp, STRUCT, PFAM-A...."
+  optional: true
   synonyms:
   - -g
+  - -feature
+  description: "Selects feature mode and specifies which features are to be used:\n\
+    e.g. all, maxplp, STRUCT, PFAM-A...."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Score for aligning same features\n-diff_feature_score          Penalty\
-    \ for aligning different features"
+  optional: true
   synonyms:
   - -same_feature_score
+  description: Score for aligning same features
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ",     -distance         Distance method.\n<wu,pair>"
+  optional: true
+  synonyms:
+  - -diff_feature_score
+  description: Penalty for aligning different features
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -d
+  - -distance
+  description: "Distance method.\n<wu,pair>"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ",     -guide-tree       Guide tree method.\n-tree             <nj,upgma>"
+  optional: true
   synonyms:
   - -b
+  - -guide-tree
+  description: Guide tree method.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ",     -zcutoff         Parameter used in the wu-manber based distance\
-    \ calculation\n-i,     -input            The input file.\n-infile\n-in\n-o,  \
-    \   -output           The output file.\n-outfile\n-out\n-a,     -gap_inc     \
-    \      Parameter increases gap penalties depending on the number of existing gaps\n\
-    -f,     -format           The output format:\n<fasta, msf, aln, clu, macsim>\n\
-    -q,     -quiet            Print nothing to STDERR.\nRead nothing from STDIN\n\
-    Examples:\nUsing pipes:\nkalign2 [OPTIONS] < [INFILE]   > [OUTFILE]\nmore [INFILE]\
-    \ |  kalign2 [OPTIONS] > [OUTFILE]\nRelaxed gap penalties:\nkalign2 -gpo 60 -gpe\
-    \ 9 -tgpe 0 -bonus 0 < [INFILE]   > [OUTFILE]\nFeature alignment with pairwise\
-    \ alignment based distance method and NJ guide tree:\nkalign2 -in test.xml -distance\
-    \ pair -tree nj -sort gaps -feature STRUCT -format macsim -out test.macsim\n"
+  optional: true
+  synonyms:
+  - -tree
+  description: <nj,upgma>
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -z
+  - -zcutoff
+  description: Parameter used in the wu-manber based distance calculation
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -i
+  - -input
+  description: The input file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -infile
+  - -in
+  - -o
+  - -output
+  description: The output file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -outfile
+  - -out
+  - -a
+  - -gap_inc
+  description: Parameter increases gap penalties depending on the number of existing
+    gaps
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - -format
+  description: "The output format:\n<fasta, msf, aln, clu, macsim>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - -quiet
+  description: "Print nothing to STDERR.\nRead nothing from STDIN"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
@@ -131,3 +187,4 @@ help_text: "\nKalign version 2.04, Copyright (C) 2004, 2005, 2006 Timo Lassmann\
   \ -tree nj -sort gaps -feature STRUCT -format macsim -out test.macsim\n        \n"
 generated_using:
 - --help
+docker_image:

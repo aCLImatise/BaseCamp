@@ -3,97 +3,107 @@ command:
 - select_db.py
 positional:
 - !Positional
-  description: Path to reads file.
+  optional: false
   position: 0
   name: reads
-  optional: false
+  description: Path to reads file.
 - !Positional
-  description: Path to data/ directory with the files from
+  optional: false
   position: 1
   name: data
-  optional: false
+  description: Path to data/ directory with the files from
 - !Positional
-  description: 'optional arguments:'
+  optional: false
   position: 2
   name: setup_data.sh
-  optional: false
+  description: 'optional arguments:'
 - !Positional
-  description: --db_dir DB_DIR       Directory with all organism files in the full
+  optional: false
   position: 3
-  name: temp_dir/cmashed_db.fna
-  optional: false
-- !Positional
-  description: --dbinfo_in DBINFO_IN
-  position: 4
   name: database.
-  optional: false
-- !Positional
-  description: --dbinfo_out DBINFO_OUT
-  position: 0
-  name: data/db_info.txt
-  optional: false
-- !Positional
-  description: --input_type {fastq,fasta,AUTO}
-  position: 0
-  name: temp_dir/subset_db_info.txt
-  optional: false
-- !Positional
-  description: --keep_temp_files     Retain KMC files after this script finishes.
-  position: 0
-  name: auto-determine
-  optional: false
+  description: --dbinfo_in DBINFO_IN
 named:
 - !Flag
-  description: Give location of CMash query results if already done.
+  optional: true
   synonyms:
   - --cmash_results
+  description: Give location of CMash query results if already done.
   args: !SimpleFlagArg
     name: CMASH_RESULTS
-  optional: true
 - !Flag
-  description: CMash cutoff value. Default is 0.01.
+  optional: true
   synonyms:
   - --cutoff
+  description: CMash cutoff value. Default is 0.01.
   args: !SimpleFlagArg
     name: CUTOFF
-  optional: true
 - !Flag
-  description: 'Where to write subset database. Default:'
+  optional: true
   synonyms:
   - --db
+  description: "Where to write subset database. Default:\ntemp_dir/cmashed_db.fna"
   args: !SimpleFlagArg
     name: DB
-  optional: true
 - !Flag
-  description: "Include all strains above cutoff. Default: 1 strain\nper species."
+  optional: true
+  synonyms:
+  - --db_dir
+  description: Directory with all organism files in the full
+  args: !SimpleFlagArg
+    name: DB_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --dbinfo_out
+  description: "Where to write subset db_info. Default:\ntemp_dir/subset_db_info.txt"
+  args: !SimpleFlagArg
+    name: DBINFO_OUT
+- !Flag
+  optional: true
+  synonyms:
+  - --input_type
+  description: "Type of input file (fastq/fasta). Default: try to\nauto-determine"
+  args: !ChoiceFlagArg
+    choices: !!set
+      fastq:
+      AUTO:
+      fasta:
+- !Flag
+  optional: true
+  synonyms:
+  - --keep_temp_files
+  description: Retain KMC files after this script finishes.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --strain_level
+  description: "Include all strains above cutoff. Default: 1 strain\nper species."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Directory to write temporary files to.
+  optional: true
   synonyms:
   - --temp_dir
+  description: Directory to write temporary files to.
   args: !SimpleFlagArg
     name: TEMP_DIR
-  optional: true
 - !Flag
-  description: 'How many compute threads for KMC to use. Default: 4'
+  optional: true
   synonyms:
   - --threads
+  description: 'How many compute threads for KMC to use. Default: 4'
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: select_db.py [-h] [--cmash_results CMASH_RESULTS] [--cutoff CUTOFF]\n\
@@ -121,3 +131,4 @@ help_text: "usage: select_db.py [-h] [--cmash_results CMASH_RESULTS] [--cutoff C
   \     How many compute threads for KMC to use. Default: 4\n"
 generated_using:
 - --help
+docker_image:

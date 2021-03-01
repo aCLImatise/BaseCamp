@@ -24,6 +24,9 @@ task BxclSeqqc {
       ~{if defined(trim) then ("--trim " +  '"' + trim + '"') else ""} \
       ~{if (print_config) then "--printconfig" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     files: "F1    Pair of input FastQ files."
     outdir: "Output directory. (default: current directory)"

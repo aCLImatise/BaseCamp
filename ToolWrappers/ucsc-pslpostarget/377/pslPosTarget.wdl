@@ -4,6 +4,9 @@ task PslPosTarget {
   command <<<
     pslPosTarget
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

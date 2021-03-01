@@ -18,13 +18,14 @@ inputs:
     position: 2
 - id: in_out_dot_index
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 3
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - samtools_0.1.18

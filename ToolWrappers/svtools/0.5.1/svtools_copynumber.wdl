@@ -22,6 +22,9 @@ task SvtoolsCopynumber {
       ~{if defined(output_vcf_write) then ("--output " +  '"' + output_vcf_write + '"') else ""} \
       ~{if defined(tempdir) then ("--tempdir " +  '"' + tempdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     coordinates: "file containing coordinate for which to retrieve\\ncopynumber (required)"
     root: "CNVnator .root histogram file (required)"

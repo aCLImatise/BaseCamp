@@ -40,6 +40,9 @@ task GoalignClean {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cut_off: "Cutoff for gap deletion : 0 remove sites/sequences with > 0 gap, 1 remove sites/sequences with 100% gaps)"
     cleaned_alignment_output: "Cleaned alignment output file (default \\\"stdout\\\")"

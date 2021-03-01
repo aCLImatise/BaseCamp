@@ -32,6 +32,9 @@ task NgsArchiveLinkerpl {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     project_id: "[ARG]\\nThe ID of the project to get data from. (required)"
     directory_output_collection: "[ARG]\\nA directory to output the collection of links. (Default: Current\\nworking directory)"

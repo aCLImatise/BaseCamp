@@ -21,31 +21,31 @@ inputs:
     \ a strain, please ensure that\nall chromosome/plasmid/contig IDs are unique across\
     \ files\nwithin a single genome. If sequence IDs are duplicated, the\nresults\
     \ are likely to be wrong."
-  type: File
+  type: File?
   inputBinding:
     prefix: --file
 - id: in_pct_core
   doc: "percentage of input genomes in which a region must be\nfound in order to be\
     \ considered core\n(default: 100)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --pctcore
 - id: in_max_dist
   doc: "maximum distance between core genome segments. Distances\nless than this between\
     \ adjacent segments will result in\ncombination of fragments with N's rather than\
     \ separating\ninto two or more fragments.\n(default: 10)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxdist
-- id: in__license_print
+- id: in_license_print_license
   doc: or --license  print license information and quit
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
-- id: in__nucpath_full
+- id: in_nucpath_full_path
   doc: "or --nucpath  full path to folder containing MUMmer scripts and\nexecutables,\
     \ i.e. /home/applications/MUMmer/bin\n(default: tries to find MUMmer in your PATH)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
 - id: in_refs
@@ -67,7 +67,7 @@ inputs:
     \ of 10 genomes, but not present in the first\nreference genome.\n(default: reference\
     \ priority will be the same as the order\nof genomes entered, with the first genome\
     \ having the highest\npriority and the last genome having the lowest priority)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --refs
 - id: in_mini
@@ -75,29 +75,29 @@ inputs:
     \ the reference genome(s). This saves time on\nlarge data sets, especially if\
     \ you only need the backbone\nsequence to get accessory sequences from AGEnt.\n\
     (default: core and accessory sequence sets will be output\nfor all included genomes)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mini
 - id: in_pan_genome
   doc: "produce a pangenome sequence and characteristics from\nsequences in the order\
     \ given. This option will be ignored\nif '--mini' option is given.\n(default:\
     \ no pangenome information will be output)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pangenome
 - id: in_prefix
   doc: "Output prefix\n(default: \"output\")"
-  type: string
+  type: string?
   inputBinding:
     prefix: --prefix
 - id: in_pct_id
   doc: minimum percent identity for regions to be considered
-  type: string
+  type: string?
   inputBinding:
     prefix: --pctid
 - id: in_min_out
   doc: "minimum size of sequences to be output, in bases\n(default: 10)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --minout
 - id: in_threads
@@ -105,43 +105,44 @@ inputs:
     \ any verification of the number of\nprocessers available. If you set this number\
     \ higher than\nthe number of processors you have, performance is likely to\nbe\
     \ significantly degraded.\n(default: 4)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_break_len
   doc: 'Integer (default: 200)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --breaklen
 - id: in_min_cluster
   doc: 'Integer (default: 65)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mincluster
 - id: in_diag_diff
   doc: 'Integer (default: 5)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --diagdiff
 - id: in_diag_factor
   doc: 'Float (default: 0.12)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --diagfactor
 - id: in_min_match
   doc: 'Integer (default: 20)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --minmatch
 - id: in_no_simplify
   doc: '(default: simplify)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nosimplify
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - spine.pl

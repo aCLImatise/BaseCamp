@@ -3,9 +3,14 @@ id: validate_mummer.cwl
 inputs:
 - id: in_min_contig
   doc: (=100)            minimum contigs
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_contig
+- id: in_similar
+  doc: (=0.95)              similarity
+  type: double?
+  inputBinding:
+    prefix: --similar
 - id: in_validate_contigs_mummer
   doc: ''
   type: string
@@ -25,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - validate_mummer

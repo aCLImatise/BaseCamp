@@ -38,6 +38,9 @@ task ReformatTranscripts {
       ~{if defined(gff_exon_types) then ("--gff_exon_types " +  '"' + gff_exon_types + '"') else ""} \
       ~{if defined(gff_cds_types) then ("--gff_cds_types " +  '"' + gff_cds_types + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_escape: "If specified and output format is GTF2, special\\ncharacters in column 9 will be escaped (default: True)"
     output_format: "Format of output file. (default: GTF2)"

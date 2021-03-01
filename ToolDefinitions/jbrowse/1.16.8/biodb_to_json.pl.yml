@@ -3,52 +3,53 @@ command:
 - biodb-to-json.pl
 positional:
 - !Positional
-  description: DESCRIPTION
+  optional: false
   position: 0
   name: file
-  optional: false
+  description: DESCRIPTION
 - !Positional
-  description: "--help | -? | -h\nDisplay an extended help screen."
+  optional: false
   position: 0
   name: OPTIONS
-  optional: false
+  description: "--help | -? | -h\nDisplay an extended help screen."
 named:
 - !Flag
-  description: "| -q\nQuiet. Don't print progress messages."
-  synonyms:
-  - --quiet
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: "Required. Path to the configuration file to read. File must be in\n\
-    JSON format."
   synonyms:
   - --conf
+  description: \
   args: !SimpleFlagArg
     name: conf file
-  optional: true
 - !Flag
-  description: "| --refid <ref seq id>\nOptional. Single reference sequence name or\
-    \ id for which to process\ndata.\nBy default, processes all data."
+  optional: true
+  synonyms:
+  - --quiet
+  - -q
+  description: Quiet. Don't print progress messages.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --ref
+  - --refid
+  description: "Optional. Single reference sequence name or id for which to process\n\
+    data.\nBy default, processes all data."
   args: !SimpleFlagArg
     name: ref seq name
-  optional: true
 - !Flag
-  description: 'Directory where output should go. Default: data/'
+  optional: true
   synonyms:
   - --out
+  description: 'Directory where output should go. Default: data/'
   args: !SimpleFlagArg
     name: output directory
-  optional: true
 - !Flag
-  description: "If passed, compress the output with gzip (requires some web server\n\
-    configuration to serve properly).\n"
+  optional: true
   synonyms:
   - --compress
+  description: "If passed, compress the output with gzip (requires some web server\n\
+    configuration to serve properly).\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -75,3 +76,4 @@ help_text: "NAME\n    biodb-to-json.pl - format JBrowse JSON as described in a c
   \    configuration to serve properly).\n\n"
 generated_using:
 - --help
+docker_image:

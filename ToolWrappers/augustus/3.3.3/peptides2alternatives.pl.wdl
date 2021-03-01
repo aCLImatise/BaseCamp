@@ -4,6 +4,9 @@ task Peptides2alternativespl {
   command <<<
     peptides2alternatives_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

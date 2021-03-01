@@ -1,0 +1,273 @@
+&id001 !Command
+command:
+- wg-blimp
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - wg-blimp
+  - run-shiny
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: CONFIG_FILES...
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --host
+    description: Host ip for shiny to listen on.
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --port
+    description: Shiny port number.
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: wg-blimp run-shiny [OPTIONS] CONFIG_FILES...\n\n  Start shiny\
+    \ GUI using configuration files for completed pipeline runs.\n\nOptions:\n  --host\
+    \ TEXT     Host ip for shiny to listen on.\n  --port INTEGER  Shiny port number.\n\
+    \  --help          Show this message and exit.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/wg-blimp:0.9.7--pyh3252c3a_0
+- !Command
+  command:
+  - wg-blimp
+  - run-snakemake
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: pipeline.
+    description: '[required]'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --dry-run
+    description: Only dry-run the pipeline.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --use-sample-files
+    description: "Load sample names from text files instead of\npassing them as a\
+      \ comma-seperated list."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cores
+    description: The number of cores to use for running the
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --genome_build
+    description: "[hg19|hg38|mmul10]\nBuild of the reference used for annotation."
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: wg-blimp run-snakemake [OPTIONS] FASTQ_DIR REFERENCE_FASTA GROUP1\n\
+    \                              GROUP2 OUTPUT_DIR\n\n  Run the Snakemake pipeline\
+    \ from command line. Sample names are either\n  passed as comma seperated lists\
+    \ or are read from text files if --use-\n  sample-files parameter is set. Annotation\
+    \ files are automatically\n  downloaded if necessary.\n\nOptions:\n  --dry-run\
+    \                       Only dry-run the pipeline.\n  --use-sample-files     \
+    \         Load sample names from text files instead of\n                     \
+    \             passing them as a comma-seperated list.\n\n  --cores INTEGER   \
+    \              The number of cores to use for running the\n                  \
+    \                pipeline.  [required]\n\n  --genome_build [hg19|hg38|mmul10]\n\
+    \                                  Build of the reference used for annotation.\n\
+    \  --help                          Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/wg-blimp:0.9.7--pyh3252c3a_0
+- !Command
+  command:
+  - wg-blimp
+  - create-config
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: FASTQ_DIR
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: REFERENCE_FASTA
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: GROUP1
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --genome_build
+    description: "[hg19|hg38|mmul10|None]\nBuild of the reference used for annotation."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cores-per-job
+    description: "The number of cores to use per job.\n[required]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: wg-blimp create-config [OPTIONS] FASTQ_DIR REFERENCE_FASTA GROUP1\n\
+    \                              GROUP2 OUTPUT_DIR TARGET_YAML\n\n  Create a config\
+    \ YAML file for running the Snakemake pipeline. Sample names\n  are either passed\
+    \ as comma seperated lists or are read from text files if\n  --use-sample-files\
+    \ parameter is set. Annotation files are automatically\n  downloaded if necessary.\n\
+    \nOptions:\n  --use-sample-files              Load sample names from text files\
+    \ instead of\n                                  passing them as a comma-seperated\
+    \ list.\n\n  --genome_build [hg19|hg38|mmul10|None]\n                        \
+    \          Build of the reference used for annotation.\n  --cores-per-job INTEGER\
+    \         The number of cores to use per job.\n                              \
+    \    [required]\n\n  --help                          Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/wg-blimp:0.9.7--pyh3252c3a_0
+- !Command
+  command:
+  - wg-blimp
+  - delete-all-output
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: CONFIG_YAML
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --dry-run
+    description: Only dry-run deleting the pipeline output.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --yes
+    description: Confirm the action without prompting.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: wg-blimp delete-all-output [OPTIONS] CONFIG_YAML\n\n  Remove\
+    \ all files generated by the pipeline. This includes reference genome\n  indices,\
+    \ as well. Use with care!\n\nOptions:\n  --dry-run  Only dry-run deleting the\
+    \ pipeline output.\n  --yes      Confirm the action without prompting.\n  --help\
+    \     Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/wg-blimp:0.9.7--pyh3252c3a_0
+- !Command
+  command:
+  - wg-blimp
+  - run-snakemake-from-config
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: CONFIG_YAML
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --dry-run
+    description: Only dry-run the workflow.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cores
+    description: "The maximum number of cores to use for running the\npipeline. Cores\
+      \ per job are set in configuration file.\n[required]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: wg-blimp run-snakemake-from-config [OPTIONS] CONFIG_YAML\n\n\
+    \  Run the snakemake pipeline using a config file.\n\nOptions:\n  --dry-run  \
+    \      Only dry-run the workflow.\n  --cores INTEGER  The maximum number of cores\
+    \ to use for running the\n                   pipeline. Cores per job are set in\
+    \ configuration file.\n                   [required]\n\n  --help           Show\
+    \ this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/wg-blimp:0.9.7--pyh3252c3a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: wg-blimp [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --help  Show\
+  \ this message and exit.\n\nCommands:\n  create-config              Create a config\
+  \ YAML file for running the...\n  delete-all-output          Remove all files generated\
+  \ by the pipeline.\n  run-shiny                  Start shiny GUI using configuration\
+  \ files for...\n  run-snakemake              Run the Snakemake pipeline from command\
+  \ line.\n  run-snakemake-from-config  Run the snakemake pipeline using a config\
+  \ file.\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/wg-blimp:0.9.7--pyh3252c3a_0

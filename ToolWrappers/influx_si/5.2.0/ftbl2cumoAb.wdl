@@ -4,6 +4,9 @@ task Ftbl2cumoAb {
   command <<<
     ftbl2cumoAb
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -12,6 +12,9 @@ task PypgatkClipyProteindb {
       ~{var_command} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     p_ypg_atk_cli_do_tpy: ""
     var_command: ""

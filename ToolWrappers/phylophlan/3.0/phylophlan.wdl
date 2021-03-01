@@ -92,6 +92,9 @@ task Phylophlan {
       ~{if defined(genome_extension) then ("--genome_extension " +  '"' + genome_extension + '"') else ""} \
       ~{if defined(proteome_extension) then ("--proteome_extension " +  '"' + proteome_extension + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     folder_containing_input: "Folder containing your input genomes and/or proteomes\\n(default: None)"
     clean: "Clean the output and partial data produced for the\\nspecified project (default: None)"

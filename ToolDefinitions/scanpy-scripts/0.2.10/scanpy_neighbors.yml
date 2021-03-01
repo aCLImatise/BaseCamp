@@ -3,132 +3,132 @@ command:
 - scanpy-neighbors
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: input_obj
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: output_obj
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "[anndata|loom]\nInput object format.  [default: anndata]"
+  optional: true
   synonyms:
   - -f
   - --input-format
+  description: "[anndata|loom]\nInput object format.  [default: anndata]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+  optional: true
   synonyms:
   - -F
   - --output-format
+  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Chunk size for writing output in zarr
+  optional: true
   synonyms:
   - -z
   - --zarr-chunk-size
+  description: Chunk size for writing output in zarr
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "When specified, using it as prefix for\nexporting mtx files. If not\
-    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+  optional: true
   synonyms:
   - -X
   - --export-mtx
+  description: "When specified, using it as prefix for\nexporting mtx files. If not\
+    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "[stdout|stderr]      Print output object summary info to\nspecified\
-    \ stream."
+  optional: true
   synonyms:
   - --show-obj
+  description: "[stdout|stderr]      Print output object summary info to\nspecified\
+    \ stream."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use this many PCs. Use `.X` if --n-pcs is 0\nwhen --use-rep is None."
+  optional: true
   synonyms:
   - -n
   - --n-pcs
+  description: "Use this many PCs. Use `.X` if --n-pcs is 0\nwhen --use-rep is None."
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Use the indicated representation. If None,\nthe representation is\
-    \ chosen automatically:\nfor `.n_vars` < 50, `.X` is used, otherwise\n`X_pca`\
-    \ is used. If `X_pca` is not present,\nit's computed with default parameters."
+  optional: true
   synonyms:
   - -u
   - --use-rep
+  description: "Use the indicated representation. If None,\nthe representation is\
+    \ chosen automatically:\nfor `.n_vars` < 50, `.X` is used, otherwise\n`X_pca`\
+    \ is used. If `X_pca` is not present,\nit's computed with default parameters."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Key under which to add the computed results
+  optional: true
   synonyms:
   - --key-added
+  description: Key under which to add the computed results
   args: !OptionalFlagArg
     names:
     - TEXT
     - TEXT...
     separator: ','
-  optional: true
 - !Flag
-  description: "Seed for random number generator.  [default:\n0]"
+  optional: true
   synonyms:
   - -S
   - --random-state
+  description: "Seed for random number generator.  [default:\n0]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --n-neighbors
   description: "The size of local neighborhood (in terms of\nnumber of neighboring\
     \ data points) used for\nmanifold approximation. Larger values result\nin more\
     \ global views of the manifold, while\nsmaller values result in more local data\n\
     being preserved. In general values should be\nin the range 2 to 100.  If --knn\
     \ is set,\nnumber of nearest neighbors to be searched,\nothwise a Gaussian kernel\
     \ width is set to\nthe distance of the --n-neighbors neighbor.\n[default: 15]"
-  synonyms:
-  - -k
-  - --n-neighbors
   args: !OptionalFlagArg
     names:
     - INTEGER
     - INTEGER...
     separator: ','
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-knn
   description: "When NOT set, use a hard threshold to\nrestrict the number of neighbors\
     \ to\n--n-neighbors. Otherwise, use a Gaussian\nkernel to assign low weights to\
     \ neighbors\nmore distant than the --n-neighbors nearest\nneighbor  [default:\
     \ True]"
-  synonyms:
-  - --no-knn
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[umap|gauss]       Use umap or gauss with adaptive width for\ncomputing\
-    \ connectivities.  [default: umap]"
+  optional: true
   synonyms:
   - -m
   - --method
+  description: "[umap|gauss]       Use umap or gauss with adaptive width for\ncomputing\
+    \ connectivities.  [default: umap]"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: scanpy-neighbors [OPTIONS] <input_obj> <output_obj>\n\n  Compute\
@@ -174,3 +174,4 @@ help_text: "Usage: scanpy-neighbors [OPTIONS] <input_obj> <output_obj>\n\n  Comp
   \                   Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

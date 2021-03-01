@@ -2,7 +2,7 @@ version 1.0
 
 task Dnapipy {
   input {
-    Boolean? range_single_kmer
+    Boolean? range_predict_adaptersdefault
     Boolean? range_single_ratio
     Boolean? show_all
     String? map_command
@@ -21,7 +21,7 @@ task Dnapipy {
   command <<<
     dnapi_py \
       ~{fast_q} \
-      ~{if (range_single_kmer) then "-k" else ""} \
+      ~{if (range_predict_adaptersdefault) then "-k" else ""} \
       ~{if (range_single_ratio) then "-r" else ""} \
       ~{if (show_all) then "--show-all" else ""} \
       ~{if defined(map_command) then ("--map-command " +  '"' + map_command + '"') else ""} \
@@ -36,8 +36,11 @@ task Dnapipy {
       ~{if defined(trim_five_p) then ("--trim-5p " +  '"' + trim_five_p + '"') else ""} \
       ~{if defined(trim_three_p) then ("--trim-3p " +  '"' + trim_three_p + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    range_single_kmer: "[KMER_BEG:KMER_END:INCREMENT | KMER_LEN]\\nrange of kmers or a single kmer to predict 3'adapters\\n(default: 9:11:2)"
+    range_predict_adaptersdefault: "[KMER_BEG:KMER_END:INCREMENT | KMER_LEN]\\nrange of kmers or a single kmer to predict 3'adapters\\n(default: 9:11:2)"
     range_single_ratio: "[RATIO_BEG:RATIO_END:INTCREMENT | RATIO]\\nrange of ratios or a single ratio to filter less\\nabundant kmers (default: 1.2:1.4:0.1)"
     show_all: "show other candidates if any"
     map_command: "read mapping command to be tested"

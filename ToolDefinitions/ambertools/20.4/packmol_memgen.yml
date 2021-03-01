@@ -3,585 +3,585 @@ command:
 - packmol-memgen
 positional:
 - !Positional
-  description: --xygauss C D H       set parameters for a curved 2d gaussian in the
-    xy
+  optional: false
   position: 0
   name: bilayer.
-  optional: false
+  description: --xygauss C D H       set parameters for a curved 2d gaussian in the
+    xy
 - !Positional
-  description: --output OUTPUT       name of the PACKMOL generated PDB file
+  optional: false
   position: 0
   name: written
-  optional: false
+  description: --output OUTPUT       name of the PACKMOL generated PDB file
 named:
 - !Flag
-  description: prints this help message and exits
+  optional: true
   synonyms:
   - --help
+  description: prints this help message and exits
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: list of available lipids and corresponding charges
+  optional: true
   synonyms:
   - --available_lipids
+  description: list of available lipids and corresponding charges
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "list all lipids including experimental. Huge output\n(~4000)!"
+  optional: true
   synonyms:
   - --available_lipids_all
+  description: "list all lipids including experimental. Huge output\n(~4000)!"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -l
   description: ":LIP2//LIP3, --lipids LIP1:LIP2//LIP3\nLipid(s) to be used for embeding\
     \ the protein. It\nshould be a single string separated by ':' . If\ndifferent\
     \ composition is used in leaflets, add '//' as\na separator.[ex. CHL1:DOPC//DOPE\
     \ for a lower leaflet\nwith CHL1+DOPC and an upper leaflet with DOPE]. Can be\n\
     defined multiple times for multi-bilayer systems\n(stacks 'up' or 'outside')"
-  synonyms:
-  - -l
   args: !SimpleFlagArg
     name: LIP1
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
   description: ":R2//R3, --ratio R1:R2//R3\nmixture ratio (set to 1 if only one lipid\
     \ required).\nMust be in the same order and syntax as in lipids, and\ndefined\
     \ once per bilayer [ex. 1:2//1]"
-  synonyms:
-  - -r
   args: !SimpleFlagArg
     name: R1
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --dist
   description: "specify the minimum distance between the maxmin values\nfor x y and\
     \ z to the box boundaries. Default = 15 A.\nWorst case scenario is considered,\
     \ so real distance\ncould be larger"
-  synonyms:
-  - --dist
   args: !SimpleFlagArg
     name: DIST
-  optional: true
 - !Flag
-  description: "specify the width of the water layer over the membrane\nor protein\
-    \ in the z axis. Default = 17.5"
+  optional: true
   synonyms:
   - --dist_wat
+  description: "specify the width of the water layer over the membrane\nor protein\
+    \ in the z axis. Default = 17.5"
   args: !SimpleFlagArg
     name: DIST_WAT
-  optional: true
 - !Flag
-  description: "specify a predefined distance between the maxmin\nvalues for x and\
-    \ y to the box boundaries. By default\nis calculated flexibly for each system."
+  optional: true
   synonyms:
   - --distxy_fix
+  description: "specify a predefined distance between the maxmin\nvalues for x and\
+    \ y to the box boundaries. By default\nis calculated flexibly for each system."
   args: !SimpleFlagArg
     name: DISTXY_FIX
-  optional: true
 - !Flag
-  description: places lipids all over the packed box, and not in a
+  optional: true
   synonyms:
   - --self_assembly
+  description: places lipids all over the packed box, and not in a
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "set the curvature of the membrane patch. By default,\nmembranes are\
-    \ flat."
+  optional: true
   synonyms:
   - --curvature
+  description: "set the curvature of the membrane patch. By default,\nmembranes are\
+    \ flat."
   args: !SimpleFlagArg
     name: CURVATURE
-  optional: true
 - !Flag
-  description: "inverse of curvature. Set the curvature as if on a\nvesicle with the\
-    \ provided radius."
+  optional: true
   synonyms:
   - --curv_radius
+  description: "inverse of curvature. Set the curvature as if on a\nvesicle with the\
+    \ provided radius."
   args: !SimpleFlagArg
     name: CURV_RADIUS
-  optional: true
 - !Flag
-  description: "Y Z          box dimensions vector for the x y z axes. Be sure to\n\
-    use dimensions that cover the complete protein to be\npacked!!"
+  optional: true
   synonyms:
   - --dims
+  description: "Y Z          box dimensions vector for the x y z axes. Be sure to\n\
+    use dimensions that cover the complete protein to be\npacked!!"
   args: !SimpleFlagArg
     name: X
-  optional: true
 - !Flag
-  description: "solvate the system without adding lipids. Disables the\nflag --dist_wat,\
-    \ using only --dist to set the box\nsize. Under development!"
+  optional: true
   synonyms:
   - --solvate
+  description: "solvate the system without adding lipids. Disables the\nflag --dist_wat,\
+    \ using only --dist to set the box\nsize. Under development!"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: cube shaped box. Only works with --solvate
+  optional: true
   synonyms:
   - --cubic
+  description: cube shaped box. Only works with --solvate
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --vol
   description: "do the lipid number estimation based on the volume\noccupied by the\
     \ leaflet instead of APL. This might\ncause a great overestimation of the number\
     \ of lipid\nmolecules!"
-  synonyms:
-  - --vol
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: set desired leaflet width. 23 by default.
+  optional: true
   synonyms:
   - --leaflet
+  description: set desired leaflet width. 23 by default.
   args: !SimpleFlagArg
     name: LEAFLET
-  optional: true
 - !Flag
-  description: "factor that multiplies the x/y sizes for the lipid\nmembrane segment.\
-    \ Might improve packing and handling\nby AMBER"
+  optional: true
   synonyms:
   - --lip_offset
+  description: "factor that multiplies the x/y sizes for the lipid\nmembrane segment.\
+    \ Might improve packing and handling\nby AMBER"
   args: !SimpleFlagArg
     name: LIP_OFFSET
-  optional: true
 - !Flag
-  description: "factor that multiplies the default APL values. Helpful\nif packing\
-    \ stretched membranes."
+  optional: true
   synonyms:
   - --apl_offset
+  description: "factor that multiplies the default APL values. Helpful\nif packing\
+    \ stretched membranes."
   args: !SimpleFlagArg
     name: APL_OFFSET
-  optional: true
 - !Flag
-  description: "sets the position BELOW which the CH3 carbon atoms in\nthe tail should\
-    \ be. By default defined in parameter\nfile"
+  optional: true
   synonyms:
   - --tailplane
+  description: "sets the position BELOW which the CH3 carbon atoms in\nthe tail should\
+    \ be. By default defined in parameter\nfile"
   args: !SimpleFlagArg
     name: TAILPLANE
-  optional: true
 - !Flag
-  description: "sets the position ABOVE which the PO4 phosphorus and N\natoms in the\
-    \ polar head group should be.By default\ndefined in parameter file"
+  optional: true
   synonyms:
   - --headplane
+  description: "sets the position ABOVE which the PO4 phosphorus and N\natoms in the\
+    \ polar head group should be.By default\ndefined in parameter file"
   args: !SimpleFlagArg
     name: HEADPLANE
-  optional: true
 - !Flag
-  description: "makes a simple plot of loop number vs GENCAN\noptimization function\
-    \ value, and outputs the values to\nGENCAN.dat"
+  optional: true
   synonyms:
   - --plot
+  description: "makes a simple plot of loop number vs GENCAN\noptimization function\
+    \ value, and outputs the values to\nGENCAN.dat"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: saves all intermediate steps into separate pdb files
+  optional: true
   synonyms:
   - --traj
+  description: saves all intermediate steps into separate pdb files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "skips grid building for volume estimation, and the\ncalculation is\
-    \ done just by estimating density"
+  optional: true
   synonyms:
   - --notgridvol
+  description: "skips grid building for volume estimation, and the\ncalculation is\
+    \ done just by estimating density"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: skips protonation by reduce
+  optional: true
   synonyms:
   - --notprotonate
+  description: skips protonation by reduce
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "build step by reduce (protonation of His and side-\nchain flips).\
-    \ Use with care if parametrizing with the\nscript!"
+  optional: true
   synonyms:
   - --reducebuild
+  description: "build step by reduce (protonation of His and side-\nchain flips).\
+    \ Use with care if parametrizing with the\nscript!"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: skips deleting temporary files
+  optional: true
   synonyms:
   - --keep
+  description: skips deleting temporary files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "avoids the printing of progress bar with time\nestimation in the final\
-    \ stage. Recommended if the job\nis piped into a file"
+  optional: true
   synonyms:
   - --noprogress
+  description: "avoids the printing of progress bar with time\nestimation in the final\
+    \ stage. Recommended if the job\nis piped into a file"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --apl_exp
   description: "use experimental APL where available, like\nAmberTools18 release.\
     \ Kept for consistency with older\nversions. By default, terms estimated with\
     \ Lipid17 are\nused"
-  synonyms:
-  - --apl_exp
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: load custom memgen.parm file with APL and VOL values
+  optional: true
   synonyms:
   - --memgen_parm
+  description: load custom memgen.parm file with APL and VOL values
   args: !SimpleFlagArg
     name: MEMGEN_PARM
-  optional: true
 - !Flag
-  description: overwrite, even if files are present
+  optional: true
   synonyms:
   - --overwrite
+  description: overwrite, even if files are present
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: doesn't trim preexisting hydrogens in the structure
+  optional: true
   synonyms:
   - --nottrim
+  description: doesn't trim preexisting hydrogens in the structure
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: log file name where detailed information is to be
+  optional: true
   synonyms:
   - --log
+  description: log file name where detailed information is to be
   args: !SimpleFlagArg
     name: LOG
-  optional: true
 - !Flag
-  description: the output will be in CHARMM format instead of AMBER
+  optional: true
   synonyms:
   - --charmm
+  description: the output will be in CHARMM format instead of AMBER
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "TRANSLATE TRANSLATE\npass a vector as x y z to translate the oriented\
-    \ pdb.\nEx. ' 0 0 4 '"
+  optional: true
   synonyms:
   - --translate
+  description: "TRANSLATE TRANSLATE\npass a vector as x y z to translate the oriented\
+    \ pdb.\nEx. ' 0 0 4 '"
   args: !SimpleFlagArg
     name: TRANSLATE
-  optional: true
 - !Flag
-  description: verbose mode
+  optional: true
   synonyms:
   - --verbose
+  description: verbose mode
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pdb
   description: "PDB file(s) to embed. If many bilayers, it has to be\nspecified once\
     \ for each bilayer. 'None' can be\nspecified and a bilayer without protein will\
     \ be\ngenerated [ex. --pdb PDB1.pdb --pdb None --pdb\nPDB2.pdb (3 bilayers without\
     \ protein in the middle)].\nIf no PDB is provided, the bilayer(s) will be membrane\n\
     only (--distxy_fix has to be defined)."
-  synonyms:
-  - -p
-  - --pdb
   args: !SimpleFlagArg
     name: PDB
-  optional: true
 - !Flag
-  description: "adds pdb as solute into the water. Concentration has\nto be specified"
+  optional: true
   synonyms:
   - --solute
+  description: "adds pdb as solute into the water. Concentration has\nto be specified"
   args: !SimpleFlagArg
     name: SOLUTE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --solute_con
   description: "number of molecules/concentration to be used.\nConcentrations are\
     \ specified in Molar by adding an 'M'\nas a suffix (Ex. 0.15M). If not added,\
     \ a number of\nmolecules is assumed."
-  synonyms:
-  - --solute_con
   args: !SimpleFlagArg
     name: SOLUTE_CON
-  optional: true
 - !Flag
-  description: "absolute charge of the included solute. To be\nconsidered in the system\
-    \ neutralization"
+  optional: true
   synonyms:
   - --solute_charge
+  description: "absolute charge of the included solute. To be\nconsidered in the system\
+    \ neutralization"
   args: !SimpleFlagArg
     name: SOLUTE_CHARGE
-  optional: true
 - !Flag
-  description: solute should be added to membrane fraction
+  optional: true
   synonyms:
   - --solute_inmem
+  description: solute should be added to membrane fraction
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --solute_prot_dist
   description: "establishes a cylindrical restraint using the protein\nxy radius and\
     \ z height + the input value. A value of 0\nwill use the protein radius. By default,\
     \ no restraint\nis imposed."
-  synonyms:
-  - --solute_prot_dist
   args: !SimpleFlagArg
     name: SOLUTE_PROT_DIST
-  optional: true
 - !Flag
-  description: "use this flag if the protein has been previosuly\noriented and you\
-    \ want to avoid running MEMEMBED (i.e.\nfrom OPM)"
+  optional: true
   synonyms:
   - --preoriented
+  description: "use this flag if the protein has been previosuly\noriented and you\
+    \ want to avoid running MEMEMBED (i.e.\nfrom OPM)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --n_ter
   description: "'in' or 'out'. By default proteins are oriented with\nthe n_ter oriented\
     \ 'in' (or 'down'). relevant for\nmulti layer system. If defined for one protein,\
     \ it has\nto be defined for all of them, following previous\norder"
-  synonyms:
-  - --n_ter
   args: !SimpleFlagArg
     name: N_TER
-  optional: true
 - !Flag
-  description: use MEMEMBED in beta barrel mode
+  optional: true
   synonyms:
   - --barrel
+  description: use MEMEMBED in beta barrel mode
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "MEMEMBED by default cleans the PDB. Use this flag to\nkeep the ligands\
-    \ on the original PDB"
+  optional: true
   synonyms:
   - --keepligs
+  description: "MEMEMBED by default cleans the PDB. Use this flag to\nkeep the ligands\
+    \ on the original PDB"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "MEMEMBED optimization algorithm. 0 = Genetic\nalgorithm, 1 = Grid,\
-    \ 2 = Direct, 3 = GA five times"
+  optional: true
   synonyms:
   - --mem_opt
+  description: "MEMEMBED optimization algorithm. 0 = Genetic\nalgorithm, 1 = Grid,\
+    \ 2 = Direct, 3 = GA five times"
   args: !ChoiceFlagArg
     choices: !!set
+      '3':
       '2':
       '0':
-      '3':
       '1':
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nloop
   description: "number of nloops for GENCAN routine in PACKMOL.\nPACKMOL MEMGEN uses\
     \ 20 by default; you might consider\nincreasing the number to improve packing.\
     \ Increasing\nthe number of components requires more GENCAN loops."
-  synonyms:
-  - --nloop
   args: !SimpleFlagArg
     name: NLOOP
-  optional: true
 - !Flag
-  description: "number of nloops for all-together packing. PACKMOL\nMEMGEN uses 100\
-    \ by default."
+  optional: true
   synonyms:
   - --nloop_all
+  description: "number of nloops for all-together packing. PACKMOL\nMEMGEN uses 100\
+    \ by default."
   args: !SimpleFlagArg
     name: NLOOP_ALL
-  optional: true
 - !Flag
-  description: "tolerance for detecting clashes between molecules in\nPACKMOL (defined\
-    \ as radius1+radius2). PACKMOL uses 2.0\nby default."
+  optional: true
   synonyms:
   - --tolerance
+  description: "tolerance for detecting clashes between molecules in\nPACKMOL (defined\
+    \ as radius1+radius2). PACKMOL uses 2.0\nby default."
   args: !SimpleFlagArg
     name: TOLERANCE
-  optional: true
 - !Flag
-  description: "radius considered for protein atoms to establish the\ntolerance for\
-    \ detecting clashes. PACKMOL MEMGEN uses\n1.5 by default."
+  optional: true
   synonyms:
   - --prot_rad
+  description: "radius considered for protein atoms to establish the\ntolerance for\
+    \ detecting clashes. PACKMOL MEMGEN uses\n1.5 by default."
   args: !SimpleFlagArg
     name: PROT_RAD
-  optional: true
 - !Flag
-  description: "frequency for writing intermediate results. PACKMOL\nuses 10 by default."
+  optional: true
   synonyms:
   - --writeout
+  description: "frequency for writing intermediate results. PACKMOL\nuses 10 by default."
   args: !SimpleFlagArg
     name: WRITEOUT
-  optional: true
 - !Flag
-  description: will not run PACKMOL, even if it's available
+  optional: true
   synonyms:
   - --notrun
+  description: will not run PACKMOL, even if it's available
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --random
   description: "turns PACKMOL random seed generator on. If a previous\npacking failed\
     \ in the minimization problem, repacking\nwith this feature on might solve the\
     \ problem."
-  synonyms:
-  - --random
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: skips initial individual packing steps
+  optional: true
   synonyms:
   - --packall
+  description: skips initial individual packing steps
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "randomizes positions of badly placed molecules in\ninitial guess"
+  optional: true
   synonyms:
   - --movebadrandom
+  description: "randomizes positions of badly placed molecules in\ninitial guess"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: prefix for generated PACKMOL input and log files
+  optional: true
   synonyms:
   - --packlog
+  description: prefix for generated PACKMOL input and log files
   args: !SimpleFlagArg
     name: PACKLOG
-  optional: true
 - !Flag
-  description: "adds salt at a concentration of 0.15M by default. Salt\nis always\
-    \ added considering estimated charges for the\nsystem."
+  optional: true
   synonyms:
   - --salt
+  description: "adds salt at a concentration of 0.15M by default. Salt\nis always\
+    \ added considering estimated charges for the\nsystem."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "{K+,Na+,Ca2+,Mg2+}\ncation to add. (K+ by default)"
+  optional: true
   synonyms:
   - --salt_c
+  description: "{K+,Na+,Ca2+,Mg2+}\ncation to add. (K+ by default)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: modifies the default concentration for KCl. [M]
+  optional: true
   synonyms:
   - --saltcon
+  description: modifies the default concentration for KCl. [M]
   args: !SimpleFlagArg
     name: SALTCON
-  optional: true
 - !Flag
-  description: "if the concentration of salt specified is less than\nthe required\
-    \ to neutralize, will try to continue\nomitting the warning"
+  optional: true
   synonyms:
   - --salt_override
+  description: "if the concentration of salt specified is less than\nthe required\
+    \ to neutralize, will try to continue\nomitting the warning"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "no counterions are added. Will depend on pmemd\n'plasma' neutralization"
+  optional: true
   synonyms:
   - --nocounter
+  description: "no counterions are added. Will depend on pmemd\n'plasma' neutralization"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: performs minimization by using pmemd.
+  optional: true
   synonyms:
   - --minimize
+  description: performs minimization by using pmemd.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ligand_param
   description: "in case of parametrizing or minimizing the system with\nnon-canonical\
     \ molecules. Give frcmod and lib filenames\nseparated by ':' [ex. --ligand_param\
     \ FRCMOD:LIB]."
-  synonyms:
-  - --ligand_param
   args: !SimpleFlagArg
     name: LIGAND_PARAM
-  optional: true
 - !Flag
-  description: "if ligand parameters are included, use GAFF2 during\nparametrization\
-    \ (GAFF is used by default)"
+  optional: true
   synonyms:
   - --gaff2
+  description: "if ligand parameters are included, use GAFF2 during\nparametrization\
+    \ (GAFF is used by default)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --leapline
   description: "extra lines added to the leap parametrization process.\nDelimit the\
     \ line with quotes. The system is called SYS\ninto leap [ex. --leapline 'bond\
     \ SYS.4.SG SYS.122.SG'\nto form SS bond between SG atoms of residues 4 and\n122]"
-  synonyms:
-  - --leapline
   args: !SimpleFlagArg
     name: LEAPLINE
-  optional: true
 - !Flag
-  description: use sander instead of pmemd.
+  optional: true
   synonyms:
   - --sander
+  description: use sander instead of pmemd.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "parametrizes the system by using tleap. Uses LIPID17,\nff14SB and\
-    \ TIP3P by default (check --ffwat and\n--ffprot)"
+  optional: true
   synonyms:
   - --parametrize
+  description: "parametrizes the system by using tleap. Uses LIPID17,\nff14SB and\
+    \ TIP3P by default (check --ffwat and\n--ffprot)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "water model to be used during parametrization.If not\nset explicitly,\
-    \ will change depending on the protein\nff (--ffprot)"
+  optional: true
   synonyms:
   - --ffwat
+  description: "water model to be used during parametrization.If not\nset explicitly,\
+    \ will change depending on the protein\nff (--ffprot)"
   args: !ChoiceFlagArg
     choices: !!set
+      tip3p:
+      fb3:
       spceb:
+      opc:
+      tip4pew:
       spce:
       tip4pd:
-      fb3:
-      opc:
-      tip3p:
-      tip4pew:
-  optional: true
 - !Flag
-  description: protein ff to be used during parametrization.
+  optional: true
   synonyms:
   - --ffprot
+  description: protein ff to be used during parametrization.
   args: !ChoiceFlagArg
     choices: !!set
-      ff14SB:
       ff15ipq:
       ff19SB:
-  optional: true
+      ff14SB:
 - !Flag
-  description: "sets box dimension according to restraints used during\nthe packing.\
-    \ The default uses a vdW distance to the\nboundary"
+  optional: true
   synonyms:
   - --tight_box
+  description: "sets box dimension according to restraints used during\nthe packing.\
+    \ The default uses a vdW distance to the\nboundary"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "asumes a stacked double bilayer system for CompEL. The\ncomposition\
-    \ in --lipids will be used for both bilayers\nflipping the leaflets"
+  optional: true
   synonyms:
   - --double
+  description: "asumes a stacked double bilayer system for CompEL. The\ncomposition\
+    \ in --lipids will be used for both bilayers\nflipping the leaflets"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --charge_imbalance
   description: "sets a charge imbalance between compartments (in\nelectron charge\
     \ units). A positive imbalance implies\nan increase (decrease) in cations (anions)\
     \ in the\ncentral compartment."
-  synonyms:
-  - --charge_imbalance
   args: !SimpleFlagArg
     name: CHARGE_IMBALANCE
-  optional: true
 - !Flag
-  description: "sets if cations or anions are used to imbalance the\nsystem charges.\
-    \ ('cat' by default)\n"
+  optional: true
   synonyms:
   - --imbalance_ion
+  description: "sets if cations or anions are used to imbalance the\nsystem charges.\
+    \ ('cat' by default)\n"
   args: !ChoiceFlagArg
     choices: !!set
-      cat:
       an:
-  optional: true
+      cat:
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: prints a short help message and exits
+  optional: true
   synonyms:
   - -h
+  description: prints a short help message and exits
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: packmol-memgen [-h] [--help] [--available_lipids]\n           \
@@ -791,3 +791,4 @@ help_text: "usage: packmol-memgen [-h] [--help] [--available_lipids]\n          
   \ used to imbalance the\n                        system charges. ('cat' by default)\n"
 generated_using:
 - --help
+docker_image:

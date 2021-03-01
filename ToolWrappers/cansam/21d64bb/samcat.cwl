@@ -1,39 +1,39 @@
 class: CommandLineTool
 id: samcat.cwl
 inputs:
-- id: in_write_output_bam
+- id: in_write_output_format
   doc: Write output in BAM format (equivalent to -Obam)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
-- id: in_display_alignment_records
+- id: in_display_only_alignment
   doc: Display only alignment records matching FLAGS
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_suppress_headers_output
   doc: Suppress '@' headers in the output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
-- id: in_write_file_output
+- id: in_write_standard_output
   doc: Write to FILE rather than standard output
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_write_output_specified
   doc: Write output in the specified FORMAT
-  type: string
+  type: string?
   inputBinding:
     prefix: -O
 - id: in_display_file_information
   doc: Display file information and statistics
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_b_nv
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bnv
 - id: in_bam
@@ -60,11 +60,12 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_write_file_output
+- id: out_write_standard_output
   doc: Write to FILE rather than standard output
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_write_file_output)
+    glob: $(inputs.in_write_standard_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - samcat

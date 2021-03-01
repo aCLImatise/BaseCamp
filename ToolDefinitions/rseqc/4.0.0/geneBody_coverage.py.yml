@@ -1,0 +1,89 @@
+!Command
+command:
+- geneBody_coverage.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "Input file(s) in BAM format. \"-i\" takes these input:\n1) a single\
+    \ BAM file. 2) \",\" separated BAM files. 3)\ndirectory containing one or more\
+    \ bam files. 4) plain\ntext file containing the path of one or more bam file\n\
+    (Each row is a BAM file path). All BAM files should be\nsorted and indexed using\
+    \ samtools."
+  args: !SimpleFlagArg
+    name: INPUT_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --refgene
+  description: Reference gene model in bed format. [required]
+  args: !SimpleFlagArg
+    name: REF_GENE_MODEL
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --minimum_length
+  description: "Minimum mRNA length (bp). mRNA smaller than\n\"min_mRNA_length\" will\
+    \ be skipped. default=100"
+  args: !SimpleFlagArg
+    name: MIN_MRNA_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
+  description: "Output file format, 'pdf', 'png' or 'jpeg'.\ndefault=pdf"
+  args: !SimpleFlagArg
+    name: OUTPUT_FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-prefix
+  description: "Prefix of output files(s). [required]\n"
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: geneBody_coverage.py [options]\n\nCalculate the RNA-seq reads coverage\
+  \ over gene body. \n\nNote:\n1) Only input sorted and indexed BAM file(s). SAM format\
+  \ is not supported.\n2) Genes/transcripts with mRNA length < 100 will be skipped\
+  \ (Number specified to \"-l\" cannot be < 100). \n\n\n\nOptions:\n  --version  \
+  \           show program's version number and exit\n  -h, --help            show\
+  \ this help message and exit\n  -i INPUT_FILES, --input=INPUT_FILES\n          \
+  \              Input file(s) in BAM format. \"-i\" takes these input:\n        \
+  \                1) a single BAM file. 2) \",\" separated BAM files. 3)\n      \
+  \                  directory containing one or more bam files. 4) plain\n      \
+  \                  text file containing the path of one or more bam file\n     \
+  \                   (Each row is a BAM file path). All BAM files should be\n   \
+  \                     sorted and indexed using samtools.\n  -r REF_GENE_MODEL, --refgene=REF_GENE_MODEL\n\
+  \                        Reference gene model in bed format. [required]\n  -l MIN_MRNA_LENGTH,\
+  \ --minimum_length=MIN_MRNA_LENGTH\n                        Minimum mRNA length\
+  \ (bp). mRNA smaller than\n                        \"min_mRNA_length\" will be skipped.\
+  \ default=100\n  -f OUTPUT_FORMAT, --format=OUTPUT_FORMAT\n                    \
+  \    Output file format, 'pdf', 'png' or 'jpeg'.\n                        default=pdf\n\
+  \  -o OUTPUT_PREFIX, --out-prefix=OUTPUT_PREFIX\n                        Prefix\
+  \ of output files(s). [required]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rseqc:4.0.0--py38h0213d0e_0

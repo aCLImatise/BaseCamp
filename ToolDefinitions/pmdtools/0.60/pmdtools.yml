@@ -3,77 +3,407 @@ command:
 - pmdtools
 positional:
 - !Positional
-  description: ''
-  position: 0
-  name: SAM formatted data with MD field present from stdin
   optional: false
-named: []
+  position: 0
+  name: PMDSprimthreshold
+  description: --UDGhalf             only use Cs and Gs in CpG context, the first
+    and last
+- !Positional
+  optional: false
+  position: 0
+  name: customterminus
+  description: --flagss              flag SNPs (taking strand into account)
+- !Positional
+  optional: false
+  position: 1
+  name: refseq
+  description: --header              output the SAM header
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --adjustss
+  description: "strand orientation aware penalization of base\nqualities for single\
+    \ stranded libraries (use with\n--CpG for udg-treated ss libs)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --number
+  description: stop after these many reads have been processed
+  args: !SimpleFlagArg
+    name: MAXREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chromosome
+  description: only process data from this chromosome
+  args: !SimpleFlagArg
+    name: CHROMOSOME
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --requiremapq
+  description: "only process sequences with mapping quality at least\nthis great"
+  args: !SimpleFlagArg
+    name: MAPQ
+- !Flag
+  optional: true
+  synonyms:
+  - --readlength
+  description: only process sequences with this read length
+  args: !SimpleFlagArg
+    name: READLENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --maxlength
+  description: only process sequences with max this read length
+  args: !SimpleFlagArg
+    name: MAXLENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --minlength
+  description: only process sequences with min this read length
+  args: !SimpleFlagArg
+    name: MINLENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --maxGC
+  description: "only process sequences with max this GC content of the\naligning reference\
+    \ sequence"
+  args: !SimpleFlagArg
+    name: MAXGC
+- !Flag
+  optional: true
+  synonyms:
+  - --minGC
+  description: "only process sequences with min this GC content of the\naligning reference\
+    \ sequence"
+  args: !SimpleFlagArg
+    name: MINGC
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --requirebaseq
+  description: "only process bases with base quality at least this\ngreat"
+  args: !SimpleFlagArg
+    name: BASEQ
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --deamination
+  description: "output base frequencies in the read at positions where\nthere are\
+    \ C or G in the reference"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --CpG
+  - --UDGplus
+  description: only use Cs and Gs in CpG context
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ss
+  description: single stranded
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --PMDSprim
+  description: PMDSprim
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --UDGminus
+  description: use all bases (placeholder)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --EcoliCpG
+  description: "Ecoli CpG (first 5' position and two 3' positions and\nCpG context)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --Ecoli
+  description: Ecoli (first 5' position and two 3' positions only)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --maskss
+  description: "mask to lower case bases where ref is C (taking strand\ninto account)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --Leipzigsimple
+  description: Leipzigsimple
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noCpG
+  description: dont use Cs and Gs in CpG context
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --first
+  description: "outputs the deamination rate at the first position\nonly, but with\
+    \ a standard error"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --range
+  description: "output deamination patterns for this many positions\nfrom the sequence\
+    \ terminus (default=30)"
+  args: !SimpleFlagArg
+    name: RANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --polymorphism_ancient
+  description: "True biological polymorphism between the ancient\nindividual and the\
+    \ reference sequence"
+  args: !SimpleFlagArg
+    name: POLYMORPHISM_ANCIENT
+- !Flag
+  optional: true
+  synonyms:
+  - --polymorphism_contamination
+  description: "True biological polymorphism between the contaminants\nand the reference\
+    \ sequence"
+  args: !SimpleFlagArg
+    name: POLYMORPHISM_CONTAMINATION
+- !Flag
+  optional: true
+  synonyms:
+  - --PMDpparam
+  description: "parameter p in geometric probability distribution of\nPMD"
+  args: !SimpleFlagArg
+    name: PMDPPARAM
+- !Flag
+  optional: true
+  synonyms:
+  - --PMDconstant
+  description: "constant C in geometric probability distribution of\nPMD"
+  args: !SimpleFlagArg
+    name: PMDCONSTANT
+- !Flag
+  optional: true
+  synonyms:
+  - --noclips
+  description: no clips
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noindels
+  description: no indels
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --onlyclips
+  description: only clips
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --onlydeletions
+  description: only deletions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --onlyinsertions
+  description: only insertions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nodeletions
+  description: no deletions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noinsertions
+  description: no insertions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --notreverse
+  description: no reverse complement alignments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --printDS
+  description: print PMD scores
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: verbose
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --printalignments
+  description: print human readable alignments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --maskterminaldeaminations
+  description: mask terminal deaminations
+  args: !SimpleFlagArg
+    name: MASKTERMINALDEAMINATIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --maskterminalbases
+  description: mask terminal bases
+  args: !SimpleFlagArg
+    name: MASKTERMINALBASES
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threshold
+  description: "only output sequences with PMD score above this\nthreshold"
+  args: !SimpleFlagArg
+    name: THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --upperthreshold
+  description: "only output sequences with PMD score below this\nthreshold"
+  args: !SimpleFlagArg
+    name: UPPERTHRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --perc_identity
+  description: "only output sequences with percent identity above this\nthreshold"
+  args: !SimpleFlagArg
+    name: PERC_IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --adjustbaseq
+  description: "apply PMD-aware adjustment of base quality scores\nspecific to C>T\
+    \ and G>A mismatches to the reference"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --adjustbaseq_all
+  description: "apply PMD-aware adjustment of base quality scores\nregardless of observed\
+    \ bases"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dry
+  description: print SAM input without any filters
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --samtoolspath
+  description: full path to samtools
+  args: !SimpleFlagArg
+    name: SAMTOOLSPATH
+- !Flag
+  optional: true
+  synonyms:
+  - --basecomposition
+  description: basecomposition
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --estimate
+  description: two-terminus estimate of contamination
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --estimatebase
+  description: "position of base used fortwo-terminus estimate of\ncontamination"
+  args: !SimpleFlagArg
+    name: ESTIMATEBASE
+- !Flag
+  optional: true
+  synonyms:
+  - --platypus
+  description: output big list of base frequencies for platypus
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --writesamfield
+  description: "add 'DS:Z:<PMDS>' field to SAM output, will overwrite\nif already\
+    \ present"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --basic
+  description: "only output reads with a C>T mismatch this many\nbasepairs from the\
+    \ 5' end"
+  args: !SimpleFlagArg
+    name: BASIC
+- !Flag
+  optional: true
+  synonyms:
+  - --terminal
+  description: "only output reads with a C>T mismatch in either 3' or\n5' end"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stats
+  description: output summarizing statistics to stderr
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag: !Flag
-  description: "show program's version number and exit\n-h, --help            show\
-    \ this help message and exit\n--adjustss            strand orientation aware penalization\
-    \ of base\nqualities for single stranded libraries (use with\n--CpG for udg-treated\
-    \ ss libs)\n-n MAXREADS, --number=MAXREADS\nstop after these many reads have been\
-    \ processed\n-c CHROMOSOME, --chromosome=CHROMOSOME\nonly process data from this\
-    \ chromosome\n-m MAPQ, --requiremapq=MAPQ\nonly process sequences with mapping\
-    \ quality at least\nthis great\n--readlength=READLENGTH\nonly process sequences\
-    \ with this read length\n--maxlength=MAXLENGTH\nonly process sequences with max\
-    \ this read length\n--minlength=MINLENGTH\nonly process sequences with min this\
-    \ read length\n--maxGC=MAXGC         only process sequences with max this GC content\
-    \ of the\naligning reference sequence\n--minGC=MINGC         only process sequences\
-    \ with min this GC content of the\naligning reference sequence\n-q BASEQ, --requirebaseq=BASEQ\n\
-    only process bases with base quality at least this\ngreat\n-d, --deamination \
-    \    output base frequencies in the read at positions where\nthere are C or G\
-    \ in the reference\n--CpG, --UDGplus      only use Cs and Gs in CpG context\n\
-    --ss                  single stranded\n--PMDSprim            PMDSprim\n--PMDSprimthreshold=PMDSPRIMTHRESHOLD\n\
-    PMDSprimthreshold\n--UDGhalf             only use Cs and Gs in CpG context, the\
-    \ first and last\nbase are used regardless of dinucleotide context\n--UDGminus\
-    \            use all bases (placeholder)\n--EcoliCpG            Ecoli CpG (first\
-    \ 5' position and two 3' positions and\nCpG context)\n--Ecoli               Ecoli\
-    \ (first 5' position and two 3' positions only)\n--maskss              mask to\
-    \ lower case bases where ref is C (taking strand\ninto account)\n--Leipzigsimple\
-    \       Leipzigsimple\n--customterminus=CUSTOMTERMINUS\ncustomterminus\n--flagss\
-    \              flag SNPs (taking strand into account)\n--noCpG               dont\
-    \ use Cs and Gs in CpG context\n--first               outputs the deamination\
-    \ rate at the first position\nonly, but with a standard error\n--range=RANGE \
-    \        output deamination patterns for this many positions\nfrom the sequence\
-    \ terminus (default=30)\n--polymorphism_ancient=POLYMORPHISM_ANCIENT\nTrue biological\
-    \ polymorphism between the ancient\nindividual and the reference sequence\n--polymorphism_contamination=POLYMORPHISM_CONTAMINATION\n\
-    True biological polymorphism between the contaminants\nand the reference sequence\n\
-    --PMDpparam=PMDPPARAM\nparameter p in geometric probability distribution of\n\
-    PMD\n--PMDconstant=PMDCONSTANT\nconstant C in geometric probability distribution\
-    \ of\nPMD\n--noclips             no clips\n--noindels            no indels\n--onlyclips\
-    \           only clips\n--onlydeletions       only deletions\n--onlyinsertions\
-    \      only insertions\n--nodeletions         no deletions\n--noinsertions   \
-    \     no insertions\n--notreverse          no reverse complement alignments\n\
-    -p, --printDS         print PMD scores\n--verbose             verbose\n--printalignments\
-    \     print human readable alignments\n--maskterminaldeaminations=MASKTERMINALDEAMINATIONS\n\
-    mask terminal deaminations\n--maskterminalbases=MASKTERMINALBASES\nmask terminal\
-    \ bases\n-t THRESHOLD, --threshold=THRESHOLD\nonly output sequences with PMD score\
-    \ above this\nthreshold\n--upperthreshold=UPPERTHRESHOLD\nonly output sequences\
-    \ with PMD score below this\nthreshold\n--perc_identity=PERC_IDENTITY\nonly output\
-    \ sequences with percent identity above this\nthreshold\n-a, --adjustbaseq   \
-    \  apply PMD-aware adjustment of base quality scores\nspecific to C>T and G>A\
-    \ mismatches to the reference\n--adjustbaseq_all     apply PMD-aware adjustment\
-    \ of base quality scores\nregardless of observed bases\n--dry                \
-    \ print SAM input without any filters\n--samtoolspath=SAMTOOLSPATH\nfull path\
-    \ to samtools\n--basecomposition     basecomposition\n-r REFSEQ, --refseq=REFSEQ\n\
-    refseq\n--header              output the SAM header\n--estimate            two-terminus\
-    \ estimate of contamination\n--estimatebase=ESTIMATEBASE\nposition of base used\
-    \ fortwo-terminus estimate of\ncontamination\n--platypus            output big\
-    \ list of base frequencies for platypus\n--writesamfield       add 'DS:Z:<PMDS>'\
-    \ field to SAM output, will overwrite\nif already present\n-b BASIC, --basic=BASIC\n\
-    only output reads with a C>T mismatch this many\nbasepairs from the 5' end\n--terminal\
-    \            only output reads with a C>T mismatch in either 3' or\n5' end\n--stats\
-    \               output summarizing statistics to stderr\n"
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: python pmdtools <SAM formatted data with MD field present from\
   \ stdin> [options] \n\nOptions:\n  --version             show program's version\
   \ number and exit\n  -h, --help            show this help message and exit\n  --adjustss\
@@ -148,3 +478,4 @@ help_text: "Usage: python pmdtools <SAM formatted data with MD field present fro
   \          5' end\n  --stats               output summarizing statistics to stderr\n"
 generated_using:
 - --help
+docker_image:

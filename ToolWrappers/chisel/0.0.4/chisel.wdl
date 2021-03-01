@@ -36,6 +36,9 @@ task Chisel {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(jobs) then ("--jobs " +  '"' + jobs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run_dir: "Running directory (default: current directory)"
     tumor: "Barcoded single-cell BAM file"

@@ -16,6 +16,9 @@ task Buildmodel {
       ~{if (dump_parameters) then "-dump_parameters" else ""} \
       ~{if defined(option) then ("-option " +  '"' + option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     train: ": File to read sequences from."
     insert: "or -i <string>: where string is a parameter file."

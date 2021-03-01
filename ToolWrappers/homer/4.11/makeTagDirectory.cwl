@@ -4,7 +4,7 @@ inputs:
 - id: in_frag_length
   doc: "<# | given | pe> (Set estimated fragment length or use PE length - given:\
     \ use read lengths)\nBy default treats the sample as a single read ChIP-Seq experiment"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -fragLength
 - id: in_format
@@ -33,68 +33,141 @@ inputs:
     -minCounts <#> (minimum number of reads to report mC/C ratios, default: 10)\n\
     -mCcontext <CG|CHG|CHH|all> (only use C's in this context, default: CG)\nHiCsummary\
     \ - minimal paired-end read mapping information\n(1:readname,2:chr1,3:5'pos1,4:strand1,5:chr2,6:5'pos2,7:strand2)"
-  type: long
+  type: long?
   inputBinding:
     prefix: -format
 - id: in_flip
   doc: (flip strand of each read, i.e. might want to use with some RNA-seq)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -flip
 - id: in_total_reads
   doc: <#|all|default> (set the effective total number of reads - all includes multimappers)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -totalReads
 - id: in_force_five_th
   doc: '(5th column of BED file contains # of reads mapping to position)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -force5th
 - id: in_add_tag_directory
   doc: '[tag directory 2] ... (add Tag directory to new tag directory)'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -d
 - id: in_add_tag_file
   doc: '[tag file 2] ... (add tag file i.e. *.tags.tsv to new tag directory)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -t
 - id: in_single
   doc: (Create a single tags.tsv file for all "chromosomes" - i.e. if >100 chromosomes)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -single
 - id: in_update
   doc: (Use current tag directory for QC/processing, do not parse new alignment files)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -update
 - id: in_tbp
   doc: '<#> (Maximum tags per bp, default: no maximum)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -tbp
 - id: in_precision
   doc: '(number of decimal places to use for tag totals, default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: -precision
 - id: in_min_len
   doc: <#> and -maxlen <#> (Filter reads with lengths outside this range)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -minlen
+- id: in_genome
+  doc: (To see available genomes, use "-genome list")
+  type: string?
+  inputBinding:
+    prefix: -genome
+- id: in_or
+  doc: '(for custom genomes):'
+  type: boolean?
+  inputBinding:
+    prefix: -or-
+- id: in_check_gc
+  doc: (check Sequence bias, requires "-genome")
+  type: File?
+  inputBinding:
+    prefix: -checkGC
+- id: in_freq_start
+  doc: '<#> (offset to start calculating frequency, default: -50)'
+  type: boolean?
+  inputBinding:
+    prefix: -freqStart
+- id: in_freq_end
+  doc: '<#> (distance past fragment length to calculate frequency, default: +50)'
+  type: boolean?
+  inputBinding:
+    prefix: -freqEnd
+- id: in_oligo_start
+  doc: <#> (oligo bias start)
+  type: boolean?
+  inputBinding:
+    prefix: -oligoStart
+- id: in_oligo_end
+  doc: <#> (oligo bias end)
+  type: boolean?
+  inputBinding:
+    prefix: -oligoEnd
+- id: in_norm_gc
+  doc: "(i.e. tagGCcontent.txt file from control experiment)\nUse \"-normGC default\"\
+    \ to match the genomic GC distribution"
+  type: File?
+  inputBinding:
+    prefix: -normGC
+- id: in_norm_fixed_oligo
+  doc: (normalize 5' end bias, "-normFixedOligo default" ok)
+  type: File?
+  inputBinding:
+    prefix: -normFixedOligo
+- id: in_norm_length
+  doc: (i.e. tagLengthDistribution.txt file from control experiment)
+  type: long?
+  inputBinding:
+    prefix: -normLength
+- id: in_min_norm_ratio
+  doc: '<#> (Minimum deflation ratio of tag counts, default: 0.25)'
+  type: boolean?
+  inputBinding:
+    prefix: -minNormRatio
+- id: in_max_norm_ratio
+  doc: '<#> (Maximum inflation ratio of tag counts, default: 2.0)'
+  type: boolean?
+  inputBinding:
+    prefix: -maxNormRatio
+- id: in_iter_norm
+  doc: "<#> (Sets -max/minNormRatio to 1 and 0, iteratively normalizes such that the\n\
+    resulting distrubtion is no more than #% different than target, i.e. 0.1,default:\
+    \ off)"
+  type: boolean?
+  inputBinding:
+    prefix: -iterNorm
+- id: in_filter_reads
+  doc: <offset> <keep|remove> (filter reads based on oligo sequence in the genome)
+  type: string?
+  inputBinding:
+    prefix: -filterReads
 - id: in_remove_pe_bg
   doc: (remove paired end tags within 1.5x fragment length on same chr)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -removePEbg
 - id: in_pe_bg_length
   doc: '<#> (remove PE  reads facing on another within this distance, default: 1.5x
     fragLen)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -PEbgLength
 - id: in_restriction_site
@@ -105,19 +178,19 @@ inputs:
     -removeRestrictionEnds (removes reads starting on a restriction fragment)\n-assignMidPoint\
     \ (will place reads in the middle of HindIII fragments)\n-restrictionSiteLength\
     \ <#> (maximum distance from restriction site, default: 1.5x fragLen)"
-  type: long
+  type: long?
   inputBinding:
     prefix: -restrictionSite
 - id: in_remove_spikes
   doc: "<#> (remove tags from regions with > than # times\nthe average tags per size\
     \ bp, suggest \"-removeSpikes 10000 8\")"
-  type: long
+  type: long?
   inputBinding:
     prefix: -removeSpikes
 - id: in_bowtie_pe
   doc: "(PE alignments in bowtie alignment, assumes last character of read name is\
     \ 0 or 1)\n(don't need this for sam/bam files)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bowtiePE
 - id: in_directory
@@ -132,18 +205,19 @@ inputs:
     position: 1
 - id: in_file
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     position: 2
 - id: in_two
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     position: 3
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - makeTagDirectory

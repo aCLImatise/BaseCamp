@@ -4,12 +4,12 @@ inputs:
 - id: in_ratio_threshold
   doc: "the least ratio of two greatest fragment alignment\nscores to determine the\
     \ fragment placed to a reference\ngenome (default: 1.2)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --ratio_threshold
 - id: in_shrink_gaps
   doc: "shrink large interfragment gaps to the specified size\n(default: False)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --shrink_gaps
 - id: in_construct_fragment_map
@@ -42,6 +42,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - chromosomer

@@ -12,6 +12,9 @@ task HailctlDevConfig {
       ~{if defined(location) then ("--location " +  '"' + location + '"') else ""} \
       ~{if defined(override) then ("--override " +  '"' + override + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     location: "Location. (default: external)"
     override: "List of comma-separated service=namespace overrides.\\n(default: none)\\n"

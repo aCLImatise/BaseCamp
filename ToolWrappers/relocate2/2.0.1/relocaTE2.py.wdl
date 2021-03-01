@@ -50,6 +50,9 @@ task RelocaTE2py {
       ~{if (split) then "--split" else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Name of BAM file of read mapped reference genome"
     te_fast_a: "Name of fasta sequence of repeat element"

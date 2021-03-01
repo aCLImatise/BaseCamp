@@ -22,6 +22,9 @@ task MegalodonExtrasMergeModifiedBases {
       ~{if defined(database_safety) then ("--database-safety " +  '"' + database_safety + '"') else ""} \
       ~{if (overwrite) then "--overwrite" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_megalodon_results_dir: "Output directory. Cannot exist before this command.\\nDefault: megalodon_merge_mods_results"
     data_batch_size: "Batch size to insert position and statistics data.\\nDefault: 100000"

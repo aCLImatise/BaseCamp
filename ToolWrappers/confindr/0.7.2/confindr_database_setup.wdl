@@ -10,6 +10,9 @@ task ConfindrDatabaseSetup {
       ~{if defined(output_folder) then ("--output_folder " +  '"' + output_folder + '"') else ""} \
       ~{if defined(secret_file) then ("--secret_file " +  '"' + secret_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_folder: "Path to download databases to - if folder does not\\nexist, will be created. If folder does exist, will be\\ndeleted and updated sequences downloaded. Defaults to\\n~/.confindr_db, or the CONFINDR_DB environmental\\nvariable."
     secret_file: "Path to consumer secret file for rMLST database.\\n"

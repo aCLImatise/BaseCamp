@@ -50,6 +50,9 @@ task Mdocupdate {
       ~{if (multi_assembly) then "--multiassembly" else ""} \
       ~{if defined(api_style) then ("--api-style " +  '"' + api_style + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     delete: "Delete removed members from the XML files."
     exceptions: "[=SOURCES] Document potential exceptions that members can"

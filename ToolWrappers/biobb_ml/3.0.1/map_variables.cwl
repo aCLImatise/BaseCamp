@@ -3,17 +3,17 @@ id: map_variables.cwl
 inputs:
 - id: in_config
   doc: Configuration file
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_input_dataset_path
   doc: 'Path to the input dataset. Accepted formats: csv.'
-  type: File
+  type: File?
   inputBinding:
     prefix: --input_dataset_path
 - id: in_output_dataset_path
   doc: "Path to the output dataset. Accepted formats: csv.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_dataset_path
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_dataset_path
   doc: "Path to the output dataset. Accepted formats: csv.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_dataset_path)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - map_variables

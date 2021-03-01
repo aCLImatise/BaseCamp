@@ -24,6 +24,9 @@ task Ribocount {
       ~{if defined(ribo_file) then ("--ribo_file " +  '"' + ribo_file + '"') else ""} \
       ~{if defined(transcriptome_fast_a) then ("--transcriptome_fasta " +  '"' + transcriptome_fast_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_lengths: "Read lengths to consider (default: 0). Multiple read\\nlengths should be separated by commas. If multiple\\nread lengths are specified, corresponding read offsets\\nshould also be specified. If you do not wish to apply\\nan offset, please input 0 for the corresponding read\\nlength"
     read_offsets: "Read offsets (default: 0). Multiple read offsets\\nshould be separated by commas"

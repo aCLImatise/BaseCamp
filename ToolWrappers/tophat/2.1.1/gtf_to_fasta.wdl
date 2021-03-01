@@ -12,6 +12,9 @@ task GtfToFasta {
       ~{genome_dot_fa} \
       ~{out_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     transcripts_dot_gtf: ""
     genome_dot_fa: ""

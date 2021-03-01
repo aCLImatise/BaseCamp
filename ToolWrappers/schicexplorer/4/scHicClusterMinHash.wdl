@@ -32,6 +32,9 @@ task ScHicClusterMinHash {
       ~{if defined(chromosomes) then ("--chromosomes " +  '"' + chromosomes + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     schic_matrix_m: "scHi-C matrix, -m scool scHi-C matrix\\nThe single cell Hi-C interaction matrices to cluster.\\nNeeds to be in scool format (default: None)"
     number_of_clusters: "Number of to be computed clusters (default: 12)"

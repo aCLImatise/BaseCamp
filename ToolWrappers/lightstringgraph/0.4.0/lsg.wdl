@@ -16,6 +16,9 @@ task Lsg {
       ~{if (cyc_num) then "--CycNum" else ""} \
       ~{if defined(read_length) then ("--read-length " +  '"' + read_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     basename: "<basename>     # (required)"
     gsa: "<GSAFilename>  # (default: '<basename>.pairSA')"

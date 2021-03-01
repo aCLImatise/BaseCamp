@@ -3,17 +3,17 @@ id: phyluce_assembly_copy_trinity_symlinks.cwl
 inputs:
 - id: in_assembly_symlinks
   doc: "The location of the trinity symlinks (trinity-\nassemblies/contigs)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --assembly-symlinks
 - id: in_conf
   doc: The configuration file to use
-  type: File
+  type: File?
   inputBinding:
     prefix: --conf
 - id: in_output
   doc: The output folder
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: The output folder
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phyluce_assembly_copy_trinity_symlinks

@@ -16,6 +16,9 @@ task SocruRebuildProfile {
       ~{if (debug) then "--debug" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "Output filename (default: updated_profile.txt)"
     prefix: "Prefix (default: GS)"

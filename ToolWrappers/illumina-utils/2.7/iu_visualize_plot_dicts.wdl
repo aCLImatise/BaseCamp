@@ -12,6 +12,9 @@ task Iuvisualizeplotdicts {
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
       ~{if (split_tiles) then "--split-tiles" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dest: "Figure destination"
     title: "Title to appear at the top of the figure"

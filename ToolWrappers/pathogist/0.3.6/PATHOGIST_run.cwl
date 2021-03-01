@@ -3,7 +3,7 @@ id: PATHOGIST_run.cwl
 inputs:
 - id: in_new_config
   doc: write a blank configuration file at path given by CONFIG
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --new_config
 - id: in_config
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - PATHOGIST

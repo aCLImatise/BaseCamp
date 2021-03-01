@@ -42,6 +42,9 @@ task RgtmotifanalysisEnrichment {
       ~{if defined(print_thresh) then ("--print-thresh " +  '"' + print_thresh + '"') else ""} \
       ~{if (big_bed) then "--bigbed" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     organism: "Organism considered on the analysis. Must have been\\nsetup in the RGTDATA folder. Common choices are hg19\\nor hg38."
     matching_location: "Directory where the matching output containing the\\nMPBS files resides. Defaults to 'match' in the current\\ndirectory."

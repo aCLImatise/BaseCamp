@@ -1,0 +1,605 @@
+&id001 !Command
+command:
+- AlignRecords.py
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - AlignRecords.py
+  - align-pass
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: AlignRecords.py
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: ''
+    args: !EmptyFlagArg {}
+  help_text: "usage: AlignRecords.py [--version] [-h]  ...\nAlignRecords.py: error:\
+    \ argument : invalid choice: 'align-pass' (choose from 'across', 'within', 'block')\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/changeo:1.0.2--py_0
+- !Command
+  command:
+  - AlignRecords.py
+  - align-fail
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: AlignRecords.py
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: ''
+    args: !EmptyFlagArg {}
+  help_text: "usage: AlignRecords.py [--version] [-h]  ...\nAlignRecords.py: error:\
+    \ argument : invalid choice: 'align-fail' (choose from 'across', 'within', 'block')\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/changeo:1.0.2--py_0
+- !Command
+  command:
+  - AlignRecords.py
+  - within
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: "A list of tab delimited database files. (default:\nNone)"
+    args: !RepeatFlagArg
+      name: DB_FILES
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "Explicit output file name. Note, this argument cannot\nbe used with\
+      \ the --failed, --outdir, or --outname\narguments. If unspecified, then the\
+      \ output filename\nwill be based on the input filename(s). (default:\nNone)"
+    args: !RepeatFlagArg
+      name: OUT_FILES
+  - !Flag
+    optional: true
+    synonyms:
+    - --outdir
+    description: "Specify to changes the output directory to the\nlocation specified.\
+      \ The input file directory is used\nif this is not specified. (default: None)"
+    args: !SimpleFlagArg
+      name: OUT_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --outname
+    description: "Changes the prefix of the successfully processed\noutput file to\
+      \ the string specified. May not be\nspecified with multiple input files. (default:\
+      \ None)"
+    args: !SimpleFlagArg
+      name: OUT_NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --log
+    description: "Specify to write verbose logging to a file. May not be\nspecified\
+      \ with multiple input files. (default: None)"
+    args: !SimpleFlagArg
+      name: LOG_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --failed
+    description: "If specified create files containing records that fail\nprocessing.\
+      \ (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --format
+    description: 'Specify input and output format. (default: airr)'
+    args: !ChoiceFlagArg
+      choices: !!set
+        airr:
+        changeo:
+  - !Flag
+    optional: true
+    synonyms:
+    - --nproc
+    description: "The number of simultaneous computational processes to\nexecute (CPU\
+      \ cores to utilized). (default: 8)"
+    args: !SimpleFlagArg
+      name: NPROC
+  - !Flag
+    optional: true
+    synonyms:
+    - --sf
+    description: "The sequence fields to multiple align within each\nrecord. (default:\
+      \ None)"
+    args: !RepeatFlagArg
+      name: SEQ_FIELDS
+  - !Flag
+    optional: true
+    synonyms:
+    - --exec
+    description: "The location of the MUSCLE executable (default:\nmuscle)\n"
+    args: !SimpleFlagArg
+      name: MUSCLE_EXEC
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: AlignRecords.py within [--version] [-h] -d DB_FILES [DB_FILES\
+    \ ...]\n                              [-o OUT_FILES [OUT_FILES ...]]\n       \
+    \                       [--outdir OUT_DIR] [--outname OUT_NAME]\n            \
+    \                  [--log LOG_FILE] [--failed]\n                             \
+    \ [--format {airr,changeo}] [--nproc NPROC] --sf\n                           \
+    \   SEQ_FIELDS [SEQ_FIELDS ...] [--exec MUSCLE_EXEC]\n\nhelp:\n  --version   \
+    \          show program's version number and exit\n  -h, --help            show\
+    \ this help message and exit\n\nstandard arguments:\n  -d DB_FILES [DB_FILES ...]\n\
+    \                        A list of tab delimited database files. (default:\n \
+    \                       None)\n  -o OUT_FILES [OUT_FILES ...]\n              \
+    \          Explicit output file name. Note, this argument cannot\n           \
+    \             be used with the --failed, --outdir, or --outname\n            \
+    \            arguments. If unspecified, then the output filename\n           \
+    \             will be based on the input filename(s). (default:\n            \
+    \            None)\n  --outdir OUT_DIR      Specify to changes the output directory\
+    \ to the\n                        location specified. The input file directory\
+    \ is used\n                        if this is not specified. (default: None)\n\
+    \  --outname OUT_NAME    Changes the prefix of the successfully processed\n  \
+    \                      output file to the string specified. May not be\n     \
+    \                   specified with multiple input files. (default: None)\n  --log\
+    \ LOG_FILE        Specify to write verbose logging to a file. May not be\n   \
+    \                     specified with multiple input files. (default: None)\n \
+    \ --failed              If specified create files containing records that fail\n\
+    \                        processing. (default: False)\n  --format {airr,changeo}\n\
+    \                        Specify input and output format. (default: airr)\n  --nproc\
+    \ NPROC         The number of simultaneous computational processes to\n      \
+    \                  execute (CPU cores to utilized). (default: 8)\n\nalignment\
+    \ arguments:\n  --sf SEQ_FIELDS [SEQ_FIELDS ...]\n                        The\
+    \ sequence fields to multiple align within each\n                        record.\
+    \ (default: None)\n  --exec MUSCLE_EXEC    The location of the MUSCLE executable\
+    \ (default:\n                        muscle)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/changeo:1.0.2--py_0
+- !Command
+  command:
+  - AlignRecords.py
+  - block
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: "A list of tab delimited database files. (default:\nNone)"
+    args: !RepeatFlagArg
+      name: DB_FILES
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "Explicit output file name. Note, this argument cannot\nbe used with\
+      \ the --failed, --outdir, or --outname\narguments. If unspecified, then the\
+      \ output filename\nwill be based on the input filename(s). (default:\nNone)"
+    args: !RepeatFlagArg
+      name: OUT_FILES
+  - !Flag
+    optional: true
+    synonyms:
+    - --outdir
+    description: "Specify to changes the output directory to the\nlocation specified.\
+      \ The input file directory is used\nif this is not specified. (default: None)"
+    args: !SimpleFlagArg
+      name: OUT_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --outname
+    description: "Changes the prefix of the successfully processed\noutput file to\
+      \ the string specified. May not be\nspecified with multiple input files. (default:\
+      \ None)"
+    args: !SimpleFlagArg
+      name: OUT_NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --log
+    description: "Specify to write verbose logging to a file. May not be\nspecified\
+      \ with multiple input files. (default: None)"
+    args: !SimpleFlagArg
+      name: LOG_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --failed
+    description: "If specified create files containing records that fail\nprocessing.\
+      \ (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --format
+    description: 'Specify input and output format. (default: airr)'
+    args: !ChoiceFlagArg
+      choices: !!set
+        airr:
+        changeo:
+  - !Flag
+    optional: true
+    synonyms:
+    - --nproc
+    description: "The number of simultaneous computational processes to\nexecute (CPU\
+      \ cores to utilized). (default: 8)"
+    args: !SimpleFlagArg
+      name: NPROC
+  - !Flag
+    optional: true
+    synonyms:
+    - --sf
+    description: "The sequence fields to multiple align within each\ngroup. (default:\
+      \ None)"
+    args: !RepeatFlagArg
+      name: SEQ_FIELDS
+  - !Flag
+    optional: true
+    synonyms:
+    - --gf
+    description: "Additional (not allele call) fields to use for\ngrouping. (default:\
+      \ None)"
+    args: !RepeatFlagArg
+      name: GROUP_FIELDS
+  - !Flag
+    optional: true
+    synonyms:
+    - --calls
+    description: "[{v,d,j} ...]\nSegment calls (allele assignments) to use for\ngrouping.\
+      \ (default: ['v', 'j'])"
+    args: !ChoiceFlagArg
+      choices: !!set
+        v:
+        d:
+        j:
+  - !Flag
+    optional: true
+    synonyms:
+    - --mode
+    description: "Specifies whether to use the V(D)J allele or gene when\nan allele\
+      \ call field (--calls) is specified. (default:\ngene)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        gene:
+        allele:
+  - !Flag
+    optional: true
+    synonyms:
+    - --act
+    description: "Specifies how to handle multiple values within default\nallele call\
+      \ fields. Currently, only \"first\" is\nsupported. (default: first)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        first:
+  - !Flag
+    optional: true
+    synonyms:
+    - --exec
+    description: "The location of the MUSCLE executable (default:\nmuscle)\n"
+    args: !SimpleFlagArg
+      name: MUSCLE_EXEC
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: AlignRecords.py block [--version] [-h] -d DB_FILES [DB_FILES\
+    \ ...]\n                             [-o OUT_FILES [OUT_FILES ...]] [--outdir\
+    \ OUT_DIR]\n                             [--outname OUT_NAME] [--log LOG_FILE]\
+    \ [--failed]\n                             [--format {airr,changeo}] [--nproc\
+    \ NPROC] --sf\n                             SEQ_FIELDS [SEQ_FIELDS ...]\n    \
+    \                         [--gf GROUP_FIELDS [GROUP_FIELDS ...]]\n           \
+    \                  [--calls {v,d,j} [{v,d,j} ...]]\n                         \
+    \    [--mode {allele,gene}] [--act {first}]\n                             [--exec\
+    \ MUSCLE_EXEC]\n\nhelp:\n  --version             show program's version number\
+    \ and exit\n  -h, --help            show this help message and exit\n\nstandard\
+    \ arguments:\n  -d DB_FILES [DB_FILES ...]\n                        A list of\
+    \ tab delimited database files. (default:\n                        None)\n  -o\
+    \ OUT_FILES [OUT_FILES ...]\n                        Explicit output file name.\
+    \ Note, this argument cannot\n                        be used with the --failed,\
+    \ --outdir, or --outname\n                        arguments. If unspecified, then\
+    \ the output filename\n                        will be based on the input filename(s).\
+    \ (default:\n                        None)\n  --outdir OUT_DIR      Specify to\
+    \ changes the output directory to the\n                        location specified.\
+    \ The input file directory is used\n                        if this is not specified.\
+    \ (default: None)\n  --outname OUT_NAME    Changes the prefix of the successfully\
+    \ processed\n                        output file to the string specified. May\
+    \ not be\n                        specified with multiple input files. (default:\
+    \ None)\n  --log LOG_FILE        Specify to write verbose logging to a file. May\
+    \ not be\n                        specified with multiple input files. (default:\
+    \ None)\n  --failed              If specified create files containing records\
+    \ that fail\n                        processing. (default: False)\n  --format\
+    \ {airr,changeo}\n                        Specify input and output format. (default:\
+    \ airr)\n  --nproc NPROC         The number of simultaneous computational processes\
+    \ to\n                        execute (CPU cores to utilized). (default: 8)\n\n\
+    alignment arguments:\n  --sf SEQ_FIELDS [SEQ_FIELDS ...]\n                   \
+    \     The sequence fields to multiple align within each\n                    \
+    \    group. (default: None)\n  --gf GROUP_FIELDS [GROUP_FIELDS ...]\n        \
+    \                Additional (not allele call) fields to use for\n            \
+    \            grouping. (default: None)\n  --calls {v,d,j} [{v,d,j} ...]\n    \
+    \                    Segment calls (allele assignments) to use for\n         \
+    \               grouping. (default: ['v', 'j'])\n  --mode {allele,gene}  Specifies\
+    \ whether to use the V(D)J allele or gene when\n                        an allele\
+    \ call field (--calls) is specified. (default:\n                        gene)\n\
+    \  --act {first}         Specifies how to handle multiple values within default\n\
+    \                        allele call fields. Currently, only \"first\" is\n  \
+    \                      supported. (default: first)\n  --exec MUSCLE_EXEC    The\
+    \ location of the MUSCLE executable (default:\n                        muscle)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/changeo:1.0.2--py_0
+- !Command
+  command:
+  - AlignRecords.py
+  - across
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: "A list of tab delimited database files. (default:\nNone)"
+    args: !RepeatFlagArg
+      name: DB_FILES
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "Explicit output file name. Note, this argument cannot\nbe used with\
+      \ the --failed, --outdir, or --outname\narguments. If unspecified, then the\
+      \ output filename\nwill be based on the input filename(s). (default:\nNone)"
+    args: !RepeatFlagArg
+      name: OUT_FILES
+  - !Flag
+    optional: true
+    synonyms:
+    - --outdir
+    description: "Specify to changes the output directory to the\nlocation specified.\
+      \ The input file directory is used\nif this is not specified. (default: None)"
+    args: !SimpleFlagArg
+      name: OUT_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --outname
+    description: "Changes the prefix of the successfully processed\noutput file to\
+      \ the string specified. May not be\nspecified with multiple input files. (default:\
+      \ None)"
+    args: !SimpleFlagArg
+      name: OUT_NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --log
+    description: "Specify to write verbose logging to a file. May not be\nspecified\
+      \ with multiple input files. (default: None)"
+    args: !SimpleFlagArg
+      name: LOG_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --failed
+    description: "If specified create files containing records that fail\nprocessing.\
+      \ (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --format
+    description: 'Specify input and output format. (default: airr)'
+    args: !ChoiceFlagArg
+      choices: !!set
+        airr:
+        changeo:
+  - !Flag
+    optional: true
+    synonyms:
+    - --nproc
+    description: "The number of simultaneous computational processes to\nexecute (CPU\
+      \ cores to utilized). (default: 8)"
+    args: !SimpleFlagArg
+      name: NPROC
+  - !Flag
+    optional: true
+    synonyms:
+    - --sf
+    description: "The sequence fields to multiple align within each\ngroup. (default:\
+      \ None)"
+    args: !RepeatFlagArg
+      name: SEQ_FIELDS
+  - !Flag
+    optional: true
+    synonyms:
+    - --gf
+    description: "Additional (not allele call) fields to use for\ngrouping. (default:\
+      \ None)"
+    args: !RepeatFlagArg
+      name: GROUP_FIELDS
+  - !Flag
+    optional: true
+    synonyms:
+    - --calls
+    description: "[{v,d,j} ...]\nSegment calls (allele assignments) to use for\ngrouping.\
+      \ (default: ['v', 'j'])"
+    args: !ChoiceFlagArg
+      choices: !!set
+        v:
+        d:
+        j:
+  - !Flag
+    optional: true
+    synonyms:
+    - --mode
+    description: "Specifies whether to use the V(D)J allele or gene when\nan allele\
+      \ call field (--calls) is specified. (default:\ngene)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        gene:
+        allele:
+  - !Flag
+    optional: true
+    synonyms:
+    - --act
+    description: "Specifies how to handle multiple values within default\nallele call\
+      \ fields. Currently, only \"first\" is\nsupported. (default: first)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        first:
+  - !Flag
+    optional: true
+    synonyms:
+    - --exec
+    description: "The location of the MUSCLE executable (default:\nmuscle)\n"
+    args: !SimpleFlagArg
+      name: MUSCLE_EXEC
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: AlignRecords.py across [--version] [-h] -d DB_FILES [DB_FILES\
+    \ ...]\n                              [-o OUT_FILES [OUT_FILES ...]]\n       \
+    \                       [--outdir OUT_DIR] [--outname OUT_NAME]\n            \
+    \                  [--log LOG_FILE] [--failed]\n                             \
+    \ [--format {airr,changeo}] [--nproc NPROC] --sf\n                           \
+    \   SEQ_FIELDS [SEQ_FIELDS ...]\n                              [--gf GROUP_FIELDS\
+    \ [GROUP_FIELDS ...]]\n                              [--calls {v,d,j} [{v,d,j}\
+    \ ...]]\n                              [--mode {allele,gene}] [--act {first}]\n\
+    \                              [--exec MUSCLE_EXEC]\n\nhelp:\n  --version    \
+    \         show program's version number and exit\n  -h, --help            show\
+    \ this help message and exit\n\nstandard arguments:\n  -d DB_FILES [DB_FILES ...]\n\
+    \                        A list of tab delimited database files. (default:\n \
+    \                       None)\n  -o OUT_FILES [OUT_FILES ...]\n              \
+    \          Explicit output file name. Note, this argument cannot\n           \
+    \             be used with the --failed, --outdir, or --outname\n            \
+    \            arguments. If unspecified, then the output filename\n           \
+    \             will be based on the input filename(s). (default:\n            \
+    \            None)\n  --outdir OUT_DIR      Specify to changes the output directory\
+    \ to the\n                        location specified. The input file directory\
+    \ is used\n                        if this is not specified. (default: None)\n\
+    \  --outname OUT_NAME    Changes the prefix of the successfully processed\n  \
+    \                      output file to the string specified. May not be\n     \
+    \                   specified with multiple input files. (default: None)\n  --log\
+    \ LOG_FILE        Specify to write verbose logging to a file. May not be\n   \
+    \                     specified with multiple input files. (default: None)\n \
+    \ --failed              If specified create files containing records that fail\n\
+    \                        processing. (default: False)\n  --format {airr,changeo}\n\
+    \                        Specify input and output format. (default: airr)\n  --nproc\
+    \ NPROC         The number of simultaneous computational processes to\n      \
+    \                  execute (CPU cores to utilized). (default: 8)\n\nalignment\
+    \ arguments:\n  --sf SEQ_FIELDS [SEQ_FIELDS ...]\n                        The\
+    \ sequence fields to multiple align within each\n                        group.\
+    \ (default: None)\n  --gf GROUP_FIELDS [GROUP_FIELDS ...]\n                  \
+    \      Additional (not allele call) fields to use for\n                      \
+    \  grouping. (default: None)\n  --calls {v,d,j} [{v,d,j} ...]\n              \
+    \          Segment calls (allele assignments) to use for\n                   \
+    \     grouping. (default: ['v', 'j'])\n  --mode {allele,gene}  Specifies whether\
+    \ to use the V(D)J allele or gene when\n                        an allele call\
+    \ field (--calls) is specified. (default:\n                        gene)\n  --act\
+    \ {first}         Specifies how to handle multiple values within default\n   \
+    \                     allele call fields. Currently, only \"first\" is\n     \
+    \                   supported. (default: first)\n  --exec MUSCLE_EXEC    The location\
+    \ of the MUSCLE executable (default:\n                        muscle)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/changeo:1.0.2--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: AlignRecords.py [--version] [-h]  ...\n\nMultiple aligns sequence\
+  \ fields\n\nhelp:\n  --version   show program's version number and exit\n  -h, --help\
+  \  show this help message and exit\n\nsubcommands:\n              alignment method\n\
+  \    across    Multiple aligns sequence columns within groups and across rows\n\
+  \              using MUSCLE.\n    within    Multiple aligns sequence fields within\
+  \ rows using MUSCLE\n    block     Multiple aligns sequence groups across both columns\
+  \ and rows\n              using MUSCLE.\n\noutput files:\n    align-pass\n     \
+  \   database with multiple aligned sequences.\n    align-fail\n        database\
+  \ with records failing alignment.\n\nrequired fields:\n    sequence_id, v_call,\
+  \ j_call\n    <field>\n        user specified sequence fields to align.\n\noutput\
+  \ fields:\n    <field>_align\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/changeo:1.0.2--py_0

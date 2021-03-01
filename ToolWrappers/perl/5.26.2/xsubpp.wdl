@@ -24,6 +24,9 @@ task Xsubpp {
       ~{if defined(c_suffix) then ("-csuffix " +  '"' + c_suffix + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_arg_types: ""
     no_inout: ""

@@ -3,7 +3,7 @@ id: trace_seq.cwl
 inputs:
 - id: in_r
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_extract_seq
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - trace_seq

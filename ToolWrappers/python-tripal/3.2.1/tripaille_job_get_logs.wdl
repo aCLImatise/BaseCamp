@@ -10,6 +10,9 @@ task TripailleJobGetLogs {
       ~{stdout} \
       ~{stderr}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stdout: ""
     stderr: ""

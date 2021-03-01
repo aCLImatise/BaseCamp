@@ -3,37 +3,37 @@ id: rgt_tools.py_bed_to_fasta.cwl
 inputs:
 - id: in_input_bed_file
   doc: Input BED file
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_output_directory_fasta
   doc: Output directory for FASTA files
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
 - id: in_genome
   doc: Define the FASTA file of the genome sequence
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -genome
 - id: in_loci
   doc: Make genomic loci as sequence name
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -loci
 - id: in_order
   doc: Make ranking number as sequence name
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -order
 - id: in_block
   doc: Read blocks
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -block
 - id: in_score
   doc: Load the score column in BED into FASTA
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -score
 outputs:
@@ -42,9 +42,10 @@ outputs:
   type: stdout
 - id: out_output_directory_fasta
   doc: Output directory for FASTA files
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_directory_fasta)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rgt-tools.py

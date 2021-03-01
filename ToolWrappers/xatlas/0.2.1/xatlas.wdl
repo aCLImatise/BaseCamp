@@ -42,6 +42,9 @@ task Xatlas {
       ~{if defined(in_del_log_it_params) then ("--indel-logit-params " +  '"' + in_del_log_it_params + '"') else ""} \
       ~{if (enable_strand_filter) then "--enable-strand-filter" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "Reference genome in FASTA format"
     in: "Sorted and indexed input BAM or CRAM file"

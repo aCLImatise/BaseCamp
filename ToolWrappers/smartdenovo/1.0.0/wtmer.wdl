@@ -14,6 +14,9 @@ task Wtmer {
       ~{if (force_overwrite) then "-f" else ""} \
       ~{if (disable_homopolymer_compression) then "-H" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     long_reads_file: "Long reads sequences file, + *"
     output_file_kmerfrequency: "Output file of kmer_frequency, *"

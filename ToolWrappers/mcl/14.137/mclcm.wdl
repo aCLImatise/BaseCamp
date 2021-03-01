@@ -13,7 +13,7 @@ task Mclcm {
     Boolean? sub_cluster
     Boolean? integrate
     Boolean? dispatch
-    Int? iterate_most_num
+    Int? iterate_root_clustering
     String? root
     File? cone
     File? stack
@@ -37,7 +37,7 @@ task Mclcm {
       ~{if (sub_cluster) then "--subcluster" else ""} \
       ~{if (integrate) then "--integrate" else ""} \
       ~{if (dispatch) then "--dispatch" else ""} \
-      ~{if defined(iterate_most_num) then ("-n " +  '"' + iterate_most_num + '"') else ""} \
+      ~{if defined(iterate_root_clustering) then ("-n " +  '"' + iterate_root_clustering + '"') else ""} \
       ~{if defined(root) then ("-root " +  '"' + root + '"') else ""} \
       ~{if defined(cone) then ("-cone " +  '"' + cone + '"') else ""} \
       ~{if defined(stack) then ("-stack " +  '"' + stack + '"') else ""} \
@@ -48,6 +48,9 @@ task Mclcm {
       ~{if defined(mplex) then ("--mplex " +  '"' + mplex + '"') else ""} \
       ~{if defined(quiet_level_logging) then ("-q " +  '"' + quiet_level_logging + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     shared_mcl_options: "shared mcl options"
     tf: "<func(arg)[, func(arg)]*> apply unary transformations to matrix values"
@@ -60,15 +63,15 @@ task Mclcm {
     sub_cluster: "use subclustering approach"
     integrate: "construct hierarchy from cluster (file) arguments"
     dispatch: "construct hierarchy from multiple mcl runs"
-    iterate_most_num: "iterate at most <num> times (default: until root clustering)"
-    root: "make sure universe clustering is at the top"
+    iterate_root_clustering: "iterate at most <num> times (default: until root clustering)"
+    root: "/n                     make sure universe clustering is at the top"
     cone: "file to write nested cluster stack to"
     stack: "file to write expanded cluster stack to"
     coarse: "file to write coarsened graphs to"
     write_base: "file to write base graph to"
     write: "<tags> may contain 'stack', 'cone', 'coarse', 'steps'"
     stem: "file prefix for cone, stack, and coarse"
-    mplex: "additionally write clusterings to separate files"
+    mplex: "/n                   additionally write clusterings to separate files"
     quiet_level_logging: "quiet level of logging"
   }
   output {

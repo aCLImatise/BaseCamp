@@ -1,0 +1,278 @@
+!Command
+command:
+- chromatiblock
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: GPLv3
+  description: 'USAGE: chromatiblock -f genome1.fasta genome2.fasta .... genomeN.fasta
+    -w working_dir -o figure.html '
+- !Positional
+  optional: false
+  position: 1
+  name: or
+  description: chromatiblock -d /path/to/fasta_directory/ -w working_dir -o figure.svg
+    -of svg
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --input_directory
+  description: Directory of fasta files to use as input.
+  args: !SimpleFlagArg
+    name: INPUT_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta_files
+  description: List of fasta/genbank files to use as input
+  args: !RepeatFlagArg
+    name: FASTA_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --order_list
+  description: List of fasta files in desired order.
+  args: !SimpleFlagArg
+    name: ORDER_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --working_directory
+  description: Folder to write intermediate files.
+  args: !SimpleFlagArg
+    name: WORKING_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sibelia_path
+  description: "Specify path to sibelia (does not need to be set if\nSibelia binary\
+    \ is in path)."
+  args: !SimpleFlagArg
+    name: SIBELIA_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -sm
+  - --sibelia_mode
+  description: mode for running sibelia <loose|fine|far>
+  args: !SimpleFlagArg
+    name: SIBELIA_MODE
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --extensions
+  description: "When -d is used for input files, chromatiblock will\ncheck against\
+    \ this comma seperated list to determine\nwhether to add file to the list of input\
+    \ sequences."
+  args: !SimpleFlagArg
+    name: EXTENSIONS
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: Location to write output.
+  args: !SimpleFlagArg
+    name: OUT
+- !Flag
+  optional: true
+  synonyms:
+  - -of
+  - --output_format
+  description: "file format to write to, if all is selected --out will\nbe a prefix\
+    \ and extension will be added"
+  args: !ChoiceFlagArg
+    choices: !!set
+      all:
+      svg:
+      html:
+      pdf:
+      png:
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --ppi
+  description: "pixels per inch (only used for png, figure width is 8\ninches)"
+  args: !SimpleFlagArg
+    name: PPI
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min_block_size
+  description: Minimum size of syntenic block.
+  args: !SimpleFlagArg
+    name: MIN_BLOCK_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --categorise
+  description: color blocks by category
+  args: !SimpleFlagArg
+    name: CATEGORISE
+- !Flag
+  optional: true
+  synonyms:
+  - -gb
+  - --genes_of_interest_blast
+  description: mark genes of interest using BLASTx
+  args: !SimpleFlagArg
+    name: GENES_OF_INTEREST_BLAST
+- !Flag
+  optional: true
+  synonyms:
+  - -gf
+  - --genes_of_interest_file
+  description: mark genes of interest using a file
+  args: !SimpleFlagArg
+    name: GENES_OF_INTEREST_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -gh
+  - --genome_height
+  description: Height of genome blocks
+  args: !SimpleFlagArg
+    name: GENOME_HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - -vg
+  - --gap
+  description: gap between genomes
+  args: !SimpleFlagArg
+    name: GAP
+- !Flag
+  optional: true
+  synonyms:
+  - -ss
+  - --skip_sibelia
+  description: Use sibelia output already in working directory
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -sb
+  - --skip_blast
+  description: use existing BLASTx file for annotation
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -maf
+  - --maf_alignment
+  description: use a maf file for alignment.
+  args: !SimpleFlagArg
+    name: MAF_ALIGNMENT
+- !Flag
+  optional: true
+  synonyms:
+  - -pz
+  - --svg_pan_zoom_location
+  description: location of svg-pan-zoom.min.js
+  args: !SimpleFlagArg
+    name: SVG_PAN_ZOOM_LOCATION
+- !Flag
+  optional: true
+  synonyms:
+  - -hs
+  - --hue_start
+  - -he
+  - --hue_end
+  - -t
+  - --add_fasta_labels
+  description: add fasta names to figure
+  args: !SimpleFlagArg
+    name: HUE_START
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: overwrite working directory and output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep
+  description: keep working directory
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: print version and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: chromatiblock 1.0.0 [-h]\n                           (-d INPUT_DIRECTORY\
+  \ | -f FASTA_FILES [FASTA_FILES ...])\n                           [-l ORDER_LIST]\
+  \ [-w WORKING_DIRECTORY]\n                           [-s SIBELIA_PATH] [-sm SIBELIA_MODE]\n\
+  \                           [-e EXTENSIONS] [-o OUT]\n                         \
+  \  [-of {html,svg,png,pdf,all}] [-q PPI]\n                           [-m MIN_BLOCK_SIZE]\
+  \ [-c CATEGORISE]\n                           [-gb GENES_OF_INTEREST_BLAST]\n  \
+  \                         [-gf GENES_OF_INTEREST_FILE] [-gh GENOME_HEIGHT]\n   \
+  \                        [-vg GAP] [-ss] [-sb] [-maf MAF_ALIGNMENT]\n          \
+  \                 [-pz SVG_PAN_ZOOM_LOCATION] [-v] [-hs HUE_START]\n           \
+  \                [-he HUE_END] [-t] [--force] [--keep]\n\nchromatiblock: Large scale\
+  \ whole genome visualisation using colinear blocks.\n\nVersion: 1.0.0\n\nLicense:\
+  \ GPLv3\n\nUSAGE: chromatiblock -f genome1.fasta genome2.fasta .... genomeN.fasta\
+  \ -w working_dir -o figure.html \n\n        or\n     \n       chromatiblock -d /path/to/fasta_directory/\
+  \ -w working_dir -o figure.svg -of svg\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n  -d INPUT_DIRECTORY, --input_directory\
+  \ INPUT_DIRECTORY\n                        Directory of fasta files to use as input.\n\
+  \  -f FASTA_FILES [FASTA_FILES ...], --fasta_files FASTA_FILES [FASTA_FILES ...]\n\
+  \                        List of fasta/genbank files to use as input\n  -l ORDER_LIST,\
+  \ --order_list ORDER_LIST\n                        List of fasta files in desired\
+  \ order.\n  -w WORKING_DIRECTORY, --working_directory WORKING_DIRECTORY\n      \
+  \                  Folder to write intermediate files.\n  -s SIBELIA_PATH, --sibelia_path\
+  \ SIBELIA_PATH\n                        Specify path to sibelia (does not need to\
+  \ be set if\n                        Sibelia binary is in path).\n  -sm SIBELIA_MODE,\
+  \ --sibelia_mode SIBELIA_MODE\n                        mode for running sibelia\
+  \ <loose|fine|far>\n  -e EXTENSIONS, --extensions EXTENSIONS\n                 \
+  \       When -d is used for input files, chromatiblock will\n                  \
+  \      check against this comma seperated list to determine\n                  \
+  \      whether to add file to the list of input sequences.\n  -o OUT, --out OUT\
+  \     Location to write output.\n  -of {html,svg,png,pdf,all}, --output_format {html,svg,png,pdf,all}\n\
+  \                        file format to write to, if all is selected --out will\n\
+  \                        be a prefix and extension will be added\n  -q PPI, --ppi\
+  \ PPI     pixels per inch (only used for png, figure width is 8\n              \
+  \          inches)\n  -m MIN_BLOCK_SIZE, --min_block_size MIN_BLOCK_SIZE\n     \
+  \                   Minimum size of syntenic block.\n  -c CATEGORISE, --categorise\
+  \ CATEGORISE\n                        color blocks by category\n  -gb GENES_OF_INTEREST_BLAST,\
+  \ --genes_of_interest_blast GENES_OF_INTEREST_BLAST\n                        mark\
+  \ genes of interest using BLASTx\n  -gf GENES_OF_INTEREST_FILE, --genes_of_interest_file\
+  \ GENES_OF_INTEREST_FILE\n                        mark genes of interest using a\
+  \ file\n  -gh GENOME_HEIGHT, --genome_height GENOME_HEIGHT\n                   \
+  \     Height of genome blocks\n  -vg GAP, --gap GAP    gap between genomes\n  -ss,\
+  \ --skip_sibelia   Use sibelia output already in working directory\n  -sb, --skip_blast\
+  \     use existing BLASTx file for annotation\n  -maf MAF_ALIGNMENT, --maf_alignment\
+  \ MAF_ALIGNMENT\n                        use a maf file for alignment.\n  -pz SVG_PAN_ZOOM_LOCATION,\
+  \ --svg_pan_zoom_location SVG_PAN_ZOOM_LOCATION\n                        location\
+  \ of svg-pan-zoom.min.js\n  -v, --version         print version and exit\n  -hs\
+  \ HUE_START, --hue_start HUE_START\n  -he HUE_END, --hue_end HUE_END\n  -t, --add_fasta_labels\n\
+  \                        add fasta names to figure\n  --force               overwrite\
+  \ working directory and output\n  --keep                keep working directory\n\
+  \nThanks for using chromatiblock\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/chromatiblock:1.0.0--py_0

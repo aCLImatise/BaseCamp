@@ -26,6 +26,9 @@ task PlanemoShedDownload {
       ~{if defined(shed_target) then ("--shed_target " +  '"' + shed_target + '"') else ""} \
       ~{if defined(destination) then ("--destination " +  '"' + destination + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     recursive: "Recursively perform command for nested repository"
     owner: "Tool Shed repository owner (username)."

@@ -24,6 +24,9 @@ task DeepacTest {
       ~{if defined(scale) then ("--scale " +  '"' + scale + '"') else ""} \
       ~{if (input_modes) then "--input-modes" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_cpus: "Number of CPU cores. Default: all."
     gpus: "GPU devices to use. Default: all"

@@ -14,6 +14,9 @@ task Pyrsaencryptbigfile {
       ~{if defined(name_write_file) then ("--output " +  '"' + name_write_file + '"') else ""} \
       ~{if defined(key_form) then ("--keyform " +  '"' + key_form + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_encrypt_reads: "Name of the file to encrypt. Reads from stdin if not\\nspecified."
     name_write_file: "Name of the file to write the encrypted file to.\\nWritten to stdout if this option is not present."

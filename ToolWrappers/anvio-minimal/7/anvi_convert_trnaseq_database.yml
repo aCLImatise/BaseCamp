@@ -1,0 +1,373 @@
+!Command
+command:
+- anvi-convert-trnaseq-database
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: experiment
+  description: -o DIR_PATH, --output-dir DIR_PATH
+- !Positional
+  optional: false
+  position: 0
+  name: trnaseq-db
+  description: '🍕 Can provide: '
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --project-name
+  description: "Name of the project. Please choose a short but\ndescriptive name (so\
+    \ anvi'o can use it whenever she\nneeds to name an output file, or add a new table\
+    \ in a\ndatabase, or name her first born). (default: None)"
+  args: !SimpleFlagArg
+    name: PROJECT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --max-reported-trna-seeds
+  description: "This parameter limits the number of tRNA seed\nsequences reported\
+    \ in the contigs database, as anvi-\ninteractive can have trouble displaying large\
+    \ numbers\nof items. To remove the limit on reported seeds,\nspecify a value of\
+    \ -1. (default: 10000)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --overwrite-output-destinations
+  description: "Overwrite if the output files and/or directories\nexist. (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --description
+  description: "A plain text file that contains some description about\nthe project.\
+    \ You can use Markdown syntax. The\ndescription text will be rendered and shown\
+    \ in all\nrelevant interfaces, including the anvi'o interactive\ninterface, or\
+    \ anvi'o summary outputs. (default: None)"
+  args: !SimpleFlagArg
+    name: TEXT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --feature-threshold
+  description: "This option prevents formation of tRNA seed sequences\nfrom input\
+    \ sequences that did not reach the threshold\nfeature in anvi-trnaseq profiling\
+    \ from the 3' end. The\nmore stringent the threshold, the fewer spurious seeds\n\
+    are formed from rare chimeric and other inaccurate\ntRNA predictions. The most\
+    \ stringent threshold is\n\"acceptor_stem\", the most 5' feature, resulting in\n\
+    seeds formed only from tRNAs with a complete feature\nset (with the exception\
+    \ of the extra 5'-G in tRNA-\nHis). (default: anticodon_loop)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      fiveprime_anticodon_stem_sequence:
+      position_8:
+      position_9:
+      acceptor_stem:
+      fiveprime_d_stem_sequence:
+      position_26:
+      anticodon_stem:
+      fiveprime_acceptor_stem_sequence:
+      d_loop:
+      anticodon_arm:
+      threeprime_d_stem_sequence:
+      d_arm:
+      anticodon_loop:
+      d_stem:
+- !Flag
+  optional: true
+  synonyms:
+  - --preferred-treatment
+  description: "tRNA-seq databases recorded as employing the preferred\ntreatment\
+    \ are given preference in setting nucleotides\nat predicted modification positions\
+    \ in tRNA seed\nsequences. By default, equal preference is given to\nall of the\
+    \ input databases. The reason for this\nparameter is that paired untreated and\
+    \ enzymatically\ntreated splits can assist in the identification of\nunderlying\
+    \ modified nucleotides. For example, splits\ntreated with a demethylase can be\
+    \ compared to\nuntreated splits to probe which nucleotides are\nmethylated. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: PREFERRED_TREATMENT
+- !Flag
+  optional: true
+  synonyms:
+  - --nonspecific-output
+  description: "A significant fraction of tRNA-seq reads can be from\ntRNA fragments.\
+    \ These can be real biomolecules or\nartifactual 3' fragments produced as a result\
+    \ of\nincomplete reverse transcription of the tRNA template\nto cDNA. Rather than\
+    \ randomly assigning fragments to a\nsingle target, as in metagenomic read recruitment\
+    \ by\nBowtie, anvi-trnaseq tracks all of the longer\nsequences containing each\
+    \ fragment. This results in\ntwo categories of coverage: 'specific' for reads\
+    \ that\nare only found in one seed and 'nonspecific' for reads\nfound in multiple\
+    \ seeds. Specific coverages are always\nreported in a separate profile database.\
+    \ Nonspecific\ncoverages can be reported in three types of database,\nas specified\
+    \ by this parameter. 'nonspecific_db'\nproduces a profile database only containing\n\
+    nonspecific coverages. 'combined_db' produces a\ndatabase containing separate\
+    \ specific and nonspecific\nlayers. 'summed_db' produces a database containing\n\
+    summed specific and nonspecific coverages. To produce\nmultiple types of databases,\
+    \ separate the database\ntypes with commas (no spaces). For example, all three\n\
+    databases are produced with the argument,\n'nonspecific_db,combined_db,summed_db'.\
+    \ (default:\nnonspecific_db,combined_db)"
+  args: !SimpleFlagArg
+    name: NONSPECIFIC_OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-variation
+  description: "When more than 2 nucleotides are found at a position\nin a tRNA, a\
+    \ modification-induced mutation\n(substitution) is considered rather than a single\n\
+    nucleotide variant. This parameter sets a key\ncriterion for the prediction of\
+    \ a modification, the\nminimum fraction of specific coverage at a position\nwith\
+    \ more than 2 nucleotides that must be contributed\nby nucleotides beside the\
+    \ most abundant nucleotide.\nFor example, if A, C, and G are found at position\
+    \ 20\nof a tRNA, and A is represented by 95 reads, C by 3\nreads, and G by 1 read,\
+    \ then with a parameter value of\n0.05, the site would be 1 C, G, or T short of\
+    \ meeting\nthe threshold for prediction of a modification.\n(default: 0.01)"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-third-fourth-nt
+  description: "This parameter sets a key criterion for the prediction\nof a modification,\
+    \ the minimum fraction of specific\ncoverage at a position with more than 2 nucleotides\n\
+    that must be contributed by nucleotides beside the 2\nmost abundant nucleotides.\
+    \ Unlike --min-variation,\nthis criterion only needs to be met for 1 sample to\n\
+    permit modification of the position in all samples of\nthe experiment. For example,\
+    \ consider an experiment\nwith 2 samples and a parameter value of 0.01. In\nSample\
+    \ 1, A, C, and G are found at position 20 of a\ntRNA, and A is represented by\
+    \ 95 reads, C by 4 reads,\nand G by 1 read. The default parameter value of 0.01\n\
+    is exactly met at the position thanks to G. In Sample\n2, A, C, G, and T are found\
+    \ at position 20 of the same\ntRNA seed, and A is represented by 1000 reads, C\
+    \ by\n100 reads, G by 2 reads, and T by 2 reads. The third\nand fourth nucleotides\
+    \ don't meet the coverage\nthreshold of 0.01, but this is irrelevant for calling\n\
+    the modification, since Sample 1 met the criterion.\nThere is an important consideration\
+    \ due to the way\nthis threshold is currently imposed. Potential\nmodification\
+    \ sites that do not meet the threshold are\nnot treated like single nucleotide\
+    \ variants in anvi-\ntrnaseq: they do not cause the seed sequence to be\nsplit\
+    \ such that no seed contains a variant that was\nnot deemed to be a modification.\
+    \ Rather, candidate\nmodification positions that do not meet this threshold\n\
+    are retained in the seed BUT NOT REPORTED. Therefore,\nwe recommend rerunning\
+    \ this command with a parameter\nvalue of 0 to inspect seeds for undisplayed variants\n\
+    (possible SNVs) with a low level of third and fourth\nnucleotides. (default: 0.002)"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-del-fraction
+  description: "This parameter controls which deletions are reported\nin the tRNA-seq\
+    \ profile database. Coverage of a\ndeletion in a sample must meet the minimum\
+    \ fraction of\nspecific coverage. Deletion coverages are calculated\nseparately\
+    \ for specific, nonspecific, and summed\ncoverages. (default: 0.01)"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --distance
+  description: "The distance metric for the hierarchical clustering.\nThe default\
+    \ distance metric is 'euclidean'. You can\nfind the full list of distance metrics\
+    \ either by\nmaking a mistake (such as entering a non-existent\ndistance metric\
+    \ and making anvi'o upset), or by taking\na look at the help menu of the\nhierarchy.distance.pdist\
+    \ function in the scipy.cluster\nmodule."
+  args: !SimpleFlagArg
+    name: DISTANCE_METRIC
+- !Flag
+  optional: true
+  synonyms:
+  - --linkage
+  description: "The linkage method for the hierarchical clustering.\nThe default linkage\
+    \ method is 'ward', because that is\nthe best one. It really is. We talked to\
+    \ a lot of\npeople and they were all like 'this is the best one\navailable' and\
+    \ it is just all out there. Honestly it\nis so good that we will build a wall\
+    \ around it and\nmake other linkage methods pay for it. But if you want\nto see\
+    \ a full list of available ones you can check the\nhierarcy.linkage function in\
+    \ the scipy.cluster module.\nUp to you really. But then you can't use ward anymore,\n\
+    and you would have to leave anvi'o right now."
+  args: !SimpleFlagArg
+    name: LINKAGE_METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ''
+  args: !SimpleFlagArg
+    name: DIR_PATH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-convert-trnaseq-database [-h] [-o DIR_PATH] [-n PROJECT_NAME]\n\
+  \                                     [--max-reported-trna-seeds INT] [-W]\n   \
+  \                                  [--description TEXT_FILE]\n                 \
+  \                    [--feature-threshold {acceptor_stem,fiveprime_acceptor_stem_sequence,position_8,position_9,d_arm,d_stem,fiveprime_d_stem_sequence,d_loop,threeprime_d_stem_sequence,position_26,anticodon_arm,anticodon_stem,fiveprime_anticodon_stem_sequence,anticodon_loop}]\n\
+  \                                     [--preferred-treatment PREFERRED_TREATMENT]\n\
+  \                                     [--nonspecific-output NONSPECIFIC_OUTPUT]\n\
+  \                                     [--min-variation FLOAT]\n                \
+  \                     [--min-third-fourth-nt FLOAT]\n                          \
+  \           [--min-del-fraction FLOAT]\n                                     [--distance\
+  \ DISTANCE_METRIC]\n                                     [--linkage LINKAGE_METHOD]\n\
+  \                                     TRNASEQ_DBS) [TRNASEQ_DB(S ...]\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n\nMANDATORY:\n\
+  \  TRNASEQ_DB(S)         Anvi'o tRNA-seq databases representing samples in an\n\
+  \                        experiment\n  -o DIR_PATH, --output-dir DIR_PATH\n    \
+  \                    Directory path for output files (default: None)\n  -n PROJECT_NAME,\
+  \ --project-name PROJECT_NAME\n                        Name of the project. Please\
+  \ choose a short but\n                        descriptive name (so anvi'o can use\
+  \ it whenever she\n                        needs to name an output file, or add\
+  \ a new table in a\n                        database, or name her first born). (default:\
+  \ None)\n\nEXTRAS:\n  --max-reported-trna-seeds INT\n                        This\
+  \ parameter limits the number of tRNA seed\n                        sequences reported\
+  \ in the contigs database, as anvi-\n                        interactive can have\
+  \ trouble displaying large numbers\n                        of items. To remove\
+  \ the limit on reported seeds,\n                        specify a value of -1. (default:\
+  \ 10000)\n  -W, --overwrite-output-destinations\n                        Overwrite\
+  \ if the output files and/or directories\n                        exist. (default:\
+  \ False)\n  --description TEXT_FILE\n                        A plain text file that\
+  \ contains some description about\n                        the project. You can\
+  \ use Markdown syntax. The\n                        description text will be rendered\
+  \ and shown in all\n                        relevant interfaces, including the anvi'o\
+  \ interactive\n                        interface, or anvi'o summary outputs. (default:\
+  \ None)\n\nADVANCED:\n  --feature-threshold {acceptor_stem,fiveprime_acceptor_stem_sequence,position_8,position_9,d_arm,d_stem,fiveprime_d_stem_sequence,d_loop,threeprime_d_stem_sequence,position_26,anticodon_arm,anticodon_stem,fiveprime_anticodon_stem_sequence,anticodon_loop}\n\
+  \                        This option prevents formation of tRNA seed sequences\n\
+  \                        from input sequences that did not reach the threshold\n\
+  \                        feature in anvi-trnaseq profiling from the 3' end. The\n\
+  \                        more stringent the threshold, the fewer spurious seeds\n\
+  \                        are formed from rare chimeric and other inaccurate\n  \
+  \                      tRNA predictions. The most stringent threshold is\n     \
+  \                   \"acceptor_stem\", the most 5' feature, resulting in\n     \
+  \                   seeds formed only from tRNAs with a complete feature\n     \
+  \                   set (with the exception of the extra 5'-G in tRNA-\n       \
+  \                 His). (default: anticodon_loop)\n  --preferred-treatment PREFERRED_TREATMENT\n\
+  \                        tRNA-seq databases recorded as employing the preferred\n\
+  \                        treatment are given preference in setting nucleotides\n\
+  \                        at predicted modification positions in tRNA seed\n    \
+  \                    sequences. By default, equal preference is given to\n     \
+  \                   all of the input databases. The reason for this\n          \
+  \              parameter is that paired untreated and enzymatically\n          \
+  \              treated splits can assist in the identification of\n            \
+  \            underlying modified nucleotides. For example, splits\n            \
+  \            treated with a demethylase can be compared to\n                   \
+  \     untreated splits to probe which nucleotides are\n                        methylated.\
+  \ (default: None)\n  --nonspecific-output NONSPECIFIC_OUTPUT\n                 \
+  \       A significant fraction of tRNA-seq reads can be from\n                 \
+  \       tRNA fragments. These can be real biomolecules or\n                    \
+  \    artifactual 3' fragments produced as a result of\n                        incomplete\
+  \ reverse transcription of the tRNA template\n                        to cDNA. Rather\
+  \ than randomly assigning fragments to a\n                        single target,\
+  \ as in metagenomic read recruitment by\n                        Bowtie, anvi-trnaseq\
+  \ tracks all of the longer\n                        sequences containing each fragment.\
+  \ This results in\n                        two categories of coverage: 'specific'\
+  \ for reads that\n                        are only found in one seed and 'nonspecific'\
+  \ for reads\n                        found in multiple seeds. Specific coverages\
+  \ are always\n                        reported in a separate profile database. Nonspecific\n\
+  \                        coverages can be reported in three types of database,\n\
+  \                        as specified by this parameter. 'nonspecific_db'\n    \
+  \                    produces a profile database only containing\n             \
+  \           nonspecific coverages. 'combined_db' produces a\n                  \
+  \      database containing separate specific and nonspecific\n                 \
+  \       layers. 'summed_db' produces a database containing\n                   \
+  \     summed specific and nonspecific coverages. To produce\n                  \
+  \      multiple types of databases, separate the database\n                    \
+  \    types with commas (no spaces). For example, all three\n                   \
+  \     databases are produced with the argument,\n                        'nonspecific_db,combined_db,summed_db'.\
+  \ (default:\n                        nonspecific_db,combined_db)\n  --min-variation\
+  \ FLOAT\n                        When more than 2 nucleotides are found at a position\n\
+  \                        in a tRNA, a modification-induced mutation\n          \
+  \              (substitution) is considered rather than a single\n             \
+  \           nucleotide variant. This parameter sets a key\n                    \
+  \    criterion for the prediction of a modification, the\n                     \
+  \   minimum fraction of specific coverage at a position\n                      \
+  \  with more than 2 nucleotides that must be contributed\n                     \
+  \   by nucleotides beside the most abundant nucleotide.\n                      \
+  \  For example, if A, C, and G are found at position 20\n                      \
+  \  of a tRNA, and A is represented by 95 reads, C by 3\n                       \
+  \ reads, and G by 1 read, then with a parameter value of\n                     \
+  \   0.05, the site would be 1 C, G, or T short of meeting\n                    \
+  \    the threshold for prediction of a modification.\n                        (default:\
+  \ 0.01)\n  --min-third-fourth-nt FLOAT\n                        This parameter sets\
+  \ a key criterion for the prediction\n                        of a modification,\
+  \ the minimum fraction of specific\n                        coverage at a position\
+  \ with more than 2 nucleotides\n                        that must be contributed\
+  \ by nucleotides beside the 2\n                        most abundant nucleotides.\
+  \ Unlike --min-variation,\n                        this criterion only needs to\
+  \ be met for 1 sample to\n                        permit modification of the position\
+  \ in all samples of\n                        the experiment. For example, consider\
+  \ an experiment\n                        with 2 samples and a parameter value of\
+  \ 0.01. In\n                        Sample 1, A, C, and G are found at position\
+  \ 20 of a\n                        tRNA, and A is represented by 95 reads, C by\
+  \ 4 reads,\n                        and G by 1 read. The default parameter value\
+  \ of 0.01\n                        is exactly met at the position thanks to G. In\
+  \ Sample\n                        2, A, C, G, and T are found at position 20 of\
+  \ the same\n                        tRNA seed, and A is represented by 1000 reads,\
+  \ C by\n                        100 reads, G by 2 reads, and T by 2 reads. The third\n\
+  \                        and fourth nucleotides don't meet the coverage\n      \
+  \                  threshold of 0.01, but this is irrelevant for calling\n     \
+  \                   the modification, since Sample 1 met the criterion.\n      \
+  \                  There is an important consideration due to the way\n        \
+  \                this threshold is currently imposed. Potential\n              \
+  \          modification sites that do not meet the threshold are\n             \
+  \           not treated like single nucleotide variants in anvi-\n             \
+  \           trnaseq: they do not cause the seed sequence to be\n               \
+  \         split such that no seed contains a variant that was\n                \
+  \        not deemed to be a modification. Rather, candidate\n                  \
+  \      modification positions that do not meet this threshold\n                \
+  \        are retained in the seed BUT NOT REPORTED. Therefore,\n               \
+  \         we recommend rerunning this command with a parameter\n               \
+  \         value of 0 to inspect seeds for undisplayed variants\n               \
+  \         (possible SNVs) with a low level of third and fourth\n               \
+  \         nucleotides. (default: 0.002)\n  --min-del-fraction FLOAT\n          \
+  \              This parameter controls which deletions are reported\n          \
+  \              in the tRNA-seq profile database. Coverage of a\n               \
+  \         deletion in a sample must meet the minimum fraction of\n             \
+  \           specific coverage. Deletion coverages are calculated\n             \
+  \           separately for specific, nonspecific, and summed\n                 \
+  \       coverages. (default: 0.01)\n  --distance DISTANCE_METRIC\n             \
+  \           The distance metric for the hierarchical clustering.\n             \
+  \           The default distance metric is 'euclidean'. You can\n              \
+  \          find the full list of distance metrics either by\n                  \
+  \      making a mistake (such as entering a non-existent\n                     \
+  \   distance metric and making anvi'o upset), or by taking\n                   \
+  \     a look at the help menu of the\n                        hierarchy.distance.pdist\
+  \ function in the scipy.cluster\n                        module.\n  --linkage LINKAGE_METHOD\n\
+  \                        The linkage method for the hierarchical clustering.\n \
+  \                       The default linkage method is 'ward', because that is\n\
+  \                        the best one. It really is. We talked to a lot of\n   \
+  \                     people and they were all like 'this is the best one\n    \
+  \                    available' and it is just all out there. Honestly it\n    \
+  \                    is so good that we will build a wall around it and\n      \
+  \                  make other linkage methods pay for it. But if you want\n    \
+  \                    to see a full list of available ones you can check the\n  \
+  \                      hierarcy.linkage function in the scipy.cluster module.\n\
+  \                        Up to you really. But then you can't use ward anymore,\n\
+  \                        and you would have to leave anvi'o right now.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   A program that processes one or more anvio'\
+  \ tRNA-seq databases generated by\n   `anvi-trnaseq` to generate anvi'o contigs\
+  \ and merged profile databases that\n   are accessible to the rest of the tools\
+  \ in anvi'o software ecosystem.\n   Briefly, this program will determine final seed\
+  \ sequences from input tRNA-seq\n   databases, determine their coverages across\
+  \ samples, identify tRNA\n   modification sites, and INDELs associated with transcripts\
+  \ in each sample\n   against the seed sequences and store all these data into resulting\
+  \ databases\n   for interactive visualization of the data or in-depth analysis using\
+  \ other\n   anvi'o frameworks\n\n\U0001F9C0 Can consume: \n\n   trnaseq-db\n   \n\
+  \U0001F355 Can provide: \n\n   contigs-db / profile-db\n   \n\U0001F37A More on\
+  \ `anvi-convert-trnaseq-database`:\n\n   https://merenlab.org/software/anvio/help/7/programs/anvi-convert-trnaseq-database\n\
+  \n\U0001F37B All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

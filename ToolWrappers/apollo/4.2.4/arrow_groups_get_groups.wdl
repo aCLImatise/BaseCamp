@@ -8,6 +8,9 @@ task ArrowGroupsGetGroups {
     arrow groups get_groups \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "Only return group(s) with given name"
   }

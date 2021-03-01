@@ -28,6 +28,9 @@ task ScHicDemultiplex {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(buffer_size) then ("--bufferSize " +  '"' + buffer_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fastq_files_demultiplex_files: "of fastq files to demultiplex [list of fastq files to demultiplex ...], -f list of fastq files to demultiplex [list of fastq files to demultiplex ...]\\nThe fastq files to demultiplex of Nagano 2017 Cell\\ncycle dynamics of chromosomal organization at single-\\ncell resolutionGEO: GSE94489. Files need to have four\\nFASTQ lines per read:/1 forward; /2 barcode forward;\\n/3 bardcode reverse; /4 reverse read.Please be aware\\nthe files can be downloaded via the command fastq-dump\\nto be in the right format:fastq-dump --accession\\nSRR5229025 --split-files --defline-seq\\n'@$sn[_$rn]/$ri' --defline-qual '+' --split-spot\\n--stdout SRR5229025 > SRR5229025.fastq (default: None)"
     barcode_file: "of fastq files to demultiplex. Use GSE94489_README.txt file., -bf list of fastq files to demultiplex. Use GSE94489_README.txt file.\\nThe fastq files to demultiplex (default: None)"

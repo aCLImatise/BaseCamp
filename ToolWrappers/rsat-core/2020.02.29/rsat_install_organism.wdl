@@ -35,9 +35,7 @@ task RsatInstallorganism {
     Boolean? specification_single_installation
     Boolean? rm
     Boolean? img_format
-    Int? download_one_species
     String install_organism
-    String parse_slash_install_dot
     String list_dot
     String e_dot_gdot
     String available
@@ -55,12 +53,13 @@ task RsatInstallorganism {
     String intergenic_freq
     String genome_freq
     String clean
+    String species_dot
+    String parallel_dot
     String download_organisms
   }
   command <<<
     rsat install_organism \
       ~{install_organism} \
-      ~{parse_slash_install_dot} \
       ~{list_dot} \
       ~{e_dot_gdot} \
       ~{available} \
@@ -78,6 +77,8 @@ task RsatInstallorganism {
       ~{intergenic_freq} \
       ~{genome_freq} \
       ~{clean} \
+      ~{species_dot} \
+      ~{parallel_dot} \
       ~{download_organisms} \
       ~{if (help) then "-help" else ""} \
       ~{if (verbose) then "-v" else ""} \
@@ -111,9 +112,11 @@ task RsatInstallorganism {
       ~{if (ensembl) then "-ensembl" else ""} \
       ~{if (specification_single_installation) then "-task" else ""} \
       ~{if (rm) then "-rm" else ""} \
-      ~{if (img_format) then "-img_format" else ""} \
-      ~{if defined(download_one_species) then ("-o " +  '"' + download_one_species + '"') else ""}
+      ~{if (img_format) then "-img_format" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "(must be first argument) display options"
     verbose: "verbose"
@@ -148,9 +151,7 @@ task RsatInstallorganism {
     specification_single_installation: "specification of a single installation task"
     rm: "calibrate oligo and dyad frequncies on repeat masked\\nsequences, in addition to the non-masked sequences."
     img_format: "image format for the graphs of sequence length distribution"
-    download_one_species: "Download one species with rsync:\\ninstall-organism -v 1  -group [GROUP] -species [SPECIES]\\n-task download\\nParse the genome for a given species, and declare it in RSAT\\nsupported organism. NOTE: this installs all the strains for the\\nselected species. For some species this can represent thousands of\\nstrains (e.g. Eschrichia coli). Strains can be restricted with the\\noptions -strain or -max_strains.\\ninstall-organism -v 1  -group [GROUP] -species [SPECIES]\\n-task parse,config\\nRun the default installation steps for a given species. Note: the\\noption -list is required in order to collect the organism names,\\nwhich are made by concatenating species and strain\\ninstall-organism -v 1  -group [GROUP] -species [SPECIES]\\n-task list,default\\nInstallation can be automated and parallelized with a job\\nscheduler (e.g. qsub) in order to install all the species of a\\ngiven group.\\nExample: install all species of the group \\\"fungi\\\" at NCBI.\\nStep 1: get the list of species available at NCBI\\ninstall-organism -v 1 -group fungi -task available\\n-o fungi_available_species.txt\\nStep 2: download genome for all the strains of these\\nspecies. Beware, this takes space, there are several hundreds of\\nspecies.\\ninstall-organism -v 1 -group fungi -task download\\n-species_file fungi_available_species.txt\\nStep 3: parse the genomes of all strains for each fungal species.\\ninstall-organism -v 1 -group fungi -task parse,config\\n-species_file fungi_available_species.txt\\nStep 4: collect the list of downloaded organisms. Organism names\\nare built by concatenating species and strain names.\\ninstall-organism -v 1 -group fungi\\n-species_file fungi_available_species.txt\\n-task list\\n-o fungi_downloaded_orgnanisms.txt\\nStep 5: extract fasta sequences for different types of genomic\\nregions, and run some control tests (e.g. oligonucleotide\\nfrequencies of start and stop codons). With the option -batch, the\\ntasks are sent to a job scheuler (qsub) in order to be executed in\\nparallel.\\ninstall-organism -v 1\\n-org_file fungi_downloaded_orgnanisms.txt\\n-task start_stop,allup,seq_len_distrib,genome_segments\\n-task protein_len,fasta_genome,fasta_genome_rm\\n-task chrom_sizes,index_bedtools\\n-batch\\nStep 6: compute the oligomer frequency tables. In batch mode, this\\ntask can be done only after the previous job list is finished,\\nbecause of the dependencies between the parallelized tasks\\n(upstream sequences have to be computed before computing their\\noligonucleotide and dyad frequencies).\\ninstall-organism -v 1\\n-org_file fungi_downloaded_orgnanisms.txt\\n-task upstream_freq,genome_freq,protein_freq,oligos,dyads\\n-batch"
     install_organism: "AUTHOR"
-    parse_slash_install_dot: "This option avoids filling disk with"
     list_dot: "-organism Full name of the organism (e.g. 'Saccharomyces"
     e_dot_gdot: "install-organism -task dyads"
     available: "list available species on the NCBI FTP site.\\nThis task cannot be combine with any\\nother task."
@@ -168,6 +169,8 @@ task RsatInstallorganism {
     intergenic_freq: "calculate oligo and dyad frequencies for\\nall intergenic sequences"
     genome_freq: "calculate oligo and dyad frequencies for\\nthe whole genome sequence. This is not\\nrecommended for higher organisms, where\\nthe genome represents several Gigabases,\\nand the computation of all oligo and dyad\\nfrequencies might take ages."
     clean: "remove unnecessary sequence files"
+    species_dot: "install-organism -v 1 -group fungi -task download "
+    parallel_dot: "install-organism -v 1 "
     download_organisms: "The program I<install-organism> performs all the formatting\\nand calibration tasks for importing genomes from the reference\\ndatabases (NCBI, EMBL) to RSAT.\\nThe program I<download-organism> transfers the RSAT-formatted\\ngenomes from a RSAT server.\\nIf a genome is available on the RSAT server, it is recommended\\nto use download-genomes in order to obtain it immediately in\\nthe RSAT format, rather than install-genomes.\\n"
   }
   output {

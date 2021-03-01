@@ -4,6 +4,9 @@ task Injectseparatorpl {
   command <<<
     injectseparator_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

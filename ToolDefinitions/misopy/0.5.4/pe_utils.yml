@@ -4,57 +4,57 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --compute-insert-len
   description: "Compute insert length for given sample. Takes as input\n(1) a comma-separated\
     \ list of sorted, indexed BAM\nfiles with headers (or a single BAM filename),\
     \ (2) a\nGFF file with constitutive exons. Outputs the insert\nlength distribution\
     \ into the output directory."
-  synonyms:
-  - --compute-insert-len
   args: !SimpleFlagArg
     name: COMPUTE_INSERT_LEN
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-bam-filter
   description: "If provided, this ignores the BAM file flags that\nstate whether the\
     \ read was paired or not, and instead\nuses only the read IDs to pair up the mates.\
     \ Use this\nif your paired-end BAM was the result of a samtools\nmerge operation."
-  synonyms:
-  - --no-bam-filter
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum size of constitutive exon (in nucleotides)\nthat should be\
-    \ used in the computation. Default is 500\nbp."
+  optional: true
   synonyms:
   - --min-exon-size
+  description: "Minimum size of constitutive exon (in nucleotides)\nthat should be\
+    \ used in the computation. Default is 500\nbp."
   args: !SimpleFlagArg
     name: MIN_EXON_SIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sd-max
   description: "Number of standard deviations used to define outliers.\nBy default,\
     \ set to 2, meaning that any points at least\n2*sigma away from the mean of the\
     \ insert length\ndistribution will be discarded."
-  synonyms:
-  - --sd-max
   args: !SimpleFlagArg
     name: SD_MAX
-  optional: true
 - !Flag
-  description: "Output directory.\n"
+  optional: true
   synonyms:
   - --output-dir
+  description: "Output directory.\n"
   args: !SimpleFlagArg
     name: OUTPUT_DIR
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: pe_utils [options]\n\nOptions:\n  -h, --help            show this\
@@ -78,3 +78,4 @@ help_text: "Usage: pe_utils [options]\n\nOptions:\n  -h, --help            show 
   \                        Output directory.\n"
 generated_using:
 - --help
+docker_image:

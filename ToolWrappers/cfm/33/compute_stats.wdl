@@ -30,6 +30,9 @@ task Computestats {
       ~{quanti_se_spectra_dec_pl} \
       ~{num_groups}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_filename: ""
     measured_spec_dir: ""

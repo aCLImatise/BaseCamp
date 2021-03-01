@@ -4,194 +4,211 @@ command:
 positional: []
 named:
 - !Flag
-  description: '| --R1       <filename>      reads corresponding to paired-end R1
-    (mandatory)'
+  optional: true
   synonyms:
   - '-1'
+  - --R1
+  description: <filename>      reads corresponding to paired-end R1 (mandatory)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '| --R2       <filename>      reads corresponding to paired-end R2
-    (mandatory)'
+  optional: true
   synonyms:
   - '-2'
+  - --R2
+  description: <filename>      reads corresponding to paired-end R2 (mandatory)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '| --database <filename>      database to map and reconstruct (mandatory)'
+  optional: true
   synonyms:
   - -d
-  args: !EmptyFlagArg {}
-  optional: true
+  - --database
+  description: database to map and reconstruct (mandatory)
+  args: !SimpleFlagArg
+    name: filename
 - !Flag
-  description: '| --sample   <string>        sample name (mandatory), less than 37
-    characters'
+  optional: true
   synonyms:
   - -s
+  - --sample
+  description: <string>        sample name (mandatory), less than 37 characters
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '| --group    <string>        group name (optional). If unset, samples
-    will be gathered in NO_GROUP group'
+  optional: true
   synonyms:
   - -g
+  - --group
+  description: <string>        group name (optional). If unset, samples will be gathered
+    in NO_GROUP group
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '| --contigs  <filename>      file with contigs. If supplied, plasmidID
-    will not assembly reads'
+  optional: true
   synonyms:
   - -c
+  - --contigs
+  description: <filename>      file with contigs. If supplied, plasmidID will not
+    assembly reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '| --annotate <filename>      file with configuration file for specific
-    annotation'
+  optional: true
   synonyms:
   - -a
-  args: !EmptyFlagArg {}
-  optional: true
+  - --annotate
+  description: file with configuration file for specific annotation
+  args: !SimpleFlagArg
+    name: filename
 - !Flag
-  description: <output_dir>    output directory, by default is the current directory
+  optional: true
   synonyms:
   - -o
+  description: <output_dir>    output directory, by default is the current directory
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Relaxes default parameters to find less reliable relationships within
-    data supplied and database
+  optional: true
   synonyms:
   - --explore
+  description: Relaxes default parameters to find less reliable relationships within
+    data supplied and database
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --only-reconstruct
   description: "Database supplied will not be filtered and all sequences will be used\
     \ as scaffold\nThis option does not require R1 and R2, instead a contig file can\
     \ be supplied"
-  synonyms:
-  - --only-reconstruct
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Undo winner takes it all algorithm when clustering by kmer - QUICKER
-    MODE
+  optional: true
   synonyms:
   - -w
+  description: Undo winner takes it all algorithm when clustering by kmer - QUICKER
+    MODE
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: directory holding trimmomatic .jar executable
+  optional: true
   synonyms:
   - --trimmomatic-directory
+  description: directory holding trimmomatic .jar executable
   args: !SimpleFlagArg
     name: Indicate
-  optional: true
 - !Flag
-  description: Reads supplied will not be quality trimmed
+  optional: true
   synonyms:
   - --no-trim
+  description: Reads supplied will not be quality trimmed
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '| --coverage-cutoff  <int>   minimun coverage percentage to select
-    a plasmid as scafold (0-100), default 80'
+  optional: true
   synonyms:
   - -C
+  - --coverage-cutoff
+  description: <int>   minimun coverage percentage to select a plasmid as scafold
+    (0-100), default 80
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '| --coverage-summary <int>   minimun coverage percentage to include
-    plasmids in summary image (0-100), default 90'
+  optional: true
   synonyms:
   - -S
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '| --cluster  <int>   kmer identity to cluster plasmids into the same
-    representative sequence (0 means identical) (0-1), default 0.5'
-  synonyms:
-  - -f
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '| --kmer     <int>   identity to filter plasmids from the database
-    with kmer approach (0-1), default 0.95'
-  synonyms:
-  - -k
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '| --alignment-identity <int> minimun identity percentage aligned for
-    a contig to annotate, default 90'
-  synonyms:
-  - -i
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '| --alignment-percentage <int>       minimun length percentage aligned
-    for a contig to annotate, default 20'
-  synonyms:
-  - -l
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '| --length-total     <int>   minimun alignment length to filter blast
-    analysis'
-  synonyms:
-  - -L
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: look for annotation over regions with no homology found (base pairs),
-    default 500bp
-  synonyms:
-  - --extend-annotation
+  - --coverage-summary
+  description: minimun coverage percentage to include plasmids in summary image (0-100),
+    default 90
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: directory holding config files, default config_files/
+  optional: true
+  synonyms:
+  - -f
+  - --cluster
+  description: <int>   kmer identity to cluster plasmids into the same representative
+    sequence (0 means identical) (0-1), default 0.5
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: <int>   identity to filter plasmids from the database with kmer approach
+    (0-1), default 0.95
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --alignment-identity
+  description: minimun identity percentage aligned for a contig to annotate, default
+    90
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --alignment-percentage
+  description: minimun length percentage aligned for a contig to annotate, default
+    20
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --length-total
+  description: <int>   minimun alignment length to filter blast analysis
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --extend-annotation
+  description: look for annotation over regions with no homology found (base pairs),
+    default 500bp
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
   synonyms:
   - --config-directory
+  description: directory holding config files, default config_files/
   args: !SimpleFlagArg
     name: dir
-  optional: true
 - !Flag
-  description: file name of the individual file used to reconstruct
+  optional: true
   synonyms:
   - --config-file-individual
+  description: file name of the individual file used to reconstruct
   args: !SimpleFlagArg
     name: file-name
-  optional: true
 - !Flag
-  description: '| --memory   <int>   max memory allowed to use'
+  optional: true
   synonyms:
   - -M
+  - --memory
+  description: <int>   max memory allowed to use
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '| --threads  <int>   number of threads'
+  optional: true
   synonyms:
   - -T
+  - --threads
+  description: <int>   number of threads
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '| --version          version'
-  synonyms:
-  - -v
-  args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: '| --help             display usage message'
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: display usage message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: version
+  args: !EmptyFlagArg {}
 help_text: "\nplasmidID is a computational pipeline tha reconstruct and annotate the\
   \ most likely plasmids present in one sample\n\nusage : /usr/local/bin/plasmidID\
   \ <-1 R1> <-2 R2> <-d database(fasta)> <-s sample_name> [-g group_name] [options]\n\
@@ -232,3 +249,4 @@ help_text: "\nplasmidID is a computational pipeline tha reconstruct and annotate
   \ -c scaffolds.fasta -C 60 -s ECO_60 -G ENTERO --no-trim\n\n"
 generated_using:
 - --help
+docker_image:

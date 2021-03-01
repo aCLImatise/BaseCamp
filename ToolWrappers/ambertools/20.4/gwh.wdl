@@ -8,6 +8,9 @@ task Gwh {
     gwh \
       ~{unit}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     unit: "1 Error on OPEN: prmtop"
   }

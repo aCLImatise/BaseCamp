@@ -22,6 +22,9 @@ task TadtoolPlot {
       ~{if defined(normalisation_window) then ("--normalisation-window " +  '"' + normalisation_window + '"') else ""} \
       ~{if defined(data) then ("--data " +  '"' + data + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window_sizes: "Window sizes in base pairs used for TAD calculation.\\nYou can pass (1) a filename with whitespace-delimited\\nwindow sizes, (2) three integers denoting start, stop,\\nand step size to generate a range of window sizes, or\\n(3) more than three integers to define window sizes\\ndirectly. If left at default, window sizes will be\\nlogarithmically spaced between 10**4 and 10**6, or\\n10**6.5 for the insulation and directionality index,\\nrespectively."
     algorithm: "TAD-calling algorithm. Options: insulation,\\nninsulation, directionality. Default: insulation."

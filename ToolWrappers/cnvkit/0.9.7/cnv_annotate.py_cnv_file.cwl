@@ -3,7 +3,7 @@ id: cnv_annotate.py_cnv_file.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_cnv_annotated_otp_y
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cnv_annotate.py

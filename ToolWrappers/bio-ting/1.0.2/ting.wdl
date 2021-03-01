@@ -28,6 +28,9 @@ task Ting {
       ~{if (stringent_filtering) then "--stringent_filtering" else ""} \
       ~{if (km_ers_gli_ph) then "--kmers_gliph" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tcr_sequences: "File holding TCRs"
     reference: "Reference fasta file of naive CDR3 amino acid\\nsequences used for estimation of significant k-mers."

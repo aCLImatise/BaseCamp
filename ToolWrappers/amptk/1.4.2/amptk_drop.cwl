@@ -3,27 +3,27 @@ id: amptk_drop.cwl
 inputs:
 - id: in_input
   doc: Input OTU file (.cluster.otus.fa) (FASTA)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input
 - id: in_reads
   doc: Demultiplexed reads (.demux.fq) (FASTQ)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reads
 - id: in_list
   doc: List of OTU names to remove, separate by space
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --list
 - id: in_file
   doc: List of OTU names to remove in a file, one per line
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --file
 - id: in_out
   doc: 'Output file name. Default: amptk-drop'
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_arguments
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: 'Output file name. Default: amptk-drop'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - amptk

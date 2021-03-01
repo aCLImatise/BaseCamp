@@ -40,6 +40,9 @@ task RpprConvexify {
       ~{if (no_early) then "--no-early" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_package_path: "Reference package path. Required."
     node_numbers: "Put the node numbers in where the bootstraps usually go."

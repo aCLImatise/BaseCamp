@@ -40,14 +40,14 @@ task Sortmerna {
     Boolean? pid
     Boolean? int_optional_deprecated
     Boolean? threads
-    Boolean? double_seed_length
-    Boolean? double_optional_indexing
+    Boolean? double_optional_indexing_seed
+    Boolean? double_optional_indexing_amount
     Boolean? bool_optional_produce
     Boolean? interval
     Boolean? max_pos
     Boolean? dbg_put_db
     Boolean? cmd
-    Boolean? int_optional_task
+    Boolean? int_optional_processing
   }
   command <<<
     sortmerna \
@@ -89,15 +89,18 @@ task Sortmerna {
       ~{if (pid) then "--pid" else ""} \
       ~{if (int_optional_deprecated) then "-a" else ""} \
       ~{if (threads) then "--threads" else ""} \
-      ~{if (double_seed_length) then "-L" else ""} \
-      ~{if (double_optional_indexing) then "-m" else ""} \
+      ~{if (double_optional_indexing_seed) then "-L" else ""} \
+      ~{if (double_optional_indexing_amount) then "-m" else ""} \
       ~{if (bool_optional_produce) then "-v" else ""} \
       ~{if (interval) then "--interval" else ""} \
       ~{if (max_pos) then "--max_pos" else ""} \
       ~{if (dbg_put_db) then "--dbg_put_db" else ""} \
       ~{if (cmd) then "--cmd" else ""} \
-      ~{if (int_optional_task) then "--task" else ""}
+      ~{if (int_optional_processing) then "--task" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "PATH        Required  Reference file (FASTA) absolute or relative path.\\nUse mutliple times, once per a reference file"
     reads: "PATH        Required  Raw reads file (FASTA/FASTQ/FASTA.GZ/FASTQ.GZ).\\nUse twice for files with paired reads"
@@ -137,14 +140,14 @@ task Sortmerna {
     pid: "BOOL        Optional  Add pid to output file names.                           False"
     int_optional_deprecated: "INT         Optional  DEPRECATED in favour of '-threads'. Number of           numCores\\nprocessing threads to use.\\nAutomatically redirects to '-threads'"
     threads: "INT         Optional  Number of Processing threads to use                     numCores"
-    double_seed_length: "DOUBLE      Optional  Indexing: seed length.                                  18"
-    double_optional_indexing: "DOUBLE      Optional  Indexing: the amount of memory (in Mbytes) for building 3072\\nthe index."
+    double_optional_indexing_seed: "DOUBLE      Optional  Indexing: seed length.                                  18"
+    double_optional_indexing_amount: "DOUBLE      Optional  Indexing: the amount of memory (in Mbytes) for building 3072\\nthe index."
     bool_optional_produce: "BOOL        Optional  Produce verbose output when building the index          True"
     interval: "INT         Optional  Indexing: Positive integer: index every Nth L-mer in    1\\nthe reference database e.g. '-interval 2'."
     max_pos: "INT         Optional  Indexing: maximum (integer) number of positions to store  1000\\nfor each unique L-mer. If 0 all positions are stored."
     dbg_put_db: "BOOL        Optional"
     cmd: "BOOL        Optional  Launch an interactive session (command prompt)          False"
-    int_optional_task: "INT         Optional  Processing Task:                                        4\\n0 - align. Only perform alignment\\n1 - post-processing (log writing)\\n2 - generate reports\\n3 - align and post-process\\n4 - all\\n"
+    int_optional_processing: "INT         Optional  Processing Task:                                        4\\n0 - align. Only perform alignment\\n1 - post-processing (log writing)\\n2 - generate reports\\n3 - align and post-process\\n4 - all\\n"
   }
   output {
     File out_stdout = stdout()

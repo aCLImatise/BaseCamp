@@ -3,7 +3,7 @@ id: gcloud_deployment_manager_resources.cwl
 inputs:
 - id: in_deployment
   doc: Deployment name
-  type: string
+  type: string?
   inputBinding:
     prefix: --deployment
 - id: in_resources
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

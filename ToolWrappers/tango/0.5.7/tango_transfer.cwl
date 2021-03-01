@@ -3,17 +3,17 @@ id: tango_transfer.cwl
 inputs:
 - id: in_ignore_unc_rank
   doc: Ignore ORFs unclassified at <rank>
-  type: string
+  type: string?
   inputBinding:
     prefix: --ignore_unc_rank
 - id: in_orf_tax_out
   doc: Also transfer taxonomy back to ORFs and output to file
-  type: File
+  type: File?
   inputBinding:
     prefix: --orf_tax_out
 - id: in_cpus
   doc: Number of cpus to use when transferring taxonomy to
-  type: long
+  type: long?
   inputBinding:
     prefix: --cpus
 - id: in_orf_taxonomy
@@ -42,9 +42,10 @@ outputs:
   type: stdout
 - id: out_orf_tax_out
   doc: Also transfer taxonomy back to ORFs and output to file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_orf_tax_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tango

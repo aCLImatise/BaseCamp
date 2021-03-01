@@ -3,7 +3,7 @@ id: demux_by_barcode_groups.py.cwl
 inputs:
 - id: in_pooled_fast_x
   doc: "Pooled FASTA/FASTQ (optional, if given, will also\noutput demux fa/fq)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --pooled_fastx
 - id: in_positional_arguments
@@ -26,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: in_tuples_indicating_grouping
+- id: in_tuples_indicating_barcode
   doc: Tuples indicating barcode grouping
   type: string
   inputBinding:
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - demux_by_barcode_groups.py

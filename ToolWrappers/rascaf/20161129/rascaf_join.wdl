@@ -16,6 +16,9 @@ task Rascafjoin {
       ~{if defined(ms) then ("-ms " +  '"' + ms + '"') else ""} \
       ~{if (ignore_gap) then "-ignoreGap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_rascaf_output: ": the path to the rascaf output. Can use multiple of -r. (required)"
     prefix_output_file: ": the prefix of the output file. (default: rascaf_scaffold)"

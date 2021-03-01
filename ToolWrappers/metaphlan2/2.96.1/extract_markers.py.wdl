@@ -10,6 +10,9 @@ task ExtractMarkerspy {
       ~{if defined(ifn_markers) then ("--ifn_markers " +  '"' + ifn_markers + '"') else ""} \
       ~{if defined(mpa_pkl) then ("--mpa_pkl " +  '"' + mpa_pkl + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ifn_markers: ""
     mpa_pkl: ""

@@ -30,6 +30,9 @@ task NegativeTrainingSampler {
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if defined(memory) then ("--memory " +  '"' + memory + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     label_file: "Input bed file with labeled regions  [required]"
     reference_file: "Input genome reference in fasta format\\n[required]"

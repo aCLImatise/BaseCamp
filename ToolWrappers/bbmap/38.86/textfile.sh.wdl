@@ -2,18 +2,21 @@ version 1.0
 
 task Textfilesh {
   input {
-    File file
+    File var_file
     String start_line
     String stop_line
   }
   command <<<
     textfile_sh \
-      ~{file} \
+      ~{var_file} \
       ~{start_line} \
       ~{stop_line}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: ""
+    var_file: ""
     start_line: ""
     stop_line: ""
   }

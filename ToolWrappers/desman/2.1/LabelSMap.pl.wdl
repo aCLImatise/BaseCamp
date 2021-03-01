@@ -4,6 +4,9 @@ task LabelSMappl {
   command <<<
     LabelSMap_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

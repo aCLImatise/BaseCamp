@@ -10,6 +10,9 @@ task RapidDiffr {
       ~{expand_dot_grid} \
       ~{lowess}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     expand_dot_grid: "Loading required package: IRanges"
     lowess: "Error in file(file, \\\"rt\\\") : cannot open the connection"

@@ -44,6 +44,9 @@ task RecognicerDf {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(h) then ("-h " +  '"' + h + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     treatment_file: "Names of the sample file you wish to run RECOGNICER\\non. This can either be the relative or the absolute\\npath of the file. Must be in BED or BAM format."
     control_file: "[CONTROL_FILE [CONTROL_FILE ...]], -c [CONTROL_FILE [CONTROL_FILE ...]]\\nName of the control library in BED or BAM format. This\\ncan either be the relative or the absolute path of the\\nfile. If you wish to run RECOGNICER without a control\\nlibrary, simply do not enter the file."

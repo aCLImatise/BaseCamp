@@ -3,12 +3,12 @@ id: genomedata_histogram.cwl
 inputs:
 - id: in_include_coords
   doc: limit summary to genomic coordinates in FILE
-  type: File
+  type: File?
   inputBinding:
     prefix: --include-coords
 - id: in_num_bins
   doc: "use BINS bins\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-bins
 - id: in_gd_archive
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - genomedata-histogram

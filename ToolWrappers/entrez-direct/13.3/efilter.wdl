@@ -54,6 +54,9 @@ task Efilter {
       ~{if (pathway) then "-pathway" else ""} \
       ~{if (label) then "-label" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query: "Query string"
     sort: "Result presentation order"

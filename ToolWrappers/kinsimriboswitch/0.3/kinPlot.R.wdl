@@ -2,9 +2,9 @@ version 1.0
 
 task KinPlotR {
   input {
-    Boolean? input_file_header
+    Boolean? input_file_has
     Boolean? use_linear_instead
-    Boolean? cut_plot_reached
+    Boolean? cut_plot_when
     Boolean? opts
     Boolean? i_file
     Boolean? prob_min
@@ -14,9 +14,9 @@ task KinPlotR {
   }
   command <<<
     kinPlot_R \
-      ~{if (input_file_header) then "-H" else ""} \
+      ~{if (input_file_has) then "-H" else ""} \
       ~{if (use_linear_instead) then "-l" else ""} \
-      ~{if (cut_plot_reached) then "-c" else ""} \
+      ~{if (cut_plot_when) then "-c" else ""} \
       ~{if (opts) then "--opts" else ""} \
       ~{if (i_file) then "--ifile" else ""} \
       ~{if (prob_min) then "--probMin" else ""} \
@@ -24,10 +24,13 @@ task KinPlotR {
       ~{if (second_color_index) then "--second-color-index" else ""} \
       ~{if (sum_states) then "--sum-states" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    input_file_header: "Input file has a header which is used to\\nname the state columns."
+    input_file_has: "Input file has a header which is used to\\nname the state columns."
     use_linear_instead: "Use linear instead of logarithmic time"
-    cut_plot_reached: "Cut off plot when equilibrium is reached"
+    cut_plot_when: "Cut off plot when equilibrium is reached"
     opts: "RDS file containing argument values"
     i_file: "Name(s) of input file(s). Separate multiple\\nnames by whitespace. Expects a table of\\nfloat values where the first column\\nrepresents a continous time scale and any\\nsucessive column represents the population\\nof a certain state at that time value. For\\nnaming of the states, use a header line,\\ncf. option -H."
     prob_min: "Minimal probability a state needs to\\nacquire during the simulation to be\\nvisualized. [default: 0.03]"

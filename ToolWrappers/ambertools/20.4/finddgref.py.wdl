@@ -66,6 +66,9 @@ task Finddgrefpy {
       ~{if defined(ref) then ("-ref " +  '"' + ref + '"') else ""} \
       ~{if defined(group_file) then ("-groupfile " +  '"' + group_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     author: "show the program's author information and exit"
     md_exec: "Path to the AMBER executable file. Example:\\n$AMBERHOME/bin/pmemd"

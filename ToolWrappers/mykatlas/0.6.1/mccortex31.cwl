@@ -3,37 +3,37 @@ id: mccortex31.cwl
 inputs:
 - id: in_quiet
   doc: Silence status output normally printed to STDERR
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_force
   doc: Overwrite output files if they already exist
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_memory
   doc: 'Memory e.g. 1GB [default: 1GB]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --memory
 - id: in_nk_mers
   doc: 'Hash entries [default: 4M, ~4 million]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --nkmers
 - id: in_threads
   doc: 'Limit on proccessing threads [default: 2]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_out
   doc: Output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_paths
   doc: Links file to load (can specify multiple times)
-  type: File
+  type: File?
   inputBinding:
     prefix: --paths
 - id: in_breakpoints
@@ -182,9 +182,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mccortex31

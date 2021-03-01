@@ -1,0 +1,81 @@
+!Command
+command:
+- jcast
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: rmats_folder
+  description: path to folder storing rMATS output
+- !Positional
+  optional: false
+  position: 1
+  name: gtf_file
+  description: path to Ensembl gtf file
+- !Positional
+  optional: false
+  position: 2
+  name: genome
+  description: path to genome file
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: 'name of the output files [default: psq_out]'
+  args: !SimpleFlagArg
+    name: OUT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --read
+  description: 'minimum read counts to consider [default: 1]'
+  args: !SimpleFlagArg
+    name: READ
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --canonical
+  description: "write out canonical protein sequence even if\ntranscriptslices are\
+    \ untranslatable [default: True]"
+  args: !SimpleFlagArg
+    name: CANONICAL
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pvalue
+  description: "discard junctions with rMATS pvalue below this\nthreshold [default:\
+    \ 0.01]\n"
+  args: !SimpleFlagArg
+    name: PVALUE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: jcast [-h] [-o OUT] [-r READ] [-c CANONICAL] [-p PVALUE]\n    \
+  \         rmats_folder gtf_file genome\n\njcast retrieves transcript splice junctionsand\
+  \ translates them into amino acid\nsequences\n\npositional arguments:\n  rmats_folder\
+  \          path to folder storing rMATS output\n  gtf_file              path to\
+  \ Ensembl gtf file\n  genome                path to genome file\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -o OUT, --out OUT  \
+  \   name of the output files [default: psq_out]\n  -r READ, --read READ  minimum\
+  \ read counts to consider [default: 1]\n  -c CANONICAL, --canonical CANONICAL\n\
+  \                        write out canonical protein sequence even if\n        \
+  \                transcriptslices are untranslatable [default: True]\n  -p PVALUE,\
+  \ --pvalue PVALUE\n                        discard junctions with rMATS pvalue below\
+  \ this\n                        threshold [default: 0.01]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/jcast:0.3.1--py_0

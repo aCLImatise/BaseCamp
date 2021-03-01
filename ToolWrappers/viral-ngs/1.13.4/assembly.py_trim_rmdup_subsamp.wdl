@@ -20,6 +20,9 @@ task AssemblypyTrimRmdupSubsamp {
       ~{if defined(tmp_dir) then ("--tmp_dir " +  '"' + tmp_dir + '"') else ""} \
       ~{if (tmp_dir_keep) then "--tmp_dirKeep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_reads: "Subsample reads to no more than this many individual\\nreads. Note that paired reads are given priority, and\\nunpaired reads are included to reach the count if\\nthere are too few paired reads to reach n_reads.\\n(default 100000)"
     loglevel: "Verboseness of output. [default: DEBUG]"

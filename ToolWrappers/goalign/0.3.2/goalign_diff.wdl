@@ -38,6 +38,9 @@ task GoalignDiff {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     counts: "Count differences instead of writting only identical characters"
     no_gaps: "Do not count gaps (only with --counts)"

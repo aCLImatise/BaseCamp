@@ -4,173 +4,155 @@ command:
 positional: []
 named:
 - !Flag
-  description: '[--output_prefix out_prefix] [--tasks N]'
+  optional: true
   synonyms:
   - --output_path
+  description: '[--output_prefix out_prefix] [--tasks N]'
   args: !SimpleFlagArg
     name: out_path
-  optional: true
 - !Flag
-  description: 'Run the pipeline. USAGE: phylics --run [--run_cnvs |'
+  optional: true
   synonyms:
   - --run
+  description: 'Run the pipeline. USAGE: phylics --run [--run_cnvs |'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '| --run_multiple] --input_dirs'
+  optional: true
   synonyms:
   - --run_single
+  - --run_multiple
+  description: '] --input_dirs'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Run 10x data pre-processing module. USAGE: phylics\n--run_10x_preproc\
-    \ --input_dirs\nsample_name:10x_out_path --output_path out_oath\n[--output_prefix\
-    \ out_prefix] [--verbose]. Only single-\nsample execution is available for this\
-    \ option: only\nthe first input directory is considered, even if more\nthan one\
-    \ has been declared."
+  optional: true
   synonyms:
   - --run_10x_preproc
+  description: 'Run 10x data pre-processing module. USAGE: phylics'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Run the cell filtering module. USAGE: phylics\n--run_cell_filtering\
-    \ --input_dirs\nsample_name:input_path --intervals [v1-v2 [v1-v2 ...]\n--values\
-    \ [v [v ...]] --output_path out_path\n[--output_prefix out_prefix] [--verbose].\
-    \ Only single-\nsample execution is available for this option: only\nthe first\
-    \ input directory is considered, even if more\nthan one has been declared. NOTE\
-    \ that at least one of\nthe two options, \"--intervals\" and \"--values\", must\n\
-    contain values to make this command effective."
+  optional: true
   synonyms:
   - --run_cell_filtering
+  description: 'Run the cell filtering module. USAGE: phylics'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Run only the CNV calling stage. USAGE: phylics --run\n--run_cnvs --input_dirs\
-    \ beds_dir [beds_dir ...]\n--genome hg19 --binning variable_500000_101_bwa\n[--init_ginkgo]\
-    \ [--verbose]"
+  optional: true
+  synonyms:
+  - --values
+  description: '[v [v ...]] --output_path out_path'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --run_cnvs
+  description: 'Run only the CNV calling stage. USAGE: phylics --run'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Run only the multiple-sample analysis stage. USAGE:\nphylics --run\
-    \ --run_multiple --input_dirs\nsample:input_dir [sample:input_dir ...] --output_path\n\
-    out_path [--output_prefix out_prefix] [--verbose]"
+  optional: true
   synonyms:
-  - --run_multiple
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
+  - --input_dirs
   description: ":input_dir [sample_name:input_dir ...]\nPairs made of sample name\
     \ and directory path,\nseparated by \":\", for each input sample. Sample name\n\
     and input directory path cannot contain \":\""
-  synonyms:
-  - --input_dirs
   args: !SimpleFlagArg
     name: sample_name
-  optional: true
 - !Flag
-  description: Clustering method (default = complete)
+  optional: true
   synonyms:
   - --method
+  description: Clustering method (default = complete)
   args: !ChoiceFlagArg
     choices: !!set
-      centroid:
+      single:
+      average:
       weighted:
       median:
       complete:
-      single:
+      centroid:
       ward:
-      average:
-  optional: true
 - !Flag
-  description: Distance metric
+  optional: true
   synonyms:
   - --metric
+  description: Distance metric
   args: !ChoiceFlagArg
     choices: !!set
-      canberra:
-      sqeuclidean:
-      euclidean:
-      hamming:
-      cosine:
       correlation:
-      cityblock:
+      canberra:
       chebyshev:
+      sqeuclidean:
+      cosine:
+      hamming:
+      cityblock:
+      euclidean:
       jaccard:
-  optional: true
 - !Flag
-  description: "A string to be pre-pended to the names automatically\ngenerated for\
-    \ the output directories"
+  optional: true
   synonyms:
   - --output_prefix
+  description: "A string to be pre-pended to the names automatically\ngenerated for\
+    \ the output directories"
   args: !SimpleFlagArg
     name: out_prefix
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --tasks
   description: "Maximum number of tasks to be run in parallel. It\nallows to execute\
     \ single-sample analyses in parallel\nand to parallelize the permutation test\
     \ execution for\nthe heterogeneity score computation."
-  synonyms:
-  - --tasks
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Seed to initialize the pseudo-random generator used to\nperform the\
-    \ permutation test."
+  optional: true
   synonyms:
   - --seed
+  description: "Seed to initialize the pseudo-random generator used to\nperform the\
+    \ permutation test."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Number of permutations to execute the permutation test\nfor the heterogeneity\
-    \ score computation."
+  optional: true
   synonyms:
   - --n_permutations
+  description: "Number of permutations to execute the permutation test\nfor the heterogeneity\
+    \ score computation."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --reclust
   description: "If this option is specified, only the clustering part\nis executed\
     \ with the specified number of clusters (see\n--n_clusters option), unless --reinit\
     \ option is\nspecified (see below)."
-  synonyms:
-  - --reclust
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: This option has effect only if combined with the
+  optional: true
   synonyms:
   - --reinit
+  description: This option has effect only if combined with the
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "List of of mean ploidy intervals: cells which mean\nploidies are in\
-    \ the specified ranges are filtered out"
+  optional: true
   synonyms:
   - --intervals
+  description: "List of of mean ploidy intervals: cells which mean\nploidies are in\
+    \ the specified ranges are filtered out"
   args: !RepeatFlagArg
     name: v1-v2
-  optional: true
 - !Flag
-  description: "List of of mean ploidy values: cells which mean\nploidies are equal\
-    \ to the specified ones are filtered\nout"
-  synonyms:
-  - --values
-  args: !RepeatFlagArg
-    name: v
   optional: true
-- !Flag
-  description: Directory name for ROOT_DIR/genomes/${chosen_genome}
   synonyms:
   - --genome
+  description: Directory name for ROOT_DIR/genomes/${chosen_genome}
   args: !SimpleFlagArg
     name: genome
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --binning
   description: "A complex value made of the concatenation of - type:\nvariable or\
     \ fixed (bins. Variable refers to amount of\nmappable genome, recommended); -\
     \ size: bin size; -\nread-length: mapped reads length; - aligner: bowtie or\n\
@@ -178,27 +160,24 @@ named:
     \ of that length with\nthat aligner on the whole genome. This is used to\ncalculate\
     \ bins of \"mappable\" (i.e. variable)\ngenome.The resulting value is the name\
     \ of a file under\nginkgo/genomes/$choosen_genome/original/ with the bin\ncoordinates."
-  synonyms:
-  - --binning
   args: !SimpleFlagArg
     name: variable_500000_101_bwa
-  optional: true
 - !Flag
-  description: Verbose execution.
+  optional: true
   synonyms:
   - --verbose
+  description: Verbose execution.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: phylics [-h] (--run | --run_10x_preproc | --run_cell_filtering)\n\
@@ -288,3 +267,4 @@ help_text: "usage: phylics [-h] (--run | --run_10x_preproc | --run_cell_filterin
   \                        coordinates.\n  --verbose             Verbose execution.\n"
 generated_using:
 - --help
+docker_image:

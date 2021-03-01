@@ -26,6 +26,9 @@ task RImportDatapy {
       ~{if defined(html) then ("--html " +  '"' + html + '"') else ""} \
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Keep temporary files to debug program."
     normalization: "To normalize data before analysis. Use this option if\\nyou didnt do it in FROGS Abundance normalisation.\\n[Default: False]"

@@ -16,6 +16,9 @@ task TbprofilerReformat {
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(external_db) then ("--external_db " +  '"' + external_db + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     txt: "Add text output (default: False)"
     csv: "Add CSV output (default: False)"

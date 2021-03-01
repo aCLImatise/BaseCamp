@@ -32,6 +32,9 @@ task Coral {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     preview: "determine fragment-length-range and library-type and exit"
     library_type: "<first, second, unstranded>  library type of the sample, default: unstranded"

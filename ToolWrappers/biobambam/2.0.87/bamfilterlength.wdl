@@ -4,6 +4,9 @@ task Bamfilterlength {
   command <<<
     bamfilterlength
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

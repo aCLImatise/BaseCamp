@@ -56,6 +56,9 @@ task NanoComp {
       ~{if defined(pickle) then ("--pickle " +  '"' + pickle + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Set the allowed number of threads to be used by the script"
     outdir: "Specify directory in which output has to be created."

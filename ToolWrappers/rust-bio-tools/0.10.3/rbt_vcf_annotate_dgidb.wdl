@@ -12,6 +12,9 @@ task RbtVcfannotatedgidb {
       ~{if defined(field) then ("--field " +  '"' + field + '"') else ""} \
       ~{if defined(genes_per_request) then ("--genes-per-request " +  '"' + genes_per_request + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     api_path: "url prefix for requesting interaction drugs by gene names. [default:\\nhttp://dgidb.org/api/v2/interactions.json?genes=]"
     field: "Info field name to be used for annotation. [default: dgiDB_drugs]"

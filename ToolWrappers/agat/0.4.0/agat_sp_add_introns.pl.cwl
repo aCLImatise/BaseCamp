@@ -3,12 +3,12 @@ id: agat_sp_add_introns.pl.cwl
 inputs:
 - id: in_ref_file
   doc: Input GTF/GFF file.
-  type: File
+  type: File?
   inputBinding:
     prefix: -reffile
 - id: in_output
   doc: Output gff3 file where the gene incriminated will be write.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_features_dot
@@ -23,9 +23,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output gff3 file where the gene incriminated will be write.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agat_sp_add_introns.pl

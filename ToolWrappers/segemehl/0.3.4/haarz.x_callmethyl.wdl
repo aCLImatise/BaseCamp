@@ -8,18 +8,21 @@ task HaarzxCallmethyl {
     File? pathfilename_output_file
     Boolean? unique_only
     String haar_z_do_tx
-    File? file
+    File? var_file
   }
   command <<<
     haarz_x callmethyl \
       ~{haar_z_do_tx} \
-      ~{file} \
+      ~{var_file} \
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(pathfilename_output_file) then ("--output " +  '"' + pathfilename_output_file + '"') else ""} \
       ~{if (unique_only) then "--uniqueonly" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: "[<file>]  list of path/filename(s) of fasta database sequence(s) (default:none)"
     bam: "path/filename of sorted and indexed (!) bamfile (default:none)"
@@ -27,7 +30,7 @@ task HaarzxCallmethyl {
     pathfilename_output_file: "path/filename of output file (will be sorted) (default:none)"
     unique_only: "only use uniquely mapped reads"
     haar_z_do_tx: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

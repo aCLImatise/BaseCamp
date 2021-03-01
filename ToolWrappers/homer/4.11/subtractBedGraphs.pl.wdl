@@ -18,6 +18,9 @@ task SubtractBedGraphspl {
       ~{if defined(name) then ("-name " +  '"' + name + '"') else ""} \
       ~{if (center) then "-center" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cov: "(to remove regions with low coverage)"
     cov_thresh: "<#> (fraction of average coverage below which to skip region, default: 0.15)"

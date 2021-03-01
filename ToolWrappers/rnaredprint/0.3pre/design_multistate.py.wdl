@@ -2,7 +2,7 @@ version 1.0
 
 task Designmultistatepy {
   input {
-    File? read_structures_read
+    File? read_structures_input
     Float? temperature
     Int? number
     String? model
@@ -16,7 +16,7 @@ task Designmultistatepy {
   }
   command <<<
     design_multistate_py \
-      ~{if defined(read_structures_read) then ("--input " +  '"' + read_structures_read + '"') else ""} \
+      ~{if defined(read_structures_input) then ("--input " +  '"' + read_structures_input + '"') else ""} \
       ~{if defined(temperature) then ("--temperature " +  '"' + temperature + '"') else ""} \
       ~{if defined(number) then ("--number " +  '"' + number + '"') else ""} \
       ~{if defined(model) then ("--model " +  '"' + model + '"') else ""} \
@@ -28,8 +28,11 @@ task Designmultistatepy {
       ~{if (csv_output) then "--csv_output" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    read_structures_read: "Read structures from input file. Default: read from\\nstdin. Format must be dot-bracket structures, each per\\none line with a trailing line containing only a semi-\\ncolon. (default: <_io.TextIOWrapper name='<stdin>'\\nmode='r' encoding='utf-8'>)"
+    read_structures_input: "Read structures from input file. Default: read from\\nstdin. Format must be dot-bracket structures, each per\\none line with a trailing line containing only a semi-\\ncolon. (default: <_io.TextIOWrapper name='<stdin>'\\nmode='r' encoding='utf-8'>)"
     temperature: "Temperature of the energy calculations. (default:\\n37.0)"
     number: "Number of designs to generate (default: 1000)"
     model: "Model for getting a new sequence: uniform, nussinov,\\nbasepairs, stacking (default: basepairs)"

@@ -1,0 +1,76 @@
+!Command
+command:
+- gdtools
+- APPLY
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output file name (DEFAULT=output.*)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
+  description: 'Output file format (Options: FASTA, GENBANK, GFF3) (DEFAULT=FASTA)'
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: File containing reference sequences in GenBank, GFF3, or FASTA format.
+    Option may be provided multiple times for multiple files (REQUIRED)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --seq-id
+  description: Sequence ID to keep in output. If this argument is provided, other
+    sequences are deleted after the APPLY. May be provided multiple times.
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Verbose mode
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display detailed help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\ngdtools APPLY [ -o output.gff3 -f GFF3 -s seq_id ] -r reference.gbk\
+  \ input.gd\n  -h,--help                        Display detailed help message\n \
+  \ -o,--output <arg>                Output file name (DEFAULT=output.*)\n  -f,--format\
+  \ <arg>                Output file format (Options: FASTA, GENBANK, GFF3) (DEFAULT=FASTA)\n\
+  \  -r,--reference <arg>             File containing reference sequences in GenBank,\
+  \ GFF3, or FASTA format. Option may be provided multiple times for multiple files\
+  \ (REQUIRED)\n  -s,--seq-id <arg>                Sequence ID to keep in output.\
+  \ If this argument is provided, other sequences are deleted after the APPLY. May\
+  \ be provided multiple times.\n  -v,--verbose                     Verbose mode\n\
+  \nInput a single Genome Diff, and as many reference files\nas you like.  Using the\
+  \ Genome Diff, this will apply all\nthe mutations to the reference sequences, output\
+  \ is to\na single file that includes all the references in the\nrequested format.\
+  \ Input file is expected to only have\nconsensus mutations. Polymorphic mutations\
+  \ are ignored.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/breseq:0.35.5--h8b12597_0

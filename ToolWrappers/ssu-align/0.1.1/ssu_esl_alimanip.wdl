@@ -68,6 +68,9 @@ task Ssueslalimanip {
       ~{if (dna) then "--dna" else ""} \
       ~{if (rna) then "--rna" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_alignment_file: ": output the alignment to file <f>, not stdout"
     in_format: ": specify that input file is in format <s>"

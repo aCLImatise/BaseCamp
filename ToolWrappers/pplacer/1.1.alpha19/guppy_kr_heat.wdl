@@ -5,7 +5,7 @@ task GuppyKrHeat {
     Boolean? point_mass
     Boolean? pp
     Boolean? reference_package_path
-    Boolean? exponent_ie_value
+    Boolean? exponent_kr_value
     Boolean? min_fat
     Boolean? total_width
     Boolean? width_factor
@@ -28,7 +28,7 @@ task GuppyKrHeat {
       ~{if (point_mass) then "--point-mass" else ""} \
       ~{if (pp) then "--pp" else ""} \
       ~{if (reference_package_path) then "-c" else ""} \
-      ~{if (exponent_ie_value) then "-p" else ""} \
+      ~{if (exponent_kr_value) then "-p" else ""} \
       ~{if (min_fat) then "--min-fat" else ""} \
       ~{if (total_width) then "--total-width" else ""} \
       ~{if (width_factor) then "--width-factor" else ""} \
@@ -40,11 +40,14 @@ task GuppyKrHeat {
       ~{if (prefix) then "--prefix" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     point_mass: "Treat every pquery as a point mass concentrated on the highest-weight placement."
     pp: "Use posterior probability for the weight."
     reference_package_path: "Reference package path."
-    exponent_ie_value: "Exponent for KR integration, i.e. value of p in Z_p. Default 1."
+    exponent_kr_value: "Exponent for KR integration, i.e. value of p in Z_p. Default 1."
     min_fat: "The minimum branch length for fattened edges (to increase their visibility). To turn off set to 0. Default: 0.01"
     total_width: "Set the total pixel width for all of the branches of the tree. Default: 300"
     width_factor: "Override total-width by directly setting the number of pixels per unit of thing displayed."

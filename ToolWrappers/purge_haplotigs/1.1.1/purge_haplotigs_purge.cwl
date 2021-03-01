@@ -1,90 +1,88 @@
 class: CommandLineTool
 id: purge_haplotigs_purge.cwl
 inputs:
-- id: in_genome_genome_assembly
-  doc: / -genome        Genome assembly in fasta format. Needs to be indexed with
-    samtools faidx.
-  type: boolean
+- id: in_genome
+  doc: Genome assembly in fasta format. Needs to be indexed with samtools faidx.
+  type: boolean?
   inputBinding:
-    prefix: -g
-- id: in_coverage_contig_file
-  doc: / -coverage      Contig by contig coverage stats csv file from the previous
-    step.
-  type: boolean
+    prefix: -genome
+- id: in_coverage
+  doc: Contig by contig coverage stats csv file from the previous step.
+  type: boolean?
   inputBinding:
-    prefix: -c
-- id: in_threads_number_use
-  doc: / -threads       Number of worker threads to use. DEFAULT = 4
-  type: boolean
+    prefix: -coverage
+- id: in_threads
+  doc: Number of worker threads to use. DEFAULT = 4
+  type: boolean?
   inputBinding:
-    prefix: -t
-- id: in_outprefix_prefix_curated
-  doc: / -outprefix     Prefix for the curated assembly. DEFAULT = "curated"
-  type: boolean
+    prefix: -threads
+- id: in_out_prefix
+  doc: Prefix for the curated assembly. DEFAULT = "curated"
+  type: boolean?
   inputBinding:
-    prefix: -o
-- id: in_repeats_bedformat_file
-  doc: / -repeats       BED-format file of repeats to ignore during analysis.
-  type: boolean
+    prefix: -outprefix
+- id: in_repeats
+  doc: BED-format file of repeats to ignore during analysis.
+  type: boolean?
   inputBinding:
-    prefix: -r
-- id: in_dotplots_generate_dotplots
-  doc: / -dotplots      Generate dotplots for manual inspection.
-  type: boolean
+    prefix: -repeats
+- id: in_dot_plots
+  doc: Generate dotplots for manual inspection.
+  type: boolean?
   inputBinding:
-    prefix: -d
-- id: in_bam_samtoolsindexed_bam
-  doc: "/ -bam           Samtools-indexed bam file of aligned and sorted reads/subreads\
-    \ to the\nreference, required for generating dotplots."
-  type: boolean
+    prefix: -dotplots
+- id: in_bam
+  doc: "Samtools-indexed bam file of aligned and sorted reads/subreads to the\nreference,\
+    \ required for generating dotplots."
+  type: boolean?
   inputBinding:
-    prefix: -b
-- id: in_falconnaming_rename_contigs
-  doc: / -falconNaming  Rename contigs in the style used by FALCON/FALCON-unzip
-  type: boolean
+    prefix: -bam
+- id: in_falcon_naming
+  doc: Rename contigs in the style used by FALCON/FALCON-unzip
+  type: boolean?
   inputBinding:
-    prefix: -f
-- id: in_aligncov_percent_cutoff
-  doc: / -align_cov     Percent cutoff for identifying a contig as a haplotig. DEFAULT
-    = 70
-  type: boolean
+    prefix: -falconNaming
+- id: in_align_cov
+  doc: Percent cutoff for identifying a contig as a haplotig. DEFAULT = 70
+  type: boolean?
   inputBinding:
-    prefix: -a
-- id: in_maxmatch_percent_cutoff
-  doc: "/ -max_match     Percent cutoff for identifying repetitive contigs. Ignored\
-    \ when\nusing repeat annotations (-repeats). DEFAULT = 250"
-  type: boolean
+    prefix: -align_cov
+- id: in_max_match
+  doc: "Percent cutoff for identifying repetitive contigs. Ignored when\nusing repeat\
+    \ annotations (-repeats). DEFAULT = 250"
+  type: boolean?
   inputBinding:
-    prefix: -m
+    prefix: -max_match
 - id: in_minimap_indexing_drop
   doc: Minimap2 indexing, drop minimisers every N bases, DEFAULT = 4G
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -I
-- id: in_verbose_print_everything
-  doc: / -verbose       Print EVERYTHING.
-  type: boolean
+- id: in_verbose
+  doc: Print EVERYTHING.
+  type: boolean?
   inputBinding:
-    prefix: -v
+    prefix: -verbose
 - id: in_limit_io
   doc: Limit for I/O intensive jobs. DEFAULT = -threads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -limit_io
 - id: in_wind_min
   doc: Min window size for BED coverage plots (for dotplots). DEFAULT = 5000
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -wind_min
 - id: in_wind_nmax
   doc: Max windows per contig for BED coverage plots (for dotplots). DEFAULT = 200
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -wind_nmax
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - purge_haplotigs

@@ -3,7 +3,7 @@ version 1.0
 task ProteinsNotInLibrarypy {
   input {
     File? a_fasta_file
-    File? csv_file_column
+    File? csv_file_proteinname
     File? csv_output_file
     String var_3
     String it
@@ -14,7 +14,7 @@ task ProteinsNotInLibrarypy {
     String search
     String to
     String display
-    File file
+    File var_file
     String for
     String and
     String which
@@ -46,7 +46,7 @@ task ProteinsNotInLibrarypy {
       ~{search} \
       ~{to} \
       ~{display} \
-      ~{file} \
+      ~{var_file} \
       ~{for} \
       ~{and} \
       ~{which} \
@@ -67,12 +67,15 @@ task ProteinsNotInLibrarypy {
       ~{csv} \
       ~{entries} \
       ~{if defined(a_fasta_file) then ("--fasta " +  '"' + a_fasta_file + '"') else ""} \
-      ~{if defined(csv_file_column) then ("--in " +  '"' + csv_file_column + '"') else ""} \
+      ~{if defined(csv_file_proteinname) then ("--in " +  '"' + csv_file_proteinname + '"') else ""} \
       ~{if defined(csv_output_file) then ("--out " +  '"' + csv_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_fasta_file: "A fasta file"
-    csv_file_column: "A csv file with the column ProteinName"
+    csv_file_proteinname: "A csv file with the column ProteinName"
     csv_output_file: "A csv output file containing all proteins not in the\\ncsv file\\n"
     var_3: ""
     it: ""
@@ -83,7 +86,7 @@ task ProteinsNotInLibrarypy {
     search: ""
     to: ""
     display: ""
-    file: ""
+    var_file: ""
     for: ""
     and: ""
     which: ""

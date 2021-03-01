@@ -18,6 +18,9 @@ task Partitiongraphpy {
       ~{if (force) then "--force" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     info: "print citation information"
     stop_tags: "Use stoptags in this file during partitioning\\n(default: )"

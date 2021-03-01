@@ -3,12 +3,12 @@ id: ref_eval_estimate_true_assembly.cwl
 inputs:
 - id: in_reference
   doc: "The prefix of the reference built by rsem-prepare-reference.\nRequired."
-  type: string
+  type: string?
   inputBinding:
     prefix: --reference
 - id: in_expression
   doc: "The prefix of the expression built by\nrsem-calculate-expression. Required."
-  type: string
+  type: string?
   inputBinding:
     prefix: --expression
 - id: in_paired_end
@@ -18,14 +18,14 @@ inputs:
     \ was run with the --paired-end flag,\nyou can omit it here in order to generate\
     \ an unscaffolded\nassembly. In this case, each mate will be treated as an\nindependent\
     \ read.)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --paired-end
 - id: in_assembly
   doc: "A prefix to write the \"true\" assembly or sequence of\nassemblies to. The\
     \ suffix _x.fa will be appended to this\nprefix, where x is the minimum overlap\
     \ size. Required."
-  type: long
+  type: long?
   inputBinding:
     prefix: --assembly
 - id: in_min_overlap
@@ -39,7 +39,7 @@ inputs:
     will be produced, corresponding to --min-overlap=2,\n--min-overlap=3, and --min-overlap=4\
     \ You might use this\noption to compute ideal assemblies at all overlap sizes,\n\
     e.g., --min-overlap=0,76 for 76-length reads.\nDefault: 0."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-overlap
 - id: in_min_alignment_prob
@@ -47,7 +47,7 @@ inputs:
     \ transcript) with posterior probability,\nas calculated by RSEM, strictly less\
     \ than this value will be\ndiscarded. Noise reads, with posterior probability\
     \ exactly 0,\nare always discarded. Default: 0."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-alignment-prob
 - id: in_alignment_policy
@@ -68,7 +68,7 @@ inputs:
     \ posterior distribution renormalized as\nappropriate. As another example, if\n\
     \"--min-alignment-prob=0.90 --alignment-policy=all\" is given,\nthen all alignments\
     \ with posterior probability at least 0.90\nwill be used.\nDefault: sample.\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --alignment-policy
 - id: in_alignments_dot
@@ -80,6 +80,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ref-eval-estimate-true-assembly

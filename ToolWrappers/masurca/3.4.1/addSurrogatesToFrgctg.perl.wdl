@@ -16,6 +16,9 @@ task AddSurrogatesToFrgctgperl {
       ~{if defined(help_dotposmapdotutgctg) then ("--help.posmap.utgctg " +  '"' + help_dotposmapdotutgctg + '"') else ""} \
       ~{if defined(help_dotposmapdotfrgctg) then ("--help.posmap.frgctg " +  '"' + help_dotposmapdotfrgctg + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help_dot_asm: "'t exist!"
     help_dot_pos_map_do_tut_glen: "'t exist!"

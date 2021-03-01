@@ -4,6 +4,9 @@ task Readmepdf {
   command <<<
     readme_pdf
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

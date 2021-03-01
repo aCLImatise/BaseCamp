@@ -1,30 +1,16 @@
 class: CommandLineTool
 id: splash_plot.conversions.cwl
 inputs:
-- id: in_o
-  doc: ''
-  type: File
+- id: in_slam_dunk_dir
+  doc: "T->C conversion rate\n"
+  type: string?
   inputBinding:
-    prefix: -o
-- id: in_slam
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -slam
-- id: in_sim
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -sim
+    prefix: --slamdunkDir
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_o
-  doc: ''
-  type: File
-  outputBinding:
-    glob: $(inputs.in_o)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - splash

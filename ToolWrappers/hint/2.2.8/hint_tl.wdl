@@ -30,6 +30,9 @@ task HintTl {
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     back_dir: "[-c CUTOFF] [-o OUTDIR]"
     matrix_file: "The matrix compressed file contains 1Mb and 100kb\\nresolutions Hi-C contact matrix (.hic format), or 1Mb\\nand 100kb resolution files seperate with ',', like\\n/path/to/data_1Mb.cool,/path/to/data_100kb.cool or the\\ndirectory that contain Hi-C interaction matrix in\\nsparse or dense matrix format, interchromosomal\\ninteraction matrices only. Absolute path is required"

@@ -92,6 +92,9 @@ task Fastqdump2108 {
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     accession: "Replaces accession derived from <path> in\\nfilename(s) and deflines (only for\\nsingle table dump)"
     table: "Table name within cSRA object, default is\\n\\\"SEQUENCE\\\""

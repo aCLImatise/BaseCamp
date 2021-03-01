@@ -3,12 +3,12 @@ id: fuma_gencode_gtf_to_bed.cwl
 inputs:
 - id: in_output
   doc: output filename; '-' for stdout
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -V
 - id: in_gene_code_gtf_file
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: output filename; '-' for stdout
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fuma-gencode-gtf-to-bed

@@ -16,6 +16,9 @@ task BedChunk {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     desired_chunk_size: "The desired chunk size. Note: Not all chunks will have this size. Regions are split to chunks that are closest to the the desired size."
     in: "Input BED file. If unset, reads from STDIN.\\nDefault value: ''"

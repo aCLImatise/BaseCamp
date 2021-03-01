@@ -10,13 +10,14 @@ inputs:
     \ - merger of both\nsets); AND (AND - only those in both sets);\nXOR (XOR - only\
     \ those not in both sets); NOT\n(NOT - those of the first set that are not\nin\
     \ the second))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -operator
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - listor

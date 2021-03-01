@@ -11,7 +11,7 @@ task PancakeCore {
     Array[String] exclude_chromosomes
     Int? max_non_core_frac
     Int? min_len
-    Directory? directory_files_core
+    Directory? directory_files_arewritten
     Boolean? no_output
     File? bed_file
     Int? max_space
@@ -27,11 +27,14 @@ task PancakeCore {
       ~{if defined(exclude_chromosomes) then ("--exclude_chromosomes " +  '"' + exclude_chromosomes + '"') else ""} \
       ~{if defined(max_non_core_frac) then ("--max_non_core_frac " +  '"' + max_non_core_frac + '"') else ""} \
       ~{if defined(min_len) then ("--min_len " +  '"' + min_len + '"') else ""} \
-      ~{if defined(directory_files_core) then ("--output " +  '"' + directory_files_core + '"') else ""} \
+      ~{if defined(directory_files_arewritten) then ("--output " +  '"' + directory_files_arewritten + '"') else ""} \
       ~{if (no_output) then "--no_output" else ""} \
       ~{if defined(bed_file) then ("--bed_file " +  '"' + bed_file + '"') else ""} \
       ~{if defined(max_space) then ("--max_space " +  '"' + max_space + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_file: "Name of PanCake Data Object File (required)"
     ref_chrom: "Reference CHROMOSOME (define either ONE reference\\nchromosome OR ONE reference genome)"
@@ -42,7 +45,7 @@ task PancakeCore {
     exclude_chromosomes: "Names of CHROMOSOMES to exclude from core analysis\\n(DEFAULT: No chromosomes excluded)"
     max_non_core_frac: "Maximum fraction of non-core sequence regions within\\neach included sequence (FLOAT, DEAFULT=0.05)"
     min_len: "minimum length of regions to identify as part of core\\ngenome (INTEGER, DEFAULT=25)"
-    directory_files_core: "directory to which .fasta files of core regions are\\nwritten (DEFAULT: core_{REF_CHROM|REF_GENOME})"
+    directory_files_arewritten: "directory to which .fasta files of core regions are\\nwritten (DEFAULT: core_{REF_CHROM|REF_GENOME})"
     no_output: "if set, supress .fasta output of core regions"
     bed_file: ".bed file to which core regions are written (DEFAULT=\\ncore_{REF_CHROM|REF_GENOME}.bed)"
     max_space: "maximum non-core space allowed within a core region\\n(DEFAULT=25)\\n"

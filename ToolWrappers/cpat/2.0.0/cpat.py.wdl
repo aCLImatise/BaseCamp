@@ -20,6 +20,9 @@ task Cpatpy {
       ~{if defined(start) then ("--start " +  '"' + start + '"') else ""} \
       ~{if defined(stop) then ("--stop " +  '"' + stop + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene: "RNAs either in BED or FASTA format: If this is BED\\nformat file, '-r/--ref' must also be specified; if\\nthis is RNA sequence file in FASTA format, ignore the\\n' r/--ref ' option. The input BED or FASTA file could\\nbe regular text file or compressed file (*.gz, *.bz2)\\nor accessible url (http://, https://, ftp://)."
     outfile: "output file. Tab separated text file: geneID <tab>\\nmRNA size <tab> ORF size <tab> Fickett Score <tab>\\nHexamer Score<tab>Coding Probability."

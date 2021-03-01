@@ -12,6 +12,9 @@ task RgiWildcardAnnotation {
       ~{if defined(card_json) then ("--card_json " +  '"' + card_json + '"') else ""} \
       ~{if defined(v) then ("-v " +  '"' + v + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_directory: "input directory for wildcard"
     card_json: "card.json file\\n"

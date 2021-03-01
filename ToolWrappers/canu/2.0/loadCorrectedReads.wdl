@@ -16,6 +16,9 @@ task LoadCorrectedReads {
       ~{if defined(load_tigs_files) then ("-L " +  '"' + load_tigs_files + '"') else ""} \
       ~{if (also_load_layout) then "-u" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_sequence_store: "Path to a sequence store"
     path_correction_store: "Path to a correction store"

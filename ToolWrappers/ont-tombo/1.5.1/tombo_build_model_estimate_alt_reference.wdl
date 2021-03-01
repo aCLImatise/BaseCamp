@@ -46,6 +46,9 @@ task TomboBuildModelEstimateAltReference {
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tombo_model_alternative: "Tombo model for alternative likelihood ratio\\nsignificance testing."
     short_name_associate: "A short name to associate with this alternate model\\n(e.g. 5mC, 6mA, etc.). This text will be included in\\noutput filenames when this model is used for testing."

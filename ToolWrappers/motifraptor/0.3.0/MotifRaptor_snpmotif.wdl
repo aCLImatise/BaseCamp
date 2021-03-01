@@ -20,6 +20,9 @@ task MotifRaptorSnpmotif {
       ~{if defined(motifs) then ("--motifs " +  '"' + motifs + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     workdir: "Working directory"
     cell_type: "Cell type or Tissue type ID"

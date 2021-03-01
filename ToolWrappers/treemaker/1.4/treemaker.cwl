@@ -3,17 +3,17 @@ id: treemaker.cwl
 inputs:
 - id: in_output
   doc: output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_mode
   doc: 'output mode: nexus or newick'
-  type: string
+  type: string?
   inputBinding:
     prefix: --mode
 - id: in_labels
   doc: show node labels
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --labels
 - id: in_input
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - treemaker

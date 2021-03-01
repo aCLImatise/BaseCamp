@@ -68,6 +68,9 @@ task Adamshell {
       ~{if defined(principal) then ("--principal " +  '"' + principal + '"') else ""} \
       ~{if defined(keytab) then ("--keytab " +  '"' + keytab + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     preload_file_enforcing: "preload <file>, enforcing line-by-line interpretation"
     master: "spark://host:port, mesos://host:port, yarn,\\nk8s://https://host:port, or local (Default: local[*])."

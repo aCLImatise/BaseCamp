@@ -3,140 +3,162 @@ command:
 - tombo
 - build_model
 - estimate_motif_alt_reference
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ALTERNATE_MODEL_FILENAME
+  description: --alternate-model-name
+- !Positional
+  optional: false
+  position: 1
+  name: ALTERNATE_MODEL_NAME
+  description: --motif-description
+- !Positional
+  optional: false
+  position: 2
+  name: MOTIF_DESCRIPTION
+  description: --fast5-basedirs
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --alternate-model-filename
+  description: "Tombo model for alternative likelihood ratio\nsignificance testing."
+  args: !SimpleFlagArg
+    name: ALTERNATE_MODEL_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --alternate-model-name
   description: "A short name to associate with this alternate model\n(e.g. 5mC, 6mA,\
     \ etc.). This text will be included in\noutput filenames when this model is used\
     \ for testing."
-  synonyms:
-  - --alternate-model-name
   args: !SimpleFlagArg
     name: ALTERNATE_MODEL_NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --motif-description
   description: "Motif containing alternate-base. All positions with\nthis motif should\
     \ be modified (or filtered with\n[--valid-locations-filename]). Format descriptions\
     \ as:\n\"motif:mod_pos\". mod_pos indicates the alternate-base\nwithin the motif\
     \ (1-based index). Example: \"CG:1\" to\ntrain a CpG methylation model."
-  synonyms:
-  - --motif-description
   args: !SimpleFlagArg
     name: MOTIF_DESCRIPTION
-  optional: true
 - !Flag
-  description: Directories containing fast5 files.
+  optional: true
   synonyms:
   - --fast5-basedirs
+  description: Directories containing fast5 files.
   args: !RepeatFlagArg
     name: FAST5_BASEDIRS
-  optional: true
 - !Flag
-  description: 'Upstream bases in k-mer. Default: 1'
+  optional: true
   synonyms:
   - --upstream-bases
+  description: 'Upstream bases in k-mer. Default: 1'
   args: !ChoiceFlagArg
     choices: !!set
-      '2':
       '0':
+      '2':
+      '3':
       '1':
       '4':
-      '3':
-  optional: true
 - !Flag
-  description: 'Downstream bases in k-mer. Default: 2'
+  optional: true
   synonyms:
   - --downstream-bases
+  description: 'Downstream bases in k-mer. Default: 2'
   args: !ChoiceFlagArg
     choices: !!set
-      '2':
       '0':
+      '2':
+      '3':
       '1':
       '4':
-      '3':
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --minimum-kmer-observations
   description: "Number of each k-mer observations required in order to\nproduce a\
     \ reference (genomic locations for standard\nreference and per-read for alternative\
     \ reference).\nDefault: 1"
-  synonyms:
-  - --minimum-kmer-observations
   args: !SimpleFlagArg
     name: MINIMUM_KMER_OBSERVATIONS
-  optional: true
 - !Flag
-  description: "Bed format file containing single base locations of\nvalid sites.\
-    \ Should contain 6 fields including strand.\nE.g. modified base locations."
+  optional: true
   synonyms:
   - --valid-locations-filename
+  description: "Bed format file containing single base locations of\nvalid sites.\
+    \ Should contain 6 fields including strand.\nE.g. modified base locations."
   args: !SimpleFlagArg
     name: VALID_LOCATIONS_FILENAME
-  optional: true
 - !Flag
-  description: "Number of reads required at a position to perform\nsignificance testing\
-    \ or contribute to model\nestimation. Default: 10"
+  optional: true
   synonyms:
   - --minimum-test-reads
+  description: "Number of reads required at a position to perform\nsignificance testing\
+    \ or contribute to model\nestimation. Default: 10"
   args: !SimpleFlagArg
     name: MINIMUM_TEST_READS
-  optional: true
 - !Flag
-  description: "Maximum mean coverage per region when estimating k-mer\nmodel (limits\
-    \ compute time for deep samples). Default:\n100"
+  optional: true
   synonyms:
   - --coverage-threshold
+  description: "Maximum mean coverage per region when estimating k-mer\nmodel (limits\
+    \ compute time for deep samples). Default:\n100"
   args: !SimpleFlagArg
     name: COVERAGE_THRESHOLD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --multiprocess-region-size
   description: "Size of regions over which to multiprocesses statistic\ncomputation.\
     \ For very deep samples a smaller value is\nrecommmended in order to control memory\
     \ consumption.\nDefault: 10000"
-  synonyms:
-  - --multiprocess-region-size
   args: !SimpleFlagArg
     name: MULTIPROCESS_REGION_SIZE
-  optional: true
 - !Flag
-  description: 'Number of processes. Default: 1'
+  optional: true
   synonyms:
   - --processes
+  description: 'Number of processes. Default: 1'
   args: !SimpleFlagArg
     name: PROCESSES
-  optional: true
 - !Flag
-  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
+  optional: true
   synonyms:
   - --corrected-group
+  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
   args: !SimpleFlagArg
     name: CORRECTED_GROUP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --basecall-subgroups
   description: "FAST5 subgroup(s) (under /Analyses/[--basecall-\ngroup]/) containing\
     \ basecalls and created within\n[--corrected-group] containing re-squiggle results.\n\
     Default: ['BaseCalled_template']"
-  synonyms:
-  - --basecall-subgroups
   args: !RepeatFlagArg
     name: BASECALL_SUBGROUPS
-  optional: true
 - !Flag
-  description: Don't print status information.
+  optional: true
   synonyms:
   - --quiet
   - -q
+  description: Don't print status information.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: Print this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: tombo build_model estimate_motif_alt_reference\n              \
@@ -207,3 +229,4 @@ help_text: "usage: tombo build_model estimate_motif_alt_reference\n             
   \ help message and exit\n"
 generated_using:
 - --help
+docker_image:

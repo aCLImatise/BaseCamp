@@ -36,7 +36,7 @@ task NucmerContigAlignpl {
     String of
     Int size
     String threads
-    File file
+    File var_file
     String var_output
     String to
     String be
@@ -73,7 +73,7 @@ task NucmerContigAlignpl {
       ~{of} \
       ~{size} \
       ~{threads} \
-      ~{file} \
+      ~{var_file} \
       ~{var_output} \
       ~{to} \
       ~{be} \
@@ -96,6 +96,9 @@ task NucmerContigAlignpl {
       ~{if defined(thread) then ("--thread " +  '"' + thread + '"') else ""} \
       ~{if defined(var_10) then ("--help " +  '"' + var_10 + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query: "input contig fasta file (e.g., contig1.fa)"
     ref: "input reference file (e.g., ref.fa)"
@@ -131,7 +134,7 @@ task NucmerContigAlignpl {
     of: ""
     size: ""
     threads: ""
-    file: ""
+    var_file: ""
     var_output: ""
     to: ""
     be: ""

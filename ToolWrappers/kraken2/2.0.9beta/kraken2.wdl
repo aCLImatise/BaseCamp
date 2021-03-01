@@ -40,6 +40,9 @@ task Kraken2 {
       ~{if (bzip_two_compressed) then "--bzip2-compressed" else ""} \
       ~{if defined(minimum_hit_groups) then ("--minimum-hit-groups " +  '"' + minimum_hit_groups + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Name for Kraken 2 DB\\n(default: none)"
     threads: "Number of threads (default: 1)"

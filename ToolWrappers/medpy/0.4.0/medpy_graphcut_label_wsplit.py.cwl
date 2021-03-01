@@ -3,22 +3,22 @@ id: medpy_graphcut_label_wsplit.py.cwl
 inputs:
 - id: in_boundary
   doc: Depending on the selected term, an additional
-  type: string
+  type: string?
   inputBinding:
     prefix: --boundary
 - id: in_set_flag_override
   doc: Set this flag to silently override files that exist.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_display_more_information
   doc: Display more information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_display_debug_information
   doc: Display debug information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_gradient
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - medpy_graphcut_label_wsplit.py

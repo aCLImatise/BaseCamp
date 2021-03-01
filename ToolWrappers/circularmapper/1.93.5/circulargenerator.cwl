@@ -3,12 +3,12 @@ id: circulargenerator.cwl
 inputs:
 - id: in_input
   doc: the input FastA File
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_seq
   doc: "the names of the sequences that should to\nbe elongated\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --seq
 - id: in_circular_generator_v_one_dot_zero
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - circulargenerator

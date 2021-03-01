@@ -14,6 +14,9 @@ task Blinterleave {
       ~{if (specify_output_file) then "-o" else ""} \
       ~{if (reformat_paired_read) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specify_multiple_files: "specify multiple INPUT files"
     specify_output_file: "specify the OUTPUT file"

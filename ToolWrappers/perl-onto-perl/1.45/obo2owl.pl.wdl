@@ -14,6 +14,9 @@ task Obo2owlpl {
       ~{if (url) then "-u" else ""} \
       ~{if (obo_owl_url) then "-w" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     obo_input_file: "OBO input file"
     url: "URL"

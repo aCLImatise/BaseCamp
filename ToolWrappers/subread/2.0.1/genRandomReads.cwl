@@ -1,74 +1,74 @@
 class: CommandLineTool
 id: genRandomReads.cwl
 inputs:
-- id: in_transcript_fast_a
-  doc: '[--simpleTranscriptId]'
-  type: File
-  inputBinding:
-    prefix: --transcriptFasta
 - id: in_expression_levels
   doc: '[other options]'
-  type: string
+  type: string?
   inputBinding:
     prefix: --expressionLevels
 - id: in_summarize_fast_a
   doc: Only output the transcript names and lengths.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --summarizeFasta
+- id: in_transcript_fast_a
+  doc: The transcript database in FASTA/gz format.
+  type: File?
+  inputBinding:
+    prefix: --transcriptFasta
 - id: in_total_reads
   doc: <int>        Total read/pairs in output.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --totalReads
 - id: in_read_len
   doc: The length of the output reads. 100 by default.
-  type: long
+  type: long?
   inputBinding:
     prefix: --readLen
 - id: in_rand_seed
   doc: "Seed to generate random numbers. UNIXTIME is used\nas the random seed by default."
-  type: long
+  type: long?
   inputBinding:
     prefix: --randSeed
 - id: in_quality_ref_file
   doc: "A textual file containing Phred+33 quanlity strings\nfor simulating sequencing\
     \ errors. The quality\nstrings have to have the same length as the output\nreads.\
     \ No sequencing errors are simulated when this\noption is omitted."
-  type: File
+  type: File?
   inputBinding:
     prefix: --qualityRefFile
 - id: in_floor_strategy
   doc: "How to deal with round-up errors. 'FLOOR': generate\nless than wanted reads;\
     \ 'RANDOM': randomly assign\nmargin reads to transcripts; 'ITERATIVE': find the\n\
     best M value to have ~N reads."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --floorStrategy
 - id: in_generate_pairedend_reads
   doc: Generate paired-end reads.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pairedEnd
 - id: in_insertion_len_sigma
   doc: "Parameters of a truncated normal distribution for\ndeciding insertion lengths\
     \ of paired-end reads.\nDefault values: mean=160, sigma=30, min=110, max=400"
-  type: double
+  type: double?
   inputBinding:
     prefix: --insertionLenSigma
 - id: in_simple_transcript_id
   doc: Truncate transcript names to the first '|' or space.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --simpleTranscriptId
 - id: in_truth_in_read_names
   doc: Encode the true locations of reads in read names.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --truthInReadNames
 - id: in_no_actual_reads
   doc: Do not actually generate reads in fastq.gz files.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noActualReads
 - id: in_var_13
@@ -271,7 +271,12 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_var_53
+- id: in_file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 2
+- id: in_var_54
   doc: ''
   type: string
   inputBinding:
@@ -281,7 +286,7 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_read_slash_pairs
+- id: in_read
   doc: ''
   type: string
   inputBinding:
@@ -296,7 +301,7 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_var_58
+- id: in_var_59
   doc: ''
   type: string
   inputBinding:
@@ -321,7 +326,7 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: in_fast_a_slash_gz
+- id: in_fast_a
   doc: ''
   type: string
   inputBinding:
@@ -399,11 +404,6 @@ inputs:
 - id: in_by
   doc: ''
   type: string
-  inputBinding:
-    position: 4
-- id: in_file
-  doc: ''
-  type: File
   inputBinding:
     position: 4
 - id: in_names
@@ -491,11 +491,6 @@ inputs:
   type: string
   inputBinding:
     position: 7
-- id: in_read
-  doc: ''
-  type: string
-  inputBinding:
-    position: 7
 - id: in_used
   doc: ''
   type: string
@@ -505,6 +500,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - genRandomReads

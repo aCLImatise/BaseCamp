@@ -16,6 +16,9 @@ task GcloudSqlSslcerts {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     certificates_dot: "GCLOUD WIDE FLAGS"
     create: "Creates an SSL certificate for a Cloud SQL instance."

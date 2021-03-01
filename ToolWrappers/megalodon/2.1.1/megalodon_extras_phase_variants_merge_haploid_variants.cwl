@@ -3,7 +3,7 @@ id: megalodon_extras_phase_variants_merge_haploid_variants.cwl
 inputs:
 - id: in_out_vcf
   doc: 'Output name for VCF. Default:'
-  type: string
+  type: string?
   inputBinding:
     prefix: --out-vcf
 - id: in_diploid_called_variants
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - megalodon_extras

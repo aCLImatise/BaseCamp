@@ -18,6 +18,9 @@ task PairtoolsMarkasdup {
       ~{if defined(cmd_in) then ("--cmd-in " +  '"' + cmd_in + '"') else ""} \
       ~{if defined(cmd_out) then ("--cmd-out " +  '"' + cmd_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_pairsam_file: "output .pairsam file. If the path ends with .gz or\\n.lz4, the output is pbgzip-/lz4c-compressed. By\\ndefault, the output is printed into stdout."
     nproc_in: "Number of processes used by the auto-guessed input\\ndecompressing command.  [default: 3]"

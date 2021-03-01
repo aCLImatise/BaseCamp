@@ -18,6 +18,9 @@ task GotreeBrlenRound {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rounded_length_output: "Rounded length output tree file (default \\\"stdout\\\")"
     precision: "Rounding length precision (x means 10^-x) (default 3)"

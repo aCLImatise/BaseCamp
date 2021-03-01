@@ -24,6 +24,9 @@ task Tandemgenotypesplot {
       ~{if defined(reads) then ("--reads " +  '"' + reads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rows: "arrange the graphs in this many rows (default=4)"
     cols: "arrange the graphs in this many columns (default=4)"

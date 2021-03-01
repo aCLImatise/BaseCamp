@@ -8,6 +8,9 @@ task ToUpper {
     toUpper \
       ~{in_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: ""
   }

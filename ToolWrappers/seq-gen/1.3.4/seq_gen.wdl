@@ -7,8 +7,8 @@ task Seqgen {
     Boolean? number_partitions_trees
     Boolean? branch_length_scaling
     Boolean? total_tree_scale
-    Boolean? use_sequence_k
-    Boolean? model_jtt_gtr
+    Boolean? use_sequence_alignment
+    Boolean? model_hky_f
     Boolean? shape_alpha_gamma
     Boolean? number_gamma_rate
     Boolean? proportion_invariable_sites
@@ -29,8 +29,8 @@ task Seqgen {
       ~{if (number_partitions_trees) then "-p" else ""} \
       ~{if (branch_length_scaling) then "-s" else ""} \
       ~{if (total_tree_scale) then "-d" else ""} \
-      ~{if (use_sequence_k) then "-k" else ""} \
-      ~{if (model_jtt_gtr) then "-m" else ""} \
+      ~{if (use_sequence_alignment) then "-k" else ""} \
+      ~{if (model_hky_f) then "-m" else ""} \
       ~{if (shape_alpha_gamma) then "-a" else ""} \
       ~{if (number_gamma_rate) then "-g" else ""} \
       ~{if (proportion_invariable_sites) then "-i" else ""} \
@@ -44,14 +44,17 @@ task Seqgen {
       ~{if (name_text_file) then "-x" else ""} \
       ~{if (_quiet) then "-q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _sequence_length: ": # = sequence length [default = 1000]."
     simulated_datasets_tree: ": # = simulated datasets per tree [default = 1]."
     number_partitions_trees: ": # = number of partitions (and trees) per sequence [default = 1]."
     branch_length_scaling: ": # = branch length scaling factor [default = 1.0]."
     total_tree_scale: ": # = total tree scale [default = use branch lengths]."
-    use_sequence_k: ": # = use sequence k as ancestral (needs alignment) [default = random]."
-    model_jtt_gtr: ": MODEL = HKY, F84, GTR, JTT, WAG, PAM, BLOSUM, MTREV, CPREV45, MTART, LG, GENERAL\\nHKY, F84 & GTR are for nucleotides the rest are for amino acids"
+    use_sequence_alignment: ": # = use sequence k as ancestral (needs alignment) [default = random]."
+    model_hky_f: ": MODEL = HKY, F84, GTR, JTT, WAG, PAM, BLOSUM, MTREV, CPREV45, MTART, LG, GENERAL\\nHKY, F84 & GTR are for nucleotides the rest are for amino acids"
     shape_alpha_gamma: ": # = shape (alpha) for gamma rate heterogeneity [default = none]."
     number_gamma_rate: ": # = number of gamma rate categories [default = continuous]."
     proportion_invariable_sites: ": # = proportion of invariable sites [default = 0.0]."

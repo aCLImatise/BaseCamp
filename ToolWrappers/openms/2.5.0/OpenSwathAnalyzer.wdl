@@ -28,6 +28,9 @@ task OpenSwathAnalyzer {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                    Input file containing the chromatograms. (valid formats: 'mzML')"
     tr: "*                    Transition file (valid formats: 'TraML')"

@@ -26,6 +26,9 @@ task ScrancorrelatepairsR {
       ~{if defined(use_dim_red) then ("--use-dimred " +  '"' + use_dim_red + '"') else ""} \
       ~{if defined(output_pairs_df) then ("--output-pairs-df " +  '"' + output_pairs_df + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sce_object: "Path to the input SCE object in rds format."
     block: "A factor specifying the blocking levels for each cell in sce, for instance a donor covariate. If specified, correlations are computed separately within each block and statistics are combined across blocks."

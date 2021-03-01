@@ -3,22 +3,22 @@ id: poretools_squiggle.cwl
 inputs:
 - id: in_quiet
   doc: Do not output warnings to stderr
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_save_as
   doc: Save the squiggle plot to a file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --saveas
 - id: in_num_facets
   doc: "The number of plot facets (sub-plots). More is better\nfor long reads. (def=6)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-facets
 - id: in_theme_bw
   doc: Use a black and white theme.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --theme-bw
 - id: in_files
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - poretools

@@ -28,6 +28,9 @@ task Mkarv {
       ~{if defined(template_directory) then ("--template-directory " +  '"' + template_directory + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     concurrency: "The number of concurrent processes to use (default:\\n1). (default: 1)"
     description: "A description for the viewer instance. (default: None)"

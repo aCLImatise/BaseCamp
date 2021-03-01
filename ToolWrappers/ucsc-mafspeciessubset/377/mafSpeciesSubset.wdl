@@ -10,6 +10,9 @@ task MafSpeciesSubset {
       ~{truth_dot} \
       ~{if (keep_first) then "-keepFirst" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep_first: "- If set, keep the first 'a' line in a maf no matter what\\nUseful for mafFrag results where we use this for the gene name\\n"
     truth_dot: "species.lst is a file with a list of species to keep"

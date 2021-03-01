@@ -2,6 +2,7 @@ version 1.0
 
 task Mangosubmit {
   input {
+    Int? cache_size
     String? coverage
     Boolean? debug_front_end
     Boolean? discover
@@ -21,12 +22,11 @@ task Mangosubmit {
     Boolean? test
     String? variants
     String genome
-    String bin_slash_make_genome_dot
   }
   command <<<
     mango_submit \
       ~{genome} \
-      ~{bin_slash_make_genome_dot} \
+      ~{if defined(cache_size) then ("-cacheSize " +  '"' + cache_size + '"') else ""} \
       ~{if defined(coverage) then ("-coverage " +  '"' + coverage + '"') else ""} \
       ~{if (debug_front_end) then "-debugFrontend" else ""} \
       ~{if (discover) then "-discover" else ""} \
@@ -46,7 +46,11 @@ task Mangosubmit {
       ~{if (test) then "-test" else ""} \
       ~{if defined(variants) then ("-variants " +  '"' + variants + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
+    cache_size: ": Bp to cache on driver. (default: 1000)"
     coverage: ": A list of coverage files to view, separated by commas (,)"
     debug_front_end: ": For debugging purposes. Sets front end in source code to avoid\\nrecompilation. (default: false)"
     discover: ": This turns on discovery mode on start up. (default: false)"
@@ -65,8 +69,7 @@ task Mangosubmit {
     repartition: ": Repartitions data to default number of partitions. (default: false)"
     test: ": For debugging purposes. (default: false)"
     variants: ": A list of variants files to view, separated by commas (,). Vcf files\\nrequire a corresponding tbi index.\\n"
-    genome: ": Path to compressed .genome file. To build a new genome file, run"
-    bin_slash_make_genome_dot: "-cacheSize N                                                              : Bp to cache on driver. (default: 1000)"
+    genome: ": Path to compressed .genome file. To build a new genome file, run\\nbin/make_genome."
   }
   output {
     File out_stdout = stdout()

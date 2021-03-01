@@ -4,6 +4,9 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --vcf_file
   description: "Mandatory file specifying SNP information for mouse strains from the\
     \ Mouse Genomes Project\n(http://www.sanger.ac.uk/science/data/mouse-genomes-project).\
     \ The file used and approved is\ncalled 'mgp.v5.merged.snps_all.dbSNP142.vcf.gz'.\
@@ -13,28 +16,28 @@ named:
     \ in the current working directory called SNPs_<strain_name>/chr<chromosome>.txt,\n\
     in the following format:\nSNP-ID     Chromosome  Position    Strand   Ref/SNP\n\
     example:   33941939        9       68878541       1       T/G"
-  synonyms:
-  - --vcf_file
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --strain
   description: "The strain you would like to use as SNP (ALT) genome. Mandatory. For\
     \ an overview of strain names\njust run SNPsplit_genome_preparation selecting\
     \ '--list_strains'."
-  synonyms:
-  - --strain
   args: !SimpleFlagArg
     name: strain_name
-  optional: true
 - !Flag
-  description: Displays a list of strain names present in the VCF file for use with
-    '--strain <strain_name>'.
+  optional: true
   synonyms:
   - --list_strains
+  description: Displays a list of strain names present in the VCF file for use with
+    '--strain <strain_name>'.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --dual_hybrid
   description: "Optional. The resulting genome will no longer relate to the original\
     \ reference specified with '--reference_genome'.\nInstead the new Reference (Ref)\
     \ is defined by '--strain <strain_name>' and the new SNP genome\nis defined by\
@@ -47,86 +50,83 @@ named:
     \ SNP annotations for Strain1/Strain2\n6) Set first strain as new reference genome\
     \ and construct full SNP incorporated (and optionally\nN-masked) genome sequences\
     \ for Strain1/Strain2"
-  synonyms:
-  - --dual_hybrid
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --strain2
   description: "Optional for constructing dual hybrid genomes (see '--dual_hybrid'\
     \ for more information). For an\noverview of strain names just run SNPsplit_genome_preparation\
     \ selecting '--list_strains'."
-  synonyms:
-  - --strain2
   args: !SimpleFlagArg
     name: strain_name
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --reference_genome
   description: "The path to the reference genome, typically the strain 'Black6' (C57BL/6J),\
     \ e.g.\n'--reference_genome /bi/scratch/Genomes/Mouse/GRCm38/'. Expects one or\
     \ more FastA files in this folder\n(file extension: .fa or .fasta)."
-  synonyms:
-  - --reference_genome
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --skip_filtering
   description: "This option skips reading and filtering the VCF file. This assumes\
     \ that a folder named\n'SNPs_<Strain_Name>' exists in the working directory, and\
     \ that text files with SNP information\nare contained therein in the following\
     \ format:\nSNP-ID     Chromosome  Position    Strand   Ref/SNP\nexample:   33941939\
     \        9       68878541       1       T/G"
-  synonyms:
-  - --skip_filtering
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nmasking
   description: "Write out a genome version for the strain specified where Ref bases\
     \ are replaced with 'N'. In the\nRef/SNP example T/G the N-masked genome would\
     \ now carry an N instead of the T. The N-masked genome\nis written to a folder\
     \ called  '<strain_name>_N-masked/'. Default: ON."
-  synonyms:
-  - --nmasking
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --full_sequence
   description: "Write out a genome version for the strain specified where Ref bases\
     \ are replaced with the SNP base.\nIn the Ref/SNP example T/G the full sequence\
     \ genome would now carry a G instead of the T. The full\nsequence genome is written\
     \ out to folder called '<strain_name>_full_sequence/'. May be set in\naddition\
     \ to '--nmasking'. Default: OFF."
-  synonyms:
-  - --full_sequence
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Disable N-masking if it is not desirable. Will automatically set '--full_sequence'
-    instead.
+  optional: true
   synonyms:
   - --no_nmasking
+  description: Disable N-masking if it is not desirable. Will automatically set '--full_sequence'
+    instead.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[name]         Name of the mouse genome build, e.g. GRCm38. Will be\
-    \ incorporated into some of the output files.\nDefaults to 'GRCm38'."
+  optional: true
   synonyms:
   - --genome_build
+  description: "[name]         Name of the mouse genome build, e.g. GRCm38. Will be\
+    \ incorporated into some of the output files.\nDefaults to 'GRCm38'."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Displays this help information and exits.
+  optional: true
   synonyms:
   - --help
+  description: Displays this help information and exits.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: "Displays version information and exits.\nLast modified: 1 March 2017\n"
+  optional: true
   synonyms:
   - --version
+  description: "Displays version information and exits.\nLast modified: 1 March 2017\n"
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "\n  SYNOPSIS:\n\nSNPsplit_genome_preparation is designed to read in a\
   \ variant call files from the Mouse Genomes Project (e.g. this latest\nfile: 'mgp.v5.merged.snps_all.dbSNP142.vcf.gz')\
   \ and generate new genome versions where the strain SNPs are either incorporated\n\
@@ -223,3 +223,4 @@ help_text: "\n  SYNOPSIS:\n\nSNPsplit_genome_preparation is designed to read in 
   \                                Last modified: 1 March 2017\n\n"
 generated_using:
 - --help
+docker_image:

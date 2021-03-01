@@ -1,19 +1,19 @@
 class: CommandLineTool
 id: combineKmers.cwl
 inputs:
-- id: in_arg_file_tab
+- id: in_arg_file_name
   doc: '[ --samples ] arg    file with tab separated sample name and kmer file'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_arg_output_file
   doc: '[ --output ] arg     output file prefix'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_min_samples
   doc: (=1)  minimum number of samples kmer must occur in to be
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_samples
 - id: in_printed
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_arg_output_file
   doc: '[ --output ] arg     output file prefix'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_arg_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - combineKmers

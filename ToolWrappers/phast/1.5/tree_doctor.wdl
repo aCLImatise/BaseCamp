@@ -46,6 +46,9 @@ task TreeDoctor {
       ~{if defined(extrapolate) then ("--extrapolate " +  '"' + extrapolate + '"') else ""} \
       ~{if (newick) then "--newick" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prune: "Remove all leaves whose names are included in the given list\\n(comma-separated), then remove nodes and combine branches\\nto restore as a complete binary tree (i.e., with each\\nnode having zero children or two children).  This option is\\napplied *before* all other options."
     prune_all_but: "Like --prune, but remove all leaves *except* the ones specified."

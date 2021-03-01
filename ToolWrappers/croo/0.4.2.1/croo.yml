@@ -4,148 +4,148 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Output definition JSON file for a WDL file\ncorresponding to the specified\
-    \ metadata.json file"
+  optional: true
   synonyms:
   - --out-def-json
+  description: "Output definition JSON file for a WDL file\ncorresponding to the specified\
+    \ metadata.json file"
   args: !SimpleFlagArg
     name: OUT_DEF_JSON
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --method
   description: "Method to localize files on output directory/bucket.\n\"link\" means\
     \ a soft-linking and it's for local\ndirectory only. Original output files will\
     \ be kept in\nCromwell's output directory. \"copy\" makes copies of\nCromwell's\
     \ original outputs"
-  synonyms:
-  - --method
   args: !ChoiceFlagArg
     choices: !!set
-      copy:
       link:
-  optional: true
+      copy:
 - !Flag
-  description: "UCSC genome browser's \"db=\" parameter. (e.g. hg38 for\nGRCh38 and\
-    \ mm10 for mm10)"
+  optional: true
   synonyms:
   - --ucsc-genome-db
+  description: "UCSC genome browser's \"db=\" parameter. (e.g. hg38 for\nGRCh38 and\
+    \ mm10 for mm10)"
   args: !SimpleFlagArg
     name: UCSC_GENOME_DB
-  optional: true
 - !Flag
-  description: "UCSC genome browser's \"position=\" parameter. (e.g.\nchr1:35000-40000)"
+  optional: true
   synonyms:
   - --ucsc-genome-pos
+  description: "UCSC genome browser's \"position=\" parameter. (e.g.\nchr1:35000-40000)"
   args: !SimpleFlagArg
     name: UCSC_GENOME_POS
-  optional: true
 - !Flag
-  description: Your GCS (gs://) bucket is public.
+  optional: true
   synonyms:
   - --public-gcs
+  description: Your GCS (gs://) bucket is public.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Generate presigned URLS for files on s3://.
+  optional: true
   synonyms:
   - --use-presigned-url-s3
+  description: Generate presigned URLS for files on s3://.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Generate presigned URLS for files on gs://. --gcp-\nprivate-key must\
-    \ be provided."
+  optional: true
   synonyms:
   - --use-presigned-url-gcs
+  description: "Generate presigned URLS for files on gs://. --gcp-\nprivate-key must\
+    \ be provided."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Private key file (JSON/PKCS12) of a service account on\nGoogle Cloud\
-    \ Platform (GCP). This key will be used to\nmake presigned URLs on files on gs://."
+  optional: true
   synonyms:
   - --gcp-private-key
+  description: "Private key file (JSON/PKCS12) of a service account on\nGoogle Cloud\
+    \ Platform (GCP). This key will be used to\nmake presigned URLs on files on gs://."
   args: !SimpleFlagArg
     name: GCP_PRIVATE_KEY
-  optional: true
 - !Flag
-  description: "Duration for presigned URLs for files on s3:// in\nseconds."
+  optional: true
   synonyms:
   - --duration-presigned-url-s3
+  description: "Duration for presigned URLs for files on s3:// in\nseconds."
   args: !SimpleFlagArg
     name: DURATION_PRESIGNED_URL_S3
-  optional: true
 - !Flag
-  description: "Duration for presigned URLs for files on gs:// in\nseconds."
+  optional: true
   synonyms:
   - --duration-presigned-url-gcs
+  description: "Duration for presigned URLs for files on gs:// in\nseconds."
   args: !SimpleFlagArg
     name: DURATION_PRESIGNED_URL_GCS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --tsv-mapping-path-to-url
   description: "A 2-column TSV file with local path prefix and\ncorresponding URL\
     \ prefix. For example, using 1-line\n2-col TSV file with /var/www[TAB]http://my.server.com\n\
     will replace a local path /var/www/here/a.txt to a URL\nhttp://my.server.com/here/a.txt."
-  synonyms:
-  - --tsv-mapping-path-to-url
   args: !SimpleFlagArg
     name: TSV_MAPPING_PATH_TO_URL
-  optional: true
 - !Flag
-  description: "Output directory/bucket (LOCAL OR REMOTE). This can be\na local path,\
-    \ gs:// or s3://."
+  optional: true
   synonyms:
   - --out-dir
+  description: "Output directory/bucket (LOCAL OR REMOTE). This can be\na local path,\
+    \ gs:// or s3://."
   args: !SimpleFlagArg
     name: OUT_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --tmp-dir
   description: "LOCAL temporary cache directory. All temporary files\nfor auto-inter-storage\
     \ transfer will be stored here.\nYou can clean it up but will lose all cached\
     \ files so\nthat remote files will be re-downloaded."
-  synonyms:
-  - --tmp-dir
   args: !SimpleFlagArg
     name: TMP_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --use-gsutil-for-s3
   description: "Use gsutil for direct tranfer between GCS and S3\nbuckets. Make sure\
     \ that you have \"gsutil\" installed\nand configured to have access to credentials\
     \ for GCS\nand S3 (e.g. ~/.boto or ~/.aws/credientials)"
-  synonyms:
-  - --use-gsutil-for-s3
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-checksum
   description: "Always overwrite on output directory/bucket (--out-\ndir) even if\
     \ md5-identical files (or soft links)\nalready exist there. Md5 hash/filename/filesize\n\
     checking will be skipped."
-  synonyms:
-  - --no-checksum
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Prints all logs >= DEBUG level
+  optional: true
   synonyms:
   - -D
   - --debug
+  description: Prints all logs >= DEBUG level
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Show version
+  optional: true
   synonyms:
   - -v
   - --version
+  description: Show version
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: croo [-h] [--out-def-json OUT_DEF_JSON] [--method {link,copy}]\n\
   \            [--ucsc-genome-db UCSC_GENOME_DB]\n            [--ucsc-genome-pos UCSC_GENOME_POS]\
   \ [--public-gcs]\n            [--use-presigned-url-s3] [--use-presigned-url-gcs]\n\
@@ -201,3 +201,4 @@ help_text: "usage: croo [-h] [--out-def-json OUT_DEF_JSON] [--method {link,copy}
   \   Prints all logs >= DEBUG level\n"
 generated_using:
 - --help
+docker_image:

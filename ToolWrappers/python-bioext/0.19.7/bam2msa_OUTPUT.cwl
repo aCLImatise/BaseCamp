@@ -3,7 +3,7 @@ id: bam2msa_OUTPUT.cwl
 inputs:
 - id: in_r
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
 - id: in_bam_two_msa
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bam2msa

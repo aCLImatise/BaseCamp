@@ -16,6 +16,9 @@ task Pngtogd2 {
       ~{cs} \
       ~{fmt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     png_to_gd_two: ""
     filename_dot_png: ""

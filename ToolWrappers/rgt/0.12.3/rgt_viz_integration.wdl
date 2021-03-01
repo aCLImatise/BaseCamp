@@ -14,6 +14,9 @@ task RgtvizIntegration {
       ~{if defined(l_two_m) then ("-l2m " +  '"' + l_two_m + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i_html: "Integrate all the html files within the given directory and\\ngenerate index.html for all plots."
     l_two_m: "Convert a given file list in txt format into a experimental"

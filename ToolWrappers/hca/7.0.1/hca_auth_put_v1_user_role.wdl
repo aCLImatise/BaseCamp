@@ -10,8 +10,11 @@ task HcaAuthPutv1userrole {
       ~{if defined(user_id) then ("--user-id " +  '"' + user_id + '"') else ""} \
       ~{if defined(roles) then ("--roles " +  '"' + roles + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    user_id: "User ID (email).\\n--action ACTION\\n"
+    user_id: "User ID (email)."
     roles: ""
   }
   output {

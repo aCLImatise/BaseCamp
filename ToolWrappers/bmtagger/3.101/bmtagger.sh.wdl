@@ -8,6 +8,9 @@ task Bmtaggersh {
     bmtagger_sh \
       ~{if (hv) then "-hV" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hv: ""
   }

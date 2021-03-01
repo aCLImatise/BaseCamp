@@ -12,6 +12,9 @@ task Locus2bed {
       ~{if defined(input_directory) then ("--input-directory " +  '"' + input_directory + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_input_file: "Path to input locus file"
     input_directory: "Path to directory containing locus files"

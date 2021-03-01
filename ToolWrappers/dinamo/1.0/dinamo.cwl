@@ -5,18 +5,19 @@ inputs:
   doc: ": When -p is not used, prevents dinamo to link motif to their reverse complement\n\
     (Please be warned : not linking the motif to their reverse complement usually\
     \ doubles memory usage)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --norc
 - id: in_no_log
   doc: ': Prevents the log ouput from being displayed'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-log
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dinamo

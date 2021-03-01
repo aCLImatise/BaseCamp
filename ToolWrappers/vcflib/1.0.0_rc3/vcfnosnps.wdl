@@ -4,6 +4,9 @@ task Vcfnosnps {
   command <<<
     vcfnosnps
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -43,7 +43,7 @@ task Mcl {
     String? icl
     Int? pi
     Int? ph
-    Int? assume_expanded_input
+    Int? assume_input_inflate
     Int? main_inflation_value
     Int? scheme
     Int? resource
@@ -53,8 +53,8 @@ task Mcl {
     Boolean? _mode_verbose
     Boolean? _mode_silent
     Int? rigid_pruning_threshold
-    Int? inverted_rigid_cf
-    Int? recover_maximally_needed
+    Int? inverted_rigid_threshold
+    Int? recover_maximally_int
     Int? select_int_needed
     String? pct
     Int? warn_factor
@@ -107,7 +107,7 @@ task Mcl {
       ~{if defined(icl) then ("-icl " +  '"' + icl + '"') else ""} \
       ~{if defined(pi) then ("-pi " +  '"' + pi + '"') else ""} \
       ~{if defined(ph) then ("-ph " +  '"' + ph + '"') else ""} \
-      ~{if defined(assume_expanded_input) then ("-if " +  '"' + assume_expanded_input + '"') else ""} \
+      ~{if defined(assume_input_inflate) then ("-if " +  '"' + assume_input_inflate + '"') else ""} \
       ~{if defined(main_inflation_value) then ("-I " +  '"' + main_inflation_value + '"') else ""} \
       ~{if defined(scheme) then ("-scheme " +  '"' + scheme + '"') else ""} \
       ~{if defined(resource) then ("-resource " +  '"' + resource + '"') else ""} \
@@ -117,8 +117,8 @@ task Mcl {
       ~{if (_mode_verbose) then "-v" else ""} \
       ~{if (_mode_silent) then "-V" else ""} \
       ~{if defined(rigid_pruning_threshold) then ("-p " +  '"' + rigid_pruning_threshold + '"') else ""} \
-      ~{if defined(inverted_rigid_cf) then ("-P " +  '"' + inverted_rigid_cf + '"') else ""} \
-      ~{if defined(recover_maximally_needed) then ("-R " +  '"' + recover_maximally_needed + '"') else ""} \
+      ~{if defined(inverted_rigid_threshold) then ("-P " +  '"' + inverted_rigid_threshold + '"') else ""} \
+      ~{if defined(recover_maximally_int) then ("-R " +  '"' + recover_maximally_int + '"') else ""} \
       ~{if defined(select_int_needed) then ("-S " +  '"' + select_int_needed + '"') else ""} \
       ~{if defined(pct) then ("-pct " +  '"' + pct + '"') else ""} \
       ~{if defined(warn_factor) then ("-warn-factor " +  '"' + warn_factor + '"') else ""} \
@@ -128,6 +128,9 @@ task Mcl {
       ~{if defined(dump_interval) then ("-dump-interval " +  '"' + dump_interval + '"') else ""} \
       ~{if defined(dump_modulo) then ("-dump-modulo " +  '"' + dump_modulo + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     write_output_file: "!  write output to file <fname>"
     help: "i  output description of options"
@@ -136,15 +139,15 @@ task Mcl {
     how_much_ram: "i  show estimated RAM usage for graphs with <int> nodes"
     show_schemes: "i  show the preset -scheme options"
     overlap: "what to do with overlap (default cut)"
-    force_connected: "analyze clustering, make sure it induces cocos"
-    check_connected: "analyze clustering, see whether it induces cocos"
+    force_connected: "/n    analyze clustering, make sure it induces cocos"
+    check_connected: "/n    analyze clustering, see whether it induces cocos"
     write_limit: "output the limit matrix"
-    show_log: "send log to stdout"
-    discard_loops: "remove loops in input graphs if any"
+    show_log: "/n      send log to stdout"
+    discard_loops: "/n    remove loops in input graphs if any"
     sum_loops: "set loop weight to sum of node arc weights"
     increase_loopweights_numfold: "increase loop-weights <num>-fold"
     quiet_level_logging: "quiet level of logging"
-    analyze: "append performance/characteristics measures"
+    analyze: "/n       append performance/characteristics measures"
     sort: "order clustering by one of lex|size|revsize|none"
     digits: "precision in interchange (intermediate matrices) output"
     write_binary: "write binary output"
@@ -170,7 +173,7 @@ task Mcl {
     icl: "subcluster this clustering"
     pi: "preprocess by applying inflation with parameter <num>"
     ph: "as -pi, applied before shadowing"
-    assume_expanded_input: "assume expanded input, inflate with parameter <num>"
+    assume_input_inflate: "assume expanded input, inflate with parameter <num>"
     main_inflation_value: "!  main inflation value (default 2.0)"
     scheme: "!  use a preset resource scheme (cf --show-schemes)"
     resource: "!  allow <int> neighbours throughout computation"
@@ -180,8 +183,8 @@ task Mcl {
     _mode_verbose: "{pruning|explain|clusters|all}    mode verbose"
     _mode_silent: "{pruning|explain|clusters|all}    mode silent"
     rigid_pruning_threshold: "the rigid pruning threshold"
-    inverted_rigid_cf: "(inverted) rigid pruning threshold (cf -z)"
-    recover_maximally_needed: "recover to maximally <int> entries if needed"
+    inverted_rigid_threshold: "(inverted) rigid pruning threshold (cf -z)"
+    recover_maximally_int: "recover to maximally <int> entries if needed"
     select_int_needed: "select down to <int> entries if needed"
     pct: "try recovery if mass is less than <pct>"
     warn_factor: "warn if pruning reduces entry count by <int>"

@@ -5,6 +5,9 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --reference_group
   description: "Name of taxonomic group (or list of groups) to be used\nfor calculating\
     \ status transition rates (e.g.\n'Mammalia' or 'Rodentia,Chiroptera'). Alternatively\n\
     provide path to text file containing a list of species\nnames, compatible with\
@@ -13,23 +16,23 @@ named:
     \ Tip: Use precompiled\ngroup for faster processing and in case you don't have\n\
     an IUCN key (see available groups at github.com/tobias\nhofmann88/iucn_extinction_simulator/data/precompiled/i\n\
     ucn_history/ or request specific groups to be added:\ntobias.andermann@bioenv.gu.se)"
-  synonyms:
-  - --reference_group
   args: !SimpleFlagArg
     name: taxon-group
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --reference_rank
   description: "Provide the taxonomic rank of the provided reference\ngroup(s). E.g.\
     \ in case of 'Mammalia', provide 'class'\nfor this flag, in case of 'Rodentia,Chiroptera'\n\
     provide 'order,order'. Has to be at least 'Family' or\nabove. This flag is not\
     \ needed if species list is\nprovided as reference_group or if reference group\
     \ is\nalready pre-compiled."
-  synonyms:
-  - --reference_rank
   args: !SimpleFlagArg
     name: rank
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --target_species_list
   description: "File containing the list of species that you want to\nsimulate future\
     \ extinctions for. In case you have\ngeneration length (GL) data available, provide\
     \ the\nfile containing the GL data for each species here\n(including the species\
@@ -44,46 +47,43 @@ named:
     \ https://github.com/tobiashofmann8\n8/iucn_extinction_simulator/data/precompiled/\
     \ for\nexamples of the format of GL data input files and the\nformat of the output\
     \ file conataining current status\ninformation."
-  synonyms:
-  - --target_species_list
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: Provide path to outdir where results will be saved.
+  optional: true
   synonyms:
   - --outdir
+  description: Provide path to outdir where results will be saved.
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --iucn_key
   description: "Provide your IUCN API key (see\nhttps://apiv3.iucnredlist.org/api/v3/token)\
     \ for\ndownloading IUCN history of your provided reference\ngroup. Not required\
     \ if using precompiled reference\ngroup and a manually compiled current status\
     \ list (to\nbe used in the 'transition_rates' function). Also not\nrequired if\
     \ all species in your target_species_list\nare present in the precompiled reference_group)."
-  synonyms:
-  - --iucn_key
   args: !SimpleFlagArg
     name: IUCN-key
-  optional: true
 - !Flag
-  description: "Turn off the online-search for precompiled IUCN\nhistory files for\
-    \ your reference group.\n"
+  optional: true
   synonyms:
   - --no_online_sync
+  description: "Turn off the online-search for precompiled IUCN\nhistory files for\
+    \ your reference group.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: iucn_sim get_iucn_data [-h] [--reference_group taxon-group]\n \
@@ -144,3 +144,4 @@ help_text: "usage: iucn_sim get_iucn_data [-h] [--reference_group taxon-group]\n
   \ history files for your reference group.\n"
 generated_using:
 - --help
+docker_image:

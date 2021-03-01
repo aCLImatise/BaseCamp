@@ -24,6 +24,9 @@ task JhsdbJmap {
       ~{if (core) then "--core" else ""} \
       ~{if (pid) then "--pid" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     heap: "to print java heap summary"
     binary_heap: "to dump java heap in hprof binary format"

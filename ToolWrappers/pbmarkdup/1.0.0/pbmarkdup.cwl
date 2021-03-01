@@ -3,37 +3,37 @@ id: pbmarkdup.cwl
 inputs:
 - id: in_cross_library
   doc: Identify duplicates across sequencing libraries (LB tag in read group).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cross-library
 - id: in_rmd_up
   doc: Exclude duplicates from OUTFILE. Redundant when --dup-file is provided.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rmdup
 - id: in_dup_file
   doc: STR   Write duplicates to this file instead of OUTFILE.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dup-file
 - id: in_clobber
   doc: Overwrite OUTFILE if it exists.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --clobber
 - id: in_num_threads
   doc: INT   Number of threads to use, 0 means autodetection. [0]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --num-threads
 - id: in_log_level
   doc: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --log-level
 - id: in_log_file
   doc: FILE  Log to a file, instead of stderr.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --log-file
 - id: in_in_file_dot_bam_vertical_line_xml_vertical_line_f_a_vertical_line_fq_vertical_line_fof_n
@@ -80,6 +80,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pbmarkdup

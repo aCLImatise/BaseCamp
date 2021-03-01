@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Int, Boolean
+
+Vibrant_Run_Py_V0_1_0 = CommandToolBuilder(tool="VIBRANT_run.py", base_command=["VIBRANT_run.py"], inputs=[ToolInput(tag="in_input_fasta_file", input_type=File(optional=True), prefix="-i", doc=InputDocumentation(doc="input fasta file")), ToolInput(tag="in_format_of_input", input_type=String(optional=True), prefix="-f", doc=InputDocumentation(doc="format of input [default='nucl']")), ToolInput(tag="in_folder", input_type=File(optional=True), prefix="-folder", doc=InputDocumentation(doc="path to deposit output folder and temporary files, will\ncreate if doesn't exist [default= working directory]")), ToolInput(tag="in_number_parallel_vibrant", input_type=Int(optional=True), prefix="-t", doc=InputDocumentation(doc="number of parallel VIBRANT runs, each occupies 1 CPU\n[default=1, max of 1 CPU per scaffold]")), ToolInput(tag="in_length_limit_sequences", input_type=Int(optional=True), prefix="-l", doc=InputDocumentation(doc="length in basepairs to limit input sequences [default=1000,\ncan increase but not decrease]")), ToolInput(tag="in_number_limit_sequences", input_type=Int(optional=True), prefix="-o", doc=InputDocumentation(doc="number of ORFs per scaffold to limit input sequences\n[default=4, can increase but not decrease]")), ToolInput(tag="in_vi_rome", input_type=Boolean(optional=True), prefix="-virome", doc=InputDocumentation(doc="use this setting if dataset is known to be comprised mainly\nof viruses. More sensitive to viruses, less sensitive to\nfalse identifications [default=off]")), ToolInput(tag="in_no_plot", input_type=Boolean(optional=True), prefix="-no_plot", doc=InputDocumentation(doc="suppress the generation of summary plots [default=off]")), ToolInput(tag="in_path_original_hmmfiles", input_type=File(optional=True), prefix="-d", doc=InputDocumentation(doc="path to original 'databases' directory that contains .HMM\nfiles (if moved from default location)")), ToolInput(tag="in_path_original_tsv", input_type=File(optional=True), prefix="-m", doc=InputDocumentation(doc="path to original 'files' directory that contains .tsv and\nmodel files (if moved from default location)\n"))], outputs=[ToolOutput(tag="out_folder", output_type=File(optional=True), selector=InputSelector(input_to_select="in_folder", type_hint=File()), doc=OutputDocumentation(doc="path to deposit output folder and temporary files, will\ncreate if doesn't exist [default= working directory]"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Vibrant_Run_Py_V0_1_0().translate("wdl", allow_empty_container=True)
+

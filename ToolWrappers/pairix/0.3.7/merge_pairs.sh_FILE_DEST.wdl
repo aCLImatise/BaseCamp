@@ -7,24 +7,27 @@ task MergepairsshFILEDEST {
     Boolean? test_file_integrity
     Boolean? cft
     String gunzip
-    File? file
+    File? var_file
   }
   command <<<
     merge_pairs_sh FILE DEST \
       ~{gunzip} \
-      ~{file} \
+      ~{var_file} \
       ~{if (write_to_stdout) then "-c" else ""} \
       ~{if (force) then "-f" else ""} \
       ~{if (test_file_integrity) then "-t" else ""} \
       ~{if (cft) then "-cft" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     write_to_stdout: "Write to stdout"
     force: "Force"
     test_file_integrity: "Test file integrity"
     cft: ""
     gunzip: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

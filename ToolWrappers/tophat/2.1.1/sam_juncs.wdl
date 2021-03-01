@@ -8,6 +8,9 @@ task SamJuncs {
     sam_juncs \
       ~{hits_dots_am}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hits_dots_am: ""
   }

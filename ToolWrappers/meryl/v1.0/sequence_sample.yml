@@ -4,39 +4,71 @@ command:
 - sample
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: sequence
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: mode
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 2
   name: sequence_file
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "treat inputs as paired sequences; the first two files form the\nfirst\
-    \ pair, and so on."
+  optional: true
   synonyms:
   - -paired
+  description: "treat inputs as paired sequences; the first two files form the\nfirst\
+    \ pair, and so on."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "write output sequences to file O.  If paired, two files must be supplied.\n\
-    -coverage C         output C coverage of sequences, based on genome size G.\n\
-    -genomesize G\n-bases B            output B bases.\n-reads R            output\
-    \ R reads.\n-pairs P            output P pairs (only if -paired).\n-fraction F\
-    \         output fraction F of the input bases."
+  optional: true
   synonyms:
   - -output
+  description: write output sequences to file O.  If paired, two files must be supplied.
   args: !SimpleFlagArg
     name: O
+- !Flag
   optional: true
+  synonyms:
+  - -coverage
+  description: output C coverage of sequences, based on genome size G.
+  args: !SimpleFlagArg
+    name: C
+- !Flag
+  optional: true
+  synonyms:
+  - -genomesize
+  - -bases
+  description: output B bases.
+  args: !SimpleFlagArg
+    name: G
+- !Flag
+  optional: true
+  synonyms:
+  - -reads
+  description: output R reads.
+  args: !SimpleFlagArg
+    name: R
+- !Flag
+  optional: true
+  synonyms:
+  - -pairs
+  description: output P pairs (only if -paired).
+  args: !SimpleFlagArg
+    name: P
+- !Flag
+  optional: true
+  synonyms:
+  - -fraction
+  description: output fraction F of the input bases.
+  args: !SimpleFlagArg
+    name: F
 parent:
 subcommands: []
 usage: []
@@ -54,3 +86,4 @@ help_text: "usage: sequence [mode] [options] [sequence_file ...]\n\nOPTIONS for 
   \ parameter '--help'\nERROR:  No input sequence files supplied.\n"
 generated_using:
 - --help
+docker_image:

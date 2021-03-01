@@ -4,6 +4,9 @@ task BaseLibdll {
   command <<<
     BaseLib_dll
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

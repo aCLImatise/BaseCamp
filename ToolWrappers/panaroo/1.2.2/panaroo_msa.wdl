@@ -20,6 +20,9 @@ task Panaroomsa {
       ~{if defined(aligner) then ("--aligner " +  '"' + aligner + '"') else ""} \
       ~{if defined(core_threshold) then ("--core_threshold " +  '"' + core_threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "number of threads to use (default=1)"
     verbose: "print additional output"

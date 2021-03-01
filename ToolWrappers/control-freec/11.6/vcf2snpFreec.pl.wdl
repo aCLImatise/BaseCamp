@@ -2,14 +2,17 @@ version 1.0
 
 task Vcf2snpFreecpl {
   input {
-    Boolean? file_dbsnp_vcf
+    Boolean? file_dbsnp_file
   }
   command <<<
     vcf2snpFreec_pl \
-      ~{if (file_dbsnp_vcf) then "-f" else ""}
+      ~{if (file_dbsnp_file) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file_dbsnp_vcf: "file                   dbSNP vcf file"
+    file_dbsnp_file: "file                   dbSNP vcf file"
   }
   output {
     File out_stdout = stdout()

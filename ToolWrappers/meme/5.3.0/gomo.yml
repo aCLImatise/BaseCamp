@@ -1,0 +1,171 @@
+!Command
+command:
+- gomo
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: GO-term database
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: scoring file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --o
+  description: "name of the directory for output. Will not replace\nan existing directory;\
+    \ default: 'gomo_out'"
+  args: !SimpleFlagArg
+    name: output dir
+- !Flag
+  optional: true
+  synonyms:
+  - --oc
+  description: "name of the directory for output. Will replace an\nexisting directory;\
+    \ default: 'gomo_out'"
+  args: !SimpleFlagArg
+    name: output dir
+- !Flag
+  optional: true
+  synonyms:
+  - --text
+  description: "output tab separated values format to standard out\nand don't create\
+    \ output directory or files;\ndefault: create HTML and XML in <output dir>;"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dag
+  description: "path to the optional Gene Ontology DAG file to be\nused for highlighting\
+    \ the specific terms in the\nGOMo HTML output; default: no highlighting"
+  args: !SimpleFlagArg
+    name: godag
+- !Flag
+  optional: true
+  synonyms:
+  - --motifs
+  description: "path to the optional motif file in MEME format\nused to generate (all\
+    \ of the) scoring file(s);\nused for adding sequence logos to HTML output;\ndefault:\
+    \ no logos in output;"
+  args: !SimpleFlagArg
+    name: motifs
+- !Flag
+  optional: true
+  synonyms:
+  - --motif
+  description: "limit results to specified motif; option may\nbe repeated; default:\
+    \ use all motifs"
+  args: !SimpleFlagArg
+    name: id
+- !Flag
+  optional: true
+  synonyms:
+  - --shuffle_scores
+  description: "generate empirical null by shuffling the sequence\nto score assignments\
+    \ and computing statistics <n>\ntimes; default: <n>=1000"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --t
+  description: "the q-value threshold considered significant;\ndefault: <q>=0.05,\
+    \ q >= 1.0 shows all results"
+  args: !SimpleFlagArg
+    name: q
+- !Flag
+  optional: true
+  synonyms:
+  - --score_E_thresh
+  description: "the score E-value threshold above which the same\nrank is given to\
+    \ all sequences;\ndefault: no threshold"
+  args: !SimpleFlagArg
+    name: E
+- !Flag
+  optional: true
+  synonyms:
+  - --min_gene_count
+  description: "only consider GO terms annotated with a at least\n<n> genes; default:\
+    \ <n> = 1)."
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --gs
+  description: "extract gene scores rather than p-values from the\nCisML input file(s);\
+    \ default: use CisML p-values"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: "seed the random number generator; different\nvalues of <seed> will\
+    \ give slightly different\noutputs; default: <seed> is chosen randomly"
+  args: !SimpleFlagArg
+    name: seed
+- !Flag
+  optional: true
+  synonyms:
+  - --nostatus
+  description: don't print progress messages to stderr
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: "[1|2|3|4] control level of progress messages;\n1 = Quiet, 2 = Normal,\
+    \ 3 = High, 4 = Very High;\ndefault: 2"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print the version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: gomo [options] <GO-term database> <scoring file>+\n\n   Options:\n\
+  \     --o <output dir>      name of the directory for output. Will not replace\n\
+  \                             an existing directory; default: 'gomo_out'\n     --oc\
+  \ <output dir>     name of the directory for output. Will replace an\n         \
+  \                    existing directory; default: 'gomo_out'\n     --text      \
+  \          output tab separated values format to standard out\n                \
+  \             and don't create output directory or files;\n                    \
+  \         default: create HTML and XML in <output dir>;\n     --dag <godag>    \
+  \     path to the optional Gene Ontology DAG file to be\n                      \
+  \       used for highlighting the specific terms in the\n                      \
+  \       GOMo HTML output; default: no highlighting\n     --motifs <motifs>     path\
+  \ to the optional motif file in MEME format\n                             used to\
+  \ generate (all of the) scoring file(s);\n                             used for\
+  \ adding sequence logos to HTML output;\n                             default: no\
+  \ logos in output;\n     --motif <id>          limit results to specified motif;\
+  \ option may \n                             be repeated; default: use all motifs\n\
+  \     --shuffle_scores <n>  generate empirical null by shuffling the sequence\n\
+  \                             to score assignments and computing statistics <n>\n\
+  \                             times; default: <n>=1000\n     --t <q>           \
+  \    the q-value threshold considered significant;\n                           \
+  \  default: <q>=0.05, q >= 1.0 shows all results\n     --score_E_thresh <E>  the\
+  \ score E-value threshold above which the same\n                             rank\
+  \ is given to all sequences; \n                             default: no threshold\n\
+  \     --min_gene_count <n>  only consider GO terms annotated with a at least\n \
+  \                            <n> genes; default: <n> = 1).\n     --gs          \
+  \        extract gene scores rather than p-values from the\n                   \
+  \          CisML input file(s); default: use CisML p-values\n     --seed <seed>\
+  \         seed the random number generator; different\n                        \
+  \     values of <seed> will give slightly different\n                          \
+  \   outputs; default: <seed> is chosen randomly\n     --nostatus            don't\
+  \ print progress messages to stderr\n     --verbosity [1|2|3|4] control level of\
+  \ progress messages;\n                             1 = Quiet, 2 = Normal, 3 = High,\
+  \ 4 = Very High;\n                             default: 2\n     --version      \
+  \        print the version and exit\n\n   See doc/gomo.html for information on the\
+  \ formats of <GO-term database>\n   and <scoring file>.\n\n"
+generated_using: []
+docker_image: quay.io/biocontainers/meme:5.3.0--py38pl526hc1f1133_0

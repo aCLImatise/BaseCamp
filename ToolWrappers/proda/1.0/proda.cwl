@@ -3,27 +3,27 @@ id: proda.cwl
 inputs:
 - id: in_fast_a
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -fasta
 - id: in_tran
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -tran
 - id: in_posterior
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -posterior
 - id: in_silent
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -silent
 - id: in_l
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -L
 - id: in_filename
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - proda

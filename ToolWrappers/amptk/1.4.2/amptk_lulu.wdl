@@ -2,6 +2,7 @@ version 1.0
 
 task AmptkLulu {
   input {
+    Boolean? otu_table
     Boolean? fast_a
     Boolean? out
     Boolean? min_ratio_type
@@ -9,11 +10,12 @@ task AmptkLulu {
     Boolean? min_match
     Int? min_relative_co_occurence
     Boolean? debug
-    Float one_zero_dot_one_zero_three_eight_slash_s_four_one_four_six_seven_zero_one_seven_zero_one_three_one_two_x
+    String arguments
   }
   command <<<
     amptk lulu \
-      ~{one_zero_dot_one_zero_three_eight_slash_s_four_one_four_six_seven_zero_one_seven_zero_one_three_one_two_x} \
+      ~{arguments} \
+      ~{if (otu_table) then "--otu_table" else ""} \
       ~{if (fast_a) then "--fasta" else ""} \
       ~{if (out) then "--out" else ""} \
       ~{if (min_ratio_type) then "--min_ratio_type" else ""} \
@@ -22,7 +24,11 @@ task AmptkLulu {
       ~{if defined(min_relative_co_occurence) then ("--min_relative_cooccurence " +  '"' + min_relative_co_occurence + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
+    otu_table: "Input OTU table (Required)"
     fast_a: "Input OTUs in FASTA format (Required)"
     out: "Output base name. Default: input basename"
     min_ratio_type: "Minimum ratio threshold. Default: min [min,avg]"
@@ -30,7 +36,7 @@ task AmptkLulu {
     min_match: "Minimum match pident (%%). Default: 84"
     min_relative_co_occurence: "relative co-occurance (%%): Default: 95"
     debug: "Keep intermediate files."
-    one_zero_dot_one_zero_three_eight_slash_s_four_one_four_six_seven_zero_one_seven_zero_one_three_one_two_x: "Arguments:   -i, --otu_table            Input OTU table (Required)"
+    arguments: ""
   }
   output {
     File out_stdout = stdout()

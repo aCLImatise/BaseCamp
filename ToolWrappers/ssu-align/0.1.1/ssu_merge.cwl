@@ -1,39 +1,39 @@
 class: CommandLineTool
 id: ssu_merge.cwl
 inputs:
-- id: in_force_allow_clobbering
+- id: in_force_allow_file
   doc: ': force; allow file clobbering'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_rf_only
   doc: ': when merging alignments, only keep consensus (non-gap RF) columns'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rfonly
 - id: in_keep
   doc: ": don't remove original files after they have been merged"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep
 - id: in_input_alignments_interleaved
   doc: ': input alignments are interleaved Stockholm format (not 1 line/seq)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_dna
   doc: ': output alignments as DNA, default is RNA (even if input is DNA)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dna
 - id: in_list
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: --list
 - id: in_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -options
 - id: in_one
@@ -65,6 +65,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ssu-merge

@@ -24,6 +24,9 @@ task EcofindPatterns {
       ~{if (l) then "-l" else ""} \
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s: ""
     var_1: ""

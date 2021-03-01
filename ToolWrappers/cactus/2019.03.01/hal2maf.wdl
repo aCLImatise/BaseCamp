@@ -54,6 +54,9 @@ task Hal2maf {
       ~{if defined(target_genomes) then ("--targetGenomes " +  '"' + target_genomes + '"') else ""} \
       ~{if (unique) then "--unique" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     append: ":                      append to instead of overwrite output file. [default =\\n0]"
     cache_bytes: ":          maximum size in bytes of regular hdf5 cache [default =\\n15728640]"

@@ -3,17 +3,17 @@ id: collate_FLNC_gene_info.py.cwl
 inputs:
 - id: in_on_target_filename
   doc: (Optional) on target information text
-  type: File
+  type: File?
   inputBinding:
     prefix: --ontarget_filename
 - id: in_ded_up_orf_prefix
   doc: "(Optional) dedup-ed ORF group prefix, must have\n<pre>.faa and <pre>.group.txt"
-  type: string
+  type: string?
   inputBinding:
     prefix: --dedup_ORF_prefix
 - id: in_no_extra_base
   doc: Drop all reads where there are extra bases
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-extra-base
 - id: in_positional_arguments
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - collate_FLNC_gene_info.py

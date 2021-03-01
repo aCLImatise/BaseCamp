@@ -40,6 +40,9 @@ task Fastprot {
       ~{if (print_relaxng_input) then "--print-relaxng-input" else ""} \
       ~{if (print_relaxng_output) then "--print-relaxng-output" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     outfile: "output filename. If not specified, output is\\nwritten to stdout"

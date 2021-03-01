@@ -34,6 +34,9 @@ task RunHiCpcapl {
       ~{if (cluster) then "-cluster" else ""} \
       ~{if (min_p) then "-minp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     res: "<#> (resolution in bp, default: 50000)"
     window: "<#> (overlapping window resolution in bp, i.e. superRes, default: 100000)"

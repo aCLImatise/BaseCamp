@@ -14,6 +14,9 @@ task DeblurRemovechimerasdenovoCritical {
       ~{seqs_fp} \
       ~{output_fp}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     de_blur: ""
     remove_chimeras_de_novo: ""

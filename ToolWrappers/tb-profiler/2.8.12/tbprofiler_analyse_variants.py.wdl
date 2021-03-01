@@ -18,6 +18,9 @@ task TbprofilerAnalyseVariantspy {
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(drugs) then ("--drugs " +  '"' + drugs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mutations: "NGS Platform (default: None)"
     var_meta: "NGS Platform (default: None)"

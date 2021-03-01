@@ -5,6 +5,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - excise_precursors_iterative_final.pl.orig

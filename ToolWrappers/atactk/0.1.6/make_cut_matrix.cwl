@@ -5,18 +5,18 @@ inputs:
   doc: "Requests a matrix in which each row represents a\nposition in the extended\
     \ region and the mean cut point\ncount at that position across all motifs. See\
     \ OUTPUT,\nbelow."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --aggregate-output
 - id: in_discrete_output
   doc: "Requests a matrix in which each row represents all the\ncut point counts around\
     \ one motif. See OUTPUT, below."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --discrete-output
 - id: in_bins
   doc: "A list of fragment size bin groups and their\nresolutions. See BINNING, below."
-  type: long
+  type: long?
   inputBinding:
     prefix: --bins
 - id: in_exclude_flags
@@ -24,7 +24,7 @@ inputs:
     \ be specified. Alignments\nmatching any exclude flag will not be counted. The\n\
     default is to exclude all unmapped reads/mates by\nfiltering out any alignments\
     \ with SAM flags 4 or 8\nset."
-  type: File
+  type: File?
   inputBinding:
     prefix: --exclude-flags
 - id: in_include_flags
@@ -32,33 +32,33 @@ inputs:
     \ in the counts. More than one\nmay be specified. Any alignment matching any include\n\
     flag will be counted. The default is to include\nproperly paired and mapped reads\
     \ by filtering for SAM\nflags 83, 99, 147, or 163."
-  type: File
+  type: File?
   inputBinding:
     prefix: --include-flags
 - id: in_cut_point_offset
   doc: "The position of cut points relative to the beginning\nof a read and in the\
     \ direction toward the read end, as\na number of bases (default: 4)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --cut-point-offset
 - id: in_parallel
   doc: "The number of parallel scoring processes to use\n(default: 1)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --parallel
 - id: in_quality
   doc: "The minimum mapping quality required for a read to be\ncounted (default: 30)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --quality
 - id: in_region_extension
   doc: "The number of bases to score on either side of the\nmotifs (default: 100)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --region-extension
 - id: in_verbose
   doc: Requests more detailed output.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_bam_file_of_aligned_reads
@@ -80,9 +80,10 @@ outputs:
     \ be specified. Alignments\nmatching any exclude flag will not be counted. The\n\
     default is to exclude all unmapped reads/mates by\nfiltering out any alignments\
     \ with SAM flags 4 or 8\nset."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_exclude_flags)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - make_cut_matrix

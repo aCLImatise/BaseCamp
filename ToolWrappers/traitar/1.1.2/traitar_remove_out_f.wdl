@@ -18,6 +18,9 @@ task TraitarRemoveOutF {
       ~{out_f} \
       ~{if (keep) then "--keep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep: ""
     trait_ar: ""

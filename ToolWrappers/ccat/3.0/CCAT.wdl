@@ -16,6 +16,9 @@ task CCAT {
       ~{config_file_name} \
       ~{project_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     library_one_tag_file_name: ""
     library_two_tag_file_name: ""

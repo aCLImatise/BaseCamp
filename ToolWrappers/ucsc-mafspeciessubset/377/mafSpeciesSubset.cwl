@@ -4,7 +4,7 @@ inputs:
 - id: in_keep_first
   doc: "- If set, keep the first 'a' line in a maf no matter what\nUseful for mafFrag\
     \ results where we use this for the gene name\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -keepFirst
 - id: in_truth_dot
@@ -16,6 +16,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mafSpeciesSubset

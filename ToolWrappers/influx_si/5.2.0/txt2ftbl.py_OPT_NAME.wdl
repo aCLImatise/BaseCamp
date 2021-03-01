@@ -8,6 +8,9 @@ task Txt2ftblpyOPTNAME {
     txt2ftbl_py OPT_NAME \
       ~{txttwoftbldotpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     txttwoftbldotpy: ""
   }

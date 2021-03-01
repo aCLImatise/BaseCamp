@@ -8,9 +8,9 @@ task Correctfrags {
     File? specify_output_file
     Boolean? use_haplotype_counts
     Boolean? specify_binary_store
-    Boolean? set_number_pthreads
-    Boolean? specify_level_higher
-    Boolean? specify_number_exact
+    Boolean? set_number_use
+    Boolean? specify_level_verbose
+    Boolean? specify_number_vote
     Boolean? length_end_exclude
     Boolean? ehp
   }
@@ -22,12 +22,15 @@ task Correctfrags {
       ~{if (specify_output_file) then "-o" else ""} \
       ~{if (use_haplotype_counts) then "-p" else ""} \
       ~{if (specify_binary_store) then "-S" else ""} \
-      ~{if (set_number_pthreads) then "-t" else ""} \
-      ~{if (specify_level_higher) then "-v" else ""} \
-      ~{if (specify_number_exact) then "-V" else ""} \
+      ~{if (set_number_use) then "-t" else ""} \
+      ~{if (specify_level_verbose) then "-v" else ""} \
+      ~{if (specify_number_vote) then "-V" else ""} \
       ~{if (length_end_exclude) then "-x" else ""} \
       ~{if (ehp) then "-ehp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     set_keep_flag: "set keep flag on end of frags with less than this many olaps"
     specify_file_use: "specify file of sorted overlaps to use (in the format produced\\nby  get-olaps"
@@ -35,9 +38,9 @@ task Correctfrags {
     specify_output_file: "specify output file to hold correction info"
     use_haplotype_counts: "don't use haplotype counts to correct"
     specify_binary_store: "specify the binary overlap store containing overlaps to use"
-    set_number_pthreads: "set number of p-threads to use"
-    specify_level_higher: "specify level of verbose outputs, higher is more"
-    specify_number_exact: "specify number of exact match bases around an error to vote to change"
+    set_number_use: "set number of p-threads to use"
+    specify_level_verbose: "specify level of verbose outputs, higher is more"
+    specify_number_vote: "specify number of exact match bases around an error to vote to change"
     length_end_exclude: "length of end of exact match to exclude in preventing change"
     ehp: ""
   }

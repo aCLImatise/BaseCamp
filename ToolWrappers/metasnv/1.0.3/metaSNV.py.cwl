@@ -3,12 +3,12 @@ id: metaSNV.py.cwl
 inputs:
 - id: in_db_ann
   doc: Database gene annotation.
-  type: File
+  type: File?
   inputBinding:
     prefix: --db_ann
 - id: in_print_commands
   doc: Instead of executing the commands, simply print them
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --print-commands
 - id: in_dir
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - metaSNV.py

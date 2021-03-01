@@ -8,6 +8,9 @@ task SmegBuildSpeciesListing {
     smeg build_species listing \
       ~{if (_is_required) then "-g" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _is_required: "[option] is required"
   }

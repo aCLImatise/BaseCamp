@@ -17,12 +17,12 @@ task Nanonet2d {
     Boolean? no_open_cl_two_d
     String? trans
     Boolean? no_fast_decode
-    String path_default_none
+    String path_fast_files
     String output_prefix
   }
   command <<<
     nanonet2d \
-      ~{path_default_none} \
+      ~{path_fast_files} \
       ~{output_prefix} \
       ~{if (no_fast_q) then "--no-fastq" else ""} \
       ~{if defined(watch) then ("--watch " +  '"' + watch + '"') else ""} \
@@ -40,6 +40,9 @@ task Nanonet2d {
       ~{if defined(trans) then ("--trans " +  '"' + trans + '"') else ""} \
       ~{if (no_fast_decode) then "--no-fast_decode" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_fast_q: "Output fastq rather than fasta. (Default: --no-fastq)\\n(default: False)"
     watch: "Switch to watching folder, argument value used as\\ntimeout period. (default: None)"
@@ -56,7 +59,7 @@ task Nanonet2d {
     no_open_cl_two_d: "Use OpenCL for 2D calls. (Default: --no-opencl_2d)\\n(default: False)"
     trans: "step skip\\nBase transition probabilities (default: None)"
     no_fast_decode: "Use simple, fast decoder with no transition estimates.\\n(Default: --no-fast_decode) (default: False)\\n"
-    path_default_none: "A path to fast5 files. (default: None)"
+    path_fast_files: "A path to fast5 files. (default: None)"
     output_prefix: "Output prefix, output will be in fasta format."
   }
   output {

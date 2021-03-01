@@ -62,6 +62,9 @@ task MatamAssemblypy {
       ~{if defined(resume_from) then ("--resume_from " +  '"' + resume_from + '"') else ""} \
       ~{if (filter_only) then "--filter_only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fast_q: "Input reads file (fasta or fastq format)"
     ref_db: "MATAM ref db. Default is\\n$MATAM_DIR/db/SILVA_128_SSURef_NR95"

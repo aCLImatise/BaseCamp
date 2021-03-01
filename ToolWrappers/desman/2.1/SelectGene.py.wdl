@@ -4,6 +4,9 @@ task SelectGenepy {
   command <<<
     SelectGene_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

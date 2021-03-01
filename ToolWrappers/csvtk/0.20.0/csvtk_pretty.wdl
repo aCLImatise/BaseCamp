@@ -40,6 +40,9 @@ task CsvtkPretty {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     align_right: "align right"
     max_width: "max width"

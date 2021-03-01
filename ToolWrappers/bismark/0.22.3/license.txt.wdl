@@ -4,6 +4,9 @@ task Licensetxt {
   command <<<
     license_txt
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

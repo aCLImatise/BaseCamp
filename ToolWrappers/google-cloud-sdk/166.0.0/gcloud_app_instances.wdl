@@ -20,6 +20,9 @@ task GcloudAppInstances {
       ~{scp} \
       ~{ssh}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     delete: "Delete a specified instance."
     describe: "Display all data about an existing instance."

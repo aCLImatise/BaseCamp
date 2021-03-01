@@ -18,6 +18,9 @@ task SgaHaplotypefilter {
       ~{if defined(out_prefix) then ("--out-prefix " +  '"' + out_prefix + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     reads: "load the FM-index of the reads in FILE"

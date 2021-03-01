@@ -1,0 +1,162 @@
+!Command
+command:
+- ParseHeaders.py
+- merge
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
+    \ None)"
+  args: !RepeatFlagArg
+    name: SEQ_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Explicit output file name(s). Note, this argument\ncannot be used\
+    \ with the --failed, --outdir, or\n--outname arguments. If unspecified, then the\
+    \ output\nfilename will be based on the input filename(s).\n(default: None)"
+  args: !RepeatFlagArg
+    name: OUT_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --outname
+  description: "Changes the prefix of the successfully processed\noutput file to the\
+    \ string specified. May not be\nspecified with multiple input files. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --failed
+  description: "If specified create files containing records that fail\nprocessing.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --delim
+  description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
+    annotation blocks, field names and values, and values\nwithin a field, respectively.\
+    \ (default: ('|', '=',\n','))"
+  args: !SimpleFlagArg
+    name: DELIMITER
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: 'List of fields to merge. (default: None)'
+  args: !RepeatFlagArg
+    name: FIELDS
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: "Name for the merged field. If the new field is already\npresent, the\
+    \ merged fields will be merged into the\nexisting field. (default: None)"
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --act
+  description: "List of collapse actions to take on the new field\nfollowing the merge\
+    \ defining how to combine the\nannotations into a single value. The actions \"\
+    min\",\n\"max\", \"sum\" perform the corresponding mathematical\noperation on\
+    \ numeric annotations. The action \"set\"\ncollapses annotations into a comma\
+    \ delimited list of\nunique values. The action \"cat\" concatenates the\nvalues\
+    \ together into a single string. (default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      sum:
+      set:
+      max:
+      min:
+      cat:
+- !Flag
+  optional: true
+  synonyms:
+  - --delete
+  description: "If specified, delete the field that were merged from\nthe output header.\
+    \ (default: False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: ParseHeaders.py merge [--version] [-h] -s SEQ_FILES [SEQ_FILES\
+  \ ...]\n                             [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n\
+  \                             [--outname OUT_NAME] [--failed] [--fasta]\n      \
+  \                       [--delim DELIMITER DELIMITER DELIMITER] -f FIELDS\n    \
+  \                         [FIELDS ...] -k NAME\n                             [--act\
+  \ {min,max,sum,set,cat}] [--delete]\n\nMerge multiple annotations fields into a\
+  \ single field\n\nhelp:\n  --version             show program's version number and\
+  \ exit\n  -h, --help            show this help message and exit\n\nstandard arguments:\n\
+  \  -s SEQ_FILES [SEQ_FILES ...]\n                        A list of FASTA/FASTQ files\
+  \ containing sequences to\n                        process. (default: None)\n  -o\
+  \ OUT_FILES [OUT_FILES ...]\n                        Explicit output file name(s).\
+  \ Note, this argument\n                        cannot be used with the --failed,\
+  \ --outdir, or\n                        --outname arguments. If unspecified, then\
+  \ the output\n                        filename will be based on the input filename(s).\n\
+  \                        (default: None)\n  --outdir OUT_DIR      Specify to changes\
+  \ the output directory to the\n                        location specified. The input\
+  \ file directory is used\n                        if this is not specified. (default:\
+  \ None)\n  --outname OUT_NAME    Changes the prefix of the successfully processed\n\
+  \                        output file to the string specified. May not be\n     \
+  \                   specified with multiple input files. (default: None)\n  --failed\
+  \              If specified create files containing records that fail\n        \
+  \                processing. (default: False)\n  --fasta               Specify to\
+  \ force output as FASTA rather than FASTQ.\n                        (default: None)\n\
+  \  --delim DELIMITER DELIMITER DELIMITER\n                        A list of the\
+  \ three delimiters that separate\n                        annotation blocks, field\
+  \ names and values, and values\n                        within a field, respectively.\
+  \ (default: ('|', '=',\n                        ','))\n\nparsing arguments:\n  -f\
+  \ FIELDS [FIELDS ...]\n                        List of fields to merge. (default:\
+  \ None)\n  -k NAME               Name for the merged field. If the new field is\
+  \ already\n                        present, the merged fields will be merged into\
+  \ the\n                        existing field. (default: None)\n  --act {min,max,sum,set,cat}\n\
+  \                        List of collapse actions to take on the new field\n   \
+  \                     following the merge defining how to combine the\n        \
+  \                annotations into a single value. The actions \"min\",\n       \
+  \                 \"max\", \"sum\" perform the corresponding mathematical\n    \
+  \                    operation on numeric annotations. The action \"set\"\n    \
+  \                    collapses annotations into a comma delimited list of\n    \
+  \                    unique values. The action \"cat\" concatenates the\n      \
+  \                  values together into a single string. (default: None)\n  --delete\
+  \              If specified, delete the field that were merged from\n          \
+  \              the output header. (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/presto:0.6.2--py_0

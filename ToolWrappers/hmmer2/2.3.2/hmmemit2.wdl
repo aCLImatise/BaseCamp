@@ -24,6 +24,9 @@ task Hmmemit2 {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     write_generated_sequences: ": write generated sequences as an alignment, not FASTA"
     generate_single_sequence: ": generate a single \\\"consensus\\\" sequence"

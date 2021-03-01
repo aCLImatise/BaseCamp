@@ -16,6 +16,9 @@ task PostprocessingAMPSr {
       ~{if (node_dot_list) then "--node.list" else ""} \
       ~{if (heat_map_dot_json) then "--heatmap.json" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rmaexdotoutdotfld: "MALTextract output folder."
     malte_x_dot_filter: "MALTextract filter mode: <default,def_anc>. This script is not designed for 'scan' output. Default: <def_anc>."

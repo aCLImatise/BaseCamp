@@ -22,6 +22,9 @@ task Vtoolsevaluate {
       ~{if defined(min_qual) then ("--min-qual " +  '"' + min_qual + '"') else ""} \
       ~{if defined(min_depth) then ("--min-depth " +  '"' + min_depth + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     call_vcf: "Path to VCF with calls to be evaluated\\n[required]"
     positive_vcf: "Path to VCF with known calls  [required]"

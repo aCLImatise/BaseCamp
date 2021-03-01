@@ -20,6 +20,9 @@ task CIRCexplorerpy {
       ~{if (tmp) then "--tmp" else ""} \
       ~{if (no_fix) then "--no-fix" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fusion: "TopHat-Fusion fusion BAM file. (used in TopHat-Fusion mapping)"
     jun_c: "STAR Chimeric junction file. (used in STAR mapping)"

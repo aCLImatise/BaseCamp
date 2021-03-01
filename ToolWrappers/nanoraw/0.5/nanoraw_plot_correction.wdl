@@ -22,6 +22,9 @@ task NanorawPlotCorrection {
       ~{if defined(num_obs) then ("--num-obs " +  '"' + num_obs + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_five_based_irs: "Directories containing fast5 files."
     region_type: "Region to plot within each read. Choices are: random\\n(default), start, end."

@@ -90,6 +90,9 @@ task RiboSeed {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(memory) then ("--memory " +  '"' + memory + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_genbank: "genbank reference, used to estimate insert sizes, and\\ncompare with QUAST"
     output_directory_default: "output directory; default: /"

@@ -12,6 +12,9 @@ task PoppunkExtractComponentspy {
       ~{graph} \
       ~{var_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     extract_components: ""
     graph: ""

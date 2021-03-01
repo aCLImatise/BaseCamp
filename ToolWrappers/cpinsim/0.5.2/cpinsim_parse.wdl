@@ -14,6 +14,9 @@ task CpinsimParse {
       ~{if defined(allosteric_effects) then ("--allosteric_effects " +  '"' + allosteric_effects + '"') else ""} \
       ~{if defined(output_file_containing) then ("--output " +  '"' + output_file_containing + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     interactions_without_constraints: "Files containing the annotated pairwise interactions."
     competitions: "Files containing the annotated competitions."

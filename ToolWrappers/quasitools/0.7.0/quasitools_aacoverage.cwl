@@ -1,11 +1,6 @@
 class: CommandLineTool
 id: quasitools_aacoverage.cwl
 inputs:
-- id: in_output
-  doc: "--help                 Show this message and exit.\n"
-  type: File
-  inputBinding:
-    prefix: --output
 - id: in_bam
   doc: ''
   type: string
@@ -25,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - quasitools

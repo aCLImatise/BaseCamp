@@ -3,7 +3,7 @@ id: group_ORF_sequences.py.cwl
 inputs:
 - id: in_is_p_bid
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --is_pbid
 - id: in_de_duplicate
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - group_ORF_sequences.py

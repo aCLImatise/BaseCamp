@@ -16,6 +16,9 @@ task ProphyleCompile {
       ~{if (run_compilation_parallel) then "-P" else ""} \
       ~{if (advanced_configuration_json) then "-c" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clean_files_instead: "clean files instead of compiling"
     force_recompilation: "force recompilation"

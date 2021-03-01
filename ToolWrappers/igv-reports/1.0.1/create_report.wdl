@@ -34,6 +34,9 @@ task CreateReport {
       ~{if (standalone) then "--standalone" else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type: "Report type. Possible values are mutation and\\njunctions. Default is mutation"
     ideogram: "ideogram file in UCSC cytoIdeo format"

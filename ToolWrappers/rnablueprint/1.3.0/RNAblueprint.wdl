@@ -3,7 +3,7 @@ version 1.0
 task RNAblueprint {
   input {
     Boolean? _be_verbose
-    Boolean? _verbose_debugging
+    Boolean? be_verbose_debugging
     Boolean? arg_input_file
     File? arg_output_file
     Boolean? arg_write_file
@@ -14,7 +14,7 @@ task RNAblueprint {
   command <<<
     RNAblueprint \
       ~{if (_be_verbose) then "-v" else ""} \
-      ~{if (_verbose_debugging) then "-d" else ""} \
+      ~{if (be_verbose_debugging) then "-d" else ""} \
       ~{if (arg_input_file) then "-i" else ""} \
       ~{if (arg_output_file) then "-o" else ""} \
       ~{if (arg_write_file) then "-g" else ""} \
@@ -22,9 +22,12 @@ task RNAblueprint {
       ~{if (s) then "-s" else ""} \
       ~{if (n) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _be_verbose: "[ --verbose ]             be verbose"
-    _verbose_debugging: "[ --debug ]               be verbose for debugging"
+    be_verbose_debugging: "[ --debug ]               be verbose for debugging"
     arg_input_file: "[ --in ] arg              input file which contains the structures,\\nsequence constraints and the start sequence\\n[string]\\nstructures: secondary structures in dot-bracket\\nnotation. one structure per input\\nline\\nsequence constraints: Permanent sequence\\nconstraints in IUPAC\\nnotation [ACGTUWSMKRYBDHVN\\n] (optional)\\nstart sequence:  A initial RNA sequence to start\\nthe sampling from [ACGU]\\n(optional)"
     arg_output_file: "[ --out ] arg             output file for writing the sequences (default:\\nstdout) [string]"
     arg_write_file: "[ --graphml ] arg         write a GraphML file representing the dependency\\ngraph to the given filename (optional) [string]"

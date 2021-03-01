@@ -4,35 +4,66 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --poa_path
-  args: !SimpleFlagArg
-    name: POA_PATH
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - -r
+  - --root
+  description: "directory where to look for files (the one given to\nspectral_layout_from_minimap.py)."
   args: !SimpleFlagArg
     name: ROOT
+- !Flag
   optional: true
+  synonyms:
+  - --poa_path
+  description: path/to/poa/poa (path to the executable)
+  args: !SimpleFlagArg
+    name: POA_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --poa_mat_path
+  description: path/to/poa-score.mat
+  args: !SimpleFlagArg
+    name: POA_MAT_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -cc
+  - --contig
+  description: index of contig you wish to compute consensus for
+  args: !SimpleFlagArg
+    name: CONTIG
+- !Flag
+  optional: true
+  synonyms:
+  - --w_len
+  description: length of consensus windows for POA.
+  args: !SimpleFlagArg
+    name: W_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - --w_ovl_len
+  description: "overlap length between two successive consensus\nwindows."
+  args: !SimpleFlagArg
+    name: W_OVL_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbosity
+  description: 'verbosity level (nothing : 0, -v : 1; -vv : 2)'
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-r ROOT, --root ROOT  directory where\
-    \ to look for files (the one given to\nspectral_layout_from_minimap.py).\n--poa_path\
-    \ POA_PATH   path/to/poa/poa (path to the executable)\n--poa_mat_path POA_MAT_PATH\n\
-    path/to/poa-score.mat\n-cc CONTIG, --contig CONTIG\nindex of contig you wish to\
-    \ compute consensus for\n--w_len W_LEN         length of consensus windows for\
-    \ POA.\n--w_ovl_len W_OVL_LEN\noverlap length between two successive consensus\n\
-    windows.\n-v, --verbosity       verbosity level (nothing : 0, -v : 1; -vv : 2)\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: gen_cons_from_poa.py [-h] [-r ROOT] [--poa_path POA_PATH]\n   \
@@ -49,3 +80,4 @@ help_text: "usage: gen_cons_from_poa.py [-h] [-r ROOT] [--poa_path POA_PATH]\n  
   \       verbosity level (nothing : 0, -v : 1; -vv : 2)\n"
 generated_using:
 - --help
+docker_image:

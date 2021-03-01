@@ -36,6 +36,9 @@ task Repaq {
       ~{if (thread) then "--thread" else ""} \
       ~{if (compression) then "--compression" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_one: "input file name (string [=])"
     out_one: "output file name (string [=])"

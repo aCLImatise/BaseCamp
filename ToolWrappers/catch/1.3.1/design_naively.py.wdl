@@ -26,6 +26,9 @@ task DesignNaivelypy {
       ~{if (debug) then "--debug" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     probe_length: "(Optional) The number of bp in each probe"
     probe_stride: "(Optional) Generate candidate probes from the input\\nthat are separated by this number of bp"

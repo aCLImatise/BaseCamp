@@ -14,6 +14,9 @@ task MegalodonExtrasVariantsAtomize {
       ~{atomized_variants_dot_megalodon_dot_vcf} \
       ~{if defined(out_vcf) then ("--out-vcf " +  '"' + out_vcf + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_vcf: "Output VCF file. Default:"
     in_vcf: "Proposed varitants (VCF)"

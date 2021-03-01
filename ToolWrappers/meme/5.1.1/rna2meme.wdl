@@ -22,7 +22,7 @@ task Rna2meme {
     String default
     String ending
     String extra
-    File file
+    File var_file
     String var_21
     String set
     String starting
@@ -79,7 +79,7 @@ task Rna2meme {
       ~{default} \
       ~{ending} \
       ~{extra} \
-      ~{file} \
+      ~{var_file} \
       ~{var_21} \
       ~{set} \
       ~{starting} \
@@ -142,6 +142,9 @@ task Rna2meme {
       ~{if (output_logodds_pssm) then "-logodds" else ""} \
       ~{if defined(url) then ("-url " +  '"' + url + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_rna_motifs: "Output RNA motifs (default)."
     output_dna_motifs: "Output DNA motifs instead of RNA motifs."
@@ -163,7 +166,7 @@ task Rna2meme {
     default: ""
     ending: ""
     extra: ""
-    file: ""
+    var_file: ""
     var_21: ""
     set: ""
     starting: ""

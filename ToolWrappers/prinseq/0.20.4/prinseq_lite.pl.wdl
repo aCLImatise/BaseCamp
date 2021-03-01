@@ -73,10 +73,12 @@ task Prinseqlitepl {
     Boolean? stats_info
     Boolean? h
     String tabs_dot
+    String option_dot
   }
   command <<<
     prinseq_lite_pl \
       ~{tabs_dot} \
+      ~{option_dot} \
       ~{if (man) then "-man" else ""} \
       ~{if (version) then "-version" else ""} \
       ~{if (verbose) then "-verbose" else ""} \
@@ -148,6 +150,9 @@ task Prinseqlitepl {
       ~{if (stats_info) then "-stats_info" else ""} \
       ~{if (h) then "-h" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "Print the full documentation; ignore other arguments."
     version: "Print program version; ignore other arguments."
@@ -220,6 +225,7 @@ task Prinseqlitepl {
     stats_info: ""
     h: ""
     tabs_dot: "If you specify any statistic option, no other ouput will be"
+    option_dot: "-stats_info"
   }
   output {
     File out_stdout = stdout()

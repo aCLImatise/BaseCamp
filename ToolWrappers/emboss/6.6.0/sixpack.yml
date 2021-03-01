@@ -3,19 +3,22 @@ command:
 - sixpack
 positional:
 - !Positional
-  description: -mstart             boolean    [N] Displays only ORFs starting with
-    an M.
+  optional: false
   position: 0
   name: size.
-  optional: false
+  description: -mstart             boolean    [N] Displays only ORFs starting with
+    an M.
 named:
 - !Flag
-  description: seqoutall  [<sequence>.<format>] ORF sequence output
+  optional: true
   synonyms:
   - -outseq
+  description: seqoutall  [<sequence>.<format>] ORF sequence output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -table
   description: "menu       [0] Genetics code used for the translation\n(Values: 0\
     \ (Standard); 1 (Standard (with\nalternative initiation codons)); 2\n(Vertebrate\
     \ Mitochondrial); 3 (Yeast\nMitochondrial); 4 (Mold, Protozoan,\nCoelenterate\
@@ -25,82 +28,79 @@ named:
     \ (Ascidian Mitochondrial); 14 (Flatworm\nMitochondrial); 15 (Blepharisma\nMacronuclear);\
     \ 16 (Chlorophycean\nMitochondrial); 21 (Trematode\nMitochondrial); 22 (Scenedesmus\
     \ obliquus);\n23 (Thraustochytrium Mitochondrial))"
-  synonyms:
-  - -table
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "integer    [1] Minimum protein size of Open Reading\nFrames (ORFs)\
-    \ to display in the\ntranslations. (Integer 1 or more)"
+  optional: true
   synonyms:
   - -orfminsize
+  description: "integer    [1] Minimum protein size of Open Reading\nFrames (ORFs)\
+    \ to display in the\ntranslations. (Integer 1 or more)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -uppercase
   description: "range      [If this is left blank, then the sequence\ncase is left\
     \ alone.] Regions to put in\nuppercase.\nIf this is left blank, then the sequence\n\
     case is left alone.\nA set of regions is specified by a set of\npairs of positions.\n\
     The positions are integers.\nThey are separated by any non-digit,\nnon-alpha character.\n\
     Examples of region specifications are:\n24-45, 56-78\n1:45, 67=99;765..888\n1,5,8,10,23,45,57,99"
-  synonyms:
-  - -uppercase
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -highlight
   description: "range      [(full sequence)] Regions to colour if\nformatting for\
     \ HTML.\nIf this is left blank, then the sequence is\nleft alone.\nA set of regions\
     \ is specified by a set of\npairs of positions.\nThe positions are integers.\n\
     They are followed by any valid HTML font\ncolour.\nExamples of region specifications\
     \ are:\n24-45 blue 56-78 orange\n1-100 green 120-156 red\nA file of ranges to\
     \ colour (one range per\nline) can be specified as '@filename'."
-  synonyms:
-  - -highlight
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "integer    [60] Number of nucleotides displayed on each\nline (Integer\
-    \ 1 or more)"
+  optional: true
   synonyms:
   - -width
+  description: "integer    [60] Number of nucleotides displayed on each\nline (Integer\
+    \ 1 or more)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "integer    [0] Line length of page (0 for indefinite)\n(Integer 0\
-    \ or more)"
+  optional: true
   synonyms:
   - -length
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "integer    [10] Margin around sequence for numbering.\n(Integer 0\
+  description: "integer    [0] Line length of page (0 for indefinite)\n(Integer 0\
     \ or more)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -margin
+  description: "integer    [10] Margin around sequence for numbering.\n(Integer 0\
+    \ or more)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "integer    [1] Number from which you want the DNA\nsequence to be\
-    \ numbered. (Any integer value)"
+  optional: true
   synonyms:
   - -offset
+  description: "integer    [1] Number from which you want the DNA\nsequence to be\
+    \ numbered. (Any integer value)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: boolean    [N] Use HTML formatting
+  optional: true
   synonyms:
   - -html
+  description: boolean    [N] Use HTML formatting
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "boolean    Report command line options and exit. More\ninformation\
-    \ on associated and general\nqualifiers can be found with -help -verbose\n"
+  optional: true
   synonyms:
   - -help
+  description: "boolean    Report command line options and exit. More\ninformation\
+    \ on associated and general\nqualifiers can be found with -help -verbose\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Display a DNA sequence with 6-frame translation and ORFs\nVersion: EMBOSS:6.6.0.0\n\
@@ -177,3 +177,4 @@ help_text: "Display a DNA sequence with 6-frame translation and ORFs\nVersion: E
   \                             qualifiers can be found with -help -verbose\n\n"
 generated_using:
 - --help
+docker_image:

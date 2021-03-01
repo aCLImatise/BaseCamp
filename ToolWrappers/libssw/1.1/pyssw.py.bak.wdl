@@ -34,6 +34,9 @@ task Pysswpybak {
       ~{if (b_sam) then "--bSam" else ""} \
       ~{if (b_header) then "--bHeader" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s_libpath: "path of libssw.so"
     n_match: "a positive integer as the score for a match in genome\\nsequence alignment. [default: 2]"

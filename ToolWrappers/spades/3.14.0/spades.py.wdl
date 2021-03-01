@@ -11,7 +11,7 @@ task Spadespy {
     Boolean? plasmid
     Boolean? ion_torrent
     Boolean? test
-    File? file_interlaced_forward
+    File? file_interlaced_pairedend
     File? file_forward_pairedend
     File? file_reverse_pairedend
     File? file_unpaired_reads
@@ -67,7 +67,7 @@ task Spadespy {
       ~{if (plasmid) then "--plasmid" else ""} \
       ~{if (ion_torrent) then "--iontorrent" else ""} \
       ~{if (test) then "--test" else ""} \
-      ~{if defined(file_interlaced_forward) then ("--12 " +  '"' + file_interlaced_forward + '"') else ""} \
+      ~{if defined(file_interlaced_pairedend) then ("--12 " +  '"' + file_interlaced_pairedend + '"') else ""} \
       ~{if defined(file_forward_pairedend) then ("-1 " +  '"' + file_forward_pairedend + '"') else ""} \
       ~{if defined(file_reverse_pairedend) then ("-2 " +  '"' + file_reverse_pairedend + '"') else ""} \
       ~{if defined(file_unpaired_reads) then ("-s " +  '"' + file_unpaired_reads + '"') else ""} \
@@ -112,6 +112,9 @@ task Spadespy {
       ~{if defined(cov_cut_off) then ("--cov-cutoff " +  '"' + cov_cut_off + '"') else ""} \
       ~{if defined(phred_offset) then ("--phred-offset " +  '"' + phred_offset + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_store_files: "directory to store all the resulting files (required)"
     isolate: "this flag is highly recommended for high-coverage isolate and multi-cell data"
@@ -122,7 +125,7 @@ task Spadespy {
     plasmid: "runs plasmidSPAdes pipeline for plasmid detection"
     ion_torrent: "this flag is required for IonTorrent data"
     test: "runs SPAdes on toy dataset"
-    file_interlaced_forward: "file with interlaced forward and reverse paired-end reads"
+    file_interlaced_pairedend: "file with interlaced forward and reverse paired-end reads"
     file_forward_pairedend: "file with forward paired-end reads"
     file_reverse_pairedend: "file with reverse paired-end reads"
     file_unpaired_reads: "file with unpaired reads"

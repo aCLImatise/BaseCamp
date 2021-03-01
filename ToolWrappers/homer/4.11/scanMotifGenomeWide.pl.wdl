@@ -26,6 +26,9 @@ task ScanMotifGenomeWidepl {
       ~{if (mask) then "-mask" else ""} \
       ~{if (number_cpus_use) then "-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     five_p: "(report positions centered on the 5' start of the motif)"
     bed: "(format as a BED file, i.e. for UCSC upload)"

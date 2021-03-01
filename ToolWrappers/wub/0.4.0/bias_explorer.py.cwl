@@ -3,12 +3,12 @@ id: bias_explorer.py.cwl
 inputs:
 - id: in_report_pdf_biasexplorerpdf
   doc: Report PDF (bias_explorer.pdf).
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
 - id: in_exclude_transcripts_zero
   doc: Exclude transcripts with zero counts.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -x
 - id: in_count_file
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bias_explorer.py

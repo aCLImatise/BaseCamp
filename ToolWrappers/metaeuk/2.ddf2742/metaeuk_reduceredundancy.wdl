@@ -14,6 +14,9 @@ task MetaeukReduceredundancy {
       ~{if defined(compressed) then ("--compressed " +  '"' + compressed + '"') else ""} \
       ~{if defined(verbosity_level_errors) then ("-v " +  '"' + verbosity_level_errors + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     overlap: "allow predictions to overlap another on the same strand. when not allowed (default), only the prediction with better E-value will be retained [0,1] [0]"
     threads: "Number of CPU-cores used (all by default) [8]"

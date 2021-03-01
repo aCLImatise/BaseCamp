@@ -20,6 +20,9 @@ task Sublong {
       ~{if (output_version_program) then "-v" else ""} \
       ~{if (turn_rnaseq_mode) then "-X" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base_name_index: "Base name of the index. The index must be built as a full index\\nand has only one block."
     name_input_read: "Name of an input read file. Acceptable formats include gzipped\\nFASTQ and FASTQ (automatically identified)."

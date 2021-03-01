@@ -3,143 +3,143 @@ command:
 - bcbio_nextgen.py
 positional:
 - !Positional
-  description: "Global YAML configuration file specifying details\nabout the system\
-    \ (optional, defaults to installed\nbcbio_system.yaml)"
+  optional: false
   position: 0
   name: global_config
-  optional: false
+  description: "Global YAML configuration file specifying details\nabout the system\
+    \ (optional, defaults to installed\nbcbio_system.yaml)"
 - !Positional
-  description: "A directory of Illumina output or fastq files to\nprocess (optional)"
+  optional: false
   position: 1
   name: fc_dir
-  optional: false
+  description: "A directory of Illumina output or fastq files to\nprocess (optional)"
 - !Positional
-  description: "YAML file with details about samples to process\n(required, unless\
-    \ using Galaxy LIMS as input)"
+  optional: false
   position: 2
   name: run_config
-  optional: false
+  description: "YAML file with details about samples to process\n(required, unless\
+    \ using Galaxy LIMS as input)"
 - !Positional
-  description: -v, --version         Print current version
+  optional: false
   position: 0
   name: directory
-  optional: false
+  description: -v, --version         Print current version
 named:
 - !Flag
-  description: Total cores to use for processing
+  optional: true
   synonyms:
   - -n
   - --numcores
+  description: Total cores to use for processing
   args: !SimpleFlagArg
     name: NUMCORES
-  optional: true
 - !Flag
-  description: Approach to parallelization
+  optional: true
   synonyms:
   - -t
   - --paralleltype
+  description: Approach to parallelization
   args: !ChoiceFlagArg
     choices: !!set
-      local:
       ipython:
-  optional: true
+      local:
 - !Flag
-  description: Scheduler to use for ipython parallel
+  optional: true
   synonyms:
   - -s
   - --scheduler
+  description: Scheduler to use for ipython parallel
   args: !ChoiceFlagArg
     choices: !!set
-      sge:
       lsf:
-      slurm:
-      torque:
+      sge:
       pbspro:
-  optional: true
+      torque:
+      slurm:
 - !Flag
-  description: run controller locally
+  optional: true
   synonyms:
   - --local_controller
+  description: run controller locally
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Scheduler queue to run jobs on, for ipython parallel
+  optional: true
   synonyms:
   - -q
   - --queue
+  description: Scheduler queue to run jobs on, for ipython parallel
   args: !SimpleFlagArg
     name: QUEUE
-  optional: true
 - !Flag
-  description: "Cluster specific resources specifications. Can be\nspecified multiple\
-    \ times. Supports SGE, Torque, LSF\nand SLURM parameters."
+  optional: true
   synonyms:
   - -r
   - --resources
+  description: "Cluster specific resources specifications. Can be\nspecified multiple\
+    \ times. Supports SGE, Torque, LSF\nand SLURM parameters."
   args: !SimpleFlagArg
     name: RESOURCES
-  optional: true
 - !Flag
-  description: "Number of minutes before cluster startup times out.\nDefaults to 15"
+  optional: true
   synonyms:
   - --timeout
+  description: "Number of minutes before cluster startup times out.\nDefaults to 15"
   args: !SimpleFlagArg
     name: TIMEOUT
-  optional: true
 - !Flag
-  description: "Number of retries of failed tasks during distributed\nprocessing.\
-    \ Default 0 (no retries)"
+  optional: true
   synonyms:
   - --retries
+  description: "Number of retries of failed tasks during distributed\nprocessing.\
+    \ Default 0 (no retries)"
   args: !SimpleFlagArg
     name: RETRIES
-  optional: true
 - !Flag
-  description: Tag name to label jobs on the cluster
+  optional: true
   synonyms:
   - -p
   - --tag
+  description: Tag name to label jobs on the cluster
   args: !SimpleFlagArg
     name: TAG
-  optional: true
 - !Flag
-  description: Run a workflow with the given commandline arguments
+  optional: true
   synonyms:
   - -w
   - --workflow
+  description: Run a workflow with the given commandline arguments
   args: !SimpleFlagArg
     name: WORKFLOW
-  optional: true
 - !Flag
-  description: Directory to process in. Defaults to current working
+  optional: true
   synonyms:
   - --workdir
+  description: Directory to process in. Defaults to current working
   args: !SimpleFlagArg
     name: WORKDIR
-  optional: true
 - !Flag
-  description: Treat all files as single reads
+  optional: true
   synonyms:
   - --force-single
+  description: Treat all files as single reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "comma separated list of separators that indicates\npaired files.\n"
+  optional: true
   synonyms:
   - --separators
+  description: "comma separated list of separators that indicates\npaired files.\n"
   args: !SimpleFlagArg
     name: SEPARATORS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: bcbio_nextgen.py [-h] [-n NUMCORES] [-t {local,ipython}]\n    \
@@ -177,3 +177,4 @@ help_text: "usage: bcbio_nextgen.py [-h] [-n NUMCORES] [-t {local,ipython}]\n   
   \                     paired files.\n"
 generated_using:
 - --help
+docker_image:

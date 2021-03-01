@@ -3,68 +3,68 @@ id: linear_discriminant_analysis.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.
-  type: string
+  type: string?
   inputBinding:
     prefix: --input
 - id: in_design
   doc: Design file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --design
 - id: in_id
   doc: Name of the column with unique identifiers.
-  type: string
+  type: string?
   inputBinding:
     prefix: --ID
 - id: in_group
   doc: Name of the column with groups.
-  type: string
+  type: string?
   inputBinding:
     prefix: --group
 - id: in_levels
   doc: Different groups to sort by separeted by commas.
-  type: string
+  type: string?
   inputBinding:
     prefix: --levels
 - id: in_cross_validation
   doc: "Choice of cross-validation procedure for the -nc\ndeterminantion: none, single,\
     \ double."
-  type: string
+  type: string?
   inputBinding:
     prefix: --cross_validation
 - id: in_n_components
   doc: "Number of components [Default == 2]. Used only if\n-cv=none."
-  type: long
+  type: long?
   inputBinding:
     prefix: --nComponents
 - id: in_out
   doc: Name of output file to store scores. TSV format.
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_out_classification
   doc: "Name of output file to store classification. TSV\nformat."
-  type: File
+  type: File?
   inputBinding:
     prefix: --outClassification
 - id: in_out_classification_accuracy
   doc: "Name of output file to store classification accuracy.\nTSV format."
-  type: File
+  type: File?
   inputBinding:
     prefix: --outClassificationAccuracy
 - id: in_figure
   doc: Name of output file to store scatter plots for scores
-  type: File
+  type: File?
   inputBinding:
     prefix: --figure
 - id: in_palette
   doc: Name of the palette to use.
-  type: string
+  type: string?
   inputBinding:
     prefix: --palette
 - id: in_color
   doc: "Name of a valid color scheme on the selected palette\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --color
 outputs:
@@ -73,24 +73,25 @@ outputs:
   type: stdout
 - id: out_out
   doc: Name of output file to store scores. TSV format.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
 - id: out_out_classification
   doc: "Name of output file to store classification. TSV\nformat."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_classification)
 - id: out_out_classification_accuracy
   doc: "Name of output file to store classification accuracy.\nTSV format."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_classification_accuracy)
 - id: out_figure
   doc: Name of output file to store scatter plots for scores
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_figure)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - linear_discriminant_analysis.py

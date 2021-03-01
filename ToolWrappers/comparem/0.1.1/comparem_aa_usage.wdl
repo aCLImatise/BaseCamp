@@ -20,6 +20,9 @@ task ComparemAaUsage {
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     counts: "output raw counts instead of frequencies"
     file_ext: "extension of files to process (default: faa)"

@@ -12,6 +12,9 @@ task BioconvertSniffer {
       ~{if defined(set_input_file) then ("--input " +  '"' + set_input_file + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbosity: "Set the outpout verbosity."
     set_input_file: "Set the input file."

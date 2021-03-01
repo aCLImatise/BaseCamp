@@ -3,17 +3,17 @@ id: smof_split.cwl
 inputs:
 - id: in_number
   doc: Number of output files or sequences per file
-  type: long
+  type: long?
   inputBinding:
     prefix: --number
 - id: in_seqs
   doc: split by maximum sequences per file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --seqs
 - id: in_prefix
   doc: "prefix for output files (default=\"xxx\")\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --prefix
 - id: in_input
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - smof

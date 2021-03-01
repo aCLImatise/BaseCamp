@@ -18,6 +18,9 @@ task PpaniniScatterplot {
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(size) then ("--size " +  '"' + size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     p_panini_output: "PPANINI output table"
     diamond_output: "<feature id>\\na mapping file of gene-metagenom)"

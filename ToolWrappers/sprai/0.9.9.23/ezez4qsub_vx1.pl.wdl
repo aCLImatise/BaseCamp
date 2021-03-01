@@ -12,6 +12,9 @@ task Ezez4qsubVx1pl {
       ~{ec_dot_spec} \
       ~{as_mdot_spec}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this: ""
     ec_dot_spec: ""

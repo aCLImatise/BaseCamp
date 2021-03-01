@@ -1,89 +1,276 @@
 !Command
 command:
 - metabat1
-positional: []
-named: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: recruiting
+  description: '-x [ --minCV ] arg (=1)           Minimum mean coverage of a contig
+    to consider for abundance distance '
+- !Positional
+  optional: false
+  position: 0
+  name: cutoff
+  description: --saveCls                         Save cluster memberships as a matrix
+    format
+- !Positional
+  optional: false
+  position: 1
+  name: memberships
+  description: -B [ --B ] arg (=20)              Number of bootstrapping for ensemble
+    binning (Recommended to be >=20)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: '[ --inFile ] arg               Contigs in (gzipped) fasta file format
+    [Mandatory]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "[ --outFile ] arg              Base file name for each bin. The default\
+    \ output is fasta format. Use -l\noption to output only contig names [Mandatory]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: "[ --abdFile ] arg              A file having mean and variance of\
+    \ base coverage depth (tab delimited;\nthe first column should be contig names,\
+    \ and the first row will be\nconsidered as the header and be skipped) [Optional]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cvExt
+  description: "When a coverage file without variance (from third party tools) is\
+    \ used\ninstead of abdFile from jgi_summarize_bam_contig_depths"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "[ --pairFile ] arg             A file having paired reads mapping\
+    \ information. Use it to increase\nsensitivity. (tab delimited; should have 3\
+    \ columns of contig index\n(ordered by), its mate contig index, and supporting\
+    \ mean read coverage.\nThe first row will be considered as the header and be skipped)\
+    \ [Optional]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --p1
+  description: "(=0)                     Probability cutoff for bin seeding. It mainly\
+    \ controls the number of\npotential bins and their specificity. The higher, the\
+    \ more (specific)\nbins would be. (Percentage; Should be between 0 and 100)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --p2
+  description: "(=0)                     Probability cutoff for secondary neighbors.\
+    \ It supports p1 and better be\nclose to p1. (Percentage; Should be between 0\
+    \ and 100)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --minProb
+  description: "(=0)                Minimum probability for binning consideration.\
+    \ It controls sensitivity.\nUsually it should be >= 75. (Percentage; Should be\
+    \ between 0 and 100)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --pB
+  - --minProb
+  - --minBinned
+  - --minCorr
+  - --specific
+  description: For better specificity. Different from --sensitive when using correlation
+  args: !SimpleFlagArg
+    name: '20'
+- !Flag
+  optional: true
+  synonyms:
+  - --verysensitive
+  description: "For greater sensitivity, especially in a simple community. It is the\n\
+    shortcut for --p1 90 --p2 85 --pB 20 --minProb 75 --minBinned 20\n--minCorr 90"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sensitive
+  description: For better sensitivity [default]. It is the shortcut for --p1 90 --p2
+    90
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --veryspecific
+  description: "For greater specificity. No correlation binning for short contig\n\
+    recruiting. It is the shortcut for --p1 90 --p2 90 --pB 40 --minProb 80\n--minBinned\
+    \ 40"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --superspecific
+  description: For the best specificity. It is the shortcut for --p1 95 --p2 90 --pB
+    50
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minSamples
+  description: (=10)            Minimum number of sample sizes for considering correlation
+    based
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --minCVSum
+  description: "(=2)               Minimum total mean coverage of a contig (sum of\
+    \ all libraries) to\nconsider for abundance distance calculation"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: '[ --minClsSize ] arg (=200000) Minimum size of a bin to be considered
+    as the output'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "[ --minContig ] arg (=2500)    Minimum size of a contig to be considered\
+    \ for binning (should be >=1500;\nideally >=2500). If # of samples >= minSamples,\
+    \ small contigs (>=1000)\nwill be given a chance to be recruited to existing bins\
+    \ by default."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minContigByCorr
+  description: "(=1000)     Minimum size of a contig to be considered for recruiting\
+    \ by pearson\ncorrelation coefficients (activated only if # of samples >= minSamples;\n\
+    disabled when minContigByCorr > minContig)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: '[ --numThreads ] arg (=0)      Number of threads to use (0: use all
+    cores)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minShared
+  description: (=50)             Percentage cutoff for merging fuzzy contigs
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --fuzzy
+  description: "Binning with fuzziness which assigns multiple memberships of a contig\
+    \ to\nbins (activated only with --pairFile at the moment)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: '[ --onlyLabel ]                Output only sequence labels as a list
+    in a column without sequences'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: "[ --sumLowCV ]                 If set, then every sample that falls\
+    \ below the minCV will be used in an\naggregate sample"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  description: '[ --maxVarRatio ] arg (=0)     Ignore any contigs where variance /
+    mean exceeds this ratio (0 disables)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --saveTNF
+  description: File to save (or load if exists) TNF matrix for each contig in input
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --saveDistance
+  description: File to save (or load if exists) distance graph at lowest probability
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --unbinned
+  description: Generate [outFile].unbinned.fa file for unbinned contigs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noBinOut
+  description: No bin output. Usually combined with --saveCls to check only contig
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: "(=0)                   For reproducibility in ensemble binning, though\
+    \ it might produce slightly\ndifferent results. (0: use random seed)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --keep
+  description: Keep the intermediate files for later usage
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: '[ --debug ]                    Debug output'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: '[ --verbose ]                  Verbose output'
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "[ --help ]                     produce help message\n-i [ --inFile\
-    \ ] arg               Contigs in (gzipped) fasta file format [Mandatory]\n-o [\
-    \ --outFile ] arg              Base file name for each bin. The default output\
-    \ is fasta format. Use -l\noption to output only contig names [Mandatory]\n-a\
-    \ [ --abdFile ] arg              A file having mean and variance of base coverage\
-    \ depth (tab delimited;\nthe first column should be contig names, and the first\
-    \ row will be\nconsidered as the header and be skipped) [Optional]\n--cvExt  \
-    \                         When a coverage file without variance (from third party\
-    \ tools) is used\ninstead of abdFile from jgi_summarize_bam_contig_depths\n-p\
-    \ [ --pairFile ] arg             A file having paired reads mapping information.\
-    \ Use it to increase\nsensitivity. (tab delimited; should have 3 columns of contig\
-    \ index\n(ordered by), its mate contig index, and supporting mean read coverage.\n\
-    The first row will be considered as the header and be skipped) [Optional]\n--p1\
-    \ arg (=0)                     Probability cutoff for bin seeding. It mainly controls\
-    \ the number of\npotential bins and their specificity. The higher, the more (specific)\n\
-    bins would be. (Percentage; Should be between 0 and 100)\n--p2 arg (=0)      \
-    \               Probability cutoff for secondary neighbors. It supports p1 and\
-    \ better be\nclose to p1. (Percentage; Should be between 0 and 100)\n--minProb\
-    \ arg (=0)                Minimum probability for binning consideration. It controls\
-    \ sensitivity.\nUsually it should be >= 75. (Percentage; Should be between 0 and\
-    \ 100)\n--minBinned arg (=0)              Minimum proportion of already binned\
-    \ neighbors for one's membership\ninference. It contorls specificity. Usually\
-    \ it would be <= 50\n(Percentage; Should be between 0 and 100)\n--verysensitive\
-    \                   For greater sensitivity, especially in a simple community.\
-    \ It is the\nshortcut for --p1 90 --p2 85 --pB 20 --minProb 75 --minBinned 20\n\
-    --minCorr 90\n--sensitive                       For better sensitivity [default].\
-    \ It is the shortcut for --p1 90 --p2 90\n--pB 20 --minProb 80 --minBinned 40\
-    \ --minCorr 92\n--specific                        For better specificity. Different\
-    \ from --sensitive when using correlation\nbinning or ensemble binning. It is\
-    \ the shortcut for --p1 90 --p2 90 --pB\n30 --minProb 80 --minBinned 40 --minCorr\
-    \ 96\n--veryspecific                    For greater specificity. No correlation\
-    \ binning for short contig\nrecruiting. It is the shortcut for --p1 90 --p2 90\
-    \ --pB 40 --minProb 80\n--minBinned 40\n--superspecific                   For\
-    \ the best specificity. It is the shortcut for --p1 95 --p2 90 --pB 50\n--minProb\
-    \ 80 --minBinned 20\n--minCorr arg (=0)                Minimum pearson correlation\
-    \ coefficient for binning missed contigs to\nincrease sensitivity (Helpful when\
-    \ there are many samples). Should be\nvery high (>=90) to reduce contamination.\
-    \ (Percentage; Should be between\n0 and 100; 0 disables)\n--minSamples arg (=10)\
-    \            Minimum number of sample sizes for considering correlation based\n\
-    recruiting\n-x [ --minCV ] arg (=1)           Minimum mean coverage of a contig\
-    \ to consider for abundance distance\ncalculation in each library\n--minCVSum\
-    \ arg (=2)               Minimum total mean coverage of a contig (sum of all libraries)\
-    \ to\nconsider for abundance distance calculation\n-s [ --minClsSize ] arg (=200000)\
-    \ Minimum size of a bin to be considered as the output\n-m [ --minContig ] arg\
-    \ (=2500)    Minimum size of a contig to be considered for binning (should be\
-    \ >=1500;\nideally >=2500). If # of samples >= minSamples, small contigs (>=1000)\n\
-    will be given a chance to be recruited to existing bins by default.\n--minContigByCorr\
-    \ arg (=1000)     Minimum size of a contig to be considered for recruiting by\
-    \ pearson\ncorrelation coefficients (activated only if # of samples >= minSamples;\n\
-    disabled when minContigByCorr > minContig)\n-t [ --numThreads ] arg (=0)     \
-    \ Number of threads to use (0: use all cores)\n--minShared arg (=50)         \
-    \    Percentage cutoff for merging fuzzy contigs\n--fuzzy                    \
-    \       Binning with fuzziness which assigns multiple memberships of a contig\
-    \ to\nbins (activated only with --pairFile at the moment)\n-l [ --onlyLabel ]\
-    \                Output only sequence labels as a list in a column without sequences\n\
-    -S [ --sumLowCV ]                 If set, then every sample that falls below the\
-    \ minCV will be used in an\naggregate sample\n-V [ --maxVarRatio ] arg (=0)  \
-    \   Ignore any contigs where variance / mean exceeds this ratio (0 disables)\n\
-    --saveTNF arg                     File to save (or load if exists) TNF matrix\
-    \ for each contig in input\n--saveDistance arg                File to save (or\
-    \ load if exists) distance graph at lowest probability\ncutoff\n--saveCls    \
-    \                     Save cluster memberships as a matrix format\n--unbinned\
-    \                        Generate [outFile].unbinned.fa file for unbinned contigs\n\
-    --noBinOut                        No bin output. Usually combined with --saveCls\
-    \ to check only contig\nmemberships\n-B [ --B ] arg (=20)              Number\
-    \ of bootstrapping for ensemble binning (Recommended to be >=20)\n--pB arg (=50)\
-    \                    Proportion of shared membership in bootstrapping. Major control\
-    \ for\nsensitivity/specificity. The higher, the specific. (Percentage; Should\
-    \ be\nbetween 0 and 100)\n--seed arg (=0)                   For reproducibility\
-    \ in ensemble binning, though it might produce slightly\ndifferent results. (0:\
-    \ use random seed)\n--keep                            Keep the intermediate files\
-    \ for later usage\n-d [ --debug ]                    Debug output\n-v [ --verbose\
-    \ ]                  Verbose output\n"
+  optional: true
   synonyms:
   - -h
+  description: '[ --help ]                     produce help message'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nMetaBAT: Metagenome Binning based on Abundance and Tetranucleotide frequency\
@@ -180,3 +367,4 @@ help_text: "\nMetaBAT: Metagenome Binning based on Abundance and Tetranucleotide
   \ [ --verbose ]                  Verbose output\n\n\n"
 generated_using:
 - --help
+docker_image:

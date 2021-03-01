@@ -14,6 +14,9 @@ task HicCompareMatrices {
       ~{if defined(out_filename) then ("--outFileName " +  '"' + out_filename + '"') else ""} \
       ~{if defined(operation) then ("--operation " +  '"' + operation + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrices: "matrix.h5, -m matrix.h5 matrix.h5\\nName of the matrices in .h5 format to use, separated\\nby a space. (default: None)"
     out_filename: "File name to save the resulting matrix. The output is\\nalso a .h5 file. (default: None)"

@@ -12,6 +12,9 @@ task PepxmlToTablerb {
       ~{if defined(explicitly_named_output) then ("--output " +  '"' + explicitly_named_output + '"') else ""} \
       ~{if (invert_probabilities) then "--invert-probabilities" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicitly_named_output: "An explicitly named output file."
     invert_probabilities: "Output 1-p instead of p for all probability values [false]"

@@ -2,13 +2,13 @@ version 1.0
 
 task Eslreformat {
   input {
-    Boolean? convert_dna_alphabet
+    Boolean? convert_dna_ut
     Boolean? convert_lower_case
-    Boolean? remove_dna_codes
+    Boolean? remove_iupac_codes
     File? send_output_file
-    Boolean? convert_rna_tu
+    Boolean? convert_rna_alphabet
     Boolean? convert_upper_case
-    Boolean? convert_chars_x
+    Boolean? convert_noniupac_chars
     String? gap_sym
     File? in_format
     Boolean? min_gap
@@ -39,13 +39,13 @@ task Eslreformat {
       ~{pfam} \
       ~{phylip_s} \
       ~{selex} \
-      ~{if (convert_dna_alphabet) then "-d" else ""} \
+      ~{if (convert_dna_ut) then "-d" else ""} \
       ~{if (convert_lower_case) then "-l" else ""} \
-      ~{if (remove_dna_codes) then "-n" else ""} \
+      ~{if (remove_iupac_codes) then "-n" else ""} \
       ~{if defined(send_output_file) then ("-o " +  '"' + send_output_file + '"') else ""} \
-      ~{if (convert_rna_tu) then "-r" else ""} \
+      ~{if (convert_rna_alphabet) then "-r" else ""} \
       ~{if (convert_upper_case) then "-u" else ""} \
-      ~{if (convert_chars_x) then "-x" else ""} \
+      ~{if (convert_noniupac_chars) then "-x" else ""} \
       ~{if defined(gap_sym) then ("--gapsym " +  '"' + gap_sym + '"') else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if (min_gap) then "--mingap" else ""} \
@@ -62,14 +62,17 @@ task Eslreformat {
       ~{if defined(id_map) then ("--id_map " +  '"' + id_map + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    convert_dna_alphabet: ": convert to DNA alphabet (U->T)"
+    convert_dna_ut: ": convert to DNA alphabet (U->T)"
     convert_lower_case: ": convert to lower case"
-    remove_dna_codes: ": remove DNA IUPAC codes; convert ambig chars to N"
+    remove_iupac_codes: ": remove DNA IUPAC codes; convert ambig chars to N"
     send_output_file: ": send output to file <f>, not stdout"
-    convert_rna_tu: ": convert to RNA alphabet (T->U)"
+    convert_rna_alphabet: ": convert to RNA alphabet (T->U)"
     convert_upper_case: ": convert to upper case"
-    convert_chars_x: ": convert non-IUPAC chars (e.g. X) in DNA to N"
+    convert_noniupac_chars: ": convert non-IUPAC chars (e.g. X) in DNA to N"
     gap_sym: ": convert all gaps to character <s>"
     in_format: ": input sequence file is in format <s>"
     min_gap: ": remove columns containing all gaps (seqfile=MSA)"

@@ -12,6 +12,9 @@ task BootstrapRunsh {
       ~{if defined(n) then ("-n " +  '"' + n + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s: ""
     n: ""

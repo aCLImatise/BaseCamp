@@ -3,32 +3,32 @@ id: centrifuge_compress.pl.cwl
 inputs:
 - id: in_no_dust_masker
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -noDustmasker
 - id: in_maxg
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -maxG
 - id: in_t
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_no_compress
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -noCompress
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_map
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -map
 - id: in_path_to_download_files
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - centrifuge-compress.pl

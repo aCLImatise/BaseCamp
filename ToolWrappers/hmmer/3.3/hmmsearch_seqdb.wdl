@@ -12,6 +12,9 @@ task HmmsearchSeqdb {
       ~{hmm_file} \
       ~{seq_db}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hmm_search: ""
     hmm_file: ""

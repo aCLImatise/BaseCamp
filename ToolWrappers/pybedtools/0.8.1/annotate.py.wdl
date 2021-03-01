@@ -14,6 +14,9 @@ task Annotatepy {
       ~{if defined(file_with_annotations) then ("-b " +  '"' + file_with_annotations + '"') else ""} \
       ~{if (report_distance) then "--report-distance" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     downstream: "not specified only 2 colummns are added to the"
     file_to_annotate: "file to annotate"

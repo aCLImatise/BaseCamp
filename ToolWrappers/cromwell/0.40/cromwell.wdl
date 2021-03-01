@@ -28,6 +28,9 @@ task Cromwell {
       ~{if defined(host) then ("--host " +  '"' + host + '"') else ""} \
       ~{if (jar) then "-jar" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     workflow_root: "Workflow root."
     inputs: "Workflow inputs file."

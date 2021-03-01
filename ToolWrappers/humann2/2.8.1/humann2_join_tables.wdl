@@ -16,6 +16,9 @@ task Humann2JoinTables {
       ~{if defined(file_name) then ("--file_name " +  '"' + file_name + '"') else ""} \
       ~{if (search_subdirectories) then "--search-subdirectories" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "additional output is printed"
     the_directory_tables: "the directory of tables"

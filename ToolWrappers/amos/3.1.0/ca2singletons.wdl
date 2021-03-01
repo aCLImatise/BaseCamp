@@ -18,6 +18,9 @@ task Ca2singletons {
       ~{if (contig) then "-contig" else ""} \
       ~{if (list) then "-list" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     asm_file: ".asm file"
     fasta_file_name: ".fasta file name"

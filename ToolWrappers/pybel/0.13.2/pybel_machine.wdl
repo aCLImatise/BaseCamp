@@ -12,6 +12,9 @@ task PybelMachine {
       ~{if (local) then "--local" else ""} \
       ~{if defined(host) then ("--host " +  '"' + host + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     local: "Upload to local database."
     host: "URL of BEL Commons. Defaults to https://bel-"

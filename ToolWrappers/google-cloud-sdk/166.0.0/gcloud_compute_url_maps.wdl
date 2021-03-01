@@ -30,6 +30,9 @@ task GcloudComputeUrlmaps {
       ~{remove_path_matcher} \
       ~{set_default_service}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_host_rule: "Add a rule to a URL map to map hosts to a path matcher."
     add_path_matcher: "Add a path matcher to a URL map."

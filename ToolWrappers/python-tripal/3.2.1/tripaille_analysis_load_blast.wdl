@@ -44,6 +44,9 @@ task TripailleAnalysisLoadBlast {
       ~{if defined(description) then ("--description " +  '"' + description + '"') else ""} \
       ~{if defined(date_executed) then ("--date_executed " +  '"' + date_executed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     blast_ext: "If looking for files in a directory, extension of\\nthe blast result files"
     blast_db: "Name of the database blasted against (must be in\\nthe Chado db table)"

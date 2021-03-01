@@ -4,6 +4,9 @@ task ChainAntiRepeat {
   command <<<
     chainAntiRepeat
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

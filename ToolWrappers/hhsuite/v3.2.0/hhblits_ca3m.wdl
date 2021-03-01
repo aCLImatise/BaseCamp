@@ -6,7 +6,7 @@ task HhblitsCa3m {
     Int? database_name_eg
     Boolean? number_iterations_default
     Boolean? evalue_cutoff_inclusion
-    Boolean? tags_slash_no_tags
+    Boolean? no_tags
     File? write_results_file
     File? o_a_three_m
     File? opsi
@@ -21,7 +21,7 @@ task HhblitsCa3m {
     File? of_as
     Int? seq
     Int? ali_w
-    Boolean? minimum_probability_summary
+    Boolean? minimum_probability_default
     Boolean? inf_maximum_evalue
     Int? maximum_number_lines
     Int? minimum_number_lines
@@ -49,7 +49,7 @@ task HhblitsCa3m {
     Boolean? no_realign
     Boolean? realign_old_hits
     Boolean? mact
-    Boolean? glob_slash_loc
+    Boolean? glob
     Boolean? realign
     Int? realign_max
     Int? ovlp
@@ -91,7 +91,7 @@ task HhblitsCa3m {
     File? con_txt
     Boolean? csw
     Boolean? csb
-    Int? verbose_mode_output
+    Int? verbose_mode_screen
     Boolean? neff_max
     Int? cpu
     File? scores
@@ -109,7 +109,7 @@ task HhblitsCa3m {
       ~{if defined(database_name_eg) then ("-d " +  '"' + database_name_eg + '"') else ""} \
       ~{if (number_iterations_default) then "-n" else ""} \
       ~{if (evalue_cutoff_inclusion) then "-e" else ""} \
-      ~{if (tags_slash_no_tags) then "-tags/-notags" else ""} \
+      ~{if (no_tags) then "-notags" else ""} \
       ~{if defined(write_results_file) then ("-o " +  '"' + write_results_file + '"') else ""} \
       ~{if defined(o_a_three_m) then ("-oa3m " +  '"' + o_a_three_m + '"') else ""} \
       ~{if defined(opsi) then ("-opsi " +  '"' + opsi + '"') else ""} \
@@ -124,7 +124,7 @@ task HhblitsCa3m {
       ~{if defined(of_as) then ("-Ofas " +  '"' + of_as + '"') else ""} \
       ~{if defined(seq) then ("-seq " +  '"' + seq + '"') else ""} \
       ~{if defined(ali_w) then ("-aliw " +  '"' + ali_w + '"') else ""} \
-      ~{if (minimum_probability_summary) then "-p" else ""} \
+      ~{if (minimum_probability_default) then "-p" else ""} \
       ~{if (inf_maximum_evalue) then "-E" else ""} \
       ~{if defined(maximum_number_lines) then ("-Z " +  '"' + maximum_number_lines + '"') else ""} \
       ~{if defined(minimum_number_lines) then ("-z " +  '"' + minimum_number_lines + '"') else ""} \
@@ -152,7 +152,7 @@ task HhblitsCa3m {
       ~{if (no_realign) then "-norealign" else ""} \
       ~{if (realign_old_hits) then "-realign_old_hits" else ""} \
       ~{if (mact) then "-mact" else ""} \
-      ~{if (glob_slash_loc) then "-glob/-loc" else ""} \
+      ~{if (glob) then "-glob" else ""} \
       ~{if (realign) then "-realign" else ""} \
       ~{if defined(realign_max) then ("-realign_max " +  '"' + realign_max + '"') else ""} \
       ~{if defined(ovlp) then ("-ovlp " +  '"' + ovlp + '"') else ""} \
@@ -194,7 +194,7 @@ task HhblitsCa3m {
       ~{if defined(con_txt) then ("-contxt " +  '"' + con_txt + '"') else ""} \
       ~{if (csw) then "-csw" else ""} \
       ~{if (csb) then "-csb" else ""} \
-      ~{if defined(verbose_mode_output) then ("-v " +  '"' + verbose_mode_output + '"') else ""} \
+      ~{if defined(verbose_mode_screen) then ("-v " +  '"' + verbose_mode_screen + '"') else ""} \
       ~{if (neff_max) then "-neffmax" else ""} \
       ~{if defined(cpu) then ("-cpu " +  '"' + cpu + '"') else ""} \
       ~{if defined(scores) then ("-scores " +  '"' + scores + '"') else ""} \
@@ -204,12 +204,15 @@ task HhblitsCa3m {
       ~{if defined(max_res) then ("-maxres " +  '"' + max_res + '"') else ""} \
       ~{if (maxmem) then "-maxmem" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     inputquery_single_sequence: "input/query: single sequence or multiple sequence alignment (MSA)\\nin a3m, a2m, or FASTA format, or HMM in hhm format"
     database_name_eg: "database name (e.g. uniprot20_29Feb2012)\\nMultiple databases may be specified with '-d <db1> -d <db2> ...'"
     number_iterations_default: "[1,8]   number of iterations (default=2)"
     evalue_cutoff_inclusion: "[0,1]   E-value cutoff for inclusion in result alignment (def=0.001)"
-    tags_slash_no_tags: "do NOT / do neutralize His-, C-myc-, FLAG-tags, and trypsin\\nrecognition sequence to background distribution (def=-notags)"
+    no_tags: "do NOT / do neutralize His-, C-myc-, FLAG-tags, and trypsin\\nrecognition sequence to background distribution (def=-notags)"
     write_results_file: "write results in standard format to file (default=<infile.hhr>)"
     o_a_three_m: "write result MSA with significant matches in a3m format"
     opsi: "write result MSA of significant matches in PSI-BLAST format"
@@ -224,7 +227,7 @@ task HhblitsCa3m {
     of_as: "write pairwise alignments in FASTA xor A2M (-Oa2m) xor A3M (-Oa3m) format"
     seq: "max. number of query/template sequences displayed (default=1)"
     ali_w: "number of columns per line in alignment list (default=80)"
-    minimum_probability_summary: "[0,100]     minimum probability in summary and alignment list (default=20)"
+    minimum_probability_default: "[0,100]     minimum probability in summary and alignment list (default=20)"
     inf_maximum_evalue: "[0,inf[     maximum E-value in summary and alignment list (default=1E+06)"
     maximum_number_lines: "maximum number of lines in summary hit list (default=500)"
     minimum_number_lines: "minimum number of lines in summary hit list (default=10)"
@@ -252,7 +255,7 @@ task HhblitsCa3m {
     no_realign: "do NOT realign displayed hits with MAC algorithm (def=realign)"
     realign_old_hits: "realign hits from previous iterations"
     mact: "[0,1[          posterior prob threshold for MAC realignment controlling greedi-\\nness at alignment ends: 0:global >0.1:local (default=0.35)"
-    glob_slash_loc: "use global/local alignment mode for searching/ranking (def=local)"
+    glob: "use global/local alignment mode for searching/ranking (def=local)"
     realign: "realign displayed hits with max. accuracy (MAC) algorithm"
     realign_max: "realign max. <int> hits (default=500)"
     ovlp: "banded alignment: forbid <ovlp> largest diagonals |i-j| of DP matrix (def=0)"
@@ -294,7 +297,7 @@ task HhblitsCa3m {
     con_txt: "context file for computing context-specific pseudocounts (default=)"
     csw: "[0,inf]  weight of central position in cs pseudocount mode (def=1.6)"
     csb: "[0,1]    weight decay parameter for positions in cs pc mode (def=0.9)"
-    verbose_mode_output: "verbose mode: 0:no screen output  1:only warings  2: verbose (def=2)"
+    verbose_mode_screen: "verbose mode: 0:no screen output  1:only warings  2: verbose (def=2)"
     neff_max: "]1,20] skip further search iterations when diversity Neff of query MSA\\nbecomes larger than neffmax (default=20.0)"
     cpu: "number of CPUs to use (for shared memory SMPs) (default=2)"
     scores: "write scores for all pairwise comparisons to file"

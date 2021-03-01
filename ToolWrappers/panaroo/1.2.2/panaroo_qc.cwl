@@ -3,17 +3,17 @@ id: panaroo_qc.cwl
 inputs:
 - id: in_threads
   doc: number of threads to use (default=1)
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_graph_type
   doc: the type of graph to generate (default='all')
-  type: string
+  type: string?
   inputBinding:
     prefix: --graph_type
 - id: in_ref_db
   doc: reference mash database for contamination
-  type: string
+  type: string?
   inputBinding:
     prefix: --ref_db
 - id: in_input
@@ -23,7 +23,7 @@ inputs:
     prefix: --input
 - id: in_out_dir
   doc: "location of an output directory\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --out_dir
 - id: in_quantification_dot
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_out_dir
   doc: "location of an output directory\n"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_out_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - panaroo-qc

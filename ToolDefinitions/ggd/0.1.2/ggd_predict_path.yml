@@ -5,53 +5,53 @@ command:
 positional: []
 named:
 - !Flag
-  description: "The ggd channel of the recipe to find. (Default =\ngenomics)"
+  optional: true
   synonyms:
   - -c
   - --channel
+  description: "The ggd channel of the recipe to find. (Default =\ngenomics)"
   args: !ChoiceFlagArg
     choices: !!set
       genomics:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --prefix
   description: "(Optional) The name or the full directory path to an\nconda environment.\
     \ The predicted path will be based on\nthis conda environment. When installing,\
     \ the data\npackage should also be installed in this environment.\n(Only needed\
     \ if not predicting for a path in the\ncurrent conda enviroment)"
-  synonyms:
-  - --prefix
   args: !SimpleFlagArg
     name: PREFIX
-  optional: true
 - !Flag
-  description: "(Required) The name of the data package to predict a\nfile path for"
+  optional: true
   synonyms:
   - -pn
   - --package-name
+  description: "(Required) The name of the data package to predict a\nfile path for"
   args: !SimpleFlagArg
     name: PACKAGE_NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -fn
+  - --file-name
   description: "(Required) The name of the file to predict that path\nfor. It is best\
     \ if you give the full and correct name\nof the file to predict the path for.\
     \ If not, ggd will\ntry to identify the right file, but won't guarantee\nthat\
     \ it is the rigth file\n"
-  synonyms:
-  - -fn
-  - --file-name
   args: !SimpleFlagArg
     name: FILE_NAME
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: ggd predict-path [-h] [-c {genomics}] [--prefix PREFIX] -pn\n \
@@ -75,3 +75,4 @@ help_text: "usage: ggd predict-path [-h] [-c {genomics}] [--prefix PREFIX] -pn\n
   \ but won't guarantee\n                        that it is the rigth file\n"
 generated_using:
 - --help
+docker_image:

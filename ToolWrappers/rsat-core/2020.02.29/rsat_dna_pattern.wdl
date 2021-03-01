@@ -6,7 +6,7 @@ task RsatDnapattern {
     Boolean? input_sequence_file
     String? mask
     String? format
-    File? output_fileif_screen
+    File? output_fileif_omitted
     Boolean? pattern_entered_directly
     Boolean? pl
     Boolean? subst
@@ -30,10 +30,10 @@ task RsatDnapattern {
     Boolean? window
     Boolean? top
     Boolean? sort
-    String perl_script_v
+    String perl_script_july
     String expressions_dot
     String sequences
-    String i_sequencefile_pattern
+    String sequencefile_format_seqformat
     String fast_a
     String intelligenetics_format
     String single_sequence_file
@@ -41,16 +41,16 @@ task RsatDnapattern {
     String list_files_containing
     String symbol
     String nucleotides_dot
-    String input_file_must
+    String input_file_contain
     String file_list_line
     String intelligenetics_formatthe_first
   }
   command <<<
     rsat dna_pattern \
-      ~{perl_script_v} \
+      ~{perl_script_july} \
       ~{expressions_dot} \
       ~{sequences} \
-      ~{i_sequencefile_pattern} \
+      ~{sequencefile_format_seqformat} \
       ~{fast_a} \
       ~{intelligenetics_format} \
       ~{single_sequence_file} \
@@ -58,14 +58,14 @@ task RsatDnapattern {
       ~{list_files_containing} \
       ~{symbol} \
       ~{nucleotides_dot} \
-      ~{input_file_must} \
+      ~{input_file_contain} \
       ~{file_list_line} \
       ~{intelligenetics_formatthe_first} \
       ~{if (help) then "-help" else ""} \
       ~{if (input_sequence_file) then "-i" else ""} \
       ~{if defined(mask) then ("-mask " +  '"' + mask + '"') else ""} \
       ~{if defined(format) then ("-format " +  '"' + format + '"') else ""} \
-      ~{if (output_fileif_screen) then "-o" else ""} \
+      ~{if (output_fileif_omitted) then "-o" else ""} \
       ~{if (pattern_entered_directly) then "-p" else ""} \
       ~{if (pl) then "-pl" else ""} \
       ~{if (subst) then "-subst" else ""} \
@@ -90,12 +90,15 @@ task RsatDnapattern {
       ~{if (top) then "-top" else ""} \
       ~{if (sort) then "-sort" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "short help message"
     input_sequence_file: "input sequence file. This file contains the sequences where the pattern(s)\\nwill be searched for.\\nVarious format are accepted\\nIf omitted, standard input (eg keyboard) will be used.\\nThis allows to use the program within a pipe."
     mask: "|lower\\nMask lower or uppercases, respecively, i.e. replace\\nselected case by N characters."
     format: "sequence format. The accepted formats are"
-    output_fileif_screen: "output file.\\nIf omitted, standard output (eg screen) will be used.\\nThis allows to use the program within a pipe."
+    output_fileif_omitted: "output file.\\nIf omitted, standard output (eg screen) will be used.\\nThis allows to use the program within a pipe."
     pattern_entered_directly: "pattern entered directly after -p.\\nAlternatively use -pl."
     pl: "name of the file containing the patterns to search .\\n(see format below)"
     subst: "#\\nallow # substitutions."
@@ -119,10 +122,10 @@ task RsatDnapattern {
     window: "#\\nSliding window size. The score at each position is\\ncalculated by summing the scores of all patterns\\nencountered within a sliding window of size #. This\\noption automatically returns matching positions.\\nA threshold can be specified to specify the minimal\\nmatching score to be returned."
     top: "(with sliding window only)\\nonly return the top score obtained with the sliding\\nwindow for each sequence."
     sort: "(with -top only)\\nsort sequences according to their top score"
-    perl_script_v: "perl script v1.1 by Jacques van Helden, 30 July 1997."
+    perl_script_july: "perl script v1.1 by Jacques van Helden, 30 July 1997."
     expressions_dot: "CATEGORY"
     sequences: "pattern matching"
-    i_sequencefile_pattern: "-i sequencefile -format seq_format -p pattern [-id identifier]\\n[-1str|-2str|-R] [-c|-ct] [-noov]\\n[-N flanking] [-v]"
+    sequencefile_format_seqformat: "-i sequencefile -format seq_format -p pattern [-id identifier]\\n[-1str|-2str|-R] [-c|-ct] [-noov]\\n[-N flanking] [-v]"
     fast_a: "FastA format"
     intelligenetics_format: "IntelliGenetics format"
     single_sequence_file: "a single sequence in a file"
@@ -130,12 +133,12 @@ task RsatDnapattern {
     list_files_containing: "a list of files containing each\\na single raw sequence"
     symbol: "Nucleotide(s)   Description"
     nucleotides_dot: "DIRECT PATTERN INPUT"
-    input_file_must: "The input file must contain raw sequences without any\\ncomment or other text. Tabs (\\t), blank spaces and newline\\ncharacters (\\n) are accepted (they will be automatically\\nremoved before analysis). The sequence must be terminated by\\na newline character."
+    input_file_contain: "The input file must contain raw sequences without any\\ncomment or other text. Tabs (\\t), blank spaces and newline\\ncharacters (\\n) are accepted (they will be automatically\\nremoved before analysis). The sequence must be terminated by\\na newline character."
     file_list_line: "file list. Each line of the input file contains the\\nname of a file containing a single sequence in raw format."
     intelligenetics_formatthe_first: "IntelliGenetics format.\\nThe first non-comment line must be the sequence identifier\\n(a single word without spaces).\\nThe sequence follows the identifier line identifier. It can\\ninclude spaces, tabs or newlines, that will be removed for\\nsequence analysis.\\nThe end of one sequence is indicated by termination character:\\n1 for linear, 2 for circular sequences.\\nA single file may contain several sequences.\\nEXAMPLE of IG suite:\\n; sequence of the region upstream from NIL1\\n; Locus GAT1\\n; ORF YFL021W  coord:   6 95964 97496\\n; upstream region size: 100\\n; upstream region coord:        6 95864 95963\\nGAT1\\nACAGAGCAACAATAATAACAGCACTATGAGTCGCACACTT\\nGCGGTGCCCGGCCCAGCCACATATATATAGGTGTGTGCCA\\nCTCCCGGCCCCGGTATTAGC\\n1\\n; sequence of the region upstream from PUT4\\n; Locus PUT4\\n; ORF YOR348C  coord:   15 988773 986890\\n; upstream region size: 100\\n; upstream region coord:        15 988873 988774\\nPUT4\\nGGGTTTGTGTTCCTCTTCCTTTCCTTTTTTTTTCTCTCTT\\nCCCTTCCAGTTTCTTTTATTCTTTGCTGTTTCGAAGAATC\\nACACCATCAATGAATAAATC\\n1"
   }
   output {
     File out_stdout = stdout()
-    File out_output_fileif_screen = "${in_output_fileif_screen}"
+    File out_output_fileif_omitted = "${in_output_fileif_omitted}"
   }
 }

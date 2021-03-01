@@ -24,6 +24,9 @@ task Bam2svgsh {
       ~{if (vcf) then "--vcf" else ""} \
       ~{if (width) then "--width" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filter: "A filter expression. Reads matching the expression will be filtered-out.\\nEmpty String means 'filter out nothing/Accept all'. See https://github.com/lindenb/jvarkit/blob/master/src/main/resources/javacc/com/github/lindenb/jvarkit/util/bio/samfilter/SamFilterParser.jj\\nfor a complete syntax.\\nDefault: Accept All/ Filter out nothing"
     group_by: "Group Reads by. Data partitioning using the SAM Read Group (see\\nhttps://gatkforums.broadinstitute.org/gatk/discussion/6472/ ) . It can\\nbe any combination of sample, library....\\nDefault: sample\\nPossible Values: [readgroup, sample, library, platform, center, sample_by_platform, sample_by_center, sample_by_platform_by_center, any]"

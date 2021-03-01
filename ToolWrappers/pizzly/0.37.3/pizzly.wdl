@@ -22,6 +22,9 @@ task Pizzly {
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
       ~{if (ignore_protein) then "--ignore-protein" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_size_used: "k-mer size used in kallisto"
     align_score: "Maximum number of mismatches allowed (default: 2)"

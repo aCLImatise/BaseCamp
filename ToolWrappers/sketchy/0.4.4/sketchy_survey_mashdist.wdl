@@ -16,6 +16,9 @@ task SketchySurveyMashdist {
       ~{if defined(km_er_size) then ("--kmer_size " +  '"' + km_er_size + '"') else ""} \
       ~{if defined(sketch_size) then ("--sketch_size " +  '"' + sketch_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "Path to list containing path to genomes per line\\n[required]  [required]"
     index: "Path to lineage index file [required]  [required]"

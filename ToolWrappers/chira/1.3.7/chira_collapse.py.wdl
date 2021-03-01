@@ -2,23 +2,26 @@ version 1.0
 
 task ChiraCollapsepy {
   input {
-    Boolean? _fastq_input
-    File? _fasta_default
+    Boolean? fast_q
+    File? fast_a
     Int? umi_len
   }
   command <<<
     chira_collapse_py \
-      ~{if (_fastq_input) then "-i" else ""} \
-      ~{if (_fasta_default) then "-o" else ""} \
+      ~{if (fast_q) then "--fastq" else ""} \
+      ~{if (fast_a) then "--fasta" else ""} \
       ~{if defined(umi_len) then ("--umi_len " +  '"' + umi_len + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _fastq_input: ", --fastq          Input fastq file (default: None)"
-    _fasta_default: ", --fasta          Output fasta file (default: None)"
+    fast_q: "Input fastq file (default: None)"
+    fast_a: "Output fasta file (default: None)"
     umi_len: "Length of the UMI, if present.It is trimmed from the\\n5' end of each read and appended to the tag id\\n(default: 0)"
   }
   output {
     File out_stdout = stdout()
-    File out__fasta_default = "${in__fasta_default}"
+    File out_fast_a = "${in_fast_a}"
   }
 }

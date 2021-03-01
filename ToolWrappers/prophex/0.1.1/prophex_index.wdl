@@ -14,6 +14,9 @@ task ProphexIndex {
       ~{if (construct_klcp_sa) then "-s" else ""} \
       ~{if (sampling_distance_sa) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_length_klcp: "k-mer length for k-LCP"
     construct_klcp_sa: "construct k-LCP and SA in parallel"

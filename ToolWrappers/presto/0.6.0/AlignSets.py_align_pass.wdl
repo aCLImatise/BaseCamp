@@ -8,6 +8,9 @@ task AlignSetspyAlignpass {
     AlignSets_py align_pass \
       ~{align_sets_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     align_sets_do_tpy: ""
   }

@@ -30,6 +30,9 @@ task Monocle3DiffExp {
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_format: "Format of input object. [Default: cds3]"
     output_table_format: "Format of output table, choose from {tsv, csv}. [Default: tsv]"

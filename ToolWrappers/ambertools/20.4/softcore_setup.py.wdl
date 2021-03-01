@@ -12,6 +12,9 @@ task SoftcoreSetuppy {
       ~{prepare} \
       ~{a}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     to: ""
     prepare: ""

@@ -24,7 +24,7 @@ task PIRATE {
     String usage
     String additional
     String don
-    String input_slash_output
+    String var_22
     String not
     String retain
     String run
@@ -59,7 +59,7 @@ task PIRATE {
       ~{usage} \
       ~{additional} \
       ~{don} \
-      ~{input_slash_output} \
+      ~{var_22} \
       ~{not} \
       ~{retain} \
       ~{run} \
@@ -102,6 +102,9 @@ task PIRATE {
       ~{if (retain_intermediate_files) then "-z" else ""} \
       ~{if (check) then "--check" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_directory_containing: "input directory containing gffs [mandatory]"
     output_directory_create: "output directory in which to create PIRATE folder\\n[default: input_dir/PIRATE]"
@@ -125,7 +128,7 @@ task PIRATE {
     usage: ""
     additional: ""
     don: ""
-    input_slash_output: ""
+    var_22: ""
     not: ""
     retain: ""
     run: ""

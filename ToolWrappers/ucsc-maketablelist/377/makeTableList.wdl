@@ -26,6 +26,9 @@ task MakeTableList {
       ~{if (all) then "-all" else ""} \
       ~{if (big_files) then "-bigFiles" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     host: "show tables: mysql host"
     user: "show tables: mysql user"

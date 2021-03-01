@@ -28,6 +28,9 @@ task Cat {
       ~{if (ignored) then "-u" else ""} \
       ~{if (show_non_printing) then "--show-nonprinting" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     show_all: "equivalent to -vET"
     number_non_blank: "number nonempty output lines, overrides -n"

@@ -10,6 +10,9 @@ task TdbQuery {
       ~{if (root) then "-root" else ""} \
       ~{if defined(release) then ("-release " +  '"' + release + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     root: "=/path/to/trackDb/root/dir"
     release: "|beta|public"

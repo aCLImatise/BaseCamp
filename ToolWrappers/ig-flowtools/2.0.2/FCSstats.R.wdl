@@ -4,6 +4,9 @@ task FCSstatsR {
   command <<<
     FCSstats_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -3,32 +3,32 @@ id: deepac_predict.cwl
 inputs:
 - id: in_array
   doc: Use .npy input instead.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --array
 - id: in_sensitive
   doc: Use the sensitive model.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sensitive
 - id: in_rapid
   doc: Use the rapid CNN model.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rapid
 - id: in_custom
   doc: Use the user-supplied, already compiled CUSTOM model.
-  type: string
+  type: string?
   inputBinding:
     prefix: --custom
 - id: in_output
   doc: Output file path [.npy].
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_n_cpus
   doc: 'Number of CPU cores. Default: all.'
-  type: long
+  type: long?
   inputBinding:
     prefix: --n-cpus
 - id: in_gpus
@@ -42,9 +42,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output file path [.npy].
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - deepac

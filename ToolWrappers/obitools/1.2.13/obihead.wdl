@@ -4,7 +4,7 @@ task Obihead {
   input {
     Boolean? debug
     Boolean? without_progress_bar
-    Boolean? _sequencecountcount_print
+    Boolean? _sequencecountcount_first
     String? skip
     String? only
     Boolean? genbank
@@ -27,7 +27,7 @@ task Obihead {
     obihead \
       ~{if (debug) then "--DEBUG" else ""} \
       ~{if (without_progress_bar) then "--without-progress-bar" else ""} \
-      ~{if (_sequencecountcount_print) then "-n" else ""} \
+      ~{if (_sequencecountcount_first) then "-n" else ""} \
       ~{if defined(skip) then ("--skip " +  '"' + skip + '"') else ""} \
       ~{if defined(only) then ("--only " +  '"' + only + '"') else ""} \
       ~{if (genbank) then "--genbank" else ""} \
@@ -46,10 +46,13 @@ task Obihead {
       ~{if defined(eco_pcr_db_output) then ("--ecopcrdb-output " +  '"' + eco_pcr_db_output + '"') else ""} \
       ~{if (uppercase) then "--uppercase" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Set logging in debug mode"
     without_progress_bar: "desactivate progress bar"
-    _sequencecountcount_print: "###, --sequence-count=###\\nCount of first sequences to print"
+    _sequencecountcount_first: "###, --sequence-count=###\\nCount of first sequences to print"
     skip: "skip the N first sequences"
     only: "treat only N sequences"
     genbank: "Input file is in genbank format"

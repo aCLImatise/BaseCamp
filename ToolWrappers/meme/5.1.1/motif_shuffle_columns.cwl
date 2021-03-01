@@ -3,12 +3,12 @@ id: motif_shuffle_columns.cwl
 inputs:
 - id: in_output_file_name
   doc: output file name
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_seed
   doc: pseudo-random number generator seed
-  type: long
+  type: long?
   inputBinding:
     prefix: -seed
 - id: in_motif_db
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_file_name
   doc: output file name
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file_name)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - motif-shuffle-columns

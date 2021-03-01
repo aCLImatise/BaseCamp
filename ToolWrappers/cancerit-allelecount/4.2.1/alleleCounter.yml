@@ -1,0 +1,129 @@
+!Command
+command:
+- alleleCounter
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --loci-file
+  description: '[file]           Path to loci file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --hts-file
+  description: '[file]            Path to sample HTS file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-file
+  description: '[file]         Path write output file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --ref-file
+  description: "[file]           Path to reference fasta index file.\nNB. If cram\
+    \ format is supplied via -b and the reference listed in the cram header\ncan't\
+    \ be found alleleCounter may fail to work correctly."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-base-qual
+  description: '[int]       Minimum base quality [Default: 20].'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --min-map-qual
+  description: '[int]        Minimum mapping quality [Default: 35].'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --contig
+  description: '[string]           Limit calling to named contig.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dense-snps
+  description: Improves performance where many positions are close together
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --is-10x
+  description: "Enables 10X processing mode.\nIn this mode the HTS input file must\
+    \ be a cellranger produced BAM file.  Allele\ncounts are then given on a per-cellular\
+    \ barcode basis, with each count representing\nthe consensus base for that UMI.\n\
+    by iterating through bam file rather than using a 'fetch' approach."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --required-flag
+  description: "[int]       Flag value of reads to retain in allele counting default:\
+    \ [3].\nN.B. if the proper-pair flag is are selected, alleleCounter will assume\
+    \ paired-end\nand filter out any proper-pair flagged reads not in F/R orientation.\
+    \ -F  --filtered-flag [int]       Flag value of reads to exclude in allele counting\
+    \ default: [3852]."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display this usage information.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Display version number.
+  args: !EmptyFlagArg {}
+help_text: "Usage: alleleCounter -l loci_file.txt -b sample.bam -o output.txt [-m\
+  \ int] [-r ref.fa.fai]\n\n -l  --loci-file [file]           Path to loci file.\n\
+  \ -b  --hts-file [file]            Path to sample HTS file.\n -o  --output-file\
+  \ [file]         Path write output file.\n\nOptional\n -r  --ref-file [file]   \
+  \        Path to reference fasta index file.\n                                 NB.\
+  \ If cram format is supplied via -b and the reference listed in the cram header\n\
+  \                                     can't be found alleleCounter may fail to work\
+  \ correctly.\n -m  --min-base-qual [int]       Minimum base quality [Default: 20].\n\
+  \ -q  --min-map-qual [int]        Minimum mapping quality [Default: 35].\n -c  --contig\
+  \ [string]           Limit calling to named contig.\n -d  --dense-snps         \
+  \       Improves performance where many positions are close together \n -x  --is-10x\
+  \                    Enables 10X processing mode.\n                            \
+  \       In this mode the HTS input file must be a cellranger produced BAM file.\
+  \  Allele\n                                   counts are then given on a per-cellular\
+  \ barcode basis, with each count representing\n                                \
+  \   the consensus base for that UMI. \n                                 by iterating\
+  \ through bam file rather than using a 'fetch' approach.\n -f  --required-flag [int]\
+  \       Flag value of reads to retain in allele counting default: [3].\n       \
+  \                          N.B. if the proper-pair flag is are selected, alleleCounter\
+  \ will assume paired-end\n                                 and filter out any proper-pair\
+  \ flagged reads not in F/R orientation. -F  --filtered-flag [int]       Flag value\
+  \ of reads to exclude in allele counting default: [3852].\n -v  --version      \
+  \             Display version number.\n -h  --help                      Display\
+  \ this usage information.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cancerit-allelecount:4.2.1--h3ecb661_0

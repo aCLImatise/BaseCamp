@@ -12,6 +12,9 @@ task EventClustererpy {
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     st: ""
     p: ""

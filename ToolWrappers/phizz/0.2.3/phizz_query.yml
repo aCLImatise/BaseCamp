@@ -5,21 +5,57 @@ command:
 positional: []
 named:
 - !Flag
-  description: "-h, --hpo_term TEXT     Specify a hpo term\n-m, --mim_term TEXT  \
-    \   Specify a omim id\n-o, --outfile FILENAME  Specify path to outfile\n-j, --to_json\
-    \           If output should be in json format\n--chrom TEXT            The chromosome\n\
-    --start INTEGER\n--stop INTEGER\n--help                  Show this message and\
-    \ exit.\n"
+  optional: true
   synonyms:
   - -c
   - --config
+  - -h
+  - --hpo_term
+  description: Specify a hpo term
   args: !SimpleFlagArg
     name: PATH
+- !Flag
   optional: true
+  synonyms:
+  - -m
+  - --mim_term
+  description: Specify a omim id
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outfile
+  description: Specify path to outfile
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --to_json
+  description: If output should be in json format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chrom
+  description: The chromosome
+  args: !SimpleFlagArg
+    name: TEXT
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --start
+  - --stop
+  - --help
+  description: Show this message and exit.
+  args: !SimpleFlagArg
+    name: INTEGER
 usage_flag:
 version_flag:
 help_text: "Usage: phizz query [OPTIONS]\n\n  Query the hpo database.\n\n  Print the\
@@ -30,3 +66,4 @@ help_text: "Usage: phizz query [OPTIONS]\n\n  Query the hpo database.\n\n  Print
   \ INTEGER\n  --stop INTEGER\n  --help                  Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

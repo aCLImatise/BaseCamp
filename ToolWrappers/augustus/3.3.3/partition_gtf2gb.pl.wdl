@@ -5,7 +5,6 @@ task PartitionGtf2gbpl {
     Int? min_cluster_size
     Int? max_flanking_region_size
     Boolean? verbose
-    String synopsis
     Int entry_two
     String locus
     String features
@@ -13,7 +12,6 @@ task PartitionGtf2gbpl {
   }
   command <<<
     partition_gtf2gb_pl \
-      ~{synopsis} \
       ~{entry_two} \
       ~{locus} \
       ~{features} \
@@ -22,11 +20,13 @@ task PartitionGtf2gbpl {
       ~{if defined(max_flanking_region_size) then ("--maxFlankingRegionSize " +  '"' + max_flanking_region_size + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_cluster_size: "minimal number of genes in a one cluster,\\ndefault n=20"
     max_flanking_region_size: "maximal size of flanking intergenic region to be\\nexcised around clusters of genes,\\ndefault n=2000"
     verbose: "print verbose warning messages"
-    synopsis: "parition_gtf2gb.pl --genome=genome.fa --gtf=annotation.gtf --out.gb"
     entry_two: "NCBI   CDS 7   28  0 + . gene_id \\\"g3\\\"; transcript_id \\\"g3.t1\\\""
     locus: "NC_010473.1_5128-6494   1367 bp  DNA"
     features: "Location/Qualifiers"

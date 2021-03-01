@@ -2,6 +2,7 @@ version 1.0
 
 task ParaNodeStart {
   input {
+    Boolean? exe
     Int? log_facility
     File? log_min_priority
     File? log
@@ -15,6 +16,7 @@ task ParaNodeStart {
   }
   command <<<
     paraNodeStart \
+      ~{if (exe) then "-exe" else ""} \
       ~{if defined(log_facility) then ("-logFacility " +  '"' + log_facility + '"') else ""} \
       ~{if defined(log_min_priority) then ("-logMinPriority " +  '"' + log_min_priority + '"') else ""} \
       ~{if defined(log) then ("-log " +  '"' + log + '"') else ""} \
@@ -26,7 +28,11 @@ task ParaNodeStart {
       ~{if defined(hub) then ("-hub " +  '"' + hub + '"') else ""} \
       ~{if (rsh) then "-rsh" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
+    exe: "=/path/to/paraNode"
     log_facility: "Log to the specified syslog facility - default local0."
     log_min_priority: "minimum syslog priority to log, also filters file logging.\\ndefaults to \\\"warn\\\""
     log: "Log to file instead of syslog."

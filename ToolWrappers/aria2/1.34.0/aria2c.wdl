@@ -60,6 +60,9 @@ task Aria2c {
       ~{if defined(dht_listen_addr_six) then ("--dht-listen-addr6 " +  '"' + dht_listen_addr_six + '"') else ""} \
       ~{if defined(metalink_file) then ("--metalink-file " +  '"' + metalink_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log: "The file name of the log file. If '-' is\\nspecified, log is written to stdout.\\nPossible Values: /path/to/file, -\\nTags: #basic"
     dir: "The directory to store the downloaded file.\\nPossible Values: /path/to/directory\\nDefault: /\\nTags: #basic, #file"

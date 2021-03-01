@@ -14,6 +14,9 @@ task Dshvarianttabletovcf {
       ~{if (input_variant_table_file) then "--input-variant-table-file" else ""} \
       ~{if (output_vcf_file) then "--output-vcf-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     input_variant_table_file: "[class java.io.File]  input Ensembl variant table file, default stdin [optional]"

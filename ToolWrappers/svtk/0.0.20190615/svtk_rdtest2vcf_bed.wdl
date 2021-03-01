@@ -12,6 +12,9 @@ task SvtkRdtest2vcfBed {
       ~{f_out} \
       ~{if defined(contigs) then ("--contigs " +  '"' + contigs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contigs: ""
     samples: ""

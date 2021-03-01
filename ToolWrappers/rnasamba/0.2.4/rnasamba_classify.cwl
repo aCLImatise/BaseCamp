@@ -4,13 +4,13 @@ inputs:
 - id: in_protein_fast_a
   doc: "output FASTA file containing translated sequences for\nthe predicted coding\
     \ ORFs. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --protein_fasta
 - id: in_verbose
   doc: "print the progress of the classification. 0 = silent,\n1 = current step. (default:\
     \ 0)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbose
 - id: in_output_file
@@ -36,9 +36,10 @@ outputs:
 - id: out_protein_fast_a
   doc: "output FASTA file containing translated sequences for\nthe predicted coding\
     \ ORFs. (default: None)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_protein_fast_a)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rnasamba

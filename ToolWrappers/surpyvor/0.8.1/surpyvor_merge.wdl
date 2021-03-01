@@ -24,6 +24,9 @@ task SurpyvorMerge {
       ~{if (strand) then "--strand" else ""} \
       ~{if (estimate_distance) then "--estimate_distance" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print out more information while running."
     variants: "vcf files to merge"

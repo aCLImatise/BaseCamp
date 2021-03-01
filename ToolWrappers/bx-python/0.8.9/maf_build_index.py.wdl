@@ -12,6 +12,9 @@ task MafBuildIndexpy {
       ~{index_file} \
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     species: "only index the position of the block in the listed\\nspecies\\n"
     maf_file: ""

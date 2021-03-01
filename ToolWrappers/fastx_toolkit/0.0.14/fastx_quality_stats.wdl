@@ -60,6 +60,9 @@ task FastxQualityStats {
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if (n) then "-N" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     i: ""

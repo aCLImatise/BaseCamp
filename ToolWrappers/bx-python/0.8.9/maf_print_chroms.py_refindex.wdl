@@ -8,6 +8,9 @@ task MafPrintChromspyRefindex {
     maf_print_chroms_py refindex \
       ~{program_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     program_dot: "usage: /usr/local/bin/maf_print_chroms.py refindex [options]"
   }

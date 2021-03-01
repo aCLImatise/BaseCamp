@@ -30,6 +30,9 @@ task Unfazed {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dn_ms: "valid VCF OR BED file of the DNMs of interest> If BED,\\nmust contain chrom, start, end, kid_id, var_type\\ncolumns (default: None)"
     sites: "sorted/bgzipped/indexed VCF/BCF file of SNVs to\\nidentify informative sites. Must contain each kid and\\nboth parents (default: None)"

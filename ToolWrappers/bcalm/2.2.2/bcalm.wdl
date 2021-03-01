@@ -80,6 +80,9 @@ task Bcalm {
       ~{if (skip_links) then "-skip-links" else ""} \
       ~{if (nb_glue_partitions) then "-nb-glue-partitions" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nb_cores: "(1 arg) :    number of cores  [default '0']"
     verbose: "(1 arg) :    verbosity level  [default '1']"

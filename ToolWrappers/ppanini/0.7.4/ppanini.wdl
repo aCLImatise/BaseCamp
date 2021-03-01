@@ -24,6 +24,9 @@ task Ppanini {
       ~{if defined(t_shld_prev) then ("--tshld-prev " +  '"' + t_shld_prev + '"') else ""} \
       ~{if defined(beta) then ("--beta " +  '"' + beta + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_table: "REQUIRED: Gene abundance table with metadata"
     output_folder: "Folder containing results"

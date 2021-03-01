@@ -32,6 +32,9 @@ task MerfishtoolsExp {
       ~{if (pm_f_window_width) then "--pmf-window-width" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     estimate: "Path to write expected value and standard deviation estimates of expression to.\\nOutput is formatted into columns: cell, feature, expected value, standard deviation"
     stats: "Path to write global statistics per cell to.\\nOutput is formatted into columns: cell, noise-rate"

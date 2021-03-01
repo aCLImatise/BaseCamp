@@ -3,12 +3,12 @@ id: surpyvor_insseq_vcf.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_verbose
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_sur_py_vor
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - surpyvor

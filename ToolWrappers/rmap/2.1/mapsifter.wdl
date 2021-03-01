@@ -22,6 +22,9 @@ task Mapsifter {
       ~{if (target) then "-target" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_output_file: "Name of output file (default: stdout)"
     verbose: "print more run info"

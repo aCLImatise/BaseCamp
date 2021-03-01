@@ -2,9 +2,9 @@ version 1.0
 
 task DeduplicateBismark {
   input {
-    Boolean? s_slash_single
-    Boolean? p_slash_paired
-    File? oslash_outfile
+    Boolean? single
+    Boolean? paired
+    File? outfile
     File? output_dir
     Boolean? barcode
     File? bam
@@ -14,9 +14,9 @@ task DeduplicateBismark {
   }
   command <<<
     deduplicate_bismark \
-      ~{if (s_slash_single) then "-s/--single" else ""} \
-      ~{if (p_slash_paired) then "-p/--paired" else ""} \
-      ~{if (oslash_outfile) then "-o/--outfile" else ""} \
+      ~{if (single) then "--single" else ""} \
+      ~{if (paired) then "--paired" else ""} \
+      ~{if (outfile) then "--outfile" else ""} \
       ~{if (output_dir) then "--output_dir" else ""} \
       ~{if (barcode) then "--barcode" else ""} \
       ~{if (bam) then "--bam" else ""} \
@@ -24,10 +24,13 @@ task DeduplicateBismark {
       ~{if (multiple) then "--multiple" else ""} \
       ~{if (sam_tools_path) then "--samtools_path" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    s_slash_single: "deduplicate single-end BAM/SAM Bismark files. Default: [AUTO-DETECT]"
-    p_slash_paired: "deduplicate paired-end BAM/SAM Bismark files. Default: [AUTO-DETECT]"
-    oslash_outfile: "[filename] The basename of a desired output file. This basename is modified to end in '.deduplicated.bam',\\nor '.multiple.deduplicated.bam' in '--multiple' mode, for consistency reasons."
+    single: "deduplicate single-end BAM/SAM Bismark files. Default: [AUTO-DETECT]"
+    paired: "deduplicate paired-end BAM/SAM Bismark files. Default: [AUTO-DETECT]"
+    outfile: "[filename] The basename of a desired output file. This basename is modified to end in '.deduplicated.bam',\\nor '.multiple.deduplicated.bam' in '--multiple' mode, for consistency reasons."
     output_dir: "[path]     Output directory, either relative or absolute. Output is written to the current directory if not\\nspecified explicitly."
     barcode: "In addition to chromosome, start position and orientation this will also take a potential barcode into\\nconsideration while deduplicating. The barcode needs to be the last element of the read ID and separated\\nby a ':', e.g.: MISEQ:14:000000000-A55D0:1:1101:18024:2858_1:N:0:CTCCT"
     bam: "The output will be written out in BAM format. This script will attempt to use the path to Samtools\\nthat was specified with '--samtools_path', or, if it hasn't been specified, attempt to find Samtools\\nin the PATH. If no installation of Samtools can be found, a GZIP compressed output is written out\\ninstead (yielding a .sam.gz output file). Default: ON."
@@ -37,7 +40,7 @@ task DeduplicateBismark {
   }
   output {
     File out_stdout = stdout()
-    File out_oslash_outfile = "${in_oslash_outfile}"
+    File out_outfile = "${in_outfile}"
     File out_output_dir = "${in_output_dir}"
     File out_bam = "${in_bam}"
   }

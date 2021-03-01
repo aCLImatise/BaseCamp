@@ -3,33 +3,33 @@ id: htseq_qa.cwl
 inputs:
 - id: in_type
   doc: "type of read_file (one of: sam [default], bam, solexa-\nexport, fastq, solexa-fastq)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --type
 - id: in_outfile
   doc: output filename (default is <read_file>.pdf)
-  type: File
+  type: File?
   inputBinding:
     prefix: --outfile
 - id: in_read_length
   doc: "the maximum read length (when not specified, the\nscript guesses from the\
     \ file"
-  type: long
+  type: long?
   inputBinding:
     prefix: --readlength
 - id: in_gamma
   doc: "the gamma factor for the contrast adjustment of the\nquality score plot"
-  type: string
+  type: string?
   inputBinding:
     prefix: --gamma
 - id: in_no_split
   doc: do not split reads in unaligned and aligned ones
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nosplit
 - id: in_max_qual
   doc: "the maximum quality score that appears in the data\n(default: 41)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxqual
 - id: in_primary_only
@@ -37,12 +37,12 @@ inputs:
     \ affects 'multimapper' reads\nthat align to several regions in the genome. By\n\
     choosing this option, each read will only count as\none; without this option,\
     \ each of its alignments\ncounts as one."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --primary-only
 - id: in_max_records
   doc: "Limit the analysis to the first N reads/alignments.\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-records
 outputs:
@@ -51,9 +51,10 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: output filename (default is <read_file>.pdf)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - htseq-qa

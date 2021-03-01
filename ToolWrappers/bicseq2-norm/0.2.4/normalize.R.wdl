@@ -4,6 +4,9 @@ task NormalizeR {
   command <<<
     normalize_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

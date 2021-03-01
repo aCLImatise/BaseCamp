@@ -3,17 +3,17 @@ id: convertToAtac.cwl
 inputs:
 - id: in_two
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: '-2'
 - id: in_one
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: '-1'
 - id: in_f
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_asm_file_one
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - convertToAtac

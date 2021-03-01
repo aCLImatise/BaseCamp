@@ -8,6 +8,9 @@ task TbvcfreportCOMMAND {
     tbvcfreport COMMAND \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     args: ""
   }

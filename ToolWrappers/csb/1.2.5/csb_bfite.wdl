@@ -16,6 +16,9 @@ task Csbbfite {
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(niter) then ("--niter " +  '"' + niter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chain: "Chain (default=A)"
     scale_mixture: "Scale mixture distribution (default=student)"

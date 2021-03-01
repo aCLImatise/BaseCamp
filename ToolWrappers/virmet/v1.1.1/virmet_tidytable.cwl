@@ -3,7 +3,7 @@ id: virmet_tidytable.cwl
 inputs:
 - id: in_outdir
   doc: path to run results directory (virmet_output_...)
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_vir_met
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - virmet

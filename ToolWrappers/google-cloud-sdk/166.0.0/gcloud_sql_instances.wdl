@@ -34,6 +34,9 @@ task GcloudSqlInstances {
       ~{restore_backup} \
       ~{set_root_password}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clone: "Clones a Cloud SQL instance."
     create: "Creates a new Cloud SQL instance."

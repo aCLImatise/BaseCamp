@@ -72,6 +72,9 @@ task Repeatoire {
       ~{if defined(xml) then ("--xml " +  '"' + xml + '"') else ""} \
       ~{if defined(_seed_weight) then ("--z " +  '"' + _seed_weight + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     allow_redundant: "(=1)        allow redundant alignments?"
     chain: "(=1)                  chain seeds?"

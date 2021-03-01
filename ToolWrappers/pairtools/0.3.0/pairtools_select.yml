@@ -4,109 +4,109 @@ command:
 - select
 positional:
 - !Positional
-  description: CONDITION with single quotes, and use double quotes for string
+  optional: false
   position: 0
   name: quote
-  optional: false
+  description: CONDITION with single quotes, and use double quotes for string
 named:
 - !Flag
-  description: "output file. If the path ends with .gz or\n.lz4, the output is pbgzip-/lz4c-compressed.\n\
-    By default, the output is printed into\nstdout."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "output file. If the path ends with .gz or\n.lz4, the output is pbgzip-/lz4c-compressed.\n\
+    By default, the output is printed into\nstdout."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --output-rest
   description: "output file for pairs of other types.  If\nthe path ends with .gz\
     \ or .lz4, the output\nis pbgzip-/lz4c-compressed. By default, such\npairs are\
     \ dropped."
-  synonyms:
-  - --output-rest
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "[selected|rest|both|none]\nWhich of the outputs should receive header\n\
-    and comment lines  [default: both]"
+  optional: true
   synonyms:
   - --send-comments-to
+  description: "[selected|rest|both|none]\nWhich of the outputs should receive header\n\
+    and comment lines  [default: both]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --chrom-subset
   description: "A path to a chromosomes file (tab-separated,\n1st column contains\
     \ chromosome names)\ncontaining a chromosome subset of interest.\nIf provided,\
     \ additionally filter pairs with\nboth sides originating from the provided\nsubset\
     \ of chromosomes. This operation\nmodifies the #chromosomes: and #chromsize:\n\
     header fields accordingly."
-  synonyms:
-  - --chrom-subset
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "An auxiliary code to execute before\nfiltering. Use to define functions\
-    \ that can\nbe evaluated in the CONDITION statement"
+  optional: true
   synonyms:
   - --startup-code
+  description: "An auxiliary code to execute before\nfiltering. Use to define functions\
+    \ that can\nbe evaluated in the CONDITION statement"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "...  Cast a given column to a given type. By\ndefault, only pos and\
-    \ mapq are cast to int,\nother columns are kept as str. Provide as -t\n<column_name>\
-    \ <type>, e.g. -t read_len1 int.\nMultiple entries are allowed."
+  optional: true
   synonyms:
   - -t
   - --type-cast
+  description: "...  Cast a given column to a given type. By\ndefault, only pos and\
+    \ mapq are cast to int,\nother columns are kept as str. Provide as -t\n<column_name>\
+    \ <type>, e.g. -t read_len1 int.\nMultiple entries are allowed."
   args: !SimpleFlagArg
     name: TEXT TEXT
-  optional: true
 - !Flag
-  description: "Number of processes used by the auto-guessed\ninput decompressing\
-    \ command.  [default: 3]"
+  optional: true
   synonyms:
   - --nproc-in
+  description: "Number of processes used by the auto-guessed\ninput decompressing\
+    \ command.  [default: 3]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Number of processes used by the auto-guessed\noutput compressing command.\
-    \  [default: 8]"
+  optional: true
   synonyms:
   - --nproc-out
+  description: "Number of processes used by the auto-guessed\noutput compressing command.\
+    \  [default: 8]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cmd-in
   description: "A command to decompress the input file. If\nprovided, fully overrides\
     \ the auto-guessed\ncommand. Does not work with stdin. Must read\ninput from stdin\
     \ and print output into\nstdout. EXAMPLE: pbgzip -dc -n 3"
-  synonyms:
-  - --cmd-in
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cmd-out
   description: "A command to compress the output file. If\nprovided, fully overrides\
     \ the auto-guessed\ncommand. Does not work with stdout. Must\nread input from\
     \ stdin and print output into\nstdout. EXAMPLE: pbgzip -c -n 8"
-  synonyms:
-  - --cmd-out
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: pairtools select [OPTIONS] CONDITION [PAIRS_PATH]\n\n  Select pairs\
@@ -172,3 +172,4 @@ help_text: "Usage: pairtools select [OPTIONS] CONDITION [PAIRS_PATH]\n\n  Select
   \     Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

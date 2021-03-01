@@ -3,28 +3,28 @@ id: chainNet.cwl
 inputs:
 - id: in_min_space
   doc: '- minimum gap size to fill, default 25'
-  type: long
+  type: long?
   inputBinding:
     prefix: -minSpace
 - id: in_min_fill
   doc: '- default half of minSpace'
-  type: string
+  type: string?
   inputBinding:
     prefix: -minFill
 - id: in_min_score
   doc: '- minimum chain score to consider, default 2000.0'
-  type: double
+  type: double?
   inputBinding:
     prefix: -minScore
 - id: in_verbose
   doc: '- Alter verbosity (default 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: -verbose
 - id: in_incl_hap
   doc: "- include query sequences name in the form *_hap*|*_alt*.\nNormally these\
     \ are excluded from nets as being haplotype\npseudochromosomes\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -inclHap
 - id: in_in_dot_chain
@@ -51,6 +51,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - chainNet

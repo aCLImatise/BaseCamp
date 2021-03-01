@@ -16,6 +16,9 @@ task Depot {
       ~{if (overlaps_format) then "--overlaps_format" else ""} \
       ~{if (reads_format) then "--reads_format" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     depot: "depot path (string)"
     reads: "reads file (string [=])"

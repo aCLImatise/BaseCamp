@@ -4,70 +4,70 @@ inputs:
 - id: in_dsn
   doc: "'dbi:mysql:database=dmel_r5_1;host=myhost;port=myport'\ndna1.fa dna2.fa features1.gff\
     \ features2.gff ..."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dsn
 - id: in_of__database
   doc: of --database.
-  type: string
+  type: string?
   inputBinding:
     prefix: -d
 - id: in_adaptor
   doc: Schema adaptor (default dbi::mysqlopt)
-  type: string
+  type: string?
   inputBinding:
     prefix: --adaptor
 - id: in_user
   doc: <user>      Username for mysql authentication
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --user
 - id: in_pass
   doc: <password>  Password for mysql authentication
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pass
 - id: in_fast_a
   doc: <path>      Fasta file or directory containing fasta files for the DNA
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fasta
 - id: in_create
   doc: Force creation and initialization of database
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --create
 - id: in_max_feature
   doc: Set the value of the maximum feature size (default 100 Mb; must be a power
     of 10)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --maxfeature
 - id: in_group
   doc: "A list of one or more tag names (comma or space separated)\nto be used for\
     \ grouping in the 9th column."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --group
 - id: in_upgrade
   doc: Upgrade existing database to current schema
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --upgrade
 - id: in_gff_three_munge
   doc: Activate GFF3 name munging (see Bio::DB::GFF)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gff3_munge
 - id: in_quiet
   doc: No progress reports
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_summary
   doc: "Generate summary statistics for drawing coverage histograms.\nThis can be\
     \ run on a previously loaded database or during\nthe load."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --summary
 - id: in_notes
@@ -90,6 +90,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bp_load_gff.pl

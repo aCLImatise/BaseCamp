@@ -10,6 +10,9 @@ task PybelManageNetworks {
       ~{drop} \
       ~{ls}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     drop: "Drop a network by its identifier or drop all networks."
     ls: "List network names, versions, and optionally, descriptions."

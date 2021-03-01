@@ -4,6 +4,9 @@ task MqparConverterexe {
   command <<<
     MqparConverter_exe
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

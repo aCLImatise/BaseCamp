@@ -31,7 +31,7 @@ task Metaphlan {
     String? pres_th
     Boolean? clade
     Boolean? min_ab
-    File? file__outputfile
+    File? file__file
     String? sample_id_key
     Boolean? use_group_representative
     String? sample_id
@@ -81,7 +81,7 @@ task Metaphlan {
       ~{if defined(pres_th) then ("--pres_th " +  '"' + pres_th + '"') else ""} \
       ~{if (clade) then "--clade" else ""} \
       ~{if (min_ab) then "--min_ab" else ""} \
-      ~{if defined(file__outputfile) then ("-o " +  '"' + file__outputfile + '"') else ""} \
+      ~{if defined(file__file) then ("-o " +  '"' + file__file + '"') else ""} \
       ~{if defined(sample_id_key) then ("--sample_id_key " +  '"' + sample_id_key + '"') else ""} \
       ~{if (use_group_representative) then "--use_group_representative" else ""} \
       ~{if defined(sample_id) then ("--sample_id " +  '"' + sample_id + '"') else ""} \
@@ -96,6 +96,9 @@ task Metaphlan {
       ~{if (force_download) then "--force_download" else ""} \
       ~{if defined(read_min_len) then ("--read_min_len " +  '"' + read_min_len + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_type_dot: "steps: first apply BowTie2 and then feed MetaPhlAn with the obtained sam:"
     input_type: "set whether the input is the FASTA file of metagenomic reads or\\nthe SAM file of the mapping of the reads against the MetaPhlAn db."
@@ -126,7 +129,7 @@ task Metaphlan {
     pres_th: "Threshold for calling a marker present by the -t marker_pres_table option"
     clade: "The clade for clade_specific_strain_tracker analysis"
     min_ab: "The minimum percentage abundance for the clade in the clade_specific_strain_tracker analysis"
-    file__outputfile: "file, --output_file output file\\nThe output file (if not specified as positional argument)"
+    file__file: "file, --output_file output file\\nThe output file (if not specified as positional argument)"
     sample_id_key: "Specify the sample ID key for this analysis. Defaults to 'SampleID'."
     use_group_representative: "Use a species as representative for species groups."
     sample_id: "Specify the sample ID for this analysis. Defaults to 'Metaphlan_Analysis'."
@@ -146,7 +149,7 @@ task Metaphlan {
   output {
     File out_stdout = stdout()
     File out_bowtie_two_out = "${in_bowtie_two_out}"
-    File out_file__outputfile = "${in_file__outputfile}"
+    File out_file__file = "${in_file__file}"
     File out_sam_out = "${in_sam_out}"
     File out_biom_output_file = "${in_biom_output_file}"
   }

@@ -20,6 +20,9 @@ task PpanggolinGraph {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_genome: "The pangenome .h5 file (default: None)"
     remove_high_copy_number: "Positive Number: Remove families having a number of\\ncopy of gene in a single organism above or equal to\\nthis threshold in at least one organism (0 or negative\\nvalues are ignored). (default: 0)"

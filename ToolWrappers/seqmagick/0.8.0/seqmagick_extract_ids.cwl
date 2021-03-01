@@ -3,17 +3,17 @@ id: seqmagick_extract_ids.cwl
 inputs:
 - id: in_output_file
   doc: Destination file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file
 - id: in_input_format
   doc: Input format for sequence file
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-format
 - id: in_include_description
   doc: "Include the sequence description in output [default:\nFalse]\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --include-description
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: Destination file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - seqmagick

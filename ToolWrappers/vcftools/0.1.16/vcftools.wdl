@@ -4,6 +4,9 @@ task Vcftools {
   command <<<
     vcftools
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

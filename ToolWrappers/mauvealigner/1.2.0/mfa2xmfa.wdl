@@ -16,6 +16,9 @@ task Mfa2xmfa {
       ~{fast_a} \
       ~{var_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mfa_alignment_input: ""
     x_mfa_alignment_output: ""

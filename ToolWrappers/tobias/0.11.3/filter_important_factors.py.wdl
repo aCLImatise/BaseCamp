@@ -12,6 +12,9 @@ task FilterImportantFactorspy {
       ~{if defined(filter) then ("-filter " +  '"' + filter + '"') else ""} \
       ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input file"
     filter: "Filter"

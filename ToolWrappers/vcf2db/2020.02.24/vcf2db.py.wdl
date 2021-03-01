@@ -22,6 +22,9 @@ task Vcf2dbpy {
       ~{compatible} \
       ~{database}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     take: ""
     a: ""

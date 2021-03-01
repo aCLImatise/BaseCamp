@@ -3,8 +3,8 @@ version 1.0
 task Nmrml2isa {
   input {
     File? input_folder_archive
-    File? out_folder_new
-    String? study_identifier_eg
+    File? folder_new_directory
+    String? study_identifier_mtblsxxx
     String? additional_user_provided
     String? launch_different_processes
     String? warning_control_python
@@ -15,8 +15,8 @@ task Nmrml2isa {
   command <<<
     nmrml2isa \
       ~{if defined(input_folder_archive) then ("-i " +  '"' + input_folder_archive + '"') else ""} \
-      ~{if defined(out_folder_new) then ("-o " +  '"' + out_folder_new + '"') else ""} \
-      ~{if defined(study_identifier_eg) then ("-s " +  '"' + study_identifier_eg + '"') else ""} \
+      ~{if defined(folder_new_directory) then ("-o " +  '"' + folder_new_directory + '"') else ""} \
+      ~{if defined(study_identifier_mtblsxxx) then ("-s " +  '"' + study_identifier_mtblsxxx + '"') else ""} \
       ~{if defined(additional_user_provided) then ("-m " +  '"' + additional_user_provided + '"') else ""} \
       ~{if defined(launch_different_processes) then ("-j " +  '"' + launch_different_processes + '"') else ""} \
       ~{if defined(warning_control_python) then ("-W " +  '"' + warning_control_python + '"') else ""} \
@@ -24,10 +24,13 @@ task Nmrml2isa {
       ~{if (show_more_default) then "-v" else ""} \
       ~{if (do_show_output) then "-q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_folder_archive: "input folder or archive containing nmrML files"
-    out_folder_new: "out folder (a new directory will be created here)"
-    study_identifier_eg: "study identifier (e.g. MTBLSxxx)"
+    folder_new_directory: "out folder (a new directory will be created here)"
+    study_identifier_mtblsxxx: "study identifier (e.g. MTBLSxxx)"
     additional_user_provided: "additional user provided metadata (JSON or XLSX\\nformat)"
     launch_different_processes: "launch different processes for parsing"
     warning_control_python: "warning control (with python default behaviour)"
@@ -37,6 +40,6 @@ task Nmrml2isa {
   }
   output {
     File out_stdout = stdout()
-    File out_out_folder_new = "${in_out_folder_new}"
+    File out_folder_new_directory = "${in_folder_new_directory}"
   }
 }

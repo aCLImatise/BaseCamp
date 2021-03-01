@@ -5,7 +5,7 @@ task Rpkmforgenespy {
     File? by_output_file
     File? list_input_files
     File? by_annotation_file
-    Int? bigwig_file_alternatively
+    Int? bigwig_file_directory
     Int? no_three_utr
     Int? full_transcript
     Int? maxlength
@@ -61,7 +61,7 @@ task Rpkmforgenespy {
       ~{if defined(by_output_file) then ("-o " +  '"' + by_output_file + '"') else ""} \
       ~{if defined(list_input_files) then ("-i " +  '"' + list_input_files + '"') else ""} \
       ~{if defined(by_annotation_file) then ("-a " +  '"' + by_annotation_file + '"') else ""} \
-      ~{if defined(bigwig_file_alternatively) then ("-u " +  '"' + bigwig_file_alternatively + '"') else ""} \
+      ~{if defined(bigwig_file_directory) then ("-u " +  '"' + bigwig_file_directory + '"') else ""} \
       ~{if defined(no_three_utr) then ("-no3utr " +  '"' + no_three_utr + '"') else ""} \
       ~{if defined(full_transcript) then ("-fulltranscript " +  '"' + full_transcript + '"') else ""} \
       ~{if defined(maxlength) then ("-maxlength " +  '"' + maxlength + '"') else ""} \
@@ -112,11 +112,14 @@ task Rpkmforgenespy {
       ~{if defined(quite) then ("-quite " +  '"' + quite + '"') else ""} \
       ~{if defined(print_message_quit) then ("-h " +  '"' + print_message_quit + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     by_output_file: "by output file"
     list_input_files: "by list of input files (by default, guesses format from file extension)"
     by_annotation_file: "by annotation file"
-    bigwig_file_alternatively: "by a bigWig file, alternatively a directory for files for non-unique positions (lower case for nonunique k-mers (where k is the read length), upper case for unique; filenames are e.g. chr1.fa, can also be chr1_unique20-255.btxt etc"
+    bigwig_file_directory: "by a bigWig file, alternatively a directory for files for non-unique positions (lower case for nonunique k-mers (where k is the read length), upper case for unique; filenames are e.g. chr1.fa, can also be chr1_unique20-255.btxt etc"
     no_three_utr: "remove 3'UTRs"
     full_transcript: "not remove 3'UTRs (default)"
     maxlength: "by a distance to cut each transcript from the 3' end, from 5' if negative (never seems to give better values)"

@@ -16,6 +16,9 @@ task Minipolish {
       ~{if defined(rounds) then ("--rounds " +  '"' + rounds + '"') else ""} \
       ~{if (pac_bio) then "--pacbio" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads to use for alignment and polishing\\n(default: 8)"
     rounds: "Number of full Racon polishing rounds (default: 2)"

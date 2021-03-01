@@ -8,6 +8,9 @@ task BedparseIntrons {
     bedparse introns \
       ~{bed_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_file: "Path to the BED file."
   }

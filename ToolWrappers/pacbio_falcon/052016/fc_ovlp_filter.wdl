@@ -28,6 +28,9 @@ task FcOvlpFilter {
       ~{if (debug) then "--debug" else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_core: "number of processes used for generating consensus; 0\\nfor main process only (default=4)"
     fof_n: "file contains the path of all LAS file to be processed\\nin parallel"

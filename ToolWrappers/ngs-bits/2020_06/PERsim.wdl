@@ -36,6 +36,9 @@ task PERsim {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     roi: "Target region BED file."
     count: "Number of read pairs to generate."

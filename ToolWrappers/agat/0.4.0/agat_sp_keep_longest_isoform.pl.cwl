@@ -3,13 +3,13 @@ id: agat_sp_keep_longest_isoform.pl.cwl
 inputs:
 - id: in_gff
   doc: GTF/GFF file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --gff
 - id: in_output
   doc: "File where will be written the result. If no output file is\nspecified, the\
     \ output will be written to STDOUT."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_agat_sp_keep_longest_isoform_do_tpl
@@ -24,9 +24,10 @@ outputs:
 - id: out_output
   doc: "File where will be written the result. If no output file is\nspecified, the\
     \ output will be written to STDOUT."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agat_sp_keep_longest_isoform.pl

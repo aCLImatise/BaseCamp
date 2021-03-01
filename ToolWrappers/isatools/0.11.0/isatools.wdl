@@ -4,6 +4,9 @@ task Isatools {
   command <<<
     isatools
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

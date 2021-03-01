@@ -30,6 +30,9 @@ task PblayoutSubgraph {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directed: "Apply the directed ego-graph algorithm to\\nextract the subgraph."
     radius: "INT   Radius (in the number of nodes) to extract in\\neach direction. [100]"

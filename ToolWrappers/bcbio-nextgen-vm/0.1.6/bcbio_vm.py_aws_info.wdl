@@ -10,6 +10,9 @@ task BcbioVmpyAwsInfo {
       ~{if defined(e_config) then ("--econfig " +  '"' + e_config + '"') else ""} \
       ~{if defined(cluster) then ("--cluster " +  '"' + cluster + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     e_config: "Elasticluster bcbio configuration file"
     cluster: "elasticluster cluster name\\n"

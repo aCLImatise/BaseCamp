@@ -4,45 +4,52 @@ command:
 - indelqual
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: in.bam
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "| --uniform INT[,INT]  Add this indel quality uniformly to all bases.\n\
-    Use two comma separated values to specify\ninsertion and deletion quality separately.\n\
-    (clashes with --dindel)"
+  optional: true
   synonyms:
   - -u
-  args: !EmptyFlagArg {}
-  optional: true
+  - --uniform
+  description: "Add this indel quality uniformly to all bases.\nUse two comma separated\
+    \ values to specify\ninsertion and deletion quality separately.\n(clashes with\
+    \ --dindel)"
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+    separator: ','
 - !Flag
-  description: "Add Dindel's indel qualities (Illumina specific)\n(clashes with -u;\
-    \ needs --ref)"
+  optional: true
   synonyms:
   - --dindel
+  description: "Add Dindel's indel qualities (Illumina specific)\n(clashes with -u;\
+    \ needs --ref)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "| --ref                Reference sequence used for mapping\n(Only\
-    \ required for --dindel)"
+  optional: true
   synonyms:
   - -f
+  - --ref
+  description: "Reference sequence used for mapping\n(Only required for --dindel)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '| --out FILE           Output BAM file [- = stdout = default]'
+  optional: true
   synonyms:
   - -o
-  args: !EmptyFlagArg {}
-  optional: true
+  - --out
+  description: Output BAM file [- = stdout = default]
+  args: !SimpleFlagArg
+    name: FILE
 - !Flag
-  description: Be verbose
+  optional: true
   synonyms:
   - --verbose
+  description: Be verbose
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -66,3 +73,4 @@ help_text: "lofreq indelqual: Insert indel qualities into BAM file (required for
   \ values.\nDo not realign your BAM file afterwards!\n\n"
 generated_using:
 - --help
+docker_image:

@@ -8,6 +8,9 @@ task IlluminaToFastapl {
     illumina_to_fasta_pl \
       ~{if (format_is_qseqtxt) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format_is_qseqtxt: "format is qseq.txt"
   }

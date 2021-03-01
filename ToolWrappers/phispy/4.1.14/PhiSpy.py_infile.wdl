@@ -12,6 +12,9 @@ task PhiSpypyInfile {
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     m: ""
     o: ""

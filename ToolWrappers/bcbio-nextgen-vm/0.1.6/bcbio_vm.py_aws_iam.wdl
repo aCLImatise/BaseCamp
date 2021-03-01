@@ -14,6 +14,9 @@ task BcbioVmpyAwsIam {
       ~{if (recreate) then "--recreate" else ""} \
       ~{if (no_create) then "--nocreate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     e_config: "Elasticluster bcbio configuration file"
     region: "EC2 region to create IAM user in (defaults to us-east-1)"

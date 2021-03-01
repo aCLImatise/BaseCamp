@@ -30,6 +30,9 @@ task SqStoreDumpMetaData {
       ~{if (trimmed) then "-trimmed" else ""} \
       ~{if (compressed) then "-compressed" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dump_reads_from: "dump reads from 'seqStore'"
     libs: "dump information about libraries"

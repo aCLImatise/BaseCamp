@@ -12,6 +12,9 @@ task MerfishtoolsGenmhd2 {
       ~{if defined(one_bits) then ("--onebits " +  '"' + one_bits + '"') else ""} \
       ~{if defined(not_expressed) then ("--not-expressed " +  '"' + not_expressed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bits: "Number of bits."
     one_bits: "Number of 1-bits."

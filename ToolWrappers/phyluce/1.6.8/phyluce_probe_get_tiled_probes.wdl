@@ -2,9 +2,10 @@ version 1.0
 
 task PhyluceProbeGetTiledProbes {
   input {
-    Int? probe_prefix
     File? path_input_file
     File? path_output_file
+    String? probe_prefix
+    String? designer
     String? design
     Int? probe_length
     String? tiling_density
@@ -19,9 +20,10 @@ task PhyluceProbeGetTiledProbes {
   }
   command <<<
     phyluce_probe_get_tiled_probes \
-      ~{if defined(probe_prefix) then ("--probe-prefix " +  '"' + probe_prefix + '"') else ""} \
       ~{if defined(path_input_file) then ("--input " +  '"' + path_input_file + '"') else ""} \
       ~{if defined(path_output_file) then ("--output " +  '"' + path_output_file + '"') else ""} \
+      ~{if defined(probe_prefix) then ("--probe-prefix " +  '"' + probe_prefix + '"') else ""} \
+      ~{if defined(designer) then ("--designer " +  '"' + designer + '"') else ""} \
       ~{if defined(design) then ("--design " +  '"' + design + '"') else ""} \
       ~{if defined(probe_length) then ("--probe-length " +  '"' + probe_length + '"') else ""} \
       ~{if defined(tiling_density) then ("--tiling-density " +  '"' + tiling_density + '"') else ""} \
@@ -34,10 +36,14 @@ task PhyluceProbeGetTiledProbes {
       ~{if defined(start_index) then ("--start-index " +  '"' + start_index + '"') else ""} \
       ~{if (two_probes) then "--two-probes" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    probe_prefix: "DESIGNER --design DESIGN\\n[--probe-length LENGTH]\\n[--tiling-density DENSITY]\\n[--overlap {middle,flush-left}]\\n[--probe-bed PROBE_BED]\\n[--locus-bed LOCUS_BED] [--masking MASK]\\n[--do-not-remove-ambiguous]\\n[--remove-gc]\\n[--start-index START_INDEX]\\n[--two-probes]"
     path_input_file: "The path to the input file"
     path_output_file: "The path to the output file"
+    probe_prefix: "The prefix (e.g. \\\"uce-\\\") to add to all probes designed"
+    designer: "Your last name (to indicate who designed the probes)"
     design: "The design name."
     probe_length: "The length of the probes sequence to design"
     tiling_density: "The tiling density"

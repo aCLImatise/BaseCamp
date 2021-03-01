@@ -10,6 +10,9 @@ task Kmercount {
       ~{km_er_cov} \
       ~{km_er}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er_cov: ""
     km_er: ""

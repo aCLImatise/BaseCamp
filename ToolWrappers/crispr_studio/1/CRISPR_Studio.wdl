@@ -24,6 +24,9 @@ task CRISPRStudio {
       ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""} \
       ~{if (spacer_size) then "--spacerSize" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "GFF3 file generated with CRISPRDetect (Local\\ninstallation or web platform http://brownlabtools.otag\\no.ac.nz/CRISPRDetect/predict_crispr_array.html)."
     list_of_isolates: "CRISPR_Studio will generate the figure with a subset\\nof isolates listed in the file (Optional: By default,\\nCRISPR_Studio will generate a figure with all the\\nisolates)."

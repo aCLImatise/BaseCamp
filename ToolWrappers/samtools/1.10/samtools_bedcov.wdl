@@ -22,6 +22,9 @@ task SamtoolsBedcov {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mapping_quality_threshold: "mapping quality threshold [0]"
     use_customized_files: "use customized index files"

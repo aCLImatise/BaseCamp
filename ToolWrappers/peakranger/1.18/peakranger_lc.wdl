@@ -12,6 +12,9 @@ task PeakrangerLc {
       ~{if (arg_data_file) then "-d" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_data_file: "[ --data ] arg      the data file"
     verbose: "show progress when possible"

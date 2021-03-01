@@ -14,6 +14,9 @@ task SuperDistance {
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""} \
       ~{if defined(output_file_species) then ("--output " +  '"' + output_file_species + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast: "for too many leaves, estimates only two species trees"
     epsilon: "tolerance (small value below which a branch length is considered zero for nodal distances)"

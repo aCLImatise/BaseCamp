@@ -4,29 +4,33 @@ command:
 - callpeak
 positional:
 - !Positional
-  description: --ratio RATIO         Obsolete option. Originally designed to normalize
+  optional: false
   position: 0
   name: instead.
-  optional: false
+  description: --ratio RATIO         Obsolete option. Originally designed to normalize
 named:
 - !Flag
-  description: "ChIP-seq treatment file. If multiple files are given\nas '-t A B C',\
-    \ then they will all be read and pooled\ntogether. REQUIRED."
+  optional: true
   synonyms:
   - -t
   - --treatment
+  description: "ChIP-seq treatment file. If multiple files are given\nas '-t A B C',\
+    \ then they will all be read and pooled\ntogether. REQUIRED."
   args: !RepeatFlagArg
     name: TFILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
   description: "[CFILE [CFILE ...]], --control [CFILE [CFILE ...]]\nControl file.\
     \ If multiple files are given as '-c A B\nC', they will be pooled to estimate\
     \ ChIP-seq\nbackground noise."
-  synonyms:
-  - -c
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
   description: "Format of tag file, \"AUTO\", \"BED\" or \"ELAND\" or\n\"ELANDMULTI\"\
     \ or \"ELANDEXPORT\" or \"SAM\" or \"BAM\" or\n\"BOWTIE\" or \"BAMPE\" or \"BEDPE\"\
     . The default AUTO\noption will let MACS decide which format (except for\nBAMPE\
@@ -37,42 +41,41 @@ named:
     fragment size first and extending reads. Also please\nnote that the BEDPE only\
     \ contains three columns, and\nis NOT the same BEDPE format used by BEDTOOLS.\n\
     DEFAULT: \"AUTO\""
-  synonyms:
-  - -f
-  - --format
   args: !ChoiceFlagArg
     choices: !!set
-      SAM:
-      AUTO:
-      ELAND:
-      BAMPE:
-      BOWTIE:
-      BAM:
       ELANDMULTI:
+      SAM:
+      BOWTIE:
       BEDPE:
+      BAM:
       ELANDEXPORT:
       BED:
-  optional: true
+      ELAND:
+      BAMPE:
+      AUTO:
 - !Flag
-  description: "Effective genome size. It can be 1.0e+9 or 1000000000,\nor shortcuts:'hs'\
-    \ for human (2.7e9), 'mm' for mouse\n(1.87e9), 'ce' for C. elegans (9e7) and 'dm'\
-    \ for\nfruitfly (1.2e8), Default:hs"
+  optional: true
   synonyms:
   - -g
   - --gsize
+  description: "Effective genome size. It can be 1.0e+9 or 1000000000,\nor shortcuts:'hs'\
+    \ for human (2.7e9), 'mm' for mouse\n(1.87e9), 'ce' for C. elegans (9e7) and 'dm'\
+    \ for\nfruitfly (1.2e8), Default:hs"
   args: !SimpleFlagArg
     name: GSIZE
-  optional: true
 - !Flag
-  description: "Tag size/read length. This will override the auto\ndetected tag size.\
-    \ DEFAULT: Not set"
+  optional: true
   synonyms:
   - -s
   - --tsize
+  description: "Tag size/read length. This will override the auto\ndetected tag size.\
+    \ DEFAULT: Not set"
   args: !SimpleFlagArg
     name: TSIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --keep-dup
   description: "It controls the behavior towards duplicate tags at the\nexact same\
     \ location -- the same coordination and the\nsame strand. The 'auto' option makes\
     \ MACS calculate\nthe maximum tags at the exact same location based on\nbinomal\
@@ -84,57 +87,57 @@ named:
     \ other tool to filter\nduplicates, please remove those duplicate reads and\n\
     save a new alignment file then ask MACS2 to keep all\nby '--keep-dup all'. The\
     \ default is to keep one tag at\nthe same location. Default: 1"
-  synonyms:
-  - --keep-dup
   args: !SimpleFlagArg
     name: KEEPDUPLICATES
-  optional: true
 - !Flag
-  description: "If specified all output files will be written to that\ndirectory.\
-    \ Default: the current working directory"
+  optional: true
   synonyms:
   - --outdir
+  description: "If specified all output files will be written to that\ndirectory.\
+    \ Default: the current working directory"
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
-  description: "Experiment name, which will be used to generate output\nfile names.\
-    \ DEFAULT: \"NA\""
+  optional: true
   synonyms:
   - -n
   - --name
+  description: "Experiment name, which will be used to generate output\nfile names.\
+    \ DEFAULT: \"NA\""
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: "Whether or not to save extended fragment pileup, and\nlocal lambda\
-    \ tracks (two files) at every bp into a\nbedGraph file. DEFAULT: False"
+  optional: true
   synonyms:
   - -B
   - --bdg
+  description: "Whether or not to save extended fragment pileup, and\nlocal lambda\
+    \ tracks (two files) at every bp into a\nbedGraph file. DEFAULT: False"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --verbose
   description: "Set verbose level of runtime message. 0: only show\ncritical message,\
     \ 1: show additional warning message,\n2: show process information, 3: show debug\
     \ messages.\nDEFAULT:2"
-  synonyms:
-  - --verbose
   args: !SimpleFlagArg
     name: VERBOSE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --trackline
   description: "Tells MACS to include trackline with bedGraph files.\nTo include this\
     \ trackline while displaying bedGraph at\nUCSC genome browser, can show name and\
     \ description of\nthe file as well. However my suggestion is to convert\nbedGraph\
     \ to bigWig, then show the smaller and faster\nbinary bigWig file at UCSC genome\
     \ browser, as well as\ndownstream analysis. Require -B to be set. Default:\nNot\
     \ include trackline."
-  synonyms:
-  - --trackline
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --SPMR
   description: "If True, MACS will SAVE signal per million reads for\nfragment pileup\
     \ profiles. It won't interfere with\ncomputing pvalue/qvalue during peak calling,\
     \ since\ninternally MACS2 keeps using the raw pileup and\nscaling factors between\
@@ -143,22 +146,22 @@ named:
     \ you shouldn't use this option\nbecause you will end up with different results.\n\
     However, this option is recommended for displaying\nnormalized pileup tracks across\
     \ many datasets. Require\n-B to be set. Default: False"
-  synonyms:
-  - --SPMR
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nomodel
   description: "Whether or not to build the shifting model. If True,\nMACS will not\
     \ build model. by default it means\nshifting size = 100, try to set extsize to\
     \ change it.\nIt's highly recommended that while you have many\ndatasets to process\
     \ and you plan to compare different\nconditions, aka differential calling, use\
     \ both\n'nomodel' and 'extsize' to make signal files from\ndifferent datasets\
     \ comparable. DEFAULT: False"
-  synonyms:
-  - --nomodel
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --shift
   description: "(NOT the legacy --shiftsize option!) The arbitrary\nshift in bp. Use\
     \ discretion while setting it other\nthan default value. When NOMODEL is set,\
     \ MACS will use\nthis value to move cutting ends (5') towards 5'->3'\ndirection\
@@ -168,12 +171,12 @@ named:
     \ for detecting\nenriched cutting loci such as certain DNAseI-Seq\ndatasets. Note,\
     \ you can't set values other than 0 if\nformat is BAMPE or BEDPE for paired-end\
     \ data. DEFAULT:\n0."
-  synonyms:
-  - --shift
   args: !SimpleFlagArg
     name: SHIFT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extsize
   description: "The arbitrary extension size in bp. When nomodel is\ntrue, MACS will\
     \ use this value as fragment size to\nextend each read towards 3' end, then pile\
     \ them up.\nIt's exactly twice the number of obsolete SHIFTSIZE.\nIn previous\
@@ -181,68 +184,68 @@ named:
     \ d, then\nextended to both direction with 1/2 d. This is\nequivalent to say each\
     \ read is extended towards 5'->3'\ninto a d size fragment. DEFAULT: 200. EXTSIZE\
     \ and\nSHIFT can be combined when necessary. Check SHIFT\noption."
-  synonyms:
-  - --extsize
   args: !SimpleFlagArg
     name: EXTSIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bw
   description: "Band width for picking regions to compute fragment\nsize. This value\
     \ is only used while building the\nshifting model. Tweaking this is not recommended.\n\
     DEFAULT: 300"
-  synonyms:
-  - --bw
   args: !SimpleFlagArg
     name: BW
-  optional: true
 - !Flag
-  description: "Minimum fragment size in basepair. Any predicted\nfragment size less\
-    \ than this will be excluded.\nDEFAULT: 20"
+  optional: true
   synonyms:
   - --d-min
+  description: "Minimum fragment size in basepair. Any predicted\nfragment size less\
+    \ than this will be excluded.\nDEFAULT: 20"
   args: !SimpleFlagArg
     name: D_MIN
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
   description: "MFOLD, --mfold MFOLD MFOLD\nSelect the regions within MFOLD range\
     \ of high-\nconfidence enrichment ratio against background to\nbuild model. Fold-enrichment\
     \ in regions must be lower\nthan upper limit, and higher than the lower limit.\
     \ Use\nas \"-m 10 30\". This setting is only used while\nbuilding the shifting\
     \ model. Tweaking it is not\nrecommended. DEFAULT:5 50"
-  synonyms:
-  - -m
   args: !SimpleFlagArg
     name: MFOLD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fix-bimodal
   description: "Whether turn on the auto pair model process. If set,\nwhen MACS failed\
     \ to build paired model, it will use\nthe nomodel settings, the --exsize parameter\
     \ to extend\neach tags towards 3' direction. Not to use this\nautomate fixation\
     \ is a default behavior now. DEFAULT:\nFalse"
-  synonyms:
-  - --fix-bimodal
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum FDR (q-value) cutoff for peak detection.\nDEFAULT: 0.05. -q,\
-    \ and -p are mutually exclusive."
+  optional: true
   synonyms:
   - -q
   - --qvalue
+  description: "Minimum FDR (q-value) cutoff for peak detection.\nDEFAULT: 0.05. -q,\
+    \ and -p are mutually exclusive."
   args: !SimpleFlagArg
     name: QVALUE
-  optional: true
 - !Flag
-  description: "Pvalue cutoff for peak detection. DEFAULT: not set.\n-q, and -p are\
-    \ mutually exclusive. If pvalue cutoff is\nset, qvalue will not be calculated\
-    \ and reported as -1\nin the final .xls file."
+  optional: true
   synonyms:
   - -p
   - --pvalue
+  description: "Pvalue cutoff for peak detection. DEFAULT: not set.\n-q, and -p are\
+    \ mutually exclusive. If pvalue cutoff is\nset, qvalue will not be calculated\
+    \ and reported as -1\nin the final .xls file."
   args: !SimpleFlagArg
     name: PVALUE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --scale-to
   description: "When set to 'small', scale the larger sample up to the\nsmaller sample.\
     \ When set to 'larger', scale the\nsmaller sample up to the bigger sample. By\
     \ default,\nscale to 'small'. This option replaces the obsolete '\n--to-large'\
@@ -250,14 +253,14 @@ named:
     p/q-values in general but more specific results. Keep\nin mind that scaling down\
     \ will influence control/input\nsample more. DEFAULT: 'small', the choice is either\n\
     'small' or 'large'."
-  synonyms:
-  - --scale-to
   args: !ChoiceFlagArg
     choices: !!set
-      small:
       large:
-  optional: true
+      small:
 - !Flag
+  optional: true
+  synonyms:
+  - --down-sample
   description: "When set, random sampling method will scale down the\nbigger sample.\
     \ By default, MACS uses linear scaling.\nWarning: This option will make your result\
     \ unstable\nand irreproducible since each time, random reads would\nbe selected.\
@@ -265,34 +268,34 @@ named:
     \ with --SPMR,\n1 million unique reads will be randomly picked.</not\nimplemented>\
     \ Caution: due to the implementation, the\nfinal number of selected reads may\
     \ not be as you\nexpected! DEFAULT: False"
-  synonyms:
-  - --down-sample
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Set the random seed while down sampling data. Must be\na non-negative\
-    \ integer in order to be effective.\nDEFAULT: not set"
+  optional: true
   synonyms:
   - --seed
+  description: "Set the random seed while down sampling data. Must be\na non-negative\
+    \ integer in order to be effective.\nDEFAULT: not set"
   args: !SimpleFlagArg
     name: SEED
-  optional: true
 - !Flag
-  description: 'Optional directory to store temp files. DEFAULT: /tmp'
+  optional: true
   synonyms:
   - --tempdir
+  description: 'Optional directory to store temp files. DEFAULT: /tmp'
   args: !SimpleFlagArg
     name: TEMPDIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nolambda
   description: "If True, MACS will use fixed background lambda as\nlocal lambda for\
     \ every peak region. Normally, MACS\ncalculates a dynamic local lambda to reflect\
     \ the local\nbias due to the potential chromatin accessibility."
-  synonyms:
-  - --nolambda
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --slocal
   description: "The small nearby region in basepairs to calculate\ndynamic lambda.\
     \ This is used to capture the bias near\nthe peak summit region. Invalid if there\
     \ is no control\ndata. If you set this to 0, MACS will skip slocal\nlambda calculation.\
@@ -300,12 +303,12 @@ named:
     \ the\ncontrol data is available. The final local bias would\nbe the maximum of\
     \ the lambda value from d, slocal, and\nllocal size windows. While control is\
     \ not available, d\nand slocal lambda won't be considered. DEFAULT: 1000"
-  synonyms:
-  - --slocal
   args: !SimpleFlagArg
     name: SMALLLOCAL
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --llocal
   description: "The large nearby region in basepairs to calculate\ndynamic lambda.\
     \ This is used to capture the surround\nbias. If you set this to 0, MACS will\
     \ skip llocal\nlambda calculation. *Note* that MACS will always\nperform a d-size\
@@ -313,65 +316,65 @@ named:
     \ bias would\nbe the maximum of the lambda value from d, slocal, and\nllocal size\
     \ windows. While control is not available, d\nand slocal lambda won't be considered.\
     \ DEFAULT: 10000."
-  synonyms:
-  - --llocal
   args: !SimpleFlagArg
     name: LARGELOCAL
-  optional: true
 - !Flag
-  description: "Maximum gap between significant sites to cluster them\ntogether. The\
-    \ DEFAULT value is the detected read\nlength/tag size."
+  optional: true
   synonyms:
   - --max-gap
+  description: "Maximum gap between significant sites to cluster them\ntogether. The\
+    \ DEFAULT value is the detected read\nlength/tag size."
   args: !SimpleFlagArg
     name: MAXGAP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min-length
   description: "Minimum length of a peak. The DEFAULT value is the\npredicted fragment\
     \ size d. Note, if you set a value\nsmaller than the fragment size, it may have\
     \ NO effect\non the result. For BROAD peak calling, try to set a\nlarge value\
     \ such as 500bps. You can also use '--\ncutoff-analysis' option with default setting,\
     \ and\ncheck the column 'avelpeak' under different cutoff\nvalues to decide a\
     \ reasonable minlen value."
-  synonyms:
-  - --min-length
   args: !SimpleFlagArg
     name: MINLEN
-  optional: true
 - !Flag
-  description: If set, MACS will try to call broad peaks using the
+  optional: true
   synonyms:
   - --broad
+  description: If set, MACS will try to call broad peaks using the
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cutoff-analysis
   description: "While set, MACS2 will analyze number or total length\nof peaks that\
     \ can be called by different p-value\ncutoff then output a summary table to help\
     \ user decide\na better cutoff. The table will be saved in\nNAME_cutoff_analysis.txt\
     \ file. Note, minlen and maxgap\nmay affect the results. WARNING: May take ~30\
     \ folds\nlonger time to finish. The result can be useful for\nusers to decide\
     \ a reasonable cutoff value. DEFAULT:\nFalse"
-  synonyms:
-  - --cutoff-analysis
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If set, MACS will use a more sophisticated signal\nprocessing approach\
-    \ to find subpeak summits in each\nenriched peak region. DEFAULT: False"
+  optional: true
   synonyms:
   - --call-summits
+  description: "If set, MACS will use a more sophisticated signal\nprocessing approach\
+    \ to find subpeak summits in each\nenriched peak region. DEFAULT: False"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fe-cutoff
   description: "When set, the value will be used to filter out peaks\nwith low fold-enrichment.\
     \ Note, MACS2 use 1.0 as\npseudocount while calculating fold-enrichment.\nDEFAULT:\
     \ 1.0"
-  synonyms:
-  - --fe-cutoff
   args: !SimpleFlagArg
     name: FECUTOFF
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --buffer-size
   description: "Buffer size for incrementally increasing internal\narray size to store\
     \ reads alignment information. In\nmost cases, you don't have to change this parameter.\n\
     However, if there are large number of\nchromosomes/contigs/scaffolds in your alignment,\
@@ -379,27 +382,24 @@ named:
     \ usage (but it will take longer time\nto read alignment files). Minimum memory\
     \ requested for\nreading an alignment file is about # of CHROMOSOME *\nBUFFER_SIZE\
     \ * 8 Bytes. DEFAULT: 100000"
-  synonyms:
-  - --buffer-size
   args: !SimpleFlagArg
     name: BUFFER_SIZE
-  optional: true
 - !Flag
-  description: Obsolete option. Please use '--scale-to large'
+  optional: true
   synonyms:
   - --to-large
+  description: Obsolete option. Please use '--scale-to large'
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: macs2 callpeak [-h] -t TFILE [TFILE ...] [-c [CFILE [CFILE ...]]]\n\
@@ -644,3 +644,4 @@ help_text: "usage: macs2 callpeak [-h] -t TFILE [TFILE ...] [-c [CFILE [CFILE ..
   \ now it\n                        won't have any effect.\n"
 generated_using:
 - --help
+docker_image:

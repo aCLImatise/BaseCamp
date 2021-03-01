@@ -8,6 +8,9 @@ task EbiMetagenomicsPrintPossibleRunData {
     ebi_metagenomics print_possible_run_data \
       ~{if defined(run) then ("--run " +  '"' + run + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run: "Id of a run in EBI metagenomics"
   }

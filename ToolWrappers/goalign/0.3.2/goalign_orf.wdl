@@ -34,6 +34,9 @@ task GoalignOrf {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     orf_output_fasta: "ORF Output Fasta File (default \\\"stdout\\\")"
     reverse: "Search for the longest ORF ALSO in the reverse strand"

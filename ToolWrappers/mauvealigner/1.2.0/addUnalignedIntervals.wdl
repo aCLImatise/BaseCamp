@@ -10,6 +10,9 @@ task AddUnalignedIntervals {
       ~{input_interval_file} \
       ~{output_interval_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_interval_file: ""
     output_interval_file: ""

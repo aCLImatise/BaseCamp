@@ -44,6 +44,9 @@ task RunSppR {
       ~{if (rf) then "-rf" else ""} \
       ~{if (clean) then "-clean" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     c: ", full path and name (or URL) of tagAlign/BAM file (can be gzipped) (FILE EXTENSION MUST BE tagAlign.gz, tagAlign, bam or bam.gz)"
     i: ", full path and name (or URL) of tagAlign/BAM file (can be gzipped) (FILE EXTENSION MUST BE tagAlign.gz, tagAlign, bam or bam.gz)"

@@ -10,6 +10,9 @@ task MapDataIds {
       ~{col} \
       ~{delimit}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     col: "The column number (1 based) in the data file that\\ncorresponds to old_name in the mapping file."
     delimit: "The delimeter for the data file."

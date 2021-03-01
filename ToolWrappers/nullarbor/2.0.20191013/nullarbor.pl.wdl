@@ -66,6 +66,9 @@ task Nullarborpl {
       ~{if defined(annotator) then ("--annotator " +  '"' + annotator + '"') else ""} \
       ~{if defined(annotator_opt) then ("--annotator-opt " +  '"' + annotator_opt + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "Job name"
     ref: "Reference file in FASTA or GBK format"

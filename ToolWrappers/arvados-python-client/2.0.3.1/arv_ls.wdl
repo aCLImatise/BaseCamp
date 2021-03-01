@@ -14,6 +14,9 @@ task Arvls {
       ~{if defined(retries) then ("--retries " +  '"' + retries + '"') else ""} \
       ~{if (list_file_sizes) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     retries: "Maximum number of times to retry server requests that\\nencounter temporary failures (e.g., server down). Default\\n3."
     list_file_sizes: "List file sizes, in KiB."

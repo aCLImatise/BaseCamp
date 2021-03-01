@@ -80,6 +80,9 @@ task RtgLicense {
       ~{license} \
       ~{help}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "Licensed          GA"
     sdf_two_fast_a: "Licensed          GA"

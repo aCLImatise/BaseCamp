@@ -4,6 +4,9 @@ task LibSQLiteInteropso {
   command <<<
     libSQLite_Interop_so
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

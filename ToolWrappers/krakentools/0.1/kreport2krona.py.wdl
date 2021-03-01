@@ -14,6 +14,9 @@ task Kreport2kronapy {
       ~{if (intermediate_ranks) then "--intermediate-ranks" else ""} \
       ~{if (no_intermediate_ranks) then "--no-intermediate-ranks" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report_file: "Input kraken report file for converting"
     output_kronareport_file: "Output krona-report file name"

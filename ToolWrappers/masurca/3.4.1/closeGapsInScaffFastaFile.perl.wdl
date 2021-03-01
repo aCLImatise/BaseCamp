@@ -8,6 +8,9 @@ task CloseGapsInScaffFastaFileperl {
     closeGapsInScaffFastaFile_perl \
       ~{if defined(scaffold_fast_a_file) then ("--scaffold-fasta-file " +  '"' + scaffold_fast_a_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     scaffold_fast_a_file: ": file containing the scaffold sequences"
   }

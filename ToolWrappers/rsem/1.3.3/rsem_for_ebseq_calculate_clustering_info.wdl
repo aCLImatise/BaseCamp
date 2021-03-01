@@ -12,6 +12,9 @@ task Rsemforebseqcalculateclusteringinfo {
       ~{input_reference_fast_a_file} \
       ~{output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     k: ""
     input_reference_fast_a_file: ""

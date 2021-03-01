@@ -24,6 +24,9 @@ task CopySnppipelineDatapy {
       ~{results_dot} \
       ~{dest_directory}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     which_data: "Which of the supplied data sets to copy.  The choices are:"
     lambda_virus_inputs: ": Input reference and fastq files"

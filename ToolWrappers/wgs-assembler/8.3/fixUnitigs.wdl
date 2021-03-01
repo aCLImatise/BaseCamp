@@ -12,6 +12,9 @@ task FixUnitigs {
       ~{fixed_unit_igs_dot_cgb} \
       ~{if defined(o) then ("-O " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     unit_igs_dot_cgb: ""

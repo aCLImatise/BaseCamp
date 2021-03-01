@@ -14,6 +14,9 @@ task CactusGetReferenceSeq {
       ~{if (cactus_disk) then "--cactusDisk" else ""} \
       ~{if (output_file) then "--outputFile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: ": Set the log level"
     name: ": name of the reference sequence's event"

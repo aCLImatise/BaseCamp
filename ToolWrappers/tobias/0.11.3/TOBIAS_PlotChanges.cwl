@@ -3,29 +3,29 @@ id: TOBIAS_PlotChanges.cwl
 inputs:
 - id: in_bin_detect
   doc: Bindetect_results.txt file from BINDetect run
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bindetect
 - id: in_tfs
   doc: Text file containing names of TFs to show in plot (one per line)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --TFS
 - id: in_output
   doc: 'Output file for plot (default: bindetect_changes.pdf)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_conditions
   doc: "[ [ ...]]  Ordered list of conditions to show (default: conditions are\nordered\
     \ as within the bindetect file)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --conditions
 - id: in_verbosity
   doc: "Level of output logging (0: silent, 1: errors/warnings, 2: info,\n3: stats,\
     \ 4: debug, 5: spam) (default: 3)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbosity
 outputs:
@@ -34,9 +34,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: 'Output file for plot (default: bindetect_changes.pdf)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - TOBIAS

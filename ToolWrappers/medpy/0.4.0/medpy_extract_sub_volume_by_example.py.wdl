@@ -20,6 +20,9 @@ task MedpyExtractSubVolumeByExamplepy {
       ~{if (display_more_information) then "-v" else ""} \
       ~{if (display_debug_information) then "-d" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     offset: "Set an offset by which the extracted sub-volume size should be increased in all directions."
     set_flag_override: "Set this flag to silently override files that exist."

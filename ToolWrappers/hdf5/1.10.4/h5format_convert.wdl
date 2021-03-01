@@ -14,6 +14,9 @@ task H5formatConvert {
       ~{if defined(d_name) then ("--dname " +  '"' + d_name + '"') else ""} \
       ~{if (noop) then "--noop" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Turn on verbose mode"
     d_name: "Pathname for the dataset"

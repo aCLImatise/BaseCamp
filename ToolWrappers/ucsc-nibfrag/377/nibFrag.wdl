@@ -26,6 +26,9 @@ task NibFrag {
       ~{if defined(db_header) then ("-dbHeader " +  '"' + db_header + '"') else ""} \
       ~{if defined(tba_header) then ("-tbaHeader " +  '"' + tba_header + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     masked: "Use lower-case characters for bases meant to be masked out."
     hard_masked: "Use upper-case for not masked-out, and 'N' characters for masked-out bases."

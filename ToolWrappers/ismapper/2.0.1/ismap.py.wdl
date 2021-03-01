@@ -18,6 +18,9 @@ task Ismappy {
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if defined(help_all) then ("--help_all " +  '"' + help_all + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reads: "Paired end reads for analysing (can be gzipped)"
     queries: "Multifasta file for query gene(s) (eg: insertion\\nsequence) that will be mapped to."

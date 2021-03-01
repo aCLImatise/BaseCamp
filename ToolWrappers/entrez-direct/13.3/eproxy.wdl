@@ -10,6 +10,9 @@ task Eproxy {
       ~{if (file_of_aliases) then "-alias" else ""} \
       ~{if (pipe) then "-pipe" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_of_aliases: "File of aliases"
     pipe: "Read aliases from stdin"

@@ -32,6 +32,9 @@ task Mkbitmap {
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
       ~{if (grey) then "--grey" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     license: "- print license info and exit"
     _output_file: "- output to file"

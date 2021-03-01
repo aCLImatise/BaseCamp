@@ -44,6 +44,9 @@ task Confindrpy {
       ~{if (cross_details) then "--cross_details" else ""} \
       ~{if defined(min_matching_hashes) then ("--min_matching_hashes " +  '"' + min_matching_hashes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_directory: "Folder that contains fastq files you want to check for\\ncontamination. Will find any file that contains .fq or\\n.fastq in the filename."
     output_name: "Base name for output/temporary directories."

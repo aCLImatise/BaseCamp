@@ -4,6 +4,9 @@ task Bamflagsplit {
   command <<<
     bamflagsplit
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

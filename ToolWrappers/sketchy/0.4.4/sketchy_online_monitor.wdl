@@ -16,6 +16,9 @@ task SketchyOnlineMonitor {
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if (log) then "--log" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     interval: "Interval in seconds to check on resource usage"
     terminate: "Terminate monitoring if no more processes are active"

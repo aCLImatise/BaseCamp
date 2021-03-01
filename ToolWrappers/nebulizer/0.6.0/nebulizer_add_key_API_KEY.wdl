@@ -16,6 +16,9 @@ task NebulizerAddKeyAPIKEY {
       ~{galaxy_url} \
       ~{api_key}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nebulizer: ""
     add_key: ""

@@ -4,6 +4,9 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -before
   description: "integer    [0] If this value is greater than 0 then\nthat number of\
     \ bases or residues before the\nfeature are included in the extracted\nsequence.\
     \ This allows you to get the context\nof the feature. If this value is negative\n\
@@ -13,11 +16,11 @@ named:
     \ start the extraction 10\nbases/residues before the end of the\nfeature. The\
     \ output sequence will be padded\nwith 'N' or 'X' characters if the sequence\n\
     starts after the required start of the\nextraction. (Any integer value)"
-  synonyms:
-  - -before
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -after
   description: "integer    [0] If this value is greater than 0 then\nthat number of\
     \ bases or residues after the\nfeature are included in the extracted\nsequence.\
     \ This allows you to get the context\nof the feature. If this value is negative\n\
@@ -27,22 +30,22 @@ named:
     \ end the extraction 10\nbases/residues after the start of the\nfeature. The output\
     \ sequence will be padded\nwith 'N' or 'X' characters if the sequence\nends before\
     \ the required end of the\nextraction. (Any integer value)"
-  synonyms:
-  - -after
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -source
   description: "string     [*] By default any feature source in the\nfeature table\
     \ is shown. You can set this to\nmatch any feature source you wish to show.\n\
     The source name is usually either the name\nof the program that detected the feature\
     \ or\nit is the feature table (eg: EMBL) that the\nfeature came from.\nThe source\
     \ may be wildcarded by using '*'.\nIf you wish to show more than one source,\n\
     separate their names with the character '|',\neg:\ngene* | embl (Any string)"
-  synonyms:
-  - -source
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -type
   description: "string     [*] By default every feature in the feature\ntable is extracted.\
     \ You can set this to be\nany feature type you wish to extract.\nSee http://www.ebi.ac.uk/embl/WebFeat/\
     \ for a\nlist of the EMBL feature types and see the\nUniprot user manual in\n\
@@ -50,35 +53,35 @@ named:
     \ types.\nThe type may be wildcarded by using '*'.\nIf you wish to extract more\
     \ than one type,\nseparate their names with the character '|',\neg:\n*UTR | intron\
     \ (Any string)"
-  synonyms:
-  - -type
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -sense
   description: "integer    [0 - any sense, 1 - forward sense, -1 -\nreverse sense]\
     \ By default any feature type\nin the feature table is extracted. You can\nset\
     \ this to match any feature sense you\nwish. 0 - any sense, 1 - forward sense,\
     \ -1 -\nreverse sense (Any integer value)"
-  synonyms:
-  - -sense
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "float      [0.0] Minimum score of feature to extract\n(see also maxscore)\
-    \ (Any numeric value)"
+  optional: true
   synonyms:
   - -minscore
+  description: "float      [0.0] Minimum score of feature to extract\n(see also maxscore)\
+    \ (Any numeric value)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -maxscore
   description: "float      [0.0] Maximum score of feature to extract.\nIf both minscore\
     \ and maxscore are zero (the\ndefault), then any score is ignored (Any\nnumeric\
     \ value)"
-  synonyms:
-  - -maxscore
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -tag
   description: "string     [*] Tags are the types of extra values that\na feature\
     \ may have. For example in the EMBL\nfeature table, a 'CDS' type of feature may\n\
     have the tags '/codon', '/codon_start',\n'/db_xref', '/EC_number', '/evidence',\n\
@@ -90,11 +93,11 @@ named:
     \ you wish to show.\nThe tag may be wildcarded by using '*'.\nIf you wish to extract\
     \ more than one tag,\nseparate their names with the character '|',\neg:\ngene\
     \ | label (Any string)"
-  synonyms:
-  - -tag
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -value
   description: "string     [*] Tag values are the values associated\nwith a feature\
     \ tag. Tags are the types of\nextra values that a feature may have. For\nexample\
     \ in the EMBL feature table, a 'CDS'\ntype of feature may have the tags '/codon',\n\
@@ -107,33 +110,33 @@ named:
     \ to\nshow.\nThe tag value may be wildcarded by using\n'*'.\nIf you wish to show\
     \ more than one tag value,\nseparate their names with a space or the\ncharacter\
     \ '|', eg:\npax* | 10 (Any string)"
-  synonyms:
-  - -value
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -join
   description: "boolean    [N] Some features, such as CDS (coding\nsequence) and mRNA\
     \ are composed of introns\nconcatenated together. There may be other\nforms of\
     \ 'joined' sequence, depending on the\nfeature table. If this option is set TRUE,\n\
     then any group of these features will be\noutput as a single sequence. If the\
     \ 'before'\nand 'after' qualifiers have been set, then\nonly the sequence before\
     \ the first feature\nand after the last feature are added."
-  synonyms:
-  - -join
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -featinname
   description: "boolean    [N] To aid you in identifying the type of\nfeature that\
     \ has been output, the type of\nfeature is added to the start of the\ndescription\
     \ of the output sequence.\nSometimes the description of a sequence is\nlost in\
     \ subsequent processing of the\nsequences file, so it is useful for the type\n\
     to be a part of the sequence ID name. If\nyou set this to be TRUE then the name\
     \ is\nadded to the ID name of the output sequence."
-  synonyms:
-  - -featinname
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -describe
   description: "string     To aid you in identifying some further\nproperties of a\
     \ feature that has been\noutput, this lets you specify one or more\ntag names\
     \ that should be added to the output\nsequence Description text, together with\n\
@@ -150,20 +153,17 @@ named:
     can set this to match any feature tag you\nwish to show.\nThe tag may be wildcarded\
     \ by using '*'.\nIf you wish to extract more than one tag,\nseparate their names\
     \ with the character '|',\neg:\ngene | label (Any string)"
-  synonyms:
-  - -describe
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "boolean    Report command line options and exit. More\ninformation\
-    \ on associated and general\nqualifiers can be found with -help -verbose\n"
+  optional: true
   synonyms:
   - -help
+  description: "boolean    Report command line options and exit. More\ninformation\
+    \ on associated and general\nqualifiers can be found with -help -verbose\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Extract features from sequence(s)\nVersion: EMBOSS:6.6.0.0\n\n   Standard\
@@ -331,3 +331,4 @@ help_text: "Extract features from sequence(s)\nVersion: EMBOSS:6.6.0.0\n\n   Sta
   \ can be found with -help -verbose\n\n"
 generated_using:
 - --help
+docker_image:

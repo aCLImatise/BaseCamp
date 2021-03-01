@@ -46,6 +46,9 @@ task Scoary {
       ~{if (test) then "--test" else ""} \
       ~{if (citation) then "--citation" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     traits: "Input trait table (comma-separated-values). Trait\\npresence is indicated by 1, trait absence by 0.\\nAssumes strain names in the first column and trait\\nnames in the first row"
     genes: "Input gene presence/absence table (comma-separated-\\nvalues) from ROARY. Strain names must be equal to\\nthose in the trait table"

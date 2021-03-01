@@ -1,67 +1,131 @@
 !Command
 command:
 - hivtrace
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Fraction
+  description: -u CURATE, --curate CURATE
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -m
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -t
-  args: !SimpleFlagArg
-    name: THRESHOLD
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -r
-  args: !SimpleFlagArg
-    name: REFERENCE
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -a
-  args: !SimpleFlagArg
-    name: AMBIGUITIES
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -i
+  - --input
+  description: FASTA file
   args: !SimpleFlagArg
     name: INPUT
+- !Flag
   optional: true
+  synonyms:
+  - -a
+  - --ambiguities
+  description: "handle ambiguous nucleotides using the specified\nstrategy"
+  args: !SimpleFlagArg
+    name: AMBIGUITIES
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: reference to align to
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threshold
+  description: "Only count edges where the distance is less than this\nthreshold"
+  args: !SimpleFlagArg
+    name: THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --minoverlap
+  description: Minimum Overlap
+  args: !SimpleFlagArg
+    name: MINOVERLAP
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --filter
+  description: Edge filtering option
+  args: !SimpleFlagArg
+    name: FILTER
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --strip_drams
+  description: "Read in an aligned Fasta file (HIV prot/rt sequences)\nand remove\
+    \ DRAM (drug resistance associated mutation)\ncodon sites. It will output a new\
+    \ alignment with these\nsites removed. It requires input/output file names\nalong\
+    \ with the list of DRAM sites to remove: 'lewis'\nor 'wheeler'."
+  args: !SimpleFlagArg
+    name: STRIP_DRAMS
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --compare
+  description: Compare to supplied FASTA file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --do-not-store-intermediate
+  description: Store intermediate files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-alignment
+  description: Skip alignment
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --attributes-file
+  description: Annotate with attributes
+  args: !SimpleFlagArg
+    name: ATTRIBUTES_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: Write logs to specified directory
+  args: !SimpleFlagArg
+    name: LOG
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Specify output filename
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --prior
+  description: "Prior network configuration\n"
+  args: !SimpleFlagArg
+    name: PRIOR
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-i INPUT, --input INPUT\nFASTA file\n\
-    -a AMBIGUITIES, --ambiguities AMBIGUITIES\nhandle ambiguous nucleotides using\
-    \ the specified\nstrategy\n-r REFERENCE, --reference REFERENCE\nreference to align\
-    \ to\n-t THRESHOLD, --threshold THRESHOLD\nOnly count edges where the distance\
-    \ is less than this\nthreshold\n-m MINOVERLAP, --minoverlap MINOVERLAP\nMinimum\
-    \ Overlap\n-g FRACTION, --fraction FRACTION\nFraction\n-u CURATE, --curate CURATE\n\
-    Filter contaminants\n-f FILTER, --filter FILTER\nEdge filtering option\n-s STRIP_DRAMS,\
-    \ --strip_drams STRIP_DRAMS\nRead in an aligned Fasta file (HIV prot/rt sequences)\n\
-    and remove DRAM (drug resistance associated mutation)\ncodon sites. It will output\
-    \ a new alignment with these\nsites removed. It requires input/output file names\n\
-    along with the list of DRAM sites to remove: 'lewis'\nor 'wheeler'.\n-c, --compare\
-    \         Compare to supplied FASTA file\n--do-not-store-intermediate\nStore intermediate\
-    \ files\n--skip-alignment      Skip alignment\n--attributes-file ATTRIBUTES_FILE\n\
-    Annotate with attributes\n--log LOG             Write logs to specified directory\n\
-    -o OUTPUT, --output OUTPUT\nSpecify output filename\n-p PRIOR, --prior PRIOR\n\
-    Prior network configuration\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: hivtrace [-h] -i INPUT -a AMBIGUITIES -r REFERENCE -t THRESHOLD\
@@ -93,3 +157,4 @@ help_text: "usage: hivtrace [-h] -i INPUT -a AMBIGUITIES -r REFERENCE -t THRESHO
   \    Prior network configuration\n"
 generated_using:
 - --help
+docker_image:

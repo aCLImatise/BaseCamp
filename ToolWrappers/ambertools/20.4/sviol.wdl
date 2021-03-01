@@ -12,6 +12,9 @@ task Sviol {
       ~{if (old) then "-old" else ""} \
       ~{if (print_distance_violations) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     old: "Use the old AMBER formatting (pre-Amber6).\\nThe 'ideal bonds' and 'ideal angles' lines have different fields\\npre-AMBER6 and AMBER6."
     print_distance_violations: "Print out distance violations in \\\"verbose\\\" mode showing\\nactual values instead of a 'graphical' display."

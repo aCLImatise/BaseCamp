@@ -14,6 +14,9 @@ task GcloudDeploymentmanagerOperations {
       ~{list} \
       ~{wait}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     operations: "SYNOPSIS"
     describe: "Provide information about an operation."

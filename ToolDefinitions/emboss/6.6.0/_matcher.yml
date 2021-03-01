@@ -4,35 +4,38 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -datafile
   description: "matrix     [EBLOSUM62 for protein, EDNAFULL for DNA]\nThis is the\
     \ scoring matrix file used when\ncomparing sequences. By default it is the\nfile\
     \ 'EBLOSUM62' (for proteins) or the file\n'EDNAFULL' (for nucleic sequences).\
     \ These\nfiles are found in the 'data' directory of\nthe EMBOSS installation."
-  synonyms:
-  - -datafile
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -alternatives
   description: "integer    [1] This sets the number of alternative\nmatches output.\
     \ By default only the highest\nscoring alignment is shown. A value of 2\ngives\
     \ you other reasonable alignments. In\nsome cases, for example multidomain proteins\n\
     of cDNA and genomic DNA comparisons, there\nmay be other interesting and significant\n\
     alignments. (Integer 1 or more)"
-  synonyms:
-  - -alternatives
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -gapopen
   description: "integer    [14 for protein, 16 for nucleic] The gap\npenalty is the\
     \ score taken away when a gap\nis created. The best value depends on the\nchoice\
     \ of comparison matrix. The default\nvalue of 14 assumes you are using the\nEBLOSUM62\
     \ matrix for protein sequences, or a\nvalue of 16 and the EDNAFULL matrix for\n\
     nucleotide sequences. (Positive integer)"
-  synonyms:
-  - -gapopen
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -gapextend
   description: "integer    [4 for any sequence] The gap length, or gap\nextension,\
     \ penalty is added to the standard\ngap penalty for each base or residue in the\n\
     gap. This is how long gaps are penalized.\nUsually you will expect a few long\
@@ -42,20 +45,17 @@ named:
     \ single base gaps. You can\nget this result by setting the gap penalty\nto zero\
     \ (or very low) and using the gap\nextension penalty to control gap scoring.\n\
     (Positive integer)"
-  synonyms:
-  - -gapextend
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "boolean    Report command line options and exit. More\ninformation\
-    \ on associated and general\nqualifiers can be found with -help -verbose\n"
+  optional: true
   synonyms:
   - -help
+  description: "boolean    Report command line options and exit. More\ninformation\
+    \ on associated and general\nqualifiers can be found with -help -verbose\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Waterman-Eggert local alignment of two sequences\nVersion: EMBOSS:6.6.0.0\n\
@@ -108,3 +108,4 @@ help_text: "Waterman-Eggert local alignment of two sequences\nVersion: EMBOSS:6.
   \ -verbose\n\n"
 generated_using:
 - --help
+docker_image:

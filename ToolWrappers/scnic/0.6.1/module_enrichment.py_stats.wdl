@@ -10,6 +10,9 @@ task ModuleEnrichmentpyStats {
       ~{if defined(modules) then ("--modules " +  '"' + modules + '"') else ""} \
       ~{if defined(correl_s) then ("--correls " +  '"' + correl_s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     modules: ""
     correl_s: ""

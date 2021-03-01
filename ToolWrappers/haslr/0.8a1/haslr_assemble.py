@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean, Int, String
+
+Haslr_Assemble_V0_1_0 = CommandToolBuilder(tool="haslr_assemble", base_command=["haslr_assemble"], inputs=[ToolInput(tag="in_path_contigs_file", input_type=File(optional=True), prefix="-c", doc=InputDocumentation(doc="Path to contigs file (also --contig)")), ToolInput(tag="in_path_long_read", input_type=File(optional=True), prefix="-l", doc=InputDocumentation(doc="Path to long read dataset (also --long)")), ToolInput(tag="in_path_mappings_long", input_type=File(optional=True), prefix="-m", doc=InputDocumentation(doc="Path to mappings of long reads onto contigs (also --mapping)")), ToolInput(tag="in_path_output_directory", input_type=File(optional=True), prefix="-d", doc=InputDocumentation(doc="Path to the output directory (also --dir)")), ToolInput(tag="in_aln_block", input_type=Boolean(optional=True), prefix="--aln-block", doc=InputDocumentation(doc="Minimum length of alignment block [500]")), ToolInput(tag="in_aln_sim", input_type=Boolean(optional=True), prefix="--aln-sim", doc=InputDocumentation(doc="Minimum alignment similarity [0.85]")), ToolInput(tag="in_uniq_dev", input_type=Boolean(optional=True), prefix="--uniq-dev", doc=InputDocumentation(doc="Maximum deviation from mean frequency of uniq contigs [0.15]")), ToolInput(tag="in_edge_sup", input_type=Boolean(optional=True), prefix="--edge-sup", doc=InputDocumentation(doc="Minimum number of long read supporting each edge [3]")), ToolInput(tag="in_number_cpu_cores", input_type=Int(optional=True), prefix="-t", doc=InputDocumentation(doc="Number of CPU cores to use (also --threads)")), ToolInput(tag="in_long_fof_n", input_type=Boolean(optional=True), prefix="--long-fofn", doc=InputDocumentation(doc="The file passed by -l is fofn")), ToolInput(tag="in_mapping_fof_n", input_type=Boolean(optional=True), prefix="--mapping-fofn", doc=InputDocumentation(doc="The file passed by -m is fofn")), ToolInput(tag="in_s", input_type=String(optional=True), prefix="-s", doc=InputDocumentation(doc="")), ToolInput(tag="in_r", input_type=String(optional=True), prefix="-r", doc=InputDocumentation(doc="")), ToolInput(tag="in_detects_v", input_type=String(), position=0, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_path_output_directory", output_type=File(optional=True), selector=InputSelector(input_to_select="in_path_output_directory", type_hint=File()), doc=OutputDocumentation(doc="Path to the output directory (also --dir)"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Haslr_Assemble_V0_1_0().translate("wdl", allow_empty_container=True)
+

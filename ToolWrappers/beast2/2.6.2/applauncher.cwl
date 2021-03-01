@@ -3,7 +3,7 @@ id: applauncher.cwl
 inputs:
 - id: in_list
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -list
 - id: in_app_launcher
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - applauncher

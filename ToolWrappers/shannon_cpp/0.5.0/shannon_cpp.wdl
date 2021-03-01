@@ -10,6 +10,9 @@ task ShannonCpp {
       ~{subcommand} \
       ~{see}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     subcommand: ""
     see: ""

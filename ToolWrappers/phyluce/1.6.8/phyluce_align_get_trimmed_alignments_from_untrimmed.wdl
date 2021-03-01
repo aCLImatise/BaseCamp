@@ -32,6 +32,9 @@ task PhyluceAlignGetTrimmedAlignmentsFromUntrimmed {
       ~{if defined(min_length) then ("--min-length " +  '"' + min_length + '"') else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignments: "The directory containing alignments to be trimmed.\\n(default: None)"
     directory_store_resultingalignments: "The directory in which to store the resulting\\nalignments. (default: None)"

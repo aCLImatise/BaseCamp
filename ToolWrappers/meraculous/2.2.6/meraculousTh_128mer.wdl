@@ -26,6 +26,9 @@ task MeraculousTh128mer {
       ~{debug_mode} \
       ~{seed_list_filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     u_fx_file_wildcard: ""
     mer_size: ""

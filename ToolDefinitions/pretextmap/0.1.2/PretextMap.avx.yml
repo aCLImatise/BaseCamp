@@ -4,12 +4,26 @@ command:
 positional: []
 named:
 - !Flag
-  description: "({descend}, ascend)\n--mapq {10}\n--filterInclude \"seq_ [, seq_]*\"\
-    \n--filterExclude \"seq_ [, seq_]*\")"
+  optional: true
   synonyms:
   - --sortorder
+  description: ({descend}, ascend)
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - --mapq
+  - --filterInclude
+  description: '"seq_ [, seq_]*"'
+  args: !ChoiceFlagArg
+    choices: !!set
+      '10':
+- !Flag
+  optional: true
+  synonyms:
+  - --filterExclude
+  description: '"seq_ [, seq_]*")'
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
@@ -26,3 +40,4 @@ help_text: "\nPretextMap Version 0.1.2\n\n  (...samformat, ...pairsformat |)  Pr
   \nPretextMap --licence    <- view software licence\nPretextMap --thirdparty <- view\
   \ third party software used\n\n"
 generated_using: []
+docker_image:

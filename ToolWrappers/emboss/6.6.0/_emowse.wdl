@@ -9,11 +9,11 @@ task Emowse {
     Boolean? pc_range
     Boolean? tolerance
     Boolean? partials
-    File file
+    File enzyme_menu_enzyme
   }
   command <<<
     _emowse \
-      ~{file} \
+      ~{enzyme_menu_enzyme} \
       ~{if (weight) then "-weight" else ""} \
       ~{if (mono) then "-mono" else ""} \
       ~{if (mw_data) then "-mwdata" else ""} \
@@ -22,6 +22,9 @@ task Emowse {
       ~{if (tolerance) then "-tolerance" else ""} \
       ~{if (partials) then "-partials" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     weight: "integer    [0] Whole sequence molwt (Any integer value)"
     mono: "boolean    [N] Use monoisotopic weights"
@@ -30,7 +33,7 @@ task Emowse {
     pc_range: "integer    [25] Allowed whole sequence weight\\nvariability (Integer from 0 to 75)"
     tolerance: "float      [0.1] Tolerance (Number from 0.100 to 1.000)"
     partials: "float      [0.4] Partials factor (Number from 0.100 to\\n1.000)"
-    file: "-enzyme             menu       [1] Enzyme or reagent (Values: 1 (Trypsin);"
+    enzyme_menu_enzyme: "-enzyme             menu       [1] Enzyme or reagent (Values: 1 (Trypsin);"
   }
   output {
     File out_stdout = stdout()

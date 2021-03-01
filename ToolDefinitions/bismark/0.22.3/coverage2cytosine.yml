@@ -3,45 +3,50 @@ command:
 - coverage2cytosine
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: input
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: Name of the output file, mandatory.
+  optional: true
   synonyms:
-  - -o/--output
+  - -o
+  - --output
+  description: Name of the output file, mandatory.
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
-  description: Output directory. Output is written to the current directory if not
-    specified explicitly.
+  optional: true
   synonyms:
   - --dir
+  description: Output directory. Output is written to the current directory if not
+    specified explicitly.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --genome_folder
   description: "Enter the genome folder you wish to use to extract sequences from\
     \ (relative or full path). Accepted\nformats are FastA files ending with '.fa'\
     \ or '.fasta'. Specifying a genome folder path is mandatory."
-  synonyms:
-  - --genome_folder
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -CX
+  - --CX_context
   description: "The output file contains information on every single cytosine in the\
     \ genome irrespective of\nits context. This applies to both forward and reverse\
     \ strands. Please be aware that this will\ngenerate output files with > 1.1 billion\
     \ lines for a mammalian genome such as human or mouse.\nDefault: OFF (i.e. Default\
     \ = CpG context only)."
-  synonyms:
-  - -CX/--CX_context
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --merge_CpG
   description: "Using this option will post-process the genome-wide report to write\
     \ out an additional coverage\nfile (see above for the coverage file format) which\
     \ has the top and bottom strand methylation\nevidence pooled into a single CpG\
@@ -55,11 +60,11 @@ named:
     \ (i.e. it doesn't work with the options --CX or --split_by_chromosome).\nIf --zero_based\
     \ was specified as well the output coverage file is in zero-based half-open format\
     \ like\nbedGraph files."
-  synonyms:
-  - --merge_CpG
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --discordance
   description: "When in '--merge_CpG' mode, apply a filter for the maximum allowed\
     \ discordance between top and bottom\nstrand methylation values expressed as the\
     \ absolute difference in percent methylation. Discordant CpGs\nare written to\
@@ -71,23 +76,24 @@ named:
     \ which either the top or bottom strand was not measured at all will not be assessed\
     \ for discordance, and\nhence appear in the regular 'merged_CpG_evidence.cov'\
     \ file."
-  synonyms:
-  - --discordance
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gc
+  - --gc_context
   description: "In addition to normal processing this option will reprocess the genome\
     \ to find methylation in\nGpC context. This might be useful for specialist applications\
     \ where GpC methylases had been\ndeployed. The output format is exactly the same\
     \ as for the normal cytosine report, and only\npositions covered by at least one\
     \ read are reported (output file ends in .GpC_report.txt). In addition\nthis will\
     \ write out a Bismark coverage file (ending in GpC.cov)."
-  synonyms:
-  - --gc/--gc_context
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nome-seq
   description: "Sample is NOMe-Seq (nucleosome occupancy and methylome sequencing)\
     \ where accessible DNA gets methylated\nin a GpC context (sets option '--gc' as\
     \ well). The option '--nome-seq':\n(i) filters the genome-wide CpG-report to only\
@@ -98,68 +104,58 @@ named:
     \ GC context methylation.\nPLEASE NOTE that NOMe-Seq data requires a .cov.gz file\
     \ as input which has been generated in\nnon-CG mode (--CX), else the GpC output\
     \ file will be empty... Default: OFF."
-  synonyms:
-  - --nome-seq
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --coverage_threshold
   description: "Positions have to be covered by at least INT calls (irrespective of\
     \ their methylation state) before\nthey get reported. For NOMe-seq, the minimum\
     \ threshold is automatically set to 1 unless specified explicitly.\nSetting a\
     \ coverage threshold does not work in conjunction with --merge_CpGs. Default:\
     \ 0 (i.e. all genomic positions get reported)."
-  synonyms:
-  - --coverage_threshold
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ff
   description: "In addition to the standard output selecting --ff will also extract\
     \ a four and five (tetra/penta)\nnucleotide context for the cytosines in question.\
     \ Too short sequences (e.g. at the edges of the\nchromosome) will be left blank;\
     \ sequences containing Ns are ignored.ll"
-  synonyms:
-  - --ff
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Uses 0-based coordinates instead of 1-based coordinates throughout.
-    Default: OFF.'
+  optional: true
   synonyms:
   - --zero_based
+  description: 'Uses 0-based coordinates instead of 1-based coordinates throughout.
+    Default: OFF.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --split_by_chromosome
   description: "Writes the output into individual files for each chromosome instead\
     \ of a single output file. Files\nwill be named to include the input filename\
     \ and the chromosome number."
-  synonyms:
-  - --split_by_chromosome
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Output file will be GZIP compressed (ending in .gz). Only works for
-    standard CpG- and CX-output.
+  optional: true
   synonyms:
   - --gzip
+  description: Output file will be GZIP compressed (ending in .gz). Only works for
+    standard CpG- and CX-output.
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: output
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Displays this help message and exits
+  optional: true
   synonyms:
   - --help
+  description: Displays this help message and exits
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\n  SYNOPSIS:\n\n  This script generates a cytosine methylation report\
@@ -256,3 +252,4 @@ help_text: "\n  SYNOPSIS:\n\n  This script generates a cytosine methylation repo
   \ last modified: 28 June 2019\n\n"
 generated_using:
 - --help
+docker_image:

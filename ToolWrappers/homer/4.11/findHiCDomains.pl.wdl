@@ -34,6 +34,9 @@ task FindHiCDomainspl {
       ~{if (minlength) then "-minLength" else ""} \
       ~{if (max_error) then "-maxError" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     or: "<output prefix> <directionality index bedgraph> [options]\\n(Use the 2nd usage to change parameters for domain calls after running)"
     res: "<#> (resolution in bp, default: 5000)"

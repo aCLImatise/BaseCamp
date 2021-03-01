@@ -18,6 +18,9 @@ task Ftreedistpair {
       ~{if (out_gr_no) then "-outgrno" else ""} \
       ~{if (progress) then "-progress" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d_type: "menu       [b] Distance type (Values: s (Symmetric\\ndifference); b (Branch score distance))"
     pairing: "menu       [l] Tree pairing method (Values: c\\n(Distances between corresponding pairs each\\ntree file); l (Distances between all\\npossible pairs in each tree file))"

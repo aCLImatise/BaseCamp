@@ -4,7 +4,7 @@ inputs:
 - id: in_in
   doc: "*                        Input file (valid formats: 'featureXML', 'consensusXML',\
     \ 'idXML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -in
 - id: in_protein_groups
@@ -12,45 +12,45 @@ inputs:
     \ the input (e.g. from ProteinProphet via IDFileConverter or Fido via FidoAdapter).\n\
     Information about indistinguishable proteins will be used for protein quantification.\
     \ (valid formats: 'idXML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -protein_groups
 - id: in_design
   doc: "Input file containing the experimental design (valid formats: 'tsv')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -design
 - id: in_out
   doc: "Output file for protein abundances (valid formats: 'csv')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
 - id: in_peptide_out
   doc: "Output file for peptide abundances (valid formats: 'csv')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -peptide_out
 - id: in_mz_tab
   doc: "Output file (mzTab) (valid formats: 'mzTab')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -mztab
 - id: in_top
   doc: "Calculate protein abundance from this number of proteotypic peptides (most\
     \ abundant first; '0' for all) (default: '3' min: '0')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -top
 - id: in_average
   doc: "Averaging method used to compute protein abundances from peptide abundances\
     \ (default: 'median' valid: 'median', 'mean', 'weighted_mean', 'sum')"
-  type: string
+  type: string?
   inputBinding:
     prefix: -average
 - id: in_include_all
   doc: Include results for proteins with fewer proteotypic peptides than indicated
     by 'top' (no effect if 'top' is 0 or 1)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -include_all
 - id: in_best_charge_and_fraction
@@ -59,47 +59,47 @@ inputs:
     \ abundances will be computed based only on the most prevalent charge observed\
     \ of each peptide (over all fractions).\nBy default, abundances are summed over\
     \ all charge states."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -best_charge_and_fraction
 - id: in_greedy_group_resolution
   doc: "Pre-process identifications with greedy resolution of shared peptides based\
     \ on the protein group probabilities. (Only works with an idXML file given as\
     \ protein_groups parameter). (default: 'false' valid: 'true', 'false')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -greedy_group_resolution
 - id: in_ratios
   doc: 'Add the log2 ratios of the abundance values to the output. Format: log_2(x_0/x_0)
     <sep> log_2(x_1/x_0) <sep> log_2(x_2/x_0) ...'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ratios
 - id: in_ratios_sila_c
   doc: 'Add the log2 ratios for a triple SILAC experiment to the output. Only applicable
     to consensus maps of exactly three sub-maps. Format: log_2(heavy/light) <sep>
     log_2(heavy/middle) <sep> log_2(middle/light)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ratiosSILAC
 - id: in_ini
   doc: Use the given TOPP INI file
-  type: File
+  type: File?
   inputBinding:
     prefix: -ini
 - id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -threads
 - id: in_write_ini
   doc: Writes the default configuration file
-  type: File
+  type: File?
   inputBinding:
     prefix: -write_ini
 - id: in_helphelp
   doc: Shows all options (including advanced)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --helphelp
 outputs:
@@ -108,19 +108,20 @@ outputs:
   type: stdout
 - id: out_out
   doc: "Output file for protein abundances (valid formats: 'csv')"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
 - id: out_peptide_out
   doc: "Output file for peptide abundances (valid formats: 'csv')"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_peptide_out)
 - id: out_mz_tab
   doc: "Output file (mzTab) (valid formats: 'mzTab')"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_mz_tab)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ProteinQuantifier

@@ -4,6 +4,9 @@ task ScranPostInstallTestsbats {
   command <<<
     scran_post_install_tests_bats
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

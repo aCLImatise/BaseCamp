@@ -14,6 +14,9 @@ task CoolerInfo {
       ~{if (metadata) then "--metadata" else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     field: "Print the value of a specific info field."
     metadata: "Print the user metadata in JSON format."

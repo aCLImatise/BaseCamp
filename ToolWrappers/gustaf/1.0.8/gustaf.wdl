@@ -80,6 +80,9 @@ task Gustaf {
       ~{if defined(num_matches) then ("--numMatches " +  '"' + num_matches + '"') else ""} \
       ~{if defined(sort_thresh) then ("--sortThresh " +  '"' + sort_thresh + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version_check: "Turn this option off to disable version update notifications of the\\napplication. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\\nDefault: 1."
     trans_pen: "Interchromosomal translocation penalty Default: 5."

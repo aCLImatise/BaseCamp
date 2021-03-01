@@ -12,6 +12,9 @@ task MashBounds {
       ~{if defined(kmer_size_) then ("-k " +  '"' + kmer_size_ + '"') else ""} \
       ~{if defined(mash_distance_estimates) then ("-p " +  '"' + mash_distance_estimates + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_size_: "k-mer size. (1-32) [21]"
     mash_distance_estimates: "Mash distance estimates will be within the given error bounds with\\nthis probability. (0-1) [0.99]\\n"

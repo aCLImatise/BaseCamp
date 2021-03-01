@@ -15,13 +15,13 @@ task SLAM {
     Int? num_alignments
     Boolean? just_align
     String align
-    File file
+    File samxa_only_output
     String meta_genomics
   }
   command <<<
     SLAM \
       ~{align} \
-      ~{file} \
+      ~{samxa_only_output} \
       ~{meta_genomics} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(min_alignment_score) then ("--min-alignment-score " +  '"' + min_alignment_score + '"') else ""} \
@@ -36,6 +36,9 @@ task SLAM {
       ~{if defined(num_alignments) then ("--num-alignments " +  '"' + num_alignments + '"') else ""} \
       ~{if (just_align) then "--just-align" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "SLAM database file which reads will be\\naligned against"
     min_alignment_score: "(=0)        alignment score cutoff"
@@ -50,7 +53,7 @@ task SLAM {
     num_alignments: "(=10)            Number of alignments to report in SAM"
     just_align: "only perform alignments, not"
     align: "--num-reads-at-once arg (=10000000)   Reduce RAM usage by only analysing "
-    file: "--sam-xa                              only output primary alignment lines, "
+    samxa_only_output: "--sam-xa                              only output primary alignment lines, "
     meta_genomics: "--no-pseudo-assembly                  do not link alignments together"
   }
   output {

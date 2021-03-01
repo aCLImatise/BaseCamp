@@ -26,6 +26,9 @@ task OpalWorkflowpy {
       ~{if defined(labels) then ("--labels " +  '"' + labels + '"') else ""} \
       ~{if defined(desc) then ("--desc " +  '"' + desc + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dir: "Input directory containing gzipped FASTQ files"
     output_dir: "Output directory"

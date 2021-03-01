@@ -4,73 +4,73 @@ command:
 - split
 positional:
 - !Positional
-  description: stdin.
+  optional: false
   position: 0
   name: from
-  optional: false
+  description: stdin.
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --output-pairs
   description: "output pairs file. If the path ends with .gz or .lz4,\nthe output\
     \ is pbgzip-/lz4c-compressed. If -, pairs are\nprinted to stdout. If not specified,\
     \ pairs are dropped."
-  synonyms:
-  - --output-pairs
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --output-sam
   description: "output sam file. If the path ends with .bam, the output\nis compressed\
     \ into a bam file. If -, sam entries are\nprinted to stdout. If not specified,\
     \ sam entries are\ndropped."
-  synonyms:
-  - --output-sam
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Number of processes used by the auto-guessed input\ndecompressing\
-    \ command.  [default: 3]"
+  optional: true
   synonyms:
   - --nproc-in
+  description: "Number of processes used by the auto-guessed input\ndecompressing\
+    \ command.  [default: 3]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Number of processes used by the auto-guessed output\ncompressing command.\
-    \  [default: 8]"
+  optional: true
   synonyms:
   - --nproc-out
+  description: "Number of processes used by the auto-guessed output\ncompressing command.\
+    \  [default: 8]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cmd-in
   description: "A command to decompress the input file. If provided,\nfully overrides\
     \ the auto-guessed command. Does not work\nwith stdin. Must read input from stdin\
     \ and print output\ninto stdout. EXAMPLE: pbgzip -dc -n 3"
-  synonyms:
-  - --cmd-in
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cmd-out
   description: "A command to compress the output file. If provided,\nfully overrides\
     \ the auto-guessed command. Does not work\nwith stdout. Must read input from stdin\
     \ and print\noutput into stdout. EXAMPLE: pbgzip -c -n 8"
-  synonyms:
-  - --cmd-out
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: pairtools split [OPTIONS] [PAIRSAM_PATH]\n\n  Split a .pairsam\
@@ -98,3 +98,4 @@ help_text: "Usage: pairtools split [OPTIONS] [PAIRSAM_PATH]\n\n  Split a .pairsa
   \ pbgzip -c -n 8\n  -h, --help           Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

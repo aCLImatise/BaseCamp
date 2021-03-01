@@ -11,79 +11,276 @@ subcommands:
   - validate
   positional: []
   named: []
-  parent: &id014 !Command
+  parent: &id016 !Command
     command: *id001
     positional: []
     named: []
     parent:
     subcommands:
-    - &id013 !Command
+    - &id015 !Command
       command: *id002
       positional: []
       named: []
-      parent: &id012 !Command
+      parent: &id014 !Command
         command: *id001
         positional: []
         named: []
         parent:
         subcommands:
-        - &id011 !Command
+        - &id013 !Command
           command: *id002
           positional: []
           named: []
-          parent: &id010 !Command
+          parent: &id012 !Command
             command: *id001
             positional: []
             named: []
             parent:
             subcommands:
-            - &id009 !Command
+            - &id011 !Command
               command: *id002
               positional: []
               named: []
-              parent: &id003 !Command
+              parent: &id010 !Command
                 command: *id001
                 positional: []
                 named: []
                 parent:
                 subcommands:
-                - &id004 !Command
+                - &id009 !Command
                   command: *id002
                   positional: []
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - &id004 !Command
+                      command: *id002
+                      positional: []
+                      named: []
+                      parent: *id003
+                      subcommands:
+                      - !Command
+                        command: &id006
+                        - airr-tools
+                        - validate
+                        - rearrangement
+                        positional: []
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -a
+                          description: "A list of AIRR rearrangement files.\n"
+                          args: !RepeatFlagArg
+                            name: AIRR_FILES
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - --version
+                          description: show program's version number and exit
+                          args: !EmptyFlagArg {}
+                        help_text: "usage: airr-tools validate rearrangement [--version]\
+                          \ [-h] -a AIRR_FILES\n                                 \
+                          \        [AIRR_FILES ...]\n\nValidate AIRR rearrangement\
+                          \ files.\n\nhelp:\n  --version             show program's\
+                          \ version number and exit\n  -h, --help            show\
+                          \ this help message and exit\n\nvalidate arguments:\n  -a\
+                          \ AIRR_FILES [AIRR_FILES ...]\n                        A\
+                          \ list of AIRR rearrangement files.\n"
+                        generated_using: &id005
+                        - --help
+                        docker_image:
+                      - !Command
+                        command: &id007
+                        - airr-tools
+                        - validate
+                        - repertoire
+                        positional: []
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -a
+                          description: "A list of AIRR repertoire metadata files.\n"
+                          args: !RepeatFlagArg
+                            name: AIRR_FILES
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - --version
+                          description: show program's version number and exit
+                          args: !EmptyFlagArg {}
+                        help_text: "usage: airr-tools validate repertoire [--version]\
+                          \ [-h] -a AIRR_FILES\n                                 \
+                          \     [AIRR_FILES ...]\n\nValidate AIRR repertoire metadata\
+                          \ files.\n\nhelp:\n  --version             show program's\
+                          \ version number and exit\n  -h, --help            show\
+                          \ this help message and exit\n\nvalidate arguments:\n  -a\
+                          \ AIRR_FILES [AIRR_FILES ...]\n                        A\
+                          \ list of AIRR repertoire metadata files.\n"
+                        generated_using: *id005
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --version
+                        description: show program's version number and exit
+                        args: !EmptyFlagArg {}
+                      help_text: "usage: airr-tools validate [--version] [-h]  ...\n\
+                        \nValidate AIRR files.\n\nhelp:\n  --version      show program's\
+                        \ version number and exit\n  -h, --help     show this help\
+                        \ message and exit\n\nsubcommands:\n                 Database\
+                        \ operation\n    repertoire   Validate AIRR repertoire metadata\
+                        \ files.\n    rearrangement\n                 Validate AIRR\
+                        \ rearrangement files.\n"
+                      generated_using: *id005
+                      docker_image:
+                    - !Command
+                      command: &id008
+                      - airr-tools
+                      - merge
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        description: Output file name.
+                        args: !SimpleFlagArg
+                          name: OUT_FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --drop
+                        description: "If specified, drop fields that do not exist\
+                          \ in all\ninput files. Otherwise, include all columns in\
+                          \ all\nfiles and fill missing data with empty strings."
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -a
+                        description: "A list of AIRR rearrangement files.\n"
+                        args: !RepeatFlagArg
+                          name: AIRR_FILES
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --version
+                        description: show program's version number and exit
+                        args: !EmptyFlagArg {}
+                      help_text: "usage: airr-tools merge [--version] [-h] -o OUT_FILE\
+                        \ [--drop] -a AIRR_FILES\n                        [AIRR_FILES\
+                        \ ...]\n\nMerge AIRR rearrangement files.\n\nhelp:\n  --version\
+                        \             show program's version number and exit\n  -h,\
+                        \ --help            show this help message and exit\n\nmerge\
+                        \ arguments:\n  -o OUT_FILE           Output file name.\n\
+                        \  --drop                If specified, drop fields that do\
+                        \ not exist in all\n                        input files. Otherwise,\
+                        \ include all columns in all\n                        files\
+                        \ and fill missing data with empty strings.\n  -a AIRR_FILES\
+                        \ [AIRR_FILES ...]\n                        A list of AIRR\
+                        \ rearrangement files.\n"
+                      generated_using: *id005
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --version
+                      description: show program's version number and exit
+                      args: !EmptyFlagArg {}
+                    help_text: "usage: airr-tools [-h] [--version]  ...\n\nAIRR Community\
+                      \ Standards utility commands.\n\nhelp:\n  -h, --help  show this\
+                      \ help message and exit\n  --version   show program's version\
+                      \ number and exit\n\nsubcommands:\n              Database operation\n\
+                      \    merge     Merge AIRR rearrangement files.\n    validate\
+                      \  Validate AIRR files.\n"
+                    generated_using: *id005
+                    docker_image:
                   subcommands:
                   - !Command
-                    command: &id006
-                    - airr-tools
-                    - validate
-                    - rearrangement
+                    command: *id006
                     positional: []
                     named:
                     - !Flag
-                      description: "A list of AIRR rearrangement files.\n"
+                      optional: true
                       synonyms:
                       - -a
+                      description: "A list of AIRR rearrangement files.\n"
                       args: !RepeatFlagArg
                         name: AIRR_FILES
-                      optional: true
                     parent: *id004
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: show this help message and exit
+                      optional: true
                       synonyms:
                       - -h
                       - --help
+                      description: show this help message and exit
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag: !Flag
-                      description: show program's version number and exit
+                      optional: true
                       synonyms:
                       - --version
+                      description: show program's version number and exit
                       args: !EmptyFlagArg {}
-                      optional: true
                     help_text: "usage: airr-tools validate rearrangement [--version]\
                       \ [-h] -a AIRR_FILES\n                                     \
                       \    [AIRR_FILES ...]\n\nValidate AIRR rearrangement files.\n\
@@ -91,39 +288,36 @@ subcommands:
                       \ and exit\n  -h, --help            show this help message and\
                       \ exit\n\nvalidate arguments:\n  -a AIRR_FILES [AIRR_FILES ...]\n\
                       \                        A list of AIRR rearrangement files.\n"
-                    generated_using: &id005
-                    - --help
+                    generated_using: *id005
+                    docker_image:
                   - !Command
-                    command: &id007
-                    - airr-tools
-                    - validate
-                    - repertoire
+                    command: *id007
                     positional: []
                     named:
                     - !Flag
-                      description: "A list of AIRR repertoire metadata files.\n"
+                      optional: true
                       synonyms:
                       - -a
+                      description: "A list of AIRR repertoire metadata files.\n"
                       args: !RepeatFlagArg
                         name: AIRR_FILES
-                      optional: true
                     parent: *id004
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: show this help message and exit
+                      optional: true
                       synonyms:
                       - -h
                       - --help
+                      description: show this help message and exit
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag: !Flag
-                      description: show program's version number and exit
+                      optional: true
                       synonyms:
                       - --version
+                      description: show program's version number and exit
                       args: !EmptyFlagArg {}
-                      optional: true
                     help_text: "usage: airr-tools validate repertoire [--version]\
                       \ [-h] -a AIRR_FILES\n                                     \
                       \ [AIRR_FILES ...]\n\nValidate AIRR repertoire metadata files.\n\
@@ -133,21 +327,11 @@ subcommands:
                       \                        A list of AIRR repertoire metadata\
                       \ files.\n"
                     generated_using: *id005
+                    docker_image:
                   usage: []
-                  help_flag: !Flag
-                    description: show this help message and exit
-                    synonyms:
-                    - -h
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
-                  version_flag: !Flag
-                    description: show program's version number and exit
-                    synonyms:
-                    - --version
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  version_flag:
                   help_text: "usage: airr-tools validate [--version] [-h]  ...\n\n\
                     Validate AIRR files.\n\nhelp:\n  --version      show program's\
                     \ version number and exit\n  -h, --help     show this help message\
@@ -156,51 +340,50 @@ subcommands:
                     \   rearrangement\n                 Validate AIRR rearrangement\
                     \ files.\n"
                   generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id008
-                  - airr-tools
-                  - merge
+                  command: *id008
                   positional: []
                   named:
                   - !Flag
-                    description: Output file name.
+                    optional: true
                     synonyms:
                     - -o
+                    description: Output file name.
                     args: !SimpleFlagArg
                       name: OUT_FILE
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --drop
                     description: "If specified, drop fields that do not exist in all\n\
                       input files. Otherwise, include all columns in all\nfiles and\
                       \ fill missing data with empty strings."
-                    synonyms:
-                    - --drop
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "A list of AIRR rearrangement files.\n"
+                    optional: true
                     synonyms:
                     - -a
+                    description: "A list of AIRR rearrangement files.\n"
                     args: !RepeatFlagArg
                       name: AIRR_FILES
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag: !Flag
-                    description: show program's version number and exit
+                    optional: true
                     synonyms:
                     - --version
+                    description: show program's version number and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   help_text: "usage: airr-tools merge [--version] [-h] -o OUT_FILE\
                     \ [--drop] -a AIRR_FILES\n                        [AIRR_FILES\
                     \ ...]\n\nMerge AIRR rearrangement files.\n\nhelp:\n  --version\
@@ -213,21 +396,11 @@ subcommands:
                     \ with empty strings.\n  -a AIRR_FILES [AIRR_FILES ...]\n    \
                     \                    A list of AIRR rearrangement files.\n"
                   generated_using: *id005
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: show program's version number and exit
-                  synonyms:
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "usage: airr-tools [-h] [--version]  ...\n\nAIRR Community\
                   \ Standards utility commands.\n\nhelp:\n  -h, --help  show this\
                   \ help message and exit\n  --version   show program's version number\
@@ -235,35 +408,36 @@ subcommands:
                   \   merge     Merge AIRR rearrangement files.\n    validate  Validate\
                   \ AIRR files.\n"
                 generated_using: *id005
+                docker_image:
               subcommands:
               - !Command
                 command: *id006
                 positional: []
                 named:
                 - !Flag
-                  description: "A list of AIRR rearrangement files.\n"
+                  optional: true
                   synonyms:
                   - -a
+                  description: "A list of AIRR rearrangement files.\n"
                   args: !RepeatFlagArg
                     name: AIRR_FILES
-                  optional: true
-                parent: *id004
+                parent: *id009
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: show this help message and exit
+                  optional: true
                   synonyms:
                   - -h
                   - --help
+                  description: show this help message and exit
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag: !Flag
-                  description: show program's version number and exit
+                  optional: true
                   synonyms:
                   - --version
+                  description: show program's version number and exit
                   args: !EmptyFlagArg {}
-                  optional: true
                 help_text: "usage: airr-tools validate rearrangement [--version] [-h]\
                   \ -a AIRR_FILES\n                                         [AIRR_FILES\
                   \ ...]\n\nValidate AIRR rearrangement files.\n\nhelp:\n  --version\
@@ -272,34 +446,35 @@ subcommands:
                   \  -a AIRR_FILES [AIRR_FILES ...]\n                        A list\
                   \ of AIRR rearrangement files.\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id007
                 positional: []
                 named:
                 - !Flag
-                  description: "A list of AIRR repertoire metadata files.\n"
+                  optional: true
                   synonyms:
                   - -a
+                  description: "A list of AIRR repertoire metadata files.\n"
                   args: !RepeatFlagArg
                     name: AIRR_FILES
-                  optional: true
-                parent: *id004
+                parent: *id009
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: show this help message and exit
+                  optional: true
                   synonyms:
                   - -h
                   - --help
+                  description: show this help message and exit
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag: !Flag
-                  description: show program's version number and exit
+                  optional: true
                   synonyms:
                   - --version
+                  description: show program's version number and exit
                   args: !EmptyFlagArg {}
-                  optional: true
                 help_text: "usage: airr-tools validate repertoire [--version] [-h]\
                   \ -a AIRR_FILES\n                                      [AIRR_FILES\
                   \ ...]\n\nValidate AIRR repertoire metadata files.\n\nhelp:\n  --version\
@@ -308,6 +483,7 @@ subcommands:
                   \  -a AIRR_FILES [AIRR_FILES ...]\n                        A list\
                   \ of AIRR repertoire metadata files.\n"
                 generated_using: *id005
+                docker_image:
               usage: []
               help_flag:
               usage_flag:
@@ -319,49 +495,50 @@ subcommands:
                 \ repertoire metadata files.\n    rearrangement\n                \
                 \ Validate AIRR rearrangement files.\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id008
               positional: []
               named:
               - !Flag
-                description: Output file name.
+                optional: true
                 synonyms:
                 - -o
+                description: Output file name.
                 args: !SimpleFlagArg
                   name: OUT_FILE
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --drop
                 description: "If specified, drop fields that do not exist in all\n\
                   input files. Otherwise, include all columns in all\nfiles and fill\
                   \ missing data with empty strings."
-                synonyms:
-                - --drop
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "A list of AIRR rearrangement files.\n"
+                optional: true
                 synonyms:
                 - -a
+                description: "A list of AIRR rearrangement files.\n"
                 args: !RepeatFlagArg
                   name: AIRR_FILES
-                optional: true
-              parent: *id003
+              parent: *id010
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag: !Flag
-                description: show program's version number and exit
+                optional: true
                 synonyms:
                 - --version
+                description: show program's version number and exit
                 args: !EmptyFlagArg {}
-                optional: true
               help_text: "usage: airr-tools merge [--version] [-h] -o OUT_FILE [--drop]\
                 \ -a AIRR_FILES\n                        [AIRR_FILES ...]\n\nMerge\
                 \ AIRR rearrangement files.\n\nhelp:\n  --version             show\
@@ -374,6 +551,7 @@ subcommands:
                 \ [AIRR_FILES ...]\n                        A list of AIRR rearrangement\
                 \ files.\n"
               generated_using: *id005
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -384,35 +562,36 @@ subcommands:
               \ exit\n\nsubcommands:\n              Database operation\n    merge\
               \     Merge AIRR rearrangement files.\n    validate  Validate AIRR files.\n"
             generated_using: *id005
+            docker_image:
           subcommands:
           - !Command
             command: *id006
             positional: []
             named:
             - !Flag
-              description: "A list of AIRR rearrangement files.\n"
+              optional: true
               synonyms:
               - -a
+              description: "A list of AIRR rearrangement files.\n"
               args: !RepeatFlagArg
                 name: AIRR_FILES
-              optional: true
-            parent: *id009
+            parent: *id011
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: show this help message and exit
+              optional: true
               synonyms:
               - -h
               - --help
+              description: show this help message and exit
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag: !Flag
-              description: show program's version number and exit
+              optional: true
               synonyms:
               - --version
+              description: show program's version number and exit
               args: !EmptyFlagArg {}
-              optional: true
             help_text: "usage: airr-tools validate rearrangement [--version] [-h]\
               \ -a AIRR_FILES\n                                         [AIRR_FILES\
               \ ...]\n\nValidate AIRR rearrangement files.\n\nhelp:\n  --version \
@@ -421,34 +600,35 @@ subcommands:
               \  -a AIRR_FILES [AIRR_FILES ...]\n                        A list of\
               \ AIRR rearrangement files.\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id007
             positional: []
             named:
             - !Flag
-              description: "A list of AIRR repertoire metadata files.\n"
+              optional: true
               synonyms:
               - -a
+              description: "A list of AIRR repertoire metadata files.\n"
               args: !RepeatFlagArg
                 name: AIRR_FILES
-              optional: true
-            parent: *id009
+            parent: *id011
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: show this help message and exit
+              optional: true
               synonyms:
               - -h
               - --help
+              description: show this help message and exit
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag: !Flag
-              description: show program's version number and exit
+              optional: true
               synonyms:
               - --version
+              description: show program's version number and exit
               args: !EmptyFlagArg {}
-              optional: true
             help_text: "usage: airr-tools validate repertoire [--version] [-h] -a\
               \ AIRR_FILES\n                                      [AIRR_FILES ...]\n\
               \nValidate AIRR repertoire metadata files.\n\nhelp:\n  --version   \
@@ -457,6 +637,7 @@ subcommands:
               \ AIRR_FILES [AIRR_FILES ...]\n                        A list of AIRR\
               \ repertoire metadata files.\n"
             generated_using: *id005
+            docker_image:
           usage: []
           help_flag:
           usage_flag:
@@ -468,49 +649,50 @@ subcommands:
             \ metadata files.\n    rearrangement\n                 Validate AIRR rearrangement\
             \ files.\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id008
           positional: []
           named:
           - !Flag
-            description: Output file name.
+            optional: true
             synonyms:
             - -o
+            description: Output file name.
             args: !SimpleFlagArg
               name: OUT_FILE
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --drop
             description: "If specified, drop fields that do not exist in all\ninput\
               \ files. Otherwise, include all columns in all\nfiles and fill missing\
               \ data with empty strings."
-            synonyms:
-            - --drop
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "A list of AIRR rearrangement files.\n"
+            optional: true
             synonyms:
             - -a
+            description: "A list of AIRR rearrangement files.\n"
             args: !RepeatFlagArg
               name: AIRR_FILES
-            optional: true
-          parent: *id010
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag: !Flag
-            description: show program's version number and exit
+            optional: true
             synonyms:
             - --version
+            description: show program's version number and exit
             args: !EmptyFlagArg {}
-            optional: true
           help_text: "usage: airr-tools merge [--version] [-h] -o OUT_FILE [--drop]\
             \ -a AIRR_FILES\n                        [AIRR_FILES ...]\n\nMerge AIRR\
             \ rearrangement files.\n\nhelp:\n  --version             show program's\
@@ -522,6 +704,7 @@ subcommands:
             \ strings.\n  -a AIRR_FILES [AIRR_FILES ...]\n                       \
             \ A list of AIRR rearrangement files.\n"
           generated_using: *id005
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -532,35 +715,36 @@ subcommands:
           \              Database operation\n    merge     Merge AIRR rearrangement\
           \ files.\n    validate  Validate AIRR files.\n"
         generated_using: *id005
+        docker_image:
       subcommands:
       - !Command
         command: *id006
         positional: []
         named:
         - !Flag
-          description: "A list of AIRR rearrangement files.\n"
+          optional: true
           synonyms:
           - -a
+          description: "A list of AIRR rearrangement files.\n"
           args: !RepeatFlagArg
             name: AIRR_FILES
-          optional: true
-        parent: *id011
+        parent: *id013
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: show this help message and exit
+          optional: true
           synonyms:
           - -h
           - --help
+          description: show this help message and exit
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag: !Flag
-          description: show program's version number and exit
+          optional: true
           synonyms:
           - --version
+          description: show program's version number and exit
           args: !EmptyFlagArg {}
-          optional: true
         help_text: "usage: airr-tools validate rearrangement [--version] [-h] -a AIRR_FILES\n\
           \                                         [AIRR_FILES ...]\n\nValidate AIRR\
           \ rearrangement files.\n\nhelp:\n  --version             show program's\
@@ -568,34 +752,35 @@ subcommands:
           \ and exit\n\nvalidate arguments:\n  -a AIRR_FILES [AIRR_FILES ...]\n  \
           \                      A list of AIRR rearrangement files.\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id007
         positional: []
         named:
         - !Flag
-          description: "A list of AIRR repertoire metadata files.\n"
+          optional: true
           synonyms:
           - -a
+          description: "A list of AIRR repertoire metadata files.\n"
           args: !RepeatFlagArg
             name: AIRR_FILES
-          optional: true
-        parent: *id011
+        parent: *id013
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: show this help message and exit
+          optional: true
           synonyms:
           - -h
           - --help
+          description: show this help message and exit
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag: !Flag
-          description: show program's version number and exit
+          optional: true
           synonyms:
           - --version
+          description: show program's version number and exit
           args: !EmptyFlagArg {}
-          optional: true
         help_text: "usage: airr-tools validate repertoire [--version] [-h] -a AIRR_FILES\n\
           \                                      [AIRR_FILES ...]\n\nValidate AIRR\
           \ repertoire metadata files.\n\nhelp:\n  --version             show program's\
@@ -603,6 +788,7 @@ subcommands:
           \ and exit\n\nvalidate arguments:\n  -a AIRR_FILES [AIRR_FILES ...]\n  \
           \                      A list of AIRR repertoire metadata files.\n"
         generated_using: *id005
+        docker_image:
       usage: []
       help_flag:
       usage_flag:
@@ -614,49 +800,50 @@ subcommands:
         \ metadata files.\n    rearrangement\n                 Validate AIRR rearrangement\
         \ files.\n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id008
       positional: []
       named:
       - !Flag
-        description: Output file name.
+        optional: true
         synonyms:
         - -o
+        description: Output file name.
         args: !SimpleFlagArg
           name: OUT_FILE
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --drop
         description: "If specified, drop fields that do not exist in all\ninput files.\
           \ Otherwise, include all columns in all\nfiles and fill missing data with\
           \ empty strings."
-        synonyms:
-        - --drop
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "A list of AIRR rearrangement files.\n"
+        optional: true
         synonyms:
         - -a
+        description: "A list of AIRR rearrangement files.\n"
         args: !RepeatFlagArg
           name: AIRR_FILES
-        optional: true
-      parent: *id012
+      parent: *id014
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag: !Flag
-        description: show program's version number and exit
+        optional: true
         synonyms:
         - --version
+        description: show program's version number and exit
         args: !EmptyFlagArg {}
-        optional: true
       help_text: "usage: airr-tools merge [--version] [-h] -o OUT_FILE [--drop] -a\
         \ AIRR_FILES\n                        [AIRR_FILES ...]\n\nMerge AIRR rearrangement\
         \ files.\n\nhelp:\n  --version             show program's version number and\
@@ -667,6 +854,7 @@ subcommands:
         \ fill missing data with empty strings.\n  -a AIRR_FILES [AIRR_FILES ...]\n\
         \                        A list of AIRR rearrangement files.\n"
       generated_using: *id005
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -677,35 +865,36 @@ subcommands:
       \          Database operation\n    merge     Merge AIRR rearrangement files.\n\
       \    validate  Validate AIRR files.\n"
     generated_using: *id005
+    docker_image:
   subcommands:
   - !Command
     command: *id006
     positional: []
     named:
     - !Flag
-      description: "A list of AIRR rearrangement files.\n"
+      optional: true
       synonyms:
       - -a
+      description: "A list of AIRR rearrangement files.\n"
       args: !RepeatFlagArg
         name: AIRR_FILES
-      optional: true
-    parent: *id013
+    parent: *id015
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: show this help message and exit
+      optional: true
       synonyms:
       - -h
       - --help
+      description: show this help message and exit
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag: !Flag
-      description: show program's version number and exit
+      optional: true
       synonyms:
       - --version
+      description: show program's version number and exit
       args: !EmptyFlagArg {}
-      optional: true
     help_text: "usage: airr-tools validate rearrangement [--version] [-h] -a AIRR_FILES\n\
       \                                         [AIRR_FILES ...]\n\nValidate AIRR\
       \ rearrangement files.\n\nhelp:\n  --version             show program's version\
@@ -713,34 +902,35 @@ subcommands:
       \nvalidate arguments:\n  -a AIRR_FILES [AIRR_FILES ...]\n                  \
       \      A list of AIRR rearrangement files.\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id007
     positional: []
     named:
     - !Flag
-      description: "A list of AIRR repertoire metadata files.\n"
+      optional: true
       synonyms:
       - -a
+      description: "A list of AIRR repertoire metadata files.\n"
       args: !RepeatFlagArg
         name: AIRR_FILES
-      optional: true
-    parent: *id013
+    parent: *id015
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: show this help message and exit
+      optional: true
       synonyms:
       - -h
       - --help
+      description: show this help message and exit
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag: !Flag
-      description: show program's version number and exit
+      optional: true
       synonyms:
       - --version
+      description: show program's version number and exit
       args: !EmptyFlagArg {}
-      optional: true
     help_text: "usage: airr-tools validate repertoire [--version] [-h] -a AIRR_FILES\n\
       \                                      [AIRR_FILES ...]\n\nValidate AIRR repertoire\
       \ metadata files.\n\nhelp:\n  --version             show program's version number\
@@ -748,6 +938,7 @@ subcommands:
       \ arguments:\n  -a AIRR_FILES [AIRR_FILES ...]\n                        A list\
       \ of AIRR repertoire metadata files.\n"
     generated_using: *id005
+    docker_image:
   usage: []
   help_flag:
   usage_flag:
@@ -758,49 +949,50 @@ subcommands:
     \ operation\n    repertoire   Validate AIRR repertoire metadata files.\n    rearrangement\n\
     \                 Validate AIRR rearrangement files.\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id008
   positional: []
   named:
   - !Flag
-    description: Output file name.
+    optional: true
     synonyms:
     - -o
+    description: Output file name.
     args: !SimpleFlagArg
       name: OUT_FILE
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --drop
     description: "If specified, drop fields that do not exist in all\ninput files.\
       \ Otherwise, include all columns in all\nfiles and fill missing data with empty\
       \ strings."
-    synonyms:
-    - --drop
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "A list of AIRR rearrangement files.\n"
+    optional: true
     synonyms:
     - -a
+    description: "A list of AIRR rearrangement files.\n"
     args: !RepeatFlagArg
       name: AIRR_FILES
-    optional: true
-  parent: *id014
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag: !Flag
-    description: show program's version number and exit
+    optional: true
     synonyms:
     - --version
+    description: show program's version number and exit
     args: !EmptyFlagArg {}
-    optional: true
   help_text: "usage: airr-tools merge [--version] [-h] -o OUT_FILE [--drop] -a AIRR_FILES\n\
     \                        [AIRR_FILES ...]\n\nMerge AIRR rearrangement files.\n\
     \nhelp:\n  --version             show program's version number and exit\n  -h,\
@@ -811,6 +1003,7 @@ subcommands:
     \ with empty strings.\n  -a AIRR_FILES [AIRR_FILES ...]\n                    \
     \    A list of AIRR rearrangement files.\n"
   generated_using: *id005
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -821,3 +1014,4 @@ help_text: "usage: airr-tools [-h] [--version]  ...\n\nAIRR Community Standards 
   \ operation\n    merge     Merge AIRR rearrangement files.\n    validate  Validate\
   \ AIRR files.\n"
 generated_using: *id005
+docker_image:

@@ -3,12 +3,12 @@ id: oncogemini_amend.cwl
 inputs:
 - id: in_sample
   doc: New sample information file to load
-  type: File
+  type: File?
   inputBinding:
     prefix: --sample
 - id: in_clear
   doc: Set all values in this column to NULL before loading.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --clear
 - id: in_db
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - oncogemini

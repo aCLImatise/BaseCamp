@@ -3,7 +3,7 @@ id: rsem_tbam2gbam.cwl
 inputs:
 - id: in_p
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -p
 - id: in_reference_name
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsem-tbam2gbam

@@ -4,6 +4,9 @@ task Preg {
   command <<<
     _preg
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

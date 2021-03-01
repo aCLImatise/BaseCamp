@@ -4,17 +4,17 @@ inputs:
 - id: in_graft_level
   doc: "[p|c|o|f|g]  Taxonomic level to graft extensions to\nfoundation. Default is\
     \ g (genus). p=phylum,\nc=class, o=order, f=family."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --graft-level
 - id: in_stderr
   doc: Saves error log file (optional)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --stderr
 - id: in_exclude_id_list
   doc: Will not save accession id file (optional)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --exclude-id-list
 - id: in_extension_trees_otu_map
@@ -36,6 +36,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ghost-tree

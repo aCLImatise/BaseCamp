@@ -12,6 +12,9 @@ task GetSeqsFromListpy {
       ~{if (partial) then "--partial" else ""} \
       ~{if (exclude) then "--exclude" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     partial: "OK if seq IDs only match the beginning"
     exclude: "Output sequences NOT in the list, default OFF"

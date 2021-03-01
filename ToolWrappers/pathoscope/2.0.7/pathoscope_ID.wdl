@@ -30,6 +30,9 @@ task PathoscopeID {
       ~{if defined(file_type) then ("-fileType " +  '"' + file_type + '"') else ""} \
       ~{if defined(align_file) then ("-alignFile " +  '"' + align_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_matrix: "Output alignment matrix"
     no_updated_align_file: "Do not generate an updated alignment file"

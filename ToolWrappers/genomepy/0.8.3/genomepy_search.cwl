@@ -3,7 +3,7 @@ id: genomepy_search.cwl
 inputs:
 - id: in_provider
   doc: provider
-  type: string
+  type: string?
   inputBinding:
     prefix: --provider
 - id: in_term
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - genomepy

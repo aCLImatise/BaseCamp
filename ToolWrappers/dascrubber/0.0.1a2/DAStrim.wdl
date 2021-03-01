@@ -14,6 +14,9 @@ task DAStrim {
       ~{if (g) then "-g" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     b: ""
     g: ""

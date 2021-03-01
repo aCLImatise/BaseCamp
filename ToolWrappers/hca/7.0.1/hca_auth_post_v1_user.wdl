@@ -10,8 +10,11 @@ task HcaAuthPostv1user {
       ~{if defined(user_id) then ("--user-id " +  '"' + user_id + '"') else ""} \
       ~{if defined(groups) then ("--groups " +  '"' + groups + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    user_id: "Used to identify users, groups, and roles.\\n--groups GROUPS\\n--roles ROLES\\n--policy POLICY\\n"
+    user_id: "Used to identify users, groups, and roles."
     groups: ""
   }
   output {

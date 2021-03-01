@@ -2,14 +2,17 @@ version 1.0
 
 task BlockDisplaySatsuma {
   input {
-    Boolean? string_satsuma_file
+    Boolean? string_summary_file
   }
   command <<<
     BlockDisplaySatsuma \
-      ~{if (string_satsuma_file) then "-i" else ""}
+      ~{if (string_summary_file) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    string_satsuma_file: "<string> : satsuma summary file"
+    string_summary_file: "<string> : satsuma summary file"
   }
   output {
     File out_stdout = stdout()

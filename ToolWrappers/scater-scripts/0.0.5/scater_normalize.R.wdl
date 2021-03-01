@@ -18,6 +18,9 @@ task ScaternormalizeR {
       ~{if defined(centre_size_factors) then ("--centre-size-factors " +  '"' + centre_size_factors + '"') else ""} \
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name in which a serialized R SingleCellExperiment object where object matrix found"
     exprs_values: "String indicating which assay contains the count data that should be used to compute log-transformed expression values."

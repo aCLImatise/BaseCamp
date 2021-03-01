@@ -4,6 +4,9 @@ task Multifastapy {
   command <<<
     multifasta_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

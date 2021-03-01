@@ -1,41 +1,41 @@
 class: CommandLineTool
 id: bp_search2gff.pl.cwl
 inputs:
-- id: in_optional_inputfilename_will
+- id: in_optional_inputfilename_readeither
   doc: "- (optional) inputfilename, will read\neither ARGV files or from STDIN"
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in__output_filename
   doc: '- the output filename [default STDOUT]'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_search_result_format
   doc: "- search result format (blast, fasta,waba,axt)\n(ssearch is fasta format).\
     \ default is blast."
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
-- id: in_t_slash_type
+- id: in_type
   doc: "- if you want to see query or hit information\nin the GFF report"
-  type: string
+  type: string?
   inputBinding:
-    prefix: -t/--type
-- id: in_s_slash_source
+    prefix: --type
+- id: in_source
   doc: "- specify the source (will be algorithm name\notherwise like BLASTN)"
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -s/--source
+    prefix: --source
 - id: in_method
   doc: "- the method tag (primary_tag) of the features\n(default is similarity)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --method
 - id: in_score_func
   doc: "- a string or a file that when parsed evaluates\nto a closure which will be\
     \ passed a feature\nobject and that returns the score to be printed"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --scorefunc
 - id: in_loc_func
@@ -43,45 +43,45 @@ inputs:
     \ passed two\nfeatures, query and hit, and returns the\nlocation (Bio::LocationI\
     \ compliant) for the\nGFF3 feature created for each HSP; the closure\nmay use\
     \ the clone_loc() and create_loc()\nfunctions for convenience, see their PODs"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --locfunc
 - id: in_one_hsp
   doc: '- only print the first HSP feature for each hit'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --onehsp
-- id: in_p_slash_parent
+- id: in_parent
   doc: "- the parent to which HSP features should refer\nif not the name of the hit\
     \ or query (depending\non --type)"
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -p/--parent
-- id: in_target_slash_no_target
+    prefix: --parent
+- id: in_no_target
   doc: '- whether to always add the Target tag or not'
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: --target/--notarget
+    prefix: --notarget
 - id: in_component
   doc: '- generate GFF component fields (chromosome)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --component
-- id: in_m_slash_match
+- id: in_match
   doc: "- generate a 'match' line which is a container\nof all the similarity HSPs"
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -m/--match
+    prefix: --match
 - id: in_add_id
   doc: '- add ID tag in the absence of --match'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --addid
-- id: in_c_slash_cut_off
+- id: in_cut_off
   doc: '- specify an evalue cutoff'
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -c/--cutoff
+    prefix: --cutoff
 - id: in_clone_loc
   doc: "Title : clone_loc Usage : my $l = clone_loc($feature->location);\nFunction:\
     \ Helper function to simplify the task of cloning locations for\n--locfunc closures.\n\
@@ -107,9 +107,10 @@ outputs:
   type: stdout
 - id: out__output_filename
   doc: '- the output filename [default STDOUT]'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in__output_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bp_search2gff.pl

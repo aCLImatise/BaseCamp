@@ -3,7 +3,7 @@ id: compress_fast5.cwl
 inputs:
 - id: in_i
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_tool
@@ -50,6 +50,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - compress_fast5

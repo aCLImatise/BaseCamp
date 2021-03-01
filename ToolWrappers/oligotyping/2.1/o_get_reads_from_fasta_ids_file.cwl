@@ -3,7 +3,7 @@ id: o_get_reads_from_fasta_ids_file.cwl
 inputs:
 - id: in_s
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -S
 - id: in_o_get_reads_from_fast_a
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - o-get-reads-from-fasta

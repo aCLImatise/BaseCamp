@@ -22,6 +22,9 @@ task RemovePseudoknots {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (temperature) then "--temperature" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "Specify that the sequence is DNA, and DNA parameters are to be used.\\nDefault is to use RNA parameters."
     bracket: "Write the output as a dot-bracket file instead of a CT file. (Note that the\\ninput file can be either a CT or bracket file, regardless of this option.)"

@@ -3,12 +3,12 @@ id: isoseq3_summarize.cwl
 inputs:
 - id: in_log_level
   doc: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --log-level
 - id: in_log_file
   doc: FILE  Log to a file, instead of stderr.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --log-file
 - id: in_summary_dot_csv
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - isoseq3

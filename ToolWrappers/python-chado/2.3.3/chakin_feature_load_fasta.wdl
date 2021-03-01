@@ -32,6 +32,9 @@ task ChakinFeatureLoadFasta {
       ~{if defined(re_parent) then ("--re_parent " +  '"' + re_parent + '"') else ""} \
       ~{if defined(parent_type) then ("--parent_type " +  '"' + parent_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequence_type: "Sequence type  [default: contig]"
     analysis_id: "Analysis ID"

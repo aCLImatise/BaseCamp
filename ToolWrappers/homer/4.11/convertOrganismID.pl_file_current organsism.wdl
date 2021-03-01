@@ -10,6 +10,9 @@ task ConvertOrganismIDplFileCurrentorgansism {
       ~{new_organism} \
       ~{output_id_type}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     new_organism: ""
     output_id_type: ""

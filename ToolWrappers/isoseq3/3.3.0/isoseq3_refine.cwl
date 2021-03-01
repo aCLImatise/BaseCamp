@@ -3,32 +3,32 @@ id: isoseq3_refine.cwl
 inputs:
 - id: in_min_polya_length
   doc: INT   Minimum poly(A) tail length. [20]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --min-polya-length
 - id: in_require_polya
   doc: Require FL reads to have a poly(A) tail and remove it.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --require-polya
 - id: in_num_threads
   doc: INT   Number of threads to use, 0 means autodetection. [0]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --num-threads
 - id: in_log_level
   doc: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --log-level
 - id: in_log_file
   doc: FILE  Log to a file, instead of stderr.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --log-file
 - id: in_verbose
   doc: Use verbose output.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_fl_ncdot_bam_vertical_line_xml
@@ -120,6 +120,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - isoseq3

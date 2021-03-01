@@ -2,9 +2,9 @@ version 1.0
 
 task Rbcalcgrid {
   input {
-    Boolean? suffix_grid_is
-    Boolean? receptor_param_file
-    Boolean? sfprmfile_scoring_function
+    Boolean? outputsuffix_suffix_grid
+    Boolean? receptorprmfile_receptor_param
+    Boolean? scoring_function_param
     Boolean? gridstep_grid_step
     Boolean? border_grid_border
     String output_root
@@ -18,16 +18,19 @@ task Rbcalcgrid {
       ~{receptor_prm_file} \
       ~{sfp_rm_file} \
       ~{grid_step} \
-      ~{if (suffix_grid_is) then "-o" else ""} \
-      ~{if (receptor_param_file) then "-r" else ""} \
-      ~{if (sfprmfile_scoring_function) then "-p" else ""} \
+      ~{if (outputsuffix_suffix_grid) then "-o" else ""} \
+      ~{if (receptorprmfile_receptor_param) then "-r" else ""} \
+      ~{if (scoring_function_param) then "-p" else ""} \
       ~{if (gridstep_grid_step) then "-g" else ""} \
       ~{if (border_grid_border) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    suffix_grid_is: "<OutputSuffix> - suffix for grid (.grd IS required)"
-    receptor_param_file: "<ReceptorPrmFile> - receptor param file (contains active site params)"
-    sfprmfile_scoring_function: "<SFPrmFile> - scoring function param file (either calcgrid_vdw1.prm or calcgrid_vdw5.prm)"
+    outputsuffix_suffix_grid: "<OutputSuffix> - suffix for grid (.grd IS required)"
+    receptorprmfile_receptor_param: "<ReceptorPrmFile> - receptor param file (contains active site params)"
+    scoring_function_param: "<SFPrmFile> - scoring function param file (either calcgrid_vdw1.prm or calcgrid_vdw5.prm)"
     gridstep_grid_step: "<GridStep> - grid step (default=0.5A)"
     border_grid_border: "<Border> - grid border around docking site (default=1.0A)"
     output_root: ""

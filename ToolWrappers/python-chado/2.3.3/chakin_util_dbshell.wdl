@@ -8,6 +8,9 @@ task ChakinUtilDbshell {
     chakin util dbshell \
       ~{options}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: "Options:"
   }

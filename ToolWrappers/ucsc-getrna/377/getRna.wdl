@@ -18,6 +18,9 @@ task GetRna {
       ~{if (incl_ver) then "-inclVer" else ""} \
       ~{if (peptides) then "-peptides" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cds_upper: "- lookup CDS and output it as upper case. If CDS annotation\\ncan't be obtained, the sequence is skipped with a warning."
     cds_upper_all: "- like -cdsUpper, except keep sequeneces without CDS"

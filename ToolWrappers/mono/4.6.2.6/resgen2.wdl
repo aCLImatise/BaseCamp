@@ -16,6 +16,9 @@ task Resgen2 {
       ~{if (use_sourcepath) then "-usesourcepath" else ""} \
       ~{if (define) then "-define" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compile: ", /compile\\ntakes a list of .resX or .txt files to convert to .resources files\\nin one bulk operation, replacing .ext with .resources for the\\noutput file name (if not set)."
     use_sourcepath: ", /useSourcePath\\nto resolve relative file paths, use the directory of the resource\\nfile as current directory."

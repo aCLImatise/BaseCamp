@@ -14,6 +14,9 @@ task BpipeOverride {
       ~{if (list_checks_mode) then "-l" else ""} \
       ~{if defined(override_specified_check) then ("-o " +  '"' + override_specified_check + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     comment_add_given: "comment to add to given operation"
     fail_specified_check: "fail specified check"

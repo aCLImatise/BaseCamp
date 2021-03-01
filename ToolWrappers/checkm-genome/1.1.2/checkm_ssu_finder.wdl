@@ -22,6 +22,9 @@ task CheckmSsuFinder {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     extension: "extension of bins (other files in directory are ignored) (default: fna)"
     evalue: "e-value threshold for identifying hits (default: 1e-05)"

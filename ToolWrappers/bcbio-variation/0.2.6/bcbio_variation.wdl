@@ -79,7 +79,7 @@ task Bcbiovariation {
     String count_males
     String count_read_events
     String count_reads
-    String countrods_prints_counts
+    String countrods_prints_encountered
     String count_rods_by_ref
     String reference_dot
     String error_throwing
@@ -145,7 +145,7 @@ task Bcbiovariation {
       ~{count_males} \
       ~{count_read_events} \
       ~{count_reads} \
-      ~{countrods_prints_counts} \
+      ~{countrods_prints_encountered} \
       ~{count_rods_by_ref} \
       ~{reference_dot} \
       ~{error_throwing} \
@@ -220,6 +220,9 @@ task Bcbiovariation {
       ~{if defined(max_runtime) then ("-maxRuntime " +  '"' + max_runtime + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     analysis_type: "Name of the tool to run"
     arg_file: "Reads arguments from the\\nspecified file"
@@ -298,7 +301,7 @@ task Bcbiovariation {
     count_males: "Walks over the input data set, calculating the number of reads seen from male samples \\nfor diagnostic purposes."
     count_read_events: "Walks over the input data set, counting the number of read events (from the CIGAR \\noperator)"
     count_reads: "Walks over the input data set, calculating the number of reads seen for diagnostic "
-    countrods_prints_counts: "CountRODs                     Prints out counts of the number of reference ordered data objects encountered."
+    countrods_prints_encountered: "CountRODs                     Prints out counts of the number of reference ordered data objects encountered."
     count_rods_by_ref: "Prints out counts of the number of reference ordered data objects encountered along the "
     reference_dot: "CountTerminusEvent            Walks over the input data set, counting the number of reads ending in "
     error_throwing: "A walker that simply throws errors."

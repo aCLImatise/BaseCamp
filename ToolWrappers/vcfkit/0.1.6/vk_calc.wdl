@@ -14,6 +14,9 @@ task VkCalc {
       ~{spectrum} \
       ~{if (frequency) then "--frequency" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     frequency: ""
     genotypes: ""

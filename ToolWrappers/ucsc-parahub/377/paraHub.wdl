@@ -30,6 +30,9 @@ task ParaHub {
       ~{if defined(ram_unit) then ("-ramUnit " +  '"' + ram_unit + '"') else ""} \
       ~{if defined(default_job_ram) then ("-defaultJobRam " +  '"' + default_job_ram + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     spokes: "Number of processes that feed jobs to nodes - default 30."
     job_check_period: "Minutes between checking on job - default 10."

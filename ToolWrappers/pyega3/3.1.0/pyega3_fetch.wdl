@@ -22,6 +22,9 @@ task Pyega3Fetch {
       ~{if defined(retry_wait) then ("--retry-wait " +  '"' + retry_wait + '"') else ""} \
       ~{if (save_to) then "--saveto" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_name: "The reference sequence name, for example 'chr1', '1',\\nor 'chrX'. If unspecified, all data is returned."
     reference_md_five: "The MD5 checksum uniquely representing the requested\\nreference sequence as a lower-case hexadecimal string,\\ncalculated as the MD5 of the upper-case sequence\\nexcluding all whitespace characters."

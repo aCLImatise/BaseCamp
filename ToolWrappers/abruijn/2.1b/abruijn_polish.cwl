@@ -3,12 +3,12 @@ id: abruijn_polish.cwl
 inputs:
 - id: in_path_file_verbose
   doc: path to the file with verbose log [default = not set]
-  type: File
+  type: File?
   inputBinding:
     prefix: -v
 - id: in_number_parallel_threads
   doc: number of parallel threads [default = 1]
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_bubbles_file
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - abruijn-polish

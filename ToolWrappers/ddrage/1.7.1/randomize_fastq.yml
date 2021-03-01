@@ -3,41 +3,41 @@ command:
 - randomize_fastq
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: FASTQ
   description: "input and output files; give 1, 2 or 4 filenames:\nGiven 'in.fq',\
     \ read from it and write to stdout. Given\n'in.fq out.fq', read from in.fq and\
     \ write to out.fq.\nGiven 'in1.fq in2.fq out1.fq out2.fq', work on read\npairs\
     \ and be careful with file order (both input files\nfirst!)If the output file\
     \ name ends with '.gz' a\ngizzepd file is written."
-  position: 0
-  name: FASTQ
-  optional: false
 named:
 - !Flag
-  description: overwrite existing output file(s)
+  optional: true
   synonyms:
   - --force
   - -f
+  description: overwrite existing output file(s)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "size of output buffer in bytes [128 MB]. Not used if\nwriting gzipped\
-    \ files.\n"
+  optional: true
   synonyms:
   - --buffersize
   - -b
+  description: "size of output buffer in bytes [128 MB]. Not used if\nwriting gzipped\
+    \ files.\n"
   args: !SimpleFlagArg
     name: BYTES
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: randomize_fastq [-h] [--force] [--buffersize BYTES] FASTQ [FASTQ\
@@ -58,3 +58,4 @@ help_text: "usage: randomize_fastq [-h] [--force] [--buffersize BYTES] FASTQ [FA
   \                        writing gzipped files.\n"
 generated_using:
 - --help
+docker_image:

@@ -3,39 +3,42 @@ command:
 - kocos.pl
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: BIGRAM
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: Specify the target word directly on command line as a literal.
+  optional: true
   synonyms:
   - --literal
+  description: Specify the target word directly on command line as a literal.
   args: !SimpleFlagArg
     name: LITERAL
-  optional: true
 - !Flag
-  description: "Specify a file containing Perl regular expression/s that define\n\
-    the target word."
+  optional: true
   synonyms:
   - --regex
+  description: "Specify a file containing Perl regular expression/s that define\n\
+    the target word."
   args: !SimpleFlagArg
     name: REGEXFILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --order
   description: "Specify the value of K (K>0) to find the kth order co-occurrences.\n\
     A Kth order co-occurrence is a word that co-occurs with a (K-1)th\norder co-occurrence\
     \ of the target word.\nBy default, the value of K is set to 1 which simply lists\
     \ the\nwords that co-occur with a given target word. When K is 2, all words\n\
     that co-occur with the words that co-occur with the target word are\nshown, and\
     \ so on for higher orders."
-  synonyms:
-  - --order
   args: !SimpleFlagArg
     name: K
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --trace
   description: "Specify the name of a TRACEFILE to see a detailed trace report\nshowing\
     \  the chains of co-occurrences. A chain shows how a Kth\norder co-occurrence\
     \ is reached as a sequence of K lower order\nco-occurrences.\ne.g. WORD->First->Second->Third..->Kth\n\
@@ -43,27 +46,24 @@ named:
     \ order co-occurrence of WORD which co-occurs\nwith 'First'. 'Third' is a third\
     \ order co-occurrence of WORD which\nco-occurs with 'Second' and so on until K\
     \ is reached."
-  synonyms:
-  - --trace
   args: !SimpleFlagArg
     name: TRACEFILE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: To display this message.
+  optional: true
   synonyms:
   - --help
+  description: To display this message.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: "To display the version information.\n"
+  optional: true
   synonyms:
   - --version
+  description: "To display the version information.\n"
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage:  kocos.pl [OPTIONS] BIGRAM \nDisplays the kth order Co-occurrences\
   \ of a given target word.\nTarget word should be specified via --literal or --regex\
   \ option.\n\nBIGRAM\n\tA list of bigrams formatted like the output (extended or\
@@ -86,3 +86,4 @@ help_text: "Usage:  kocos.pl [OPTIONS] BIGRAM \nDisplays the kth order Co-occurr
   \        To display the version information.\n"
 generated_using:
 - --help
+docker_image:

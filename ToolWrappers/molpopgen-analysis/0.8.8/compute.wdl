@@ -18,6 +18,9 @@ task Compute {
       ~{if (_pretty_output) then "-V" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     write_results_outfile: ": write results to outfile"
     use_nth_sequence: ": use the nth sequence in the data as an outgroup"

@@ -2,8 +2,8 @@ version 1.0
 
 task TomboPlotClusterMostSignificant {
   input {
-    Boolean? control_fast_five_based_irs
     Array[Int] fast_five_based_irs
+    Array[Int] control_fast_five_based_irs
     File? statistics_filename
     File? genome_fast_a
     Int? processes
@@ -18,8 +18,8 @@ task TomboPlotClusterMostSignificant {
   }
   command <<<
     tombo plot cluster_most_significant \
-      ~{if (control_fast_five_based_irs) then "--control-fast5-basedirs" else ""} \
       ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
+      ~{if defined(control_fast_five_based_irs) then ("--control-fast5-basedirs " +  '"' + control_fast_five_based_irs + '"') else ""} \
       ~{if defined(statistics_filename) then ("--statistics-filename " +  '"' + statistics_filename + '"') else ""} \
       ~{if defined(genome_fast_a) then ("--genome-fasta " +  '"' + genome_fast_a + '"') else ""} \
       ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""} \
@@ -32,9 +32,12 @@ task TomboPlotClusterMostSignificant {
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    control_fast_five_based_irs: "CONTROL_FAST5_BASEDIRS\\n[CONTROL_FAST5_BASEDIRS ...]\\n--statistics-filename\\nSTATISTICS_FILENAME\\n[--genome-fasta GENOME_FASTA]\\n[--processes PROCESSES]\\n[--num-regions NUM_REGIONS]\\n[--num-bases NUM_BASES]\\n[--slide-span SLIDE_SPAN]\\n[--pdf-filename PDF_FILENAME]\\n[--r-data-filename R_DATA_FILENAME]\\n[--corrected-group CORRECTED_GROUP]\\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\\n[--quiet] [--help]"
     fast_five_based_irs: "Directories containing fast5 files."
+    control_fast_five_based_irs: "Set of directories containing fast5 files for control\\nreads, containing only canonical nucleotides."
     statistics_filename: "File to save/load genomic base anchored statistics."
     genome_fast_a: "FASTA file used to re-squiggle. For faster sequence\\naccess."
     processes: "Number of processes. Default: 1"

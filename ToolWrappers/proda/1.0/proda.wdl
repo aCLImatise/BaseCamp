@@ -18,6 +18,9 @@ task Proda {
       ~{if (silent) then "-silent" else ""} \
       ~{if defined(l) then ("-L " +  '"' + l + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: ""
     tran: ""

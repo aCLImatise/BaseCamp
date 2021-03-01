@@ -3,12 +3,12 @@ id: shigatyper_read1.cwl
 inputs:
 - id: in_verbose
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_n
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -n
 - id: in_read_one
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - shigatyper

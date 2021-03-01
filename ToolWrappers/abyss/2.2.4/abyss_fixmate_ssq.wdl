@@ -34,6 +34,9 @@ task Abyssfixmatessq {
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_qname: "set the qname to * [default]"
     qname: "do not alter the qname"

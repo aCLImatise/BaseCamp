@@ -4,6 +4,9 @@ task Obsprint {
   command <<<
     obs_print
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

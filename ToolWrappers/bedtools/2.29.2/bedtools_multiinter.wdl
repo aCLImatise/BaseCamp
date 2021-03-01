@@ -22,6 +22,9 @@ task BedtoolsMultiinter {
       ~{if (examples) then "-examples" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cluster: "Invoke Ryan Layers's clustering algorithm."
     header: "Print a header line.\\n(chrom/start/end + names of each file)."

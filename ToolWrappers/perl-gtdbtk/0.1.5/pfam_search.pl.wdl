@@ -38,6 +38,9 @@ task PfamSearchpl {
       ~{if defined(dir) then ("-dir " +  '"' + dir + '"') else ""} \
       ~{if defined(fast_a) then ("-fasta " +  '"' + fast_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: ": output file, otherwise send to STDOUT"
     clan_overlap: ": show overlapping hits within clan member families (applies to Pfam-A families only)"

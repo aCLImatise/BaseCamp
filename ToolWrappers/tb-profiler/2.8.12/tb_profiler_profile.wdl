@@ -58,6 +58,9 @@ task TbprofilerProfile {
       ~{if (no_flag_stat) then "--no_flagstat" else ""} \
       ~{if (no_delly) then "--no_delly" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     platform: "NGS Platform used to generate data (default: illumina)"
     read_one: "First read file (default: None)"

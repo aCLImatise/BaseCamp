@@ -12,6 +12,9 @@ task MmseqsMaskbygff {
       ~{if (id_offset) then "--id-offset" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff_type: "type in the GFF file to filter by"
     id_offset: "0               numeric ids in index file are offset by this value"

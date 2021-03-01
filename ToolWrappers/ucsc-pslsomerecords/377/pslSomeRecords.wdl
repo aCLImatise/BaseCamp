@@ -14,6 +14,9 @@ task PslSomeRecords {
       ~{if (not) then "-not" else ""} \
       ~{if (t_too) then "-tToo" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     not: "- include psl if name is NOT in list"
     t_too: "- if set, the list file is two column, qName and tName.\\nIn this case only records matching on both q and t are\\noutput\\n"

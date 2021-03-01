@@ -12,6 +12,9 @@ task PoppunkExtractDistancespy {
       ~{if defined(distances) then ("--distances " +  '"' + distances + '"') else ""} \
       ~{if defined(name_output_file) then ("--output " +  '"' + name_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     distances: "Prefix of input pickle and numpy file of pre-\\ncalculated distances (required)"
     name_output_file: "Name of output file"

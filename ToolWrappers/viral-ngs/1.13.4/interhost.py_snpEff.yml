@@ -4,79 +4,79 @@ command:
 - snpEff
 positional:
 - !Positional
-  description: Annotate variants in VCF file with translation consequences using snpEff.
+  optional: false
   position: 0
   name: emailAddress
-  optional: false
+  description: Annotate variants in VCF file with translation consequences using snpEff.
 - !Positional
-  description: Input VCF file
+  optional: false
   position: 0
   name: inVcf
-  optional: false
+  description: Input VCF file
 - !Positional
-  description: genome name (snpEff db name, or NCBI accessions)
+  optional: false
   position: 1
   name: genomes
-  optional: false
+  description: genome name (snpEff db name, or NCBI accessions)
 - !Positional
-  description: Output VCF file
+  optional: false
   position: 2
   name: outVcf
-  optional: false
+  description: Output VCF file
 - !Positional
+  optional: false
+  position: 3
+  name: emailAddress
   description: "Your email address. To access the Genbank\nCoreNucleotide database,\
     \ NCBI requires you to specify\nyour email address with each request. In case\
     \ of\nexcessive usage of the E-utilities, NCBI will attempt\nto contact a user\
     \ at the email address provided before\nblocking access."
-  position: 3
-  name: emailAddress
-  optional: false
 named:
 - !Flag
-  description: 'Base directory for temp files. [default: /tmp]'
+  optional: true
   synonyms:
   - --tmp_dir
+  description: 'Base directory for temp files. [default: /tmp]'
   args: !SimpleFlagArg
     name: TMP_DIR
-  optional: true
 - !Flag
-  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
-    \ to delete all temp files at the end, even\nif there's a failure."
+  optional: true
   synonyms:
   - --tmp_dirKeep
+  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
+    \ to delete all temp files at the end, even\nif there's a failure."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Verboseness of output. [default: DEBUG]'
+  optional: true
   synonyms:
   - --loglevel
+  description: 'Verboseness of output. [default: DEBUG]'
   args: !ChoiceFlagArg
     choices: !!set
-      CRITICAL:
-      ERROR:
       INFO:
-      WARNING:
       DEBUG:
+      CRITICAL:
+      WARNING:
+      ERROR:
       EXCEPTION:
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
   - -V
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: interhost.py subcommand snpEff [-h] [--tmp_dir TMP_DIR] [--tmp_dirKeep]\n\
   \                                      [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
   \                                      [--version]\n                           \
@@ -99,3 +99,4 @@ help_text: "usage: interhost.py subcommand snpEff [-h] [--tmp_dir TMP_DIR] [--tm
   \ version number and exit\n"
 generated_using:
 - --help
+docker_image:

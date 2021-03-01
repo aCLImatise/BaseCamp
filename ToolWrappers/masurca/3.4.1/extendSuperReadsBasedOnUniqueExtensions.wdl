@@ -12,6 +12,9 @@ task ExtendSuperReadsBasedOnUniqueExtensions {
       ~{if defined(dir) then ("--dir " +  '"' + dir + '"') else ""} \
       ~{if defined(mer) then ("--mer " +  '"' + mer + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "*Directory where the super-reads work is done"
     mer: "*Length of mer"

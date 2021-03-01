@@ -12,6 +12,9 @@ task SharedPoly {
       ~{if (sample_size_first) then "-n" else ""} \
       ~{if (verbose_output) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     infile_sequence_data: "infile (for sequence data in FASTA format)"
     sample_size_first: "[integer] (sample size of the first partition in the data)"

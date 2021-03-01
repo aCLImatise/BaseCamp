@@ -8,6 +8,9 @@ task RbtVcffixiupacalleles {
     rbt vcf_fix_iupac_alleles \
       ~{rbt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rbt: ""
   }

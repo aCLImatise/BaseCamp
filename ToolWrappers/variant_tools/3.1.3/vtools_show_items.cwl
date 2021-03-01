@@ -3,12 +3,12 @@ id: vtools_show_items.cwl
 inputs:
 - id: in_v
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -v
 - id: in_l
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -l
 - id: in_v_tools
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vtools

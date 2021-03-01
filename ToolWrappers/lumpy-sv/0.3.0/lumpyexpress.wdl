@@ -2,11 +2,11 @@ version 1.0
 
 task Lumpyexpress {
   input {
-    File? full_bam_files
-    File? split_reads_separated
-    File? discordant_reads_separated
+    File? full_bam_cram
+    File? split_reads_comma
+    File? discordant_reads_comma
     File? indexed_reference_genome
-    File? bedpe_file_depths
+    File? bedpe_file_comma
     File? output_file
     File? bed_file_exclude
     Boolean? output_probability_curves
@@ -19,11 +19,11 @@ task Lumpyexpress {
   }
   command <<<
     lumpyexpress \
-      ~{if defined(full_bam_files) then ("-B " +  '"' + full_bam_files + '"') else ""} \
-      ~{if defined(split_reads_separated) then ("-S " +  '"' + split_reads_separated + '"') else ""} \
-      ~{if defined(discordant_reads_separated) then ("-D " +  '"' + discordant_reads_separated + '"') else ""} \
+      ~{if defined(full_bam_cram) then ("-B " +  '"' + full_bam_cram + '"') else ""} \
+      ~{if defined(split_reads_comma) then ("-S " +  '"' + split_reads_comma + '"') else ""} \
+      ~{if defined(discordant_reads_comma) then ("-D " +  '"' + discordant_reads_comma + '"') else ""} \
       ~{if defined(indexed_reference_genome) then ("-R " +  '"' + indexed_reference_genome + '"') else ""} \
-      ~{if defined(bedpe_file_depths) then ("-d " +  '"' + bedpe_file_depths + '"') else ""} \
+      ~{if defined(bedpe_file_comma) then ("-d " +  '"' + bedpe_file_comma + '"') else ""} \
       ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""} \
       ~{if defined(bed_file_exclude) then ("-x " +  '"' + bed_file_exclude + '"') else ""} \
       ~{if (output_probability_curves) then "-P" else ""} \
@@ -34,12 +34,15 @@ task Lumpyexpress {
       ~{if defined(path_lumpyexpressconfig_filedefault) then ("-K " +  '"' + path_lumpyexpressconfig_filedefault + '"') else ""} \
       ~{if (verbose) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    full_bam_files: "full BAM or CRAM file(s) (comma separated) (required)"
-    split_reads_separated: "split reads BAM file(s) (comma separated)"
-    discordant_reads_separated: "discordant reads BAM files(s) (comma separated)"
+    full_bam_cram: "full BAM or CRAM file(s) (comma separated) (required)"
+    split_reads_comma: "split reads BAM file(s) (comma separated)"
+    discordant_reads_comma: "discordant reads BAM files(s) (comma separated)"
     indexed_reference_genome: "indexed reference genome fasta file (recommended for CRAMs)"
-    bedpe_file_depths: "bedpe file of depths (comma separated and prefixed by sample:)\\ne.g sample_x:/path/to/sample_x.bedpe,sample_y:/path/to/sample_y.bedpe"
+    bedpe_file_comma: "bedpe file of depths (comma separated and prefixed by sample:)\\ne.g sample_x:/path/to/sample_x.bedpe,sample_y:/path/to/sample_y.bedpe"
     output_file: "output file [fullBam.bam.vcf]"
     bed_file_exclude: "BED file to exclude"
     output_probability_curves: "output probability curves for each variant"

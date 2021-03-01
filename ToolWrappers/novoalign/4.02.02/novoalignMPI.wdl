@@ -4,6 +4,9 @@ task NovoalignMPI {
   command <<<
     novoalignMPI
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

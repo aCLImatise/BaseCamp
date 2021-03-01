@@ -24,6 +24,9 @@ task BedHighCoverage {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Input BAM file."
     cut_off: "Minimum depth to consider a base 'high coverage'."

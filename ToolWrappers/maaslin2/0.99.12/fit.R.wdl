@@ -4,6 +4,9 @@ task FitR {
   command <<<
     fit_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -54,6 +54,9 @@ task PathConsensus {
       ~{if defined(di_align_m) then ("--dialign-m " +  '"' + di_align_m + '"') else ""} \
       ~{if defined(di_align_p) then ("--dialign-p " +  '"' + di_align_p + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: "k-mer size"
     dist_error: "acceptable error of a distance estimate\\ndefault: 6 bp"

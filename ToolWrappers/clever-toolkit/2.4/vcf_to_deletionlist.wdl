@@ -12,6 +12,9 @@ task Vcftodeletionlist {
       ~{if (include_deletions_marked) then "-i" else ""} \
       ~{if (print_list_genotypes) then "-g" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     maximal_length_considered: "Maximal length to be considered."
     include_deletions_marked: "Include deletions marked as IMPRECISE."

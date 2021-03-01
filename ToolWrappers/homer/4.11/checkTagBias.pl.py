@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, Directory
+
+Checktagbias_Pl_V0_1_0 = CommandToolBuilder(tool="checkTagBias.pl", base_command=["checkTagBias.pl"], inputs=[ToolInput(tag="in_start", input_type=Boolean(optional=True), prefix="-start", doc=InputDocumentation(doc="<#> (offset to start frequency calculation, default=-50)")), ToolInput(tag="in_end", input_type=Boolean(optional=True), prefix="-end", doc=InputDocumentation(doc="<#> (offset to end frequency calculation, default=200)")), ToolInput(tag="in_gc_start", input_type=Boolean(optional=True), prefix="-gcstart", doc=InputDocumentation(doc="<#> (offset to start GC% calculation, default=0)")), ToolInput(tag="in_gc_end", input_type=Boolean(optional=True), prefix="-gcend", doc=InputDocumentation(doc="<#> (offset to end GC% calculation, default=100)")), ToolInput(tag="in_keep", input_type=Boolean(optional=True), prefix="-keep", doc=InputDocumentation(doc="(do not delete sequence files for each tag position)")), ToolInput(tag="in_three_p", input_type=Boolean(optional=True), prefix="-3p", doc=InputDocumentation(doc="(if tags have lengths, align them at the 3' end)")), ToolInput(tag="in_pos", input_type=String(optional=True), prefix="-pos", doc=InputDocumentation(doc="(only check positive or negative strands)")), ToolInput(tag="in_skip_gc", input_type=Boolean(optional=True), prefix="-skipGC", doc=InputDocumentation(doc="(skip GC% calculation)")), ToolInput(tag="in_skip_freq", input_type=Boolean(optional=True), prefix="-skipFreq", doc=InputDocumentation(doc="(skip nucleotide frequency calculation)")), ToolInput(tag="in_prefix", input_type=Directory(optional=True), prefix="-prefix", doc=InputDocumentation(doc="(output files will start with prefix name, default: directory name)")), ToolInput(tag="in_mask", input_type=Boolean(optional=True), prefix="-mask", doc=InputDocumentation(doc="(use repeat-masked genome)")), ToolInput(tag="in_tag_freq_dot_txt", input_type=String(), position=0, doc=InputDocumentation(doc="tagGCcontent.txt")), ToolInput(tag="in_tag_cpg_content_dot_txt", input_type=String(), position=1, doc=InputDocumentation(doc="chr(N).tags.tsv.seq (if -keep is used)"))], outputs=[ToolOutput(tag="out_prefix", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_prefix", type_hint=File()), doc=OutputDocumentation(doc="(output files will start with prefix name, default: directory name)"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Checktagbias_Pl_V0_1_0().translate("wdl", allow_empty_container=True)
+

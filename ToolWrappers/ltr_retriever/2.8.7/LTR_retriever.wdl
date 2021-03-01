@@ -7,7 +7,7 @@ task LTRRetriever {
     Boolean? in_finder
     Boolean? in_mge_scan
     Boolean? non_tgc_a
-    Boolean? verbose_slash_v
+    Boolean? verbose
     Boolean? no_an_no
     Boolean? miss_char
     Boolean? n_screen
@@ -33,7 +33,6 @@ task LTRRetriever {
     Boolean? neutral_mutation_rate
     Boolean? step
     Boolean? threads
-    Boolean? help_slash_h
   }
   command <<<
     LTR_retriever \
@@ -42,7 +41,7 @@ task LTRRetriever {
       ~{if (in_finder) then "-infinder" else ""} \
       ~{if (in_mge_scan) then "-inmgescan" else ""} \
       ~{if (non_tgc_a) then "-nonTGCA" else ""} \
-      ~{if (verbose_slash_v) then "-verbose/-v" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
       ~{if (no_an_no) then "-noanno" else ""} \
       ~{if (miss_char) then "-misschar" else ""} \
       ~{if (n_screen) then "-Nscreen" else ""} \
@@ -67,16 +66,18 @@ task LTRRetriever {
       ~{if (teh_mm) then "-TEhmm" else ""} \
       ~{if (neutral_mutation_rate) then "-u" else ""} \
       ~{if (step) then "-step" else ""} \
-      ~{if (threads) then "-threads" else ""} \
-      ~{if (help_slash_h) then "-help/-h" else ""}
+      ~{if (threads) then "-threads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "[File]     specify the genome sequence file (FASTA)"
     in_harvest: "[File]     LTR-RT candidates from LTRharvest"
     in_finder: "[File]     LTR-RT candidates from LTR_FINDER"
     in_mge_scan: "[File]     LTR-RT candidates from MGEScan_LTR"
     non_tgc_a: "[File]     Non-canonical LTR-RT candidates from LTRharvest"
-    verbose_slash_v: "retain intermediate outputs (developer mode)"
+    verbose: "retain intermediate outputs (developer mode)"
     no_an_no: "disable whole genome LTR-RT annotation (no GFF output)"
     miss_char: "[CHR]      specify the ambiguous character (default N)"
     n_screen: "disable filtering ambiguous sequence in candidates"
@@ -102,7 +103,6 @@ task LTRRetriever {
     neutral_mutation_rate: "[FLOAT]    neutral mutation rate (per bp per ya) (default 1.3e-8 (from rice))"
     step: "[STRING]   restart the program from a particular step. Existing outputs will be overwritten. Options:\\nInit (default, from the beginning);\\nMajor (Tandem repeat cleanup finished, structrual analyses next)\\nTrunc (Structural analyses finished, truncated LTR recycle next)\\nPromask (Truncated LTR recycle finished, protein contamination cleanup next)\\nLibrary (Protein contamination cleanup finished, initial library construction next)\\nNext (Initial library construction finished, non-TGCA analyses next)"
     threads: "[INT]      number of threads (≤ total available threads, default 4)"
-    help_slash_h: "display this help information"
   }
   output {
     File out_stdout = stdout()

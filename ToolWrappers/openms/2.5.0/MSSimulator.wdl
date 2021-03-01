@@ -30,6 +30,9 @@ task MSSimulator {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*       Input protein sequences (valid formats: 'FASTA')"
     out: "Output: simulated MS raw (profile) data (valid formats: 'mzML')"

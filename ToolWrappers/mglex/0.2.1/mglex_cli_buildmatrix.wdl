@@ -14,6 +14,9 @@ task MglexcliBuildmatrix {
       ~{if defined(identifiers) then ("--identifiers " +  '"' + identifiers + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seeds: "Space-separated sequence identifier per line"
     identifiers: "Sequence identifiers; one per line; default standard input"

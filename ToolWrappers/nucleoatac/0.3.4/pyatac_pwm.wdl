@@ -30,6 +30,9 @@ task PyatacPwm {
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "Accepts fasta file"
     bam: "Reads around which to get nucleotide freq"

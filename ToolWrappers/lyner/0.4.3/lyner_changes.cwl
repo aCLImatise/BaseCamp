@@ -1,15 +1,11 @@
 class: CommandLineTool
 id: lyner_changes.cwl
-inputs:
-- id: in_mode
-  doc: '[likelihood|cdf]'
-  type: boolean
-  inputBinding:
-    prefix: --mode
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - lyner

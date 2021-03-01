@@ -3,7 +3,7 @@ version 1.0
 task CreateSuperReadsForDirectoryperl {
   input {
     Int? length_kmer_use
-    Int? size_when_running
+    Int? size_table_when
     Int? number_run_jellyfish
     File? k_unit_igs_file
     File? mean_and_stdev_by_prefix_file
@@ -24,7 +24,7 @@ task CreateSuperReadsForDirectoryperl {
   command <<<
     createSuperReadsForDirectory_perl \
       ~{if defined(length_kmer_use) then ("-l " +  '"' + length_kmer_use + '"') else ""} \
-      ~{if defined(size_when_running) then ("-s " +  '"' + size_when_running + '"') else ""} \
+      ~{if defined(size_table_when) then ("-s " +  '"' + size_table_when + '"') else ""} \
       ~{if defined(number_run_jellyfish) then ("-t " +  '"' + number_run_jellyfish + '"') else ""} \
       ~{if defined(k_unit_igs_file) then ("-kunitigsfile " +  '"' + k_unit_igs_file + '"') else ""} \
       ~{if defined(mean_and_stdev_by_prefix_file) then ("-mean-and-stdev-by-prefix-file " +  '"' + mean_and_stdev_by_prefix_file + '"') else ""} \
@@ -42,9 +42,12 @@ task CreateSuperReadsForDirectoryperl {
       ~{if (close_gaps) then "-closegaps" else ""} \
       ~{if (time) then "-time" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     length_kmer_use: ": the length of the k-mer to use for the calculations (31)"
-    size_when_running: ": the size of the table when running jellyfish (2,000,000,000)"
+    size_table_when: ": the size of the table when running jellyfish (2,000,000,000)"
     number_run_jellyfish: ": the number of processors to run jellyfish and create_k_unitigs (16)"
     k_unit_igs_file: ": a user-given k-unitigs file; otherwise we calculate"
     mean_and_stdev_by_prefix_file: ": a file giving mate info about each\\nlibrary. Each line is the 2-letter prefix for the reads\\nin the library followed by its mean and stdev. This\\nfile is mandatory unless -jumplibraryreads is specified"

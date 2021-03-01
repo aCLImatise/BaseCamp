@@ -42,6 +42,9 @@ task Xcmp {
       ~{if defined(always_hap_cmp) then ("--always-hapcmp " +  '"' + always_hap_cmp + '"') else ""} \
       ~{if defined(no_hap_cmp) then ("--no-hapcmp " +  '"' + no_hap_cmp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_v_cfs: "Two VCF files to compare (use file:sample\\nfor a specific sample column)."
     arg_output_variant: "[ --output-vcf ] arg          Output variant comparison results to VCF."

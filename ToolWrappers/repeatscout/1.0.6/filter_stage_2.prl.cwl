@@ -4,12 +4,12 @@ inputs:
 - id: in_cat
   doc: "The RepeatMasker output file. It can either be a .cat file or a .out\nfile,\
     \ but a .out file is preferred."
-  type: File
+  type: File?
   inputBinding:
     prefix: --cat
 - id: in_thresh
   doc: The number of times a sequence must appear for it to be reported.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --thresh
 outputs:
@@ -19,9 +19,10 @@ outputs:
 - id: out_cat
   doc: "The RepeatMasker output file. It can either be a .cat file or a .out\nfile,\
     \ but a .out file is preferred."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_cat)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - filter-stage-2.prl

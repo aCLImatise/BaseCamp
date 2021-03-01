@@ -12,7 +12,7 @@ task H5repack {
     Int? indexed
     Int? shared_object_header
     String? minimum
-    File? file
+    File? name_file_e
     File? u_block
     Int? block
     Int? metadata_block_size
@@ -45,7 +45,7 @@ task H5repack {
       ~{if defined(indexed) then ("--indexed " +  '"' + indexed + '"') else ""} \
       ~{if defined(shared_object_header) then ("-s " +  '"' + shared_object_header + '"') else ""} \
       ~{if defined(minimum) then ("--minimum " +  '"' + minimum + '"') else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(name_file_e) then ("--file " +  '"' + name_file_e + '"') else ""} \
       ~{if defined(u_block) then ("--ublock " +  '"' + u_block + '"') else ""} \
       ~{if defined(block) then ("--block " +  '"' + block + '"') else ""} \
       ~{if defined(metadata_block_size) then ("--metadata_block_size " +  '"' + metadata_block_size + '"') else ""} \
@@ -60,6 +60,9 @@ task H5repack {
       ~{if defined(fs_threshold) then ("--fs_threshold " +  '"' + fs_threshold + '"') else ""} \
       ~{if defined(fs_pagesize) then ("--fs_pagesize " +  '"' + fs_pagesize + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Verbose mode, print object information"
     native: "Use a native HDF5 type when repacking"
@@ -71,7 +74,7 @@ task H5repack {
     indexed: "Minimum number of links in the indexed format"
     shared_object_header: "[:F], --ssize=S[:F] Shared object header message minimum size"
     minimum: "Do not apply the filter to datasets smaller than M"
-    file: "Name of file E with the -f and -l options"
+    name_file_e: "Name of file E with the -f and -l options"
     u_block: "Name of file U with user block data to be added"
     block: "Size of user block to be added"
     metadata_block_size: "Metadata block size for H5Pset_meta_block_size"

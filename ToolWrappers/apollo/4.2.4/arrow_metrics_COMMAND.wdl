@@ -8,6 +8,9 @@ task ArrowMetricsCOMMAND {
     arrow metrics COMMAND \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     args: ""
   }

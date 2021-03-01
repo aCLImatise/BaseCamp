@@ -22,6 +22,9 @@ task Meme2meme {
       ~{if (force_url) then "-forceurl" else ""} \
       ~{if (x_alph) then "-xalph" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     consensus: "numeric names are swapped for an IUPAC\\nconsensus; default: use existing names"
     numbers: "use numbers instead of strings for motif names;\\ndefault: use existing ID"

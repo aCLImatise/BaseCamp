@@ -4,20 +4,20 @@ inputs:
 - id: in_build
   doc: "[BUILD]       Output sequence at specified build of reference\ngenome. The\
     \ primary reference genome of the project\nwill be used if by default."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --build
 - id: in_numbered
   doc: "[{left,right}]\nIf specified, add position of the first or last\nbasepair\
     \ of each line to the left or right of the\nline, and insert a space at every\
     \ 10 basepair"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --numbered
 - id: in_char_per_line
   doc: "Number of characters (excluding space and leading\nnumbers) per line. Default\
     \ to 70 in regular and 60 in\nnumbered format."
-  type: long
+  type: long?
   inputBinding:
     prefix: --char_per_line
 - id: in_transcribe
@@ -28,12 +28,12 @@ inputs:
     \ mRNA sequence will be\nprinted regardless of the bounaries of specified\nregions.\
     \ If one or more names (refGene.name) are\nspecified, only specified genes will\
     \ be translated."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --transcribe
 - id: in_t_tou
   doc: Print U for T for RNA sequence. Otherwise use T.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --TtoU
 - id: in_translate
@@ -43,7 +43,7 @@ inputs:
     sequence to protein sequence. The complete protein\nsequence will be printed regardless\
     \ of the boundaries\nof specified regions. If one or more names\n(refGene.name)\
     \ are specified, only specified genes\nwill be translated."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --translate
 - id: in_mark
@@ -52,29 +52,29 @@ inputs:
     \ sequence\n(e.g. TCGGA) in red in the output. If a variant is\nspecified, the\
     \ changed nucleotide or amino acid will\nbe printed. Currently only single nucleotide\n\
     polymorphisms are supported."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mark
 - id: in_mark_complement
   doc: "If set, also try to mark the complement of the\nspecified sequence"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mark_complement
 - id: in_mark_reverse
   doc: "If set, also try to mark the reverse sequence of the\nspecified sequence.\
     \ If both mark_complemnt and\nmark_reverse are set, four different sequences will\
     \ be\nsearched."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mark_reverse
 - id: in_first_transcript
   doc: "If set, only display the first transcript of RNA or\nProtein sequence"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --first_transcript
 - id: in_show_transcript
   doc: Put transcript name before transcript
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --show_transcript
 - id: in_marked_region
@@ -83,24 +83,24 @@ inputs:
     \ m (m=n if only one number is\nspecified) of the marked region. The sequence\
     \ itself\nis no longer marked. This option is not yet supported\nin all combinations\
     \ of options."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --marked_region
 - id: in_hide_unmatched
   doc: "If set, only display regions with marked variants or\nsequences"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --hide_unmatched
 - id: in_zero_based
   doc: "If set, user input is zero based and will be\ntranslated to 1-based coordinates\
     \ before query. The\noutput is always 1-based"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --zero_based
 - id: in_verbosity
   doc: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
     \ to standard output (default to\n1).\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbosity
 - id: in_regions
@@ -119,6 +119,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vtools_report

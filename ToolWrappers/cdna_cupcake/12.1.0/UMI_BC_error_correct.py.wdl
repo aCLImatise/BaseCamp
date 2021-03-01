@@ -18,6 +18,9 @@ task UMIBCErrorCorrectpy {
       ~{if defined(drop_seq_clean_report) then ("--dropseq_clean_report " +  '"' + drop_seq_clean_report + '"') else ""} \
       ~{if defined(drop_seq_synthesis_report) then ("--dropseq_synthesis_report " +  '"' + drop_seq_synthesis_report + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bc_rank_file: "(Optional) cell barcode rank file from short read data"
     only_top_ranked: "(Optional) only output those that are top-ranked. Must\\nhave --bc_rank_file."

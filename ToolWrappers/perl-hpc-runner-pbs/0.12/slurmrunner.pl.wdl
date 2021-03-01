@@ -3,10 +3,10 @@ version 1.0
 task Slurmrunnerpl {
   input {
     Boolean? in_file
-    Boolean? config_file
     Boolean? module
     Boolean? after_ok
     Boolean? man
+    Boolean? cpus_per_task
     Boolean? commands_per_node
     Boolean? nodes_count
     Boolean? partition
@@ -36,10 +36,10 @@ task Slurmrunnerpl {
   command <<<
     slurmrunner_pl \
       ~{if (in_file) then "--infile" else ""} \
-      ~{if (config_file) then "--configfile" else ""} \
       ~{if (module) then "--module" else ""} \
       ~{if (after_ok) then "--afterok" else ""} \
       ~{if (man) then "--man" else ""} \
+      ~{if (cpus_per_task) then "--cpus_per_task" else ""} \
       ~{if (commands_per_node) then "--commands_per_node" else ""} \
       ~{if (nodes_count) then "--nodes_count" else ""} \
       ~{if (partition) then "--partition" else ""} \
@@ -66,12 +66,15 @@ task Slurmrunnerpl {
       ~{if (process_table) then "--process_table" else ""} \
       ~{if (plugins) then "--plugins" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "- Str. File of commands separated by newline.\\nThe command 'wait' indicates all previous\\ncommands should finish before starting the\\nnext one."
-    config_file: "- Path|Undef."
     module: "- ArrayRef. List of modules to load ex. R2,\\nsamtools, etc"
     after_ok: "- ArrayRef."
     man: "- Bool. Display man page"
+    cpus_per_task: "- Str. Default=4."
     commands_per_node: "- Str. Default=8. Commands to run on each node.\\nThis is not the same as\\nconcurrent_commands_per_node!"
     nodes_count: "- Str. Default=1. Number of nodes requested.\\nYou should only use this if submitting\\nparallel jobs."
     partition: "- Str. Default=. Slurm partition to submit jobs\\nto. Defaults to the partition with the most\\navailable nodes"

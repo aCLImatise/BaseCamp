@@ -4,7 +4,7 @@ inputs:
 - id: in_regex
   doc: "Regex to capture the targeted location in DBN file\n(default: '>.*?(chr[^:]):([0-9]+)-([0-9]+)'\
     \ )"
-  type: File
+  type: File?
   inputBinding:
     prefix: --regex
 - id: in_dbn_input_file
@@ -16,6 +16,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - segmentation-fold-utils

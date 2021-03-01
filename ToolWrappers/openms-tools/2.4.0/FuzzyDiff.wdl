@@ -28,6 +28,9 @@ task FuzzyDiff {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_one: "*         First input file"
     in_two: "*         Second input file"

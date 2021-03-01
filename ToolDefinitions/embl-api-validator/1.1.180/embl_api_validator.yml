@@ -3,119 +3,123 @@ command:
 - embl-api-validator
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: ena_validator
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: files
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: 'genome assembly entries (default: false)'
+  optional: true
   synonyms:
   - -assembly
+  description: 'genome assembly entries (default: false)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Additional Fix :Adds/Fixes DE line(optional) (default: false)'
+  optional: true
   synonyms:
   - -de
+  description: 'Additional Fix :Adds/Fixes DE line(optional) (default: false)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "File format(optional) Values:'embl','genbank','gff3','assembly' (default:\
-    \ embl)"
+  optional: true
   synonyms:
   - -f
+  description: "File format(optional) Values:'embl','genbank','gff3','assembly' (default:\
+    \ embl)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: -filter <prefix> Store entries in <prefix>_good.txt and <prefix>_bad.txt
-    files in the working directory. Entries with errors are stored in the bad file
-    and entries without errors are stored in the good file. (optional)(default :false)
+  optional: true
   synonyms:
   - -filter
-  args: !EmptyFlagArg {}
-  optional: true
+  - -filter
+  description: Store entries in <prefix>_good.txt and <prefix>_bad.txt files in the
+    working directory. Entries with errors are stored in the bad file and entries
+    without errors are stored in the good file. (optional)(default :false)
+  args: !SimpleFlagArg
+    name: prefix
 - !Flag
-  description: "Fixes entries in input files. Stores input files in 'original_files'\
-    \ folder. (optional) (default: false)"
+  optional: true
   synonyms:
   - -fix
+  description: "Fixes entries in input files. Stores input files in 'original_files'\
+    \ folder. (optional) (default: false)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -fix_diagnose
   description: "Creates 'diagnose' folder in the current directory with original entries\
     \ in <filename>_origin file and the fixed entries in <filename>_fixed file. Only\
     \ fixed entries will be stored in these files.(optional)  (default: false)"
-  synonyms:
-  - -fix_diagnose
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Log level(optional) Values : 0(Quiet), 1(Summary), 2(Verbose) (default:
-    1)'
+  optional: true
   synonyms:
   - -l
+  description: 'Log level(optional) Values : 0(Quiet), 1(Summary), 2(Verbose) (default:
+    1)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Runs in low memory usage mode. Writes error logs but does not show
-    message summary(optional) (default: false)'
+  optional: true
   synonyms:
   - -lowmemory
+  description: 'Runs in low memory usage mode. Writes error logs but does not show
+    message summary(optional) (default: false)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'minimum gap length to generate assembly_gap/gap features, use assembly
-    flag to add assembly_gap features (default: 0)'
+  optional: true
   synonyms:
   - -min_gap_length
+  description: 'minimum gap length to generate assembly_gap/gap features, use assembly
+    flag to add assembly_gap features (default: 0)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Adds prefix to report files
+  optional: true
   synonyms:
   - -prefix
+  description: Adds prefix to report files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Remote, is this being run outside the EBI(optional) (default: false)'
+  optional: true
   synonyms:
   - -r
+  description: 'Remote, is this being run outside the EBI(optional) (default: false)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: -skip <errorcode1>,<errorcode2>,... Ignore specified errors.(optional)(default:false)
+  optional: true
   synonyms:
   - -skip
-  args: !EmptyFlagArg {}
-  optional: true
+  - -skip
+  description: ',<errorcode2>,... Ignore specified errors.(optional)(default:false)'
+  args: !SimpleFlagArg
+    name: errorcode1
 - !Flag
-  description: 'Displays implementation version of Jar (default: false)'
+  optional: true
   synonyms:
   - -version
+  description: 'Displays implementation version of Jar (default: false)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Turns on line wrapping in flat file writing (optional)  (default:
-    false)'
+  optional: true
   synonyms:
   - -wrap
+  description: 'Turns on line wrapping in flat file writing (optional)  (default:
+    false)'
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: 'Displays available options (default: false)'
+  optional: true
   synonyms:
   - -help
+  description: 'Displays available options (default: false)'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: ena_validator <files> [options]\n \n  Options:    -assembly   \
@@ -143,3 +147,4 @@ help_text: "Usage: ena_validator <files> [options]\n \n  Options:    -assembly  
   \ {0=SUCCESS, 1=INTERNAL ERROR, 2=INVALID INPUT, 3=VALIDATION ERROR}\n"
 generated_using:
 - --help
+docker_image:

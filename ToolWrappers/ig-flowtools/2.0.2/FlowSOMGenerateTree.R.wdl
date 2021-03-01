@@ -10,6 +10,9 @@ task FlowSOMGenerateTreeR {
       ~{union} \
       ~{normalize}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     union: "Attaching package: 'flowCore'"
     normalize: "Error in if (args[3] == \\\"\\\" || args[3] == \\\"i.e.:1,2,5\\\") { : "

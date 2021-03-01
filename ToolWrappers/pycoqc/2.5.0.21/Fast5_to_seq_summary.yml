@@ -4,90 +4,90 @@ command:
 positional: []
 named:
 - !Flag
-  description: "path of the summary sequencing file where to write the\ndata extracted\
-    \ from the fast5 files"
-  synonyms:
-  - --seq_summary_fn
-  - -s
-  args: !SimpleFlagArg
-    name: SEQ_SUMMARY_FN
   optional: true
-- !Flag
-  description: "Directory containing fast5 files. Can contain multiple\nsubdirectories"
   synonyms:
   - --fast5_dir
   - -f
+  description: "Directory containing fast5 files. Can contain multiple\nsubdirectories"
   args: !SimpleFlagArg
     name: FAST5_DIR
-  optional: true
 - !Flag
-  description: "Maximum number of file to try to parse. 0 to\ndeactivate (default:\
-    \ 0)"
+  optional: true
+  synonyms:
+  - --seq_summary_fn
+  - -s
+  description: "path of the summary sequencing file where to write the\ndata extracted\
+    \ from the fast5 files"
+  args: !SimpleFlagArg
+    name: SEQ_SUMMARY_FN
+- !Flag
+  optional: true
   synonyms:
   - --max_fast5
+  description: "Maximum number of file to try to parse. 0 to\ndeactivate (default:\
+    \ 0)"
   args: !SimpleFlagArg
     name: MAX_FAST5
-  optional: true
 - !Flag
-  description: "Total number of threads to use. 1 thread is used for\nthe reader and\
-    \ 1 for the writer. Minimum 3 (default:\n4)"
+  optional: true
   synonyms:
   - --threads
   - -t
+  description: "Total number of threads to use. 1 thread is used for\nthe reader and\
+    \ 1 for the writer. Minimum 3 (default:\n4)"
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --basecall_id
   description: "id of the basecalling group. By default leave to 0,\nbut if you perfome\
     \ multiple basecalling on the same\nfast5 files, this can be used to indicate\
     \ the\ncorresponding group (1, 2 ...) (default: 0)"
-  synonyms:
-  - --basecall_id
   args: !SimpleFlagArg
     name: BASECALL_ID
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fields
   description: "list of field names corresponding to attributes to try\nto fetch from\
     \ the fast5 files (default: ['read_id',\n'run_id', 'channel', 'start_time',\n\
     'sequence_length_template', 'mean_qscore_template',\n'calibration_strand_genome_template',\n\
     'barcode_arrangement'])"
-  synonyms:
-  - --fields
   args: !RepeatFlagArg
     name: FIELDS
-  optional: true
 - !Flag
-  description: "If given, the absolute path to the corresponding file\nis added in\
-    \ an extra column (default: False)"
+  optional: true
   synonyms:
   - --include_path
+  description: "If given, the absolute path to the corresponding file\nis added in\
+    \ an extra column (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Level of verbosity, from 2 (Chatty) to 0 (Nothing)\n(default: 0)\n"
+  optional: true
   synonyms:
   - --verbose_level
+  description: "Level of verbosity, from 2 (Chatty) to 0 (Nothing)\n(default: 0)\n"
   args: !SimpleFlagArg
     name: VERBOSE_LEVEL
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
   - -v
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: Fast5_to_seq_summary [-h] [--version] --fast5_dir FAST5_DIR\n \
   \                           --seq_summary_fn SEQ_SUMMARY_FN\n                  \
   \          [--max_fast5 MAX_FAST5] [--threads THREADS]\n                       \
@@ -121,3 +121,4 @@ help_text: "usage: Fast5_to_seq_summary [-h] [--version] --fast5_dir FAST5_DIR\n
   \ 0)\n"
 generated_using:
 - --help
+docker_image:

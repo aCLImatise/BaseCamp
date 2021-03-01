@@ -38,6 +38,9 @@ task VarscanSomatic {
       ~{if (validation) then "--validation" else ""} \
       ~{if (output_vcf) then "--output-vcf" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_snp: "- Output file for SNP calls [output.snp]"
     output_in_del: "- Output file for indel calls [output.indel]"

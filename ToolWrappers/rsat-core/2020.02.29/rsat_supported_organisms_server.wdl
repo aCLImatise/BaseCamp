@@ -22,6 +22,9 @@ task RsatSupportedorganismsserver {
       ~{if defined(tax_on) then ("-taxon " +  '"' + tax_on + '"') else ""} \
       ~{if (depth) then "-depth" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "(must be first argument) display options"
     url: "Specify the URL of the remote RSAT server.\\nDefault: http://rsat-tagc.univ-mrs.fr/rsat/\\nThe option -url can be combined with the option\\n-taxon in order to obtain the list of organisms\\nsupported on the main RSAT server, before downloading\\nthem.\\nExamples:\\nsupported-organisms-server -taxon Fungi\\n-server http://rsat-tagc.univ-mrs.fr/rsat/\\nsupported-organisms-server -taxon Metazoa\\n-server http://rsat.sb-roscoff.fr/\\nSelect additional output fields:\\nsupported-organisms-server -taxon Viridiplantae\\n-return last_update,ID,taxonomy\\n-server http://floresta.eead.csic.es/rsat/\\nChoose a specific taxon:\\nsupported-organisms-server -taxon Archaea\\n-server http://embnet.ccg.unam.mx/rsa-tools\\nRestrict taxon depth:\\nsupported-organisms-server -taxon Bacteria\\n-depth 5 -server http://embnet.ccg.unam.mx/rsa-tools"

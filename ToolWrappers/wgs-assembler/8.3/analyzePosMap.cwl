@@ -1,32 +1,33 @@
 class: CommandLineTool
 id: analyzePosMap.cwl
 inputs:
-- id: in_prefix_posmap_files
+- id: in_prefix_posmap_posmapprefixposmapfrgctg
   doc: prefix of posmap files (e.g., posmap-prefix.posmap.frgctg)
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_prefix_output_files
   doc: prefix of output files
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_path_gkpstore_used
   doc: path to gkpStore (not used)
-  type: File
+  type: File?
   inputBinding:
     prefix: -g
-- id: in_select_allowedreadsingaps_probability
+- id: in_select_multiple_allowedreadsingaps
   doc: "select an analysis (multiple -A allowed)\nreadsingaps - probability that a\
     \ gap can be filled with a read\nlibraryfate - per library detail of where each\
     \ read ended up\n- and the status of each mate\nsurrogates  -"
-  type: string
+  type: string?
   inputBinding:
     prefix: -A
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - analyzePosMap

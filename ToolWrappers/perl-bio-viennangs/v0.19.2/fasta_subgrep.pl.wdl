@@ -18,6 +18,9 @@ task FastaSubgreppl {
       ~{if (strand) then "--strand" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fa: "Input file in Fasta format (mandatory)"
     start: "Start of the sequence interval to extract"

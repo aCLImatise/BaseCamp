@@ -3,7 +3,7 @@ version 1.0
 task Kmc {
   input {
     Boolean? verbose_mode_shows
-    Boolean? len_length_k
+    Boolean? len_kmer_length
     Boolean? size_max_amount
     Boolean? sm
     Boolean? aqmbam_input_fasta
@@ -29,7 +29,7 @@ task Kmc {
       ~{input_file_name} \
       ~{output_file_name} \
       ~{if (verbose_mode_shows) then "-v" else ""} \
-      ~{if (len_length_k) then "-k" else ""} \
+      ~{if (len_kmer_length) then "-k" else ""} \
       ~{if (size_max_amount) then "-m" else ""} \
       ~{if (sm) then "-sm" else ""} \
       ~{if (aqmbam_input_fasta) then "-f" else ""} \
@@ -46,9 +46,12 @@ task Kmc {
       ~{if (filename_file_name) then "-j" else ""} \
       ~{if (_without_output) then "-w" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose_mode_shows: "- verbose mode (shows all parameter settings); default: false"
-    len_length_k: "<len> - k-mer length (k from 1 to 256; default: 25)"
+    len_kmer_length: "<len> - k-mer length (k from 1 to 256; default: 25)"
     size_max_amount: "<size> - max amount of RAM in GB (from 1 to 1024); default: 12"
     sm: "- use strict memory mode (memory limit from -m<n> switch will not be exceeded)"
     aqmbam_input_fasta: "<a/q/m/bam> - input in FASTA format (-fa), FASTQ format (-fq), multi FASTA (-fm) or BAM (-fbam); default: FASTQ"

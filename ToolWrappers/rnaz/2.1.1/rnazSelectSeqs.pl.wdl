@@ -18,6 +18,9 @@ task RnazSelectSeqspl {
       ~{if (no_reference) then "--no-reference" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_seqs: "Number of sequences in the output alignment(s). (Default:6)"
     num_samples: "Number of output alignments (Default: 1)"

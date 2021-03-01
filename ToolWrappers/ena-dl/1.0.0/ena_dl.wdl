@@ -32,6 +32,9 @@ task Enadl {
       ~{if (silent) then "--silent" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aspera: "Path to the Aspera Connect tool \\\"ascp\\\" (Default:\\n\\\"which ascp\\\")"
     aspera_key: "Path to Aspera Connect private key, if not given,\\nguess based on ascp path"

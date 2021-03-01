@@ -14,6 +14,9 @@ task ChromosomerFragmentmapstatOutput {
       ~{var_map} \
       ~{var_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chromosome_r: ""
     fragment_map_stat: ""

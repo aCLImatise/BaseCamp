@@ -20,6 +20,9 @@ task WgfastGenbankqcSpecies {
       ~{if (metadata) then "--metadata" else ""} \
       ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     unknowns: "Maximum number of unknown bases (not A, T, C, G)"
     acceptable_deviations_median_number: "Acceptable deviations from median number of"

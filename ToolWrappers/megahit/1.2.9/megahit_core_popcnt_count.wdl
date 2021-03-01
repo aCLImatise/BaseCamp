@@ -28,6 +28,9 @@ task MegahitCorePopcntCount {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(input_file) then ("--input_file " +  '"' + input_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er_k: "(=21)                 kmer size"
     min_km_er_frequency: "(=2)      min frequency to output an edge"

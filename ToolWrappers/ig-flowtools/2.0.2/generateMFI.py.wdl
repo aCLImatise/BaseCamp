@@ -14,6 +14,9 @@ task GenerateMFIpy {
       ~{if defined(what_calculate_centroids) then ("-M " +  '"' + what_calculate_centroids + '"') else ""} \
       ~{if defined(file_location_mfi) then ("-o " +  '"' + file_location_mfi + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_location_flow: "File location for the Flow Result file."
     what_calculate_centroids: "what to calculate for centroids."

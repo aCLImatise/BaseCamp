@@ -14,6 +14,9 @@ task YaraIndexer {
       ~{if defined(output_prefix) then ("--output-prefix " +  '"' + output_prefix + '"') else ""} \
       ~{if defined(tmp_dir) then ("--tmp-dir " +  '"' + tmp_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version_check: "Turn this option off to disable version update notifications of the\\napplication. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\\nDefault: 1."
     verbose: "Displays verbose output."

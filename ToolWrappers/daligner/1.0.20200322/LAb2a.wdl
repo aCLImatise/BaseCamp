@@ -8,6 +8,9 @@ task LAb2a {
     LAb2a \
       ~{la_a_two_b}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     la_a_two_b: ""
   }

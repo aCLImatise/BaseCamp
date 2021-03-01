@@ -2,7 +2,7 @@ version 1.0
 
 task MakeWebsite {
   input {
-    File file
+    File var_file
     String spec_a
     String spec_b
     String mouse_bed
@@ -12,7 +12,7 @@ task MakeWebsite {
   }
   command <<<
     makeWebsite \
-      ~{file} \
+      ~{var_file} \
       ~{spec_a} \
       ~{spec_b} \
       ~{mouse_bed} \
@@ -20,8 +20,11 @@ task MakeWebsite {
       ~{maf_dir} \
       ~{prefix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: ""
+    var_file: ""
     spec_a: ""
     spec_b: ""
     mouse_bed: ""

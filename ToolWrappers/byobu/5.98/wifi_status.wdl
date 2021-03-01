@@ -4,6 +4,9 @@ task Wifistatus {
   command <<<
     wifi_status
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -10,6 +10,9 @@ task TbprofilerLibrarySummarypyMutations {
       ~{if defined(drugs) then ("--drugs " +  '"' + drugs + '"') else ""} \
       ~{if defined(ngs) then ("--ngs " +  '"' + ngs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     drugs: "NGS Platform (default: None)"
     ngs: "NGS Platform (default: None)"

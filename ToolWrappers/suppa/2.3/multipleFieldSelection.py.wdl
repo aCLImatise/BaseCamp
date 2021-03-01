@@ -18,6 +18,9 @@ task MultipleFieldSelectionpy {
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
       ~{if (no_header) then "--no-header" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_files: "spaced separated list of files to join."
     key_field: "common field among the input files."

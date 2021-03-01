@@ -3,35 +3,46 @@ command:
 - sequana_mapping
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
-  name: Welcome
-  optional: false
+  name: reference
+  description: --thread THREAD       number of threads
 - !Positional
-  description: ''
+  optional: false
   position: 1
-  name: to
-  optional: false
-- !Positional
-  description: ''
-  position: 2
-  name: SEQUANA
-  optional: false
-named: []
+  name: used
+  description: --use-sambamba        use sambamba instead of samtools for the sorting
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --file1
+  description: R1 fastq file (zipped)
+  args: !SimpleFlagArg
+    name: FILE1
+- !Flag
+  optional: true
+  synonyms:
+  - --file2
+  description: R2 fastq file (zipped)
+  args: !SimpleFlagArg
+    name: FILE2
+- !Flag
+  optional: true
+  synonyms:
+  - --pacbio
+  description: specific pacbio parameters recommended by bwa mem are
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--file1 FILE1         R1 fastq file\
-    \ (zipped)\n--file2 FILE2         R2 fastq file (zipped)\n--reference REFERENCE\n\
-    reference\n--thread THREAD       number of threads\n--pacbio              specific\
-    \ pacbio parameters recommended by bwa mem are\nused\n--use-sambamba        use\
-    \ sambamba instead of samtools for the sorting\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: Welcome to SEQUANA - mapping standalone\n\n            sequana_mapping\
@@ -50,3 +61,4 @@ help_text: "usage: Welcome to SEQUANA - mapping standalone\n\n            sequan
   \ instead of samtools for the sorting\n"
 generated_using:
 - --help
+docker_image:

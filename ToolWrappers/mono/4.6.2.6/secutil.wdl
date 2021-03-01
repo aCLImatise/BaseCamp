@@ -8,6 +8,9 @@ task Secutil {
     secutil \
       ~{filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: ""
   }

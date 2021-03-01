@@ -10,6 +10,9 @@ task MedakaToolsSubtype {
       ~{medaka} \
       ~{tools}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     medaka: ""
     tools: ""

@@ -22,6 +22,9 @@ task RtgVcfdecompose {
       ~{if (no_gzip) then "--no-gzip" else ""} \
       ~{if (no_header) then "--no-header" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file_containing: "VCF file containing variants to decompose. Use '-' to read\\nfrom standard input"
     output_vcf_file: "output VCF file name. Use '-' to write to standard output"

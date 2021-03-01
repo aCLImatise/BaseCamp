@@ -3,37 +3,37 @@ id: wisestork_gc_correct.cwl
 inputs:
 - id: in_binsize
   doc: RANGE  Bin size to use. Default = 50000
-  type: long
+  type: long?
   inputBinding:
     prefix: --binsize
 - id: in_reference
   doc: Path to reference fasta  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --reference
 - id: in_bin_file
   doc: Optional path to region BED file
-  type: File
+  type: File?
   inputBinding:
     prefix: --bin-file
 - id: in_output
   doc: Path to output BED file  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_input
   doc: Path to input BED file  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_frac_n
   doc: Maximum fraction of N-bases per bin. Default =
-  type: double
+  type: double?
   inputBinding:
     prefix: --frac-n
 - id: in_frac_lowess
   doc: "Fraction of data to use for LOWESS function.\nDefault = 0.1"
-  type: double
+  type: double?
   inputBinding:
     prefix: --frac-lowess
 - id: in_zero_dot_one
@@ -52,9 +52,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Path to output BED file  [required]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - wisestork

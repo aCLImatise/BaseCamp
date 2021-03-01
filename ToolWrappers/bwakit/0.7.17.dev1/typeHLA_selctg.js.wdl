@@ -430,6 +430,9 @@ task TypeHLAselctgjs {
       ~{if (var_207) then "--shell" else ""} \
       ~{if defined(e) then ("-e " +  '"' + e + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     use_strict: "(enforce strict mode)\\ntype: bool  default: false"
     es_five_readonly: "(activate correct semantics for inheriting readonliness)\\ntype: bool  default: true"

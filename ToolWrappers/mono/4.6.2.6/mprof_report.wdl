@@ -36,6 +36,9 @@ task Mprofreport {
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(coverage_out) then ("--coverage-out " +  '"' + coverage_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "write to FILE instead of stdout"
     traces: "collect and show backtraces"

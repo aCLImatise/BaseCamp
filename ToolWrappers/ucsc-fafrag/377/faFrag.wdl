@@ -14,6 +14,9 @@ task FaFrag {
       ~{end} \
       ~{if (mixed) then "-mixed" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mixed: "- preserve mixed-case in FASTA file"
     in_dot_fa: ""

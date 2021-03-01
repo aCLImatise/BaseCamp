@@ -14,6 +14,9 @@ task MbremoveduplicatesOutputFastq {
       ~{output_fast_q} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: ""
     mb_remove_duplicates: ""

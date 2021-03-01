@@ -96,6 +96,9 @@ task Razers3 {
       ~{if defined(available_matches_memory_size) then ("--available-matches-memory-size " +  '"' + available_matches_memory_size + '"') else ""} \
       ~{if defined(match_histo_start_threshold) then ("--match-histo-start-threshold " +  '"' + match_histo_start_threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version_check: "Turn this option off to disable version update notifications of the\\napplication. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\\nDefault: 1."
     percent_identity: "Percent identity threshold. In range [50..100]. Default: 95."

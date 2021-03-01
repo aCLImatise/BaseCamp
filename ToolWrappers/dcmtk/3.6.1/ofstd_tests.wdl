@@ -14,6 +14,9 @@ task OfstdTests {
       ~{if (exhaustive) then "--exhaustive" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list: "list available tests and exit"
     exhaustive: "also run extensive and slow tests"

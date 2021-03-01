@@ -3,12 +3,12 @@ id: hapbinconv.cwl
 inputs:
 - id: in_hap
   doc: ASCII Hap file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --hap
 - id: in_out
   doc: Binary output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Binary output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hapbinconv

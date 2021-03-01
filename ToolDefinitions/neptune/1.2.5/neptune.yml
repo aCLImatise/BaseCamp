@@ -3,44 +3,47 @@ command:
 - neptune
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: neptune-conda
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: The inclusion targets in FASTA format.
+  optional: true
   synonyms:
   - -i
   - --inclusion
+  description: The inclusion targets in FASTA format.
   args: !RepeatFlagArg
     name: INCLUSION
-  optional: true
 - !Flag
-  description: The exclusion targets in FASTA format.
+  optional: true
   synonyms:
   - -e
   - --exclusion
+  description: The exclusion targets in FASTA format.
   args: !RepeatFlagArg
     name: EXCLUSION
-  optional: true
 - !Flag
-  description: The directory to place all output.
+  optional: true
   synonyms:
   - -o
   - --output
+  description: The directory to place all output.
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: The size of the k-mers.
+  optional: true
   synonyms:
   - -k
   - --kmer
+  description: The size of the k-mers.
   args: !SimpleFlagArg
     name: KMER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --organization
   description: "The degree of k-mer organization in the output files.\nThis exploits\
     \ the four-character alphabet of\nnucleotides to produce several k-mer output\
     \ files,\nwith all k-mers in a file beginning with the same\nshort sequence of\
@@ -48,196 +51,193 @@ named:
     \ will\nproduce 4^X output files, where X is the number of\nnucleotides specified\
     \ by this parameter. The number of\noutput files directly corresponds to the amount\
     \ of\nparallelization in the k-mer aggregation process."
-  synonyms:
-  - --organization
   args: !SimpleFlagArg
     name: ORGANIZATION
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filter-percent
   description: "The maximum percent identity of a candidate signature\nwith an exclusion\
     \ hit before discarding the signature.\nWhen both the filtered percent and filtered\
     \ length\nlimits are exceed, the signature is discarded."
-  synonyms:
-  - --filter-percent
   args: !SimpleFlagArg
     name: FILTER-PERCENT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filter-length
   description: "The maximum shared fractional length of an exclusion\ntarget alignment\
     \ with a candidate signature before\ndiscarding the signature. When both the filtered\n\
     percent and filtered length limits are exceed, the\nsignature is discarded."
-  synonyms:
-  - --filter-length
   args: !SimpleFlagArg
     name: FILTER-LENGTH
-  optional: true
 - !Flag
-  description: The seed size used during alignment.
+  optional: true
   synonyms:
   - --seed-size
+  description: The seed size used during alignment.
   args: !SimpleFlagArg
     name: SEED-SIZE
-  optional: true
 - !Flag
-  description: The FASTA reference from which to extract signatures.
+  optional: true
   synonyms:
   - -r
   - --reference
+  description: The FASTA reference from which to extract signatures.
   args: !RepeatFlagArg
     name: REFERENCE
-  optional: true
 - !Flag
-  description: "The estimated total size in nucleotides of the\nreference. This will\
-    \ be calculated if not specified."
+  optional: true
   synonyms:
   - --reference-size
+  description: "The estimated total size in nucleotides of the\nreference. This will\
+    \ be calculated if not specified."
   args: !SimpleFlagArg
     name: REFERENCE-SIZE
-  optional: true
 - !Flag
-  description: "The probability of a mutation or error at an arbitrary\nposition.\
-    \ The default value is 0.01."
+  optional: true
   synonyms:
   - --rate
+  description: "The probability of a mutation or error at an arbitrary\nposition.\
+    \ The default value is 0.01."
   args: !SimpleFlagArg
     name: RATE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --inhits
   description: "The minimum number of inclusion targets that must\ncontain a k-mer\
     \ observed in the reference to begin or\ncontinue building candidate signatures.\
     \ This will be\ncalculated if not specified."
-  synonyms:
-  - --inhits
   args: !SimpleFlagArg
     name: INHITS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --exhits
   description: "The maximum allowable number of exclusion targets that\nmay contain\
     \ a k-mer observed in the reference before\nterminating the construction of a\
     \ candidate signature.\nThis will be calculated if not specified."
-  synonyms:
-  - --exhits
   args: !SimpleFlagArg
     name: EXHITS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gap
   description: "The maximum number of consecutive k-mers observed in\nthe reference\
     \ during signature candidate construction\nthat fail to have enough inclusion\
     \ hits before\nterminating the construction of a candidate signature.\nThis will\
     \ be calculated if not specified and is\ndetermined from the size of k and the\
     \ rate."
-  synonyms:
-  - --gap
   args: !SimpleFlagArg
     name: GAP
-  optional: true
 - !Flag
-  description: "The minimum size of all reported candidate signatures.\nIdentified\
-    \ candidate signatures shorter than this\nvalue will be discard."
+  optional: true
   synonyms:
   - --size
+  description: "The minimum size of all reported candidate signatures.\nIdentified\
+    \ candidate signatures shorter than this\nvalue will be discard."
   args: !SimpleFlagArg
     name: SIZE
-  optional: true
 - !Flag
-  description: "The average GC-content of all inclusion and exclusion\ntargets. This\
-    \ will be calculated from inclusion and\nexclusion targets if not specified."
+  optional: true
   synonyms:
   - --gc-content
+  description: "The average GC-content of all inclusion and exclusion\ntargets. This\
+    \ will be calculated from inclusion and\nexclusion targets if not specified."
   args: !SimpleFlagArg
     name: GC-CONTENT
-  optional: true
 - !Flag
-  description: "The statistical confidence level in decision making\ninvolving probabilities\
-    \ when producing candidate\nsignatures."
+  optional: true
   synonyms:
   - --confidence
+  description: "The statistical confidence level in decision making\ninvolving probabilities\
+    \ when producing candidate\nsignatures."
   args: !SimpleFlagArg
     name: CONFIDENCE
-  optional: true
 - !Flag
-  description: "The number of processes to run simultaneously. Note\nthat this is\
-    \ only applicable when running Neptune in\nnon-DRMAA mode (default)."
+  optional: true
   synonyms:
   - -p
   - --parallelization
+  description: "The number of processes to run simultaneously. Note\nthat this is\
+    \ only applicable when running Neptune in\nnon-DRMAA mode (default)."
   args: !SimpleFlagArg
     name: PARALLELIZATION
-  optional: true
 - !Flag
-  description: "Whether or not to run Neptune in DRMAA-mode and\nattempt to schedule\
-    \ jobs through DRMAA. This will\nrequire setting up DRMAA in advance."
+  optional: true
   synonyms:
   - --drmaa
+  description: "Whether or not to run Neptune in DRMAA-mode and\nattempt to schedule\
+    \ jobs through DRMAA. This will\nrequire setting up DRMAA in advance."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The default DRMAA parameters.
+  optional: true
   synonyms:
   - --default-specification
+  description: The default DRMAA parameters.
   args: !SimpleFlagArg
     name: DEFAULT-SPECIFICATION
-  optional: true
 - !Flag
-  description: The DRMAA parameters specific to k-mer counting.
+  optional: true
   synonyms:
   - --count-specification
+  description: The DRMAA parameters specific to k-mer counting.
   args: !SimpleFlagArg
     name: COUNT-SPECIFICATION
-  optional: true
 - !Flag
-  description: "The DRMAA specific parameters specific to k-mer\naggregation."
+  optional: true
   synonyms:
   - --aggregate-specification
+  description: "The DRMAA specific parameters specific to k-mer\naggregation."
   args: !SimpleFlagArg
     name: AGGREGATE-SPECIFICATION
-  optional: true
 - !Flag
-  description: "The DRMAA parameters specific to candidate signature\nextraction."
+  optional: true
   synonyms:
   - --extract-specification
+  description: "The DRMAA parameters specific to candidate signature\nextraction."
   args: !SimpleFlagArg
     name: EXTRACT-SPECIFICATION
-  optional: true
 - !Flag
-  description: "The DRMAA parameters specific to database construction\nand querying."
+  optional: true
   synonyms:
   - --database-specification
+  description: "The DRMAA parameters specific to database construction\nand querying."
   args: !SimpleFlagArg
     name: DATABASE-SPECIFICATION
-  optional: true
 - !Flag
-  description: "The DRMAA parameters specific to candidate signature\nfiltering."
+  optional: true
   synonyms:
   - --filter-specification
+  description: "The DRMAA parameters specific to candidate signature\nfiltering."
   args: !SimpleFlagArg
     name: FILTER-SPECIFICATION
-  optional: true
 - !Flag
-  description: "The DRMAA parameters specific to filtered signature\nconsolidation.\n"
+  optional: true
   synonyms:
   - --consolidate-specification
+  description: "The DRMAA parameters specific to filtered signature\nconsolidation.\n"
   args: !SimpleFlagArg
     name: CONSOLIDATE-SPECIFICATION
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -V
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: neptune-conda -i INCLUSION [INCLUSION ...] -e EXCLUSION \n\t  \
   \   [EXCLUSION ...] -o OUTPUT\n\nNeptune identifies signatures using an exact k-mer\
   \ matching strategy. Neptune\nlocates sequence that is sufficiently present in many\
@@ -318,3 +318,4 @@ help_text: "usage: neptune-conda -i INCLUSION [INCLUSION ...] -e EXCLUSION \n\t 
   \                       consolidation.\n"
 generated_using:
 - --help
+docker_image:

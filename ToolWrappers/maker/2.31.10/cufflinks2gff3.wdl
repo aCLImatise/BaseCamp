@@ -84,6 +84,9 @@ task Cufflinks2gff3 {
       ~{need} \
       ~{pass_through_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this: ""
     default: ""

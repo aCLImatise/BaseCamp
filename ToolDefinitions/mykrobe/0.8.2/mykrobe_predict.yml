@@ -4,80 +4,225 @@ command:
 - predict
 positional:
 - !Positional
-  description: sample id
+  optional: false
   position: 0
   name: sample
-  optional: false
+  description: sample id
 - !Positional
-  description: species
+  optional: false
   position: 1
   name: species
+  description: species
+- !Positional
   optional: false
+  position: 0
+  name: threads
+  description: -m MEMORY, --memory MEMORY
+- !Positional
+  optional: false
+  position: 0
+  name: stdout.
+  description: -q, --quiet           do not output warnings to stderr
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --keep_tmp
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --tmp
-  args: !SimpleFlagArg
-    name: TMP
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -k
+  - --kmer
+  description: kmer length (default:21)
   args: !SimpleFlagArg
     name: kmer
+- !Flag
   optional: true
+  synonyms:
+  - --tmp
+  description: 'tmp directory (default: tmp/)'
+  args: !SimpleFlagArg
+    name: TMP
+- !Flag
+  optional: true
+  synonyms:
+  - --keep_tmp
+  description: Dont remove tmp files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skeleton_dir
+  description: directory for skeleton binaries
+  args: !SimpleFlagArg
+    name: SKELETON_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --expected_depth
+  description: expected depth
+  args: !SimpleFlagArg
+    name: EXPECTED_DEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - --seq
+  description: sequence files (fasta,fastq,bam)
+  args: !RepeatFlagArg
+    name: seq
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --ctx
+  description: cortex graph binary
+  args: !SimpleFlagArg
+    name: ctx
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: force
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ont
+  description: "Set default for ONT data. Sets expected_error_rate to\n0.15 and to\
+    \ haploid"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --guess_sequence_method
+  description: "Guess if ONT or Illumia based on error rate. If error\nrate is > 10%,\
+    \ ploidy is set to haploid and a\nconfidence threshold is used"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore_minor_calls
+  description: Ignore minor calls when running resistance prediction
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore_filtered
+  description: don't include filtered genotypes
+  args: !SimpleFlagArg
+    name: IGNORE_FILTERED
+- !Flag
+  optional: true
+  synonyms:
+  - --model
+  description: "Genotype model used, default kmer_count. Options\nkmer_count, median_depth"
+  args: !SimpleFlagArg
+    name: model
+- !Flag
+  optional: true
+  synonyms:
+  - --ploidy
+  description: "Use a diploid (includes 0/1 calls) or haploid\ngenotyping model"
+  args: !SimpleFlagArg
+    name: ploidy
+- !Flag
+  optional: true
+  synonyms:
+  - --filters
+  description: don't include filtered genotypes
+  args: !RepeatFlagArg
+    name: FILTERS
+- !Flag
+  optional: true
+  synonyms:
+  - --report_all_calls
+  description: report all calls
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --expected_error_rate
+  description: "Expected sequencing error rate. Set to 0.15 for ONT\ngenotyping."
+  args: !SimpleFlagArg
+    name: EXPECTED_ERROR_RATE
+- !Flag
+  optional: true
+  synonyms:
+  - --min_variant_conf
+  description: minimum genotype confidence for variant genotyping
+  args: !SimpleFlagArg
+    name: MIN_VARIANT_CONF
+- !Flag
+  optional: true
+  synonyms:
+  - --min_gene_conf
+  description: minimum genotype confidence for gene genotyping
+  args: !SimpleFlagArg
+    name: MIN_GENE_CONF
+- !Flag
+  optional: true
+  synonyms:
+  - --min_proportion_expected_depth
+  description: "minimum depth required on the sum of both alleles.\nDefault 0.3 (30%)"
+  args: !SimpleFlagArg
+    name: MIN_PROPORTION_EXPECTED_DEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - --min_gene_percent_covg_threshold
+  description: "all genes alleles found above this percent coverage\nwill be reported\
+    \ (default 100 (only best alleles\nreported))"
+  args: !SimpleFlagArg
+    name: MIN_GENE_PERCENT_COVG_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: File path to save output json file as. Default is to
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --panel
+  description: "variant panel (default:201901). custom requires\ncustom_probe_set_path\
+    \ and\ncustom_variant_to_resistance_json to be set"
+  args: !SimpleFlagArg
+    name: panel
+- !Flag
+  optional: true
+  synonyms:
+  - --custom_probe_set_path
+  description: "For use with `--panel custom`. File path to fasta file\nfrom `mykrobe\
+    \ make-probes`."
+  args: !SimpleFlagArg
+    name: custom_probe_set_path
+- !Flag
+  optional: true
+  synonyms:
+  - --custom_variant_to_resistance_json
+  description: "For use with `--panel custom`. File path to JSON with\nkey,value pairs\
+    \ of variant names and induced drug\nresistance."
+  args: !SimpleFlagArg
+    name: custom_variant_to_resistance_json
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: "Choose output format. Default: csv.\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      json:
+      json_and_csv:
+      csv:
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-k kmer, --kmer kmer  kmer length\
-    \ (default:21)\n--tmp TMP             tmp directory (default: tmp/)\n--keep_tmp\
-    \            Dont remove tmp files\n--skeleton_dir SKELETON_DIR\ndirectory for\
-    \ skeleton binaries\n-t THREADS, --threads THREADS\nthreads\n-m MEMORY, --memory\
-    \ MEMORY\nmemory for graph constuction\n--expected_depth EXPECTED_DEPTH\nexpected\
-    \ depth\n-1 seq [seq ...], --seq seq [seq ...]\nsequence files (fasta,fastq,bam)\n\
-    -c ctx, --ctx ctx     cortex graph binary\n-f, --force           force\n--ont\
-    \                 Set default for ONT data. Sets expected_error_rate to\n0.15\
-    \ and to haploid\n--guess_sequence_method\nGuess if ONT or Illumia based on error\
-    \ rate. If error\nrate is > 10%, ploidy is set to haploid and a\nconfidence threshold\
-    \ is used\n--ignore_minor_calls  Ignore minor calls when running resistance prediction\n\
-    --ignore_filtered IGNORE_FILTERED\ndon't include filtered genotypes\n--model model\
-    \         Genotype model used, default kmer_count. Options\nkmer_count, median_depth\n\
-    --ploidy ploidy       Use a diploid (includes 0/1 calls) or haploid\ngenotyping\
-    \ model\n--filters FILTERS [FILTERS ...]\ndon't include filtered genotypes\n--report_all_calls\
-    \    report all calls\n--expected_error_rate EXPECTED_ERROR_RATE\nExpected sequencing\
-    \ error rate. Set to 0.15 for ONT\ngenotyping.\n--min_variant_conf MIN_VARIANT_CONF\n\
-    minimum genotype confidence for variant genotyping\n--min_gene_conf MIN_GENE_CONF\n\
-    minimum genotype confidence for gene genotyping\n--min_proportion_expected_depth\
-    \ MIN_PROPORTION_EXPECTED_DEPTH\nminimum depth required on the sum of both alleles.\n\
-    Default 0.3 (30%)\n--min_gene_percent_covg_threshold MIN_GENE_PERCENT_COVG_THRESHOLD\n\
-    all genes alleles found above this percent coverage\nwill be reported (default\
-    \ 100 (only best alleles\nreported))\n--output OUTPUT       File path to save\
-    \ output json file as. Default is to\nstdout.\n-q, --quiet           do not output\
-    \ warnings to stderr\n--panel panel         variant panel (default:201901). custom\
-    \ requires\ncustom_probe_set_path and\ncustom_variant_to_resistance_json to be\
-    \ set\n--custom_probe_set_path custom_probe_set_path\nFor use with `--panel custom`.\
-    \ File path to fasta file\nfrom `mykrobe make-probes`.\n--custom_variant_to_resistance_json\
-    \ custom_variant_to_resistance_json\nFor use with `--panel custom`. File path\
-    \ to JSON with\nkey,value pairs of variant names and induced drug\nresistance.\n\
-    --min_depth min_depth\nmin_depth\n--conf_percent_cutoff conf_percent_cutoff\n\
-    Number between 0 and 100. Determines\n--min_variant_conf, by simulating variants\
-    \ and\nchoosing the cutoff that would keep x% of the\nvariants. Default is 90\
-    \ if --ont, otherwise\n--min_variant_conf is used as the cutoff\n--format {json,csv,json_and_csv}\n\
-    Choose output format. Default: csv.\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: mykrobe predict [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n     \
@@ -146,3 +291,4 @@ help_text: "usage: mykrobe predict [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n    
   \                        Choose output format. Default: csv.\n"
 generated_using:
 - --help
+docker_image:

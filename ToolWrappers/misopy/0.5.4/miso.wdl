@@ -38,6 +38,9 @@ task Miso {
       ~{if (no_wait) then "--no-wait" else ""} \
       ~{if defined(view_gene) then ("--view-gene " +  '"' + view_gene + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run: "Compute Psi values for a given GFF annotation of\\neither whole mRNA isoforms or isoforms produced by\\nsingle alternative splicing events. Expects two\\narguments: an indexed GFF directory with genes to\\nprocess, and a sorted, indexed BAM file (with headers)\\nto run on."
     event_type: "[OPTIONAL] Type of event (e.g. SE, RI, A3SS, ...)"

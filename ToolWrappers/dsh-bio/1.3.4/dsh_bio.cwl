@@ -3,7 +3,7 @@ id: dsh_bio.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --about
 - id: in_compress_bed
@@ -237,6 +237,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dsh-bio

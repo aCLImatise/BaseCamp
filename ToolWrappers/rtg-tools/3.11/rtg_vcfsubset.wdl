@@ -20,11 +20,11 @@ task RtgVcfsubset {
     Boolean? remove_samples
     Boolean? no_gzip
     Boolean? no_header
-    String _regionregion_set
+    String _regionregion_only
   }
   command <<<
     rtg vcfsubset \
-      ~{_regionregion_set} \
+      ~{_regionregion_only} \
       ~{if defined(bed_regions) then ("--bed-regions " +  '"' + bed_regions + '"') else ""} \
       ~{if defined(vcf_file_containing) then ("--input " +  '"' + vcf_file_containing + '"') else ""} \
       ~{if defined(output_vcf_file) then ("--output " +  '"' + output_vcf_file + '"') else ""} \
@@ -44,6 +44,9 @@ task RtgVcfsubset {
       ~{if (no_gzip) then "--no-gzip" else ""} \
       ~{if (no_header) then "--no-header" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_regions: "if set, only read VCF records that overlap\\nthe ranges contained in the specified BED\\nfile"
     vcf_file_containing: "VCF file containing variants to manipulate.\\nUse '-' to read from standard input"
@@ -63,7 +66,7 @@ task RtgVcfsubset {
     remove_samples: "remove all samples"
     no_gzip: "do not gzip the output"
     no_header: "prevent VCF header from being written"
-    _regionregion_set: "--region=REGION             if set, only read VCF records within the"
+    _regionregion_only: "--region=REGION             if set, only read VCF records within the"
   }
   output {
     File out_stdout = stdout()

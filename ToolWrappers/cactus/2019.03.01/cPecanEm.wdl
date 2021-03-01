@@ -4,6 +4,9 @@ task CPecanEm {
   command <<<
     cPecanEm
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

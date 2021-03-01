@@ -8,6 +8,9 @@ task CovermShellcompletionFLAGS {
     coverm shell_completion FLAGS \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: ""
   }

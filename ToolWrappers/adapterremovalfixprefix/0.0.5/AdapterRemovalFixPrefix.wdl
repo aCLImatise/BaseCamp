@@ -4,6 +4,9 @@ task AdapterRemovalFixPrefix {
   command <<<
     AdapterRemovalFixPrefix
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

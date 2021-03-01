@@ -10,6 +10,9 @@ task Abyssgapfill {
       ~{if defined(min_align) then ("--min-align " +  '"' + min_align + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_align: "the minimal alignment size [1]"
     verbose: "display verbose output"

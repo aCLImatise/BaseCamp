@@ -16,6 +16,9 @@ task Amb2chmPsfCrdpy {
       ~{if defined(psf_file) then ("-f " +  '"' + psf_file + '"') else ""} \
       ~{if defined(dict) then ("--dict " +  '"' + dict + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d: "[--dict dict_file]"
     prmtop_file: "Prmtop file"

@@ -8,6 +8,9 @@ task NebulizerWhoami {
     nebulizer whoami \
       ~{galaxy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     galaxy: ""
   }

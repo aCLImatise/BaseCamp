@@ -3,12 +3,12 @@ id: convertlinks.cwl
 inputs:
 - id: in_no_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nooptions
 - id: in_links
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -links
 - id: in_cat
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - convertlinks

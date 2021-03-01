@@ -32,6 +32,9 @@ task NanoStat {
       ~{if defined(cram) then ("--cram " +  '"' + cram + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "Specify directory for output, only in combination with -n."
     prefix: "Specify an optional prefix to be used for the output file."

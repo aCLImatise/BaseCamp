@@ -14,6 +14,9 @@ task Bank2lib {
       ~{if (iid) then "-iid" else ""} \
       ~{if defined(output_prefix) then ("-o " +  '"' + output_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bank: "bank where assembly is stored"
     eid: "report eids"

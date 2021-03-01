@@ -10,6 +10,9 @@ task MultiQsubpy {
       ~{job_scripts} \
       ~{if (test) then "--test" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     test: "Only print each of the qsub commands instead of actually\\nrunning the commands.\\n"
     job_scripts: "The job script files to submit to the queuing system."

@@ -16,6 +16,9 @@ task ScmapindexclusterR {
       ~{if defined(output_plot_file) then ("--output-plot-file " +  '"' + output_plot_file + '"') else ""} \
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "singleCellExperiment object containing expression values and experimental information. Must have been appropriately prepared."
     cluster_col: "Column name in the 'colData' slot of the SingleCellExperiment object containing the cell classification information."

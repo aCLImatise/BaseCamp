@@ -4,6 +4,9 @@ task SequanaGui {
   command <<<
     sequana_gui
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

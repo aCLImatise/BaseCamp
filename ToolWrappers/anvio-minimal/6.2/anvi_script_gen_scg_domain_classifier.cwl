@@ -8,12 +8,12 @@ inputs:
     \ should contain\nsubdirectories with these names. Contents of which\nshould be\
     \ contigs databases that belong to those\ndomains. These genomes will be used\
     \ to generate the\nclassifier."
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --genomes-dir
 - id: in_output
   doc: "Output file name for the classifier.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file name for the classifier.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-script-gen-scg-domain-classifier

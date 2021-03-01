@@ -40,6 +40,9 @@ task BpNetinstallpl {
       ~{if (skip_start) then "--skip_start" else ""} \
       ~{if (b) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dev: "Use the development version of bioperl from git"
     build_param_str: "Parameters that are passed in at 'perl Build.PL'"

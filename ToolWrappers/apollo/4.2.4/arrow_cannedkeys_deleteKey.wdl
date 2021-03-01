@@ -8,6 +8,9 @@ task ArrowCannedkeysDeleteKey {
     arrow cannedkeys deleteKey \
       ~{id_number}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id_number: ""
   }

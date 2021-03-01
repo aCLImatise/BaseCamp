@@ -4,33 +4,33 @@ inputs:
 - id: in_cov_t
   doc: "With ratio (coverage of query/coverage of subject)\nbelow which, the query\
     \ would be exposed to discarded.\nDefault: 0.12"
-  type: double
+  type: double?
   inputBinding:
     prefix: --cov-t
 - id: in_len_t
   doc: "With overlap (length of hit of query/ length of query)\nabove which, the query\
     \ would be exposed to discarded.\nDefault: 0.9"
-  type: long
+  type: long?
   inputBinding:
     prefix: --len-t
 - id: in_blur
   doc: Replace hit low-coverage bases with N.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --blur
 - id: in_keep_temp
   doc: Keep temp blast files.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep-temp
 - id: in_which_blast
   doc: "Assign the path to BLAST binary files if not added to\nthe path."
-  type: File
+  type: File?
   inputBinding:
     prefix: --which-blast
 - id: in_output_directory_default
   doc: 'Output directory. Default: along with the original'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
 - id: in_file
@@ -44,9 +44,10 @@ outputs:
   type: stdout
 - id: out_output_directory_default
   doc: 'Output directory. Default: along with the original'
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_directory_default)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rm_low_coverage_duplicated_contigs.py

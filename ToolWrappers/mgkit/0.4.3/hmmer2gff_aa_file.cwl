@@ -3,27 +3,27 @@ id: hmmer2gff_aa_file.cwl
 inputs:
 - id: in_db
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -db
 - id: in_c
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_d
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_t
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_o
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -o
 - id: in_hmmer_two_gff
@@ -33,13 +33,14 @@ inputs:
     position: 0
 - id: in_output_file
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hmmer2gff

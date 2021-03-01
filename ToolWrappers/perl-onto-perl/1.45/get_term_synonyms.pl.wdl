@@ -12,6 +12,9 @@ task GetTermSynonymspl {
       ~{if (obo_input_file) then "-f" else ""} \
       ~{if (term_name) then "-t" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     obo_input_file: "OBO input file"
     term_name: "term name"

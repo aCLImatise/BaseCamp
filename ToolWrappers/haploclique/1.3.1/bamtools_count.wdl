@@ -12,6 +12,9 @@ task BamtoolsCount {
       ~{if defined(list) then ("-list " +  '"' + list + '"') else ""} \
       ~{if defined(region) then ("-region " +  '"' + region + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "the input BAM file(s) [stdin]"
     list: "the input BAM file list, one\\nline per file"

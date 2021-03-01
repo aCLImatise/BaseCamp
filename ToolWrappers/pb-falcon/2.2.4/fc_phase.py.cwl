@@ -3,7 +3,7 @@ id: fc_phase.py.cwl
 inputs:
 - id: in_logging_config_fn
   doc: "Optional standard Python logging config (default: None)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --logging-config-fn
 - id: in_config_fn
@@ -16,6 +16,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fc_phase.py

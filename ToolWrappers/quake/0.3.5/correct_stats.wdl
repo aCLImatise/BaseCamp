@@ -4,6 +4,9 @@ task CorrectStats {
   command <<<
     correct_stats
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

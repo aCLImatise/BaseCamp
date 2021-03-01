@@ -4,6 +4,9 @@ task FilterESTsimple {
   command <<<
     filterESTsimple
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -10,6 +10,9 @@ task SierrapyIntrospection {
       ~{if defined(file_path_store) then ("--output " +  '"' + file_path_store + '"') else ""} \
       ~{if (ugly) then "--ugly" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_path_store: "File path to store the JSON result."
     ugly: "Output compressed JSON result."

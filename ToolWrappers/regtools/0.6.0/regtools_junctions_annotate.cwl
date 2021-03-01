@@ -3,12 +3,12 @@ id: regtools_junctions_annotate.cwl
 inputs:
 - id: in_single_exon_genes
   doc: single exon genes
-  type: string
+  type: string?
   inputBinding:
     prefix: -S
 - id: in_file_write_output
   doc: The file to write output to. [STDOUT]
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_junctions_dot_bed
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_file_write_output
   doc: The file to write output to. [STDOUT]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_file_write_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - regtools

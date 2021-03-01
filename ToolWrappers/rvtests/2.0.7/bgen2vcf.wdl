@@ -32,6 +32,9 @@ task Bgen2vcf {
       ~{if (hide_gt) then "--hideGT" else ""} \
       ~{if (show_ds) then "--showDS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_bg_en: ": Input BGEN File"
     in_bg_en_sample: ": Input SAMPLE file for the BGEN File"

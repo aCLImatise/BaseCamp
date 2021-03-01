@@ -22,6 +22,9 @@ task HicDifferentialTAD {
       ~{if defined(mode_reject) then ("--modeReject " +  '"' + mode_reject + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target_matrix: "The matrix which was used to compute the TADs"
     control_matrix: "The control matrix to test the TADs for a differential\\ninteraction pattern."

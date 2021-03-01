@@ -3,7 +3,7 @@ version 1.0
 task Samstats {
   input {
     Boolean? keep_track_multiple
-    String? output_prefix_enabling
+    String? output_prefix_see
     Int? coveragerna_output_coverage
     Boolean? report_chr_sigs
     Int? number_reads_sample
@@ -26,7 +26,7 @@ task Samstats {
       ~{forward} \
       ~{reverse} \
       ~{if (keep_track_multiple) then "-D" else ""} \
-      ~{if defined(output_prefix_enabling) then ("-O " +  '"' + output_prefix_enabling + '"') else ""} \
+      ~{if defined(output_prefix_see) then ("-O " +  '"' + output_prefix_see + '"') else ""} \
       ~{if defined(coveragerna_output_coverage) then ("-R " +  '"' + coveragerna_output_coverage + '"') else ""} \
       ~{if (report_chr_sigs) then "-A" else ""} \
       ~{if defined(number_reads_sample) then ("-b " +  '"' + number_reads_sample + '"') else ""} \
@@ -36,9 +36,12 @@ task Samstats {
       ~{if (input_bam_bother) then "-B" else ""} \
       ~{if (fail_when_entries) then "-z" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep_track_multiple: "Keep track of multiple alignments"
-    output_prefix_enabling: "Output prefix enabling extended output (see below)"
+    output_prefix_see: "Output prefix enabling extended output (see below)"
     coveragerna_output_coverage: "Coverage/RNA output (coverage, 3' bias, etc, implies -A)"
     report_chr_sigs: "Report all chr sigs, even if there are more than 1000"
     number_reads_sample: "Number of reads to sample for per-base stats (1M)"

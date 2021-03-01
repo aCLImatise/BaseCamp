@@ -42,6 +42,9 @@ task Mhcflurrypredict {
       ~{if (affinity_only) then "--affinity-only" else ""} \
       ~{if (no_flanking) then "--no-flanking" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_supported_alleles: "Prints the list of supported alleles and exits"
     list_supported_peptide_lengths: "Prints the list of supported peptide lengths and exits"

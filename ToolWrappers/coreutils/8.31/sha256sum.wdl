@@ -26,6 +26,9 @@ task Sha256sum {
       ~{if (strict) then "--strict" else ""} \
       ~{if (warn) then "--warn" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     binary: "read in binary mode"
     check: "read SHA256 sums from the FILEs and check them"

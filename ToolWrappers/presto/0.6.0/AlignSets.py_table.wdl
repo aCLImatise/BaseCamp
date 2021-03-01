@@ -22,6 +22,9 @@ task AlignSetspyTable {
       ~{if (reverse) then "--reverse" else ""} \
       ~{if defined(exec) then ("--exec " +  '"' + exec + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "Specify to changes the output directory to the\\nlocation specified. The input file directory is used\\nif this is not specified. (default: None)"
     out_name: "Changes the prefix of the successfully processed\\noutput file to the string specified. May not be\\nspecified with multiple input files. (default: None)"

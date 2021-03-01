@@ -24,7 +24,7 @@ task Showinf {
     Boolean? resolution
     Boolean? swap
     Boolean? shuffle
-    Boolean? specify_file_mapped
+    Boolean? specify_file_disk
     Boolean? preload
     Boolean? crop
     Boolean? autoscale
@@ -58,7 +58,7 @@ task Showinf {
       ~{if (resolution) then "-resolution" else ""} \
       ~{if (swap) then "-swap" else ""} \
       ~{if (shuffle) then "-shuffle" else ""} \
-      ~{if (specify_file_mapped) then "-map" else ""} \
+      ~{if (specify_file_disk) then "-map" else ""} \
       ~{if (preload) then "-preload" else ""} \
       ~{if (crop) then "-crop" else ""} \
       ~{if (autoscale) then "-autoscale" else ""} \
@@ -68,6 +68,9 @@ task Showinf {
       ~{if (cache_dir) then "-cache-dir" else ""} \
       ~{if (option) then "-option" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version: ": print the library version and exit\\nfile: the image file to read"
     no_pix: ": read metadata only, not pixels"
@@ -91,7 +94,7 @@ task Showinf {
     resolution: ": used in combination with -noflat to specify which\\nsubresolution to read (for images with subresolutions)"
     swap: ": override the default input dimension order"
     shuffle: ": override the default output dimension order"
-    specify_file_mapped: ": specify file on disk to which name should be mapped"
+    specify_file_disk: ": specify file on disk to which name should be mapped"
     preload: ": pre-read entire file into a buffer; significantly\\nreduces the time required to read the images, but\\nrequires more memory"
     crop: ": crop images before displaying; argument is 'x,y,w,h'"
     autoscale: ": automatically adjust brightness and contrast (*)"

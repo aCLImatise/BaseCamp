@@ -10,6 +10,9 @@ task Removealignmentgaps {
       ~{species} \
       ~{alignment}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     species: ""
     alignment: ""

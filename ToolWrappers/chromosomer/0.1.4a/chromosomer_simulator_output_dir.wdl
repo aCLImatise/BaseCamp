@@ -14,6 +14,9 @@ task ChromosomerSimulatorOutputDir {
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     p: ""
     g: ""

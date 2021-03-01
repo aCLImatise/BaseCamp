@@ -11,42 +11,45 @@ subcommands:
   - haploid
   positional:
   - !Positional
-    description: "Working and output directory. Existing files in the\ndirectory are\
-      \ overwritten. If the directory does not\nexist, it is created."
+    optional: false
     position: 0
     name: working_dir
-    optional: false
+    description: "Working and output directory. Existing files in the\ndirectory are\
+      \ overwritten. If the directory does not\nexist, it is created."
   - !Positional
-    description: "SAM/BAM file with alignment of query assembly to\nreference assembly\
-      \ (needs to be coordinate-sorted)"
+    optional: false
     position: 1
     name: bam_file
-    optional: false
+    description: "SAM/BAM file with alignment of query assembly to\nreference assembly\
+      \ (needs to be coordinate-sorted)"
   - !Positional
-    description: "Reference genome file that the assembly was aligned to\n(FASTA)"
+    optional: false
     position: 2
     name: genome
-    optional: false
+    description: "Reference genome file that the assembly was aligned to\n(FASTA)"
   named:
   - !Flag
-    description: "Minimum mapping quality of alignments to consider\n(default: 20).\
-      \ Alignments with a lower mapping quality\nare ignored."
+    optional: true
     synonyms:
     - --min_mapq
+    description: "Minimum mapping quality of alignments to consider\n(default: 20).\
+      \ Alignments with a lower mapping quality\nare ignored."
     args: !SimpleFlagArg
       name: MIN_MAPQ
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --min_sv_size
     description: "Minimum SV size to detect (default: 40). SVIM can\npotentially detect\
       \ events of any size but is limited\nby the signal-to-noise ratio in the input\
       \ alignments.\nThat means that more accurate assemblies and\nalignments enable\
       \ the detection of smaller events."
-    synonyms:
-    - --min_sv_size
     args: !SimpleFlagArg
       name: MIN_SV_SIZE
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --max_sv_size
     description: "Maximum SV size to detect (default: 100000). This\nparameter is\
       \ used to distinguish long deletions (and\ninversions) from translocations which\
       \ cannot be\ndistinguished from the alignment alone. Split read\nsegments mapping\
@@ -54,12 +57,12 @@ subcommands:
       \ or a\ntranslocation breakpoint. SVIM calls a translocation\nbreakpoint if\
       \ the mapping distance is larger than this\nparameter and a deletion (or inversion)\
       \ if it is\nsmaller or equal."
-    synonyms:
-    - --max_sv_size
     args: !SimpleFlagArg
       name: MAX_SV_SIZE
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --query_gap_tolerance
     description: "Maximum tolerated gap between adjacent alignment\nsegments on the\
       \ query (default: 50). Example:\nDeletions are detected from two subsequent\
       \ segments of\na split query sequence that are mapped far apart from\neach other\
@@ -67,12 +70,12 @@ subcommands:
       \ length of the query\ngap between both segments. If there is an unaligned\n\
       query segment larger than this value between the two\nsegments, no deletion\
       \ is called."
-    synonyms:
-    - --query_gap_tolerance
     args: !SimpleFlagArg
       name: QUERY_GAP_TOLERANCE
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --query_overlap_tolerance
     description: "Maximum tolerated overlap between adjacent alignment\nsegments on\
       \ the query (default: 50). Example:\nDeletions are detected from two subsequent\
       \ segments of\na split query sequence that are mapped far apart from\neach other\
@@ -80,12 +83,12 @@ subcommands:
       \ length of\nan overlap between both segments in the query. If the\noverlap\
       \ between the two segments in the query is\nlarger than this value, no deletion\
       \ is called."
-    synonyms:
-    - --query_overlap_tolerance
     args: !SimpleFlagArg
       name: QUERY_OVERLAP_TOLERANCE
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --reference_gap_tolerance
     description: "Maximum tolerated gap between adjacent alignment\nsegments on the\
       \ reference (default: 50). Example:\nInsertions are detected from two segments\
       \ of a split\nquery sequence that are mapped right next to each\nother on the\
@@ -93,12 +96,12 @@ subcommands:
       \ gap tolerance\ndetermines the maximum tolerated length of the\nreference gap\
       \ between both segments. If there is a\nreference gap larger than this value\
       \ between the two\nsegments, no insertion is called."
-    synonyms:
-    - --reference_gap_tolerance
     args: !SimpleFlagArg
       name: REFERENCE_GAP_TOLERANCE
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --reference_overlap_tolerance
     description: "Maximum tolerated overlap between adjacent alignment\nsegments on\
       \ the reference (default: 50). Example:\nInsertions are detected from two segments\
       \ of a split\nquery sequence that are mapped right next to each\nother on the\
@@ -106,55 +109,52 @@ subcommands:
       \ overlap\ntolerance determines the maximum tolerated length of\nan overlap\
       \ between both segments on the reference. If\nthere is a reference gap larger\
       \ than this value\nbetween the two segments, no insertion is called."
-    synonyms:
-    - --reference_overlap_tolerance
     args: !SimpleFlagArg
       name: REFERENCE_OVERLAP_TOLERANCE
-    optional: true
   - !Flag
-    description: "Sample ID to include in output vcf file (default:\nSample)"
+    optional: true
     synonyms:
     - --sample
+    description: "Sample ID to include in output vcf file (default:\nSample)"
     args: !SimpleFlagArg
       name: SAMPLE
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --types
     description: "SV types to include in output VCF (default:\nDEL,INS,INV,DUP_TAN,DUP_INT,BND).\
       \ Give a comma-\nseparated list of SV types. The possible SV types are:\nDEL\
       \ (deletions), INS (novel insertions), INV\n(inversions), DUP_TAN (tandem duplications),\
       \ DUP_INT\n(interspersed duplications), BND (breakends)."
-    synonyms:
-    - --types
     args: !SimpleFlagArg
       name: TYPES
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --symbolic_alleles
     description: "Use symbolic alleles, such as <DEL> or <INV> in the\nVCF output\
       \ (default: False). By default, deletions,\ninsertions, and inversions are represented\
       \ by their\nnucleotide sequence in the output VCF."
-    synonyms:
-    - --symbolic_alleles
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --duplications_as_insertions
     description: "Represent tandem and interspersed duplications as\ninsertions in\
       \ output VCF (default: False). By default,\nduplications are represented by\
       \ the SVTYPE=DUP and the\ngenomic source is given by the POS and END tags. When\n\
       enabling this option, duplications are instead\nrepresented by the SVTYPE=INS\
       \ and POS and END both\ngive the insertion point of the duplication."
-    synonyms:
-    - --duplications_as_insertions
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --query_names
     description: "Output names of supporting query sequences in INFO tag\nof VCF (default:\
       \ False). If enabled, the INFO/READS\ntag contains the list of names of the\
       \ supporting query\nsequences.\n"
-    synonyms:
-    - --query_names
     args: !EmptyFlagArg {}
-    optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -164,42 +164,45 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: "Working and output directory. Existing files in the\ndirectory\
-          \ are overwritten. If the directory does not\nexist, it is created."
+        optional: false
         position: 0
         name: working_dir
-        optional: false
+        description: "Working and output directory. Existing files in the\ndirectory\
+          \ are overwritten. If the directory does not\nexist, it is created."
       - !Positional
-        description: "SAM/BAM file with alignment of query assembly to\nreference\
-          \ assembly (needs to be coordinate-sorted)"
+        optional: false
         position: 1
         name: bam_file
-        optional: false
+        description: "SAM/BAM file with alignment of query assembly to\nreference\
+          \ assembly (needs to be coordinate-sorted)"
       - !Positional
-        description: "Reference genome file that the assembly was aligned to\n(FASTA)"
+        optional: false
         position: 2
         name: genome
-        optional: false
+        description: "Reference genome file that the assembly was aligned to\n(FASTA)"
       named:
       - !Flag
-        description: "Minimum mapping quality of alignments to consider\n(default:\
-          \ 20). Alignments with a lower mapping quality\nare ignored."
+        optional: true
         synonyms:
         - --min_mapq
+        description: "Minimum mapping quality of alignments to consider\n(default:\
+          \ 20). Alignments with a lower mapping quality\nare ignored."
         args: !SimpleFlagArg
           name: MIN_MAPQ
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --min_sv_size
         description: "Minimum SV size to detect (default: 40). SVIM can\npotentially\
           \ detect events of any size but is limited\nby the signal-to-noise ratio\
           \ in the input alignments.\nThat means that more accurate assemblies and\n\
           alignments enable the detection of smaller events."
-        synonyms:
-        - --min_sv_size
         args: !SimpleFlagArg
           name: MIN_SV_SIZE
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --max_sv_size
         description: "Maximum SV size to detect (default: 100000). This\nparameter\
           \ is used to distinguish long deletions (and\ninversions) from translocations\
           \ which cannot be\ndistinguished from the alignment alone. Split read\n\
@@ -207,12 +210,12 @@ subcommands:
           \ long deletion (inversion) or a\ntranslocation breakpoint. SVIM calls a\
           \ translocation\nbreakpoint if the mapping distance is larger than this\n\
           parameter and a deletion (or inversion) if it is\nsmaller or equal."
-        synonyms:
-        - --max_sv_size
         args: !SimpleFlagArg
           name: MAX_SV_SIZE
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --query_gap_tolerance
         description: "Maximum tolerated gap between adjacent alignment\nsegments on\
           \ the query (default: 50). Example:\nDeletions are detected from two subsequent\
           \ segments of\na split query sequence that are mapped far apart from\neach\
@@ -220,12 +223,12 @@ subcommands:
           \ tolerated length of the query\ngap between both segments. If there is\
           \ an unaligned\nquery segment larger than this value between the two\nsegments,\
           \ no deletion is called."
-        synonyms:
-        - --query_gap_tolerance
         args: !SimpleFlagArg
           name: QUERY_GAP_TOLERANCE
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --query_overlap_tolerance
         description: "Maximum tolerated overlap between adjacent alignment\nsegments\
           \ on the query (default: 50). Example:\nDeletions are detected from two\
           \ subsequent segments of\na split query sequence that are mapped far apart\
@@ -233,12 +236,12 @@ subcommands:
           \ the maximum tolerated length of\nan overlap between both segments in the\
           \ query. If the\noverlap between the two segments in the query is\nlarger\
           \ than this value, no deletion is called."
-        synonyms:
-        - --query_overlap_tolerance
         args: !SimpleFlagArg
           name: QUERY_OVERLAP_TOLERANCE
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --reference_gap_tolerance
         description: "Maximum tolerated gap between adjacent alignment\nsegments on\
           \ the reference (default: 50). Example:\nInsertions are detected from two\
           \ segments of a split\nquery sequence that are mapped right next to each\n\
@@ -247,12 +250,12 @@ subcommands:
           \ of the\nreference gap between both segments. If there is a\nreference\
           \ gap larger than this value between the two\nsegments, no insertion is\
           \ called."
-        synonyms:
-        - --reference_gap_tolerance
         args: !SimpleFlagArg
           name: REFERENCE_GAP_TOLERANCE
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --reference_overlap_tolerance
         description: "Maximum tolerated overlap between adjacent alignment\nsegments\
           \ on the reference (default: 50). Example:\nInsertions are detected from\
           \ two segments of a split\nquery sequence that are mapped right next to\
@@ -261,56 +264,53 @@ subcommands:
           \ tolerated length of\nan overlap between both segments on the reference.\
           \ If\nthere is a reference gap larger than this value\nbetween the two segments,\
           \ no insertion is called."
-        synonyms:
-        - --reference_overlap_tolerance
         args: !SimpleFlagArg
           name: REFERENCE_OVERLAP_TOLERANCE
-        optional: true
       - !Flag
-        description: "Sample ID to include in output vcf file (default:\nSample)"
+        optional: true
         synonyms:
         - --sample
+        description: "Sample ID to include in output vcf file (default:\nSample)"
         args: !SimpleFlagArg
           name: SAMPLE
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --types
         description: "SV types to include in output VCF (default:\nDEL,INS,INV,DUP_TAN,DUP_INT,BND).\
           \ Give a comma-\nseparated list of SV types. The possible SV types are:\n\
           DEL (deletions), INS (novel insertions), INV\n(inversions), DUP_TAN (tandem\
           \ duplications), DUP_INT\n(interspersed duplications), BND (breakends)."
-        synonyms:
-        - --types
         args: !SimpleFlagArg
           name: TYPES
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --symbolic_alleles
         description: "Use symbolic alleles, such as <DEL> or <INV> in the\nVCF output\
           \ (default: False). By default, deletions,\ninsertions, and inversions are\
           \ represented by their\nnucleotide sequence in the output VCF."
-        synonyms:
-        - --symbolic_alleles
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --duplications_as_insertions
         description: "Represent tandem and interspersed duplications as\ninsertions\
           \ in output VCF (default: False). By default,\nduplications are represented\
           \ by the SVTYPE=DUP and the\ngenomic source is given by the POS and END\
           \ tags. When\nenabling this option, duplications are instead\nrepresented\
           \ by the SVTYPE=INS and POS and END both\ngive the insertion point of the\
           \ duplication."
-        synonyms:
-        - --duplications_as_insertions
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --query_names
         description: "Output names of supporting query sequences in INFO tag\nof VCF\
           \ (default: False). If enabled, the INFO/READS\ntag contains the list of\
           \ names of the supporting query\nsequences.\n"
-        synonyms:
-        - --query_names
         args: !EmptyFlagArg {}
-        optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -320,43 +320,46 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: "Working and output directory. Existing files in the\ndirectory\
-              \ are overwritten. If the directory does not\nexist, it is created."
+            optional: false
             position: 0
             name: working_dir
-            optional: false
+            description: "Working and output directory. Existing files in the\ndirectory\
+              \ are overwritten. If the directory does not\nexist, it is created."
           - !Positional
-            description: "SAM/BAM file with alignment of query assembly to\nreference\
-              \ assembly (needs to be coordinate-sorted)"
+            optional: false
             position: 1
             name: bam_file
-            optional: false
+            description: "SAM/BAM file with alignment of query assembly to\nreference\
+              \ assembly (needs to be coordinate-sorted)"
           - !Positional
-            description: "Reference genome file that the assembly was aligned to\n\
-              (FASTA)"
+            optional: false
             position: 2
             name: genome
-            optional: false
+            description: "Reference genome file that the assembly was aligned to\n\
+              (FASTA)"
           named:
           - !Flag
-            description: "Minimum mapping quality of alignments to consider\n(default:\
-              \ 20). Alignments with a lower mapping quality\nare ignored."
+            optional: true
             synonyms:
             - --min_mapq
+            description: "Minimum mapping quality of alignments to consider\n(default:\
+              \ 20). Alignments with a lower mapping quality\nare ignored."
             args: !SimpleFlagArg
               name: MIN_MAPQ
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --min_sv_size
             description: "Minimum SV size to detect (default: 40). SVIM can\npotentially\
               \ detect events of any size but is limited\nby the signal-to-noise ratio\
               \ in the input alignments.\nThat means that more accurate assemblies\
               \ and\nalignments enable the detection of smaller events."
-            synonyms:
-            - --min_sv_size
             args: !SimpleFlagArg
               name: MIN_SV_SIZE
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --max_sv_size
             description: "Maximum SV size to detect (default: 100000). This\nparameter\
               \ is used to distinguish long deletions (and\ninversions) from translocations\
               \ which cannot be\ndistinguished from the alignment alone. Split read\n\
@@ -365,12 +368,12 @@ subcommands:
               \ calls a translocation\nbreakpoint if the mapping distance is larger\
               \ than this\nparameter and a deletion (or inversion) if it is\nsmaller\
               \ or equal."
-            synonyms:
-            - --max_sv_size
             args: !SimpleFlagArg
               name: MAX_SV_SIZE
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --query_gap_tolerance
             description: "Maximum tolerated gap between adjacent alignment\nsegments\
               \ on the query (default: 50). Example:\nDeletions are detected from\
               \ two subsequent segments of\na split query sequence that are mapped\
@@ -378,12 +381,12 @@ subcommands:
               determines the maximum tolerated length of the query\ngap between both\
               \ segments. If there is an unaligned\nquery segment larger than this\
               \ value between the two\nsegments, no deletion is called."
-            synonyms:
-            - --query_gap_tolerance
             args: !SimpleFlagArg
               name: QUERY_GAP_TOLERANCE
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --query_overlap_tolerance
             description: "Maximum tolerated overlap between adjacent alignment\nsegments\
               \ on the query (default: 50). Example:\nDeletions are detected from\
               \ two subsequent segments of\na split query sequence that are mapped\
@@ -391,12 +394,12 @@ subcommands:
               \ determines the maximum tolerated length of\nan overlap between both\
               \ segments in the query. If the\noverlap between the two segments in\
               \ the query is\nlarger than this value, no deletion is called."
-            synonyms:
-            - --query_overlap_tolerance
             args: !SimpleFlagArg
               name: QUERY_OVERLAP_TOLERANCE
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --reference_gap_tolerance
             description: "Maximum tolerated gap between adjacent alignment\nsegments\
               \ on the reference (default: 50). Example:\nInsertions are detected\
               \ from two segments of a split\nquery sequence that are mapped right\
@@ -405,12 +408,12 @@ subcommands:
               \ maximum tolerated length of the\nreference gap between both segments.\
               \ If there is a\nreference gap larger than this value between the two\n\
               segments, no insertion is called."
-            synonyms:
-            - --reference_gap_tolerance
             args: !SimpleFlagArg
               name: REFERENCE_GAP_TOLERANCE
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --reference_overlap_tolerance
             description: "Maximum tolerated overlap between adjacent alignment\nsegments\
               \ on the reference (default: 50). Example:\nInsertions are detected\
               \ from two segments of a split\nquery sequence that are mapped right\
@@ -419,56 +422,53 @@ subcommands:
               \ the maximum tolerated length of\nan overlap between both segments\
               \ on the reference. If\nthere is a reference gap larger than this value\n\
               between the two segments, no insertion is called."
-            synonyms:
-            - --reference_overlap_tolerance
             args: !SimpleFlagArg
               name: REFERENCE_OVERLAP_TOLERANCE
-            optional: true
           - !Flag
-            description: "Sample ID to include in output vcf file (default:\nSample)"
+            optional: true
             synonyms:
             - --sample
+            description: "Sample ID to include in output vcf file (default:\nSample)"
             args: !SimpleFlagArg
               name: SAMPLE
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --types
             description: "SV types to include in output VCF (default:\nDEL,INS,INV,DUP_TAN,DUP_INT,BND).\
               \ Give a comma-\nseparated list of SV types. The possible SV types are:\n\
               DEL (deletions), INS (novel insertions), INV\n(inversions), DUP_TAN\
               \ (tandem duplications), DUP_INT\n(interspersed duplications), BND (breakends)."
-            synonyms:
-            - --types
             args: !SimpleFlagArg
               name: TYPES
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --symbolic_alleles
             description: "Use symbolic alleles, such as <DEL> or <INV> in the\nVCF\
               \ output (default: False). By default, deletions,\ninsertions, and inversions\
               \ are represented by their\nnucleotide sequence in the output VCF."
-            synonyms:
-            - --symbolic_alleles
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --duplications_as_insertions
             description: "Represent tandem and interspersed duplications as\ninsertions\
               \ in output VCF (default: False). By default,\nduplications are represented\
               \ by the SVTYPE=DUP and the\ngenomic source is given by the POS and\
               \ END tags. When\nenabling this option, duplications are instead\nrepresented\
               \ by the SVTYPE=INS and POS and END both\ngive the insertion point of\
               \ the duplication."
-            synonyms:
-            - --duplications_as_insertions
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --query_names
             description: "Output names of supporting query sequences in INFO tag\n\
               of VCF (default: False). If enabled, the INFO/READS\ntag contains the\
               \ list of names of the supporting query\nsequences.\n"
-            synonyms:
-            - --query_names
             args: !EmptyFlagArg {}
-            optional: true
-          parent: &id006 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
             named: []
@@ -478,44 +478,47 @@ subcommands:
               command: *id002
               positional:
               - !Positional
+                optional: false
+                position: 0
+                name: working_dir
                 description: "Working and output directory. Existing files in the\n\
                   directory are overwritten. If the directory does not\nexist, it\
                   \ is created."
-                position: 0
-                name: working_dir
-                optional: false
               - !Positional
-                description: "SAM/BAM file with alignment of query assembly to\nreference\
-                  \ assembly (needs to be coordinate-sorted)"
+                optional: false
                 position: 1
                 name: bam_file
-                optional: false
+                description: "SAM/BAM file with alignment of query assembly to\nreference\
+                  \ assembly (needs to be coordinate-sorted)"
               - !Positional
-                description: "Reference genome file that the assembly was aligned\
-                  \ to\n(FASTA)"
+                optional: false
                 position: 2
                 name: genome
-                optional: false
+                description: "Reference genome file that the assembly was aligned\
+                  \ to\n(FASTA)"
               named:
               - !Flag
-                description: "Minimum mapping quality of alignments to consider\n\
-                  (default: 20). Alignments with a lower mapping quality\nare ignored."
+                optional: true
                 synonyms:
                 - --min_mapq
+                description: "Minimum mapping quality of alignments to consider\n\
+                  (default: 20). Alignments with a lower mapping quality\nare ignored."
                 args: !SimpleFlagArg
                   name: MIN_MAPQ
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --min_sv_size
                 description: "Minimum SV size to detect (default: 40). SVIM can\n\
                   potentially detect events of any size but is limited\nby the signal-to-noise\
                   \ ratio in the input alignments.\nThat means that more accurate\
                   \ assemblies and\nalignments enable the detection of smaller events."
-                synonyms:
-                - --min_sv_size
                 args: !SimpleFlagArg
                   name: MIN_SV_SIZE
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --max_sv_size
                 description: "Maximum SV size to detect (default: 100000). This\n\
                   parameter is used to distinguish long deletions (and\ninversions)\
                   \ from translocations which cannot be\ndistinguished from the alignment\
@@ -524,12 +527,12 @@ subcommands:
                   translocation breakpoint. SVIM calls a translocation\nbreakpoint\
                   \ if the mapping distance is larger than this\nparameter and a deletion\
                   \ (or inversion) if it is\nsmaller or equal."
-                synonyms:
-                - --max_sv_size
                 args: !SimpleFlagArg
                   name: MAX_SV_SIZE
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --query_gap_tolerance
                 description: "Maximum tolerated gap between adjacent alignment\nsegments\
                   \ on the query (default: 50). Example:\nDeletions are detected from\
                   \ two subsequent segments of\na split query sequence that are mapped\
@@ -537,12 +540,12 @@ subcommands:
                   determines the maximum tolerated length of the query\ngap between\
                   \ both segments. If there is an unaligned\nquery segment larger\
                   \ than this value between the two\nsegments, no deletion is called."
-                synonyms:
-                - --query_gap_tolerance
                 args: !SimpleFlagArg
                   name: QUERY_GAP_TOLERANCE
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --query_overlap_tolerance
                 description: "Maximum tolerated overlap between adjacent alignment\n\
                   segments on the query (default: 50). Example:\nDeletions are detected\
                   \ from two subsequent segments of\na split query sequence that are\
@@ -551,12 +554,12 @@ subcommands:
                   an overlap between both segments in the query. If the\noverlap between\
                   \ the two segments in the query is\nlarger than this value, no deletion\
                   \ is called."
-                synonyms:
-                - --query_overlap_tolerance
                 args: !SimpleFlagArg
                   name: QUERY_OVERLAP_TOLERANCE
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --reference_gap_tolerance
                 description: "Maximum tolerated gap between adjacent alignment\nsegments\
                   \ on the reference (default: 50). Example:\nInsertions are detected\
                   \ from two segments of a split\nquery sequence that are mapped right\
@@ -565,12 +568,12 @@ subcommands:
                   \ the maximum tolerated length of the\nreference gap between both\
                   \ segments. If there is a\nreference gap larger than this value\
                   \ between the two\nsegments, no insertion is called."
-                synonyms:
-                - --reference_gap_tolerance
                 args: !SimpleFlagArg
                   name: REFERENCE_GAP_TOLERANCE
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --reference_overlap_tolerance
                 description: "Maximum tolerated overlap between adjacent alignment\n\
                   segments on the reference (default: 50). Example:\nInsertions are\
                   \ detected from two segments of a split\nquery sequence that are\
@@ -579,59 +582,56 @@ subcommands:
                   \ determines the maximum tolerated length of\nan overlap between\
                   \ both segments on the reference. If\nthere is a reference gap larger\
                   \ than this value\nbetween the two segments, no insertion is called."
-                synonyms:
-                - --reference_overlap_tolerance
                 args: !SimpleFlagArg
                   name: REFERENCE_OVERLAP_TOLERANCE
-                optional: true
               - !Flag
-                description: "Sample ID to include in output vcf file (default:\n\
-                  Sample)"
+                optional: true
                 synonyms:
                 - --sample
+                description: "Sample ID to include in output vcf file (default:\n\
+                  Sample)"
                 args: !SimpleFlagArg
                   name: SAMPLE
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --types
                 description: "SV types to include in output VCF (default:\nDEL,INS,INV,DUP_TAN,DUP_INT,BND).\
                   \ Give a comma-\nseparated list of SV types. The possible SV types\
                   \ are:\nDEL (deletions), INS (novel insertions), INV\n(inversions),\
                   \ DUP_TAN (tandem duplications), DUP_INT\n(interspersed duplications),\
                   \ BND (breakends)."
-                synonyms:
-                - --types
                 args: !SimpleFlagArg
                   name: TYPES
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --symbolic_alleles
                 description: "Use symbolic alleles, such as <DEL> or <INV> in the\n\
                   VCF output (default: False). By default, deletions,\ninsertions,\
                   \ and inversions are represented by their\nnucleotide sequence in\
                   \ the output VCF."
-                synonyms:
-                - --symbolic_alleles
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --duplications_as_insertions
                 description: "Represent tandem and interspersed duplications as\n\
                   insertions in output VCF (default: False). By default,\nduplications\
                   \ are represented by the SVTYPE=DUP and the\ngenomic source is given\
                   \ by the POS and END tags. When\nenabling this option, duplications\
                   \ are instead\nrepresented by the SVTYPE=INS and POS and END both\n\
                   give the insertion point of the duplication."
-                synonyms:
-                - --duplications_as_insertions
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --query_names
                 description: "Output names of supporting query sequences in INFO tag\n\
                   of VCF (default: False). If enabled, the INFO/READS\ntag contains\
                   \ the list of names of the supporting query\nsequences.\n"
-                synonyms:
-                - --query_names
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: &id006 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -641,46 +641,49 @@ subcommands:
                   command: *id002
                   positional:
                   - !Positional
+                    optional: false
+                    position: 0
+                    name: working_dir
                     description: "Working and output directory. Existing files in\
                       \ the\ndirectory are overwritten. If the directory does not\n\
                       exist, it is created."
-                    position: 0
-                    name: working_dir
-                    optional: false
                   - !Positional
-                    description: "SAM/BAM file with alignment of query assembly to\n\
-                      reference assembly (needs to be coordinate-sorted)"
+                    optional: false
                     position: 1
                     name: bam_file
-                    optional: false
+                    description: "SAM/BAM file with alignment of query assembly to\n\
+                      reference assembly (needs to be coordinate-sorted)"
                   - !Positional
-                    description: "Reference genome file that the assembly was aligned\
-                      \ to\n(FASTA)"
+                    optional: false
                     position: 2
                     name: genome
-                    optional: false
+                    description: "Reference genome file that the assembly was aligned\
+                      \ to\n(FASTA)"
                   named:
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --min_mapq
                     description: "Minimum mapping quality of alignments to consider\n\
                       (default: 20). Alignments with a lower mapping quality\nare\
                       \ ignored."
-                    synonyms:
-                    - --min_mapq
                     args: !SimpleFlagArg
                       name: MIN_MAPQ
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --min_sv_size
                     description: "Minimum SV size to detect (default: 40). SVIM can\n\
                       potentially detect events of any size but is limited\nby the\
                       \ signal-to-noise ratio in the input alignments.\nThat means\
                       \ that more accurate assemblies and\nalignments enable the detection\
                       \ of smaller events."
-                    synonyms:
-                    - --min_sv_size
                     args: !SimpleFlagArg
                       name: MIN_SV_SIZE
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --max_sv_size
                     description: "Maximum SV size to detect (default: 100000). This\n\
                       parameter is used to distinguish long deletions (and\ninversions)\
                       \ from translocations which cannot be\ndistinguished from the\
@@ -689,12 +692,12 @@ subcommands:
                       \ (inversion) or a\ntranslocation breakpoint. SVIM calls a translocation\n\
                       breakpoint if the mapping distance is larger than this\nparameter\
                       \ and a deletion (or inversion) if it is\nsmaller or equal."
-                    synonyms:
-                    - --max_sv_size
                     args: !SimpleFlagArg
                       name: MAX_SV_SIZE
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --query_gap_tolerance
                     description: "Maximum tolerated gap between adjacent alignment\n\
                       segments on the query (default: 50). Example:\nDeletions are\
                       \ detected from two subsequent segments of\na split query sequence\
@@ -703,12 +706,12 @@ subcommands:
                       \ length of the query\ngap between both segments. If there is\
                       \ an unaligned\nquery segment larger than this value between\
                       \ the two\nsegments, no deletion is called."
-                    synonyms:
-                    - --query_gap_tolerance
                     args: !SimpleFlagArg
                       name: QUERY_GAP_TOLERANCE
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --query_overlap_tolerance
                     description: "Maximum tolerated overlap between adjacent alignment\n\
                       segments on the query (default: 50). Example:\nDeletions are\
                       \ detected from two subsequent segments of\na split query sequence\
@@ -717,12 +720,12 @@ subcommands:
                       \ length of\nan overlap between both segments in the query.\
                       \ If the\noverlap between the two segments in the query is\n\
                       larger than this value, no deletion is called."
-                    synonyms:
-                    - --query_overlap_tolerance
                     args: !SimpleFlagArg
                       name: QUERY_OVERLAP_TOLERANCE
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --reference_gap_tolerance
                     description: "Maximum tolerated gap between adjacent alignment\n\
                       segments on the reference (default: 50). Example:\nInsertions\
                       \ are detected from two segments of a split\nquery sequence\
@@ -732,12 +735,12 @@ subcommands:
                       \ length of the\nreference gap between both segments. If there\
                       \ is a\nreference gap larger than this value between the two\n\
                       segments, no insertion is called."
-                    synonyms:
-                    - --reference_gap_tolerance
                     args: !SimpleFlagArg
                       name: REFERENCE_GAP_TOLERANCE
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --reference_overlap_tolerance
                     description: "Maximum tolerated overlap between adjacent alignment\n\
                       segments on the reference (default: 50). Example:\nInsertions\
                       \ are detected from two segments of a split\nquery sequence\
@@ -747,68 +750,750 @@ subcommands:
                       \ length of\nan overlap between both segments on the reference.\
                       \ If\nthere is a reference gap larger than this value\nbetween\
                       \ the two segments, no insertion is called."
-                    synonyms:
-                    - --reference_overlap_tolerance
                     args: !SimpleFlagArg
                       name: REFERENCE_OVERLAP_TOLERANCE
-                    optional: true
                   - !Flag
-                    description: "Sample ID to include in output vcf file (default:\n\
-                      Sample)"
+                    optional: true
                     synonyms:
                     - --sample
+                    description: "Sample ID to include in output vcf file (default:\n\
+                      Sample)"
                     args: !SimpleFlagArg
                       name: SAMPLE
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --types
                     description: "SV types to include in output VCF (default:\nDEL,INS,INV,DUP_TAN,DUP_INT,BND).\
                       \ Give a comma-\nseparated list of SV types. The possible SV\
                       \ types are:\nDEL (deletions), INS (novel insertions), INV\n\
                       (inversions), DUP_TAN (tandem duplications), DUP_INT\n(interspersed\
                       \ duplications), BND (breakends)."
-                    synonyms:
-                    - --types
                     args: !SimpleFlagArg
                       name: TYPES
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --symbolic_alleles
                     description: "Use symbolic alleles, such as <DEL> or <INV> in\
                       \ the\nVCF output (default: False). By default, deletions,\n\
                       insertions, and inversions are represented by their\nnucleotide\
                       \ sequence in the output VCF."
-                    synonyms:
-                    - --symbolic_alleles
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --duplications_as_insertions
                     description: "Represent tandem and interspersed duplications as\n\
                       insertions in output VCF (default: False). By default,\nduplications\
                       \ are represented by the SVTYPE=DUP and the\ngenomic source\
                       \ is given by the POS and END tags. When\nenabling this option,\
                       \ duplications are instead\nrepresented by the SVTYPE=INS and\
                       \ POS and END both\ngive the insertion point of the duplication."
-                    synonyms:
-                    - --duplications_as_insertions
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --query_names
                     description: "Output names of supporting query sequences in INFO\
                       \ tag\nof VCF (default: False). If enabled, the INFO/READS\n\
                       tag contains the list of names of the supporting query\nsequences.\n"
-                    synonyms:
-                    - --query_names
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: working_dir
+                        description: "Working and output directory. Existing files\
+                          \ in the\ndirectory are overwritten. If the directory does\
+                          \ not\nexist, it is created."
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: bam_file
+                        description: "SAM/BAM file with alignment of query assembly\
+                          \ to\nreference assembly (needs to be coordinate-sorted)"
+                      - !Positional
+                        optional: false
+                        position: 2
+                        name: genome
+                        description: "Reference genome file that the assembly was\
+                          \ aligned to\n(FASTA)"
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min_mapq
+                        description: "Minimum mapping quality of alignments to consider\n\
+                          (default: 20). Alignments with a lower mapping quality\n\
+                          are ignored."
+                        args: !SimpleFlagArg
+                          name: MIN_MAPQ
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min_sv_size
+                        description: "Minimum SV size to detect (default: 40). SVIM\
+                          \ can\npotentially detect events of any size but is limited\n\
+                          by the signal-to-noise ratio in the input alignments.\n\
+                          That means that more accurate assemblies and\nalignments\
+                          \ enable the detection of smaller events."
+                        args: !SimpleFlagArg
+                          name: MIN_SV_SIZE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --max_sv_size
+                        description: "Maximum SV size to detect (default: 100000).\
+                          \ This\nparameter is used to distinguish long deletions\
+                          \ (and\ninversions) from translocations which cannot be\n\
+                          distinguished from the alignment alone. Split read\nsegments\
+                          \ mapping far apart on the reference could\neither indicate\
+                          \ a very long deletion (inversion) or a\ntranslocation breakpoint.\
+                          \ SVIM calls a translocation\nbreakpoint if the mapping\
+                          \ distance is larger than this\nparameter and a deletion\
+                          \ (or inversion) if it is\nsmaller or equal."
+                        args: !SimpleFlagArg
+                          name: MAX_SV_SIZE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --query_gap_tolerance
+                        description: "Maximum tolerated gap between adjacent alignment\n\
+                          segments on the query (default: 50). Example:\nDeletions\
+                          \ are detected from two subsequent segments of\na split\
+                          \ query sequence that are mapped far apart from\neach other\
+                          \ on the reference. The query gap tolerance\ndetermines\
+                          \ the maximum tolerated length of the query\ngap between\
+                          \ both segments. If there is an unaligned\nquery segment\
+                          \ larger than this value between the two\nsegments, no deletion\
+                          \ is called."
+                        args: !SimpleFlagArg
+                          name: QUERY_GAP_TOLERANCE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --query_overlap_tolerance
+                        description: "Maximum tolerated overlap between adjacent alignment\n\
+                          segments on the query (default: 50). Example:\nDeletions\
+                          \ are detected from two subsequent segments of\na split\
+                          \ query sequence that are mapped far apart from\neach other\
+                          \ on the reference. The query overlap\ntolerance determines\
+                          \ the maximum tolerated length of\nan overlap between both\
+                          \ segments in the query. If the\noverlap between the two\
+                          \ segments in the query is\nlarger than this value, no deletion\
+                          \ is called."
+                        args: !SimpleFlagArg
+                          name: QUERY_OVERLAP_TOLERANCE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --reference_gap_tolerance
+                        description: "Maximum tolerated gap between adjacent alignment\n\
+                          segments on the reference (default: 50). Example:\nInsertions\
+                          \ are detected from two segments of a split\nquery sequence\
+                          \ that are mapped right next to each\nother on the reference\
+                          \ but with unaligned sequence\nbetween them on the query.\
+                          \ The reference gap tolerance\ndetermines the maximum tolerated\
+                          \ length of the\nreference gap between both segments. If\
+                          \ there is a\nreference gap larger than this value between\
+                          \ the two\nsegments, no insertion is called."
+                        args: !SimpleFlagArg
+                          name: REFERENCE_GAP_TOLERANCE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --reference_overlap_tolerance
+                        description: "Maximum tolerated overlap between adjacent alignment\n\
+                          segments on the reference (default: 50). Example:\nInsertions\
+                          \ are detected from two segments of a split\nquery sequence\
+                          \ that are mapped right next to each\nother on the reference\
+                          \ but with unaligned sequence\nbetween them on the query.\
+                          \ The reference overlap\ntolerance determines the maximum\
+                          \ tolerated length of\nan overlap between both segments\
+                          \ on the reference. If\nthere is a reference gap larger\
+                          \ than this value\nbetween the two segments, no insertion\
+                          \ is called."
+                        args: !SimpleFlagArg
+                          name: REFERENCE_OVERLAP_TOLERANCE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --sample
+                        description: "Sample ID to include in output vcf file (default:\n\
+                          Sample)"
+                        args: !SimpleFlagArg
+                          name: SAMPLE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --types
+                        description: "SV types to include in output VCF (default:\n\
+                          DEL,INS,INV,DUP_TAN,DUP_INT,BND). Give a comma-\nseparated\
+                          \ list of SV types. The possible SV types are:\nDEL (deletions),\
+                          \ INS (novel insertions), INV\n(inversions), DUP_TAN (tandem\
+                          \ duplications), DUP_INT\n(interspersed duplications), BND\
+                          \ (breakends)."
+                        args: !SimpleFlagArg
+                          name: TYPES
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --symbolic_alleles
+                        description: "Use symbolic alleles, such as <DEL> or <INV>\
+                          \ in the\nVCF output (default: False). By default, deletions,\n\
+                          insertions, and inversions are represented by their\nnucleotide\
+                          \ sequence in the output VCF."
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --duplications_as_insertions
+                        description: "Represent tandem and interspersed duplications\
+                          \ as\ninsertions in output VCF (default: False). By default,\n\
+                          duplications are represented by the SVTYPE=DUP and the\n\
+                          genomic source is given by the POS and END tags. When\n\
+                          enabling this option, duplications are instead\nrepresented\
+                          \ by the SVTYPE=INS and POS and END both\ngive the insertion\
+                          \ point of the duplication."
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --query_names
+                        description: "Output names of supporting query sequences in\
+                          \ INFO tag\nof VCF (default: False). If enabled, the INFO/READS\n\
+                          tag contains the list of names of the supporting query\n\
+                          sequences.\n"
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: svim-asm haploid [-h] [--min_mapq MIN_MAPQ]\
+                        \ [--min_sv_size MIN_SV_SIZE]\n                        [--max_sv_size\
+                        \ MAX_SV_SIZE]\n                        [--query_gap_tolerance\
+                        \ QUERY_GAP_TOLERANCE]\n                        [--query_overlap_tolerance\
+                        \ QUERY_OVERLAP_TOLERANCE]\n                        [--reference_gap_tolerance\
+                        \ REFERENCE_GAP_TOLERANCE]\n                        [--reference_overlap_tolerance\
+                        \ REFERENCE_OVERLAP_TOLERANCE]\n                        [--sample\
+                        \ SAMPLE] [--types TYPES] [--symbolic_alleles]\n         \
+                        \               [--duplications_as_insertions] [--query_names]\n\
+                        \                        working_dir bam_file genome\n\npositional\
+                        \ arguments:\n  working_dir           Working and output directory.\
+                        \ Existing files in the\n                        directory\
+                        \ are overwritten. If the directory does not\n           \
+                        \             exist, it is created.\n  bam_file          \
+                        \    SAM/BAM file with alignment of query assembly to\n  \
+                        \                      reference assembly (needs to be coordinate-sorted)\n\
+                        \  genome                Reference genome file that the assembly\
+                        \ was aligned to\n                        (FASTA)\n\noptional\
+                        \ arguments:\n  -h, --help            show this help message\
+                        \ and exit\n\nCOLLECT:\n  --min_mapq MIN_MAPQ   Minimum mapping\
+                        \ quality of alignments to consider\n                    \
+                        \    (default: 20). Alignments with a lower mapping quality\n\
+                        \                        are ignored.\n  --min_sv_size MIN_SV_SIZE\n\
+                        \                        Minimum SV size to detect (default:\
+                        \ 40). SVIM can\n                        potentially detect\
+                        \ events of any size but is limited\n                    \
+                        \    by the signal-to-noise ratio in the input alignments.\n\
+                        \                        That means that more accurate assemblies\
+                        \ and\n                        alignments enable the detection\
+                        \ of smaller events.\n  --max_sv_size MAX_SV_SIZE\n      \
+                        \                  Maximum SV size to detect (default: 100000).\
+                        \ This\n                        parameter is used to distinguish\
+                        \ long deletions (and\n                        inversions)\
+                        \ from translocations which cannot be\n                  \
+                        \      distinguished from the alignment alone. Split read\n\
+                        \                        segments mapping far apart on the\
+                        \ reference could\n                        either indicate\
+                        \ a very long deletion (inversion) or a\n                \
+                        \        translocation breakpoint. SVIM calls a translocation\n\
+                        \                        breakpoint if the mapping distance\
+                        \ is larger than this\n                        parameter and\
+                        \ a deletion (or inversion) if it is\n                   \
+                        \     smaller or equal.\n  --query_gap_tolerance QUERY_GAP_TOLERANCE\n\
+                        \                        Maximum tolerated gap between adjacent\
+                        \ alignment\n                        segments on the query\
+                        \ (default: 50). Example:\n                        Deletions\
+                        \ are detected from two subsequent segments of\n         \
+                        \               a split query sequence that are mapped far\
+                        \ apart from\n                        each other on the reference.\
+                        \ The query gap tolerance\n                        determines\
+                        \ the maximum tolerated length of the query\n            \
+                        \            gap between both segments. If there is an unaligned\n\
+                        \                        query segment larger than this value\
+                        \ between the two\n                        segments, no deletion\
+                        \ is called.\n  --query_overlap_tolerance QUERY_OVERLAP_TOLERANCE\n\
+                        \                        Maximum tolerated overlap between\
+                        \ adjacent alignment\n                        segments on\
+                        \ the query (default: 50). Example:\n                    \
+                        \    Deletions are detected from two subsequent segments of\n\
+                        \                        a split query sequence that are mapped\
+                        \ far apart from\n                        each other on the\
+                        \ reference. The query overlap\n                        tolerance\
+                        \ determines the maximum tolerated length of\n           \
+                        \             an overlap between both segments in the query.\
+                        \ If the\n                        overlap between the two\
+                        \ segments in the query is\n                        larger\
+                        \ than this value, no deletion is called.\n  --reference_gap_tolerance\
+                        \ REFERENCE_GAP_TOLERANCE\n                        Maximum\
+                        \ tolerated gap between adjacent alignment\n             \
+                        \           segments on the reference (default: 50). Example:\n\
+                        \                        Insertions are detected from two\
+                        \ segments of a split\n                        query sequence\
+                        \ that are mapped right next to each\n                   \
+                        \     other on the reference but with unaligned sequence\n\
+                        \                        between them on the query. The reference\
+                        \ gap tolerance\n                        determines the maximum\
+                        \ tolerated length of the\n                        reference\
+                        \ gap between both segments. If there is a\n             \
+                        \           reference gap larger than this value between the\
+                        \ two\n                        segments, no insertion is called.\n\
+                        \  --reference_overlap_tolerance REFERENCE_OVERLAP_TOLERANCE\n\
+                        \                        Maximum tolerated overlap between\
+                        \ adjacent alignment\n                        segments on\
+                        \ the reference (default: 50). Example:\n                \
+                        \        Insertions are detected from two segments of a split\n\
+                        \                        query sequence that are mapped right\
+                        \ next to each\n                        other on the reference\
+                        \ but with unaligned sequence\n                        between\
+                        \ them on the query. The reference overlap\n             \
+                        \           tolerance determines the maximum tolerated length\
+                        \ of\n                        an overlap between both segments\
+                        \ on the reference. If\n                        there is a\
+                        \ reference gap larger than this value\n                 \
+                        \       between the two segments, no insertion is called.\n\
+                        \nOUTPUT:\n  --sample SAMPLE       Sample ID to include in\
+                        \ output vcf file (default:\n                        Sample)\n\
+                        \  --types TYPES         SV types to include in output VCF\
+                        \ (default:\n                        DEL,INS,INV,DUP_TAN,DUP_INT,BND).\
+                        \ Give a comma-\n                        separated list of\
+                        \ SV types. The possible SV types are:\n                 \
+                        \       DEL (deletions), INS (novel insertions), INV\n   \
+                        \                     (inversions), DUP_TAN (tandem duplications),\
+                        \ DUP_INT\n                        (interspersed duplications),\
+                        \ BND (breakends).\n  --symbolic_alleles    Use symbolic alleles,\
+                        \ such as <DEL> or <INV> in the\n                        VCF\
+                        \ output (default: False). By default, deletions,\n      \
+                        \                  insertions, and inversions are represented\
+                        \ by their\n                        nucleotide sequence in\
+                        \ the output VCF.\n  --duplications_as_insertions\n      \
+                        \                  Represent tandem and interspersed duplications\
+                        \ as\n                        insertions in output VCF (default:\
+                        \ False). By default,\n                        duplications\
+                        \ are represented by the SVTYPE=DUP and the\n            \
+                        \            genomic source is given by the POS and END tags.\
+                        \ When\n                        enabling this option, duplications\
+                        \ are instead\n                        represented by the\
+                        \ SVTYPE=INS and POS and END both\n                      \
+                        \  give the insertion point of the duplication.\n  --query_names\
+                        \         Output names of supporting query sequences in INFO\
+                        \ tag\n                        of VCF (default: False). If\
+                        \ enabled, the INFO/READS\n                        tag contains\
+                        \ the list of names of the supporting query\n            \
+                        \            sequences.\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - svim-asm
+                      - diploid
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: working_dir
+                        description: "Working and output directory. Existing files\
+                          \ in the\ndirectory are overwritten. If the directory does\
+                          \ not\nexist, it is created."
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: bam_file1
+                        description: "SAM/BAM file with alignment of query assembly's\
+                          \ first\nhaplotype to reference assembly (needs to be\n\
+                          coordinate-sorted)"
+                      - !Positional
+                        optional: false
+                        position: 2
+                        name: bam_file2
+                        description: "SAM/BAM file with alignment of query assembly's\
+                          \ second\nhaplotype to reference assembly (needs to be\n\
+                          coordinate-sorted)"
+                      - !Positional
+                        optional: false
+                        position: 3
+                        name: genome
+                        description: "Reference genome file that the assembly was\
+                          \ aligned to\n(FASTA)"
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min_mapq
+                        description: "Minimum mapping quality of alignments to consider\n\
+                          (default: 20). Alignments with a lower mapping quality\n\
+                          are ignored."
+                        args: !SimpleFlagArg
+                          name: MIN_MAPQ
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min_sv_size
+                        description: "Minimum SV size to detect (default: 40). SVIM\
+                          \ can\npotentially detect events of any size but is limited\n\
+                          by the signal-to-noise ratio in the input alignments.\n\
+                          That means that more accurate assemblies and\nalignments\
+                          \ enable the detection of smaller events."
+                        args: !SimpleFlagArg
+                          name: MIN_SV_SIZE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --max_sv_size
+                        description: "Maximum SV size to detect (default: 100000).\
+                          \ This\nparameter is used to distinguish long deletions\
+                          \ (and\ninversions) from translocations which cannot be\n\
+                          distinguished from the alignment alone. Split read\nsegments\
+                          \ mapping far apart on the reference could\neither indicate\
+                          \ a very long deletion (inversion) or a\ntranslocation breakpoint.\
+                          \ SVIM calls a translocation\nbreakpoint if the mapping\
+                          \ distance is larger than this\nparameter and a deletion\
+                          \ (or inversion) if it is\nsmaller or equal."
+                        args: !SimpleFlagArg
+                          name: MAX_SV_SIZE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --query_gap_tolerance
+                        description: "Maximum tolerated gap between adjacent alignment\n\
+                          segments on the query (default: 50). Example:\nDeletions\
+                          \ are detected from two subsequent segments of\na split\
+                          \ query sequence that are mapped far apart from\neach other\
+                          \ on the reference. The query gap tolerance\ndetermines\
+                          \ the maximum tolerated length of the query\ngap between\
+                          \ both segments. If there is an unaligned\nquery segment\
+                          \ larger than this value between the two\nsegments, no deletion\
+                          \ is called."
+                        args: !SimpleFlagArg
+                          name: QUERY_GAP_TOLERANCE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --query_overlap_tolerance
+                        description: "Maximum tolerated overlap between adjacent alignment\n\
+                          segments on the query (default: 50). Example:\nDeletions\
+                          \ are detected from two subsequent segments of\na split\
+                          \ query sequence that are mapped far apart from\neach other\
+                          \ on the reference. The query overlap\ntolerance determines\
+                          \ the maximum tolerated length of\nan overlap between both\
+                          \ segments in the query. If the\noverlap between the two\
+                          \ segments in the query is\nlarger than this value, no deletion\
+                          \ is called."
+                        args: !SimpleFlagArg
+                          name: QUERY_OVERLAP_TOLERANCE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --reference_gap_tolerance
+                        description: "Maximum tolerated gap between adjacent alignment\n\
+                          segments on the reference (default: 50). Example:\nInsertions\
+                          \ are detected from two segments of a split\nquery sequence\
+                          \ that are mapped right next to each\nother on the reference\
+                          \ but with unaligned sequence\nbetween them on the query.\
+                          \ The reference gap tolerance\ndetermines the maximum tolerated\
+                          \ length of the\nreference gap between both segments. If\
+                          \ there is a\nreference gap larger than this value between\
+                          \ the two\nsegments, no insertion is called."
+                        args: !SimpleFlagArg
+                          name: REFERENCE_GAP_TOLERANCE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --reference_overlap_tolerance
+                        description: "Maximum tolerated overlap between adjacent alignment\n\
+                          segments on the reference (default: 50). Example:\nInsertions\
+                          \ are detected from two segments of a split\nquery sequence\
+                          \ that are mapped right next to each\nother on the reference\
+                          \ but with unaligned sequence\nbetween them on the query.\
+                          \ The reference overlap\ntolerance determines the maximum\
+                          \ tolerated length of\nan overlap between both segments\
+                          \ on the reference. If\nthere is a reference gap larger\
+                          \ than this value\nbetween the two segments, no insertion\
+                          \ is called."
+                        args: !SimpleFlagArg
+                          name: REFERENCE_OVERLAP_TOLERANCE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --max_edit_distance
+                        description: "Maximum edit distance between both alleles to\
+                          \ be\npaired up into a homozygous call (default: 200)."
+                        args: !SimpleFlagArg
+                          name: MAX_EDIT_DISTANCE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --sample
+                        description: "Sample ID to include in output vcf file (default:\n\
+                          Sample)"
+                        args: !SimpleFlagArg
+                          name: SAMPLE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --types
+                        description: "SV types to include in output VCF (default:\n\
+                          DEL,INS,INV,DUP_TAN,DUP_INT,BND). Give a comma-\nseparated\
+                          \ list of SV types. The possible SV types are:\nDEL (deletions),\
+                          \ INS (novel insertions), INV\n(inversions), DUP_TAN (tandem\
+                          \ duplications), DUP_INT\n(interspersed duplications), BND\
+                          \ (breakends)."
+                        args: !SimpleFlagArg
+                          name: TYPES
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --symbolic_alleles
+                        description: "Use symbolic alleles, such as <DEL> or <INV>\
+                          \ in the\nVCF output (default: False). By default, deletions,\n\
+                          insertions, and inversions are represented by their\nnucleotide\
+                          \ sequence in the output VCF."
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --duplications_as_insertions
+                        description: "Represent tandem and interspersed duplications\
+                          \ as\ninsertions in output VCF (default: False). By default,\n\
+                          duplications are represented by the SVTYPE=DUP and the\n\
+                          genomic source is given by the POS and END tags. When\n\
+                          enabling this option, duplications are instead\nrepresented\
+                          \ by the SVTYPE=INS and POS and END both\ngive the insertion\
+                          \ point of the duplication."
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --query_names
+                        description: "Output names of supporting query sequences in\
+                          \ INFO tag\nof VCF (default: False). If enabled, the INFO/READS\n\
+                          tag contains the list of names of the supporting query\n\
+                          sequences.\n"
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: svim-asm diploid [-h] [--min_mapq MIN_MAPQ]\
+                        \ [--min_sv_size MIN_SV_SIZE]\n                        [--max_sv_size\
+                        \ MAX_SV_SIZE]\n                        [--query_gap_tolerance\
+                        \ QUERY_GAP_TOLERANCE]\n                        [--query_overlap_tolerance\
+                        \ QUERY_OVERLAP_TOLERANCE]\n                        [--reference_gap_tolerance\
+                        \ REFERENCE_GAP_TOLERANCE]\n                        [--reference_overlap_tolerance\
+                        \ REFERENCE_OVERLAP_TOLERANCE]\n                        [--max_edit_distance\
+                        \ MAX_EDIT_DISTANCE]\n                        [--sample SAMPLE]\
+                        \ [--types TYPES] [--symbolic_alleles]\n                 \
+                        \       [--duplications_as_insertions] [--query_names]\n \
+                        \                       working_dir bam_file1 bam_file2 genome\n\
+                        \npositional arguments:\n  working_dir           Working and\
+                        \ output directory. Existing files in the\n              \
+                        \          directory are overwritten. If the directory does\
+                        \ not\n                        exist, it is created.\n  bam_file1\
+                        \             SAM/BAM file with alignment of query assembly's\
+                        \ first\n                        haplotype to reference assembly\
+                        \ (needs to be\n                        coordinate-sorted)\n\
+                        \  bam_file2             SAM/BAM file with alignment of query\
+                        \ assembly's second\n                        haplotype to\
+                        \ reference assembly (needs to be\n                      \
+                        \  coordinate-sorted)\n  genome                Reference genome\
+                        \ file that the assembly was aligned to\n                \
+                        \        (FASTA)\n\noptional arguments:\n  -h, --help    \
+                        \        show this help message and exit\n\nCOLLECT:\n  --min_mapq\
+                        \ MIN_MAPQ   Minimum mapping quality of alignments to consider\n\
+                        \                        (default: 20). Alignments with a\
+                        \ lower mapping quality\n                        are ignored.\n\
+                        \  --min_sv_size MIN_SV_SIZE\n                        Minimum\
+                        \ SV size to detect (default: 40). SVIM can\n            \
+                        \            potentially detect events of any size but is\
+                        \ limited\n                        by the signal-to-noise\
+                        \ ratio in the input alignments.\n                       \
+                        \ That means that more accurate assemblies and\n         \
+                        \               alignments enable the detection of smaller\
+                        \ events.\n  --max_sv_size MAX_SV_SIZE\n                 \
+                        \       Maximum SV size to detect (default: 100000). This\n\
+                        \                        parameter is used to distinguish\
+                        \ long deletions (and\n                        inversions)\
+                        \ from translocations which cannot be\n                  \
+                        \      distinguished from the alignment alone. Split read\n\
+                        \                        segments mapping far apart on the\
+                        \ reference could\n                        either indicate\
+                        \ a very long deletion (inversion) or a\n                \
+                        \        translocation breakpoint. SVIM calls a translocation\n\
+                        \                        breakpoint if the mapping distance\
+                        \ is larger than this\n                        parameter and\
+                        \ a deletion (or inversion) if it is\n                   \
+                        \     smaller or equal.\n  --query_gap_tolerance QUERY_GAP_TOLERANCE\n\
+                        \                        Maximum tolerated gap between adjacent\
+                        \ alignment\n                        segments on the query\
+                        \ (default: 50). Example:\n                        Deletions\
+                        \ are detected from two subsequent segments of\n         \
+                        \               a split query sequence that are mapped far\
+                        \ apart from\n                        each other on the reference.\
+                        \ The query gap tolerance\n                        determines\
+                        \ the maximum tolerated length of the query\n            \
+                        \            gap between both segments. If there is an unaligned\n\
+                        \                        query segment larger than this value\
+                        \ between the two\n                        segments, no deletion\
+                        \ is called.\n  --query_overlap_tolerance QUERY_OVERLAP_TOLERANCE\n\
+                        \                        Maximum tolerated overlap between\
+                        \ adjacent alignment\n                        segments on\
+                        \ the query (default: 50). Example:\n                    \
+                        \    Deletions are detected from two subsequent segments of\n\
+                        \                        a split query sequence that are mapped\
+                        \ far apart from\n                        each other on the\
+                        \ reference. The query overlap\n                        tolerance\
+                        \ determines the maximum tolerated length of\n           \
+                        \             an overlap between both segments in the query.\
+                        \ If the\n                        overlap between the two\
+                        \ segments in the query is\n                        larger\
+                        \ than this value, no deletion is called.\n  --reference_gap_tolerance\
+                        \ REFERENCE_GAP_TOLERANCE\n                        Maximum\
+                        \ tolerated gap between adjacent alignment\n             \
+                        \           segments on the reference (default: 50). Example:\n\
+                        \                        Insertions are detected from two\
+                        \ segments of a split\n                        query sequence\
+                        \ that are mapped right next to each\n                   \
+                        \     other on the reference but with unaligned sequence\n\
+                        \                        between them on the query. The reference\
+                        \ gap tolerance\n                        determines the maximum\
+                        \ tolerated length of the\n                        reference\
+                        \ gap between both segments. If there is a\n             \
+                        \           reference gap larger than this value between the\
+                        \ two\n                        segments, no insertion is called.\n\
+                        \  --reference_overlap_tolerance REFERENCE_OVERLAP_TOLERANCE\n\
+                        \                        Maximum tolerated overlap between\
+                        \ adjacent alignment\n                        segments on\
+                        \ the reference (default: 50). Example:\n                \
+                        \        Insertions are detected from two segments of a split\n\
+                        \                        query sequence that are mapped right\
+                        \ next to each\n                        other on the reference\
+                        \ but with unaligned sequence\n                        between\
+                        \ them on the query. The reference overlap\n             \
+                        \           tolerance determines the maximum tolerated length\
+                        \ of\n                        an overlap between both segments\
+                        \ on the reference. If\n                        there is a\
+                        \ reference gap larger than this value\n                 \
+                        \       between the two segments, no insertion is called.\n\
+                        \nPAIR:\n  --max_edit_distance MAX_EDIT_DISTANCE\n       \
+                        \                 Maximum edit distance between both alleles\
+                        \ to be\n                        paired up into a homozygous\
+                        \ call (default: 200).\n\nOUTPUT:\n  --sample SAMPLE     \
+                        \  Sample ID to include in output vcf file (default:\n   \
+                        \                     Sample)\n  --types TYPES         SV\
+                        \ types to include in output VCF (default:\n             \
+                        \           DEL,INS,INV,DUP_TAN,DUP_INT,BND). Give a comma-\n\
+                        \                        separated list of SV types. The possible\
+                        \ SV types are:\n                        DEL (deletions),\
+                        \ INS (novel insertions), INV\n                        (inversions),\
+                        \ DUP_TAN (tandem duplications), DUP_INT\n               \
+                        \         (interspersed duplications), BND (breakends).\n\
+                        \  --symbolic_alleles    Use symbolic alleles, such as <DEL>\
+                        \ or <INV> in the\n                        VCF output (default:\
+                        \ False). By default, deletions,\n                       \
+                        \ insertions, and inversions are represented by their\n  \
+                        \                      nucleotide sequence in the output VCF.\n\
+                        \  --duplications_as_insertions\n                        Represent\
+                        \ tandem and interspersed duplications as\n              \
+                        \          insertions in output VCF (default: False). By default,\n\
+                        \                        duplications are represented by the\
+                        \ SVTYPE=DUP and the\n                        genomic source\
+                        \ is given by the POS and END tags. When\n               \
+                        \         enabling this option, duplications are instead\n\
+                        \                        represented by the SVTYPE=INS and\
+                        \ POS and END both\n                        give the insertion\
+                        \ point of the duplication.\n  --query_names         Output\
+                        \ names of supporting query sequences in INFO tag\n      \
+                        \                  of VCF (default: False). If enabled, the\
+                        \ INFO/READS\n                        tag contains the list\
+                        \ of names of the supporting query\n                     \
+                        \   sequences.\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --version
+                      - -v
+                      description: show program's version number and exit
+                      args: !EmptyFlagArg {}
+                    help_text: "usage: svim-asm [-h] [--version] {haploid,diploid}\
+                      \ ...\n\nSVIM-asm (pronounced SWIM-assem) is a structural variant\
+                      \ caller for genome-genome alignments. \nIt discriminates five\
+                      \ different variant classes: deletions, insertions, tandem and\
+                      \ interspersed duplications and inversions.\nSVIM-asm analyzes\
+                      \ alignments between a haploid or diploid query assembly and\
+                      \ a reference assembly in SAM/BAM format. \nWe recommend to\
+                      \ produce the alignments using minimap2.\n\nSVIM-asm has an\
+                      \ haploid and a diploid mode depending on the input assembly\
+                      \ and performs the following steps:\n- COLLECT detects SVs from\
+                      \ genome-genome alignments in BAM format\n- PAIR merges the\
+                      \ SV calls from the two haplotypes of a diploid assembly (diploid\
+                      \ mode only)\n- OUTPUT prints the found SVs in VCF format\n\n\
+                      positional arguments:\n  {haploid,diploid}  modes\n    haploid\
+                      \          Detect SVs from the alignment of an haploid query\n\
+                      \                     assembly to a reference assembly\n   \
+                      \ diploid          Detect SVs from the alignment of a diploid\
+                      \ query assembly\n                     to a reference assembly\n\
+                      \noptional arguments:\n  -h, --help         show this help message\
+                      \ and exit\n  --version, -v      show program's version number\
+                      \ and exit\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: svim-asm haploid [-h] [--min_mapq MIN_MAPQ] [--min_sv_size\
@@ -926,60 +1611,61 @@ subcommands:
                     \        of VCF (default: False). If enabled, the INFO/READS\n\
                     \                        tag contains the list of names of the\
                     \ supporting query\n                        sequences.\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - svim-asm
-                  - diploid
+                  command: *id005
                   positional:
                   - !Positional
+                    optional: false
+                    position: 0
+                    name: working_dir
                     description: "Working and output directory. Existing files in\
                       \ the\ndirectory are overwritten. If the directory does not\n\
                       exist, it is created."
-                    position: 0
-                    name: working_dir
-                    optional: false
                   - !Positional
-                    description: "SAM/BAM file with alignment of query assembly's\
-                      \ first\nhaplotype to reference assembly (needs to be\ncoordinate-sorted)"
+                    optional: false
                     position: 1
                     name: bam_file1
-                    optional: false
-                  - !Positional
                     description: "SAM/BAM file with alignment of query assembly's\
-                      \ second\nhaplotype to reference assembly (needs to be\ncoordinate-sorted)"
+                      \ first\nhaplotype to reference assembly (needs to be\ncoordinate-sorted)"
+                  - !Positional
+                    optional: false
                     position: 2
                     name: bam_file2
-                    optional: false
+                    description: "SAM/BAM file with alignment of query assembly's\
+                      \ second\nhaplotype to reference assembly (needs to be\ncoordinate-sorted)"
                   - !Positional
-                    description: "Reference genome file that the assembly was aligned\
-                      \ to\n(FASTA)"
+                    optional: false
                     position: 3
                     name: genome
-                    optional: false
+                    description: "Reference genome file that the assembly was aligned\
+                      \ to\n(FASTA)"
                   named:
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --min_mapq
                     description: "Minimum mapping quality of alignments to consider\n\
                       (default: 20). Alignments with a lower mapping quality\nare\
                       \ ignored."
-                    synonyms:
-                    - --min_mapq
                     args: !SimpleFlagArg
                       name: MIN_MAPQ
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --min_sv_size
                     description: "Minimum SV size to detect (default: 40). SVIM can\n\
                       potentially detect events of any size but is limited\nby the\
                       \ signal-to-noise ratio in the input alignments.\nThat means\
                       \ that more accurate assemblies and\nalignments enable the detection\
                       \ of smaller events."
-                    synonyms:
-                    - --min_sv_size
                     args: !SimpleFlagArg
                       name: MIN_SV_SIZE
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --max_sv_size
                     description: "Maximum SV size to detect (default: 100000). This\n\
                       parameter is used to distinguish long deletions (and\ninversions)\
                       \ from translocations which cannot be\ndistinguished from the\
@@ -988,12 +1674,12 @@ subcommands:
                       \ (inversion) or a\ntranslocation breakpoint. SVIM calls a translocation\n\
                       breakpoint if the mapping distance is larger than this\nparameter\
                       \ and a deletion (or inversion) if it is\nsmaller or equal."
-                    synonyms:
-                    - --max_sv_size
                     args: !SimpleFlagArg
                       name: MAX_SV_SIZE
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --query_gap_tolerance
                     description: "Maximum tolerated gap between adjacent alignment\n\
                       segments on the query (default: 50). Example:\nDeletions are\
                       \ detected from two subsequent segments of\na split query sequence\
@@ -1002,12 +1688,12 @@ subcommands:
                       \ length of the query\ngap between both segments. If there is\
                       \ an unaligned\nquery segment larger than this value between\
                       \ the two\nsegments, no deletion is called."
-                    synonyms:
-                    - --query_gap_tolerance
                     args: !SimpleFlagArg
                       name: QUERY_GAP_TOLERANCE
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --query_overlap_tolerance
                     description: "Maximum tolerated overlap between adjacent alignment\n\
                       segments on the query (default: 50). Example:\nDeletions are\
                       \ detected from two subsequent segments of\na split query sequence\
@@ -1016,12 +1702,12 @@ subcommands:
                       \ length of\nan overlap between both segments in the query.\
                       \ If the\noverlap between the two segments in the query is\n\
                       larger than this value, no deletion is called."
-                    synonyms:
-                    - --query_overlap_tolerance
                     args: !SimpleFlagArg
                       name: QUERY_OVERLAP_TOLERANCE
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --reference_gap_tolerance
                     description: "Maximum tolerated gap between adjacent alignment\n\
                       segments on the reference (default: 50). Example:\nInsertions\
                       \ are detected from two segments of a split\nquery sequence\
@@ -1031,12 +1717,12 @@ subcommands:
                       \ length of the\nreference gap between both segments. If there\
                       \ is a\nreference gap larger than this value between the two\n\
                       segments, no insertion is called."
-                    synonyms:
-                    - --reference_gap_tolerance
                     args: !SimpleFlagArg
                       name: REFERENCE_GAP_TOLERANCE
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --reference_overlap_tolerance
                     description: "Maximum tolerated overlap between adjacent alignment\n\
                       segments on the reference (default: 50). Example:\nInsertions\
                       \ are detected from two segments of a split\nquery sequence\
@@ -1046,76 +1732,73 @@ subcommands:
                       \ length of\nan overlap between both segments on the reference.\
                       \ If\nthere is a reference gap larger than this value\nbetween\
                       \ the two segments, no insertion is called."
-                    synonyms:
-                    - --reference_overlap_tolerance
                     args: !SimpleFlagArg
                       name: REFERENCE_OVERLAP_TOLERANCE
-                    optional: true
                   - !Flag
-                    description: "Maximum edit distance between both alleles to be\n\
-                      paired up into a homozygous call (default: 200)."
+                    optional: true
                     synonyms:
                     - --max_edit_distance
+                    description: "Maximum edit distance between both alleles to be\n\
+                      paired up into a homozygous call (default: 200)."
                     args: !SimpleFlagArg
                       name: MAX_EDIT_DISTANCE
-                    optional: true
                   - !Flag
-                    description: "Sample ID to include in output vcf file (default:\n\
-                      Sample)"
+                    optional: true
                     synonyms:
                     - --sample
+                    description: "Sample ID to include in output vcf file (default:\n\
+                      Sample)"
                     args: !SimpleFlagArg
                       name: SAMPLE
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --types
                     description: "SV types to include in output VCF (default:\nDEL,INS,INV,DUP_TAN,DUP_INT,BND).\
                       \ Give a comma-\nseparated list of SV types. The possible SV\
                       \ types are:\nDEL (deletions), INS (novel insertions), INV\n\
                       (inversions), DUP_TAN (tandem duplications), DUP_INT\n(interspersed\
                       \ duplications), BND (breakends)."
-                    synonyms:
-                    - --types
                     args: !SimpleFlagArg
                       name: TYPES
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --symbolic_alleles
                     description: "Use symbolic alleles, such as <DEL> or <INV> in\
                       \ the\nVCF output (default: False). By default, deletions,\n\
                       insertions, and inversions are represented by their\nnucleotide\
                       \ sequence in the output VCF."
-                    synonyms:
-                    - --symbolic_alleles
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --duplications_as_insertions
                     description: "Represent tandem and interspersed duplications as\n\
                       insertions in output VCF (default: False). By default,\nduplications\
                       \ are represented by the SVTYPE=DUP and the\ngenomic source\
                       \ is given by the POS and END tags. When\nenabling this option,\
                       \ duplications are instead\nrepresented by the SVTYPE=INS and\
                       \ POS and END both\ngive the insertion point of the duplication."
-                    synonyms:
-                    - --duplications_as_insertions
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --query_names
                     description: "Output names of supporting query sequences in INFO\
                       \ tag\nof VCF (default: False). If enabled, the INFO/READS\n\
                       tag contains the list of names of the supporting query\nsequences.\n"
-                    synonyms:
-                    - --query_names
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: svim-asm diploid [-h] [--min_mapq MIN_MAPQ] [--min_sv_size\
@@ -1242,22 +1925,11 @@ subcommands:
                     \                        tag contains the list of names of the\
                     \ supporting query\n                        sequences.\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: show program's version number and exit
-                  synonyms:
-                  - --version
-                  - -v
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "usage: svim-asm [-h] [--version] {haploid,diploid} ...\n\
                   \nSVIM-asm (pronounced SWIM-assem) is a structural variant caller\
                   \ for genome-genome alignments. \nIt discriminates five different\
@@ -1278,15 +1950,16 @@ subcommands:
                   \  -h, --help         show this help message and exit\n  --version,\
                   \ -v      show program's version number and exit\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: svim-asm haploid [-h] [--min_mapq MIN_MAPQ] [--min_sv_size\
@@ -1399,54 +2072,58 @@ subcommands:
                 \                        tag contains the list of names of the supporting\
                 \ query\n                        sequences.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
+                optional: false
+                position: 0
+                name: working_dir
                 description: "Working and output directory. Existing files in the\n\
                   directory are overwritten. If the directory does not\nexist, it\
                   \ is created."
-                position: 0
-                name: working_dir
-                optional: false
               - !Positional
-                description: "SAM/BAM file with alignment of query assembly's first\n\
-                  haplotype to reference assembly (needs to be\ncoordinate-sorted)"
+                optional: false
                 position: 1
                 name: bam_file1
-                optional: false
-              - !Positional
-                description: "SAM/BAM file with alignment of query assembly's second\n\
+                description: "SAM/BAM file with alignment of query assembly's first\n\
                   haplotype to reference assembly (needs to be\ncoordinate-sorted)"
+              - !Positional
+                optional: false
                 position: 2
                 name: bam_file2
-                optional: false
+                description: "SAM/BAM file with alignment of query assembly's second\n\
+                  haplotype to reference assembly (needs to be\ncoordinate-sorted)"
               - !Positional
-                description: "Reference genome file that the assembly was aligned\
-                  \ to\n(FASTA)"
+                optional: false
                 position: 3
                 name: genome
-                optional: false
+                description: "Reference genome file that the assembly was aligned\
+                  \ to\n(FASTA)"
               named:
               - !Flag
-                description: "Minimum mapping quality of alignments to consider\n\
-                  (default: 20). Alignments with a lower mapping quality\nare ignored."
+                optional: true
                 synonyms:
                 - --min_mapq
+                description: "Minimum mapping quality of alignments to consider\n\
+                  (default: 20). Alignments with a lower mapping quality\nare ignored."
                 args: !SimpleFlagArg
                   name: MIN_MAPQ
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --min_sv_size
                 description: "Minimum SV size to detect (default: 40). SVIM can\n\
                   potentially detect events of any size but is limited\nby the signal-to-noise\
                   \ ratio in the input alignments.\nThat means that more accurate\
                   \ assemblies and\nalignments enable the detection of smaller events."
-                synonyms:
-                - --min_sv_size
                 args: !SimpleFlagArg
                   name: MIN_SV_SIZE
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --max_sv_size
                 description: "Maximum SV size to detect (default: 100000). This\n\
                   parameter is used to distinguish long deletions (and\ninversions)\
                   \ from translocations which cannot be\ndistinguished from the alignment\
@@ -1455,12 +2132,12 @@ subcommands:
                   translocation breakpoint. SVIM calls a translocation\nbreakpoint\
                   \ if the mapping distance is larger than this\nparameter and a deletion\
                   \ (or inversion) if it is\nsmaller or equal."
-                synonyms:
-                - --max_sv_size
                 args: !SimpleFlagArg
                   name: MAX_SV_SIZE
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --query_gap_tolerance
                 description: "Maximum tolerated gap between adjacent alignment\nsegments\
                   \ on the query (default: 50). Example:\nDeletions are detected from\
                   \ two subsequent segments of\na split query sequence that are mapped\
@@ -1468,12 +2145,12 @@ subcommands:
                   determines the maximum tolerated length of the query\ngap between\
                   \ both segments. If there is an unaligned\nquery segment larger\
                   \ than this value between the two\nsegments, no deletion is called."
-                synonyms:
-                - --query_gap_tolerance
                 args: !SimpleFlagArg
                   name: QUERY_GAP_TOLERANCE
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --query_overlap_tolerance
                 description: "Maximum tolerated overlap between adjacent alignment\n\
                   segments on the query (default: 50). Example:\nDeletions are detected\
                   \ from two subsequent segments of\na split query sequence that are\
@@ -1482,12 +2159,12 @@ subcommands:
                   an overlap between both segments in the query. If the\noverlap between\
                   \ the two segments in the query is\nlarger than this value, no deletion\
                   \ is called."
-                synonyms:
-                - --query_overlap_tolerance
                 args: !SimpleFlagArg
                   name: QUERY_OVERLAP_TOLERANCE
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --reference_gap_tolerance
                 description: "Maximum tolerated gap between adjacent alignment\nsegments\
                   \ on the reference (default: 50). Example:\nInsertions are detected\
                   \ from two segments of a split\nquery sequence that are mapped right\
@@ -1496,12 +2173,12 @@ subcommands:
                   \ the maximum tolerated length of the\nreference gap between both\
                   \ segments. If there is a\nreference gap larger than this value\
                   \ between the two\nsegments, no insertion is called."
-                synonyms:
-                - --reference_gap_tolerance
                 args: !SimpleFlagArg
                   name: REFERENCE_GAP_TOLERANCE
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --reference_overlap_tolerance
                 description: "Maximum tolerated overlap between adjacent alignment\n\
                   segments on the reference (default: 50). Example:\nInsertions are\
                   \ detected from two segments of a split\nquery sequence that are\
@@ -1510,76 +2187,73 @@ subcommands:
                   \ determines the maximum tolerated length of\nan overlap between\
                   \ both segments on the reference. If\nthere is a reference gap larger\
                   \ than this value\nbetween the two segments, no insertion is called."
-                synonyms:
-                - --reference_overlap_tolerance
                 args: !SimpleFlagArg
                   name: REFERENCE_OVERLAP_TOLERANCE
-                optional: true
               - !Flag
-                description: "Maximum edit distance between both alleles to be\npaired\
-                  \ up into a homozygous call (default: 200)."
+                optional: true
                 synonyms:
                 - --max_edit_distance
+                description: "Maximum edit distance between both alleles to be\npaired\
+                  \ up into a homozygous call (default: 200)."
                 args: !SimpleFlagArg
                   name: MAX_EDIT_DISTANCE
-                optional: true
               - !Flag
-                description: "Sample ID to include in output vcf file (default:\n\
-                  Sample)"
+                optional: true
                 synonyms:
                 - --sample
+                description: "Sample ID to include in output vcf file (default:\n\
+                  Sample)"
                 args: !SimpleFlagArg
                   name: SAMPLE
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --types
                 description: "SV types to include in output VCF (default:\nDEL,INS,INV,DUP_TAN,DUP_INT,BND).\
                   \ Give a comma-\nseparated list of SV types. The possible SV types\
                   \ are:\nDEL (deletions), INS (novel insertions), INV\n(inversions),\
                   \ DUP_TAN (tandem duplications), DUP_INT\n(interspersed duplications),\
                   \ BND (breakends)."
-                synonyms:
-                - --types
                 args: !SimpleFlagArg
                   name: TYPES
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --symbolic_alleles
                 description: "Use symbolic alleles, such as <DEL> or <INV> in the\n\
                   VCF output (default: False). By default, deletions,\ninsertions,\
                   \ and inversions are represented by their\nnucleotide sequence in\
                   \ the output VCF."
-                synonyms:
-                - --symbolic_alleles
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --duplications_as_insertions
                 description: "Represent tandem and interspersed duplications as\n\
                   insertions in output VCF (default: False). By default,\nduplications\
                   \ are represented by the SVTYPE=DUP and the\ngenomic source is given\
                   \ by the POS and END tags. When\nenabling this option, duplications\
                   \ are instead\nrepresented by the SVTYPE=INS and POS and END both\n\
                   give the insertion point of the duplication."
-                synonyms:
-                - --duplications_as_insertions
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --query_names
                 description: "Output names of supporting query sequences in INFO tag\n\
                   of VCF (default: False). If enabled, the INFO/READS\ntag contains\
                   \ the list of names of the supporting query\nsequences.\n"
-                synonyms:
-                - --query_names
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id006
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: svim-asm diploid [-h] [--min_mapq MIN_MAPQ] [--min_sv_size\
@@ -1700,6 +2374,7 @@ subcommands:
                 \                        tag contains the list of names of the supporting\
                 \ query\n                        sequences.\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -1723,15 +2398,16 @@ subcommands:
               \ arguments:\n  -h, --help         show this help message and exit\n\
               \  --version, -v      show program's version number and exit\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: svim-asm haploid [-h] [--min_mapq MIN_MAPQ] [--min_sv_size\
@@ -1838,53 +2514,57 @@ subcommands:
             \               tag contains the list of names of the supporting query\n\
             \                        sequences.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: "Working and output directory. Existing files in the\ndirectory\
-              \ are overwritten. If the directory does not\nexist, it is created."
+            optional: false
             position: 0
             name: working_dir
-            optional: false
+            description: "Working and output directory. Existing files in the\ndirectory\
+              \ are overwritten. If the directory does not\nexist, it is created."
           - !Positional
-            description: "SAM/BAM file with alignment of query assembly's first\n\
-              haplotype to reference assembly (needs to be\ncoordinate-sorted)"
+            optional: false
             position: 1
             name: bam_file1
-            optional: false
-          - !Positional
-            description: "SAM/BAM file with alignment of query assembly's second\n\
+            description: "SAM/BAM file with alignment of query assembly's first\n\
               haplotype to reference assembly (needs to be\ncoordinate-sorted)"
+          - !Positional
+            optional: false
             position: 2
             name: bam_file2
-            optional: false
+            description: "SAM/BAM file with alignment of query assembly's second\n\
+              haplotype to reference assembly (needs to be\ncoordinate-sorted)"
           - !Positional
-            description: "Reference genome file that the assembly was aligned to\n\
-              (FASTA)"
+            optional: false
             position: 3
             name: genome
-            optional: false
+            description: "Reference genome file that the assembly was aligned to\n\
+              (FASTA)"
           named:
           - !Flag
-            description: "Minimum mapping quality of alignments to consider\n(default:\
-              \ 20). Alignments with a lower mapping quality\nare ignored."
+            optional: true
             synonyms:
             - --min_mapq
+            description: "Minimum mapping quality of alignments to consider\n(default:\
+              \ 20). Alignments with a lower mapping quality\nare ignored."
             args: !SimpleFlagArg
               name: MIN_MAPQ
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --min_sv_size
             description: "Minimum SV size to detect (default: 40). SVIM can\npotentially\
               \ detect events of any size but is limited\nby the signal-to-noise ratio\
               \ in the input alignments.\nThat means that more accurate assemblies\
               \ and\nalignments enable the detection of smaller events."
-            synonyms:
-            - --min_sv_size
             args: !SimpleFlagArg
               name: MIN_SV_SIZE
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --max_sv_size
             description: "Maximum SV size to detect (default: 100000). This\nparameter\
               \ is used to distinguish long deletions (and\ninversions) from translocations\
               \ which cannot be\ndistinguished from the alignment alone. Split read\n\
@@ -1893,12 +2573,12 @@ subcommands:
               \ calls a translocation\nbreakpoint if the mapping distance is larger\
               \ than this\nparameter and a deletion (or inversion) if it is\nsmaller\
               \ or equal."
-            synonyms:
-            - --max_sv_size
             args: !SimpleFlagArg
               name: MAX_SV_SIZE
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --query_gap_tolerance
             description: "Maximum tolerated gap between adjacent alignment\nsegments\
               \ on the query (default: 50). Example:\nDeletions are detected from\
               \ two subsequent segments of\na split query sequence that are mapped\
@@ -1906,12 +2586,12 @@ subcommands:
               determines the maximum tolerated length of the query\ngap between both\
               \ segments. If there is an unaligned\nquery segment larger than this\
               \ value between the two\nsegments, no deletion is called."
-            synonyms:
-            - --query_gap_tolerance
             args: !SimpleFlagArg
               name: QUERY_GAP_TOLERANCE
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --query_overlap_tolerance
             description: "Maximum tolerated overlap between adjacent alignment\nsegments\
               \ on the query (default: 50). Example:\nDeletions are detected from\
               \ two subsequent segments of\na split query sequence that are mapped\
@@ -1919,12 +2599,12 @@ subcommands:
               \ determines the maximum tolerated length of\nan overlap between both\
               \ segments in the query. If the\noverlap between the two segments in\
               \ the query is\nlarger than this value, no deletion is called."
-            synonyms:
-            - --query_overlap_tolerance
             args: !SimpleFlagArg
               name: QUERY_OVERLAP_TOLERANCE
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --reference_gap_tolerance
             description: "Maximum tolerated gap between adjacent alignment\nsegments\
               \ on the reference (default: 50). Example:\nInsertions are detected\
               \ from two segments of a split\nquery sequence that are mapped right\
@@ -1933,12 +2613,12 @@ subcommands:
               \ maximum tolerated length of the\nreference gap between both segments.\
               \ If there is a\nreference gap larger than this value between the two\n\
               segments, no insertion is called."
-            synonyms:
-            - --reference_gap_tolerance
             args: !SimpleFlagArg
               name: REFERENCE_GAP_TOLERANCE
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --reference_overlap_tolerance
             description: "Maximum tolerated overlap between adjacent alignment\nsegments\
               \ on the reference (default: 50). Example:\nInsertions are detected\
               \ from two segments of a split\nquery sequence that are mapped right\
@@ -1947,73 +2627,70 @@ subcommands:
               \ the maximum tolerated length of\nan overlap between both segments\
               \ on the reference. If\nthere is a reference gap larger than this value\n\
               between the two segments, no insertion is called."
-            synonyms:
-            - --reference_overlap_tolerance
             args: !SimpleFlagArg
               name: REFERENCE_OVERLAP_TOLERANCE
-            optional: true
           - !Flag
-            description: "Maximum edit distance between both alleles to be\npaired\
-              \ up into a homozygous call (default: 200)."
+            optional: true
             synonyms:
             - --max_edit_distance
+            description: "Maximum edit distance between both alleles to be\npaired\
+              \ up into a homozygous call (default: 200)."
             args: !SimpleFlagArg
               name: MAX_EDIT_DISTANCE
-            optional: true
           - !Flag
-            description: "Sample ID to include in output vcf file (default:\nSample)"
+            optional: true
             synonyms:
             - --sample
+            description: "Sample ID to include in output vcf file (default:\nSample)"
             args: !SimpleFlagArg
               name: SAMPLE
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --types
             description: "SV types to include in output VCF (default:\nDEL,INS,INV,DUP_TAN,DUP_INT,BND).\
               \ Give a comma-\nseparated list of SV types. The possible SV types are:\n\
               DEL (deletions), INS (novel insertions), INV\n(inversions), DUP_TAN\
               \ (tandem duplications), DUP_INT\n(interspersed duplications), BND (breakends)."
-            synonyms:
-            - --types
             args: !SimpleFlagArg
               name: TYPES
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --symbolic_alleles
             description: "Use symbolic alleles, such as <DEL> or <INV> in the\nVCF\
               \ output (default: False). By default, deletions,\ninsertions, and inversions\
               \ are represented by their\nnucleotide sequence in the output VCF."
-            synonyms:
-            - --symbolic_alleles
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --duplications_as_insertions
             description: "Represent tandem and interspersed duplications as\ninsertions\
               \ in output VCF (default: False). By default,\nduplications are represented\
               \ by the SVTYPE=DUP and the\ngenomic source is given by the POS and\
               \ END tags. When\nenabling this option, duplications are instead\nrepresented\
               \ by the SVTYPE=INS and POS and END both\ngive the insertion point of\
               \ the duplication."
-            synonyms:
-            - --duplications_as_insertions
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --query_names
             description: "Output names of supporting query sequences in INFO tag\n\
               of VCF (default: False). If enabled, the INFO/READS\ntag contains the\
               \ list of names of the supporting query\nsequences.\n"
-            synonyms:
-            - --query_names
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id006
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: svim-asm diploid [-h] [--min_mapq MIN_MAPQ] [--min_sv_size\
@@ -2127,6 +2804,7 @@ subcommands:
             \ the INFO/READS\n                        tag contains the list of names\
             \ of the supporting query\n                        sequences.\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -2149,15 +2827,16 @@ subcommands:
           \ -h, --help         show this help message and exit\n  --version, -v  \
           \    show program's version number and exit\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: svim-asm haploid [-h] [--min_mapq MIN_MAPQ] [--min_sv_size\
@@ -2259,52 +2938,56 @@ subcommands:
         \                        tag contains the list of names of the supporting\
         \ query\n                        sequences.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: "Working and output directory. Existing files in the\ndirectory\
-          \ are overwritten. If the directory does not\nexist, it is created."
+        optional: false
         position: 0
         name: working_dir
-        optional: false
+        description: "Working and output directory. Existing files in the\ndirectory\
+          \ are overwritten. If the directory does not\nexist, it is created."
       - !Positional
-        description: "SAM/BAM file with alignment of query assembly's first\nhaplotype\
-          \ to reference assembly (needs to be\ncoordinate-sorted)"
+        optional: false
         position: 1
         name: bam_file1
-        optional: false
-      - !Positional
-        description: "SAM/BAM file with alignment of query assembly's second\nhaplotype\
+        description: "SAM/BAM file with alignment of query assembly's first\nhaplotype\
           \ to reference assembly (needs to be\ncoordinate-sorted)"
+      - !Positional
+        optional: false
         position: 2
         name: bam_file2
-        optional: false
+        description: "SAM/BAM file with alignment of query assembly's second\nhaplotype\
+          \ to reference assembly (needs to be\ncoordinate-sorted)"
       - !Positional
-        description: "Reference genome file that the assembly was aligned to\n(FASTA)"
+        optional: false
         position: 3
         name: genome
-        optional: false
+        description: "Reference genome file that the assembly was aligned to\n(FASTA)"
       named:
       - !Flag
-        description: "Minimum mapping quality of alignments to consider\n(default:\
-          \ 20). Alignments with a lower mapping quality\nare ignored."
+        optional: true
         synonyms:
         - --min_mapq
+        description: "Minimum mapping quality of alignments to consider\n(default:\
+          \ 20). Alignments with a lower mapping quality\nare ignored."
         args: !SimpleFlagArg
           name: MIN_MAPQ
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --min_sv_size
         description: "Minimum SV size to detect (default: 40). SVIM can\npotentially\
           \ detect events of any size but is limited\nby the signal-to-noise ratio\
           \ in the input alignments.\nThat means that more accurate assemblies and\n\
           alignments enable the detection of smaller events."
-        synonyms:
-        - --min_sv_size
         args: !SimpleFlagArg
           name: MIN_SV_SIZE
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --max_sv_size
         description: "Maximum SV size to detect (default: 100000). This\nparameter\
           \ is used to distinguish long deletions (and\ninversions) from translocations\
           \ which cannot be\ndistinguished from the alignment alone. Split read\n\
@@ -2312,12 +2995,12 @@ subcommands:
           \ long deletion (inversion) or a\ntranslocation breakpoint. SVIM calls a\
           \ translocation\nbreakpoint if the mapping distance is larger than this\n\
           parameter and a deletion (or inversion) if it is\nsmaller or equal."
-        synonyms:
-        - --max_sv_size
         args: !SimpleFlagArg
           name: MAX_SV_SIZE
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --query_gap_tolerance
         description: "Maximum tolerated gap between adjacent alignment\nsegments on\
           \ the query (default: 50). Example:\nDeletions are detected from two subsequent\
           \ segments of\na split query sequence that are mapped far apart from\neach\
@@ -2325,12 +3008,12 @@ subcommands:
           \ tolerated length of the query\ngap between both segments. If there is\
           \ an unaligned\nquery segment larger than this value between the two\nsegments,\
           \ no deletion is called."
-        synonyms:
-        - --query_gap_tolerance
         args: !SimpleFlagArg
           name: QUERY_GAP_TOLERANCE
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --query_overlap_tolerance
         description: "Maximum tolerated overlap between adjacent alignment\nsegments\
           \ on the query (default: 50). Example:\nDeletions are detected from two\
           \ subsequent segments of\na split query sequence that are mapped far apart\
@@ -2338,12 +3021,12 @@ subcommands:
           \ the maximum tolerated length of\nan overlap between both segments in the\
           \ query. If the\noverlap between the two segments in the query is\nlarger\
           \ than this value, no deletion is called."
-        synonyms:
-        - --query_overlap_tolerance
         args: !SimpleFlagArg
           name: QUERY_OVERLAP_TOLERANCE
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --reference_gap_tolerance
         description: "Maximum tolerated gap between adjacent alignment\nsegments on\
           \ the reference (default: 50). Example:\nInsertions are detected from two\
           \ segments of a split\nquery sequence that are mapped right next to each\n\
@@ -2352,12 +3035,12 @@ subcommands:
           \ of the\nreference gap between both segments. If there is a\nreference\
           \ gap larger than this value between the two\nsegments, no insertion is\
           \ called."
-        synonyms:
-        - --reference_gap_tolerance
         args: !SimpleFlagArg
           name: REFERENCE_GAP_TOLERANCE
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --reference_overlap_tolerance
         description: "Maximum tolerated overlap between adjacent alignment\nsegments\
           \ on the reference (default: 50). Example:\nInsertions are detected from\
           \ two segments of a split\nquery sequence that are mapped right next to\
@@ -2366,73 +3049,70 @@ subcommands:
           \ tolerated length of\nan overlap between both segments on the reference.\
           \ If\nthere is a reference gap larger than this value\nbetween the two segments,\
           \ no insertion is called."
-        synonyms:
-        - --reference_overlap_tolerance
         args: !SimpleFlagArg
           name: REFERENCE_OVERLAP_TOLERANCE
-        optional: true
       - !Flag
-        description: "Maximum edit distance between both alleles to be\npaired up\
-          \ into a homozygous call (default: 200)."
+        optional: true
         synonyms:
         - --max_edit_distance
+        description: "Maximum edit distance between both alleles to be\npaired up\
+          \ into a homozygous call (default: 200)."
         args: !SimpleFlagArg
           name: MAX_EDIT_DISTANCE
-        optional: true
       - !Flag
-        description: "Sample ID to include in output vcf file (default:\nSample)"
+        optional: true
         synonyms:
         - --sample
+        description: "Sample ID to include in output vcf file (default:\nSample)"
         args: !SimpleFlagArg
           name: SAMPLE
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --types
         description: "SV types to include in output VCF (default:\nDEL,INS,INV,DUP_TAN,DUP_INT,BND).\
           \ Give a comma-\nseparated list of SV types. The possible SV types are:\n\
           DEL (deletions), INS (novel insertions), INV\n(inversions), DUP_TAN (tandem\
           \ duplications), DUP_INT\n(interspersed duplications), BND (breakends)."
-        synonyms:
-        - --types
         args: !SimpleFlagArg
           name: TYPES
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --symbolic_alleles
         description: "Use symbolic alleles, such as <DEL> or <INV> in the\nVCF output\
           \ (default: False). By default, deletions,\ninsertions, and inversions are\
           \ represented by their\nnucleotide sequence in the output VCF."
-        synonyms:
-        - --symbolic_alleles
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --duplications_as_insertions
         description: "Represent tandem and interspersed duplications as\ninsertions\
           \ in output VCF (default: False). By default,\nduplications are represented\
           \ by the SVTYPE=DUP and the\ngenomic source is given by the POS and END\
           \ tags. When\nenabling this option, duplications are instead\nrepresented\
           \ by the SVTYPE=INS and POS and END both\ngive the insertion point of the\
           \ duplication."
-        synonyms:
-        - --duplications_as_insertions
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --query_names
         description: "Output names of supporting query sequences in INFO tag\nof VCF\
           \ (default: False). If enabled, the INFO/READS\ntag contains the list of\
           \ names of the supporting query\nsequences.\n"
-        synonyms:
-        - --query_names
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: svim-asm diploid [-h] [--min_mapq MIN_MAPQ] [--min_sv_size\
@@ -2540,6 +3220,7 @@ subcommands:
         \                        tag contains the list of names of the supporting\
         \ query\n                        sequences.\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -2561,15 +3242,16 @@ subcommands:
       \noptional arguments:\n  -h, --help         show this help message and exit\n\
       \  --version, -v      show program's version number and exit\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: svim-asm haploid [-h] [--min_mapq MIN_MAPQ] [--min_sv_size MIN_SV_SIZE]\n\
@@ -2667,52 +3349,56 @@ subcommands:
     \              tag contains the list of names of the supporting query\n      \
     \                  sequences.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: "Working and output directory. Existing files in the\ndirectory are\
-      \ overwritten. If the directory does not\nexist, it is created."
+    optional: false
     position: 0
     name: working_dir
-    optional: false
+    description: "Working and output directory. Existing files in the\ndirectory are\
+      \ overwritten. If the directory does not\nexist, it is created."
   - !Positional
-    description: "SAM/BAM file with alignment of query assembly's first\nhaplotype\
-      \ to reference assembly (needs to be\ncoordinate-sorted)"
+    optional: false
     position: 1
     name: bam_file1
-    optional: false
-  - !Positional
-    description: "SAM/BAM file with alignment of query assembly's second\nhaplotype\
+    description: "SAM/BAM file with alignment of query assembly's first\nhaplotype\
       \ to reference assembly (needs to be\ncoordinate-sorted)"
+  - !Positional
+    optional: false
     position: 2
     name: bam_file2
-    optional: false
+    description: "SAM/BAM file with alignment of query assembly's second\nhaplotype\
+      \ to reference assembly (needs to be\ncoordinate-sorted)"
   - !Positional
-    description: "Reference genome file that the assembly was aligned to\n(FASTA)"
+    optional: false
     position: 3
     name: genome
-    optional: false
+    description: "Reference genome file that the assembly was aligned to\n(FASTA)"
   named:
   - !Flag
-    description: "Minimum mapping quality of alignments to consider\n(default: 20).\
-      \ Alignments with a lower mapping quality\nare ignored."
+    optional: true
     synonyms:
     - --min_mapq
+    description: "Minimum mapping quality of alignments to consider\n(default: 20).\
+      \ Alignments with a lower mapping quality\nare ignored."
     args: !SimpleFlagArg
       name: MIN_MAPQ
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --min_sv_size
     description: "Minimum SV size to detect (default: 40). SVIM can\npotentially detect\
       \ events of any size but is limited\nby the signal-to-noise ratio in the input\
       \ alignments.\nThat means that more accurate assemblies and\nalignments enable\
       \ the detection of smaller events."
-    synonyms:
-    - --min_sv_size
     args: !SimpleFlagArg
       name: MIN_SV_SIZE
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --max_sv_size
     description: "Maximum SV size to detect (default: 100000). This\nparameter is\
       \ used to distinguish long deletions (and\ninversions) from translocations which\
       \ cannot be\ndistinguished from the alignment alone. Split read\nsegments mapping\
@@ -2720,12 +3406,12 @@ subcommands:
       \ or a\ntranslocation breakpoint. SVIM calls a translocation\nbreakpoint if\
       \ the mapping distance is larger than this\nparameter and a deletion (or inversion)\
       \ if it is\nsmaller or equal."
-    synonyms:
-    - --max_sv_size
     args: !SimpleFlagArg
       name: MAX_SV_SIZE
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --query_gap_tolerance
     description: "Maximum tolerated gap between adjacent alignment\nsegments on the\
       \ query (default: 50). Example:\nDeletions are detected from two subsequent\
       \ segments of\na split query sequence that are mapped far apart from\neach other\
@@ -2733,12 +3419,12 @@ subcommands:
       \ length of the query\ngap between both segments. If there is an unaligned\n\
       query segment larger than this value between the two\nsegments, no deletion\
       \ is called."
-    synonyms:
-    - --query_gap_tolerance
     args: !SimpleFlagArg
       name: QUERY_GAP_TOLERANCE
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --query_overlap_tolerance
     description: "Maximum tolerated overlap between adjacent alignment\nsegments on\
       \ the query (default: 50). Example:\nDeletions are detected from two subsequent\
       \ segments of\na split query sequence that are mapped far apart from\neach other\
@@ -2746,12 +3432,12 @@ subcommands:
       \ length of\nan overlap between both segments in the query. If the\noverlap\
       \ between the two segments in the query is\nlarger than this value, no deletion\
       \ is called."
-    synonyms:
-    - --query_overlap_tolerance
     args: !SimpleFlagArg
       name: QUERY_OVERLAP_TOLERANCE
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --reference_gap_tolerance
     description: "Maximum tolerated gap between adjacent alignment\nsegments on the\
       \ reference (default: 50). Example:\nInsertions are detected from two segments\
       \ of a split\nquery sequence that are mapped right next to each\nother on the\
@@ -2759,12 +3445,12 @@ subcommands:
       \ gap tolerance\ndetermines the maximum tolerated length of the\nreference gap\
       \ between both segments. If there is a\nreference gap larger than this value\
       \ between the two\nsegments, no insertion is called."
-    synonyms:
-    - --reference_gap_tolerance
     args: !SimpleFlagArg
       name: REFERENCE_GAP_TOLERANCE
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --reference_overlap_tolerance
     description: "Maximum tolerated overlap between adjacent alignment\nsegments on\
       \ the reference (default: 50). Example:\nInsertions are detected from two segments\
       \ of a split\nquery sequence that are mapped right next to each\nother on the\
@@ -2772,72 +3458,69 @@ subcommands:
       \ overlap\ntolerance determines the maximum tolerated length of\nan overlap\
       \ between both segments on the reference. If\nthere is a reference gap larger\
       \ than this value\nbetween the two segments, no insertion is called."
-    synonyms:
-    - --reference_overlap_tolerance
     args: !SimpleFlagArg
       name: REFERENCE_OVERLAP_TOLERANCE
-    optional: true
   - !Flag
-    description: "Maximum edit distance between both alleles to be\npaired up into\
-      \ a homozygous call (default: 200)."
+    optional: true
     synonyms:
     - --max_edit_distance
+    description: "Maximum edit distance between both alleles to be\npaired up into\
+      \ a homozygous call (default: 200)."
     args: !SimpleFlagArg
       name: MAX_EDIT_DISTANCE
-    optional: true
   - !Flag
-    description: "Sample ID to include in output vcf file (default:\nSample)"
+    optional: true
     synonyms:
     - --sample
+    description: "Sample ID to include in output vcf file (default:\nSample)"
     args: !SimpleFlagArg
       name: SAMPLE
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --types
     description: "SV types to include in output VCF (default:\nDEL,INS,INV,DUP_TAN,DUP_INT,BND).\
       \ Give a comma-\nseparated list of SV types. The possible SV types are:\nDEL\
       \ (deletions), INS (novel insertions), INV\n(inversions), DUP_TAN (tandem duplications),\
       \ DUP_INT\n(interspersed duplications), BND (breakends)."
-    synonyms:
-    - --types
     args: !SimpleFlagArg
       name: TYPES
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --symbolic_alleles
     description: "Use symbolic alleles, such as <DEL> or <INV> in the\nVCF output\
       \ (default: False). By default, deletions,\ninsertions, and inversions are represented\
       \ by their\nnucleotide sequence in the output VCF."
-    synonyms:
-    - --symbolic_alleles
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --duplications_as_insertions
     description: "Represent tandem and interspersed duplications as\ninsertions in\
       \ output VCF (default: False). By default,\nduplications are represented by\
       \ the SVTYPE=DUP and the\ngenomic source is given by the POS and END tags. When\n\
       enabling this option, duplications are instead\nrepresented by the SVTYPE=INS\
       \ and POS and END both\ngive the insertion point of the duplication."
-    synonyms:
-    - --duplications_as_insertions
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --query_names
     description: "Output names of supporting query sequences in INFO tag\nof VCF (default:\
       \ False). If enabled, the INFO/READS\ntag contains the list of names of the\
       \ supporting query\nsequences.\n"
-    synonyms:
-    - --query_names
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: svim-asm diploid [-h] [--min_mapq MIN_MAPQ] [--min_sv_size MIN_SV_SIZE]\n\
@@ -2941,6 +3624,7 @@ subcommands:
     \              tag contains the list of names of the supporting query\n      \
     \                  sequences.\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -2962,3 +3646,4 @@ help_text: "usage: svim-asm [-h] [--version] {haploid,diploid} ...\n\nSVIM-asm (
   \         show this help message and exit\n  --version, -v      show program's version\
   \ number and exit\n"
 generated_using: *id004
+docker_image:

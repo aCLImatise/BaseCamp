@@ -14,6 +14,9 @@ task FfindexReduce {
       ~{program} \
       ~{program_args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_filename: ""
     index_filename: ""

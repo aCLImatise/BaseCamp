@@ -36,6 +36,9 @@ task Dnal {
       ~{if (error_log) then "-errorlog" else ""} \
       ~{if (error_style) then "-errorstyle" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     match: "[4]  Match score"
     mis: "[-1] MisMatch score"

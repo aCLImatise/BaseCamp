@@ -26,6 +26,9 @@ task TripailleExpressionAddExpression {
       ~{if (use_column) then "--use_column" else ""} \
       ~{if (no_wait) then "--no_wait" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     match_type: "Match to features using either name or\\nuniquename. Default to uniquename  [default:\\nuniquename]"
     array_design_id: "The array design ID associated with this\\nanalysis. (Non functional in Tripal2)"

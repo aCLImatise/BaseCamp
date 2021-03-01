@@ -26,6 +26,9 @@ task NGSDExportCnvTrack {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "Output IGV file."
     system: "Processing system name filter (short name).\\nDefault value: ''"

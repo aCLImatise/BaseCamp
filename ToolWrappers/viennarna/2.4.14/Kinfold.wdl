@@ -48,6 +48,9 @@ task Kinfold {
       ~{if (lm_in) then "--lmin" else ""} \
       ~{if defined(cut) then ("--cut " +  '"' + cut + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     full_help: "Print help, including hidden options, and exit"
     dangle: "<0|1|2> set dangling end model to (none|normal|double)\\n(possible values=\\\"0\\\", \\\"1\\\", \\\"2\\\" default=`2')"

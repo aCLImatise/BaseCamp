@@ -3,7 +3,7 @@ id: o_create_GG_alignment_template_from_taxon.cwl
 inputs:
 - id: in_output
   doc: "Path to the output folder\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_create_greengenes_alignment
@@ -34,9 +34,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Path to the output folder\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - o-create-GG-alignment-template-from-taxon

@@ -12,6 +12,9 @@ task SamtoolsFixmate {
       ~{out_dot_names_rt_dot_bam} \
       ~{if (remove_unmapped_reads) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     remove_unmapped_reads: "remove unmapped reads and secondary alignments"
     in_dot_names_rt_dot_bam: ""

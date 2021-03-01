@@ -50,6 +50,9 @@ task RunDiscoMPIALPSsh {
       ~{if (p_two) then "-p2" else ""} \
       ~{if (p_three) then "-p3" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ins: "single read filenames (comma separated fasta/fastq/fastq.gz files)."
     in_one: "forward paired read filename (single fasta/fastq/fastq.gz file)."

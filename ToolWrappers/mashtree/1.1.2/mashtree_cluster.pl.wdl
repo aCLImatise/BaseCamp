@@ -12,6 +12,9 @@ task MashtreeClusterpl {
       ~{if (nonzero) then "--nonzero" else ""} \
       ~{if (num_cpus) then "--numcpus" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threshold: "0.1       Maximum any two genomes can be\\nfrom the seed in a given cluster"
     nonzero: "1e-99     Zero distance is not tolerated\\nin this script. Give a nonzero\\nvalue in case a zero distance\\nis found."

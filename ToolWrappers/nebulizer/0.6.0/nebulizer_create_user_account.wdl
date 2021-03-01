@@ -16,6 +16,9 @@ task NebulizerCreateUserAccount {
       ~{email} \
       ~{public_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nebulizer: ""
     create_user: ""

@@ -8,6 +8,9 @@ task WidenOverlaps {
     widen_overlaps \
       ~{if (depot) then "--depot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     depot: "depot path (string)"
   }

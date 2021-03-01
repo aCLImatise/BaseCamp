@@ -2,7 +2,7 @@ version 1.0
 
 task Extractsvreads {
   input {
-    File? only_useful_when
+    File? only_useful_is
     Boolean? _output_version
     Boolean? arg_input_bamcramsam
     File? arg_output_split
@@ -18,7 +18,7 @@ task Extractsvreads {
   command <<<
     extract_sv_reads \
       ~{bams} \
-      ~{if defined(only_useful_when) then ("-T " +  '"' + only_useful_when + '"') else ""} \
+      ~{if defined(only_useful_is) then ("-T " +  '"' + only_useful_is + '"') else ""} \
       ~{if (_output_version) then "-v" else ""} \
       ~{if (arg_input_bamcramsam) then "-i" else ""} \
       ~{if (arg_output_split) then "-s" else ""} \
@@ -30,8 +30,11 @@ task Extractsvreads {
       ~{if defined(min_non_overlap) then ("--min-non-overlap " +  '"' + min_non_overlap + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    only_useful_when: "only useful when the input file is a CRAM."
+    only_useful_is: "only useful when the input file is a CRAM."
     _output_version: "[ --version ]               output the version"
     arg_input_bamcramsam: "[ --input ] arg (=-)        input BAM/CRAM/SAM. Use '-' for stdin if using\\npositional arguments"
     arg_output_split: "[ --splitter ] arg          output split reads to this file in BAM format\\n(Required)"

@@ -3,7 +3,7 @@ id: srf2fasta.cwl
 inputs:
 - id: in_c
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -C
 - id: in_archive_name
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - srf2fasta

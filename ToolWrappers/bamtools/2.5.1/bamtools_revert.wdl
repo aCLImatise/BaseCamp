@@ -16,6 +16,9 @@ task BamtoolsRevert {
       ~{if (keep_duplicate) then "-keepDuplicate" else ""} \
       ~{if (keep_qualities) then "-keepQualities" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "the input BAM file [stdin]"
     out: "the output BAM file [stdout]"

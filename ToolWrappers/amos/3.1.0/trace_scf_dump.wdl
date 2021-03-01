@@ -10,6 +10,9 @@ task TraceScfDump {
       ~{scf_dump} \
       ~{scf_filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     scf_dump: ""
     scf_filename: ""

@@ -10,6 +10,9 @@ task IndexTar {
       ~{tar_file} \
       ~{if (d) then "-d" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d: ""
     tar_file: ""

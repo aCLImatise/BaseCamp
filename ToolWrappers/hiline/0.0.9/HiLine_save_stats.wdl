@@ -8,6 +8,9 @@ task HiLineSavestats {
     HiLine save_stats \
       ~{location_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     location_dot: "Options:"
   }

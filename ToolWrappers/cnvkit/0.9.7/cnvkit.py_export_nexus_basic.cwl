@@ -3,7 +3,7 @@ id: cnvkit.py_export_nexus_basic.cwl
 inputs:
 - id: in_output
   doc: "Output file name.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_filename
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file name.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cnvkit.py

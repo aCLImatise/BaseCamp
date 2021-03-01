@@ -3,7 +3,7 @@ version 1.0
 task Kneaddata {
   input {
     Boolean? verbose
-    File? input_fastq_file
+    File? input_file_add
     Directory? directory_write_files
     String? reference_db
     Boolean? bypass_trim
@@ -42,7 +42,7 @@ task Kneaddata {
   command <<<
     kneaddata \
       ~{if (verbose) then "--verbose" else ""} \
-      ~{if defined(input_fastq_file) then ("--input " +  '"' + input_fastq_file + '"') else ""} \
+      ~{if defined(input_file_add) then ("--input " +  '"' + input_file_add + '"') else ""} \
       ~{if defined(directory_write_files) then ("--output " +  '"' + directory_write_files + '"') else ""} \
       ~{if defined(reference_db) then ("--reference-db " +  '"' + reference_db + '"') else ""} \
       ~{if (bypass_trim) then "--bypass-trim" else ""} \
@@ -78,9 +78,12 @@ task Kneaddata {
       ~{if defined(max_period) then ("--maxperiod " +  '"' + max_period + '"') else ""} \
       ~{if defined(fast_qc) then ("--fastqc " +  '"' + fast_qc + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "additional output is printed"
-    input_fastq_file: "input FASTQ file (add a second argument instance to run with paired input files)"
+    input_file_add: "input FASTQ file (add a second argument instance to run with paired input files)"
     directory_write_files: "directory to write output files"
     reference_db: "location of reference database (additional arguments add databases)"
     bypass_trim: "bypass the trim step"

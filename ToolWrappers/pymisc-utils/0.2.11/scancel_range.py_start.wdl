@@ -8,6 +8,9 @@ task ScancelRangepyStart {
     scancel_range_py start \
       ~{end}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     end: ""
   }

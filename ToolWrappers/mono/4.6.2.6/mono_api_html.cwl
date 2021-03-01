@@ -3,56 +3,56 @@ id: mono_api_html.cwl
 inputs:
 - id: in_diff
   doc: HTML diff file out output (omit for stdout)
-  type: File
+  type: File?
   inputBinding:
     prefix: --diff
 - id: in_ignore
   doc: "Ignore new, added, and removed members whose\ndescription matches a given\
     \ C# regular\nexpression (see below)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --ignore
 - id: in_ignore_added
   doc: "Ignore added members whose description matches a\ngiven C# regular expression\
     \ (see below)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --ignore-added
 - id: in_ignore_removed
   doc: "Ignore removed members whose description matches a\ngiven C# regular expression\
     \ (see below)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --ignore-removed
 - id: in_ignore_new
   doc: "Ignore new namespaces and types whose description\nmatches a given C# regular\
     \ expression (see below)\n."
-  type: string
+  type: string?
   inputBinding:
     prefix: --ignore-new
 - id: in_ignore_changes_parameter_names
   doc: "Ignore changes to parameter names for identically\nprototyped methods."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ignore-changes-parameter-names
 - id: in_ignore_changes_property_setters
   doc: Ignore adding setters to properties.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ignore-changes-property-setters
 - id: in_ignore_changes_virtual
   doc: "Ignore changing non-`virtual` to `virtual` or\nadding `override`."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ignore-changes-virtual
 - id: in_colorize
   doc: '[=VALUE]     Colorize HTML output'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --colorize
 - id: in_lax
   doc: Ignore duplicate XML entries
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --lax
 - id: in_reference_dot_xml
@@ -67,7 +67,7 @@ inputs:
     position: 1
 - id: in_diff_dot_html
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 2
 outputs:
@@ -76,9 +76,10 @@ outputs:
   type: stdout
 - id: out_diff
   doc: HTML diff file out output (omit for stdout)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_diff)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mono-api-html

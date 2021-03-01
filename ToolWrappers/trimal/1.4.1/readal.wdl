@@ -46,6 +46,9 @@ task Readal {
       ~{if (phylip_three_dot_two) then "-phylip3.2" else ""} \
       ~{if (phylip_three_dot_two_m_one_zero) then "-phylip3.2_m10" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input file in several formats."
     out: "Output file name (default STDOUT)."

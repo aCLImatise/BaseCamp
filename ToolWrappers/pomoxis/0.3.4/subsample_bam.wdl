@@ -40,6 +40,9 @@ task SubsampleBam {
       ~{if (proportional) then "--proportional" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_prefix: "Output prefix (default: sub_sampled)"
     regions: "Only process given regions. (default: None)"

@@ -18,6 +18,9 @@ task FastTree {
       ~{if (bio_nj) then "-bionj" else ""} \
       ~{if (nj) then "-nj" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fastest: "-- search the visible set (the top hit for each node) only\\nUnlike the original fast neighbor-joining, -fastest updates visible(C)\\nafter joining A and B if join(AB,C) is better than join(C,visible(C))"
     to_pm: "-- set the top-hit list size to parameter*sqrt(N)\\nFastTree estimates the top m hits of a leaf from the\\ntop 2*m hits of a 'close' neighbor, where close is\\ndefined as d(seed,close) < 0.75 * d(seed, hit of rank 2*m),\\nand updates the top-hits as joins proceed"

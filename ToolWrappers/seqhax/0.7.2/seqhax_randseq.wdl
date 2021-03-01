@@ -18,6 +18,9 @@ task SeqhaxRandseq {
       ~{if (paired_reads) then "-p" else ""} \
       ~{if (output_fasta_qualities) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_reads_use: "Number of reads. Use 0 for infinite. [default 1000]"
     seed_for_rng: "Seed for RNG."

@@ -12,6 +12,9 @@ task BcbioVmpyAwsCromwell {
       ~{if defined(bucket) then ("--bucket " +  '"' + bucket + '"') else ""} \
       ~{if defined(zone) then ("--zone " +  '"' + zone + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     key_pair: "Existing keypair to use for accessing AWS instances."
     bucket: "S3 bucket to store Cromwell logs and execution files"

@@ -10,6 +10,9 @@ task SeqtkMergepe {
       ~{in_one_dot_fq} \
       ~{in_two_dot_fq}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_one_dot_fq: ""
     in_two_dot_fq: ""

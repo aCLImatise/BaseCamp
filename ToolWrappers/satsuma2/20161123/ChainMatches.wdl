@@ -8,6 +8,9 @@ task ChainMatches {
     ChainMatches \
       ~{if (string_output_binary) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_output_binary: "<string> : output file (binary)"
   }

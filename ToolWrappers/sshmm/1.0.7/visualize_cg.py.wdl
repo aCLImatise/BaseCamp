@@ -3,7 +3,7 @@ version 1.0
 task VisualizeCgpy {
   input {
     String? highlight
-    String? create_picture_scene
+    String? create_picture_exit
     Boolean? long_range
     Boolean? loops
     Boolean? cones
@@ -18,14 +18,13 @@ task VisualizeCgpy {
     String? multi_loop_color
     Boolean? batch
     Boolean? side_chain_atoms
-    Boolean? rainbow
     String? only_elements
     Int? color_gradual
   }
   command <<<
     visualize_cg_py \
       ~{if defined(highlight) then ("--highlight " +  '"' + highlight + '"') else ""} \
-      ~{if defined(create_picture_scene) then ("--output " +  '"' + create_picture_scene + '"') else ""} \
+      ~{if defined(create_picture_exit) then ("--output " +  '"' + create_picture_exit + '"') else ""} \
       ~{if (long_range) then "--longrange" else ""} \
       ~{if (loops) then "--loops" else ""} \
       ~{if (cones) then "--cones" else ""} \
@@ -40,28 +39,29 @@ task VisualizeCgpy {
       ~{if defined(multi_loop_color) then ("--multiloop-color " +  '"' + multi_loop_color + '"') else ""} \
       ~{if (batch) then "--batch" else ""} \
       ~{if (side_chain_atoms) then "--sidechain-atoms" else ""} \
-      ~{if (rainbow) then "--rainbow" else ""} \
       ~{if defined(only_elements) then ("--only-elements " +  '"' + only_elements + '"') else ""} \
       ~{if defined(color_gradual) then ("--color-gradual " +  '"' + color_gradual + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     highlight: "Highlight some elements"
-    create_picture_scene: "Create a picture of the scene and exit"
+    create_picture_exit: "Create a picture of the scene and exit"
     long_range: "Display long-range interactions"
     loops: "Don't display the coarse-grain hairpin loops"
     cones: "Display cones that portrude from the stems"
     text: "Add labels to the figure."
     align: "Align all of the structures with the first"
     encompassing_stems: "Show the big stems that encompass the colinear ones."
-    virtual_atoms: "Display the virtual atoms"
+    virtual_atoms: "Color each of the nucleotide positions (i.e. average"
     distance: "Draw the lines between specified virtual residues"
     residue_distance: "Draw a line between residue distances"
     basis: "Display the coordinate basis of each element"
     stem_color: "The default color in coarse-grain drawings"
     multi_loop_color: "The default color in coarse-grain drawings"
     batch: "Start pymol in batch mode"
-    side_chain_atoms: "Include the sidechain atoms. Automatically enables\\n--virtual-atoms"
-    rainbow: "Color each of the nucleotide positions (i.e. average\\natoms) according to the colors of\\nthe rainbow and their position"
+    side_chain_atoms: "Include the sidechain atoms. Automatically enables"
     only_elements: "Display only these elements element names should be\\nseparated by commas"
     color_gradual: "Color the specified elementsgradually from one to the\\nother, example (i1,i4,m1)\\n"
   }

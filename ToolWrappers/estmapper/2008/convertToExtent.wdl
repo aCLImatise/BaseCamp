@@ -20,6 +20,9 @@ task ConvertToExtent {
       ~{if (exons) then "-exons" else ""} \
       ~{if (extended) then "-extended" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     be_chatty: "be chatty"
     full_query: "output the whole query def line"

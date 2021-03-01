@@ -66,6 +66,9 @@ task Abyssbloom {
       ~{if (fast_a) then "--fasta" else ""} \
       ~{if (raw) then "--raw" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: "the size of a k-mer [<=128]"
     verbose: "display verbose output"
@@ -85,7 +88,7 @@ task Abyssbloom {
     bloom_type: "'konnector', 'rolling-hash', or 'counting' [konnector]"
     standard_quality: "zero quality is `!' (33)\\ndefault for FASTQ and SAM files"
     illumina_quality: "zero quality is `@' (64)\\ndefault for qseq and export files"
-    window: "build a bloom filter for subwindow M of N"
+    window: "/N           build a bloom filter for subwindow M of N"
     method: "=`String'      choose distance calculation method\\n[`jaccard'(default), `forbes', `czekanowski']"
     depth: "depth of neighbouring from --root [k]"
     root: "root k-mer from graph traversal [required]"

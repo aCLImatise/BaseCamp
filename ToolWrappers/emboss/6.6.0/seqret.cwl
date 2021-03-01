@@ -3,18 +3,19 @@ id: seqret.cwl
 inputs:
 - id: in_feature
   doc: boolean    Use feature information
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -feature
 - id: in_first_only
   doc: boolean    [N] Read one sequence and stop
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -firstonly
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - seqret

@@ -22,6 +22,9 @@ task AquilaStep2 {
       ~{if defined(num_threads_spades) then ("--num_threads_spades " +  '"' + num_threads_spades + '"') else ""} \
       ~{if defined(block_len_use) then ("--block_len_use " +  '"' + block_len_use + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chr_start: "chromosome start from, default = 1"
     chr_end: "chromosome end by, default = 23"

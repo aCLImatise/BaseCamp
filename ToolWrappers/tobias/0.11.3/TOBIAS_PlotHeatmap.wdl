@@ -26,6 +26,9 @@ task TOBIASPlotHeatmap {
       ~{if (sort_by) then "--sort-by" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tfbs: "[ [ ...]]           TFBS sites per column (*required)"
     signals: "[ [ ...]]        Signals in bigwig format (*required)"

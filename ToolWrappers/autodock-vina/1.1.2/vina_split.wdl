@@ -12,6 +12,9 @@ task VinaSplit {
       ~{if defined(ligand) then ("--ligand " +  '"' + ligand + '"') else ""} \
       ~{if defined(flex) then ("--flex " +  '"' + flex + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_split_pdbqt: "input to split (PDBQT)"
     ligand: "prefix for ligands"

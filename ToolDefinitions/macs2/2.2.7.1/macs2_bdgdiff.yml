@@ -5,123 +5,123 @@ command:
 positional: []
 named:
 - !Flag
-  description: "MACS pileup bedGraph for condition 1. Incompatible\nwith callpeak\
-    \ --SPMR output. REQUIRED"
+  optional: true
   synonyms:
   - --t1
+  description: "MACS pileup bedGraph for condition 1. Incompatible\nwith callpeak\
+    \ --SPMR output. REQUIRED"
   args: !SimpleFlagArg
     name: T1BDG
-  optional: true
 - !Flag
-  description: "MACS pileup bedGraph for condition 2. Incompatible\nwith callpeak\
-    \ --SPMR output. REQUIRED"
+  optional: true
   synonyms:
   - --t2
+  description: "MACS pileup bedGraph for condition 2. Incompatible\nwith callpeak\
+    \ --SPMR output. REQUIRED"
   args: !SimpleFlagArg
     name: T2BDG
-  optional: true
 - !Flag
-  description: "MACS control lambda bedGraph for condition 1.\nIncompatible with callpeak\
-    \ --SPMR output. REQUIRED"
+  optional: true
   synonyms:
   - --c1
+  description: "MACS control lambda bedGraph for condition 1.\nIncompatible with callpeak\
+    \ --SPMR output. REQUIRED"
   args: !SimpleFlagArg
     name: C1BDG
-  optional: true
 - !Flag
-  description: "MACS control lambda bedGraph for condition 2.\nIncompatible with callpeak\
-    \ --SPMR output. REQUIRED"
+  optional: true
   synonyms:
   - --c2
+  description: "MACS control lambda bedGraph for condition 2.\nIncompatible with callpeak\
+    \ --SPMR output. REQUIRED"
   args: !SimpleFlagArg
     name: C2BDG
-  optional: true
 - !Flag
-  description: 'logLR cutoff. DEFAULT: 3 (likelihood ratio=1000)'
+  optional: true
   synonyms:
   - -C
   - --cutoff
+  description: 'logLR cutoff. DEFAULT: 3 (likelihood ratio=1000)'
   args: !SimpleFlagArg
     name: CUTOFF
-  optional: true
 - !Flag
-  description: "Minimum length of differential region. Try bigger\nvalue to remove\
-    \ small regions. DEFAULT: 200"
+  optional: true
   synonyms:
   - -l
   - --min-len
+  description: "Minimum length of differential region. Try bigger\nvalue to remove\
+    \ small regions. DEFAULT: 200"
   args: !SimpleFlagArg
     name: MINLEN
-  optional: true
 - !Flag
-  description: "Maximum gap to merge nearby differential regions.\nConsider a wider\
-    \ gap for broad marks. Maximum gap\nshould be smaller than minimum length (-g).\
-    \ DEFAULT:\n100"
+  optional: true
   synonyms:
   - -g
   - --max-gap
+  description: "Maximum gap to merge nearby differential regions.\nConsider a wider\
+    \ gap for broad marks. Maximum gap\nshould be smaller than minimum length (-g).\
+    \ DEFAULT:\n100"
   args: !SimpleFlagArg
     name: MAXGAP
-  optional: true
 - !Flag
-  description: "Sequencing depth (# of non-redundant reads in million)\nfor condition\
-    \ 1. It will be used together with --d2.\nSee description for --d2 below for how\
-    \ to assign them.\nDefault: 1"
+  optional: true
   synonyms:
   - --d1
   - --depth1
+  description: "Sequencing depth (# of non-redundant reads in million)\nfor condition\
+    \ 1. It will be used together with --d2.\nSee description for --d2 below for how\
+    \ to assign them.\nDefault: 1"
   args: !SimpleFlagArg
     name: DEPTH1
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --d2
+  - --depth2
   description: "Sequencing depth (# of non-redundant reads in million)\nfor condition\
     \ 2. It will be used together with --d1.\nDEPTH1 and DEPTH2 will be used to calculate\
     \ scaling\nfactor for each sample, to down-scale larger sample to\nthe level of\
     \ smaller one. For example, while comparing\n10 million condition 1 and 20 million\
     \ condition 2, use\n--d1 10 --d2 20, then pileup value in bedGraph for\ncondition\
     \ 2 will be divided by 2. Default: 1"
-  synonyms:
-  - --d2
-  - --depth2
   args: !SimpleFlagArg
     name: DEPTH2
-  optional: true
 - !Flag
-  description: "If specified all output files will be written to that\ndirectory.\
-    \ Default: the current working directory"
+  optional: true
   synonyms:
   - --outdir
+  description: "If specified all output files will be written to that\ndirectory.\
+    \ Default: the current working directory"
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
-  description: "Output file prefix. Actual files will be named as\nPREFIX_cond1.bed,\
-    \ PREFIX_cond2.bed and\nPREFIX_common.bed. Mutually exclusive with -o/--ofile."
+  optional: true
   synonyms:
   - --o-prefix
+  description: "Output file prefix. Actual files will be named as\nPREFIX_cond1.bed,\
+    \ PREFIX_cond2.bed and\nPREFIX_common.bed. Mutually exclusive with -o/--ofile."
   args: !SimpleFlagArg
     name: OPREFIX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
   description: "OFILE OFILE, --ofile OFILE OFILE OFILE\nOutput filenames. Must give\
     \ three arguments in order:\n1. file for unique regions in condition 1; 2. file\
     \ for\nunique regions in condition 2; 3. file for common\nregions in both conditions.\
     \ Note: mutually exclusive\nwith --o-prefix.\n"
-  synonyms:
-  - -o
   args: !SimpleFlagArg
     name: OFILE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: macs2 bdgdiff [-h] --t1 T1BDG --t2 T2BDG --c1 C1BDG --c2 C2BDG\n\
@@ -167,3 +167,4 @@ help_text: "usage: macs2 bdgdiff [-h] --t1 T1BDG --t2 T2BDG --c1 C1BDG --c2 C2BD
   \                        with --o-prefix.\n"
 generated_using:
 - --help
+docker_image:

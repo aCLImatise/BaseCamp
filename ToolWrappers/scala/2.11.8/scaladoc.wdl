@@ -128,6 +128,9 @@ task Scaladoc {
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     author: "Include authors."
     diagrams: "Create inheritance diagrams for classes, traits and packages."

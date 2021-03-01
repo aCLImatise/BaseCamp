@@ -17,7 +17,7 @@ task Averagedotpl {
     String pp
     String copy
     String each
-    File file
+    File var_file
     String files
     String that
     String for
@@ -50,7 +50,7 @@ task Averagedotpl {
       ~{pp} \
       ~{copy} \
       ~{each} \
-      ~{file} \
+      ~{var_file} \
       ~{files} \
       ~{that} \
       ~{for} \
@@ -80,6 +80,9 @@ task Averagedotpl {
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(given_threshold_option) then ("--threshold " +  '"' + given_threshold_option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "full documentation"
     verbose: "be verbose"
@@ -96,7 +99,7 @@ task Averagedotpl {
     pp: ""
     copy: ""
     each: ""
-    file: ""
+    var_file: ""
     files: ""
     that: ""
     for: ""

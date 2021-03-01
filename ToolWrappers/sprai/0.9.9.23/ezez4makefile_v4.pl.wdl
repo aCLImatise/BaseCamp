@@ -14,6 +14,9 @@ task Ezez4makefileV4pl {
       ~{as_mdot_spec} \
       ~{or}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this: ""
     ec_dot_spec: ""

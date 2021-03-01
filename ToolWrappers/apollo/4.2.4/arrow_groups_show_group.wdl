@@ -8,6 +8,9 @@ task ArrowGroupsShowGroup {
     arrow groups show_group \
       ~{group_id}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     group_id: ""
   }

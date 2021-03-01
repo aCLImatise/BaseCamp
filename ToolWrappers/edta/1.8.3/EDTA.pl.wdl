@@ -42,6 +42,9 @@ task EDTApl {
       ~{if (trf) then "--trf" else ""} \
       ~{if (threads) then "--threads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "[File]  The genome FASTA"
     species: "[Rice|Maize|others]   Specify the species for identification of TIR candidates. Default: others"

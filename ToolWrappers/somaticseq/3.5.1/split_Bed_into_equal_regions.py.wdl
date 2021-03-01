@@ -10,6 +10,9 @@ task SplitBedIntoEqualRegionspy {
       ~{if defined(input_file) then ("--input-file " +  '"' + input_file + '"') else ""} \
       ~{if defined(output_files) then ("--output-files " +  '"' + output_files + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Input merged BED file (default: None)"
     output_files: "Output BED file (default: <_io.TextIOWrapper\\nname='<stdout>' mode='w' encoding='utf-8'>)\\n"

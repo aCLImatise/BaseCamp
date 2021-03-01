@@ -9,7 +9,7 @@ inputs:
     prefix: --input_files
 - id: in_output_file
   doc: File path to which results are exported
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_file
 - id: in_output_file_type
@@ -17,23 +17,23 @@ inputs:
     \ be determined by the file\nextension given. Available choices are: CSV, TSV,\n\
     JSON, Excel, HDF5, Parquet, MsgPack, Stata, Pickle,\nSQLite, ARFF, GCT, RMarkdown,\
     \ JupyterNotebook"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_file_type
 - id: in_gzip
   doc: Gzips the output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --gzip
 - id: in_on_column
   doc: Merge files on a specific column
-  type: string
+  type: string?
   inputBinding:
     prefix: --on_column
 - id: in_how
   doc: "Type of merge to perform. Options are left, right,\ninner, or outer,with outer\
     \ being default behavior.\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --how
 outputs:
@@ -42,14 +42,15 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: File path to which results are exported
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
 - id: out_gzip
   doc: Gzips the output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_gzip)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - shapeshiftmerge

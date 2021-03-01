@@ -20,8 +20,8 @@ task TadbitBin {
     Boolean? row_names
     Boolean? only_plot
     Boolean? interactive
-    Boolean? _coord_coordinate_retrieve_genomearguments
-    Boolean? c_two
+    Boolean? coord
+    Boolean? coord_two
     Boolean? only_txt
     Boolean? plot
     Boolean? force_plot
@@ -54,8 +54,8 @@ task TadbitBin {
       ~{if (row_names) then "--rownames" else ""} \
       ~{if (only_plot) then "--only_plot" else ""} \
       ~{if (interactive) then "--interactive" else ""} \
-      ~{if (_coord_coordinate_retrieve_genomearguments) then "-c" else ""} \
-      ~{if (c_two) then "-c2" else ""} \
+      ~{if (coord) then "--coord" else ""} \
+      ~{if (coord_two) then "--coord2" else ""} \
       ~{if (only_txt) then "--only_txt" else ""} \
       ~{if (plot) then "--plot" else ""} \
       ~{if (force_plot) then "--force_plot" else ""} \
@@ -68,6 +68,9 @@ task TadbitBin {
       ~{if defined(transform) then ("--transform " +  '"' + transform + '"') else ""} \
       ~{if defined(fig_size) then ("--figsize " +  '"' + fig_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     workdir: "path to working directory (generated with the tool tadbit mapper)"
     resolution: "resolution at which to output matrices"
@@ -87,8 +90,8 @@ task TadbitBin {
     row_names: "To store row names in the output text matrix. WARNING: when non-\\nmatrix, results in two extra columns"
     only_plot: "[False] Skip writing matrix in text format."
     interactive: "[False] Open matplotlib interactive plot (nothing will be saved)."
-    _coord_coordinate_retrieve_genomearguments: ", --coord             Coordinate of the region to retrieve. By default all genome,\\narguments can be either one chromosome name, or the coordinate in\\nthe form: \\\"-c chr3:110000000-120000000\\\""
-    c_two: ", --coord2           Coordinate of a second region to retrieve the matrix in the\\nintersection with the first region."
+    coord: "Coordinate of the region to retrieve. By default all genome,\\narguments can be either one chromosome name, or the coordinate in\\nthe form: \\\"-c chr3:110000000-120000000\\\""
+    coord_two: "Coordinate of a second region to retrieve the matrix in the\\nintersection with the first region."
     only_txt: "Save only text file for matrices, not images"
     plot: "Plot matrix in desired format."
     force_plot: "Force plotting even with demoniacally big matrices (more than\\n5000x5000, or 1500x1500with interactive option)."

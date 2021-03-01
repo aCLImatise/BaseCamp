@@ -4,89 +4,98 @@ command:
 - random-seq
 positional:
 - !Positional
-  description: USAGE
+  optional: false
   position: 0
   name: random-seq
-  optional: false
+  description: USAGE
 - !Positional
-  description: OPTIONS
+  optional: false
   position: 0
   name: sequences
-  optional: false
+  description: OPTIONS
 - !Positional
+  optional: false
+  position: 0
+  name: PROBABILITIES
   description: "-a      alphabet\nmust be followed by residue frequencies expressed\
     \ precisely\nthis way:\n-a a:t # c:g #\nex:\n-a a:t 0.3 c:g 0.2\nThe option\n\
     -a yeast\nwill automatically use the residue frequencies from yeast\ngenome."
-  position: 0
-  name: PROBABILITIES
-  optional: false
 named:
 - !Flag
-  description: sequence length
+  optional: true
   synonyms:
   - -l
+  description: sequence length
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Number of sequences.\nGenerate a set of n sequences, each of length\
-    \ l."
+  optional: true
   synonyms:
   - -n
+  description: "Number of sequences.\nGenerate a set of n sequences, each of length\
+    \ l."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: verbose.
+  optional: true
   synonyms:
   - -v
+  description: verbose.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "if not specified, the standard output is used.\nThis allows to place\
-    \ the comand within a pipe."
+  optional: true
   synonyms:
   - -o
+  description: "if not specified, the standard output is used.\nThis allows to place\
+    \ the comand within a pipe."
   args: !SimpleFlagArg
     name: outputfile
-  optional: true
 - !Flag
-  description: 'for sequence identifiers (default: rand).'
+  optional: true
   synonyms:
   - -prefix
+  description: 'for sequence identifiers (default: rand).'
   args: !SimpleFlagArg
     name: prefix
-  optional: true
 - !Flag
-  description: "format.\nTwo options are available:\nIG      IG suite from IntelliGenetics\n\
-    raw     (default)"
+  optional: true
   synonyms:
   - -format
+  description: "format.\nTwo options are available:\nIG      IG suite from IntelliGenetics\n\
+    raw     (default)"
   args: !SimpleFlagArg
     name: output
-  optional: true
 - !Flag
-  description: "##  Line width. A newline character will be inserted in the\nsequence\
-    \ every ## bases. Default is 70.\n-lw 0 will prevent newline insertion."
+  optional: true
   synonyms:
   - -lw
+  description: "##  Line width. A newline character will be inserted in the\nsequence\
+    \ every ## bases. Default is 70.\n-lw 0 will prevent newline insertion."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '# seed for the random generator'
+  optional: true
+  synonyms:
+  - -type
+  description: protein|DNA|other
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -seed
+  description: '# seed for the random generator'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -i
   description: "Generate random sequences with lengths specified in a template\nfile.\n\
     Various template types are supported (option -template_format):\nsequences (in\
     \ fasta), genomic coordinates (in bed), sequence\nlengths.\nThis option is incompatible\
     \ with options -l and -n."
-  synonyms:
-  - -i
   args: !SimpleFlagArg
     name: template_file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -template_format
   description: "Format for the template set (specified with the option -i).\nSupported\
     \ formats:\nfasta (default)\nTemplates are provided as a fasta-formatted sequence\
     \ file. The\nprogram random-genome-fragments calls sequence-lengths to define\n\
@@ -97,24 +106,24 @@ named:
     \ coordinate\n3. end coordinate\nlen\nTemplates are provided as a tab-delimited\
     \ file indicating the\nlength of each template sequence (this file can be produced\
     \ by\nsequence-lengths)."
-  synonyms:
-  - -template_format
   args: !SimpleFlagArg
     name: template_format
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -lf
   description: "file\nDeprecated. Replaced by -i template_file -template_format len.\n\
     Maintained for backward compatibility.\nGenerate random sequences with the same\
     \ lengths as a set of template\nsequences. The sequence length file can be obtained\
     \ with the command\nsequence-lengths.\nThis option is incompatible with options\
     \ -l and -n.\nThe length file contains two columns :\n-sequence ID (ignored)\n\
     -sequence length"
-  synonyms:
-  - -lf
   args: !SimpleFlagArg
     name: length
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -expfreq
   description: "Specifyt a file describing the background model. This\nfile must be\
     \ in oligo format, i.e. a table with\nexpected oligomer frequencies. See\nI<convert-background-model>\
     \ for conversion of other\nbackground model formats into oligomer frequency\n\
@@ -125,11 +134,11 @@ named:
     \ base at position j\nB       is a residue, ie A, C, G or T\nWj-3,j-1\nis a word\
     \ found in the sequence between\npositions j-3 and j-1\nWj-3,j  is the same word\
     \ with the character B\nconcatenated at its end"
-  synonyms:
-  - -expfreq
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -bg
   description: "background model\nAutomatically load a pre-calibrated exected frequency\n\
     file from the RSAT genome distribution. When this\noption is used, the options\
     \ -org and -ol are also\nrequired, to indicate the organism and the\noligonucleotide\
@@ -146,40 +155,37 @@ named:
     \ to speciy a model organism.\n-bg protein\ngenerate random peptidic sequences\
     \ using a Markov\nchain calibrated on all peptidic sequences of the\nselected\
     \ organism."
-  synonyms:
-  - -bg
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "organism\nThis is necessary with the option -bg, to determine\nwhich\
-    \ frequency file has to be sued for expected\nfrequency calibration."
+  optional: true
   synonyms:
   - -org
+  description: "organism\nThis is necessary with the option -bg, to determine\nwhich\
+    \ frequency file has to be sued for expected\nfrequency calibration."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "order for the background model\nNote: options -markov and -ol are\
-    \ mutually exclusive."
+  optional: true
   synonyms:
   - -markov
+  description: "order for the background model\nNote: options -markov and -ol are\
+    \ mutually exclusive."
   args: !SimpleFlagArg
     name: markov
-  optional: true
 - !Flag
-  description: "oligo-length\nOligonucleotide length used to train the Markov\nbackground\
-    \ model. If the oligo length is k, the markov\norder is m = k-1."
+  optional: true
   synonyms:
   - -ol
+  description: "oligo-length\nOligonucleotide length used to train the Markov\nbackground\
+    \ model. If the oligo length is k, the markov\norder is m = k-1."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -rep
   description: "Number of repetitions\nThe list if sequence lengths is repeated rep\
     \ times.\nThis option only serves when a length file is used to\nspecify sequence-sise\
     \ lengths.\nThis option is incompatible with the options -l and\n-n."
-  synonyms:
-  - -rep
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -271,3 +277,4 @@ help_text: "NAME\n\trandom-seq\n\nUSAGE\n\trandom-seq -l seqlength [-v] [-o outp
   \nWEB VERSION\n\thttp://bigre.ulb.ac.be/bioinformatics/rsa-tools/\n\n"
 generated_using:
 - -h
+docker_image:

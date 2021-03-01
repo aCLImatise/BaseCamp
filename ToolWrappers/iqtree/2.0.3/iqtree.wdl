@@ -3,7 +3,7 @@ version 1.0
 task Iqtree {
   input {
     Int? seqtype
-    File? parsrand_starting_default
+    File? parsrand_starting_tree
     String? outgroup_taxon_list
     String? prefix
     Int? seed
@@ -15,11 +15,11 @@ task Iqtree {
     Boolean? quiet
     Int? f_const
     Int? epsilon
-    Int? auto_coresthreads_autodetect
+    Int? auto_coresthreads_default
     Int? threads_max
     File? dir_nexusraxml_partition
-    File? dir_p_edgelinked
-    File? dir_p_edgeunlinked
+    File? dir_edgelinked_model
+    File? dir_edgeunlinked_model
     File? dir_p_separate
     Int? subsample
     Int? subsample_seed
@@ -34,7 +34,7 @@ task Iqtree {
     Int? perturb
     Int? radius
     Boolean? all_nni
-    File? multifurcating_constraint_file
+    File? multifurcating_topological_constraint
     Boolean? fast
     Boolean? poly_to_my
     Boolean? tree_fix
@@ -110,7 +110,7 @@ task Iqtree {
     Boolean? tree_dist_all
     File? tree_dist
     File? tree_dist_two
-    Int? taxa_yuleharding_random
+    Int? taxa_yuleharding_tree
     String? rand
     Int? rlen
     Boolean? keep_ident
@@ -133,7 +133,7 @@ task Iqtree {
   command <<<
     iqtree \
       ~{if defined(seqtype) then ("--seqtype " +  '"' + seqtype + '"') else ""} \
-      ~{if defined(parsrand_starting_default) then ("-t " +  '"' + parsrand_starting_default + '"') else ""} \
+      ~{if defined(parsrand_starting_tree) then ("-t " +  '"' + parsrand_starting_tree + '"') else ""} \
       ~{if defined(outgroup_taxon_list) then ("-o " +  '"' + outgroup_taxon_list + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
@@ -145,11 +145,11 @@ task Iqtree {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(f_const) then ("-fconst " +  '"' + f_const + '"') else ""} \
       ~{if defined(epsilon) then ("--epsilon " +  '"' + epsilon + '"') else ""} \
-      ~{if defined(auto_coresthreads_autodetect) then ("-T " +  '"' + auto_coresthreads_autodetect + '"') else ""} \
+      ~{if defined(auto_coresthreads_default) then ("-T " +  '"' + auto_coresthreads_default + '"') else ""} \
       ~{if defined(threads_max) then ("--threads-max " +  '"' + threads_max + '"') else ""} \
       ~{if defined(dir_nexusraxml_partition) then ("-p " +  '"' + dir_nexusraxml_partition + '"') else ""} \
-      ~{if defined(dir_p_edgelinked) then ("-q " +  '"' + dir_p_edgelinked + '"') else ""} \
-      ~{if defined(dir_p_edgeunlinked) then ("-Q " +  '"' + dir_p_edgeunlinked + '"') else ""} \
+      ~{if defined(dir_edgelinked_model) then ("-q " +  '"' + dir_edgelinked_model + '"') else ""} \
+      ~{if defined(dir_edgeunlinked_model) then ("-Q " +  '"' + dir_edgeunlinked_model + '"') else ""} \
       ~{if defined(dir_p_separate) then ("-S " +  '"' + dir_p_separate + '"') else ""} \
       ~{if defined(subsample) then ("--subsample " +  '"' + subsample + '"') else ""} \
       ~{if defined(subsample_seed) then ("--subsample-seed " +  '"' + subsample_seed + '"') else ""} \
@@ -164,7 +164,7 @@ task Iqtree {
       ~{if defined(perturb) then ("--perturb " +  '"' + perturb + '"') else ""} \
       ~{if defined(radius) then ("--radius " +  '"' + radius + '"') else ""} \
       ~{if (all_nni) then "--allnni" else ""} \
-      ~{if defined(multifurcating_constraint_file) then ("-g " +  '"' + multifurcating_constraint_file + '"') else ""} \
+      ~{if defined(multifurcating_topological_constraint) then ("-g " +  '"' + multifurcating_topological_constraint + '"') else ""} \
       ~{if (fast) then "--fast" else ""} \
       ~{if (poly_to_my) then "--polytomy" else ""} \
       ~{if (tree_fix) then "--tree-fix" else ""} \
@@ -240,7 +240,7 @@ task Iqtree {
       ~{if (tree_dist_all) then "--tree-dist-all" else ""} \
       ~{if defined(tree_dist) then ("--tree-dist " +  '"' + tree_dist + '"') else ""} \
       ~{if defined(tree_dist_two) then ("--tree-dist2 " +  '"' + tree_dist_two + '"') else ""} \
-      ~{if defined(taxa_yuleharding_random) then ("-r " +  '"' + taxa_yuleharding_random + '"') else ""} \
+      ~{if defined(taxa_yuleharding_tree) then ("-r " +  '"' + taxa_yuleharding_tree + '"') else ""} \
       ~{if defined(rand) then ("--rand " +  '"' + rand + '"') else ""} \
       ~{if defined(rlen) then ("--rlen " +  '"' + rlen + '"') else ""} \
       ~{if (keep_ident) then "--keep-ident" else ""} \
@@ -260,9 +260,12 @@ task Iqtree {
       ~{if (eigen_lib) then "--eigenlib" else ""} \
       ~{if (aln_info) then "-alninfo" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seqtype: "BIN, DNA, AA, NT2AA, CODON, MORPH (default: auto-detect)"
-    parsrand_starting_default: "|PARS|RAND    Starting tree (default: 99 parsimony and BIONJ)"
+    parsrand_starting_tree: "|PARS|RAND    Starting tree (default: 99 parsimony and BIONJ)"
     outgroup_taxon_list: "[,...,TAX]     Outgroup taxon (list) for writing .treefile"
     prefix: "Prefix for all output files (default: aln/partition)"
     seed: "Random seed number, normally used for debugging purpose"
@@ -274,11 +277,11 @@ task Iqtree {
     quiet: "Quiet mode, suppress printing to screen (stdout)"
     f_const: ",...,fN    Add constant patterns into alignment (N=no. states)"
     epsilon: "Likelihood epsilon for parameter estimate (default 0.01)"
-    auto_coresthreads_autodetect: "|AUTO          No. cores/threads or AUTO-detect (default: 1)"
+    auto_coresthreads_default: "|AUTO          No. cores/threads or AUTO-detect (default: 1)"
     threads_max: "Max number of threads for -T AUTO (default: all cores)"
     dir_nexusraxml_partition: "|DIR          NEXUS/RAxML partition file or directory with alignments\\nEdge-linked proportional partition model"
-    dir_p_edgelinked: "|DIR          Like -p but edge-linked equal partition model"
-    dir_p_edgeunlinked: "|DIR          Like -p but edge-unlinked partition model"
+    dir_edgelinked_model: "|DIR          Like -p but edge-linked equal partition model"
+    dir_edgeunlinked_model: "|DIR          Like -p but edge-unlinked partition model"
     dir_p_separate: "|DIR          Like -p but separate tree inference"
     subsample: "Randomly sub-sample partitions (negative for complement)"
     subsample_seed: "Random number seed for --subsample"
@@ -293,7 +296,7 @@ task Iqtree {
     perturb: "Perturbation strength for randomized NNI (default: 0.5)"
     radius: "Radius for parsimony SPR search (default: 6)"
     all_nni: "Perform more thorough NNI search (default: OFF)"
-    multifurcating_constraint_file: "(Multifurcating) topological constraint tree file"
+    multifurcating_topological_constraint: "(Multifurcating) topological constraint tree file"
     fast: "Fast search to resemble FastTree"
     poly_to_my: "Collapse near-zero branches into polytomy"
     tree_fix: "Fix -t tree (no tree search performed)"
@@ -369,7 +372,7 @@ task Iqtree {
     tree_dist_all: "Compute all-to-all RF distances for -t trees"
     tree_dist: "Compute RF distances between -t trees and this set"
     tree_dist_two: "Like -rf but trees can have unequal taxon sets"
-    taxa_yuleharding_random: "No. taxa for Yule-Harding random tree"
+    taxa_yuleharding_tree: "No. taxa for Yule-Harding random tree"
     rand: "|CAT|BAL   UNIform | CATerpillar | BALanced random tree"
     rlen: "NUM NUM   min, mean, and max random branch lengths"
     keep_ident: "Keep identical sequences (default: remove & finally add)"

@@ -14,6 +14,9 @@ task Msaconverter {
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
       ~{if defined(q) then ("-q " +  '"' + q + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_msa_file: "input msa file"
     output_msa_file: "output msa file"

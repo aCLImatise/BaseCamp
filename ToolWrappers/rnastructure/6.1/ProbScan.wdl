@@ -24,6 +24,9 @@ task ProbScan {
       ~{if (multi_branch) then "--multibranch" else ""} \
       ~{if (pairs) then "--pairs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hairpin: "Print probabilities for all possible hairpin loops."
     bulge: "Print probabilities for all possible bulge loops."

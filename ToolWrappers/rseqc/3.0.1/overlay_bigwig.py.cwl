@@ -3,12 +3,12 @@ id: overlay_bigwig.py.cwl
 inputs:
 - id: in_bw_file_one
   doc: One BigWig file.
-  type: long
+  type: long?
   inputBinding:
     prefix: --bwfile1
 - id: in_bw_file_two
   doc: "Another BigWig file. Both BigWig files should use the\nsame reference genome."
-  type: long
+  type: long?
   inputBinding:
     prefix: --bwfile2
 - id: in_action
@@ -19,18 +19,18 @@ inputs:
     signals. \"Subtract\" = subtract signals in 2nd bigwig\nfile from the corresponiding\
     \ ones in the 1st bigwig\nfile. \"geometricMean\" = take the geometric mean of\n\
     signals."
-  type: long
+  type: long?
   inputBinding:
     prefix: --action
 - id: in_output
   doc: Output wig file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_chunk
   doc: "Chromosome chunk size. Each chomosome will be cut into\nsamll chunks of this\
     \ size. Decrease chunk size will\nsave more RAM. default=100000 (bp)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --chunk
 outputs:
@@ -39,9 +39,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output wig file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - overlay_bigwig.py

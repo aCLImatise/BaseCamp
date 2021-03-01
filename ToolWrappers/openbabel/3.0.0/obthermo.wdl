@@ -16,6 +16,9 @@ task Obthermo {
       ~{if defined(dbd_t) then ("--dbdt " +  '"' + dbd_t + '"') else ""} \
       ~{if (kj) then "--kj" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     symm: "override symmetry number used in input file"
     n_rot: "number of rotatable bonds for conformational entropy"

@@ -8,6 +8,9 @@ task Vseqinfo {
     vseqinfo \
       ~{index_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index_name: ""
   }

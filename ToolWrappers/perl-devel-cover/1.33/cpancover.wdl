@@ -2,18 +2,24 @@ version 1.0
 
 task Cpancover {
   input {
-    Boolean? redo_cpan_cover_html
+    File? redo_cpan_cover_html
+    Boolean? output_dir
     Boolean? version
     Boolean? info
   }
   command <<<
     cpancover \
-      ~{if (redo_cpan_cover_html) then "-redo_cpancover_html" else ""} \
+      ~{if defined(redo_cpan_cover_html) then ("-redo_cpancover_html " +  '"' + redo_cpan_cover_html + '"') else ""} \
+      ~{if (output_dir) then "-outputdir" else ""} \
       ~{if (version) then "-version" else ""} \
       ~{if (info) then "-info" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    redo_cpan_cover_html: "-modules module_name\\n-results_dir /path/to/dir\\n-outputdir /path/to/dir\\n-outputfile filename.html\\n-report report_name\\n-generate_html\\n-compress_old_versions number_to_keep\\n-local\\n"
+    redo_cpan_cover_html: "/path/to/dir"
+    output_dir: "/path/to/dir"
     version: ""
     info: ""
   }

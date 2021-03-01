@@ -20,6 +20,9 @@ task Kmercov {
       ~{if defined(repeats_covered_kmers) then ("-r " +  '"' + repeats_covered_kmers + '"') else ""} \
       ~{if defined(uniques_covered_kmers) then ("-u " +  '"' + uniques_covered_kmers + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_regions_features: "Output regions as Features"
     min_length_report: "Min Length to report as a feature"

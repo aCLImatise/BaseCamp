@@ -4,13 +4,13 @@ inputs:
 - id: in_dna
   doc: "Specify that the sequence is DNA, and DNA parameters are to be used. The\n\
     default is to use RNA parameters."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dna
 - id: in_raw
   doc: "Output just the *Normalized* ensemble defect as a pure number (with no\nadditional\
     \ description)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --raw
 - id: in_alphabet
@@ -20,24 +20,24 @@ inputs:
     \ alphabet. The thermodynamic parameters need to\nreside in the at the location\
     \ indicated by environment variable DATAPATH.\nThe default is \"rna\" (i.e. use\
     \ RNA parameters). This option overrides the\n--DNA flag."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --alphabet
 - id: in_constraint
   doc: "Specify a constraints file to be applied.\nDefault is to have no constraints\
     \ applied."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --constraint
 - id: in_file
   doc: "Output the results to the specified file instead of to the screen\n(stdout)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --file
 - id: in_number
   doc: "Specify the index of a particular structure for which to calculate the\ndefect.\
     \ The default is -1, which means to calculate the defect for all\nstructures.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --number
 - id: in_ed_calculator
@@ -56,9 +56,10 @@ outputs:
   type: stdout
 - id: out_file
   doc: "Output the results to the specified file instead of to the screen\n(stdout)."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - EDcalculator-smp

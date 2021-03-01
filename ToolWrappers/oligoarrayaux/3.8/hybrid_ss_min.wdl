@@ -2,23 +2,47 @@ version 1.0
 
 task Hybridssmin {
   input {
-    Boolean? constraints
-    File? base_pairs
-    Boolean? all_pairs
-    File file
+    Int? tm_in
+    Int? tinc
+    Int? tmax
+    Int? suffix
+    Boolean? magnesium
+    Boolean? prohibit
+    Boolean? energy_only
+    File? constraints
+    Int? all_pairs
+    Boolean? prefilter
+    File var_file
   }
   command <<<
     hybrid_ss_min \
-      ~{file} \
-      ~{if (constraints) then "--constraints" else ""} \
-      ~{if defined(base_pairs) then ("--basepairs " +  '"' + base_pairs + '"') else ""} \
-      ~{if (all_pairs) then "--allpairs" else ""}
+      ~{var_file} \
+      ~{if defined(tm_in) then ("--tmin " +  '"' + tm_in + '"') else ""} \
+      ~{if defined(tinc) then ("--tinc " +  '"' + tinc + '"') else ""} \
+      ~{if defined(tmax) then ("--tmax " +  '"' + tmax + '"') else ""} \
+      ~{if defined(suffix) then ("--suffix " +  '"' + suffix + '"') else ""} \
+      ~{if (magnesium) then "--magnesium" else ""} \
+      ~{if (prohibit) then "--prohibit" else ""} \
+      ~{if (energy_only) then "--energyOnly" else ""} \
+      ~{if defined(constraints) then ("--constraints " +  '"' + constraints + '"') else ""} \
+      ~{if defined(all_pairs) then ("--allpairs " +  '"' + all_pairs + '"') else ""} \
+      ~{if (prefilter) then "--prefilter" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
+    tm_in: "(defaults to 37)"
+    tinc: "(defaults to 1)"
+    tmax: "(defaults to 37)"
+    suffix: "=<[Na+] in M> (defaults to 1)"
+    magnesium: "=<[Mg++] in M> (defaults to 0)"
+    prohibit: "=<i,j,k>"
+    energy_only: "[=<P,W,MAX>] (defaults to 5,*,100; W determined by sequence length)"
     constraints: "[=<name of constraint file>] (defaults to prefix.aux)"
-    base_pairs: "--circular"
-    all_pairs: "--maxloop=<maximum bulge/interior loop size> (defaults to 30)\\n--nodangle\\n--simple\\n--prefilter=<value1, value2>\\n--stream"
-    file: ""
+    all_pairs: "(defaults to 30)"
+    prefilter: "=<value1, value2>"
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

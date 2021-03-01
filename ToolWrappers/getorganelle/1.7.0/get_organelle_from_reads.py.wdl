@@ -3,11 +3,11 @@ version 1.0
 task GetOrganelleFromReadspy {
   input {
     Boolean? help
-    Int? input_file_forward
+    Int? input_file_pairedend
     Int? input_file_reverse
-    File? input_files_could
+    File? input_files_unpaired
     Directory? output_directory_overwriting
-    File? suggested_what_you
+    File? suggested_reallyknow_asantiseed
     Int? max_reads
     Int? reduce_reads_for_coverage
     Int? max_ignore_percent
@@ -15,11 +15,11 @@ task GetOrganelleFromReadspy {
     String? prefix
     Boolean? zip_files
     Boolean? keep_temp
-    String? flag_should_followed
+    String? flag_followed_genomes
     Boolean? fast
     Boolean? memory_save
     Boolean? memory_unlimited
-    Int? word_size_w
+    Int? word_size_w_assigned
     Int? pre_w
     Int? max_rounds
     Int? max_n_words
@@ -29,7 +29,7 @@ task GetOrganelleFromReadspy {
     Boolean? larger_auto_ws
     Int? target_genome_size
     Int? max_extending_len
-    Int? spades_kmer_settings
+    Int? spades_settings_use
     String? spades_options
     Boolean? no_spades
     Int? ignore_k
@@ -66,11 +66,11 @@ task GetOrganelleFromReadspy {
       ~{exists_dot} \
       ~{directory_dot} \
       ~{if (help) then "--help" else ""} \
-      ~{if defined(input_file_forward) then ("-1 " +  '"' + input_file_forward + '"') else ""} \
+      ~{if defined(input_file_pairedend) then ("-1 " +  '"' + input_file_pairedend + '"') else ""} \
       ~{if defined(input_file_reverse) then ("-2 " +  '"' + input_file_reverse + '"') else ""} \
-      ~{if defined(input_files_could) then ("-u " +  '"' + input_files_could + '"') else ""} \
+      ~{if defined(input_files_unpaired) then ("-u " +  '"' + input_files_unpaired + '"') else ""} \
       ~{if defined(output_directory_overwriting) then ("-o " +  '"' + output_directory_overwriting + '"') else ""} \
-      ~{if defined(suggested_what_you) then ("-a " +  '"' + suggested_what_you + '"') else ""} \
+      ~{if defined(suggested_reallyknow_asantiseed) then ("-a " +  '"' + suggested_reallyknow_asantiseed + '"') else ""} \
       ~{if defined(max_reads) then ("--max-reads " +  '"' + max_reads + '"') else ""} \
       ~{if defined(reduce_reads_for_coverage) then ("--reduce-reads-for-coverage " +  '"' + reduce_reads_for_coverage + '"') else ""} \
       ~{if defined(max_ignore_percent) then ("--max-ignore-percent " +  '"' + max_ignore_percent + '"') else ""} \
@@ -78,11 +78,11 @@ task GetOrganelleFromReadspy {
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if (zip_files) then "--zip-files" else ""} \
       ~{if (keep_temp) then "--keep-temp" else ""} \
-      ~{if defined(flag_should_followed) then ("-F " +  '"' + flag_should_followed + '"') else ""} \
+      ~{if defined(flag_followed_genomes) then ("-F " +  '"' + flag_followed_genomes + '"') else ""} \
       ~{if (fast) then "--fast" else ""} \
       ~{if (memory_save) then "--memory-save" else ""} \
       ~{if (memory_unlimited) then "--memory-unlimited" else ""} \
-      ~{if defined(word_size_w) then ("-w " +  '"' + word_size_w + '"') else ""} \
+      ~{if defined(word_size_w_assigned) then ("-w " +  '"' + word_size_w_assigned + '"') else ""} \
       ~{if defined(pre_w) then ("--pre-w " +  '"' + pre_w + '"') else ""} \
       ~{if defined(max_rounds) then ("--max-rounds " +  '"' + max_rounds + '"') else ""} \
       ~{if defined(max_n_words) then ("--max-n-words " +  '"' + max_n_words + '"') else ""} \
@@ -92,7 +92,7 @@ task GetOrganelleFromReadspy {
       ~{if (larger_auto_ws) then "--larger-auto-ws" else ""} \
       ~{if defined(target_genome_size) then ("--target-genome-size " +  '"' + target_genome_size + '"') else ""} \
       ~{if defined(max_extending_len) then ("--max-extending-len " +  '"' + max_extending_len + '"') else ""} \
-      ~{if defined(spades_kmer_settings) then ("-k " +  '"' + spades_kmer_settings + '"') else ""} \
+      ~{if defined(spades_settings_use) then ("-k " +  '"' + spades_settings_use + '"') else ""} \
       ~{if defined(spades_options) then ("--spades-options " +  '"' + spades_options + '"') else ""} \
       ~{if (no_spades) then "--no-spades" else ""} \
       ~{if defined(ignore_k) then ("--ignore-k " +  '"' + ignore_k + '"') else ""} \
@@ -122,13 +122,16 @@ task GetOrganelleFromReadspy {
       ~{if defined(random_seed) then ("--random-seed " +  '"' + random_seed + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "print verbose introduction for all options."
-    input_file_forward: "Input file with forward paired-end reads (format:\\nfastq/fastq.gz/fastq.tar.gz)."
+    input_file_pairedend: "Input file with forward paired-end reads (format:\\nfastq/fastq.gz/fastq.tar.gz)."
     input_file_reverse: "Input file with reverse paired-end reads (format:\\nfastq/fastq.gz/fastq.tar.gz)."
-    input_files_could: "Input file(s) with unpaired (single-end) reads\\n(format: fastq/fastq.gz/fastq.tar.gz). files could be\\ncomma-separated lists such as 'seq1.fq,seq2.fq'."
+    input_files_unpaired: "Input file(s) with unpaired (single-end) reads\\n(format: fastq/fastq.gz/fastq.tar.gz). files could be\\ncomma-separated lists such as 'seq1.fq,seq2.fq'."
     output_directory_overwriting: "Output directory. Overwriting files if directory"
-    suggested_what_you: "Anti-seed(s). Not suggested unless what you really\\nknow what you are doing. Input fasta format file as\\nanti-seed, where the extension process stop. Typically\\nserves as excluding plastid reads when extending\\nmitochondrial reads, or the other way around. You\\nshould be cautious about using this option, because if\\nthe anti-seed includes some word in the target but not\\nin the seed, the result would have gaps. For example,\\nuse the embplant_mt and embplant_pt from the same\\nplant-species as seed and anti-seed."
+    suggested_reallyknow_asantiseed: "Anti-seed(s). Not suggested unless what you really\\nknow what you are doing. Input fasta format file as\\nanti-seed, where the extension process stop. Typically\\nserves as excluding plastid reads when extending\\nmitochondrial reads, or the other way around. You\\nshould be cautious about using this option, because if\\nthe anti-seed includes some word in the target but not\\nin the seed, the result would have gaps. For example,\\nuse the embplant_mt and embplant_pt from the same\\nplant-species as seed and anti-seed."
     max_reads: "Hard bound for maximum number of reads to be used per\\nfile. Default: 1.5E7 (-F\\nembplant_pt/embplant_nr/fungus_mt); 7.5E7 (-F\\nembplant_mt/other_pt/anonym); 3E8 (-F animal_mt)"
     reduce_reads_for_coverage: "Soft bound for maximum number of reads to be used\\naccording to target-hitting base coverage. If the\\nestimated target-hitting base coverage is too high and\\nover this VALUE, GetOrganelle automatically reduce the\\nnumber of reads to generate a final assembly with base\\ncoverage close to this VALUE. This design could\\ngreatly save computational resources in many\\nsituations. A mean base coverage over 500 is extremely\\nsufficient for most cases. This VALUE must be larger\\nthan 10. Set this VALUE to inf to disable reducing.\\nDefault: 500."
     max_ignore_percent: "\\\" You can"
@@ -136,11 +139,11 @@ task GetOrganelleFromReadspy {
     prefix: "Add extra prefix to resulting files under the output"
     zip_files: "Choose to compress fq/sam files using gzip."
     keep_temp: "Choose to keep the running temp/index files."
-    flag_should_followed: "This flag should be followed with embplant_pt\\n(embryophyta plant plastome), other_pt (non-\\nembryophyta plant plastome), embplant_mt (plant\\nmitogenome), embplant_nr (plant nuclear ribosomal\\nRNA), animal_mt (animal mitogenome), fungus_mt (fungus\\nmitogenome), or embplant_mt,other_pt,fungus_mt (the\\ncombination of any of above organelle genomes split by\\ncomma(s), which might be computationally more\\nintensive than separate runs), or anonym (uncertain\\norganelle genome type, with customized gene database\\n('--genes'), which is suggested only when the above\\ndatabase is genetically distant from your sample,\\ngenerally only in some animal_mt and fungus_mt cases).\\nFor easy usage and compatibility of old versions,\\nfollowing redirection would be automatically fulfilled\\nwithout warning:      plant_cp->embplant_pt;\\nplant_pt->embplant_pt;  plant_mt->embplant_mt;\\nplant_nr->embplant_nr"
+    flag_followed_genomes: "This flag should be followed with embplant_pt\\n(embryophyta plant plastome), other_pt (non-\\nembryophyta plant plastome), embplant_mt (plant\\nmitogenome), embplant_nr (plant nuclear ribosomal\\nRNA), animal_mt (animal mitogenome), fungus_mt (fungus\\nmitogenome), or embplant_mt,other_pt,fungus_mt (the\\ncombination of any of above organelle genomes split by\\ncomma(s), which might be computationally more\\nintensive than separate runs), or anonym (uncertain\\norganelle genome type, with customized gene database\\n('--genes'), which is suggested only when the above\\ndatabase is genetically distant from your sample,\\ngenerally only in some animal_mt and fungus_mt cases).\\nFor easy usage and compatibility of old versions,\\nfollowing redirection would be automatically fulfilled\\nwithout warning:      plant_cp->embplant_pt;\\nplant_pt->embplant_pt;  plant_mt->embplant_mt;\\nplant_nr->embplant_nr"
     fast: "=\\\"-R 10 -t 4 -J 5 -M 7 --max-n-words 3E7 --larger-\\nauto-ws --disentangle-time-limit 360\\\" This option is\\nsuggested for homogeneously and highly covered data\\n(very fine data). You can overwrite the value of a\\nspecific option listed above by adding that option\\nalong with the \\\"--fast\\\" flag. You could try\\nGetOrganelle with this option for a list of samples\\nand run a second time without this option for the rest\\nwith incomplete results."
     memory_save: "=\\\"--out-per-round -P 0 --remove-duplicates 0\\\" You can\\noverwrite the value of a specific option listed above\\nby adding that option along with the \\\"--memory-save\\\"\\nflag. A larger '-R' value is suggested when \\\"--memory-\\nsave\\\" is chosen."
     memory_unlimited: "=\\\"-P 1E7 --index-in-memory --remove-duplicates 2E8"
-    word_size_w: "Word size (W) for pre-grouping (if not assigned by '--\\npre-w') and extending process. This script would try\\nto guess (auto-estimate) a proper W using an empirical\\nfunction based on average read length, reads quality,\\ntarget genome coverage, and other variables that might\\ninfluence the extending process. You could assign the\\nratio (1>input>0) of W to read_length, based on which\\nthis script would estimate the W for you; or assign an\\nabsolute W value (read length>input>=35). Default:\\nauto-estimated."
+    word_size_w_assigned: "Word size (W) for pre-grouping (if not assigned by '--\\npre-w') and extending process. This script would try\\nto guess (auto-estimate) a proper W using an empirical\\nfunction based on average read length, reads quality,\\ntarget genome coverage, and other variables that might\\ninfluence the extending process. You could assign the\\nratio (1>input>0) of W to read_length, based on which\\nthis script would estimate the W for you; or assign an\\nabsolute W value (read length>input>=35). Default:\\nauto-estimated."
     pre_w: "Word size (W) for pre-grouping. Used to reproduce\\nresult when word size is a certain value during\\npregrouping process and later changed during reads\\nextending process. Similar to word size. Default: the\\nsame to word size."
     max_rounds: "Maximum number of extending rounds (suggested: >=2).\\nDefault: 15 (-F embplant_pt), 30 (-F\\nembplant_mt/other_pt), 10 (-F\\nembplant_nr/animal_mt/fungus_mt), inf (-P 0)."
     max_n_words: "Maximum number of words to be used in total.Default:\\n4E8 (-F embplant_pt), 2E8 (-F\\nembplant_nr/fungus_mt/animal_mt), 2E9 (-F\\nembplant_mt/other_pt)"
@@ -150,7 +153,7 @@ task GetOrganelleFromReadspy {
     larger_auto_ws: "By using this flag, the empirical function for\\nestimating W would tend to produce a relative larger\\nW, which would speed up the matching in extending,\\nreduce the memory cost in extending, but increase the\\nrisk of broken final graph. Suggested when the data is\\ngood with high and homogenous coverage."
     target_genome_size: "Hypothetical value(s) of target genome size. This is\\nonly used for estimating word size when no '-w\\nword_size' is given. Should be a list of INTEGER\\nnumbers split by comma(s) on a multi-organelle mode,\\nwith the same list length to organelle_type (followed\\nby '-F'). Default: 130000 (-F embplant_pt) or 390000\\n(-F embplant_mt) or 13000 (-F embplant_nr) or 39000\\n(-F other_pt) or 13000 (-F animal_mt) or 65000 (-F\\nfungus_mt) or 39000,390000,65000 (-F\\nother_pt,embplant_mt,fungus_mt)"
     max_extending_len: "Maximum extending length(s) derived from the seed(s).\\nA single value could be a non-negative number, or inf\\n(infinite) or auto (automatic estimation). This is\\ndesigned for properly stopping the extending from\\ngetting too long and saving computational resources.\\nHowever, empirically, a maximum extending length value\\nlarger than 6000 would not be helpful for saving\\ncomputational resources. This value would not be\\nprecise in controlling output size, especially when\\npre-group (followed by '-P') is turn on.In the auto\\nmode, the maximum extending length is estimated based\\non the sizes of the gap regions that not covered in\\nthe seed sequences. A sequence of a closely related\\nspecies would be preferred for estimating a better\\nmaximum extending length value. If you are using\\nlimited loci, e.g. rbcL gene as the seed for\\nassembling the whole plastome (with extending length\\nca. 75000 >> 6000), you should set maximum extending\\nlength to inf. Should be a list of numbers/auto/no\\nsplit by comma(s) on a multi-organelle mode, with the\\nsame list length to organelle_type (followed by '-F').\\nDefault: no."
-    spades_kmer_settings: "SPAdes kmer settings. Use the same format as in\\nSPAdes. illegal kmer values would be automatically\\ndiscarded by GetOrganelle. Default: 21,55,85,115"
+    spades_settings_use: "SPAdes kmer settings. Use the same format as in\\nSPAdes. illegal kmer values would be automatically\\ndiscarded by GetOrganelle. Default: 21,55,85,115"
     spades_options: "Other SPAdes options. Use double quotation marks to\\ninclude all the arguments and parameters."
     no_spades: "Disable SPAdes."
     ignore_k: "A kmer threshold below which, no\\nslimming/disentangling would be executed on the\\nresult. Default: 40"

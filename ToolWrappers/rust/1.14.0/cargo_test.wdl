@@ -50,6 +50,9 @@ task CargoTest {
       ~{if (frozen) then "--frozen" else ""} \
       ~{if (locked) then "--locked" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     lib: "Test only this package's library"
     doc: "Test only this library's documentation"

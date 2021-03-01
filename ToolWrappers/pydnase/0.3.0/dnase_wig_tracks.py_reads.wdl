@@ -20,6 +20,9 @@ task DnaseWigTrackspyReads {
       ~{if (a) then "-A" else ""} \
       ~{if (r) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a: ""
     r: ""

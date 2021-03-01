@@ -34,6 +34,9 @@ task AribaSummary {
       ~{if (novel_variants) then "--novel_variants" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fof_n: "File of filenames of ariba reports to be summarised.\\nMust be used if no input files listed after the\\noutfile. The first column should be the filename. An\\noptional second column can be used to specify a sample\\nname for that file, which will be used instead of the\\nfilename in output files. Columns separated by\\nwhitespace."
     preset: "|cluster_small|cluster_all|cluster_var_groups|all|all_no_filter\\nShorthand for setting --cluster_cols,--col_filter,--\\nrow_filter,--v_groups,--variants. Using this overrides\\nthose options"

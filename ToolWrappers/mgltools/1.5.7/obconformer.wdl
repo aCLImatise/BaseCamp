@@ -4,6 +4,9 @@ task Obconformer {
   command <<<
     obconformer
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

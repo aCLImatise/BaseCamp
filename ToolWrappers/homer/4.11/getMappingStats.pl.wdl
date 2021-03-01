@@ -16,6 +16,9 @@ task GetMappingStatspl {
       ~{if (min) then "-min" else ""} \
       ~{if defined(genome) then ("-genome " +  '"' + genome + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min: "<#> (minimum length to consider a sequence an adapter-dimer, def. 15)"
     genome: "(limit analysis to alignment for this genome)"

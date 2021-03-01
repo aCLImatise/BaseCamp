@@ -6,22 +6,25 @@ command:
 positional: []
 named:
 - !Flag
-  description: Bundle unique ID.
+  optional: true
   synonyms:
   - --uuid
+  description: Bundle unique ID.
   args: !SimpleFlagArg
     name: UUID
-  optional: true
 - !Flag
-  description: Replica to fetch from.
+  optional: true
   synonyms:
   - --replica
+  description: Replica to fetch from.
   args: !ChoiceFlagArg
     choices: !!set
       gcp:
       aws:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --directurls
   description: "When set to true, the response will contain API-specific URLs that\
     \ are tied to the specified replica, for example `gs://bucket/object` or `s3://bucket/object`\n\
     This parameter is mutually exclusive with the presigned urls parameter. The use\
@@ -29,68 +32,65 @@ named:
     \ provided for a limited set of use cases and may not be provided in the future.\
     \ If cloud native URLs are required, please contact the data store team regarding\
     \ the credentials necessary to use them."
-  synonyms:
-  - --directurls
   args: !SimpleFlagArg
     name: DIRECTURLS
-  optional: true
 - !Flag
-  description: Include presigned URLs in the response.  This is mutually exclusive
-    with the directurls parameter.
+  optional: true
   synonyms:
   - --presignedurls
+  description: Include presigned URLs in the response.  This is mutually exclusive
+    with the directurls parameter.
   args: !SimpleFlagArg
     name: PRESIGNEDURLS
-  optional: true
 - !Flag
-  description: Token to manage retries.  End users constructing queries should not
-    set this parameter.
+  optional: true
   synonyms:
   - --token
+  description: Token to manage retries.  End users constructing queries should not
+    set this parameter.
   args: !SimpleFlagArg
     name: TOKEN
-  optional: true
 - !Flag
-  description: Max number of results to return per page.
+  optional: true
   synonyms:
   - --per-page
+  description: Max number of results to return per page.
   args: !SimpleFlagArg
     name: PER_PAGE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --start-at
   description: An internal state pointer parameter for use with pagination. This parameter
     is referenced by the `Link` header as described in the "Pagination" section. The
     API client should not need to set this parameter directly; it should instead directly
     fetch the URL given in the `Link` header.
-  synonyms:
-  - --start-at
   args: !SimpleFlagArg
     name: START_AT
-  optional: true
 - !Flag
-  description: Do not automatically page the responses
+  optional: true
   synonyms:
   - --no-paginate
+  description: Do not automatically page the responses
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Timestamp of bundle creation in DSS_VERSION format.
+  optional: true
   synonyms:
   - --version
+  description: Timestamp of bundle creation in DSS_VERSION format.
   args: !SimpleFlagArg
     name: VERSION
-  optional: true
 help_text: "usage: hca dss get-bundle [-h] --uuid UUID [--version VERSION] --replica\n\
   \                          {aws,gcp} [--directurls DIRECTURLS]\n               \
   \           [--presignedurls PRESIGNEDURLS] [--token TOKEN]\n                  \
@@ -120,3 +120,4 @@ help_text: "usage: hca dss get-bundle [-h] --uuid UUID [--version VERSION] --rep
   \n"
 generated_using:
 - --help
+docker_image:

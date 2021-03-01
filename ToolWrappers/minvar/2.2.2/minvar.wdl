@@ -14,6 +14,9 @@ task Minvar {
       ~{if (keep) then "--keep" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "input reads in fastq format"
     recal: "turn on recalibration with GATK <default: False>"

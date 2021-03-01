@@ -88,6 +88,9 @@ task Fastqdumporig2108 {
       ~{if (ncbi_error_report) then "--ncbi_error_report" else ""} \
       ~{if (legacy_report) then "--legacy-report" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     accession: "Replaces accession derived from <path> in\\nfilename(s) and deflines (only for single\\ntable dump)"
     table: "Table name within cSRA object, default is\\n\\\"SEQUENCE\\\""

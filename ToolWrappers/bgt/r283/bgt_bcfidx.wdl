@@ -10,6 +10,9 @@ task BgtBcfidx {
       ~{in_dot_bcf} \
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s: ""
     in_dot_bcf: ""

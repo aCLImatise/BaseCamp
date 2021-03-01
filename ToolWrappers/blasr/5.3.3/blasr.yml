@@ -3,366 +3,369 @@ command:
 - blasr
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: reads.bam
   description: "is a PacBio BAM file of reads.\nThis is the preferred input to blasr\
     \ because rich quality\nvalue (insertion,deletion, and substitution quality values)\
     \ information is\nmaintained.  The extra quality information improves variant\
     \ detection and mapping\nspeed."
-  position: 0
-  name: reads.bam
-  optional: false
 - !Positional
-  description: File of file names accepted.
+  optional: false
   position: 0
   name: input.fofn
-  optional: false
+  description: File of file names accepted.
 - !Positional
-  description: Reads produced by spurrious reads from empty ZMWs have a high
+  optional: false
   position: 0
   name: reads.
-  optional: false
+  description: Reads produced by spurrious reads from empty ZMWs have a high
 - !Positional
-  description: Although reads may be input in FASTA format, the recommended input
-    is
+  optional: false
   position: 0
   name: specified.
-  optional: false
+  description: Although reads may be input in FASTA format, the recommended input
+    is
 named:
 - !Flag
-  description: "Use the suffix array 'sa' for detecting matches\nbetween the reads\
-    \ and the reference.  The suffix\narray has been prepared by the sawriter program."
+  optional: true
   synonyms:
   - --sa
+  description: "Use the suffix array 'sa' for detecting matches\nbetween the reads\
+    \ and the reference.  The suffix\narray has been prepared by the sawriter program."
   args: !SimpleFlagArg
     name: suffixArrayFile
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ctab
   description: "A table of tuple counts used to estimate match significance.  This\
     \ is\nby the program 'printTupleCountTable'.  While it is quick to generate on\n\
     the fly, if there are many invocations of blasr, it is useful to\nprecompute the\
     \ ctab."
-  synonyms:
-  - --ctab
   args: !SimpleFlagArg
     name: tab
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --regionTable
   description: "(DEPRECATED)\nRead in a read-region table in HDF format for masking\
     \ portions of reads.\nThis may be a single table if there is just one input file,\n\
     or a fofn.  When a region table is specified, any region table inside\nthe reads.plx.h5\
     \ or reads.bax.h5 files are ignored."
-  synonyms:
-  - --regionTable
   args: !SimpleFlagArg
     name: table
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --noSplitSubreads
   description: "Do not split subreads at adapters. This is typically only\nuseful\
     \ when the genome in an unrolled version of a known template, and\ncontains template-adapter-reverse_template\
     \ sequence.\nFor BAM input it reconstitutes full ZMW reads."
-  synonyms:
-  - --noSplitSubreads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --polymerase
   description: "Instead of reconstituting ZMW reads,\nthis option reconstitutes polymerase\
     \ reads, omitting LQ regions.\nPolymerase reads are aligned, if at least one subread\
     \ is present."
-  synonyms:
-  - --polymerase
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --useccs
   description: "Align the circular consensus sequence (ccs), then report alignments\n\
     of the ccs subreads to the window that the ccs was mapped to.  Only\nalignments\
     \ of the subreads are reported."
-  synonyms:
-  - --useccs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --useccsall
   description: "Similar to -useccs, except all subreads are aligned, rather than just\n\
     the subreads used to call the ccs.  This will include reads that only\ncover part\
     \ of the template."
-  synonyms:
-  - --useccsall
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Align the circular consensus, and report only the alignment of the\
-    \ ccs\nsequence."
+  optional: true
   synonyms:
   - --useccsdenovo
+  description: "Align the circular consensus, and report only the alignment of the\
+    \ ccs\nsequence."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(false)\nIgnore any information in the region table."
+  optional: true
   synonyms:
   - --ignoreRegions
+  description: "(false)\nIgnore any information in the region table."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (false)Ignore any hq regions in the region table.
+  optional: true
   synonyms:
   - --ignoreHQRegions
+  description: (false)Ignore any hq regions in the region table.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(10)\nReport the top 'n' alignments."
+  optional: true
   synonyms:
   - --bestn
+  description: "(10)\nReport the top 'n' alignments."
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --hitPolicy
   description: "(all) Specify a policy to treat multiple hits from [all, allbest,\
     \ random, randombest, leftmost]\nall       : report all alignments.\nallbest \
     \  : report all equally top scoring alignments.\nrandom    : report a random alignment.\n\
     randombest: report a random alignment from multiple equally top scoring alignments.\n\
     leftmost  : report an alignment which has the best alignmentscore and has the\
     \ smallest mapping coordinate in any reference."
-  synonyms:
-  - --hitPolicy
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(false)\nDEPRECATED! If true, equivalent to --hitPolicy randombest."
+  optional: true
   synonyms:
   - --placeRepeatsRandomly
+  description: "(false)\nDEPRECATED! If true, equivalent to --hitPolicy randombest."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(false)\nPlace gaps consistently in alignments of a read as alignments\n\
-    of its reverse complementary sequence."
+  optional: true
   synonyms:
   - --placeGapConsistently
+  description: "(false)\nPlace gaps consistently in alignments of a read as alignments\n\
+    of its reverse complementary sequence."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(0)\nSeed for random number generator. By default (0), use current\
-    \ time as seed."
+  optional: true
   synonyms:
   - --randomSeed
+  description: "(0)\nSeed for random number generator. By default (0), use current\
+    \ time as seed."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --noSortRefinedAlignments
   description: "(false)\nOnce candidate alignments are generated and scored via sparse\
     \ dynamic\nprogramming, they are rescored using local alignment that accounts\n\
     for different error profiles.\nResorting based on the local alignment may change\
     \ the order the hits are returned."
-  synonyms:
-  - --noSortRefinedAlignments
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --allowAdjacentIndels
   description: "When specified, adjacent insertion or deletions are allowed. Otherwise,\
     \ adjacent\ninsertion and deletions are merged into one operation.  Using quality\
     \ values\nto guide pairwise alignments may dictate that the higher probability\
     \ alignment\ncontains adjacent insertions or deletions.  Current tools such as\
     \ GATK do not permit\nthis and so they are not reported by default."
-  synonyms:
-  - --allowAdjacentIndels
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(terminal)\nWrite output to 'out'."
+  optional: true
   synonyms:
   - --out
+  description: "(terminal)\nWrite output to 'out'."
   args: !SimpleFlagArg
     name: out
-  optional: true
 - !Flag
-  description: "Write output in PacBio BAM format. This is the preferred output format.\n\
-    Input query reads must be in PacBio BAM format."
+  optional: true
   synonyms:
   - --bam
+  description: "Write output in PacBio BAM format. This is the preferred output format.\n\
+    Input query reads must be in PacBio BAM format."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Write output in SAM format. Starting from version 5.2 is no longer\
-    \ supported\nUse --bam, then translate from .bam to .sam"
+  optional: true
   synonyms:
   - --sam
+  description: "Write output in SAM format. Starting from version 5.2 is no longer\
+    \ supported\nUse --bam, then translate from .bam to .sam"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
   description: "If not printing SAM, modify the output of the alignment.\nt=0 Print\
     \ blast like output with |'s connecting matched nucleotides.\n1 Print only a summary:\
     \ score and pos.\n2 Print in Compare.xml format.\n3 Print in vulgar format (DEPRECATED).\n\
     4 Print a longer tabular version of the alignment.\n5 Print in a machine-parsable\
     \ format that is read by compareSequences.py."
-  synonyms:
-  - -m
   args: !SimpleFlagArg
     name: t
-  optional: true
 - !Flag
-  description: Print a header as the first line of the output file describing the
-    contents of each column.
+  optional: true
   synonyms:
   - --header
+  description: Print a header as the first line of the output file describing the
+    contents of each column.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --titleTable
   description: "(NULL)\nConstruct a table of reference sequence titles.  The reference\
     \ sequences are\nenumerated by row, 0,1,...  The reference index is printed in\
     \ alignment results\nrather than the full reference name.  This makes output concise,\
     \ particularly when\nvery verbose titles exist in reference names."
-  synonyms:
-  - --titleTable
   args: !SimpleFlagArg
     name: tab
-  optional: true
 - !Flag
-  description: Output reads that are not aligned to 'file'
+  optional: true
   synonyms:
   - --unaligned
+  description: Output reads that are not aligned to 'file'
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: Must be used together with -unaligned, print unaligned read names only.
+  optional: true
   synonyms:
   - --noPrintUnalignedSeqs
+  description: Must be used together with -unaligned, print unaligned read names only.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[none|hard|subread|soft] (none)\nUse no/hard/subread/soft clipping,\
-    \ ONLY for SAM/BAM output."
+  optional: true
   synonyms:
   - --clipping
+  description: "[none|hard|subread|soft] (none)\nUse no/hard/subread/soft clipping,\
+    \ ONLY for SAM/BAM output."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(false)\nPrint quality values to SAM output."
+  optional: true
   synonyms:
   - --printSAMQV
+  description: "(false)\nPrint quality values to SAM output."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(12)\nMinimum seed length.  Higher minMatch will speed up alignment,\n\
-    but decrease sensitivity."
+  optional: true
   synonyms:
   - --minMatch
+  description: "(12)\nMinimum seed length.  Higher minMatch will speed up alignment,\n\
+    but decrease sensitivity."
   args: !SimpleFlagArg
     name: m
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxMatch
   description: "(inf)\nStop mapping a read to the genome when the lcp length reaches\
     \ l.\nThis is useful when the query is part of the reference, for example when\n\
     constructing pairwise alignments for de novo assembly."
-  synonyms:
-  - --maxMatch
   args: !SimpleFlagArg
     name: l
-  optional: true
 - !Flag
-  description: "(inf)\nThe same as -maxMatch."
+  optional: true
   synonyms:
   - --maxLCPLength
+  description: "(inf)\nThe same as -maxMatch."
   args: !SimpleFlagArg
     name: l
-  optional: true
 - !Flag
-  description: "(10000)\nDo not add anchors from a position if it matches to more\
-    \ than 'm' locations in the target."
+  optional: true
   synonyms:
   - --maxAnchorsPerPosition
+  description: "(10000)\nDo not add anchors from a position if it matches to more\
+    \ than 'm' locations in the target."
   args: !SimpleFlagArg
     name: m
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --advanceExactMatches
   description: "(0)\nAnother trick for speeding up alignments with match - E fewer\
     \ anchors.  Rather than\nfinding anchors between the read and the genome at every\
     \ position in the read,\nwhen an anchor is found at position i in a read of length\
     \ L, the next position\nin a read to find an anchor is at i+L-E.\nUse this when\
     \ alignining already assembled contigs."
-  synonyms:
-  - --advanceExactMatches
   args: !SimpleFlagArg
     name: E
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nCandidates
   description: "(10)\nKeep up to 'n' candidates for the best alignment.  A large value\
     \ of n will slow mapping\nbecause the slower dynamic programming steps are applied\
     \ to more clusters of anchors\nwhich can be a rate limiting step when reads are\
     \ very long."
-  synonyms:
-  - --nCandidates
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --concordant
   description: "(false)\nMap all subreads of a zmw (hole) to where the longest full\
     \ pass subread of the zmw\naligned to. This requires to use the region table and\
     \ hq regions.\nThis option only works when reads are in base or pulse h5 format."
-  synonyms:
-  - --concordant
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(false)\nFast search maximum increasing intervals as alignment candidates.\
-    \ The search\nis not as exhaustive as the default, but is much faster."
+  optional: true
   synonyms:
   - --fastMaxInterval
+  description: "(false)\nFast search maximum increasing intervals as alignment candidates.\
+    \ The search\nis not as exhaustive as the default, but is much faster."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --aggressiveIntervalCut
   description: "(false)\nAgreesively filter out non-promising alignment candidates,\
     \ if there\nexists at least one promising candidate. If this option is turned\
     \ on,\nBlasr is likely to ignore short alignments of ALU elements."
-  synonyms:
-  - --aggressiveIntervalCut
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(false)\nUse a fast heuristic algorithm to speed up sparse dynamic\
-    \ programming."
+  optional: true
   synonyms:
   - --fastSDP
+  description: "(false)\nUse a fast heuristic algorithm to speed up sparse dynamic\
+    \ programming."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(false)\nRefine concordant alignments. It slightly increases alignment\
-    \ accuracy at cost of time."
+  optional: true
   synonyms:
   - --refineConcordantAlignments
+  description: "(false)\nRefine concordant alignments. It slightly increases alignment\
+    \ accuracy at cost of time."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sdpTupleSize
   description: "(11)\nUse matches of length K to speed dynamic programming alignments.\
     \  This controls\naccuracy of assigning gaps in pairwise alignments once a mapping\
     \ has been found,\nrather than mapping sensitivity itself."
-  synonyms:
-  - --sdpTupleSize
   args: !SimpleFlagArg
     name: K
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --scoreMatrix
   description: "\"score matrix string\"\nSpecify an alternative score matrix for scoring\
     \ fasta reads.  The matrix is\nin the format\nACGTN\nA abcde\nC fghij\nG klmno\n\
     T pqrst\nN uvwxy . The values a...y should be input as a quoted space separated\n\
     string: \"a b c ... y\". Lower scores are better, so matches should be less\n\
     than mismatches e.g. a,g,m,s = -5 (match), mismatch = 6."
-  synonyms:
-  - --scoreMatrix
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(10)\nSet the penalty for opening an affine alignment."
+  optional: true
   synonyms:
   - --affineOpen
+  description: "(10)\nSet the penalty for opening an affine alignment."
   args: !SimpleFlagArg
     name: value
-  optional: true
 - !Flag
-  description: "(0)\nChange affine (extension) gap penalty. Lower value allows more\
-    \ gaps."
+  optional: true
   synonyms:
   - --affineExtend
+  description: "(0)\nChange affine (extension) gap penalty. Lower value allows more\
+    \ gaps."
   args: !SimpleFlagArg
     name: a
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --useQuality
   description: "(false)\nUse substitution/insertion/deletion/merge quality values\
     \ to score gap and\nmismatch penalties in pairwise alignments.  Because the insertion\
     \ and deletion\nrates are much higher than substitution, this will make many alignments\n\
@@ -371,115 +374,112 @@ named:
     \ calling consensus using the Quiver method.  Furthermore, when\nnot using quality\
     \ values to score alignments, there will be a lower consensus\naccuracy in homolymer\
     \ regions."
-  synonyms:
-  - --useQuality
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(false)\nRefine alignment using affine guided align."
+  optional: true
   synonyms:
   - --affineAlign
+  description: "(false)\nRefine alignment using affine guided align."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(50)\nSkip reads that have a full length less than l. Subreads may\
-    \ be shorter."
+  optional: true
   synonyms:
   - --minReadLength
+  description: "(50)\nSkip reads that have a full length less than l. Subreads may\
+    \ be shorter."
   args: !SimpleFlagArg
     name: l
-  optional: true
 - !Flag
-  description: "(0)\nDo not align subreads of length less than l."
+  optional: true
   synonyms:
   - --minSubreadLength
+  description: "(0)\nDo not align subreads of length less than l."
   args: !SimpleFlagArg
     name: l
-  optional: true
 - !Flag
-  description: "(0)\nDo not align subreads whose quality score in region table is\
-    \ less than m (quality scores should be in range [0, 1000])."
+  optional: true
   synonyms:
   - --minRawSubreadScore
+  description: "(0)\nDo not align subreads whose quality score in region table is\
+    \ less than m (quality scores should be in range [0, 1000])."
   args: !SimpleFlagArg
     name: m
-  optional: true
 - !Flag
-  description: "(-200)\nMaximum score to output (high is bad, negative good)."
+  optional: true
   synonyms:
   - --maxScore
+  description: "(-200)\nMaximum score to output (high is bad, negative good)."
   args: !SimpleFlagArg
     name: m
-  optional: true
 - !Flag
-  description: (0) Report alignments only if their lengths are greater than minAlnLength.
+  optional: true
   synonyms:
   - --minAlnLength
+  description: (0) Report alignments only if their lengths are greater than minAlnLength.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (0) Report alignments only if their percentage similarity is greater
-    than minPctSimilarity.
+  optional: true
   synonyms:
   - --minPctSimilarity
+  description: (0) Report alignments only if their percentage similarity is greater
+    than minPctSimilarity.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (0) Report alignments only if their percentage accuracy is greater
-    than minAccuracy.
+  optional: true
   synonyms:
   - --minPctAccuracy
+  description: (0) Report alignments only if their percentage accuracy is greater
+    than minAccuracy.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(1)\nAlign using N processes.  All large data structures such as the\
-    \ suffix array and\ntuple count table are shared."
+  optional: true
   synonyms:
   - --nproc
+  description: "(1)\nAlign using N processes.  All large data structures such as the\
+    \ suffix array and\ntuple count table are shared."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --start
   description: "(0)\nIndex of the first read to begin aligning. This is useful when\
     \ multiple instances\nare running on the same data, for example when on a multi-rack\
     \ cluster."
-  synonyms:
-  - --start
   args: !SimpleFlagArg
     name: S
-  optional: true
 - !Flag
-  description: "(1)\nAlign one read every 'S' reads."
+  optional: true
   synonyms:
   - --stride
+  description: "(1)\nAlign one read every 'S' reads."
   args: !SimpleFlagArg
     name: S
-  optional: true
 - !Flag
-  description: "(0)\nProportion of reads to randomly subsample (expressed as a decimal)\
-    \ and align."
+  optional: true
   synonyms:
   - --subsample
+  description: "(0)\nProportion of reads to randomly subsample (expressed as a decimal)\
+    \ and align."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --holeNumbers
   description: "When specified, only align reads whose ZMW hole numbers are in LIST.\n\
     LIST is a comma-delimited string of ranges, such as '1,2,3,10-13'.\nThis option\
     \ only works when reads are in bam, bax.h5 or plx.h5 format."
-  synonyms:
-  - --holeNumbers
   args: !SimpleFlagArg
     name: LIST
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help file.
+  optional: true
   synonyms:
   - -h
+  description: Print this help file.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "   Options for blasr \n   Basic usage: 'blasr reads.{bam|fasta|bax.h5|fofn}\
@@ -692,3 +692,4 @@ help_text: "   Options for blasr \n   Basic usage: 'blasr reads.{bam|fasta|bax.h
   \ sufficient for maximal sensitivity and good speed.\n\n\n\n"
 generated_using:
 - --help
+docker_image:

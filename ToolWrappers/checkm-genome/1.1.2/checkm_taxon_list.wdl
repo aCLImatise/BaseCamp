@@ -10,6 +10,9 @@ task CheckmTaxonList {
       ~{if defined(rank) then ("--rank " +  '"' + rank + '"') else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rank: "restrict list to specified taxonomic rank (default: ALL)"
     tmpdir: "specify an alternative directory for temporary files"

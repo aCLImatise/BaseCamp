@@ -4,12 +4,12 @@ inputs:
 - id: in_config
   doc: "location of the SnpEff installation directory. Will\noverride MiModD config\
     \ settings if provided."
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_ofile
   doc: "redirect the output to the specified file (default:\nstdout)\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --ofile
 - id: in_snp_eff_genomes
@@ -23,9 +23,10 @@ outputs:
   type: stdout
 - id: out_ofile
   doc: "redirect the output to the specified file (default:\nstdout)\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_ofile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mimodd

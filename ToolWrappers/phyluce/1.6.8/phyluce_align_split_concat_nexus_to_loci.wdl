@@ -12,6 +12,9 @@ task PhyluceAlignSplitConcatNexusToLoci {
       ~{if defined(nexus) then ("--nexus " +  '"' + nexus + '"') else ""} \
       ~{if defined(output_directory_store) then ("--output " +  '"' + output_directory_store + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nexus: "The input NEXUS file"
     output_directory_store: "The output directory in which to store alignments"

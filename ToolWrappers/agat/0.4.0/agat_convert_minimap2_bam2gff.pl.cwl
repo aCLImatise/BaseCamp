@@ -3,23 +3,23 @@ id: agat_convert_minimap2_bam2gff.pl.cwl
 inputs:
 - id: in_input
   doc: "Input file in sam (.sam extension) or bam (.bam extension)\nformat."
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_bam
   doc: To force to use the input file as sam file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --bam
 - id: in_sam
   doc: To force to use the input file as sam file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --sam
 - id: in_output
   doc: "Output GFF file. If no output file is specified, the output will\nbe written\
     \ to STDOUT."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_agat_convert_sp_minimap_two_bamtwogffdotpl
@@ -41,9 +41,10 @@ outputs:
 - id: out_output
   doc: "Output GFF file. If no output file is specified, the output will\nbe written\
     \ to STDOUT."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agat_convert_minimap2_bam2gff.pl

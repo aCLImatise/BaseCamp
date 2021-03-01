@@ -30,6 +30,9 @@ task FlyesamtoolsDepad {
       ~{if defined(output_fmt) then ("--output-fmt " +  '"' + output_fmt + '"') else ""} \
       ~{if defined(output_fmt_option) then ("--output-fmt-option " +  '"' + output_fmt_option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_sam_default: "Output is SAM (default is BAM)"
     input_sam_default: "Input is SAM (default is BAM)"

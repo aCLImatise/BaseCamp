@@ -3,120 +3,120 @@ command:
 - picopore
 positional:
 - !Positional
-  description: monitors a directory for new reads and compresses them in real time
+  optional: false
   position: 0
   name: picopore-realtime
-  optional: false
+  description: monitors a directory for new reads and compresses them in real time
 - !Positional
-  description: compresses to temporary files and checks that all datasets and attributes
-    are equal (lossless modes only)
+  optional: false
   position: 1
   name: picopore-test
-  optional: false
+  description: compresses to temporary files and checks that all datasets and attributes
+    are equal (lossless modes only)
 - !Positional
-  description: renames groups and datasets within FAST5 files
+  optional: false
   position: 2
   name: picopore-rename
-  optional: false
+  description: renames groups and datasets within FAST5 files
 - !Positional
-  description: list of directories or fast5 files to shrink
+  optional: false
   position: 0
   name: input
-  optional: false
+  description: list of directories or fast5 files to shrink
 named:
 - !Flag
-  description: choose compression mode
+  optional: true
   synonyms:
   - --mode
+  description: choose compression mode
   args: !ChoiceFlagArg
     choices: !!set
-      raw:
-      lossless:
       deep-lossless:
-  optional: true
+      lossless:
+      raw:
 - !Flag
-  description: reverts files to original size (lossless modes only)
+  optional: true
   synonyms:
   - --revert
+  description: reverts files to original size (lossless modes only)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'retain FASTQ data (raw mode only) (Default: --fastq)'
+  optional: true
   synonyms:
   - --fastq
   - --no-fastq
+  description: 'retain FASTQ data (raw mode only) (Default: --fastq)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "retain summary data (raw mode only) (Default: --no-\nsummary)"
+  optional: true
   synonyms:
   - --summary
   - --no-summary
+  description: "retain summary data (raw mode only) (Default: --no-\nsummary)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "manually remove only groups whose paths contain STR\n(raw mode only,\
-    \ regular expressions permitted,\noverrides defaults)"
+  optional: true
   synonyms:
   - --manual
+  description: "manually remove only groups whose paths contain STR\n(raw mode only,\
+    \ regular expressions permitted,\noverrides defaults)"
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: skip confirm step
+  optional: true
   synonyms:
   - -y
+  description: skip confirm step
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'number of threads (Default: 1)'
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: 'number of threads (Default: 1)'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: add prefix to output files to prevent overwrite
+  optional: true
   synonyms:
   - --prefix
+  description: add prefix to output files to prevent overwrite
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: "ignore files in root input directories for albacore\nrealtime compression\
-    \ (Default: --no-skip-root)"
+  optional: true
   synonyms:
   - --skip-root
   - --no-skip-root
+  description: "ignore files in root input directories for albacore\nrealtime compression\
+    \ (Default: --no-skip-root)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "print a dot every approximately INT files, or -1 to\nsilence (Default:\
-    \ 100)\n"
+  optional: true
   synonyms:
   - --print-every
+  description: "print a dot every approximately INT files, or -1 to\nsilence (Default:\
+    \ 100)\n"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show version number and exit
+  optional: true
   synonyms:
   - -v
   - --version
+  description: show version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: picopore [-h] --mode {lossless,deep-lossless,raw} [--revert] [--fastq]\n\
   \                [--summary] [--manual STR] [-v] [-y] [-t INT] [--prefix STR]\n\
   \                [--skip-root] [--print-every INT]\n                [input [input\
@@ -144,3 +144,4 @@ help_text: "usage: picopore [-h] --mode {lossless,deep-lossless,raw} [--revert] 
   \        silence (Default: 100)\n"
 generated_using:
 - --help
+docker_image:

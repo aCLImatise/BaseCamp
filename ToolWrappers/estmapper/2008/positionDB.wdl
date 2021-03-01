@@ -9,7 +9,11 @@ task PositionDB {
     String? mer_end
     String? sequence
     File? output_filename
-    File? dump
+    Boolean? build_only
+    Boolean? existence
+    Boolean? extra
+    Int? test_one
+    Int? test_two
     String? args
   }
   command <<<
@@ -22,8 +26,15 @@ task PositionDB {
       ~{if defined(mer_end) then ("-merend " +  '"' + mer_end + '"') else ""} \
       ~{if defined(sequence) then ("-sequence " +  '"' + sequence + '"') else ""} \
       ~{if defined(output_filename) then ("-output " +  '"' + output_filename + '"') else ""} \
-      ~{if defined(dump) then ("-dump " +  '"' + dump + '"') else ""}
+      ~{if (build_only) then "-buildonly" else ""} \
+      ~{if (existence) then "-existence" else ""} \
+      ~{if (extra) then "-extra" else ""} \
+      ~{if defined(test_one) then ("-test1 " +  '"' + test_one + '"') else ""} \
+      ~{if defined(test_two) then ("-test2 " +  '"' + test_two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mer_size: "The size of the mers, default=20."
     mer_skip: "The skip between mers, default=0"
@@ -32,7 +43,11 @@ task PositionDB {
     mer_end: "Build on a subset of the mers, ending at mer #e, default=all mers"
     sequence: "Input sequences."
     output_filename: "Output filename."
-    dump: "To run sanity tests:\\n-buildonly [build opts] sequence.fasta\\n--  just builds a table and exits\\n-existence [build opts] sequence.fasta\\n--  builds (or reads) a table reports if any mers\\nin sequence.fasta cannot be found\\n-extra [build opts] sequence.fasta\\n--  builds (or reads) a table reports if any mers\\nNOT in sequence.fasta are be found\\n-test1 sequence.fasta\\n--  Tests if each and every mer is found in the\\npositionDB.  Reports if it doesn't find a mer\\nat the correct position.  Doesn't report if table\\nhas too much stuff.\\n-test2 db.fasta sequence.fasta\\n--  Builds a positionDB from db.fasta, then searches\\nthe table for each mer in sequence.fasta.  Reports\\nall mers it finds.\\n-- This is a silly test and you shouldn't do it.\\n"
+    build_only: "[build opts] sequence.fasta\\n--  just builds a table and exits"
+    existence: "[build opts] sequence.fasta\\n--  builds (or reads) a table reports if any mers\\nin sequence.fasta cannot be found"
+    extra: "[build opts] sequence.fasta\\n--  builds (or reads) a table reports if any mers\\nNOT in sequence.fasta are be found"
+    test_one: "--  Tests if each and every mer is found in the\\npositionDB.  Reports if it doesn't find a mer\\nat the correct position.  Doesn't report if table\\nhas too much stuff."
+    test_two: "sequence.fasta\\n--  Builds a positionDB from db.fasta, then searches\\nthe table for each mer in sequence.fasta.  Reports\\nall mers it finds.\\n-- This is a silly test and you shouldn't do it.\\n"
     args: ""
   }
   output {

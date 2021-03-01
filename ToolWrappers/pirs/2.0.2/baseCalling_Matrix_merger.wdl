@@ -8,6 +8,9 @@ task BaseCallingMatrixMerger {
     baseCalling_Matrix_merger \
       ~{base_calling_matrix_merger_do_tpl}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base_calling_matrix_merger_do_tpl: "Description"
   }

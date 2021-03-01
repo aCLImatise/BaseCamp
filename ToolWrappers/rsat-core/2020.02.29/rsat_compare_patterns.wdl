@@ -64,6 +64,9 @@ task RsatComparepatterns {
       ~{if defined(table) then ("-table " +  '"' + table + '"') else ""} \
       ~{if (null) then "-null" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "(must be first argument) display options"
     verbose: "verbose"

@@ -16,6 +16,9 @@ task ScHicCreateBulkMatrix {
       ~{if defined(out_filename) then ("--outFileName " +  '"' + out_filename + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     schic_matrix_m: "scHi-C matrix, -m scool scHi-C matrix\\nThe single cell Hi-C interaction matrices to cluster.\\nNeeds to be in scool format (default: None)"
     out_filename: "File name to save the exported matrix. (default: None)"

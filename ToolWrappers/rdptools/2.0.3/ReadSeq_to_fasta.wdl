@@ -10,6 +10,9 @@ task ReadSeqTofasta {
       ~{usage} \
       ~{if defined(mask) then ("--mask " +  '"' + mask + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mask: "Mask sequence name indicating columns to drop"
     usage: ""

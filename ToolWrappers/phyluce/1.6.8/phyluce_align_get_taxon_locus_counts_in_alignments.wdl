@@ -12,6 +12,9 @@ task PhyluceAlignGetTaxonLocusCountsInAlignments {
       ~{if defined(input_directory_alignment) then ("--alignments " +  '"' + input_directory_alignment + '"') else ""} \
       ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_directory_alignment: "The input directory of alignment files"
     input_format: "The input alignment format\\n"

@@ -10,6 +10,9 @@ task ChopUpBackgroundpl {
       ~{target_seq_file} \
       ~{background_seq_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target_seq_file: ""
     background_seq_file: ""

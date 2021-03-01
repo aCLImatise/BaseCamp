@@ -10,6 +10,9 @@ task MbpreprocessConfigFile {
       ~{mock_in_bird_preprocess} \
       ~{if defined(log_level) then ("--log_level " +  '"' + log_level + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_level: ""
     mock_in_bird_preprocess: ""

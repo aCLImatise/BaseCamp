@@ -8,6 +8,9 @@ task RnaclustCleanAlnpl {
     rnaclustCleanAln_pl \
       ~{rna_clust_gen_report_do_tpl}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rna_clust_gen_report_do_tpl: ""
   }

@@ -2,14 +2,17 @@ version 1.0
 
 task LynerPlot {
   input {
-    File? outfile
+    File? annotation_split
   }
   command <<<
     lyner plot \
-      ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
+      ~{if defined(annotation_split) then ("--annotation-split " +  '"' + annotation_split + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    outfile: "-d, --directory DIRECTORY\\n--with-annotation\\n--annotation-split FLOAT RANGE\\n--colorscale [Greys|YlGnBu|Greens|YlOrRed|Bluered|RdBu|Reds|Blues|Picnic|Rainbow|Portland|Jet|Hot|Blackbody|Earth|Electric|Viridis|Cividis]\\n-m, --mode LIST\\n-c, --mode-config DICT\\n-a, --auto-open\\n--help                          Show this message and exit.\\n"
+    annotation_split: "RANGE"
   }
   output {
     File out_stdout = stdout()

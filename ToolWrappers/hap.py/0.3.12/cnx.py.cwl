@@ -3,12 +3,12 @@ id: cnx.py.cwl
 inputs:
 - id: in_output
   doc: Output file name (json format)
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_bam
   doc: pass a BAM file for aligner name/version extraction
-  type: File
+  type: File?
   inputBinding:
     prefix: --bam
 - id: in_extract
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output file name (json format)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cnx.py

@@ -22,6 +22,9 @@ task SgaGapfill {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(sample_rate) then ("--sample-rate " +  '"' + sample_rate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     prefix: "load the FM-index with prefix NAME"

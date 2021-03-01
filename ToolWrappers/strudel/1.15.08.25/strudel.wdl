@@ -4,6 +4,9 @@ task Strudel {
   command <<<
     strudel
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

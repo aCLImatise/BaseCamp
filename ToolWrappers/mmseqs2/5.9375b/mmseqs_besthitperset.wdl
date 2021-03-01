@@ -12,6 +12,9 @@ task MmseqsBesthitperset {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     simple_best_hit: "false           Update the e-value by the best p-value"
     threads: "8               number of cores used for the computation (uses all cores by default)"

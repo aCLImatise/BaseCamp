@@ -36,6 +36,9 @@ task MimoddAnnotate {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ofile: "redirect the output to the specified file (default:\\nstdout)"
     codon_tables: "specify custom codon tables to be used in assessing\\nvariant effects at the protein level; if a codon table\\nshould be used for only a specific chromosome, use the\\nformat CHROM:TABLE_NAME. Use TABLE_NAME alone to\\nspecify a codon table to be used for all chromosomes,\\nfor which no chromosome-specific table is provided.\\nValid TABLE_NAMEs are those defined in the Codon\\ntables section of the SnpEff config file. NOTE: It is\\nalso possible to associate chromosomes with a codon\\ntable permanently by editing the SnpEff config file."

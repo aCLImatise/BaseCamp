@@ -3,7 +3,7 @@ id: mockinbird_preprocess_output_dir.cwl
 inputs:
 - id: in_log_level
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --log_level
 - id: in_mock_in_bird
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mockinbird

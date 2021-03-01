@@ -12,6 +12,9 @@ task MzidToPepxmlrb {
       ~{if defined(explicitly_named_output) then ("--output " +  '"' + explicitly_named_output + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicitly_named_output: "An explicitly named output file."
     debug: "Run in debug mode [false]"

@@ -3,22 +3,22 @@ id: huge_delete.pl.cwl
 inputs:
 - id: in_remove
   doc: Bigrams with counts < L will be removed from sample.
-  type: string
+  type: string?
   inputBinding:
     prefix: --remove
 - id: in_u_remove
   doc: Bigrams with counts > L will be removed from sample.
-  type: string
+  type: string?
   inputBinding:
     prefix: --uremove
 - id: in_frequency
   doc: Bigrams with counts < F will not be displayed.
-  type: string
+  type: string?
   inputBinding:
     prefix: --frequency
 - id: in_u_frequency
   doc: Bigrams with counts > F will not be displayed.
-  type: string
+  type: string?
   inputBinding:
     prefix: --ufrequency
 - id: in_source
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - huge-delete.pl

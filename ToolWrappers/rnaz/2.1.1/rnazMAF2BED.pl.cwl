@@ -7,24 +7,25 @@ inputs:
     \ all sequences containing \"hg17\" in the\nidenitfier (e.g. \"hg17.chr10\", \"\
     hg17.chr22\",...). If this option\nis omitted, the first sequence identifier of\
     \ the first sequence\nin the first alignment block is used."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --seq-id
 - id: in_cluster
   doc: "Combine overlapping alignments and report non-overlapping\nregions in the\
     \ BED output."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cluster
 - id: in_man
   doc: Prints a detailed manual page and exits.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --man
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rnazMAF2BED.pl

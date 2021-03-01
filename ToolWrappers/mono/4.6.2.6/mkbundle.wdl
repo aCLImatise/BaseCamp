@@ -26,6 +26,9 @@ task Mkbundle {
       ~{if (simple) then "--simple" else ""} \
       ~{if (custom) then "--custom" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Bundle system config file `F'"
     config_dir: "Set MONO_CFG_DIR to `D'"

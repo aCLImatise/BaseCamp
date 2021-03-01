@@ -14,6 +14,9 @@ task Mergecontigs {
       ~{bank_name} \
       ~{if (output_outprefixmali_file) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_outprefixmali_file: "Output the <out-prefix>.mali file"
     coords_file: ""

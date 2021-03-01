@@ -14,6 +14,9 @@ task ClusteringTree {
       ~{merges_dot_bin} \
       ~{newick_out}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree_builder: ""
     id_mapping: ""

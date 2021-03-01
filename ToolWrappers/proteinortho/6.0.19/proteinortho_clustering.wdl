@@ -16,7 +16,7 @@ task ProteinorthoClustering {
     Int? cpus
     Int? min_openmp
     Boolean? k_mere
-    Boolean? pow_lapd
+    Float? pow_lapd
     Boolean? test
     Int? max_runs_convergence
     String graph_files_dot_dot_dot
@@ -38,10 +38,13 @@ task ProteinorthoClustering {
       ~{if defined(cpus) then ("-cpus " +  '"' + cpus + '"') else ""} \
       ~{if defined(min_openmp) then ("-minOpenmp " +  '"' + min_openmp + '"') else ""} \
       ~{if defined(k_mere) then ("-kmere " +  '"' + k_mere + '"') else ""} \
-      ~{if (pow_lapd) then "-powLapD" else ""} \
+      ~{if defined(pow_lapd) then ("-powLapD " +  '"' + pow_lapd + '"') else ""} \
       ~{if (test) then "-test" else ""} \
       ~{if defined(max_runs_convergence) then ("-maxRunsConvergence " +  '"' + max_runs_convergence + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "report progress"
     conn: "threshold for connectivity [0.1]"
@@ -57,7 +60,7 @@ task ProteinorthoClustering {
     cpus: "the number of threads used for openMP [1]"
     min_openmp: "the minimum number of nodes for parallel power iteration [256]"
     k_mere: "use the kmere-split heuristic [1]"
-    pow_lapd: "| -power_d float          the minimum graph density for the power iteration method, lapacks (d|s)syevr is used otherwise [linear:d<10^(-5.2)*n]"
+    pow_lapd: "the minimum graph density for the power iteration method, lapacks (d|s)syevr is used otherwise [linear:d<10^(-5.2)*n]"
     test: "various test-functions are called first [not set]"
     max_runs_convergence: "the maximum number of runs for the calculation of the algebraic connectivity [8192]"
     graph_files_dot_dot_dot: ""

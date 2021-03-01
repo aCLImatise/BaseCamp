@@ -4,6 +4,9 @@ task Signalmakerr {
   command <<<
     signalmaker_r
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

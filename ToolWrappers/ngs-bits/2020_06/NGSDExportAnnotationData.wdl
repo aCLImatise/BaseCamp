@@ -26,6 +26,9 @@ task NGSDExportAnnotationData {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     variants: "Output variant list as VCF."
     genes: "Optional BED file containing the genes and the gene info (only germline).\\nDefault value: ''"

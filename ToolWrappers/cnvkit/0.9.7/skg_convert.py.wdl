@@ -10,11 +10,11 @@ task SkgConvertpy {
     String? gff_tag
     Int? gff_type
     String? ref_flat_type
-    File file
+    File input_filename
   }
   command <<<
     skg_convert_py \
-      ~{file} \
+      ~{input_filename} \
       ~{if defined(output_filename) then ("--output " +  '"' + output_filename + '"') else ""} \
       ~{if defined(from) then ("--from " +  '"' + from + '"') else ""} \
       ~{if defined(to) then ("--to " +  '"' + to + '"') else ""} \
@@ -24,6 +24,9 @@ task SkgConvertpy {
       ~{if defined(gff_type) then ("--gff-type " +  '"' + gff_type + '"') else ""} \
       ~{if defined(ref_flat_type) then ("--refflat-type " +  '"' + ref_flat_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_filename: "Output filename. [Default: stdout]"
     from: "Input format. [Default: auto-detect]"
@@ -33,7 +36,7 @@ task SkgConvertpy {
     gff_tag: "GFF attributes tag to use for gene names."
     gff_type: "GFF record type (column 3) to use exclusively. E.g.\\nfor GFF3 files, 'exon', 'gene', and other SOFA terms\\ncan be used here."
     ref_flat_type: "Emit each exon instead of the whole gene regions.\\n"
-    file: "Input filename. [Default: stdin]"
+    input_filename: "Input filename. [Default: stdin]"
   }
   output {
     File out_stdout = stdout()

@@ -16,6 +16,9 @@ task AgfusionBuild {
       ~{if defined(pfam) then ("--pfam " +  '"' + pfam + '"') else ""} \
       ~{if defined(server) then ("--server " +  '"' + server + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "Directory to write database file to."
     species: "The species (e.g. homo_sapiens)."

@@ -3,12 +3,11 @@ version 1.0
 task RsatMatrixquality {
   input {
     Int? perm
-    Boolean? h_dot
     String? plot
     String matrix_quality
     String interest_dot
     String set_dot
-    String approach_may_however
+    String approach_however_pose
     String computed_dot
     String beware_score_distribution
     String theory
@@ -28,7 +27,7 @@ task RsatMatrixquality {
       ~{matrix_quality} \
       ~{interest_dot} \
       ~{set_dot} \
-      ~{approach_may_however} \
+      ~{approach_however_pose} \
       ~{computed_dot} \
       ~{beware_score_distribution} \
       ~{theory} \
@@ -43,17 +42,18 @@ task RsatMatrixquality {
       ~{sequence_type} \
       ~{statistics_dot} \
       ~{if defined(perm) then ("-perm " +  '"' + perm + '"') else ""} \
-      ~{if (h_dot) then "-h." else ""} \
       ~{if defined(plot) then ("-plot " +  '"' + plot + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    perm: "0 -bgfile my_background.txt \\\\n-o my_matrix_quality"
-    h_dot: "Multiple image formats can be specified either by using iteratively\\nthe option, or by separating them by commas.\\nExample: -img_format png,pdf"
+    perm: "0 -bgfile my_background.txt \\"
     plot: ""
     matrix_quality: "[1mDESCRIPTION[0m"
     interest_dot: "[1mMatrix sites[0m"
     set_dot: "If the left-out sequence has one or more \\\"twin\\\" (identical site) in the"
-    approach_may_however: "This approach may however pose problem in the specific case of"
+    approach_however_pose: "This approach may however pose problem in the specific case of"
     computed_dot: "[1mComparing the scores of the matrix sites to the theoretical"
     beware_score_distribution: "Beware: the score distribution of matrix sites is fake. Indeed, those"
     theory: "The theoretical distribution of scores, computing according to the\\nbackground model;"

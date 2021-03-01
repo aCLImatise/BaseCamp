@@ -60,6 +60,9 @@ task BitmapperBS {
       ~{if (gap_open) then "--gap_open" else ""} \
       ~{if (gap_extension) then "--gap_extension" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index: "[file]         Generate an index from the specified fasta file."
     index_folder: "[folder]Set the folder that stores the genome indexes. If this option is not set,\\nthe indexes would be stores in the same folder of genome (input fasta file)."

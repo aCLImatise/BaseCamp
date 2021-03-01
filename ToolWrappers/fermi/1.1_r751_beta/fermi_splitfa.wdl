@@ -12,6 +12,9 @@ task FermiSplitfa {
       ~{out_dot_prefix} \
       ~{eight}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_fq: ""
     out_dot_prefix: ""

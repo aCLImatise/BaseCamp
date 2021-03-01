@@ -18,6 +18,9 @@ task Seqtofirstiso {
       ~{if defined(unlabelled_aa) then ("--unlabelled-aa " +  '"' + unlabelled_aa + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_output_file: "name of output file"
     unlabelled_aa: "amino acids with default abundance"

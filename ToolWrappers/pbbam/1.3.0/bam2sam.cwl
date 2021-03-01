@@ -3,12 +3,12 @@ id: bam2sam.cwl
 inputs:
 - id: in_no_header
   doc: Omit header from output.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-header
 - id: in_header_only
   doc: Print only the header (no records).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --header-only
 - id: in_in_dot_bam
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bam2sam

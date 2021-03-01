@@ -24,6 +24,9 @@ task SmudgeplotpyPlot {
       ~{if defined(the_length_kmer) then ("-k " +  '"' + the_length_kmer + '"') else ""} \
       ~{if (homozygous) then "--homozygous" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pattern_used_name: "The pattern used to name the output (smudgeplot)."
     remove_kmer_pairs: "Remove kmer pairs with coverage over the specified\\nquantile; (default none)."

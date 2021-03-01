@@ -18,6 +18,9 @@ task GcloudComputeTargethttpsproxies {
       ~{list} \
       ~{update}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     proxies: "SYNOPSIS"
     create: "Create a target HTTPS proxy."

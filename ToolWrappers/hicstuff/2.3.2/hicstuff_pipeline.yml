@@ -1,0 +1,299 @@
+!Command
+command:
+- hicstuff
+- pipeline
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: positions.
+  description: -e, --enzyme=ENZ              Restriction enzyme if a string, or chunk
+- !Positional
+  optional: false
+  position: 0
+  name: directory.
+  description: -p, --plot                    Generates plots in the output directory
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --aligner
+  description: "Alignment software to use. Can be either\nbowtie2, minimap2 or bwa.\
+    \ minimap2 should\nonly be used for reads > 100 bp.\n[default: bowtie2]"
+  args: !SimpleFlagArg
+    name: bowtie2
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --centromeres
+  description: "Positions of the centromeres separated by\na space and in the same\
+    \ order than the\nchromosomes. Discordant with the circular\noption."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --circular
+  description: "Enable if the genome is circular.\nDiscordant with the centromeres\
+    \ option."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --distance-law
+  description: "If enabled, generates a distance law file\nwith the values of the\
+    \ probabilities to\nhave a contact between two distances for\neach chromosomes\
+    \ or arms if the file with\nthe positions has been given. The values\nare not\
+    \ normalized, or averaged."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --duplicates
+  description: Filter out PCR duplicates based on read
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --filter
+  description: "Filter out spurious 3C events (loops and\nuncuts) using hicstuff filter.\
+    \ Requires\n\"-e\" to be a restriction enzyme, not a\nchunk size. For more informations,\
+    \ see\nCournac et al. BMC Genomics, 2012."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --force
+  description: Write even if the output file already exists.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --iterative
+  description: "Map reads iteratively using hicstuff\niteralign, by truncating reads\
+    \ to 20bp\nand then repeatedly extending and\naligning them."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome
+  description: "Reference genome to map against. Path to\nthe bowtie2/bwa index if\
+    \ using bowtie2/bwa,\nor to a FASTA file if using minimap2."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --matfmt
+  description: "The format of the output sparse matrix.\nCan be \"bg2\" for 2D Bedgraph\
+    \ format,\n\"cool\" for Mirnylab's cooler software, or\n\"graal\" for graal-compatible\
+    \ plain text\nCOO format. [default: graal]"
+  args: !SimpleFlagArg
+    name: FMT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --no-cleanup
+  description: "If enabled, intermediary BED files will\nbe kept after generating\
+    \ the contact map.\nDisabled by defaut."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outdir
+  description: Output directory. Defaults to the current
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --prefix
+  description: "Overrides default filenames and prefixes all\noutput files with a\
+    \ custom name."
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quality-min
+  description: "Minimum mapping quality for selecting\ncontacts. [default: 30]."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --remove-centromeres
+  description: "Integer. Number of kb that will be remove around\nthe centromere position\
+    \ given by in the centromere\nfile. [default: 0]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --read-len
+  description: "Maximum read length in the fastq file. Optionally\nused in iterative\
+    \ alignment mode. Estimated from\nthe first read by default. Useful if input fastq\n\
+    is a composite of different read lengths."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --size
+  description: "Minimum size threshold to consider\ncontigs. Keep all contigs by default.\n\
+    [default: 0]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --start-stage
+  description: "Define the starting point of the pipeline\nto skip some steps. Default\
+    \ is \"fastq\" to\nrun from the start. Can also be \"bam\" to\nskip the alignment,\
+    \ \"pairs\" to start from a\nsingle pairs file or \"pairs_idx\" to skip\nfragment\
+    \ attribution and only build the\nmatrix. [default: fastq]"
+  args: !SimpleFlagArg
+    name: STAGE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: "Number of threads to allocate.\n[default: 1]."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --tmpdir
+  description: "Directory for storing intermediary BED\nfiles and temporary sort files.\
+    \ Defaults\nto the output directory."
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Whole (end-to-end) contact map generation command\n\n    Entire Pipeline\
+  \ to process fastq files into a Hi-C matrix. Uses all the\n    individual components\
+  \ of hicstuff.\n\n    usage:\n        pipeline [--aligner=bowtie2] [--centromeres=FILE]\
+  \ [--circular] [--distance-law]\n                 [--duplicates] [--enzyme=ENZ]\
+  \ [--filter] [--force] [--iterative] \n                 [--matfmt=FMT] [--no-cleanup]\
+  \ [--outdir=DIR] [--plot] [--prefix=PREFIX]\n                 [--quality-min=INT]\
+  \ [--read-len=INT] [--remove-centromeres=INT] [--size=INT]\n                 [--start-stage=STAGE]\
+  \ [--threads=INT] [--tmpdir=DIR] --genome=FILE <input1> [<input2>]\n\n    arguments:\n\
+  \        input1:             Forward fastq file, if start_stage is \"fastq\", sam\n\
+  \                            file for aligned forward reads if start_stage is\n\
+  \                            \"bam\", or a .pairs file if start_stage is \"pairs\"\
+  .\n        input2:             Reverse fastq file, if start_stage is \"fastq\",\
+  \ sam\n                            file for aligned reverse reads if start_stage\
+  \ is\n                            \"bam\", or nothing if start_stage is \"pairs\"\
+  .\n\n\n    options:\n        -a, --aligner=bowtie2         Alignment software to\
+  \ use. Can be either\n                                      bowtie2, minimap2 or\
+  \ bwa. minimap2 should\n                                      only be used for reads\
+  \ > 100 bp. \n                                      [default: bowtie2]\n       \
+  \ -c, --centromeres=FILE        Positions of the centromeres separated by\n    \
+  \                                  a space and in the same order than the \n   \
+  \                                   chromosomes. Discordant with the circular\n\
+  \                                      option.\n        -C, --circular         \
+  \       Enable if the genome is circular. \n                                   \
+  \   Discordant with the centromeres option.   \n        -d, --distance-law     \
+  \       If enabled, generates a distance law file\n                            \
+  \          with the values of the probabilities to \n                          \
+  \            have a contact between two distances for\n                        \
+  \              each chromosomes or arms if the file with\n                     \
+  \                 the positions has been given. The values\n                   \
+  \                   are not normalized, or averaged.\n        -D, --duplicates \
+  \             Filter out PCR duplicates based on read\n                        \
+  \              positions.\n        -e, --enzyme=ENZ              Restriction enzyme\
+  \ if a string, or chunk\n                                      size (i.e. resolution)\
+  \ if a number. Can\n                                      also be multiple comma-separated\
+  \ enzymes.\n                                      [default: 5000]\n        -f, --filter\
+  \                  Filter out spurious 3C events (loops and\n                  \
+  \                    uncuts) using hicstuff filter. Requires\n                 \
+  \                     \"-e\" to be a restriction enzyme, not a\n               \
+  \                       chunk size. For more informations, see\n               \
+  \                       Cournac et al. BMC Genomics, 2012.\n        -F, --force\
+  \                   Write even if the output file already exists.\n        -i, --iterative\
+  \               Map reads iteratively using hicstuff\n                         \
+  \             iteralign, by truncating reads to 20bp\n                         \
+  \             and then repeatedly extending and\n                              \
+  \        aligning them.\n        -g, --genome=FILE             Reference genome\
+  \ to map against. Path to\n                                      the bowtie2/bwa\
+  \ index if using bowtie2/bwa, \n                                      or to a FASTA\
+  \ file if using minimap2.\n        -M, --matfmt=FMT              The format of the\
+  \ output sparse matrix.\n                                      Can be \"bg2\" for\
+  \ 2D Bedgraph format, \n                                      \"cool\" for Mirnylab's\
+  \ cooler software, or\n                                      \"graal\" for graal-compatible\
+  \ plain text\n                                      COO format. [default: graal]\n\
+  \        -n, --no-cleanup              If enabled, intermediary BED files will\n\
+  \                                      be kept after generating the contact map.\n\
+  \                                      Disabled by defaut.\n        -o, --outdir=DIR\
+  \              Output directory. Defaults to the current\n                     \
+  \                 directory.\n        -p, --plot                    Generates plots\
+  \ in the output directory\n                                      at different steps\
+  \ of the pipeline.\n        -P, --prefix=PREFIX           Overrides default filenames\
+  \ and prefixes all\n                                      output files with a custom\
+  \ name.\n        -q, --quality-min=INT         Minimum mapping quality for selecting\n\
+  \                                      contacts. [default: 30].\n        -r, --remove-centromeres=INT\
+  \  Integer. Number of kb that will be remove around \n                         \
+  \             the centromere position given by in the centromere\n             \
+  \                         file. [default: 0]\n        -R, --read-len=INT       \
+  \     Maximum read length in the fastq file. Optionally\n                      \
+  \                used in iterative alignment mode. Estimated from\n            \
+  \                          the first read by default. Useful if input fastq\n  \
+  \                                    is a composite of different read lengths.\n\
+  \        -s, --size=INT                Minimum size threshold to consider\n    \
+  \                                  contigs. Keep all contigs by default.\n     \
+  \                                 [default: 0]\n        -S, --start-stage=STAGE\
+  \       Define the starting point of the pipeline\n                            \
+  \          to skip some steps. Default is \"fastq\" to\n                       \
+  \               run from the start. Can also be \"bam\" to\n                   \
+  \                   skip the alignment, \"pairs\" to start from a\n            \
+  \                          single pairs file or \"pairs_idx\" to skip\n        \
+  \                              fragment attribution and only build the \n      \
+  \                                matrix. [default: fastq]\n        -t, --threads=INT\
+  \             Number of threads to allocate.\n                                 \
+  \     [default: 1].\n        -T, --tmpdir=DIR              Directory for storing\
+  \ intermediary BED\n                                      files and temporary sort\
+  \ files. Defaults\n                                      to the output directory.\n\
+  \n    output:\n        abs_fragments_contacts_weighted.txt: the sparse contact map\n\
+  \        fragments_list.txt: information about restriction fragments (or chunks)\n\
+  \        info_contigs.txt: information about contigs or chromosomes\n        hicstuff.log:\
+  \ details and statistics about the run.\n    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicstuff:2.3.2--py_0

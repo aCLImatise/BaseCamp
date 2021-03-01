@@ -16,6 +16,9 @@ task SamtoolsFlagstat {
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(output_fmt) then ("--output-fmt " +  '"' + output_fmt + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fmt_option: "[=VAL]\\nSpecify a single input file format option in the form\\nof OPTION or OPTION=VALUE"
     threads: "Number of additional threads to use [0]"

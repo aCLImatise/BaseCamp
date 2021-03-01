@@ -24,6 +24,9 @@ task Iufilterqualitybokulich {
       ~{if (print_qual_scores) then "--print-qual-scores" else ""} \
       ~{if (store_read_fate) then "--store-read-fate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minimal_highquality_read: "Minimal high-quality read length (default: 0.75)"
     minimum_phred_score: "Minimum PHRED score to identify low quality bases\\n(default: 3)"

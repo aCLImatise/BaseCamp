@@ -16,6 +16,9 @@ task Crassassembler {
       ~{if (in_dir) then "--inDir" else ""} \
       ~{if (outdir) then "--outDir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     group: "<INT>   ID of the group that you want to assemble.  Give only the group number; For example\\nif the group is G9, the argument to this option should just be the number 9"
     segments: "<LIST>  A comma separated list of numbered segments to assemble from the specified group\\nThe segment identifier is the number listed after the 'C' in the name of the spacer\\nin the graph image of the CRISPR.  For example if a spacer's name is sp_6_3_C1, then\\nthe segment is 1."

@@ -20,6 +20,9 @@ task ExtractReferencepy {
       ~{if (no_overwrite) then "--no-overwrite" else ""} \
       ~{if defined(section) then ("--section " +  '"' + section + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_strand_list: "Strand summary file containing subset (default: None)"
     jobs: "Number of threads to use when processing data\\n(default: 1)"

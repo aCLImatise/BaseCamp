@@ -44,6 +44,9 @@ task Mlst {
       ~{if (blast_db) then "--blastdb" else ""} \
       ~{if (datadir) then "--datadir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     check: "Just check dependencies and exit (default OFF)"
     quiet: "Quiet - no stderr output (default OFF)"

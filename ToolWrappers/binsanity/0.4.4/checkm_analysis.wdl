@@ -12,6 +12,9 @@ task CheckmAnalysis {
       ~{if defined(check_m) then ("-checkM " +  '"' + check_m + '"') else ""} \
       ~{if defined(identify_what_suffix) then ("-f " +  '"' + identify_what_suffix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     check_m: "Specify the CHeckM output File (should be the one created using --tab_table"
     identify_what_suffix: "Identify what your suffix for fasta file is [default: .fna]"

@@ -32,6 +32,9 @@ task Toulligqc {
       ~{if defined(barcodes) then ("--barcodes " +  '"' + barcodes + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     conf_file: "Specify config file"
     report_name: "Report name"

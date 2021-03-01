@@ -1,0 +1,170 @@
+!Command
+command:
+- bowtie-build-l
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: reference_in
+  description: comma-separated list of files with ref sequences
+- !Positional
+  optional: false
+  position: 1
+  name: ebwt_outfile_base
+  description: write Ebwt data to files with this dir/basename
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: reference files are Fasta (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: reference sequences given on cmd line (as <seq_in>)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --noauto
+  description: disable automatic -p/--bmax/--dcv memory-fitting
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --packed
+  description: use packed strings internally; slower, uses less mem
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bmax
+  description: max bucket sz for blockwise suffix-array builder
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --bmaxdivn
+  description: 'max bucket sz as divisor of ref len (default: 4)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --dcv
+  description: 'diff-cover period for blockwise (default: 1024)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --nodc
+  description: disable diff-cover (algorithm becomes quadratic)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --noref
+  description: don't build .3/.4.ebwt (packed reference) portion
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-3'
+  - --justref
+  description: just build .3/.4.ebwt (packed reference) portion
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --offrate
+  description: 'SA is sampled every 2^offRate BWT chars (default: 5)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --ftabchars
+  description: '# of chars consumed in initial lookup (default: 10)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: '# of threads'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --ntoa
+  description: convert Ns in reference to As
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: seed for random number generator
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: verbose output (for debugging)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print detailed description of tool and its options
+  args: !EmptyFlagArg {}
+usage_flag: !Flag
+  optional: true
+  synonyms:
+  - --usage
+  description: print this usage message
+  args: !EmptyFlagArg {}
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version information and quit
+  args: !EmptyFlagArg {}
+help_text: "Usage: bowtie2-build-l [options]* <reference_in> <ebwt_outfile_base>\n\
+  \    reference_in            comma-separated list of files with ref sequences\n\
+  \    ebwt_outfile_base       write Ebwt data to files with this dir/basename\nOptions:\n\
+  \    -f                      reference files are Fasta (default)\n    -c       \
+  \               reference sequences given on cmd line (as <seq_in>)\n    -a/--noauto\
+  \             disable automatic -p/--bmax/--dcv memory-fitting\n    -p/--packed\
+  \             use packed strings internally; slower, uses less mem\n    --bmax <int>\
+  \            max bucket sz for blockwise suffix-array builder\n    --bmaxdivn <int>\
+  \        max bucket sz as divisor of ref len (default: 4)\n    --dcv <int>     \
+  \        diff-cover period for blockwise (default: 1024)\n    --nodc           \
+  \       disable diff-cover (algorithm becomes quadratic)\n    -r/--noref       \
+  \       don't build .3/.4.ebwt (packed reference) portion\n    -3/--justref    \
+  \        just build .3/.4.ebwt (packed reference) portion\n    -o/--offrate <int>\
+  \      SA is sampled every 2^offRate BWT chars (default: 5)\n    -t/--ftabchars\
+  \ <int>    # of chars consumed in initial lookup (default: 10)\n    --threads <int>\
+  \         # of threads\n    --ntoa                  convert Ns in reference to As\n\
+  \    --seed <int>            seed for random number generator\n    -q/--quiet  \
+  \            verbose output (for debugging)\n    -h/--help               print detailed\
+  \ description of tool and its options\n    --usage                 print this usage\
+  \ message\n    --version               print version information and quit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bowtie:1.3.0--py38hed8969a_1

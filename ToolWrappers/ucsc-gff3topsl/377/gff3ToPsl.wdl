@@ -14,6 +14,9 @@ task Gff3ToPsl {
       ~{if (drop_q) then "-dropQ" else ""} \
       ~{if (dropt) then "-dropT" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     drop_q: "drop record when query not found in queryChromSizes"
     dropt: "drop record when target not found in targetChromSizes"

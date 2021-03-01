@@ -14,6 +14,9 @@ task Permview {
       ~{if (decl) then "-decl" else ""} \
       ~{if (xml) then "-xml" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_information_specified: "Output information into specified file."
     decl: "Show declarative security attributes on classes and methods."

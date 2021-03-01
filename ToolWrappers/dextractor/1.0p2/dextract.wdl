@@ -12,6 +12,9 @@ task Dextract {
       ~{if (o) then "-o" else ""} \
       ~{if (v_faq) then "-vfaq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     v_faq: ""

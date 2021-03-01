@@ -60,6 +60,9 @@ task SimkaCount {
       ~{if (minimizer_size) then "-minimizer-size" else ""} \
       ~{if (repartition_type) then "-repartition-type" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nb_cores: "(1 arg) :    number of cores  [default '0']"
     verbose: "(1 arg) :    verbosity level  [default '1']"

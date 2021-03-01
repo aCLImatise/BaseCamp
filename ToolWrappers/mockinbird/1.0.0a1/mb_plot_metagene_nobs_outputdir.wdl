@@ -10,6 +10,9 @@ task MbplotmetagenenobsOutputdir {
       ~{mb_plot_meta_gene_nobs} \
       ~{if defined(downstream) then ("--downstream " +  '"' + downstream + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     downstream: ""
     mb_plot_meta_gene_nobs: ""

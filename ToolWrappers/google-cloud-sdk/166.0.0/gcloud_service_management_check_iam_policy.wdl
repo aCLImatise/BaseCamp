@@ -12,6 +12,9 @@ task GcloudServicemanagementCheckiampolicy {
       ~{optional} \
       ~{flags}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     service: ""
     optional: ""

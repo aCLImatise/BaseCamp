@@ -4,6 +4,9 @@ task Vcfcomplex {
   command <<<
     vcfcomplex
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

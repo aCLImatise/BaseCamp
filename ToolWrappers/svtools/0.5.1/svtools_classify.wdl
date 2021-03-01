@@ -32,6 +32,9 @@ task SvtoolsClassify {
       ~{if defined(sex_chrom) then ("--sex-chrom " +  '"' + sex_chrom + '"') else ""} \
       ~{if defined(tempdir) then ("--tempdir " +  '"' + tempdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_input: "VCF input"
     vcf_output: "VCF output [stdout]"

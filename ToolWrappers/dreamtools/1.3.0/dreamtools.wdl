@@ -28,6 +28,9 @@ task Dreamtools {
       ~{if (download_template) then "--download-template" else ""} \
       ~{if (download_gold_standard) then "--download-gold-standard" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     challenge: "alias of the challenge (e.g., D8C1 stands fordream8\\nchallenge 1)."
     sub_challenge: "Name of the data files"

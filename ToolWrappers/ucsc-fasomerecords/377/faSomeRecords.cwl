@@ -3,7 +3,7 @@ id: faSomeRecords.cwl
 inputs:
 - id: in_exclude
   doc: '- output sequences not in the list file.'
-  type: File
+  type: File?
   inputBinding:
     prefix: -exclude
 - id: in_in_dot_fa
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_exclude
   doc: '- output sequences not in the list file.'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_exclude)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - faSomeRecords

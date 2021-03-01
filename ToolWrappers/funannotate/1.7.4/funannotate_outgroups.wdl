@@ -18,6 +18,9 @@ task FunannotateOutgroups {
       ~{if (cpus) then "--cpus" else ""} \
       ~{if (database) then "--database" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     proteome_multifasta_file: "Proteome multi-fasta file. Required."
     species: "Species name for adding a species. Required."

@@ -3,12 +3,12 @@ id: cactus2hal.py_stored..cwl
 inputs:
 - id: in_cache_bytes
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --cacheBytes
 - id: in_event
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --event
 - id: in_cactus_two_hal_do_tpy
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cactus2hal.py

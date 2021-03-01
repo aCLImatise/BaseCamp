@@ -34,6 +34,9 @@ task MergeSTR {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v_cfs: "Comma-separated list of VCF files to merge (must be\\nsorted, bgzipped and indexed)"
     out: "Prefix to name output files"

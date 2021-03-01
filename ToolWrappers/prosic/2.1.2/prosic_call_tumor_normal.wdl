@@ -56,6 +56,9 @@ task ProsicCalltumornormal {
       ~{if defined(spurious_i_size_rate) then ("--spurious-isize-rate " +  '"' + spurious_i_size_rate + '"') else ""} \
       ~{if defined(purity) then ("--purity " +  '"' + purity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exclusive_end: "Assume that the END tag is exclusive (i.e. it points to the position after the\\nvariant). This is needed, e.g., for DELLY."
     flat_priors: "Ignore the prior model and use flat priors instead."

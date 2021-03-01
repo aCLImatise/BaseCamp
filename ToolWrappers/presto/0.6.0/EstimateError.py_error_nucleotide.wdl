@@ -8,6 +8,9 @@ task EstimateErrorpyErrornucleotide {
     EstimateError_py error_nucleotide \
       ~{estimate_error_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     estimate_error_do_tpy: ""
   }

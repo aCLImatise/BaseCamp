@@ -46,6 +46,9 @@ task JannovarAnnotatecsv {
       ~{if defined(https_proxy) then ("--https-proxy " +  '"' + https_proxy + '"') else ""} \
       ~{if defined(ftp_proxy) then ("--ftp-proxy " +  '"' + ftp_proxy + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: "[-t {Default,TDF,RFC4180,Excel,MySQL}]"
     database: "Path to database .ser file"

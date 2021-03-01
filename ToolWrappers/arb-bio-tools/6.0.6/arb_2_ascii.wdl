@@ -10,6 +10,9 @@ task Arb2Ascii {
       ~{source_dot_arb} \
       ~{if (r) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     source_dot_arb: ""

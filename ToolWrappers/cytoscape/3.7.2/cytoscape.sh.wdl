@@ -20,6 +20,9 @@ task Cytoscapesh {
       ~{if defined(script) then ("--script " +  '"' + script + '"') else ""} \
       ~{if defined(rest) then ("--rest " +  '"' + rest + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     session: "Load a cytoscape session (.cys) file."
     network: "Load a network file (any format)."

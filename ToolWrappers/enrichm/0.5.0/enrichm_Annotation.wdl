@@ -8,6 +8,9 @@ task EnrichmAnnotation {
     enrichm Annotation \
       ~{enrich_m}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     enrich_m: ""
   }

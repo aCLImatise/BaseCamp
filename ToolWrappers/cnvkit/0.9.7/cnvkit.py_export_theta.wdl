@@ -20,6 +20,9 @@ task CnvkitpyExportTheta {
       ~{if defined(min_variant_depth) then ("--min-variant-depth " +  '"' + min_variant_depth + '"') else ""} \
       ~{if (ignore_vcfs_genotypes) then "-z" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "Reference copy number profile (.cnn), or normal-sample\\nbin-level log2 copy ratios (.cnr). Use if the\\ntumor_segment input file does not contain a \\\"weight\\\"\\ncolumn."
     output_file_name: "Output file name."

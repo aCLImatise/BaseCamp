@@ -32,6 +32,9 @@ task Anvipush {
       ~{if defined(bins_info) then ("--bins-info " +  '"' + bins_info + '"') else ""} \
       ~{if (delete_if_exists) then "--delete-if-exists" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     user: "The user for an anvi'server."
     api_url: "Anvi'server url"

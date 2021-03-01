@@ -16,6 +16,9 @@ task ContigtaxBuild {
       ~{if defined(dbfile) then ("--dbfile " +  '"' + dbfile + '"') else ""} \
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dbfile: "Name of diamond database file. Defaults to\\ndiamond.dmnd in same directory as the protein fasta\\nfile"
     cpus: "Number of cpus to use when building (defaults to 1)"

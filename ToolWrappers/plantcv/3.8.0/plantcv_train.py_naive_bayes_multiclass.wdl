@@ -2,18 +2,21 @@ version 1.0
 
 task PlantcvtrainpyNaiveBayesMulticlass {
   input {
-    File? file
+    File? input_file_containing
     File? outfile
     Boolean? plots
   }
   command <<<
     plantcv_train_py naive_bayes_multiclass \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(input_file_containing) then ("--file " +  '"' + input_file_containing + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if (plots) then "--plots" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: "Input file containing a table of pixel RGB values\\nsampled for each input class."
+    input_file_containing: "Input file containing a table of pixel RGB values\\nsampled for each input class."
     outfile: "Trained classifier output filename."
     plots: "Make output plots."
   }

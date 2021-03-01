@@ -10,6 +10,9 @@ task Link {
       ~{file_one} \
       ~{file_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_one: ""
     file_two: ""

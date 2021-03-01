@@ -23,6 +23,7 @@ task ICountArgs {
     Boolean? out_dir
     Boolean? overhang
     Boolean? overhang_min
+    Boolean? perms
     Boolean? prefix
     Boolean? qual_trim
     Boolean? quant
@@ -59,6 +60,7 @@ task ICountArgs {
       ~{if (out_dir) then "--out_dir" else ""} \
       ~{if (overhang) then "--overhang" else ""} \
       ~{if (overhang_min) then "--overhang_min" else ""} \
+      ~{if (perms) then "--perms" else ""} \
       ~{if (prefix) then "--prefix" else ""} \
       ~{if (qual_trim) then "--qual_trim" else ""} \
       ~{if (quant) then "--quant" else ""} \
@@ -72,6 +74,9 @@ task ICountArgs {
       ~{if (threads) then "--threads" else ""} \
       ~{if (types_length_file) then "--types_length_file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     annotation: "(-a): annotation, indexstar, mapstar"
     chromosomes: ": genome"
@@ -94,6 +99,7 @@ task ICountArgs {
     out_dir: "(-od): annotation, genome, demultiplex, examples"
     overhang: ": indexstar"
     overhang_min: ": indexstar"
+    perms: "(-p): peaks"
     prefix: ": demultiplex"
     qual_trim: ": cutadapt"
     quant: ": xlsites"

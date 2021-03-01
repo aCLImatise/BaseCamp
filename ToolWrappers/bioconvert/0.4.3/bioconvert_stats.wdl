@@ -2,20 +2,23 @@ version 1.0
 
 task BioconvertStats {
   input {
+    String? verbosity
     Boolean? no_plot
-    String? v
-    String bio_convert
+    String formatted_dot
   }
   command <<<
     bioconvert_stats \
-      ~{bio_convert} \
-      ~{if (no_plot) then "--no-plot" else ""} \
-      ~{if defined(v) then ("-v " +  '"' + v + '"') else ""}
+      ~{formatted_dot} \
+      ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
+      ~{if (no_plot) then "--no-plot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
+    verbosity: "Set the outpout verbosity."
     no_plot: ""
-    v: ""
-    bio_convert: ""
+    formatted_dot: "optional arguments:"
   }
   output {
     File out_stdout = stdout()

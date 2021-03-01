@@ -20,6 +20,9 @@ task VariantAnnotationpy {
       ~{if defined(snp_eff) then ("--snpeff " +  '"' + snp_eff + '"') else ""} \
       ~{if defined(snp_eff_db) then ("--snpeff-db " +  '"' + snp_eff_db + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "input vcf file (default: None)"
     outfile: "output vcf file (default: None)"

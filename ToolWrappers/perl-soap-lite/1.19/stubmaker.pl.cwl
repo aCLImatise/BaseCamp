@@ -3,12 +3,12 @@ id: stubmaker.pl.cwl
 inputs:
 - id: in_verbose_outputbe_quiet
   doc: Verbose Outputbe quiet
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_output_directory
   doc: Output directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -d
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_directory
   doc: Output directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_directory)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - stubmaker.pl

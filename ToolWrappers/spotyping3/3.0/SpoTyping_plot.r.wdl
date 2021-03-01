@@ -12,6 +12,9 @@ task SpoTypingPlotr {
       ~{object_dot_size} \
       ~{starts_with}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nobs: "The following object is masked from 'package:utils':"
     object_dot_size: "The following object is masked from 'package:base':"

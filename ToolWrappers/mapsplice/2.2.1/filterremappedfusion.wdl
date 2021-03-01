@@ -4,6 +4,9 @@ task Filterremappedfusion {
   command <<<
     filterremappedfusion
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

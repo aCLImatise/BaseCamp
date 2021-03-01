@@ -8,6 +8,9 @@ task AlleyoopNumbers {
     alleyoop numbers \
       ~{alley_oop}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alley_oop: ""
   }

@@ -16,6 +16,9 @@ task EagleInterface {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     port: "port (default: 8000)"
     public: "listen for external connections"

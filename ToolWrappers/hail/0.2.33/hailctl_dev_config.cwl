@@ -3,12 +3,12 @@ id: hailctl_dev_config.cwl
 inputs:
 - id: in_location
   doc: 'Location. (default: external)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --location
 - id: in_override
   doc: "List of comma-separated service=namespace overrides.\n(default: none)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --override
 - id: in_namespace
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hailctl

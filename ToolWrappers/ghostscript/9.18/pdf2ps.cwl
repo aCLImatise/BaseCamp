@@ -3,13 +3,14 @@ id: pdf2ps.cwl
 inputs:
 - id: in_d_ascii_eight_five_encode_pages
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -dASCII85EncodePages
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pdf2ps

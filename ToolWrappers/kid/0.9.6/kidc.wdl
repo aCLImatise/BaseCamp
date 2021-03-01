@@ -14,6 +14,9 @@ task Kidc {
       ~{if (source) then "--source" else ""} \
       ~{if defined(strip_dest_dir) then ("--strip-dest-dir " +  '"' + strip_dest_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "Force compilation even if .pyc file already exists."
     source: "Generate .py source files along with .pyc files.\\nThis is sometimes useful for debugging."

@@ -1,0 +1,95 @@
+!Command
+command:
+- run_decomposer
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sequences
+  description: fasta-file with long reads or genomic sequences
+- !Positional
+  optional: false
+  position: 1
+  name: monomers
+  description: fasta-file with monomers
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: number of threads (by default 1)
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-file
+  description: output tsv-file (by default final_decomposition.tsv)
+  args: !SimpleFlagArg
+    name: OUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --min-identity
+  description: "only monomer alignments with percent identity >=\nMIN_IDENTITY are\
+    \ printed (by default MIN_IDENTITY=0)"
+  args: !SimpleFlagArg
+    name: MIN_IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --scoring
+  description: "set scoring scheme for SD in the format\n\"insertion,deletion,mismatch,match\"\
+    \ (by default\n\"-1,-1,-1,1\")"
+  args: !SimpleFlagArg
+    name: SCORING
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --batch-size
+  description: "set size of the batch in parallelization (by default\n5000)"
+  args: !SimpleFlagArg
+    name: BATCH_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --fast
+  description: "doesn't generate second best monomer and homopolymer\nscores\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: run_decomposer [-h] [-t THREADS] [-o OUT_FILE] [-i MIN_IDENTITY]\n\
+  \                      [-s SCORING] [-b BATCH_SIZE] [--fast]\n                 \
+  \     sequences monomers\n\nDecomposes string into blocks alphabet\n\npositional\
+  \ arguments:\n  sequences             fasta-file with long reads or genomic sequences\n\
+  \  monomers              fasta-file with monomers\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -t THREADS, --threads THREADS\n\
+  \                        number of threads (by default 1)\n  -o OUT_FILE, --out-file\
+  \ OUT_FILE\n                        output tsv-file (by default final_decomposition.tsv)\n\
+  \  -i MIN_IDENTITY, --min-identity MIN_IDENTITY\n                        only monomer\
+  \ alignments with percent identity >=\n                        MIN_IDENTITY are\
+  \ printed (by default MIN_IDENTITY=0)\n  -s SCORING, --scoring SCORING\n       \
+  \                 set scoring scheme for SD in the format\n                    \
+  \    \"insertion,deletion,mismatch,match\" (by default\n                       \
+  \ \"-1,-1,-1,1\")\n  -b BATCH_SIZE, --batch-size BATCH_SIZE\n                  \
+  \      set size of the batch in parallelization (by default\n                  \
+  \      5000)\n  --fast                doesn't generate second best monomer and homopolymer\n\
+  \                        scores\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/stringdecomposer:1.0.0--py38hed8969a_0

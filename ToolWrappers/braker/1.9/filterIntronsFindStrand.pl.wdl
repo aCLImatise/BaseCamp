@@ -18,6 +18,9 @@ task FilterIntronsFindStrandpl {
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
       ~{if defined(introns) then ("--introns " +  '"' + introns + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     allowed: ",gcaag,atac       Allowed acceptor and donor splice site types"
     score: "Set score to 'mult' entry or '1', if the last column does not contain a 'mult' entry"

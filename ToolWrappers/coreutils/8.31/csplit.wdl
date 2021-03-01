@@ -22,6 +22,9 @@ task Csplit {
       ~{if (silent) then "--silent" else ""} \
       ~{if (elide_empty_files) then "--elide-empty-files" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     suffix_format: "use sprintf FORMAT instead of %02d"
     prefix: "use PREFIX instead of 'xx'"

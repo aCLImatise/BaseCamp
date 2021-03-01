@@ -20,6 +20,9 @@ task Sccafassess {
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if (use_pc_a) then "--use-pca" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Path to input in AnnData or Loom"
     output_table: "Path for output file with table of accuracy and other\\nmetrics (required if iterations > 1)"

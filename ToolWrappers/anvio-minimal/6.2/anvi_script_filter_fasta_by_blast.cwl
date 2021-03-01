@@ -3,18 +3,18 @@ id: anvi_script_filter_fasta_by_blast.cwl
 inputs:
 - id: in_fast_a_file
   doc: A FASTA-formatted input file
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta-file
 - id: in_output_file
   doc: File path to store results.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file
 - id: in_delimited_file_
   doc: "DELIMITED FILE, --blast-output TAB DELIMITED FILE\nBLAST table generated with\
     \ blastp. `--outfmt 6` as the\noutput format is assumed."
-  type: File
+  type: File?
   inputBinding:
     prefix: -b
 - id: in_out_fmt
@@ -29,7 +29,7 @@ inputs:
     \ send evalue\nbitscore qlen slen\". Regardless of the BLAST output\nformat, your\
     \ columns MUST contain the following\nparameters for this program to work properly:\n\
     'qseqid', 'bitscore', 'length', 'qlen', and 'pident'."
-  type: long
+  type: long?
   inputBinding:
     prefix: --outfmt
 - id: in_threshold
@@ -42,12 +42,12 @@ inputs:
     \ does.\nFor example, a sequence that's only half aligned by a\nmatch but with\
     \ 100% identity at matched regions has a\n`pident` of 100 but a `proper_pident`\
     \ of 50. The\ndefault is 30.0%."
-  type: double
+  type: double?
   inputBinding:
     prefix: --threshold
 - id: in_just_do_it
   doc: "Don't bother me with questions or warnings, just do\nit.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --just-do-it
 outputs:
@@ -56,15 +56,16 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: File path to store results.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
 - id: out_delimited_file_
   doc: "DELIMITED FILE, --blast-output TAB DELIMITED FILE\nBLAST table generated with\
     \ blastp. `--outfmt 6` as the\noutput format is assumed."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_delimited_file_)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-script-filter-fasta-by-blast

@@ -14,6 +14,9 @@ task Palindrome {
       ~{if (gap_limit) then "-gaplimit" else ""} \
       ~{if (num_mismatches) then "-nummismatches" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_p_allen: "integer    [10] Enter minimum length of palindrome\\n(Integer 1 or more)"
     maxp_allen: "integer    [100] Enter maximum length of palindrome\\n(Any integer value)"

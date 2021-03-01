@@ -2,23 +2,19 @@ version 1.0
 
 task SplashPlotconversions {
   input {
-    File? o
-    String? slam
-    String? sim
+    String? slam_dunk_dir
   }
   command <<<
     splash plot_conversions \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{if defined(slam) then ("-slam " +  '"' + slam + '"') else ""} \
-      ~{if defined(sim) then ("-sim " +  '"' + sim + '"') else ""}
+      ~{if defined(slam_dunk_dir) then ("--slamdunkDir " +  '"' + slam_dunk_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    o: ""
-    slam: ""
-    sim: ""
+    slam_dunk_dir: "T->C conversion rate\\n"
   }
   output {
     File out_stdout = stdout()
-    File out_o = "${in_o}"
   }
 }

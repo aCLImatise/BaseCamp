@@ -14,6 +14,9 @@ task BedparseBed12tobed6Bedfile {
       ~{if defined(which_exon) then ("--whichExon " +  '"' + which_exon + '"') else ""} \
       ~{if (append_exn) then "--appendExN" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     which_exon: ""
     append_exn: ""

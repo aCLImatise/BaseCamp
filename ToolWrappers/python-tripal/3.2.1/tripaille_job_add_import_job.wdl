@@ -12,6 +12,9 @@ task TripailleJobAddImportJob {
       ~{importer} \
       ~{input_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: ""
     importer: ""

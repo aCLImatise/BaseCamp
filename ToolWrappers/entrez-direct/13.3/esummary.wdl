@@ -134,6 +134,9 @@ task Esummary {
       ~{if (raw) then "-raw" else ""} \
       ~{if (json) then "-json" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "Format of record or report"
     mode: "text, xml, asn.1, json"

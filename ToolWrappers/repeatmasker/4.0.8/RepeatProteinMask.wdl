@@ -22,6 +22,9 @@ task RepeatProteinMask {
       ~{if (max_aa_dist) then "-maxaadist" else ""} \
       ~{if (no_low_simple) then "-noLowSimple" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     engine: "|abblast|wublast\\nUse the provided search engine to run the blastx runs."
     p_value: "#\\nThe threshold for accepting matches. Matches must hava a pvalue less\\nthan this number. Default is *NOT* to threshold."

@@ -3,7 +3,7 @@ id: genePredHisto.cwl
 inputs:
 - id: in_ids
   doc: '- a second column with the gene name, useful for finding outliers.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ids
 - id: in_what
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - genePredHisto

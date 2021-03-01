@@ -3,12 +3,12 @@ id: humann2_split_stratified_table.cwl
 inputs:
 - id: in_input
   doc: the stratified input table (tsv, tsv.gzip, tsv.bzip2, or biom format)
-  type: long
+  type: long?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: "the output folder\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "the output folder\n"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - humann2_split_stratified_table

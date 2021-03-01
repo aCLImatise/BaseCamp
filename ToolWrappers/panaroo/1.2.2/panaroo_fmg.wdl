@@ -18,6 +18,9 @@ task Panaroofmg {
       ~{if defined(n_boot) then ("--nboot " +  '"' + n_boot + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree: "A dated phylogeny."
     pa: "A presence/absence produced by Panaroo."

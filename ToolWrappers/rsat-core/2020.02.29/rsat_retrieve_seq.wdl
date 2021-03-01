@@ -9,8 +9,8 @@ task RsatRetrieveseq {
     Boolean? feat_type
     Boolean? type
     Int? sequecnes_only_type
-    String? query_should_orf
-    Boolean? query_file_first
+    String? query_be_eg
+    Boolean? query_file_taken
     Boolean? ids_only
     Boolean? all
     File? name_output_file
@@ -44,8 +44,8 @@ task RsatRetrieveseq {
       ~{if (feat_type) then "-feattype" else ""} \
       ~{if (type) then "-type" else ""} \
       ~{if defined(sequecnes_only_type) then ("-n " +  '"' + sequecnes_only_type + '"') else ""} \
-      ~{if defined(query_should_orf) then ("-q " +  '"' + query_should_orf + '"') else ""} \
-      ~{if (query_file_first) then "-i" else ""} \
+      ~{if defined(query_be_eg) then ("-q " +  '"' + query_be_eg + '"') else ""} \
+      ~{if (query_file_taken) then "-i" else ""} \
       ~{if (ids_only) then "-ids_only" else ""} \
       ~{if (all) then "-all" else ""} \
       ~{if (name_output_file) then "-o" else ""} \
@@ -64,6 +64,9 @@ task RsatRetrieveseq {
       ~{if (lf) then "-lf" else ""} \
       ~{if (features) then "-features" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     org: "When an organism is specified, the program automatically\\nloads the appropriate genome sequence and feature table.\\nIf this option is not used, the option -seq must be used\\ninstead.\\n(type supported-organism to obtain the list of supported\\norganisms)"
     seq: "input sequence file\\n(alternative to organism)\\nSpecify the input sequence file. See INPUT FORMAT\\nbelow."
@@ -72,8 +75,8 @@ task RsatRetrieveseq {
     feat_type: "Feature type.\\nSupported: gene,mRNA,tRNA,rRNA,scRNA,misc_RNA,CDS,start_codon,stop_codon,exon"
     type: "sequence type\\nCurrently supported sequence types\\nupstream (default)\\ndownstream\\norf (warning: introns are not spliced out)\\nrandom (random fragments)\\nTo implement in the future\\nintrons\\ncoding\\nThe sub-option\\n-type random\\nrequires to use the -n for specifying the number of sequences."
     sequecnes_only_type: "of sequecnes (only with -type random)"
-    query_should_orf: "The query should be an orf identifier (eg 'metR').\\nThe query is case-insensitive.\\nMultiple queries can be entered by reiteratively using the -q\\noption."
-    query_file_first: "query file. The first word of each line is taken as a query.\\nThis option is incompatible with -q."
+    query_be_eg: "The query should be an orf identifier (eg 'metR').\\nThe query is case-insensitive.\\nMultiple queries can be entered by reiteratively using the -q\\noption."
+    query_file_taken: "query file. The first word of each line is taken as a query.\\nThis option is incompatible with -q."
     ids_only: "Use this option if the queries are provided as a list\\nof IDs. This avoids to load the table of synonyms, in\\norder tos ave time."
     all: "return all genomic upstream regions"
     name_output_file: "name of the output file"

@@ -20,6 +20,9 @@ task LavToAxt {
       ~{if (drop_self) then "-dropSelf" else ""} \
       ~{if defined(score_scheme) then ("-scoreScheme " +  '"' + score_scheme + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fa: "qNibDir is interpreted as a fasta file of multiple dna seq instead of directory of nibs"
     tfa: "is interpreted as a fasta file of multiple dna seq instead of directory of nibs"

@@ -10,6 +10,9 @@ task Gfa2fastapy {
       ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "GFA 1.0 file (format: 'xxx.gfa')"
     out: "Output directory for saving the FASTA file"

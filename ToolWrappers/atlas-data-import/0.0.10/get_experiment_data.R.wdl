@@ -34,6 +34,9 @@ task GetExperimentDataR {
       ~{if defined(number_of_clusters) then ("--number-of-clusters " +  '"' + number_of_clusters + '"') else ""} \
       ~{if (use_full_names) then "--use-full-names" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     access_sion_code: "Accession code of the data set to be extracted"
     config_file: "Config file in .yaml format"

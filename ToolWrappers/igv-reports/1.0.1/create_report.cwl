@@ -3,12 +3,12 @@ id: create_report.cwl
 inputs:
 - id: in_type
   doc: "Report type. Possible values are mutation and\njunctions. Default is mutation"
-  type: string
+  type: string?
   inputBinding:
     prefix: --type
 - id: in_ideogram
   doc: ideogram file in UCSC cytoIdeo format
-  type: File
+  type: File?
   inputBinding:
     prefix: --ideogram
 - id: in_tracks
@@ -23,12 +23,12 @@ inputs:
     prefix: --track-config
 - id: in_template
   doc: html template file
-  type: File
+  type: File?
   inputBinding:
     prefix: --template
 - id: in_output
   doc: output file name
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_info_columns
@@ -48,17 +48,17 @@ inputs:
     prefix: --sample-columns
 - id: in_flanking
   doc: genomic region to include either side of variant
-  type: string
+  type: string?
   inputBinding:
     prefix: --flanking
 - id: in_standalone
   doc: Print more data
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --standalone
 - id: in_title
   doc: optional title string
-  type: string
+  type: string?
   inputBinding:
     prefix: --title
 - id: in_sites
@@ -77,9 +77,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: output file name
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - create_report

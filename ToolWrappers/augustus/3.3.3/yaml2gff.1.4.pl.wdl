@@ -8,6 +8,9 @@ task Yaml2gff14pl {
     yaml2gff_1_4_pl \
       ~{if defined(filter_status) then ("--filterstatus " +  '"' + filter_status + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filter_status: "filter out alignments with given status, e.g. 'incomplete'"
   }

@@ -18,6 +18,9 @@ task Xml2config {
       ~{if (cflags) then "--cflags" else ""} \
       ~{if (modules) then "--modules" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "change libxml prefix [default /usr/local]"
     exec_prefix: "change libxml exec prefix [default /usr/local]"

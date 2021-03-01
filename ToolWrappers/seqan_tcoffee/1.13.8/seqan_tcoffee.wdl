@@ -38,6 +38,9 @@ task SeqanTcoffee {
       ~{if defined(build) then ("--build " +  '"' + build + '"') else ""} \
       ~{if defined(in_file) then ("--infile " +  '"' + in_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version_check: "Turn this option off to disable version update notifications of the\\napplication. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\\nDefault: 1."
     seq: "Name of multi-fasta input file. Valid filetypes are: .frn, .fna,\\n.ffn, .fasta, .faa, and .fa."

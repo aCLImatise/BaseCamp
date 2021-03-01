@@ -4,6 +4,9 @@ task UtilsWpfdll {
   command <<<
     UtilsWpf_dll
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

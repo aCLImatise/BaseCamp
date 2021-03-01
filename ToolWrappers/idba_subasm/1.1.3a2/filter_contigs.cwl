@@ -3,7 +3,7 @@ id: filter_contigs.cwl
 inputs:
 - id: in_min_contig
   doc: (=100)            filter out reads containing 'N'
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_contig
 - id: in_fq_two_fa
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - filter_contigs

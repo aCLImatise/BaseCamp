@@ -14,6 +14,9 @@ task Strike {
       ~{if (normalize) then "--normalize" else ""} \
       ~{if defined(out_file) then ("--out_file " +  '"' + out_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignment: "Alignment File"
     template_file: "Connection File"

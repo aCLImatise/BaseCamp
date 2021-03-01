@@ -3,7 +3,7 @@ id: nw_support.cwl
 inputs:
 - id: in_hlp
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -hlp
 - id: in_target_tree_filename_vertical_line
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nw_support

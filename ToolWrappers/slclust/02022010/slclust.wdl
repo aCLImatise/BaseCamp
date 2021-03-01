@@ -14,6 +14,9 @@ task Slclust {
       ~{clusters} \
       ~{if defined(_verbosity_at) then ("-j " +  '"' + _verbosity_at + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _verbosity_at: "[v] verbosity at 'info', 'debug'"
     opts: ""

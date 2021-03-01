@@ -8,6 +8,9 @@ task PickleCatpy {
     pickle_cat_py \
       ~{pickle_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pickle_file: "Input pickle file."
   }

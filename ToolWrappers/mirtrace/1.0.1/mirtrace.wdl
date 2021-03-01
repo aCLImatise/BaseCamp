@@ -44,6 +44,9 @@ task Mirtrace {
       ~{if (list_species) then "--list-species" else ""} \
       ~{if (cite) then "--cite" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     species: "Species (miRBase encoding). EXAMPLE: \\\"hsa\\\" for Homo sapiens.\\nTo list all codes, run \\\"miRTrace --list-species\\\"."
     config: "List of FASTQ files to process. This is a CSV (comma separated\\nvalue) file, i.e. with one entry per row.\\nEach row consists of the following columns\\n(only the first is required):\\nfilename,name-displayed-in-report,adapter,PHRED-ASCII-offset\\nNOTE: the PHRED ASCII offset can typically be reliably\\nauto-detected and is not necessary to specify.\\nEXAMPLE CONFIG FILE:\\npath/sample1.fastq,sample 1 (control),TGGAATTC\\npath/sample2.fastq,sample 2 (+drug X),TGGAATTC"

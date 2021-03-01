@@ -13,12 +13,12 @@ subcommands:
   - dbname
   positional:
   - !Positional
-    description: ''
+    optional: true
     position: 0
     name: dbsavename
-    optional: true
+    description: ''
   named: []
-  parent: &id009 !Command
+  parent: &id010 !Command
     command: *id001
     positional: []
     named: []
@@ -28,12 +28,12 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: true
         position: 0
         name: dbsavename
-        optional: true
+        description: ''
       named: []
-      parent: &id008 !Command
+      parent: &id009 !Command
         command: *id001
         positional: []
         named: []
@@ -43,12 +43,12 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: true
             position: 0
             name: dbsavename
-            optional: true
+            description: ''
           named: []
-          parent: &id007 !Command
+          parent: &id008 !Command
             command: *id001
             positional: []
             named: []
@@ -58,93 +58,213 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: true
                 position: 0
                 name: dbsavename
-                optional: true
+                description: ''
               named: []
-              parent: &id005 !Command
+              parent: &id007 !Command
                 command: *id001
                 positional: []
                 named: []
-                parent: &id003 !Command
-                  command:
-                  - arb_dnarates
-                  positional: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    optional: true
+                    position: 0
+                    name: dbsavename
+                    description: ''
                   named: []
-                  parent:
-                  subcommands:
-                  - !Command
-                    command:
-                    - arb_dnarates
-                    - dbname
-                    positional:
-                    - !Positional
-                      description: ''
-                      position: 0
-                      name: arb_dnarates
-                      optional: false
-                    - !Positional
-                      description: ''
-                      position: 1
-                      name: input
-                      optional: false
-                    - !Positional
-                      description: ''
-                      position: 2
-                      name: dbname
-                      optional: true
-                    - !Positional
-                      description: ''
-                      position: 3
-                      name: dbsavename
-                      optional: true
+                  parent: &id005 !Command
+                    command: *id001
+                    positional: []
                     named: []
-                    parent: *id003
-                    subcommands: []
-                    usage: []
-                    help_flag:
-                    usage_flag:
-                    version_flag:
-                    help_text: "arb_dnarates: Error: 'dbname' may only be used together\
-                      \ with 'dbsavename'\nUsage: arb_dnarates input [dbname dbsavename]\n\
-                      \       Expects phylip sequence data as 'input'.\n       Reads\
-                      \ from STDIN if 'input' is '-'.\n       (e.g. cat data.phyl\
-                      \ | arb_dnarates - ...\n          or arb_dnarates data.phyl\
-                      \ ...)\n       Expects a 'dbname' or a running ARB DB server.\n\
-                      \       - Reads tmp/gde/export_filter from server.\n       -\
-                      \ Saves calculated SAI to server (POS_VAR_BY_ML_...)\n     \
-                      \  Using 'dbname' does only make sense for unittests!\n"
-                    generated_using: &id004
-                    - --help
-                  - !Command
-                    command:
-                    - arb_dnarates
-                    - dbsavename
-                    positional:
-                    - !Positional
-                      description: ''
-                      position: 0
-                      name: arb_dnarates
-                      optional: false
-                    - !Positional
-                      description: ''
-                      position: 1
-                      name: input
-                      optional: false
-                    - !Positional
-                      description: ''
-                      position: 2
-                      name: dbname
-                      optional: true
-                    - !Positional
-                      description: ''
-                      position: 3
-                      name: dbsavename
-                      optional: true
-                    named: []
-                    parent: *id003
-                    subcommands: []
+                    parent: &id003 !Command
+                      command:
+                      - arb_dnarates
+                      positional: []
+                      named: []
+                      parent:
+                      subcommands:
+                      - !Command
+                        command:
+                        - arb_dnarates
+                        - dbname
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: arb_dnarates
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: input
+                          description: ''
+                        - !Positional
+                          optional: true
+                          position: 2
+                          name: dbname
+                          description: ''
+                        - !Positional
+                          optional: true
+                          position: 3
+                          name: dbsavename
+                          description: ''
+                        named: []
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag:
+                        usage_flag:
+                        version_flag:
+                        help_text: "arb_dnarates: Error: 'dbname' may only be used\
+                          \ together with 'dbsavename'\nUsage: arb_dnarates input\
+                          \ [dbname dbsavename]\n       Expects phylip sequence data\
+                          \ as 'input'.\n       Reads from STDIN if 'input' is '-'.\n\
+                          \       (e.g. cat data.phyl | arb_dnarates - ...\n     \
+                          \     or arb_dnarates data.phyl ...)\n       Expects a 'dbname'\
+                          \ or a running ARB DB server.\n       - Reads tmp/gde/export_filter\
+                          \ from server.\n       - Saves calculated SAI to server\
+                          \ (POS_VAR_BY_ML_...)\n       Using 'dbname' does only make\
+                          \ sense for unittests!\n"
+                        generated_using: &id004
+                        - --help
+                        docker_image:
+                      - !Command
+                        command:
+                        - arb_dnarates
+                        - dbsavename
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: arb_dnarates
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: input
+                          description: ''
+                        - !Positional
+                          optional: true
+                          position: 2
+                          name: dbname
+                          description: ''
+                        - !Positional
+                          optional: true
+                          position: 3
+                          name: dbsavename
+                          description: ''
+                        named: []
+                        parent: *id003
+                        subcommands: []
+                        usage: []
+                        help_flag:
+                        usage_flag:
+                        version_flag:
+                        help_text: "arb_dnarates: Error: 'dbname' may only be used\
+                          \ together with 'dbsavename'\nUsage: arb_dnarates input\
+                          \ [dbname dbsavename]\n       Expects phylip sequence data\
+                          \ as 'input'.\n       Reads from STDIN if 'input' is '-'.\n\
+                          \       (e.g. cat data.phyl | arb_dnarates - ...\n     \
+                          \     or arb_dnarates data.phyl ...)\n       Expects a 'dbname'\
+                          \ or a running ARB DB server.\n       - Reads tmp/gde/export_filter\
+                          \ from server.\n       - Saves calculated SAI to server\
+                          \ (POS_VAR_BY_ML_...)\n       Using 'dbname' does only make\
+                          \ sense for unittests!\n"
+                        generated_using: *id004
+                        docker_image:
+                      - *id005
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "arb_dnarates: Error: While reading '--help': No\
+                        \ such file or directory\nUsage: arb_dnarates input [dbname\
+                        \ dbsavename]\n       Expects phylip sequence data as 'input'.\n\
+                        \       Reads from STDIN if 'input' is '-'.\n       (e.g.\
+                        \ cat data.phyl | arb_dnarates - ...\n          or arb_dnarates\
+                        \ data.phyl ...)\n       Expects a 'dbname' or a running ARB\
+                        \ DB server.\n       - Reads tmp/gde/export_filter from server.\n\
+                        \       - Saves calculated SAI to server (POS_VAR_BY_ML_...)\n\
+                        \       Using 'dbname' does only make sense for unittests!\n"
+                      generated_using: *id004
+                      docker_image:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: true
+                        position: 0
+                        name: dbsavename
+                        description: ''
+                      named: []
+                      parent: *id005
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "arb_dnarates: Error: While reading 'input': No such\
+                        \ file or directory\nUsage: arb_dnarates input [dbname dbsavename]\n\
+                        \       Expects phylip sequence data as 'input'.\n       Reads\
+                        \ from STDIN if 'input' is '-'.\n       (e.g. cat data.phyl\
+                        \ | arb_dnarates - ...\n          or arb_dnarates data.phyl\
+                        \ ...)\n       Expects a 'dbname' or a running ARB DB server.\n\
+                        \       - Reads tmp/gde/export_filter from server.\n     \
+                        \  - Saves calculated SAI to server (POS_VAR_BY_ML_...)\n\
+                        \       Using 'dbname' does only make sense for unittests!\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - arb_dnarates
+                      - input
+                      - dbsavename
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: arb_dnarates
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: input
+                        description: ''
+                      - !Positional
+                        optional: true
+                        position: 2
+                        name: dbname
+                        description: ''
+                      - !Positional
+                        optional: true
+                        position: 3
+                        name: dbsavename
+                        description: ''
+                      named: []
+                      parent: *id005
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "arb_dnarates: Error: While reading 'input': No such\
+                        \ file or directory\nUsage: arb_dnarates input [dbname dbsavename]\n\
+                        \       Expects phylip sequence data as 'input'.\n       Reads\
+                        \ from STDIN if 'input' is '-'.\n       (e.g. cat data.phyl\
+                        \ | arb_dnarates - ...\n          or arb_dnarates data.phyl\
+                        \ ...)\n       Expects a 'dbname' or a running ARB DB server.\n\
+                        \       - Reads tmp/gde/export_filter from server.\n     \
+                        \  - Saves calculated SAI to server (POS_VAR_BY_ML_...)\n\
+                        \       Using 'dbname' does only make sense for unittests!\n"
+                      generated_using: *id004
+                      docker_image:
                     usage: []
                     help_flag:
                     usage_flag:
@@ -159,32 +279,7 @@ subcommands:
                       \ Saves calculated SAI to server (POS_VAR_BY_ML_...)\n     \
                       \  Using 'dbname' does only make sense for unittests!\n"
                     generated_using: *id004
-                  - *id005
-                  usage: []
-                  help_flag:
-                  usage_flag:
-                  version_flag:
-                  help_text: "arb_dnarates: Error: While reading '--help': No such\
-                    \ file or directory\nUsage: arb_dnarates input [dbname dbsavename]\n\
-                    \       Expects phylip sequence data as 'input'.\n       Reads\
-                    \ from STDIN if 'input' is '-'.\n       (e.g. cat data.phyl |\
-                    \ arb_dnarates - ...\n          or arb_dnarates data.phyl ...)\n\
-                    \       Expects a 'dbname' or a running ARB DB server.\n     \
-                    \  - Reads tmp/gde/export_filter from server.\n       - Saves\
-                    \ calculated SAI to server (POS_VAR_BY_ML_...)\n       Using 'dbname'\
-                    \ does only make sense for unittests!\n"
-                  generated_using: *id004
-                subcommands:
-                - !Command
-                  command: *id002
-                  positional:
-                  - !Positional
-                    description: ''
-                    position: 0
-                    name: dbsavename
-                    optional: true
-                  named: []
-                  parent: *id005
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -200,32 +295,30 @@ subcommands:
                     \ calculated SAI to server (POS_VAR_BY_ML_...)\n       Using 'dbname'\
                     \ does only make sense for unittests!\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - arb_dnarates
-                  - input
-                  - dbsavename
+                  command: *id006
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: arb_dnarates
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: input
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: true
                     position: 2
                     name: dbname
-                    optional: true
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: true
                     position: 3
                     name: dbsavename
-                    optional: true
+                    description: ''
                   named: []
                   parent: *id005
                   subcommands: []
@@ -243,6 +336,7 @@ subcommands:
                     \ calculated SAI to server (POS_VAR_BY_ML_...)\n       Using 'dbname'\
                     \ does only make sense for unittests!\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -256,6 +350,7 @@ subcommands:
                   \ from server.\n       - Saves calculated SAI to server (POS_VAR_BY_ML_...)\n\
                   \       Using 'dbname' does only make sense for unittests!\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -270,31 +365,32 @@ subcommands:
                 \ from server.\n       - Saves calculated SAI to server (POS_VAR_BY_ML_...)\n\
                 \       Using 'dbname' does only make sense for unittests!\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: arb_dnarates
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: input
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: true
                 position: 2
                 name: dbname
-                optional: true
-              - !Positional
                 description: ''
+              - !Positional
+                optional: true
                 position: 3
                 name: dbsavename
-                optional: true
+                description: ''
               named: []
-              parent: *id005
+              parent: *id007
               subcommands: []
               usage: []
               help_flag:
@@ -309,6 +405,7 @@ subcommands:
                 \ from server.\n       - Saves calculated SAI to server (POS_VAR_BY_ML_...)\n\
                 \       Using 'dbname' does only make sense for unittests!\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -322,6 +419,7 @@ subcommands:
               \ from server.\n       - Saves calculated SAI to server (POS_VAR_BY_ML_...)\n\
               \       Using 'dbname' does only make sense for unittests!\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -336,31 +434,32 @@ subcommands:
             \       - Saves calculated SAI to server (POS_VAR_BY_ML_...)\n       Using\
             \ 'dbname' does only make sense for unittests!\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: arb_dnarates
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: input
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: true
             position: 2
             name: dbname
-            optional: true
-          - !Positional
             description: ''
+          - !Positional
+            optional: true
             position: 3
             name: dbsavename
-            optional: true
+            description: ''
           named: []
-          parent: *id007
+          parent: *id008
           subcommands: []
           usage: []
           help_flag:
@@ -375,6 +474,7 @@ subcommands:
             \       - Saves calculated SAI to server (POS_VAR_BY_ML_...)\n       Using\
             \ 'dbname' does only make sense for unittests!\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -388,6 +488,7 @@ subcommands:
           \ to server (POS_VAR_BY_ML_...)\n       Using 'dbname' does only make sense\
           \ for unittests!\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -401,31 +502,32 @@ subcommands:
         \ tmp/gde/export_filter from server.\n       - Saves calculated SAI to server\
         \ (POS_VAR_BY_ML_...)\n       Using 'dbname' does only make sense for unittests!\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: arb_dnarates
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: input
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: true
         position: 2
         name: dbname
-        optional: true
-      - !Positional
         description: ''
+      - !Positional
+        optional: true
         position: 3
         name: dbsavename
-        optional: true
+        description: ''
       named: []
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag:
@@ -439,6 +541,7 @@ subcommands:
         \ tmp/gde/export_filter from server.\n       - Saves calculated SAI to server\
         \ (POS_VAR_BY_ML_...)\n       Using 'dbname' does only make sense for unittests!\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -451,6 +554,7 @@ subcommands:
       \ from server.\n       - Saves calculated SAI to server (POS_VAR_BY_ML_...)\n\
       \       Using 'dbname' does only make sense for unittests!\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -464,31 +568,32 @@ subcommands:
     \ from server.\n       - Saves calculated SAI to server (POS_VAR_BY_ML_...)\n\
     \       Using 'dbname' does only make sense for unittests!\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: arb_dnarates
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: input
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: true
     position: 2
     name: dbname
-    optional: true
-  - !Positional
     description: ''
+  - !Positional
+    optional: true
     position: 3
     name: dbsavename
-    optional: true
+    description: ''
   named: []
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag:
@@ -502,6 +607,7 @@ subcommands:
     \ from server.\n       - Saves calculated SAI to server (POS_VAR_BY_ML_...)\n\
     \       Using 'dbname' does only make sense for unittests!\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -514,3 +620,4 @@ help_text: "arb_dnarates: Error: 'dbname' may only be used together with 'dbsave
   \ server.\n       - Saves calculated SAI to server (POS_VAR_BY_ML_...)\n       Using\
   \ 'dbname' does only make sense for unittests!\n"
 generated_using: *id004
+docker_image:

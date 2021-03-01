@@ -4,150 +4,150 @@ command:
 - balance
 positional:
 - !Positional
-  description: --stdout                        Print weight column to stdout instead
-    of
+  optional: false
   position: 0
   name: exists.
-  optional: false
+  description: --stdout                        Print weight column to stdout instead
+    of
 named:
 - !Flag
-  description: Number of processes to split the work
+  optional: true
   synonyms:
   - -p
   - --nproc
+  description: Number of processes to split the work
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Control the number of pixels handled by each\nworker process at a\
-    \ time.  [default:\n10000000]"
+  optional: true
   synonyms:
   - -c
   - --chunksize
+  description: "Control the number of pixels handled by each\nworker process at a\
+    \ time.  [default:\n10000000]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mad-max
   description: "Ignore bins from the contact matrix using\nthe 'MAD-max' filter: bins\
     \ whose log\nmarginal sum is less than ``mad-max`` median\nabsolute deviations\
     \ below the median log\nmarginal sum of all the bins in the same\nchromosome.\
     \  [default: 5]"
-  synonyms:
-  - --mad-max
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Ignore bins from the contact matrix whose\nmarginal number of nonzeros\
-    \ is less than\nthis number.  [default: 10]"
+  optional: true
   synonyms:
   - --min-nnz
+  description: "Ignore bins from the contact matrix whose\nmarginal number of nonzeros\
+    \ is less than\nthis number.  [default: 10]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Ignore bins from the contact matrix whose\nmarginal count is less\
-    \ than this number.\n[default: 0]"
+  optional: true
   synonyms:
   - --min-count
+  description: "Ignore bins from the contact matrix whose\nmarginal count is less\
+    \ than this number.\n[default: 0]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Path to a 3-column BED file containing\ngenomic regions to mask out\
-    \ during the\nbalancing procedure, e.g. sequence gaps or\nregions of poor mappability."
+  optional: true
   synonyms:
   - --blacklist
+  description: "Path to a 3-column BED file containing\ngenomic regions to mask out\
+    \ during the\nbalancing procedure, e.g. sequence gaps or\nregions of poor mappability."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ignore-diags
   description: "Number of diagonals of the contact matrix to\nignore, including the\
     \ main diagonal.\nExamples: 0 ignores nothing, 1 ignores the\nmain diagonal, 2\
     \ ignores diagonals (-1, 0,\n1), etc.  [default: 2]"
-  synonyms:
-  - --ignore-diags
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Distance in bp to ignore.
+  optional: true
   synonyms:
   - --ignore-dist
+  description: Distance in bp to ignore.
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Threshold value of variance of the marginals\nfor the algorithm to\
-    \ converge.  [default:\n1e-05]"
+  optional: true
   synonyms:
   - --tol
+  description: "Threshold value of variance of the marginals\nfor the algorithm to\
+    \ converge.  [default:\n1e-05]"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Maximum number of iterations to perform if\nconvergence is not achieved.\
-    \  [default: 200]"
+  optional: true
   synonyms:
   - --max-iters
+  description: "Maximum number of iterations to perform if\nconvergence is not achieved.\
+    \  [default: 200]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Calculate weights against intra-chromosomal\ndata only instead of\
-    \ genome-wide."
+  optional: true
   synonyms:
   - --cis-only
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Calculate weights against inter-chromosomal\ndata only instead of\
+  description: "Calculate weights against intra-chromosomal\ndata only instead of\
     \ genome-wide."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --trans-only
+  description: "Calculate weights against inter-chromosomal\ndata only instead of\
+    \ genome-wide."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Name of column to write to.  [default:\nweight]"
+  optional: true
   synonyms:
   - --name
+  description: "Name of column to write to.  [default:\nweight]"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Overwrite the target dataset, 'weight', if\nit already exists."
+  optional: true
   synonyms:
   - -f
   - --force
+  description: "Overwrite the target dataset, 'weight', if\nit already exists."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Check whether a data column 'weight' already
+  optional: true
   synonyms:
   - --check
+  description: Check whether a data column 'weight' already
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --convergence-policy
   description: "[store_final|store_nan|discard|error]\nWhat to do with weights when\
     \ balancing\ndoesn't converge in max_iters.\n'store_final': Store the final result,\n\
     regardless of whether the iterations\nconverge to the specified tolerance;\n'store_nan':\
     \ Store a vector of NaN values to\nindicate that the matrix failed to converge;\n\
     'discard': Store nothing and exit\ngracefully; 'error': Abort with non-zero\n\
     exit status.  [default: store_final]"
-  synonyms:
-  - --convergence-policy
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: cooler balance [OPTIONS] COOL_PATH\n\n  Out-of-core matrix balancing.\n\
@@ -205,3 +205,4 @@ help_text: "Usage: cooler balance [OPTIONS] COOL_PATH\n\n  Out-of-core matrix ba
   \ and exit.\n"
 generated_using:
 - --help
+docker_image:

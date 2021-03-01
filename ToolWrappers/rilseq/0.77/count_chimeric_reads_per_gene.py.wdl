@@ -24,6 +24,9 @@ task CountChimericReadsPerGenepy {
       ~{if defined(identifier) then ("--identifier " +  '"' + identifier + '"') else ""} \
       ~{if defined(overlap) then ("--overlap " +  '"' + overlap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     only_first: "Count only the first in fragment. (default: False)"
     only_second: "Count only the second in fragment. (default: False)"

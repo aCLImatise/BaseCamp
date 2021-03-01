@@ -32,6 +32,9 @@ task BiocondautilsBioconductorskeleton {
       ~{if defined(log_file_level) then ("--logfile-level " +  '"' + log_file_level + '"') else ""} \
       ~{if defined(log_command_max_lines) then ("--log-command-max-lines " +  '"' + log_command_max_lines + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     versioned: "If specified, recipe will be created in\\nRECIPES/<package>/<version> (default: False)"
     force: "Overwrite the contents of an existing recipe. If"

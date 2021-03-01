@@ -4,6 +4,9 @@ task CorrectGaps {
   command <<<
     correctGaps
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

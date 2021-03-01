@@ -1,0 +1,81 @@
+!Command
+command:
+- atlas
+- init
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: job
+  description: --skip-qc                       Skip QC, if reads are already pre-processed
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --db-dir
+  description: "location to store databases (need ~50GB)\n[default: /databases]"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --working-dir
+  description: location to run atlas
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --assembler
+  description: '[megahit|spades]    assembler  [default: spades]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --data-type
+  description: "[metagenome|metatranscriptome]\nsample data type  [default: metagenome]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --interleaved-fastq
+  description: "fastq files are paired-end in one files\n(interleaved)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: number of threads to use per multi-threaded
+  args: !SimpleFlagArg
+    name: INTEGER
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: atlas init [OPTIONS] PATH_TO_FASTQ\n\n  Write the file CONFIG and\
+  \ complete the sample names and paths for all\n  FASTQ files in PATH.\n\n  PATH\
+  \ is traversed recursively and adds any file with '.fastq' or '.fq' in\n  the file\
+  \ name with the file name minus extension as the sample ID.\n\nOptions:\n  -d, --db-dir\
+  \ PATH               location to store databases (need ~50GB)\n                \
+  \                  [default: /databases]\n\n  -w, --working-dir PATH          location\
+  \ to run atlas\n  --assembler [megahit|spades]    assembler  [default: spades]\n\
+  \  --data-type [metagenome|metatranscriptome]\n                                \
+  \  sample data type  [default: metagenome]\n  --interleaved-fastq             fastq\
+  \ files are paired-end in one files\n                                  (interleaved)\n\
+  \n  --threads INTEGER               number of threads to use per multi-threaded\n\
+  \                                  job\n\n  --skip-qc                       Skip\
+  \ QC, if reads are already pre-processed\n  -h, --help                      Show\
+  \ this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/metagenome-atlas:2.4.5--py_0

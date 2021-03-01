@@ -2,7 +2,6 @@ version 1.0
 
 task GcloudConfigSet {
   input {
-    String section_slash_property
     String value
     String core
     String custom_ca_certs_file
@@ -44,7 +43,6 @@ task GcloudConfigSet {
   }
   command <<<
     gcloud config set \
-      ~{section_slash_property} \
       ~{value} \
       ~{core} \
       ~{custom_ca_certs_file} \
@@ -84,8 +82,10 @@ task GcloudConfigSet {
       ~{spanner} \
       ~{instance}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    section_slash_property: "The property to be set. Note that SECTION/ is optional while referring\\nto properties in the core section."
     value: "The value to be set."
     core: "account\\nThe account gcloud should use for authentication. You can run\\ngcloud auth list to see the accounts you currently have available."
     custom_ca_certs_file: "Absolute path to a custom CA cert file."

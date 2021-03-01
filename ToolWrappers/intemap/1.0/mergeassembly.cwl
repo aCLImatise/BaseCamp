@@ -3,32 +3,37 @@ id: mergeassembly.cwl
 inputs:
 - id: in_subject_contig_name
   doc: Subject Contig name
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_output_file_prefix
   doc: Output file prefix
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_query_contig_name
   doc: Query Contig name
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
-- id: in_stringent_rankrank_highest
+- id: in_minidentiy
+  doc: minIdentiy
+  type: boolean?
+  inputBinding:
+    prefix: -i
+- id: in_stringent_rankrank_stringent
   doc: "stringent rank[0]\nrank: 0 highest stringent; 1 low stringent\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_option_one
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     position: 0
 - id: in_value_one
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     position: 1
 outputs:
@@ -37,9 +42,10 @@ outputs:
   type: stdout
 - id: out_output_file_prefix
   doc: Output file prefix
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file_prefix)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mergeassembly

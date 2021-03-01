@@ -14,6 +14,9 @@ task GcloudOrganizationsSetiampolicy {
       ~{optional} \
       ~{flags}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     organization_id: ""
     policy_file: ""

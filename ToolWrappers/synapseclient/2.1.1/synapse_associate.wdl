@@ -12,6 +12,9 @@ task SynapseAssociate {
       ~{if defined(limit_search) then ("--limitSearch " +  '"' + limit_search + '"') else ""} \
       ~{if (perform_recursive_association) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     limit_search: "Synapse ID of a container such as project or folder to\\nlimit search to."
     perform_recursive_association: "Perform recursive association with all local files in\\na folder\\n"

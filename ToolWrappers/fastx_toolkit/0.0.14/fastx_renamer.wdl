@@ -16,6 +16,9 @@ task FastxRenamer {
       ~{if (z) then "-z" else ""} \
       ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     i: ""

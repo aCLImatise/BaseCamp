@@ -14,6 +14,9 @@ task FastxArtifactsFilter {
       ~{if (z) then "-z" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     i: ""

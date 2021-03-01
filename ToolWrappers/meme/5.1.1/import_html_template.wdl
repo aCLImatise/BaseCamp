@@ -10,6 +10,9 @@ task Importhtmltemplate {
       ~{variable_name} \
       ~{file_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     variable_name: ""
     file_name: ""

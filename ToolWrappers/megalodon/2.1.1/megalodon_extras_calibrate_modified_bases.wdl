@@ -32,6 +32,9 @@ task MegalodonExtrasCalibrateModifiedBases {
       ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""} \
       ~{if (overwrite) then "--overwrite" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ground_truth_ll_rs: "Ground truth log-likelihood ratio statistics (produced\\nby `megalodon_extras calibrate\\ngenerate_modified_base_stats`). Default:\\nmod_calibration_statistics.npz"
     max_input_llr: "Maximum log-likelihood ratio to compute calibration.\\nDefault: 200"

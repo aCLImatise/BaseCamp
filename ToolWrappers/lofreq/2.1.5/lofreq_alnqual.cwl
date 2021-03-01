@@ -1,40 +1,40 @@
 class: CommandLineTool
 id: lofreq_alnqual.cwl
 inputs:
-- id: in_bam_output_instead
+- id: in_bam_output_sam
   doc: BAM output (instead of SAM)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in_uncompressed_bam_output
   doc: Uncompressed BAM output (for piping)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -u
 - id: in_input_sam_header
   doc: The input is SAM with header
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -S
 - id: in_use_default_baq
   doc: Use default instead of extended BAQ (the latter gives better sensitivity but
     lower specificity)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -e
-- id: in_compute_alignment_qualities
+- id: in_compute_base_alignment_qualities
   doc: Don't compute base alignment qualities
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -B
-- id: in_compute_indel_qualities
+- id: in_compute_indel_alignment_qualities
   doc: Don't compute indel alignment qualities
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -A
-- id: in_recompute_ie_overwrite
+- id: in_recompute_overwrite_values
   doc: Recompute i.e. overwrite existing values
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_aln_dot_bam
@@ -51,6 +51,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - lofreq

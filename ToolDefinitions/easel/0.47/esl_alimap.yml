@@ -1,0 +1,146 @@
+&id001 !Command
+command:
+- esl-alimap
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: ": be quiet, don't print mapping of each column"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mask-a2a
+  description: ": mask to <f>:'1'=msa1 aln       col x maps msa2 aln col"
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --mask-a2rf
+  description: ": mask to <f>:'1'=msa1 aln       col x maps msa2 nongap RF col"
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --mask-rf2a
+  description: ": mask to <f>:'1'=msa1 nongap RF col x maps msa2 aln col"
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --mask-rf2rf
+  description: ": mask to <f>:'1'=msa1 nongap RF col x maps msa2 nongap RF col"
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --submap
+  description: ': <msafile2> is subaln of <msafile1>, output mask to <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --amino
+  description: ': <msafile{1,2}> contain protein alignments'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dna
+  description: ': <msafile{1,2}> contain DNA alignments'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rna
+  description: ': <msafile{1,2}> contain RNA alignments'
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - esl-alimap
+  - msafile1
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: msafile2
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Incorrect number of command line arguments.\nUsage: esl-alimap [options]\
+    \ <msafile1> <msafile2>\n<msafile1> and <msafile2> must be in Stockholm format.\n\
+    \nTo see more help on available options, do esl-alimap -h\n\n"
+  generated_using: &id002 []
+  docker_image: quay.io/biocontainers/easel:0.47--h516909a_0
+- !Command
+  command:
+  - esl-alimap
+  - msafile2
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: esl-alimap
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: msafile1
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: msafile2
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Incorrect number of command line arguments.\nUsage: esl-alimap [options]\
+    \ <msafile1> <msafile2>\n<msafile1> and <msafile2> must be in Stockholm format.\n\
+    \nTo see more help on available options, do esl-alimap -h\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/easel:0.47--h516909a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ': help; show brief info on version and usage'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "# esl-alimap :: map two alignments to each other\n# Easel 0.47 (Jul 2020)\n\
+  # Copyright (C) 2020 Howard Hughes Medical Institute\n# Freely distributed under\
+  \ the BSD open source license.\n# - - - - - - - - - - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - - -\nUsage: esl-alimap [options] <msafile1> <msafile2>\n\
+  <msafile1> and <msafile2> must be in Stockholm format.\n\nwhere basic options are:\n\
+  \  -h               : help; show brief info on version and usage\n  -q         \
+  \      : be quiet, don't print mapping of each column\n  --mask-a2a <f>   : mask\
+  \ to <f>:'1'=msa1 aln       col x maps msa2 aln col\n  --mask-a2rf <f>  : mask to\
+  \ <f>:'1'=msa1 aln       col x maps msa2 nongap RF col\n  --mask-rf2a <f>  : mask\
+  \ to <f>:'1'=msa1 nongap RF col x maps msa2 aln col\n  --mask-rf2rf <f> : mask to\
+  \ <f>:'1'=msa1 nongap RF col x maps msa2 nongap RF col\n  --submap <f>     : <msafile2>\
+  \ is subaln of <msafile1>, output mask to <f>\n  --amino          : <msafile{1,2}>\
+  \ contain protein alignments\n  --dna            : <msafile{1,2}> contain DNA alignments\n\
+  \  --rna            : <msafile{1,2}> contain RNA alignments\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/easel:0.47--h516909a_0

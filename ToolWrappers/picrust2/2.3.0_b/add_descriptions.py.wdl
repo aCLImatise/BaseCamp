@@ -14,6 +14,9 @@ task AddDescriptionspy {
       ~{if defined(map_type) then ("--map_type " +  '"' + map_type + '"') else ""} \
       ~{if defined(custom_map_table) then ("--custom_map_table " +  '"' + custom_map_table + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_function_abundance: "Input function abundance table."
     output_function_abundance: "Output function abundance table with added description\\ncolumn. If the extension \\\".gz\\\" is added the table will\\nautomatically be gzipped."

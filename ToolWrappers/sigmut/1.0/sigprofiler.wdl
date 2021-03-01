@@ -26,6 +26,9 @@ task Sigprofiler {
       ~{if (tsb) then "--tsb" else ""} \
       ~{if (gs) then "--gs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     install_genome: "Install de novo any of the following reference\\ngenomes: 'GRCh37', 'GRCh38', 'mm9' or 'mm10'."
     name: "Provide a project name"

@@ -8,6 +8,9 @@ task PrepReads {
     prep_reads \
       ~{if defined(filter_multi) then ("--filter-multi " +  '"' + filter_multi + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filter_multi: ""
   }

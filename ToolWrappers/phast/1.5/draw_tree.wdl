@@ -18,6 +18,9 @@ task DrawTree {
       ~{if (draw_branches_scale) then "-s" else ""} \
       ~{if (db_vs) then "-dbvs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_opposed_option: "Print \\\"diagonal\\\" branches, instead of \\\"right-angle\\\" or\\n\\\"square\\\" ones (produces a \\\"cladogram\\\", as opposed to a\\n\\\"phenogram\\\").  This option implies -s."
     suppress_branch_lengths: "Suppress branch lengths."

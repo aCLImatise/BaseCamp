@@ -16,6 +16,9 @@ task FastaptamerEnrich {
       ~{if defined(y) then ("-y " +  '"' + y + '"') else ""} \
       ~{if defined(x) then ("-x " +  '"' + x + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     z: ""

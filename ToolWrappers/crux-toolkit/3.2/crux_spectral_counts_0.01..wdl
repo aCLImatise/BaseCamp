@@ -10,6 +10,9 @@ task CruxSpectralcounts01 {
       ~{crux} \
       ~{spectral_counts}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     spectral_counts: ""

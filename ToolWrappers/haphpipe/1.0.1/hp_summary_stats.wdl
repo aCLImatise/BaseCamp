@@ -20,6 +20,9 @@ task HpSummaryStats {
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir_list: "List of directories which include the required files,\\none on each line"
     ph_list: "List of directories which include haplotype summary\\nfiles, one on each line"

@@ -5,99 +5,99 @@ command:
 positional: []
 named:
 - !Flag
-  description: Input file of {} format
+  optional: true
   synonyms:
   - -i
+  description: Input file of {} format
   args: !SimpleFlagArg
     name: FN
-  optional: true
 - !Flag
-  description: Directory to output in
+  optional: true
   synonyms:
   - -d
+  description: Directory to output in
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
-  description: Output file
+  optional: true
   synonyms:
   - -o
+  description: Output file
   args: !SimpleFlagArg
     name: OUTFILE
-  optional: true
 - !Flag
-  description: "Store full protein sequences (at a minimum-match\nlength) in the SQLite\
-    \ file rather than tryptic\nsequences"
+  optional: true
   synonyms:
   - --fullprotein
+  description: "Store full protein sequences (at a minimum-match\nlength) in the SQLite\
+    \ file rather than tryptic\nsequences"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Filter against both normal peptides and deamidated\npeptides where\
-    \ a D->N transition has occurred."
+  optional: true
   synonyms:
   - --deamidate
+  description: "Filter against both normal peptides and deamidated\npeptides where\
+    \ a D->N transition has occurred."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: FASTA sequence database
+  optional: true
   synonyms:
   - --fasta
+  description: FASTA sequence database
   args: !SimpleFlagArg
     name: FASTA
-  optional: true
 - !Flag
-  description: Minimum length of peptide to be included
+  optional: true
   synonyms:
   - --minlen
+  description: Minimum length of peptide to be included
   args: !SimpleFlagArg
     name: MINLENGTH
-  optional: true
 - !Flag
-  description: Database lookup file
+  optional: true
   synonyms:
   - --dbfile
+  description: Database lookup file
   args: !SimpleFlagArg
     name: LOOKUPFN
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --enforce-tryptic
   description: "When filtering peptides against whole proteins, filter\nout peptides\
     \ that match a whole protein but only if\nthey are fully tryptic, i.e. the protein\
     \ needs K,R 1\nposition upstream of the peptide, and the peptide\nC-terminal should\
     \ also be K,R. Useful when discerning\nfrom pseudogenes"
-  synonyms:
-  - --enforce-tryptic
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --insourcefrag
   description: "Apply filter against both intact peptides and those\nthat match to\
     \ the C-terminal part of a tryptic peptide\nfrom the database, resulting from\
     \ in-source\nfragmentation, where some amino acids will be missing\nfrom the N-terminus.\
     \ Specify the max number of amino\nacids that may be missing. Database should\
     \ be built\nwith this flag in order for the lookup to work, since\nsequences will\
     \ be stored and looked up reversed\n"
-  synonyms:
-  - --insourcefrag
   args: !SimpleFlagArg
     name: FALLOFF
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: msstitch filterperco [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
   \                            [--fullprotein] [--deamidate] [--fasta FASTA]\n   \
   \                         [--minlen MINLENGTH] --dbfile LOOKUPFN\n             \
@@ -127,3 +127,4 @@ help_text: "usage: msstitch filterperco [-h] [--version] -i FN [-d OUTDIR] [-o O
   \       sequences will be stored and looked up reversed\n"
 generated_using:
 - --help
+docker_image:

@@ -3,7 +3,7 @@ id: mmapConvert.cwl
 inputs:
 - id: in_output_file
   doc: output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_file_do_tm_hap
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mmapConvert

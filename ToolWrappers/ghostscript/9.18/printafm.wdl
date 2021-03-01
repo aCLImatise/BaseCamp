@@ -8,6 +8,9 @@ task Printafm {
     printafm \
       ~{fontname}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fontname: ""
   }

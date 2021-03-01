@@ -14,6 +14,9 @@ task MinAbundanceFinderpl {
       ~{if (km_er) then "--kmer" else ""} \
       ~{if defined(num_cpus) then ("--numcpus " +  '"' + num_cpus + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gt: "1   Look for the first peak at this kmer count\\nand then the next valley."
     km_er: "21  kmer length"

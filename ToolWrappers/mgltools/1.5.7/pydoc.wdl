@@ -4,6 +4,9 @@ task Pydoc {
   command <<<
     pydoc
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

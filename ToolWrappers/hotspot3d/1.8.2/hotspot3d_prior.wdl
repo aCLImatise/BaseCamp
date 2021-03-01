@@ -14,6 +14,9 @@ task Hotspot3dPrior {
       ~{if (three_d_distance_cut_off) then "--3d-distance-cutoff" else ""} \
       ~{if (linear_cut_off) then "--linear-cutoff" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Output directory\\nOPTIONAL"
     p_value_cut_off: "p_value cutoff(<=), default is 0.05"

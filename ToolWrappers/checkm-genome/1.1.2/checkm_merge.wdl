@@ -28,6 +28,9 @@ task CheckmMerge {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genes: "bins contain genes as amino acids instead of nucleotide contigs"
     delta_comp: "minimum increase in completeness to report pair (default: 5.0)"

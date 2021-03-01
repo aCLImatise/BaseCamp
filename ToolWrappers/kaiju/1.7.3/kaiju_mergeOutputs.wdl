@@ -22,6 +22,9 @@ task KaijumergeOutputs {
       ~{if (enable_verbose_output) then "-v" else ""} \
       ~{if (enable_debug_output) then "-d" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_first_input: "Name of first input file"
     name_second_input: "Name of second input file"

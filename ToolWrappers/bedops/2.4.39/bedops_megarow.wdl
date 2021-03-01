@@ -6,6 +6,7 @@ task Bedopsmegarow {
     Boolean? ec
     Boolean? header
     Boolean? help
+    Boolean? complement
     File? difference
     Boolean? element_of
     File? intersect
@@ -28,6 +29,7 @@ task Bedopsmegarow {
       ~{if (ec) then "--ec" else ""} \
       ~{if (header) then "--header" else ""} \
       ~{if (help) then "--help-" else ""} \
+      ~{if (complement) then "--complement" else ""} \
       ~{if defined(difference) then ("--difference " +  '"' + difference + '"') else ""} \
       ~{if (element_of) then "--element-of" else ""} \
       ~{if defined(intersect) then ("--intersect " +  '"' + intersect + '"') else ""} \
@@ -38,11 +40,15 @@ task Bedopsmegarow {
       ~{if defined(everything) then ("--everything " +  '"' + everything + '"') else ""} \
       ~{if (chop) then "--chop" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chrom: "Jump to and process data for given <chromosome> only."
     ec: "Error check input files (slower)."
     header: "Accept headers (VCF, GFF, SAM, BED, WIG) in any input file."
     help: "<operation>   Detailed help on <operation>.\\nAn example is --help-c or --help-complement"
+    complement: "[-L] File1 [File]*"
     difference: "File2 [File]*"
     element_of: "[bp | percentage] ReferenceFile File2 [File]*\\nby default, -e 100% is used.  'bedops -e 1' is also popular."
     intersect: "File2 [File]*"

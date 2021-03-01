@@ -12,6 +12,9 @@ task KtImportPhymmBL {
       ~{magnitudes} \
       ~{name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     phy_mm_bl_results: "PhymmBL results files (results.03.*). Results can also be\\nfrom Phymm alone (results.01.*), but [-p] must be\\nspecified. By default, separate datasets will be created\\nfor each input (see [-c])."
     magnitudes: "Optional file listing query IDs with magnitudes, separated\\nby tabs. This can be used to account for read length or\\ncontig depth to obtain a more accurate representation of\\nabundance. By default, query sequences without specified\\nmagnitudes will be assigned a magnitude of 1. Magnitude\\nfiles for assemblies in ACE format can be created with\\nktGetContigMagnitudes."

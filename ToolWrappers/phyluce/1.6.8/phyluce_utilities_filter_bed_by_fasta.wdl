@@ -12,6 +12,9 @@ task PhyluceUtilitiesFilterBedByFasta {
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
       ~{if defined(output_bed_file) then ("--output " +  '"' + output_bed_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "The BED file to filter."
     fast_a: "The FASTA file to use as a filter."

@@ -50,6 +50,9 @@ task Cmcalibrate {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     set_random_length: ": set random seq length to search in Mb to <x>  [1.6]  (0.01<=x<=160.)"
     forecast: ": don't do calibration, predict running time and exit"

@@ -10,6 +10,9 @@ task Rsemscanforpairedendreads {
       ~{input_dots_am} \
       ~{output_dot_bam}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dots_am: ""
     output_dot_bam: ""

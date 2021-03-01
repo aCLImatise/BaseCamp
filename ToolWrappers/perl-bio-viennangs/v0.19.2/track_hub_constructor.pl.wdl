@@ -22,6 +22,9 @@ task TrackHubConstructorpl {
       ~{if (man) then "--man" else ""} \
       ~{if (url) then "-URL" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gi: "Genome id as used in UCSC assembly hub. Must be correct, otherwise\\nthe annotation cannot be mapped on the genome."
     in_folder: "Directory which contains all track files in BED/bigBed format. The\\nresulting Track Hub will contain these files in their respective\\nbigFile version."

@@ -10,6 +10,9 @@ task SamtoolsReheader {
       ~{in_dot_header_dots_am} \
       ~{in_dot_bam}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_header_dots_am: ""
     in_dot_bam: ""

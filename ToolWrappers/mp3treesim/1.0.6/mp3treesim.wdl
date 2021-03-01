@@ -3,7 +3,7 @@ version 1.0
 task Mp3treesim {
   input {
     Boolean? run_mptreesim_intersection
-    Boolean? run_mptreesim_union
+    Boolean? run_mptreesim_mode
     Boolean? run_mptreesim_geometric
     Int? cores
     Boolean? labeled_only
@@ -14,15 +14,18 @@ task Mp3treesim {
     mp3treesim \
       ~{tree} \
       ~{if (run_mptreesim_intersection) then "-i" else ""} \
-      ~{if (run_mptreesim_union) then "-u" else ""} \
+      ~{if (run_mptreesim_mode) then "-u" else ""} \
       ~{if (run_mptreesim_geometric) then "-g" else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if (labeled_only) then "--labeled-only" else ""} \
       ~{if (exclude) then "--exclude" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run_mptreesim_intersection: "Run MP3-treesim in Intersection mode."
-    run_mptreesim_union: "Run MP3-treesim in Union mode."
+    run_mptreesim_mode: "Run MP3-treesim in Union mode."
     run_mptreesim_geometric: "Run MP3-treesim in Geometric mode."
     cores: "Number of cores to be used in computation."
     labeled_only: "Ingore nodes without \\\"label\\\" attribute. The trees will\\nbe interpred as partially-label trees."

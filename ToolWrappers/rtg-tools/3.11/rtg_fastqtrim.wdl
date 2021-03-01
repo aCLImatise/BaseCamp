@@ -34,6 +34,9 @@ task RtgFastqtrim {
       ~{if defined(subsample) then ("--subsample " +  '"' + subsample + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fastq_file: "input FASTQ file, Use '-' to read from\\nstandard input"
     output_filename_use: "output filename. Use '-' to write to\\nstandard output"

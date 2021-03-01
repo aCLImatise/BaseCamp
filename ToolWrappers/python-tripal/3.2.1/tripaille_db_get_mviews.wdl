@@ -8,6 +8,9 @@ task TripailleDbGetMviews {
     tripaille db get_mviews \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "filter on mview name"
   }

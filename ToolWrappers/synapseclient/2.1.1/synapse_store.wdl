@@ -14,11 +14,11 @@ task SynapseStore {
     Boolean? no_force_version
     String? annotations
     Boolean? replace
-    File file
+    File file_added_synapse
   }
   command <<<
     synapse store \
-      ~{file} \
+      ~{file_added_synapse} \
       ~{if defined(parentid) then ("--parentid " +  '"' + parentid + '"') else ""} \
       ~{if defined(id) then ("--id " +  '"' + id + '"') else ""} \
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""} \
@@ -32,6 +32,9 @@ task SynapseStore {
       ~{if defined(annotations) then ("--annotations " +  '"' + annotations + '"') else ""} \
       ~{if (replace) then "--replace" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     parentid: "Synapse ID of project or folder where to upload data\\n(must be specified if --id is not used."
     id: "Optional Id of entity in Synapse to be updated."
@@ -45,7 +48,7 @@ task SynapseStore {
     no_force_version: "Do not force a new version to be created if the\\ncontents of the file have not changed. The default is\\na new version is created."
     annotations: "Annotations to add as a JSON formatted string, should\\nevaluate to a dictionary (key/value pairs). Example:\\n'{\\\"foo\\\": 1, \\\"bar\\\":\\\"quux\\\"}'"
     replace: "Replace all existing annotations with the given\\nannotations\\n"
-    file: "file to be added to synapse."
+    file_added_synapse: "file to be added to synapse."
   }
   output {
     File out_stdout = stdout()

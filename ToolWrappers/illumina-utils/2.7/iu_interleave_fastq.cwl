@@ -3,17 +3,17 @@ id: iu_interleave_fastq.cwl
 inputs:
 - id: in_one
   doc: "FASTQ, --input-r1 R1 FASTQ\nRead 1"
-  type: long
+  type: long?
   inputBinding:
     prefix: '-1'
 - id: in_two
   doc: "FASTQ, --input-r2 R2 FASTQ\nRead 1"
-  type: long
+  type: long?
   inputBinding:
     prefix: '-2'
 - id: in_output_file_path
   doc: "Interleaved FASTQ file path (give it a good name).\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file-path
 - id: in_fast_q
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output_file_path
   doc: "Interleaved FASTQ file path (give it a good name).\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file_path)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - iu-interleave-fastq

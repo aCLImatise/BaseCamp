@@ -8,6 +8,9 @@ task LynerSupplement {
     lyner supplement \
       ~{supplementary_data}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     supplementary_data: ""
   }

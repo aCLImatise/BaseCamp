@@ -16,6 +16,9 @@ task ConvertAlphabetpyOutputFastx {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     d: ""

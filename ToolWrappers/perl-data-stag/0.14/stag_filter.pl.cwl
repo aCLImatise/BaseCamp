@@ -4,23 +4,23 @@ inputs:
 - id: in_parser_formatformat_one
   doc: "|parser FORMAT\nFORMAT is one of xml, sxpr or itext, or the name of a perl\
     \ module\nxml assumed as default"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_writer_formatformat_one
   doc: "|writer FORMAT\nFORMAT is one of xml, sxpr or itext, or the name of a perl\
     \ module"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -w
-- id: in_countprints_number_pass
+- id: in_countprints_number_nodes
   doc: "|count\nprints the number of nodes that pass the test"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_filter_file
   doc: "|f\na file containing a perl subroutine (in place of the SUB argument)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -filterfile
 - id: in_query_tagval_qquery
@@ -28,7 +28,7 @@ inputs:
     \ on the field TAG\nother operators can be used too - eg <, <=, etc\nmultiple\
     \ q arguments can be passed in\nfor more complex operations, pass in your own\
     \ subroutine, see below"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
 - id: in_interest
@@ -59,6 +59,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - stag-filter.pl

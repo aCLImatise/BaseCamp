@@ -3,22 +3,22 @@ id: anvi_display_pan.cwl
 inputs:
 - id: in_pan_db
   doc: Anvi'o pan database
-  type: string
+  type: string?
   inputBinding:
     prefix: --pan-db
 - id: in_genomes_storage
   doc: Anvi'o genomes storage file
-  type: File
+  type: File?
   inputBinding:
     prefix: --genomes-storage
 - id: in_view_data
   doc: A TAB-delimited file for view data
-  type: File
+  type: File?
   inputBinding:
     prefix: --view-data
 - id: in_tree
   doc: NEWICK formatted tree structure
-  type: string
+  type: string?
   inputBinding:
     prefix: --tree
 - id: in_additional_view
@@ -27,7 +27,7 @@ inputs:
     \ samples.\nEach column in this file must correspond to a sample\nname. Content\
     \ of this file will be called 'user_view',\nwhich will be available as a new item\
     \ in the 'views'\ncombo box in the interface"
-  type: File
+  type: File?
   inputBinding:
     prefix: --additional-view
 - id: in_additional_layers
@@ -36,44 +36,44 @@ inputs:
     \ The\nfile does not need to contain all split names, or\nvalues for each split\
     \ in every column. Anvi'o will try\nto deal with missing data nicely. Each column\
     \ in this\nfile will be visualized as a new layer in the tree."
-  type: File
+  type: File?
   inputBinding:
     prefix: --additional-layers
 - id: in_title
   doc: "Title for the interface. If you are working with a\nRUNINFO dict, the title\
     \ will be determined based on\ninformation stored in that file. Regardless, you\
     \ can\noverride that value using this parameter."
-  type: File
+  type: File?
   inputBinding:
     prefix: --title
 - id: in_state_autoload
   doc: "Automatically load previous saved state and draw tree.\nTo see a list of available\
     \ states, use --show-states\nflag."
-  type: string
+  type: string?
   inputBinding:
     prefix: --state-autoload
 - id: in_collection_autoload
   doc: "Automatically load a collection and draw tree. To see\na list of available\
     \ collections, use --list-\ncollections flag."
-  type: string
+  type: string?
   inputBinding:
     prefix: --collection-autoload
 - id: in_export_svg
   doc: The SVG output file path.
-  type: File
+  type: File?
   inputBinding:
     prefix: --export-svg
 - id: in_skip_in_it_functions
   doc: "When declared, function calls for genes will not be\ninitialized (therefore\
     \ will be missing from all\nrelevant interfaces or output files). The use of this\n\
     flag may reduce the memory fingerprint and processing\ntime for large datasets."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip-init-functions
 - id: in_dry_run
   doc: "Don't do anything real. Test everything, and stop\nright before wherever the\
     \ developer said 'well, this\nis enough testing', and decided to print out results."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dry-run
 - id: in_skip_auto_ordering
@@ -81,20 +81,20 @@ inputs:
     \ based on additional data is\nskipped. In case those buggers cause issues with\
     \ your\ndata, and you still want to see your stuff and deal\nwith the other issue\
     \ maybe later."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip-auto-ordering
 - id: in_ip_address
   doc: "IP address for the HTTP server. The default ip address\n(0.0.0.0) should work\
     \ just fine for most."
-  type: double
+  type: double?
   inputBinding:
     prefix: --ip-address
 - id: in_port_number
   doc: "Port number to use for anvi'o services. If nothing is\ndeclared, anvi'o will\
     \ try to find a suitable port\nnumber, starting from the default port number,\
     \ 8080."
-  type: long
+  type: long?
   inputBinding:
     prefix: --port-number
 - id: in_browser_path
@@ -103,20 +103,20 @@ inputs:
     \ you can\nprovide a full path for an alternative browser using\nthis parameter,\
     \ and hope for the best. For instance we\nare using this parameter to call Google's\
     \ experimental\nbrowser, Canary, which performs better with demanding\nvisualizations."
-  type: File
+  type: File?
   inputBinding:
     prefix: --browser-path
 - id: in_read_only
   doc: "When the interactive interface is started with this\nflag, all 'database write'\
     \ operations will be\ndisabled."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --read-only
 - id: in_server_only
   doc: "The default behavior is to start the local server, and\nfire up a browser\
     \ that connects to the server. If you\nhave other plans, and want to start the\
     \ server without\ncalling the browser, this is the flag you need."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --server-only
 - id: in_password_protected
@@ -124,12 +124,12 @@ inputs:
     \ interactive interface will be\nonly accessible after entering same password.\
     \ This\noption is recommended for shared machines like\nclusters or shared networks\
     \ where computers are not\nisolated."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --password-protected
 - id: in_user_server_shutdown
   doc: "Allow users to shutdown an anvi'server via web\ninterface.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --user-server-shutdown
 - id: in_interface_dot
@@ -144,9 +144,10 @@ outputs:
   type: stdout
 - id: out_export_svg
   doc: The SVG output file path.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_export_svg)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-display-pan

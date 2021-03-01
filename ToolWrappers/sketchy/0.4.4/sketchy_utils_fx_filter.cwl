@@ -3,27 +3,27 @@ id: sketchy_utils_fx_filter.cwl
 inputs:
 - id: in_fpath
   doc: Path to Fast{a,q} input file.  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --fpath
 - id: in_output
   doc: Output to Fast{a,q} file. Default stdout [-]
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_ids
   doc: "Path to file containing the read IDs to get from\nFast{a,q}.   [required]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --ids
 - id: in_column
   doc: Column index that contains the IDs (0-based). [1]
-  type: long
+  type: long?
   inputBinding:
     prefix: --column
 - id: in_sep
   doc: File separator to read columns. ['\t']
-  type: File
+  type: File?
   inputBinding:
     prefix: --sep
 outputs:
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output to Fast{a,q} file. Default stdout [-]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sketchy

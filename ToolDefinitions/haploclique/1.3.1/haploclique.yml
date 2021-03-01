@@ -3,105 +3,193 @@ command:
 - haploclique
 positional:
 - !Positional
-  description: use the original clever clique finder
+  optional: false
   position: 0
   name: clever
-  optional: false
+  description: use the original clever clique finder
 - !Positional
-  description: use the Bron-Kerbosch based clique finder
+  optional: false
   position: 1
   name: bronkerbosch
+  description: use the Bron-Kerbosch based clique finder
+- !Positional
   optional: false
+  position: 0
+  name: yet.
+  description: -M FILE --mean_and_sd_filename=FILE     Required for option -I
 named:
 - !Flag
-  description: "edge calculator option\n[default: 0.99]"
+  optional: true
   synonyms:
   - -q
   - --edge_quasi_cutoff_cliques
+  description: "edge calculator option\n[default: 0.99]"
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: "edge calculator option\n[default: 0.97]"
+  optional: true
   synonyms:
   - -k
   - --edge_quasi_cutoff_mixed
+  description: "edge calculator option\n[default: 0.97]"
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: "edge calculator option\n[default: 0.95]"
+  optional: true
   synonyms:
   - -g
   - --edge_quasi_cutoff_single
+  description: "edge calculator option\n[default: 0.95]"
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: "edge calculator option\n[default: 0.9]"
+  optional: true
   synonyms:
   - -Q
   - --random_overlap_quality
+  description: "edge calculator option\n[default: 0.9]"
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: "Reads will be clustered with\nsingle nucleotide insertions or\ndeletions.\
-    \ Use for PacBio data."
+  optional: true
   synonyms:
   - -m
   - --frame_shift_merge
+  description: "Reads will be clustered with\nsingle nucleotide insertions or\ndeletions.\
+    \ Use for PacBio data."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "edge calculator option\n[default: 0.9]"
+  optional: true
   synonyms:
   - -o
   - --min_overlap_cliques
+  description: "edge calculator option\n[default: 0.9]"
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: "edge calculator option\n[default: 0.6]"
+  optional: true
   synonyms:
   - -j
   - --min_overlap_single
+  description: "edge calculator option\n[default: 0.6]"
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: "-I FILE --call_indels=FILE              variant calling is not supported\n\
-    yet.\n-M FILE --mean_and_sd_filename=FILE     Required for option -I\n-p NUM --indel_edge_sig_level=NUM\
-    \       [default: 0.2]\n-i NUM --iterations=NUM                 Number of iterations.\n\
-    haploclique will stop if the\nsuperreads converge.\n[default: -1]\n-f NUM --filter=NUM\
-    \                     Filter out reads with low\nfrequency at the end.\n[default:\
-    \ 0.0]\n-n --no_singletons                          Filter out single read cliques\n\
-    after first iteration.\n-s NUM --significance=NUM               Filter out reads\
-    \ witch are below\n<num> standard deviations.\n[default: 3.0]\n-L FILE --log=FILE\
-    \                       Write log to <file>.\n-d NUM --doc_haplotypes=NUM    \
-    \          Used in simulation studies with known\nhaplotypes to document which\
-    \ reads\ncontributed to which final cliques (3 or 5).\n-p0 --no_prob0        \
-    \                    ignore the tail probabilites during edge\ncalculation in\
-    \ <output>.\n-gff --gff                               Option to create GFF File\
-    \ from output. <output> is used as prefix.\n-bam --bam                       \
-    \        Option to create BAM File from output. <output> is used as prefix.\n\
-    -mc NUM --max_cliques=NUM                Set a threshold for the maximal number\
-    \ of cliques which\nshould be considered in the next iteration.\n-lc NUM --limit_clique_size=NUM\
-    \          Set a threshold to limit the size of cliques.\n-h --help          \
-    \                      Display this help text\n-v --version                  \
-    \           Display version\n"
+  optional: true
   synonyms:
   - -A
   - --allel_frequencies
+  - -I
+  - --call_indels
+  description: variant calling is not supported
   args: !SimpleFlagArg
     name: FILE
+- !Flag
   optional: true
+  synonyms:
+  - -i
+  - --iterations
+  description: "Number of iterations.\nhaploclique will stop if the\nsuperreads converge.\n\
+    [default: -1]"
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --filter
+  description: "Filter out reads with low\nfrequency at the end.\n[default: 0.0]"
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --no_singletons
+  description: "Filter out single read cliques\nafter first iteration."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --significance
+  description: "Filter out reads witch are below\n<num> standard deviations.\n[default:\
+    \ 3.0]"
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --log
+  description: Write log to <file>.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --doc_haplotypes
+  description: "Used in simulation studies with known\nhaplotypes to document which\
+    \ reads\ncontributed to which final cliques (3 or 5)."
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -p0
+  - --no_prob0
+  description: "ignore the tail probabilites during edge\ncalculation in <output>."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gff
+  - --gff
+  description: Option to create GFF File from output. <output> is used as prefix.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -bam
+  - --bam
+  description: Option to create BAM File from output. <output> is used as prefix.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mc
+  - --max_cliques
+  description: "Set a threshold for the maximal number of cliques which\nshould be\
+    \ considered in the next iteration."
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -lc
+  - --limit_clique_size
+  description: Set a threshold to limit the size of cliques.
+  args: !SimpleFlagArg
+    name: NUM
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display this help text
+  args: !EmptyFlagArg {}
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Display version
+  args: !EmptyFlagArg {}
 help_text: "haploclique predicts haplotypes from NGS reads.\n\nUsage:\n  haploclique\
   \ bronkerbosch [options] [--] <bamfile> [<output>]\n  haploclique [options] [--]\
   \ <bamfile> [<output>]\n\n  clever        use the original clever clique finder\n\
@@ -148,3 +236,4 @@ help_text: "haploclique predicts haplotypes from NGS reads.\n\nUsage:\n  haplocl
   \  -v --version                             Display version\n\n\n"
 generated_using:
 - --help
+docker_image:

@@ -22,6 +22,9 @@ task Anviscriptcalculatepnpsratio {
       ~{if defined(min_coverage) then ("--min-coverage " +  '"' + min_coverage + '"') else ""} \
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     engine: "and the output filename."
     sa_av_table: "Filepath to the SAAV table."

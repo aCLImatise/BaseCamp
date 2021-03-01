@@ -20,6 +20,9 @@ task PyatacSizes {
       ~{if defined(upper) then ("--upper " +  '"' + upper + '"') else ""} \
       ~{if (no_plot) then "--no_plot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Aligned reads"
     bed: "Only compute size distribution for fragment centered\\nwithin regions in bed file"

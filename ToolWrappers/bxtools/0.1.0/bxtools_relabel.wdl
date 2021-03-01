@@ -10,6 +10,9 @@ task BxtoolsRelabel {
       ~{input_dot_bam} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Select verbosity level (0-4). Default: 0"
     input_dot_bam: ""

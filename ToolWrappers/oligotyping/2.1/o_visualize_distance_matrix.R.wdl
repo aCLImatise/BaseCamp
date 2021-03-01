@@ -30,6 +30,9 @@ task OvisualizedistancematrixR {
       ~{if defined(tree_height_row) then ("--treeheight_row " +  '"' + tree_height_row + '"') else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metadata: "Metadata file"
     otu_limits: "Color 3% OTU limits [default \\\"FALSE\\\"]"

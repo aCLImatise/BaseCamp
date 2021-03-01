@@ -3,7 +3,7 @@ id: dirname.cwl
 inputs:
 - id: in_end_output_line
   doc: end each output line with NUL, not newline
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --zero
 - id: in_name_dot_dot_dot
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dirname

@@ -4,6 +4,9 @@ task GmtkTriangulate {
   command <<<
     gmtkTriangulate
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

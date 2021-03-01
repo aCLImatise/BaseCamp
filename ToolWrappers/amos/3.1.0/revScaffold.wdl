@@ -18,6 +18,9 @@ task RevScaffold {
       ~{if defined(flip_scaffolds_eids) then ("-E " +  '"' + flip_scaffolds_eids + '"') else ""} \
       ~{if defined(flip_scaffolds_iids) then ("-I " +  '"' + flip_scaffolds_iids + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     display_compatible_version: "Display the compatible bank version"
     flip_scaffold_eid: "Flip scaffold eid"

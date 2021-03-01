@@ -8,18 +8,21 @@ task Vcfsort {
     Boolean? always_print_headers
     String cat
     String head
-    File? file
+    File? var_file
   }
   command <<<
     vcfsort \
       ~{cat} \
       ~{head} \
-      ~{file} \
+      ~{var_file} \
       ~{if (invalid_option_) then "-1000" else ""} \
       ~{if (print_first_n) then "-c" else ""} \
       ~{if (never_print_headers) then "-q" else ""} \
       ~{if (always_print_headers) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     invalid_option_: ": invalid option -- '-'"
     print_first_n: "[-]N[kbm]    Print first N bytes"
@@ -27,7 +30,7 @@ task Vcfsort {
     always_print_headers: "Always print headers"
     cat: ""
     head: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

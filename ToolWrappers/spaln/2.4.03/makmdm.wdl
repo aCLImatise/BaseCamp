@@ -20,6 +20,9 @@ task Makmdm {
       ~{if (_vt_series) then "-v" else ""} \
       ~{if (opt_dot_dot_dot) then "-opt..." else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     suppress_output_average: ":    Suppress output of average compositions"
     suppress_output_mdm: ":    Suppress output of mdm matrix"

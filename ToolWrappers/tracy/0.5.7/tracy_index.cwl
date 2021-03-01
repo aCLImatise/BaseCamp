@@ -3,7 +3,7 @@ id: tracy_index.cwl
 inputs:
 - id: in_arg_output_file
   doc: '[ --output ] arg (="genome.fm9")  output file'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_genome_dot_fado_tgz
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_arg_output_file
   doc: '[ --output ] arg (="genome.fm9")  output file'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_arg_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tracy

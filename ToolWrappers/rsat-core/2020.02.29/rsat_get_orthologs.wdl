@@ -40,9 +40,12 @@ task RsatGetorthologs {
       ~{if (unique_species) then "-unique_species" else ""} \
       ~{if defined(return) then ("-return " +  '"' + return + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     unique_species: ", but at the level of the genus. At this level we"
-    return: "-return query_id,e_value,rank"
+    return: ",e_value,rank"
     get_orthologs: "[1mDESCRIPTION[0m"
     ref_id: "ID of the reference (target) gene"
     ref_organism: "Name of the reference (target) organism"

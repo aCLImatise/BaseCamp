@@ -1,0 +1,162 @@
+!Command
+command:
+- inStrain
+- filter_reads
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: bam
+  description: Sorted .bam file
+- !Positional
+  optional: false
+  position: 1
+  name: fasta
+  description: Fasta file the bam is mapped to
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Location of folder to store read report(s) (default:\nNone)"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --processes
+  description: 'Number of processes to use (default: 6)'
+  args: !SimpleFlagArg
+    name: PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: 'Make extra debugging output (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --min_read_ani
+  description: "Minimum percent identity of read pairs to consensus to\nuse the reads.\
+    \ Must be >, not >= (default: 0.95)"
+  args: !SimpleFlagArg
+    name: MIN_READ_ANI
+- !Flag
+  optional: true
+  synonyms:
+  - --min_mapq
+  description: "Minimum mapq score of EITHER read in a pair to use\nthat pair. Must\
+    \ be >, not >= (default: -1)"
+  args: !SimpleFlagArg
+    name: MIN_MAPQ
+- !Flag
+  optional: true
+  synonyms:
+  - --max_insert_relative
+  description: "Multiplier to determine maximum insert size between\ntwo reads - default\
+    \ is to use 3x median insert size.\nMust be >, not >= (default: 3)"
+  args: !SimpleFlagArg
+    name: MAX_INSERT_RELATIVE
+- !Flag
+  optional: true
+  synonyms:
+  - --min_insert
+  description: "Minimum insert size between two reads - default is 50\nbp. If two\
+    \ reads are 50bp each and overlap completely,\ntheir insert will be 50. Must be\
+    \ >, not >= (default:\n50)"
+  args: !SimpleFlagArg
+    name: MIN_INSERT
+- !Flag
+  optional: true
+  synonyms:
+  - --pairing_filter
+  description: "How should paired reads be handled?\npaired_only = Only paired reads\
+    \ are retained\nnon_discordant = Keep all paired reads and singleton reads that\
+    \ map to a single scaffold\nall_reads = Keep all reads regardless of pairing status\
+    \ (NOT RECOMMENDED; See documentation for deatils)\n(default: paired_only)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      paired_only:
+      non_discordant:
+      all_reads:
+- !Flag
+  optional: true
+  synonyms:
+  - --priority_reads
+  description: "The location of a list of reads that should be\nretained regardless\
+    \ of pairing status (for example\nlong reads or merged reads). This can be a .fastq\
+    \ file\nor text file with list of read names (will assume file\nis compressed\
+    \ if ends in .gz (default: None)"
+  args: !SimpleFlagArg
+    name: PRIORITY_READS
+- !Flag
+  optional: true
+  synonyms:
+  - --detailed_mapping_info
+  description: "Make a detailed read report indicating deatils about\neach individual\
+    \ mapped read (default: False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: inStrain filter_reads [-o OUTPUT] [-p PROCESSES] [-d] [-h] [--version]\n\
+  \                             [-l MIN_READ_ANI] [--min_mapq MIN_MAPQ]\n        \
+  \                     [--max_insert_relative MAX_INSERT_RELATIVE]\n            \
+  \                 [--min_insert MIN_INSERT]\n                             [--pairing_filter\
+  \ {all_reads,non_discordant,paired_only}]\n                             [--priority_reads\
+  \ PRIORITY_READS]\n                             [--detailed_mapping_info]\n    \
+  \                         bam fasta\n\nREQUIRED:\n  bam                   Sorted\
+  \ .bam file\n  fasta                 Fasta file the bam is mapped to\n  -o OUTPUT,\
+  \ --output OUTPUT\n                        Location of folder to store read report(s)\
+  \ (default:\n                        None)\n\nSYSTEM PARAMETERS:\n  -p PROCESSES,\
+  \ --processes PROCESSES\n                        Number of processes to use (default:\
+  \ 6)\n  -d, --debug           Make extra debugging output (default: False)\n  -h,\
+  \ --help            show this help message and exit\n  --version             show\
+  \ program's version number and exit\n\nREAD FILTERING OPTIONS:\n  -l MIN_READ_ANI,\
+  \ --min_read_ani MIN_READ_ANI\n                        Minimum percent identity\
+  \ of read pairs to consensus to\n                        use the reads. Must be\
+  \ >, not >= (default: 0.95)\n  --min_mapq MIN_MAPQ   Minimum mapq score of EITHER\
+  \ read in a pair to use\n                        that pair. Must be >, not >= (default:\
+  \ -1)\n  --max_insert_relative MAX_INSERT_RELATIVE\n                        Multiplier\
+  \ to determine maximum insert size between\n                        two reads -\
+  \ default is to use 3x median insert size.\n                        Must be >, not\
+  \ >= (default: 3)\n  --min_insert MIN_INSERT\n                        Minimum insert\
+  \ size between two reads - default is 50\n                        bp. If two reads\
+  \ are 50bp each and overlap completely,\n                        their insert will\
+  \ be 50. Must be >, not >= (default:\n                        50)\n  --pairing_filter\
+  \ {all_reads,non_discordant,paired_only}\n                        How should paired\
+  \ reads be handled?\n                        paired_only = Only paired reads are\
+  \ retained\n                        non_discordant = Keep all paired reads and singleton\
+  \ reads that map to a single scaffold\n                        all_reads = Keep\
+  \ all reads regardless of pairing status (NOT RECOMMENDED; See documentation for\
+  \ deatils)\n                         (default: paired_only)\n  --priority_reads\
+  \ PRIORITY_READS\n                        The location of a list of reads that should\
+  \ be\n                        retained regardless of pairing status (for example\n\
+  \                        long reads or merged reads). This can be a .fastq file\n\
+  \                        or text file with list of read names (will assume file\n\
+  \                        is compressed if ends in .gz (default: None)\n\nREAD OUTPUT\
+  \ OPTIONS:\n  --detailed_mapping_info\n                        Make a detailed read\
+  \ report indicating deatils about\n                        each individual mapped\
+  \ read (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/instrain:1.5.1--py_0

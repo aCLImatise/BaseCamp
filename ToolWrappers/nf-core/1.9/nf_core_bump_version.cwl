@@ -3,7 +3,7 @@ id: nf_core_bump_version.cwl
 inputs:
 - id: in_next_flow
   doc: Bump required nextflow version instead of pipeline version
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nextflow
 - id: in_pipeline_directory
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nf-core

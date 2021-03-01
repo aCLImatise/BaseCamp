@@ -3,34 +3,48 @@ command:
 - validate_reads_blat
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: validate_contigs_blat
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: ref.fa
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: contigs.fa.
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: (=100)            minimum contigs
+  optional: true
   synonyms:
   - --min_contig
+  description: (=100)            minimum contigs
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: local align
+  optional: true
+  synonyms:
+  - --similar
+  description: (=0.95)              similarity
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --complete_rate
+  description: (=0.8)         completeness
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
   synonyms:
   - --is_local
+  description: local align
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -44,3 +58,4 @@ help_text: "validate_reads_blat: unrecognized option '--help'\nuknown option\nva
   \         completeness\n      --is_local                         local align\n\n"
 generated_using:
 - --help
+docker_image:

@@ -24,6 +24,9 @@ task H5cc {
       ~{if (shlib) then "-shlib" else ""} \
       ~{if (no_shlib) then "-noshlib" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     echo: "Show all the shell commands executed"
     prefix: "Prefix directory to find HDF5 lib/ and include/\\nsubdirectories [default: /usr/local]"

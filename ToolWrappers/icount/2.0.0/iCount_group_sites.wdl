@@ -22,6 +22,9 @@ task ICountGroupSites {
       ~{if (f) then "-F" else ""} \
       ~{if (s) then "-S" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     m: ""
     p: ""

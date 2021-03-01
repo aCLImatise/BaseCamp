@@ -88,6 +88,9 @@ task Designpy {
       ~{if (debug) then "--debug" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_probes: "The file to which all final probes should be written;\\nthey are written in FASTA format"
     probe_length: "(Optional) Make probes be PROBE_LENGTH nt long"

@@ -12,6 +12,9 @@ task GcloudComponentsInstall {
       ~{optional} \
       ~{flags}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     component_ids: ""
     optional: ""

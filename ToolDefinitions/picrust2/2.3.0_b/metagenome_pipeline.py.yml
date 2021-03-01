@@ -4,109 +4,109 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Input table of sequence abundances (BIOM, TSV, or\nmothur shared file\
-    \ format)."
+  optional: true
   synonyms:
   - -i
   - --input
+  description: "Input table of sequence abundances (BIOM, TSV, or\nmothur shared file\
+    \ format)."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Table of predicted gene family copy numbers (output of\nhsp.py)."
+  optional: true
   synonyms:
   - -f
   - --function
+  description: "Table of predicted gene family copy numbers (output of\nhsp.py)."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Table of predicted marker gene copy numbers (output of\nhsp.py - typically\
-    \ for 16S)."
+  optional: true
   synonyms:
   - -m
   - --marker
+  description: "Table of predicted marker gene copy numbers (output of\nhsp.py - typically\
+    \ for 16S)."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Sequences with NSTI values above this value will be\nexcluded (default:\
-    \ 2)."
+  optional: true
   synonyms:
   - --max_nsti
+  description: "Sequences with NSTI values above this value will be\nexcluded (default:\
+    \ 2)."
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min_reads
   description: "Minimum number of reads across all samples for each\ninput ASV. ASVs\
     \ below this cut-off will be counted as\npart of the \"RARE\" category in the\
     \ stratified output\n(default: 1)."
-  synonyms:
-  - --min_reads
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min_samples
   description: "Minimum number of samples that an ASV needs to be\nidentfied within.\
     \ ASVs below this cut-off will be\ncounted as part of the \"RARE\" category in\
     \ the\nstratified output (default: 1)."
-  synonyms:
-  - --min_samples
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --strat_out
   description: "Output table stratified by sequences as well. By\ndefault this will\
     \ be in \"contributional\" format (i.e.\nlong-format) unless the \"--wide_table\"\
     \ option is set.\nThe startified outfile is named\n\"metagenome_contrib.tsv.gz\"\
     \ when in long-format."
-  synonyms:
-  - --strat_out
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --wide_table
   description: "Output wide-format stratified table of metagenome\npredictions when\
     \ \"--strat_out\" is set. This is the\ndeprecated method of generating stratified\
     \ tables\nsince it is extremely memory intensive. The startified\noutfile is named\
     \ \"pred_metagenome_strat.tsv.gz\" when\nthis option is set."
-  synonyms:
-  - --wide_table
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --skip_norm
   description: "Skip normalizing sequence abundances by predicted\nmarker gene copy\
     \ numbers (typically 16S rRNA genes).\nThis step will be performed automatically\
     \ unless this\noption is specified."
-  synonyms:
-  - --skip_norm
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output directory for metagenome predictions. (default:\nmetagenome_out)."
+  optional: true
   synonyms:
   - -o
   - --out_dir
+  description: "Output directory for metagenome predictions. (default:\nmetagenome_out)."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -v
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: metagenome_pipeline.py [-h] -i PATH -f PATH [-m PATH]\n       \
   \                       [--max_nsti FLOAT] [--min_reads INT]\n                 \
   \             [--min_samples INT] [--strat_out] [--wide_table]\n               \
@@ -151,3 +151,4 @@ help_text: "usage: metagenome_pipeline.py [-h] -i PATH -f PATH [-m PATH]\n      
   \ -m predicted_16S.tsv.gz --max_nsti 2.0 -o metagenome_out\n"
 generated_using:
 - --help
+docker_image:

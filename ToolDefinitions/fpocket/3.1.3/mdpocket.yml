@@ -1,55 +1,54 @@
 !Command
 command:
 - mdpocket
-positional:
-- !Positional
-  description: '(netcdf)         '
-  position: 0
-  name: NetCDF
-  optional: false
-- !Positional
-  description: '(dcd)        '
-  position: 1
-  name: DCD
-  optional: false
+positional: []
 named:
 - !Flag
-  description: format
+  optional: true
   synonyms:
   - --trajectory_format
-  args: !SimpleFlagArg
-    name: trajectory
-  optional: true
-- !Flag
+  - --selected_pocket
+  - -f
   description: PDB file
+  args: !SimpleFlagArg
+    name: md_trajectory_format
+- !Flag
+  optional: true
   synonyms:
   - -f
+  description: PDB file
   args: !SimpleFlagArg
     name: topology
-  optional: true
 - !Flag
-  description: "--topology_format topology_format (currently only prmtop is supported)\n\
-    -x set this flag to perform interaction energy grid calculations"
+  optional: true
   synonyms:
   - --topology_file
+  - --topology_format
+  description: (currently only prmtop is supported)
   args: !SimpleFlagArg
     name: topology_file
-  optional: true
 - !Flag
-  description: ': specify the prefix of all output files here'
+  optional: true
+  synonyms:
+  - -x
+  description: this flag to perform interaction energy grid calculations
+  args: !SimpleFlagArg
+    name: set
+- !Flag
+  optional: true
   synonyms:
   - -o
   - --output_prefix
+  description: ': specify the prefix of all output files here'
   args: !SimpleFlagArg
     name: output_prefix
-  optional: true
 - !Flag
-  description: ': put this flag to score pockets by druggability'
+  optional: true
   synonyms:
   - -S
   - --druggability_score
+  description: ': put this flag to score pockets by druggability'
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -79,3 +78,4 @@ help_text: "\n:||: \e[1mmdpocket (fpocket 3.0)\e[0m :||:\n        \n\e[1m1: Pock
   \n\e[1mFor more information: http://fpocket.sourceforge.net\e[0m\n"
 generated_using:
 - --help
+docker_image:

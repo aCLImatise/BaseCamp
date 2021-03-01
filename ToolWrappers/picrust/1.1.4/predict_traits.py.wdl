@@ -40,6 +40,9 @@ task PredictTraitspy {
       ~{if defined(observed_trait_table) then ("--observed_trait_table " +  '"' + observed_trait_table + '"') else ""} \
       ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     output_trait_table: "the output filepath for trait predictions [default:\\npredicted_states.tsv]"

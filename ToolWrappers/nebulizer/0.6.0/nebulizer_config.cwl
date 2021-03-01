@@ -3,7 +3,7 @@ id: nebulizer_config.cwl
 inputs:
 - id: in_name
   doc: "only show configuration items that match NAME. Can include\nglob-style wild-cards."
-  type: string
+  type: string?
   inputBinding:
     prefix: --name
 - id: in_galaxy
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nebulizer

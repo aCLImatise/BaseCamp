@@ -22,6 +22,9 @@ task HicupTruncater {
       ~{if (threads) then "--threads" else ""} \
       ~{if (zip) then "--zip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Name of the optional configuration file"
     no_fill: "Hi-C protocol did NOT include a fill-in of sticky ends prior to\\nre-ligation and therefore reads shall be truncated at\\nthe restriction site sequence. This feature is only supported for\\nsingle restriction enzyme Hi-C."

@@ -2,11 +2,11 @@ version 1.0
 
 task RunBreakseq2py {
   input {
-    String? reference
     Int? n_threads
     Array[String] bams
     Directory? work
     Array[String] chromosomes
+    String? reference
     String? sample
     Boolean? keep_temp
     String? bp_lib
@@ -21,11 +21,11 @@ task RunBreakseq2py {
   }
   command <<<
     run_breakseq2_py \
-      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(n_threads) then ("--nthreads " +  '"' + n_threads + '"') else ""} \
       ~{if defined(bams) then ("--bams " +  '"' + bams + '"') else ""} \
       ~{if defined(work) then ("--work " +  '"' + work + '"') else ""} \
       ~{if defined(chromosomes) then ("--chromosomes " +  '"' + chromosomes + '"') else ""} \
+      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
       ~{if (keep_temp) then "--keep_temp" else ""} \
       ~{if defined(bp_lib) then ("--bplib " +  '"' + bp_lib + '"') else ""} \
@@ -38,12 +38,15 @@ task RunBreakseq2py {
       ~{if defined(junction_length) then ("--junction_length " +  '"' + junction_length + '"') else ""} \
       ~{if defined(format_version) then ("--format_version " +  '"' + format_version + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    reference: "[--sample SAMPLE] [--keep_temp]"
     n_threads: "Number of processes to use for parallelism (default:\\n1)"
     bams: "Alignment BAMs (default: [])"
     work: "Working directory (default: work)"
     chromosomes: "List of chromosomes to process (default: [])"
+    reference: "Reference FASTA (default: None)"
     sample: "Sample name. Leave unspecified to infer sample name\\nfrom BAMs. (default: None)"
     keep_temp: "Keep temporary files (default: False)"
     bp_lib: "Breakpoint library FASTA (default: None)"

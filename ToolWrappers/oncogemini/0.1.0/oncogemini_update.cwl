@@ -3,27 +3,27 @@ id: oncogemini_update.cwl
 inputs:
 - id: in_devel
   doc: Get the latest development version instead of the
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --devel
 - id: in_no_data
   doc: Do not install data dependencies
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nodata
 - id: in_extra
   doc: "Add additional non-standard genome annotations to\ninclude"
-  type: string
+  type: string?
   inputBinding:
     prefix: --extra
 - id: in_tool_dir
   doc: Directory for third party tools (ie /usr/local) update
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --tooldir
 - id: in_data_only
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dataonly
 - id: in_release
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - oncogemini

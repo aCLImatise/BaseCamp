@@ -8,6 +8,9 @@ task Statswrappersh {
     statswrapper_sh \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
   }

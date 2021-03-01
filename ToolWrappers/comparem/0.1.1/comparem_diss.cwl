@@ -3,17 +3,17 @@ id: comparem_diss.cwl
 inputs:
 - id: in_metric
   doc: 'distance metric to use (default: euclidean)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --metric
 - id: in_full_matrix
   doc: output full dissimilarity matrix
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --full_matrix
 - id: in_silent
   doc: suppress output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --silent
 - id: in_profile_file
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - comparem

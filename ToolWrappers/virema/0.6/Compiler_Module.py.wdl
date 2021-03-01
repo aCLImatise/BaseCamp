@@ -24,6 +24,9 @@ task CompilerModulepy {
       ~{if defined(output_dir) then ("--Output_Dir " +  '"' + output_dir + '"') else ""} \
       ~{if (bed) then "-BED" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_tag: "Enter a tag name that will be appended to end of each\\noutput file."
     ded_up: "Remove potential PCR duplicates. Default is off."

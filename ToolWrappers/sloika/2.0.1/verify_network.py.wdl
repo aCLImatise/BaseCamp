@@ -16,6 +16,9 @@ task VerifyNetworkpy {
       ~{if defined(stride) then ("--stride " +  '"' + stride + '"') else ""} \
       ~{if defined(win_len) then ("--winlen " +  '"' + win_len + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: "Length of kmer (default: 5)"
     n_feature: "Number of features to input to network (default: 4)"

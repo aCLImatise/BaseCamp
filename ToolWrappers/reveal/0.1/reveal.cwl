@@ -3,7 +3,7 @@ id: reveal.cwl
 inputs:
 - id: in_h
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -h
 - id: in_usage
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - reveal

@@ -32,6 +32,9 @@ task CheckmCodingPlot {
       ~{if defined(cd_bin_width) then ("--cd_bin_width " +  '"' + cd_bin_width + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     image_type: "desired image type (default: png)"
     dpi: "desired DPI of output image (default: 600)"

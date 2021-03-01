@@ -26,6 +26,9 @@ task DeepacvirTest {
       ~{if (keep) then "--keep" else ""} \
       ~{if defined(scale) then ("--scale " +  '"' + scale + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_cpus: "Number of CPU cores. Default: all."
     gpus: "GPU devices to use. Default: all"

@@ -13,7 +13,7 @@ task HicstuffView {
     Int? min
     Int? n_mad
     Boolean? normalize
-    File? name_image_file
+    File? name_where_stored
     String? region
     Int? trim
     String contact_map
@@ -34,10 +34,13 @@ task HicstuffView {
       ~{if defined(min) then ("--min " +  '"' + min + '"') else ""} \
       ~{if defined(n_mad) then ("--n-mad " +  '"' + n_mad + '"') else ""} \
       ~{if (normalize) then "--normalize" else ""} \
-      ~{if defined(name_image_file) then ("--output " +  '"' + name_image_file + '"') else ""} \
+      ~{if defined(name_where_stored) then ("--output " +  '"' + name_where_stored + '"') else ""} \
       ~{if defined(region) then ("--region " +  '"' + region + '"') else ""} \
       ~{if defined(trim) then ("--trim " +  '"' + trim + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     binning: "[bp|kb|Mb|Gb]   Subsampling factor or fix value in\\nbasepairs to use for binning\\n[default: 1]."
     cmap: "The name of a matplotlib colormap to\\nuse for the matrix. [default: Reds]"
@@ -50,7 +53,7 @@ task HicstuffView {
     min: "Minimum of the colorscale, works\\nidentically to --max. [default: 0]"
     n_mad: "Number of median absolute deviations (MAD) from the median\\nof log bin sums allowed to keep bins in the normalization\\nprocedure [default: 3]."
     normalize: "Should ICE normalization be performed\\nbefore rendering the matrix ?"
-    name_image_file: "Name of the image file where the view is stored."
+    name_where_stored: "Name of the image file where the view is stored."
     region: "[;STR]           Only view a region of the contact map.\\nRegions are specified as UCSC strings.\\n(e.g.:chr1:1000-12000). If only one\\nregion is given, it is viewed on the\\ndiagonal. If two regions are given,\\nThe contacts between both are shown."
     trim: "Trims outlier rows/columns from the\\nmatrix if the sum of their contacts\\ndeviates from the mean by more than\\nINT standard deviations.\\n"
     contact_map: "Sparse contact matrix in bg2, cool or graal format"

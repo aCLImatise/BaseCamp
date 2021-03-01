@@ -2,14 +2,17 @@ version 1.0
 
 task CollectMapqMetrics {
   input {
-    Boolean? displays_options_specific
+    Boolean? std_help
   }
   command <<<
     CollectMapqMetrics \
-      ~{if (displays_options_specific) then "-H" else ""}
+      ~{if (std_help) then "--stdhelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    displays_options_specific: "Displays options specific to this tool AND options common to all Picard command line\\ntools."
+    std_help: "Displays options specific to this tool AND options common to all Picard command line\\ntools."
   }
   output {
     File out_stdout = stdout()

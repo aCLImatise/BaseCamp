@@ -4,74 +4,77 @@ command:
 positional: []
 named:
 - !Flag
-  description: "reference fasta file (can be repeated several\ntime). [REQUIRED]"
+  optional: true
   synonyms:
   - --fasta
+  description: "reference fasta file (can be repeated several\ntime). [REQUIRED]"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: BAM/SAM file generated with erne-bs5 [REQUIRED]
+  optional: true
   synonyms:
   - --input
+  description: BAM/SAM file generated with erne-bs5 [REQUIRED]
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "prefix for output files (methylation analysis,\nreports). [REQUIRED]"
+  optional: true
   synonyms:
   - --output-prefix
+  description: "prefix for output files (methylation analysis,\nreports). [REQUIRED]"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --annotations-erne
   description: "Generate methylation annotations in erne\nformat. Format is: <chr>\
     \ <position> <strand>\n<context> <#C+#T> <methyl_level> <mult_reads>,\nwhere methyl_level\
     \ = #C/(#C+#T) (or NA if\n#C+#T=0) and mult_reads is the number of\nmultiple reads\
     \ disambiguated that cover the\nposition (only if --disambiguation-mode is\nspecified,\
     \ NA otherwise). Coordinates are\n1-based. Default: disabled."
-  synonyms:
-  - --annotations-erne
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --annotations-bismark
   description: "Generate methylation annotations in bismark\ncytosine format. Format\
     \ is: <chr> <position>\n<strand> <#C> <#T> <context> <detailed\ncontext>, where\
     \ <position> for - strand (Gs on\n+ strand) is computed as position of the\ncorresponding\
     \ G on + strand minus context\nlength plus one (context length = 2 for CG and\n\
     3 for CHG/CHH). Context is one of CG/CHG/CHH,\nwhile detailed context is the exact\
     \ 3 bases of\nthe context. Coordinates are 1-based. Default:\ndisabled."
-  synonyms:
-  - --annotations-bismark
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --annotations-epp
   description: "Generate methylation annotations in the format\nas output files from\
     \ the Epigenome Processing\nPipeline (EPP) applied at the Broad Institute.\nFormat\
     \ is (tab separated): <chr name> <start\ncontext(included)> <end context(excluded)>\n\
     <methylation value and coverage as a string (\n'#C/(#T+#C)', '0/0' if not covered\
     \ )>\n<methylation in range [0,1000]> <strand>\n<context(CG/CHG/CHH)>. Coordinates\
     \ are 0-based.\nDefault: disabled."
-  synonyms:
-  - --annotations-epp
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Compress methylation annotations in the\nspecified format (example:\
-    \ --compress bz).\nDefault: do not compress."
+  optional: true
   synonyms:
   - --compress
+  description: "Compress methylation annotations in the\nspecified format (example:\
+    \ --compress bz).\nDefault: do not compress."
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "write used alignments in a bam file. The bam\nfile is called 'output_prefix_alignments_used.b\n\
-    am', where output_prefix is the prefix\nspecified with --output-prefix."
+  optional: true
   synonyms:
   - --write-bam
+  description: "write used alignments in a bam file. The bam\nfile is called 'output_prefix_alignments_used.b\n\
+    am', where output_prefix is the prefix\nspecified with --output-prefix."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --target
   description: "input bed file with targeted regions in the\nformat chr start_pos(included)\n\
     end_pos(excluded). If specified, ERNE-METH will\nproduce also target statistics\
     \ and three output\nfiles with extension _on_target.txt,\n_off_target.txt and\
@@ -82,66 +85,66 @@ named:
     \ the distance from the\nnearest target region, coverage is the coverage\nof that\
     \ position and number_of_positions is the\nnumber of positions having that coverage\
     \ and\ndistance_from_target."
-  synonyms:
-  - --target
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extend-target
   description: "Extend boundaries of the targeted regions by\narg positions (on both\
     \ sides). Useful to take\ninto account tails of aligned reads at the\nextremities\
     \ of targeted regions while computing\nstatistics. Default: 0."
-  synonyms:
-  - --extend-target
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "In the annotations file print only on-target\npositions (included\
-    \ extended positions, see\n--extend-target). Default: false (print all\npositions)."
+  optional: true
   synonyms:
   - --on-target-annotations
+  description: "In the annotations file print only on-target\npositions (included\
+    \ extended positions, see\n--extend-target). Default: false (print all\npositions)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "In the annotations file print only covered\npositions. Default: false\
-    \ (print all\ncytosines)."
+  optional: true
   synonyms:
   - --print-only-covered
+  description: "In the annotations file print only covered\npositions. Default: false\
+    \ (print all\ncytosines)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Modality 1: Use only single-mapping reads. This\nmodality is incompatible\
-    \ with --multiple-mode.\nDefault: enabled."
+  optional: true
   synonyms:
   - --single-mode
+  description: "Modality 1: Use only single-mapping reads. This\nmodality is incompatible\
+    \ with --multiple-mode.\nDefault: enabled."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --multiple-mode
   description: "Modality 2: With paired end, if one mate is\nsingle and the other\
     \ multiple, use the primary\nalignment for the multiple-mapping read.\nDefault:\
     \ disabled"
-  synonyms:
-  - --multiple-mode
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --disambiguation-mode
   description: "Modality 3: Use methylation information to\ndisambiguate multiple-mapping\
     \ reads. WARNING:\ncan be used only on bam files produced with the\noption --print-all\
     \ and single-end reads.\nDefault: disabled."
-  synonyms:
-  - --disambiguation-mode
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use only the first arg alignments (or pairs if\npaired-end) in the\
-    \ input file. If set to 0, use\nall alignments. Default: 0."
+  optional: true
   synonyms:
   - --use-first
+  description: "Use only the first arg alignments (or pairs if\npaired-end) in the\
+    \ input file. If set to 0, use\nall alignments. Default: 0."
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --deduplicate
   description: "Automatically remove PCR duplicates while\ncalling methylation. An\
     \ alignment is considered\nduplicate if another alignment with same\nchromosome,\
     \ starting position and orientation\nhas already been processed. Given a set of\n\
@@ -150,114 +153,111 @@ named:
     \ For paired-end reads, a\npair is considered duplicate if and only if\nanother\
     \ pair with same chromosome, starting\nposition and orientation (for both reads)\
     \ has\nbeen aligned before. Default: false."
-  synonyms:
-  - --deduplicate
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If --deduplicate is specified, keep the first\narg duplicate alignments\
-    \ for a read/pair (in\nthe order seen in the bam file). Default: 1."
+  optional: true
   synonyms:
   - --allowed-duplicates
+  description: "If --deduplicate is specified, keep the first\narg duplicate alignments\
+    \ for a read/pair (in\nthe order seen in the bam file). Default: 1."
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --disable-unproper-pair
   description: "With paired end reads, discard unproper pairs\n(alignments on different\
     \ strand/chromosome).\nUnproper pairs could reflect structural\nvariations. Default:\
     \ disabled (accept unproper\npairs)."
-  synonyms:
-  - --disable-unproper-pair
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-coverage
   description: "Do not increment Cytosine coverage counters if\ncoverage of a Cytosine\
     \ is > arg. Can be used to\nnormalize read depth across multiple samples.\nDefault:\
     \ 2^16-1."
-  synonyms:
-  - --max-coverage
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "If the coverage of a cytosine in the reference\nis < arg then it is\
-    \ considered as not covered.\nDefault: 1."
+  optional: true
   synonyms:
   - --coverage-threshold
+  description: "If the coverage of a cytosine in the reference\nis < arg then it is\
+    \ considered as not covered.\nDefault: 1."
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --error-threshold
   description: "(only with --disambiguation-mode) use an\nalignment for the methylation\
     \ pattern extension\nonly if its average methylation distance per\ncytosine is\
     \ less or equal this value in %.\nDefault: 100."
-  synonyms:
-  - --error-threshold
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --delta-m
   description: "(only with --disambiguation-mode) During\ndisambiguation phase if\
     \ there are multiple\nalignments for a read then extend the\nmethylation profile\
     \ with the best one ONLY if\nits methylation distance is at least by arg\nsmaller\
     \ than the second best one. High values\nguarantee higher reliability. Default:\
     \ 0."
-  synonyms:
-  - --delta-m
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min-C-cov
   description: "(only with --disambiguation-mode) Lower bound\nfor the minimum number\
     \ of cytosines in an\nalignment that must be covered by the\nmethylation pattern\
     \ to process the alignment.\nWhen C_cov reaches this value, the algorithm is\n\
     terminated. Default: 10."
-  synonyms:
-  - --min-C-cov
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-C-cov
   description: "(only with --disambiguation-mode) Upper bound\nfor the minimum number\
     \ of cytosines in an\nalignment that must be covered by the\nmethylation pattern\
     \ to process the alignment.\nThis is the starting value for C_cov. Default:\n\
     20."
-  synonyms:
-  - --max-C-cov
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(only with --disambiguation-mode) If during a\ncycle less or equal\
-    \ than arg reads have been\ndisambiguated then decrement C_cov. Default: 10"
+  optional: true
   synonyms:
   - --aligned-reads-thr
+  description: "(only with --disambiguation-mode) If during a\ncycle less or equal\
+    \ than arg reads have been\ndisambiguated then decrement C_cov. Default: 10"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "reference file to use for contamination check\n(in ERNE format)\n"
+  optional: true
   synonyms:
   - --contamination-reference
+  description: "reference file to use for contamination check\n(in ERNE format)\n"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: produce help message
+  optional: true
   synonyms:
   - --help
+  description: produce help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: print version and exit
+  optional: true
   synonyms:
   - --version
+  description: print version and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "ERNE version 2.1.1\n\nThis is ERNE-METH. Allowed options:\n  --help  \
   \                      produce help message\n  --version                     print\
   \ version and exit\n                                \n  --fasta arg            \
@@ -398,3 +398,4 @@ help_text: "ERNE version 2.1.1\n\nThis is ERNE-METH. Allowed options:\n  --help 
   \ check \n                                (in ERNE format)\n\n"
 generated_using:
 - --help
+docker_image:

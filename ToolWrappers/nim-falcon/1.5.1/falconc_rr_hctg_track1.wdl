@@ -5,10 +5,10 @@ task FalconcRrhctgtrack1 {
     Boolean? help_syntax
     Boolean? test
     Boolean? _phasedreadfile_string
-    Boolean? _bestn_int
+    Boolean? _bestn_bestn
     Boolean? _ncore_int
-    Boolean? _minlen_int
-    Boolean? _output_string
+    Boolean? minlen_int_set
+    Boolean? _output_output
     Boolean? stream
     Boolean? debug
     Boolean? silent
@@ -24,22 +24,25 @@ task FalconcRrhctgtrack1 {
       ~{if (help_syntax) then "--help-syntax" else ""} \
       ~{if (test) then "--test" else ""} \
       ~{if (_phasedreadfile_string) then "-p" else ""} \
-      ~{if (_bestn_int) then "-b" else ""} \
+      ~{if (_bestn_bestn) then "-b" else ""} \
       ~{if (_ncore_int) then "-n" else ""} \
-      ~{if (_minlen_int) then "-m" else ""} \
-      ~{if (_output_string) then "-o" else ""} \
+      ~{if (minlen_int_set) then "-m" else ""} \
+      ~{if (_output_output) then "-o" else ""} \
       ~{if (stream) then "--stream" else ""} \
       ~{if (debug) then "--debug" else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help_syntax: "advanced:prepen\\nd,plurals,.."
     test: "bool    false                                                           set test"
     _phasedreadfile_string: "=, --phased-read-file=    string  \\\"./3-unzip/all_phased_reads\\\"                                    set"
-    _bestn_int: "=, --bestn=               int     40                                                              set bestn"
+    _bestn_bestn: "=, --bestn=               int     40                                                              set bestn"
     _ncore_int: "=, --n-core=              int     0                                                               set n_core"
-    _minlen_int: "=, --min-len=             int     2500                                                            set min_len"
-    _output_string: "=, --output=              string  \\\"./2-asm-falcon/read_maps/dump_rawread_ids/rawread_to_contigs\\\"  set output"
+    minlen_int_set: "=, --min-len=             int     2500                                                            set min_len"
+    _output_output: "=, --output=              string  \\\"./2-asm-falcon/read_maps/dump_rawread_ids/rawread_to_contigs\\\"  set output"
     stream: "bool    false                                                           set stream"
     debug: "bool    false                                                           set debug"
     silent: "bool    false                                                           set silent"

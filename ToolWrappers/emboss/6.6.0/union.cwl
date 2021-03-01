@@ -3,22 +3,22 @@ id: union.cwl
 inputs:
 - id: in_overlap_file
   doc: "outfile    [*.union] Sequence overlaps output file\n(optional)"
-  type: File
+  type: File?
   inputBinding:
     prefix: -overlapfile
 - id: in_feature
   doc: boolean    [N] Use feature information
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -feature
 - id: in_source
   doc: boolean    [N] Create source features
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -source
 - id: in_find_overlap
   doc: boolean    [N] Look for overlaps when joining
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -findoverlap
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_overlap_file
   doc: "outfile    [*.union] Sequence overlaps output file\n(optional)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_overlap_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - union

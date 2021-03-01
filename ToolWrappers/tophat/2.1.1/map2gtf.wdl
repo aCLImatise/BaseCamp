@@ -12,6 +12,9 @@ task Map2gtf {
       ~{alignments_dot_bam} \
       ~{out_file_dot_bam}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     annotation_do_ttl_st: ""
     alignments_dot_bam: ""

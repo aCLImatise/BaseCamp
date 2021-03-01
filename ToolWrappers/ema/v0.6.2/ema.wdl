@@ -13,7 +13,7 @@ task Ema {
     Boolean? multiinput_mode_takes
     File? _indexed_reference
     String? full_read_group
-    Boolean? apply_fragment_read
+    Boolean? apply_fragment_optimization
     Int? sequencing_platform_one
     Int? index_follow_tag
     String count_vertical_line_preproc_vertical_line_align_vertical_line_help
@@ -32,10 +32,13 @@ task Ema {
       ~{if (multiinput_mode_takes) then "-x" else ""} \
       ~{if defined(_indexed_reference) then ("-r " +  '"' + _indexed_reference + '"') else ""} \
       ~{if defined(full_read_group) then ("-R " +  '"' + full_read_group + '"') else ""} \
-      ~{if (apply_fragment_read) then "-d" else ""} \
+      ~{if (apply_fragment_optimization) then "-d" else ""} \
       ~{if defined(sequencing_platform_one) then ("-p " +  '"' + sequencing_platform_one + '"') else ""} \
       ~{if defined(index_follow_tag) then ("-i " +  '"' + index_follow_tag + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specify_barcode_whitelist: ": specify barcode whitelist [required]"
     specify_output_prefix: ": specify output prefix [required]"
@@ -48,7 +51,7 @@ task Ema {
     multiinput_mode_takes: ": multi-input mode; takes input files after flags and spawns a thread for each [off]"
     _indexed_reference: ": indexed reference [required]"
     full_read_group: ": full read group string (e.g. '@RG\\tID:foo\\tSM:bar') [none]"
-    apply_fragment_read: ": apply fragment read density optimization [off]"
+    apply_fragment_optimization: ": apply fragment read density optimization [off]"
     sequencing_platform_one: ": sequencing platform (one of '10x', 'tru', 'cpt') [10x]"
     index_follow_tag: ": index to follow 'BX' tag in SAM output [1]  -t <threads>: set number of threads [1]"
     count_vertical_line_preproc_vertical_line_align_vertical_line_help: ""

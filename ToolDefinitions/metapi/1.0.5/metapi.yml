@@ -1,0 +1,715 @@
+&id001 !Command
+command:
+- metapi
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - metapi
+  - init
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --workdir
+    description: 'project workdir, default: ./ (default: ./)'
+    args: !SimpleFlagArg
+      name: WORKDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --samples
+    description: "desired input:\nsamples list, tsv format required.\nif begin from\
+      \ trimming, rmhost, or assembly:\nif it is fastq:\nthe header is: [id, fq1,\
+      \ fq2]\nif it is sra:\nthe header is: [id, sra]\nif begin from simulate:\nthe\
+      \ header is: [id, genome, abundance, reads_num, model]"
+    args: !SimpleFlagArg
+      name: SAMPLES
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --begin
+    description: "pipeline starting point (default: trimming)\n"
+    args: !ChoiceFlagArg
+      choices: !!set
+        rmhost:
+        trimming:
+        assembly:
+        simulate:
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: metapi init [-h] [-d WORKDIR] [-s SAMPLES]\n                \
+    \   [-b {simulate,trimming,rmhost,assembly}]\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  -d, --workdir WORKDIR\n      \
+    \                  project workdir, default: ./ (default: ./)\n  -s, --samples\
+    \ SAMPLES\n                        desired input:\n                        samples\
+    \ list, tsv format required.\n                        \n                     \
+    \   if begin from trimming, rmhost, or assembly:\n                           \
+    \ if it is fastq:\n                                the header is: [id, fq1, fq2]\n\
+    \                            if it is sra:\n                                the\
+    \ header is: [id, sra]\n                        \n                        if begin\
+    \ from simulate:\n                                the header is: [id, genome,\
+    \ abundance, reads_num, model]\n                        \n  -b, --begin {simulate,trimming,rmhost,assembly}\n\
+    \                        pipeline starting point (default: trimming)\n"
+  generated_using: &id003
+  - --help
+  docker_image: quay.io/biocontainers/metapi:1.0.5--py_0
+- &id002 !Command
+  command:
+  - metapi
+  - mag_wf
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --workdir
+    description: 'project workdir, default: ./ (default: ./)'
+    args: !SimpleFlagArg
+      name: WORKDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --config
+    description: 'config.yaml, default: ./config.yaml (default: ./config.yaml)'
+    args: !SimpleFlagArg
+      name: CONFIG
+  - !Flag
+    optional: true
+    synonyms:
+    - --cluster
+    description: 'cluster.yaml, default: ./cluster.yaml (default: ./cluster.yaml)'
+    args: !SimpleFlagArg
+      name: CLUSTER
+  - !Flag
+    optional: true
+    synonyms:
+    - --cores
+    description: 'CPU cores, default: 8 (default: 8)'
+    args: !SimpleFlagArg
+      name: CORES
+  - !Flag
+    optional: true
+    synonyms:
+    - --jobs
+    description: 'qsub job numbers, default: 80 (default: 80)'
+    args: !SimpleFlagArg
+      name: JOBS
+  - !Flag
+    optional: true
+    synonyms:
+    - --list
+    description: list pipeline rules
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --run
+    description: run pipeline
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug
+    description: debug pipeline
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --dry_run
+    description: dry run pipeline
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --qsub
+    description: qsub pipeline
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --wait
+    description: 'wait given seconds, default: 60 (default: 60)'
+    args: !SimpleFlagArg
+      name: WAIT
+  - !Flag
+    optional: true
+    synonyms:
+    - --use_conda
+    description: use conda environment
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --conda_create_envs_only
+    description: "conda create environments only\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - metapi
+    - mag_wf
+    - TASK
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: metapi
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: mag_wf
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --cluster
+      description: ''
+      args: !SimpleFlagArg
+        name: CLUSTER
+    - !Flag
+      optional: true
+      synonyms:
+      - --config
+      description: ''
+      args: !SimpleFlagArg
+        name: CONFIG
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      description: ''
+      args: !SimpleFlagArg
+        name: WORKDIR
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      description: ''
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: metapi mag_wf [-h] [-d WORKDIR] [--config CONFIG] [--cluster\
+      \ CLUSTER]\n                     [--cores CORES] [--jobs JOBS] [--list] [--run]\
+      \ [--debug]\n                     [--dry_run] [--qsub] [--wait WAIT] [--use_conda]\n\
+      \                     [--conda_create_envs_only]\n                     [TASK]\n\
+      metapi mag_wf: error: argument TASK: invalid choice: 'TASK' (choose from 'simulate_all',\
+      \ 'prepare_short_reads_all', 'prepare_long_reads_all', 'prepare_reads_all',\
+      \ 'raw_fastqc_all', 'raw_report_all', 'raw_all', 'trimming_oas1_all', 'trimming_sickle_all',\
+      \ 'trimming_fastp_all', 'trimming_report_all', 'trimming_all', 'rmhost_bwa_all',\
+      \ 'rmhost_bowtie2_all', 'rmhost_report_all', 'rmhost_all', 'qcreport_all', 'assebmly_megahit_all',\
+      \ 'assembly_idba_ud_all', 'assembly_metaspades_all', 'assembly_spades_all',\
+      \ 'assembly_plass_all', 'assembly_opera_ms_all', 'assembly_metaquast_all', 'assembly_report_all',\
+      \ 'single_assembly_all', 'coassembly_megahit_all', 'coassembly_all', 'assembly_all',\
+      \ 'alignment_base_depth_all', 'single_alignment_all', 'coalignment_base_depth_all',\
+      \ 'coalignment_all', 'alignment_all', 'binning_metabat2_coverage_all', 'binning_metabat2_all',\
+      \ 'binning_maxbin2_all', 'binning_concoct_all', 'binning_graphbin_all', 'binning_dastools_all',\
+      \ 'binning_report_all', 'single_binning_all', 'cobinning_metabat2_coverage_all',\
+      \ 'cobinning_metabat2_all', 'cobinning_maxbin2_all', 'cobinning_concoct_all',\
+      \ 'cobinning_graphbin_all', 'cobinning_dastools_all', 'cobinning_report_all',\
+      \ 'cobinning_all', 'binning_all', 'predict_scaftigs_gene_prodigal_all', 'predict_scaftigs_gene_prokka_all',\
+      \ 'predict_bins_gene_prodigal_all', 'predict_bins_gene_prokka_all', 'single_predict_scaftigs_gene_all',\
+      \ 'single_predict_bins_gene_all', 'copredict_scaftigs_gene_prodigal_all', 'copredict_scaftigs_gene_prokka_all',\
+      \ 'copredict_bins_gene_prodigal_all', 'copredict_bins_gene_prokka_all', 'copredict_scafitgs_gene_all',\
+      \ 'copredict_bins_gene_all', 'predict_scaftigs_gene_all', 'predict_bins_gene_all',\
+      \ 'copredict_all', 'predict_all', 'single_checkm_all', 'cocheckm_all', 'checkm_all',\
+      \ 'dereplicate_mags_drep_all', 'dereplicate_mags_all', 'classify_short_reads_kraken2_all',\
+      \ 'single_classify_hmq_bins_gtdbtk_all', 'coclassify_hmq_bins_gtdbtk_all', 'classify_hmq_bins_gtdbtk_all',\
+      \ 'single_classify_all', 'coclassify_all', 'classify_all', 'profiling_metaphlan2_all',\
+      \ 'profiling_metaphlan3_all', 'profiling_jgi_all', 'profiling_bracken_all',\
+      \ 'profiling_humann2_all', 'profiling_humann3_all', 'profiling_all', 'upload_sequencing_all',\
+      \ 'upload_assembly_all', 'upload_all', 'all')\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/metapi:1.0.5--py_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: metapi mag_wf [-h] [-d WORKDIR] [--config CONFIG] [--cluster\
+    \ CLUSTER]\n                     [--cores CORES] [--jobs JOBS] [--list] [--run]\
+    \ [--debug]\n                     [--dry_run] [--qsub] [--wait WAIT] [--use_conda]\n\
+    \                     [--conda_create_envs_only]\n                     [TASK]\n\
+    \npositional arguments:\n  TASK                  pipeline end point. Allowed values\
+    \ are simulate_all, prepare_short_reads_all, prepare_long_reads_all, prepare_reads_all,\
+    \ raw_fastqc_all, raw_report_all, raw_all, trimming_oas1_all, trimming_sickle_all,\
+    \ trimming_fastp_all, trimming_report_all, trimming_all, rmhost_bwa_all, rmhost_bowtie2_all,\
+    \ rmhost_report_all, rmhost_all, qcreport_all, assebmly_megahit_all, assembly_idba_ud_all,\
+    \ assembly_metaspades_all, assembly_spades_all, assembly_plass_all, assembly_opera_ms_all,\
+    \ assembly_metaquast_all, assembly_report_all, single_assembly_all, coassembly_megahit_all,\
+    \ coassembly_all, assembly_all, alignment_base_depth_all, single_alignment_all,\
+    \ coalignment_base_depth_all, coalignment_all, alignment_all, binning_metabat2_coverage_all,\
+    \ binning_metabat2_all, binning_maxbin2_all, binning_concoct_all, binning_graphbin_all,\
+    \ binning_dastools_all, binning_report_all, single_binning_all, cobinning_metabat2_coverage_all,\
+    \ cobinning_metabat2_all, cobinning_maxbin2_all, cobinning_concoct_all, cobinning_graphbin_all,\
+    \ cobinning_dastools_all, cobinning_report_all, cobinning_all, binning_all, predict_scaftigs_gene_prodigal_all,\
+    \ predict_scaftigs_gene_prokka_all, predict_bins_gene_prodigal_all, predict_bins_gene_prokka_all,\
+    \ single_predict_scaftigs_gene_all, single_predict_bins_gene_all, copredict_scaftigs_gene_prodigal_all,\
+    \ copredict_scaftigs_gene_prokka_all, copredict_bins_gene_prodigal_all, copredict_bins_gene_prokka_all,\
+    \ copredict_scafitgs_gene_all, copredict_bins_gene_all, predict_scaftigs_gene_all,\
+    \ predict_bins_gene_all, copredict_all, predict_all, single_checkm_all, cocheckm_all,\
+    \ checkm_all, dereplicate_mags_drep_all, dereplicate_mags_all, classify_short_reads_kraken2_all,\
+    \ single_classify_hmq_bins_gtdbtk_all, coclassify_hmq_bins_gtdbtk_all, classify_hmq_bins_gtdbtk_all,\
+    \ single_classify_all, coclassify_all, classify_all, profiling_metaphlan2_all,\
+    \ profiling_metaphlan3_all, profiling_jgi_all, profiling_bracken_all, profiling_humann2_all,\
+    \ profiling_humann3_all, profiling_all, upload_sequencing_all, upload_assembly_all,\
+    \ upload_all, all (default: all)\n\noptional arguments:\n  -h, --help        \
+    \    show this help message and exit\n  -d, --workdir WORKDIR\n              \
+    \          project workdir, default: ./ (default: ./)\n  --config CONFIG     \
+    \  config.yaml, default: ./config.yaml (default: ./config.yaml)\n  --cluster CLUSTER\
+    \     cluster.yaml, default: ./cluster.yaml (default: ./cluster.yaml)\n  --cores\
+    \ CORES         CPU cores, default: 8 (default: 8)\n  --jobs JOBS           qsub\
+    \ job numbers, default: 80 (default: 80)\n  --list                list pipeline\
+    \ rules\n  --run                 run pipeline\n  --debug               debug pipeline\n\
+    \  --dry_run             dry run pipeline\n  --qsub                qsub pipeline\n\
+    \  --wait WAIT           wait given seconds, default: 60 (default: 60)\n  --use_conda\
+    \           use conda environment\n  --conda_create_envs_only\n              \
+    \          conda create environments only\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/metapi:1.0.5--py_0
+- &id004 !Command
+  command:
+  - metapi
+  - gene_wf
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --workdir
+    description: 'project workdir, default: ./ (default: ./)'
+    args: !SimpleFlagArg
+      name: WORKDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --config
+    description: 'config.yaml, default: ./config.yaml (default: ./config.yaml)'
+    args: !SimpleFlagArg
+      name: CONFIG
+  - !Flag
+    optional: true
+    synonyms:
+    - --cluster
+    description: 'cluster.yaml, default: ./cluster.yaml (default: ./cluster.yaml)'
+    args: !SimpleFlagArg
+      name: CLUSTER
+  - !Flag
+    optional: true
+    synonyms:
+    - --cores
+    description: 'CPU cores, default: 8 (default: 8)'
+    args: !SimpleFlagArg
+      name: CORES
+  - !Flag
+    optional: true
+    synonyms:
+    - --jobs
+    description: 'qsub job numbers, default: 80 (default: 80)'
+    args: !SimpleFlagArg
+      name: JOBS
+  - !Flag
+    optional: true
+    synonyms:
+    - --list
+    description: list pipeline rules
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --run
+    description: run pipeline
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug
+    description: debug pipeline
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --dry_run
+    description: dry run pipeline
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --qsub
+    description: qsub pipeline
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --wait
+    description: 'wait given seconds, default: 60 (default: 60)'
+    args: !SimpleFlagArg
+      name: WAIT
+  - !Flag
+    optional: true
+    synonyms:
+    - --use_conda
+    description: use conda environment
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --conda_create_envs_only
+    description: "conda create environments only\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - metapi
+    - gene_wf
+    - TASK
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: metapi
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: gene_wf
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --cluster
+      description: ''
+      args: !SimpleFlagArg
+        name: CLUSTER
+    - !Flag
+      optional: true
+      synonyms:
+      - --config
+      description: ''
+      args: !SimpleFlagArg
+        name: CONFIG
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      description: ''
+      args: !SimpleFlagArg
+        name: WORKDIR
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      description: ''
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: metapi gene_wf [-h] [-d WORKDIR] [--config CONFIG] [--cluster\
+      \ CLUSTER]\n                      [--cores CORES] [--jobs JOBS] [--list] [--run]\
+      \ [--debug]\n                      [--dry_run] [--qsub] [--wait WAIT] [--use_conda]\n\
+      \                      [--conda_create_envs_only]\n                      [TASK]\n\
+      metapi gene_wf: error: argument TASK: invalid choice: 'TASK' (choose from 'simulate_all',\
+      \ 'prepare_reads_all', 'raw_fastqc_all', 'raw_report_all', 'raw_all', 'trimming_oas1_all',\
+      \ 'trimming_sickle_all', 'trimming_fastp_all', 'trimming_report_all', 'trimming_all',\
+      \ 'rmhost_bwa_all', 'rmhost_bowtie2_all', 'rmhost_report_all', 'rmhost_all',\
+      \ 'qcreport_all', 'assebmly_megahit_all', 'assembly_idba_ud_all', 'assembly_metaspades_all',\
+      \ 'assembly_spades_all', 'assembly_plass_all', 'assembly_metaquast_all', 'assembly_report_all',\
+      \ 'single_assembly_all', 'predict_scaftigs_gene_prodigal_all', 'predict_scaftigs_gene_prokka_all',\
+      \ 'predict_scafitgs_gene_all', 'predict_all', 'dereplicate_gene_cdhit_all',\
+      \ 'dereplicate_gene_all', 'upload_sequencing_all', 'upload_assembly_all', 'upload_all',\
+      \ 'all')\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/metapi:1.0.5--py_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: metapi gene_wf [-h] [-d WORKDIR] [--config CONFIG] [--cluster\
+    \ CLUSTER]\n                      [--cores CORES] [--jobs JOBS] [--list] [--run]\
+    \ [--debug]\n                      [--dry_run] [--qsub] [--wait WAIT] [--use_conda]\n\
+    \                      [--conda_create_envs_only]\n                      [TASK]\n\
+    \npositional arguments:\n  TASK                  pipeline end point. Allowed values\
+    \ are simulate_all, prepare_reads_all, raw_fastqc_all, raw_report_all, raw_all,\
+    \ trimming_oas1_all, trimming_sickle_all, trimming_fastp_all, trimming_report_all,\
+    \ trimming_all, rmhost_bwa_all, rmhost_bowtie2_all, rmhost_report_all, rmhost_all,\
+    \ qcreport_all, assebmly_megahit_all, assembly_idba_ud_all, assembly_metaspades_all,\
+    \ assembly_spades_all, assembly_plass_all, assembly_metaquast_all, assembly_report_all,\
+    \ single_assembly_all, predict_scaftigs_gene_prodigal_all, predict_scaftigs_gene_prokka_all,\
+    \ predict_scafitgs_gene_all, predict_all, dereplicate_gene_cdhit_all, dereplicate_gene_all,\
+    \ upload_sequencing_all, upload_assembly_all, upload_all, all (default: all)\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -d, --workdir WORKDIR\n                        project workdir, default: ./\
+    \ (default: ./)\n  --config CONFIG       config.yaml, default: ./config.yaml (default:\
+    \ ./config.yaml)\n  --cluster CLUSTER     cluster.yaml, default: ./cluster.yaml\
+    \ (default: ./cluster.yaml)\n  --cores CORES         CPU cores, default: 8 (default:\
+    \ 8)\n  --jobs JOBS           qsub job numbers, default: 80 (default: 80)\n  --list\
+    \                list pipeline rules\n  --run                 run pipeline\n \
+    \ --debug               debug pipeline\n  --dry_run             dry run pipeline\n\
+    \  --qsub                qsub pipeline\n  --wait WAIT           wait given seconds,\
+    \ default: 60 (default: 60)\n  --use_conda           use conda environment\n \
+    \ --conda_create_envs_only\n                        conda create environments\
+    \ only\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/metapi:1.0.5--py_0
+- &id005 !Command
+  command:
+  - metapi
+  - sync
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --workdir
+    description: 'project workdir, default: ./ (default: ./)'
+    args: !SimpleFlagArg
+      name: WORKDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --config
+    description: 'config.yaml, default: ./config.yaml (default: ./config.yaml)'
+    args: !SimpleFlagArg
+      name: CONFIG
+  - !Flag
+    optional: true
+    synonyms:
+    - --name
+    description: project basename
+    args: !SimpleFlagArg
+      name: NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --outdir
+    description: sync to a directory
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --split_num
+    description: "split project to sync directory (default: 1)\n"
+    args: !SimpleFlagArg
+      name: SPLIT_NUM
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - metapi
+    - sync
+    - WORKFLOW
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: metapi
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: sync
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --outdir
+      description: ''
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --name
+      description: ''
+      args: !SimpleFlagArg
+        name: NAME
+    - !Flag
+      optional: true
+      synonyms:
+      - --config
+      description: ''
+      args: !SimpleFlagArg
+        name: CONFIG
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      description: ''
+      args: !SimpleFlagArg
+        name: WORKDIR
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      description: ''
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: metapi sync [-h] [-d WORKDIR] [--config CONFIG] --name NAME\
+      \ --outdir\n                   OUTDIR [--split_num SPLIT_NUM]\n            \
+      \       [WORKFLOW] [TASK]\nmetapi sync: error: argument WORKFLOW: invalid choice:\
+      \ 'WORKFLOW' (choose from 'mag_wf', 'gene_wf')\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/metapi:1.0.5--py_0
+  - !Command
+    command:
+    - metapi
+    - sync
+    - TASK
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: metapi
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: sync
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --outdir
+      description: ''
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --name
+      description: ''
+      args: !SimpleFlagArg
+        name: NAME
+    - !Flag
+      optional: true
+      synonyms:
+      - --config
+      description: ''
+      args: !SimpleFlagArg
+        name: CONFIG
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      description: ''
+      args: !SimpleFlagArg
+        name: WORKDIR
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      description: ''
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: metapi sync [-h] [-d WORKDIR] [--config CONFIG] --name NAME\
+      \ --outdir\n                   OUTDIR [--split_num SPLIT_NUM]\n            \
+      \       [WORKFLOW] [TASK]\nmetapi sync: error: argument WORKFLOW: invalid choice:\
+      \ 'TASK' (choose from 'mag_wf', 'gene_wf')\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/metapi:1.0.5--py_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: metapi sync [-h] [-d WORKDIR] [--config CONFIG] --name NAME --outdir\n\
+    \                   OUTDIR [--split_num SPLIT_NUM]\n                   [WORKFLOW]\
+    \ [TASK]\n\npositional arguments:\n  WORKFLOW              workflow. Allowed values\
+    \ are mag_wf and gene_wf (default: mag_wf)\n  TASK                  pipeline end\
+    \ point (default: all)\n\noptional arguments:\n  -h, --help            show this\
+    \ help message and exit\n  -d, --workdir WORKDIR\n                        project\
+    \ workdir, default: ./ (default: ./)\n  --config CONFIG       config.yaml, default:\
+    \ ./config.yaml (default: ./config.yaml)\n  --name NAME           project basename\n\
+    \  --outdir OUTDIR       sync to a directory\n  --split_num SPLIT_NUM\n      \
+    \                  split project to sync directory (default: 1)\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/metapi:1.0.5--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: print software version and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: metapi [-h] [-v]  ...\n\n .___  ___.  _______ .___________.   \
+  \ ___      .______    __\n |   \\/   | |   ____||           |   /   \\     |   _\
+  \  \\  |  |\n |  \\  /  | |  |__   `---|  |----`  /  ^  \\    |  |_)  | |  |\n |\
+  \  |\\/|  | |   __|      |  |      /  /_\\  \\   |   ___/  |  |\n |  |  |  | | \
+  \ |____     |  |     /  _____  \\  |  |      |  |\n |__|  |__| |_______|    |__|\
+  \    /__/     \\__\\ | _|      |__|\n\n           Omics for All, Open Source for\
+  \ All\n\nA general metagenomics data mining system focus on robust microbiome research\n\
+  \noptional arguments:\n  -h, --help     show this help message and exit\n  -v, --version\
+  \  print software version and exit\n\navailable subcommands:\n  \n    init     \
+  \    init project\n    mag_wf       metagenome-assembly-genome pipeline\n    gene_wf\
+  \      metagenome-assembly-gene pipeline\n    sync         metapi sync project\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/metapi:1.0.5--py_0

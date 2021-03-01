@@ -8,6 +8,9 @@ task LynerSelect {
     lyner select \
       ~{what}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     what: ""
   }

@@ -22,6 +22,9 @@ task Csbcsfrag {
       ~{if defined(output_directory_default) then ("--output " +  '"' + output_directory_default + '"') else ""} \
       ~{if (filtered_map) then "--filtered-map" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: "PDBS25 database directory (containing PDBS25cs.scs)"
     shifts: "assigned chemical shifts table (NMR STAR file\\nfragment)"

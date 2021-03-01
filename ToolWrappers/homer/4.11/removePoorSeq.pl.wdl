@@ -8,6 +8,9 @@ task RemovePoorSeqpl {
     removePoorSeq_pl \
       ~{seq_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_file: ""
   }

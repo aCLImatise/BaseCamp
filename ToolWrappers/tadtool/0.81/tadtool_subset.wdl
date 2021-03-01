@@ -16,6 +16,9 @@ task TadtoolSubset {
       ~{output_matrix} \
       ~{output_regions}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "Square Hi-C Matrix as tab-delimited or .npy file (created\\nwith numpy.save) or sparse matrix format (each line: <row\\nregion index> <column region index> <matrix value>)"
     regions: "BED file (no header) with regions corresponding to the\\nnumber of rows in the provided matrix. Fourth column, if\\npresent, denotes name field, which is used as an identifier\\nin sparse matrix notation."

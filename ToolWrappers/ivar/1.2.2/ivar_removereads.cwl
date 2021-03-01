@@ -4,23 +4,23 @@ inputs:
 - id: in_required_input_bam
   doc: (Required) Input BAM file  trimmed with ‘ivar trim’. Must be sorted which can
     be done using `samtools sort`.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_required_text_file
   doc: (Required) Text file with primer indices separated by spaces. This is the output
     of `getmasked` command.
-  type: File
+  type: File?
   inputBinding:
     prefix: -t
 - id: in_required_bed_file
   doc: (Required) BED file with primer sequences and positions.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
-- id: in_required_prefix_output
+- id: in_required_prefix_filtered
   doc: (Required) Prefix for the output filtered BAM file
-  type: File
+  type: File?
   inputBinding:
     prefix: -p
 outputs:
@@ -30,14 +30,15 @@ outputs:
 - id: out_required_text_file
   doc: (Required) Text file with primer indices separated by spaces. This is the output
     of `getmasked` command.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_required_text_file)
-- id: out_required_prefix_output
+- id: out_required_prefix_filtered
   doc: (Required) Prefix for the output filtered BAM file
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_required_prefix_output)
+    glob: $(inputs.in_required_prefix_filtered)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ivar

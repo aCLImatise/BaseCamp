@@ -16,6 +16,9 @@ task AribaAln2meta {
       ~{if defined(genetic_code) then ("--genetic_code " +  '"' + genetic_code + '"') else ""} \
       ~{if (variant_only) then "--variant_only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genetic_code: "Number of genetic code to use. Currently supported\\n1,4,11 [11]"
     variant_only: "Use this to flag all sequences as variant only. By\\ndefault they are considered to be presence/absence\\n"

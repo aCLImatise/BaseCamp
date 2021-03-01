@@ -30,6 +30,9 @@ task FlyesamtoolsAddreplacerg {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     set_mode_orphanonly: "Set the mode of operation from one of overwrite_all, orphan_only [overwrite_all]"
     where_write_output: "Where to write output to [stdout]"

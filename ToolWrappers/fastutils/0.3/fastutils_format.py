@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Boolean, String
+
+Fastutils_Format_V0_1_0 = CommandToolBuilder(tool="fastutils_format", base_command=["fastutils", "format"], inputs=[ToolInput(tag="in_in", input_type=File(optional=True), prefix="--in", doc=InputDocumentation(doc="input file in fasta/q format [stdin]")), ToolInput(tag="in_out", input_type=File(optional=True), prefix="--out", doc=InputDocumentation(doc="output file [stdout]")), ToolInput(tag="in_linewidth", input_type=Int(optional=True), prefix="--lineWidth", doc=InputDocumentation(doc="size of lines in fasta output. Use 0 for no wrapping [0]")), ToolInput(tag="in_min_len", input_type=Int(optional=True), prefix="--minLen", doc=InputDocumentation(doc="min read length [0]")), ToolInput(tag="in_maxlen", input_type=Int(optional=True), prefix="--maxLen", doc=InputDocumentation(doc="max read length [LLONG_MAX]")), ToolInput(tag="in_fast_q", input_type=Boolean(optional=True), prefix="--fastq", doc=InputDocumentation(doc="output reads in fastq format if possible")), ToolInput(tag="in_non", input_type=Boolean(optional=True), prefix="--noN", doc=InputDocumentation(doc="do not print entries with N's")), ToolInput(tag="in_comment", input_type=Boolean(optional=True), prefix="--comment", doc=InputDocumentation(doc="print comments in headers")), ToolInput(tag="in_digital", input_type=Boolean(optional=True), prefix="--digital", doc=InputDocumentation(doc="use read index instead as read name")), ToolInput(tag="in_keep", input_type=Boolean(optional=True), prefix="--keep", doc=InputDocumentation(doc="keep name as a comment when using -d")), ToolInput(tag="in_prefix", input_type=String(optional=True), prefix="--prefix", doc=InputDocumentation(doc="prepend STR to the name")), ToolInput(tag="in_suffix", input_type=String(optional=True), prefix="--suffix", doc=InputDocumentation(doc="append STR to the name")), ToolInput(tag="in_pac_bio", input_type=Boolean(optional=True), prefix="--pacbio", doc=InputDocumentation(doc="use pacbio's header format")), ToolInput(tag="in_fof_n", input_type=Boolean(optional=True), prefix="--fofn", doc=InputDocumentation(doc="input file is a file of file names"))], outputs=[ToolOutput(tag="out_out", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out", type_hint=File()), doc=OutputDocumentation(doc="output file [stdout]"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Fastutils_Format_V0_1_0().translate("wdl", allow_empty_container=True)
+

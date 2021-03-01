@@ -12,6 +12,9 @@ task HcaDssGetsubscription {
       ~{if defined(replica) then ("--replica " +  '"' + replica + '"') else ""} \
       ~{if defined(subscription_type) then ("--subscription-type " +  '"' + subscription_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     uuid: "A RFC4122-compliant ID for the subscription."
     replica: "Replica to fetch from."

@@ -38,6 +38,9 @@ task VtoolsReportSequence {
       ~{if (zero_based) then "--zero_based" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     build: "[BUILD]       Output sequence at specified build of reference\\ngenome. The primary reference genome of the project\\nwill be used if by default."
     numbered: "[{left,right}]\\nIf specified, add position of the first or last\\nbasepair of each line to the left or right of the\\nline, and insert a space at every 10 basepair"

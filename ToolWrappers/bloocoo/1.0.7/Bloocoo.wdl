@@ -4,7 +4,7 @@ task Bloocoo {
   input {
     Boolean? nb_cores
     Boolean? verbose
-    Boolean? file
+    Boolean? arg_reads_file
     Boolean? km_er_size
     Boolean? abundance_min
     Boolean? abundance_max
@@ -34,7 +34,7 @@ task Bloocoo {
     Bloocoo \
       ~{if (nb_cores) then "-nb-cores" else ""} \
       ~{if (verbose) then "-verbose" else ""} \
-      ~{if (file) then "-file" else ""} \
+      ~{if (arg_reads_file) then "-file" else ""} \
       ~{if (km_er_size) then "-kmer-size" else ""} \
       ~{if (abundance_min) then "-abundance-min" else ""} \
       ~{if (abundance_max) then "-abundance-max" else ""} \
@@ -60,10 +60,13 @@ task Bloocoo {
       ~{if (from_h_five) then "-from-h5" else ""} \
       ~{if (count_only) then "-count-only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nb_cores: "(1 arg) :    number of cores  [default '0']"
     verbose: "(1 arg) :    verbosity level  [default '1']"
-    file: "(1 arg) :    reads file"
+    arg_reads_file: "(1 arg) :    reads file"
     km_er_size: "(1 arg) :    size of a kmer  [default '31']"
     abundance_min: "(1 arg) :    min abundance threshold for solid kmers  [default '3']"
     abundance_max: "(1 arg) :    max abundance threshold for solid kmers  [default '2147483647']"

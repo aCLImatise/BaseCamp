@@ -52,6 +52,9 @@ task Fastqc {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (dir) then "--dir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "Create all output files in the specified output directory.\\nPlease note that this directory must exist as the program\\nwill not create it.  If this option is not set then the\\noutput file for each sequence file is created in the same\\ndirectory as the sequence file which was processed."
     casa_va: "Files come from raw casava output. Files in the same sample\\ngroup (differing only by the group number) will be analysed\\nas a set rather than individually. Sequences with the filter\\nflag set in the header will be excluded from the analysis.\\nFiles must have the same names given to them by casava\\n(including being gzipped and ending with .gz) otherwise they\\nwon't be grouped together correctly."

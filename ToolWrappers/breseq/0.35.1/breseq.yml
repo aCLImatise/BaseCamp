@@ -4,59 +4,62 @@ command:
 positional: []
 named:
 - !Flag
-  description: File containing reference sequences in GenBank, GFF3, or FASTA format.
-    Option may be provided multiple times for multiple files (REQUIRED)
+  optional: true
   synonyms:
   - -r
   - --reference
+  description: File containing reference sequences in GenBank, GFF3, or FASTA format.
+    Option may be provided multiple times for multiple files (REQUIRED)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Human-readable name of the analysis run for output (DEFAULT=<none>)
+  optional: true
   synonyms:
   - -n
   - --name
+  description: Human-readable name of the analysis run for output (DEFAULT=<none>)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Number of processors to use in multithreaded steps (DEFAULT=1)
+  optional: true
   synonyms:
   - -j
   - --num-processors
+  description: Number of processors to use in multithreaded steps (DEFAULT=1)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Path to breseq output (DEFAULT=.)
+  optional: true
   synonyms:
   - -o
   - --output
+  description: Path to breseq output (DEFAULT=.)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: The sample is not clonal. Predict polymorphic (mixed) mutations. Setting
-    this flag changes from CONSENSUS MODE (the default) to POLYMORPHISM MODE
+  optional: true
   synonyms:
   - -p
   - --polymorphism-prediction
+  description: The sample is not clonal. Predict polymorphic (mixed) mutations. Setting
+    this flag changes from CONSENSUS MODE (the default) to POLYMORPHISM MODE
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --limit-fold-coverage
   description: Analyze a subset of the input FASTQ sequencing reads with enough bases
     to provide this theoretical coverage of the reference sequences. A value between
     60 and 120 will usually speed up the analysis with no loss in sensitivity for
     clonal samples. The actual coverage achieved will be somewhat less because not
     all reads will map (DEFAULT=OFF)
-  synonyms:
-  - -l
-  - --limit-fold-coverage
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --aligned-sam
   description: "Input files are aligned SAM files, rather than FASTQ files. Junction\
     \ prediction steps will be skipped. Be aware that breseq assumes: (1) Your SAM\
     \ file is sorted such that all alignments for a given read are on consecutive\
@@ -68,543 +71,540 @@ named:
     \ number of inserted bases, deleted bases, and soft clipped bases in the alignment\
     \ to the reference. The default highly penalizes split-read matches (with CIGAR\
     \ strings such as M35D303M65)."
-  synonyms:
-  - --aligned-sam
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Reads in the input FASTQ file that are shorter than this length will
-    be ignored. (0 = OFF) (DEFAULT=18)
+  optional: true
   synonyms:
   - --read-min-length
+  description: Reads in the input FASTQ file that are shorter than this length will
+    be ignored. (0 = OFF) (DEFAULT=18)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Reads in the input FASTQ file in which this fraction or more of the
-    bases are the same will be ignored. (0 = OFF) (DEFAULT=0.9)
+  optional: true
   synonyms:
   - --read-max-same-base-fraction
+  description: Reads in the input FASTQ file in which this fraction or more of the
+    bases are the same will be ignored. (0 = OFF) (DEFAULT=0.9)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Reads in the input FASTQ file in which this fraction or more of the
-    bases are uncalled as N will be ignored. (0 = OFF) (DEFAULT=0.5)
+  optional: true
   synonyms:
   - --read-max-N-fraction
+  description: Reads in the input FASTQ file in which this fraction or more of the
+    bases are uncalled as N will be ignored. (0 = OFF) (DEFAULT=0.5)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --use-version-for-seq-id
   description: If present, use the full VERSION in an input GenBank file (e.g., NC_001416.1)
     as the sequence ID instead of the LOCUS (e.g., NC_001416). You will need to use
     the converted reference file (data/reference.gff) for further breseq and gdtools
     operations on breseq output generated using this option.
-  synonyms:
-  - --use-version-for-seq-id
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --contig-reference
   description: File containing reference sequences in GenBank, GFF3, or FASTA format.
     The same coverage distribution will be fit to all of the reference sequences in
     this file simultaneously. This is appropriate when they are all contigs from a
     genome that should be present with the same copy number. Use of this option will
     improve performance when there are many contigs and especially when some are very
     short (≤1,000 bases). (DEFAULT=0)
-  synonyms:
-  - -c
-  - --contig-reference
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --junction-only-reference
   description: File containing reference sequences in GenBank, GFF3, or FASTA format.
     These references are only used for calling junctions with other reference sequences.
     An example of appropriate usage is including a transposon sequence not present
     in a reference genome. Option may be provided multiple times for multiple files.
     (DEFAULT=0)
-  synonyms:
-  - -s
-  - --junction-only-reference
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Reference sequences were targeted for ultra-deep sequencing (using
-    pull-downs or amplicons). Do not fit coverage distribution.
+  optional: true
   synonyms:
   - -t
   - --targeted-sequencing
+  description: Reference sequences were targeted for ultra-deep sequencing (using
+    pull-downs or amplicons). Do not fit coverage distribution.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --user-evidence-gd
   description: User supplied Genome Diff file of JC and/or RA evidence items. The
     breseq output will report the support for these sequence changes even if they
     do not pass the normal filters for calling mutations in this sample.
-  synonyms:
-  - --user-evidence-gd
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --minimum-mapping-quality
   description: Ignore alignments with less than this mapping quality (MQ) when calling
     mutations. MQ scores are equal to -10log10(P), where P is the probability that
     the best alignment is not to the correct location in the reference genome. The
     range of MQ scores returned by bowtie2 is 0 to 255. (DEFAULT=0)
-  synonyms:
-  - -m
-  - --minimum-mapping-quality
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Ignore bases with quality scores lower than this value (DEFAULT=3)
+  optional: true
   synonyms:
   - -b
   - --base-quality-cutoff
+  description: Ignore bases with quality scores lower than this value (DEFAULT=3)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Trim the ends of reads past any base with a quality score below --base-quality-score-cutoff.
+  optional: true
   synonyms:
   - --quality-score-trim
+  description: Trim the ends of reads past any base with a quality score below --base-quality-score-cutoff.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Only consider alignments that cover this many bases of a read (DEFAULT=0)
+  optional: true
   synonyms:
   - --require-match-length
+  description: Only consider alignments that cover this many bases of a read (DEFAULT=0)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Only consider alignments that cover this fraction of a read (DEFAULT=0.9)
+  optional: true
   synonyms:
   - --require-match-fraction
+  description: Only consider alignments that cover this fraction of a read (DEFAULT=0.9)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maximum-read-mismatches
   description: Don't consider reads with this many or more bases or indels that are
     different from the reference sequence. Unaligned bases at the end of a read also
     count as mismatches. Unaligned bases at the beginning of the read do NOT count
     as mismatches. (DEFAULT=OFF)
-  synonyms:
-  - --maximum-read-mismatches
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Value for coverage above which deletions are cutoff. 0 = calculated
-    from coverage distribution (DEFAULT=0)
+  optional: true
   synonyms:
   - --deletion-coverage-propagation-cutoff
+  description: Value for coverage above which deletions are cutoff. 0 = calculated
+    from coverage distribution (DEFAULT=0)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Value for coverage below which deletions are seeded (DEFAULT=0)
+  optional: true
   synonyms:
   - --deletion-coverage-seed-cutoff
+  description: Value for coverage below which deletions are seeded (DEFAULT=0)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bowtie2-scoring
   description: All calls to bowtie2 must use the same commands for assigning scores
     to read alignments. Larger scores are assumed to be better by breseq. Each call
     to bowtie2 has this option added to its command line. (DEFAULT="--ma 1 --mp 3
     --np 0 --rdg 2,3 --rfg 2,3 --ignore-quals")
-  synonyms:
-  - --bowtie2-scoring
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bowtie2-stage1
   description: Settings for mapping criteria used for the stage 1 alignment. This
     step is normally meant for quickly aligning near-perfect matches. (DEFAULT="--local
     -i S,1,0.25 --score-min L,1,0.9 -k 2000")
-  synonyms:
-  - --bowtie2-stage1
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bowtie2-stage2
   description: Settings for mapping criteria used for the stage 2 alignment. If set
     to the empty string "", then stage 2 alignment is skipped. This step is normally
     meant for exhaustively mapping reads that were unmapped by stage 1. (DEFAULT="--local
     -i S,1,0.25 --score-min L,6,0.2 -k 2000")
-  synonyms:
-  - --bowtie2-stage2
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Settings for mapping criteria used in aligning reads to candidate junctions.
-    (DEFAULT="--local -i S,1,0.25 --score-min L,1,0.70 -k 2000")
+  optional: true
   synonyms:
   - --bowtie2-junction
+  description: Settings for mapping criteria used in aligning reads to candidate junctions.
+    (DEFAULT="--local -i S,1,0.25 --score-min L,1,0.70 -k 2000")
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Do not predict new sequence junctions
+  optional: true
   synonyms:
   - --no-junction-prediction
+  description: Do not predict new sequence junctions
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --junction-indel-split-length
   description: Split read alignments on indels of this many or more bases. Indel mutations
     of this length or longer will be predicted by JC evidence and those that are shorter
     will be predicted from RA evience (DEFAULT=3)
-  synonyms:
-  - --junction-indel-split-length
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Only consider this many passed alignment pairs when creating candidate
-    junction sequences (0 = DO NOT LIMIT) (DEFAULT=100000)
+  optional: true
   synonyms:
   - --junction-alignment-pair-limit
+  description: Only consider this many passed alignment pairs when creating candidate
+    junction sequences (0 = DO NOT LIMIT) (DEFAULT=100000)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Test at least this many of the top-scoring junction candidates, regardless
-    of their length (DEFAULT=100)
+  optional: true
   synonyms:
   - --junction-minimum-candidates
+  description: Test at least this many of the top-scoring junction candidates, regardless
+    of their length (DEFAULT=100)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Test no more than this many of the top-scoring junction candidates
-    (0 = DO NOT LIMIT) (DEFAULT=5000)
+  optional: true
   synonyms:
   - --junction-maximum-candidates
+  description: Test no more than this many of the top-scoring junction candidates
+    (0 = DO NOT LIMIT) (DEFAULT=5000)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --junction-candidate-length-factor
   description: Accept top-scoring junction candidates to test until their cumulative
     length is this factor times the total reference sequence length (0 = DO NOT LIMIT)
     (DEFAULT=0.1)
-  synonyms:
-  - --junction-candidate-length-factor
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Minimum number of distinct spanning read start positions required to
-    create a junction candidate for further testing (DEFAULT=2)
+  optional: true
   synonyms:
   - --junction-minimum-candidate-pos-hash-score
+  description: Minimum number of distinct spanning read start positions required to
+    create a junction candidate for further testing (DEFAULT=2)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Maximum negative log10 probability of uneven coverage across a junction
-    breakpoint to accept (0 = OFF) (DEFAULT=3.0)
+  optional: true
   synonyms:
   - --junction-score-cutoff
+  description: Maximum negative log10 probability of uneven coverage across a junction
+    breakpoint to accept (0 = OFF) (DEFAULT=3.0)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Minimum number of distinct spanning read start positions required to
-    accept a junction (DEFAULT = consensus mode, 3; polymorphism mode, 3)
+  optional: true
   synonyms:
   - --junction-minimum-pos-hash-score
+  description: Minimum number of distinct spanning read start positions required to
+    accept a junction (DEFAULT = consensus mode, 3; polymorphism mode, 3)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --junction-minimum-side-match
   description: Minimum number of bases a read must extend past any overlap or read-only
     sequence at the breakpoint of a junction on each side to count as support for
     the junction (DEFAULT = consensus mode, 1; polymorphism mode, 6)
-  synonyms:
-  - --junction-minimum-side-match
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Minimum probablilty assigned that no mapped read will start at a given
-    position and strand for junction prediction (DEFAULT=0.1)
+  optional: true
   synonyms:
   - --junction-minimum-pr-no-read-start-per-position
+  description: Minimum probablilty assigned that no mapped read will start at a given
+    position and strand for junction prediction (DEFAULT=0.1)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --junction-allow-suboptimal-matches
   description: Assign a read to the junction candidate with the most overall support
     as long as its match to this junction is better than to any location in the reference
     sequence, even if it matches a different junction candidate better. This behavior
     was the default before v0.35.0. It will align more reads to junctions but risks
     misassigning some reads to the wrong junction candidates. It is only recommended
     that you use this option in CONSENSUS mode
-  synonyms:
-  - --junction-allow-suboptimal-matches
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Log10 E-value cutoff for consensus base substitutions and small indels
-    (DEFAULT = 10)
+  optional: true
   synonyms:
   - --consensus-score-cutoff
+  description: Log10 E-value cutoff for consensus base substitutions and small indels
+    (DEFAULT = 10)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Only predict consensus mutations when the variant allele frequency
-    is above this value. (DEFAULT = consensus mode, 0.8; polymorphism mode, 0.8)
+  optional: true
   synonyms:
   - --consensus-frequency-cutoff
+  description: Only predict consensus mutations when the variant allele frequency
+    is above this value. (DEFAULT = consensus mode, 0.8; polymorphism mode, 0.8)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Only predict consensus mutations when at least this many reads support
-    the mutation. (DEFAULT = consensus mode, 0; polymorphism mode, 0)
+  optional: true
   synonyms:
   - --consensus-minimum-variant-coverage
+  description: Only predict consensus mutations when at least this many reads support
+    the mutation. (DEFAULT = consensus mode, 0; polymorphism mode, 0)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --consensus-minimum-total-coverage
   description: Only predict consensus mutations when at least this many reads total
     are aligned to a genome position. (DEFAULT = consensus mode, 0; polymorphism mode,
     0)
-  synonyms:
-  - --consensus-minimum-total-coverage
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --consensus-minimum-variant-coverage-each-strand
   description: Only predict consensus mutations when at least this many reads on each
     strand support the mutation. (DEFAULT = consensus mode, 0; polymorphism mode,
     0)
-  synonyms:
-  - --consensus-minimum-variant-coverage-each-strand
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --consensus-minimum-total-coverage-each-strand
   description: Only predict consensus mutations when at least this many reads on each
     strand are aligned to a genome position. (DEFAULT = consensus mode, 0; polymorphism
     mode, 0)
-  synonyms:
-  - --consensus-minimum-total-coverage-each-strand
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --consensus-reject-indel-homopolymer-length
   description: Reject insertion/deletion polymorphisms which could result from expansion/contraction
     of homopolymer repeats with this length or greater in the reference genome (0
     = OFF) (DEFAULT = consensus mode, OFF; polymorphism mode, OFF)
-  synonyms:
-  - --consensus-reject-indel-homopolymer-length
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --consensus-reject-surrounding-homopolymer-length
   description: Reject polymorphic base substitutions that create a homopolymer with
     this many or more of one base in a row. The homopolymer must begin and end after
     the changed base. For example, TATTT->TTTTT would be rejected with a setting of
     5, but ATTTT->TTTTT would not. (0 = OFF) (DEFAULT = consensus mode, OFF; polymorphism
     mode, OFF)
-  synonyms:
-  - --consensus-reject-surrounding-homopolymer-length
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Log10 E-value cutoff for test of polymorphism vs no polymorphism (DEFAULT
-    = consensus mode, 10; polymorphism mode, 2)
+  optional: true
   synonyms:
   - --polymorphism-score-cutoff
+  description: Log10 E-value cutoff for test of polymorphism vs no polymorphism (DEFAULT
+    = consensus mode, 10; polymorphism mode, 2)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --polymorphism-frequency-cutoff
   description: Only predict polymorphisms when the minor variant allele frequency
     is greater than this value. For example, a setting of 0.05 will reject all polymorphisms
     with a non-reference frequency of <0.05, and any variants with a non-reference
     frequency of ≥ 0.95 (which is 1 - 0.05) will be rejected as polymorphisms and
     instead predicted to be consensus mutations (DEFAULT = consensus mode, 0.2; polymorphism
     mode, 0.05)
-  synonyms:
-  - --polymorphism-frequency-cutoff
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Only predict polymorphisms when at least this many reads support each
-    alternative allele. (DEFAULT = consensus mode, 0; polymorphism mode, 0)
+  optional: true
   synonyms:
   - --polymorphism-minimum-variant-coverage
+  description: Only predict polymorphisms when at least this many reads support each
+    alternative allele. (DEFAULT = consensus mode, 0; polymorphism mode, 0)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --polymorphism-minimum-total-coverage
   description: Only predict polymorphisms when at least this many reads total are
     aligned to a genome position. (DEFAULT = consensus mode, 0; polymorphism mode,
     0)
-  synonyms:
-  - --polymorphism-minimum-total-coverage
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --polymorphism-minimum-variant-coverage-each-strand
   description: Only predict polymorphisms when at least this many reads on each strand
     support each alternative allele. (DEFAULT = consensus mode, 0; polymorphism mode,
     2)
-  synonyms:
-  - --polymorphism-minimum-variant-coverage-each-strand
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --polymorphism-minimum-total-coverage-each-strand
   description: Only predict polymorphisms when at least this many reads on each strand
     are aligned to a genome position. (DEFAULT = consensus mode, 0; polymorphism mode,
     0)
-  synonyms:
-  - --polymorphism-minimum-total-coverage-each-strand
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --polymorphism-bias-cutoff
   description: P-value criterion for Fisher's exact test for strand bias AND K-S test
     for quality score bias. (0 = OFF) (DEFAULT = consensus mode, OFF; polymorphism
     mode, OFF)
-  synonyms:
-  - --polymorphism-bias-cutoff
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Do not predict insertion/deletion polymorphisms from read alignment
-    evidence
+  optional: true
   synonyms:
   - --polymorphism-no-indels
+  description: Do not predict insertion/deletion polymorphisms from read alignment
+    evidence
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --polymorphism-reject-indel-homopolymer-length
   description: Reject insertion/deletion polymorphisms which could result from expansion/contraction
     of homopolymer repeats with this length or greater in the reference genome (0
     = OFF) (DEFAULT = consensus mode, OFF; polymorphism mode, 3)
-  synonyms:
-  - --polymorphism-reject-indel-homopolymer-length
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --polymorphism-reject-surrounding-homopolymer-length
   description: Reject polymorphic base substitutions that create a homopolymer with
     this many or more of one base in a row. The homopolymer must begin and end after
     the changed base. For example, TATTT->TTTTT would be rejected with a setting of
     5, but ATTTT->TTTTT would not. (0 = OFF) (DEFAULT = consensus mode, OFF; polymorphism
     mode, 5)
-  synonyms:
-  - --polymorphism-reject-surrounding-homopolymer-length
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Maximum number of reads to display in the HTML output for an evidence
-    item (DEFAULT=100)
+  optional: true
   synonyms:
   - --max-displayed-reads
+  description: Maximum number of reads to display in the HTML output for an evidence
+    item (DEFAULT=100)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Don't create detailed output files for evidence (no read alignments
-    or coverage plots)
+  optional: true
   synonyms:
   - --brief-html-output
+  description: Don't create detailed output files for evidence (no read alignments
+    or coverage plots)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Include header information from this GenomeDiff file in output.gd
+  optional: true
   synonyms:
   - -g
   - --header-genome-diff
+  description: Include header information from this GenomeDiff file in output.gd
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Don't include javascript in the HTML output
+  optional: true
   synonyms:
   - --no-javascript
+  description: Don't include javascript in the HTML output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Skip generating read alignment and missing coverage evidence.
+  optional: true
   synonyms:
   - --skip-RA-MC-prediction
+  description: Skip generating read alignment and missing coverage evidence.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Skip generating new junction evidence.
+  optional: true
   synonyms:
   - --skip-JC-prediction
+  description: Skip generating new junction evidence.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Skip generating missing coverage evidence.
+  optional: true
   synonyms:
   - --skip-MC-prediction
+  description: Skip generating missing coverage evidence.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not delete intermediate files.
+  optional: true
   synonyms:
   - -k
   - --keep-intermediates
+  description: Do not delete intermediate files.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Create additional file of per-position aligned bases
+  optional: true
   synonyms:
   - --per-position-file
+  description: Create additional file of per-position aligned bases
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Output additional junction debugging files
+  optional: true
   synonyms:
   - --junction-debug
+  description: Output additional junction debugging files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do experimental copy number variation prediction
+  optional: true
   synonyms:
   - --cnv
+  description: Do experimental copy number variation prediction
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Tile size for copy number variation prediction (DEFAULT=500)
+  optional: true
   synonyms:
   - --cnv-tile-size
+  description: Tile size for copy number variation prediction (DEFAULT=500)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Only consider non-redundant coverage when using cnv
+  optional: true
   synonyms:
   - --cnv-ignore-redundant
+  description: Only consider non-redundant coverage when using cnv
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Produce help message showing advanced options
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Produce help message showing advanced options
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nUsage: breseq -r reference.gbk [-r reference2.gbk ...] reads1.fastq\
@@ -7641,3 +7641,4 @@ help_text: "\nUsage: breseq -r reference.gbk [-r reference2.gbk ...] reads1.fast
   \n"
 generated_using:
 - --help
+docker_image:

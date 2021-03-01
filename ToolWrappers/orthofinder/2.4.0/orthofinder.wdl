@@ -12,9 +12,9 @@ task Orthofinder {
     Int? mcl_inflation_parameter
     File? info_outputting_results
     String? write_temporary_files
-    Boolean? only_perform_search
+    Boolean? only_perform_oneway
     Boolean? add_species_names
-    Directory? name_append_results
+    Directory? name_append_directory
     Directory? nondefault_results_directory
     Boolean? op
     Boolean? og
@@ -37,9 +37,9 @@ task Orthofinder {
       ~{if defined(mcl_inflation_parameter) then ("-I " +  '"' + mcl_inflation_parameter + '"') else ""} \
       ~{if defined(info_outputting_results) then ("-x " +  '"' + info_outputting_results + '"') else ""} \
       ~{if defined(write_temporary_files) then ("-p " +  '"' + write_temporary_files + '"') else ""} \
-      ~{if (only_perform_search) then "-1" else ""} \
+      ~{if (only_perform_oneway) then "-1" else ""} \
       ~{if (add_species_names) then "-X" else ""} \
-      ~{if defined(name_append_results) then ("-n " +  '"' + name_append_results + '"') else ""} \
+      ~{if defined(name_append_directory) then ("-n " +  '"' + name_append_directory + '"') else ""} \
       ~{if defined(nondefault_results_directory) then ("-o " +  '"' + nondefault_results_directory + '"') else ""} \
       ~{if (op) then "-op" else ""} \
       ~{if (og) then "-og" else ""} \
@@ -50,6 +50,9 @@ task Orthofinder {
       ~{if defined(fg) then ("-fg " +  '"' + fg + '"') else ""} \
       ~{if defined(ft) then ("-ft " +  '"' + ft + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_parallel_sequence: "Number of parallel sequence search threads [Default = 8]"
     number_parallel_analysis: "Number of parallel analysis threads [Default = 1]"
@@ -61,9 +64,9 @@ task Orthofinder {
     mcl_inflation_parameter: "MCL inflation parameter [Default = 1.5]"
     info_outputting_results: "Info for outputting results in OrthoXML format"
     write_temporary_files: "Write the temporary pickle files to <dir>"
-    only_perform_search: "Only perform one-way sequence search"
+    only_perform_oneway: "Only perform one-way sequence search"
     add_species_names: "Don't add species names to sequence IDs"
-    name_append_results: "Name to append to the results directory"
+    name_append_directory: "Name to append to the results directory"
     nondefault_results_directory: "Non-default results directory"
     op: "Stop after preparing input files for BLAST"
     og: "Stop after inferring orthogroups"

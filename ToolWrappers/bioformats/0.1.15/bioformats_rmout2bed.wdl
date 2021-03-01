@@ -18,6 +18,9 @@ task BioformatsRmout2bed {
       ~{if (short) then "--short" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     color: "how to choose colors of BED repeat records (default:\\nclass)"
     name: "how to choose names of BED repeat records (default:\\nid)"

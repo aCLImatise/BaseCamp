@@ -14,6 +14,9 @@ task Hed {
       ~{if (all) then "--all" else ""} \
       ~{if (backtrace) then "--backtrace" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_one: "first string. Use quotation marks around your string\\n(e.g. \\\"STRING\\\")for the empty string or strings with\\nspecial characters"
     string_two: "second string"

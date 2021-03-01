@@ -5,25 +5,25 @@ inputs:
   doc: "If you give this flag, Anvi'o will not open new\nbrowser to show Contigs database\
     \ statistics and write\nall stats to TAB separated file and you should also\n\
     give --output-file with this flag otherwise Anvi'o\nwill complain."
-  type: File
+  type: File?
   inputBinding:
     prefix: --report-as-text
 - id: in_output_file
   doc: File path to store results.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file
 - id: in_ip_address
   doc: "IP address for the HTTP server. The default ip address\n(0.0.0.0) should work\
     \ just fine for most."
-  type: double
+  type: double?
   inputBinding:
     prefix: --ip-address
 - id: in_port_number
   doc: "Port number to use for anvi'o services. If nothing is\ndeclared, anvi'o will\
     \ try to find a suitable port\nnumber, starting from the default port number,\
     \ 8080."
-  type: long
+  type: long?
   inputBinding:
     prefix: --port-number
 - id: in_browser_path
@@ -32,14 +32,14 @@ inputs:
     \ you can\nprovide a full path for an alternative browser using\nthis parameter,\
     \ and hope for the best. For instance we\nare using this parameter to call Google's\
     \ experimental\nbrowser, Canary, which performs better with demanding\nvisualizations."
-  type: File
+  type: File?
   inputBinding:
     prefix: --browser-path
 - id: in_server_only
   doc: "The default behavior is to start the local server, and\nfire up a browser\
     \ that connects to the server. If you\nhave other plans, and want to start the\
     \ server without\ncalling the browser, this is the flag you need."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --server-only
 - id: in_password_protected
@@ -47,7 +47,7 @@ inputs:
     \ interactive interface will be\nonly accessible after entering same password.\
     \ This\noption is recommended for shared machines like\nclusters or shared networks\
     \ where computers are not\nisolated.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --password-protected
 - id: in_space_dot
@@ -63,14 +63,15 @@ outputs:
   doc: "If you give this flag, Anvi'o will not open new\nbrowser to show Contigs database\
     \ statistics and write\nall stats to TAB separated file and you should also\n\
     give --output-file with this flag otherwise Anvi'o\nwill complain."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_report_as_text)
 - id: out_output_file
   doc: File path to store results.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-display-contigs-stats

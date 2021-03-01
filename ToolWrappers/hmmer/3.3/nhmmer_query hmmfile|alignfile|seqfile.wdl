@@ -8,6 +8,9 @@ task NhmmerQueryhmmfilealignfileseqfile {
     nhmmer query_hmmfile_alignfile_seqfile \
       ~{target_seq_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target_seq_file: ""
   }

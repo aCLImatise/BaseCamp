@@ -24,6 +24,9 @@ task Stagdiffpl {
       ~{if (report) then "-report" else ""} \
       ~{if (verbose) then "-verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore: "|i ELEMENT\\nthese nodes are ignored for the purposes of comparison. Note that\\nattributes are treated as elements, prefixed by the containing\\nelement id. For example, if you have\\n<foo ID=\\\"wibble\\\">\\nAnd you wish to ignore the ID attribute, then you would use the\\nswitch\\n-ignore foo-ID\\nYou can specify multiple elements to ignore like this\\n-i foo -i bar -i baz\\nYou can also specify paths\\n-i foo/bar/bar-id"
     parser: "|p FORMAT\\nwhich parser to use. The default is XML. This can also be\\nautodetected by the file suffix. Other alternatives are sxpr and\\nitext. See Data::Stag for details."

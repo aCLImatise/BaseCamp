@@ -36,6 +36,9 @@ task HintPre {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data: "Hi-C raw data with fastq format, two mates seperate\\nwith a comma ',', or bam file after alignment."
     ref_dir: "the reference directory that downloaded from dropbox\\ndropbox. (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A\\nABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)"

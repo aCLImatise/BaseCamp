@@ -10,6 +10,9 @@ task RemoveAnnotation {
       ~{fast_q} \
       ~{extracted_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "One or more fastq files from which the annotation is to be"
     extracted_dot: "optional arguments:"

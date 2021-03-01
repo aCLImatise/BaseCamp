@@ -3,7 +3,7 @@ version 1.0
 task VirmetWolfpack {
   input {
     Directory? run
-    File? file
+    File? single_fastq_file
     String vir_met
     String var_command
     String wolfpack
@@ -14,11 +14,14 @@ task VirmetWolfpack {
       ~{var_command} \
       ~{wolfpack} \
       ~{if defined(run) then ("--run " +  '"' + run + '"') else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""}
+      ~{if defined(single_fastq_file) then ("--file " +  '"' + single_fastq_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run: "Miseq run directory"
-    file: "single fastq file"
+    single_fastq_file: "single fastq file"
     vir_met: ""
     var_command: ""
     wolfpack: ""

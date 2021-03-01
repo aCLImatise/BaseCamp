@@ -11,18 +11,18 @@ subcommands:
   - infile
   positional:
   - !Positional
-    description: outfile
+    optional: false
     position: 0
     name: infile
-    optional: false
+    description: outfile
   named:
   - !Flag
-    description: Length of minimal suffix for node merging
+    optional: true
     synonyms:
     - -l
+    description: Length of minimal suffix for node merging
     args: !SimpleFlagArg
       name: L
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -33,18 +33,18 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: outfile
+        optional: false
         position: 0
         name: infile
-        optional: false
+        description: outfile
       named:
       - !Flag
-        description: Length of minimal suffix for node merging
+        optional: true
         synonyms:
         - -l
+        description: Length of minimal suffix for node merging
         args: !SimpleFlagArg
           name: L
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -55,18 +55,18 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: outfile
+            optional: false
             position: 0
             name: infile
-            optional: false
+            description: outfile
           named:
           - !Flag
-            description: Length of minimal suffix for node merging
+            optional: true
             synonyms:
             - -l
+            description: Length of minimal suffix for node merging
             args: !SimpleFlagArg
               name: L
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -77,87 +77,138 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: outfile
+                optional: false
                 position: 0
                 name: infile
-                optional: false
+                description: outfile
               named:
               - !Flag
-                description: Length of minimal suffix for node merging
+                optional: true
                 synonyms:
                 - -l
+                description: Length of minimal suffix for node merging
                 args: !SimpleFlagArg
                   name: L
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -l
-                  args: !SimpleFlagArg
-                    name: L
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: outfile
+                    optional: false
                     position: 0
                     name: infile
-                    optional: false
+                    description: outfile
                   named:
                   - !Flag
-                    description: Length of minimal suffix for node merging
+                    optional: true
                     synonyms:
                     - -l
+                    description: Length of minimal suffix for node merging
                     args: !SimpleFlagArg
                       name: L
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -l
+                      description: ''
+                      args: !SimpleFlagArg
+                        name: L
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: infile
+                        description: outfile
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        description: Length of minimal suffix for node merging
+                        args: !SimpleFlagArg
+                          name: L
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: graph_simplification.py [-h] [-l L] infile\
+                        \ outfile\n\npositional arguments:\n  infile\n  outfile\n\n\
+                        optional arguments:\n  -h, --help  show this help message\
+                        \ and exit\n  -l L        Length of minimal suffix for node\
+                        \ merging\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: graph_simplification.py [-h] [-l L] infile\
+                      \ outfile\ngraph_simplification.py: error: the following arguments\
+                      \ are required: infile, outfile\n"
+                    generated_using: &id005 []
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: graph_simplification.py [-h] [-l L] infile outfile\n\
                     \npositional arguments:\n  infile\n  outfile\n\noptional arguments:\n\
                     \  -h, --help  show this help message and exit\n  -l L       \
                     \ Length of minimal suffix for node merging\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: ''
-                  synonyms:
-                  - -h
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "usage: graph_simplification.py [-h] [-l L] infile outfile\n\
                   graph_simplification.py: error: the following arguments are required:\
                   \ infile, outfile\n"
-                generated_using: &id005 []
+                generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: graph_simplification.py [-h] [-l L] infile outfile\n\
@@ -165,6 +216,7 @@ subcommands:
                 \  -h, --help  show this help message and exit\n  -l L        Length\
                 \ of minimal suffix for node merging\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -173,15 +225,16 @@ subcommands:
               graph_simplification.py: error: the following arguments are required:\
               \ infile, outfile\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: graph_simplification.py [-h] [-l L] infile outfile\n\n\
@@ -189,6 +242,7 @@ subcommands:
             \ --help  show this help message and exit\n  -l L        Length of minimal\
             \ suffix for node merging\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -196,15 +250,16 @@ subcommands:
         help_text: "usage: graph_simplification.py [-h] [-l L] infile outfile\ngraph_simplification.py:\
           \ error: the following arguments are required: infile, outfile\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: graph_simplification.py [-h] [-l L] infile outfile\n\npositional\
@@ -212,6 +267,7 @@ subcommands:
         \ this help message and exit\n  -l L        Length of minimal suffix for node\
         \ merging\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -219,21 +275,23 @@ subcommands:
     help_text: "usage: graph_simplification.py [-h] [-l L] infile outfile\ngraph_simplification.py:\
       \ error: the following arguments are required: infile, outfile\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: graph_simplification.py [-h] [-l L] infile outfile\n\npositional\
     \ arguments:\n  infile\n  outfile\n\noptional arguments:\n  -h, --help  show this\
     \ help message and exit\n  -l L        Length of minimal suffix for node merging\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -241,3 +299,4 @@ version_flag:
 help_text: "usage: graph_simplification.py [-h] [-l L] infile outfile\ngraph_simplification.py:\
   \ error: the following arguments are required: infile, outfile\n"
 generated_using: *id005
+docker_image:

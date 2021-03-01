@@ -4,17 +4,20 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -sourcematch
   description: "string     [*] By default any feature source in the\nfeature table\
     \ is shown. You can set this to\nmatch any feature source you wish to show.\n\
     The source name is usually either the name\nof the program that detected the feature\
     \ or\nit is the feature table (eg: EMBL) that the\nfeature came from.\nThe source\
     \ may be wildcarded by using '*'.\nIf you wish to show more than one source,\n\
     separate their names with the character '|',\neg:\ngene* | embl (Any string)"
-  synonyms:
-  - -sourcematch
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -typematch
   description: "string     [*] By default any feature type in the\nfeature table is\
     \ shown. You can set this to\nmatch any feature type you wish to show.\nSee http://www.ebi.ac.uk/embl/WebFeat/\
     \ for a\nlist of the EMBL feature types and see\nAppendix A of the Swissprot user\
@@ -22,11 +25,11 @@ named:
     \ feature types.\nThe type may be wildcarded by using '*'.\nIf you wish to show\
     \ more than one type,\nseparate their names with the character '|',\neg:\n*UTR\
     \ | intron (Any string)"
-  synonyms:
-  - -typematch
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -tagmatch
   description: "string     [*] Tags are the types of extra values that\na feature\
     \ may have. For example in the EMBL\nfeature table, a 'CDS' type of feature may\n\
     have the tags '/codon', '/codon_start',\n'/db_xref', '/EC_number', '/evidence',\n\
@@ -38,11 +41,11 @@ named:
     \ wish to show.\nThe tag may be wildcarded by using '*'.\nIf you wish to show\
     \ more than one tag,\nseparate their names with the character '|',\neg:\ngene\
     \ | label (Any string)"
-  synonyms:
-  - -tagmatch
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -valuematch
   description: "string     [*] Tag values are the values associated\nwith a feature\
     \ tag. Tags are the types of\nextra values that a feature may have. For\nexample\
     \ in the EMBL feature table, a 'CDS'\ntype of feature may have the tags '/codon',\n\
@@ -55,26 +58,26 @@ named:
     \ to\nshow.\nThe tag value may be wildcarded by using\n'*'.\nIf you wish to show\
     \ more than one tag value,\nseparate their names with the character\n'|', eg:\n\
     pax* | 10 (Any string)"
-  synonyms:
-  - -valuematch
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -sort
   description: "menu       [start] Sort features by Type, Start or\nSource, Nosort\
     \ (don't sort - use input\norder) or join coding regions together and\nleave other\
     \ features in the input order\n(Values: source (Sort by Source); start\n(Sort\
     \ by Start position); type (Sort by\nType); nosort (No sorting done))"
-  synonyms:
-  - -sort
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: boolean    [N] Join coding regions together
+  optional: true
   synonyms:
   - -joinfeatures
+  description: boolean    [N] Join coding regions together
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -annotation
   description: "range      [If this is left blank, then no annotation\nis added.]\
     \ Regions to annotate by marking.\nIf this is left blank, then no annotation is\n\
     added.\nA set of regions is specified by a set of\npairs of positions followed\
@@ -82,27 +85,27 @@ named:
     \ (but not\ndigits when on the command-line).\nExamples of region specifications\
     \ are:\n24-45 new domain 56-78 match to Mouse\n1-100 First part 120-156 oligo\n\
     A file of ranges to annotate (one range per\nline) can be specified as '@filename'."
-  synonyms:
-  - -annotation
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: boolean    [N] Use HTML formatting
+  optional: true
   synonyms:
   - -html
+  description: boolean    [N] Use HTML formatting
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -width
   description: "integer    [60] You can expand (or contract) the width\nof the ASCII-character\
     \ graphics display of\nthe positions of the features using this\nvalue.\nFor example,\
     \ a width of 80 characters would\ncover a standard page width and a width a 10\n\
     characters would be nearly unreadable.\nIf the width is set to less than 4, the\n\
     graphics lines and the scale line will not\nbe displayed. (Integer 0 or more)"
-  synonyms:
-  - -width
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -collapse
   description: "boolean    [N] If this is set, then features from the\nsame source\
     \ and of the same type and sense\nare all printed on the same line. For\ninstance\
     \ if there are several features from\nthe EMBL feature table (ie. the same source)\n\
@@ -110,62 +113,59 @@ named:
     \ on\nthe same line. This makes it hard to\ndistinguish overlapping features.\n\
     If this is set to false then each feature is\ndisplayed on a separate line making\
     \ it\neasier to distinguish where features start\nand end."
-  synonyms:
-  - -collapse
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -strand
   description: "boolean    [N] Set this if you wish to display the\nstrand of the\
     \ features. Protein features are\nalways directionless (indicated by '0'),\nforward\
     \ is indicated by '+' and reverse is\n'-'."
-  synonyms:
-  - -strand
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -sourceshow
   description: "boolean    [N] Set this if you wish to display the\norigin of the\
     \ features.\nThe source name is usually either the name\nof the program that detected\
     \ the feature or\nit is the name of the feature table (eg:\nEMBL) that the feature\
     \ came from."
-  synonyms:
-  - -sourceshow
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -position
   description: "boolean    [N] Set this if you wish to display the\nstart and end\
     \ position of the features. If\nseveral features are being displayed on the\n\
     same line, then the start and end positions\nwill be joined by a comma, for example:\n\
     '189-189,225-225'."
-  synonyms:
-  - -position
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "boolean    [N] Set this to be false if you do not wish\nto display\
-    \ the tags and values of the\nfeatures."
+  optional: true
   synonyms:
   - -tagshow
+  description: "boolean    [N] Set this to be false if you do not wish\nto display\
+    \ the tags and values of the\nfeatures."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -stricttags
   description: "boolean    [N] By default if any tag/value pair in a\nfeature matches\
     \ the specified tag and value,\nthen all the tags/value pairs of that\nfeature\
     \ will be displayed. If this is set to\nbe true, then only those tag/value pairs\
     \ in\na feature that match the specified tag and\nvalue will be displayed."
-  synonyms:
-  - -stricttags
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "boolean    Report command line options and exit. More\ninformation\
-    \ on associated and general\nqualifiers can be found with -help -verbose\n"
+  optional: true
   synonyms:
   - -help
+  description: "boolean    Report command line options and exit. More\ninformation\
+    \ on associated and general\nqualifiers can be found with -help -verbose\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Display features of a sequence in pretty format\nVersion: EMBOSS:6.6.0.0\n\
@@ -333,3 +333,4 @@ help_text: "Display features of a sequence in pretty format\nVersion: EMBOSS:6.6
   \ -verbose\n\n"
 generated_using:
 - --help
+docker_image:

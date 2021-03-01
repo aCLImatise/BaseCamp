@@ -18,6 +18,9 @@ task GcloudConfigConfigurations {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     configurations: "SYNOPSIS"
     activate: "Activates an existing named configuration."

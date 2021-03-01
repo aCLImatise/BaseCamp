@@ -1,115 +1,113 @@
 !Command
 command:
 - ucsc-to-json.pl
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ucsc-to-json.pl
+  description: \
 named:
 - !Flag
-  description: "directory containing the UCSC database dump (lots of .txt.gz and\n\
-    .sql files)"
-  synonyms:
-  - --in
-  args: !SimpleFlagArg
-    name: dir
   optional: true
-- !Flag
-  description: output directory for JSON, defaults to "data/"
   synonyms:
   - --out
+  description: output directory for JSON, defaults to "data/"
   args: !SimpleFlagArg
     name: dir
-  optional: true
 - !Flag
-  description: "'trackName'\nname of the database table, e.g., \"knownGene\""
+  optional: true
   synonyms:
   - --track
+  description: "'trackName'\nname of the database table, e.g., \"knownGene\""
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --primaryName
   description: "'name2'\nname of the UCSC data column (e.g. \"name2\" in the case\
     \ of the UCSC\n\"refGene\" track) to use as the primary name of features in the\n\
     JBrowse display. If this is set, the primaryName field will be\nswapped with the\
     \ name field in the output. For example,\n\"--primaryName 'name2'\" will cause\
     \ the output's \"name\" to be the\nUCSC \"name2\", and \"name2\" will be the UCSC\
     \ \"name\"."
-  synonyms:
-  - --primaryName
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "'classname'\nCSS class to use for features in this track, defaults\
-    \ to \"basic\""
+  optional: true
   synonyms:
   - --cssClass
+  description: "'classname'\nCSS class to use for features in this track, defaults\
+    \ to \"basic\""
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "'classname'\nCSS class for arrowheads, e.g., \"transcript-arrowhead\""
+  optional: true
   synonyms:
   - --arrowheadClass
+  description: "'classname'\nCSS class for arrowheads, e.g., \"transcript-arrowhead\""
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "'{ JSON }'\nCSS classes for each subfeature type, in JSON syntax,\
-    \ e.g.\n'{\"CDS\": \"transcript-CDS\", \"exon\": \"transcript-exon\"}'"
+  optional: true
   synonyms:
   - --subfeatureClasses
+  description: "'{ JSON }'\nCSS classes for each subfeature type, in JSON syntax,\
+    \ e.g.\n'{\"CDS\": \"transcript-CDS\", \"exon\": \"transcript-exon\"}'"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --clientConfig
   description: "'{ JSON }'\nextra configuration for the client, in JSON syntax, e.g.\n\
     '{\"featureCss\": \"background-color: #668; height: 8px;\", \"histScale\": 2}'\n\
     For historical reasons, this is only merged into the \"style\" section\nof the\
     \ new track's configuration."
-  synonyms:
-  - --clientConfig
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Size of the individual Nested Containment List chunks. Default\n50,000\
-    \ bp."
+  optional: true
   synonyms:
   - --nclChunk
+  description: "Size of the individual Nested Containment List chunks. Default\n50,000\
+    \ bp."
   args: !SimpleFlagArg
     name: size in bp
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --compress
   description: "If passed, compress the output with gzip, making .jsonz files. This\n\
     can save a lot of disk space on the server, but serving these files\nto JBrowse\
     \ requires some web server configuration."
-  synonyms:
-  - --compress
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The amount of RAM in bytes to use for sorting.
+  optional: true
   synonyms:
   - --sortMem
+  description: The amount of RAM in bytes to use for sorting.
   args: !SimpleFlagArg
     name: bytes
-  optional: true
 - !Flag
-  description: "| -q\nDo not print progress messages."
+  optional: true
   synonyms:
   - --quiet
+  - -q
+  description: Do not print progress messages.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "\\\n--subfeatureClasses '{\"CDS\":\"transcript-CDS\", \"UTR\": \"\
-    transcript-UTR\"}' \\\n--arrowheadClass transcript-arrowhead\n"
+  optional: true
   synonyms:
   - --cssclass
+  description: \
   args: !SimpleFlagArg
     name: transcript
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "| -h | -?\nDisplay a help screen."
+  optional: true
   synonyms:
   - --help
+  - -h
+  description: "| -?\nDisplay a help screen."
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "NAME\n    ucsc-to-json.pl - format JBrowse JSON from a UCSC database dump\n\
@@ -154,3 +152,4 @@ help_text: "NAME\n    ucsc-to-json.pl - format JBrowse JSON from a UCSC database
   \ transcript-arrowhead\n\n"
 generated_using:
 - --help
+docker_image:

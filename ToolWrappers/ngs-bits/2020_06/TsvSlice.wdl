@@ -18,6 +18,9 @@ task TsvSlice {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cols: "Comma-separated list of column names to extract."
     in: "Input TSV file. If unset, reads from STDIN.\\nDefault value: ''"

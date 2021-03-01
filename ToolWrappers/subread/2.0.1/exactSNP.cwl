@@ -3,32 +3,32 @@ id: exactSNP.cwl
 inputs:
 - id: in_specify_name_input
   doc: Specify name of an input file including read mapping results. The
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
-- id: in_specify_name_including
+- id: in_specify_name_sequences
   doc: "Specify name of the file including all reference sequences. Only\none single\
     \ FASTA format file should be provided."
-  type: File
+  type: File?
   inputBinding:
     prefix: -g
-- id: in_specify_name_output
+- id: in_specify_name_outputs
   doc: "Specify name of the output file. This program outputs a VCF format\nfile that\
     \ includes discovered SNPs."
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
-- id: in_provide_set_annotated
+- id: in_provide_set_included
   doc: "Provide a set of annotated SNPs (e.g. SNPs included in the dbSNP\ndatabase).\
     \ The supplied file should be in VCF format (gzipped file\nis accepted). Providing\
     \ known SNPs to the program should improve\nits SNP calling performance. Note\
     \ that the provided SNPs may or\nmay not be called."
-  type: File
+  type: File?
   inputBinding:
     prefix: -a
-- id: in_indicate_file_provided
+- id: in_indicate_input_file
   doc: Indicate the input file provided via -i is in BAM format.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in_specify_qvalue_cutoff
@@ -36,70 +36,71 @@ inputs:
     \ by default. The corresponding p-value cutoff is 10^(-1*Q).\nNote that this program\
     \ automatically adjusts the q-value cutoff\naccording to the sequencing depth\
     \ at each chromosomal location."
-  type: long
+  type: long?
   inputBinding:
     prefix: -Q
 - id: in_specify_minimum_fraction
   doc: "Specify the minimum fraction of mis-matched bases a SNP-containing\nlocation\
     \ must have. Its value must between 0 and 1. 0 by default."
-  type: double
+  type: double?
   inputBinding:
     prefix: -f
-- id: in_specify_minimum_number_mismatched
+- id: in_specify_minimum_number_have
   doc: "Specify the minimum number of mis-matched bases a SNP-containing\nlocation\
     \ must have. 1 by default."
-  type: long
+  type: long?
   inputBinding:
     prefix: -n
-- id: in_specify_minimum_number_mapped
+- id: in_specify_minimum_number_reads
   doc: "Specify the minimum number of mapped reads a SNP-containing\nlocation must\
     \ have (ie. the minimum coverage). 1 by default."
-  type: long
+  type: long?
   inputBinding:
     prefix: -r
 - id: in_specify_maximum_depth
   doc: "Specify the maximum depth a SNP location is allowed to have.\n1,000,000 reads\
     \ by default. This option is useful for removing PCR\nartefacts."
-  type: long
+  type: long?
   inputBinding:
     prefix: -x
-- id: in_specify_quality_scores
+- id: in_specify_base_scores
   doc: "Specify the minimum base quality scores (Phred scores) read bases\nmust satisfy\
     \ to be used for SNP calling. 13 by default. Read bases\nwith quality scores less\
     \ than 13 will be excluded from the\nanalysis."
-  type: long
+  type: long?
   inputBinding:
     prefix: -s
 - id: in_specify_number_bases
   doc: "Specify the number of bases trimmed off from each end of the read.\n3 by default."
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_specify_number_threads
   doc: Specify the number of threads. 1 by default.
-  type: long
+  type: long?
   inputBinding:
     prefix: -T
 - id: in_output_version_program
   doc: output version of the program.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_specify_path_save
   doc: Specify the path to save the temporary files.
-  type: File
+  type: File?
   inputBinding:
     prefix: -C
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_specify_name_output
+- id: out_specify_name_outputs
   doc: "Specify name of the output file. This program outputs a VCF format\nfile that\
     \ includes discovered SNPs."
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_specify_name_output)
+    glob: $(inputs.in_specify_name_outputs)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - exactSNP

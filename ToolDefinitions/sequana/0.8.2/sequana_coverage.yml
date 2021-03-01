@@ -3,203 +3,223 @@ command:
 - sequana_coverage
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: Welcome
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: to
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: SEQUANA
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "Input file in BED or BAM format. If a BAM file is\nprovided, it will\
-    \ be converted locally to a BED file\nusing genomecov, which must be installed.\
-    \ (default:\nNone)"
+  optional: true
   synonyms:
   - -i
   - --input
+  description: "Input file in BED or BAM format. If a BAM file is\nprovided, it will\
+    \ be converted locally to a BED file\nusing genomecov, which must be installed.\
+    \ (default:\nNone)"
   args: !SimpleFlagArg
     name: INPUT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chromosome
   description: "Chromosome number (if only one chromosome found, the\nsingle chromosome\
     \ is chosen automatically). Otherwise\nall chromosomes are analysed. You may want\
     \ to analyse\nonly one in which case, use this parameter (e.g., -c\n1). !!START\
     \ AT INDEX 0 !! (default: -1)"
-  synonyms:
-  - -c
-  - --chromosome
   args: !SimpleFlagArg
     name: CHROMOSOME
-  optional: true
 - !Flag
-  description: "If the DNA of the organism is circular (typically\nviruses or bacteria),\
-    \ set to True (default: False)"
+  optional: true
   synonyms:
   - -o
   - --circular
+  description: "If the DNA of the organism is circular (typically\nviruses or bacteria),\
+    \ set to True (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "name of the output (report) directory. (default:\nreport)"
+  optional: true
   synonyms:
   - --output-directory
+  description: "name of the output (report) directory. (default:\nreport)"
   args: !SimpleFlagArg
     name: OUTPUT_DIRECTORY
-  optional: true
 - !Flag
-  description: "--no-html             Do not create any HTML reports. Save ROIs and\n\
-    statistics only. (default: False)\n--no-multiqc          Do not create any multiqc\
-    \ HTML page. (default: False)\n--debug-level LOGGING_LEVEL\nset to DEBUG, INFO,\
-    \ WARNING, CRITICAL, ERROR (default:\nINFO)\n--level LOGGING_LEVEL\nset to DEBUG,\
-    \ INFO, WARNING, CRITICAL, ERROR (default:\nINFO)"
+  optional: true
   synonyms:
   - -q
   - --quiet
+  - --no-html
+  description: "Do not create any HTML reports. Save ROIs and\nstatistics only. (default:\
+    \ False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'a valid genbank annotation (default: None)'
+  optional: true
+  synonyms:
+  - --no-multiqc
+  description: 'Do not create any multiqc HTML page. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug-level
+  description: "set to DEBUG, INFO, WARNING, CRITICAL, ERROR (default:\nINFO)"
+  args: !SimpleFlagArg
+    name: LOGGING_LEVEL
+- !Flag
+  optional: true
+  synonyms:
+  - --level
+  description: "set to DEBUG, INFO, WARNING, CRITICAL, ERROR (default:\nINFO)"
+  args: !SimpleFlagArg
+    name: LOGGING_LEVEL
+- !Flag
+  optional: true
   synonyms:
   - -b
   - --genbank
+  description: 'a valid genbank annotation (default: None)'
   args: !SimpleFlagArg
     name: GENBANK
-  optional: true
 - !Flag
-  description: "If available, you can provide a reference (ENA/NCBI).\nIt must have\
-    \ the same length as the one used to create\nthe BAM or BED file. If provided,\
-    \ it is used to create\nthe coverage versus GC content image (default: None)"
+  optional: true
   synonyms:
   - -r
   - --reference
+  description: "If available, you can provide a reference (ENA/NCBI).\nIt must have\
+    \ the same length as the one used to create\nthe BAM or BED file. If provided,\
+    \ it is used to create\nthe coverage versus GC content image (default: None)"
   args: !SimpleFlagArg
     name: REFERENCE
-  optional: true
 - !Flag
-  description: "Length of the running window to compute the GC content\n(default:\
-    \ 201)"
+  optional: true
   synonyms:
   - -g
   - --window-gc
+  description: "Length of the running window to compute the GC content\n(default:\
+    \ 201)"
   args: !SimpleFlagArg
     name: W_GC
-  optional: true
 - !Flag
-  description: 'Number of levels in the contour (default: 3)'
+  optional: true
   synonyms:
   - -n
   - --nlevels
+  description: 'Number of levels in the contour (default: 3)'
   args: !SimpleFlagArg
     name: LEVELS
-  optional: true
 - !Flag
-  description: "Length of the running median window (default 20001,\nrecommended for\
-    \ bacteria). For short genome (below\n100000 bases), we set this parameter to\
-    \ one fifth of\nthe genome length . (default: 20001)"
+  optional: true
   synonyms:
   - -w
   - --window-median
+  description: "Length of the running median window (default 20001,\nrecommended for\
+    \ bacteria). For short genome (below\n100000 bases), we set this parameter to\
+    \ one fifth of\nthe genome length . (default: 20001)"
   args: !SimpleFlagArg
     name: W_MEDIAN
-  optional: true
 - !Flag
-  description: "Number of mixture models to use (default 2, although\nif sequencing\
-    \ depth is below 8, k is set to 1\nautomatically). To ignore that behaviour set\
-    \ k to the\nrequired value (default: 2)"
+  optional: true
   synonyms:
   - -k
   - --mixture-models
+  description: "Number of mixture models to use (default 2, although\nif sequencing\
+    \ depth is below 8, k is set to 1\nautomatically). To ignore that behaviour set\
+    \ k to the\nrequired value (default: 2)"
   args: !SimpleFlagArg
     name: K
-  optional: true
 - !Flag
-  description: "lower threshold (zscore) of the confidence interval.\nOverwrite value\
-    \ given by --threshold/-T (default:\nNone)"
+  optional: true
   synonyms:
   - -L
   - --low-threshold
+  description: "lower threshold (zscore) of the confidence interval.\nOverwrite value\
+    \ given by --threshold/-T (default:\nNone)"
   args: !SimpleFlagArg
     name: LOW_THRESHOLD
-  optional: true
 - !Flag
-  description: "higher threshold (zscore) of the confidence interval.\nOverwrite value\
-    \ given by --threshold/-T (default:\nNone)"
+  optional: true
   synonyms:
   - -H
   - --high-threshold
+  description: "higher threshold (zscore) of the confidence interval.\nOverwrite value\
+    \ given by --threshold/-T (default:\nNone)"
   args: !SimpleFlagArg
     name: HIGH_THRESHOLD
-  optional: true
 - !Flag
-  description: "set lower and higher thresholds of the confidence\ninterval. (default:\
-    \ 4)"
+  optional: true
   synonyms:
   - -T
   - --threshold
+  description: "set lower and higher thresholds of the confidence\ninterval. (default:\
+    \ 4)"
   args: !SimpleFlagArg
     name: THRESHOLD
-  optional: true
 - !Flag
-  description: "set lower and higher double threshold parameter (in\n[0,1]). Do not\
-    \ use value close to zero. Ideally,\naround 0.5. lower value will tend to cluster\
-    \ more than\nhigher value (default: 0.5)"
+  optional: true
   synonyms:
   - -C
   - --clustering-parameter
+  description: "set lower and higher double threshold parameter (in\n[0,1]). Do not\
+    \ use value close to zero. Ideally,\naround 0.5. lower value will tend to cluster\
+    \ more than\nhigher value (default: 0.5)"
   args: !SimpleFlagArg
     name: DOUBLE_THRESHOLD
-  optional: true
 - !Flag
-  description: "[minimum=1000000], --chunk-size [minimum=1000000]\nLength of the chunk\
-    \ to be used for the analysis.\n(default: 5000000)"
+  optional: true
   synonyms:
   - -s
+  description: "[minimum=1000000], --chunk-size [minimum=1000000]\nLength of the chunk\
+    \ to be used for the analysis.\n(default: 5000000)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -B
   description: "[minimum=2], --binning [minimum=2]\nmerge consecutive (non overlapping)\
     \ data points,\ntaking the mean. This is useful for large genome (e.g.\nhuman).\
     \ This allows a faster computation, especially\nfor CNV detection were only large\
     \ windows are of\ninterest. For instance, using a binning of 50 or 100\nallows\
     \ the human genome to be analysed. (default:\nNone)"
-  synonyms:
-  - -B
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Two consecutive ROIs are merged when their distance in\nbases is below\
-    \ this parameter. If set to -1, not used.\n(default: -1)"
+  optional: true
   synonyms:
   - --cnv-clustering
+  description: "Two consecutive ROIs are merged when their distance in\nbases is below\
+    \ this parameter. If set to -1, not used.\n(default: -1)"
   args: !SimpleFlagArg
     name: CNV_CLUSTERING
-  optional: true
 - !Flag
-  description: "--download-genbank DOWNLOAD_GENBANK\n--database {ENA,EUtils}\nDownload\
-    \ the reference from one of these database\n(default ENA) (default: ENA)"
+  optional: true
   synonyms:
   - --download-reference
+  - --download-genbank
+  - --database
+  description: "Download the reference from one of these database\n(default ENA) (default:\
+    \ ENA)"
   args: !SimpleFlagArg
     name: DOWNLOAD_REFERENCE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: \nWelcome to SEQUANA -- Coverage standalone\n\n    Extract and\
@@ -303,3 +323,4 @@ help_text: "usage: \nWelcome to SEQUANA -- Coverage standalone\n\n    Extract an
   \        \n"
 generated_using:
 - --help
+docker_image:

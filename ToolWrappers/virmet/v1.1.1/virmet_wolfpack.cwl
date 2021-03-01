@@ -3,12 +3,12 @@ id: virmet_wolfpack.cwl
 inputs:
 - id: in_run
   doc: Miseq run directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --run
 - id: in_file
   doc: single fastq file
-  type: File
+  type: File?
   inputBinding:
     prefix: --file
 - id: in_vir_met
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - virmet

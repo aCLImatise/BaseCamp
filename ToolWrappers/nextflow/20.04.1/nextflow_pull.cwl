@@ -3,22 +3,22 @@ id: nextflow_pull.cwl
 inputs:
 - id: in_all
   doc: "Update all downloaded projects\nDefault: false"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -all
 - id: in_hub
   doc: Service hub where the project is hosted
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -hub
 - id: in_revision
   doc: "Revision of the project to run (either a git branch, tag or commit SHA\nnumber)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -revision
 - id: in_user
   doc: "Private repository user name\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -user
 - id: in_pull
@@ -60,6 +60,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nextflow

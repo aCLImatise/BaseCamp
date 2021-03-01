@@ -38,6 +38,9 @@ task VtoolsReportPlotFields {
       ~{if defined(outlier_size) then ("--outlier_size " +  '"' + outlier_size + '"') else ""} \
       ~{if defined(color) then ("--color " +  '"' + color + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     variants: "Limit value of fields to variant in specified variant\\ntable. Default to all variants."
     save_data: "Save data to file."

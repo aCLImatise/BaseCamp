@@ -16,6 +16,9 @@ task SingularityRemoteUse {
       ~{remote} \
       ~{use}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

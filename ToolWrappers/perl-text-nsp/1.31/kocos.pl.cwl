@@ -3,13 +3,13 @@ id: kocos.pl.cwl
 inputs:
 - id: in_literal
   doc: Specify the target word directly on command line as a literal.
-  type: string
+  type: string?
   inputBinding:
     prefix: --literal
 - id: in_regex
   doc: "Specify a file containing Perl regular expression/s that define\nthe target\
     \ word."
-  type: File
+  type: File?
   inputBinding:
     prefix: --regex
 - id: in_order
@@ -19,7 +19,7 @@ inputs:
     \ the\nwords that co-occur with a given target word. When K is 2, all words\n\
     that co-occur with the words that co-occur with the target word are\nshown, and\
     \ so on for higher orders."
-  type: long
+  type: long?
   inputBinding:
     prefix: --order
 - id: in_trace
@@ -30,7 +30,7 @@ inputs:
     \ order co-occurrence of WORD which co-occurs\nwith 'First'. 'Third' is a third\
     \ order co-occurrence of WORD which\nco-occurs with 'Second' and so on until K\
     \ is reached."
-  type: string
+  type: string?
   inputBinding:
     prefix: --trace
 - id: in_bigram
@@ -42,6 +42,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kocos.pl

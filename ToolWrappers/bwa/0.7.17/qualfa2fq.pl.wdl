@@ -10,6 +10,9 @@ task Qualfa2fqpl {
       ~{in_dot_fast_a} \
       ~{in_dot_qual}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_fast_a: ""
     in_dot_qual: ""

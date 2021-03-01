@@ -4,92 +4,90 @@ command:
 - load
 positional:
 - !Positional
-  description: 'COO: COO-rdinate sparse matrix format (a.k.a. ijv triple). 3 columns:'
+  optional: false
   position: 0
   name: compressed.
-  optional: false
-- !Positional
-  description: '[default: #]'
-  position: 0
-  name: ignore.
-  optional: false
+  description: 'COO: COO-rdinate sparse matrix format (a.k.a. ijv triple). 3 columns:'
 named:
 - !Flag
-  description: "[coo|bg2]          'coo' refers to a tab-delimited sparse\ntriplet\
-    \ file (bin1, bin2, count). 'bg2'\nrefers to a 2D bedGraph-like file (chrom1,\n\
-    start1, end1, chrom2, start2, end2, count).\n[required]"
+  optional: true
   synonyms:
   - -f
   - --format
+  description: "[coo|bg2]          'coo' refers to a tab-delimited sparse\ntriplet\
+    \ file (bin1, bin2, count). 'bg2'\nrefers to a 2D bedGraph-like file (chrom1,\n\
+    start1, end1, chrom2, start2, end2, count).\n[required]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Path to JSON file containing user metadata.
+  optional: true
   synonyms:
   - --metadata
+  description: Path to JSON file containing user metadata.
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Name of genome assembly (e.g. hg19, mm10)
+  optional: true
   synonyms:
   - --assembly
+  description: Name of genome assembly (e.g. hg19, mm10)
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --field
   description: "Add supplemental value fields or override\ndefault field numbers for\
     \ the specified\nformat. Specify quantitative input fields to\naggregate into\
     \ value columns using the\nsyntax ``--field <field-name>=<field-\nnumber>``. Optionally,\
     \ append ``:`` followed\nby ``dtype=<dtype>`` to specify the data\ntype (e.g.\
     \ float). Field numbers are\n1-based. Repeat the ``--field`` option for\neach\
     \ additional field."
-  synonyms:
-  - --field
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chunksize
   description: "Size (in number of lines/records) of data\nchunks to read and process\
     \ from the input\nfile at a time. These chunks will be saved\nas temporary partial\
     \ Coolers and merged at\nthe end. Also specifies the size of the\nbuffer during\
     \ the merge step."
-  synonyms:
-  - -c
-  - --chunksize
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Store the 'count' column as floating point\nvalues instead of as integers.\
-    \ Can also be\nspecified using the `--field` option."
+  optional: true
   synonyms:
   - --count-as-float
+  description: "Store the 'count' column as floating point\nvalues instead of as integers.\
+    \ Can also be\nspecified using the `--field` option."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Pass this flag if the bin IDs listed in a\nCOO file are one-based\
-    \ instead of zero-\nbased."
+  optional: true
   synonyms:
   - --one-based
+  description: "Pass this flag if the bin IDs listed in a\nCOO file are one-based\
+    \ instead of zero-\nbased."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Comment character that indicates lines to
+  optional: true
   synonyms:
   - --comment-char
+  description: Comment character that indicates lines to
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Create a complete square matrix without\nimplicit symmetry. This allows\
-    \ for distinct\nupper- and lower-triangle values"
+  optional: true
   synonyms:
   - -N
   - --no-symmetric-upper
+  description: "Create a complete square matrix without\nimplicit symmetry. This allows\
+    \ for distinct\nupper- and lower-triangle values"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --input-copy-status
   description: "[unique|duplex]\nCopy status of input data when using\nsymmetric-upper\
     \ storage. | `unique`:\nIncoming data comes from a unique half of a\nsymmetric\
     \ matrix, regardless of how element\ncoordinates are ordered. Execution will be\n\
@@ -97,29 +95,26 @@ named:
     lower-triangle duplicates. All lower-\ntriangle input elements will be discarded!\
     \ |\nIf you wish to treat lower- and upper-\ntriangle input data as distinct,\
     \ use the\n``--no-symmetric-upper`` option instead.\n[default: unique]"
-  synonyms:
-  - --input-copy-status
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --storage-options
   description: "Options to modify the data filter pipeline.\nProvide as a comma-separated\
     \ list of key-\nvalue pairs of the form 'k1=v1,k2=v2,...'.\nSee http://docs.h5py.org/en/stable/high/data\n\
     set.html#filter-pipeline for more details."
-  synonyms:
-  - --storage-options
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: cooler load [OPTIONS] BINS_PATH PIXELS_PATH COOL_PATH\n\n  Create\
@@ -184,3 +179,4 @@ help_text: "Usage: cooler load [OPTIONS] BINS_PATH PIXELS_PATH COOL_PATH\n\n  Cr
   \  -h, --help                      Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

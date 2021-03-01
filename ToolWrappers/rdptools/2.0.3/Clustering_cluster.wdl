@@ -28,6 +28,9 @@ task ClusteringCluster {
       ~{if defined(step) then ("--step " +  '"' + step + '"') else ""} \
       ~{if defined(tree_file) then ("--tree-file " +  '"' + tree_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_clust_out: "Don't write out clustering"
     dist_file: "Sorted column distance matrix file"

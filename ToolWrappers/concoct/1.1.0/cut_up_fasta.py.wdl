@@ -16,6 +16,9 @@ task CutUpFastapy {
       ~{if (merge_last) then "--merge_last" else ""} \
       ~{if defined(bed_file) then ("--bedfile " +  '"' + bed_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chunk_size: "Chunk size"
     overlap_size: "Overlap size"

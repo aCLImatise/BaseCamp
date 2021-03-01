@@ -3,17 +3,17 @@ id: Binsanity_profile.cwl
 inputs:
 - id: in_specify_fasta_file
   doc: Specify fasta file being profiled
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
-- id: in_identify_location_bam
+- id: in_identify_location_indexed
   doc: "identify location of BAM files\nBAM files should be indexed and sorted"
-  type: string
+  type: string?
   inputBinding:
     prefix: -s
 - id: in_identify_name_output
   doc: Identify name of output file for coverage information
-  type: File
+  type: File?
   inputBinding:
     prefix: -c
 - id: in_transform
@@ -23,17 +23,17 @@ inputs:
     \ by 10\nX100 --> Multiplication by 100\nSQR --> Square root\nWe recommend using\
     \ a scaled log transformation for initial testing.\nOther transformations can\
     \ be useful on a case by case basis"
-  type: File
+  type: File?
   inputBinding:
     prefix: --transform
 - id: in_specify_number_threads
   doc: 'Specify Number of Threads For Feature Counts [Default: 1]'
-  type: long
+  type: long?
   inputBinding:
     prefix: -T
-- id: in_specify_directory_output
+- id: in_specify_directory_deposited
   doc: 'Specify directory for output files to be deposited [Default: Working Directory]'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
 outputs:
@@ -42,14 +42,15 @@ outputs:
   type: stdout
 - id: out_identify_name_output
   doc: Identify name of output file for coverage information
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_identify_name_output)
-- id: out_specify_directory_output
+- id: out_specify_directory_deposited
   doc: 'Specify directory for output files to be deposited [Default: Working Directory]'
-  type: Directory
+  type: Directory?
   outputBinding:
-    glob: $(inputs.in_specify_directory_output)
+    glob: $(inputs.in_specify_directory_deposited)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - Binsanity-profile

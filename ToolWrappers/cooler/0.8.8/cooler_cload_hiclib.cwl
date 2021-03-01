@@ -3,18 +3,18 @@ id: cooler_cload_hiclib.cwl
 inputs:
 - id: in_metadata
   doc: Path to JSON file containing user metadata.
-  type: File
+  type: File?
   inputBinding:
     prefix: --metadata
 - id: in_assembly
   doc: Name of genome assembly (e.g. hg19, mm10)
-  type: long
+  type: long?
   inputBinding:
     prefix: --assembly
 - id: in_chunksize
   doc: "Control the number of pixels handled by each worker\nprocess at a time.  [default:\
     \ 100000000]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --chunksize
 - id: in_bins
@@ -36,6 +36,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cooler

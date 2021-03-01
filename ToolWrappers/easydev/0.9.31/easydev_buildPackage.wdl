@@ -18,6 +18,9 @@ task EasydevBuildPackage {
       ~{if (no_share_directory) then "--no-share-directory" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pkgname: "Name of the package to be created"
     package: "Name of the package to be created"

@@ -21,7 +21,7 @@ task Getsize {
     String use
     String var_17
     String var_18
-    File file
+    File var_file
     String frame
     String letter
     String not
@@ -64,7 +64,7 @@ task Getsize {
       ~{use} \
       ~{var_17} \
       ~{var_18} \
-      ~{file} \
+      ~{var_file} \
       ~{frame} \
       ~{letter} \
       ~{not} \
@@ -106,6 +106,9 @@ task Getsize {
       ~{if (var_8) then "-rna" else ""} \
       ~{if (var_9) then "-dna" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     codons: ""
     x: ""
@@ -126,7 +129,7 @@ task Getsize {
     use: ""
     var_17: ""
     var_18: ""
-    file: ""
+    var_file: ""
     frame: ""
     letter: ""
     not: ""

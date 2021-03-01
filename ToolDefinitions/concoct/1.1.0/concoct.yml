@@ -4,157 +4,157 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --coverage_file
   description: "specify the coverage file, containing a table where\neach row correspond\
     \ to a contig, and each column\ncorrespond to a sample. The values are the average\n\
     coverage for this contig in that sample. All values\nare separated with tabs."
-  synonyms:
-  - --coverage_file
   args: !SimpleFlagArg
     name: COVERAGE_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --composition_file
   description: "specify the composition file, containing sequences in\nfasta format.\
     \ It is named the composition file since\nit is used to calculate the kmer composition\
     \ (the\ngenomic signature) of each contig."
-  synonyms:
-  - --composition_file
   args: !SimpleFlagArg
     name: COMPOSITION_FILE
-  optional: true
 - !Flag
-  description: "specify maximal number of clusters for VGMM, default\n400."
+  optional: true
   synonyms:
   - -c
   - --clusters
+  description: "specify maximal number of clusters for VGMM, default\n400."
   args: !SimpleFlagArg
     name: CLUSTERS
-  optional: true
 - !Flag
-  description: specify kmer length, default 4.
+  optional: true
   synonyms:
   - -k
   - --kmer_length
+  description: specify kmer length, default 4.
   args: !SimpleFlagArg
     name: KMER_LENGTH
-  optional: true
 - !Flag
-  description: Number of threads to use
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: Number of threads to use
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: "specify the sequence length threshold, contigs shorter\nthan this\
-    \ value will not be included. Defaults to\n1000."
+  optional: true
   synonyms:
   - -l
   - --length_threshold
+  description: "specify the sequence length threshold, contigs shorter\nthan this\
+    \ value will not be included. Defaults to\n1000."
   args: !SimpleFlagArg
     name: LENGTH_THRESHOLD
-  optional: true
 - !Flag
-  description: specify read length for coverage, default 100
+  optional: true
   synonyms:
   - -r
   - --read_length
+  description: specify read length for coverage, default 100
   args: !SimpleFlagArg
     name: READ_LENGTH
-  optional: true
 - !Flag
-  description: "The percentage of variance explained by the principal\ncomponents\
-    \ for the combined data."
+  optional: true
   synonyms:
   - --total_percentage_pca
+  description: "The percentage of variance explained by the principal\ncomponents\
+    \ for the combined data."
   args: !SimpleFlagArg
     name: TOTAL_PERCENTAGE_PCA
-  optional: true
 - !Flag
-  description: "Specify the basename for files or directory where\noutputwill be placed.\
-    \ Path to existing directory or\nbasenamewith a trailing '/' will be interpreted\
-    \ as a\ndirectory.If not provided, current directory will be\nused."
+  optional: true
   synonyms:
   - -b
   - --basename
+  description: "Specify the basename for files or directory where\noutputwill be placed.\
+    \ Path to existing directory or\nbasenamewith a trailing '/' will be interpreted\
+    \ as a\ndirectory.If not provided, current directory will be\nused."
   args: !SimpleFlagArg
     name: BASENAME
-  optional: true
 - !Flag
-  description: "Specify an integer to use as seed for clustering. 0\ngives a random\
-    \ seed, 1 is the default seed and any\nother positive integer can be used. Other\
-    \ values give\nArgumentTypeError."
+  optional: true
   synonyms:
   - -s
   - --seed
+  description: "Specify an integer to use as seed for clustering. 0\ngives a random\
+    \ seed, 1 is the default seed and any\nother positive integer can be used. Other\
+    \ values give\nArgumentTypeError."
   args: !SimpleFlagArg
     name: SEED
-  optional: true
 - !Flag
-  description: "Specify maximum number of iterations for the VBGMM.\nDefault value\
-    \ is 500"
+  optional: true
   synonyms:
   - -i
   - --iterations
+  description: "Specify maximum number of iterations for the VBGMM.\nDefault value\
+    \ is 500"
   args: !SimpleFlagArg
     name: ITERATIONS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no_cov_normalization
   description: "By default the coverage is normalized with regards to\nsamples, then\
     \ normalized with regards of contigs and\nfinally log transformed. By setting\
     \ this flag you skip\nthe normalization and only do log transorm of the\ncoverage."
-  synonyms:
-  - --no_cov_normalization
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no_total_coverage
   description: "By default, the total coverage is added as a new\ncolumn in the coverage\
     \ data matrix, independently of\ncoverage normalization but previous to log\n\
     transformation. Use this tag to escape this behaviour."
-  synonyms:
-  - --no_total_coverage
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no_original_data
   description: "By default the original data is saved to disk. For big\ndatasets,\
     \ especially when a large k is used for\ncompositional data, this file can become\
     \ very large.\nUse this tag if you don't want to save the original\ndata."
-  synonyms:
-  - --no_original_data
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Write convergence info to files.
+  optional: true
   synonyms:
   - -o
   - --converge_out
+  description: Write convergence info to files.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Debug parameters.
+  optional: true
   synonyms:
   - -d
   - --debug
+  description: Debug parameters.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -v
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: concoct [-h] [--coverage_file COVERAGE_FILE]\n               [--composition_file\
   \ COMPOSITION_FILE] [-c CLUSTERS]\n               [-k KMER_LENGTH] [-t THREADS]\
   \ [-l LENGTH_THRESHOLD]\n               [-r READ_LENGTH] [--total_percentage_pca\
@@ -208,3 +208,4 @@ help_text: "usage: concoct [-h] [--coverage_file COVERAGE_FILE]\n               
   \         show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

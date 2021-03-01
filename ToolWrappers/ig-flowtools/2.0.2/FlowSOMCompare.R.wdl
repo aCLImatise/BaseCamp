@@ -8,6 +8,9 @@ task FlowSOMCompareR {
     FlowSOMCompare_R \
       ~{union}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     union: "Attaching package: 'flowCore'"
   }

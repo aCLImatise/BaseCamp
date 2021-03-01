@@ -4,94 +4,94 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cgene
   description: "Protein coding transcripts (used to build logit model)\neither in\
     \ BED format or mRNA sequences in FASTA\nformat: If this is BED format file, '-r'\
     \ must be\nspecified; if this is mRNA sequence file in FASTA\nformat, ignore the\
     \ '-r' option. The input BED or FASTA\nfile could be regular text file or compressed\
     \ file\n(*.gz, *.bz2) or accessible url. NOTE: transcript ID\nshould be unique."
-  synonyms:
-  - -c
-  - --cgene
   args: !SimpleFlagArg
     name: CODING_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --ngene
   description: "Non protein coding transcripts (used to build logit\nmodel) either\
     \ in BED format or mRNA sequences in FASTA\nformat: If this is BED format file,\
     \ '-r' must be\nspecified; if this is mRNA sequence file in FASTA\nformat, ignore\
     \ the '-r' option. The input BED or FASTA\nfile could be regular text file or\
     \ compressed file\n(*.gz, *.bz2) or accessible url.  NOTE: transcript ID\nshould\
     \ be unique."
-  synonyms:
-  - -n
-  - --ngene
   args: !SimpleFlagArg
     name: NONCODING_FILE
-  optional: true
 - !Flag
-  description: output prefix.
+  optional: true
   synonyms:
   - -o
   - --outfile
+  description: output prefix.
   args: !SimpleFlagArg
     name: OUT_FILE
-  optional: true
 - !Flag
-  description: "Prebuilt hexamer frequency table (Human, Mouse, Fly,\nZebrafish).\
-    \ Run 'make_hexamer_tab.py' to generate this\ntable."
+  optional: true
   synonyms:
   - -x
   - --hex
+  description: "Prebuilt hexamer frequency table (Human, Mouse, Fly,\nZebrafish).\
+    \ Run 'make_hexamer_tab.py' to generate this\ntable."
   args: !SimpleFlagArg
     name: HEXAMER_DAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --ref
   description: "Reference genome sequences in FASTA format. Ignore\nthis option if\
     \ mRNA sequences file was provided to\n'-g'. Reference genome file will be indexed\n\
     automatically (produce *.fai file along with the\noriginal *.fa file within the\
     \ same directory) if\nhasn't been done."
-  synonyms:
-  - -r
-  - --ref
   args: !SimpleFlagArg
     name: REF_GENOME
-  optional: true
 - !Flag
-  description: "Start codon (DNA sequence, so use 'T' instead of 'U')\nused to define\
-    \ open reading frame (ORF). default=ATG"
+  optional: true
   synonyms:
   - -s
   - --start
+  description: "Start codon (DNA sequence, so use 'T' instead of 'U')\nused to define\
+    \ open reading frame (ORF). default=ATG"
   args: !SimpleFlagArg
     name: START_CODONS
-  optional: true
 - !Flag
-  description: "Stop codon (DNA sequence, so use 'T' instead of 'U')\nused to define\
-    \ open reading frame (ORF). Multiple stop\ncodons should be separated by ','.\
-    \ default=TAG,TAA,TGA\n"
+  optional: true
   synonyms:
   - -t
   - --stop
+  description: "Stop codon (DNA sequence, so use 'T' instead of 'U')\nused to define\
+    \ open reading frame (ORF). Multiple stop\ncodons should be separated by ','.\
+    \ default=TAG,TAA,TGA\n"
   args: !SimpleFlagArg
     name: STOP_CODONS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: \nmake_logitModel.py  [options]\n\nOptions:\n  --version      \
   \       show program's version number and exit\n  -h, --help            show this\
   \ help message and exit\n  -c CODING_FILE, --cgene=CODING_FILE\n               \
@@ -127,3 +127,4 @@ help_text: "Usage: \nmake_logitModel.py  [options]\n\nOptions:\n  --version     
   \ Multiple stop\n                        codons should be separated by ','. default=TAG,TAA,TGA\n"
 generated_using:
 - --help
+docker_image:

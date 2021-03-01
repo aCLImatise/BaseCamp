@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean
+
+Lumpy_V0_1_0 = CommandToolBuilder(tool="lumpy", base_command=["lumpy"], inputs=[ToolInput(tag="in_genome_file_defines", input_type=Boolean(optional=True), prefix="-g", doc=InputDocumentation(doc="Genome file (defines chromosome order)")), ToolInput(tag="in_show_evidence_call", input_type=Boolean(optional=True), prefix="-e", doc=InputDocumentation(doc="Show evidence for each call")), ToolInput(tag="in_file_read_default", input_type=Boolean(optional=True), prefix="-w", doc=InputDocumentation(doc="File read windows size (default 1000000)")), ToolInput(tag="in_mw", input_type=Boolean(optional=True), prefix="-mw", doc=InputDocumentation(doc="minimum weight for a call")), ToolInput(tag="in_msw", input_type=Boolean(optional=True), prefix="-msw", doc=InputDocumentation(doc="minimum per-sample weight for a call")), ToolInput(tag="in_tt", input_type=Boolean(optional=True), prefix="-tt", doc=InputDocumentation(doc="trim threshold")), ToolInput(tag="in_exclude_bed_file", input_type=Boolean(optional=True), prefix="-x", doc=InputDocumentation(doc="exclude file bed file")), ToolInput(tag="in_temp_file_prefix", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc="temp file prefix, must be to a writeable directory")), ToolInput(tag="in_output_probability_curve", input_type=Boolean(optional=True), prefix="-P", doc=InputDocumentation(doc="output probability curve for each variant")), ToolInput(tag="in_output_bedpe_instead", input_type=Boolean(optional=True), prefix="-b", doc=InputDocumentation(doc="output BEDPE instead of VCF")), ToolInput(tag="in_sr", input_type=Boolean(optional=True), prefix="-sr", doc=InputDocumentation(doc="bam_file:<file name>,\nid:<sample name>,\nback_distance:<distance>,\nmin_mapping_threshold:<mapping quality>,\nweight:<sample weight>,\nmin_clip:<minimum clip length>,\nread_group:<string>")), ToolInput(tag="in_pe", input_type=Boolean(optional=True), prefix="-pe", doc=InputDocumentation(doc="bam_file:<file name>,\nid:<sample name>,\nhisto_file:<file name>,\nmean:<value>,\nstdev:<value>,\nread_length:<length>,\nmin_non_overlap:<length>,\ndiscordant_z:<z value>,\nback_distance:<distance>,\nmin_mapping_threshold:<mapping quality>,\nweight:<sample weight>,\nread_group:<string>")), ToolInput(tag="in_bed_pe", input_type=Boolean(optional=True), prefix="-bedpe", doc=InputDocumentation(doc="bedpe_file:<bedpe file>,\nid:<sample name>,\nweight:<sample weight>\n"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Lumpy_V0_1_0().translate("wdl", allow_empty_container=True)
+

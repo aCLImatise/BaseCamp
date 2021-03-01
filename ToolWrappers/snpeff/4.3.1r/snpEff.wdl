@@ -9,9 +9,9 @@ task SnpEff {
     String? input_format_default
     Boolean? file_list
     String? ouput_format_default
-    Boolean? stats_htmlstats_file
+    Boolean? html_stats
     Boolean? no_stats
-    Boolean? fi
+    Boolean? filter_interval
     Boolean? no_downstream
     Boolean? no_intergenic
     Boolean? no_intron
@@ -32,15 +32,15 @@ task SnpEff {
     Boolean? no_shift_hgvs
     Boolean? oic_r
     Boolean? sequence_ontology
-    Boolean? config_specify_config
+    Boolean? config
     File? config_option
-    Boolean? debug_debug_mode
+    Boolean? debug
     File? datadir
     Boolean? no_download
     Boolean? no_log
     Boolean? use_multiple_threads
-    Boolean? quiet_quiet_mode
-    Boolean? verbose_verbose_mode
+    Boolean? quiet
+    Boolean? verbose
     Boolean? version
     Boolean? canon
     File? canon_list
@@ -58,12 +58,12 @@ task SnpEff {
     Boolean? only_protein
     File? only_tr
     String? reg
-    Boolean? ss
+    Int? splice_site_size
     Int? splice_region_exon_size
     Int? splice_region_intron_min
     Int? splice_region_intron_max
     Boolean? strict
-    Boolean? ud
+    Int? up_downstream_len
     String variants_file
   }
   command <<<
@@ -76,9 +76,9 @@ task SnpEff {
       ~{if defined(input_format_default) then ("-i " +  '"' + input_format_default + '"') else ""} \
       ~{if (file_list) then "-fileList" else ""} \
       ~{if defined(ouput_format_default) then ("-o " +  '"' + ouput_format_default + '"') else ""} \
-      ~{if (stats_htmlstats_file) then "-s" else ""} \
+      ~{if (html_stats) then "-htmlStats" else ""} \
       ~{if (no_stats) then "-noStats" else ""} \
-      ~{if (fi) then "-fi" else ""} \
+      ~{if (filter_interval) then "-filterInterval" else ""} \
       ~{if (no_downstream) then "-no-downstream" else ""} \
       ~{if (no_intergenic) then "-no-intergenic" else ""} \
       ~{if (no_intron) then "-no-intron" else ""} \
@@ -99,15 +99,15 @@ task SnpEff {
       ~{if (no_shift_hgvs) then "-noShiftHgvs" else ""} \
       ~{if (oic_r) then "-oicr" else ""} \
       ~{if (sequence_ontology) then "-sequenceOntology" else ""} \
-      ~{if (config_specify_config) then "-c" else ""} \
+      ~{if (config) then "-config" else ""} \
       ~{if defined(config_option) then ("-configOption " +  '"' + config_option + '"') else ""} \
-      ~{if (debug_debug_mode) then "-d" else ""} \
+      ~{if (debug) then "-debug" else ""} \
       ~{if defined(datadir) then ("-dataDir " +  '"' + datadir + '"') else ""} \
       ~{if (no_download) then "-nodownload" else ""} \
       ~{if (no_log) then "-noLog" else ""} \
       ~{if (use_multiple_threads) then "-t" else ""} \
-      ~{if (quiet_quiet_mode) then "-q" else ""} \
-      ~{if (verbose_verbose_mode) then "-v" else ""} \
+      ~{if (quiet) then "-quiet" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
       ~{if (version) then "-version" else ""} \
       ~{if (canon) then "-canon" else ""} \
       ~{if defined(canon_list) then ("-canonList " +  '"' + canon_list + '"') else ""} \
@@ -125,13 +125,16 @@ task SnpEff {
       ~{if (only_protein) then "-onlyProtein" else ""} \
       ~{if defined(only_tr) then ("-onlyTr " +  '"' + only_tr + '"') else ""} \
       ~{if defined(reg) then ("-reg " +  '"' + reg + '"') else ""} \
-      ~{if (ss) then "-ss" else ""} \
+      ~{if defined(splice_site_size) then ("-spliceSiteSize " +  '"' + splice_site_size + '"') else ""} \
       ~{if defined(splice_region_exon_size) then ("-spliceRegionExonSize " +  '"' + splice_region_exon_size + '"') else ""} \
       ~{if defined(splice_region_intron_min) then ("-spliceRegionIntronMin " +  '"' + splice_region_intron_min + '"') else ""} \
       ~{if defined(splice_region_intron_max) then ("-spliceRegionIntronMax " +  '"' + splice_region_intron_max + '"') else ""} \
       ~{if (strict) then "-strict" else ""} \
-      ~{if (ud) then "-ud" else ""}
+      ~{if defined(up_downstream_len) then ("-upDownStreamLen " +  '"' + up_downstream_len + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chr: ": Prepend 'string' to chromosome name (e.g. 'chr1' instead of '1'). Only on TXT output."
     classic: ": Use old style annotations instead of Sequence Ontology and Hgvs."
@@ -140,9 +143,9 @@ task SnpEff {
     input_format_default: ": Input format [ vcf, bed ]. Default: VCF."
     file_list: ": Input actually contains a list of files to process."
     ouput_format_default: ": Ouput format [ vcf, gatk, bed, bedAnn ]. Default: VCF."
-    stats_htmlstats_file: ", -stats, -htmlStats         : Create HTML summary file.  Default is 'snpEff_summary.html'"
+    html_stats: ": Create HTML summary file.  Default is 'snpEff_summary.html'"
     no_stats: ": Do not create stats (summary) file"
-    fi: ", -filterInterval  <file>   : Only analyze changes that intersect with the intervals specified in this file (you may use this option many times)"
+    filter_interval: "<file>   : Only analyze changes that intersect with the intervals specified in this file (you may use this option many times)"
     no_downstream: ": Do not show DOWNSTREAM changes"
     no_intergenic: ": Do not show INTERGENIC changes"
     no_intron: ": Do not show INTRON changes"
@@ -163,15 +166,15 @@ task SnpEff {
     no_shift_hgvs: ": Do not shift variants according to HGVS notation (most 3prime end)."
     oic_r: ": Add OICR tag in VCF file. Default: false"
     sequence_ontology: ": Use Sequence Ontology terms. Default: true"
-    config_specify_config: ", -config                 : Specify config file"
+    config: ": Specify config file"
     config_option: "=value     : Override a config file option"
-    debug_debug_mode: ", -debug                  : Debug mode (very verbose)."
+    debug: ": Debug mode (very verbose)."
     datadir: ": Override data_dir parameter from config file."
     no_download: ": Do not download a SnpEff database, if not available locally."
     no_log: ": Do not report usage statistics to server"
     use_multiple_threads: ": Use multiple threads (implies '-noStats'). Default 'off'"
-    quiet_quiet_mode: ", -quiet                  : Quiet mode (do not show any messages or errors)"
-    verbose_verbose_mode: ", -verbose                : Verbose mode"
+    quiet: ": Quiet mode (do not show any messages or errors)"
+    verbose: ": Verbose mode"
     version: ": Show version number and exit"
     canon: ": Only use canonical transcripts."
     canon_list: ": Only use canonical transcripts, replace some transcripts using the 'gene_id       transcript_id' entries in <file>."
@@ -189,12 +192,12 @@ task SnpEff {
     only_protein: ": Only use protein coding transcripts. Default: false"
     only_tr: ": Only use the transcripts in this file. Format: One transcript ID per line."
     reg: ": Regulation track to use (this option can be used add several times)."
-    ss: ", -spliceSiteSize <int>  : Set size for splice sites (donor and acceptor) in bases. Default: 2"
+    splice_site_size: ": Set size for splice sites (donor and acceptor) in bases. Default: 2"
     splice_region_exon_size: ": Set size for splice site region within exons. Default: 3 bases"
     splice_region_intron_min: ": Set minimum number of bases for splice site region within intron. Default: 3 bases"
     splice_region_intron_max: ": Set maximum number of bases for splice site region within intron. Default: 8 bases"
     strict: ": Only use 'validated' transcripts (i.e. sequence has been checked). Default: false"
-    ud: ", -upDownStreamLen <int> : Set upstream downstream interval length (in bases)"
+    up_downstream_len: ": Set upstream downstream interval length (in bases)"
     variants_file: ": Default is STDIN"
   }
   output {

@@ -20,6 +20,9 @@ task ClinvarTsvParseXml {
       ~{if defined(output_single) then ("--output-single " +  '"' + output_single + '"') else ""} \
       ~{if defined(max_rows) then ("--max-rows " +  '"' + max_rows + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_multi: "[--max-rows MAX_ROWS]"
     clin_var_xml: "Path to Clinvar XML file."

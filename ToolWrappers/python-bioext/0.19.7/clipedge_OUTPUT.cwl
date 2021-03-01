@@ -3,7 +3,7 @@ id: clipedge_OUTPUT.cwl
 inputs:
 - id: in_r
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
 - id: in_clip_edge
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - clipedge

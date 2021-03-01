@@ -22,6 +22,9 @@ task DlessP {
       ~{if defined(timing) then ("--timing " +  '"' + timing + '"') else ""} \
       ~{if defined(html) then ("--html " +  '"' + html + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     msa_format: "|PHYLIP|MPM|MAF|SS\\nAlignment format (default is to guess format from file contents).\\nNote that the program msa_view can be used for conversion."
     refseq: "(for use with --msa-format MAF) Read the complete text of the\\nreference sequence from <fname> (FASTA format) and combine it\\nwith the contents of the MAF file to produce a complete,\\nordered representation of the alignment.  The reference\\nsequence of the MAF file is assumed to be the one that appears\\nfirst in each block."

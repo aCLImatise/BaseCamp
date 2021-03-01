@@ -32,6 +32,9 @@ task Twins {
       ~{if defined(min_info_field) then ("--min-info-field " +  '"' + min_info_field + '"') else ""} \
       ~{if defined(max_info_field) then ("--max-info-field " +  '"' + max_info_field + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "samtools reference sequence (required)"
     region: "samtools reference region (optional)"

@@ -18,6 +18,9 @@ task ReadQC {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_one: "Forward input gzipped FASTQ file(s)."
     in_two: "Reverse input gzipped FASTQ file(s) for paired-end mode (same number of cycles/reads as 'in1').\\nDefault value: ''"

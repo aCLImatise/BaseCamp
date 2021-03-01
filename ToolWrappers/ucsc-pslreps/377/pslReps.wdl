@@ -30,6 +30,9 @@ task PslReps {
       ~{if defined(min_near_top_size) then ("-minNearTopSize " +  '"' + min_near_top_size + '"') else ""} \
       ~{if defined(cover_q_sizes) then ("-coverQSizes " +  '"' + cover_q_sizes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_head: "Don't add PSL header."
     ignore_size: "Will not weigh as much in favor of larger alignments."

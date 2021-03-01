@@ -4,6 +4,9 @@ task Furename {
   command <<<
     fu_rename
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

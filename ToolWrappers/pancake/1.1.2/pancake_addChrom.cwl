@@ -3,7 +3,7 @@ id: pancake_addChrom.cwl
 inputs:
 - id: in_pan_file
   doc: Name of PanCake Data Object File (required)
-  type: File
+  type: File?
   inputBinding:
     prefix: --panfile
 - id: in_sequences
@@ -20,30 +20,30 @@ inputs:
   doc: "if downloading your sequences via gi ids, please\nspecify your email address;\
     \ in case of excessive\nusage, NCBI will attempt to contact a user at the\ne-mail\
     \ address provided prior to blocking access to\nthe E-utilities"
-  type: string
+  type: string?
   inputBinding:
     prefix: --email
 - id: in_output
   doc: "output file for new PanCake Object (DEFAULT=PAN_FILE);\nif specified, PanCake\
     \ Data Object in PAN_FILE stays\nunchanged"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_ali
   doc: "[ALI [ALI ...]], -a [ALI [ALI ...]]\npairwise alignments (BLAST or nucmer\
     \ output) to\ninclude in PanCake Object"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ali
 - id: in_min_len
   doc: "minimum length of pairwise alignments to include\n(DEFUALT=25)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_len
 - id: in_no_self_alignments
   doc: "if set, skip pairwise alignments between regions on\nidentical chromosomes\
     \ as input (DEFAULT=False)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_self_alignments
 outputs:
@@ -53,9 +53,10 @@ outputs:
 - id: out_output
   doc: "output file for new PanCake Object (DEFAULT=PAN_FILE);\nif specified, PanCake\
     \ Data Object in PAN_FILE stays\nunchanged"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pancake

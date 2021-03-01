@@ -2,9 +2,9 @@ version 1.0
 
 task MsisensorMsi {
   input {
-    Boolean? string_homopolymer_file
+    Boolean? string_homopolymer_microsates
     Boolean? string_normal_file
-    Boolean? string_tumor_bam
+    Boolean? string_bam_file
     File? string_distribution_file
     Boolean? string_file_optional
     Boolean? double_fdr_threshold
@@ -24,9 +24,9 @@ task MsisensorMsi {
   }
   command <<<
     msisensor msi \
-      ~{if (string_homopolymer_file) then "-d" else ""} \
+      ~{if (string_homopolymer_microsates) then "-d" else ""} \
       ~{if (string_normal_file) then "-n" else ""} \
-      ~{if (string_tumor_bam) then "-t" else ""} \
+      ~{if (string_bam_file) then "-t" else ""} \
       ~{if (string_distribution_file) then "-o" else ""} \
       ~{if (string_file_optional) then "-e" else ""} \
       ~{if (double_fdr_threshold) then "-f" else ""} \
@@ -44,10 +44,13 @@ task MsisensorMsi {
       ~{if (int_output_homopolymer) then "-x" else ""} \
       ~{if (int_output_microsatellite) then "-y" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    string_homopolymer_file: "<string>   homopolymer and microsates file"
+    string_homopolymer_microsates: "<string>   homopolymer and microsates file"
     string_normal_file: "<string>   normal bam file"
-    string_tumor_bam: "<string>   tumor  bam file"
+    string_bam_file: "<string>   tumor  bam file"
     string_distribution_file: "<string>   output distribution file"
     string_file_optional: "<string>   bed file, optional"
     double_fdr_threshold: "<double>   FDR threshold for somatic sites detection, default=0.05"

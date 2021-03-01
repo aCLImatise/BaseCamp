@@ -4,102 +4,102 @@ command:
 - init
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: TABLE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: Remove a project if it already exists.
+  optional: true
   synonyms:
   - -f
   - --force
+  description: Remove a project if it already exists.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Set the build (hg18 or hg19) of the primary reference\ngenome of the\
-    \ project."
+  optional: true
   synonyms:
   - --build
+  description: "Set the build (hg18 or hg19) of the primary reference\ngenome of the\
+    \ project."
   args: !SimpleFlagArg
     name: BUILD
-  optional: true
 - !Flag
-  description: "Storage model used to storage variants and genotype.\nThe default\
-    \ value is the value set by environmental\nvariable STOREMODE or sqlite if the\
-    \ variable is not\nset."
+  optional: true
   synonyms:
   - -s
   - --store
+  description: "Storage model used to storage variants and genotype.\nThe default\
+    \ value is the value set by environmental\nvariable STOREMODE or sqlite if the\
+    \ variable is not\nset."
   args: !ChoiceFlagArg
     choices: !!set
       hdf5:
       sqlite:
-  optional: true
 - !Flag
-  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
-    \ to standard output (default to\n1)."
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1)."
   args: !ChoiceFlagArg
     choices: !!set
+      '3':
       '2':
       '0':
-      '3':
       '1':
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --parent
   description: "Directory or snapshot file of a parent project (e.g.\n--parent ../main)\
     \ from which all or part of variants\n(--variants), samples (--samples) and genotypes\n\
     (--genotypes) will be copied to the newly created\nproject."
-  synonyms:
-  - --parent
   args: !SimpleFlagArg
     name: DIR_or_SNAPSHOT
-  optional: true
 - !Flag
-  description: "[TABLE]    A variant table of the parental project whose variants\n\
-    will be copied to the new project. Default to variant\n(all variants)."
+  optional: true
   synonyms:
   - --variants
+  description: "[TABLE]    A variant table of the parental project whose variants\n\
+    will be copied to the new project. Default to variant\n(all variants)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[COND [COND ...]]\nCopy only samples of the parental project that\
-    \ match\nspecified conditions."
+  optional: true
   synonyms:
   - --samples
+  description: "[COND [COND ...]]\nCopy only samples of the parental project that\
+    \ match\nspecified conditions."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[COND [COND ...]]\nCopy only genotypes that match specified conditions."
+  optional: true
   synonyms:
   - --genotypes
+  description: "[COND [COND ...]]\nCopy only genotypes that match specified conditions."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --children
   description: "A list of a subprojects (directories or snapshot files\nof projects)\
     \ that will be merged to create this new\nproject. The subprojects must have the\
     \ same primary\nand alternative reference genome. Variant tables with\nthe same\
     \ names from multiple samples will be merged.\nSamples from the children projects\
     \ will be copied even\nif they were identical samples imported from the same\n\
     source files.\n"
-  synonyms:
-  - --children
   args: !RepeatFlagArg
     name: DIR_OR_SNAPSHOT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: vtools init [-h] [-f] [--parent DIR_or_SNAPSHOT] [--variants [TABLE]]\n\
@@ -143,3 +143,4 @@ help_text: "usage: vtools init [-h] [-f] [--parent DIR_or_SNAPSHOT] [--variants 
   \                        source files.\n"
 generated_using:
 - --help
+docker_image:

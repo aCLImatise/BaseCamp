@@ -16,6 +16,9 @@ task IdentifyHMM {
       ~{if (cut_tc) then "--cut_tc" else ""} \
       ~{if defined(set_evalue_used) then ("-E " +  '"' + set_evalue_used + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     marker_db: "Provide HMM file of markers. Markers should have a\\ndescriptive ID name."
     perform_prodigal: "Run Prodigal on input genome nucleotide FASTA file"

@@ -30,7 +30,7 @@ task Cp {
     Boolean? update
     Boolean? verbose
     Boolean? one_file_system
-    Boolean? set_selinux_context
+    Boolean? set_security_context
     Boolean? context
     String argument
   }
@@ -65,9 +65,12 @@ task Cp {
       ~{if (update) then "--update" else ""} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (one_file_system) then "--one-file-system" else ""} \
-      ~{if (set_selinux_context) then "-Z" else ""} \
+      ~{if (set_security_context) then "-Z" else ""} \
       ~{if (context) then "--context" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     archive: "same as -dR --preserve=all"
     attributes_only: "don't copy the file data, just the attributes"
@@ -97,7 +100,7 @@ task Cp {
     update: "copy only when the SOURCE file is newer\\nthan the destination file or when the\\ndestination file is missing"
     verbose: "explain what is being done"
     one_file_system: "stay on this file system"
-    set_selinux_context: "set SELinux security context of destination\\nfile to default type"
+    set_security_context: "set SELinux security context of destination\\nfile to default type"
     context: "[=CTX]          like -Z, or if CTX is specified then set the\\nSELinux or SMACK security context to CTX"
     argument: "-s, --symbolic-link          make symbolic links instead of copying"
   }

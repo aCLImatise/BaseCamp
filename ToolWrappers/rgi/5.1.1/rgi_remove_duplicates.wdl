@@ -14,6 +14,9 @@ task RgiRemoveDuplicates {
       ~{if defined(output_fasta_file) then ("--output " +  '"' + output_fasta_file + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_file: "input fasta file"
     card_annotation: "card_annotation input fasta file"

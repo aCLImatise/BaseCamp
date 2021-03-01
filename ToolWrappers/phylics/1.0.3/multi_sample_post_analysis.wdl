@@ -28,6 +28,9 @@ task MultiSamplePostAnalysis {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(n_jobs) then ("--n_jobs " +  '"' + n_jobs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_permutations: "Number of permutations to execute the permutation test\\nfor sample coesion score."
     seed: "Seed to initialize the pseudo-random generator used to\\nperform the permutation test."

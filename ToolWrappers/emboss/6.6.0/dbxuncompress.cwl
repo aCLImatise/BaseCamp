@@ -3,12 +3,12 @@ id: dbxuncompress.cwl
 inputs:
 - id: in_outfile
   doc: outfile    [*.dbxuncompress] Output file name
-  type: File
+  type: File?
   inputBinding:
     prefix: -outfile
 - id: in_index_dir
   doc: directory  Index directory (optional)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -indexdir
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: outfile    [*.dbxuncompress] Output file name
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dbxuncompress

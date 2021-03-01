@@ -12,6 +12,9 @@ task Dbletters {
       ~{if defined(db) then ("-db " +  '"' + db + '"') else ""} \
       ~{if defined(option) then ("-option " +  '"' + option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "[-db seq_filen]*     one or more sequence files"
     option: ""

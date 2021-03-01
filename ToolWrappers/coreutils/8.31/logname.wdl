@@ -4,6 +4,9 @@ task Logname {
   command <<<
     logname
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

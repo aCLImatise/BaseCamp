@@ -1,0 +1,82 @@
+!Command
+command:
+- compare_genomes_lastal.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: reference_fasta
+  description: Reference fasta.
+- !Positional
+  optional: false
+  position: 1
+  name: target_fasta
+  description: Target fasta.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: Save pickled results in this file (None).
+  args: !SimpleFlagArg
+    name: results_pickle
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: "Parameters passed to lastal in the <arg>:value,... format\n(a:1,b:1)."
+  args: !SimpleFlagArg
+    name: lastal_args
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "Save details of lastal alignment in this tab-separated\nfile (None)."
+  args: !SimpleFlagArg
+    name: details_tsv
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: Do *not* filter for best alignment per query.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: Report with alignment details plot (None).
+  args: !SimpleFlagArg
+    name: report_pdf
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: compare_genomes_lastal.py [-h] [-p results_pickle] [-l lastal_args]\n\
+  \                                 [-t details_tsv] [-f] [-r report_pdf]\n      \
+  \                           reference_fasta target_fasta\n\nCompare a set of reference\
+  \ sequences (genome) to another set (target assembly)\nusing lastal alignment. Accuracy\
+  \ is the total number of matched bases divided\nby total alignment length. Coverage\
+  \ is total reference covered by alignment\ndivided by total length of reference.\
+  \ Caveats: - The lastal alignments are\nfiltered by default (use -f to disable)\
+  \ so only the best scoring alignment is\nkept per query. Hence some shorter valid\
+  \ alignments might be discarded causing\nan underestimation of coverage. - The estimated\
+  \ accuracy is dependent on the\nscoring of gaps and mismatches. By default gap open\
+  \ and gap extend penalties\nare set to equal.\n\npositional arguments:\n  reference_fasta\
+  \    Reference fasta.\n  target_fasta       Target fasta.\n\noptional arguments:\n\
+  \  -h, --help         show this help message and exit\n  -p results_pickle  Save\
+  \ pickled results in this file (None).\n  -l lastal_args     Parameters passed to\
+  \ lastal in the <arg>:value,... format\n                     (a:1,b:1).\n  -t details_tsv\
+  \     Save details of lastal alignment in this tab-separated\n                 \
+  \    file (None).\n  -f                 Do *not* filter for best alignment per query.\n\
+  \  -r report_pdf      Report with alignment details plot (None).\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/wub:0.5.1--pyh3252c3a_0

@@ -14,6 +14,9 @@ task Bam2fqpy {
       ~{if defined(out_prefix) then ("--out-prefix " +  '"' + out_prefix + '"') else ""} \
       ~{if (single_end) then "--single-end" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Alignment file in BAM or SAM format."
     out_prefix: "Prefix of output fastq files(s)."

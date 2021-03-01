@@ -26,6 +26,9 @@ task SimkaMerge {
       ~{if (simple_dist) then "-simple-dist" else ""} \
       ~{if (complex_dist) then "-complex-dist" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nb_cores: "(1 arg) :    number of cores  [default '0']"
     verbose: "(1 arg) :    verbosity level  [default '1']"

@@ -11,154 +11,458 @@ subcommands:
   - count
   positional: []
   named: []
-  parent: &id022 !Command
+  parent: &id025 !Command
     command: *id001
     positional: []
     named: []
     parent:
     subcommands:
-    - &id021 !Command
+    - &id024 !Command
       command: *id002
       positional: []
       named: []
-      parent: &id019 !Command
+      parent: &id022 !Command
         command: *id001
         positional: []
         named: []
         parent:
         subcommands:
-        - &id018 !Command
+        - &id021 !Command
           command: *id002
           positional: []
           named: []
-          parent: &id016 !Command
+          parent: &id019 !Command
             command: *id001
             positional: []
             named: []
             parent:
             subcommands:
-            - &id015 !Command
+            - &id018 !Command
               command: *id002
               positional: []
               named: []
-              parent: &id003 !Command
+              parent: &id016 !Command
                 command: *id001
                 positional: []
                 named: []
                 parent:
                 subcommands:
-                - &id004 !Command
+                - &id015 !Command
                   command: *id002
                   positional: []
-                  named:
-                  - !Flag
-                    description: ''
-                    synonyms:
-                    - -l
-                    args: !SimpleFlagArg
-                      name: HOMO_LEN
-                    optional: true
-                  - !Flag
-                    description: ''
-                    synonyms:
-                    - -o
-                    args: !SimpleFlagArg
-                      name: OUTPUT_DIR
-                    optional: true
-                  parent: *id003
+                  named: []
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - &id004 !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: HOMO_LEN
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: OUTPUT_DIR
+                      parent: *id003
+                      subcommands:
+                      - !Command
+                        command: &id008
+                        - assess_homopolymers
+                        - count
+                        - count
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: bam
+                          description: Input bam file.
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -o
+                          - --output_dir
+                          description: "Output directory (will be created). (default:\n\
+                            homopolymers)"
+                          args: !SimpleFlagArg
+                            name: OUTPUT_DIR
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -l
+                          - --homo_len
+                          description: "Minimum homopolymer length, default 3 (default:\
+                            \ 3)\n"
+                          args: !SimpleFlagArg
+                            name: HOMO_LEN
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR]\
+                          \ [-l HOMO_LEN] bam\n\npositional arguments:\n  bam    \
+                          \               Input bam file.\n\noptional arguments:\n\
+                          \  -h, --help            show this help message and exit\n\
+                          \  -o OUTPUT_DIR, --output_dir OUTPUT_DIR\n            \
+                          \            Output directory (will be created). (default:\n\
+                          \                        homopolymers)\n  -l HOMO_LEN, --homo_len\
+                          \ HOMO_LEN\n                        Minimum homopolymer\
+                          \ length, default 3 (default: 3)\n"
+                        generated_using: &id005
+                        - --help
+                        docker_image:
+                      - !Command
+                        command: &id009
+                        - assess_homopolymers
+                        - count
+                        - bam
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: bam
+                          description: Input bam file.
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -o
+                          - --output_dir
+                          description: "Output directory (will be created). (default:\n\
+                            homopolymers)"
+                          args: !SimpleFlagArg
+                            name: OUTPUT_DIR
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -l
+                          - --homo_len
+                          description: "Minimum homopolymer length, default 3 (default:\
+                            \ 3)\n"
+                          args: !SimpleFlagArg
+                            name: HOMO_LEN
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR]\
+                          \ [-l HOMO_LEN] bam\n\npositional arguments:\n  bam    \
+                          \               Input bam file.\n\noptional arguments:\n\
+                          \  -h, --help            show this help message and exit\n\
+                          \  -o OUTPUT_DIR, --output_dir OUTPUT_DIR\n            \
+                          \            Output directory (will be created). (default:\n\
+                          \                        homopolymers)\n  -l HOMO_LEN, --homo_len\
+                          \ HOMO_LEN\n                        Minimum homopolymer\
+                          \ length, default 3 (default: 3)\n"
+                        generated_using: *id005
+                        docker_image:
+                      - !Command
+                        command: &id010
+                        - assess_homopolymers
+                        - count
+                        - homopolymer
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: bam
+                          description: Input bam file.
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -o
+                          - --output_dir
+                          description: "Output directory (will be created). (default:\n\
+                            homopolymers)"
+                          args: !SimpleFlagArg
+                            name: OUTPUT_DIR
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -l
+                          - --homo_len
+                          description: "Minimum homopolymer length, default 3 (default:\
+                            \ 3)\n"
+                          args: !SimpleFlagArg
+                            name: HOMO_LEN
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR]\
+                          \ [-l HOMO_LEN] bam\n\npositional arguments:\n  bam    \
+                          \               Input bam file.\n\noptional arguments:\n\
+                          \  -h, --help            show this help message and exit\n\
+                          \  -o OUTPUT_DIR, --output_dir OUTPUT_DIR\n            \
+                          \            Output directory (will be created). (default:\n\
+                          \                        homopolymers)\n  -l HOMO_LEN, --homo_len\
+                          \ HOMO_LEN\n                        Minimum homopolymer\
+                          \ length, default 3 (default: 3)\n"
+                        generated_using: *id005
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l\
+                        \ HOMO_LEN] bam\nhomopolymer count: error: the following arguments\
+                        \ are required: bam\n"
+                      generated_using: &id007 []
+                      docker_image:
+                    - &id006 !Command
+                      command: &id011
+                      - assess_homopolymers
+                      - analyse
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: OUTPUT_DIR
+                      parent: *id003
+                      subcommands:
+                      - !Command
+                        command: &id012
+                        - assess_homopolymers
+                        - analyse
+                        - pkl
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: pkl
+                          description: Input .pkl file(s).
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -o
+                          - --output_dir
+                          description: "Output directory (will be created). (default:\n\
+                            homopolymers)\n"
+                          args: !SimpleFlagArg
+                            name: OUTPUT_DIR
+                        parent: *id006
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR]\
+                          \ pkl [pkl ...]\n\npositional arguments:\n  pkl        \
+                          \           Input .pkl file(s).\n\noptional arguments:\n\
+                          \  -h, --help            show this help message and exit\n\
+                          \  -o OUTPUT_DIR, --output_dir OUTPUT_DIR\n            \
+                          \            Output directory (will be created). (default:\n\
+                          \                        homopolymers)\n"
+                        generated_using: *id005
+                        docker_image:
+                      - !Command
+                        command: &id013
+                        - assess_homopolymers
+                        - analyse
+                        - analyse
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: pkl
+                          description: Input .pkl file(s).
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -o
+                          - --output_dir
+                          description: "Output directory (will be created). (default:\n\
+                            homopolymers)\n"
+                          args: !SimpleFlagArg
+                            name: OUTPUT_DIR
+                        parent: *id006
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR]\
+                          \ pkl [pkl ...]\n\npositional arguments:\n  pkl        \
+                          \           Input .pkl file(s).\n\noptional arguments:\n\
+                          \  -h, --help            show this help message and exit\n\
+                          \  -o OUTPUT_DIR, --output_dir OUTPUT_DIR\n            \
+                          \            Output directory (will be created). (default:\n\
+                          \                        homopolymers)\n"
+                        generated_using: *id005
+                        docker_image:
+                      - !Command
+                        command: &id014
+                        - assess_homopolymers
+                        - analyse
+                        - homopolymer
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: pkl
+                          description: Input .pkl file(s).
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -o
+                          - --output_dir
+                          description: "Output directory (will be created). (default:\n\
+                            homopolymers)\n"
+                          args: !SimpleFlagArg
+                            name: OUTPUT_DIR
+                        parent: *id006
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR]\
+                          \ pkl [pkl ...]\n\npositional arguments:\n  pkl        \
+                          \           Input .pkl file(s).\n\noptional arguments:\n\
+                          \  -h, --help            show this help message and exit\n\
+                          \  -o OUTPUT_DIR, --output_dir OUTPUT_DIR\n            \
+                          \            Output directory (will be created). (default:\n\
+                          \                        homopolymers)\n"
+                        generated_using: *id005
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR]\
+                        \ pkl [pkl ...]\nhomopolymer analyse: error: the following\
+                        \ arguments are required: pkl\n"
+                      generated_using: *id007
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: homopolymer [-h] {count,analyse} ...\n\nAnalyse\
+                      \ homopolymer query and reference lengths.\n\noptional arguments:\n\
+                      \  -h, --help       show this help message and exit\n\nsubcommands:\n\
+                      \  valid commands\n\n  {count,analyse}  additional help\n  \
+                      \  count          Count homopolymers starting from a bam.\n\
+                      \    analyse        Analyse existing counts, optionally merging\
+                      \ multiple\n                   counters.\n"
+                    generated_using: *id005
+                    docker_image:
                   subcommands:
                   - !Command
-                    command: &id008
-                    - assess_homopolymers
-                    - count
-                    - count
+                    command: *id008
                     positional:
                     - !Positional
-                      description: Input bam file.
+                      optional: false
                       position: 0
                       name: bam
-                      optional: false
+                      description: Input bam file.
                     named:
                     - !Flag
-                      description: "Output directory (will be created). (default:\n\
-                        homopolymers)"
+                      optional: true
                       synonyms:
                       - -o
                       - --output_dir
+                      description: "Output directory (will be created). (default:\n\
+                        homopolymers)"
                       args: !SimpleFlagArg
                         name: OUTPUT_DIR
-                      optional: true
                     - !Flag
-                      description: "Minimum homopolymer length, default 3 (default:\
-                        \ 3)\n"
+                      optional: true
                       synonyms:
                       - -l
                       - --homo_len
+                      description: "Minimum homopolymer length, default 3 (default:\
+                        \ 3)\n"
                       args: !SimpleFlagArg
                         name: HOMO_LEN
-                      optional: true
                     parent: *id004
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: show this help message and exit
+                      optional: true
                       synonyms:
                       - -h
                       - --help
-                      args: !EmptyFlagArg {}
-                      optional: true
-                    usage_flag:
-                    version_flag:
-                    help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l\
-                      \ HOMO_LEN] bam\n\npositional arguments:\n  bam            \
-                      \       Input bam file.\n\noptional arguments:\n  -h, --help\
-                      \            show this help message and exit\n  -o OUTPUT_DIR,\
-                      \ --output_dir OUTPUT_DIR\n                        Output directory\
-                      \ (will be created). (default:\n                        homopolymers)\n\
-                      \  -l HOMO_LEN, --homo_len HOMO_LEN\n                      \
-                      \  Minimum homopolymer length, default 3 (default: 3)\n"
-                    generated_using: &id005
-                    - --help
-                  - !Command
-                    command: &id009
-                    - assess_homopolymers
-                    - count
-                    - bam
-                    positional:
-                    - !Positional
-                      description: Input bam file.
-                      position: 0
-                      name: bam
-                      optional: false
-                    named:
-                    - !Flag
-                      description: "Output directory (will be created). (default:\n\
-                        homopolymers)"
-                      synonyms:
-                      - -o
-                      - --output_dir
-                      args: !SimpleFlagArg
-                        name: OUTPUT_DIR
-                      optional: true
-                    - !Flag
-                      description: "Minimum homopolymer length, default 3 (default:\
-                        \ 3)\n"
-                      synonyms:
-                      - -l
-                      - --homo_len
-                      args: !SimpleFlagArg
-                        name: HOMO_LEN
-                      optional: true
-                    parent: *id004
-                    subcommands: []
-                    usage: []
-                    help_flag: !Flag
                       description: show this help message and exit
-                      synonyms:
-                      - -h
-                      - --help
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag:
                     help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l\
@@ -170,46 +474,44 @@ subcommands:
                       \  -l HOMO_LEN, --homo_len HOMO_LEN\n                      \
                       \  Minimum homopolymer length, default 3 (default: 3)\n"
                     generated_using: *id005
+                    docker_image:
                   - !Command
-                    command: &id010
-                    - assess_homopolymers
-                    - count
-                    - homopolymer
+                    command: *id009
                     positional:
                     - !Positional
-                      description: Input bam file.
+                      optional: false
                       position: 0
                       name: bam
-                      optional: false
+                      description: Input bam file.
                     named:
                     - !Flag
-                      description: "Output directory (will be created). (default:\n\
-                        homopolymers)"
+                      optional: true
                       synonyms:
                       - -o
                       - --output_dir
+                      description: "Output directory (will be created). (default:\n\
+                        homopolymers)"
                       args: !SimpleFlagArg
                         name: OUTPUT_DIR
-                      optional: true
                     - !Flag
-                      description: "Minimum homopolymer length, default 3 (default:\
-                        \ 3)\n"
+                      optional: true
                       synonyms:
                       - -l
                       - --homo_len
+                      description: "Minimum homopolymer length, default 3 (default:\
+                        \ 3)\n"
                       args: !SimpleFlagArg
                         name: HOMO_LEN
-                      optional: true
                     parent: *id004
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: show this help message and exit
+                      optional: true
                       synonyms:
                       - -h
                       - --help
+                      description: show this help message and exit
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag:
                     help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l\
@@ -221,65 +523,109 @@ subcommands:
                       \  -l HOMO_LEN, --homo_len HOMO_LEN\n                      \
                       \  Minimum homopolymer length, default 3 (default: 3)\n"
                     generated_using: *id005
+                    docker_image:
+                  - !Command
+                    command: *id010
+                    positional:
+                    - !Positional
+                      optional: false
+                      position: 0
+                      name: bam
+                      description: Input bam file.
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -o
+                      - --output_dir
+                      description: "Output directory (will be created). (default:\n\
+                        homopolymers)"
+                      args: !SimpleFlagArg
+                        name: OUTPUT_DIR
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -l
+                      - --homo_len
+                      description: "Minimum homopolymer length, default 3 (default:\
+                        \ 3)\n"
+                      args: !SimpleFlagArg
+                        name: HOMO_LEN
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l\
+                      \ HOMO_LEN] bam\n\npositional arguments:\n  bam            \
+                      \       Input bam file.\n\noptional arguments:\n  -h, --help\
+                      \            show this help message and exit\n  -o OUTPUT_DIR,\
+                      \ --output_dir OUTPUT_DIR\n                        Output directory\
+                      \ (will be created). (default:\n                        homopolymers)\n\
+                      \  -l HOMO_LEN, --homo_len HOMO_LEN\n                      \
+                      \  Minimum homopolymer length, default 3 (default: 3)\n"
+                    generated_using: *id005
+                    docker_image:
                   usage: []
-                  help_flag: !Flag
-                    description: ''
-                    synonyms:
-                    - -h
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l HOMO_LEN]\
                     \ bam\nhomopolymer count: error: the following arguments are required:\
                     \ bam\n"
-                  generated_using: &id007 []
-                - &id006 !Command
-                  command: &id011
-                  - assess_homopolymers
-                  - analyse
+                  generated_using: *id007
+                  docker_image:
+                - &id017 !Command
+                  command: *id011
                   positional: []
-                  named:
-                  - !Flag
-                    description: ''
-                    synonyms:
-                    - -o
-                    args: !SimpleFlagArg
-                      name: OUTPUT_DIR
-                    optional: true
+                  named: []
                   parent: *id003
                   subcommands:
                   - !Command
-                    command: &id012
-                    - assess_homopolymers
-                    - analyse
-                    - pkl
+                    command: *id012
                     positional:
                     - !Positional
-                      description: Input .pkl file(s).
-                      position: 0
-                      name: pkl
                       optional: false
+                      position: 0
+                      name: homopolymer
+                      description: ''
+                    - !Positional
+                      optional: false
+                      position: 1
+                      name: analyse
+                      description: ''
+                    - !Positional
+                      optional: true
+                      position: 2
+                      name: pkl
+                      description: ''
                     named:
                     - !Flag
-                      description: "Output directory (will be created). (default:\n\
-                        homopolymers)\n"
+                      optional: true
                       synonyms:
                       - -o
                       - --output_dir
+                      description: "Output directory (will be created). (default:\n\
+                        homopolymers)\n"
                       args: !SimpleFlagArg
                         name: OUTPUT_DIR
-                      optional: true
                     parent: *id006
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: show this help message and exit
+                      optional: true
                       synonyms:
                       - -h
                       - --help
+                      description: show this help message and exit
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag:
                     help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl\
@@ -289,37 +635,45 @@ subcommands:
                       \ --output_dir OUTPUT_DIR\n                        Output directory\
                       \ (will be created). (default:\n                        homopolymers)\n"
                     generated_using: *id005
+                    docker_image:
                   - !Command
-                    command: &id013
-                    - assess_homopolymers
-                    - analyse
-                    - analyse
+                    command: *id013
                     positional:
                     - !Positional
-                      description: Input .pkl file(s).
-                      position: 0
-                      name: pkl
                       optional: false
+                      position: 0
+                      name: homopolymer
+                      description: ''
+                    - !Positional
+                      optional: false
+                      position: 1
+                      name: analyse
+                      description: ''
+                    - !Positional
+                      optional: true
+                      position: 2
+                      name: pkl
+                      description: ''
                     named:
                     - !Flag
-                      description: "Output directory (will be created). (default:\n\
-                        homopolymers)\n"
+                      optional: true
                       synonyms:
                       - -o
                       - --output_dir
+                      description: "Output directory (will be created). (default:\n\
+                        homopolymers)\n"
                       args: !SimpleFlagArg
                         name: OUTPUT_DIR
-                      optional: true
                     parent: *id006
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: show this help message and exit
+                      optional: true
                       synonyms:
                       - -h
                       - --help
+                      description: show this help message and exit
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag:
                     help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl\
@@ -329,37 +683,45 @@ subcommands:
                       \ --output_dir OUTPUT_DIR\n                        Output directory\
                       \ (will be created). (default:\n                        homopolymers)\n"
                     generated_using: *id005
+                    docker_image:
                   - !Command
-                    command: &id014
-                    - assess_homopolymers
-                    - analyse
-                    - homopolymer
+                    command: *id014
                     positional:
                     - !Positional
-                      description: Input .pkl file(s).
-                      position: 0
-                      name: pkl
                       optional: false
+                      position: 0
+                      name: homopolymer
+                      description: ''
+                    - !Positional
+                      optional: false
+                      position: 1
+                      name: analyse
+                      description: ''
+                    - !Positional
+                      optional: true
+                      position: 2
+                      name: pkl
+                      description: ''
                     named:
                     - !Flag
-                      description: "Output directory (will be created). (default:\n\
-                        homopolymers)\n"
+                      optional: true
                       synonyms:
                       - -o
                       - --output_dir
+                      description: "Output directory (will be created). (default:\n\
+                        homopolymers)\n"
                       args: !SimpleFlagArg
                         name: OUTPUT_DIR
-                      optional: true
                     parent: *id006
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: show this help message and exit
+                      optional: true
                       synonyms:
                       - -h
                       - --help
+                      description: show this help message and exit
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag:
                     help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl\
@@ -369,27 +731,18 @@ subcommands:
                       \ --output_dir OUTPUT_DIR\n                        Output directory\
                       \ (will be created). (default:\n                        homopolymers)\n"
                     generated_using: *id005
+                    docker_image:
                   usage: []
-                  help_flag: !Flag
-                    description: ''
-                    synonyms:
-                    - -h
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl\
                     \ [pkl ...]\nhomopolymer analyse: error: the following arguments\
                     \ are required: pkl\n"
                   generated_using: *id007
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "usage: homopolymer [-h] {count,analyse} ...\n\nAnalyse\
@@ -400,42 +753,43 @@ subcommands:
                   \        Analyse existing counts, optionally merging multiple\n\
                   \                   counters.\n"
                 generated_using: *id005
+                docker_image:
               subcommands:
               - !Command
                 command: *id008
                 positional:
                 - !Positional
-                  description: Input bam file.
+                  optional: false
                   position: 0
                   name: bam
-                  optional: false
+                  description: Input bam file.
                 named:
                 - !Flag
-                  description: "Output directory (will be created). (default:\nhomopolymers)"
+                  optional: true
                   synonyms:
                   - -o
                   - --output_dir
+                  description: "Output directory (will be created). (default:\nhomopolymers)"
                   args: !SimpleFlagArg
                     name: OUTPUT_DIR
-                  optional: true
                 - !Flag
-                  description: "Minimum homopolymer length, default 3 (default: 3)\n"
+                  optional: true
                   synonyms:
                   - -l
                   - --homo_len
+                  description: "Minimum homopolymer length, default 3 (default: 3)\n"
                   args: !SimpleFlagArg
                     name: HOMO_LEN
-                  optional: true
-                parent: *id004
+                parent: *id015
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: show this help message and exit
+                  optional: true
                   synonyms:
                   - -h
                   - --help
+                  description: show this help message and exit
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag:
                 help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l HOMO_LEN]\
@@ -447,41 +801,42 @@ subcommands:
                   \ HOMO_LEN\n                        Minimum homopolymer length,\
                   \ default 3 (default: 3)\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id009
                 positional:
                 - !Positional
-                  description: Input bam file.
+                  optional: false
                   position: 0
                   name: bam
-                  optional: false
+                  description: Input bam file.
                 named:
                 - !Flag
-                  description: "Output directory (will be created). (default:\nhomopolymers)"
+                  optional: true
                   synonyms:
                   - -o
                   - --output_dir
+                  description: "Output directory (will be created). (default:\nhomopolymers)"
                   args: !SimpleFlagArg
                     name: OUTPUT_DIR
-                  optional: true
                 - !Flag
-                  description: "Minimum homopolymer length, default 3 (default: 3)\n"
+                  optional: true
                   synonyms:
                   - -l
                   - --homo_len
+                  description: "Minimum homopolymer length, default 3 (default: 3)\n"
                   args: !SimpleFlagArg
                     name: HOMO_LEN
-                  optional: true
-                parent: *id004
+                parent: *id015
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: show this help message and exit
+                  optional: true
                   synonyms:
                   - -h
                   - --help
+                  description: show this help message and exit
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag:
                 help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l HOMO_LEN]\
@@ -493,41 +848,42 @@ subcommands:
                   \ HOMO_LEN\n                        Minimum homopolymer length,\
                   \ default 3 (default: 3)\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id010
                 positional:
                 - !Positional
-                  description: Input bam file.
+                  optional: false
                   position: 0
                   name: bam
-                  optional: false
+                  description: Input bam file.
                 named:
                 - !Flag
-                  description: "Output directory (will be created). (default:\nhomopolymers)"
+                  optional: true
                   synonyms:
                   - -o
                   - --output_dir
+                  description: "Output directory (will be created). (default:\nhomopolymers)"
                   args: !SimpleFlagArg
                     name: OUTPUT_DIR
-                  optional: true
                 - !Flag
-                  description: "Minimum homopolymer length, default 3 (default: 3)\n"
+                  optional: true
                   synonyms:
                   - -l
                   - --homo_len
+                  description: "Minimum homopolymer length, default 3 (default: 3)\n"
                   args: !SimpleFlagArg
                     name: HOMO_LEN
-                  optional: true
-                parent: *id004
+                parent: *id015
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: show this help message and exit
+                  optional: true
                   synonyms:
                   - -h
                   - --help
+                  description: show this help message and exit
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag:
                 help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l HOMO_LEN]\
@@ -539,6 +895,7 @@ subcommands:
                   \ HOMO_LEN\n                        Minimum homopolymer length,\
                   \ default 3 (default: 3)\n"
                 generated_using: *id005
+                docker_image:
               usage: []
               help_flag:
               usage_flag:
@@ -547,49 +904,50 @@ subcommands:
                 \ bam\nhomopolymer count: error: the following arguments are required:\
                 \ bam\n"
               generated_using: *id007
-            - &id017 !Command
+              docker_image:
+            - &id020 !Command
               command: *id011
               positional: []
               named: []
-              parent: *id003
+              parent: *id016
               subcommands:
               - !Command
                 command: *id012
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: homopolymer
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: analyse
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: true
                   position: 2
                   name: pkl
-                  optional: true
+                  description: ''
                 named:
                 - !Flag
-                  description: "Output directory (will be created). (default:\nhomopolymers)\n"
+                  optional: true
                   synonyms:
                   - -o
                   - --output_dir
+                  description: "Output directory (will be created). (default:\nhomopolymers)\n"
                   args: !SimpleFlagArg
                     name: OUTPUT_DIR
-                  optional: true
-                parent: *id006
+                parent: *id017
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: show this help message and exit
+                  optional: true
                   synonyms:
                   - -h
                   - --help
+                  description: show this help message and exit
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag:
                 help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl [pkl\
@@ -599,43 +957,44 @@ subcommands:
                   \                        Output directory (will be created). (default:\n\
                   \                        homopolymers)\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id013
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: homopolymer
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: analyse
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: true
                   position: 2
                   name: pkl
-                  optional: true
+                  description: ''
                 named:
                 - !Flag
-                  description: "Output directory (will be created). (default:\nhomopolymers)\n"
+                  optional: true
                   synonyms:
                   - -o
                   - --output_dir
+                  description: "Output directory (will be created). (default:\nhomopolymers)\n"
                   args: !SimpleFlagArg
                     name: OUTPUT_DIR
-                  optional: true
-                parent: *id006
+                parent: *id017
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: show this help message and exit
+                  optional: true
                   synonyms:
                   - -h
                   - --help
+                  description: show this help message and exit
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag:
                 help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl [pkl\
@@ -645,43 +1004,44 @@ subcommands:
                   \                        Output directory (will be created). (default:\n\
                   \                        homopolymers)\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id014
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: homopolymer
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: analyse
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: true
                   position: 2
                   name: pkl
-                  optional: true
+                  description: ''
                 named:
                 - !Flag
-                  description: "Output directory (will be created). (default:\nhomopolymers)\n"
+                  optional: true
                   synonyms:
                   - -o
                   - --output_dir
+                  description: "Output directory (will be created). (default:\nhomopolymers)\n"
                   args: !SimpleFlagArg
                     name: OUTPUT_DIR
-                  optional: true
-                parent: *id006
+                parent: *id017
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: show this help message and exit
+                  optional: true
                   synonyms:
                   - -h
                   - --help
+                  description: show this help message and exit
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag:
                 help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl [pkl\
@@ -691,6 +1051,7 @@ subcommands:
                   \                        Output directory (will be created). (default:\n\
                   \                        homopolymers)\n"
                 generated_using: *id005
+                docker_image:
               usage: []
               help_flag:
               usage_flag:
@@ -699,6 +1060,7 @@ subcommands:
                 \ ...]\nhomopolymer analyse: error: the following arguments are required:\
                 \ pkl\n"
               generated_using: *id007
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -710,42 +1072,43 @@ subcommands:
               \ starting from a bam.\n    analyse        Analyse existing counts,\
               \ optionally merging multiple\n                   counters.\n"
             generated_using: *id005
+            docker_image:
           subcommands:
           - !Command
             command: *id008
             positional:
             - !Positional
-              description: Input bam file.
+              optional: false
               position: 0
               name: bam
-              optional: false
+              description: Input bam file.
             named:
             - !Flag
-              description: "Output directory (will be created). (default:\nhomopolymers)"
+              optional: true
               synonyms:
               - -o
               - --output_dir
+              description: "Output directory (will be created). (default:\nhomopolymers)"
               args: !SimpleFlagArg
                 name: OUTPUT_DIR
-              optional: true
             - !Flag
-              description: "Minimum homopolymer length, default 3 (default: 3)\n"
+              optional: true
               synonyms:
               - -l
               - --homo_len
+              description: "Minimum homopolymer length, default 3 (default: 3)\n"
               args: !SimpleFlagArg
                 name: HOMO_LEN
-              optional: true
-            parent: *id015
+            parent: *id018
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: show this help message and exit
+              optional: true
               synonyms:
               - -h
               - --help
+              description: show this help message and exit
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag:
             help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l HOMO_LEN]\
@@ -757,41 +1120,42 @@ subcommands:
               \                        Minimum homopolymer length, default 3 (default:\
               \ 3)\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id009
             positional:
             - !Positional
-              description: Input bam file.
+              optional: false
               position: 0
               name: bam
-              optional: false
+              description: Input bam file.
             named:
             - !Flag
-              description: "Output directory (will be created). (default:\nhomopolymers)"
+              optional: true
               synonyms:
               - -o
               - --output_dir
+              description: "Output directory (will be created). (default:\nhomopolymers)"
               args: !SimpleFlagArg
                 name: OUTPUT_DIR
-              optional: true
             - !Flag
-              description: "Minimum homopolymer length, default 3 (default: 3)\n"
+              optional: true
               synonyms:
               - -l
               - --homo_len
+              description: "Minimum homopolymer length, default 3 (default: 3)\n"
               args: !SimpleFlagArg
                 name: HOMO_LEN
-              optional: true
-            parent: *id015
+            parent: *id018
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: show this help message and exit
+              optional: true
               synonyms:
               - -h
               - --help
+              description: show this help message and exit
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag:
             help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l HOMO_LEN]\
@@ -803,41 +1167,42 @@ subcommands:
               \                        Minimum homopolymer length, default 3 (default:\
               \ 3)\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id010
             positional:
             - !Positional
-              description: Input bam file.
+              optional: false
               position: 0
               name: bam
-              optional: false
+              description: Input bam file.
             named:
             - !Flag
-              description: "Output directory (will be created). (default:\nhomopolymers)"
+              optional: true
               synonyms:
               - -o
               - --output_dir
+              description: "Output directory (will be created). (default:\nhomopolymers)"
               args: !SimpleFlagArg
                 name: OUTPUT_DIR
-              optional: true
             - !Flag
-              description: "Minimum homopolymer length, default 3 (default: 3)\n"
+              optional: true
               synonyms:
               - -l
               - --homo_len
+              description: "Minimum homopolymer length, default 3 (default: 3)\n"
               args: !SimpleFlagArg
                 name: HOMO_LEN
-              optional: true
-            parent: *id015
+            parent: *id018
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: show this help message and exit
+              optional: true
               synonyms:
               - -h
               - --help
+              description: show this help message and exit
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag:
             help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l HOMO_LEN]\
@@ -849,6 +1214,7 @@ subcommands:
               \                        Minimum homopolymer length, default 3 (default:\
               \ 3)\n"
             generated_using: *id005
+            docker_image:
           usage: []
           help_flag:
           usage_flag:
@@ -857,49 +1223,50 @@ subcommands:
             \ bam\nhomopolymer count: error: the following arguments are required:\
             \ bam\n"
           generated_using: *id007
-        - &id020 !Command
+          docker_image:
+        - &id023 !Command
           command: *id011
           positional: []
           named: []
-          parent: *id016
+          parent: *id019
           subcommands:
           - !Command
             command: *id012
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: homopolymer
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: analyse
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: true
               position: 2
               name: pkl
-              optional: true
+              description: ''
             named:
             - !Flag
-              description: "Output directory (will be created). (default:\nhomopolymers)\n"
+              optional: true
               synonyms:
               - -o
               - --output_dir
+              description: "Output directory (will be created). (default:\nhomopolymers)\n"
               args: !SimpleFlagArg
                 name: OUTPUT_DIR
-              optional: true
-            parent: *id017
+            parent: *id020
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: show this help message and exit
+              optional: true
               synonyms:
               - -h
               - --help
+              description: show this help message and exit
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag:
             help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl [pkl ...]\n\
@@ -909,43 +1276,44 @@ subcommands:
               \           Output directory (will be created). (default:\n        \
               \                homopolymers)\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id013
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: homopolymer
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: analyse
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: true
               position: 2
               name: pkl
-              optional: true
+              description: ''
             named:
             - !Flag
-              description: "Output directory (will be created). (default:\nhomopolymers)\n"
+              optional: true
               synonyms:
               - -o
               - --output_dir
+              description: "Output directory (will be created). (default:\nhomopolymers)\n"
               args: !SimpleFlagArg
                 name: OUTPUT_DIR
-              optional: true
-            parent: *id017
+            parent: *id020
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: show this help message and exit
+              optional: true
               synonyms:
               - -h
               - --help
+              description: show this help message and exit
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag:
             help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl [pkl ...]\n\
@@ -955,43 +1323,44 @@ subcommands:
               \           Output directory (will be created). (default:\n        \
               \                homopolymers)\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id014
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: homopolymer
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: analyse
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: true
               position: 2
               name: pkl
-              optional: true
+              description: ''
             named:
             - !Flag
-              description: "Output directory (will be created). (default:\nhomopolymers)\n"
+              optional: true
               synonyms:
               - -o
               - --output_dir
+              description: "Output directory (will be created). (default:\nhomopolymers)\n"
               args: !SimpleFlagArg
                 name: OUTPUT_DIR
-              optional: true
-            parent: *id017
+            parent: *id020
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: show this help message and exit
+              optional: true
               synonyms:
               - -h
               - --help
+              description: show this help message and exit
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag:
             help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl [pkl ...]\n\
@@ -1001,6 +1370,7 @@ subcommands:
               \           Output directory (will be created). (default:\n        \
               \                homopolymers)\n"
             generated_using: *id005
+            docker_image:
           usage: []
           help_flag:
           usage_flag:
@@ -1008,6 +1378,7 @@ subcommands:
           help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl [pkl ...]\n\
             homopolymer analyse: error: the following arguments are required: pkl\n"
           generated_using: *id007
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -1019,42 +1390,43 @@ subcommands:
           \ starting from a bam.\n    analyse        Analyse existing counts, optionally\
           \ merging multiple\n                   counters.\n"
         generated_using: *id005
+        docker_image:
       subcommands:
       - !Command
         command: *id008
         positional:
         - !Positional
-          description: Input bam file.
+          optional: false
           position: 0
           name: bam
-          optional: false
+          description: Input bam file.
         named:
         - !Flag
-          description: "Output directory (will be created). (default:\nhomopolymers)"
+          optional: true
           synonyms:
           - -o
           - --output_dir
+          description: "Output directory (will be created). (default:\nhomopolymers)"
           args: !SimpleFlagArg
             name: OUTPUT_DIR
-          optional: true
         - !Flag
-          description: "Minimum homopolymer length, default 3 (default: 3)\n"
+          optional: true
           synonyms:
           - -l
           - --homo_len
+          description: "Minimum homopolymer length, default 3 (default: 3)\n"
           args: !SimpleFlagArg
             name: HOMO_LEN
-          optional: true
-        parent: *id018
+        parent: *id021
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: show this help message and exit
+          optional: true
           synonyms:
           - -h
           - --help
+          description: show this help message and exit
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag:
         help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l HOMO_LEN] bam\n\
@@ -1065,41 +1437,42 @@ subcommands:
           \  -l HOMO_LEN, --homo_len HOMO_LEN\n                        Minimum homopolymer\
           \ length, default 3 (default: 3)\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id009
         positional:
         - !Positional
-          description: Input bam file.
+          optional: false
           position: 0
           name: bam
-          optional: false
+          description: Input bam file.
         named:
         - !Flag
-          description: "Output directory (will be created). (default:\nhomopolymers)"
+          optional: true
           synonyms:
           - -o
           - --output_dir
+          description: "Output directory (will be created). (default:\nhomopolymers)"
           args: !SimpleFlagArg
             name: OUTPUT_DIR
-          optional: true
         - !Flag
-          description: "Minimum homopolymer length, default 3 (default: 3)\n"
+          optional: true
           synonyms:
           - -l
           - --homo_len
+          description: "Minimum homopolymer length, default 3 (default: 3)\n"
           args: !SimpleFlagArg
             name: HOMO_LEN
-          optional: true
-        parent: *id018
+        parent: *id021
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: show this help message and exit
+          optional: true
           synonyms:
           - -h
           - --help
+          description: show this help message and exit
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag:
         help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l HOMO_LEN] bam\n\
@@ -1110,41 +1483,42 @@ subcommands:
           \  -l HOMO_LEN, --homo_len HOMO_LEN\n                        Minimum homopolymer\
           \ length, default 3 (default: 3)\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id010
         positional:
         - !Positional
-          description: Input bam file.
+          optional: false
           position: 0
           name: bam
-          optional: false
+          description: Input bam file.
         named:
         - !Flag
-          description: "Output directory (will be created). (default:\nhomopolymers)"
+          optional: true
           synonyms:
           - -o
           - --output_dir
+          description: "Output directory (will be created). (default:\nhomopolymers)"
           args: !SimpleFlagArg
             name: OUTPUT_DIR
-          optional: true
         - !Flag
-          description: "Minimum homopolymer length, default 3 (default: 3)\n"
+          optional: true
           synonyms:
           - -l
           - --homo_len
+          description: "Minimum homopolymer length, default 3 (default: 3)\n"
           args: !SimpleFlagArg
             name: HOMO_LEN
-          optional: true
-        parent: *id018
+        parent: *id021
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: show this help message and exit
+          optional: true
           synonyms:
           - -h
           - --help
+          description: show this help message and exit
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag:
         help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l HOMO_LEN] bam\n\
@@ -1155,6 +1529,7 @@ subcommands:
           \  -l HOMO_LEN, --homo_len HOMO_LEN\n                        Minimum homopolymer\
           \ length, default 3 (default: 3)\n"
         generated_using: *id005
+        docker_image:
       usage: []
       help_flag:
       usage_flag:
@@ -1162,49 +1537,50 @@ subcommands:
       help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l HOMO_LEN] bam\n\
         homopolymer count: error: the following arguments are required: bam\n"
       generated_using: *id007
-    - &id023 !Command
+      docker_image:
+    - &id026 !Command
       command: *id011
       positional: []
       named: []
-      parent: *id019
+      parent: *id022
       subcommands:
       - !Command
         command: *id012
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: homopolymer
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: analyse
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: true
           position: 2
           name: pkl
-          optional: true
+          description: ''
         named:
         - !Flag
-          description: "Output directory (will be created). (default:\nhomopolymers)\n"
+          optional: true
           synonyms:
           - -o
           - --output_dir
+          description: "Output directory (will be created). (default:\nhomopolymers)\n"
           args: !SimpleFlagArg
             name: OUTPUT_DIR
-          optional: true
-        parent: *id020
+        parent: *id023
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: show this help message and exit
+          optional: true
           synonyms:
           - -h
           - --help
+          description: show this help message and exit
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag:
         help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl [pkl ...]\n\
@@ -1214,43 +1590,44 @@ subcommands:
           \   Output directory (will be created). (default:\n                    \
           \    homopolymers)\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id013
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: homopolymer
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: analyse
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: true
           position: 2
           name: pkl
-          optional: true
+          description: ''
         named:
         - !Flag
-          description: "Output directory (will be created). (default:\nhomopolymers)\n"
+          optional: true
           synonyms:
           - -o
           - --output_dir
+          description: "Output directory (will be created). (default:\nhomopolymers)\n"
           args: !SimpleFlagArg
             name: OUTPUT_DIR
-          optional: true
-        parent: *id020
+        parent: *id023
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: show this help message and exit
+          optional: true
           synonyms:
           - -h
           - --help
+          description: show this help message and exit
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag:
         help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl [pkl ...]\n\
@@ -1260,43 +1637,44 @@ subcommands:
           \   Output directory (will be created). (default:\n                    \
           \    homopolymers)\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id014
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: homopolymer
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: analyse
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: true
           position: 2
           name: pkl
-          optional: true
+          description: ''
         named:
         - !Flag
-          description: "Output directory (will be created). (default:\nhomopolymers)\n"
+          optional: true
           synonyms:
           - -o
           - --output_dir
+          description: "Output directory (will be created). (default:\nhomopolymers)\n"
           args: !SimpleFlagArg
             name: OUTPUT_DIR
-          optional: true
-        parent: *id020
+        parent: *id023
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: show this help message and exit
+          optional: true
           synonyms:
           - -h
           - --help
+          description: show this help message and exit
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag:
         help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl [pkl ...]\n\
@@ -1306,6 +1684,7 @@ subcommands:
           \   Output directory (will be created). (default:\n                    \
           \    homopolymers)\n"
         generated_using: *id005
+        docker_image:
       usage: []
       help_flag:
       usage_flag:
@@ -1313,6 +1692,7 @@ subcommands:
       help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl [pkl ...]\n\
         homopolymer analyse: error: the following arguments are required: pkl\n"
       generated_using: *id007
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -1324,42 +1704,43 @@ subcommands:
       \    analyse        Analyse existing counts, optionally merging multiple\n \
       \                  counters.\n"
     generated_using: *id005
+    docker_image:
   subcommands:
   - !Command
     command: *id008
     positional:
     - !Positional
-      description: Input bam file.
+      optional: false
       position: 0
       name: bam
-      optional: false
+      description: Input bam file.
     named:
     - !Flag
-      description: "Output directory (will be created). (default:\nhomopolymers)"
+      optional: true
       synonyms:
       - -o
       - --output_dir
+      description: "Output directory (will be created). (default:\nhomopolymers)"
       args: !SimpleFlagArg
         name: OUTPUT_DIR
-      optional: true
     - !Flag
-      description: "Minimum homopolymer length, default 3 (default: 3)\n"
+      optional: true
       synonyms:
       - -l
       - --homo_len
+      description: "Minimum homopolymer length, default 3 (default: 3)\n"
       args: !SimpleFlagArg
         name: HOMO_LEN
-      optional: true
-    parent: *id021
+    parent: *id024
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: show this help message and exit
+      optional: true
       synonyms:
       - -h
       - --help
+      description: show this help message and exit
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag:
     help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l HOMO_LEN] bam\n\n\
@@ -1369,41 +1750,42 @@ subcommands:
       \                        homopolymers)\n  -l HOMO_LEN, --homo_len HOMO_LEN\n\
       \                        Minimum homopolymer length, default 3 (default: 3)\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id009
     positional:
     - !Positional
-      description: Input bam file.
+      optional: false
       position: 0
       name: bam
-      optional: false
+      description: Input bam file.
     named:
     - !Flag
-      description: "Output directory (will be created). (default:\nhomopolymers)"
+      optional: true
       synonyms:
       - -o
       - --output_dir
+      description: "Output directory (will be created). (default:\nhomopolymers)"
       args: !SimpleFlagArg
         name: OUTPUT_DIR
-      optional: true
     - !Flag
-      description: "Minimum homopolymer length, default 3 (default: 3)\n"
+      optional: true
       synonyms:
       - -l
       - --homo_len
+      description: "Minimum homopolymer length, default 3 (default: 3)\n"
       args: !SimpleFlagArg
         name: HOMO_LEN
-      optional: true
-    parent: *id021
+    parent: *id024
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: show this help message and exit
+      optional: true
       synonyms:
       - -h
       - --help
+      description: show this help message and exit
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag:
     help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l HOMO_LEN] bam\n\n\
@@ -1413,41 +1795,42 @@ subcommands:
       \                        homopolymers)\n  -l HOMO_LEN, --homo_len HOMO_LEN\n\
       \                        Minimum homopolymer length, default 3 (default: 3)\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id010
     positional:
     - !Positional
-      description: Input bam file.
+      optional: false
       position: 0
       name: bam
-      optional: false
+      description: Input bam file.
     named:
     - !Flag
-      description: "Output directory (will be created). (default:\nhomopolymers)"
+      optional: true
       synonyms:
       - -o
       - --output_dir
+      description: "Output directory (will be created). (default:\nhomopolymers)"
       args: !SimpleFlagArg
         name: OUTPUT_DIR
-      optional: true
     - !Flag
-      description: "Minimum homopolymer length, default 3 (default: 3)\n"
+      optional: true
       synonyms:
       - -l
       - --homo_len
+      description: "Minimum homopolymer length, default 3 (default: 3)\n"
       args: !SimpleFlagArg
         name: HOMO_LEN
-      optional: true
-    parent: *id021
+    parent: *id024
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: show this help message and exit
+      optional: true
       synonyms:
       - -h
       - --help
+      description: show this help message and exit
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag:
     help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l HOMO_LEN] bam\n\n\
@@ -1457,6 +1840,7 @@ subcommands:
       \                        homopolymers)\n  -l HOMO_LEN, --homo_len HOMO_LEN\n\
       \                        Minimum homopolymer length, default 3 (default: 3)\n"
     generated_using: *id005
+    docker_image:
   usage: []
   help_flag:
   usage_flag:
@@ -1464,49 +1848,40 @@ subcommands:
   help_text: "usage: homopolymer count [-h] [-o OUTPUT_DIR] [-l HOMO_LEN] bam\nhomopolymer\
     \ count: error: the following arguments are required: bam\n"
   generated_using: *id007
+  docker_image:
 - !Command
   command: *id011
   positional: []
   named: []
-  parent: *id022
+  parent: *id025
   subcommands:
   - !Command
     command: *id012
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
-      name: homopolymer
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: analyse
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
       name: pkl
-      optional: true
+      description: Input .pkl file(s).
     named:
     - !Flag
-      description: "Output directory (will be created). (default:\nhomopolymers)\n"
+      optional: true
       synonyms:
       - -o
       - --output_dir
+      description: "Output directory (will be created). (default:\nhomopolymers)\n"
       args: !SimpleFlagArg
         name: OUTPUT_DIR
-      optional: true
-    parent: *id023
+    parent: *id026
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: show this help message and exit
+      optional: true
       synonyms:
       - -h
       - --help
+      description: show this help message and exit
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag:
     help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl [pkl ...]\n\n\
@@ -1515,43 +1890,34 @@ subcommands:
       \ OUTPUT_DIR, --output_dir OUTPUT_DIR\n                        Output directory\
       \ (will be created). (default:\n                        homopolymers)\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id013
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
-      name: homopolymer
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: analyse
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
       name: pkl
-      optional: true
+      description: Input .pkl file(s).
     named:
     - !Flag
-      description: "Output directory (will be created). (default:\nhomopolymers)\n"
+      optional: true
       synonyms:
       - -o
       - --output_dir
+      description: "Output directory (will be created). (default:\nhomopolymers)\n"
       args: !SimpleFlagArg
         name: OUTPUT_DIR
-      optional: true
-    parent: *id023
+    parent: *id026
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: show this help message and exit
+      optional: true
       synonyms:
       - -h
       - --help
+      description: show this help message and exit
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag:
     help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl [pkl ...]\n\n\
@@ -1560,43 +1926,34 @@ subcommands:
       \ OUTPUT_DIR, --output_dir OUTPUT_DIR\n                        Output directory\
       \ (will be created). (default:\n                        homopolymers)\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id014
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
-      name: homopolymer
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: analyse
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
       name: pkl
-      optional: true
+      description: Input .pkl file(s).
     named:
     - !Flag
-      description: "Output directory (will be created). (default:\nhomopolymers)\n"
+      optional: true
       synonyms:
       - -o
       - --output_dir
+      description: "Output directory (will be created). (default:\nhomopolymers)\n"
       args: !SimpleFlagArg
         name: OUTPUT_DIR
-      optional: true
-    parent: *id023
+    parent: *id026
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: show this help message and exit
+      optional: true
       synonyms:
       - -h
       - --help
+      description: show this help message and exit
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag:
     help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl [pkl ...]\n\n\
@@ -1605,6 +1962,7 @@ subcommands:
       \ OUTPUT_DIR, --output_dir OUTPUT_DIR\n                        Output directory\
       \ (will be created). (default:\n                        homopolymers)\n"
     generated_using: *id005
+    docker_image:
   usage: []
   help_flag:
   usage_flag:
@@ -1612,6 +1970,7 @@ subcommands:
   help_text: "usage: homopolymer analyse [-h] [-o OUTPUT_DIR] pkl [pkl ...]\nhomopolymer\
     \ analyse: error: the following arguments are required: pkl\n"
   generated_using: *id007
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -1623,3 +1982,4 @@ help_text: "usage: homopolymer [-h] {count,analyse} ...\n\nAnalyse homopolymer q
   \        Analyse existing counts, optionally merging multiple\n                \
   \   counters.\n"
 generated_using: *id005
+docker_image:

@@ -3,7 +3,7 @@ id: agat_convert_sp_gff2tsv.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GTF/GFF file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --gff
 - id: in_ct
@@ -11,7 +11,7 @@ inputs:
     \ to group features using a common/shared\nattribute (i.e. a locus tag.). By default\
     \ locus_tag and gene_id.\nYou can provide another specific common/shared attribute\
     \ using\nthis option."
-  type: string
+  type: string?
   inputBinding:
     prefix: --ct
 - id: in_merge_loci
@@ -21,15 +21,15 @@ inputs:
     \ can have\noverlaping loci so it should not use it for prokaryote\nannotation.\
     \ In eukaryote, loci rarely overlap. Overlaps could be\ndue to error in the file,\
     \ mRNA can be merged under the same\nparent gene if you acticate the option."
-  type: File
+  type: File?
   inputBinding:
     prefix: --merge_loci
-- id: in__output_
-  doc: ", --output , --out or --outfile\nOutput GFF file. If no output file is specified,\
-    \ the output will\nbe written to STDOUT."
-  type: File
+- id: in_outfile
+  doc: "Output GFF file. If no output file is specified, the output will\nbe written\
+    \ to STDOUT."
+  type: File?
   inputBinding:
-    prefix: -o
+    prefix: --outfile
 - id: in_agat_convert_sp_gfftwotsvdotpl
   doc: 'Description:'
   type: long
@@ -39,12 +39,13 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out__output_
-  doc: ", --output , --out or --outfile\nOutput GFF file. If no output file is specified,\
-    \ the output will\nbe written to STDOUT."
-  type: File
+- id: out_outfile
+  doc: "Output GFF file. If no output file is specified, the output will\nbe written\
+    \ to STDOUT."
+  type: File?
   outputBinding:
-    glob: $(inputs.in__output_)
+    glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agat_convert_sp_gff2tsv.pl

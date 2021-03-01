@@ -4,7 +4,7 @@ inputs:
 - id: in_round_params
   doc: "ROUND_PARAMS\n<m> <e>; round mismatches parameter to the nearest\nmultiple\
     \ of m and cover_extension parameter to the\nnearest multiple of e"
-  type: string
+  type: string?
   inputBinding:
     prefix: --round-params
 - id: in_use_nd
@@ -14,7 +14,7 @@ inputs:
     \ or to be placed on a grid -- i.e., they\nwill be output as fractional values\
     \ (from which probe\ncounts were interpolated). When using this, --loss-\ncoeffs\
     \ should also be set (default is 1 for all\nparameters)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use-nd
 - id: in_loss_coeffs
@@ -30,17 +30,17 @@ inputs:
     \ function. The first row\nmust be a header, the first column must provide the\n\
     dataset ('dataset') and the second column must provide\nthe weight of the dataset\
     \ ('weight'). If not provided,\nthe default is a weight of 1 for each dataset."
-  type: File
+  type: File?
   inputBinding:
     prefix: --dataset-weights
 - id: in_debug
   doc: Debug output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_verbose
   doc: Verbose output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_probe_count_tsv
@@ -72,6 +72,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pool.py

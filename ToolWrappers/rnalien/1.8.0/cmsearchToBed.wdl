@@ -28,6 +28,9 @@ task CmsearchToBed {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cm_search_path: "Path to input cmsearch file"
     input_browser_settings: "Browser settings. Default: browser hide"

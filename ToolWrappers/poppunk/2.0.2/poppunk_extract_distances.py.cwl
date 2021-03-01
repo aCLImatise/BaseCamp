@@ -3,12 +3,12 @@ id: poppunk_extract_distances.py.cwl
 inputs:
 - id: in_distances
   doc: "Prefix of input pickle and numpy file of pre-\ncalculated distances (required)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --distances
 - id: in_output
   doc: Name of output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_extract_distances
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Name of output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - poppunk_extract_distances.py

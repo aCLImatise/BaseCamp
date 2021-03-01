@@ -8,6 +8,9 @@ task Macs2Accpetable {
     macs2 accpetable_ \
       ~{macs_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     macs_two: ""
   }

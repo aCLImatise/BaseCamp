@@ -2,18 +2,21 @@ version 1.0
 
 task Purge {
   input {
-    File file
+    File var_file
     String score
     String options
   }
   command <<<
     purge \
-      ~{file} \
+      ~{var_file} \
       ~{score} \
       ~{options}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: ""
+    var_file: ""
     score: ""
     options: ""
   }

@@ -34,6 +34,9 @@ task Zagros {
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_name: "output file name (default: stdout)"
     width: "width of motifs to find (4 <= w <= 12; default: 6)"

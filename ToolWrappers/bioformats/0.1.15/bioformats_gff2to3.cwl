@@ -3,12 +3,12 @@ id: bioformats_gff2to3.cwl
 inputs:
 - id: in_ignore_incorrect_records
   doc: "ignore incorrect records in the specified input GFF2\nfile\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ignore_incorrect_records
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_gff_two_file
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bioformats

@@ -3,30 +3,34 @@ command:
 - variantbreak
 positional:
 - !Positional
-  description: 'optional arguments:'
+  optional: false
   position: 0
   name: exist.
-  optional: false
+  description: 'optional arguments:'
 named:
 - !Flag
-  description: "path to single annotation file or directory containing annotation\n\
-    files of GTF/GFF or BED formats. Formats: .gtf/.gff/.gff3/.bed"
+  optional: true
   synonyms:
   - -a
   - --annotation_file_dir
+  description: "path to single annotation file or directory containing annotation\n\
+    files of GTF/GFF or BED formats. Formats: .gtf/.gff/.gff3/.bed"
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: "path to single filter file or directory containing filter files of\n\
-    BED format. Format: .bed"
+  optional: true
   synonyms:
   - -f
   - --filter_file_dir
+  description: "path to single filter file or directory containing filter files of\n\
+    BED format. Format: .bed"
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --del_annotate_size
   description: "Deletions with sizes lower or equal to this value will have the\n\
     entire deleted region annotated. Any genes that intersect with\nthe deleted region\
     \ will be included as annotation. On the contrary,\nif deletion size is greater\
@@ -36,92 +40,88 @@ named:
     reduce false annotations due to false large deletions. Note that\nthe value to\
     \ be set is an absolute deletion size, do not use minus\n'-'. Use value '-1' to\
     \ disable this threshold and annotate all\ndeleted regions despite of size. [20000]"
-  synonyms:
-  - -d
-  - --del_annotate_size
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: nucleotide length buffer for SV breakend clustering [400]
+  optional: true
   synonyms:
   - -b
   - --merge_buffer
+  description: nucleotide length buffer for SV breakend clustering [400]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "length in base-pairs upstream of TSS to define promoter region\n[1000]"
+  optional: true
   synonyms:
   - -p
   - --promoter_size
+  description: "length in base-pairs upstream of TSS to define promoter region\n[1000]"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "maximum number of annotation entries to be recorded in the\ndataframe\
-    \ for each SV [3]]"
+  optional: true
   synonyms:
   - -m
   - --max_annotation
+  description: "maximum number of annotation entries to be recorded in the\ndataframe\
+    \ for each SV [3]]"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: performs hierarchical clustering on samples
+  optional: true
   synonyms:
   - --cluster_sample
+  description: performs hierarchical clustering on samples
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "automatically removes variants that intersected\nwith all filter BED\
-    \ files"
+  optional: true
   synonyms:
   - --auto_filter
+  description: "automatically removes variants that intersected\nwith all filter BED\
+    \ files"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "single character field delimiter for output dataframe CSV file\n(e.g.\
-    \ '\\t' for tab or ',' for comma) [,]"
+  optional: true
   synonyms:
   - -s
   - --sep
+  description: "single character field delimiter for output dataframe CSV file\n(e.g.\
+    \ '\\t' for tab or ',' for comma) [,]"
   args: !SimpleFlagArg
     name: str
-  optional: true
 - !Flag
-  description: File name prefix of output files [output]
+  optional: true
   synonyms:
   - -n
   - --filename
+  description: File name prefix of output files [output]
   args: !SimpleFlagArg
     name: str
-  optional: true
 - !Flag
-  description: hide verbose
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: hide verbose
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show version and exit
+  optional: true
   synonyms:
   - -v
   - --version
+  description: show version and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: variantbreak [-h] [-a path] [-f path] [-d int] [-b int] [-p int]\n\
   \                    [-m int] [--cluster_sample] [--auto_filter] [-s str]\n    \
   \                [-n str] [-v] [-q]\n                    [variant_path] [working_directory]\n\
@@ -166,3 +166,4 @@ help_text: "usage: variantbreak [-h] [-a path] [-f path] [-d int] [-b int] [-p i
   \    hide verbose\n"
 generated_using:
 - --help
+docker_image:

@@ -3,23 +3,24 @@ id: filterlinks.cwl
 inputs:
 - id: in_no_intra
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nointra
 - id: in_no_inter
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nointer
 - id: in_links
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -links
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - filterlinks

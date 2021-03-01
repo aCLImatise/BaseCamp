@@ -3,17 +3,17 @@ id: SnpSift_ccs.cwl
 inputs:
 - id: in__be_quiet
   doc: ': Be quiet'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
 - id: in__be_verbose
   doc: ': Be verbose'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_jar
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -jar
 - id: in_file_do_ttf_am
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - SnpSift

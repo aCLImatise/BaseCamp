@@ -42,6 +42,9 @@ task VtoolsReportPlotGenoFields {
       ~{if defined(outlier_size) then ("--outlier_size " +  '"' + outlier_size + '"') else ""} \
       ~{if defined(color) then ("--color " +  '"' + color + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     variants: "Limit value of fields to variant in specified variant\\ntable. Default to all variants."
     samples: "[SAMPLES [SAMPLES ...]]\\nConditions based on which samples are selected.\\nDefault to all samples."

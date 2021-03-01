@@ -4,6 +4,9 @@ task Babel {
   command <<<
     babel
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

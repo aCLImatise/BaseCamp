@@ -3,7 +3,7 @@ id: mb_naive_bsfinder_pileup_file.cwl
 inputs:
 - id: in_min_transitions
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_transitions
 - id: in_mb_naive_bs_finder
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mb-naive-bsfinder

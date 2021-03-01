@@ -3,17 +3,17 @@ id: mb_generate_negative_set_gff.cwl
 inputs:
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_width
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --width
 - id: in_number
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: --number
 - id: in_mb_generate_negative_set
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mb-generate-negative-set

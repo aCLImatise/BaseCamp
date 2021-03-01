@@ -20,6 +20,9 @@ task PairtoolsSplit {
       ~{if defined(cmd_in) then ("--cmd-in " +  '"' + cmd_in + '"') else ""} \
       ~{if defined(cmd_out) then ("--cmd-out " +  '"' + cmd_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_pairs: "output pairs file. If the path ends with .gz or .lz4,\\nthe output is pbgzip-/lz4c-compressed. If -, pairs are\\nprinted to stdout. If not specified, pairs are dropped."
     output_sam: "output sam file. If the path ends with .bam, the output\\nis compressed into a bam file. If -, sam entries are\\nprinted to stdout. If not specified, sam entries are\\ndropped."

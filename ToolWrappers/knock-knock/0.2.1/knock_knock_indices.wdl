@@ -8,6 +8,9 @@ task KnockknockIndices {
     knock_knock indices \
       ~{knock_knock}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     knock_knock: ""
   }

@@ -14,6 +14,9 @@ task Seekerpl {
       ~{if (dir) then "--dir" else ""} \
       ~{if (verbose) then "-verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     none_input_file: ", none         - Input file (can be multiple, each with own flag)"
     output_file_name: "- Output file name (default StrainSeeker_output)"

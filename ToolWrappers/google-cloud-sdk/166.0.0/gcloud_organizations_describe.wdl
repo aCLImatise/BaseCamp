@@ -12,6 +12,9 @@ task GcloudOrganizationsDescribe {
       ~{optional} \
       ~{flags}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     organization_id: ""
     optional: ""

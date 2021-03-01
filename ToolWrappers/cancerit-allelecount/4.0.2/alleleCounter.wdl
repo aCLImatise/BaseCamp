@@ -26,6 +26,9 @@ task AlleleCounter {
       ~{if (is_one_zero_x) then "--is-10x" else ""} \
       ~{if (required_flag) then "--required-flag" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loci_file: "[file]           Path to loci file."
     hts_file: "[file]            Path to sample HTS file."

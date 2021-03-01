@@ -12,6 +12,9 @@ task MetawrapAnnotateBins {
       ~{if defined(number_threads_default) then ("-t " +  '"' + number_threads_default + '"') else ""} \
       ~{if defined(folder_metagenomic_bins) then ("-b " +  '"' + folder_metagenomic_bins + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_directory: "output directory"
     number_threads_default: "number of threads (default=1)"

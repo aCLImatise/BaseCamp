@@ -3,17 +3,17 @@ id: fix_side_chain.cwl
 inputs:
 - id: in_config
   doc: This file can be a YAML file, JSON file or JSON string
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_input_pdb_path
   doc: Input PDB file name
-  type: File
+  type: File?
   inputBinding:
     prefix: --input_pdb_path
 - id: in_output_pdb_path
   doc: "Output PDB file name\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_pdb_path
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_pdb_path
   doc: "Output PDB file name\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_pdb_path)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fix_side_chain

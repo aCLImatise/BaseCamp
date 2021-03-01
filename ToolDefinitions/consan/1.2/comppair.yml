@@ -12,11 +12,11 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -options
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -28,11 +28,11 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -options
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -44,11 +44,11 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -options
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -60,40 +60,15 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -options
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ': suppress comparison totals'
-                  synonyms:
-                  - -S
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ': suppress every pair alignment prediction output'
-                  synonyms:
-                  - -q
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ': turn on Mathews definition of paired'
-                  synonyms:
-                  - -M
-                  args: !SimpleFlagArg
-                    name: '1'
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -options
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
@@ -101,12 +76,81 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -options
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -S
+                      description: ': suppress comparison totals'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -q
+                      description: ': suppress every pair alignment prediction output'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -M
+                      description: ': turn on Mathews definition of paired'
+                      args: !SimpleFlagArg
+                        name: '1'
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -options
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -options
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "\nFATAL: Incorrect number of command line arguments.\n\
+                        Usage: comppair [-options] <seqfile in>\n\n\n"
+                      generated_using: &id004 []
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      description: ': print short help, usage info, and grammar description'
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "Sankoff: Full Implementation of Sankoff 1985\n   \
+                      \      Sankoff 0.1 (in progress)Usage: comppair [-options] <seqfile\
+                      \ in>\n\nwhere options are:\n-h            : print short help,\
+                      \ usage info, and grammar description\n-S\t      : suppress\
+                      \ comparison totals \n-q\t      : suppress every pair alignment\
+                      \ prediction output \n-M 1\t      : turn on Mathews definition\
+                      \ of paired \n\nUsage: comppair [-options] <seqfile in>\n\n\n"
+                    generated_using: &id005
+                    - -h
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -114,14 +158,10 @@ subcommands:
                   version_flag:
                   help_text: "\nFATAL: Incorrect number of command line arguments.\n\
                     Usage: comppair [-options] <seqfile in>\n\n\n"
-                  generated_using: &id004 []
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: ': print short help, usage info, and grammar description'
-                  synonyms:
-                  - -h
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "Sankoff: Full Implementation of Sankoff 1985\n       \
@@ -131,8 +171,8 @@ subcommands:
                   \ totals \n-q\t      : suppress every pair alignment prediction\
                   \ output \n-M 1\t      : turn on Mathews definition of paired \n\
                   \nUsage: comppair [-options] <seqfile in>\n\n\n"
-                generated_using: &id005
-                - -h
+                generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -141,6 +181,7 @@ subcommands:
               help_text: "\nFATAL: Incorrect number of command line arguments.\nUsage:\
                 \ comppair [-options] <seqfile in>\n\n\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -153,6 +194,7 @@ subcommands:
               \ on Mathews definition of paired \n\nUsage: comppair [-options] <seqfile\
               \ in>\n\n\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -161,6 +203,7 @@ subcommands:
           help_text: "\nFATAL: Incorrect number of command line arguments.\nUsage:\
             \ comppair [-options] <seqfile in>\n\n\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -172,6 +215,7 @@ subcommands:
           \ alignment prediction output \n-M 1\t      : turn on Mathews definition\
           \ of paired \n\nUsage: comppair [-options] <seqfile in>\n\n\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -180,6 +224,7 @@ subcommands:
       help_text: "\nFATAL: Incorrect number of command line arguments.\nUsage: comppair\
         \ [-options] <seqfile in>\n\n\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -191,6 +236,7 @@ subcommands:
       \ prediction output \n-M 1\t      : turn on Mathews definition of paired \n\n\
       Usage: comppair [-options] <seqfile in>\n\n\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -199,6 +245,7 @@ subcommands:
   help_text: "\nFATAL: Incorrect number of command line arguments.\nUsage: comppair\
     \ [-options] <seqfile in>\n\n\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -210,3 +257,4 @@ help_text: "Sankoff: Full Implementation of Sankoff 1985\n         Sankoff 0.1 (
   \ \n-M 1\t      : turn on Mathews definition of paired \n\nUsage: comppair [-options]\
   \ <seqfile in>\n\n\n"
 generated_using: *id005
+docker_image:

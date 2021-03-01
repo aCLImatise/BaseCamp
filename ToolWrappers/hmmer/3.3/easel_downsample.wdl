@@ -16,6 +16,9 @@ task EaselDownsample {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequence_sampling_infile: ": sequence sampling: <infile> is file or stream of seqs"
     big_sequence_sample: ": big sequence sample: <infile> is (seekable) seq file"

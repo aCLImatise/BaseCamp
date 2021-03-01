@@ -1,104 +1,64 @@
 class: CommandLineTool
 id: bamToBw.pl.cwl
 inputs:
-- id: in_bam
-  doc: -b   BAM/CRAM file to be processed.
-  type: boolean
+- id: in_bamcram_file_processed
+  doc: BAM/CRAM file to be processed.
+  type: boolean?
   inputBinding:
     prefix: -bam
 - id: in_outdir
-  doc: -o   Folder to output result to.
-  type: Directory
+  doc: Folder to output result to.
+  type: Directory?
   inputBinding:
     prefix: -outdir
 - id: in_reference
   doc: "Path to genome.fa.\n- Actually using fa.fai but for convention just provide\
     \ '.fa' file"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -reference
 - id: in_number_threads_use
-  doc: -t   Number of threads to use. [1]
-  type: boolean
+  doc: Number of threads to use. [1]
+  type: boolean?
   inputBinding:
     prefix: -threads
 - id: in_ignore_reads_filter
-  doc: -f   Ignore reads with the filter flags [int]
-  type: boolean
+  doc: Ignore reads with the filter flags [int]
+  type: boolean?
   inputBinding:
     prefix: -filter
 - id: in_only_process_step
-  doc: "-p   Only process this step then exit, optionally set -index\nbamToBw - Per\
-    \ chromosome BigWigs\ngenerateBw - Generates merged BigWig"
-  type: boolean
+  doc: "Only process this step then exit, optionally set -index\nbamToBw - Per chromosome\
+    \ BigWigs\ngenerateBw - Generates merged BigWig"
+  type: boolean?
   inputBinding:
     prefix: -process
 - id: in_index
-  doc: "-i   Optionally restrict '-p' to single job\nbwamem - 1..<lane_count>"
-  type: boolean
+  doc: "Optionally restrict '-p' to single job\nbwamem - 1..<lane_count>"
+  type: boolean?
   inputBinding:
     prefix: -index
-- id: in_j_parallel_step
-  doc: -j   For a parallel step report the number of jobs required
-  type: boolean
+- id: in_parallel_step_report
+  doc: For a parallel step report the number of jobs required
+  type: boolean?
   inputBinding:
     prefix: -jobs
 - id: in_man
-  doc: -m   Full documentation.
-  type: boolean
+  doc: Full documentation.
+  type: boolean?
   inputBinding:
     prefix: -man
-- id: in_p
+- id: in_var_9
   doc: ''
-  type: string
-  inputBinding:
-    prefix: -p
-- id: in_o
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -o
-- id: in_b
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -b
-- id: in_i
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -i
-- id: in_t
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -t
-- id: in_m
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: in_var_15
-  doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -help
-- id: in_j
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -j
-- id: in_f
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -f
-- id: in_advanced_slash_farm
+- id: in_advanced
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_bam_slash_cram
+- id: in_var_11
   doc: ''
   type: string
   inputBinding:
@@ -133,7 +93,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_var_26
+- id: in_var_18
   doc: ''
   type: long
   inputBinding:
@@ -193,12 +153,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
-- id: in_var_39
+- id: in_var_30
   doc: ''
   type: string
   inputBinding:
@@ -213,7 +168,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_var_42
+- id: in_var_33
   doc: ''
   type: string
   inputBinding:
@@ -229,6 +184,11 @@ inputs:
   inputBinding:
     position: 1
 - id: in_restrict
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_to
   doc: ''
   type: string
   inputBinding:
@@ -258,12 +218,7 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_var_51
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: in_to
+- id: in_var_43
   doc: ''
   type: string
   inputBinding:
@@ -273,11 +228,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_be
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: in_result
   doc: ''
   type: string
@@ -293,7 +243,7 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: in_var_58
+- id: in_var_48
   doc: ''
   type: string
   inputBinding:
@@ -323,12 +273,12 @@ inputs:
   type: string
   inputBinding:
     position: 5
-- id: in_var_64
+- id: in_var_54
   doc: ''
   type: long
   inputBinding:
     position: 6
-- id: in_var_65
+- id: in_var_55
   doc: ''
   type: string
   inputBinding:
@@ -338,10 +288,11 @@ outputs:
   doc: Standard output stream
   type: stdout
 - id: out_outdir
-  doc: -o   Folder to output result to.
-  type: Directory
+  doc: Folder to output result to.
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bamToBw.pl

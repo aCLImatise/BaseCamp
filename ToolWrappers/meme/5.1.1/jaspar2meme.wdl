@@ -28,6 +28,9 @@ task Jaspar2meme {
       ~{if (log_odds) then "-logodds" else ""} \
       ~{if defined(url) then ("-url " +  '"' + url + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bundle: "read a single file containing many JASPAR\\ncount matrices in 2014 or 2016 format with\\ntheir names."
     pfm: "read JASPAR count files (.pfm);\\ndefault: site files (.sites)"

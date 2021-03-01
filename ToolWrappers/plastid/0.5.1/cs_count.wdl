@@ -40,6 +40,9 @@ task CsCount {
       ~{if defined(offset) then ("--offset " +  '"' + offset + '"') else ""} \
       ~{if defined(nibble) then ("--nibble " +  '"' + nibble + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Suppress all warning messages. Cannot use with '-v'."
     verbose: "Increase verbosity. With '-v', show every warning.\\nWith '-vv', turn warnings into exceptions. Cannot use\\nwith '-q'. (Default: show each type of warning once)"

@@ -28,6 +28,9 @@ task Vcf2bedtypical {
       ~{if (starch_gzip) then "--starch-gzip" else ""} \
       ~{if (starch_note) then "--starch-note" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep_header: ", which munges these data into pseudo-elements"
     do_not_split: "(-p)\\nBy default, this application prints multiple BED elements for each alternate\\nallele. Use this flag to print one BED element for all alternate alleles"

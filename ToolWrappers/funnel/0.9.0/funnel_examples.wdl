@@ -8,6 +8,9 @@ task FunnelExamples {
     funnel examples \
       ~{name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: ""
   }

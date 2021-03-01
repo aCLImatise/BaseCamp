@@ -17,7 +17,7 @@ task StringMLSTpy {
     Boolean? paired
     Boolean? separate_reads_file
     Boolean? single
-    Boolean? time_analysis_will
+    Boolean? time_analysis_also
     Boolean? prints_version_software
     File? overwrite
     Boolean? fuzzy
@@ -48,7 +48,7 @@ task StringMLSTpy {
       ~{if (paired) then "--paired" else ""} \
       ~{if (separate_reads_file) then "-r" else ""} \
       ~{if (single) then "--single" else ""} \
-      ~{if (time_analysis_will) then "-t" else ""} \
+      ~{if (time_analysis_also) then "-t" else ""} \
       ~{if (prints_version_software) then "-v" else ""} \
       ~{if (overwrite) then "--overwrite" else ""} \
       ~{if (fuzzy) then "--fuzzy" else ""} \
@@ -56,6 +56,9 @@ task StringMLSTpy {
       ~{if (species) then "--species" else ""} \
       ~{if (schemes) then "--schemes" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     build_db: "Identifier for build db module"
     config: "= <configuration file>\\nConfig file in the format described above.\\nAll the files follow the structure followed by pubmlst. Refer extended document for details."
@@ -72,7 +75,7 @@ task StringMLSTpy {
     paired: "Flag for specifying paired end files. Default option so would work the same if you do not specify for all modes.\\nFor batch mode the paired end samples should be differentiated by 1/2.fastq or 1/2.fq"
     separate_reads_file: "A separate reads file is created which has all the reads covering all the locus."
     single: "Flag for specifying single end files."
-    time_analysis_will: "Time for each analysis will also be reported."
+    time_analysis_also: "Time for each analysis will also be reported."
     prints_version_software: "Prints the version of the software."
     overwrite: "By default stringMLST appends the results to the output_filename if same name is used.\\nThis argument overwrites the previously specified output file."
     fuzzy: "= <fuzzy threshold int>\\nThreshold for reporting a fuzzy match (Default=300). For higher coverage reads this threshold should be set higher to avoid\\nindicating fuzzy match when exact match was more likely. For lower coverage reads, threshold of <100 is recommended"

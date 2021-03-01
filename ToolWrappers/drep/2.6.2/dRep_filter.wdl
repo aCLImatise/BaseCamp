@@ -26,6 +26,9 @@ task DRepFilter {
       ~{if defined(check_m_method) then ("--checkM_method " +  '"' + check_m_method + '"') else ""} \
       ~{if defined(set_recursion) then ("--set_recursion " +  '"' + set_recursion + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     processors: "threads (default: 6)"
     debug: "make extra debugging output (default: False)"

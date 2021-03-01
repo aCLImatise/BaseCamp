@@ -20,6 +20,9 @@ task GcloudComputeConnecttoserialport {
       ~{if defined(ssh_key_file) then ("--ssh-key-file " +  '"' + ssh_key_file + '"') else ""} \
       ~{if defined(zone) then ("--zone " +  '"' + zone + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dry_run: "If provided, the ssh command is printed to standard out rather than\\nbeing executed."
     extra_args: "=VALUE,[KEY=VALUE,...]\\nOptional arguments can be passed to the serial port connection by\\npassing key-value pairs to this flag, such as max-connections=N or\\nreplay-lines=N. See\\nhttps://cloud.google.com/compute/docs/instances/interacting-with-serial-console\\nfor additional options."

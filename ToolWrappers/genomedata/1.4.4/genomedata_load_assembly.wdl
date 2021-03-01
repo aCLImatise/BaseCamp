@@ -22,6 +22,9 @@ task Genomedataloadassembly {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (s) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly: "SEQFILE contains assembly (AGP) files instead of"
     file_mode: "If specified, the Genomedata archive will be\\nimplemented as a single file, with a separate h5 group\\nfor each Chromosome. This is recommended if there are\\na large number of Chromosomes. The default behavior is\\nto use a single file if there are at least 100\\nChromosomes being added."

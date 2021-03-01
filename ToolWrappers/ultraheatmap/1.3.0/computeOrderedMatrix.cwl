@@ -15,7 +15,7 @@ inputs:
     prefix: --regionsFileName
 - id: in_out_filename
   doc: "Matrix clustered by the given reference samples\n(default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --outFileName
 - id: in_group_using_samples
@@ -40,23 +40,23 @@ inputs:
     \ zeros or min/max threshold values.\nThe order of the regions in the file follows\
     \ the\nsorting order selected. This is useful, for example,\nto generate other\
     \ heatmaps keeping the sorting of the\nfirst heatmap. (default: None)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --outFileSortedRegions
 - id: in_output_reference_matrix
   doc: "Matrix on the reference sampels only before clustering\n(default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --outputReferenceMatrix
 - id: in_k_means
   doc: "number of clusters in k-means clustering (default:\nNone)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --kmeans
 - id: in_hc_lust
   doc: "Number of clusters to compute using\nhierarchicalclustering as defined by\
     \ deepTools\nplotHeatmap (default: None)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --hclust
 - id: in_before_region_start_length
@@ -77,18 +77,19 @@ inputs:
   doc: "File name to save the intermediate heatmap. The file\nending will be used\
     \ to determine the format of the\nimage . Available formats are: \"png\", \"eps\"\
     , \"pdf\" and\n\"svg\" (From deeptools doc) (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --plotOutput
 - id: in_config
   doc: "Added to the default configuration, overwrites if\nnecessary. (default: None)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --config
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - computeOrderedMatrix

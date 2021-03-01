@@ -4,51 +4,54 @@ command:
 - compare
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: tables
   description: "variant tables to compare. Wildcard characters * and ?\ncan be used\
     \ to specify multiple tables. A table name\nwill be automatically repeated for\
     \ the comparison of\ngenotype of multiple samples if only one table is\nspecified."
-  position: 0
-  name: tables
-  optional: false
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --union
   description: "[TABLE [DESC ...]]\nPrint the number (default) or save variants with\
     \ TYPE\nin the TYPE of any of the tables (T1 | T2 | T3 ...) to\nTABLE if a name\
     \ is specified. An optional message can\nbe added to describe the table."
-  synonyms:
-  - --union
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --intersection
   description: "[TABLE [DESC ...]]\nPrint the number (default) or save variants with\
     \ TYPE\nin the TYPE of all the tables (T1 & T2 & T3 ...) to\nTABLE if a name is\
     \ specified. An optional message can\nbe added to describe the table."
-  synonyms:
-  - --intersection
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --difference
   description: "[TABLE [DESC ...]]\nPrint the number (default) or save variants with\
     \ TYPE\nin the TYPE of the first, but not in the TYPE of\nothers (T1 - T2 - T3...)\
     \ to TABLE if a name is\nspecified. An optional message can be added to\ndescribe\
     \ the table."
-  synonyms:
-  - --difference
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --expression
   description: "Evaluate a set expression with table names\nrepresenting variants\
     \ in these tables. Operators |\n(or), & (and), - (difference) and ^ (A or B but\
     \ not\nboth) are allowed. The results will be saved to table\nif the result is\
     \ assigned to a name (e.g. --expression\n'D=A-(B&C)'). The table names in the\
     \ expression can be\nwritten as _1, _2 etc if tables are listed before the\noption,\
     \ and be used to populate the list of tables if\nit was left unspecified."
-  synonyms:
-  - --expression
   args: !RepeatFlagArg
     name: DESC
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mode
   description: "Compare variants (chr, pos, ref, alt), site (chr,\npos), or genotype\
     \ (chr, pos, ref, alt, GT for a\nspecified sample) of variants. The results are\n\
     variants from all input tables that match specified\ncondition. The default comparison\
@@ -62,45 +65,42 @@ named:
     \ (chr, pos, ref, alt, NULL) are excluded if\ntreat_missing_as_wildtype is false\
     \ (default), and are\ntreated as (chr, pos, ref, alt, 0) otherwise. The\ndefault\
     \ comparison type is variant, or genotype if\noption --samples is specified."
-  synonyms:
-  - --mode
   args: !ChoiceFlagArg
     choices: !!set
       variant:
-      genotype:
       site:
-  optional: true
+      genotype:
 - !Flag
+  optional: true
+  synonyms:
+  - --samples
   description: "[SAMPLES [SAMPLES ...]]\nA list of sample names corresponding to the\
     \ variant\ntables to compare. An error will be raised if a sample\nname matches\
     \ no or multiple samples or if a sample\ndoes not have any genotype."
-  synonyms:
-  - --samples
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
-    \ to standard output (default to\n1).\n"
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1).\n"
   args: !ChoiceFlagArg
     choices: !!set
+      '3':
       '2':
       '0':
-      '3':
       '1':
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: vtools compare [-h] [--union [TABLE [DESC ...]]]\n            \
@@ -167,3 +167,4 @@ help_text: "usage: vtools compare [-h] [--union [TABLE [DESC ...]]]\n           
   \ to\n                        1).\n"
 generated_using:
 - --help
+docker_image:

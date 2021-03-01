@@ -30,6 +30,9 @@ task Seuratread10xR {
       ~{if defined(names_field) then ("--names-field " +  '"' + names_field + '"') else ""} \
       ~{if defined(names_delim) then ("--names-delim " +  '"' + names_delim + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_file: "A tab-separated file containing expression data."
     data_dir: "Directory containing the matrix.mtx, genes.tsv, and barcodes.tsv files matching 10X conventions (overrides --data-file)."

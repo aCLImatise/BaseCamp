@@ -5,133 +5,133 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Name of the Hi-C matrix to correct in .h5 format.\n(default: None)"
+  optional: true
   synonyms:
   - --matrix
   - -m
+  description: "Name of the Hi-C matrix to correct in .h5 format.\n(default: None)"
   args: !SimpleFlagArg
     name: MATRIX
-  optional: true
 - !Flag
-  description: "File name to save the resulting matrix. The output is\na .h5 file.\
-    \ (default: None)"
+  optional: true
   synonyms:
   - --outFileName
   - -o
+  description: "File name to save the resulting matrix. The output is\na .h5 file.\
+    \ (default: None)"
   args: !SimpleFlagArg
     name: OUTFILENAME
-  optional: true
 - !Flag
-  description: "Method to be used for matrix correction. It can be set\nto KR or ICE.\
-    \ (default: KR)"
+  optional: true
   synonyms:
   - --correctionMethod
+  description: "Method to be used for matrix correction. It can be set\nto KR or ICE.\
+    \ (default: KR)"
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filterThreshold
   description: "FILTERTHRESHOLD, -t FILTERTHRESHOLD FILTERTHRESHOLD\nRemoves bins\
     \ of low or large coverage. Usually these\nbins do not contain valid Hi-C data\
     \ or represent\nregions that accumulate reads and thus must be\ndiscarded. Use\
     \ hicCorrectMatrix diagnostic_plot to\nidentify the modified z-value thresholds.\
     \ A lower and\nupper threshold are required separated by space, e.g.\n--filterThreshold\
     \ -1.5 5. Applied only for ICE!\n(default: None)"
-  synonyms:
-  - --filterThreshold
   args: !SimpleFlagArg
     name: FILTERTHRESHOLD
-  optional: true
 - !Flag
-  description: "Number of iterations to compute.only for ICE!\n(default: 500)"
+  optional: true
   synonyms:
   - --iterNum
   - -n
+  description: "Number of iterations to compute.only for ICE!\n(default: 500)"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --inflationCutoff
   description: "Value corresponding to the maximum number of times a\nbin can be scaled\
     \ up during the iterative correction.\nFor example, an inflation cutoff of 3 will\
     \ filter out\nall bins that were expanded 3 times or more during the\niterative\
     \ correctionself.Only for ICE! (default: None)"
-  synonyms:
-  - --inflationCutoff
   args: !SimpleFlagArg
     name: INFLATIONCUTOFF
-  optional: true
 - !Flag
-  description: "Clip high counts in the top -transcut trans regions\n(i.e. between\
-    \ chromosomes). A usual value is 0.05.\nOnly for ICE! (default: None)"
+  optional: true
   synonyms:
   - --transCutoff
   - -transcut
+  description: "Clip high counts in the top -transcut trans regions\n(i.e. between\
+    \ chromosomes). A usual value is 0.05.\nOnly for ICE! (default: None)"
   args: !SimpleFlagArg
     name: TRANSCUTOFF
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sequencedCountCutoff
   description: "Each bin receives a value indicating the fraction that\nis covered\
     \ by reads. A cutoff of 0.5 will discard all\nthose bins that have less than half\
     \ of the bin\ncovered. Only for ICE! (default: None)"
-  synonyms:
-  - --sequencedCountCutoff
   args: !SimpleFlagArg
     name: SEQUENCEDCOUNTCUTOFF
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --chromosomes
   description: "List of chromosomes to be included in the iterative\ncorrection. The\
     \ order of the given chromosomes will be\nthen kept for the resulting corrected\
     \ matrix (default:\nNone)"
-  synonyms:
-  - --chromosomes
   args: !RepeatFlagArg
     name: CHROMOSOMES
-  optional: true
 - !Flag
-  description: "If set, diagonal counts are not included. Only for\nICE! (default:\
-    \ False)"
+  optional: true
   synonyms:
   - --skipDiagonal
   - -s
+  description: "If set, diagonal counts are not included. Only for\nICE! (default:\
+    \ False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --perchr
   description: "Normalize each chromosome separately. This is useful\nfor samples\
     \ from cells with uneven number of\nchromosomes and/or translocations. (default:\
     \ False)"
-  synonyms:
-  - --perchr
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Print processing status. (default: False)'
+  optional: true
   synonyms:
   - --verbose
+  description: 'Print processing status. (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - '-1.2'
+  description: ''
   args: !SimpleFlagArg
     name: '5'
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: hicCorrectMatrix correct --matrix hic_matrix.h5 --filterThreshold\
   \ -1.2 5 (Only if ICE)-out corrected_matrix.h5 \n\noptional arguments:\n  -h, --help\
   \            show this help message and exit\n\nRequired arguments:\n  --matrix\
@@ -176,3 +176,4 @@ help_text: "usage: hicCorrectMatrix correct --matrix hic_matrix.h5 --filterThres
   \  show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

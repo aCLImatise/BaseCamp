@@ -64,6 +64,9 @@ task Idr {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     samples_samples_samplesfiles: "SAMPLES, -s SAMPLES SAMPLES\\nFiles containing peaks and scores."
     peak_list: "If provided, all peaks will be taken from this file."

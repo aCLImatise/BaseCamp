@@ -10,6 +10,9 @@ task QvToBqvpy {
       ~{qual_file} \
       ~{output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     qual_file: ""
     output_file: ""

@@ -16,6 +16,9 @@ task BuildTreeSingleStrainpy {
       ~{if defined(bootstrap_ra_xml) then ("--bootstrap_raxml " +  '"' + bootstrap_ra_xml + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ifn_alignments: "The alignment file."
     log_of_n: "The log file."

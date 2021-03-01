@@ -4,100 +4,100 @@ command:
 - RUNFILE
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: file1.gd file2.gd file3.gd ...
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: 'Type of command file to generate. Valid options are: breseq, breseq-apply,
-    trimmomatic, trimmomatic-PE-unique, read-count. (DEFAULT=breseq)'
+  optional: true
   synonyms:
   - -m
   - --mode
+  description: 'Type of command file to generate. Valid options are: breseq, breseq-apply,
+    trimmomatic, trimmomatic-PE-unique, read-count. (DEFAULT=breseq)'
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Alternative executable program to run.
+  optional: true
   synonyms:
   - -e
   - --executable
+  description: Alternative executable program to run.
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Options to be passed to the executable. These will appear first in
-    the command line.
+  optional: true
   synonyms:
   - --options
+  description: Options to be passed to the executable. These will appear first in
+    the command line.
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Name of the run file to be output. (DEFAULT=commands)
+  optional: true
   synonyms:
   - -r
   - --runfile
+  description: Name of the run file to be output. (DEFAULT=commands)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Directory to search for genome diff files. (DEFAULT=01_Data)
+  optional: true
   synonyms:
   - -g
   - --data-dir
+  description: Directory to search for genome diff files. (DEFAULT=01_Data)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --downloads-dir
   description: 'Downloads directory where read and reference files are located. Defaults
     to 02_Trimmed for read files if #=ADAPTSEQ tags are present. (Default = 02_Downloads;
     02_Trimmed for read files if #=ADAPTSEQ tags are present for breseq; 02_Apply
     for reference files for breseq-apply)'
-  synonyms:
-  - -d
-  - --downloads-dir
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Output directory for commands within the runfile. (Default = 03_Output
-    for breseq*; = 02_Trimmed for trimmomatic*)
+  optional: true
   synonyms:
   - -o
   - --output-dir
+  description: Output directory for commands within the runfile. (Default = 03_Output
+    for breseq*; = 02_Trimmed for trimmomatic*)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Directory for error log file that captures the executable's stdout
-    and sterr. (Default = 04_Logs for breseq; 04_Apply_Logs for breseq-apply; 04_Trim_Logs
-    for trimmomatic*)
+  optional: true
   synonyms:
   - -l
   - --log-dir
+  description: Directory for error log file that captures the executable's stdout
+    and sterr. (Default = 04_Logs for breseq; 04_Apply_Logs for breseq-apply; 04_Trim_Logs
+    for trimmomatic*)
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Keep track of paired and unpaired reads for trimming and using trimmed
-    reads.
+  optional: true
   synonyms:
   - -p
   - --preserve-pairs
+  description: Keep track of paired and unpaired reads for trimming and using trimmed
+    reads.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Display detailed help message
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Display detailed help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nUsage: gdtools RUNFILE -e <executable> -d <downloads dir> -o <output\
@@ -132,3 +132,4 @@ help_text: "\nUsage: gdtools RUNFILE -e <executable> -d <downloads dir> -o <outp
   \ >& 04_Errors/ZDB111.errors.txt\n\n"
 generated_using:
 - --help
+docker_image:

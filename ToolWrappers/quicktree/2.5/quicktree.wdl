@@ -22,6 +22,9 @@ task Quicktree {
       ~{if (print_version_exit) then "-v" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ": input file is a distance matrix in phylip format (m)\\nor an alignment in stockholm format* (a, default)"
     out: ": output is a distance matrix in phylip format (m) or\\na tree in New Hampshire format"

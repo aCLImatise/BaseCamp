@@ -16,6 +16,9 @@ task DuckChunk {
       ~{if (ignore_buffers) then "--ignore-buffers" else ""} \
       ~{if defined(interaction) then ("--interaction " +  '"' + interaction + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     protein: "Apoprotein in PDB format"
     ligand: "Ligand in mol format"

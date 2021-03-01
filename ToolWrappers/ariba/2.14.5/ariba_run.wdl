@@ -46,6 +46,9 @@ task AribaRun {
       ~{if defined(tmp_dir) then ("--tmp_dir " +  '"' + tmp_dir + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nuc_mer_min_id: "Minimum alignment identity (delta-filter -i) [90]"
     nuc_mer_min_len: "Minimum alignment length (delta-filter -i) [20]"

@@ -18,6 +18,9 @@ task FastqQualityTrimmer {
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     i: ""

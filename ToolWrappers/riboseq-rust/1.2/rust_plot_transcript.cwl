@@ -3,7 +3,7 @@ id: rust_plot_transcript.cwl
 inputs:
 - id: in_directory_path_outputfile
   doc: directory  path to outputfile, default is "plot_transcript"
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_transcriptome
@@ -37,6 +37,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rust_plot_transcript

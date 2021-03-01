@@ -3,18 +3,18 @@ id: cnvetti.cwl
 inputs:
 - id: in_verbose
   doc: Increase verbosity
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_quiet
   doc: Decrease verbosity
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_io_threads
   doc: 'Number of additional threads to use for (de)compression in I/O. [default:
     0]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --io-threads
 - id: in_cmd
@@ -47,6 +47,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cnvetti

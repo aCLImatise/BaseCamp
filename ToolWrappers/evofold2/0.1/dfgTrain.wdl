@@ -9,8 +9,8 @@ task DfgTrain {
     Boolean? perform_em_training
     File? dotfile
     Boolean? arg_dfgspecprefix_dfg
-    Boolean? arg_out_directory
-    Boolean? arg_prefix_dfg
+    Boolean? arg__prefix
+    Boolean? arg_prefix_fileswritten
     String? factor_graph_file
     String? variables_file
     String? state_map_file
@@ -31,8 +31,8 @@ task DfgTrain {
       ~{if (perform_em_training) then "-e" else ""} \
       ~{if defined(dotfile) then ("--dotFile " +  '"' + dotfile + '"') else ""} \
       ~{if (arg_dfgspecprefix_dfg) then "-s" else ""} \
-      ~{if (arg_out_directory) then "-o" else ""} \
-      ~{if (arg_prefix_dfg) then "-t" else ""} \
+      ~{if (arg__prefix) then "-o" else ""} \
+      ~{if (arg_prefix_fileswritten) then "-t" else ""} \
       ~{if defined(factor_graph_file) then ("--factorGraphFile " +  '"' + factor_graph_file + '"') else ""} \
       ~{if defined(variables_file) then ("--variablesFile " +  '"' + variables_file + '"') else ""} \
       ~{if defined(state_map_file) then ("--stateMapFile " +  '"' + state_map_file + '"') else ""} \
@@ -40,6 +40,9 @@ task DfgTrain {
       ~{if defined(sub_var_file) then ("--subVarFile " +  '"' + sub_var_file + '"') else ""} \
       ~{if (write_info) then "--writeInfo" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_output_precision: "[ --precision ] arg (=5)           Output precision of real numbers."
     arg_defines_stopping: "[ --minDeltaLogLik ] arg (=0.0001) Defines stopping criteria for the EM\\ntraining. The training will stop when\\nthe difference in log likelihood is\\nbelow minDeltaLogLik (default is 1e-4)."
@@ -48,8 +51,8 @@ task DfgTrain {
     perform_em_training: "[ --emTrain ]                      Perform EM training."
     dotfile: "Output dfg in dot format to given\\nfileName. (To convert to ps format,\\ne.g. run: \\\"cat fileName.dot | dot -Tps\\n-Kneato -Gsize=\\\"7.5,10\\\" -o dfg.ps\\\".)"
     arg_dfgspecprefix_dfg: "[ --dfgSpecPrefix ] arg (=./dfgSpec/)\\nPrefix of DFG specification files."
-    arg_out_directory: "[ --outSpecPrefix ] arg (=out_)    Prefix of DFG specification files. Any\\nincluded prefix directory must already\\nexist."
-    arg_prefix_dfg: "[ --tmpSpecPrefix ] arg            Prefix of DFG specification files\\nwritten during each iteration of\\ntraining. Allows state of EM to be\\nsaved - especially useful for large\\ndatasets. Any included prefix directory\\nmust already exist. Not defined and not\\nperformed by default."
+    arg__prefix: "[ --outSpecPrefix ] arg (=out_)    Prefix of DFG specification files. Any\\nincluded prefix directory must already\\nexist."
+    arg_prefix_fileswritten: "[ --tmpSpecPrefix ] arg            Prefix of DFG specification files\\nwritten during each iteration of\\ntraining. Allows state of EM to be\\nsaved - especially useful for large\\ndatasets. Any included prefix directory\\nmust already exist. Not defined and not\\nperformed by default."
     factor_graph_file: "(=factorGraph.txt)\\nSpecification of the factor graph\\nstructure."
     variables_file: "(=variables.txt)  Specification of the state map used by\\neach variable."
     state_map_file: "(=stateMaps.txt)   Specification of state maps."

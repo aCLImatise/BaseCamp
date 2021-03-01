@@ -2,7 +2,7 @@ version 1.0
 
 task Fitscheck {
   input {
-    Boolean? choose_fits_checksum
+    Boolean? choose_fits_mode
     File? write
     Boolean? force
     Boolean? compliance
@@ -11,15 +11,18 @@ task Fitscheck {
   }
   command <<<
     fitscheck \
-      ~{if (choose_fits_checksum) then "-k" else ""} \
+      ~{if (choose_fits_mode) then "-k" else ""} \
       ~{if (write) then "--write" else ""} \
       ~{if (force) then "--force" else ""} \
       ~{if (compliance) then "--compliance" else ""} \
       ~{if (ignore_missing) then "--ignore-missing" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    choose_fits_checksum: "[standard | remove | none], --checksum=[standard | remove | none]\\nChoose FITS checksum mode or none.  Defaults standard."
+    choose_fits_mode: "[standard | remove | none], --checksum=[standard | remove | none]\\nChoose FITS checksum mode or none.  Defaults standard."
     write: "Write out file checksums and/or FITS compliance fixes."
     force: "Do file update even if original checksum was bad."
     compliance: "Do FITS compliance checking; fix if possible."

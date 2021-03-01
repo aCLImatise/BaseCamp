@@ -16,6 +16,9 @@ task CombineToolOutputsR {
       ~{if (scores) then "--scores" else ""} \
       ~{if defined(output_table) then ("--output-table " +  '"' + output_table + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dir: "Path to the directory with standardised output .tsv files from multiple\\nclassifiers. It is expected that input files follow the format: A_B_final-labs.tsv,\\nwhere A is dataset or origin and B is classifier used to obtain predictions."
     top_labels_num: "Number of top labels to keep"

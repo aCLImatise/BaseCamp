@@ -1,0 +1,96 @@
+&id001 !Command
+command:
+- ragtag.py
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - ragtag.py
+  - agpcheck
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: asm1.agp
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: asmN.agp
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: ragtag.py agpcheck <asm1.agp> [<asm2.agp> ... <asmN.agp>]\n\n\
+    Check AGP v2.1 files for validity.\n\npositional arguments:\n  <asm1.agp> [<asm2.agp>\
+    \ ... <asmN.agp>]\n                        AGP v2.1 files\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/ragtag:1.1.0--pyh7b7c402_0
+- !Command
+  command:
+  - ragtag.py
+  - updategff
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: genes.gff
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: ragtag.agp
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: update for misassembly correction (ragtag.correction.agp)
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: ragtag.py updategff [-c] <genes.gff> <ragtag.agp>\n\nUpdate gff\
+    \ intervals given a RagTag AGP file\n\npositional arguments:\n  <genes.gff>  \
+    \   gff file\n  <ragtag.*.agp>  agp file\n\noptional arguments:\n  -h, --help\
+    \      show this help message and exit\n  -c              update for misassembly\
+    \ correction (ragtag.correction.agp)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/ragtag:1.1.0--pyh7b7c402_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nRagTag: Reference-guided scaffolding and misassembly correction.\nVersion:\
+  \ v1.1.0\n\nusage: ragtag.py <command> [options]\n    \n    assembly improvement:\n\
+  \      correct         misassembly correction \n      scaffold        synteny scaffolding\n\
+  \      merge           scaffold merging\n      \n    file utilities:\n      agp2fasta\
+  \       build a FASTA file from an AGP file\n      agpcheck        check for valid\
+  \ AGP file format\n      updategff       update gff intervals\n      \n    \n\n\
+  \    options:\n      -c, --citation  \n      -v, --version\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/ragtag:1.1.0--pyh7b7c402_0

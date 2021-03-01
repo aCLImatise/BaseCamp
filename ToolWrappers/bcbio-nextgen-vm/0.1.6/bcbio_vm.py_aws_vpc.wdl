@@ -16,6 +16,9 @@ task BcbioVmpyAwsVpc {
       ~{if defined(cluster) then ("--cluster " +  '"' + cluster + '"') else ""} \
       ~{if defined(network) then ("--network " +  '"' + network + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     e_config: "Elasticluster bcbio configuration file (default:\\n/root/.bcbio/elasticluster/config)"
     region: "EC2 region to create VPC in (defaults to us-east-1)\\n(default: us-east-1)"

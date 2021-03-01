@@ -2,6 +2,7 @@ version 1.0
 
 task Obiaddtaxids {
   input {
+    String? u
     Boolean? debug
     Boolean? without_progress_bar
     File? genus_found
@@ -13,12 +14,15 @@ task Obiaddtaxids {
     File? database
     File? taxonomy_dump
     String database_dot
+    String bash
     File file_dot
   }
   command <<<
     obiaddtaxids \
       ~{database_dot} \
+      ~{bash} \
       ~{file_dot} \
+      ~{if defined(u) then ("-u " +  '"' + u + '"') else ""} \
       ~{if (debug) then "--DEBUG" else ""} \
       ~{if (without_progress_bar) then "--without-progress-bar" else ""} \
       ~{if defined(genus_found) then ("--genus_found " +  '"' + genus_found + '"') else ""} \
@@ -30,7 +34,11 @@ task Obiaddtaxids {
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if defined(taxonomy_dump) then ("--taxonomy-dump " +  '"' + taxonomy_dump + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
+    u: "\\"
     debug: "Set logging in debug mode"
     without_progress_bar: "desactivate progress bar"
     genus_found: "(not with UNITE databases) file used to store\\nsequences with the genus found."
@@ -42,6 +50,7 @@ task Obiaddtaxids {
     database: "ecoPCR taxonomy Database name"
     taxonomy_dump: "NCBI Taxonomy dump repository name\\n"
     database_dot: "- If the input file is an ``OBITools`` extended :doc:`fasta <../fasta>` format, the ``-k`` option"
+    bash: "> obiaddtaxids -k species_name -g genus_identified.fasta \\"
     file_dot: "- Otherwise the sequence record is stored in the ``unidentified.fasta`` file."
   }
   output {

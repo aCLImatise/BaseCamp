@@ -4,129 +4,191 @@ command:
 positional: []
 named:
 - !Flag
-  description: "path to the background file which is necessary to\ncompute the rbz-score"
+  optional: true
   synonyms:
   - --backgroundModelFile
   - -bmf
+  description: "path to the background file which is necessary to\ncompute the rbz-score"
   args: !SimpleFlagArg
     name: BACKGROUNDMODELFILE
-  optional: true
 - !Flag
-  description: "Filter x-fold over background. Used to merge\nneighboring bins with\
-    \ a broader peak but less\nsignificant interactions to a single peak with high\n\
-    significance. Used only for pValue option."
+  optional: true
   synonyms:
   - --xFoldBackground
   - -xf
+  description: "Filter x-fold over background. Used to merge\nneighboring bins with\
+    \ a broader peak but less\nsignificant interactions to a single peak with high\n\
+    significance. Used only for pValue option."
   args: !SimpleFlagArg
     name: XFOLDBACKGROUND
-  optional: true
 - !Flag
-  description: "loose p-value threshold to filter target regions in a\nfirst round.\
-    \ Used to merge neighboring bins with a\nbroader peak but less significant interactions\
-    \ to a\nsingle peak with high significance. Used only for\npValue option."
+  optional: true
   synonyms:
   - --loosePValue
   - -lp
+  description: "loose p-value threshold to filter target regions in a\nfirst round.\
+    \ Used to merge neighboring bins with a\nbroader peak but less significant interactions\
+    \ to a\nsingle peak with high significance. Used only for\npValue option."
   args: !SimpleFlagArg
     name: LOOSEPVALUE
-  optional: true
 - !Flag
-  description: "path to the interaction files which should be used for\naggregation\
-    \ of the statistics."
+  optional: true
   synonyms:
   - --interactionFile
   - -if
+  description: "path to the interaction files which should be used for\naggregation\
+    \ of the statistics."
   args: !RepeatFlagArg
     name: INTERACTIONFILE
-  optional: true
 - !Flag
-  description: "p-value threshold to filter target regions for\ninclusion in differential\
-    \ analysis."
+  optional: true
   synonyms:
   - --pValue
   - -p
+  description: "p-value threshold to filter target regions for\ninclusion in differential\
+    \ analysis."
   args: !SimpleFlagArg
     name: PVALUE
-  optional: true
 - !Flag
-  description: "RANGE   Defines the region upstream and downstream of a\nreference\
-    \ point which should be included. Format is\n--region upstream downstream, e.g.\
-    \ --region 500000\n500000 plots 500kb up- and 500kb downstream. This\nvalue should\
-    \ not exceed the range used in the other\nchic-tools."
-  synonyms:
-  - --range
-  args: !SimpleFlagArg
-    name: RANGE
   optional: true
-- !Flag
-  description: "File name suffix to save the results; prefix is the\ninput file name."
   synonyms:
   - --outFileNameSuffix
   - -suffix
+  description: "File name suffix to save the results; prefix is the\ninput file name."
   args: !SimpleFlagArg
     name: OUTFILENAMESUFFIX
-  optional: true
 - !Flag
-  description: "Folder where the interaction files are stored. Applies\nonly for batch\
-    \ mode."
+  optional: true
   synonyms:
   - --interactionFileFolder
   - -iff
+  description: "Folder where the interaction files are stored. Applies\nonly for batch\
+    \ mode."
   args: !SimpleFlagArg
     name: INTERACTIONFILEFOLDER
-  optional: true
 - !Flag
-  description: Folder where the target files are stored.
+  optional: true
   synonyms:
   - --targetFolder
   - -tf
+  description: Folder where the target files are stored.
   args: !SimpleFlagArg
     name: TARGETFOLDER
-  optional: true
 - !Flag
-  description: Output folder of the significant interaction files.
+  optional: true
   synonyms:
   - --outputFolder
   - -o
+  description: Output folder of the significant interaction files.
   args: !SimpleFlagArg
     name: OUTPUTFOLDER
-  optional: true
 - !Flag
-  description: "--targetFileList TARGETFILELIST, -tl TARGETFILELIST\nThe file to store\
-    \ the target file names.\n--batchMode, -bm      Turn on batch mode. The given\
-    \ file for\n--interactionFile and or --targetFile contain a list\nof the to be\
-    \ processed files.\n--threads THREADS, -t THREADS\nNumber of threads (uses the\
-    \ python multiprocessing\nmodule).\n--truncateZeroPvalues, -tzpv\nSets all p-values\
-    \ which are equal to zero to one. This\nhas the effect that the associated positions\
-    \ are not\npart of the significance decision.\n--fixateRange FIXATERANGE, -fs\
-    \ FIXATERANGE\nFixate range of backgroundmodel starting at distance\nx. E.g. all\
-    \ values greater than 500kb are set to the\nvalue of the 500kb bin.\n--peakInteractionsThreshold\
-    \ PEAKINTERACTIONSTHRESHOLD, -pit PEAKINTERACTIONSTHRESHOLD\nThe minimum number\
-    \ of interactions a detected peak\nneeds to have to be considered.\n--resolution\
-    \ RESOLUTION, -r RESOLUTION\nResolution of the bin in genomic units. Values are\
-    \ set\nas number of bases, e.g. 1000 for a 1kb, 5000 for a\n5kb or 10000 for a\
-    \ 10kb resolution.This value is used\nto merge neighboring bins.\n--computeSampleNumber\
-    \ COMPUTESAMPLENUMBER, -csn COMPUTESAMPLENUMBER\nNumber of samples to compute\
-    \ together. Applies only in\nbatch mode.\n--multipleTesting {fdr,bonferroni,None},\
-    \ -mt {fdr,bonferroni,None}\nMultiple testing correction per relative distance\
-    \ with\nBonferroni or FDR.\n--thresholdMultipleTesting THRESHOLDMULTIPLETESTING,\
-    \ -tmt THRESHOLDMULTIPLETESTING\nThreshold for Bonferroni / FDR. Either a float\
-    \ value\nfor all or a file with one threshold per relative\ndistance.\n--help,\
-    \ -h            show this help message and exit\n--version             show program's\
-    \ version number and exit\n"
+  optional: true
   synonyms:
   - --writeFileNamesToFile
   - -w
+  - --targetFileList
+  - -tl
+  description: The file to store the target file names.
   args: !SimpleFlagArg
     name: WRITEFILENAMESTOFILE
+- !Flag
   optional: true
+  synonyms:
+  - --batchMode
+  - -bm
+  description: Turn on batch mode. The given file for
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Number of threads (uses the python multiprocessing\nmodule)."
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --truncateZeroPvalues
+  - -tzpv
+  description: "Sets all p-values which are equal to zero to one. This\nhas the effect\
+    \ that the associated positions are not\npart of the significance decision."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fixateRange
+  - -fs
+  description: "Fixate range of backgroundmodel starting at distance\nx. E.g. all\
+    \ values greater than 500kb are set to the\nvalue of the 500kb bin."
+  args: !SimpleFlagArg
+    name: FIXATERANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --peakInteractionsThreshold
+  - -pit
+  description: "The minimum number of interactions a detected peak\nneeds to have\
+    \ to be considered."
+  args: !SimpleFlagArg
+    name: PEAKINTERACTIONSTHRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --resolution
+  - -r
+  description: "Resolution of the bin in genomic units. Values are set\nas number\
+    \ of bases, e.g. 1000 for a 1kb, 5000 for a\n5kb or 10000 for a 10kb resolution.This\
+    \ value is used\nto merge neighboring bins."
+  args: !SimpleFlagArg
+    name: RESOLUTION
+- !Flag
+  optional: true
+  synonyms:
+  - --computeSampleNumber
+  - -csn
+  description: "Number of samples to compute together. Applies only in\nbatch mode."
+  args: !SimpleFlagArg
+    name: COMPUTESAMPLENUMBER
+- !Flag
+  optional: true
+  synonyms:
+  - --multipleTesting
+  - -mt
+  description: "Multiple testing correction per relative distance with\nBonferroni\
+    \ or FDR."
+  args: !ChoiceFlagArg
+    choices: !!set
+      bonferroni:
+      None:
+      fdr:
+- !Flag
+  optional: true
+  synonyms:
+  - --thresholdMultipleTesting
+  - -tmt
+  description: "Threshold for Bonferroni / FDR. Either a float value\nfor all or a\
+    \ file with one threshold per relative\ndistance."
+  args: !SimpleFlagArg
+    name: THRESHOLDMULTIPLETESTING
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
 help_text: "usage: chicSignificantInteractions --interactionFile INTERACTIONFILE\n\
   \                                   [INTERACTIONFILE ...] --pValue PVALUE\n    \
   \                               [--xFoldBackground XFOLDBACKGROUND | --loosePValue\
@@ -228,3 +290,4 @@ help_text: "usage: chicSignificantInteractions --interactionFile INTERACTIONFILE
   \ and exit\n  --version             show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

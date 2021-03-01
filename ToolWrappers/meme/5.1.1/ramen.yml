@@ -3,110 +3,110 @@ command:
 - ramen
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: sequence file
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: motif file
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --log-fscores
   description: "[on|off] Regression on the log_e of the fluorescence scores\non: (Default)\
     \ Use the log_e(fluorescence) in the regression.\noff: Use the score directly\
     \ provided in the sequence file."
-  synonyms:
-  - --log-fscores
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[on|off] Regression on the log_e of the PWM scores\non: Use the log_e(RMA\
-    \ or AMA Score) in the regression.\noff: (Default) Use the RMA/AMA score directly."
+  optional: true
   synonyms:
   - --log-pwmscores
+  description: "[on|off] Regression on the log_e of the PWM scores\non: Use the log_e(RMA\
+    \ or AMA Score) in the regression.\noff: (Default) Use the RMA/AMA score directly."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --normalise-motifs
   description: "[on|off] Normalise the motif scores so that the motifs are comparable\n\
     on: (Default) Normalise motifs for comparison (Use RMA score).\noff: Use raw AMA\
     \ score (Not recommended)."
-  synonyms:
-  - --normalise-motifs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --linreg-switchxy
   description: "[on|on] Switch the x and y axis for the linear regression\non: y-points\
     \ are PWM scores, x-values are fluorescence scores.\noff: (Default) y-points are\
     \ fluorescence scores, x-points are PWM scores."
-  synonyms:
-  - --linreg-switchxy
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Dump (R-format) TSV files of each regression.
+  optional: true
   synonyms:
   - --linreg-dumpdir
+  description: Dump (R-format) TSV files of each regression.
   args: !SimpleFlagArg
     name: existing_directory
-  optional: true
 - !Flag
-  description: (default=10,000) Number of times to sample for p-value determination.
+  optional: true
   synonyms:
   - --repeats
+  description: (default=10,000) Number of times to sample for p-value determination.
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: (default=0.05) Only show results with p-value <= this cutoff
+  optional: true
   synonyms:
   - --pvalue-cutoff
+  description: (default=0.05) Only show results with p-value <= this cutoff
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: "[0|2|3] source used to determine background frequencies\n0: uniform\
-    \ background\n1: MEME motif file\n2: Background file"
+  optional: true
   synonyms:
   - --bgformat
+  description: "[0|2|3] source used to determine background frequencies\n0: uniform\
+    \ background\n1: MEME motif file\n2: Background file"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: file containing background frequencies
+  optional: true
   synonyms:
   - --bgfile
+  description: file containing background frequencies
   args: !SimpleFlagArg
     name: background
-  optional: true
 - !Flag
-  description: '[meme|tamo|regexp] format of input motif file (default meme)'
+  optional: true
   synonyms:
   - --motif-format
+  description: '[meme|tamo|regexp] format of input motif file (default meme)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <float, default = 0.25> Pseudocount for motif affinity scan
+  optional: true
   synonyms:
   - --pseudocount
+  description: <float, default = 0.25> Pseudocount for motif affinity scan
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <1...5>                 Integer describing verbosity. Best used as
-    first argument in list.
+  optional: true
   synonyms:
   - --verbose
+  description: <1...5>                 Integer describing verbosity. Best used as
+    first argument in list.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message again
+  optional: true
   synonyms:
   - --help
+  description: Show this message again
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: ramen [options] <sequence file> <motif file>\n\n   Linear Regression\
@@ -143,3 +143,4 @@ help_text: "Usage: ramen [options] <sequence file> <motif file>\n\n   Linear Reg
   \ directed to Robert McLeay.\n\n"
 generated_using:
 - --help
+docker_image:

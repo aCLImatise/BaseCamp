@@ -14,6 +14,9 @@ task Hotspot3dTrans {
       ~{if (gr_ch) then "--grch" else ""} \
       ~{if (release) then "--release" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Output directory of proximity files\\nOPTIONAL"
     blat: "Installation of blat to use (defaults to your system default)"

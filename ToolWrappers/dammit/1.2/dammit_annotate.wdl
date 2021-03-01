@@ -42,6 +42,9 @@ task DammitAnnotate {
       ~{if (nr) then "--nr" else ""} \
       ~{if (quick) then "--quick" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "Base name to use for renaming the input transcripts.\\nThe new names will be of the form <name>_<X>. It\\nshould not have spaces, pipes, ampersands, or other\\ncharacters with special meaning to BASH. (default:\\nTranscript)"
     evalue: "e-value cutoff for similarity searches. (default:\\n1e-05)"

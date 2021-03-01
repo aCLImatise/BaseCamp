@@ -8,6 +8,9 @@ task Expr {
     expr \
       ~{expression}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     expression: ""
   }

@@ -82,6 +82,9 @@ task GtftkOlogram {
       ~{if (logger_file) then "--logger-file" else ""} \
       ~{if (write_message_to_file) then "--write-message-to-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     more_bed: "A list of bed files to be considered as additional genomic annotations. (default: None)"
     input_file: "Path to the GTF file. Defaults to STDIN (default: <stdin>)"

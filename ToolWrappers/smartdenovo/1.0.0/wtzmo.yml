@@ -4,297 +4,290 @@ command:
 positional: []
 named:
 - !Flag
-  description: Number of threads, [1]
+  optional: true
   synonyms:
   - -t
+  description: Number of threads, [1]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Total parallel jobs, [1]
+  optional: true
   synonyms:
   - -P
+  description: Total parallel jobs, [1]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Index of current job (0-based), [0]\nSuppose to run wtzmo parallelly\
-    \ in 60 nodes. For node1, -P 60 -p 0; node2, -P 60 -p 1, ..."
+  optional: true
   synonyms:
   - -p
+  description: "Index of current job (0-based), [0]\nSuppose to run wtzmo parallelly\
+    \ in 60 nodes. For node1, -P 60 -p 0; node2, -P 60 -p 1, ..."
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Long reads sequences file, + *
+  optional: true
   synonyms:
   - -i
+  description: Long reads sequences file, + *
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -I
   description: "Long reads sequence file, DON'T build index on them, +\nIf specified,\
     \ program will only align them against all sequences from <-i>\nUseful in -I mapping\
     \ contigs(not too large) against -i pacbio reads"
-  synonyms:
-  - -I
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: "Long reads retained region, often from wtobt/wtcyc, +\nFormat: read_name\\\
-    toffset\\tlength\\toriginal_len"
+  optional: true
   synonyms:
   - -b
+  description: "Long reads retained region, often from wtobt/wtcyc, +\nFormat: read_name\\\
+    toffset\\tlength\\toriginal_len"
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: Jack knife of original read length, [0]
+  optional: true
   synonyms:
   - -J
+  description: Jack knife of original read length, [0]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Load pairs of read name from file, will avoid to calculate overlap
-    them again, + [NULL]
+  optional: true
   synonyms:
   - -L
+  description: Load pairs of read name from file, will avoid to calculate overlap
+    them again, + [NULL]
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: Output file of alignments, *
+  optional: true
   synonyms:
   - -o
+  description: Output file of alignments, *
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: "Record pairs of sequences have beed aligned regardless of successful,\
-    \ including pairs from '-L'\nFormat: read1\\tread2"
+  optional: true
   synonyms:
   - '-9'
+  description: "Record pairs of sequences have beed aligned regardless of successful,\
+    \ including pairs from '-L'\nFormat: read1\\tread2"
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: Force overwrite
+  optional: true
   synonyms:
   - -f
+  description: Force overwrite
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Option of homopolymer compression, [3]\n1: trun on compression on\
-    \ kmer\n2: trun on compression on small-kmer(zmer)"
+  optional: true
   synonyms:
   - -H
+  description: "Option of homopolymer compression, [3]\n1: trun on compression on\
+    \ kmer\n2: trun on compression on small-kmer(zmer)"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Filter high frequency kmers, maybe repetitive, [0]\n0: set K to 5\
-    \ * <average_kmer_depth>, but no less than 100"
+  optional: true
   synonyms:
   - -K
+  description: "Filter high frequency kmers, maybe repetitive, [0]\n0: set K to 5\
+    \ * <average_kmer_depth>, but no less than 100"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Minimum size of total seeding region for kmer windows, [300]
+  optional: true
   synonyms:
   - -d
+  description: Minimum size of total seeding region for kmer windows, [300]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Subsampling kmers, 1/<-S> kmers are indexed, [4]
+  optional: true
   synonyms:
   - -S
+  description: Subsampling kmers, 1/<-S> kmers are indexed, [4]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -G
   description: "Build kmer index in multiple iterations to save memory, 1: once, [1]\n\
     Given 10M reads having 100G bases, about 100/(4)=25G used in seq storage, about\
     \ 100*(6)G=600G\nused in kmer-index. If -G = 10, kmer-index is divided into 10\
     \ pieces, thus taking 60G. But we need additional\n10M / <tot_jobs: -P> * 8 *\
     \ <num_of_cand: -A> memory to store candidates to be aligned."
-  synonyms:
-  - -G
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Smaller kmer size (z-mer), 5 <= <-z> <= 16, [10]
-  synonyms:
-  - -z
-  args: !SimpleFlagArg
-    name: int
   optional: true
-- !Flag
-  description: Filter high frequency z-mers, maybe repetitive, [64]
   synonyms:
   - -Z
+  description: Filter high frequency z-mers, maybe repetitive, [64]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -U
   description: "Ultra-fast dot matrix alignment, pattern search in zmer image\nUsage:\
     \ wtzmo <other_options> -s 200 -m 0.1 -U 128 -U 64 -U 160 -U 1.0 -U 0.05\n(1)\
     \    (2)   (3)    (4)    (5)\nIntra-block (1): max_gap, (2): max_deviation, (3):\
     \ min_size\nInter-block (4): deviation penalty, (5): gap size penalty\nuse -U\
     \ -1 instead of type six default parameters\nWill trun off -y -R -r -l -q -B -C\
     \ -M -X -O -W -T -w -W -e -n -y <int>    Zmer window, [800]"
-  synonyms:
-  - -U
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: Minimum size of seeding region within zmer window, [200]
+  optional: true
   synonyms:
   - -R
+  description: Minimum size of seeding region within zmer window, [200]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Minimum size of total seeding region for zmer windows, [300]
+  optional: true
   synonyms:
   - -r
+  description: Minimum size of total seeding region for zmer windows, [300]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Maximum variant of uncompressed sizes between two matched hz-kmer,
-    [2]
+  optional: true
   synonyms:
   - -l
+  description: Maximum variant of uncompressed sizes between two matched hz-kmer,
+    [2]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: THreshold of seed-window coverage along query, will be used to decrease
-    weight of repetitive region, [100]
+  optional: true
   synonyms:
   - -q
+  description: THreshold of seed-window coverage along query, will be used to decrease
+    weight of repetitive region, [100]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Limit number of best candidates per read, [500]
+  optional: true
   synonyms:
   - -A
+  description: Limit number of best candidates per read, [500]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Limit number of best overlaps per read, [100]\nSo call 'best' is estimated\
-    \ by seed-windows, and increase as rd_len / avg_rd_len"
+  optional: true
   synonyms:
   - -B
+  description: "Limit number of best overlaps per read, [100]\nSo call 'best' is estimated\
+    \ by seed-windows, and increase as rd_len / avg_rd_len"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Don't skip calculation of its overlaps even when the read was contained
-    by others
+  optional: true
   synonyms:
   - -C
+  description: Don't skip calculation of its overlaps even when the read was contained
+    by others
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Reads from this file(s) are to be exclued, one line for one read name,
-    + [NULL]
+  optional: true
   synonyms:
   - -F
+  description: Reads from this file(s) are to be exclued, one line for one read name,
+    + [NULL]
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: 'Alignment penalty: match, [2]'
+  optional: true
   synonyms:
   - -M
+  description: 'Alignment penalty: match, [2]'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'Alignment penalty: mismatch, [-5]'
+  optional: true
   synonyms:
   - -X
+  description: 'Alignment penalty: mismatch, [-5]'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'Alignment penalty: insertion or deletion, [-3]'
+  optional: true
   synonyms:
   - -O
+  description: 'Alignment penalty: insertion or deletion, [-3]'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'Alignment penalty: gap extension, [-1]'
+  optional: true
   synonyms:
   - -E
+  description: 'Alignment penalty: gap extension, [-1]'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'Alignment penalty: read end clipping, 0: distable HSP extension, otherwise
-    set to -50 or other [-50]'
+  optional: true
   synonyms:
   - -T
+  description: 'Alignment penalty: read end clipping, 0: distable HSP extension, otherwise
+    set to -50 or other [-50]'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Minimum bandwidth, iteratively doubled to maximum [50]
+  optional: true
   synonyms:
   - -w
+  description: Minimum bandwidth, iteratively doubled to maximum [50]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Maximum bandwidth, [3200]
+  optional: true
   synonyms:
   - -W
+  description: Maximum bandwidth, [3200]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Maximum bandwidth at ending extension, [800]
+  optional: true
   synonyms:
   - -e
+  description: Maximum bandwidth at ending extension, [800]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Minimum alignment score, [200]
+  optional: true
   synonyms:
   - -s
+  description: Minimum alignment score, [200]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Minimum alignment identity, [0.5]
+  optional: true
   synonyms:
   - -m
+  description: Minimum alignment identity, [0.5]
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: Refine the alignment
+  optional: true
   synonyms:
   - -n
+  description: Refine the alignment
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Verbose, BE careful, HUGEEEEEEEE output on STDOUT
+  optional: true
   synonyms:
   - -v
+  description: Verbose, BE careful, HUGEEEEEEEE output on STDOUT
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -360,3 +353,4 @@ help_text: "WTZMO: Overlaper of long reads using homopolymer compressed k-mer se
   \n"
 generated_using:
 - --help
+docker_image:

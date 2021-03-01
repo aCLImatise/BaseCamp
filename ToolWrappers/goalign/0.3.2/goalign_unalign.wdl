@@ -32,6 +32,9 @@ task GoalignUnalign {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_prefix: "Unaligned alignment output file prefix (default \\\"stdout\\\")"
     align: "Alignment input file (default \\\"stdin\\\")"

@@ -8,6 +8,9 @@ task Falconphase {
     falcon_phase \
       ~{var_command}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_command: ""
   }

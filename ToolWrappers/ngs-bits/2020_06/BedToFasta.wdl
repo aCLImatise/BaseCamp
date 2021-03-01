@@ -16,6 +16,9 @@ task BedToFasta {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input BED file."
     out: "Output FASTA file. If unset, writes to STDOUT.\\nDefault value: ''"

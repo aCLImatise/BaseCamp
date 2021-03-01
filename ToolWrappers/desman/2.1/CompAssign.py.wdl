@@ -4,6 +4,9 @@ task CompAssignpy {
   command <<<
     CompAssign_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

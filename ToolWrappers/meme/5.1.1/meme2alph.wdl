@@ -8,6 +8,9 @@ task Meme2alph {
     meme2alph \
       ~{motifs_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     motifs_file: ""
   }

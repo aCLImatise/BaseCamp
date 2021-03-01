@@ -1,0 +1,535 @@
+&id001 !Command
+command:
+- mykrobe
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - mykrobe
+  - predict
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: sample
+    description: sample id
+  - !Positional
+    optional: false
+    position: 1
+    name: species
+    description: "species name, or 'custom' to use custom data, in which\ncase --custom_probe_set_path\
+      \ is required"
+  - !Positional
+    optional: false
+    position: 0
+    name: threads
+    description: -m MEMORY, --memory MEMORY
+  - !Positional
+    optional: false
+    position: 0
+    name: stdout.
+    description: '--panels_dir DIRNAME  Name of directory that contains panel data.
+      Default:'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --kmer
+    description: kmer length (default:21)
+    args: !SimpleFlagArg
+      name: kmer
+  - !Flag
+    optional: true
+    synonyms:
+    - --tmp
+    description: 'tmp directory (default: tmp/)'
+    args: !SimpleFlagArg
+      name: TMP
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep_tmp
+    description: Dont remove tmp files
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --skeleton_dir
+    description: directory for skeleton binaries
+    args: !SimpleFlagArg
+      name: SKELETON_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --expected_depth
+    description: expected depth
+    args: !SimpleFlagArg
+      name: EXPECTED_DEPTH
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    - --seq
+    description: sequence files (fasta,fastq,bam)
+    args: !RepeatFlagArg
+      name: seq
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --ctx
+    description: cortex graph binary
+    args: !SimpleFlagArg
+      name: ctx
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --force
+    description: force
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ont
+    description: "Set default for ONT data. Sets expected_error_rate to\n0.15 and\
+      \ to haploid"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --guess_sequence_method
+    description: "Guess if ONT or Illumia based on error rate. If error\nrate is >\
+      \ 10%, ploidy is set to haploid and a\nconfidence threshold is used"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ignore_minor_calls
+    description: Ignore minor calls when running resistance prediction
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ignore_filtered
+    description: don't include filtered genotypes
+    args: !SimpleFlagArg
+      name: IGNORE_FILTERED
+  - !Flag
+    optional: true
+    synonyms:
+    - --model
+    description: "Genotype model used, default kmer_count. Options\nkmer_count, median_depth"
+    args: !SimpleFlagArg
+      name: model
+  - !Flag
+    optional: true
+    synonyms:
+    - --ploidy
+    description: "Use a diploid (includes 0/1 calls) or haploid\ngenotyping model"
+    args: !SimpleFlagArg
+      name: ploidy
+  - !Flag
+    optional: true
+    synonyms:
+    - --filters
+    description: don't include filtered genotypes
+    args: !RepeatFlagArg
+      name: FILTERS
+  - !Flag
+    optional: true
+    synonyms:
+    - --report_all_calls
+    description: report all calls
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --expected_error_rate
+    description: "Expected sequencing error rate. Set to 0.15 for ONT\ngenotyping."
+    args: !SimpleFlagArg
+      name: EXPECTED_ERROR_RATE
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_variant_conf
+    description: minimum genotype confidence for variant genotyping
+    args: !SimpleFlagArg
+      name: MIN_VARIANT_CONF
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_gene_conf
+    description: minimum genotype confidence for gene genotyping
+    args: !SimpleFlagArg
+      name: MIN_GENE_CONF
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_proportion_expected_depth
+    description: "minimum depth required on the sum of both alleles.\nDefault 0.3\
+      \ (30%)"
+    args: !SimpleFlagArg
+      name: MIN_PROPORTION_EXPECTED_DEPTH
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_gene_percent_covg_threshold
+    description: "all genes alleles found above this percent coverage\nwill be reported\
+      \ (default 100 (only best alleles\nreported))"
+    args: !SimpleFlagArg
+      name: MIN_GENE_PERCENT_COVG_THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: File path to save output json file as. Default is to
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quiet
+    description: Only output warnings/errors to stderr
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --debug
+    description: Output debugging information to stderr
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --panel
+    description: Name of panel to use. Ignored if species is 'custom'
+    args: !SimpleFlagArg
+      name: panel
+  - !Flag
+    optional: true
+    synonyms:
+    - --custom_probe_set_path
+    description: "Required if species is 'custom'. Ignored otherwise.\nFile path to\
+      \ fasta file from `mykrobe make-probes`."
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --custom_variant_to_resistance_json
+    description: "For use with `--panel custom`. Ignored otherwise. File\npath to\
+      \ JSON with key,value pairs of variant names and\ninduced drug resistance."
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --custom_lineage_json
+    description: "For use with `--panel custom`. Ignored otherwise. File\npath to\
+      \ JSON made by --lineage option of make-probes"
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --format
+    description: "Choose output format. Default: csv.\n"
+    args: !ChoiceFlagArg
+      choices: !!set
+        csv:
+        json:
+        json_and_csv:
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: mykrobe predict [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n   \
+    \                    [--skeleton_dir SKELETON_DIR] [-t THREADS] [-m MEMORY]\n\
+    \                       [--expected_depth EXPECTED_DEPTH] [-1 seq [seq ...]]\n\
+    \                       [-c ctx] [-f] [--ont] [--guess_sequence_method]\n    \
+    \                   [--ignore_minor_calls]\n                       [--ignore_filtered\
+    \ IGNORE_FILTERED] [--model model]\n                       [--ploidy ploidy] [--filters\
+    \ FILTERS [FILTERS ...]]\n                       [--report_all_calls]\n      \
+    \                 [--expected_error_rate EXPECTED_ERROR_RATE]\n              \
+    \         [--min_variant_conf MIN_VARIANT_CONF]\n                       [--min_gene_conf\
+    \ MIN_GENE_CONF]\n                       [--min_proportion_expected_depth MIN_PROPORTION_EXPECTED_DEPTH]\n\
+    \                       [--min_gene_percent_covg_threshold MIN_GENE_PERCENT_COVG_THRESHOLD]\n\
+    \                       [--output OUTPUT] [--panels_dir DIRNAME] [-q] [-d]\n \
+    \                      [--panel panel] [--custom_probe_set_path FILENAME]\n  \
+    \                     [--custom_variant_to_resistance_json FILENAME]\n       \
+    \                [--custom_lineage_json FILENAME]\n                       [--min_depth\
+    \ min_depth]\n                       [--conf_percent_cutoff conf_percent_cutoff]\n\
+    \                       [--format {json,csv,json_and_csv}]\n                 \
+    \      sample species\n\npositional arguments:\n  sample                sample\
+    \ id\n  species               species name, or 'custom' to use custom data, in\
+    \ which\n                        case --custom_probe_set_path is required\n\n\
+    optional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -k kmer, --kmer kmer  kmer length (default:21)\n  --tmp TMP             tmp\
+    \ directory (default: tmp/)\n  --keep_tmp            Dont remove tmp files\n \
+    \ --skeleton_dir SKELETON_DIR\n                        directory for skeleton\
+    \ binaries\n  -t THREADS, --threads THREADS\n                        threads\n\
+    \  -m MEMORY, --memory MEMORY\n                        memory for graph constuction\n\
+    \  --expected_depth EXPECTED_DEPTH\n                        expected depth\n \
+    \ -1 seq [seq ...], --seq seq [seq ...]\n                        sequence files\
+    \ (fasta,fastq,bam)\n  -c ctx, --ctx ctx     cortex graph binary\n  -f, --force\
+    \           force\n  --ont                 Set default for ONT data. Sets expected_error_rate\
+    \ to\n                        0.15 and to haploid\n  --guess_sequence_method\n\
+    \                        Guess if ONT or Illumia based on error rate. If error\n\
+    \                        rate is > 10%, ploidy is set to haploid and a\n     \
+    \                   confidence threshold is used\n  --ignore_minor_calls  Ignore\
+    \ minor calls when running resistance prediction\n  --ignore_filtered IGNORE_FILTERED\n\
+    \                        don't include filtered genotypes\n  --model model   \
+    \      Genotype model used, default kmer_count. Options\n                    \
+    \    kmer_count, median_depth\n  --ploidy ploidy       Use a diploid (includes\
+    \ 0/1 calls) or haploid\n                        genotyping model\n  --filters\
+    \ FILTERS [FILTERS ...]\n                        don't include filtered genotypes\n\
+    \  --report_all_calls    report all calls\n  --expected_error_rate EXPECTED_ERROR_RATE\n\
+    \                        Expected sequencing error rate. Set to 0.15 for ONT\n\
+    \                        genotyping.\n  --min_variant_conf MIN_VARIANT_CONF\n\
+    \                        minimum genotype confidence for variant genotyping\n\
+    \  --min_gene_conf MIN_GENE_CONF\n                        minimum genotype confidence\
+    \ for gene genotyping\n  --min_proportion_expected_depth MIN_PROPORTION_EXPECTED_DEPTH\n\
+    \                        minimum depth required on the sum of both alleles.\n\
+    \                        Default 0.3 (30%)\n  --min_gene_percent_covg_threshold\
+    \ MIN_GENE_PERCENT_COVG_THRESHOLD\n                        all genes alleles found\
+    \ above this percent coverage\n                        will be reported (default\
+    \ 100 (only best alleles\n                        reported))\n  --output OUTPUT\
+    \       File path to save output json file as. Default is to\n               \
+    \         stdout.\n  --panels_dir DIRNAME  Name of directory that contains panel\
+    \ data. Default:\n                        /usr/local/lib/python3.6/site-packages/mykrobe/data\n\
+    \  -q, --quiet           Only output warnings/errors to stderr\n  -d, --debug\
+    \           Output debugging information to stderr\n  --panel panel         Name\
+    \ of panel to use. Ignored if species is 'custom'\n  --custom_probe_set_path FILENAME\n\
+    \                        Required if species is 'custom'. Ignored otherwise.\n\
+    \                        File path to fasta file from `mykrobe make-probes`.\n\
+    \  --custom_variant_to_resistance_json FILENAME\n                        For use\
+    \ with `--panel custom`. Ignored otherwise. File\n                        path\
+    \ to JSON with key,value pairs of variant names and\n                        induced\
+    \ drug resistance.\n  --custom_lineage_json FILENAME\n                       \
+    \ For use with `--panel custom`. Ignored otherwise. File\n                   \
+    \     path to JSON made by --lineage option of make-probes\n  --min_depth min_depth\n\
+    \                        min_depth\n  --conf_percent_cutoff conf_percent_cutoff\n\
+    \                        Number between 0 and 100. Determines\n              \
+    \          --min_variant_conf, by simulating variants and\n                  \
+    \      choosing the cutoff that would keep x% of the\n                       \
+    \ variants. Default is 90 if --ont, otherwise\n                        --min_variant_conf\
+    \ is used as the cutoff\n  --format {json,csv,json_and_csv}\n                \
+    \        Choose output format. Default: csv.\n"
+  generated_using: &id003
+  - --help
+  docker_image: quay.io/biocontainers/mykrobe:0.9.0--py36hd181a71_2
+- &id002 !Command
+  command:
+  - mykrobe
+  - panels
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quiet
+    description: Only output warnings/errors to stderr
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --debug
+    description: Output debugging information to stderr
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - mykrobe
+    - panels
+    - update_metadata
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --panels_dir
+      description: "Name of directory that contains panel data. Default:\n/usr/local/lib/python3.6/site-packages/mykrobe/data"
+      args: !SimpleFlagArg
+        name: DIRNAME
+    - !Flag
+      optional: true
+      synonyms:
+      - -q
+      - --quiet
+      description: Only output warnings/errors to stderr
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      - --debug
+      description: Output debugging information to stderr
+      args: !EmptyFlagArg {}
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: mykrobe panels update_metadata [-h] [--panels_dir DIRNAME]\
+      \ [-q] [-d]\n\noptional arguments:\n  -h, --help            show this help message\
+      \ and exit\n  --panels_dir DIRNAME  Name of directory that contains panel data.\
+      \ Default:\n                        /usr/local/lib/python3.6/site-packages/mykrobe/data\n\
+      \  -q, --quiet           Only output warnings/errors to stderr\n  -d, --debug\
+      \           Output debugging information to stderr\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/mykrobe:0.9.0--py36hd181a71_2
+  - !Command
+    command:
+    - mykrobe
+    - panels
+    - help
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: mykrobe
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: panels
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      description: ''
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -q
+      description: ''
+      args: !EmptyFlagArg {}
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      description: ''
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: mykrobe panels [-h] [-q] [-d]\n                      {describe,update_metadata,update_species}\
+      \ ...\nmykrobe panels: error: argument sub_command: invalid choice: 'help' (choose\
+      \ from 'describe', 'update_metadata', 'update_species')\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/mykrobe:0.9.0--py36hd181a71_2
+  - !Command
+    command:
+    - mykrobe
+    - panels
+    - panels
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: mykrobe
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: panels
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      description: ''
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -q
+      description: ''
+      args: !EmptyFlagArg {}
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      description: ''
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: mykrobe panels [-h] [-q] [-d]\n                      {describe,update_metadata,update_species}\
+      \ ...\nmykrobe panels: error: argument sub_command: invalid choice: 'panels'\
+      \ (choose from 'describe', 'update_metadata', 'update_species')\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/mykrobe:0.9.0--py36hd181a71_2
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: mykrobe panels [-h] [-q] [-d]\n                      {describe,update_metadata,update_species}\
+    \ ...\n\noptional arguments:\n  -h, --help            show this help message and\
+    \ exit\n  -q, --quiet           Only output warnings/errors to stderr\n  -d, --debug\
+    \           Output debugging information to stderr\n\n[sub-commands]:\n  {describe,update_metadata,update_species}\n\
+    \                        help\n    describe            Describe all known panels\n\
+    \    update_metadata     Update metadata about available species and their\n \
+    \                       panels\n    update_species      Update species panel(s)\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/mykrobe:0.9.0--py36hd181a71_2
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: mykrobe version
+  args: !EmptyFlagArg {}
+help_text: "usage: mykrobe [-h] [--version] {predict,panels,variants,vars} ...\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ --version             mykrobe version\n\n[sub-commands]:\n  {predict,panels,variants,vars}\n\
+  \    predict             predict the sample's drug susceptibility\n    panels  \
+  \            Add, update, or remove panels\n    variants (vars)     build variant\
+  \ probes\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/mykrobe:0.9.0--py36hd181a71_2

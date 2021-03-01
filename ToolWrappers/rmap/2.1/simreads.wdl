@@ -26,6 +26,9 @@ task Simreads {
       ~{if (seed) then "-seed" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_output_file: "Name of output file (default: stdout)"
     reads: "number of reads to simulate"

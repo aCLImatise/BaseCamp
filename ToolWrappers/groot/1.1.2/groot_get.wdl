@@ -20,6 +20,9 @@ task GrootGet {
       ~{if defined(processors) then ("--processors " +  '"' + processors + '"') else ""} \
       ~{if (profiling) then "--profiling" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: "database to download (please choose: arg-annot/resfinder/card/groot-db/groot-core-db) (default \\\"arg-annot\\\")"
     identity: "the sequence identity used to cluster the database (only 90 available atm) (default \\\"90\\\")"

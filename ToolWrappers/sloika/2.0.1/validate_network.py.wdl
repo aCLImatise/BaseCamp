@@ -16,6 +16,9 @@ task ValidateNetworkpy {
       ~{if defined(batch) then ("--batch " +  '"' + batch + '"') else ""} \
       ~{if (no_transducer) then "--no-transducer" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_bad: "Use bad events as a separate state (Default: --bad)\\n(default: True)"
     batch: "Batch size (number of chunks to run in parallel)\\n(default: 200)"

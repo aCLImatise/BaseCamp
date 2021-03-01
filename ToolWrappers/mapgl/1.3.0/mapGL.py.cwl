@@ -3,7 +3,7 @@ id: mapGL.py.cwl
 inputs:
 - id: in_output
   doc: 'Output file. Default stdout. (default: stdout)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_threshold
@@ -11,18 +11,18 @@ inputs:
     \ -- equivalent to\naccepting a single-base overlap. On the other end of\nthe\
     \ spectrum, setting this value to 1 is equivalent to\nonly accepting full-length\
     \ overlaps. (default: 0.0)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --threshold
 - id: in_gap
   doc: "Ignore elements with an insertion/deletion of this or\nbigger size. Using\
     \ the default value (-1) will allow\ngaps of any size. (default: -1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --gap
 - id: in_verbose
   doc: 'Verbosity level (default: info)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbose
 - id: in_drop_split
@@ -31,25 +31,25 @@ inputs:
     \ This is the default mapping behavior for\nbnMapper. By default, mapGL.pys will\
     \ follow the\nmapping convention used by liftOver, whereas the\nlongest mapped\
     \ alignment is reported for split\nelements. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --drop_split
 - id: in_in_format
   doc: 'Input file format. (Default: BED) (default: BED)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --in_format
 - id: in_full_labels
   doc: "Attempt to predict gain/loss events on all branches of\nthe tree, not just\
     \ query/target branches. Output will\ninclude a comma-delimited list of gain/loss\
     \ events\nfrom any/all affected branches. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --full_labels
 - id: in_no_prune
   doc: "Do not attempt to disambiguate the root state to\nresolve ambiguous gain/loss\
     \ predictions. Instead,\nlabel affected features as 'ambiguous'. (default:\nFalse)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_prune
 - id: in_priority
@@ -60,7 +60,7 @@ inputs:
     \ will be interpreted as a gain. When\npriority='loss', ambiguity is resolved\
     \ by asssigning\nstate 1 to the root node, such that sequence absence\nin a descendant\
     \ node is interpreted as a sequence\nloss. Default=gain (default: gain)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --priority
 - id: in_input
@@ -103,9 +103,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: 'Output file. Default stdout. (default: stdout)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mapGL.py

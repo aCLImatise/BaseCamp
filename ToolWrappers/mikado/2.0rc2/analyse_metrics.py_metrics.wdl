@@ -8,6 +8,9 @@ task AnalyseMetricspyMetrics {
     analyse_metrics_py metrics \
       ~{ref_map}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_map: ""
   }

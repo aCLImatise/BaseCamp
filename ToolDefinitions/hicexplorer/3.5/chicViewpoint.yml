@@ -3,123 +3,123 @@ command:
 - chicViewpoint
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: RANGE
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "path to the background file computed by\nchicViewpointBackgroundModel"
-  synonyms:
-  - --backgroundModelFile
-  - -bmf
-  args: !SimpleFlagArg
-    name: BACKGROUNDMODELFILE
   optional: true
-- !Flag
-  description: "Path to the Hi-C matrices which store the captured\nHi-C data per\
-    \ sample."
   synonyms:
   - --matrices
   - -m
+  description: "Path to the Hi-C matrices which store the captured\nHi-C data per\
+    \ sample."
   args: !RepeatFlagArg
     name: MATRICES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --range
   description: "RANGE   Defines the region upstream and downstream of a\nreference\
     \ point which should be considered in the\nanalysis. Please remember to use the\
     \ same fixate range\nsetting as for the background model computation and\nthat\
     \ distances of the range larger than the fixate\nrange use the background model\
     \ of those.Format is\n--region upstream downstream"
-  synonyms:
-  - --range
   args: !SimpleFlagArg
     name: RANGE
-  optional: true
 - !Flag
-  description: "Reference point file. Needs to be in the format: 'chr\n100' for a\
-    \ single reference point or 'chr 100 200' for\na reference region and with a single\
-    \ reference point\nper line"
+  optional: true
   synonyms:
   - --referencePoints
   - -rp
+  description: "Reference point file. Needs to be in the format: 'chr\n100' for a\
+    \ single reference point or 'chr 100 200' for\na reference region and with a single\
+    \ reference point\nper line"
   args: !SimpleFlagArg
     name: REFERENCEPOINTS
-  optional: true
 - !Flag
-  description: "Number of threads (uses the python multiprocessing\nmodule)."
+  optional: true
+  synonyms:
+  - --backgroundModelFile
+  - -bmf
+  description: "path to the background file computed by\nchicViewpointBackgroundModel"
+  args: !SimpleFlagArg
+    name: BACKGROUNDMODELFILE
+- !Flag
+  optional: true
   synonyms:
   - --threads
   - -t
+  description: "Number of threads (uses the python multiprocessing\nmodule)."
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: "Average the contacts of n bins via a sliding window\napproach to smooth\
-    \ the values and be less sensitive\nfor outliers."
+  optional: true
   synonyms:
   - --averageContactBin
+  description: "Average the contacts of n bins via a sliding window\napproach to smooth\
+    \ the values and be less sensitive\nfor outliers."
   args: !SimpleFlagArg
     name: AVERAGECONTACTBIN
-  optional: true
 - !Flag
-  description: "Decimal places for all output floating numbers in the\nviewpoint files."
+  optional: true
   synonyms:
   - --decimalPlaces
+  description: "Decimal places for all output floating numbers in the\nviewpoint files."
   args: !SimpleFlagArg
     name: DECIMALPLACES
-  optional: true
 - !Flag
-  description: "Set this parameter to have a file with all file names\nof the viewpoint\
-    \ files (useful only in batch\nprocessing mode)."
+  optional: true
   synonyms:
   - --writeFileNamesToFile
   - -w
+  description: "Set this parameter to have a file with all file names\nof the viewpoint\
+    \ files (useful only in batch\nprocessing mode)."
   args: !SimpleFlagArg
     name: WRITEFILENAMESTOFILE
-  optional: true
 - !Flag
-  description: "Fixate range of background model starting at distance\nx. E.g. all\
-    \ values greater 500kb are set to the value\nof the 500kb bin."
+  optional: true
   synonyms:
   - --fixateRange
   - -fs
+  description: "Fixate range of background model starting at distance\nx. E.g. all\
+    \ values greater 500kb are set to the value\nof the 500kb bin."
   args: !SimpleFlagArg
     name: FIXATERANGE
-  optional: true
 - !Flag
-  description: "Writes a file where all viewpoints all samples are\nsorted by the\
-    \ viewpoints."
+  optional: true
   synonyms:
   - --allViewpointsList
   - -avl
+  description: "Writes a file where all viewpoints all samples are\nsorted by the\
+    \ viewpoints."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: This folder contains all created viewpoint files.
+  optional: true
   synonyms:
   - --outputFolder
   - -o
+  description: This folder contains all created viewpoint files.
   args: !SimpleFlagArg
     name: OUTPUTFOLDER
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: chicViewpoint --matrices MATRICES [MATRICES ...] --range RANGE\
   \ RANGE\n                     --referencePoints REFERENCEPOINTS --backgroundModelFile\n\
   \                     BACKGROUNDMODELFILE [--threads THREADS]\n                \
@@ -175,3 +175,4 @@ help_text: "usage: chicViewpoint --matrices MATRICES [MATRICES ...] --range RANG
   \            show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

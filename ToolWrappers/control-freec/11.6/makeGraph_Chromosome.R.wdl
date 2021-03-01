@@ -4,6 +4,9 @@ task MakeGraphChromosomeR {
   command <<<
     makeGraph_Chromosome_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

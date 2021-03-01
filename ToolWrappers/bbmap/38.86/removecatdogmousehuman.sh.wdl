@@ -8,6 +8,9 @@ task Removecatdogmousehumansh {
     removecatdogmousehuman_sh \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
   }

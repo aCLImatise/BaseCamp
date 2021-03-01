@@ -5,40 +5,40 @@ command:
 - config
 positional:
 - !Positional
-  description: "Default namespace. Show the current configuration if\nnot specified."
+  optional: false
   position: 0
   name: namespace
-  optional: false
+  description: "Default namespace. Show the current configuration if\nnot specified."
 named:
 - !Flag
-  description: 'Location. (default: external)'
+  optional: true
   synonyms:
   - --location
   - -l
+  description: 'Location. (default: external)'
   args: !ChoiceFlagArg
     choices: !!set
-      external:
-      k8s:
       gce:
-  optional: true
+      k8s:
+      external:
 - !Flag
-  description: "List of comma-separated service=namespace overrides.\n(default: none)\n"
+  optional: true
   synonyms:
   - --override
   - -o
+  description: "List of comma-separated service=namespace overrides.\n(default: none)\n"
   args: !SimpleFlagArg
     name: OVERRIDE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: hailctl dev config [-h] [--location {external,gce,k8s}]\n     \
@@ -52,3 +52,4 @@ help_text: "usage: hailctl dev config [-h] [--location {external,gce,k8s}]\n    
   \               (default: none)\n"
 generated_using:
 - --help
+docker_image:

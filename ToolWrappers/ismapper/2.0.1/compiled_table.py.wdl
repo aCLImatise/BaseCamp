@@ -26,6 +26,9 @@ task CompiledTablepy {
       ~{if defined(unconfident) then ("--unconfident " +  '"' + unconfident + '"') else ""} \
       ~{if defined(out_prefix) then ("--out_prefix " +  '"' + out_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tables: "tables to compile"
     reference: "gbk file of reference"

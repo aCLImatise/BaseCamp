@@ -10,6 +10,9 @@ task IndexBlastPairsremoveGenePairpl {
       ~{ct_at_genome_lib_dir} \
       ~{fusion_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ct_at_genome_lib_dir: ""
     fusion_name: ""

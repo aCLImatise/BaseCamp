@@ -38,6 +38,9 @@ task Cachemgr2 {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report: "report objects in cache"
     rep_report: "report status of repositories"

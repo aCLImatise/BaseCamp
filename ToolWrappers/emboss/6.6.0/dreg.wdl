@@ -4,6 +4,9 @@ task Dreg {
   command <<<
     dreg
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

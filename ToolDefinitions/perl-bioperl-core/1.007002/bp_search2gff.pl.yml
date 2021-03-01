@@ -3,142 +3,148 @@ command:
 - bp_search2gff.pl
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: clone_loc
   description: "Title : clone_loc Usage : my $l = clone_loc($feature->location);\n\
     Function: Helper function to simplify the task of cloning locations for\n--locfunc\
     \ closures.\nPresently simply implemented using Storable::dclone().\nExample :\n\
     Returns : A L<Bio::LocationI> object of the same type and with the\nsame properties\
     \ as the argument, but physically different.\nAll structured properties will be\
     \ cloned as well.\nArgs    : A L<Bio::LocationI> compliant object"
-  position: 0
-  name: clone_loc
-  optional: false
 - !Positional
+  optional: false
+  position: 1
+  name: create_loc
   description: "Title : create_loc Usage : my $l = create_loc(\"10..12\"); Function:\n\
     Helper function to simplify the task of creating locations for --locfunc\nclosures.\
     \ Creates a location from a feature- table formatted string.\nExample : Returns\
     \ : A Bio::LocationI object representing the location\ngiven as formatted string.\
     \ Args : A GenBank feature-table formatted\nstring.\n"
-  position: 1
-  name: create_loc
-  optional: false
 named:
 - !Flag
-  description: "- (optional) inputfilename, will read\neither ARGV files or from STDIN"
+  optional: true
   synonyms:
   - -i
+  description: "- (optional) inputfilename, will read\neither ARGV files or from STDIN"
   args: !SimpleFlagArg
     name: infilename
-  optional: true
 - !Flag
-  description: '- the output filename [default STDOUT]'
+  optional: true
   synonyms:
   - -o
+  description: '- the output filename [default STDOUT]'
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
-  description: "- search result format (blast, fasta,waba,axt)\n(ssearch is fasta\
-    \ format). default is blast."
+  optional: true
   synonyms:
   - -f
+  description: "- search result format (blast, fasta,waba,axt)\n(ssearch is fasta\
+    \ format). default is blast."
   args: !SimpleFlagArg
     name: format
-  optional: true
 - !Flag
-  description: "- if you want to see query or hit information\nin the GFF report"
+  optional: true
   synonyms:
-  - -t/--type
+  - -t
+  - --type
+  description: "- if you want to see query or hit information\nin the GFF report"
   args: !SimpleFlagArg
     name: seqtype
-  optional: true
 - !Flag
-  description: "- specify the source (will be algorithm name\notherwise like BLASTN)"
+  optional: true
   synonyms:
-  - -s/--source
+  - -s
+  - --source
+  description: "- specify the source (will be algorithm name\notherwise like BLASTN)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "- the method tag (primary_tag) of the features\n(default is similarity)"
+  optional: true
   synonyms:
   - --method
+  description: "- the method tag (primary_tag) of the features\n(default is similarity)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "- a string or a file that when parsed evaluates\nto a closure which\
-    \ will be passed a feature\nobject and that returns the score to be printed"
+  optional: true
   synonyms:
   - --scorefunc
+  description: "- a string or a file that when parsed evaluates\nto a closure which\
+    \ will be passed a feature\nobject and that returns the score to be printed"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --locfunc
   description: "- a string or a file that when parsed evaluates\nto a closure which\
     \ will be passed two\nfeatures, query and hit, and returns the\nlocation (Bio::LocationI\
     \ compliant) for the\nGFF3 feature created for each HSP; the closure\nmay use\
     \ the clone_loc() and create_loc()\nfunctions for convenience, see their PODs"
-  synonyms:
-  - --locfunc
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '- only print the first HSP feature for each hit'
+  optional: true
   synonyms:
   - --onehsp
+  description: '- only print the first HSP feature for each hit'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --parent
   description: "- the parent to which HSP features should refer\nif not the name of\
     \ the hit or query (depending\non --type)"
-  synonyms:
-  - -p/--parent
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --target
+  - --notarget
   description: '- whether to always add the Target tag or not'
-  synonyms:
-  - --target/--notarget
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '- generate GFF component fields (chromosome)'
+  optional: true
   synonyms:
   - --component
+  description: '- generate GFF component fields (chromosome)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --match
   description: "- generate a 'match' line which is a container\nof all the similarity\
     \ HSPs"
-  synonyms:
-  - -m/--match
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '- add ID tag in the absence of --match'
+  optional: true
   synonyms:
   - --addid
+  description: '- add ID tag in the absence of --match'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '- specify an evalue cutoff'
-  synonyms:
-  - -c/--cutoff
-  args: !EmptyFlagArg {}
   optional: true
+  synonyms:
+  - -c
+  - --cutoff
+  description: '- specify an evalue cutoff'
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: '- this help menu'
+  optional: true
   synonyms:
   - -h
+  description: '- this help menu'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: '- GFF version to use (put a 3 here to use gff 3)'
+  optional: true
   synonyms:
   - --version
+  description: '- GFF version to use (put a 3 here to use gff 3)'
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "NAME\n    bp_search2gff - turn a SearchIO report into GFF\n\nSYNOPSIS\n\
   \    Usage:\n\n      bp_search2gff [-o outputfile] [-f reportformat] [-i inputfilename]\
   \  OR file1 file2 ..\n\nDESCRIPTION\n    This script will turn a SearchIO report\
@@ -188,3 +194,4 @@ help_text: "NAME\n    bp_search2gff - turn a SearchIO report into GFF\n\nSYNOPSI
   \ Args : A GenBank feature-table formatted\n    string.\n\n"
 generated_using:
 - --help
+docker_image:

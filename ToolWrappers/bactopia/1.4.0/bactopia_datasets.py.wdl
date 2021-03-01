@@ -60,6 +60,9 @@ task Bactopiadatasetspy {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ariba: "Setup Ariba datasets for a given reference or a list of\\nreferences in a text file. (Default: card,vfdb_core)"
     species: "Download available MLST schemas and completed genomes for\\na given species or a list of species in a text file."

@@ -8,6 +8,9 @@ task Revseq {
     _revseq \
       ~{description}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     description: "General qualifiers:"
   }

@@ -2,7 +2,7 @@ version 1.0
 
 task BayesTyperToolsAddAttributes {
   input {
-    Boolean? arg_variant_format
+    Boolean? arg_variant_file
     Boolean? arg_output_prefix
     File? compress_output_files
     File? genome_file
@@ -13,15 +13,18 @@ task BayesTyperToolsAddAttributes {
   command <<<
     bayesTyperTools addAttributes \
       ~{calculated_dot} \
-      ~{if (arg_variant_format) then "-v" else ""} \
+      ~{if (arg_variant_file) then "-v" else ""} \
       ~{if (arg_output_prefix) then "-o" else ""} \
       ~{if (compress_output_files) then "-z" else ""} \
       ~{if defined(genome_file) then ("--genome-file " +  '"' + genome_file + '"') else ""} \
       ~{if defined(independent_samples_regex) then ("--independent-samples-regex " +  '"' + independent_samples_regex + '"') else ""} \
       ~{if defined(trio_sample_info) then ("--trio-sample-info " +  '"' + trio_sample_info + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    arg_variant_format: "[ --variant-file ] arg             variant file (vcf format)."
+    arg_variant_file: "[ --variant-file ] arg             variant file (vcf format)."
     arg_output_prefix: "[ --output-prefix ] arg            output prefix."
     compress_output_files: "[ --gzip-output ] [=arg(=1)] (=0)  compress output file(s) using gzip."
     genome_file: "reference genome file (fasta format) used for homopolymer length (HPL) calculation. If not specified HPL will not be"

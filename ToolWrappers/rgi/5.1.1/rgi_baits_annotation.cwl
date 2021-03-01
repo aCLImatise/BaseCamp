@@ -3,13 +3,14 @@ id: rgi_baits_annotation.cwl
 inputs:
 - id: in_index_file
   doc: "index file with baits information\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --index_file
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rgi

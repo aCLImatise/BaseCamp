@@ -14,6 +14,9 @@ task FastqTimeSlicepyInputFastq {
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     e: ""
     s: ""

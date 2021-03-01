@@ -8,7 +8,7 @@ inputs:
     \ rdfa, mdata,\nmicrodata, rdfa1.0, rdfa1.1, html,\napplication/svg+xml, application/xhtml+xml,\
     \ text/html.\nIf no format is given, it will be guessed from the\nfile name extension.\
     \ Keywords to parser can be given\nafter format like: FORMAT:(+)KW1,-KW2,KW3=VALUE."
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-format
 - id: in_output_format
@@ -17,34 +17,35 @@ inputs:
     ntriples, nt, nt11, pretty-xml, trix,\napplication/trix, application/n-quads,\
     \ nquads. Default\nformat is: 'n3'. Keywords to serializer can be given\nafter\
     \ format like: FORMAT:(+)KW1,-KW2,KW3=VALUE."
-  type: long
+  type: long?
   inputBinding:
     prefix: --output-format
 - id: in_ns
   doc: "=NAMESPACE\nRegister a namespace binding (QName prefix to a base\nURI). This\
     \ can be used more than once."
-  type: string
+  type: string?
   inputBinding:
     prefix: --ns
 - id: in_no_guess
   doc: Don't guess format based on file suffix.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-guess
 - id: in_no_out
   doc: "Don't output the resulting graph (useful for checking\nvalidity of input)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-out
 - id: in_warn
   doc: "Output warnings to stderr (by default only critical\nerrors).\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --warn
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rdfpipe

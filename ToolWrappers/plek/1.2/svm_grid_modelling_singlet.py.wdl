@@ -4,7 +4,7 @@ task SvmGridModellingSingletpy {
   input {
     Boolean? log_two_c
     Boolean? log_two_g
-    Int? nfold_cross_validation
+    Int? cross_validation_default
     File? svm_train
     Boolean? gnuplot
     File? out
@@ -23,17 +23,20 @@ task SvmGridModellingSingletpy {
       ~{dataset} \
       ~{if (log_two_c) then "-log2c" else ""} \
       ~{if (log_two_g) then "-log2g" else ""} \
-      ~{if defined(nfold_cross_validation) then ("-v " +  '"' + nfold_cross_validation + '"') else ""} \
+      ~{if defined(cross_validation_default) then ("-v " +  '"' + cross_validation_default + '"') else ""} \
       ~{if defined(svm_train) then ("-svmtrain " +  '"' + svm_train + '"') else ""} \
       ~{if (gnuplot) then "-gnuplot" else ""} \
       ~{if (out) then "-out" else ""} \
       ~{if defined(png) then ("-png " +  '"' + png + '"') else ""} \
       ~{if (resume) then "-resume" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_two_c: "{begin,end,step | \\\"null\\\"} : set the range of c (default -5,15,2)\\nbegin,end,step -- c_range = 2^{begin,...,begin+k*step,...,end}\\n\\\"null\\\"         -- do not grid with c"
     log_two_g: "{begin,end,step | \\\"null\\\"} : set the range of g (default 3,-15,-2)\\nbegin,end,step -- g_range = 2^{begin,...,begin+k*step,...,end}\\n\\\"null\\\"         -- do not grid with g"
-    nfold_cross_validation: ": n-fold cross validation (default 5)"
+    cross_validation_default: ": n-fold cross validation (default 5)"
     svm_train: ": set svm executable path and name"
     gnuplot: "{pathname | \\\"null\\\"} :\\npathname -- set gnuplot executable path and name\\n\\\"null\\\"   -- do not plot"
     out: "{pathname | \\\"null\\\"} : (default dataset.out)\\npathname -- set output file path and name\\n\\\"null\\\"   -- do not output file"

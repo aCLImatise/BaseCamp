@@ -16,6 +16,9 @@ task IgdiscoverMerge {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (no_cache) then "--no-cache" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads"
     no_cache: "Disable cache. Default: Determined by configuration"

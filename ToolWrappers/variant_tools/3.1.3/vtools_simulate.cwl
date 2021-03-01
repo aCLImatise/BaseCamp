@@ -4,24 +4,24 @@ inputs:
 - id: in_seed
   doc: "Random seed for the simulation. A random seed will be\nused by default but\
     \ a specific seed could be used to\nreproduce a previously executed simulation."
-  type: string
+  type: string?
   inputBinding:
     prefix: --seed
 - id: in_replicates
   doc: Number of consecutive replications to simulate
-  type: long
+  type: long?
   inputBinding:
     prefix: --replicates
 - id: in_jobs
   doc: "Maximum number of concurrent jobs to execute, for\nsteps of a pipeline that\
     \ allows multi-processing."
-  type: long
+  type: long?
   inputBinding:
     prefix: --jobs
 - id: in_verbosity
   doc: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
     \ to standard output (default to\n1).\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbosity
 - id: in_spec_file
@@ -44,6 +44,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vtools

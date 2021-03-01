@@ -16,6 +16,9 @@ task MmseqsConvertalis {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format_mode: "output format 0: BLAST-TAB, 1: PAIRWISE, 2: BLAST-TAB + query/db length"
     no_preload: "false           Do not preload database"

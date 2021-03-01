@@ -18,6 +18,9 @@ task Binreads {
       ~{if (bin) then "-bin" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_output_file: "Name of output file (default: stdout)"
     chrom: "chrom sizes file"

@@ -10,6 +10,9 @@ task SrfIndexHash {
       ~{srf_file} \
       ~{if (check_existing_index) then "-c" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     check_existing_index: "check an existing index, don't re-index"
     srf_file: ""

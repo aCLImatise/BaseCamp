@@ -2,7 +2,7 @@ version 1.0
 
 task PhylophlanStrainFinder {
   input {
-    File? specify_file_phylogenetic_generatedfrom_phylophlanpy_default_none
+    File? specify_file_phylogenetic_none
     File? mutation_rates
     Float? phylo_thr
     Float? mut_rate_thr
@@ -14,7 +14,7 @@ task PhylophlanStrainFinder {
   }
   command <<<
     phylophlan_strain_finder \
-      ~{if defined(specify_file_phylogenetic_generatedfrom_phylophlanpy_default_none) then ("--input " +  '"' + specify_file_phylogenetic_generatedfrom_phylophlanpy_default_none + '"') else ""} \
+      ~{if defined(specify_file_phylogenetic_none) then ("--input " +  '"' + specify_file_phylogenetic_none + '"') else ""} \
       ~{if defined(mutation_rates) then ("--mutation_rates " +  '"' + mutation_rates + '"') else ""} \
       ~{if defined(phylo_thr) then ("--phylo_thr " +  '"' + phylo_thr + '"') else ""} \
       ~{if defined(mut_rate_thr) then ("--mutrate_thr " +  '"' + mut_rate_thr + '"') else ""} \
@@ -24,8 +24,11 @@ task PhylophlanStrainFinder {
       ~{if (specify_separator_use) then "-s" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    specify_file_phylogenetic_generatedfrom_phylophlanpy_default_none: "Specify the file of the phylogenetic tree as generated\\nfrom phylophlan.py (default: None)"
+    specify_file_phylogenetic_none: "Specify the file of the phylogenetic tree as generated\\nfrom phylophlan.py (default: None)"
     mutation_rates: "Specify the file of the mutation rates as generated\\nfrom phylophlan.py (default: None)"
     phylo_thr: "Maximum phylogenetic distance threshold for every pair\\nof nodes in the same subtree (inclusive) (default:\\n0.05)"
     mut_rate_thr: "Maximum mutation rate ratio for every pair of nodes in\\nthe same subtree (inclusive) (default: 0.05)"

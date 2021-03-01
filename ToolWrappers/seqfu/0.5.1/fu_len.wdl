@@ -4,6 +4,9 @@ task Fulen {
   command <<<
     fu_len
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

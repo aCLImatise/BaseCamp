@@ -8,6 +8,9 @@ task Skivi {
     skivi \
       ~{image_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     image_file: ""
   }

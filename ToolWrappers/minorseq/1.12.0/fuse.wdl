@@ -16,6 +16,9 @@ task Fuse {
       ~{if (emit_tool_contract) then "--emit-tool-contract" else ""} \
       ~{if (resolved_tool_contract) then "--resolved-tool-contract" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_coverage: "Minimal coverage to call a position. [50]"
     emit_tool_contract: "Emit tool contract."

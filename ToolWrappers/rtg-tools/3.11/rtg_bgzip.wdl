@@ -16,6 +16,9 @@ task RtgBgzip {
       ~{if (force) then "--force" else ""} \
       ~{if (no_terminate) then "--no-terminate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compression_level: "the compression level to use, between 1 (least\\nbut fast) and 9 (highest but slow) (Default is 5)"
     decompress: "decompress"

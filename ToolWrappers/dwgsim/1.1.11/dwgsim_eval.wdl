@@ -3,11 +3,11 @@ version 1.0
 task DwgsimEval {
   input {
     Boolean? int_split_mapping
-    Boolean? alignments_bwa_only
+    Boolean? alignments_bwa_solid
     Boolean? color_space_alignments
     Boolean? int_divide_score
     Boolean? gap_
-    Boolean? consecutive_alignments_same
+    Boolean? consecutive_alignments_end
     Boolean? int_number_raw
     Boolean? int_consider_this
     Boolean? input_contains_end
@@ -23,11 +23,11 @@ task DwgsimEval {
     dwgsim_eval \
       ~{in_dots_am_slash_in_dot_bam} \
       ~{if (int_split_mapping) then "-a" else ""} \
-      ~{if (alignments_bwa_only) then "-b" else ""} \
+      ~{if (alignments_bwa_solid) then "-b" else ""} \
       ~{if (color_space_alignments) then "-c" else ""} \
       ~{if (int_divide_score) then "-d" else ""} \
       ~{if (gap_) then "-g" else ""} \
-      ~{if (consecutive_alignments_same) then "-m" else ""} \
+      ~{if (consecutive_alignments_end) then "-m" else ""} \
       ~{if (int_number_raw) then "-n" else ""} \
       ~{if (int_consider_this) then "-q" else ""} \
       ~{if (input_contains_end) then "-z" else ""} \
@@ -38,13 +38,16 @@ task DwgsimEval {
       ~{if (consider_only_alignments) then "-i" else ""} \
       ~{if (string_read_prefix) then "-P" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     int_split_mapping: "INT     split by [0]:\\n0: by mapping quality\\n1: by alignment score\\n2: by suboptimal alignment score\\n3: by alignment score - suboptimal alignment score"
-    alignments_bwa_only: "alignments are from BWA (SOLiD only) [False]"
+    alignments_bwa_solid: "alignments are from BWA (SOLiD only) [False]"
     color_space_alignments: "color space alignments [False]"
     int_divide_score: "INT     divide quality/alignment score by this factor [1]"
     gap_: "gap \\\"wiggle\\\" [5]"
-    consecutive_alignments_same: "consecutive alignments with the same name (and end for multi-ends) should be treated as multi-mapped reads [False]"
+    consecutive_alignments_end: "consecutive alignments with the same name (and end for multi-ends) should be treated as multi-mapped reads [False]"
     int_number_raw: "INT     number of raw input paired-end reads (otherwise, inferred from all SAM records present) [0]"
     int_consider_this: "INT     consider only alignments with this mapping quality or greater [0]"
     input_contains_end: "input contains only single end reads [False]"

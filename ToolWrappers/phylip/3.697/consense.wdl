@@ -4,6 +4,9 @@ task Consense {
   command <<<
     consense
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

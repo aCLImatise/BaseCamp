@@ -16,6 +16,9 @@ task Getpub {
       ~{if (output_data_default) then "-o" else ""} \
       ~{if (output_data_binary) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_binary_data: "Input binary data [Data In]\\ndefault = medline.val\\nData Type = Pub-set"
     medline_uid_find: "Medline UID to find [Integer]\\ndefault = 88055872"

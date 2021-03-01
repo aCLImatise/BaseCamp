@@ -12,6 +12,9 @@ task Fumagencodegtftobed {
       ~{if defined(output_filename_stdout) then ("--output " +  '"' + output_filename_stdout + '"') else ""} \
       ~{if (v) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_filename_stdout: "output filename; '-' for stdout"
     v: ""

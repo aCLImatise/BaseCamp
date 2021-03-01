@@ -1,0 +1,284 @@
+!Command
+command:
+- htseq-count-barcodes
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: samfilename
+  description: "Path to the SAM/BAM file containing the barcoded,\nmapped reads. If\
+    \ '-' is selected, read from standard\ninput"
+- !Positional
+  optional: false
+  position: 1
+  name: featuresfilename
+  description: Path to the GTF file containing the features
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
+  description: "Type of <alignment_file> data. DEPRECATED: file format\nis detected\
+    \ automatically. This option is ignored."
+  args: !ChoiceFlagArg
+    choices: !!set
+      auto:
+      sam:
+      bam:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --order
+  description: "'pos' or 'name'. Sorting order of <alignment_file>\n(default: name).\
+    \ Paired-end sequencing data must be\nsorted either by position or by read name,\
+    \ and the\nsorting order must be specified. Ignored for single-\nend data."
+  args: !ChoiceFlagArg
+    choices: !!set
+      pos:
+      name:
+- !Flag
+  optional: true
+  synonyms:
+  - --max-reads-in-buffer
+  description: "When <alignment_file> is paired end sorted by\nposition, allow only\
+    \ so many reads to stay in memory\nuntil the mates are found (raising this number\
+    \ will\nuse more memory). Has no effect for single end or\npaired end sorted by\
+    \ name"
+  args: !SimpleFlagArg
+    name: MAX_BUFFER_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --stranded
+  description: "Whether the data is from a strand-specific assay.\nSpecify 'yes',\
+    \ 'no', or 'reverse' (default: yes).\n'reverse' means 'yes' with reversed strand\n\
+    interpretation"
+  args: !ChoiceFlagArg
+    choices: !!set
+      no:
+      reverse:
+      yes:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --minaqual
+  description: "Skip all reads with MAPQ alignment quality lower than\nthe given minimum\
+    \ value (default: 10). MAPQ is the 5th\ncolumn of a SAM/BAM file and its usage\
+    \ depends on the\nsoftware used to map the reads."
+  args: !SimpleFlagArg
+    name: MINAQUAL
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --type
+  description: "Feature type (3rd column in GTF file) to be used, all\nfeatures of\
+    \ other type are ignored (default, suitable\nfor Ensembl GTF files: exon)"
+  args: !SimpleFlagArg
+    name: FEATURETYPE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --idattr
+  description: "GTF attribute to be used as feature ID (default,\nsuitable for Ensembl\
+    \ GTF files: gene_id)"
+  args: !SimpleFlagArg
+    name: IDATTR
+- !Flag
+  optional: true
+  synonyms:
+  - --additional-attr
+  description: "Additional feature attributes (default: none, suitable\nfor Ensembl\
+    \ GTF files: gene_name). Use multiple times\nfor each different attribute"
+  args: !SimpleFlagArg
+    name: ADDITIONAL_ATTR
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mode
+  description: "Mode to handle reads overlapping more than one feature\n(choices:\
+    \ union, intersection-strict, intersection-\nnonempty; default: union)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      intersection-nonempty:
+      intersection-strict:
+      union:
+- !Flag
+  optional: true
+  synonyms:
+  - --nonunique
+  description: "Whether to score reads that are not uniquely aligned\nor ambiguously\
+    \ assigned to features"
+  args: !ChoiceFlagArg
+    choices: !!set
+      all:
+      none:
+- !Flag
+  optional: true
+  synonyms:
+  - --secondary-alignments
+  description: Whether to score secondary alignments (0x100 flag)
+  args: !ChoiceFlagArg
+    choices: !!set
+      score:
+      ignore:
+- !Flag
+  optional: true
+  synonyms:
+  - --supplementary-alignments
+  description: Whether to score supplementary alignments (0x800 flag)
+  args: !ChoiceFlagArg
+    choices: !!set
+      score:
+      ignore:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --samout
+  description: "Write out all SAM alignment records into aSAM/BAM\nfile, annotating\
+    \ each line with its feature assignment\n(as an optional field with tag 'XF').\
+    \ See the -p\noption to use BAM instead of SAM."
+  args: !SimpleFlagArg
+    name: SAMOUT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --samout-format
+  description: Format to use with the --samout option.
+  args: !ChoiceFlagArg
+    choices: !!set
+      BAM:
+      SAM:
+      sam:
+      bam:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --delimiter
+  description: 'Column delimiter in output (default: TAB).'
+  args: !SimpleFlagArg
+    name: OUTPUT_DELIMITER
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --counts_output
+  description: "TSV/CSV filename to output the counts to instead of\nstdout."
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --cell-barcode
+  description: "BAM tag used for the cell barcode (default compatible\nwith 10X Genomics\
+    \ Chromium is CB)."
+  args: !SimpleFlagArg
+    name: CB_TAG
+- !Flag
+  optional: true
+  synonyms:
+  - --UMI
+  description: "BAM tag used for the unique molecular identifier, also\nknown as molecular\
+    \ barcode (default compatible with\n10X Genomics Chromium is UB)."
+  args: !SimpleFlagArg
+    name: UB_TAG
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: Suppress progress report
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show software version and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: htseq-count-barcodes [options] alignment_file gff_file\n\nThis\
+  \ script takes one alignment file in SAM/BAM format and a feature file in\nGFF format\
+  \ and calculates for each feature the number of reads mapping to it,\naccounting\
+  \ for barcodes. See http://htseq.readthedocs.io/en/master/count.html\nfor details.\n\
+  \npositional arguments:\n  samfilename           Path to the SAM/BAM file containing\
+  \ the barcoded,\n                        mapped reads. If '-' is selected, read\
+  \ from standard\n                        input\n  featuresfilename      Path to\
+  \ the GTF file containing the features\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n  -f {sam,bam,auto}, --format {sam,bam,auto}\n\
+  \                        Type of <alignment_file> data. DEPRECATED: file format\n\
+  \                        is detected automatically. This option is ignored.\n  -r\
+  \ {pos,name}, --order {pos,name}\n                        'pos' or 'name'. Sorting\
+  \ order of <alignment_file>\n                        (default: name). Paired-end\
+  \ sequencing data must be\n                        sorted either by position or\
+  \ by read name, and the\n                        sorting order must be specified.\
+  \ Ignored for single-\n                        end data.\n  --max-reads-in-buffer\
+  \ MAX_BUFFER_SIZE\n                        When <alignment_file> is paired end sorted\
+  \ by\n                        position, allow only so many reads to stay in memory\n\
+  \                        until the mates are found (raising this number will\n \
+  \                       use more memory). Has no effect for single end or\n    \
+  \                    paired end sorted by name\n  -s {yes,no,reverse}, --stranded\
+  \ {yes,no,reverse}\n                        Whether the data is from a strand-specific\
+  \ assay.\n                        Specify 'yes', 'no', or 'reverse' (default: yes).\n\
+  \                        'reverse' means 'yes' with reversed strand\n          \
+  \              interpretation\n  -a MINAQUAL, --minaqual MINAQUAL\n            \
+  \            Skip all reads with MAPQ alignment quality lower than\n           \
+  \             the given minimum value (default: 10). MAPQ is the 5th\n         \
+  \               column of a SAM/BAM file and its usage depends on the\n        \
+  \                software used to map the reads.\n  -t FEATURETYPE, --type FEATURETYPE\n\
+  \                        Feature type (3rd column in GTF file) to be used, all\n\
+  \                        features of other type are ignored (default, suitable\n\
+  \                        for Ensembl GTF files: exon)\n  -i IDATTR, --idattr IDATTR\n\
+  \                        GTF attribute to be used as feature ID (default,\n    \
+  \                    suitable for Ensembl GTF files: gene_id)\n  --additional-attr\
+  \ ADDITIONAL_ATTR\n                        Additional feature attributes (default:\
+  \ none, suitable\n                        for Ensembl GTF files: gene_name). Use\
+  \ multiple times\n                        for each different attribute\n  -m {union,intersection-strict,intersection-nonempty},\
+  \ --mode {union,intersection-strict,intersection-nonempty}\n                   \
+  \     Mode to handle reads overlapping more than one feature\n                 \
+  \       (choices: union, intersection-strict, intersection-\n                  \
+  \      nonempty; default: union)\n  --nonunique {none,all}\n                   \
+  \     Whether to score reads that are not uniquely aligned\n                   \
+  \     or ambiguously assigned to features\n  --secondary-alignments {score,ignore}\n\
+  \                        Whether to score secondary alignments (0x100 flag)\n  --supplementary-alignments\
+  \ {score,ignore}\n                        Whether to score supplementary alignments\
+  \ (0x800 flag)\n  -o SAMOUT, --samout SAMOUT\n                        Write out\
+  \ all SAM alignment records into aSAM/BAM\n                        file, annotating\
+  \ each line with its feature assignment\n                        (as an optional\
+  \ field with tag 'XF'). See the -p\n                        option to use BAM instead\
+  \ of SAM.\n  -p {SAM,BAM,sam,bam}, --samout-format {SAM,BAM,sam,bam}\n         \
+  \               Format to use with the --samout option.\n  -d OUTPUT_DELIMITER,\
+  \ --delimiter OUTPUT_DELIMITER\n                        Column delimiter in output\
+  \ (default: TAB).\n  -c OUTPUT_FILENAME, --counts_output OUTPUT_FILENAME\n     \
+  \                   TSV/CSV filename to output the counts to instead of\n      \
+  \                  stdout.\n  --cell-barcode CB_TAG\n                        BAM\
+  \ tag used for the cell barcode (default compatible\n                        with\
+  \ 10X Genomics Chromium is CB).\n  --UMI UB_TAG          BAM tag used for the unique\
+  \ molecular identifier, also\n                        known as molecular barcode\
+  \ (default compatible with\n                        10X Genomics Chromium is UB).\n\
+  \  -q, --quiet           Suppress progress report\n  --version             Show\
+  \ software version and exit\n\nWritten by Simon Anders (sanders@fs.tum.de), European\
+  \ Molecular Biology\nLaboratory (EMBL) and Fabio Zanini (fabio.zanini@unsw.edu.au),\
+  \ UNSW Sydney.\n(c) 2010-2020. Released under the terms of the GNU General Public\
+  \ License v3.\nPart of the 'HTSeq' framework, version 0.13.5.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/htseq:0.13.5--py37h0498b6d_0

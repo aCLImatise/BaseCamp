@@ -8,6 +8,9 @@ task ScfInfo {
     scf_info \
       ~{scf_filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     scf_filename: ""
   }

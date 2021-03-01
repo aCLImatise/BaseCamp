@@ -4,39 +4,39 @@ inputs:
 - id: in_n_permutations
   doc: "Number of permutations to execute the permutation test\nfor sample coesion\
     \ score."
-  type: long
+  type: long?
   inputBinding:
     prefix: --n_permutations
 - id: in_seed
   doc: "Seed to initialize the pseudo-random generator used to\nperform the permutation\
     \ test."
-  type: string
+  type: string?
   inputBinding:
     prefix: --seed
 - id: in_rec_lust
   doc: "If this option is specified, only the clustering part\nis executed with the\
     \ specified number of clusters,\nunless --reinit option is specified (see below)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --reclust
 - id: in_reinit
   doc: This option has effect only if combined with the
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reinit
 - id: in_clustering
   doc: It allows to recompute the entire
-  type: string
+  type: string?
   inputBinding:
     prefix: --clustering
 - id: in_verbose
   doc: Verbose execution.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_n_jobs
   doc: Number of parallel jobs to speed up pvalue computation
-  type: long
+  type: long?
   inputBinding:
     prefix: --n_jobs
 - id: in_seg_copy
@@ -64,6 +64,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - multi_sample_post_analysis

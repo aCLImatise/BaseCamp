@@ -3,82 +3,86 @@ command:
 - agat_sp_fix_fusion.pl
 positional:
 - !Positional
-  description: 'Description:'
+  optional: false
   position: 0
   name: agat_sp_fix_fusion.pl
-  optional: false
+  description: 'Description:'
 named:
 - !Flag
-  description: Input GTF/GFF file.
+  optional: true
   synonyms:
   - -gff
+  description: Input GTF/GFF file.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Input fasta file.
+  optional: true
   synonyms:
   - -fa
   - --fasta
+  description: Input fasta file.
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: Codon table to use. [default 1]
+  optional: true
   synonyms:
   - --ct
   - --codon
   - --table
+  description: Codon table to use. [default 1]
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: "This is the minimum length of new protein predicted that will be\n\
-    taken in account. By default this value is 100 AA."
+  optional: true
   synonyms:
   - -t
   - --threshold
+  description: "This is the minimum length of new protein predicted that will be\n\
+    taken in account. By default this value is 100 AA."
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --stranded
   description: "By default we predict protein in UTR3 and UTR5 and in both\ndirection.\
     \ The fusion assumed can be between gene in same\ndirection and in opposite direction.\
     \ If RNAseq data used during\nthe annotation was stranded, only fusion of close\
     \ genes oriented\nin same direction are expected. In that case this option should\n\
     be activated. When activated, we will try to predict protein in\nUTR3 and UTR5\
     \ only in the same orientation than the gene\ninvestigated."
-  synonyms:
-  - -s
-  - --stranded
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: Output verbose information.
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: Output verbose information.
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: ", --output , --out or --outfile\nOutput GFF file. If no output file\
-    \ is specified, the output will\nbe written to STDOUT."
+  optional: true
   synonyms:
   - -o
-  args: !EmptyFlagArg {}
-  optional: true
+  - --output
+  - --out
+  - --outfile
+  description: "Output GFF file. If no output file is specified, the output will\n\
+    be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Display this helpful text.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Display this helpful text.
   args: !SimpleFlagArg
     name: or
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\n ------------------------------------------------------------------------------\n\
@@ -120,3 +124,4 @@ help_text: "\n -----------------------------------------------------------------
   \n"
 generated_using:
 - --help
+docker_image:

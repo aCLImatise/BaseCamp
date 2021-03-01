@@ -40,6 +40,9 @@ task Graphtyper {
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""} \
       ~{if (v_verbose) then "--vverbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log: "or -lvalue\\nSet path to log file."
     verbose: "Set to output verbose logging."

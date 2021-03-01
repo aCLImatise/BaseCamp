@@ -40,6 +40,9 @@ task Barriers {
       ~{if defined(path) then ("--path " +  '"' + path + '"') else ""} \
       ~{if defined(map_struc) then ("--mapstruc " +  '"' + map_struc + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     full_help: "Print help, including hidden options, and exit"

@@ -3,12 +3,12 @@ id: chartex.cwl
 inputs:
 - id: in_man
   doc: "Prints the manual page and exits.\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --man
 - id: in_chart_name
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --chartname
 - id: in_file_dot_xls
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - chartex

@@ -1,19 +1,19 @@
 class: CommandLineTool
 id: falconc_pbcromwell_rm_las.cwl
 inputs:
-- id: in__command_string
+- id: in_command_string_command
   doc: =, --command=  string  "find . -name \'*.las\'"  set command
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in__verbose_verbose
   doc: =, --verbose=  int     1                         set verbose
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_dry_run
   doc: bool    false                     set dry_run
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dry-run
 - id: in_help
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - falconc

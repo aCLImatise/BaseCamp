@@ -12,6 +12,9 @@ task SgaSubgraph {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(size) then ("--size " +  '"' + size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     out: "write the subgraph to FILE (default: subgraph.asqg.gz)"

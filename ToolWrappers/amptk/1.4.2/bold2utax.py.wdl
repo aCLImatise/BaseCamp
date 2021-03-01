@@ -16,6 +16,9 @@ task Bold2utaxpy {
       ~{if (drop_suppressed) then "--drop_suppressed" else ""} \
       ~{if (require_genbank) then "--require_genbank" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bold_data_dump: "Bold data dump TSV format (default: None)"
     out: "Basename for UTAX formated FASTA output (default:\\nNone)"

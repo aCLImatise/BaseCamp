@@ -18,6 +18,9 @@ task Simulatepy {
       ~{if defined(ins) then ("--ins " +  '"' + ins + '"') else ""} \
       ~{if defined(copy) then ("--copy " +  '"' + copy + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dele: ""
     ins: ""

@@ -42,6 +42,9 @@ task HLAProfilerplCreateProfiles {
       ~{if (seed) then "-seed" else ""} \
       ~{if (threads) then "-threads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "|r    location of HLA reference fasta file.(required)"
     output_dir: "|o           location of output directory(default:\\\".\\\")"

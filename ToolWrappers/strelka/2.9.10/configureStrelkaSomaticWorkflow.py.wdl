@@ -28,6 +28,9 @@ task ConfigureStrelkaSomaticWorkflowpy {
       ~{if defined(call_regions) then ("--callRegions " +  '"' + call_regions + '"') else ""} \
       ~{if defined(run_dir) then ("--runDir " +  '"' + run_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "provide a configuration file to override defaults in\\nglobal config file (/usr/local/share/strelka-2.9.10-0/\\nbin/configureStrelkaSomaticWorkflow.py.ini)"
     all_help: "show all extended/hidden options"

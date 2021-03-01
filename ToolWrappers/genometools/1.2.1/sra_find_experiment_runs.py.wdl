@@ -16,6 +16,9 @@ task SraFindExperimentRunspy {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     experiment_file: "File with SRA experiment IDs (starting with \\\"SRX\\\")."
     output_file: "The output file."

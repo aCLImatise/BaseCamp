@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Boolean
+
+Ncbi_Acc_Download_V0_1_0 = CommandToolBuilder(tool="ncbi_acc_download", base_command=["ncbi-acc-download"], inputs=[ToolInput(tag="in_molecule", input_type=String(optional=True), prefix="--molecule", doc=InputDocumentation(doc="Molecule type to download. Default: nucleotide")), ToolInput(tag="in_extended_validation", input_type=String(optional=True), prefix="--extended-validation", doc=InputDocumentation(doc="Perform extended validation. Possible options are\n'none' to skip validation, 'loads' to check if the\nsequence file loads in Biopython, or 'all' to run all\nchecks. Default: none")), ToolInput(tag="in_format", input_type=String(optional=True), prefix="--format", doc=InputDocumentation(doc="File format to download nucleotide sequences in.\nDefault: genbank")), ToolInput(tag="in_out", input_type=File(optional=True), prefix="--out", doc=InputDocumentation(doc="Single filename to use for the combined output.")), ToolInput(tag="in_prefix", input_type=File(optional=True), prefix="--prefix", doc=InputDocumentation(doc="Filename prefix to use for output files instead of\nusing the NCBI ID.")), ToolInput(tag="in_recursive", input_type=Boolean(optional=True), prefix="--recursive", doc=InputDocumentation(doc="Recursively get all entries of a WGS entry.")), ToolInput(tag="in_url", input_type=Boolean(optional=True), prefix="--url", doc=InputDocumentation(doc="Instead of downloading the sequences, just print the\nURLs to stdout.")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Print a progress indicator.")), ToolInput(tag="in_ncbi_accession", input_type=String(), position=0, doc=InputDocumentation(doc="optional arguments:"))], outputs=[ToolOutput(tag="out_out", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out", type_hint=File()), doc=OutputDocumentation(doc="Single filename to use for the combined output.")), ToolOutput(tag="out_prefix", output_type=File(optional=True), selector=InputSelector(input_to_select="in_prefix", type_hint=File()), doc=OutputDocumentation(doc="Filename prefix to use for output files instead of\nusing the NCBI ID."))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Ncbi_Acc_Download_V0_1_0().translate("wdl", allow_empty_container=True)
+

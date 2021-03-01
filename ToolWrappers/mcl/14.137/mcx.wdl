@@ -10,6 +10,9 @@ task Mcx {
       ~{mode} \
       ~{files}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: ""
     files: ""

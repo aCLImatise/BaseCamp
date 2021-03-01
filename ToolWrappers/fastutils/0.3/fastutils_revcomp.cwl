@@ -3,32 +3,32 @@ id: fastutils_revcomp.cwl
 inputs:
 - id: in_in
   doc: input file in fasta/q format [stdin]
-  type: File
+  type: File?
   inputBinding:
     prefix: --in
 - id: in_out
   doc: output file [stdout]
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_linewidth
   doc: size of lines in fasta output. Use 0 for no wrapping [0]
-  type: long
+  type: long?
   inputBinding:
     prefix: --lineWidth
 - id: in_fast_q
   doc: output reads in fastq format if possible
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fastq
 - id: in_comment
   doc: print comments in headers
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --comment
 - id: in_lex
   doc: output lexicographically smaller sequence
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --lex
 outputs:
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: output file [stdout]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fastutils

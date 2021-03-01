@@ -32,6 +32,9 @@ task Callstate {
       ~{if defined(low_mapq_frac) then ("--low-mapq-frac " +  '"' + low_mapq_frac + '"') else ""} \
       ~{if defined(flag) then ("--flag " +  '"' + flag + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of BAM decompression threads [default: 4]"
     output_bed_file: "The output BED file"

@@ -1,0 +1,80 @@
+!Command
+command:
+- spades-kmercount
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: K-mer length
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dataset
+  description: Dataset description (in YAML), input files ignored
+  args: !SimpleFlagArg
+    name: dir
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: '# of threads to use'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --workdir
+  description: Working directory to use
+  args: !SimpleFlagArg
+    name: dir
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bufsize
+  description: Sorting buffer size, per thread
+  args: !SimpleFlagArg
+    name: value
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show help
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "DESCRIPTION\nSPAdes k-mer counting engine\n\nOutput: <output_dir>/final_kmers\
+  \ - unordered set of kmers in binary format. Kmers from both forward and reverse-complementary\
+  \ reads are taken into account.\n\nOutput format: All kmers are written sequentially\
+  \ without any separators. Each kmer takes the same number of bits. One kmer of length\
+  \ K takes 2*K bits. Kmers are aligned by 64 bits. For example, one kmer with length=21\
+  \ takes 8 bytes, with length=33 takes 16 bytes, and with length=55 takes 16 bytes.\
+  \ Each nucleotide is coded with 2 bits: 00 - A, 01 - C, 10 - G, 11 - T.\n\nExample:\
+  \ For kmer: AGCTCT\n\tMemory: 6 bits * 2 = 12, 64 bits (8 bytes)\n\tLet’s describe\
+  \ bytes: \n\tdata[0] = AGCT -> 11 01 10 00 -> 0xd8\n\tdata[1] = CT00 -> 00 00 11\
+  \ 01 -> 0x0d\n\tdata[2] = 0000 -> 00 00 00 00 -> 0x00\n\tdata[3] = 0000 -> 00 00\
+  \ 00 00 -> 0x00\n\tdata[4] = 0000 -> 00 00 00 00 -> 0x00\n\tdata[5] = 0000 -> 00\
+  \ 00 00 00 -> 0x00\n\tdata[6] = 0000 -> 00 00 00 00 -> 0x00\n\tdata[7] = 0000 ->\
+  \ 00 00 00 00 -> 0x00\n\n\nSYNOPSIS\n        spades-kmercount [-k <value>] [-d <dir>]\
+  \ [-t <value>] [-w <dir>] [-b <value>] [-h] [<input files>]...\n\nOPTIONS\n    \
+  \    -k, --kmer <value>\n                    K-mer length\n\n        -d, --dataset\
+  \ <dir>\n                    Dataset description (in YAML), input files ignored\n\
+  \n        -t, --threads <value>\n                    # of threads to use\n\n   \
+  \     -w, --workdir <dir>\n                    Working directory to use\n\n    \
+  \    -b, --bufsize <value>\n                    Sorting buffer size, per thread\n\
+  \n        -h, --help  Show help\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pathracer:3.15.0.dev--h2d02072_0

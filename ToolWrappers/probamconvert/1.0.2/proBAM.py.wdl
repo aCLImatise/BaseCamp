@@ -2,7 +2,7 @@ version 1.0
 
 task ProBAMpy {
   input {
-    File? file
+    File? location_psm_processed
     File? name
     String? mismatches
     String? database
@@ -20,7 +20,7 @@ task ProBAMpy {
   }
   command <<<
     proBAM_py \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(location_psm_processed) then ("--file " +  '"' + location_psm_processed + '"') else ""} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if defined(mismatches) then ("--mismatches " +  '"' + mismatches + '"') else ""} \
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
@@ -36,8 +36,11 @@ task ProBAMpy {
       ~{if defined(comments) then ("--comments " +  '"' + comments + '"') else ""} \
       ~{if defined(validated_only) then ("--validated_only " +  '"' + validated_only + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: "location of the psm file to be processed"
+    location_psm_processed: "location of the psm file to be processed"
     name: "name of the project (will be determine how the output\\nfile is called"
     mismatches: "numpber of mismatches allowed during mapping"
     database: "Which database has to be used (currently only ENSEMBL\\nis available"

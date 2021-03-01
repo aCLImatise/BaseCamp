@@ -16,6 +16,9 @@ task SingularityPluginUninstall {
       ~{plugin} \
       ~{uninstall}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

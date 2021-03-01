@@ -14,6 +14,9 @@ task RgttoolspyCircRNA {
       ~{if defined(output_bed_file) then ("-o " +  '"' + output_bed_file + '"') else ""} \
       ~{if defined(output_bed_file_circular) then ("-c " +  '"' + output_bed_file_circular + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_chimeric_junction: "Input chimeric junction file from STAR"
     input_bed_file: "Input BED file of tcons"

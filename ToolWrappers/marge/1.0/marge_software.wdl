@@ -40,6 +40,9 @@ task MargeSoftware {
       ~{or} \
       ~{mouse_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     marge: ""
     is: ""

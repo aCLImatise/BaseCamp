@@ -42,6 +42,9 @@ task ContigtaxAssign {
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if defined(chunksize) then ("--chunksize " +  '"' + chunksize + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "Type of file format for diamond results. blast=blast\\ntabular output, 'contigtax'=blast tabular output with\\ntaxid in 12th column"
     taxid_map: "Provide custom protein to taxid mapfile."

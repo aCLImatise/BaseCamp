@@ -1,0 +1,140 @@
+!Command
+command:
+- CensusSeq
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: BAM.
+  description: This file can be used as the VCF input file on subsequent runs of the
+    same data set
+- !Positional
+  optional: false
+  position: 0
+  name: null.
+  description: SNP_COVERAGE_HISTOGRAM=File   Output a coverage report for the number
+    of reads on each SNP.  Bins SNPs by the number of
+- !Positional
+  optional: false
+  position: 1
+  name: reads.
+  description: 'Default value: null. '
+- !Positional
+  optional: false
+  position: 0
+  name: chromosomes.
+  description: "Default value: [X, Y, MT]. This option can be set to 'null' to clear\
+    \ the"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: (default 4g)
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: final command line before executing
+  args: !SimpleFlagArg
+    name: echo
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: /usr/local/bin/CensusSeq [-m <jvm_heap_size>] [-v] program args...\n\
+  \       -m <jvm_heap_size> (default 4g)\n       -v echo final command line before\
+  \ executing\n\nProgram options:\nUSAGE: CensusSeq [options]\n\nGiven a VCF file,\
+  \ a list of donors from that file, and BAM file, find the relative fraction of each\
+  \ donor contained in\nthe sequencing experiment.  Handles both single and paired\
+  \ end reads. By default this filters reads with the PCR\nDuplicate flag.\nVersion:\
+  \ 2.4.0(3d2b3d8_1600201514)\n\n\nOptions:\n\n--help\n-h                        \
+  \    Displays options specific to this tool.\n\n--stdhelp\n-H                  \
+  \          Displays options specific to this tool AND options common to all Picard\
+  \ command line\n                              tools.\n\n--version              \
+  \       Displays program version.\n\nINPUT_BAM=File                The input BAM.\
+  \  Required. \n\nINPUT_VCF=File                The input VCF.  Required. \n\nSAMPLE_FILE=File\
+  \              A file containing a list of samples to filter the VCF by.  Has 1\
+  \ column, 1 entry per row. \n                              Each entry is a single\
+  \ sample name from the VCF.  If this list is not specified, then all\n         \
+  \                     donors in the VCF are used.  Default value: null. \n\nOUTPUT=File\n\
+  O=File                        The output file containing each donor in the input\
+  \ SAMPLE_FILE and the relative fraction\n                              of the donor.\
+  \  When run in private SNP mode, an additional column REP_IRVs is emitted. \n  \
+  \                            This is the fraction of the identifying rare alleles\
+  \ - alleles that private to the donor\n                              and should\
+  \ only be observed when the donor is present.  Required. \n\nVCF_OUTPUT=File   \
+  \            Output a version of the VCF containing only the variants that have\
+  \ coverage in the input\n                              BAM.  This file can be used\
+  \ as the VCF input file on subsequent runs of the same data set\n              \
+  \                to greatly speed up the run, if the same BAM is being analyzed\
+  \ with different conditions. \n                              Default value: null.\
+  \ \n\nSNP_COVERAGE_HISTOGRAM=File   Output a coverage report for the number of reads\
+  \ on each SNP.  Bins SNPs by the number of\n                              reads.\
+  \  Default value: null. \n\nGQ_THRESHOLD=Integer          The minimum genotype quality\
+  \ for a variant.  Default value: 30. This option can be set to\n               \
+  \               'null' to clear the default value. \n\nFRACTION_SAMPLES_PASSING=Double\n\
+  \                              At least  samples must have genotype scores >= GQ_THRESHOLD\
+  \ for the variant in the VCF to\n                              be included in the\
+  \ analysis.  Default value: 0.9. This option can be set to 'null' to\n         \
+  \                     clear the default value. \n\nMIN_NUM_VARIANT_SAMPLES=Integer\n\
+  \                              At least this many samples must have the non-common\
+  \ genotype.  Default value: 2. This\n                              option can be\
+  \ set to 'null' to clear the default value. \n\nIGNORED_CHROMOSOMES=String    A\
+  \ list of chromosomes to omit from the analysis.  The default is to omit the sex\n\
+  \                              chromosomes.  Default value: [X, Y, MT]. This option\
+  \ can be set to 'null' to clear the\n                              default value.\
+  \ This option may be specified 0 or more times. This option can be set to\n    \
+  \                          'null' to clear the default list. \n\nREAD_MQ=Integer\
+  \               The map quality of the read to be included.  Default value: 10.\
+  \ This option can be set to\n                              'null' to clear the default\
+  \ value. \n\nMIN_BASE_QUALITY=Integer      The minimum base quality of the SNP base\
+  \ on the read  Default value: 10. This option can\n                            \
+  \  be set to 'null' to clear the default value. \n\nKNOWN_DONOR_TAG=String     \
+  \   This option is intended to make evaluation of the algorithm easier when supplied\
+  \ proper\n                              training data.  When tagging reads from\
+  \ known donors with the KNOWN_DONOR_TAG and\n                              synthetically\
+  \ mixing them to evalutate the algorithm, this counts the number of reads\n    \
+  \                          observed with the tag per donor.  Non-informative reads\
+  \ (low map quality, PCR duplicates)\n                              are not counted.\
+  \ Reads are only counted on contigs for which there is at least one SNP\n      \
+  \                        present in the VCF (minus IGNORED_CHROMOSOES that are ignored)\
+  \ that could inform the data.\n                              This tends to exclude\
+  \ bait contigs and alternative haplotypes.  Default value: null. \n\nREPORT_ALLELE_COUNTS=Boolean\
+  \  Report how many ref/het/alt/missing genotypes each donor has.  Default value:\
+  \ false. This\n                              option can be set to 'null' to clear\
+  \ the default value. Possible values: {true, false} \n\nNUM_THREADS=Integer    \
+  \       The number of threads to use for likelihood calculations.  Default value:\
+  \ 1. This option\n                              can be set to 'null' to clear the\
+  \ default value. \n\nRANDOM_SEED=Integer           Random seed to use if deterministic\
+  \ behavior is desired.  Setting to null will cause\n                           \
+  \   multiple invocations to produce different results.  Default value: 1. This option\
+  \ can be\n                              set to 'null' to clear the default value.\
+  \ \n\nMAX_READS_PER_SNP=Integer     If a SNP has an unusual number of reads, skip\
+  \ it.  Default value: null. \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/dropseq_tools:2.4.0--0

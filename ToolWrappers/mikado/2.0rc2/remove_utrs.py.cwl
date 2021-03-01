@@ -1,11 +1,6 @@
 class: CommandLineTool
 id: remove_utrs.py.cwl
 inputs:
-- id: in_f
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -f
 - id: in_script
   doc: ''
   type: string
@@ -36,25 +31,16 @@ inputs:
   type: string
   inputBinding:
     position: 5
-- id: in_gff_slash_gtf_dot
-  doc: ''
-  type: string
-  inputBinding:
-    position: 6
 - id: in_gff
   doc: ''
   type: string
   inputBinding:
-    position: 7
-- id: in_out
-  doc: ''
-  type: string
-  inputBinding:
-    position: 8
+    position: 6
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - remove_utrs.py

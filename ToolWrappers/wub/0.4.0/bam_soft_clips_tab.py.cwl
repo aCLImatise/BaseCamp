@@ -1,14 +1,14 @@
 class: CommandLineTool
 id: bam_soft_clips_tab.py.cwl
 inputs:
-- id: in_output_tab_separated
+- id: in_output_tab_file
   doc: Output tab separated file.
-  type: File
+  type: File?
   inputBinding:
     prefix: -t
-- id: in_quiet_print_false
+- id: in_be_quiet_print
   doc: Be quiet and do not print progress bar (False).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -Q
 - id: in_bam
@@ -20,11 +20,12 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_output_tab_separated
+- id: out_output_tab_file
   doc: Output tab separated file.
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_output_tab_separated)
+    glob: $(inputs.in_output_tab_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bam_soft_clips_tab.py

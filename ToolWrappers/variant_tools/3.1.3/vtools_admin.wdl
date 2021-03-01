@@ -40,6 +40,9 @@ task VtoolsAdmin {
       ~{if (global) then "--global" else ""} \
       ~{if defined(fast_a_two_crr) then ("--fasta2crr " +  '"' + fast_a_two_crr + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbosity: "Output error and warning (0), info (1), debug (2) and\\ntrace (3) information to standard output (default to\\n1)."
     update_resource: "[TYPE], --update-resource [TYPE]\\nDownload resources of specified type, which can be\\n'current' (latest version of all resources), 'all'\\n(all resources including obsolete databases),\\n'existing' (only update resources that exist locally),\\n'hg18' or 'hg19' (all resources for reference genome\\nhg18 or hg19), 'annotation' (all current annotation\\ndatabases), 'format' (all formats), and 'snapshot'\\n(all online snapshots). Identical resources that are\\navailable locally (under ~/.variant_tools or runtime\\noption $local_resource) are ignored. Note that option\\n'all' will download all versions of annotation\\ndatabases which can be slow and take a lot of disk\\nspaces."

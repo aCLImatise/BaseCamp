@@ -12,6 +12,9 @@ task NwRename {
       ~{map_filename} \
       ~{if (hl) then "-hl" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hl: ""
     filename_vertical_line: ""

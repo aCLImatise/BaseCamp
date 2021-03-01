@@ -18,6 +18,9 @@ task Tophatrecondition {
       ~{if defined(result_dir) then ("--result_dir " +  '"' + result_dir + '"') else ""} \
       ~{if defined(unmapped_file) then ("--unmapped-file " +  '"' + unmapped_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_file: "log file (optional, (default: result_dir/tophat-\\nrecondition.log)"
     mapped_file: "Name of the file containing mapped reads (default:\\naccepted_hits.bam)"

@@ -118,6 +118,9 @@ task Pureclip {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (very_verbose) then "--very-verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Target bam files. Valid filetype is: .bam."
     bai: "Target bam index files. Valid filetype is: .bai."

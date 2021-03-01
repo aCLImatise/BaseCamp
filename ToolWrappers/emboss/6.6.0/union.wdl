@@ -14,6 +14,9 @@ task Union {
       ~{if (source) then "-source" else ""} \
       ~{if (find_overlap) then "-findoverlap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     overlap_file: "outfile    [*.union] Sequence overlaps output file\\n(optional)"
     feature: "boolean    [N] Use feature information"

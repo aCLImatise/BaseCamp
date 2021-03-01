@@ -88,6 +88,9 @@ task NanoPlot {
       ~{if defined(pickle) then ("--pickle " +  '"' + pickle + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Set the allowed number of threads to be used by the script"
     verbose: "Write log messages also to terminal."

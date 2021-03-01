@@ -8,6 +8,9 @@ task Fasta2DB {
     fasta2DB \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
   }

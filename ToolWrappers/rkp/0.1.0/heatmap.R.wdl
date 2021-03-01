@@ -4,6 +4,9 @@ task HeatmapR {
   command <<<
     heatmap_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

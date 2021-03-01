@@ -1,0 +1,189 @@
+!Command
+command:
+- centrifuge-build-bin
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: reference_in
+  description: comma-separated list of files with ref sequences
+- !Positional
+  optional: false
+  position: 1
+  name: centrifuge_index_base
+  description: write cf data to files with this dir/basename
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "reference sequences given on cmd line (as\n<reference_in>)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --noauto
+  description: disable automatic -p/--bmax/--dcv memory-fitting
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bmax
+  description: max bucket sz for blockwise suffix-array builder
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --bmaxdivn
+  description: 'max bucket sz as divisor of ref len (default: 4)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --dcv
+  description: 'diff-cover period for blockwise (default: 1024)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --nodc
+  description: disable diff-cover (algorithm becomes quadratic)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --noref
+  description: don't build .3/.4.bt2 (packed reference) portion
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-3'
+  - --justref
+  description: just build .3/.4.bt2 (packed reference) portion
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --offrate
+  description: 'SA is sampled every 2^offRate BWT chars (default: 5)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --ftabchars
+  description: '# of chars consumed in initial lookup (default: 10)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --conversion-table
+  description: a table that converts any id to a taxonomy id
+  args: !SimpleFlagArg
+    name: file name
+- !Flag
+  optional: true
+  synonyms:
+  - --taxonomy-tree
+  description: <file name>  taxonomy tree
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --name-table
+  description: <file name>  names corresponding to taxonomic IDs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --size-table
+  description: <file name>  table of contig (or genome) sizes
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: seed for random number generator
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: verbose output (for debugging)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --threads
+  description: number of alignment threads to launch (1)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer-count
+  description: k size for counting the number of distinct k-mer
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print detailed description of tool and its options
+  args: !EmptyFlagArg {}
+usage_flag: !Flag
+  optional: true
+  synonyms:
+  - --usage
+  description: print this usage message
+  args: !EmptyFlagArg {}
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version information and quit
+  args: !EmptyFlagArg {}
+help_text: "Centrifuge version 1.0.4 by Daehwan Kim (infphilo@gmail.com, http://www.ccb.jhu.edu/people/infphilo)\n\
+  Usage: centrifuge-build [options]* --conversion-table <table file> --taxonomy-tree\
+  \ <taxonomy tree file> <reference_in> <cf_index_base>\n    reference_in        \
+  \    comma-separated list of files with ref sequences\n    centrifuge_index_base\
+  \          write cf data to files with this dir/basename\nOptions:\n    -c     \
+  \                 reference sequences given on cmd line (as\n                  \
+  \          <reference_in>)\n    -a/--noauto             disable automatic -p/--bmax/--dcv\
+  \ memory-fitting\n    --bmax <int>            max bucket sz for blockwise suffix-array\
+  \ builder\n    --bmaxdivn <int>        max bucket sz as divisor of ref len (default:\
+  \ 4)\n    --dcv <int>             diff-cover period for blockwise (default: 1024)\n\
+  \    --nodc                  disable diff-cover (algorithm becomes quadratic)\n\
+  \    -r/--noref              don't build .3/.4.bt2 (packed reference) portion\n\
+  \    -3/--justref            just build .3/.4.bt2 (packed reference) portion\n \
+  \   -o/--offrate <int>      SA is sampled every 2^offRate BWT chars (default: 5)\n\
+  \    -t/--ftabchars <int>    # of chars consumed in initial lookup (default: 10)\n\
+  \    --conversion-table <file name>  a table that converts any id to a taxonomy\
+  \ id\n    --taxonomy-tree    <file name>  taxonomy tree\n    --name-table      \
+  \ <file name>  names corresponding to taxonomic IDs\n    --size-table       <file\
+  \ name>  table of contig (or genome) sizes\n    --seed <int>            seed for\
+  \ random number generator\n    -q/--quiet              verbose output (for debugging)\n\
+  \    -p/--threads <int>      number of alignment threads to launch (1)\n    --kmer-count\
+  \ <int>      k size for counting the number of distinct k-mer\n    -h/--help   \
+  \            print detailed description of tool and its options\n    --usage   \
+  \              print this usage message\n    --version               print version\
+  \ information and quit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/centrifuge-core:1.0.4_beta--he513fc3_0

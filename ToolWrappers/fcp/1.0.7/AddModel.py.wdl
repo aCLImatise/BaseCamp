@@ -26,6 +26,9 @@ task AddModelpy {
       ~{species} \
       ~{strain}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n: ""
     sequence_file: ""

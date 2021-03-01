@@ -3,17 +3,17 @@ id: fastq_time_slice.py_input_fastq.cwl
 inputs:
 - id: in_e
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -e
 - id: in_s
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -s
 - id: in_t
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_fast_q_time_slice_do_tpy
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fastq_time_slice.py

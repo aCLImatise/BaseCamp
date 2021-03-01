@@ -48,6 +48,9 @@ task AddProteinAnnotationpy {
       ~{if defined(in) then ("--in " +  '"' + in + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "A fasta file"
     in: "A mProphet output file"

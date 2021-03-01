@@ -10,6 +10,9 @@ task MafToBigMaf {
       ~{referenced_b} \
       ~{input_dot_maf}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     referenced_b: ""
     input_dot_maf: ""

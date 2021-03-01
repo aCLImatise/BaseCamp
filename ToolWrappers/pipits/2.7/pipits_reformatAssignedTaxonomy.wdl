@@ -24,6 +24,9 @@ task PipitsReformatAssignedTaxonomy {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(minimum_confidence_record) then ("-c " +  '"' + minimum_confidence_record + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "[REQUIRED] taxonomy assignment output from RDP-CLASSIFIER"
     out: "[REQUIRED] reformatted taxonomy assignment file"

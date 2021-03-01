@@ -74,6 +74,9 @@ task Treetime {
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree: "Name of file containing the tree in newick, nexus, or\\nphylip format. If none is provided, treetime will\\nattempt to build a tree from the alignment using\\nfasttree, iqtree, or raxml (assuming they are\\ninstalled)"
     sequence_length: "length of the sequence, used to calculate expected\\nvariation in branch length. Not required if alignment\\nis provided."

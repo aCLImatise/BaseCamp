@@ -4,6 +4,9 @@ task Axiome {
   command <<<
     axiome
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

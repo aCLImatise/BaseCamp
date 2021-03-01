@@ -18,6 +18,9 @@ task ClustersStatpy {
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     distance_method: "Used distance method for classify (see http://docs.sci\\npy.org/doc/scipy-0.14.0/reference/generated/generated/\\nscipy.spatial.distance.pdist.html#scipy.spatial.distan\\nce.pdist). [Default: braycurtis]"
     linkage_method: "Used linkage method for classify (see http://docs.scip\\ny.org/doc/scipy-0.14.0/reference/generated/scipy.clust\\ner.hierarchy.linkage.html). [Default: average]"

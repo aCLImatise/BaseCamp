@@ -14,6 +14,9 @@ task AktRelatives {
       ~{if (graph_out) then "--graphout" else ""} \
       ~{if (prefix) then "--prefix" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_in: ":                     threshold for relatedness (0.05)"
     its: ":                      number of iterations to find unrelated (10)"

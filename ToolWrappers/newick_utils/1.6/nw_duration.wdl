@@ -10,6 +10,9 @@ task NwDuration {
       ~{filename_vertical_line} \
       ~{if (bh_il) then "-bhIL" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bh_il: ""
     filename_vertical_line: ""

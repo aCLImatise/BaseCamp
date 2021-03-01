@@ -20,6 +20,9 @@ task Hera {
       ~{if (genome_fasta_file) then "-f" else ""} \
       ~{if (output_prefix_default) then "-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_directory_default: ":      Output directory (default: ./)"
     number_threads_default: ":      Number of threads (default: 1)"

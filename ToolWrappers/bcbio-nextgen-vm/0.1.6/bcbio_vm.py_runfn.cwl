@@ -4,12 +4,12 @@ inputs:
 - id: in_system_config
   doc: "Global YAML configuration file specifying system\ndetails. Defaults to installed\
     \ bcbio_system.yaml."
-  type: File
+  type: File?
   inputBinding:
     prefix: --systemconfig
 - id: in_num_cores
   doc: "Total cores to use for processing\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --numcores
 - id: in_fn_name
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bcbio_vm.py

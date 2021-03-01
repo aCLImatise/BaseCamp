@@ -1,0 +1,190 @@
+!Command
+command:
+- overlapInCore
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: seqStorePath
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: in contig mode, specify the output file
+  args: !SimpleFlagArg
+    name: fn
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "contig mode.  Use 2 frag stores.  First is\nfor reads; second is for\
+    \ contigs"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -partial
+  description: do partial overlaps
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: "to specify fragments to put in hash table\nImplies LSF mode (no changes\
+    \ to frag store)"
+  args: !SimpleFlagArg
+    name: range
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  description: "designate a file of frag iids to limit olaps to\n(Contig mode only)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: "if one or two digits, the length of a kmer, otherwise\nthe filename\
+    \ containing a list of kmers to ignore in\nthe hash table"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: "specify the maximum number of overlaps per\nfragment-end per batch\
+    \ of fragments."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: allow multiple overlaps per oriented fragment pair
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: "specify memory size.  Valid values are '8GB', '4GB',\n'2GB', '1GB',\
+    \ '256MB'.  (Not for Contig mode)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: specify output file name
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  description: write protoIO output (if not -partial)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: specify old fragments to overlap
+  args: !SimpleFlagArg
+    name: range
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: use <n> parallel threads
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: allow only 1 overlap per oriented fragment pair
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: skip the hopeless check (also skipped at > 0.06)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --maxerate
+  description: only output overlaps with fraction <n> or less error (e.g., 0.06 ==
+    6%)
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --minlength
+  description: only output overlaps of <n> or more bases
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --hashbits
+  description: Use n bits for the hash mask.
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --hashdatalen
+  description: Load at most n bytes into the hash table at one time.
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --hashload
+  description: Load to at most 0.0 < f < 1.0 capacity (default 0.7).
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --readsperbatch
+  description: Force batch size to n.
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --readsperthread
+  description: Force each thread to process n reads.
+  args: !SimpleFlagArg
+    name: n
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "* No kmer length supplied; -k needed!\nERROR:  No output file name specified\n\
+  USAGE:  overlapInCore [options] <seqStorePath>\n\n-b <fn>     in contig mode, specify\
+  \ the output file\n-c          contig mode.  Use 2 frag stores.  First is\n    \
+  \        for reads; second is for contigs\n-partial    do partial overlaps\n-h <range>\
+  \  to specify fragments to put in hash table\n            Implies LSF mode (no changes\
+  \ to frag store)\n-I          designate a file of frag iids to limit olaps to\n\
+  \            (Contig mode only)\n-k          if one or two digits, the length of\
+  \ a kmer, otherwise\n            the filename containing a list of kmers to ignore\
+  \ in\n            the hash table\n-l          specify the maximum number of overlaps\
+  \ per\n            fragment-end per batch of fragments.\n-m          allow multiple\
+  \ overlaps per oriented fragment pair\n-M          specify memory size.  Valid values\
+  \ are '8GB', '4GB',\n            '2GB', '1GB', '256MB'.  (Not for Contig mode)\n\
+  -o          specify output file name\n-P          write protoIO output (if not -partial)\n\
+  -r <range>  specify old fragments to overlap\n-t <n>      use <n> parallel threads\n\
+  -u          allow only 1 overlap per oriented fragment pair\n-z          skip the\
+  \ hopeless check (also skipped at > 0.06)\n\n--maxerate <n>     only output overlaps\
+  \ with fraction <n> or less error (e.g., 0.06 == 6%)\n--minlength <n>    only output\
+  \ overlaps of <n> or more bases\n\n--hashbits n       Use n bits for the hash mask.\n\
+  --hashdatalen n    Load at most n bytes into the hash table at one time.\n--hashload\
+  \ f       Load to at most 0.0 < f < 1.0 capacity (default 0.7).\n\n--readsperbatch\
+  \ n  Force batch size to n.\n--readsperthread n Force each thread to process n reads.\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/canu:2.1.1--he1b5a44_1

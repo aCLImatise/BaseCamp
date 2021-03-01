@@ -10,6 +10,9 @@ task Prodigalpy {
       ~{if defined(input_fasta_file) then ("--input " +  '"' + input_fasta_file + '"') else ""} \
       ~{if defined(path_output_folder) then ("--output " +  '"' + path_output_folder + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_file: "Input FASTA file or dir containing fasta files"
     path_output_folder: "Path to output folder\\n"

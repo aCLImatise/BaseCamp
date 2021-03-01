@@ -4,255 +4,256 @@ command:
 - phase
 positional:
 - !Positional
-  description: "VCF or BCF file with variants to be phased (can be\ngzip-compressed)"
+  optional: false
   position: 0
   name: VCF
-  optional: false
+  description: "VCF or BCF file with variants to be phased (can be\ngzip-compressed)"
 - !Positional
-  description: "BAM, CRAM, VCF or BCF file(s) with phase information,\neither through\
-    \ sequencing reads (BAM, CRAM) or through\nphased blocks (VCF, BCF)"
+  optional: false
   position: 1
   name: PHASEINPUT
-  optional: false
+  description: "BAM, CRAM, VCF or BCF file(s) with phase information,\neither through\
+    \ sequencing reads (BAM, CRAM) or through\nphased blocks (VCF, BCF)"
 named:
 - !Flag
-  description: "Output VCF file. Add .gz to the file name to get\ncompressed output.\
-    \ If omitted, use standard output."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "Output VCF file. Add .gz to the file name to get\ncompressed output.\
+    \ If omitted, use standard output."
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: "Reference file. Provide this to detect alleles through\nre-alignment.\
-    \ If no index (.fai) exists, it will be\ncreated"
+  optional: true
   synonyms:
   - --reference
   - -r
+  description: "Reference file. Provide this to detect alleles through\nre-alignment.\
+    \ If no index (.fai) exists, it will be\ncreated"
   args: !SimpleFlagArg
     name: FASTA
-  optional: true
 - !Flag
-  description: "Detect alleles without requiring a reference, at the\nexpense of phasing\
-    \ quality (in particular for long\nreads)"
+  optional: true
   synonyms:
   - --no-reference
+  description: "Detect alleles without requiring a reference, at the\nexpense of phasing\
+    \ quality (in particular for long\nreads)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Store phasing information with PS tag (standardized)\nor HP tag (used\
-    \ by GATK ReadBackedPhasing) (default:\nPS)"
+  optional: true
   synonyms:
   - --tag
+  description: "Store phasing information with PS tag (standardized)\nor HP tag (used\
+    \ by GATK ReadBackedPhasing) (default:\nPS)"
   args: !ChoiceFlagArg
     choices: !!set
       HP:
       PS:
-  optional: true
 - !Flag
-  description: Write reads that have been used for phasing to FILE.
+  optional: true
   synonyms:
   - --output-read-list
+  description: Write reads that have been used for phasing to FILE.
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: 'Phasing algorithm to use (default: whatshap)'
+  optional: true
   synonyms:
   - --algorithm
+  description: 'Phasing algorithm to use (default: whatshap)'
   args: !ChoiceFlagArg
     choices: !!set
-      whatshap:
       hapchat:
-  optional: true
+      whatshap:
 - !Flag
-  description: "Merge reads which are likely to come from the same\nhaplotype (default:\
-    \ do not merge reads)"
+  optional: true
   synonyms:
   - --merge-reads
+  description: "Merge reads which are likely to come from the same\nhaplotype (default:\
+    \ do not merge reads)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --internal-downsampling
   description: "Coverage reduction parameter in the internal core\nphasing algorithm.\
     \ Higher values increase runtime\n*exponentially* while possibly improving phasing\n\
     quality marginally. Avoid using this in the normal\ncase! (default: 15)"
-  synonyms:
-  - --internal-downsampling
   args: !SimpleFlagArg
     name: COVERAGE
-  optional: true
 - !Flag
-  description: 'Minimum mapping quality (default: 20)'
+  optional: true
   synonyms:
   - --mapping-quality
   - --mapq
+  description: 'Minimum mapping quality (default: 20)'
   args: !SimpleFlagArg
     name: QUAL
-  optional: true
 - !Flag
-  description: 'Also phase indels (default: do not phase indels)'
+  optional: true
   synonyms:
   - --indels
+  description: 'Also phase indels (default: do not phase indels)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Ignore read groups in BAM/CRAM header and assume all\nreads come from\
-    \ the same sample."
+  optional: true
   synonyms:
   - --ignore-read-groups
+  description: "Ignore read groups in BAM/CRAM header and assume all\nreads come from\
+    \ the same sample."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Name of a sample to phase. If not given, all samples\nin the input\
-    \ VCF are phased. Can be used multiple\ntimes."
+  optional: true
   synonyms:
   - --sample
+  description: "Name of a sample to phase. If not given, all samples\nin the input\
+    \ VCF are phased. Can be used multiple\ntimes."
   args: !SimpleFlagArg
     name: SAMPLE
-  optional: true
 - !Flag
-  description: "Name of chromosome to phase. If not given, all\nchromosomes in the\
-    \ input VCF are phased. Can be used\nmultiple times."
+  optional: true
   synonyms:
   - --chromosome
+  description: "Name of chromosome to phase. If not given, all\nchromosomes in the\
+    \ input VCF are phased. Can be used\nmultiple times."
   args: !SimpleFlagArg
     name: CHROMOSOME
-  optional: true
 - !Flag
-  description: "The probability that a nucleotide is wrong in read\nmerging model\
-    \ (default: 0.15)."
+  optional: true
   synonyms:
   - --error-rate
+  description: "The probability that a nucleotide is wrong in read\nmerging model\
+    \ (default: 0.15)."
   args: !SimpleFlagArg
     name: READ_MERGING_ERROR_RATE
-  optional: true
 - !Flag
-  description: "The maximum error rate of any edge of the read merging\ngraph before\
-    \ discarding it (default: 0.25)."
+  optional: true
   synonyms:
   - --maximum-error-rate
+  description: "The maximum error rate of any edge of the read merging\ngraph before\
+    \ discarding it (default: 0.25)."
   args: !SimpleFlagArg
     name: READ_MERGING_MAX_ERROR_RATE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --threshold
   description: "The threshold of the ratio between the probabilities\nthat a pair\
     \ of reads come from the same haplotype and\ndifferent haplotypes in the read\
     \ merging model\n(default: 1000000)."
-  synonyms:
-  - --threshold
   args: !SimpleFlagArg
     name: READ_MERGING_POSITIVE_THRESHOLD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --negative-threshold
   description: "The threshold of the ratio between the probabilities\nthat a pair\
     \ of reads come from different haplotypes\nand the same haplotype in the read\
     \ merging model\n(default: 1000)."
-  synonyms:
-  - --negative-threshold
   args: !SimpleFlagArg
     name: READ_MERGING_NEGATIVE_THRESHOLD
-  optional: true
 - !Flag
-  description: "Completely re-genotype all variants based on read\ndata, ignores all\
-    \ genotype data that might be present\nin the VCF (EXPERIMENTAL FEATURE)."
+  optional: true
   synonyms:
   - --full-genotyping
+  description: "Completely re-genotype all variants based on read\ndata, ignores all\
+    \ genotype data that might be present\nin the VCF (EXPERIMENTAL FEATURE)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Allow switching variants from hetero- to homozygous in\nan optimal\
-    \ solution (see documentation)."
+  optional: true
   synonyms:
   - --distrust-genotypes
+  description: "Allow switching variants from hetero- to homozygous in\nan optimal\
+    \ solution (see documentation)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Also work on homozygous variants, which might be\nturned to heterozygous"
+  optional: true
   synonyms:
   - --include-homozygous
+  description: "Also work on homozygous variants, which might be\nturned to heterozygous"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Default genotype quality used as cost of changing a\ngenotype when\
-    \ no genotype likelihoods are available\n(default 30)"
+  optional: true
   synonyms:
   - --default-gq
+  description: "Default genotype quality used as cost of changing a\ngenotype when\
+    \ no genotype likelihoods are available\n(default 30)"
   args: !SimpleFlagArg
     name: DEFAULT_GQ
-  optional: true
 - !Flag
-  description: "Constant (float) to be used to regularize genotype\nlikelihoods read\
-    \ from input VCF (default None)."
+  optional: true
   synonyms:
   - --gl-regularizer
+  description: "Constant (float) to be used to regularize genotype\nlikelihoods read\
+    \ from input VCF (default None)."
   args: !SimpleFlagArg
     name: GL_REGULARIZER
-  optional: true
 - !Flag
-  description: Write list of changed genotypes to FILE.
+  optional: true
   synonyms:
   - --changed-genotype-list
+  description: Write list of changed genotypes to FILE.
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Use pedigree information in PED file to improve\nphasing (switches\
-    \ to PedMEC algorithm). Columns 2, 3,\n4 must refer to child, mother, and father\
-    \ sample names\nas used in the VCF and BAM/CRAM. Other columns are\nignored."
+  optional: true
   synonyms:
   - --ped
+  description: "/FAM         Use pedigree information in PED file to improve\nphasing\
+    \ (switches to PedMEC algorithm). Columns 2, 3,\n4 must refer to child, mother,\
+    \ and father sample names\nas used in the VCF and BAM/CRAM. Other columns are\n\
+    ignored."
   args: !SimpleFlagArg
-    name: PED/FAM
-  optional: true
+    name: PED
 - !Flag
-  description: Write putative recombination events to FILE.
+  optional: true
   synonyms:
   - --recombination-list
+  description: Write putative recombination events to FILE.
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Recombination rate in cM/Mb (used with --ped). If\ngiven, a constant\
-    \ recombination rate is assumed\n(default: 1.26cM/Mb)."
+  optional: true
   synonyms:
   - --recombrate
+  description: "Recombination rate in cM/Mb (used with --ped). If\ngiven, a constant\
+    \ recombination rate is assumed\n(default: 1.26cM/Mb)."
   args: !SimpleFlagArg
     name: RECOMBRATE
-  optional: true
 - !Flag
-  description: "File with genetic map (used with --ped) to be used\ninstead of constant\
-    \ recombination rate, i.e. overrides\noption --recombrate."
+  optional: true
   synonyms:
   - --genmap
+  description: "File with genetic map (used with --ped) to be used\ninstead of constant\
+    \ recombination rate, i.e. overrides\noption --recombrate."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-genetic-haplotyping
   description: "Do not merge blocks that are not connected by reads\n(i.e. solely\
     \ based on genotype status). Default: when\nin --ped mode, merge all blocks that\
     \ contain at least\none homozygous genotype in at least one individual\ninto one\
     \ block."
-  synonyms:
-  - --no-genetic-haplotyping
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Only work on samples mentioned in the provided PED\nfile.\n"
+  optional: true
   synonyms:
   - --use-ped-samples
+  description: "Only work on samples mentioned in the provided PED\nfile.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: whatshap phase [-h] [-o OUTPUT] [--reference FASTA] [--no-reference]\n\
@@ -353,3 +354,4 @@ help_text: "usage: whatshap phase [-h] [-o OUTPUT] [--reference FASTA] [--no-ref
   \  file.\n"
 generated_using:
 - --help
+docker_image:

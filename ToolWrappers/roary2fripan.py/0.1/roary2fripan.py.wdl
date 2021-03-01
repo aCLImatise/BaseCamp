@@ -10,6 +10,9 @@ task Roary2fripanpy {
       ~{prefix} \
       ~{if defined(specify_roary_output) then ("--input " +  '"' + specify_roary_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specify_roary_output: "Specify Roary output (default = \\\"gene_presence_absence.csv\\\")"
     prefix: "Specify output prefix"

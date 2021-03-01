@@ -80,6 +80,9 @@ task Macs2Callpeak {
       ~{if defined(buffer_size) then ("--buffer-size " +  '"' + buffer_size + '"') else ""} \
       ~{if (to_large) then "--to-large" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     treatment: "ChIP-seq treatment file. If multiple files are given\\nas '-t A B C', then they will all be read and pooled\\ntogether. REQUIRED."
     control_file_multiple: "[CFILE [CFILE ...]], --control [CFILE [CFILE ...]]\\nControl file. If multiple files are given as '-c A B\\nC', they will be pooled to estimate ChIP-seq\\nbackground noise."

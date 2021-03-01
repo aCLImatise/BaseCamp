@@ -22,6 +22,9 @@ task Yanagiba {
       ~{if defined(tail_trim) then ("--tailtrim " +  '"' + tail_trim + '"') else ""} \
       ~{if (force_unique) then "--forceunique" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "Input fastq.gz file."
     summary_file: "Albacore summary file with header row."

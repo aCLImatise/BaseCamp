@@ -32,6 +32,9 @@ task AddToBox {
       ~{if (recursively_call_addtobox) then "-V" else ""} \
       ~{if (path) then "-path" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     molecule_cell_pdb: ": the molecule cell (PDB format)"
     _molecule_add: ": the molecule to add"

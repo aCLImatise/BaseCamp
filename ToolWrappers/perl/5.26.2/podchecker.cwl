@@ -3,14 +3,14 @@ id: podchecker.cwl
 inputs:
 - id: in_man
   doc: Print the manual page and exit.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -man
 - id: in_no_warnings
   doc: "Turn on/off printing of warnings. Repeating -warnings increases\nthe warning\
     \ level, i.e. more warnings are printed. Currently\nincreasing to level two causes\
     \ flagging of unescaped \"<,>\"\ncharacters."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nowarnings
 - id: in_file
@@ -22,6 +22,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - podchecker

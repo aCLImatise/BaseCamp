@@ -3,75 +3,75 @@ command:
 - load2sqlitedb
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: parameters
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: fastafile
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --chunksize
   description: "this option is only relevant when loading a sequence file\nthe sequences\
     \ in the input genome are split into chunks of this size so\nthat subsequent retrievals\
     \ of small sequence ranges do not require to read\nthe complete - potentially\
     \ much longer - chromosome. (<= 1000000, default 50000)"
-  synonyms:
-  - --chunksize
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --noIdx
   description: "use this flag to suppress the building of indices on the database\
     \ tables.\nIf you are going to load several genomes and/or hint files in a row,\
     \ this option\nis recommended to speed up the loading. But make sure to build\
     \ indices with\n--makeIdx after all genomes/hints are loaded. Otherwise, data\
     \ retrieval operations\ncan be very slow."
-  synonyms:
-  - --noIdx
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --makeIdx
   description: "use this flag to build the indices on the database tables after loading\
     \ several\ngenomes and/or hint files with --noIdx. Only call this once for all\
     \ species, e.g.\nload2sqlitedb --makeIdx --dbaccess=database.db"
-  synonyms:
-  - --makeIdx
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --clean
   description: "makes a clean load deleting existing hints/genome for the species\
     \ from the database.\nWhen called with a gff file, only the hints for the species\
     \ are delete, but not the genome.\nWhen called with a fasta file, both hints and\
     \ genome for the species are deleted."
-  synonyms:
-  - --clean
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - --dbaccess
+  description: ''
   args: !SimpleFlagArg
     name: database.db
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - --species
+  description: ''
   args: !SimpleFlagArg
     name: SPECIES
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: print this usage info
+  optional: true
   synonyms:
   - --help
+  description: print this usage info
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage:\nload2sqlitedb [parameters] --species=SPECIES --dbaccess=database.db\
@@ -101,3 +101,4 @@ help_text: "usage:\nload2sqlitedb [parameters] --species=SPECIES --dbaccess=data
   \ chickengenome.fa\n     load2sqlitedb --species=chicken --dbaccess=chicken.db chickenhints.gff\n"
 generated_using:
 - --help
+docker_image:

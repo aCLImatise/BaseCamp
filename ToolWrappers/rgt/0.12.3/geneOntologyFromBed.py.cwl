@@ -3,7 +3,7 @@ id: geneOntologyFromBed.py.cwl
 inputs:
 - id: in_mode
   doc: choose mode
-  type: string
+  type: string?
   inputBinding:
     prefix: --mode
 - id: in_exp_matrix
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - geneOntologyFromBed.py

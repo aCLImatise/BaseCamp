@@ -3,16 +3,19 @@ version 1.0
 task Dynalign {
   input {
     String? config
-    File? file
+    File? var_file
   }
   command <<<
     dynalign \
       ~{config} \
-      ~{file}
+      ~{var_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

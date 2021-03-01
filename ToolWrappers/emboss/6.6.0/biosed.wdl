@@ -12,6 +12,9 @@ task Biosed {
       ~{if (position) then "-position" else ""} \
       ~{if (delete) then "-delete" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target_region: "string     [N] Sequence section to match (Any string)"
     position: "integer    [0] Sequence position to match (Integer 0 or\\nmore)"

@@ -3,122 +3,122 @@ command:
 - barcode_splitter
 positional:
 - !Positional
-  description: A series of 1 or more [optionally zipped] fastq files.
+  optional: false
   position: 0
   name: FILE
-  optional: false
+  description: A series of 1 or more [optionally zipped] fastq files.
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --bcfile
   description: "REQUIRED: Tab delimited file: \"Sample_ID <tab>\nBarcode_Sequence\"\
     \ Multiple barcode columns with\ndifferent barcode lengths allowed, but all barcodes\
     \ in\neach inidividual column must be the same length."
-  synonyms:
-  - --bcfile
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --idxread
   description: "REQUIRED: Indicate in which read file(s) to search for\nthe corresponding\
     \ column of barcode sequences, e.g. if\nthe first column of barcodes is in the\
     \ second sequence\nread file and the second column's barcodes are in the\nthird\
     \ sequence read file, you'd supply `--idxread 2 3`"
-  synonyms:
-  - --idxread
   args: !RepeatFlagArg
     name: READNUM
-  optional: true
 - !Flag
-  description: Number of mismatches allowed in barcode matching
+  optional: true
   synonyms:
   - --mismatches
+  description: Number of mismatches allowed in barcode matching
   args: !SimpleFlagArg
     name: MISMATCHES
-  optional: true
 - !Flag
-  description: "Barcodes are at the end of the index read (default is\nat the beginning)"
+  optional: true
   synonyms:
   - --barcodes_at_end
+  description: "Barcodes are at the end of the index read (default is\nat the beginning)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Prefix for output files
+  optional: true
   synonyms:
   - --prefix
+  description: Prefix for output files
   args: !SimpleFlagArg
     name: PREFIX
-  optional: true
 - !Flag
-  description: Suffix for output files (default based on --format)
+  optional: true
   synonyms:
   - --suffix
+  description: Suffix for output files (default based on --format)
   args: !SimpleFlagArg
     name: SUFFIX
-  optional: true
 - !Flag
-  description: "Produce \"Galaxy safe\" filenames by removing\nunderscores (default:\
-    \ False)"
+  optional: true
   synonyms:
   - --galaxy
+  description: "Produce \"Galaxy safe\" filenames by removing\nunderscores (default:\
+    \ False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not produce \"safe\" filenames by replacing unusual\ncharacters\
-    \ in the supplied prefix and sample IDs with\nunderscores. (default: False)"
+  optional: true
   synonyms:
   - --nosanitize
+  description: "Do not produce \"safe\" filenames by replacing unusual\ncharacters\
+    \ in the supplied prefix and sample IDs with\nunderscores. (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: verbose output
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: verbose output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output files in compressed gzip format (default is\nuncompressed)"
+  optional: true
   synonyms:
   - --gzipout
+  description: "Output files in compressed gzip format (default is\nuncompressed)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Split all input files, including index read files (by\ndefault, index\
-    \ read files are not split unless all\nread files are index files)"
+  optional: true
   synonyms:
   - --split_all
+  description: "Split all input files, including index read files (by\ndefault, index\
+    \ read files are not split unless all\nread files are index files)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Specify format for sequence files (fasta or fastq)
+  optional: true
   synonyms:
   - --format
+  description: Specify format for sequence files (fasta or fastq)
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
-  description: "Assume input files are in gzip format, despite file\nextension (default\
-    \ is auto based on input file\nextension)"
+  optional: true
   synonyms:
   - --gzipin
+  description: "Assume input files are in gzip format, despite file\nextension (default\
+    \ is auto based on input file\nextension)"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: barcode_splitter [-h] [--version] [--bcfile FILE]\n           \
   \             [--idxread READNUM [READNUM ...]]\n                        [--mismatches\
   \ MISMATCHES] [--barcodes_at_end]\n                        [--prefix PREFIX] [--suffix\
@@ -156,3 +156,4 @@ help_text: "usage: barcode_splitter [-h] [--version] [--bcfile FILE]\n          
   \  FILE                  A series of 1 or more [optionally zipped] fastq files.\n"
 generated_using:
 - --help
+docker_image:

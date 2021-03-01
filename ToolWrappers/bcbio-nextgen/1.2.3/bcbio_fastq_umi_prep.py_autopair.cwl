@@ -3,22 +3,22 @@ id: bcbio_fastq_umi_prep.py_autopair.cwl
 inputs:
 - id: in_cores
   doc: Number of cores, allowing running samples in parallel
-  type: long
+  type: long?
   inputBinding:
     prefix: --cores
 - id: in_outdir
   doc: Output directory to write UMI prepped fastqs
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_tag_one
   doc: Duplex read 1 tag -- bases to trim from 5' end
-  type: long
+  type: long?
   inputBinding:
     prefix: --tag1
 - id: in_tag_two
   doc: Duplex read 2 tag -- bases to trim from 5' end
-  type: long
+  type: long?
   inputBinding:
     prefix: --tag2
 - id: in_files
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: Output directory to write UMI prepped fastqs
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bcbio_fastq_umi_prep.py

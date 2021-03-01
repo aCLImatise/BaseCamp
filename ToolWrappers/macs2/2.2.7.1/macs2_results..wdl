@@ -8,6 +8,9 @@ task Macs2Results {
     macs2 results_ \
       ~{macs_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     macs_two: ""
   }

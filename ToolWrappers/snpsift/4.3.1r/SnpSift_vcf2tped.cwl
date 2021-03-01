@@ -1,41 +1,41 @@
 class: CommandLineTool
 id: SnpSift_vcf2tped.cwl
 inputs:
-- id: in_force_overwrite_files
+- id: in_force_overwrite_new
   doc: ': Force. Overwrite new files if they exist. Default: false'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_num
   doc: ': Use only numbers {1, 2, 3, 4} instead of bases {A, C, G, T}. Default: false'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -num
 - id: in_only_snp
   doc: ': Use only SNPs when converting VCF to TPED. Default: false'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -onlySnp
 - id: in_only_bi_allelic
   doc: ': Use only bi-allelic variants. Default: false'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -onlyBiAllelic
 - id: in_use_missing
   doc: ': Use entries with missing genotypes (otherwise they are filtered out). Default:
     true'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -useMissing
 - id: in_use_missing_ref
   doc: ": Use entries with missing genotypes marking them as 'reference' instead of\
     \ 'missing'. Default: false"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -useMissingRef
 - id: in_jar
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -jar
 - id: in_file_do_ttf_am
@@ -57,6 +57,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - SnpSift

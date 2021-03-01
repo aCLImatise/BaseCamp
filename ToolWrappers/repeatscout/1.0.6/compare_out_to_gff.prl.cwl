@@ -4,24 +4,24 @@ inputs:
 - id: in_gff
   doc: "A GFF-formatted file of features. More than one file may be specified\nwith\
     \ multiple --gff options."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gff
 - id: in_fasta_formatted_file
   doc: "A fasta formatted file. If this is given, then sequences that are under\n\
     (over) the overlap threshold will be in the output. This is a sequence\nfilter."
-  type: File
+  type: File?
   inputBinding:
     prefix: --f
 - id: in_threshold
   doc: "The maximum (minimum) amount of overlap tolerated by any one type of\nrepeat."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --threshold
 - id: in_over
   doc: "Determines if the threshold is a minimum or a maximum (defaults to\nmaximum;\
     \ including --over makes it a minimum)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --over
 - id: in_instances
@@ -32,7 +32,7 @@ inputs:
     \ length of the repeat. If --instances is\nspecified, the \"overlap\" is considered\
     \ to be the number of instances of\na given type that overlap any feature, divided\
     \ by the total number of\ninstances of that type."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --instances
 - id: in_bugs
@@ -48,9 +48,10 @@ outputs:
 - id: out_fasta_formatted_file
   doc: "A fasta formatted file. If this is given, then sequences that are under\n\
     (over) the overlap threshold will be in the output. This is a sequence\nfilter."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_fasta_formatted_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - compare-out-to-gff.prl

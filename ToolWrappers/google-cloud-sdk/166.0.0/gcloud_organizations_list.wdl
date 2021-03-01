@@ -18,6 +18,9 @@ task GcloudOrganizationsList {
       ~{if (sort_by) then "--sort-by" else ""} \
       ~{if (uri) then "--uri" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filter: "Apply a Boolean filter EXPRESSION to each resource item to be listed.\\nIf the expression evaluates True then that item is listed. For more\\ndetails and examples of filter expressions run $ gcloud topic filters.\\nThis flag interacts with other flags that are applied in this order:\\n--flatten, --sort-by, --filter, --limit."
     limit: "The maximum number of resources to list. The default is unlimited. This\\nflag interacts with other flags that are applied in this order:\\n--flatten, --sort-by, --filter, --limit."

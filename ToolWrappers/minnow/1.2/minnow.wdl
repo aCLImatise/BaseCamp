@@ -86,6 +86,9 @@ task Minnow {
       ~{if defined(eq_class_dir) then ("--eqClassDir " +  '"' + eq_class_dir + '"') else ""} \
       ~{if defined(cluster) then ("--cluster " +  '"' + cluster + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_levin_mode: "The program would assume that the input matrix is obtained from Alevin"
     splatter_mode: "matrix file is obtained from running splatter"

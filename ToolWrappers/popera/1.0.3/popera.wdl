@@ -22,6 +22,9 @@ task Popera {
       ~{if (bigwig) then "--bigwig" else ""} \
       ~{if defined(exclude_chr) then ("--excludechr " +  '"' + exclude_chr + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data: "data file, should be sorted bam format"
     name: "NH sample name default=NH_sample"

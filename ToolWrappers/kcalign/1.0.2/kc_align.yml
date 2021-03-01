@@ -1,0 +1,135 @@
+!Command
+command:
+- kc-align
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  - -r
+  description: Reference sequence
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --sequences
+  - -S
+  description: Other sequences to align
+  args: !SimpleFlagArg
+    name: SEQS
+- !Flag
+  optional: true
+  synonyms:
+  - --start
+  - -s
+  description: 1-based start position (required in genome mode)
+  args: !SimpleFlagArg
+    name: START
+- !Flag
+  optional: true
+  synonyms:
+  - --end
+  - -e
+  description: 1-based end position (required in genome mode)
+  args: !SimpleFlagArg
+    name: END
+- !Flag
+  optional: true
+  synonyms:
+  - --mode
+  - -m
+  description: Alignment mode (genome, gene, or mixed) (required)
+  args: !ChoiceFlagArg
+    choices: !!set
+      genome:
+      mixed:
+      gene:
+- !Flag
+  optional: true
+  synonyms:
+  - --compress
+  - -c
+  description: Compress identical sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --table
+  - -t
+  description: "Choose alternative translation table (See https://www.\nncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi\
+    \ for\nvalues)"
+  args: !SimpleFlagArg
+    name: TABLE
+- !Flag
+  optional: true
+  synonyms:
+  - --keep
+  - -k
+  description: "Keep translated pre-alignment sequences file named\npre_align.fasta,\
+    \ otherwise will delete"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dist
+  - -d
+  description: "For genome/mixed mode, determines the max distance a\nhomologous sequence\
+    \ can be before it is discarded from\nthe alignment (default = none). Distance\
+    \ limits: none\n< very-close < close < semi-close < less-close"
+  args: !ChoiceFlagArg
+    choices: !!set
+      less-close:
+      close:
+      none:
+      very-close:
+      semi-close:
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -th
+  description: "Number of simultaneous threads to use (must be a\nmultiple of 3)"
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: kc-align [-h] --reference REFERENCE --sequences SEQS [--start START]\n\
+  \                [--end END] --mode {genome,gene,mixed} [--compress]\n         \
+  \       [--table TABLE] [--keep]\n                [--dist {very-close,close,semi-close,less-close,none}]\n\
+  \                [--threads THREADS]\n\nAlign a sequence against multiple others\
+  \ in a codon-aware fashion.\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --reference REFERENCE, -r REFERENCE\n          \
+  \              Reference sequence\n  --sequences SEQS, -S SEQS\n               \
+  \         Other sequences to align\n  --start START, -s START\n                \
+  \        1-based start position (required in genome mode)\n  --end END, -e END \
+  \    1-based end position (required in genome mode)\n  --mode {genome,gene,mixed},\
+  \ -m {genome,gene,mixed}\n                        Alignment mode (genome, gene,\
+  \ or mixed) (required)\n  --compress, -c        Compress identical sequences\n \
+  \ --table TABLE, -t TABLE\n                        Choose alternative translation\
+  \ table (See https://www.\n                        ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi\
+  \ for\n                        values)\n  --keep, -k            Keep translated\
+  \ pre-alignment sequences file named\n                        pre_align.fasta, otherwise\
+  \ will delete\n  --dist {very-close,close,semi-close,less-close,none}, -d {very-close,close,semi-close,less-close,none}\n\
+  \                        For genome/mixed mode, determines the max distance a\n\
+  \                        homologous sequence can be before it is discarded from\n\
+  \                        the alignment (default = none). Distance limits: none\n\
+  \                        < very-close < close < semi-close < less-close\n  --threads\
+  \ THREADS, -th THREADS\n                        Number of simultaneous threads to\
+  \ use (must be a\n                        multiple of 3)\n\nPerforms a codon-aware\
+  \ (aka translation) multiple sequence alignment. Can be\nrun in 3 different modes\
+  \ depending on the input. See the documentation for\nmore information: https://github.com/galaxyproject/kc-align\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/kcalign:1.0.2--py_0

@@ -3,22 +3,22 @@ id: medpy_convert.py_output.cwl
 inputs:
 - id: in_f
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_d
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_e
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -e
 - id: in_me_dpy_convert_do_tpy
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - medpy_convert.py

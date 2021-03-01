@@ -16,6 +16,9 @@ task AgatSpAlignmentOutputStylepl {
       ~{if defined(ct) then ("--ct " +  '"' + ct + '"') else ""} \
       ~{if (verbose_option_see) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GTF/GFF file."
     ct: "When the gff file provided is not correcly formated and features\\nare linked to each other by a comon tag (by default locus_tag),\\nthis tag can be provided to parse the file correctly."

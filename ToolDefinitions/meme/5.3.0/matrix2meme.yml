@@ -1,0 +1,104 @@
+!Command
+command:
+- matrix2meme
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -dna
+  description: use DNA IUPAC alphabet
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rna
+  description: use RNA IUPAC alphabet
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -protein
+  description: use protein IUPAC alphabet
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -alph
+  description: 'Alphabet definition; default: DNA'
+  args: !SimpleFlagArg
+    name: alphabet file
+- !Flag
+  optional: true
+  synonyms:
+  - -orien
+  description: '|col|row           The matrix orientation; default: auto'
+  args: !SimpleFlagArg
+    name: auto
+- !Flag
+  optional: true
+  synonyms:
+  - -numseqs
+  description: "assume frequencies based on this many\nsequences when probabilty matrix\
+    \ is used;\ndefault: 20"
+  args: !SimpleFlagArg
+    name: numseqs
+- !Flag
+  optional: true
+  synonyms:
+  - -bg
+  description: "file with background frequencies of letters;\ndefault: uniform background"
+  args: !SimpleFlagArg
+    name: background file
+- !Flag
+  optional: true
+  synonyms:
+  - -pseudo
+  description: "add <total pseudocounts> times letter\nbackground to each frequency;\
+    \ default: 0"
+  args: !SimpleFlagArg
+    name: total pseudocounts
+- !Flag
+  optional: true
+  synonyms:
+  - -logodds
+  description: "output the log-odds (PSSM) and frequency\n(PSPM) motifs; default:\
+    \ PSPM motif only"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -url
+  description: "website for the motif; The motif name is\nsubstituted for MOTIF_NAME;\
+    \ default: no url"
+  args: !SimpleFlagArg
+    name: website
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage:\n    matrix2meme [options]\n\n     Options: \n      -dna      \
+  \                    use DNA IUPAC alphabet\n      -rna                        \
+  \  use RNA IUPAC alphabet\n      -protein                      use protein IUPAC\
+  \ alphabet\n      -alph <alphabet file>         Alphabet definition; default: DNA\n\
+  \      -orien auto|col|row           The matrix orientation; default: auto\n   \
+  \   -numseqs <numseqs>            assume frequencies based on this many \n     \
+  \                               sequences when probabilty matrix is used;\n    \
+  \                                default: 20\n      -bg <background file>      \
+  \   file with background frequencies of letters; \n                            \
+  \        default: uniform background\n      -pseudo <total pseudocounts>  add <total\
+  \ pseudocounts> times letter \n                                    background to\
+  \ each frequency; default: 0\n      -logodds                      output the log-odds\
+  \ (PSSM) and frequency \n                                    (PSPM) motifs; default:\
+  \ PSPM motif only\n      -url <website>                website for the motif; The\
+  \ motif name is \n                                    substituted for MOTIF_NAME;\
+  \ default: no url\n \n     Converts matrix motifs into MEME motifs. \n \n     The\
+  \ motifs are named based on their order in the file but their consensus\n     sequence\
+  \ is used as the alternate name.\n \n     Reads matricies from standard input separated\
+  \ by empty lines.\n     Writes MEME format to standard output.\n\n     Example DNA\
+  \ count matrix:\n      1 5 6 3\n      5 5 5 0\n     12 1 1 1\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/meme:5.3.0--py38pl526hc1f1133_0

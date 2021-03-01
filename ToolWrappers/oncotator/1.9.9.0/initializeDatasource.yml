@@ -4,74 +4,77 @@ command:
 positional: []
 named:
 - !Flag
-  description: datasource type.  Type of datasource to create.
+  optional: true
   synonyms:
   - --ds_type
+  description: datasource type.  Type of datasource to create.
   args: !ChoiceFlagArg
     choices: !!set
       bigwig:
-      gp_tsv:
-      indexed_tsv:
       indexed_vcf:
-      transcript_tsv:
-      gpp_tsv:
       gene_tsv:
-  optional: true
+      gp_tsv:
+      transcript_tsv:
+      indexed_tsv:
+      gpp_tsv:
 - !Flag
-  description: datasource filename.  Headers must be on the first line.  This is the
-    source file that contains annotation data.
+  optional: true
   synonyms:
   - --ds_file
+  description: datasource filename.  Headers must be on the first line.  This is the
+    source file that contains annotation data.
   args: !SimpleFlagArg
     name: DS_FILE
-  optional: true
 - !Flag
-  description: datasource name. Plain name for the datasource.  E.g. 'MutSig_Published_Results'
+  optional: true
   synonyms:
   - --name
+  description: datasource name. Plain name for the datasource.  E.g. 'MutSig_Published_Results'
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: Main datasource directory that contains other datasources.  I.e. the
-    destination directory for the newly created datasource.
+  optional: true
   synonyms:
   - --dbDir
+  description: Main datasource directory that contains other datasources.  I.e. the
+    destination directory for the newly created datasource.
   args: !SimpleFlagArg
     name: DBDIR
-  optional: true
 - !Flag
-  description: Name of the folder that should appear in dbDir
+  optional: true
   synonyms:
   - --ds_foldername
+  description: Name of the folder that should appear in dbDir
   args: !SimpleFlagArg
     name: DS_FOLDERNAME
-  optional: true
 - !Flag
-  description: Genome build.  For example, hg19.
+  optional: true
   synonyms:
   - --genome_build
+  description: Genome build.  For example, hg19.
   args: !ChoiceFlagArg
     choices: !!set
       hg19:
-  optional: true
 - !Flag
-  description: Comma separated list of index columns.  MUST be the name of the columns
-    and each row must have unique values across all index columns.
+  optional: true
   synonyms:
   - --index_columns
+  description: Comma separated list of index columns.  MUST be the name of the columns
+    and each row must have unique values across all index columns.
   args: !SimpleFlagArg
     name: INDEX_COLUMNS
-  optional: true
 - !Flag
-  description: Comma separated list of annotation columns. MUST be the subset of the
-    columns.  This (optional) parameter is specified for indexed_tsv only.
+  optional: true
   synonyms:
   - --annotation_columns
+  description: Comma separated list of annotation columns. MUST be the subset of the
+    columns.  This (optional) parameter is specified for indexed_tsv only.
   args: !SimpleFlagArg
     name: ANNOTATION_COLUMNS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --match_mode
   description: "Mode to use when annotating.  This parameter ought to be specified\
     \ for indexed_tsv and indexed_vcf only [default: exact].\nDetailed parameter information:\n\
     datasource type  --\n\"gene_tsv\" -- gene indexed file.  gene must be a Hugo Symbol.\n\
@@ -147,33 +150,30 @@ named:
     \ --ds_type indexed_vcf --ds_file ESP6500SI-V2.vcf --name ESP --version 6500SI-V2\
     \ --dbDir ~/oncotest_ESP6500SI-V2 --genome_build hg19 --match_mode exact --ds_foldername\
     \ ~/ESP6500SI-V2_exact\n"
-  synonyms:
-  - --match_mode
   args: !ChoiceFlagArg
     choices: !!set
-      avg:
       exact:
       overlap:
-  optional: true
+      avg:
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: version of the datasource.  This should be the version of the data
-    itself, such as '3.0' for Gaf 3.0
+  optional: true
   synonyms:
   - --version
+  description: version of the datasource.  This should be the version of the data
+    itself, such as '3.0' for Gaf 3.0
   args: !SimpleFlagArg
     name: VERSION
-  optional: true
 help_text: "usage: initializeDatasource [-h] --ds_type\n                         \
   \   {gp_tsv,gene_tsv,transcript_tsv,gpp_tsv,indexed_vcf,indexed_tsv,bigwig}\n  \
   \                          --ds_file DS_FILE --name NAME --version VERSION\n   \
@@ -291,3 +291,4 @@ help_text: "usage: initializeDatasource [-h] --ds_type\n                        
   \ ~/ESP6500SI-V2_exact\n\n    \n"
 generated_using:
 - --help
+docker_image:

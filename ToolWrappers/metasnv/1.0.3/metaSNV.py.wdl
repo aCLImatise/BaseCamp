@@ -5,7 +5,7 @@ task MetaSNVpy {
     File? db_ann
     Boolean? print_commands
     String dir
-    File file
+    File file_input_list
     String line
     String alignments_dot
     String out
@@ -14,7 +14,7 @@ task MetaSNVpy {
   command <<<
     metaSNV_py \
       ~{dir} \
-      ~{file} \
+      ~{file_input_list} \
       ~{line} \
       ~{alignments_dot} \
       ~{out} \
@@ -22,11 +22,14 @@ task MetaSNVpy {
       ~{if defined(db_ann) then ("--db_ann " +  '"' + db_ann + '"') else ""} \
       ~{if (print_commands) then "--print-commands" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db_ann: "Database gene annotation."
     print_commands: "Instead of executing the commands, simply print them"
     dir: "A metaSNP initialized project directory"
-    file: "File with an input list of bam files, one file per"
+    file_input_list: "File with an input list of bam files, one file per"
     line: "REF_DB_FILE           reference multi-sequence FASTA file used for the"
     alignments_dot: "optional arguments:"
     out: "--threads INT         Number of jobs to run simmultaneously. Will create"

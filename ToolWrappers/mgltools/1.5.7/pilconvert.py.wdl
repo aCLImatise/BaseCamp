@@ -6,7 +6,7 @@ task Pilconvertpy {
     Boolean? convert_to_greyscale
     Boolean? convert_palette_image
     Boolean? convert_to_rgb
-    Boolean? optimize_output_trade
+    Boolean? optimize_trade_speed
     Int? set_compression_quality
     Boolean? list_supported_formats
     String in_file
@@ -20,16 +20,19 @@ task Pilconvertpy {
       ~{if (convert_to_greyscale) then "-g" else ""} \
       ~{if (convert_palette_image) then "-p" else ""} \
       ~{if (convert_to_rgb) then "-r" else ""} \
-      ~{if (optimize_output_trade) then "-o" else ""} \
+      ~{if (optimize_trade_speed) then "-o" else ""} \
       ~{if defined(set_compression_quality) then ("-q " +  '"' + set_compression_quality + '"') else ""} \
       ~{if (list_supported_formats) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     convert_format_default: "convert to format (default is given by extension)"
     convert_to_greyscale: "convert to greyscale"
     convert_palette_image: "convert to palette image (using standard palette)"
     convert_to_rgb: "convert to rgb"
-    optimize_output_trade: "optimize output (trade speed for size)"
+    optimize_trade_speed: "optimize output (trade speed for size)"
     set_compression_quality: "set compression quality (0-100, JPEG only)"
     list_supported_formats: "list supported file formats"
     in_file: ""

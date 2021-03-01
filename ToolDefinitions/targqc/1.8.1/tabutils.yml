@@ -11,19 +11,19 @@ subcommands:
   - filter
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: tab_filter.py
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -header
+    description: ''
     args: !SimpleFlagArg
       name: file.txt
-    optional: true
-  parent: &id012 !Command
+  parent: &id013 !Command
     command: *id001
     positional: []
     named: []
@@ -33,19 +33,19 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: tab_filter.py
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -header
+        description: ''
         args: !SimpleFlagArg
           name: file.txt
-        optional: true
-      parent: &id011 !Command
+      parent: &id012 !Command
         command: *id001
         positional: []
         named: []
@@ -55,19 +55,19 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: tab_filter.py
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -header
+            description: ''
             args: !SimpleFlagArg
               name: file.txt
-            optional: true
-          parent: &id010 !Command
+          parent: &id011 !Command
             command: *id001
             positional: []
             named: []
@@ -77,19 +77,19 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: tab_filter.py
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -header
+                description: ''
                 args: !SimpleFlagArg
                   name: file.txt
-                optional: true
-              parent: &id003 !Command
+              parent: &id010 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -99,19 +99,269 @@ subcommands:
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: tab_filter.py
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -header
+                    description: ''
                     args: !SimpleFlagArg
                       name: file.txt
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: tab_filter.py
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -header
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: file.txt
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "\nFilters a tab-delmited file based upon configurable\
+                        \ critera\n\nUsage: tab_filter.py -header file.txt {criteria}\n\
+                        \nWhere criteria is a set of operations in the form of:\n\
+                        col# operation value\n\nEg: \n1 eq foo\nColumn 1 (first column)\
+                        \ is equal to 'foo'\n\n1 eq foo 2 lt 3\nColumn 1 (first column)\
+                        \ is equal to 'foo' and column 2 is less than 3\n\nValid operation:\n\
+                        eq\nne\nlt\nlte\ngt\ngte\ncontains\n\nAll comment lines are\
+                        \ printed as-is.\n\n"
+                      generated_using: &id005 []
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - tabutils
+                      - view
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: tab_view.py
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        description: "The number of lines to read in to estimate the\
+                          \ size of a column.\n[default 100]"
+                        args: !SimpleFlagArg
+                          name: lines
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -d
+                        description: Use this (opposed to a tab) for the delimiter
+                        args: !SimpleFlagArg
+                          name: delim
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -max
+                        description: 'The maximum length of a column (default: unlimited)'
+                        args: !SimpleFlagArg
+                          name: size
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -min
+                        description: 'The minimum length of a column (default: 0)'
+                        args: !SimpleFlagArg
+                          name: size
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "\nA data aware tab-delimited file viewer\n\nWorks\
+                        \ by reading in the first few lines to determine the appropriate\
+                        \ widths\nfor each of the columns.  It will then display the\
+                        \ data with the appropriate\nspacing to keep columns together.\
+                        \  If a future cell is larger than the\npredetermined size,\
+                        \ it is truncated.\n\nThis can then be fed into something\
+                        \ like 'less' for paging\n\nUsage: tab_view.py {opts} filename.tab\n\
+                        \nOptions:\n-l lines    The number of lines to read in to\
+                        \ estimate the size of a column.\n            [default 100]\n\
+                        -d delim    Use this (opposed to a tab) for the delimiter\n\
+                        \n-max size   The maximum length of a column (default: unlimited)\n\
+                        -min size   The minimum length of a column (default: 0)\n\n\
+                        \n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - tabutils
+                      - merge
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: 1-4
+                        description: 1-4,5
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -headercomment
+                        description: the header is last commented line ('#')
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -noheader
+                        description: the files have no header row
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -nomissing
+                        description: discard rows with missing values
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -collate
+                        description: order uncommon values by file first, not column
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -keycols
+                        description: ",col   if there are missing values, use these\
+                          \ columns to\ndetermine which file has missing data.  If\
+                          \ the col ends\nin 'n', this is taken to be a number.\n\
+                          (defaults to common cols, in order)"
+                        args: !SimpleFlagArg
+                          name: col
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -keydesc
+                        description: "keys are sorted descending order\n(defaults\
+                          \ to ascending)"
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "\nMerges tab-delimited files together, combining\
+                        \ common columns\n\nUsage: tab_merge.py {opts} common_cols\
+                        \ merge_cols files\n\ncommon_cols and merge_cols should be\
+                        \ a comma-separated list of column numbers.\n\nFiles must\
+                        \ be in the same sort order (given as  if not ascending text).\n\
+                        If the case of extra rows in one of the files, blank values\
+                        \ will be \nsubstituted. New column names will be guessed\
+                        \ based upon the filenames. \nCommented lines and blank lines\
+                        \ are ignored, except for any commented lines \nthat are at\
+                        \ the begining of the file - these are kept.  This assumes\
+                        \ that the \nfirst non-comment, non-blank row is the header.\n\
+                        \nOptions:\n    -headercomment     the header is last commented\
+                        \ line ('#')\n    -noheader          the files have no header\
+                        \ row\n    -nomissing         discard rows with missing values\n\
+                        \    -collate           order uncommon values by file first,\
+                        \ not column\n    \n    -keycols col,col   if there are missing\
+                        \ values, use these columns to \n                       determine\
+                        \ which file has missing data.  If the col ends \n       \
+                        \                in 'n', this is taken to be a number.\n \
+                        \                      (defaults to common cols, in order)\n\
+                        \                       \n    -keydesc           keys are\
+                        \ sorted descending order\n                       (defaults\
+                        \ to ascending)\n\nValid column definitions:\n    1,2,3,4\n\
+                        \    1-4\n    1-4,5\n\n\n"
+                      generated_using: &id008
+                      - -h
+                      docker_image:
+                    - !Command
+                      command: &id009
+                      - tabutils
+                      - less
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: less
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -E
+                        description: Quit once the end of a file is reached
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -M
+                        - -m
+                        description: "Display status line with line numbers\nand percentage\
+                          \ through the file"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -N
+                        description: Prefix line number to each line
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -I
+                        description: Ignore case in all searches
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "less: invalid option -- 'S'\nBusyBox v1.22.1 (2014-05-23\
+                        \ 01:24:27 UTC) multi-call binary.\n\nUsage: less [-EMmNh~I?]\
+                        \ [FILE]...\n\nView FILE (or stdin) one screenful at a time\n\
+                        \n\t-E\tQuit once the end of a file is reached\n\t-M,-m\t\
+                        Display status line with line numbers\n\t\tand percentage\
+                        \ through the file\n\t-N\tPrefix line number to each line\n\
+                        \t-I\tIgnore case in all searches\n\t-~\tSuppress ~s displayed\
+                        \ past EOF\n\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: tabutils COMMAND\n\nCommands\n    filter  -\
+                      \ Filters a tab-delmited file based upon critera\n    merge\
+                      \   - Merges tab-delimited files together, combining common\
+                      \ columns\n    reorder - Re-orders columns in a tab-delimited\
+                      \ file\n    view    - A data aware tab-delimited file viewer\n\
+                      \n    less   - view | less -S\n\nSee 'tabutils help CMD' for\
+                      \ more information about a specific command\n"
+                    generated_using: *id005
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -125,47 +375,46 @@ subcommands:
                     \ equal to 'foo' and column 2 is less than 3\n\nValid operation:\n\
                     eq\nne\nlt\nlte\ngt\ngte\ncontains\n\nAll comment lines are printed\
                     \ as-is.\n\n"
-                  generated_using: &id005 []
+                  generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - tabutils
-                  - view
+                  command: *id006
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: tab_view.py
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: "The number of lines to read in to estimate the size\
-                      \ of a column.\n[default 100]"
+                    optional: true
                     synonyms:
                     - -l
+                    description: "The number of lines to read in to estimate the size\
+                      \ of a column.\n[default 100]"
                     args: !SimpleFlagArg
                       name: lines
-                    optional: true
                   - !Flag
-                    description: Use this (opposed to a tab) for the delimiter
+                    optional: true
                     synonyms:
                     - -d
+                    description: Use this (opposed to a tab) for the delimiter
                     args: !SimpleFlagArg
                       name: delim
-                    optional: true
                   - !Flag
-                    description: 'The maximum length of a column (default: unlimited)'
+                    optional: true
                     synonyms:
                     - -max
+                    description: 'The maximum length of a column (default: unlimited)'
                     args: !SimpleFlagArg
                       name: size
-                    optional: true
                   - !Flag
-                    description: 'The minimum length of a column (default: 0)'
+                    optional: true
                     synonyms:
                     - -min
+                    description: 'The minimum length of a column (default: 0)'
                     args: !SimpleFlagArg
                       name: size
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -184,59 +433,57 @@ subcommands:
                     \ (opposed to a tab) for the delimiter\n\n-max size   The maximum\
                     \ length of a column (default: unlimited)\n-min size   The minimum\
                     \ length of a column (default: 0)\n\n\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - tabutils
-                  - merge
+                  command: *id007
                   positional:
                   - !Positional
-                    description: 1-4,5
-                    position: 0
-                    name: 1-4
                     optional: false
+                    position: 0
+                    name: tab_merge.py
+                    description: ''
                   named:
                   - !Flag
-                    description: the header is last commented line ('#')
+                    optional: true
                     synonyms:
                     - -headercomment
+                    description: the header is last commented line ('#')
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: the files have no header row
+                    optional: true
                     synonyms:
                     - -noheader
+                    description: the files have no header row
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: discard rows with missing values
+                    optional: true
                     synonyms:
                     - -nomissing
+                    description: discard rows with missing values
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: order uncommon values by file first, not column
+                    optional: true
                     synonyms:
                     - -collate
+                    description: order uncommon values by file first, not column
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -keycols
                     description: ",col   if there are missing values, use these columns\
                       \ to\ndetermine which file has missing data.  If the col ends\n\
                       in 'n', this is taken to be a number.\n(defaults to common cols,\
                       \ in order)"
-                    synonyms:
-                    - -keycols
                     args: !SimpleFlagArg
                       name: col
-                    optional: true
                   - !Flag
-                    description: "keys are sorted descending order\n(defaults to ascending)"
+                    optional: true
                     synonyms:
                     - -keydesc
+                    description: "keys are sorted descending order\n(defaults to ascending)"
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -266,45 +513,43 @@ subcommands:
                     \ descending order\n                       (defaults to ascending)\n\
                     \nValid column definitions:\n    1,2,3,4\n    1-4\n    1-4,5\n\
                     \n\n"
-                  generated_using: &id008
-                  - -h
+                  generated_using: *id008
+                  docker_image:
                 - !Command
-                  command: &id009
-                  - tabutils
-                  - less
+                  command: *id009
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: less
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: Quit once the end of a file is reached
+                    optional: true
                     synonyms:
                     - -E
+                    description: Quit once the end of a file is reached
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "Display status line with line numbers\nand percentage\
-                      \ through the file"
+                    optional: true
                     synonyms:
                     - -M
                     - -m
+                    description: "Display status line with line numbers\nand percentage\
+                      \ through the file"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Prefix line number to each line
+                    optional: true
                     synonyms:
                     - -N
+                    description: Prefix line number to each line
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Ignore case in all searches
+                    optional: true
                     synonyms:
                     - -I
+                    description: Ignore case in all searches
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -319,6 +564,7 @@ subcommands:
                     \ file\n\t-N\tPrefix line number to each line\n\t-I\tIgnore case\
                     \ in all searches\n\t-~\tSuppress ~s displayed past EOF\n\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -330,6 +576,7 @@ subcommands:
                   \ file viewer\n\n    less   - view | less -S\n\nSee 'tabutils help\
                   \ CMD' for more information about a specific command\n"
                 generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -343,45 +590,46 @@ subcommands:
                 \ 2 is less than 3\n\nValid operation:\neq\nne\nlt\nlte\ngt\ngte\n\
                 contains\n\nAll comment lines are printed as-is.\n\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: tab_view.py
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: "The number of lines to read in to estimate the size\
-                  \ of a column.\n[default 100]"
+                optional: true
                 synonyms:
                 - -l
+                description: "The number of lines to read in to estimate the size\
+                  \ of a column.\n[default 100]"
                 args: !SimpleFlagArg
                   name: lines
-                optional: true
               - !Flag
-                description: Use this (opposed to a tab) for the delimiter
+                optional: true
                 synonyms:
                 - -d
+                description: Use this (opposed to a tab) for the delimiter
                 args: !SimpleFlagArg
                   name: delim
-                optional: true
               - !Flag
-                description: 'The maximum length of a column (default: unlimited)'
+                optional: true
                 synonyms:
                 - -max
+                description: 'The maximum length of a column (default: unlimited)'
                 args: !SimpleFlagArg
                   name: size
-                optional: true
               - !Flag
-                description: 'The minimum length of a column (default: 0)'
+                optional: true
                 synonyms:
                 - -min
+                description: 'The minimum length of a column (default: 0)'
                 args: !SimpleFlagArg
                   name: size
-                optional: true
-              parent: *id003
+              parent: *id010
               subcommands: []
               usage: []
               help_flag:
@@ -399,56 +647,57 @@ subcommands:
                 \ size   The maximum length of a column (default: unlimited)\n-min\
                 \ size   The minimum length of a column (default: 0)\n\n\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: tab_merge.py
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: the header is last commented line ('#')
+                optional: true
                 synonyms:
                 - -headercomment
+                description: the header is last commented line ('#')
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: the files have no header row
+                optional: true
                 synonyms:
                 - -noheader
+                description: the files have no header row
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: discard rows with missing values
+                optional: true
                 synonyms:
                 - -nomissing
+                description: discard rows with missing values
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: order uncommon values by file first, not column
+                optional: true
                 synonyms:
                 - -collate
+                description: order uncommon values by file first, not column
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - -keycols
                 description: ",col   if there are missing values, use these columns\
                   \ to\ndetermine which file has missing data.  If the col ends\n\
                   in 'n', this is taken to be a number.\n(defaults to common cols,\
                   \ in order)"
-                synonyms:
-                - -keycols
                 args: !SimpleFlagArg
                   name: col
-                optional: true
               - !Flag
-                description: "keys are sorted descending order\n(defaults to ascending)"
+                optional: true
                 synonyms:
                 - -keydesc
+                description: "keys are sorted descending order\n(defaults to ascending)"
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id010
               subcommands: []
               usage: []
               help_flag:
@@ -476,42 +725,43 @@ subcommands:
                 \ order\n                       (defaults to ascending)\n\nValid column\
                 \ definitions:\n    1,2,3,4\n    1-4\n    1-4,5\n\n\n"
               generated_using: *id008
+              docker_image:
             - !Command
               command: *id009
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: less
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: Quit once the end of a file is reached
+                optional: true
                 synonyms:
                 - -E
+                description: Quit once the end of a file is reached
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "Display status line with line numbers\nand percentage\
-                  \ through the file"
+                optional: true
                 synonyms:
                 - -M
                 - -m
+                description: "Display status line with line numbers\nand percentage\
+                  \ through the file"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Prefix line number to each line
+                optional: true
                 synonyms:
                 - -N
+                description: Prefix line number to each line
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Ignore case in all searches
+                optional: true
                 synonyms:
                 - -I
+                description: Ignore case in all searches
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id010
               subcommands: []
               usage: []
               help_flag:
@@ -525,6 +775,7 @@ subcommands:
                 \ line number to each line\n\t-I\tIgnore case in all searches\n\t\
                 -~\tSuppress ~s displayed past EOF\n\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -536,6 +787,7 @@ subcommands:
               \ file viewer\n\n    less   - view | less -S\n\nSee 'tabutils help CMD'\
               \ for more information about a specific command\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -549,45 +801,46 @@ subcommands:
             \nValid operation:\neq\nne\nlt\nlte\ngt\ngte\ncontains\n\nAll comment\
             \ lines are printed as-is.\n\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: tab_view.py
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: "The number of lines to read in to estimate the size of a\
-              \ column.\n[default 100]"
+            optional: true
             synonyms:
             - -l
+            description: "The number of lines to read in to estimate the size of a\
+              \ column.\n[default 100]"
             args: !SimpleFlagArg
               name: lines
-            optional: true
           - !Flag
-            description: Use this (opposed to a tab) for the delimiter
+            optional: true
             synonyms:
             - -d
+            description: Use this (opposed to a tab) for the delimiter
             args: !SimpleFlagArg
               name: delim
-            optional: true
           - !Flag
-            description: 'The maximum length of a column (default: unlimited)'
+            optional: true
             synonyms:
             - -max
+            description: 'The maximum length of a column (default: unlimited)'
             args: !SimpleFlagArg
               name: size
-            optional: true
           - !Flag
-            description: 'The minimum length of a column (default: 0)'
+            optional: true
             synonyms:
             - -min
+            description: 'The minimum length of a column (default: 0)'
             args: !SimpleFlagArg
               name: size
-            optional: true
-          parent: *id010
+          parent: *id011
           subcommands: []
           usage: []
           help_flag:
@@ -605,55 +858,56 @@ subcommands:
             \ (default: unlimited)\n-min size   The minimum length of a column (default:\
             \ 0)\n\n\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: tab_merge.py
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: the header is last commented line ('#')
+            optional: true
             synonyms:
             - -headercomment
+            description: the header is last commented line ('#')
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: the files have no header row
+            optional: true
             synonyms:
             - -noheader
+            description: the files have no header row
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: discard rows with missing values
+            optional: true
             synonyms:
             - -nomissing
+            description: discard rows with missing values
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: order uncommon values by file first, not column
+            optional: true
             synonyms:
             - -collate
+            description: order uncommon values by file first, not column
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - -keycols
             description: ",col   if there are missing values, use these columns to\n\
               determine which file has missing data.  If the col ends\nin 'n', this\
               \ is taken to be a number.\n(defaults to common cols, in order)"
-            synonyms:
-            - -keycols
             args: !SimpleFlagArg
               name: col
-            optional: true
           - !Flag
-            description: "keys are sorted descending order\n(defaults to ascending)"
+            optional: true
             synonyms:
             - -keydesc
+            description: "keys are sorted descending order\n(defaults to ascending)"
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id010
+          parent: *id011
           subcommands: []
           usage: []
           help_flag:
@@ -680,42 +934,43 @@ subcommands:
             \                       (defaults to ascending)\n\nValid column definitions:\n\
             \    1,2,3,4\n    1-4\n    1-4,5\n\n\n"
           generated_using: *id008
+          docker_image:
         - !Command
           command: *id009
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: less
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: Quit once the end of a file is reached
+            optional: true
             synonyms:
             - -E
+            description: Quit once the end of a file is reached
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "Display status line with line numbers\nand percentage through\
-              \ the file"
+            optional: true
             synonyms:
             - -M
             - -m
+            description: "Display status line with line numbers\nand percentage through\
+              \ the file"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Prefix line number to each line
+            optional: true
             synonyms:
             - -N
+            description: Prefix line number to each line
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Ignore case in all searches
+            optional: true
             synonyms:
             - -I
+            description: Ignore case in all searches
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id010
+          parent: *id011
           subcommands: []
           usage: []
           help_flag:
@@ -729,6 +984,7 @@ subcommands:
             \t-I\tIgnore case in all searches\n\t-~\tSuppress ~s displayed past EOF\n\
             \n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -740,6 +996,7 @@ subcommands:
           \   - view | less -S\n\nSee 'tabutils help CMD' for more information about\
           \ a specific command\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -753,45 +1010,46 @@ subcommands:
         eq\nne\nlt\nlte\ngt\ngte\ncontains\n\nAll comment lines are printed as-is.\n\
         \n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: tab_view.py
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: "The number of lines to read in to estimate the size of a column.\n\
-          [default 100]"
+        optional: true
         synonyms:
         - -l
+        description: "The number of lines to read in to estimate the size of a column.\n\
+          [default 100]"
         args: !SimpleFlagArg
           name: lines
-        optional: true
       - !Flag
-        description: Use this (opposed to a tab) for the delimiter
+        optional: true
         synonyms:
         - -d
+        description: Use this (opposed to a tab) for the delimiter
         args: !SimpleFlagArg
           name: delim
-        optional: true
       - !Flag
-        description: 'The maximum length of a column (default: unlimited)'
+        optional: true
         synonyms:
         - -max
+        description: 'The maximum length of a column (default: unlimited)'
         args: !SimpleFlagArg
           name: size
-        optional: true
       - !Flag
-        description: 'The minimum length of a column (default: 0)'
+        optional: true
         synonyms:
         - -min
+        description: 'The minimum length of a column (default: 0)'
         args: !SimpleFlagArg
           name: size
-        optional: true
-      parent: *id011
+      parent: *id012
       subcommands: []
       usage: []
       help_flag:
@@ -808,55 +1066,56 @@ subcommands:
         \ delimiter\n\n-max size   The maximum length of a column (default: unlimited)\n\
         -min size   The minimum length of a column (default: 0)\n\n\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: tab_merge.py
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: the header is last commented line ('#')
+        optional: true
         synonyms:
         - -headercomment
+        description: the header is last commented line ('#')
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: the files have no header row
+        optional: true
         synonyms:
         - -noheader
+        description: the files have no header row
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: discard rows with missing values
+        optional: true
         synonyms:
         - -nomissing
+        description: discard rows with missing values
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: order uncommon values by file first, not column
+        optional: true
         synonyms:
         - -collate
+        description: order uncommon values by file first, not column
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - -keycols
         description: ",col   if there are missing values, use these columns to\ndetermine\
           \ which file has missing data.  If the col ends\nin 'n', this is taken to\
           \ be a number.\n(defaults to common cols, in order)"
-        synonyms:
-        - -keycols
         args: !SimpleFlagArg
           name: col
-        optional: true
       - !Flag
-        description: "keys are sorted descending order\n(defaults to ascending)"
+        optional: true
         synonyms:
         - -keydesc
+        description: "keys are sorted descending order\n(defaults to ascending)"
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id011
+      parent: *id012
       subcommands: []
       usage: []
       help_flag:
@@ -882,42 +1141,43 @@ subcommands:
         \ order\n                       (defaults to ascending)\n\nValid column definitions:\n\
         \    1,2,3,4\n    1-4\n    1-4,5\n\n\n"
       generated_using: *id008
+      docker_image:
     - !Command
       command: *id009
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: less
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: Quit once the end of a file is reached
+        optional: true
         synonyms:
         - -E
+        description: Quit once the end of a file is reached
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "Display status line with line numbers\nand percentage through\
-          \ the file"
+        optional: true
         synonyms:
         - -M
         - -m
+        description: "Display status line with line numbers\nand percentage through\
+          \ the file"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Prefix line number to each line
+        optional: true
         synonyms:
         - -N
+        description: Prefix line number to each line
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Ignore case in all searches
+        optional: true
         synonyms:
         - -I
+        description: Ignore case in all searches
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id011
+      parent: *id012
       subcommands: []
       usage: []
       help_flag:
@@ -930,6 +1190,7 @@ subcommands:
         \ through the file\n\t-N\tPrefix line number to each line\n\t-I\tIgnore case\
         \ in all searches\n\t-~\tSuppress ~s displayed past EOF\n\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -941,6 +1202,7 @@ subcommands:
       \ view | less -S\n\nSee 'tabutils help CMD' for more information about a specific\
       \ command\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -953,45 +1215,46 @@ subcommands:
     \ and column 2 is less than 3\n\nValid operation:\neq\nne\nlt\nlte\ngt\ngte\n\
     contains\n\nAll comment lines are printed as-is.\n\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: tab_view.py
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: "The number of lines to read in to estimate the size of a column.\n\
-      [default 100]"
+    optional: true
     synonyms:
     - -l
+    description: "The number of lines to read in to estimate the size of a column.\n\
+      [default 100]"
     args: !SimpleFlagArg
       name: lines
-    optional: true
   - !Flag
-    description: Use this (opposed to a tab) for the delimiter
+    optional: true
     synonyms:
     - -d
+    description: Use this (opposed to a tab) for the delimiter
     args: !SimpleFlagArg
       name: delim
-    optional: true
   - !Flag
-    description: 'The maximum length of a column (default: unlimited)'
+    optional: true
     synonyms:
     - -max
+    description: 'The maximum length of a column (default: unlimited)'
     args: !SimpleFlagArg
       name: size
-    optional: true
   - !Flag
-    description: 'The minimum length of a column (default: 0)'
+    optional: true
     synonyms:
     - -min
+    description: 'The minimum length of a column (default: 0)'
     args: !SimpleFlagArg
       name: size
-    optional: true
-  parent: *id012
+  parent: *id013
   subcommands: []
   usage: []
   help_flag:
@@ -1008,55 +1271,56 @@ subcommands:
     \ of a column (default: unlimited)\n-min size   The minimum length of a column\
     \ (default: 0)\n\n\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: tab_merge.py
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: the header is last commented line ('#')
+    optional: true
     synonyms:
     - -headercomment
+    description: the header is last commented line ('#')
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: the files have no header row
+    optional: true
     synonyms:
     - -noheader
+    description: the files have no header row
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: discard rows with missing values
+    optional: true
     synonyms:
     - -nomissing
+    description: discard rows with missing values
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: order uncommon values by file first, not column
+    optional: true
     synonyms:
     - -collate
+    description: order uncommon values by file first, not column
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - -keycols
     description: ",col   if there are missing values, use these columns to\ndetermine\
       \ which file has missing data.  If the col ends\nin 'n', this is taken to be\
       \ a number.\n(defaults to common cols, in order)"
-    synonyms:
-    - -keycols
     args: !SimpleFlagArg
       name: col
-    optional: true
   - !Flag
-    description: "keys are sorted descending order\n(defaults to ascending)"
+    optional: true
     synonyms:
     - -keydesc
+    description: "keys are sorted descending order\n(defaults to ascending)"
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id012
+  parent: *id013
   subcommands: []
   usage: []
   help_flag:
@@ -1081,42 +1345,43 @@ subcommands:
     \                       (defaults to ascending)\n\nValid column definitions:\n\
     \    1,2,3,4\n    1-4\n    1-4,5\n\n\n"
   generated_using: *id008
+  docker_image:
 - !Command
   command: *id009
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: less
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: Quit once the end of a file is reached
+    optional: true
     synonyms:
     - -E
+    description: Quit once the end of a file is reached
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "Display status line with line numbers\nand percentage through the\
-      \ file"
+    optional: true
     synonyms:
     - -M
     - -m
+    description: "Display status line with line numbers\nand percentage through the\
+      \ file"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Prefix line number to each line
+    optional: true
     synonyms:
     - -N
+    description: Prefix line number to each line
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Ignore case in all searches
+    optional: true
     synonyms:
     - -I
+    description: Ignore case in all searches
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id012
+  parent: *id013
   subcommands: []
   usage: []
   help_flag:
@@ -1129,6 +1394,7 @@ subcommands:
     \t-N\tPrefix line number to each line\n\t-I\tIgnore case in all searches\n\t-~\t\
     Suppress ~s displayed past EOF\n\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -1139,3 +1405,4 @@ help_text: "Usage: tabutils COMMAND\n\nCommands\n    filter  - Filters a tab-del
   \    - A data aware tab-delimited file viewer\n\n    less   - view | less -S\n\n\
   See 'tabutils help CMD' for more information about a specific command\n"
 generated_using: *id005
+docker_image:

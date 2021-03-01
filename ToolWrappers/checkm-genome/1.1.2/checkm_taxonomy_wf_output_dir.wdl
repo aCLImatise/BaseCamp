@@ -18,6 +18,9 @@ task CheckmTaxonomyWfOutputDir {
       ~{if (nt) then "--nt" else ""} \
       ~{if (ali) then "--ali" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     individual_markers: ""
     g: ""

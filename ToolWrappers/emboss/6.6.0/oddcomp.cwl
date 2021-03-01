@@ -5,7 +5,7 @@ inputs:
   doc: "toggle     [N] Set this option on (Y) if you want the\nwindow size to be set\
     \ to the length of the\ncurrent protein. Otherwise, leave this\noption unset,\
     \ in which case you'll be\nprompted for a window size to use."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -fullwindow
 - id: in_count_dot
@@ -22,6 +22,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - oddcomp

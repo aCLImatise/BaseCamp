@@ -4,17 +4,21 @@ command:
 - qa
 positional:
 - !Positional
-  description: marker file specified during analyze command
+  optional: false
   position: 0
   name: marker_file
-  optional: false
+  description: marker file specified during analyze command
 - !Positional
-  description: directory specified during analyze command
+  optional: false
   position: 1
   name: analyze_dir
-  optional: false
+  description: directory specified during analyze command
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out_format
   description: "desired output: (default: 1)\n1. summary of bin completeness and contamination\n\
     2. extended summary of bin statistics (includes GC, genome size, ...)\n3. summary\
     \ of bin quality for increasingly basal lineage-specific marker sets\n4. list\
@@ -23,138 +27,134 @@ named:
     \ present multiple times on the same scaffold\n8. list indicating position of\
     \ each marker gene within a bin\n9. FASTA file of marker genes identified in each\
     \ bin"
-  synonyms:
-  - -o
-  - --out_format
   args: !ChoiceFlagArg
     choices: !!set
-      '6':
-      '2':
       '9':
-      '7':
-      '1':
-      '8':
-      '4':
-      '3':
+      '2':
       '5':
-  optional: true
+      '7':
+      '8':
+      '3':
+      '1':
+      '4':
+      '6':
 - !Flag
-  description: file specifying markers to exclude from marker sets
+  optional: true
   synonyms:
   - --exclude_markers
+  description: file specifying markers to exclude from marker sets
   args: !SimpleFlagArg
     name: EXCLUDE_MARKERS
-  optional: true
 - !Flag
-  description: treat marker as independent (i.e., ignore co-located set structure)
+  optional: true
   synonyms:
   - --individual_markers
+  description: treat marker as independent (i.e., ignore co-located set structure)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: do not exclude adjacent marker genes when estimating contamination
+  optional: true
   synonyms:
   - --skip_adj_correction
+  description: do not exclude adjacent marker genes when estimating contamination
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: skip identification and filtering of pseudogenes
+  optional: true
   synonyms:
   - --skip_pseudogene_correction
+  description: skip identification and filtering of pseudogenes
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'AAI threshold used to identify strain heterogeneity (default: 0.9)'
+  optional: true
   synonyms:
   - --aai_strain
+  description: 'AAI threshold used to identify strain heterogeneity (default: 0.9)'
   args: !SimpleFlagArg
     name: AAI_STRAIN
-  optional: true
 - !Flag
-  description: produce file showing alignment of multi-copy genes and their AAI identity
+  optional: true
   synonyms:
   - -a
   - --alignment_file
+  description: produce file showing alignment of multi-copy genes and their AAI identity
   args: !SimpleFlagArg
     name: ALIGNMENT_FILE
-  optional: true
 - !Flag
-  description: ignore model-specific score thresholds
+  optional: true
   synonyms:
   - --ignore_thresholds
+  description: ignore model-specific score thresholds
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'e-value cut off (default: 1e-10)'
+  optional: true
   synonyms:
   - -e
   - --e_value
+  description: 'e-value cut off (default: 1e-10)'
   args: !SimpleFlagArg
     name: E_VALUE
-  optional: true
 - !Flag
-  description: 'percent overlap between target and query (default: 0.7)'
+  optional: true
   synonyms:
   - -l
   - --length
+  description: 'percent overlap between target and query (default: 0.7)'
   args: !SimpleFlagArg
     name: LENGTH
-  optional: true
 - !Flag
-  description: file containing coverage of each sequence; coverage information added
-    to table type 2 (see coverage command)
+  optional: true
   synonyms:
   - -c
   - --coverage_file
+  description: file containing coverage of each sequence; coverage information added
+    to table type 2 (see coverage command)
   args: !SimpleFlagArg
     name: COVERAGE_FILE
-  optional: true
 - !Flag
-  description: 'print results to file (default: stdout)'
+  optional: true
   synonyms:
   - -f
   - --file
+  description: 'print results to file (default: stdout)'
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: print tab-separated values table
+  optional: true
   synonyms:
   - --tab_table
+  description: print tab-separated values table
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'number of threads (default: 1)'
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: 'number of threads (default: 1)'
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: suppress console output
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: suppress console output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: specify an alternative directory for temporary files
+  optional: true
   synonyms:
   - --tmpdir
+  description: specify an alternative directory for temporary files
   args: !SimpleFlagArg
     name: TMPDIR
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: checkm qa [-h] [-o {1,2,3,4,5,6,7,8,9}]\n                 [--exclude_markers\
@@ -201,3 +201,4 @@ help_text: "usage: checkm qa [-h] [-o {1,2,3,4,5,6,7,8,9}]\n                 [--
   \                                        \n"
 generated_using:
 - --help
+docker_image:

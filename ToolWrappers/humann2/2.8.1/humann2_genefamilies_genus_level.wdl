@@ -10,6 +10,9 @@ task Humann2GenefamiliesGenusLevel {
       ~{if defined(gene_families_input) then ("--input " +  '"' + gene_families_input + '"') else ""} \
       ~{if defined(the_output_table) then ("--output " +  '"' + the_output_table + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene_families_input: "the gene families input table"
     the_output_table: "the output table\\n"

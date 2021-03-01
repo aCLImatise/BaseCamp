@@ -2,15 +2,20 @@ class: CommandLineTool
 id: hca_auth_get_v1_user_owns.cwl
 inputs:
 - id: in_user_id
-  doc: "User ID (email).\n--next-token NEXT_TOKEN\n--per-page PER_PAGE\n--resource-type\
-    \ RESOURCE_TYPE\n--no-paginate         Do not automatically page the responses\n"
-  type: string
+  doc: User ID (email).
+  type: string?
   inputBinding:
     prefix: --user-id
+- id: in_resource_type
+  doc: Do not automatically page the responses
+  type: string?
+  inputBinding:
+    prefix: --resource-type
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hca

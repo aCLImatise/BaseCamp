@@ -26,6 +26,9 @@ task Genomedataload {
       ~{if (file_mode) then "--file-mode" else ""} \
       ~{if (directory_mode) then "--directory-mode" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequence: "Add the sequence data in the specified file or files\\n(may use UNIX glob wildcard syntax)"
     verbose: "Print status updates and diagnostic messages"

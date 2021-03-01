@@ -1,0 +1,206 @@
+!Command
+command:
+- poa
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: MATRIXFILE
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -read_fasta
+  description: Read in FASTA sequence file.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -read_msa
+  description: Read in MSA alignment file.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -read_msa2
+  description: Read in second MSA file.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -subset
+  description: Filter MSA to include list of seqs in file.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -subset2
+  description: Filter second MSA to include list of seqs in file.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -remove
+  description: Filter MSA to exclude list of seqs in file.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -remove2
+  description: Filter second MSA to exclude list of seqs in file.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -read_msa_list
+  description: Read an MSA from each filename listed in file.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -tolower
+  description: "Force FASTA/MSA sequences to lowercase\n(nucleotides in our matrix\
+    \ files)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -toupper
+  description: "Force FASTA/MSA sequences to UPPERCASE\n(amino acids in our matrix\
+    \ files)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -do_global
+  description: Do global alignment.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -do_progressive
+  description: "Perform progressive alignment using a guide tree\nbuilt by neighbor\
+    \ joining from a set of\nsequence-sequence similarity scores."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -read_pairscores
+  description: "Read tab-delimited file of similarity scores.\n(If not provided, scores\
+    \ are constructed\nusing pairwise sequence alignment.)"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -fuse_all
+  description: Fuse identical letters on align rings.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -hb
+  description: Perform heaviest bundling to generate consensi.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -hbmin
+  description: "Include in heaviest bundle sequences with\npercent ID (as a fraction)\
+    \ >= value."
+  args: !SimpleFlagArg
+    name: VALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -pir
+  description: Write out MSA in PIR format.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -clustal
+  description: Write out MSA in CLUSTAL format.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -po
+  description: Write out MSA in PO format.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -preserve_seqorder
+  description: Write out MSA with sequences in their input order.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -printmatrix
+  description: Print score matrix to stdout.
+  args: !SimpleFlagArg
+    name: LETTERS
+- !Flag
+  optional: true
+  synonyms:
+  - -best
+  description: Restrict MSA output to heaviest bundles (PIR only).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: Run in verbose mode (e.g. output gap penalties).
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage: poa [OPTIONS] MATRIXFILE\nAlign a set of sequences or alignments\
+  \ using the scores in MATRIXFILE.\nExample: poa -read_fasta multidom.seq -clustal\
+  \ m.aln blosum80.mat\n\nINPUT:\n  -read_fasta FILE       Read in FASTA sequence\
+  \ file.\n  -read_msa FILE         Read in MSA alignment file.\n  -read_msa2 FILE\
+  \        Read in second MSA file. \n  -subset FILE           Filter MSA to include\
+  \ list of seqs in file.\n  -subset2 FILE          Filter second MSA to include list\
+  \ of seqs in file.\n  -remove FILE           Filter MSA to exclude list of seqs\
+  \ in file.\n  -remove2 FILE          Filter second MSA to exclude list of seqs in\
+  \ file.\n  -read_msa_list FILE    Read an MSA from each filename listed in file.\n\
+  \  -tolower               Force FASTA/MSA sequences to lowercase\n             \
+  \              (nucleotides in our matrix files)\n  -toupper               Force\
+  \ FASTA/MSA sequences to UPPERCASE\n                           (amino acids in our\
+  \ matrix files)\n\nALIGNMENT:\n  -do_global             Do global alignment.\n \
+  \ -do_progressive        Perform progressive alignment using a guide tree\n    \
+  \                       built by neighbor joining from a set of\n              \
+  \             sequence-sequence similarity scores.\n  -read_pairscores FILE  Read\
+  \ tab-delimited file of similarity scores.\n                           (If not provided,\
+  \ scores are constructed\n                           using pairwise sequence alignment.)\n\
+  \  -fuse_all              Fuse identical letters on align rings.\n\nANALYSIS:\n\
+  \  -hb                    Perform heaviest bundling to generate consensi.\n  -hbmin\
+  \ VALUE           Include in heaviest bundle sequences with\n                  \
+  \         percent ID (as a fraction) >= value.\n\nOUTPUT:\n  -pir FILE         \
+  \     Write out MSA in PIR format.\n  -clustal FILE          Write out MSA in CLUSTAL\
+  \ format.\n  -po FILE               Write out MSA in PO format.\n  -preserve_seqorder\
+  \     Write out MSA with sequences in their input order.\n  -printmatrix LETTERS\
+  \   Print score matrix to stdout.\n  -best                  Restrict MSA output\
+  \ to heaviest bundles (PIR only).\n  -v                     Run in verbose mode\
+  \ (e.g. output gap penalties).\n\n  NOTE:  One of the -read_fasta, -read_msa, or\
+  \ -read_msa_list arguments\n         must be used, since a sequence or alignment\
+  \ file is required.\n\nFor more information, see http://www.bioinformatics.ucla.edu/poa.\n\
+  \n"
+generated_using: []
+docker_image: quay.io/biocontainers/elector:1.0.4--py36hf0b53f7_1

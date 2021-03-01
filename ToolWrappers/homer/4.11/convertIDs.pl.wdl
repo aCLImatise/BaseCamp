@@ -20,6 +20,9 @@ task ConvertIDspl {
       ~{original} \
       ~{all}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: ""
     organism: ""

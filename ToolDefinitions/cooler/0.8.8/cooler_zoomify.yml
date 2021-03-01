@@ -4,85 +4,85 @@ command:
 - zoomify
 positional:
 - !Positional
-  description: -h, --help               Show this message and exit.
+  optional: false
   position: 0
   name: levels.
-  optional: false
+  description: -h, --help               Show this message and exit.
 named:
 - !Flag
-  description: "Number of processes to use for batch processing\nchunks of pixels\
-    \ [default: 1, i.e. no process pool]"
+  optional: true
   synonyms:
   - -n
   - -p
   - --nproc
+  description: "Number of processes to use for batch processing\nchunks of pixels\
+    \ [default: 1, i.e. no process pool]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Number of pixels allocated to each process\n[default: 10000000]"
+  optional: true
   synonyms:
   - -c
   - --chunksize
+  description: "Number of pixels allocated to each process\n[default: 10000000]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --resolutions
   description: "Comma-separated list of target resolutions. Use\nsuffixes B or N to\
     \ specify a progression: B for\nbinary (geometric steps of factor 2), N for nice\n\
     (geometric steps of factor 10 interleaved with\nsteps of 2 and 5). Examples:\n\
     1000B=1000,2000,4000,8000,...\n1000N=1000,2000,5000,10000,...\n5000N=5000,10000,25000,50000,...\
     \ 4DN is an alias\nfor 1000,2000,5000N [default: B]"
-  synonyms:
-  - -r
-  - --resolutions
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Apply balancing to each zoom level. Off by default.
+  optional: true
   synonyms:
   - --balance
+  description: Apply balancing to each zoom level. Off by default.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Additional arguments to pass to cooler balance
+  optional: true
   synonyms:
   - --balance-args
+  description: Additional arguments to pass to cooler balance
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "One or more additional base coolers to aggregate\nfrom, if needed."
+  optional: true
   synonyms:
   - -i
   - --base-uri
+  description: "One or more additional base coolers to aggregate\nfrom, if needed."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Output file or URI
+  optional: true
   synonyms:
   - -o
   - --out
+  description: Output file or URI
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --field
   description: "Specify the names of value columns to merge as\n'<name>'. Repeat the\
     \ `--field` option for each one.\nUse '<name>:dtype=<dtype>' to specify the dtype.\n\
     Include ',agg=<agg>' to specify an aggregation\nfunction different from 'sum'."
-  synonyms:
-  - --field
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Use the legacy layout of integer-labeled zoom
+  optional: true
   synonyms:
   - --legacy
+  description: Use the legacy layout of integer-labeled zoom
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -115,3 +115,4 @@ help_text: "Usage: cooler zoomify [OPTIONS] COOL_PATH\n\n  Generate a multi-reso
   \   levels.\n\n  -h, --help               Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

@@ -10,6 +10,9 @@ task TripailleDbPopulateMviews {
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if (no_wait) then "--no_wait" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "filter on mview name"
     no_wait: "Do not wait for job to complete"

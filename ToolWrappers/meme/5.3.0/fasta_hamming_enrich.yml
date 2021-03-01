@@ -1,0 +1,64 @@
+!Command
+command:
+- fasta-hamming-enrich
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: word (required)
+  args: !SimpleFlagArg
+    name: word
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: positive sequences FASTA file name (required)
+  args: !SimpleFlagArg
+    name: file_name
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: negative sequences FASTA file name (required)
+  args: !SimpleFlagArg
+    name: file_name
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: alphabet definition file
+  args: !SimpleFlagArg
+    name: file_name
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "refine consensus by branching search\n(distance 1 steps; beam size\
+    \ = 1)."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: print this usage message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "USAGE:\n    /usr/local/bin/fasta-hamming-enrich [options]\n\n    -w <word>\
+  \               word (required)\n    -p <file_name>          positive sequences\
+  \ FASTA file name (required)\n    -n <file_name>          negative sequences FASTA\
+  \ file name (required)\n    -a <file_name>          alphabet definition file\n \
+  \   -r                      refine consensus by branching search\n             \
+  \               (distance 1 steps; beam size = 1).\n    -h                     \
+  \ print this usage message\n\n    Compute the Hamming distance from <word> to each\
+  \ FASTA sequence\n    in the positive and negative files.  Apply Fisher's Exact\
+  \ test to\n    each distance.\n    <word> may contain ambiguous characters.\n\n\
+  \    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/meme:5.3.0--py38pl526hc1f1133_0

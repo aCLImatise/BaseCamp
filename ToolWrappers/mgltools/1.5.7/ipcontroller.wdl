@@ -4,6 +4,9 @@ task Ipcontroller {
   command <<<
     ipcontroller
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

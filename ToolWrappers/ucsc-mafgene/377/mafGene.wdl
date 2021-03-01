@@ -38,6 +38,9 @@ task MafGene {
       ~{if defined(delay) then ("-delay " +  '"' + delay + '"') else ""} \
       ~{if (no_dash) then "-noDash" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     use_file: "genePredTable argument is a genePred file name"
     gene_name: "name of gene as it appears in genePred"

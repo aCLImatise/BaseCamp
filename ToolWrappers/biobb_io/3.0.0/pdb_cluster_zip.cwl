@@ -3,12 +3,12 @@ id: pdb_cluster_zip.cwl
 inputs:
 - id: in_config
   doc: This file can be a YAML file, JSON file or JSON string
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_output_pdb_zip_path
   doc: "Output ZIP file name\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_pdb_zip_path
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_pdb_zip_path
   doc: "Output ZIP file name\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_pdb_zip_path)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pdb_cluster_zip

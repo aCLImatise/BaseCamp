@@ -4,58 +4,95 @@ command:
 positional: []
 named:
 - !Flag
-  description: MANDATORY unless -nb set
-  synonyms:
-  - -s
-  args: !SimpleFlagArg
-    name: reads to align to the assembly to check for misassemblies
   optional: true
+  synonyms:
+  - -r
+  description: MANDATORY
+  args: !SimpleFlagArg
+    name: reference genome
 - !Flag
-  description: '<samtools memory to use while sorting, need to have at least this
-    much* number of threads PHYSICAL RAM: default 1G>'
+  optional: true
+  synonyms:
+  - -q
+  description: MANDATORY
+  args: !SimpleFlagArg
+    name: assembly to be scaffolded with the reference
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - -i
+  description: '<minimum sequence similarity percentage: default 97>'
+  args: !SimpleFlagArg
+    name: number of threads
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: '<merge equence alignments slack: default 100000>'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nb
+  description: 'not align reads to query contigs and do not attempt to break at misassemblies:
+    default off'
+  args: !SimpleFlagArg
+    name: do
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - -s
+  description: MANDATORY unless -nb set
+  args: !SimpleFlagArg
+    name: verbose
+- !Flag
+  optional: true
   synonyms:
   - -sm
+  description: '<samtools memory to use while sorting, need to have at least this
+    much* number of threads PHYSICAL RAM: default 1G>'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Pacbio HIFI reads -- speeds up the alignment
+  optional: true
   synonyms:
   - -hf
+  description: Pacbio HIFI reads -- speeds up the alignment
   args: !SimpleFlagArg
     name: Use
-  optional: true
 - !Flag
-  description: '<coverage threshold for splitting at misassemblies: default 3>'
+  optional: true
   synonyms:
   - -cl
+  description: '<coverage threshold for splitting at misassemblies: default 3>'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<repeat coverage threshold for splitting at misassemblies: default
-    30>'
+  optional: true
   synonyms:
   - -ch
+  description: '<repeat coverage threshold for splitting at misassemblies: default
+    30>'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'to fill unaligned gaps with reference contigs: defalut off'
+  optional: true
   synonyms:
   - -M
+  description: 'to fill unaligned gaps with reference contigs: defalut off'
   args: !SimpleFlagArg
     name: attempt
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: message
+  optional: true
   synonyms:
   - -h
   - -u
   - --help
+  description: message
   args: !SimpleFlagArg
     name: this
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nUsage: chromosome_scaffolder.sh\n-r <reference genome> MANDATORY\n-q\
@@ -71,3 +108,4 @@ help_text: "\nUsage: chromosome_scaffolder.sh\n-r <reference genome> MANDATORY\n
   \ with reference contigs: defalut off\n-h|-u|--help this message\n\n"
 generated_using:
 - --help
+docker_image:

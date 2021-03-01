@@ -16,6 +16,9 @@ task BuildTaxdb {
       ~{three} \
       ~{arguments}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     with: ""
     two: ""

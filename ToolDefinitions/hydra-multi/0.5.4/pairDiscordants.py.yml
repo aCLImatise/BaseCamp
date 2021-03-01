@@ -1,0 +1,194 @@
+!Command
+command:
+- pairDiscordants.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --file
+  description: "A tab delimited BED file, or standard input (-i\nstdin)."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --numMappings
+  description: "The number of mapping combinations that are reported.\nDefault = 1000."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --order
+  description: "The order to choose mappings when there are more than\nspecified in\
+    \ -n. Supports size between read1-read2\nmappings (-o size) or genome order (-o\
+    \ genome) sorted\nin default fashion (chr10 before chr2). In either case\nmapping\
+    \ combinations with less edit distance have\npriority. Default = size."
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dist
+  description: "The genomic distance above which a readpair mapping is\nconsidered\
+    \ 'distant'. This is used in determining the\norder that mappings are reported\
+    \ when using the 'size'\noption in -o. Default = 1000000"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --minSpan
+  description: "The minimum genomic distance that a readpair must span\nin order to\
+    \ be reported, not counting the read lengths\n(i.e., inner span, not fragment\
+    \ size). Default = 100."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --minConcRange
+  description: "minimum size to judge a readpair as 'concordant' with\nrespect to\
+    \ the reference genome. Assumes fragment\nlibraries not matepair libraries (+/-\
+    \ orientation is\nconcordant). Default = 0."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --maxConcRange
+  description: "Maximum size to judge a read as 'concordant. Default =\n600."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mode
+  description: "Report all mapping types (-m detail), just discordants\n(-m discordant),\
+    \ or directly to Hydra input format (-m\nhydra) without additional columns. In\
+    \ detail mode only\none mapping is returned for concordant reads or those\nthat\
+    \ fail the minSpan (-s1) threshold. These are\ntagged in an additional column\
+    \ as 'concordant' or\n'badSpan'. Default = 'hydra'."
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --anchorThresh
+  description: "The number of mapping combinations allowed for\nreadpairs with a single\
+    \ uniquely-mapped read;\nreadpairs with more than this number of mappings on\n\
+    the non-unique end will not be reported (except in\ndetail mode with NA's in all\
+    \ fields except the read\nID); Default = 1000."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --multiThresh
+  description: "The number of mapping combiantions allowed for\nreadpairs without\
+    \ a single uniquely-mapped read;\nreadpair mappings with more than this number\
+    \ of\nmappings will not be reported (except in detail mode\nwith NA's in all fields\
+    \ except the read ID); Default =\n100."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --editSlop
+  description: "The combined edit distance allowed, relative to best\nmapping for\
+    \ each pair; Default = 0."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --orphans
+  description: "Whether or not to report \"orphaned\" pairs; Default =\nfalse.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: pairDiscordants.py -i <file> -n <numMappings, default=100> -o <order,\
+  \ default=\"size\"> -d <distance, default=1000000> -l <readLength, default=42> -x\
+  \ <minSpan, default=100> -y <minConcLength, default=0> -z <maxConcLenth, default=600>\
+  \ -m <mode, default=\"discordant\">\n\npairDiscordants version 1.0\nAuthor: Ira\
+  \ Hall\t\nDescription: Pairs and filters reads in BED format to make BEDPE files\
+  \ suitable for paired-end mapping with Hydra. \nLast Modified: July 20, 2010 \n\t\
+  \n# INPUT: \n# chrom; start; end; readID/readNum; editDistance; strand\n# chr10\
+  \ 14800035\t14800077\t113100100400208/1\t0\t+\n\n# OUTPUT\n# 1. chrom1\n# 2. start1\n\
+  # 3. end1\n# 4. chrom2\n# 5. start2\n# 6. end2\n# 7. read ID\n# 8. to which end\
+  \ of the pair do fields 1,2,3,9,11 correspond? (1 or 2)\n# 9. strand1 (+/-)\n# 10.\
+  \ strand2\n# 11. editDistance1\n# 12. editDistance2\t\t\n# 13: mappings1\n# 14:\
+  \ mappings2\n# 15: fragSize (in discordant and detail mode only)\n# 16: combined\
+  \ edit distance (in discordant and detail mode only)\n# 17: summed count of row\
+  \ each mapping was present in block of original file (only in detail mode)\n# 18:\
+  \ tag describing whether a read-pair was classified as discordant, concordant, badSpan,\
+  \ repeat or orphan (only in detail mode)\n\t\n\nOptions:\n  -h, --help         \
+  \   show this help message and exit\n  -i FILE, --file=FILE  A tab delimited BED\
+  \ file, or standard input (-i\n                        stdin).\n  -n INT, --numMappings=INT\n\
+  \                        The number of mapping combinations that are reported.\n\
+  \                        Default = 1000.\n  -o STR, --order=STR   The order to choose\
+  \ mappings when there are more than\n                        specified in -n. Supports\
+  \ size between read1-read2\n                        mappings (-o size) or genome\
+  \ order (-o genome) sorted\n                        in default fashion (chr10 before\
+  \ chr2). In either case\n                        mapping combinations with less\
+  \ edit distance have\n                        priority. Default = size.\n  -d INT,\
+  \ --dist=INT    The genomic distance above which a readpair mapping is\n       \
+  \                 considered 'distant'. This is used in determining the\n      \
+  \                  order that mappings are reported when using the 'size'\n    \
+  \                    option in -o. Default = 1000000\n  -x INT, --minSpan=INT\n\
+  \                        The minimum genomic distance that a readpair must span\n\
+  \                        in order to be reported, not counting the read lengths\n\
+  \                        (i.e., inner span, not fragment size). Default = 100.\n\
+  \  -y INT, --minConcRange=INT\n                        minimum size to judge a readpair\
+  \ as 'concordant' with\n                        respect to the reference genome.\
+  \ Assumes fragment\n                        libraries not matepair libraries (+/-\
+  \ orientation is\n                        concordant). Default = 0.\n  -z INT, --maxConcRange=INT\n\
+  \                        Maximum size to judge a read as 'concordant. Default =\n\
+  \                        600.\n  -m STR, --mode=STR    Report all mapping types\
+  \ (-m detail), just discordants\n                        (-m discordant), or directly\
+  \ to Hydra input format (-m\n                        hydra) without additional columns.\
+  \ In detail mode only\n                        one mapping is returned for concordant\
+  \ reads or those\n                        that fail the minSpan (-s1) threshold.\
+  \ These are\n                        tagged in an additional column as 'concordant'\
+  \ or\n                        'badSpan'. Default = 'hydra'.\n  -a INT, --anchorThresh=INT\n\
+  \                        The number of mapping combinations allowed for\n      \
+  \                  readpairs with a single uniquely-mapped read;\n             \
+  \           readpairs with more than this number of mappings on\n              \
+  \          the non-unique end will not be reported (except in\n                \
+  \        detail mode with NA's in all fields except the read\n                 \
+  \       ID); Default = 1000.\n  -r INT, --multiThresh=INT\n                    \
+  \    The number of mapping combiantions allowed for\n                        readpairs\
+  \ without a single uniquely-mapped read;\n                        readpair mappings\
+  \ with more than this number of\n                        mappings will not be reported\
+  \ (except in detail mode\n                        with NA's in all fields except\
+  \ the read ID); Default =\n                        100.\n  -e INT, --editSlop=INT\n\
+  \                        The combined edit distance allowed, relative to best\n\
+  \                        mapping for each pair; Default = 0.\n  -p, --orphans  \
+  \       Whether or not to report \"orphaned\" pairs; Default =\n               \
+  \         false.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hydra-multi:0.5.4--py27h8b12597_0

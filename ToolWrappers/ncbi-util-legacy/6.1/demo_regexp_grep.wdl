@@ -28,6 +28,9 @@ task DemoRegexpGrep {
       ~{if (line_regexp) then "--line-regexp" else ""} \
       ~{if (filename__filefilenameread) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count: "print only a count of matching lines per FILE"
     ignore_case: "ignore case distinctions"

@@ -4,42 +4,58 @@ command:
 positional: []
 named:
 - !Flag
-  description: '.bed file of reference regions to include. (default:'
+  optional: true
   synonyms:
   - --bed
+  description: ".bed file of reference regions to include. (default:\nNone)"
   args: !SimpleFlagArg
     name: BED
-  optional: true
 - !Flag
-  description: Include secondary and supplementary alignments.
-  synonyms:
-  - -a
-  - --all_alignments
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: OUTPUT
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -m
+  - --min_length
+  - -a
+  - --all_alignments
+  description: "Include secondary and supplementary alignments.\n(default: False)"
   args: !SimpleFlagArg
     name: MIN_LENGTH
+- !Flag
   optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output alignment stats to file instead of stdout.\n(default: <_io.TextIOWrapper\
+    \ name='<stdout>' mode='w'\nencoding='ANSI_X3.4-1968'>)"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --summary
+  description: "Output summary to file instead of stderr. (default:\n<_io.TextIOWrapper\
+    \ name='<stderr>' mode='w'\nencoding='ANSI_X3.4-1968'>)"
+  args: !SimpleFlagArg
+    name: SUMMARY
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: "Number of threads for parallel processing. (default:\n1)\n"
+  args: !SimpleFlagArg
+    name: THREADS
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: stats_from_bam [-h] [--bed BED] [-m MIN_LENGTH] [-a] [-o OUTPUT]\n\
@@ -60,3 +76,4 @@ help_text: "usage: stats_from_bam [-h] [--bed BED] [-m MIN_LENGTH] [-a] [-o OUTP
   \                        1)\n"
 generated_using:
 - --help
+docker_image:

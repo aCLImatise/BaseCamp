@@ -24,6 +24,9 @@ task Anviscriptcomputeaniforfasta {
       ~{if defined(linkage) then ("--linkage " +  '"' + linkage + '"') else ""} \
       ~{if (just_do_it) then "--just-do-it" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_file: "A FASTA-formatted input file"
     output_dir: "Directory path for output files"

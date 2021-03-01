@@ -12,6 +12,9 @@ task MbplotkmerlogoddsNegset {
       ~{if defined(gff) then ("--gff " +  '"' + gff + '"') else ""} \
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: ""
     km_er: ""

@@ -10,6 +10,9 @@ task SketchyPull {
       ~{if defined(path) then ("--path " +  '"' + path + '"') else ""} \
       ~{if (full) then "--full" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path: "Path to sketchy home directory [~/.sketchy ]"
     full: "Pull the full default sketch collections [false]"

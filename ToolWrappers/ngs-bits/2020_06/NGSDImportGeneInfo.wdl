@@ -16,6 +16,9 @@ task NGSDImportGeneInfo {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     constraint: "gnomAD gene contraint file (download and unzip https://storage.googleapis.com/gnomad-public/release/2.1.1/constraint/gnomad.v2.1.1.lof_metrics.by_gene.txt.bgz)."
     test: "Uses the test database instead of on the production database.\\nDefault value: 'false'"

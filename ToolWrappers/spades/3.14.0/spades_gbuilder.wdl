@@ -22,6 +22,9 @@ task Spadesgbuilder {
       ~{if (gfa) then "--gfa" else ""} \
       ~{if (spades) then "--spades" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_length_use: "k-mer length to use"
     _threads_use: "# of threads to use"

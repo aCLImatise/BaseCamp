@@ -22,6 +22,9 @@ task ExplocP {
       ~{if (path_output_folder) then "--output" else ""} \
       ~{if (output_time) then "--output-time" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "full documentation"
     verbose: "verbose"

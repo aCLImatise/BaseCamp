@@ -32,6 +32,9 @@ task GotreeRename {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     length: "Length of automatically generated id. Only with --auto (default 10)"
     tips: "true by default. To inactivate it, you must specify --tips=false ."

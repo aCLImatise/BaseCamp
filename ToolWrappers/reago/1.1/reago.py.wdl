@@ -20,6 +20,9 @@ task Reagopy {
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ", default 0.8"
     e: ", default 0.05"

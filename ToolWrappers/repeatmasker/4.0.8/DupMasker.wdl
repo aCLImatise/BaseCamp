@@ -4,6 +4,9 @@ task DupMasker {
   command <<<
     DupMasker
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -3,115 +3,120 @@ command:
 - map_and_profile.py
 positional:
 - !Positional
-  description: sam or reads file(s) (space-delimited if multiple).
+  optional: false
   position: 0
   name: infiles
-  optional: false
+  description: sam or reads file(s) (space-delimited if multiple).
 - !Positional
-  description: data                  Path to data/ directory with the files from
+  optional: false
   position: 1
   name: Required.
-  optional: false
+  description: data                  Path to data/ directory with the files from
 - !Positional
-  description: 'optional arguments:'
+  optional: false
   position: 2
   name: setup_data.sh
-  optional: false
+  description: 'optional arguments:'
 - !Positional
-  description: --min_abundance MIN_ABUNDANCE
+  optional: false
   position: 3
   name: processing.
+  description: --min_abundance MIN_ABUNDANCE
+- !Positional
   optional: false
+  position: 0
+  name: estimation.
+  description: --read_cutoff READ_CUTOFF
 named:
 - !Flag
-  description: "Path to database from select_db.py. Required if read\nfiles given"
+  optional: true
   synonyms:
   - --db
+  description: "Path to database from select_db.py. Required if read\nfiles given"
   args: !SimpleFlagArg
     name: DB
-  optional: true
 - !Flag
-  description: 'Location of db_info file. Default: data/db_info.txt'
+  optional: true
   synonyms:
   - --dbinfo
+  description: 'Location of db_info file. Default: data/db_info.txt'
   args: !SimpleFlagArg
     name: DBINFO
-  optional: true
 - !Flag
-  description: "Type of input file (fastq/fasta/sam). Default: try to\nautomatically\
-    \ determine"
+  optional: true
   synonyms:
   - --input_type
+  description: "Type of input file (fastq/fasta/sam). Default: try to\nautomatically\
+    \ determine"
   args: !ChoiceFlagArg
     choices: !!set
       fastq:
-      fasta:
-      sam:
       AUTO:
-  optional: true
+      sam:
+      fasta:
 - !Flag
-  description: Normalize abundances by genome length.
+  optional: true
   synonyms:
   - --length_normalize
+  description: Normalize abundances by genome length.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Run in low memory mode, with inexact multimapped
+  optional: true
   synonyms:
   - --low_mem
+  description: Run in low memory mode, with inexact multimapped
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Renormalize abundances to 100 pct. at each rank, e.g\nif an organism\
-    \ has a species but not genus label."
+  optional: true
   synonyms:
   - --rank_renormalize
+  description: "Renormalize abundances to 100 pct. at each rank, e.g\nif an organism\
+    \ has a species but not genus label."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Output abundances file. Default: abundances.txt'
+  optional: true
   synonyms:
   - --output
+  description: 'Output abundances file. Default: abundances.txt'
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: Minimum percent identity from reference to count a
+  optional: true
   synonyms:
   - --pct_id
+  description: Minimum percent identity from reference to count a
   args: !SimpleFlagArg
     name: PCT_ID
-  optional: true
 - !Flag
-  description: Sample ID for output. Defaults to input file name(s).
+  optional: true
   synonyms:
   - --sampleID
+  description: Sample ID for output. Defaults to input file name(s).
   args: !SimpleFlagArg
     name: SAMPLEID
-  optional: true
 - !Flag
-  description: 'Number of compute threads for Minimap2. Default: 4'
+  optional: true
   synonyms:
   - --threads
+  description: 'Number of compute threads for Minimap2. Default: 4'
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: Print verbose output.
+  optional: true
   synonyms:
   - --verbose
+  description: Print verbose output.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: map_and_profile.py [-h] [--db DB] [--dbinfo DBINFO]\n         \
@@ -146,3 +151,4 @@ help_text: "usage: map_and_profile.py [-h] [--db DB] [--dbinfo DBINFO]\n        
   \             Print verbose output.\n"
 generated_using:
 - --help
+docker_image:

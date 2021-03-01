@@ -6,7 +6,7 @@ task ProphexQuery {
     Boolean? use_klcp_querying
     Boolean? output_set_chromosomes
     Boolean? check_kmer_border
-    Boolean? print_sequences_qualities
+    Boolean? print_sequences_base
     File? log_file_name
     Int? number_of_threads
     String idx_base
@@ -20,16 +20,19 @@ task ProphexQuery {
       ~{if (use_klcp_querying) then "-u" else ""} \
       ~{if (output_set_chromosomes) then "-v" else ""} \
       ~{if (check_kmer_border) then "-p" else ""} \
-      ~{if (print_sequences_qualities) then "-b" else ""} \
+      ~{if (print_sequences_base) then "-b" else ""} \
       ~{if defined(log_file_name) then ("-l " +  '"' + log_file_name + '"') else ""} \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     length_of_kmer: "length of k-mer"
     use_klcp_querying: "use k-LCP for querying"
     output_set_chromosomes: "output set of chromosomes for every k-mer"
     check_kmer_border: "do not check whether k-mer is on border of two contigs, and show such k-mers in output"
-    print_sequences_qualities: "print sequences and base qualities"
+    print_sequences_base: "print sequences and base qualities"
     log_file_name: "log file name to output statistics"
     number_of_threads: "number of threads [1]"
     idx_base: ""

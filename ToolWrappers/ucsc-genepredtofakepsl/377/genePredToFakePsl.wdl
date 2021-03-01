@@ -4,6 +4,9 @@ task GenePredToFakePsl {
   command <<<
     genePredToFakePsl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

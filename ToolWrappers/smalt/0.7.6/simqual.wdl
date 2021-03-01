@@ -4,6 +4,9 @@ task Simqual {
   command <<<
     simqual
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -14,6 +14,9 @@ task ExtractAlnEndspy {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "Write results to this file. (default: None)"
     verbose: "Be verbose. (default: False)"

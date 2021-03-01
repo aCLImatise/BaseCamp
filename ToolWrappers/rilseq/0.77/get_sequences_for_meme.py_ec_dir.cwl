@@ -3,7 +3,7 @@ id: get_sequences_for_meme.py_ec_dir.cwl
 inputs:
 - id: in_p
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_get_sequences_for_meme_do_tpy
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - get_sequences_for_meme.py

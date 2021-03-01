@@ -4,61 +4,61 @@ command:
 - tabfile_rename
 positional:
 - !Positional
-  description: Input flat file
+  optional: false
   position: 0
   name: inFile
-  optional: false
+  description: Input flat file
 - !Positional
+  optional: false
+  position: 1
+  name: mapFile
   description: "Map file. Two-column headerless file that maps input\nvalues to output\
     \ values. This script will error if\nthere are values in inFile that do not exist\
     \ in\nmapFile."
-  position: 1
-  name: mapFile
-  optional: false
 - !Positional
-  description: Output flat file
+  optional: false
   position: 2
   name: outFile
-  optional: false
+  description: Output flat file
 named:
 - !Flag
-  description: "Which column number to replace (0-based index).\n[default: 0]"
+  optional: true
   synonyms:
   - --col_idx
+  description: "Which column number to replace (0-based index).\n[default: 0]"
   args: !SimpleFlagArg
     name: COL
-  optional: true
 - !Flag
-  description: 'Verboseness of output. [default: DEBUG]'
+  optional: true
   synonyms:
   - --loglevel
+  description: 'Verboseness of output. [default: DEBUG]'
   args: !ChoiceFlagArg
     choices: !!set
-      CRITICAL:
-      ERROR:
       INFO:
-      WARNING:
       DEBUG:
+      CRITICAL:
+      WARNING:
+      ERROR:
       EXCEPTION:
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
   - -V
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: intrahost.py subcommand tabfile_rename [-h] [--col_idx COL]\n \
   \                                             [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
   \                                              [--version]\n                   \
@@ -77,3 +77,4 @@ help_text: "usage: intrahost.py subcommand tabfile_rename [-h] [--col_idx COL]\n
   \ program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

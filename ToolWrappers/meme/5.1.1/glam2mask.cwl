@@ -3,12 +3,12 @@ id: glam2mask.cwl
 inputs:
 - id: in_output_file_stdout
   doc: ': output file (stdout)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in__mask_character
   doc: ': mask character (x)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -x
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_file_stdout
   doc: ': output file (stdout)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file_stdout)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - glam2mask

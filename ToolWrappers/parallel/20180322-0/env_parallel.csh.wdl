@@ -4,6 +4,9 @@ task EnvParallelcsh {
   command <<<
     env_parallel_csh
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

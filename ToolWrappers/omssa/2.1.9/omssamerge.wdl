@@ -4,6 +4,9 @@ task Omssamerge {
   command <<<
     omssamerge
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

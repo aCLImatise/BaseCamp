@@ -3,52 +3,55 @@ command:
 - run_pasta.py
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: PASTA
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: performs
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: iterative
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 3
   name: realignment
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 4
   name: and
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 5
   name: tree
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 6
   name: inference
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --aligned
   description: "If used, then the input file be will treated as\naligned for the purposes\
     \ of the first round of tree\ninference (the algorithm will start with tree\n\
     searching on the input before re-aligning). This\noption only applies if a starting\
     \ tree is NOT given."
-  synonyms:
-  - -a
-  - --aligned
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --auto
   description: "This option is mostly for backward compatibility. If\nused, then automatically\
     \ identified default values for\nthe max_subproblem_size, number of cpus, tools,\n\
     breaking strategy, masking criteria, and stopping\ncriteria will be used. This\
@@ -56,346 +59,343 @@ named:
     is used PASTA overrides the value of these options\neven if you have supplied\
     \ them; we recommend that you\nrun this option with --exportconfig to see the\
     \ exact\nset of options that will be used in your analysis."
-  synonyms:
-  - --auto
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify DNA, RNA, or Protein to indicate what type of\ndata is specified.\
-    \ Note that this option is NOT\nautomatically determined [default: dna]"
+  optional: true
   synonyms:
   - -d
   - --datatype
+  description: "Specify DNA, RNA, or Protein to indicate what type of\ndata is specified.\
+    \ Note that this option is NOT\nautomatically determined [default: dna]"
   args: !SimpleFlagArg
     name: DATATYPE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --exportconfig
   description: "Export the configuration to the specified file and\nexit. This is\
     \ useful if you want to combine several\nconfigurations and command line settings\
     \ into a single\nconfiguration file to be used in other analyses."
-  synonyms:
-  - --exportconfig
   args: !SimpleFlagArg
     name: EXPORTCONFIG
-  optional: true
 - !Flag
-  description: input sequence file
+  optional: true
   synonyms:
   - -i
   - --input
+  description: input sequence file
   args: !SimpleFlagArg
     name: INPUT
-  optional: true
 - !Flag
-  description: job name [pastajob]
+  optional: true
   synonyms:
   - -j
   - --job
+  description: job name [pastajob]
   args: !SimpleFlagArg
     name: JOB
-  optional: true
 - !Flag
-  description: "Keep even the realignment temporary running files\n(this only has\
-    \ an effect if keeptemp is also\nselected)."
+  optional: true
   synonyms:
   - --keepalignmenttemps
+  description: "Keep even the realignment temporary running files\n(this only has\
+    \ an effect if keeptemp is also\nselected)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Keep temporary running files? [default: disabled]'
+  optional: true
   synonyms:
   - -k
   - --keeptemp
+  description: 'Keep temporary running files? [default: disabled]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "How to deal with missing data symbols. Specify either\n\"Ambiguous\"\
-    \ or \"Absent\" if the input data contains\n?-symbols"
+  optional: true
   synonyms:
   - --missing
+  description: "How to deal with missing data symbols. Specify either\n\"Ambiguous\"\
+    \ or \"Absent\" if the input data contains\n?-symbols"
   args: !SimpleFlagArg
     name: MISSING
-  optional: true
 - !Flag
-  description: "Analyze multi-locus data? NOT SUPPORTED IN CURRENT\nPASTA version."
+  optional: true
   synonyms:
   - -m
   - --multilocus
+  description: "Analyze multi-locus data? NOT SUPPORTED IN CURRENT\nPASTA version."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --raxml-search-after
   description: "If used, the completion of the PASTA algorithm will be\nfollowed by\
     \ a tree search using RAxML on the masked\nalignment. This can be useful if a\
     \ very fast and\napproximate tree estimator is used during the PASTA\nalgorithm.\
     \ [default: disabled]"
-  synonyms:
-  - --raxml-search-after
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "directory that will be the parent for this job's\ntemporary file [default\
-    \ in PASTA home]"
+  optional: true
   synonyms:
   - --temporaries
+  description: "directory that will be the parent for this job's\ntemporary file [default\
+    \ in PASTA home]"
   args: !SimpleFlagArg
     name: TEMPORARIES
-  optional: true
 - !Flag
-  description: "optional file that will store the times of events\nduring the PASTA\
-    \ run. If the file exists, new lines\nwill be"
+  optional: true
   synonyms:
   - --timesfile
+  description: "optional file that will store the times of events\nduring the PASTA\
+    \ run. If the file exists, new lines\nwill be"
   args: !SimpleFlagArg
     name: TIMESFILE
-  optional: true
 - !Flag
-  description: starting tree file
+  optional: true
   synonyms:
   - -t
   - --treefile
+  description: starting tree file
   args: !SimpleFlagArg
     name: TREEFILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --two-phase
   description: "If used, then the program will not perform the PASTA\nalgorithm. Instead\
     \ it will simply call the sequence\naligner to align the entire dataset then will\
     \ call the\ntree estimator to obtain the tree."
-  synonyms:
-  - --two-phase
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --untrusted
   description: "If used, then the data in the input file will be\nparsed using a more\
     \ careful procedure. This will\ngenerate more helpful error messages, but will\
     \ use\nmore memory and be much slower for large inputs. If\nthis option is omitted,\
     \ the error messages resulting\nfrom invalid input data will be more cryptic."
-  synonyms:
-  - --untrusted
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=#\nMaximum number of iterations without an improvement in\nlikelihood\
-    \ score that PASTA will run before switching\nto blind mode. [default: disabled]"
+  optional: true
   synonyms:
   - --blind-after-iter-without-imp
+  description: "=#\nMaximum number of iterations without an improvement in\nlikelihood\
+    \ score that PASTA will run before switching\nto blind mode. [default: disabled]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=#.#\nMaximum time (in seconds) that PASTA will run without\nan improvement\
-    \ in likelihood score before switching to\nblind mode. [default: disabled]"
+  optional: true
   synonyms:
   - --blind-after-time-without-imp
+  description: "=#.#\nMaximum time (in seconds) that PASTA will run without\nan improvement\
+    \ in likelihood score before switching to\nblind mode. [default: disabled]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=#\nMaximum number of iterations that PASTA will run\nbefore switching\
-    \ to blind mode. [default: 0]"
+  optional: true
   synonyms:
   - --blind-after-total-iter
+  description: "=#\nMaximum number of iterations that PASTA will run\nbefore switching\
+    \ to blind mode. [default: 0]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=#.#\nMaximum time (in seconds) that PASTA will run before\nswitching\
-    \ to blind mode. [default: disabled]"
+  optional: true
   synonyms:
   - --blind-after-total-time
+  description: "=#.#\nMaximum time (in seconds) that PASTA will run before\nswitching\
+    \ to blind mode. [default: disabled]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "When the blind mode is final, then PASTA will never\nleave blind mode\
-    \ once it is has entered blind mode."
+  optional: true
   synonyms:
   - --no-blind-mode-is-final
+  description: "When the blind mode is final, then PASTA will never\nleave blind mode\
+    \ once it is has entered blind mode."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --move-to-blind-on-worse-score
   description: "If True then PASTA will move to the blind mode as soon\nit encounters\
     \ a tree/alignment pair with a worse\nscore. This is essentially the same as running\
     \ in\nblind mode from the beginning, but it does allow one\nto terminate a run\
     \ at an interval from the first time\nthe algorithm fails to improve the score."
-  synonyms:
-  - --move-to-blind-on-worse-score
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The method for choosing an edge when bisecting the\ntree during decomposition\
-    \ [default: centroid]"
+  optional: true
   synonyms:
   - --break-strategy
+  description: "The method for choosing an edge when bisecting the\ntree during decomposition\
+    \ [default: centroid]"
   args: !SimpleFlagArg
     name: BREAK_STRATEGY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-subproblem-frac
   description: "=#.#\nThe maximum size (number of leaves) of subproblems\nspecified\
     \ in terms as a proportion of the total number\nof leaves.  When a subproblem\
     \ contains this number of\nleaves (or fewer), then it will not be decomposed\n\
     further. [default: automatically picked based on\nalignment size]"
-  synonyms:
-  - --max-subproblem-frac
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-subproblem-size
   description: "=#\nThe maximum size (number of leaves) of subproblems.\nWhen a subproblem\
     \ contains this number of leaves (or\nfewer), then it will not be decomposed further.\n\
     [default: automatically picked based on alignment\nsize]"
-  synonyms:
-  - --max-subproblem-size
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "directory for output files (defaults to input file\ndirectory)"
+  optional: true
   synonyms:
   - -o
   - --output-directory
+  description: "directory for output files (defaults to input file\ndirectory)"
   args: !SimpleFlagArg
     name: OUTPUT_DIRECTORY
-  optional: true
 - !Flag
-  description: "Return the best likelihood tree and alignment pair\ninstead of those\
-    \ from the last iteration; this is\ndiscouraged with masking option enabled."
+  optional: true
   synonyms:
   - --no-return-final-tree-and-alignment
+  description: "Return the best likelihood tree and alignment pair\ninstead of those\
+    \ from the last iteration; this is\ndiscouraged with masking option enabled."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=#      The maximum memory available to OPAL (for the Java\nheap size\
-    \ when running Java tools)."
+  optional: true
   synonyms:
   - --max-mem-mb
+  description: "=#      The maximum memory available to OPAL (for the Java\nheap size\
+    \ when running Java tools)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --num-cpus
   description: "=#        The number of processing cores that you would like to\n\
     assign to PASTA.  This number should not exceed the\nnumber of cores on your machine.\
     \ [default: number of\ncores available on the machine]"
-  synonyms:
-  - --num-cpus
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mask-gappy-sites
   description: "=#\nThe minimum number of non-gap characters required in\neach column\
     \ passed to the tree estimation step.\nColumns with fewer non-gap characters than\
     \ the given\nthreshold will be masked out before passing the\nalignment into the\
     \ tree estimation module. These\ncolumns will be present in the final alignment.\n\
     [default: 0.1% of alignment size]"
-  synonyms:
-  - --mask-gappy-sites
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If selected that the tree from the previous iteration\nwill be given\
-    \ to the tree searching tool as a starting\ntree."
+  optional: true
   synonyms:
   - --start-tree-search-from-current
+  description: "If selected that the tree from the previous iteration\nwill be given\
+    \ to the tree searching tool as a starting\ntree."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --after-blind-iter-term-limit
   description: "=#\nThe maximum number of iteration that the PASTA\nalgorithm will\
     \ run after PASTA has entered blind mode.\nIf the number is less than 1, then\
     \ no iteration limit\nwill be used. [default: disabled]"
-  synonyms:
-  - --after-blind-iter-term-limit
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --after-blind-iter-without-imp-limit
   description: "=#\nThe maximum number of iterations without an\nimprovement in score\
     \ that the PASTA algorithm will run\nafter entering BLIND mode.  If the number\
     \ is less than\n1, then no iteration limit will be used. [default:\ndisabled]"
-  synonyms:
-  - --after-blind-iter-without-imp-limit
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --after-blind-time-term-limit
   description: "=#.#\nMaximum time (in seconds) that PASTA will continue\nstarting\
     \ new iterations of realigning and tree\nsearching after PASTA has entered blind\
     \ mode. If the\nnumber is less than 0, then no time limit will be\nused. [default:\
     \ disabled]"
-  synonyms:
-  - --after-blind-time-term-limit
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --after-blind-time-without-imp-limit
   description: "=#.#\nMaximum time (in seconds) since the last improvement\nin score\
     \ that PASTA will continue starting new\niterations of realigning and tree searching\
     \ after\nentering BLIND mode. If the number is less than 0,\nthen no time limit\
     \ will be used. [default: disabled]"
-  synonyms:
-  - --after-blind-time-without-imp-limit
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --iter-limit
   description: "=#      The maximum number of iteration that the PASTA\nalgorithm\
     \ will run.  If the number is less than 1,\nthen no iteration limit will be used.\
     \ [default: 3]"
-  synonyms:
-  - --iter-limit
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --iter-without-imp-limit
   description: "=#\nThe maximum number of iterations without an\nimprovement in score\
     \ that the PASTA algorithm will\nrun.  If the number is less than 1, then no iteration\n\
     limit will be used. [default: disabled]"
-  synonyms:
-  - --iter-without-imp-limit
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --time-limit
   description: "=#.#    Maximum time (in seconds) that PASTA will continue\nstarting\
     \ new iterations of realigning and tree\nsearching. If the number is less than\
     \ 0, then no time\nlimit will be used. [default: disabled]"
-  synonyms:
-  - --time-limit
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --time-without-imp-limit
   description: "=#.#\nMaximum time (in seconds) since the last improvement\nin score\
     \ that PASTA will continue starting new\niterations of realigning and tree searching.\
     \ If the\nnumber is less than 0, then no time limit will be\nused. [default: disabled]"
-  synonyms:
-  - --time-without-imp-limit
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The name of the alignment program to use for\nsubproblems. [default:\
-    \ mafft]"
+  optional: true
   synonyms:
   - --aligner
+  description: "The name of the alignment program to use for\nsubproblems. [default:\
+    \ mafft]"
   args: !SimpleFlagArg
     name: ALIGNER
-  optional: true
 - !Flag
-  description: "The name of the alignment program to use to merge\nsubproblems. [default:\
-    \ OPAL]"
+  optional: true
   synonyms:
   - --merger
+  description: "The name of the alignment program to use to merge\nsubproblems. [default:\
+    \ OPAL]"
   args: !SimpleFlagArg
     name: MERGER
-  optional: true
 - !Flag
-  description: "The name of the tree inference program to use to find\ntrees on fixed\
-    \ alignments. [default: fasttree]\n"
+  optional: true
   synonyms:
   - --tree-estimator
+  description: "The name of the tree inference program to use to find\ntrees on fixed\
+    \ alignments. [default: fasttree]\n"
   args: !SimpleFlagArg
     name: TREE_ESTIMATOR
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: run_pasta.py [options] <settings_file1> <settings_file2> ...\n\n\
   \nPASTA performs iterative realignment and tree inference, similar to SATe, but\n\
   uses a very different merge algorithm which improves running time, memory\nusage,\
@@ -565,3 +565,4 @@ help_text: "Usage: run_pasta.py [options] <settings_file1> <settings_file2> ...\
   \  trees on fixed alignments. [default: fasttree]\n"
 generated_using:
 - --help
+docker_image:

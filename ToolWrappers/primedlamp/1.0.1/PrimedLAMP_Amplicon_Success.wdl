@@ -18,6 +18,9 @@ task PrimedLAMPAmpliconSuccess {
       ~{if defined(noncritical_threshold) then ("--NonCriticalThreshold " +  '"' + noncritical_threshold + '"') else ""} \
       ~{if defined(critical_region_len) then ("--CriticalRegionLen " +  '"' + critical_region_len + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fast_a: "[--Threads THREADS]"
     run_id: "Desired Run ID"

@@ -3,142 +3,142 @@ command:
 - scanpy-run-tsne
 positional:
 - !Positional
-  description: --perplexity FLOAT              The perplexity is related to the number
-    of
+  optional: false
   position: 0
   name: table.
-  optional: false
+  description: --perplexity FLOAT              The perplexity is related to the number
+    of
 named:
 - !Flag
-  description: "[anndata|loom]\nInput object format.  [default: anndata]"
+  optional: true
   synonyms:
   - -f
   - --input-format
+  description: "[anndata|loom]\nInput object format.  [default: anndata]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+  optional: true
   synonyms:
   - -F
   - --output-format
+  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Chunk size for writing output in zarr
+  optional: true
   synonyms:
   - -z
   - --zarr-chunk-size
+  description: Chunk size for writing output in zarr
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "When specified, using it as prefix for\nexporting mtx files. If not\
-    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+  optional: true
   synonyms:
   - -X
   - --export-mtx
+  description: "When specified, using it as prefix for\nexporting mtx files. If not\
+    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "[stdout|stderr]      Print output object summary info to\nspecified\
-    \ stream."
+  optional: true
   synonyms:
   - --show-obj
+  description: "[stdout|stderr]      Print output object summary info to\nspecified\
+    \ stream."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use this many PCs. Use `.X` if --n-pcs is 0\nwhen --use-rep is None."
+  optional: true
   synonyms:
   - -n
   - --n-pcs
+  description: "Use this many PCs. Use `.X` if --n-pcs is 0\nwhen --use-rep is None."
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Use the indicated representation. If None,\nthe representation is\
-    \ chosen automatically:\nfor `.n_vars` < 50, `.X` is used, otherwise\n`X_pca`\
-    \ is used. If `X_pca` is not present,\nit's computed with default parameters."
+  optional: true
   synonyms:
   - -u
   - --use-rep
+  description: "Use the indicated representation. If None,\nthe representation is\
+    \ chosen automatically:\nfor `.n_vars` < 50, `.X` is used, otherwise\n`X_pca`\
+    \ is used. If `X_pca` is not present,\nit's computed with default parameters."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Seed for random number generator.  [default:\n0]"
+  optional: true
   synonyms:
   - -S
   - --random-state
+  description: "Seed for random number generator.  [default:\n0]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Key under which to add the computed results
+  optional: true
   synonyms:
   - --key-added
+  description: Key under which to add the computed results
   args: !OptionalFlagArg
     names:
     - TEXT
     - TEXT...
     separator: ','
-  optional: true
 - !Flag
-  description: Number of jobs for parallel computation.
+  optional: true
   synonyms:
   - -J
   - --n-jobs
+  description: Number of jobs for parallel computation.
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Export embeddings in a tab-separated text
+  optional: true
   synonyms:
   - -E
   - --export-embedding
+  description: Export embeddings in a tab-separated text
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --early-exaggeration
   description: "Controls how tight natural clusters in the\noriginal space are in\
     \ the embedded space and\nhow much space will be between them. For\nlarger values,\
     \ the space between natural\nclusters will be larger in the embedded\nspace. Again,\
     \ the choice of this parameter\nis not very critical. If the cost function\nincreases\
     \ during initial optimization, the\nearly exaggeration factor or the learning\n\
     rate might be too high.  [default: 12]"
-  synonyms:
-  - --early-exaggeration
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --learning-rate
   description: "Note that the R-package \"Rtsne\" uses a\ndefault of 200. The learning\
     \ rate can be a\ncritical parameter. It should be between 100\nand 1000. If the\
     \ cost function increases\nduring initial optimization, the early\nexaggeration\
     \ factor or the learning rate\nmight be too high. If the cost function gets\n\
     stuck in a bad local minimum increasing the\nlearning rate helps sometimes.  [default:\n\
     1000]"
-  synonyms:
-  - --learning-rate
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "When NOT set, use the MulticoreTSNE package\nby D. Ulyanov if installed.\
-    \  [default: True]"
+  optional: true
   synonyms:
   - --no-fast-tsne
+  description: "When NOT set, use the MulticoreTSNE package\nby D. Ulyanov if installed.\
+    \  [default: True]"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: scanpy-run-tsne [OPTIONS] <input_obj> <output_obj>\n\n  Embed the\
@@ -197,3 +197,4 @@ help_text: "Usage: scanpy-run-tsne [OPTIONS] <input_obj> <output_obj>\n\n  Embed
   \ this message and exit.\n"
 generated_using:
 - --help
+docker_image:

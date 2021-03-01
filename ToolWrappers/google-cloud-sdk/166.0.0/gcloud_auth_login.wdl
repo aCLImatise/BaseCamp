@@ -16,6 +16,9 @@ task GcloudAuthLogin {
       ~{if (force) then "--force" else ""} \
       ~{if (launch_browser) then "--launch-browser" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     activate: "Set the new account to active. Enabled by default, use --no-activate to\\ndisable."
     brief: "Minimal user output."

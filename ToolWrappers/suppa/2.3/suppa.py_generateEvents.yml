@@ -4,94 +4,94 @@ command:
 - generateEvents
 positional:
 - !Positional
-  description: -f {ioe,ioi}, --format {ioe,ioi}
+  optional: false
   position: 0
   name: CRITICAL
-  optional: false
+  description: -f {ioe,ioi}, --format {ioe,ioi}
 named:
 - !Flag
-  description: specify input file
+  optional: true
   synonyms:
   - -i
   - --input-file
+  description: specify input file
   args: !SimpleFlagArg
     name: INPUT_FILE
-  optional: true
 - !Flag
-  description: specify output path and name without extension
+  optional: true
   synonyms:
   - -o
   - --output-file
+  description: specify output path and name without extension
   args: !SimpleFlagArg
     name: OUTPUT_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
   description: "[{SE,SS,MX,RI,FL} ...], --event-type {SE,SS,MX,RI,FL} [{SE,SS,MX,RI,FL}\
     \ ...]\nlist of events to analyze. (space separated) Options:\nSE -- Skipping\
     \ Exon SS -- Alternative Splice Site\n(5'/3') MX -- Mutually Exclusive Exon RI\
     \ -- Retained\nIntron FL -- Alternative First/Last Exon"
-  synonyms:
-  - -e
   args: !ChoiceFlagArg
     choices: !!set
-      FL:
-      SE:
       RI:
       MX:
       SS:
-  optional: true
+      SE:
+      FL:
 - !Flag
-  description: "Boundary type.Options: S -- Strict (Default) V --\nVariable"
+  optional: true
   synonyms:
   - -b
   - --boundary
+  description: "Boundary type.Options: S -- Strict (Default) V --\nVariable"
   args: !ChoiceFlagArg
     choices: !!set
-      V:
       S:
-  optional: true
+      V:
 - !Flag
-  description: "Variability treshold. In case of strict boundaries\nthis argument\
-    \ is ignored(Default: 10nt)."
+  optional: true
   synonyms:
   - -t
   - --threshold
+  description: "Variability treshold. In case of strict boundaries\nthis argument\
+    \ is ignored(Default: 10nt)."
   args: !SimpleFlagArg
     name: THRESHOLD
-  optional: true
 - !Flag
-  description: pool together overlapping genes.
+  optional: true
   synonyms:
   - -p
   - --pool-genes
+  description: pool together overlapping genes.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "length of the exons for its visualization. (Default:\n100nt)"
+  optional: true
   synonyms:
   - -l
   - --exon-length
+  description: "length of the exons for its visualization. (Default:\n100nt)"
   args: !SimpleFlagArg
     name: EXON_LENGTH
-  optional: true
 - !Flag
-  description: to choose from DEBUG, INFO, WARNING, ERROR and
+  optional: true
   synonyms:
   - -m
   - --mode
+  description: to choose from DEBUG, INFO, WARNING, ERROR and
   args: !SimpleFlagArg
     name: MODE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: suppa.py generateEvents [-h] -i INPUT_FILE -o OUTPUT_FILE\n   \
@@ -117,3 +117,4 @@ help_text: "usage: suppa.py generateEvents [-h] -i INPUT_FILE -o OUTPUT_FILE\n  
   \ {ioe,ioi}\n                        Format of the annotation file. Required.\n"
 generated_using:
 - --help
+docker_image:

@@ -8,6 +8,9 @@ task OrthomclReduceGroups {
     orthomclReduceGroups \
       ~{groups_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     groups_file: ""
   }

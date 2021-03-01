@@ -14,6 +14,9 @@ task Cluster2bedpl {
       ~{if (min_p) then "-minp" else ""} \
       ~{if defined(name) then ("-name " +  '"' + name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     res: "<#> (resolution used to create the file, default: auto detect)"
     min_p: "<#> (minimum % of regions in a cluster to include, default: 0.01)\\n(i.e. do not output clusters containing fewer than x percent of the data"

@@ -14,6 +14,9 @@ task Hartemink2psp {
       ~{if (rev_comp) then "-revcomp" else ""} \
       ~{if defined(width) then ("-width " +  '"' + width + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mod: "|zoops|tcm   create MEME prior for given model\\ndefault: zoops"
     epsilon: "use epsilon value to rescale scores\\nfrom [0..1] to [epsilon..1-epsilon]\\nbefore converting to MEME priors\\ndefault: 1e-200"

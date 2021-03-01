@@ -18,6 +18,9 @@ task TaxmapperMap {
       ~{if defined(combine) then ("--combine " +  '"' + combine + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     maximum_read_length: "Maximum read length"
     forward: "Forward read aln file"

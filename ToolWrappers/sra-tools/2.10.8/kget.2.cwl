@@ -4,92 +4,92 @@ inputs:
 - id: in_verbose
   doc: "Increase the verbosity of the program\nstatus messages. Use multiple times\
     \ for more\nverbosity. Negates quiet."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_quiet
   doc: "Turn off all status messages for the\nprogram. Negated by verbose."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_option_file
   doc: Read more options and parameters from the
-  type: File
+  type: File?
   inputBinding:
     prefix: --option-file
 - id: in_block_size
   doc: how many bytes per block
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --block-size
 - id: in_show_size
   doc: query size of remote file first
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --show-size
 - id: in_cache
   doc: wrap the remote-file into KCacheTeeFile
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cache
 - id: in_cache_block
   doc: blocksize inside KCacheTeeFile
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cache-block
 - id: in_proxy
   doc: use proxy to download remote file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --proxy
 - id: in_random
   doc: request blocks in random order
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --random
 - id: in_repeat
   doc: request blocks with repeats if in random
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --repeat
 - id: in_buffer
   doc: wrap remote file into KBufFile with this
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --buffer
 - id: in_cache_complete
   doc: check completeness on open cacheteefile
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cache-complete
 - id: in_truncate
   doc: "truncate the file 1st parameter\nremove trailing cache-bitmap"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --truncate
 - id: in_start
   doc: offset where to read from
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --start
 - id: in_count
   doc: number of bytes to read
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --count
 - id: in_progress
   doc: show progress
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --progress
 - id: in_reliable
   doc: use reliable version of http-file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reliable
 - id: in_full
   doc: "download via one http-request, not partial\nrequests in loop\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --full
 - id: in_quit_dot
@@ -126,6 +126,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kget.2

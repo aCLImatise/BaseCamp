@@ -4,6 +4,9 @@ task ProBAMProBEDpy {
   command <<<
     proBAM_proBED_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

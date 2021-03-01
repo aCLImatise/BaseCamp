@@ -40,6 +40,9 @@ task CsvtkComb {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_case: "ignore-case"
     nat_sort: "sort items in natural order"

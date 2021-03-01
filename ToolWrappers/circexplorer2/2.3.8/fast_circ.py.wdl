@@ -30,6 +30,9 @@ task FastCircpy {
       ~{if defined(thread) then ("--thread " +  '"' + thread + '"') else ""} \
       ~{if defined(output_directory) then ("--output " +  '"' + output_directory + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "Gene annotation."
     genome: "Genome FASTA file."

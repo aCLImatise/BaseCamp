@@ -8,6 +8,9 @@ task UpdateInfopy {
     update_info_py \
       ~{vcf}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf: "VCF input (default: stdin)"
   }

@@ -32,6 +32,9 @@ task SketchyRun {
       ~{if defined(home) then ("--home " +  '"' + home + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "Path to input Fastq containing basecalled nanopore"
     sketch: "Path to reference sketch local files or species"

@@ -3,7 +3,7 @@ id: smof_consensus.cwl
 inputs:
 - id: in_table
   doc: Print count table instead of consensus
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --table
 - id: in_input
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - smof

@@ -2,14 +2,32 @@ version 1.0
 
 task Harvesttools {
   input {
-    Int? b_bed_filter
+    String? _filter_name
+    String? multifasta_alignment_output
+    String? midpoint_re_root
+    Int? update_branch_values
+    String? show_this_help
+    Boolean? quiet_mode
   }
   command <<<
     harvesttools \
-      ~{if defined(b_bed_filter) then ("-i " +  '"' + b_bed_filter + '"') else ""}
+      ~{if defined(_filter_name) then ("-i " +  '"' + _filter_name + '"') else ""} \
+      ~{if defined(multifasta_alignment_output) then ("-B " +  '"' + multifasta_alignment_output + '"') else ""} \
+      ~{if defined(midpoint_re_root) then ("--midpoint-reroot " +  '"' + midpoint_re_root + '"') else ""} \
+      ~{if defined(update_branch_values) then ("-o " +  '"' + update_branch_values + '"') else ""} \
+      ~{if defined(show_this_help) then ("-v " +  '"' + show_this_help + '"') else ""} \
+      ~{if (quiet_mode) then "-q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    b_bed_filter: "-b <bed filter intervals>,<filter name>,\\\"<description>\\\"\\n-B <output backbone intervals>\\n-f <reference fasta>\\n-F <reference fasta out>\\n-g <reference genbank>\\n-a <MAF alignment input>\\n-m <multi-fasta alignment input>\\n-M <multi-fasta alignment output (concatenated LCBs)>\\n-n <Newick tree input>\\n-N <Newick tree output>\\n--midpoint-reroot (reroot the tree at its midpoint after loading)\\n-o <Gingr output>\\n-S <output for multi-fasta SNPs>\\n-u 0/1 (update the branch values to reflect genome length)\\n-v <VCF input>\\n-V <VCF output>\\n-x <xmfa alignment file>\\n-X <output xmfa alignment file>\\n-h (show this help)\\n-q (quiet mode)\\n"
+    _filter_name: ",<filter name>,\\\"<description>\\\""
+    multifasta_alignment_output: "<multi-fasta alignment output (concatenated LCBs)>"
+    midpoint_re_root: "(reroot the tree at its midpoint after loading)"
+    update_branch_values: "/1 (update the branch values to reflect genome length)"
+    show_this_help: "(show this help)"
+    quiet_mode: "(quiet mode)"
   }
   output {
     File out_stdout = stdout()

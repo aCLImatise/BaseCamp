@@ -20,6 +20,9 @@ task SvtkCollectpesr {
       ~{if defined(region) then ("--region " +  '"' + region + '"') else ""} \
       ~{if (b_gzip) then "--bgzip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index_dir: "Directory of local BAM indexes if accessing a remote\\nS3 bam."
     region: "Tabix-formatted region to parse"

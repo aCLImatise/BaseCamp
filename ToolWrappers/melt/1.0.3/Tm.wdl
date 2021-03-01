@@ -16,6 +16,9 @@ task Tm {
       ~{if defined(mg) then ("--mg " +  '"' + mg + '"') else ""} \
       ~{if defined(dntp) then ("--dntp " +  '"' + dntp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     uncorrected: "Do not use monovalent/divalent cation corrections"
     dna: "DNA concentration (nM)"

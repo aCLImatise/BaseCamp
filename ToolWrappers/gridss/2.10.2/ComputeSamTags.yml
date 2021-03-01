@@ -1,0 +1,100 @@
+!Command
+command:
+- ComputeSamTags
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: substituted.
+  description: "Default value: true. This option can be set to 'null' to clear the\
+    \ default"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: ComputeSamTags [options]\n\nPopulates computed SAM tags. The NM\
+  \ tags requires the reference genome to be specified. Tags requiring information\
+  \ from\nmate reads, or alternative, secondary, or chimeric alignments require all\
+  \ reads from the same fragment/template to be\nsorted together. This can be achieved\
+  \ by queryname sorting of the input file, although the raw output from most aligners\n\
+  also fulfills this criteria.\nVersion: 2.10.2-gridss\n\n\nOptions:\n\n--help\n-h\
+  \                            Displays options specific to this tool.\n\n--stdhelp\n\
+  -H                            Displays options specific to this tool AND options\
+  \ common to all Picard command line\n                              tools.\n\n--version\
+  \                     Displays program version.\n\nINPUT=File\nI=File          \
+  \              Input BAM file grouped by read name.  Required. \n\nOUTPUT=File\n\
+  O=File                        Annotated BAM file.  Required. \n\nASSUME_SORTED=Boolean\n\
+  AS=Boolean                    Assume that all records with the same read name are\
+  \ consecutive. Incorrect tags will be\n                              written if\
+  \ this is not the case.  Default value: false. This option can be set to 'null'\n\
+  \                              to clear the default value. Possible values: {true,\
+  \ false} \n\nSOFTEN_HARD_CLIPS=Boolean     Convert hard clips to soft clips if the\
+  \ entire read sequence for the read is available in\n                          \
+  \    another record. If no base information can be found, N bases with 0 base quality\
+  \ are\n                              substituted.  Default value: true. This option\
+  \ can be set to 'null' to clear the default\n                              value.\
+  \ Possible values: {true, false} \n\nFIX_MATE_INFORMATION=Boolean  Fixes missing\
+  \ mate information. Unlike Picard tools FixMateInformation, reads for which no\n\
+  \                              mate can be found are converted to unpaired reads.\
+  \  Default value: true. This option can\n                              be set to\
+  \ 'null' to clear the default value. Possible values: {true, false} \n\nFIX_DUPLICATE_FLAG=Boolean\
+  \    Sets the duplicate flag if any alignment in the read pair is flagged as a duplicate.\
+  \ Many\n                              duplicate marking tools do not correctly mark\
+  \ all supplementary alignments.  Default\n                              value: true.\
+  \ This option can be set to 'null' to clear the default value. Possible values:\n\
+  \                              {true, false} \n\nFIX_SA=Boolean                Fixes\
+  \ the SA tag to match the read alignments. Useful for programs such as GATK indel\n\
+  \                              realignment do not update the SA tag when adjusting\
+  \ read alignments.  Default value: true.\n                              This option\
+  \ can be set to 'null' to clear the default value. Possible values: {true,\n   \
+  \                           false} \n\nFIX_MISSING_HARD_CLIP=Boolean Adds hard clipping\
+  \ CIGAR elements to truncated alignments. Useful for programs such as\n        \
+  \                      GATK indel realignment that strip hard clips. Assumes all\
+  \ alignments form part of the\n                              split read thus does\
+  \ not support secondary alignments.  Default value: true. This option\n        \
+  \                      can be set to 'null' to clear the default value. Possible\
+  \ values: {true, false} \n\nRECALCULATE_SA_SUPPLEMENTARY=Boolean\n             \
+  \                 Recalculates the supplementary flag based on the SA tag. The supplementary\
+  \ flag should be\n                              set on all split read alignments\
+  \ except one.  Default value: true. This option can be set\n                   \
+  \           to 'null' to clear the default value. Possible values: {true, false}\
+  \ \n\nTAGS=String\nT=String                      Tags to calculate  Default value:\
+  \ [R2, MQ, SA, MC, NM]. This option can be set to 'null'\n                     \
+  \         to clear the default value. This option may be specified 0 or more times.\
+  \ This option can\n                              be set to 'null' to clear the default\
+  \ list. \n\nWORKER_THREADS=Integer\nTHREADS=Integer               Number of worker\
+  \ threads to spawn. Defaults to number of cores available. Note that I/O\n     \
+  \                         threads are not included in this worker thread count so\
+  \ CPU usage can be higher than the\n                              number of worker\
+  \ thread.  Default value: 8. This option can be set to 'null' to clear the\n   \
+  \                           default value. \n\nWORKING_DIR=File              Directory\
+  \ to place intermediate results directories. Default location is the same\n    \
+  \                          directory as the associated input or output file.  Default\
+  \ value: null. \n\nIGNORE_DUPLICATES=Boolean     Ignore reads marked as duplicates.\
+  \  Default value: true. This option can be set to 'null'\n                     \
+  \         to clear the default value. Possible values: {true, false} \n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gridss:2.10.2--0

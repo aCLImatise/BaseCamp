@@ -18,6 +18,9 @@ task SpectrastFilterrb {
       ~{if defined(merge) then ("--merge " +  '"' + merge + '"') else ""} \
       ~{if defined(replicates) then ("--replicates " +  '"' + replicates + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicitly_named_output: "An explicitly named output file."
     binary_output: "Produce spectral libraries in binary format rather than ASCII [false]"

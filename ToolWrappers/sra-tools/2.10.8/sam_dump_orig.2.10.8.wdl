@@ -98,6 +98,9 @@ task Samdumporig2108 {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     unaligned: "Output unaligned reads along with aligned"
     cigar_long: "Output long version of CIGAR"

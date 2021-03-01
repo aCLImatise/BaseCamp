@@ -3,62 +3,62 @@ command:
 - isescan.py
 positional:
 - !Positional
-  description: sequence file in fasta format
+  optional: false
   position: 0
   name: seqfile
-  optional: false
+  description: sequence file in fasta format
 - !Positional
-  description: "directory where proteome (each line corresponds to a\nprotein sequence\
-    \ database translated from a genome) files\nwill be placed"
+  optional: false
   position: 1
   name: path2proteome
-  optional: false
+  description: "directory where proteome (each line corresponds to a\nprotein sequence\
+    \ database translated from a genome) files\nwill be placed"
 - !Positional
-  description: directory where the results of hmmsearch will be placed
+  optional: false
   position: 2
   name: path2hmm
-  optional: false
+  description: directory where the results of hmmsearch will be placed
 named:
 - !Flag
-  description: "remove incomplete (partial) IS elements which include IS\nelement\
-    \ with length < 400 or single copy IS element\nwithout perfect TIR."
+  optional: true
   synonyms:
   - --removeShortIS
+  description: "remove incomplete (partial) IS elements which include IS\nelement\
+    \ with length < 400 or single copy IS element\nwithout perfect TIR."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-FragGeneScan
   description: "use the annotated protein sequences in NCBI GenBank file\n(.gbk which\
     \ must be in the same folder with genome\nsequence file), instead of the protein\
     \ sequences\npredicted/translated by FragGeneScan. (Experimental\nfeature!)"
-  synonyms:
-  - --no-FragGeneScan
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "number of CPU cores used for FragGeneScan and hmmer. By\ndefault one\
-    \ will be used.\n"
+  optional: true
   synonyms:
   - --nthread
+  description: "number of CPU cores used for FragGeneScan and hmmer. By\ndefault one\
+    \ will be used.\n"
   args: !SimpleFlagArg
     name: NTHREAD
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: isescan [-h] [--version] [--removeShortIS] [--no-FragGeneScan]\n\
   \               [--nthread NTHREAD]\n               seqfile path2proteome path2hmm\n\
   \nISEScan is a python pipeline to identify Insertion Sequence elements (both complete\
@@ -81,3 +81,4 @@ help_text: "usage: isescan [-h] [--version] [--removeShortIS] [--no-FragGeneScan
   \ and hmmer. By\n                     default one will be used.\n"
 generated_using:
 - --help
+docker_image:

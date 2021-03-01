@@ -46,6 +46,9 @@ task FastqScreen {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(top) then ("--top " +  '"' + top + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_genome: "Edits the file 'fastq_screen.conf' (in the folder where\\nthis script is saved) to add a new genome. Specify the\\nadditional genome as a comma separated list:\\n'Database name','Genome path and basename','Notes'"
     aligner: "Specify the aligner to use for the mapping. Valid\\narguments are 'bowtie', bowtie2' (default) or 'bwa'.\\nBowtie maps with parameters -k 2, Bowtie 2 with\\nparameters -k 2 --very-fast-local and BWA with mem -a.\\nLocal aligners such as BWA or Bowtie2 will be better\\nat detecting the origin of chimeric reads."

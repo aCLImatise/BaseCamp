@@ -8,6 +8,9 @@ task ChakinExportExportGbk {
     chakin export export_gbk \
       ~{options}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: "Options:"
   }

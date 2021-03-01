@@ -3,17 +3,17 @@ id: flye_samtools_cat.cwl
 inputs:
 - id: in_list_input_bamcram
   doc: list of input BAM/CRAM file names, one per line
-  type: File
+  type: File?
   inputBinding:
     prefix: -b
 - id: in_copy_header_file
   doc: copy the header from FILE [default is 1st input file]
-  type: File
+  type: File?
   inputBinding:
     prefix: -h
 - id: in_output_bamcram
   doc: output BAM/CRAM
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_sam_tools
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - flye-samtools

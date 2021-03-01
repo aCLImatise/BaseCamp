@@ -3,27 +3,27 @@ id: compare_genomes_dnadiff.py.cwl
 inputs:
 - id: in_save_pickled_results
   doc: Save pickled results in this file (None).
-  type: File
+  type: File?
   inputBinding:
     prefix: -p
 - id: in_save_dnadiff_report
   doc: Save dnadiff report in this file (None).
-  type: File
+  type: File?
   inputBinding:
     prefix: -r
 - id: in_use_working_directory
   doc: "Use this working directory instead of a temporary\ndirectory (None)."
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -d
 - id: in_keep_dnadiff_result
   doc: Keep dnadiff result files (False).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -k
-- id: in_print_output_false
+- id: in_print_dnadiff_output
   doc: Print out dnadiff output (False).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_reference_fast_a
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - compare_genomes_dnadiff.py

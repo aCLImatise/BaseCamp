@@ -5,22 +5,26 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Treatment bedGraph file, e.g. *_treat_pileup.bdg from\nMACSv2. REQUIRED"
+  optional: true
   synonyms:
   - -t
   - --tfile
+  description: "Treatment bedGraph file, e.g. *_treat_pileup.bdg from\nMACSv2. REQUIRED"
   args: !SimpleFlagArg
     name: TFILE
-  optional: true
 - !Flag
-  description: "Control bedGraph file, e.g. *_control_lambda.bdg from\nMACSv2. REQUIRED"
+  optional: true
   synonyms:
   - -c
   - --cfile
+  description: "Control bedGraph file, e.g. *_control_lambda.bdg from\nMACSv2. REQUIRED"
   args: !SimpleFlagArg
     name: CFILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --scaling-factor
   description: "Scaling factor for treatment and control track. Keep\nit as 1.0 or\
     \ default in most cases. Set it ONLY while\nyou have SPMR output from MACS2 callpeak,\
     \ and plan to\ncalculate scores as MACS2 callpeak module. If you want\nto simulate\
@@ -28,23 +32,22 @@ named:
     \ filtering redudant\nreads in million (e.g., put 31.415926 if effective\nreads\
     \ are 31,415,926) and input it for '-S'; for\n'callpeak --to-large', calculate\
     \ effective reads in\nlarger sample. DEFAULT: 1.0"
-  synonyms:
-  - -S
-  - --scaling-factor
   args: !SimpleFlagArg
     name: SFACTOR
-  optional: true
 - !Flag
-  description: "The pseudocount used for calculating logLR, logFE or\nFE. The count\
-    \ will be applied after normalization of\nsequencing depth. DEFAULT: 0.0, no pseudocount\
-    \ is\napplied."
+  optional: true
   synonyms:
   - -p
   - --pseudocount
+  description: "The pseudocount used for calculating logLR, logFE or\nFE. The count\
+    \ will be applied after normalization of\nsequencing depth. DEFAULT: 0.0, no pseudocount\
+    \ is\napplied."
   args: !SimpleFlagArg
     name: PSEUDOCOUNT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
   description: "[{ppois,qpois,subtract,logFE,FE,logLR,slogLR,max} ...], --method {ppois,qpois,subtract,logFE,FE,logLR,slogLR,max}\
     \ [{ppois,qpois,subtract,logFE,FE,logLR,slogLR,max} ...]\nMethod to use while\
     \ calculating a score in any bin by\ncomparing treatment value and control value.\
@@ -56,55 +59,52 @@ named:
     \ chromatin model(need to set\npseudocount), symmetric log10 likelihood between\
     \ two\nChIP-enrichment models, or maximum value between the\ntwo tracks. Default\
     \ option is ppois."
-  synonyms:
-  - -m
   args: !ChoiceFlagArg
     choices: !!set
-      slogLR:
-      subtract:
-      FE:
-      logFE:
       ppois:
+      logFE:
+      FE:
+      subtract:
+      slogLR:
+      logLR:
       max:
       qpois:
-      logLR:
-  optional: true
 - !Flag
-  description: "If specified all output files will be written to that\ndirectory.\
-    \ Default: the current working directory"
+  optional: true
   synonyms:
   - --outdir
+  description: "If specified all output files will be written to that\ndirectory.\
+    \ Default: the current working directory"
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --o-prefix
   description: "The PREFIX of output bedGraph file to write scores. If\nit is given\
     \ as A, and method is 'ppois', output file\nwill be A_ppois.bdg. Mutually exclusive\
     \ with\n-o/--ofile."
-  synonyms:
-  - --o-prefix
   args: !SimpleFlagArg
     name: OPREFIX
-  optional: true
 - !Flag
-  description: "Output filename. Mutually exclusive with --o-prefix.\nThe number and\
-    \ the order of arguments for --ofile must\nbe the same as for -m.\n"
+  optional: true
   synonyms:
   - -o
   - --ofile
+  description: "Output filename. Mutually exclusive with --o-prefix.\nThe number and\
+    \ the order of arguments for --ofile must\nbe the same as for -m.\n"
   args: !RepeatFlagArg
     name: OFILE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: macs2 bdgcmp [-h] -t TFILE -c CFILE [-S SFACTOR] [-p PSEUDOCOUNT]\n\
@@ -155,3 +155,4 @@ help_text: "usage: macs2 bdgcmp [-h] -t TFILE -c CFILE [-S SFACTOR] [-p PSEUDOCO
   \                  be the same as for -m.\n"
 generated_using:
 - --help
+docker_image:

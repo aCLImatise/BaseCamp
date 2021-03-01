@@ -3,224 +3,224 @@ command:
 - fasta2shrep_gspan.pl
 positional:
 - !Positional
-  description: -help   brief help message
+  optional: false
   position: 0
   name: HELP
-  optional: false
+  description: -help   brief help message
 - !Positional
-  description: "-fasta  <STRING> e.g. \"sequence.fasta\"\nAll sequences in fasta format."
+  optional: false
   position: 1
   name: COMPULSORY
-  optional: false
+  description: "-fasta  <STRING> e.g. \"sequence.fasta\"\nAll sequences in fasta format."
 - !Positional
+  optional: false
+  position: 2
+  name: OPTIONS
   description: "-wins           [INTEGER] e.g. \"50,100,200\"\nA list of window sizes\
     \ to use.\nIf none are given (empty string ''), then the entire sequence is\n\
     taken with no windows. Each window > 1 required!"
-  position: 2
-  name: OPTIONS
-  optional: false
 - !Positional
-  description: -nostr                  Calculate no structures, only add sequence
-    information,
+  optional: false
   position: 3
   name: instances.
-  optional: false
+  description: -nostr                  Calculate no structures, only add sequence
+    information,
 named:
 - !Flag
-  description: full documentation
+  optional: true
   synonyms:
   - -man
+  description: full documentation
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -shift
   description: "<INTEGER> e.g. 20\nThe shift of the window, relative to the window\
     \ size given in\npercent. So you give which percent of the window size shall be\n\
     used for the shift. Of course the shift is rounded down to the\nnearest whole\
     \ number.\nExample 20 % of a window 150 would result in a step size of 30 nt.\n\
     It is a relative parameter, as you can give different window sizes.\nIf you do\
     \ not give this parameter there is a default shift of 1 nt."
-  synonyms:
-  - -shift
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -cue
   description: "Crop unpaired ends.\nIf you give this flag, then the unpaired ends\
     \ of each\nsingle structure are ignored. E.g. the structure\n...(((...))).. becomes\
     \ just (((...)))"
-  synonyms:
-  - -cue
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -stack
   description: "Adds stacking information to graphs. This adds an additional\nvertex\
     \ (type P) for each pair of stacked base-pairs and four edges\n(type p) from each\
     \ of the involved bases to the new vertex."
-  synonyms:
-  - -stack
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<FLOAT> e.g. 5.0\nEnergy range in kcal/mol (RNAshapes)\nUse only one\
-    \ of -e and -c!"
+  optional: true
   synonyms:
   - -e
+  description: "<FLOAT> e.g. 5.0\nEnergy range in kcal/mol (RNAshapes)\nUse only one\
+    \ of -e and -c!"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<INTEGER> e.g. 10\nRelative energy range, i.e. percentage (%) of MFE\
-    \ energy (RNAshapes)\nUse only one of -e and -c!"
+  optional: true
   synonyms:
   - -c
+  description: "<INTEGER> e.g. 10\nRelative energy range, i.e. percentage (%) of MFE\
+    \ energy (RNAshapes)\nUse only one of -e and -c!"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
   description: "<INTEGER> [1-5] e.g. 3 OR \"3=0,4=100,5=200\"\nThe shape type (RNAshapes).\
     \ Default is 3.\nWith the list format, the shape level can be changed for different\
     \ window length\n\"4=100\" means that shape level 4 is used from length 100nt\
     \ (window length)\nThe first given length has to be 0! Not continuous given levels\
     \ are allowed!"
-  synonyms:
-  - -t
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<INTEGER> e.g. 10\nMax number of shreps that should be taken per window."
+  optional: true
   synonyms:
   - -M
+  description: "<INTEGER> e.g. 10\nMax number of shreps that should be taken per window."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Ignore unstable structures (RNAshapes).\nThis option filters out closed\
-    \ structures with positive free energy."
+  optional: true
   synonyms:
   - -u
+  description: "Ignore unstable structures (RNAshapes).\nThis option filters out closed\
+    \ structures with positive free energy."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Calculate structure probabilities for shreps (RNAshapes)
+  optional: true
   synonyms:
   - -r
+  description: Calculate structure probabilities for shreps (RNAshapes)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<INT> e.g. 10\nTurn on structure sampling and gives number of sampling\
-    \ iterations.\nDefault no sampling (i=0)"
+  optional: true
   synonyms:
   - -i
+  description: "<INT> e.g. 10\nTurn on structure sampling and gives number of sampling\
+    \ iterations.\nDefault no sampling (i=0)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<INT> e.g. 100\nOnly in sampling mode: Sampling is only used for seqs/windows\
-    \ >= given length,\nDefault: sample all lengths (0), if -i > 0"
+  optional: true
   synonyms:
   - -sample-len
+  description: "<INT> e.g. 100\nOnly in sampling mode: Sampling is only used for seqs/windows\
+    \ >= given length,\nDefault: sample all lengths (0), if -i > 0"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Turn on shape probabilities for RNAshapes, no sampling mode allowed
+  optional: true
   synonyms:
   - -q
+  description: Turn on shape probabilities for RNAshapes, no sampling mode allowed
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<FLOAT> e.g 0.001\nFilter cutoff for shape probabilities, applied\
-    \ before -M filter!"
+  optional: true
   synonyms:
   - -Tp
+  description: "<FLOAT> e.g 0.001\nFilter cutoff for shape probabilities, applied\
+    \ before -M filter!"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: add for each window a graph which contains no structure
+  optional: true
   synonyms:
   - -seq-graph-win
+  description: add for each window a graph which contains no structure
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "add for each 't #' a graph which contains no structure"
+  optional: true
   synonyms:
   - -seq-graph-t
+  description: "add for each 't #' a graph which contains no structure"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: the alphabet of unstructured graphs
+  optional: true
   synonyms:
   - -seq-graph-alph
+  description: the alphabet of unstructured graphs
   args: !SimpleFlagArg
     name: change
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -annotate
   description: "<STRING> annotation.tab\nA file with annotations to be added as abstract\
     \ graphs\non the sequence leven (if given) and on the structure\n(SHREP) level.\
     \ The format is has the following TAB-delimited\ncolumns: SEQID, START, END, NAMESPACE#LABEL.\n\
     Labels with the same name-space and SEQID form connected\ncomponents, which is\
     \ a sequence of label vertices ordered\nby the START position in the sequence."
-  synonyms:
-  - -annotate
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Add abstract structure graphs to the single shrep graph
+  optional: true
   synonyms:
   - -abstr
+  description: Add abstract structure graphs to the single shrep graph
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -match-shape
   description: "<SHAPE>\nall seqs/windows will be constraint folded into that shape\
     \ via\nRNAshapes (if structure is given in another way this struct will be kept),\n\
     if this shape is not possible within given energy range, produce a\nspecific t\
     \ graph with only one vertex 'X'. By this the instance\nbecomes very unsimilar\
     \ to all other graphs (for knn)"
-  synonyms:
-  - -match-shape
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -vp
   description: "enable graph computation with viewpoints:\nsvmsgdnspdk will center\
     \ on those nucleotides that are given\nvia capital letters and ignore those given\
     \ as lowercase letters"
-  synonyms:
-  - -vp
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<STRING> e.g. \"/scratch/1/sita/tmp\"\nA directory for writing temporary\
-    \ files"
+  optional: true
   synonyms:
   - -tmp
+  description: "<STRING> e.g. \"/scratch/1/sita/tmp\"\nA directory for writing temporary\
+    \ files"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<STRING> e.g. \"ProjectX/MySequences/GSPAN/\"\nOutput directory for\
-    \ gspan files containing graphs."
+  optional: true
   synonyms:
   - -o
+  description: "<STRING> e.g. \"ProjectX/MySequences/GSPAN/\"\nOutput directory for\
+    \ gspan files containing graphs."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<INTEGER> e.g. 5\nCombine/group that number of input seqs into 1 gspan\
-    \ file\noutput name is then '<INT>.group.gspan.bz2'"
+  optional: true
   synonyms:
   - -group
+  description: "<INTEGER> e.g. 5\nCombine/group that number of input seqs into 1 gspan\
+    \ file\noutput name is then '<INT>.group.gspan.bz2'"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: send graphs to stdout instead of writing to files
+  optional: true
   synonyms:
   - -stdout
+  description: send graphs to stdout instead of writing to files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: don't write fasta id part after first space to gspan
+  optional: true
   synonyms:
   - -ignore-header
+  description: don't write fasta id part after first space to gspan
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: additional debug output
+  optional: true
   synonyms:
   - -debug
+  description: additional debug output
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -314,3 +314,4 @@ help_text: "Usage:\n    Options:\n\n                    HELP\n            -help 
   \n\n"
 generated_using:
 - --help
+docker_image:

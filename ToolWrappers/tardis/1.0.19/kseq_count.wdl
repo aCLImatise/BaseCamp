@@ -10,6 +10,9 @@ task KseqCount {
       ~{filename} \
       ~{if (a) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a: ""
     filename: ""

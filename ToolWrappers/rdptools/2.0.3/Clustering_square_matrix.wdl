@@ -12,6 +12,9 @@ task ClusteringSquarematrix {
       ~{id_mapping} \
       ~{output_matrix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     column_matrix: ""
     id_mapping: ""

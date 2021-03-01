@@ -16,6 +16,9 @@ task SeuratexportcellbrowserR {
       ~{if defined(study_name) then ("--study-name " +  '"' + study_name + '"') else ""} \
       ~{if defined(markers_file) then ("--markers-file " +  '"' + markers_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name in which a serialized R matrix object may be found."
     input_format: "Either loom, seurat, anndata or singlecellexperiment for the input format to read."

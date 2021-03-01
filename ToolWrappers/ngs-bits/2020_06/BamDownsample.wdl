@@ -18,6 +18,9 @@ task BamDownsample {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input BAM file."
     percentage: "Percentage of reads to keep."

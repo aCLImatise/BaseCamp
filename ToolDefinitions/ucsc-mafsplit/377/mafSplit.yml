@@ -3,52 +3,55 @@ command:
 - mafSplit
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: splits.bed
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: outRoot
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: file
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "Make one file per target sequence.  (splits.bed input\nis ignored)."
+  optional: true
   synonyms:
   - -byTarget
+  description: "Make one file per target sequence.  (splits.bed input\nis ignored)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -outDirDepth
   description: "For use only with -byTarget.\nCreate N levels of output directory\
     \ under current dir.\nThis helps prevent NFS problems with a large number of\n\
     file in a directory.  Using -outDirDepth=3 would\nproduce ./1/2/3/outRoot123.maf."
-  synonyms:
-  - -outDirDepth
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -useSequenceName
   description: "For use only with -byTarget.\nInstead of auto-incrementing an integer\
     \ to determine\noutput filename, expect each target sequence name to\nend with\
     \ a unique number and use that number as the\ninteger to tack onto outRoot."
-  synonyms:
-  - -useSequenceName
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "For use only with -byTarget.\nInstead of auto-incrementing an integer\
-    \ to determine\noutput filename, use the target sequence name\nto tack onto outRoot."
+  optional: true
   synonyms:
   - -useFullSequenceName
+  description: "For use only with -byTarget.\nInstead of auto-incrementing an integer\
+    \ to determine\noutput filename, use the target sequence name\nto tack onto outRoot."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -useHashedName
   description: "For use only with -byTarget.\nInstead of auto-incrementing an integer\
     \ or requiring\na unique number in the sequence name, use a hash\nfunction on\
     \ the sequence name to compute an N-bit\nnumber.  This limits the max #filenames\
@@ -56,11 +59,8 @@ named:
     \ pairwise mafs, the split file\nnames will be consistent (due to hash function).\n\
     This option is useful when a \"scaffold-based\"\nassembly has more than one sequence\
     \ name pattern,\ne.g. both chroms and scaffolds.\n"
-  synonyms:
-  - -useHashedName
   args: !SimpleFlagArg
     name: N
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -92,3 +92,4 @@ help_text: "mafSplit - Split multiple alignment files\nusage:\n   mafSplit split
   \ has more than one sequence name pattern,\n                     e.g. both chroms\
   \ and scaffolds.\n\n\n"
 generated_using: []
+docker_image:

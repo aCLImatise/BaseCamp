@@ -1,0 +1,61 @@
+!Command
+command:
+- getSeq
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: MySQL
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --rc
+  description: output the reverse complement of the sequence
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --start
+  description: retrieve subsequence starting at position N (coordinates are 1-based)
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --end
+  description: retrieve subsequence ending at position N (coordinates are 1-based)
+  args: !SimpleFlagArg
+    name: N
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: print this usage info
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage:\nMySQL:\n    getSeq [parameters] --species=SPECIES --seq=SEQUENCE\
+  \ --dbaccess=dbname,host,user,passwd \nSQLite:\n    getSeq [parameters] --species=SPECIES\
+  \ --seq=SEQUENCE --dbaccess=dbname.db --speciesfilenames=SPECIESFILENAMES\n\nSPECIES\
+  \ is the species identifier used when loading the sequence into the database\nSEQUENCE\
+  \ is the ID of the sequence to retrieve\ndbname,host,user,passwd are the name of\
+  \ the SQL database, the host name or IP, the database user and password\nSPECIESFILENAMES\
+  \ is the file where the species identifier and the related file names of the sequences\
+  \ are stored \n    format: Homo sapiens <TAB> /dir/to/genome/human.fa\n        \
+  \    Mus musculus <TAB> /dir/to/genome/mouse.fa\n\nparameters:\n--help        print\
+  \ this usage info\n--rc          output the reverse complement of the sequence\n\
+  --start=N     retrieve subsequence starting at position N (coordinates are 1-based)\n\
+  --end=N       retrieve subsequence ending at position N (coordinates are 1-based)\n\
+  \nexample MySQL:\n     getSeq --species=hg19 --seq=chr21 --dbaccess=saeuger,localhost,myuser,mypasswd\
+  \ \n     getSeq --species=hg19 --seq=chr21 --start=47870612  --end=48086047 --rc\
+  \ --dbaccess=saeuger,localhost,myuser,mypasswd \n\nexample SQLite:\n    getSeq --species=hg19\
+  \ --seq=chr21 --start=47870612 --end=48086047 --dbaccess=genomes.db --speciesfilenames=genomes.tbl\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/augustus:3.4.0--pl526h0faeac2_0

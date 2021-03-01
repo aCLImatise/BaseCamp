@@ -10,6 +10,9 @@ task Vcf2bed6plus2strandpl {
       ~{input_file_name} \
       ~{cg}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_name: ""
     cg: ""

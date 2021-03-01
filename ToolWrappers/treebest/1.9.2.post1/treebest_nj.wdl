@@ -20,8 +20,8 @@ task TreebestNj {
     Boolean? root_node_putative
     Boolean? branch_mode_used
     Boolean? input_alignment_stored
-    Boolean? wipe_information_lost
-    Boolean? copy_support_tags
+    Boolean? wipe_sdi_information
+    Boolean? copy_branch_support
     Boolean? verbose_output
     String nt_mm
     String dn
@@ -58,10 +58,13 @@ task TreebestNj {
       ~{if (root_node_putative) then "-p" else ""} \
       ~{if (branch_mode_used) then "-a" else ""} \
       ~{if (input_alignment_stored) then "-A" else ""} \
-      ~{if (wipe_information_lost) then "-W" else ""} \
-      ~{if (copy_support_tags) then "-I" else ""} \
+      ~{if (wipe_sdi_information) then "-W" else ""} \
+      ~{if (copy_branch_support) then "-I" else ""} \
       ~{if (verbose_output) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     constrained_trees_nh: "constrained tree(s) in NH format [null]"
     tree_to_compared: "tree to be compared [null]"
@@ -81,8 +84,8 @@ task TreebestNj {
     root_node_putative: "the root node is a putative node"
     branch_mode_used: "branch mode that is used by most tree-builder"
     input_alignment_stored: "the input alignment is stored in ALN format"
-    wipe_information_lost: "wipe out root (SDI information will be lost!)"
-    copy_support_tags: "copy the branch support tags from the constrained tree"
+    wipe_sdi_information: "wipe out root (SDI information will be lost!)"
+    copy_branch_support: "copy the branch support tags from the constrained tree"
     verbose_output: "verbose output"
     nt_mm: "p-distance (codon alignment)"
     dn: "non-synonymous distance"

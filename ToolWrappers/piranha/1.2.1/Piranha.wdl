@@ -2,7 +2,7 @@ version 1.0
 
 task Piranha {
   input {
-    File? name_output_omitted
+    File? name_output_file
     Boolean? sort
     Boolean? p_threshold
     Boolean? no_pval_correct
@@ -24,7 +24,7 @@ task Piranha {
   }
   command <<<
     Piranha \
-      ~{if (name_output_omitted) then "-output" else ""} \
+      ~{if (name_output_file) then "-output" else ""} \
       ~{if (sort) then "-sort" else ""} \
       ~{if (p_threshold) then "-p_threshold" else ""} \
       ~{if (no_pval_correct) then "-no_pval_correct" else ""} \
@@ -44,8 +44,11 @@ task Piranha {
       ~{if (log_co_vars) then "-log_covars" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    name_output_omitted: "Name of output file, STDOUT if omitted"
+    name_output_file: "Name of output file, STDOUT if omitted"
     sort: "indicates that input is unsorted and Piranha should\\nsort it for you"
     p_threshold: "significance threshold for sites"
     no_pval_correct: "don't correct p-values for multiple hypothesis\\ntesting. We correct by default using B&H."
@@ -67,7 +70,7 @@ task Piranha {
   }
   output {
     File out_stdout = stdout()
-    File out_name_output_omitted = "${in_name_output_omitted}"
+    File out_name_output_file = "${in_name_output_file}"
     File out_fit = "${in_fit}"
   }
 }

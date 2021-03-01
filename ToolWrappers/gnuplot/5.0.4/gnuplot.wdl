@@ -4,6 +4,9 @@ task Gnuplot {
   command <<<
     gnuplot
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

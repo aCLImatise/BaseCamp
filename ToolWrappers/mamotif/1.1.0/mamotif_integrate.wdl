@@ -3,7 +3,7 @@ version 1.0
 task MamotifIntegrate {
   input {
     Boolean? verbose
-    File? manorm_result_sample
+    File? manorm_result_abmavaluesxls
     File? motifscan_result_sample
     Boolean? negative
     String? genome_name_required
@@ -16,7 +16,7 @@ task MamotifIntegrate {
   command <<<
     mamotif integrate \
       ~{if (verbose) then "--verbose" else ""} \
-      ~{if defined(manorm_result_sample) then ("-i " +  '"' + manorm_result_sample + '"') else ""} \
+      ~{if defined(manorm_result_abmavaluesxls) then ("-i " +  '"' + manorm_result_abmavaluesxls + '"') else ""} \
       ~{if defined(motifscan_result_sample) then ("-m " +  '"' + motifscan_result_sample + '"') else ""} \
       ~{if (negative) then "--negative" else ""} \
       ~{if defined(genome_name_required) then ("-g " +  '"' + genome_name_required + '"') else ""} \
@@ -26,9 +26,12 @@ task MamotifIntegrate {
       ~{if defined(correction) then ("--correction " +  '"' + correction + '"') else ""} \
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Enable verbose log messages."
-    manorm_result_sample: "MAnorm result for sample A or B (A/B_MAvalues.xls)."
+    manorm_result_abmavaluesxls: "MAnorm result for sample A or B (A/B_MAvalues.xls)."
     motifscan_result_sample: "MotifScan result for sample A or B\\n(motif_sites_number.xls)."
     negative: "Convert M=log2(A/B) to -M=log2(B/A). Required when\\nfinding co-factors for sample B."
     genome_name_required: "Genome name. Required if `--split` is enabled."

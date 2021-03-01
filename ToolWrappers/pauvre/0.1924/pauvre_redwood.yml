@@ -4,155 +4,155 @@ command:
 - redwood
 positional:
 - !Positional
-  description: --fileform STRING [STRING ...]
+  optional: false
   position: 0
   name: higher
-  optional: false
+  description: --fileform STRING [STRING ...]
 named:
 - !Flag
-  description: Do not output warnings to stderr
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: Do not output warnings to stderr
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -d
   description: "[{main,rnaseq} ...], --doubled {main,rnaseq} [{main,rnaseq} ...]\n\
     If your fasta file was doubled to map circularly, use\nthis flag or you may encounter\
     \ plotting errors.\nAccepts multiple arguments. 'main' is for the sam file\npassed\
     \ with --sam, 'rnaseq' is for the sam file passed\nwith --rnaseq"
-  synonyms:
-  - -d
   args: !ChoiceFlagArg
     choices: !!set
       rnaseq:
       main:
-  optional: true
 - !Flag
-  description: Change the dpi from the default 600 if you need it
+  optional: true
   synonyms:
   - --dpi
+  description: Change the dpi from the default 600 if you need it
   args: !SimpleFlagArg
     name: dpi
-  optional: true
 - !Flag
-  description: The input filepath for the gff annotation to plot
+  optional: true
   synonyms:
   - --gff
+  description: The input filepath for the gff annotation to plot
   args: !SimpleFlagArg
     name: gff
-  optional: true
 - !Flag
-  description: "Interlace the reads so the pileup plot looks better.\nDoesn't work\
-    \ currently"
+  optional: true
   synonyms:
   - -I
   - --interlace
+  description: "Interlace the reads so the pileup plot looks better.\nDoesn't work\
+    \ currently"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "invert the image so that it looks better on a dark\nbackground. DOESN'T\
-    \ DO ANYTHING."
+  optional: true
   synonyms:
   - -i
   - --invert
+  description: "invert the image so that it looks better on a dark\nbackground. DOESN'T\
+    \ DO ANYTHING."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Plot the RNAseq track with a log scale
+  optional: true
   synonyms:
   - -L
   - --log
+  description: Plot the RNAseq track with a log scale
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --main_bam
   description: "The input filepath for the bam file to plot. Ideally\nwas plotted\
     \ with a fasta file that is two copies of\nthe mitochondrial genome concatenated.\
     \ This should be\nlong reads (ONT, PB) and will be displayed in the\ninterior\
     \ of the redwood plot."
-  synonyms:
-  - -M
-  - --main_bam
   args: !SimpleFlagArg
     name: mainbam
-  optional: true
 - !Flag
-  description: Turn off time stamps in the filename output.
+  optional: true
   synonyms:
   - --no_timestamp
+  description: Turn off time stamps in the filename output.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify a base name for the output file(s). The input\nfile base name\
-    \ is the default."
+  optional: true
   synonyms:
   - -o
   - --output-base-name
+  description: "Specify a base name for the output file(s). The input\nfile base name\
+    \ is the default."
   args: !SimpleFlagArg
     name: BASENAME
-  optional: true
 - !Flag
-  description: Query your reads to change plotting options
+  optional: true
   synonyms:
   - --query
+  description: Query your reads to change plotting options
   args: !RepeatFlagArg
     name: QUERY
-  optional: true
 - !Flag
-  description: The input filepath for the rnaseq bam file to plot
+  optional: true
   synonyms:
   - -R
   - --rnaseq_bam
+  description: The input filepath for the rnaseq bam file to plot
   args: !SimpleFlagArg
     name: rnabam
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --small_start
   description: "This determines where the shortest of the filtered\nreads will appear\
     \ on the redwood plot: on the outside\nor on the inside? The default option puts\
     \ the longest\nreads on the outside and the shortest reads on the\ninside."
-  synonyms:
-  - --small_start
   args: !ChoiceFlagArg
     choices: !!set
       outside:
       inside:
-  optional: true
 - !Flag
-  description: "What value to use to sort the order in which the reads\nare plotted?"
+  optional: true
   synonyms:
   - --sort
+  description: "What value to use to sort the order in which the reads\nare plotted?"
   args: !ChoiceFlagArg
     choices: !!set
-      MAPLEN:
       ALNLEN:
       POS:
       TRULEN:
-  optional: true
+      MAPLEN:
 - !Flag
-  description: Specify control for the number of ticks.
+  optional: true
   synonyms:
   - --ticks
+  description: Specify control for the number of ticks.
   args: !RepeatFlagArg
     name: TICKS
-  optional: true
 - !Flag
-  description: "Specify this option if you DON'T want a transparent\nbackground. Default\
-    \ is on.\n"
+  optional: true
   synonyms:
   - -T
   - --transparent
+  description: "Specify this option if you DON'T want a transparent\nbackground. Default\
+    \ is on.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: pauvre redwood [-h] [-q] [-d {main,rnaseq} [{main,rnaseq} ...]]\n\
@@ -198,3 +198,4 @@ help_text: "usage: pauvre redwood [-h] [-q] [-d {main,rnaseq} [{main,rnaseq} ...
   \ want a transparent\n                        background. Default is on.\n"
 generated_using:
 - --help
+docker_image:

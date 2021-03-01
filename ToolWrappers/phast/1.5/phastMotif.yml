@@ -3,180 +3,180 @@ command:
 - phastMotif
 positional:
 - !Positional
-  description: The specified multiple alignments may
+  optional: false
   position: 0
   name: distributions.
-  optional: false
+  description: The specified multiple alignments may
 - !Positional
-  description: Causes multiple alignments to be ignored -- any
+  optional: false
   position: 0
   name: models.
-  optional: false
+  description: Causes multiple alignments to be ignored -- any
 - !Positional
-  description: -d <+lst> Use the discriminative training method of Segal et
+  optional: false
   position: 0
   name: independent.
-  optional: false
+  description: -d <+lst> Use the discriminative training method of Segal et
 - !Positional
-  description: Can be used with or without -m.
+  optional: false
   position: 0
   name: examples.
-  optional: false
+  description: Can be used with or without -m.
 - !Positional
-  description: Default number is 10.  Ignored with -I, -P, and
+  optional: false
   position: 1
   name: likelihood.
-  optional: false
+  description: Default number is 10.  Ignored with -I, -P, and
 named:
 - !Flag
-  description: "(Required unless -m or -p) Use specified tree topology for\nall phylogenetic\
-    \ models (Newick format)."
+  optional: true
   synonyms:
   - -t
+  description: "(Required unless -m or -p) Use specified tree topology for\nall phylogenetic\
+    \ models (Newick format)."
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "Input format for alignment.  May be FASTA, PHYLIP, MPM, SS,\nor MAF\
-    \ (default FASTA)."
+  optional: true
   synonyms:
   - -i
+  description: "Input format for alignment.  May be FASTA, PHYLIP, MPM, SS,\nor MAF\
+    \ (default FASTA)."
   args: !SimpleFlagArg
     name: fmt
-  optional: true
 - !Flag
-  description: "Read background model from specified file (.mod format).\nBy default,\
-    \ the background model is estimated\nin a preprocessing step, by pooling all data."
+  optional: true
   synonyms:
   - -b
+  description: "Read background model from specified file (.mod format).\nBy default,\
+    \ the background model is estimated\nin a preprocessing step, by pooling all data."
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "Estimate a separate background model for each multiple alignment.\n\
-    (Not yet implemented.)"
+  optional: true
   synonyms:
   - -s
+  description: "Estimate a separate background model for each multiple alignment.\n\
+    (Not yet implemented.)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Learn motifs of the specified size (default is 10).
+  optional: true
   synonyms:
   - -k
+  description: Learn motifs of the specified size (default is 10).
   args: !SimpleFlagArg
     name: size
-  optional: true
 - !Flag
-  description: Report best <n> motifs (default 3).
+  optional: true
   synonyms:
   - -B
+  description: Report best <n> motifs (default 3).
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: MEME mode.  Use multinomial rather than phylogenetic
+  optional: true
   synonyms:
   - -m
+  description: MEME mode.  Use multinomial rather than phylogenetic
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
   description: "Use \"profile\" models rather than phylogenetic models\n(characters\
     \ in each alignment column assumed\nindependent).  The resulting model is a hybrid\
     \ of the\nfull model and MEME's model.  Essentially, it uses the\nmultiple alignments\
     \ but not the phylogeny.  NOT YET IMPLEMENTED."
-  synonyms:
-  - -p
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Perform <n> random restarts and report the motif with highest
+  optional: true
   synonyms:
   - -n
+  description: Perform <n> random restarts and report the motif with highest
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: specified (see below).
+  optional: true
   synonyms:
   - -R
   - -S
+  description: specified (see below).
   args: !SimpleFlagArg
     name: unless
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -I
   description: "Run the algorithm after a \"soft\" initialization with\neach of the\
     \ consensus sequences in the specified list.\nAt each position, <pc> pseudocounts\
     \ (see -c) are given\nto the consensus base and 1 pseudocount to all other\nbases.\
     \  Each string must have length at most equal to\nthe size of the motif.  If shorter,\
     \ it is used as a\n\"seed\" for a motif, with flanking positions treated as\n\
     wildcards."
-  synonyms:
-  - -I
   args: !SimpleFlagArg
     name: mlst
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -P
   description: "<x,y>  Initialize with the x most prevalent y-tuples.  A soft\ninitialization\
     \ is performed, as above.  If y is less\nthan the motif size, y-tuples are used\
     \ as a \"seed\" for\na motif, as above."
-  synonyms:
-  - -P
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(for use with -I, -P, -R) Winnow initialization sequences\nto the\
-    \ top <n> based on the unmaximized likelihood."
+  optional: true
   synonyms:
   - -w
+  description: "(for use with -I, -P, -R) Winnow initialization sequences\nto the\
+    \ top <n> based on the unmaximized likelihood."
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: "(for use with -I, -P, -R) Number of pseudocounts for\nconsensus bases\
-    \ (default 5)."
+  optional: true
   synonyms:
   - -c
+  description: "(for use with -I, -P, -R) Number of pseudocounts for\nconsensus bases\
+    \ (default 5)."
   args: !SimpleFlagArg
     name: pc
-  optional: true
 - !Flag
-  description: Use the specified prefix for all output files (dflt. "phastm").
+  optional: true
   synonyms:
   - -o
+  description: Use the specified prefix for all output files (dflt. "phastm").
   args: !SimpleFlagArg
     name: pref
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -H
   description: "Produce HTML formatted output, in addition to ordinary output.\nOne\
     \ file is produced per predicted motif, as well as a\nsingle HTML-formatted summary\
     \ file."
-  synonyms:
-  - -H
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -D
   description: "Produce a BED file with predicted motifs, for use in the\nUCSC browser.\
     \  Currently, sequence names must be\nformatted such as \"chr10:102553847-102554897+\"\
     , with\nthe final '+' or '-' indicating strand."
-  synonyms:
-  - -D
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (For use with -H or -D) Suppress ordinary output to stdout.
+  optional: true
   synonyms:
   - -x
+  description: (For use with -H or -D) Suppress ordinary output to stdout.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message.
+  optional: true
   synonyms:
   - -h
+  description: Print this help message.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nPROGRAM:      phastMotif\n\nDESCRIPTION:  Predicts motifs from a set\
@@ -240,3 +240,4 @@ help_text: "\nPROGRAM:      phastMotif\n\nDESCRIPTION:  Predicts motifs from a s
   \ output to stdout.\n\n    -h        Print this help message.\n\n"
 generated_using:
 - -h
+docker_image:

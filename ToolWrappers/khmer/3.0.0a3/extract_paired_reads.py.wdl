@@ -22,6 +22,9 @@ task Extractpairedreadspy {
       ~{if (gzip) then "--gzip" else ""} \
       ~{if (bzip) then "--bzip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     info: "print citation information"
     output_dir: "Output split reads to specified directory. Creates\\ndirectory if necessary (default: )"

@@ -14,6 +14,9 @@ task RenameFilterFastq {
       ~{if defined(output_file_stdout) then ("--output " +  '"' + output_file_stdout + '"') else ""} \
       ~{if defined(base_quality) then ("--base-quality " +  '"' + base_quality + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_stdout: "Output file (stdout)"
     base_quality: "Lowest valide quality score (#)"

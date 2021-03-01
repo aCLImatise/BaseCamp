@@ -3,17 +3,17 @@ id: medaka_compress_bam.cwl
 inputs:
 - id: in_debug
   doc: 'Verbose logging of debug information. (default: 20)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_quiet
   doc: 'Minimal logging; warnings only). (default: 20)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_threads
   doc: 'Number of threads for parallel execution. (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_regions
@@ -24,7 +24,7 @@ inputs:
 - id: in_use_fast_five_info
   doc: "<index> <fast5_dir> <index>\nRoot directory containing the fast5 files and\
     \ .tsv\nfile with columns filename and read_id. (default:\nNone)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --use_fast5_info
 - id: in_bam_input
@@ -46,6 +46,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - medaka

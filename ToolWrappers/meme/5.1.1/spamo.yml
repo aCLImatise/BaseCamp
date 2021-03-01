@@ -3,263 +3,263 @@ command:
 - spamo
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: sequences
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: primary motif
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: secondary motifs
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "create the directory and write output files in it;\nnot compatible\
-    \ with -oc"
+  optional: true
   synonyms:
   - -o
+  description: "create the directory and write output files in it;\nnot compatible\
+    \ with -oc"
   args: !SimpleFlagArg
     name: directory
-  optional: true
 - !Flag
-  description: "create the directory but if it already exists allow\noverwriting the\
-    \ contents; default: spamo_out"
+  optional: true
   synonyms:
   - -oc
+  description: "create the directory but if it already exists allow\noverwriting the\
+    \ contents; default: spamo_out"
   args: !SimpleFlagArg
     name: directory
-  optional: true
 - !Flag
-  description: "the minimum score (bits) to accept as a motif match;\ndefault: 7\n\
-    Note: if <valu> is in the range [-1, 0), then the\nminimum score is set to: -<valu>*pwm_maximum_score"
+  optional: true
   synonyms:
   - -minscore
+  description: "the minimum score (bits) to accept as a motif match;\ndefault: 7\n\
+    Note: if <valu> is in the range [-1, 0), then the\nminimum score is set to: -<valu>*pwm_maximum_score"
   args: !SimpleFlagArg
     name: valu
-  optional: true
 - !Flag
-  description: "edge margin excluded for primary motif matches and\nthe maximum distance\
-    \ from the primary motif to the\nsecondary motif; default: 150"
+  optional: true
   synonyms:
   - -margin
+  description: "edge margin excluded for primary motif matches and\nthe maximum distance\
+    \ from the primary motif to the\nsecondary motif; default: 150"
   args: !SimpleFlagArg
     name: size
-  optional: true
 - !Flag
-  description: 'size of bins used for output; default: 1'
+  optional: true
   synonyms:
   - -bin
+  description: 'size of bins used for output; default: 1'
   args: !SimpleFlagArg
     name: size
-  optional: true
 - !Flag
-  description: "the range from the primary to include in significance\ntests; default:\
-    \ 150"
+  optional: true
   synonyms:
   - -range
+  description: "the range from the primary to include in significance\ntests; default:\
+    \ 150"
   args: !SimpleFlagArg
     name: size
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -usebestsec
   description: "use only the best match of the secondary motif;\ndefault: count all\
     \ secondary matches above the\nscore match threshold in the margins around the\n\
     primary motif match"
-  synonyms:
-  - -usebestsec
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -shared
   description: "fraction of shared trimmed sequence content that\nis required to exclude\
     \ the sequence as redundant;\nset <fract> to 0 to skip sequence redundancy check;\n\
     default: 0.5"
-  synonyms:
-  - -shared
   args: !SimpleFlagArg
     name: fract
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -odds
   description: "odds ratio used for speedup of the redundant\nsequence check; low\
     \ values may cause some\nredundant sequences to be missed; set <odds>\nto 0 to\
     \ do full-length check;\ndefault: 20"
-  synonyms:
-  - -odds
   args: !SimpleFlagArg
     name: odds
-  optional: true
 - !Flag
-  description: "cutoff for spacings to be considered significant;\ndefault: 0.05"
+  optional: true
   synonyms:
   - -cutoff
+  description: "cutoff for spacings to be considered significant;\ndefault: 0.05"
   args: !SimpleFlagArg
     name: pvalue
-  optional: true
 - !Flag
-  description: "minimum E-value for printing secondary motifs;\ndefault: 10"
+  optional: true
   synonyms:
   - -evalue
+  description: "minimum E-value for printing secondary motifs;\ndefault: 10"
   args: !SimpleFlagArg
     name: evalue
-  optional: true
 - !Flag
-  description: "number of bases that the most significant spacing\nmust overlap before\
-    \ further redundancy testing is\ndone; default: 2"
+  optional: true
   synonyms:
   - -overlap
+  description: "number of bases that the most significant spacing\nmust overlap before\
+    \ further redundancy testing is\ndone; default: 2"
   args: !SimpleFlagArg
     name: size
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -joint
   description: "fraction of sites making up the most significant\nspacing that must\
     \ be in both sets for the less\nsignificant motif to be considered redundant;\n\
     default: 0.5"
-  synonyms:
-  - -joint
   args: !SimpleFlagArg
     name: fract
-  optional: true
 - !Flag
-  description: "pseudocount added to loaded motifs;\ndefault: 0.1"
+  optional: true
   synonyms:
   - -pseudo
+  description: "pseudocount added to loaded motifs;\ndefault: 0.1"
   args: !SimpleFlagArg
     name: count
-  optional: true
 - !Flag
-  description: "file containing background frequency information\nused to apply pseudocounts\
-    \ to motifs and create the\nscoring matrices; default: calculate from sequences"
+  optional: true
   synonyms:
   - -bgfile
+  description: "file containing background frequency information\nused to apply pseudocounts\
+    \ to motifs and create the\nscoring matrices; default: calculate from sequences"
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -xalph
   description: "Convert the alphabet of the secondary motif databases\nto the alphabet\
     \ of the primary motif\nassuming the core symbols of the secondary motif\nalphabet\
     \ are a subset; default: reject differences"
-  synonyms:
-  - -xalph
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -trim
   description: "trim the edges of motifs based on the information\ncontent; positions\
     \ on the edges with information\ncontent less than bits will not be used in\n\
     scanning\ndefault: 0.25"
-  synonyms:
-  - -trim
   args: !SimpleFlagArg
     name: bits
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -numgen
   description: "specify the random seed for initializing the pseudo-\nrandom number\
     \ generator used in breaking ties;\nthe seed is included in the output so experiments\n\
     can be repeated; special value 'time' seeds to the\nsystem clock; default: 1"
-  synonyms:
-  - -numgen
   args: !SimpleFlagArg
     name: seed
-  optional: true
 - !Flag
-  description: "name of motif to select as the primary motif;\noverrides -primaryi"
+  optional: true
   synonyms:
   - -primary
+  description: "name of motif to select as the primary motif;\noverrides -primaryi"
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
-  description: "index of motif to select as the primary motif\ncounting from 1; default:\
-    \ 1"
+  optional: true
   synonyms:
   - -primaryi
+  description: "index of motif to select as the primary motif\ncounting from 1; default:\
+    \ 1"
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -keepprimary
   description: "by default all occurrences of the primary other\nthan the chosen one\
     \ are erased to reduce the\nnumber of motifs whose apparent enrichment is due\n\
     to multiple occurrences of the primary motif. If\nthe same file is specified for\
     \ the primary and\nsecondary motifs, then this option will override\nerasing and\
     \ primary-primary spacings will be\nanalyzed."
-  synonyms:
-  - -keepprimary
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "name pattern to select as secondary motif; may be\nrepeated; default:\
-    \ all motifs are used"
+  optional: true
   synonyms:
   - -inc
+  description: "name pattern to select as secondary motif; may be\nrepeated; default:\
+    \ all motifs are used"
   args: !SimpleFlagArg
     name: pattern
-  optional: true
 - !Flag
-  description: "name pattern to exclude as secondary motif; may be\nrepeated; default:\
-    \ all motifs are used"
+  optional: true
   synonyms:
   - -exc
+  description: "name pattern to exclude as secondary motif; may be\nrepeated; default:\
+    \ all motifs are used"
   args: !SimpleFlagArg
     name: pattern
-  optional: true
 - !Flag
-  description: output text file only (no HTML or XML)
+  optional: true
   synonyms:
   - -text
+  description: output text file only (no HTML or XML)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: output histograms in eps format; usable with -png
+  optional: true
   synonyms:
   - -eps
+  description: output histograms in eps format; usable with -png
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: output histograms in png format; usable with -eps
+  optional: true
   synonyms:
   - -png
+  description: output histograms in png format; usable with -eps
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "dump matching trimmed sequences to output files;\nmatches are initially\
-    \ in sequence name order;\nsee documentation for column descriptions"
+  optional: true
   synonyms:
   - -dumpseqs
+  description: "dump matching trimmed sequences to output files;\nmatches are initially\
+    \ in sequence name order;\nsee documentation for column descriptions"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -dumpsigs
   description: "same as above except only secondary matches in\nin significant bins\
     \ are dumped\nmatches are initially in sequence name order;\nsee documentation\
     \ for column descriptions"
-  synonyms:
-  - -dumpsigs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "set the verbosity of the output: 1 (quiet) - 5 (dump);\ndefault: 2\
-    \ (normal)"
+  optional: true
   synonyms:
   - -verbosity
+  description: "set the verbosity of the output: 1 (quiet) - 5 (dump);\ndefault: 2\
+    \ (normal)"
   args: !SimpleFlagArg
     name: v
-  optional: true
 - !Flag
-  description: print the version and exit
+  optional: true
   synonyms:
   - -version
+  description: print the version and exit
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: print this usage message
+  optional: true
   synonyms:
   - -help
+  description: print this usage message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage:\n    spamo [options] <sequences> <primary motif> <secondary motifs>+\n\
@@ -337,3 +337,4 @@ help_text: "Usage:\n    spamo [options] <sequences> <primary motif> <secondary m
   \n"
 generated_using:
 - --help
+docker_image:

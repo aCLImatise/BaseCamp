@@ -16,6 +16,9 @@ task GcloudMlengineJobs {
       ~{list} \
       ~{stream_logs}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     submit: "Cloud ML Engine Jobs submit commands."
     cancel: "Cancel a running Cloud ML Engine job."

@@ -12,6 +12,9 @@ task FCSstatsTxtpy {
       ~{if defined(file_location_text) then ("-i " +  '"' + file_location_text + '"') else ""} \
       ~{if defined(name_output_file) then ("-o " +  '"' + name_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_location_text: "File location for the text file."
     name_output_file: "Name of the output file."

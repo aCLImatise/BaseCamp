@@ -4,6 +4,9 @@ task NucleosomePredictionplbak {
   command <<<
     nucleosome_prediction_pl_bak
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

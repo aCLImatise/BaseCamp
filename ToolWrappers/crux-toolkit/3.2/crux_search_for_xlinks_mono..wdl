@@ -12,6 +12,9 @@ task CruxSearchforxlinksMono {
       ~{search_for_x_links} \
       ~{ms_two_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     search_for_x_links: ""

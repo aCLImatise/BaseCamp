@@ -3,12 +3,12 @@ id: ribo_config.cwl
 inputs:
 - id: in_outdir
   doc: 'output directory; default: /'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_name
   doc: 'name of config file; default: timestamped'
-  type: File
+  type: File?
   inputBinding:
     prefix: --name
 - id: in_ribo
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: 'output directory; default: /'
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ribo

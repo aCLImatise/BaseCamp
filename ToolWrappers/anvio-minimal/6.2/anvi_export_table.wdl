@@ -14,6 +14,9 @@ task Anviexporttable {
       ~{if defined(s__fields) then ("-f " +  '"' + s__fields + '"') else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     table: "Table name to export."
     list: "Gives a list of tables in a database and quits. If a\\ntable is already declared this time it lists all the\\nfields in a given table, in case you would to export\\nonly a specific list of fields from the table using\\n--fields parameter."

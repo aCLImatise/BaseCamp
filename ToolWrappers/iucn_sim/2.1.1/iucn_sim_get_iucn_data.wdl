@@ -18,6 +18,9 @@ task IucnSimGetIucnData {
       ~{if defined(iucn_key) then ("--iucn_key " +  '"' + iucn_key + '"') else ""} \
       ~{if (no_online_sync) then "--no_online_sync" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_group: "Name of taxonomic group (or list of groups) to be used\\nfor calculating status transition rates (e.g.\\n'Mammalia' or 'Rodentia,Chiroptera'). Alternatively\\nprovide path to text file containing a list of species\\nnames, compatible with IUCN taxonomy (>1000 species\\nrecommended). If none provided, the target species\\nlist ('--target_species_list') will be used for\\ncalculating transition rates. Tip: Use precompiled\\ngroup for faster processing and in case you don't have\\nan IUCN key (see available groups at github.com/tobias\\nhofmann88/iucn_extinction_simulator/data/precompiled/i\\nucn_history/ or request specific groups to be added:\\ntobias.andermann@bioenv.gu.se)"
     reference_rank: "Provide the taxonomic rank of the provided reference\\ngroup(s). E.g. in case of 'Mammalia', provide 'class'\\nfor this flag, in case of 'Rodentia,Chiroptera'\\nprovide 'order,order'. Has to be at least 'Family' or\\nabove. This flag is not needed if species list is\\nprovided as reference_group or if reference group is\\nalready pre-compiled."

@@ -10,6 +10,9 @@ task GgdUninstall {
       ~{name} \
       ~{if defined(channel) then ("--channel " +  '"' + channel + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     channel: "The ggd channel of the recipe to uninstall. (Default =\\ngenomics)\\n"
     name: "the name of the recipe to uninstall"

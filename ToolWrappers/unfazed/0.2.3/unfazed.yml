@@ -4,121 +4,121 @@ command:
 positional: []
 named:
 - !Flag
-  description: "valid VCF OR BED file of the DNMs of interest> If BED,\nmust contain\
-    \ chrom, start, end, kid_id, var_type\ncolumns (default: None)"
+  optional: true
   synonyms:
   - -d
   - --dnms
+  description: "valid VCF OR BED file of the DNMs of interest> If BED,\nmust contain\
+    \ chrom, start, end, kid_id, var_type\ncolumns (default: None)"
   args: !SimpleFlagArg
     name: DNMS
-  optional: true
 - !Flag
-  description: "sorted/bgzipped/indexed VCF/BCF file of SNVs to\nidentify informative\
-    \ sites. Must contain each kid and\nboth parents (default: None)"
+  optional: true
   synonyms:
   - -s
   - --sites
+  description: "sorted/bgzipped/indexed VCF/BCF file of SNVs to\nidentify informative\
+    \ sites. Must contain each kid and\nboth parents (default: None)"
   args: !SimpleFlagArg
     name: SITES
-  optional: true
 - !Flag
-  description: "ped file including the kid and both parent IDs\n(default: None)"
+  optional: true
   synonyms:
   - -p
   - --ped
+  description: "ped file including the kid and both parent IDs\n(default: None)"
   args: !SimpleFlagArg
     name: PED
-  optional: true
 - !Flag
-  description: "directory where bam/cram files (named {sample_id}.bam\nor {sample_id}.cram)\
-    \ are stored for offspring. If not\nincluded, --bam-pairs must be set (default:\
-    \ None)"
+  optional: true
   synonyms:
   - -b
   - --bam-dir
+  description: "directory where bam/cram files (named {sample_id}.bam\nor {sample_id}.cram)\
+    \ are stored for offspring. If not\nincluded, --bam-pairs must be set (default:\
+    \ None)"
   args: !SimpleFlagArg
     name: BAM_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bam-pairs
   description: "[BAM_PAIRS [BAM_PAIRS ...]]\nspace-delimited list of pairs in the\
     \ format\n{sample_id}:{bam_path} where {sample_id} matches an\noffspring id from\
     \ the dnm file. Can be used with\n--bam-dir arg, must be used in its absence (default:\n\
     None)"
-  synonyms:
-  - --bam-pairs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'number of threads to use (default: 2)'
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: 'number of threads to use (default: 2)'
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: "choose output type. If --dnms is not a VCF/BCF, output\nmust be to\
-    \ BED format. Defaults to match --dnms input\nfile (default: None)"
+  optional: true
   synonyms:
   - -o
   - --output-type
+  description: "choose output type. If --dnms is not a VCF/BCF, output\nmust be to\
+    \ BED format. Defaults to match --dnms input\nfile (default: None)"
   args: !ChoiceFlagArg
     choices: !!set
       vcf:
       bed:
-  optional: true
 - !Flag
-  description: 'include ambiguous phasing results (default: False)'
+  optional: true
   synonyms:
   - --include-ambiguous
+  description: 'include ambiguous phasing results (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "print verbose output including sites and reads used\nfor phasing.\
-    \ Only applies to BED output (default:\nFalse)"
+  optional: true
   synonyms:
   - --verbose
+  description: "print verbose output including sites and reads used\nfor phasing.\
+    \ Only applies to BED output (default:\nFalse)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "name for output file. Defaults to stdout (default:\n/dev/stdout)"
+  optional: true
   synonyms:
   - --outfile
+  description: "name for output file. Defaults to stdout (default:\n/dev/stdout)"
   args: !SimpleFlagArg
     name: OUTFILE
-  optional: true
 - !Flag
-  description: "reference fasta file (required for crams) (default:\nNone)\n"
+  optional: true
   synonyms:
   - -r
   - --reference
+  description: "reference fasta file (required for crams) (default:\nNone)\n"
   args: !SimpleFlagArg
     name: REFERENCE
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -v
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Installed version (0.2.3)
+  optional: true
   synonyms:
   - -v
   - --version
+  description: Installed version (0.2.3)
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: unfazed [-h] [-v] -d DNMS -s SITES -p PED [-b BAM_DIR]\n      \
   \         [--bam-pairs [BAM_PAIRS [BAM_PAIRS ...]]] [-t THREADS]\n             \
   \  [-o {vcf,bed}] [--include-ambiguous] [--verbose]\n               [--outfile OUTFILE]\
@@ -152,3 +152,4 @@ help_text: "usage: unfazed [-h] [-v] -d DNMS -s SITES -p PED [-b BAM_DIR]\n     
   \ None)\n"
 generated_using:
 - --help
+docker_image:

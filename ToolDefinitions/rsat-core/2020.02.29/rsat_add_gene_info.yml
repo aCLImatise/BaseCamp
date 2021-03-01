@@ -4,27 +4,83 @@ command:
 - add-gene-info
 positional:
 - !Positional
-  description: DESCRIPTION
+  optional: false
   position: 0
   name: add-gene-info
-  optional: false
-named: []
+  description: DESCRIPTION
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -help
+  description: display options
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: verbose
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -col
+  description: column containing gene IDs.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "if not specified, the standard input is used.\nThis allows to place\
+    \ the command within a pipe."
+  args: !SimpleFlagArg
+    name: inputfile
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "if not specified, the standard output is used.\nThis allows to place\
+    \ the command within a pipe."
+  args: !SimpleFlagArg
+    name: outputfile
+- !Flag
+  optional: true
+  synonyms:
+  - -org
+  - -info
+  description: 'information type (supported: id,ctg,strand,left,right,name,descr,names,upstr_neighb_name,upstr_neighb_id,upstr_limit,upstr_size,downstr_neighb_name,downstr_neighb_id,downstr_limit,downstr_size,right_neighb_name,right_neighb_id,right_limit,right_size,left_neighb_name,left_neighb_id,left_limit,left_size)'
+  args: !SimpleFlagArg
+    name: organism
+- !Flag
+  optional: true
+  synonyms:
+  - -before
+  description: "the information before the input line (by default,\nthe info is added\
+    \ at the end of each input line)."
+  args: !SimpleFlagArg
+    name: add
+- !Flag
+  optional: true
+  synonyms:
+  - -null
+  description: 'to display for undefined values (default: <NULL>).'
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -feattype
+  description: "Feature type.\nSupported: gene,mRNA,tRNA,rRNA,scRNA,misc_RNA,CDS,start_codon,stop_codon,exon"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "display full help message\n-help   display options\n-v      verbose\n\
-    -col    column containing gene IDs.\n-i inputfile\nif not specified, the standard\
-    \ input is used.\nThis allows to place the command within a pipe.\n-o outputfile\n\
-    if not specified, the standard output is used.\nThis allows to place the command\
-    \ within a pipe.\n-org organism\n-info   information type (supported: id,ctg,strand,left,right,name,descr,names,upstr_neighb_name,upstr_neighb_id,upstr_limit,upstr_size,downstr_neighb_name,downstr_neighb_id,downstr_limit,downstr_size,right_neighb_name,right_neighb_id,right_limit,right_size,left_neighb_name,left_neighb_id,left_limit,left_size)\n\
-    -before add the information before the input line (by default,\nthe info is added\
-    \ at the end of each input line).\n-null String to display for undefined values\
-    \ (default: <NULL>).\n-feattype\nFeature type.\nSupported: gene,mRNA,tRNA,rRNA,scRNA,misc_RNA,CDS,start_codon,stop_codon,exon"
+  optional: true
   synonyms:
   - -h
+  description: display full help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "NAME\n\tadd-gene-info\n\nDESCRIPTION\n\n\tTakes as input a tab-delimited\
@@ -47,3 +103,4 @@ help_text: "NAME\n\tadd-gene-info\n\nDESCRIPTION\n\n\tTakes as input a tab-delim
   information fields.\n\n"
 generated_using:
 - -h
+docker_image:

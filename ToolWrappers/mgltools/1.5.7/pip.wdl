@@ -4,6 +4,9 @@ task Pip {
   command <<<
     pip
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

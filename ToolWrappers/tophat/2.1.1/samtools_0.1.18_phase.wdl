@@ -26,6 +26,9 @@ task Samtools0118Phase {
       ~{if (attempt_fix_chimeras) then "-F" else ""} \
       ~{if (drop_reads_ambiguous) then "-A" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     block_length: "block length [13]"
     prefix_bams_output: "prefix of BAMs to output [null]"

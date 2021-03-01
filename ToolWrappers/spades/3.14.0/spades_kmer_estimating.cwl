@@ -3,23 +3,24 @@ id: spades_kmer_estimating.cwl
 inputs:
 - id: in_km_er
   doc: K-mer length
-  type: long
+  type: long?
   inputBinding:
     prefix: --kmer
 - id: in_dataset
   doc: Dataset description (in YAML)
-  type: string
+  type: string?
   inputBinding:
     prefix: --dataset
 - id: in_threads
   doc: '# of threads to use'
-  type: string
+  type: string?
   inputBinding:
     prefix: --threads
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - spades-kmer-estimating

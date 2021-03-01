@@ -14,6 +14,9 @@ task Genomedataopendata {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     track_names: "tracknames to open"
     verbose: "Print status updates and diagnostic messages"

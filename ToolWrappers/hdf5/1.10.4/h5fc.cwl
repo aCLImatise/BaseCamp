@@ -3,34 +3,34 @@ id: h5fc.cwl
 inputs:
 - id: in_echo
   doc: Show all the shell commands executed
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -echo
 - id: in_prefix
   doc: "Prefix directory to find HDF5 lib/ and include/\nsubdirectories [default:\
     \ /usr/local]"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -prefix
 - id: in_show
   doc: Show the commands without executing them
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -show
 - id: in_show_config
   doc: Show the HDF5 library configuration summary
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -showconfig
 - id: in_shlib
   doc: "Compile with shared HDF5 libraries [default for hdf5 built\nwithout static\
     \ libraries]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -shlib
 - id: in_no_shlib
   doc: "Compile with static HDF5 libraries [default for hdf5 built\nwith static libraries]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -noshlib
 - id: in_hdf_five_fc
@@ -52,6 +52,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - h5fc

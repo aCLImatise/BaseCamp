@@ -24,6 +24,9 @@ task Bamtools241Split {
       ~{if (mapped) then "-mapped" else ""} \
       ~{if defined(tag) then ("-tag " +  '"' + tag + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "the input BAM file [stdin]"
     ref_prefix: "custom prefix for splitting by\\nreferences. Currently files end with\\nREF_<refName>.bam. This option allows you\\nto replace \\\"REF_\\\" with a prefix of your\\nchoosing."

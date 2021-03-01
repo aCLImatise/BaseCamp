@@ -16,6 +16,9 @@ task SplashUtrs {
       ~{if defined(output_dir) then ("--outputDir " +  '"' + output_dir + '"') else ""} \
       ~{if defined(snp_rate) then ("--snp-rate " +  '"' + snp_rate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "Reference fasta file"
     bed: "BED file"

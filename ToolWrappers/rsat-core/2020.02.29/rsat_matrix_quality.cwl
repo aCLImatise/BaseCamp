@@ -2,19 +2,13 @@ class: CommandLineTool
 id: rsat_matrix_quality.cwl
 inputs:
 - id: in_perm
-  doc: "0 -bgfile my_background.txt \\\n-o my_matrix_quality"
-  type: long
+  doc: 0 -bgfile my_background.txt \
+  type: long?
   inputBinding:
     prefix: -perm
-- id: in_h_dot
-  doc: "Multiple image formats can be specified either by using iteratively\nthe option,\
-    \ or by separating them by commas.\nExample: -img_format png,pdf"
-  type: boolean
-  inputBinding:
-    prefix: -h.
 - id: in_plot
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -plot
 - id: in_matrix_quality
@@ -32,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_approach_may_however
+- id: in_approach_however_pose
   doc: This approach may however pose problem in the specific case of
   type: string
   inputBinding:
@@ -109,6 +103,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

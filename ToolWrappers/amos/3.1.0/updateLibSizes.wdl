@@ -8,6 +8,9 @@ task UpdateLibSizes {
     updateLibSizes \
       ~{bank_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bank_name: ""
   }

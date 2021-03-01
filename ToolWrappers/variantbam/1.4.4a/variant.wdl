@@ -68,6 +68,9 @@ task Variant {
       ~{if (include_aln_flag) then "--include-aln-flag" else ""} \
       ~{if (exclude_aln_flag) then "--exclude-aln-flag" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Verbose output"
     no_output: "Don't output reads (used for profiling with -q)"

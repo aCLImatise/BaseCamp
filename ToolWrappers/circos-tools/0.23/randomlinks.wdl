@@ -10,6 +10,9 @@ task Randomlinks {
       ~{if defined(ruleset) then ("-ruleset " +  '"' + ruleset + '"') else ""} \
       ~{if defined(karyotype) then ("-karyotype " +  '"' + karyotype + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ruleset: ""
     karyotype: ""

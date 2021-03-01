@@ -3,85 +3,85 @@ command:
 - yapc
 positional:
 - !Positional
-  description: Prefix to use for all output files
+  optional: false
   position: 0
   name: OUTPUT_PREFIX
-  optional: false
+  description: Prefix to use for all output files
 - !Positional
-  description: "Name of the condition, BigWig files of first and\nsecond replicates;\
-    \ all separated by spaces. (default:\nNone)"
+  optional: false
   position: 1
   name: CONDITION_REP1_REP2
-  optional: false
+  description: "Name of the condition, BigWig files of first and\nsecond replicates;\
+    \ all separated by spaces. (default:\nNone)"
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --smoothing-window-width
   description: "Width of the smoothing window used for the second\nderivative track.\
     \ If the peak calls aren't capturing\nthe peak shape well, try setting this to\
     \ different\nvalues ranging from 75 to 200. (default: 150)"
-  synonyms:
-  - --smoothing-window-width
   args: !SimpleFlagArg
     name: SMOOTHING_WINDOW_WIDTH
-  optional: true
 - !Flag
-  description: "Number of times smoothing is applied to the second\nderivative. (default:\
-    \ 3)"
+  optional: true
   synonyms:
   - --smoothing-times
+  description: "Number of times smoothing is applied to the second\nderivative. (default:\
+    \ 3)"
   args: !SimpleFlagArg
     name: SMOOTHING_TIMES
-  optional: true
 - !Flag
-  description: "Discard concave regions smaller than the threshold\nspecified. (default:\
-    \ 75)"
+  optional: true
   synonyms:
   - --min-concave-region-width
+  description: "Discard concave regions smaller than the threshold\nspecified. (default:\
+    \ 75)"
   args: !SimpleFlagArg
     name: MIN_CONCAVE_REGION_WIDTH
-  optional: true
 - !Flag
-  description: "Truncate IDR input to the number of peaks specified.\n(default: 100000)"
+  optional: true
   synonyms:
   - --truncate-idr-input
+  description: "Truncate IDR input to the number of peaks specified.\n(default: 100000)"
   args: !SimpleFlagArg
     name: TRUNCATE_IDR_INPUT
-  optional: true
 - !Flag
-  description: "Set final peak coordinates to the specified number of\nbase pairs\
-    \ on either side of the concave region mode.\n(default: None)"
+  optional: true
   synonyms:
   - --fixed-peak-halfwidth
+  description: "Set final peak coordinates to the specified number of\nbase pairs\
+    \ on either side of the concave region mode.\n(default: None)"
   args: !SimpleFlagArg
     name: FIXED_PEAK_HALFWIDTH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pseudoreplicates
   description: "Use pseudoreplicates as implemented in modENCODE\n(Landt et al 2012;\
     \ around Fig 7): for each condition,\nassess peak reproducibility in replicates\
     \ and\npseudoreplicates; report globalIDRs for the set with a\nlarger number of\
     \ peak calls (at IDR=0.001).\nPseudoreplicates are specified as the 3rd and 4th\
     \ file\nname after every condition. (default: False)"
-  synonyms:
-  - --pseudoreplicates
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --recycle
   description: "Do not recompute (intermediate) output files if a file\nwith the expected\
     \ name is already present. Enabling\nthis can lead to funky behaviour e.g. in\
     \ the case of a\npreviously interrupted run. (default: False)\n"
-  synonyms:
-  - --recycle
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "yapc (yet another peak caller) 0.1\n\nusage: yapc [-h] [--smoothing-window-width\
@@ -126,3 +126,4 @@ help_text: "yapc (yet another peak caller) 0.1\n\nusage: yapc [-h] [--smoothing-
   \                        previously interrupted run. (default: False)\n"
 generated_using:
 - --help
+docker_image:

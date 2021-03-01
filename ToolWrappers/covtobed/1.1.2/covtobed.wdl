@@ -24,6 +24,9 @@ task Covtobed {
       ~{if (output_strands) then "--output-strands" else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     physical_coverage: "compute physical coverage (needs paired alignments in input)"
     min_mapq: "skip alignments whose mapping quality is less than MINQ\\n(default: 0)"

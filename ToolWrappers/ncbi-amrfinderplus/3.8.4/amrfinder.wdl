@@ -17,7 +17,7 @@ task Amrfinder {
     Boolean? report_common
     File? mutation_all
     Directory? blast_bin
-    File? write_output_outputfile
+    File? write_output_stdout
     Boolean? quiet
     Boolean? g_pipe_org
     String? parm
@@ -42,7 +42,7 @@ task Amrfinder {
       ~{if (report_common) then "--report_common" else ""} \
       ~{if defined(mutation_all) then ("--mutation_all " +  '"' + mutation_all + '"') else ""} \
       ~{if defined(blast_bin) then ("--blast_bin " +  '"' + blast_bin + '"') else ""} \
-      ~{if defined(write_output_outputfile) then ("--output " +  '"' + write_output_outputfile + '"') else ""} \
+      ~{if defined(write_output_stdout) then ("--output " +  '"' + write_output_stdout + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (g_pipe_org) then "--gpipe_org" else ""} \
       ~{if defined(parm) then ("--parm " +  '"' + parm + '"') else ""} \
@@ -50,6 +50,9 @@ task Amrfinder {
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     update: "Update the AMRFinder database"
     protein: "Protein FASTA file to search"
@@ -66,7 +69,7 @@ task Amrfinder {
     report_common: "Report proteins common to a taxonomy group"
     mutation_all: "File to report all mutations"
     blast_bin: "Directory for BLAST. Deafult: $BLAST_BIN"
-    write_output_outputfile: "Write output to OUTPUT_FILE instead of STDOUT"
+    write_output_stdout: "Write output to OUTPUT_FILE instead of STDOUT"
     quiet: "Suppress messages to STDERR"
     g_pipe_org: "NCBI internal GPipe organism names"
     parm: "amr_report parameters for testing: -nosame -noblast -skip_hmm_check -bed"
@@ -76,6 +79,6 @@ task Amrfinder {
   }
   output {
     File out_stdout = stdout()
-    File out_write_output_outputfile = "${in_write_output_outputfile}"
+    File out_write_output_stdout = "${in_write_output_stdout}"
   }
 }

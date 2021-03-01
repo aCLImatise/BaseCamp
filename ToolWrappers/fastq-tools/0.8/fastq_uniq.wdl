@@ -8,6 +8,9 @@ task Fastquniq {
     fastq_uniq \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "print status along the way"
   }

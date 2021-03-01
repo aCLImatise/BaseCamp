@@ -42,6 +42,9 @@ task Pipelign {
       ~{if defined(stage) then ("--stage " +  '"' + stage + '"') else ""} \
       ~{if (exclude_clusters) then "--excludeClusters" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "Input sequence file in FASTA format"
     outfile: "FASTA formatted output alignment file"

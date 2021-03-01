@@ -6,22 +6,25 @@ task Kreport2mpapy {
     File? output_mpareport_file
     Boolean? display_header
     Boolean? no_intermediate_ranks
-    File file
+    File intermediateranks_include_taxonomic
   }
   command <<<
     kreport2mpa_py \
-      ~{file} \
+      ~{intermediateranks_include_taxonomic} \
       ~{if defined(report_file) then ("--report-file " +  '"' + report_file + '"') else ""} \
       ~{if defined(output_mpareport_file) then ("--output " +  '"' + output_mpareport_file + '"') else ""} \
       ~{if (display_header) then "--display-header" else ""} \
       ~{if (no_intermediate_ranks) then "--no-intermediate-ranks" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report_file: "Input kraken report file for converting"
     output_mpareport_file: "Output mpa-report file name"
     display_header: "Include header [Kraken report filename] in mpa-report"
     no_intermediate_ranks: "Do not include non-traditional taxonomic ranks in\\noutput\\n"
-    file: "--intermediate-ranks  Include non-traditional taxonomic ranks in output"
+    intermediateranks_include_taxonomic: "--intermediate-ranks  Include non-traditional taxonomic ranks in output"
   }
   output {
     File out_stdout = stdout()

@@ -3,95 +3,95 @@ command:
 - ss
 positional:
 - !Positional
-  description: Data file to be imported, filtered, and/or transformed
+  optional: false
   position: 0
   name: input_file
-  optional: false
+  description: Data file to be imported, filtered, and/or transformed
 - !Positional
-  description: File path to which results are exported
+  optional: false
   position: 1
   name: output_file
-  optional: false
+  description: File path to which results are exported
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input_file_type
   description: "Type of file to be imported. If not specified, file\ntype will be\
     \ determined by the file extension given.\nAvailable choices are: CSV, TSV, JSON,\
     \ Excel, HDF5,\nParquet, MsgPack, Stata, Pickle, SQLite, ARFF, GCT,\nKallisto,\
     \ GEO, Salmon"
-  synonyms:
-  - -i
-  - --input_file_type
   args: !SimpleFlagArg
     name: File_Type
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_file_type
   description: "Type of file to which results are exported. If not\nspecified, file\
     \ type will be determined by the file\nextension given. Available choices are:\
     \ CSV, TSV,\nJSON, Excel, HDF5, Parquet, MsgPack, Stata, Pickle,\nSQLite, ARFF,\
     \ GCT, RMarkdown, JupyterNotebook"
-  synonyms:
-  - -o
-  - --output_file_type
   args: !SimpleFlagArg
     name: File_Type
-  optional: true
 - !Flag
-  description: Transpose index and columns in the output file
+  optional: true
   synonyms:
   - -t
   - --transpose
+  description: Transpose index and columns in the output file
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
   description: "\"FILTER\", --filter \"FILTER\"\nFilter data using python logical\
     \ syntax. Your filter\nmust be surrounded by quotes. For example: -f\n\"ColumnName1\
     \ > 12.5 and (ColumnName2 == 'x' or\nColumnName2 =='y')\""
-  synonyms:
-  - -f
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "List of additional column names to include in the\noutput file. Column\
-    \ names must be seperated by commas\nand without spaces. For example: -c\nColumnName1,ColumnName2,ColumnName3"
+  optional: true
   synonyms:
   - -c
   - --columns
+  description: "List of additional column names to include in the\noutput file. Column\
+    \ names must be seperated by commas\nand without spaces. For example: -c\nColumnName1,ColumnName2,ColumnName3"
   args: !SimpleFlagArg
     name: COLUMNS
-  optional: true
 - !Flag
-  description: "Includes all columns in the output file. Overrides the\n\"--columns\"\
-    \ flag"
+  optional: true
   synonyms:
   - -a
   - --all_columns
+  description: "Includes all columns in the output file. Overrides the\n\"--columns\"\
+    \ flag"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Gzips the output file
+  optional: true
   synonyms:
   - -g
   - --gzip
+  description: Gzips the output file
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Sets the given column to become the index column,\nwhere appropriate.\n"
+  optional: true
   synonyms:
   - -s
   - --set_index
+  description: "Sets the given column to become the index column,\nwhere appropriate.\n"
   args: !SimpleFlagArg
     name: SET_INDEX
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: ss [-h] [-i File_Type] [-o File_Type] [-t] [-f \"FILTER\"] [-c\
@@ -125,3 +125,4 @@ help_text: "usage: ss [-h] [-i File_Type] [-o File_Type] [-t] [-f \"FILTER\"] [-
   \                     where appropriate.\n"
 generated_using:
 - --help
+docker_image:

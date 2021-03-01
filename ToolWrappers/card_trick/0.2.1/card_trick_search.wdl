@@ -2,7 +2,7 @@ version 1.0
 
 task CardtrickSearch {
   input {
-    String? input_term_search_term
+    String? input_term_search_card
     String? format_output
     String? output_name
     File? path
@@ -16,7 +16,7 @@ task CardtrickSearch {
   command <<<
     card_trick search \
       ~{directory_dot} \
-      ~{if defined(input_term_search_term) then ("--input " +  '"' + input_term_search_term + '"') else ""} \
+      ~{if defined(input_term_search_card) then ("--input " +  '"' + input_term_search_card + '"') else ""} \
       ~{if defined(format_output) then ("--format_output " +  '"' + format_output + '"') else ""} \
       ~{if defined(output_name) then ("--output_name " +  '"' + output_name + '"') else ""} \
       ~{if defined(path) then ("--path " +  '"' + path + '"') else ""} \
@@ -26,8 +26,11 @@ task CardtrickSearch {
       ~{if (batch_two) then "--batch_2" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    input_term_search_term: "Input term to search in CARD ontology. Provide a\\nunique term o several using --batch option"
+    input_term_search_card: "Input term to search in CARD ontology. Provide a\\nunique term o several using --batch option"
     format_output: "Output format. stdout, csv, tsv or json"
     output_name: "Output name."
     path: "Path containing CARD ontology. Default is user’s home"

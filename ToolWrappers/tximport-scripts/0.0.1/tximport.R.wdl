@@ -50,6 +50,9 @@ task TximportR {
       ~{if defined(existence_optional) then ("--existenceOptional " +  '"' + existence_optional + '"') else ""} \
       ~{if defined(read_length) then ("--readLength " +  '"' + read_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     files: "Text file containing a list of filenames for the transcript-level abundances (one per line). Sample names will be derived from directory names"
     type: "The type of software used to generate the abundances. Must be one of 'none', 'salmon', 'sailfish', 'kallisto', 'rsem', 'stringtie'. This argument is used to autofill the arguments below (geneIdCol, etc.) 'none' means that the user will specify these columns."

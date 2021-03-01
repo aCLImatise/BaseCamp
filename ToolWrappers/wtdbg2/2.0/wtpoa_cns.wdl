@@ -11,12 +11,12 @@ task Wtpoacns {
     Int? mismatch_score
     Int? insertion_score
     Int? deletion_score
-    Int? window_size_middle
+    Int? window_size_is
     Int? min_size_aligned
     Boolean? abort_tripoa_when
     Int? realignment_bandwidth_disable
     Int? min_count_call
-    Float? min_frequency_call
+    Float? min_frequency_nongap
     Int? max_number_going
     Boolean? verbose
   }
@@ -31,15 +31,18 @@ task Wtpoacns {
       ~{if defined(mismatch_score) then ("-X " +  '"' + mismatch_score + '"') else ""} \
       ~{if defined(insertion_score) then ("-I " +  '"' + insertion_score + '"') else ""} \
       ~{if defined(deletion_score) then ("-D " +  '"' + deletion_score + '"') else ""} \
-      ~{if defined(window_size_middle) then ("-W " +  '"' + window_size_middle + '"') else ""} \
+      ~{if defined(window_size_is) then ("-W " +  '"' + window_size_is + '"') else ""} \
       ~{if defined(min_size_aligned) then ("-w " +  '"' + min_size_aligned + '"') else ""} \
       ~{if (abort_tripoa_when) then "-A" else ""} \
       ~{if defined(realignment_bandwidth_disable) then ("-R " +  '"' + realignment_bandwidth_disable + '"') else ""} \
       ~{if defined(min_count_call) then ("-C " +  '"' + min_count_call + '"') else ""} \
-      ~{if defined(min_frequency_call) then ("-F " +  '"' + min_frequency_call + '"') else ""} \
+      ~{if defined(min_frequency_nongap) then ("-F " +  '"' + min_frequency_nongap + '"') else ""} \
       ~{if defined(max_number_going) then ("-N " +  '"' + max_number_going + '"') else ""} \
       ~{if (verbose) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_threads: "Number of threads, [4]"
     input_files_wtdbg: "Input file(s) *.ctg.lay from wtdbg, +, [STDIN]"
@@ -50,12 +53,12 @@ task Wtpoacns {
     mismatch_score: "Mismatch score, [-5]"
     insertion_score: "Insertion score, [-2]"
     deletion_score: "Deletion score, [-4]"
-    window_size_middle: "Window size in the middle of the first read for fast align remaining reads, [200]\\nIf $W is negative, will disable fast align, but use the abs($W) as Band align score cutoff"
+    window_size_is: "Window size in the middle of the first read for fast align remaining reads, [200]\\nIf $W is negative, will disable fast align, but use the abs($W) as Band align score cutoff"
     min_size_aligned: "Min size of aligned size in window, [$W * 0.5]"
     abort_tripoa_when: "Abort TriPOA when any read cannot be fast aligned, then try POA"
     realignment_bandwidth_disable: "Realignment bandwidth, 0: disable, [16]"
     min_count_call: "Min count of bases to call a consensus base, [3]"
-    min_frequency_call: "Min frequency of non-gap bases to call a consensus base, [0.5]"
+    min_frequency_nongap: "Min frequency of non-gap bases to call a consensus base, [0.5]"
     max_number_going: "Max number of reads in PO-MSA, [20]\\nKeep in mind that I am not going to generate high accurate consensus sequences here"
     verbose: "Verbose"
   }

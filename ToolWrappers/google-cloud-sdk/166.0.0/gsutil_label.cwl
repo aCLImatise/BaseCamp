@@ -3,7 +3,7 @@ id: gsutil_label.cwl
 inputs:
 - id: in_remove_label_specified
   doc: Remove the label with the specified key.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_command_dot
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gsutil

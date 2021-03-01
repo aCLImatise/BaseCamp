@@ -4,6 +4,9 @@ task Findbp {
   command <<<
     findbp
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

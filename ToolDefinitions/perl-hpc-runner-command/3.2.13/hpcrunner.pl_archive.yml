@@ -4,24 +4,37 @@ command:
 - archive
 positional:
 - !Positional
-  description: Prints this usage information
+  optional: false
   position: 0
   name: help
-  optional: false
+  description: Prints this usage information
 named:
 - !Flag
-  description: "Include files or directories [Multiple]\n--exclude_paths --ep  Files\
-    \ or directories to exclude [Multiple]\n--archive\n--help -h --usage -?  Prints\
-    \ this usage information. [Flag]"
+  optional: true
   synonyms:
   - --include_paths
   - --ip
+  description: Include files or directories [Multiple]
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - --exclude_paths
+  - --ep
+  description: Files or directories to exclude [Multiple]
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --archive
+  - --help
+  - -h
+  - --usage
+  description: -?  Prints this usage information. [Flag]
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "usage:\n    hpcrunner.pl archive [long options...]\n    hpcrunner.pl help\n\
@@ -34,3 +47,4 @@ help_text: "usage:\n    hpcrunner.pl archive [long options...]\n    hpcrunner.pl
   \ [Flag]\n\navailable subcommands:\n    help  Prints this usage information\n\n"
 generated_using:
 - --help
+docker_image:

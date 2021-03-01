@@ -30,6 +30,9 @@ task SparCCpy {
       ~{if defined(x_iter) then ("--xiter " +  '"' + x_iter + '"') else ""} \
       ~{if defined(the_rs_hold) then ("--thershold " +  '"' + the_rs_hold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cor_file: "File to which correlation matrix will be written."
     cov_file: "File to which covariance matrix will be written."

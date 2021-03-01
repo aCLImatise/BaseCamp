@@ -1,0 +1,58 @@
+!Command
+command:
+- getLinesMatching.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: cat
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: input
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --v
+  description: Use complement. Print all lines NOT matching.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --patfrom
+  - --patto
+  description: "query replace regular expression to the\nentry in the n-th column\
+    \ first before\nchecking for membership in the list.\nWill use the pattern s/$patfrom/$patto/\n\
+    Useful for removing modifications, e.g.\ntripping a trailing -1 before performing\
+    \ the\ncheck.\nBoth default to empty patterns."
+  args: !SimpleFlagArg
+    name: Apply
+- !Flag
+  optional: true
+  synonyms:
+  - --whitespace
+  description: Split columns at whitespace rather than tab.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Efficient script for printing only those lines where the n-th  column\
+  \ is a word in the match.lst file\n\nUsage:\n\ncat input | /usr/local/bin/getLinesMatching.pl\
+  \ match.lst n > output\n\nColumns are based on tab-separation and are 1-based.\n\
+  Options:\n  --v               Use complement. Print all lines NOT matching.\n  --patfrom\
+  \ --patto Apply query replace regular expression to the \n                    entry\
+  \ in the n-th column first before \n                    checking for membership\
+  \ in the list.\n                    Will use the pattern s/$patfrom/$patto/\n  \
+  \                  Useful for removing modifications, e.g.\n                   \
+  \ tripping a trailing -1 before performing the\n                    check.\n   \
+  \                 Both default to empty patterns.\n  --whitespace      Split columns\
+  \ at whitespace rather than tab.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/augustus:3.4.0--pl526h0faeac2_0

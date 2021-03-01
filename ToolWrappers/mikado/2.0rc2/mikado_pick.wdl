@@ -8,7 +8,7 @@ task MikadoPick {
     Boolean? shm
     Int? procs
     File? scoring_file
-    Int? intronrange__intronrange
+    Int? _intronrange_intronrange
     Boolean? no_pad
     Boolean? pad
     Int? pad_max_splices
@@ -28,7 +28,9 @@ task MikadoPick {
     Boolean? single
     String? mode
     Int? seed
-    File? subloc_i_out
+    File? mono_loci_out
+    String? prefix
+    String? source
     File? log
     Boolean? verbose
     Boolean? no_verbose
@@ -44,7 +46,7 @@ task MikadoPick {
       ~{if (shm) then "--shm" else ""} \
       ~{if defined(procs) then ("--procs " +  '"' + procs + '"') else ""} \
       ~{if defined(scoring_file) then ("--scoring-file " +  '"' + scoring_file + '"') else ""} \
-      ~{if defined(intronrange__intronrange) then ("-i " +  '"' + intronrange__intronrange + '"') else ""} \
+      ~{if defined(_intronrange_intronrange) then ("-i " +  '"' + _intronrange_intronrange + '"') else ""} \
       ~{if (no_pad) then "--no-pad" else ""} \
       ~{if (pad) then "--pad" else ""} \
       ~{if defined(pad_max_splices) then ("--pad-max-splices " +  '"' + pad_max_splices + '"') else ""} \
@@ -64,12 +66,17 @@ task MikadoPick {
       ~{if (single) then "--single" else ""} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{if defined(subloc_i_out) then ("--subloci-out " +  '"' + subloc_i_out + '"') else ""} \
+      ~{if defined(mono_loci_out) then ("--monoloci-out " +  '"' + mono_loci_out + '"') else ""} \
+      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
+      ~{if defined(source) then ("--source " +  '"' + source + '"') else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (no_verbose) then "--noverbose" else ""} \
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     json_conf: "[--scoring-file SCORING_FILE]"
     fast_a: "Genome FASTA file. Required for transcript padding.\\n(default: None)"
@@ -77,7 +84,7 @@ task MikadoPick {
     shm: "Flag. If switched, Mikado pick will copy the database\\nto RAM (ie SHM) for faster access during the run.\\n(default: False)"
     procs: "Number of processors to use. Default: look in the\\nconfiguration file (1 if undefined) (default: None)"
     scoring_file: "Optional scoring file for the run. It will override\\nthe value set in the configuration. (default: None)"
-    intronrange__intronrange: "INTRON_RANGE, --intron-range INTRON_RANGE INTRON_RANGE\\nRange into which intron lengths should fall, as a\\ncouple of integers. Transcripts with intron lengths\\noutside of this range will be penalised. Default: (60,\\n900) (default: None)"
+    _intronrange_intronrange: "INTRON_RANGE, --intron-range INTRON_RANGE INTRON_RANGE\\nRange into which intron lengths should fall, as a\\ncouple of integers. Transcripts with intron lengths\\noutside of this range will be penalised. Default: (60,\\n900) (default: None)"
     no_pad: "Disable transcript padding. (default: None)"
     pad: "Whether to pad transcripts in loci. (default: None)"
     pad_max_splices: "Maximum splice sites that can be crossed during\\ntranscript padding. (default: None)"
@@ -97,7 +104,9 @@ task MikadoPick {
     single: "Flag. If set, Creator will be launched with a single\\nprocess, without involving the multithreading\\napparatus. Useful for debugging purposes only.\\n(default: False)"
     mode: "Mode in which Mikado will treat transcripts with\\nmultiple ORFs. - nosplit: keep the transcripts whole.\\n- stringent: split multi-orf transcripts if two\\nconsecutive ORFs have both BLAST hits and none of\\nthose hits is against the same target. - lenient:\\nsplit multi-orf transcripts as in stringent, and\\nadditionally, also when either of the ORFs lacks a\\nBLAST hit (but not both). - permissive: like lenient,\\nbut also split when both ORFs lack BLAST hits - split:\\nsplit multi-orf transcripts regardless of what BLAST\\ndata is available. (default: None)"
     seed: "Random seed number. (default: None)"
-    subloc_i_out: "--monoloci-out MONOLOCI_OUT\\n--loci-out LOCI_OUT   This output file is mandatory. If it is not specified\\nin the configuration file, it must be provided here.\\n(default: None)\\n--prefix PREFIX       Prefix for the genes. Default: Mikado (default: None)\\n--source SOURCE       Source field to use for the output files. (default:\\nNone)"
+    mono_loci_out: "This output file is mandatory. If it is not specified\\nin the configuration file, it must be provided here.\\n(default: None)"
+    prefix: "Prefix for the genes. Default: Mikado (default: None)"
+    source: "Source field to use for the output files. (default:\\nNone)"
     log: "File to write the log to. Default: decided by the\\nconfiguration file. (default: None)"
     verbose: "Flag. If set, the debug mode will be activated.\\n(default: False)"
     no_verbose: "Flag. If set, the log will report only errors and\\ncritical events. (default: False)"
@@ -107,6 +116,6 @@ task MikadoPick {
   output {
     File out_stdout = stdout()
     Directory out_output_dir = "${in_output_dir}"
-    File out_subloc_i_out = "${in_subloc_i_out}"
+    File out_mono_loci_out = "${in_mono_loci_out}"
   }
 }

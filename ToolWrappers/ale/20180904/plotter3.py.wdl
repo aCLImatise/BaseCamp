@@ -48,6 +48,9 @@ task Plotter3py {
       ~{if (dpm) then "-dpm" else ""} \
       ~{if defined(mgm) then ("-mgm " +  '"' + mgm + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_save: ": do not save the figure as a pdf (instead plot to screen)"
     starting_position_plot: ": the starting position to plot (0)"

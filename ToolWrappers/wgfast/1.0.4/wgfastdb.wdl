@@ -30,6 +30,9 @@ task Wgfastdb {
       ~{if defined(distance) then ("--distance " +  '"' + distance + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log: "Set log file path (default: ./wgfastdb.log)"
     no_update: "Do not sync your collection with the latest assembly\\nversions (default: False)"

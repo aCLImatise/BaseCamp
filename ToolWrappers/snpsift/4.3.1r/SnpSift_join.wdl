@@ -30,6 +30,9 @@ task SnpSiftJoin {
       ~{if (empty) then "-empty" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     if_one: ": Offset for file1 (e.g. 1 if coordinates are one-based. Default: 1"
     if_two: ": Offset for file2 (e.g. 2 if coordinates are one-based. Default: 1"

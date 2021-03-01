@@ -38,6 +38,9 @@ task SAGE {
       ~{if defined(tumor) then ("-tumor " +  '"' + tumor + '"') else ""} \
       ~{if defined(tumor_bam) then ("-tumor_bam " +  '"' + tumor_bam + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     known_hotspots: "Tab separated file of known hotspot"
     min_base_quality: "Minimum quality for a base to be\\nconsidered [13]"

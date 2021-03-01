@@ -28,6 +28,9 @@ task OverlapStoreBuild {
       ~{if defined(read_input_filenames) then ("-L " +  '"' + read_input_filenames + '"') else ""} \
       ~{if defined(big) then ("-big " +  '"' + big + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_store_create: "path to store to create"
     path_gkpstore_assembly: "path to gkpStore for this assembly"

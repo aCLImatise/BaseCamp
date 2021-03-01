@@ -14,6 +14,9 @@ task MspmsSampleSize {
       ~{if defined(mutation_rate) then ("--mutation-rate " +  '"' + mutation_rate + '"') else ""} \
       ~{if (v) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     trees: ""
     mutation_rate: ""

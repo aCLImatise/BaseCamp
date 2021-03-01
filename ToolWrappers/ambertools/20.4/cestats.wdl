@@ -58,6 +58,9 @@ task Cestats {
       ~{if defined(conditional) then ("--conditional " +  '"' + conditional + '"') else ""} \
       ~{if (v) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     overwrite: "Allow existing outputs to be overwritten."
     debug: "Print out information about the files that are\\nbeing read in and used for the calculations."

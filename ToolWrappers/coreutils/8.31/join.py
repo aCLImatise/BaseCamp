@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Boolean, Int
+
+Join_V0_1_0 = CommandToolBuilder(tool="join", base_command=["join"], inputs=[ToolInput(tag="in_also_print_lines", input_type=File(optional=True), prefix="-a", doc=InputDocumentation(doc="also print unpairable lines from file FILENUM, where\nFILENUM is 1 or 2, corresponding to FILE1 or FILE2")), ToolInput(tag="in_replace_missing_fields", input_type=String(optional=True), prefix="-e", doc=InputDocumentation(doc="replace missing input fields with EMPTY")), ToolInput(tag="in_ignore_case", input_type=Boolean(optional=True), prefix="--ignore-case", doc=InputDocumentation(doc="ignore differences in case when comparing fields")), ToolInput(tag="in_equivalent_to", input_type=Int(optional=True), prefix="-j", doc=InputDocumentation(doc="equivalent to '-1 FIELD -2 FIELD'")), ToolInput(tag="in_obey_format_constructing", input_type=String(optional=True), prefix="-o", doc=InputDocumentation(doc="obey FORMAT while constructing output line")), ToolInput(tag="in_use_char_input", input_type=String(optional=True), prefix="-t", doc=InputDocumentation(doc="use CHAR as input and output field separator")), ToolInput(tag="in_filenum_suppress_joined", input_type=String(optional=True), prefix="-v", doc=InputDocumentation(doc="like -a FILENUM, but suppress joined output lines")), ToolInput(tag="in_one", input_type=Int(optional=True), prefix="-1", doc=InputDocumentation(doc="join on this FIELD of file 1")), ToolInput(tag="in_two", input_type=Int(optional=True), prefix="-2", doc=InputDocumentation(doc="join on this FIELD of file 2")), ToolInput(tag="in_check_order", input_type=Boolean(optional=True), prefix="--check-order", doc=InputDocumentation(doc="check that the input is correctly sorted, even\nif all input lines are pairable")), ToolInput(tag="in_no_check_order", input_type=Boolean(optional=True), prefix="--nocheck-order", doc=InputDocumentation(doc="do not check that the input is correctly sorted")), ToolInput(tag="in_header", input_type=Boolean(optional=True), prefix="--header", doc=InputDocumentation(doc="treat the first line in each file as field headers,\nprint them without trying to pair them")), ToolInput(tag="in_zero_terminated", input_type=Boolean(optional=True), prefix="--zero-terminated", doc=InputDocumentation(doc="line delimiter is NUL, not newline"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Join_V0_1_0().translate("wdl", allow_empty_container=True)
+

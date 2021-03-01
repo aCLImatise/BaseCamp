@@ -58,6 +58,9 @@ task OverlapSelect {
       ~{if defined(dropped) then ("-dropped " +  '"' + dropped + '"') else ""} \
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     select_fmt: "- specify selectFile format:\\npsl - PSL format (default for *.psl files).\\npslq - PSL format, using query instead of target\\ngenePred - genePred format (default for *.gp or\\n*.genePred files).\\nbed - BED format (default for *.bed files).\\nIf BED doesn't have blocks, the bed range is used.\\nchain - chain file format (default from .chain files)\\nchainq - chain file format, using query instead of target"
     select_coord_cols: "- selectFile is tab-separate with coordinates\\nas described by spec, which is one of:\\no chromCol - chrom in this column followed by start and end.\\no chromCol,startCol,endCol,strandCol,name - chrom, start, end, and\\nstrand in specified columns. Columns can be omitted from the end\\nor left empty to not specify.\\nNOTE: column numbers are zero-based"

@@ -28,6 +28,9 @@ task Macs2Predictd {
       ~{if defined(buffer_size) then ("--buffer-size " +  '"' + buffer_size + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i_file: "ChIP-seq alignment file. If multiple files are given\\nas '-t A B C', then they will all be read and\\ncombined. Note that pair-end data is not supposed to\\nwork with this command. REQUIRED."
     format: "Format of tag file, \\\"AUTO\\\", \\\"BED\\\" or \\\"ELAND\\\" or\\n\\\"ELANDMULTI\\\" or \\\"ELANDEXPORT\\\" or \\\"SAM\\\" or \\\"BAM\\\" or\\n\\\"BOWTIE\\\" or \\\"BAMPE\\\" or \\\"BEDPE\\\". The default AUTO\\noption will let MACS decide which format the file is.\\nPlease check the definition in README file if you\\nchoose ELAND/ELANDMULTI/ELANDEXPORT/SAM/BAM/BOWTIE.\\nDEFAULT: \\\"AUTO\\\""

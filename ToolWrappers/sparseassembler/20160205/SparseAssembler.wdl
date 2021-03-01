@@ -4,6 +4,9 @@ task SparseAssembler {
   command <<<
     SparseAssembler
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

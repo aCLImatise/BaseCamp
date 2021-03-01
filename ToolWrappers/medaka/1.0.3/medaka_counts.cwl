@@ -3,7 +3,7 @@ id: medaka_counts.cwl
 inputs:
 - id: in_print
   doc: 'print counts. (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --print
 - id: in_d_types
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - medaka_counts

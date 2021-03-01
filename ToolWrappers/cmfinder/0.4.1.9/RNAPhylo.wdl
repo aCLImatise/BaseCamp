@@ -5,7 +5,7 @@ task RNAPhylo {
     String? _phylogeny_tree
     File? phylogenetic_model_single
     File? phylogenetic_model_paired
-    File? _scfg_file
+    File? scfg_grammar_file
     Boolean? float_lower_bound
     Boolean? partition
     String? in_format
@@ -22,7 +22,7 @@ task RNAPhylo {
       ~{if defined(_phylogeny_tree) then ("-t " +  '"' + _phylogeny_tree + '"') else ""} \
       ~{if defined(phylogenetic_model_single) then ("-s " +  '"' + phylogenetic_model_single + '"') else ""} \
       ~{if defined(phylogenetic_model_paired) then ("-p " +  '"' + phylogenetic_model_paired + '"') else ""} \
-      ~{if defined(_scfg_file) then ("-g " +  '"' + _scfg_file + '"') else ""} \
+      ~{if defined(scfg_grammar_file) then ("-g " +  '"' + scfg_grammar_file + '"') else ""} \
       ~{if (float_lower_bound) then "--l" else ""} \
       ~{if (partition) then "--partition" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
@@ -34,11 +34,14 @@ task RNAPhylo {
       ~{if defined(suspicious_degen_n_ucs) then ("--suspicious-degen-nucs " +  '"' + suspicious_degen_n_ucs + '"') else ""} \
       ~{if (ignore_all_gap) then "--ignore-all-gap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _phylogeny_tree: ": The phylogeny tree"
     phylogenetic_model_single: ": The phylogenetic model for single bases"
     phylogenetic_model_paired: ": The phylogenetic model for paired bases"
-    _scfg_file: ": The SCFG grammar file."
+    scfg_grammar_file: ": The SCFG grammar file."
     float_lower_bound: "<float> : The lower bound for paired emission probability to be interesting"
     partition: ": Use partition function"
     in_format: ": The format of input alignment"

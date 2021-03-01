@@ -1,0 +1,861 @@
+!Command
+command:
+- get_organelle_from_reads.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: exists.
+  description: -s SEED_FILE        Seed sequence(s). Input fasta format file as initial
+- !Positional
+  optional: false
+  position: 0
+  name: directory.
+  description: --out-per-round     Enable output per round. Choose to save memory
+    but
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: print verbose introduction for all options.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: "Input file with forward paired-end reads (format:\nfastq/fastq.gz/fastq.tar.gz)."
+  args: !SimpleFlagArg
+    name: FQ_FILE_1
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: "Input file with reverse paired-end reads (format:\nfastq/fastq.gz/fastq.tar.gz)."
+  args: !SimpleFlagArg
+    name: FQ_FILE_2
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: "Input file(s) with unpaired (single-end) reads\n(format: fastq/fastq.gz/fastq.tar.gz).\
+    \ files could be\ncomma-separated lists such as 'seq1.fq,seq2.fq'."
+  args: !SimpleFlagArg
+    name: UNPAIRED_FQ_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Output directory. Overwriting files if directory
+  args: !SimpleFlagArg
+    name: OUTPUT_BASE
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: "Anti-seed(s). Not suggested unless what you really\nknow what you\
+    \ are doing. Input fasta format file as\nanti-seed, where the extension process\
+    \ stop. Typically\nserves as excluding plastid reads when extending\nmitochondrial\
+    \ reads, or the other way around. You\nshould be cautious about using this option,\
+    \ because if\nthe anti-seed includes some word in the target but not\nin the seed,\
+    \ the result would have gaps. For example,\nuse the embplant_mt and embplant_pt\
+    \ from the same\nplant-species as seed and anti-seed."
+  args: !SimpleFlagArg
+    name: ANTI_SEED
+- !Flag
+  optional: true
+  synonyms:
+  - --max-reads
+  description: "Hard bound for maximum number of reads to be used per\nfile. A input\
+    \ larger than 536870911 will be treated as\ninfinity (INF). Default: 1.5E7 (-F\n\
+    embplant_pt/embplant_nr/fungus_mt/fungus_nr); 7.5E7\n(-F embplant_mt/other_pt/anonym);\
+    \ 3E8 (-F animal_mt)"
+  args: !SimpleFlagArg
+    name: MAXIMUM_N_READS
+- !Flag
+  optional: true
+  synonyms:
+  - --reduce-reads-for-coverage
+  description: "Soft bound for maximum number of reads to be used\naccording to target-hitting\
+    \ base coverage. If the\nestimated target-hitting base coverage is too high and\n\
+    over this VALUE, GetOrganelle automatically reduce the\nnumber of reads to generate\
+    \ a final assembly with base\ncoverage close to this VALUE. This design could\n\
+    greatly save computational resources in many\nsituations. A mean base coverage\
+    \ over 500 is extremely\nsufficient for most cases. This VALUE must be larger\n\
+    than 10. Set this VALUE to inf to disable reducing.\nDefault: 500."
+  args: !SimpleFlagArg
+    name: REDUCE_READS_FOR_COV
+- !Flag
+  optional: true
+  synonyms:
+  - --min-quality-score
+  - '-5'
+  - --max-ignore-percent
+  description: '" You can'
+  args: !SimpleFlagArg
+    name: '0'
+- !Flag
+  optional: true
+  synonyms:
+  - --phred-offset
+  description: "Phred offset for spades-hammer. Default: GetOrganelle-\nautodetect"
+  args: !SimpleFlagArg
+    name: PHRED_OFFSET
+- !Flag
+  optional: true
+  synonyms:
+  - --min-quality-score
+  description: "Minimum quality score in extension. This value would\nbe automatically\
+    \ decreased to prevent ignoring too\nmuch raw data (see --max-ignore-percent).Default:\
+    \ 1\n('\"' in Phred+33; 'A' in Phred+64/Solexa+64)"
+  args: !SimpleFlagArg
+    name: MIN_QUALITY_SCORE
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  description: Add extra prefix to resulting files under the output
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --zip-files
+  description: Choose to compress fq/sam files using gzip.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-temp
+  description: Choose to keep the running temp/index files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --config-dir
+  description: "The directory where the configuration file and default\ndatabases\
+    \ were placed. The default value also can be\nchanged by adding 'export GETORG_PATH=your_favor'\
+    \ to\nthe shell script (e.g. ~/.bash_profile or ~/.bashrc)\nDefault: /root/.GetOrganelle"
+  args: !SimpleFlagArg
+    name: GET_ORGANELLE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: "This flag should be followed with embplant_pt\n(embryophyta plant\
+    \ plastome), other_pt (non-\nembryophyta plant plastome), embplant_mt (plant\n\
+    mitogenome), embplant_nr (plant nuclear ribosomal\nRNA), animal_mt (animal mitogenome),\
+    \ fungus_mt (fungus\nmitogenome), fungus_nr (fungus nuclear ribosomal\nRNA)or\
+    \ embplant_mt,other_pt,fungus_mt (the combination\nof any of above organelle genomes\
+    \ split by comma(s),\nwhich might be computationally more intensive than\nseparate\
+    \ runs), or anonym (uncertain organelle genome\ntype, with customized gene database\
+    \ ('--genes'), which\nis suggested only when the above database is\ngenetically\
+    \ distant from your sample, generally only\nin some animal_mt/fungus_mt/fungus_nr\
+    \ cases). For easy\nusage and compatibility of old versions, following\nredirection\
+    \ would be automatically fulfilled without\nwarning:        plant_cp->embplant_pt;\n\
+    plant_pt->embplant_pt;  plant_mt->embplant_mt;\nplant_nr->embplant_nr"
+  args: !SimpleFlagArg
+    name: ORGANELLE_TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - --fast
+  description: "=\"-R 10 -t 4 -J 5 -M 7 --max-n-words 3E7 --larger-\nauto-ws --disentangle-time-limit\
+    \ 360\" This option is\nsuggested for homogeneously and highly covered data\n\
+    (very fine data). You can overwrite the value of a\nspecific option listed above\
+    \ by adding that option\nalong with the \"--fast\" flag. You could try\nGetOrganelle\
+    \ with this option for a list of samples\nand run a second time without this option\
+    \ for the rest\nwith incomplete results."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --memory-save
+  description: "=\"--out-per-round -P 0 --remove-duplicates 0\" You can\noverwrite\
+    \ the value of a specific option listed above\nby adding that option along with\
+    \ the \"--memory-save\"\nflag. A larger '-R' value is suggested when \"--memory-\n\
+    save\" is chosen."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --memory-unlimited
+  description: ="-P 1E7 --index-in-memory --remove-duplicates 2E8
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: "Word size (W) for pre-grouping (if not assigned by '--\npre-w') and\
+    \ extending process. This script would try\nto guess (auto-estimate) a proper\
+    \ W using an empirical\nfunction based on average read length, reads quality,\n\
+    target genome coverage, and other variables that might\ninfluence the extending\
+    \ process. You could assign the\nratio (1>input>0) of W to read_length, based\
+    \ on which\nthis script would estimate the W for you; or assign an\nabsolute W\
+    \ value (read length>input>=35). Default:\nauto-estimated."
+  args: !SimpleFlagArg
+    name: WORD_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --pre-w
+  description: "Word size (W) for pre-grouping. Used to reproduce\nresult when word\
+    \ size is a certain value during\npregrouping process and later changed during\
+    \ reads\nextending process. Similar to word size. Default: the\nsame to word size."
+  args: !SimpleFlagArg
+    name: PREGROUP_WORD_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --max-rounds
+  description: "Maximum number of extending rounds (suggested: >=2).\nDefault: 15\
+    \ (-F embplant_pt), 30 (-F\nembplant_mt/other_pt), 10 (-F\nembplant_nr/animal_mt/fungus_mt/fungus_nr),\
+    \ inf (-P\n0)."
+  args: !SimpleFlagArg
+    name: MAX_ROUNDS
+- !Flag
+  optional: true
+  synonyms:
+  - --max-n-words
+  description: "Maximum number of words to be used in total.Default:\n4E8 (-F embplant_pt),\
+    \ 2E8 (-F\nembplant_nr/fungus_mt/fungus_nr/animal_mt), 2E9 (-F\nembplant_mt/other_pt)"
+  args: !SimpleFlagArg
+    name: MAXIMUM_N_WORDS
+- !Flag
+  optional: true
+  synonyms:
+  - -J
+  description: "The length of step for checking words in reads during\nextending process\
+    \ (integer >= 1). When you have reads\nof high quality, the larger the number\
+    \ is, the faster\nthe extension will be, the more risk of missing reads\nin low\
+    \ coverage area. Choose 1 to choose the slowest\nbut safest extension strategy.\
+    \ Default: 3"
+  args: !SimpleFlagArg
+    name: JUMP_STEP
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: "(Beta parameter) The length of step for building words\nfrom seeds\
+    \ during extending process (integer >= 1).\nWhen you have reads of high quality,\
+    \ the larger the\nnumber is, the faster the extension will be, the more\nrisk\
+    \ of missing reads in low coverage area. Another\nusage of this mesh size is to\
+    \ choose a larger mesh\nsize coupled with a smaller word size, which makes\nsmaller\
+    \ word size feasible when memory is\nlimited.Choose 1 to choose the slowest but\
+    \ safest\nextension strategy. Default: 2"
+  args: !SimpleFlagArg
+    name: MESH_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --bowtie2-options
+  description: "Bowtie2 options, such as '--ma 3 --mp 5,2 --very-fast\n-t'. Default:\
+    \ --very-fast -t."
+  args: !SimpleFlagArg
+    name: BOWTIE2_OPTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --larger-auto-ws
+  description: "By using this flag, the empirical function for\nestimating W would\
+    \ tend to produce a relative larger\nW, which would speed up the matching in extending,\n\
+    reduce the memory cost in extending, but increase the\nrisk of broken final graph.\
+    \ Suggested when the data is\ngood with high and homogenous coverage."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --target-genome-size
+  description: "Hypothetical value(s) of target genome size. This is\nonly used for\
+    \ estimating word size when no '-w\nword_size' is given. Should be a list of INTEGER\n\
+    numbers split by comma(s) on a multi-organelle mode,\nwith the same list length\
+    \ to organelle_type (followed\nby '-F'). Default: 130000 (-F embplant_pt) or 390000\n\
+    (-F embplant_mt) or 13000 (-F embplant_nr) or 39000\n(-F other_pt) or 13000 (-F\
+    \ animal_mt) or 65000 (-F\nfungus_mt) or 13000 (-F fungus_nr) or\n39000,390000,65000\
+    \ (-F other_pt,embplant_mt,fungus_mt)"
+  args: !SimpleFlagArg
+    name: TARGET_GENOME_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --max-extending-len
+  description: "Maximum extending length(s) derived from the seed(s).\nA single value\
+    \ could be a non-negative number, or inf\n(infinite) or auto (automatic estimation).\
+    \ This is\ndesigned for properly stopping the extending from\ngetting too long\
+    \ and saving computational resources.\nHowever, empirically, a maximum extending\
+    \ length value\nlarger than 6000 would not be helpful for saving\ncomputational\
+    \ resources. This value would not be\nprecise in controlling output size, especially\
+    \ when\npre-group (followed by '-P') is turn on.In the auto\nmode, the maximum\
+    \ extending length is estimated based\non the sizes of the gap regions that not\
+    \ covered in\nthe seed sequences. A sequence of a closely related\nspecies would\
+    \ be preferred for estimating a better\nmaximum extending length value. If you\
+    \ are using\nlimited loci, e.g. rbcL gene as the seed for\nassembling the whole\
+    \ plastome (with extending length\nca. 75000 >> 6000), you should set maximum\
+    \ extending\nlength to inf. Should be a list of numbers/auto/no\nsplit by comma(s)\
+    \ on a multi-organelle mode, with the\nsame list length to organelle_type (followed\
+    \ by '-F').\nDefault: no."
+  args: !SimpleFlagArg
+    name: MAX_EXTENDING_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: "SPAdes kmer settings. Use the same format as in\nSPAdes. illegal kmer\
+    \ values would be automatically\ndiscarded by GetOrganelle. Default: 21,55,85,115"
+  args: !SimpleFlagArg
+    name: SPADES_KMER
+- !Flag
+  optional: true
+  synonyms:
+  - --spades-options
+  description: "Other SPAdes options. Use double quotation marks to\ninclude all the\
+    \ arguments and parameters."
+  args: !SimpleFlagArg
+    name: OTHER_SPADES_OPTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --no-spades
+  description: Disable SPAdes.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-k
+  description: "A kmer threshold below which, no\nslimming/disentangling would be\
+    \ executed on the\nresult. Default: 40"
+  args: !SimpleFlagArg
+    name: IGNORE_KMER_RES
+- !Flag
+  optional: true
+  synonyms:
+  - --genes
+  description: "Followed with a customized database (a fasta file or\nthe base name\
+    \ of a blast database) containing or made\nof ONE set of protein coding genes\
+    \ and ribosomal RNAs\nextracted from ONE reference genome that you want to\nassemble.\
+    \ Should be a list of databases split by\ncomma(s) on a multi-organelle mode,\
+    \ with the same list\nlength to organelle_type (followed by '-F'). This is\noptional\
+    \ for any organelle mentioned in '-F' but\nrequired for 'anonym'. By default,\
+    \ certain database(s)\nin /root/.GetOrganelle/LabelDatabase would be used\ncontingent\
+    \ on the organelle types chosen (-F). The\ndefault value no longer holds when\
+    \ '--genes' or '--ex-\ngenes' is used."
+  args: !SimpleFlagArg
+    name: GENES_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --ex-genes
+  description: "This is optional and Not suggested, since non-target\ncontigs could\
+    \ contribute information for better\ndownstream coverage-based clustering. Followed\
+    \ with a\ncustomized database (a fasta file or the base name of\na blast database)\
+    \ containing or made of protein coding\ngenes and ribosomal RNAs extracted from\
+    \ reference\ngenome(s) that you want to exclude. Could be a list of\ndatabases\
+    \ split by comma(s) but NOT required to have\nthe same list length to organelle_type\
+    \ (followed by\n'-F'). The default value no longer holds when '--\ngenes' or '--ex-genes'\
+    \ is used."
+  args: !SimpleFlagArg
+    name: EXCLUDE_GENES
+- !Flag
+  optional: true
+  synonyms:
+  - --disentangle-df
+  description: "Depth factor for differentiate genome type of contigs.\nThe genome\
+    \ type of contigs are determined by blast.\nDefault: 10.0"
+  args: !SimpleFlagArg
+    name: DISENTANGLE_DEPTH_FACTOR
+- !Flag
+  optional: true
+  synonyms:
+  - --contamination-depth
+  description: "Depth factor for confirming contamination in parallel\ncontigs. Default:\
+    \ 3.0"
+  args: !SimpleFlagArg
+    name: CONTAMINATION_DEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - --contamination-similarity
+  description: "Similarity threshold for confirming contaminating\ncontigs. Default:\
+    \ 0.9"
+  args: !SimpleFlagArg
+    name: CONTAMINATION_SIMILARITY
+- !Flag
+  optional: true
+  synonyms:
+  - --no-degenerate
+  description: "Disable making consensus from parallel contig based on\nnucleotide\
+    \ degenerate table."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --degenerate-depth
+  description: "Depth factor for confirming parallel contigs. Default:\n1.5"
+  args: !SimpleFlagArg
+    name: DEGENERATE_DEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - --degenerate-similarity
+  description: "Similarity threshold for confirming parallel contigs.\nDefault: 0.98"
+  args: !SimpleFlagArg
+    name: DEGENERATE_SIMILARITY
+- !Flag
+  optional: true
+  synonyms:
+  - --disentangle-time-limit
+  description: "Time limit (second) for each try of disentangling a\ngraph file as\
+    \ a circular genome. Disentangling a graph\nas contigs is not limited. Default:\
+    \ 1800"
+  args: !SimpleFlagArg
+    name: DISENTANGLE_TIME_LIMIT
+- !Flag
+  optional: true
+  synonyms:
+  - --expected-max-size
+  description: "Expected maximum target genome size(s) for\ndisentangling. Should\
+    \ be a list of INTEGER numbers\nsplit by comma(s) on a multi-organelle mode, with\
+    \ the\nsame list length to organelle_type (followed by '-F').\nDefault: 250000\
+    \ (-F embplant_pt/fungus_mt), 25000 (-F\nembplant_nr/animal_mt/fungus_nr), 1000000\
+    \ (-F\nembplant_mt/other_pt),1000000,1000000,250000 (-F\nother_pt,embplant_mt,fungus_mt)"
+  args: !SimpleFlagArg
+    name: EXPECTED_MAX_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --expected-min-size
+  description: "Expected minimum target genome size(s) for\ndisentangling. Should\
+    \ be a list of INTEGER numbers\nsplit by comma(s) on a multi-organelle mode, with\
+    \ the\nsame list length to organelle_type (followed by '-F').\nDefault: 10000\
+    \ for all."
+  args: !SimpleFlagArg
+    name: EXPECTED_MIN_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --reverse-lsc
+  description: "For '-F embplant_pt' with complete circular result, by\ndefault, the\
+    \ direction of the starting contig (usually\nthe LSC region) is determined as\
+    \ the direction with\nless ORFs. Choose this option to reverse the direction\n\
+    of the starting contig when result is circular.\nActually, both directions are\
+    \ biologically equivalent\nto each other. The reordering of the direction is only\n\
+    for easier downstream analysis."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-paths-num
+  description: "Repeats would dramatically increase the number of\npotential isomers\
+    \ (paths). This option was used to\nexport a certain amount of paths out of all\
+    \ possible\npaths per assembly graph. Default: 1000"
+  args: !SimpleFlagArg
+    name: MAX_PATHS_NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: Maximum threads to use.
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  description: "The maximum number (integer) of high-covered reads to\nbe pre-grouped\
+    \ before extending process. pre_grouping\nis suggested when the whole genome coverage\
+    \ is shallow\nbut the organ genome coverage is deep. The default\nvalue is 2E5.\
+    \ For personal computer with 8G memory, we\nsuggest no more than 3E5. A larger\
+    \ number (ex. 6E5)\nwould run faster but exhaust memory in the first few\nminutes.\
+    \ Choose 0 to disable this process."
+  args: !SimpleFlagArg
+    name: PRE_GROUPED
+- !Flag
+  optional: true
+  synonyms:
+  - --which-blast
+  description: "Assign the path to BLAST binary files if not added to\nthe path. Default:\
+    \ try \"/GetOrganelleDep/linux/ncbi-\nblast\" first, then $PATH"
+  args: !SimpleFlagArg
+    name: WHICH_BLAST
+- !Flag
+  optional: true
+  synonyms:
+  - --which-bowtie2
+  description: "Assign the path to Bowtie2 binary files if not added\nto the path.\
+    \ Default: try\n\"/GetOrganelleDep/linux/bowtie2\" first, then $PATH"
+  args: !SimpleFlagArg
+    name: WHICH_BOWTIE2
+- !Flag
+  optional: true
+  synonyms:
+  - --which-spades
+  description: "Assign the path to SPAdes binary files if not added to\nthe path.\
+    \ Default: try \"/GetOrganelleDep/linux/SPAdes\"\nfirst, then $PATH"
+  args: !SimpleFlagArg
+    name: WHICH_SPADES
+- !Flag
+  optional: true
+  synonyms:
+  - --which-bandage
+  description: "Assign the path to bandage binary file if not added to\nthe path.\
+    \ Default: try $PATH"
+  args: !SimpleFlagArg
+    name: WHICH_BANDAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --continue
+  description: "Several check points based on files produced, rather\nthan on the\
+    \ log file, so keep in mind that this script\nwill not detect the difference between\
+    \ this input\nparameters and the previous ones."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --index-in-memory
+  description: "Keep index in memory. Choose save index in memory than\nin disk."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --remove-duplicates
+  description: "By default this script use unique reads to extend.\nChoose the number\
+    \ of duplicates (integer) to be saved\nin memory. A larger number (ex. 2E7) would\
+    \ run faster\nbut exhaust memory in the first few minutes. Choose 0\nto disable\
+    \ this process. Note that whether choose or\nnot will not disable the calling\
+    \ of replicate reads.\nDefault: 10000000.0."
+  args: !SimpleFlagArg
+    name: RM_DUPLICATES
+- !Flag
+  optional: true
+  synonyms:
+  - --flush-step
+  description: "Flush step (INTEGER OR INF) for presenting progress.\nFor running\
+    \ in the background, you could set this to\ninf, which would disable this. Default:\
+    \ 54321"
+  args: !SimpleFlagArg
+    name: ECHO_STEP
+- !Flag
+  optional: true
+  synonyms:
+  - --random-seed
+  description: 'Default: 12345'
+  args: !SimpleFlagArg
+    name: RANDOM_SEED
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: "Verbose output. Choose to enable verbose running\nlog_handler.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: print brief introduction for frequently-used options.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: \n###  Embryophyta plant plastome, 2*(1G raw data, 150 bp) reads\n\
+  get_organelle_from_reads.py -1 sample_1.fq -2 sample_2.fq -s cp_seed.fasta -o plastome_output\
+  \  -R 15 -k 21,45,65,85,105 -F embplant_pt\n###  Embryophyta plant mitogenome\n\
+  get_organelle_from_reads.py -1 sample_1.fq -2 sample_2.fq -s mt_seed.fasta -o mitogenome_output\
+  \  -R 30 -k 21,45,65,85,105 -F embplant_mt\n\nGetOrganelle v1.7.3.4  get_organelle_from_reads.py\
+  \ assembles organelle genomes\nfrom genome skimming data. Find updates in\nhttps://github.com/Kinggerm/GetOrganelle\
+  \ and see README.md for more\ninformation.\n\nOptions:\n  --version            \
+  \ show program's version number and exit\n  -h                    print brief introduction\
+  \ for frequently-used options.\n  --help                print verbose introduction\
+  \ for all options.\n\n  IN-OUT OPTIONS:\n    Options on inputs and outputs\n\n \
+  \   -1 FQ_FILE_1        Input file with forward paired-end reads (format:\n    \
+  \                    fastq/fastq.gz/fastq.tar.gz).\n    -2 FQ_FILE_2        Input\
+  \ file with reverse paired-end reads (format:\n                        fastq/fastq.gz/fastq.tar.gz).\n\
+  \    -u UNPAIRED_FQ_FILES\n                        Input file(s) with unpaired (single-end)\
+  \ reads\n                        (format: fastq/fastq.gz/fastq.tar.gz). files could\
+  \ be\n                        comma-separated lists such as 'seq1.fq,seq2.fq'.\n\
+  \    -o OUTPUT_BASE      Output directory. Overwriting files if directory\n    \
+  \                    exists.\n    -s SEED_FILE        Seed sequence(s). Input fasta\
+  \ format file as initial\n                        seed. A seed sequence in GetOrganelle\
+  \ is only used for\n                        identifying initial organelle reads.\
+  \ The assembly\n                        process is purely de novo. Should be a list\
+  \ of files\n                        split by comma(s) on a multi-organelle mode,\
+  \ with the\n                        same list length to organelle_type (followed\
+  \ by '-F').\n                        Default: '/root/.GetOrganelle/SeedDatabase/*.fasta'\
+  \ (*\n                        depends on the value followed with flag '-F')\n  \
+  \  -a ANTI_SEED        Anti-seed(s). Not suggested unless what you really\n    \
+  \                    know what you are doing. Input fasta format file as\n     \
+  \                   anti-seed, where the extension process stop. Typically\n   \
+  \                     serves as excluding plastid reads when extending\n       \
+  \                 mitochondrial reads, or the other way around. You\n          \
+  \              should be cautious about using this option, because if\n        \
+  \                the anti-seed includes some word in the target but not\n      \
+  \                  in the seed, the result would have gaps. For example,\n     \
+  \                   use the embplant_mt and embplant_pt from the same\n        \
+  \                plant-species as seed and anti-seed.\n    --max-reads=MAXIMUM_N_READS\n\
+  \                        Hard bound for maximum number of reads to be used per\n\
+  \                        file. A input larger than 536870911 will be treated as\n\
+  \                        infinity (INF). Default: 1.5E7 (-F\n                  \
+  \      embplant_pt/embplant_nr/fungus_mt/fungus_nr); 7.5E7\n                   \
+  \     (-F embplant_mt/other_pt/anonym); 3E8 (-F animal_mt)\n    --reduce-reads-for-coverage=REDUCE_READS_FOR_COV\n\
+  \                        Soft bound for maximum number of reads to be used\n   \
+  \                     according to target-hitting base coverage. If the\n      \
+  \                  estimated target-hitting base coverage is too high and\n    \
+  \                    over this VALUE, GetOrganelle automatically reduce the\n  \
+  \                      number of reads to generate a final assembly with base\n\
+  \                        coverage close to this VALUE. This design could\n     \
+  \                   greatly save computational resources in many\n             \
+  \           situations. A mean base coverage over 500 is extremely\n           \
+  \             sufficient for most cases. This VALUE must be larger\n           \
+  \             than 10. Set this VALUE to inf to disable reducing.\n            \
+  \            Default: 500.\n    --max-ignore-percent=MAXIMUM_IGNORE_PERCENT\n  \
+  \                      The maximum percent of bases to be ignore in\n          \
+  \              extension, due to low quality. Default: 0.01\n    --phred-offset=PHRED_OFFSET\n\
+  \                        Phred offset for spades-hammer. Default: GetOrganelle-\n\
+  \                        autodetect\n    --min-quality-score=MIN_QUALITY_SCORE\n\
+  \                        Minimum quality score in extension. This value would\n\
+  \                        be automatically decreased to prevent ignoring too\n  \
+  \                      much raw data (see --max-ignore-percent).Default: 1\n   \
+  \                     ('\"' in Phred+33; 'A' in Phred+64/Solexa+64)\n    --prefix=PREFIX\
+  \     Add extra prefix to resulting files under the output\n                   \
+  \     directory.\n    --out-per-round     Enable output per round. Choose to save\
+  \ memory but\n                        cost more time per round.\n    --zip-files\
+  \         Choose to compress fq/sam files using gzip.\n    --keep-temp         Choose\
+  \ to keep the running temp/index files.\n    --config-dir=GET_ORGANELLE_PATH\n \
+  \                       The directory where the configuration file and default\n\
+  \                        databases were placed. The default value also can be\n\
+  \                        changed by adding 'export GETORG_PATH=your_favor' to\n\
+  \                        the shell script (e.g. ~/.bash_profile or ~/.bashrc)\n\
+  \                        Default: /root/.GetOrganelle\n\n  SCHEME OPTIONS:\n   \
+  \ Options on running schemes.\n\n    -F ORGANELLE_TYPE   This flag should be followed\
+  \ with embplant_pt\n                        (embryophyta plant plastome), other_pt\
+  \ (non-\n                        embryophyta plant plastome), embplant_mt (plant\n\
+  \                        mitogenome), embplant_nr (plant nuclear ribosomal\n   \
+  \                     RNA), animal_mt (animal mitogenome), fungus_mt (fungus\n \
+  \                       mitogenome), fungus_nr (fungus nuclear ribosomal\n     \
+  \                   RNA)or embplant_mt,other_pt,fungus_mt (the combination\n   \
+  \                     of any of above organelle genomes split by comma(s),\n   \
+  \                     which might be computationally more intensive than\n     \
+  \                   separate runs), or anonym (uncertain organelle genome\n    \
+  \                    type, with customized gene database ('--genes'), which\n  \
+  \                      is suggested only when the above database is\n          \
+  \              genetically distant from your sample, generally only\n          \
+  \              in some animal_mt/fungus_mt/fungus_nr cases). For easy\n        \
+  \                usage and compatibility of old versions, following\n          \
+  \              redirection would be automatically fulfilled without\n          \
+  \              warning:        plant_cp->embplant_pt;\n                        plant_pt->embplant_pt;\
+  \  plant_mt->embplant_mt;\n                        plant_nr->embplant_nr\n    --fast\
+  \              =\"-R 10 -t 4 -J 5 -M 7 --max-n-words 3E7 --larger-\n           \
+  \             auto-ws --disentangle-time-limit 360\" This option is\n          \
+  \              suggested for homogeneously and highly covered data\n           \
+  \             (very fine data). You can overwrite the value of a\n             \
+  \           specific option listed above by adding that option\n               \
+  \         along with the \"--fast\" flag. You could try\n                      \
+  \  GetOrganelle with this option for a list of samples\n                       \
+  \ and run a second time without this option for the rest\n                     \
+  \   with incomplete results.\n    --memory-save       =\"--out-per-round -P 0 --remove-duplicates\
+  \ 0\" You can\n                        overwrite the value of a specific option\
+  \ listed above\n                        by adding that option along with the \"\
+  --memory-save\"\n                        flag. A larger '-R' value is suggested\
+  \ when \"--memory-\n                        save\" is chosen.\n    --memory-unlimited\
+  \  =\"-P 1E7 --index-in-memory --remove-duplicates 2E8\n                       \
+  \ --min-quality-score -5 --max-ignore-percent 0\" You can\n                    \
+  \    overwrite the value of a specific option listed above\n                   \
+  \     by adding that option along with the \"--memory-\n                       \
+  \ unlimited\" flag.\n\n  EXTENDING OPTIONS:\n    Options on the performance of extending\
+  \ process\n\n    -w WORD_SIZE        Word size (W) for pre-grouping (if not assigned\
+  \ by '--\n                        pre-w') and extending process. This script would\
+  \ try\n                        to guess (auto-estimate) a proper W using an empirical\n\
+  \                        function based on average read length, reads quality,\n\
+  \                        target genome coverage, and other variables that might\n\
+  \                        influence the extending process. You could assign the\n\
+  \                        ratio (1>input>0) of W to read_length, based on which\n\
+  \                        this script would estimate the W for you; or assign an\n\
+  \                        absolute W value (read length>input>=35). Default:\n  \
+  \                      auto-estimated.\n    --pre-w=PREGROUP_WORD_SIZE\n       \
+  \                 Word size (W) for pre-grouping. Used to reproduce\n          \
+  \              result when word size is a certain value during\n               \
+  \         pregrouping process and later changed during reads\n                 \
+  \       extending process. Similar to word size. Default: the\n                \
+  \        same to word size.\n    -R MAX_ROUNDS, --max-rounds=MAX_ROUNDS\n      \
+  \                  Maximum number of extending rounds (suggested: >=2).\n      \
+  \                  Default: 15 (-F embplant_pt), 30 (-F\n                      \
+  \  embplant_mt/other_pt), 10 (-F\n                        embplant_nr/animal_mt/fungus_mt/fungus_nr),\
+  \ inf (-P\n                        0).\n    --max-n-words=MAXIMUM_N_WORDS\n    \
+  \                    Maximum number of words to be used in total.Default:\n    \
+  \                    4E8 (-F embplant_pt), 2E8 (-F\n                        embplant_nr/fungus_mt/fungus_nr/animal_mt),\
+  \ 2E9 (-F\n                        embplant_mt/other_pt)\n    -J JUMP_STEP     \
+  \   The length of step for checking words in reads during\n                    \
+  \    extending process (integer >= 1). When you have reads\n                   \
+  \     of high quality, the larger the number is, the faster\n                  \
+  \      the extension will be, the more risk of missing reads\n                 \
+  \       in low coverage area. Choose 1 to choose the slowest\n                 \
+  \       but safest extension strategy. Default: 3\n    -M MESH_SIZE        (Beta\
+  \ parameter) The length of step for building words\n                        from\
+  \ seeds during extending process (integer >= 1).\n                        When you\
+  \ have reads of high quality, the larger the\n                        number is,\
+  \ the faster the extension will be, the more\n                        risk of missing\
+  \ reads in low coverage area. Another\n                        usage of this mesh\
+  \ size is to choose a larger mesh\n                        size coupled with a smaller\
+  \ word size, which makes\n                        smaller word size feasible when\
+  \ memory is\n                        limited.Choose 1 to choose the slowest but\
+  \ safest\n                        extension strategy. Default: 2\n    --bowtie2-options=BOWTIE2_OPTIONS\n\
+  \                        Bowtie2 options, such as '--ma 3 --mp 5,2 --very-fast\n\
+  \                        -t'. Default: --very-fast -t.\n    --larger-auto-ws   \
+  \ By using this flag, the empirical function for\n                        estimating\
+  \ W would tend to produce a relative larger\n                        W, which would\
+  \ speed up the matching in extending,\n                        reduce the memory\
+  \ cost in extending, but increase the\n                        risk of broken final\
+  \ graph. Suggested when the data is\n                        good with high and\
+  \ homogenous coverage.\n    --target-genome-size=TARGET_GENOME_SIZE\n          \
+  \              Hypothetical value(s) of target genome size. This is\n          \
+  \              only used for estimating word size when no '-w\n                \
+  \        word_size' is given. Should be a list of INTEGER\n                    \
+  \    numbers split by comma(s) on a multi-organelle mode,\n                    \
+  \    with the same list length to organelle_type (followed\n                   \
+  \     by '-F'). Default: 130000 (-F embplant_pt) or 390000\n                   \
+  \     (-F embplant_mt) or 13000 (-F embplant_nr) or 39000\n                    \
+  \    (-F other_pt) or 13000 (-F animal_mt) or 65000 (-F\n                      \
+  \  fungus_mt) or 13000 (-F fungus_nr) or\n                        39000,390000,65000\
+  \ (-F other_pt,embplant_mt,fungus_mt)\n    --max-extending-len=MAX_EXTENDING_LEN\n\
+  \                        Maximum extending length(s) derived from the seed(s).\n\
+  \                        A single value could be a non-negative number, or inf\n\
+  \                        (infinite) or auto (automatic estimation). This is\n  \
+  \                      designed for properly stopping the extending from\n     \
+  \                   getting too long and saving computational resources.\n     \
+  \                   However, empirically, a maximum extending length value\n   \
+  \                     larger than 6000 would not be helpful for saving\n       \
+  \                 computational resources. This value would not be\n           \
+  \             precise in controlling output size, especially when\n            \
+  \            pre-group (followed by '-P') is turn on.In the auto\n             \
+  \           mode, the maximum extending length is estimated based\n            \
+  \            on the sizes of the gap regions that not covered in\n             \
+  \           the seed sequences. A sequence of a closely related\n              \
+  \          species would be preferred for estimating a better\n                \
+  \        maximum extending length value. If you are using\n                    \
+  \    limited loci, e.g. rbcL gene as the seed for\n                        assembling\
+  \ the whole plastome (with extending length\n                        ca. 75000 >>\
+  \ 6000), you should set maximum extending\n                        length to inf.\
+  \ Should be a list of numbers/auto/no\n                        split by comma(s)\
+  \ on a multi-organelle mode, with the\n                        same list length\
+  \ to organelle_type (followed by '-F').\n                        Default: no.\n\n\
+  \  ASSEMBLY OPTIONS:\n    These options are about the assembly and graph disentangling\n\
+  \n    -k SPADES_KMER      SPAdes kmer settings. Use the same format as in\n    \
+  \                    SPAdes. illegal kmer values would be automatically\n      \
+  \                  discarded by GetOrganelle. Default: 21,55,85,115\n    --spades-options=OTHER_SPADES_OPTIONS\n\
+  \                        Other SPAdes options. Use double quotation marks to\n \
+  \                       include all the arguments and parameters.\n    --no-spades\
+  \         Disable SPAdes.\n    --ignore-k=IGNORE_KMER_RES\n                    \
+  \    A kmer threshold below which, no\n                        slimming/disentangling\
+  \ would be executed on the\n                        result. Default: 40\n    --genes=GENES_FASTA\n\
+  \                        Followed with a customized database (a fasta file or\n\
+  \                        the base name of a blast database) containing or made\n\
+  \                        of ONE set of protein coding genes and ribosomal RNAs\n\
+  \                        extracted from ONE reference genome that you want to\n\
+  \                        assemble. Should be a list of databases split by\n    \
+  \                    comma(s) on a multi-organelle mode, with the same list\n  \
+  \                      length to organelle_type (followed by '-F'). This is\n  \
+  \                      optional for any organelle mentioned in '-F' but\n      \
+  \                  required for 'anonym'. By default, certain database(s)\n    \
+  \                    in /root/.GetOrganelle/LabelDatabase would be used\n      \
+  \                  contingent on the organelle types chosen (-F). The\n        \
+  \                default value no longer holds when '--genes' or '--ex-\n      \
+  \                  genes' is used.\n    --ex-genes=EXCLUDE_GENES\n             \
+  \           This is optional and Not suggested, since non-target\n             \
+  \           contigs could contribute information for better\n                  \
+  \      downstream coverage-based clustering. Followed with a\n                 \
+  \       customized database (a fasta file or the base name of\n                \
+  \        a blast database) containing or made of protein coding\n              \
+  \          genes and ribosomal RNAs extracted from reference\n                 \
+  \       genome(s) that you want to exclude. Could be a list of\n               \
+  \         databases split by comma(s) but NOT required to have\n               \
+  \         the same list length to organelle_type (followed by\n                \
+  \        '-F'). The default value no longer holds when '--\n                   \
+  \     genes' or '--ex-genes' is used.\n    --disentangle-df=DISENTANGLE_DEPTH_FACTOR\n\
+  \                        Depth factor for differentiate genome type of contigs.\n\
+  \                        The genome type of contigs are determined by blast.\n \
+  \                       Default: 10.0\n    --contamination-depth=CONTAMINATION_DEPTH\n\
+  \                        Depth factor for confirming contamination in parallel\n\
+  \                        contigs. Default: 3.0\n    --contamination-similarity=CONTAMINATION_SIMILARITY\n\
+  \                        Similarity threshold for confirming contaminating\n   \
+  \                     contigs. Default: 0.9\n    --no-degenerate     Disable making\
+  \ consensus from parallel contig based on\n                        nucleotide degenerate\
+  \ table.\n    --degenerate-depth=DEGENERATE_DEPTH\n                        Depth\
+  \ factor for confirming parallel contigs. Default:\n                        1.5\n\
+  \    --degenerate-similarity=DEGENERATE_SIMILARITY\n                        Similarity\
+  \ threshold for confirming parallel contigs.\n                        Default: 0.98\n\
+  \    --disentangle-time-limit=DISENTANGLE_TIME_LIMIT\n                        Time\
+  \ limit (second) for each try of disentangling a\n                        graph\
+  \ file as a circular genome. Disentangling a graph\n                        as contigs\
+  \ is not limited. Default: 1800\n    --expected-max-size=EXPECTED_MAX_SIZE\n   \
+  \                     Expected maximum target genome size(s) for\n             \
+  \           disentangling. Should be a list of INTEGER numbers\n               \
+  \         split by comma(s) on a multi-organelle mode, with the\n              \
+  \          same list length to organelle_type (followed by '-F').\n            \
+  \            Default: 250000 (-F embplant_pt/fungus_mt), 25000 (-F\n           \
+  \             embplant_nr/animal_mt/fungus_nr), 1000000 (-F\n                  \
+  \      embplant_mt/other_pt),1000000,1000000,250000 (-F\n                      \
+  \  other_pt,embplant_mt,fungus_mt)\n    --expected-min-size=EXPECTED_MIN_SIZE\n\
+  \                        Expected minimum target genome size(s) for\n          \
+  \              disentangling. Should be a list of INTEGER numbers\n            \
+  \            split by comma(s) on a multi-organelle mode, with the\n           \
+  \             same list length to organelle_type (followed by '-F').\n         \
+  \               Default: 10000 for all.\n    --reverse-lsc       For '-F embplant_pt'\
+  \ with complete circular result, by\n                        default, the direction\
+  \ of the starting contig (usually\n                        the LSC region) is determined\
+  \ as the direction with\n                        less ORFs. Choose this option to\
+  \ reverse the direction\n                        of the starting contig when result\
+  \ is circular.\n                        Actually, both directions are biologically\
+  \ equivalent\n                        to each other. The reordering of the direction\
+  \ is only\n                        for easier downstream analysis.\n    --max-paths-num=MAX_PATHS_NUM\n\
+  \                        Repeats would dramatically increase the number of\n   \
+  \                     potential isomers (paths). This option was used to\n     \
+  \                   export a certain amount of paths out of all possible\n     \
+  \                   paths per assembly graph. Default: 1000\n\n  ADDITIONAL OPTIONS:\n\
+  \    -t THREADS          Maximum threads to use.\n    -P PRE_GROUPED      The maximum\
+  \ number (integer) of high-covered reads to\n                        be pre-grouped\
+  \ before extending process. pre_grouping\n                        is suggested when\
+  \ the whole genome coverage is shallow\n                        but the organ genome\
+  \ coverage is deep. The default\n                        value is 2E5. For personal\
+  \ computer with 8G memory, we\n                        suggest no more than 3E5.\
+  \ A larger number (ex. 6E5)\n                        would run faster but exhaust\
+  \ memory in the first few\n                        minutes. Choose 0 to disable\
+  \ this process.\n    --which-blast=WHICH_BLAST\n                        Assign the\
+  \ path to BLAST binary files if not added to\n                        the path.\
+  \ Default: try \"/GetOrganelleDep/linux/ncbi-\n                        blast\" first,\
+  \ then $PATH\n    --which-bowtie2=WHICH_BOWTIE2\n                        Assign\
+  \ the path to Bowtie2 binary files if not added\n                        to the\
+  \ path. Default: try\n                        \"/GetOrganelleDep/linux/bowtie2\"\
+  \ first, then $PATH\n    --which-spades=WHICH_SPADES\n                        Assign\
+  \ the path to SPAdes binary files if not added to\n                        the path.\
+  \ Default: try \"/GetOrganelleDep/linux/SPAdes\"\n                        first,\
+  \ then $PATH\n    --which-bandage=WHICH_BANDAGE\n                        Assign\
+  \ the path to bandage binary file if not added to\n                        the path.\
+  \ Default: try $PATH\n    --continue          Several check points based on files\
+  \ produced, rather\n                        than on the log file, so keep in mind\
+  \ that this script\n                        will not detect the difference between\
+  \ this input\n                        parameters and the previous ones.\n    --index-in-memory\
+  \   Keep index in memory. Choose save index in memory than\n                   \
+  \     in disk.\n    --remove-duplicates=RM_DUPLICATES\n                        By\
+  \ default this script use unique reads to extend.\n                        Choose\
+  \ the number of duplicates (integer) to be saved\n                        in memory.\
+  \ A larger number (ex. 2E7) would run faster\n                        but exhaust\
+  \ memory in the first few minutes. Choose 0\n                        to disable\
+  \ this process. Note that whether choose or\n                        not will not\
+  \ disable the calling of replicate reads.\n                        Default: 10000000.0.\n\
+  \    --flush-step=ECHO_STEP\n                        Flush step (INTEGER OR INF)\
+  \ for presenting progress.\n                        For running in the background,\
+  \ you could set this to\n                        inf, which would disable this.\
+  \ Default: 54321\n    --random-seed=RANDOM_SEED\n                        Default:\
+  \ 12345\n    --verbose           Verbose output. Choose to enable verbose running\n\
+  \                        log_handler.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/getorganelle:1.7.3.4--pyh3252c3a_0

@@ -3,7 +3,7 @@ id: mash_paste.cwl
 inputs:
 - id: in_input_files_lists
   doc: Input files are lists of file names.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_option
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mash

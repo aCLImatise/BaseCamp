@@ -44,6 +44,9 @@ task HalLiftover {
       ~{if (out_psl_with_name) then "--outPSLWithName" else ""} \
       ~{if (tab) then "--tab" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     append: ":                     append results to tgtBed [default = 0]"
     cache_bytes: ":         maximum size in bytes of regular hdf5 cache [default =\\n15728640]"

@@ -14,6 +14,9 @@ task Quickmerge {
       ~{if defined(q) then ("-q " +  '"' + q + '"') else ""} \
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hco: ""
     r: ""

@@ -20,6 +20,9 @@ task Lacepy {
       ~{if defined(max_tran) then ("--maxTran " +  '"' + max_tran + '"') else ""} \
       ~{if defined(output_dir) then ("--outputDir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cores: "The number of cores you wish to run the job on\\n(default = 1)"
     alternate: "Create alternate annotations and create metrics on\\nsuccess of SuperTranscript Building"

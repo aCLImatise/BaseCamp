@@ -14,6 +14,9 @@ task MbcapoccupancyOutputfile {
       ~{output_file} \
       ~{if defined(quantile) then ("--quantile " +  '"' + quantile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quantile: ""
     mb_cap_occupancy: ""

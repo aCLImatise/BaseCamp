@@ -3,32 +3,35 @@ command:
 - scHicDemultiplex
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: of
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: fastq
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: files
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 3
   name: to
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 4
   name: demultiplex
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --fastq
   description: "of fastq files to demultiplex [list of fastq files to demultiplex\
     \ ...], -f list of fastq files to demultiplex [list of fastq files to demultiplex\
     \ ...]\nThe fastq files to demultiplex of Nagano 2017 Cell\ncycle dynamics of\
@@ -38,72 +41,69 @@ named:
     \ command fastq-dump\nto be in the right format:fastq-dump --accession\nSRR5229025\
     \ --split-files --defline-seq\n'@$sn[_$rn]/$ri' --defline-qual '+' --split-spot\n\
     --stdout SRR5229025 > SRR5229025.fastq (default: None)"
-  synonyms:
-  - --fastq
   args: !SimpleFlagArg
     name: list
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --barcodeFile
   description: "of fastq files to demultiplex. Use GSE94489_README.txt file., -bf\
     \ list of fastq files to demultiplex. Use GSE94489_README.txt file.\nThe fastq\
     \ files to demultiplex (default: None)"
-  synonyms:
-  - --barcodeFile
   args: !SimpleFlagArg
     name: list
-  optional: true
 - !Flag
-  description: "The mappings from SRR number to sample id as given in\nthe barcode\
-    \ file. (default: None)"
+  optional: true
   synonyms:
   - --srrToSampleFile
   - -s
+  description: "The mappings from SRR number to sample id as given in\nthe barcode\
+    \ file. (default: None)"
   args: !SimpleFlagArg
     name: SRRTOSAMPLEFILE
-  optional: true
 - !Flag
-  description: "Path of folder to save the demultiplexed files\n(default: demultiplexed)"
+  optional: true
   synonyms:
   - --outputFolder
   - -o
+  description: "Path of folder to save the demultiplexed files\n(default: demultiplexed)"
   args: !SimpleFlagArg
     name: FOLDER
-  optional: true
 - !Flag
-  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
-    \ 4)"
+  optional: true
   synonyms:
   - --threads
   - -t
+  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
+    \ 4)"
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: "Number of lines to buffer in memory, if full, write\nthe data to disk.\
-    \ (default: 20000000.0)"
+  optional: true
   synonyms:
   - --bufferSize
   - -bs
+  description: "Number of lines to buffer in memory, if full, write\nthe data to disk.\
+    \ (default: 20000000.0)"
   args: !SimpleFlagArg
     name: BUFFERSIZE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: scHicDemultiplex --fastq list of fastq files to demultiplex\n \
   \                       [list of fastq files to demultiplex ...] --barcodeFile\n\
   \                        list of fastq files to demultiplex. Use\n             \
@@ -140,3 +140,4 @@ help_text: "usage: scHicDemultiplex --fastq list of fastq files to demultiplex\n
   \             show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

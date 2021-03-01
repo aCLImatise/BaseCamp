@@ -18,6 +18,9 @@ task ParallelAllAgainstAllBlastp {
       ~{if defined(blastp_executable) then ("-b " +  '"' + blastp_executable + '"') else ""} \
       ~{if (verbose_output_stdout) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_threads: "number of threads [1]"
     output_filename_blast: "output filename for blast results [blast_results]"

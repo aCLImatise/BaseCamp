@@ -4,7 +4,7 @@ task Maker {
   input {
     Boolean? genome
     Boolean? rm_off
-    Boolean? datastore_slash
+    Boolean? datastore
     Boolean? old_struct
     Boolean? base
     Boolean? tries
@@ -30,7 +30,7 @@ task Maker {
       ~{no_data_store} \
       ~{if (genome) then "-genome" else ""} \
       ~{if (rm_off) then "-RM_off" else ""} \
-      ~{if (datastore_slash) then "-datastore/" else ""} \
+      ~{if (datastore) then "-datastore" else ""} \
       ~{if (old_struct) then "-old_struct" else ""} \
       ~{if (base) then "-base" else ""} \
       ~{if (tries) then "-tries" else ""} \
@@ -50,10 +50,13 @@ task Maker {
       ~{if (m_was) then "-MWAS" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "|g <file>    Overrides the genome file path in the control files"
     rm_off: "|R           Turns all repeat masking options off."
-    datastore_slash: "Forcably turn on/off MAKER's two deep directory"
+    datastore: "/         Forcably turn on/off MAKER's two deep directory"
     old_struct: "Use the old directory styles (MAKER 2.26 and lower)"
     base: "<string>   Set the base name MAKER uses to save output files.\\nMAKER uses the input genome file name by default."
     tries: "|t <integer>  Run contigs up to the specified number of tries."

@@ -12,6 +12,9 @@ task KtUpdateTaxonomysh {
       ~{if (only_build) then "--only-build" else ""} \
       ~{if (preserve) then "--preserve" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     only_fetch: "Only download source files; do not build."
     only_build: "Assume source files exist; do not fetch."

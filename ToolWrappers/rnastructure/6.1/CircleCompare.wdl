@@ -4,7 +4,7 @@ task CircleCompare {
   input {
     Boolean? alternative
     Boolean? exact
-    Boolean? file
+    Boolean? specify_names_shown
     Boolean? levo_rotatory
     Boolean? svg
     Boolean? uncircled
@@ -24,7 +24,7 @@ task CircleCompare {
       ~{output_file} \
       ~{if (alternative) then "--alternative" else ""} \
       ~{if (exact) then "--exact" else ""} \
-      ~{if (file) then "--file" else ""} \
+      ~{if (specify_names_shown) then "--file" else ""} \
       ~{if (levo_rotatory) then "--levorotatory" else ""} \
       ~{if (svg) then "--svg" else ""} \
       ~{if (uncircled) then "--uncircled" else ""} \
@@ -34,10 +34,13 @@ task CircleCompare {
       ~{if (shape) then "--SHAPE" else ""} \
       ~{if (text) then "--text" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alternative: "Specify that an alternative color scheme should be used.\\nDefault is not to use the alternative color scheme."
     exact: "Specify exact comparison when structure comparison is scored.\\nDefault is to allow flexible pairings."
-    file: "Specify that structure file names should be shown in addition to their\\ndescriptions.\\nDefault is not to show structure file names."
+    specify_names_shown: "Specify that structure file names should be shown in addition to their\\ndescriptions.\\nDefault is not to show structure file names."
     levo_rotatory: "Specify that the drawn structure is rendered counterclockwise.\\nDefault is to render drawn structures clockwise."
     svg: "Specify that the output file should be an SVG image file, rather than a\\nPostscript image file. Note that only one SVG image can be written into a\\nparticular file, so the structure number flag must also be specified when\\nwriting an SVG document."
     uncircled: "Specify that no circles should surround nucleotides when drawing.\\nDefault is to surround nucleotides with circles."

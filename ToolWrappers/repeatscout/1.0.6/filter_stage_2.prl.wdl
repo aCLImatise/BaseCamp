@@ -10,6 +10,9 @@ task Filterstage2prl {
       ~{if (cat) then "--cat" else ""} \
       ~{if (thresh) then "--thresh" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cat: "The RepeatMasker output file. It can either be a .cat file or a .out\\nfile, but a .out file is preferred."
     thresh: "The number of times a sequence must appear for it to be reported."

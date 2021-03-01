@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Directory, String, Int, File, Boolean
+
+Moca_Plot_V0_1_0 = CommandToolBuilder(tool="moca_plot", base_command=["moca", "plot"], inputs=[ToolInput(tag="in_meme_dir", input_type=Directory(optional=True), prefix="--meme-dir", doc=InputDocumentation(doc="MEME output directory  [required]")), ToolInput(tag="in_centri_mo_dir", input_type=Directory(optional=True), prefix="--centrimo-dir", doc=InputDocumentation(doc="Centrimo output directory  [required]")), ToolInput(tag="in_fimo_dir_sample", input_type=String(optional=True), prefix="--fimo-dir-sample", doc=InputDocumentation(doc="Sample fimo.txt  [required]")), ToolInput(tag="in_fimo_dir_control", input_type=String(optional=True), prefix="--fimo-dir-control", doc=InputDocumentation(doc="Control fimo.txt  [required]")), ToolInput(tag="in_name", input_type=String(optional=True), prefix="--name", doc=InputDocumentation(doc="Plot title")), ToolInput(tag="in_flank_motif", input_type=Int(optional=True), prefix="--flank-motif", doc=InputDocumentation(doc="Length of sequence flanking motif\n[required]")), ToolInput(tag="in_motif", input_type=Int(optional=True), prefix="--motif", doc=InputDocumentation(doc="Motif number")), ToolInput(tag="in_oc", input_type=Directory(optional=True), prefix="--oc", doc=InputDocumentation(doc="Output Directory  [required]")), ToolInput(tag="in_configuration", input_type=File(optional=True), prefix="--configuration", doc=InputDocumentation(doc="Configuration file  [required]")), ToolInput(tag="in_show_progress", input_type=Boolean(optional=True), prefix="--show-progress", doc=InputDocumentation(doc="Print progress")), ToolInput(tag="in_genome_build", input_type=File(optional=True), prefix="--genome-build", doc=InputDocumentation(doc="Key denoting genome build to use in\nconfiguration file  [required]"))], outputs=[ToolOutput(tag="out_meme_dir", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_meme_dir", type_hint=File()), doc=OutputDocumentation(doc="MEME output directory  [required]")), ToolOutput(tag="out_centri_mo_dir", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_centri_mo_dir", type_hint=File()), doc=OutputDocumentation(doc="Centrimo output directory  [required]")), ToolOutput(tag="out_oc", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_oc", type_hint=File()), doc=OutputDocumentation(doc="Output Directory  [required]"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Moca_Plot_V0_1_0().translate("wdl", allow_empty_container=True)
+

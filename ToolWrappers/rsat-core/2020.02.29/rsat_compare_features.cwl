@@ -3,7 +3,7 @@ id: rsat_compare_features.cwl
 inputs:
 - id: in_files
   doc: considered as input files.
-  type: string
+  type: string?
   inputBinding:
     prefix: -files
 - id: in_compare_features
@@ -50,6 +50,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

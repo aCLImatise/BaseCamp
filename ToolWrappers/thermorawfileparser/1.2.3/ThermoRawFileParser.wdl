@@ -17,9 +17,11 @@ task ThermoRawFileParser {
     File? s_three_access_key_id
     File? s_three_secret_accesskey
     Boolean? s_three_bucket_name
+    String verbose_dot
   }
   command <<<
     ThermoRawFileParser \
+      ~{verbose_dot} \
       ~{if defined(raw_file_input) then ("--input " +  '"' + raw_file_input + '"') else ""} \
       ~{if defined(input_directory) then ("--input_directory " +  '"' + input_directory + '"') else ""} \
       ~{if defined(output_directory_specify) then ("--output " +  '"' + output_directory_specify + '"') else ""} \
@@ -36,6 +38,9 @@ task ThermoRawFileParser {
       ~{if (s_three_secret_accesskey) then "--s3_secretaccesskey" else ""} \
       ~{if (s_three_bucket_name) then "--s3_bucketName" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     raw_file_input: "The raw file input (Required). Specify this or an\\ninput directory -d."
     input_directory: "The directory containing the raw files (Required).\\nSpecify this or an input raw file -i."
@@ -52,6 +57,7 @@ task ThermoRawFileParser {
     s_three_access_key_id: "[=VALUE]\\nOptional key for the S3 bucket to write the file\\noutput."
     s_three_secret_accesskey: "[=VALUE]\\nOptional key for the S3 bucket to write the file\\noutput."
     s_three_bucket_name: "[=VALUE]\\nS3 bucket name\\n"
+    verbose_dot: "-e, --ignoreInstrumentErrors"
   }
   output {
     File out_stdout = stdout()

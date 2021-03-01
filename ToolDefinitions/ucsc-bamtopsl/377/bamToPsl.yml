@@ -3,56 +3,56 @@ command:
 - bamToPsl
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: in.bam
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: '- output query sequences to specified file'
+  optional: true
   synonyms:
   - -fasta
+  description: '- output query sequences to specified file'
   args: !SimpleFlagArg
     name: output.fa
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -chromAlias
   description: "- specify a two-column file: 1: alias, 2: other name\nfor target name\
     \ translation from column 1 name to column 2 name\nnames not found are passed\
     \ through intact"
-  synonyms:
-  - -chromAlias
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: '- do not output the PSL header, default has header output'
+  optional: true
   synonyms:
   - -nohead
+  description: '- do not output the PSL header, default has header output'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -allowDups
   description: "- for fasta output, allow duplicate query sequences output\n- default\
     \ is to eliminate duplicate sequences\n- runs much faster without the duplicate\
     \ check"
-  synonyms:
-  - -allowDups
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -noSequenceVerify
   description: "- when checking for dups, do not verify each sequence\n- when the\
     \ same name is identical, assume they are\n- helps speed up the dup check but\
     \ not thorough"
-  synonyms:
-  - -noSequenceVerify
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '- output progress dot(.) every N alignments processed'
+  optional: true
   synonyms:
   - -dots
+  description: '- output progress dot(.) every N alignments processed'
   args: !SimpleFlagArg
     name: N
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -75,3 +75,4 @@ help_text: "bamToPsl - Convert a bam file to a psl and optionally also a fasta f
   \ UCSC database, e.g.:\n hgsql -N -e 'select alias,chrom from chromAlias;' hg38\
   \ > hg38.chromAlias.tab\n"
 generated_using: []
+docker_image:

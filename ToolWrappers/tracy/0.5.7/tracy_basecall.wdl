@@ -14,6 +14,9 @@ task TracyBasecall {
       ~{if (f) then "-f" else ""} \
       ~{if (arg_basecalling_output) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_peak_ratio: "[ --pratio ] arg (=0.330000013)  peak ratio to call a base"
     f: "[ --format ] arg (=json)         output format [json|tsv|fasta|fastq]"

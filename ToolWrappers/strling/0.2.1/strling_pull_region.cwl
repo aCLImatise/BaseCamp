@@ -3,12 +3,12 @@ id: strling_pull_region.cwl
 inputs:
 - id: in_fast_a
   doc: path to fasta file, only required for cram
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta
 - id: in_output_bam
   doc: 'path to output bam (default: extracted.bam)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-bam
 - id: in_bam
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_bam
   doc: 'path to output bam (default: extracted.bam)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_bam)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - strling

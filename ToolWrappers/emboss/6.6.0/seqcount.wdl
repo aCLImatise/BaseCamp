@@ -4,6 +4,9 @@ task Seqcount {
   command <<<
     seqcount
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

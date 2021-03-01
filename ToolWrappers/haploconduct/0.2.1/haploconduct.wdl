@@ -8,6 +8,9 @@ task Haploconduct {
     haploconduct \
       ~{program}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     program: ""
   }

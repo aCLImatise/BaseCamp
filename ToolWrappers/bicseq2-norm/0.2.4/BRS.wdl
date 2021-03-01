@@ -22,6 +22,9 @@ task BRS {
       ~{if defined(report_summary_statistics) then ("-s " +  '"' + report_summary_statistics + '"') else ""} \
       ~{if defined(multiplicity) then ("--multiplicity " +  '"' + multiplicity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quantile_used_identification: ": the quantile used for identification of the singular genomic positions; default is 0.95"
     window_size_calculating: ": the window size for calculating the quantiles; default is 200"

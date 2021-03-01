@@ -12,6 +12,9 @@ task ScancelRangepyEnd {
       ~{start} \
       ~{end}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s_cancel_range_do_tpy: ""
     start: ""

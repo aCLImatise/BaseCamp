@@ -4,12 +4,15 @@ command:
 - phenotype
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: INPUT_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -f
   description: "[INPUT_FILE [INPUT_FILE ...]], --from_file [INPUT_FILE [INPUT_FILE\
     \ ...]], --from-file [INPUT_FILE [INPUT_FILE ...]]\nImport phenotype from a tab\
     \ or space delimited file,\nwhich can be standard input if a name - is specified.\n\
@@ -24,22 +27,22 @@ named:
     \ samples\nfor which phenotypes are imported. Values that match\nvalue of parameter\
     \ --na and cannot be converted to the\nprobed type of phenotype (e.g. '' in a\
     \ column of\nnumbers) are recorded as missing values."
-  synonyms:
-  - -f
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --set
   description: "[EXPRESSION [EXPRESSION ...]]\nSet a phenotype to a constant (e.g.\
     \ --set aff=1), or\nan expression using other existing phenotypes (e.g.\n--set\
     \ ratio_qt=high_qt/all_qt (the ratio of the number\nof high quality variants to\
     \ the number of all\nvariants, where high_qt and all_qt are obtained from\nsample\
     \ statistics using parameter --from_stat).\nParameter --samples could be used\
     \ to limit the samples\nfor which genotypes will be set."
-  synonyms:
-  - --set
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --from_stat
   description: "[EXPRESSION [EXPRESSION ...]], --from-stat [EXPRESSION [EXPRESSION\
     \ ...]]\nSet a phenotype to a summary statistics of a genotype\nfield. For example,\
     \ \"num=count(*)\" sets phenotype num\nto be the number of genotypes of a sample,\n\
@@ -52,57 +55,57 @@ named:
     homozygotes, heterozygotes, and genotypes with two\ndifferent alternative alleles.\
     \ Parameters --genotypes\nand --samples could be used to limit the genotypes to\n\
     be considered and the samples for which genotypes will\nbe set."
-  synonyms:
-  - --from_stat
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --output
   description: "[EXPRESSION [EXPRESSION ...]]\nA list of phenotype to be outputted.\
     \ SQL-compatible\nexpressions or functions such as \"DP/DP_all\" and\n\"avg(DP)\"\
     \ are also allowed"
-  synonyms:
-  - --output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Allow at most N concurrent jobs to obtain sample\nstatistics for parameter\
-    \ --from-stat."
+  optional: true
   synonyms:
   - -j
   - --jobs
+  description: "Allow at most N concurrent jobs to obtain sample\nstatistics for parameter\
+    \ --from-stat."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -g
   description: "[COND [COND ...]], --genotypes [COND [COND ...]]\nLimit the operation\
     \ to genotypes that match specified\nconditions. Use 'vtools show genotypes' to\
     \ list usable\nfields for each sample."
-  synonyms:
-  - -g
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
   description: "[COND [COND ...]], --samples [COND [COND ...]]\nUpdate phenotype for\
     \ samples that match specified\nconditions. Use 'vtools show samples' to list\
     \ usable\nfields in the sample table."
-  synonyms:
-  - -s
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
-    \ to standard output (default to\n1)."
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1)."
   args: !ChoiceFlagArg
     choices: !!set
+      '3':
       '2':
       '0':
-      '3':
       '1':
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --header
   description: "[HEADER [HEADER ...]]\nA list of header names for input file if used\
     \ with\noption --from-file. Otherwise a complete header or a\nlist of names that\
     \ will be joined by a delimiter\n(parameter --delimiter), for option --output.\
@@ -110,43 +113,40 @@ named:
     \ input, which is the preferred way to\nspecify large multi-line headers (e.g.\
     \ cat myheader |\nvtools export --header -). If this parameter is given\nwithout\
     \ parameter, a default header will be derived\nfrom field names."
-  synonyms:
-  - --header
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Delimiter, default to tab, a popular alternative is\n',' for csv output"
+  optional: true
   synonyms:
   - -d
   - --delimiter
+  description: "Delimiter, default to tab, a popular alternative is\n',' for csv output"
   args: !SimpleFlagArg
     name: DELIMITER
-  optional: true
 - !Flag
-  description: Input or output string for missing value..
+  optional: true
   synonyms:
   - --na
+  description: Input or output string for missing value..
   args: !SimpleFlagArg
     name: NA
-  optional: true
 - !Flag
-  description: "Number of record to display. Default to all record.\n"
+  optional: true
   synonyms:
   - -l
   - --limit
+  description: "Number of record to display. Default to all record.\n"
   args: !SimpleFlagArg
     name: LIMIT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: vtools phenotype [-h] [-f [INPUT_FILE [INPUT_FILE ...]]]\n    \
@@ -232,3 +232,4 @@ help_text: "usage: vtools phenotype [-h] [-f [INPUT_FILE [INPUT_FILE ...]]]\n   
   \  Number of record to display. Default to all record.\n"
 generated_using:
 - --help
+docker_image:

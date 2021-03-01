@@ -16,6 +16,9 @@ task Fastasubsample {
       ~{if (nor_and) then "-norand" else ""} \
       ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     len: ""
     off: ""

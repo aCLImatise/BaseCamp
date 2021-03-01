@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Boolean, Int, Directory, File
+
+Taxonkit_Lineage_V0_1_0 = CommandToolBuilder(tool="taxonkit_lineage", base_command=["taxonkit", "lineage"], inputs=[ToolInput(tag="in_delimiter", input_type=String(optional=True), prefix="--delimiter", doc=InputDocumentation(doc="field delimiter in lineage (default ';')")), ToolInput(tag="in_show_lineage_tax_ids", input_type=Boolean(optional=True), prefix="--show-lineage-taxids", doc=InputDocumentation(doc="appending lineage consisting of taxids")), ToolInput(tag="in_show_rank", input_type=Boolean(optional=True), prefix="--show-rank", doc=InputDocumentation(doc="appending rank of taxids")), ToolInput(tag="in_show_status_code", input_type=Boolean(optional=True), prefix="--show-status-code", doc=InputDocumentation(doc="show status code between lineage")), ToolInput(tag="in_taxid_field", input_type=Int(optional=True), prefix="--taxid-field", doc=InputDocumentation(doc="field index of taxid. data should be tab-separated (default 1)")), ToolInput(tag="in_data_dir", input_type=Directory(optional=True), prefix="--data-dir", doc=InputDocumentation(doc="directory containing nodes.dmp and names.dmp (default '/root/.taxonkit')")), ToolInput(tag="in_line_buffered", input_type=File(optional=True), prefix="--line-buffered", doc=InputDocumentation(doc="use line buffering on output, i.e., immediately writing to stdin/file for every line of output")), ToolInput(tag="in_out_file", input_type=File(optional=True), prefix="--out-file", doc=InputDocumentation(doc="out file ('-' for stdout, suffix .gz for gzipped out) (default '-')")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="number of CPUs. 2 is enough (default value: 1 for single-CPU PC, 2 for others) (default 2)")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="print verbose information"))], outputs=[ToolOutput(tag="out_line_buffered", output_type=File(optional=True), selector=InputSelector(input_to_select="in_line_buffered", type_hint=File()), doc=OutputDocumentation(doc="use line buffering on output, i.e., immediately writing to stdin/file for every line of output")), ToolOutput(tag="out_out_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out_file", type_hint=File()), doc=OutputDocumentation(doc="out file ('-' for stdout, suffix .gz for gzipped out) (default '-')"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Taxonkit_Lineage_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -3,17 +3,17 @@ id: filter_important_factors.py.cwl
 inputs:
 - id: in_in
   doc: Input file
-  type: File
+  type: File?
   inputBinding:
     prefix: -in
 - id: in_filter
   doc: Filter
-  type: string
+  type: string?
   inputBinding:
     prefix: -filter
 - id: in_output_file
   doc: Output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: Output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - filter_important_factors.py

@@ -3,32 +3,32 @@ id: Consensus.cwl
 inputs:
 - id: in_out
   doc: write the output FASTA file to OUTPUT
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_pile_up
   doc: write the pileup to PILEUP
-  type: string
+  type: string?
   inputBinding:
     prefix: --pileup
 - id: in_nt
   doc: output nucleotide contigs [default]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nt
 - id: in_cs
   doc: output colour-space contigs
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cs
 - id: in_variants
   doc: print only variants in the pileup
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --variants
 - id: in_verbose
   doc: display verbose output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_contig
@@ -42,9 +42,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: write the output FASTA file to OUTPUT
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - Consensus

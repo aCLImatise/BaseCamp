@@ -8,6 +8,9 @@ task AlignSetspyOffsetsforward {
     AlignSets_py offsets_forward \
       ~{align_sets_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     align_sets_do_tpy: ""
   }

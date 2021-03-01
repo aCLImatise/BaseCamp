@@ -12,6 +12,9 @@ task XsvHeaders {
       ~{if (intersect) then "--intersect" else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     just_names: "Only show the header names (hide column index).\\nThis is automatically enabled if more than one\\ninput is given."
     intersect: "Shows the intersection of all headers in all of\\nthe inputs given."

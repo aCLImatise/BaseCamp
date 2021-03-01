@@ -4,6 +4,10 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --snpFile
   description: "specify an Eigenstrat SNP file with the positions and\nalleles of\
     \ a reference set. If this option is given,\nonly positions that are both in the\
     \ SNP file and in\nthe VCF will be output. Without this option, all\nsites in\
@@ -12,38 +16,34 @@ named:
     will be output as missing or hom-ref, but that\nfeature was recently removed.\
     \ I plan to implement\nthis behaviour in the future in a new\neigenstrat-merging\
     \ tool."
-  synonyms:
-  - -f
-  - --snpFile
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "specify the filenames for the EigenStrat SNP and IND\nfile outputs:\
-    \ <FILE_PREFIX>.snp.txt and\n<FILE_PREFIX>.ind.txt\n"
+  optional: true
   synonyms:
   - -e
   - --outPrefix
+  description: "specify the filenames for the EigenStrat SNP and IND\nfile outputs:\
+    \ <FILE_PREFIX>.snp.txt and\n<FILE_PREFIX>.ind.txt\n"
   args: !SimpleFlagArg
     name: FILE_PREFIX
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this help text
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this help text
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Print version and exit
+  optional: true
   synonyms:
   - --version
+  description: Print version and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: vcf2eigenstrat [--version] [-f|--snpFile <FILE>]\n            \
   \          (-e|--outPrefix <FILE_PREFIX>)\n  A program to convert a VCF file (stdin)\
   \ to Eigenstrat. This tool is part of\n  sequenceTools version 1.4.0.5\n\nAvailable\
@@ -64,3 +64,4 @@ help_text: "Usage: vcf2eigenstrat [--version] [-f|--snpFile <FILE>]\n           
   \                 <FILE_PREFIX>.ind.txt\n"
 generated_using:
 - --help
+docker_image:

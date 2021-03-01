@@ -12,6 +12,9 @@ task GcloudComponentsRemove {
       ~{optional} \
       ~{flags}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     component_id: ""
     optional: ""

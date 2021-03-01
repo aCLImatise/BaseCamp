@@ -20,6 +20,9 @@ task Recyclepy {
       ~{if defined(iso) then ("--iso " +  '"' + iso + '"') else ""} \
       ~{if defined(output_dir) then ("--output_dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graph: "(spades 3.50+) assembly graph FASTG file to process;\\nrecommended for spades 3.5: before_rr.fastg, for\\nspades 3.6+:assembly_graph.fastg"
     max_k: "integer reflecting maximum k value used by the\\nassembler"

@@ -3,7 +3,7 @@ id: svtools_depth.cwl
 inputs:
 - id: in_support
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --support
 - id: in_svtools
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - svtools

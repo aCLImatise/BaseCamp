@@ -4,6 +4,9 @@ task WatchdogworkflowValidator {
   command <<<
     watchdog_workflowValidator
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

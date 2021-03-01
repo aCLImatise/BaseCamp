@@ -18,6 +18,9 @@ task Seq2scienceRunDone {
       ~{if defined(j) then ("-j " +  '"' + j + '"') else ""} \
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     unlock: ""
     n: ""

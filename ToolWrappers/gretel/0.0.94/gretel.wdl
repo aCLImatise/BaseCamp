@@ -40,6 +40,9 @@ task Gretel {
       ~{if defined(dump_snps) then ("--dumpsnps " +  '"' + dump_snps + '"') else ""} \
       ~{if (pepper) then "--pepper" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     start: "1-indexed included start base position [default: 1]"
     end: "1-indexed inlcuded end base position [default:\\nreference length]"

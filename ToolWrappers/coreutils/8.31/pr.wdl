@@ -7,7 +7,7 @@ task Pr {
     Boolean? show_control_chars
     Boolean? double_space
     String? date_format
-    Boolean? expand_input_tabs
+    Boolean? expand_chars_tabs
     Boolean? form_feed
     File? header
     Boolean? replace_spaces_tab
@@ -33,7 +33,7 @@ task Pr {
       ~{if (show_control_chars) then "--show-control-chars" else ""} \
       ~{if (double_space) then "--double-space" else ""} \
       ~{if defined(date_format) then ("--date-format " +  '"' + date_format + '"') else ""} \
-      ~{if (expand_input_tabs) then "-e" else ""} \
+      ~{if (expand_chars_tabs) then "-e" else ""} \
       ~{if (form_feed) then "--form-feed" else ""} \
       ~{if defined(header) then ("--header " +  '"' + header + '"') else ""} \
       ~{if (replace_spaces_tab) then "-i" else ""} \
@@ -52,13 +52,16 @@ task Pr {
       ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
       ~{if defined(page_width) then ("--page-width " +  '"' + page_width + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     columns: "output COLUMN columns and print columns down,\\nunless -a is used. Balance number of lines in the\\ncolumns on each page"
     across: "print columns across rather than down, used together\\nwith -COLUMN"
     show_control_chars: "use hat notation (^G) and octal backslash notation"
     double_space: "double space the output"
     date_format: "use FORMAT for the header date"
-    expand_input_tabs: "[CHAR[WIDTH]], --expand-tabs[=CHAR[WIDTH]]\\nexpand input CHARs (TABs) to tab WIDTH (8)"
+    expand_chars_tabs: "[CHAR[WIDTH]], --expand-tabs[=CHAR[WIDTH]]\\nexpand input CHARs (TABs) to tab WIDTH (8)"
     form_feed: "use form feeds instead of newlines to separate pages\\n(by a 3-line page header with -F or a 5-line header\\nand trailer without -F)"
     header: "use a centered HEADER instead of filename in page header,\\n-h \\\"\\\" prints a blank line, don't use -h\\\"\\\""
     replace_spaces_tab: "[CHAR[WIDTH]], --output-tabs[=CHAR[WIDTH]]\\nreplace spaces with CHARs (TABs) to tab WIDTH (8)"

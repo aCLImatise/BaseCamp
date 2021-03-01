@@ -16,6 +16,9 @@ task FastqHead {
       ~{if defined(input_fastq_gzipped) then ("--input " +  '"' + input_fastq_gzipped + '"') else ""} \
       ~{if defined(output_file_extension) then ("--output " +  '"' + output_file_extension + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nlines: "Number of lines to extract."
     input_fastq_gzipped: "input fastq gzipped or not"

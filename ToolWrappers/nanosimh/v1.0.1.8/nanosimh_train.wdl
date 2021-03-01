@@ -20,6 +20,9 @@ task NanosimhTrain {
       ~{if (no_model_fit) then "--no-model-fit" else ""} \
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "training ONT real reads, must be fasta files"
     ref: "reference genome of the training reads"

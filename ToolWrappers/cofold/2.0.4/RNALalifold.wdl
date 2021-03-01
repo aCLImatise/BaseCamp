@@ -44,6 +44,9 @@ task RNALalifold {
       ~{if defined(ribo_sum_file) then ("--ribosum_file " +  '"' + ribo_sum_file + '"') else ""} \
       ~{if (ribo_sum_scoring) then "--ribosum_scoring" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     full_help: "Print help, including hidden options, and exit"

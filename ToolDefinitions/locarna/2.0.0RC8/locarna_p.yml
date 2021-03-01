@@ -3,293 +3,293 @@ command:
 - locarna_p
 positional:
 - !Positional
-  description: Report bugs to <will (at) informatik.uni-freiburg.de>.
+  optional: false
   position: 0
   name: constraints.
-  optional: false
+  description: Report bugs to <will (at) informatik.uni-freiburg.de>.
 named:
 - !Flag
-  description: Be verbose. Prints input parameters, sequences and size information.
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: Be verbose. Prints input parameters, sequences and size information.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Be quiet.
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: Be quiet.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(-150)\nIndel score. Score contribution of each single base insertion\
-    \ or\ndeletion. Indel opening score and indel score define the affine scoring\n\
-    of gaps."
+  optional: true
   synonyms:
   - -i
   - --indel
+  description: "(-150)\nIndel score. Score contribution of each single base insertion\
+    \ or\ndeletion. Indel opening score and indel score define the affine scoring\n\
+    of gaps."
   args: !SimpleFlagArg
     name: score
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --indel-opening
   description: "(-750)\nIndel opening score. Score contribution of opening an insertion\
     \ or\ndeletion, i.e. score for a consecutive run of deletions or insertions.\n\
     Indel opening score and indel score define the affine scoring of gaps."
-  synonyms:
-  - --indel-opening
   args: !SimpleFlagArg
     name: score
-  optional: true
 - !Flag
-  description: "(RIBOSUM85_60)\nFile specifying the Ribosum base and base-pair similarities.\
-    \ [default:\nuse RIBOSUM85_60 without requiring a Ribosum file.]"
+  optional: true
   synonyms:
   - --ribosum-file
+  description: "(RIBOSUM85_60)\nFile specifying the Ribosum base and base-pair similarities.\
+    \ [default:\nuse RIBOSUM85_60 without requiring a Ribosum file.]"
   args: !SimpleFlagArg
     name: f
-  optional: true
 - !Flag
-  description: "(true)\nUse ribosum scores for scoring base matches and base pair\
-    \ matches; note\nthat tau=0 suppresses any effect on the latter."
+  optional: true
   synonyms:
   - --use-ribosum
+  description: "(true)\nUse ribosum scores for scoring base matches and base pair\
+    \ matches; note\nthat tau=0 suppresses any effect on the latter."
   args: !SimpleFlagArg
     name: bool
-  optional: true
 - !Flag
-  description: "(50)\nSet score contribution of a base match (unless ribosum scoring)."
+  optional: true
   synonyms:
   - -m
   - --match
+  description: "(50)\nSet score contribution of a base match (unless ribosum scoring)."
   args: !SimpleFlagArg
     name: score
-  optional: true
 - !Flag
-  description: "(0)\nSet score contribution of a base mismatch (unless ribosum scoring)."
+  optional: true
   synonyms:
   - -M
   - --mismatch
+  description: "(0)\nSet score contribution of a base mismatch (unless ribosum scoring)."
   args: !SimpleFlagArg
     name: score
-  optional: true
 - !Flag
-  description: "(200)\nMaximal weight of 1/2 arc match. Balances structure vs. sequence\
-    \ score\ncontributions."
+  optional: true
   synonyms:
   - -s
   - --struct-weight
+  description: "(200)\nMaximal weight of 1/2 arc match. Balances structure vs. sequence\
+    \ score\ncontributions."
   args: !SimpleFlagArg
     name: score
-  optional: true
 - !Flag
-  description: "Expected base pair probability. Used as background probability for\
-    \ base\npair scoring [default: calculated from sequence length]."
+  optional: true
   synonyms:
   - -e
   - --exp-prob
+  description: "Expected base pair probability. Used as background probability for\
+    \ base\npair scoring [default: calculated from sequence length]."
   args: !SimpleFlagArg
     name: prob
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tau
   description: "(50)\nTau factor. Factor for contribution of sequence similarity in\
     \ an arc\nmatch (in percent). tau=0 does not penalize any sequence information\n\
     including compensatory mutations at arc matches, while tau=100 scores\nsequence\
     \ similarity at ends of base matches (if a scoring matrix like\nribosum is used,\
     \ this adds the contributions for base pair match from the\nmatrix). [default\
     \ tau=0!]"
-  synonyms:
-  - -t
-  - --tau
   args: !SimpleFlagArg
     name: factor
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --temperature-alipf
   description: "(300)\nTemperature for the /sequence alignment/ partition functions\
     \ used by the\nprobcons-like sequence-based match/trace probability computation\
     \ (this\ntemperature is different from the 'physical' temperature of RNA\nfolding!)."
-  synonyms:
-  - --temperature-alipf
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "(1.0)\nFactor for scaling the partition functions. Use in order to\
-    \ avoid\noverflow."
+  optional: true
   synonyms:
   - --pf-scale
+  description: "(1.0)\nFactor for scaling the partition functions. Use in order to\
+    \ avoid\noverflow."
   args: !SimpleFlagArg
     name: scale
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extended-pf
   description: "Use extended precision for partition function values. This increases\n\
     run-time and space (less than 2x), however enables handling significantly\nlarger\
     \ instances."
-  synonyms:
-  - --extended-pf
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use quad precision for partition function values. Even more precision\n\
-    than extended pf, but usually much slower (overrides extended-pf)."
+  optional: true
   synonyms:
   - --quad-pf
+  description: "Use quad precision for partition function values. Even more precision\n\
+    than extended pf, but usually much slower (overrides extended-pf)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Write arcmatch probabilities
+  optional: true
   synonyms:
   - --write-arcmatch-probs
+  description: Write arcmatch probabilities
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: Write basematch probabilities
+  optional: true
   synonyms:
   - --write-basematch-probs
+  description: Write basematch probabilities
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "(0.001)\nMinimal arc match probability. Write probabilities for only\
-    \ the arc\nmatchs of at least this probability."
+  optional: true
   synonyms:
   - -a
   - --min-am-prob
+  description: "(0.001)\nMinimal arc match probability. Write probabilities for only\
+    \ the arc\nmatchs of at least this probability."
   args: !SimpleFlagArg
     name: amprob
-  optional: true
 - !Flag
-  description: "(0.001)\nMinimal base match probability. Write probabilities for only\
-    \ the base\nmatchs of at least this probability."
+  optional: true
   synonyms:
   - -b
   - --min-bm-prob
+  description: "(0.001)\nMinimal base match probability. Write probabilities for only\
+    \ the base\nmatchs of at least this probability."
   args: !SimpleFlagArg
     name: bmprob
-  optional: true
 - !Flag
-  description: Include arc match cases in base match probabilities
+  optional: true
   synonyms:
   - --include-am-in-bm
+  description: Include arc match cases in base match probabilities
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Print run time informations.
+  optional: true
   synonyms:
   - --stopwatch
+  description: Print run time informations.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(0.001)\nMinimal probability. Only base pairs of at least this probability\
-    \ are\ntaken into account."
+  optional: true
   synonyms:
   - -p
   - --min-prob
+  description: "(0.001)\nMinimal probability. Only base pairs of at least this probability\
+    \ are\ntaken into account."
   args: !SimpleFlagArg
     name: prob
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-bps-length-ratio
   description: "(0.0)\nMaximal ratio of #base pairs divided by sequence length. This\
     \ serves as a\nsecond filter on the \"significant\" base pairs. [default: 0.0\
     \ = no\neffect]."
-  synonyms:
-  - --max-bps-length-ratio
   args: !SimpleFlagArg
     name: factor
-  optional: true
 - !Flag
-  description: "(-1)\nMaximal difference for sizes of matched arcs. [-1=off]"
+  optional: true
   synonyms:
   - -D
   - --max-diff-am
+  description: "(-1)\nMaximal difference for sizes of matched arcs. [-1=off]"
   args: !SimpleFlagArg
     name: diff
-  optional: true
 - !Flag
-  description: "(-1)\nMaximal difference for positions of alignment traces (and aligned\
-    \ bases).\n[-1=off]"
+  optional: true
   synonyms:
   - -d
   - --max-diff
+  description: "(-1)\nMaximal difference for positions of alignment traces (and aligned\
+    \ bases).\n[-1=off]"
   args: !SimpleFlagArg
     name: diff
-  optional: true
 - !Flag
-  description: "(-1)\nMaximal difference for positions of alignment traces at arc\
-    \ match ends.\n[-1=off]"
+  optional: true
   synonyms:
   - --max-diff-at-am
+  description: "(-1)\nMaximal difference for positions of alignment traces at arc\
+    \ match ends.\n[-1=off]"
   args: !SimpleFlagArg
     name: diff
-  optional: true
 - !Flag
-  description: "()\nMaximal difference relative to given alignment (file in clustalw\
-    \ format)"
+  optional: true
   synonyms:
   - --max-diff-aln
+  description: "()\nMaximal difference relative to given alignment (file in clustalw\
+    \ format)"
   args: !SimpleFlagArg
     name: aln file
-  optional: true
 - !Flag
-  description: "()\nMaximal difference relative to given alignment (string, delim=AMPERSAND)"
+  optional: true
   synonyms:
   - --max-diff-pw-aln
+  description: "()\nMaximal difference relative to given alignment (string, delim=AMPERSAND)"
   args: !SimpleFlagArg
     name: alignment
-  optional: true
 - !Flag
-  description: Relax deviation constraints in multiple aligmnent
+  optional: true
   synonyms:
   - --max-diff-relax
+  description: Relax deviation constraints in multiple aligmnent
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(1e-5)\nMinimal sequence alignment probability of potential traces\n\
-    (probability-based sequence alignment envelope) [default=1e-4]."
+  optional: true
   synonyms:
   - --min-trace-probability
+  description: "(1e-5)\nMinimal sequence alignment probability of potential traces\n\
+    (probability-based sequence alignment envelope) [default=1e-4]."
   args: !SimpleFlagArg
     name: probability
-  optional: true
 - !Flag
-  description: "=<\"i j k l\">()\nRequests probabilities for the match of fragments\
-    \ [i..j] and [k..l].\nAccepts a ';' separated list of ranges."
+  optional: true
   synonyms:
   - --fragment-match-probs
+  description: "=<\"i j k l\">()\nRequests probabilities for the match of fragments\
+    \ [i..j] and [k..l].\nAccepts a ';' separated list of ranges."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(-1)\nLimit maximum base pair span [default=off]."
+  optional: true
   synonyms:
   - --maxBPspan
+  description: "(-1)\nLimit maximum base pair span [default=off]."
   args: !SimpleFlagArg
     name: span
-  optional: true
 - !Flag
-  description: Use relaxed semantics of anchor constraints [default=strict semantics].
+  optional: true
   synonyms:
   - --relaxed-anchors
+  description: Use relaxed semantics of anchor constraints [default=strict semantics].
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Print this help.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Print only version string.
+  optional: true
   synonyms:
   - -V
   - --version
+  description: Print only version string.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "locarna_p - pairwise partition function of RNA alignments.\n\nComputes\
   \ base and base pair match probabilities \nfrom alignment partitition functions.\n\
   \nUSAGE: locarna_p [options] <Input 1> <Input 2> \n\nOptions:\n  -h,--help\n   \
@@ -360,3 +360,4 @@ help_text: "locarna_p - pairwise partition function of RNA alignments.\n\nComput
   \ to <will (at) informatik.uni-freiburg.de>.\n\n"
 generated_using:
 - --help
+docker_image:

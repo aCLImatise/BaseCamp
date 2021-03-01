@@ -4,88 +4,88 @@ command:
 - varcall
 positional:
 - !Positional
-  description: the reference genome (in fasta format)
+  optional: false
   position: 0
   name: reference_genome
-  optional: false
+  description: the reference genome (in fasta format)
 named:
 - !Flag
-  description: "FILE [INDEX FILE ...]\npre-computed index files for all input files"
+  optional: true
   synonyms:
   - --index-files
+  description: "FILE [INDEX FILE ...]\npre-computed index files for all input files"
   args: !SimpleFlagArg
     name: INDEX
-  optional: true
 - !Flag
-  description: "redirect the output (variant sites) to the specified\nfile (default:\
-    \ stdout)"
+  optional: true
   synonyms:
   - -o
   - --ofile
+  description: "redirect the output (variant sites) to the specified\nfile (default:\
+    \ stdout)"
   args: !SimpleFlagArg
     name: OFILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --group-by-id
   description: "optional flag to control handling of multi-sample\ninput; if enabled,\
     \ reads from different read groups\nare analyzed as separate samples even if the\
     \ sample\nnames associated with the read groups are identical;\notherwise, the\
     \ samtools default is used (reads are\ngrouped based on the sample names of their\
     \ read\ngroups)"
-  synonyms:
-  - -i
-  - --group-by-id
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "turn off md5 checksum comparison between sequences in\nthe reference\
-    \ genome and those specified in the BAM\ninput file header(s)"
+  optional: true
   synonyms:
   - -x
   - --relaxed
+  description: "turn off md5 checksum comparison between sequences in\nthe reference\
+    \ genome and those specified in the BAM\ninput file header(s)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "average sample depth cap applied to input with\nextraordinarily large\
-    \ numbers of samples sequenced at\nhigh coverage to limit memory usage (default:\
-    \ 250)"
+  optional: true
   synonyms:
   - -d
   - --max-depth
+  description: "average sample depth cap applied to input with\nextraordinarily large\
+    \ numbers of samples sequenced at\nhigh coverage to limit memory usage (default:\
+    \ 250)"
   args: !SimpleFlagArg
     name: MAX_DEPTH
-  optional: true
 - !Flag
-  description: "suppress original messages from samtools mpileup and\nbcftools call"
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: "suppress original messages from samtools mpileup and\nbcftools call"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: verbose output independent of samtools/bcftools
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: verbose output independent of samtools/bcftools
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "the number of threads to use (overrides config\nsetting)\n"
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: "the number of threads to use (overrides config\nsetting)\n"
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage:  varcall [-h] [--index-files INDEX FILE [INDEX FILE ...]] [-o OFILE]\n\
@@ -116,3 +116,4 @@ help_text: "usage:  varcall [-h] [--index-files INDEX FILE [INDEX FILE ...]] [-o
   \  the number of threads to use (overrides config\n                        setting)\n"
 generated_using:
 - --help
+docker_image:

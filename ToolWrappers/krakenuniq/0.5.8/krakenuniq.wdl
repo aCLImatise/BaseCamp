@@ -44,6 +44,9 @@ task Krakenuniq {
       ~{if (uid_mapping) then "--uid-mapping" else ""} \
       ~{if defined(report_file) then ("--report-file " +  '"' + report_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Name for Kraken DB (default: none)"
     threads: "Number of threads (default: 1)"

@@ -3,50 +3,55 @@ command:
 - bismark_methylation_extractor
 positional:
 - !Positional
-  description: original top strand
+  optional: false
   position: 0
   name: OT
-  optional: false
+  description: original top strand
 - !Positional
-  description: complementary to original top strand
+  optional: false
   position: 1
   name: CTOT
-  optional: false
+  description: complementary to original top strand
 - !Positional
-  description: original bottom strand
+  optional: false
   position: 2
   name: OB
-  optional: false
+  description: original bottom strand
 - !Positional
-  description: complementary to original bottom strand
+  optional: false
   position: 3
   name: CTOB
-  optional: false
+  description: complementary to original bottom strand
 named:
 - !Flag
-  description: specified, see below). The output files can be imported into a genome
+  optional: true
   synonyms:
   - --comprehensive
+  description: specified, see below). The output files can be imported into a genome
   args: !SimpleFlagArg
     name: is
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --single-end
   description: "Input file(s) are Bismark result file(s) generated from single-end\n\
     read data. If neither -s nor -p is set the type of experiment will\nbe determined\
     \ automatically."
-  synonyms:
-  - -s/--single-end
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --paired-end
   description: "Input file(s) are Bismark result file(s) generated from paired-end\n\
     read data. If neither -s nor -p is set the type of experiment will\nbe determined\
     \ automatically."
-  synonyms:
-  - -p/--paired-end
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no_overlap
   description: "For paired-end reads it is theoretically possible that read_1 and\n\
     read_2 overlap. This option avoids scoring overlapping methylation\ncalls twice\
     \ (only methylation calls of read 1 are used for in the process\nsince read 1\
@@ -55,28 +60,28 @@ named:
     \ it may de facto remove a sizable\nproportion of the data. This option is on\
     \ by default for paired-end data\nbut can be disabled using --include_overlap.\
     \ Default: ON."
-  synonyms:
-  - --no_overlap
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "For paired-end data all methylation calls will be extracted irrespective\
-    \ of\nof whether they overlap or not. Default: OFF."
+  optional: true
   synonyms:
   - --include_overlap
+  description: "For paired-end data all methylation calls will be extracted irrespective\
+    \ of\nof whether they overlap or not. Default: OFF."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ignore
   description: "Ignore the first <int> bp from the 5' end of Read 1 (or single-end\
     \ alignment\nfiles) when processing the methylation call string. This can remove\
     \ e.g. a\nrestriction enzyme site at the start of each read or any other source\
     \ of\nbias (such as PBAT-Seq data)."
-  synonyms:
-  - --ignore
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ignore_r2
   description: "Ignore the first <int> bp from the 5' end of Read 2 of paired-end\
     \ sequencing\nresults only. Since the first couple of bases in Read 2 of BS-Seq\
     \ experiments\nshow a severe bias towards non-methylation as a result of end-repairing\n\
@@ -84,90 +89,85 @@ named:
     \ that the first couple of bp of Read 2 are removed before\nstarting downstream\
     \ analysis. Please see the section on M-bias plots in the\nBismark User Guide\
     \ for more details."
-  synonyms:
-  - --ignore_r2
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ignore_3prime
   description: "Ignore the last <int> bp from the 3' end of Read 1 (or single-end\
     \ alignment\nfiles) when processing the methylation call string. This can remove\
     \ unwanted\nbiases from the end of reads."
-  synonyms:
-  - --ignore_3prime
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Ignore the last <int> bp from the 3' end of Read 2 of paired-end sequencing\n\
-    results only. This can remove unwanted biases from the end of reads."
+  optional: true
   synonyms:
   - --ignore_3prime_r2
+  description: "Ignore the last <int> bp from the 3' end of Read 2 of paired-end sequencing\n\
+    results only. This can remove unwanted biases from the end of reads."
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "This will produce two output files (in --comprehensive mode) or eight\n\
-    strand-specific output files (default) for Cs in\n- CpG context\n- non-CpG context"
+  optional: true
   synonyms:
   - --merge_non_CpG
+  description: "This will produce two output files (in --comprehensive mode) or eight\n\
+    strand-specific output files (default) for Cs in\n- CpG context\n- non-CpG context"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Suppresses the Bismark version header line in all output files for\
-    \ more convenient\nbatch processing."
+  optional: true
   synonyms:
   - --no_header
+  description: "Suppresses the Bismark version header line in all output files for\
+    \ more convenient\nbatch processing."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
   description: "Allows specification of a different output directory (absolute or\
     \ relative\npath). If not specified explicitly, the output will be written to\
     \ the current directory."
-  synonyms:
-  - -o/--output
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
-  description: "The path to your Samtools installation, e.g. /home/user/samtools/.\
-    \ Does not need to be specified\nexplicitly if Samtools is in the PATH already."
+  optional: true
   synonyms:
   - --samtools_path
+  description: "The path to your Samtools installation, e.g. /home/user/samtools/.\
+    \ Does not need to be specified\nexplicitly if Samtools is in the PATH already."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gzip
   description: "The methylation extractor files (CpG_OT_..., CpG_OB_... etc) will\
     \ be written out in\na GZIP compressed form to save disk space. This option is\
     \ also passed on to the genome-wide\ncytosine report. BedGraph and coverage files\
     \ will be written out as .gz by default."
-  synonyms:
-  - --gzip
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Displays this help file and exits.
+  optional: true
   synonyms:
-  - -h/--help
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
+  - --mbias_only
   description: "The methylation extractor will read the entire file but only output\
     \ the M-bias table and plots as\nwell as a report (optional) and then quit. Default:\
     \ OFF."
-  synonyms:
-  - --mbias_only
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mbias_off
   description: "The methylation extractor will process the entire file as usual but\
     \ doesn't write out any M-bias report.\nOnly recommended for users who deliberately\
     \ want to keep an earlier version of the M-bias report.\nDefault: OFF."
-  synonyms:
-  - --mbias_off
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --parallel
   description: "May also be --multicore <int>. Sets the number of cores to be used\
     \ for the methylation extraction process.\nIf system resources are plentiful this\
     \ is a viable option to speed up the extraction process (we observed a\nnear linear\
@@ -177,12 +177,12 @@ named:
     \ extractor itself, 1 for a Samtools stream, 1 for GZIP stream), so\n--parallel\
     \ 10 is likely to use around 30 cores of system resources. This option has no\
     \ bearing\non the bismark2bedGraph or genome-wide cytosine report processes."
-  synonyms:
-  - --parallel
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --yacht
   description: "This option (Yet Another Context Hunting Tool) writes out additional\
     \ information about the read a methylation\ncall belongs to, and its output is\
     \ meant to be fed into the NOMe_filtering script. This option writes out\na single\
@@ -193,11 +193,11 @@ named:
     <read start>  <read end>  <read orientation>\nFor forward reads (+ orientation)\
     \ the start position is the left-most position wheras for reverse reads\n(- orientation)\
     \ it is the rightmost position."
-  synonyms:
-  - --yacht
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bedGraph
   description: "After finishing the methylation extraction, the methylation output\
     \ is written into a\nsorted bedGraph file that reports the position of a given\
     \ cytosine and its methylation\nstate (in %, see details below). The methylation\
@@ -210,57 +210,59 @@ named:
     process is the output directory. The bedGraph conversion step is performed by\
     \ the external\nmodule 'bismark2bedGraph'; this script needs to reside in the\
     \ same folder as the\nbismark_methylation_extractor itself."
-  synonyms:
-  - --bedGraph
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --zero_based
   description: "Write out an additional coverage file (ending in .zero.cov) that uses\
     \ 0-based genomic start\nand 1-based genomic end coordinates (zero-based, half-open),\
     \ like used in the bedGraph file,\ninstead of using 1-based coordinates throughout.\
     \ Default: OFF."
-  synonyms:
-  - --zero_based
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cutoff
   description: "[threshold]     The minimum number of times any methylation state\
     \ (methylated or unmethylated) has to be seen\nfor a nucleotide before its methylation\
     \ percentage is reported. Default: 1."
-  synonyms:
-  - --cutoff
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Replaces whitespaces in the sequence ID field with underscores to allow
-    sorting.
+  optional: true
   synonyms:
   - --remove_spaces
+  description: Replaces whitespaces in the sequence ID field with underscores to allow
+    sorting.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --CX
+  - --CX_context
   description: "The sorted bedGraph output file contains information on every single\
     \ cytosine that was covered\nin the experiment irrespective of its sequence context.\
     \ This applies to both forward and\nreverse strands. Please be aware that this\
     \ option may generate large temporary and output files\nand may take a long time\
     \ to sort (up to many hours). Default: OFF.\n(i.e. Default = CpG context only)."
-  synonyms:
-  - --CX/--CX_context
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --buffer_size
   description: "This allows you to specify the main memory sort buffer when sorting\
     \ the methylation information.\nEither specify a percentage of physical memory\
     \ by appending % (e.g. --buffer_size 50%) or\na multiple of 1024 bytes, e.g. 'K'\
     \ multiplies by 1024, 'M' by 1048576 and so on for 'T' etc.\n(e.g. --buffer_size\
     \ 20G). For more information on sort type 'info sort' on a command line.\nDefaults\
     \ to 2G."
-  synonyms:
-  - --buffer_size
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --scaffolds
+  - --gazillion
   description: "Users working with unfinished genomes sporting tens or even hundreds\
     \ of thousands of\nscaffolds/contigs/chromosomes frequently encountered errors\
     \ with pre-sorting reads to\nindividual chromosome files. These errors were caused\
@@ -274,11 +276,11 @@ named:
     \ take a looooong time to complete, depending on\nthe size of the input files,\
     \ and the memory you allocate to this process (see --buffer_size).\nNevertheless,\
     \ it seems to be working."
-  synonyms:
-  - --scaffolds/--gazillion
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ample_memory
   description: "Using this option will not sort chromosomal positions using the UNIX\
     \ 'sort' command, but will\ninstead use two arrays to sort methylated and unmethylated\
     \ calls. This may result in a faster\nsorting process of very large files, but\
@@ -289,11 +291,11 @@ named:
     \ testing at\nwhich point it is advisable to use this option. Note that --ample_memory\
     \ is not compatible\nwith options '--scaffolds/--gazillion' (as it requires pre-sorted\
     \ files to begin with)."
-  synonyms:
-  - --ample_memory
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cytosine_report
   description: "After the conversion to bedGraph has completed, the option '--cytosine_report'\
     \ produces a\ngenome-wide methylation report for all cytosines in the genome.\
     \ By default, the output uses 1-based\nchromosome coordinates (zero-based start\
@@ -303,38 +305,41 @@ named:
     \ are 0 if not\ncovered). The cytosine report conversion step is performed by\
     \ the external module\n'coverage2cytosine'; this script needs to reside in the\
     \ same folder as the bismark_methylation_extractor\nitself."
-  synonyms:
-  - --cytosine_report
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --genome_folder
   description: "Enter the genome folder you wish to use to extract sequences from\
     \ (full path only). Accepted\nformats are FastA files ending with '.fa' or '.fasta'.\
     \ Specifying a genome folder path is mandatory."
-  synonyms:
-  - --genome_folder
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --split_by_chromosome
   description: "Writes the output into individual files for each chromosome instead\
     \ of a single output file. Files\nwill be named to include the input filename\
     \ and the chromosome number."
-  synonyms:
-  - --split_by_chromosome
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Displays this help file and exits.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag: !Flag
-  description: Displays version information.
+  optional: true
   synonyms:
   - --version
+  description: Displays version information.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "\n\nDESCRIPTION\n\nThe following is a brief description of all options\
   \ to control the Bismark\nmethylation extractor. The script reads in a bisulfite\
   \ read alignment results file \nproduced by the Bismark bisulfite mapper (in BAM/CRAM/SAM\
@@ -570,3 +575,4 @@ help_text: "\n\nDESCRIPTION\n\nThe following is a brief description of all optio
   \ February 2019.\n\n"
 generated_using:
 - --help
+docker_image:

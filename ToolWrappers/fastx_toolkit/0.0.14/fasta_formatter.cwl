@@ -3,27 +3,27 @@ id: fasta_formatter.cwl
 inputs:
 - id: in_e
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -e
 - id: in_t
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
 - id: in_w
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -w
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_i
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_aaaa_ag_gggg
@@ -70,6 +70,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fasta_formatter

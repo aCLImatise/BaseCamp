@@ -4,313 +4,313 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Input CSV file with inferred genetic links (or stdin\nif omitted).\
-    \ Can be specified multiple times for\nmultiple input files (e.g. to include a\
-    \ reference\ndatabase). Must be a CSV file with three columns:\nID1,ID2,distance."
+  optional: true
   synonyms:
   - -i
   - --input
+  description: "Input CSV file with inferred genetic links (or stdin\nif omitted).\
+    \ Can be specified multiple times for\nmultiple input files (e.g. to include a\
+    \ reference\ndatabase). Must be a CSV file with three columns:\nID1,ID2,distance."
   args: !SimpleFlagArg
     name: INPUT
-  optional: true
 - !Flag
-  description: "Input CSV file with UDS data. Must be a CSV file with\nthree columns:\
-    \ ID1,ID2,distance."
+  optional: true
   synonyms:
   - -u
   - --uds
+  description: "Input CSV file with UDS data. Must be a CSV file with\nthree columns:\
+    \ ID1,ID2,distance."
   args: !SimpleFlagArg
     name: UDS
-  optional: true
 - !Flag
-  description: Output DOT file for GraphViz (or stdout if omitted)
+  optional: true
   synonyms:
   - -d
   - --dot
+  description: Output DOT file for GraphViz (or stdout if omitted)
   args: !SimpleFlagArg
     name: DOT
-  optional: true
 - !Flag
-  description: "Output a CSV file with cluster assignments for each\nsequence"
+  optional: true
   synonyms:
   - -c
   - --cluster
+  description: "Output a CSV file with cluster assignments for each\nsequence"
   args: !SimpleFlagArg
     name: CLUSTER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threshold
   description: "Only count edges where the distance is less than this\nthreshold.\
     \ Provide comma-separated values to compute\nsubclusters if the output mode is\
     \ JSON. If -t auto is\nspecified, a heuristic is used to determine an ad hoc\n\
     optimal threshold."
-  synonyms:
-  - -t
-  - --threshold
   args: !SimpleFlagArg
     name: THRESHOLD
-  optional: true
 - !Flag
-  description: A .json file with clinical information
+  optional: true
   synonyms:
   - -e
   - --edi
+  description: A .json file with clinical information
   args: !SimpleFlagArg
     name: EDI
-  optional: true
 - !Flag
-  description: A .csv file with legacy EDI dates
+  optional: true
   synonyms:
   - -z
   - --old_edi
+  description: A .csv file with legacy EDI dates
   args: !SimpleFlagArg
     name: OLD_EDI
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
   description: "Sequence ID format. One of AEH (ID | sample_date |\notherfiels default),\
     \ LANL (e.g. B_HXB2_K03455_1983 :\nsubtype_country_id_year -- could have more\
     \ fields),\nregexp (match a regular expression, use the first\ngroup as the ID),\
     \ or plain (treat as sequence ID only,\nno meta); one per input argument if specified"
-  synonyms:
-  - -f
-  - --format
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --exclude
   description: "Exclude any sequence which belongs to a cluster\ncontaining a \"reference\"\
     \ strain, defined by the year\nof isolation. The value of this argument is an\
     \ integer\nyear (e.g. 1984) so that any sequence isolated in or\nbefore that year\
     \ (e.g. <=1983) is considered to be a\nlab strain. This option makes sense for\
     \ LANL or AEH\ndata."
-  synonyms:
-  - -x
-  - --exclude
   args: !SimpleFlagArg
     name: EXCLUDE
-  optional: true
 - !Flag
-  description: "Load a JSON file with resistance annotation by\nsequence"
+  optional: true
   synonyms:
   - -r
   - --resistance
+  description: "Load a JSON file with resistance annotation by\nsequence"
   args: !SimpleFlagArg
     name: RESISTANCE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
   description: "PARSER, --parser PARSER PARSER\nThe reg.exp pattern to split up sequence\
     \ ids; only\nused if format is regexp; format is INDEX EXPRESSION\n(consumes two\
     \ arguments)"
-  synonyms:
-  - -p
   args: !SimpleFlagArg
     name: PARSER
-  optional: true
 - !Flag
-  description: Load a CSV file with optional node attributes
+  optional: true
   synonyms:
   - -a
   - --attributes
+  description: Load a CSV file with optional node attributes
   args: !SimpleFlagArg
     name: ATTRIBUTES
-  optional: true
 - !Flag
-  description: Output the network report as a compact JSON object
+  optional: true
   synonyms:
   - -J
   - --compact-json
+  description: Output the network report as a compact JSON object
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Output the network report as a JSON object
+  optional: true
   synonyms:
   - -j
   - --json
+  description: Output the network report as a JSON object
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Include singletons in JSON output
+  optional: true
   synonyms:
   - -o
   - --singletons
+  description: Include singletons in JSON output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Only return clusters with ids listed by a newline\nseparated supplied\
-    \ file."
+  optional: true
   synonyms:
   - -k
   - --filter
+  description: "Only return clusters with ids listed by a newline\nseparated supplied\
+    \ file."
   args: !SimpleFlagArg
     name: FILTER
-  optional: true
 - !Flag
-  description: "Provide the MSA with sequences which were used to make\nthe distance\
-    \ file. Can be specified multiple times to\ninclude mutliple MSA files"
+  optional: true
   synonyms:
   - -s
   - --sequences
+  description: "Provide the MSA with sequences which were used to make\nthe distance\
+    \ file. Can be specified multiple times to\ninclude mutliple MSA files"
   args: !SimpleFlagArg
     name: SEQUENCES
-  optional: true
 - !Flag
-  description: "Compute edge support and mark edges for removal using\nsequence-based\
-    \ triangle tests (requires the -s\nargument) and either only report them or remove\
-    \ the\nedges before doing other analyses"
+  optional: true
   synonyms:
   - -n
   - --edge-filtering
+  description: "Compute edge support and mark edges for removal using\nsequence-based\
+    \ triangle tests (requires the -s\nargument) and either only report them or remove\
+    \ the\nedges before doing other analyses"
   args: !ChoiceFlagArg
     choices: !!set
-      report:
       remove:
-  optional: true
+      report:
 - !Flag
-  description: Output a CSV file with node centralities
+  optional: true
   synonyms:
   - -y
   - --centralities
+  description: Output a CSV file with node centralities
   args: !SimpleFlagArg
     name: CENTRALITIES
-  optional: true
 - !Flag
-  description: Filter edges that are in cycles other than triangles
+  optional: true
   synonyms:
   - -l
   - --edge-filter-cycles
+  description: Filter edges that are in cycles other than triangles
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Prints cycle report to specified file
+  optional: true
   synonyms:
   - --cycle-report-file
+  description: Prints cycle report to specified file
   args: !SimpleFlagArg
     name: CYCLE_REPORT_FILENAME
-  optional: true
 - !Flag
-  description: "Maximum number of triangles to consider in each\nfiltering pass"
+  optional: true
   synonyms:
   - -g
   - --triangles
+  description: "Maximum number of triangles to consider in each\nfiltering pass"
   args: !SimpleFlagArg
     name: TRIANGLES
-  optional: true
 - !Flag
-  description: "Screen for contaminants by marking or removing\nsequences that cluster\
-    \ with any of the contaminant IDs\n(-F option) [default is not to screen]"
+  optional: true
   synonyms:
   - -C
   - --contaminants
+  description: "Screen for contaminants by marking or removing\nsequences that cluster\
+    \ with any of the contaminant IDs\n(-F option) [default is not to screen]"
   args: !ChoiceFlagArg
     choices: !!set
-      report:
       remove:
-  optional: true
+      report:
 - !Flag
-  description: IDs of contaminant sequences
+  optional: true
   synonyms:
   - -F
   - --contaminant-file
+  description: IDs of contaminant sequences
   args: !SimpleFlagArg
     name: CONTAMINANT_FILE
-  optional: true
 - !Flag
-  description: "Permit multiple edges (e.g. different dates) to link\nthe same pair\
-    \ of nodes in the network [default is to\nchoose the one with the shortest distance]"
+  optional: true
   synonyms:
   - -M
   - --multiple-edges
+  description: "Permit multiple edges (e.g. different dates) to link\nthe same pair\
+    \ of nodes in the network [default is to\nchoose the one with the shortest distance]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Report all bridges (edges whose removal would cause\nthe graph to\
-    \ disconnect)"
+  optional: true
   synonyms:
   - -B
   - --bridges
+  description: "Report all bridges (edges whose removal would cause\nthe graph to\
+    \ disconnect)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not perform degree distribution fitting
+  optional: true
   synonyms:
   - --no-degree-fit
+  description: Do not perform degree distribution fitting
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: If provided, extract all the sequences
+  optional: true
   synonyms:
   - -X
   - --extract
+  description: If provided, extract all the sequences
   args: !SimpleFlagArg
     name: EXTRACT
-  optional: true
 - !Flag
-  description: Write the output file to
+  optional: true
   synonyms:
   - -O
   - --output
+  description: Write the output file to
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: "When running in JSON output mode, provide a JSON file\nstoring a previous\
-    \ (subset) version of the network for\nconsistent cluster naming"
+  optional: true
   synonyms:
   - -P
   - --prior
+  description: "When running in JSON output mode, provide a JSON file\nstoring a previous\
+    \ (subset) version of the network for\nconsistent cluster naming"
   args: !SimpleFlagArg
     name: PRIOR
-  optional: true
 - !Flag
-  description: "If provided supercedes most other output and inference\nsettings;\
-    \ will add edges from shortest to longest and\nreport network statistics as a\
-    \ function of distance\ncutoff"
+  optional: true
   synonyms:
   - -A
   - --auto-profile
+  description: "If provided supercedes most other output and inference\nsettings;\
+    \ will add edges from shortest to longest and\nreport network statistics as a\
+    \ function of distance\ncutoff"
   args: !SimpleFlagArg
     name: AUTO_PROF
-  optional: true
 - !Flag
-  description: "[assumes DATES are available] If provided (as\nYYYYMMDD) then only\
-    \ allow EDGES that connect nodes\nwith dates at or AFTER this date"
+  optional: true
   synonyms:
   - --after
+  description: "[assumes DATES are available] If provided (as\nYYYYMMDD) then only\
+    \ allow EDGES that connect nodes\nwith dates at or AFTER this date"
   args: !SimpleFlagArg
     name: AFTER
-  optional: true
 - !Flag
-  description: "[assumes DATES are available] If provided (as\nYYYYMMDD) then only\
-    \ allow EDGES that connect nodes\nwith dates at or BEFORE this date"
+  optional: true
   synonyms:
   - --before
+  description: "[assumes DATES are available] If provided (as\nYYYYMMDD) then only\
+    \ allow EDGES that connect nodes\nwith dates at or BEFORE this date"
   args: !SimpleFlagArg
     name: BEFORE
-  optional: true
 - !Flag
-  description: Import node attributes from this JSON
+  optional: true
   synonyms:
   - --import-attributes
+  description: Import node attributes from this JSON
   args: !SimpleFlagArg
     name: IMPORT_ATTR
-  optional: true
 - !Flag
-  description: "SUBCLUSTER_ANNOTATION\nAs \"dist\" \"field\"\". Use subcluster annotation\
-    \ for\ndistance \"dist\" from node attribute \"field\"\n"
+  optional: true
   synonyms:
   - --subcluster-annotation
+  description: "SUBCLUSTER_ANNOTATION\nAs \"dist\" \"field\"\". Use subcluster annotation\
+    \ for\ndistance \"dist\" from node attribute \"field\"\n"
   args: !SimpleFlagArg
     name: SUBCLUSTER_ANNOTATION
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: hivnetworkcsv [-h] [-i INPUT] [-u UDS] [-d DOT] [-c CLUSTER]\n\
@@ -408,3 +408,4 @@ help_text: "usage: hivnetworkcsv [-h] [-i INPUT] [-u UDS] [-d DOT] [-c CLUSTER]\
   dist\" from node attribute \"field\"\n"
 generated_using:
 - --help
+docker_image:

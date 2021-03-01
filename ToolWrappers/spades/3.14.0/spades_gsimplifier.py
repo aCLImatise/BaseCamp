@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, Int, File, Directory
+
+Spades_Gsimplifier_V0_1_0 = CommandToolBuilder(tool="spades_gsimplifier", base_command=["spades-gsimplifier"], inputs=[ToolInput(tag="in_gfa", input_type=Boolean(optional=True), prefix="--gfa", doc=InputDocumentation(doc="produce GFA output (default: true)")), ToolInput(tag="in_spades_gp", input_type=String(optional=True), prefix="--spades-gp", doc=InputDocumentation(doc="output graph pack in SPAdes internal format (default: false). Recommended if bulges are removed to improve further read mapping. In case GFA output is required with graph pack specify '--gfa'")), ToolInput(tag="in_use_cov_ratios", input_type=Boolean(optional=True), prefix="--use-cov-ratios", doc=InputDocumentation(doc="enable procedures based on unitig coverage ratios (default: false)")), ToolInput(tag="in_kmer_length_use", input_type=Int(optional=True), prefix="-k", doc=InputDocumentation(doc="k-mer length to use")), ToolInput(tag="in_read_length", input_type=Int(optional=True), prefix="--read-length", doc=InputDocumentation(doc="read length")), ToolInput(tag="in_coverage", input_type=Int(optional=True), prefix="--coverage", doc=InputDocumentation(doc="estimated average (k+1-mer) bin coverage (default: 0.) or 'auto' (works only with '-d/--dead-ends' provided)")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="# of threads to use (default: max_threads / 2)")), ToolInput(tag="in_profile", input_type=File(optional=True), prefix="--profile", doc=InputDocumentation(doc="file with edge coverage profiles across multiple samples")), ToolInput(tag="in_stop_codons", input_type=File(optional=True), prefix="--stop-codons", doc=InputDocumentation(doc="file stop codon positions")), ToolInput(tag="in_dead_ends", input_type=File(optional=True), prefix="--dead-ends", doc=InputDocumentation(doc="while processing a subgraph -- file listing edges which are dead-ends in the original graph")), ToolInput(tag="in_tmpdir", input_type=Directory(optional=True), prefix="--tmpdir", doc=InputDocumentation(doc="scratch directory to use (default: <output prefix>.tmp)\n"))], outputs=[ToolOutput(tag="out_tmpdir", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_tmpdir", type_hint=File()), doc=OutputDocumentation(doc="scratch directory to use (default: <output prefix>.tmp)\n"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Spades_Gsimplifier_V0_1_0().translate("wdl", allow_empty_container=True)
+

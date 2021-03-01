@@ -2,10 +2,11 @@ version 1.0
 
 task Metaquant {
   input {
-    String? pep_colname
     String? mode
     File? s_amps
     Int? int_file
+    File? pep_colname
+    File? outfile
     File? func_file
     String? ontology
     File? obo_path
@@ -21,10 +22,11 @@ task Metaquant {
   command <<<
     metaquant \
       ~{t_tests_dot} \
-      ~{if defined(pep_colname) then ("--pep_colname " +  '"' + pep_colname + '"') else ""} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
       ~{if defined(s_amps) then ("--samps " +  '"' + s_amps + '"') else ""} \
       ~{if defined(int_file) then ("--int_file " +  '"' + int_file + '"') else ""} \
+      ~{if defined(pep_colname) then ("--pep_colname " +  '"' + pep_colname + '"') else ""} \
+      ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(func_file) then ("--func_file " +  '"' + func_file + '"') else ""} \
       ~{if defined(ontology) then ("--ontology " +  '"' + ontology + '"') else ""} \
       ~{if defined(obo_path) then ("--obo_path " +  '"' + obo_path + '"') else ""} \
@@ -36,11 +38,15 @@ task Metaquant {
       ~{if (test) then "--test" else ""} \
       ~{if (paired) then "--paired" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    pep_colname: "[--func_file FUNC_FILE] [--ontology {go,cog}]\\n[--obo_path OBO_PATH] [--slim_path SLIM_PATH] [--slim_down]\\n[--update_obo] [--tax_file TAX_FILE]\\n[--tax_colname TAX_COLNAME] [--test] [--paired]\\n[--threshold THRESHOLD]"
     mode: "Analysis mode. If taxfun is chosen, both function and\\ntaxonomy files must be provided"
     s_amps: "Give the column names in the intensity file that\\ncorrespond to a given sample group. This can either be\\nJSON formatted or be a path to a tabular file. JSON\\nexample of two experimental groups and two samples in\\neach group: {\\\"A\\\": [\\\"A1\\\", \\\"A2\\\"], \\\"B\\\": [\\\"B1\\\", \\\"B2\\\"]}"
     int_file: "Path to the file with intensity data. Must be tabular,\\nhave a peptide sequence column, and be raw,\\nuntransformed intensity values. Missing values can be\\n0, NA, or NaN- transformed to NA for analysis"
+    pep_colname: "The column name within the intensity, function, and/or\\ntaxonomy file that corresponds to the peptide\\nsequences."
+    outfile: "Output file"
     func_file: "Path to file with function. The file must be tabular,\\nwith a peptide sequence column and either a GO-term\\ncolumn (named \\\"go\\\") and/or a COG column (named \\\"cog\\\")."
     ontology: "Which functional terms to use. This also corresponds\\nto the column name in func_file"
     obo_path: "Path to full obo. If obo_path does not exist, the file\\nwill be downloaded."
@@ -55,6 +61,7 @@ task Metaquant {
   }
   output {
     File out_stdout = stdout()
+    File out_outfile = "${in_outfile}"
     File out_tax_colname = "${in_tax_colname}"
   }
 }

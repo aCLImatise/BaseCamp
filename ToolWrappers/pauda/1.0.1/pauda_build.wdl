@@ -10,6 +10,9 @@ task Paudabuild {
       ~{references_fast_a} \
       ~{p_aud_a_index_directory}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     references_fast_a: ""
     p_aud_a_index_directory: ""

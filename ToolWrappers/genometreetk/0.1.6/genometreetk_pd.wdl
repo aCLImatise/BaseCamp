@@ -16,6 +16,9 @@ task GenometreetkPd {
       ~{if defined(per_tax_a_pg_file) then ("--per_taxa_pg_file " +  '"' + per_tax_a_pg_file + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     per_tax_a_pg_file: "file to record phylogenetic gain of each ingroup taxa\\nrelative to the outgroup"
     silent: "suppress output"

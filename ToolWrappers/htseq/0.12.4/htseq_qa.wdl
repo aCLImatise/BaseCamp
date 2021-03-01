@@ -22,6 +22,9 @@ task Htseqqa {
       ~{if (primary_only) then "--primary-only" else ""} \
       ~{if defined(max_records) then ("--max-records " +  '"' + max_records + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type: "type of read_file (one of: sam [default], bam, solexa-\\nexport, fastq, solexa-fastq)"
     outfile: "output filename (default is <read_file>.pdf)"

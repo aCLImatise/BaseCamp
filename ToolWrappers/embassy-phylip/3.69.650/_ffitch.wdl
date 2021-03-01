@@ -20,6 +20,9 @@ task Ffitch {
       ~{if (replicates) then "-replicates" else ""} \
       ~{if (print_data) then "-printdata" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix_type: "menu       [s] Type of input data matrix (Values: s\\n(Square); u (Upper triangular); l (Lower\\ntriangular))"
     mine_v: "boolean    [N] Minimum evolution"

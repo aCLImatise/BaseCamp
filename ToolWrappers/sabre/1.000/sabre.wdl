@@ -8,6 +8,9 @@ task Sabre {
     sabre \
       ~{var_command}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_command: ""
   }

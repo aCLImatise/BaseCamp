@@ -12,6 +12,9 @@ task Psiphi {
       ~{if defined(start_residue_number) then ("-startresiduenumber " +  '"' + start_residue_number + '"') else ""} \
       ~{if defined(finish_residue_number) then ("-finishresiduenumber " +  '"' + finish_residue_number + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chain_number: "integer    [1] Number of the chain for which torsion\\nangles should be calculated (Integer 1 or\\nmore)"
     start_residue_number: "[1] First residue in chain for which torsion\\nangles should be calculated (Integer 1 or\\nmore)"

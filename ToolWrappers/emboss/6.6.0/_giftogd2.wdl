@@ -16,6 +16,9 @@ task Giftogd2 {
       ~{cs} \
       ~{fmt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gift_ogd_two: ""
     filename_do_tgif: ""

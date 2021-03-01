@@ -12,6 +12,9 @@ task BcbioVmpyCwlrunToolargs {
       ~{cwl_run} \
       ~{if (no_container) then "--no-container" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_container: ""
     bc_bio_v_mdot_py: ""

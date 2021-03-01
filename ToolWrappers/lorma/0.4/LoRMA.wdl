@@ -22,6 +22,9 @@ task LoRMA {
       ~{if (nb_cores) then "-nb-cores" else ""} \
       ~{if (verbose) then "-verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     best_friends: "(1 arg) :    Number of best friends  [default '3']"
     friends: "(1 arg) :    Number of friends  [default '7']"

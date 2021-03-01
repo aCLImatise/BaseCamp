@@ -38,6 +38,9 @@ task Ceas {
       ~{if (g_name_two) then "--gname2" else ""} \
       ~{if (dump) then "--dump" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "BED file of ChIP regions."
     wig: "WIG file for either wig profiling or genome background\\nannotation. WARNING: --bg flag must be set for genome\\nbackground re-annotation."

@@ -4,14 +4,14 @@ inputs:
 - id: in_sa
   doc: "Use the suffix array 'sa' for detecting matches\nbetween the reads and the\
     \ reference.  The suffix\narray has been prepared by the sawriter program."
-  type: File
+  type: File?
   inputBinding:
     prefix: --sa
 - id: in_ctab
   doc: "A table of tuple counts used to estimate match significance.  This is\nby\
     \ the program 'printTupleCountTable'.  While it is quick to generate on\nthe fly,\
     \ if there are many invocations of blasr, it is useful to\nprecompute the ctab."
-  type: string
+  type: string?
   inputBinding:
     prefix: --ctab
 - id: in_region_table
@@ -19,48 +19,48 @@ inputs:
     \ of reads.\nThis may be a single table if there is just one input file,\nor a\
     \ fofn.  When a region table is specified, any region table inside\nthe reads.plx.h5\
     \ or reads.bax.h5 files are ignored."
-  type: File
+  type: File?
   inputBinding:
     prefix: --regionTable
 - id: in_use_ccs
   doc: "Align the circular consensus sequence (ccs), then report alignments\nof the\
     \ ccs subreads to the window that the ccs was mapped to.  Only\nalignments of\
     \ the subreads are reported."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --useccs
 - id: in_use_ccs_all
   doc: "Similar to -useccs, except all subreads are aligned, rather than just\nthe\
     \ subreads used to call the ccs.  This will include reads that only\ncover part\
     \ of the template."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --useccsall
 - id: in_use_ccs_de_novo
   doc: "Align the circular consensus, and report only the alignment of the ccs\nsequence."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --useccsdenovo
 - id: in_no_split_sub_reads
   doc: "(false)\nDo not split subreads at adapters.  This is typically only\nuseful\
     \ when the genome in an unrolled version of a known template, and\ncontains template-adapter-reverse_template\
     \ sequence."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noSplitSubreads
 - id: in_ignore_regions
   doc: "(false)\nIgnore any information in the region table."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ignoreRegions
 - id: in_ignore_hq_regions
   doc: (false)Ignore any hq regions in the region table.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ignoreHQRegions
 - id: in_best_n
   doc: "(10)\nReport the top 'n' alignments."
-  type: long
+  type: long?
   inputBinding:
     prefix: --bestn
 - id: in_hit_policy
@@ -70,18 +70,18 @@ inputs:
     randombest: report a random alignment from multiple equally top scoring alignments.\n\
     leftmost  : report an alignment which has the best alignmentscore and has the\
     \ smallest mapping coordinate in any reference."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --hitPolicy
 - id: in_place_repeats_randomly
   doc: "(false)\nDEPRECATED! If true, equivalent to --hitPolicy randombest."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --placeRepeatsRandomly
 - id: in_random_seed
   doc: "(0)\nSeed for random number generator. By default (0), use current time as\
     \ seed."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --randomSeed
 - id: in_no_sort_refined_alignments
@@ -89,7 +89,7 @@ inputs:
     programming, they are rescored using local alignment that accounts\nfor different\
     \ error profiles.\nResorting based on the local alignment may change the order\
     \ the hits are returned."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noSortRefinedAlignments
 - id: in_allow_adjacent_indels
@@ -98,18 +98,18 @@ inputs:
     to guide pairwise alignments may dictate that the higher probability alignment\n\
     contains adjacent insertions or deletions.  Current tools such as GATK do not\
     \ permit\nthis and so they are not reported by default."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --allowAdjacentIndels
 - id: in_out
   doc: "(terminal)\nWrite output to 'out'."
-  type: string
+  type: string?
   inputBinding:
     prefix: --out
 - id: in_sam
   doc: "Write output in SAM format. Starting from version 5.2 is no longer supported\n\
     Use --bam, then translate from .bam to .sam"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sam
 - id: in_printing_sam_modify
@@ -118,13 +118,13 @@ inputs:
     \ score and pos.\n2 Print in Compare.xml format.\n3 Print in vulgar format (DEPRECATED).\n\
     4 Print a longer tabular version of the alignment.\n5 Print in a machine-parsable\
     \ format that is read by compareSequences.py."
-  type: long
+  type: long?
   inputBinding:
     prefix: -m
 - id: in_header
   doc: Print a header as the first line of the output file describing the contents
     of each column.
-  type: File
+  type: File?
   inputBinding:
     prefix: --header
 - id: in_title_table
@@ -132,58 +132,58 @@ inputs:
     \ are\nenumerated by row, 0,1,...  The reference index is printed in alignment\
     \ results\nrather than the full reference name.  This makes output concise, particularly\
     \ when\nvery verbose titles exist in reference names."
-  type: long
+  type: long?
   inputBinding:
     prefix: --titleTable
 - id: in_unaligned
   doc: Output reads that are not aligned to 'file'
-  type: File
+  type: File?
   inputBinding:
     prefix: --unaligned
 - id: in_no_print_unaligned_seqs
   doc: Must be used together with -unaligned, print unaligned read names only.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noPrintUnalignedSeqs
 - id: in_clipping
   doc: "[none|hard|subread|soft] (none)\nUse no/hard/subread/soft clipping, ONLY for\
     \ SAM/BAM output."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --clipping
 - id: in_prints_am_qv
   doc: "(false)\nPrint quality values to SAM output."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --printSAMQV
 - id: in_cigar_use_seq_match
   doc: "(false)\nCIGAR strings in SAM/BAM output use '=' and 'X' to represent sequence\
     \ match and mismatch instead of 'M'."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cigarUseSeqMatch
 - id: in_min_match
   doc: "(12)\nMinimum seed length.  Higher minMatch will speed up alignment,\nbut\
     \ decrease sensitivity."
-  type: long
+  type: long?
   inputBinding:
     prefix: --minMatch
 - id: in_max_match
   doc: "(inf)\nStop mapping a read to the genome when the lcp length reaches l.\n\
     This is useful when the query is part of the reference, for example when\nconstructing\
     \ pairwise alignments for de novo assembly."
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxMatch
 - id: in_max_lcp_length
   doc: "(inf)\nThe same as -maxMatch."
-  type: string
+  type: string?
   inputBinding:
     prefix: --maxLCPLength
 - id: in_max_anchors_per_position
   doc: "(10000)\nDo not add anchors from a position if it matches to more than 'm'\
     \ locations in the target."
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxAnchorsPerPosition
 - id: in_advance_exact_matches
@@ -192,7 +192,7 @@ inputs:
     \ in the read,\nwhen an anchor is found at position i in a read of length L, the\
     \ next position\nin a read to find an anchor is at i+L-E.\nUse this when alignining\
     \ already assembled contigs."
-  type: long
+  type: long?
   inputBinding:
     prefix: --advanceExactMatches
 - id: in_n_candidates
@@ -200,45 +200,45 @@ inputs:
     \ n will slow mapping\nbecause the slower dynamic programming steps are applied\
     \ to more clusters of anchors\nwhich can be a rate limiting step when reads are\
     \ very long."
-  type: long
+  type: long?
   inputBinding:
     prefix: --nCandidates
 - id: in_concordant
   doc: "(false)\nMap all subreads of a zmw (hole) to where the longest full pass subread\
     \ of the zmw\naligned to. This requires to use the region table and hq regions.\n\
     This option only works when reads are in base or pulse h5 format."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --concordant
 - id: in_fast_max_interval
   doc: "(false)\nFast search maximum increasing intervals as alignment candidates.\
     \ The search\nis not as exhaustive as the default, but is much faster."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fastMaxInterval
 - id: in_aggressive_interval_cut
   doc: "(false)\nAgreesively filter out non-promising alignment candidates, if there\n\
     exists at least one promising candidate. If this option is turned on,\nBlasr is\
     \ likely to ignore short alignments of ALU elements."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --aggressiveIntervalCut
 - id: in_fast_sdp
   doc: "(false)\nUse a fast heuristic algorithm to speed up sparse dynamic programming."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fastSDP
 - id: in_refine_concordant_alignments
   doc: "(false)\nRefine concordant alignments. It slightly increases alignment accuracy\
     \ at cost of time."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --refineConcordantAlignments
 - id: in_sdp_tuple_size
   doc: "(11)\nUse matches of length K to speed dynamic programming alignments.  This\
     \ controls\naccuracy of assigning gaps in pairwise alignments once a mapping has\
     \ been found,\nrather than mapping sensitivity itself."
-  type: long
+  type: long?
   inputBinding:
     prefix: --sdpTupleSize
 - id: in_score_matrix
@@ -247,17 +247,17 @@ inputs:
     N uvwxy . The values a...y should be input as a quoted space separated\nstring:\
     \ \"a b c ... y\". Lower scores are better, so matches should be less\nthan mismatches\
     \ e.g. a,g,m,s = -5 (match), mismatch = 6."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --scoreMatrix
 - id: in_affine_open
   doc: "(10)\nSet the penalty for opening an affine alignment."
-  type: long
+  type: long?
   inputBinding:
     prefix: --affineOpen
 - id: in_affine_extend
   doc: "(0)\nChange affine (extension) gap penalty. Lower value allows more gaps."
-  type: long
+  type: long?
   inputBinding:
     prefix: --affineExtend
 - id: in_use_quality
@@ -269,78 +269,78 @@ inputs:
     \ calling consensus using the Quiver method.  Furthermore, when\nnot using quality\
     \ values to score alignments, there will be a lower consensus\naccuracy in homolymer\
     \ regions."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --useQuality
 - id: in_affine_align
   doc: "(false)\nRefine alignment using affine guided align."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --affineAlign
 - id: in_min_read_length
   doc: "(50)\nSkip reads that have a full length less than l. Subreads may be shorter."
-  type: long
+  type: long?
   inputBinding:
     prefix: --minReadLength
 - id: in_min_sub_read_length
   doc: "(0)\nDo not align subreads of length less than l."
-  type: long
+  type: long?
   inputBinding:
     prefix: --minSubreadLength
 - id: in_min_raw_sub_read_score
   doc: "(0)\nDo not align subreads whose quality score in region table is less than\
     \ m (quality scores should be in range [0, 1000])."
-  type: long
+  type: long?
   inputBinding:
     prefix: --minRawSubreadScore
 - id: in_max_score
   doc: "(-200)\nMaximum score to output (high is bad, negative good)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxScore
 - id: in_min_alnlength
   doc: (0) Report alignments only if their lengths are greater than minAlnLength.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --minAlnLength
 - id: in_min_pct_similarity
   doc: (0) Report alignments only if their percentage similarity is greater than minPctSimilarity.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --minPctSimilarity
 - id: in_min_pct_accuracy
   doc: (0) Report alignments only if their percentage accuracy is greater than minAccuracy.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --minPctAccuracy
 - id: in_nproc
   doc: "(1)\nAlign using N processes.  All large data structures such as the suffix\
     \ array and\ntuple count table are shared."
-  type: long
+  type: long?
   inputBinding:
     prefix: --nproc
 - id: in_start
   doc: "(0)\nIndex of the first read to begin aligning. This is useful when multiple\
     \ instances\nare running on the same data, for example when on a multi-rack cluster."
-  type: long
+  type: long?
   inputBinding:
     prefix: --start
 - id: in_stride
   doc: "(1)\nAlign one read every 'S' reads."
-  type: long
+  type: long?
   inputBinding:
     prefix: --stride
 - id: in_subsample
   doc: "(0)\nProportion of reads to randomly subsample (expressed as a decimal) and\
     \ align."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --subsample
 - id: in_hole_numbers
   doc: "When specified, only align reads whose ZMW hole numbers are in LIST.\nLIST\
     \ is a comma-delimited string of ranges, such as '1,2,3,10-13'.\nThis option only\
     \ works when reads are in bam, bax.h5 or plx.h5 format."
-  type: string
+  type: string?
   inputBinding:
     prefix: --holeNumbers
 - id: in_reads_dot_bam
@@ -368,14 +368,15 @@ outputs:
 - id: out_header
   doc: Print a header as the first line of the output file describing the contents
     of each column.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_header)
 - id: out_unaligned
   doc: Output reads that are not aligned to 'file'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_unaligned)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - blasr

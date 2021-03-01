@@ -14,6 +14,9 @@ task ProkkacddToHmm {
       ~{if defined(lib) then ("--lib " +  '"' + lib + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "!      Verbose output (default '0')."
     srcdir: "CDD download dir (default '/bio/data/cdd/latest/')."

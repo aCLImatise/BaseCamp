@@ -14,6 +14,9 @@ task Seqseqpangenomedescription {
       ~{if defined(name_output_file) then ("--output " +  '"' + name_output_file + '"') else ""} \
       ~{if defined(add) then ("--add " +  '"' + add + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_list_pathstofilesfasta: "File with list of /paths/to/files.fasta"
     name_output_file: "name of output file"

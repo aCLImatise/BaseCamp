@@ -8,6 +8,9 @@ task Fermi2plUtglog {
     fermi2_pl utglog \
       ~{prefix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: ""
   }

@@ -14,6 +14,9 @@ task CalcExpectedAccuracyFromFastqpy {
       ~{if defined(qv_trim_five) then ("--qv_trim_5 " +  '"' + qv_trim_five + '"') else ""} \
       ~{if defined(qv_trim_three) then ("--qv_trim_3 " +  '"' + qv_trim_three + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     qv_trim_five: "Ignore length on 5' for QV calculation (default: 100\\nbp)"
     qv_trim_three: "Ignore length on 3' for QV calculation (default: 30\\nbp)\\n"

@@ -30,6 +30,9 @@ task SplitFastapy {
       ~{multiple} \
       ~{files_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     script: ""
     to: ""

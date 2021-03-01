@@ -8,6 +8,9 @@ task Rsemsamvalidator {
     rsem_sam_validator \
       ~{input_dots_am_slash_input_dot_bam}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dots_am_slash_input_dot_bam: ""
   }

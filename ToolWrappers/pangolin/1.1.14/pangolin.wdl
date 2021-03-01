@@ -36,6 +36,9 @@ task Pangolin {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (lineages_version) then "--lineages-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "Output directory. Default: current working directory"
     outfile: "Optional output file name. Default: lineage_report.csv"

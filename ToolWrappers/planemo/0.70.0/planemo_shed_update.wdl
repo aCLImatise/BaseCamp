@@ -40,6 +40,9 @@ task PlanemoShedUpdate {
       ~{if (skip_upload) then "--skip_upload" else ""} \
       ~{if (skip_metadata) then "--skip_metadata" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report_x_unit: "Output an XUnit report, useful for CI testing"
     recursive: "Recursively perform command for nested\\nrepository directories."

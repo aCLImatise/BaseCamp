@@ -34,6 +34,9 @@ task RepEnrichpy {
       ~{if defined(all_count_method) then ("--allcountmethod " +  '"' + all_count_method + '"') else ""} \
       ~{if defined(is_bed) then ("--is_bed " +  '"' + is_bed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     paired_end: "Designate this option for paired-end sequencing.\\nDefault FALSE change to TRUE"
     collapse_repeat: "Designate this option to generate a collapsed repeat\\ntype. Uncollapsed output is generated in addition to\\ncollapsed repeat type. Simple_repeat is default to\\nsimplify downstream analysis. You can change the\\ndefault to another repeat name to collapse a seperate\\nspecific repeat instead or if the name of\\nSimple_repeat is different for your organism. Default\\nSimple_repeat"

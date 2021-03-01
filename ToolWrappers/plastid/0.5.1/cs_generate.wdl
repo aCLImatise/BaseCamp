@@ -54,6 +54,9 @@ task CsGenerate {
       ~{if (mask_tab_ix) then "--mask_tabix" else ""} \
       ~{if (mask_sorted) then "--mask_sorted" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Suppress all warning messages. Cannot use with '-v'."
     verbose: "Increase verbosity. With '-v', show every warning.\\nWith '-vv', turn warnings into exceptions. Cannot use\\nwith '-q'. (Default: show each type of warning once)"

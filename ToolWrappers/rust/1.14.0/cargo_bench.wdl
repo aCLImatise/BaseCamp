@@ -44,6 +44,9 @@ task CargoBench {
       ~{if (frozen) then "--frozen" else ""} \
       ~{if (locked) then "--locked" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     lib: "Benchmark only this package's library"
     bin: "Benchmark only the specified binary"

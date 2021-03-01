@@ -4,6 +4,9 @@ task FilterFPpy {
   command <<<
     filter_FP_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

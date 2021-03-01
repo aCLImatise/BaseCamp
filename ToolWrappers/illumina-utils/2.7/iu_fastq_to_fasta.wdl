@@ -14,6 +14,9 @@ task Iufastqtofasta {
       ~{if defined(fasta_output_default) then ("--output " +  '"' + fasta_output_default + '"') else ""} \
       ~{if (rev_comp) then "--rev-comp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_sequences: "Number of sequences to be converted"
     fasta_output_default: "FASTA output (default: [-i]-FASTA-[-n]"

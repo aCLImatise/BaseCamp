@@ -14,6 +14,9 @@ task Rsemgentranscriptplots {
       ~{is_allele_specific} \
       ~{id_type}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample_name: ""
     input_list: ""

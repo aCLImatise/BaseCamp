@@ -30,6 +30,9 @@ task MaRaClusterAdapter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                           Input file(s) (valid formats: 'mzML', 'mgf')"
     id_in: "Optional idXML Input file(s) in the same order as mzML files - for Maracluster Cluster annotation (valid formats: 'idXML')"

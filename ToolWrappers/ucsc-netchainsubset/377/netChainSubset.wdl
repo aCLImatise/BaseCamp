@@ -20,6 +20,9 @@ task NetChainSubset {
       ~{if (whole_chains) then "-wholeChains" else ""} \
       ~{if (skip_missing) then "-skipMissing" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gap_out: "- Output gap sizes to file"
     type: "- Restrict output to particular type in net file"

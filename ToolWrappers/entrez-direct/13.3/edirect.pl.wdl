@@ -4,6 +4,9 @@ task Edirectpl {
   command <<<
     edirect_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

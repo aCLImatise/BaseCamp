@@ -12,7 +12,7 @@ task Proteinortho {
     Boolean? clean
     Boolean? step
     Boolean? isoform
-    Boolean? blast_program_program
+    Boolean? blast_program_need
     Boolean? _evalue_blast
     Boolean? self_blast
     Boolean? sim
@@ -32,7 +32,6 @@ task Proteinortho {
     Boolean? desc
     Boolean? debug
     Boolean? bin_path
-    Int? jobs
     Int protein_ortho_six_do_tpl
     Int fast_a_one
     Int fast_a_two
@@ -54,7 +53,7 @@ task Proteinortho {
       ~{if (clean) then "-clean" else ""} \
       ~{if (step) then "-step" else ""} \
       ~{if (isoform) then "-isoform" else ""} \
-      ~{if (blast_program_program) then "-p" else ""} \
+      ~{if (blast_program_need) then "-p" else ""} \
       ~{if (_evalue_blast) then "-e" else ""} \
       ~{if (self_blast) then "-selfblast" else ""} \
       ~{if (sim) then "-sim" else ""} \
@@ -73,9 +72,11 @@ task Proteinortho {
       ~{if (no_graph) then "-nograph" else ""} \
       ~{if (desc) then "-desc" else ""} \
       ~{if (debug) then "-debug" else ""} \
-      ~{if (bin_path) then "-binpath" else ""} \
-      ~{if defined(jobs) then ("-jobs " +  '"' + jobs + '"') else ""}
+      ~{if (bin_path) then "-binpath" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     project: "=    prefix for all result file names [default: myproject]"
     cpus: "=       number of processors to use [default: auto]"
@@ -87,7 +88,7 @@ task Proteinortho {
     clean: "remove all unnecessary files after processing"
     step: "=       1 -> generate indices\\n2 -> run blast (and ff-adj, if -synteny is set)\\n3 -> clustering\\n0 -> all (default)"
     isoform: "Enables the isoform processing:\\nncbi -> if the word 'isoform' is found\\nuniprot -> 'Isoform of XYZ' (You need to add the *_additional.fasta files to the analysis)\\ntrinity -> using '_iX' suffix"
-    blast_program_program: "=          blast program [default: diamond]\\n{blastp|blastn|tblastx|blastp_legacy|blastn_legacy|tblastx_legacy|diamond|usearch|ublast|lastp|lastn|rapsearch|topaz|blatp|blatn|mmseqsp|mmseqsn}\\nThe program need to be installed first.\\nA suffix 'p' or 'n' indicates aminoacid fasta files (p) or nucleotide fasta files (n).\\nThe '_legacy' suffix indicates legacy blastall (otherwise blast+ is used).\\nautoblast : automatically detects the blast+ program (blastp,blastn,tblastn,blastx) depending on the input (can also be mixed together!)\\nblast*|tblastx : standard blast+ family (blastp : protein files, blastn : dna files)\\nblast*_legacy : legacy blast family (blastall)\\ndiamond : Only for protein files! standard diamond procedure and for genes/proteins of length >40 with the additional --sensitive flag\\nusearch : usearch_local procedure with -id 0 (minimum identity percentage).\\nublast : usearch_ublast procedure.\\nlastn : standard lastal. Only for dna files!\\nlastp : lastal using -p and BLOSUM62 scoring matrix. Only for protein files!\\nrapsearch : Only for protein files!\\ntopaz : Only for protein files!\\nblat* : Blat family. blatp : For protein files! blatn : For dna files! blatx : For dna files!\\nmmseqs* : mmseqs family. mmseqsp : For protein files! mmseqsn : For dna files! blatx : For dna files!"
+    blast_program_need: "=          blast program [default: diamond]\\n{blastp|blastn|tblastx|blastp_legacy|blastn_legacy|tblastx_legacy|diamond|usearch|ublast|lastp|lastn|rapsearch|topaz|blatp|blatn|mmseqsp|mmseqsn}\\nThe program need to be installed first.\\nA suffix 'p' or 'n' indicates aminoacid fasta files (p) or nucleotide fasta files (n).\\nThe '_legacy' suffix indicates legacy blastall (otherwise blast+ is used).\\nautoblast : automatically detects the blast+ program (blastp,blastn,tblastn,blastx) depending on the input (can also be mixed together!)\\nblast*|tblastx : standard blast+ family (blastp : protein files, blastn : dna files)\\nblast*_legacy : legacy blast family (blastall)\\ndiamond : Only for protein files! standard diamond procedure and for genes/proteins of length >40 with the additional --sensitive flag\\nusearch : usearch_local procedure with -id 0 (minimum identity percentage).\\nublast : usearch_ublast procedure.\\nlastn : standard lastal. Only for dna files!\\nlastp : lastal using -p and BLOSUM62 scoring matrix. Only for protein files!\\nrapsearch : Only for protein files!\\ntopaz : Only for protein files!\\nblat* : Blat family. blatp : For protein files! blatn : For dna files! blatx : For dna files!\\nmmseqs* : mmseqs family. mmseqsp : For protein files! mmseqsn : For dna files! blatx : For dna files!"
     _evalue_blast: "=          E-value for blast [default: 1e-05]"
     self_blast: "apply selfblast, detects paralogs without orthologs"
     sim: "=        min. similarity for additional hits (0..1) [default: 0.95]"
@@ -107,7 +108,6 @@ task Proteinortho {
     desc: "write description files (for NCBI FASTA input only)"
     debug: "gives detailed information for bug tracking"
     bin_path: "=    path to your directory of local programs that are not available globally (this should not be needed)"
-    jobs: "N defines the number of defined job groups (e.g. PCs)\\nM defines the set of jobs to run in this process"
     protein_ortho_six_do_tpl: ""
     fast_a_one: ""
     fast_a_two: ""

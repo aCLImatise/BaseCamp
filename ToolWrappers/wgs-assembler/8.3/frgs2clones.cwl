@@ -3,33 +3,34 @@ id: frgs2clones.cwl
 inputs:
 - id: in_read_fragments_gatekeeper
   doc: read fragments from this gatekeeper store
-  type: string
+  type: string?
   inputBinding:
     prefix: -g
 - id: in_build_alignment_overlapping
   doc: build an alignment for overlapping fragments
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -C
-- id: in_build_scaffold_mated
+- id: in_build_scaffold_nonoverlapping
   doc: build a scaffold for non-overlapping mated fragments
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -N
 - id: in_use_real_uids
   doc: use real UIDs from the UID server
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -U
 - id: in_opts
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - frgs2clones

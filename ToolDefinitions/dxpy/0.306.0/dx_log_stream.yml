@@ -1,0 +1,57 @@
+!Command
+command:
+- dx-log-stream
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --level
+  description: Logging level to use
+  args: !ChoiceFlagArg
+    choices: !!set
+      debug:
+      critical:
+      error:
+      warning:
+      info:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --source
+  description: "Source ID to use\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      DX_APP_STREAM:
+      DX_APP:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: dx-log-stream [-h] [-l {critical,error,warning,info,debug}]\n \
+  \                    [-s {DX_APP,DX_APP_STREAM}]\n\nRedirects stdin to a DNAnexus\
+  \ log socket in the execution environment.\n\nValid logging levels:\n\n┌─────────────────────────┬────────────────┬────────────┐\n\
+  │ --source                │ --level        │ Appears as │\n├─────────────────────────┼────────────────┼────────────┤\n\
+  │ DX_APP_STREAM (default) │ info (default) │ STDOUT     │\n│ DX_APP_STREAM (default)\
+  \ │ error          │ STDERR     │\n├─────────────────────────┼────────────────┼────────────┤\n\
+  │ DX_APP                  │ debug          │ DEBUG      │\n│ DX_APP            \
+  \      │ info (default) │ INFO       │\n│ DX_APP                  │ warning    \
+  \    │ WARNING    │\n│ DX_APP                  │ error          │ ERROR      │\n\
+  │ DX_APP                  │ critical       │ CRITICAL   │\n└─────────────────────────┴────────────────┴────────────┘\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -l {critical,error,warning,info,debug}, --level {critical,error,warning,info,debug}\n\
+  \                        Logging level to use\n  -s {DX_APP,DX_APP_STREAM}, --source\
+  \ {DX_APP,DX_APP_STREAM}\n                        Source ID to use\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dxpy:0.306.0--pyh3252c3a_0

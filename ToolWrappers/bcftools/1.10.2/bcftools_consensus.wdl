@@ -30,6 +30,9 @@ task BcftoolsConsensus {
       ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample: "apply variants of the given sample"
     chain: "write a chain file for liftover"

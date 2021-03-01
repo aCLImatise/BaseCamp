@@ -20,6 +20,9 @@ task NovoutilSplitbed {
       ~{if (exclude) then "--exclude" else ""} \
       ~{if (sam) then "--sam" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add: "[3m99[0m            Number of bp to add or to each input bed file region."
     merge: "[3m99[0m          Minimum gap between regions to merge them. Applied after extension."

@@ -16,6 +16,9 @@ task AgatSpFlagShortIntronspl {
       ~{if defined(output_gff_file) then ("--output " +  '"' + output_gff_file + '"') else ""} \
       ~{if (bolean_verbose_debugging) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_file: "Input GTF/GFF file."
     intron_size: "Minimum intron size, default 10. All genes with an intron < of\\nthis size will be flagged with the pseudo attribute (the value\\nwill be the size of the smallest intron found within the\\nincriminated gene)"

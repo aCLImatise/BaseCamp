@@ -12,7 +12,7 @@ task Metabat2 {
     Int? p_tnf
     Boolean? no_add
     Boolean? cv_ext
-    Boolean? arg_minimum_mean
+    Boolean? arg_mean_coverage
     Int? min_cvs_um
     Boolean? arg_minimum_size_bin
     Boolean? arg_number_use
@@ -37,7 +37,7 @@ task Metabat2 {
       ~{if defined(p_tnf) then ("--pTNF " +  '"' + p_tnf + '"') else ""} \
       ~{if (no_add) then "--noAdd" else ""} \
       ~{if (cv_ext) then "--cvExt" else ""} \
-      ~{if (arg_minimum_mean) then "-x" else ""} \
+      ~{if (arg_mean_coverage) then "-x" else ""} \
       ~{if defined(min_cvs_um) then ("--minCVSum " +  '"' + min_cvs_um + '"') else ""} \
       ~{if (arg_minimum_size_bin) then "-s" else ""} \
       ~{if (arg_number_use) then "-t" else ""} \
@@ -48,6 +48,9 @@ task Metabat2 {
       ~{if (_debug_output) then "-d" else ""} \
       ~{if (_verbose_output) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: "[ --inFile ] arg               Contigs in (gzipped) fasta file format [Mandatory]"
     arg_base_file: "[ --outFile ] arg              Base file name and path for each bin. The default output is fasta format.\\nUse -l option to output only contig names [Mandatory]."
@@ -59,7 +62,7 @@ task Metabat2 {
     p_tnf: "(=0)                   TNF probability cutoff for building TNF graph. Use it to skip the\\npreparation step. (0: auto)."
     no_add: "Turning off additional binning for lost or small contigs."
     cv_ext: "When a coverage file without variance (from third party tools) is used\\ninstead of abdFile from jgi_summarize_bam_contig_depths."
-    arg_minimum_mean: "[ --minCV ] arg (=1)           Minimum mean coverage of a contig in each library for binning."
+    arg_mean_coverage: "[ --minCV ] arg (=1)           Minimum mean coverage of a contig in each library for binning."
     min_cvs_um: "(=1)               Minimum total effective mean coverage of a contig (sum of depth over\\nminCV) for binning."
     arg_minimum_size_bin: "[ --minClsSize ] arg (=200000) Minimum size of a bin as the output."
     arg_number_use: "[ --numThreads ] arg (=0)      Number of threads to use (0: use all cores)."

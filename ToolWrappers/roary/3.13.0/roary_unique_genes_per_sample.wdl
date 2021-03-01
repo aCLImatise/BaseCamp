@@ -12,6 +12,9 @@ task RoaryuniqueGenesPerSample {
       ~{if defined(clusters_filename) then ("-c " +  '"' + clusters_filename + '"') else ""} \
       ~{if (verbose_output_stdout) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_filename: "output filename [unique_genes_per_sample.tsv]"
     clusters_filename: "clusters filename [clustered_proteins]"

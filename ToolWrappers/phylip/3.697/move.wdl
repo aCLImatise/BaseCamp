@@ -4,6 +4,9 @@ task Move {
   command <<<
     move
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

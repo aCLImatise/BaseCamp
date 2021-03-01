@@ -26,6 +26,9 @@ task Biopetscatterregions {
       ~{if defined(bam_file) then ("--bamFile " +  '"' + bam_file + '"') else ""} \
       ~{if (not_split_contigs) then "--notSplitContigs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_level: "Level of log information printed. Possible levels: 'debug', 'info', 'warn', 'error'"
     output_dir: "Output directory"

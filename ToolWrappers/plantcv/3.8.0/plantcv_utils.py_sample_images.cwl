@@ -3,17 +3,17 @@ id: plantcv_utils.py_sample_images.cwl
 inputs:
 - id: in_source
   doc: Source directory of images
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --source
 - id: in_outdir
   doc: Output directory for the random sample to get saved
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_number
   doc: "The number of images to sample\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --number
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: Output directory for the random sample to get saved
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - plantcv-utils.py

@@ -26,6 +26,9 @@ task GtfToGenePred {
       ~{if (gene_name_as_name_two) then "-geneNameAsName2" else ""} \
       ~{if (include_version) then "-includeVersion" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene_pred_ext: "- create a extended genePred, including frame\\ninformation and gene name"
     all_errors: "- skip groups with errors rather than aborting.\\nUseful for getting infomation about as many errors as possible."

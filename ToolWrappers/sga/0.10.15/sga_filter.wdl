@@ -32,6 +32,9 @@ task SgaFilter {
       ~{if defined(km_er_size) then ("--kmer-size " +  '"' + km_er_size + '"') else ""} \
       ~{if defined(km_er_threshold) then ("--kmer-threshold " +  '"' + km_er_threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     prefix: "use PREFIX for the names of the index files (default: prefix of the input file)"

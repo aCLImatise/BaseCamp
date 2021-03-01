@@ -4,166 +4,164 @@ command:
 positional: []
 named:
 - !Flag
-  description: prefix to name files. Can be string or /path/to/string
+  optional: true
   synonyms:
   - -p
   - --prefix
+  description: prefix to name files. Can be string or /path/to/string
   args: !SimpleFlagArg
     name: PREFIX
-  optional: true
 - !Flag
-  description: indexed fasta (.fa)
+  optional: true
   synonyms:
   - -r
   - --fasta
+  description: indexed fasta (.fa)
   args: !SimpleFlagArg
     name: FASTA
-  optional: true
 - !Flag
-  description: gtf file. (.gtf)
+  optional: true
   synonyms:
   - -g
   - --gtf
+  description: gtf file. (.gtf)
   args: !SimpleFlagArg
     name: GTF
-  optional: true
 - !Flag
-  description: salmon library type(A, ISF, ISR, etc)
+  optional: true
   synonyms:
   - -l
   - --library
+  description: salmon library type(A, ISF, ISR, etc)
   args: !SimpleFlagArg
     name: LIBRARY
-  optional: true
 - !Flag
-  description: "Number of threads to use for STAR and STAR-SEQR. 4-12\nrecommended."
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: "Number of threads to use for STAR and STAR-SEQR. 4-12\nrecommended."
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: Bed file to subset analysis
+  optional: true
   synonyms:
   - -b
   - --bed_file
+  description: Bed file to subset analysis
   args: !SimpleFlagArg
     name: BED_FILE
-  optional: true
 - !Flag
-  description: "allow fusions to pass with either one breakend in bed\nfile or require\
-    \ both. Must use -b."
+  optional: true
   synonyms:
   - --subset_type
+  description: "allow fusions to pass with either one breakend in bed\nfile or require\
+    \ both. Must use -b."
   args: !ChoiceFlagArg
     choices: !!set
       either:
       both:
-  optional: true
 - !Flag
-  description: assembler to use
+  optional: true
   synonyms:
   - -a
   - --as_type
+  description: assembler to use
   args: !ChoiceFlagArg
     choices: !!set
       velvet:
-  optional: true
 - !Flag
-  description: "keep read duplicates. Use for PCR data or with\nmolecular tags"
+  optional: true
   synonyms:
   - --keep_dups
+  description: "keep read duplicates. Use for PCR data or with\nmolecular tags"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: allow internal gene duplications to be considered
+  optional: true
   synonyms:
   - --keep_gene_dups
+  description: allow internal gene duplications to be considered
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "allow RNA fusions to contain at least one breakpoint\nfrom Mitochondria"
+  optional: true
   synonyms:
   - --keep_mito
+  description: "allow RNA fusions to contain at least one breakpoint\nfrom Mitochondria"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: verbose level... repeat up to three times.
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: verbose level... repeat up to three times.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: fastq.gz 1(.gz)
-  synonyms:
-  - '-1'
-  - --fastq1
-  args: !SimpleFlagArg
-    name: FASTQ1
   optional: true
-- !Flag
-  description: fastq.gz 2(.gz)
-  synonyms:
-  - '-2'
-  - --fastq2
-  args: !SimpleFlagArg
-    name: FASTQ2
-  optional: true
-- !Flag
-  description: path to STAR index folder
   synonyms:
   - -i
   - --star_index
+  description: path to STAR index folder
   args: !SimpleFlagArg
     name: STAR_INDEX
-  optional: true
 - !Flag
-  description: STAR alignment mode. 0=More-specific, 1=More-Sensitive
+  optional: true
   synonyms:
   - -m
   - --mode
+  description: STAR alignment mode. 0=More-specific, 1=More-Sensitive
   args: !ChoiceFlagArg
     choices: !!set
       '0':
       '1':
-  optional: true
 - !Flag
-  description: chimeric junctions file produced by STAR
+  optional: true
   synonyms:
   - -sj
   - --star_jxns
+  description: chimeric junctions file produced by STAR
   args: !SimpleFlagArg
     name: STAR_JXNS
-  optional: true
 - !Flag
-  description: "Chimeric.out.sam file produced by STAR. Either use\nthis or -sb"
+  optional: true
   synonyms:
   - -ss
   - --star_sam
+  description: "Chimeric.out.sam file produced by STAR. Either use\nthis or -sb"
   args: !SimpleFlagArg
     name: STAR_SAM
-  optional: true
 - !Flag
-  description: "Aligned.sortedByCoord.out.bam file produced by STAR.\nMust contain\
-    \ chimeric reads with ch tag.\n"
+  optional: true
   synonyms:
   - -sb
   - --star_bam
+  description: "Aligned.sortedByCoord.out.bam file produced by STAR.\nMust contain\
+    \ chimeric reads with ch tag.\n"
   args: !SimpleFlagArg
     name: STAR_BAM
+- !Flag
   optional: true
+  synonyms:
+  - '-2'
+  description: ''
+  args: !SimpleFlagArg
+    name: FASTQ2
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: ''
+  args: !SimpleFlagArg
+    name: FASTQ1
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: starseqr.py [-h] -1 FASTQ1 -2 FASTQ2 [-i STAR_INDEX] [-m {0,1}]\n\
@@ -199,3 +197,4 @@ help_text: "usage: starseqr.py [-h] -1 FASTQ1 -2 FASTQ2 [-i STAR_INDEX] [-m {0,1
   \                        Must contain chimeric reads with ch tag.\n"
 generated_using:
 - --help
+docker_image:

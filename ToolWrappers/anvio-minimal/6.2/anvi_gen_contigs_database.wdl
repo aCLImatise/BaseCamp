@@ -28,6 +28,9 @@ task Anvigencontigsdatabase {
       ~{if defined(external_gene_calls) then ("--external-gene-calls " +  '"' + external_gene_calls + '"') else ""} \
       ~{if (ignore_internal_stop_codons) then "--ignore-internal-stop-codons" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contigs_fast_a: "The FASTA file that contains reference sequences you\\nmapped your samples against. This could be a reference\\ngenome, or contigs from your assembler. Contig names\\nin this file must match to those in other input files.\\nIf there is a problem anvi'o will gracefully complain\\nabout it."
     project_name: "Name of the project. Please choose a short but\\ndescriptive name (so anvi'o can use it whenever she\\nneeds to name an output file, or add a new table in a\\ndatabase, or name her first born)."

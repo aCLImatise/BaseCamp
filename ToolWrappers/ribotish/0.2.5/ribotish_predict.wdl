@@ -2,7 +2,7 @@ version 1.0
 
 task RibotishPredict {
   input {
-    String? tis_enriched_seperated
+    String? tis_enriched_riboseq
     String? ordinary_riboseq_bam
     File? gene_annotation_file_orf
     File? genome_fasta_file
@@ -12,7 +12,7 @@ task RibotishPredict {
     String? tis_para
     String? ribo_para
     Int? n_parts
-    File? gene_file_known
+    File? gene_file_file
     File? output_tis_background
     File? input_background_estimation
     String? trans_profile
@@ -51,7 +51,7 @@ task RibotishPredict {
     ribotish predict \
       ~{provided} \
       ~{junctions} \
-      ~{if defined(tis_enriched_seperated) then ("-t " +  '"' + tis_enriched_seperated + '"') else ""} \
+      ~{if defined(tis_enriched_riboseq) then ("-t " +  '"' + tis_enriched_riboseq + '"') else ""} \
       ~{if defined(ordinary_riboseq_bam) then ("-b " +  '"' + ordinary_riboseq_bam + '"') else ""} \
       ~{if defined(gene_annotation_file_orf) then ("-g " +  '"' + gene_annotation_file_orf + '"') else ""} \
       ~{if defined(genome_fasta_file) then ("-f " +  '"' + genome_fasta_file + '"') else ""} \
@@ -61,7 +61,7 @@ task RibotishPredict {
       ~{if defined(tis_para) then ("--tispara " +  '"' + tis_para + '"') else ""} \
       ~{if defined(ribo_para) then ("--ribopara " +  '"' + ribo_para + '"') else ""} \
       ~{if defined(n_parts) then ("--nparts " +  '"' + n_parts + '"') else ""} \
-      ~{if defined(gene_file_known) then ("-a " +  '"' + gene_file_known + '"') else ""} \
+      ~{if defined(gene_file_file) then ("-a " +  '"' + gene_file_file + '"') else ""} \
       ~{if defined(output_tis_background) then ("-e " +  '"' + output_tis_background + '"') else ""} \
       ~{if defined(input_background_estimation) then ("-s " +  '"' + input_background_estimation + '"') else ""} \
       ~{if defined(trans_profile) then ("--transprofile " +  '"' + trans_profile + '"') else ""} \
@@ -94,8 +94,11 @@ task RibotishPredict {
       ~{if defined(number_of_processes) then ("-p " +  '"' + number_of_processes + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    tis_enriched_seperated: "TIS enriched riboseq bam files, comma seperated"
+    tis_enriched_riboseq: "TIS enriched riboseq bam files, comma seperated"
     ordinary_riboseq_bam: "Ordinary riboseq bam files, comma seperated"
     gene_annotation_file_orf: "Gene annotation file for ORF prediction"
     genome_fasta_file: "Genome fasta file"
@@ -105,7 +108,7 @@ task RibotishPredict {
     tis_para: "Input offset parameter files for -t bam files"
     ribo_para: "Input offset parameter files for -b bam files"
     n_parts: "Group transcript according to TIS reads density\\nquantile (default: 10)"
-    gene_file_known: "Gene file for known protein coding gene annotation and\\nTIS background estimation instead of -g gene file"
+    gene_file_file: "Gene file for known protein coding gene annotation and\\nTIS background estimation instead of -g gene file"
     output_tis_background: "Output TIS background estimation result (default:\\ntisBackground.txt)"
     input_background_estimation: "Input background estimation result file instead of\\ninstant estimation"
     trans_profile: "Output RPF P-site profile for each transcript"

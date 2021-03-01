@@ -3,12 +3,12 @@ id: phylorank_rogue_test.cwl
 inputs:
 - id: in_out_group_tax_on
   doc: "taxon to use as outgroup (e.g., d__Archaea); imples\ntree should be rooted"
-  type: string
+  type: string?
   inputBinding:
     prefix: --outgroup_taxon
 - id: in_decorate
   doc: indicates trees should be decorated
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --decorate
 - id: in_input_tree_dir
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phylorank

@@ -22,6 +22,9 @@ task IvarCommand {
       ~{remove_reads} \
       ~{version}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     description: "Description"
     trim: "Trim reads in aligned BAM file"

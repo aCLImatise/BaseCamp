@@ -4,6 +4,9 @@ task ArtProfilerIllumina {
   command <<<
     art_profiler_illumina
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

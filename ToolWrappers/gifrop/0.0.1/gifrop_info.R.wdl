@@ -4,6 +4,9 @@ task GifropInfoR {
   command <<<
     gifrop_info_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

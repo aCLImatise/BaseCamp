@@ -14,6 +14,9 @@ task DefuseclusterstoCG {
       ~{if defined(output_filename_stdout) then ("--output " +  '"' + output_filename_stdout + '"') else ""} \
       ~{if (v) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene_annotation: "GTF-file used by defuse"
     output_filename_stdout: "output filename; '-' for stdout\\n"

@@ -8,6 +8,9 @@ task Fastauniquenames {
     fasta_unique_names \
       ~{copyright}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     copyright: "(1999) The Regents of the University of California."
   }

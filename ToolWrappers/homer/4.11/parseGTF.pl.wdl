@@ -34,6 +34,9 @@ task ParseGTFpl {
       ~{if (ann_tts_start_offset) then "-annTTSstartOffset" else ""} \
       ~{if (an_ntt_send_offset) then "-annTTSendOffset" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "(input file is gff format-treats 9th column as ID)"
     gff_three: "(input file is gff3 format - looks for parent attribute to assign gene name)"

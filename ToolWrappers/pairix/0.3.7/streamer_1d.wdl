@@ -8,6 +8,9 @@ task Streamer1d {
     streamer_1d \
       ~{in_dot_two_ddot_pairs_do_tgz}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_two_ddot_pairs_do_tgz: ""
   }

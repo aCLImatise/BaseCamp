@@ -14,6 +14,9 @@ task GeneBodyCoverage2py {
       ~{if defined(out_prefix) then ("--out-prefix " +  '"' + out_prefix + '"') else ""} \
       ~{if defined(graph_type) then ("--graph-type " +  '"' + graph_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Coverage signal file in bigwig format"
     ref_gene: "Reference gene model in bed format. [required]"

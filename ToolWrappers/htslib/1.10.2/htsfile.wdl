@@ -18,6 +18,9 @@ task Htsfile {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (c_hhv) then "-chHv" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     view: "Write textual form of FILEs to standard output"
     copy: "Copy the exact contents of FILE to DESTFILE"

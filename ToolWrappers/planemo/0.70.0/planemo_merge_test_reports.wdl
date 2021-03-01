@@ -10,6 +10,9 @@ task PlanemoMergeTestReports {
       ~{input_paths} \
       ~{file_path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_paths: ""
     file_path: ""

@@ -4,13 +4,13 @@ inputs:
 - id: in_enabled
   doc: "(DEFAULT) Return the services which the project has enabled. Or use one\n\
     of --produced or --available."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --enabled
 - id: in_produced
   doc: "Return the services that the project has produced. Or use one of\n--enabled\
     \ or --available."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --produced
 - id: in_filter
@@ -19,14 +19,14 @@ inputs:
     \ examples of filter expressions run $ gcloud topic filters.\nThis flag interacts\
     \ with other flags that are applied in this order:\n--flatten, --sort-by, --filter,\
     \ --limit."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --filter
 - id: in_limit
   doc: "The maximum number of resources to list. The default is unlimited. This\n\
     flag interacts with other flags that are applied in this order:\n--flatten, --sort-by,\
     \ --filter, --limit."
-  type: long
+  type: long?
   inputBinding:
     prefix: --limit
 - id: in_page_size
@@ -34,7 +34,7 @@ inputs:
     \ the maximum number of resources per page. The default is\ndetermined by the\
     \ service if it supports paging, otherwise it is\nunlimited (no paging). Paging\
     \ may be applied before or after --filter\nand --limit depending on the service."
-  type: long
+  type: long?
   inputBinding:
     prefix: --page-size
 - id: in_sort_by
@@ -42,13 +42,14 @@ inputs:
     \ The\ndefault order is ascending. Prefix a field with ``~'' for descending\n\
     order on that field. This flag interacts with other flags that are\napplied in\
     \ this order: --flatten, --sort-by, --filter, --limit."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sort-by
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

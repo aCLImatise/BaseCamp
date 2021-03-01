@@ -14,6 +14,9 @@ task ArbDnaratesDbsavename {
       ~{dbname} \
       ~{db_save_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arb_dna_rates: ""
     var_input: ""

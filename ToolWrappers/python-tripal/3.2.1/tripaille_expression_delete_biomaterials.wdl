@@ -18,6 +18,9 @@ task TripailleExpressionDeleteBiomaterials {
       ~{if defined(job_name) then ("--job_name " +  '"' + job_name + '"') else ""} \
       ~{if (no_wait) then "--no_wait" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     names: "JSON list of biomaterial names to delete. (optional)"
     organism_id: "Organism id from which to delete biomaterials (optional)"

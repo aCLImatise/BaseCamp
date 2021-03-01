@@ -8,6 +8,9 @@ task FfBignet {
     ff_bignet \
       ~{link_definition}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     link_definition: ""
   }

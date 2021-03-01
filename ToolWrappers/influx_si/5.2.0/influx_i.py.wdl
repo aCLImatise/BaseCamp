@@ -72,6 +72,9 @@ task InfluxIpy {
       ~{if (prof) then "--prof" else ""} \
       ~{if defined(tb_limit) then ("--tblimit " +  '"' + tb_limit + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_opt: "no optimization, just use free parameters as is (after\\na projection on feasibility domain), to calculate\\ndependent fluxes, cumomers, stats and so on"
     no_scale: "no scaling factors to optimize => all scaling factors\\nare assumed to be 1"

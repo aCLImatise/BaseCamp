@@ -14,6 +14,9 @@ task MspUpgradeDestination {
       ~{source} \
       ~{destination}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     msp: ""
     upgrade: ""

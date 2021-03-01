@@ -10,12 +10,12 @@ task Fprotpars {
     Boolean? step_box
     Boolean? an_cseq
     String alignments
-    File file
+    File additional_optional_qualifiers
   }
   command <<<
     fprotpars \
       ~{alignments} \
-      ~{file} \
+      ~{additional_optional_qualifiers} \
       ~{if (weights) then "-weights" else ""} \
       ~{if (out_gr_no) then "-outgrno" else ""} \
       ~{if (do_threshold) then "-dothreshold" else ""} \
@@ -24,6 +24,9 @@ task Fprotpars {
       ~{if (step_box) then "-stepbox" else ""} \
       ~{if (an_cseq) then "-ancseq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     weights: "properties Phylip weights file (optional)"
     out_gr_no: "integer    [0] Species number to use as outgroup\\n(Integer 0 or more)"
@@ -33,7 +36,7 @@ task Fprotpars {
     step_box: "boolean    [N] Print steps at each site"
     an_cseq: "boolean    [N] Print sequences at all nodes of tree"
     alignments: "[-intreefile]        tree       Phylip tree file (optional)"
-    file: "Additional (Optional) qualifiers (* if not always prompted):"
+    additional_optional_qualifiers: "Additional (Optional) qualifiers (* if not always prompted):"
   }
   output {
     File out_stdout = stdout()

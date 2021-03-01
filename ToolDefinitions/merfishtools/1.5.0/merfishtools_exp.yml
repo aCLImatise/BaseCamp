@@ -4,111 +4,111 @@ command:
 - exp
 positional:
 - !Positional
-  description: <READOUTS>        Raw readout data containing molecule assignments
-    to positions.
+  optional: false
   position: 0
   name: codebook.
-  optional: false
+  description: <READOUTS>        Raw readout data containing molecule assignments
+    to positions.
 - !Positional
-  description: feature
+  optional: false
   position: 0
   name: cell
-  optional: false
+  description: feature
 - !Positional
-  description: cell_position_x
+  optional: false
   position: 1
   name: hamming_dist
-  optional: false
+  description: cell_position_x
 - !Positional
-  description: rna_position_x
+  optional: false
   position: 2
   name: cell_position_y
-  optional: false
+  description: rna_position_x
 - !Positional
-  description: Otherwise, the official MERFISH binary format is expected.
+  optional: false
   position: 3
   name: rna_position_y
-  optional: false
+  description: Otherwise, the official MERFISH binary format is expected.
 named:
 - !Flag
-  description: "Path to write expected value and standard deviation estimates of expression\
-    \ to.\nOutput is formatted into columns: cell, feature, expected value, standard\
-    \ deviation"
+  optional: true
   synonyms:
   - -e
   - --estimate
+  description: "Path to write expected value and standard deviation estimates of expression\
+    \ to.\nOutput is formatted into columns: cell, feature, expected value, standard\
+    \ deviation"
   args: !SimpleFlagArg
     name: TSV-FILE
-  optional: true
 - !Flag
-  description: "Path to write global statistics per cell to.\nOutput is formatted\
-    \ into columns: cell, noise-rate"
+  optional: true
   synonyms:
   - --stats
+  description: "Path to write global statistics per cell to.\nOutput is formatted\
+    \ into columns: cell, noise-rate"
   args: !SimpleFlagArg
     name: TSV-FILE
-  optional: true
 - !Flag
-  description: Seed for shuffling that occurs in EM algorithm.
+  optional: true
   synonyms:
   - --seed
+  description: Seed for shuffling that occurs in EM algorithm.
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: '...              Prior probability of 0->1 error [default: 0.04]'
+  optional: true
   synonyms:
   - --p0
+  description: '...              Prior probability of 0->1 error [default: 0.04]'
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: '...              Prior probability of 1->0 error [default: 0.1]'
+  optional: true
   synonyms:
   - --p1
+  description: '...              Prior probability of 1->0 error [default: 0.1]'
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: 'Regular expression to select cells from cell column (see above). [default:
-    .*]'
+  optional: true
   synonyms:
   - --cells
+  description: 'Regular expression to select cells from cell column (see above). [default:
+    .*]'
   args: !SimpleFlagArg
     name: REGEX
-  optional: true
 - !Flag
-  description: '<INT,>    Width of the window to calculate PMF for. [default: 100]'
+  optional: true
   synonyms:
   - --pmf-window-width
+  description: '<INT,>    Width of the window to calculate PMF for. [default: 100]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Number of threads to use. [default: 1]'
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: 'Number of threads to use. [default: 1]'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Prints help information
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Prints help information
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Prints version information
+  optional: true
   synonyms:
   - -V
   - --version
+  description: Prints version information
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "merfishtools-exp \nEstimate expressions for each feature (e.g. gene or\
   \ transcript) in each cell.\n\nUSAGE:\n    merfishtools exp [OPTIONS] <CODEBOOK-TSV>\
   \ <READOUTS> --seed <INT>\n\nFLAGS:\n    -h, --help       Prints help information\n\
@@ -141,3 +141,4 @@ help_text: "merfishtools-exp \nEstimate expressions for each feature (e.g. gene 
   \ exp codebook.txt < data.txt > expression.txt\n"
 generated_using:
 - --help
+docker_image:

@@ -8,6 +8,9 @@ task PrepareReceptor4py {
     prepare_receptor4_py \
       ~{if (receptorfilename) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     receptorfilename: "receptor_filename"
   }

@@ -22,6 +22,9 @@ task HcaDssDownloadmanifest {
       ~{if defined(min_delay_seconds) then ("--min-delay-seconds " +  '"' + min_delay_seconds + '"') else ""} \
       ~{if defined(download_dir) then ("--download-dir " +  '"' + download_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     manifest: "The path to a TSV (tab-separated values) file listing files to download. If the directory\\nfor download already contains the manifest, the manifest will be overwritten to include a column with paths\\ninto the filestore."
     replica: "The replica from which to download. The supported replicas are: aws for Amazon Web\\nServices, and gcp for Google Cloud Platform. [aws, gcp]"

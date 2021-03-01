@@ -14,6 +14,9 @@ task GenometreetkAppend {
       ~{output_tree} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     silent: "suppress output"
     input_tree: "input tree to decorate"

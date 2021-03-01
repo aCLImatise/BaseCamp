@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, Int, String
+
+Filter_Events_V0_1_0 = CommandToolBuilder(tool="filter_events", base_command=["filter_events"], inputs=[ToolInput(tag="in_filter", input_type=Boolean(optional=True), prefix="--filter", doc=InputDocumentation(doc="Comparison file to filter or list of replicate files\nto filter.")), ToolInput(tag="in_control", input_type=Boolean(optional=True), prefix="--control", doc=InputDocumentation(doc="Control comparison file to filter.")), ToolInput(tag="in_output_dir", input_type=File(optional=True), prefix="--output-dir", doc=InputDocumentation(doc="Output directory for filtered file.")), ToolInput(tag="in_num_total", input_type=Int(optional=True), prefix="--num-total", doc=InputDocumentation(doc="Require at least N-many total reads (inclusion reads,\nexclusion reads or reads supporting both isoforms.")), ToolInput(tag="in_num_inc", input_type=Int(optional=True), prefix="--num-inc", doc=InputDocumentation(doc="Require at least N-many inclusion reads. Assumes that\nthe first isoform (isoform 0) is the inclusion\nisoform.")), ToolInput(tag="in_num_exc", input_type=Int(optional=True), prefix="--num-exc", doc=InputDocumentation(doc="Require at least N-many exclusion reads")), ToolInput(tag="in_num_sum_inc_exc", input_type=Int(optional=True), prefix="--num-sum-inc-exc", doc=InputDocumentation(doc="Require the sum of inclusion and exclusion reads to be\nat least N.")), ToolInput(tag="in_delta_psi", input_type=String(optional=True), prefix="--delta-psi", doc=InputDocumentation(doc="Require the absolute change in Psi (delta Psi) to be\nat least N. Only takes positive floats as arguments.")), ToolInput(tag="in_bayes_factor", input_type=String(optional=True), prefix="--bayes-factor", doc=InputDocumentation(doc="Require the Bayes factor to be at least N.")), ToolInput(tag="in_apply_both", input_type=Boolean(optional=True), prefix="--apply-both", doc=InputDocumentation(doc="Apply filter to both samples.")), ToolInput(tag="in_votes", input_type=Int(optional=True), prefix="--votes", doc=InputDocumentation(doc="The number of biological replicates in a sample which\nmust pass the   filters to call an event significant.\n"))], outputs=[ToolOutput(tag="out_output_dir", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_dir", type_hint=File()), doc=OutputDocumentation(doc="Output directory for filtered file."))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Filter_Events_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -32,6 +32,9 @@ task Showtable {
       ~{if defined(path) then ("--path " +  '"' + path + '"') else ""} \
       ~{if defined(table_id) then ("--table-id " +  '"' + table_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "input table format, should be specified if it cannot\\nbe automatically detected"
     more: "use the pager mode from Table.more"

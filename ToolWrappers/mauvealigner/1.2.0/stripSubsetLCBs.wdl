@@ -30,6 +30,9 @@ task StripSubsetLCBs {
       ~{x} \
       ~{kb}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_x_mfa: ""
     input_bbc_ols: ""

@@ -20,6 +20,9 @@ task BuildMidasDbpy {
       ~{if defined(max_species) then ("--max_species " +  '"' + max_species + '"') else ""} \
       ~{if defined(max_genomes) then ("--max_genomes " +  '"' + max_genomes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads to use (1)"
     compress: "Compress output files with gzip (False)"

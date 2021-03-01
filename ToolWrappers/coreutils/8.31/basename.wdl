@@ -16,6 +16,9 @@ task Basename {
       ~{if defined(remove_trailing_suffix) then ("--suffix " +  '"' + remove_trailing_suffix + '"') else ""} \
       ~{if (end_output_line) then "--zero" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     multiple: "support multiple arguments and treat each as a NAME"
     remove_trailing_suffix: "remove a trailing SUFFIX; implies -a"

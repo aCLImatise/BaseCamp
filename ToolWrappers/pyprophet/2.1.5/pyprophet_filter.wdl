@@ -16,6 +16,9 @@ task PyprophetFilter {
       ~{if defined(max_peak_group_pep) then ("--max_peakgroup_pep " +  '"' + max_peak_group_pep + '"') else ""} \
       ~{if defined(max_transition_pep) then ("--max_transition_pep " +  '"' + max_transition_pep + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "PyProphet input file.  [required]"
     max_precursor_pep: "Maximum PEP to retain scored precursors in"

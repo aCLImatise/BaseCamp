@@ -14,6 +14,9 @@ task OpalStatspy {
       ~{if defined(yaml) then ("--yaml " +  '"' + yaml + '"') else ""} \
       ~{if defined(volume) then ("--volume " +  '"' + volume + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dir: "Input directory containing gzipped FASTQ files"
     output_dir: "Output directory"

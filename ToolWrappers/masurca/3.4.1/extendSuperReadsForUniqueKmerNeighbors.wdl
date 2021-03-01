@@ -10,6 +10,9 @@ task ExtendSuperReadsForUniqueKmerNeighbors {
       ~{cmdline_parse} \
       ~{if defined(dir) then ("--dir " +  '"' + dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "*Directory where the super-reads work is done"
     cmdline_parse: ""

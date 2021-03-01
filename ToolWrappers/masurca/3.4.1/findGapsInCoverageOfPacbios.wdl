@@ -16,6 +16,9 @@ task FindGapsInCoverageOfPacbios {
       ~{if defined(min_ovl_implied_vs_gap_end) then ("--min-ovl-implied-vs-gap-end " +  '"' + min_ovl_implied_vs_gap_end + '"') else ""} \
       ~{if defined(min_match_len_for_implied_match) then ("--min-match-len-for-implied-match " +  '"' + min_match_len_for_implied_match + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "*Pacbio read-super-read match file"
     max_gap_overlap: "Shorter matches between good-overlap regions are considered a gap (70)"

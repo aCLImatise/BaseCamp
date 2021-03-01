@@ -18,6 +18,9 @@ task MerfishtoolsMultidiffexpFLAGS {
       ~{information} \
       ~{try}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mer_fish_tools: ""
     multi_diff_exp: ""

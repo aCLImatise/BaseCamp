@@ -8,6 +8,9 @@ task PblayoutM4index {
     pblayout m4_index \
       ~{in_do_tm_four}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_do_tm_four: "STR  Input M4."
   }

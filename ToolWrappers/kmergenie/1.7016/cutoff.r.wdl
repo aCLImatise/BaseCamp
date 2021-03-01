@@ -4,6 +4,9 @@ task Cutoffr {
   command <<<
     cutoff_r
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

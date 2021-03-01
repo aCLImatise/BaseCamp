@@ -8,7 +8,7 @@ inputs:
     \ where every line of the file is\nsimply an item name. If you are providing a\
     \ newick\ntree, the entire file should be a single line. I know\nit sounds hard,\
     \ but you seriously can do this."
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-order
 - id: in_path__dbpath
@@ -17,12 +17,12 @@ inputs:
     \ try your chances with other\nkinds of databases for fun and games. Basically,\
     \ if\nthe database contains an items order table, then\nthings will work. Otherwise,\
     \ you will probably get\nangry errors back in the worst case scenario."
-  type: File
+  type: File?
   inputBinding:
     prefix: -p
-- id: in_name_what_should
+- id: in_name_what_we
   doc: "NAME     What should we call this order? Give it a concise,\nsingle-word name."
-  type: string
+  type: string?
   inputBinding:
     prefix: --name
 - id: in_make_default
@@ -31,23 +31,24 @@ inputs:
     interactive and presses draw. Big responsibility. But\nif you have a 'default'\
     \ state, it will not work\nbecause the default items order in the state file\n\
     overwrites the one that comes from the database. So\nnot that big of a responsibility.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --make-default
 - id: in_path
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     position: 0
 - id: in_var_5
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-import-items-order

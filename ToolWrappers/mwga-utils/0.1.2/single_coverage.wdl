@@ -22,6 +22,9 @@ task SingleCoverage {
       ~{maf} \
       ~{if (h) then "-h" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     h: ""
     show: ""

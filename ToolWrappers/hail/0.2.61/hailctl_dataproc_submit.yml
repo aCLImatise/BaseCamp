@@ -1,0 +1,86 @@
+!Command
+command:
+- hailctl
+- dataproc
+- submit
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: name
+  description: Cluster name.
+- !Positional
+  optional: false
+  position: 1
+  name: script
+  description: Path to script.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --files
+  description: "Comma-separated list of files to add to the working\ndirectory of\
+    \ the Hail application."
+  args: !SimpleFlagArg
+    name: FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --pyfiles
+  description: "Comma-separated list of files (or directories with\npython files)\
+    \ to add to the PYTHONPATH."
+  args: !SimpleFlagArg
+    name: PYFILES
+- !Flag
+  optional: true
+  synonyms:
+  - --properties
+  - -p
+  description: Extra Spark properties to set.
+  args: !SimpleFlagArg
+    name: PROPERTIES
+- !Flag
+  optional: true
+  synonyms:
+  - --gcloud_configuration
+  description: "Google Cloud configuration to submit job (defaults to\ncurrently set\
+    \ configuration)."
+  args: !SimpleFlagArg
+    name: GCLOUD_CONFIGURATION
+- !Flag
+  optional: true
+  synonyms:
+  - --dry-run
+  description: Print gcloud dataproc command, but don't run it.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: hailctl dataproc submit [-h] [--files FILES] [--pyfiles PYFILES]\n\
+  \                               [--properties PROPERTIES]\n                    \
+  \           [--gcloud_configuration GCLOUD_CONFIGURATION]\n                    \
+  \           [--dry-run]\n                               name script\n\nSubmit a\
+  \ Python script to a running Dataproc cluster. To pass arguments to the\nscript\
+  \ being submitted, just list them after the name of the script.\n\npositional arguments:\n\
+  \  name                  Cluster name.\n  script                Path to script.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --files FILES         Comma-separated list of files to add to the working\n \
+  \                       directory of the Hail application.\n  --pyfiles PYFILES\
+  \     Comma-separated list of files (or directories with\n                     \
+  \   python files) to add to the PYTHONPATH.\n  --properties PROPERTIES, -p PROPERTIES\n\
+  \                        Extra Spark properties to set.\n  --gcloud_configuration\
+  \ GCLOUD_CONFIGURATION\n                        Google Cloud configuration to submit\
+  \ job (defaults to\n                        currently set configuration).\n  --dry-run\
+  \             Print gcloud dataproc command, but don't run it.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1

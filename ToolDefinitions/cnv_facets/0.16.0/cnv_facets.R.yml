@@ -4,183 +4,183 @@ command:
 positional: []
 named:
 - !Flag
-  description: Output prefix for the output files
+  optional: true
   synonyms:
   - --out
   - -o
+  description: Output prefix for the output files
   args: !SimpleFlagArg
     name: OUT
-  optional: true
 - !Flag
-  description: BAM file for tumour sample
+  optional: true
   synonyms:
   - --snp-tumour
   - -t
+  description: BAM file for tumour sample
   args: !SimpleFlagArg
     name: SNP_TUMOUR
-  optional: true
 - !Flag
-  description: BAM file for normal sample
+  optional: true
   synonyms:
   - --snp-normal
   - -n
+  description: BAM file for normal sample
   args: !SimpleFlagArg
     name: SNP_NORMAL
-  optional: true
 - !Flag
-  description: VCF file of SNPs where pileup is to be computed
+  optional: true
   synonyms:
   - --snp-vcf
   - -vcf
+  description: VCF file of SNPs where pileup is to be computed
   args: !SimpleFlagArg
     name: SNP_VCF
-  optional: true
 - !Flag
-  description: Sets the minimum threshold for mapping quality. Default 5
+  optional: true
   synonyms:
   - --snp-mapq
   - -mq
+  description: Sets the minimum threshold for mapping quality. Default 5
   args: !SimpleFlagArg
     name: SNP_MAPQ
-  optional: true
 - !Flag
-  description: Sets the minimum threshold for base quality. Default 10
+  optional: true
   synonyms:
   - --snp-baq
   - -bq
+  description: Sets the minimum threshold for base quality. Default 10
   args: !SimpleFlagArg
     name: SNP_BAQ
-  optional: true
 - !Flag
-  description: Do not discard anomalous read pairs
+  optional: true
   synonyms:
   - --snp-count-orphans
   - -A
+  description: Do not discard anomalous read pairs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Number of parallel processes to run to prepare the read pileup file.\n\
-    Each chromsome is assigned to a process. Default 1"
+  optional: true
   synonyms:
   - --snp-nprocs
   - -N
+  description: "Number of parallel processes to run to prepare the read pileup file.\n\
+    Each chromsome is assigned to a process. Default 1"
   args: !SimpleFlagArg
     name: SNP_NPROCS
-  optional: true
 - !Flag
-  description: "Pileup for matched normal (first sample) and tumour\n(second sample).\
-    \ Not needed if using BAM input. This file\nis the <prefix>.cvs.gz output of of\
-    \ a previous run of cnv_facet.R"
+  optional: true
   synonyms:
   - --pileup
   - -p
+  description: "Pileup for matched normal (first sample) and tumour\n(second sample).\
+    \ Not needed if using BAM input. This file\nis the <prefix>.cvs.gz output of of\
+    \ a previous run of cnv_facet.R"
   args: !SimpleFlagArg
     name: PILEUP
-  optional: true
 - !Flag
-  description: "DEPTH, -d DEPTH DEPTH\nMinimum and maximum depth in normal sample\
-    \ for a position\nto be considered. Default 25 4000"
+  optional: true
   synonyms:
   - --depth
+  description: "DEPTH, -d DEPTH DEPTH\nMinimum and maximum depth in normal sample\
+    \ for a position\nto be considered. Default 25 4000"
   args: !SimpleFlagArg
     name: DEPTH
-  optional: true
 - !Flag
-  description: "BED file of target regions to scan. It may be the target regions\n\
-    from WEX or panel sequencing protocols. It is not required, even\nfor targeted\
-    \ sequencing, but it may improve the results"
+  optional: true
   synonyms:
   - --targets
   - -T
+  description: "BED file of target regions to scan. It may be the target regions\n\
+    from WEX or panel sequencing protocols. It is not required, even\nfor targeted\
+    \ sequencing, but it may improve the results"
   args: !SimpleFlagArg
     name: TARGETS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cval
   description: "CVAL, -cv CVAL CVAL\nCritical values for segmentation in pre-processing\
     \ and\nprocessing. Larger values reduce segmentation. [25 150] is\nfacets default\
     \ based on exome data. For whole genome consider\nincreasing to [25 400] and for\
     \ targeted sequencing consider\nreducing them. Default 25 150"
-  synonyms:
-  - --cval
   args: !SimpleFlagArg
     name: CVAL
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nbhd-snp
+  - -snp
   description: "If an interval of size nbhd-snp contains more than one SNP,\nsample\
     \ a random one.  This sampling reduces the SNP serial\ncorrelation. This value\
     \ should be similar to the median insert\nsize of the libraries. If \"auto\" and\
     \ if using paired end BAM\ninput, use the estimated insert size from the normal\
     \ bam file.\nOtherwise use 250. Default auto"
-  synonyms:
-  - --nbhd-snp
-  - -snp
   args: !SimpleFlagArg
     name: NBHD_SNP
-  optional: true
 - !Flag
-  description: "Optional annotation file in BED format where the 4th column\ncontains\
-    \ the feature name (e.g. gene name). CNVs will be\nannotated with an additional\
-    \ INFO/TAG reporting all the\noveralapping features"
+  optional: true
   synonyms:
   - --annotation
   - -a
+  description: "Optional annotation file in BED format where the 4th column\ncontains\
+    \ the feature name (e.g. gene name). CNVs will be\nannotated with an additional\
+    \ INFO/TAG reporting all the\noveralapping features"
   args: !SimpleFlagArg
     name: ANNOTATION
-  optional: true
 - !Flag
-  description: String indicating the reference genome build. Default hg38.
+  optional: true
   synonyms:
   - --gbuild
   - -g
+  description: String indicating the reference genome build. Default hg38.
   args: !ChoiceFlagArg
     choices: !!set
-      hg19:
-      mm9:
       hg38:
       mm10:
-  optional: true
+      hg19:
+      mm9:
 - !Flag
-  description: "Normal sample is unmatched. If set, heterozygote SNPs are\ncalled\
-    \ using tumor reads only and logOR calculations are different"
+  optional: true
   synonyms:
   - --unmatched
   - -u
+  description: "Normal sample is unmatched. If set, heterozygote SNPs are\ncalled\
+    \ using tumor reads only and logOR calculations are different"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not produce coverage plots (they can be memory intensive).\nOther\
-    \ plots remain unaffected"
+  optional: true
   synonyms:
   - --no-cov-plot
   - -np
+  description: "Do not produce coverage plots (they can be memory intensive).\nOther\
+    \ plots remain unaffected"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Seed for random number generator. Default: The name of the input file'
+  optional: true
   synonyms:
   - --rnd-seed
   - -s
+  description: 'Seed for random number generator. Default: The name of the input file'
   args: !SimpleFlagArg
     name: RND_SEED
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -v
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: /usr/local/bin/cnv_facets.R [-h] --out OUT [--snp-tumour SNP_TUMOUR]\n\
   \                                   [--snp-normal SNP_NORMAL]\n                \
   \                   [--snp-vcf SNP_VCF] [--snp-mapq SNP_MAPQ]\n                \
@@ -249,3 +249,4 @@ help_text: "usage: /usr/local/bin/cnv_facets.R [-h] --out OUT [--snp-tumour SNP_
   \ ignored with option --pileup\n"
 generated_using:
 - --help
+docker_image:

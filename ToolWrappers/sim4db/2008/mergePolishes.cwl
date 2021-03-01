@@ -3,12 +3,12 @@ id: mergePolishes.cwl
 inputs:
 - id: in_m
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_cdna
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mergePolishes

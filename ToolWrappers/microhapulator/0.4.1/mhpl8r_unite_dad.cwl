@@ -3,12 +3,12 @@ id: mhpl8r_unite_dad.cwl
 inputs:
 - id: in_s
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -s
 - id: in_o
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_mhp_leigh_tr
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mhpl8r

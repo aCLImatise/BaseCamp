@@ -4,31 +4,63 @@ command:
 - counts
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: INPUT_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: OUTPUT_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-s, --samples TEXT      Sample names, in the same order as the count\
-    \ files\n[required]\n-c, --count-files TEXT  Count file(s)  [required]\n-f, --fpkms\
-    \             If the counts are FPKMS\n-e, --featureCounts     If the counts files\
-    \ are from featureCounts\n--progress              Shows Progress Bar\n--help \
-    \                 Show this message and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
-  args: !EmptyFlagArg {}
+  - -s
+  - --samples
+  description: "Sample names, in the same order as the count files\n[required]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
   optional: true
+  synonyms:
+  - -c
+  - --count-files
+  description: Count file(s)  [required]
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fpkms
+  description: If the counts are FPKMS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --featureCounts
+  description: If the counts files are from featureCounts
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: Shows Progress Bar
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: add-gff-info counts [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Adds\
@@ -40,3 +72,4 @@ help_text: "Usage: add-gff-info counts [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n 
   \ Bar\n  --help                  Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

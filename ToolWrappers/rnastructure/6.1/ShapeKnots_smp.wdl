@@ -56,6 +56,9 @@ task ShapeKnotssmp {
       ~{if (xo) then "-xo" else ""} \
       ~{if (xs) then "-xs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     constraint: "Specify a constraints file to be applied.\\nDefault is to have no constraints applied."
     dms: "Specify a DMS constraints file to be applied. These constraints are\\npseudoenergy constraints.\\nDefault is to have no constraints applied."

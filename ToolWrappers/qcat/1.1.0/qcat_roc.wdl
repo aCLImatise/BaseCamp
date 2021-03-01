@@ -8,6 +8,9 @@ task Qcatroc {
     qcat_roc \
       ~{fast_q}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "optional arguments:"
   }

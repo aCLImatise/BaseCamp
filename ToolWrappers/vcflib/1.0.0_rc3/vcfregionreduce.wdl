@@ -4,6 +4,9 @@ task Vcfregionreduce {
   command <<<
     vcfregionreduce
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

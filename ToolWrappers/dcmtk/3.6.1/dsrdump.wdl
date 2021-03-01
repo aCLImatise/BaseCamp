@@ -3,90 +3,93 @@ version 1.0
 task Dsrdump {
   input {
     Boolean? arguments
-    Boolean? _quiet_quiet
-    Boolean? _verbose_details
-    Boolean? _debug_information
-    Boolean? ll
-    Boolean? lc
-    Boolean? _readdataset_read
+    Boolean? quiet
+    Boolean? verbose
+    Boolean? debug
+    Boolean? log_level
+    Boolean? log_config
+    Boolean? read_dataset
     Boolean? _readxferauto_use
-    Boolean? td
-    Boolean? te
-    Boolean? tb
-    Boolean? ti
-    Boolean? ip
-    Boolean? er
-    Boolean? ev
-    Boolean? ec
-    Boolean? ee
-    Boolean? ei
-    Boolean? dv
-    Boolean? ph
-    Boolean? pn
-    Boolean? pl
-    Boolean? ps
-    Boolean? pi
-    Boolean? pe
-    Boolean? _nocolor_use
+    Boolean? read_xfer_detect
+    Boolean? read_xfer_little
+    Boolean? read_xfer_big
+    Boolean? read_xfer_implicit
+    Boolean? processing_details
+    Boolean? unknown_relationship
+    Boolean? invalid_item_value
+    Boolean? ignore_constraints
+    Boolean? ignore_item_errors
+    Boolean? skip_invalid_items
+    Boolean? disable_vr_checker
+    Boolean? no_document_header
+    Boolean? indent_nested_items
+    Boolean? shorten_long_values
+    Boolean? print_sop_class_short
+    Boolean? no_invalid_codes
+    Boolean? no_enhanced_mode
+    Boolean? no_color
     String dsr_file_in
   }
   command <<<
     dsrdump \
       ~{dsr_file_in} \
       ~{if (arguments) then "--arguments" else ""} \
-      ~{if (_quiet_quiet) then "-q" else ""} \
-      ~{if (_verbose_details) then "-v" else ""} \
-      ~{if (_debug_information) then "-d" else ""} \
-      ~{if (ll) then "-ll" else ""} \
-      ~{if (lc) then "-lc" else ""} \
-      ~{if (_readdataset_read) then "-f" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (log_level) then "--log-level" else ""} \
+      ~{if (log_config) then "--log-config" else ""} \
+      ~{if (read_dataset) then "--read-dataset" else ""} \
       ~{if (_readxferauto_use) then "-t" else ""} \
-      ~{if (td) then "-td" else ""} \
-      ~{if (te) then "-te" else ""} \
-      ~{if (tb) then "-tb" else ""} \
-      ~{if (ti) then "-ti" else ""} \
-      ~{if (ip) then "-Ip" else ""} \
-      ~{if (er) then "-Er" else ""} \
-      ~{if (ev) then "-Ev" else ""} \
-      ~{if (ec) then "-Ec" else ""} \
-      ~{if (ee) then "-Ee" else ""} \
-      ~{if (ei) then "-Ei" else ""} \
-      ~{if (dv) then "-Dv" else ""} \
-      ~{if (ph) then "-Ph" else ""} \
-      ~{if (pn) then "-Pn" else ""} \
-      ~{if (pl) then "-Pl" else ""} \
-      ~{if (ps) then "-Ps" else ""} \
-      ~{if (pi) then "-Pi" else ""} \
-      ~{if (pe) then "-Pe" else ""} \
-      ~{if (_nocolor_use) then "-C" else ""}
+      ~{if (read_xfer_detect) then "--read-xfer-detect" else ""} \
+      ~{if (read_xfer_little) then "--read-xfer-little" else ""} \
+      ~{if (read_xfer_big) then "--read-xfer-big" else ""} \
+      ~{if (read_xfer_implicit) then "--read-xfer-implicit" else ""} \
+      ~{if (processing_details) then "--processing-details" else ""} \
+      ~{if (unknown_relationship) then "--unknown-relationship" else ""} \
+      ~{if (invalid_item_value) then "--invalid-item-value" else ""} \
+      ~{if (ignore_constraints) then "--ignore-constraints" else ""} \
+      ~{if (ignore_item_errors) then "--ignore-item-errors" else ""} \
+      ~{if (skip_invalid_items) then "--skip-invalid-items" else ""} \
+      ~{if (disable_vr_checker) then "--disable-vr-checker" else ""} \
+      ~{if (no_document_header) then "--no-document-header" else ""} \
+      ~{if (indent_nested_items) then "--indent-nested-items" else ""} \
+      ~{if (shorten_long_values) then "--shorten-long-values" else ""} \
+      ~{if (print_sop_class_short) then "--print-sopclass-short" else ""} \
+      ~{if (no_invalid_codes) then "--no-invalid-codes" else ""} \
+      ~{if (no_enhanced_mode) then "--no-enhanced-mode" else ""} \
+      ~{if (no_color) then "--no-color" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arguments: "print expanded command line arguments"
-    _quiet_quiet: "--quiet                 quiet mode, print no warnings and errors"
-    _verbose_details: "--verbose               verbose mode, print processing details"
-    _debug_information: "--debug                 debug mode, print debug information"
-    ll: "--log-level             [l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
-    lc: "--log-config            [f]ilename: string\\nuse config file f for the logger"
-    _readdataset_read: "--read-dataset          read data set without file meta information"
+    quiet: "quiet mode, print no warnings and errors"
+    verbose: "verbose mode, print processing details"
+    debug: "debug mode, print debug information"
+    log_level: "[l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
+    log_config: "[f]ilename: string\\nuse config file f for the logger"
+    read_dataset: "read data set without file meta information"
     _readxferauto_use: "=   --read-xfer-auto        use TS recognition (default)"
-    td: "--read-xfer-detect      ignore TS specified in the file meta header"
-    te: "--read-xfer-little      read with explicit VR little endian TS"
-    tb: "--read-xfer-big         read with explicit VR big endian TS"
-    ti: "--read-xfer-implicit    read with implicit VR little endian TS"
-    ip: "--processing-details    show currently processed content item"
-    er: "--unknown-relationship  accept unknown/missing relationship type"
-    ev: "--invalid-item-value    accept invalid content item value\\n(e.g. violation of VR or VM definition)"
-    ec: "--ignore-constraints    ignore relationship content constraints"
-    ee: "--ignore-item-errors    do not abort on content item errors, just warn\\n(e.g. missing value type specific attributes)"
-    ei: "--skip-invalid-items    skip invalid content items (incl. sub-tree)"
-    dv: "--disable-vr-checker    disable check for VR-conformant string values"
-    ph: "--no-document-header    do not print general document information"
-    pn: "--indent-nested-items   indent nested items by spaces (default)"
-    pl: "--shorten-long-values   print long item values shortened (default)"
-    ps: "--print-sopclass-short  print short SOP class name of referenced\\nimage objects, e.g. \\\"CT image\\\" (default)"
-    pi: "--no-invalid-codes      print text \\\"invalid code\\\" instead (default)"
-    pe: "--no-enhanced-mode      do not indicate enhanced mode (default)"
-    _nocolor_use: "--no-color              do not use any ANSI escape codes (default)"
+    read_xfer_detect: "ignore TS specified in the file meta header"
+    read_xfer_little: "read with explicit VR little endian TS"
+    read_xfer_big: "read with explicit VR big endian TS"
+    read_xfer_implicit: "read with implicit VR little endian TS"
+    processing_details: "show currently processed content item"
+    unknown_relationship: "accept unknown/missing relationship type"
+    invalid_item_value: "accept invalid content item value\\n(e.g. violation of VR or VM definition)"
+    ignore_constraints: "ignore relationship content constraints"
+    ignore_item_errors: "do not abort on content item errors, just warn\\n(e.g. missing value type specific attributes)"
+    skip_invalid_items: "skip invalid content items (incl. sub-tree)"
+    disable_vr_checker: "disable check for VR-conformant string values"
+    no_document_header: "do not print general document information"
+    indent_nested_items: "indent nested items by spaces (default)"
+    shorten_long_values: "print long item values shortened (default)"
+    print_sop_class_short: "print short SOP class name of referenced\\nimage objects, e.g. \\\"CT image\\\" (default)"
+    no_invalid_codes: "print text \\\"invalid code\\\" instead (default)"
+    no_enhanced_mode: "do not indicate enhanced mode (default)"
+    no_color: "do not use any ANSI escape codes (default)"
     dsr_file_in: "DICOM SR input filename to be dumped"
   }
   output {

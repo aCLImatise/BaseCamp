@@ -1,11 +1,6 @@
 class: CommandLineTool
 id: hicCompartmentalization.cwl
 inputs:
-- id: in_output_file_name
-  doc: "Plot to represent the polarization of A/B\ncompartments."
-  type: File
-  inputBinding:
-    prefix: --outputFileName
 - id: in_obs_exp_matrices
   doc: HiCExplorer matrices in h5/cool format.
   type: string[]
@@ -15,22 +10,27 @@ inputs:
   doc: "a PCA vector as a bedgraph file with no header. In\ncase of several matrices\
     \ with different conditions,\nie. controltreatment, the PCA of control can be\
     \ used.\nNote that only one PCA can be provided."
-  type: File
+  type: File?
   inputBinding:
     prefix: --pca
+- id: in_output_file_name
+  doc: "Plot to represent the polarization of A/B\ncompartments."
+  type: File?
+  inputBinding:
+    prefix: --outputFileName
 - id: in_quantile
   doc: 'number of quantiles. (Default: 30).'
-  type: long
+  type: long?
   inputBinding:
     prefix: --quantile
 - id: in_outliers
   doc: 'precentage of outlier to remove. (Default: 0).'
-  type: long
+  type: long?
   inputBinding:
     prefix: --outliers
 - id: in_output_matrix
   doc: output .npz file includes all the generated matrices
-  type: File
+  type: File?
   inputBinding:
     prefix: --outputMatrix
 - id: in_offset
@@ -47,14 +47,15 @@ outputs:
   type: stdout
 - id: out_output_file_name
   doc: "Plot to represent the polarization of A/B\ncompartments."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file_name)
 - id: out_output_matrix
   doc: output .npz file includes all the generated matrices
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_matrix)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicCompartmentalization

@@ -14,6 +14,9 @@ task Splitpriorsbychromosome {
       ~{if defined(only_extracts_given) then ("-c " +  '"' + only_extracts_given + '"') else ""} \
       ~{if (use_gzip_instead) then "-g" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gzip_output_files: "GZIP output files"
     only_extracts_given: "Only extracts given chromosomes. Expects comma-separated"

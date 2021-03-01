@@ -12,6 +12,9 @@ task Motifshufflecolumns {
       ~{if defined(output_file_name) then ("-o " +  '"' + output_file_name + '"') else ""} \
       ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_name: "output file name"
     seed: "pseudo-random number generator seed"

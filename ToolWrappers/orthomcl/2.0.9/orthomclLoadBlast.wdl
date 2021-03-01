@@ -10,6 +10,9 @@ task OrthomclLoadBlast {
       ~{config_file} \
       ~{similar_seqs_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: ""
     similar_seqs_file: ""

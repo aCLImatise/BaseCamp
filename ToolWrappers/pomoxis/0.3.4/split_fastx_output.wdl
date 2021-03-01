@@ -14,6 +14,9 @@ task SplitFastxOutput {
       ~{var_output} \
       ~{chunksize}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     split_fast_x: ""
     var_input: ""

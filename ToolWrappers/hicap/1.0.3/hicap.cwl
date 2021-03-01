@@ -3,22 +3,22 @@ id: hicap.cwl
 inputs:
 - id: in_query_fp
   doc: Input FASTA query
-  type: string
+  type: string?
   inputBinding:
     prefix: --query_fp
 - id: in_output_dir
   doc: Output directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output_dir
 - id: in_help_all
   doc: Display extended help
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --help_all
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: Output directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicap

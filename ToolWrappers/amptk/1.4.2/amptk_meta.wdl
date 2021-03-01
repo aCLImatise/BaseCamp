@@ -16,6 +16,9 @@ task AmptkMeta {
       ~{if (out) then "--out" else ""} \
       ~{if (split_taxonomy) then "--split_taxonomy" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_otu_table: "Input OTU table"
     meta_data_table: "Meta data table (csv format)"

@@ -3,47 +3,47 @@ id: alfred_pwalign.cwl
 inputs:
 - id: in_arg_gap_open
   doc: '[ --gapopen ] arg (=-10)           gap open'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
 - id: in_arg_gap_extension
   doc: '[ --gapext ] arg (=-1)             gap extension'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -e
 - id: in__arg_match
   doc: '[ --match ] arg (=5)               match'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
 - id: in__arg_mismatch
   doc: '[ --mismatch ] arg (=-4)           mismatch'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_p
   doc: '[ --endsfree1 ]                    leading/trailing gaps free for seq1'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_q
   doc: '[ --endsfree2 ]                    leading/trailing gaps free for seq2'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
 - id: in__local_alignment
   doc: '[ --local ]                        local alignment'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_f
   doc: '[ --format ] arg (=h)              output format [v|h]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_arg_verticalhorizontal_alignment
   doc: '[ --alignment ] arg (="al.fa.gz")  vertical/horizontal alignment'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_seq_one_dot_fast_a
@@ -60,6 +60,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - alfred

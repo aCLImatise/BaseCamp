@@ -5,7 +5,7 @@ inputs:
   doc: "menu       [1] Frame(s) to translate (Values: 1 (1); 2\n(2); 3 (3); F (Forward\
     \ three frames); -1\n(-1); -2 (-2); -3 (-3); R (Reverse three\nframes); 6 (All\
     \ six frames))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -frame
 - id: in_table
@@ -17,7 +17,7 @@ inputs:
     \ Yeast Nuclear);\n13 (Ascidian Mitochondrial); 14 (Flatworm\nMitochondrial);\
     \ 15 (Blepharisma\nMacronuclear); 16 (Chlorophycean\nMitochondrial); 21 (Trematode\n\
     Mitochondrial); 22 (Scenedesmus obliquus);\n23 (Thraustochytrium Mitochondrial))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -table
 - id: in_regions
@@ -27,21 +27,21 @@ inputs:
     \ by any non-digit,\nnon-alpha character.\nExamples of region specifications are:\n\
     24-45, 56-78\n1:45, 67=99;765..888\n1,5,8,10,23,45,57,99\nNote: you should not\
     \ try to use this option\nwith any other frame than the default,\n-frame=1"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -regions
 - id: in_trim
   doc: "boolean    [N] This removes all 'X' and '*' characters\nfrom the right end\
     \ of the translation. The\ntrimming process starts at the end and\ncontinues until\
     \ the next character is not a\n'X' or a '*'"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -trim
 - id: in_clean
   doc: "boolean    [N] This changes all STOP codon positions\nfrom the '*' character\
     \ to 'X' (an unknown\nresidue). This is useful because some\nprograms will not\
     \ accept protein sequences\nwith '*' characters in them."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -clean
 - id: in_alternative
@@ -51,13 +51,14 @@ inputs:
     the Staden package and other programs. If\nyou prefer to define frame '-1' as\
     \ using the\nset of codons starting with the last codon\nof the sequence, then\
     \ set this to be true."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -alternative
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - transeq

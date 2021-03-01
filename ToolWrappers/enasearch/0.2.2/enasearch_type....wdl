@@ -12,6 +12,9 @@ task EnasearchType {
       ~{var_command} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ena_search: ""
     var_command: ""

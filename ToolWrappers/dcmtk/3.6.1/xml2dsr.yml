@@ -3,101 +3,123 @@ command:
 - xml2dsr
 positional:
 - !Positional
-  description: 'XML input filename to be converted (stdin: "-")'
+  optional: false
   position: 0
   name: xmlfile-in
-  optional: false
+  description: 'XML input filename to be converted (stdin: "-")'
 - !Positional
-  description: DICOM SR output filename
+  optional: false
   position: 1
   name: dsrfile-out
-  optional: false
+  description: DICOM SR output filename
 named:
 - !Flag
-  description: print expanded command line arguments
+  optional: true
   synonyms:
   - --arguments
+  description: print expanded command line arguments
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: --quiet                quiet mode, print no warnings and errors
+  optional: true
   synonyms:
   - -q
+  - --quiet
+  description: quiet mode, print no warnings and errors
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: --verbose              verbose mode, print processing details
+  optional: true
   synonyms:
   - -v
+  - --verbose
+  description: verbose mode, print processing details
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: --debug                debug mode, print debug information
+  optional: true
   synonyms:
   - -d
+  - --debug
+  description: debug mode, print debug information
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "--log-level            [l]evel: string constant\n(fatal, error, warn,\
-    \ info, debug, trace)\nuse level l for the logger"
+  optional: true
   synonyms:
   - -ll
+  - --log-level
+  description: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\n\
+    use level l for the logger"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "--log-config           [f]ilename: string\nuse config file f for the\
-    \ logger"
+  optional: true
   synonyms:
   - -lc
+  - --log-config
+  description: "[f]ilename: string\nuse config file f for the logger"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: do not overwrite existing UIDs (default)
+  optional: true
   synonyms:
   - -Uo
   - --dont-overwrite-uids
+  description: do not overwrite existing UIDs (default)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: --write-dataset        write data set without file meta information
+  optional: true
   synonyms:
   - -F
+  - --write-dataset
+  description: write data set without file meta information
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: --disable-new-vr       disable support for new VRs, convert to OB
+  optional: true
   synonyms:
   - -u
+  - --disable-new-vr
+  description: disable support for new VRs, convert to OB
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: --group-length-remove  always write without group length elements
+  optional: true
   synonyms:
   - -g
+  - --group-length-remove
+  description: always write without group length elements
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: --length-undefined     write with undefined lengths
+  optional: true
   synonyms:
   - -e
+  - --length-undefined
+  description: write with undefined lengths
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -p
+  description: "=  --padding-retain       do not change padding\n(default if not --write-dataset)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --padding-off
+  description: no padding (implicit if --write-dataset)
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: --help                 print this help text and exit
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: print this help text and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: print version information and exit
+  optional: true
   synonyms:
   - --version
+  description: print version information and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "$dcmtk: xml2dsr v3.6.1 2016-11-02 $\n\nxml2dsr: Convert XML document to\
   \ DICOM SR file\nusage: xml2dsr [options] xmlfile-in dsrfile-out\n\nparameters:\n\
   \  xmlfile-in                    XML input filename to be converted (stdin: \"-\"\
@@ -142,3 +164,4 @@ help_text: "$dcmtk: xml2dsr v3.6.1 2016-11-02 $\n\nxml2dsr: Convert XML document
   \                 0=uncompressed, 1=fastest, 9=best compression\n\n"
 generated_using:
 - --help
+docker_image:

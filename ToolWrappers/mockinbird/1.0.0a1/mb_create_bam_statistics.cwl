@@ -3,7 +3,7 @@ id: mb_create_bam_statistics.cwl
 inputs:
 - id: in_gff_file
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: --gff_file
 - id: in_estimate_bam_statistics
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mb-create-bam-statistics

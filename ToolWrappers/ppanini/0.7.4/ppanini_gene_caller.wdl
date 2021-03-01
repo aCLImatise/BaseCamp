@@ -22,6 +22,9 @@ task PpaniniGeneCaller {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (one_contig) then "--one-contig" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contig: "contigs file (fna)"
     fast_q: "reads file (fastq)"

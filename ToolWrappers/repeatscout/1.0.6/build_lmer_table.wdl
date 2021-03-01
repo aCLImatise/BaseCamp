@@ -20,6 +20,9 @@ task BuildLmerTable {
       ~{if defined(sequence) then ("-sequence " +  '"' + sequence + '"') else ""} \
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tandem: "--- tandem distance window (def: 500)"
     min: "<#> --- smallest number of required lmers (def: 3)"

@@ -1,0 +1,163 @@
+!Command
+command:
+- DupMasker
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: one.
+  description: 'The output is placed in a file named '
+- !Positional
+  optional: false
+  position: 1
+  name: myfile.fa.duplicons.
+  description: "The basic program flow is:\n- RepeatMask the sequence ( Human libraries\
+    \ )\n- Search the masked squence against the duplicon library\n- Build realignment\
+    \ regions for each duplicon\n- Realign using non-repeat-masked dna\n- Join duplicons\
+    \ and output results"
+- !Positional
+  optional: false
+  position: 0
+  name: RepeatMasker
+  description: COPYRIGHT
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -version
+  description: Displays the version of the program
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -engine
+  description: "The name of the search engine we are using. I.e abblast/wublast or\n\
+    ncbi (rmblast version). If not specified it will attempt to use the\ndefault configured\
+    \ for RepeatMasker."
+  args: !SimpleFlagArg
+    name: abblast|wublast|ncbi
+- !Flag
+  optional: true
+  synonyms:
+  - -maxDiv
+  description: "Filter out duplicon seeds which have a divergence greater than this\n\
+    value."
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -maxWidth
+  description: The maximum non-repetitive/non-seed realign gaps, default is 300bp
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -forceSearch
+  description: "DupMasker uses RepeatMasker .out and previous runs of DupMasker's\n\
+    *.dupout files by default. Use this option if you would like to\nrerun these searches."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -align
+  description: Produce alignments. These are stored in the output file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gff
+  description: Creates an additional Gene Feature Finding (gff) output file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -crossmatch_dir
+  description: The path Phil Green's cross_match program ( phrap program suite ).
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -default_search_engine
+  description: The default search engine to use
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -rmblast_dir
+  description: "The path to the installation of the RMBLAST sequence alignment\nprogram."
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -libdir
+  description: Path to the RepeatMasker libraries directory.
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -abblast_dir
+  description: "The path to the installation of the ABBLAST sequence alignment\nprogram."
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -hmmer_dir
+  description: The path to the HMMER profile HMM search software.
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -trf_prgm
+  description: The full path including the name for the TRF program.
+  args: !SimpleFlagArg
+    name: string
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "/usr/local/bin/DupMasker - 4.1.1\nNAME\n    DupMasker - Annotate segmental\
+  \ duplications in a sequence\n\nSYNOPSIS\n      DupMasker [-version] [-maxDiv #]\
+  \ [-maxWidth #] [-forceSearch] \n                [-align] [-gff] [-engine wublast|abblast|ncbi]\
+  \ <myfile.fa>\n\nDESCRIPTION\n      Search a file against a library known segmental\
+  \ \n      duplications. If the file doesn't already have a \n      RepeatMasker\
+  \ *.out file this script will generate\n      one.  The output is placed in a file\
+  \ named \n      myfile.fa.duplicons.\n\n      The basic program flow is:\n\n   \
+  \      - RepeatMask the sequence ( Human libraries )\n         - Search the masked\
+  \ squence against the duplicon library\n         - Build realignment regions for\
+  \ each duplicon\n         - Realign using non-repeat-masked dna\n         - Join\
+  \ duplicons and output results\n\n    The options are:\n\n    -version\n       \
+  \ Displays the version of the program\n\n    -engine <abblast|wublast|ncbi>\n  \
+  \      The name of the search engine we are using. I.e abblast/wublast or\n    \
+  \    ncbi (rmblast version). If not specified it will attempt to use the\n     \
+  \   default configured for RepeatMasker.\n\n    -maxDiv <value>\n        Filter\
+  \ out duplicon seeds which have a divergence greater than this\n        value.\n\
+  \n    -maxWidth <value>\n        The maximum non-repetitive/non-seed realign gaps,\
+  \ default is 300bp\n\n    -forceSearch\n        DupMasker uses RepeatMasker .out\
+  \ and previous runs of DupMasker's\n        *.dupout files by default. Use this\
+  \ option if you would like to\n        rerun these searches.\n\n    -align\n   \
+  \     Produce alignments. These are stored in the output file.\n\n    -gff\n   \
+  \     Creates an additional Gene Feature Finding (gff) output file.\n\nCONFIGURATION\
+  \ OVERRIDES\n    -crossmatch_dir <string>\n        The path Phil Green's cross_match\
+  \ program ( phrap program suite ).\n\n    -default_search_engine <string>\n    \
+  \    The default search engine to use\n\n    -rmblast_dir <string>\n        The\
+  \ path to the installation of the RMBLAST sequence alignment\n        program.\n\
+  \n    -libdir <string>\n        Path to the RepeatMasker libraries directory.\n\n\
+  \    -abblast_dir <string>\n        The path to the installation of the ABBLAST\
+  \ sequence alignment\n        program.\n\n    -hmmer_dir <string>\n        The path\
+  \ to the HMMER profile HMM search software.\n\n    -trf_prgm <string>\n        The\
+  \ full path including the name for the TRF program.\n\nSEE ALSO\n    RepeatMasker\n\
+  \nCOPYRIGHT\n    Copyright 2007-2019 Robert Hubley, Institute for Systems Biology\n\
+  \nAUTHOR\n    Robert Hubley <rhubley@systemsbiology.org>\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/repeatmasker:4.1.1--pl526_1

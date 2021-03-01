@@ -4,6 +4,9 @@ task Filteroriginalfusion {
   command <<<
     filteroriginalfusion
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -12,6 +12,9 @@ task CategoriseSnpspy {
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
       ~{if defined(a) then ("-a " +  '"' + a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metadata: ""
     l: ""

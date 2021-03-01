@@ -26,6 +26,9 @@ task PortcullisRuleFilter {
       ~{json} \
       ~{configuration_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     script: ""
     to: ""

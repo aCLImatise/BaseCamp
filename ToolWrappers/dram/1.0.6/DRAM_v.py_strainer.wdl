@@ -38,6 +38,9 @@ task DRAMvpyStrainer {
       ~{if (remove_fs) then "--remove_fs" else ""} \
       ~{if (remove_js) then "--remove_js" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_annotations: "annotations file to pull genes from (default: None)"
     input_fast_a: "fasta file to filter (default: None)"

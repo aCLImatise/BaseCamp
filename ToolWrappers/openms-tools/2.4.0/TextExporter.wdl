@@ -26,6 +26,9 @@ task TextExporter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                              Input file  (valid formats: 'featureXML', 'consensusXML', 'idXML', 'mzML')"
     out: "Output file (mandatory for featureXML and idXML) (valid formats: 'csv')"

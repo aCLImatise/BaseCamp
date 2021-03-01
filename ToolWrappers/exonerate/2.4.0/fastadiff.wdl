@@ -4,6 +4,9 @@ task Fastadiff {
   command <<<
     fastadiff
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

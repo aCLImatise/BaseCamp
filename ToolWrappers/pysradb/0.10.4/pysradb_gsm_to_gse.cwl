@@ -3,28 +3,28 @@ id: pysradb_gsm_to_gse.cwl
 inputs:
 - id: in_db
   doc: Path to SRAmetadb.sqlite file
-  type: File
+  type: File?
   inputBinding:
     prefix: --db
 - id: in_save_to
   doc: Save output to file
-  type: File
+  type: File?
   inputBinding:
     prefix: --saveto
 - id: in_detailed
   doc: "Output additional columns: [sample_accession (SRS),\nrun_accession (SRR),\
     \ sample_alias (GSM), run_alias (GSM_r)]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --detailed
 - id: in_desc
   doc: Should sample_attribute be included
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --desc
 - id: in_expand
   doc: Should sample_attribute be expanded
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --expand
 - id: in_gsm_ids
@@ -38,9 +38,10 @@ outputs:
   type: stdout
 - id: out_save_to
   doc: Save output to file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_save_to)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pysradb

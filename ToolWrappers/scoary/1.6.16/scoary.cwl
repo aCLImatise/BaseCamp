@@ -5,48 +5,48 @@ inputs:
   doc: "Input trait table (comma-separated-values). Trait\npresence is indicated by\
     \ 1, trait absence by 0.\nAssumes strain names in the first column and trait\n\
     names in the first row"
-  type: long
+  type: long?
   inputBinding:
     prefix: --traits
 - id: in_genes
   doc: "Input gene presence/absence table (comma-separated-\nvalues) from ROARY. Strain\
     \ names must be equal to\nthose in the trait table"
-  type: string
+  type: string?
   inputBinding:
     prefix: --genes
 - id: in_newick_tree
   doc: "Supply a custom tree (Newick format) for phylogenetic\nanalyses instead instead\
     \ of calculating it internally."
-  type: string
+  type: string?
   inputBinding:
     prefix: --newicktree
 - id: in_start_col
   doc: "On which column in the gene presence/absence file do\nindividual strain info\
     \ start. Default=15. (1-based\nindexing)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --start_col
 - id: in_delimiter
   doc: "The delimiter between cells in the gene\npresence/absence and trait files,\
     \ as well as the\noutput file."
-  type: File
+  type: File?
   inputBinding:
     prefix: --delimiter
 - id: in_restrict_to
   doc: "Use if you only want to analyze a subset of your\nstrains. Scoary will read\
     \ the provided comma-separated\ntable of strains and restrict analyzes to these."
-  type: string
+  type: string?
   inputBinding:
     prefix: --restrict_to
 - id: in_outdir
   doc: Directory to place output files. Default = .
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_upgma_tree
   doc: "This flag will cause Scoary to write the calculated\nUPGMA tree to a newick\
     \ file"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --upgma_tree
 - id: in_p_value_cut_off
@@ -75,20 +75,20 @@ inputs:
     \ to the empirical\n(permuted) p-values, i.e. it will filter everything\nexcept\
     \ the upper and lower 2.5 percent of the\ndistribution. Default = Individual p-value.\
     \ (I)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_max_hits
   doc: "Maximum number of hits to report. SCOARY will only\nreport the top max_hits\
     \ results per trait"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_hits
 - id: in_include_input_columns
   doc: "Grab columns from the input Roary file. and puts them\nin the output. Handles\
     \ comma and ranges, e.g.\n--include_input_columns 4,6,8,16-23. The special\nkeyword\
     \ ALL will include all relevant input columns in\nthe output"
-  type: File
+  type: File?
   inputBinding:
     prefix: --include_input_columns
 - id: in_write_reduced
@@ -96,14 +96,14 @@ inputs:
     \ from your reduced set of\nisolates. Note: Columns 1-14 (No. sequences, Avg group\n\
     size nuc etc) in this file do not reflect the reduced\ndataset. These are taken\
     \ from the full dataset."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --write_reduced
 - id: in_no_time
   doc: "Output file in the form TRAIT.results.csv, instead of\nTRAIT_TIMESTAMP.csv.\
     \ When used with the -w argument\nwill output a reduced gene matrix in the form\n\
     gene_presence_absence_reduced.csv rather than\ngene_presence_absence_reduced_TIMESTAMP.csv"
-  type: File
+  type: File?
   inputBinding:
     prefix: --no-time
 - id: in_permute
@@ -112,7 +112,7 @@ inputs:
     \ is\ncalculated according to this new dataset. After all N\npermutations are\
     \ completed, the results are ordered in\nascending order, and the percentile of\
     \ the original\nresult in the permuted p-value distribution is\nreported."
-  type: long
+  type: long?
   inputBinding:
     prefix: --permute
 - id: in_no_pairwise
@@ -120,28 +120,28 @@ inputs:
     \ structure-naive\ncalculations only. (Fishers test, ORs etc). Useful for\nsummary\
     \ operations and exploring sets. (Genes unique\nin groups, intersections etc)\
     \ but not causal analyses."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_pairwise
 - id: in_collapse
   doc: "Add this to collapse correlated genes (genes that have\nidentical distribution\
     \ patterns in the sample) into\nmerged units."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --collapse
 - id: in_threads
   doc: Number of threads to use. Default = 1
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_test
   doc: "Run Scoary on the test set in exampledata, overriding\nall other parameters."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --test
 - id: in_citation
   doc: Show citation information, and exit.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --citation
 outputs:
@@ -151,21 +151,22 @@ outputs:
 - id: out_delimiter
   doc: "The delimiter between cells in the gene\npresence/absence and trait files,\
     \ as well as the\noutput file."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_delimiter)
 - id: out_outdir
   doc: Directory to place output files. Default = .
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
 - id: out_no_time
   doc: "Output file in the form TRAIT.results.csv, instead of\nTRAIT_TIMESTAMP.csv.\
     \ When used with the -w argument\nwill output a reduced gene matrix in the form\n\
     gene_presence_absence_reduced.csv rather than\ngene_presence_absence_reduced_TIMESTAMP.csv"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_no_time)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - scoary

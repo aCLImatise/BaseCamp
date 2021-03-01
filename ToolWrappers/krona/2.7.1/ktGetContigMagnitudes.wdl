@@ -4,6 +4,9 @@ task KtGetContigMagnitudes {
   command <<<
     ktGetContigMagnitudes
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

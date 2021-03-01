@@ -16,6 +16,9 @@ task Compseq {
       ~{if (frame) then "-frame" else ""} \
       ~{if (calc_freq) then "-calcfreq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     word: "integer    [2] This is the size of word (n-mer) to"
     in_file: "infile     This is a file previously produced by\\n'compseq' that can be used to set the\\nexpected frequencies of words in this\\nanalysis.\\nThe word size in the current run must be the\\nsame as the one in this results file.\\nObviously, you should use a file produced\\nfrom protein sequences if you are counting\\nprotein sequence word frequencies, and you\\nmust use one made from nucleotide\\nfrequencies if you are analysing a\\nnucleotide sequence."

@@ -68,6 +68,9 @@ task Abyssbloomdistmk {
       ~{if defined(assume_new) then ("--assume-new " +  '"' + assume_new + '"') else ""} \
       ~{if (warn_undefined_variables) then "--warn-undefined-variables" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignored_for_compatibility: "Ignored for compatibility."
     always_make: "Unconditionally make all targets."

@@ -8,6 +8,9 @@ task Xmlget {
     xmlget \
       ~{if (xml) then "-xml" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     xml: ": enter xml value: Error: Unable to get reply from user - end of standard input"
   }

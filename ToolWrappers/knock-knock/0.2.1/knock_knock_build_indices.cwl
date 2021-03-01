@@ -3,7 +3,7 @@ id: knock_knock_build_indices.cwl
 inputs:
 - id: in_num_threads
   doc: "number of threads to use for index building\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-threads
 - id: in_project_directory
@@ -21,6 +21,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - knock-knock

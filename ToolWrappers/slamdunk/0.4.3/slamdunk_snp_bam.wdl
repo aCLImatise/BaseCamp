@@ -20,6 +20,9 @@ task SlamdunkSnpBam {
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
     f: ""

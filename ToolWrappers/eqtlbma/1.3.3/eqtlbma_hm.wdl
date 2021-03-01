@@ -46,6 +46,9 @@ task EqtlbmaHm {
       ~{if (pi_zero) then "--pi0" else ""} \
       ~{if (ci) then "--ci" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "level (0/default=1/2/3)"
     data: "input data (usually output files from eqtlbma_bf)"

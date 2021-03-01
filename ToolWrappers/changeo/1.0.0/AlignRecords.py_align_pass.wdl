@@ -8,6 +8,9 @@ task AlignRecordspyAlignpass {
     AlignRecords_py align_pass \
       ~{align_records_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     align_records_do_tpy: ""
   }

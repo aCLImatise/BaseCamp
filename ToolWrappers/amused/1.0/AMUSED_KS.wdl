@@ -24,6 +24,9 @@ task AMUSEDKS {
       ~{if (one_p) then "-1p" else ""} \
       ~{if (nu) then "-nu" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _query_sequences: "= query sequences"
     compare_seqs_background: "= compare seqs to these background seqs"

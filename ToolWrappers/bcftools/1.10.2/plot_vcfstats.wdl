@@ -22,6 +22,9 @@ task Plotvcfstats {
       ~{if defined(main_title) then ("--main-title " +  '"' + main_title + '"') else ""} \
       ~{if (vectors) then "--vectors" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     merge: "Merge vcfstats files to STDOUT, skip plotting."
     prefix: "Output directory."

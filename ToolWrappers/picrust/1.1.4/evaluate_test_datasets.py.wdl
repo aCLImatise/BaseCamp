@@ -20,6 +20,9 @@ task EvaluateTestDatasetspy {
       ~{if defined(exp_trait_table_dir) then ("--exp_trait_table_dir " +  '"' + exp_trait_table_dir + '"') else ""} \
       ~{if defined(output_dir) then ("--output_dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     field_order: "pass comma-separated categories, in the order they\\nappear in file names.   Categories are \\\"file_type\\\",\\\"pr\\nediction_method\\\",\\\"weighting_method\\\",\\\"holdout_method\\\"\\n(randomization vs. holdout),\\\"distance\\\",and \\\"organism\\\".\\nExample:  \\\"-f file_type,test_method,asr_method\\nspecifies that files will be in the form:\\npredict_traits--distance_exclusion--wagner.  Any\\nunspecified values are set to \\\"not_specified\\\".\\n[default: file_type,prediction_method,weighting_method\\n,holdout_method,distance,organism]"

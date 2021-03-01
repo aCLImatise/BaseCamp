@@ -10,6 +10,9 @@ task MotifRaptorInfoPara {
       ~{motif_raptor} \
       ~{info}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     motif_raptor: ""
     info: ""

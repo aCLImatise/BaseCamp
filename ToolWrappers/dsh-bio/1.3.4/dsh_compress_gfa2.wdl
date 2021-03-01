@@ -14,6 +14,9 @@ task Dshcompressgfa2 {
       ~{if (input_gfa_two_file) then "--input-gfa2-file" else ""} \
       ~{if (output_gfa_two_file) then "--output-gfa2-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     input_gfa_two_file: "[class java.io.File]  input GFA 2.0 file, default stdin [optional]"

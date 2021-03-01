@@ -16,6 +16,9 @@ task BpSeqfeatureGff3pl {
       ~{if (password) then "--password" else ""} \
       ~{if (gff_three_opt) then "--gff3opt" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dsn: "The database name ()"
     adaptor: "The storage adaptor to use ()"

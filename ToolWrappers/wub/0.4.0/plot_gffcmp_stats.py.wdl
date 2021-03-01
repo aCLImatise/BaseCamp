@@ -12,6 +12,9 @@ task PlotGffcmpStatspy {
       ~{if defined(report_pdf_plotgffcmpstatspdf) then ("-r " +  '"' + report_pdf_plotgffcmpstatspdf + '"') else ""} \
       ~{if defined(output_pickle_file) then ("-p " +  '"' + output_pickle_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report_pdf_plotgffcmpstatspdf: "Report PDF (plot_gffcmp_stats.pdf)."
     output_pickle_file: "Output pickle file."

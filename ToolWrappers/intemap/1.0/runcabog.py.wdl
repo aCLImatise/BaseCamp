@@ -12,6 +12,9 @@ task Runcabogpy {
       ~{readfile} \
       ~{library_info_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     para_file: ""
     readfile: ""

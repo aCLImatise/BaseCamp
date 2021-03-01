@@ -20,6 +20,9 @@ task MafExtractRangesIndexedpy {
       ~{if defined(dir) then ("--dir " +  '"' + dir + '"') else ""} \
       ~{if (use_cache) then "--usecache" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_cols: "Minimum length (columns) required for alignment to be\\noutput"
     chop: "Should blocks be chopped to only portion overlapping\\n(no by default)"

@@ -1,0 +1,163 @@
+!Command
+command:
+- recognizer.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: "Number of threads for reCOGnizer to use. Default is\nnumber of CPUs\
+    \ available minus 2."
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output directory
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -dr
+  - --download-resources
+  description: "If resources for reCOGnizer are not available at\n\"resources_directory\""
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rd
+  - --resources-directory
+  description: "Output directory for storing databases and other\nresources"
+  args: !SimpleFlagArg
+    name: RESOURCES_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -dbs
+  description: "[{CDD,Pfam,NCBIfam,Protein_Clusters,Smart,TIGRFAM,COG,KOG} ...], --databases\
+    \ {CDD,Pfam,NCBIfam,Protein_Clusters,Smart,TIGRFAM,COG,KOG} [{CDD,Pfam,NCBIfam,Protein_Clusters,Smart,TIGRFAM,COG,KOG}\
+    \ ...]\nDatabases to include in functional annotation"
+  args: !ChoiceFlagArg
+    choices: !!set
+      Smart:
+      TIGRFAM:
+      COG:
+      Protein_Clusters:
+      NCBIfam:
+      Pfam:
+      CDD:
+      KOG:
+- !Flag
+  optional: true
+  synonyms:
+  - -db
+  - --database
+  description: "Basename of database for annotation. If multiple\ndatabases, use comma\
+    \ separated list (db1,db2,db3)"
+  args: !SimpleFlagArg
+    name: DATABASE
+- !Flag
+  optional: true
+  synonyms:
+  - --custom-database
+  description: If database was NOT produced by reCOGnizer
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -seqs
+  - --max-target-seqs
+  description: "Number of maximum identifications for each protein.\nDefault is 1."
+  args: !SimpleFlagArg
+    name: MAX_TARGET_SEQS
+- !Flag
+  optional: true
+  synonyms:
+  - --tsv
+  description: Tables will be produced in TSV format (and not EXCEL).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --remove-spaces
+  description: "BLAST ignores sequences IDs after the first space.\nThis option changes\
+    \ all spaces to underscores to keep\nthe full IDs."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-output-sequences
+  description: "Protein sequences from the FASTA input will be stored\nin their own\
+    \ column."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-blast-info
+  description: "Information from the alignment will be stored in their\nown columns."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --file
+  description: Fasta file with protein sequences for annotation
+  args: !SimpleFlagArg
+    name: FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: recognizer.py [-h] [-t THREADS] [-o OUTPUT] [-dr]\n           \
+  \          [-rd RESOURCES_DIRECTORY]\n                     [-dbs {CDD,Pfam,NCBIfam,Protein_Clusters,Smart,TIGRFAM,COG,KOG}\
+  \ [{CDD,Pfam,NCBIfam,Protein_Clusters,Smart,TIGRFAM,COG,KOG} ...]]\n           \
+  \          [-db DATABASE] [--custom-database]\n                     [-seqs MAX_TARGET_SEQS]\
+  \ [--tsv] [--remove-spaces]\n                     [--no-output-sequences] [--no-blast-info]\
+  \ [-v] -f FILE\n\nreCOGnizer - a tool for domain based annotation with the COG database\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -t THREADS, --threads THREADS\n                        Number of threads for\
+  \ reCOGnizer to use. Default is\n                        number of CPUs available\
+  \ minus 2.\n  -o OUTPUT, --output OUTPUT\n                        Output directory\n\
+  \  -dr, --download-resources\n                        If resources for reCOGnizer\
+  \ are not available at\n                        \"resources_directory\"\n  -rd RESOURCES_DIRECTORY,\
+  \ --resources-directory RESOURCES_DIRECTORY\n                        Output directory\
+  \ for storing databases and other\n                        resources\n  -dbs {CDD,Pfam,NCBIfam,Protein_Clusters,Smart,TIGRFAM,COG,KOG}\
+  \ [{CDD,Pfam,NCBIfam,Protein_Clusters,Smart,TIGRFAM,COG,KOG} ...], --databases {CDD,Pfam,NCBIfam,Protein_Clusters,Smart,TIGRFAM,COG,KOG}\
+  \ [{CDD,Pfam,NCBIfam,Protein_Clusters,Smart,TIGRFAM,COG,KOG} ...]\n            \
+  \            Databases to include in functional annotation\n  -db DATABASE, --database\
+  \ DATABASE\n                        Basename of database for annotation. If multiple\n\
+  \                        databases, use comma separated list (db1,db2,db3)\n  --custom-database\
+  \     If database was NOT produced by reCOGnizer\n  -seqs MAX_TARGET_SEQS, --max-target-seqs\
+  \ MAX_TARGET_SEQS\n                        Number of maximum identifications for\
+  \ each protein.\n                        Default is 1.\n  --tsv                \
+  \ Tables will be produced in TSV format (and not EXCEL).\n  --remove-spaces    \
+  \   BLAST ignores sequences IDs after the first space.\n                       \
+  \ This option changes all spaces to underscores to keep\n                      \
+  \  the full IDs.\n  --no-output-sequences\n                        Protein sequences\
+  \ from the FASTA input will be stored\n                        in their own column.\n\
+  \  --no-blast-info       Information from the alignment will be stored in their\n\
+  \                        own columns.\n  -v, --version         show program's version\
+  \ number and exit\n\nrequired named arguments:\n  -f FILE, --file FILE  Fasta file\
+  \ with protein sequences for annotation\n\nInput file must be specified.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/recognizer:1.4.2--0

@@ -16,6 +16,9 @@ task GmxTrjconvStr {
       ~{if defined(input_top_path) then ("--input_top_path " +  '"' + input_top_path + '"') else ""} \
       ~{if defined(output_str_path) then ("--output_str_path " +  '"' + output_str_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Configuration file"
     input_index_path: "Path to the GROMACS index file. Accepted formats: ndx."

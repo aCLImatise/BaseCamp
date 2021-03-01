@@ -1,0 +1,73 @@
+!Command
+command:
+- TOBIAS
+- FilterFragments
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --bam
+  description: .bam-file to filter
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --regions
+  description: .bed-file containing regions to filter fragments from
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mode
+  description: "Mode 1: Remove fragment if both reads overlap .bed-regions. Mode 2:\n\
+    Remove whole fragment if one read is overlapping .bed-regions\n(default: 1)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '2':
+      '1':
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: 'Path to the filtered .bam-file (default: <prefix of'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: "Number of threads used for decompressing/compressing bam (default:\n\
+    10)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: "Level of output logging (0: silent, 1: errors/warnings, 2: info, 3:\n\
+    stats, 4: debug, 5: spam) (default: 3)\n"
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "__________________________________________________________________________________________\n\
+  \n                                 TOBIAS ~ FilterFragments                    \
+  \             \n__________________________________________________________________________________________\n\
+  \nFilterFragments can filter out fragments from a .bam-file of paired-end reads\
+  \ based on the\noverlap with regions in the given .bed-file.\n\n------------------------------------------------------------------------------------------\n\
+  \nInput / output arguments:\n  --bam              .bam-file to filter\n  --regions\
+  \          .bed-file containing regions to filter fragments from\n  --mode {1,2}\
+  \       Mode 1: Remove fragment if both reads overlap .bed-regions. Mode 2:\n  \
+  \                   Remove whole fragment if one read is overlapping .bed-regions\n\
+  \                     (default: 1)\n  --output           Path to the filtered .bam-file\
+  \ (default: <prefix of\n                     --bam>_filtered.bam)\n  --threads \
+  \         Number of threads used for decompressing/compressing bam (default:\n \
+  \                    10)\n  --verbosity <int>  Level of output logging (0: silent,\
+  \ 1: errors/warnings, 2: info, 3:\n                     stats, 4: debug, 5: spam)\
+  \ (default: 3)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tobias:0.12.9--py36h29c9776_0

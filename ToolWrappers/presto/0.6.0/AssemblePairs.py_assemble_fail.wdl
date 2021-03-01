@@ -8,6 +8,9 @@ task AssemblePairspyAssemblefail {
     AssemblePairs_py assemble_fail \
       ~{assemble_pairs_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assemble_pairs_do_tpy: ""
   }

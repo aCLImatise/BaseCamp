@@ -3,7 +3,7 @@ id: dtc.cwl
 inputs:
 - id: in_min_sum
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -minsum
 - id: in_copyright
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dtc

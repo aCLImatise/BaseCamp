@@ -16,6 +16,9 @@ task Readlinker {
       ~{if defined(minimum_overlapping_length) then ("-l " +  '"' + minimum_overlapping_length + '"') else ""} \
       ~{if defined(maximum_number_errors) then ("-e " +  '"' + maximum_number_errors + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_first_end: "Input file, first end;"
     input_file_second_end: "Input file, second end;"

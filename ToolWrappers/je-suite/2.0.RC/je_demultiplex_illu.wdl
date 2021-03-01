@@ -2,7 +2,7 @@ version 1.0
 
 task JeDemultiplexillu {
   input {
-    Boolean? displays_options_specific
+    Boolean? std_help
     String data_dot
     String required_dot
     String or
@@ -24,10 +24,13 @@ task JeDemultiplexillu {
       ~{detected_dot} \
       ~{barcoded_dot} \
       ~{null_dot} \
-      ~{if (displays_options_specific) then "-H" else ""}
+      ~{if (std_help) then "--stdhelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    displays_options_specific: "Displays options specific to this tool AND options common to all Picard command line\\ntools."
+    std_help: "Displays options specific to this tool AND options common to all Picard command line\\ntools."
     data_dot: "Required. "
     required_dot: "INDEX_FILE2=File"
     or: "sample1          ATAT|GAGG:CCAA|TGTG     spl1_1.txt.gz   spl1_2.txt.gz"

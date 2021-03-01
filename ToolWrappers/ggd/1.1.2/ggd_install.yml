@@ -1,0 +1,98 @@
+!Command
+command:
+- ggd
+- install
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: name
+  description: "The data package name to install. Can use more than\nonce (e.g. ggd\
+    \ install <pkg 1> <pkg 2> <pkg 3> ).\n(NOTE: No need to designate version as it\
+    \ is\nimplicated in the package name)"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --channel
+  description: "The ggd channel the desired recipe is stored in.\n(Default = genomics)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      genomics:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: "(Optional) When the -d flag is set debug output will\nbe printed to\
+    \ stdout."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --file
+  description: "A file with a list of ggd data packages to install.\nOne package per\
+    \ line. Can use more than one (e.g. ggd\ninstall --file <file_1> --file <file_2>\
+    \ )"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  description: "(Optional) The name or the full directory path to an\nexisting conda\
+    \ environment where you want to install a\nggd data package. (Only needed if you\
+    \ want to install\nthe data package into a different conda environment\nthen the\
+    \ one you are currently in)"
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --id
+  description: "ID   The ID to use for the meta recipe being installed. For\nexample,\
+    \ if installing the GEO meta-recipe for GEO\nAccession ID GSE123, use `--id GSE123`\
+    \ NOTE: GGD will\nNOT try to correct the ID. The ID must be accurately\nentered\
+    \ with case sensitive alphanumeric order\n"
+  args: !SimpleFlagArg
+    name: Meta-recipe
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: ggd install [-h] [-c {genomics}] [-d] [--file FILE] [--prefix PREFIX]\n\
+  \                   [--id Meta-recipe ID]\n                   [name [name ...]]\n\
+  \nInstall a ggd data package into the current or specified conda environment\n\n\
+  positional arguments:\n  name                  The data package name to install.\
+  \ Can use more than\n                        once (e.g. ggd install <pkg 1> <pkg\
+  \ 2> <pkg 3> ).\n                        (NOTE: No need to designate version as\
+  \ it is\n                        implicated in the package name)\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -c {genomics}, --channel\
+  \ {genomics}\n                        The ggd channel the desired recipe is stored\
+  \ in.\n                        (Default = genomics)\n  -d, --debug           (Optional)\
+  \ When the -d flag is set debug output will\n                        be printed\
+  \ to stdout.\n  --file FILE           A file with a list of ggd data packages to\
+  \ install.\n                        One package per line. Can use more than one\
+  \ (e.g. ggd\n                        install --file <file_1> --file <file_2> )\n\
+  \  --prefix PREFIX       (Optional) The name or the full directory path to an\n\
+  \                        existing conda environment where you want to install a\n\
+  \                        ggd data package. (Only needed if you want to install\n\
+  \                        the data package into a different conda environment\n \
+  \                       then the one you are currently in)\n  --id Meta-recipe ID\
+  \   The ID to use for the meta recipe being installed. For\n                   \
+  \     example, if installing the GEO meta-recipe for GEO\n                     \
+  \   Accession ID GSE123, use `--id GSE123` NOTE: GGD will\n                    \
+  \    NOT try to correct the ID. The ID must be accurately\n                    \
+  \    entered with case sensitive alphanumeric order\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ggd:1.1.2--pyh3252c3a_0

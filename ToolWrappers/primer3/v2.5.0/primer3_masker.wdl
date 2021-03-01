@@ -24,6 +24,9 @@ task Primer3Masker {
       ~{if (soft_mask) then "--soft_mask" else ""} \
       ~{if (masking_direction) then "--masking_direction" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er_lists_path: "- path to the kmer list files (default: ../kmer_lists/)"
     list_prefix: "- prefix of the k-mer lists to use with default model (default: homo_sapiens)"

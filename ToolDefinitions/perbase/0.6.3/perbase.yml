@@ -1,0 +1,478 @@
+&id001 !Command
+command:
+- perbase
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - perbase
+  - merge-adjacent
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: FLAGS
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --no-header
+    description: Indicate if the input file does not have a header
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: The output location, defaults to STDOUT
+    args: !SimpleFlagArg
+      name: output
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "perbase-merge-adjacent 0.6.3\nSeth Stadick <sstadick@gmail.com>\nMerge\
+    \ adjacent intervals that have the same depth. Input must be sorted like: `sort\
+    \ -k1,1 -k2,2n in.bed > in.sorted.bed`\n\nGenerally accepts any file with no header\
+    \ tha is <chrom>\\t<start>\\t<stop>\\t<depth>. The <stop> is optional. See\ndocumentation\
+    \ for explaination of headers that are accepted.\n\nUSAGE:\n    perbase merge-adjacent\
+    \ [FLAGS] [OPTIONS] [in-file]\n\nFLAGS:\n    -h, --help         \n           \
+    \ Prints help information\n\n    -n, --no-header    \n            Indicate if\
+    \ the input file does not have a header\n\n    -V, --version      \n         \
+    \   Prints version information\n\n\nOPTIONS:\n    -o, --output <output>    \n\
+    \            The output location, defaults to STDOUT\n\n\nARGS:\n    <in-file>\
+    \    \n            Input bed-like file, defaults to STDIN\n\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/perbase:0.6.3--h35a96ae_0
+- !Command
+  command:
+  - perbase
+  - base-depth
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: FLAGS
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --mate-fix
+    description: Fix overlapping mates counts, see docs for full details
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -z
+    - --zero-base
+    description: Output positions as 0-based instead of 1-based
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -B
+    - --bcf-file
+    description: "A BCF/VCF file containing positions of interest. If specified, only\
+      \ bases from the given positions will be\nreported on"
+    args: !SimpleFlagArg
+      name: bcf-file
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --bed-file
+    description: "A BED file containing regions of interest. If specified, only bases\
+      \ from the given regions will be reported\non"
+    args: !SimpleFlagArg
+      name: bed-file
+  - !Flag
+    optional: true
+    synonyms:
+    - -C
+    - --channel-size-modifier
+    description: "The fraction of a gigabyte to allocate per thread for message passing,\
+      \ can be greater than 1.0 [default:\n0.15]"
+    args: !SimpleFlagArg
+      name: channel-size-modifier
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --chunksize
+    description: "The ideal number of basepairs each worker receives. Total bp in\
+      \ memory at one time is (threads - 2) *\nchunksize [default: 1000000]"
+    args: !SimpleFlagArg
+      name: chunksize
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --exclude-flags
+    description: 'SAM flags to exclude, recommended 3848 [default: 0]'
+    args: !SimpleFlagArg
+      name: exclude-flags
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --include-flags
+    description: 'SAM flags to include [default: 0]'
+    args: !SimpleFlagArg
+      name: include-flags
+  - !Flag
+    optional: true
+    synonyms:
+    - -D
+    - --max-depth
+    description: "Set the max depth for a pileup. If a positions depth is within 1%\
+      \ of max-depth the `NEAR_MAX_DEPTH` output\nfield will be set to true and that\
+      \ position should be viewed as suspect [default: 100000]"
+    args: !SimpleFlagArg
+      name: max-depth
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --min-mapq
+    description: 'Minimum MAPQ for a read to count toward depth [default: 0]'
+    args: !SimpleFlagArg
+      name: min-mapq
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Output path, defaults to stdout
+    args: !SimpleFlagArg
+      name: output
+  - !Flag
+    optional: true
+    synonyms:
+    - --ref-cache-size
+    description: 'Number of Reference Sequences to hold in memory at one time. Smaller
+      will decrease mem usage [default: 10]'
+    args: !SimpleFlagArg
+      name: ref-cache-size
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --ref-fasta
+    description: Indexed reference fasta, set if using CRAM
+    args: !SimpleFlagArg
+      name: ref-fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: 'The number of threads to use [default: 8]'
+    args: !SimpleFlagArg
+      name: threads
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "perbase-base-depth 0.6.3\nSeth Stadick <sstadick@gmail.com>\nCalculate\
+    \ the depth at each base, per-nucleotide\n\nUSAGE:\n    perbase base-depth [FLAGS]\
+    \ [OPTIONS] <reads>\n\nFLAGS:\n    -h, --help         Prints help information\n\
+    \    -m, --mate-fix     Fix overlapping mates counts, see docs for full details\n\
+    \    -V, --version      Prints version information\n    -z, --zero-base    Output\
+    \ positions as 0-based instead of 1-based\n\nOPTIONS:\n    -B, --bcf-file <bcf-file>\n\
+    \            A BCF/VCF file containing positions of interest. If specified, only\
+    \ bases from the given positions will be\n            reported on\n    -b, --bed-file\
+    \ <bed-file>\n            A BED file containing regions of interest. If specified,\
+    \ only bases from the given regions will be reported\n            on\n    -C,\
+    \ --channel-size-modifier <channel-size-modifier>\n            The fraction of\
+    \ a gigabyte to allocate per thread for message passing, can be greater than 1.0\
+    \ [default:\n            0.15]\n    -c, --chunksize <chunksize>\n            The\
+    \ ideal number of basepairs each worker receives. Total bp in memory at one time\
+    \ is (threads - 2) *\n            chunksize [default: 1000000]\n    -F, --exclude-flags\
+    \ <exclude-flags>                    SAM flags to exclude, recommended 3848 [default:\
+    \ 0]\n    -f, --include-flags <include-flags>                    SAM flags to\
+    \ include [default: 0]\n    -D, --max-depth <max-depth>\n            Set the max\
+    \ depth for a pileup. If a positions depth is within 1% of max-depth the `NEAR_MAX_DEPTH`\
+    \ output\n            field will be set to true and that position should be viewed\
+    \ as suspect [default: 100000]\n    -q, --min-mapq <min-mapq>                \
+    \              Minimum MAPQ for a read to count toward depth [default: 0]\n  \
+    \  -o, --output <output>                                  Output path, defaults\
+    \ to stdout\n        --ref-cache-size <ref-cache-size>\n            Number of\
+    \ Reference Sequences to hold in memory at one time. Smaller will decrease mem\
+    \ usage [default: 10]\n\n    -r, --ref-fasta <ref-fasta>                     \
+    \       Indexed reference fasta, set if using CRAM\n    -t, --threads <threads>\
+    \                                The number of threads to use [default: 8]\n\n\
+    ARGS:\n    <reads>    Input indexed BAM/CRAM to analyze\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/perbase:0.6.3--h35a96ae_0
+- !Command
+  command:
+  - perbase
+  - help
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: For
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: more
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: information
+    description: ''
+  - !Positional
+    optional: false
+    position: 3
+    name: try
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "error: The subcommand '--help' wasn't recognized\n\nUSAGE:\n\tperbase\
+    \ help <subcommands>...\n\nFor more information try --help\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/perbase:0.6.3--h35a96ae_0
+- !Command
+  command:
+  - perbase
+  - only-depth
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: FLAGS
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --fast-mode
+    description: Calculate depth based only on read starts/stops, see docs for full
+      details
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --mate-fix
+    description: Fix overlapping mates counts, see docs for full details
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --no-merge
+    description: Skip merging adjacent bases that have the same depth
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -z
+    - --zero-base
+    description: Output positions as 0-based instead of 1-based
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -B
+    - --bcf-file
+    description: "A BCF/VCF file containing positions of interest. If specified, only\
+      \ bases from the given positions will be\nreported on. Note that it may be more\
+      \ efficient to calculate depth over regions if your positions are\nclustered\
+      \ tightly together"
+    args: !SimpleFlagArg
+      name: bcf-file
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --bed-file
+    description: "A BED file containing regions of interest. If specified, only bases\
+      \ from the given regions will be reported\non"
+    args: !SimpleFlagArg
+      name: bed-file
+  - !Flag
+    optional: true
+    synonyms:
+    - -C
+    - --channel-size-modifier
+    description: "The fraction of a gigabyte to allocate per thread for message passing,\
+      \ can be greater than 1.0 [default:\n0.001]"
+    args: !SimpleFlagArg
+      name: channel-size-modifier
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --chunksize
+    description: "The ideal number of basepairs each worker receives. Total bp in\
+      \ memory at one time is (threads - 2) *\nchunksize [default: 1000000]"
+    args: !SimpleFlagArg
+      name: chunksize
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --exclude-flags
+    description: 'SAM flags to exclude, recommended 3848 [default: 0]'
+    args: !SimpleFlagArg
+      name: exclude-flags
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --include-flags
+    description: 'SAM flags to include [default: 0]'
+    args: !SimpleFlagArg
+      name: include-flags
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --min-mapq
+    description: 'Minimum MAPQ for a read to count toward depth [default: 0]'
+    args: !SimpleFlagArg
+      name: min-mapq
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Output path, defaults to stdout
+    args: !SimpleFlagArg
+      name: output
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --ref-fasta
+    description: Indexed reference fasta, set if using CRAM
+    args: !SimpleFlagArg
+      name: ref-fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: 'The number of threads to use [default: 8]'
+    args: !SimpleFlagArg
+      name: threads
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "perbase-only-depth 0.6.3\nSeth Stadick <sstadick@gmail.com>\nCalculate\
+    \ the only the depth at each base\n\nUSAGE:\n    perbase only-depth [FLAGS] [OPTIONS]\
+    \ <reads>\n\nFLAGS:\n    -x, --fast-mode    Calculate depth based only on read\
+    \ starts/stops, see docs for full details\n    -h, --help         Prints help\
+    \ information\n    -m, --mate-fix     Fix overlapping mates counts, see docs for\
+    \ full details\n    -n, --no-merge     Skip merging adjacent bases that have the\
+    \ same depth\n    -V, --version      Prints version information\n    -z, --zero-base\
+    \    Output positions as 0-based instead of 1-based\n\nOPTIONS:\n    -B, --bcf-file\
+    \ <bcf-file>\n            A BCF/VCF file containing positions of interest. If\
+    \ specified, only bases from the given positions will be\n            reported\
+    \ on. Note that it may be more efficient to calculate depth over regions if your\
+    \ positions are\n            clustered tightly together\n    -b, --bed-file <bed-file>\n\
+    \            A BED file containing regions of interest. If specified, only bases\
+    \ from the given regions will be reported\n            on\n    -C, --channel-size-modifier\
+    \ <channel-size-modifier>\n            The fraction of a gigabyte to allocate\
+    \ per thread for message passing, can be greater than 1.0 [default:\n        \
+    \    0.001]\n    -c, --chunksize <chunksize>\n            The ideal number of\
+    \ basepairs each worker receives. Total bp in memory at one time is (threads -\
+    \ 2) *\n            chunksize [default: 1000000]\n    -F, --exclude-flags <exclude-flags>\
+    \                    SAM flags to exclude, recommended 3848 [default: 0]\n   \
+    \ -f, --include-flags <include-flags>                    SAM flags to include\
+    \ [default: 0]\n    -q, --min-mapq <min-mapq>                              Minimum\
+    \ MAPQ for a read to count toward depth [default: 0]\n    -o, --output <output>\
+    \                                  Output path, defaults to stdout\n    -r, --ref-fasta\
+    \ <ref-fasta>                            Indexed reference fasta, set if using\
+    \ CRAM\n    -t, --threads <threads>                                The number\
+    \ of threads to use [default: 8]\n\nARGS:\n    <reads>    Input indexed BAM/CRAM\
+    \ to analyze\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/perbase:0.6.3--h35a96ae_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "perbase 0.6.3\nSeth Stadick <sstadick@gmail.com>\nFast and correct perbase\
+  \ BAM/CRAM analysis.\n\nUSAGE:\n    perbase <SUBCOMMAND>\n\nFLAGS:\n    -h, --help\
+  \       \n            Prints help information\n\n    -V, --version    \n       \
+  \     Prints version information\n\n\nSUBCOMMANDS:\n    base-depth        Calculate\
+  \ the depth at each base, per-nucleotide\n    help              Prints this message\
+  \ or the help of the given subcommand(s)\n    merge-adjacent    Merge adjacent intervals\
+  \ that have the same depth. Input must be sorted like: `sort -k1,1\n           \
+  \           -k2,2n in.bed > in.sorted.bed`\n    only-depth        Calculate the\
+  \ only the depth at each base\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/perbase:0.6.3--h35a96ae_0

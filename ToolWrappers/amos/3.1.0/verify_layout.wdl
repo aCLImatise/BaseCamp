@@ -10,6 +10,9 @@ task Verifylayout {
       ~{bank_name} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "the coordinates and bases for each read in layout\\nreadid rc offset roffset len bases\\n"
     bank_name: ""

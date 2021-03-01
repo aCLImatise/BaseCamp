@@ -38,6 +38,9 @@ task GoalignMutate {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mutated_alignment_output: "Mutated alignment output file (default \\\"stdout\\\")"
     rate: "Mutation rate per nucleotide/amino acid (default 0.1)"

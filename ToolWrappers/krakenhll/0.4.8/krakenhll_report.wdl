@@ -14,6 +14,9 @@ task Krakenhllreport {
       ~{if (tax_on_list) then "--taxon-list" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     show_zeros: "Show full taxonomy table."
     tax_on_counts: "Input files are in the format '<taxon ID><tab><count>' instead of Kraken output."

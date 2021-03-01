@@ -8,6 +8,9 @@ task MagpurifyGenomes {
     magpurify genomes_ \
       ~{mag_purify}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mag_purify: ""
   }

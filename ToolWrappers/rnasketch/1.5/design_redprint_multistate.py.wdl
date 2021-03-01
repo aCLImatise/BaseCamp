@@ -2,7 +2,7 @@ version 1.0
 
 task Designredprintmultistatepy {
   input {
-    File? file
+    File? read_file_inp
     Boolean? read_custom_structures
     Int? objective
     String? temperature
@@ -20,7 +20,7 @@ task Designredprintmultistatepy {
   command <<<
     design_redprint_multistate_py \
       ~{stdin} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(read_file_inp) then ("--file " +  '"' + read_file_inp + '"') else ""} \
       ~{if (read_custom_structures) then "--input" else ""} \
       ~{if defined(objective) then ("--objective " +  '"' + objective + '"') else ""} \
       ~{if defined(temperature) then ("--temperature " +  '"' + temperature + '"') else ""} \
@@ -34,8 +34,11 @@ task Designredprintmultistatepy {
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(q) then ("-q " +  '"' + q + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: "Read file in *.inp format"
+    read_file_inp: "Read file in *.inp format"
     read_custom_structures: "Read custom structures and sequence constraints from"
     objective: "Chose the objective function: 1 for abs differences\\nand 2 for squared (default: 1)"
     temperature: "Temperature of the energy calculations."

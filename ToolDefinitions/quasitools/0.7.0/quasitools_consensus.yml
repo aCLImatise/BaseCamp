@@ -4,31 +4,45 @@ command:
 - consensus
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: BAM
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: REFERENCE
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "percentage to include base in mixture.\n-i, --id TEXT            \
-    \ specify default FASTA sequence identifier to be\nused for sequences without\
-    \ an RG tag.\n-o, --output FILENAME\n--help                    Show this message\
-    \ and exit.\n"
+  optional: true
   synonyms:
   - -p
   - --percentage
+  description: percentage to include base in mixture.
   args: !SimpleFlagArg
     name: INTEGER
+- !Flag
   optional: true
+  synonyms:
+  - -i
+  - --id
+  description: "specify default FASTA sequence identifier to be\nused for sequences\
+    \ without an RG tag."
+  args: !SimpleFlagArg
+    name: TEXT
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  - --help
+  description: Show this message and exit.
+  args: !SimpleFlagArg
+    name: FILENAME
 usage_flag:
 version_flag:
 help_text: "Usage: quasitools consensus [OPTIONS] BAM REFERENCE\n\nOptions:\n  -p,\
@@ -38,3 +52,4 @@ help_text: "Usage: quasitools consensus [OPTIONS] BAM REFERENCE\n\nOptions:\n  -
   \                    Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

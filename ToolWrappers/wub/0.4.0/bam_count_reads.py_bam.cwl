@@ -3,17 +3,17 @@ id: bam_count_reads.py_bam.cwl
 inputs:
 - id: in_z
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -z
 - id: in_f
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_a
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -a
 - id: in_bam_count_reads_do_tpy
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bam_count_reads.py

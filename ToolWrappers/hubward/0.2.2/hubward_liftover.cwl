@@ -3,12 +3,12 @@ id: hubward_liftover.cwl
 inputs:
 - id: in_from_assembly
   doc: 'Source assembly (default: -)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --from_assembly
 - id: in_to_assembly
   doc: "Destination assembly (default: -)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --to_assembly
 - id: in_dirname
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hubward

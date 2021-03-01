@@ -8,6 +8,9 @@ task MatchDump {
     MatchDump \
       ~{k_match_output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     k_match_output_file: ""
   }

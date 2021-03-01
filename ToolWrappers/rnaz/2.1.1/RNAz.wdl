@@ -24,6 +24,9 @@ task RNAz {
       ~{if (lo_car_nate) then "--locarnate" else ""} \
       ~{if (no_shuffle) then "--no-shuffle" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     forward: "Score forward strand"
     reverse: "Score reverse strand"

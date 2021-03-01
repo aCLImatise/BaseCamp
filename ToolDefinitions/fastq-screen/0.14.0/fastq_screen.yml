@@ -4,75 +4,78 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --add_genome
   description: "Edits the file 'fastq_screen.conf' (in the folder where\nthis script\
     \ is saved) to add a new genome. Specify the\nadditional genome as a comma separated\
     \ list:\n'Database name','Genome path and basename','Notes'"
-  synonyms:
-  - --add_genome
   args: !SimpleFlagArg
     name: text
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --aligner
   description: "Specify the aligner to use for the mapping. Valid\narguments are 'bowtie',\
     \ bowtie2' (default) or 'bwa'.\nBowtie maps with parameters -k 2, Bowtie 2 with\n\
     parameters -k 2 --very-fast-local and BWA with mem -a.\nLocal aligners such as\
     \ BWA or Bowtie2 will be better\nat detecting the origin of chimeric reads."
-  synonyms:
-  - --aligner
   args: !SimpleFlagArg
     name: func
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bisulfite
   description: "Process bisulfite libraries. The path to the\nbisulfite aligner (Bismark)\
     \ may be specified in the\nconfiguration file. Bismark runs in non-directional\n\
     mode. Either conventional or bisulfite libraries may\nbe processed, but not both\
     \ simultaneously. The\n--bisulfite option cannot be used in conjunction with\n\
     --bwa."
-  synonyms:
-  - --bisulfite
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bowtie
   description: "Specify extra parameters to be passed to Bowtie.\nThese parameters\
     \ should be quoted to clearly\ndelimit bowtie parameters from fastq_screen\nparameters.\
     \ You should not try to use this option\nto override the normal search or reporting\
     \ options\nfor bowtie which are set automatically but it might\nbe useful to allow\
     \ reads to be trimmed before\nalignment etc."
-  synonyms:
-  - --bowtie
   args: !SimpleFlagArg
     name: text
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bowtie2
   description: "Specify extra parameters to be passed to Bowtie 2.\nThese parameters\
     \ should be quoted to clearly\ndelimit Bowtie 2 parameters from FastQ Screen\n\
     parameters. You should not try to use this option\nto override the normal search\
     \ or reporting options\nfor bowtie which are set automatically but it might\n\
     be useful to allow reads to be trimmed before\nalignment etc."
-  synonyms:
-  - --bowtie2
   args: !SimpleFlagArg
     name: text
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bwa
   description: "Specify extra parameters to be passed to BWA.\nThese parameters should\
     \ be quoted to clearly\ndelimit BWA parameters from FastQ Screen\nparameters.\
     \ You should not try to use this option\nto override the normal search or reporting\
     \ options\nfor BWA which are set automatically but it might\nbe useful to allow\
     \ reads to be trimmed before\nalignment etc."
-  synonyms:
-  - --bwa
   args: !SimpleFlagArg
     name: text
-  optional: true
 - !Flag
-  description: Manually specify a location for the configuration.
+  optional: true
   synonyms:
   - --conf
+  description: Manually specify a location for the configuration.
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filter
   description: "Produce a FASTQ file containing reads mapping to\nspecified genomes.\
     \ Pass the argument a string of\ncharacters (0, 1, 2, 3, -), in which each character\n\
     corresponds to a reference genome (in the order the\nreference genome occurs in\
@@ -88,75 +91,75 @@ named:
     \ conjuction with --tag, FASTQ\nfiles shall be mapped, tagged and then filtered.\
     \ If\nthe --tag option is not selected however, the input\nFASTQ file should have\
     \ been previously tagged."
-  synonyms:
-  - --filter
   args: !SimpleFlagArg
     name: text
-  optional: true
 - !Flag
-  description: "Do not terminate if output files already exist,\ninstead overwrite\
-    \ the files."
+  optional: true
   synonyms:
   - --force
+  description: "Do not terminate if output files already exist,\ninstead overwrite\
+    \ the files."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --get_genomes
   description: "Download pre-indexed Bowtie2 genomes for a range of\ncommonly studied\
     \ species and sequences. If used with\n--bisulfite, Bismark bisulfite Bowtie2\
     \ indices will\nbe downloaded instead."
-  synonyms:
-  - --get_genomes
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Assume that the quality values are in encoded in\nIllumina v1.3 format.\
-    \ Defaults to Sanger format\nif this flag is not specified."
+  optional: true
   synonyms:
   - --illumina1_3
+  description: "Assume that the quality values are in encoded in\nIllumina v1.3 format.\
+    \ Defaults to Sanger format\nif this flag is not specified."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Inverts the --filter results i.e. reads that pass\nthe --filter parameter\
-    \ will not pass when\n--filter --inverse are specified together, and vice\nversa."
+  optional: true
   synonyms:
   - --inverse
+  description: "Inverts the --filter results i.e. reads that pass\nthe --filter parameter\
+    \ will not pass when\n--filter --inverse are specified together, and vice\nversa."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nohits
   description: "Writes to a file the sequences that did not map to\nany of the specified\
     \ genomes. This option is\nequivalent to specifying --tag --filter 0000 (number\n\
     of zeros corresponds to the number of genomes\nscreened).  By default the whole\
     \ input file will be\nmapped, unless overridden by --subset."
-  synonyms:
-  - --nohits
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify a directory in which to save output files.\nIf no directory\
-    \ is specified then output files\nare saved in the current working directory."
+  optional: true
   synonyms:
   - --outdir
+  description: "Specify a directory in which to save output files.\nIf no directory\
+    \ is specified then output files\nare saved in the current working directory."
   args: !SimpleFlagArg
     name: text
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pass
   description: "Used in conjunction with --filter. By default all\ngenome filters\
     \ must be passed for a read to pass\nthe --filter option.  However, a minimum\
     \ number\nof genome filters may be specified that a read\nneeds pass to be considered\
     \ to pass the --filter\noption. (--pass 1 effecitively acts as an OR\nboolean\
     \ operator for the genome filters.)"
-  synonyms:
-  - --pass
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Suppress all progress reports on stderr and only\nreport errors."
+  optional: true
   synonyms:
   - --quiet
+  description: "Suppress all progress reports on stderr and only\nreport errors."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --subset
   description: "Don't use the whole sequence file, but create a\ntemporary dataset\
     \ of this specified number of\nreads. The dataset created will be of\napproximately\
     \ (within a factor of 2) of this size.\nIf the real dataset is smaller than twice\
@@ -164,12 +167,12 @@ named:
     \ evenly from throughout the\nwhole original dataset. By Default FastQ Screen\n\
     runs with this parameter set to 100000. To process\nan entire dataset however,\
     \ adjust --subset to 0."
-  synonyms:
-  - --subset
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --tag
   description: "Label each FASTQ read header with a tag listing to\nwhich genomes\
     \ the read did, or did not align. The\nfirst read in the output FASTQ file will\
     \ list the\nfull genome names along with a score denoting\nwhether the read did\
@@ -178,19 +181,19 @@ named:
     \ score is\nprinted, in the same order as the first line.\nThis option results\
     \ in the he whole file being\nprocessed unless overridden explicitly by the user\n\
     with the --subset parameter"
-  synonyms:
-  - --tag
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify across how many threads bowtie will be\nallowed to run. Overrides\
-    \ the default value set\nin the configuration file"
+  optional: true
   synonyms:
   - --threads
+  description: "Specify across how many threads bowtie will be\nallowed to run. Overrides\
+    \ the default value set\nin the configuration file"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --top
   description: "/<int,int> Don't use the whole sequence file, but create a\ntemporary\
     \ dataset of the specified number of\nreads taken from the top of the original\
     \ file. It is\nalso possible to specify the number of lines to skip\nbefore beginning\
@@ -200,27 +203,24 @@ named:
     \ arising from non-uniform distribution of\nreads in the original FastQ file.\
     \ This option should\nonly be used when minimising processing time is of\nhighest\
     \ priority."
-  synonyms:
-  - --top
   args: !SimpleFlagArg
     name: int
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print program help and exit.
+  optional: true
   synonyms:
   - --help
+  description: Print program help and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Print the program version and exit.
+  optional: true
   synonyms:
   - --version
+  description: Print the program version and exit.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "    \nFastQ Screen - Map sequences against multiple genomes\n\nwww.bioinformatics.babraham.ac.uk/projects/fastq_screen\n\
   Contact: steven.wingett@babraham.ac.uk\n\nSynopsis\n\n  fastq_screen [OPTIONS]...\
   \ [FastQ FILE]...\n\nFunction\n\n  FastQ Screen is intended to be used as part of\
@@ -351,3 +351,4 @@ help_text: "    \nFastQ Screen - Map sequences against multiple genomes\n\nwww.b
   \ \n"
 generated_using:
 - --help
+docker_image:

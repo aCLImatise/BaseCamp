@@ -4,6 +4,9 @@ task MetaphylerClassify {
   command <<<
     metaphylerClassify
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

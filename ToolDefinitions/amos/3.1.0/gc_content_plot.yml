@@ -4,46 +4,50 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Use a sliding window of size SIZE to calculate GC\ncontent.  Default:\
-    \ 180"
+  optional: true
   synonyms:
   - -w
   - --window-size
+  description: "Use a sliding window of size SIZE to calculate GC\ncontent.  Default:\
+    \ 180"
   args: !SimpleFlagArg
     name: SIZE
-  optional: true
 - !Flag
-  description: Print GC contents as percentages rather than base counts.
+  optional: true
   synonyms:
   - -p
   - --percent
+  description: Print GC contents as percentages rather than base counts.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Include windows that contain unknown sequence (usually\nmarked as\
-    \ the letter 'N')"
+  optional: true
   synonyms:
   - -i
   - --include-n
+  description: "Include windows that contain unknown sequence (usually\nmarked as\
+    \ the letter 'N')"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Assume that unknown bases (usually marked as the\nletter 'N') have\
-    \ a GC-to-AT ratio of VALUE.  This\noption implies `--include-n'.  Default: 0.5"
+  optional: true
   synonyms:
   - -g
   - --n-gc-content
+  description: "Assume that unknown bases (usually marked as the\nletter 'N') have\
+    \ a GC-to-AT ratio of VALUE.  This\noption implies `--include-n'.  Default: 0.5"
   args: !SimpleFlagArg
     name: VALUE
-  optional: true
 - !Flag
-  description: Use a tabular output format.
+  optional: true
   synonyms:
   - -t
   - --tabular
+  description: Use a tabular output format.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --ranges
   description: "...\nOnly print the GC content at the windows beginning at\nthe positions\
     \ specified by the comma-separated list of\nranges.  Each range is two numbers\
     \ separated by a colon.\nPositive integral numbers are taken to be base\npositions\
@@ -55,39 +59,35 @@ named:
     \ to print GC content of the\nthe middle 10% of each sequence's windows.  The\
     \ output\nis in ascending order of base position and no position\nis printed multiple\
     \ times."
-  synonyms:
-  - -r
-  - --ranges
   args: !OptionalFlagArg
     names:
     - RANGE
     - RANGE
     separator: ','
-  optional: true
 - !Flag
-  description: Do not print sequence tags.
+  optional: true
   synonyms:
   - -n
   - --no-tags
+  description: Do not print sequence tags.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not print the index of each GC window.  Ignored if
+  optional: true
   synonyms:
   - -N
   - --no-indices
+  description: Do not print the index of each GC window.  Ignored if
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this usage message.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Print this usage message.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: gc-content-plot [OPTIONS] [(FASTA_FILE | FASTQ_FILE)]...\n\nPrints\
@@ -128,3 +128,4 @@ help_text: "Usage: gc-content-plot [OPTIONS] [(FASTA_FILE | FASTQ_FILE)]...\n\nP
   \           Print this usage message.\n"
 generated_using:
 - --help
+docker_image:

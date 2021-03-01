@@ -3,22 +3,22 @@ id: opal_stats.py.cwl
 inputs:
 - id: in_input_dir
   doc: Input directory containing gzipped FASTQ files
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --input_dir
 - id: in_output_dir
   doc: Output directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output_dir
 - id: in_yaml
   doc: 'Bioboxes YAML file (default: INPUT_DIR/biobox.yaml)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --yaml
 - id: in_volume
   doc: Docker volume
-  type: string
+  type: string?
   inputBinding:
     prefix: --volume
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: Output directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - opal_stats.py

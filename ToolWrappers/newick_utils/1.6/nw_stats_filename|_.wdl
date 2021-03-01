@@ -2,14 +2,17 @@ version 1.0
 
 task NwStatsFilename {
   input {
-    Boolean? format_lines_l
+    Boolean? format_l_columns
   }
   command <<<
     nw_stats filename__ \
-      ~{if (format_lines_l) then "-f" else ""}
+      ~{if (format_l_columns) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    format_lines_l: "[lc]: format in lines (l) or columns (c). Default is l."
+    format_l_columns: "[lc]: format in lines (l) or columns (c). Default is l."
   }
   output {
     File out_stdout = stdout()

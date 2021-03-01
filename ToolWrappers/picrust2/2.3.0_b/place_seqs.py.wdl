@@ -22,6 +22,9 @@ task PlaceSeqspy {
       ~{if defined(chunk_size) then ("--chunk_size " +  '"' + chunk_size + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     study_fast_a: "FASTA of unaligned study sequences."
     ref_dir: "Directory containing reference sequence files\\n(default: /usr/local/lib/python3.6/site-\\npackages/picrust2/default_files/prokaryotic/pro_ref).\\nPlease see the online documentation for how to name\\nthe files in this directory in order to use custom\\nreference files."

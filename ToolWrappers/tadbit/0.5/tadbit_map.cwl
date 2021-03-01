@@ -3,28 +3,28 @@ id: tadbit_map.cwl
 inputs:
 - id: in_skip_mapping
   doc: generate a Hi-C specific quality plot from FASTQ and exits
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip_mapping
 - id: in_workdir
   doc: path to an output folder.
-  type: File
+  type: File?
   inputBinding:
     prefix: --workdir
 - id: in_fast_q
   doc: path to a FASTQ files (can be compressed files)
-  type: File
+  type: File?
   inputBinding:
     prefix: --fastq
 - id: in_fast_q_two
   doc: "(beta) path to a FASTQ file of read 2 (can be compressed files).\nNeeded for\
     \ fast_fragment"
-  type: File
+  type: File?
   inputBinding:
     prefix: --fastq2
 - id: in_index
   doc: paths to file(s) with indexed FASTA files of the reference genome.
-  type: File
+  type: File?
   inputBinding:
     prefix: --index
 - id: in_genome
@@ -37,7 +37,7 @@ inputs:
     prefix: --genome
 - id: in_read
   doc: read number
-  type: long
+  type: long?
   inputBinding:
     prefix: --read
 - id: in_renz
@@ -53,32 +53,32 @@ inputs:
     prefix: --chr_name
 - id: in_tmp
   doc: path to a temporary directory (default next to "workdir" directory)
-  type: File
+  type: File?
   inputBinding:
     prefix: --tmp
 - id: in_tmp_db
   doc: if provided uses this directory to manipulate the database
-  type: File
+  type: File?
   inputBinding:
     prefix: --tmpdb
 - id: in_nox
   doc: no display server (X screen)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noX
 - id: in_skip
   doc: '[DEBUG] in case already mapped.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip
 - id: in_keep_tmp
   doc: '[DEBUG] keep temporary files.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep_tmp
 - id: in_iterative
   doc: "default mapping strategy is fragment based use this flag for\niterative mapping"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --iterative
 - id: in_fast_fragment
@@ -87,7 +87,7 @@ inputs:
     \ be used directly in tadbit filter (no tadbit\nparse needed). Access to samtools\
     \ is needed for fast_fragment to\nwork. --fastq2 and --genome needs to be specified\
     \ and --read value\nshould be 0."
-  type: File
+  type: File?
   inputBinding:
     prefix: --fast_fragment
 - id: in_windows
@@ -104,17 +104,17 @@ inputs:
   doc: "[8] Maximum number of CPU cores available in the execution host. If\nhigher\
     \ than 1, tasks with multi-threading capabilities will enabled\n(if 0 all available)\
     \ cores will be used"
-  type: long
+  type: long?
   inputBinding:
     prefix: --cpus
 - id: in_mapper
   doc: '[gem] mapper used, options are gem, bowtie2 or hisat2'
-  type: long
+  type: long?
   inputBinding:
     prefix: --mapper
 - id: in_mapper_binary
   doc: '[None] path to mapper binary'
-  type: File
+  type: File?
   inputBinding:
     prefix: --mapper_binary
 - id: in_mapper_param
@@ -128,7 +128,7 @@ inputs:
     prefix: --mapper_param
 - id: in_species
   doc: species name
-  type: string
+  type: string?
   inputBinding:
     prefix: --species
 - id: in_descr
@@ -143,7 +143,7 @@ outputs:
   type: stdout
 - id: out_workdir
   doc: path to an output folder.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_workdir)
 - id: out_fast_fragment
@@ -152,9 +152,10 @@ outputs:
     \ be used directly in tadbit filter (no tadbit\nparse needed). Access to samtools\
     \ is needed for fast_fragment to\nwork. --fastq2 and --genome needs to be specified\
     \ and --read value\nshould be 0."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_fast_fragment)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tadbit

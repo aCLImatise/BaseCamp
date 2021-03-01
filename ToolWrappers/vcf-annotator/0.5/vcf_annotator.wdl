@@ -12,6 +12,9 @@ task Vcfannotator {
       ~{genbank_file} \
       ~{if defined(file_write_output) then ("--output " +  '"' + file_write_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_write_output: "File to write VCF output to (Default STDOUT)."
     vcf_file: "VCF file of variants"

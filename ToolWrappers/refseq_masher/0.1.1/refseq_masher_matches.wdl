@@ -20,6 +20,9 @@ task RefseqMasherMatches {
       ~{if defined(min_km_er_threshold) then ("--min-kmer-threshold " +  '"' + min_km_er_threshold + '"') else ""} \
       ~{if defined(tmp_dir) then ("--tmp-dir " +  '"' + tmp_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mash_bin: "Mash binary path (default=\\\"mash\\\")"
     output_file_path: "Output file path (default=\\\"-\\\"/stdout)"

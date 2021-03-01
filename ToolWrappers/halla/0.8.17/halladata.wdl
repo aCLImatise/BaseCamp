@@ -28,6 +28,9 @@ task Halladata {
       ~{if defined(structure) then ("--structure " +  '"' + structure + '"') else ""} \
       ~{if defined(cluster_percentage) then ("--cluster-percentage " +  '"' + cluster_percentage + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "additional output is printed"
     features: "number of features in the input file D*N, Rows: D features and columns: N samples"

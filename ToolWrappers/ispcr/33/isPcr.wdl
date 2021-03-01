@@ -34,6 +34,9 @@ task IsPcr {
       ~{if defined(flip_reverse) then ("-flipReverse " +  '"' + flip_reverse + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ooc: "Use overused tile file N.ooc.  N should correspond to\\nthe tileSize"
     tile_size: "the size of match that triggers an alignment.\\nDefault is 11 ."

@@ -29,7 +29,7 @@ task Vamb {
     Boolean? size_count_successes
     Boolean? minimum_success_window
     Boolean? minimum_cluster_size
-    Boolean? stop_c_clusters
+    Boolean? stop_after_clusters
     Boolean? binsplit_separator
     String var_29
     String tnf_input
@@ -67,9 +67,12 @@ task Vamb {
       ~{if (size_count_successes) then "-w" else ""} \
       ~{if (minimum_success_window) then "-u" else ""} \
       ~{if (minimum_cluster_size) then "-i" else ""} \
-      ~{if (stop_c_clusters) then "-c" else ""} \
+      ~{if (stop_after_clusters) then "-c" else ""} \
       ~{if (binsplit_separator) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_directory_create: "output directory to create"
     fast_a: "path to fasta file"
@@ -98,7 +101,7 @@ task Vamb {
     size_count_successes: "size of window to count successes [200]"
     minimum_success_window: "minimum success in window [20]"
     minimum_cluster_size: "minimum cluster size [1]"
-    stop_c_clusters: "stop after c clusters [None = infinite]"
+    stop_after_clusters: "stop after c clusters [None = infinite]"
     binsplit_separator: "binsplit separator [None = no split]"
     var_29: ""
     tnf_input: ""

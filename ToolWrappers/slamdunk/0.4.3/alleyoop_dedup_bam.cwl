@@ -3,17 +3,17 @@ id: alleyoop_dedup_bam.cwl
 inputs:
 - id: in_t
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_tc
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -tc
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_alley_oop
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - alleyoop

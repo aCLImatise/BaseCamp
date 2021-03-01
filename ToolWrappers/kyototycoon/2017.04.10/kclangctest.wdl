@@ -22,6 +22,9 @@ task Kclangctest {
       ~{if defined(b_num) then ("-bnum " +  '"' + b_num + '"') else ""} \
       ~{if (tran) then "-tran" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     etc: ""
     rnd: ""

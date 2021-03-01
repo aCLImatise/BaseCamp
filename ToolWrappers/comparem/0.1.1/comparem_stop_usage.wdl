@@ -20,6 +20,9 @@ task ComparemStopUsage {
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     counts: "output raw counts instead of frequencies"
     mean_gene_length: "report mean gene length for genes with each stop codon"

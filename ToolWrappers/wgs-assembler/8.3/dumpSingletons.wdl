@@ -7,7 +7,7 @@ task DumpSingletons {
     Boolean? path_to_gkpstore
     Boolean? checkpoint_number_load
     Boolean? use_real_uids
-    Boolean? not_make_scaffolds
+    Boolean? make_mini_scaffolds
   }
   command <<<
     dumpSingletons \
@@ -16,15 +16,18 @@ task DumpSingletons {
       ~{if (path_to_gkpstore) then "-g" else ""} \
       ~{if (checkpoint_number_load) then "-n" else ""} \
       ~{if (use_real_uids) then "-U" else ""} \
-      ~{if (not_make_scaffolds) then "-S" else ""}
+      ~{if (make_mini_scaffolds) then "-S" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     attempt_locate_checkpoint: "Attempt to locate the last checkpoint in directory 7-CGW."
     look_for_checkpoints: "Look for checkpoints in 'name'"
     path_to_gkpstore: "Path to gkpStore"
     checkpoint_number_load: "Checkpoint number to load"
     use_real_uids: "Use real UIDs for miniscaffolds, otherwise, UIDs start at 1230000"
-    not_make_scaffolds: "Do NOT make mini scaffolds."
+    make_mini_scaffolds: "Do NOT make mini scaffolds."
   }
   output {
     File out_stdout = stdout()

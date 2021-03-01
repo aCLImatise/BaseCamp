@@ -16,6 +16,9 @@ task ExtractBCITrees {
       ~{mr_bayes_dot_tr_probs_input_file_one_dot_dot_n} \
       ~{nexus_output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     random_seed: ""
     bci_threshold: ""

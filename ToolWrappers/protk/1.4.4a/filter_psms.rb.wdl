@@ -20,6 +20,9 @@ task FilterPsmsrb {
       ~{if (check_alternatives) then "--check-alternatives" else ""} \
       ~{if (reject) then "--reject" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicitly_named_output: "An explicitly named output file."
     debug: "Run in debug mode [false]"

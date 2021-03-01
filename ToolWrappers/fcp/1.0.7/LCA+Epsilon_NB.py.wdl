@@ -10,6 +10,9 @@ task LCAEpsilonNBpy {
       ~{python} \
       ~{lca}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     python: ""
     lca: ""

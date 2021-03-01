@@ -8,6 +8,9 @@ task GffutilscliFile {
     gffutils_cli file_ \
       ~{gff_utils_cli}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff_utils_cli: ""
   }

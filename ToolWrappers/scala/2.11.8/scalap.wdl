@@ -16,6 +16,9 @@ task Scalap {
       ~{if defined(classpath) then ("-classpath " +  '"' + classpath + '"') else ""} \
       ~{if defined(cp) then ("-cp " +  '"' + cp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     private: "print private definitions"
     verbose: "print out additional information"

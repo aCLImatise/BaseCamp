@@ -74,6 +74,9 @@ task Showseq {
       ~{if (offset) then "-offset" else ""} \
       ~{if (html) then "-html" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "menu       [2] Display format (Values: 0 (Enter your\\nown list of things to display); 1 (Sequence\\nonly); 2 (Default sequence with features); 3\\n(Pretty sequence); 4 (One frame\\ntranslation); 5 (Three frame translations);\\n6 (Six frame translations); 7 (Restriction\\nenzyme map); 8 (Baroque))"
     compframe_translation_t: "(CompFrame3 translation); T (Ticks line);"

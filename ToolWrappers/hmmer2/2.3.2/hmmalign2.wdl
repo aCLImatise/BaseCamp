@@ -30,6 +30,9 @@ task Hmmalign2 {
       ~{if defined(with_ali) then ("--withali " +  '"' + with_ali + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     only_print_symbols: ": only print symbols aligned to match states"
     save_alignment_file: ": save alignment in file <f>"

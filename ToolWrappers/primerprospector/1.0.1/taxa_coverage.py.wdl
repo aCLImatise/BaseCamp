@@ -28,6 +28,9 @@ task TaxaCoveragepy {
       ~{if defined(hits_fps) then ("--hits_fps " +  '"' + hits_fps + '"') else ""} \
       ~{if defined(tax_a_fp) then ("--taxa_fp " +  '"' + tax_a_fp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     is_enabled: "is enabled."
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"

@@ -3,12 +3,12 @@ id: nebulizer_uninstall_tool.cwl
 inputs:
 - id: in_remove_from_disk
   doc: "remove the uninstalled tool from disk (otherwise tool is\njust deactivated)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --remove_from_disk
 - id: in_yes
   doc: don't ask for confirmation of uninstallation.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --yes
 - id: in_fast_qc
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nebulizer

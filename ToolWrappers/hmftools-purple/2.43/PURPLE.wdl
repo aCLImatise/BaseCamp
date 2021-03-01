@@ -14,6 +14,7 @@ task PURPLE {
     Boolean? no_charts
     String? norm_factor_increment
     File? output_dir
+    Int? ploidy_penalty_factor
     String? ploidy_penalty_min
     Int? ploidy_penalty_sub_min_additional
     String? ploidy_penalty_sub_one_major_allele_multiplier
@@ -39,7 +40,6 @@ task PURPLE {
     String maxnormfactor_arg_maximum
     String increments
     String directory
-    String run_dir_slash_purple_slash
     String applied
     String normal
     String modelling
@@ -71,7 +71,6 @@ task PURPLE {
       ~{maxnormfactor_arg_maximum} \
       ~{increments} \
       ~{directory} \
-      ~{run_dir_slash_purple_slash} \
       ~{applied} \
       ~{normal} \
       ~{modelling} \
@@ -101,6 +100,7 @@ task PURPLE {
       ~{if (no_charts) then "-no_charts" else ""} \
       ~{if defined(norm_factor_increment) then ("-norm_factor_increment " +  '"' + norm_factor_increment + '"') else ""} \
       ~{if defined(output_dir) then ("-output_dir " +  '"' + output_dir + '"') else ""} \
+      ~{if defined(ploidy_penalty_factor) then ("-ploidy_penalty_factor " +  '"' + ploidy_penalty_factor + '"') else ""} \
       ~{if defined(ploidy_penalty_min) then ("-ploidy_penalty_min " +  '"' + ploidy_penalty_min + '"') else ""} \
       ~{if defined(ploidy_penalty_sub_min_additional) then ("-ploidy_penalty_sub_min_additional " +  '"' + ploidy_penalty_sub_min_additional + '"') else ""} \
       ~{if defined(ploidy_penalty_sub_one_major_allele_multiplier) then ("-ploidy_penalty_sub_one_major_allele_multiplier " +  '"' + ploidy_penalty_sub_one_major_allele_multiplier + '"') else ""} \
@@ -116,6 +116,9 @@ task PURPLE {
       ~{if (tumor_only) then "-tumor_only" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     circo_s: "Location of\\ncircos binary"
     cobalt: "Path to COBALT"
@@ -129,6 +132,7 @@ task PURPLE {
     no_charts: "Disable charts"
     norm_factor_increment: "Norm factor"
     output_dir: "Path to the"
+    ploidy_penalty_factor: "Penalty factor\\nto apply to the\\nnumber of copy\\nnumber events"
     ploidy_penalty_min: "Minimum ploidy"
     ploidy_penalty_sub_min_additional: "Additional\\npenalty to\\napply to major\\nallele < 1 or\\nminor allele <\\n0"
     ploidy_penalty_sub_one_major_allele_multiplier: "Penalty"
@@ -154,7 +158,6 @@ task PURPLE {
     maxnormfactor_arg_maximum: "-max_norm_factor <arg>                                    Maximum norm"
     increments: "(default  0.01)"
     directory: "directory."
-    run_dir_slash_purple_slash: "-ploidy_penalty_factor <arg>                              Penalty factor"
     applied: "-ploidy_penalty_standard_deviation <arg>                  Standard"
     normal: "distribution"
     modelling: "ploidy"

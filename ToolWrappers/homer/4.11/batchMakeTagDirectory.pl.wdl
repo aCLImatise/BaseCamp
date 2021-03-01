@@ -4,6 +4,9 @@ task BatchMakeTagDirectorypl {
   command <<<
     batchMakeTagDirectory_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

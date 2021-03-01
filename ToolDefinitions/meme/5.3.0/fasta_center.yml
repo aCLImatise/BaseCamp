@@ -1,0 +1,86 @@
+!Command
+command:
+- fasta-center
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sequence.
+  description: When an alphabet is specified the sequences are validated and
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -dna
+  description: the sequences use the DNA alphabet
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -protein
+  description: the sequences use the protein alphabet
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rna
+  description: the sequences use the RNA alphabet
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -alph
+  description: file with the alphabet definition
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -len
+  description: 'length of sequences to output; default: 100'
+  args: !SimpleFlagArg
+    name: len
+- !Flag
+  optional: true
+  synonyms:
+  - -flank
+  description: output flanking sequences to <file>
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -reject
+  description: output rejected sequences to <file>
+  args: !SimpleFlagArg
+    name: file
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: print this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage:\n    fasta-center [options]\n\n     Options:\n      -dna      \
+  \        the sequences use the DNA alphabet\n      -protein          the sequences\
+  \ use the protein alphabet\n      -rna              the sequences use the RNA alphabet\n\
+  \      -alph <file>      file with the alphabet definition\n      -len <len>   \
+  \     length of sequences to output; default: 100\n      -flank <file>     output\
+  \ flanking sequences to <file>\n      -reject <file>    output rejected sequences\
+  \ to <file>\n      -h                print this help message and exit\n\n      Reads\
+  \ sequences in FASTA format.  For each sequence, it\n      outputs the length <len>\
+  \ portion of the sequence\n      centred on the original sequence. If any sequence\
+  \ is less\n      than <len> long, it is output in its entirety.\n  \n      Flanking\
+  \ sequences, if output, each have a FASTA name starting\n      with the name of\
+  \ the original sequence, with \"-L\" appended for\n      the left flanking sequence\
+  \ and \"-R\" for the right flanking\n      sequence.  \n  \n      When an alphabet\
+  \ is specified the sequences are validated and\n      sequences consisting of nothing\
+  \ but ambiguous symbols are rejected\n      and optionally written to the reject\
+  \ file.\n\n      Reads from standard input.\n      Writes to standard output.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/meme:5.3.0--py38pl526hc1f1133_0

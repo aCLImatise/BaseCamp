@@ -16,6 +16,9 @@ task Athenameta {
       ~{if (force_reads) then "--force_reads" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "input JSON config file for run, NOTE:\\ndirname(config.json) specifies root output directory"
     check_prereqs: "test if external deps visible in environment"

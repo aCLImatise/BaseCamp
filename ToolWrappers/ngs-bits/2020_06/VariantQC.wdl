@@ -18,6 +18,9 @@ task VariantQC {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input variant list in VCF format."
     ignore_filter: "Ignore filter entries, i.e. consider variants that did not pass filters.\\nDefault value: 'false'"

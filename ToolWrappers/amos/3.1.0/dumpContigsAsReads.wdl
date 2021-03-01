@@ -12,6 +12,9 @@ task DumpContigsAsReads {
       ~{if defined(dump_just_eids) then ("-E " +  '"' + dump_just_eids + '"') else ""} \
       ~{if defined(dump_just_iids) then ("-I " +  '"' + dump_just_iids + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bank: "bank where assembly is stored"
     dump_just_eids: "Dump just the contig eids listed in file"

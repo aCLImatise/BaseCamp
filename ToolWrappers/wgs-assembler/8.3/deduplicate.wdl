@@ -20,6 +20,9 @@ task Deduplicate {
       ~{if defined(gkp) then ("-gkp " +  '"' + gkp + '"') else ""} \
       ~{if (one) then "-1" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     erate: "filter overlaps above this fraction error; default 0.015 (== 1.5% error)"
     summary: "write a summary of the fixes to S"

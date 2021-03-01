@@ -8,6 +8,9 @@ task SortSatsuma {
     SortSatsuma \
       ~{if (string_input_file) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_input_file: "<string> : input file"
   }

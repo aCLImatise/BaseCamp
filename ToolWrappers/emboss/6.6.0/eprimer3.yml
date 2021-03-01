@@ -3,44 +3,42 @@ command:
 - eprimer3
 positional:
 - !Positional
-  description: An empty value for this parameter indicates
+  optional: false
   position: 0
   name: length.
-  optional: false
-- !Positional
-  description: Where [Na+} is the molar sodium
-  position: 0
-  name: 600/length
-  optional: false
+  description: An empty value for this parameter indicates
 named:
 - !Flag
-  description: "toggle     [N] An 'internal oligo' is intended to be\nused as a hybridization\
-    \ probe (hyb probe) to\ndetect the PCR product after amplification."
+  optional: true
   synonyms:
   - -hybridprobe
+  description: "toggle     [N] An 'internal oligo' is intended to be\nused as a hybridization\
+    \ probe (hyb probe) to\ndetect the PCR product after amplification."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -numreturn
   description: "integer    [5] The maximum number of primer pairs to\nreturn. Primer\
     \ pairs returned are sorted by\ntheir 'quality', in other words by the value\n\
     of the objective function (where a lower\nnumber indicates a better primer pair).\n\
     Caution: setting this parameter to a large\nvalue will increase running time.\
     \ (Integer 0\nor more)"
-  synonyms:
-  - -numreturn
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -includedregion
   description: "range      [(full sequence)] A sub-region of the given\nsequence in\
     \ which to pick primers. For\nexample, often the first dozen or so bases\nof a\
     \ sequence are vector, and should be\nexcluded from consideration. The value for\n\
     this parameter has the form\n(start),(end)\nwhere (start) is the index of the\
     \ first base\nto consider, and (end) is the last in the\nprimer-picking region."
-  synonyms:
-  - -includedregion
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -targetregion
   description: "range      [(full sequence)] If one or more Targets is\nspecified\
     \ then a legal primer pair must\nflank at least one of them. A Target might\n\
     be a simple sequence repeat site (for\nexample a CA repeat) or a single-base-pair\n\
@@ -48,11 +46,11 @@ named:
     pairs where (start) is the index of the\nfirst base of a Target, and (end) is\
     \ the\nlast\nE.g. 50,51 requires primers to surround the\n2 bases at positions\
     \ 50 and 51."
-  synonyms:
-  - -targetregion
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -excludedregion
   description: "range      [(full sequence)] Primer oligos may not\noverlap any region\
     \ specified in this tag.\nThe associated value must be a\nspace-separated list\
     \ of\n(start),(end)\npairs where (start) is the index of the\nfirst base of the\
@@ -60,27 +58,27 @@ named:
     \ as excluding regions of low\nsequence quality or for excluding regions\ncontaining\
     \ repetitive elements such as ALUs\nor LINEs.\nE.g. 401,407 68,70 forbids selection\
     \ of\nprimers in the 7 bases starting at 401 and\nthe 3 bases at 68."
-  synonyms:
-  - -excludedregion
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -forwardinput
   description: "string     The sequence of a forward primer to check\nand around which\
     \ to design reverse primers\nand optional internal oligos. Must be a\nsubstring\
     \ of SEQUENCE. (Any string)"
-  synonyms:
-  - -forwardinput
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -reverseinput
   description: "string     The sequence of a reverse primer to check\nand around which\
     \ to design forward primers\nand optional internal oligos. Must be a\nsubstring\
     \ of the reverse strand of SEQUENCE.\n(Any string)"
-  synonyms:
-  - -reverseinput
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -mispriminglibraryfile
   description: "The name of a file containing a nucleotide\nsequence library of sequences\
     \ to avoid\namplifying (for example repetitive\nsequences, or possibly the sequences\
     \ of\ngenes in a gene family that should not be\namplified.) The file must be\
@@ -103,21 +101,21 @@ named:
     \ / IUPAC\ncodes for ambiguous bases are converted to\n'N'). There are no restrictions\
     \ on line\nlength.\nAn empty value for this parameter indicates\nthat no repeat\
     \ library should be used."
-  synonyms:
-  - -mispriminglibraryfile
   args: !SimpleFlagArg
     name: infile
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -explainflag
   description: "boolean    [N] If this flag is true, produce\nLEFT-EXPLAIN, RIGHT-EXPLAIN,\
     \ and\nINTERNAL-OLIGO-EXPLAIN output tags, which\nare intended to provide information\
     \ on the\nnumber of oligos and primer pairs that\nEPrimer3 examined, and statistics\
     \ on the\nnumber discarded for various reasons."
-  synonyms:
-  - -explainflag
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -fileflag
   description: "boolean    [N] If the associated value is true, then\nEPrimer3 creates\
     \ two output files for each\ninput SEQUENCE. File (sequence-id).for lists\nall\
     \ acceptable forward primers for\n(sequence-id), and (sequence-id).rev lists\n\
@@ -125,51 +123,51 @@ named:
     value of the SEQUENCE-ID tag (which must be\nsupplied). In addition, if the input\
     \ tag\nTASK is 1 or 4, EPrimer3 produces a file\n(sequence-id).int, which lists\
     \ all\nacceptable internal oligos."
-  synonyms:
-  - -fileflag
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -firstbaseindex
   description: "integer    [1] This parameter is the index of the first\nbase in the\
     \ input sequence. For input and\noutput using 1-based indexing (such as that\n\
     used in GenBank and to which many users are\naccustomed) set this parameter to\
     \ 1. For\ninput and output using 0-based indexing set\nthis parameter to 0. (This\
     \ parameter also\naffects the indexes in the contents of the\nfiles produced when\
     \ the primer file flag is\nset.) (Any integer value)"
-  synonyms:
-  - -firstbaseindex
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "boolean    [N] If true pick a primer pair even if\nLEFT-INPUT, RIGHT-INPUT,\
-    \ or\nINTERNAL-OLIGO-INPUT violates specific\nconstraints."
+  optional: true
   synonyms:
   - -pickanyway
+  description: "boolean    [N] If true pick a primer pair even if\nLEFT-INPUT, RIGHT-INPUT,\
+    \ or\nINTERNAL-OLIGO-INPUT violates specific\nconstraints."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "float      [12.00] The maximum allowed weighted\nsimilarity with any\
-    \ sequence in\nMISPRIMING-LIBRARY. (Number up to 9999.990)"
+  optional: true
   synonyms:
   - -maxmispriming
+  description: "float      [12.00] The maximum allowed weighted\nsimilarity with any\
+    \ sequence in\nMISPRIMING-LIBRARY. (Number up to 9999.990)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -pairmaxmispriming
   description: "float      [24.00] The maximum allowed sum of weighted\nsimilarities\
     \ of a primer pair (one\nsimilarity for each primer) with any single\nsequence\
     \ in MISPRIMING-LIBRARY. (Number up\nto 9999.990)"
-  synonyms:
-  - -pairmaxmispriming
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "integer    [0] Maximum number of unknown bases (N)\nallowable in any\
-    \ primer. (Integer 0 or more)"
+  optional: true
   synonyms:
   - -numnsaccepted
+  description: "integer    [0] Maximum number of unknown bases (N)\nallowable in any\
+    \ primer. (Integer 0 or more)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -selfany
   description: "float      [8.00] The maximum allowable local alignment\nscore when\
     \ testing a single primer for\n(local) self-complementarity and the maximum\n\
     allowable local alignment score when\ntesting for complementarity between forward\n\
@@ -182,11 +180,11 @@ named:
     \ but\nthe alignment\n5' ATCCGNA 3'\n...|| | |\n3' TA--CGT 5'\nis not considered.\
     \ Scores are non-negative,\nand a score of 0.00 indicates that there is\nno reasonable\
     \ local alignment between two\noligos. (Number from 0.000 to 9999.990)"
-  synonyms:
-  - -selfany
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -selfend
   description: "float      [3.00] The maximum allowable 3'-anchored\nglobal alignment\
     \ score when testing a single\nprimer for self-complementarity, and the\nmaximum\
     \ allowable 3'-anchored global\nalignment score when testing for\ncomplementarity\
@@ -203,11 +201,11 @@ named:
     \ a larger value for\nthis parameter than for the Maximum (local)\nComplementarity\
     \ parameter because the score\nof a local alignment will always be at least\n\
     as great as the score of a global\nalignment. (Number 0.000 or more)"
-  synonyms:
-  - -selfend
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -maxendstability
   description: "float      [9.0] The maximum stability for the five 3'\nbases of a\
     \ forward or reverse primer. Bigger\nnumbers mean more stable 3' ends. The value\n\
     is the maximum delta G for duplex\ndisruption for the five 3' bases as\ncalculated\
@@ -219,20 +217,17 @@ named:
     \ Ed., 'Methods in\nMolecular Biology, Vol. 15: PCR Protocols:\nCurrent Methods\
     \ and Applications', 1993, pp\n31-40, Humana Press, Totowa NJ). (Number up\nto\
     \ 1000.000)"
-  synonyms:
-  - -maxendstability
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "boolean    Report command line options and exit. More\ninformation\
-    \ on associated and general\nqualifiers can be found with -help -verbose\n"
+  optional: true
   synonyms:
   - -help
+  description: "boolean    Report command line options and exit. More\ninformation\
+    \ on associated and general\nqualifiers can be found with -help -verbose\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Pick PCR primers and hybridization oligos\nVersion: EMBOSS:6.6.0.0\n\n\
@@ -731,3 +726,4 @@ help_text: "Pick PCR primers and hybridization oligos\nVersion: EMBOSS:6.6.0.0\n
   \                     qualifiers can be found with -help -verbose\n\n"
 generated_using:
 - --help
+docker_image:

@@ -3,7 +3,7 @@ id: braker_cleanup.pl.cwl
 inputs:
 - id: in_wdir
   doc: output directory of braker.pl job
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --wdir
 outputs:
@@ -12,9 +12,10 @@ outputs:
   type: stdout
 - id: out_wdir
   doc: output directory of braker.pl job
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_wdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - braker_cleanup.pl

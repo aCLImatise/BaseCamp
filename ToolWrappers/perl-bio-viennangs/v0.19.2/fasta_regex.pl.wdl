@@ -12,6 +12,9 @@ task FastaRegexpl {
       ~{if defined(fa) then ("--fa " +  '"' + fa + '"') else ""} \
       ~{if defined(motif) then ("--motif " +  '"' + motif + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: ""
     fa: ""

@@ -3,7 +3,7 @@ version 1.0
 task Kmds {
   input {
     File? arg_dsm_kmer
-    Boolean? arg_pheno_metadata
+    Boolean? _arg_metadata
     File? arg_output_prefix
     Boolean? no_mds
     Boolean? write_distances
@@ -14,13 +14,13 @@ task Kmds {
     Boolean? no_filtering
     Float? maf
     String? min_words
-    File file
+    File _maxlength_arg
   }
   command <<<
     kmds \
-      ~{file} \
+      ~{_maxlength_arg} \
       ~{if (arg_dsm_kmer) then "-k" else ""} \
-      ~{if (arg_pheno_metadata) then "-p" else ""} \
+      ~{if (_arg_metadata) then "-p" else ""} \
       ~{if (arg_output_prefix) then "-o" else ""} \
       ~{if (no_mds) then "--no_mds" else ""} \
       ~{if (write_distances) then "--write_distances" else ""} \
@@ -32,9 +32,12 @@ task Kmds {
       ~{if defined(maf) then ("--maf " +  '"' + maf + '"') else ""} \
       ~{if defined(min_words) then ("--min_words " +  '"' + min_words + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_dsm_kmer: "[ --kmers ] arg       dsm kmer output file (not needed if using"
-    arg_pheno_metadata: "[ --pheno ] arg       .pheno metadata"
+    _arg_metadata: "[ --pheno ] arg       .pheno metadata"
     arg_output_prefix: "[ --output ] arg      output prefix for new dsm file"
     no_mds: "do not perform MDS; output subsampled matrix instead"
     write_distances: "write csv of distance matrix"
@@ -45,7 +48,7 @@ task Kmds {
     no_filtering: "turn off all filtering and do not output new kmer"
     maf: "(=0.01)        minimum kmer frequency"
     min_words: "minimum kmer occurences. Overrides --maf"
-    file: "--max_length arg (=100)  maximum kmer length"
+    _maxlength_arg: "--max_length arg (=100)  maximum kmer length"
   }
   output {
     File out_stdout = stdout()

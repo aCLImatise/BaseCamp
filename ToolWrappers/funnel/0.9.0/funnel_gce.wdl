@@ -8,6 +8,9 @@ task FunnelGce {
     funnel gce \
       ~{run}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run: "Flags:"
   }

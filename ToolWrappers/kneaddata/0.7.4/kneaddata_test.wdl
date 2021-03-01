@@ -10,6 +10,9 @@ task KneaddataTest {
       ~{if (bypass_functional_tests) then "--bypass-functional-tests" else ""} \
       ~{if (bypass_unit_tests) then "--bypass-unit-tests" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bypass_functional_tests: "do not run the kneaddata end to end functional tests"
     bypass_unit_tests: "do not run the unit tests"

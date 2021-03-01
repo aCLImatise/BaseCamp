@@ -42,6 +42,9 @@ task Cgatreporttest {
       ~{if defined(workdir) then ("--workdir " +  '"' + workdir + '"') else ""} \
       ~{if defined(hard_copy) then ("--hardcopy " +  '"' + hard_copy + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tracker: "tracker to use [default=none]"
     page: "render an rst page [default=none]"

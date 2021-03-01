@@ -4,6 +4,9 @@ task AxtSort {
   command <<<
     axtSort
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -48,6 +48,9 @@ task HaystackHotspots {
       ~{if (keep_intermediate_files) then "--keep_intermediate_files" else ""} \
       ~{if defined(n_processes) then ("--n_processes " +  '"' + n_processes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     selection: "VARIABLE REGIONS-"
     output_directory: "Output directory (default: current directory)"

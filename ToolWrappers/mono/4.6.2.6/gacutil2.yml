@@ -3,133 +3,133 @@ command:
 - gacutil2
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: gacutil.exe
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: commands
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 2
   name: options
-  optional: true
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -i
   description: "[-check_refs] [-package NAME] [-root ROOTDIR] [-gacdir GACDIR]\nInstalls\
     \ an assembly into the global assembly cache.\n<assembly_path> is the name of\
     \ the file that contains the       assembly manifest\nExample: -i myDll.dll"
-  synonyms:
-  - -i
   args: !SimpleFlagArg
     name: assembly_path
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -il
   description: "[-check_refs] [-package NAME] [-root ROOTDIR] [-gacdir GACDIR]\nInstalls\
     \ one or more assemblies into the global assembly cache.\n<assembly_list_file>\
     \ is the path to a test file containing a list of\nassembly file paths on separate\
     \ lines.\nExample -il assembly_list.txt\nassembly_list.txt contents:\nassembly1.dll\n\
     assembly2.dll"
-  synonyms:
-  - -il
   args: !SimpleFlagArg
     name: assembly_list_file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -u
   description: "[-package NAME] [-root ROOTDIR] [-gacdir GACDIR]\nUninstalls an assembly\
     \ from the global assembly cache.\n<assembly_display_name> is the name of the\
     \ assembly (partial or\nfully qualified) to remove from the global assembly cache.\
     \ If a\npartial name is specified all matching assemblies will be uninstalled.\n\
     Example: -u myDll,Version=1.2.1.0"
-  synonyms:
-  - -u
   args: !SimpleFlagArg
     name: assembly_display_name
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -ul
   description: "[-package NAME] [-root ROOTDIR] [-gacdir GACDIR]\nUninstalls one or\
     \ more assemblies from the global assembly cache.\n<assembly_list_file> is the\
     \ path to a test file containing a list of\nassembly names on separate lines.\n\
     Example -ul assembly_list.txt\nassembly_list.txt contents:\nassembly1,Version=1.0.0.0,Culture=en,PublicKeyToken=0123456789abcdef\n\
     assembly2,Version=2.0.0.0,Culture=en,PublicKeyToken=0123456789abcdef"
-  synonyms:
-  - -ul
   args: !SimpleFlagArg
     name: assembly_list_file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -us
   description: "[-package NAME] [-root ROOTDIR] [-gacdir GACDIR]\nUninstalls an assembly\
     \ using the specifed assemblies full name.\n<assembly path> is the path to an\
     \ assembly. The full assembly name\nis retrieved from the specified assembly if\
     \ there is an assembly in\nthe GAC with a matching name, it is removed.\nExample:\
     \ -us myDll.dll"
-  synonyms:
-  - -us
   args: !SimpleFlagArg
     name: assembly_path
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -l
   description: "[assembly_name] [-root ROOTDIR] [-gacdir GACDIR]\nLists the contents\
     \ of the global assembly cache.\nWhen the <assembly_name> parameter is specified\
     \ only matching\nassemblies are listed."
-  synonyms:
-  - -l
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -package
   description: "Used to create a directory in prefix/lib/mono with the name NAME,\
     \ and a\nsymlink is created from NAME/assembly_name to the assembly on the GAC.\n\
     This is used so developers can reference a set of libraries at once."
-  synonyms:
-  - -package
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -gacdir
   description: "Used to specify the GACs base directory. Once an assembly has been\
     \ installed\nto a non standard gacdir the MONO_GAC_PREFIX environment variable\
     \ must be used\nto access the assembly."
-  synonyms:
-  - -gacdir
   args: !SimpleFlagArg
     name: GACDIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -root
   description: "Used by developers integrating this with automake tools or packaging\
     \ tools\nthat require a prefix directory to  be specified. The root represents\
     \ the\n\"libdir\" component of a prefix (typically prefix/lib)."
-  synonyms:
-  - -root
   args: !SimpleFlagArg
     name: ROOTDIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -check_refs
   description: "Used to ensure that the assembly being installed into the GAC does\
     \ not\nreference any non strong named assemblies. Assemblies being installed to\n\
     the GAC should not reference non strong named assemblies, however the is\nan optional\
     \ check."
-  synonyms:
-  - -check_refs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The Mono gacutil ignores the -f option to maintain commandline compatibility\
-    \ with\nother gacutils. gacutil will always force the installation of a new assembly."
+  optional: true
   synonyms:
   - -f
+  description: "The Mono gacutil ignores the -f option to maintain commandline compatibility\
+    \ with\nother gacutils. gacutil will always force the installation of a new assembly."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<reference_id> <description>\nThe Mono gacutil has not implemented\
-    \ traced references and will emit a warning\nwhen this option is used.\n"
+  optional: true
   synonyms:
   - -r
+  description: "<reference_id> <description>\nThe Mono gacutil has not implemented\
+    \ traced references and will emit a warning\nwhen this option is used.\n"
   args: !SimpleFlagArg
     name: reference_scheme
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -180,3 +180,4 @@ help_text: "Usage: gacutil.exe <commands> [ <options> ]\nCommands:\n-i <assembly
   when this option is used.\n"
 generated_using:
 - --help
+docker_image:

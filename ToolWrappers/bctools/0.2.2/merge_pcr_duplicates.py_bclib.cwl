@@ -3,17 +3,17 @@ id: merge_pcr_duplicates.py_bclib.cwl
 inputs:
 - id: in_d
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_merge_pcr_duplicates_do_tpy
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - merge_pcr_duplicates.py

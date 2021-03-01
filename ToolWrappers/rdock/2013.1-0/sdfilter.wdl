@@ -8,6 +8,9 @@ task Sdfilter {
     sdfilter \
       ~{if (f) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
   }

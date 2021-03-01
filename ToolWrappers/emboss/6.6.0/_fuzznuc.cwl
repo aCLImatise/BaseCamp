@@ -16,18 +16,19 @@ inputs:
     \ pattern is restricted to either the\n5' or 3' end of a sequence, that pattern\n\
     either starts with a '<' symbol or\nrespectively ends with a '>' symbol.\nA period\
     \ ends the pattern. (Optional in\nfuzznuc).\nFor example, [CG](5)TG{A}N(1,5)C"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pattern
 - id: in_complement
   doc: boolean    [N] Search complementary strand
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -complement
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _fuzznuc

@@ -10,6 +10,9 @@ task Rsidx {
       ~{sub_cmd} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
     sub_cmd: "index, search"

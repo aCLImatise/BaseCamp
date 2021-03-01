@@ -11,12 +11,12 @@ task Fdnapars {
     Boolean? step_box
     Boolean? an_cseq
     String alignments
-    File file
+    File additional_optional_qualifiers
   }
   command <<<
     fdnapars \
       ~{alignments} \
-      ~{file} \
+      ~{additional_optional_qualifiers} \
       ~{if (weights) then "-weights" else ""} \
       ~{if (max_trees) then "-maxtrees" else ""} \
       ~{if (transversion) then "-transversion" else ""} \
@@ -26,6 +26,9 @@ task Fdnapars {
       ~{if (step_box) then "-stepbox" else ""} \
       ~{if (an_cseq) then "-ancseq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     weights: "properties Weights file"
     max_trees: "integer    [10000] Number of trees to save (Integer\\nfrom 1 to 1000000)"
@@ -36,7 +39,7 @@ task Fdnapars {
     step_box: "boolean    [N] Print out steps in each site"
     an_cseq: "boolean    [N] Print sequences at all nodes of tree"
     alignments: "[-intreefile]        tree       Phylip tree file (optional)"
-    file: "Additional (Optional) qualifiers (* if not always prompted):"
+    additional_optional_qualifiers: "Additional (Optional) qualifiers (* if not always prompted):"
   }
   output {
     File out_stdout = stdout()

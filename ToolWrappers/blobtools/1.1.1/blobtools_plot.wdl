@@ -58,6 +58,9 @@ task BlobtoolsPlot {
       ~{if defined(ref_cov) then ("--refcov " +  '"' + ref_cov + '"') else ""} \
       ~{if defined(cat_colour) then ("--catcolour " +  '"' + cat_colour + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "BlobDB file (created with \\\"blobtools create\\\")"
     lib: "Plot only certain covlib(s). Separated by \\\",\\\""

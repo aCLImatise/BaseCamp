@@ -3,7 +3,7 @@ id: tripaille_entity_add_entity.cwl
 inputs:
 - id: in_params
   doc: Values to populate the entity fields
-  type: string
+  type: string?
   inputBinding:
     prefix: --params
 - id: in_entity
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tripaille

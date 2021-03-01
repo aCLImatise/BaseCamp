@@ -12,6 +12,9 @@ task Mockcwlrunner {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: ""
     outdir: ""

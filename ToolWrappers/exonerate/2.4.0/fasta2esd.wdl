@@ -4,6 +4,9 @@ task Fasta2esd {
   command <<<
     fasta2esd
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

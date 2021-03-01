@@ -70,6 +70,9 @@ task PourRNA {
       ~{if defined(dot_plot_per_basin) then ("--dot-plot-per-basin " +  '"' + dot_plot_per_basin + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequence: "The RNA sequence of the molecule\\n(default=`ACUGUAUGCGCGU')"
     start_structure: "the start structure of the exploration defining\\nthe first gradient basin; defaults to the\\nopen chain"

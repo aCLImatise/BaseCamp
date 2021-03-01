@@ -3,8 +3,8 @@ version 1.0
 task GemList {
   input {
     Boolean? _installed_check
-    Boolean? equivalent__noinstalled
-    Boolean? _details_display
+    Boolean? equivalent_to_noinstalled
+    Boolean? details_detailed_information
     Boolean? all
     Boolean? _updatesources_update
     Boolean? local
@@ -25,8 +25,8 @@ task GemList {
     gem list \
       ~{regexp} \
       ~{if (_installed_check) then "-i" else ""} \
-      ~{if (equivalent__noinstalled) then "-I" else ""} \
-      ~{if (_details_display) then "-d" else ""} \
+      ~{if (equivalent_to_noinstalled) then "-I" else ""} \
+      ~{if (details_detailed_information) then "-d" else ""} \
       ~{if (all) then "--all" else ""} \
       ~{if (_updatesources_update) then "-u" else ""} \
       ~{if (local) then "--local" else ""} \
@@ -42,10 +42,13 @@ task GemList {
       ~{if (backtrace) then "--backtrace" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _installed_check: ", --[no-]installed             Check for installed gem"
-    equivalent__noinstalled: "Equivalent to --no-installed"
-    _details_display: ", --[no-]details               Display detailed information of gem(s)\\n--[no-]versions              Display only gem names"
+    equivalent_to_noinstalled: "Equivalent to --no-installed"
+    details_detailed_information: ", --[no-]details               Display detailed information of gem(s)\\n--[no-]versions              Display only gem names"
     all: "Display all gem versions\\n--[no-]prerelease            Display prerelease versions"
     _updatesources_update: ", --[no-]update-sources        Update local source cache"
     local: "Restrict operations to the LOCAL domain"

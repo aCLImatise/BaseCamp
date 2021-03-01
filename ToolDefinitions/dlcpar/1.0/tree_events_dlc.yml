@@ -1,25 +1,63 @@
 !Command
 command:
 - tree-events-dlc
-positional: []
-named: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: nodes
+  description: --use-locus-recon     if set, use locus recon rather than MPR
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --stree
+  description: species tree (newick format)
+  args: !SimpleFlagArg
+    name: species tree
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --smap
+  description: mapping of gene names to species names
+  args: !SimpleFlagArg
+    name: gene2species map
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --treeext
+  description: 'tree file extension (default: ".coal.tree")'
+  args: !SimpleFlagArg
+    name: coalescent tree file extension
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --reconext
+  description: 'tree file extension (default: ".coal.recon")'
+  args: !SimpleFlagArg
+    name: coalescent recon file extension
+- !Flag
+  optional: true
+  synonyms:
+  - --by-fam
+  - --use-famid
+  - --explicit
+  description: set to ignore extra lineages at implied speciation
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-s <species tree>, --stree=<species\
-    \ tree>\nspecies tree (newick format)\n-S <gene2species map>, --smap=<gene2species\
-    \ map>\nmapping of gene names to species names\n-T <coalescent tree file extension>,\
-    \ --treeext=<coalescent tree file extension>\ntree file extension (default: \"\
-    .coal.tree\")\n-R <coalescent recon file extension>, --reconext=<coalescent recon\
-    \ file extension>\ntree file extension (default: \".coal.recon\")\n--by-fam\n\
-    --use-famid\n--explicit            set to ignore extra lineages at implied speciation\n\
-    nodes\n--use-locus-recon     if set, use locus recon rather than MPR\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: tree-events-dlc [options]\n\nOptions:\n  -h, --help           \
@@ -35,3 +73,4 @@ help_text: "Usage: tree-events-dlc [options]\n\nOptions:\n  -h, --help          
   \     if set, use locus recon rather than MPR\n"
 generated_using:
 - --help
+docker_image:

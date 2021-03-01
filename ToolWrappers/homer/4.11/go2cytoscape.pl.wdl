@@ -14,6 +14,9 @@ task Go2cytoscapepl {
       ~{homer_go_results_file} \
       ~{organism}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gotwocytosapedotpl: ""
     output_prefix: ""

@@ -3,7 +3,7 @@ id: nebulizer_list_tools.cwl
 inputs:
 - id: in_name
   doc: list only tools matching NAME. Can include glob-style wild-
-  type: string
+  type: string?
   inputBinding:
     prefix: --name
 - id: in_tool
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nebulizer

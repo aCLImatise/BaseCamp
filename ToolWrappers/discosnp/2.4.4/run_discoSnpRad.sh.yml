@@ -4,153 +4,170 @@ command:
 positional: []
 named:
 - !Flag
-  description: "<file name of a file of file(s)>\nThe input read files indicated in\
-    \ a file of file(s)\nExample: -r bank.fof with bank.fof containing the two lines\n\
-    data_sample/reads_sequence1.fasta\ndata_sample/reads_sequence2.fasta.gz"
+  optional: true
   synonyms:
   - -r
   - --fof
+  description: "<file name of a file of file(s)>\nThe input read files indicated in\
+    \ a file of file(s)\nExample: -r bank.fof with bank.fof containing the two lines\n\
+    data_sample/reads_sequence1.fasta\ndata_sample/reads_sequence2.fasta.gz"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "| --k_size value <int value>\nSet the length of used kmers. Must fit\
-    \ the compiled value.\nDefault=31"
+  optional: true
   synonyms:
   - -k
-  args: !EmptyFlagArg {}
-  optional: true
+  - --k_size
+  description: "<int value>\nSet the length of used kmers. Must fit the compiled value.\n\
+    Default=31"
+  args: !SimpleFlagArg
+    name: value
 - !Flag
-  description: "| --min_coverage value <int value>\nSet the minimal coverage per read\
-    \ set: Used by kissnp2 (don't use kmers with lower coverage) and kissreads (read\
-    \ coherency threshold).\nThis coverage can be automatically detected per read\
-    \ set (in this case use \"auto\" or specified per read set, see the documentation.)\n\
-    Default=3"
+  optional: true
   synonyms:
   - -c
-  args: !EmptyFlagArg {}
-  optional: true
+  - --min_coverage
+  description: "<int value>\nSet the minimal coverage per read set: Used by kissnp2\
+    \ (don't use kmers with lower coverage) and kissreads (read coherency threshold).\n\
+    This coverage can be automatically detected per read set (in this case use \"\
+    auto\" or specified per read set, see the documentation.)\nDefault=3"
+  args: !SimpleFlagArg
+    name: value
 - !Flag
-  description: "| -R\nlower recall / higher precision mode. With this parameter no\
-    \ symmetrical crossroads may be traversed during bubble detection (by default\
-    \ up to 5 symmetrical crossroads may be traversed during bubble detection)."
+  optional: true
   synonyms:
   - --high_precision
+  - -R
+  description: lower recall / higher precision mode. With this parameter no symmetrical
+    crossroads may be traversed during bubble detection (by default up to 5 symmetrical
+    crossroads may be traversed during bubble detection).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "| --graph <file name>\nreuse a previously created graph (.h5 file)\
-    \ with same prefix and same k and c parameters."
+  optional: true
   synonyms:
   - -g
-  args: !EmptyFlagArg {}
-  optional: true
+  - --graph
+  description: reuse a previously created graph (.h5 file) with same prefix and same
+    k and c parameters.
+  args: !SimpleFlagArg
+    name: file name
 - !Flag
-  description: "| --prefix <string>\nAll out files will start with this prefix. Default=\"\
-    discoRes\""
+  optional: true
   synonyms:
   - -p
-  args: !EmptyFlagArg {}
-  optional: true
+  - --prefix
+  description: All out files will start with this prefix. Default="discoRes"
+  args: !SimpleFlagArg
+    name: string
 - !Flag
-  description: "| --max_coverage <int value>\nSet the maximal coverage for each read\
-    \ set: Used by kissnp2 (don't use kmers with higher coverage).\nDefault=2^31-1"
+  optional: true
   synonyms:
   - -C
-  args: !EmptyFlagArg {}
-  optional: true
+  - --max_coverage
+  description: "Set the maximal coverage for each read set: Used by kissnp2 (don't\
+    \ use kmers with higher coverage).\nDefault=2^31-1"
+  args: !SimpleFlagArg
+    name: int value
 - !Flag
-  description: "| --no_low_complexity\nRemove low complexity bubbles"
+  optional: true
   synonyms:
   - -l
+  - --no_low_complexity
+  description: Remove low complexity bubbles
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "| --deletion_max_size <int value>\ndiscoSnpRad will search for deletions\
-    \ of size from 1 to D included. Default=0"
+  optional: true
   synonyms:
   - -D
-  args: !EmptyFlagArg {}
-  optional: true
+  - --deletion_max_size
+  description: discoSnpRad will search for deletions of size from 1 to D included.
+    Default=0
+  args: !SimpleFlagArg
+    name: int value
 - !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --src
   description: "[src_path]\nperforms clustering of variants with short_read_connector\n\
     src_path: **absolute** path to short_read_connector directory, containing the\
     \ \"short_read_connector.sh\" file.\n-Note1: short read connector must be compiled.\n\
     -Note2: if no value is given, it assumes short_read_connector.sh is in the PATH\
     \ env variable.\n-Note3: with this option, discoSnpRad outputs a vcf file containing\
     \ the variants clustered by locus"
-  synonyms:
-  - -S
-  - --src
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Discards cluster containing more than this number of variants. (Default\
-    \ 150)\nRequires the -S or --src option"
+  optional: true
   synonyms:
   - --max_size_cluster
+  description: "Discards cluster containing more than this number of variants. (Default\
+    \ 150)\nRequires the -S or --src option"
   args: !SimpleFlagArg
     name: int value
-  optional: true
 - !Flag
-  description: Remove variants with more than max_missing % missing values. (Default
-    0.95, removes variants detected in 5% and less populations)
+  optional: true
   synonyms:
   - --max_missing
+  description: Remove variants with more than max_missing % missing values. (Default
+    0.95, removes variants detected in 5% and less populations)
   args: !SimpleFlagArg
     name: float value
-  optional: true
 - !Flag
-  description: Remove variants whose rank is smaller than this threshold. (Default
-    0.4)
+  optional: true
   synonyms:
   - --min_rank
+  description: Remove variants whose rank is smaller than this threshold. (Default
+    0.4)
   args: !SimpleFlagArg
     name: float value
-  optional: true
 - !Flag
-  description: "| --max_snp_per_bubble <int>\ndiscoSnpRad will search up to P SNPs\
-    \ in a unique bubble. Default=5"
+  optional: true
   synonyms:
   - -P
-  args: !EmptyFlagArg {}
-  optional: true
+  - --max_snp_per_bubble
+  description: discoSnpRad will search up to P SNPs in a unique bubble. Default=5
+  args: !SimpleFlagArg
+    name: int
 - !Flag
-  description: "| --max_substitutions <int>\nSet the number of authorized substitutions\
-    \ used while mapping reads on found SNPs (kissreads). Default=10"
+  optional: true
   synonyms:
   - -d
-  args: !EmptyFlagArg {}
-  optional: true
+  - --max_substitutions
+  description: Set the number of authorized substitutions used while mapping reads
+    on found SNPs (kissreads). Default=10
+  args: !SimpleFlagArg
+    name: int
 - !Flag
-  description: "| --max_threads <int>\nMax number of used threads. 0 means all threads\n\
-    default 0"
+  optional: true
   synonyms:
   - -u
-  args: !EmptyFlagArg {}
-  optional: true
+  - --max_threads
+  description: "Max number of used threads. 0 means all threads\ndefault 0"
+  args: !SimpleFlagArg
+    name: int
 - !Flag
-  description: 'Wraith mode: only show all discoSnpRad commands without running them'
+  optional: true
   synonyms:
   - -w
+  description: 'Wraith mode: only show all discoSnpRad commands without running them'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Verbose 0 (avoids progress output) or 1 (enables progress output) --
-    default=1.
+  optional: true
   synonyms:
   - -v
+  description: Verbose 0 (avoids progress output) or 1 (enables progress output) --
+    default=1.
   args: !SimpleFlagArg
     name: 0 or 1
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "| --help\nPrints this message and exist"
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: Prints this message and exist
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\n\n ************\n *** HELP ***\n ************\nrun_discoSnpRad.sh, pipelining\
@@ -205,3 +222,4 @@ help_text: "\n\n ************\n *** HELP ***\n ************\nrun_discoSnpRad.sh,
   \ Biostar forum: https://www.biostars.org/t/discosnp/\n"
 generated_using:
 - --help
+docker_image:

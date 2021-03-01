@@ -14,6 +14,9 @@ task DeblurBuilddbindexCritical {
       ~{ref_fp} \
       ~{output_dir}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     de_blur: ""
     build_db_index: ""

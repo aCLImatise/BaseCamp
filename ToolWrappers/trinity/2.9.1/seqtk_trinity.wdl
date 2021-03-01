@@ -12,6 +12,9 @@ task Seqtktrinity {
       ~{var_command} \
       ~{arguments}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_tk: ""
     var_command: ""

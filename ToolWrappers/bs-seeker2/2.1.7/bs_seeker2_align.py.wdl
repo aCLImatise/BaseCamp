@@ -64,6 +64,9 @@ task BsSeeker2alignpy {
       ~{if defined(unmapped) then ("--unmapped " +  '"' + unmapped + '"') else ""} \
       ~{if defined(bt_p) then ("--bt-p " +  '"' + bt_p + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_read_qseq: "Input read file (FORMAT: sequences, qseq, fasta,\\nfastq). Ex: read.fa or read.fa.gz"
     input_one: "Input read file, mate 1 (FORMAT: sequences, qseq,\\nfasta, fastq)"

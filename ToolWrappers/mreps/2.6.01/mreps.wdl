@@ -38,6 +38,9 @@ task Mreps {
       ~{if defined(xml_output) then ("-xmloutput " +  '"' + xml_output + '"') else ""} \
       ~{if (no_print) then "-noprint" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specifies_sequence_command: ": specifies the sequence in command line"
     fast_a: ": allows DNA sequences in FASTA format"

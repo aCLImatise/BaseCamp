@@ -18,6 +18,9 @@ task Msa2vcfpy {
       ~{if defined(reference_start) then ("--reference-start " +  '"' + reference_start + '"') else ""} \
       ~{if defined(bcf_tools) then ("--bcftools " +  '"' + bcf_tools + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_sequence: "[--bcftools BCFTOOLS]"
     reference_chr: "Reference chromosome"

@@ -40,6 +40,9 @@ task Hotspot3dHelp {
       ~{help} \
       ~{support}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     preprocessing: "drugport  --  0) Parse drugport database (OPTIONAL)"
     up_pro: "--  1) Update proximity files"

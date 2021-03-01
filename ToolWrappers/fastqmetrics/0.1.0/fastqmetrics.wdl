@@ -12,6 +12,9 @@ task Fastqmetrics {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Set the allowed number of threads to be used by the\\nscript. This only applies to bam and fastq format as\\ndata source\\n"
     v: ""

@@ -20,6 +20,9 @@ task SearchFusionGene {
       ~{if (output_file_name) then "-o" else ""} \
       ~{if (comparison_range_default) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene_annotation_file: ":          gene annotation file name"
     fusion_junction_file: ":          fusion junction file name"

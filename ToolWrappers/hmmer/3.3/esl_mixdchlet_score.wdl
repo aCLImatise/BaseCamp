@@ -10,6 +10,9 @@ task EslmixdchletScore {
       ~{mix_dch_let_file} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
     mix_dch_let_file: ""

@@ -16,6 +16,9 @@ task MixcrVersionInfo {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (no_warnings) then "--no-warnings" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Verbose warning messages."
     no_warnings: "Suppress all warning messages."

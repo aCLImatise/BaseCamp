@@ -4,6 +4,9 @@ task SearchTextsh {
   command <<<
     search_text_sh
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

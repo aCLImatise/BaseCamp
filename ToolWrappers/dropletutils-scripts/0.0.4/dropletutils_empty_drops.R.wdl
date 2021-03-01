@@ -26,6 +26,9 @@ task DropletutilsemptydropsR {
       ~{if defined(output_text_file) then ("--output-text-file " +  '"' + output_text_file + '"') else ""} \
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name in which a serialized R SingleCellExperiment object can be found."
     lower: "A numeric scalar specifying the lower bound on the total UMI count, at or below which all barcodes are assumed to correspond to empty droplets."

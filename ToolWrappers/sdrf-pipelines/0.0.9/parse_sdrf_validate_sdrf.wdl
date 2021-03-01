@@ -12,6 +12,9 @@ task ParseSdrfValidatesdrf {
       ~{if (template) then "--template" else ""} \
       ~{if (check_ms) then "--check_ms" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sd_rf_file: "SDRF file to be validated"
     template: "[default|human|vertebrates|nonvertebrates|plants|cell_lines]\\nselect the template that will be use to\\nvalidate the file (default: default)"

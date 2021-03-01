@@ -8,6 +8,9 @@ task BrassINpInpl {
     brassI_np_in_pl \
       ~{at}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     at: ""
   }

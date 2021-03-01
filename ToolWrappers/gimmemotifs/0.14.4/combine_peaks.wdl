@@ -16,6 +16,9 @@ task CombinePeaks {
       ~{if defined(window) then ("--window " +  '"' + window + '"') else ""} \
       ~{if (scale) then "--scale" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     macs_summit_files: "[FNAME [FNAME ...]], --input [FNAME [FNAME ...]]\\nMACS2 summit or narrowPeak files"
     genome: "Genome name or genome file"

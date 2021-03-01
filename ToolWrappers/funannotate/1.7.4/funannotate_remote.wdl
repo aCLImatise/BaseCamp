@@ -18,6 +18,9 @@ task FunannotateRemote {
       ~{if (out) then "--out" else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     methods: "Which services to run, space separated [phobius,antismash,all]"
     email: "Email address to identify yourself to services."

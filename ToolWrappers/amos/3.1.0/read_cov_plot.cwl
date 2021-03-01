@@ -3,12 +3,12 @@ id: read_cov_plot.cwl
 inputs:
 - id: in_scafold_coordinates_instead
   doc: scafold coordinates instead of contig coordinates
-  type: string
+  type: string?
   inputBinding:
     prefix: -S
 - id: in_only_print_line
   doc: Only print every n-th line
-  type: string
+  type: string?
   inputBinding:
     prefix: -n
 - id: in_bank
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - read-cov-plot

@@ -20,6 +20,9 @@ task TripailleOrganismAddOrganism {
       ~{if defined(infraspecific_rank) then ("--infraspecific_rank " +  '"' + infraspecific_rank + '"') else ""} \
       ~{if defined(infraspecific_name) then ("--infraspecific_name " +  '"' + infraspecific_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     common: "The common name of the organism"
     abbr: "The abbreviation of the organism"

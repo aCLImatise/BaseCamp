@@ -10,6 +10,9 @@ task Oremovegaps {
       ~{fast_a_file_path} \
       ~{if defined(path_for_output) then ("--output " +  '"' + path_for_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_for_output: "Path for output.\\n"
     fast_a_file_path: "FASTA file that contains reads to be padded"

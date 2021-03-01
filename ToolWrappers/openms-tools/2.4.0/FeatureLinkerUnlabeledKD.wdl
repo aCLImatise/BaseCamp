@@ -22,6 +22,9 @@ task FeatureLinkerUnlabeledKD {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*        Input files separated by blanks (valid formats: 'featureXML', 'consensusXML')"
     out: "*        Output file (valid formats: 'consensusXML')"

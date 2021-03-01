@@ -12,6 +12,9 @@ task AgatSpMergeAnnotationspl {
       ~{if defined(gff) then ("--gff " +  '"' + gff + '"') else ""} \
       ~{if defined(output_gff_file) then ("--output " +  '"' + output_gff_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GTF/GFF file(s). You can specify as much file you want\\nlike so: -f file1 -f file2 -f file3"
     output_gff_file: "Output gff3 file where the gene incriminated will be write."

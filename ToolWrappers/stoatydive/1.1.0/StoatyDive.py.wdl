@@ -2,10 +2,10 @@ version 1.0
 
 task StoatyDivepy {
   input {
-    Boolean? _inputbed_peak
-    Boolean? bambed__inputbam
-    Boolean? _chromosome_length
-    File? output_folder
+    Boolean? _inputbed_bedpath
+    Boolean? _read_file
+    Boolean? _chrfile_txtpath
+    File? _outputfolder_pathwrite
     Float? thresh
     Boolean? peak_correction
     Boolean? max_translocate
@@ -23,10 +23,10 @@ task StoatyDivepy {
     StoatyDive_py \
       ~{profiles_dot} \
       ~{on_dot} \
-      ~{if (_inputbed_peak) then "-a" else ""} \
-      ~{if (bambed__inputbam) then "-b" else ""} \
-      ~{if (_chromosome_length) then "-c" else ""} \
-      ~{if defined(output_folder) then ("--output_folder " +  '"' + output_folder + '"') else ""} \
+      ~{if (_inputbed_bedpath) then "-a" else ""} \
+      ~{if (_read_file) then "-b" else ""} \
+      ~{if (_chrfile_txtpath) then "-c" else ""} \
+      ~{if defined(_outputfolder_pathwrite) then ("-o " +  '"' + _outputfolder_pathwrite + '"') else ""} \
       ~{if defined(thresh) then ("--thresh " +  '"' + thresh + '"') else ""} \
       ~{if (peak_correction) then "--peak_correction" else ""} \
       ~{if (max_translocate) then "--max_translocate" else ""} \
@@ -38,11 +38,14 @@ task StoatyDivepy {
       ~{if defined(num_cl) then ("--numcl " +  '"' + num_cl + '"') else ""} \
       ~{if (turn_off_classification) then "--turn_off_classification" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _inputbed_peak: "*.bed, --input_bed *.bed\\nPath to the peak file in bed6 format."
-    bambed__inputbam: "*.bam/*.bed, --input_bam *.bam/*.bed\\nPath to the read file used for the peak calling in bed\\nor bam format."
-    _chromosome_length: "*.txt, --chr_file *.txt\\nPath to the chromosome length file."
-    output_folder: "Write results to this path. [Default: Operating Path]"
+    _inputbed_bedpath: "*.bed, --input_bed *.bed\\nPath to the peak file in bed6 format."
+    _read_file: "*.bam/*.bed, --input_bam *.bam/*.bed\\nPath to the read file used for the peak calling in bed\\nor bam format."
+    _chrfile_txtpath: "*.txt, --chr_file *.txt\\nPath to the chromosome length file."
+    _outputfolder_pathwrite: "/, --output_folder path/\\nWrite results to this path. [Default: Operating Path]"
     thresh: "Set a normalized CV threshold to divide the peak\\nprofiles into more specific (0) and more unspecific\\n(1). [Default: 1.0]"
     peak_correction: "Activate peak correction. The peaks are recentered\\n(shifted) for the correct sumit."
     max_translocate: "Set this flag if you want to shift the peak profiles\\nbased on the maximum value inside the profile instead\\nof a Gaussian blur translocation."

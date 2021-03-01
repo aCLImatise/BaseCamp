@@ -12,6 +12,9 @@ task HashSff {
       ~{if (t) then "-t" else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
     o: ""

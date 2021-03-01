@@ -14,6 +14,9 @@ task JassPlotmanhattanPLOTPATH {
       ~{if (plot_path) then "--plot-path" else ""} \
       ~{if defined(work_table_path) then ("--worktable-path " +  '"' + work_table_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     plot_path: ""
     work_table_path: ""

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Array, Int, Directory, Boolean
+
+Pancake_Singletons_V0_1_0 = CommandToolBuilder(tool="pancake_singletons", base_command=["pancake", "singletons"], inputs=[ToolInput(tag="in_pan_file", input_type=File(optional=True), prefix="--panfile", doc=InputDocumentation(doc="Name of PanCake Data Object File (required)")), ToolInput(tag="in_ref_chrom", input_type=String(optional=True), prefix="--ref_chrom", doc=InputDocumentation(doc="Reference CHROMOSOME (define either ONE reference\nchromosome or ONE reference genome)")), ToolInput(tag="in_ref_genome", input_type=String(optional=True), prefix="--ref_genome", doc=InputDocumentation(doc="Reference GENOME (define either ONE reference\nchromosome or ONE reference genome)")), ToolInput(tag="in_non_ref_chrom_s", input_type=Array(t=String(), optional=True), prefix="--non_ref_chroms", doc=InputDocumentation(doc="Names of non-reference CHROMOSOMES (DEFAULT: ALL non-\nreference chromosomes)")), ToolInput(tag="in_non_ref_genomes", input_type=Array(t=String(), optional=True), prefix="--non_ref_genomes", doc=InputDocumentation(doc="Names of non-reference GENOMES (DEFAULT: ALL non-\nreference genomes)")), ToolInput(tag="in_exclude_genomes", input_type=Array(t=String(), optional=True), prefix="--exclude_genomes", doc=InputDocumentation(doc="Names of GENOMES to exclude from singleton analysis\n(DEFAULT: No genomes excluded)")), ToolInput(tag="in_exclude_chromosomes", input_type=Array(t=String(), optional=True), prefix="--exclude_chromosomes", doc=InputDocumentation(doc="Names of CHROMOSOMES to exclude from singleton\nanalysis (DEFAULT: No chromosomes excluded)")), ToolInput(tag="in_min_len", input_type=Int(optional=True), prefix="--min_len", doc=InputDocumentation(doc="minimum length of regions to identify as a singleton\nregion (INTEGER, DEFAULT=25)")), ToolInput(tag="in_output", input_type=Directory(optional=True), prefix="--output", doc=InputDocumentation(doc="directory to which .fasta files of singleton regions\nare written (DEFAULT:\nsingletons_{REF_CHROM|REF_GENOME})")), ToolInput(tag="in_no_output", input_type=Boolean(optional=True), prefix="--no_output", doc=InputDocumentation(doc="if set, supress .fasta output of singleton regions")), ToolInput(tag="in_bed_file", input_type=File(optional=True), prefix="--bed_file", doc=InputDocumentation(doc=".bed file to which singleton regions are written\n(DEFAULT= singletons_{REF_CHROM|REF_GENOME}.bed)\n"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Pancake_Singletons_V0_1_0().translate("wdl", allow_empty_container=True)
+

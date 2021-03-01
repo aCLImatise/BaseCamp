@@ -36,6 +36,9 @@ task Ssu {
       ~{if (n_partials) then "--n-partials" else ""} \
       ~{if (report_bare) then "--report-bare" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_biom_table: "The input BIOM table."
     input_phylogeny_newick: "The input phylogeny in newick."

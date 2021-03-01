@@ -22,6 +22,9 @@ task SlivarTsv {
       ~{if defined(info_field) then ("--info-field " +  '"' + info_field + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ped: "required ped file describing the trios in the VCF"
     csq_field: "INFO field containing the gene name and impact. Usually CSQ or BCSQ"

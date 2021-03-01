@@ -14,6 +14,9 @@ task PairsQuartetDist {
       ~{output_filename} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
     filename_one: ""

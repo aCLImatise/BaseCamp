@@ -12,6 +12,9 @@ task Translategard {
       ~{if (json_filename_cdnexoutjson) then "-j" else ""} \
       ~{if (output_filename_) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_filename_cdnexgardcsv: "input filename (like CD2.nex.GARD.csv)  [required]"
     json_filename_cdnexoutjson: "json filename (like CD2.nex.out.json    [required]"

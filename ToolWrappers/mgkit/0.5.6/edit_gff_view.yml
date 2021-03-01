@@ -1,0 +1,64 @@
+!Command
+command:
+- edit-gff
+- view
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: INPUT_FILE
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: OUTPUT_FILE
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --keep-empty
+  description: Keep annotations where not all attributes were found
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --attributes
+  description: "Attributes of GFF file to print. For example `-a\ntaxon_id` will print\
+    \ `taxon_id` for all annotations.\nMultiple attributes can be printed, for example:\
+    \ `-a\ntaxon_id -a gene_id`  [required]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --separator
+  description: Fields separator, default to `TAB`
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: edit-gff view [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  View GFF\
+  \ file as table/json, etc.\n\nOptions:\n  -v, --verbose\n  -h, --header        \
+  \   Print Header\n  -k, --keep-empty       Keep annotations where not all attributes\
+  \ were found\n  -a, --attributes TEXT  Attributes of GFF file to print. For example\
+  \ `-a\n                         taxon_id` will print `taxon_id` for all annotations.\n\
+  \                         Multiple attributes can be printed, for example: `-a\n\
+  \                         taxon_id -a gene_id`  [required]\n\n  -s, --separator\
+  \ TEXT   Fields separator, default to `TAB`\n  --help                 Show this\
+  \ message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0

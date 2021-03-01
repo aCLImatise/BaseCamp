@@ -16,6 +16,9 @@ task PoretoolsStats {
       ~{if (full_tsv) then "--full-tsv" else ""} \
       ~{if defined(group) then ("--group " +  '"' + group + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     type: "Which type of FASTQ entries should be reported? Def.=all"

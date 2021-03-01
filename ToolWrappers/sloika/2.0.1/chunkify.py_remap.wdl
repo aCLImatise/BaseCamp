@@ -52,6 +52,9 @@ task ChunkifypyRemap {
       ~{if defined(slip) then ("--slip " +  '"' + slip + '"') else ""} \
       ~{if defined(segmentation) then ("--segmentation " +  '"' + segmentation + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alphabet: "Alphabet of the sequences (default: b'ACGT')"
     input_strand_list: "Strand summary file containing subset (default: None)"

@@ -3,18 +3,19 @@ id: eproxy.cwl
 inputs:
 - id: in_alias
   doc: File of aliases
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -alias
 - id: in_pipe
   doc: Read aliases from stdin
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pipe
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - eproxy

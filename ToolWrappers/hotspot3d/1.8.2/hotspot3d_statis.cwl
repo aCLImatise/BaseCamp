@@ -3,7 +3,7 @@ id: hotspot3d_statis.cwl
 inputs:
 - id: in_output_dir
   doc: Output directory of proximity files
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output-dir
 outputs:
@@ -12,9 +12,10 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: Output directory of proximity files
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hotspot3d

@@ -10,6 +10,9 @@ task PblayoutM4tom4 {
       ~{in_do_tm_four} \
       ~{out_do_tm_four}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_do_tm_four: "STR  Input M4."
     out_do_tm_four: "STR  Output M4."

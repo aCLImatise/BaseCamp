@@ -22,6 +22,9 @@ task A5Pipelinepl {
       ~{if defined(end) then ("--end " +  '"' + end + '"') else ""} \
       ~{if defined(begin) then ("--begin " +  '"' + begin + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     meta_genome: ""
     debug: ""

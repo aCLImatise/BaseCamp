@@ -47,7 +47,7 @@ task Reduce {
     Boolean? show_score
     Boolean? fix
     Boolean? db
-    Boolean? pass_reduce_quoted
+    Boolean? pass_reduce_object
     Boolean? quiet
     Boolean? reference
     Boolean? version
@@ -109,13 +109,16 @@ task Reduce {
       ~{if (show_score) then "-SHOWSCore" else ""} \
       ~{if (fix) then "-FIX" else ""} \
       ~{if (db) then "-DB" else ""} \
-      ~{if (pass_reduce_quoted) then "-STRING" else ""} \
+      ~{if (pass_reduce_object) then "-STRING" else ""} \
       ~{if (quiet) then "-Quiet" else ""} \
       ~{if (reference) then "-REFerence" else ""} \
       ~{if (version) then "-Version" else ""} \
       ~{if (changes) then "-Changes" else ""} \
       ~{if (help) then "-Help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     flip: "add H and rotate and flip NQH groups"
     no_flip: "add H and rotate groups with no NQH flips"
@@ -162,7 +165,7 @@ task Reduce {
     show_score: "display scores for each orientation considered during processing"
     fix: "\\\"filename\\\"   if given, file specifies orientations for adjustable groups"
     db: "\\\"filename\\\"    file to search for het info\\n(default=\\\"/usr/local//dat/reduce_wwPDB_het_dict.txt\\\")"
-    pass_reduce_quoted: "pass reduce a string object from a script, must be quoted"
+    pass_reduce_object: "pass reduce a string object from a script, must be quoted"
     quiet: "do not write extra info to the console"
     reference: "display citation reference"
     version: "display the version of reduce"

@@ -5,197 +5,197 @@ command:
 - dot
 positional:
 - !Positional
-  description: --groups TEXT[,TEXT...]         The groups for which to show the gene
+  optional: false
   position: 0
   name: adata.var_names.
-  optional: false
+  description: --groups TEXT[,TEXT...]         The groups for which to show the gene
 - !Positional
-  description: '-n, --n-genes INTEGER           Number of genes to show.  [default:
-    10]'
+  optional: false
   position: 1
   name: ranking.
-  optional: false
+  description: '-n, --n-genes INTEGER           Number of genes to show.  [default:
+    10]'
 - !Positional
-  description: '--log                           Plot on logarithmic axis.  [default:
-    False]'
+  optional: false
   position: 2
   name: consider.
-  optional: false
+  description: '--log                           Plot on logarithmic axis.  [default:
+    False]'
 named:
 - !Flag
-  description: "[anndata|loom]\nInput object format.  [default: anndata]"
+  optional: true
   synonyms:
   - -f
   - --input-format
+  description: "[anndata|loom]\nInput object format.  [default: anndata]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ',INTEGER      Figure size.  [default: 7,7]'
+  optional: true
   synonyms:
   - --fig-size
+  description: ',INTEGER      Figure size.  [default: 7,7]'
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: 'Figure DPI.  [default: 80]'
+  optional: true
   synonyms:
   - --fig-dpi
+  description: 'Figure DPI.  [default: 80]'
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: 'Figure font size.  [default: 15]'
+  optional: true
   synonyms:
   - --fig-fontsize
+  description: 'Figure font size.  [default: 15]'
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "/ --no-raw            Use expression values in `.raw` if present.\n\
-    [default: True]"
+  optional: true
   synonyms:
   - --use-raw
+  - --no-raw
+  description: "Use expression values in `.raw` if present.\n[default: True]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: var_names should be a valid subset of
+  optional: true
   synonyms:
   - --var-names
+  description: var_names should be a valid subset of
   args: !OptionalFlagArg
     names:
     - TEXT
     - TEXT...
     separator: ','
-  optional: true
 - !Flag
-  description: "When set, use the rank_genes_groups_ form of\nthe function, where\
-    \ gene lists are\nautomatically selected.  [default: False]"
+  optional: true
   synonyms:
   - --rgg
+  description: "When set, use the rank_genes_groups_ form of\nthe function, where\
+    \ gene lists are\nautomatically selected.  [default: False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The key of the observation grouping to
+  optional: true
   synonyms:
   - --groupby
+  description: The key of the observation grouping to
   args: !OptionalFlagArg
     names:
     - TEXT
     - TEXT...
     separator: ','
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --num-categories
   description: "Only used if groupby observation is not\ncategorical. This value determines\
     \ the\nnumber of groups into which the groupby\nobservation should be subdivided.\
     \  [default:\n7]"
-  synonyms:
-  - --num-categories
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --dendrogram
   description: "If True, a dendrogram based on the\nhierarchical clustering between\
     \ the groupby\ncategories is added. The dendrogram\ninformation is computed using\n\
     scanpy.tl.dendrogram(). If tl.dendrogram has\nnot been called previously the function\
     \ is\ncalled with default parameters."
-  synonyms:
-  - --dendrogram
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --layer
   description: "Name of the AnnData object layer that wants\nto be plotted. By default\
     \ adata.raw.X is\nplotted. If use_raw=False is set, then\nadata.X is plotted.\
     \ If layer is set to a\nvalid layer name, then the layer is plotted.\nlayer takes\
     \ precedence over use_raw."
-  synonyms:
-  - --layer
   args: !OptionalFlagArg
     names:
     - TEXT
     - TEXT...
     separator: ','
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --standard-scale
   description: "[var|obs]      Whether or not to standardize that dimension\nbetween\
     \ 0 and 1, meaning for each variable\nor group, subtract the minimum and divide\n\
     each by its maximum."
-  synonyms:
-  - --standard-scale
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gene-symbols
   description: "Column name in .var DataFrame that stores\ngene symbols. By default\
     \ this is assumed to\nbe the index column of the .var DataFrame.\nSetting this\
     \ option allows alternative names\nto be used."
-  synonyms:
-  - --gene-symbols
   args: !OptionalFlagArg
     names:
     - TEXT
     - TEXT...
     separator: ','
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --expression-cutoff
   description: "Expression cutoff that is used for\nbinarizing the gene expression\
     \ and\ndetermining the fraction of cells expressing\ngiven genes. A gene is expressed\
     \ only if the\nexpression value is greater than this\nthreshold.  [default: 0]"
-  synonyms:
-  - --expression-cutoff
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "If True, gene expression is averaged only\nover the cells expressing\
-    \ the given genes.\n[default: False]"
+  optional: true
   synonyms:
   - --mean-only-expressed
+  description: "If True, gene expression is averaged only\nover the cells expressing\
+    \ the given genes.\n[default: False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "String denoting matplotlib color map.\n[default: Reds]"
+  optional: true
   synonyms:
   - --color-map
+  description: "String denoting matplotlib color map.\n[default: Reds]"
   args: !OptionalFlagArg
     names:
     - TEXT
     - TEXT...
     separator: ','
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --dot-max
   description: "If none, the maximum dot size is set to the\nmaximum fraction value\
     \ found (e.g. 0.6). If\ngiven, the value should be a number between\n0 and 1.\
     \ All fractions larger than dot_max\nare clipped to this value."
-  synonyms:
-  - --dot-max
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --dot-min
   description: "If none, the minimum dot size is set to 0.\nIf given, the value should\
     \ be a number\nbetween 0 and 1. All fractions smaller than\ndot_min are clipped\
     \ to this value."
-  synonyms:
-  - --dot-min
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "If none, the smallest dot has size 0. All\nexpression levels with\
-    \ dot_min are potted\nwith smallest_dot dot size.  [default: 0]"
+  optional: true
   synonyms:
   - --smallest-dot
+  description: "If none, the smallest dot has size 0. All\nexpression levels with\
+    \ dot_min are potted\nwith smallest_dot dot size.  [default: 0]"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: scanpy-cli plot dot [OPTIONS] <input_obj> <output_fig>\n\n  Plot\
@@ -264,3 +264,4 @@ help_text: "Usage: scanpy-cli plot dot [OPTIONS] <input_obj> <output_fig>\n\n  P
   \ 0]\n  --help                          Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

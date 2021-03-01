@@ -48,6 +48,9 @@ task Miniasm {
       ~{if (two) then "-2" else ""} \
       ~{if (print_version_number) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefilter_clearly_contained: "prefilter clearly contained reads (2-pass required)"
     min_match_length: "min match length [100]"

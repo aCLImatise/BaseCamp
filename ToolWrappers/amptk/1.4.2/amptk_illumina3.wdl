@@ -22,15 +22,9 @@ task AmptkIllumina3 {
     Boolean? cpus
     Boolean? cleanup
     Boolean? u_search
-    String am_ptk
-    Int illumina_three_slashem_p
-    String arguments
   }
   command <<<
     amptk illumina3 \
-      ~{am_ptk} \
-      ~{illumina_three_slashem_p} \
-      ~{arguments} \
       ~{if (forward) then "--forward" else ""} \
       ~{if (reverse) then "--reverse" else ""} \
       ~{if (index) then "--index" else ""} \
@@ -52,6 +46,9 @@ task AmptkIllumina3 {
       ~{if (cleanup) then "--cleanup" else ""} \
       ~{if (u_search) then "--usearch" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     forward: "FASTQ R1 (forward) file (Required)"
     reverse: "FASTQ R2 (reverse) file (Required)"
@@ -73,9 +70,6 @@ task AmptkIllumina3 {
     cpus: "Number of CPUs to use. Default: all"
     cleanup: "Remove intermediate files."
     u_search: "USEARCH executable. Default: usearch9"
-    am_ptk: ""
-    illumina_three_slashem_p: ""
-    arguments: ""
   }
   output {
     File out_stdout = stdout()

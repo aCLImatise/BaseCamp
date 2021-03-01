@@ -40,6 +40,9 @@ task BedtoolsPairtobed {
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
       ~{if defined(a) then ("-a " +  '"' + a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_bam: "The A input file is in BAM format.  Output will be BAM as well. Replaces -a.\\n- Requires BAM to be grouped or sorted by query."
     ub_am: "Write uncompressed BAM output. Default writes compressed BAM.\\nis to write output in BAM when using -abam."

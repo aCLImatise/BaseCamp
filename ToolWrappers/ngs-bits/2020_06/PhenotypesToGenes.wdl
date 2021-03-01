@@ -16,6 +16,9 @@ task PhenotypesToGenes {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input file, containing one HPO term identifier per line, e.g. HP:0002066. Text after the identifier is ignored. If unset, reads from STDIN.\\nDefault value: ''"
     out: "Output TSV file with genes (column 1) and matched phenotypes (column 2). If unset, writes to STDOUT.\\nDefault value: ''"

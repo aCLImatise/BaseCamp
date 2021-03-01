@@ -3,7 +3,7 @@ id: cnv_expression_correlate.py_RNA_FILE.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_cnv_expression_correlated_otp_y
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cnv_expression_correlate.py

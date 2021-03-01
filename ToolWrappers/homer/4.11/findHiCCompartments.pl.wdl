@@ -22,6 +22,9 @@ task FindHiCCompartmentspl {
       ~{if (corr_diff) then "-corrDiff" else ""} \
       ~{if (min) then "-min" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     opp: "(return inactive, not active regions)"
     thresh: "<#> (threshold for active regions, default: 0)"

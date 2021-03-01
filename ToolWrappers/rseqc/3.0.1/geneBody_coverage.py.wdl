@@ -16,6 +16,9 @@ task GeneBodyCoveragepy {
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(out_prefix) then ("--out-prefix " +  '"' + out_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_files_bam: "Input file(s) in BAM format. \\\"-i\\\" takes these input:\\n1) a single BAM file. 2) \\\",\\\" separated BAM files. 3)\\ndirectory containing one or more bam files. 4) plain\\ntext file containing the path of one or more bam file\\n(Each row is a BAM file path). All BAM files should be\\nsorted and indexed using samtools."
     ref_gene: "Reference gene model in bed format. [required]"

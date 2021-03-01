@@ -20,6 +20,9 @@ task Epestfind {
       ~{if (mono) then "-mono" else ""} \
       ~{if (invalid) then "-invalid" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window: "integer    [10] Minimal distance between positively\\ncharged amino acids. (Integer 2 or more)"
     order: "selection  [score] Name of the output file which holds\\nthe results of the analysis. Results may be\\nsorted by length, position and score."

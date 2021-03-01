@@ -44,6 +44,9 @@ task ExpressBetaDiversity {
       ~{if (output_file) then "--output-file" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_calc: "List all supported calculators."
     unit_tests: "Execute unit tests."

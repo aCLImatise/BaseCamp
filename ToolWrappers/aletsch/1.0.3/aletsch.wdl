@@ -4,14 +4,14 @@ task Aletsch {
   input {
     Boolean? profile
     Boolean? boost_precision
-    String? lslash_chrm_list_string
-    File? lslash_chrm_list_file
-    Directory? d_slash_output_gtf_dir
-    Directory? b_slash_output_bridged_bam_dir
-    Directory? p_slash_profile_dir
-    Int? t_slash_max_threads
-    Int? c_slash_max_group_size
-    Float? s_slash_min_grouping_similarity
+    String? chrm_list_string
+    File? chrm_list_file
+    Directory? output_gtf_dir
+    Directory? output_bridged_bam_dir
+    Directory? profile_dir
+    Int? max_threads
+    Int? max_group_size
+    Float? min_grouping_similarity
     Float? min_bridging_score
     Int? min_splice_bund_ary_hits
     Float? min_transcript_coverage
@@ -33,14 +33,14 @@ task Aletsch {
     aletsch \
       ~{if (profile) then "--profile" else ""} \
       ~{if (boost_precision) then "--boost_precision" else ""} \
-      ~{if defined(lslash_chrm_list_string) then ("-l/--chrm_list_string " +  '"' + lslash_chrm_list_string + '"') else ""} \
-      ~{if defined(lslash_chrm_list_file) then ("-L/--chrm_list_file " +  '"' + lslash_chrm_list_file + '"') else ""} \
-      ~{if defined(d_slash_output_gtf_dir) then ("-d/--output_gtf_dir " +  '"' + d_slash_output_gtf_dir + '"') else ""} \
-      ~{if defined(b_slash_output_bridged_bam_dir) then ("-b/--output_bridged_bam_dir " +  '"' + b_slash_output_bridged_bam_dir + '"') else ""} \
-      ~{if defined(p_slash_profile_dir) then ("-p/--profile_dir " +  '"' + p_slash_profile_dir + '"') else ""} \
-      ~{if defined(t_slash_max_threads) then ("-t/--max_threads " +  '"' + t_slash_max_threads + '"') else ""} \
-      ~{if defined(c_slash_max_group_size) then ("-c/--max_group_size " +  '"' + c_slash_max_group_size + '"') else ""} \
-      ~{if defined(s_slash_min_grouping_similarity) then ("-s/--min_grouping_similarity " +  '"' + s_slash_min_grouping_similarity + '"') else ""} \
+      ~{if defined(chrm_list_string) then ("--chrm_list_string " +  '"' + chrm_list_string + '"') else ""} \
+      ~{if defined(chrm_list_file) then ("--chrm_list_file " +  '"' + chrm_list_file + '"') else ""} \
+      ~{if defined(output_gtf_dir) then ("--output_gtf_dir " +  '"' + output_gtf_dir + '"') else ""} \
+      ~{if defined(output_bridged_bam_dir) then ("--output_bridged_bam_dir " +  '"' + output_bridged_bam_dir + '"') else ""} \
+      ~{if defined(profile_dir) then ("--profile_dir " +  '"' + profile_dir + '"') else ""} \
+      ~{if defined(max_threads) then ("--max_threads " +  '"' + max_threads + '"') else ""} \
+      ~{if defined(max_group_size) then ("--max_group_size " +  '"' + max_group_size + '"') else ""} \
+      ~{if defined(min_grouping_similarity) then ("--min_grouping_similarity " +  '"' + min_grouping_similarity + '"') else ""} \
       ~{if defined(min_bridging_score) then ("--min_bridging_score " +  '"' + min_bridging_score + '"') else ""} \
       ~{if defined(min_splice_bund_ary_hits) then ("--min_splice_bundary_hits " +  '"' + min_splice_bund_ary_hits + '"') else ""} \
       ~{if defined(min_transcript_coverage) then ("--min_transcript_coverage " +  '"' + min_transcript_coverage + '"') else ""} \
@@ -58,17 +58,20 @@ task Aletsch {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     profile: "profiling individual samples and exit (will write to files if -p provided)"
     boost_precision: "reduce false positives, default: not to do so"
-    lslash_chrm_list_string: "list of chromosomes that will be assembled, default: N/A (i.e., assemble all)"
-    lslash_chrm_list_file: "file with chromosomes that will be assembled, default: N/A (i.e., assemble all)"
-    d_slash_output_gtf_dir: "existing directory for individual transcripts, default: N/A"
-    b_slash_output_bridged_bam_dir: "existing directory for individual bridged alignments, default: N/A"
-    p_slash_profile_dir: "existing directory for saving/loading profiles of each samples, default: N/A"
-    t_slash_max_threads: "maximized number of threads, default: 10"
-    c_slash_max_group_size: "the maximized number of splice graphs that will be combined, default: 20"
-    s_slash_min_grouping_similarity: "the minimized similarity for two graphs to be combined, default: 0.2"
+    chrm_list_string: "list of chromosomes that will be assembled, default: N/A (i.e., assemble all)"
+    chrm_list_file: "file with chromosomes that will be assembled, default: N/A (i.e., assemble all)"
+    output_gtf_dir: "existing directory for individual transcripts, default: N/A"
+    output_bridged_bam_dir: "existing directory for individual bridged alignments, default: N/A"
+    profile_dir: "existing directory for saving/loading profiles of each samples, default: N/A"
+    max_threads: "maximized number of threads, default: 10"
+    max_group_size: "the maximized number of splice graphs that will be combined, default: 20"
+    min_grouping_similarity: "the minimized similarity for two graphs to be combined, default: 0.2"
     min_bridging_score: "the minimum score for bridging a paired-end reads, default: 1.5"
     min_splice_bund_ary_hits: "the minimum number of spliced reads required to support a junction, default: 1"
     min_transcript_coverage: "minimum coverage required for a multi-exon transcript, default: 1.0"

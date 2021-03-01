@@ -2,7 +2,7 @@ version 1.0
 
 task PreseqCCurve {
   input {
-    File? yield_output_file
+    File? yield_default_stdout
     Boolean? step
     Boolean? verbose
     Boolean? pe
@@ -19,7 +19,7 @@ task PreseqCCurve {
     preseq c_curve \
       ~{c_curve} \
       ~{sorted_bed_file} \
-      ~{if (yield_output_file) then "-output" else ""} \
+      ~{if (yield_default_stdout) then "-output" else ""} \
       ~{if (step) then "-step" else ""} \
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (pe) then "-pe" else ""} \
@@ -30,8 +30,11 @@ task PreseqCCurve {
       ~{if (seed) then "-seed" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    yield_output_file: "yield output file (default: stdout)"
+    yield_default_stdout: "yield output file (default: stdout)"
     step: "step size in extrapolations (default: 1e+06)"
     verbose: "print more information"
     pe: "input is paired end read file"
@@ -46,6 +49,6 @@ task PreseqCCurve {
   }
   output {
     File out_stdout = stdout()
-    File out_yield_output_file = "${in_yield_output_file}"
+    File out_yield_default_stdout = "${in_yield_default_stdout}"
   }
 }

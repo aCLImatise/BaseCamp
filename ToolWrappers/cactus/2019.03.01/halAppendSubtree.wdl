@@ -36,6 +36,9 @@ task HalAppendSubtree {
       ~{if (merge) then "--merge" else ""} \
       ~{if (no_mark_ancestors) then "--noMarkAncestors" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     branch_length: ":      branch length between appended and appendee nodes\\n[default = 0]"
     bridge_file: ":        alignment containing parent, subtree root, and its\\nfuture siblings, if any (required if not merging\\nappended and appendee nodes) [default = ]"

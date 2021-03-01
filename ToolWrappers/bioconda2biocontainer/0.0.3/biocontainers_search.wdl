@@ -12,6 +12,9 @@ task Biocontainerssearch {
       ~{if (json) then "--json" else ""} \
       ~{if (show_images) then "--show_images" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     search_term: "Search term"
     json: "Print json format"

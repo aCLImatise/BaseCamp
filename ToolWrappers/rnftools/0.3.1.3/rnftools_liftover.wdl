@@ -22,6 +22,9 @@ task RnftoolsLiftover {
       ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
       ~{if defined(output_format) then ("--output-format " +  '"' + output_format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chain: "Chain liftover file for coordinates transformation.\\n[no transformation]"
     genome_id: "ID of genome to be transformed."

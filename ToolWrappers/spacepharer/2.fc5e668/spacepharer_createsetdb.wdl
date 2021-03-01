@@ -32,6 +32,9 @@ task SpacepharerCreatesetdb {
       ~{if defined(verbosity_level_errors) then ("-v " +  '"' + verbosity_level_errors + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dbtype: "Database type 0: auto, 1: amino acid 2: nucleotides [0]"
     shuffle: "Shuffle input database [1]"

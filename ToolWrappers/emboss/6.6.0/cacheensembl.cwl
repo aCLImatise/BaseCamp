@@ -3,12 +3,12 @@ id: cacheensembl.cwl
 inputs:
 - id: in_servername
   doc: string     Server name (Any string)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -servername
 - id: in_outfile
   doc: outfile    [stdout] Output file name
-  type: File
+  type: File?
   inputBinding:
     prefix: -outfile
 - id: in_six_dot_six_dot_zero_dot_zero
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: outfile    [stdout] Output file name
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cacheensembl

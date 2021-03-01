@@ -8,6 +8,9 @@ task Stringiphy {
     stringiphy \
       ~{exons_dot_gff}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exons_dot_gff: ""
   }

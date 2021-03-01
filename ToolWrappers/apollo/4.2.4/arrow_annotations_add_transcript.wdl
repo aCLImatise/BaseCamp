@@ -16,6 +16,9 @@ task ArrowAnnotationsAddTranscript {
       ~{if defined(organism) then ("--organism " +  '"' + organism + '"') else ""} \
       ~{if defined(sequence) then ("--sequence " +  '"' + sequence + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     transcript: "Transcript data"
     suppress_history: "Suppress the history of this operation"

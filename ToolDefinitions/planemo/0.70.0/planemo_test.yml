@@ -4,281 +4,288 @@ command:
 - test
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: Galaxy.
   description: --galaxy_email TEXT             E-mail address to use when launching
     single-
-  position: 0
-  name: Galaxy.
-  optional: false
 - !Positional
-  description: --conda_prefix DIRECTORY        Conda prefix to use for conda dependency
+  optional: false
   position: 0
   name: resolvers.
-  optional: false
+  description: --conda_prefix DIRECTORY        Conda prefix to use for conda dependency
 - !Positional
-  description: --conda_exec FILE               Location of conda executable.
+  optional: false
   position: 1
   name: commands.
-  optional: false
+  description: --conda_exec FILE               Location of conda executable.
 - !Positional
-  description: --shed_tool_conf TEXT           Location of shed tools conf file for
-    Galaxy.
+  optional: false
   position: 0
   name: Galaxy.
-  optional: false
+  description: --shed_tool_conf TEXT           Location of shed tools conf file for
+    Galaxy.
 - !Positional
-  description: --galaxy_user_key TEXT          User key to use with external Galaxy
-    engine.
+  optional: false
   position: 0
   name: engine.
-  optional: false
+  description: --galaxy_user_key TEXT          User key to use with external Galaxy
+    engine.
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --failed
   description: "Re-run only failed tests. This command will\nread tool_test_output.json\
     \ to determine\nwhich tests failed so this file must have\nbeen produced with\
     \ the same set of tool ids\npreviously."
-  synonyms:
-  - --failed
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --polling_backoff
   description: "Poll resources with an increasing interval\nbetween requests. Useful\
     \ when testing\nagainst remote and/or production instances\nto limit generated\
     \ traffic."
-  synonyms:
-  - --polling_backoff
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Name for history (if a history is generated\nas part of testing.)"
+  optional: true
   synonyms:
   - --history_name
+  description: "Name for history (if a history is generated\nas part of testing.)"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Root of development galaxy directory to\nexecute command with."
+  optional: true
   synonyms:
   - --galaxy_root
+  description: "Root of development galaxy directory to\nexecute command with."
   args: !SimpleFlagArg
     name: DIRECTORY
-  optional: true
 - !Flag
-  description: "[2|2.7|3|3.5|3.6|3.7|3.8]\nPython version to start Galaxy under"
+  optional: true
   synonyms:
   - --galaxy_python_version
+  description: "[2|2.7|3|3.5|3.6|3.7|3.8]\nPython version to start Galaxy under"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extra_tools
   description: "Extra tool sources to include in Galaxy's\ntool panel (file or directory).\
     \ These will\nnot be linted/tested/etc... but they will be\navailable to workflows\
     \ and for interactive\nuse."
-  synonyms:
-  - --extra_tools
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Download and configure a disposable copy of\nGalaxy from github."
+  optional: true
   synonyms:
   - --install_galaxy
+  description: "Download and configure a disposable copy of\nGalaxy from github."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Branch of Galaxy to target (defaults to\nmaster) if a Galaxy root\
-    \ isn't specified."
+  optional: true
   synonyms:
   - --galaxy_branch
+  description: "Branch of Galaxy to target (defaults to\nmaster) if a Galaxy root\
+    \ isn't specified."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Git source of Galaxy to target (defaults to\nthe official galaxyproject\
-    \ github source if\na Galaxy root isn't specified."
+  optional: true
   synonyms:
   - --galaxy_source
+  description: "Git source of Galaxy to target (defaults to\nthe official galaxyproject\
+    \ github source if\na Galaxy root isn't specified."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --skip_venv
   description: "Do not create or source a virtualenv\nenvironment for Galaxy, this\
     \ should be used\nor instance to preserve an externally\nconfigured virtual environment\
     \ or conda\nenvironment."
-  synonyms:
-  - --skip_venv
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no_cache_galaxy
   description: "Skip caching of Galaxy source and\ndependencies obtained with --install_galaxy.\n\
     Not caching this results in faster downloads\n(no git) - so is better on throw\
     \ away\ninstances such with TravisCI."
-  synonyms:
-  - --no_cache_galaxy
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not cleanup temp files created for and by
+  optional: true
   synonyms:
   - --no_cleanup
+  description: Do not cleanup temp files created for and by
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: / --no_docker          Run Galaxy tools in Docker if enabled.
+  optional: true
   synonyms:
   - --docker
+  - --no_docker
+  description: Run Galaxy tools in Docker if enabled.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Command used to launch docker (defaults to\ndocker)."
+  optional: true
   synonyms:
   - --docker_cmd
+  description: "Command used to launch docker (defaults to\ndocker)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "/ --no_docker_sudo\nFlag to use sudo when running docker."
+  optional: true
   synonyms:
   - --docker_sudo
+  - --no_docker_sudo
+  description: Flag to use sudo when running docker.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Docker host to target when executing docker\ncommands (defaults to\
-    \ localhost)."
+  optional: true
   synonyms:
   - --docker_host
+  description: "Docker host to target when executing docker\ncommands (defaults to\
+    \ localhost)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "sudo command to use when --docker_sudo is\nenabled (defaults to sudo)."
+  optional: true
   synonyms:
   - --docker_sudo_cmd
+  description: "sudo command to use when --docker_sudo is\nenabled (defaults to sudo)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Test tools against mulled containers (forces\n--docker)."
+  optional: true
   synonyms:
   - --mulled_containers
   - --biocontainers
+  description: "Test tools against mulled containers (forces\n--docker)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Job configuration file for Galaxy to target.
+  optional: true
   synonyms:
   - --job_config_file
+  description: Job configuration file for Galaxy to target.
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: Tool dependency dir for Galaxy to target.
+  optional: true
   synonyms:
   - --tool_dependency_dir
+  description: Tool dependency dir for Galaxy to target.
   args: !SimpleFlagArg
     name: DIRECTORY
-  optional: true
 - !Flag
-  description: "test-data directory to for specified\ntool(s)."
+  optional: true
   synonyms:
   - --test_data
+  description: "test-data directory to for specified\ntool(s)."
   args: !SimpleFlagArg
     name: DIRECTORY
-  optional: true
 - !Flag
-  description: "tool_data_table_conf.xml file to for\nspecified tool(s)."
+  optional: true
   synonyms:
   - --tool_data_table
+  description: "tool_data_table_conf.xml file to for\nspecified tool(s)."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Dependency resolver configuration for Galaxy\nto target."
+  optional: true
   synonyms:
   - --dependency_resolvers_config_file
+  description: "Dependency resolver configuration for Galaxy\nto target."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Configure Galaxy to use plain brew\ndependency resolution."
+  optional: true
   synonyms:
   - --brew_dependency_resolution
+  description: "Configure Galaxy to use plain brew\ndependency resolution."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Configure Galaxy to use brewed Tool Shed\ndependency resolution."
+  optional: true
   synonyms:
   - --shed_dependency_resolution
+  description: "Configure Galaxy to use brewed Tool Shed\ndependency resolution."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Configure Galaxy with no dependency
+  optional: true
   synonyms:
   - --no_dependency_resolution
+  description: Configure Galaxy with no dependency
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Enable more verbose conda logging.
+  optional: true
   synonyms:
   - --conda_debug
+  description: Enable more verbose conda logging.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Ensure conda is configured with specified\ncomma separated list of\
-    \ channels."
+  optional: true
   synonyms:
   - --conda_channels
   - --conda_ensure_channels
+  description: "Ensure conda is configured with specified\ncomma separated list of\
+    \ channels."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Use locally built packages while building\nConda environments."
+  optional: true
   synonyms:
   - --conda_use_local
+  description: "Use locally built packages while building\nConda environments."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Configure Galaxy to use only conda for\ndependency resolution."
+  optional: true
   synonyms:
   - --conda_dependency_resolution
+  description: "Configure Galaxy to use only conda for\ndependency resolution."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Conda dependency resolution for Galaxy will\ncopy dependencies instead\
-    \ of attempting to\nlink them."
+  optional: true
   synonyms:
   - --conda_copy_dependencies
+  description: "Conda dependency resolution for Galaxy will\ncopy dependencies instead\
+    \ of attempting to\nlink them."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ --no_conda_auto_install\nConda dependency resolution for Galaxy\
-    \ will\nattempt to install requested but missing\npackages."
+  optional: true
   synonyms:
   - --conda_auto_install
+  - --no_conda_auto_install
+  description: "Conda dependency resolution for Galaxy will\nattempt to install requested\
+    \ but missing\npackages."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ --no_conda_auto_init\nConda dependency resolution for Galaxy will\n\
-    auto install conda itself using miniconda if\nnot availabe on conda_prefix."
+  optional: true
   synonyms:
   - --conda_auto_init
+  - --no_conda_auto_init
+  description: "Conda dependency resolution for Galaxy will\nauto install conda itself\
+    \ using miniconda if\nnot availabe on conda_prefix."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Name of profile (created with the\nprofile_create command) to use\
-    \ with this\ncommand."
+  optional: true
   synonyms:
   - --profile
+  description: "Name of profile (created with the\nprofile_create command) to use\
+    \ with this\ncommand."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Use postgres database type.
+  optional: true
   synonyms:
   - --postgres
+  description: Use postgres database type.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --database_type
   description: "[postgres|postgres_docker|sqlite|auto]\nType of database to use for\
     \ profile -\n'auto', 'sqlite', 'postgres', and\n'postgres_docker' are available\
     \ options. Use\npostgres to use an existing postgres server\nyou user can access\
@@ -286,181 +293,180 @@ named:
     \ manage a docker container\nrunning postgres. Data with postgres_docker\nis not\
     \ yet persisted past when you restart\nthe docker container launched by Planemo\
     \ so\nbe careful with this option."
-  synonyms:
-  - --database_type
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Name or or path to postgres client binary\n(psql)."
+  optional: true
   synonyms:
   - --postgres_psql_path
+  description: "Name or or path to postgres client binary\n(psql)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Postgres username for managed development
+  optional: true
   synonyms:
   - --postgres_database_user
+  description: Postgres username for managed development
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Database connection string to use for
+  optional: true
   synonyms:
   - --database_connection
+  description: Database connection string to use for
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Location of shed tools directory for Galaxy.
+  optional: true
   synonyms:
   - --shed_tool_path
+  description: Location of shed tools directory for Galaxy.
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "/ --no_galaxy_single_user\nBy default Planemo will configure Galaxy\
-    \ to\nrun in single-user mode where there is just\none user and this user is automatically\n\
-    logged it. Use --no_galaxy_single_user to\nprevent Galaxy from running this way."
+  optional: true
   synonyms:
   - --galaxy_single_user
+  - --no_galaxy_single_user
+  description: "By default Planemo will configure Galaxy to\nrun in single-user mode\
+    \ where there is just\none user and this user is automatically\nlogged it. Use\
+    \ --no_galaxy_single_user to\nprevent Galaxy from running this way."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Update test-data directory with job outputs\n(normally written to\
-    \ directory\n--job_output_files if specified.)"
+  optional: true
   synonyms:
   - --update_test_data
+  description: "Update test-data directory with job outputs\n(normally written to\
+    \ directory\n--job_output_files if specified.)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ --no_paste_test_data_paths\nBy default Planemo will use or not use\n\
-    Galaxy's path paste option to load test data\ninto a history based on the engine\
-    \ type it\nis targeting. This can override the logic to\nexplicitly enable or\
-    \ disable path pasting."
+  optional: true
   synonyms:
   - --paste_test_data_paths
+  - --no_paste_test_data_paths
+  description: "By default Planemo will use or not use\nGalaxy's path paste option\
+    \ to load test data\ninto a history based on the engine type it\nis targeting.\
+    \ This can override the logic to\nexplicitly enable or disable path pasting."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output test report (HTML - for humans)\ndefaults to tool_test_output.html."
+  optional: true
   synonyms:
   - --test_output
+  description: "Output test report (HTML - for humans)\ndefaults to tool_test_output.html."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Output test report (Basic text - for display\nin CI)"
+  optional: true
   synonyms:
   - --test_output_text
+  description: "Output test report (Basic text - for display\nin CI)"
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Output test report (Markdown style - for\nhumans & computers)"
+  optional: true
   synonyms:
   - --test_output_markdown
+  description: "Output test report (Markdown style - for\nhumans & computers)"
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: Output test report (xunit style - for CI
+  optional: true
   synonyms:
   - --test_output_xunit
+  description: Output test report (xunit style - for CI
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: Write job outputs to specified directory.
+  optional: true
   synonyms:
   - --job_output_files
+  description: Write job outputs to specified directory.
   args: !SimpleFlagArg
     name: DIRECTORY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --summary
   description: "[none|minimal|compact]\nSummary style printed to planemo's standard\n\
     output (see output reports for more complete\nsummary). Set to 'none' to disable\n\
     completely."
-  synonyms:
-  - --summary
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --engine
   description: "[galaxy|docker_galaxy|cwltool|toil|external_galaxy]\nSelect an engine\
     \ to run or test artifacts\nsuch as tools and workflows. Defaults to a\nlocal\
     \ Galaxy, but running Galaxy within a\nDocker container or the CWL reference\n\
     implementation 'cwltool' and 'toil' be\nselected."
-  synonyms:
-  - --engine
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Disable strict validation of CWL.
+  optional: true
   synonyms:
   - --non_strict_cwl
+  description: Disable strict validation of CWL.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If cwltool engine is used, disable Docker\ncontainer usage."
+  optional: true
   synonyms:
   - --no-container
   - --no_container
+  description: "If cwltool engine is used, disable Docker\ncontainer usage."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Docker image identifier for docker-galaxy-\nflavor used if engine\
-    \ type is specified as\n``docker-galaxy``. Defaults to\nquay.io/bgruening/galaxy."
+  optional: true
   synonyms:
   - --docker_galaxy_image
+  description: "Docker image identifier for docker-galaxy-\nflavor used if engine\
+    \ type is specified as\n``docker-galaxy``. Defaults to\nquay.io/bgruening/galaxy."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Extra path to mount if --engine docker.
+  optional: true
   synonyms:
   - --docker_extra_volume
+  description: Extra path to mount if --engine docker.
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ignore_dependency_problems
   description: "When installing shed repositories for\nworkflows, ignore dependency\
     \ issues. These\nlikely indicate a problem but in some cases\nmay not prevent\
     \ a workflow from successfully\nexecuting."
-  synonyms:
-  - --ignore_dependency_problems
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ --no_shed_install\nBy default Planemo will attempt to install\n\
-    repositories needed for workflow testing.\nThis may not be appropriate for production\n\
-    servers and so this can disabled by calling\nplanemo with --no_shed_install."
+  optional: true
   synonyms:
   - --shed_install
+  - --no_shed_install
+  description: "By default Planemo will attempt to install\nrepositories needed for\
+    \ workflow testing.\nThis may not be appropriate for production\nservers and so\
+    \ this can disabled by calling\nplanemo with --no_shed_install."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Remote Galaxy URL to use with external\nGalaxy engine."
+  optional: true
   synonyms:
   - --galaxy_url
+  description: "Remote Galaxy URL to use with external\nGalaxy engine."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Admin key to use with external Galaxy
+  optional: true
   synonyms:
   - --galaxy_admin_key
+  description: Admin key to use with external Galaxy
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: planemo test [OPTIONS] TOOL_PATH\n\n  Run specified tool's tests\
@@ -638,3 +644,4 @@ help_text: "Usage: planemo test [OPTIONS] TOOL_PATH\n\n  Run specified tool's te
   \  --help                          Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

@@ -18,6 +18,9 @@ task PyatacCounts {
       ~{if defined(lower) then ("--lower " +  '"' + lower + '"') else ""} \
       ~{if defined(upper) then ("--upper " +  '"' + upper + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Aligned reads"
     bed: "Windows in which to compute counts"

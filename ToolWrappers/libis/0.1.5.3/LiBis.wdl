@@ -2,7 +2,7 @@ version 1.0
 
 task LiBis {
   input {
-    File? file
+    File? enter_number_means
     File? setting_file
     Boolean? required_fastq_file
     Int? clip
@@ -31,7 +31,7 @@ task LiBis {
   command <<<
     LiBis \
       ~{name} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(enter_number_means) then ("--file " +  '"' + enter_number_means + '"') else ""} \
       ~{if defined(setting_file) then ("--settingfile " +  '"' + setting_file + '"') else ""} \
       ~{if (required_fastq_file) then "-n" else ""} \
       ~{if defined(clip) then ("--clip " +  '"' + clip + '"') else ""} \
@@ -56,8 +56,11 @@ task LiBis {
       ~{if (gzip) then "--gzip" else ""} \
       ~{if (full_mode) then "--fullmode" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: "Enter a number, 0 means using parameter to set up, 1\\nmeans using text file to set up"
+    enter_number_means: "Enter a number, 0 means using parameter to set up, 1\\nmeans using text file to set up"
     setting_file: "Setting txt file name. Ignore if -f is 0."
     required_fastq_file: "[NAME [NAME ...]], --name [NAME [NAME ...]]\\nRequired. Fastq file name."
     clip: "Clip mode. 0 means close. 1 means open. default: 0"

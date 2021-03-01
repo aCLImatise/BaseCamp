@@ -20,6 +20,9 @@ task SketchyUtilsPlotkraken {
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
       ~{if (sub) then "--sub" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report: "Path or file glob to tax report files"
     prefix: "Output prefix for plot file."

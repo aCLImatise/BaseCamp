@@ -3,12 +3,12 @@ id: mhapConvert.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_s
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -S
 - id: in_input_do_tm_hap
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mhapConvert

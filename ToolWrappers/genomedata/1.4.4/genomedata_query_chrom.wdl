@@ -18,6 +18,9 @@ task GenomedataqueryChrom {
       ~{begin} \
       ~{end}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_data_query: ""
     gd_archive: ""

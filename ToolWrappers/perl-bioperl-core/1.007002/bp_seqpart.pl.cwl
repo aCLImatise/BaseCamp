@@ -3,28 +3,28 @@ id: bp_seqpart.pl.cwl
 inputs:
 - id: in_files_create_partitioning
   doc: of files to create through partitioning
-  type: long
+  type: long?
   inputBinding:
     prefix: -n
 - id: in_help_message
   doc: help message
-  type: string
+  type: string?
   inputBinding:
     prefix: -h
 - id: in_fasta_file_names
   doc: for all FASTA file names output, files are of the form <outdir>/<prefix>#.<format>
-  type: File
+  type: File?
   inputBinding:
     prefix: -p
 - id: in_files_defaults_fasta
   doc: of the files, defaults to FASTA but you can specify anything supported by SeqIO
     from BioPerl
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_directory_where_dump
   doc: directory where to dump the split sequence files
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
 - id: in_directory
@@ -123,9 +123,10 @@ outputs:
   type: stdout
 - id: out_fasta_file_names
   doc: for all FASTA file names output, files are of the form <outdir>/<prefix>#.<format>
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_fasta_file_names)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bp_seqpart.pl

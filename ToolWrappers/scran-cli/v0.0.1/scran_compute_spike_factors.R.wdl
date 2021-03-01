@@ -16,6 +16,9 @@ task ScrancomputespikefactorsR {
       ~{if defined(general_use) then ("--general_use " +  '"' + general_use + '"') else ""} \
       ~{if defined(output_sce_object) then ("--output-sce-object " +  '"' + output_sce_object + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sce_object: "Path to the input SCE object in rds format."
     type: "A character vector specifying which spike-in sets to use. Default: \\\"ERCC\\\"."

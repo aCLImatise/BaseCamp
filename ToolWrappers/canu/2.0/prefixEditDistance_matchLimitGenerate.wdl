@@ -12,6 +12,9 @@ task PrefixEditDistancematchLimitGenerate {
       ~{max_evalue} \
       ~{step}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mine_value: ""
     max_evalue: ""

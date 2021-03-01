@@ -12,6 +12,9 @@ task FusionReportSync {
       ~{if defined(cosmic_passwd) then ("--cosmic_passwd " +  '"' + cosmic_passwd + '"') else ""} \
       ~{if defined(cosmic_token) then ("--cosmic_token " +  '"' + cosmic_token + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cosmic_usr: "COSMIC username"
     cosmic_passwd: "COSMIC password"

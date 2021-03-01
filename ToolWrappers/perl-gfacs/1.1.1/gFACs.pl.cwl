@@ -1,40 +1,50 @@
 class: CommandLineTool
 id: gFACs.pl.cwl
 inputs:
-- id: in__falserunstatisticsstatisticsateverystepnoprocessingnogeneredefiningremprimeincompletesremprimeincompletesremprimeprimeincompletesremallincompletesremmonoexonicsremmultiexonicsminexonsize_
-  doc: "[prefix]\n--false-run\n--statistics\n--statistics-at-every-step\n--no-processing\n\
-    --no-gene-redefining\n--rem-5prime-incompletes\n--rem-3prime-incompletes\n--rem-5prime-3prime-incompletes\n\
-    --rem-all-incompletes\n--rem-monoexonics\n--rem-multiexonics\n--min-exon-size\
-    \ [nt number]\n--min-intron-size [nt number]\n--min-CDS-size [nt number]\n--unique-genes-only"
-  type: boolean
+- id: in_specifying_format_step
+  doc: '[format]     Specifying a format: A mandatory step to call upon the right
+    script.'
+  type: boolean?
+  inputBinding:
+    prefix: -f
+- id: in_p
+  doc: '[prefix]'
+  type: boolean?
   inputBinding:
     prefix: -p
+- id: in_rem_five_prime_three_prime_incompletes
+  doc: '[nt number]'
+  type: boolean?
+  inputBinding:
+    prefix: --rem-5prime-3prime-incompletes
+- id: in_min_intron_size
+  doc: '[nt number]'
+  type: boolean?
+  inputBinding:
+    prefix: --min-intron-size
+- id: in_min_cds_size
+  doc: '[nt number]'
+  type: boolean?
+  inputBinding:
+    prefix: --min-CDS-size
 - id: in_en_tap_annotation
   doc: '[/path/to/your/entap/annotation.tsv]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --entap-annotation
-- id: in_annotated_ss_genes_only
-  doc: --annotated-all-genes-only
-  type: boolean
-  inputBinding:
-    prefix: --annotated-ss-genes-only
 - id: in_fast_a
   doc: '[/path/to/your/nucleotide/fasta.fasta]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fasta
-- id: in_splice_table
-  doc: "--canonical-only\n--rem-genes-without-start-codon\n--allow-alternate-starts\n\
-    --rem-genes-without-stop-codon\n--rem-genes-without-start-and-stop-codon\n--allowed-inframe-stop-codons\
-    \ [number]\n--nt-content\n--get-fasta-with-introns\n--get-protein-fasta\n--create-gtf\n\
-    --create-simple-gtf\n--create-gff3"
-  type: boolean
+- id: in_rem_genes_without_start_and_stop_codon
+  doc: '[number]'
+  type: boolean?
   inputBinding:
-    prefix: --splice-table
+    prefix: --rem-genes-without-start-and-stop-codon
 - id: in_distributions
   doc: '[option] [option] etc...'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --distributions
 - id: in_g_facs_log_dot_txt
@@ -52,26 +62,46 @@ inputs:
   type: double
   inputBinding:
     position: 1
+- id: in_braker_two_dot_zero_gff
+  doc: braker_2.0_gtf
+  type: double
+  inputBinding:
+    position: 2
+- id: in_braker_two_dot_one_dot_two_gtf
+  doc: maker_2.31.9_gff
+  type: double
+  inputBinding:
+    position: 3
+- id: in_pro_kk_a_one_dot_one_one_gff
+  doc: gmap_2017_03_17_gff3
+  type: double
+  inputBinding:
+    position: 4
 - id: in_genome_threader_one_dot_six_dot_six_gff_three
   doc: stringtie_1.3.4_gtf
   type: double
   inputBinding:
-    position: 2
+    position: 5
 - id: in_gff_read_zero_dot_nine_do_tone_two_gff_three
   doc: exonerate_2.4.0_gff
   type: double
   inputBinding:
-    position: 3
+    position: 6
 - id: in_evm_one_dot_one_dot_one_gff_three
   doc: CoGe_1.0_gff
   type: double
   inputBinding:
-    position: 4
+    position: 7
+- id: in_g_facs_gene_table
+  doc: gFACs_gtf
+  type: string
+  inputBinding:
+    position: 8
 - id: in_refseq_gff
   doc: genbank_gbff - UNDER REPAIR
   type: string
   inputBinding:
-    position: 5
+    position: 9
 - id: in_j_browse
   doc: '--compatibility [option] [option] etc... '
   type: string
@@ -102,15 +132,11 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_intron_position
-  doc: 'intron_position_data    '
-  type: string
-  inputBinding:
-    position: 3
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gFACs.pl

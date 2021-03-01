@@ -3,13 +3,13 @@ id: coverage_from_fastx.cwl
 inputs:
 - id: in_coverage
   doc: "Calculate fraction of reads required for this coverage.\n(default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --coverage
 - id: in_longest
   doc: "Use the longest reads when calculating fraction reads\nrequired for a given\
     \ coverage. (default: False)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --longest
 - id: in_base_calls
@@ -27,6 +27,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - coverage_from_fastx

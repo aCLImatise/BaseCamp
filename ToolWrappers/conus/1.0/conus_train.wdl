@@ -44,6 +44,9 @@ task ConusTrain {
       ~{if (_verbose_output) then "-v" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     use_string_defaults: ": Use grammar <string>, defaults to NUS"
     load_prior_specified: ": Load prior specified in <file>"

@@ -9,8 +9,8 @@ task BiscuitBsconv {
     Boolean? filter_maximum_cpa
     Boolean? filter_maximum_cpc
     Boolean? filter_maximum_cpt
-    Boolean? print_tab_cpar
-    Boolean? show_filtered_remained
+    Boolean? print_tab_cpac
+    Boolean? show_filtered_instead
     String bs_conv
     String ref_dot_fa
     String in_dot_bam
@@ -29,9 +29,12 @@ task BiscuitBsconv {
       ~{if (filter_maximum_cpa) then "-a" else ""} \
       ~{if (filter_maximum_cpc) then "-c" else ""} \
       ~{if (filter_maximum_cpt) then "-t" else ""} \
-      ~{if (print_tab_cpar) then "-b" else ""} \
-      ~{if (show_filtered_remained) then "-v" else ""}
+      ~{if (print_tab_cpac) then "-b" else ""} \
+      ~{if (show_filtered_instead) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     region: "region."
     filter_unclear_bsstrand: "filter unclear bs-strand (YD:u) reads [OFF]."
@@ -40,8 +43,8 @@ task BiscuitBsconv {
     filter_maximum_cpa: "filter: maximum CpA retention [Inf]"
     filter_maximum_cpc: "filter: maximum CpC retention [Inf]"
     filter_maximum_cpt: "filter: maximum CpT retention [Inf]"
-    print_tab_cpar: "print in tab, CpA_R, CpA_C, CpC_R, CpC_C, CpG_R, CpG_C, CpT_R, CpT_C"
-    show_filtered_remained: "show filtered instead of remained [False]"
+    print_tab_cpac: "print in tab, CpA_R, CpA_C, CpC_R, CpC_C, CpG_R, CpG_C, CpT_R, CpT_C"
+    show_filtered_instead: "show filtered instead of remained [False]"
     bs_conv: ""
     ref_dot_fa: ""
     in_dot_bam: ""

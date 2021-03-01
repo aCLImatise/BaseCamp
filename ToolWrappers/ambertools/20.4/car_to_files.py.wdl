@@ -14,6 +14,9 @@ task CarToFilespy {
       ~{if defined(output_pdb_file) then ("-p " +  '"' + output_pdb_file + '"') else ""} \
       ~{if defined(residue_name) then ("-r " +  '"' + residue_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_name: "Input file name"
     output_mol_file: "Output mol2 file name"

@@ -16,6 +16,9 @@ task BandageImage {
       ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
       ~{if (help_all) then "--helpall" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     height: "Image height (default: 1000)"
     width: "Image width (default: not set)"

@@ -18,6 +18,9 @@ task LdhelmetFindConfs {
       ~{if (arg_window_size) then "-w" else ""} \
       ~{if (arg_name_output) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _display_version: "[ --version ]                Display version."
     num_threads: "(=1)          Number of threads to use."

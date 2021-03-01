@@ -18,6 +18,9 @@ task Runcon {
       ~{if defined(role) then ("--role " +  '"' + role + '"') else ""} \
       ~{if defined(range) then ("--range " +  '"' + range + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compute: "compute process transition context before modifying"
     type: "type (for same role as parent)"

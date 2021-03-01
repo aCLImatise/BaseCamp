@@ -12,6 +12,9 @@ task SamFilterpy {
       ~{if defined(min_align_score) then ("--min_align_score " +  '"' + min_align_score + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "The input sam file."
     min_align_score: "The sam records with alignment score smaller than this\\nvalue will be discarded."

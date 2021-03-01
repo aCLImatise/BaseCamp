@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File
+
+Probscan_V0_1_0 = CommandToolBuilder(tool="ProbScan", base_command=["ProbScan"], inputs=[ToolInput(tag="in_hairpin", input_type=Boolean(optional=True), prefix="--hairpin", doc=InputDocumentation(doc="Print probabilities for all possible hairpin loops.")), ToolInput(tag="in_bulge", input_type=Boolean(optional=True), prefix="--bulge", doc=InputDocumentation(doc="Print probabilities for all possible bulge loops.")), ToolInput(tag="in_dna", input_type=Boolean(optional=True), prefix="--DNA", doc=InputDocumentation(doc="Specify that the sequence is DNA, and DNA parameters are to be used.\nDefault is to use RNA parameters.")), ToolInput(tag="in_internal", input_type=Boolean(optional=True), prefix="--internal", doc=InputDocumentation(doc="Print probabilities for all possible internal loops.")), ToolInput(tag="in_sequence", input_type=Boolean(optional=True), prefix="--sequence", doc=InputDocumentation(doc="Provide RNA from sequence file. Partition function will be calculated (may\ntake a while); if you're going to query the same sequence repeatedly, you\ncould save a lot of time by running from a partition function save file\nproduced by the 'partition' program.")), ToolInput(tag="in_helix", input_type=Boolean(optional=True), prefix="--helix", doc=InputDocumentation(doc="Print probabilities for all possible helices with this number of base pair\nstacks. To get single base pair stacks, use -e 1.")), ToolInput(tag="in_multi_branch", input_type=Boolean(optional=True), prefix="--multibranch", doc=InputDocumentation(doc="Provide a file with multibranch loops. These multibranch loops'\nprobabilities will be checked.")), ToolInput(tag="in_pairs", input_type=Boolean(optional=True), prefix="--pairs", doc=InputDocumentation(doc="Calculate probability for a user-specified loop. The loop must be provided\nas a set of pairs of nucleotide indices, where the nucs in the pair are\ndelimited by dashes and each pair is delimited by a comma; eg '-e 5-20'\nwill show the probability of a hairpin loop closed by a pair between\nnucleotides 5 and 20, and '-e 10-120,15-70,75-110' will give the\nprobability of a three-way junction where the exiting helices are closed by\npairs at 10-120, 15-70, and 75-110.\n")), ToolInput(tag="in_input_file", input_type=File(), position=0, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Probscan_V0_1_0().translate("wdl", allow_empty_container=True)
+

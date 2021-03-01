@@ -12,6 +12,9 @@ task OrthomclInstallSchema {
       ~{sql_log_file} \
       ~{table_suffix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: ""
     sql_log_file: ""

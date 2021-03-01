@@ -24,6 +24,9 @@ task ListReadPlacedStatus {
       ~{if (just_list_read_eids) then "-E" else ""} \
       ~{if (just_list_read_iids) then "-I" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     disregard_bank_locks: "Disregard bank locks and write permissions (spy mode)"
     display_compatible_version: "Display the compatible bank version"

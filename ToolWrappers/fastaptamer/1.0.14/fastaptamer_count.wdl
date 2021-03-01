@@ -14,6 +14,9 @@ task FastaptamerCount {
       ~{if (v) then "-v" else ""} \
       ~{if (q) then "-q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     i: ""

@@ -28,6 +28,9 @@ task SiriusAdapter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     executable: "The Sirius executable. Provide a full or relative path, or make sure it can be found in your PATH environment."
     in: "*                                          MzML Input file (valid formats: 'mzML')"

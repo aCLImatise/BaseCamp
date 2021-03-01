@@ -14,6 +14,9 @@ task NebulizerCreateLibrary {
       ~{if defined(description) then ("--description " +  '"' + description + '"') else ""} \
       ~{if defined(synopsis) then ("--synopsis " +  '"' + synopsis + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     description: "description of the new library"
     synopsis: "synopsis text for the new library"

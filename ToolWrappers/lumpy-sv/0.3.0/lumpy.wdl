@@ -8,7 +8,7 @@ task Lumpy {
     Boolean? mw
     Boolean? msw
     Boolean? tt
-    Boolean? exclude_file_bed
+    Boolean? exclude_bed_file
     Boolean? temp_file_prefix
     Boolean? output_probability_curve
     Boolean? output_bedpe_instead
@@ -24,7 +24,7 @@ task Lumpy {
       ~{if (mw) then "-mw" else ""} \
       ~{if (msw) then "-msw" else ""} \
       ~{if (tt) then "-tt" else ""} \
-      ~{if (exclude_file_bed) then "-x" else ""} \
+      ~{if (exclude_bed_file) then "-x" else ""} \
       ~{if (temp_file_prefix) then "-t" else ""} \
       ~{if (output_probability_curve) then "-P" else ""} \
       ~{if (output_bedpe_instead) then "-b" else ""} \
@@ -32,6 +32,9 @@ task Lumpy {
       ~{if (pe) then "-pe" else ""} \
       ~{if (bed_pe) then "-bedpe" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_file_defines: "Genome file (defines chromosome order)"
     show_evidence_call: "Show evidence for each call"
@@ -39,7 +42,7 @@ task Lumpy {
     mw: "minimum weight for a call"
     msw: "minimum per-sample weight for a call"
     tt: "trim threshold"
-    exclude_file_bed: "exclude file bed file"
+    exclude_bed_file: "exclude file bed file"
     temp_file_prefix: "temp file prefix, must be to a writeable directory"
     output_probability_curve: "output probability curve for each variant"
     output_bedpe_instead: "output BEDPE instead of VCF"

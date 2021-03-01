@@ -1,0 +1,167 @@
+!Command
+command:
+- kar.2.10.9
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: directory.
+  description: '-t|--test <archive>              Check the structural validity of
+    an archive '
+- !Positional
+  optional: false
+  position: 0
+  name: quit.
+  description: '-L|--log-level <level>           Logging level as number or enum string.
+    One '
+- !Positional
+  optional: false
+  position: 0
+  name: file.
+  description: '-Z|--stdout                      Direct output to stdout '
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --create
+  description: Create new archive.
+  args: !SimpleFlagArg
+    name: archive
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --extract
+  description: Extract the contents of an archive into
+  args: !SimpleFlagArg
+    name: archive
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --directory
+  description: "The next token on the command line is the\nname of the directory to\
+    \ extract to or\ncreate from"
+  args: !SimpleFlagArg
+    name: Directory
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: "(no parameter) this will cause the extract\nor create to over-write\
+    \ existing files unless\nthey are write-protected. Without this\noption the program\
+    \ will fail if the archive\nalready exists for create or the target\ndirectory\
+    \ exists for an extract"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --long-list
+  description: "more information will be given on each file\nin test/list mode."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: "Increase the verbosity of the program\nstatus messages. Use multiple\
+    \ times for more\nverbosity. Negates quiet."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: "Turn off all status messages for the\nprogram. Negated by verbose."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --option-file
+  description: Read more options and parameters from the
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --md5
+  description: create md5sum-compatible checksum file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Output brief explanation for the program.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Display the version of the program then
+  args: !EmptyFlagArg {}
+help_text: "Usage:\n  kar.2.10.9 [OPTIONS] -c|--create <Archive> -d|--directory <Directory>\
+  \ [Filter ...]\n  kar.2.10.9 [OPTIONS] -x|--extract <Archive> -d|--directory <Directory>\n\
+  \  kar.2.10.9 [OPTIONS] -t|--test|--long-list <Archive>\n\nSummary:\n  Create, extract\
+  \ from, or test an archive.\n\nArchive Command:\n  All of these options require\
+  \ the next token on the command line to be\n  the name of the archive\n\nOptions:\n\
+  \  -c|--create <archive>            Create new archive. \n  -x|--extract <archive>\
+  \           Extract the contents of an archive into \n                         \
+  \          directory. \n  -t|--test <archive>              Check the structural\
+  \ validity of an archive \n\nArchive:\n  Path to a file that will/does hold the\
+  \ archive of other files.\n  This can be a full or relative path.\n\nDirectory:\n\
+  \  Required for create or extract command, ignored for test command.\n  This can\
+  \ be a full or relative path.\n\nFilters:\n  When present these act as include filters.\n\
+  \  Any file name will be included in the extracted files, created archive\n  or\
+  \ test operation listing\n  Any directory will be included as well as its contents\n\
+  \nOptions:\n  -d|--directory <Directory>       The next token on the command line\
+  \ is the \n                                   name of the directory to extract to\
+  \ or \n                                   create from \n  -f|--force           \
+  \            (no parameter) this will cause the extract \n                     \
+  \              or create to over-write existing files unless \n                \
+  \                   they are write-protected. Without this \n                  \
+  \                 option the program will fail if the archive \n               \
+  \                    already exists for create or the target \n                \
+  \                   directory exists for an extract \n  -l|--long-list         \
+  \          more information will be given on each file \n                      \
+  \             in test/list mode. \n  -h|--help                        Output brief\
+  \ explanation for the program. \n  -V|--version                     Display the\
+  \ version of the program then \n                                   quit. \n  -L|--log-level\
+  \ <level>           Logging level as number or enum string. One \n             \
+  \                      of (fatal|sys|int|err|warn|info|debug) or \n            \
+  \                       (0-6) Current/default is warn \n  -v|--verbose         \
+  \            Increase the verbosity of the program \n                          \
+  \         status messages. Use multiple times for more \n                      \
+  \             verbosity. Negates quiet. \n  -q|--quiet                       Turn\
+  \ off all status messages for the \n                                   program.\
+  \ Negated by verbose. \n  --option-file <file>             Read more options and\
+  \ parameters from the \n                                   file. \n  -Z|--stdout\
+  \                      Direct output to stdout \n  --md5                       \
+  \     create md5sum-compatible checksum file \n\nUse examples:\n  To create an archive\
+  \ named 'example.sra' that contains the same\n  contents as a subdirectory 'example'\
+  \ of the current directory\n\n  $ kar.2.10.9 --create example.sra --directory example\n\
+  \n  To replace an existing archive named 'example.sra' with another that contains\n\
+  \  the same contents as a subdirectory 'example' of the current directory\n\n  $\
+  \ kar.2.10.9 -f -c example.sra -d example\n\n  To examine in detail the contents\
+  \ of an archive named 'example.sra'\n\n  $ kar.2.10.9 --long-list --test example.sra\n\
+  \n  To extract the files from an archive named 'example.sra' into\n  a subdirectory\
+  \ 'example' of the current directory.\n  NOTE: all extracted files will be read\
+  \ only.\n\n  $ kar.2.10.9 --extract example.sra --directory example\n\nkar.2.10.9\
+  \ : 2.10.9\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sra-tools:2.10.9--pl526haddd2b5_0

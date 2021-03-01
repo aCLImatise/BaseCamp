@@ -4,29 +4,29 @@ inputs:
 - id: in_build
   doc: "[BUILD]       Output sequence at specified build of reference\ngenome. The\
     \ primary reference genome of the project\nwill be used if by default."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --build
 - id: in_strand_only
   doc: Only output strand of genes that covers the region.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --strand_only
 - id: in_first_transcript
   doc: "If set, only display the first transcript of RNA or\nProtein sequence"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --first_transcript
 - id: in_zero_based
   doc: "If set, user input is zero based and will be\ntranslated to 1-based coordinates\
     \ before query. The\noutput is always 1-based"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --zero_based
 - id: in_verbosity
   doc: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
     \ to standard output (default to\n1).\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbosity
 - id: in_regions
@@ -41,6 +41,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vtools_report

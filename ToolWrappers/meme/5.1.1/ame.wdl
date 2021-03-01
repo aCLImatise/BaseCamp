@@ -2,7 +2,7 @@ version 1.0
 
 task Ame {
   input {
-    Directory? output_dir_directory
+    Directory? output_dir_output_directory
     Boolean? oc
     Boolean? control
     Int? km_er
@@ -30,7 +30,7 @@ task Ame {
     ame \
       ~{sequence_file} \
       ~{motif_file} \
-      ~{if (output_dir_directory) then "--o" else ""} \
+      ~{if (output_dir_output_directory) then "--o" else ""} \
       ~{if (oc) then "--oc" else ""} \
       ~{if (control) then "--control" else ""} \
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
@@ -52,8 +52,11 @@ task Ame {
       ~{if defined(exc) then ("--exc " +  '"' + exc + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    output_dir_directory: "<output dir> output directory; default=ame_out"
+    output_dir_output_directory: "<output dir> output directory; default=ame_out"
     oc: "<output dir> overwrite output; default=ame_out"
     control: "<control file> control sequences in FASTA format or the keyword\\n'--shuffle--' to use shuffled versions of the primary sequences"
     km_er: "preserve k-mer frequencies when shuffling letters; default: 2"
@@ -79,6 +82,6 @@ task Ame {
   }
   output {
     File out_stdout = stdout()
-    Directory out_output_dir_directory = "${in_output_dir_directory}"
+    Directory out_output_dir_output_directory = "${in_output_dir_output_directory}"
   }
 }

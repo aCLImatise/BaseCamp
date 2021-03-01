@@ -4,37 +4,68 @@ command:
 positional: []
 named:
 - !Flag
-  description: "--out-r-singleton OUT_R_SINGLETON\n[--verbosity {INFO,WARN,CRITICAL}]\n\
-    [--log-path LOG_PATH] [--new-style]"
-  synonyms:
-  - --out-r1
-  - --out-r2
-  args: !SimpleFlagArg
-    name: OUT_R1
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - --mixed-reads
+  description: "The file containing mixed fasta reads with \x01 and \x02\ndesignators\
+    \ for reads."
   args: !SimpleFlagArg
     name: MIXED_READS
+- !Flag
   optional: true
+  synonyms:
+  - --singleton-reads
+  description: The file containing singleton fasta reads.
+  args: !SimpleFlagArg
+    name: SINGLETON_READS
+- !Flag
+  optional: true
+  synonyms:
+  - --out-r1
+  description: The output fasta for R1.
+  args: !SimpleFlagArg
+    name: OUT_R1
+- !Flag
+  optional: true
+  synonyms:
+  - --out-r2
+  description: The output fasta for R2.
+  args: !SimpleFlagArg
+    name: OUT_R2
+- !Flag
+  optional: true
+  synonyms:
+  - --out-r-singleton
+  description: The output fasta for singleton reads (RS).
+  args: !SimpleFlagArg
+    name: OUT_R_SINGLETON
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: The logging level to use.
+  args: !ChoiceFlagArg
+    choices: !!set
+      INFO:
+      WARN:
+      CRITICAL:
+- !Flag
+  optional: true
+  synonyms:
+  - --log-path
+  description: The path to a directory to hold logs.
+  args: !SimpleFlagArg
+    name: LOG_PATH
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--mixed-reads MIXED_READS\nThe file\
-    \ containing mixed fasta reads with \x01 and \x02\ndesignators for reads.\n--singleton-reads\
-    \ SINGLETON_READS\nThe file containing singleton fasta reads.\n--out-r1 OUT_R1\
-    \       The output fasta for R1.\n--out-r2 OUT_R2       The output fasta for R2.\n\
-    --out-r-singleton OUT_R_SINGLETON\nThe output fasta for singleton reads (RS).\n\
-    --verbosity {INFO,WARN,CRITICAL}\nThe logging level to use.\n--log-path LOG_PATH\
-    \   The path to a directory to hold logs.\n--new-style\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: phyluce_utilities_unmix_fasta_reads [-h] --mixed-reads MIXED_READS\n\
@@ -55,3 +86,4 @@ help_text: "usage: phyluce_utilities_unmix_fasta_reads [-h] --mixed-reads MIXED_
   \ to a directory to hold logs.\n  --new-style\n"
 generated_using:
 - --help
+docker_image:

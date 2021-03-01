@@ -16,6 +16,9 @@ task BedpeFilter {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input BEDPE file. If unset, reads from STDIN.\\nDefault value: ''"
     out: "Output BEDPE file. If unset, writes to STDOUT.\\nDefault value: ''"

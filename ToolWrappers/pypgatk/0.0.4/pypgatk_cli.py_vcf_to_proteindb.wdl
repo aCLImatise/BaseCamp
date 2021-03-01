@@ -7,7 +7,6 @@ task PypgatkClipyVcftoproteindb {
     File? vep_annotated_vcf
     File? gene_annotations_gtf
     Int? translation_table
-    Int? mi_to_translation_table
     String? var_prefix
     Boolean? report_ref_seq
     String? annotation_field_name
@@ -34,7 +33,6 @@ task PypgatkClipyVcftoproteindb {
       ~{if defined(vep_annotated_vcf) then ("--vep_annotated_vcf " +  '"' + vep_annotated_vcf + '"') else ""} \
       ~{if defined(gene_annotations_gtf) then ("--gene_annotations_gtf " +  '"' + gene_annotations_gtf + '"') else ""} \
       ~{if defined(translation_table) then ("--translation_table " +  '"' + translation_table + '"') else ""} \
-      ~{if defined(mi_to_translation_table) then ("--mito_translation_table " +  '"' + mi_to_translation_table + '"') else ""} \
       ~{if defined(var_prefix) then ("--var_prefix " +  '"' + var_prefix + '"') else ""} \
       ~{if (report_ref_seq) then "--report_ref_seq" else ""} \
       ~{if defined(annotation_field_name) then ("--annotation_field_name " +  '"' + annotation_field_name + '"') else ""} \
@@ -50,13 +48,15 @@ task PypgatkClipyVcftoproteindb {
       ~{if (ignore_filters) then "--ignore_filters" else ""} \
       ~{if defined(accepted_filters) then ("--accepted_filters " +  '"' + accepted_filters + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: "Configuration to perform conversion between\\nENSEMBL Files"
     input_fast_a: "Path to the transcript sequence"
     vep_annotated_vcf: "Path to the vep annotated VCF file"
     gene_annotations_gtf: "Path to the gene annotations file"
     translation_table: "Translation table (Default 1)"
-    mi_to_translation_table: "Mito_trans_table (default 2)"
     var_prefix: "String to add before the variant peptides"
     report_ref_seq: "In addition to var peps, also report all ref"
     annotation_field_name: "Annotation field name found in the INFO\\ncolumn, e.g CSQ or vep"

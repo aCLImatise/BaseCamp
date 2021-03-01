@@ -3,23 +3,23 @@ id: bioformats_flanknfilter.cwl
 inputs:
 - id: in_type
   doc: 'the input file type (default: bed)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --type
 - id: in_length
   doc: 'the flanking region length (default: 100)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --length
 - id: in_strict
   doc: "require flanks to have exactly the specified length\n(it may be shorter if\
     \ a feature is located near a\nsequence start or end) (default: False)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --strict
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_input_file
@@ -41,6 +41,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bioformats

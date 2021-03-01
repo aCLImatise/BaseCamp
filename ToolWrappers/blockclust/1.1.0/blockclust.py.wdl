@@ -38,6 +38,9 @@ task Blockclustpy {
       ~{if defined(rf_am_map) then ("--rfam_map " +  '"' + rf_am_map + '"') else ""} \
       ~{if (no_chr) then "--no_chr" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: "Mode of operationPRE = Preprocessing mode. convert\\nfrom reads BAM to tags BED.ANALYSIS = Clustering\\nand/or Classification mode.POST = Post processing such\\nas plotting and annotation with known Rfam families\\netc. (default: ANALYSIS)"
     accept: "Annotations of known ncRNAs in BED format (default:\\nNone)"

@@ -1,0 +1,4102 @@
+&id001 !Command
+command:
+- rtg
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - rtg
+  - mendelian
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: "VCF file containing multi-sample variant\ncalls. Use '-' to read\
+      \ from standard input"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: "if set, output annotated calls to this VCF\nfile. Use '-' to write\
+      \ to standard output"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-consistent
+    description: "if set, output only consistent calls to this\nVCF file"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-inconsistent
+    description: "if set, output only non-Mendelian calls to\nthis VCF file"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --template
+    description: SDF containing the reference genome
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - --all-records
+    description: "use all records, regardless of filters\n(Default is to only process\
+      \ records where\nFILTER is \".\" or \"PASS\")"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --lenient
+    description: "allow homozygous diploid calls in place of\nhaploid calls and assume\
+      \ missing values are\nequal to the reference"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-concordance
+    description: "percentage concordance required for consistent\nparentage (Default\
+      \ is 99.0)"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --pedigree
+    description: "genome relationships PED file (Default is to\nextract pedigree information\
+      \ from VCF header\nfields)"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -Z
+    - --no-gzip
+    description: do not gzip the output
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg mendelian [OPTION]... -i FILE -t SDF\n\nCheck a multi-sample\
+    \ VCF for Mendelian consistency.\n\nFile Input/Output\n  -i, --input=FILE    \
+    \           VCF file containing multi-sample variant\n                       \
+    \          calls. Use '-' to read from standard input\n  -o, --output=FILE   \
+    \           if set, output annotated calls to this VCF\n                     \
+    \            file. Use '-' to write to standard output\n      --output-consistent=FILE\
+    \   if set, output only consistent calls to this\n                           \
+    \      VCF file\n      --output-inconsistent=FILE if set, output only non-Mendelian\
+    \ calls to\n                                 this VCF file\n  -t, --template=SDF\
+    \             SDF containing the reference genome\n\nSensitivity Tuning\n    \
+    \  --all-records              use all records, regardless of filters\n       \
+    \                          (Default is to only process records where\n       \
+    \                          FILTER is \".\" or \"PASS\")\n  -l, --lenient     \
+    \             allow homozygous diploid calls in place of\n                   \
+    \              haploid calls and assume missing values are\n                 \
+    \                equal to the reference\n      --min-concordance=FLOAT    percentage\
+    \ concordance required for consistent\n                                 parentage\
+    \ (Default is 99.0)\n      --pedigree=FILE            genome relationships PED\
+    \ file (Default is to\n                                 extract pedigree information\
+    \ from VCF header\n                                 fields)\n\nUtility\n  -h,\
+    \ --help                     print help on command-line flag usage\n  -Z, --no-gzip\
+    \                  do not gzip the output\n\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - rocplot
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: startup
+    description: --interpolate           if set, interpolate curves at regular intervals
+  - !Positional
+    optional: false
+    position: 1
+    name: ROC
+    description: --scores                if set, show scores on the plot
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --curve
+    description: "ROC data file with title optionally specified\n(path[=title]). May\
+      \ be specified 0 or more times"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --png
+    description: if set, output a PNG image to the given file
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --svg
+    description: if set, output a SVG image to the given file
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --zoom
+    description: "show a zoomed view with the given coordinates,\nsupplied in the\
+      \ form <xmax>,<ymax> or\n<xmin>,<ymin>,<xmax>,<ymax>"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --cmd
+    description: "if set, print rocplot command used in previously\nsaved image"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --hide-sidepane
+    description: if set, hide the side pane from the GUI on
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --line-width
+    description: sets the plot line width (Default is 2)
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --palette
+    description: "name of color palette to use. Allowed values are\n[blind_13, blind_15,\
+      \ blind_8, brewer_accent,\nbrewer_dark2, brewer_paired, brewer_pastel1,\nbrewer_pastel2,\
+      \ brewer_set1, brewer_set2,\nbrewer_set3, classic] (Default is classic)"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --plain
+    description: if set, use a plain plot style
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -P
+    - --precision-sensitivity
+    description: set, plot precision vs sensitivity rather than
+    args: !SimpleFlagArg
+      name: if
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --title
+    description: title for the plot
+    args: !SimpleFlagArg
+      name: STRING
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg rocplot [OPTION]... FILE+\n                   [OPTION]...\
+    \ --curve STRING\n\nPlot ROC curves from vcfeval ROC data files, either to an\
+    \ image, or an\ninteractive GUI.\n\nFile Input/Output\n      --curve=STRING  \
+    \        ROC data file with title optionally specified\n                     \
+    \         (path[=title]). May be specified 0 or more times\n      --png=FILE \
+    \             if set, output a PNG image to the given file\n      --svg=FILE \
+    \             if set, output a SVG image to the given file\n      --zoom=STRING\
+    \           show a zoomed view with the given coordinates,\n                 \
+    \             supplied in the form <xmax>,<ymax> or\n                        \
+    \      <xmin>,<ymin>,<xmax>,<ymax>\n      FILE+                   ROC data file.\
+    \ May be specified 0 or more times\n\nReporting\n      --cmd=FILE            \
+    \  if set, print rocplot command used in previously\n                        \
+    \      saved image\n      --hide-sidepane         if set, hide the side pane from\
+    \ the GUI on\n                              startup\n      --interpolate     \
+    \      if set, interpolate curves at regular intervals\n      --line-width=INT\
+    \        sets the plot line width (Default is 2)\n      --palette=STRING     \
+    \   name of color palette to use. Allowed values are\n                       \
+    \       [blind_13, blind_15, blind_8, brewer_accent,\n                       \
+    \       brewer_dark2, brewer_paired, brewer_pastel1,\n                       \
+    \       brewer_pastel2, brewer_set1, brewer_set2,\n                          \
+    \    brewer_set3, classic] (Default is classic)\n      --plain               \
+    \  if set, use a plain plot style\n  -P, --precision-sensitivity if set, plot\
+    \ precision vs sensitivity rather than\n                              ROC\n  \
+    \    --scores                if set, show scores on the plot\n  -t, --title=STRING\
+    \          title for the plot\n\nUtility\n  -h, --help                  print\
+    \ help on command-line flag usage\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - sdfsubseq
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: input SDF
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    - --sequence-id
+    description: "if set, use sequence id instead of sequence name in\nregion (0-based)\n\
+      REGION+              the range to display. The format is one of\n<sequence_name>,\
+      \ <sequence_name>:<start>-<end>,\n<sequence_name>:<pos>+<length> or\n<sequence_name>:<pos>~<padding>.\
+      \ Must be specified 1\nor more times"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --fasta
+    description: if set, output in FASTA format
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --fastq
+    description: if set, output in FASTQ format
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --reverse-complement
+    description: set, output in reverse complement
+    args: !SimpleFlagArg
+      name: if
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg sdfsubseq [OPTION]... -i SDF REGION+\n\nPrints a subsequence\
+    \ of a given sequence in an SDF.\n\nFile Input/Output\n  -i, --input=SDF     \
+    \     input SDF\n\nFiltering\n  -I, --sequence-id        if set, use sequence\
+    \ id instead of sequence name in\n                           region (0-based)\n\
+    \      REGION+              the range to display. The format is one of\n     \
+    \                      <sequence_name>, <sequence_name>:<start>-<end>,\n     \
+    \                      <sequence_name>:<pos>+<length> or\n                   \
+    \        <sequence_name>:<pos>~<padding>. Must be specified 1\n              \
+    \             or more times\n\nUtility\n  -f, --fasta              if set, output\
+    \ in FASTA format\n  -q, --fastq              if set, output in FASTQ format\n\
+    \  -h, --help               print help on command-line flag usage\n  -r, --reverse-complement\
+    \ if set, output in reverse complement\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - vcfsplit
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input
+    description: -o, --output=DIR                directory for output
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --bed-regions
+    description: "if set, only read VCF records that overlap\nthe ranges contained\
+      \ in the specified BED\nfile"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: the input VCF, or '-' to read from standard
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --region
+    description: "if set, only read VCF records within the\nspecified range. The format\
+      \ is one of\n<sequence_name>,\n<sequence_name>:<start>-<end>,\n<sequence_name>:<pos>+<length>\
+      \ or\n<sequence_name>:<pos>~<padding>"
+    args: !SimpleFlagArg
+      name: REGION
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-ref
+    description: keep records where the sample is reference
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-sample
+    description: "|FILE   file containing sample IDs to select, or a\nliteral sample\
+      \ name. May be specified 0 or\nmore times, or as a comma separated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --remove-sample
+    description: "|FILE file containing sample IDs to ignore, or a\nliteral sample\
+      \ name. May be specified 0 or\nmore times, or as a comma separated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -Z
+    - --no-gzip
+    description: do not gzip the output
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg vcfsplit [OPTION]... -i FILE -o DIR\n\nSplits samples contained\
+    \ within a VCF into separate files, one per sample.\n\nFile Input/Output\n   \
+    \   --bed-regions=FILE          if set, only read VCF records that overlap\n \
+    \                                 the ranges contained in the specified BED\n\
+    \                                  file\n  -i, --input=FILE                the\
+    \ input VCF, or '-' to read from standard\n                                  input\n\
+    \  -o, --output=DIR                directory for output\n      --region=REGION\
+    \             if set, only read VCF records within the\n                     \
+    \             specified range. The format is one of\n                        \
+    \          <sequence_name>,\n                                  <sequence_name>:<start>-<end>,\n\
+    \                                  <sequence_name>:<pos>+<length> or\n       \
+    \                           <sequence_name>:<pos>~<padding>\n\nFiltering\n   \
+    \   --keep-ref                  keep records where the sample is reference\n \
+    \     --keep-sample=STRING|FILE   file containing sample IDs to select, or a\n\
+    \                                  literal sample name. May be specified 0 or\n\
+    \                                  more times, or as a comma separated list\n\
+    \      --remove-sample=STRING|FILE file containing sample IDs to ignore, or a\n\
+    \                                  literal sample name. May be specified 0 or\n\
+    \                                  more times, or as a comma separated list\n\n\
+    Utility\n  -h, --help                      print help on command-line flag usage\n\
+    \  -Z, --no-gzip                   do not gzip the output\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - pedstats
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: FILE
+    description: "the pedigree file to process, may be PED or VCF, use\n'-' to read\
+      \ from stdin"
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --delimiter
+    description: output id lists using this separator (Default is \n)
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --dot
+    description: "output pedigree in Graphviz format, using the supplied\ntext as\
+      \ a title"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --families
+    description: output information about family structures
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --female-ids
+    description: output ids of all females
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --founder-ids
+    description: output ids of all founders
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --male-ids
+    description: output ids of all males
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --maternal-ids
+    description: output ids of maternal individuals
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --paternal-ids
+    description: output ids of paternal individuals
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --primary-ids
+    description: output ids of all primary individuals
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --simple-dot
+    description: "when outputting Graphviz format, use a layout that\nlooks less like\
+      \ a traditional pedigree diagram but\nworks better with large complex pedigrees"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg pedstats [OPTION]... FILE\n\nOutput information from pedigree\
+    \ files of various formats. For quick pedigree\nvisualization using Graphviz,\
+    \ try:\n\n  dot -Tpng <(rtg pedstats --dot \"A Title\" PEDFILE) | display -\n\n\
+    or for a larger pedigree:\n\n  dot -Tpdf -o mypedigree.pdf <(rtg pedstats --dot\
+    \ \"A Title\" PEDFILE)\n\nFile Input/Output\n      FILE               the pedigree\
+    \ file to process, may be PED or VCF, use\n                         '-' to read\
+    \ from stdin\n\nReporting\n  -d, --delimiter=STRING output id lists using this\
+    \ separator (Default is \\n)\n      --dot=STRING       output pedigree in Graphviz\
+    \ format, using the supplied\n                         text as a title\n     \
+    \ --families         output information about family structures\n      --female-ids\
+    \       output ids of all females\n      --founder-ids      output ids of all\
+    \ founders\n      --male-ids         output ids of all males\n      --maternal-ids\
+    \     output ids of maternal individuals\n      --paternal-ids     output ids\
+    \ of paternal individuals\n      --primary-ids      output ids of all primary\
+    \ individuals\n      --simple-dot       when outputting Graphviz format, use a\
+    \ layout that\n                         looks less like a traditional pedigree\
+    \ diagram but\n                         works better with large complex pedigrees\n\
+    \nUtility\n  -h, --help             print help on command-line flag usage\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - readsim
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: SDF
+    description: -q, --qual-range=STRING          set the range of base quality values
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --input
+    description: SDF containing input genome
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - --machine
+    description: "select the sequencing technology to model.\nAllowed values are [illumina_se,\n\
+      illumina_pe, complete_genomics,\ncomplete_genomics_2, 454_pe, 454_se,\niontorrent]"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: name for reads output SDF
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - --abundance
+    description: "if set, the user-supplied distribution\nrepresents desired abundance"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -N
+    - --allow-unknowns
+    description: "allow reads to be drawn from template\nfragments containing unknown\
+      \ nucleotides"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --coverage
+    description: coverage, must be positive
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -D
+    - --distribution
+    description: "file containing probability distribution for\nsequence selection"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --dna-fraction
+    description: "if set, the user-supplied distribution\nrepresents desired DNA fraction"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -M
+    - --max-fragment-size
+    description: maximum fragment size (Default is 250)
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --min-fragment-size
+    description: minimum fragment size (Default is 200)
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --n-rate
+    description: "rate that the machine will generate new\nunknowns in the read (Default\
+      \ is 0.0)"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --num-reads
+    description: number of reads to be generated
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --taxonomy-distribution
+    description: "file containing probability distribution for\nsequence selection\
+      \ expressed by taxonomy id"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -L
+    - --left-read-length
+    description: target read length on the left side
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -R
+    - --right-read-length
+    description: target read length on the right side
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --read-length
+    description: target read length, must be positive
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --454-max-total-size
+    description: "maximum 454 read length (in paired end case\nthe sum of the left\
+      \ and the right read\nlengths)"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --454-min-total-size
+    description: "minimum 454 read length (in paired end case\nthe sum of the left\
+      \ and the right read\nlengths)"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --ion-max-total-size
+    description: maximum IonTorrent read length
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --ion-min-total-size
+    description: minimum IonTorrent read length
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --comment
+    description: comment to include in the generated SDF
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-names
+    description: do not create read names in the output SDF
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-qualities
+    description: do not create read qualities in the output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sam-rg
+    description: "|FILE         file containing a single valid read group\nSAM header\
+      \ line or a string in the form\n\"@RG\\tID:READGROUP1\\tSM:BACT_SAMPLE\\tPL:ILLUMINA\""
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --seed
+    description: seed for random number generator
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg readsim [OPTION]... -t SDF --machine STRING -o SDF -c FLOAT\n\
+    \                   [OPTION]... -t SDF --machine STRING -o SDF -n INT\n\nGenerates\
+    \ reads from a reference genome.\n\nFile Input/Output\n  -t, --input=SDF     \
+    \             SDF containing input genome\n      --machine=STRING            \
+    \ select the sequencing technology to model.\n                               \
+    \    Allowed values are [illumina_se,\n                                   illumina_pe,\
+    \ complete_genomics,\n                                   complete_genomics_2,\
+    \ 454_pe, 454_se,\n                                   iontorrent]\n  -o, --output=SDF\
+    \                 name for reads output SDF\n\nFragment Generation\n      --abundance\
+    \                  if set, the user-supplied distribution\n                  \
+    \                 represents desired abundance\n  -N, --allow-unknowns       \
+    \      allow reads to be drawn from template\n                               \
+    \    fragments containing unknown nucleotides\n  -c, --coverage=FLOAT        \
+    \     coverage, must be positive\n  -D, --distribution=FILE          file containing\
+    \ probability distribution for\n                                   sequence selection\n\
+    \      --dna-fraction               if set, the user-supplied distribution\n \
+    \                                  represents desired DNA fraction\n  -M, --max-fragment-size=INT\
+    \      maximum fragment size (Default is 250)\n  -m, --min-fragment-size=INT \
+    \     minimum fragment size (Default is 200)\n      --n-rate=FLOAT           \
+    \    rate that the machine will generate new\n                               \
+    \    unknowns in the read (Default is 0.0)\n  -n, --num-reads=INT            \
+    \  number of reads to be generated\n      --taxonomy-distribution=FILE file containing\
+    \ probability distribution for\n                                   sequence selection\
+    \ expressed by taxonomy id\n\nIllumina PE\n  -L, --left-read-length=INT      \
+    \ target read length on the left side\n  -R, --right-read-length=INT      target\
+    \ read length on the right side\n\nIllumina SE\n  -r, --read-length=INT      \
+    \      target read length, must be positive\n\n454 SE/PE\n      --454-max-total-size=INT\
+    \     maximum 454 read length (in paired end case\n                          \
+    \         the sum of the left and the right read\n                           \
+    \        lengths)\n      --454-min-total-size=INT     minimum 454 read length\
+    \ (in paired end case\n                                   the sum of the left\
+    \ and the right read\n                                   lengths)\n\nIonTorrent\
+    \ SE\n      --ion-max-total-size=INT     maximum IonTorrent read length\n    \
+    \  --ion-min-total-size=INT     minimum IonTorrent read length\n\nUtility\n  \
+    \    --comment=STRING             comment to include in the generated SDF\n  -h,\
+    \ --help                       print help on command-line flag usage\n      --no-names\
+    \                   do not create read names in the output SDF\n      --no-qualities\
+    \               do not create read qualities in the output\n                 \
+    \                  SDF\n  -q, --qual-range=STRING          set the range of base\
+    \ quality values\n                                   permitted e.g.: 3-40 (Default\
+    \ is fixed\n                                   qualities corresponding to overall\
+    \ machine\n                                   base error rate)\n      --sam-rg=STRING|FILE\
+    \         file containing a single valid read group\n                        \
+    \           SAM header line or a string in the form\n                        \
+    \           \"@RG\\tID:READGROUP1\\tSM:BACT_SAMPLE\\tPL:ILLUMINA\"\n  -s, --seed=INT\
+    \                   seed for random number generator\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - cgsim
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: SDF
+    description: -q, --qual-range=STRING          set the range of base quality values
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --input
+    description: SDF containing input genome
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: name for reads output SDF
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - --abundance
+    description: "if set, the user-supplied distribution\nrepresents desired abundance"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -N
+    - --allow-unknowns
+    description: "allow reads to be drawn from template\nfragments containing unknown\
+      \ nucleotides"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --coverage
+    description: coverage, must be positive
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -D
+    - --distribution
+    description: "file containing probability distribution for\nsequence selection"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --dna-fraction
+    description: "if set, the user-supplied distribution\nrepresents desired DNA fraction"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -M
+    - --max-fragment-size
+    description: maximum fragment size (Default is 500)
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --min-fragment-size
+    description: minimum fragment size (Default is 350)
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --n-rate
+    description: "rate that the machine will generate new\nunknowns in the read (Default\
+      \ is 0.0)"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --num-reads
+    description: number of reads to be generated
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --taxonomy-distribution
+    description: "file containing probability distribution for\nsequence selection\
+      \ expressed by taxonomy id"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --cg-read-version
+    description: "select Complete Genomics read structure\nversion, 1 (35 bp) or 2\
+      \ (29 bp)"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --comment
+    description: comment to include in the generated SDF
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-names
+    description: do not create read names in the output SDF
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-qualities
+    description: do not create read qualities in the output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sam-rg
+    description: "|FILE         file containing a single valid read group\nSAM header\
+      \ line or a string in the form\n\"@RG\\tID:READGROUP1\\tSM:BACT_SAMPLE\\tPL:ILLUMINA\""
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --seed
+    description: seed for random number generator
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg cgsim [OPTION]... -V INT -t SDF -o SDF -c FLOAT\n       \
+    \          [OPTION]... -V INT -t SDF -o SDF -n INT\n\nSimulate Complete Genomics\
+    \ Inc sequencing reads. Supports the original 35 bp\nread structure (5-10-10-10),\
+    \ and the newer 29 bp read structure (10-9-10).\n\nFile Input/Output\n  -t, --input=SDF\
+    \                  SDF containing input genome\n  -o, --output=SDF           \
+    \      name for reads output SDF\n\nFragment Generation\n      --abundance   \
+    \               if set, the user-supplied distribution\n                     \
+    \              represents desired abundance\n  -N, --allow-unknowns          \
+    \   allow reads to be drawn from template\n                                  \
+    \ fragments containing unknown nucleotides\n  -c, --coverage=FLOAT           \
+    \  coverage, must be positive\n  -D, --distribution=FILE          file containing\
+    \ probability distribution for\n                                   sequence selection\n\
+    \      --dna-fraction               if set, the user-supplied distribution\n \
+    \                                  represents desired DNA fraction\n  -M, --max-fragment-size=INT\
+    \      maximum fragment size (Default is 500)\n  -m, --min-fragment-size=INT \
+    \     minimum fragment size (Default is 350)\n      --n-rate=FLOAT           \
+    \    rate that the machine will generate new\n                               \
+    \    unknowns in the read (Default is 0.0)\n  -n, --num-reads=INT            \
+    \  number of reads to be generated\n      --taxonomy-distribution=FILE file containing\
+    \ probability distribution for\n                                   sequence selection\
+    \ expressed by taxonomy id\n\nComplete Genomics\n  -V, --cg-read-version=INT \
+    \       select Complete Genomics read structure\n                            \
+    \       version, 1 (35 bp) or 2 (29 bp)\n\nUtility\n      --comment=STRING   \
+    \          comment to include in the generated SDF\n  -h, --help             \
+    \          print help on command-line flag usage\n      --no-names           \
+    \        do not create read names in the output SDF\n      --no-qualities    \
+    \           do not create read qualities in the output\n                     \
+    \              SDF\n  -q, --qual-range=STRING          set the range of base quality\
+    \ values\n                                   permitted e.g.: 3-40 (Default is\
+    \ fixed\n                                   qualities corresponding to overall\
+    \ machine\n                                   base error rate)\n      --sam-rg=STRING|FILE\
+    \         file containing a single valid read group\n                        \
+    \           SAM header line or a string in the form\n                        \
+    \           \"@RG\\tID:READGROUP1\\tSM:BACT_SAMPLE\\tPL:ILLUMINA\"\n  -s, --seed=INT\
+    \                   seed for random number generator\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - sdfsubset
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: ids
+    description: --start-id=INT inclusive lower bound on sequence id
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: SDF containing sequences
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: output SDF
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - --end-id
+    description: exclusive upper bound on sequence id
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    - --id-file
+    description: "file containing sequence ids, or sequence names if --names\nflag\
+      \ is set, one per line"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --names
+    description: interpret supplied sequence as names instead of numeric
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg sdfsubset [OPTION]... -i SDF -o SDF STRING+\n           \
+    \          [OPTION]... -i SDF -o SDF -I FILE\n                     [OPTION]...\
+    \ -i SDF -o SDF --end-id INT --start-id INT\n\nExtracts a subset of sequences\
+    \ from one SDF and outputs them to another SDF.\n\nFile Input/Output\n  -i, --input=SDF\
+    \    SDF containing sequences\n  -o, --output=SDF   output SDF\n\nFiltering\n\
+    \      --end-id=INT   exclusive upper bound on sequence id\n  -I, --id-file=FILE\
+    \ file containing sequence ids, or sequence names if --names\n               \
+    \      flag is set, one per line\n  -n, --names        interpret supplied sequence\
+    \ as names instead of numeric\n                     ids\n      --start-id=INT\
+    \ inclusive lower bound on sequence id\n      STRING+        id of sequence to\
+    \ extract, or sequence name if --names\n                     flag is set. May\
+    \ be specified 0 or more times\n\nUtility\n  -h, --help         print help on\
+    \ command-line flag usage\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - vcfmerge
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: output
+    description: --region=REGION          if set, only read VCF records within the
+  - !Positional
+    optional: false
+    position: 0
+    name: declarations
+    description: -h, --help                   print help on command-line flag usage
+  - !Positional
+    optional: false
+    position: 1
+    name: different
+    description: --no-merge-records       do not merge multiple records at the same
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --bed-regions
+    description: "if set, only read VCF records that overlap the\nranges contained\
+      \ in the specified BED file"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    - --input-list-file
+    description: "file containing a list of VCF format files (1\nper line) to be merged"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: output VCF file. Use '-' to write to standard
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --add-header
+    description: "|FILE file containing VCF header lines to add, or a\nliteral header\
+      \ line. May be specified 0 or more\ntimes"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --force-merge
+    description: "allow merging of specified header ID even when\ndescriptions do\
+      \ not match. May be specified 0 or\nmore times, or as a comma separated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --force-merge-all
+    description: attempt merging of all non-matching header
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -Z
+    - --no-gzip
+    description: do not gzip the output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-header
+    description: prevent VCF header from being written
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-merge-alts
+    description: do not merge multiple records if the ALTs are
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --preserve-formats
+    description: "do not merge multiple records containing\nunmergeable FORMAT fields\
+      \ (Default is to remove\nthose FORMAT fields so the variants can be\ncombined)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --stats
+    description: output statistics for the merged VCF file
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg vcfmerge [OPTION]... -o FILE FILE+\n                    [OPTION]...\
+    \ -o FILE -I FILE\n\nMerge a one or more input VCF files to a single output VCF.\
+    \ Use cases include\ncombining single sample calls into a multi-sample VCF, or\
+    \ to combine calls on\nseparate chromosomes into a single VCF.\n\nFile Input/Output\n\
+    \      --bed-regions=FILE       if set, only read VCF records that overlap the\n\
+    \                               ranges contained in the specified BED file\n \
+    \ -I, --input-list-file=FILE   file containing a list of VCF format files (1\n\
+    \                               per line) to be merged\n  -o, --output=FILE  \
+    \          output VCF file. Use '-' to write to standard\n                   \
+    \            output\n      --region=REGION          if set, only read VCF records\
+    \ within the\n                               specified range. The format is one\
+    \ of\n                               <sequence_name>, <sequence_name>:<start>-<end>,\n\
+    \                               <sequence_name>:<pos>+<length> or\n          \
+    \                     <sequence_name>:<pos>~<padding>\n      FILE+           \
+    \         input VCF files to merge. May be specified 0 or\n                  \
+    \             more times\n\nUtility\n  -a, --add-header=STRING|FILE file containing\
+    \ VCF header lines to add, or a\n                               literal header\
+    \ line. May be specified 0 or more\n                               times\n  -f,\
+    \ --force-merge=STRING     allow merging of specified header ID even when\n  \
+    \                             descriptions do not match. May be specified 0 or\n\
+    \                               more times, or as a comma separated list\n  -F,\
+    \ --force-merge-all        attempt merging of all non-matching header\n      \
+    \                         declarations\n  -h, --help                   print help\
+    \ on command-line flag usage\n  -Z, --no-gzip                do not gzip the output\n\
+    \      --no-header              prevent VCF header from being written\n      --no-merge-alts\
+    \          do not merge multiple records if the ALTs are\n                   \
+    \            different\n      --no-merge-records       do not merge multiple records\
+    \ at the same\n                               position into one\n      --preserve-formats\
+    \       do not merge multiple records containing\n                           \
+    \    unmergeable FORMAT fields (Default is to remove\n                       \
+    \        those FORMAT fields so the variants can be\n                        \
+    \       combined)\n      --stats                  output statistics for the merged\
+    \ VCF file\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - license
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: format
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 1
+    name: sdf2fasta
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 2
+    name: sdf2fastq
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 3
+    name: sdf2sam
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 4
+    name: fastqtrim
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 0
+    name: genomesim
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 1
+    name: cgsim
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 2
+    name: readsim
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 3
+    name: popsim
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 4
+    name: samplesim
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 5
+    name: childsim
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 6
+    name: denovosim
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 7
+    name: pedsamplesim
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 8
+    name: samplereplay
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 0
+    name: bgzip
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 1
+    name: index
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 2
+    name: extract
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 3
+    name: sdfstats
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 4
+    name: sdfsubset
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 5
+    name: sdfsubseq
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 6
+    name: mendelian
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 7
+    name: vcfstats
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 8
+    name: vcfmerge
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 9
+    name: vcffilter
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 10
+    name: vcfannotate
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 11
+    name: vcfsubset
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 12
+    name: vcfsplit
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 13
+    name: vcfdecompose
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 14
+    name: vcfeval
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 15
+    name: vcf2rocplot
+    description: Licensed          beta
+  - !Positional
+    optional: false
+    position: 16
+    name: svdecompose
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 17
+    name: bndeval
+    description: Licensed          beta
+  - !Positional
+    optional: false
+    position: 18
+    name: pedfilter
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 19
+    name: pedstats
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 20
+    name: rocplot
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 21
+    name: version
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 22
+    name: license
+    description: Licensed          GA
+  - !Positional
+    optional: false
+    position: 23
+    name: help
+    description: Licensed          GA
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "License: No license file required\n\n\tCommand name \tLicensed?    \
+    \     Release Level\n\nData formatting:\n\tformat       \tLicensed          GA\n\
+    \tsdf2fasta    \tLicensed          GA\n\tsdf2fastq    \tLicensed          GA\n\
+    \tsdf2sam      \tLicensed          GA\n\tfastqtrim    \tLicensed          GA\n\
+    \nSimulation:\n\tgenomesim    \tLicensed          GA\n\tcgsim        \tLicensed\
+    \          GA\n\treadsim      \tLicensed          GA\n\tpopsim       \tLicensed\
+    \          GA\n\tsamplesim    \tLicensed          GA\n\tchildsim     \tLicensed\
+    \          GA\n\tdenovosim    \tLicensed          GA\n\tpedsamplesim \tLicensed\
+    \          GA\n\tsamplereplay \tLicensed          GA\n\nUtility:\n\tbgzip    \
+    \    \tLicensed          GA\n\tindex        \tLicensed          GA\n\textract\
+    \      \tLicensed          GA\n\tsdfstats     \tLicensed          GA\n\tsdfsubset\
+    \    \tLicensed          GA\n\tsdfsubseq    \tLicensed          GA\n\tmendelian\
+    \    \tLicensed          GA\n\tvcfstats     \tLicensed          GA\n\tvcfmerge\
+    \     \tLicensed          GA\n\tvcffilter    \tLicensed          GA\n\tvcfannotate\
+    \  \tLicensed          GA\n\tvcfsubset    \tLicensed          GA\n\tvcfsplit \
+    \    \tLicensed          GA\n\tvcfdecompose \tLicensed          GA\n\tvcfeval\
+    \      \tLicensed          GA\n\tvcf2rocplot  \tLicensed          beta\n\tsvdecompose\
+    \  \tLicensed          GA\n\tbndeval      \tLicensed          beta\n\tpedfilter\
+    \    \tLicensed          GA\n\tpedstats     \tLicensed          GA\n\trocplot\
+    \      \tLicensed          GA\n\tversion      \tLicensed          GA\n\tlicense\
+    \      \tLicensed          GA\n\thelp         \tLicensed          GA\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - bgzip
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: block
+    description: -c, --stdout                write on standard output, keep original
+      files
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --compression-level
+    description: "the compression level to use, between 1 (least\nbut fast) and 9\
+      \ (highest but slow) (Default is 5)"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --decompress
+    description: decompress
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --force
+    description: force overwrite of existing output file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-terminate
+    description: if set, do not add the block gzip termination
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg bgzip [OPTION]... FILE+\n\nCompress a file with block gzip.\n\
+    \nFile Input/Output\n  -l, --compression-level=INT the compression level to use,\
+    \ between 1 (least\n                              but fast) and 9 (highest but\
+    \ slow) (Default is 5)\n  -d, --decompress            decompress\n  -f, --force\
+    \                 force overwrite of existing output file\n      --no-terminate\
+    \          if set, do not add the block gzip termination\n                   \
+    \           block\n  -c, --stdout                write on standard output, keep\
+    \ original files\n                              unchanged. Implied when using\
+    \ standard input\n      FILE+                   file to (de)compress, use '-'\
+    \ for standard input.\n                              Must be specified 1 or more\
+    \ times\n\nUtility\n  -h, --help                  print help on command-line flag\
+    \ usage\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - format
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --format
+    description: "format of input. Allowed values are [fasta,\nfastq, fastq-interleaved,\
+      \ sam-se, sam-pe]\n(Default is fasta)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    - --input-list-file
+    description: "file containing a list of input read files (1\nper line)"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --left
+    description: left input file for FASTA/FASTQ paired end
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --protein
+    description: "input is protein. If this option is not\nspecified, then the input\
+      \ is assumed to\nconsist of nucleotides"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quality-format
+    description: "quality data encoding method used in FASTQ\ninput files (Illumina\
+      \ 1.8+ uses sanger).\nAllowed values are [sanger, solexa, illumina]\n(Default\
+      \ is sanger)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --right
+    description: right input file for FASTA/FASTQ paired end
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --duster
+    description: treat lower case residues as unknowns
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --exclude
+    description: "exclude input sequences based on their name.\nIf the input sequence\
+      \ contains the specified\nstring then that sequence is excluded from the\nSDF.\
+      \ May be specified 0 or more times"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --select-read-group
+    description: "when formatting from SAM/BAM input, only\ninclude reads with this\
+      \ read group ID"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --trim-threshold
+    description: "trim read ends to maximise base quality above\nthe given threshold"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --allow-duplicate-names
+    description: disable checking for duplicate sequence names
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-names
+    description: do not include name data in the SDF output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-quality
+    description: do not include quality data in the SDF output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sam-rg
+    description: "|FILE       file containing a single valid read group SAM\nheader\
+      \ line or a string in the form\n\"@RG\\tID:READGROUP1\\tSM:BACT_SAMPLE\\tPL:ILLUMINA\"\
+      \n"
+    args: !SimpleFlagArg
+      name: STRING
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg format [OPTION]... -o SDF FILE+\n                  [OPTION]...\
+    \ -o SDF -I FILE\n                  [OPTION]... -o SDF -l FILE -r FILE\n\nConverts\
+    \ the contents of sequence data files (FASTA/FASTQ/SAM/BAM) into the RTG\nSequence\
+    \ Data File (SDF) format.\n\nFile Input/Output\n  -f, --format=FORMAT        \
+    \    format of input. Allowed values are [fasta,\n                           \
+    \      fastq, fastq-interleaved, sam-se, sam-pe]\n                           \
+    \      (Default is fasta)\n  -I, --input-list-file=FILE     file containing a\
+    \ list of input read files (1\n                                 per line)\n  -l,\
+    \ --left=FILE                left input file for FASTA/FASTQ paired end\n    \
+    \                             data\n  -o, --output=SDF               name of output\
+    \ SDF\n  -p, --protein                  input is protein. If this option is not\n\
+    \                                 specified, then the input is assumed to\n  \
+    \                               consist of nucleotides\n  -q, --quality-format=FORMAT\
+    \    quality data encoding method used in FASTQ\n                            \
+    \     input files (Illumina 1.8+ uses sanger).\n                             \
+    \    Allowed values are [sanger, solexa, illumina]\n                         \
+    \        (Default is sanger)\n  -r, --right=FILE               right input file\
+    \ for FASTA/FASTQ paired end\n                                 data\n      FILE+\
+    \                      input sequence files. May be specified 0 or\n         \
+    \                        more times\n\nFiltering\n      --duster             \
+    \      treat lower case residues as unknowns\n      --exclude=STRING         \
+    \  exclude input sequences based on their name.\n                            \
+    \     If the input sequence contains the specified\n                         \
+    \        string then that sequence is excluded from the\n                    \
+    \             SDF. May be specified 0 or more times\n      --select-read-group=STRING\
+    \ when formatting from SAM/BAM input, only\n                                 include\
+    \ reads with this read group ID\n      --trim-threshold=INT       trim read ends\
+    \ to maximise base quality above\n                                 the given threshold\n\
+    \nUtility\n      --allow-duplicate-names    disable checking for duplicate sequence\
+    \ names\n  -h, --help                     print help on command-line flag usage\n\
+    \      --no-names                 do not include name data in the SDF output\n\
+    \      --no-quality               do not include quality data in the SDF output\n\
+    \      --sam-rg=STRING|FILE       file containing a single valid read group SAM\n\
+    \                                 header line or a string in the form\n      \
+    \                           \"@RG\\tID:READGROUP1\\tSM:BACT_SAMPLE\\tPL:ILLUMINA\"\
+    \n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - sdfstats
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --lengths
+    description: "print out the name and length of each sequence. (Not\nrecommended\
+      \ for read sets)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --position
+    description: display info about unknown bases (Ns) by read position
+    args: !SimpleFlagArg
+      name: only
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quality
+    description: display mean of quality
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sex
+    description: "display reference sequence list for the given sex, if defined.\n\
+      Allowed values are [male, female, either]. May be specified 0\nor more times,\
+      \ or as a comma separated list"
+    args: !SimpleFlagArg
+      name: SEX
+  - !Flag
+    optional: true
+    synonyms:
+    - --taxonomy
+    description: information about taxonomy
+    args: !SimpleFlagArg
+      name: display
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --unknowns
+    description: info about unknown bases (Ns)
+    args: !SimpleFlagArg
+      name: display
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg sdfstats [OPTION]... SDF+\n\nPrint statistics that describe\
+    \ a directory of SDF formatted data.\n\nFile Input/Output\n      SDF+       SDF\
+    \ directories. Must be specified 1 or more times\n\nReporting\n      --lengths\
+    \  print out the name and length of each sequence. (Not\n                 recommended\
+    \ for read sets)\n  -p, --position only display info about unknown bases (Ns)\
+    \ by read position\n  -q, --quality  display mean of quality\n      --sex=SEX\
+    \  display reference sequence list for the given sex, if defined.\n          \
+    \       Allowed values are [male, female, either]. May be specified 0\n      \
+    \           or more times, or as a comma separated list\n      --taxonomy display\
+    \ information about taxonomy\n  -n, --unknowns display info about unknown bases\
+    \ (Ns)\n\nUtility\n  -h, --help     print help on command-line flag usage\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - vcfdecompose
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: against
+    description: Sensitivity Tuning
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: "VCF file containing variants to decompose. Use '-' to read\nfrom\
+      \ standard input"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: output VCF file name. Use '-' to write to standard output
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --template
+    description: SDF of the reference genome the variants are called
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - --break-indels
+    description: set, peel as many SNPs off an indel as possible
+    args: !SimpleFlagArg
+      name: if
+  - !Flag
+    optional: true
+    synonyms:
+    - --break-mnps
+    description: if set, break MNPs into individual SNPs
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -Z
+    - --no-gzip
+    description: do not gzip the output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-header
+    description: prevent VCF header from being written
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg vcfdecompose [OPTION]... -i FILE -o FILE\n\nDecomposes complex\
+    \ variants within a VCF file into smaller components.\n\nFile Input/Output\n \
+    \ -i, --input=FILE   VCF file containing variants to decompose. Use '-' to read\n\
+    \                     from standard input\n  -o, --output=FILE  output VCF file\
+    \ name. Use '-' to write to standard output\n  -t, --template=SDF SDF of the reference\
+    \ genome the variants are called\n                     against\n\nSensitivity\
+    \ Tuning\n      --break-indels if set, peel as many SNPs off an indel as possible\n\
+    \      --break-mnps   if set, break MNPs into individual SNPs\n\nUtility\n  -h,\
+    \ --help         print help on command-line flag usage\n  -Z, --no-gzip      do\
+    \ not gzip the output\n      --no-header    prevent VCF header from being written\n\
+    \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - samplesim
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: input VCF containing population variants
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: output VCF file name
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-sdf
+    description: if set, output an SDF containing the sample genome
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --reference
+    description: SDF containing the reference genome
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sample
+    description: name for sample
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --allow-missing-af
+    description: "set, treat variants without allele frequency\nannotation as uniformly\
+      \ likely"
+    args: !SimpleFlagArg
+      name: if
+  - !Flag
+    optional: true
+    synonyms:
+    - -Z
+    - --no-gzip
+    description: do not gzip the output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ploidy
+    description: "ploidy to use. Allowed values are [auto, diploid,\nhaploid] (Default\
+      \ is auto)"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --seed
+    description: seed for the random number generator
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --sex
+    description: "sex of individual. Allowed values are [male, female,\neither] (Default\
+      \ is either)\n"
+    args: !SimpleFlagArg
+      name: SEX
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg samplesim [OPTION]... -i FILE -o FILE -t SDF -s STRING\n\n\
+    Generates a VCF containing a genotype simulated from population variants\naccording\
+    \ to allele frequency.\n\nFile Input/Output\n  -i, --input=FILE       input VCF\
+    \ containing population variants\n  -o, --output=FILE      output VCF file name\n\
+    \      --output-sdf=SDF   if set, output an SDF containing the sample genome\n\
+    \  -t, --reference=SDF    SDF containing the reference genome\n  -s, --sample=STRING\
+    \    name for sample\n\nUtility\n      --allow-missing-af if set, treat variants\
+    \ without allele frequency\n                         annotation as uniformly likely\n\
+    \  -h, --help             print help on command-line flag usage\n  -Z, --no-gzip\
+    \          do not gzip the output\n      --ploidy=STRING    ploidy to use. Allowed\
+    \ values are [auto, diploid,\n                         haploid] (Default is auto)\n\
+    \      --seed=INT         seed for the random number generator\n      --sex=SEX\
+    \          sex of individual. Allowed values are [male, female,\n            \
+    \             either] (Default is either)\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - extract
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: FILE
+    description: the indexed block compressed genome position data file to
+  - !Positional
+    optional: false
+    position: 1
+    name: extract
+    description: Filtering
+  - !Positional
+    optional: false
+    position: 0
+    name: times
+    description: Reporting
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --header
+    description: print out header also
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --header-only
+    description: out header only
+    args: !SimpleFlagArg
+      name: print
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg extract [OPTION]... FILE REGION+\n                   [OPTION]...\
+    \ FILE\n\nExtract records from an indexed genomic position data file.\n\nFile\
+    \ Input/Output\n      FILE          the indexed block compressed genome position\
+    \ data file to\n                    extract\n\nFiltering\n      REGION+      \
+    \ the range to display. The format is one of <sequence_name>,\n              \
+    \      <sequence_name>:<start>-<end>,\n                    <sequence_name>:<pos>+<length>\
+    \ or\n                    <sequence_name>:<pos>~<padding>. May be specified 0\
+    \ or more\n                    times\n\nReporting\n      --header      print out\
+    \ header also\n      --header-only print out header only\n\nUtility\n  -h, --help\
+    \        print help on command-line flag usage\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - sdf2fasta
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: ids
+    description: --start-id=INT    inclusive lower bound on sequence id
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: SDF containing sequences
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: "output filename (extension added if not present). Use\n'-' to write\
+      \ to standard output"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --end-id
+    description: exclusive upper bound on sequence id
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    - --id-file
+    description: file containing sequence ids, or sequence names if
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --taxons
+    description: "interpret supplied sequence as taxon ids instead of\nnumeric sequence\
+      \ ids"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --interleave
+    description: "interleave paired data into a single output file.\nDefault is to\
+      \ split to separate output files"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --line-length
+    description: "maximum number of nucleotides to print on a line of\noutput. A value\
+      \ of 0 indicates no limit (Default is 0)"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -Z
+    - --no-gzip
+    description: do not gzip the output
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg sdf2fasta [OPTION]... -i SDF -o FILE STRING+\n          \
+    \           [OPTION]... -i SDF -o FILE -I FILE\n                     [OPTION]...\
+    \ -i SDF -o FILE --end-id INT --start-id INT\n\nConverts SDF data into FASTA file(s).\n\
+    \nFile Input/Output\n  -i, --input=SDF       SDF containing sequences\n  -o, --output=FILE\
+    \     output filename (extension added if not present). Use\n                \
+    \        '-' to write to standard output\n\nFiltering\n      --end-id=INT    \
+    \  exclusive upper bound on sequence id\n  -I, --id-file=FILE    file containing\
+    \ sequence ids, or sequence names if\n                        --names flag is\
+    \ set, one per line\n  -n, --names           interpret supplied sequence as names\
+    \ instead of numeric\n                        ids\n      --start-id=INT    inclusive\
+    \ lower bound on sequence id\n      --taxons          interpret supplied sequence\
+    \ as taxon ids instead of\n                        numeric sequence ids\n    \
+    \  STRING+           id of sequence to extract, or sequence name if --names\n\
+    \                        flag is set. May be specified 0 or more times\n\nUtility\n\
+    \  -h, --help            print help on command-line flag usage\n      --interleave\
+    \      interleave paired data into a single output file.\n                   \
+    \     Default is to split to separate output files\n  -l, --line-length=INT maximum\
+    \ number of nucleotides to print on a line of\n                        output.\
+    \ A value of 0 indicates no limit (Default is 0)\n  -Z, --no-gzip         do not\
+    \ gzip the output\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - vcfstats
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: times
+    description: Reporting
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --known
+    description: "only calculate statistics for known variants (Default is\nto ignore\
+      \ known/novel status)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --novel
+    description: "only calculate statistics for novel variants (Default is\nto ignore\
+      \ known/novel status)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sample
+    description: "only calculate statistics for the specified sample\n(Default is\
+      \ to include all samples). May be specified 0\nor more times"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --allele-lengths
+    description: variant length histogram
+    args: !SimpleFlagArg
+      name: output
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg vcfstats [OPTION]... FILE+\n\nDisplay statistics from a set\
+    \ of VCF files.\n\nFile Input/Output\n      --known          only calculate statistics\
+    \ for known variants (Default is\n                       to ignore known/novel\
+    \ status)\n      --novel          only calculate statistics for novel variants\
+    \ (Default is\n                       to ignore known/novel status)\n      --sample=STRING\
+    \  only calculate statistics for the specified sample\n                      \
+    \ (Default is to include all samples). May be specified 0\n                  \
+    \     or more times\n      FILE+            input VCF files from which to derive\
+    \ statistics or '-'\n                       to read from standard input. Must\
+    \ be specified 1 or more\n                       times\n\nReporting\n      --allele-lengths\
+    \ output variant length histogram\n\nUtility\n  -h, --help           print help\
+    \ on command-line flag usage\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - fastqtrim
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: "input FASTQ file, Use '-' to read from\nstandard input"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: "output filename. Use '-' to write to\nstandard output"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quality-format
+    description: "quality data encoding method used in FASTQ\ninput files (Illumina\
+      \ 1.8+ uses sanger).\nAllowed values are [sanger, solexa,\nillumina] (Default\
+      \ is sanger)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --discard-empty-reads
+    description: "if set, discard reads that have zero length\nafter trimming. Should\
+      \ not be used with\npaired-end data"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -E
+    - --end-quality-threshold
+    description: "trim read ends to maximise base quality\nabove the given threshold\
+      \ (Default is 0)"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-read-length
+    description: "if a read ends up shorter than this\nthreshold it will be trimmed\
+      \ to zero length\n(Default is 0)"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    - --start-quality-threshold
+    description: "trim read starts to maximise base quality\nabove the given threshold\
+      \ (Default is 0)"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --trim-end-bases
+    description: "always trim the specified number of bases\nfrom read end (Default\
+      \ is 0)"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --trim-start-bases
+    description: "always trim the specified number of bases\nfrom read start (Default\
+      \ is 0)"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -Z
+    - --no-gzip
+    description: do not gzip the output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --reverse-complement
+    description: if set, output in reverse complement
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --seed
+    description: seed used during subsampling
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --subsample
+    description: "if set, subsample the input to retain this\nfraction of reads"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    - --threads
+    description: "number of threads (Default is the number of\navailable cores)\n"
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg fastqtrim [OPTION]... -i FILE -o FILE\n\nTrim reads in FASTQ\
+    \ files.\n\nFile Input/Output\n  -i, --input=FILE                  input FASTQ\
+    \ file, Use '-' to read from\n                                    standard input\n\
+    \  -o, --output=FILE                 output filename. Use '-' to write to\n  \
+    \                                  standard output\n  -q, --quality-format=FORMAT\
+    \       quality data encoding method used in FASTQ\n                         \
+    \           input files (Illumina 1.8+ uses sanger).\n                       \
+    \             Allowed values are [sanger, solexa,\n                          \
+    \          illumina] (Default is sanger)\n\nFiltering\n      --discard-empty-reads\
+    \         if set, discard reads that have zero length\n                      \
+    \              after trimming. Should not be used with\n                     \
+    \               paired-end data\n  -E, --end-quality-threshold=INT   trim read\
+    \ ends to maximise base quality\n                                    above the\
+    \ given threshold (Default is 0)\n      --min-read-length=INT         if a read\
+    \ ends up shorter than this\n                                    threshold it\
+    \ will be trimmed to zero length\n                                    (Default\
+    \ is 0)\n  -S, --start-quality-threshold=INT trim read starts to maximise base\
+    \ quality\n                                    above the given threshold (Default\
+    \ is 0)\n  -e, --trim-end-bases=INT          always trim the specified number\
+    \ of bases\n                                    from read end (Default is 0)\n\
+    \  -s, --trim-start-bases=INT        always trim the specified number of bases\n\
+    \                                    from read start (Default is 0)\n\nUtility\n\
+    \  -h, --help                        print help on command-line flag usage\n \
+    \ -Z, --no-gzip                     do not gzip the output\n  -r, --reverse-complement\
+    \          if set, output in reverse complement\n      --seed=INT            \
+    \        seed used during subsampling\n      --subsample=FLOAT             if\
+    \ set, subsample the input to retain this\n                                  \
+    \  fraction of reads\n  -T, --threads=INT                 number of threads (Default\
+    \ is the number of\n                                    available cores)\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - vcffilter
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: discarded
+    description: --exclude-bed=FILE            discard all variants within the regions
+      in
+  - !Positional
+    optional: false
+    position: 0
+    name: records
+    description: Filtering (Sample based)
+  - !Positional
+    optional: false
+    position: 1
+    name: INDEL
+    description: --remove-all-same-as-ref      remove where all samples are same as
+  - !Positional
+    optional: false
+    position: 2
+    name: reference
+    description: --remove-hom                  remove where sample is homozygous
+  - !Positional
+    optional: false
+    position: 3
+    name: SNP
+    description: Reporting
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --clear-failed-samples
+    description: ', and --fail-samples options for alternatives.'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --all-samples
+    description: "apply sample-specific criteria to all\nsamples contained in the\
+      \ input VCF"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --bed-regions
+    description: "if set, only read VCF records that overlap\nthe ranges contained\
+      \ in the specified BED\nfile"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: "VCF file containing variants to be\nfiltered. Use '-' to read from\
+      \ standard\ninput"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: "output VCF file. Use '-' to write to\nstandard output. This option\
+      \ is required,\nunless \"--javascript\" is being used"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --region
+    description: "if set, only read VCF records within the\nspecified range. The format\
+      \ is one of\n<sequence_name>,\n<sequence_name>:<start>-<end>,\n<sequence_name>:<pos>+<length>\
+      \ or\n<sequence_name>:<pos>~<padding>"
+    args: !SimpleFlagArg
+      name: REGION
+  - !Flag
+    optional: true
+    synonyms:
+    - --sample
+    description: "apply sample-specific criteria to the named\nsample contained in\
+      \ the input VCF. May be\nspecified 0 or more times"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --density-window
+    description: window within which multiple variants are
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --exclude-vcf
+    description: "discard all variants that overlap with the\nones in this file"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --include-bed
+    description: "only keep variants within the regions in\nthis BED file"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --include-vcf
+    description: "only keep variants that overlap with the\nones in this file"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --javascript
+    description: "javascript filtering functions for\ndetermining whether to keep\
+      \ record. May be\neither an expression or a file name. May be\nspecified 0 or\
+      \ more times"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --keep-expr
+    description: "records for which this expression evaluates\nto true will be retained"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --keep-filter
+    description: "only keep variants with this FILTER tag.\nMay be specified 0 or\
+      \ more times, or as a\ncomma separated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -K
+    - --keep-info
+    description: "only keep variants with this INFO tag. May\nbe specified 0 or more\
+      \ times, or as a comma\nseparated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-alleles
+    description: maximum number of alleles (REF included)
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -C
+    - --max-combined-read-depth
+    description: maximum allowed combined read depth
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -Q
+    - --max-quality
+    description: maximum allowed quality
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-alleles
+    description: minimum number of alleles (REF included)
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --min-combined-read-depth
+    description: minimum allowed combined read depth
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --min-quality
+    description: minimum allowed quality
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --remove-filter
+    description: "remove variants with this FILTER tag. May\nbe specified 0 or more\
+      \ times, or as a comma\nseparated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -R
+    - --remove-info
+    description: "remove variants with this INFO tag. May be\nspecified 0 or more\
+      \ times, or as a comma\nseparated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --remove-overlapping
+    description: remove records that overlap with previous
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -A
+    - --max-ambiguity-ratio
+    description: maximum allowed ambiguity ratio
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-avr-score
+    description: maximum allowed AVR score
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-denovo-score
+    description: maximum de novo score threshold
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -G
+    - --max-genotype-quality
+    description: maximum allowed genotype quality
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -D
+    - --max-read-depth
+    description: maximum allowed sample read depth
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-avr-score
+    description: minimum allowed AVR score
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-denovo-score
+    description: minimum de novo score threshold
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --min-genotype-quality
+    description: minimum allowed genotype quality
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --min-read-depth
+    description: minimum allowed sample read depth
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --non-snps-only
+    description: only keep where sample variant is MNP or
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --remove-same-as-ref
+    description: remove where sample is same as reference
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --snps-only
+    description: only keep where sample variant is a simple
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --fail
+    description: "retain failed records, add the provided\nlabel to the FILTER field"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --fail-samples
+    description: "retain failed records, add the provided\nlabel to the sample FT\
+      \ field"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --add-header
+    description: "|FILE      file containing VCF header lines to add, or\na literal\
+      \ header line. May be specified 0\nor more times"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -Z
+    - --no-gzip
+    description: do not gzip the output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-header
+    description: prevent VCF header from being written
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg vcffilter [OPTION]... -i FILE -o FILE\n                 \
+    \    [OPTION]... -i FILE -j STRING\n\nFilters VCF records based on various criteria.\
+    \ When filtering on multiple\nsamples, if any of the specified samples fail the\
+    \ criteria, the record will be\nfiltered. By default filtered records are removed,\
+    \ but see the --fail,\n--clear-failed-samples, and --fail-samples options for\
+    \ alternatives.\n\nFile Input/Output\n      --all-samples                 apply\
+    \ sample-specific criteria to all\n                                    samples\
+    \ contained in the input VCF\n      --bed-regions=FILE            if set, only\
+    \ read VCF records that overlap\n                                    the ranges\
+    \ contained in the specified BED\n                                    file\n \
+    \ -i, --input=FILE                  VCF file containing variants to be\n     \
+    \                               filtered. Use '-' to read from standard\n    \
+    \                                input\n  -o, --output=FILE                 output\
+    \ VCF file. Use '-' to write to\n                                    standard\
+    \ output. This option is required,\n                                    unless\
+    \ \"--javascript\" is being used\n      --region=REGION               if set,\
+    \ only read VCF records within the\n                                    specified\
+    \ range. The format is one of\n                                    <sequence_name>,\n\
+    \                                    <sequence_name>:<start>-<end>,\n        \
+    \                            <sequence_name>:<pos>+<length> or\n             \
+    \                       <sequence_name>:<pos>~<padding>\n      --sample=STRING\
+    \               apply sample-specific criteria to the named\n                \
+    \                    sample contained in the input VCF. May be\n             \
+    \                       specified 0 or more times\n\nFiltering (Record based)\n\
+    \  -w, --density-window=INT          window within which multiple variants are\n\
+    \                                    discarded\n      --exclude-bed=FILE     \
+    \       discard all variants within the regions in\n                         \
+    \           this BED file\n      --exclude-vcf=FILE            discard all variants\
+    \ that overlap with the\n                                    ones in this file\n\
+    \      --include-bed=FILE            only keep variants within the regions in\n\
+    \                                    this BED file\n      --include-vcf=FILE \
+    \           only keep variants that overlap with the\n                       \
+    \             ones in this file\n  -j, --javascript=STRING           javascript\
+    \ filtering functions for\n                                    determining whether\
+    \ to keep record. May be\n                                    either an expression\
+    \ or a file name. May be\n                                    specified 0 or more\
+    \ times\n  -e, --keep-expr=STRING            records for which this expression\
+    \ evaluates\n                                    to true will be retained\n  -k,\
+    \ --keep-filter=STRING          only keep variants with this FILTER tag.\n   \
+    \                                 May be specified 0 or more times, or as a\n\
+    \                                    comma separated list\n  -K, --keep-info=STRING\
+    \            only keep variants with this INFO tag. May\n                    \
+    \                be specified 0 or more times, or as a comma\n               \
+    \                     separated list\n      --max-alleles=INT             maximum\
+    \ number of alleles (REF included)\n  -C, --max-combined-read-depth=INT maximum\
+    \ allowed combined read depth\n  -Q, --max-quality=FLOAT           maximum allowed\
+    \ quality\n      --min-alleles=INT             minimum number of alleles (REF\
+    \ included)\n  -c, --min-combined-read-depth=INT minimum allowed combined read\
+    \ depth\n  -q, --min-quality=FLOAT           minimum allowed quality\n  -r, --remove-filter=STRING\
+    \        remove variants with this FILTER tag. May\n                         \
+    \           be specified 0 or more times, or as a comma\n                    \
+    \                separated list\n  -R, --remove-info=STRING          remove variants\
+    \ with this INFO tag. May be\n                                    specified 0\
+    \ or more times, or as a comma\n                                    separated\
+    \ list\n      --remove-overlapping          remove records that overlap with previous\n\
+    \                                    records\n\nFiltering (Sample based)\n  -A,\
+    \ --max-ambiguity-ratio=FLOAT   maximum allowed ambiguity ratio\n      --max-avr-score=FLOAT\
+    \         maximum allowed AVR score\n      --max-denovo-score=FLOAT      maximum\
+    \ de novo score threshold\n  -G, --max-genotype-quality=FLOAT  maximum allowed\
+    \ genotype quality\n  -D, --max-read-depth=INT          maximum allowed sample\
+    \ read depth\n      --min-avr-score=FLOAT         minimum allowed AVR score\n\
+    \      --min-denovo-score=FLOAT      minimum de novo score threshold\n  -g, --min-genotype-quality=FLOAT\
+    \  minimum allowed genotype quality\n  -d, --min-read-depth=INT          minimum\
+    \ allowed sample read depth\n      --non-snps-only               only keep where\
+    \ sample variant is MNP or\n                                    INDEL\n      --remove-all-same-as-ref\
+    \      remove where all samples are same as\n                                \
+    \    reference\n      --remove-hom                  remove where sample is homozygous\n\
+    \      --remove-same-as-ref          remove where sample is same as reference\n\
+    \      --snps-only                   only keep where sample variant is a simple\n\
+    \                                    SNP\n\nReporting\n      --clear-failed-samples\
+    \        retain failed records, set the sample GT\n                          \
+    \          field to missing\n  -f, --fail=STRING                 retain failed\
+    \ records, add the provided\n                                    label to the\
+    \ FILTER field\n  -F, --fail-samples=STRING         retain failed records, add\
+    \ the provided\n                                    label to the sample FT field\n\
+    \nUtility\n  -a, --add-header=STRING|FILE      file containing VCF header lines\
+    \ to add, or\n                                    a literal header line. May be\
+    \ specified 0\n                                    or more times\n  -h, --help\
+    \                        print help on command-line flag usage\n  -Z, --no-gzip\
+    \                     do not gzip the output\n      --no-header              \
+    \     prevent VCF header from being written\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - vcfannotate
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --bed-regions
+    description: "if set, only read VCF records that overlap the\nranges contained\
+      \ in the specified BED file"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: "VCF file containing variants to annotate. Use\n'-' to read from\
+      \ standard input"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: "output VCF file name. Use '-' to write to\nstandard output"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --region
+    description: "if set, only read VCF records within the\nspecified range. The format\
+      \ is one of\n<sequence_name>, <sequence_name>:<start>-<end>,\n<sequence_name>:<pos>+<length>\
+      \ or\n<sequence_name>:<pos>~<padding>"
+    args: !SimpleFlagArg
+      name: REGION
+  - !Flag
+    optional: true
+    synonyms:
+    - -A
+    - --annotation
+    description: "add computed annotation to VCF records. Allowed\nvalues are [AC,\
+      \ AN, EP, GQD, IC, LAL, MEANQAD,\nNAA, PD, QA, QD, RA, SCONT, VAF, VAF1, ZY].\
+      \ May\nbe specified 0 or more times, or as a comma\nseparated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --bed-ids
+    description: "add variant IDs from BED file. May be specified\n0 or more times"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --bed-info
+    description: "add INFO annotations from BED file. May be\nspecified 0 or more\
+      \ times"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --fill-an-ac
+    description: add or update the AN and AC INFO fields
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --info-description
+    description: "if the BED INFO field is not already declared,\nuse this description\
+      \ in the header (Default is\nAnnotation)"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --info-id
+    description: "the INFO ID for BED INFO annotations (Default\nis ANN)"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --relabel
+    description: "relabel samples according to \"old-name\nnew-name\" pairs in specified\
+      \ file"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --vcf-ids
+    description: "add variant IDs from VCF file. May be specified\n0 or more times"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --add-header
+    description: "|FILE  file containing VCF header lines to add, or a\nliteral header\
+      \ line. May be specified 0 or more\ntimes"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -Z
+    - --no-gzip
+    description: do not gzip the output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-header
+    description: prevent VCF header from being written
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg vcfannotate [OPTION]... -i FILE -o FILE\n\nAdds annotations\
+    \ to a VCF file, either to the VCF ID field, or as a VCF INFO\nsub-field.\n\n\
+    File Input/Output\n      --bed-regions=FILE        if set, only read VCF records\
+    \ that overlap the\n                                ranges contained in the specified\
+    \ BED file\n  -i, --input=FILE              VCF file containing variants to annotate.\
+    \ Use\n                                '-' to read from standard input\n  -o,\
+    \ --output=FILE             output VCF file name. Use '-' to write to\n      \
+    \                          standard output\n      --region=REGION           if\
+    \ set, only read VCF records within the\n                                specified\
+    \ range. The format is one of\n                                <sequence_name>,\
+    \ <sequence_name>:<start>-<end>,\n                                <sequence_name>:<pos>+<length>\
+    \ or\n                                <sequence_name>:<pos>~<padding>\n\nReporting\n\
+    \  -A, --annotation=STRING       add computed annotation to VCF records. Allowed\n\
+    \                                values are [AC, AN, EP, GQD, IC, LAL, MEANQAD,\n\
+    \                                NAA, PD, QA, QD, RA, SCONT, VAF, VAF1, ZY]. May\n\
+    \                                be specified 0 or more times, or as a comma\n\
+    \                                separated list\n      --bed-ids=FILE        \
+    \    add variant IDs from BED file. May be specified\n                       \
+    \         0 or more times\n      --bed-info=FILE           add INFO annotations\
+    \ from BED file. May be\n                                specified 0 or more times\n\
+    \      --fill-an-ac              add or update the AN and AC INFO fields\n   \
+    \   --info-description=STRING if the BED INFO field is not already declared,\n\
+    \                                use this description in the header (Default is\n\
+    \                                Annotation)\n      --info-id=STRING         \
+    \ the INFO ID for BED INFO annotations (Default\n                            \
+    \    is ANN)\n      --relabel=FILE            relabel samples according to \"\
+    old-name\n                                new-name\" pairs in specified file\n\
+    \      --vcf-ids=FILE            add variant IDs from VCF file. May be specified\n\
+    \                                0 or more times\n\nUtility\n  -a, --add-header=STRING|FILE\
+    \  file containing VCF header lines to add, or a\n                           \
+    \     literal header line. May be specified 0 or more\n                      \
+    \          times\n  -h, --help                    print help on command-line flag\
+    \ usage\n  -Z, --no-gzip                 do not gzip the output\n      --no-header\
+    \               prevent VCF header from being written\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - sdf2sam
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: ids
+    description: --start-id=INT inclusive lower bound on sequence id
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: SDF containing sequences
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: "output filename (extension added if not present). Use '-'\nto write\
+      \ to standard output"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --end-id
+    description: exclusive upper bound on sequence id
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    - --id-file
+    description: "file containing sequence ids, or sequence names if --names\nflag\
+      \ is set, one per line"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --names
+    description: interpret supplied sequence as names instead of numeric
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -Z
+    - --no-gzip
+    description: do not gzip the output
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg sdf2sam [OPTION]... -i SDF -o FILE STRING+\n            \
+    \       [OPTION]... -i SDF -o FILE -I FILE\n                   [OPTION]... -i\
+    \ SDF -o FILE --end-id INT --start-id INT\n\nConverts SDF data into SAM/BAM.\n\
+    \nFile Input/Output\n  -i, --input=SDF    SDF containing sequences\n  -o, --output=FILE\
+    \  output filename (extension added if not present). Use '-'\n               \
+    \      to write to standard output\n\nFiltering\n      --end-id=INT   exclusive\
+    \ upper bound on sequence id\n  -I, --id-file=FILE file containing sequence ids,\
+    \ or sequence names if --names\n                     flag is set, one per line\n\
+    \  -n, --names        interpret supplied sequence as names instead of numeric\n\
+    \                     ids\n      --start-id=INT inclusive lower bound on sequence\
+    \ id\n      STRING+        id of sequence to extract, or sequence name if --names\n\
+    \                     flag is set. May be specified 0 or more times\n\nUtility\n\
+    \  -h, --help         print help on command-line flag usage\n  -Z, --no-gzip \
+    \     do not gzip the output\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - sdf2fastq
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: times
+    description: Utility
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: SDF containing sequences
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: "output filename (extension added if not present).\nUse '-' to write\
+      \ to standard output"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --end-id
+    description: exclusive upper bound on sequence id
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    - --id-file
+    description: file containing sequence ids, or sequence names if
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --start-id
+    description: inclusive lower bound on sequence id
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --names
+    description: is set. May be specified 0 or more
+    args: !SimpleFlagArg
+      name: flag
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --default-quality
+    description: "default quality value to use if the SDF does not\ncontain quality\
+      \ data (0-63)"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --interleave
+    description: "interleave paired data into a single output file.\nDefault is to\
+      \ split to separate output files"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --line-length
+    description: "maximum number of nucleotides to print on a line of\noutput. A value\
+      \ of 0 indicates no limit (Default is\n0)"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -Z
+    - --no-gzip
+    description: do not gzip the output
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg sdf2fastq [OPTION]... -i SDF -o FILE STRING+\n          \
+    \           [OPTION]... -i SDF -o FILE -I FILE\n                     [OPTION]...\
+    \ -i SDF -o FILE --end-id INT --start-id INT\n\nConverts SDF data into FASTQ file(s).\n\
+    \nFile Input/Output\n  -i, --input=SDF           SDF containing sequences\n  -o,\
+    \ --output=FILE         output filename (extension added if not present).\n  \
+    \                          Use '-' to write to standard output\n\nFiltering\n\
+    \      --end-id=INT          exclusive upper bound on sequence id\n  -I, --id-file=FILE\
+    \        file containing sequence ids, or sequence names if\n                \
+    \            --names flag is set, one per line\n  -n, --names               interpret\
+    \ supplied sequence as names instead of\n                            numeric ids\n\
+    \      --start-id=INT        inclusive lower bound on sequence id\n      STRING+\
+    \               id of sequence to extract, or sequence name if\n             \
+    \               --names flag is set. May be specified 0 or more\n            \
+    \                times\n\nUtility\n  -q, --default-quality=INT default quality\
+    \ value to use if the SDF does not\n                            contain quality\
+    \ data (0-63)\n  -h, --help                print help on command-line flag usage\n\
+    \      --interleave          interleave paired data into a single output file.\n\
+    \                            Default is to split to separate output files\n  -l,\
+    \ --line-length=INT     maximum number of nucleotides to print on a line of\n\
+    \                            output. A value of 0 indicates no limit (Default\
+    \ is\n                            0)\n  -Z, --no-gzip             do not gzip\
+    \ the output\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - index
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --format
+    description: "format of input to index. Allowed values are [sam,\nbam, cram, sv,\
+      \ coveragetsv, bed, vcf, auto]\n(Default is auto)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    - --input-list-file
+    description: "file containing a list of block compressed files\n(1 per line) containing\
+      \ genome position data\nFILE+                  block compressed files containing\
+      \ data to be\nindexed. May be specified 0 or more times"
+    args: !SimpleFlagArg
+      name: FILE
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg index [OPTION]... FILE+\n                 [OPTION]... -I\
+    \ FILE\n\nCreates index files for block compressed TAB-delimited genome position\
+    \ files.\n\nFile Input/Output\n  -f, --format=FORMAT        format of input to\
+    \ index. Allowed values are [sam,\n                             bam, cram, sv,\
+    \ coveragetsv, bed, vcf, auto]\n                             (Default is auto)\n\
+    \  -I, --input-list-file=FILE file containing a list of block compressed files\n\
+    \                             (1 per line) containing genome position data\n \
+    \     FILE+                  block compressed files containing data to be\n  \
+    \                           indexed. May be specified 0 or more times\n\nUtility\n\
+    \  -h, --help                 print help on command-line flag usage\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - childsim
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: genome
+    description: -t, --reference=SDF          SDF containing the reference genome
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --father
+    description: name of the existing sample to use as the father
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: input VCF containing parent variants
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --mother
+    description: name of the existing sample to use as the mother
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: output VCF file name
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-sdf
+    description: if set, output an SDF containing the sample
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sample
+    description: name for new child sample
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --extra-crossovers
+    description: "probability of extra crossovers per chromosome\n(Default is 0.01)"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --genetic-map-dir
+    description: "if set, load genetic maps from this directory\nfor recombination\
+      \ point selection"
+    args: !SimpleFlagArg
+      name: DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -Z
+    - --no-gzip
+    description: do not gzip the output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ploidy
+    description: "ploidy to use. Allowed values are [auto,\ndiploid, haploid] (Default\
+      \ is auto)"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --seed
+    description: seed for the random number generator
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --sex
+    description: "sex of individual. Allowed values are [male,\nfemale, either] (Default\
+      \ is either)"
+    args: !SimpleFlagArg
+      name: SEX
+  - !Flag
+    optional: true
+    synonyms:
+    - --show-crossovers
+    description: "if set, display information regarding haplotype\nselection and crossover\
+      \ points\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg childsim [OPTION]... --father STRING -i FILE --mother STRING\
+    \ -o FILE -t SDF -s STRING\n\nGenerates a VCF containing a genotype simulated\
+    \ as a child of two parents.\n\nFile Input/Output\n      --father=STRING     \
+    \     name of the existing sample to use as the father\n  -i, --input=FILE   \
+    \          input VCF containing parent variants\n      --mother=STRING       \
+    \   name of the existing sample to use as the mother\n  -o, --output=FILE    \
+    \        output VCF file name\n      --output-sdf=SDF         if set, output an\
+    \ SDF containing the sample\n                               genome\n  -t, --reference=SDF\
+    \          SDF containing the reference genome\n  -s, --sample=STRING        \
+    \  name for new child sample\n\nUtility\n      --extra-crossovers=FLOAT probability\
+    \ of extra crossovers per chromosome\n                               (Default\
+    \ is 0.01)\n      --genetic-map-dir=DIR    if set, load genetic maps from this\
+    \ directory\n                               for recombination point selection\n\
+    \  -h, --help                   print help on command-line flag usage\n  -Z, --no-gzip\
+    \                do not gzip the output\n      --ploidy=STRING          ploidy\
+    \ to use. Allowed values are [auto,\n                               diploid, haploid]\
+    \ (Default is auto)\n      --seed=INT               seed for the random number\
+    \ generator\n      --sex=SEX                sex of individual. Allowed values\
+    \ are [male,\n                               female, either] (Default is either)\n\
+    \      --show-crossovers        if set, display information regarding haplotype\n\
+    \                               selection and crossover points\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - genomesim
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: output SDF
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - --comment
+    description: comment to include in the generated SDF
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --freq
+    description: "relative frequencies of A,C,G,T in the generated\nsequence (Default\
+      \ is 1,1,1,1)"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --length
+    description: "length of generated sequence. May be specified 0 or\nmore times,\
+      \ or as a comma separated list"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-length
+    description: maximum sequence length
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-length
+    description: minimum sequence length
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --num-contigs
+    description: number of sequences to generate
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix
+    description: sequence name prefix (Default is simulatedSequence)
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --seed
+    description: seed for random number generator
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg genomesim [OPTION]... -o SDF --max-length INT --min-length\
+    \ INT -n INT\n                     [OPTION]... -o SDF -l INT\n\nSimulates a reference\
+    \ genome.\n\nFile Input/Output\n  -o, --output=SDF      output SDF\n\nUtility\n\
+    \      --comment=STRING  comment to include in the generated SDF\n      --freq=STRING\
+    \     relative frequencies of A,C,G,T in the generated\n                     \
+    \   sequence (Default is 1,1,1,1)\n  -h, --help            print help on command-line\
+    \ flag usage\n  -l, --length=INT      length of generated sequence. May be specified\
+    \ 0 or\n                        more times, or as a comma separated list\n   \
+    \   --max-length=INT  maximum sequence length\n      --min-length=INT  minimum\
+    \ sequence length\n  -n, --num-contigs=INT number of sequences to generate\n \
+    \     --prefix=STRING   sequence name prefix (Default is simulatedSequence)\n\
+    \  -s, --seed=INT        seed for random number generator\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - vcfeval
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --baseline
+    description: VCF file containing baseline variants
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --bed-regions
+    description: "if set, only read VCF records that overlap the\nranges contained\
+      \ in the specified BED file"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --calls
+    description: VCF file containing called variants
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --evaluation-regions
+    description: "if set, evaluate within regions contained in\nthe supplied BED file,\
+      \ allowing transborder\nmatches. To be used for truth-set\nhigh-confidence regions\
+      \ or other regions of\ninterest where region boundary effects should\nbe minimized"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: directory for output
+    args: !SimpleFlagArg
+      name: DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --region
+    description: "if set, only read VCF records within the\nspecified range. The format\
+      \ is one of\n<sequence_name>, <sequence_name>:<start>-<end>,\n<sequence_name>:<pos>+<length>\
+      \ or\n<sequence_name>:<pos>~<padding>"
+    args: !SimpleFlagArg
+      name: REGION
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --template
+    description: "SDF of the reference genome the variants are\ncalled against"
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - --all-records
+    description: "use all records regardless of FILTER status\n(Default is to only\
+      \ process records where\nFILTER is \".\" or \"PASS\")"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --decompose
+    description: "decompose complex variants into smaller\nconstituents to allow partial\
+      \ credit"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ref-overlap
+    description: "allow alleles to overlap where bases of either\nallele are same-as-ref\
+      \ (Default is to only\nallow VCF anchor base overlap)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sample
+    description: "the name of the sample to select. Use\n<baseline_sample>,<calls_sample>\
+      \ to select\ndifferent sample names for baseline and calls.\n(Required when\
+      \ using multi-sample VCF files)"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --sample-ploidy
+    description: expected ploidy of samples (Default is 2)
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --squash-ploidy
+    description: "treat heterozygous genotypes as homozygous ALT\nin both baseline\
+      \ and calls, to allow matches\nthat ignore zygosity differences"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --at-precision
+    description: "output summary statistics where precision >=\nsupplied value (Default\
+      \ is to summarize at\nmaximum F-measure)"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --at-sensitivity
+    description: "output summary statistics where sensitivity >=\nsupplied value (Default\
+      \ is to summarize at\nmaximum F-measure)"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-roc
+    description: do not produce ROCs
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --output-mode
+    description: "output reporting mode. Allowed values are\n[split, annotate, combine,\
+      \ ga4gh, roc-only]\n(Default is split)"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --roc-expr
+    description: "output ROC file for variants matching custom\nJavaScript expression.\
+      \ Use the form\n<LABEL>=<EXPRESSION>. May be specified 0 or\nmore times"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --roc-regions
+    description: "output ROC file for variants overlapping custom\nregions supplied\
+      \ in BED file. Use the form\n<LABEL>=<FILENAME>. May be specified 0 or more\n\
+      times"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --roc-subset
+    description: "output ROC file for preset variant subset.\nAllowed values are [hom,\
+      \ het, snp, non-snp,\nmnp, indel]. May be specified 0 or more times,\nor as\
+      \ a comma separated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    - --sort-order
+    description: "the order in which to sort the ROC scores so\nthat \"good\" scores\
+      \ come before \"bad\" scores.\nAllowed values are [ascending, descending]\n\
+      (Default is descending)"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --vcf-score-field
+    description: "the name of the VCF FORMAT field to use as the\nROC score. Also\
+      \ valid are \"QUAL\", \"INFO.<name>\"\nor \"FORMAT.<name>\" to select the named\
+      \ VCF\nFORMAT or INFO field (Default is GQ)"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -Z
+    - --no-gzip
+    description: do not gzip the output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    - --threads
+    description: "number of threads (Default is the number of\navailable cores)\n"
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg vcfeval [OPTION]... -b FILE -c FILE -o DIR -t SDF\n\nEvaluates\
+    \ called variants for genotype agreement with a baseline variant set\nirrespective\
+    \ of representational differences. Outputs a weighted ROC file which\ncan be viewed\
+    \ with rtg rocplot and VCF files containing false positives (called\nvariants\
+    \ not matched in the baseline), false negatives (baseline variants not\nmatched\
+    \ in the call set), and true positives (variants that match between the\nbaseline\
+    \ and calls).\n\nFile Input/Output\n  -b, --baseline=FILE           VCF file containing\
+    \ baseline variants\n      --bed-regions=FILE        if set, only read VCF records\
+    \ that overlap the\n                                ranges contained in the specified\
+    \ BED file\n  -c, --calls=FILE              VCF file containing called variants\n\
+    \  -e, --evaluation-regions=FILE if set, evaluate within regions contained in\n\
+    \                                the supplied BED file, allowing transborder\n\
+    \                                matches. To be used for truth-set\n         \
+    \                       high-confidence regions or other regions of\n        \
+    \                        interest where region boundary effects should\n     \
+    \                           be minimized\n  -o, --output=DIR              directory\
+    \ for output\n      --region=REGION           if set, only read VCF records within\
+    \ the\n                                specified range. The format is one of\n\
+    \                                <sequence_name>, <sequence_name>:<start>-<end>,\n\
+    \                                <sequence_name>:<pos>+<length> or\n         \
+    \                       <sequence_name>:<pos>~<padding>\n  -t, --template=SDF\
+    \            SDF of the reference genome the variants are\n                  \
+    \              called against\n\nFiltering\n      --all-records             use\
+    \ all records regardless of FILTER status\n                                (Default\
+    \ is to only process records where\n                                FILTER is\
+    \ \".\" or \"PASS\")\n      --decompose               decompose complex variants\
+    \ into smaller\n                                constituents to allow partial\
+    \ credit\n      --ref-overlap             allow alleles to overlap where bases\
+    \ of either\n                                allele are same-as-ref (Default is\
+    \ to only\n                                allow VCF anchor base overlap)\n  \
+    \    --sample=STRING           the name of the sample to select. Use\n       \
+    \                         <baseline_sample>,<calls_sample> to select\n       \
+    \                         different sample names for baseline and calls.\n   \
+    \                             (Required when using multi-sample VCF files)\n \
+    \     --sample-ploidy=INT       expected ploidy of samples (Default is 2)\n  \
+    \    --squash-ploidy           treat heterozygous genotypes as homozygous ALT\n\
+    \                                in both baseline and calls, to allow matches\n\
+    \                                that ignore zygosity differences\n\nReporting\n\
+    \      --at-precision=FLOAT      output summary statistics where precision >=\n\
+    \                                supplied value (Default is to summarize at\n\
+    \                                maximum F-measure)\n      --at-sensitivity=FLOAT\
+    \    output summary statistics where sensitivity >=\n                        \
+    \        supplied value (Default is to summarize at\n                        \
+    \        maximum F-measure)\n      --no-roc                  do not produce ROCs\n\
+    \  -m, --output-mode=STRING      output reporting mode. Allowed values are\n \
+    \                               [split, annotate, combine, ga4gh, roc-only]\n\
+    \                                (Default is split)\n      --roc-expr=STRING \
+    \        output ROC file for variants matching custom\n                      \
+    \          JavaScript expression. Use the form\n                             \
+    \   <LABEL>=<EXPRESSION>. May be specified 0 or\n                            \
+    \    more times\n      --roc-regions=STRING      output ROC file for variants\
+    \ overlapping custom\n                                regions supplied in BED\
+    \ file. Use the form\n                                <LABEL>=<FILENAME>. May\
+    \ be specified 0 or more\n                                times\n      --roc-subset=STRING\
+    \       output ROC file for preset variant subset.\n                         \
+    \       Allowed values are [hom, het, snp, non-snp,\n                        \
+    \        mnp, indel]. May be specified 0 or more times,\n                    \
+    \            or as a comma separated list\n  -O, --sort-order=STRING       the\
+    \ order in which to sort the ROC scores so\n                                that\
+    \ \"good\" scores come before \"bad\" scores.\n                              \
+    \  Allowed values are [ascending, descending]\n                              \
+    \  (Default is descending)\n  -f, --vcf-score-field=STRING  the name of the VCF\
+    \ FORMAT field to use as the\n                                ROC score. Also\
+    \ valid are \"QUAL\", \"INFO.<name>\"\n                                or \"FORMAT.<name>\"\
+    \ to select the named VCF\n                                FORMAT or INFO field\
+    \ (Default is GQ)\n\nUtility\n  -h, --help                    print help on command-line\
+    \ flag usage\n  -Z, --no-gzip                 do not gzip the output\n  -T, --threads=INT\
+    \             number of threads (Default is the number of\n                  \
+    \              available cores)\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - popsim
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: output VCF file name
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --reference
+    description: SDF containing the reference genome
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - -Z
+    - --no-gzip
+    description: do not gzip the output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --seed
+    description: seed for the random number generator
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg popsim [OPTION]... -o FILE -t SDF\n\nGenerates a VCF containing\
+    \ simulated population variants.\n\nFile Input/Output\n  -o, --output=FILE   output\
+    \ VCF file name\n  -t, --reference=SDF SDF containing the reference genome\n\n\
+    Utility\n  -h, --help          print help on command-line flag usage\n  -Z, --no-gzip\
+    \       do not gzip the output\n      --seed=INT      seed for the random number\
+    \ generator\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - vcfsubset
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: output
+    description: --region=REGION             if set, only read VCF records within
+      the
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --bed-regions
+    description: "if set, only read VCF records that overlap\nthe ranges contained\
+      \ in the specified BED\nfile"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: "VCF file containing variants to manipulate.\nUse '-' to read from\
+      \ standard input"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: output VCF file. Use '-' to write to standard
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-filter
+    description: "keep the specified FILTER tag. May be\nspecified 0 or more times,\
+      \ or as a comma\nseparated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-format
+    description: "keep the specified FORMAT field. May be\nspecified 0 or more times,\
+      \ or as a comma\nseparated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-info
+    description: "keep the specified INFO tag. May be specified\n0 or more times,\
+      \ or as a comma separated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-sample
+    description: "|FILE   file containing sample IDs to keep, or a\nliteral sample\
+      \ name. May be specified 0 or\nmore times, or as a comma separated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --remove-filter
+    description: "remove the specified FILTER tag. May be\nspecified 0 or more times,\
+      \ or as a comma\nseparated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --remove-filters
+    description: remove all FILTER tags
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --remove-format
+    description: "remove the specified FORMAT field. May be\nspecified 0 or more times,\
+      \ or as a comma\nseparated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --remove-ids
+    description: remove the contents of the ID field
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --remove-info
+    description: "remove the specified INFO tag. May be\nspecified 0 or more times,\
+      \ or as a comma\nseparated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --remove-infos
+    description: remove all INFO tags
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --remove-qual
+    description: remove the QUAL field
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --remove-sample
+    description: "|FILE file containing sample IDs to remove, or a\nliteral sample\
+      \ name. May be specified 0 or\nmore times, or as a comma separated list"
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - --remove-samples
+    description: remove all samples
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -Z
+    - --no-gzip
+    description: do not gzip the output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-header
+    description: prevent VCF header from being written
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg vcfsubset [OPTION]... -i FILE -o FILE\n\nRemoves columnar\
+    \ data from VCF records.\n\nFile Input/Output\n      --bed-regions=FILE      \
+    \    if set, only read VCF records that overlap\n                            \
+    \      the ranges contained in the specified BED\n                           \
+    \       file\n  -i, --input=FILE                VCF file containing variants to\
+    \ manipulate.\n                                  Use '-' to read from standard\
+    \ input\n  -o, --output=FILE               output VCF file. Use '-' to write to\
+    \ standard\n                                  output\n      --region=REGION  \
+    \           if set, only read VCF records within the\n                       \
+    \           specified range. The format is one of\n                          \
+    \        <sequence_name>,\n                                  <sequence_name>:<start>-<end>,\n\
+    \                                  <sequence_name>:<pos>+<length> or\n       \
+    \                           <sequence_name>:<pos>~<padding>\n\nFiltering\n   \
+    \   --keep-filter=STRING        keep the specified FILTER tag. May be\n      \
+    \                            specified 0 or more times, or as a comma\n      \
+    \                            separated list\n      --keep-format=STRING      \
+    \  keep the specified FORMAT field. May be\n                                 \
+    \ specified 0 or more times, or as a comma\n                                 \
+    \ separated list\n      --keep-info=STRING          keep the specified INFO tag.\
+    \ May be specified\n                                  0 or more times, or as a\
+    \ comma separated list\n      --keep-sample=STRING|FILE   file containing sample\
+    \ IDs to keep, or a\n                                  literal sample name. May\
+    \ be specified 0 or\n                                  more times, or as a comma\
+    \ separated list\n      --remove-filter=STRING      remove the specified FILTER\
+    \ tag. May be\n                                  specified 0 or more times, or\
+    \ as a comma\n                                  separated list\n      --remove-filters\
+    \            remove all FILTER tags\n      --remove-format=STRING      remove\
+    \ the specified FORMAT field. May be\n                                  specified\
+    \ 0 or more times, or as a comma\n                                  separated\
+    \ list\n      --remove-ids                remove the contents of the ID field\n\
+    \      --remove-info=STRING        remove the specified INFO tag. May be\n   \
+    \                               specified 0 or more times, or as a comma\n   \
+    \                               separated list\n      --remove-infos         \
+    \     remove all INFO tags\n      --remove-qual               remove the QUAL\
+    \ field\n      --remove-sample=STRING|FILE file containing sample IDs to remove,\
+    \ or a\n                                  literal sample name. May be specified\
+    \ 0 or\n                                  more times, or as a comma separated\
+    \ list\n      --remove-samples            remove all samples\n\nUtility\n  -h,\
+    \ --help                      print help on command-line flag usage\n  -Z, --no-gzip\
+    \                   do not gzip the output\n      --no-header                \
+    \ prevent VCF header from being written\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+- !Command
+  command:
+  - rtg
+  - samplereplay
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: input VCF containing the sample genotype
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: name for output SDF
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --reference
+    description: SDF containing the reference genome
+    args: !SimpleFlagArg
+      name: SDF
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sample
+    description: name of the sample to select from the VCF
+    args: !SimpleFlagArg
+      name: STRING
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print help on command-line flag usage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: rtg samplereplay [OPTION]... -i FILE -o SDF -t SDF -s STRING\n\
+    \nGenerates the genome corresponding to a sample genotype.\n\nFile Input/Output\n\
+    \  -i, --input=FILE    input VCF containing the sample genotype\n  -o, --output=SDF\
+    \    name for output SDF\n  -t, --reference=SDF SDF containing the reference genome\n\
+    \  -s, --sample=STRING name of the sample to select from the VCF\n\nUtility\n\
+    \  -h, --help          print help on command-line flag usage\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rtg-tools:3.12--0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: rtg COMMAND [OPTION]...\n       rtg RTG_MEM=16G COMMAND [OPTION]...\
+  \  (e.g. to set maximum memory use to\n\t             \t16 GB)\n\nType 'rtg help\
+  \ COMMAND' for help on a specific command.\nThe following commands are available:\n\
+  \nData formatting:\n\tformat       \tconvert sequence data files to SDF\n\tsdf2fasta\
+  \    \tconvert SDF to FASTA\n\tsdf2fastq    \tconvert SDF to FASTQ\n\tsdf2sam  \
+  \    \tconvert SDF to SAM/BAM\n\tfastqtrim    \ttrim reads in FASTQ files\n\nSimulation:\n\
+  \tgenomesim    \tgenerate simulated genome sequence\n\tcgsim        \tgenerate simulated\
+  \ reads from a sequence\n\treadsim      \tgenerate simulated reads from a sequence\n\
+  \tpopsim       \tgenerate a VCF containing simulated population variants\n\tsamplesim\
+  \    \tgenerate a VCF containing a genotype simulated from a population\n\tchildsim\
+  \     \tgenerate a VCF containing a genotype simulated as a child of two\n\t   \
+  \          \tparents\n\tdenovosim    \tgenerate a VCF containing a derived genotype\
+  \ containing de novo\n\t             \tvariants\n\tpedsamplesim \tgenerate simulated\
+  \ genotypes for all members of a pedigree\n\tsamplereplay \tgenerate the genome\
+  \ corresponding to a sample genotype\n\nUtility:\n\tbgzip        \tcompress a file\
+  \ using block gzip\n\tindex        \tcreate a tabix index\n\textract      \textract\
+  \ data from a tabix indexed file\n\tsdfstats     \tprint statistics about an SDF\n\
+  \tsdfsubset    \textract a subset of an SDF into a new SDF\n\tsdfsubseq    \textract\
+  \ a subsequence from an SDF as text\n\tmendelian    \tcheck a multisample VCF for\
+  \ Mendelian consistency\n\tvcfstats     \tprint statistics about variants contained\
+  \ within a VCF file\n\tvcfmerge     \tmerge single-sample VCF files into a single\
+  \ multi-sample VCF\n\tvcffilter    \tfilter records within a VCF file\n\tvcfannotate\
+  \  \tannotate variants within a VCF file\n\tvcfsubset    \tcreate a VCF file containing\
+  \ a subset of the original columns\n\tvcfsplit     \tsplit a multi-sample VCF into\
+  \ one file per sample\n\tvcfdecompose \tdecompose complex variants within a VCF\
+  \ file\n\tvcfeval      \tevaluate called variants for agreement with a baseline\
+  \ variant\n\t             \tset\n\tvcf2rocplot  \tproduce rocplot compatible ROC\
+  \ data files from vcfeval annotated\n\t             \tVCFs\n\tsvdecompose  \tsplit\
+  \ composite structural variants into a breakend\n\t             \trepresentation\n\
+  \tbndeval      \tevaluate called breakends for agreement with a baseline breakend\n\
+  \t             \tset\n\tpedfilter    \tfilter and convert a pedigree file\n\tpedstats\
+  \     \tprint information about a pedigree file\n\trocplot      \tplot ROC curves\
+  \ from vcfeval ROC data files\n\tversion      \tprint version and license information\n\
+  \tlicense      \tprint license information for all commands\n\thelp         \tprint\
+  \ this screen or help for specified command\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/rtg-tools:3.12--0

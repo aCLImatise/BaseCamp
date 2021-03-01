@@ -4,70 +4,73 @@ command:
 positional: []
 named:
 - !Flag
-  description: "*                        Input file (MS-GF+ parameter '-s') (valid\
-    \ formats: 'mzML', 'mzXML', 'mgf', 'ms2')"
+  optional: true
   synonyms:
   - -in
+  description: "*                        Input file (MS-GF+ parameter '-s') (valid\
+    \ formats: 'mzML', 'mzXML', 'mgf', 'ms2')"
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "Output file (valid formats: 'idXML')"
+  optional: true
   synonyms:
   - -out
+  description: "Output file (valid formats: 'idXML')"
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "Alternative output file (MS-GF+ parameter '-o')\nEither 'out' or 'mzid_out'\
-    \ are required. They can be used together. (valid formats: 'mzid')"
+  optional: true
   synonyms:
   - -mzid_out
+  description: "Alternative output file (MS-GF+ parameter '-o')\nEither 'out' or 'mzid_out'\
+    \ are required. They can be used together. (valid formats: 'mzid')"
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: '*                The MSGFPlus Java archive file. Provide a full or
-    relative path, or make sure it can be found in your PATH environment.'
+  optional: true
   synonyms:
   - -executable
+  description: '*                The MSGFPlus Java archive file. Provide a full or
+    relative path, or make sure it can be found in your PATH environment.'
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -database
   description: "*                  Protein sequence database (FASTA file; MS-GF+ parameter\
     \ '-d'). Non-existing relative filenames are looked up via 'OpenMS.ini:id_db_dir'.\
     \ (valid formats: 'FASTA')"
-  synonyms:
-  - -database
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -add_decoys
   description: Create decoy proteins (reversed sequences) and append them to the database
     for the search (MS-GF+ parameter '-tda'). This allows the calculation of FDRs,
     but should only be used if the database does not already contain decoys.
-  synonyms:
-  - -add_decoys
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Precursor monoisotopic mass tolerance (MS-GF+ parameter '-t') (default:\
-    \ '10.0')"
+  optional: true
   synonyms:
   - -precursor_mass_tolerance
+  description: "Precursor monoisotopic mass tolerance (MS-GF+ parameter '-t') (default:\
+    \ '10.0')"
   args: !SimpleFlagArg
     name: value
-  optional: true
 - !Flag
-  description: "Unit of precursor mass tolerance (MS-GF+ parameter '-t') (default:\
-    \ 'ppm' valid: 'Da', 'ppm')"
+  optional: true
   synonyms:
   - -precursor_error_units
+  description: "Unit of precursor mass tolerance (MS-GF+ parameter '-t') (default:\
+    \ 'ppm' valid: 'Da', 'ppm')"
   args: !SimpleFlagArg
     name: choice
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -isotope_error_range
   description: "Range of allowed isotope peak errors (MS-GF+ parameter '-ti'). Takes\
     \ into account the error introduced by choosing a non-monoisotopic peak for fragmentation.\
     \ Combined with 'precursor_mass_tolerance'/'precursor_error_units', this determines\
@@ -75,114 +78,114 @@ named:
     \ mass 'calc', '-precursor_mass_tolerance 20 -precursor_error_units ppm -isotope_error_range\
     \ -1,2' tests '|exp - calc - n * 1.00335 Da| < 20 ppm' for n = -1, 0, 1, 2. (default:\
     \ '0,1')"
-  synonyms:
-  - -isotope_error_range
   args: !SimpleFlagArg
     name: range
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -fragment_method
   description: "Fragmentation method ('from_spectrum' relies on spectrum meta data\
     \ and uses CID as fallback option; MS-GF+ parameter '-m') (default: 'from_spectrum'\
     \ valid: 'from_spectrum', 'CID', 'ETD', 'HCD')"
-  synonyms:
-  - -fragment_method
   args: !SimpleFlagArg
     name: choice
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -instrument
   description: "Instrument that generated the data ('low_res'/'high_res' refer to\
     \ LCQ and LTQ instruments; MS-GF+ parameter '-inst') (default: 'low_res' valid:\
     \ 'low_res', 'high_res', 'TOF', 'Q_Exactive')"
-  synonyms:
-  - -instrument
   args: !SimpleFlagArg
     name: choice
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -enzyme
   description: "Enzyme used for digestion, or type of cleavage. Note: MS-GF+ does\
     \ not support blocking rules. (MS-GF+ parameter '-e') (default: 'Trypsin/P' valid:\
     \ 'Alpha-lytic protease', 'Arg-C/P', 'Asp-N/B', 'Chymotrypsin/P', 'Lys-C/P', 'Lys-N',\
     \ 'Trypsin/P', 'glutamyl endopeptidase', 'no cleavage', 'unspecific cleavage')"
-  synonyms:
-  - -enzyme
   args: !SimpleFlagArg
     name: choice
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -protocol
   description: "Labeling or enrichment protocol used, if any (MS-GF+ parameter '-p')\
     \ (default: 'automatic' valid: 'automatic', 'phospho', 'iTRAQ', 'iTRAQ_phospho',\
     \ 'TMT', 'none')"
-  synonyms:
-  - -protocol
   args: !SimpleFlagArg
     name: choice
-  optional: true
 - !Flag
-  description: "Level of cleavage specificity required (MS-GF+ parameter '-ntt') (default:\
-    \ 'fully' valid: 'non', 'semi', 'fully')"
+  optional: true
   synonyms:
   - -tryptic
+  description: "Level of cleavage specificity required (MS-GF+ parameter '-ntt') (default:\
+    \ 'fully' valid: 'non', 'semi', 'fully')"
   args: !SimpleFlagArg
     name: choice
-  optional: true
 - !Flag
-  description: "Minimum precursor ion charge (only used for spectra without charge\
-    \ information; MS-GF+ parameter '-minCharge') (default: '2' min: '1')"
+  optional: true
   synonyms:
   - -min_precursor_charge
+  description: "Minimum precursor ion charge (only used for spectra without charge\
+    \ information; MS-GF+ parameter '-minCharge') (default: '2' min: '1')"
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
-  description: "Maximum precursor ion charge (only used for spectra without charge\
-    \ information; MS-GF+ parameter '-maxCharge') (default: '3' min: '1')"
+  optional: true
   synonyms:
   - -max_precursor_charge
+  description: "Maximum precursor ion charge (only used for spectra without charge\
+    \ information; MS-GF+ parameter '-maxCharge') (default: '3' min: '1')"
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
-  description: "Minimum peptide length to consider (MS-GF+ parameter '-minLength')\
-    \ (default: '6' min: '1')"
+  optional: true
   synonyms:
   - -min_peptide_length
+  description: "Minimum peptide length to consider (MS-GF+ parameter '-minLength')\
+    \ (default: '6' min: '1')"
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
-  description: "Maximum peptide length to consider (MS-GF+ parameter '-maxLength')\
-    \ (default: '40' min: '1')"
+  optional: true
   synonyms:
   - -max_peptide_length
+  description: "Maximum peptide length to consider (MS-GF+ parameter '-maxLength')\
+    \ (default: '40' min: '1')"
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
-  description: "Number of matches per spectrum to be reported (MS-GF+ parameter '-n')\
-    \ (default: '1' min: '1')"
+  optional: true
   synonyms:
   - -matches_per_spec
+  description: "Number of matches per spectrum to be reported (MS-GF+ parameter '-n')\
+    \ (default: '1' min: '1')"
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -add_features
   description: "Output additional features (MS-GF+ parameter '-addFeatures'). This\
     \ is required by Percolator and hence by default enabled. (default: 'true' valid:\
     \ 'true', 'false')"
-  synonyms:
-  - -add_features
   args: !SimpleFlagArg
     name: true/false
-  optional: true
 - !Flag
-  description: "Maximum number of modifications per peptide. If this value is large,\
-    \ the search may take very long. (default: '2' min: '0')"
+  optional: true
   synonyms:
   - -max_mods
+  description: "Maximum number of modifications per peptide. If this value is large,\
+    \ the search may take very long. (default: '2' min: '0')"
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -fixed_modifications
   description: "Fixed modifications, specified using Unimod (www.unimod.org) terms,\
     \ e.g. 'Carbamidomethyl (C)' or 'Oxidation (M)' (default: '[Carbamidomethyl (C)]'\
     \ valid: '15N-oxobutanoic (N-term C)', '15N-oxobutanoic (Protein N-term S)', '15N-oxobutanoic\
@@ -894,12 +897,12 @@ named:
     \ 'Xlink:DTSSP (Protein N-term)', 'Xlink:EGS (K)', 'Xlink:EGS (Protein N-term)',\
     \ 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC (C)',\
     \ 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  synonyms:
-  - -fixed_modifications
   args: !SimpleFlagArg
     name: mods
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -variable_modifications
   description: "Variable modifications, specified using Unimod (www.unimod.org) terms,\
     \ e.g. 'Carbamidomethyl (C)' or 'Oxidation (M)' (default: '[Oxidation (M)]' valid:\
     \ '15N-oxobutanoic (N-term C)', '15N-oxobutanoic (Protein N-term S)', '15N-oxobutanoic\
@@ -1611,63 +1614,60 @@ named:
     \ 'Xlink:DTSSP (Protein N-term)', 'Xlink:EGS (K)', 'Xlink:EGS (Protein N-term)',\
     \ 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC (C)',\
     \ 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  synonyms:
-  - -variable_modifications
   args: !SimpleFlagArg
     name: mods
-  optional: true
 - !Flag
-  description: The Java executable. Usually Java is on the system PATH. If Java is
-    not found, use this parameter to specify the full path to Java
+  optional: true
   synonyms:
   - -java_executable
+  description: The Java executable. Usually Java is on the system PATH. If Java is
+    not found, use this parameter to specify the full path to Java
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "Maximum Java heap size (in MB) (default: '3500')"
+  optional: true
   synonyms:
   - -java_memory
+  description: "Maximum Java heap size (in MB) (default: '3500')"
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
-  description: Use the given TOPP INI file
+  optional: true
   synonyms:
   - -ini
+  description: Use the given TOPP INI file
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
-    \ '1')"
+  optional: true
   synonyms:
   - -threads
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: Writes the default configuration file
+  optional: true
   synonyms:
   - -write_ini
+  description: Writes the default configuration file
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: Shows all options (including advanced)
+  optional: true
   synonyms:
   - --helphelp
+  description: Shows all options (including advanced)
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Shows options
+  optional: true
   synonyms:
   - --help
+  description: Shows options
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nstty: standard input: Inappropriate ioctl for device\nMSGFPlusAdapter\
@@ -3128,3 +3128,4 @@ help_text: "\nstty: standard input: Inappropriate ioctl for device\nMSGFPlusAdap
   \           Shows all options (including advanced)\n\n"
 generated_using:
 - --help
+docker_image:

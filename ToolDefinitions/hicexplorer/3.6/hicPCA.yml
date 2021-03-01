@@ -1,0 +1,181 @@
+!Command
+command:
+- hicPCA
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  - -m
+  description: 'HiCExplorer matrix in h5 format. (default: None)'
+  args: !SimpleFlagArg
+    name: MATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --outputFileName
+  - -o
+  description: "File names for the result of the pca.Number of output\nfiles must\
+    \ match the number of computed eigenvectors.\n(default: None)"
+  args: !RepeatFlagArg
+    name: OUTPUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --numberOfEigenvectors
+  - -noe
+  description: "The number of eigenvectors that the PCA should compute\n(Default:\
+    \ 2)."
+  args: !SimpleFlagArg
+    name: NUMBEROFEIGENVECTORS
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  - -f
+  description: "Output format. Either bedgraph or bigwig (Default:\nbigwig)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      bigwig:
+      bedgraph:
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosomes
+  description: "List of chromosomes to be included in the correlation.\n(default:\
+    \ None)"
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+- !Flag
+  optional: true
+  synonyms:
+  - --method
+  description: "possible methods which can be used to build the obs-\nexp matrix are\
+    \ dist_norm and lieberman (Default:\ndist_norm)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      dist_norm:
+      lieberman:
+- !Flag
+  optional: true
+  synonyms:
+  - --ligation_factor
+  description: "Setting this flag multiplies a scaling factor to each\nentry of the\
+    \ expected matrix to take care of the\nproximity ligation as has been explained\
+    \ in Homer\nsoftware. This flag is only affective with dist_norm\nmethod and will\
+    \ be ignored if lieberman method is\nchosen. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --extraTrack
+  description: "Either a gene track or a histon mark coverage file\n(preferably a\
+    \ broad mark) is needed to decide if the\nvalues of the eigenvector need a sign\
+    \ flip or not.\n(default: None)"
+  args: !SimpleFlagArg
+    name: EXTRATRACK
+- !Flag
+  optional: true
+  synonyms:
+  - --histonMarkType
+  description: "Set it to active or inactive. This is only necessary\nif a histon\
+    \ mark coverage file is given as an\nextraTrack (Default: active)."
+  args: !SimpleFlagArg
+    name: HISTONMARKTYPE
+- !Flag
+  optional: true
+  synonyms:
+  - --pearsonMatrix
+  - -pm
+  description: "Internally the input matrix is converted per\nchromosome to obs_exp\
+    \ matrix and consecutively to a\nPearson matrix. Set this parameter to write the\n\
+    pearson matrix to a file. (default: None)"
+  args: !SimpleFlagArg
+    name: PEARSONMATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --obsexpMatrix
+  - -oem
+  description: "Internally the input matrix is converted per\nchromosome to obs_exp\
+    \ matrix and consecutively to a\nPearson matrix. Set this parameter to write the\n\
+    observe/expected matrix to a file. (default: None)"
+  args: !SimpleFlagArg
+    name: OBSEXPMATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --ignoreMaskedBins
+  description: "Mask bins are usually set to 0. This option removes\nthe masked bins\
+    \ before the PCA is computed. Attention:\nthis will lead to empty PCA regions.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show the help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicPCA --matrix MATRIX --outputFileName OUTPUTFILENAME\n      \
+  \        [OUTPUTFILENAME ...]\n              [--numberOfEigenvectors NUMBEROFEIGENVECTORS]\n\
+  \              [--format {bedgraph,bigwig}]\n              [--chromosomes CHROMOSOMES\
+  \ [CHROMOSOMES ...]]\n              [--method {dist_norm,lieberman}] [--ligation_factor]\n\
+  \              [--extraTrack EXTRATRACK] [--histonMarkType HISTONMARKTYPE]\n   \
+  \           [--pearsonMatrix PEARSONMATRIX] [--obsexpMatrix OBSEXPMATRIX]\n    \
+  \          [--ignoreMaskedBins] [--help] [--version]\n\nComputes PCA eigenvectors\
+  \ for a Hi-C matrix.\n\n    $ hicPCA --matrix hic_matrix.h5 -o pca1.bedgraph pca2.bedgraph\n\
+  \nRequired arguments:\n  --matrix MATRIX, -m MATRIX\n                        HiCExplorer\
+  \ matrix in h5 format. (default: None)\n  --outputFileName OUTPUTFILENAME [OUTPUTFILENAME\
+  \ ...], -o OUTPUTFILENAME [OUTPUTFILENAME ...]\n                        File names\
+  \ for the result of the pca.Number of output\n                        files must\
+  \ match the number of computed eigenvectors.\n                        (default:\
+  \ None)\n\nOptional arguments:\n  --numberOfEigenvectors NUMBEROFEIGENVECTORS, -noe\
+  \ NUMBEROFEIGENVECTORS\n                        The number of eigenvectors that\
+  \ the PCA should compute\n                        (Default: 2).\n  --format {bedgraph,bigwig},\
+  \ -f {bedgraph,bigwig}\n                        Output format. Either bedgraph or\
+  \ bigwig (Default:\n                        bigwig).\n  --chromosomes CHROMOSOMES\
+  \ [CHROMOSOMES ...]\n                        List of chromosomes to be included\
+  \ in the correlation.\n                        (default: None)\n  --method {dist_norm,lieberman}\n\
+  \                        possible methods which can be used to build the obs-\n\
+  \                        exp matrix are dist_norm and lieberman (Default:\n    \
+  \                    dist_norm).\n  --ligation_factor     Setting this flag multiplies\
+  \ a scaling factor to each\n                        entry of the expected matrix\
+  \ to take care of the\n                        proximity ligation as has been explained\
+  \ in Homer\n                        software. This flag is only affective with dist_norm\n\
+  \                        method and will be ignored if lieberman method is\n   \
+  \                     chosen. (default: False)\n  --extraTrack EXTRATRACK\n    \
+  \                    Either a gene track or a histon mark coverage file\n      \
+  \                  (preferably a broad mark) is needed to decide if the\n      \
+  \                  values of the eigenvector need a sign flip or not.\n        \
+  \                (default: None)\n  --histonMarkType HISTONMARKTYPE\n          \
+  \              Set it to active or inactive. This is only necessary\n          \
+  \              if a histon mark coverage file is given as an\n                 \
+  \       extraTrack (Default: active).\n  --pearsonMatrix PEARSONMATRIX, -pm PEARSONMATRIX\n\
+  \                        Internally the input matrix is converted per\n        \
+  \                chromosome to obs_exp matrix and consecutively to a\n         \
+  \               Pearson matrix. Set this parameter to write the\n              \
+  \          pearson matrix to a file. (default: None)\n  --obsexpMatrix OBSEXPMATRIX,\
+  \ -oem OBSEXPMATRIX\n                        Internally the input matrix is converted\
+  \ per\n                        chromosome to obs_exp matrix and consecutively to\
+  \ a\n                        Pearson matrix. Set this parameter to write the\n \
+  \                       observe/expected matrix to a file. (default: None)\n  --ignoreMaskedBins\
+  \    Mask bins are usually set to 0. This option removes\n                     \
+  \   the masked bins before the PCA is computed. Attention:\n                   \
+  \     this will lead to empty PCA regions. (default: False)\n  --help, -h      \
+  \      show the help message and exit\n  --version             show program's version\
+  \ number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

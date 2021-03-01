@@ -4,6 +4,9 @@ task Stssearch {
   command <<<
     stssearch
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

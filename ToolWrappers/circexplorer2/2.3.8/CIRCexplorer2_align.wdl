@@ -30,6 +30,9 @@ task CIRCexplorer2Align {
       ~{if (skip_top_hat) then "--skip-tophat" else ""} \
       ~{if (skip_top_hat_fusion) then "--skip-tophat-fusion" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gtf: "Annotation GTF file."
     genome: "Genome fasta file."

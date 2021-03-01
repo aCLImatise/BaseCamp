@@ -78,6 +78,9 @@ task SpydrPick {
       ~{if defined(ar_acne_block_size) then ("--aracne-block-size " +  '"' + ar_acne_block_size + '"') else ""} \
       ~{if defined(ar_acne_node_grouping_size) then ("--aracne-node-grouping-size " +  '"' + ar_acne_node_grouping_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _be_verbose: "[ --verbose ]                      Be verbose."
     mi_threshold: "(=-1)              The MI threshold value. Experience\\nsuggests that a value of 0.11 is often\\nreasonable. Zero indicates no threshold\\nand negative values will trigger\\nauto-define heuristics."

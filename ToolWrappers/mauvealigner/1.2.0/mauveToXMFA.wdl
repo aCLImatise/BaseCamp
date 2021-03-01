@@ -10,6 +10,9 @@ task MauveToXMFA {
       ~{mauve_alignment_input} \
       ~{x_mfa_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mauve_alignment_input: ""
     x_mfa_output: ""

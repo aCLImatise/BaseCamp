@@ -8,6 +8,9 @@ task ColaAlignSatsuma {
     ColaAlignSatsuma \
       ~{if (string_query_sequence) then "-q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_query_sequence: "<string> : query sequence"
   }

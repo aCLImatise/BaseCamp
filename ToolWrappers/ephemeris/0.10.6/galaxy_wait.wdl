@@ -14,6 +14,9 @@ task Galaxywait {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(galaxy) then ("--galaxy " +  '"' + galaxy + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     timeout: "Galaxy startup timeout in seconds. The default value\\nof 0 waits forever"
     verbose: "Increase output verbosity."

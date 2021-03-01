@@ -10,6 +10,9 @@ task MegagtaTranslate {
       ~{translate} \
       ~{nucl_seq}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     translate: ""
     nucl_seq: ""

@@ -20,6 +20,9 @@ task BuildMetaphylerpl {
       ~{blast} \
       ~{prefix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     norm_vertical_line_un_norm: ""
     fast_a_one: ""

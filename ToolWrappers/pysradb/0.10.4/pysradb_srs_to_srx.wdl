@@ -18,6 +18,9 @@ task PysradbSrstosrx {
       ~{if (desc) then "--desc" else ""} \
       ~{if (expand) then "--expand" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Path to SRAmetadb.sqlite file"
     save_to: "Save output to file"

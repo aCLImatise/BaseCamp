@@ -32,6 +32,9 @@ task Abysstofastq {
       ~{if (illumina_quality) then "--illumina-quality" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cat: "concatenate the records [default]"
     interleave: "interleave the records"

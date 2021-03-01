@@ -14,6 +14,9 @@ task FilterBiompy {
       ~{mapping_fnh} \
       ~{if defined(filter_ot_uids_fnh) then ("--filter_otuids_fnh " +  '"' + filter_ot_uids_fnh + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filter_ot_uids_fnh: "Path to file to write out the list of OTUIDs not\\npresent in any SampleIDs in mapping file. This output\\nis usually used to filter out unwanted otuids from\\n.tre file. If not given, the discarded OTUIDs list\\nwill be saved in the current working directory.\\n"
     input_biom_fnh: "BIOM file path."

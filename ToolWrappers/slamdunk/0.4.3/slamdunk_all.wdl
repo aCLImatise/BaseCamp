@@ -60,6 +60,9 @@ task SlamdunkAll {
       ~{if defined(sample_index) then ("--sample-index " +  '"' + sample_index + '"') else ""} \
       ~{if (skip_sam) then "--skip-sam" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: "[-5 TRIM5] [-a MAXPOLYA] [-n TOPN]"
     reference: "Reference fasta file"

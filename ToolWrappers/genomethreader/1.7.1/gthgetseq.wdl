@@ -32,6 +32,9 @@ task Gthgetseq {
       ~{if (bzip_two) then "-bzip2" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     get_cdna: "get cDNA/EST sequences\\ndefault: no"
     get_cdna_comp: "get complement of cDNA/EST sequences\\ndefault: no"

@@ -68,6 +68,9 @@ task AribaMicplot {
       ~{if (dot_outline) then "--dot_outline" else ""} \
       ~{if defined(dot_y_text_size) then ("--dot_y_text_size " +  '"' + dot_y_text_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_format: "Output format of image file. Use anything that\\nmatplotlib can save to, eg pdf or png [pdf]"
     main_title: "\\\"title in quotes\\\"\\nMain title of plot. Default is to use the antibiotic\\nname"

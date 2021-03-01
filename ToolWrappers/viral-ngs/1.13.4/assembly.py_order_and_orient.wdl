@@ -34,6 +34,9 @@ task AssemblypyOrderAndOrient {
       ~{if defined(tmp_dir) then ("--tmp_dir " +  '"' + tmp_dir + '"') else ""} \
       ~{if (tmp_dir_keep) then "--tmp_dirKeep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_alternate_contigs: "Output sequences (FASTA format) from alternative\\ncontigs that mapped, but were not chosen for the final\\noutput."
     break_len: "Amount to extend alignment clusters by (if --extend).\\nnucmer default 200, promer default 60."

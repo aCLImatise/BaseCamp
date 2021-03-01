@@ -8,6 +8,9 @@ task FcGenGfaV1 {
     fc_gen_gfa_v1 \
       ~{collected_gfa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     collected_gfa: "Path to the file with collected and formatted data for generating the GFA"
   }

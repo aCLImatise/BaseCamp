@@ -12,6 +12,9 @@ task Pbmerge {
       ~{if (str_output_bam) then "-o" else ""} \
       ~{if (no_pbi) then "--no-pbi" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     str_output_bam: "STR   Output BAM filename. Writes to stdout if not provided."
     no_pbi: "Disables creation of PBI index file. PBI always disabled when writing to stdout."

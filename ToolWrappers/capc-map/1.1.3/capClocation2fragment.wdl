@@ -14,6 +14,9 @@ task CapClocation2fragment {
       ~{if (inputfile_filename_bed) then "-i" else ""} \
       ~{if (location_single_genomic) then "-l" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     restfragfile_filename_bed: "restfragfile    filename for bed file containing the list of restriction fragments"
     outfile_filename_present: "outfile         filename for output bed file (if not present output with be sent to stdout)"

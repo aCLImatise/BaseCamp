@@ -3,18 +3,19 @@ id: riboraptor_read_length_dist.cwl
 inputs:
 - id: in_bam
   doc: Path to BAM file  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --bam
 - id: in_save_to
   doc: Path to write read length dist tsv output
-  type: long
+  type: long?
   inputBinding:
     prefix: --saveto
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - riboraptor

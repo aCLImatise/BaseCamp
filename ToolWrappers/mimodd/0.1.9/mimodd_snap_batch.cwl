@@ -4,12 +4,12 @@ inputs:
 - id: in_one_more_completely
   doc: "\"COMMAND\" [\"COMMAND\" ...]\none or more completely specified command line\
     \ calls to\nthe snap tool (use \"\" to enclose individual lines)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_input_file_completely
   doc: "an input file of completely specified command line\ncalls to the snap tool\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: -f
 - id: in_snap_batch
@@ -21,6 +21,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mimodd

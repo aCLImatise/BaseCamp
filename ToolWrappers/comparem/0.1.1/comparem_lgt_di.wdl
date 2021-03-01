@@ -18,6 +18,9 @@ task ComparemLgtDi {
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_ext: "extension of files to process (default: fna)"
     crit_value: "critical value for defining deviant genes (default:\\n0.001)"

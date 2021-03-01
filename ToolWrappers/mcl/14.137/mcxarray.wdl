@@ -92,6 +92,9 @@ task Mcxarray {
       ~{if (rank_transform) then "--rank-transform" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data: "data file name"
     imx: "matrix file name"

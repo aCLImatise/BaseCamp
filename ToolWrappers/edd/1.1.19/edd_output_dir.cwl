@@ -3,22 +3,22 @@ id: edd_output_dir.cwl
 inputs:
 - id: in_fdr
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --fdr
 - id: in_p
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_n
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -n
 - id: in_bin_size
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: --bin-size
 - id: in_edd
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - edd

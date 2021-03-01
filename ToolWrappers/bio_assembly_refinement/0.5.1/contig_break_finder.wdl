@@ -18,6 +18,9 @@ task ContigBreakFinder {
       ~{if (no_rename) then "--no_rename" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     skip: "File of contig ids to skip"
     hit_percent_id: "Minimum acceptable hit percent id [80]"

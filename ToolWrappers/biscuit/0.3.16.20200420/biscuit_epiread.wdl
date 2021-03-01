@@ -9,7 +9,7 @@ task BiscuitEpiread {
     File? output_file
     Boolean? pairwise_mode
     Boolean? nomeseq_mode
-    Boolean? verbose_print_info
+    Boolean? verbose_print_additional
     Boolean? minimum_mapping_quality
     Boolean? max_cytosine_retention
     Boolean? minimum_read_length
@@ -33,7 +33,7 @@ task BiscuitEpiread {
       ~{if (output_file) then "-o" else ""} \
       ~{if (pairwise_mode) then "-P" else ""} \
       ~{if (nomeseq_mode) then "-N" else ""} \
-      ~{if (verbose_print_info) then "-v" else ""} \
+      ~{if (verbose_print_additional) then "-v" else ""} \
       ~{if (minimum_mapping_quality) then "-m" else ""} \
       ~{if (max_cytosine_retention) then "-t" else ""} \
       ~{if (minimum_read_length) then "-l" else ""} \
@@ -42,6 +42,9 @@ task BiscuitEpiread {
       ~{if (filtering_improper_bamfproperpair) then "-p" else ""} \
       ~{if (maximum_nm_tag) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_input_snp: "bed input for SNP display in epiread output [no SNP]"
     region_optional_specified: "region (optional, if not specified the whole bam will be processed)."
@@ -50,7 +53,7 @@ task BiscuitEpiread {
     output_file: "output file [stdout]"
     pairwise_mode: "pairwise mode [off]"
     nomeseq_mode: "NOMe-seq mode [off]"
-    verbose_print_info: "verbose (print additional info for diagnosis)."
+    verbose_print_additional: "verbose (print additional info for diagnosis)."
     minimum_mapping_quality: "minimum mapping quality [40]."
     max_cytosine_retention: "max cytosine retention in a read [999999]."
     minimum_read_length: "minimum read length [10]."

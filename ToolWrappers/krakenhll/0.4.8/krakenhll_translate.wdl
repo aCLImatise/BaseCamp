@@ -10,6 +10,9 @@ task Krakenhlltranslate {
       ~{if (mpa_format) then "--mpa-format" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mpa_format: ""
     db: ""

@@ -14,6 +14,9 @@ task RnazSortpl {
       ~{if (no_loci) then "--no-loci" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reverse: "Sort in reverse order."
     no_loci: "Do not preserve the locus grouping but simply sort the windows."

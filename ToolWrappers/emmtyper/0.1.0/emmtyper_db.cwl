@@ -3,7 +3,7 @@ id: emmtyper_db.cwl
 inputs:
 - id: in_db_folder
   doc: "Where to update the DB  [default:\n/usr/local/lib/python3.7/site-packages/emmtyper/db]"
-  type: double
+  type: double?
   inputBinding:
     prefix: --db_folder
 - id: in_email
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - emmtyper-db

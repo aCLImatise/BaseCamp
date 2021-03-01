@@ -22,6 +22,9 @@ task SashimiPlot {
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
       ~{if defined(group_info) then ("--group-info " +  '"' + group_info + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     plot_insert_len: "Plot the insert length distribution from a given\\ninsert length (*.insert_len) filename. Second argument\\nis a settings file name."
     plot_bf_dist: "Plot Bayes factor distributon. Takes the arguments:\\n(1) Bayes factor filename (*.miso_bf) filename, (2) a\\nsettings filename."

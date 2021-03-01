@@ -3,12 +3,12 @@ id: LogolMultiExec.sh.cwl
 inputs:
 - id: in_g
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -g
 - id: in_m
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -m
 - id: in_minimum
@@ -50,6 +50,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - LogolMultiExec.sh

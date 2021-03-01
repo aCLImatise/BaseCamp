@@ -22,6 +22,9 @@ task PhyluceAlignRemoveLocusNameFromNexusLines {
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignments: "The input directory containing nexus files to filter"
     output_directory_hold: "The output directory to hold the converted nexus files"

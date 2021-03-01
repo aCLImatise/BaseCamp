@@ -3,12 +3,12 @@ id: synapse_get_annotations_accessing..cwl
 inputs:
 - id: in_o
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -o
 - id: in_id
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: --id
 - id: in_synapse
@@ -23,13 +23,14 @@ inputs:
     position: 1
 - id: in_output_file
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - synapse

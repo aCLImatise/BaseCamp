@@ -3,7 +3,7 @@ id: kronos_make_config.cwl
 inputs:
 - id: in_output_filename
   doc: "a name for the resultant config file\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_filename
 - id: in_components
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_filename
   doc: "a name for the resultant config file\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kronos

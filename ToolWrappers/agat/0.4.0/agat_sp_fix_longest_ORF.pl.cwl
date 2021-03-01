@@ -17,22 +17,22 @@ inputs:
     \ but prediction tool did not annotate this part (e.g\nincomplete evidence in\
     \ evidence-based prediction)\nModel6 = The ORF is same size but not correct frame\
     \ (+1 or +2 bp\ngives a frame shift)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --model
 - id: in_gff
   doc: Input GTF/GFF file.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gff
 - id: in_fast_a
   doc: Imput fasta file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta
 - id: in_codon
   doc: Codon table to use. [default 1]
-  type: long
+  type: long?
   inputBinding:
     prefix: --codon
 - id: in_split
@@ -40,18 +40,18 @@ inputs:
     \ the original cds, it is possible to split the\ngene into two different genes.\
     \ By default we don't split it. We\nkeep the longest. If you want to split it\
     \ type: -s"
-  type: long
+  type: long?
   inputBinding:
     prefix: --split
-- id: in__output_
-  doc: ", --output , --out or --outfile\nOutput GFF file. If no output file is specified,\
-    \ the output will\nbe written to STDOUT."
-  type: File
+- id: in_outfile
+  doc: "Output GFF file. If no output file is specified, the output will\nbe written\
+    \ to STDOUT."
+  type: File?
   inputBinding:
-    prefix: -o
+    prefix: --outfile
 - id: in_verbose_mode_default
   doc: verbose mode. Default off. -v 1 minimum verbosity, -v 3 maximum
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_agat_sp_fix_longest_or_fdot_pl
@@ -68,12 +68,13 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out__output_
-  doc: ", --output , --out or --outfile\nOutput GFF file. If no output file is specified,\
-    \ the output will\nbe written to STDOUT."
-  type: File
+- id: out_outfile
+  doc: "Output GFF file. If no output file is specified, the output will\nbe written\
+    \ to STDOUT."
+  type: File?
   outputBinding:
-    glob: $(inputs.in__output_)
+    glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agat_sp_fix_longest_ORF.pl

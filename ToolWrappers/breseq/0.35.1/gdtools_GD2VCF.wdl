@@ -10,6 +10,9 @@ task GdtoolsGD2VCF {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(name_output_file) then ("--output " +  '"' + name_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "File containing reference sequences in GenBank, GFF3, or FASTA format. Option may be provided multiple times for multiple files (REQUIRED)"
     name_output_file: "name of output file (DEFAULT=output.vcf)"

@@ -2,7 +2,7 @@ version 1.0
 
 task GetBlastHitssh {
   input {
-    Boolean? run_command_input
+    Boolean? run_command_is
     Boolean? input_separated_nul
     Boolean? print_command_stderr
     Boolean? str_stops_processing
@@ -18,7 +18,7 @@ task GetBlastHitssh {
       ~{xargs} \
       ~{prog} \
       ~{args} \
-      ~{if (run_command_input) then "-r" else ""} \
+      ~{if (run_command_is) then "-r" else ""} \
       ~{if (input_separated_nul) then "-0" else ""} \
       ~{if (print_command_stderr) then "-t" else ""} \
       ~{if (str_stops_processing) then "-e" else ""} \
@@ -26,8 +26,11 @@ task GetBlastHitssh {
       ~{if defined(pass_command_line) then ("-s " +  '"' + pass_command_line + '"') else ""} \
       ~{if (exit_size_exceeded) then "-x" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    run_command_input: "Don't run command if input is empty"
+    run_command_is: "Don't run command if input is empty"
     input_separated_nul: "Input is separated by NUL characters"
     print_command_stderr: "Print the command on stderr before execution"
     str_stops_processing: "[STR] STR stops input processing"

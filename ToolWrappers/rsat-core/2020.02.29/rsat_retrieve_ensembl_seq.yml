@@ -4,233 +4,233 @@ command:
 - retrieve-ensembl-seq
 positional:
 - !Positional
-  description: sequences
+  optional: false
   position: 0
   name: genomics
-  optional: false
+  description: sequences
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -org
   description: "underscore between words (eg 'homo_sapiens')\nIf this option is not\
     \ used, the option -dbname must be used\ninstead.\n(type 'supported-organisms\
     \ | grep EnsEMBL' to obtain the list of supported\norganisms)"
-  synonyms:
-  - -org
   args: !SimpleFlagArg
     name: organism
-  optional: true
 - !Flag
-  description: address of ensembl database server (default is EBI server)
+  optional: true
   synonyms:
   - -ensemblhost
+  description: address of ensembl database server (default is EBI server)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "of EnsEMBL database\n(alternative to organism)"
+  optional: true
   synonyms:
   - -dbname
+  description: "of EnsEMBL database\n(alternative to organism)"
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
-  description: 'version of ensembl database (example: 47)'
+  optional: true
   synonyms:
   - -dbversion
+  description: 'version of ensembl database (example: 47)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Feature type.\nSupported: cds,exon,gene,intron,mrna,transcript,utr\n\
-    Defaut: mrna"
+  optional: true
   synonyms:
   - -feattype
+  description: "Feature type.\nSupported: cds,exon,gene,intron,mrna,transcript,utr\n\
+    Defaut: mrna"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "sequence type\nCurrently supported sequence types\nupstream (default)\n\
-    downstream\nfeature"
+  optional: true
   synonyms:
   - -type
+  description: "sequence type\nCurrently supported sequence types\nupstream (default)\n\
+    downstream\nfeature"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Type(s) of UTR (untranslated region) to return.\nSupported: all |\
-    \ 5prime | 3prime"
+  optional: true
   synonyms:
   - -utr
+  description: "Type(s) of UTR (untranslated region) to return.\nSupported: all |\
+    \ 5prime | 3prime"
   args: !SimpleFlagArg
     name: utr_type
-  optional: true
 - !Flag
-  description: "The query should be an EnsEMBL gene identifier (eg 'ENSG00000177799').\n\
-    Multiple queries can be entered by reiteratively using the -q\noption."
+  optional: true
   synonyms:
   - -q
+  description: "The query should be an EnsEMBL gene identifier (eg 'ENSG00000177799').\n\
+    Multiple queries can be entered by reiteratively using the -q\noption."
   args: !SimpleFlagArg
     name: query
-  optional: true
 - !Flag
-  description: "query file. The first word of each line is taken as a query.\nThis\
-    \ option is incompatible with -q."
+  optional: true
   synonyms:
   - -i
+  description: "query file. The first word of each line is taken as a query.\nThis\
+    \ option is incompatible with -q."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: return all genomic upstream/downstream regions
+  optional: true
   synonyms:
   - -all
+  description: return all genomic upstream/downstream regions
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: name of the output file
+  optional: true
   synonyms:
   - -o
+  description: name of the output file
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -from
   description: "#1 -to #2\nwhere #1 and #2 are numbers. #2 should be higher than #1.\n\
     limits of the region to extract, relative to feattype start or end\n(=position\
     \ 0). Use negative values for upstream sequence.\nexample: -from -800 -to -1\n\
     will extract the 800 bp upstream the feattype start or end.\n(this is the default"
-  synonyms:
-  - -from
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -noorf
   description: "the upstream/downstream sequence can only contain non-coding sequence.\n\
     i.e. the -from values is modified if a predicted orf\nis encountered within its\
     \ range.\nThe weaknesses of using this option are that\n- all predicted orf do\
     \ not correspond to real orf,\n- there is no a priori reason to exclude a regulatory\
     \ site\nwhich would overlap the upstream coding sequence."
-  synonyms:
-  - -noorf
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: upstream/downstream sequence can only contain non-transcribed sequence.
+  optional: true
   synonyms:
   - -nogene
+  description: upstream/downstream sequence can only contain non-transcribed sequence.
   args: !SimpleFlagArg
     name: the
-  optional: true
 - !Flag
-  description: all coding sequence is replaced by N in the retrieved sequence
+  optional: true
   synonyms:
   - -maskcoding
+  description: all coding sequence is replaced by N in the retrieved sequence
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use the repeat masked version of the genome.  Attention :\nrepeated\
-    \ regions are annotated for some genomes only."
+  optional: true
   synonyms:
   - -rm
+  description: "Use the repeat masked version of the genome.  Attention :\nrepeated\
+    \ regions are annotated for some genomes only."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Get sequences for all transcripts of genes.\nUse -uniqseqs if you\
-    \ do motif discovery afterwards"
+  optional: true
   synonyms:
   - -alltranscripts
+  description: "Get sequences for all transcripts of genes.\nUse -uniqseqs if you\
+    \ do motif discovery afterwards"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: With -alltranscripts, returns only non-redondant sequences
+  optional: true
   synonyms:
   - -uniqseqs
+  description: With -alltranscripts, returns only non-redondant sequences
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: With feattype intron, get only first intron sequence
+  optional: true
   synonyms:
   - -firstintron
+  description: With feattype intron, get only first intron sequence
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: With feattype exon, get only non-coding (part of) exons
+  optional: true
   synonyms:
   - -noncoding
+  description: With feattype exon, get only non-coding (part of) exons
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Chromosome name or number (to use with -left and -right)
+  optional: true
   synonyms:
   - -chrom
+  description: Chromosome name or number (to use with -left and -right)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Left limit of sequence to retrieve
+  optional: true
   synonyms:
   - -left
+  description: Left limit of sequence to retrieve
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Right limit of sequence to retrieve
+  optional: true
   synonyms:
   - -right
+  description: Right limit of sequence to retrieve
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'of sequence to retrieve when using -left and -right. Values: 1, -1'
+  optional: true
   synonyms:
   - -strand
+  description: 'of sequence to retrieve when using -left and -right. Values: 1, -1'
   args: !SimpleFlagArg
     name: Strand
-  optional: true
 - !Flag
-  description: file
+  optional: true
   synonyms:
   - -ftfile
+  description: file
   args: !SimpleFlagArg
     name: Feature
-  optional: true
 - !Flag
-  description: 'Feature file format. Supported: ft, gft'
+  optional: true
   synonyms:
   - -ftfileformat
+  description: 'Feature file format. Supported: ft, gft'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Retrieve homologous sequences from EnsEMBL Compara databases
+  optional: true
   synonyms:
   - -ortho
+  description: Retrieve homologous sequences from EnsEMBL Compara databases
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Filter on homology type. (example: ortholog, ortholog_one2one)'
+  optional: true
   synonyms:
   - -ortho_type
+  description: 'Filter on homology type. (example: ortholog, ortholog_one2one)'
   args: !SimpleFlagArg
     name: Type
-  optional: true
 - !Flag
-  description: "name\nPrints homology info to a tab delimited file"
+  optional: true
   synonyms:
   - -homologs_table
+  description: "name\nPrints homology info to a tab delimited file"
   args: !SimpleFlagArg
     name: File
-  optional: true
 - !Flag
-  description: 'Filter on taxonomic level (example: Mammalia)'
+  optional: true
   synonyms:
   - -taxon
+  description: 'Filter on taxonomic level (example: Mammalia)'
   args: !SimpleFlagArg
     name: Taxon
-  optional: true
 - !Flag
-  description: "Type of organism name to use in the fasta header (scientific, common\
-    \ or none).\nDefault is scientific. Common name is only accessible with -ortho."
+  optional: true
   synonyms:
   - -header_org
+  description: "Type of organism name to use in the fasta header (scientific, common\
+    \ or none).\nDefault is scientific. Common name is only accessible with -ortho."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -label
   description: "Information used as sequence label in the fasta header.\nSupported\
     \ label types:\n-label query\nuse as sequence label the identifier or name used\
     \ as query.\n"
-  synonyms:
-  - -label
   args: !SimpleFlagArg
     name: label_type
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -295,3 +295,4 @@ help_text: "USAGE\n\tretrieve-ensembl-seq [-type type] -org organism | -dbname d
   \ query. \n\n"
 generated_using:
 - -h
+docker_image:

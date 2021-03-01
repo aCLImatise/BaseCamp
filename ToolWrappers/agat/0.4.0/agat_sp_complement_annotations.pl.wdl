@@ -16,6 +16,9 @@ task AgatSpComplementAnnotationspl {
       ~{if defined(size_min) then ("--size_min " +  '"' + size_min + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "Input GTF/GFF file used as reference."
     add: "Annotation(s) file you would like to use to complement the\\nreference annotation. You can specify as much file you want like\\nso: -a addfile1 -a addfile2 -a addfile3 /!\\ The order you\\nprovide these files matter. Once the reference file has been\\ncomplemented by file1, this new annotation becomes the new\\nreference that will be complemented by file2 etc. /!\\ The result\\nwith -a addfile1 -a addfile2 will differ to the result from -a\\naddfile2 -a addfile1. So, be aware of what you want if you use\\nseveral addfiles."

@@ -14,6 +14,9 @@ task AllDists {
       ~{if (mod) then "--mod" else ""} \
       ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mod: "Read from tree model (*.mod) file(s) instead of Newick file."
     tree: "|<string>\\nUse leaf names from given tree.  Useful when primary files\\nuse numbers rather than names."

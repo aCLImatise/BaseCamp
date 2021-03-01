@@ -12,12 +12,12 @@ task Btrim {
     Boolean? a
     File? o
     String? unit_ig
-    File? file
+    File? var_file
   }
   command <<<
     btrim \
       ~{unit_ig} \
-      ~{file} \
+      ~{var_file} \
       ~{if (u) then "-u" else ""} \
       ~{if (k) then "-k" else ""} \
       ~{if (var_2) then "-t" else ""} \
@@ -28,6 +28,9 @@ task Btrim {
       ~{if (a) then "-a" else ""} \
       ~{if (o) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     u: "[Unitig file]"
     k: "[Kmer size]"
@@ -39,7 +42,7 @@ task Btrim {
     a: "[Edge filtering ratio (none)]"
     o: "[Output file (out_tipped)]"
     unit_ig: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

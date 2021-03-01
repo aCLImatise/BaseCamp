@@ -10,7 +10,7 @@ task Fseq {
     Directory? output_directory_defaultcurrent
     String? of
     Directory? ploidyinput_directory_defaultnone
-    Int? wiggle_track_default
+    Int? wiggle_step_default
     Float? threshold_standard_deviations
     Boolean? verbose_output
     String? wg
@@ -25,11 +25,14 @@ task Fseq {
       ~{if defined(output_directory_defaultcurrent) then ("-o " +  '"' + output_directory_defaultcurrent + '"') else ""} \
       ~{if defined(of) then ("-of " +  '"' + of + '"') else ""} \
       ~{if defined(ploidyinput_directory_defaultnone) then ("-p " +  '"' + ploidyinput_directory_defaultnone + '"') else ""} \
-      ~{if defined(wiggle_track_default) then ("-s " +  '"' + wiggle_track_default + '"') else ""} \
+      ~{if defined(wiggle_step_default) then ("-s " +  '"' + wiggle_step_default + '"') else ""} \
       ~{if defined(threshold_standard_deviations) then ("-t " +  '"' + threshold_standard_deviations + '"') else ""} \
       ~{if (verbose_output) then "-v" else ""} \
       ~{if defined(wg) then ("-wg " +  '"' + wg + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     background_directory_defaultnone: "background directory (default=none)"
     genomic_count_sequence: "genomic count of sequence reads (defualt =\\ncalculated)"
@@ -39,7 +42,7 @@ task Fseq {
     output_directory_defaultcurrent: "output directory (default=current directory)"
     of: "output format (default wig)"
     ploidyinput_directory_defaultnone: "ploidy/input directory (default=none)"
-    wiggle_track_default: "wiggle track step (default=1)"
+    wiggle_step_default: "wiggle track step (default=1)"
     threshold_standard_deviations: "threshold (standard deviations) (default=4.0)"
     verbose_output: "verbose output"
     wg: "wg threshold set (defualt = calculated)"

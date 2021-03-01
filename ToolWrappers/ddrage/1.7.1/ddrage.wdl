@@ -7,7 +7,7 @@ task Ddrage {
     Boolean? get_barcodes
     Boolean? debug
     File? name
-    File? prefix_output_path
+    File? prefix_willbe_created
     Int? nr_individuals
     Int? loci
     Int? read_length
@@ -48,7 +48,7 @@ task Ddrage {
       ~{if (get_barcodes) then "--get-barcodes" else ""} \
       ~{if (debug) then "--DEBUG" else ""} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
-      ~{if defined(prefix_output_path) then ("--output " +  '"' + prefix_output_path + '"') else ""} \
+      ~{if defined(prefix_willbe_created) then ("--output " +  '"' + prefix_willbe_created + '"') else ""} \
       ~{if defined(nr_individuals) then ("--nr-individuals " +  '"' + nr_individuals + '"') else ""} \
       ~{if defined(loci) then ("--loci " +  '"' + loci + '"') else ""} \
       ~{if defined(read_length) then ("--read-length " +  '"' + read_length + '"') else ""} \
@@ -82,13 +82,16 @@ task Ddrage {
       ~{if defined(singleton_pcr_copies) then ("--singleton-pcr-copies " +  '"' + singleton_pcr_copies + '"') else ""} \
       ~{if defined(prob_seq_error) then ("--prob-seq-error " +  '"' + prob_seq_error + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Increase verbosity of output. -v: Show progress of\\nsimulation. -vv: Print used parameters after\\nsimulation. -vvv: Show details for each simulated\\nlocus."
     zip: "Write output as gzipped fastq."
     get_barcodes: "Write copies of the default barcode files into the\\ncurrent folder."
     debug: "Set debug-friendly values for the data set, i.e. all\\nmutation events and mutation types are equally\\nprobable."
     name: "Name for the data set that will be used in the file\\nname. If none is given, the name 'RAGEdataset' will be\\nused."
-    prefix_output_path: "Prefix of the output path. At this point a folder will\\nbe created that contains all output files created by\\nddRAGE."
+    prefix_willbe_created: "Prefix of the output path. At this point a folder will\\nbe created that contains all output files created by\\nddRAGE."
     nr_individuals: "Number of individuals in the result. Default: 3"
     loci: "Number of loci for which reads will be created or path\\nto a FASTA file with predefined fragments. Default: 3"
     read_length: "Total sequence length of the reads (including\\noverhang, barcodes, etc.). The officially supported\\nand well tested range is 50-500bp but longer or\\nshorter reads are also possible. Default: 100"
@@ -124,7 +127,7 @@ task Ddrage {
   }
   output {
     File out_stdout = stdout()
-    File out_prefix_output_path = "${in_prefix_output_path}"
+    File out_prefix_willbe_created = "${in_prefix_willbe_created}"
     File out_multiple_p_seven_barcodes = "${in_multiple_p_seven_barcodes}"
   }
 }

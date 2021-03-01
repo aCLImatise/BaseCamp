@@ -5,23 +5,23 @@ inputs:
   doc: "number of epochs after lowest validation loss before\nstopping training (a\
     \ fraction of 0.1 of the training\nset is set apart for validation and the model\
     \ with the\nlowest validation loss will be saved). (default: 0)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --early_stopping
 - id: in_batch_size
   doc: 'number of samples per gradient update. (default: 128)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --batch_size
 - id: in_epochs
   doc: 'number of epochs to train the model. (default: 40)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --epochs
 - id: in_verbose
   doc: "print the progress of the training. 0 = silent, 1 =\ncurrent step, 2 = progress\
     \ bar, 3 = one line per\nepoch. (default: 0)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbose
 - id: in_output_file
@@ -48,6 +48,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rnasamba

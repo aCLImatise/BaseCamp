@@ -10,6 +10,9 @@ task PyensemblGenomes {
       ~{manipulate} \
       ~{py_ensembl}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     manipulate: ""
     py_ensembl: ""

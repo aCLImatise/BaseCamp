@@ -40,6 +40,9 @@ task XFDR {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Crosslink Identifications in either xquest.xml, idXML, or mzIdentML format (as produced by OpenPepXL) (valid formats: 'xml', 'idXML', 'mzid', 'xquest.xml')"
     in_type: "Type of input file provided with -in (valid: 'xml', 'idXML', 'mzid', 'xquest.xml')"

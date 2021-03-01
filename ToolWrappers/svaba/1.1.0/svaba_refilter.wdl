@@ -42,6 +42,9 @@ task SvabaRefilter {
       ~{if (read_tracking) then "--read-tracking" else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Select verbosity level (0-4). Default: 1"
     reference_genome: "Path to indexed reference genome to be used by BWA-MEM. Default is Broad hg19 (/seq/reference/...)"

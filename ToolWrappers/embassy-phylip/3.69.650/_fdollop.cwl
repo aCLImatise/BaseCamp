@@ -3,37 +3,37 @@ id: _fdollop.cwl
 inputs:
 - id: in_weights
   doc: properties Phylip weights file (optional)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -weights
 - id: in_anc_file
   doc: properties Ancestral states file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ancfile
 - id: in_method
   doc: "menu       [d] Parsimony method (Values: d (Dollo); p\n(Polymorphism))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -method
 - id: in_threshold
   doc: "float      [$(infile.discretesize)] Threshold value\n(Number 0.000 or more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -threshold
 - id: in_print_data
   doc: boolean    [N] Print data at start of run
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -printdata
 - id: in_an_cseq
   doc: boolean    [N] Print states at all nodes of tree
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ancseq
 - id: in_step_box
   doc: boolean    [N] Print out steps in each character
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -stepbox
 - id: in_file
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _fdollop

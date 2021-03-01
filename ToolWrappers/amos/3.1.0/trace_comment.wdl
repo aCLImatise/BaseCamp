@@ -12,6 +12,9 @@ task TraceComment {
       ~{field} \
       ~{if (suppresses_display_fieldid) then "-c" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     suppresses_display_fieldid: "Suppresses display of field-ID"
     get_comment: ""

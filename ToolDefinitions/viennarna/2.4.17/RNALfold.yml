@@ -1,0 +1,203 @@
+!Command
+command:
+- RNALfold
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: program
+  description: "-v, --verbose                 Be verbose\n(default=off)"
+- !Positional
+  optional: false
+  position: 0
+  name: recursions
+  description: (default=off)
+- !Positional
+  optional: false
+  position: 1
+  name: predictions.
+  description: 'Model Details:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --detailed-help
+  description: "Print help, including all details and hidden\noptions, and exit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --full-help
+  description: Print help, including hidden options, and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --span
+  description: "Set the maximum distance between any two\npairing nucleotides.\n(default=`150')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outfile
+  description: '[=<filename>]    Print output to file instead of stdout'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --infile
+  description: Read a file instead of reading from stdin
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --auto-id
+  description: "Automatically generate an ID for each sequence.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --zscore
+  description: "[=DOUBLE]         Limit the output to predictions with a Z-score\n\
+    below a threshold\n(default=`-2')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --zscore-pre-filter
+  description: Apply the z-score filtering in the forward
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --zscore-report-subsumed
+  description: "Report subsumed structures if their z-score is\nless than that of\
+    \ the enclosing structure\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --backtrack-global
+  description: "Backtrack a global MFE structure.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gquad
+  description: "Incoorporate G-Quadruplex formation into the\nstructure prediction\
+    \ algorithm\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --shape
+  description: Use SHAPE reactivity data to guide structure
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --temp
+  description: "Rescale energy parameters to a temperature of\ntemp C. Default is\
+    \ 37C."
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dangles
+  description: "Change the dangling end model\n(default=`2')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --noLP
+  description: "Produce structures without lonely pairs\n(helices of length 1).\n\
+    (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --paramFile
+  description: "Read energy parameters from paramfile, instead\nof using the default\
+    \ parameter set."
+  args: !SimpleFlagArg
+    name: paramfile
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: RNALfold [OPTION]...\ncalculate locally stable secondary structures\
+  \ of RNAs\n\nCompute locally stable RNA secondary structure with a maximal base\
+  \ pair span.\nFor a sequence of length n and a base pair span of L the algorithm\
+  \ uses only\nO(n+L*L) memory and O(n*L*L) CPU time. Thus it is practical to \"scan\"\
+  \ very\nlarge genomes for short RNA structures.\nOutput consists of a list of secondary\
+  \ structure components of size <= L, one\nentry per line. Each output line contains\
+  \ the predicted local structure its\nenergy in kcal/mol and the starting position\
+  \ of the local structure.\n\n\n  -h, --help                    Print help and exit\n\
+  \      --detailed-help           Print help, including all details and hidden\n\
+  \                                  options, and exit\n      --full-help        \
+  \       Print help, including hidden options, and exit\n  -V, --version        \
+  \         Print version and exit\n\nGeneral Options:\n  Below are command line options\
+  \ which alter the general behavior of this\n  program\n\n\n  -v, --verbose     \
+  \            Be verbose\n\n                                    (default=off)\n \
+  \ -L, --span=INT                Set the maximum distance between any two\n     \
+  \                             pairing nucleotides.\n                           \
+  \         (default=`150')\n  -o, --outfile[=<filename>]    Print output to file\
+  \ instead of stdout\n\n  -i, --infile=<filename>       Read a file instead of reading\
+  \ from stdin\n\n      --auto-id                 Automatically generate an ID for\
+  \ each sequence.\n                                    (default=off)\n\nAlgorithms:\n\
+  \  Select additional algorithms which should be included in the calculations.\n\
+  \  The Minimum free energy (MFE) and a structure representative are calculated\n\
+  \  in any case.\n\n\n  -z, --zscore[=DOUBLE]         Limit the output to predictions\
+  \ with a Z-score\n                                  below a threshold\n        \
+  \                            (default=`-2')\n      --zscore-pre-filter       Apply\
+  \ the z-score filtering in the forward\n                                  recursions\n\
+  \                                    (default=off)\n      --zscore-report-subsumed\
+  \  Report subsumed structures if their z-score is\n                            \
+  \      less than that of the enclosing structure\n                             \
+  \       (default=off)\n  -b, --backtrack-global        Backtrack a global MFE structure.\n\
+  \                                    (default=off)\n  -g, --gquad              \
+  \     Incoorporate G-Quadruplex formation into the\n                           \
+  \       structure prediction algorithm\n\n                                    (default=off)\n\
+  \      --shape=<filename>        Use SHAPE reactivity data to guide structure\n\
+  \                                  predictions.\n\n\n\nModel Details:\n  You may\
+  \ tweak the energy model and pairing rules additionally using the\n  following parameters\n\
+  \n\n  -T, --temp=DOUBLE             Rescale energy parameters to a temperature of\n\
+  \                                  temp C. Default is 37C.\n\n\n  -d, --dangles=INT\
+  \             Change the dangling end model\n                                  \
+  \  (default=`2')\n      --noLP                    Produce structures without lonely\
+  \ pairs\n                                  (helices of length 1).\n            \
+  \                        (default=off)\n  -P, --paramFile=paramfile     Read energy\
+  \ parameters from paramfile, instead\n                                  of using\
+  \ the default parameter set.\n\n\nIf in doubt our program is right, nature is at\
+  \ fault.\nComments should be sent to rna@tbi.univie.ac.at.\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/viennarna:2.4.17--py36hd181a71_0

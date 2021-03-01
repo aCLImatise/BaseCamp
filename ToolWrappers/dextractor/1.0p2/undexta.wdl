@@ -8,6 +8,9 @@ task Undexta {
     undexta \
       ~{if (v_ku) then "-vkU" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v_ku: ""
   }

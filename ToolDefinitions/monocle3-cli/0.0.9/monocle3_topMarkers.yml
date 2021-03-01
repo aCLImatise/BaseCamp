@@ -4,128 +4,128 @@ command:
 - topMarkers
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: input_object
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: output_table
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: 'Format of input object. [Default: cds3]'
+  optional: true
   synonyms:
   - -f
   - --input-object-format
+  description: 'Format of input object. [Default: cds3]'
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: 'Format of output table, choose from {tsv, csv}. [Default: tsv]'
+  optional: true
   synonyms:
   - -F
   - --output-table-format
+  description: 'Format of output table, choose from {tsv, csv}. [Default: tsv]'
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: Print introspective information of the output table.
+  optional: true
   synonyms:
   - -I
   - --introspective
+  description: Print introspective information of the output table.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Cell groups, choose from "cluster", "partition", or any categorical
-    variable in `colData(cds)`}. [Default: cluster]'
+  optional: true
   synonyms:
   - --group-cells-by
+  description: 'Cell groups, choose from "cluster", "partition", or any categorical
+    variable in `colData(cds)`}. [Default: cluster]'
   args: !SimpleFlagArg
     name: GROUP-CELLS-BY
-  optional: true
 - !Flag
-  description: 'Numeric, how many genes of the top ranked specific genes by Jenson-Shannon
-    to do the more expensive regression test on. [Default: 25]'
+  optional: true
   synonyms:
   - --genes-to-test-per-group
+  description: 'Numeric, how many genes of the top ranked specific genes by Jenson-Shannon
+    to do the more expensive regression test on. [Default: 25]'
   args: !SimpleFlagArg
     name: GENES-TO-TEST-PER-GROUP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --marker-sig-test
   description: 'A flag indicating whether to assess the discriminative power of each
     marker through logistic regression. Can be slow, consider disabling to speed up
     top_markers(). [Default: FALSE]'
-  synonyms:
-  - --marker-sig-test
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --reference-cells
   description: If provided, top_markers will perform the marker significance test
     against a "reference set" of cells. Must be either a list of cell ids from colnames(cds)
     (comma separated), or a positive integer. If the latter, top_markers() will randomly
     select the specified number of reference cells. Accelerates the marker significance
     test at some cost in sensitivity.
-  synonyms:
-  - --reference-cells
   args: !SimpleFlagArg
     name: REFERENCE-CELLS
-  optional: true
 - !Flag
-  description: 'The number of cores to be used for marker testing. [Default: 1]'
+  optional: true
   synonyms:
   - --cores
+  description: 'The number of cores to be used for marker testing. [Default: 1]'
   args: !SimpleFlagArg
     name: CORES
-  optional: true
 - !Flag
-  description: 'Filters the markers test result by this fraction of expression [Default:
-    0.1]'
+  optional: true
   synonyms:
   - --filter-fraction-expression
+  description: 'Filters the markers test result by this fraction of expression [Default:
+    0.1]'
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: 'The number of top marker genes to report in plots and in top markers
-    list. [Default: 5]'
+  optional: true
   synonyms:
   - --top-n-markers
+  description: 'The number of top marker genes to report in plots and in top markers
+    list. [Default: 5]'
   args: !SimpleFlagArg
     name: TOP-N-MARKERS
-  optional: true
 - !Flag
-  description: Save top marker by cell group plot to a file specified by this option.
+  optional: true
   synonyms:
   - --plot-top-markers
+  description: Save top marker by cell group plot to a file specified by this option.
   args: !SimpleFlagArg
     name: PLOT-TOP-MARKERS
-  optional: true
 - !Flag
-  description: Save full marker table to a file specified by this option.
+  optional: true
   synonyms:
   - --save-full-markers
+  description: Save full marker table to a file specified by this option.
   args: !SimpleFlagArg
     name: SAVE-FULL-MARKERS
-  optional: true
 - !Flag
-  description: Emit verbose output.
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: Emit verbose output.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "Show this help message and exit\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: "Show this help message and exit\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: monocle3 topMarkers [options] <input_object> <output_table>\n\n\
@@ -157,3 +157,4 @@ help_text: "Usage: monocle3 topMarkers [options] <input_object> <output_table>\n
   \n"
 generated_using:
 - --help
+docker_image:

@@ -10,6 +10,9 @@ task Emmtyperdb {
       ~{email} \
       ~{if defined(db_folder) then ("--db_folder " +  '"' + db_folder + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db_folder: "Where to update the DB  [default:\\n/usr/local/lib/python3.7/site-packages/emmtyper/db]"
     email: ""

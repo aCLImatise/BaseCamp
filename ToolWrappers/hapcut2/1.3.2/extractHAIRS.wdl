@@ -48,6 +48,9 @@ task ExtractHAIRS {
       ~{if defined(ep) then ("--ep " +  '"' + ep + '"') else ""} \
       ~{if defined(hom) then ("--hom " +  '"' + hom + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     qv_offset: ": quality value offset, 33/64 depending on how quality values were encoded, default is 33"
     mbq: ": minimum base quality to consider a base for haplotype fragment, default 13"

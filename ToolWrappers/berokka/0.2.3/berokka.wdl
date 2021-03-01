@@ -26,6 +26,9 @@ task Berokka {
       ~{if (no_an_no) then "--noanno" else ""} \
       ~{if (filter) then "--filter" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Debug info."
     check: "Check dependencies and exit."

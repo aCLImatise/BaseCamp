@@ -16,6 +16,9 @@ task MafAddIRows {
       ~{if (add_n) then "-addN" else ""} \
       ~{if (add_dash) then "-addDash" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_beds: "reads in list of bed files, one per species, with N locations"
     add_n: "adds rows of N's into maf blocks (rather than just annotating them)"

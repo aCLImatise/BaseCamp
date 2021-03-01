@@ -3,22 +3,22 @@ id: fasta_subsample.cwl
 inputs:
 - id: in_len
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -len
 - id: in_off
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -off
 - id: in_nor_and
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -norand
 - id: in_seed
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -seed
 - id: in_file_dot
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fasta-subsample

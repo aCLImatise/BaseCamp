@@ -8,6 +8,9 @@ task NhoodInfo {
     NhoodInfo \
       ~{arg_one}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_one: ""
   }

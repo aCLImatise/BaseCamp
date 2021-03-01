@@ -4,28 +4,31 @@ command:
 - supported-organisms-server
 positional:
 - !Positional
-  description: USAGE
+  optional: false
   position: 0
   name: supported-organisms
-  optional: false
+  description: USAGE
 - !Positional
-  description: DESCRIPTION
+  optional: false
   position: 0
   name: Jacques.van-Helden@univ-amu.fr
-  optional: false
+  description: DESCRIPTION
 - !Positional
-  description: OPTIONS
+  optional: false
   position: 0
   name: Genomes
-  optional: false
+  description: OPTIONS
 named:
 - !Flag
-  description: (must be first argument) display options
+  optional: true
   synonyms:
   - -help
+  description: (must be first argument) display options
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -url
   description: "Specify the URL of the remote RSAT server.\nDefault: http://rsat-tagc.univ-mrs.fr/rsat/\n\
     The option -url can be combined with the option\n-taxon in order to obtain the\
     \ list of organisms\nsupported on the main RSAT server, before downloading\nthem.\n\
@@ -36,25 +39,25 @@ named:
     Choose a specific taxon:\nsupported-organisms-server -taxon Archaea\n-server http://embnet.ccg.unam.mx/rsa-tools\n\
     Restrict taxon depth:\nsupported-organisms-server -taxon Bacteria\n-depth 5 -server\
     \ http://embnet.ccg.unam.mx/rsa-tools"
-  synonyms:
-  - -url
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "fields\nsupported: ID,name,taxid,source,last_update,nb,seq_format,up_from,up_to,taxonomy,data,genome,genome_assembly,genome_version,download_date,variant_available,variant_source,path_to_variant_files,blast_available"
+  optional: true
   synonyms:
   - -return
+  description: "fields\nsupported: ID,name,taxid,source,last_update,nb,seq_format,up_from,up_to,taxonomy,data,genome,genome_assembly,genome_version,download_date,variant_available,variant_source,path_to_variant_files,blast_available"
   args: !SimpleFlagArg
     name: output
-  optional: true
 - !Flag
-  description: Only returns organisms belonging to a selected taxon.
+  optional: true
   synonyms:
   - -taxon
+  description: Only returns organisms belonging to a selected taxon.
   args: !SimpleFlagArg
     name: selected_taxon
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -depth
   description: "#\nDepth for exploring the taxonomic tree. When the value\ndiffers\
     \ from 0, the program only returns one\n\"representative\" organism per taxon\
     \ of the specified\ndepth.\nThis option is convenient to select a non-redundant\
@@ -66,19 +69,16 @@ named:
     \ this corresponds to the lowest level\nof the taxonomy.\nAlso note that the depth\
     \ of the taxonomic annotations\nvary along branches, so that positive values will\
     \ give\ndifferent results from negative values.\n"
-  synonyms:
-  - -depth
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: (must be first argument) display full help message
+  optional: true
   synonyms:
   - -h
+  description: (must be first argument) display full help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "NAME\n\tsupported-organisms\n\nUSAGE\n        supported-organisms [-i\
@@ -116,3 +116,4 @@ help_text: "NAME\n\tsupported-organisms\n\nUSAGE\n        supported-organisms [-
   \t       different results from negative values.\n\n\n"
 generated_using:
 - -h
+docker_image:

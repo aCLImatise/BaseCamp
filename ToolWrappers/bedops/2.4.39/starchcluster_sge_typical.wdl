@@ -4,6 +4,9 @@ task StarchclusterSgetypical {
   command <<<
     starchcluster_sge_typical
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

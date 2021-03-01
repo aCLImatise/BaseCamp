@@ -28,6 +28,9 @@ task RefinemTaxonFilter {
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     consensus_tax_on: "threshold for accepting a consensus taxon (default:\\n50.0)"
     trusted_scaffold: "threshold for treating a scaffold as trusted (default:\\n50.0)"

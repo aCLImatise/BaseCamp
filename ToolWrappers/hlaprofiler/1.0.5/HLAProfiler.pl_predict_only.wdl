@@ -36,6 +36,9 @@ task HLAProfilerplPredictOnly {
       ~{if (output_dir) then "-output_dir" else ""} \
       ~{if (threads) then "-threads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     counts_directory: "|cd            location of directory containing filtered and paired read counts files. To generate these files from fastq files please run HLAProfiler.pl filter followed by HLAProfiler.pl count_reads (required)"
     reads_directory: "|cd             location of directory containing filtered and paired read fastqs.(required)"

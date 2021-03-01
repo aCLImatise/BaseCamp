@@ -26,6 +26,9 @@ task SCNICAnalysispyModules {
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_loc: "location of output from SCNIC_analysis.py within\\n(default: None)"
     output_loc: "output directory (default: None)"

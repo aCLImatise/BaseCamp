@@ -4,162 +4,162 @@ command:
 - run
 positional:
 - !Positional
-  description: Name of output directory when "ariba prepareref" was
+  optional: false
   position: 0
   name: prepareref_dir
-  optional: false
+  description: Name of output directory when "ariba prepareref" was
 - !Positional
-  description: reads_1               Name of fwd reads fastq file
+  optional: false
   position: 1
   name: run
-  optional: false
+  description: reads_1               Name of fwd reads fastq file
 - !Positional
-  description: Name of rev reads fastq file
+  optional: false
   position: 2
   name: reads_2
-  optional: false
+  description: Name of rev reads fastq file
 - !Positional
-  description: Output directory (must not already exist)
+  optional: false
   position: 3
   name: outdir
-  optional: false
+  description: Output directory (must not already exist)
 named:
 - !Flag
-  description: Minimum alignment identity (delta-filter -i) [90]
+  optional: true
   synonyms:
   - --nucmer_min_id
+  description: Minimum alignment identity (delta-filter -i) [90]
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: Minimum alignment length (delta-filter -i) [20]
+  optional: true
   synonyms:
   - --nucmer_min_len
+  description: Minimum alignment length (delta-filter -i) [20]
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: Value to use for -breaklen when running nucmer [200]
+  optional: true
   synonyms:
   - --nucmer_breaklen
+  description: Value to use for -breaklen when running nucmer [200]
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: Assembler to use
+  optional: true
   synonyms:
   - --assembler
+  description: Assembler to use
   args: !ChoiceFlagArg
     choices: !!set
       fermilite:
       spades:
-  optional: true
 - !Flag
-  description: "Target read coverage when sampling reads for assembly\n[50]"
+  optional: true
   synonyms:
   - --assembly_cov
+  description: "Target read coverage when sampling reads for assembly\n[50]"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Minimum number of read pairs needed as evidence for\nscaffold link\
-    \ between two contigs [10]"
+  optional: true
   synonyms:
   - --min_scaff_depth
+  description: "Minimum number of read pairs needed as evidence for\nscaffold link\
+    \ between two contigs [10]"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --spades_mode
   description: "If using Spades assembler, either use default WGS\nmode, Single Cell\
     \ mode (`spades.py --sc`) or RNA mode\n(`spades.py --rna`). Use SC or RNA mode\
     \ if your input\nis from a viral sequencing with very uneven and deep\ncoverage.\
     \ Set `--assembly_cov` to some high value if\nusing SC or RNA mode"
-  synonyms:
-  - --spades_mode
   args: !ChoiceFlagArg
     choices: !!set
-      wgs:
       sc:
       rna:
-  optional: true
+      wgs:
 - !Flag
+  optional: true
+  synonyms:
+  - --spades_options
   description: "Extra options to pass to Spades assembler. Sensible\ndefault options\
     \ will be picked based on\n`--spades_mode` argument. Anything set here will\n\
     replace the defaults completely"
-  synonyms:
-  - --spades_options
   args: !SimpleFlagArg
     name: SPADES_OPTIONS
-  optional: true
 - !Flag
-  description: "Experimental. Number of threads. Will run clusters in\nparallel, but\
-    \ not minimap (yet) [1]"
+  optional: true
   synonyms:
   - --threads
+  description: "Experimental. Number of threads. Will run clusters in\nparallel, but\
+    \ not minimap (yet) [1]"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --assembled_threshold
   description: "(between 0 and 1)\nIf proportion of gene assembled (regardless of\
     \ into\nhow many contigs) is at least this value then the flag\ngene_assembled\
     \ is set [0.95]"
-  synonyms:
-  - --assembled_threshold
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Max number of nucleotides to extend ends of gene\nmatches to look\
-    \ for start/stop codons [30]"
+  optional: true
   synonyms:
   - --gene_nt_extend
+  description: "Max number of nucleotides to extend ends of gene\nmatches to look\
+    \ for start/stop codons [30]"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "(between 0 and 1)\nIf proportion of bases in gene assembled more than\n\
-    once is <= this value, then the flag unique_contig is\nset [0.03]"
+  optional: true
   synonyms:
   - --unique_threshold
+  description: "(between 0 and 1)\nIf proportion of bases in gene assembled more than\n\
+    once is <= this value, then the flag unique_contig is\nset [0.03]"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: Overwrite output directory, if it already exists
+  optional: true
   synonyms:
   - --force
+  description: Overwrite output directory, if it already exists
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not clean up intermediate files
+  optional: true
   synonyms:
   - --noclean
+  description: Do not clean up intermediate files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Existing directory in which to create a temporary\ndirectory used\
-    \ for local assemblies"
+  optional: true
   synonyms:
   - --tmp_dir
+  description: "Existing directory in which to create a temporary\ndirectory used\
+    \ for local assemblies"
   args: !SimpleFlagArg
     name: TMP_DIR
-  optional: true
 - !Flag
-  description: Be verbose
+  optional: true
   synonyms:
   - --verbose
+  description: Be verbose
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: ariba run [options] <prepareref_dir> <reads1.fq> <reads2.fq> <outdir>\n\
@@ -203,3 +203,4 @@ help_text: "usage: ariba run [options] <prepareref_dir> <reads1.fq> <reads2.fq> 
   \       Be verbose\n"
 generated_using:
 - --help
+docker_image:

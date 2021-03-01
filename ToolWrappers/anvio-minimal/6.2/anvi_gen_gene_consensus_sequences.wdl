@@ -26,6 +26,9 @@ task Anvigengeneconsensussequences {
       ~{if defined(engine) then ("--engine " +  '"' + engine + '"') else ""} \
       ~{if (contigs_mode) then "--contigs-mode" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compress_samples: "Normally all samples with variation will have their\\nown consensus sequence. If this flag is provided, the\\ncoverages from each sample of interest will be summed\\nand only a single consenus sequence for each\\ngene/contig will be output."
     profile_db: "Anvi'o profile database"

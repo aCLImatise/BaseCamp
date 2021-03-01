@@ -3,12 +3,12 @@ id: downloadRefSeq.pl.cwl
 inputs:
 - id: in_seq_ences_out_directory
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --seqencesOutDirectory
 - id: in_var_1
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --DB
 - id: in_name_ncbi_database
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - downloadRefSeq.pl

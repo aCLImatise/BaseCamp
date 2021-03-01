@@ -16,6 +16,9 @@ task DeBWT {
       ~{if (optional_kmer_length) then "-k" else ""} \
       ~{if (_jellyfish_directory) then "-j" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_bwt_filebinary: ": output bwt file(binary)"
     optional_maximum_thread: "(optional): maximum thread number(default 8)"

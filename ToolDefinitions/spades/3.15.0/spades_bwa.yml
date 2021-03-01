@@ -1,0 +1,1375 @@
+&id001 !Command
+command:
+- spades-bwa
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - spades-bwa
+  - index
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bwa
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: index
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: in.fasta
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: 'BWT construction algorithm: is or rb2 [auto]'
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: prefix of the index [same as fasta name]
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - '-6'
+    description: index files named as <in.fasta>.64.* instead of <in.fasta>.*
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:   bwa index [options] <in.fasta>\n\nOptions: -a STR    BWT\
+    \ construction algorithm: is or rb2 [auto]\n         -p STR    prefix of the index\
+    \ [same as fasta name]\n         -6        index files named as <in.fasta>.64.*\
+    \ instead of <in.fasta>.* \n\nWarning: `-a bwtsw' does not work for short genomes,\
+    \ while `-a is' and\n         `-a div' do not work not for long genomes.\n\n"
+  generated_using: &id002 []
+  docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0
+- !Command
+  command:
+  - spades-bwa
+  - pemerge
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bwa
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: pemerge
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: read1.fq
+    description: ''
+  - !Positional
+    optional: true
+    position: 3
+    name: read2.fq
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: output merged reads only
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: output unmerged reads only
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: number of threads [1]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    description: minimum end overlap [10]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -Q
+    description: max sum of errors [70]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -mu
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:   bwa pemerge [-mu] <read1.fq> [read2.fq]\n\nOptions: -m  \
+    \     output merged reads only\n         -u       output unmerged reads only\n\
+    \         -t INT   number of threads [1]\n         -T INT   minimum end overlap\
+    \ [10]\n         -Q INT   max sum of errors [70]\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0
+- !Command
+  command:
+  - spades-bwa
+  - sampe
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bwa
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: sampe
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: prefix
+    description: ''
+  - !Positional
+    optional: false
+    position: 3
+    name: in1.sai
+    description: ''
+  - !Positional
+    optional: false
+    position: 4
+    name: in2.sai
+    description: ''
+  - !Positional
+    optional: false
+    position: 5
+    name: in1.fq
+    description: ''
+  - !Positional
+    optional: false
+    position: 6
+    name: in2.fq
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: maximum insert size [500]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: maximum occurrences for one end [100000]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: maximum hits to output for paired reads [3]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -N
+    description: maximum hits to output for discordant pairs [10]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: prior of chimeric rate (lower bound) [1.0e-05]
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: sam file to output results to [stdout]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: read group header line such as `@RG\tID:foo\tSM:bar' [null]
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -P
+    description: preload index into memory (for base-space reads only)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: disable Smith-Waterman for the unmapped mate
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -A
+    description: disable insert size estimate (force -s)
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:   bwa sampe [options] <prefix> <in1.sai> <in2.sai> <in1.fq>\
+    \ <in2.fq>\n\nOptions: -a INT   maximum insert size [500]\n         -o INT   maximum\
+    \ occurrences for one end [100000]\n         -n INT   maximum hits to output for\
+    \ paired reads [3]\n         -N INT   maximum hits to output for discordant pairs\
+    \ [10]\n         -c FLOAT prior of chimeric rate (lower bound) [1.0e-05]\n   \
+    \      -f FILE  sam file to output results to [stdout]\n         -r STR   read\
+    \ group header line such as `@RG\\tID:foo\\tSM:bar' [null]\n         -P      \
+    \ preload index into memory (for base-space reads only)\n         -s       disable\
+    \ Smith-Waterman for the unmapped mate\n         -A       disable insert size\
+    \ estimate (force -s)\n\nNotes: 1. For SOLiD reads, <in1.fq> corresponds R3 reads\
+    \ and <in2.fq> to F3.\n       2. For reads shorter than 30bp, applying a smaller\
+    \ -o is recommended to\n          to get a sensible speed at the cost of pairing\
+    \ accuracy.\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0
+- !Command
+  command:
+  - spades-bwa
+  - pac2bwt
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bwa
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: pac2bwt
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: in.pac
+    description: ''
+  - !Positional
+    optional: false
+    position: 3
+    name: out.bwt
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: bwa pac2bwt [-d] <in.pac> <out.bwt>\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0
+- !Command
+  command:
+  - spades-bwa
+  - shm
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bwa
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: shm
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: destroy all indices in shared memory
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: list names of indices in shared memory
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: temporary file to reduce peak memory
+    args: !SimpleFlagArg
+      name: FILE
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "shm: invalid option -- 'h'\n\nUsage: bwa shm [-d|-l] [-f tmpFile] [idxbase]\n\
+    \nOptions: -d       destroy all indices in shared memory\n         -l       list\
+    \ names of indices in shared memory\n         -f FILE  temporary file to reduce\
+    \ peak memory\n\n"
+  generated_using: &id003
+  - -h
+  docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0
+- !Command
+  command:
+  - spades-bwa
+  - fa2pac
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bwa
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: fa2pac
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: in.fasta
+    description: ''
+  - !Positional
+    optional: true
+    position: 3
+    name: out.prefix
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "fa2pac: invalid option -- '-'\nfa2pac: invalid option -- 'h'\nfa2pac:\
+    \ invalid option -- 'e'\nfa2pac: invalid option -- 'l'\nfa2pac: invalid option\
+    \ -- 'p'\nUsage: bwa fa2pac [-f] <in.fasta> [<out.prefix>]\n"
+  generated_using:
+  - --help
+  docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0
+- !Command
+  command:
+  - spades-bwa
+  - samse
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bwa
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: samse
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: prefix
+    description: ''
+  - !Positional
+    optional: false
+    position: 3
+    name: in.sai
+    description: ''
+  - !Positional
+    optional: false
+    position: 4
+    name: in.fq
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: ''
+    args: !SimpleFlagArg
+      name: RG_line
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: ''
+    args: !SimpleFlagArg
+      name: out.sam
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: ''
+    args: !SimpleFlagArg
+      name: max_occ
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: bwa samse [-n max_occ] [-f out.sam] [-r RG_line] <prefix> <in.sai>\
+    \ <in.fq>\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0
+- !Command
+  command:
+  - spades-bwa
+  - aln
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bwa
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: aln
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: prefix
+    description: ''
+  - !Positional
+    optional: false
+    position: 3
+    name: in.fq
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: 'max #diff (int) or missing prob under 0.02 err rate (float) [0.04]'
+    args: !SimpleFlagArg
+      name: NUM
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: maximum number or fraction of gap opens [1]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    description: maximum number of gap extensions, -1 for disabling long gaps [-1]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: do not put an indel within INT bp towards the ends [5]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: maximum occurrences for extending a long deletion [10]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: seed length [32]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    description: maximum differences in the seed [2]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: maximum entries in the queue [2000000]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: number of threads [1]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -M
+    description: mismatch penalty [3]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    description: gap open penalty [11]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -E
+    description: gap extension penalty [4]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -R
+    description: stop searching when there are >INT equally best hits [30]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    description: quality threshold for read trimming down to 35bp [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: file to write output to instead of stdout
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -B
+    description: length of barcode
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -L
+    description: log-scaled gap penalty for long deletions
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -N
+    description: 'non-iterative mode: search for all n-difference hits (slooow)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    description: the input is in the Illumina 1.3+ FASTQ-like format
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: the input read file is in the BAM format
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - '-0'
+    description: use single-end reads only (effective with -b)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    description: use the 1st read in a pair (effective with -b)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - '-2'
+    description: use the 2nd read in a pair (effective with -b)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -Y
+    description: filter Casava-filtered sequences
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:   bwa aln [options] <prefix> <in.fq>\n\nOptions: -n NUM   \
+    \ max #diff (int) or missing prob under 0.02 err rate (float) [0.04]\n       \
+    \  -o INT    maximum number or fraction of gap opens [1]\n         -e INT    maximum\
+    \ number of gap extensions, -1 for disabling long gaps [-1]\n         -i INT \
+    \   do not put an indel within INT bp towards the ends [5]\n         -d INT  \
+    \  maximum occurrences for extending a long deletion [10]\n         -l INT   \
+    \ seed length [32]\n         -k INT    maximum differences in the seed [2]\n \
+    \        -m INT    maximum entries in the queue [2000000]\n         -t INT   \
+    \ number of threads [1]\n         -M INT    mismatch penalty [3]\n         -O\
+    \ INT    gap open penalty [11]\n         -E INT    gap extension penalty [4]\n\
+    \         -R INT    stop searching when there are >INT equally best hits [30]\n\
+    \         -q INT    quality threshold for read trimming down to 35bp [0]\n   \
+    \      -f FILE   file to write output to instead of stdout\n         -B INT  \
+    \  length of barcode\n         -L        log-scaled gap penalty for long deletions\n\
+    \         -N        non-iterative mode: search for all n-difference hits (slooow)\n\
+    \         -I        the input is in the Illumina 1.3+ FASTQ-like format\n    \
+    \     -b        the input read file is in the BAM format\n         -0        use\
+    \ single-end reads only (effective with -b)\n         -1        use the 1st read\
+    \ in a pair (effective with -b)\n         -2        use the 2nd read in a pair\
+    \ (effective with -b)\n         -Y        filter Casava-filtered sequences\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0
+- !Command
+  command:
+  - spades-bwa
+  - fastmap
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bwa
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: fastmap
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: idxbase
+    description: ''
+  - !Positional
+    optional: false
+    position: 3
+    name: in.fq
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: min SMEM length to output [17]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    description: max interval size to find coordiantes [20]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: min SMEM interval size [1]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -L
+    description: max MEM length [2147483647]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    description: stop if MEM is longer than -l with a size less than INT [0]
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:   bwa fastmap [options] <idxbase> <in.fq>\n\nOptions: -l INT\
+    \    min SMEM length to output [17]\n         -w INT    max interval size to find\
+    \ coordiantes [20]\n         -i INT    min SMEM interval size [1]\n         -L\
+    \ INT    max MEM length [2147483647]\n         -I INT    stop if MEM is longer\
+    \ than -l with a size less than INT [0]\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0
+- !Command
+  command:
+  - spades-bwa
+  - bwasw
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bwa
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: bwasw
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: target.prefix
+    description: ''
+  - !Positional
+    optional: false
+    position: 3
+    name: query.fa
+    description: ''
+  - !Positional
+    optional: true
+    position: 4
+    name: query2.fa
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: score for a match [1]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: mismatch penalty [3]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    description: gap open penalty [5]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: gap extension penalty [2]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    description: band width [50]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: mask level [0.50]
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: number of threads [1]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: file to output results to instead of stdout
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -H
+    description: in SAM output, use hard clipping instead of soft clipping
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -C
+    description: copy FASTA/Q comment to SAM output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -M
+    description: mark multi-part alignments as secondary
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    description: skip Smith-Waterman read pairing
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    description: ignore pairs with insert >=INT for inferring the size distr [20000]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    description: score threshold divided by a [30]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: coefficient of length-threshold adjustment [5.5]
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -z
+    description: Z-best [1]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: maximum seeding interval size [3]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -N
+    description: '# seeds to trigger rev aln; 2*INT is also the chaining threshold
+      [5]'
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -G
+    description: maximum gap size during chaining [10000]
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:   bwa bwasw [options] <target.prefix> <query.fa> [query2.fa]\n\
+    \nOptions: -a INT   score for a match [1]\n         -b INT   mismatch penalty\
+    \ [3]\n         -q INT   gap open penalty [5]\n         -r INT   gap extension\
+    \ penalty [2]\n         -w INT   band width [50]\n         -m FLOAT mask level\
+    \ [0.50]\n\n         -t INT   number of threads [1]\n         -f FILE  file to\
+    \ output results to instead of stdout\n         -H       in SAM output, use hard\
+    \ clipping instead of soft clipping\n         -C       copy FASTA/Q comment to\
+    \ SAM output\n         -M       mark multi-part alignments as secondary\n    \
+    \     -S       skip Smith-Waterman read pairing\n         -I INT   ignore pairs\
+    \ with insert >=INT for inferring the size distr [20000]\n\n         -T INT  \
+    \ score threshold divided by a [30]\n         -c FLOAT coefficient of length-threshold\
+    \ adjustment [5.5]\n         -z INT   Z-best [1]\n         -s INT   maximum seeding\
+    \ interval size [3]\n         -N INT   # seeds to trigger rev aln; 2*INT is also\
+    \ the chaining threshold [5]\n         -G INT   maximum gap size during chaining\
+    \ [10000]\n\nNote: For long Illumina, 454 and Sanger reads, assembly contigs,\
+    \ fosmids and\n      BACs, the default setting usually works well. For the current\
+    \ PacBio\n      reads (end of 2010), '-b5 -q2 -r1 -z10' is recommended. One may\
+    \ also\n      increase '-z' for better sensitivity.\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0
+- !Command
+  command:
+  - spades-bwa
+  - bwtupdate
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bwa
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: bwtupdate
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: the.bwt
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: bwa bwtupdate <the.bwt>\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0
+- !Command
+  command:
+  - spades-bwa
+  - mem
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bwa
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: mem
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: idxbase
+    description: ''
+  - !Positional
+    optional: false
+    position: 3
+    name: in1.fq
+    description: ''
+  - !Positional
+    optional: true
+    position: 4
+    name: in2.fq
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: number of threads [1]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    description: minimum seed length [19]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    description: band width for banded alignment [100]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: off-diagonal X-dropoff [100]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: look for internal seeds inside a seed longer than {-k} * FLOAT [1.5]
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -y
+    description: seed occurrence for the 3rd round seeding [20]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: skip seeds with more than INT occurrences [500]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -D
+    description: drop chains shorter than FLOAT fraction of the longest overlapping
+      chain [0.50]
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -W
+    description: discard a chain if seeded bases shorter than INT [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: perform at most INT rounds of mate rescues for each read [50]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    description: skip mate rescue
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -P
+    description: skip pairing; mate rescue performed unless -S also in use
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -A
+    description: score for a sequence match, which scales options -TdBOELU unless
+      overridden [1]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -B
+    description: penalty for a mismatch [4]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    description: gap open penalties for deletions and insertions [6,6]
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+      separator: ','
+  - !Flag
+    optional: true
+    synonyms:
+    - -E
+    description: gap extension penalty; a gap of size k cost '{-O} + {-E}*k' [1,1]
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+      separator: ','
+  - !Flag
+    optional: true
+    synonyms:
+    - -L
+    description: penalty for 5'- and 3'-end clipping [5,5]
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+      separator: ','
+  - !Flag
+    optional: true
+    synonyms:
+    - -U
+    description: penalty for an unpaired read pair [17]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    description: "read type. Setting -x changes multiple parameters unless overridden\
+      \ [null]\npacbio: -k17 -W40 -r10 -A1 -B1 -O1 -E1 -L0  (PacBio reads to ref)\n\
+      ont2d: -k14 -W20 -r10 -A1 -B1 -O1 -E1 -L0  (Oxford Nanopore 2D-reads to ref)\n\
+      intractg: -B9 -O16 -L5  (intra-species contigs to ref)"
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: smart pairing (ignoring in2.fq)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -R
+    description: read group header line such as '@RG\tID:foo\tSM:bar' [null]
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -H
+    description: /FILE   insert STR to header if it starts with @; or insert lines
+      in FILE [null]
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: sam file to output results to [stdout]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    description: treat ALT contigs as part of the primary assembly (i.e. ignore <idxbase>.alt
+      file)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - '-5'
+    description: for split alignment, take the alignment with the smallest coordiate
+      as primary
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -K
+    description: process INT input bases in each batch regardless of nThreads (for
+      reproducibility) []
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    description: 'verbosity level: 1=error, 2=warning, 3=message, 4+=debugging [3]'
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    description: minimum score to output [30]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: if there are <INT hits with score >80% of the max score, output all
+      in XA [5,200]
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+      separator: ','
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: output all alignments for SE or unpaired PE
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -C
+    description: append FASTA/FASTQ comment to SAM output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -V
+    description: output the reference FASTA header in the XR tag
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -Y
+    description: use soft clipping for supplementary alignments
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -M
+    description: mark shorter split hits as secondary
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    description: "specify the mean, standard deviation (10% of the mean if absent),\
+      \ max\n(4 sigma from the mean if absent) and min of the insert size distribution.\n\
+      FR orientation only. [inferred]"
+    args: !OptionalFlagArg
+      names:
+      - FLOAT
+      - FLOAT
+      - INT
+      - INT
+      separator: ','
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: bwa mem [options] <idxbase> <in1.fq> [in2.fq]\n\nAlgorithm\
+    \ options:\n\n       -t INT        number of threads [1]\n       -k INT      \
+    \  minimum seed length [19]\n       -w INT        band width for banded alignment\
+    \ [100]\n       -d INT        off-diagonal X-dropoff [100]\n       -r FLOAT  \
+    \    look for internal seeds inside a seed longer than {-k} * FLOAT [1.5]\n  \
+    \     -y INT        seed occurrence for the 3rd round seeding [20]\n       -c\
+    \ INT        skip seeds with more than INT occurrences [500]\n       -D FLOAT\
+    \      drop chains shorter than FLOAT fraction of the longest overlapping chain\
+    \ [0.50]\n       -W INT        discard a chain if seeded bases shorter than INT\
+    \ [0]\n       -m INT        perform at most INT rounds of mate rescues for each\
+    \ read [50]\n       -S            skip mate rescue\n       -P            skip\
+    \ pairing; mate rescue performed unless -S also in use\n\nScoring options:\n\n\
+    \       -A INT        score for a sequence match, which scales options -TdBOELU\
+    \ unless overridden [1]\n       -B INT        penalty for a mismatch [4]\n   \
+    \    -O INT[,INT]  gap open penalties for deletions and insertions [6,6]\n   \
+    \    -E INT[,INT]  gap extension penalty; a gap of size k cost '{-O} + {-E}*k'\
+    \ [1,1]\n       -L INT[,INT]  penalty for 5'- and 3'-end clipping [5,5]\n    \
+    \   -U INT        penalty for an unpaired read pair [17]\n\n       -x STR    \
+    \    read type. Setting -x changes multiple parameters unless overridden [null]\n\
+    \                     pacbio: -k17 -W40 -r10 -A1 -B1 -O1 -E1 -L0  (PacBio reads\
+    \ to ref)\n                     ont2d: -k14 -W20 -r10 -A1 -B1 -O1 -E1 -L0  (Oxford\
+    \ Nanopore 2D-reads to ref)\n                     intractg: -B9 -O16 -L5  (intra-species\
+    \ contigs to ref)\n\nInput/output options:\n\n       -p            smart pairing\
+    \ (ignoring in2.fq)\n       -R STR        read group header line such as '@RG\\\
+    tID:foo\\tSM:bar' [null]\n       -H STR/FILE   insert STR to header if it starts\
+    \ with @; or insert lines in FILE [null]\n       -o FILE       sam file to output\
+    \ results to [stdout]\n       -j            treat ALT contigs as part of the primary\
+    \ assembly (i.e. ignore <idxbase>.alt file)\n       -5            for split alignment,\
+    \ take the alignment with the smallest coordiate as primary\n       -K INT   \
+    \     process INT input bases in each batch regardless of nThreads (for reproducibility)\
+    \ []\n\n       -v INT        verbosity level: 1=error, 2=warning, 3=message, 4+=debugging\
+    \ [3]\n       -T INT        minimum score to output [30]\n       -h INT[,INT]\
+    \  if there are <INT hits with score >80% of the max score, output all in XA [5,200]\n\
+    \       -a            output all alignments for SE or unpaired PE\n       -C \
+    \           append FASTA/FASTQ comment to SAM output\n       -V            output\
+    \ the reference FASTA header in the XR tag\n       -Y            use soft clipping\
+    \ for supplementary alignments\n       -M            mark shorter split hits as\
+    \ secondary\n\n       -I FLOAT[,FLOAT[,INT[,INT]]]\n                     specify\
+    \ the mean, standard deviation (10% of the mean if absent), max\n            \
+    \         (4 sigma from the mean if absent) and min of the insert size distribution.\n\
+    \                     FR orientation only. [inferred]\n\nNote: Please read the\
+    \ man page for detailed description of the command line and options.\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0
+- !Command
+  command:
+  - spades-bwa
+  - bwt2sa
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bwa
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: bwt2sa
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: in.bwt
+    description: ''
+  - !Positional
+    optional: false
+    position: 3
+    name: out.sa
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: ''
+    args: !SimpleFlagArg
+      name: '32'
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: bwa bwt2sa [-i 32] <in.bwt> <out.sa>\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nProgram: bwa (alignment via Burrows-Wheeler transformation)\nVersion:\
+  \ 0.7.16a-r1181\nContact: Heng Li <lh3@sanger.ac.uk>\n\nUsage:   bwa <command> [options]\n\
+  \nCommand: index         index sequences in the FASTA format\n         mem     \
+  \      BWA-MEM algorithm\n         fastmap       identify super-maximal exact matches\n\
+  \         pemerge       merge overlapping paired ends (EXPERIMENTAL)\n         aln\
+  \           gapped/ungapped alignment\n         samse         generate alignment\
+  \ (single ended)\n         sampe         generate alignment (paired ended)\n   \
+  \      bwasw         BWA-SW for long queries\n\n         shm           manage indices\
+  \ in shared memory\n         fa2pac        convert FASTA to PAC format\n       \
+  \  pac2bwt       generate BWT from PAC\n         bwtupdate     update .bwt to the\
+  \ new format\n         bwt2sa        generate SA from BWT and Occ\n\nNote: To use\
+  \ BWA, you need to first index the genome with `bwa index'.\n      There are three\
+  \ alignment algorithms in BWA: `mem', `bwasw', and\n      `aln/samse/sampe'. If\
+  \ you are not sure which to use, try `bwa mem'\n      first. Please `man ./bwa.1'\
+  \ for the manual.\n\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0

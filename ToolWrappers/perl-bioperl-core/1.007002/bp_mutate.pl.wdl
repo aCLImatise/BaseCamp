@@ -18,6 +18,9 @@ task BpMutatepl {
       ~{if (format) then "--format" else ""} \
       ~{if (input_file) then "--input" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     percent: "mutagenized"
     number: "Number of mutant sequences created"

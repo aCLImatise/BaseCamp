@@ -1,6 +1,11 @@
 class: CommandLineTool
 id: forge.cwl
 inputs:
+- id: in_boost
+  doc: (file of ID <int>)
+  type: File?
+  inputBinding:
+    prefix: -boost
 - id: in_ann
   doc: ''
   type: string
@@ -15,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - forge

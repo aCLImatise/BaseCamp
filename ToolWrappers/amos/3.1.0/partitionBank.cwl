@@ -3,7 +3,7 @@ id: partitionBank.cwl
 inputs:
 - id: in_b
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in_partition_bank
@@ -13,7 +13,7 @@ inputs:
     position: 0
 - id: in_an_k
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 1
 - id: in_bank_name
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - partitionBank

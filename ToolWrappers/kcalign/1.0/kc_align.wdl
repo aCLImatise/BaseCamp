@@ -22,6 +22,9 @@ task Kcalign {
       ~{if (parallel) then "--parallel" else ""} \
       ~{if defined(table) then ("--table " +  '"' + table + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "Reference sequence"
     sequences: "Other sequences to align"

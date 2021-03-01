@@ -4,37 +4,37 @@ inputs:
 - id: in_input
   doc: "VCF file containing variants to decompose. Use '-' to read\nfrom standard\
     \ input"
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: output VCF file name. Use '-' to write to standard output
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_template
   doc: SDF of the reference genome the variants are called
-  type: string
+  type: string?
   inputBinding:
     prefix: --template
 - id: in_break_indels
   doc: set, peel as many SNPs off an indel as possible
-  type: string
+  type: string?
   inputBinding:
     prefix: --break-indels
 - id: in_break_mnps
   doc: if set, break MNPs into individual SNPs
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --break-mnps
 - id: in_no_gzip
   doc: do not gzip the output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-gzip
 - id: in_no_header
   doc: prevent VCF header from being written
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-header
 - id: in_against
@@ -48,9 +48,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: output VCF file name. Use '-' to write to standard output
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rtg

@@ -14,6 +14,9 @@ task PubmlstDownload {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(base_url) then ("--base-url " +  '"' + base_url + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     scheme_name: "scheme name"
     scheme_id: "scheme id"

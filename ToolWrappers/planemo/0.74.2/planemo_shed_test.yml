@@ -1,0 +1,378 @@
+!Command
+command:
+- planemo
+- shed_test
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Galaxy.
+  description: --galaxy_email TEXT             E-mail address to use when launching
+    single-
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --recursive
+  description: "Recursively perform command for nested\nrepository directories."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fail_fast
+  description: "If multiple repositories are specified and\nan error occurs stop immediately\
+    \ instead of\nprocessing remaining repositories."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --owner
+  description: Tool Shed repository owner (username).
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --name
+  description: "Tool Shed repository name (defaults to the\ninferred tool directory\
+    \ name)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --shed_email
+  description: "E-mail for Tool Shed auth (required unless\nshed_key is specified)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --shed_key
+  description: "API key for Tool Shed access. An API key is\nrequired unless e-mail\
+    \ and password is\nspecified. This key can be specified with\neither --shed_key\
+    \ or --shed_key_from_env."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --shed_key_from_env
+  description: "Environment variable to read API key for\nTool Shed access from."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --shed_password
+  description: "Password for Tool Shed auth (required unless\nshed_key is specified)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --shed_target
+  description: "Tool Shed to target (this can be 'toolshed',\n'testtoolshed', 'local'\
+    \ (alias for\nhttp://localhost:9009/), an arbitrary url or\nmappings defined ~/.planemo.yml."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --galaxy_root
+  description: "Root of development galaxy directory to\nexecute command with."
+  args: !SimpleFlagArg
+    name: DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - --galaxy_python_version
+  description: "[3|3.6|3.7|3.8|3.9]\nPython version to start Galaxy under"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --extra_tools
+  description: "Extra tool sources to include in Galaxy's\ntool panel (file or directory).\
+    \ These will\nnot be linted/tested/etc... but they will be\navailable to workflows\
+    \ and for interactive\nuse."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --install_galaxy
+  description: "Download and configure a disposable copy of\nGalaxy from github."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --galaxy_branch
+  description: "Branch of Galaxy to target (defaults to\nmaster) if a Galaxy root\
+    \ isn't specified."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --galaxy_source
+  description: "Git source of Galaxy to target (defaults to\nthe official galaxyproject\
+    \ github source if\na Galaxy root isn't specified."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_venv
+  description: "Do not create or source a virtualenv\nenvironment for Galaxy, this\
+    \ should be used\nto preserve an externally configured virtual\nenvironment or\
+    \ conda environment."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_cache_galaxy
+  description: "Skip caching of Galaxy source and\ndependencies obtained with --install_galaxy.\n\
+    Not caching this results in faster downloads\n(no git) - so is better on throw\
+    \ away\ninstances such with TravisCI."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_cleanup
+  description: Do not cleanup temp files created for and by
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --docker
+  - --no_docker
+  description: Run Galaxy tools in Docker if enabled.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --docker_cmd
+  description: "Command used to launch docker (defaults to\ndocker)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --docker_sudo
+  - --no_docker_sudo
+  description: Flag to use sudo when running docker.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --docker_host
+  description: "Docker host to target when executing docker\ncommands (defaults to\
+    \ localhost)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --docker_sudo_cmd
+  description: "sudo command to use when --docker_sudo is\nenabled (defaults to sudo)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --mulled_containers
+  - --biocontainers
+  description: "Test tools against mulled containers (forces\n--docker)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --job_config_file
+  description: Job configuration file for Galaxy to target.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --tool_dependency_dir
+  description: Tool dependency dir for Galaxy to target.
+  args: !SimpleFlagArg
+    name: DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - --update_test_data
+  description: "Update test-data directory with job outputs\n(normally written to\
+    \ directory\n--job_output_files if specified.)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --paste_test_data_paths
+  - --no_paste_test_data_paths
+  description: "By default Planemo will use or not use\nGalaxy's path paste option\
+    \ to load test data\ninto a history based on the engine type it\nis targeting.\
+    \ This can override the logic to\nexplicitly enable or disable path pasting."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --test_output
+  description: "Output test report (HTML - for humans)\ndefaults to tool_test_output.html."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --test_output_text
+  description: "Output test report (Basic text - for display\nin CI)"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --test_output_markdown
+  description: "Output test report (Markdown style - for\nhumans & computers)"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --test_output_xunit
+  description: Output test report (xunit style - for CI
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --test_output_json
+  description: "Output test report (planemo json) defaults\nto tool_test_output.json."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --job_output_files
+  description: Write job outputs to specified directory.
+  args: !SimpleFlagArg
+    name: DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - --summary
+  description: "[none|minimal|compact]\nSummary style printed to planemo's standard\n\
+    output (see output reports for more complete\nsummary). Set to 'none' to disable\n\
+    completely."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_dependencies
+  description: "Do not install shed dependencies as part of\nrepository installation."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: planemo shed_test [OPTIONS] PROJECT\n\n  Run tests of published\
+  \ shed artifacts.\n\n  This command will start a Galaxy instance configured to target\
+  \ the\n  specified shed, find published artifacts (tools and dependencies)\n  corresponding\
+  \ to command-line arguments and ``.shed.yml`` file(s), install\n  these artifacts,\
+  \ and run the tool tests for these commands.\n\n  This command requires the target\
+  \ to be version 15.07 or newer.\n\nOptions:\n  -r, --recursive                 Recursively\
+  \ perform command for nested\n                                  repository directories.\n\
+  \n  --fail_fast                     If multiple repositories are specified and\n\
+  \                                  an error occurs stop immediately instead of\n\
+  \                                  processing remaining repositories.\n\n  --owner\
+  \ TEXT                    Tool Shed repository owner (username).\n  --name TEXT\
+  \                     Tool Shed repository name (defaults to the\n             \
+  \                     inferred tool directory name).\n\n  --shed_email TEXT    \
+  \           E-mail for Tool Shed auth (required unless\n                       \
+  \           shed_key is specified).\n\n  --shed_key TEXT                 API key\
+  \ for Tool Shed access. An API key is\n                                  required\
+  \ unless e-mail and password is\n                                  specified. This\
+  \ key can be specified with\n                                  either --shed_key\
+  \ or --shed_key_from_env.\n\n  --shed_key_from_env TEXT        Environment variable\
+  \ to read API key for\n                                  Tool Shed access from.\n\
+  \n  --shed_password TEXT            Password for Tool Shed auth (required unless\n\
+  \                                  shed_key is specified).\n\n  -t, --shed_target\
+  \ TEXT          Tool Shed to target (this can be 'toolshed',\n                 \
+  \                 'testtoolshed', 'local' (alias for\n                         \
+  \         http://localhost:9009/), an arbitrary url or\n                       \
+  \           mappings defined ~/.planemo.yml.\n\n  --galaxy_root DIRECTORY      \
+  \   Root of development galaxy directory to\n                                  execute\
+  \ command with.\n\n  --galaxy_python_version [3|3.6|3.7|3.8|3.9]\n             \
+  \                     Python version to start Galaxy under\n  --extra_tools PATH\
+  \              Extra tool sources to include in Galaxy's\n                     \
+  \             tool panel (file or directory). These will\n                     \
+  \             not be linted/tested/etc... but they will be\n                   \
+  \               available to workflows and for interactive\n                   \
+  \               use.\n\n  --install_galaxy                Download and configure\
+  \ a disposable copy of\n                                  Galaxy from github.\n\n\
+  \  --galaxy_branch TEXT            Branch of Galaxy to target (defaults to\n   \
+  \                               master) if a Galaxy root isn't specified.\n\n  --galaxy_source\
+  \ TEXT            Git source of Galaxy to target (defaults to\n                \
+  \                  the official galaxyproject github source if\n               \
+  \                   a Galaxy root isn't specified.\n\n  --skip_venv            \
+  \         Do not create or source a virtualenv\n                               \
+  \   environment for Galaxy, this should be used\n                              \
+  \    to preserve an externally configured virtual\n                            \
+  \      environment or conda environment.\n\n  --no_cache_galaxy               Skip\
+  \ caching of Galaxy source and\n                                  dependencies obtained\
+  \ with --install_galaxy.\n                                  Not caching this results\
+  \ in faster downloads\n                                  (no git) - so is better\
+  \ on throw away\n                                  instances such with TravisCI.\n\
+  \n  --no_cleanup                    Do not cleanup temp files created for and by\n\
+  \                                  Galaxy.\n\n  --galaxy_email TEXT            \
+  \ E-mail address to use when launching single-\n                               \
+  \   user Galaxy server.\n\n  --docker / --no_docker          Run Galaxy tools in\
+  \ Docker if enabled.\n  --docker_cmd TEXT               Command used to launch docker\
+  \ (defaults to\n                                  docker).\n\n  --docker_sudo /\
+  \ --no_docker_sudo\n                                  Flag to use sudo when running\
+  \ docker.\n  --docker_host TEXT              Docker host to target when executing\
+  \ docker\n                                  commands (defaults to localhost).\n\n\
+  \  --docker_sudo_cmd TEXT          sudo command to use when --docker_sudo is\n \
+  \                                 enabled (defaults to sudo).\n\n  --mulled_containers,\
+  \ --biocontainers\n                                  Test tools against mulled containers\
+  \ (forces\n                                  --docker).\n\n  --job_config_file FILE\
+  \          Job configuration file for Galaxy to target.\n  --tool_dependency_dir\
+  \ DIRECTORY\n                                  Tool dependency dir for Galaxy to\
+  \ target.\n  --update_test_data              Update test-data directory with job\
+  \ outputs\n                                  (normally written to directory\n  \
+  \                                --job_output_files if specified.)\n\n  --paste_test_data_paths\
+  \ / --no_paste_test_data_paths\n                                  By default Planemo\
+  \ will use or not use\n                                  Galaxy's path paste option\
+  \ to load test data\n                                  into a history based on the\
+  \ engine type it\n                                  is targeting. This can override\
+  \ the logic to\n                                  explicitly enable or disable path\
+  \ pasting.\n\n  --test_output PATH              Output test report (HTML - for humans)\n\
+  \                                  defaults to tool_test_output.html.\n\n  --test_output_text\
+  \ PATH         Output test report (Basic text - for display\n                  \
+  \                in CI)\n\n  --test_output_markdown PATH     Output test report\
+  \ (Markdown style - for\n                                  humans & computers)\n\
+  \n  --test_output_xunit PATH        Output test report (xunit style - for CI\n \
+  \                                 systems\n\n  --test_output_junit PATH        Output\
+  \ test report (jUnit style - for CI\n                                  systems\n\
+  \n  --test_output_allure DIRECTORY  Output test allure2 framework resutls\n  --test_output_json\
+  \ PATH         Output test report (planemo json) defaults\n                    \
+  \              to tool_test_output.json.\n\n  --job_output_files DIRECTORY    Write\
+  \ job outputs to specified directory.\n  --summary [none|minimal|compact]\n    \
+  \                              Summary style printed to planemo's standard\n   \
+  \                               output (see output reports for more complete\n \
+  \                                 summary). Set to 'none' to disable\n         \
+  \                         completely.\n\n  --skip_dependencies             Do not\
+  \ install shed dependencies as part of\n                                  repository\
+  \ installation.\n\n  --help                          Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/planemo:0.74.2--py_0

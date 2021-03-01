@@ -14,6 +14,9 @@ task ChainSplit {
       ~{if (split_query_default) then "-q" else ""} \
       ~{if defined(lump) then ("-lump " +  '"' + lump + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     split_query_default: "- Split on query (default is on target)"
     lump: "Lump together so have only N split files."

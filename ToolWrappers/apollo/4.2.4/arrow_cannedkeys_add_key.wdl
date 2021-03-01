@@ -10,6 +10,9 @@ task ArrowCannedkeysAddKey {
       ~{key} \
       ~{if defined(metadata) then ("--metadata " +  '"' + metadata + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metadata: "Optional metadata"
     key: ""

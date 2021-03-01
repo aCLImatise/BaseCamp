@@ -4,6 +4,9 @@ task Neighbor {
   command <<<
     neighbor
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -8,6 +8,9 @@ task Vcfdistance {
     vcfdistance \
       ~{custom_tag_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     custom_tag_name: ""
   }

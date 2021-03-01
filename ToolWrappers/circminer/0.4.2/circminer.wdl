@@ -50,6 +50,9 @@ task Circminer {
       ~{if (verbosity) then "--verbosity" else ""} \
       ~{if (scan_lev) then "--scan-lev" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index: ":            Indicates the indexing stage."
     compact_index: ":    Use this option only while building the index to enable compact version of the index."

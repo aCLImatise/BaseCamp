@@ -12,6 +12,9 @@ task Gff3sortpl {
       ~{if defined(chr_order) then ("--chr_order " +  '"' + chr_order + '"') else ""} \
       ~{if defined(extract_fast_a) then ("--extract_FASTA " +  '"' + extract_fast_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     precise: "in precise mode, about 2X~3X slower than the default mode."
     chr_order: "how the chromosome IDs should be sorted. Acceptable"

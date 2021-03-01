@@ -4,12 +4,12 @@ inputs:
 - id: in_seq_coverage
   doc: "contains the ID and coverage separated by space or\ntab. Used to adjust the\
     \ sequence abundance"
-  type: string
+  type: string?
   inputBinding:
     prefix: --seqCoverage
 - id: in_identity
   doc: "the minimum protein identity, default is 0, range\n[0-100]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --identity
 - id: in_frame_bot_alignment_file_or_dir
@@ -36,6 +36,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_out_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - FrameBot

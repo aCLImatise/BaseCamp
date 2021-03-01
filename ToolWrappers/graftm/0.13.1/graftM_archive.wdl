@@ -20,6 +20,9 @@ task GraftMArchive {
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create a new GraftM package archive"
     extract: "Extract a archived GraftM package into a regular one"

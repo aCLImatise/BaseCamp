@@ -2,36 +2,150 @@
 command:
 - cover
 positional: []
-named: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - -info
+  description: '- show documentation'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - -version
+  description: '- show version'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -silent
+  description: "- don't print informational messages (default off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -summary
+  description: '- give summary report                (default on)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -report
+  description: '- report format                      (default html)'
+  args: !SimpleFlagArg
+    name: report_format
+- !Flag
+  optional: true
+  synonyms:
+  - -outputdir
+  description: '- directory for output               (default given db)'
+  args: !SimpleFlagArg
+    name: dir
+- !Flag
+  optional: true
+  synonyms:
+  - -launch
+  description: '- launch report in viewer (if avail) (default off)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -select
+  description: '- only report on the file            (default all)'
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -ignore
+  description: "- don't report on the file           (default none)"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -select_re
+  description: '- append to REs of files to select   (default none)'
+  args: !SimpleFlagArg
+    name: RE
+- !Flag
+  optional: true
+  synonyms:
+  - -ignore_re
+  description: '- append to REs of files to ignore   (default none)'
+  args: !SimpleFlagArg
+    name: RE
+- !Flag
+  optional: true
+  synonyms:
+  - -write
+  description: '[db]           - write the merged database          (default off)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -delete
+  description: '- drop database(s)                   (default off)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dump_db
+  description: '- dump database(s) (for debugging)   (default off)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -coverage
+  description: '- report on criterion  (default all available)'
+  args: !SimpleFlagArg
+    name: criterion
+- !Flag
+  optional: true
+  synonyms:
+  - -test
+  description: '- drop database(s) and run make test (default off)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gcov
+  description: '- run gcov to cover XS code     (default on if using gcc)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -make
+  description: "- use the given 'make' program for 'make test'"
+  args: !SimpleFlagArg
+    name: make_prog
+- !Flag
+  optional: true
+  synonyms:
+  - -add_uncoverable_point
+  description: string
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -delete_uncoverable_point
+  - -clean_uncoverable_points
+  - -uncoverable_file
+  description: file
+  args: !SimpleFlagArg
+    name: string
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "- show help\n-i -info              - show documentation\n-v -version\
-    \           - show version\n-silent               - don't print informational\
-    \ messages (default off)\n-summary              - give summary report        \
-    \        (default on)\n-report report_format - report format                 \
-    \     (default html)\n-outputdir dir        - directory for output           \
-    \    (default given db)\n-launch               - launch report in viewer (if avail)\
-    \ (default off)\n-select filename      - only report on the file            (default\
-    \ all)\n-ignore filename      - don't report on the file           (default none)\n\
-    -select_re RE         - append to REs of files to select   (default none)\n-ignore_re\
-    \ RE         - append to REs of files to ignore   (default none)\n-write [db]\
-    \           - write the merged database          (default off)\n-delete      \
-    \         - drop database(s)                   (default off)\n-dump_db       \
-    \       - dump database(s) (for debugging)   (default off)\n-coverage criterion\
-    \   - report on criterion  (default all available)\n-test                 - drop\
-    \ database(s) and run make test (default off)\n-gcov                 - run gcov\
-    \ to cover XS code     (default on if using gcc)\n-make make_prog       - use\
-    \ the given 'make' program for 'make test'\n-add_uncoverable_point    string\n\
-    -delete_uncoverable_point string\n-clean_uncoverable_points\n-uncoverable_file\
-    \         file\nother options specific to the report format\ncoverage_database\
-    \ [coverage_database ...]\n"
+  optional: true
   synonyms:
   - -h
   - -help
+  description: '- show help'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage:\n     cover -test\n\n     cover -report html_basic\n\nOptions:\n\
@@ -59,3 +173,4 @@ help_text: "Usage:\n     cover -test\n\n     cover -report html_basic\n\nOptions
   \ [coverage_database ...]\n\n"
 generated_using:
 - --help
+docker_image:

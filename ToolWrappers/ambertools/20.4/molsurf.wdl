@@ -10,6 +10,9 @@ task Molsurf {
       ~{pqr_file} \
       ~{probe_radius}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pqr_file: ""
     probe_radius: ""

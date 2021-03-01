@@ -13,11 +13,11 @@ task SmofStat {
     Boolean? aa_profile
     Boolean? hist
     Boolean? log_hist
-    String input_fasta_default
+    String input_fasta_sequence
   }
   command <<<
     smof stat \
-      ~{input_fasta_default} \
+      ~{input_fasta_sequence} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""} \
       ~{if (by_seq) then "--byseq" else ""} \
       ~{if (case_sensitive) then "--case-sensitive" else ""} \
@@ -30,6 +30,9 @@ task SmofStat {
       ~{if (hist) then "--hist" else ""} \
       ~{if (log_hist) then "--log-hist" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     delimiter: "output delimiter"
     by_seq: "write a line for each sequence"
@@ -42,7 +45,7 @@ task SmofStat {
     aa_profile: "display protein profile"
     hist: "write ascii histogram of sequence lengths"
     log_hist: "write ascii histogram of sequence log2 lengths"
-    input_fasta_default: "input fasta sequence (default = stdin)"
+    input_fasta_sequence: "input fasta sequence (default = stdin)"
   }
   output {
     File out_stdout = stdout()

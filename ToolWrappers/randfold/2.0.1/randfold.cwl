@@ -3,17 +3,17 @@ id: randfold.cwl
 inputs:
 - id: in_mononucleotide_shuffling
   doc: mononucleotide shuffling
-  type: string
+  type: string?
   inputBinding:
     prefix: -s
 - id: in_shuffling
   doc: shuffling
-  type: string
+  type: string?
   inputBinding:
     prefix: -d
 - id: in_chain__shuffling
   doc: chain 1 shuffling
-  type: long
+  type: long?
   inputBinding:
     prefix: -m
 - id: in_method
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - randfold

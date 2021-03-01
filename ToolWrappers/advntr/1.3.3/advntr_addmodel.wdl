@@ -2,38 +2,38 @@ version 1.0
 
 task AdvntrAddmodel {
   input {
-    String? r_slash_reference
-    Int? c_slash_chromosome
-    Int? p_slash_pattern
-    Int? s_slash_start
-    Int? e_slash_end
-    String? g_slash_gene
-    String? a_slash_annotation
-    File? m_slash_models
-    Boolean? h_slash_help
+    String? reference
+    Int? chromosome
+    Int? pattern
+    Int? start
+    Int? end
+    String? gene
+    String? annotation
+    File? models
   }
   command <<<
     advntr addmodel \
-      ~{if defined(r_slash_reference) then ("-r/--reference " +  '"' + r_slash_reference + '"') else ""} \
-      ~{if defined(c_slash_chromosome) then ("-c/--chromosome " +  '"' + c_slash_chromosome + '"') else ""} \
-      ~{if defined(p_slash_pattern) then ("-p/--pattern " +  '"' + p_slash_pattern + '"') else ""} \
-      ~{if defined(s_slash_start) then ("-s/--start " +  '"' + s_slash_start + '"') else ""} \
-      ~{if defined(e_slash_end) then ("-e/--end " +  '"' + e_slash_end + '"') else ""} \
-      ~{if defined(g_slash_gene) then ("-g/--gene " +  '"' + g_slash_gene + '"') else ""} \
-      ~{if defined(a_slash_annotation) then ("-a/--annotation " +  '"' + a_slash_annotation + '"') else ""} \
-      ~{if defined(m_slash_models) then ("-m/--models " +  '"' + m_slash_models + '"') else ""} \
-      ~{if (h_slash_help) then "-h/--help" else ""}
+      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
+      ~{if defined(chromosome) then ("--chromosome " +  '"' + chromosome + '"') else ""} \
+      ~{if defined(pattern) then ("--pattern " +  '"' + pattern + '"') else ""} \
+      ~{if defined(start) then ("--start " +  '"' + start + '"') else ""} \
+      ~{if defined(end) then ("--end " +  '"' + end + '"') else ""} \
+      ~{if defined(gene) then ("--gene " +  '"' + gene + '"') else ""} \
+      ~{if defined(annotation) then ("--annotation " +  '"' + annotation + '"') else ""} \
+      ~{if defined(models) then ("--models " +  '"' + models + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    r_slash_reference: "Reference genome"
-    c_slash_chromosome: "Chromosome (e.g. chr1)"
-    p_slash_pattern: "First repeating pattern of VNTR in forward (5' to 3') direction"
-    s_slash_start: "Start coordinate of VNTR in forward (5' to 3') direction"
-    e_slash_end: "End coordinate of VNTR in forward (5' to 3') direction"
-    g_slash_gene: "Gene name"
-    a_slash_annotation: "Annotation of VNTR region"
-    m_slash_models: "VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]"
-    h_slash_help: "show this help message and exit"
+    reference: "Reference genome"
+    chromosome: "Chromosome (e.g. chr1)"
+    pattern: "First repeating pattern of VNTR in forward (5' to 3') direction"
+    start: "Start coordinate of VNTR in forward (5' to 3') direction"
+    end: "End coordinate of VNTR in forward (5' to 3') direction"
+    gene: "Gene name"
+    annotation: "Annotation of VNTR region"
+    models: "VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]"
   }
   output {
     File out_stdout = stdout()

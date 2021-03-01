@@ -1,15 +1,6 @@
 class: CommandLineTool
 id: mrsfast.cwl
 inputs:
-- id: in_max
-  doc: "$ ./mrsfast --search refgen.fasta --pe --seq1 first-mates.fastq  --seq2\n\
-    second-mates.fastq -e 3 --threads 4\n$  ./mrsfast --search refgen.fasta --pe --seq1\
-    \ first-mates.fastq --seq2\nsecond-mates.fastq --min 100 --max 400 --best -o output\n\
-    Discordant mapping:\n$  ./mrsfast   --search   refgen.fasta   --pe   --discordant-vh\
-    \   --seq\nreads.fastq --min 100 --max 400"
-  type: long
-  inputBinding:
-    prefix: --max
 - id: in_mrs_fast_ultra
   doc: "D\bDE\bES\bSC\bCR\bRI\bIP\bPT\bTI\bIO\bON\bN"
   type: string
@@ -66,7 +57,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_maxdiscordantlength_maximum_length
+- id: in_maxdiscordantlength_maximum_
   doc: "_\bm_\ba_\bx_\b-_\bd_\bi_\bs_\bc_\bo_\br_\bd_\ba_\bn_\bt_\b-_\bl_\be_\bn_\b\
     g_\bt_\bh for maximum length of concordant map-"
   type: string
@@ -147,6 +138,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mrsfast

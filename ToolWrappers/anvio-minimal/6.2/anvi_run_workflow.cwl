@@ -4,7 +4,7 @@ inputs:
 - id: in_workflow
   doc: "You must specify a workflow name. To see a list of\navailable workflows run\
     \ --list-workflows."
-  type: string
+  type: string?
   inputBinding:
     prefix: --workflow
 - id: in_get_default_config
@@ -14,12 +14,12 @@ inputs:
     \ NOTICE: the config file\nis provided with default values only for parameters\n\
     that are set by us in the workflow. The values for the\nrest of the parameters\
     \ are determined by the relevant\nprogram."
-  type: File
+  type: File?
   inputBinding:
     prefix: --get-default-config
 - id: in_list_workflows
   doc: Print a list of available snakemake workflows
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --list-workflows
 - id: in_list_dependencies
@@ -29,31 +29,31 @@ inputs:
     \ According to the rules\nthat need to be run, we will let you know which\nprograms\
     \ are going to be used, so that you can make\nsure you have all of them installed\
     \ and loaded."
-  type: File
+  type: File?
   inputBinding:
     prefix: --list-dependencies
 - id: in_config_file
   doc: A JSON-formatted configuration file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --config-file
 - id: in_dry_run
   doc: "Don't do anything real. Test everything, and stop\nright before wherever the\
     \ developer said 'well, this\nis enough testing', and decided to print out results."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dry-run
 - id: in_skip_dry_run
   doc: "Don't do anything real. Test everything, and stop\nright before wherever the\
     \ developer said 'well, this\nis enough testing', and decided to print out results."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip-dry-run
 - id: in_save_workflow_graph
   doc: "Save a graph representation of the workflow. If you\nare using this flag and\
     \ if your system is unable to\ngenerate such graph outputs, you will hear anvi'o\n\
     complaining (still, totally worth trying)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --save-workflow-graph
 - id: in__additionalparams_additional
@@ -66,7 +66,7 @@ inputs:
     \ available\nplease refer to the snakemake documentation. For\nexample, you could\
     \ use this to set up cluster\nsubmission using --additional-params --cluster 'YOUR-\n\
     CLUSTER-SUBMISSION-CMD'.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -A
 outputs:
@@ -80,7 +80,7 @@ outputs:
     \ NOTICE: the config file\nis provided with default values only for parameters\n\
     that are set by us in the workflow. The values for the\nrest of the parameters\
     \ are determined by the relevant\nprogram."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_get_default_config)
 - id: out_list_dependencies
@@ -90,9 +90,10 @@ outputs:
     \ According to the rules\nthat need to be run, we will let you know which\nprograms\
     \ are going to be used, so that you can make\nsure you have all of them installed\
     \ and loaded."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_list_dependencies)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-run-workflow

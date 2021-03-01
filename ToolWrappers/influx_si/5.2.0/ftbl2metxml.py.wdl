@@ -8,6 +8,9 @@ task Ftbl2metxmlpy {
     ftbl2metxml_py \
       ~{network}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     network: ""
   }

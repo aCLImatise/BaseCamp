@@ -10,6 +10,9 @@ task PseudoreverseDBpy {
       ~{if (inputfasta_input_fasta) then "-i" else ""} \
       ~{if (outputfasta_output_file) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     inputfasta_input_fasta: "input.fasta input fasta file"
     outputfasta_output_file: "output.fasta output file with decoys"

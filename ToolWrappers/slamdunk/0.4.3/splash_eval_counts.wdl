@@ -12,6 +12,9 @@ task SplashEvalcounts {
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     d: ""

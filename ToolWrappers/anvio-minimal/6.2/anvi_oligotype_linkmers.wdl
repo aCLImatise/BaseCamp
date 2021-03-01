@@ -10,6 +10,9 @@ task Anvioligotypelinkmers {
       ~{if defined(input_file) then ("--input-file " +  '"' + input_file + '"') else ""} \
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Output file of `anvi-report-linkmers`."
     output_dir: "Directory path for output files\\n"

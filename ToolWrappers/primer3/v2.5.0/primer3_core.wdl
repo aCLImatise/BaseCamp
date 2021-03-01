@@ -8,6 +8,9 @@ task Primer3Core {
     primer3_core \
       ~{if (format_output) then "--format_output" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format_output: ""
   }

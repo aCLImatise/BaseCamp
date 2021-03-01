@@ -8,6 +8,9 @@ task Embossupdate {
     embossupdate \
       ~{if (outfile) then "-outfile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "outfile    [stdout] EMBOSS update output file"
   }

@@ -34,6 +34,9 @@ task HicstuffDistancelaw {
       ~{if defined(remove_centromeres) then ("--remove-centromeres " +  '"' + remove_centromeres + '"') else ""} \
       ~{if defined(sup) then ("--sup " +  '"' + sup + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     average: "If set, calculate the average of the distance\\nlaw of the different chromosomes/arms in each\\ncondition. If two file given average is\\nmandatory."
     big_arm_only: "Integer. It given will take only the arms bigger\\nthan the value given as argument."

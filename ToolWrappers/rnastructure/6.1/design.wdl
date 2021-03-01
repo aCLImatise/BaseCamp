@@ -30,6 +30,9 @@ task Design {
       ~{if (specify_output_file) then "--output" else ""} \
       ~{if (seed) then "--seed" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "Specify that the sequence is DNA, and DNA parameters are to be used. The\\ndefault is to use RNA parameters."
     preselect: "Specify that use pre-selected sequence segments should be used. The default\\nis that all nucleotides are chosen at random."

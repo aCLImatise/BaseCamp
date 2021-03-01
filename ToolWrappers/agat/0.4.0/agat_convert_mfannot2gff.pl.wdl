@@ -12,6 +12,9 @@ task AgatConvertMfannot2gffpl {
       ~{if defined(m_fan_not) then ("--mfannot " +  '"' + m_fan_not + '"') else ""} \
       ~{if defined(gff) then ("--gff " +  '"' + gff + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     m_fan_not: "The mfannot input file"
     gff: "the gff output file"

@@ -16,6 +16,9 @@ task SingularityPush {
       ~{push} \
       ~{image}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

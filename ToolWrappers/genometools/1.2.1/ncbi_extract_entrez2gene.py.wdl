@@ -16,6 +16,9 @@ task NcbiExtractEntrez2genepy {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene_two_acc_file: "Path of gene2accession.gz file (from\\nftp://ftp.ncbi.nlm.nih.gov/gene/DATA), or a filtered version\\nthereof."
     output_file: "Path of output file. If set to ``-``, print to ``stdout``,\\nand redirect logging messages to ``stderr``."

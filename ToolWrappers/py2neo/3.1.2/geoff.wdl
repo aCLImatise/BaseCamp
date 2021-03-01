@@ -4,6 +4,9 @@ task Geoff {
   command <<<
     geoff
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

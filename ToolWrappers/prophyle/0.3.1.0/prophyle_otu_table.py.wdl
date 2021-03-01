@@ -14,6 +14,9 @@ task ProphyleOtuTablepy {
       ~{if defined(position_read_i) then ("-i " +  '"' + position_read_i + '"') else ""} \
       ~{if defined(log_file) then ("-l " +  '"' + log_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     comma_separated_list: "comma separated list of ranks to build the OTU table for\\n[species,genus,family,phylum,class,order,kingdom]"
     position_taxid_input: "position of the taxid in the input lines [3 (for sam and\\nkraken format)]"

@@ -14,6 +14,9 @@ task TrimFastqByQVWindow {
       ~{fast_a_output} \
       ~{qual_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_file: ""
     zero_six_zero_phred_qual_file: ""

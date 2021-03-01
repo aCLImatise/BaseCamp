@@ -18,13 +18,14 @@ inputs:
     position: 2
 - id: in_pos_two
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     position: 3
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dr-disco

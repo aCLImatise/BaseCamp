@@ -8,6 +8,9 @@ task Vispr {
     vispr \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Print debug info."
   }

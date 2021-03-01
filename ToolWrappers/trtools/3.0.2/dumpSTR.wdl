@@ -112,6 +112,9 @@ task DumpSTR {
       ~{if (die_on_warning) then "--die-on-warning" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf: "Input STR VCF file"
     out: "Prefix for output files"

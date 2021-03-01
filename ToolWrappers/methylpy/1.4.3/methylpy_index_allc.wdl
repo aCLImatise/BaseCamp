@@ -12,6 +12,9 @@ task MethylpyIndexallc {
       ~{if defined(num_procs) then ("--num-procs " +  '"' + num_procs + '"') else ""} \
       ~{if defined(re_index) then ("--reindex " +  '"' + re_index + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all_c_files: "List of allc files to index. (default: None)"
     num_procs: "Number of processors to use (default: 1)"

@@ -4,6 +4,9 @@ task BedItemOverlapCount {
   command <<<
     bedItemOverlapCount
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -20,6 +20,9 @@ task OncogeminiRoh {
       ~{if defined(max_unknowns) then ("--max-unknowns " +  '"' + max_unknowns + '"') else ""} \
       ~{if defined(comma_separated_list) then ("-s " +  '"' + comma_separated_list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_snps: "Minimum number of homozygous snps expected in a run\\n(def. 25)"
     min_total_depth: "The minimum overall sequencing depth requiredfor a SNP\\nto be considered (def = 20)."

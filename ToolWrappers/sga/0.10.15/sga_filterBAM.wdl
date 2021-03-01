@@ -24,6 +24,9 @@ task SgaFilterBAM {
       ~{if defined(max_km_er_depth) then ("--max-kmer-depth " +  '"' + max_km_er_depth + '"') else ""} \
       ~{if (mate_contamination) then "--mate-contamination" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     as_qg: "load an asqg file and filter pairs that are shorter than --max-distance"

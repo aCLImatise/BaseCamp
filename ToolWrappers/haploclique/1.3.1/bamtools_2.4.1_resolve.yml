@@ -4,80 +4,83 @@ command:
 - resolve
 positional:
 - !Positional
-  description: 'General Resolve Options (available in all modes):'
+  optional: false
   position: 0
   name: purposes.
-  optional: false
+  description: 'General Resolve Options (available in all modes):'
 named:
 - !Flag
-  description: the input BAM file(s) [stdin]
+  optional: true
   synonyms:
   - -in
+  description: the input BAM file(s) [stdin]
   args: !SimpleFlagArg
     name: BAM filename
-  optional: true
 - !Flag
-  description: the output BAM file [stdout]
+  optional: true
   synonyms:
   - -out
+  description: the output BAM file [stdout]
   args: !SimpleFlagArg
     name: BAM filename
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -stats
   description: "input/output stats file,\ndepending on selected mode (see below).\n\
     This file is human-readable, storing\nfragment length data generated per read\n\
     group, as well as the options used to\nconfigure the -makeStats mode"
-  synonyms:
-  - -stats
   args: !SimpleFlagArg
     name: STATS filename
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -forceCompression
   description: "if results are sent to stdout\n(like when piping to another tool),\n\
     default behavior is to leave output\nuncompressed.Use this flag to override and\n\
     force compression. This feature is\ndisabled in -makeStats mode."
-  synonyms:
-  - -forceCompression
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -makeStats
   description: "generates a fragment-length\nstats file from the input BAM. Data is\n\
     written to file specified using the -stats\noption. MarkPairs Mode Settings are\n\
     DISABLED."
-  synonyms:
-  - -makeStats
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -markPairs
   description: "generates an output BAM with\nalignments marked with proper-pair status.\n\
     Stats data is read from file specified\nusing the -stats option. MakeStats Mode\n\
     Settings are DISABLED"
-  synonyms:
-  - -markPairs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: combines the -makeStats &
+  optional: true
   synonyms:
   - -twoPass
+  description: combines the -makeStats &
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: minimum map quality. Used in
+  optional: true
   synonyms:
   - -minMQ
+  description: minimum map quality. Used in
   args: !SimpleFlagArg
     name: unsigned short
-  optional: true
 - !Flag
-  description: "confidence interval. Set\nmin/max fragment lengths such that we\n\
-    capture this fraction of pairs"
+  optional: true
   synonyms:
   - -ci
+  description: "confidence interval. Set\nmin/max fragment lengths such that we\n\
+    capture this fraction of pairs"
   args: !SimpleFlagArg
     name: double
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -umt
   description: "unused model threshold. The\nresolve tool considers 8 possible\norientation\
     \ models for pairs. The top 2\nare selected for later use when actually\nmarking\
     \ alignments. This value determines\nthe cutoff for marking a read group as\n\
@@ -86,12 +89,12 @@ named:
     \ is flagged\nas ambiguous. By default, NO alignments\nfrom ambiguous read groups\
     \ will be marked\nas proper pairs. You may override this\nbehavior with the -force\
     \ option in\n-markPairs mode"
-  synonyms:
-  - -umt
   args: !SimpleFlagArg
     name: double
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -force
   description: "forces all read groups to be\nmarked according to their top 2\n'orientation\
     \ models'. When generating\nstats, the 2 (out of 8 possible) models\nwith the\
     \ most observations are chosen as\nthe top models for each read group. If the\n\
@@ -100,20 +103,17 @@ named:
     \ an ambiguous read group, NONE of its\nalignments are marked as proper-pairs.\
     \ By\nsetting this option, a read group's\nambiguity flag will be ignored, and\
     \ all of\nits alignments will be compared to the top\n2 models."
-  synonyms:
-  - -force
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: shows this help text
+  optional: true
   synonyms:
   - --help
   - -h
+  description: shows this help text
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Description: resolves paired-end reads (marking the IsProperPair flag\
@@ -194,3 +194,4 @@ help_text: "Description: resolves paired-end reads (marking the IsProperPair fla
   \     2 models.\n\nHelp:\n  --help, -h                        shows this help text\n"
 generated_using:
 - --help
+docker_image:

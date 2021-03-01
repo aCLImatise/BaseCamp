@@ -18,6 +18,9 @@ task Mobiuspy {
       ~{if defined(an_no_trans) then ("-AnnoTrans " +  '"' + an_no_trans + '"') else ""} \
       ~{if defined(read_thresh) then ("-readThresh " +  '"' + read_thresh + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force_trans: "Force blocks where annotated transcripts start and end"
     an_no_trans: "Flattened SuperTranscript annotation file"

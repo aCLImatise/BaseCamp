@@ -26,6 +26,9 @@ task BpHeterogeneityTestpl {
       ~{if (silent) then "--silent" else ""} \
       ~{if (precision) then "--precision" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample_size: "mutation count"
     mut_non: "mutation count"

@@ -3,65 +3,65 @@ id: modeltest_ng.cwl
 inputs:
 - id: in_datatype
   doc: sets the data type
-  type: string
+  type: string?
   inputBinding:
     prefix: --datatype
 - id: in_input
   doc: sets the input alignment file (FASTA or PHYLIP format, required)
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: pipes the output into a file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_processes
   doc: sets the number of processors to use (shared memory)
-  type: long
+  type: long?
   inputBinding:
     prefix: --processes
 - id: in_partitions
   doc: sets a partitioning scheme
-  type: File
+  type: File?
   inputBinding:
     prefix: --partitions
 - id: in_rng_seed
   doc: sets the seed for the random number generator
-  type: long
+  type: long?
   inputBinding:
     prefix: --rngseed
 - id: in_topology
   doc: sets the starting topology
-  type: string
+  type: string?
   inputBinding:
     prefix: --topology
 - id: in_utree
   doc: sets a user tree
-  type: File
+  type: File?
   inputBinding:
     prefix: --utree
 - id: in_force
   doc: force output overriding
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_disable_checkpoint
   doc: disable checkpoint writing
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --disable-checkpoint
 - id: in_asc_bias
   doc: "[:values]     includes ascertainment bias correction\ncheck modeltest manual\
     \ for more information"
-  type: string
+  type: string?
   inputBinding:
     prefix: --asc-bias
 - id: in_frequencies
   doc: "[ef]                sets the candidate models frequencies\ne: estimated -\
     \ maximum likelihood (DNA) / empirical (AA)\nf: fixed - equal (DNA) / model defined\
     \ (AA)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --frequencies
 - id: in_models
@@ -71,7 +71,7 @@ inputs:
     dna: *JC *HKY *TrN *TPM1 *TPM2 *TPM3\n*TIM1 *TIM2 *TIM3 *TVM *GTR\nprotein: *DAYHOFF\
     \ *LG *DCMUT *JTT *MTREV *WAG *RTREV *CPREV\n*VT *BLOSUM62 *MTMAM *MTART *MTZOA\
     \ *PMB *HIVB *HIVW\n*JTT-DCMUT *FLU *STMTREV LG4M LG4X GTR\n* included by default"
-  type: long
+  type: long?
   inputBinding:
     prefix: --models
 - id: in_schemes
@@ -79,48 +79,48 @@ inputs:
     \ evaluated\n3:   JC/F81, K80/HKY, SYM/GTR\n5:   + TrNef/TrN, TPM1/TPM1uf\n7:\
     \   + TIM1ef/TIM1, TVMef/TVM\n11:  + TPM2/TPM2uf, TPM3/TPM3uf, TIM2ef/TIM2, TIM3ef/TIM3\n\
     203: All possible GTR submatrices"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --schemes
 - id: in_template
   doc: '[tool]                 sets candidate models according to a specified tool'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --template
 - id: in_eps
   doc: sets the model optimization epsilon
-  type: string
+  type: string?
   inputBinding:
     prefix: --eps
 - id: in_to_l
   doc: sets the parameter optimization tolerance
-  type: string
+  type: string?
   inputBinding:
     prefix: --tol
 - id: in_smooth_frequencies
   doc: forces frequencies smoothing
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --smooth-frequencies
 - id: in_gamma_rates
   doc: "[a|g]               sets gamma rates mode\na                  uses the average\
     \ (or mean) per category (default)\nm                  uses the median per category"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gamma-rates
 - id: in_no_compress
   doc: "disables pattern compression\nmodeltest ignores if there are missing states"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-compress
 - id: in_keep_params
   doc: keep branch lengths fixed
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep-params
 - id: in_verbose
   doc: run in verbose mode
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_nt
@@ -209,9 +209,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: pipes the output into a file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - modeltest-ng

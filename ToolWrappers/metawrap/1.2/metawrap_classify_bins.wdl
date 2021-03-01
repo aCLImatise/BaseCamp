@@ -12,6 +12,9 @@ task MetawrapClassifyBins {
       ~{if defined(output_directory) then ("-o " +  '"' + output_directory + '"') else ""} \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     folder_bins_classified: "folder with the bins to be classified (in fasta format)"
     output_directory: "output directory"

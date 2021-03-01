@@ -4,6 +4,9 @@ task Cannolishell {
   command <<<
     cannoli_shell
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -14,6 +14,9 @@ task DivideBampy {
       ~{if defined(out_prefix) then ("--out-prefix " +  '"' + out_prefix + '"') else ""} \
       ~{if (skip_unmap) then "--skip-unmap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Alignment file in BAM format. BAM file should be\\nsorted and indexed."
     subset_num: "Number of small BAM files"

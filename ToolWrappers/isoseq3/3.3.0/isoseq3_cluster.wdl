@@ -48,6 +48,9 @@ task Isoseq3Cluster {
       ~{if (log_file) then "--log-file" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     poa_cov: "INT   Maximum number of CCS reads used for POA consensus. [10]"
     use_qvs: "Use CCS QVs, sets --poa-cov 100."

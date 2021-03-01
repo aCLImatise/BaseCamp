@@ -2,12 +2,12 @@ version 1.0
 
 task Rapsearch {
   input {
-    File? query_file_fasta
+    File? query_file_format
     File? database_file_base
     File? output_file_name
     Int? stream_one_result
     Int? _number_threads
-    Int? report_logevalue_hit
+    Int? report_logevalue_evalue
     Float? evalue_threshold_given
     Float? threshold_bit_score
     Int? threshold_minimal_alignment
@@ -22,12 +22,12 @@ task Rapsearch {
   }
   command <<<
     rapsearch \
-      ~{if defined(query_file_fasta) then ("-q " +  '"' + query_file_fasta + '"') else ""} \
+      ~{if defined(query_file_format) then ("-q " +  '"' + query_file_format + '"') else ""} \
       ~{if defined(database_file_base) then ("-d " +  '"' + database_file_base + '"') else ""} \
       ~{if defined(output_file_name) then ("-o " +  '"' + output_file_name + '"') else ""} \
       ~{if defined(stream_one_result) then ("-u " +  '"' + stream_one_result + '"') else ""} \
       ~{if defined(_number_threads) then ("-z " +  '"' + _number_threads + '"') else ""} \
-      ~{if defined(report_logevalue_hit) then ("-s " +  '"' + report_logevalue_hit + '"') else ""} \
+      ~{if defined(report_logevalue_evalue) then ("-s " +  '"' + report_logevalue_evalue + '"') else ""} \
       ~{if defined(evalue_threshold_given) then ("-e " +  '"' + evalue_threshold_given + '"') else ""} \
       ~{if defined(threshold_bit_score) then ("-i " +  '"' + threshold_bit_score + '"') else ""} \
       ~{if defined(threshold_minimal_alignment) then ("-l " +  '"' + threshold_minimal_alignment + '"') else ""} \
@@ -40,13 +40,16 @@ task Rapsearch {
       ~{if defined(apply_hssp_criterion) then ("-w " +  '"' + apply_hssp_criterion + '"') else ""} \
       ~{if defined(print_hits_xml) then ("-x " +  '"' + print_hits_xml + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    query_file_fasta: ": query file or stdin (FASTA or FASTQ format)"
+    query_file_format: ": query file or stdin (FASTA or FASTQ format)"
     database_file_base: ": database file (**base name only**, with full path)"
     output_file_name: ": output file name"
     stream_one_result: ": stream one result through stdout [1: m8 result, 2: aln result, default: don't stream any result through stdout]"
     _number_threads: ": number of threads [default: 1]"
-    report_logevalue_hit: ": report log10(E-value) or E-value for each hit [t/T: log10(E-value), the default; f/F: E-value]"
+    report_logevalue_evalue: ": report log10(E-value) or E-value for each hit [t/T: log10(E-value), the default; f/F: E-value]"
     evalue_threshold_given: ": E-value threshold, given in the format of log10(E-value), or E-value (when -s is set to f) [default: 1.0/10.0]."
     threshold_bit_score: ": threshold of bit score [default: 0.0]. It is the alternative option to limit the hits to report."
     threshold_minimal_alignment: ": threshold of minimal alignment length [default: 0]"

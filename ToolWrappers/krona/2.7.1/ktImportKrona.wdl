@@ -12,6 +12,9 @@ task KtImportKrona {
       ~{magnitudes} \
       ~{name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     krona_chart: "Krona HTML file created with KronaTools or the Krona Excel\\nTemplate By default, separate datasets will be created for each\\ninput (see [-c])."
     magnitudes: "Optional file listing query IDs with magnitudes, separated by\\ntabs. This can be used to account for read length or contig\\ndepth to obtain a more accurate representation of abundance. By\\ndefault, query sequences without specified magnitudes will be\\nassigned a magnitude of 1. Magnitude files for assemblies in\\nACE format can be created with ktGetContigMagnitudes."

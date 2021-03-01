@@ -22,6 +22,9 @@ task NfcoreSync {
       ~{if defined(auth_token) then ("--auth-token " +  '"' + auth_token + '"') else ""} \
       ~{if (all) then "--all" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     make_template_branch: "Create a TEMPLATE branch if none is found."
     from_branch: "The git branch to use to fetch workflow vars."

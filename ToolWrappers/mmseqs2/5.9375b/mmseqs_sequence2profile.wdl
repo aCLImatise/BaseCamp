@@ -20,6 +20,9 @@ task MmseqsSequence2profile {
       ~{if (sub_mat) then "--sub-mat" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pc_a: "1.000           pseudo count admixture strength"
     pcb: "1.500           pseudo counts: Neff at half of maximum admixture (0.0,infinity)"

@@ -24,6 +24,9 @@ task Anvigetsplitcoverages {
       ~{if (list_collections) then "--list-collections" else ""} \
       ~{if (list_bins) then "--list-bins" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     profile_db: "Anvi'o profile database"
     split_name: "Split name."

@@ -12,6 +12,9 @@ task GenePredFilter {
       ~{if defined(db) then ("-db " +  '"' + db + '"') else ""} \
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "- If specified, then this database is used to\\nget chromosome sizes."
     verbose: "- level >= 2 prints out errors for each problem found."

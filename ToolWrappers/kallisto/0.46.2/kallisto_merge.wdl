@@ -14,6 +14,9 @@ task KallistoMerge {
       ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index: "Filename for the kallisto index to be used for\\npseudoalignment"
     output_dir: "Directory to write output to"

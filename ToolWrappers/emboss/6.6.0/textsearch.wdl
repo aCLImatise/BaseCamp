@@ -22,6 +22,9 @@ task Textsearch {
       ~{if (name) then "-name" else ""} \
       ~{if (description) then "-description" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     case_sensitive: "boolean    [N] Do a case-sensitive search"
     html: "boolean    [N] Format output as an HTML table"

@@ -3,12 +3,12 @@ id: SnpSift_concordance.cwl
 inputs:
 - id: in_only_use_ids
   doc: ': Only use sample IDs in file (format: one sample ID per line).'
-  type: File
+  type: File?
   inputBinding:
     prefix: -s
 - id: in_jar
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -jar
 - id: in_java
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - SnpSift

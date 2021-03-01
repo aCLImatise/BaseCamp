@@ -30,6 +30,9 @@ task TelescopeResume {
       ~{if defined(max_iter) then ("--max_iter " +  '"' + max_iter + '"') else ""} \
       ~{if (use_likelihood) then "--use_likelihood" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Silence (most) output. (default: False)"
     debug: "Print debug messages. (default: False)"

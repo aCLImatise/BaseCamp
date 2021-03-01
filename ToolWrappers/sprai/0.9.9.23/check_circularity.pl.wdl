@@ -8,6 +8,9 @@ task CheckCircularitypl {
     check_circularity_pl \
       ~{check_circu_rarity_do_tpl}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     check_circu_rarity_do_tpl: ""
   }

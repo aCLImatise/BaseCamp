@@ -2,50 +2,49 @@ version 1.0
 
 task Wget {
   input {
-    Boolean? _version_display
-    Boolean? _background_go
-    Boolean? _executecommand_execute
-    File? _outputfilefile_log
-    File? _appendoutputfile_append
-    Boolean? _debug_print
-    Boolean? _quiet_quiet
-    Boolean? _verbose_verbose
+    Boolean? background
+    String? execute
+    File? output_file
+    File? append_output
+    Boolean? debug
+    Boolean? quiet
+    Boolean? verbose
     Boolean? no_verbose
     String? report_speed
-    Boolean? _inputfilefile_download
-    Boolean? _forcehtml_treat
-    Boolean? _baseurl_resolves
+    File? input_file
+    Boolean? force_html
+    File? base
     File? config
     Boolean? no_config
     File? rejected_log
-    Boolean? _triesnumber_set
+    Int? tries
     Boolean? retry_conn_refused
-    File? _outputdocumentfile_write
+    File? output_document
     Boolean? no_clobber
-    Boolean? _continue_resume
+    Boolean? continue
     String? start_pos
     String? progress
     Boolean? show_progress
-    Boolean? _timestamping_reretrieve
+    Boolean? timestamping
     Boolean? no_use_server_timestamps
-    Boolean? _serverresponse_print
+    Boolean? server_response
     Boolean? spider
-    Boolean? _timeoutseconds_set
+    String? timeout
     String? dns_timeout
     String? connect_timeout
     String? read_timeout
-    Boolean? _waitseconds_wait
+    String? wait
     Int? wait_retry
     Boolean? random_wait
     Boolean? no_proxy
-    Boolean? _quotanumber_set
+    Int? quota
     String? bind_address
     String? limit_rate
     Boolean? no_dns_cache
     File? restrict_file_names
     Boolean? ignore_case
-    Boolean? four
-    Boolean? six
+    Boolean? inet_four_only
+    Boolean? inet_six_only
     Int? prefer_family
     String? user
     String? password
@@ -55,16 +54,16 @@ task Wget {
     String? remote_encoding
     Boolean? unlink
     Boolean? no_directories
-    Boolean? _forcedirectories_force
+    Boolean? force_directories
     Boolean? no_host_directories
     Boolean? protocol_directories
-    Boolean? _directoryprefixprefix_save
+    Directory? directory_prefix
     Int? cut_dirs
     String? http_user
     String? http_password
     Boolean? no_cache
     String? default_page
-    Boolean? _adjustextension_save
+    Boolean? adjust_extension
     Boolean? ignore_length
     String? header
     Boolean? max_redirect
@@ -72,7 +71,7 @@ task Wget {
     String? proxy_password
     String? referer
     Boolean? save_headers
-    Boolean? _useragentagent_identify
+    String? user_agent
     Boolean? no_http_keep_alive
     Boolean? no_cookies
     File? load_cookies
@@ -121,81 +120,80 @@ task Wget {
     Boolean? no_war_c_digests
     Boolean? no_war_c_keep_log
     Directory? war_c_tempdir
-    Boolean? _recursive_specify
-    Boolean? _levelnumber_maximum
+    Boolean? recursive
+    Int? level
     Boolean? delete_after
-    Boolean? _convertlinks_make
+    Boolean? convert_links
     Boolean? convert_file_only
     File? backups
-    Boolean? _backupconverted_converting
-    Boolean? _mirror_shortcut
-    Boolean? _pagerequisites_get
+    Boolean? backup_converted
+    Boolean? mirror
+    Boolean? page_requisites
     Boolean? strict_comments
-    Boolean? _acceptlist_commaseparated
-    Boolean? _rejectlist_commaseparated
+    String? accept
+    String? reject
     String? accept_regex
     String? reject_regex
     String? regex_type
-    Boolean? _domainslist_commaseparated
+    String? domains
     String? exclude_domains
     Boolean? follow_ftp
     String? follow_tags
     String? ignore_tags
-    Boolean? _spanhosts_go
-    Boolean? _relative_follow
-    Boolean? _includedirectorieslist_list
+    Boolean? span_hosts
+    Boolean? relative
+    String? include_directories
     Boolean? trust_server_names
-    Boolean? _excludedirectorieslist_list
+    String? exclude_directories
     Boolean? no_parent
     String local
   }
   command <<<
     wget \
       ~{local} \
-      ~{if (_version_display) then "-V" else ""} \
-      ~{if (_background_go) then "-b" else ""} \
-      ~{if (_executecommand_execute) then "-e" else ""} \
-      ~{if (_outputfilefile_log) then "-o" else ""} \
-      ~{if (_appendoutputfile_append) then "-a" else ""} \
-      ~{if (_debug_print) then "-d" else ""} \
-      ~{if (_quiet_quiet) then "-q" else ""} \
-      ~{if (_verbose_verbose) then "-v" else ""} \
+      ~{if (background) then "--background" else ""} \
+      ~{if defined(execute) then ("--execute " +  '"' + execute + '"') else ""} \
+      ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
+      ~{if defined(append_output) then ("--append-output " +  '"' + append_output + '"') else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if (no_verbose) then "--no-verbose" else ""} \
       ~{if defined(report_speed) then ("--report-speed " +  '"' + report_speed + '"') else ""} \
-      ~{if (_inputfilefile_download) then "-i" else ""} \
-      ~{if (_forcehtml_treat) then "-F" else ""} \
-      ~{if (_baseurl_resolves) then "-B" else ""} \
+      ~{if defined(input_file) then ("--input-file " +  '"' + input_file + '"') else ""} \
+      ~{if (force_html) then "--force-html" else ""} \
+      ~{if defined(base) then ("--base " +  '"' + base + '"') else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if (no_config) then "--no-config" else ""} \
       ~{if defined(rejected_log) then ("--rejected-log " +  '"' + rejected_log + '"') else ""} \
-      ~{if (_triesnumber_set) then "-t" else ""} \
+      ~{if defined(tries) then ("--tries " +  '"' + tries + '"') else ""} \
       ~{if (retry_conn_refused) then "--retry-connrefused" else ""} \
-      ~{if (_outputdocumentfile_write) then "-O" else ""} \
+      ~{if defined(output_document) then ("--output-document " +  '"' + output_document + '"') else ""} \
       ~{if (no_clobber) then "--no-clobber" else ""} \
-      ~{if (_continue_resume) then "-c" else ""} \
+      ~{if (continue) then "--continue" else ""} \
       ~{if defined(start_pos) then ("--start-pos " +  '"' + start_pos + '"') else ""} \
       ~{if defined(progress) then ("--progress " +  '"' + progress + '"') else ""} \
       ~{if (show_progress) then "--show-progress" else ""} \
-      ~{if (_timestamping_reretrieve) then "-N" else ""} \
+      ~{if (timestamping) then "--timestamping" else ""} \
       ~{if (no_use_server_timestamps) then "--no-use-server-timestamps" else ""} \
-      ~{if (_serverresponse_print) then "-S" else ""} \
+      ~{if (server_response) then "--server-response" else ""} \
       ~{if (spider) then "--spider" else ""} \
-      ~{if (_timeoutseconds_set) then "-T" else ""} \
+      ~{if defined(timeout) then ("--timeout " +  '"' + timeout + '"') else ""} \
       ~{if defined(dns_timeout) then ("--dns-timeout " +  '"' + dns_timeout + '"') else ""} \
       ~{if defined(connect_timeout) then ("--connect-timeout " +  '"' + connect_timeout + '"') else ""} \
       ~{if defined(read_timeout) then ("--read-timeout " +  '"' + read_timeout + '"') else ""} \
-      ~{if (_waitseconds_wait) then "-w" else ""} \
+      ~{if defined(wait) then ("--wait " +  '"' + wait + '"') else ""} \
       ~{if defined(wait_retry) then ("--waitretry " +  '"' + wait_retry + '"') else ""} \
       ~{if (random_wait) then "--random-wait" else ""} \
       ~{if (no_proxy) then "--no-proxy" else ""} \
-      ~{if (_quotanumber_set) then "-Q" else ""} \
+      ~{if defined(quota) then ("--quota " +  '"' + quota + '"') else ""} \
       ~{if defined(bind_address) then ("--bind-address " +  '"' + bind_address + '"') else ""} \
       ~{if defined(limit_rate) then ("--limit-rate " +  '"' + limit_rate + '"') else ""} \
       ~{if (no_dns_cache) then "--no-dns-cache" else ""} \
       ~{if defined(restrict_file_names) then ("--restrict-file-names " +  '"' + restrict_file_names + '"') else ""} \
       ~{if (ignore_case) then "--ignore-case" else ""} \
-      ~{if (four) then "-4" else ""} \
-      ~{if (six) then "-6" else ""} \
+      ~{if (inet_four_only) then "--inet4-only" else ""} \
+      ~{if (inet_six_only) then "--inet6-only" else ""} \
       ~{if defined(prefer_family) then ("--prefer-family " +  '"' + prefer_family + '"') else ""} \
       ~{if defined(user) then ("--user " +  '"' + user + '"') else ""} \
       ~{if defined(password) then ("--password " +  '"' + password + '"') else ""} \
@@ -205,16 +203,16 @@ task Wget {
       ~{if defined(remote_encoding) then ("--remote-encoding " +  '"' + remote_encoding + '"') else ""} \
       ~{if (unlink) then "--unlink" else ""} \
       ~{if (no_directories) then "--no-directories" else ""} \
-      ~{if (_forcedirectories_force) then "-x" else ""} \
+      ~{if (force_directories) then "--force-directories" else ""} \
       ~{if (no_host_directories) then "--no-host-directories" else ""} \
       ~{if (protocol_directories) then "--protocol-directories" else ""} \
-      ~{if (_directoryprefixprefix_save) then "-P" else ""} \
+      ~{if defined(directory_prefix) then ("--directory-prefix " +  '"' + directory_prefix + '"') else ""} \
       ~{if defined(cut_dirs) then ("--cut-dirs " +  '"' + cut_dirs + '"') else ""} \
       ~{if defined(http_user) then ("--http-user " +  '"' + http_user + '"') else ""} \
       ~{if defined(http_password) then ("--http-password " +  '"' + http_password + '"') else ""} \
       ~{if (no_cache) then "--no-cache" else ""} \
       ~{if defined(default_page) then ("--default-page " +  '"' + default_page + '"') else ""} \
-      ~{if (_adjustextension_save) then "-E" else ""} \
+      ~{if (adjust_extension) then "--adjust-extension" else ""} \
       ~{if (ignore_length) then "--ignore-length" else ""} \
       ~{if defined(header) then ("--header " +  '"' + header + '"') else ""} \
       ~{if (max_redirect) then "--max-redirect" else ""} \
@@ -222,7 +220,7 @@ task Wget {
       ~{if defined(proxy_password) then ("--proxy-password " +  '"' + proxy_password + '"') else ""} \
       ~{if defined(referer) then ("--referer " +  '"' + referer + '"') else ""} \
       ~{if (save_headers) then "--save-headers" else ""} \
-      ~{if (_useragentagent_identify) then "-U" else ""} \
+      ~{if defined(user_agent) then ("--user-agent " +  '"' + user_agent + '"') else ""} \
       ~{if (no_http_keep_alive) then "--no-http-keep-alive" else ""} \
       ~{if (no_cookies) then "--no-cookies" else ""} \
       ~{if defined(load_cookies) then ("--load-cookies " +  '"' + load_cookies + '"') else ""} \
@@ -271,78 +269,80 @@ task Wget {
       ~{if (no_war_c_digests) then "--no-warc-digests" else ""} \
       ~{if (no_war_c_keep_log) then "--no-warc-keep-log" else ""} \
       ~{if defined(war_c_tempdir) then ("--warc-tempdir " +  '"' + war_c_tempdir + '"') else ""} \
-      ~{if (_recursive_specify) then "-r" else ""} \
-      ~{if (_levelnumber_maximum) then "-l" else ""} \
+      ~{if (recursive) then "--recursive" else ""} \
+      ~{if defined(level) then ("--level " +  '"' + level + '"') else ""} \
       ~{if (delete_after) then "--delete-after" else ""} \
-      ~{if (_convertlinks_make) then "-k" else ""} \
+      ~{if (convert_links) then "--convert-links" else ""} \
       ~{if (convert_file_only) then "--convert-file-only" else ""} \
       ~{if defined(backups) then ("--backups " +  '"' + backups + '"') else ""} \
-      ~{if (_backupconverted_converting) then "-K" else ""} \
-      ~{if (_mirror_shortcut) then "-m" else ""} \
-      ~{if (_pagerequisites_get) then "-p" else ""} \
+      ~{if (backup_converted) then "--backup-converted" else ""} \
+      ~{if (mirror) then "--mirror" else ""} \
+      ~{if (page_requisites) then "--page-requisites" else ""} \
       ~{if (strict_comments) then "--strict-comments" else ""} \
-      ~{if (_acceptlist_commaseparated) then "-A" else ""} \
-      ~{if (_rejectlist_commaseparated) then "-R" else ""} \
+      ~{if defined(accept) then ("--accept " +  '"' + accept + '"') else ""} \
+      ~{if defined(reject) then ("--reject " +  '"' + reject + '"') else ""} \
       ~{if defined(accept_regex) then ("--accept-regex " +  '"' + accept_regex + '"') else ""} \
       ~{if defined(reject_regex) then ("--reject-regex " +  '"' + reject_regex + '"') else ""} \
       ~{if defined(regex_type) then ("--regex-type " +  '"' + regex_type + '"') else ""} \
-      ~{if (_domainslist_commaseparated) then "-D" else ""} \
+      ~{if defined(domains) then ("--domains " +  '"' + domains + '"') else ""} \
       ~{if defined(exclude_domains) then ("--exclude-domains " +  '"' + exclude_domains + '"') else ""} \
       ~{if (follow_ftp) then "--follow-ftp" else ""} \
       ~{if defined(follow_tags) then ("--follow-tags " +  '"' + follow_tags + '"') else ""} \
       ~{if defined(ignore_tags) then ("--ignore-tags " +  '"' + ignore_tags + '"') else ""} \
-      ~{if (_spanhosts_go) then "-H" else ""} \
-      ~{if (_relative_follow) then "-L" else ""} \
-      ~{if (_includedirectorieslist_list) then "-I" else ""} \
+      ~{if (span_hosts) then "--span-hosts" else ""} \
+      ~{if (relative) then "--relative" else ""} \
+      ~{if defined(include_directories) then ("--include-directories " +  '"' + include_directories + '"') else ""} \
       ~{if (trust_server_names) then "--trust-server-names" else ""} \
-      ~{if (_excludedirectorieslist_list) then "-X" else ""} \
+      ~{if defined(exclude_directories) then ("--exclude-directories " +  '"' + exclude_directories + '"') else ""} \
       ~{if (no_parent) then "--no-parent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _version_display: ",  --version                   display the version of Wget and exit"
-    _background_go: ",  --background                go to background after startup"
-    _executecommand_execute: ",  --execute=COMMAND           execute a `.wgetrc'-style command"
-    _outputfilefile_log: ",  --output-file=FILE          log messages to FILE"
-    _appendoutputfile_append: ",  --append-output=FILE        append messages to FILE"
-    _debug_print: ",  --debug                     print lots of debugging information"
-    _quiet_quiet: ",  --quiet                     quiet (no output)"
-    _verbose_verbose: ",  --verbose                   be verbose (this is the default)"
+    background: "go to background after startup"
+    execute: "execute a `.wgetrc'-style command"
+    output_file: "log messages to FILE"
+    append_output: "append messages to FILE"
+    debug: "print lots of debugging information"
+    quiet: "quiet (no output)"
+    verbose: "be verbose (this is the default)"
     no_verbose: "turn off verboseness, without being quiet"
     report_speed: "output bandwidth as TYPE.  TYPE can be bits"
-    _inputfilefile_download: ",  --input-file=FILE           download URLs found in local or external FILE"
-    _forcehtml_treat: ",  --force-html                treat input file as HTML"
-    _baseurl_resolves: ",  --base=URL                  resolves HTML input-file links (-i -F)\\nrelative to URL"
+    input_file: "download URLs found in local or external FILE"
+    force_html: "treat input file as HTML"
+    base: "resolves HTML input-file links (-i -F)\\nrelative to URL"
     config: "specify config file to use"
     no_config: "do not read any config file"
     rejected_log: "log reasons for URL rejection to FILE"
-    _triesnumber_set: ",  --tries=NUMBER              set number of retries to NUMBER (0 unlimits)"
+    tries: "set number of retries to NUMBER (0 unlimits)"
     retry_conn_refused: "retry even if connection is refused"
-    _outputdocumentfile_write: ",  --output-document=FILE      write documents to FILE"
+    output_document: "write documents to FILE"
     no_clobber: "skip downloads that would download to\\nexisting files (overwriting them)"
-    _continue_resume: ",  --continue                  resume getting a partially-downloaded file"
+    continue: "resume getting a partially-downloaded file"
     start_pos: "start downloading from zero-based position OFFSET"
     progress: "select progress gauge type"
     show_progress: "display the progress bar in any verbosity mode"
-    _timestamping_reretrieve: ",  --timestamping              don't re-retrieve files unless newer than"
+    timestamping: "don't re-retrieve files unless newer than"
     no_use_server_timestamps: "don't set the local file's timestamp by\\nthe one on the server"
-    _serverresponse_print: ",  --server-response           print server response"
+    server_response: "print server response"
     spider: "don't download anything"
-    _timeoutseconds_set: ",  --timeout=SECONDS           set all timeout values to SECONDS"
+    timeout: "set all timeout values to SECONDS"
     dns_timeout: "set the DNS lookup timeout to SECS"
     connect_timeout: "set the connect timeout to SECS"
     read_timeout: "set the read timeout to SECS"
-    _waitseconds_wait: ",  --wait=SECONDS              wait SECONDS between retrievals"
+    wait: "wait SECONDS between retrievals"
     wait_retry: "wait 1..SECONDS between retries of a retrieval"
     random_wait: "wait from 0.5*WAIT...1.5*WAIT secs between retrievals"
     no_proxy: "explicitly turn off proxy"
-    _quotanumber_set: ",  --quota=NUMBER              set retrieval quota to NUMBER"
+    quota: "set retrieval quota to NUMBER"
     bind_address: "bind to ADDRESS (hostname or IP) on local host"
     limit_rate: "limit download rate to RATE"
     no_dns_cache: "disable caching DNS lookups"
     restrict_file_names: "restrict chars in file names to ones OS allows"
     ignore_case: "ignore case when matching files/directories"
-    four: ",  --inet4-only                connect only to IPv4 addresses"
-    six: ",  --inet6-only                connect only to IPv6 addresses"
+    inet_four_only: "connect only to IPv4 addresses"
+    inet_six_only: "connect only to IPv6 addresses"
     prefer_family: "connect first to addresses of specified family,\\none of IPv6, IPv4, or none"
     user: "set both ftp and http user to USER"
     password: "set both ftp and http password to PASS"
@@ -352,16 +352,16 @@ task Wget {
     remote_encoding: "use ENC as the default remote encoding"
     unlink: "remove file before clobber"
     no_directories: "don't create directories"
-    _forcedirectories_force: ",  --force-directories         force creation of directories"
+    force_directories: "force creation of directories"
     no_host_directories: "don't create host directories"
     protocol_directories: "use protocol name in directories"
-    _directoryprefixprefix_save: ",  --directory-prefix=PREFIX   save files to PREFIX/.."
+    directory_prefix: "save files to PREFIX/.."
     cut_dirs: "ignore NUMBER remote directory components"
     http_user: "set http user to USER"
     http_password: "set http password to PASS"
     no_cache: "disallow server-cached data"
     default_page: "change the default page name (normally\\nthis is 'index.html'.)"
-    _adjustextension_save: ",  --adjust-extension          save HTML/CSS documents with proper extensions"
+    adjust_extension: "save HTML/CSS documents with proper extensions"
     ignore_length: "ignore 'Content-Length' header field"
     header: "insert STRING among the headers"
     max_redirect: "maximum redirections allowed per page"
@@ -369,7 +369,7 @@ task Wget {
     proxy_password: "set PASS as proxy password"
     referer: "include 'Referer: URL' header in HTTP request"
     save_headers: "save the HTTP headers to file"
-    _useragentagent_identify: ",  --user-agent=AGENT          identify as AGENT instead of Wget/VERSION"
+    user_agent: "identify as AGENT instead of Wget/VERSION"
     no_http_keep_alive: "disable HTTP keep-alive (persistent connections)"
     no_cookies: "don't use cookies"
     load_cookies: "load cookies from FILE before session"
@@ -393,7 +393,7 @@ task Wget {
     ca_certificate: "file with the bundle of CAs"
     ca_directory: "directory where hash list of CAs is stored"
     crl_file: "file with bundle of CRLs"
-    pinned_pubkey: "Public key (PEM/DER) file, or any number\\nof base64 encoded sha256 hashes preceded by\\n'sha256//' and seperated by ';', to verify\\npeer against"
+    pinned_pubkey: "/HASHES  Public key (PEM/DER) file, or any number\\nof base64 encoded sha256 hashes preceded by\\n'sha256//' and seperated by ';', to verify\\npeer against"
     random_file: "file with random data for seeding the SSL PRNG"
     egd_file: "file naming the EGD socket with random data"
     no_h_sts: "disable HSTS"
@@ -418,38 +418,36 @@ task Wget {
     no_war_c_digests: "do not calculate SHA1 digests"
     no_war_c_keep_log: "do not store the log file in a WARC record"
     war_c_tempdir: "location for temporary files created by the\\nWARC writer"
-    _recursive_specify: ",  --recursive                 specify recursive download"
-    _levelnumber_maximum: ",  --level=NUMBER              maximum recursion depth (inf or 0 for infinite)"
+    recursive: "specify recursive download"
+    level: "maximum recursion depth (inf or 0 for infinite)"
     delete_after: "delete files locally after downloading them"
-    _convertlinks_make: ",  --convert-links             make links in downloaded HTML or CSS point to\\nlocal files"
+    convert_links: "make links in downloaded HTML or CSS point to\\nlocal files"
     convert_file_only: "convert the file part of the URLs only (usually known as the basename)"
     backups: "before writing file X, rotate up to N backup files"
-    _backupconverted_converting: ",  --backup-converted          before converting file X, back up as X.orig"
-    _mirror_shortcut: ",  --mirror                    shortcut for -N -r -l inf --no-remove-listing"
-    _pagerequisites_get: ",  --page-requisites           get all images, etc. needed to display HTML page"
+    backup_converted: "before converting file X, back up as X.orig"
+    mirror: "shortcut for -N -r -l inf --no-remove-listing"
+    page_requisites: "get all images, etc. needed to display HTML page"
     strict_comments: "turn on strict (SGML) handling of HTML comments"
-    _acceptlist_commaseparated: ",  --accept=LIST               comma-separated list of accepted extensions"
-    _rejectlist_commaseparated: ",  --reject=LIST               comma-separated list of rejected extensions"
+    accept: "comma-separated list of accepted extensions"
+    reject: "comma-separated list of rejected extensions"
     accept_regex: "regex matching accepted URLs"
     reject_regex: "regex matching rejected URLs"
     regex_type: "regex type (posix)"
-    _domainslist_commaseparated: ",  --domains=LIST              comma-separated list of accepted domains"
+    domains: "comma-separated list of accepted domains"
     exclude_domains: "comma-separated list of rejected domains"
     follow_ftp: "follow FTP links from HTML documents"
     follow_tags: "comma-separated list of followed HTML tags"
     ignore_tags: "comma-separated list of ignored HTML tags"
-    _spanhosts_go: ",  --span-hosts                go to foreign hosts when recursive"
-    _relative_follow: ",  --relative                  follow relative links only"
-    _includedirectorieslist_list: ",  --include-directories=LIST  list of allowed directories"
+    span_hosts: "go to foreign hosts when recursive"
+    relative: "follow relative links only"
+    include_directories: "list of allowed directories"
     trust_server_names: "use the name specified by the redirection\\nURL's last component"
-    _excludedirectorieslist_list: ",  --exclude-directories=LIST  list of excluded directories"
+    exclude_directories: "list of excluded directories"
     no_parent: "don't ascend to the parent directory"
     local: "--no-if-modified-since      don't use conditional if-modified-since get"
   }
   output {
     File out_stdout = stdout()
-    File out__outputfilefile_log = "${in__outputfilefile_log}"
-    File out__appendoutputfile_append = "${in__appendoutputfile_append}"
-    File out__outputdocumentfile_write = "${in__outputdocumentfile_write}"
+    File out_output_file = "${in_output_file}"
   }
 }

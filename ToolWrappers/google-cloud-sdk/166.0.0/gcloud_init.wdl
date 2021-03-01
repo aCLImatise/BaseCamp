@@ -10,6 +10,9 @@ task GcloudInit {
       ~{if (console_only) then "--console-only" else ""} \
       ~{if (skip_diagnostics) then "--skip-diagnostics" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     console_only: "Prevent the command from launching a browser for authorization."
     skip_diagnostics: "Do not run diagnostics."

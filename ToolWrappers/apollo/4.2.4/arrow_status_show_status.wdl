@@ -8,6 +8,9 @@ task ArrowStatusShowStatus {
     arrow status show_status \
       ~{status}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     status: ""
   }

@@ -10,6 +10,9 @@ task TraitarPfam {
       ~{download} \
       ~{if (local) then "--local" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     local: "the Pfam HMMs are in the above directory with name 'Pfam-A.hmm'"
     download: "download Pfam HMMs into the given download directory and untar\\nand unzip it"

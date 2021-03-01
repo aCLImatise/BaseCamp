@@ -1,0 +1,171 @@
+!Command
+command:
+- seurat-run-pca.R
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-object-file
+  description: File name in which a serialized R matrix object may be found.
+  args: !SimpleFlagArg
+    name: INPUT-OBJECT-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --input-format
+  description: Either loom, seurat, anndata or singlecellexperiment for the input
+    format to read.
+  args: !SimpleFlagArg
+    name: INPUT-FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --output-format
+  description: Either loom, seurat, anndata or singlecellexperiment for the output
+    format.
+  args: !SimpleFlagArg
+    name: OUTPUT-FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --pc-genes
+  description: File with gene names to scale/center. Default is all genes in object@data.
+  args: !SimpleFlagArg
+    name: PC-GENES
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --pc-cells
+  description: File with cell names to scale/center. Default is all cells in object@data.
+  args: !SimpleFlagArg
+    name: PC-CELLS
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pcs-compute
+  description: Total Number of PCs to compute and store (50 by default).
+  args: !SimpleFlagArg
+    name: PCS-COMPUTE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reverse-pca
+  description: By default computes the PCA on the cell x gene matrix. Setting to true
+    will compute it on gene x cell matrix.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-object-file
+  description: File name in which to store serialized R object of type 'Seurat'.'
+  args: !SimpleFlagArg
+    name: OUTPUT-OBJECT-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --output-embeddings-file
+  description: File name in which to store a csv-format embeddings table with PCs
+    by cell.
+  args: !SimpleFlagArg
+    name: OUTPUT-EMBEDDINGS-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --output-loadings-file
+  description: File name in which to store a csv-format loadings table with PCs by
+    gene.
+  args: !SimpleFlagArg
+    name: OUTPUT-LOADINGS-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --output-stdev-file
+  description: File name in which to store PC stdev values (one per line).
+  args: !SimpleFlagArg
+    name: OUTPUT-STDEV-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --weight-by-var
+  description: Weight the cell embeddings by the variance of each PC (weights the
+    gene loadings if rev.pca is TRUE)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ndims-print
+  description: "OF DIMS. PRINT\nPCs to print genes for"
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - --nfeatures-print
+  description: "FEATURES PRINT\nNumber of genes to print for each PC"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --reduction-key
+  description: "KEY\ndimensional reduction key, specifies the string before the number\
+    \ for the dimension names. PC by default"
+  args: !SimpleFlagArg
+    name: REDUCTION
+- !Flag
+  optional: true
+  synonyms:
+  - --reduction-name
+  description: "NAME\ndimensional reduction name, pca by default"
+  args: !SimpleFlagArg
+    name: REDUCTION
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: "Show this help message and exit\n"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/seurat-run-pca.R [options]\n\n\nOptions:\n\t-i INPUT-OBJECT-FILE,\
+  \ --input-object-file=INPUT-OBJECT-FILE\n\t\tFile name in which a serialized R matrix\
+  \ object may be found.\n\n\t--input-format=INPUT-FORMAT\n\t\tEither loom, seurat,\
+  \ anndata or singlecellexperiment for the input format to read.\n\n\t--output-format=OUTPUT-FORMAT\n\
+  \t\tEither loom, seurat, anndata or singlecellexperiment for the output format.\n\
+  \n\t-e PC-GENES, --pc-genes=PC-GENES\n\t\tFile with gene names to scale/center.\
+  \ Default is all genes in object@data.\n\n\t-c PC-CELLS, --pc-cells=PC-CELLS\n\t\
+  \tFile with cell names to scale/center. Default is all cells in object@data.\n\n\
+  \t-p PCS-COMPUTE, --pcs-compute=PCS-COMPUTE\n\t\tTotal Number of PCs to compute\
+  \ and store (50 by default).\n\n\t-r, --reverse-pca\n\t\tBy default computes the\
+  \ PCA on the cell x gene matrix. Setting to true will compute it on gene x cell\
+  \ matrix.\n\n\t-o OUTPUT-OBJECT-FILE, --output-object-file=OUTPUT-OBJECT-FILE\n\t\
+  \tFile name in which to store serialized R object of type 'Seurat'.'\n\n\t-b OUTPUT-EMBEDDINGS-FILE,\
+  \ --output-embeddings-file=OUTPUT-EMBEDDINGS-FILE\n\t\tFile name in which to store\
+  \ a csv-format embeddings table with PCs by cell.\n\n\t-l OUTPUT-LOADINGS-FILE,\
+  \ --output-loadings-file=OUTPUT-LOADINGS-FILE\n\t\tFile name in which to store a\
+  \ csv-format loadings table with PCs by gene.\n\n\t-s OUTPUT-STDEV-FILE, --output-stdev-file=OUTPUT-STDEV-FILE\n\
+  \t\tFile name in which to store PC stdev values (one per line).\n\n\t--weight-by-var\n\
+  \t\tWeight the cell embeddings by the variance of each PC (weights the gene loadings\
+  \ if rev.pca is TRUE)\n\n\t--ndims-print=NUM OF DIMS. PRINT\n\t\tPCs to print genes\
+  \ for\n\n\t--nfeatures-print=N FEATURES PRINT\n\t\tNumber of genes to print for\
+  \ each PC\n\n\t--reduction-key=REDUCTION KEY\n\t\tdimensional reduction key, specifies\
+  \ the string before the number for the dimension names. PC by default\n\n\t--reduction-name=REDUCTION\
+  \ NAME\n\t\tdimensional reduction name, pca by default\n\n\t-h, --help\n\t\tShow\
+  \ this help message and exit\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seurat-scripts:0.0.9--0

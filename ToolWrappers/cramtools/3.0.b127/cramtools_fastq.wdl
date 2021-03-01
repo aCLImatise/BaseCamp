@@ -32,6 +32,9 @@ task CramtoolsFastq {
       ~{if (skip_md_five_check) then "--skip-md5-check" else ""} \
       ~{if (log_level) then "--log-level" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     default_quality_score: "Use this quality score (decimal representation of ASCII symbol) as a default value when the original quality score was lost due to compression. Minimum is 33. (default: 63)"
     enumerate: "Append read names with read index (/1 for first in pair, /2 for second in pair). (default: false)"

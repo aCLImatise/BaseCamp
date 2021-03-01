@@ -38,6 +38,9 @@ task Mafconvert {
       ~{if defined(read_group) then ("--readgroup " +  '"' + read_group + '"') else ""} \
       ~{if defined(line_size) then ("--linesize " +  '"' + line_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     protein: "assume protein alignments, for psl match counts"
     join: "join co-linear alignments separated by <= N letters"

@@ -16,6 +16,9 @@ task SingularityPluginInstall {
       ~{plugin} \
       ~{install}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

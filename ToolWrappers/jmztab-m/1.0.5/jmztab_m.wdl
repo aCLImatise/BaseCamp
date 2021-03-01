@@ -20,6 +20,9 @@ task Jmztabm {
       ~{if defined(check_semantic) then ("--checkSemantic " +  '"' + check_semantic + '"') else ""} \
       ~{if (to_json) then "--toJson" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     from_json: "Example: --fromJson. Will parse inFile as JSON\\nand write mzTab representation to disk.\\nRequires validation to be successful!"
     level: "Choose validation level (Info, Warn, Error),\\ndefault level is Info!"

@@ -3,115 +3,115 @@ command:
 - scHicClusterCompartments
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: scHi-C
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: matrix
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "File name to save the resulting clusters (default:\nclusters.txt)"
-  synonyms:
-  - --outFileName
-  - -o
-  args: !SimpleFlagArg
-    name: OUTFILENAME
   optional: true
-- !Flag
-  description: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction\
-    \ matrices to cluster.\nNeeds to be in scool format (default: None)"
   synonyms:
   - --matrix
+  description: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction\
+    \ matrices to cluster.\nNeeds to be in scool format (default: None)"
   args: !SimpleFlagArg
     name: scool
-  optional: true
 - !Flag
-  description: 'Number of to be computed clusters (default: 12)'
+  optional: true
   synonyms:
   - --numberOfClusters
   - -c
+  description: 'Number of to be computed clusters (default: 12)'
   args: !SimpleFlagArg
     name: NUMBEROFCLUSTERS
-  optional: true
 - !Flag
-  description: "Algorithm to cluster the Hi-C matrices (default:\nspectral)"
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: "File name to save the resulting clusters (default:\nclusters.txt)"
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
   synonyms:
   - --clusterMethod
   - -cm
+  description: "Algorithm to cluster the Hi-C matrices (default:\nspectral)"
   args: !ChoiceFlagArg
     choices: !!set
-      kmeans:
       spectral:
-  optional: true
+      kmeans:
 - !Flag
-  description: "List of chromosomes to be included in the correlation.\n(default:\
-    \ None)"
+  optional: true
   synonyms:
   - --chromosomes
+  description: "List of chromosomes to be included in the correlation.\n(default:\
+    \ None)"
   args: !RepeatFlagArg
     name: CHROMOSOMES
-  optional: true
 - !Flag
-  description: "Different obs-exp normalization as used by Homer\nsoftware. (default:\
-    \ False)"
+  optional: true
   synonyms:
   - --norm
+  description: "Different obs-exp normalization as used by Homer\nsoftware. (default:\
+    \ False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Set all positive values of eigenvector to 1 and all\nnegative ones\
-    \ to 0. (default: False)"
+  optional: true
   synonyms:
   - --binarization
+  description: "Set all positive values of eigenvector to 1 and all\nnegative ones\
+    \ to 0. (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extraTrack
   description: "Either a gene track or a histon mark coverage\nfile(preferably a broad\
     \ mark) is needed to decide if\nthe values of the eigenvector need a sign flip\
     \ or not.\n(default: None)"
-  synonyms:
-  - --extraTrack
   args: !SimpleFlagArg
     name: EXTRATRACK
-  optional: true
 - !Flag
-  description: "set it to active or inactive. This is only necessary\nif a histon\
-    \ mark coverage file is given as an\nextraTrack. (default: active)"
+  optional: true
   synonyms:
   - --histonMarkType
+  description: "set it to active or inactive. This is only necessary\nif a histon\
+    \ mark coverage file is given as an\nextraTrack. (default: active)"
   args: !SimpleFlagArg
     name: HISTONMARKTYPE
-  optional: true
 - !Flag
-  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
-    \ 4)"
+  optional: true
   synonyms:
   - --threads
   - -t
+  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
+    \ 4)"
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: scHicClusterCompartments --matrix scool scHi-C matrix\n       \
   \                         [--numberOfClusters NUMBEROFCLUSTERS]\n              \
   \                  --outFileName OUTFILENAME\n                                [--clusterMethod\
@@ -153,3 +153,4 @@ help_text: "usage: scHicClusterCompartments --matrix scool scHi-C matrix\n      
   \ exit\n"
 generated_using:
 - --help
+docker_image:

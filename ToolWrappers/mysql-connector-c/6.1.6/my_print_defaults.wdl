@@ -24,6 +24,9 @@ task MyPrintDefaults {
       ~{if defined(login_path) then ("--login-path " +  '"' + login_path + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: "Deprecated, please use --defaults-file instead. Name of\\nconfig file to read; if no extension is given, default\\nextension (e.g., .ini or .cnf) will be added"
     defaults_file: "Like --config-file, except: if first option, then read\\nthis file only, do not read global or per-user config\\nfiles; should be the first option"

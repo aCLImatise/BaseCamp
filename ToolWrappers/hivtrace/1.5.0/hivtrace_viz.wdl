@@ -16,6 +16,9 @@ task HivtraceViz {
       ~{if defined(browser) then ("--browser " +  '"' + browser + '"') else ""} \
       ~{if (server) then "--server" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hostname: "hostname to bind to (default: 127.0.0.1"
     port: "port to bind to; if this port is already in use a free\\nport will be selected automatically (default: 8080)"

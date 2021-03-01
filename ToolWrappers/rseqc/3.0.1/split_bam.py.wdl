@@ -12,6 +12,9 @@ task SplitBampy {
       ~{if defined(gene_list) then ("--genelist " +  '"' + gene_list + '"') else ""} \
       ~{if defined(out_prefix) then ("--out-prefix " +  '"' + out_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Alignment file in BAM or SAM format. BAM file should\\nbe sorted and indexed."
     gene_list: "Gene list in bed foramt. All reads hits to exon\\nregions (defined by this gene list) will be saved into\\none BAM file, the remaining reads will saved into\\nanother BAM file."

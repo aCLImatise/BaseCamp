@@ -18,6 +18,9 @@ task TreebestFilter {
       ~{if (mask_lowscoring_segments) then "-N" else ""} \
       ~{if defined(quality_cutoff) then ("-F " +  '"' + quality_cutoff + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nucleotide_alignment: "nucleotide alignment"
     collapse_alternative_splicing: "collapse alternative splicing"

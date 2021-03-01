@@ -24,6 +24,9 @@ task MosaikText {
       ~{if defined(sam) then ("-sam " +  '"' + sam + '"') else ""} \
       ~{if (limit_output_unique) then "-u" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "stores the data in a FASTQ file"
     screen: "displays the reads on the screen"

@@ -4,6 +4,9 @@ task Lumpyexpressconfig {
   command <<<
     lumpyexpress_config
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

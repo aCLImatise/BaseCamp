@@ -44,6 +44,9 @@ task Mcxmap {
       ~{if defined(make_map_r) then ("-make-mapr " +  '"' + make_map_r + '"') else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     imx: "use matrix from file <fname>"
     tab: "use tab file from <fname>"

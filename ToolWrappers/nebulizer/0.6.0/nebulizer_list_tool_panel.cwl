@@ -4,12 +4,12 @@ inputs:
 - id: in_name
   doc: "only list tool panel sections where name or id match NAME. Can\ninclude glob-style\
     \ wild-cards."
-  type: string
+  type: string?
   inputBinding:
     prefix: --name
 - id: in_list_tools
   doc: also list the associated tools for each section
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --list-tools
 - id: in_galaxy
@@ -21,6 +21,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nebulizer

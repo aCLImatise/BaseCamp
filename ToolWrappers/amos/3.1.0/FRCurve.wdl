@@ -16,7 +16,7 @@ task FRCurve {
     String feature_response
     String any
     String var_as
-    File file
+    File var_file
     String more
     String a
     String contains
@@ -65,7 +65,7 @@ task FRCurve {
       ~{feature_response} \
       ~{any} \
       ~{var_as} \
-      ~{file} \
+      ~{var_file} \
       ~{more} \
       ~{a} \
       ~{contains} \
@@ -100,6 +100,9 @@ task FRCurve {
       ~{number} \
       ~{if defined(d) then ("-D " +  '"' + d + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d: ""
     description: ""
@@ -115,7 +118,7 @@ task FRCurve {
     feature_response: ""
     any: ""
     var_as: ""
-    file: ""
+    var_file: ""
     more: ""
     a: ""
     contains: ""

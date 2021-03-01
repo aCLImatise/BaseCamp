@@ -3,74 +3,79 @@ command:
 - agat_convert_genscan2gff.pl
 positional:
 - !Positional
-  description: 'Description:'
+  optional: false
   position: 0
   name: agat_convert_genscan2gff.pl
-  optional: false
+  description: 'Description:'
 named:
 - !Flag
-  description: Input bed file that will be convert.
+  optional: true
   synonyms:
   - --genscan
   - -g
+  description: Input bed file that will be convert.
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --source
   description: "The source informs about the tool used to produce the data and\nis\
     \ stored in 2nd field of a gff file. Example:\nStringtie,Maker,Augustus,etc. [default:\
     \ data]"
-  synonyms:
-  - --source
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The primary_tag corresponf to the data type and is stored in 3rd\n\
-    field of a gff file. Example: gene,mRNA,CDS,etc. [default: gene]"
+  optional: true
   synonyms:
   - --primary_tag
+  description: "The primary_tag corresponf to the data type and is stored in 3rd\n\
+    field of a gff file. Example: gene,mRNA,CDS,etc. [default: gene]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --inflate_off
   description: "By default we inflate the block fields (blockCount, blockSizes,\n\
     blockStarts) to create subfeatures of the main feature\n(primary_tag). Type of\
     \ subfeature created based on the\ninflate_type parameter. If you don't want this\
     \ inflating\nbehaviour you can deactivate it by using the option\n--inflate_off."
-  synonyms:
-  - --inflate_off
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Feature type (3rd column in gff) created when inflate parameter\n\
-    activated [default: exon]."
+  optional: true
   synonyms:
   - --inflate_type
+  description: "Feature type (3rd column in gff) created when inflate parameter\n\
+    activated [default: exon]."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: add verbosity
+  optional: true
   synonyms:
   - --verbose
+  description: add verbosity
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ", --output , --out , --outfile or --gff\nOutput GFF file. If no output\
-    \ file is specified, the output will\nbe written to STDOUT."
+  optional: true
   synonyms:
   - -o
-  args: !EmptyFlagArg {}
-  optional: true
+  - --output
+  - --out
+  - --outfile
+  - --gff
+  description: "Output GFF file. If no output file is specified, the output will\n\
+    be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Display this helpful text.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Display this helpful text.
   args: !SimpleFlagArg
     name: or
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\n ------------------------------------------------------------------------------\n\
@@ -119,3 +124,4 @@ help_text: "\n -----------------------------------------------------------------
   \n"
 generated_using:
 - --help
+docker_image:

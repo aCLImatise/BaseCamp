@@ -12,6 +12,9 @@ task HcaAuthPostv1policiesevaluate {
       ~{if defined(action) then ("--action " +  '"' + action + '"') else ""} \
       ~{if defined(resource) then ("--resource " +  '"' + resource + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     principal: "Attested user identifier."
     action: "The action the principal is attempting to perform."

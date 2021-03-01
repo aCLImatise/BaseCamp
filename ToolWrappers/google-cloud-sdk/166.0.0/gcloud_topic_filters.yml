@@ -5,44 +5,38 @@ command:
 - filters
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: LogicOperator
   description: "Expressions containing both AND and OR must be parenthesized to\n\
     disambiguate precedence.\nNOT term-1\nTrue if term-1 is False, otherwise False.\n\
     term-1 AND term-2\nTrue if both term-1 and term-2 are true.\nterm-1 OR term-2\n\
     True if at least one of term-1 or term-2 is true.\nterm-1 term-2\nTrue if both\
     \ term-1 and term-2 are true. Implicit conjunction has\nlower precedence than\
     \ OR."
-  position: 0
-  name: LogicOperator
-  optional: false
 - !Positional
+  optional: false
+  position: 1
+  name: Terms
   description: "A term is a key operator value tuple, where key is a dotted name that\n\
     evaluates to the value of a resource attribute, and value may be:\nnumber\ninteger\
     \ or floating point numeric constant\nunquoted literal\ncharacter sequence terminated\
     \ by space, ( or )\nquoted literal\n\"...\" or '...' Most filter expressions need\
     \ to be quoted in shell\ncommands. If you use '...' shell quotes then use \"...\"\
     \ filter\nstring literal quotes and vice versa."
-  position: 1
-  name: Terms
-  optional: false
 - !Positional
-  description: EXAMPLES
+  optional: false
   position: 0
   name: value.
-  optional: false
+  description: EXAMPLES
 named:
 - !Flag
-  description: '[ATTRIBUTES](PROJECTION) and --filter=EXPRESSION flags along'
+  optional: true
   synonyms:
   - --format
+  description: '[ATTRIBUTES](PROJECTION) and --filter=EXPRESSION flags along'
   args: !SimpleFlagArg
     name: NAME
-  optional: true
-- !Flag
-  description: ="createTime.date('%Y-%m-%d', Z)='2016-05-11'"
-  synonyms:
-  - --filter
-  args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -118,3 +112,4 @@ help_text: "NAME\n    gcloud topic filters - resource filters supplementary help
   \    is applied on the createTime key after the date formatting is set.\n"
 generated_using:
 - --help
+docker_image:

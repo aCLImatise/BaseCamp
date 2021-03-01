@@ -14,6 +14,9 @@ task Silent {
       ~{if (t_show) then "-tshow" else ""} \
       ~{if (all_mut) then "-allmut" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     enzymes: "string     [all] Comma separated enzyme list (Any\\nstring)"
     s_show: "boolean    [N] Display untranslated sequence"

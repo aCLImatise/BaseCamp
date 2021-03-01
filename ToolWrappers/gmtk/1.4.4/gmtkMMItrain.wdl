@@ -4,6 +4,9 @@ task GmtkMMItrain {
   command <<<
     gmtkMMItrain
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

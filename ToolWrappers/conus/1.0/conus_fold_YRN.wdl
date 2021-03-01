@@ -12,6 +12,9 @@ task ConusFoldYRN {
       ~{seq_file_in} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
     conus_fold: ""

@@ -14,6 +14,9 @@ task MotifRaptorMotifspecific {
       ~{if defined(motif_id) then ("--motif_id " +  '"' + motif_id + '"') else ""} \
       ~{if defined(bg_score_folder) then ("--bg_score_folder " +  '"' + bg_score_folder + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     workdir: "Working directory"
     snp_motif_file: "SNP motif pair-wise list File, usually from step2"

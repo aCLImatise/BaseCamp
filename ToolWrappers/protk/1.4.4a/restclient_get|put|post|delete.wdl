@@ -12,6 +12,9 @@ task RestclientGetputpostdelete {
       ~{username} \
       ~{password}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     url_vertical_line_name: ""
     username: ""

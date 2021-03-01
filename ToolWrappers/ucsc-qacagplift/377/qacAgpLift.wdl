@@ -12,6 +12,9 @@ task QacAgpLift {
       ~{scaffolds_dot_qac} \
       ~{if defined(m_score) then ("-mScore " +  '"' + m_score + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     m_score: "- score to use for missing data (otherwise fail)\\nrange: 0-99, recommended values are 98 (low qual) or 99 (high)\\n"
     scaffold_to_chrom_dot_agp: ""

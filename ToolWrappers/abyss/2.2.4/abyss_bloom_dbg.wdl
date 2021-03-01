@@ -62,6 +62,9 @@ task Abyssbloomdbg {
       ~{if (keep_checkpoint) then "--keep-checkpoint" else ""} \
       ~{if defined(checkpoint_prefix) then ("--checkpoint-prefix " +  '"' + checkpoint_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bloom_size: "overall memory budget for the assembly in bytes.\\nUnit suffixes 'k' (kilobytes), 'M' (megabytes),\\nor 'G' (gigabytes) may be used. [required]"
     chastity: "discard unchaste reads [default]"

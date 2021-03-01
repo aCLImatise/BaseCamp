@@ -26,6 +26,9 @@ task Tesseract {
       ~{if (list_langs) then "--list-langs" else ""} \
       ~{if (print_parameters) then "--print-parameters" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tess_data_dir: "Specify the location of tessdata path."
     user_words: "Specify the location of user words file."

@@ -8,6 +8,9 @@ task Dcmftest {
     dcmftest \
       ~{file_dot_dot_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_dot_dot_dot: ""
   }

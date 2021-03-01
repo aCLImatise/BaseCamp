@@ -12,6 +12,9 @@ task H5debug {
       ~{signature_addr} \
       ~{extra}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: ""
     signature_addr: ""

@@ -12,6 +12,9 @@ task MbupgradetableTableFileTableFile {
       ~{table_file} \
       ~{output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mb_upgrade_table: ""
     table_file: ""

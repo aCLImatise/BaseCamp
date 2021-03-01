@@ -4,6 +4,9 @@ task Bamintervalcomment {
   command <<<
     bamintervalcomment
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -18,6 +18,9 @@ task FcDedupATigs {
       ~{if defined(ploidy) then ("--ploidy " +  '"' + ploidy + '"') else ""} \
       ~{if defined(a_ctg_all) then ("--a-ctg-all " +  '"' + a_ctg_all + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_idt: "Keep a-tig if the identity (in %) to the primary contig is <= max_idt (default: 96)"
     max_aln_cov: "Keep a-tig if the alignment coverage (in %) on the a-tig is <= max_aln_cov (default: 97)"

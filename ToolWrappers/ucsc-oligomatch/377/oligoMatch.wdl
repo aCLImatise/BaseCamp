@@ -10,6 +10,9 @@ task OligoMatch {
       ~{oligos} \
       ~{sequence}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     oligos: ""
     sequence: ""

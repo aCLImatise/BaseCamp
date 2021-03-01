@@ -20,6 +20,9 @@ task Bam2wigpy {
       ~{if defined(strand) then ("--strand " +  '"' + strand + '"') else ""} \
       ~{if defined(mapq) then ("--mapq " +  '"' + mapq + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Alignment file in BAM format. BAM file must be sorted\\nand indexed using samTools. .bam and .bai files should\\nbe placed in the same directory."
     chrom_size: "Chromosome size file. Tab or space separated text file\\nwith 2 columns: first column is chromosome name/ID,\\nsecond column is chromosome size. Chromosome name\\n(such as \\\"chr1\\\") should be consistent between this\\nfile and the BAM file."

@@ -20,6 +20,9 @@ task ChimChe {
       ~{if defined(full_deflines_printed) then ("-f " +  '"' + full_deflines_printed + '"') else ""} \
       ~{if defined(best_simple_best) then ("-t " +  '"' + best_simple_best + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     multifasta_sequences_analyzed: "multi-fasta sequences to be analyzed"
     multifasta_sequences_indexed: "multi-fasta sequences to be indexed (if missing, -q file used)"

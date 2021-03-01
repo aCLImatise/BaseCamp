@@ -2,21 +2,20 @@ version 1.0
 
 task CATBin {
   input {
-    Boolean? _path_bin
-    Boolean? _databasefolderpath_folder
-    Boolean? _taxonomyfolderpath_folder
-    Boolean? _range_r
-    Boolean? _fraction_f
-    Boolean? _outprefix_prefix
-    Boolean? _proteinsfastapath_predicted
-    Boolean? _diamondalignmentpath_table
+    Boolean? bin_fast_a
+    Boolean? database_folder
+    Boolean? taxonomy_folder
+    Boolean? range
+    Boolean? out_prefix
+    Boolean? proteins_fast_a
+    Boolean? diamond_alignment
     Boolean? path_to_prodigal
     Boolean? force
     Boolean? quiet
     Boolean? verbose
     Boolean? no_log
     Boolean? i_know_what_im_doing
-    Boolean? _nproc_number
+    Boolean? nproc
     Boolean? sensitive
     Boolean? block_size
     Boolean? index_chunks
@@ -30,21 +29,20 @@ task CATBin {
     CAT bin \
       ~{prodigal_dot} \
       ~{diamond_dot} \
-      ~{if (_path_bin) then "-b" else ""} \
-      ~{if (_databasefolderpath_folder) then "-d" else ""} \
-      ~{if (_taxonomyfolderpath_folder) then "-t" else ""} \
-      ~{if (_range_r) then "-r" else ""} \
-      ~{if (_fraction_f) then "-f" else ""} \
-      ~{if (_outprefix_prefix) then "-o" else ""} \
-      ~{if (_proteinsfastapath_predicted) then "-p" else ""} \
-      ~{if (_diamondalignmentpath_table) then "-a" else ""} \
+      ~{if (bin_fast_a) then "--bin_fasta" else ""} \
+      ~{if (database_folder) then "--database_folder" else ""} \
+      ~{if (taxonomy_folder) then "--taxonomy_folder" else ""} \
+      ~{if (range) then "--range" else ""} \
+      ~{if (out_prefix) then "--out_prefix" else ""} \
+      ~{if (proteins_fast_a) then "--proteins_fasta" else ""} \
+      ~{if (diamond_alignment) then "--diamond_alignment" else ""} \
       ~{if (path_to_prodigal) then "--path_to_prodigal" else ""} \
       ~{if (force) then "--force" else ""} \
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (no_log) then "--no_log" else ""} \
       ~{if (i_know_what_im_doing) then "--I_know_what_Im_doing" else ""} \
-      ~{if (_nproc_number) then "-n" else ""} \
+      ~{if (nproc) then "--nproc" else ""} \
       ~{if (sensitive) then "--sensitive" else ""} \
       ~{if (block_size) then "--block_size" else ""} \
       ~{if (index_chunks) then "--index_chunks" else ""} \
@@ -52,22 +50,24 @@ task CATBin {
       ~{if (compress) then "--compress" else ""} \
       ~{if (top) then "--top" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _path_bin: ", --bin_fasta      Path to bin fasta file."
-    _databasefolderpath_folder: ", --database_folder\\nPath to folder that contains database files."
-    _taxonomyfolderpath_folder: ", --taxonomy_folder\\nPath to folder that contains taxonomy files."
-    _range_r: ", --range          r parameter [0-49] (default: 5)."
-    _fraction_f: ", --fraction       f parameter [0-0.99] (default: 0.3)."
-    _outprefix_prefix: ", --out_prefix     Prefix for output files (default: out.BAT)."
-    _proteinsfastapath_predicted: ", --proteins_fasta\\nPath to predicted proteins fasta file. If supplied,\\nBAT will skip the protein prediction step."
-    _diamondalignmentpath_table: ", --diamond_alignment\\nPath to alignment table. If supplied, BAT will skip\\nthe alignment step and directly classify the bin. A\\npredicted proteins fasta file should also be supplied\\nwith argument [-p / --proteins]."
+    bin_fast_a: "Path to bin fasta file."
+    database_folder: "Path to folder that contains database files."
+    taxonomy_folder: "Path to folder that contains taxonomy files."
+    range: "r parameter [0-49] (default: 5)."
+    out_prefix: "Prefix for output files (default: out.BAT)."
+    proteins_fast_a: "Path to predicted proteins fasta file. If supplied,\\nBAT will skip the protein prediction step."
+    diamond_alignment: "Path to alignment table. If supplied, BAT will skip\\nthe alignment step and directly classify the bin. A\\npredicted proteins fasta file should also be supplied\\nwith argument [-p / --proteins]."
     path_to_prodigal: "Path to Prodigal binaries. Supply if BAT can not find"
     force: "Force overwrite existing files."
     quiet: "Suppress verbosity."
     verbose: "Increase verbosity."
     no_log: "Suppress log file."
     i_know_what_im_doing: "Flag for experimental features."
-    _nproc_number: ", --nproc          Number of cores to deploy by DIAMOND (default:\\nmaximum)."
+    nproc: "Number of cores to deploy by DIAMOND (default:\\nmaximum)."
     sensitive: "Run DIAMOND in sensitive mode (default: not enabled)."
     block_size: "DIAMOND block-size parameter (default: 2.0). Lower\\nnumbers will decrease memory and temporary disk space\\nusage."
     index_chunks: "DIAMOND index-chunks parameter (default: 4). Set to 1\\non high memory machines. The parameter has no effect\\non temporary disk space usage."

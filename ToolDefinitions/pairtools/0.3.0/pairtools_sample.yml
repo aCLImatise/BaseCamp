@@ -4,77 +4,77 @@ command:
 - sample
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: FRACTION
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: PAIRS_PATH
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "output file. If the path ends with .gz or .lz4, the\noutput is pbgzip-/lz4c-compressed.\
-    \ By default, the\noutput is printed into stdout."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "output file. If the path ends with .gz or .lz4, the\noutput is pbgzip-/lz4c-compressed.\
+    \ By default, the\noutput is printed into stdout."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: the seed of the random number generator.
+  optional: true
   synonyms:
   - -s
   - --seed
+  description: the seed of the random number generator.
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Number of processes used by the auto-guessed input\ndecompressing\
-    \ command.  [default: 3]"
+  optional: true
   synonyms:
   - --nproc-in
+  description: "Number of processes used by the auto-guessed input\ndecompressing\
+    \ command.  [default: 3]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Number of processes used by the auto-guessed output\ncompressing command.\
-    \  [default: 8]"
+  optional: true
   synonyms:
   - --nproc-out
+  description: "Number of processes used by the auto-guessed output\ncompressing command.\
+    \  [default: 8]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cmd-in
   description: "A command to decompress the input file. If provided,\nfully overrides\
     \ the auto-guessed command. Does not work\nwith stdin. Must read input from stdin\
     \ and print output\ninto stdout. EXAMPLE: pbgzip -dc -n 3"
-  synonyms:
-  - --cmd-in
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cmd-out
   description: "A command to compress the output file. If provided,\nfully overrides\
     \ the auto-guessed command. Does not work\nwith stdout. Must read input from stdin\
     \ and print\noutput into stdout. EXAMPLE: pbgzip -c -n 8"
-  synonyms:
-  - --cmd-out
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: pairtools sample [OPTIONS] FRACTION [PAIRS_PATH]\n\n  Select a\
@@ -99,3 +99,4 @@ help_text: "Usage: pairtools sample [OPTIONS] FRACTION [PAIRS_PATH]\n\n  Select 
   \ message and exit.\n"
 generated_using:
 - --help
+docker_image:

@@ -3,7 +3,7 @@ id: prophyle_paired_end.py_reads_2.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_prophy_le_paired_enddo_tpy
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - prophyle_paired_end.py

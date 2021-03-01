@@ -14,6 +14,9 @@ task GcloudAppDeploy {
       ~{if (promote) then "--promote" else ""} \
       ~{if (stop_previous_version) then "--stop-previous-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bucket: "The Google Cloud Storage bucket used to stage files associated with the\\ndeployment. If this argument is not specified, the application's\\ndefault code bucket is used."
     image_url: "Deploy with a specific Docker image. Docker url must be from one of the\\nvalid gcr hostnames."

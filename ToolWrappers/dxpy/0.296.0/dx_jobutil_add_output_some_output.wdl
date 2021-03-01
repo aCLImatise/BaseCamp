@@ -18,6 +18,9 @@ task DxjobutiladdoutputSomeOutput {
       ~{if (var_array) then "--array" else ""} \
       ~{if (class) then "--class" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_array: ""
     class: ""

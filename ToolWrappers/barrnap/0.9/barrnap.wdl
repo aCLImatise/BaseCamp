@@ -24,6 +24,9 @@ task Barrnap {
       ~{if (in_cseq) then "--incseq" else ""} \
       ~{if (out_seq) then "--outseq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     citation: "Print citation for referencing barrnap"
     kingdom: "[X]     Kingdom: arc mito bac euk (default 'bac')"

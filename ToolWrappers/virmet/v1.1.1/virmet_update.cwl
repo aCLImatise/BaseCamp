@@ -3,22 +3,22 @@ id: virmet_update.cwl
 inputs:
 - id: in_viral
   doc: update viral [n]ucleic/[p]rotein
-  type: string
+  type: string?
   inputBinding:
     prefix: --viral
 - id: in_bact
   doc: update bacterial database
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bact
 - id: in_fungal
   doc: update fungal database
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fungal
 - id: in_picked
   doc: file with additional sequences, one GI per line
-  type: File
+  type: File?
   inputBinding:
     prefix: --picked
 - id: in_vir_met
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - virmet

@@ -88,6 +88,9 @@ task GcloudConfigList {
       ~{if defined(limit) then ("--limit " +  '"' + limit + '"') else ""} \
       ~{if (sort_by) then "--sort-by" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "List all set and unset properties that match the arguments."
     filter: "Apply a Boolean filter EXPRESSION to each resource item to be listed.\\nIf the expression evaluates True then that item is listed. For more\\ndetails and examples of filter expressions run $ gcloud topic filters.\\nThis flag interacts with other flags that are applied in this order:\\n--flatten, --sort-by, --filter, --limit."

@@ -46,6 +46,9 @@ task TutorialEqtlbmaR {
       ~{if (dir) then "--dir" else ""} \
       ~{if (n_cores) then "--ncores" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "verbosity level (0/default=1/2)"
     pkg: "absolute path to the package"

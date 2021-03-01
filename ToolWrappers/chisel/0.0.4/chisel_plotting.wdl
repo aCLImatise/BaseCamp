@@ -13,11 +13,11 @@ task ChiselPlotting {
     String? xmin
     String? ymax
     String? ymin
-    String input_file_inferred
+    String input_file_defaultcallscallstsv
   }
   command <<<
     chisel_plotting \
-      ~{input_file_inferred} \
+      ~{input_file_defaultcallscallstsv} \
       ~{if defined(clone_map) then ("--clonemap " +  '"' + clone_map + '"') else ""} \
       ~{if defined(fig_format) then ("--figformat " +  '"' + fig_format + '"') else ""} \
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
@@ -30,6 +30,9 @@ task ChiselPlotting {
       ~{if defined(ymax) then ("--ymax " +  '"' + ymax + '"') else ""} \
       ~{if defined(ymin) then ("--ymin " +  '"' + ymin + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clone_map: "Clone map (default: not used, the cells will be\\nclustered for plotting purposes)"
     fig_format: "Format of output figures (default: png, the only other\\noption is pdf)"
@@ -42,7 +45,7 @@ task ChiselPlotting {
     xmin: "Minimum x-axis value (default: None)"
     ymax: "Maximum x-axis value (default: None)"
     ymin: "Minimum x-axis value (default: None)"
-    input_file_inferred: "Input file with inferred copy numbers (default:\\ncalls/calls.tsv)"
+    input_file_defaultcallscallstsv: "Input file with inferred copy numbers (default:\\ncalls/calls.tsv)"
   }
   output {
     File out_stdout = stdout()

@@ -8,6 +8,9 @@ task CortexpyArgs {
     cortexpy args \
       ~{cortex_py}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cortex_py: ""
   }

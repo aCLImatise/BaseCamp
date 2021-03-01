@@ -56,6 +56,9 @@ task SnpDiversitypy {
       ~{if defined(site_type) then ("--site_type " +  '"' + site_type + '"') else ""} \
       ~{if defined(max_sites) then ("--max_sites " +  '"' + max_sites + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "path to output file (/dev/stdout)"
     genomic_type: "compute diversity for individual genes or genome-wide (genome-wide)"

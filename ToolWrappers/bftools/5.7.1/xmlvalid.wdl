@@ -4,6 +4,9 @@ task Xmlvalid {
   command <<<
     xmlvalid
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

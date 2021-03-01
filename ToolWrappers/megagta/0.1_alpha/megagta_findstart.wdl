@@ -14,6 +14,9 @@ task MegagtaFindstart {
       ~{read_dot_lib} \
       ~{k_size}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     find_start: ""
     ref_seq: ""

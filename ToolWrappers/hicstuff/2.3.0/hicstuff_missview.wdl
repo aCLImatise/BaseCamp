@@ -22,6 +22,9 @@ task HicstuffMissview {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aligner: "The read alignment software to use. Can be either\\nbowtie2, minimap2 or bwa. minimap2 should only be\\nused for reads > 100 bp. [default: bowtie2]"
     binning: "Resolution to use to preview the Hi-C map. [default: 5000]"

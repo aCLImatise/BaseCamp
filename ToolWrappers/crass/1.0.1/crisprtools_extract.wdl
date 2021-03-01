@@ -24,6 +24,9 @@ task CrisprtoolsExtract {
       ~{if defined(header_prefix) then ("--header-prefix " +  '"' + header_prefix + '"') else ""} \
       ~{if (split_group) then "--split-group" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_directory: "output file directory  [default: .]"
     give_custom_prefix: "Give a custom prefix to each of the outputed files [default: ]"

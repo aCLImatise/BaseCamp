@@ -1,24 +1,31 @@
 class: CommandLineTool
 id: tagcorpus.cwl
 inputs:
-- id: in_types
-  doc: "--entities=filename\n--names=filename"
-  type: File
-  inputBinding:
-    prefix: --types
 - id: in_documents
-  doc: "Read input from file instead of from STDIN\n--groups=filename\n--type-pairs=filename\
-    \   Types of pairs that are allowed\n--stopwords=filename\n--autodetect Turn autodetect\
-    \ on\n--tokenize-characters Turn single-character tokenization on\n--document-weight=1.00\n\
-    --paragraph-weight=2.00\n--sentence-weight=0.20\n--normalization-factor=0.60\n\
-    --threads=1\n--out-matches=filename\n--out-pairs=filename\n--out-segments=filename\n"
-  type: File
+  doc: Read input from file instead of from STDIN
+  type: File?
   inputBinding:
     prefix: --documents
+- id: in_type_pairs
+  doc: Types of pairs that are allowed
+  type: File?
+  inputBinding:
+    prefix: --type-pairs
+- id: in_autodetect
+  doc: autodetect on
+  type: File?
+  inputBinding:
+    prefix: --autodetect
+- id: in_tokenize_characters
+  doc: single-character tokenization on
+  type: string?
+  inputBinding:
+    prefix: --tokenize-characters
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tagcorpus

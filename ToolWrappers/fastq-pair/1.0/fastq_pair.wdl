@@ -12,6 +12,9 @@ task FastqPair {
       ~{if defined(number_elements_bucket) then ("-p " +  '"' + number_elements_bucket + '"') else ""} \
       ~{if defined(output_mainly_debugging) then ("-v " +  '"' + output_mainly_debugging + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     size_default: "size (default 100003)"
     number_elements_bucket: "the number of elements in each bucket in the table"

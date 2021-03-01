@@ -18,6 +18,9 @@ task Launchy {
       ~{if (dry_run) then "--dry-run" else ""} \
       ~{if defined(host_os) then ("--host-os " +  '"' + host_os + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     application: "Explicitly specify the application class to use in the launch"
     debug: "Force debug. Output lots of information."

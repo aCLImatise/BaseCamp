@@ -78,6 +78,9 @@ task Srst2 {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(prev_output) then ("--prev_output " +  '"' + prev_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_se: "Single end read file(s) for analysing (may be gzipped)"
     input_pe: "Paired end read files for analysing (may be gzipped)"

@@ -3,12 +3,12 @@ id: dicey_blacklist.cwl
 inputs:
 - id: in_arg_blacklist_bed
   doc: "[ --blacklist ] arg (=\"blacklist.bed\")\nblacklist in BED format"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
-- id: in_arg_gzipped_file
+- id: in_arg_gzipped_output
   doc: '[ --outfile ] arg (="map.fa.gz")   gzipped output file'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_danio_rerio_dot_fado_tgz
@@ -20,11 +20,12 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_arg_gzipped_file
+- id: out_arg_gzipped_output
   doc: '[ --outfile ] arg (="map.fa.gz")   gzipped output file'
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_arg_gzipped_file)
+    glob: $(inputs.in_arg_gzipped_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dicey

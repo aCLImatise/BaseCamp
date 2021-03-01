@@ -12,6 +12,9 @@ task AccessionToTaxId {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     accession: "NCBI accession number, e.g NC_000913"
     verbose: "Loud verbosity"

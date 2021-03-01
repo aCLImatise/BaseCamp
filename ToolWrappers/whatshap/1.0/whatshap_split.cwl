@@ -4,24 +4,24 @@ inputs:
 - id: in_output_hone
   doc: "Output file to write reads from Haplotype 1 to. Use\nending .gz to create\
     \ gzipped file."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-h1
 - id: in_output_h_two
   doc: "Output file to write reads from Haplotype 2 to. Use\nending .gz to create\
     \ gzipped file."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-h2
 - id: in_output_untagged
   doc: "Output file to write untagged reads to. Use ending .gz\nto create gzipped\
     \ file."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-untagged
 - id: in_add_untagged
   doc: Add reads without tag to both H1 and H2 output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --add-untagged
 - id: in_discard_unknown_reads
@@ -30,12 +30,12 @@ inputs:
     \ (=\nkeep unknown reads), those reads would be considered\nuntagged and end up\
     \ in the respective output file.\nPlease be sure that the read names match between\
     \ the\ninput FASTQ/BAM and the haplotag list file."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --discard-unknown-reads
 - id: in_read_lengths_histogram
   doc: "Output file to write read lengths histogram to in tab\nseparated format.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --read-lengths-histogram
 - id: in_reads
@@ -64,26 +64,27 @@ outputs:
 - id: out_output_hone
   doc: "Output file to write reads from Haplotype 1 to. Use\nending .gz to create\
     \ gzipped file."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_hone)
 - id: out_output_h_two
   doc: "Output file to write reads from Haplotype 2 to. Use\nending .gz to create\
     \ gzipped file."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_h_two)
 - id: out_output_untagged
   doc: "Output file to write untagged reads to. Use ending .gz\nto create gzipped\
     \ file."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_untagged)
 - id: out_read_lengths_histogram
   doc: "Output file to write read lengths histogram to in tab\nseparated format.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_read_lengths_histogram)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - whatshap

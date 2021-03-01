@@ -20,6 +20,9 @@ task Abruijnrepeat {
       ~{if defined(output_log_file) then ("-l " +  '"' + output_log_file + '"') else ""} \
       ~{if defined(number_parallel_threads) then ("-t " +  '"' + number_parallel_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_size: "k-mer size [default = 15]"
     minimum_overlap_reads: "minimum overlap between reads [default = 5000]"

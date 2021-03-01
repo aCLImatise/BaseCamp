@@ -3,17 +3,17 @@ id: sim_shotgun.cwl
 inputs:
 - id: in_set_minimum_reads
   doc: Set minimum reads in a contig to <n> (default = 2)
-  type: long
+  type: long?
   inputBinding:
     prefix: -c
-- id: in_set_overlap_length
+- id: in_set_minimum_overlap
   doc: Set minimum overlap length to <n> (default = 40)
-  type: long
+  type: long?
   inputBinding:
     prefix: -o
-- id: in_set_readlength_deviation
+- id: in_set_readlength_std
   doc: Set read-length std deviation to <n> (default = 0)
-  type: long
+  type: long?
   inputBinding:
     prefix: -s
 - id: in_coverage
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sim-shotgun

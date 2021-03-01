@@ -12,6 +12,9 @@ task CruxCascadesearchMass {
       ~{cascade_search} \
       ~{tide_spectra_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     cascade_search: ""

@@ -38,6 +38,9 @@ task NaiveVariantCallerpy {
       ~{if defined(regions_filename) then ("--regions_filename " +  '"' + regions_filename + '"') else ""} \
       ~{if defined(regions_file_columns) then ("--regions_file_columns " +  '"' + regions_file_columns + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "BAM filename, optionally index filename. Multiple\\nallowed."
     index: "optionally index filename. Multiple allowed."

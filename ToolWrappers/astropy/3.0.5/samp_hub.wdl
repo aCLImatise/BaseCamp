@@ -32,6 +32,9 @@ task SampHub {
       ~{if defined(label) then ("--label " +  '"' + label + '"') else ""} \
       ~{if (multi) then "--multi" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     secret: "custom secret code."
     addr: "listening address (or IP)."

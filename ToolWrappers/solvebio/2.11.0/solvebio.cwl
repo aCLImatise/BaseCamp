@@ -3,17 +3,17 @@ id: solvebio.cwl
 inputs:
 - id: in_api_host
   doc: Override the default SolveBio API host
-  type: string
+  type: string?
   inputBinding:
     prefix: --api-host
 - id: in_api_key
   doc: Manually provide a SolveBio API key
-  type: string
+  type: string?
   inputBinding:
     prefix: --api-key
 - id: in_access_token
   doc: Manually provide a SolveBio OAuth2 access token
-  type: long
+  type: long?
   inputBinding:
     prefix: --access-token
 - id: in_login
@@ -75,6 +75,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - solvebio

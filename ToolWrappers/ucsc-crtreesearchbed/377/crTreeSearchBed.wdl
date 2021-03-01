@@ -14,6 +14,9 @@ task CrTreeSearchBed {
       ~{chrom} \
       ~{start}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_dot_bed: ""
     index_do_tcr: ""

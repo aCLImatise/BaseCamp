@@ -46,6 +46,9 @@ task CsvtkJoin {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fields: "Semicolon separated key fields of all files, if given one, we think all the files have the same key columns. Fields of different files should be separated by \\\";\\\", e.g -f \\\"1;2\\\" or -f \\\"A,B;C,D\\\" or -f id (default \\\"1\\\")"
     fuzzy_fields: "using fuzzy fields, e.g., -F -f \\\"*name\\\" or -F -f \\\"id123*\\\""

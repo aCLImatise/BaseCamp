@@ -3,22 +3,22 @@ id: seqtk_mergefa.cwl
 inputs:
 - id: in_quality_threshold
   doc: quality threshold [0]
-  type: long
+  type: long?
   inputBinding:
     prefix: -q
 - id: in_take_intersection
   doc: take intersection
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
-- id: in_convert_lowercase_when
+- id: in_convert_lowercase_is
   doc: convert to lowercase when one of the input base is N
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
 - id: in_pick_random_allele
   doc: pick a random allele from het
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_in_one_dot_fa
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - seqtk

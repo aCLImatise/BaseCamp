@@ -16,6 +16,9 @@ task TraitarNew {
       ~{hmm_model_f} \
       ~{archive_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     models_dir: "directory with phenotype models to be included"
     pf_acc_two_desc: "a mapping between Pfam families and phenotype ids to"

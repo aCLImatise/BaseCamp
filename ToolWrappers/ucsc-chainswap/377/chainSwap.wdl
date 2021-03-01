@@ -8,6 +8,9 @@ task ChainSwap {
     chainSwap \
       ~{in_dot_chain}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_chain: ""
   }

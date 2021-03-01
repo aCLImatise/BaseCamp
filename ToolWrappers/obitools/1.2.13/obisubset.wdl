@@ -54,6 +54,9 @@ task Obisubset {
       ~{if defined(sample_pattern) then ("--sample-pattern " +  '"' + sample_pattern + '"') else ""} \
       ~{if defined(sample_name) then ("--sample-name " +  '"' + sample_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Set logging in debug mode"
     without_progress_bar: "desactivate progress bar"

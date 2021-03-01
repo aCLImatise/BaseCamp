@@ -2,13 +2,11 @@ version 1.0
 
 task GetSeqStatspy {
   input {
-    String? b
     String summarize
     String sequence
     String lengths
     String in
-    String fast_a_slash_fast_q
-    File filename
+    String fast_a
   }
   command <<<
     get_seq_stats_py \
@@ -16,18 +14,17 @@ task GetSeqStatspy {
       ~{sequence} \
       ~{lengths} \
       ~{in} \
-      ~{fast_a_slash_fast_q} \
-      ~{filename} \
-      ~{if defined(b) then ("-b " +  '"' + b + '"') else ""}
+      ~{fast_a}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    b: ""
     summarize: ""
     sequence: ""
     lengths: ""
     in: ""
-    fast_a_slash_fast_q: ""
-    filename: ""
+    fast_a: ""
   }
   output {
     File out_stdout = stdout()

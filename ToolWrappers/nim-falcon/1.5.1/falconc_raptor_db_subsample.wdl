@@ -4,7 +4,7 @@ task FalconcRaptordbsubsample {
   input {
     Boolean? help_syntax
     Boolean? _rdbfn_string
-    Boolean? _genomesize_int
+    Boolean? _genomesize_required
     Boolean? _coverage_float
     Boolean? random_seed
     Boolean? _blocksizemb_float
@@ -17,15 +17,18 @@ task FalconcRaptordbsubsample {
       ~{megabytes_dot} \
       ~{if (help_syntax) then "--help-syntax" else ""} \
       ~{if (_rdbfn_string) then "-r" else ""} \
-      ~{if (_genomesize_int) then "-g" else ""} \
+      ~{if (_genomesize_required) then "-g" else ""} \
       ~{if (_coverage_float) then "-c" else ""} \
       ~{if (random_seed) then "--random-seed" else ""} \
       ~{if (_blocksizemb_float) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help_syntax: "advanced: prepend,plurals,.."
     _rdbfn_string: "=, --rdb_fn=         string  REQUIRED  Path to the RaptorDB file."
-    _genomesize_int: "=, --genome_size=    int64   REQUIRED  Approximate genome size."
+    _genomesize_required: "=, --genome_size=    int64   REQUIRED  Approximate genome size."
     _coverage_float: "=, --coverage=       float   REQUIRED  Coverage to select from the input"
     random_seed: "=         int64   REQUIRED  Seed for random generation."
     _blocksizemb_float: "=, --block-size-mb=  float   REQUIRED  Block size of the output DB, in"

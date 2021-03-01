@@ -34,6 +34,9 @@ task Parallel {
       ~{if defined(rec_end) then ("--recend " +  '"' + rec_end + '"') else ""} \
       ~{if defined(rec_start) then ("--recstart " +  '"' + rec_start + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run_jobs_parallel: "Run n jobs in parallel"
     keep_same_order: "Keep same order"

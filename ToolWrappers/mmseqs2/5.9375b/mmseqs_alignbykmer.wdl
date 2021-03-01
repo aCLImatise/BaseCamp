@@ -26,6 +26,9 @@ task MmseqsAlignbykmer {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_size_range: "4               k-mer size in the range [6,7] (0: set automatically to optimum)"
     alph_size: "21              alphabet size [2,21]"

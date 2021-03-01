@@ -3,12 +3,12 @@ id: TOBIAS_MergePDF.cwl
 inputs:
 - id: in_input
   doc: '[ [ ...]]  PDF files to join'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: 'Path to output file (default: ./merged.pdf)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: 'Path to output file (default: ./merged.pdf)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - TOBIAS

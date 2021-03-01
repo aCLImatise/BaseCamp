@@ -3,35 +3,35 @@ command:
 - pslPartition
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: pslFile
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "- number of output subdirectory levels.  0 puts all files\ndirectly\
-    \ in outDir, 2, will create files in the form outDir/0/0/00.psl"
+  optional: true
   synonyms:
   - -outLevels
+  description: "- number of output subdirectory levels.  0 puts all files\ndirectly\
+    \ in outDir, 2, will create files in the form outDir/0/0/00.psl"
   args: !SimpleFlagArg
     name: '0'
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -partSize
   description: "- will combine non-overlapping partitions, while attempting\nto keep\
     \ them under this number of PSLs.  This reduces the number of\nfiles that are\
     \ created while ensuring that there are no overlaps\nbetween any two PSL files.\
     \  A value of 0 creates a PSL file per set of\noverlapping PSLs."
-  synonyms:
-  - -partSize
   args: !SimpleFlagArg
     name: '20000'
-  optional: true
 - !Flag
-  description: "- drop PSLs that are completely contained in a block of\nanother PSL.\n"
+  optional: true
   synonyms:
   - -dropContained
+  description: "- drop PSLs that are completely contained in a block of\nanother PSL.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -51,3 +51,4 @@ help_text: "Error: wrong # args\npslPartition - split PSL files into non-overlap
   \ 0 creates a PSL file per set of\n   overlapping PSLs.\n  -dropContained - drop\
   \ PSLs that are completely contained in a block of\n   another PSL.\n\n\n"
 generated_using: []
+docker_image:

@@ -12,6 +12,9 @@ task HighPrecisionIrtpy {
       ~{output_file} \
       ~{quality_cut_off}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mq_out_dir: ""
     output_file: ""

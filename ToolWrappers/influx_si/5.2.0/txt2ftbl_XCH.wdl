@@ -8,6 +8,9 @@ task Txt2ftblXCH {
     txt2ftbl XCH \
       ~{txttwoftbldotpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     txttwoftbldotpy: ""
   }

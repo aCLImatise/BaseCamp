@@ -28,6 +28,9 @@ task TEpeaksNarrow {
       ~{if defined(g_size) then ("--gsize " +  '"' + g_size + '"') else ""} \
       ~{if defined(num_it_r) then ("--numItr " +  '"' + num_it_r + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     treatment: "IP sample ( BAM )"
     control: "Control IP samples ( BAM )"

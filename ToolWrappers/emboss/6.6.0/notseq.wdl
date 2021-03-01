@@ -10,6 +10,9 @@ task Notseq {
       ~{parameter_dot} \
       ~{if (junk_out_seq) then "-junkoutseq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     junk_out_seq: "seqoutall  [/dev/null] This file collects the sequences\\nwhich you have excluded from the main\\noutput file of sequences."
     parameter_dot: "The list of sequence names can be separated"

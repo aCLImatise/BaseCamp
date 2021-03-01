@@ -16,6 +16,9 @@ task StrainTransmissionpy {
       ~{if (save_dist) then "--save_dist" else ""} \
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree: "The input tree file"
     metadata: "The input metadata"

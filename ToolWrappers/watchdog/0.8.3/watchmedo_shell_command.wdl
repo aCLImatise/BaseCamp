@@ -24,6 +24,9 @@ task WatchmedoShellcommand {
       ~{if (wait) then "--wait" else ""} \
       ~{if (drop) then "--drop" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     shell_command_executed: "shell command executed in response to matching events.\\nThese interpolation variables are available to your\\ncommand string:: ${watch_src_path} - event source\\npath; ${watch_dest_path} - event destination path (for\\nmoved events); ${watch_event_type} - event type;\\n${watch_object} - ``file`` or ``directory`` Note::\\nPlease ensure you do not use double quotes (\\\") to\\nquote your command string. That will force your shell\\nto interpolate before the command is processed by this\\nsubcommand. Example option usage:: --command='echo\\n\\\"${watch_src_path}\\\"' (default: -)"
     patterns: "matches event paths with these patterns (separated by\\n;). (default: '*')"

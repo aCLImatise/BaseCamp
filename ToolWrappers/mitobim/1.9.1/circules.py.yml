@@ -1,0 +1,162 @@
+!Command
+command:
+- circules.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: fasta file containing the sequence to be evaluate.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: "kmer size. single number (default = 31) or range (e.g.\n31-35)."
+  args: !SimpleFlagArg
+    name: KMER
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --kmer_step
+  description: kmer step size (default = 2).
+  args: !SimpleFlagArg
+    name: KMER_STEP
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --prefix
+  description: prefix for output files (default = 'circular').
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "<INT,INT>, --extract_by_coordinates <INT,INT>\nCoordinates for clipping\
+    \ of sequence in format\n'startpos,endpos'. Clipped sequence will be written to\n\
+    file 'prefix.circular.fasta'."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --extract_by_length
+  description: "expected length (in bp) of circular molecule. If a\ncandidate of length\
+    \ expected (+-length tolerance if\nspecified) is found, sequence will be clipped\
+    \ and\nwritten to file 'prefix.circular.fasta'."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --length_tolerance_percent
+  description: "percent length tolerance (e.g. 0.1, for 10 %).\nCandidate fragments\
+    \ must have a length of 'expected\nlength +/- t * expected length'. Default =\
+    \ 0."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --length_tolerance_absolute
+  description: "absolute length tolerance (e.g. 1000). Candidate\nfragments must have\
+    \ a length of 'expected length +/-\ntolerance'. Default = 0."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --newstart_roll
+  description: "'roll' a putative ciruclar sequence to a specified new\nstart point.\
+    \ Sequence will be written to file\n'prefix.roll.{n}.fasta'."
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: "show program's version number and exit\nexamples:\n# check for circularity\
+    \ using a k-mer length of 31 - returns suggestion(s) for clipping points in putative\
+    \ circular sequences.\ncircules.py -f test.fasta -k 31\n# check for circularity\
+    \ using k-mer lengths 31-51, stepsize 2bp - returns suggestion(s) for clipping\
+    \ points in putative circular sequences.\ncircules.py -f test.fasta -k 31-51 -s\
+    \ 2\n# check for circularity using a k-mer length of 31. If length of suggested\
+    \ circular sequence is within +/- 1 percent of the expected length (15000 bp)\n\
+    # the clipped sequence will be written to a file called 'mytest.circular.fasta'.\
+    \ In addition a file 'mytest.for-testing.fasta' will be written. It contains\n\
+    # a 1000 bp sequence obtained by joining the first/last 500 bp of the proposed\
+    \ clipped circular sequence for additional evaluation if required.\ncircules.py\
+    \ -f test.fasta -k 31 -l 15000 -p mytest\n# check for circularity using a k-mer\
+    \ length of 41. Extract if candidate is found in length range 9000 - 11000.\n\
+    circules.py -f test.fasta -k 41 -k 10000 --length_tolerance_percent 10\n# clip\
+    \ sequence at specific clip points\ncircules.py -f test.fasta -c 32,15430\n# roll\
+    \ circular sequence to new startposition, e.g. 46\ncircules.py -f test.fasta -n\
+    \ 46\n"
+  args: !EmptyFlagArg {}
+help_text: "usage: circules.py [-h] [-f <FILE>] [-k KMER] [-s KMER_STEP] [-p <STR>]\n\
+  \                   [-c <INT,INT>] [-l <INT>]\n                   [--length_tolerance_percent\
+  \ <FLOAT>]\n                   [--length_tolerance_absolute <INT>] [-n <INT>] [--version]\n\
+  \ncircules - checks for circularity in nucleotide sequences\nversion: v.0.5\n\n\
+  # Disclaimer: #\nThe script is currently in the beta phase. Any feedback is much\
+  \ appreciated.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -f <FILE>, --fasta <FILE>\n                        fasta file containing\
+  \ the sequence to be evaluate.\n  -k KMER, --kmer KMER  kmer size. single number\
+  \ (default = 31) or range (e.g.\n                        31-35).\n  -s KMER_STEP,\
+  \ --kmer_step KMER_STEP\n                        kmer step size (default = 2).\n\
+  \  -p <STR>, --prefix <STR>\n                        prefix for output files (default\
+  \ = 'circular').\n  -c <INT,INT>, --extract_by_coordinates <INT,INT>\n         \
+  \               Coordinates for clipping of sequence in format\n               \
+  \         'startpos,endpos'. Clipped sequence will be written to\n             \
+  \           file 'prefix.circular.fasta'.\n  -l <INT>, --extract_by_length <INT>\n\
+  \                        expected length (in bp) of circular molecule. If a\n  \
+  \                      candidate of length expected (+-length tolerance if\n   \
+  \                     specified) is found, sequence will be clipped and\n      \
+  \                  written to file 'prefix.circular.fasta'.\n  --length_tolerance_percent\
+  \ <FLOAT>\n                        percent length tolerance (e.g. 0.1, for 10 %).\n\
+  \                        Candidate fragments must have a length of 'expected\n \
+  \                       length +/- t * expected length'. Default = 0.\n  --length_tolerance_absolute\
+  \ <INT>\n                        absolute length tolerance (e.g. 1000). Candidate\n\
+  \                        fragments must have a length of 'expected length +/-\n\
+  \                        tolerance'. Default = 0.\n  -n <INT>, --newstart_roll <INT>\n\
+  \                        'roll' a putative ciruclar sequence to a specified new\n\
+  \                        start point. Sequence will be written to file\n       \
+  \                 'prefix.roll.{n}.fasta'.\n  --version             show program's\
+  \ version number and exit\n\n   examples: \n\t# check for circularity using a k-mer\
+  \ length of 31 - returns suggestion(s) for clipping points in putative circular\
+  \ sequences.\n\tcircules.py -f test.fasta -k 31\n\t\n\t# check for circularity using\
+  \ k-mer lengths 31-51, stepsize 2bp - returns suggestion(s) for clipping points\
+  \ in putative circular sequences.\n\tcircules.py -f test.fasta -k 31-51 -s 2\n\t\
+  \n\t# check for circularity using a k-mer length of 31. If length of suggested circular\
+  \ sequence is within +/- 1 percent of the expected length (15000 bp)\n\t# the clipped\
+  \ sequence will be written to a file called 'mytest.circular.fasta'. In addition\
+  \ a file 'mytest.for-testing.fasta' will be written. It contains\n\t# a 1000 bp\
+  \ sequence obtained by joining the first/last 500 bp of the proposed clipped circular\
+  \ sequence for additional evaluation if required.\n\tcircules.py -f test.fasta -k\
+  \ 31 -l 15000 -p mytest\n\n\t# check for circularity using a k-mer length of 41.\
+  \ Extract if candidate is found in length range 9000 - 11000.\n\tcircules.py -f\
+  \ test.fasta -k 41 -k 10000 --length_tolerance_percent 10 \n\n\t# clip sequence\
+  \ at specific clip points\n\tcircules.py -f test.fasta -c 32,15430\n\t\n\t# roll\
+  \ circular sequence to new startposition, e.g. 46\n\tcircules.py -f test.fasta -n\
+  \ 46\n\n\t\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mitobim:1.9.1--0

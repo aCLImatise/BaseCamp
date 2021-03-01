@@ -14,6 +14,9 @@ task Mergepartitionspy {
       ~{if (keep_subsets) then "--keep-subsets" else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     info: "print citation information"
     k_size: "k-mer size (default: 32) (default: 32)"

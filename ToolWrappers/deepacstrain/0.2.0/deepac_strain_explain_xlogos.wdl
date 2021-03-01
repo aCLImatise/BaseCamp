@@ -24,6 +24,9 @@ task DeepacstrainExplainXlogos {
       ~{if defined(train_data) then ("--train_data " +  '"' + train_data + '"') else ""} \
       ~{if defined(out_dir) then ("--out_dir " +  '"' + out_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_dir: "Directory containing motifs per filter (.fasta)"
     scores_dir: "Directory containing nucleotide scores per filter\\n(.csv)"

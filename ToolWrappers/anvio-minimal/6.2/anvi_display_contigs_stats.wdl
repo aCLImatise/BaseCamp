@@ -22,6 +22,9 @@ task Anvidisplaycontigsstats {
       ~{if (server_only) then "--server-only" else ""} \
       ~{if (password_protected) then "--password-protected" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report_as_text: "If you give this flag, Anvi'o will not open new\\nbrowser to show Contigs database statistics and write\\nall stats to TAB separated file and you should also\\ngive --output-file with this flag otherwise Anvi'o\\nwill complain."
     output_file: "File path to store results."

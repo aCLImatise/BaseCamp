@@ -3,38 +3,38 @@ id: cd_hit_lap.cwl
 inputs:
 - id: in_input_file
   doc: Input file;
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_output_file
   doc: Output file;
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_minimum_length_overlapping
   doc: Minimum length of overlapping part (default 20);
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
-- id: in_minimum_percentage_overlapping
+- id: in_minimum_percentage_percentage
   doc: Minimum percentage of overlapping part (default 0, any percentage);
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_description_length_default
   doc: Description length (default 0, truncate at the first whitespace character)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_random_number_seed
   doc: Random number seed for shuffling (default 0, no shuffling; shuffled before
     sorting by length);
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_stdout
   doc: Standard output type (default "log", other options "rep", "clstr");
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -stdout
 outputs:
@@ -43,9 +43,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: Output file;
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cd-hit-lap

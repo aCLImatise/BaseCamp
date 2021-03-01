@@ -18,6 +18,9 @@ task AgatSpFilterByORFSizepl {
       ~{if (verbose_useful_debugging) then "-v" else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GTF/GFF file."
     size: "ORF size to apply the test. Default 100."

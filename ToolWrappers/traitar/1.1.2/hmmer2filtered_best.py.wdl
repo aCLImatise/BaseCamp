@@ -5,7 +5,7 @@ task Hmmer2filteredBestpy {
     String parse
     String hmmer
     String var_output
-    File file
+    File var_file
     String and
     String generated
     String filtered
@@ -16,17 +16,20 @@ task Hmmer2filteredBestpy {
       ~{parse} \
       ~{hmmer} \
       ~{var_output} \
-      ~{file} \
+      ~{var_file} \
       ~{and} \
       ~{generated} \
       ~{filtered} \
       ~{best}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     parse: ""
     hmmer: ""
     var_output: ""
-    file: ""
+    var_file: ""
     and: ""
     generated: ""
     filtered: ""

@@ -12,6 +12,9 @@ task Jppy {
       ~{if defined(filename) then ("--filename " +  '"' + filename + '"') else ""} \
       ~{if (ast) then "--ast" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: "The filename containing the input data. If a filename\\nis not given then data is read from stdin."
     ast: "Pretty print the AST, do not search the data."

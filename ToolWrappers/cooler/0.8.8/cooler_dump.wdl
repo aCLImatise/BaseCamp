@@ -10,7 +10,7 @@ task CoolerDump {
     Int? range
     Int? range_two
     Boolean? matrix
-    Boolean? balanced
+    Boolean? no_balance
     Boolean? join
     Int? annotate
     Boolean? one_based_ids
@@ -29,13 +29,16 @@ task CoolerDump {
       ~{if defined(range) then ("--range " +  '"' + range + '"') else ""} \
       ~{if defined(range_two) then ("--range2 " +  '"' + range_two + '"') else ""} \
       ~{if (matrix) then "--matrix" else ""} \
-      ~{if (balanced) then "--balanced" else ""} \
+      ~{if (no_balance) then "--no-balance" else ""} \
       ~{if (join) then "--join" else ""} \
       ~{if defined(annotate) then ("--annotate " +  '"' + annotate + '"') else ""} \
       ~{if (one_based_ids) then "--one-based-ids" else ""} \
       ~{if defined(chunksize) then ("--chunksize " +  '"' + chunksize + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     table: "[chroms|bins|pixels]\\nWhich table to dump. Choosing 'chroms' or\\n'bins' will cause all pixel-related options\\nto be ignored. Note that for coolers stored\\nin symmetric-upper mode, 'pixels' only holds\\nthe upper triangle values of the matrix.\\n[default: pixels]"
     columns: "[,]      Restrict output to a subset of columns,\\nprovided as a comma-separated list."
@@ -45,7 +48,7 @@ task CoolerDump {
     range: "The coordinates of a genomic region shown\\nalong the row dimension, in UCSC-style\\nnotation. (Example:\\nchr1:10,000,000-11,000,000). If omitted, the\\nentire contact matrix is printed."
     range_two: "The coordinates of a genomic region shown\\nalong the column dimension. If omitted, the\\ncolumn range is the same as the row range."
     matrix: "For coolers stored in symmetric-upper mode,\\nensure any empty areas of the genomic query\\nwindow are populated by generating the\\nlower-triangular pixels.  [default: False]"
-    balanced: "/ --no-balance   Apply balancing weights to data. This will\\nprint an extra column called `balanced`\\n[default: False]"
+    no_balance: "Apply balancing weights to data. This will\\nprint an extra column called `balanced`\\n[default: False]"
     join: "Print the full chromosome bin coordinates\\ninstead of bin IDs. This will replace the\\n`bin1_id` column with `chrom1`, `start1`,\\nand `end1`, and the `bin2_id` column with\\n`chrom2`, `start2` and `end2`.  [default:\\nFalse]"
     annotate: "[,]         Join additional columns from the bin table\\nagainst the pixels. Provide a comma\\nseparated list of column names (no spaces).\\nThe merged columns will be suffixed by '1'\\nand '2' accordingly."
     one_based_ids: "Print bin IDs as one-based rather than zero-"

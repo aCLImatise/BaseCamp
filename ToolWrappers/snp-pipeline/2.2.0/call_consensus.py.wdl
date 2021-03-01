@@ -5,7 +5,7 @@ task CallConsensuspy {
     Boolean? force
     File? snp_list_file
     File? exclude_file
-    File? output_file_relative
+    File? output_file_path
     Int? min_base_qual
     Float? min_cons_freq
     Int? min_cons_dpth
@@ -23,7 +23,7 @@ task CallConsensuspy {
       ~{if (force) then "--force" else ""} \
       ~{if defined(snp_list_file) then ("--snpListFile " +  '"' + snp_list_file + '"') else ""} \
       ~{if defined(exclude_file) then ("--excludeFile " +  '"' + exclude_file + '"') else ""} \
-      ~{if defined(output_file_relative) then ("--output " +  '"' + output_file_relative + '"') else ""} \
+      ~{if defined(output_file_path) then ("--output " +  '"' + output_file_path + '"') else ""} \
       ~{if defined(min_base_qual) then ("--minBaseQual " +  '"' + min_base_qual + '"') else ""} \
       ~{if defined(min_cons_freq) then ("--minConsFreq " +  '"' + min_cons_freq + '"') else ""} \
       ~{if defined(min_cons_dpth) then ("--minConsDpth " +  '"' + min_cons_dpth + '"') else ""} \
@@ -36,11 +36,14 @@ task CallConsensuspy {
       ~{if (vcf_failed_snp_gt) then "--vcfFailedSnpGt" else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "Force processing even when result file already exists\\nand is newer than inputs. (default: False)"
     snp_list_file: "Relative or absolute path to the SNP list file across\\nall samples. (default: snplist.txt)"
     exclude_file: "VCF file of positions to exclude. (default: None)"
-    output_file_relative: "Output file. Relative or absolute path to the\\nconsensus fasta file for this sample. (default:\\nconsensus.fasta)"
+    output_file_path: "Output file. Relative or absolute path to the\\nconsensus fasta file for this sample. (default:\\nconsensus.fasta)"
     min_base_qual: "Mimimum base quality score to count a read. All other\\nsnp filters take effect after the low-quality reads\\nare discarded. (default: 0)"
     min_cons_freq: "Consensus frequency. Mimimum fraction of high-quality\\nreads supporting the consensus to make a call.\\n(default: 0.6)"
     min_cons_dpth: "Consensus depth. Minimum number of high-quality reads\\nsupporting the consensus to make a call. (default: 1)"
@@ -55,7 +58,7 @@ task CallConsensuspy {
   }
   output {
     File out_stdout = stdout()
-    File out_output_file_relative = "${in_output_file_relative}"
+    File out_output_file_path = "${in_output_file_path}"
     File out_vcf_filename = "${in_vcf_filename}"
   }
 }

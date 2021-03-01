@@ -10,6 +10,9 @@ task ComputeDistanceAllpy {
       ~{if defined(nprocs) then ("--nprocs " +  '"' + nprocs + '"') else ""} \
       ~{if defined(ifn_alignments) then ("--ifn_alignments " +  '"' + ifn_alignments + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nprocs: ""
     ifn_alignments: ""

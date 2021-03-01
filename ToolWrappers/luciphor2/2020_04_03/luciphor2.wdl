@@ -12,6 +12,9 @@ task Luciphor2 {
       ~{input_file} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jar: ""
     java: ""

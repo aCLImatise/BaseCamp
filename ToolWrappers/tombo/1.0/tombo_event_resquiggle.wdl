@@ -56,6 +56,9 @@ task TomboEventResquiggle {
       ~{if defined(re_squiggle_processes) then ("--resquiggle-processes " +  '"' + re_squiggle_processes + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minimap_two_executable: "Path to minimap2 executable."
     minimap_two_index: "Path to minimap2 index (with map-ont preset) file\\ncorresponding to the [genome_fasta] provided."

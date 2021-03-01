@@ -16,6 +16,9 @@ task HpExtractPairwise {
       ~{if defined(ref_reg) then ("--refreg " +  '"' + ref_reg + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     align_json: "JSON file describing alignment (output of\\npairwise_align stage)"
     outfile: "Output file. Default is stdout"

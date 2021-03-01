@@ -28,6 +28,9 @@ task VelocytoRun10x {
       ~{if defined(dump) then ("--dump " +  '"' + dump + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metadata_table: "Table containing metadata of the various samples (csv fortmated rows are samples and cols are entries)"
     mask: ".gtf file containing intervals to mask"

@@ -14,6 +14,9 @@ task OtuToTaxNamepy {
       ~{if defined(output_fp) then ("--output_fp " +  '"' + output_fp + '"') else ""} \
       ~{if (reverse_lookup) then "--reverse_lookup" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     otu_table: "Input biom file format OTU table. [REQUIRED]"
     otu_id_fp: "A single or multi-column (tab-separated) file\\ncontaining the OTU IDs to be converted in the first\\ncolumn. [REQUIRED]"

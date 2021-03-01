@@ -24,11 +24,6 @@ task PheniqsMux {
     Int? threads
     Int? buffer
     Int? precision
-    String? i_slash_input
-    String? oslash_output
-    Directory? oslash_base_output
-    String? v_slash_validate
-    File? s_slash_sense_input
   }
   command <<<
     pheniqs mux \
@@ -53,13 +48,11 @@ task PheniqsMux {
       ~{if (job) then "--job" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(buffer) then ("--buffer " +  '"' + buffer + '"') else ""} \
-      ~{if defined(precision) then ("--precision " +  '"' + precision + '"') else ""} \
-      ~{if defined(i_slash_input) then ("-i/--input " +  '"' + i_slash_input + '"') else ""} \
-      ~{if defined(oslash_output) then ("-o/--output " +  '"' + oslash_output + '"') else ""} \
-      ~{if defined(oslash_base_output) then ("-O/--base-output " +  '"' + oslash_base_output + '"') else ""} \
-      ~{if defined(v_slash_validate) then ("-V/--validate " +  '"' + v_slash_validate + '"') else ""} \
-      ~{if defined(s_slash_sense_input) then ("-s/--sense-input " +  '"' + s_slash_sense_input + '"') else ""}
+      ~{if defined(precision) then ("--precision " +  '"' + precision + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_input_file: "Path to an input file. May be repeated."
     path_output_file: "Path to an output file. May be repeated."
@@ -83,11 +76,6 @@ task PheniqsMux {
     threads: "Thread pool size"
     buffer: "Feed buffer capacity"
     precision: "Output floating point precision"
-    i_slash_input: "to /dev/stdin with inputing layout sensing."
-    oslash_output: "to /dev/stdout with SAM format."
-    oslash_base_output: "to the working directory."
-    v_slash_validate: "job excution and only emit information."
-    s_slash_sense_input: "guess input layout by examining the first few reads of each input file."
   }
   output {
     File out_stdout = stdout()

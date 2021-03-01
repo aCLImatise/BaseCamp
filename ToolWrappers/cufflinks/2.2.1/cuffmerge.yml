@@ -4,55 +4,58 @@ command:
 positional: []
 named:
 - !Flag
-  description: Prints the help message and exits
-  synonyms:
-  - -h/--help
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: '<output_dir>     Directory where merged assembly will be written  [
-    default: ./merged_asm  ]'
   synonyms:
   - -o
+  description: '<output_dir>     Directory where merged assembly will be written  [
+    default: ./merged_asm  ]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --ref-gtf
   description: An optional "reference" annotation GTF.
-  synonyms:
-  - -g/--ref-gtf
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --ref-sequence
   description: <seq_dir>/<seq_fasta> Genomic DNA sequences for the reference.
-  synonyms:
-  - -s/--ref-sequence
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Discard isoforms with abundance below this       [ default:           0.05
-    ]'
+  optional: true
   synonyms:
   - --min-isoform-fraction
+  description: 'Discard isoforms with abundance below this       [ default:           0.05
+    ]'
   args: !SimpleFlagArg
     name: 0-1.0
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --num-threads
   description: '<int>            Use this many threads to merge assemblies.       [
     default:             1  ]'
-  synonyms:
-  - -p/--num-threads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Keep all intermediate files during merge
+  optional: true
   synonyms:
   - --keep-tmp
+  description: Keep all intermediate files during merge
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints the help message and exits
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "cuffmerge: \ncuffmerge takes two or more Cufflinks GTF files and merges\
@@ -71,3 +74,4 @@ help_text: "cuffmerge: \ncuffmerge takes two or more Cufflinks GTF files and mer
   \ files during merge\n\n"
 generated_using:
 - --help
+docker_image:

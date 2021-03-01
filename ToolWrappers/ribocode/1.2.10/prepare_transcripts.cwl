@@ -4,28 +4,29 @@ inputs:
 - id: in_gtf
   doc: "Default, suitable for GENCODE and ENSEMBL GTF file,\nplease refer: https://en.wikipedia.org/wiki/GENCODE,\n\
     or using GTFupdate command to update your GTF file."
-  type: File
+  type: File?
   inputBinding:
     prefix: --gtf
 - id: in_fast_a
   doc: The genome sequences file in fasta format.
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta
 - id: in_out_dir
   doc: annotation directory name.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --out_dir
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -V
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - prepare_transcripts

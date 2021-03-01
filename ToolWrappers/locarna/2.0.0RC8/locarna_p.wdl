@@ -74,6 +74,9 @@ task LocarnaP {
       ~{if defined(max_bp_span) then ("--maxBPspan " +  '"' + max_bp_span + '"') else ""} \
       ~{if (relaxed_anchors) then "--relaxed-anchors" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Be verbose. Prints input parameters, sequences and size information."
     quiet: "Be quiet."

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Float, Boolean, Int
+
+Wtobt_V0_1_0 = CommandToolBuilder(tool="wtobt", base_command=["wtobt"], inputs=[ToolInput(tag="in_long_reads_file", input_type=File(optional=True), prefix="-i", doc=InputDocumentation(doc="Long reads sequences file, + *")), ToolInput(tag="in_long_reads_region", input_type=String(optional=True), prefix="-b", doc=InputDocumentation(doc="Long reads retained region, often from wtobt/wtcyc, +\nFormat: read_name\toffset\tlength\toriginal_len")), ToolInput(tag="in_overlap_files_readsttlentbegtendtreadsttlentbegtendtscoretidentityfloattmattmistinstdeltcigar", input_type=Float(optional=True), prefix="-j", doc=InputDocumentation(doc="Overlap file(s), + *\nFormat: reads1\t+/-\tlen1\tbeg1\tend1\treads2\t+/-\tlen2\tbeg2\tend2\tscore\tidentity<float>\tmat\tmis\tins\tdel\tcigar")), ToolInput(tag="in_ouput_reads_regions", input_type=Boolean(optional=True), prefix="-o", doc=InputDocumentation(doc="Ouput of reads' regions after trimming, -:stdout, *\nFormat: read_name\toffset\tlength")), ToolInput(tag="in_force_overwrite_output", input_type=File(optional=True), prefix="-f", doc=InputDocumentation(doc="Force overwrite output file")), ToolInput(tag="in_trun_specical_trim", input_type=Boolean(optional=True), prefix="-C", doc=InputDocumentation(doc="Trun off specical trim for reads contained by others\nOne read (A) will not be trimmed when it is contained by another read (B).\nWhen trun on special trim (by default), if the B read is trimmed, program will accordingly trim A read")), ToolInput(tag="in_minimum_score_alignment", input_type=Int(optional=True), prefix="-s", doc=InputDocumentation(doc="Minimum score of alignment, [200]")), ToolInput(tag="in_minimum_identity_alignment", input_type=Float(optional=True), prefix="-m", doc=InputDocumentation(doc="Minimum identity of alignment , [0.5]")), ToolInput(tag="in_maximum_margin_alignment", input_type=Int(optional=True), prefix="-w", doc=InputDocumentation(doc="Maximum margin of alignment, [200]")), ToolInput(tag="in_minimum_depth_overlap", input_type=Int(optional=True), prefix="-c", doc=InputDocumentation(doc="Minimum depth of overlap between anchored reads along reference read, to detect chimeric reads, [1]"))], outputs=[ToolOutput(tag="out_force_overwrite_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_force_overwrite_output", type_hint=File()), doc=OutputDocumentation(doc="Force overwrite output file"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Wtobt_V0_1_0().translate("wdl", allow_empty_container=True)
+

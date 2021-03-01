@@ -5,9 +5,9 @@ task Ssucmsearch {
     File? direct_output_file
     Boolean? configure_cmhmm_glocal
     Boolean? append_posterior_probabilities
-    Boolean? annotate_bps_output
+    Boolean? annotate_noncompensatory_bps
     Boolean? annotate_negative_scoring
-    Int? set_database_size
+    Int? set_z_database
     Boolean? top_only
     Boolean? bottom_only
     String? forecast
@@ -18,7 +18,7 @@ task Ssucmsearch {
     Boolean? cy_k
     Boolean? forward
     Boolean? viterbi
-    Float? use_evalue_x
+    Float? use_cutoff_evalue
     Float? use_bit_score
     Boolean? nc
     Boolean? ga
@@ -60,9 +60,9 @@ task Ssucmsearch {
       ~{if defined(direct_output_file) then ("-o " +  '"' + direct_output_file + '"') else ""} \
       ~{if (configure_cmhmm_glocal) then "-g" else ""} \
       ~{if (append_posterior_probabilities) then "-p" else ""} \
-      ~{if (annotate_bps_output) then "-x" else ""} \
+      ~{if (annotate_noncompensatory_bps) then "-x" else ""} \
       ~{if (annotate_negative_scoring) then "-v" else ""} \
-      ~{if defined(set_database_size) then ("-Z " +  '"' + set_database_size + '"') else ""} \
+      ~{if defined(set_z_database) then ("-Z " +  '"' + set_z_database + '"') else ""} \
       ~{if (top_only) then "--toponly" else ""} \
       ~{if (bottom_only) then "--bottomonly" else ""} \
       ~{if defined(forecast) then ("--forecast " +  '"' + forecast + '"') else ""} \
@@ -73,7 +73,7 @@ task Ssucmsearch {
       ~{if (cy_k) then "--cyk" else ""} \
       ~{if (forward) then "--forward" else ""} \
       ~{if (viterbi) then "--viterbi" else ""} \
-      ~{if defined(use_evalue_x) then ("-E " +  '"' + use_evalue_x + '"') else ""} \
+      ~{if defined(use_cutoff_evalue) then ("-E " +  '"' + use_cutoff_evalue + '"') else ""} \
       ~{if defined(use_bit_score) then ("-T " +  '"' + use_bit_score + '"') else ""} \
       ~{if (nc) then "--nc" else ""} \
       ~{if (ga) then "--ga" else ""} \
@@ -106,13 +106,16 @@ task Ssucmsearch {
       ~{if (dna) then "--dna" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     direct_output_file: ": direct output to file <f>, not stdout"
     configure_cmhmm_glocal: ": configure CM/HMM for glocal alignment [default: local]"
     append_posterior_probabilities: ": append posterior probabilities to hit alignments"
-    annotate_bps_output: ": annotate non-compensatory bps in output alignments with 'x'"
+    annotate_noncompensatory_bps: ": annotate non-compensatory bps in output alignments with 'x'"
     annotate_negative_scoring: ": annotate negative scoring non-canonical bps with 'v'"
-    set_database_size: ": set Z (database size in *Mb*) to <x> for E-value calculations"
+    set_z_database: ": set Z (database size in *Mb*) to <x> for E-value calculations"
     top_only: ": only search the top strand"
     bottom_only: ": only search the bottom strand"
     forecast: ": don't do search, forecast running time with <n> processors"
@@ -123,7 +126,7 @@ task Ssucmsearch {
     cy_k: ": use scanning CM CYK algorithm"
     forward: ": use scanning HMM Forward algorithm"
     viterbi: ": use scanning HMM Viterbi algorithm"
-    use_evalue_x: ": use cutoff E-value of <x> for final round of search  [1.0]  (x>0.)"
+    use_cutoff_evalue: ": use cutoff E-value of <x> for final round of search  [1.0]  (x>0.)"
     use_bit_score: ": use cutoff bit score of <x> for final round of search  [0.0]"
     nc: ": use CM Rfam NC noise cutoff as cutoff bit score"
     ga: ": use CM Rfam GA gathering threshold as cutoff bit score"

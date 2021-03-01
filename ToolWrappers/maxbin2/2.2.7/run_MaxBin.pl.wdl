@@ -10,6 +10,9 @@ task RunMaxBinpl {
       ~{run_max_bin_do_tpl} \
       ~{if (out) then "-out" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "(output file)"
     run_max_bin_do_tpl: "-contig (contig file)"

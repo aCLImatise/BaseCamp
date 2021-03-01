@@ -4,53 +4,53 @@ inputs:
 - id: in_algo
   doc: 'Parsimony algorithm for resolving ambiguities: acctran, deltran, or downpass
     (default "acctran")'
-  type: string
+  type: string?
   inputBinding:
     prefix: --algo
 - id: in_align
   doc: Alignment input file (default "stdin")
-  type: File
+  type: File?
   inputBinding:
     prefix: --align
 - id: in_input
   doc: Input tree (default "stdin")
-  type: string
+  type: string?
   inputBinding:
     prefix: --input
 - id: in_input_strict
   doc: Strict phylip input format (only used with -p)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input-strict
 - id: in_output
   doc: Output file (default "stdout")
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_phylip
   doc: 'Alignment is in phylip? default : false (Fasta)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --phylip
 - id: in_random_resolve
   doc: 'Random resolve states when several possibilities in: acctran, deltran, or
     downpass'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --random-resolve
 - id: in_format
   doc: Input tree format (newick, nexus, or phyloxml) (default "newick")
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
 - id: in_seed
   doc: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --seed
 - id: in_threads
   doc: Number of threads (Max=8) (default 1)
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 outputs:
@@ -59,9 +59,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output file (default "stdout")
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gotree

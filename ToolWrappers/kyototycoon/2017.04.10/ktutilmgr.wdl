@@ -40,6 +40,9 @@ task Ktutilmgr {
       ~{if defined(jl) then ("-jl " +  '"' + jl + '"') else ""} \
       ~{if defined(ds) then ("-ds " +  '"' + ds + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     uf: ""
     uw: ""

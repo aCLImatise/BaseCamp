@@ -22,6 +22,9 @@ task Tabview {
       ~{if (double_width) then "--double_width" else ""} \
       ~{if defined(quote_char) then ("--quote-char " +  '"' + quote_char + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     encoding: "Encoding, if required. If the file is UTF-8,\\nLatin-1(iso8859-1) or a few other common encodings, it\\nshould be detected automatically. If not, you can pass\\n'CP720', or 'iso8859-2', for example."
     delimiter: "CSV delimiter. Not typically necessary since automatic\\ndelimiter sniffing is used."

@@ -14,6 +14,9 @@ task Humann2Config {
       ~{if (print) then "--print" else ""} \
       ~{if defined(update) then ("--update " +  '"' + update + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print: "print the configuration"
     update: "<name> <value>\\nupdate the section : name to the value provided\\n"

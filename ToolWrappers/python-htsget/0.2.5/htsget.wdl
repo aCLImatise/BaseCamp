@@ -30,6 +30,9 @@ task Htsget {
       ~{if defined(bearer_token) then ("--bearer-token " +  '"' + bearer_token + '"') else ""} \
       ~{if (v) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Increase verbosity."
     format: "The format of data to request."

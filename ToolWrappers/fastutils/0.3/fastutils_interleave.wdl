@@ -16,6 +16,9 @@ task FastutilsInterleave {
       ~{if (fast_q) then "--fastq" else ""} \
       ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_one: "fasta/q file containing forward (left) reads [required]"
     in_two: "fasta/q file containing reverse (right) reads [required]"

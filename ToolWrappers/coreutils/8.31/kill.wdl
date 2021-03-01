@@ -12,6 +12,9 @@ task Kill {
       ~{if (list) then "--list" else ""} \
       ~{if (table) then "--table" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     signal: "specify the name or number of the signal to be sent"
     list: "list signal names, or convert signal names to/from numbers"

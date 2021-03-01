@@ -10,6 +10,9 @@ task Chipseqgreylist {
       ~{if defined(bootstraps) then ("--bootstraps " +  '"' + bootstraps + '"') else ""} \
       ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bootstraps: ""
     cut_off: ""

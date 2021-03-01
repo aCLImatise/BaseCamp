@@ -16,6 +16,9 @@ task DetectExtremeDepth {
       ~{if (sd) then "--sd" else ""} \
       ~{if (decode) then "--decode" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bigwig: "[file]     BigWig file path."
     folder_send_output: "[dir]      Folder to send output to\\n- named as input file with '.tab' extension"

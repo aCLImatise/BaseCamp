@@ -58,6 +58,9 @@ task Ernefilter {
       ~{if (ignore_quality) then "--ignore-quality" else ""} \
       ~{if defined(cl) then ("--cl " +  '"' + cl + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contamination_reference: "reference file to use (in our format and with\\n.ebh extension)"
     query_one: "query1 file (can be compressed with gzip or\\nbzip2, or a pipe) [REQUIRED]"

@@ -3,12 +3,12 @@ id: macs2_bdgcmp.cwl
 inputs:
 - id: in_t_file
   doc: "Treatment bedGraph file, e.g. *_treat_pileup.bdg from\nMACSv2. REQUIRED"
-  type: File
+  type: File?
   inputBinding:
     prefix: --tfile
 - id: in_c_file
   doc: "Control bedGraph file, e.g. *_control_lambda.bdg from\nMACSv2. REQUIRED"
-  type: File
+  type: File?
   inputBinding:
     prefix: --cfile
 - id: in_scaling_factor
@@ -19,14 +19,14 @@ inputs:
     \ filtering redudant\nreads in million (e.g., put 31.415926 if effective\nreads\
     \ are 31,415,926) and input it for '-S'; for\n'callpeak --to-large', calculate\
     \ effective reads in\nlarger sample. DEFAULT: 1.0"
-  type: long
+  type: long?
   inputBinding:
     prefix: --scaling-factor
 - id: in_pseudo_count
   doc: "The pseudocount used for calculating logLR, logFE or\nFE. The count will be\
     \ applied after normalization of\nsequencing depth. DEFAULT: 0.0, no pseudocount\
     \ is\napplied."
-  type: double
+  type: double?
   inputBinding:
     prefix: --pseudocount
 - id: in_method_use_calculating
@@ -41,20 +41,20 @@ inputs:
     \ chromatin model(need to set\npseudocount), symmetric log10 likelihood between\
     \ two\nChIP-enrichment models, or maximum value between the\ntwo tracks. Default\
     \ option is ppois."
-  type: string
+  type: string?
   inputBinding:
     prefix: -m
 - id: in_outdir
   doc: "If specified all output files will be written to that\ndirectory. Default:\
     \ the current working directory"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_o_prefix
   doc: "The PREFIX of output bedGraph file to write scores. If\nit is given as A,\
     \ and method is 'ppois', output file\nwill be A_ppois.bdg. Mutually exclusive\
     \ with\n-o/--ofile."
-  type: File
+  type: File?
   inputBinding:
     prefix: --o-prefix
 - id: in_ofile
@@ -70,16 +70,17 @@ outputs:
 - id: out_outdir
   doc: "If specified all output files will be written to that\ndirectory. Default:\
     \ the current working directory"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
 - id: out_o_prefix
   doc: "The PREFIX of output bedGraph file to write scores. If\nit is given as A,\
     \ and method is 'ppois', output file\nwill be A_ppois.bdg. Mutually exclusive\
     \ with\n-o/--ofile."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_o_prefix)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - macs2

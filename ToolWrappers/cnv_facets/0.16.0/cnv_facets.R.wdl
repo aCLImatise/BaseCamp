@@ -42,6 +42,9 @@ task CnvFacetsR {
       ~{if (no_cov_plot) then "--no-cov-plot" else ""} \
       ~{if defined(rnd_seed) then ("--rnd-seed " +  '"' + rnd_seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "Output prefix for the output files"
     snp_tumour: "BAM file for tumour sample"

@@ -50,6 +50,9 @@ task MafParse {
       ~{if (strip_i_lines) then "--strip-i-lines" else ""} \
       ~{if (strip_e_lines) then "--strip-e-lines" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_format: "|PHYLIP|FASTA|MPM|SS\\n(Default MAF).  Output file format.  SS format is only\\navailable un-ordered.  Note that some options, which involve\\nreversing alignments based on strand, or stripping gaps,\\ncannot be output in MAF format and use FASTA by default.\\nAlso note that when output format is not MAF, the entire\\noutput must be loaded into memory."
     pretty: "Pretty-print alignment (use '.' when character matches\\ncorresponding character in first sequence).  Ignored if\\n--out-format SS is selected."

@@ -8,6 +8,9 @@ task MetageneOUTBASENormcountstxt {
     metagene OUTBASE_normcounts_txt \
       ~{meta_gene}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     meta_gene: ""
   }

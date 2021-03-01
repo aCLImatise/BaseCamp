@@ -14,6 +14,9 @@ task RgttoolspyBedAddColumns {
       ~{if defined(ref) then ("-ref " +  '"' + ref + '"') else ""} \
       ~{if defined(field) then ("--field " +  '"' + field + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bed_file: "Input BED file"
     output_bed_file: "Output BED file"

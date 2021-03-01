@@ -10,6 +10,9 @@ task Vendian {
       ~{bytes} \
       ~{filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bytes: ""
     filename: ""

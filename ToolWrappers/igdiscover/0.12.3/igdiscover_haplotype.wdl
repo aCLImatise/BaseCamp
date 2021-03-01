@@ -22,6 +22,9 @@ task IgdiscoverHaplotype {
       ~{if defined(structure_plot) then ("--structure-plot " +  '"' + structure_plot + '"') else ""} \
       ~{if defined(d_evalue) then ("--d-evalue " +  '"' + d_evalue + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v_gene: "V gene to use for haplotyping J. Default: Auto-"
     restrict: "Restrict analysis to the genes named in the FASTA\\nfile. Only the sequence names are used!"

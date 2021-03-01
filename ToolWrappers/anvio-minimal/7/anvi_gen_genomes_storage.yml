@@ -1,0 +1,115 @@
+!Command
+command:
+- anvi-gen-genomes-storage
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: analysis
+  description: '🧀 Can consume: '
+- !Positional
+  optional: false
+  position: 0
+  name: genomes-storage-db
+  description: '🍺 More on `anvi-gen-genomes-storage`:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --external-genomes
+  description: "A two-column TAB-delimited flat text file that lists\nanvi'o contigs\
+    \ databases. The first item in the header\nline should read 'name', and the second\
+    \ should read\n'contigs_db_path'. Each line in the file should\ndescribe a single\
+    \ entry, where the first column is the\nname of the genome (or MAG), and the second\
+    \ column is\nthe anvi'o contigs database generated for this genome.\n(default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --internal-genomes
+  description: "A five-column TAB-delimited flat text file. The header\nline must\
+    \ contain these columns: 'name', 'bin_id',\n'collection_id', 'profile_db_path',\
+    \ 'contigs_db_path'.\nEach line should list a single entry, where 'name' can\n\
+    be any name to describe the anvi'o bin identified as\n'bin_id' that is stored\
+    \ in a collection. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --gene-caller
+  description: "The gene caller to utilize. Anvi'o supports multiple\ngene callers,\
+    \ and some operations (including this one)\nrequires an explicit mentioning of\
+    \ which one to use.\nThe default is 'prodigal', but it will not be enough\nif\
+    \ you if you were a rebel and have used `--external-\ngene-callers` or something.\
+    \ (default: None)"
+  args: !SimpleFlagArg
+    name: GENE-CALLER
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-file
+  description: 'File path to store results. (default: None)'
+  args: !SimpleFlagArg
+    name: GENOMES_STORAGE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-gen-genomes-storage [-h] [-e FILE_PATH] [-i FILE_PATH]\n \
+  \                               [--gene-caller GENE-CALLER] -o GENOMES_STORAGE\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \nEXTERNAL GENOMES:\n  External genomes listed as anvi'o contigs databases. As in,\
+  \ you have one\n  or more genomes say from NCBI you want to work with, and you created\
+  \ an\n  anvi'o contigs database for each one of them.\n\n  -e FILE_PATH, --external-genomes\
+  \ FILE_PATH\n                        A two-column TAB-delimited flat text file that\
+  \ lists\n                        anvi'o contigs databases. The first item in the\
+  \ header\n                        line should read 'name', and the second should\
+  \ read\n                        'contigs_db_path'. Each line in the file should\n\
+  \                        describe a single entry, where the first column is the\n\
+  \                        name of the genome (or MAG), and the second column is\n\
+  \                        the anvi'o contigs database generated for this genome.\n\
+  \                        (default: None)\n\nINTERNAL GENOMES:\n  Genome bins stored\
+  \ in an anvi'o profile databases as collections.\n\n  -i FILE_PATH, --internal-genomes\
+  \ FILE_PATH\n                        A five-column TAB-delimited flat text file.\
+  \ The header\n                        line must contain these columns: 'name', 'bin_id',\n\
+  \                        'collection_id', 'profile_db_path', 'contigs_db_path'.\n\
+  \                        Each line should list a single entry, where 'name' can\n\
+  \                        be any name to describe the anvi'o bin identified as\n\
+  \                        'bin_id' that is stored in a collection. (default:\n  \
+  \                      None)\n\nPRO STUFF:\n  Things you may not have to change.\
+  \ But you never know (unless you read the\n  help).\n\n  --gene-caller GENE-CALLER\n\
+  \                        The gene caller to utilize. Anvi'o supports multiple\n\
+  \                        gene callers, and some operations (including this one)\n\
+  \                        requires an explicit mentioning of which one to use.\n\
+  \                        The default is 'prodigal', but it will not be enough\n\
+  \                        if you if you were a rebel and have used `--external-\n\
+  \                        gene-callers` or something. (default: None)\n\nOUTPUT:\n\
+  \  Give it a nice name. Must end with '-GENOMES.db'. This is primarily due to\n\
+  \  the fact that there are other .db files used throughout anvi'o and it\n  would\
+  \ be better to distinguish this very special file from them.\n\n  -o GENOMES_STORAGE,\
+  \ --output-file GENOMES_STORAGE\n                        File path to store results.\
+  \ (default: None)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   Create a genome storage from internal and/or\
+  \ external genomes for a pangenome\n   analysis\n\n\U0001F9C0 Can consume: \n\n\
+  \   external-genomes / internal-genomes\n   \n\U0001F355 Can provide: \n\n   genomes-storage-db\n\
+  \   \n\U0001F37A More on `anvi-gen-genomes-storage`:\n\n   https://merenlab.org/software/anvio/help/7/programs/anvi-gen-genomes-storage\n\
+  \n\U0001F37B All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

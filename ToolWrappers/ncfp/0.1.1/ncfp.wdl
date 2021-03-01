@@ -38,6 +38,9 @@ task Ncfp {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (disable_t_qdm) then "--disabletqdm" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     uniprot: "treat input sequences as UniProt FASTA (default:\\nFalse)"
     stockholm: "parse Stockholm format sequence regions (default:\\nFalse)"

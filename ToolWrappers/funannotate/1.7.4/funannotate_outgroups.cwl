@@ -3,27 +3,27 @@ id: funannotate_outgroups.cwl
 inputs:
 - id: in_input
   doc: Proteome multi-fasta file. Required.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input
 - id: in_species
   doc: Species name for adding a species. Required.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --species
 - id: in_busco_db
   doc: BUSCO db to use. Default. dikarya
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --busco_db
 - id: in_cpus
   doc: Number of CPUs to use for BUSCO search.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cpus
 - id: in_database
   doc: 'Path to funannotate database. Default: $FUNANNOTATE_DB'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --database
 - id: in_arguments
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - funannotate

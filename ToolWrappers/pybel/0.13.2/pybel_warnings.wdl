@@ -8,6 +8,9 @@ task PybelWarnings {
     pybel warnings \
       ~{path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path: ""
   }

@@ -22,6 +22,9 @@ task Bamleftalign {
       ~{if defined(max_iterations) then ("--max-iterations " +  '"' + max_iterations + '"') else ""} \
       ~{if (compressed) then "--compressed" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_reference: "FASTA reference file to use for realignment (required)"
     debug: "Print debugging information about realignment process"

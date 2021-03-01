@@ -8,6 +8,9 @@ task NebulizerRemoveKey {
     nebulizer remove_key \
       ~{var_alias}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_alias: ""
   }

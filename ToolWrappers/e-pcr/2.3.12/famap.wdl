@@ -16,6 +16,9 @@ task Famap {
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
       ~{if (hv) then "-hV" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
     b: ""

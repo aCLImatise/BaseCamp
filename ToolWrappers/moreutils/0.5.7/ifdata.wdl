@@ -66,6 +66,9 @@ task Ifdata {
       ~{if (bips) then "-bips" else ""} \
       ~{if (bops) then "-bops" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reports_interface_existence: "Reports interface existence via return code"
     print_whole_config: "Print out the whole config of iface"

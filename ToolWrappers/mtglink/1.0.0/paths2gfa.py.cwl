@@ -4,18 +4,18 @@ inputs:
 - id: in_in
   doc: "FASTA file containing the sequences of the scaffolds obtained from the assembly\
     \ (format: 'xxx.fasta')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -in
 - id: in_paths
   doc: "File containing the paths between scaffolds (obtained from the matrix) (format:\
     \ 'xxx.paths.txt')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -paths
 - id: in_out
   doc: Output directory for saving the GFA file and the corresponding FASTA file
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
 outputs:
@@ -24,9 +24,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Output directory for saving the GFA file and the corresponding FASTA file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - paths2gfa.py

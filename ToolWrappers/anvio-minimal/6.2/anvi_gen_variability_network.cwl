@@ -4,7 +4,7 @@ inputs:
 - id: in_input_file
   doc: "The anvi'o variability profile. Please see `anvi-gen-\nvariability-profile`\
     \ to generate one."
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-file
 - id: in_max_num_unique_positions
@@ -15,12 +15,12 @@ inputs:
     \ the `max-\nnum-unique-positions`. The default is 0, which means\nall positions\
     \ should be reported. Remember that the\nnumber of nodes in the network will also\
     \ depend on the\nnumber of samples described in the variability\nprofile."
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-num-unique-positions
 - id: in_output_file
   doc: "File path to store results.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file
 outputs:
@@ -29,9 +29,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: "File path to store results.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-gen-variability-network

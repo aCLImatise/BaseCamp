@@ -13,8 +13,8 @@ task Jshell {
     Boolean? really_quiet_feedback
     Boolean? verbose_feedback_same
     Boolean? flag_pass_flag
-    Boolean? flag_pass_remote
-    Boolean? flag_pass_compileruse
+    Boolean? flag_flag_remote
+    Boolean? flag_flag_compileruse
     Boolean? show_version
     Boolean? help_extra
     File load_file
@@ -33,11 +33,14 @@ task Jshell {
       ~{if (really_quiet_feedback) then "-s" else ""} \
       ~{if (verbose_feedback_same) then "-v" else ""} \
       ~{if (flag_pass_flag) then "-J" else ""} \
-      ~{if (flag_pass_remote) then "-R" else ""} \
-      ~{if (flag_pass_compileruse) then "-C" else ""} \
+      ~{if (flag_flag_remote) then "-R" else ""} \
+      ~{if (flag_flag_compileruse) then "-C" else ""} \
       ~{if (show_version) then "--show-version" else ""} \
       ~{if (help_extra) then "--help-extra" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     class_path: "Specify where to find user class files"
     module_path: "Specify where to find application modules"
@@ -50,8 +53,8 @@ task Jshell {
     really_quiet_feedback: "Really quiet feedback.  Same as: --feedback silent"
     verbose_feedback_same: "Verbose feedback.  Same as: --feedback verbose"
     flag_pass_flag: "<flag>              Pass <flag> directly to the runtime system.\\nUse one -J for each runtime flag or flag argument"
-    flag_pass_remote: "<flag>              Pass <flag> to the remote runtime system.\\nUse one -R for each remote flag or flag argument"
-    flag_pass_compileruse: "<flag>              Pass <flag> to the compiler.\\nUse one -C for each compiler flag or flag argument"
+    flag_flag_remote: "<flag>              Pass <flag> to the remote runtime system.\\nUse one -R for each remote flag or flag argument"
+    flag_flag_compileruse: "<flag>              Pass <flag> to the compiler.\\nUse one -C for each compiler flag or flag argument"
     show_version: "Print version information and continue"
     help_extra: "Print help on non-standard options and exit"
     load_file: ""

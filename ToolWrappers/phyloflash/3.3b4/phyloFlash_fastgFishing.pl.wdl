@@ -32,12 +32,15 @@ task PhyloFlashFastgFishingpl {
       ~{if defined(bar_nap_path) then ("--barnap-path " +  '"' + bar_nap_path + '"') else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_g: "Input Fastg file from Megahit or Spades. NB: The de facto Fastg\\nformat used by these programs differs from the Fastg standard,\\nas described in the Bandage documentation."
     fast_a: "Input Fasta file, to convert Fastg sequence identifiers to\\ncorresponding Fasta sequence IDs.\\nIf using MEGAHIT, this is the *.contigs.fa file. For SPAdes this\\nis either the scaffolds or contigs file (after repeat\\nresolution)."
     paths: "Input Paths file, to convert EDGE to NODE identifiers, if using\\nSPAdes assembler."
     assembler: "Assembler used. Either \\\"megahit\\\" or \\\"spades\\\".\\nDefault: 'megahit'"
-    compare_ssu: "--compare-zip FILE\\nIf a targeted assembly of SSU rRNA has already been performed\\nfor this library, compare the sequences to those extracted from\\nthe metagenome assembly by barrnap.\\nThe sequences can be supplied either as a Fasta flie (option\\n--compare-ssu) or as a phyloFlash tar.gz archive (option\\n--compare-zip).\\nDefault: None."
+    compare_ssu: "If a targeted assembly of SSU rRNA has already been performed\\nfor this library, compare the sequences to those extracted from\\nthe metagenome assembly by barrnap.\\nThe sequences can be supplied either as a Fasta flie (option\\n--compare-ssu) or as a phyloFlash tar.gz archive (option\\n--compare-zip).\\nDefault: None."
     out: "Output file name prefix\\nDefault: 'test'"
     cluster_only: "Do not search for SSU rRNA sequences, instead only report all\\nconnected contig clusters above length threshold, regardless of\\nwhether they have SSU rRNA or not\\nDefault: Off"
     cut_off: "Minimum total sequence length of contig cluster to be reported\\n(Default: 100000)"

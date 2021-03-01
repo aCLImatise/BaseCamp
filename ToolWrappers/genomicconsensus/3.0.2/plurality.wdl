@@ -4,6 +4,9 @@ task Plurality {
   command <<<
     plurality
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

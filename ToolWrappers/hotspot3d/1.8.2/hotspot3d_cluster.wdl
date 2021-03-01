@@ -76,6 +76,9 @@ task Hotspot3dCluster {
       ~{if (number_of_runs) then "--number-of-runs" else ""} \
       ~{if (probability_cut_off) then "--probability-cut-off" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sites_file: "A .sites file with site-site pairs"
     pairwise_file: "A .pairwise file with mutation-mutation pairs (provide maf-file)"

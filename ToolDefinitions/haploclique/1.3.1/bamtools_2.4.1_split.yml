@@ -4,81 +4,81 @@ command:
 - split
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: bamtools
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: split
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: the input BAM file [stdin]
+  optional: true
   synonyms:
   - -in
+  description: the input BAM file [stdin]
   args: !SimpleFlagArg
     name: BAM filename
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -refPrefix
   description: "custom prefix for splitting by\nreferences. Currently files end with\n\
     REF_<refName>.bam. This option allows you\nto replace \"REF_\" with a prefix of\
     \ your\nchoosing."
-  synonyms:
-  - -refPrefix
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: "custom prefix for splitting by\ntags. Current files end with\nTAG_<tagname>_<tagvalue>.bam.\
-    \ This option\nallows you to replace \"TAG_\" with a prefix\nof your choosing."
+  optional: true
   synonyms:
   - -tagPrefix
+  description: "custom prefix for splitting by\ntags. Current files end with\nTAG_<tagname>_<tagvalue>.bam.\
+    \ This option\nallows you to replace \"TAG_\" with a prefix\nof your choosing."
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -stub
   description: "prefix stub for output BAM\nfiles (default behavior is to use input\n\
     filename, without .bam extension, as\nstub). If input is stdin and no stub\nprovided,\
     \ a timestamp is generated as the\nstub."
-  synonyms:
-  - -stub
   args: !SimpleFlagArg
     name: filename stub
-  optional: true
 - !Flag
-  description: "delimiter used to separate\nvalues in the filenames generated from\n\
-    splitting on list-type tags [--]"
+  optional: true
   synonyms:
   - -tagListDelim
+  description: "delimiter used to separate\nvalues in the filenames generated from\n\
+    splitting on list-type tags [--]"
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: split mapped/unmapped
+  optional: true
   synonyms:
   - -mapped
+  description: split mapped/unmapped
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "splits alignments based on all\nvalues of TAG encountered (i.e. -tag\
-    \ RG\ncreates a BAM file for each read group in\noriginal BAM file)"
+  optional: true
   synonyms:
   - -tag
+  description: "splits alignments based on all\nvalues of TAG encountered (i.e. -tag\
+    \ RG\ncreates a BAM file for each read group in\noriginal BAM file)"
   args: !SimpleFlagArg
     name: tag name
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: shows this help text
+  optional: true
   synonyms:
   - --help
   - -h
+  description: shows this help text
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Description: splits a BAM file on user-specified property, creating a\
@@ -112,3 +112,4 @@ help_text: "Description: splits a BAM file on user-specified property, creating 
   \  --help, -h                        shows this help text\n"
 generated_using:
 - --help
+docker_image:

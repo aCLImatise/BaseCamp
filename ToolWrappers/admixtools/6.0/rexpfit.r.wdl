@@ -4,6 +4,9 @@ task Rexpfitr {
   command <<<
     rexpfit_r
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

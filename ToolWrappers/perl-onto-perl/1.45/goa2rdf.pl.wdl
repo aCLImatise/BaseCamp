@@ -10,6 +10,9 @@ task Goa2rdfpl {
       ~{usage} \
       ~{if (goa_input_file) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     goa_input_file: "GOA input file"
     usage: ": goa2rdf.pl [options]"

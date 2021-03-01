@@ -18,6 +18,9 @@ task Sample2markerspy {
       ~{if defined(breadth_threshold) then ("--breadth_threshold " +  '"' + breadth_threshold + '"') else ""} \
       ~{if defined(nprocs) then ("--nprocs " +  '"' + nprocs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_samples_sam: "The input samples as SAM or BAM files"
     sorted: "Whether the BAM input files are sorted. Default false"

@@ -18,6 +18,9 @@ task FileConverter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*        Input file to convert. (valid formats: 'mzData', 'mzXML', 'mzML', 'cachedMzML', 'dta', 'dta2d', 'mgf', 'featureXML', 'consensusXML', 'ms2', 'fid', 'tsv', 'peplist', 'kroenik', 'edta')"
     out: "*       Output file (valid formats: 'mzData', 'mzXML', 'mzML', 'cachedMzML', 'dta2d', 'mgf', 'featureXML', 'consensusXML', 'edta', 'csv')"

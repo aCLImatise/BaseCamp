@@ -1,0 +1,105 @@
+!Command
+command:
+- FilterBamByTag
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: null.
+  description: 'TAG=String                    The BAM tag to filter on.  Required. '
+- !Positional
+  optional: false
+  position: 0
+  name: match.
+  description: 'For example, if the allowed value is A and the tag is A,B, the read
+    would match. '
+- !Positional
+  optional: false
+  position: 0
+  name: null.
+  description: PASSING_READ_THRESHOLD=Double If set to a a value < 1, the program
+    will fail if fewer than this fraction of reads pass
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: (default 4g)
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: final command line before executing
+  args: !SimpleFlagArg
+    name: echo
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: /usr/local/bin/FilterBamByTag [-m <jvm_heap_size>] [-v] program\
+  \ args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final command\
+  \ line before executing\n\nProgram options:\nUSAGE: FilterBamByTag [options]\n\n\
+  Filters a BAM file based on a TAG and a file containing a list of values.  This\
+  \ is pretty similar to grepping with a\nfile, but is faster and makes a proper BAM.\n\
+  Version: 2.4.0(3d2b3d8_1600201514)\n\n\nOptions:\n\n--help\n-h                 \
+  \           Displays options specific to this tool.\n\n--stdhelp\n-H           \
+  \                 Displays options specific to this tool AND options common to all\
+  \ Picard command line\n                              tools.\n\n--version       \
+  \              Displays program version.\n\nINPUT=File\nI=File                 \
+  \       The input SAM or BAM file to analyze.  Required. \n\nOUTPUT=File\nO=File\
+  \                        Output report  Required. \n\nSUMMARY=File             \
+  \     A file containing a summary of the number of reads accepted and rejected.\
+  \  Default value:\n                              null. \n\nTAG=String          \
+  \          The BAM tag to filter on.  Required. \n\nTAG_VALUES_FILE=File       \
+  \   A file with 1 column and 1 or more rows containing a barcode value per line.\
+  \  Default\n                              value: null. \n\nTAG_VALUE=String    \
+  \          A tag value(s) for filtering reads.  Use instead of TAG_VALUES_FILE.\
+  \  Default value: null.\n                              This option may be specified\
+  \ 0 or more times. \n\nACCEPT_TAG=Boolean            If having a tag value matches\
+  \ the values in the file, accept the read.  If set to false,\n                 \
+  \             reject the read.  Default value: true. This option can be set to 'null'\
+  \ to clear the\n                              default value. Possible values: {true,\
+  \ false} \n\nALLOW_PARTIAL_MATCH=Boolean   Allow partial matching - if the tag value\
+  \ contains one of expected values, count as a\n                              match.\
+  \  For example, if the allowed value is A and the tag is A,B, the read would match.\
+  \ \n                              Default value: false. This option can be set to\
+  \ 'null' to clear the default value.\n                              Possible values:\
+  \ {true, false} \n\nPAIRED_MODE=Boolean           In Paired Read Mode if the tag\
+  \ value is on either read the pair of reads is kept or\n                       \
+  \       discarded. This is slower when turned on because of the need to queryname\
+  \ sort the data,\n                              so only turn it on if you need it!\
+  \  Default value: false. This option can be set to 'null'\n                    \
+  \          to clear the default value. Possible values: {true, false} \n\nMINIMUM_MAPPING_QUALITY=Integer\n\
+  READ_MQ=Integer               Minimum mapping quality to include the read in the\
+  \ analysis.  Reads are not filtered on\n                              map quality\
+  \ by default.  Default value: null. \n\nPASSING_READ_THRESHOLD=Double If set to\
+  \ a a value < 1, the program will fail if fewer than this fraction of reads pass\n\
+  \                              filters.  If set to a value >= 1, the program will\
+  \ fail if fewer than this many reads pass\n                              filters.\
+  \  Default value: null. \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/dropseq_tools:2.4.0--0

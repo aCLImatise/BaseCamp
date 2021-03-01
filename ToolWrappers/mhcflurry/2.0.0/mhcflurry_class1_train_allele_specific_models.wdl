@@ -44,6 +44,9 @@ task Mhcflurryclass1trainallelespecificmodels {
       ~{if defined(max_tasks_per_worker) then ("--max-tasks-per-worker " +  '"' + max_tasks_per_worker + '"') else ""} \
       ~{if defined(worker_log_dir) then ("--worker-log-dir " +  '"' + worker_log_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data: "Training data CSV. Expected columns: allele, peptide,"
     hyperparameters: "JSON or YAML of hyperparameters"

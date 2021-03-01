@@ -4,6 +4,9 @@ task DetectChimera {
   command <<<
     detectChimera
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -12,7 +12,7 @@ task Nanoblaster {
     Boolean? run_program_high
     Boolean? specify_number_aligned
     Boolean? specify_interval_length
-    Boolean? configure_using_index
+    Boolean? configure_nanoblaster_using
   }
   command <<<
     nanoblaster \
@@ -26,8 +26,11 @@ task Nanoblaster {
       ~{if (run_program_high) then "-s" else ""} \
       ~{if (specify_number_aligned) then "-n" else ""} \
       ~{if (specify_interval_length) then "-g" else ""} \
-      ~{if (configure_using_index) then "-X" else ""}
+      ~{if (configure_nanoblaster_using) then "-X" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specify_one_parameters: ": To specify one of the Parameters: -C10, -C25, or -C50"
     specify_name_reference: ": To specify the name of Reference file"
@@ -39,7 +42,7 @@ task Nanoblaster {
     run_program_high: ": To run the program in high sensitive mode"
     specify_number_aligned: ": To specify the Number of reads to be aligned"
     specify_interval_length: ": To specify the interval (or Gap) length between KMERs"
-    configure_using_index: ": To configure NanoBLASTer for less memory using Single index"
+    configure_nanoblaster_using: ": To configure NanoBLASTer for less memory using Single index"
   }
   output {
     File out_stdout = stdout()

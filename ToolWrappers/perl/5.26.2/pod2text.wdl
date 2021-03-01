@@ -40,6 +40,9 @@ task Pod2text {
       ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
       ~{if (ac_lost_u) then "-aclostu" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alt: "Use an alternate output format that, among other things, uses a\\ndifferent heading style and marks \\\"=item\\\" entries with a colon in\\nthe left margin."
     code: "Include any non-POD text from the input file in the output as well.\\nUseful for viewing code documented with POD blocks with the POD\\nrendered and the code left intact."

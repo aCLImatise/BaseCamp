@@ -26,6 +26,9 @@ task DxdockerRun {
       ~{if (rm) then "--rm" else ""} \
       ~{if defined(user) then ("--user " +  '"' + user + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     volume: "Directory to mount inside the container. Can be\\nsupplied multiple times (e.g. -v /mnt/data:/mnt/data\\n-v /host:/guest"
     env: "Environment variables to set within container. Can be\\nsupplied multiple times (e.g. -e foo=bar -e pizza=pie"

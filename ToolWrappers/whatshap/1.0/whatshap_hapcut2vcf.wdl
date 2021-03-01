@@ -12,6 +12,9 @@ task WhatshapHapcut2vcf {
       ~{hap_cut_result} \
       ~{if defined(output_vcf_file) then ("--output " +  '"' + output_vcf_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_vcf_file: "Output VCF file. If omitted, use standard output.\\n"
     vcf: "VCF file"

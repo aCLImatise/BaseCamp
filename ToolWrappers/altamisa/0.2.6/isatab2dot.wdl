@@ -10,6 +10,9 @@ task Isatab2dot {
       ~{if defined(investigation_file) then ("--investigation-file " +  '"' + investigation_file + '"') else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     investigation_file: "Path to investigation file"
     output_file: "Path to output file, stdout (\\\"-\\\") by default\\n"

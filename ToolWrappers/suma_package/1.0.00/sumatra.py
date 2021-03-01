@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean
+
+Sumatra_V0_1_0 = CommandToolBuilder(tool="sumatra", base_command=["sumatra"], inputs=[ToolInput(tag="in_reference_sequence_shortest", input_type=Boolean(optional=True), prefix="-l", doc=InputDocumentation(doc=": Reference sequence length is the shortest.")), ToolInput(tag="in_reference_sequence_largest", input_type=Boolean(optional=True), prefix="-L", doc=InputDocumentation(doc=": Reference sequence length is the largest.")), ToolInput(tag="in_reference_sequence_alignment", input_type=Boolean(optional=True), prefix="-a", doc=InputDocumentation(doc=": Reference sequence length is the alignment length (default).")), ToolInput(tag="in_score_normalized_reference", input_type=Boolean(optional=True), prefix="-n", doc=InputDocumentation(doc=": Score is normalized by reference sequence length (default).")), ToolInput(tag="in_raw_score_normalized", input_type=Boolean(optional=True), prefix="-r", doc=InputDocumentation(doc=": Raw score, not normalized.")), ToolInput(tag="in_score_expressed_expressed", input_type=Boolean(optional=True), prefix="-d", doc=InputDocumentation(doc=": Score is expressed in distance (default: score is expressed in similarity).")), ToolInput(tag="in_score_threshold_normalized", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc="##.## : Score threshold. If the score is normalized and expressed in similarity (default),\nit is an identity, e.g. 0.95 for an identity of 95%. If the score is normalized\nand expressed in distance, it is (1.0 - identity), e.g. 0.05 for an identity of 95%.\nIf the score is not normalized and expressed in similarity, it is the length of the\nLongest Common Subsequence. If the score is not normalized and expressed in distance,\nit is (reference length - LCS length).\nOnly sequence pairs with a similarity above ##.## are printed. Default: 0.00\n(no threshold).")), ToolInput(tag="in_number_threads_used", input_type=Boolean(optional=True), prefix="-p", doc=InputDocumentation(doc="##    : Number of threads used for computation (default=1).")), ToolInput(tag="in__ns_discarded", input_type=Boolean(optional=True), prefix="-g", doc=InputDocumentation(doc=": n's are replaced with a's (default: sequences with n's are discarded).")), ToolInput(tag="in_adds_four_columns", input_type=Boolean(optional=True), prefix="-x", doc=InputDocumentation(doc=": Adds four extra columns with the count and length of both sequences."))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Sumatra_V0_1_0().translate("wdl", allow_empty_container=True)
+

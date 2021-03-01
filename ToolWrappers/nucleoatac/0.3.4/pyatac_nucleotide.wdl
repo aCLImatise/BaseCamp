@@ -24,6 +24,9 @@ task PyatacNucleotide {
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if (norm) then "--norm" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "Accepts fasta file"
     bed: "Positions around which to get nucleotide frequencies"

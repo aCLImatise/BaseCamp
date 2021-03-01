@@ -18,6 +18,9 @@ task CactusSetup {
       ~{if (make_event_headers_alphanumeric) then "--makeEventHeadersAlphaNumeric" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: ": Set the log level"
     cactus_disk: ": The location of the flower disk directory"

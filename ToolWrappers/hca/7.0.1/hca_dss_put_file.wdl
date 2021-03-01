@@ -12,6 +12,9 @@ task HcaDssPutfile {
       ~{if defined(source_url) then ("--source-url " +  '"' + source_url + '"') else ""} \
       ~{if defined(uuid) then ("--uuid " +  '"' + uuid + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     creator_uid: "User ID who is creating this file."
     source_url: "Cloud bucket URL for source data.  Example is \\\"s3://bucket_name/serious_dna.fa\\\" ."

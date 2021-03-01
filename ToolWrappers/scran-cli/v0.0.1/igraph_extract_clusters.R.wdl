@@ -12,6 +12,9 @@ task IgraphExtractClustersR {
       ~{if defined(input_sce_object) then ("--input-sce-object " +  '"' + input_sce_object + '"') else ""} \
       ~{if defined(output_sce_object) then ("--output-sce-object " +  '"' + output_sce_object + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_i_graph_object: "Path to the input igraph object in rds format."
     input_sce_object: "Path to the input SCE object where to add the cluster annotation extracted from the igraph objecti."

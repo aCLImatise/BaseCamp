@@ -14,6 +14,9 @@ task Bamstatspy {
       ~{var_input} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     bam: ""

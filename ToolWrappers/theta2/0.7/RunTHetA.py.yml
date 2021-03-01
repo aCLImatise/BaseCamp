@@ -4,49 +4,139 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --NORMAL_FILE
-  args: !SimpleFlagArg
-    name: NORMAL_FILE
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - --TUMOR_FILE
+  description: File containing allelic counts for tumor sample SNPs.
   args: !SimpleFlagArg
     name: TUMOR_FILE
+- !Flag
   optional: true
+  synonyms:
+  - --NORMAL_FILE
+  description: File containing allelic counts for normal samlpe SNPs.
+  args: !SimpleFlagArg
+    name: NORMAL_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --N
+  description: Number of subpopulations
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --MAX_K
+  description: The maximum value allowed for entries in C
+  args: !SimpleFlagArg
+    name: K
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --TAU
+  description: Expected number of copies in normal genome
+  args: !SimpleFlagArg
+    name: TAU
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --DIR
+  description: Directory where result file is written to
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --OUTPUT_PREFIX
+  description: "Prefix for output files created. By default, it will\nbe the beginning\
+    \ of the input file name (i.e.if input\nfilename were example.input, output filed\
+    \ would be\nexample.output and example.withbounds)"
+  args: !SimpleFlagArg
+    name: PRE
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --MAX_NORMAL
+  description: "The maximum fraction to consider for normal. Only\nenforced for n=2"
+  args: !SimpleFlagArg
+    name: MAX_NORMAL
+- !Flag
+  optional: true
+  synonyms:
+  - --NUM_PROCESSES
+  description: The number of processes to be used
+  args: !SimpleFlagArg
+    name: NUM_PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - --NUM_INTERVALS
+  description: "The maximum number of intervals used by automatic\ninterval selection."
+  args: !SimpleFlagArg
+    name: NUM_INTERVALS
+- !Flag
+  optional: true
+  synonyms:
+  - --BOUND_HEURISTIC
+  - --NORMAL_BOUND_HEURISTIC
+  - --HEURISTIC_LB
+  - --HEURISTIC_UB
+  - --BOUNDS_ONLY
+  - --NO_MULTI_EVENT
+  - --RESULTS
+  - --FORCE
+  - --GET_VALUES
+  - --NO_INTERVAL_SELECTION
+  - --READ_DEPTH_FILE
+  - --GRAPH_FORMAT
+  description: Options are .pdf, .jpg, .png, .eps
+  args: !SimpleFlagArg
+    name: BH
+- !Flag
+  optional: true
+  synonyms:
+  - --BAF
+  description: Option to run the BAF model.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --RATIO_DEV
+  description: "The deviation away from 1.0 that a ratio must be to be\nconsidered\
+    \ a potential copy number aberration."
+  args: !SimpleFlagArg
+    name: RATIO_DEV
+- !Flag
+  optional: true
+  synonyms:
+  - --MIN_FRAC
+  description: "The minimum fraction of the genome that must have a\npotential copy\
+    \ number aberration to be a valid sample\nfor THetA analysis."
+  args: !SimpleFlagArg
+    name: MIN_FRAC
+- !Flag
+  optional: true
+  synonyms:
+  - --NO_CLUSTERING
+  description: Option to run THetA without clustering.
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--TUMOR_FILE TUMOR_FILE\nFile containing\
-    \ allelic counts for tumor sample SNPs.\n--NORMAL_FILE NORMAL_FILE\nFile containing\
-    \ allelic counts for normal samlpe SNPs.\n-n N, --N N           Number of subpopulations\n\
-    -k K, --MAX_K K       The maximum value allowed for entries in C\n-t TAU, --TAU\
-    \ TAU     Expected number of copies in normal genome\n-d DIR, --DIR DIR     Directory\
-    \ where result file is written to\n-p PRE, --OUTPUT_PREFIX PRE\nPrefix for output\
-    \ files created. By default, it will\nbe the beginning of the input file name\
-    \ (i.e.if input\nfilename were example.input, output filed would be\nexample.output\
-    \ and example.withbounds)\n-m MAX_NORMAL, --MAX_NORMAL MAX_NORMAL\nThe maximum\
-    \ fraction to consider for normal. Only\nenforced for n=2\n--NUM_PROCESSES NUM_PROCESSES\n\
-    The number of processes to be used\n--NUM_INTERVALS NUM_INTERVALS\nThe maximum\
-    \ number of intervals used by automatic\ninterval selection.\n--BOUND_HEURISTIC\
-    \ BH\n--NORMAL_BOUND_HEURISTIC NBH\n--HEURISTIC_LB LB\n--HEURISTIC_UB UB\n--BOUNDS_ONLY\n\
-    --NO_MULTI_EVENT\n--RESULTS filename\n--FORCE\n--GET_VALUES\n--NO_INTERVAL_SELECTION\n\
-    --READ_DEPTH_FILE FILENAME\n--GRAPH_FORMAT GRAPH_FORMAT\nOptions are .pdf, .jpg,\
-    \ .png, .eps\n--BAF                 Option to run the BAF model.\n--RATIO_DEV\
-    \ RATIO_DEV\nThe deviation away from 1.0 that a ratio must be to be\nconsidered\
-    \ a potential copy number aberration.\n--MIN_FRAC MIN_FRAC   The minimum fraction\
-    \ of the genome that must have a\npotential copy number aberration to be a valid\
-    \ sample\nfor THetA analysis.\n--NO_CLUSTERING       Option to run THetA without\
-    \ clustering.\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: RunTHetA.py [-h] [--TUMOR_FILE TUMOR_FILE] [--NORMAL_FILE NORMAL_FILE]\n\
@@ -87,3 +177,4 @@ help_text: "usage: RunTHetA.py [-h] [--TUMOR_FILE TUMOR_FILE] [--NORMAL_FILE NOR
   \  --NO_CLUSTERING       Option to run THetA without clustering.\n"
 generated_using:
 - --help
+docker_image:

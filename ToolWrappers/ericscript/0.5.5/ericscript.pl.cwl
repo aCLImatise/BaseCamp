@@ -3,187 +3,187 @@ id: ericscript.pl.cwl
 inputs:
 - id: in_man
   doc: print complete documentation
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --man
 - id: in_verbose
   doc: use verbose output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_sample_name
   doc: what's the name of your sample?
-  type: string
+  type: string?
   inputBinding:
     prefix: --samplename
 - id: in_output_folder
   doc: where the results will be stored
-  type: string
+  type: string?
   inputBinding:
     prefix: --outputfolder
 - id: in_db_folder
   doc: where database is stored. Default is ERICSCRIPT_FOLDER/lib/
-  type: string
+  type: string?
   inputBinding:
     prefix: --dbfolder
 - id: in_min_reads
   doc: minimum reads to consider discordant alignments [3]
-  type: long
+  type: long?
   inputBinding:
     prefix: --minreads
 - id: in_n_threads
   doc: number of threads for the bwa aln process [4]
-  type: long
+  type: long?
   inputBinding:
     prefix: --nthreads
 - id: in_n_trim
   doc: trim PE reads from 1st base to $ntrim. Default is no trimming. Set ntrim=0
     to don't trim reads.
-  type: long
+  type: long?
   inputBinding:
     prefix: -ntrim
 - id: in_minimum_value_consider
   doc: minimum value of mapping quality to consider discordant reads. For MAPQ 0 use
     a negative value [20]
-  type: long
+  type: long?
   inputBinding:
     prefix: --MAPQ
 - id: in_remove_temporary_files
   doc: remove all temporary files.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --remove
 - id: in_demo
   doc: Run a demonstration of EricScript on simulated reads.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --demo
 - id: in_genome_reference_identification
   doc: Genome reference identification. Run ericscript.pl --printdb to see available
     refid [homo_sapiens].
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --refid
 - id: in_bwa_aln
   doc: Use BWA ALN instead of BWA MEM to search for discordant reads.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bwa_aln
 - id: in_check_db
   doc: Check if your database is up-to-date, based on the latest Ensembl release.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --checkdb
 - id: in_down_db
   doc: Download, build database. refid parameter need to be specified.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --downdb
 - id: in_simulator
   doc: Generate synthetic gene fusions with the same recipe of the ericscript's paper
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --simulator
 - id: in_calc_stats
   doc: Calculate the statistics that we used in our paper to evaluate the performance
     of the algorithms.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --calcstats
 - id: in_print_db
   doc: Print a list of available genomes and exit.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --printdb
 - id: in_ens_version
   doc: Download data of a specific Ensembl version (>= 70). Default is the latest
     one.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ensversion
 - id: in_read_length
   doc: length of synthetic reads [75]
-  type: long
+  type: long?
   inputBinding:
     prefix: --readlength
 - id: in_in_size
   doc: parameter of wgsym. Outer distance between the two ends [200]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --insize
 - id: in_sd_in_size
   doc: parameter of wgsym. Standard deviation [50]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sd_insize
 - id: in_n_gene_fusion
   doc: The number of synthetic gene fusions per dataset? [50]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ngenefusion
 - id: in_min_cov
   doc: Minimum coverage to simulate [1]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --min_cov
 - id: in_max_cov
   doc: Maximum coverage to simulate [50]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --max_cov
 - id: in_n_sims
   doc: The number of synthetic datasets to simulate [10]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nsims
 - id: in_be
   doc: Use --be to generate Broken Exons (BE) data [no]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --be
 - id: in_ie
   doc: Use --ie to generate Intact Exons (IE) data [yes]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ie
 - id: in_background_one
   doc: Fastq file (forward)  for generating background reads.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --background_1
 - id: in_background_two
   doc: Fastq file (reverse) for generating background reads.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --background_2
 - id: in_n_reads_background
   doc: The number of reads to extract from background data [200e3].
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nreads_background
 - id: in_results_folder
   doc: path to folder containing algorithm results.
-  type: File
+  type: File?
   inputBinding:
     prefix: --resultsfolder
 - id: in_data_folder
   doc: path to folder containing synthetic data generated by ericscript simulator.
-  type: File
+  type: File?
   inputBinding:
     prefix: --datafolder
 - id: in_algo_name
   doc: name of the algorithm that generated results.
-  type: string
+  type: string?
   inputBinding:
     prefix: --algoname
 - id: in_dataset
   doc: type of synthetic data to considered for calculating statistics. IE or BE?
-  type: string
+  type: string?
   inputBinding:
     prefix: --dataset
 - id: in_norm_roc
   doc: factor to normalize the score given by the algorithm.
-  type: long
+  type: long?
   inputBinding:
     prefix: --normroc
 - id: in_calculate
@@ -218,7 +218,7 @@ inputs:
     position: 0
 - id: in_arguments
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 - id: in_minimum
@@ -333,7 +333,7 @@ inputs:
     position: 3
 - id: in_homo_sapiens
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 3
 - id: in_instead
@@ -480,6 +480,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ericscript.pl

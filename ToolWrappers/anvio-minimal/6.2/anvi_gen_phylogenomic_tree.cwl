@@ -3,17 +3,17 @@ id: anvi_gen_phylogenomic_tree.cwl
 inputs:
 - id: in_output_file
   doc: File path to store results.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file
 - id: in_program
   doc: "Program name.\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --program
 - id: in_f
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_clusters
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: File path to store results.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-gen-phylogenomic-tree

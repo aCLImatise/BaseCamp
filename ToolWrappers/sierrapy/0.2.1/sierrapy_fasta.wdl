@@ -14,6 +14,9 @@ task SierrapyFasta {
       ~{if defined(file_path_store) then ("--output " +  '"' + file_path_store + '"') else ""} \
       ~{if (ugly) then "--ugly" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query: "A file contains GraphQL fragment definition on\\n`SequenceAnalysis`."
     file_path_store: "File path to store the JSON result."

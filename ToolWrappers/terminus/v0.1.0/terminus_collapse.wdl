@@ -14,6 +14,9 @@ task TerminusCollapse {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     consensus_thresh: "threshold for edge consensus [default: 0.5]"
     dirs: "...                         direcotories to read the group files from"

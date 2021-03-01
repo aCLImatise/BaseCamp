@@ -68,6 +68,9 @@ task RNAsnoop {
       ~{if (direct_redraw) then "--direct-redraw" else ""} \
       ~{if defined(from_rna_up) then ("--from-RNAup " +  '"' + from_rna_up + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     target: "File containing the target sequence."

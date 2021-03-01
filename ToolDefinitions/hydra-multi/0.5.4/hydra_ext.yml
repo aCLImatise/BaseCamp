@@ -1,0 +1,136 @@
+!Command
+command:
+- hydra-ext
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: hydra
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -config
+  description: "Configuration file.\nCol 1. Sample Id (string)\nCol 2. Mapping file\
+    \ (path/file)\nCol 3. Expected insert size (integer)\nCol 4. Variance (integer)\n\
+    Col 5. Num. variances (integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: Stub for output files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mem
+  description: Maximum memory to use. Integer in Gb, default is 8 for 8Gb.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: Number of threads to use. Integer, default is 1.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ms
+  description: "Minimum number of pairs required for variant to be called.\nDefault:\
+    \ 2"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lnk
+  description: "Maximum intrachromosomal distance allowed before a\nvariant is considered\
+    \ to be between unlinked DNA segments.\nDefault: 1000000 (i.e., 1Mb)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -is
+  description: "Choose most likely variant (when a tie exists) based on\nleast edit\
+    \ distance rather than size."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -li
+  description: "Combine +/+ and -/- mappings when screening for inversions.\nThis\
+    \ increases sensitivity in low coverage."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -use
+  description: "Which mappings should be used for each pair?\n\"best\"  Use the mappings\
+    \ with the least edit distance for each pair.\nDefault.\n\"all\"   Use all mappings\
+    \ for each pair.\n<INT>   Use the best plus those within <INT> edit distance of\
+    \ best."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -maxMappings
+  description: Maximum number of mappings in a cluster before Hydra will "punt".
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --crumbs
+  description: Hydra will leave temporary files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mno
+  description: ''
+  args: !SimpleFlagArg
+    name: bp
+- !Flag
+  optional: true
+  synonyms:
+  - -mld
+  description: ''
+  args: !SimpleFlagArg
+    name: bp
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: ''
+  args: !RepeatFlagArg
+    name: FILEn
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nParameters:\n*****ERROR: Unrecognized parameter: --help *****\n\n*****ERROR:\
+  \ You must specify an input configuration file.*****\n\n*****ERROR: You must specify\
+  \ an output file.*****\n\n\nProgram: hydra (v0.5.5)\nAuthor:  Aaron Quinlan (aaronquinlan@gmail.com)\n\
+  Summary: Calls SV breakpoints from discordant paired-end mappings.\n\nUsage:   hydra\
+  \ [OPTIONS] -in FILE1 FILE2 ... FILEn -out <breakpoints> -mld <bp> -mno <bp>\n\n\
+  Options:\n  -config\tConfiguration file.\n       \t\tCol 1. Sample Id (string)\n\
+  \       \t\tCol 2. Mapping file (path/file)\n       \t\tCol 3. Expected insert size\
+  \ (integer)\n       \t\tCol 4. Variance (integer)\n       \t\tCol 5. Num. variances\
+  \ (integer)\n\n  -out\tStub for output files.\n\n  -mem\tMaximum memory to use.\
+  \ Integer in Gb, default is 8 for 8Gb.\n\n  -t\tNumber of threads to use. Integer,\
+  \ default is 1.\n\n  -ms\tMinimum number of pairs required for variant to be called.\n\
+  \tDefault: 2\n\n  -lnk\tMaximum intrachromosomal distance allowed before a\n  \t\
+  variant is considered to be between unlinked DNA segments.\n  \tDefault: 1000000\
+  \ (i.e., 1Mb)\n\n  -is\tChoose most likely variant (when a tie exists) based on\n\
+  \  \tleast edit distance rather than size.\n\n  -li\tCombine +/+ and -/- mappings\
+  \ when screening for inversions.\n  \tThis increases sensitivity in low coverage.\n\
+  \n  -use\tWhich mappings should be used for each pair?\n  \t\"best\"\tUse the mappings\
+  \ with the least edit distance for each pair.\n  \t\tDefault.\n  \t\"all\"\tUse\
+  \ all mappings for each pair.\n  \t<INT>\tUse the best plus those within <INT> edit\
+  \ distance of best.\n\n  -maxMappings\tMaximum number of mappings in a cluster before\
+  \ Hydra will \"punt\".\n\n  --crumbs\tHydra will leave temporary files.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hydra-multi:0.5.4--py27h8b12597_0

@@ -18,6 +18,9 @@ task PanGenomeAssemblyStatistics {
       ~{if (verbose_output_stdout) then "-v" else ""} \
       ~{if (print_version_exit) then "-w" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_threads: "number of threads [1]"
     output_filename: "output filename [assembly_statistics.csv]"

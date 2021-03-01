@@ -8,6 +8,9 @@ task Lastpostmask {
     last_postmask \
       ~{in_dot_maf}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_maf: ""
   }

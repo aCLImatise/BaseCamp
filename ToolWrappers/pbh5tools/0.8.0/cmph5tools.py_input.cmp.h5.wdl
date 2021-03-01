@@ -14,6 +14,9 @@ task Cmph5toolspyInputcmph5 {
       ~{if (profile) then "--profile" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: ""
     profile: ""

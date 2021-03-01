@@ -10,6 +10,9 @@ task MafMeFirst {
       ~{in_dot_maf} \
       ~{me_dot_list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_maf: ""
     me_dot_list: ""

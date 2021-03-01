@@ -20,6 +20,9 @@ task ScranfindmarkersR {
       ~{if defined(get_spikes) then ("--get-spikes " +  '"' + get_spikes + '"') else ""} \
       ~{if defined(output_markers) then ("--output-markers " +  '"' + output_markers + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sce_object: "Path to the input SCE object in rds format."
     clusters: "A vector of group assignments for all cells."

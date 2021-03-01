@@ -2,7 +2,7 @@ version 1.0
 
 task OutToChainpy {
   input {
-    String? speciesnames_target_species
+    String? speciesnames_respectively_default
     String? chr_sizes
     File? output_file_default
     String? var_3
@@ -10,12 +10,15 @@ task OutToChainpy {
   command <<<
     out_to_chain_py \
       ~{var_3} \
-      ~{if defined(speciesnames_target_species) then ("--species " +  '"' + speciesnames_target_species + '"') else ""} \
+      ~{if defined(speciesnames_respectively_default) then ("--species " +  '"' + speciesnames_respectively_default + '"') else ""} \
       ~{if defined(chr_sizes) then ("--chrsizes " +  '"' + chr_sizes + '"') else ""} \
       ~{if defined(output_file_default) then ("--output " +  '"' + output_file_default + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    speciesnames_target_species: "SPECIES\\nNames of target and query species (respectively) in\\nthe alignment. (default: ['homo_sapiens',\\n'mus_musculus'])"
+    speciesnames_respectively_default: "SPECIES\\nNames of target and query species (respectively) in\\nthe alignment. (default: ['homo_sapiens',\\n'mus_musculus'])"
     chr_sizes: "CHRSIZES\\nChromosome sizes for the given species. (default:\\nNone)"
     output_file_default: "Output file (default: stdout)"
     var_3: ""

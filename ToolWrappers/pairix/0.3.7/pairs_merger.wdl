@@ -8,6 +8,9 @@ task PairsMerger {
     pairs_merger \
       ~{in_three_dot_pairs_do_tgz}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_three_dot_pairs_do_tgz: ""
   }

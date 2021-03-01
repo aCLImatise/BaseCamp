@@ -14,6 +14,9 @@ task Dshcreatesequencedictionary {
       ~{if (input_fast_a_file) then "--input-fasta-file" else ""} \
       ~{if (output_sequence_dictionary_file) then "--output-sequence-dictionary-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     input_fast_a_file: "[class java.io.File]  input FASTA file, default stdin [optional]"

@@ -10,6 +10,9 @@ task Fastamost {
       ~{if (min) then "-min" else ""} \
       ~{if (max) then "-max" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min: "<length>  minimum length to accept"
     max: "<length>  maximum length to accept"

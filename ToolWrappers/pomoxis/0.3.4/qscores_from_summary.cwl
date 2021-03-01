@@ -3,12 +3,12 @@ id: qscores_from_summary.cwl
 inputs:
 - id: in_median
   doc: 'Use median. If false, use mean. (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --median
 - id: in_ref
   doc: 'process single ref, rather than overall result (default: None)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --ref
 - id: in_summaries
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - qscores_from_summary

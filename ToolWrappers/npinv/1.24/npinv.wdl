@@ -24,6 +24,9 @@ task Npinv {
       ~{if (window) then "--window" else ""} \
       ~{if (threshold) then "--threshold" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _file_write: "[String] file to write"
     _file_read: "[String] file to read"

@@ -8,7 +8,6 @@ task FunnelTaskList {
     String? state
     String? tag
     String? view
-    Int? server
   }
   command <<<
     funnel task list \
@@ -17,9 +16,11 @@ task FunnelTaskList {
       ~{if defined(page_token) then ("--page-token " +  '"' + page_token + '"') else ""} \
       ~{if defined(state) then ("--state " +  '"' + state + '"') else ""} \
       ~{if defined(tag) then ("--tag " +  '"' + tag + '"') else ""} \
-      ~{if defined(view) then ("--view " +  '"' + view + '"') else ""} \
-      ~{if defined(server) then ("--server " +  '"' + server + '"') else ""}
+      ~{if defined(view) then ("--view " +  '"' + view + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "List all tasks"
     page_size: "Page size"
@@ -27,7 +28,6 @@ task FunnelTaskList {
     state: "State filter"
     tag: "Tag filter. May be used multiple times to specify more than one tag"
     view: "Task view (default \\\"basic\\\")"
-    server: "(default \\\"http://localhost:8000\\\")"
   }
   output {
     File out_stdout = stdout()

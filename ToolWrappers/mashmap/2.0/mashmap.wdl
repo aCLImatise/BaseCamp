@@ -28,6 +28,9 @@ task Mashmap {
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
       ~{if defined(filter_mode) then ("--filter_mode " +  '"' + filter_mode + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "an input reference file (fasta/fastq)[.gz]"
     ref_list: "a file containing list of reference files, one per line"

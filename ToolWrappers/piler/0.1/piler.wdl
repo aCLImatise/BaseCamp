@@ -22,6 +22,9 @@ task Piler {
       ~{if defined(seq) then ("-seq " +  '"' + seq + '"') else ""} \
       ~{if defined(trs_two_fast_a) then ("-trs2fasta " +  '"' + trs_two_fast_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     trs: ":\\n-mincover <n>\\n-maxlengthdiffpct <n>\\n-piles <pilefile>\\n-images <imagefile>\\n-multihit"
     rep: ""

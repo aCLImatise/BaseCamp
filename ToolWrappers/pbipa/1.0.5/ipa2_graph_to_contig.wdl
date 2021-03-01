@@ -14,6 +14,9 @@ task Ipa2GraphToContig {
       ~{if defined(utg_data_fn) then ("--utg-data-fn " +  '"' + utg_data_fn + '"') else ""} \
       ~{if defined(ctg_paths_fn) then ("--ctg-paths-fn " +  '"' + ctg_paths_fn + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sg_edges_list_fn: "Input. File containing string graph edges, produced by\\novlp_to_graph.py. (default: ./sg_edges_list)"
     utg_data_fn: "Input. File containing unitig data, produced by\\novlp_to_graph.py. (default: ./utg_data)"

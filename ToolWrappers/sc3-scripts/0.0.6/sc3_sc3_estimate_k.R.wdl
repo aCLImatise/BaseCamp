@@ -12,6 +12,9 @@ task Sc3sc3estimatekR {
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""} \
       ~{if defined(output_text_file) then ("--output-text-file " +  '"' + output_text_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name in which a processed SC3 object can be found."
     output_object_file: "File name in which to store the SingleCellExperiment object with estimated k'."

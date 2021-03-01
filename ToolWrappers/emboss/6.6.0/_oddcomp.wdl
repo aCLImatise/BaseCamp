@@ -12,6 +12,9 @@ task Oddcomp {
       ~{words_dot} \
       ~{if (full_window) then "-fullwindow" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     full_window: "toggle     [N] Set this option on (Y) if you want the\\nwindow size to be set to the length of the\\ncurrent protein. Otherwise, leave this\\noption unset, in which case you'll be\\nprompted for a window size to use."
     count_dot: "Thus if you want to count frequencies in a"

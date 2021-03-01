@@ -1,31 +1,26 @@
 class: CommandLineTool
 id: rsat_convert_seq.cwl
 inputs:
-- id: in_id
-  doc: "-from inputformat -to outputformat\n[-lw line_width]"
-  type: string
-  inputBinding:
-    prefix: -id
 - id: in__verbose_level
   doc: '#    verbose level'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_specified_standard_input
   doc: "if not specified, the standard input is used.\nThis allows to place the command\
     \ within a pipe."
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_mask
   doc: "|lower|non-dna\nMask lowercases, uppercases, or non-dna characters, respecively.\n\
     Masked characters are replaced by by N characters, or\nby a dot (option -dotmask)."
-  type: string
+  type: string?
   inputBinding:
     prefix: -mask
 - id: in_no_empty
   doc: Remove empty sequences from the set (same as -skip_short 1)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -noempty
 - id: in_mask_short
@@ -33,34 +28,34 @@ inputs:
     \ This can be useful to discard\nshort intergenic segments from the motif discovery\n\
     step, especially when working with bacterial genomes,\nwhere short intergenic\
     \ sequences generally correspond\nto intra-operon segments."
-  type: long
+  type: long?
   inputBinding:
     prefix: -mask_short
 - id: in_skip_short
   doc: "Skip sequences shorter than the specified length. Same\nfunctionality as -mask_short,\
     \ except that short\nsequences are not returned at all in the output."
-  type: long
+  type: long?
   inputBinding:
     prefix: -skip_short
 - id: in_skip_long
   doc: "Skip sequences longer than the specified length. These\nsequences are not\
     \ returned at all in the output."
-  type: long
+  type: long?
   inputBinding:
     prefix: -skip_long
 - id: in_last
   doc: Stop after the Nth sequence.
-  type: string
+  type: string?
   inputBinding:
     prefix: -last
 - id: in_top
   doc: "Same as -last N\n(maintained for backward compatibility)"
-  type: string
+  type: string?
   inputBinding:
     prefix: -top
 - id: in_first
   doc: "Start at the Nth sequence (skip the N-1 first\nsequences)."
-  type: long
+  type: long?
   inputBinding:
     prefix: -first
 - id: in_skip
@@ -69,87 +64,92 @@ inputs:
     \ (a\n\"slice\" of the sequence file).\nExample:\nconvert-seq -skip 100 -last\
     \ 200\nequivalent to\nconvert-seq -first 101 -last 200\nwill extract the sequences\
     \ 101 to 200 from the input\nfile."
-  type: File
+  type: File?
   inputBinding:
     prefix: -skip
 - id: in_specified_standard_output
   doc: "if not specified, the standard output is used.\nThis allows to place the command\
     \ within a pipe."
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_from
   doc: "input format\nSupported input formats :\nembl\nfasta\nfilelist\nft\ngcg\n\
     genbank\nig\nmaf\nmulti\nncbi\nraw\ntab\nwc\nwconsensus"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -from
 - id: in_id_col
   doc: "column containing sequence identifiers in tab format\n(default: 1)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -id_col
 - id: in_seq_col
   doc: "column containing sequence sequences in tab format\n(default: 2)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -seq_col
 - id: in_comment_col
   doc: "column containing sequence comments (sequence\ndescription) in tab format\
     \ (default:\n)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -comment_col
 - id: in_to
   doc: "output format\nSupported output formats :\nfasta\nfastq\nfilelist\nft\nig\n\
     multi\nraw\ntab\nwc\nwconsensus"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -to
 - id: in_lw
   doc: "#   line width. A carriage return is inserted every #\ncharacters within the\
     \ output sequence.\nDefault is 60. A 0 value indicates that no carriage\nreturn\
     \ must be inserted."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -lw
 - id: in_add_rc
   doc: "adds the reverse complement of each input sequence\nto the output file. This\
     \ is usefull for programs that\ncannot handle reverse complement (like the Gibbs\
     \ Sampler)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -addrc
 - id: in_lc
   doc: lowercase. the sequence is printed in lowercase.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -lc
 - id: in_uc
   doc: lowercase. the sequence is printed in uppercase.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -uc
 - id: in_dna
   doc: "convert any non-acgt character into \"n\" characters.\nThis is to filter out\
     \ partly specified nucleotides."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -dna
 - id: in_dot_mask
   doc: "convert masked characters into dots.\nThis is useful for programs like consensus,\
     \ or\nAlignACE, which do not support N characters in the\nsequences."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -dotmask
+- id: in_id
+  doc: "sequence identifier (useful for converting a raw\nsequence from the STDIN)"
+  type: string?
+  inputBinding:
+    prefix: -id
 - id: in_prefix
   doc: "sequence prefix (useful for converting from a multi\nsequence)"
-  type: string
+  type: string?
   inputBinding:
     prefix: -prefix
 - id: in_no_check_id
   doc: Prevent to check sequence IDs for conversion to file list
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nocheckid
 - id: in_convert_seq
@@ -177,33 +177,33 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_genbank
-  doc: ig
-  type: string
-  inputBinding:
-    position: 3
 - id: in_maf
   doc: multi
   type: string
   inputBinding:
-    position: 4
+    position: 3
 - id: in_ncbi
   doc: raw
   type: string
   inputBinding:
-    position: 5
+    position: 4
 - id: in_tab
   doc: wc
   type: string
   inputBinding:
-    position: 6
+    position: 5
 - id: in_w_consensus
   doc: 'OUTPUT '
   type: string
   inputBinding:
-    position: 7
+    position: 6
 - id: in_fastq
   doc: fastq
+  type: string
+  inputBinding:
+    position: 7
+- id: in_ft
+  doc: ft
   type: string
   inputBinding:
     position: 8
@@ -222,7 +222,7 @@ inputs:
   type: string
   inputBinding:
     position: 11
-- id: in_input_file_should
+- id: in_input_file_contain
   doc: "The input file should contain raw sequences without any\ncomment or other\
     \ text. Tabs (\\t), blank spaces and newline\ncharacters (\\n) are accepted (they\
     \ will be automatically\nremoved before analysis). The sequence must be terminated\
@@ -236,7 +236,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_file_list
+- id: in_file_list_line
   doc: "file list. Each line of the input file contains the\nname of a file containing\
     \ a single sequence."
   type: string
@@ -271,9 +271,10 @@ outputs:
 - id: out_specified_standard_output
   doc: "if not specified, the standard output is used.\nThis allows to place the command\
     \ within a pipe."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_specified_standard_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

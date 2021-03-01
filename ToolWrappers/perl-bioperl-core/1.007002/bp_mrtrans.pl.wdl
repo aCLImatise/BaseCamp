@@ -20,6 +20,9 @@ task BpMrtranspl {
       ~{if defined(seq_db) then ("--seqdb " +  '"' + seq_db + '"') else ""} \
       ~{if (seq_format) then "--seqformat" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _output_filename: "- the output filename [default STDOUT]"
     of: "- output sequence format\\n(multiple sequence alignment)\\n[default phylip]"

@@ -44,25 +44,28 @@ task BattenbergCNToVCFpl {
       ~{if (man) then "-man" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    sample_bam_mut: "-sbm  Mutant sample bam file."
-    sample_bam_norm: "-sbw  Normal sample bam file."
-    reference: "-r    Reference file"
+    sample_bam_mut: "Mutant sample bam file."
+    sample_bam_norm: "Normal sample bam file."
+    reference: "Reference file"
     sample_sequencing_protocol_mut: "Sample Sequencing Protocol."
     sample_sequencing_protocol_norm: "Sample Sequencing Protocol."
-    in_file: "-i    Input file. [STDIN]"
-    out_file: "-o    Output file [STDOUT]."
-    reference_species: "-rs   Reference species [BAM HEADER]."
-    reference_assembly: "-ra   Reference assembly [BAM HEADER]."
-    sample_study_mut: "-mss  Mut sample study."
-    sample_accession_mut: "-msa  Mut sample accession [BAM HEADER]."
-    sample_accession_source_mut: "-msc  Mut sample accession source."
-    seq_platform_mut: "-msp  Mut sequencing platform. [BAM HEADER]"
-    sample_study_norm: "-wss  Normal sample study."
-    sample_accession_norm: "-wsa  Normal sample accession [BAM HEADER]."
-    sample_accession_source_norm: "-wsc  Normal sample accession source."
-    seq_platform_norm: "-wsp  Normal sequencing platform [BAM HEADER]."
-    man: "-m   Full documentation."
+    in_file: "Input file. [STDIN]"
+    out_file: "Output file [STDOUT]."
+    reference_species: "Reference species [BAM HEADER]."
+    reference_assembly: "Reference assembly [BAM HEADER]."
+    sample_study_mut: "Mut sample study."
+    sample_accession_mut: "Mut sample accession [BAM HEADER]."
+    sample_accession_source_mut: "Mut sample accession source."
+    seq_platform_mut: "Mut sequencing platform. [BAM HEADER]"
+    sample_study_norm: "Normal sample study."
+    sample_accession_norm: "Normal sample accession [BAM HEADER]."
+    sample_accession_source_norm: "Normal sample accession source."
+    seq_platform_norm: "Normal sequencing platform [BAM HEADER]."
+    man: "Full documentation."
     version: "Version information."
   }
   output {

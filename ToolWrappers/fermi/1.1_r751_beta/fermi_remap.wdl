@@ -20,6 +20,9 @@ task FermiRemap {
       ~{if defined(rank) then ("-r " +  '"' + rank + '"') else ""} \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     skip_ending_bases: "skip ending INT bases of a read pair [0]"
     minimum_pairedend_coverage: "minimum paired-end coverage [0]"

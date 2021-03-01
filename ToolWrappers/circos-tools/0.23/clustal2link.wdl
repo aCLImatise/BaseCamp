@@ -8,6 +8,9 @@ task Clustal2link {
     clustal2link \
       ~{if defined(aln) then ("-aln " +  '"' + aln + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aln: ""
   }

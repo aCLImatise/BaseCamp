@@ -4,211 +4,214 @@ command:
 positional: []
 named:
 - !Flag
-  description: "FASTA of unaligned study sequences (i.e. OTUs or\nASVs)."
+  optional: true
   synonyms:
   - -s
   - --study_fasta
+  description: "FASTA of unaligned study sequences (i.e. OTUs or\nASVs)."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Input table of sequence abundances (BIOM, TSV or\nmothur shared file\
-    \ format)."
+  optional: true
   synonyms:
   - -i
   - --input
+  description: "Input table of sequence abundances (BIOM, TSV or\nmothur shared file\
+    \ format)."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: Output folder for final files.
+  optional: true
   synonyms:
   - -o
   - --output
+  description: Output folder for final files.
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: 'Number of processes to run in parallel (default: 1).'
+  optional: true
   synonyms:
   - -p
   - --processes
+  description: 'Number of processes to run in parallel (default: 1).'
   args: !SimpleFlagArg
     name: PROCESSES
-  optional: true
 - !Flag
-  description: "Directory containing reference sequence files\n(default: /usr/local/lib/python3.6/site-\n\
-    packages/picrust2/default_files/prokaryotic/pro_ref).\nPlease see the online documentation\
-    \ for how to name\nthe files in this directory."
+  optional: true
   synonyms:
   - -r
   - --ref_dir
+  description: "Directory containing reference sequence files\n(default: /usr/local/lib/python3.6/site-\n\
+    packages/picrust2/default_files/prokaryotic/pro_ref).\nPlease see the online documentation\
+    \ for how to name\nthe files in this directory."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --in_traits
   description: "Comma-delimited list (with no spaces) of which gene\nfamilies to predict\
     \ from this set: COG, EC, KO, PFAM,\nTIGRFAM. Note that EC numbers will always\
     \ be predicted\nunless --no_pathways is set (default: EC,KO)."
-  synonyms:
-  - --in_traits
   args: !SimpleFlagArg
     name: IN_TRAITS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --custom_trait_tables
   description: "Optional path to custom trait tables with gene\nfamilies as columns\
     \ and genomes as rows (overrides\n--in_traits setting) to be used for hidden-state\n\
     prediction. Multiple tables can be specified by\ndelimiting filenames by commas.\
     \ Importantly, the first\ncustom table specified will be used for inferring\n\
     pathway abundances. Typically this command would be\nused with a custom marker\
     \ gene table\n(--marker_gene_table) as well."
-  synonyms:
-  - --custom_trait_tables
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Path to marker gene copy number table (16S copy\nnumbers by default)."
+  optional: true
   synonyms:
   - --marker_gene_table
+  description: "Path to marker gene copy number table (16S copy\nnumbers by default)."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pathway_map
   description: "MinPath mapfile. The default mapfile maps MetaCyc\nreactions to prokaryotic\
     \ pathways (default:\n/usr/local/lib/python3.6/site-packages/picrust2/defaul\n\
     t_files/pathway_mapfiles/metacyc_path2rxn_struc_filt_p\nro.txt)."
-  synonyms:
-  - --pathway_map
   args: !SimpleFlagArg
     name: MAP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --reaction_func
   description: "Functional database to use as reactions for inferring\npathway abundances\
     \ (default: EC). This should be\neither the short-form of the database as specified\
     \ in\n--in_traits, or the path to the file as would be\nspecified for --custom_trait_tables.\
     \ Note that when\nfunctions besides the default EC numbers are used\ntypically\
     \ the --no_regroup option would also be set."
-  synonyms:
-  - --reaction_func
   args: !SimpleFlagArg
     name: MAP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no_pathways
   description: "Flag to indicate that pathways should NOT be inferred\n(otherwise\
     \ they will be inferred by default).\nPredicted EC number abundances are used\
     \ to infer\npathways when the default reference files are used."
-  synonyms:
-  - --no_pathways
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --regroup_map
   description: "Mapfile of ids to regroup gene families to before\nrunning MinPath.\
     \ The default mapfile is for regrouping\nEC numbers to MetaCyc reactions (default:\n\
     /usr/local/lib/python3.6/site-packages/picrust2/defaul\nt_files/pathway_mapfiles/ec_level4_to_metacyc_rxn.tsv)\n\
     ."
-  synonyms:
-  - --regroup_map
   args: !SimpleFlagArg
     name: ID_MAP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no_regroup
   description: "Do not regroup input gene families to reactions as\nspecified in the\
     \ regrouping mapfile. This option\nshould only be used if you are using custom\
     \ reference\nand/or mapping files."
-  synonyms:
-  - --no_regroup
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Flag to indicate that stratified tables should be\ngenerated at all\
-    \ steps (will increase run-time)."
+  optional: true
   synonyms:
   - --stratified
+  description: "Flag to indicate that stratified tables should be\ngenerated at all\
+    \ steps (will increase run-time)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Sequences with NSTI values above this value will be\nexcluded (default:\
-    \ 2)."
+  optional: true
   synonyms:
   - --max_nsti
+  description: "Sequences with NSTI values above this value will be\nexcluded (default:\
+    \ 2)."
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min_reads
   description: "Minimum number of reads across all samples for each\ninput ASV. ASVs\
     \ below this cut-off will be counted as\npart of the \"RARE\" category in the\
     \ stratified output\n(default: 1)."
-  synonyms:
-  - --min_reads
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min_samples
   description: "Minimum number of samples that an ASV needs to be\nidentfied within.\
     \ ASVs below this cut-off will be\ncounted as part of the \"RARE\" category in\
     \ the\nstratified output (default: 1)."
-  synonyms:
-  - --min_samples
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --hsp_method
   description: "HSP method to use.\"mp\": predict discrete traits using\nmax parsimony.\
     \ \"emp_prob\": predict discrete traits\nbased on empirical state probabilities\
     \ across tips.\n\"subtree_average\": predict continuous traits using\nsubtree\
     \ averaging. \"pic\": predict continuous traits\nwith phylogentic independent\
     \ contrast. \"scp\":\nreconstruct continuous traits using squared-change\nparsimony\
     \ (default: mp)."
-  synonyms:
-  - -m
-  - --hsp_method
   args: !ChoiceFlagArg
     choices: !!set
-      emp_prob:
-      pic:
       mp:
+      pic:
       subtree_average:
       scp:
-  optional: true
+      emp_prob:
 - !Flag
+  optional: true
+  synonyms:
+  - --min_align
   description: "Proportion of the total length of an input query\nsequence that must\
     \ align with reference sequences. Any\nsequences with lengths below this value\
     \ after making\nan alignment with reference sequences will be excluded\nfrom the\
     \ placement and all subsequent steps. (default:\n0)."
-  synonyms:
-  - --min_align
   args: !SimpleFlagArg
     name: MIN_ALIGN
-  optional: true
 - !Flag
-  description: Do not calculate nearest-sequenced taxon index (NSTI).
+  optional: true
   synonyms:
   - --skip_nsti
+  description: Do not calculate nearest-sequenced taxon index (NSTI).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not run MinPath to identify which pathways are\npresent as a first\
-    \ pass (on by default)."
+  optional: true
   synonyms:
   - --skip_minpath
+  description: "Do not run MinPath to identify which pathways are\npresent as a first\
+    \ pass (on by default)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not perform gap filling before predicting pathway\nabundances (Gap\
-    \ filling is on otherwise by default."
+  optional: true
   synonyms:
   - --no_gap_fill
+  description: "Do not perform gap filling before predicting pathway\nabundances (Gap\
+    \ filling is on otherwise by default."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Calculate pathway coverages as well as abundances,\nwhich are experimental\
-    \ and only useful for advanced\nusers."
+  optional: true
   synonyms:
   - --coverage
+  description: "Calculate pathway coverages as well as abundances,\nwhich are experimental\
+    \ and only useful for advanced\nusers."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --per_sequence_contrib
   description: "Flag to specify that MinPath is run on the genes\ncontributed by each\
     \ sequence (i.e. a predicted genome)\nindividually. Note this will greatly increase\
     \ the\nruntime. The output will be the predicted pathway\nabundance contributed\
@@ -216,58 +219,55 @@ named:
     \ output,\nwhich is the contribution to the community-wide\npathway abundances.\
     \ Pathway coverage stratified by\ncontributing sequence will also be output when\n\
     --coverage is set (default: False)."
-  synonyms:
-  - --per_sequence_contrib
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --wide_table
   description: "Output wide-format stratified table of metagenome and\npathway predictions\
     \ when \"--stratified\" is set. This\nis the deprecated method of generating stratified\n\
     tables since it is extremely memory intensive. The\nstratified filenames contain\
     \ \"strat\" rather than\n\"contrib\" when this option is used."
-  synonyms:
-  - --wide_table
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --skip_norm
   description: "Skip normalizing sequence abundances by predicted\nmarker gene copy\
     \ numbers (typically 16S rRNA genes).\nThis step will be performed automatically\
     \ unless this\noption is specified."
-  synonyms:
-  - --skip_norm
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Remove the intermediate outfiles of the sequence\nplacement and pathway\
-    \ inference steps."
+  optional: true
   synonyms:
   - --remove_intermediate
+  description: "Remove the intermediate outfiles of the sequence\nplacement and pathway\
+    \ inference steps."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Print out details as commands are run.
+  optional: true
   synonyms:
   - --verbose
+  description: Print out details as commands are run.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -v
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: picrust2_pipeline.py [-h] -s PATH -i PATH -o PATH [-p PROCESSES]\n\
   \                            [-r PATH] [--in_traits IN_TRAITS]\n               \
   \             [--custom_trait_tables PATH]\n                            [--marker_gene_table\
@@ -397,3 +397,4 @@ help_text: "usage: picrust2_pipeline.py [-h] -s PATH -i PATH -o PATH [-p PROCESS
   \ --per_sequence_contrib\n"
 generated_using:
 - --help
+docker_image:

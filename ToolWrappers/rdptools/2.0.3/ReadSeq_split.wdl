@@ -14,6 +14,9 @@ task ReadSeqSplit {
       ~{outdir} \
       ~{seq_per_split}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_file_splitter: ""
     in_file: ""

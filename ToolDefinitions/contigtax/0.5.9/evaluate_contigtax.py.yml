@@ -3,43 +3,42 @@ command:
 - evaluate_contigtax.py
 positional:
 - !Positional
-  description: "contigtax assignment file with taxids (use --taxidout\nwith contigtax\
-    \ assign)"
+  optional: false
   position: 0
   name: infile
-  optional: false
+  description: "contigtax assignment file with taxids (use --taxidout\nwith contigtax\
+    \ assign)"
 - !Positional
-  description: File mapping sequence id to true taxonomy id
+  optional: false
   position: 1
   name: taxfile
-  optional: false
+  description: File mapping sequence id to true taxonomy id
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --dbname
-  args: !SimpleFlagArg
-    name: DBNAME
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - -t
+  - --taxdir
+  description: Directory with ete3 sqlite database
   args: !SimpleFlagArg
     name: TAXDIR
+- !Flag
   optional: true
+  synonyms:
+  - --dbname
+  description: Name of sqlite database file
+  args: !SimpleFlagArg
+    name: DBNAME
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-t TAXDIR, --taxdir TAXDIR\nDirectory\
-    \ with ete3 sqlite database\n--dbname DBNAME       Name of sqlite database file\n\
-    -r RANKS [RANKS ...], --ranks RANKS [RANKS ...]\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: evaluate_contigtax.py [-h] [-t TAXDIR] [--dbname DBNAME]\n    \
@@ -53,3 +52,4 @@ help_text: "usage: evaluate_contigtax.py [-h] [-t TAXDIR] [--dbname DBNAME]\n   
   \ RANKS [RANKS ...]\n"
 generated_using:
 - --help
+docker_image:

@@ -3,142 +3,145 @@ command:
 - FEELnc_codpot.pl
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: known_lnc.GTF
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: Open man page
+  optional: true
   synonyms:
   - --man
+  description: Open man page
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Level of verbosity
+  optional: true
   synonyms:
   - --verbosity
+  description: Level of verbosity
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Specify the .GTF or .FASTA file  (such as a cufflinks transcripts/merged
-    .GTF or .FASTA file)
+  optional: true
   synonyms:
   - -i
   - --infile
+  description: /.fasta           Specify the .GTF or .FASTA file  (such as a cufflinks
+    transcripts/merged .GTF or .FASTA file)
   args: !SimpleFlagArg
-    name: file.gtf/.fasta
-  optional: true
+    name: file.gtf
 - !Flag
-  description: Specify the annotation .GTF or .FASTA file  (file of protein coding
-    transcripts .GTF or .FASTA file)
+  optional: true
   synonyms:
   - -a
   - --mRNAfile
+  description: /.fasta         Specify the annotation .GTF or .FASTA file  (file of
+    protein coding transcripts .GTF or .FASTA file)
   args: !SimpleFlagArg
-    name: file.gtf/.fasta
-  optional: true
+    name: file.gtf
 - !Flag
-  description: Genome file or directory with chr files (mandatory if input is .GTF)
-    [ default undef ]
+  optional: true
   synonyms:
   - -g
   - --genome
+  description: Genome file or directory with chr files (mandatory if input is .GTF)
+    [ default undef ]
   args: !SimpleFlagArg
     name: genome.fa
-  optional: true
 - !Flag
-  description: Specify a known set of lncRNA for training .GTF or .FASTA  [ default
-    undef ]
+  optional: true
   synonyms:
   - -l
   - --lncRNAfile
+  description: /.fasta       Specify a known set of lncRNA for training .GTF or .FASTA  [
+    default undef ]
   args: !SimpleFlagArg
-    name: file.gtf/.fasta
-  optional: true
+    name: file.gtf
 - !Flag
-  description: 'Only consider transcripts having this(these) biotype(s) from the reference
-    annotation (e.g : -b transcript_biotype=protein_coding,pseudogene) [default undef
-    i.e all transcripts]'
+  optional: true
   synonyms:
   - -b
   - --biotype
+  description: 'Only consider transcripts having this(these) biotype(s) from the reference
+    annotation (e.g : -b transcript_biotype=protein_coding,pseudogene) [default undef
+    i.e all transcripts]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --numtx
   description: "Number of mRNA and lncRNA transcripts required for the training. mRNAs\
     \ and lncRNAs numbers need to be separate by a ',': i.e. 1500,1000 for 1500 mRNAs\
     \ and 1000 lncRNAs. For all the annotation, let it blank [ default undef, all\
     \ the two annotations ]"
-  synonyms:
-  - -n
-  - --numtx
   args: !SimpleFlagArg
     name: undef
-  optional: true
 - !Flag
-  description: =[0-1]                      Random forest voting cutoff [ default undef
-    i.e will compute best cutoff ]
+  optional: true
   synonyms:
   - -r
   - --rfcut
+  description: =[0-1]                      Random forest voting cutoff [ default undef
+    i.e will compute best cutoff ]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --spethres
   description: Two specificity threshold based on the 10-fold cross-validation, first
     one for mRNA and the second for lncRNA, need to be in ]0,1[ on separated by a
     ','
-  synonyms:
-  - --spethres
   args: !SimpleFlagArg
     name: undef
-  optional: true
 - !Flag
-  description: ",2,3,6,9,12                Kmer size list with size separate by ','\
-    \ as string [ default \"1,2,3,6,9,12\" ], the maximum value for one size is '15'"
+  optional: true
   synonyms:
   - -k
   - --kmer
+  description: ",2,3,6,9,12                Kmer size list with size separate by ','\
+    \ as string [ default \"1,2,3,6,9,12\" ], the maximum value for one size is '15'"
   args: !SimpleFlagArg
     name: '1'
-  optional: true
 - !Flag
-  description: Output filename [ default infile_name ]
+  optional: true
   synonyms:
   - -o
   - --outname
+  description: Output filename [ default infile_name ]
   args: !ChoiceFlagArg
     choices: !!set
       INFILENAME:
-  optional: true
 - !Flag
-  description: ="feelnc_codpot_out/"         Output directory [ default "./feelnc_codpot_out/"
-    ]
+  optional: true
   synonyms:
   - --outdir
+  description: ="feelnc_codpot_out/"         Output directory [ default "./feelnc_codpot_out/"
+    ]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mode
   description: "The mode of the lncRNA sequences simulation if no lncRNA sequences\
     \ have been provided. The mode can be:\n'shuffle'   : make a permutation of mRNA\
     \ sequences while preserving the 7mer count. Can be done on either FASTA and GTF\
     \ input file;\n'intergenic': extract intergenic sequences. Can be done *only*\
     \ on GTF input file."
-  synonyms:
-  - -m
-  - --mode
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Ratio between mRNA sequence lengths and non coding intergenic region
-    sequence lengths as, by default, ncInter = mRNA * 0.75
+  optional: true
   synonyms:
   - -s
   - --sizeinter
+  description: Ratio between mRNA sequence lengths and non coding intergenic region
+    sequence lengths as, by default, ncInter = mRNA * 0.75
   args: !SimpleFlagArg
     name: '0.75'
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --learnorftype
   description: "Integer [0,1,2,3,4] to specify the type of longest ORF calculate [\
     \ default: 3 ] for learning data set.\nIf the CDS is annotated in the .GTF, then\
     \ the CDS is considered as the longest ORF, whatever the --orftype value.\n'0':\
@@ -146,65 +149,62 @@ named:
     \ take the longest;\n'2': same as '1' but with a stop codon;\n'3': same as '0'\
     \ and ORF with a start or a stop, take the longest (see '1' and '2');\n'4': same\
     \ as '3' but if no ORF is found, take the input sequence as ORF."
-  synonyms:
-  - --learnorftype
   args: !SimpleFlagArg
     name: '3'
-  optional: true
 - !Flag
-  description: 'Integer [0,1,2,3,4] to specify the type of longest ORF calculate [
-    default: 3 ] for test data set. See --learnortype description for more informations.'
+  optional: true
   synonyms:
   - --testorftype
+  description: 'Integer [0,1,2,3,4] to specify the type of longest ORF calculate [
+    default: 3 ] for test data set. See --learnortype description for more informations.'
   args: !SimpleFlagArg
     name: '3'
-  optional: true
 - !Flag
-  description: Number of trees used in random forest [ default 500 ]
+  optional: true
   synonyms:
   - --ntree
+  description: Number of trees used in random forest [ default 500 ]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Percentage of the training file use for the training of the kmer model.
-    What remains will be used to train the random forest
+  optional: true
   synonyms:
   - --percentage
+  description: Percentage of the training file use for the training of the kmer model.
+    What remains will be used to train the random forest
   args: !SimpleFlagArg
     name: '0.1'
-  optional: true
 - !Flag
-  description: To keep the temporary files in a 'tmp' directory the outdir, by default
-    don't keep it (0 value). Any other value than 0 will keep the temporary files
+  optional: true
   synonyms:
   - --keeptmp
+  description: To keep the temporary files in a 'tmp' directory the outdir, by default
+    don't keep it (0 value). Any other value than 0 will keep the temporary files
   args: !SimpleFlagArg
     name: '0'
-  optional: true
 - !Flag
-  description: Use to fixe the seed value for the extraction of intergenic DNA region
-    to get lncRNA like sequences and for the random forest [ default 1234 ]
+  optional: true
   synonyms:
   - --seed
+  description: Use to fixe the seed value for the extraction of intergenic DNA region
+    to get lncRNA like sequences and for the random forest [ default 1234 ]
   args: !SimpleFlagArg
     name: '1234'
-  optional: true
 - !Flag
-  description: added
+  optional: true
   synonyms:
   - -to
+  description: added
   args: !SimpleFlagArg
     name: be
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help
+  optional: true
   synonyms:
   - --help
+  description: Print this help
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage:\n    FEELnc_codpot.pl -i transcripts.GTF -a known_mRNA.GTF -g genome.FA\
@@ -268,3 +268,4 @@ help_text: "Usage:\n    FEELnc_codpot.pl -i transcripts.GTF -a known_mRNA.GTF -g
   \            -to be added\n\n"
 generated_using:
 - --help
+docker_image:

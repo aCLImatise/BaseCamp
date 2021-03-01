@@ -10,6 +10,9 @@ task JuncsDb {
       ~{min_anchor} \
       ~{read_length}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_anchor: ""
     read_length: ""

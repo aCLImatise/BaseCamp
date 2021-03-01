@@ -4,69 +4,72 @@ command:
 positional: []
 named:
 - !Flag
-  description: "PATH        Required  Reference file (FASTA) absolute or relative\
-    \ path.\nUse mutliple times, once per a reference file"
+  optional: true
   synonyms:
   - --ref
+  description: "PATH        Required  Reference file (FASTA) absolute or relative\
+    \ path.\nUse mutliple times, once per a reference file"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "PATH        Required  Raw reads file (FASTA/FASTQ/FASTA.GZ/FASTQ.GZ).\n\
-    Use twice for files with paired reads"
+  optional: true
   synonyms:
   - --reads
+  description: "PATH        Required  Raw reads file (FASTA/FASTQ/FASTA.GZ/FASTQ.GZ).\n\
+    Use twice for files with paired reads"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --workdir
   description: "PATH        Optional  Directory for storing Reference index,     \
     \ USRDIR/sortmerna/run/\nKey-value database, and the output.\nDefault structure:\n\
     WORKDIR/\nidx/\nkvdb/\nout/"
-  synonyms:
-  - --workdir
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "PATH        Optional  Directory for storing Key-value database   \
-    \ WORKDIR/kvdb\nKVDB is used for storing alignement results."
+  optional: true
   synonyms:
   - --kvdb
+  description: "PATH        Optional  Directory for storing Key-value database   \
+    \ WORKDIR/kvdb\nKVDB is used for storing alignement results."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: PATH        Optional  Directory for storing Reference index.      WORKDIR/idx
+  optional: true
   synonyms:
   - --idx
+  description: PATH        Optional  Directory for storing Reference index.      WORKDIR/idx
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: BOOL        Optional  Output aligned reads into FASTA/FASTQ file
+  optional: true
   synonyms:
   - --fastx
+  description: BOOL        Optional  Output aligned reads into FASTA/FASTQ file
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: BOOL        Optional  Output SAM alignment for aligned reads.
+  optional: true
   synonyms:
   - --sam
+  description: BOOL        Optional  Output SAM alignment for aligned reads.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: BOOL        Optional  Add SQ tags to the SAM file
+  optional: true
   synonyms:
   - --SQ
+  description: BOOL        Optional  Add SQ tags to the SAM file
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --blast
   description: "STRING      Optional  output alignments in various Blast-like formats\n\
     '0'                    - pairwise\n'1'                    - tabular(Blast - m\
     \ 8 format)\n'1 cigar'              - tabular + column for CIGAR\n'1 cigar qcov'\
     \         - tabular + columns for CIGAR\nand query coverage\n'1 cigar qcov qstrand'\
     \ - tabular + columns for CIGAR,\nquery coverage and strand"
-  synonyms:
-  - --blast
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --aligned
   description: "STRING/BOOL Optional  Aligned reads file prefix [dir/][pfx]      \
     \ WORKDIR/out/aligned\nDirectory and file prefix for aligned output i.e.\neach\
     \ output file will go into the specified directory with the given prefix.\nThe\
@@ -78,11 +81,11 @@ named:
     \       -> $PWD/dir_1/apfx.fasta\n-aligned dir_1/               -> $PWD/aligned.fasta\n\
     -aligned apfx                 -> $PWD/apfx.fasta\n-aligned  (no argument)    \
     \   -> WORKDIR/out/aligned.fasta"
-  synonyms:
-  - --aligned
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --other
   description: "STRING/BOOL Optional  Non-aligned reads file prefix [dir/][pfx]  \
     \ WORKDIR/out/other\nMust be used with 'fastx'.\nDirectory and file prefix for\
     \ non-aligned output i.e.\neach output file will go into the specified directory\
@@ -95,18 +98,18 @@ named:
     \     -> $PWD/dir_1/other.fasta\n-other apfx                 -> $PWD/apfx.fasta\n\
     -other  (no argument)       -> aligned_out/other.fasta\ni.e. the same output directory\
     \ as used\nfor aligned output"
-  synonyms:
-  - --other
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT         Optional  Positive integer (INT >=0).\nReport first INT\
-    \ alignments per read reaching E-value\nIf INT = 0, all alignments will be output"
+  optional: true
   synonyms:
   - --num_alignments
+  description: "INT         Optional  Positive integer (INT >=0).\nReport first INT\
+    \ alignments per read reaching E-value\nIf INT = 0, all alignments will be output"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --best
   description: "INT         Optional  Report INT best alignments per read reaching\
     \ E-value    1\nby searching --min_lis INT candidate alignments\nIf INT == 0:\
     \ search All candidate alignments\nIf INT > 0: search INT best alignments.\nThe\
@@ -115,259 +118,256 @@ named:
     The 'best' alignment is an alignment that is better\nthan the previously found\
     \ alignments.\nThe very first found alignment is automatically the best alignment\n\
     until a better one is found."
-  synonyms:
-  - --best
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min_lis
   description: "INT         Optional  Search all alignments having the first INT longest\
     \ LIS\nLIS stands for Longest Increasing Subsequence,\nit is computed using seeds'\
     \ positions to expand hits into\nlonger matches prior to Smith - Waterman alignment.\n\
     Requires option 'best'.\nMutually exclusive with option 'num_alignments'"
-  synonyms:
-  - --min_lis
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Optional  Output null alignment strings for non-aligned reads    \
-    \ False\nto SAM and/or BLAST tabular files"
+  optional: true
   synonyms:
   - --print_all_reads
+  description: "Optional  Output null alignment strings for non-aligned reads    \
+    \ False\nto SAM and/or BLAST tabular files"
   args: !SimpleFlagArg
     name: BOOL
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --paired
   description: "BOOL        Optional  Indicates a Single reads file with paired reads\
     \         False\nIf a single reads file with paired reads is used,\nand neither\
     \ 'paired_in' nor 'paired_out' are specified,\nuse this option together with 'out2'\
     \ to output\nFWD and REV reads into separate files"
-  synonyms:
-  - --paired
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --paired_in
   description: "BOOL        Optional  If one of the paired-end reads is Aligned, \
     \             False\nput both reads into Aligned FASTA/Q file\nMust be used with\
     \ 'fastx'.\nMutually exclusive with 'paired_out'."
-  synonyms:
-  - --paired_in
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --paired_out
   description: "BOOL        Optional  If one of the paired-end reads is Non-aligned,\
     \          False\nput both reads into Non-Aligned FASTA/Q file\nMust be used with\
     \ 'fastx'.\nMutually exclusive with 'paired_in'."
-  synonyms:
-  - --paired_out
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --out2
   description: "BOOL        Optional  Output paired reads into separate files.   \
     \             False\nMust be used with 'fastx'.\nIgnored without either of 'paired_in'\
     \ |\n'paired_out' | 'paired' | two 'reads'"
-  synonyms:
-  - --out2
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: INT         Optional  SW score (positive integer) for a match.                2
+  optional: true
   synonyms:
   - --match
+  description: INT         Optional  SW score (positive integer) for a match.                2
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: INT         Optional  SW penalty (negative integer) for a mismatch.          -3
+  optional: true
   synonyms:
   - --mismatch
+  description: INT         Optional  SW penalty (negative integer) for a mismatch.          -3
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: INT         Optional  SW penalty (positive integer) for introducing
-    a gap.    5
+  optional: true
   synonyms:
   - --gap_open
+  description: INT         Optional  SW penalty (positive integer) for introducing
+    a gap.    5
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: INT         Optional  SW penalty (positive integer) for extending a
-    gap.      2
+  optional: true
   synonyms:
   - --gap_ext
+  description: INT         Optional  SW penalty (positive integer) for extending a
+    gap.      2
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
   description: "DOUBLE      Optional  E-value threshold.                         \
     \             1\nDefines the 'statistical significance' of a local alignment.\n\
     Exponentially correllates with the Minimal Alignment Score.\nHigher E-values (100,\
     \ 1000, ...) cause More reads\nto Pass the alignment threshold"
-  synonyms:
-  - -e
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: BOOL        Optional  Search only the forward strand.                         False
+  optional: true
   synonyms:
   - -F
+  description: BOOL        Optional  Search only the forward strand.                         False
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "BOOL        Optional  SW penalty for ambiguous letters (N's) scored\n\
-    as --mismatch"
+  optional: true
   synonyms:
   - -N
+  description: "BOOL        Optional  SW penalty for ambiguous letters (N's) scored\n\
+    as --mismatch"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: BOOL        Optional  Search only the reverse-complementary strand.           False
+  optional: true
   synonyms:
   - -R
+  description: BOOL        Optional  Search only the reverse-complementary strand.           False
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT         Optional  %%id similarity threshold (the alignment   \
-    \             0.97\nmust still pass the E-value threshold)."
+  optional: true
   synonyms:
   - --id
+  description: "INT         Optional  %%id similarity threshold (the alignment   \
+    \             0.97\nmust still pass the E-value threshold)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT         Optional  %%query coverage threshold (the alignment must\
-    \          0.97\nstill pass the E-value threshold)"
+  optional: true
   synonyms:
   - --coverage
+  description: "INT         Optional  %%query coverage threshold (the alignment must\
+    \          0.97\nstill pass the E-value threshold)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --de_novo_otu
   description: "BOOL        Optional  FASTA/FASTQ file for reads matching database\
     \ < %%id     False\n(set using --id) and < %%cov (set using --coverage)\n(alignment\
     \ must still pass the E-value threshold)."
-  synonyms:
-  - --de_novo_otu
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: BOOL        Optional  Output OTU map (input to QIIME's make_otu_table.py).    False
+  optional: true
   synonyms:
   - --otu_map
+  description: BOOL        Optional  Output OTU map (input to QIIME's make_otu_table.py).    False
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT,INT,INT Optional  Three intervals at which to place the seed on\
-    \ the read  L,L/2,3\n(L is the seed length)"
+  optional: true
   synonyms:
   - --passes
+  description: "INT,INT,INT Optional  Three intervals at which to place the seed on\
+    \ the read  L,L/2,3\n(L is the seed length)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT         Optional  Number (or percent if INT followed by %% sign)\
-    \ of       4\nnucleotides to add to each edge of the read\nprior to SW local alignment"
+  optional: true
   synonyms:
   - --edges
+  description: "INT         Optional  Number (or percent if INT followed by %% sign)\
+    \ of       4\nnucleotides to add to each edge of the read\nprior to SW local alignment"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "BOOL        Optional  Number of seeds matched before searching   \
-    \             2\nfor candidate LIS"
+  optional: true
   synonyms:
   - --num_seeds
+  description: "BOOL        Optional  Number of seeds matched before searching   \
+    \             2\nfor candidate LIS"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --full_search
   description: "INT         Optional  Search for all 0-error and 1-error seed    \
     \             False\nmatches in the index rather than stopping\nafter finding\
     \ a 0-error match (<1%% gain in\nsensitivity with up four-fold decrease in speed)"
-  synonyms:
-  - --full_search
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: BOOL        Optional  Add pid to output file names.                           False
+  optional: true
   synonyms:
   - --pid
+  description: BOOL        Optional  Add pid to output file names.                           False
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT         Optional  DEPRECATED in favour of '-threads'. Number of\
-    \           numCores\nprocessing threads to use.\nAutomatically redirects to '-threads'"
+  optional: true
   synonyms:
   - -a
+  description: "INT         Optional  DEPRECATED in favour of '-threads'. Number of\
+    \           numCores\nprocessing threads to use.\nAutomatically redirects to '-threads'"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: INT         Optional  Number of Processing threads to use                     numCores
+  optional: true
   synonyms:
   - --threads
+  description: INT         Optional  Number of Processing threads to use                     numCores
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'DOUBLE      Optional  Indexing: seed length.                                  18'
+  optional: true
   synonyms:
   - -L
+  description: 'DOUBLE      Optional  Indexing: seed length.                                  18'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "DOUBLE      Optional  Indexing: the amount of memory (in Mbytes) for\
-    \ building 3072\nthe index."
+  optional: true
   synonyms:
   - -m
+  description: "DOUBLE      Optional  Indexing: the amount of memory (in Mbytes) for\
+    \ building 3072\nthe index."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: BOOL        Optional  Produce verbose output when building the index          True
+  optional: true
   synonyms:
   - -v
+  description: BOOL        Optional  Produce verbose output when building the index          True
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT         Optional  Indexing: Positive integer: index every Nth\
-    \ L-mer in    1\nthe reference database e.g. '-interval 2'."
+  optional: true
   synonyms:
   - --interval
+  description: "INT         Optional  Indexing: Positive integer: index every Nth\
+    \ L-mer in    1\nthe reference database e.g. '-interval 2'."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT         Optional  Indexing: maximum (integer) number of positions\
-    \ to store  1000\nfor each unique L-mer. If 0 all positions are stored."
+  optional: true
   synonyms:
   - --max_pos
+  description: "INT         Optional  Indexing: maximum (integer) number of positions\
+    \ to store  1000\nfor each unique L-mer. If 0 all positions are stored."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: BOOL        Optional
+  optional: true
   synonyms:
   - --dbg_put_db
+  description: BOOL        Optional
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: BOOL        Optional  Launch an interactive session (command prompt)          False
+  optional: true
   synonyms:
   - --cmd
+  description: BOOL        Optional  Launch an interactive session (command prompt)          False
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --task
   description: "INT         Optional  Processing Task:                           \
     \             4\n0 - align. Only perform alignment\n1 - post-processing (log writing)\n\
     2 - generate reports\n3 - align and post-process\n4 - all\n"
-  synonyms:
-  - --task
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: BOOL        Optional  Print help information
+  optional: true
   synonyms:
   - -h
+  description: BOOL        Optional  Print help information
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: BOOL        Optional  Print SortMeRNA version number
+  optional: true
   synonyms:
   - --version
+  description: BOOL        Optional  Print SortMeRNA version number
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "\n[process:1369] === Options processing starts ... ===\n\nFound value:\
   \ sortmerna\nFound flag: --help\nMissing required flag: ref\nMissing required flag:\
   \ reads\n[process:1453] Processing option: help with value: \n  Usage:   sortmerna\
@@ -550,3 +550,4 @@ help_text: "\n[process:1369] === Options processing starts ... ===\n\nFound valu
   \                                      4 - all\n\n"
 generated_using:
 - --help
+docker_image:

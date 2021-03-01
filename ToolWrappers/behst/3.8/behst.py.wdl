@@ -20,6 +20,9 @@ task Behstpy {
       ~{if defined(transcript_file) then ("--transcript-file " +  '"' + transcript_file + '"') else ""} \
       ~{if defined(interaction_file) then ("--interaction-file " +  '"' + interaction_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target_extension: "target extension basepair integer. Default is 9400."
     query_extension: "query extension basepair integer. Default is 24100."

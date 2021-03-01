@@ -22,6 +22,9 @@ task RearrangeSnvMatrixpl {
       ~{if (root) then "--root" else ""} \
       ~{if (sort) then "--sort" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree: "[required]\\nNewick input file describing the phylogenetic tree."
     out_dir: "[required]\\nThe directory for output files."

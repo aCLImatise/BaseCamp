@@ -12,6 +12,9 @@ task Ffreqboot {
       ~{if (test) then "-test" else ""} \
       ~{if (print_data) then "-printdata" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     weights: "properties Weights file"
     test: "menu       [b] Choose test (Values: b (Bootstrap); j\\n(Jackknife); c (Permute species for each\\ncharacter); o (Permute character order); s\\n(Permute within species); r (Rewrite data))"

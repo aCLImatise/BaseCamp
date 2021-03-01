@@ -38,6 +38,9 @@ task Kaptivepy {
       ~{if defined(gap_fill_size) then ("--gap_fill_size " +  '"' + gap_fill_size + '"') else ""} \
       ~{if defined(locus_label) then ("--locus_label " +  '"' + locus_label + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly: "FASTA file(s) for assemblies (default: None)"
     k_refs: "GenBank file with reference loci (default: None)"

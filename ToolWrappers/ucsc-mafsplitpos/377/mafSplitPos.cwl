@@ -3,17 +3,17 @@ id: mafSplitPos.cwl
 inputs:
 - id: in_chrom
   doc: Restrict to one chromosome
-  type: string
+  type: string?
   inputBinding:
     prefix: -chrom
 - id: in_min_gap
   doc: Split only on gaps >N bp, defaults to 100, specify -1 to disable
-  type: long
+  type: long?
   inputBinding:
     prefix: -minGap
 - id: in_min_repeat
   doc: Split only on repeats >N bp, defaults to 100, specify -1 to disable
-  type: long
+  type: long?
   inputBinding:
     prefix: -minRepeat
 - id: in_database
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mafSplitPos

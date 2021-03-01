@@ -60,6 +60,9 @@ task AnnotateInteractionspl {
       ~{if defined(pos) then ("-pos " +  '"' + pos + '"') else ""} \
       ~{if defined(bgp) then ("-bgp " +  '"' + bgp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     res: "<#> (Resolution of analysis, default: auto detect)"
     hub_count: "<#> (Minimum number of interactions to define a hub, default: 5)"

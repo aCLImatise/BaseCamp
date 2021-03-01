@@ -14,6 +14,9 @@ task Sli {
       ~{if defined(user_args) then ("--userargs " +  '"' + user_args + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     execute_cmd_exit: "Execute cmd and exit"
     user_args: ":...   put user defined arguments in statusdict::userargs"

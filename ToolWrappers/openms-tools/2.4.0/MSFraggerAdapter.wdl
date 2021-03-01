@@ -28,6 +28,9 @@ task MSFraggerAdapter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     java_executable: "The Java executable. Usually Java is on the system PATH. If Java is not found, use this parameter to specify the full path to Java"
     java_heap_memory: "Maximum Java heap size (in MB) (default: '3500')"

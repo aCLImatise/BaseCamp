@@ -92,6 +92,9 @@ task Vcontact2 {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (force_overwrite) then "--force-overwrite" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     raw_proteins: "FASTA-formatted proteins file. If provided alongside\\n--proteins-fn, vConTACT will start prior to PC\\ngeneration. (default: None)"
     rel_mode: "Method to use to create the protein-protein similarity\\nedge file. This is what the PC clustering is applied\\nagainst. (default: Diamond)"

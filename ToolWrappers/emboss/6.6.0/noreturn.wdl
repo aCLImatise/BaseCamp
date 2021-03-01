@@ -8,6 +8,9 @@ task Noreturn {
     noreturn \
       ~{if (system) then "-system" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     system: "menu       [unix] Target operating system for\\nend-of-line format (Values: unix (Unix/Linux\\nsystems); pc (Windows/DOS); mac (Apple\\nMacintosh))"
   }

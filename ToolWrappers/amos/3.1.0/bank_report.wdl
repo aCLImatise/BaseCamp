@@ -26,6 +26,9 @@ task Bankreport {
       ~{if (just_dump_information) then "-F" else ""} \
       ~{if (display_compatible_version) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_path_report: "The directory path of the bank to report"
     include_bids_output: "Include BIDs in the output messages (for debugging)"

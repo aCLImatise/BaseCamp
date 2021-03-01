@@ -12,6 +12,9 @@ task Arb2Bin {
       ~{if (try_repair_database) then "-r" else ""} \
       ~{if (optimize_database_using) then "-c" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create_map_file: "create map file too"
     try_repair_database: "try to repair destroyed database"

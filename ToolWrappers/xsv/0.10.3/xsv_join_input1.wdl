@@ -16,6 +16,9 @@ task XsvJoinInput1 {
       ~{input_one} \
       ~{columns_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     xsv: ""
     join: ""

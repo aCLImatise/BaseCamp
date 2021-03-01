@@ -42,6 +42,9 @@ task Schemasaladtool {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rdf_serializer: "Output RDF serialization format used by --print-rdf\\n(one of turtle (default), n3, nt, xml)"
     print_json_ld_context: "Print JSON-LD context for schema"

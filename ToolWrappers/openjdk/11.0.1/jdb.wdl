@@ -15,7 +15,7 @@ task Jdb {
     Boolean? verbose
     Boolean? namevalue_set_property
     Boolean? classpath
-    Boolean? option_target_option
+    Boolean? option_nonstandard_target
     String options
     String class
     String arguments
@@ -38,8 +38,11 @@ task Jdb {
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (namevalue_set_property) then "-D" else ""} \
       ~{if (classpath) then "-classpath" else ""} \
-      ~{if (option_target_option) then "-X" else ""}
+      ~{if (option_nonstandard_target) then "-X" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sourcepath: "<directories separated by \\\":\\\">\\ndirectories in which to look for source files"
     attach: "attach to a running VM at the specified address using standard connector"
@@ -54,7 +57,7 @@ task Jdb {
     verbose: "[:class|gc|jni]\\nturn on verbose mode"
     namevalue_set_property: "<name>=<value>  set a system property"
     classpath: "<directories separated by \\\":\\\">\\nlist directories in which to look for classes"
-    option_target_option: "<option>        non-standard target VM option"
+    option_nonstandard_target: "<option>        non-standard target VM option"
     options: ""
     class: ""
     arguments: ""

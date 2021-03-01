@@ -3,22 +3,22 @@ id: extract_supertranscript_from_reference.py.cwl
 inputs:
 - id: in_gtf
   doc: Path to gtf annotation file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --gtf
 - id: in_gff_three
   doc: Path to gff3 annotation file.
-  type: long
+  type: long?
   inputBinding:
     prefix: --gff3
 - id: in_seq
   doc: Path to fasta file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --seq
 - id: in_name_base_path
   doc: Name base and path for output
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_usage
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_name_base_path
   doc: Name base and path for output
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_name_base_path)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - extract_supertranscript_from_reference.py

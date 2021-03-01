@@ -14,6 +14,9 @@ task CMVJson {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_model_file: "Path to input"
     output_directory_path: "Path to output directory"

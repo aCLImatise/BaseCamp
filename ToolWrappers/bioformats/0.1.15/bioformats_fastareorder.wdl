@@ -16,6 +16,9 @@ task BioformatsFastareorder {
       ~{if (ignore_missing) then "--ignore_missing" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_missing: "ignore sequences in the specified order file that are\\nmissing in the input FASTA file\\n"
     v: ""

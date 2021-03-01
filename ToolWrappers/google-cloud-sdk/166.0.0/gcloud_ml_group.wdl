@@ -16,6 +16,9 @@ task GcloudMlGroup {
       ~{flags} \
       ~{group}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     g_cloud: ""
     ml: ""

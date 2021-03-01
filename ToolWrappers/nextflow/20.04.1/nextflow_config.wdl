@@ -22,6 +22,9 @@ task NextflowConfig {
       ~{if (show_profiles) then "-show-profiles" else ""} \
       ~{if (sort) then "-sort" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     flat: "Print config using flat notation\\nDefault: false"
     profile: "Choose a configuration profile"

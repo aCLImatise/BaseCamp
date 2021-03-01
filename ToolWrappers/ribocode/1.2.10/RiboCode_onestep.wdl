@@ -42,6 +42,9 @@ task RiboCodeOnestep {
       ~{if (output_gtf) then "--output-gtf" else ""} \
       ~{if (output_bed) then "--output-bed" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gtf: "Default, suitable for GENCODE and ENSEMBL GTF file,\\nplease refer: https://en.wikipedia.org/wiki/GENCODE"
     fast_a: "The genome sequences file in fasta format."

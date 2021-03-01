@@ -26,6 +26,9 @@ task GcloudSpannerDatabases {
       ~{remove_i_am_policy_binding} \
       ~{set_i_am_policy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ddl: "Manage the DDL for Cloud Spanner databases."
     add_i_am_policy_binding: "Add an IAM policy binding to a Cloud Spanner database."

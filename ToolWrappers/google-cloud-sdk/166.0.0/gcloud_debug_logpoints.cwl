@@ -7,7 +7,7 @@ inputs:
     \ specifying a\ndebuggee based on its description or name. For App Engine projects,\
     \ if\nnot specified, the default target is the most recent deployment of the\n\
     default module and version."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --target
 - id: in_log_points
@@ -44,6 +44,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

@@ -3,77 +3,77 @@ id: PepNovoAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                     Input file  (valid formats: 'mzML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -in
 - id: in_out
   doc: "*                    Output file  (valid formats: 'idXML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
 - id: in_pep_novo_executable
   doc: '*     The PepNovo executable. Provide a full or relative path, or make sure
     it can be found in your PATH environment.'
-  type: File
+  type: File?
   inputBinding:
     prefix: -pepnovo_executable
 - id: in_model_directory
   doc: '*        Name of the directory where the model files are kept.'
-  type: File
+  type: File?
   inputBinding:
     prefix: -model_directory
 - id: in_correct_pm
   doc: Find optimal precursor mass and charge values.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -correct_pm
 - id: in_use_spectrum_charge
   doc: Do not correct charge
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -use_spectrum_charge
 - id: in_use_spectrum_mz
   doc: Do not correct the precursor m/z value that appears in the file.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -use_spectrum_mz
 - id: in_no_quality_filter
   doc: Do not remove low quality spectra.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -no_quality_filter
 - id: in_fragment_tolerance
   doc: "The fragment tolerance (between 0 and 0.75 Da. Set to -1.0 to use model's\
     \ default setting) (default: '-1.0')"
-  type: double
+  type: double?
   inputBinding:
     prefix: -fragment_tolerance
 - id: in_pm_tolerance
   doc: "The precursor mass tolerance (between 0 and 5.0 Da. Set to -1.0 to use model's\
     \ default setting) (default: '-1.0')"
-  type: double
+  type: double?
   inputBinding:
     prefix: -pm_tolerance
 - id: in_model
   doc: "Name of the model that should be used (default: 'CID_IT_TRYP')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -model
 - id: in_digest
   doc: "Enzyme used for digestion (default TRYPSIN) (default: 'TRYPSIN' valid: 'TRYPSIN',\
     \ 'NON_SPECIFIC')"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -digest
 - id: in_tag_length
   doc: "Returns peptide sequence of the specified length (only lengths 3-6 are allowed)\
     \ (default: '-1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -tag_length
 - id: in_num_solutions
   doc: "Number of solutions to be computed (default: '20' min: '1' max: '2000')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -num_solutions
 - id: in_fixed_modifications
@@ -788,7 +788,7 @@ inputs:
     \ 'Xlink:DTSSP (Protein N-term)', 'Xlink:EGS (K)', 'Xlink:EGS (Protein N-term)',\
     \ 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC (C)',\
     \ 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -fixed_modifications
 - id: in_variable_modifications
@@ -1503,27 +1503,27 @@ inputs:
     \ 'Xlink:DTSSP (Protein N-term)', 'Xlink:EGS (K)', 'Xlink:EGS (Protein N-term)',\
     \ 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC (C)',\
     \ 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -variable_modifications
 - id: in_ini
   doc: Use the given TOPP INI file
-  type: File
+  type: File?
   inputBinding:
     prefix: -ini
 - id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -threads
 - id: in_write_ini
   doc: Writes the default configuration file
-  type: File
+  type: File?
   inputBinding:
     prefix: -write_ini
 - id: in_helphelp
   doc: Shows all options (including advanced)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --helphelp
 outputs:
@@ -1532,9 +1532,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: "*                    Output file  (valid formats: 'idXML')"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - PepNovoAdapter

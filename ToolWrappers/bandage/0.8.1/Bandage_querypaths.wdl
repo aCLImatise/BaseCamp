@@ -18,6 +18,9 @@ task BandageQuerypaths {
       ~{if (hits_fast_a) then "--hitsfasta" else ""} \
       ~{if (help_all) then "--helpall" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_fast_a: "Put all query path sequences in a multi-FASTA file, not in the TSV file"
     hits_fast_a: "Produce a multi-FASTA file of all BLAST hits in the query paths"

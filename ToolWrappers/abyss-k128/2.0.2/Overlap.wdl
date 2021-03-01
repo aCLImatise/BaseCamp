@@ -44,6 +44,9 @@ task Overlap {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_size: "k-mer size"
     min: "require a minimum of OVERLAP bases\\ndefault is 5 bases"

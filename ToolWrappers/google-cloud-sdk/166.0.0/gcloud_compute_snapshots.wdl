@@ -20,6 +20,9 @@ task GcloudComputeSnapshots {
       ~{remove_labels} \
       ~{update}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     snapshots: "SYNOPSIS"
     add_labels: "Add labels to Google Compute Engine snapshots."

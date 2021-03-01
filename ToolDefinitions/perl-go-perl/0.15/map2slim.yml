@@ -3,12 +3,15 @@ command:
 - map2slim
 positional:
 - !Positional
-  description: "(Only works with -outmap)\nShow the names of the term in the slim\
-    \ mapping file"
+  optional: false
   position: 0
   name: shownames
-  optional: false
+  description: "(Only works with -outmap)\nShow the names of the term in the slim\
+    \ mapping file"
 - !Positional
+  optional: false
+  position: 0
+  name: OUTPUT
   description: "In normal mode, a standard format gene-association file will be written.\n\
     The GO ID column (5) will contain GO slim IDs. The mapping corresponds\nto the\
     \ 2nd column in the table above. Note that the output file may\ncontain more lines\
@@ -48,51 +51,48 @@ positional:
     \ of this term which is not in the slim. This can point to\n'gaps' in the slim.\
     \ Note that running map2slim with the -b option will\n'plug' these gaps with artificial\
     \ filler terms."
-  position: 0
-  name: OUTPUT
-  optional: false
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -b
   description: "slim file\nThis argument adds bucket terms to the slim ontology; see\
     \ the\ndocumentation below for an explanation. The new slim ontology file,\nincluding\
     \ bucket terms will be written to bucket slim file"
-  synonyms:
-  - -b
   args: !SimpleFlagArg
     name: bucket
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -outmap
   description: "mapping file\nThis will generate a mapping file for every term in\
     \ the full\nontology showing both the most pertinent slim term and all slim\n\
     terms that are ancestors. If you use this option, do NOT supply a\ngene-associations\
     \ file"
-  synonyms:
-  - -outmap
   args: !SimpleFlagArg
     name: slim
-  optional: true
 - !Flag
-  description: "This will force map2slim to give counts of the assoc file, rather\n\
-    than map it"
+  optional: true
   synonyms:
   - -c
+  description: "This will force map2slim to give counts of the assoc file, rather\n\
+    than map it"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "When used in conjunction with -c will tab the output so that the\n\
-    indentation reflects the tree hierarchy in the slim file"
+  optional: true
   synonyms:
   - -t
+  description: "When used in conjunction with -c will tab the output so that the\n\
+    indentation reflects the tree hierarchy in the slim file"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "file\nThis will write the mapped assocs (or counts) to the specified\
-    \ file,\nrather than to the screen"
+  optional: true
   synonyms:
   - -o
+  description: "file\nThis will write the mapped assocs (or counts) to the specified\
+    \ file,\nrather than to the screen"
   args: !SimpleFlagArg
     name: out
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -226,3 +226,4 @@ help_text: "NAME\n    map2slim - maps gene associations to a 'slim' ontology\n\n
   \n"
 generated_using:
 - --help
+docker_image:

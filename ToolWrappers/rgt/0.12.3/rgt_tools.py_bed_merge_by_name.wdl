@@ -12,6 +12,9 @@ task RgttoolspyBedMergeByName {
       ~{if defined(output_bed_file) then ("-o " +  '"' + output_bed_file + '"') else ""} \
       ~{if (bed_format) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bed_file: "Input BED file"
     output_bed_file: "Output BED file"

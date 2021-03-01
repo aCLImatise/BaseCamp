@@ -5,7 +5,7 @@ task Tfastf36 {
     Boolean? compare_forward_strand
     Boolean? high_scores_reported
     Boolean? length_querysbjct_name
-    Boolean? number_alignments_limited
+    Boolean? number_alignments_shown
     Boolean? enable_debugging_output
     Boolean? expandscript_extend_hits
     Boolean? _evalueerepeat_threshold
@@ -29,7 +29,7 @@ task Tfastf36 {
     Boolean? var_24
     Boolean? _matchmismatch_dnarna
     Boolean? raw_score_file
-    Boolean? scoring_bp_sets
+    Boolean? scoring_matrix_proteinbl
     Boolean? filter_lowercase_seg
     Boolean? translation_genetic_code
     Boolean? _max_threadsworkers
@@ -46,7 +46,7 @@ task Tfastf36 {
       ~{if (compare_forward_strand) then "-3" else ""} \
       ~{if (high_scores_reported) then "-b" else ""} \
       ~{if (length_querysbjct_name) then "-C" else ""} \
-      ~{if (number_alignments_limited) then "-d" else ""} \
+      ~{if (number_alignments_shown) then "-d" else ""} \
       ~{if (enable_debugging_output) then "-D" else ""} \
       ~{if (expandscript_extend_hits) then "-e" else ""} \
       ~{if (_evalueerepeat_threshold) then "-E" else ""} \
@@ -70,7 +70,7 @@ task Tfastf36 {
       ~{if (var_24) then "-Q" else ""} \
       ~{if (_matchmismatch_dnarna) then "-r" else ""} \
       ~{if (raw_score_file) then "-R" else ""} \
-      ~{if (scoring_bp_sets) then "-s" else ""} \
+      ~{if (scoring_matrix_proteinbl) then "-s" else ""} \
       ~{if (filter_lowercase_seg) then "-S" else ""} \
       ~{if (translation_genetic_code) then "-t" else ""} \
       ~{if (_max_threadsworkers) then "-T" else ""} \
@@ -82,11 +82,14 @@ task Tfastf36 {
       ~{if (statistics_estimation_method) then "-z" else ""} \
       ~{if (database_size_evalue) then "-Z" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compare_forward_strand: "compare forward strand only"
     high_scores_reported: ":  high scores reported (limited by -E by default);\\n=<int> forces <int> results;"
     length_querysbjct_name: ":  length of the query/sbjct name in alignments"
-    number_alignments_limited: ":  number of alignments shown (limited by -E by default)"
+    number_alignments_shown: ":  number of alignments shown (limited by -E by default)"
     enable_debugging_output: "enable debugging output"
     expandscript_extend_hits: ":  expand_script to extend hits"
     _evalueerepeat_threshold: ":  E()-value,E()-repeat threshold"
@@ -110,7 +113,7 @@ task Tfastf36 {
     var_24: "quiet [default] -- do not prompt"
     _matchmismatch_dnarna: ":  [+0/0]  +match/-mismatch for DNA/RNA"
     raw_score_file: ":  raw score file"
-    scoring_bp_sets: ":  Scoring matrix: (protein)\\nBL50, BP62 (sets -f -11 -g -1); P250, OPT5, VT200,\\nVT160, P120, VT120, BL80, VT80, MD40, VT40, MD20, VT20, MD10, VT10;\\nscoring matrix file name; -s ?BL50 adjusts matrix for short queries;"
+    scoring_matrix_proteinbl: ":  Scoring matrix: (protein)\\nBL50, BP62 (sets -f -11 -g -1); P250, OPT5, VT200,\\nVT160, P120, VT120, BL80, VT80, MD40, VT40, MD20, VT20, MD10, VT10;\\nscoring matrix file name; -s ?BL50 adjusts matrix for short queries;"
     filter_lowercase_seg: "filter lowercase (seg) residues"
     translation_genetic_code: ":  translation genetic code"
     _max_threadsworkers: ":  max threads/workers"

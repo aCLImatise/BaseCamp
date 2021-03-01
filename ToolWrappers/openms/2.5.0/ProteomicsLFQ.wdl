@@ -32,6 +32,9 @@ task ProteomicsLFQ {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                                           Input files (valid formats: 'mzML')"
     ids: "*                                          Identifications filtered at PSM level (e.g., q-value < 0.01).And annotated with PEP as main score.\\nWe suggest using:\\n1. PercolatorAdapter tool (score_type = 'q-value', -post-processing-tdc)\\n2. FalseDiscoveryRate (FDR:PSM = 0.01)\\n3. IDScoreSwitcher (-old_score q-value -new_score MS:1001493 -new_score_orientation lower_better -new_score_type)\\nTo obtain well calibrated PEPs and an inital reduction of PSMs\\nID files must be provided in same order as spectra files. (valid formats: 'idXML', 'mzId')"

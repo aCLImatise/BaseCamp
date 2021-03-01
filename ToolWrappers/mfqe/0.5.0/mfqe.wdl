@@ -28,6 +28,9 @@ task Mfqe {
       ~{if defined(output_fast_q_files) then ("--output-fastq-files " +  '"' + output_fast_q_files + '"') else ""} \
       ~{if defined(sequence_name_lists) then ("--sequence-name-lists " +  '"' + sequence_name_lists + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fast_q: ": Use this file as input FASTQ [default: Use STDIN]"
     output_uncompressed: "Output sequences uncompressed [default: gzip compress outputs]"

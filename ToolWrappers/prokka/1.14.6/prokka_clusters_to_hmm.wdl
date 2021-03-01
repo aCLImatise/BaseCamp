@@ -14,6 +14,9 @@ task ProkkaclustersToHmm {
       ~{if defined(lib) then ("--lib " +  '"' + lib + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "!      Verbose output (default '0')."
     dir: "Source CLUSTERS folder (default '/bio/data/CLUSTERS/latest')."

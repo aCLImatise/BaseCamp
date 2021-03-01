@@ -32,6 +32,9 @@ task CentrifugeSimulateReadspy {
       ~{if (sanity_check) then "--sanity-check" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rna: "RNA-seq reads (default: DNA-seq reads)"
     single_end: "single-end reads (default: paired-end reads)"

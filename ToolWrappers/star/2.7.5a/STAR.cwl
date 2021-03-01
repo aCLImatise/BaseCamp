@@ -3,17 +3,17 @@ id: STAR.cwl
 inputs:
 - id: in__map_all_reads
   doc: ': map all reads'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: '-1'
 - id: in_out_sam_attr_rg_line
   doc: :xxx , ID:zzz "DS:z z" , ID:yyy DS:yyyy
-  type: string
+  type: string?
   inputBinding:
     prefix: --outSAMattrRGline
 - id: in_solo_cb_position
   doc: 0_0_2_-1  3_1_3_8
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --soloCBposition
 - id: in_align_reads
@@ -112,7 +112,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_alignments_file_output
+- id: in_alignments_normally_are
   doc: '... alignments in SAM format (which normally are output to Aligned.out.sam
     file), normal standard output will go into Log.std.out'
   type: string
@@ -171,7 +171,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_nh_hi_nm
+- id: in_nh_hi_as_nm_ch
   doc: '... NH HI AS nM NM MD jM jI MC ch'
   type: string
   inputBinding:
@@ -316,11 +316,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_at_slash_ac
-  doc: and GT/AT junction penalty  (in addition to scoreGap)
-  type: string
-  inputBinding:
-    position: 0
 - id: in_local
   doc: '... standard local alignment with soft-clipping allowed'
   type: string
@@ -548,6 +543,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - STAR

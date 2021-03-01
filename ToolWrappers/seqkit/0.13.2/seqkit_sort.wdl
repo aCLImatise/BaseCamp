@@ -42,6 +42,9 @@ task SeqkitSort {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     by_length: "by sequence length"
     by_name: "by full name instead of just id"

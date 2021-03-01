@@ -48,6 +48,9 @@ task FusionReportRun {
       ~{if defined(tool_cut_off) then ("--tool-cutoff " +  '"' + tool_cut_off + '"') else ""} \
       ~{if defined(export) then ("--export " +  '"' + export + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     eric_script: "EricScript output file"
     eric_script_weight: "EricScript output file"

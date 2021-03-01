@@ -3,7 +3,7 @@ id: mimodd_annotate.cwl
 inputs:
 - id: in_ofile
   doc: "redirect the output to the specified file (default:\nstdout)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --ofile
 - id: in_codon_tables
@@ -19,59 +19,59 @@ inputs:
     prefix: --codon-tables
 - id: in_stats
   doc: generate a results summary file of the specified name
-  type: File
+  type: File?
   inputBinding:
     prefix: --stats
 - id: in_no_downstream
   doc: do not include downstream effects in the output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-downstream
 - id: in_no_upstream
   doc: do not include upstream effects in the output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-upstream
 - id: in_no_intron
   doc: do not include intron effects in the output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-intron
 - id: in_no_intergenic
   doc: do not include intergenic effects in the output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-intergenic
 - id: in_no_utr
   doc: do not include UTR effects in the output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-utr
 - id: in_ud
   doc: "specify the upstream/downstream interval length, i.e.,\nvariants more than\
     \ DISTANCE nts from the next\nannotated gene are considered to be intergenic"
-  type: long
+  type: long?
   inputBinding:
     prefix: --ud
 - id: in_config
   doc: "location of the SnpEff installation directory. Will\noverride MiModD SNPEFF_PATH\
     \ config setting if\nprovided."
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_memory
   doc: maximal memory to use in GB (overrides config setting)
-  type: string
+  type: string?
   inputBinding:
     prefix: --memory
 - id: in_quiet
   doc: suppress original messages from SnpEff
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_verbose
   doc: verbose output (independent of SnpEff)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_input_file
@@ -91,9 +91,10 @@ outputs:
   type: stdout
 - id: out_ofile
   doc: "redirect the output to the specified file (default:\nstdout)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_ofile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mimodd

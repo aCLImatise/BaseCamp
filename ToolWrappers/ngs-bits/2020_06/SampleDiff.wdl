@@ -22,6 +22,9 @@ task SampleDiff {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_one: "Input variant list in GSvar format."
     in_two: "Input variant list in GSvar format."

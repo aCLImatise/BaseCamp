@@ -8,6 +8,9 @@ task MegagtaReadstat {
     megagta readstat \
       ~{cat}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cat: ""
   }

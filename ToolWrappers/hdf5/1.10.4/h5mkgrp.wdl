@@ -14,6 +14,9 @@ task H5mkgrp {
       ~{if (parents) then "--parents" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     latest: "Use latest version of file format to create groups"
     parents: "No error if existing, make parent groups as needed"

@@ -1,16 +1,16 @@
 class: CommandLineTool
 id: knock_knock_process.cwl
 inputs:
-- id: in_stages
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --stages
 - id: in_progress
-  doc: ''
-  type: boolean
+  doc: show progress bars
+  type: boolean?
   inputBinding:
     prefix: --progress
+- id: in_stages
+  doc: ''
+  type: string?
+  inputBinding:
+    prefix: --stages
 - id: in_project_directory
   doc: "the base directory to store input data, reference\nannotations, and analysis\
     \ output for a project"
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - knock-knock

@@ -28,6 +28,9 @@ task RnaCdtrain {
       ~{if defined(plot_out) then ("--plot-out " +  '"' + plot_out + '"') else ""} \
       ~{if defined(model_out) then ("--model-out " +  '"' + model_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chunksize: "Chunksize in bases. Default = 100"
     contig: "Name of mitochrondrial contig in your BAM\\nfiles. Default = chrM"

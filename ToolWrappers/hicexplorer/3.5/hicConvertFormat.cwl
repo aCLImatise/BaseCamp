@@ -15,50 +15,50 @@ inputs:
   doc: "File format of the input matrix file. The following\noptions are available:\
     \ `h5` (native HiCExplorer format\nbased on hdf5 storage format), `cool`, `hic`,\
     \ `homer`,\n`hicpro`. (default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --inputFormat
 - id: in_output_format
   doc: "Output format. The following options are available:\n`h5` (native HiCExplorer\
     \ format based on hdf5 storage\nformat). `cool` and `ginteractions`. (default:\
     \ cool)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --outputFormat
 - id: in_correction_name
   doc: "Name of the column which stores the correction\nfactors. The information about\
     \ the column names can be\nfigured out with the tool hicInfo. Option only for\n\
     cool input files. (default: weight)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --correction_name
 - id: in_correction_division
   doc: "If set, division is applied for correction. Default is\na multiplication.\
     \ Option only for cool input files.\n(default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --correction_division
 - id: in_store_applied_correction
   doc: "Store the applied correction and do not set correction\nfactors. Option only\
     \ for cool input files. (default:\nFalse)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --store_applied_correction
 - id: in_chromosome
   doc: "Load only one chromosome. Option only for cool input\nfiles. (default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --chromosome
 - id: in_enforce_integer
   doc: "Enforce datatype of counts to integer. Option only for\ncool input files.\
     \ (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --enforce_integer
 - id: in_load_raw_values
   doc: "Load only 'count' data and do not apply a correction.\nOption only for cool\
     \ input files. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --load_raw_values
 - id: in_resolutions
@@ -75,6 +75,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicConvertFormat

@@ -4,197 +4,197 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Folder that contains fastq files you want to check for\ncontamination.\
-    \ Will find any file that contains .fq or\n.fastq in the filename."
+  optional: true
   synonyms:
   - -i
   - --input_directory
+  description: "Folder that contains fastq files you want to check for\ncontamination.\
+    \ Will find any file that contains .fq or\n.fastq in the filename."
   args: !SimpleFlagArg
     name: INPUT_DIRECTORY
-  optional: true
 - !Flag
-  description: Base name for output/temporary directories.
+  optional: true
   synonyms:
   - -o
   - --output_name
+  description: Base name for output/temporary directories.
   args: !SimpleFlagArg
     name: OUTPUT_NAME
-  optional: true
 - !Flag
-  description: "Databases folder. To download these, you will need to\nget access\
-    \ to the rMLST databases. For complete\ninstructions on how to do this, please\
-    \ see\nhttps://olc-bioinformatics.github.io/ConFindr/install/\n#downloading-confindr-databases"
+  optional: true
   synonyms:
   - -d
   - --databases
+  description: "Databases folder. To download these, you will need to\nget access\
+    \ to the rMLST databases. For complete\ninstructions on how to do this, please\
+    \ see\nhttps://olc-bioinformatics.github.io/ConFindr/install/\n#downloading-confindr-databases"
   args: !SimpleFlagArg
     name: DATABASES
-  optional: true
 - !Flag
-  description: "Activate to prefer using rMLST databases over core-\ngene derived\
-    \ databases. By default,ConFindr will use\ncore-gene derived databases where available."
+  optional: true
   synonyms:
   - --rmlst
+  description: "Activate to prefer using rMLST databases over core-\ngene derived\
+    \ databases. By default,ConFindr will use\ncore-gene derived databases where available."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Number of threads to run analysis with.
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: Number of threads to run analysis with.
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: "If your ConFindr databases are in a location you don't\nhave write\
-    \ access to, you can enter this option to\nspecify a temporary directory to put\
-    \ genus-specific\ndatabases to."
+  optional: true
   synonyms:
   - -tmp
   - --tmp
+  description: "If your ConFindr databases are in a location you don't\nhave write\
+    \ access to, you can enter this option to\nspecify a temporary directory to put\
+    \ genus-specific\ndatabases to."
   args: !SimpleFlagArg
     name: TMP
-  optional: true
 - !Flag
-  description: "By default, intermediate files are deleted. Activate\nthis flag to\
-    \ keep intermediate files."
+  optional: true
   synonyms:
   - -k
   - --keep_files
+  description: "By default, intermediate files are deleted. Activate\nthis flag to\
+    \ keep intermediate files."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Base quality needed to support a multiple allele call.\nDefaults to\
-    \ 20."
+  optional: true
   synonyms:
   - -q
   - --quality_cutoff
+  description: "Base quality needed to support a multiple allele call.\nDefaults to\
+    \ 20."
   args: !SimpleFlagArg
     name: QUALITY_CUTOFF
-  optional: true
 - !Flag
-  description: "Number of bases necessary to support a multiple allele\ncall. Defaults\
-    \ to 2."
+  optional: true
   synonyms:
   - -b
   - --base_cutoff
+  description: "Number of bases necessary to support a multiple allele\ncall. Defaults\
+    \ to 2."
   args: !SimpleFlagArg
     name: BASE_CUTOFF
-  optional: true
 - !Flag
-  description: "Fraction of bases necessary to support a multiple\nallele call. Particularly\
-    \ useful when dealing with\nvery high coverage samples. Default is 0.05."
+  optional: true
   synonyms:
   - -bf
   - --base_fraction_cutoff
+  description: "Fraction of bases necessary to support a multiple\nallele call. Particularly\
+    \ useful when dealing with\nvery high coverage samples. Default is 0.05."
   args: !SimpleFlagArg
     name: BASE_FRACTION_CUTOFF
-  optional: true
 - !Flag
-  description: Identifier for forward reads.
+  optional: true
   synonyms:
   - -fid
   - --forward_id
+  description: Identifier for forward reads.
   args: !SimpleFlagArg
     name: FORWARD_ID
-  optional: true
 - !Flag
-  description: Identifier for reverse reads.
+  optional: true
   synonyms:
   - -rid
   - --reverse_id
+  description: Identifier for reverse reads.
   args: !SimpleFlagArg
     name: REVERSE_ID
-  optional: true
 - !Flag
-  description: "Type of input data. Default is Illumina, but can be\nused for Nanopore\
-    \ too. No PacBio support (yet)."
+  optional: true
   synonyms:
   - -dt
   - --data_type
+  description: "Type of input data. Default is Illumina, but can be\nused for Nanopore\
+    \ too. No PacBio support (yet)."
   args: !ChoiceFlagArg
     choices: !!set
       Nanopore:
       Illumina:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  - --Xmx
   description: "Very occasionally, parts of the pipeline that use the\nBBMap suite\
     \ will have their memory reservation fail\nand request not enough, or sometimes\
     \ negative, memory.\nIf this happens to you, you can use this flag to\noverride\
     \ automatic memory reservation and use an\namount of memory requested by you.\
     \ -Xmx 20g will\nspecify 20 gigs of RAM, and -Xmx 800m will specify 800\nmegs."
-  synonyms:
-  - -Xmx
-  - --Xmx
   args: !SimpleFlagArg
     name: XMX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -cgmlst
+  - --cgmlst
   description: "Path to a cgMLST database to use for contamination\ndetection instead\
     \ of using the default rMLST database.\nSequences in this file should have headers\
     \ in format\n>genename_allelenumber. To speed up ConFindr runs,\nclustering the\
     \ cgMLST database with CD-HIT before\nrunning ConFindr is recommended. This is\
     \ highly\nexperimental, results should be interpreted with great\ncare."
-  synonyms:
-  - -cgmlst
-  - --cgmlst
   args: !SimpleFlagArg
     name: CGMLST
-  optional: true
 - !Flag
-  description: "If activated, will look for FASTA files instead of\nFASTQ for unpaired\
-    \ reads."
+  optional: true
   synonyms:
   - --fasta
+  description: "If activated, will look for FASTA files instead of\nFASTQ for unpaired\
+    \ reads."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Amount of output you want printed to the screen.\nDefaults to info,\
-    \ which should be good for most users."
+  optional: true
   synonyms:
   - -verbosity
   - --verbosity
+  description: "Amount of output you want printed to the screen.\nDefaults to info,\
+    \ which should be good for most users."
   args: !ChoiceFlagArg
     choices: !!set
+      info:
       debug:
       warning:
-      info:
-  optional: true
 - !Flag
-  description: "Continue ConFindr analyses on samples with two or more\ngenera identified.\
-    \ Default is False"
+  optional: true
   synonyms:
   - -cross_details
   - --cross_details
+  description: "Continue ConFindr analyses on samples with two or more\ngenera identified.\
+    \ Default is False"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum number of matching hashes in a MASH screen in\norder for a\
-    \ genus to be considered present in a\nsample. Default is 150\n"
+  optional: true
   synonyms:
   - -m
   - --min_matching_hashes
+  description: "Minimum number of matching hashes in a MASH screen in\norder for a\
+    \ genus to be considered present in a\nsample. Default is 150\n"
   args: !SimpleFlagArg
     name: MIN_MATCHING_HASHES
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -v
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: confindr [-h] -i INPUT_DIRECTORY -o OUTPUT_NAME [-d DATABASES]\n\
   \                [--rmlst] [-t THREADS] [-tmp TMP] [-k] [-q QUALITY_CUTOFF]\n  \
   \              [-b BASE_CUTOFF] [-bf BASE_FRACTION_CUTOFF] [-fid FORWARD_ID]\n \
@@ -261,3 +261,4 @@ help_text: "usage: confindr [-h] -i INPUT_DIRECTORY -o OUTPUT_NAME [-d DATABASES
   \           sample. Default is 150\n"
 generated_using:
 - --help
+docker_image:

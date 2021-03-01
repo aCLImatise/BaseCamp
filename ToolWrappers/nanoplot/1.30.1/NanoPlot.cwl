@@ -3,159 +3,159 @@ id: NanoPlot.cwl
 inputs:
 - id: in_threads
   doc: Set the allowed number of threads to be used by the script
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_verbose
   doc: Write log messages also to terminal.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_store
   doc: Store the extracted data in a pickle file for future plotting.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --store
 - id: in_raw
   doc: Store the extracted data in tab separated file.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --raw
 - id: in_huge
   doc: Input data is one very large file.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --huge
 - id: in_outdir
   doc: Specify directory in which output has to be created.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_prefix
   doc: Specify an optional prefix to be used for the output files.
-  type: string
+  type: string?
   inputBinding:
     prefix: --prefix
 - id: in_maxlength
   doc: Hide reads longer than length specified.
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxlength
 - id: in_minlength
   doc: Hide reads shorter than length specified.
-  type: long
+  type: long?
   inputBinding:
     prefix: --minlength
 - id: in_drop_outliers
   doc: Drop outlier reads with extreme long length.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --drop_outliers
 - id: in_down_sample
   doc: Reduce dataset to N reads by random sampling.
-  type: string
+  type: string?
   inputBinding:
     prefix: --downsample
 - id: in_log_length
   doc: Additionally show logarithmic scaling of lengths in plots.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --loglength
 - id: in_percent_qual
   doc: Use qualities as theoretical percent identities.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --percentqual
 - id: in_a_length
   doc: Use aligned read lengths rather than sequenced length (bam mode)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --alength
 - id: in_min_qual
   doc: Drop reads with an average quality lower than specified.
-  type: string
+  type: string?
   inputBinding:
     prefix: --minqual
 - id: in_runtime_until
   doc: Only take the N first hours of a run
-  type: string
+  type: string?
   inputBinding:
     prefix: --runtime_until
 - id: in_read_type
   doc: "Which read type to extract information about from summary. Options are 1D,\
     \ 2D,\n1D2"
-  type: string
+  type: string?
   inputBinding:
     prefix: --readtype
 - id: in_barcoded
   doc: Use if you want to split the summary file by barcode
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --barcoded
 - id: in_no_supplementary
   doc: Use if you want to remove supplementary alignments
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_supplementary
 - id: in_color
   doc: Specify a valid matplotlib color for the plots
-  type: string
+  type: string?
   inputBinding:
     prefix: --color
 - id: in_colormap
   doc: Specify a valid matplotlib colormap for the heatmap
-  type: string
+  type: string?
   inputBinding:
     prefix: --colormap
 - id: in_format
   doc: Specify the output format of the plots.
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
 - id: in_plots
   doc: "[{kde,hex,dot,pauvre} [{kde,hex,dot,pauvre} ...]]\nSpecify which bivariate\
     \ plots have to be made."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --plots
 - id: in_list_colors
   doc: List the colors which are available for plotting and exit.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --listcolors
 - id: in_list_colormaps
   doc: List the colors which are available for plotting and exit.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --listcolormaps
 - id: in_no_n_five_zero
   doc: Hide the N50 mark in the read length histogram
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-N50
 - id: in_n_five_zero
   doc: Show the N50 mark in the read length histogram
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --N50
 - id: in_title
   doc: Add a title to all plots, requires quoting if using spaces
-  type: string
+  type: string?
   inputBinding:
     prefix: --title
 - id: in_font_scale
   doc: Scale the font of the plots by a factor
-  type: string
+  type: string?
   inputBinding:
     prefix: --font_scale
 - id: in_dpi
   doc: Set the dpi for saving images
-  type: string
+  type: string?
   inputBinding:
     prefix: --dpi
 - id: in_hide_stats
   doc: Not adding Pearson R stats in some bivariate plots
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --hide_stats
 - id: in_fast_q
@@ -203,12 +203,12 @@ inputs:
     prefix: --cram
 - id: in_pickle
   doc: Data is a pickle file stored earlier.
-  type: File
+  type: File?
   inputBinding:
     prefix: --pickle
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
@@ -217,9 +217,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: Specify directory in which output has to be created.
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - NanoPlot

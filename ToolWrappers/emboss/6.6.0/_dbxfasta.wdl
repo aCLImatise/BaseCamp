@@ -11,11 +11,11 @@ task Dbxfasta {
     Boolean? date
     Boolean? exclude
     Boolean? statistics
-    File file
+    File indexoutdir_outdir_index
   }
   command <<<
     _dbxfasta \
-      ~{file} \
+      ~{indexoutdir_outdir_index} \
       ~{if (id_format) then "-idformat" else ""} \
       ~{if (directory) then "-directory" else ""} \
       ~{if (filenames) then "-filenames" else ""} \
@@ -26,6 +26,9 @@ task Dbxfasta {
       ~{if (exclude) then "-exclude" else ""} \
       ~{if (statistics) then "-statistics" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id_format: "menu       [idacc] ID line format (Values: simple\\n(>ID); idacc (>ID ACC or >ID (ACC)); idsv\\n(>ID SV or >ID (SV)); gcgid (>db:ID);\\ngcgidacc (>db:ID ACC); dbid (>db ID); ncbi\\n(| formats))"
     directory: "directory  [.] Database directory"
@@ -36,7 +39,7 @@ task Dbxfasta {
     date: "string     [00/00/00] Index date (Date string dd/mm/yy)"
     exclude: "string     Wildcard filename(s) to exclude (Any string)"
     statistics: "boolean    [N] Report I/O statistics for each input"
-    file: "-indexoutdir        outdir     [.] Index file output directory"
+    indexoutdir_outdir_index: "-indexoutdir        outdir     [.] Index file output directory"
   }
   output {
     File out_stdout = stdout()

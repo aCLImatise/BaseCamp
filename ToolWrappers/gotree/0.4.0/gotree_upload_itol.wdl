@@ -20,6 +20,9 @@ task GotreeUploadItol {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "iTOL tree name prefix (default \\\"tree\\\")"
     project: "iTOL project to upload the tree"

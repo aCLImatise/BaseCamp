@@ -3,7 +3,7 @@ version 1.0
 task RtgCgsim {
   input {
     String? sdf_containing_genome
-    String? name_reads_output
+    String? name_reads_sdf
     Boolean? abundance
     Boolean? allow_unknowns
     Float? coverage
@@ -26,7 +26,7 @@ task RtgCgsim {
     rtg cgsim \
       ~{sdf} \
       ~{if defined(sdf_containing_genome) then ("--input " +  '"' + sdf_containing_genome + '"') else ""} \
-      ~{if defined(name_reads_output) then ("--output " +  '"' + name_reads_output + '"') else ""} \
+      ~{if defined(name_reads_sdf) then ("--output " +  '"' + name_reads_sdf + '"') else ""} \
       ~{if (abundance) then "--abundance" else ""} \
       ~{if (allow_unknowns) then "--allow-unknowns" else ""} \
       ~{if defined(coverage) then ("--coverage " +  '"' + coverage + '"') else ""} \
@@ -44,9 +44,12 @@ task RtgCgsim {
       ~{if defined(sam_rg) then ("--sam-rg " +  '"' + sam_rg + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sdf_containing_genome: "SDF containing input genome"
-    name_reads_output: "name for reads output SDF"
+    name_reads_sdf: "name for reads output SDF"
     abundance: "if set, the user-supplied distribution\\nrepresents desired abundance"
     allow_unknowns: "allow reads to be drawn from template\\nfragments containing unknown nucleotides"
     coverage: "coverage, must be positive"

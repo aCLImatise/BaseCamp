@@ -3,67 +3,67 @@ id: ncfp.cwl
 inputs:
 - id: in_uniprot
   doc: "treat input sequences as UniProt FASTA (default:\nFalse)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --uniprot
 - id: in_stockholm
   doc: "parse Stockholm format sequence regions (default:\nFalse)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --stockholm
 - id: in_cache_dir
   doc: 'directory for cached data (default: .ncfp_cache)'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --cachedir
 - id: in_cache_stem
   doc: "suffix for cache filestems (default:\n2020-09-09-21-09-03)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --cachestem
 - id: in_batch_size
   doc: 'batch size for EPost submissions (default: 100)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --batchsize
 - id: in_retries
   doc: 'maximum number of Entrez retries (default: 10)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --retries
 - id: in_limit
   doc: "maximum number of sequences to process (for testing)\n(default: None)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --limit
 - id: in_file_stem
   doc: 'stem for output sequence files (default: ncfp)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --filestem
 - id: in_keep_cache
   doc: 'keep download cache (for testing) (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keepcache
 - id: in_skipped_file
   doc: "path to file with skipped sequences (default:\nskipped.fasta)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --skippedfile
 - id: in_log_file
   doc: 'path to logfile (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --logfile
 - id: in_verbose
   doc: 'report verbose progress (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_disable_t_qdm
   doc: 'disable progress bar (for testing) (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --disabletqdm
 - id: in_in_fname
@@ -85,6 +85,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ncfp

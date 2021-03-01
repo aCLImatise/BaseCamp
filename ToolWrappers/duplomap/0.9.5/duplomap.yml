@@ -1,0 +1,384 @@
+!Command
+command:
+- duplomap
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Input reads in the sorted and indexed bam format.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --database
+  description: <FILE|DIR+>                        Database file or directory (multiple
+    entries allowed).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: Reference genome in the indexed fasta format.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output directory.
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -@
+  - --threads
+  description: 'Number of threads to use. [default: 4]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: Force work with non-empty output directory.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --continue
+  description: "Continue duplomap run in the same output directory. In that case duplomap\
+    \ will skip already analyzed\nduplications clusters (be careful to use the same\
+    \ command line arguments)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --iterations
+  description: 'Maximum number of iterations of EM-algorithm. [default: 100]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: "Logging level in log files (stderr shows logs with info level and\
+    \ higher). [default: debug]  [possible\nvalues: trace, debug, info, warning, error,\
+    \ critical, none]"
+  args: !SimpleFlagArg
+    name: LEVEL
+- !Flag
+  optional: true
+  synonyms:
+  - --samtools
+  description: 'Path to Samtools executable. [default: samtools]'
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --minimap-kmer
+  description: 'Minimap2 k-mer size. [default: 11]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --preset
+  description: "Minimap2 alignment preset. Possible values: pacbio [pb] and nanopore\
+    \ [ont] [default: pacbio]  [possible\nvalues: pacbio, pb, nanopore, ont]"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --gt-prior
+  description: 'Reference genotype prior. [default: 0.95]'
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --relative-padding
+  description: "Padding added to the sides of possible read locations. For example,\
+    \ for a read with with length 3,000 and\nrelative-padding 0.01, possible locations\
+    \ would be padded by 30 bp on both sides. [default: 0.01]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --psv-complexity
+  description: "<FLOAT>\nKeep PSVs that have complexity higher than FLOAT[1] for substitutions\
+    \ (0.6 by default), and FLOAT[2] for\nindels (0.8 by default)."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --psv-size-diff
+  description: "Maximal difference in sizes of the PSV sequences (including anchors).\
+    \ PSVs with bigger difference are not\nused, but influence pre-PSV LCS comparison.\
+    \ [default: 10]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --gt-min-mapq
+  description: 'Do not use reads with MAPQ lower than INT to determine genotype probabilities.
+    [default: 30]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --read-psv-impact
+  description: "Maximal read-PSV impact. A single read cannot decrease genotype probability\
+    \ of a PSV by more than 10^FLOAT,\nand a single PSV cannot affect location probabilities\
+    \ by more than 10^FLOAT. [default: 3]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --ambiguous
+  description: "<FLOAT>\nA read is aligned to a PSV ambiguously if local alignment\
+    \ probabilities between the read and the PSV alleles\nare within FLOAT[1]-fold\
+    \ range (max(probabilities) < min(probabilities) * FLOAT[1]). If the PSV has more\n\
+    than FLOAT[2] percent ambiguously aligned reads, it is not used.\n[default: 4\
+    \ 30]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --copy-num-perc
+  description: "Do not realign reads that overlap high copy number regions by more\
+    \ than FLOAT %. High copy number regions\nare defined in duplomap-prepare with\
+    \ --skip-copy-num. [default: 50]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --unknown-regions
+  description: "How to process reads that overlap unknown regions in the reference:\n\
+    realign  - Realign a read and assign appropriate MAPQ,\nkeep-old - Keep an old\
+    \ alignment and MAPQ,\nmapq0    - Keep an old alignment and set MAPQ to 0.\n[default:\
+    \ realign]  [possible values: realign, keep-old, mapq0]"
+  args: !SimpleFlagArg
+    name: realign|keep-old|mapq0
+- !Flag
+  optional: true
+  synonyms:
+  - --filtering-kmer
+  description: 'k-mer size used for filtering possible location for a read. [default:
+    11]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --filtering-p-value
+  description: "We compare LCS paths of a read and its possible locations. If location\
+    \ A is better than location B with p-\nvalue lower than FLOAT, location B may\
+    \ be discarded. [default: 1e-4]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --max-locations
+  description: "Maximal number of locations after filtering. If read can align to\
+    \ more than INT locations, it will get the\noriginal alignment and MAPQ 0. [default:\
+    \ 50]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --conflicts-p-value
+  description: "Each read is put through Binomial test with the number of conflicting\
+    \ PSVs out of all homozygous PSVs. All\nreads that fail the test are assigned\
+    \ low MAPQ. The threshold p-value is divided by the number of reads in\neach component\
+    \ according to the Bonferroni correction. [default: 0.05]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-conflicts
+  description: 'Minimal number of conflicts between a read and PSVs to discard the
+    read. [default: 5]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-mapq
+  description: "Skip reads with mapping quality at least INT in the original alignment.\
+    \ These reads will be used to estimate\ngenotypes, but will not be realigned.\
+    \ [default: none]"
+  args: !SimpleFlagArg
+    name: INT|none
+- !Flag
+  optional: true
+  synonyms:
+  - --secondary
+  description: "Output at most INT secondary alignments for each realigned read. Use\
+    \ \"all\" to output all secondary\nalignments. [default: 0]"
+  args: !SimpleFlagArg
+    name: INT|all
+- !Flag
+  optional: true
+  synonyms:
+  - --first
+  description: "<INT>\nUse first INT[1] databases and first INT[2] reads for each\
+    \ database. Use all databases/reads when INT = 0."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --generated
+  description: Reads are generated and the true position is known.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-unique
+  description: Do not output reads from unique (not duplicated) regions.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-vcf
+  description: Do not output vcf file with genotyped PSVs.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep
+  description: Do not clean, keep all output files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --default-hmm
+  description: Use default HMM parameters (instead of estimating using reads).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output-debug
+  description: Output additional CSV files.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "duplomap 0.9.5\nTimofey Prodanov, Vikas Bansal\nRealign reads overlapping\
+  \ segmental duplications.\n\nUSAGE:\n    duplomap -i <bam> -r <fasta> -d <psv-database>\
+  \ -o <dir> [args]\n\nOPTIONS:\n    -i, --input <FILE>                          \
+  \      Input reads in the sorted and indexed bam format.\n    -d, --database <FILE|DIR+>\
+  \                        Database file or directory (multiple entries allowed).\n\
+  \    -r, --reference <FILE>                            Reference genome in the indexed\
+  \ fasta format.\n    -o, --output <DIR>                                Output directory.\n\
+  \    -@, --threads <INT>                               Number of threads to use.\
+  \ [default: 4]\n    -f, --force                                       Force work\
+  \ with non-empty output directory.\n        --continue\n            Continue duplomap\
+  \ run in the same output directory. In that case duplomap will skip already analyzed\n\
+  \            duplications clusters (be careful to use the same command line arguments).\n\
+  \    -n, --iterations <INT>                            Maximum number of iterations\
+  \ of EM-algorithm. [default: 100]\n        --log <LEVEL>\n            Logging level\
+  \ in log files (stderr shows logs with info level and higher). [default: debug]\
+  \  [possible\n            values: trace, debug, info, warning, error, critical,\
+  \ none]\n        --samtools <PATH>                             Path to Samtools\
+  \ executable. [default: samtools]\n        --minimap-kmer <INT>                \
+  \          Minimap2 k-mer size. [default: 11]\n    -x, --preset <STR>\n        \
+  \    Minimap2 alignment preset. Possible values: pacbio [pb] and nanopore [ont]\
+  \ [default: pacbio]  [possible\n            values: pacbio, pb, nanopore, ont]\n\
+  \        --gt-prior <FLOAT>                            Reference genotype prior.\
+  \ [default: 0.95]\n        --relative-padding <FLOAT>\n            Padding added\
+  \ to the sides of possible read locations. For example, for a read with with length\
+  \ 3,000 and\n            relative-padding 0.01, possible locations would be padded\
+  \ by 30 bp on both sides. [default: 0.01]\n        --psv-complexity <FLOAT> <FLOAT>\n\
+  \            Keep PSVs that have complexity higher than FLOAT[1] for substitutions\
+  \ (0.6 by default), and FLOAT[2] for\n            indels (0.8 by default).\n   \
+  \     --psv-size-diff <INT>\n            Maximal difference in sizes of the PSV\
+  \ sequences (including anchors). PSVs with bigger difference are not\n         \
+  \   used, but influence pre-PSV LCS comparison. [default: 10]\n        --gt-min-mapq\
+  \ <INT>\n            Do not use reads with MAPQ lower than INT to determine genotype\
+  \ probabilities. [default: 30]\n\n        --read-psv-impact <FLOAT>\n          \
+  \  Maximal read-PSV impact. A single read cannot decrease genotype probability of\
+  \ a PSV by more than 10^FLOAT,\n            and a single PSV cannot affect location\
+  \ probabilities by more than 10^FLOAT. [default: 3]\n        --ambiguous <FLOAT>\
+  \ <FLOAT>\n            A read is aligned to a PSV ambiguously if local alignment\
+  \ probabilities between the read and the PSV alleles\n            are within FLOAT[1]-fold\
+  \ range (max(probabilities) < min(probabilities) * FLOAT[1]). If the PSV has more\n\
+  \            than FLOAT[2] percent ambiguously aligned reads, it is not used.\n\
+  \            [default: 4 30]\n        --copy-num-perc <FLOAT>\n            Do not\
+  \ realign reads that overlap high copy number regions by more than FLOAT %. High\
+  \ copy number regions\n            are defined in duplomap-prepare with --skip-copy-num.\
+  \ [default: 50]\n        --unknown-regions <realign|keep-old|mapq0>\n          \
+  \  How to process reads that overlap unknown regions in the reference:\n       \
+  \      realign  - Realign a read and assign appropriate MAPQ,\n             keep-old\
+  \ - Keep an old alignment and MAPQ,\n             mapq0    - Keep an old alignment\
+  \ and set MAPQ to 0.\n             [default: realign]  [possible values: realign,\
+  \ keep-old, mapq0]\n        --filtering-kmer <INT>\n            k-mer size used\
+  \ for filtering possible location for a read. [default: 11]\n\n        --filtering-p-value\
+  \ <FLOAT>\n            We compare LCS paths of a read and its possible locations.\
+  \ If location A is better than location B with p-\n            value lower than\
+  \ FLOAT, location B may be discarded. [default: 1e-4]\n        --max-locations <INT>\n\
+  \            Maximal number of locations after filtering. If read can align to more\
+  \ than INT locations, it will get the\n            original alignment and MAPQ 0.\
+  \ [default: 50]\n        --conflicts-p-value <FLOAT>\n            Each read is put\
+  \ through Binomial test with the number of conflicting PSVs out of all homozygous\
+  \ PSVs. All\n            reads that fail the test are assigned low MAPQ. The threshold\
+  \ p-value is divided by the number of reads in\n            each component according\
+  \ to the Bonferroni correction. [default: 0.05]\n        --min-conflicts <INT>\n\
+  \            Minimal number of conflicts between a read and PSVs to discard the\
+  \ read. [default: 5]\n\n        --skip-mapq <INT|none>\n            Skip reads with\
+  \ mapping quality at least INT in the original alignment. These reads will be used\
+  \ to estimate\n            genotypes, but will not be realigned. [default: none]\n\
+  \        --secondary <INT|all>\n            Output at most INT secondary alignments\
+  \ for each realigned read. Use \"all\" to output all secondary\n            alignments.\
+  \ [default: 0]\n        --first <INT> <INT>\n            Use first INT[1] databases\
+  \ and first INT[2] reads for each database. Use all databases/reads when INT = 0.\n\
+  \n        --generated                                   Reads are generated and\
+  \ the true position is known.\n        --skip-unique                           \
+  \      Do not output reads from unique (not duplicated) regions.\n        --skip-vcf\
+  \                                    Do not output vcf file with genotyped PSVs.\n\
+  \        --keep                                        Do not clean, keep all output\
+  \ files.\n        --default-hmm                                 Use default HMM\
+  \ parameters (instead of estimating using reads).\n        --output-debug      \
+  \                          Output additional CSV files.\n    -h, --help        \
+  \                                Prints help information\n    -V, --version    \
+  \                                 Prints version information\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/duplomap:0.9.5--hed695b0_0

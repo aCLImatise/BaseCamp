@@ -10,6 +10,9 @@ task Vcf2wigCtCoveragepl {
       ~{input_file_name} \
       ~{cg}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_name: ""
     cg: ""

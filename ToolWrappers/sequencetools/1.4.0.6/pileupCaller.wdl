@@ -2,10 +2,10 @@ version 1.0
 
 task PileupCaller {
   input {
-    Boolean? random_diploid
     Boolean? random_haploid
     Boolean? majority_call
     Boolean? downsampling
+    Boolean? random_diploid
     Boolean? keep_incongruent_reads
     Int? seed
     Int? min_depth
@@ -22,10 +22,10 @@ task PileupCaller {
   command <<<
     pileupCaller \
       ~{data_dot} \
-      ~{if (random_diploid) then "--randomDiploid" else ""} \
       ~{if (random_haploid) then "--randomHaploid" else ""} \
       ~{if (majority_call) then "--majorityCall" else ""} \
       ~{if (downsampling) then "--downSampling" else ""} \
+      ~{if (random_diploid) then "--randomDiploid" else ""} \
       ~{if (keep_incongruent_reads) then "--keepIncongruentReads" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(min_depth) then ("--minDepth " +  '"' + min_depth + '"') else ""} \
@@ -38,11 +38,14 @@ task PileupCaller {
       ~{if defined(sample_names) then ("--sampleNames " +  '"' + sample_names + '"') else ""} \
       ~{if defined(sample_name_file) then ("--sampleNameFile " +  '"' + sample_name_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    random_diploid: ") [--keepIncongruentReads]"
     random_haploid: "This method samples one read at random at each site,\\nand uses the allele on that read as the one for the\\nactual genotype. This results in a haploid call"
     majority_call: "Pick the allele supported by the most reads at a\\nsite. If an equal numbers of alleles fulfil this,\\npick one at random. This results in a haploid call.\\nSee --downSampling for best practices for calling\\nrare variants"
     downsampling: "When this switch is given, the MajorityCalling mode\\nwill downsample from the total number of reads a\\nnumber of reads (without replacement) equal to the\\n--minDepth given. This mitigates reference bias in\\nthe MajorityCalling model, which increases with\\nhigher coverage. The recommendation for rare-allele\\ncalling is --majorityCall --downsampling --minDepth 3"
+    random_diploid: "Sample two reads at random (without replacement) at\\neach site and represent the individual by a diploid\\ngenotype constructed from those two random picks.\\nThis will always assign missing data to positions\\nwhere only one read is present, even if minDepth=1.\\nThe main use case for this option is for estimating\\nmean heterozygosity across sites."
     keep_incongruent_reads: "By default, pileupCaller now removes reads with\\ntri-allelic alleles that are neither of the two\\nalleles specified in the SNP file. To keep those\\nreads for sampling, set this flag. With this option\\ngiven, if the sampled read has a tri-allelic allele\\nthat is neither of the two given alleles in the SNP\\nfile, a missing genotype is generated. IMPORTANT\\nNOTE: The default behaviour has changed in\\npileupCaller version 1.4.0. If you want to emulate\\nthe previous behaviour, use this flag. I recommend\\nnow to NOT set this flag and use the new behaviour."
     seed: "random seed used for the random number generator. If\\nnot given, use system clock to seed the random number\\ngenerator."
     min_depth: "specify the minimum depth for a call. For sites with\\nfewer reads than this number, declare\\nMissing (default: 1)"

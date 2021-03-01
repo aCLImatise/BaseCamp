@@ -40,6 +40,9 @@ task RaconWrapper {
       ~{if defined(cuda_poa_batches) then ("--cudapoa-batches " +  '"' + cuda_poa_batches + '"') else ""} \
       ~{if (cuda_banded_alignment) then "--cuda-banded-alignment" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     split: "split target sequences into chunks of desired size in\\nbytes (default: None)"
     subsample: "SUBSAMPLE\\nsubsample sequences to desired coverage (2nd argument)\\ngiven the reference length (1st argument) (default:\\nNone)"

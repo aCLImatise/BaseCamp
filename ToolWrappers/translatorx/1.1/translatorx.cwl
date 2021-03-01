@@ -3,23 +3,23 @@ id: translatorx.cwl
 inputs:
 - id: in_file_containing_sequences
   doc: ': the file containing the nucleotide sequences in FASTA format (Required)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
-- id: in_output_file_default
+- id: in_output_file_optional
   doc: ': output file (Optional). Default: "translatorx_res".'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
-- id: in_file_containing_sequence
+- id: in_file_containing_alignment
   doc: ': file containing the amino acid sequence alignment (Optional)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_program_build_alignment
   doc: ": program to build the multiple alignment (Optional). Available options are:\n\
     M/C/F/P, standing for Muscle, Clustalw, Prank, and maFft\nDefault: Muscle"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_genetic_code_translate
@@ -34,34 +34,35 @@ inputs:
     22  Scenedesmus obliquus Mitochondrial\n23  Thraustochytrium Mitochondrial\n100\
     \ Ancestral Arthropod Mitochondrial Code (AGG=K)\n101 Hemichordate Mitochondrial\n\
     Default: 1 (Standard code)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_file_containing_codes
   doc: ": file containing alternative genetic codes for each taxon. (Optional)\nFile\
     \ format: Taxon        genetic_code[number]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -j
-- id: in_parameters_gblocks_optionalexample
+- id: in_parameters_gblocks_g
   doc: ": parameters for GBlocks (Optional)\nExample: -g \"-b2 x -b3 x -b4 x...\""
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
 - id: in_ft_guess_reading
   doc: ': F/T. Guess reading frame (Optional)[default F]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_output_file_default
+- id: out_output_file_optional
   doc: ': output file (Optional). Default: "translatorx_res".'
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_output_file_default)
+    glob: $(inputs.in_output_file_optional)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - translatorx

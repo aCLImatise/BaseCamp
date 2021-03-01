@@ -14,6 +14,9 @@ task ProtxmlToTablerb {
       ~{if (groups) then "--groups" else ""} \
       ~{if (invert_probabilities) then "--invert-probabilities" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicitly_named_output: "An explicitly named output file."
     groups: "Print output by groups rather than for each protein [false]"

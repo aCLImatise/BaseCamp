@@ -68,6 +68,9 @@ task H2xs {
       ~{if (autogen_x_subs) then "--autogen-xsubs" else ""} \
       ~{if (use_xs_loader) then "--use-xsloader" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     omit_autoload: "Omit all autoloading facilities (implies -c)."
     beta_version: "Use beta $VERSION of 0.00_01 (ignored if -v)."

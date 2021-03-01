@@ -14,6 +14,9 @@ task Bipartitionsmp {
       ~{seq_file_two} \
       ~{pfs_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bi_partition: ""
     seq_file_one: ""

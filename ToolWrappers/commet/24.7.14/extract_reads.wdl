@@ -10,6 +10,9 @@ task ExtractReads {
       ~{if defined(output_results_given) then ("-o " +  '"' + output_results_given + '"') else ""} \
       ~{if (prints_version_number) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_results_given: ": Output results in the given file [default=stdout]"
     prints_version_number: ": prints the version number."

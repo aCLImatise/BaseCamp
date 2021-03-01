@@ -22,6 +22,9 @@ task DiceyChop {
       ~{if (generate_reads_chromosome) then "-c" else ""} \
       ~{if (reverse_complement_reads) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: "[ --fq1 ] arg (=read1)       read1 output prefix"
     g: "[ --fq2 ] arg (=read2)       read2 output prefix"

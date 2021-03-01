@@ -26,6 +26,9 @@ task BrBioflatrb {
       ~{if defined(make_index_bdb) then ("--makeindexBDB " +  '"' + make_index_bdb + '"') else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     namespace: "set serch namespace to NAME"
     primary: "set primary namespece to UNIQUE\\nDefault primary/secondary namespaces depend on\\neach format of flatfiles."
@@ -34,8 +37,8 @@ task BrBioflatrb {
     env: "=/path/to/env     use env program to run sort (default: /usr/bin/env)"
     env_arg: "argument given to the env program (default: LC_ALL=C)\\n(multiple --env-arg=XXXXXX can be specified)"
     renew: "re-read all flatfiles and update whole index"
-    make_index: "same as --create --type flat --location DIR --dbname DBNAME"
-    make_index_bdb: "same as --create --type bdb  --location DIR --dbname DBNAME"
+    make_index: "/DBNAME\\nsame as --create --type flat --location DIR --dbname DBNAME"
+    make_index_bdb: "/DBNAME\\nsame as --create --type bdb  --location DIR --dbname DBNAME"
     format: "instead of genbank|embl|fasta, specifing a class name is allowed"
   }
   output {

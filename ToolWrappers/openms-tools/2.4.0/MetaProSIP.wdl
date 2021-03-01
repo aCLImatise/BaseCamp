@@ -56,6 +56,9 @@ task MetaProSIP {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_mzm_l: "*                  Centroided MS1 data (valid formats: 'mzML')"
     in_fast_a: "*                 Protein sequence database (valid formats: 'fasta')"

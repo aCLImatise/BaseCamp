@@ -32,6 +32,9 @@ task Nucdiff {
       ~{if (query_name_full) then "--query_name_full" else ""} \
       ~{if (vcf) then "--vcf" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reloc_dist: "[int]    - Minimum distance between two relocated blocks\\n[10000]"
     nuc_mer_opt: "[NUCMER_OPT]\\n- NUCmer run options. By default, NUCmer will be run\\nwith its default parameters values, except the\\n--maxmatch parameter. --maxmatch is hard coded and\\ncannot be changed. To change any other parameter\\nvalues, type parameter names and new values inside\\nsingle or double quotation marks."

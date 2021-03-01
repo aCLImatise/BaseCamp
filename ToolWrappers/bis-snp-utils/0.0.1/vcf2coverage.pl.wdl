@@ -14,6 +14,9 @@ task Vcf2coveragepl {
       ~{input_file_name} \
       ~{cg}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     perl: ""
     vcf_two_cover_a_edo_tpl: ""

@@ -8,6 +8,9 @@ task Antigenic {
     antigenic \
       ~{if (min_len) then "-minlen" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_len: "integer    [6] Minimum length of antigenic region\\n(Integer from 1 to 50)"
   }

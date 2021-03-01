@@ -2,16 +2,19 @@ version 1.0
 
 task Monocilstrip {
   input {
-    File file
+    File var_file
     String? var_output
   }
   command <<<
     mono_cil_strip \
-      ~{file} \
+      ~{var_file} \
       ~{var_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: ""
+    var_file: ""
     var_output: ""
   }
   output {

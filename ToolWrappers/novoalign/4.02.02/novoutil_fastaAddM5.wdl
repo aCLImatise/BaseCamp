@@ -8,6 +8,9 @@ task NovoutilFastaAddM5 {
     novoutil fastaAddM5 \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "is the fasta files to be processed.\\nInput files may be compressed with gzip or bzip."
   }

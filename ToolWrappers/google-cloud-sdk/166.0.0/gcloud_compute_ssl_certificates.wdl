@@ -14,6 +14,9 @@ task GcloudComputeSslcertificates {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create a Google Compute Engine SSL certificate."
     delete: "Delete Google Compute Engine SSL certificates."

@@ -4,102 +4,107 @@ command:
 positional: []
 named:
 - !Flag
-  description: "This option specifies a file to which logging\nstatements will be\
-    \ written (in addition to stdout and\nstderr, if specified) (default: )"
-  synonyms:
-  - --log-file
-  args: !SimpleFlagArg
-    name: LOG_FILE
   optional: true
-- !Flag
-  description: "If this flag is present, then logging statements will\nbe written\
-    \ to stdout (in addition to a file and\nstderr, if specified) (default: False)"
-  synonyms:
-  - --log-stdout
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Unless this flag is present, then logging statements\nwill be written\
-    \ to stderr (in addition to a file and\nstdout, if specified) (default: False)"
-  synonyms:
-  - --no-log-stderr
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "If this value is specified, then it will be used for\nall logs (default:\
-    \ WARNING)"
-  synonyms:
-  - --logging-level
-  args: !ChoiceFlagArg
-    choices: !!set
-      NOTSET:
-      CRITICAL:
-      ERROR:
-      INFO:
-      WARNING:
-      DEBUG:
-  optional: true
-- !Flag
-  description: "The logging level to be used for the log file, if\nspecified. This\
-    \ option overrides --logging-level.\n(default: NOTSET)"
-  synonyms:
-  - --file-logging-level
-  args: !ChoiceFlagArg
-    choices: !!set
-      NOTSET:
-      CRITICAL:
-      ERROR:
-      INFO:
-      WARNING:
-      DEBUG:
-  optional: true
-- !Flag
-  description: "The logging level to be used for the stdout log, if\nspecified. This\
-    \ option overrides --logging-level.\n(default: NOTSET)"
-  synonyms:
-  - --stdout-logging-level
-  args: !ChoiceFlagArg
-    choices: !!set
-      NOTSET:
-      CRITICAL:
-      ERROR:
-      INFO:
-      WARNING:
-      DEBUG:
-  optional: true
-- !Flag
-  description: "The logging level to be used for the stderr log, if\nspecified. This\
-    \ option overrides --logging-level.\n(default: NOTSET)\n"
-  synonyms:
-  - --stderr-logging-level
-  args: !ChoiceFlagArg
-    choices: !!set
-      NOTSET:
-      CRITICAL:
-      ERROR:
-      INFO:
-      WARNING:
-      DEBUG:
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - --blocksize
+  description: "The size of blocks for reading and writing (default:\n4k)"
   args: !SimpleFlagArg
     name: BLOCKSIZE
+- !Flag
   optional: true
+  synonyms:
+  - --num-iterations
+  description: 'The number of iterations (default: 30)'
+  args: !SimpleFlagArg
+    name: NUM_ITERATIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: "This option specifies a file to which logging\nstatements will be\
+    \ written (in addition to stdout and\nstderr, if specified) (default: )"
+  args: !SimpleFlagArg
+    name: LOG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --log-stdout
+  description: "If this flag is present, then logging statements will\nbe written\
+    \ to stdout (in addition to a file and\nstderr, if specified) (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-log-stderr
+  description: "Unless this flag is present, then logging statements\nwill be written\
+    \ to stderr (in addition to a file and\nstdout, if specified) (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --logging-level
+  description: "If this value is specified, then it will be used for\nall logs (default:\
+    \ WARNING)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      INFO:
+      DEBUG:
+      NOTSET:
+      CRITICAL:
+      WARNING:
+      ERROR:
+- !Flag
+  optional: true
+  synonyms:
+  - --file-logging-level
+  description: "The logging level to be used for the log file, if\nspecified. This\
+    \ option overrides --logging-level.\n(default: NOTSET)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      INFO:
+      DEBUG:
+      NOTSET:
+      CRITICAL:
+      WARNING:
+      ERROR:
+- !Flag
+  optional: true
+  synonyms:
+  - --stdout-logging-level
+  description: "The logging level to be used for the stdout log, if\nspecified. This\
+    \ option overrides --logging-level.\n(default: NOTSET)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      INFO:
+      DEBUG:
+      NOTSET:
+      CRITICAL:
+      WARNING:
+      ERROR:
+- !Flag
+  optional: true
+  synonyms:
+  - --stderr-logging-level
+  description: "The logging level to be used for the stderr log, if\nspecified. This\
+    \ option overrides --logging-level.\n(default: NOTSET)\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      INFO:
+      DEBUG:
+      NOTSET:
+      CRITICAL:
+      WARNING:
+      ERROR:
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--blocksize BLOCKSIZE\nThe size of\
-    \ blocks for reading and writing (default:\n4k)\n--num-iterations NUM_ITERATIONS\n\
-    The number of iterations (default: 30)\n--read-file READ_FILE\n--write-file WRITE_FILE"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: test_gzip.py [-h] [--blocksize BLOCKSIZE]\n                   \
@@ -139,3 +144,4 @@ help_text: "usage: test_gzip.py [-h] [--blocksize BLOCKSIZE]\n                  
   \                    (default: NOTSET)\n"
 generated_using:
 - --help
+docker_image:

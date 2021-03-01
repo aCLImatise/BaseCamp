@@ -30,6 +30,9 @@ task PpanggolinCluster {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_genome: "The pangenome .h5 file (default: None)"
     defrag: "Use the defragmentation strategy to associated\\npotential fragments with their original gene family.\\n(default: False)"

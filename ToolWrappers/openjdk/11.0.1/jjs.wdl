@@ -34,6 +34,9 @@ task Jjs {
       ~{if (timezone) then "-timezone" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dnamevalue_set_property: "(-Dname=value. Set a system property. This option can be repeated.)"
     add_modules: "(--add-modules modules. Specify the root user java modules.)"

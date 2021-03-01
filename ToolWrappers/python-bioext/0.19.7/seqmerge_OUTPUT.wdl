@@ -14,6 +14,9 @@ task SeqmergeOUTPUT {
       ~{var_output} \
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s: ""
     seq_merge: ""

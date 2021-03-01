@@ -8,6 +8,9 @@ task HaphpipeDemo {
     haphpipe_demo \
       ~{outdir}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: ""
   }

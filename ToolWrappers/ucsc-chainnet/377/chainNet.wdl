@@ -24,6 +24,9 @@ task ChainNet {
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""} \
       ~{if (incl_hap) then "-inclHap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_space: "- minimum gap size to fill, default 25"
     min_fill: "- default half of minSpace"

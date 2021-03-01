@@ -18,6 +18,9 @@ task AgatSpFixCdsPhasespl {
       ~{if defined(output_gff_file) then ("--output " +  '"' + output_gff_file + '"') else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GTF/GFF file."
     fast_a: "Input fasta file."

@@ -10,6 +10,9 @@ task TripailleEntityAddEntity {
       ~{entity} \
       ~{if defined(params) then ("--params " +  '"' + params + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     params: "Values to populate the entity fields"
     entity: ""

@@ -10,6 +10,9 @@ task Featurealigner2msstatspy {
       ~{align_two_ms_stats_do_tpy} \
       ~{input_feature_alignment_dot_tsv}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     align_two_ms_stats_do_tpy: ""
     input_feature_alignment_dot_tsv: ""

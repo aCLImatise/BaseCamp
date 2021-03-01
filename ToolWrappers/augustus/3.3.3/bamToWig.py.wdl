@@ -14,6 +14,9 @@ task BamToWigpy {
       ~{if defined(outfile) then ("--outFile " +  '"' + outfile + '"') else ""} \
       ~{if defined(sam_tools_path) then ("--SAMTOOLS_PATH " +  '"' + sam_tools_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam_file: "Input file in Bam format."
     genome_file: "Input genome file in FASTA format."

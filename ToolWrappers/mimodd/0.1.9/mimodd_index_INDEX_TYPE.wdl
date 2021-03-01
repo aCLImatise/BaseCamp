@@ -18,6 +18,9 @@ task MimoddIndexINDEXTYPE {
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s: ""
     v: ""

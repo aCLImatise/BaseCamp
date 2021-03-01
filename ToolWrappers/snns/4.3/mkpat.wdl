@@ -10,6 +10,9 @@ task Mkpat {
       ~{xsize} \
       ~{ysize}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     xsize: ""
     ysize: ""

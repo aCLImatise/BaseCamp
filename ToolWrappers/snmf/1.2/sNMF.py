@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Float, String
+
+Snmf_V0_1_0 = CommandToolBuilder(tool="sNMF", base_command=["sNMF"], inputs=[ToolInput(tag="in_genotype_file_format", input_type=File(optional=True), prefix="-x", doc=InputDocumentation(doc="-- genotype file (in .geno format)")), ToolInput(tag="in_number_k_ancestral", input_type=Int(optional=True), prefix="-K", doc=InputDocumentation(doc="-- number K of ancestral populations")), ToolInput(tag="in_regularization_parameter_default", input_type=Int(optional=True), prefix="-a", doc=InputDocumentation(doc="-- regularization parameter       (default: 0)")), ToolInput(tag="in_individual_admixture_file", input_type=File(optional=True), prefix="-q", doc=InputDocumentation(doc="-- individual admixture file      (default: genotype_file.K.Q)")), ToolInput(tag="in_ancestral_frequencies_file", input_type=File(optional=True), prefix="-g", doc=InputDocumentation(doc="-- ancestral frequencies file     (default: genotype_file.K.G)")), ToolInput(tag="in__crossentropy_masked", input_type=Float(optional=True), prefix="-c", doc=InputDocumentation(doc="-- cross-entropy with 'perc'\nof masked genotypes               (default: 0.05)")), ToolInput(tag="in__tolerance_error", input_type=Float(optional=True), prefix="-e", doc=InputDocumentation(doc="-- tolerance error                (default: 0.0001)")), ToolInput(tag="in__number_max", input_type=Int(optional=True), prefix="-i", doc=InputDocumentation(doc="-- number max of iterations       (default: 200)")), ToolInput(tag="in_number_snps_used", input_type=Int(optional=True), prefix="-I", doc=InputDocumentation(doc="-- number of SNPs used to init Q  (default: min(10000,L/10)")), ToolInput(tag="in_individual_admixture_initialisation", input_type=File(optional=True), prefix="-Q", doc=InputDocumentation(doc="-- individual admixture initialisation file")), ToolInput(tag="in__seed_random", input_type=String(optional=True), prefix="-s", doc=InputDocumentation(doc="-- seed random init               (default: random)")), ToolInput(tag="in__diploid_default", input_type=Int(optional=True), prefix="-m", doc=InputDocumentation(doc="-- 1 if haploid, 2 if diploid     (default: 2)")), ToolInput(tag="in_number_processes_cpu", input_type=Int(optional=True), prefix="-p", doc=InputDocumentation(doc="-- number of processes (CPU)      (default: 1)"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Snmf_V0_1_0().translate("wdl", allow_empty_container=True)
+

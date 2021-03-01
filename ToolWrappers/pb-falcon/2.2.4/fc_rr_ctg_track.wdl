@@ -20,6 +20,9 @@ task FcRrCtgTrack {
       ~{if (silent) then "--silent" else ""} \
       ~{if defined(best_n) then ("--bestn " +  '"' + best_n + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_core: "number of processes used for for tracking reads; 0 for main process only (default: 4)"
     base_dir: "the base working dir of a FALCON assembly (default: ./)"

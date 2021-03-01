@@ -3,136 +3,136 @@ command:
 - StoatyDive.py
 positional:
 - !Positional
-  description: --sm                  Turn on the peak profile smoothing for the peak
+  optional: false
   position: 0
   name: profiles.
-  optional: false
+  description: --sm                  Turn on the peak profile smoothing for the peak
 - !Positional
-  description: --lam float           Parameter for the peak profile classification.
-    Set
+  optional: false
   position: 0
   name: on.
-  optional: false
+  description: --lam float           Parameter for the peak profile classification.
+    Set
 named:
 - !Flag
-  description: "*.bed, --input_bed *.bed\nPath to the peak file in bed6 format."
+  optional: true
   synonyms:
   - -a
+  description: "*.bed, --input_bed *.bed\nPath to the peak file in bed6 format."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "*.bam/*.bed, --input_bam *.bam/*.bed\nPath to the read file used for\
-    \ the peak calling in bed\nor bam format."
+  optional: true
   synonyms:
   - -b
+  description: "*.bam/*.bed, --input_bam *.bam/*.bed\nPath to the read file used for\
+    \ the peak calling in bed\nor bam format."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "*.txt, --chr_file *.txt\nPath to the chromosome length file."
+  optional: true
   synonyms:
   - -c
+  description: "*.txt, --chr_file *.txt\nPath to the chromosome length file."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Write results to this path. [Default: Operating Path]'
+  optional: true
   synonyms:
   - -o
-  - --output_folder
+  description: "/, --output_folder path/\nWrite results to this path. [Default: Operating\
+    \ Path]"
   args: !SimpleFlagArg
-    name: path/
-  optional: true
+    name: path
 - !Flag
-  description: "Set a normalized CV threshold to divide the peak\nprofiles into more\
-    \ specific (0) and more unspecific\n(1). [Default: 1.0]"
+  optional: true
   synonyms:
   - -t
   - --thresh
+  description: "Set a normalized CV threshold to divide the peak\nprofiles into more\
+    \ specific (0) and more unspecific\n(1). [Default: 1.0]"
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: "Activate peak correction. The peaks are recentered\n(shifted) for\
-    \ the correct sumit."
+  optional: true
   synonyms:
   - --peak_correction
+  description: "Activate peak correction. The peaks are recentered\n(shifted) for\
+    \ the correct sumit."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Set this flag if you want to shift the peak profiles\nbased on the\
-    \ maximum value inside the profile instead\nof a Gaussian blur translocation."
+  optional: true
   synonyms:
   - --max_translocate
+  description: "Set this flag if you want to shift the peak profiles\nbased on the\
+    \ maximum value inside the profile instead\nof a Gaussian blur translocation."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Set maximum peak length for the constant peak length.
+  optional: true
   synonyms:
   - --peak_length
+  description: Set maximum peak length for the constant peak length.
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Provide a maximum value for CV to make the normalized\nCV plot more\
-    \ comparable."
+  optional: true
   synonyms:
   - --max_norm_value
+  description: "Provide a maximum value for CV to make the normalized\nCV plot more\
+    \ comparable."
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: Adds a penalty for non-centered peaks.
+  optional: true
   synonyms:
   - --border_penalty
+  description: Adds a penalty for non-centered peaks.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Provide a maximum value for the CV plot.
+  optional: true
   synonyms:
   - --scale_max
+  description: Provide a maximum value for the CV plot.
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxcl
   description: "Maximal number of clusters of the kmeans clustering of\nthe peak profiles.\
     \ The algorithm will be optimized,\ni.e., the parameter is just a constraint and\
     \ not\nabsolute. [Default: 15]"
-  synonyms:
-  - --maxcl
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: You can forcefully set the number of cluster of peak
+  optional: true
   synonyms:
   - -k
   - --numcl
+  description: You can forcefully set the number of cluster of peak
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Turn off the peak profile classification.\n"
+  optional: true
   synonyms:
   - --turn_off_classification
+  description: "Turn off the peak profile classification.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -v
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "[START]\nusage: StoatyDive.py [-h] [options] -a *.bed -b *.bam/*bed -c\
   \ *.txt\n\n    The tool can evalute the profile of peaks. Provide the peaks you\
   \ want to evalutate in bed6 format and the reads\n    you used for the peak detection\
@@ -175,3 +175,4 @@ help_text: "[START]\nusage: StoatyDive.py [-h] [options] -a *.bed -b *.bam/*bed 
   \ classification.\n"
 generated_using:
 - --help
+docker_image:

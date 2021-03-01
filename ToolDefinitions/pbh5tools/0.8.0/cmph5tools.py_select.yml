@@ -2,42 +2,53 @@
 command:
 - cmph5tools.py
 - select
-positional:
-- !Positional
-  description: Create a new cmp.h5 file by selecting alignments. Users can specify
-    indices
-  position: 0
-  name: input.cmp.h5
-  optional: false
+positional: []
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --idxs
-  args: !RepeatFlagArg
-    name: N
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - --outFile
+  description: Either a pattern string or a filename
   args: !SimpleFlagArg
     name: out.cmp.h5
+- !Flag
   optional: true
+  synonyms:
+  - --idxs
+  description: indices to select
+  args: !RepeatFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --groupBy
+  description: groupBy expression, e.g., Movie*Barcode
+  args: !SimpleFlagArg
+    name: groupBy-expression
+- !Flag
+  optional: true
+  synonyms:
+  - --groupByCsv
+  description: "groupByCsv file, e.g.\nGroup,Movie,Barcode\\ngroupname,movie,barcode"
+  args: !SimpleFlagArg
+    name: groupByCsv
+- !Flag
+  optional: true
+  synonyms:
+  - --where
+  description: where expression, e.g., ReadLength > 500
+  args: !SimpleFlagArg
+    name: where-expression
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--outFile out.cmp.h5  Either a pattern\
-    \ string or a filename\n--idxs N [N ...]      indices to select\n--groupBy groupBy-expression\n\
-    groupBy expression, e.g., Movie*Barcode\n--groupByCsv groupByCsv\ngroupByCsv file,\
-    \ e.g.\nGroup,Movie,Barcode\\ngroupname,movie,barcode\n--where where-expression\n\
-    where expression, e.g., ReadLength > 500\n--outDir outputDir\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: cmph5tools.py select [-h] [--outFile out.cmp.h5] [--idxs N [N ...]]\n\
@@ -59,3 +70,4 @@ help_text: "usage: cmph5tools.py select [-h] [--outFile out.cmp.h5] [--idxs N [N
   \ expression, e.g., ReadLength > 500\n  --outDir outputDir\n"
 generated_using:
 - --help
+docker_image:

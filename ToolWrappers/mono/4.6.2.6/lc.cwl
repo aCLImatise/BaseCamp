@@ -3,32 +3,32 @@ id: lc.cwl
 inputs:
 - id: in_verbose
   doc: Verbose output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_target
   doc: Target assembly name
-  type: string
+  type: string?
   inputBinding:
     prefix: --target
 - id: in_comp_list
   doc: licx file to compile
-  type: File
+  type: File?
   inputBinding:
     prefix: --complist
 - id: in_load
   doc: Reference to load
-  type: string
+  type: string?
   inputBinding:
     prefix: --load
 - id: in_outdir
   doc: Output directory for the .licenses file
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_nologo
   doc: Do not display logo
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nologo
 outputs:
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: Output directory for the .licenses file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - lc

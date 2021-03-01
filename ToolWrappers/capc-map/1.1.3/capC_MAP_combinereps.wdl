@@ -12,6 +12,9 @@ task CapCMAPCombinereps {
       ~{if defined(directory_containing_output) then ("-i " +  '"' + directory_containing_output + '"') else ""} \
       ~{if defined(directory_created_combined) then ("-o " +  '"' + directory_created_combined + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     configuration_file: "configuration file"
     directory_containing_output: "directory containing output from capC-MAP for a replicate\\n(option must appear multiple times)."

@@ -20,6 +20,9 @@ task Ptdump {
       ~{if (idx_info) then "--idxinfo" else ""} \
       ~{if defined(range) then ("--range " +  '"' + range + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "dump more metainformation on nodes"
     dump: "dump data information on leaves"

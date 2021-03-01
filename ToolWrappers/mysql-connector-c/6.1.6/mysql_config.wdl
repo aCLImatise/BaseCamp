@@ -8,7 +8,6 @@ task MysqlConfig {
     Boolean? libs
     Boolean? libs_r
     Boolean? plugin_dir
-    Boolean? socket
     String? variable
   }
   command <<<
@@ -19,9 +18,11 @@ task MysqlConfig {
       ~{if (libs) then "--libs" else ""} \
       ~{if (libs_r) then "--libs_r" else ""} \
       ~{if (plugin_dir) then "--plugindir" else ""} \
-      ~{if (socket) then "--socket" else ""} \
       ~{if defined(variable) then ("--variable " +  '"' + variable + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cflags: "[-I/usr/local/include]"
     cxxflags: "[-I/usr/local/include]"
@@ -29,7 +30,6 @@ task MysqlConfig {
     libs: "[-L/usr/local/lib -lmysqlclient -lpthread -lm -lrt -ldl]"
     libs_r: "[-L/usr/local/lib -lmysqlclient -lpthread -lm -lrt -ldl]"
     plugin_dir: "[/usr/local/lib/plugin]"
-    socket: "[/tmp/mysql.sock]"
     variable: "VAR is one of:\\npkgincludedir [/usr/local/include]\\npkglibdir     [/usr/local/lib]\\nplugindir     [/usr/local/lib/plugin]\\n"
   }
   output {

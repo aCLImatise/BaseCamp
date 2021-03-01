@@ -12,6 +12,9 @@ task Messageextract {
       ~{if defined(file_path_input) then ("-m " +  '"' + file_path_input + '"') else ""} \
       ~{if (invert_match_filter) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_path_input: "The file path of the input message"
     invert_match_filter: "Invert match. Filter instead of extract given NCodes"

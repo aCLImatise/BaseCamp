@@ -14,6 +14,9 @@ task DvMakeExamplespy {
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reads: ""
     ref: ""

@@ -3,35 +3,35 @@ id: TOBIAS_FormatMotifs.cwl
 inputs:
 - id: in_input
   doc: '[ [ ...]]  One or more input motif files (required)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: "If task == join, output is the joined output file; if task == split,\noutput\
     \ is a directory (required)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_format
   doc: 'Desired motif output format (pfm, jaspar, meme) (default: "jaspar")'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --format
 - id: in_task
   doc: 'Which task to perform on motif files (join/split) (default: join)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --task
 - id: in_filter
   doc: "File containing list of motif names/ids to filter on. Only motifs\nfitting\
     \ entries in filter will be output."
-  type: File
+  type: File?
   inputBinding:
     prefix: --filter
 - id: in_verbosity
   doc: "Level of output logging (0: silent, 1: errors/warnings, 2: info, 3:\nstats,\
     \ 4: debug, 5: spam) (default: 3)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbosity
 outputs:
@@ -41,15 +41,16 @@ outputs:
 - id: out_output
   doc: "If task == join, output is the joined output file; if task == split,\noutput\
     \ is a directory (required)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
 - id: out_filter
   doc: "File containing list of motif names/ids to filter on. Only motifs\nfitting\
     \ entries in filter will be output."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_filter)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - TOBIAS

@@ -58,6 +58,9 @@ task HailctlDataprocStart {
       ~{if defined(vep) then ("--vep " +  '"' + vep + '"') else ""} \
       ~{if (dry_run) then "--dry-run" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     master_machine_type: "Master machine type (default: n1-highmem-8)."
     master_memory_fraction: "Fraction of master memory allocated to the JVM. Use a\\nsmaller value to reserve more memory for Python.\\n(default: 0.8)"

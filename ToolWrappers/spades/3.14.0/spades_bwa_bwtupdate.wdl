@@ -12,6 +12,9 @@ task SpadesbwaBwtupdate {
       ~{bwt_update} \
       ~{the_dot_bwt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bwa: ""
     bwt_update: ""

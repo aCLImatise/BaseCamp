@@ -4,80 +4,83 @@ command:
 positional: []
 named:
 - !Flag
-  description: "provide a configuration file to override defaults in\nglobal config\
-    \ file (/usr/local/share/strelka-2.9.10-0/\nbin/configureStrelkaGermlineWorkflow.py.ini)"
+  optional: true
   synonyms:
   - --config
+  description: "provide a configuration file to override defaults in\nglobal config\
+    \ file (/usr/local/share/strelka-2.9.10-0/\nbin/configureStrelkaGermlineWorkflow.py.ini)"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: show all extended/hidden options
+  optional: true
   synonyms:
   - --allHelp
+  description: show all extended/hidden options
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bam
   description: "Sample BAM or CRAM file. May be specified more than\nonce, multiple\
     \ inputs will be treated as each BAM file\nrepresenting a different sample. [required]\
     \ (no\ndefault)"
-  synonyms:
-  - --bam
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ploidy
   description: "Provide ploidy file in VCF. The VCF should include one\nsample column\
     \ per input sample labeled with the same\nsample names found in the input BAM/CRAM\
     \ RG header\nsections. Ploidy should be provided in records using\nthe FORMAT/CN\
     \ field, which are interpreted to span the\nrange [POS+1, INFO/END]. Any CN value\
     \ besides 1 or 0\nwill be treated as 2. File must be tabix indexed. (no\ndefault)"
-  synonyms:
-  - --ploidy
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Provide BED file of regions where gVCF block\ncompression is not allowed.\
-    \ File must be bgzip-\ncompressed/tabix-indexed. (no default)"
+  optional: true
   synonyms:
   - --noCompress
+  description: "Provide BED file of regions where gVCF block\ncompression is not allowed.\
+    \ File must be bgzip-\ncompressed/tabix-indexed. (no default)"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Call variants on CHROM without a ploidy prior\nassumption, issuing\
-    \ calls with continuous variant\nfrequencies (no default)"
+  optional: true
   synonyms:
   - --callContinuousVf
+  description: "Call variants on CHROM without a ploidy prior\nassumption, issuing\
+    \ calls with continuous variant\nfrequencies (no default)"
   args: !SimpleFlagArg
     name: CHROM
-  optional: true
 - !Flag
-  description: Set options for RNA-Seq input.
+  optional: true
   synonyms:
   - --rna
+  description: Set options for RNA-Seq input.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: samtools-indexed reference fasta file [required]
+  optional: true
   synonyms:
   - --referenceFasta
+  description: samtools-indexed reference fasta file [required]
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --indelCandidates
   description: "Specify a VCF of candidate indel alleles. These\nalleles are always\
     \ evaluated but only reported in the\noutput when they are inferred to exist in\
     \ the sample.\nThe VCF must be tabix indexed. All indel alleles must\nbe left-shifted/normalized,\
     \ any unnormalized alleles\nwill be ignored. This option may be specified more\n\
     than once, multiple input VCFs will be merged.\n(default: None)"
-  synonyms:
-  - --indelCandidates
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --forcedGT
   description: "Specify a VCF of candidate alleles. These alleles are\nalways evaluated\
     \ and reported even if they are\nunlikely to exist in the sample. The VCF must\
     \ be tabix\nindexed. All indel alleles must be left-\nshifted/normalized, any\
@@ -85,55 +88,52 @@ named:
     more than once, multiple input VCFs will be merged.\nNote that for any SNVs provided\
     \ in the VCF, the SNV\nsite will be reported (and for gVCF, excluded from\nblock\
     \ compression), but the specific SNV alleles are\nignored. (default: None)"
-  synonyms:
-  - --forcedGT
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Set options for exome or other targeted input: note in\nparticular\
-    \ that this flag turns off high-depth filters"
+  optional: true
   synonyms:
   - --exome
   - --targeted
+  description: "Set options for exome or other targeted input: note in\nparticular\
+    \ that this flag turns off high-depth filters"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --callRegions
   description: "Optionally provide a bgzip-compressed/tabix-indexed\nBED file containing\
     \ the set of regions to call. No VCF\noutput will be provided outside of these\
     \ regions. The\nfull genome will still be used to estimate statistics\nfrom the\
     \ input (such as expected depth per\nchromosome). Only one BED file may be specified.\n\
     (default: call the entire genome)"
-  synonyms:
-  - --callRegions
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Name of directory to be created where all workflow\nscripts and output\
-    \ will be written. Each analysis\nrequires a separate directory. (default:\nStrelkaGermlineWorkflow)"
+  optional: true
   synonyms:
   - --runDir
+  description: "Name of directory to be created where all workflow\nscripts and output\
+    \ will be written. Each analysis\nrequires a separate directory. (default:\nStrelkaGermlineWorkflow)"
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: configureStrelkaGermlineWorkflow.py [options]\n\nVersion: 2.9.10\n\
   \nThis script configures Strelka germline small variant calling.\nYou must specify\
   \ an alignment file (BAM or CRAM) for at least one sample.\n\nConfiguration will\
@@ -195,3 +195,4 @@ help_text: "Usage: configureStrelkaGermlineWorkflow.py [options]\n\nVersion: 2.9
   \ (hidden):\n"
 generated_using:
 - --help
+docker_image:

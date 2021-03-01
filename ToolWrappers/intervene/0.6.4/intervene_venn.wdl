@@ -42,6 +42,9 @@ task InterveneVenn {
       ~{if defined(fill) then ("--fill " +  '"' + fill + '"') else ""} \
       ~{if (test) then "--test" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_genomic_regions: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\\nInput genomic regions in (BED/GTF/GFF) format or lists of genes/SNPs IDs.\\nFor files in a directory use *.<extension>. e.g. *.bed"
     type: "Type of input sets. Genomic regions or lists of genes/SNPs. Default is \\\"genomic\\\""

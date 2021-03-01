@@ -10,6 +10,9 @@ task Clustalw2phylip {
       ~{clustalw_two_phy_i_lip} \
       ~{clustalw_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clustalw_two_phy_i_lip: ""
     clustalw_file: ""

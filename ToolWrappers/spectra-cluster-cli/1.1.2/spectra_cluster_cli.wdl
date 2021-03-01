@@ -62,6 +62,9 @@ task Spectraclustercli {
       ~{if defined(x_min_consensus_peaks_to_keep) then ("-x_min_consensus_peaks_to_keep " +  '"' + x_min_consensus_peaks_to_keep + '"') else ""} \
       ~{if defined(x_n_pre_filtered_peaks) then ("-x_n_prefiltered_peaks " +  '"' + x_n_pre_filtered_peaks + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_scores: "if set, the similarity\\nscores of each spectrum\\nto the cluster's\\nconsensus spectrum\\nisadded to the output\\nfile."
     binary_directory: "path to the directory to\\n(temporarily) store the\\nbinary files. By default\\na temporary directory is\\nbeing created"

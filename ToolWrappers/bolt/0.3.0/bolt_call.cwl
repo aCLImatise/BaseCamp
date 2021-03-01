@@ -3,27 +3,27 @@ id: bolt_call.cwl
 inputs:
 - id: in_sample_file_path
   doc: sample file path (*required)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in_reference_file_path
   doc: reference file path (*required)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_output_path_required
   doc: output path (*required)
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_number_threads_use
   doc: number of threads to use
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
 - id: in_command
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_output_path_required
   doc: output path (*required)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_path_required)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bolt

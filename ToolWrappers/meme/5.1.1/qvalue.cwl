@@ -1,13 +1,31 @@
 class: CommandLineTool
 id: qvalue.cwl
 inputs:
-- id: in_null
-  doc: "--good-score high|low\n--pi-zero\n--pi-zero-file <file>\n--fdr\n--bootstraps\
-    \ <int> (default=1000)\n--header <int> (default=0)\n--column <int> (default=1)\n\
-    --append\n--seed <int> (default from clock)\n--verbosity 1|2|3|4 (default = 2)\n"
-  type: File
+- id: in_good_score
+  doc: '|low'
+  type: File?
   inputBinding:
-    prefix: --null
+    prefix: --good-score
+- id: in_header
+  doc: (default=0)
+  type: long?
+  inputBinding:
+    prefix: --header
+- id: in_column
+  doc: (default=1)
+  type: long?
+  inputBinding:
+    prefix: --column
+- id: in_append
+  doc: (default from clock)
+  type: long?
+  inputBinding:
+    prefix: --append
+- id: in_verbosity
+  doc: '|2|3|4 (default = 2)'
+  type: long?
+  inputBinding:
+    prefix: --verbosity
 - id: in_p_values
   doc: ''
   type: string
@@ -17,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - qvalue

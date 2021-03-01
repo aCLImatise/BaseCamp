@@ -14,6 +14,9 @@ task Goslimmer {
       ~{if defined(annotation) then ("--annotation " +  '"' + annotation + '"') else ""} \
       ~{if defined(path_output_goslim) then ("--output " +  '"' + path_output_goslim + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     go: "Path to the full Gene Ontology OBO or OWL file"
     slim: "Path to the GOslim OBO or OWL file"

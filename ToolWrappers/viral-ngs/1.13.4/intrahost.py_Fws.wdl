@@ -12,6 +12,9 @@ task IntrahostpyFws {
       ~{out_vcf} \
       ~{if defined(loglevel) then ("--loglevel " +  '"' + loglevel + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: "Verboseness of output. [default: DEBUG]"
     in_vcf: "Input VCF file"

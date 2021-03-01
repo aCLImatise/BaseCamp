@@ -28,6 +28,9 @@ task PpanggolinRgp {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     persistent_penalty: "Penalty score to apply to persistent genes (default:\\n3)"
     variable_gain: "Gain score to apply to variable genes (default: 1)"

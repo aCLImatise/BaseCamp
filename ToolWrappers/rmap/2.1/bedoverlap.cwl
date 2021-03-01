@@ -3,12 +3,12 @@ id: bedoverlap.cwl
 inputs:
 - id: in_output
   doc: 'Name of output file (default: stdout)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -output
 - id: in_about
   doc: print about message
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -about
 - id: in_bed_regions
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: 'Name of output file (default: stdout)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bedoverlap

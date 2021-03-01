@@ -1,0 +1,244 @@
+!Command
+command:
+- intervene
+- upset
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\nInput genomic regions\
+    \ in (BED/GTF/GFF) format or lists of genes/SNPs IDs.\nFor files in a directory\
+    \ use *.<extension>. e.g. *.bed"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --type
+  description: Type of input sets. Genomic regions or lists of genes/SNPs sets. Default
+    is "genomic".
+  args: !ChoiceFlagArg
+    choices: !!set
+      list:
+      genomic:
+- !Flag
+  optional: true
+  synonyms:
+  - --names
+  description: "Comma-separated list of names as labels for input files.\nIf it is\
+    \ not set file names will be used as labels.\nFor example: --names=A,B,C,D,E,F"
+  args: !SimpleFlagArg
+    name: LABELS
+- !Flag
+  optional: true
+  synonyms:
+  - --filenames
+  description: Use file names as labels instead. Default is "False".
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bedtools-options
+  description: "List any of the arguments available for bedtools intersect command.\n\
+    Type bedtools intersect --help to view all the options.\nFor example: --bedtools-options\
+    \ f=0.8,r,etc"
+  args: !SimpleFlagArg
+    name: BEDTOOLS_OPTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output folder path where results will be stored. Default is current
+    working directory.
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --save-overlaps
+  description: Save overlapping regions/names for all the combinations as bed/txt.Default
+    is "False".
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --overlap-thresh
+  description: 'Minimum threshold to save the overlapping regions/names as bed/txt.
+    Default is: "1"'
+  args: !SimpleFlagArg
+    name: OVERLAPTHRESH
+- !Flag
+  optional: true
+  synonyms:
+  - --project
+  description: 'Project name for the output. Default is: "Intervene"'
+  args: !SimpleFlagArg
+    name: PROJECT
+- !Flag
+  optional: true
+  synonyms:
+  - --order
+  description: The order of intersections of sets. e.g. --order degree. Default is
+    "freq".
+  args: !ChoiceFlagArg
+    choices: !!set
+      degree:
+      freq:
+- !Flag
+  optional: true
+  synonyms:
+  - --ninter
+  description: Number of top intersections to show in plot. Default is "30".
+  args: !SimpleFlagArg
+    name: NINTER
+- !Flag
+  optional: true
+  synonyms:
+  - --showzero
+  description: Show empty intersection combinations. Default is "False".
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --showsize
+  description: Show intersection sizes above bars. Default is "True".
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mbcolor
+  description: 'Color of the main bar plot. Default is: "#ea5d4e".'
+  args: !SimpleFlagArg
+    name: MBCOLOR
+- !Flag
+  optional: true
+  synonyms:
+  - --sbcolor
+  description: 'Color of set size bar plot. Default is: "#317eab".'
+  args: !SimpleFlagArg
+    name: SBCOLOR
+- !Flag
+  optional: true
+  synonyms:
+  - --mblabel
+  description: 'The y-axis label of the intersection size bars. Default is: "No. of
+    Intersections".'
+  args: !SimpleFlagArg
+    name: MBLABEL
+- !Flag
+  optional: true
+  synonyms:
+  - --sxlabel
+  description: 'The x-axis label of the set size bars. Default is: "Set size".'
+  args: !SimpleFlagArg
+    name: SXLABEL
+- !Flag
+  optional: true
+  synonyms:
+  - --figtype
+  description: Figure type for the plot. e.g. --figtype svg. Default is "pdf"
+  args: !ChoiceFlagArg
+    choices: !!set
+      tiff:
+      svg:
+      png:
+      pdf:
+      ps:
+- !Flag
+  optional: true
+  synonyms:
+  - --figsize
+  description: "FIGSIZE\nFigure size for the output plot (width,height). e.g.  --figsize\
+    \ 14 8"
+  args: !SimpleFlagArg
+    name: FIGSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  description: 'Dots-per-inch (DPI) for the output. Default is: "300".'
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - --scriptonly
+  description: Set to generate Rscript only, if R/UpSetR package is not installed.
+    Default is "False".
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --showshiny
+  description: Print the combinations of intersections to input to Shiny App. Default
+    is "False".
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --test
+  description: This will run the program on test data.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: intervene upset [options]\n\nCreate UpSet diagram after intersection\
+  \ of genomic regions in (BED/GTF/GFF) or list sets.\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -i [INPUT [INPUT ...]], --input\
+  \ [INPUT [INPUT ...]]\n                        Input genomic regions in (BED/GTF/GFF)\
+  \ format or lists of genes/SNPs IDs.\n                         For files in a directory\
+  \ use *.<extension>. e.g. *.bed\n                        \n  --type {genomic,list}\n\
+  \                        Type of input sets. Genomic regions or lists of genes/SNPs\
+  \ sets. Default is \"genomic\".\n                        \n  --names LABELS    \
+  \    Comma-separated list of names as labels for input files.\n                \
+  \        If it is not set file names will be used as labels.\n                 \
+  \       For example: --names=A,B,C,D,E,F\n                        \n  --filenames\
+  \           Use file names as labels instead. Default is \"False\".\n          \
+  \              \n  --bedtools-options BEDTOOLS_OPTIONS\n                       \
+  \ List any of the arguments available for bedtools intersect command.\n        \
+  \                Type bedtools intersect --help to view all the options.\n     \
+  \                   For example: --bedtools-options f=0.8,r,etc\n              \
+  \          \n  -o OUTPUT, --output OUTPUT\n                        Output folder\
+  \ path where results will be stored. Default is current working directory.\n   \
+  \                     \n  --save-overlaps       Save overlapping regions/names for\
+  \ all the combinations as bed/txt.Default is \"False\".\n                      \
+  \  \n  --overlap-thresh OVERLAPTHRESH\n                        Minimum threshold\
+  \ to save the overlapping regions/names as bed/txt. Default is: \"1\"\n        \
+  \                \n  --project PROJECT     Project name for the output. Default\
+  \ is: \"Intervene\"\n                        \n  --order {freq,degree}\n       \
+  \                 The order of intersections of sets. e.g. --order degree. Default\
+  \ is \"freq\".\n                        \n  --ninter NINTER       Number of top\
+  \ intersections to show in plot. Default is \"30\".\n                        \n\
+  \  --showzero            Show empty intersection combinations. Default is \"False\"\
+  .\n                        \n  --showsize            Show intersection sizes above\
+  \ bars. Default is \"True\".\n                        \n  --mbcolor MBCOLOR    \
+  \ Color of the main bar plot. Default is: \"#ea5d4e\".\n                       \
+  \ \n  --sbcolor SBCOLOR     Color of set size bar plot. Default is: \"#317eab\"\
+  .\n                        \n  --mblabel MBLABEL     The y-axis label of the intersection\
+  \ size bars. Default is: \"No. of Intersections\".\n                        \n \
+  \ --sxlabel SXLABEL     The x-axis label of the set size bars. Default is: \"Set\
+  \ size\".\n                        \n  --figtype {pdf,svg,ps,tiff,png}\n       \
+  \                 Figure type for the plot. e.g. --figtype svg. Default is \"pdf\"\
+  \n                        \n  --figsize FIGSIZE FIGSIZE\n                      \
+  \  Figure size for the output plot (width,height). e.g.  --figsize 14 8\n      \
+  \                  \n  --dpi DPI             Dots-per-inch (DPI) for the output.\
+  \ Default is: \"300\".\n                        \n  --scriptonly          Set to\
+  \ generate Rscript only, if R/UpSetR package is not installed. Default is \"False\"\
+  .\n                        \n  --showshiny           Print the combinations of intersections\
+  \ to input to Shiny App. Default is \"False\".\n                        \n  --test\
+  \                This will run the program on test data.\n                     \
+  \   \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/intervene:0.6.5--pyh3252c3a_1

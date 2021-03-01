@@ -18,6 +18,9 @@ task SgaRmdup {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(sample_rate) then ("--sample-rate " +  '"' + sample_rate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     out: "write the output to FILE (default: READFILE.rmdup.fa)"

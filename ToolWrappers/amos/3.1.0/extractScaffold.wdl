@@ -14,6 +14,9 @@ task ExtractScaffold {
       ~{if defined(name_new_bank) then ("-n " +  '"' + name_new_bank + '"') else ""} \
       ~{if (list_scaffolds_stdout) then "-l" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _bank_operated: "- The bank to be operated on."
     iid_scaffold_extracted: "- The IID of the scaffold the be extracted ."

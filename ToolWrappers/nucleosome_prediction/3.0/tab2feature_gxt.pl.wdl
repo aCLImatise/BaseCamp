@@ -2,7 +2,7 @@ version 1.0
 
 task Tab2featureGxtpl {
   input {
-    String? name_chromosome_track
+    String? name_chromosome_features
     String? _organism
     String? gv
     String? track_description_tabs
@@ -24,7 +24,7 @@ task Tab2featureGxtpl {
   }
   command <<<
     tab2feature_gxt_pl \
-      ~{if defined(name_chromosome_track) then ("-n " +  '"' + name_chromosome_track + '"') else ""} \
+      ~{if defined(name_chromosome_features) then ("-n " +  '"' + name_chromosome_features + '"') else ""} \
       ~{if defined(_organism) then ("-o " +  '"' + _organism + '"') else ""} \
       ~{if defined(gv) then ("-gv " +  '"' + gv + '"') else ""} \
       ~{if defined(track_description_tabs) then ("-d " +  '"' + track_description_tabs + '"') else ""} \
@@ -44,8 +44,11 @@ task Tab2featureGxtpl {
       ~{if defined(chr_starts) then ("-chr_starts " +  '"' + chr_starts + '"') else ""} \
       ~{if defined(chr_ends) then ("-chr_ends " +  '"' + chr_ends + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    name_chromosome_track: ":          Name of the chromosome track (default: Features )"
+    name_chromosome_features: ":          Name of the chromosome track (default: Features )"
     _organism: ":           Organism"
     gv: ":          Genome Version (default: NA)"
     track_description_tabs: ":          Track description (Tabs will be converted to spaces, default: empty)"

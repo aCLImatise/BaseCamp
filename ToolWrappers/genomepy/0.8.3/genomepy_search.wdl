@@ -10,6 +10,9 @@ task GenomepySearch {
       ~{term} \
       ~{if defined(provider) then ("--provider " +  '"' + provider + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     provider: "provider"
     term: ""

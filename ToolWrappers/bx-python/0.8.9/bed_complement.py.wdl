@@ -10,6 +10,9 @@ task BedComplementpy {
       ~{bed_file} \
       ~{chrom_length_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_file: ""
     chrom_length_file: ""

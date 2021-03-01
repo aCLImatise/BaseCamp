@@ -3,159 +3,160 @@ command:
 - kraken-build
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: task
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: Download NCBI taxonomic information
+  optional: true
   synonyms:
   - --download-taxonomy
+  description: Download NCBI taxonomic information
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Download partial library\n(TYPE = one of \"archaea\", \"bacteria\"\
-    , \"plasmid\",\n\"viral\", \"human\")"
+  optional: true
   synonyms:
   - --download-library
+  description: "Download partial library\n(TYPE = one of \"archaea\", \"bacteria\"\
+    , \"plasmid\",\n\"viral\", \"human\")"
   args: !SimpleFlagArg
     name: TYPE
-  optional: true
 - !Flag
-  description: Add FILE to library
+  optional: true
   synonyms:
   - --add-to-library
+  description: Add FILE to library
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Create DB from library\n(requires taxonomy d/l'ed and at least one\
-    \ file\nin library)"
+  optional: true
   synonyms:
   - --build
+  description: "Create DB from library\n(requires taxonomy d/l'ed and at least one\
+    \ file\nin library)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Create DB from library like --build, but remove\nexisting non-library/taxonomy\
-    \ files before build"
+  optional: true
   synonyms:
   - --rebuild
+  description: "Create DB from library like --build, but remove\nexisting non-library/taxonomy\
+    \ files before build"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Remove unneeded files from a built database
+  optional: true
   synonyms:
   - --clean
+  description: Remove unneeded files from a built database
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Shrink an existing DB to have only NEW_CT k-mers
+  optional: true
   synonyms:
   - --shrink
+  description: Shrink an existing DB to have only NEW_CT k-mers
   args: !SimpleFlagArg
     name: NEW_CT
-  optional: true
 - !Flag
-  description: Download and create default database
+  optional: true
   synonyms:
   - --standard
+  description: Download and create default database
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Upgrade an existing older database to use scrambled\nminimizer ordering\
-    \ (see README for details)"
+  optional: true
   synonyms:
   - --upgrade
+  description: "Upgrade an existing older database to use scrambled\nminimizer ordering\
+    \ (see README for details)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Kraken DB/library name (mandatory except for\n--help/--version)"
+  optional: true
   synonyms:
   - --db
+  description: Kraken DB/library name (mandatory except for
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: '#                Number of threads (def: 1)'
+  optional: true
   synonyms:
   - --threads
+  description: '#                Number of threads (def: 1)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "New Kraken DB name (shrink task only; mandatory\nfor shrink task)"
+  optional: true
   synonyms:
   - --new-db
+  description: "New Kraken DB name (shrink task only; mandatory\nfor shrink task)"
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: "K-mer length in bp (build/shrink tasks only;\ndef: 31)"
+  optional: true
   synonyms:
   - --kmer-len
+  description: "K-mer length in bp (build/shrink tasks only;\ndef: 31)"
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: "Minimizer length in bp (build/shrink tasks only;\ndef: 15)"
+  optional: true
   synonyms:
   - --minimizer-len
+  description: "Minimizer length in bp (build/shrink tasks only;\ndef: 15)"
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: "Pass a specific hash size argument to jellyfish\nwhen building database\
-    \ (build task only)"
+  optional: true
   synonyms:
   - --jellyfish-hash-size
+  description: "Pass a specific hash size argument to jellyfish\nwhen building database\
+    \ (build task only)"
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: "Shrink the DB before full build, making sure\ndatabase and index together\
-    \ use <= SIZE gigabytes\n(build task only)"
+  optional: true
   synonyms:
   - --max-db-size
+  description: "Shrink the DB before full build, making sure\ndatabase and index together\
+    \ use <= SIZE gigabytes\n(build task only)"
   args: !SimpleFlagArg
     name: SIZE
-  optional: true
 - !Flag
-  description: "Use wget for downloading instead of RSYNC; used with\n--download-library/--standard"
+  optional: true
   synonyms:
   - --use-wget
+  description: Use wget for downloading instead of RSYNC; used with
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "When shrinking, select the k-mer that is NUM\npositions from the end\
-    \ of a block of k-mers\n(default: 1)"
+  optional: true
   synonyms:
+  - --download-library
+  - --standard
   - --shrink-block-offset
+  description: When shrinking, select the k-mer that is NUM
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: "Perform most operations on disk rather than in\nRAM (will slow down\
-    \ build in most cases)\n"
+  optional: true
   synonyms:
   - --work-on-disk
+  description: "Perform most operations on disk rather than in\nRAM (will slow down\
+    \ build in most cases)\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this message
+  optional: true
   synonyms:
   - --help
+  description: Print this message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Print version information
+  optional: true
   synonyms:
   - --version
+  description: Print version information
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: kraken-build [task option] [options]\n\nTask options (exactly one\
   \ must be selected):\n  --download-taxonomy        Download NCBI taxonomic information\n\
   \  --download-library TYPE    Download partial library\n                       \
@@ -190,3 +191,4 @@ help_text: "Usage: kraken-build [task option] [options]\n\nTask options (exactly
   \                             RAM (will slow down build in most cases)\n"
 generated_using:
 - --help
+docker_image:

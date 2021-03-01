@@ -54,6 +54,9 @@ task BioformatsNcbirenameseq {
       ~{if defined(output_table) then ("--output_table " +  '"' + output_table + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "the input file is of the FASTA format"
     column: "the number of the column that contains sequence names to be changed (1 by default)"

@@ -22,11 +22,9 @@ task Nanonettrain {
     Float? learning_rate
     Float? momentum
     File? cache_path
-    Float eggs_slash_nano_net_two_dot_zero_dot_zero_py_two_dot_seven_linux_x_eight_six_six_four_dot_egg
   }
   command <<<
     nanonettrain \
-      ~{eggs_slash_nano_net_two_dot_zero_dot_zero_py_two_dot_seven_linux_x_eight_six_six_four_dot_egg} \
       ~{if defined(train) then ("--train " +  '"' + train + '"') else ""} \
       ~{if defined(train_list) then ("--train_list " +  '"' + train_list + '"') else ""} \
       ~{if defined(section) then ("--section " +  '"' + section + '"') else ""} \
@@ -48,6 +46,9 @@ task Nanonettrain {
       ~{if defined(momentum) then ("--momentum " +  '"' + momentum + '"') else ""} \
       ~{if defined(cache_path) then ("--cache_path " +  '"' + cache_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     train: "Input training data, either a path to fast5 files or a\\nsingle netcdf file (default: None)"
     train_list: "Strand list constaining training set (default: None)"
@@ -56,7 +57,7 @@ task Nanonettrain {
     val_list: "Strand list constaining validation set (default: None)"
     workspace: "Path for storing training and validation NetCDF files,\\nif not specified a temporary file is used. (default:\\n/tmp)"
     output_prefix_default: "Output prefix (default: None)"
-    model: "ANN configuration file (default: /root/.cache/Python-"
+    model: "ANN configuration file (default: /root/.cache/Python-\\nEggs/nanonet-2.0.0-py2.7-linux-x86_64.egg-\\ntmp/nanonet/data/default_model.tmpl)"
     km_er_length: "Length of kmers to learn. (default: 5)"
     bases: "Alphabet of kmers to learn. (default: ACGT)"
     device: "ID of CUDA device to use. (default: 0)"
@@ -69,7 +70,6 @@ task Nanonettrain {
     learning_rate: "Learning rate parameters of SGD. (default: 1e-05)"
     momentum: "Momentum parameter of SGD. (default: 0.9)"
     cache_path: "Path for currennt temporary files. (default: /tmp)\\n"
-    eggs_slash_nano_net_two_dot_zero_dot_zero_py_two_dot_seven_linux_x_eight_six_six_four_dot_egg: "tmp/nanonet/data/default_model.tmpl)"
   }
   output {
     File out_stdout = stdout()

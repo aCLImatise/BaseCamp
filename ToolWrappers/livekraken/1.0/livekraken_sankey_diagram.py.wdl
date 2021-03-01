@@ -22,6 +22,9 @@ task LivekrakenSankeyDiagrampy {
       ~{if defined(names) then ("--names " +  '"' + names + '"') else ""} \
       ~{if defined(nodes) then ("--nodes " +  '"' + nodes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "Used to list input files, can be used several times to\\ninput an ordered list of files"
     color: "Used to switch from red-green to red-blue color scheme"

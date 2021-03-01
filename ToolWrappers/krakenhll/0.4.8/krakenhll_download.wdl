@@ -36,6 +36,9 @@ task Krakenhlldownload {
       ~{if (dust) then "--dust" else ""} \
       ~{if (include_viral_neighbors) then "--include-viral-neighbors" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     folder_files_downloaded: "Folder to which the files are downloaded. Default: '.'"
     db: "Alternative to -o: Download to <directory>/{library,taxonomy}."

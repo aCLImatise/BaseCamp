@@ -22,6 +22,9 @@ task DistributionFeaturespy {
       ~{if defined(palette) then ("--palette " +  '"' + palette + '"') else ""} \
       ~{if defined(color) then ("--color " +  '"' + color + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: "[-pal PALETTE] [-col COLOR]"
     input_dataset_wide: "Input dataset in wide format."

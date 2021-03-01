@@ -24,6 +24,9 @@ task RgthintTracks {
       ~{if defined(output_location) then ("--output-location " +  '"' + output_location + '"') else ""} \
       ~{if defined(output_prefix) then ("--output-prefix " +  '"' + output_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     organism: "Organism considered on the analysis. Must have been\\nsetup in the RGTDATA folder. Common choices are hg19,\\nhg38. mm9, and mm10. DEFAULT: hg19"
     bias_table: ",FILE1_R\\nBias table files used to generate bias corrected\\ntracks. DEFAULT: None"

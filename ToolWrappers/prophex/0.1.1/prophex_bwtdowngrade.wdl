@@ -10,6 +10,9 @@ task ProphexBwtdowngrade {
       ~{input_dot_bwt} \
       ~{output_dot_bwt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dot_bwt: ""
     output_dot_bwt: ""

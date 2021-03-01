@@ -4,12 +4,12 @@ inputs:
 - id: in_header
   doc: "the header of the output file in case a differenet\nstk version, default is\
     \ # STOCKHOLM 1.0"
-  type: File
+  type: File?
   inputBinding:
     prefix: --header
 - id: in_remove_ref
   doc: "is set, do not write the GC reference sequences to\noutput\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --removeref
 - id: in_usage
@@ -24,9 +24,10 @@ outputs:
 - id: out_header
   doc: "the header of the output file in case a differenet\nstk version, default is\
     \ # STOCKHOLM 1.0"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_header)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ReadSeq

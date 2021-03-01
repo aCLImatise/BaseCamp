@@ -12,7 +12,7 @@ task DbsnpIit {
     String observed_mismatch
     String observed_wrong_format
     String ref_allele_rev_comp
-    String single_class_tri_allelic
+    String single_class_longer_span
   }
   command <<<
     dbsnp_iit \
@@ -24,10 +24,13 @@ task DbsnpIit {
       ~{observed_mismatch} \
       ~{observed_wrong_format} \
       ~{ref_allele_rev_comp} \
-      ~{single_class_tri_allelic} \
+      ~{single_class_longer_span} \
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     more_options: ""
     options: ""
@@ -39,7 +42,7 @@ task DbsnpIit {
     observed_mismatch: "ObservedTooLong"
     observed_wrong_format: "RefAlleleMismatch"
     ref_allele_rev_comp: "SingleAlleleFreq"
-    single_class_tri_allelic: "SingleClassZeroSpan"
+    single_class_longer_span: "SingleClassQuadAllelic"
   }
   output {
     File out_stdout = stdout()

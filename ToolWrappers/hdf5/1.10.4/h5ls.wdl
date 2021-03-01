@@ -11,7 +11,7 @@ task H5ls {
     Boolean? group
     Boolean? label
     String? recursive
-    Boolean? print_byte_datasets
+    Boolean? print_byte_integer
     Boolean? simple
     Int? width
     Boolean? verbose
@@ -20,12 +20,10 @@ task H5ls {
     String? external
     Boolean? errors
     String options
-    File file_slash_object
   }
   command <<<
     h5ls \
       ~{options} \
-      ~{file_slash_object} \
       ~{if (address) then "--address" else ""} \
       ~{if (data) then "--data" else ""} \
       ~{if (enable_error_stack) then "--enable-error-stack" else ""} \
@@ -35,7 +33,7 @@ task H5ls {
       ~{if (group) then "--group" else ""} \
       ~{if (label) then "--label" else ""} \
       ~{if defined(recursive) then ("--recursive " +  '"' + recursive + '"') else ""} \
-      ~{if (print_byte_datasets) then "--string" else ""} \
+      ~{if (print_byte_integer) then "--string" else ""} \
       ~{if (simple) then "--simple" else ""} \
       ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""} \
@@ -44,6 +42,9 @@ task H5ls {
       ~{if defined(external) then ("--external " +  '"' + external + '"') else ""} \
       ~{if (errors) then "--errors" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     address: "Print raw data address.  If dataset is contiguous, address\\nis offset in file of beginning of raw data. If chunked,\\nreturned list of addresses indicates offset of each chunk.\\nMust be used with -v, --verbose option.\\nProvides no information for non-dataset objects."
     data: "Print the values of datasets"
@@ -54,7 +55,7 @@ task H5ls {
     group: "Show information about a group, not its contents"
     label: "Label members of compound datasets"
     recursive: "all groups recursively, avoiding cycles"
-    print_byte_datasets: "Print 1-byte integer datasets as ASCII"
+    print_byte_integer: "Print 1-byte integer datasets as ASCII"
     simple: "Use a machine-readable output format"
     width: "Set the number of columns of output"
     verbose: "Generate more verbose output"
@@ -63,7 +64,6 @@ task H5ls {
     external: "Follow external links.\\nReplaced by --follow-symlinks."
     errors: "Show all HDF5 error reporting\\nReplaced by --enable-error-stack.\\n"
     options: "-h, -?, --help  Print a usage message and exit"
-    file_slash_object: "Each object consists of an HDF5 file name optionally followed by a\\nslash and an object name within the file (if no object is specified\\nwithin the file then the contents of the root group are displayed).\\nThe file name may include a printf(3C) integer format such as\\n\\\"%05d\\\" to open a file family."
   }
   output {
     File out_stdout = stdout()

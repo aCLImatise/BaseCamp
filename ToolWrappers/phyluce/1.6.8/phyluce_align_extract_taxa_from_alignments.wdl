@@ -2,8 +2,8 @@ version 1.0
 
 task PhyluceAlignExtractTaxaFromAlignments {
   input {
-    File? _include_include
     Directory? alignments
+    Directory? directory_store_files
     String? input_format
     String? output_format
     String? verbosity
@@ -15,8 +15,8 @@ task PhyluceAlignExtractTaxaFromAlignments {
   }
   command <<<
     phyluce_align_extract_taxa_from_alignments \
-      ~{if defined(_include_include) then ("--output " +  '"' + _include_include + '"') else ""} \
       ~{if defined(alignments) then ("--alignments " +  '"' + alignments + '"') else ""} \
+      ~{if defined(directory_store_files) then ("--output " +  '"' + directory_store_files + '"') else ""} \
       ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
       ~{if defined(output_format) then ("--output-format " +  '"' + output_format + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
@@ -26,9 +26,12 @@ task PhyluceAlignExtractTaxaFromAlignments {
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
       ~{if defined(include) then ("--include " +  '"' + include + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _include_include: "[--input-format {nexus,newick,fasta,phylip}]\\n[--output-format {fasta,nexus,phylip,phylip-relaxed,phylip-sequential,clustal,emboss,stockholm}]\\n[--verbosity {INFO,WARN,CRITICAL}]\\n[--log-path LOG_PATH]\\n[--cores CORES]\\n[--skip-check]\\n[--exclude EXCLUDE [EXCLUDE ...]\\n| --include INCLUDE\\n[INCLUDE ...]]"
     alignments: "The input directory containing nexus files"
+    directory_store_files: "The directory in which to store the output files"
     input_format: "The input format of the alignments"
     output_format: "The input alignment format"
     verbosity: "The logging level to use."
@@ -40,5 +43,6 @@ task PhyluceAlignExtractTaxaFromAlignments {
   }
   output {
     File out_stdout = stdout()
+    Directory out_directory_store_files = "${in_directory_store_files}"
   }
 }

@@ -18,6 +18,9 @@ task BigWigMerge {
       ~{if (in_list) then "-inList" else ""} \
       ~{if (max) then "-max" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threshold: "- don't output values at or below this threshold. Default is 0.0"
     adjust: "- add adjustment to each value"

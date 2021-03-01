@@ -1,0 +1,206 @@
+!Command
+command:
+- emmtyper
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: file.
+  description: '[default: stdout]'
+- !Positional
+  optional: false
+  position: 1
+  name: executable.
+  description: --primer-db TEXT                [isPcr] PCR primer. Text file with
+    3
+- !Positional
+  optional: false
+  position: 0
+  name: Primer.
+  description: '[default:'
+- !Positional
+  optional: false
+  position: 0
+  name: executable.
+  description: --help                          Show this message and exit.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --workflow
+  description: '[blast|pcr]      Choose workflow  [default: blast]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --blast_db
+  description: "Path to EMM BLAST DB  [default:\n/usr/local/lib/python3.7/site-\n\
+    packages/emmtyper/db/emm.fna]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --keep
+  description: "Keep BLAST and isPcr output files.\n[default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --cluster-distance
+  description: "Distance between cluster of matches to\nconsider as different clusters.\
+    \  [default:\n500]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output stream. Path to file for output to a
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --output-format
+  description: "[short|verbose|visual]\nOutput format."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dust
+  description: "[yes|no|level window linker]\n[BLAST] Filter query sequence with DUST.\n\
+    [default: no]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --percent-identity
+  description: '[BLAST] Minimal percent identity of'
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --culling-limit
+  description: "[BLAST] Total hits to return in a position.\n[default: 5]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --mismatch
+  description: "[BLAST] Threshold for number of mismatch to\nallow in BLAST hit. \
+    \ [default: 4]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --align-diff
+  description: "[BLAST] Threshold for difference between\nalignment length and subject\
+    \ length in BLAST\nhit.  [default: 5]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --gap
+  description: "[BLAST] Threshold gap to allow in BLAST hit.\n[default: 2]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --blast-path
+  description: '[BLAST] Specify full path to blastn'
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-perfect
+  description: "[isPcr] Minimum size of perfect match at 3'\nprimer end.  [default:\
+    \ 15]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --min-good
+  description: "[isPcr] Minimum size where there must be 2\nmatches for each mismatch.\
+    \  [default: 15]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --max-size
+  description: "[isPcr] Maximum size of PCR product.\n[default: 2000]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --ispcr-path
+  description: '[isPcr] Specify full path to isPcr'
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: emmtyper [OPTIONS] [FASTA]...\n\n  Welcome to emmtyper.\n\n  Usage:\n\
+  \n  emmtyper *.fasta\n\nOptions:\n  --version                       Show the version\
+  \ and exit.\n  -w, --workflow [blast|pcr]      Choose workflow  [default: blast]\n\
+  \  -d, --blast_db TEXT             Path to EMM BLAST DB  [default:\n           \
+  \                       /usr/local/lib/python3.7/site-\n                       \
+  \           packages/emmtyper/db/emm.fna]\n\n  -k, --keep                      Keep\
+  \ BLAST and isPcr output files.\n                                  [default: False]\n\
+  \n  -d, --cluster-distance INTEGER  Distance between cluster of matches to\n   \
+  \                               consider as different clusters.  [default:\n   \
+  \                               500]\n\n  -o, --output TEXT               Output\
+  \ stream. Path to file for output to a\n                                  file.\
+  \  [default: stdout]\n\n  -f, --output-format [short|verbose|visual]\n         \
+  \                         Output format.\n  --dust [yes|no|level window linker]\n\
+  \                                  [BLAST] Filter query sequence with DUST.\n  \
+  \                                [default: no]\n\n  --percent-identity INTEGER \
+  \     [BLAST] Minimal percent identity of\n                                  sequence.\
+  \  [default: 95]\n\n  --culling-limit INTEGER         [BLAST] Total hits to return\
+  \ in a position.\n                                  [default: 5]\n\n  --mismatch\
+  \ INTEGER              [BLAST] Threshold for number of mismatch to\n           \
+  \                       allow in BLAST hit.  [default: 4]\n\n  --align-diff INTEGER\
+  \            [BLAST] Threshold for difference between\n                        \
+  \          alignment length and subject length in BLAST\n                      \
+  \            hit.  [default: 5]\n\n  --gap INTEGER                   [BLAST] Threshold\
+  \ gap to allow in BLAST hit.\n                                  [default: 2]\n\n\
+  \  --blast-path TEXT               [BLAST] Specify full path to blastn\n       \
+  \                           executable.\n\n  --primer-db TEXT                [isPcr]\
+  \ PCR primer. Text file with 3\n                                  columns: Name,\
+  \ Forward Primer, Reverse\n                                  Primer.  [default:\n\
+  \                                  /usr/local/lib/python3.7/site-\n            \
+  \                      packages/emmtyper/data/isPcrPrim.tsv]\n\n  --min-perfect\
+  \ INTEGER           [isPcr] Minimum size of perfect match at 3'\n              \
+  \                    primer end.  [default: 15]\n\n  --min-good INTEGER        \
+  \      [isPcr] Minimum size where there must be 2\n                            \
+  \      matches for each mismatch.  [default: 15]\n\n  --max-size INTEGER       \
+  \       [isPcr] Maximum size of PCR product.\n                                 \
+  \ [default: 2000]\n\n  --ispcr-path TEXT               [isPcr] Specify full path\
+  \ to isPcr\n                                  executable.\n\n  --help          \
+  \                Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/emmtyper:0.2.0--py_0

@@ -12,7 +12,7 @@ task Hapcmp {
     String? output_sequences
     String? progress
     String? progress_seconds
-    Boolean? arg_maximum_number_haplotype
+    Boolean? arg_maximum_number_process
     Boolean? arg_apply_filtering
     String? do_alignment
   }
@@ -28,10 +28,13 @@ task Hapcmp {
       ~{if defined(output_sequences) then ("--output-sequences " +  '"' + output_sequences + '"') else ""} \
       ~{if defined(progress) then ("--progress " +  '"' + progress + '"') else ""} \
       ~{if defined(progress_seconds) then ("--progress-seconds " +  '"' + progress_seconds + '"') else ""} \
-      ~{if (arg_maximum_number_haplotype) then "-l" else ""} \
+      ~{if (arg_maximum_number_process) then "-l" else ""} \
       ~{if (arg_apply_filtering) then "-f" else ""} \
       ~{if defined(do_alignment) then ("--do-alignment " +  '"' + do_alignment + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_regions: "The input bed file specifying haplotype block\\nregions (use - for stdin)."
     input_v_cfs: "Two VCF files to compare (use file:sample for a\\nspecific sample column)."
@@ -43,7 +46,7 @@ task Hapcmp {
     output_sequences: "Set to true to output haplotype sequences."
     progress: "Set to true to output progress information."
     progress_seconds: "Output progress information every n seconds."
-    arg_maximum_number_haplotype: "[ --limit ] arg            Maximum number of haplotype blocks to process."
+    arg_maximum_number_process: "[ --limit ] arg            Maximum number of haplotype blocks to process."
     arg_apply_filtering: "[ --apply-filters ] arg    Apply filtering in VCF."
     do_alignment: "Perform alignments on mismatching haplotypes to\\nfind best approximate match.\\n"
   }

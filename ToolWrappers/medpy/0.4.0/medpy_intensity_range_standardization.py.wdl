@@ -32,6 +32,9 @@ task MedpyIntensityRangeStandardizationpy {
       ~{if defined(masks) then ("--masks " +  '"' + masks + '"') else ""} \
       ~{if (ignore) then "--ignore" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Verbose output"
     debug: "Display debug information."

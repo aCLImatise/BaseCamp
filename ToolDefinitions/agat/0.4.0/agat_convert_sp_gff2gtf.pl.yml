@@ -3,35 +3,38 @@ command:
 - agat_convert_sp_gff2gtf.pl
 positional:
 - !Positional
-  description: ': _gff25_string'
+  optional: false
   position: 0
   name: Title
-  optional: false
+  description: ': _gff25_string'
 - !Positional
-  description: ': $gffstr = $gffio->_gff2_string'
+  optional: false
   position: 1
   name: Usage
-  optional: false
+  description: ': $gffstr = $gffio->_gff2_string'
 - !Positional
-  description: ': A Bio::SeqFeatureI implementing object to be GFF2.5-stringified'
+  optional: false
   position: 0
   name: Args
-  optional: false
+  description: ': A Bio::SeqFeatureI implementing object to be GFF2.5-stringified'
 - !Positional
-  description: 'Description:'
+  optional: false
   position: 0
   name: agat_convert_sp_gff2gtf.pl
-  optional: false
+  description: 'Description:'
 named:
 - !Flag
-  description: Input GFF file that will be read
+  optional: true
   synonyms:
   - --gff
   - --in
+  description: Input GFF file that will be read
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gtf_version
   description: "of the GTF output. Default 3 (for GTF3)\nGTF3 (9 feature types accepted):\
     \ gene, transcript, exon, CDS,\nSelenocysteine, start_codon, stop_codon, three_prime_utr\
     \ and\nfive_prime_utr\nGTF2.5 (8 feature types accepted): gene, transcript, exon,\
@@ -40,39 +43,41 @@ named:
     \ and exon\nGTF2.1 (6 feature types accepted): CDS, start_codon, stop_codon,\n\
     exon, 5UTR, 3UTR\nGTF2 (4 feature types accepted): CDS, start_codon, stop_codon,\n\
     exon\nGTF1 (5 feature types accepted): CDS, start_codon, stop_codon,\nexon, intron"
-  synonyms:
-  - --gtf_version
   args: !SimpleFlagArg
     name: version
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --relax
   description: "option avoid to apply strict GTF format specification. All\nfeature\
     \ type will be kept. No modification e.g. mRNA to\ntranscript. No filtering i.e.\
     \ feature type not accepted by GTF\nformat are kept. gene_id and transcript_id\
     \ attributes will be\nadded, and the attributes will follow the GTF formating."
-  synonyms:
-  - --relax
   args: !SimpleFlagArg
     name: Relax
-  optional: true
 - !Flag
-  description: ", --output , --out , --outfile or --gtf\nOutput GTF file. If no output\
-    \ file is specified, the output will\nbe written to STDOUT."
+  optional: true
   synonyms:
   - -o
-  args: !EmptyFlagArg {}
-  optional: true
+  - --output
+  - --out
+  - --outfile
+  - --gtf
+  description: "Output GTF file. If no output file is specified, the output will\n\
+    be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Display this helpful text.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Display this helpful text.
   args: !SimpleFlagArg
     name: or
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\n ------------------------------------------------------------------------------\n\
@@ -133,3 +138,4 @@ help_text: "\n -----------------------------------------------------------------
   \n"
 generated_using:
 - --help
+docker_image:

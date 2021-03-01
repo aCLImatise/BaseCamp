@@ -10,6 +10,9 @@ task KneaddataReadCountTable {
       ~{if defined(input_folder_kneaddata) then ("--input " +  '"' + input_folder_kneaddata + '"') else ""} \
       ~{if defined(output_file_write) then ("--output " +  '"' + output_file_write + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_folder_kneaddata: "the input folder with kneaddata log files"
     output_file_write: "the output file to write"

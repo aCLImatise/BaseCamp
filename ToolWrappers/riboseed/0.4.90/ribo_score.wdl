@@ -20,6 +20,9 @@ task RiboScore {
       ~{if (blast_full) then "--blast_Full" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_place_files: "directory in which to place the output files"
     flanking_length: "length of flanking regions, in bp; default: 1000"

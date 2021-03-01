@@ -10,6 +10,9 @@ task Bam2fastq {
       ~{output_dot_one_dot_fast_q} \
       ~{output_dot_two_dot_fast_q}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dot_one_dot_fast_q: ""
     output_dot_two_dot_fast_q: ""

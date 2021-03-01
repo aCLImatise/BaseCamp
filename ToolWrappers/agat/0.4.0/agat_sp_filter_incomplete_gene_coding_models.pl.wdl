@@ -8,7 +8,7 @@ task AgatSpFilterIncompleteGeneCodingModelspl {
     Int? add_flag
     String? skip_start_check
     String? skip_stop_check
-    File? _output_
+    File? outfile
     Boolean? verbose_option_make
     String agat_sp_filter_incomplete_gene_coding_models_do_tpl
   }
@@ -21,9 +21,12 @@ task AgatSpFilterIncompleteGeneCodingModelspl {
       ~{if defined(add_flag) then ("--add_flag " +  '"' + add_flag + '"') else ""} \
       ~{if defined(skip_start_check) then ("--skip_start_check " +  '"' + skip_start_check + '"') else ""} \
       ~{if defined(skip_stop_check) then ("--skip_stop_check " +  '"' + skip_stop_check + '"') else ""} \
-      ~{if (_output_) then "-o" else ""} \
+      ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if (verbose_option_make) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GTF/GFF file."
     fast_a: "Genome fasta file. The name of the fasta file containing the\\ngenome to work with."
@@ -31,12 +34,12 @@ task AgatSpFilterIncompleteGeneCodingModelspl {
     add_flag: "Instead of filter the result into two output files, write only\\none and add the flag <incomplete> in the gff.(tag = inclomplete,\\nvalue = 1, 2, 3. 1=start missing; 2=stop missing; 3=both)"
     skip_start_check: "Gene model must have a start codon. Activated by default."
     skip_stop_check: "Gene model must have a stop codon. Activated by default."
-    _output_: ", --output , --out or --outfile\\nOutput GFF file. If no output file is specified, the output will\\nbe written to STDOUT."
+    outfile: "Output GFF file. If no output file is specified, the output will\\nbe written to STDOUT."
     verbose_option_make: "Verbose option, make it easier to follow what is going on for\\ndebugging purpose."
     agat_sp_filter_incomplete_gene_coding_models_do_tpl: "Description:"
   }
   output {
     File out_stdout = stdout()
-    File out__output_ = "${in__output_}"
+    File out_outfile = "${in_outfile}"
   }
 }

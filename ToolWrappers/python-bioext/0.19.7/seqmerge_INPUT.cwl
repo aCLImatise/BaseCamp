@@ -3,7 +3,7 @@ id: seqmerge_INPUT.cwl
 inputs:
 - id: in_s
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -s
 - id: in_output
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - seqmerge

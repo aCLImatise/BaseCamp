@@ -30,6 +30,9 @@ task Probcons {
       ~{if defined(param_file) then ("--paramfile " +  '"' + param_file + '"') else ""} \
       ~{if (alignment_order) then "--alignment-order" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clustalw: "use CLUSTALW output format instead of MFA"
     consistency: "use 0 <= REPS <= 5 (default: 2) passes of consistency transformation"

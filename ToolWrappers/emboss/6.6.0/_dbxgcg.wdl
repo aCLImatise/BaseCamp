@@ -11,11 +11,11 @@ task Dbxgcg {
     Boolean? date
     Boolean? exclude
     Boolean? statistics
-    File file
+    File indexoutdir_outdir_index
   }
   command <<<
     _dbxgcg \
-      ~{file} \
+      ~{indexoutdir_outdir_index} \
       ~{if (id_format) then "-idformat" else ""} \
       ~{if (directory) then "-directory" else ""} \
       ~{if (filenames) then "-filenames" else ""} \
@@ -26,6 +26,9 @@ task Dbxgcg {
       ~{if (exclude) then "-exclude" else ""} \
       ~{if (statistics) then "-statistics" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id_format: "menu       [SWISS] Entry format (Values: EMBL (EMBL);\\nSWISS (Swiss-Prot, SpTrEMBL, TrEMBLnew);\\nGENBANK (Genbank, DDBJ); PIR (NBRF))"
     directory: "directory  [.] Database directory"
@@ -36,7 +39,7 @@ task Dbxgcg {
     date: "string     [00/00/00] Index date (Date string dd/mm/yy)"
     exclude: "string     Wildcard filename(s) to exclude (Any string)"
     statistics: "boolean    [N] Report I/O statistics for each input"
-    file: "-indexoutdir        outdir     [.] Index file output directory"
+    indexoutdir_outdir_index: "-indexoutdir        outdir     [.] Index file output directory"
   }
   output {
     File out_stdout = stdout()

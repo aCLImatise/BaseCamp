@@ -4,6 +4,9 @@ task CactusBlastChunkSequences {
   command <<<
     cactus_blast_chunkSequences
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

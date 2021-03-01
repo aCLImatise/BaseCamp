@@ -4,6 +4,9 @@ task Fastaremove {
   command <<<
     fastaremove
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

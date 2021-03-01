@@ -20,6 +20,9 @@ task RiboSelect {
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_directorydefault_none: "output directory;default: None"
     feature: "Feature, rRNA or RRNA; default: rRNA"

@@ -6,7 +6,7 @@ inputs:
   type: File
   inputBinding:
     position: 0
-- id: in_reads_dot_fast_a_slash_q
+- id: in_reads_dot_fast_a
   doc: ''
   type: string
   inputBinding:
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - paf_to_CARNAC.py

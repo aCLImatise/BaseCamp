@@ -20,6 +20,9 @@ task Crbblast {
       ~{if defined(output_file_tsv) then ("--output " +  '"' + output_file_tsv + '"') else ""} \
       ~{if (split) then "--split" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query: "query fasta file"
     target: "target fasta file"

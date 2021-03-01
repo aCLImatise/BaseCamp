@@ -36,6 +36,9 @@ task FcConsensus {
       ~{if (allow_external_mapping) then "--allow-external-mapping" else ""} \
       ~{if defined(verbose_level) then ("--verbose-level " +  '"' + verbose_level + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_core: "number of processes used for generating consensus; 0 for main process only (default: 24)"
     min_cov: "minimum coverage to break the consensus (default: 6)"

@@ -3,115 +3,115 @@ command:
 - scanpy-filter-cells
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: input_obj
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: output_obj
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "[anndata|loom]\nInput object format.  [default: anndata]"
+  optional: true
   synonyms:
   - -f
   - --input-format
+  description: "[anndata|loom]\nInput object format.  [default: anndata]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+  optional: true
   synonyms:
   - -F
   - --output-format
+  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Chunk size for writing output in zarr
+  optional: true
   synonyms:
   - -z
   - --zarr-chunk-size
+  description: Chunk size for writing output in zarr
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "When specified, using it as prefix for\nexporting mtx files. If not\
-    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+  optional: true
   synonyms:
   - -X
   - --export-mtx
+  description: "When specified, using it as prefix for\nexporting mtx files. If not\
+    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "[stdout|stderr]      Print output object summary info to\nspecified\
-    \ stream."
+  optional: true
   synonyms:
   - --show-obj
+  description: "[stdout|stderr]      Print output object summary info to\nspecified\
+    \ stream."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Name of the variable that contains gene\nnames, used for flagging\
-    \ mitochondria genes\nwhen column \"mito\" is absent from `.var`.\n[default: index]"
+  optional: true
   synonyms:
   - -g
   - --gene-name
+  description: "Name of the variable that contains gene\nnames, used for flagging\
+    \ mitochondria genes\nwhen column \"mito\" is absent from `.var`.\n[default: index]"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "When set, list attributes that can be\nfiltered on."
+  optional: true
   synonyms:
   - -l
   - --list-attr
+  description: "When set, list attributes that can be\nfiltered on."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "...\nNumerical parameters used to filter the\ndata, in the format\
-    \ of \"-p name min max\".\nMultiple -p entries allowed."
+  optional: true
   synonyms:
   - -p
   - --param
+  description: "...\nNumerical parameters used to filter the\ndata, in the format\
+    \ of \"-p name min max\".\nMultiple -p entries allowed."
   args: !SimpleFlagArg
     name: TEXT FLOAT FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --category
   description: "<TEXT TEXT[,TEXT...]>...\nCategorical attributes used to filter the\n\
     data, in the format of \"-c <name> <values>\",\nwhere entries with attribute <name>\
     \ with\nvalue in <values> are kept. If <values> is\npreceded by \"!\", entries\
     \ with value in\n<values> are removed. Multiple -c entries\nallowed."
-  synonyms:
-  - -c
-  - --category
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "...\nSimilar to --category in the format of \"-s\n<name> <file>\"\
-    , but the <file> to be a one-\ncolumn table that provides the values.\nMultiple\
-    \ -s entries allowed."
+  optional: true
   synonyms:
   - -s
   - --subset
+  description: "...\nSimilar to --category in the format of \"-s\n<name> <file>\"\
+    , but the <file> to be a one-\ncolumn table that provides the values.\nMultiple\
+    \ -s entries allowed."
   args: !SimpleFlagArg
     name: TEXT FILENAME
-  optional: true
 - !Flag
-  description: "When set, re-calculate\n`pct_counts_<qc_variable>` and\n`pct_counts_in_top_<n>_genes`\
-    \ even if they\nexist."
+  optional: true
   synonyms:
   - --force-recalc
+  description: "When set, re-calculate\n`pct_counts_<qc_variable>` and\n`pct_counts_in_top_<n>_genes`\
+    \ even if they\nexist."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: scanpy-filter-cells [OPTIONS] <input_obj> <output_obj>\n\n  Filter\
@@ -152,3 +152,4 @@ help_text: "Usage: scanpy-filter-cells [OPTIONS] <input_obj> <output_obj>\n\n  F
   \  exist.\n  --help                          Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

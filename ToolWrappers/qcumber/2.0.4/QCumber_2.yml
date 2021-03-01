@@ -4,188 +4,182 @@ command:
 positional: []
 named:
 - !Flag
-  description: 'Number of threads. Default: 4'
+  optional: true
   synonyms:
   - --threads
   - -t
+  description: 'Number of threads. Default: 4'
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: "Configfile to run pipeline. Additional parameters in\nthe commandline\
-    \ will override arguments in configfile."
+  optional: true
   synonyms:
   - --config
   - -c
+  description: "Configfile to run pipeline. Additional parameters in\nthe commandline\
+    \ will override arguments in configfile."
   args: !SimpleFlagArg
     name: CONFIG
-  optional: true
 - !Flag
-  description: "input sample folder. Illumina filenames should end\nwith _<lane>_<R1|R2>_number,\
-    \ e.g.\nSample_12_345_R1_001.fastq, to find the right paired\nset."
+  optional: true
   synonyms:
   - --input
   - -i
+  description: "input sample folder. Illumina filenames should end\nwith _<lane>_<R1|R2>_number,\
+    \ e.g.\nSample_12_345_R1_001.fastq, to find the right paired\nset."
   args: !RepeatFlagArg
     name: INPUT
-  optional: true
 - !Flag
-  description: Read 1 file
+  optional: true
   synonyms:
   - --read1
   - '-1'
+  description: Read 1 file
   args: !SimpleFlagArg
     name: R1
-  optional: true
 - !Flag
-  description: Read 2 file
+  optional: true
   synonyms:
   - --read2
   - '-2'
+  description: Read 2 file
   args: !SimpleFlagArg
     name: R2
-  optional: true
 - !Flag
-  description: "If not set, automatically determine technology and\nsearch for fastq\
-    \ and bam files. Set technology to\nIonTorrent if all files are bam-files, else\
-    \ set\ntechnology to Illumina."
+  optional: true
   synonyms:
   - --technology
   - -T
+  description: "If not set, automatically determine technology and\nsearch for fastq\
+    \ and bam files. Set technology to\nIonTorrent if all files are bam-files, else\
+    \ set\ntechnology to Illumina."
   args: !ChoiceFlagArg
     choices: !!set
-      Illumina:
       IonTorrent:
-  optional: true
+      Illumina:
 - !Flag
-  description: 'Adapter name for trimming. Default: all'
+  optional: true
   synonyms:
   - --adapter
   - -a
+  description: 'Adapter name for trimming. Default: all'
   args: !ChoiceFlagArg
     choices: !!set
       NexteraPE-PE:
-      TruSeq2-PE:
+      TruSeq3-SE:
       TruSeq3-PE:
       TruSeq3-PE-2:
-      TruSeq3-SE:
       TruSeq2-SE:
-  optional: true
+      TruSeq2-PE:
 - !Flag
-  description: "Map reads against reference. Reference needs to be in\nfasta-format."
+  optional: true
   synonyms:
   - --reference
   - -r
+  description: "Map reads against reference. Reference needs to be in\nfasta-format."
   args: !SimpleFlagArg
     name: REFERENCE
-  optional: true
 - !Flag
-  description: Bowtie2 index if available.
+  optional: true
   synonyms:
   - --index
   - -I
+  description: Bowtie2 index if available.
   args: !SimpleFlagArg
     name: INDEX
-  optional: true
 - !Flag
-  description: "Custom Kraken database. Default value is taken from\nenvironment variable\
-    \ KRAKEN_DB_PATH. Default: ."
+  optional: true
   synonyms:
   - --kraken_db
   - -d
+  description: "Custom Kraken database. Default value is taken from\nenvironment variable\
+    \ KRAKEN_DB_PATH. Default: ."
   args: !SimpleFlagArg
     name: KRAKEN_DB
-  optional: true
 - !Flag
-  description: "Illumina folder for SAV. Requires RunInfo.xml,\nRunParameter.xml and\
-    \ Interop folder."
+  optional: true
   synonyms:
   - --sav
   - -w
+  description: "Illumina folder for SAV. Requires RunInfo.xml,\nRunParameter.xml and\
+    \ Interop folder."
   args: !SimpleFlagArg
     name: SAV
-  optional: true
 - !Flag
-  description: "Optimize trimming parameter using 'Per sequence base\ncontent' from\
-    \ fastqc. Not recommended for amplicons."
+  optional: true
   synonyms:
   - --trimBetter
+  description: "Optimize trimming parameter using 'Per sequence base\ncontent' from\
+    \ fastqc. Not recommended for amplicons."
   args: !ChoiceFlagArg
     choices: !!set
+      default:
       mapping:
       assembly:
-      default:
-  optional: true
 - !Flag
-  description: --notrimming, -Q
-  synonyms:
-  - --nokraken
-  - -K
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: "Illuminaclip option: <leading quality>:<trailing\nquality>:<sliding\
-    \ window>. Default: 2:30:10"
   synonyms:
   - --illuminaclip
   - -L
+  description: "Illuminaclip option: <leading quality>:<trailing\nquality>:<sliding\
+    \ window>. Default: 2:30:10"
   args: !SimpleFlagArg
     name: ILLUMINACLIP
-  optional: true
 - !Flag
-  description: "Minlen parameter for Trimmomatic. Drops read short\nthan minlen. Default:\
-    \ 50"
+  optional: true
   synonyms:
   - --minlen
   - -m
+  description: "Minlen parameter for Trimmomatic. Drops read short\nthan minlen. Default:\
+    \ 50"
   args: !SimpleFlagArg
     name: MINLEN
-  optional: true
 - !Flag
-  description: "Additional Trimmomatic input. Default (if trimBetter\nis not set):\
-    \ SLIDINGWINDOW:4:20"
+  optional: true
   synonyms:
   - --trimOption
   - -O
+  description: "Additional Trimmomatic input. Default (if trimBetter\nis not set):\
+    \ SLIDINGWINDOW:4:20"
   args: !SimpleFlagArg
     name: TRIMOPTION
-  optional: true
 - !Flag
-  description: "Set -trimBetter to use this option.Default setting for\nIllumina:\
-    \ 0.15 and for IonTorrent: 0.25."
+  optional: true
   synonyms:
   - --trimBetter_threshold
   - -b
+  description: "Set -trimBetter to use this option.Default setting for\nIllumina:\
+    \ 0.15 and for IonTorrent: 0.25."
   args: !SimpleFlagArg
     name: TRIMBETTER_THRESHOLD
-  optional: true
 - !Flag
-  description: "--rename RENAME, -R RENAME\nTSV File with two columns: <old sample\
-    \ name> <new\nsample name>\n--save_mapping, -S"
+  optional: true
   synonyms:
   - --output
   - -o
+  - --rename
+  - -R
+  description: "TSV File with two columns: <old sample name> <new\nsample name>"
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
   - -v
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: QCumber-2 [-h] [--input INPUT [INPUT ...]] [--read1 R1] [--read2\
   \ R2]\n                 [--technology {Illumina,IonTorrent}]\n                 [--adapter\
   \ {TruSeq2-PE,TruSeq2-SE,TruSeq3-PE,TruSeq3-SE,TruSeq3-PE-2,NexteraPE-PE}]\n   \
@@ -239,3 +233,4 @@ help_text: "usage: QCumber-2 [-h] [--input INPUT [INPUT ...]] [--read1 R1] [--re
   \ usage: QCumber-2 --input fastq_folder --reference reference.fasta\n"
 generated_using:
 - --help
+docker_image:

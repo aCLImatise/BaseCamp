@@ -24,6 +24,9 @@ task ERPairFinder {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                            Input mzML file containing the ER spectra. (valid formats: 'mzML')"
     pair_in: "*                       Pair-file in the format: m/z-light m/z-heavy charge rt (valid formats: 'txt')"

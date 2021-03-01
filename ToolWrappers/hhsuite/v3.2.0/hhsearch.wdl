@@ -5,7 +5,7 @@ task Hhsearch {
     File? inputquery_multiple_sequence
     Int? database_name_eg
     Boolean? evalue_cutoff_inclusion
-    Boolean? tags_slash_no_tags
+    Boolean? no_tags
     File? write_results_file
     File? o_a_three_m
     Int? blast_tab
@@ -19,7 +19,7 @@ task Hhsearch {
     File? of_as
     Int? seq
     Int? ali_w
-    Boolean? minimum_probability_summary
+    Boolean? minimum_probability_default
     Boolean? inf_maximum_evalue
     Int? maximum_number_lines
     Int? minimum_number_lines
@@ -36,7 +36,7 @@ task Hhsearch {
     Boolean? no_realign
     Int? ovlp
     Boolean? mact
-    Boolean? glob_slash_loc
+    Boolean? glob
     Boolean? realign
     Int? excl
     Int? realign_max
@@ -70,7 +70,7 @@ task Hhsearch {
     File? con_txt
     Boolean? csw
     Boolean? csb
-    Int? verbose_mode_output
+    Int? verbose_mode_screen
     Int? cpu
     File? scores
     Boolean? a_tab
@@ -83,7 +83,7 @@ task Hhsearch {
       ~{if defined(inputquery_multiple_sequence) then ("-i " +  '"' + inputquery_multiple_sequence + '"') else ""} \
       ~{if defined(database_name_eg) then ("-d " +  '"' + database_name_eg + '"') else ""} \
       ~{if (evalue_cutoff_inclusion) then "-e" else ""} \
-      ~{if (tags_slash_no_tags) then "-tags/-notags" else ""} \
+      ~{if (no_tags) then "-notags" else ""} \
       ~{if defined(write_results_file) then ("-o " +  '"' + write_results_file + '"') else ""} \
       ~{if defined(o_a_three_m) then ("-oa3m " +  '"' + o_a_three_m + '"') else ""} \
       ~{if defined(blast_tab) then ("-blasttab " +  '"' + blast_tab + '"') else ""} \
@@ -97,7 +97,7 @@ task Hhsearch {
       ~{if defined(of_as) then ("-Ofas " +  '"' + of_as + '"') else ""} \
       ~{if defined(seq) then ("-seq " +  '"' + seq + '"') else ""} \
       ~{if defined(ali_w) then ("-aliw " +  '"' + ali_w + '"') else ""} \
-      ~{if (minimum_probability_summary) then "-p" else ""} \
+      ~{if (minimum_probability_default) then "-p" else ""} \
       ~{if (inf_maximum_evalue) then "-E" else ""} \
       ~{if defined(maximum_number_lines) then ("-Z " +  '"' + maximum_number_lines + '"') else ""} \
       ~{if defined(minimum_number_lines) then ("-z " +  '"' + minimum_number_lines + '"') else ""} \
@@ -114,7 +114,7 @@ task Hhsearch {
       ~{if (no_realign) then "-norealign" else ""} \
       ~{if defined(ovlp) then ("-ovlp " +  '"' + ovlp + '"') else ""} \
       ~{if (mact) then "-mact" else ""} \
-      ~{if (glob_slash_loc) then "-glob/-loc" else ""} \
+      ~{if (glob) then "-glob" else ""} \
       ~{if (realign) then "-realign" else ""} \
       ~{if defined(excl) then ("-excl " +  '"' + excl + '"') else ""} \
       ~{if defined(realign_max) then ("-realign_max " +  '"' + realign_max + '"') else ""} \
@@ -148,7 +148,7 @@ task Hhsearch {
       ~{if defined(con_txt) then ("-contxt " +  '"' + con_txt + '"') else ""} \
       ~{if (csw) then "-csw" else ""} \
       ~{if (csb) then "-csb" else ""} \
-      ~{if defined(verbose_mode_output) then ("-v " +  '"' + verbose_mode_output + '"') else ""} \
+      ~{if defined(verbose_mode_screen) then ("-v " +  '"' + verbose_mode_screen + '"') else ""} \
       ~{if defined(cpu) then ("-cpu " +  '"' + cpu + '"') else ""} \
       ~{if defined(scores) then ("-scores " +  '"' + scores + '"') else ""} \
       ~{if (a_tab) then "-atab" else ""} \
@@ -156,11 +156,14 @@ task Hhsearch {
       ~{if defined(max_res) then ("-maxres " +  '"' + max_res + '"') else ""} \
       ~{if (maxmem) then "-maxmem" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     inputquery_multiple_sequence: "input/query multiple sequence alignment (a2m, a3m, FASTA) or HMM"
     database_name_eg: "database name (e.g. uniprot20_29Feb2012)\\nMultiple databases may be specified with '-d <db1> -d <db2> ...'"
     evalue_cutoff_inclusion: "[0,1]   E-value cutoff for inclusion in result alignment (def=0.001)"
-    tags_slash_no_tags: "do NOT / do neutralize His-, C-myc-, FLAG-tags, and trypsin\\nrecognition sequence to background distribution (def=-notags)"
+    no_tags: "do NOT / do neutralize His-, C-myc-, FLAG-tags, and trypsin\\nrecognition sequence to background distribution (def=-notags)"
     write_results_file: "write results in standard format to file (default=<infile.hhr>)"
     o_a_three_m: "write result MSA with significant matches in a3m format"
     blast_tab: "write result in tabular BLAST format (compatible to -m 8 or -outfmt 6 output)\\n1      2      3           4         5        6      8    9      10   11   12\\n'query target #match/tLen #mismatch #gapOpen qstart qend tstart tend eval score'"
@@ -174,7 +177,7 @@ task Hhsearch {
     of_as: "write pairwise alignments in FASTA xor A2M (-Oa2m) xor A3M (-Oa3m) format"
     seq: "max. number of query/template sequences displayed (default=1)"
     ali_w: "number of columns per line in alignment list (default=80)"
-    minimum_probability_summary: "[0,100]     minimum probability in summary and alignment list (default=20)"
+    minimum_probability_default: "[0,100]     minimum probability in summary and alignment list (default=20)"
     inf_maximum_evalue: "[0,inf[     maximum E-value in summary and alignment list (default=1E+06)"
     maximum_number_lines: "maximum number of lines in summary hit list (default=500)"
     minimum_number_lines: "minimum number of lines in summary hit list (default=10)"
@@ -191,7 +194,7 @@ task Hhsearch {
     no_realign: "do NOT realign displayed hits with MAC algorithm (def=realign)"
     ovlp: "banded alignment: forbid <ovlp> largest diagonals |i-j| of DP matrix (def=0)"
     mact: "[0,1[         posterior prob threshold for MAC realignment controlling greedi-\\nness at alignment ends: 0:global >0.1:local (default=0.35)"
-    glob_slash_loc: "use global/local alignment mode for searching/ranking (def=local)"
+    glob: "use global/local alignment mode for searching/ranking (def=local)"
     realign: "realign displayed hits with max. accuracy (MAC) algorithm"
     excl: "exclude query positions from the alignment, e.g. '1-33,97-168'"
     realign_max: "realign max. <int> hits (default=500)"
@@ -225,7 +228,7 @@ task Hhsearch {
     con_txt: "context file for computing context-specific pseudocounts (default=)"
     csw: "[0,inf]  weight of central position in cs pseudocount mode (def=1.6)"
     csb: "[0,1]    weight decay parameter for positions in cs pc mode (def=0.9)"
-    verbose_mode_output: "verbose mode: 0:no screen output  1:only warnings  2: verbose (def=2)"
+    verbose_mode_screen: "verbose mode: 0:no screen output  1:only warnings  2: verbose (def=2)"
     cpu: "number of CPUs to use (for shared memory SMPs) (default=2)"
     scores: "write scores for all pairwise comparisons to file"
     a_tab: "<file> write all alignments in tabular layout to file"

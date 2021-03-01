@@ -8,6 +8,9 @@ task LynerAstype {
     lyner astype \
       ~{type}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type: ""
   }

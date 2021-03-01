@@ -8,6 +8,9 @@ task Plink {
     plink \
       ~{if (list_duplicate_vars) then "--list-duplicate-vars" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_duplicate_vars: ", and --score."
   }

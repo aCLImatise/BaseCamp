@@ -4,6 +4,9 @@ task Dockerfile {
   command <<<
     Dockerfile_
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

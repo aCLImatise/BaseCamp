@@ -20,6 +20,9 @@ task HcaDssPatchcollection {
       ~{if defined(uuid) then ("--uuid " +  '"' + uuid + '"') else ""} \
       ~{if defined(replica) then ("--replica " +  '"' + replica + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_contents: "List of new items to add to the collection. Items are de-duplicated (if an identical item is already present in the collection or given multiple times, it will only be added once)."
     description: "New description for the collection."

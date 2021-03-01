@@ -14,6 +14,9 @@ task Fq {
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
       ~{if (hist) then "--hist" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "!        Quiet mode: no progress output (default '0')."
     ref: "Reference FASTA file OR size in bp (default '')."

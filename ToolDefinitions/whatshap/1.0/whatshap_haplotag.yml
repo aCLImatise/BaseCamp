@@ -4,100 +4,100 @@ command:
 - haplotag
 positional:
 - !Positional
-  description: "VCF file with phased variants (must be gzip-compressed\nand indexed)"
+  optional: false
   position: 0
   name: VCF
-  optional: false
+  description: "VCF file with phased variants (must be gzip-compressed\nand indexed)"
 - !Positional
-  description: File (BAM/CRAM) with read alignments to be tagged by
+  optional: false
   position: 1
   name: ALIGNMENTS
-  optional: false
+  description: File (BAM/CRAM) with read alignments to be tagged by
 - !Positional
-  description: 'optional arguments:'
+  optional: false
   position: 2
   name: haplotype
-  optional: false
+  description: 'optional arguments:'
 - !Positional
-  description: --linked-read-distance-cutoff LINKEDREADDISTANCE, -d LINKEDREADDISTANCE
+  optional: false
   position: 3
   name: reads.
-  optional: false
+  description: --linked-read-distance-cutoff LINKEDREADDISTANCE, -d LINKEDREADDISTANCE
 named:
 - !Flag
-  description: Output file. If omitted, use standard output.
+  optional: true
   synonyms:
   - -o
   - --output
+  description: Output file. If omitted, use standard output.
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: "Reference file. Provide this to detect alleles through\nre-alignment.\
-    \ If no index (.fai) exists, it will be\ncreated"
+  optional: true
   synonyms:
   - --reference
   - -r
+  description: "Reference file. Provide this to detect alleles through\nre-alignment.\
+    \ If no index (.fai) exists, it will be\ncreated"
   args: !SimpleFlagArg
     name: FASTA
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --regions
   description: "Specify region(s) of interest to limit the tagging to\nreads/variants\
     \ overlapping those regions. You can\nspecify a space-separated list of regions\
     \ in the form\nof chrom:start-end, chrom (consider entire\nchromosome), or chrom:start\
     \ (consider region from this\nstart to end of chromosome)."
-  synonyms:
-  - --regions
   args: !SimpleFlagArg
     name: REGION
-  optional: true
 - !Flag
-  description: Ignore linkage information stored in BX tags of the
+  optional: true
   synonyms:
   - --ignore-linked-read
+  description: Ignore linkage information stored in BX tags of the
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Ignore read groups in BAM/CRAM header and assume all\nreads come from\
-    \ the same sample."
+  optional: true
   synonyms:
   - --ignore-read-groups
+  description: "Ignore read groups in BAM/CRAM header and assume all\nreads come from\
+    \ the same sample."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Name of a sample to phase. If not given, all samples\nin the input\
-    \ VCF are phased. Can be used multiple\ntimes."
+  optional: true
   synonyms:
   - --sample
+  description: "Name of a sample to phase. If not given, all samples\nin the input\
+    \ VCF are phased. Can be used multiple\ntimes."
   args: !SimpleFlagArg
     name: SAMPLE
-  optional: true
 - !Flag
-  description: "Write assignments of read names to haplotypes (tab\nseparated) to\
-    \ given output file. If filename ends in\n.gz, then output is gzipped."
+  optional: true
   synonyms:
   - --output-haplotag-list
+  description: "Write assignments of read names to haplotypes (tab\nseparated) to\
+    \ given output file. If filename ends in\n.gz, then output is gzipped."
   args: !SimpleFlagArg
     name: HAPLOTAG_LIST
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --tag-supplementary
   description: "Also tag supplementary alignments. Supplementary\nalignments are assigned\
     \ to the same haplotype the\nprimary alignment has been assigned to (default:\
     \ only\ntag primary alignments).\n"
-  synonyms:
-  - --tag-supplementary
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: whatshap haplotag [-h] [-o OUTPUT] [--reference FASTA]\n      \
@@ -138,3 +138,4 @@ help_text: "usage: whatshap haplotag [-h] [-o OUTPUT] [--reference FASTA]\n     
   \ has been assigned to (default: only\n                        tag primary alignments).\n"
 generated_using:
 - --help
+docker_image:

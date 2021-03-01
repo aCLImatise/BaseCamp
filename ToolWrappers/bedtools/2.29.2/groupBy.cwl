@@ -3,18 +3,18 @@ id: groupBy.cwl
 inputs:
 - id: in_input_file_assumes
   doc: Input file. Assumes "stdin" if omitted.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_grp
   doc: "Specify the columns (1-based) for the grouping.\nThe columns must be comma\
     \ separated.\n- Default: 1,2,3"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -grp
 - id: in_op_cols
   doc: "Specify the column (1-based) that should be summarized.\n- Required."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -opCols
 - id: in_ops
@@ -34,18 +34,18 @@ inputs:
     \ sum,mean,count\" will give the sum of column 5,\nthe mean of column 4, and the\
     \ count of column 6.\nThe order of output columns will match the ordering given\
     \ in the command."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ops
 - id: in_full
   doc: "Print all columns from input file.  The first line in the group is used.\n\
     Default: print only grouped columns."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -full
 - id: in_in_header
   doc: Input file has a header line - the first line will be ignored.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -inheader
 - id: in_out_header
@@ -53,34 +53,35 @@ inputs:
     \ file has headers (-inheader), the output file\nwill use the input's column names.\n\
     If the input file has no headers, the output file\nwill use \"col_1\", \"col_2\"\
     , etc. as the column names."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -outheader
 - id: in_header
   doc: same as '-inheader -outheader'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -header
 - id: in_ignorecase
   doc: Group values regardless of upper/lower case.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ignorecase
 - id: in_prec
   doc: 'Sets the decimal precision for output (Default: 5)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -prec
 - id: in_delim
   doc: "Specify a custom delimiter for the collapse operations.\n- Example: -delim\
     \ \"|\"\n- Default: \",\"."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -delim
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - groupBy

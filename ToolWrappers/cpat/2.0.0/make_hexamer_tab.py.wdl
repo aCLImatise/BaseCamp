@@ -10,6 +10,9 @@ task MakeHexamerTabpy {
       ~{if defined(cod) then ("--cod " +  '"' + cod + '"') else ""} \
       ~{if defined(non_cod) then ("--noncod " +  '"' + non_cod + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cod: "Coding sequence (must be CDS without UTR, i.e. from\\nstart coden to stop coden) in fasta format"
     non_cod: "Noncoding sequences in fasta format\\n"

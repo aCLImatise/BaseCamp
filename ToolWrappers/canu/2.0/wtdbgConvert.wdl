@@ -10,6 +10,9 @@ task WtdbgConvert {
       ~{file_dot_dbg_dot_lay} \
       ~{if defined(output_prefix) then ("-o " +  '"' + output_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_prefix: "output prefix"
     file_dot_dbg_dot_lay: ""

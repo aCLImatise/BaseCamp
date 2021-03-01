@@ -1,9 +1,9 @@
 class: CommandLineTool
 id: MakeBootstraps.py.cwl
 inputs:
-- id: in_number_simulated_datasets
+- id: in_number_create_default
   doc: Number of simulated datasets to create (100 default).
-  type: long
+  type: long?
   inputBinding:
     prefix: -n
 - id: in_template
@@ -11,13 +11,13 @@ inputs:
     \ which is specified using the -p\noption. The iteration number is indicated with\
     \ a \"#\".\nFor example: 'permuted/counts.permuted_#.txt'If not\nprovided a '.permuted_#.txt'\
     \ suffix will be added to\nthe counts file name."
-  type: long
+  type: long?
   inputBinding:
     prefix: --template
 - id: in_path
   doc: "The path to which permuted data will be written. If\nnot provided files will\
     \ be written to the cwd.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --path
 - id: in_make
@@ -77,9 +77,10 @@ outputs:
 - id: out_path
   doc: "The path to which permuted data will be written. If\nnot provided files will\
     \ be written to the cwd.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_path)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - MakeBootstraps.py

@@ -14,6 +14,9 @@ task OrthomclFilterFasta {
       ~{max_percent_stops} \
       ~{good_proteins_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dir: ""
     min_length: ""

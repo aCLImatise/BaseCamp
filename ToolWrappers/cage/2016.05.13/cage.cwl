@@ -1,32 +1,31 @@
 class: CommandLineTool
 id: cage.cwl
 inputs:
-- id: in__outputvcf_vcfoutputfileor
-  doc: ",  --output_vcf <VCF_output_file>\n(OR required)  File to output variants\
-    \ called when running CAGe\n-- OR --"
-  type: File
+- id: in_output_vcf
+  doc: "(OR required)  File to output variants called when running CAGe\n-- OR --"
+  type: File?
   inputBinding:
-    prefix: -o
-- id: in__inputsnpdb_snpinputdbor
-  doc: ",  --input_SNP_db <SNP_input_db>\n(OR required)  Filename of sqlite3 SNP database"
-  type: File
+    prefix: --output_vcf
+- id: in_input_snp_db
+  doc: (OR required)  Filename of sqlite3 SNP database
+  type: File?
   inputBinding:
-    prefix: -s
-- id: in__verboseprint_verbose
-  doc: ",  --verbose\nprint verbose output of CAGe"
-  type: boolean
+    prefix: --input_SNP_db
+- id: in_verbose
+  doc: print verbose output of CAGe
+  type: boolean?
   inputBinding:
-    prefix: -v
+    prefix: --verbose
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out__outputvcf_vcfoutputfileor
-  doc: ",  --output_vcf <VCF_output_file>\n(OR required)  File to output variants\
-    \ called when running CAGe\n-- OR --"
-  type: File
+- id: out_output_vcf
+  doc: "(OR required)  File to output variants called when running CAGe\n-- OR --"
+  type: File?
   outputBinding:
-    glob: $(inputs.in__outputvcf_vcfoutputfileor)
+    glob: $(inputs.in_output_vcf)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cage

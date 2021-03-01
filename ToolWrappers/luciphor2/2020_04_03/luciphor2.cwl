@@ -3,7 +3,7 @@ id: luciphor2.cwl
 inputs:
 - id: in_jar
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -jar
 - id: in_java
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - luciphor2

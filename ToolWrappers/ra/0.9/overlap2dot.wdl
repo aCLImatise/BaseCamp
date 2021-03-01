@@ -12,6 +12,9 @@ task Overlap2dot {
       ~{if (overlaps) then "--overlaps" else ""} \
       ~{if (reads_format) then "--reads_format" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reads: "reads file (string [=])"
     overlaps: "overlaps file (string [=])"

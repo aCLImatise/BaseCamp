@@ -32,6 +32,9 @@ task Lastsplit {
       ~{if defined(bytes) then ("--bytes " +  '"' + bytes + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "output format: MAF, MAF+ (default=MAF+)"
     genome: "lastdb genome name"

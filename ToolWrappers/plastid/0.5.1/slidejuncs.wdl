@@ -66,6 +66,9 @@ task Slidejuncs {
       ~{if defined(mask_gff_exon_types) then ("--mask_gff_exon_types " +  '"' + mask_gff_exon_types + '"') else ""} \
       ~{if defined(mask_gff_cds_types) then ("--mask_gff_cds_types " +  '"' + mask_gff_cds_types + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_slide: "Maximum number of nt to search 5' and 3' of intron\\nboundaries (Default: 10)"
     ref: "Reference file describing known splice junctions"

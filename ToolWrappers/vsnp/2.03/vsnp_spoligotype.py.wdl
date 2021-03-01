@@ -16,6 +16,9 @@ task VsnpSpoligotypepy {
       ~{if (debug) then "--debug" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_one: "Required: single read"
     read_two: "Optional: paired read"

@@ -40,6 +40,9 @@ task Bufetpy {
       ~{if (disable_ontology_check) then "--disable-ontology-check" else ""} \
       ~{if (disable_synonyms_check) then "--disable-synonyms-check" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mirna: ": path to the miRNA group file"
     interactions: ">: path to the interactions file"

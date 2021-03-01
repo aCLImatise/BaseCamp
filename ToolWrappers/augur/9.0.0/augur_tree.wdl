@@ -22,6 +22,9 @@ task AugurTree {
       ~{if defined(exclude_sites) then ("--exclude-sites " +  '"' + exclude_sites + '"') else ""} \
       ~{if defined(tree_builder_args) then ("--tree-builder-args " +  '"' + tree_builder_args + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignment: "alignment in fasta or VCF format (default: None)"
     method: "tree builder to use (default: iqtree)"

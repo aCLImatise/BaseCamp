@@ -14,6 +14,9 @@ task Hicap {
       ~{if (help_all) then "--help_all" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query_fp: "Input FASTA query"
     output_dir: "Output directory"

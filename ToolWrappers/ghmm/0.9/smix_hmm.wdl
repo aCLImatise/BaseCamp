@@ -4,6 +4,9 @@ task SmixHmm {
   command <<<
     smix_hmm
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

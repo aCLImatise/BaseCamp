@@ -4,210 +4,210 @@ command:
 positional: []
 named:
 - !Flag
-  description: An annotation of genes and transcripts in GTF format
+  optional: true
   synonyms:
   - --gtf
+  description: An annotation of genes and transcripts in GTF format
   args: !SimpleFlagArg
     name: GTF
-  optional: true
 - !Flag
-  description: "A text file containing a comma separated list of the\nBAM files for\
-    \ sample_1. (Only if using BAM)"
+  optional: true
   synonyms:
   - --b1
+  description: "A text file containing a comma separated list of the\nBAM files for\
+    \ sample_1. (Only if using BAM)"
   args: !SimpleFlagArg
     name: B1
-  optional: true
 - !Flag
-  description: "A text file containing a comma separated list of the\nBAM files for\
-    \ sample_2. (Only if using BAM)"
+  optional: true
   synonyms:
   - --b2
+  description: "A text file containing a comma separated list of the\nBAM files for\
+    \ sample_2. (Only if using BAM)"
   args: !SimpleFlagArg
     name: B2
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --s1
   description: "A text file containing a comma separated list of the\nFASTQ files\
     \ for sample_1. If using paired reads the\nformat is \":\" to separate pairs and\
     \ \",\" to separate\nreplicates. (Only if using fastq)"
-  synonyms:
-  - --s1
   args: !SimpleFlagArg
     name: S1
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --s2
   description: "A text file containing a comma separated list of the\nFASTQ files\
     \ for sample_2. If using paired reads the\nformat is \":\" to separate pairs and\
     \ \",\" to separate\nreplicates. (Only if using fastq)"
-  synonyms:
-  - --s2
   args: !SimpleFlagArg
     name: S2
-  optional: true
 - !Flag
-  description: The directory for final output
+  optional: true
   synonyms:
   - --od
+  description: The directory for final output
   args: !SimpleFlagArg
     name: OD
-  optional: true
 - !Flag
-  description: "The directory for intermediate output such as \".rmats\"\nfiles from\
-    \ the prep step"
+  optional: true
   synonyms:
   - --tmp
+  description: "The directory for intermediate output such as \".rmats\"\nfiles from\
+    \ the prep step"
   args: !SimpleFlagArg
     name: TMP
-  optional: true
 - !Flag
-  description: "Type of read used in the analysis: either \"paired\" for\npaired-end\
-    \ data or \"single\" for single-end data.\nDefault: paired"
+  optional: true
   synonyms:
   - -t
+  description: "Type of read used in the analysis: either \"paired\" for\npaired-end\
+    \ data or \"single\" for single-end data.\nDefault: paired"
   args: !ChoiceFlagArg
     choices: !!set
       single:
       paired:
-  optional: true
 - !Flag
-  description: "Library type. Use fr-firststrand or fr-secondstrand\nfor strand-specific\
-    \ data. Default: fr-unstranded"
+  optional: true
   synonyms:
   - --libType
+  description: "Library type. Use fr-firststrand or fr-secondstrand\nfor strand-specific\
+    \ data. Default: fr-unstranded"
   args: !ChoiceFlagArg
     choices: !!set
-      fr-firststrand:
       fr-unstranded:
       fr-secondstrand:
-  optional: true
+      fr-firststrand:
 - !Flag
-  description: The length of each read
+  optional: true
   synonyms:
   - --readLength
+  description: The length of each read
   args: !SimpleFlagArg
     name: READLENGTH
-  optional: true
 - !Flag
-  description: "Allow reads with lengths that differ from --readLength\nto be processed.\
-    \ --readLength will still be used to\ndetermine IncFormLen and SkipFormLen"
+  optional: true
   synonyms:
   - --variable-read-length
+  description: "Allow reads with lengths that differ from --readLength\nto be processed.\
+    \ --readLength will still be used to\ndetermine IncFormLen and SkipFormLen"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The anchor length. Default is 1
+  optional: true
   synonyms:
   - --anchorLength
+  description: The anchor length. Default is 1
   args: !SimpleFlagArg
     name: ANCHORLENGTH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --tophatAnchor
   description: "The \"anchor length\" or \"overhang length\" used in the\naligner.\
     \ At least \"anchor length\" NT must be mapped to\neach end of a given junction.\
     \ The default is 6. (Only\nif using fastq)"
-  synonyms:
-  - --tophatAnchor
   args: !SimpleFlagArg
     name: TOPHATANCHOR
-  optional: true
 - !Flag
-  description: "The directory name of the STAR binary indices (name of\nthe directory\
-    \ that contains the SA file). (Only if\nusing fastq)"
+  optional: true
   synonyms:
   - --bi
+  description: "The directory name of the STAR binary indices (name of\nthe directory\
+    \ that contains the SA file). (Only if\nusing fastq)"
   args: !SimpleFlagArg
     name: BINDEX
-  optional: true
 - !Flag
-  description: "The number of threads. The optimal number of threads\nshould be equal\
-    \ to the number of CPU cores. Default: 1"
+  optional: true
   synonyms:
   - --nthread
+  description: "The number of threads. The optimal number of threads\nshould be equal\
+    \ to the number of CPU cores. Default: 1"
   args: !SimpleFlagArg
     name: NTHREAD
-  optional: true
 - !Flag
-  description: "The number of threads for the statistical model.\nDefault: 1"
+  optional: true
   synonyms:
   - --tstat
+  description: "The number of threads for the statistical model.\nDefault: 1"
   args: !SimpleFlagArg
     name: TSTAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cstat
   description: "The cutoff splicing difference. The cutoff used in the\nnull hypothesis\
     \ test for differential splicing. The\ndefault is 0.0001 for 0.01% difference.\
     \ Valid: 0 <=\ncutoff < 1. Does not apply to the paired stats model"
-  synonyms:
-  - --cstat
   args: !SimpleFlagArg
     name: CSTAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --task
   description: "Specify which step(s) of rMATS to run. Default: both.\nprep: preprocess\
     \ BAMs and generate a .rmats file.\npost: load .rmats file(s) into memory, detect\
     \ and\ncount alternative splicing events, and calculate P\nvalue (if not --statoff).\
     \ both: prep + post. inte\n(integrity): check that the BAM filenames recorded\
     \ by\nthe prep task(s) match the BAM filenames for the\ncurrent command line"
-  synonyms:
-  - --task
   args: !ChoiceFlagArg
     choices: !!set
       post:
-      both:
       inte:
+      both:
       prep:
-  optional: true
 - !Flag
-  description: Skip the statistical analysis
+  optional: true
   synonyms:
   - --statoff
+  description: Skip the statistical analysis
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Use the paired stats model
+  optional: true
   synonyms:
   - --paired-stats
+  description: Use the paired stats model
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Enable detection of novel splice sites (unannotated\nsplice sites).\
-    \ Default is no detection of novel splice\nsites"
+  optional: true
   synonyms:
   - --novelSS
+  description: "Enable detection of novel splice sites (unannotated\nsplice sites).\
+    \ Default is no detection of novel splice\nsites"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum Intron Length. Only impacts --novelSS\nbehavior. Default:\
-    \ 50"
+  optional: true
   synonyms:
   - --mil
+  description: "Minimum Intron Length. Only impacts --novelSS\nbehavior. Default:\
+    \ 50"
   args: !SimpleFlagArg
     name: MIL
-  optional: true
 - !Flag
-  description: "Maximum Exon Length. Only impacts --novelSS behavior.\nDefault: 500\n"
+  optional: true
   synonyms:
   - --mel
+  description: "Maximum Exon Length. Only impacts --novelSS behavior.\nDefault: 500\n"
   args: !SimpleFlagArg
     name: MEL
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: rmats.py [options]\n\noptional arguments:\n  -h, --help       \
   \     show this help message and exit\n  --version             show program's version\
   \ number and exit\n  --gtf GTF             An annotation of genes and transcripts\
@@ -265,3 +265,4 @@ help_text: "usage: rmats.py [options]\n\noptional arguments:\n  -h, --help      
   \              Default: 500\n"
 generated_using:
 - --help
+docker_image:

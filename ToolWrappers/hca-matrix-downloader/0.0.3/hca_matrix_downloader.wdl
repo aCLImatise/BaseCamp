@@ -22,6 +22,9 @@ task Hcamatrixdownloader {
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(out_prefix) then ("--outprefix " +  '"' + out_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     project: "The project's Project Title, Project Label or link-\\nderived ID, obtained from the HCA DCP, wrapped in\\nquotes."
     query: "A complete /v1/matrix/ POST query in JSON format.\\nConsult https://matrix.dev.data.humancellatlas.org/\\nfor details."

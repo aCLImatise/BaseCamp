@@ -16,6 +16,9 @@ task ExtractCogspy {
       ~{if defined(cdd_cog_file) then ("--cdd_cog_file " +  '"' + cdd_cog_file + '"') else ""} \
       ~{if defined(gff_file) then ("--gfffile " +  '"' + gff_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     blast_outfile: "Output of rpsblast run, assumed to be in tabular\\nformat whith columns: qseqid sseqid evalue pident\\nscore qstart qend sstart send length slen. The contigs\\nids are assumed to be recoverable by removing the last\\nunderscore and the characters following it from the\\nqseqid column."
     sco_vs_threshold: "Threshold covered in percent, default=50.0"

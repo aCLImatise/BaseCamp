@@ -12,7 +12,7 @@ task Spring {
     Boolean? retain_read_order
     Boolean? no_quality
     Boolean? use_compression_arbitrarily
-    Boolean? enable_compression_input
+    Boolean? enable_input_gzipped
     Boolean? fast_a_input
   }
   command <<<
@@ -27,13 +27,16 @@ task Spring {
       ~{if (retain_read_order) then "-r" else ""} \
       ~{if (no_quality) then "--no-quality" else ""} \
       ~{if (use_compression_arbitrarily) then "-l" else ""} \
-      ~{if (enable_compression_input) then "-g" else ""} \
+      ~{if (enable_input_gzipped) then "-g" else ""} \
       ~{if (fast_a_input) then "--fasta-input" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _compress: "[ --compress ]               compress"
     _decompress: "[ --decompress ]             decompress"
-    decompress_range: "--decompress-range start end\\n(optional) decompress only reads (or read\\npairs for PE datasets) from start to end\\n(both inclusive) (1 <= start <= end <=\\nnum_reads (or num_read_pairs for PE)). If -r\\nwas specified during compression, the range\\nof reads does not correspond to the original\\norder of reads in the FASTQ file."
+    decompress_range: "end\\n(optional) decompress only reads (or read\\npairs for PE datasets) from start to end\\n(both inclusive) (1 <= start <= end <=\\nnum_reads (or num_read_pairs for PE)). If -r\\nwas specified during compression, the range\\nof reads does not correspond to the original\\norder of reads in the FASTQ file."
     arg_input_file: "[ --input-file ] arg         input file name (two files for paired end)"
     arg_output_file: "[ --output-file ] arg        output file name (for paired end\\ndecompression, if only one file is specified,\\ntwo output files will be created by suffixing\\n.1 and .2.)"
     arg_directory_create: "[ --working-dir ] arg (=.)   directory to create temporary files (default\\ncurrent directory)"
@@ -41,7 +44,7 @@ task Spring {
     retain_read_order: "[ --allow-read-reordering ]  do not retain read order during compression\\n(paired reads still remain paired)"
     no_quality: "do not retain quality values during"
     use_compression_arbitrarily: "[ --long ]                   Use for compression of arbitrarily long read\\nlengths. Can also provide better compression\\nfor reads with significant number of indels.\\n-r disabled in this mode. For Illumina short\\nreads, compression is better without -l flag."
-    enable_compression_input: "[ --gzipped-fastq ]          enable if compression input is gzipped fastq\\nor to output gzipped fastq during\\ndecompression"
+    enable_input_gzipped: "[ --gzipped-fastq ]          enable if compression input is gzipped fastq\\nor to output gzipped fastq during\\ndecompression"
     fast_a_input: "enable if compression input is fasta file\\n(i.e., no qualities)\\n"
   }
   output {

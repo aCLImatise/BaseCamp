@@ -18,6 +18,9 @@ task GcloudSqlDatabases {
       ~{list} \
       ~{patch}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     instances: "SYNOPSIS"
     create: "Creates a database for a Cloud SQL instance."

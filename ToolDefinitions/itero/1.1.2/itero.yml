@@ -11,176 +11,462 @@ subcommands:
   - assemble
   positional: []
   named: []
-  parent: &id020 !Command
+  parent: &id023 !Command
     command: *id001
     positional: []
     named: []
     parent:
     subcommands:
-    - &id019 !Command
+    - &id022 !Command
       command: *id002
       positional: []
       named: []
-      parent: &id017 !Command
+      parent: &id020 !Command
         command: *id001
         positional: []
         named: []
         parent:
         subcommands:
-        - &id016 !Command
+        - &id019 !Command
           command: *id002
           positional: []
           named: []
-          parent: &id014 !Command
+          parent: &id017 !Command
             command: *id001
             positional: []
             named: []
             parent:
             subcommands:
-            - &id013 !Command
+            - &id016 !Command
               command: *id002
               positional: []
               named: []
-              parent: &id003 !Command
+              parent: &id014 !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -V
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
-                - &id004 !Command
+                - &id013 !Command
                   command: *id002
                   positional: []
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -V
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - &id004 !Command
+                      command: *id002
+                      positional: []
+                      named: []
+                      parent: *id003
+                      subcommands:
+                      - !Command
+                        command: &id007
+                        - itero
+                        - assemble
+                        - command
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: itero
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: assemble
+                          description: ''
+                        named: []
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          description: ''
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: itero assemble [-h] command ...\nitero\
+                          \ assemble: error: argument command: invalid choice: 'command'\
+                          \ (choose from 'local', 'mpi')\n"
+                        generated_using: &id005
+                        - --help
+                        docker_image:
+                      - !Command
+                        command: &id008
+                        - itero
+                        - assemble
+                        - mpi
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: behavior.
+                          description: --verbosity {INFO,WARN,CRITICAL}
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --config
+                          description: A configuration file containing reads to assemble
+                          args: !SimpleFlagArg
+                            name: CONFIG
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --subfolder
+                          description: "A subdirectory, below the level of the group,\n\
+                            containing the reads"
+                          args: !SimpleFlagArg
+                            name: SUBFOLDER
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --iterations
+                          description: The number of iterations to run for each locus
+                          args: !SimpleFlagArg
+                            name: ITERATIONS
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --local-cores
+                          description: The number of cores to use on the main node
+                          args: !SimpleFlagArg
+                            name: LOCAL_CORES
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --clean
+                          description: Cleanup all intermediate files
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --only-single-locus
+                          description: Assemble only to a single contig
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --allow-multiple-contigs
+                          description: Allow assembly stages to produce multiple contigs
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --do-not-zip
+                          description: Do not zip the iteration files, which is the
+                            default
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --log-path
+                          description: The path to a directory to hold logs.
+                          args: !SimpleFlagArg
+                            name: LOG_PATH
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --output
+                          description: The directory in which to store the output
+                          args: !SimpleFlagArg
+                            name: OUTPUT
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: show this help message and exit
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: itero assemble mpi [-h] [--config CONFIG]\
+                          \ [--subfolder SUBFOLDER]\n                          [--iterations\
+                          \ ITERATIONS]\n                          [--local-cores\
+                          \ LOCAL_CORES] [--clean]\n                          [--only-single-locus]\
+                          \ [--allow-multiple-contigs]\n                         \
+                          \ [--do-not-zip] [--verbosity {INFO,WARN,CRITICAL}]\n  \
+                          \                        [--log-path LOG_PATH] --output\
+                          \ OUTPUT\n\nAssemble reads using MPI for assembly.\n\noptional\
+                          \ arguments:\n  -h, --help            show this help message\
+                          \ and exit\n  --config CONFIG       A configuration file\
+                          \ containing reads to assemble\n  --subfolder SUBFOLDER\n\
+                          \                        A subdirectory, below the level\
+                          \ of the group,\n                        containing the\
+                          \ reads\n  --iterations ITERATIONS\n                   \
+                          \     The number of iterations to run for each locus\n \
+                          \ --local-cores LOCAL_CORES\n                        The\
+                          \ number of cores to use on the main node\n  --clean   \
+                          \            Cleanup all intermediate files\n  --only-single-locus\
+                          \   Assemble only to a single contig\n  --allow-multiple-contigs\n\
+                          \                        Allow assembly stages to produce\
+                          \ multiple contigs\n  --do-not-zip          Do not zip the\
+                          \ iteration files, which is the default\n              \
+                          \          behavior.\n  --verbosity {INFO,WARN,CRITICAL}\n\
+                          \                        The logging level to use.\n  --log-path\
+                          \ LOG_PATH   The path to a directory to hold logs.\n  --output\
+                          \ OUTPUT       The directory in which to store the output\n"
+                        generated_using: *id005
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: itero assemble [-h] command ...\n\nAssemble\
+                        \ cleaned/trimmed sequencing reads.\n\npositional arguments:\n\
+                        \  command\n    local     Assemble reads using local CPUs\
+                        \ for assembly.\n    mpi       Assemble reads using MPI for\
+                        \ assembly.\n\noptional arguments:\n  -h, --help  show this\
+                        \ help message and exit\n"
+                      generated_using: *id005
+                      docker_image:
+                    - &id006 !Command
+                      command: &id009
+                      - itero
+                      - check
+                      positional: []
+                      named: []
+                      parent: *id003
+                      subcommands:
+                      - !Command
+                        command: &id010
+                        - itero
+                        - check
+                        - itero
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: check
+                          description: ''
+                        named: []
+                        parent: *id006
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          description: ''
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: itero check [-h] command ...\nitero check:\
+                          \ error: argument command: invalid choice: 'itero' (choose\
+                          \ from 'binaries')\n"
+                        generated_using: *id005
+                        docker_image:
+                      - !Command
+                        command: &id011
+                        - itero
+                        - check
+                        - check
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: itero
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: check
+                          description: ''
+                        named: []
+                        parent: *id006
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          description: ''
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag:
+                        help_text: "usage: itero check [-h] command ...\nitero check:\
+                          \ error: argument command: invalid choice: 'check' (choose\
+                          \ from 'binaries')\n"
+                        generated_using: *id005
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: itero check [-h] command ...\nitero check:\
+                        \ error: too few arguments\n"
+                      generated_using: &id012
+                      - --usage
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -V
+                      - --version
+                      description: show program's version number and exit
+                      args: !EmptyFlagArg {}
+                    help_text: "usage: itero [-h] [-V] command ...\n\nitero is a software\
+                      \ package for iterative, guided assembly of target\nenrichment\
+                      \ data.\n\npositional arguments:\n  command\n    help      \
+                      \   Get help info on a itero command.\n    assemble     Assemble\
+                      \ cleaned/trimmed sequencing reads.\n    check        Check\
+                      \ to ensure binaries are installed and configured.\n\noptional\
+                      \ arguments:\n  -h, --help     show this help message and exit\n\
+                      \  -V, --version  show program's version number and exit\n"
+                    generated_using: *id005
+                    docker_image:
                   subcommands:
                   - !Command
-                    command: &id007
-                    - itero
-                    - assemble
-                    - command
+                    command: *id007
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: itero
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 1
                       name: assemble
-                      optional: false
+                      description: ''
                     named: []
                     parent: *id004
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - -h
+                      description: ''
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag:
                     help_text: "usage: itero assemble [-h] command ...\nitero assemble:\
                       \ error: argument command: invalid choice: 'command' (choose\
                       \ from 'local', 'mpi')\n"
-                    generated_using: &id005
-                    - --help
+                    generated_using: *id005
+                    docker_image:
                   - !Command
-                    command: &id008
-                    - itero
-                    - assemble
-                    - mpi
+                    command: *id008
                     positional:
                     - !Positional
-                      description: --verbosity {INFO,WARN,CRITICAL}
+                      optional: false
                       position: 0
                       name: behavior.
-                      optional: false
+                      description: --verbosity {INFO,WARN,CRITICAL}
                     named:
                     - !Flag
-                      description: A configuration file containing reads to assemble
+                      optional: true
                       synonyms:
                       - --config
+                      description: A configuration file containing reads to assemble
                       args: !SimpleFlagArg
                         name: CONFIG
-                      optional: true
                     - !Flag
-                      description: "A subdirectory, below the level of the group,\n\
-                        containing the reads"
+                      optional: true
                       synonyms:
                       - --subfolder
+                      description: "A subdirectory, below the level of the group,\n\
+                        containing the reads"
                       args: !SimpleFlagArg
                         name: SUBFOLDER
-                      optional: true
                     - !Flag
-                      description: The number of iterations to run for each locus
+                      optional: true
                       synonyms:
                       - --iterations
+                      description: The number of iterations to run for each locus
                       args: !SimpleFlagArg
                         name: ITERATIONS
-                      optional: true
                     - !Flag
-                      description: The number of cores to use on the main node
+                      optional: true
                       synonyms:
                       - --local-cores
+                      description: The number of cores to use on the main node
                       args: !SimpleFlagArg
                         name: LOCAL_CORES
-                      optional: true
                     - !Flag
-                      description: Cleanup all intermediate files
+                      optional: true
                       synonyms:
                       - --clean
+                      description: Cleanup all intermediate files
                       args: !EmptyFlagArg {}
-                      optional: true
                     - !Flag
-                      description: Assemble only to a single contig
+                      optional: true
                       synonyms:
                       - --only-single-locus
+                      description: Assemble only to a single contig
                       args: !EmptyFlagArg {}
-                      optional: true
                     - !Flag
-                      description: Allow assembly stages to produce multiple contigs
+                      optional: true
                       synonyms:
                       - --allow-multiple-contigs
+                      description: Allow assembly stages to produce multiple contigs
                       args: !EmptyFlagArg {}
-                      optional: true
                     - !Flag
-                      description: Do not zip the iteration files, which is the default
+                      optional: true
                       synonyms:
                       - --do-not-zip
+                      description: Do not zip the iteration files, which is the default
                       args: !EmptyFlagArg {}
-                      optional: true
                     - !Flag
-                      description: The path to a directory to hold logs.
+                      optional: true
                       synonyms:
                       - --log-path
+                      description: The path to a directory to hold logs.
                       args: !SimpleFlagArg
                         name: LOG_PATH
-                      optional: true
                     - !Flag
-                      description: The directory in which to store the output
+                      optional: true
                       synonyms:
                       - --output
+                      description: The directory in which to store the output
                       args: !SimpleFlagArg
                         name: OUTPUT
-                      optional: true
                     parent: *id004
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: show this help message and exit
+                      optional: true
                       synonyms:
                       - -h
                       - --help
+                      description: show this help message and exit
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag:
                     help_text: "usage: itero assemble mpi [-h] [--config CONFIG] [--subfolder\
@@ -208,14 +494,9 @@ subcommands:
                       \ to a directory to hold logs.\n  --output OUTPUT       The\
                       \ directory in which to store the output\n"
                     generated_using: *id005
+                    docker_image:
                   usage: []
-                  help_flag: !Flag
-                    description: show this help message and exit
-                    synonyms:
-                    - -h
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "usage: itero assemble [-h] command ...\n\nAssemble cleaned/trimmed\
@@ -224,102 +505,80 @@ subcommands:
                     \      Assemble reads using MPI for assembly.\n\noptional arguments:\n\
                     \  -h, --help  show this help message and exit\n"
                   generated_using: *id005
-                - &id006 !Command
-                  command: &id009
-                  - itero
-                  - check
+                  docker_image:
+                - &id015 !Command
+                  command: *id009
                   positional: []
                   named: []
                   parent: *id003
                   subcommands:
                   - !Command
-                    command: &id010
-                    - itero
-                    - check
-                    - itero
+                    command: *id010
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: check
-                      optional: false
+                      description: ''
                     named: []
                     parent: *id006
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - -h
+                      description: ''
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag:
                     help_text: "usage: itero check [-h] command ...\nitero check:\
                       \ error: argument command: invalid choice: 'itero' (choose from\
                       \ 'binaries')\n"
                     generated_using: *id005
+                    docker_image:
                   - !Command
-                    command: &id011
-                    - itero
-                    - check
-                    - check
+                    command: *id011
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: itero
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 1
                       name: check
-                      optional: false
+                      description: ''
                     named: []
                     parent: *id006
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - -h
+                      description: ''
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag:
                     help_text: "usage: itero check [-h] command ...\nitero check:\
                       \ error: argument command: invalid choice: 'check' (choose from\
                       \ 'binaries')\n"
                     generated_using: *id005
+                    docker_image:
                   usage: []
-                  help_flag: !Flag
-                    description: ''
-                    synonyms:
-                    - -h
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "usage: itero check [-h] command ...\nitero check: error:\
                     \ too few arguments\n"
-                  generated_using: &id012
-                  - --usage
+                  generated_using: *id012
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: show program's version number and exit
-                  synonyms:
-                  - -V
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "usage: itero [-h] [-V] command ...\n\nitero is a software\
                   \ package for iterative, guided assembly of target\nenrichment data.\n\
                   \npositional arguments:\n  command\n    help         Get help info\
@@ -329,122 +588,124 @@ subcommands:
                   \     show this help message and exit\n  -V, --version  show program's\
                   \ version number and exit\n"
                 generated_using: *id005
+                docker_image:
               subcommands:
               - !Command
                 command: *id007
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: itero
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: assemble
-                  optional: false
+                  description: ''
                 named: []
-                parent: *id004
+                parent: *id013
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - -h
+                  description: ''
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag:
                 help_text: "usage: itero assemble [-h] command ...\nitero assemble:\
                   \ error: argument command: invalid choice: 'command' (choose from\
                   \ 'local', 'mpi')\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id008
                 positional:
                 - !Positional
-                  description: --verbosity {INFO,WARN,CRITICAL}
+                  optional: false
                   position: 0
                   name: behavior.
-                  optional: false
+                  description: --verbosity {INFO,WARN,CRITICAL}
                 named:
                 - !Flag
-                  description: A configuration file containing reads to assemble
+                  optional: true
                   synonyms:
                   - --config
+                  description: A configuration file containing reads to assemble
                   args: !SimpleFlagArg
                     name: CONFIG
-                  optional: true
                 - !Flag
-                  description: "A subdirectory, below the level of the group,\ncontaining\
-                    \ the reads"
+                  optional: true
                   synonyms:
                   - --subfolder
+                  description: "A subdirectory, below the level of the group,\ncontaining\
+                    \ the reads"
                   args: !SimpleFlagArg
                     name: SUBFOLDER
-                  optional: true
                 - !Flag
-                  description: The number of iterations to run for each locus
+                  optional: true
                   synonyms:
                   - --iterations
+                  description: The number of iterations to run for each locus
                   args: !SimpleFlagArg
                     name: ITERATIONS
-                  optional: true
                 - !Flag
-                  description: The number of cores to use on the main node
+                  optional: true
                   synonyms:
                   - --local-cores
+                  description: The number of cores to use on the main node
                   args: !SimpleFlagArg
                     name: LOCAL_CORES
-                  optional: true
                 - !Flag
-                  description: Cleanup all intermediate files
+                  optional: true
                   synonyms:
                   - --clean
+                  description: Cleanup all intermediate files
                   args: !EmptyFlagArg {}
-                  optional: true
                 - !Flag
-                  description: Assemble only to a single contig
+                  optional: true
                   synonyms:
                   - --only-single-locus
+                  description: Assemble only to a single contig
                   args: !EmptyFlagArg {}
-                  optional: true
                 - !Flag
-                  description: Allow assembly stages to produce multiple contigs
+                  optional: true
                   synonyms:
                   - --allow-multiple-contigs
+                  description: Allow assembly stages to produce multiple contigs
                   args: !EmptyFlagArg {}
-                  optional: true
                 - !Flag
-                  description: Do not zip the iteration files, which is the default
+                  optional: true
                   synonyms:
                   - --do-not-zip
+                  description: Do not zip the iteration files, which is the default
                   args: !EmptyFlagArg {}
-                  optional: true
                 - !Flag
-                  description: The path to a directory to hold logs.
+                  optional: true
                   synonyms:
                   - --log-path
+                  description: The path to a directory to hold logs.
                   args: !SimpleFlagArg
                     name: LOG_PATH
-                  optional: true
                 - !Flag
-                  description: The directory in which to store the output
+                  optional: true
                   synonyms:
                   - --output
+                  description: The directory in which to store the output
                   args: !SimpleFlagArg
                     name: OUTPUT
-                  optional: true
-                parent: *id004
+                parent: *id013
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: show this help message and exit
+                  optional: true
                   synonyms:
                   - -h
                   - --help
+                  description: show this help message and exit
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag:
                 help_text: "usage: itero assemble mpi [-h] [--config CONFIG] [--subfolder\
@@ -471,6 +732,7 @@ subcommands:
                   \ LOG_PATH   The path to a directory to hold logs.\n  --output OUTPUT\
                   \       The directory in which to store the output\n"
                 generated_using: *id005
+                docker_image:
               usage: []
               help_flag:
               usage_flag:
@@ -481,63 +743,66 @@ subcommands:
                 \  Assemble reads using MPI for assembly.\n\noptional arguments:\n\
                 \  -h, --help  show this help message and exit\n"
               generated_using: *id005
-            - &id015 !Command
+              docker_image:
+            - &id018 !Command
               command: *id009
               positional: []
               named: []
-              parent: *id003
+              parent: *id014
               subcommands:
               - !Command
                 command: *id010
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: check
-                  optional: false
+                  description: ''
                 named: []
-                parent: *id006
+                parent: *id015
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - -h
+                  description: ''
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag:
                 help_text: "usage: itero check [-h] command ...\nitero check: error:\
                   \ argument command: invalid choice: 'itero' (choose from 'binaries')\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id011
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: itero
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: check
-                  optional: false
+                  description: ''
                 named: []
-                parent: *id006
+                parent: *id015
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - -h
+                  description: ''
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag:
                 help_text: "usage: itero check [-h] command ...\nitero check: error:\
                   \ argument command: invalid choice: 'check' (choose from 'binaries')\n"
                 generated_using: *id005
+                docker_image:
               usage: []
               help_flag:
               usage_flag:
@@ -545,6 +810,7 @@ subcommands:
               help_text: "usage: itero check [-h] command ...\nitero check: error:\
                 \ too few arguments\n"
               generated_using: *id012
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -558,122 +824,124 @@ subcommands:
               \ message and exit\n  -V, --version  show program's version number and\
               \ exit\n"
             generated_using: *id005
+            docker_image:
           subcommands:
           - !Command
             command: *id007
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: itero
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: assemble
-              optional: false
+              description: ''
             named: []
-            parent: *id013
+            parent: *id016
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: ''
+              optional: true
               synonyms:
               - -h
+              description: ''
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag:
             help_text: "usage: itero assemble [-h] command ...\nitero assemble: error:\
               \ argument command: invalid choice: 'command' (choose from 'local',\
               \ 'mpi')\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id008
             positional:
             - !Positional
-              description: --verbosity {INFO,WARN,CRITICAL}
+              optional: false
               position: 0
               name: behavior.
-              optional: false
+              description: --verbosity {INFO,WARN,CRITICAL}
             named:
             - !Flag
-              description: A configuration file containing reads to assemble
+              optional: true
               synonyms:
               - --config
+              description: A configuration file containing reads to assemble
               args: !SimpleFlagArg
                 name: CONFIG
-              optional: true
             - !Flag
-              description: "A subdirectory, below the level of the group,\ncontaining\
-                \ the reads"
+              optional: true
               synonyms:
               - --subfolder
+              description: "A subdirectory, below the level of the group,\ncontaining\
+                \ the reads"
               args: !SimpleFlagArg
                 name: SUBFOLDER
-              optional: true
             - !Flag
-              description: The number of iterations to run for each locus
+              optional: true
               synonyms:
               - --iterations
+              description: The number of iterations to run for each locus
               args: !SimpleFlagArg
                 name: ITERATIONS
-              optional: true
             - !Flag
-              description: The number of cores to use on the main node
+              optional: true
               synonyms:
               - --local-cores
+              description: The number of cores to use on the main node
               args: !SimpleFlagArg
                 name: LOCAL_CORES
-              optional: true
             - !Flag
-              description: Cleanup all intermediate files
+              optional: true
               synonyms:
               - --clean
+              description: Cleanup all intermediate files
               args: !EmptyFlagArg {}
-              optional: true
             - !Flag
-              description: Assemble only to a single contig
+              optional: true
               synonyms:
               - --only-single-locus
+              description: Assemble only to a single contig
               args: !EmptyFlagArg {}
-              optional: true
             - !Flag
-              description: Allow assembly stages to produce multiple contigs
+              optional: true
               synonyms:
               - --allow-multiple-contigs
+              description: Allow assembly stages to produce multiple contigs
               args: !EmptyFlagArg {}
-              optional: true
             - !Flag
-              description: Do not zip the iteration files, which is the default
+              optional: true
               synonyms:
               - --do-not-zip
+              description: Do not zip the iteration files, which is the default
               args: !EmptyFlagArg {}
-              optional: true
             - !Flag
-              description: The path to a directory to hold logs.
+              optional: true
               synonyms:
               - --log-path
+              description: The path to a directory to hold logs.
               args: !SimpleFlagArg
                 name: LOG_PATH
-              optional: true
             - !Flag
-              description: The directory in which to store the output
+              optional: true
               synonyms:
               - --output
+              description: The directory in which to store the output
               args: !SimpleFlagArg
                 name: OUTPUT
-              optional: true
-            parent: *id013
+            parent: *id016
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: show this help message and exit
+              optional: true
               synonyms:
               - -h
               - --help
+              description: show this help message and exit
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag:
             help_text: "usage: itero assemble mpi [-h] [--config CONFIG] [--subfolder\
@@ -699,6 +967,7 @@ subcommands:
               \   The path to a directory to hold logs.\n  --output OUTPUT       The\
               \ directory in which to store the output\n"
             generated_using: *id005
+            docker_image:
           usage: []
           help_flag:
           usage_flag:
@@ -709,63 +978,66 @@ subcommands:
             \ reads using MPI for assembly.\n\noptional arguments:\n  -h, --help \
             \ show this help message and exit\n"
           generated_using: *id005
-        - &id018 !Command
+          docker_image:
+        - &id021 !Command
           command: *id009
           positional: []
           named: []
-          parent: *id014
+          parent: *id017
           subcommands:
           - !Command
             command: *id010
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: check
-              optional: false
+              description: ''
             named: []
-            parent: *id015
+            parent: *id018
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: ''
+              optional: true
               synonyms:
               - -h
+              description: ''
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag:
             help_text: "usage: itero check [-h] command ...\nitero check: error: argument\
               \ command: invalid choice: 'itero' (choose from 'binaries')\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id011
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: itero
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: check
-              optional: false
+              description: ''
             named: []
-            parent: *id015
+            parent: *id018
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: ''
+              optional: true
               synonyms:
               - -h
+              description: ''
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag:
             help_text: "usage: itero check [-h] command ...\nitero check: error: argument\
               \ command: invalid choice: 'check' (choose from 'binaries')\n"
             generated_using: *id005
+            docker_image:
           usage: []
           help_flag:
           usage_flag:
@@ -773,6 +1045,7 @@ subcommands:
           help_text: "usage: itero check [-h] command ...\nitero check: error: too\
             \ few arguments\n"
           generated_using: *id012
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -785,121 +1058,123 @@ subcommands:
           \ arguments:\n  -h, --help     show this help message and exit\n  -V, --version\
           \  show program's version number and exit\n"
         generated_using: *id005
+        docker_image:
       subcommands:
       - !Command
         command: *id007
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: itero
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: assemble
-          optional: false
+          description: ''
         named: []
-        parent: *id016
+        parent: *id019
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: ''
+          optional: true
           synonyms:
           - -h
+          description: ''
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag:
         help_text: "usage: itero assemble [-h] command ...\nitero assemble: error:\
           \ argument command: invalid choice: 'command' (choose from 'local', 'mpi')\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id008
         positional:
         - !Positional
-          description: --verbosity {INFO,WARN,CRITICAL}
+          optional: false
           position: 0
           name: behavior.
-          optional: false
+          description: --verbosity {INFO,WARN,CRITICAL}
         named:
         - !Flag
-          description: A configuration file containing reads to assemble
+          optional: true
           synonyms:
           - --config
+          description: A configuration file containing reads to assemble
           args: !SimpleFlagArg
             name: CONFIG
-          optional: true
         - !Flag
-          description: "A subdirectory, below the level of the group,\ncontaining\
-            \ the reads"
+          optional: true
           synonyms:
           - --subfolder
+          description: "A subdirectory, below the level of the group,\ncontaining\
+            \ the reads"
           args: !SimpleFlagArg
             name: SUBFOLDER
-          optional: true
         - !Flag
-          description: The number of iterations to run for each locus
+          optional: true
           synonyms:
           - --iterations
+          description: The number of iterations to run for each locus
           args: !SimpleFlagArg
             name: ITERATIONS
-          optional: true
         - !Flag
-          description: The number of cores to use on the main node
+          optional: true
           synonyms:
           - --local-cores
+          description: The number of cores to use on the main node
           args: !SimpleFlagArg
             name: LOCAL_CORES
-          optional: true
         - !Flag
-          description: Cleanup all intermediate files
+          optional: true
           synonyms:
           - --clean
+          description: Cleanup all intermediate files
           args: !EmptyFlagArg {}
-          optional: true
         - !Flag
-          description: Assemble only to a single contig
+          optional: true
           synonyms:
           - --only-single-locus
+          description: Assemble only to a single contig
           args: !EmptyFlagArg {}
-          optional: true
         - !Flag
-          description: Allow assembly stages to produce multiple contigs
+          optional: true
           synonyms:
           - --allow-multiple-contigs
+          description: Allow assembly stages to produce multiple contigs
           args: !EmptyFlagArg {}
-          optional: true
         - !Flag
-          description: Do not zip the iteration files, which is the default
+          optional: true
           synonyms:
           - --do-not-zip
+          description: Do not zip the iteration files, which is the default
           args: !EmptyFlagArg {}
-          optional: true
         - !Flag
-          description: The path to a directory to hold logs.
+          optional: true
           synonyms:
           - --log-path
+          description: The path to a directory to hold logs.
           args: !SimpleFlagArg
             name: LOG_PATH
-          optional: true
         - !Flag
-          description: The directory in which to store the output
+          optional: true
           synonyms:
           - --output
+          description: The directory in which to store the output
           args: !SimpleFlagArg
             name: OUTPUT
-          optional: true
-        parent: *id016
+        parent: *id019
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: show this help message and exit
+          optional: true
           synonyms:
           - -h
           - --help
+          description: show this help message and exit
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag:
         help_text: "usage: itero assemble mpi [-h] [--config CONFIG] [--subfolder\
@@ -924,6 +1199,7 @@ subcommands:
           \   The path to a directory to hold logs.\n  --output OUTPUT       The directory\
           \ in which to store the output\n"
         generated_using: *id005
+        docker_image:
       usage: []
       help_flag:
       usage_flag:
@@ -934,63 +1210,66 @@ subcommands:
         \ MPI for assembly.\n\noptional arguments:\n  -h, --help  show this help message\
         \ and exit\n"
       generated_using: *id005
-    - &id021 !Command
+      docker_image:
+    - &id024 !Command
       command: *id009
       positional: []
       named: []
-      parent: *id017
+      parent: *id020
       subcommands:
       - !Command
         command: *id010
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: check
-          optional: false
+          description: ''
         named: []
-        parent: *id018
+        parent: *id021
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: ''
+          optional: true
           synonyms:
           - -h
+          description: ''
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag:
         help_text: "usage: itero check [-h] command ...\nitero check: error: argument\
           \ command: invalid choice: 'itero' (choose from 'binaries')\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id011
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: itero
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: check
-          optional: false
+          description: ''
         named: []
-        parent: *id018
+        parent: *id021
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: ''
+          optional: true
           synonyms:
           - -h
+          description: ''
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag:
         help_text: "usage: itero check [-h] command ...\nitero check: error: argument\
           \ command: invalid choice: 'check' (choose from 'binaries')\n"
         generated_using: *id005
+        docker_image:
       usage: []
       help_flag:
       usage_flag:
@@ -998,6 +1277,7 @@ subcommands:
       help_text: "usage: itero check [-h] command ...\nitero check: error: too few\
         \ arguments\n"
       generated_using: *id012
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -1010,121 +1290,123 @@ subcommands:
       \ --help     show this help message and exit\n  -V, --version  show program's\
       \ version number and exit\n"
     generated_using: *id005
+    docker_image:
   subcommands:
   - !Command
     command: *id007
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: itero
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 1
       name: assemble
-      optional: false
+      description: ''
     named: []
-    parent: *id019
+    parent: *id022
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: ''
+      optional: true
       synonyms:
       - -h
+      description: ''
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag:
     help_text: "usage: itero assemble [-h] command ...\nitero assemble: error: argument\
       \ command: invalid choice: 'command' (choose from 'local', 'mpi')\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id008
     positional:
     - !Positional
-      description: --verbosity {INFO,WARN,CRITICAL}
+      optional: false
       position: 0
       name: behavior.
-      optional: false
+      description: --verbosity {INFO,WARN,CRITICAL}
     named:
     - !Flag
-      description: A configuration file containing reads to assemble
+      optional: true
       synonyms:
       - --config
+      description: A configuration file containing reads to assemble
       args: !SimpleFlagArg
         name: CONFIG
-      optional: true
     - !Flag
-      description: "A subdirectory, below the level of the group,\ncontaining the\
-        \ reads"
+      optional: true
       synonyms:
       - --subfolder
+      description: "A subdirectory, below the level of the group,\ncontaining the\
+        \ reads"
       args: !SimpleFlagArg
         name: SUBFOLDER
-      optional: true
     - !Flag
-      description: The number of iterations to run for each locus
+      optional: true
       synonyms:
       - --iterations
+      description: The number of iterations to run for each locus
       args: !SimpleFlagArg
         name: ITERATIONS
-      optional: true
     - !Flag
-      description: The number of cores to use on the main node
+      optional: true
       synonyms:
       - --local-cores
+      description: The number of cores to use on the main node
       args: !SimpleFlagArg
         name: LOCAL_CORES
-      optional: true
     - !Flag
-      description: Cleanup all intermediate files
+      optional: true
       synonyms:
       - --clean
+      description: Cleanup all intermediate files
       args: !EmptyFlagArg {}
-      optional: true
     - !Flag
-      description: Assemble only to a single contig
+      optional: true
       synonyms:
       - --only-single-locus
+      description: Assemble only to a single contig
       args: !EmptyFlagArg {}
-      optional: true
     - !Flag
-      description: Allow assembly stages to produce multiple contigs
+      optional: true
       synonyms:
       - --allow-multiple-contigs
+      description: Allow assembly stages to produce multiple contigs
       args: !EmptyFlagArg {}
-      optional: true
     - !Flag
-      description: Do not zip the iteration files, which is the default
+      optional: true
       synonyms:
       - --do-not-zip
+      description: Do not zip the iteration files, which is the default
       args: !EmptyFlagArg {}
-      optional: true
     - !Flag
-      description: The path to a directory to hold logs.
+      optional: true
       synonyms:
       - --log-path
+      description: The path to a directory to hold logs.
       args: !SimpleFlagArg
         name: LOG_PATH
-      optional: true
     - !Flag
-      description: The directory in which to store the output
+      optional: true
       synonyms:
       - --output
+      description: The directory in which to store the output
       args: !SimpleFlagArg
         name: OUTPUT
-      optional: true
-    parent: *id019
+    parent: *id022
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: show this help message and exit
+      optional: true
       synonyms:
       - -h
       - --help
+      description: show this help message and exit
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag:
     help_text: "usage: itero assemble mpi [-h] [--config CONFIG] [--subfolder SUBFOLDER]\n\
@@ -1148,6 +1430,7 @@ subcommands:
       \ directory to hold logs.\n  --output OUTPUT       The directory in which to\
       \ store the output\n"
     generated_using: *id005
+    docker_image:
   usage: []
   help_flag:
   usage_flag:
@@ -1157,69 +1440,73 @@ subcommands:
     \ local CPUs for assembly.\n    mpi       Assemble reads using MPI for assembly.\n\
     \noptional arguments:\n  -h, --help  show this help message and exit\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id009
   positional: []
   named: []
-  parent: *id020
+  parent: *id023
   subcommands:
   - !Command
     command: *id010
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: check
-      optional: false
+      description: ''
     named: []
-    parent: *id021
+    parent: *id024
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: ''
+      optional: true
       synonyms:
       - -h
+      description: ''
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag:
     help_text: "usage: itero check [-h] command ...\nitero check: error: argument\
       \ command: invalid choice: 'itero' (choose from 'binaries')\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id011
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: itero
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 1
       name: check
-      optional: false
+      description: ''
     named: []
-    parent: *id021
+    parent: *id024
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: ''
+      optional: true
       synonyms:
       - -h
+      description: ''
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag:
     help_text: "usage: itero check [-h] command ...\nitero check: error: argument\
       \ command: invalid choice: 'check' (choose from 'binaries')\n"
     generated_using: *id005
+    docker_image:
   usage: []
   help_flag:
   usage_flag:
   version_flag:
   help_text: "usage: itero check [-h] command ...\nitero check: error: too few arguments\n"
   generated_using: *id012
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -1232,3 +1519,4 @@ help_text: "usage: itero [-h] [-V] command ...\n\nitero is a software package fo
   \   show this help message and exit\n  -V, --version  show program's version number\
   \ and exit\n"
 generated_using: *id005
+docker_image:

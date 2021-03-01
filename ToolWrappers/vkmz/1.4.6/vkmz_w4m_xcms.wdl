@@ -2,11 +2,11 @@ version 1.0
 
 task VkmzW4mxcms {
   input {
-    Boolean? error
-    Boolean? path_xcms_matrix_file
+    Boolean? path_xcms_data
     Boolean? sample_metadata
     Boolean? variable_metadata
-    File? specify_output_file
+    Boolean? error
+    File? specify_file_path
     Boolean? json
     Boolean? sql
     Boolean? metadata
@@ -21,11 +21,11 @@ task VkmzW4mxcms {
   command <<<
     vkmz w4m_xcms \
       ~{var_14} \
-      ~{if (error) then "--error" else ""} \
-      ~{if (path_xcms_matrix_file) then "--data-matrix" else ""} \
+      ~{if (path_xcms_data) then "--data-matrix" else ""} \
       ~{if (sample_metadata) then "--sample-metadata" else ""} \
       ~{if (variable_metadata) then "--variable-metadata" else ""} \
-      ~{if (specify_output_file) then "--output" else ""} \
+      ~{if (error) then "--error" else ""} \
+      ~{if (specify_file_path) then "--output" else ""} \
       ~{if (json) then "--json" else ""} \
       ~{if (sql) then "--sql" else ""} \
       ~{if (metadata) then "--metadata" else ""} \
@@ -36,12 +36,15 @@ task VkmzW4mxcms {
       ~{if (alternate) then "--alternate" else ""} \
       ~{if (impute_charge) then "--impute-charge" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    error: "[ERROR] --output [OUTPUT] [--json] [--sql]"
-    path_xcms_matrix_file: "[DATA_MATRIX], -xd [DATA_MATRIX]\\nPath to XCMS data matrix file"
+    path_xcms_data: "[DATA_MATRIX], -xd [DATA_MATRIX]\\nPath to XCMS data matrix file"
     sample_metadata: "[SAMPLE_METADATA], -xs [SAMPLE_METADATA]\\nPath to XCMS sample metadata file"
     variable_metadata: "[VARIABLE_METADATA], -xv [VARIABLE_METADATA]\\nPath to XCMS variable metadata file"
-    specify_output_file: "[OUTPUT], -o [OUTPUT]\\nSpecify output file path"
+    error: "[ERROR], -e [ERROR]\\nMass error of MS data in parts-per-million"
+    specify_file_path: "[OUTPUT], -o [OUTPUT]\\nSpecify output file path"
     json: "Set JSON flag to save JSON output"
     sql: "Set SQL flag to save SQL output"
     metadata: "Set metadata flag to save argument metadata"
@@ -55,6 +58,6 @@ task VkmzW4mxcms {
   }
   output {
     File out_stdout = stdout()
-    File out_specify_output_file = "${in_specify_output_file}"
+    File out_specify_file_path = "${in_specify_file_path}"
   }
 }

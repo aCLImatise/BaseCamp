@@ -1,34 +1,43 @@
 class: CommandLineTool
 id: overlapPair.cwl
 inputs:
-- id: in_mandatory_path_to
+- id: in_mandatory_path_seqstore
   doc: Mandatory, path to seqStore
-  type: File
+  type: File?
   inputBinding:
     prefix: -S
-- id: in_o_ovlfile
-  doc: -O ovlFile
-  type: string
+- id: in_erate
+  doc: Overlaps are computed at 'e' fraction error; must be larger than the original
+    erate
+  type: string?
   inputBinding:
-    prefix: -O
-- id: in_ovlfileerate_e_overlaps
-  doc: "-o ovlFile\n-erate e        Overlaps are computed at 'e' fraction error; must\
-    \ be larger than the original erate\n-partial        Overlaps are 'overlapInCore\
-    \ -S' partial overlaps\n-memory m       Use up to 'm' GB of memory\n-t n     \
-    \       Use up to 'n' cores"
-  type: string
+    prefix: -erate
+- id: in_partial
+  doc: Overlaps are 'overlapInCore -S' partial overlaps
+  type: boolean?
   inputBinding:
-    prefix: -o
+    prefix: -partial
+- id: in_memory
+  doc: Use up to 'm' GB of memory
+  type: string?
+  inputBinding:
+    prefix: -memory
+- id: in_use_up_cores
+  doc: Use up to 'n' cores
+  type: string?
+  inputBinding:
+    prefix: -t
 - id: in_invert
   doc: Invert the overlap A <-> B before aligning (they are not re-inverted before
     output)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -invert
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - overlapPair

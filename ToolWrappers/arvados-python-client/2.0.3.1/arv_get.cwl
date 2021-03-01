@@ -4,7 +4,7 @@ inputs:
 - id: in_retries
   doc: "Maximum number of times to retry server requests that\nencounter temporary\
     \ failures (e.g., server down). Default\n3."
-  type: long
+  type: long?
   inputBinding:
     prefix: --retries
 - id: in_progress
@@ -12,61 +12,61 @@ inputs:
     \ of total data size). This is the\ndefault behavior when it is not expected to\
     \ interfere\nwith the output: specifically, stderr is a tty _and_\neither stdout\
     \ is not a tty, or output is being written to\nnamed files rather than stdout."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --progress
 - id: in_no_progress
   doc: Do not display human-readable progress on stderr.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-progress
 - id: in_batch_progress
   doc: "Display machine-readable progress on stderr (bytes and,\nif known, total data\
     \ size)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --batch-progress
 - id: in_hash
   doc: "Display the hash of each file as it is read from Keep,\nusing the given hash\
     \ algorithm. Supported algorithms\ninclude md5, sha1, sha224, sha256, sha384,\
     \ and sha512."
-  type: File
+  type: File?
   inputBinding:
     prefix: --hash
 - id: in_md_five_sum
   doc: Display the MD5 hash of each file as it is read from
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --md5sum
 - id: in_retrieve_files_specified
   doc: "Retrieve all files in the specified collection/prefix.\nThis is the default\
     \ behavior if the \"locator\" argument\nends with a forward slash."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_overwrite_existing_files
   doc: "Overwrite existing files while writing. The default\nbehavior is to refuse\
     \ to write *anything* if any of the\noutput files already exist. As a special\
     \ case, -f is not\nneeded to write to stdout."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
-- id: in_verbose_mode_twice
+- id: in_once_verbose_mode
   doc: Once for verbose mode, twice for debug mode.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_skip_existing
   doc: "Skip files that already exist. The default behavior is to\nrefuse to write\
     \ *anything* if any files exist that would\nhave to be overwritten. This option\
     \ causes even devices,\nsockets, and fifos to be skipped."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip-existing
 - id: in_strip_manifest
   doc: "When getting a collection manifest, strip its access\ntokens before writing\
     \ it.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --strip-manifest
 - id: in_locator
@@ -93,6 +93,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - arv-get

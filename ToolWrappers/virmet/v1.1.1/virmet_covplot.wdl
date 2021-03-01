@@ -16,6 +16,9 @@ task VirmetCovplot {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(organism) then ("--organism " +  '"' + organism + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "path to sample results directory"
     organism: "name of the organism as reported in orgs_list.tsv file"

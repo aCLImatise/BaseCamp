@@ -12,6 +12,9 @@ task Dconvlum {
       ~{out_file} \
       ~{ambient}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "VeriLUM characteristic curve file to be converted"
     out_file: "DCMTK display file to be written"

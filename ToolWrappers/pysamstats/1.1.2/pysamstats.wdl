@@ -28,11 +28,11 @@ task Pysamstats {
     Int? min_base_q
     Boolean? no_dup
     Boolean? no_del
-    File file
+    File var_file
   }
   command <<<
     pysamstats \
-      ~{file} \
+      ~{var_file} \
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""} \
       ~{if defined(chromosome) then ("--chromosome " +  '"' + chromosome + '"') else ""} \
       ~{if defined(start) then ("--start " +  '"' + start + '"') else ""} \
@@ -60,6 +60,9 @@ task Pysamstats {
       ~{if (no_dup) then "--no-dup" else ""} \
       ~{if (no_del) then "--no-del" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type: "Type of statistics to print, one of: alignment_binned,\\nbaseq, baseq_ext, baseq_ext_strand, baseq_strand,\\ncoverage, coverage_binned, coverage_ext,\\ncoverage_ext_binned, coverage_ext_strand, coverage_gc,\\ncoverage_strand, mapq, mapq_binned, mapq_strand, tlen,\\ntlen_binned, tlen_strand, variation, variation_strand."
     chromosome: "Chromosome name."
@@ -87,7 +90,7 @@ task Pysamstats {
     min_base_q: "Only reads with base quality equal to or greater than\\nthis value will be counted (0 by default). Only\\napplies to pileup-based statistics."
     no_dup: "Don't count reads flagged as duplicate."
     no_del: "Don't count reads aligned with a deletion at the given\\nposition. Only applies to pileup-based statistics."
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

@@ -10,6 +10,9 @@ task IndexDefaultSsuRrnaDbpy {
       ~{if defined(ref_dir) then ("--ref_dir " +  '"' + ref_dir + '"') else ""} \
       ~{if defined(max_memory) then ("--max_memory " +  '"' + max_memory + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_dir: "Output dir. Default is $MATAM_DIR/db/"
     max_memory: "Maximum memory to use (in MBi). Default is 10000 MBi\\n"

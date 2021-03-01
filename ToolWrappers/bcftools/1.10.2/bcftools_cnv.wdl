@@ -2,7 +2,14 @@ version 1.0
 
 task BcftoolsCnv {
   input {
-    Float? control_sample
+    String? control_sample
+    File? af_file
+    File? plot_threshold
+    String? regions
+    File? regions_file
+    String? query_sample
+    String? targets
+    File? targets_file
     Boolean? aberrant
     Float? baf_weight
     Boolean? baf_dev
@@ -19,6 +26,13 @@ task BcftoolsCnv {
     bcftools cnv \
       ~{file_dot_vcf} \
       ~{if defined(control_sample) then ("--control-sample " +  '"' + control_sample + '"') else ""} \
+      ~{if defined(af_file) then ("--AF-file " +  '"' + af_file + '"') else ""} \
+      ~{if defined(plot_threshold) then ("--plot-threshold " +  '"' + plot_threshold + '"') else ""} \
+      ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
+      ~{if defined(regions_file) then ("--regions-file " +  '"' + regions_file + '"') else ""} \
+      ~{if defined(query_sample) then ("--query-sample " +  '"' + query_sample + '"') else ""} \
+      ~{if defined(targets) then ("--targets " +  '"' + targets + '"') else ""} \
+      ~{if defined(targets_file) then ("--targets-file " +  '"' + targets_file + '"') else ""} \
       ~{if (aberrant) then "--aberrant" else ""} \
       ~{if defined(baf_weight) then ("--BAF-weight " +  '"' + baf_weight + '"') else ""} \
       ~{if (baf_dev) then "--BAF-dev" else ""} \
@@ -30,8 +44,18 @@ task BcftoolsCnv {
       ~{if defined(same_prob) then ("--same-prob " +  '"' + same_prob + '"') else ""} \
       ~{if defined(xy_prob) then ("--xy-prob " +  '"' + xy_prob + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    control_sample: "optional control sample name to highlight differences\\n-f, --AF-file <file>               read allele frequencies from file (CHR\\tPOS\\tREF,ALT\\tAF)\\n-o, --output-dir <path>\\n-p, --plot-threshold <float>       plot aberrant chromosomes with quality at least 'float'\\n-r, --regions <region>             restrict to comma-separated list of regions\\n-R, --regions-file <file>          restrict to regions listed in a file\\n-s, --query-sample <string>        query samply name\\n-t, --targets <region>             similar to -r but streams rather than index-jumps\\n-T, --targets-file <file>          similar to -R but streams rather than index-jumps"
+    control_sample: "optional control sample name to highlight differences"
+    af_file: "read allele frequencies from file (CHR\\tPOS\\tREF,ALT\\tAF)"
+    plot_threshold: "plot aberrant chromosomes with quality at least 'float'"
+    regions: "restrict to comma-separated list of regions"
+    regions_file: "restrict to regions listed in a file"
+    query_sample: "query samply name"
+    targets: "similar to -r but streams rather than index-jumps"
+    targets_file: "similar to -R but streams rather than index-jumps"
     aberrant: "<float[,float]>     fraction of aberrant cells in query and control [1.0,1.0]"
     baf_weight: "relative contribution from BAF [1]"
     baf_dev: "<float[,float]>      expected BAF deviation in query and control [0.04,0.04]"

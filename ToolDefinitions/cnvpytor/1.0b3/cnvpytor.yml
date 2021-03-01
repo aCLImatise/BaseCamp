@@ -1,101 +1,448 @@
 !Command
 command:
 - cnvpytor
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: plotting
+  description: -view VIEW, --view VIEW
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -download
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - -root
+  - --root
+  description: 'CNVnator hd5 file: data storage for all calculations'
   args: !RepeatFlagArg
     name: ROOT
-  optional: true
 - !Flag
-  description: ''
-  synonyms:
-  - -version
-  args: !EmptyFlagArg {}
   optional: true
-parent:
-subcommands: []
-usage: []
-help_flag: !Flag
-  description: "show this help message and exit\n-version, --version   show version\
-    \ number and exit\n-root ROOT [ROOT ...], --root ROOT [ROOT ...]\nCNVnator hd5\
-    \ file: data storage for all calculations\n-download, --download_resources\ndownload\
-    \ resource files\n-chrom CHROM [CHROM ...], --chrom CHROM [CHROM ...]\nlist of\
-    \ chromosomes to apply calculation\n-v {none,debug,info,warning,error,d,e,i,w},\
-    \ --verbose {none,debug,info,warning,error,d,e,i,w}\nverbose level: debug, info\
-    \ (default), warning, error\n-log LOG_FILE, --log_file LOG_FILE\nlog file\n-j\
-    \ MAX_CORES, --max_cores MAX_CORES\nmaximal number of cores to use in calculation\n\
-    -rd RD [RD ...], --rd RD [RD ...]\nread bam/sam/cram and store read depth information\n\
-    -T REFERENCE_FILENAME, --reference_filename REFERENCE_FILENAME\nreference fasta\
-    \ for CRAM\n-gc GC, --gc GC       read fasta file and store GC/AT content\n-cgc\
-    \ COPY_GC, --copy_gc COPY_GC\ncopy GC/AT content from another cnvnator file\n\
-    -his HIS [HIS ...], --his HIS [HIS ...]\ncreate histograms for specified bin size\
-    \ (multiple bin\nsizes separate by space)\n-stat STAT [STAT ...], --stat STAT\
-    \ [STAT ...]\ncalculate statistics for specified bin size (multiple\nbin sizes\
-    \ separate by space)\n-partition PARTITION [PARTITION ...], --partition PARTITION\
-    \ [PARTITION ...]\ncalculate segmentation for specified bin size\n(multiple bin\
-    \ sizes separate by space)\n-call CALL [CALL ...], --call CALL [CALL ...]\nCNV\
-    \ caller: [baf] bin_size [bin_size2 ...] (multiple\nbin sizes separate by space)\n\
-    -vcf VCF [VCF ...], -snp VCF [VCF ...], --vcf VCF [VCF ...]\nread SNP data from\
-    \ vcf files\n-somatic_snv SOMATIC_SNV [SOMATIC_SNV ...], --somatic_snv SOMATIC_SNV\
-    \ [SOMATIC_SNV ...]\nread SNP data from vcf files\n-vcf2rd RD_FROM_VCF, --rd_from_vcf\
-    \ RD_FROM_VCF\nread SNP data from vcf files\n-noAD, --no_snp_counts\nread positions\
-    \ of snps, not counts (AD tag)\n-ad AD_TAG, --ad_tag AD_TAG\ncounts tag (default:\
-    \ AD)\n-gt GT_TAG, --gt_tag GT_TAG\ngenotype tag (default: GT)\n-dp DP_TAG, --dp_tag\
-    \ DP_TAG\nread depth tag (default: DP)\n-callset CALLSET, --callset CALLSET\n\
-    name for somatic VCF signal\n-pileup PILEUP_BAM [PILEUP_BAM ...], --pileup_bam\
-    \ PILEUP_BAM [PILEUP_BAM ...]\ncalculate SNP counts from bam files\n-snp2rd, --rd_from_snp\n\
-    calculate RD from SNP counts\n-mask MASK, --mask MASK\nread fasta mask file and\
-    \ flag SNPs in P region\n-mask_snps, --mask_snps\nflag SNPs in P region\n-mask_snvs\
-    \ MASK_SNVS, --mask_snvs MASK_SNVS\nflag SNVs in P region\n-idvar IDVAR, --idvar\
-    \ IDVAR\nread vcf file and flag SNPs that exist in database\nfile\n-baf BAF [BAF\
-    \ ...], --baf BAF [BAF ...]\ncreate BAF histograms for specified bin size (multiple\n\
-    bin sizes separate by space)\n-nomask, --no_mask    do not use P mask in BAF histograms\n\
-    -useid, --use_id      use id flag filtering in SNP histograms\n-usephase, --use_phase\n\
-    use information about phase while processing SNP data\n-reducenoise, --reduce_noise\n\
-    reduce noise in processing SNP data\n-blw BAF_LIKELIHOOD_WIDTH, --baf_likelihood_width\
-    \ BAF_LIKELIHOOD_WIDTH\nlikelihood width used in processing SNP data\n(default=0.8)\n\
-    -plot PLOT [PLOT ...], --plot PLOT [PLOT ...]\nplotting\n-view VIEW, --view VIEW\n\
-    Enters interactive ploting mode\n-panels {rd,baf,likelihood} [{rd,baf,likelihood}\
-    \ ...], --panels {rd,baf,likelihood} [{rd,baf,likelihood} ...]\nplot panels (with\
-    \ -plot regions)\n-style {Solarize_Light2,_classic_test_patch,bmh,classic,dark_background,fast,fivethirtyeight,ggplot,grayscale,seaborn,seaborn-bright,seaborn-colorblind,seaborn-dark,seaborn-dark-palette,seaborn-darkgrid,seaborn-deep,seaborn-muted,seaborn-notebook,seaborn-paper,seaborn-pastel,seaborn-poster,seaborn-talk,seaborn-ticks,seaborn-white,seaborn-whitegrid,tableau-colorblind10},\
+  synonyms:
+  - -download
+  - --download_resources
+  description: download resource files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -chrom
+  - --chrom
+  description: list of chromosomes to apply calculation
+  args: !RepeatFlagArg
+    name: CHROM
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: 'verbose level: debug, info (default), warning, error'
+  args: !ChoiceFlagArg
+    choices: !!set
+      info:
+      d:
+      w:
+      i:
+      e:
+      none:
+      warning:
+      debug:
+      error:
+- !Flag
+  optional: true
+  synonyms:
+  - -log
+  - --log_file
+  description: log file
+  args: !SimpleFlagArg
+    name: LOG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --max_cores
+  description: maximal number of cores to use in calculation
+  args: !SimpleFlagArg
+    name: MAX_CORES
+- !Flag
+  optional: true
+  synonyms:
+  - -rd
+  - --rd
+  description: read bam/sam/cram and store read depth information
+  args: !RepeatFlagArg
+    name: RD
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --reference_filename
+  description: reference fasta for CRAM
+  args: !SimpleFlagArg
+    name: REFERENCE_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -gc
+  - --gc
+  description: read fasta file and store GC/AT content
+  args: !SimpleFlagArg
+    name: GC
+- !Flag
+  optional: true
+  synonyms:
+  - -cgc
+  - --copy_gc
+  description: copy GC/AT content from another cnvnator file
+  args: !SimpleFlagArg
+    name: COPY_GC
+- !Flag
+  optional: true
+  synonyms:
+  - -his
+  - --his
+  description: "create histograms for specified bin size (multiple bin\nsizes separate\
+    \ by space)"
+  args: !RepeatFlagArg
+    name: HIS
+- !Flag
+  optional: true
+  synonyms:
+  - -stat
+  - --stat
+  description: "calculate statistics for specified bin size (multiple\nbin sizes separate\
+    \ by space)"
+  args: !RepeatFlagArg
+    name: STAT
+- !Flag
+  optional: true
+  synonyms:
+  - -partition
+  - --partition
+  description: "calculate segmentation for specified bin size\n(multiple bin sizes\
+    \ separate by space)"
+  args: !RepeatFlagArg
+    name: PARTITION
+- !Flag
+  optional: true
+  synonyms:
+  - -call
+  - --call
+  description: "CNV caller: [baf] bin_size [bin_size2 ...] (multiple\nbin sizes separate\
+    \ by space)"
+  args: !RepeatFlagArg
+    name: CALL
+- !Flag
+  optional: true
+  synonyms:
+  - -vcf
+  - -snp
+  - --vcf
+  description: read SNP data from vcf files
+  args: !RepeatFlagArg
+    name: VCF
+- !Flag
+  optional: true
+  synonyms:
+  - -somatic_snv
+  - --somatic_snv
+  description: read SNP data from vcf files
+  args: !RepeatFlagArg
+    name: SOMATIC_SNV
+- !Flag
+  optional: true
+  synonyms:
+  - -vcf2rd
+  - --rd_from_vcf
+  description: read SNP data from vcf files
+  args: !SimpleFlagArg
+    name: RD_FROM_VCF
+- !Flag
+  optional: true
+  synonyms:
+  - -noAD
+  - --no_snp_counts
+  description: read positions of snps, not counts (AD tag)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ad
+  - --ad_tag
+  description: 'counts tag (default: AD)'
+  args: !SimpleFlagArg
+    name: AD_TAG
+- !Flag
+  optional: true
+  synonyms:
+  - -gt
+  - --gt_tag
+  description: 'genotype tag (default: GT)'
+  args: !SimpleFlagArg
+    name: GT_TAG
+- !Flag
+  optional: true
+  synonyms:
+  - -dp
+  - --dp_tag
+  description: 'read depth tag (default: DP)'
+  args: !SimpleFlagArg
+    name: DP_TAG
+- !Flag
+  optional: true
+  synonyms:
+  - -callset
+  - --callset
+  description: name for somatic VCF signal
+  args: !SimpleFlagArg
+    name: CALLSET
+- !Flag
+  optional: true
+  synonyms:
+  - -pileup
+  - --pileup_bam
+  description: calculate SNP counts from bam files
+  args: !RepeatFlagArg
+    name: PILEUP_BAM
+- !Flag
+  optional: true
+  synonyms:
+  - -snp2rd
+  - --rd_from_snp
+  description: calculate RD from SNP counts
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mask
+  - --mask
+  description: read fasta mask file and flag SNPs in P region
+  args: !SimpleFlagArg
+    name: MASK
+- !Flag
+  optional: true
+  synonyms:
+  - -mask_snps
+  - --mask_snps
+  description: flag SNPs in P region
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mask_snvs
+  - --mask_snvs
+  description: flag SNVs in P region
+  args: !SimpleFlagArg
+    name: MASK_SNVS
+- !Flag
+  optional: true
+  synonyms:
+  - -idvar
+  - --idvar
+  description: "read vcf file and flag SNPs that exist in database\nfile"
+  args: !SimpleFlagArg
+    name: IDVAR
+- !Flag
+  optional: true
+  synonyms:
+  - -baf
+  - --baf
+  description: "create BAF histograms for specified bin size (multiple\nbin sizes\
+    \ separate by space)"
+  args: !RepeatFlagArg
+    name: BAF
+- !Flag
+  optional: true
+  synonyms:
+  - -nomask
+  - --no_mask
+  description: do not use P mask in BAF histograms
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -useid
+  - --use_id
+  description: use id flag filtering in SNP histograms
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -usephase
+  - --use_phase
+  description: use information about phase while processing SNP data
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -reducenoise
+  - --reduce_noise
+  description: reduce noise in processing SNP data
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -blw
+  - --baf_likelihood_width
+  description: "likelihood width used in processing SNP data\n(default=0.8)"
+  args: !SimpleFlagArg
+    name: BAF_LIKELIHOOD_WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - -panels
+  description: "[{rd,baf,likelihood} ...], --panels {rd,baf,likelihood} [{rd,baf,likelihood}\
+    \ ...]\nplot panels (with -plot regions)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      rd:
+      baf:
+      likelihood:
+- !Flag
+  optional: true
+  synonyms:
+  - -style
+  description: "{Solarize_Light2,_classic_test_patch,bmh,classic,dark_background,fast,fivethirtyeight,ggplot,grayscale,seaborn,seaborn-bright,seaborn-colorblind,seaborn-dark,seaborn-dark-palette,seaborn-darkgrid,seaborn-deep,seaborn-muted,seaborn-notebook,seaborn-paper,seaborn-pastel,seaborn-poster,seaborn-talk,seaborn-ticks,seaborn-white,seaborn-whitegrid,tableau-colorblind10},\
     \ --plot_style {Solarize_Light2,_classic_test_patch,bmh,classic,dark_background,fast,fivethirtyeight,ggplot,grayscale,seaborn,seaborn-bright,seaborn-colorblind,seaborn-dark,seaborn-dark-palette,seaborn-darkgrid,seaborn-deep,seaborn-muted,seaborn-notebook,seaborn-paper,seaborn-pastel,seaborn-poster,seaborn-talk,seaborn-ticks,seaborn-white,seaborn-whitegrid,tableau-colorblind10}\n\
     available plot styles: Solarize_Light2,\n_classic_test_patch, bmh, classic, dark_background,\n\
     fast, fivethirtyeight, ggplot, grayscale, seaborn,\nseaborn-bright, seaborn-colorblind,\
     \ seaborn-dark,\nseaborn-dark-palette, seaborn-darkgrid, seaborn-deep,\nseaborn-muted,\
     \ seaborn-notebook, seaborn-paper,\nseaborn-pastel, seaborn-poster, seaborn-talk,\
-    \ seaborn-\nticks, seaborn-white, seaborn-whitegrid, tableau-\ncolorblind10\n\
-    -o PLOT_OUTPUT_FILE, --plot_output_file PLOT_OUTPUT_FILE\noutput filename prefix\
-    \ and extension\n-anim ANIMATION, --animation ANIMATION\nanimation folder/prefix\n\
-    -make_gc_file, --make_gc_genome_file\nused with -gc will create genome gc file\n\
-    -make_mask_file, --make_mask_genome_file\nused with -mask will create genome mask\
-    \ file\n-rd_use_mask, --use_mask_with_rd\nused P mask in RD histograms\n-nogc,\
-    \ --no_gc_corr   do not use GC correction in RD histograms\n-rg REFERENCE_GENOME,\
-    \ --reference_genome REFERENCE_GENOME\nManually set reference genome\n-sample\
-    \ VCF_SAMPLE, --vcf_sample VCF_SAMPLE\nSample name in vcf file\n-conf REFERENCE_GENOMES_CONF,\
-    \ --reference_genomes_conf REFERENCE_GENOMES_CONF\nConfiguration with reference\
-    \ genomes\n-ls, --ls             list pytor file(s) content\n-info [INFO [INFO\
-    \ ...]], --info [INFO [INFO ...]]\nprint statistics for pythor file(s)\n-comp\
-    \ [COMPARE [COMPARE ...]], --compare [COMPARE [COMPARE ...]]\ncompere two regions:\
-    \ -comp reg1 reg2 [n_bins]\n-genotype [GENOTYPE [GENOTYPE ...]], --genotype [GENOTYPE\
-    \ [GENOTYPE ...]]\n-meta, --metadata     list Metadata\n-export [EXPORT [EXPORT\
-    \ ...]], --export [EXPORT [EXPORT ...]]\nExport to jbrowse and cnvnator\n"
+    \ seaborn-\nticks, seaborn-white, seaborn-whitegrid, tableau-\ncolorblind10"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --plot_output_file
+  description: output filename prefix and extension
+  args: !SimpleFlagArg
+    name: PLOT_OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -anim
+  - --animation
+  description: animation folder/prefix
+  args: !SimpleFlagArg
+    name: ANIMATION
+- !Flag
+  optional: true
+  synonyms:
+  - -make_gc_file
+  - --make_gc_genome_file
+  description: used with -gc will create genome gc file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -make_mask_file
+  - --make_mask_genome_file
+  description: used with -mask will create genome mask file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rd_use_mask
+  - --use_mask_with_rd
+  description: used P mask in RD histograms
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nogc
+  - --no_gc_corr
+  description: do not use GC correction in RD histograms
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rg
+  - --reference_genome
+  description: Manually set reference genome
+  args: !SimpleFlagArg
+    name: REFERENCE_GENOME
+- !Flag
+  optional: true
+  synonyms:
+  - -sample
+  - --vcf_sample
+  description: Sample name in vcf file
+  args: !SimpleFlagArg
+    name: VCF_SAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - -conf
+  - --reference_genomes_conf
+  description: Configuration with reference genomes
+  args: !SimpleFlagArg
+    name: REFERENCE_GENOMES_CONF
+- !Flag
+  optional: true
+  synonyms:
+  - -ls
+  - --ls
+  description: list pytor file(s) content
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -info
+  description: "[INFO [INFO ...]], --info [INFO [INFO ...]]\nprint statistics for\
+    \ pythor file(s)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -comp
+  description: "[COMPARE [COMPARE ...]], --compare [COMPARE [COMPARE ...]]\ncompere\
+    \ two regions: -comp reg1 reg2 [n_bins]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -genotype
+  description: '[GENOTYPE [GENOTYPE ...]], --genotype [GENOTYPE [GENOTYPE ...]]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -meta
+  - --metadata
+  description: list Metadata
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -export
+  description: "[EXPORT [EXPORT ...]], --export [EXPORT [EXPORT ...]]\nExport to jbrowse\
+    \ and cnvnator\n"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -version
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -version
+  - --version
+  description: show version number and exit
+  args: !EmptyFlagArg {}
 help_text: "usage: cnvpytor [-h] [-version] [-root ROOT [ROOT ...]] [-download]\n\
   \                [-chrom CHROM [CHROM ...]]\n                [-v {none,debug,info,warning,error,d,e,i,w}]\
   \ [-log LOG_FILE]\n                [-j MAX_CORES] [-rd RD [RD ...]] [-T REFERENCE_FILENAME]\n\
@@ -201,3 +548,4 @@ help_text: "usage: cnvpytor [-h] [-version] [-root ROOT [ROOT ...]] [-download]\
   \ [EXPORT [EXPORT ...]]\n                        Export to jbrowse and cnvnator\n"
 generated_using:
 - --help
+docker_image:

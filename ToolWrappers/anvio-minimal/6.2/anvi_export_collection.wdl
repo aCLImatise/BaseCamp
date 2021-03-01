@@ -16,6 +16,9 @@ task Anviexportcollection {
       ~{if (list_collections) then "--list-collections" else ""} \
       ~{if (include_unbinned) then "--include-unbinned" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_or_profile_db: "Anvi'o pan or profile database (and even genes\\ndatabase in appropriate contexts)."
     collection_name: "Collection name."

@@ -26,6 +26,9 @@ task Tinscanfind {
       ~{if defined(mini_dent) then ("--minIdent " +  '"' + mini_dent + '"') else ""} \
       ~{if defined(max_ident_diff) then ("--maxIdentDiff " +  '"' + max_ident_diff + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "Input file containing tab delimited LASTZ alignment\\ndata."
     outdir: "Optional: Directory to write output to."

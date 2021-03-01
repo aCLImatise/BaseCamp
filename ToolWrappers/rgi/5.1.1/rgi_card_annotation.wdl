@@ -10,6 +10,9 @@ task RgiCardAnnotation {
       ~{if defined(cardjson_file) then ("--input " +  '"' + cardjson_file + '"') else ""} \
       ~{if (ncbi) then "--ncbi" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cardjson_file: "card.json file"
     ncbi: "adds ncbi accession to FASTA headers"

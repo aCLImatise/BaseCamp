@@ -10,6 +10,9 @@ task GetDiaWindowspy {
       ~{tims_analysis_directory} \
       ~{output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tims_analysis_directory: ""
     output_file: ""

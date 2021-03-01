@@ -12,6 +12,9 @@ task BandageLoad {
       ~{if (draw) then "--draw" else ""} \
       ~{if (help_all) then "--helpall" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     draw: "Draw graph after loading"
     help_all: "View all command line settings"

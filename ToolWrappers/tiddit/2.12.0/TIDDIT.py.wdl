@@ -12,6 +12,9 @@ task TIDDITpy {
       ~{if (sv) then "--sv" else ""} \
       ~{if (cov) then "--cov" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sv: "call structural variation"
     cov: "generate a coverage bed file"

@@ -26,6 +26,9 @@ task ClipcontextInt {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(gtf) then ("--gtf " +  '"' + gtf + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_intron_ol: "Minimum intron overlap of a site to be reported as\\nintron overlapping (intersectBed -f parameter)\\n(default: 0.9)"
     min_len: "Minimum input site length for filtering --in BED file\\n(default: False)"

@@ -68,6 +68,9 @@ task Swan {
       ~{if defined(do) then ("-do " +  '"' + do + '"') else ""} \
       ~{if defined(cell) then ("-cell " +  '"' + cell + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_name: "output file name (STDOUT)"
     fasta_file_reference: "fasta file for reference"
@@ -85,8 +88,8 @@ task Swan {
     grep: "output sequences that match the reference (requires -identity)"
     grep_v: "output sequences (see -grepv-o) that do not match the reference (requires -identity)"
     grep_v_o: "output file for non-matching sequences"
-    swp: "match/substitution/gap : gain/cost/cost"
-    l_srl: "reference/left-skip / query/right-limit (adapter specific)"
+    swp: "/S/G        match/substitution/gap : gain/cost/cost"
+    l_srl: "/R         reference/left-skip / query/right-limit (adapter specific)"
     no_indel: "do not consider indels while aligning"
     skip_same_name: "do not compare sequences with identical names"
     matrix: "dump alignment matrix"

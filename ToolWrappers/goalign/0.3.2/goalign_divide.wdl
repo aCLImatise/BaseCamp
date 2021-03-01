@@ -36,6 +36,9 @@ task GoalignDivide {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix_output_files: ": is the prefix of output files"
     out_fast_a: "Output files in fasta format"

@@ -1,0 +1,282 @@
+!Command
+command:
+- cnvkit.py
+- batch
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: bam_files
+  description: Mapped sequence reads (.bam)
+- !Positional
+  optional: false
+  position: 0
+  name: consistent.
+  description: --target-avg-size TARGET_AVG_SIZE
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --seq-method
+  - --method
+  description: "Sequencing assay type: hybridization capture\n('hybrid'), targeted\
+    \ amplicon sequencing ('amplicon'),\nor whole genome sequencing ('wgs'). Determines\
+    \ whether\nand how to use antitarget bins. [Default: hybrid]"
+  args: !ChoiceFlagArg
+    choices: !!set
+      wgs:
+      amplicon:
+      hybrid:
+- !Flag
+  optional: true
+  synonyms:
+  - --segment-method
+  description: "Method used in the 'segment' step. [Default: cbs]"
+  args: !ChoiceFlagArg
+    choices: !!set
+      hmm-tumor:
+      haar:
+      hmm:
+      flasso:
+      cbs:
+      none:
+      hmm-germline:
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --male-reference
+  - --haploid-x-reference
+  description: "Use or assume a male reference (i.e. female samples\nwill have +1\
+    \ log-CNR of chrX; otherwise male samples\nwould have -1 chrX)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --count-reads
+  description: "Get read depths by counting read midpoints within each\nbin. (An alternative\
+    \ algorithm)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --drop-low-coverage
+  description: "Drop very-low-coverage bins before segmentation to\navoid false-positive\
+    \ deletions in poor-quality tumor\nsamples."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "[PROCESSES], --processes [PROCESSES]\nNumber of subprocesses used\
+    \ to running each of the BAM\nfiles in parallel. Without an argument, use the\n\
+    maximum number of available CPUs. [Default: process\neach BAM in serial]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rscript-path
+  description: "Path to the Rscript excecutable to use for running R\ncode. Use this\
+    \ option to specify a non-default R\ninstallation. [Default: Rscript]"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "[FILES [FILES ...]], --normal [FILES [FILES ...]]\nNormal samples\
+    \ (.bam) used to construct the pooled,\npaired, or flat reference. If this option\
+    \ is used but\nno filenames are given, a \"flat\" reference will be\nbuilt. Otherwise,\
+    \ all filenames following this option\nwill be used."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: Reference genome, FASTA format (e.g. UCSC hg19.fa)
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --targets
+  description: Target intervals (.bed or .list)
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --antitargets
+  description: Antitarget intervals (.bed or .list)
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --annotate
+  description: "Use gene models from this file to assign names to the\ntarget regions.\
+    \ Format: UCSC refFlat.txt or\nensFlat.txt file (preferred), or BED, interval\
+    \ list,\nGFF, or similar."
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --short-names
+  description: Reduce multi-accession bait labels to be short and
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --access
+  description: "Regions of accessible sequence on chromosomes (.bed),\nas output by\
+    \ the 'access' command."
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --antitarget-avg-size
+  description: "Average size of antitarget bins (results are\napproximate)."
+  args: !SimpleFlagArg
+    name: ANTITARGET_AVG_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --antitarget-min-size
+  description: "Minimum size of antitarget bins (smaller regions are\ndropped)."
+  args: !SimpleFlagArg
+    name: ANTITARGET_MIN_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --output-reference
+  description: "Output filename/path for the new reference file being\ncreated. (If\
+    \ given, ignores the -o/--output-dir option\nand will write the file to the given\
+    \ path. Otherwise,\n\"reference.cnn\" will be created in the current\ndirectory\
+    \ or specified output directory.)"
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster
+  description: "Calculate and use cluster-specific summary stats in\nthe reference\
+    \ pool to normalize samples."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: Copy number reference file (.cnn).
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --output-dir
+  description: Output directory.
+  args: !SimpleFlagArg
+    name: DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - --scatter
+  description: "Create a whole-genome copy ratio profile as a PDF\nscatter plot."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --diagram
+  description: "Create an ideogram of copy ratios on chromosomes as a\nPDF.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: cnvkit.py batch [-h] [-m {hybrid,amplicon,wgs}]\n             \
+  \          [--segment-method {cbs,flasso,haar,none,hmm,hmm-tumor,hmm-germline}]\n\
+  \                       [-y] [-c] [--drop-low-coverage] [-p [PROCESSES]]\n     \
+  \                  [--rscript-path PATH] [-n [FILES [FILES ...]]]\n            \
+  \           [-f FILENAME] [-t FILENAME] [-a FILENAME]\n                       [--annotate\
+  \ FILENAME] [--short-names]\n                       [--target-avg-size TARGET_AVG_SIZE]\
+  \ [-g FILENAME]\n                       [--antitarget-avg-size ANTITARGET_AVG_SIZE]\n\
+  \                       [--antitarget-min-size ANTITARGET_MIN_SIZE]\n          \
+  \             [--output-reference FILENAME] [--cluster]\n                      \
+  \ [-r REFERENCE] [-d DIRECTORY] [--scatter] [--diagram]\n                      \
+  \ [bam_files [bam_files ...]]\n\npositional arguments:\n  bam_files            \
+  \ Mapped sequence reads (.bam)\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -m {hybrid,amplicon,wgs}, --seq-method {hybrid,amplicon,wgs},\
+  \ --method {hybrid,amplicon,wgs}\n                        Sequencing assay type:\
+  \ hybridization capture\n                        ('hybrid'), targeted amplicon sequencing\
+  \ ('amplicon'),\n                        or whole genome sequencing ('wgs'). Determines\
+  \ whether\n                        and how to use antitarget bins. [Default: hybrid]\n\
+  \  --segment-method {cbs,flasso,haar,none,hmm,hmm-tumor,hmm-germline}\n        \
+  \                Method used in the 'segment' step. [Default: cbs]\n  -y, --male-reference,\
+  \ --haploid-x-reference\n                        Use or assume a male reference\
+  \ (i.e. female samples\n                        will have +1 log-CNR of chrX; otherwise\
+  \ male samples\n                        would have -1 chrX).\n  -c, --count-reads\
+  \     Get read depths by counting read midpoints within each\n                 \
+  \       bin. (An alternative algorithm).\n  --drop-low-coverage   Drop very-low-coverage\
+  \ bins before segmentation to\n                        avoid false-positive deletions\
+  \ in poor-quality tumor\n                        samples.\n  -p [PROCESSES], --processes\
+  \ [PROCESSES]\n                        Number of subprocesses used to running each\
+  \ of the BAM\n                        files in parallel. Without an argument, use\
+  \ the\n                        maximum number of available CPUs. [Default: process\n\
+  \                        each BAM in serial]\n  --rscript-path PATH   Path to the\
+  \ Rscript excecutable to use for running R\n                        code. Use this\
+  \ option to specify a non-default R\n                        installation. [Default:\
+  \ Rscript]\n\nTo construct a new copy number reference:\n  -n [FILES [FILES ...]],\
+  \ --normal [FILES [FILES ...]]\n                        Normal samples (.bam) used\
+  \ to construct the pooled,\n                        paired, or flat reference. If\
+  \ this option is used but\n                        no filenames are given, a \"\
+  flat\" reference will be\n                        built. Otherwise, all filenames\
+  \ following this option\n                        will be used.\n  -f FILENAME, --fasta\
+  \ FILENAME\n                        Reference genome, FASTA format (e.g. UCSC hg19.fa)\n\
+  \  -t FILENAME, --targets FILENAME\n                        Target intervals (.bed\
+  \ or .list)\n  -a FILENAME, --antitargets FILENAME\n                        Antitarget\
+  \ intervals (.bed or .list)\n  --annotate FILENAME   Use gene models from this file\
+  \ to assign names to the\n                        target regions. Format: UCSC refFlat.txt\
+  \ or\n                        ensFlat.txt file (preferred), or BED, interval list,\n\
+  \                        GFF, or similar.\n  --short-names         Reduce multi-accession\
+  \ bait labels to be short and\n                        consistent.\n  --target-avg-size\
+  \ TARGET_AVG_SIZE\n                        Average size of split target bins (results\
+  \ are\n                        approximate).\n  -g FILENAME, --access FILENAME\n\
+  \                        Regions of accessible sequence on chromosomes (.bed),\n\
+  \                        as output by the 'access' command.\n  --antitarget-avg-size\
+  \ ANTITARGET_AVG_SIZE\n                        Average size of antitarget bins (results\
+  \ are\n                        approximate).\n  --antitarget-min-size ANTITARGET_MIN_SIZE\n\
+  \                        Minimum size of antitarget bins (smaller regions are\n\
+  \                        dropped).\n  --output-reference FILENAME\n            \
+  \            Output filename/path for the new reference file being\n           \
+  \             created. (If given, ignores the -o/--output-dir option\n         \
+  \               and will write the file to the given path. Otherwise,\n        \
+  \                \"reference.cnn\" will be created in the current\n            \
+  \            directory or specified output directory.)\n  --cluster            \
+  \ Calculate and use cluster-specific summary stats in\n                        the\
+  \ reference pool to normalize samples.\n\nTo reuse an existing reference:\n  -r\
+  \ REFERENCE, --reference REFERENCE\n                        Copy number reference\
+  \ file (.cnn).\n\nOutput options:\n  -d DIRECTORY, --output-dir DIRECTORY\n    \
+  \                    Output directory.\n  --scatter             Create a whole-genome\
+  \ copy ratio profile as a PDF\n                        scatter plot.\n  --diagram\
+  \             Create an ideogram of copy ratios on chromosomes as a\n          \
+  \              PDF.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cnvkit:0.9.8--py_0

@@ -22,6 +22,9 @@ task Analysepy {
       ~{if defined(a_name) then ("--aname " +  '"' + a_name + '"') else ""} \
       ~{if defined(fname) then ("--fname " +  '"' + fname + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     size: "length of the sequence (mandatory for circular\\nsequences)"
     linear: "treat sequence as linear"

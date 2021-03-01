@@ -3,36 +3,53 @@ command:
 - fathom
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: ann
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: dna
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: commands
-  optional: false
-named: []
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -gene-stats
+  description: '[-errors-ok -nucleotide -dinucleotide]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -extract
+  - -length
+  - -offset
+  - -exon-intron
+  - -split
+  description: <-number <int> | -training <float> | -GC <float> | -repeat <float>>
+  args: !SimpleFlagArg
+    name: feature
+- !Flag
+  optional: true
+  synonyms:
+  - -ace-format
+  description: <-gene-method <string> [-dna -extra <string>]>
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "report useful information\n-validate [-quiet]\n-gene-stats [-errors-ok\
-    \ -nucleotide -dinucleotide]\n-categorize <int>\n-export <int> [-plus -errors-ok]\n\
-    -extract <feature> -length <int> -offset <int>\n-exon-intron\n-split <-number\
-    \ <int> | -training <float> | -GC <float> | -repeat <float>>\n-ace-format <-gene-method\
-    \ <string> [-dna -extra <string>]>\n-compare-genes <predictions> [-details]\n\
-    -score-genes <hmm> [-errors-ok]\n-filter-genes <hmm> -min-score <float> -min-length\
-    \ <int>\n"
+  optional: true
   synonyms:
   - -help
+  description: report useful information
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nFATHOM - sequence and annotation tool (version 2006-07-28)\n\nusage:\
@@ -44,3 +61,4 @@ help_text: "\nFATHOM - sequence and annotation tool (version 2006-07-28)\n\nusag
   \ <string>]>\n  -compare-genes <predictions> [-details]\n  -score-genes <hmm> [-errors-ok]\n\
   \  -filter-genes <hmm> -min-score <float> -min-length <int>\n"
 generated_using: []
+docker_image:

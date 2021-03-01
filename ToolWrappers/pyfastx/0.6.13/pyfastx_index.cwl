@@ -3,7 +3,7 @@ id: pyfastx_index.cwl
 inputs:
 - id: in_full
   doc: build full index, base composition will be calculated
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --full
 - id: in_fast_x
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pyfastx

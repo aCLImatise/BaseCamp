@@ -7,7 +7,7 @@ task ClassifyMates {
     String? write_results_here
     Int? use_overlaps_less
     String? use_compute_threads
-    String? use_most_gb
+    String? use_most_unlimited
     String? sl
     String? bl
     Boolean? cache
@@ -29,7 +29,7 @@ task ClassifyMates {
       ~{if defined(write_results_here) then ("-o " +  '"' + write_results_here + '"') else ""} \
       ~{if defined(use_overlaps_less) then ("-e " +  '"' + use_overlaps_less + '"') else ""} \
       ~{if defined(use_compute_threads) then ("-t " +  '"' + use_compute_threads + '"') else ""} \
-      ~{if defined(use_most_gb) then ("-m " +  '"' + use_most_gb + '"') else ""} \
+      ~{if defined(use_most_unlimited) then ("-m " +  '"' + use_most_unlimited + '"') else ""} \
       ~{if defined(sl) then ("-sl " +  '"' + sl + '"') else ""} \
       ~{if defined(bl) then ("-bl " +  '"' + bl + '"') else ""} \
       ~{if (cache) then "-cache" else ""} \
@@ -44,13 +44,16 @@ task ClassifyMates {
       ~{if defined(rfs) then ("-rfs " +  '"' + rfs + '"') else ""} \
       ~{if (no_suspicious) then "-nosuspicious" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_fragments_here: "Read fragments from here"
     read_overlaps_here: "Read overlaps from here"
     write_results_here: "Write results here"
     use_overlaps_less: "Use overlaps with less than 'maxError' fraction error (default 0.045)"
     use_compute_threads: "Use 'n' compute threads"
-    use_most_gb: "Use at most 'm' GB memory (default: unlimited)"
+    use_most_unlimited: "Use at most 'm' GB memory (default: unlimited)"
     sl: "[-m]        Search for mates in libraries l-m"
     bl: "[-m]        Use libraries l-m for searching"
     cache: "Write loaded data to cache files"

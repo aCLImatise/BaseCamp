@@ -1,0 +1,201 @@
+!Command
+command:
+- samtools
+- coverage
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: rname
+  description: Reference name / chromosome
+- !Positional
+  optional: false
+  position: 1
+  name: startpos
+  description: Start position
+- !Positional
+  optional: false
+  position: 2
+  name: endpos
+  description: End position (or sequence length)
+- !Positional
+  optional: false
+  position: 3
+  name: numreads
+  description: Number reads aligned to the region (after filtering)
+- !Positional
+  optional: false
+  position: 4
+  name: covbases
+  description: Number of covered bases with depth >= 1
+- !Positional
+  optional: false
+  position: 5
+  name: coverage
+  description: Proportion of covered bases [0..1]
+- !Positional
+  optional: false
+  position: 6
+  name: meandepth
+  description: Mean depth of coverage
+- !Positional
+  optional: false
+  position: 7
+  name: meanbaseq
+  description: Mean baseQ in covered region
+- !Positional
+  optional: false
+  position: 8
+  name: meanmapq
+  description: Mean mapQ of selected reads
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bam-list
+  description: list of input BAM filenames, one per line
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --min-read-len
+  description: ignore reads shorter than INT bp [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --min-MQ
+  description: mapping quality threshold [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  - --min-BQ
+  description: base quality threshold [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --rf
+  description: 'required flags: skip reads with mask bits unset []'
+  args: !SimpleFlagArg
+    name: int|str
+- !Flag
+  optional: true
+  synonyms:
+  - --ff
+  description: "filter flags: skip reads with mask bits set\n[UNMAP,SECONDARY,QCFAIL,DUP]"
+  args: !SimpleFlagArg
+    name: int|str
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --histogram
+  description: show histogram instead of tabular output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --ascii
+  description: show only ASCII characters in histogram
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: write output to FILE [stdout]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --no-header
+  description: don't print a header in tabular mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --n-bins
+  description: number of bins in histogram [terminal width - 40]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --region
+  description: 'show specified region. Format: chr:start-end.'
+  args: !SimpleFlagArg
+    name: REG
+- !Flag
+  optional: true
+  synonyms:
+  - --input-fmt-option
+  description: "[=VAL]\nSpecify a single input file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  args: !SimpleFlagArg
+    name: OPT
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: Reference sequence FASTA FILE [null]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: Set level of verbosity
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help (this page)
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: samtools coverage [options] in1.bam [in2.bam [...]]\n\nInput options:\n\
+  \  -b, --bam-list FILE     list of input BAM filenames, one per line\n  -l, --min-read-len\
+  \ INT  ignore reads shorter than INT bp [0]\n  -q, --min-MQ INT        mapping quality\
+  \ threshold [0]\n  -Q, --min-BQ INT        base quality threshold [0]\n  --rf <int|str>\
+  \          required flags: skip reads with mask bits unset []\n  --ff <int|str>\
+  \          filter flags: skip reads with mask bits set \n                      \
+  \                [UNMAP,SECONDARY,QCFAIL,DUP]\nOutput options:\n  -m, --histogram\
+  \         show histogram instead of tabular output\n  -A, --ascii             show\
+  \ only ASCII characters in histogram\n  -o, --output FILE       write output to\
+  \ FILE [stdout]\n  -H, --no-header         don't print a header in tabular mode\n\
+  \  -w, --n-bins INT        number of bins in histogram [terminal width - 40]\n \
+  \ -r, --region REG        show specified region. Format: chr:start-end. \n  -h,\
+  \ --help              help (this page)\n\nGeneric options:\n      --input-fmt-option\
+  \ OPT[=VAL]\n               Specify a single input file format option in the form\n\
+  \               of OPTION or OPTION=VALUE\n      --reference FILE\n            \
+  \   Reference sequence FASTA FILE [null]\n      --verbosity INT\n              \
+  \ Set level of verbosity\n\nSee manpage for additional details.\n  rname       Reference\
+  \ name / chromosome\n  startpos    Start position\n  endpos      End position (or\
+  \ sequence length)\n  numreads    Number reads aligned to the region (after filtering)\n\
+  \  covbases    Number of covered bases with depth >= 1\n  coverage    Proportion\
+  \ of covered bases [0..1]\n  meandepth   Mean depth of coverage\n  meanbaseq   Mean\
+  \ baseQ in covered region\n  meanmapq    Mean mapQ of selected reads\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/samtools:1.11--h6270b1f_0

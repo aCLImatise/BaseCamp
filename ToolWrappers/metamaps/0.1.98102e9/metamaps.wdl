@@ -4,6 +4,9 @@ task Metamaps {
   command <<<
     metamaps
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

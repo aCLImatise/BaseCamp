@@ -28,6 +28,9 @@ task Shapeit {
       ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""} \
       ~{if (no_ref) then "--noRef" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "File of the reference molecule with 3D coordinates.\\nOnly the first molecule in the reference file will be used.\\nShape-it can also handle a gzipped files if the extension is '.gz'\\nAll input formats which are recognized by OpenBabel are allowed."
     dbase: "File of the database molecules with 3D coordinates.\\nShape-it can also handle gzipped files if the extension is '.gz'\\nAll input formats which are recognized by OpenBabel are allowed."

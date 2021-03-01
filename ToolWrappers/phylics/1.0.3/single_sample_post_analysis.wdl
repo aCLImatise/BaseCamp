@@ -28,6 +28,9 @@ task SingleSamplePostAnalysis {
       ~{if defined(clustering) then ("--clustering " +  '"' + clustering + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seed: "Seed to initialize the pseudo-random generator used to\\nperform the permutation test."
     rec_lust: "If this option is specified, only the clustering part\\nis executed with the specified number of clusters,\\nunless --reinit option is specified (see below)."

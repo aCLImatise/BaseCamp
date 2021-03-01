@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, File, Int
+
+Sed_V0_1_0 = CommandToolBuilder(tool="sed", base_command=["sed"], inputs=[ToolInput(tag="in_silent", input_type=Boolean(optional=True), prefix="--silent", doc=InputDocumentation(doc="suppress automatic printing of pattern space")), ToolInput(tag="in_debug", input_type=Boolean(optional=True), prefix="--debug", doc=InputDocumentation(doc="annotate program execution")), ToolInput(tag="in_expression", input_type=String(optional=True), prefix="--expression", doc=InputDocumentation(doc="add the script to the commands to be executed")), ToolInput(tag="in_file", input_type=File(optional=True), prefix="--file", doc=InputDocumentation(doc="add the contents of script-file to the commands to be executed")), ToolInput(tag="in_follow_symlinks", input_type=Boolean(optional=True), prefix="--follow-symlinks", doc=InputDocumentation(doc="follow symlinks when processing in place")), ToolInput(tag="in_edit_files_place", input_type=Boolean(optional=True), prefix="-i", doc=InputDocumentation(doc="[SUFFIX], --in-place[=SUFFIX]\nedit files in place (makes backup if SUFFIX supplied)")), ToolInput(tag="in_line_length", input_type=Int(optional=True), prefix="--line-length", doc=InputDocumentation(doc="specify the desired line-wrap length for the `l' command")), ToolInput(tag="in_posix", input_type=Boolean(optional=True), prefix="--posix", doc=InputDocumentation(doc="disable all GNU extensions.")), ToolInput(tag="in_regexp_extended", input_type=Boolean(optional=True), prefix="--regexp-extended", doc=InputDocumentation(doc="use extended regular expressions in the script\n(for portability use POSIX -E).")), ToolInput(tag="in_separate", input_type=Boolean(optional=True), prefix="--separate", doc=InputDocumentation(doc="consider files as separate rather than as a single,\ncontinuous long stream.")), ToolInput(tag="in_sandbox", input_type=Boolean(optional=True), prefix="--sandbox", doc=InputDocumentation(doc="operate in sandbox mode (disable e/r/w commands).")), ToolInput(tag="in_unbuffered", input_type=Boolean(optional=True), prefix="--unbuffered", doc=InputDocumentation(doc="load minimal amounts of data from the input files and flush\nthe output buffers more often")), ToolInput(tag="in_null_data", input_type=Boolean(optional=True), prefix="--null-data", doc=InputDocumentation(doc="separate lines by NUL characters"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Sed_V0_1_0().translate("wdl", allow_empty_container=True)
+

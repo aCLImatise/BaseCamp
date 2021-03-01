@@ -3,27 +3,27 @@ id: kcutiltest.cwl
 inputs:
 - id: in_rnd
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -rnd
 - id: in_b_num
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -bnum
 - id: in_msi_z
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -msiz
 - id: in_th
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -th
 - id: in_iv
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -iv
 - id: in_cond
@@ -75,6 +75,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kcutiltest

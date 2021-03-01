@@ -22,6 +22,9 @@ task SketchyFeatureMerge {
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_sketch_file: "Path to sketch file to parse indices from\\n[required]"
     features: "Path to genotype feature file to merge indices with"

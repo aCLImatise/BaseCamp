@@ -18,6 +18,9 @@ task BgtAtomize {
       ~{if (use_m_multiallelic) then "-M" else ""} \
       ~{if (use_multiallelic_genotype) then "-0" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bcf_output: "BCF output"
     vcf_input: "VCF input"

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Float, Int
+
+Anvi_Script_Calculate_Pn_Ps_Ratio_V0_1_0 = CommandToolBuilder(tool="anvi_script_calculate_pn_ps_ratio", base_command=["anvi-script-calculate-pn-ps-ratio"], inputs=[ToolInput(tag="in_engine", input_type=File(optional=True), prefix="--engine", doc=InputDocumentation(doc="and the output filename.")), ToolInput(tag="in_sa_av_table", input_type=File(optional=True), prefix="--saav-table", doc=InputDocumentation(doc="Filepath to the SAAV table.")), ToolInput(tag="in_scv_table", input_type=File(optional=True), prefix="--scv-table", doc=InputDocumentation(doc="Filepath to the SCV table.")), ToolInput(tag="in_contigs_db", input_type=File(optional=True), prefix="--contigs-db", doc=InputDocumentation(doc="Filepath to the contigs database used to generate\nvariability tables.")), ToolInput(tag="in_min_departure_from_consensus", input_type=Float(optional=True), prefix="--min-departure-from-consensus", doc=InputDocumentation(doc="Variants (either SCVs or SAAVs) will be ignored if\nthey have a departure from consensus less than this\nvalue. Note: Keep in mind you may have already\nsupplied this parameter during anvi-gen-variability-\nprofile. The default value is '0.10'.")), ToolInput(tag="in_minimum_num_variants", input_type=Int(optional=True), prefix="--minimum-num-variants", doc=InputDocumentation(doc="Ignore genes with less than this number of single\ncodon variants. This avoids being impressed by pN/pS\nvalues of infinite, when in reality the gene had a\nsingle SAAV and no synonymous SCVs. The default is 4\nto ensure a default value with some level of\nstatistical importance.")), ToolInput(tag="in_min_coverage", input_type=Int(optional=True), prefix="--min-coverage", doc=InputDocumentation(doc="If the coverage value at a codon is less than this\namount, any SAAVs or SCVs associated with it will be\nignored. The default is 30.")), ToolInput(tag="in_output_dir", input_type=File(optional=True), prefix="--output-dir", doc=InputDocumentation(doc="Directory path for output files\n"))], outputs=[ToolOutput(tag="out_engine", output_type=File(optional=True), selector=InputSelector(input_to_select="in_engine", type_hint=File()), doc=OutputDocumentation(doc="and the output filename.")), ToolOutput(tag="out_output_dir", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_dir", type_hint=File()), doc=OutputDocumentation(doc="Directory path for output files\n"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Anvi_Script_Calculate_Pn_Ps_Ratio_V0_1_0().translate("wdl", allow_empty_container=True)
+

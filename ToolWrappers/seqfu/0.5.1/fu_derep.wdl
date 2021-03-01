@@ -4,6 +4,9 @@ task Fuderep {
   command <<<
     fu_derep
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

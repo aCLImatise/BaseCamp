@@ -8,7 +8,7 @@ inputs:
     \ you are running your commands on a SGE\n--if you are clusterizing your runs,\
     \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
     \ fast."
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-threads
 - id: in_scgs_taxonomy_data_dir
@@ -23,7 +23,7 @@ inputs:
     \ a program\n(such as `anvi-run-scg-taxonomy` or `anvi-estimate-\nscg-taxonomy`)\
     \ you will have to use this parameter to\ntell those programs where your data\
     \ are."
-  type: File
+  type: File?
   inputBinding:
     prefix: --scgs-taxonomy-data-dir
 - id: in_scgs_taxonomy_remote_database_url
@@ -35,7 +35,7 @@ inputs:
     \ fails, you can\ngive this URL, which is supposed to work if teh server\nin which\
     \ these databases are maintained is still\nonline: https://data.ace.uq.edu.au/public/gtdb/data/re\n\
     leases/release89/89.0/"
-  type: double
+  type: double?
   inputBinding:
     prefix: --scgs-taxonomy-remote-database-url
 - id: in_reset
@@ -43,19 +43,20 @@ inputs:
     \ wrong for some reason and if you\nbelieve re-downloading files and setting them\
     \ up could\naddress the issue, this is the flag that will tell\nanvi'o to act\
     \ like a real computer scientist\nchallenged with a computational problem."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reset
 - id: in_redo_databases
   doc: "Remove existing databases and re-create them. This can\nbe necessary when\
     \ versions of programs change and\ndatabases they create and use become incompatible.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --redo-databases
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-setup-scg-databases

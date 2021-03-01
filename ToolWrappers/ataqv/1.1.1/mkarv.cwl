@@ -3,29 +3,29 @@ id: mkarv.cwl
 inputs:
 - id: in_concurrency
   doc: "The number of concurrent processes to use (default:\n1). (default: 1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --concurrency
 - id: in_description
   doc: 'A description for the viewer instance. (default: None)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --description
 - id: in_force
   doc: "Overwrite the output directory if it exists. (default:\nFalse)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --force
 - id: in_indent
   doc: "If indent is given, JSON output will be pretty-printed\nand indented. (default:\
     \ False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --indent
 - id: in_maximum_fragment_length
   doc: "The maximum fragment length for which the distance to\nthe reference fragment\
     \ length count distribution will\nbe measured. (default: 1000)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maximum-fragment-length
 - id: in_peak_reference
@@ -39,7 +39,7 @@ inputs:
     respectively. A tab- or comma-separated value file may\nalso be given, in which\
     \ each line contains two\nfractions, of HQAA and peak territory. All of these\n\
     arrays should represent values at percentiles from\n1-100. (default: SRR891268)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --peak-reference
 - id: in_reference
@@ -52,17 +52,17 @@ inputs:
     \ containing an object\nmapping fragment lengths to counts (e.g. \"{0: 0, 1:\n\
     10, 2: 17}\", or it may be a tab- or comma-separated\nvalue file in which each\
     \ line contains a fragment\nlength and count. It may (default: SRR891268)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --reference
 - id: in_template_directory
   doc: "The location of the web app directory template.\n(default: /usr/local/web)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --template-directory
 - id: in_verbose
   doc: 'Talk more. (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_directory
@@ -81,9 +81,10 @@ outputs:
   type: stdout
 - id: out_force
   doc: "Overwrite the output directory if it exists. (default:\nFalse)"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_force)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mkarv

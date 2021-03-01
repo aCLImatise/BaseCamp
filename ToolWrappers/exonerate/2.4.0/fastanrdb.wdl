@@ -4,6 +4,9 @@ task Fastanrdb {
   command <<<
     fastanrdb
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

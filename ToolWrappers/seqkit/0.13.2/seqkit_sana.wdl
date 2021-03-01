@@ -34,6 +34,9 @@ task SeqkitSana {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     allow_gaps: "allow gap character (-) in sequences"
     format: "input and output format: fastq or fasta (default \\\"fastq\\\")"

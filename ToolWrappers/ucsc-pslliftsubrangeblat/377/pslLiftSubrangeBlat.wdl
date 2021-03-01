@@ -12,6 +12,9 @@ task PslLiftSubrangeBlat {
       ~{if defined(t_sizes) then ("-tSizes " +  '"' + t_sizes + '"') else ""} \
       ~{if defined(q_sizes) then ("-qSizes " +  '"' + q_sizes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t_sizes: "- lift target side based on tName, using target sizes from\\nthis tab separated file."
     q_sizes: "- lift query side based on qName, using query sizes from\\nthis tab separated file."

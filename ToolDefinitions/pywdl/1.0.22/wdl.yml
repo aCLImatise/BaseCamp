@@ -11,154 +11,285 @@ subcommands:
   - parse
   positional: []
   named: []
-  parent: &id014 !Command
+  parent: &id016 !Command
     command: *id001
     positional: []
     named: []
     parent:
     subcommands:
-    - &id013 !Command
+    - &id015 !Command
       command: *id002
       positional: []
       named: []
-      parent: &id012 !Command
+      parent: &id014 !Command
         command: *id001
         positional: []
         named: []
         parent:
         subcommands:
-        - &id011 !Command
+        - &id013 !Command
           command: *id002
           positional: []
           named: []
-          parent: &id010 !Command
+          parent: &id012 !Command
             command: *id001
             positional: []
             named: []
             parent:
             subcommands:
-            - &id009 !Command
+            - &id011 !Command
               command: *id002
               positional: []
               named: []
-              parent: &id003 !Command
+              parent: &id010 !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: Open the floodgates
-                  synonyms:
-                  - --debug
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: Don't colorize output
-                  synonyms:
-                  - --no-color
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
-                - &id004 !Command
+                - &id009 !Command
                   command: *id002
                   positional: []
                   named: []
-                  parent: *id003
-                  subcommands:
-                  - !Command
-                    command: &id006
-                    - wdl
-                    - parse
-                    - wdl_file
-                    positional:
-                    - !Positional
-                      description: ''
-                      position: 0
-                      name: wdl
-                      optional: false
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
                     named:
                     - !Flag
-                      description: ''
-                      synonyms:
-                      - --no-color
-                      args: !EmptyFlagArg {}
                       optional: true
-                    - !Flag
-                      description: ''
                       synonyms:
                       - --debug
+                      description: Open the floodgates
                       args: !EmptyFlagArg {}
+                    - !Flag
                       optional: true
+                      synonyms:
+                      - --no-color
+                      description: Don't colorize output
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - &id004 !Command
+                      command: *id002
+                      positional: []
+                      named: []
+                      parent: *id003
+                      subcommands:
+                      - !Command
+                        command: &id006
+                        - wdl
+                        - parse
+                        - wdl_file
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: wdl
+                          description: ''
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --no-color
+                          description: ''
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --debug
+                          description: ''
+                          args: !EmptyFlagArg {}
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          description: ''
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - --version
+                          description: ''
+                          args: !EmptyFlagArg {}
+                        help_text: "usage: wdl [-h] [--version] [--debug] [--no-color]\
+                          \ {run,parse} ...\nwdl: error: unrecognized arguments: --usage\n"
+                        generated_using: &id007
+                        - --usage
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: wdl parse [-h] wdl_file\n\nParse a WDL file,\
+                        \ print parse tree\n\npositional arguments:\n  wdl_file  \
+                        \  Path to WDL File\n\noptional arguments:\n  -h, --help \
+                        \ show this help message and exit\n"
+                      generated_using: &id005
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id008
+                      - wdl
+                      - run
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: wdl_file
+                        description: Path to WDL File
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --inputs
+                        description: Path to JSON file to define inputs
+                        args: !SimpleFlagArg
+                          name: INPUTS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --sge
+                        description: Use SGE to execute tasks
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: wdl run [-h] [--inputs INPUTS] [--sge] wdl_file\n\
+                        \nRun you a WDL\n\npositional arguments:\n  wdl_file     \
+                        \    Path to WDL File\n\noptional arguments:\n  -h, --help\
+                        \       show this help message and exit\n  --inputs INPUTS\
+                        \  Path to JSON file to define inputs\n  --sge           \
+                        \ Use SGE to execute tasks\n"
+                      generated_using: *id005
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --version
+                      description: show program's version number and exit
+                      args: !EmptyFlagArg {}
+                    help_text: "usage: wdl [-h] [--version] [--debug] [--no-color]\
+                      \ {run,parse} ...\n\nWorkflow Description Language (WDL)\n\n\
+                      positional arguments:\n  {run,parse}  WDL Actions\n    run \
+                      \       Run you a WDL\n    parse      Parse a WDL file, print\
+                      \ parse tree\n\noptional arguments:\n  -h, --help   show this\
+                      \ help message and exit\n  --version    show program's version\
+                      \ number and exit\n  --debug      Open the floodgates\n  --no-color\
+                      \   Don't colorize output\n"
+                    generated_using: *id005
+                    docker_image:
+                  subcommands:
+                  - !Command
+                    command: *id006
+                    positional:
+                    - !Positional
+                      optional: false
+                      position: 0
+                      name: wdl
+                      description: ''
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --no-color
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --debug
+                      description: ''
+                      args: !EmptyFlagArg {}
                     parent: *id004
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - -h
+                      description: ''
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag: !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - --version
+                      description: ''
                       args: !EmptyFlagArg {}
-                      optional: true
                     help_text: "usage: wdl [-h] [--version] [--debug] [--no-color]\
                       \ {run,parse} ...\nwdl: error: unrecognized arguments: --usage\n"
-                    generated_using: &id007
-                    - --usage
+                    generated_using: *id007
+                    docker_image:
                   usage: []
-                  help_flag: !Flag
-                    description: show this help message and exit
-                    synonyms:
-                    - -h
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "usage: wdl parse [-h] wdl_file\n\nParse a WDL file,\
                     \ print parse tree\n\npositional arguments:\n  wdl_file    Path\
                     \ to WDL File\n\noptional arguments:\n  -h, --help  show this\
                     \ help message and exit\n"
-                  generated_using: &id005
-                  - --help
+                  generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id008
-                  - wdl
-                  - run
+                  command: *id008
                   positional:
                   - !Positional
-                    description: Path to WDL File
+                    optional: false
                     position: 0
                     name: wdl_file
-                    optional: false
+                    description: Path to WDL File
                   named:
                   - !Flag
-                    description: Path to JSON file to define inputs
+                    optional: true
                     synonyms:
                     - --inputs
+                    description: Path to JSON file to define inputs
                     args: !SimpleFlagArg
                       name: INPUTS
-                    optional: true
                   - !Flag
-                    description: Use SGE to execute tasks
+                    optional: true
                     synonyms:
                     - --sge
+                    description: Use SGE to execute tasks
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: wdl run [-h] [--inputs INPUTS] [--sge] wdl_file\n\
@@ -168,21 +299,11 @@ subcommands:
                     \ file to define inputs\n  --sge            Use SGE to execute\
                     \ tasks\n"
                   generated_using: *id005
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: show program's version number and exit
-                  synonyms:
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "usage: wdl [-h] [--version] [--debug] [--no-color] {run,parse}\
                   \ ...\n\nWorkflow Description Language (WDL)\n\npositional arguments:\n\
                   \  {run,parse}  WDL Actions\n    run        Run you a WDL\n    parse\
@@ -191,47 +312,49 @@ subcommands:
                   \ show program's version number and exit\n  --debug      Open the\
                   \ floodgates\n  --no-color   Don't colorize output\n"
                 generated_using: *id005
+                docker_image:
               subcommands:
               - !Command
                 command: *id006
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: wdl
-                  optional: false
+                  description: ''
                 named:
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - --no-color
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
                   description: ''
+                  args: !EmptyFlagArg {}
+                - !Flag
+                  optional: true
                   synonyms:
                   - --debug
+                  description: ''
                   args: !EmptyFlagArg {}
-                  optional: true
-                parent: *id004
+                parent: *id009
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - -h
+                  description: ''
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag: !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - --version
+                  description: ''
                   args: !EmptyFlagArg {}
-                  optional: true
                 help_text: "usage: wdl [-h] [--version] [--debug] [--no-color] {run,parse}\
                   \ ...\nwdl: error: unrecognized arguments: --usage\n"
                 generated_using: *id007
+                docker_image:
               usage: []
               help_flag:
               usage_flag:
@@ -240,38 +363,39 @@ subcommands:
                 \ parse tree\n\npositional arguments:\n  wdl_file    Path to WDL File\n\
                 \noptional arguments:\n  -h, --help  show this help message and exit\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id008
               positional:
               - !Positional
-                description: Path to WDL File
+                optional: false
                 position: 0
                 name: wdl_file
-                optional: false
+                description: Path to WDL File
               named:
               - !Flag
-                description: Path to JSON file to define inputs
+                optional: true
                 synonyms:
                 - --inputs
+                description: Path to JSON file to define inputs
                 args: !SimpleFlagArg
                   name: INPUTS
-                optional: true
               - !Flag
-                description: Use SGE to execute tasks
+                optional: true
                 synonyms:
                 - --sge
+                description: Use SGE to execute tasks
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id010
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: wdl run [-h] [--inputs INPUTS] [--sge] wdl_file\n\
@@ -280,6 +404,7 @@ subcommands:
                 \ help message and exit\n  --inputs INPUTS  Path to JSON file to define\
                 \ inputs\n  --sge            Use SGE to execute tasks\n"
               generated_using: *id005
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -292,47 +417,49 @@ subcommands:
               \ program's version number and exit\n  --debug      Open the floodgates\n\
               \  --no-color   Don't colorize output\n"
             generated_using: *id005
+            docker_image:
           subcommands:
           - !Command
             command: *id006
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: wdl
-              optional: false
+              description: ''
             named:
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - --no-color
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
               description: ''
+              args: !EmptyFlagArg {}
+            - !Flag
+              optional: true
               synonyms:
               - --debug
+              description: ''
               args: !EmptyFlagArg {}
-              optional: true
-            parent: *id009
+            parent: *id011
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: ''
+              optional: true
               synonyms:
               - -h
+              description: ''
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag: !Flag
-              description: ''
+              optional: true
               synonyms:
               - --version
+              description: ''
               args: !EmptyFlagArg {}
-              optional: true
             help_text: "usage: wdl [-h] [--version] [--debug] [--no-color] {run,parse}\
               \ ...\nwdl: error: unrecognized arguments: --usage\n"
             generated_using: *id007
+            docker_image:
           usage: []
           help_flag:
           usage_flag:
@@ -341,38 +468,39 @@ subcommands:
             \ tree\n\npositional arguments:\n  wdl_file    Path to WDL File\n\noptional\
             \ arguments:\n  -h, --help  show this help message and exit\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id008
           positional:
           - !Positional
-            description: Path to WDL File
+            optional: false
             position: 0
             name: wdl_file
-            optional: false
+            description: Path to WDL File
           named:
           - !Flag
-            description: Path to JSON file to define inputs
+            optional: true
             synonyms:
             - --inputs
+            description: Path to JSON file to define inputs
             args: !SimpleFlagArg
               name: INPUTS
-            optional: true
           - !Flag
-            description: Use SGE to execute tasks
+            optional: true
             synonyms:
             - --sge
+            description: Use SGE to execute tasks
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id010
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: wdl run [-h] [--inputs INPUTS] [--sge] wdl_file\n\nRun\
@@ -381,6 +509,7 @@ subcommands:
             \  --inputs INPUTS  Path to JSON file to define inputs\n  --sge      \
             \      Use SGE to execute tasks\n"
           generated_using: *id005
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -393,47 +522,49 @@ subcommands:
           \ number and exit\n  --debug      Open the floodgates\n  --no-color   Don't\
           \ colorize output\n"
         generated_using: *id005
+        docker_image:
       subcommands:
       - !Command
         command: *id006
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: wdl
-          optional: false
+          description: ''
         named:
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - --no-color
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
           description: ''
+          args: !EmptyFlagArg {}
+        - !Flag
+          optional: true
           synonyms:
           - --debug
+          description: ''
           args: !EmptyFlagArg {}
-          optional: true
-        parent: *id011
+        parent: *id013
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: ''
+          optional: true
           synonyms:
           - -h
+          description: ''
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag: !Flag
-          description: ''
+          optional: true
           synonyms:
           - --version
+          description: ''
           args: !EmptyFlagArg {}
-          optional: true
         help_text: "usage: wdl [-h] [--version] [--debug] [--no-color] {run,parse}\
           \ ...\nwdl: error: unrecognized arguments: --usage\n"
         generated_using: *id007
+        docker_image:
       usage: []
       help_flag:
       usage_flag:
@@ -442,38 +573,39 @@ subcommands:
         \ tree\n\npositional arguments:\n  wdl_file    Path to WDL File\n\noptional\
         \ arguments:\n  -h, --help  show this help message and exit\n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id008
       positional:
       - !Positional
-        description: Path to WDL File
+        optional: false
         position: 0
         name: wdl_file
-        optional: false
+        description: Path to WDL File
       named:
       - !Flag
-        description: Path to JSON file to define inputs
+        optional: true
         synonyms:
         - --inputs
+        description: Path to JSON file to define inputs
         args: !SimpleFlagArg
           name: INPUTS
-        optional: true
       - !Flag
-        description: Use SGE to execute tasks
+        optional: true
         synonyms:
         - --sge
+        description: Use SGE to execute tasks
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id012
+      parent: *id014
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: wdl run [-h] [--inputs INPUTS] [--sge] wdl_file\n\nRun you\
@@ -482,6 +614,7 @@ subcommands:
         \  --inputs INPUTS  Path to JSON file to define inputs\n  --sge          \
         \  Use SGE to execute tasks\n"
       generated_using: *id005
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -493,47 +626,49 @@ subcommands:
       \ and exit\n  --version    show program's version number and exit\n  --debug\
       \      Open the floodgates\n  --no-color   Don't colorize output\n"
     generated_using: *id005
+    docker_image:
   subcommands:
   - !Command
     command: *id006
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: wdl
-      optional: false
+      description: ''
     named:
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - --no-color
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
       description: ''
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
       synonyms:
       - --debug
+      description: ''
       args: !EmptyFlagArg {}
-      optional: true
-    parent: *id013
+    parent: *id015
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: ''
+      optional: true
       synonyms:
       - -h
+      description: ''
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag: !Flag
-      description: ''
+      optional: true
       synonyms:
       - --version
+      description: ''
       args: !EmptyFlagArg {}
-      optional: true
     help_text: "usage: wdl [-h] [--version] [--debug] [--no-color] {run,parse} ...\n\
       wdl: error: unrecognized arguments: --usage\n"
     generated_using: *id007
+    docker_image:
   usage: []
   help_flag:
   usage_flag:
@@ -542,38 +677,39 @@ subcommands:
     \npositional arguments:\n  wdl_file    Path to WDL File\n\noptional arguments:\n\
     \  -h, --help  show this help message and exit\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id008
   positional:
   - !Positional
-    description: Path to WDL File
+    optional: false
     position: 0
     name: wdl_file
-    optional: false
+    description: Path to WDL File
   named:
   - !Flag
-    description: Path to JSON file to define inputs
+    optional: true
     synonyms:
     - --inputs
+    description: Path to JSON file to define inputs
     args: !SimpleFlagArg
       name: INPUTS
-    optional: true
   - !Flag
-    description: Use SGE to execute tasks
+    optional: true
     synonyms:
     - --sge
+    description: Use SGE to execute tasks
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id014
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: wdl run [-h] [--inputs INPUTS] [--sge] wdl_file\n\nRun you a\
@@ -581,6 +717,7 @@ subcommands:
     \ arguments:\n  -h, --help       show this help message and exit\n  --inputs INPUTS\
     \  Path to JSON file to define inputs\n  --sge            Use SGE to execute tasks\n"
   generated_using: *id005
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -592,3 +729,4 @@ help_text: "usage: wdl [-h] [--version] [--debug] [--no-color] {run,parse} ...\n
   \  --version    show program's version number and exit\n  --debug      Open the\
   \ floodgates\n  --no-color   Don't colorize output\n"
 generated_using: *id005
+docker_image:

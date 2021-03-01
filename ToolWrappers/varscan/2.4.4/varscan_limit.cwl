@@ -3,27 +3,27 @@ id: varscan_limit.cwl
 inputs:
 - id: in_regions_file
   doc: '- a file of chromosome-start-stops, tab delimited'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --regions-file
 - id: in_margin_size
   doc: '- shoulder bases to allow on either side of targets [0]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --margin-size
 - id: in_output_file
   doc: '- Output file for the matching variants'
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file
 - id: in_not_file
   doc: '- Output file for variants NOT matching regions/positions'
-  type: File
+  type: File?
   inputBinding:
     prefix: --not-file
 - id: in_jar
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -jar
 - id: in_options
@@ -37,14 +37,15 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: '- Output file for the matching variants'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
 - id: out_not_file
   doc: '- Output file for variants NOT matching regions/positions'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_not_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - varscan

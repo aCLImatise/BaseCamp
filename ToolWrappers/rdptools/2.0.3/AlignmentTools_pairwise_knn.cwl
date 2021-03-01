@@ -3,39 +3,39 @@ id: AlignmentTools_pairwise_knn.cwl
 inputs:
 - id: in_knearest_neighbors_return
   doc: K-nearest neighbors to return. (default = 1)
-  type: long
+  type: long?
   inputBinding:
     prefix: -k
 - id: in_mode
   doc: "Alignment mode {global, glocal, local, overlap,\noverlap_trim} (default= glocal)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --mode
-- id: in_remove_ns_query
+- id: in_remove_ns_default
   doc: Remove Ns from the query. Default is false
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_out
   doc: Redirect output to file instead of stdout
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_prefilter
   doc: "The top p closest targets from kmer prefilter\nstep. Set p=0 to disable the\
     \ prefilter step.\n(default = 10)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --prefilter
 - id: in_threads
   doc: "#Threads to use. This process is CPU intensive.\n(default 1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_word_size
   doc: "The word size used to find closest targets during\nprefilter. (default 4 for\
     \ protein, 8 for\nnucleotide)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --word-size
 - id: in_pairwise_knn
@@ -64,9 +64,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Redirect output to file instead of stdout
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - AlignmentTools

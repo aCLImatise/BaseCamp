@@ -3,38 +3,38 @@ id: afplot_whole_genome_histogram.cwl
 inputs:
 - id: in_output
   doc: Path to output file  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_exclude_pattern
   doc: Regex pattern(s) to exclude from contig list
-  type: string
+  type: string?
   inputBinding:
     prefix: --exclude-pattern
 - id: in_sample
   doc: "Sample name(s) of VCF file(s). If not given,\nwill use fist sample in each\
     \ VCF File"
-  type: File
+  type: File?
   inputBinding:
     prefix: --sample
 - id: in_label
   doc: Label(s) to VCF file(s)  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --label
 - id: in_vcf
   doc: Path(s) to input VCF file(s)  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --vcf
 - id: in_color_palette
   doc: The name of a color palette to pass to
-  type: string
+  type: string?
   inputBinding:
     prefix: --color-palette
 - id: in_kde_only
   doc: Only show kernel density plot
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --kde-only
 - id: in_seaborn_dot_set_palette
@@ -48,9 +48,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Path to output file  [required]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - afplot

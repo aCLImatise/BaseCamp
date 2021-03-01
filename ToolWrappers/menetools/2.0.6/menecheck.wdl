@@ -12,6 +12,9 @@ task Menecheck {
       ~{if defined(seeds) then ("--seeds " +  '"' + seeds + '"') else ""} \
       ~{if defined(targets) then ("--targets " +  '"' + targets + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     draft_net: "metabolic network in SBML format"
     seeds: "seeds in SBML format"

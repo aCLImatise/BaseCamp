@@ -26,6 +26,9 @@ task ProbabilityPlot {
       ~{if (maximum) then "--maximum" else ""} \
       ~{if (minimum) then "--minimum" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_one_zero: "Specifies that the input file format is a dot plot text file of log10 base\\npair probabilities. Giving this flag with one of the text options would\\ngive a file identical to the input file."
     matrix: "Specifies that the input file format is a plain text matrix of base pair\\nprobabilities."

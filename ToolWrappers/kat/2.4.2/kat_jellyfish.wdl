@@ -12,6 +12,9 @@ task KatJellyfish {
       ~{cmd} \
       ~{arg_dot_dot_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jellyfish: ""
     cmd: ""

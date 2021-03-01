@@ -14,6 +14,9 @@ task SplitFile {
       ~{if defined(head) then ("-head " +  '"' + head + '"') else ""} \
       ~{if defined(tail) then ("-tail " +  '"' + tail + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     head: "- put head in front of each output"
     tail: "- put tail at end of each output"

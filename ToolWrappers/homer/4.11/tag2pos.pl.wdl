@@ -8,6 +8,9 @@ task Tag2pospl {
     tag2pos_pl \
       ~{tag_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tag_file: ""
   }

@@ -10,6 +10,9 @@ task PlotDiaWindowspy {
       ~{window_file} \
       ~{precursor_map}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window_file: ""
     precursor_map: ""

@@ -12,11 +12,11 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -options
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -28,11 +28,11 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -options
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -44,11 +44,11 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -options
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -60,47 +60,15 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -options
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ': specify the input MSA file is in format <s>'
-                  synonyms:
-                  - --informat
-                  args: !SimpleFlagArg
-                    name: s
-                  optional: true
-                - !Flag
-                  description: ': write the output MSA in format <s>'
-                  synonyms:
-                  - --outformat
-                  args: !SimpleFlagArg
-                    name: s
-                  optional: true
-                - !Flag
-                  description: ': use DNA alphabet'
-                  synonyms:
-                  - --dna
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ': use RNA alphabet'
-                  synonyms:
-                  - --rna
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -options
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
@@ -108,12 +76,93 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -options
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --informat
+                      description: ': specify the input MSA file is in format <s>'
+                      args: !SimpleFlagArg
+                        name: s
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --outformat
+                      description: ': write the output MSA in format <s>'
+                      args: !SimpleFlagArg
+                        name: s
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --dna
+                      description: ': use DNA alphabet'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --rna
+                      description: ': use RNA alphabet'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -options
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -options
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Incorrect number of command line arguments.\nUsage:\
+                        \ esl-alirev [-options] <msafile>\n\nTo see more help on available\
+                        \ options, do esl-alirev -h\n\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      description: ': show brief help on version and usage'
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "# esl-alirev :: reverse complement multiple sequence\
+                      \ alignment(s)\n# Easel 0.46 (Nov 2019)\n# Copyright (C) 2019\
+                      \ Howard Hughes Medical Institute.\n# Freely distributed under\
+                      \ the BSD open source license.\n# - - - - - - - - - - - - -\
+                      \ - - - - - - - - - - - - - - - - - - - - - - -\nUsage: esl-alirev\
+                      \ [-options] <msafile>\n\nOptions:\n  -h              : show\
+                      \ brief help on version and usage\n  --informat <s>  : specify\
+                      \ the input MSA file is in format <s>\n  --outformat <s> : write\
+                      \ the output MSA in format <s>\n  --dna           : use DNA\
+                      \ alphabet\n  --rna           : use RNA alphabet\n"
+                    generated_using: &id005
+                    - -h
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -122,15 +171,10 @@ subcommands:
                   help_text: "Incorrect number of command line arguments.\nUsage:\
                     \ esl-alirev [-options] <msafile>\n\nTo see more help on available\
                     \ options, do esl-alirev -h\n\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: ': show brief help on version and usage'
-                  synonyms:
-                  - -h
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "# esl-alirev :: reverse complement multiple sequence alignment(s)\n\
@@ -142,8 +186,8 @@ subcommands:
                   \ <s>  : specify the input MSA file is in format <s>\n  --outformat\
                   \ <s> : write the output MSA in format <s>\n  --dna           :\
                   \ use DNA alphabet\n  --rna           : use RNA alphabet\n"
-                generated_using: &id005
-                - -h
+                generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -153,6 +197,7 @@ subcommands:
                 \ [-options] <msafile>\n\nTo see more help on available options, do\
                 \ esl-alirev -h\n\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -167,6 +212,7 @@ subcommands:
               \ : write the output MSA in format <s>\n  --dna           : use DNA\
               \ alphabet\n  --rna           : use RNA alphabet\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -176,6 +222,7 @@ subcommands:
             \ [-options] <msafile>\n\nTo see more help on available options, do esl-alirev\
             \ -h\n\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -189,6 +236,7 @@ subcommands:
           \ in format <s>\n  --outformat <s> : write the output MSA in format <s>\n\
           \  --dna           : use DNA alphabet\n  --rna           : use RNA alphabet\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -197,6 +245,7 @@ subcommands:
       help_text: "Incorrect number of command line arguments.\nUsage: esl-alirev [-options]\
         \ <msafile>\n\nTo see more help on available options, do esl-alirev -h\n\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -210,6 +259,7 @@ subcommands:
       \ --outformat <s> : write the output MSA in format <s>\n  --dna           :\
       \ use DNA alphabet\n  --rna           : use RNA alphabet\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -218,6 +268,7 @@ subcommands:
   help_text: "Incorrect number of command line arguments.\nUsage: esl-alirev [-options]\
     \ <msafile>\n\nTo see more help on available options, do esl-alirev -h\n\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -231,3 +282,4 @@ help_text: "# esl-alirev :: reverse complement multiple sequence alignment(s)\n#
   \ the output MSA in format <s>\n  --dna           : use DNA alphabet\n  --rna  \
   \         : use RNA alphabet\n"
 generated_using: *id005
+docker_image:

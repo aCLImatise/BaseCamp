@@ -20,6 +20,9 @@ task Kounta {
       ~{if (tempdir) then "--tempdir" else ""} \
       ~{if (threads) then "--threads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fof_n: "file     File of filenames to process"
     km_er: "int      k-mer length [25]"

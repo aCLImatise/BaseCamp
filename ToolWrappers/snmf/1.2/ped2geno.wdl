@@ -1,15 +1,11 @@
 version 1.0
 
 task Ped2geno {
-  input {
-    File? _help
-  }
   command <<<
-    ped2geno \
-      ~{if defined(_help) then ("-input " +  '"' + _help + '"') else ""}
+    ped2geno
   >>>
-  parameter_meta {
-    _help: "--help"
+  runtime {
+    docker: "None"
   }
   output {
     File out_stdout = stdout()

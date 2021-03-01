@@ -5,172 +5,172 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --umiType
   description: "Choose 'separate' if the UMIs for the reads are\ncontained in a separate\
     \ fastq file where the line\nafter the read name is the UMI. Choose 'inline' if\
     \ the\nUMIs are already included in the forward/reverse read\nfastq files in the\
     \ following format: '@M01806:488:0000\n00000-J36GT:1:1101:15963:1363:GTAGGTAAAGTG\n\
     1:N:0:CGAGTAAT' where 'GTAGGTAAAGTG' is the UMI"
-  synonyms:
-  - --umiType
   args: !ChoiceFlagArg
     choices: !!set
-      separate:
       inline:
-  optional: true
+      separate:
 - !Flag
-  description: Length of UMI sequence, e.g. 12 (required)
+  optional: true
   synonyms:
   - --umiLength
+  description: Length of UMI sequence, e.g. 12 (required)
   args: !SimpleFlagArg
     name: UMILENGTH
-  optional: true
 - !Flag
-  description: "Path to directory where you have your fastq files. If\nno '--dir'\
-    \ is specified, ctseq will look in your\ncurrent directory."
+  optional: true
   synonyms:
   - -d
   - --dir
+  description: "Path to directory where you have your fastq files. If\nno '--dir'\
+    \ is specified, ctseq will look in your\ncurrent directory."
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
-  description: "Full path to directory where you have already built\nyour methylation\
-    \ reference files. If no '--refDir' is\nspecified, ctseq will look in your current\
-    \ directory."
+  optional: true
   synonyms:
   - -r
   - --refDir
+  description: "Full path to directory where you have already built\nyour methylation\
+    \ reference files. If no '--refDir' is\nspecified, ctseq will look in your current\
+    \ directory."
   args: !SimpleFlagArg
     name: REFDIR
-  optional: true
 - !Flag
-  description: "Unique extension of fastq files containing FORWARD\nreads. Make sure\
-    \ to include '.gz' if your files are\ncompressed (required)"
+  optional: true
   synonyms:
   - --forwardExt
+  description: "Unique extension of fastq files containing FORWARD\nreads. Make sure\
+    \ to include '.gz' if your files are\ncompressed (required)"
   args: !SimpleFlagArg
     name: FORWARDEXT
-  optional: true
 - !Flag
-  description: "Unique extension of fastq files containing REVERSE\nreads. Make sure\
-    \ to include '.gz' if your files are\ncompressed (required)"
+  optional: true
   synonyms:
   - --reverseExt
+  description: "Unique extension of fastq files containing REVERSE\nreads. Make sure\
+    \ to include '.gz' if your files are\ncompressed (required)"
   args: !SimpleFlagArg
     name: REVERSEEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --umiExt
   description: "Unique extension of fastq files containing the UMIs\n(This flag is\
     \ REQUIRED if UMIs are contained in\nseparate fastq file). Make sure to include\
     \ '.gz' if\nyour files are compressed."
-  synonyms:
-  - --umiExt
   args: !SimpleFlagArg
     name: UMIEXT
-  optional: true
 - !Flag
-  description: "adapter sequence to remove from FORWARD reads\n(default=AGTGTGGGAGGGTAGTTGGTGTT)"
+  optional: true
   synonyms:
   - --forwardAdapter
+  description: "adapter sequence to remove from FORWARD reads\n(default=AGTGTGGGAGGGTAGTTGGTGTT)"
   args: !SimpleFlagArg
     name: FORWARDADAPTER
-  optional: true
 - !Flag
-  description: "adapter sequence to remove from REVERSE reads\n(default=ACTCCCCACCTTCCTCATTCTCTAAGACGGTGT)"
+  optional: true
   synonyms:
   - --reverseAdapter
+  description: "adapter sequence to remove from REVERSE reads\n(default=ACTCCCCACCTTCCTCATTCTCTAAGACGGTGT)"
   args: !SimpleFlagArg
     name: REVERSEADAPTER
-  optional: true
 - !Flag
-  description: "number of cores to use with Cutadapt. Default=1.\nHighly recommended\
-    \ to run with more than 1 core, try\nstarting with 18 cores"
+  optional: true
   synonyms:
   - --cutadaptCores
+  description: "number of cores to use with Cutadapt. Default=1.\nHighly recommended\
+    \ to run with more than 1 core, try\nstarting with 18 cores"
   args: !SimpleFlagArg
     name: CUTADAPTCORES
-  optional: true
 - !Flag
-  description: "number of cores to use to align with Bismark.\nDefault=1. Highly recommended\
-    \ to run with more than 1\ncore, try starting with 6 cores"
+  optional: true
   synonyms:
   - --bismarkCores
+  description: "number of cores to use to align with Bismark.\nDefault=1. Highly recommended\
+    \ to run with more than 1\ncore, try starting with 6 cores"
   args: !SimpleFlagArg
     name: BISMARKCORES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --readsPerFile
   description: "number of reads to analyze per fastq file (should only\nadjust this\
     \ if you think you are too big of a file\nthrough bismark). Default=5000000 (5\
     \ million)"
-  synonyms:
-  - --readsPerFile
   args: !SimpleFlagArg
     name: READSPERFILE
-  optional: true
 - !Flag
-  description: "consensus threshold to make consensus methylation call\nfrom all the\
-    \ reads with the same UMI (default=0.9)"
+  optional: true
   synonyms:
   - --consensus
+  description: "consensus threshold to make consensus methylation call\nfrom all the\
+    \ reads with the same UMI (default=0.9)"
   args: !SimpleFlagArg
     name: CONSENSUS
-  optional: true
 - !Flag
-  description: "number of processes (default=1; default settings could\ntake a long\
-    \ time to run)"
+  optional: true
   synonyms:
   - -p
   - --processes
+  description: "number of processes (default=1; default settings could\ntake a long\
+    \ time to run)"
   args: !SimpleFlagArg
     name: PROCESSES
-  optional: true
 - !Flag
-  description: "UMIs with this edit distance will be collapsed\ntogether, default=0\
-    \ (don't collapse)"
+  optional: true
   synonyms:
   - --umiThreshold
+  description: "UMIs with this edit distance will be collapsed\ntogether, default=0\
+    \ (don't collapse)"
   args: !SimpleFlagArg
     name: UMITHRESHOLD
-  optional: true
 - !Flag
-  description: "algorithm used to collapse UMIs, options:\ndefault=directional"
+  optional: true
   synonyms:
   - --umiCollapseAlg
+  description: "algorithm used to collapse UMIs, options:\ndefault=directional"
   args: !SimpleFlagArg
     name: UMICOLLAPSEALG
-  optional: true
 - !Flag
-  description: "number of reads needed to be counted as a unique\nmolecule (required)"
+  optional: true
   synonyms:
   - -n
   - --nameRun
+  description: "number of reads needed to be counted as a unique\nmolecule (required)"
   args: !SimpleFlagArg
     name: NAMERUN
-  optional: true
 - !Flag
-  description: "cis-CG threshold to determine if a molecule is\nmethylated (default=0.75)"
+  optional: true
   synonyms:
   - --cisCG
+  description: "cis-CG threshold to determine if a molecule is\nmethylated (default=0.75)"
   args: !SimpleFlagArg
     name: CISCG
-  optional: true
 - !Flag
-  description: "number of reads needed to be counted as a unique\nmolecule (default=5)\n"
+  optional: true
   synonyms:
   - --moleculeThreshold
+  description: "number of reads needed to be counted as a unique\nmolecule (default=5)\n"
   args: !SimpleFlagArg
     name: MOLECULETHRESHOLD
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: ctseq analyze [-h] --umiType {separate,inline} --umiLength UMILENGTH\n\
@@ -235,3 +235,4 @@ help_text: "usage: ctseq analyze [-h] --umiType {separate,inline} --umiLength UM
   \                   molecule (default=5)\n"
 generated_using:
 - --help
+docker_image:

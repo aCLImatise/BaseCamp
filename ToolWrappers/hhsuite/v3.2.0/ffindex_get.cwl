@@ -3,7 +3,7 @@ id: ffindex_get.cwl
 inputs:
 - id: in_use_index_name
   doc: use index of entry instead of entry name
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_data_filename
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ffindex_get

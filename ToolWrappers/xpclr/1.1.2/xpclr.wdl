@@ -9,7 +9,7 @@ task Xpclr {
     File? samples_a
     File? samples_b
     String? r_rate
-    File? using_text_format
+    File? using_xpclr_specs
     File? popa
     File? pop_b
     String? chr
@@ -32,7 +32,7 @@ task Xpclr {
       ~{if defined(samples_a) then ("--samplesA " +  '"' + samples_a + '"') else ""} \
       ~{if defined(samples_b) then ("--samplesB " +  '"' + samples_b + '"') else ""} \
       ~{if defined(r_rate) then ("--rrate " +  '"' + r_rate + '"') else ""} \
-      ~{if defined(using_text_format) then ("--map " +  '"' + using_text_format + '"') else ""} \
+      ~{if defined(using_xpclr_specs) then ("--map " +  '"' + using_xpclr_specs + '"') else ""} \
       ~{if defined(popa) then ("--popA " +  '"' + popa + '"') else ""} \
       ~{if defined(pop_b) then ("--popB " +  '"' + pop_b + '"') else ""} \
       ~{if defined(chr) then ("--chr " +  '"' + chr + '"') else ""} \
@@ -46,6 +46,9 @@ task Xpclr {
       ~{if defined(stop) then ("--stop " +  '"' + stop + '"') else ""} \
       ~{if defined(step) then ("--step " +  '"' + step + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "output file"
     format: "input expected. One of \\\"vcf\\\" (default), \\\"hdf5\\\", \\\"zarr\\\"\\nor \\\"txt\\\""
@@ -54,7 +57,7 @@ task Xpclr {
     samples_a: "Samples comprising population A. Comma separated list\\nor path to file with each ID on a line"
     samples_b: "Samples comprising population B. Comma separated list\\nor path to file with each ID on a line"
     r_rate: "recombination rate per base"
-    using_text_format: "If using XPCLR-style text format. Input map file as\\nper XPCLR specs (tab separated)"
+    using_xpclr_specs: "If using XPCLR-style text format. Input map file as\\nper XPCLR specs (tab separated)"
     popa: "If using XPCLR-style text format. Filepath to\\npopulation A genotypes (space separated)"
     pop_b: "If using XPCLR-style text format. Filepath to\\npopulation B genotypes (space separated)"
     chr: "Which contig analysis is based on"

@@ -22,6 +22,9 @@ task Zorro {
       ~{if defined(tree_prog) then ("-treeprog " +  '"' + tree_prog + '"') else ""} \
       ~{if defined(guide) then ("-guide " +  '"' + guide + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample: ": Sampling pairs to calculate alignment reliabilty [Off By Default]"
     no_sample: ": No Sampling i.e. using every pair to calculate alignment reliabilty [On By Default]"

@@ -5,20 +5,23 @@ task NebulizerCreateUsersFromFileAccount {
     String nebulizer
     String create_users_from_file
     String galaxy
-    File file
+    File var_file
   }
   command <<<
     nebulizer create_users_from_file account_ \
       ~{nebulizer} \
       ~{create_users_from_file} \
       ~{galaxy} \
-      ~{file}
+      ~{var_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nebulizer: ""
     create_users_from_file: ""
     galaxy: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

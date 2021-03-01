@@ -70,6 +70,9 @@ task Biopetvcffilter {
       ~{if defined(min_avg_variant_gq) then ("--minAvgVariantGQ " +  '"' + min_avg_variant_gq + '"') else ""} \
       ~{if (info_array_must_contain) then "--infoArrayMustContain" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_level: "Level of log information printed. Possible levels: 'debug', 'info', 'warn', 'error'"
     input_vcf: "Input vcf file"

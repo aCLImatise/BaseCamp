@@ -44,6 +44,9 @@ task RgtmotifanalysisMatching {
       ~{if (big_bed) then "--bigbed" else ""} \
       ~{if (normalize_bit_score) then "--normalize-bitscore" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     organism: "Organism considered on the analysis. Must have been\\nsetup in the RGTDATA folder. Common choices are hg19\\nor hg38."
     fpr: "False positive rate cutoff."

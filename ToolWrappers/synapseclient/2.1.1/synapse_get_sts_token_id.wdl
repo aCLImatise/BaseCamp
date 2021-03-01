@@ -12,6 +12,9 @@ task SynapseGetststokenId {
       ~{get_sts_token} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     synapse: ""

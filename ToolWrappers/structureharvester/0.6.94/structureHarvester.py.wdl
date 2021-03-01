@@ -16,6 +16,9 @@ task StructureHarvesterpy {
       ~{if (evan_no) then "--evanno" else ""} \
       ~{if (clump_p) then "--clumpp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "The structure Results/ directory."
     out: "The out directory. If it does not exist, it will be\\ncreated. Output written to summary.txt"

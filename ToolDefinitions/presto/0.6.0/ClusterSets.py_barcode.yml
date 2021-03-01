@@ -5,141 +5,141 @@ command:
 positional: []
 named:
 - !Flag
-  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
-    \ None)"
+  optional: true
   synonyms:
   - -s
+  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
+    \ None)"
   args: !RepeatFlagArg
     name: SEQ_FILES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
   description: "Explicit output file name(s). Note, this argument\ncannot be used\
     \ with the --failed, --outdir, or\n--outname arguments. If unspecified, then the\
     \ output\nfilename will be based on the input filename(s).\n(default: None)"
-  synonyms:
-  - -o
   args: !RepeatFlagArg
     name: OUT_FILES
-  optional: true
 - !Flag
-  description: "Specify to changes the output directory to the\nlocation specified.\
-    \ The input file directory is used\nif this is not specified. (default: None)"
+  optional: true
   synonyms:
   - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
   args: !SimpleFlagArg
     name: OUT_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outname
   description: "Changes the prefix of the successfully processed\noutput file to the\
     \ string specified. May not be\nspecified with multiple input files. (default:\
     \ None)"
-  synonyms:
-  - --outname
   args: !SimpleFlagArg
     name: OUT_NAME
-  optional: true
 - !Flag
-  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
+  optional: true
   synonyms:
   - --fasta
+  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --delim
   description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
     annotation blocks, field names and values, and values\nwithin a field, respectively.\
     \ (default: ('|', '=',\n','))"
-  synonyms:
-  - --delim
   args: !SimpleFlagArg
     name: DELIMITER
-  optional: true
 - !Flag
-  description: "The number of simultaneous computational processes to\nexecute (CPU\
-    \ cores to utilized). (default: 8)"
+  optional: true
   synonyms:
   - --nproc
+  description: "The number of simultaneous computational processes to\nexecute (CPU\
+    \ cores to utilized). (default: 8)"
   args: !SimpleFlagArg
     name: NPROC
-  optional: true
 - !Flag
-  description: "The name of the output annotation field to add with\nthe cluster information\
-    \ for each sequence. (default:\nCLUSTER)"
+  optional: true
   synonyms:
   - -k
+  description: "The name of the output annotation field to add with\nthe cluster information\
+    \ for each sequence. (default:\nCLUSTER)"
   args: !SimpleFlagArg
     name: CLUSTER_FIELD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ident
   description: "The sequence identity threshold to use for clustering.\nNote, how\
     \ identity is calculated is specific to the\nclustering application used. (default:\
     \ 0.9)"
-  synonyms:
-  - --ident
   args: !SimpleFlagArg
     name: IDENT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --length
   description: "The minimum allowed shorter/longer sequence length\nratio allowed\
     \ within a cluster. Setting this value to\n1.0 will require identical length matches\
     \ within\nclusters. A value of 0.0 will allow clusters\ncontaining any length\
     \ of substring. (default: 0.0)"
-  synonyms:
-  - --length
   args: !SimpleFlagArg
     name: LENGTH_RATIO
-  optional: true
 - !Flag
-  description: "A string to use as the prefix for each cluster\nidentifier. By default,\
-    \ cluster identifiers will be\nnumeric values only. (default: )"
+  optional: true
   synonyms:
   - --prefix
+  description: "A string to use as the prefix for each cluster\nidentifier. By default,\
+    \ cluster identifiers will be\nnumeric values only. (default: )"
   args: !SimpleFlagArg
     name: CLUSTER_PREFIX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cluster
   description: "The clustering tool to use for assigning clusters.\nMust be one of\
     \ usearch, vsearch or cd-hit-est. Note,\nfor cd-hit-est the maximum memory limit\
     \ is set to 3GB.\n(default: usearch)"
-  synonyms:
-  - --cluster
   args: !ChoiceFlagArg
     choices: !!set
       cd-hit-est:
       vsearch:
       usearch:
-  optional: true
 - !Flag
-  description: "The name or path of the usearch, vsearch or cd-hit-est\nexecutable.\
-    \ (default: None)"
+  optional: true
   synonyms:
   - --exec
+  description: "The name or path of the usearch, vsearch or cd-hit-est\nexecutable.\
+    \ (default: None)"
   args: !SimpleFlagArg
     name: CLUSTER_EXEC
-  optional: true
 - !Flag
-  description: "The annotation field containing barcode sequences.\n(default: BARCODE)\n"
+  optional: true
   synonyms:
   - -f
+  description: "The annotation field containing barcode sequences.\n(default: BARCODE)\n"
   args: !SimpleFlagArg
     name: BARCODE_FIELD
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: ClusterSets.py barcode [--version] [-h] -s SEQ_FILES [SEQ_FILES\
   \ ...]\n                              [-o OUT_FILES [OUT_FILES ...]]\n         \
   \                     [--outdir OUT_DIR] [--outname OUT_NAME]\n                \
@@ -194,3 +194,4 @@ help_text: "usage: ClusterSets.py barcode [--version] [-h] -s SEQ_FILES [SEQ_FIL
   \ BARCODE)\n"
 generated_using:
 - --help
+docker_image:

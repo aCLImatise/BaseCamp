@@ -3,31 +3,78 @@ command:
 - pmp_bf
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: pmp
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: tree file
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: MEME file
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "--model single|average|jc|k2|f81|f84|hky|tn (default=f81)\n--pur-pyr\
-    \ <float> (default=1.0)\n--transition-transversion <float> (default=0.5)\n--bg\
-    \ <float> (default=1.0)\n--fg <float> (default=1.0)\n--motif <id> (default=all)\n\
-    --bfile <background> (default from motif file)\n--pseudocount <float> (default=0.1)\n\
-    --ustar <label>\n--verbosity [1|2|3|4] (default 2)"
+  optional: true
   synonyms:
   - --hb
-  args: !EmptyFlagArg {}
+  - --model
+  description: '|average|jc|k2|f81|f84|hky|tn (default=f81)'
+  args: !SimpleFlagArg
+    name: single
+- !Flag
   optional: true
+  synonyms:
+  - --pur-pyr
+  description: (default=1.0)
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --transition-transversion
+  description: (default=0.5)
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --bg
+  description: (default=1.0)
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --fg
+  description: (default=1.0)
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --motif
+  description: (default=all)
+  args: !SimpleFlagArg
+    name: id
+- !Flag
+  optional: true
+  synonyms:
+  - --bfile
+  description: (default from motif file)
+  args: !SimpleFlagArg
+    name: background
+- !Flag
+  optional: true
+  synonyms:
+  - --pseudocount
+  description: (default=0.1)
+  args: !SimpleFlagArg
+    name: float
 parent:
 subcommands: []
 usage: []
@@ -43,3 +90,4 @@ help_text: "Usage: pmp [options] <tree file> <MEME file>\n\n   Options:\n     --
   \ (default 2)\n\n    Prints the FP and FN rate at each of 10000 score values.\n\n\
   \    Output format: [<motif_id> score <score> FPR <fpr> TPR <tpr>]+\n"
 generated_using: []
+docker_image:

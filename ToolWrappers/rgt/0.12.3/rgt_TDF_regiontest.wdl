@@ -62,6 +62,9 @@ task RgtTDFRegiontest {
       ~{if (rm) then "-rm" else ""} \
       ~{if (par) then "-par" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_name: "Input file name for RNA sequence (in fasta format)"
     rl: "Input list for paths to all RNA sequences (in fasta format)"

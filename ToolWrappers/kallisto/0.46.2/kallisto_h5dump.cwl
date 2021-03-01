@@ -3,12 +3,12 @@ id: kallisto_h5dump.cwl
 inputs:
 - id: in_output_dir
   doc: Directory to write output to
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output-dir
 - id: in_arguments
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 - id: in_abundance_doth_five
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: Directory to write output to
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kallisto

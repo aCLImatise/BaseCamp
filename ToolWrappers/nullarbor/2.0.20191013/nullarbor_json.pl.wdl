@@ -12,6 +12,9 @@ task Nullarborjsonpl {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dir: "Nullarbor result folder"
     quiet: "No output"

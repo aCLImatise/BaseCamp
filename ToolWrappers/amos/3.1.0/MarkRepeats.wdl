@@ -20,6 +20,9 @@ task MarkRepeats {
       ~{if (agressive) then "-agressive" else ""} \
       ~{if (b) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_coverage_repeats: ""
     no_path_repeats: ""

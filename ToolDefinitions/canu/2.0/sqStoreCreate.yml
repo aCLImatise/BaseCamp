@@ -4,47 +4,40 @@ command:
 positional: []
 named:
 - !Flag
-  description: load raw reads into new seqStore
+  optional: true
   synonyms:
   - -o
+  description: load raw reads into new seqStore
   args: !SimpleFlagArg
     name: seqStore
-  optional: true
 - !Flag
-  description: discard reads shorter than L
+  optional: true
   synonyms:
   - -minlength
+  description: discard reads shorter than L
   args: !SimpleFlagArg
     name: L
-  optional: true
 - !Flag
-  description: expected genome size, for keeping only the longest reads
+  optional: true
   synonyms:
   - -genomesize
+  description: expected genome size, for keeping only the longest reads
   args: !SimpleFlagArg
     name: G
-  optional: true
 - !Flag
-  description: desired coverage in long reads
+  optional: true
   synonyms:
   - -coverage
+  description: desired coverage in long reads
   args: !SimpleFlagArg
     name: C
-  optional: true
 - !Flag
-  description: seqFile1 [seqFile2] [...]
-  synonyms:
-  - -technology-status
-  args: !SimpleFlagArg
-    name: LIBRARY_NAME
   optional: true
-- !Flag
-  description: "-pacbio-corrected\n-pacbio-trimmed\n-pacbio-raw\n-nanopore-raw\n-nanopore-corrected\n\
-    -nanopore-trimmed"
   synonyms:
   - -pacbio-raw
-  args: !EmptyFlagArg {}
-  optional: true
+  description: ''
+  args: !RepeatFlagArg
+    name: file1
 parent:
 subcommands: []
 usage: []
@@ -67,3 +60,4 @@ help_text: "usage: sqStoreCreate -o seqStore [-minlength L] [-genomesize G -cove
   \ etc) supplied.\n"
 generated_using:
 - --help
+docker_image:

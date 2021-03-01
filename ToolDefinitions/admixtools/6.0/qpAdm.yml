@@ -11,15 +11,15 @@ subcommands:
   - file
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: bad
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: params....
-    optional: false
+    description: ''
   named: []
   parent: !Command
     command: *id001
@@ -31,15 +31,15 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: bad
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: params....
-        optional: false
+        description: ''
       named: []
       parent: !Command
         command: *id001
@@ -51,15 +51,15 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: bad
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: params....
-            optional: false
+            description: ''
           named: []
           parent: !Command
             command: *id001
@@ -71,65 +71,106 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: bad
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: params....
-                optional: false
+                description: ''
               named: []
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: '... use parameters from <file> .'
-                  synonyms:
-                  - -p
-                  args: !SimpleFlagArg
-                    name: file
-                  optional: true
-                - !Flag
-                  description: '... print version and exit.'
-                  synonyms:
-                  - -v
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: bad
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: params....
-                    optional: false
+                    description: ''
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -p
+                      description: '... use parameters from <file> .'
+                      args: !SimpleFlagArg
+                        name: file
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -v
+                      description: '... print version and exit.'
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: bad
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: params....
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: bad params.... \n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      description: '... Print this message and exit.'
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: qpAdm [options] <file>\n   -h          ...\
+                      \ Print this message and exit.\n   -p <file>   ... use parameters\
+                      \ from <file> .\n   -v          ... print version and exit.\n\
+                      \   -V          ... toggle verbose mode ON.\n   -V         \
+                      \ ... toggle details mode ON.\n"
+                    generated_using: &id005
+                    - -h
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: bad params.... \n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: '... Print this message and exit.'
-                  synonyms:
-                  - -h
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "Usage: qpAdm [options] <file>\n   -h          ... Print\
@@ -137,8 +178,8 @@ subcommands:
                   \ <file> .\n   -v          ... print version and exit.\n   -V  \
                   \        ... toggle verbose mode ON.\n   -V          ... toggle\
                   \ details mode ON.\n"
-                generated_using: &id005
-                - -h
+                generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -146,6 +187,7 @@ subcommands:
               version_flag:
               help_text: "Usage: bad params.... \n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -155,6 +197,7 @@ subcommands:
               \   -v          ... print version and exit.\n   -V          ... toggle\
               \ verbose mode ON.\n   -V          ... toggle details mode ON.\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -162,6 +205,7 @@ subcommands:
           version_flag:
           help_text: "Usage: bad params.... \n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -171,6 +215,7 @@ subcommands:
           \      ... print version and exit.\n   -V          ... toggle verbose mode\
           \ ON.\n   -V          ... toggle details mode ON.\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -178,6 +223,7 @@ subcommands:
       version_flag:
       help_text: "Usage: bad params.... \n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -187,6 +233,7 @@ subcommands:
       \  ... print version and exit.\n   -V          ... toggle verbose mode ON.\n\
       \   -V          ... toggle details mode ON.\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -194,6 +241,7 @@ subcommands:
   version_flag:
   help_text: "Usage: bad params.... \n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -203,3 +251,4 @@ help_text: "Usage: qpAdm [options] <file>\n   -h          ... Print this message
   \ version and exit.\n   -V          ... toggle verbose mode ON.\n   -V         \
   \ ... toggle details mode ON.\n"
 generated_using: *id005
+docker_image:

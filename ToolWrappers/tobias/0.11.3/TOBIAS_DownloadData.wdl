@@ -22,6 +22,9 @@ task TOBIASDownloadData {
       ~{if (force) then "--force" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     endpoint: "Link to the s3 server (default: The loosolab s3 server)"
     bucket: "Name of bucket to download (default: data-tobias-2020)"

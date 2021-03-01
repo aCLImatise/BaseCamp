@@ -20,6 +20,9 @@ task DeepacliveTest {
       ~{if (keep) then "--keep" else ""} \
       ~{if defined(scale) then ("--scale " +  '"' + scale + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     deepac_command_use: "DeePaC command to use (switches builtin models)."
     custom: "Use a custom model."

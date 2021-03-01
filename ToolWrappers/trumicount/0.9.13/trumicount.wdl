@@ -76,6 +76,9 @@ task Trumicount {
       ~{if (plot_var_logy) then "--plot-var-logy" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bam: "read UMIs from FILE (uses `umi_tools group`)"
     input_umi_tools_group_out: "read UMIs from FILE produced by `umi_tools group`"

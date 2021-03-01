@@ -12,6 +12,9 @@ task Equicktandem {
       ~{if (threshold) then "-threshold" else ""} \
       ~{if (orig_file) then "-origfile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_repeat: "integer    [600] Maximum repeat size (Any integer\\nvalue)"
     threshold: "integer    [20] Threshold score (Any integer value)"

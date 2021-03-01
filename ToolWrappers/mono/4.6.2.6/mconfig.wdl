@@ -14,6 +14,9 @@ task Mconfig {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if defined(target) then ("--target " +  '"' + target + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Read the specified config file in addition to\\nthe standard ones. Settings in this file override ones\\nin the other files."
     target: "Use this target when executing 'command'"

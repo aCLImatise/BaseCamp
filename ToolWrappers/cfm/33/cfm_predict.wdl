@@ -20,6 +20,9 @@ task Cfmpredict {
       ~{output_filename} \
       ~{apply_post_processing}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_smiles_or_inch_i: ""
     prob_thresh_for_prune: ""

@@ -13,7 +13,7 @@ task Mechdump {
     File? cookie_file
     String? agent
     Int? agent_alias
-    Boolean? show_urls_as
+    Boolean? show_urls_relative
     String dump
     String dumps
     String proxy
@@ -106,8 +106,11 @@ task Mechdump {
       ~{if defined(cookie_file) then ("--cookie-file " +  '"' + cookie_file + '"') else ""} \
       ~{if defined(agent) then ("--agent " +  '"' + agent + '"') else ""} \
       ~{if defined(agent_alias) then ("--agent-alias " +  '"' + agent_alias + '"') else ""} \
-      ~{if (show_urls_as) then "--absolute" else ""}
+      ~{if (show_urls_relative) then "--absolute" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     headers: "Dump HTTP response headers"
     dump_table_forms: "Dump table of forms (default action)"
@@ -120,7 +123,7 @@ task Mechdump {
     cookie_file: "Set the filename to use for persistent cookies"
     agent: "Specify the UserAgent to pass"
     agent_alias: "Specify the alias for the UserAgent to pass.\\nPick one of:\\n* Windows IE 6\\n* Windows Mozilla\\n* Mac Safari\\n* Mac Mozilla\\n* Linux Mozilla\\n* Linux Konqueror"
-    show_urls_as: "Show URLs as absolute, even if relative in the page"
+    show_urls_relative: "Show URLs as absolute, even if relative in the page"
     dump: ""
     dumps: ""
     proxy: ""

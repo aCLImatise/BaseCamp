@@ -3,137 +3,402 @@ command:
 - cwltool
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: cwl_document
   description: "path or URL to a CWL Workflow, CommandLineTool, or\nExpressionTool.\
     \ If the `inputs_object` has a\n`cwl:tool` field indicating the path or URL to\
     \ the\ncwl_document, then the `workflow` argument is\noptional."
-  position: 0
-  name: cwl_document
-  optional: false
 - !Positional
-  description: "path or URL to a YAML or JSON formatted description of\nthe required\
-    \ input values for the given\n`cwl_document`."
+  optional: false
   position: 1
   name: inputs_object
+  description: "path or URL to a YAML or JSON formatted description of\nthe required\
+    \ input values for the given\n`cwl_document`."
+- !Positional
   optional: false
+  position: 1
+  name: notifications.
+  description: --js-console          Enable javascript console output
+- !Positional
+  optional: false
+  position: 0
+  name: only
+  description: --overrides OVERRIDES
 named:
 - !Flag
-  description: "If enabled, store the Docker container ID into a file.\nSee --cidfile-dir\
-    \ to specify the directory."
-  synonyms:
-  - --record-container-id
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: "Directory for storing the Docker container ID file.\nThe default is\
-    \ the current directory"
-  synonyms:
-  - --cidfile-dir
-  args: !SimpleFlagArg
-    name: CIDFILE_DIR
-  optional: true
-- !Flag
-  description: "Specify a prefix to the container ID filename. Final\nfile name will\
-    \ be followed by a timestamp. The default\nis no prefix.\n"
-  synonyms:
-  - --cidfile-prefix
-  args: !SimpleFlagArg
-    name: CIDFILE_PREFIX
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --parallel
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --outdir
-  args: !SimpleFlagArg
-    name: OUTDIR
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - --basedir
+  - --outdir
+  description: Output directory, default current directory
   args: !SimpleFlagArg
     name: BASEDIR
+- !Flag
   optional: true
+  synonyms:
+  - --parallel
+  description: "[experimental] Run jobs in parallel. Does not\ncurrently keep track\
+    \ of ResourceRequirements like the\nnumber of coresor memory and can overload\
+    \ this system"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --preserve-environment
+  description: "Preserve specific environment variable when running\nCommandLineTools.\
+    \ May be provided multiple times."
+  args: !SimpleFlagArg
+    name: ENVVAR
+- !Flag
+  optional: true
+  synonyms:
+  - --preserve-entire-environment
+  description: "Preserve all environment variable when running\nCommandLineTools."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rm-container
+  description: "Delete Docker container used by jobs after they exit\n(default)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --leave-container
+  description: Do not delete Docker container used by jobs after they
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp-outdir-prefix
+  description: Path prefix for intermediate output directories
+  args: !SimpleFlagArg
+    name: TMP_OUTDIR_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --cachedir
+  description: "Directory to cache intermediate workflow outputs to\navoid recomputing\
+    \ steps."
+  args: !SimpleFlagArg
+    name: CACHEDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --rm-tmpdir
+  description: Delete intermediate temporary directories (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --leave-tmpdir
+  description: Do not delete intermediate temporary directories
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --move-outputs
+  description: "Move output files to the workflow output directory and\ndelete intermediate\
+    \ output directories (default)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --leave-outputs
+  description: Leave output files in intermediate output directories.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --copy-outputs
+  description: "Copy output files to the workflow output directory,\ndon't delete\
+    \ intermediate output directories."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --enable-pull
+  description: Try to pull Docker images
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disable-pull
+  description: Do not try to pull Docker images
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rdf-serializer
+  description: "Output RDF serialization format used by --print-rdf\n(one of turtle\
+    \ (default), n3, nt, xml)"
+  args: !SimpleFlagArg
+    name: RDF_SERIALIZER
+- !Flag
+  optional: true
+  synonyms:
+  - --eval-timeout
+  description: "Time to wait for a Javascript expression to evaluate\nbefore giving\
+    \ an error, default 20s."
+  args: !SimpleFlagArg
+    name: EVAL_TIMEOUT
+- !Flag
+  optional: true
+  synonyms:
+  - --print-rdf
+  description: Print corresponding RDF graph for workflow and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print-dot
+  description: Print workflow visualization in graphviz format and
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print-deps
+  description: Print CWL document dependencies.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print-input-deps
+  description: Print input object document dependencies.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pack
+  description: Combine components into single document and print.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --validate
+  description: Validate CWL document only.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print-supported-versions
+  description: Print supported CWL specs.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --strict
+  description: "Strict validation (unrecognized or out of place fields\nare error)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --non-strict
+  description: Lenient validation (ignore unrecognized fields)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-schemas
+  description: Skip loading of schemas
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Default logging
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Only print warnings and errors.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Print even more logging
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --timestamps
+  description: Add timestamps to the errors, warnings, and
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --user-space-docker-cmd
+  description: "(Linux/OS X only) Specify a user space docker command\n(like udocker\
+    \ or dx-docker) that will be used to call\n'pull' and 'run'"
+  args: !SimpleFlagArg
+    name: CMD
+- !Flag
+  optional: true
+  synonyms:
+  - --singularity
+  description: "[experimental] Use Singularity runtime for running\ncontainers. Requires\
+    \ Singularity v2.3.2+ and Linux\nwith kernel version v3.18+ or with overlayfs\
+    \ support\nbackported."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-container
+  description: "Do not execute jobs in a Docker container, even when\n`DockerRequirement`\
+    \ is specified under `hints`."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tool-help
+  description: Print command line help for tool
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --relative-deps
+  description: "When using --print-deps, print paths relative to\nprimary file or\
+    \ current working directory."
+  args: !ChoiceFlagArg
+    choices: !!set
+      primary:
+      cwd:
+- !Flag
+  optional: true
+  synonyms:
+  - --enable-dev
+  description: Enable loading and running development versions of CWL
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-match-user
+  description: Disable passing the current uid to `docker run --user`
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disable-net
+  description: "Use docker's default networking for containers; the\ndefault is to\
+    \ enable networking."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --custom-net
+  description: "Will be passed to `docker run` as the '--net'\nparameter. Implies\
+    \ '--enable-net'."
+  args: !SimpleFlagArg
+    name: CUSTOM_NET
+- !Flag
+  optional: true
+  synonyms:
+  - --enable-ga4gh-tool-registry
+  description: Enable resolution using GA4GH tool registry API
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disable-ga4gh-tool-registry
+  description: Disable resolution using GA4GH tool registry API
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --add-ga4gh-tool-registry
+  description: "Add a GA4GH tool registry endpoint to use for\nresolution, default\
+    \ ['https://dockstore.org:8443']"
+  args: !SimpleFlagArg
+    name: GA4GH_TOOL_REGISTRIES
+- !Flag
+  optional: true
+  synonyms:
+  - --on-error
+  description: "Desired workflow behavior when a step fails. One of\n'stop' or 'continue'.\
+    \ Default is 'stop'."
+  args: !ChoiceFlagArg
+    choices: !!set
+      continue:
+      stop:
+- !Flag
+  optional: true
+  synonyms:
+  - --compute-checksum
+  description: Compute checksum of contents while collecting outputs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-compute-checksum
+  description: "Do not compute checksum of contents while collecting\noutputs"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --relax-path-checks
+  description: "Relax requirements on path names to permit spaces and\nhash characters."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --make-template
+  description: Generate a template input object
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force-docker-pull
+  description: Pull latest docker image even if it is locally present
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-read-only
+  description: Do not set root directory in the container as read-
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --record-container-id
+  description: "If enabled, store the Docker container ID into a file.\nSee --cidfile-dir\
+    \ to specify the directory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cidfile-dir
+  description: "Directory for storing the Docker container ID file.\nThe default is\
+    \ the current directory"
+  args: !SimpleFlagArg
+    name: CIDFILE_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --cidfile-prefix
+  description: "Specify a prefix to the container ID filename. Final\nfile name will\
+    \ be followed by a timestamp. The default\nis no prefix.\n"
+  args: !SimpleFlagArg
+    name: CIDFILE_PREFIX
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--basedir BASEDIR\n--outdir OUTDIR\
-    \       Output directory, default current directory\n--parallel            [experimental]\
-    \ Run jobs in parallel. Does not\ncurrently keep track of ResourceRequirements\
-    \ like the\nnumber of coresor memory and can overload this system\n--preserve-environment\
-    \ ENVVAR\nPreserve specific environment variable when running\nCommandLineTools.\
-    \ May be provided multiple times.\n--preserve-entire-environment\nPreserve all\
-    \ environment variable when running\nCommandLineTools.\n--rm-container       \
-    \ Delete Docker container used by jobs after they exit\n(default)\n--leave-container\
-    \     Do not delete Docker container used by jobs after they\nexit\n--tmpdir-prefix\
-    \ TMPDIR_PREFIX\nPath prefix for temporary directories\n--tmp-outdir-prefix TMP_OUTDIR_PREFIX\n\
-    Path prefix for intermediate output directories\n--cachedir CACHEDIR   Directory\
-    \ to cache intermediate workflow outputs to\navoid recomputing steps.\n--rm-tmpdir\
-    \           Delete intermediate temporary directories (default)\n--leave-tmpdir\
-    \        Do not delete intermediate temporary directories\n--move-outputs    \
-    \    Move output files to the workflow output directory and\ndelete intermediate\
-    \ output directories (default).\n--leave-outputs       Leave output files in intermediate\
-    \ output directories.\n--copy-outputs        Copy output files to the workflow\
-    \ output directory,\ndon't delete intermediate output directories.\n--enable-pull\
-    \         Try to pull Docker images\n--disable-pull        Do not try to pull\
-    \ Docker images\n--rdf-serializer RDF_SERIALIZER\nOutput RDF serialization format\
-    \ used by --print-rdf\n(one of turtle (default), n3, nt, xml)\n--eval-timeout\
-    \ EVAL_TIMEOUT\nTime to wait for a Javascript expression to evaluate\nbefore giving\
-    \ an error, default 20s.\n--print-rdf           Print corresponding RDF graph\
-    \ for workflow and exit\n--print-dot           Print workflow visualization in\
-    \ graphviz format and\nexit\n--print-pre           Print CWL document after preprocessing.\n\
-    --print-deps          Print CWL document dependencies.\n--print-input-deps   \
-    \ Print input object document dependencies.\n--pack                Combine components\
-    \ into single document and print.\n--version             Print version and exit\n\
-    --validate            Validate CWL document only.\n--print-supported-versions\n\
-    Print supported CWL specs.\n--strict              Strict validation (unrecognized\
-    \ or out of place fields\nare error)\n--non-strict          Lenient validation\
-    \ (ignore unrecognized fields)\n--skip-schemas        Skip loading of schemas\n\
-    --verbose             Default logging\n--quiet               Only print warnings\
-    \ and errors.\n--debug               Print even more logging\n--timestamps   \
-    \       Add timestamps to the errors, warnings, and\nnotifications.\n--js-console\
-    \          Enable javascript console output\n--user-space-docker-cmd CMD\n(Linux/OS\
-    \ X only) Specify a user space docker command\n(like udocker or dx-docker) that\
-    \ will be used to call\n'pull' and 'run'\n--singularity         [experimental]\
-    \ Use Singularity runtime for running\ncontainers. Requires Singularity v2.3.2+\
-    \ and Linux\nwith kernel version v3.18+ or with overlayfs support\nbackported.\n\
-    --no-container        Do not execute jobs in a Docker container, even when\n`DockerRequirement`\
-    \ is specified under `hints`.\n--tool-help           Print command line help for\
-    \ tool\n--relative-deps {primary,cwd}\nWhen using --print-deps, print paths relative\
-    \ to\nprimary file or current working directory.\n--enable-dev          Enable\
-    \ loading and running development versions of CWL\nspec.\n--enable-ext       \
-    \   Enable loading and running cwltool extensions to CWL\nspec.\n--default-container\
-    \ DEFAULT_CONTAINER\nSpecify a default docker container that will be used\nif\
-    \ the workflow fails to specify one.\n--no-match-user       Disable passing the\
-    \ current uid to `docker run --user`\n--disable-net         Use docker's default\
-    \ networking for containers; the\ndefault is to enable networking.\n--custom-net\
-    \ CUSTOM_NET\nWill be passed to `docker run` as the '--net'\nparameter. Implies\
-    \ '--enable-net'.\n--enable-ga4gh-tool-registry\nEnable resolution using GA4GH\
-    \ tool registry API\n--disable-ga4gh-tool-registry\nDisable resolution using GA4GH\
-    \ tool registry API\n--add-ga4gh-tool-registry GA4GH_TOOL_REGISTRIES\nAdd a GA4GH\
-    \ tool registry endpoint to use for\nresolution, default ['https://dockstore.org:8443']\n\
-    --on-error {stop,continue}\nDesired workflow behavior when a step fails. One of\n\
-    'stop' or 'continue'. Default is 'stop'.\n--compute-checksum    Compute checksum\
-    \ of contents while collecting outputs\n--no-compute-checksum\nDo not compute\
-    \ checksum of contents while collecting\noutputs\n--relax-path-checks   Relax\
-    \ requirements on path names to permit spaces and\nhash characters.\n--make-template\
-    \       Generate a template input object\n--force-docker-pull   Pull latest docker\
-    \ image even if it is locally present\n--no-read-only        Do not set root directory\
-    \ in the container as read-\nonly\n--overrides OVERRIDES\nRead process requirement\
-    \ overrides from file."
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version and exit
+  args: !EmptyFlagArg {}
 help_text: "usage: cwltool [-h] [--basedir BASEDIR] [--outdir OUTDIR] [--parallel]\n\
   \               [--preserve-environment ENVVAR | --preserve-entire-environment]\n\
   \               [--rm-container | --leave-container] [--record-container-id]\n \
@@ -250,3 +515,4 @@ help_text: "usage: cwltool [-h] [--basedir BASEDIR] [--outdir OUTDIR] [--paralle
   \                       is no prefix.\n"
 generated_using:
 - --help
+docker_image:

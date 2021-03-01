@@ -3,17 +3,21 @@ command:
 - agat_sp_fix_longest_ORF.pl
 positional:
 - !Positional
-  description: 'Description:'
+  optional: false
   position: 0
   name: agat_sp_fix_longest_ORF.pl
-  optional: false
+  description: 'Description:'
 - !Positional
-  description: -h or --help
+  optional: false
   position: 0
   name: verbosity
-  optional: false
+  description: -h or --help
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --model
   description: "Kind of ORF Model you want to fix. By default all are used. To\nselect\
     \ specific models writte e.g --model 1,4\nModel1 = The original ORF is part of\
     \ the new ORF; the new ORF is\nlonger\nModel2 = The original ORF and the new one\
@@ -29,59 +33,59 @@ named:
     nucleotides but prediction tool did not annotate this part (e.g\nincomplete evidence\
     \ in evidence-based prediction)\nModel6 = The ORF is same size but not correct\
     \ frame (+1 or +2 bp\ngives a frame shift)."
-  synonyms:
-  - -m
-  - --model
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: Input GTF/GFF file.
+  optional: true
   synonyms:
   - --gff
+  description: Input GTF/GFF file.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Imput fasta file.
+  optional: true
   synonyms:
   - --fa
   - --fasta
+  description: Imput fasta file.
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: Codon table to use. [default 1]
+  optional: true
   synonyms:
   - --ct
   - --codon
   - --table
+  description: Codon table to use. [default 1]
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --split
   description: "This option is usefull for Model2. Indeed when the prediction is\n\
     non overlapping the original cds, it is possible to split the\ngene into two different\
     \ genes. By default we don't split it. We\nkeep the longest. If you want to split\
     \ it type: -s"
-  synonyms:
-  - -s
-  - --split
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: ", --output , --out or --outfile\nOutput GFF file. If no output file\
-    \ is specified, the output will\nbe written to STDOUT."
+  optional: true
   synonyms:
   - -o
-  args: !EmptyFlagArg {}
-  optional: true
+  - --output
+  - --out
+  - --outfile
+  description: "Output GFF file. If no output file is specified, the output will\n\
+    be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
 - !Flag
-  description: verbose mode. Default off. -v 1 minimum verbosity, -v 3 maximum
+  optional: true
   synonyms:
   - -v
+  description: verbose mode. Default off. -v 1 minimum verbosity, -v 3 maximum
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -145,3 +149,4 @@ help_text: "\n -----------------------------------------------------------------
   \n"
 generated_using:
 - --help
+docker_image:

@@ -30,6 +30,9 @@ task CreateKUnitigsLargeK {
       ~{if defined(false_positive) then ("--false-positive " +  '"' + false_positive + '"') else ""} \
       ~{if defined(load) then ("--load " +  '"' + load + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mer: "*k-mer size"
     nb_mers: "*Estimated number of distinct k-mers"

@@ -72,6 +72,9 @@ task Spamo {
       ~{if defined(verbosity) then ("-verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create_directory_write: "create the directory and write output files in it;\\nnot compatible with -oc"
     oc: "create the directory but if it already exists allow\\noverwriting the contents; default: spamo_out"

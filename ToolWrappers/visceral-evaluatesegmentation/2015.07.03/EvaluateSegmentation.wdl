@@ -20,6 +20,9 @@ task EvaluateSegmentation {
       ~{if (use) then "-use" else ""} \
       ~{if defined(default) then ("-default " +  '"' + default + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     thd: "=before evaluation convert fuzzy images to binary using threshold"
     xml: "=path to xml file where result should be saved"

@@ -14,6 +14,9 @@ task SamtoolsTview {
       ~{aln_dot_bam} \
       ~{ref_dot_fast_a}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam_tk: ""
     t_view: ""

@@ -18,6 +18,9 @@ task TbprofilerPerformancepyAnalyseBed {
       ~{if (it_ol) then "--itol" else ""} \
       ~{if defined(dir) then ("--dir " +  '"' + dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     it_ol: ""
     dir: ""

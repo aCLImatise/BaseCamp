@@ -32,6 +32,9 @@ task PairSeqpy {
       ~{if defined(act) then ("--act " +  '"' + act + '"') else ""} \
       ~{if defined(coord) then ("--coord " +  '"' + coord + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ordered_list_containingheadprimary: "An ordered list of FASTA/FASTQ files containing\\nhead/primary sequences. (default: None)"
     ordered_list_containingtailsecondary: "An ordered list of FASTA/FASTQ files containing\\ntail/secondary sequences. (default: None)"

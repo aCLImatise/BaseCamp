@@ -3,32 +3,32 @@ id: spaligner.cwl
 inputs:
 - id: in_datatype
   doc: 'type of sequences: nanopore, pacbio'
-  type: string
+  type: string?
   inputBinding:
     prefix: --datatype
 - id: in_sequences
   doc: path to fasta/fastq file with sequences
-  type: File
+  type: File?
   inputBinding:
     prefix: --sequences
 - id: in_graph
   doc: path to GFA-file or SPAdes saves folder
-  type: File
+  type: File?
   inputBinding:
     prefix: --graph
 - id: in_km_er
   doc: graph k-mer size (odd value)
-  type: long
+  type: long?
   inputBinding:
     prefix: --kmer
 - id: in_threads
   doc: '# of threads to use'
-  type: string
+  type: string?
   inputBinding:
     prefix: --threads
 - id: in_outdir
   doc: "output directory\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 outputs:
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: "output directory\n"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - spaligner

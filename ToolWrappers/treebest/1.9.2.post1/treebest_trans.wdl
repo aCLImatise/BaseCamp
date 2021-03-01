@@ -8,6 +8,9 @@ task TreebestTrans {
     treebest trans \
       ~{nucl_alignment}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nucl_alignment: ""
   }

@@ -3,82 +3,82 @@ command:
 - sawriter
 positional:
 - !Positional
-  description: sawriter fastaIn  (writes to fastIn.sa).
+  optional: false
   position: 0
   name: or
-  optional: false
+  description: sawriter fastaIn  (writes to fastIn.sa).
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -blt
   description: "Build a lookup table on prefixes of length 'p'. This speeds\nup lookups\
     \ considerably (more than the LCP table), but misses matches\nless than p when\
     \ searching."
-  synonyms:
-  - -blt
   args: !SimpleFlagArg
     name: p
-  optional: true
 - !Flag
-  description: Read in (one) fasta file as a compressed sequence file.
+  optional: true
   synonyms:
   - -4bit
+  description: Read in (one) fasta file as a compressed sequence file.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (default)  Uses the method of Larsson and Sadakane to build the array.
+  optional: true
   synonyms:
   - -larsson
+  description: (default)  Uses the method of Larsson and Sadakane to build the array.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -mamy
   description: "Uses the method of MAnber and MYers to build the array (slower than\
     \ larsson,\nand produces the same result. This is mainly for double checking\n\
     the correctness of larsson)."
-  synonyms:
-  - -mamy
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -kark
   description: "Use Karkkainen DS3 method for building the suffix array.  This will\
     \ probably be more\nslow than larsson, but takes only an extra N/(sqrt 3) extra\
     \ space."
-  synonyms:
-  - -kark
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (disabled for now!) Use the lightweight construction algorithm from
-    Manzini and Ferragina
+  optional: true
   synonyms:
   - -mafe
+  description: (disabled for now!) Use the lightweight construction algorithm from
+    Manzini and Ferragina
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use lightweight (sort of light) suffix array construction.  This is\
-    \ a bit more slow than\nnormal larsson."
+  optional: true
   synonyms:
   - -welter
+  description: "Use lightweight (sort of light) suffix array construction.  This is\
+    \ a bit more slow than\nnormal larsson."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: use a difference cover of size N for building the suffix array.  Valid
-    values are 7,32,64,111, and 2281.
+  optional: true
   synonyms:
   - -welterweight
+  description: use a difference cover of size N for building the suffix array.  Valid
+    values are 7,32,64,111, and 2281.
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -kar
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -manmy
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -104,3 +104,4 @@ help_text: "usage: sawriter saOut fastaIn [fastaIn2 fastaIn3 ...] [-blt p] [-lar
   \ the suffix array.  Valid values are 7,32,64,111, and 2281.\n"
 generated_using:
 - --help
+docker_image:

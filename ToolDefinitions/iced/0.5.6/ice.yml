@@ -3,36 +3,75 @@ command:
 - ice
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: normalization
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: ''
+  optional: true
+  synonyms:
+  - --filter_low_counts_perc
+  description: Percentage of reads to filter out
+  args: !SimpleFlagArg
+    name: FILTER_LOW_COUNTS_PERC
+- !Flag
+  optional: true
+  synonyms:
+  - --filter_high_counts_perc
+  description: Percentage of reads to filter out
+  args: !SimpleFlagArg
+    name: FILTER_HIGH_COUNTS_PERC
+- !Flag
+  optional: true
+  synonyms:
+  - --remove-all-zeros-loci
+  description: "If provided, all non-interacting loci will be removed\nprior to the\
+    \ filtering strategy chosen."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max_iter
+  - -m
+  description: Maximum number of iterations
+  args: !SimpleFlagArg
+    name: MAX_ITER
+- !Flag
+  optional: true
+  synonyms:
+  - --eps
+  - -e
+  description: Precision
+  args: !SimpleFlagArg
+    name: EPS
+- !Flag
+  optional: true
+  synonyms:
+  - --dense
+  - -d
+  - --output-bias
+  - -b
+  description: Output the bias vector
+  args: !SimpleFlagArg
+    name: OUTPUT_BIAS
+- !Flag
+  optional: true
   synonyms:
   - --results_filename
+  description: ''
   args: !SimpleFlagArg
     name: RESULTS_FILENAME
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--results_filename RESULTS_FILENAME,\
-    \ -r RESULTS_FILENAME\nresults_filename\n--filtering_perc FILTERING_PERC, -f FILTERING_PERC\n\
-    Percentage of reads to filter out\n--filter_low_counts_perc FILTER_LOW_COUNTS_PERC\n\
-    Percentage of reads to filter out\n--filter_high_counts_perc FILTER_HIGH_COUNTS_PERC\n\
-    Percentage of reads to filter out\n--remove-all-zeros-loci\nIf provided, all non-interacting\
-    \ loci will be removed\nprior to the filtering strategy chosen.\n--max_iter MAX_ITER,\
-    \ -m MAX_ITER\nMaximum number of iterations\n--eps EPS, -e EPS     Precision\n\
-    --dense, -d\n--output-bias OUTPUT_BIAS, -b OUTPUT_BIAS\nOutput the bias vector\n\
-    --verbose VERBOSE, -v VERBOSE\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: ICE normalization [-h] [--results_filename RESULTS_FILENAME]\n\
@@ -56,3 +95,4 @@ help_text: "usage: ICE normalization [-h] [--results_filename RESULTS_FILENAME]\
   \                        Output the bias vector\n  --verbose VERBOSE, -v VERBOSE\n"
 generated_using:
 - --help
+docker_image:

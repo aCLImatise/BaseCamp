@@ -4,6 +4,9 @@ task ValidateMummer {
   command <<<
     validate_mummer
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

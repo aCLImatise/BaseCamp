@@ -3,71 +3,79 @@ command:
 - plot_count_stats
 positional:
 - !Positional
-  description: --meta META           Full path to file containing metadata table.
-    This file
+  optional: false
   position: 0
   name: CHROM_STATS
-  optional: false
+  description: --meta META           Full path to file containing metadata table.
+    This file
 named:
 - !Flag
-  description: "--const_chr CONST_CHR\n[--var1_marker {color,shape,size}]\n[--var1_marker_vals\
-    \ VAR1_MARKER_VALS [VAR1_MARKER_VALS ...]]\n[--var2_marker {color,shape,size,none}]\n\
-    [--var2_marker_vals [VAR2_MARKER_VALS [VAR2_MARKER_VALS ...]]]\n[--marker_size\
-    \ MARKER_SIZE]\n[--marker_color MARKER_COLOR]\n[--marker_shape MARKER_SHAPE]\n\
-    [--marker_alpha MARKER_ALPHA]\n[--legend_marker_scale LEGEND_MARKER_SCALE]\n[--x_title\
-    \ X_TITLE] [--y_title Y_TITLE]"
-  synonyms:
-  - --first_chr
-  - --second_chr
-  args: !SimpleFlagArg
-    name: FIRST_CHR
   optional: true
-- !Flag
-  description: Full path to file containing table output by
   synonyms:
   - --input
+  description: Full path to file containing table output by
   args: !SimpleFlagArg
     name: INPUT
-  optional: true
 - !Flag
-  description: "'Prefix' of output files. This includes full path to\ndesired file\
-    \ and desired file name before suffix\n(suffix will be .pdf)."
+  optional: true
   synonyms:
   - --output_prefix
+  description: "'Prefix' of output files. This includes full path to\ndesired file\
+    \ and desired file name before suffix\n(suffix will be .pdf)."
   args: !SimpleFlagArg
     name: OUTPUT_PREFIX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --exclude_suffix
   description: "Text to remove from end of sample names in input file.\nDefault is\
     \ to remove nothing. Note that the sample\nnames in the input file have to match\
     \ the names in the\nmeta file AFTER they undergo this step."
-  synonyms:
-  - --exclude_suffix
   args: !SimpleFlagArg
     name: EXCLUDE_SUFFIX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --first_chr
+  description: "Chromosome to use a numerator on X-axis. For example,\nif one was\
+    \ comparing chrX and chrY, and using chr19 to\nnormalize, recommended values would\
+    \ be: --first_chr\nchrX --second_chr chrY --const_chr chr19."
+  args: !SimpleFlagArg
+    name: FIRST_CHR
+- !Flag
+  optional: true
+  synonyms:
+  - --second_chr
+  description: "Chromosome to use a numerator on Y-axis. For example,\nif one was\
+    \ comparing chrX and chrY, and using chr19 to\nnormalize, recommended values would\
+    \ be: --first_chr\nchrX --second_chr chrY --const_chr chr19."
+  args: !SimpleFlagArg
+    name: SECOND_CHR
+- !Flag
+  optional: true
+  synonyms:
+  - --const_chr
   description: "Chromosome to use denominator on both the X- and\nY-axis. For example,\
     \ if one was comparing chrX and\nchrY, and using chr19 to normalize, recommended\
     \ values\nwould be: --first_chr chrX --second_chr chrY\n--const_chr chr19."
-  synonyms:
-  - --const_chr
   args: !SimpleFlagArg
     name: CONST_CHR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --var1_marker
   description: "Way of designating variable 1 values in plot. Choices\nare 'color',\
     \ 'shape', or 'size'. Must be used in\nconjunction with --var1_marker_vals. Default\
     \ is\n'color'."
-  synonyms:
-  - --var1_marker
   args: !ChoiceFlagArg
     choices: !!set
       shape:
       size:
       color:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --var1_marker_vals
   description: "Marker values to use for variable 1 values. If\n--var1_marker is 'color',\
     \ then --var1_marker_vals\nshould be a space-separated list of Matplotlib colors\n\
     (e.g., 'red blue green'). If --var1_marker is 'shape'\nthen --var1_marker_vals\
@@ -75,25 +83,25 @@ named:
     \ D' for\nx, cicle, and Diamond). Finally, if --var1_marker is\n'size', then --var1_marker_vals\
     \ should be a space-\nseparated list of Matplotlib marker sizes in units of\n\
     points^2 (e.g., '5 10 15'). Default is 'red blue'."
-  synonyms:
-  - --var1_marker_vals
   args: !RepeatFlagArg
     name: VAR1_MARKER_VALS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --var2_marker
   description: "Way of designating variable 2 values in plot. Choices\nare 'color',\
     \ 'shape', or 'size'. Must be used in\nconjunction with --var2_marker_vals. Default\
     \ is\n'none', which will only process --var1_marker."
-  synonyms:
-  - --var2_marker
   args: !ChoiceFlagArg
     choices: !!set
       shape:
       size:
-      color:
       none:
-  optional: true
+      color:
 - !Flag
+  optional: true
+  synonyms:
+  - --var2_marker_vals
   description: "[VAR2_MARKER_VALS [VAR2_MARKER_VALS ...]]\nMarker values to use for\
     \ variable 2 values. If\n--var2_marker is 'color', then --var2_marker_vals\nshould\
     \ be a space-separated list of Matplotlib colors\n(e.g., 'red blue green'). If\
@@ -102,84 +110,81 @@ named:
     \ Finally, if --var2_marker is\n'size', then --var2_marker_vals should be a space-\n\
     separated list of Matplotlib marker sizes in units of\npoints^2 (e.g., '5 10 15').\
     \ Default is 'red blue'."
-  synonyms:
-  - --var2_marker_vals
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If 'size' is not selected for --var1_marker or\n--var2_marker, use\
-    \ this size for markers. Default is\n100."
+  optional: true
   synonyms:
   - --marker_size
+  description: "If 'size' is not selected for --var1_marker or\n--var2_marker, use\
+    \ this size for markers. Default is\n100."
   args: !SimpleFlagArg
     name: MARKER_SIZE
-  optional: true
 - !Flag
-  description: "If 'color' is not selected for --var1_marker or\n--var2_marker, use\
-    \ this color for markers. Default is\n'black'."
+  optional: true
   synonyms:
   - --marker_color
+  description: "If 'color' is not selected for --var1_marker or\n--var2_marker, use\
+    \ this color for markers. Default is\n'black'."
   args: !SimpleFlagArg
     name: MARKER_COLOR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --marker_shape
   description: "If 'shape' is not selected for --var1_marker or\n--var2_marker, use\
     \ this shape for markers (see\nmatplotlib for possible shapes). Default is 'o'\
     \ for\ncircles."
-  synonyms:
-  - --marker_shape
   args: !SimpleFlagArg
     name: MARKER_SHAPE
-  optional: true
 - !Flag
-  description: "Marker transparency ranging from 0.0 to 1.0 (1.0 being\nnontransparent).\
-    \ Default is 0.5."
+  optional: true
   synonyms:
   - --marker_alpha
+  description: "Marker transparency ranging from 0.0 to 1.0 (1.0 being\nnontransparent).\
+    \ Default is 0.5."
   args: !SimpleFlagArg
     name: MARKER_ALPHA
-  optional: true
 - !Flag
-  description: "Use this value to scale maker size in legend, if\ndesired. Default\
-    \ is 1.0, or no scaling."
+  optional: true
   synonyms:
   - --legend_marker_scale
+  description: "Use this value to scale maker size in legend, if\ndesired. Default\
+    \ is 1.0, or no scaling."
   args: !SimpleFlagArg
     name: LEGEND_MARKER_SCALE
-  optional: true
 - !Flag
-  description: "X axis title. Default is '<name of first chrom> /\n<name of const\
-    \ chrom> ratio'. E.g., 'chrX / chr19\nratio'"
+  optional: true
   synonyms:
   - --x_title
+  description: "X axis title. Default is '<name of first chrom> /\n<name of const\
+    \ chrom> ratio'. E.g., 'chrX / chr19\nratio'"
   args: !SimpleFlagArg
     name: X_TITLE
-  optional: true
 - !Flag
-  description: "Y axis title. Default is '<name of second chrom> /\n<name of const\
-    \ chrom> ratio'. E.g., 'chrY / chr19\nratio'\n"
+  optional: true
   synonyms:
   - --y_title
+  description: "Y axis title. Default is '<name of second chrom> /\n<name of const\
+    \ chrom> ratio'. E.g., 'chrY / chr19\nratio'\n"
   args: !SimpleFlagArg
     name: Y_TITLE
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - --meta
+  description: ''
   args: !SimpleFlagArg
     name: META
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: plot_count_stats [-h] --input INPUT --meta META --output_prefix\n\
@@ -274,3 +279,4 @@ help_text: "usage: plot_count_stats [-h] --input INPUT --meta META --output_pref
   \                   ratio'\n"
 generated_using:
 - --help
+docker_image:

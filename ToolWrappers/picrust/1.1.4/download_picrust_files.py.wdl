@@ -18,6 +18,9 @@ task DownloadPicrustFilespy {
       ~{if (with_confidence) then "--with_confidence" else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     type_of_prediction: "Type of functional predictions. Valid choices are: ko,\\ncog, rfam [default: ko]"

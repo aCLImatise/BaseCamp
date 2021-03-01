@@ -12,6 +12,9 @@ task RbtVcftotxt {
       ~{if defined(fmt) then ("--fmt " +  '"' + fmt + '"') else ""} \
       ~{if defined(info) then ("--info " +  '"' + info + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genotypes: "Display genotypes."
     fmt: "...     Select FORMAT tags."

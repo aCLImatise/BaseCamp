@@ -16,6 +16,9 @@ task Gifrop {
       ~{if (flank_dna) then "--flank_dna" else ""} \
       ~{if (get_islands) then "--get_islands" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads to use for parallel abricate commands"
     no_plots: "Don't generate plots"

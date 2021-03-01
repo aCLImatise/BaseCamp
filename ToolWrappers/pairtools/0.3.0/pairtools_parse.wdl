@@ -19,13 +19,13 @@ task PairtoolsParse {
     Int? nproc_out
     File? cmd_in
     File? cmd_out
-    String _dropseq_specified
+    String _specified_remove
     File file_dot
     String generated_dot
   }
   command <<<
     pairtools parse \
-      ~{_dropseq_specified} \
+      ~{_specified_remove} \
       ~{file_dot} \
       ~{generated_dot} \
       ~{if defined(chrom_s_path) then ("--chroms-path " +  '"' + chrom_s_path + '"') else ""} \
@@ -46,6 +46,9 @@ task PairtoolsParse {
       ~{if defined(cmd_in) then ("--cmd-in " +  '"' + cmd_in + '"') else ""} \
       ~{if defined(cmd_out) then ("--cmd-out " +  '"' + cmd_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chrom_s_path: "Chromosome order used to flip\\ninterchromosomal mates: path to a\\nchromosomes file (e.g. UCSC chrom.sizes or\\nsimilar) whose first column lists scaffold\\nnames. Any scaffolds not listed will be\\nordered lexicographically following the\\nnames provided.  [required]"
     output_file_path: "output file.  If the path ends with .gz or\\n.lz4, the output is\\npbgzip-/lz4-compressed.By default, the\\noutput is printed into stdout."
@@ -64,7 +67,7 @@ task PairtoolsParse {
     nproc_out: "Number of processes used by the auto-guessed\\noutput compressing command.  [default: 8]"
     cmd_in: "A command to decompress the input file. If\\nprovided, fully overrides the auto-guessed\\ncommand. Does not work with stdin. Must read\\ninput from stdin and print output into\\nstdout. EXAMPLE: pbgzip -dc -n 3"
     cmd_out: "A command to compress the output file. If\\nprovided, fully overrides the auto-guessed\\ncommand. Does not work with stdout. Must\\nread input from stdin and print output into\\nstdout. EXAMPLE: pbgzip -c -n 8"
-    _dropseq_specified: "--drop-seq                      If specified, remove sequences and PHREDs"
+    _specified_remove: "--drop-seq                      If specified, remove sequences and PHREDs"
     file_dot: "By default, statistics is not"
     generated_dot: "--report-alignment-end [5|3]    specifies whether the 5' or 3' end of the"
   }

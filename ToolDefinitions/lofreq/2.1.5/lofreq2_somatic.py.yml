@@ -3,191 +3,191 @@ command:
 - lofreq2_somatic.py
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: lofreq
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: somatic
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: Be verbose
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: Be verbose
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Normal BAM file
+  optional: true
   synonyms:
   - -n
   - --normal
+  description: Normal BAM file
   args: !SimpleFlagArg
     name: NORMAL
-  optional: true
 - !Flag
-  description: Tumor BAM file
+  optional: true
   synonyms:
   - -t
   - --tumor
+  description: Tumor BAM file
   args: !SimpleFlagArg
     name: TUMOR
-  optional: true
 - !Flag
-  description: Prefix for output files
+  optional: true
   synonyms:
   - -o
   - --outprefix
+  description: Prefix for output files
   args: !SimpleFlagArg
     name: OUTPREFIX
-  optional: true
 - !Flag
-  description: Reference fasta file
+  optional: true
   synonyms:
   - -f
   - --ref
+  description: Reference fasta file
   args: !SimpleFlagArg
     name: REF
-  optional: true
 - !Flag
-  description: BED file listing regions to restrict analysis to
+  optional: true
   synonyms:
   - -l
   - --bed
+  description: BED file listing regions to restrict analysis to
   args: !SimpleFlagArg
     name: BED
-  optional: true
 - !Flag
-  description: "vcf-file (bgzipped and index with tabix) containing\nknown germline\
-    \ variants (e.g. dbsnp for human"
+  optional: true
   synonyms:
   - -d
   - --dbsnp
+  description: "vcf-file (bgzipped and index with tabix) containing\nknown germline\
+    \ variants (e.g. dbsnp for human"
   args: !SimpleFlagArg
     name: DBSNP
-  optional: true
 - !Flag
-  description: Use this many threads for each call
+  optional: true
   synonyms:
   - --threads
+  description: Use this many threads for each call
   args: !SimpleFlagArg
     name: NUM_THREADS
-  optional: true
 - !Flag
-  description: "Type of multiple testing correction for tumor\n(default: bonf)"
+  optional: true
   synonyms:
   - --tumor-mtc
+  description: "Type of multiple testing correction for tumor\n(default: bonf)"
   args: !ChoiceFlagArg
     choices: !!set
+      bonf:
       holm-bonf:
       fdr:
-      bonf:
-  optional: true
 - !Flag
-  description: "Multiple testing correction alpha for tumor (default:\n1.000000)"
+  optional: true
   synonyms:
   - --tumor-mtc-alpha
+  description: "Multiple testing correction alpha for tumor (default:\n1.000000)"
   args: !SimpleFlagArg
     name: TUMOR_MTC_ALPHA
-  optional: true
 - !Flag
-  description: "Type of multiple testing correction for tumor\n(default: bonf)"
+  optional: true
   synonyms:
   - --indel-tumor-mtc
+  description: "Type of multiple testing correction for tumor\n(default: bonf)"
   args: !ChoiceFlagArg
     choices: !!set
+      bonf:
       holm-bonf:
       fdr:
-      bonf:
-  optional: true
 - !Flag
-  description: "Multiple testing correction alpha for tumor (default:\n0.010000)"
+  optional: true
   synonyms:
   - --indel-tumor-mtc-alpha
+  description: "Multiple testing correction alpha for tumor (default:\n0.010000)"
   args: !SimpleFlagArg
     name: INDEL_TUMOR_MTC_ALPHA
-  optional: true
 - !Flag
-  description: "Also call indels (see documentation on how to\npreprocess your BAM\
-    \ files)"
+  optional: true
   synonyms:
   - --call-indels
+  description: "Also call indels (see documentation on how to\npreprocess your BAM\
+    \ files)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Minimum coverage for somatic calls (default: 7)'
+  optional: true
   synonyms:
   - --min-cov
+  description: 'Minimum coverage for somatic calls (default: 7)'
   args: !SimpleFlagArg
     name: MIN_COV
-  optional: true
 - !Flag
-  description: Also list germline calls in separate file
+  optional: true
   synonyms:
   - --germline
+  description: Also list germline calls in separate file
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Ignore variants in this vcf-file for source quality\ncomputation in\
-    \ tumor (collides with --no-src-qual).\nDefault is to use (stringently filtered)\
-    \ predictions\nin normal sample"
+  optional: true
   synonyms:
   - -S
   - --ign-vcf
+  description: "Ignore variants in this vcf-file for source quality\ncomputation in\
+    \ tumor (collides with --no-src-qual).\nDefault is to use (stringently filtered)\
+    \ predictions\nin normal sample"
   args: !SimpleFlagArg
     name: IGN_VCF
-  optional: true
 - !Flag
-  description: Use orphaned/anomalous reads from pairs in all samples
+  optional: true
   synonyms:
   - --use-orphan
+  description: Use orphaned/anomalous reads from pairs in all samples
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Switch use of BAQ off in all samples
+  optional: true
   synonyms:
   - --baq-off
+  description: Switch use of BAQ off in all samples
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Extra arguments to call_rlx (replace dashes with @)
+  optional: true
   synonyms:
   - --call-rlx-extra-args
+  description: Extra arguments to call_rlx (replace dashes with @)
   args: !SimpleFlagArg
     name: CALL_RLX_EXTRA_ARGS
-  optional: true
 - !Flag
-  description: Disable use of source quality in tumor (see also -V)
+  optional: true
   synonyms:
   - --no-src-qual
+  description: Disable use of source quality in tumor (see also -V)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Enable debugging
+  optional: true
   synonyms:
   - --debug
+  description: Enable debugging
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "continue interrupted run. Will reuse existing files,\nassuming they\
-    \ are complete and created with identical\noptions!\n"
+  optional: true
   synonyms:
   - --continue
+  description: "continue interrupted run. Will reuse existing files,\nassuming they\
+    \ are complete and created with identical\noptions!\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: lofreq somatic [-h] [-v] -n NORMAL -t TUMOR -o OUTPREFIX -f REF\n\
@@ -237,3 +237,4 @@ help_text: "usage: lofreq somatic [-h] [-v] -n NORMAL -t TUMOR -o OUTPREFIX -f R
   \             options!\n"
 generated_using:
 - --help
+docker_image:

@@ -10,6 +10,9 @@ task OrthomclDropSchema {
       ~{config_file} \
       ~{sql_log_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: ""
     sql_log_file: ""

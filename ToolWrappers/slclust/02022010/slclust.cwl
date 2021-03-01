@@ -3,12 +3,12 @@ id: slclust.cwl
 inputs:
 - id: in__verbosity_at
   doc: "[v] verbosity at 'info', 'debug'"
-  type: string
+  type: string?
   inputBinding:
     prefix: -j
 - id: in_opts
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 - id: in_file_of_pairs
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - slclust

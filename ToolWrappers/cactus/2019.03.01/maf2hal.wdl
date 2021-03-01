@@ -30,6 +30,9 @@ task Maf2hal {
       ~{if defined(ref_genome) then ("--refGenome " +  '"' + ref_genome + '"') else ""} \
       ~{if defined(target_genomes) then ("--targetGenomes " +  '"' + target_genomes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     append: ":                  append maf as subtree to existing alignment. reference\\nmust alaready be present in hal dabase as a leaf. [default\\n= 0]"
     cache_bytes: ":      maximum size in bytes of regular hdf5 cache [default =\\n15728640]"

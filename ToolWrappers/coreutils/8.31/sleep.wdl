@@ -10,6 +10,9 @@ task Sleep {
       ~{number} \
       ~{suffix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number: ""
     suffix: ""

@@ -54,6 +54,9 @@ task RunMetasvScAnalysispy {
       ~{if defined(assembly_max_tools) then ("--assembly_max_tools " +  '"' + assembly_max_tools + '"') else ""} \
       ~{if defined(other_scale) then ("--other_scale " +  '"' + other_scale + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bams: "BAMs (default: None)"
     chromosomes: "Chromosomes (default: [])"

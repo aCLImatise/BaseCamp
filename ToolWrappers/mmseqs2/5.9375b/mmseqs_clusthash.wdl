@@ -18,6 +18,9 @@ task MmseqsClusthash {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alph_size: "3               alphabet size [2,21]"
     min_seq_id: "0.000           list matches above this sequence identity (for clustering) [0.0,1.0]"

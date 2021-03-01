@@ -1,0 +1,60 @@
+!Command
+command:
+- ariba
+- aln2meta
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: aln_fasta
+  description: Multi-fasta file of alignments
+- !Positional
+  optional: false
+  position: 1
+  name: variants_tsv
+  description: TSV file of variants information
+- !Positional
+  optional: false
+  position: 0
+  name: outprefix
+  description: Prefix of output filenames
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --genetic_code
+  description: "Number of genetic code to use. Currently supported\n1,4,11 [11]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --variant_only
+  description: "Use this to flag all sequences as variant only. By\ndefault they are\
+    \ considered to be presence/absence\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: ariba aln2meta [options] <aln_fasta> <variants_tsv> <(non)coding>\
+  \ <outprefix>\n\nMake metadata input to prepareref, using multialignment and SNPs\n\
+  \npositional arguments:\n  aln_fasta           Multi-fasta file of alignments\n\
+  \  variants_tsv        TSV file of variants information\n  (non)coding         Sequences\
+  \ are coding or noncoding. Must be one of:\n                      coding noncoding\n\
+  \  outprefix           Prefix of output filenames\n\noptional arguments:\n  -h,\
+  \ --help          show this help message and exit\n  --genetic_code INT  Number\
+  \ of genetic code to use. Currently supported\n                      1,4,11 [11]\n\
+  \  --variant_only      Use this to flag all sequences as variant only. By\n    \
+  \                  default they are considered to be presence/absence\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ariba:2.14.6--py36hf0b53f7_0

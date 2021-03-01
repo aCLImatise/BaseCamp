@@ -50,6 +50,9 @@ task SeqkitLocate {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "output in BED6 format"
     degenerate: "pattern/motif contains degenerate base"

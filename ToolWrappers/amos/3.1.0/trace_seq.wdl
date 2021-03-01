@@ -10,6 +10,9 @@ task TraceSeq {
       ~{extract_seq} \
       ~{if (r) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     extract_seq: ""

@@ -18,6 +18,9 @@ task OldscranclifiltersceR {
       ~{if defined(spikes) then ("--spikes " +  '"' + spikes + '"') else ""} \
       ~{if defined(output_sce_object) then ("--output-sce-object " +  '"' + output_sce_object + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sce_object: "File name in which a serialized R SingleCellExperiment object where object matrix found"
     exprs_values: "String indicating which assay contains the count data that should be used to compute log-transformed expression values."

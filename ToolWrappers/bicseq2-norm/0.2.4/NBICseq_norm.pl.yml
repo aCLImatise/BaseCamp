@@ -3,33 +3,87 @@ command:
 - NBICseq-norm.pl
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: configFile
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: output
-  optional: false
-named: []
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: ': fragment size'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: ': a subsample percentage: default 0.0002.'
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: ': bin the expected and observed as <int> bp bins; Default 100.'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --gc_bin
+  description: ': if specified, report the GC-content in the bins'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --NoMapBin
+  description: ': if specified, do NOT bin the reads according to the mappability'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bin_only
+  description: ': only bin the reads without normalization'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fig
+  description: ': plot the read count VS GC figure in the specified file (in pdf format)'
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --title
+  description: ': title of the figure'
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp
+  description: ': the tmp directory; If unspecified, use /usr/local/bin/tmp/'
+  args: !SimpleFlagArg
+    name: string
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "-l=<int>: read length\n-s=<int>: fragment size\n-p=<float>: a subsample\
-    \ percentage: default 0.0002.\n-b=<int>: bin the expected and observed as <int>\
-    \ bp bins; Default 100.\n--gc_bin: if specified, report the GC-content in the\
-    \ bins\n--NoMapBin: if specified, do NOT bin the reads according to the mappability\n\
-    --bin_only: only bin the reads without normalization\n--fig=<string>: plot the\
-    \ read count VS GC figure in the specified file (in pdf format)\n--title=<string>:\
-    \ title of the figure\n--tmp=<string>: the tmp directory; If unspecified, use\
-    \ /usr/local/bin/tmp/\n<output> will store the parameter estimate in the Negative\
-    \ Binomial model\n"
+  optional: true
   synonyms:
   - --help
-  args: !EmptyFlagArg {}
-  optional: true
+  - -l
+  description: ': read length'
+  args: !SimpleFlagArg
+    name: int
 usage_flag:
 version_flag:
 help_text: "Usage: NBICseq-norm.pl [options] <configFile> <output>\nOptions:\n   \
@@ -45,3 +99,4 @@ help_text: "Usage: NBICseq-norm.pl [options] <configFile> <output>\nOptions:\n  
   \ Negative Binomial model\n"
 generated_using:
 - --help
+docker_image:

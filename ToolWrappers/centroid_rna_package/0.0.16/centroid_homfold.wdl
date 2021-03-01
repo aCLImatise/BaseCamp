@@ -30,6 +30,9 @@ task CentroidHomfold {
       ~{if defined(postscript) then ("--postscript " +  '"' + postscript + '"') else ""} \
       ~{if defined(params) then ("--params " +  '"' + params + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_fasta_file: "[ --homologous ] arg fasta file containing homologous sequences (REQUIRED)"
     engine_s: "specify the inference engine for secondary structures\\n(default: \\\"McCaskill\\\")"

@@ -12,6 +12,9 @@ task BamMultiQcpy {
       ~{if defined(report_pdf_bammultiqcpdf) then ("-r " +  '"' + report_pdf_bammultiqcpdf + '"') else ""} \
       ~{if (plot_reference_statistics) then "-x" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report_pdf_bammultiqcpdf: "Report PDF (bam_multi_qc.pdf)."
     plot_reference_statistics: "Do not plot reference statistics."

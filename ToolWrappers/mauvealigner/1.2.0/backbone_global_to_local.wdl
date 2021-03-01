@@ -12,6 +12,9 @@ task BackboneGlobalToLocal {
       ~{backbone_file} \
       ~{output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     x_mfa_file: ""
     backbone_file: ""

@@ -38,6 +38,9 @@ task GoalignRandom {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     amino_acids: "Aminoacid sequences (otherwise, nucleotides)"
     length: "Length of sequences to generate (default 100)"

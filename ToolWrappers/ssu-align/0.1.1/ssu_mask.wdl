@@ -3,10 +3,10 @@ version 1.0
 task Ssumask {
   input {
     Boolean? commandline_argument_stockholm
-    Boolean? use_default_masks
+    Boolean? use_default_ssualign
     File? use_single_mask
     File? use_mask_file
-    File? cm_file_f
+    File? cm_file_created
     File? structure_diagrams_use
     Boolean? i_used_ssualign
     Float? pf
@@ -29,10 +29,10 @@ task Ssumask {
   command <<<
     ssu_mask \
       ~{if (commandline_argument_stockholm) then "-a" else ""} \
-      ~{if (use_default_masks) then "-d" else ""} \
+      ~{if (use_default_ssualign) then "-d" else ""} \
       ~{if defined(use_single_mask) then ("-s " +  '"' + use_single_mask + '"') else ""} \
       ~{if defined(use_mask_file) then ("-k " +  '"' + use_mask_file + '"') else ""} \
-      ~{if defined(cm_file_f) then ("-m " +  '"' + cm_file_f + '"') else ""} \
+      ~{if defined(cm_file_created) then ("-m " +  '"' + cm_file_created + '"') else ""} \
       ~{if defined(structure_diagrams_use) then ("-t " +  '"' + structure_diagrams_use + '"') else ""} \
       ~{if (i_used_ssualign) then "-i" else ""} \
       ~{if defined(pf) then ("--pf " +  '"' + pf + '"') else ""} \
@@ -52,12 +52,15 @@ task Ssumask {
       ~{if defined(seq_r) then ("--seq-r " +  '"' + seq_r + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     commandline_argument_stockholm: ": the command-line argument is a stockholm alignment, not a directory"
-    use_default_masks: ": use default ssu-align-0.1 masks"
+    use_default_ssualign: ": use default ssu-align-0.1 masks"
     use_single_mask: ": use single mask in existing file <f> to mask single alignment"
     use_mask_file: ": use mask file named <modelname>.<s>.mask for masking\\n(<modelname> might be 'archaea', 'bacteria' or 'eukarya')"
-    cm_file_f: ": CM file <f> created the alignment(s) (with ssu-align -m <f>)"
+    cm_file_created: ": CM file <f> created the alignment(s) (with ssu-align -m <f>)"
     structure_diagrams_use: ": for structure diagrams, use template file <f>, not the default"
     i_used_ssualign: ": -i used with ssu-align, alignments are interleaved"
     pf: ": include columns w/<x> fraction of seqs w/prob >= --pt <y> [df: 0.95]"

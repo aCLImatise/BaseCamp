@@ -34,6 +34,9 @@ task Panaroomerge {
       ~{if defined(aligner) then ("--aligner " +  '"' + aligner + '"') else ""} \
       ~{if defined(core_threshold) then ("--core_threshold " +  '"' + core_threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_edge_support_sv: "minimum edge support required to call structural\\nvariants in the presence/absence sv file\\n(default=max(2, 0.01*n_samples))"
     threads: "number of threads to use (default=1)"

@@ -10,6 +10,9 @@ task GetRelationshipIdVsRelationshipNamespacepl {
       ~{usage} \
       ~{if (obo_input_file) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     obo_input_file: "OBO input file"
     usage: ": get_relationship_id_vs_relationship_namespace.pl [options]"

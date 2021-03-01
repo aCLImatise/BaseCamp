@@ -12,10 +12,10 @@ task GuppySquash {
     Boolean? node_numbers
     Boolean? out_dir
     Boolean? prefix
-    Boolean? exponent_ie_value
+    Boolean? exponent_kr_value
     Boolean? normalize
     Boolean? bootstrap
-    Boolean? number_processes_spawn
+    Boolean? number_spawn_do
     Boolean? tax_cluster
     Boolean? pre_round
     Boolean? unit_ize
@@ -37,15 +37,18 @@ task GuppySquash {
       ~{if (node_numbers) then "--node-numbers" else ""} \
       ~{if (out_dir) then "--out-dir" else ""} \
       ~{if (prefix) then "--prefix" else ""} \
-      ~{if (exponent_ie_value) then "-p" else ""} \
+      ~{if (exponent_kr_value) then "-p" else ""} \
       ~{if (normalize) then "--normalize" else ""} \
       ~{if (bootstrap) then "--bootstrap" else ""} \
-      ~{if (number_processes_spawn) then "-j" else ""} \
+      ~{if (number_spawn_do) then "-j" else ""} \
       ~{if (tax_cluster) then "--tax-cluster" else ""} \
       ~{if (pre_round) then "--pre-round" else ""} \
       ~{if (unit_ize) then "--unitize" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     point_mass: "Treat every pquery as a point mass concentrated on the highest-weight placement."
     pp: "Use posterior probability for the weight."
@@ -57,10 +60,10 @@ task GuppySquash {
     node_numbers: "Put the node numbers in where the bootstraps usually go."
     out_dir: "Specify the directory to write files to."
     prefix: "Specify a string to be prepended to filenames."
-    exponent_ie_value: "Exponent for KR integration, i.e. value of p in Z_p. Default 1."
+    exponent_kr_value: "Exponent for KR integration, i.e. value of p in Z_p. Default 1."
     normalize: "Divide KR by a given value. Legal arguments are \\\"tree-length\\\"."
     bootstrap: "the number of bootstrap replicates to run"
-    number_processes_spawn: "The number of processes to spawn to do bootstrapping. default: 2"
+    number_spawn_do: "The number of processes to spawn to do bootstrapping. default: 2"
     tax_cluster: "Perform taxonomic clustering rather than phylogenetic.Specify \\\"unit\\\" or \\\"inv\\\" for the two different modes."
     pre_round: "Apply rounding with 3 sig figs and cutoff 0.01 to each\\nplacerun before clustering"
     unit_ize: "Unitize masses after bootstrap resampling"

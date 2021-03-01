@@ -14,6 +14,9 @@ task GdtoolsSUBTRACT {
       ~{if (frequency_aware) then "--frequency-aware" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_gd_file: "output GD file (DEFAULT=output.gd)"
     phylogeny_aware: "Check the optional 'phylogeny_id' field when deciding if entries are equivalent"

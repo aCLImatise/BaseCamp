@@ -1,0 +1,210 @@
+!Command
+command:
+- requantAlignedValues.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Verbosity
+  description: --do_single_run       Only do a single run
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --in
+  description: "A list of transformation files in the same folder as\nthe .chrom.mzML\
+    \ files"
+  args: !RepeatFlagArg
+    name: INFILES
+- !Flag
+  optional: true
+  synonyms:
+  - --peakgroups_infile
+  description: "Infile containing peakgroups (outfile from\nfeature_alignment.py)"
+  args: !SimpleFlagArg
+    name: PEAKGROUPS_INFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: Output file with imputed values
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --file_format
+  description: "Which input file format is used (openswath, mprophet\nor peakview)"
+  args: !SimpleFlagArg
+    name: FILE_FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --out_matrix
+  description: "Matrix containing one peak group per row (supports\n.csv, .tsv or\
+    \ .xls)"
+  args: !SimpleFlagArg
+    name: MATRIX_OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix_output_method
+  description: "Which columns are written besides Intensity (none, RT,\nscore, source\
+    \ or full)"
+  args: !SimpleFlagArg
+    name: MATRIX_OUTPUT_METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - --border_option
+  description: "How to determine integration border (possible values:\nmax_width,\
+    \ mean, median). Max width will use the\nmaximal possible width (most conservative\
+    \ since it\nwill overestimate the background signal)."
+  args: !SimpleFlagArg
+    name: median
+- !Flag
+  optional: true
+  synonyms:
+  - --dry_run
+  description: Perform a dry run only
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --test
+  description: "For running the tests (does not add a random id to the\nresults)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cache_in_memory
+  description: Cache data from a single run in memory
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --method
+  description: "Which method to use (singleShortestPath,\nsingleClosestRun, reference)"
+  args: !SimpleFlagArg
+    name: METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - --realign_runs
+  description: "How to re-align runs in retention time ('diRT': use\nonly deltaiRT\
+    \ from the input file, 'linear': perform a\nlinear regression using best peakgroups,\
+    \ 'splineR':\nperform a spline fit using R, 'splineR_external':\nperform a spline\
+    \ fit using R (start an R process using\nthe command line), 'splinePy' use Python\
+    \ native spline\nfrom scikits.datasmooth (slow!), 'lowess': use Robust\nlocally\
+    \ weighted regression (lowess smoother),\n'nonCVSpline, CVSpline': splines with\
+    \ and without\ncross-validation, 'Earth' : use Multivariate Adaptive\nRegression\
+    \ Splines using py-earth"
+  args: !SimpleFlagArg
+    name: REALIGN_METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - --alignment_score
+  description: "Minimal score needed for a feature to be considered\nfor alignment\
+    \ between runs"
+  args: !SimpleFlagArg
+    name: '0.0001'
+- !Flag
+  optional: true
+  synonyms:
+  - --disable_isotopic_grouping
+  description: "Disable grouping of isotopic variants by\npeptide_group_label, thus\
+    \ disabling matching of\nisotopic variants of the same peptide across channels.\n\
+    If turned off, each isotopic channel will be matched\nindependently of the other.\
+    \ If enabled, the more\ncertain identification will be used to infer the\nlocation\
+    \ of the peak in the other channel."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disable_isotopic_transfer
+  description: "Disable the transfer of isotopic boundaries in all\ncases. If enabled\
+    \ (default), the best (best score)\nisotopic channel dictates the peak boundaries\
+    \ and all\nother channels use those boundaries. This ensures\nconsistency in peak\
+    \ picking in all cases.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version and exit
+  args: !SimpleFlagArg
+    name: VERSION
+help_text: "WARNING: cannot import optimized MST alignment, will use Python version\
+  \ (slower).\nusage: requantAlignedValues.py [-h] [--in INFILES [INFILES ...]]\n\
+  \                               --peakgroups_infile PEAKGROUPS_INFILE --out\n  \
+  \                             OUTPUT [--file_format FILE_FORMAT]\n             \
+  \                  [--out_matrix MATRIX_OUTFILE]\n                             \
+  \  [--matrix_output_method MATRIX_OUTPUT_METHOD]\n                             \
+  \  [--border_option median] [--dry_run] [--test]\n                             \
+  \  [--cache_in_memory] [--method METHOD]\n                               [--realign_runs\
+  \ REALIGN_METHOD]\n                               [--verbosity VERBOSITY] [--do_single_run]\n\
+  \                               [--alignment_score 0.0001] [--version VERSION]\n\
+  \                               [--disable_isotopic_grouping]\n                \
+  \               [--disable_isotopic_transfer]\n\nRequantification -- version 0.11.0\
+  \ This program will impute missing values\n\noptional arguments:\n  -h, --help \
+  \           show this help message and exit\n  --in INFILES [INFILES ...]\n    \
+  \                    A list of transformation files in the same folder as\n    \
+  \                    the .chrom.mzML files\n  --peakgroups_infile PEAKGROUPS_INFILE\n\
+  \                        Infile containing peakgroups (outfile from\n          \
+  \              feature_alignment.py)\n  --out OUTPUT          Output file with imputed\
+  \ values\n  --file_format FILE_FORMAT\n                        Which input file\
+  \ format is used (openswath, mprophet\n                        or peakview)\n  --out_matrix\
+  \ MATRIX_OUTFILE\n                        Matrix containing one peak group per row\
+  \ (supports\n                        .csv, .tsv or .xls)\n  --matrix_output_method\
+  \ MATRIX_OUTPUT_METHOD\n                        Which columns are written besides\
+  \ Intensity (none, RT,\n                        score, source or full)\n  --border_option\
+  \ median\n                        How to determine integration border (possible\
+  \ values:\n                        max_width, mean, median). Max width will use\
+  \ the\n                        maximal possible width (most conservative since it\n\
+  \                        will overestimate the background signal).\n  --dry_run\
+  \             Perform a dry run only\n  --test                For running the tests\
+  \ (does not add a random id to the\n                        results)\n  --cache_in_memory\
+  \     Cache data from a single run in memory\n  --method METHOD       Which method\
+  \ to use (singleShortestPath,\n                        singleClosestRun, reference)\n\
+  \  --realign_runs REALIGN_METHOD\n                        How to re-align runs in\
+  \ retention time ('diRT': use\n                        only deltaiRT from the input\
+  \ file, 'linear': perform a\n                        linear regression using best\
+  \ peakgroups, 'splineR':\n                        perform a spline fit using R,\
+  \ 'splineR_external':\n                        perform a spline fit using R (start\
+  \ an R process using\n                        the command line), 'splinePy' use\
+  \ Python native spline\n                        from scikits.datasmooth (slow!),\
+  \ 'lowess': use Robust\n                        locally weighted regression (lowess\
+  \ smoother),\n                        'nonCVSpline, CVSpline': splines with and\
+  \ without\n                        cross-validation, 'Earth' : use Multivariate\
+  \ Adaptive\n                        Regression Splines using py-earth\n  --verbosity\
+  \ VERBOSITY\n                        Verbosity\n  --do_single_run       Only do\
+  \ a single run\n  --alignment_score 0.0001\n                        Minimal score\
+  \ needed for a feature to be considered\n                        for alignment between\
+  \ runs\n  --version VERSION     Print version and exit\n\nexperimental options:\n\
+  \  --disable_isotopic_grouping\n                        Disable grouping of isotopic\
+  \ variants by\n                        peptide_group_label, thus disabling matching\
+  \ of\n                        isotopic variants of the same peptide across channels.\n\
+  \                        If turned off, each isotopic channel will be matched\n\
+  \                        independently of the other. If enabled, the more\n    \
+  \                    certain identification will be used to infer the\n        \
+  \                location of the peak in the other channel.\n  --disable_isotopic_transfer\n\
+  \                        Disable the transfer of isotopic boundaries in all\n  \
+  \                      cases. If enabled (default), the best (best score)\n    \
+  \                    isotopic channel dictates the peak boundaries and all\n   \
+  \                     other channels use those boundaries. This ensures\n      \
+  \                  consistency in peak picking in all cases.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/msproteomicstools:0.11.0--py27ha968a36_1

@@ -1,0 +1,228 @@
+!Command
+command:
+- RiboCode_onestep
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gtf
+  description: "Default, suitable for GENCODE and ENSEMBL GTF file,\nplease refer:\
+    \ https://en.wikipedia.org/wiki/GENCODE"
+  args: !SimpleFlagArg
+    name: GTFFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: The genome sequences file in fasta format.
+  args: !SimpleFlagArg
+    name: GENOMEFASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rpf_mapping_file
+  description: ribo-seq BAM/SAM file aligned to the transcriptome.
+  args: !SimpleFlagArg
+    name: RPF_MAPPING_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input_file
+  description: "the file list the ribo-seq BAM/SAM files aligned to\nthe transcriptome."
+  args: !SimpleFlagArg
+    name: RPF_MAPPING_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -stranded
+  - --stranded
+  description: "whether the data is strand-specific, reverse means\nreversed strand\
+    \ interpretation.(default: yes)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      no:
+      reverse:
+      yes:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --minimum-length
+  description: minimum read length for metaplots analysis, default 24
+  args: !SimpleFlagArg
+    name: MINLENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --maximum-length
+  description: maximum read length for metaplots analysis, default 36
+  args: !SimpleFlagArg
+    name: MAXLENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -f0_percent
+  - --frame0_percent
+  description: "proportion threshold of reads in frame0. For\nautomatically predicting\
+    \ P-site location, default 0.65"
+  args: !SimpleFlagArg
+    name: FRAME0_PERCENT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --longest-orf
+  description: "Default: yes, the region from most distal AUG to stop\nwas defined\
+    \ as an ORF. If set to no , the position of\nstart codon will be automatically\
+    \ determined by\nprogram."
+  args: !ChoiceFlagArg
+    choices: !!set
+      no:
+      yes:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pval-cutoff
+  description: P-value cutoff for ORF filtering, default 0.05
+  args: !SimpleFlagArg
+    name: PVAL_CUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --start_codon
+  description: 'The canonical start codon. default: ATG'
+  args: !SimpleFlagArg
+    name: START_CODON
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --alt_start_codons
+  description: "The alternative start codon, such as CTG,GTG, default:\nNone. Multiple\
+    \ codons should be separated by comma."
+  args: !SimpleFlagArg
+    name: ALTERNATIVE_START_CODONS
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --stop_codon
+  description: 'Stop codon, default: TAA,TAG,TGA'
+  args: !SimpleFlagArg
+    name: STOP_CODON
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --transl_table
+  description: "ORF translation table(Default: 1). Assign the correct\ngenetic code\
+    \ based on your organism, [please refer: ht\ntps://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi\n\
+    ]"
+  args: !SimpleFlagArg
+    name: TRANSL_TABLE
+- !Flag
+  optional: true
+  synonyms:
+  - -mA
+  - --min-AA-length
+  description: The minimal length of predicted peptides,default 20
+  args: !SimpleFlagArg
+    name: MIN_AA_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-name
+  description: 'output file name, default: final_result'
+  args: !SimpleFlagArg
+    name: OUTPUT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -outgtf
+  - --output-gtf
+  description: output the gtf file of predicted ORFs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -outbed
+  - --output-bed
+  description: output the bed file of predicted ORFs
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: RiboCode_onestep [-h] -g GTFFILE -f GENOMEFASTA\n             \
+  \           (-r RPF_MAPPING_FILE | -i RPF_MAPPING_FILE)\n                      \
+  \  [-stranded {yes,reverse,no}] [-m MINLENGTH]\n                        [-M MAXLENGTH]\
+  \ [-f0_percent FRAME0_PERCENT]\n                        [-l {yes,no}] [-p PVAL_CUTOFF]\
+  \ [-s START_CODON]\n                        [-A ALTERNATIVE_START_CODONS] [-S STOP_CODON]\n\
+  \                        [-t TRANSL_TABLE] [-mA MIN_AA_LENGTH] [-o OUTPUT_NAME]\n\
+  \                        [-outgtf] [-outbed] [-V]\n\nThe function contains the steps\
+  \ to prepare a reference genome, to determinate\nthe P-site locations and to detect\
+  \ ORFs. It automatically creates some of the\noutput files.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -g GTFFILE, --gtf GTFFILE\n\
+  \                        Default, suitable for GENCODE and ENSEMBL GTF file,\n \
+  \                       please refer: https://en.wikipedia.org/wiki/GENCODE\n  -f\
+  \ GENOMEFASTA, --fasta GENOMEFASTA\n                        The genome sequences\
+  \ file in fasta format.\n  -r RPF_MAPPING_FILE, --rpf_mapping_file RPF_MAPPING_FILE\n\
+  \                        ribo-seq BAM/SAM file aligned to the transcriptome.\n \
+  \ -i RPF_MAPPING_FILE, --input_file RPF_MAPPING_FILE\n                        the\
+  \ file list the ribo-seq BAM/SAM files aligned to\n                        the transcriptome.\n\
+  \  -stranded {yes,reverse,no}, --stranded {yes,reverse,no}\n                   \
+  \     whether the data is strand-specific, reverse means\n                     \
+  \   reversed strand interpretation.(default: yes)\n  -m MINLENGTH, --minimum-length\
+  \ MINLENGTH\n                        minimum read length for metaplots analysis,\
+  \ default 24\n  -M MAXLENGTH, --maximum-length MAXLENGTH\n                     \
+  \   maximum read length for metaplots analysis, default 36\n  -f0_percent FRAME0_PERCENT,\
+  \ --frame0_percent FRAME0_PERCENT\n                        proportion threshold\
+  \ of reads in frame0. For\n                        automatically predicting P-site\
+  \ location, default 0.65\n  -l {yes,no}, --longest-orf {yes,no}\n              \
+  \          Default: yes, the region from most distal AUG to stop\n             \
+  \           was defined as an ORF. If set to no , the position of\n            \
+  \            start codon will be automatically determined by\n                 \
+  \       program.\n  -p PVAL_CUTOFF, --pval-cutoff PVAL_CUTOFF\n                \
+  \        P-value cutoff for ORF filtering, default 0.05\n  -s START_CODON, --start_codon\
+  \ START_CODON\n                        The canonical start codon. default: ATG\n\
+  \  -A ALTERNATIVE_START_CODONS, --alt_start_codons ALTERNATIVE_START_CODONS\n  \
+  \                      The alternative start codon, such as CTG,GTG, default:\n\
+  \                        None. Multiple codons should be separated by comma.\n \
+  \ -S STOP_CODON, --stop_codon STOP_CODON\n                        Stop codon, default:\
+  \ TAA,TAG,TGA\n  -t TRANSL_TABLE, --transl_table TRANSL_TABLE\n                \
+  \        ORF translation table(Default: 1). Assign the correct\n               \
+  \         genetic code based on your organism, [please refer: ht\n             \
+  \           tps://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi\n           \
+  \             ]\n  -mA MIN_AA_LENGTH, --min-AA-length MIN_AA_LENGTH\n          \
+  \              The minimal length of predicted peptides,default 20\n  -o OUTPUT_NAME,\
+  \ --output-name OUTPUT_NAME\n                        output file name, default:\
+  \ final_result\n  -outgtf, --output-gtf\n                        output the gtf\
+  \ file of predicted ORFs\n  -outbed, --output-bed\n                        output\
+  \ the bed file of predicted ORFs\n  -V, --version         show program's version\
+  \ number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ribocode:1.2.11--pyh145b6a8_1

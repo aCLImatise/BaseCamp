@@ -118,6 +118,9 @@ task Rvtest {
       ~{if (num_thread) then "--numThread" else ""} \
       ~{if (output_id) then "--outputID" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_vcf: ": Input VCF File"
     in_bg_en: ": Input BGEN File"

@@ -4,6 +4,9 @@ task Vcfindex {
   command <<<
     vcfindex
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

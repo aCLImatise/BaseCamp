@@ -4,7 +4,7 @@ inputs:
 - id: in_sample_names
   doc: "File with sample names, one line each. Should be same\nnr of bamfiles. Default\
     \ sample names used are the file\nnames of the bamfiles, excluding the file extension.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --samplenames
 - id: in_bed_file
@@ -24,6 +24,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - concoct_coverage_table.py

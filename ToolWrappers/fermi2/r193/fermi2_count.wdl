@@ -18,6 +18,9 @@ task Fermi2Count {
       ~{if (only_print_bifurcating) then "-b" else ""} \
       ~{if (bidirectional_counting) then "-2" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_length: "k-mer length [51]"
     min_occurence: "min occurence [1]"

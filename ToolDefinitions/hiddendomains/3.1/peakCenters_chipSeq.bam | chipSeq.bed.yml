@@ -4,163 +4,163 @@ command:
 - chipSeq.bam | chipSeq.bed
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: bedtools
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: coverage
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -hist
   description: "Report a histogram of coverage for each feature in A\nas well as a\
     \ summary histogram for _all_ features in A.\nOutput (tab delimited) after each\
     \ feature in A:\n1) depth\n2) # bases at depth\n3) size of A\n4) % of A at depth"
-  synonyms:
-  - -hist
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Report the depth at each position in each A feature.\nPositions reported\
-    \ are one based.  Each position\nand depth follow the complete A feature."
+  optional: true
   synonyms:
   - -d
+  description: "Report the depth at each position in each A feature.\nPositions reported\
+    \ are one based.  Each position\nand depth follow the complete A feature."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: report the count of overlaps, don't compute fraction, etc.
+  optional: true
   synonyms:
   - -counts
+  description: report the count of overlaps, don't compute fraction, etc.
   args: !SimpleFlagArg
     name: Only
-  optional: true
 - !Flag
-  description: Report the mean depth of all positions in each A feature.
+  optional: true
   synonyms:
   - -mean
+  description: Report the mean depth of all positions in each A feature.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
   description: "Require same strandedness.  That is, only report hits in B\nthat overlap\
     \ A on the _same_ strand.\n- By default, overlaps are reported without respect\
     \ to strand."
-  synonyms:
-  - -s
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -S
   description: "Require different strandedness.  That is, only report hits in B\n\
     that overlap A on the _opposite_ strand.\n- By default, overlaps are reported\
     \ without respect to strand."
-  synonyms:
-  - -S
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum overlap required as a fraction of A.\n- Default is 1E-9 (i.e.,\
-    \ 1bp).\n- FLOAT (e.g. 0.50)"
+  optional: true
   synonyms:
   - -f
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Minimum overlap required as a fraction of B.\n- Default is 1E-9 (i.e.,\
+  description: "Minimum overlap required as a fraction of A.\n- Default is 1E-9 (i.e.,\
     \ 1bp).\n- FLOAT (e.g. 0.50)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -F
+  description: "Minimum overlap required as a fraction of B.\n- Default is 1E-9 (i.e.,\
+    \ 1bp).\n- FLOAT (e.g. 0.50)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
   description: "Require that the fraction overlap be reciprocal for A AND B.\n- In\
     \ other words, if -f is 0.90 and -r is used, this requires\nthat B overlap 90%\
     \ of A and A _also_ overlaps 90% of B."
-  synonyms:
-  - -r
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
   description: "Require that the minimum fraction be satisfied for A OR B.\n- In other\
     \ words, if -e is used with -f 0.90 and -F 0.10 this requires\nthat either 90%\
     \ of A is covered OR 10% of  B is covered.\nWithout -e, both fractions would have\
     \ to be satisfied."
-  synonyms:
-  - -e
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Treat "split" BAM or BED12 entries as distinct BED intervals.
+  optional: true
   synonyms:
   - -split
+  description: Treat "split" BAM or BED12 entries as distinct BED intervals.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Provide a genome file to enforce consistent chromosome sort order\n\
-    across input files. Only applies when used with -sorted option."
+  optional: true
   synonyms:
   - -g
+  description: "Provide a genome file to enforce consistent chromosome sort order\n\
+    across input files. Only applies when used with -sorted option."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "For sorted data, don't throw an error if the file has different naming\
-    \ conventions\nfor the same chromosome. ex. \"chr1\" vs \"chr01\"."
+  optional: true
   synonyms:
   - -nonamecheck
+  description: "For sorted data, don't throw an error if the file has different naming\
+    \ conventions\nfor the same chromosome. ex. \"chr1\" vs \"chr01\"."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: the "chromsweep" algorithm for sorted (-k1,1 -k2,2n) input.
+  optional: true
   synonyms:
   - -sorted
+  description: the "chromsweep" algorithm for sorted (-k1,1 -k2,2n) input.
   args: !SimpleFlagArg
     name: Use
-  optional: true
 - !Flag
-  description: If using BAM input, write output as BED.
+  optional: true
   synonyms:
   - -bed
+  description: If using BAM input, write output as BED.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: the header from the A file prior to results.
+  optional: true
   synonyms:
   - -header
+  description: the header from the A file prior to results.
   args: !SimpleFlagArg
     name: Print
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -nobuf
   description: "Disable buffered output. Using this option will cause each line\n\
     of output to be printed as it is generated, rather than saved\nin a buffer. This\
     \ will make printing large output files\nnoticeably slower, but can be useful\
     \ in conjunction with\nother software tools and scripts that need to process one\n\
     line of bedtools output at a time."
-  synonyms:
-  - -nobuf
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -iobuf
   description: "Specify amount of memory to use for input buffer.\nTakes an integer\
     \ argument. Optional suffixes K/M/G supported.\nNote: currently has no effect\
     \ with compressed files."
-  synonyms:
-  - -iobuf
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -b
+  description: ''
   args: !SimpleFlagArg
     name: bed/gff/vcf
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -a
+  description: ''
   args: !SimpleFlagArg
     name: bed/gff/vcf
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -214,3 +214,4 @@ help_text: "Calculating read coverage per base in each domain...\nsh: chipSeq.be
   \ not open chipSeq.bam | chipSeq.bed_peakCenters_temp.txt No such file or directory\n"
 generated_using:
 - --help
+docker_image:

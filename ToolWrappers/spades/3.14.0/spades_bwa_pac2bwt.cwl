@@ -3,7 +3,7 @@ id: spades_bwa_pac2bwt.cwl
 inputs:
 - id: in_d
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_bwa
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - spades-bwa

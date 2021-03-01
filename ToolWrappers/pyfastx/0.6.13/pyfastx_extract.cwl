@@ -3,28 +3,28 @@ id: pyfastx_extract.cwl
 inputs:
 - id: in_list_file
   doc: "a file containing sequence or read names, one name per\nline"
-  type: File
+  type: File?
   inputBinding:
     prefix: --list-file
 - id: in_reverse_complement
   doc: output reverse complement sequence
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reverse-complement
 - id: in_out_fast_a
   doc: "output fasta format when extract reads from fastq,\ndefault output fastq format"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --out-fasta
 - id: in_out_file
   doc: 'output file, default: output to stdout'
-  type: File
+  type: File?
   inputBinding:
     prefix: --out-file
 - id: in_sequential_read
   doc: "start sequential reading, particularly suitable for\nextracting large numbers\
     \ of sequences\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sequential-read
 - id: in_fast_x
@@ -43,9 +43,10 @@ outputs:
   type: stdout
 - id: out_out_file
   doc: 'output file, default: output to stdout'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pyfastx

@@ -1,39 +1,39 @@
 class: CommandLineTool
 id: hmmconvert2.cwl
 inputs:
-- id: in_convert_file_default
+- id: in_convert_hmmer_default
   doc: ': convert to HMMER ASCII file (the default)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_convert_hmmer_binary
   doc: ': convert to HMMER binary file'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
-- id: in_convert_prf_format
+- id: in_convert_gcg_prf
   doc: ': convert to GCG Profile .prf format'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
-- id: in_convert_compugen_extended
+- id: in_convert_extended_format
   doc: ': convert to Compugen extended .eprf profile format'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -P
 - id: in_append_mode_append
   doc: ': append mode; append to <new hmm file>'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -A
 - id: in_force_mode_allow
   doc: ': force mode; allow overwriting of existing files'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -F
 - id: in_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -options
 - id: in_hmm_convert
@@ -55,6 +55,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hmmconvert2

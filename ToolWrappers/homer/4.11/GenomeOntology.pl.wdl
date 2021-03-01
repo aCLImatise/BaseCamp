@@ -18,6 +18,9 @@ task GenomeOntologypl {
       ~{if (g_size) then "-gsize" else ""} \
       ~{if defined(bg) then ("-bg " +  '"' + bg + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     g_size: "<#> (Genome size used for significance calculations)"
     bg: "(Performs additional significance calculations\\nrelative to Control Peaks/Tags)\\n"

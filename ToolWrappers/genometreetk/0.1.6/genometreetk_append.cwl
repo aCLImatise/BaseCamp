@@ -3,7 +3,7 @@ id: genometreetk_append.cwl
 inputs:
 - id: in_silent
   doc: suppress output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --silent
 - id: in_input_tree
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - genometreetk

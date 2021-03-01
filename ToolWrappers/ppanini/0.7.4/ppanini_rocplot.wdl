@@ -30,6 +30,9 @@ task PpaniniRocplot {
       ~{if defined(name_output_file) then ("--output " +  '"' + name_output_file + '"') else ""} \
       ~{if defined(niche) then ("--niche " +  '"' + niche + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     p_panini_output: "PPANINI output table"
     essential_genes_one: "<feature id>\\na list of essential genes)"

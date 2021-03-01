@@ -10,6 +10,9 @@ task Glam2mask {
       ~{if (output_file_stdout) then "-o" else ""} \
       ~{if (_mask_character) then "-x" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_stdout: ": output file (stdout)"
     _mask_character: ": mask character (x)"

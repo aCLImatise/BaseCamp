@@ -12,6 +12,9 @@ task HisatgenotypeExtractCodisDatapy {
       ~{if defined(locus_list) then ("--locus-list " +  '"' + locus_list + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base: "base filename (default: codis)"
     locus_list: "base filename (default: empty)"

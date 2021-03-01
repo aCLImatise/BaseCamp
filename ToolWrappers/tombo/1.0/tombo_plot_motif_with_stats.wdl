@@ -2,9 +2,9 @@ version 1.0
 
 task TomboPlotMotifWithStats {
   input {
-    File? statistics_filename
     Array[Int] fast_five_based_irs
     String? motif
+    File? statistics_filename
     Array[Int] control_fast_five_based_irs
     File? tombo_model_filename
     Int? over_plot_threshold
@@ -19,9 +19,9 @@ task TomboPlotMotifWithStats {
   }
   command <<<
     tombo plot_motif_with_stats \
-      ~{if defined(statistics_filename) then ("--statistics-filename " +  '"' + statistics_filename + '"') else ""} \
       ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
       ~{if defined(motif) then ("--motif " +  '"' + motif + '"') else ""} \
+      ~{if defined(statistics_filename) then ("--statistics-filename " +  '"' + statistics_filename + '"') else ""} \
       ~{if defined(control_fast_five_based_irs) then ("--control-fast5-basedirs " +  '"' + control_fast_five_based_irs + '"') else ""} \
       ~{if defined(tombo_model_filename) then ("--tombo-model-filename " +  '"' + tombo_model_filename + '"') else ""} \
       ~{if defined(over_plot_threshold) then ("--overplot-threshold " +  '"' + over_plot_threshold + '"') else ""} \
@@ -34,10 +34,13 @@ task TomboPlotMotifWithStats {
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    statistics_filename: "[--control-fast5-basedirs CONTROL_FAST5_BASEDIRS [CONTROL_FAST5_BASEDIRS ...]]\\n[--tombo-model-filename TOMBO_MODEL_FILENAME]\\n[--overplot-threshold OVERPLOT_THRESHOLD]\\n[--num-regions NUM_REGIONS]\\n[--num-context NUM_CONTEXT]\\n[--num-statistics NUM_STATISTICS]\\n[--statistic-order]\\n[--pdf-filename PDF_FILENAME]\\n[--corrected-group CORRECTED_GROUP]\\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\\n[--quiet] [--help]"
     fast_five_based_irs: "Directories containing fast5 files."
     motif: "Motif of interest at which to plot signal and\\nstatsitics. Supports IUPAC single letter codes (use T\\nfor RNA)."
+    statistics_filename: "File to save/load base by base statistics."
     control_fast_five_based_irs: "Control set of directories containing fast5 files.\\nThese reads should contain only standard nucleotides."
     tombo_model_filename: "Tombo model for event-less resquiggle and significance\\ntesting. If no model is provided the default DNA or\\nRNA tombo model will be used."
     over_plot_threshold: "Coverage level to trigger alternative plot type\\ninstead of raw signal. Default: 50"

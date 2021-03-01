@@ -24,6 +24,9 @@ task SmudgeplotPlotR {
       ~{if defined(nbins) then ("-nbins " +  '"' + nbins + '"') else ""} \
       ~{if defined(km_er_size) then ("--kmer_size " +  '"' + km_er_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     homozygous: "Assume no heterozygosity in the genome - plotting a\\nparalog structure; [default FALSE]"
     name_input_tsv: "name of the input tsv file with covarages [default\\n\\\"coverages_2.tsv\\\"]"

@@ -16,6 +16,9 @@ task ExtractUnmappedSubreadspy {
       ~{if (profile) then "--profile" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Set the verbosity level (default: None)"
     profile: "Print runtime profile at exit (default: False)"

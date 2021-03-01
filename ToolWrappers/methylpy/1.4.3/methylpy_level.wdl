@@ -8,6 +8,9 @@ task MethylpyLevel {
     methylpy level \
       ~{methyl_py}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     methyl_py: ""
   }

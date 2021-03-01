@@ -3,6 +3,9 @@ command:
 - stag-diff.pl
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: OUTPUT
   description: "If a mismatch is reported, a report is generated displaying the subpart\n\
     of the tree that could not be matched. This will look like this:\nREASON: no_matching_node:\
     \ annotation no_matching_node: feature_set\nno_matching_node: feature_span no_matching_node:\
@@ -11,75 +14,72 @@ positional:
     \ to specify\nexactly how trees do not match. To investigate this, you may need\
     \ to use\nthe -r and -v options. For the above output, I would recommend using\n\
     stag-diff -r feature_span -v"
-  position: 0
-  name: OUTPUT
-  optional: false
 - !Positional
-  description: Both trees are recursively traversed... see the actual code for how
-    this
+  optional: false
   position: 1
   name: ALGORITHM
-  optional: false
+  description: Both trees are recursively traversed... see the actual code for how
+    this
 - !Positional
-  description: "The order of elements is not important; eg\n<foo>\n<bar>\n<baz>1</baz>\n\
-    </bar>\n<bar>\n<baz>2</baz>\n</bar>\n</foo>"
+  optional: false
   position: 2
   name: works
-  optional: false
+  description: "The order of elements is not important; eg\n<foo>\n<bar>\n<baz>1</baz>\n\
+    </bar>\n<bar>\n<baz>2</baz>\n</bar>\n</foo>"
 - !Positional
-  description: "<foo>\n<bar>\n<baz>2</baz>\n</bar>\n<bar>\n<baz>1</baz>\n</bar>\n\
-    </foo>"
+  optional: false
   position: 3
   name: matches
-  optional: false
+  description: "<foo>\n<bar>\n<baz>2</baz>\n</bar>\n<bar>\n<baz>1</baz>\n</bar>\n\
+    </foo>"
 - !Positional
-  description: Chris Mungall cjm at fruitfly dot org
+  optional: false
   position: 0
   name: AUTHOR
-  optional: false
+  description: Chris Mungall cjm at fruitfly dot org
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -ignore
   description: "|i ELEMENT\nthese nodes are ignored for the purposes of comparison.\
     \ Note that\nattributes are treated as elements, prefixed by the containing\n\
     element id. For example, if you have\n<foo ID=\"wibble\">\nAnd you wish to ignore\
     \ the ID attribute, then you would use the\nswitch\n-ignore foo-ID\nYou can specify\
     \ multiple elements to ignore like this\n-i foo -i bar -i baz\nYou can also specify\
     \ paths\n-i foo/bar/bar-id"
-  synonyms:
-  - -ignore
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -parser
   description: "|p FORMAT\nwhich parser to use. The default is XML. This can also\
     \ be\nautodetected by the file suffix. Other alternatives are sxpr and\nitext.\
     \ See Data::Stag for details."
-  synonyms:
-  - -parser
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "|r ELEMENT\nreport mismatches as they occur on each element of type\
-    \ ELEMENT\nmultiple elements can be specified"
+  optional: true
   synonyms:
   - -report
+  description: "|r ELEMENT\nreport mismatches as they occur on each element of type\
+    \ ELEMENT\nmultiple elements can be specified"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "|v\nused in conjunction with the -report switch\nshows the tree of\
-    \ the mismatching element"
+  optional: true
   synonyms:
   - -verbose
+  description: "|v\nused in conjunction with the -report switch\nshows the tree of\
+    \ the mismatching element"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "|h\nshows this document"
+  optional: true
   synonyms:
   - -help
+  description: "|h\nshows this document"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "NAME\n    stag-diff - finds the difference between two stag files\n\n\
@@ -123,3 +123,4 @@ help_text: "NAME\n    stag-diff - finds the difference between two stag files\n\
   \ positive_number'\n\n"
 generated_using:
 - --help
+docker_image:

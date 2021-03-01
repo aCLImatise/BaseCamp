@@ -12,6 +12,9 @@ task FilterGenesOutMRNAnamepl {
       ~{name_file} \
       ~{dbfile}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filter_genes: ""
     name_file: ""

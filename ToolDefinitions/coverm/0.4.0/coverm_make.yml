@@ -5,111 +5,111 @@ command:
 positional: []
 named:
 - !Flag
-  description: Where generated BAM files will go
+  optional: true
   synonyms:
   - -o
   - --output-directory
+  description: Where generated BAM files will go
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
   description: "..             FASTA file of contigs e.g. concatenated\ngenomes or\
     \ assembly, or minimap2 index\n(with --minimap2-reference-is-index),\nor BWA index\
     \ stem (with -p bwa-mem).\nIf multiple references FASTA files are\nprovided and\
     \ --sharded is specified,\nthen reads will be mapped to references\nseparately\
     \ as sharded BAMs."
-  synonyms:
-  - -r
-  - --reference
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: Number of threads to use for mapping
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: Number of threads to use for mapping
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: ..                          Forward FASTA/Q file(s) for mapping
+  optional: true
   synonyms:
   - '-1'
+  description: ..                          Forward FASTA/Q file(s) for mapping
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: ..                          Reverse FASTA/Q file(s) for mapping
+  optional: true
   synonyms:
   - '-2'
+  description: ..                          Reverse FASTA/Q file(s) for mapping
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "<PATH> ..        One or more pairs of forward and reverse\nFASTA/Q\
-    \ files for mapping in order\n<sample1_R1.fq.gz> <sample1_R2.fq.gz>\n<sample2_R1.fq.gz>\
-    \ <sample2_R2.fq.gz> .."
+  optional: true
   synonyms:
   - -c
   - --coupled
+  description: "<PATH> ..        One or more pairs of forward and reverse\nFASTA/Q\
+    \ files for mapping in order\n<sample1_R1.fq.gz> <sample1_R2.fq.gz>\n<sample2_R1.fq.gz>\
+    \ <sample2_R2.fq.gz> .."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: ..               Interleaved FASTA/Q files(s) for mapping.
+  optional: true
   synonyms:
   - --interleaved
+  description: ..               Interleaved FASTA/Q files(s) for mapping.
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: ..                    Unpaired FASTA/Q files(s) for mapping.
+  optional: true
   synonyms:
   - --single
+  description: ..                    Unpaired FASTA/Q files(s) for mapping.
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --mapper
   description: "Underlying mapping software used\n(\"minimap2-sr\", \"bwa-mem\", \"\
     minimap2-ont\",\n\"minimap2-pb\", or \"minimap2-no-preset\").\nminimap2 -sr, -ont,\
     \ -pb, -no-preset specify\n'-x' preset of minimap2 to be used\n(with map-ont,\
     \ map-pb for -ont, -pb).\n[default: \"minimap2-sr\"]"
-  synonyms:
-  - -p
-  - --mapper
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --minimap2-params
   description: "Extra parameters to provide to minimap2,\nboth indexing command (if\
     \ used) and for\nmapping. Note that usage of this parameter\nhas security implications\
     \ if untrusted input\nis specified. '-a' is always specified.\n[default \"\"]"
-  synonyms:
-  - --minimap2-params
   args: !SimpleFlagArg
     name: PARAMS
-  optional: true
 - !Flag
-  description: "Treat reference as a minimap2 database, not\nas a FASTA file."
+  optional: true
   synonyms:
   - --minimap2-reference-is-index
+  description: "Treat reference as a minimap2 database, not\nas a FASTA file."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Extra parameters to provide to BWA. Note\nthat usage of this parameter\
-    \ has security\nimplications if untrusted input is specified.\n[default \"\"]"
+  optional: true
   synonyms:
   - --bwa-params
+  description: "Extra parameters to provide to BWA. Note\nthat usage of this parameter\
+    \ has security\nimplications if untrusted input is specified.\n[default \"\"]"
   args: !SimpleFlagArg
     name: PARAMS
-  optional: true
 - !Flag
-  description: Exclude unmapped reads from generated BAM files.
+  optional: true
   synonyms:
   - --discard-unmapped
+  description: Exclude unmapped reads from generated BAM files.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -158,3 +158,4 @@ help_text: "coverm make: Generate BAM files through mapping.\n\nOutput (required
   \ -1 read1.fq -2 read2.fq\n\nBen J. Woodcroft <benjwoodcroft near gmail.com>\n\n"
 generated_using:
 - --help
+docker_image:

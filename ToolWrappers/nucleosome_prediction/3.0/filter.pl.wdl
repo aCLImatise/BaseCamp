@@ -3,7 +3,7 @@ version 1.0
 task Filterpl {
   input {
     Int? column_filter_applied
-    Int? number_columns_headers
+    Int? number_columns_are
     Int? min
     Int? mins
     Int? min_l
@@ -31,7 +31,7 @@ task Filterpl {
   command <<<
     filter_pl \
       ~{if defined(column_filter_applied) then ("-c " +  '"' + column_filter_applied + '"') else ""} \
-      ~{if defined(number_columns_headers) then ("-h " +  '"' + number_columns_headers + '"') else ""} \
+      ~{if defined(number_columns_are) then ("-h " +  '"' + number_columns_are + '"') else ""} \
       ~{if defined(min) then ("-min " +  '"' + min + '"') else ""} \
       ~{if defined(mins) then ("-mins " +  '"' + mins + '"') else ""} \
       ~{if defined(min_l) then ("-minl " +  '"' + min_l + '"') else ""} \
@@ -56,9 +56,12 @@ task Filterpl {
       ~{if defined(skip) then ("-skip " +  '"' + skip + '"') else ""} \
       ~{if (quite_mode_default) then "-q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     column_filter_applied: ":           The column to which the filter is applied (if not specified,\\nthen if either column passes, the row passes."
-    number_columns_headers: ":           Number of columns that are headers (default: 1)"
+    number_columns_are: ":           Number of columns that are headers (default: 1)"
     min: ":         Filter passes if the number is above or equal to <num>"
     mins: ":        Filter passes if the number is strictly above <num>"
     min_l: ":        Filter passes if the number of characters of the column is >= <num>"

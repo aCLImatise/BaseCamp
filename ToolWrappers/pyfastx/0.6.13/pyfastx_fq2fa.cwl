@@ -3,7 +3,7 @@ id: pyfastx_fq2fa.cwl
 inputs:
 - id: in_out_file
   doc: "output file, default: output to stdout\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --out-file
 - id: in_fast_x
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_out_file
   doc: "output file, default: output to stdout\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pyfastx

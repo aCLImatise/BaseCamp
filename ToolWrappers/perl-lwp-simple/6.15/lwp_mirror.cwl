@@ -3,27 +3,27 @@ id: lwp_mirror.cwl
 inputs:
 - id: in_print_version_number
   doc: print version number of program
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_set_timeout_value
   doc: Set timeout value
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_var_2
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -options
 - id: in_more_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -MORE_OPTIONS
 - id: in_var_4
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -OPTIONS
 - id: in_url
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - lwp-mirror

@@ -18,6 +18,9 @@ task Compareouttogffprl {
       ~{if (over) then "--over" else ""} \
       ~{if (instances) then "--instances" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "A GFF-formatted file of features. More than one file may be specified\\nwith multiple --gff options."
     fasta_formatted_file: "A fasta formatted file. If this is given, then sequences that are under\\n(over) the overlap threshold will be in the output. This is a sequence\\nfilter."

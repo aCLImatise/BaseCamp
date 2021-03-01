@@ -4,22 +4,22 @@ inputs:
 - id: in_versioned
   doc: "If specified, recipe will be created in\nRECIPES/<package>/<version> (default:\
     \ False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --versioned
 - id: in_force
   doc: Overwrite the contents of an existing recipe. If
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_recursive
   doc: also used, then overwrite *all* recipes
-  type: string
+  type: string?
   inputBinding:
     prefix: --recursive
 - id: in_pkg_version
   doc: "Package version to use instead of the current one\n(default: -)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --pkg-version
 - id: in_bioc_version
@@ -27,7 +27,7 @@ inputs:
     \ the latest version of\nBioconductor with the specified version in --pkg-\nversion,\
     \ or if --pkg-version not specified, then finds\nthe the latest package version\
     \ in the latest\nBioconductor version (default: -)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --bioc-version
 - id: in_skip_if_in_channels
@@ -35,27 +35,27 @@ inputs:
     \ it will build *all* recipes.\nUse this argument to skip recursive building for\n\
     packages that already exist in the packages listed\nhere. (default: ['conda-forge',\
     \ 'bioconda'])"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip-if-in-channels
 - id: in_loglevel
   doc: "Set logging level (debug, info, warning, error,\ncritical) (default: 'debug')"
-  type: string
+  type: string?
   inputBinding:
     prefix: --loglevel
 - id: in_log_file
   doc: 'Write log to file (default: -)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --logfile
 - id: in_log_file_level
   doc: "Log level for log file (default: 'debug')"
-  type: File
+  type: File?
   inputBinding:
     prefix: --logfile-level
 - id: in_log_command_max_lines
   doc: "Limit lines emitted for commands executed (default: -)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --log-command-max-lines
 - id: in_recipe_folder
@@ -80,6 +80,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bioconda-utils

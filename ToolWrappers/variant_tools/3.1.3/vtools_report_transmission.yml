@@ -4,43 +4,46 @@ command:
 - transmission
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: PARENTS
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "PARENTS\nNames of parents, which should uniquely identify two\nsamples."
+  optional: true
   synonyms:
   - --parents
+  description: "PARENTS\nNames of parents, which should uniquely identify two\nsamples."
   args: !SimpleFlagArg
     name: PARENTS
-  optional: true
 - !Flag
-  description: Names of one or more offspring samples.
+  optional: true
   synonyms:
   - --offspring
+  description: Names of one or more offspring samples.
   args: !RepeatFlagArg
     name: OFFSPRING
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --denovo
   description: "[DENOVO [DENOVO ...]]\nA list of tables to store denovo variants for\
     \ each\noffspring. DeNovo variants are defined as offspring\nvariants that do\
     \ not exist in any of the parents,\nincluding the cases when the offspring have\
     \ different\nvariants from what parents have at the same genomic\nlocations."
-  synonyms:
-  - --denovo
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --recessive
   description: "[RECESSIVE [RECESSIVE ...]]\nA list of tables to store recessive variants\
     \ for each\noffspring. Recessive variants are defined as variants\nthat are homozygous\
     \ in offspring, and heterozygous in\nboth parents."
-  synonyms:
-  - --recessive
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --inconsistent
   description: "[INCONSISTENT [INCONSISTENT ...]]\nA list of tables to store variants\
     \ for each offspring\nthat demonstrate mendelian inconsistencies, namely\nvariants\
     \ that are not passed from parents to offspring\nin a Mendelian fashion. Examples\
@@ -49,33 +52,30 @@ named:
     \ a homozygous parent,\nheterozygous offspring variants with two homozygous\n\
     parents, and more complicated cases when multiple\nvariants appear at the same\
     \ sites."
-  synonyms:
-  - --inconsistent
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
-    \ to standard output (default to\n1).\n"
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1).\n"
   args: !ChoiceFlagArg
     choices: !!set
+      '3':
       '2':
       '0':
-      '3':
       '1':
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: vtools_report transmission [-h] [--parents PARENTS PARENTS]\n \
@@ -113,3 +113,4 @@ help_text: "usage: vtools_report transmission [-h] [--parents PARENTS PARENTS]\n
   \                        1).\n"
 generated_using:
 - --help
+docker_image:

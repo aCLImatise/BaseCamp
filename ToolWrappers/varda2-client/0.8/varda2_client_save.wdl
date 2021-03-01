@@ -16,6 +16,9 @@ task Varda2clientSave {
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
     c: ""

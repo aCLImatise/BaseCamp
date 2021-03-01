@@ -16,6 +16,9 @@ task AgatSqStatBasicpl {
       ~{if (inflate) then "--inflate" else ""} \
       ~{if defined(string_output_file) then ("--output " +  '"' + string_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_input_gtfgff: "STRING: Input GTF/GFF file. Several files can be processed at\\nonce: -i file1 -i file2"
     genome: "That input is design to know the genome size in order to\\ncalculate the percentage of the genome represented by each kind\\nof feature type. You can provide an INTEGER or the genome in\\nfasta format. If you provide the fasta, the genome size will be\\ncalculated on the fly."

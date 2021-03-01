@@ -28,6 +28,9 @@ task Fftwwisdom {
       ~{if defined(wisdom_file) then ("--wisdom-file " +  '"' + wisdom_file + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: ": verbose output"
     canonical: ": plan/optimize canonical set of sizes"

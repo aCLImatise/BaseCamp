@@ -2,7 +2,8 @@ version 1.0
 
 task TomboDetectModificationsAggregatePerReadStats {
   input {
-    File? statistics_filename
+    File? binary_file_containing
+    File? file_saveload_base
     Array[String] single_read_threshold
     Int? minimum_test_reads
     Int? coverage_dampen_counts
@@ -11,10 +12,15 @@ task TomboDetectModificationsAggregatePerReadStats {
     Int? corrected_group
     Array[String] base_call_subgroups
     Boolean? quiet
+    String _statisticsfilename
+    String _singlereadthreshold
   }
   command <<<
     tombo detect_modifications aggregate_per_read_stats \
-      ~{if defined(statistics_filename) then ("--statistics-filename " +  '"' + statistics_filename + '"') else ""} \
+      ~{_statisticsfilename} \
+      ~{_singlereadthreshold} \
+      ~{if defined(binary_file_containing) then ("--per-read-statistics-filename " +  '"' + binary_file_containing + '"') else ""} \
+      ~{if defined(file_saveload_base) then ("--statistics-filename " +  '"' + file_saveload_base + '"') else ""} \
       ~{if defined(single_read_threshold) then ("--single-read-threshold " +  '"' + single_read_threshold + '"') else ""} \
       ~{if defined(minimum_test_reads) then ("--minimum-test-reads " +  '"' + minimum_test_reads + '"') else ""} \
       ~{if defined(coverage_dampen_counts) then ("--coverage-dampen-counts " +  '"' + coverage_dampen_counts + '"') else ""} \
@@ -24,8 +30,12 @@ task TomboDetectModificationsAggregatePerReadStats {
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    statistics_filename: "File to save/load genomic base anchored statistics."
+    binary_file_containing: "Binary file containing per-read statistics from\\nstatistical testing."
+    file_saveload_base: "File to save/load genomic base anchored statistics."
     single_read_threshold: "P-value or log likelihood ratio threshold when\\ncomputing fraction of significant reads at each\\ngenomic position. If two values are provided,\\nstatistics between these values are not considered."
     minimum_test_reads: "Number of reads required at a position to perform\\nsignificance testing or contribute to model\\nestimation. Default: 1"
     coverage_dampen_counts: "COVERAGE_DAMPEN_COUNTS\\nDampen fraction modified estimates for low coverage\\nsites. Two parameters are unmodified and modified\\npseudo read counts. This is equivalent to a beta prior\\non the fraction estimate. Set to \\\"0 0\\\" to disable\\ndampened fraction estimation. Default: [2, 0]"
@@ -34,6 +44,8 @@ task TomboDetectModificationsAggregatePerReadStats {
     corrected_group: "FAST5 group created by resquiggle command. Default:\\nRawGenomeCorrected_000"
     base_call_subgroups: "FAST5 subgroup(s) (under /Analyses/[--basecall-\\ngroup]/) containing basecalls and created within\\n[--corrected-group] containing re-squiggle results.\\nDefault: ['BaseCalled_template']"
     quiet: "Don't print status information."
+    _statisticsfilename: "--statistics-filename"
+    _singlereadthreshold: "--single-read-threshold"
   }
   output {
     File out_stdout = stdout()

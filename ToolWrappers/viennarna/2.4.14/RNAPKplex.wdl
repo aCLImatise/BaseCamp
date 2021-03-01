@@ -32,6 +32,9 @@ task RNAPKplex {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(sub_opts) then ("--subopts " +  '"' + sub_opts + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     cut_off: "Report only base pairs with an average probability\\n> cutoff in the dot plot\\n(default=`0.01')"

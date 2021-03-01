@@ -11,96 +11,481 @@ subcommands:
   - sync
   positional: []
   named: []
-  parent: &id016 !Command
+  parent: &id018 !Command
     command: *id001
     positional: []
     named: []
     parent:
     subcommands:
-    - &id015 !Command
+    - &id017 !Command
       command: *id002
       positional: []
       named: []
-      parent: &id014 !Command
+      parent: &id016 !Command
         command: *id001
         positional: []
         named: []
         parent:
         subcommands:
-        - &id013 !Command
+        - &id015 !Command
           command: *id002
           positional: []
           named: []
-          parent: &id012 !Command
+          parent: &id014 !Command
             command: *id001
             positional: []
             named: []
             parent:
             subcommands:
-            - &id011 !Command
+            - &id013 !Command
               command: *id002
               positional: []
               named: []
-              parent: &id003 !Command
+              parent: &id012 !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --cite
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
-                - &id004 !Command
+                - &id011 !Command
                   command: *id002
                   positional: []
-                  named:
-                  - !Flag
-                    description: ''
-                    synonyms:
-                    - -v
-                    - --verbose
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: "Resampled FastQ file that is out of sync with\n\
-                      the original pair  [required]"
-                    synonyms:
-                    - -m
-                    - --master-file
-                    args: !SimpleFlagArg
-                      name: FILENAME
-                    optional: true
-                  parent: *id003
+                  named: []
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --cite
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - &id004 !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -v
+                        - --verbose
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -m
+                        - --master-file
+                        description: "Resampled FastQ file that is out of sync with\n\
+                          the original pair  [required]"
+                        args: !SimpleFlagArg
+                          name: FILENAME
+                      parent: *id003
+                      subcommands:
+                      - !Command
+                        command: &id006
+                        - sampling-utils
+                        - sync
+                        - files.
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: sampling-utils
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: sync
+                          description: ''
+                        - !Positional
+                          optional: true
+                          position: 2
+                          name: INPUT_FILE
+                          description: ''
+                        - !Positional
+                          optional: true
+                          position: 3
+                          name: OUTPUT_FILE
+                          description: ''
+                        named: []
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag:
+                        usage_flag:
+                        version_flag:
+                        help_text: "Usage: sampling-utils sync [OPTIONS] [INPUT_FILE]\
+                          \ [OUTPUT_FILE]\nTry 'sampling-utils sync --help' for help.\n\
+                          \nError: no such option: -h\n"
+                        generated_using: &id007
+                        - -h
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: sampling-utils sync [OPTIONS] [INPUT_FILE]\
+                        \ [OUTPUT_FILE]\n\n  Syncs a FastQ file generated with *sample*\
+                        \ with the original pair of\n  files.\n\nOptions:\n  -v, --verbose\n\
+                        \  -m, --master-file FILENAME  Resampled FastQ file that is\
+                        \ out of sync with\n                              the original\
+                        \ pair  [required]\n\n  --help                      Show this\
+                        \ message and exit.\n"
+                      generated_using: &id005
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id008
+                      - sampling-utils
+                      - sample
+                      positional:
+                      - !Positional
+                        optional: true
+                        position: 0
+                        name: INPUT_FILE
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -v
+                        - --verbose
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -p
+                        - --prefix
+                        description: "Prefix for the file name(s) in output  [default:\n\
+                          sample]"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -n
+                        - --number
+                        description: 'Number of samples to take  [default: 1]'
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -r
+                        - --prob
+                        description: 'Probability of picking a sequence  [default:
+                          0.001]'
+                        args: !SimpleFlagArg
+                          name: FLOAT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -x
+                        - --max-seq
+                        description: 'Maximum number of sequences  [default: 100000]'
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -q
+                        - --fastq
+                        description: The input file is a fastq file
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -z
+                        - --gzip
+                        description: gzip output files
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: sampling-utils sample [OPTIONS] [INPUT_FILE]\n\
+                        \n  Sample a FastA/Q multiple times\n\nOptions:\n  -v, --verbose\n\
+                        \  -p, --prefix TEXT      Prefix for the file name(s) in output\
+                        \  [default:\n                         sample]\n\n  -n, --number\
+                        \ INTEGER   Number of samples to take  [default: 1]\n  -r,\
+                        \ --prob FLOAT       Probability of picking a sequence  [default:\
+                        \ 0.001]\n  -x, --max-seq INTEGER  Maximum number of sequences\
+                        \  [default: 100000]\n  -q, --fastq            The input file\
+                        \ is a fastq file\n  -z, --gzip             gzip output files\n\
+                        \  --help                 Show this message and exit.\n"
+                      generated_using: *id005
+                      docker_image:
+                    - !Command
+                      command: &id009
+                      - sampling-utils
+                      - sample_stream
+                      positional:
+                      - !Positional
+                        optional: true
+                        position: 0
+                        name: INPUT_FILE
+                        description: ''
+                      - !Positional
+                        optional: true
+                        position: 1
+                        name: OUTPUT_FILE
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -v
+                        - --verbose
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -r
+                        - --prob
+                        description: Probability of picking a sequence
+                        args: !SimpleFlagArg
+                          name: FLOAT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -x
+                        - --max-seq
+                        description: Maximum number of sequences
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -q
+                        - --fastq
+                        description: The input file is a fastq file
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: sampling-utils sample_stream [OPTIONS] [INPUT_FILE]\
+                        \ [OUTPUT_FILE]\n\n  Samples a FastA/Q one time, alternative\
+                        \ to sample if multiple sampling is\n  not needed\n\nOptions:\n\
+                        \  -v, --verbose\n  -r, --prob FLOAT       Probability of\
+                        \ picking a sequence\n  -x, --max-seq INTEGER  Maximum number\
+                        \ of sequences\n  -q, --fastq            The input file is\
+                        \ a fastq file\n  --help                 Show this message\
+                        \ and exit.\n"
+                      generated_using: *id005
+                      docker_image:
+                    - !Command
+                      command: &id010
+                      - sampling-utils
+                      - rand_seq
+                      positional:
+                      - !Positional
+                        optional: true
+                        position: 0
+                        name: OUTPUT_FILE
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -v
+                        - --verbose
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -n
+                        - --num-seqs
+                        description: "Number of sequences to generate  [default:\n\
+                          1000]"
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -gc
+                        - --gc-content
+                        description: "GC content (defaults to .5 out of 1)  [default:\n\
+                          0.5]"
+                        args: !SimpleFlagArg
+                          name: FLOAT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -i
+                        - --infer-params
+                        description: "Infer parameters GC content and Quality model\n\
+                          from file"
+                        args: !SimpleFlagArg
+                          name: FILENAME
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -r
+                        - --coding-prop
+                        description: 'Proportion of coding sequences  [default: 0.0]'
+                        args: !SimpleFlagArg
+                          name: FLOAT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        - --length
+                        description: 'Sequence length  [default: 150]'
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -d
+                        - --const-model
+                        description: Use a model with constant qualities + noise
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -x
+                        - --dist-loc
+                        description: "Use as the starting point quality  [default:\n\
+                          30.0]"
+                        args: !SimpleFlagArg
+                          name: FLOAT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -q
+                        - --fastq
+                        description: The output file is a FastQ file
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -m
+                        - --save-model
+                        description: Save inferred qualities model to a pickle file
+                        args: !SimpleFlagArg
+                          name: FILENAME
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -a
+                        - --read-model
+                        description: Load qualities model from a pickle file
+                        args: !SimpleFlagArg
+                          name: FILENAME
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --progress
+                        description: Shows Progress Bar
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: sampling-utils rand_seq [OPTIONS] [OUTPUT_FILE]\n\
+                        \n  Generates random FastA/Q sequences\n\nOptions:\n  -v,\
+                        \ --verbose\n  -n, --num-seqs INTEGER       Number of sequences\
+                        \ to generate  [default:\n                               1000]\n\
+                        \n  -gc, --gc-content FLOAT      GC content (defaults to .5\
+                        \ out of 1)  [default:\n                               0.5]\n\
+                        \n  -i, --infer-params FILENAME  Infer parameters GC content\
+                        \ and Quality model\n                               from file\n\
+                        \n  -r, --coding-prop FLOAT      Proportion of coding sequences\
+                        \  [default: 0.0]\n  -l, --length INTEGER         Sequence\
+                        \ length  [default: 150]\n  -d, --const-model            Use\
+                        \ a model with constant qualities + noise\n  -x, --dist-loc\
+                        \ FLOAT         Use as the starting point quality  [default:\n\
+                        \                               30.0]\n\n  -q, --fastq   \
+                        \               The output file is a FastQ file\n  -m, --save-model\
+                        \ FILENAME    Save inferred qualities model to a pickle file\n\
+                        \  -a, --read-model FILENAME    Load qualities model from\
+                        \ a pickle file\n  --progress                   Shows Progress\
+                        \ Bar\n  --help                       Show this message and\
+                        \ exit.\n"
+                      generated_using: *id005
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --help
+                      description: Show this message and exit.
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --version
+                      description: Show the version and exit.
+                      args: !EmptyFlagArg {}
+                    help_text: "Usage: sampling-utils [OPTIONS] COMMAND [ARGS]...\n\
+                      \n  Main function\n\nOptions:\n  --version  Show the version\
+                      \ and exit.\n  --cite\n  --help     Show this message and exit.\n\
+                      \nCommands:\n  rand_seq       Generates random FastA/Q sequences\n\
+                      \  sample         Sample a FastA/Q multiple times\n  sample_stream\
+                      \  Samples a FastA/Q one time, alternative to sample if...\n\
+                      \  sync           Syncs a FastQ file generated with *sample*\
+                      \ with the...\n"
+                    generated_using: *id005
+                    docker_image:
                   subcommands:
                   - !Command
-                    command: &id006
-                    - sampling-utils
-                    - sync
-                    - files.
+                    command: *id006
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: sampling-utils
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 1
                       name: sync
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: true
                       position: 2
                       name: INPUT_FILE
-                      optional: true
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: true
                       position: 3
                       name: OUTPUT_FILE
-                      optional: true
+                      description: ''
                     named: []
                     parent: *id004
                     subcommands: []
@@ -111,15 +496,10 @@ subcommands:
                     help_text: "Usage: sampling-utils sync [OPTIONS] [INPUT_FILE]\
                       \ [OUTPUT_FILE]\nTry 'sampling-utils sync --help' for help.\n\
                       \nError: no such option: -h\n"
-                    generated_using: &id007
-                    - -h
+                    generated_using: *id007
+                    docker_image:
                   usage: []
-                  help_flag: !Flag
-                    description: Show this message and exit.
-                    synonyms:
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: sampling-utils sync [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\
@@ -128,82 +508,35 @@ subcommands:
                     \ FILENAME  Resampled FastQ file that is out of sync with\n  \
                     \                            the original pair  [required]\n\n\
                     \  --help                      Show this message and exit.\n"
-                  generated_using: &id005
-                  - --help
+                  generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id008
-                  - sampling-utils
-                  - sample
+                  command: *id008
                   positional:
                   - !Positional
-                    description: ''
+                    optional: true
                     position: 0
                     name: INPUT_FILE
-                    optional: true
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -v
                     - --verbose
+                    description: "-p, --prefix TEXT      Prefix for the file name(s)\
+                      \ in output  [default:\nsample]\n-n, --number INTEGER   Number\
+                      \ of samples to take  [default: 1]\n-r, --prob FLOAT       Probability\
+                      \ of picking a sequence  [default: 0.001]\n-x, --max-seq INTEGER\
+                      \  Maximum number of sequences  [default: 100000]\n-q, --fastq\
+                      \            The input file is a fastq file\n-z, --gzip    \
+                      \         gzip output files\n--help                 Show this\
+                      \ message and exit.\n"
                     args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: "Prefix for the file name(s) in output  [default:\n\
-                      sample]"
-                    synonyms:
-                    - -p
-                    - --prefix
-                    args: !SimpleFlagArg
-                      name: TEXT
-                    optional: true
-                  - !Flag
-                    description: 'Number of samples to take  [default: 1]'
-                    synonyms:
-                    - -n
-                    - --number
-                    args: !SimpleFlagArg
-                      name: INTEGER
-                    optional: true
-                  - !Flag
-                    description: 'Probability of picking a sequence  [default: 0.001]'
-                    synonyms:
-                    - -r
-                    - --prob
-                    args: !SimpleFlagArg
-                      name: FLOAT
-                    optional: true
-                  - !Flag
-                    description: 'Maximum number of sequences  [default: 100000]'
-                    synonyms:
-                    - -x
-                    - --max-seq
-                    args: !SimpleFlagArg
-                      name: INTEGER
-                    optional: true
-                  - !Flag
-                    description: The input file is a fastq file
-                    synonyms:
-                    - -q
-                    - --fastq
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: gzip output files
-                    synonyms:
-                    - -z
-                    - --gzip
-                    args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
-                  help_flag: !Flag
-                    description: Show this message and exit.
-                    synonyms:
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: sampling-utils sample [OPTIONS] [INPUT_FILE]\n\
@@ -217,61 +550,35 @@ subcommands:
                     \ file\n  -z, --gzip             gzip output files\n  --help \
                     \                Show this message and exit.\n"
                   generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id009
-                  - sampling-utils
-                  - sample_stream
+                  command: *id009
                   positional:
                   - !Positional
-                    description: ''
+                    optional: true
                     position: 0
                     name: INPUT_FILE
-                    optional: true
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: true
                     position: 1
                     name: OUTPUT_FILE
-                    optional: true
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -v
                     - --verbose
+                    description: "-r, --prob FLOAT       Probability of picking a\
+                      \ sequence\n-x, --max-seq INTEGER  Maximum number of sequences\n\
+                      -q, --fastq            The input file is a fastq file\n--help\
+                      \                 Show this message and exit.\n"
                     args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: Probability of picking a sequence
-                    synonyms:
-                    - -r
-                    - --prob
-                    args: !SimpleFlagArg
-                      name: FLOAT
-                    optional: true
-                  - !Flag
-                    description: Maximum number of sequences
-                    synonyms:
-                    - -x
-                    - --max-seq
-                    args: !SimpleFlagArg
-                      name: INTEGER
-                    optional: true
-                  - !Flag
-                    description: The input file is a fastq file
-                    synonyms:
-                    - -q
-                    - --fastq
-                    args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
-                  help_flag: !Flag
-                    description: Show this message and exit.
-                    synonyms:
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: sampling-utils sample_stream [OPTIONS] [INPUT_FILE]\
@@ -282,119 +589,41 @@ subcommands:
                     \  -q, --fastq            The input file is a fastq file\n  --help\
                     \                 Show this message and exit.\n"
                   generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id010
-                  - sampling-utils
-                  - rand_seq
+                  command: *id010
                   positional:
                   - !Positional
-                    description: ''
+                    optional: true
                     position: 0
                     name: OUTPUT_FILE
-                    optional: true
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -v
                     - --verbose
+                    description: "-n, --num-seqs INTEGER       Number of sequences\
+                      \ to generate  [default:\n1000]\n-gc, --gc-content FLOAT   \
+                      \   GC content (defaults to .5 out of 1)  [default:\n0.5]\n\
+                      -i, --infer-params FILENAME  Infer parameters GC content and\
+                      \ Quality model\nfrom file\n-r, --coding-prop FLOAT      Proportion\
+                      \ of coding sequences  [default: 0.0]\n-l, --length INTEGER\
+                      \         Sequence length  [default: 150]\n-d, --const-model\
+                      \            Use a model with constant qualities + noise\n-x,\
+                      \ --dist-loc FLOAT         Use as the starting point quality\
+                      \  [default:\n30.0]\n-q, --fastq                  The output\
+                      \ file is a FastQ file\n-m, --save-model FILENAME    Save inferred\
+                      \ qualities model to a pickle file\n-a, --read-model FILENAME\
+                      \    Load qualities model from a pickle file\n--progress   \
+                      \                Shows Progress Bar\n--help                \
+                      \       Show this message and exit.\n"
                     args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: "Number of sequences to generate  [default:\n1000]"
-                    synonyms:
-                    - -n
-                    - --num-seqs
-                    args: !SimpleFlagArg
-                      name: INTEGER
-                    optional: true
-                  - !Flag
-                    description: "GC content (defaults to .5 out of 1)  [default:\n\
-                      0.5]"
-                    synonyms:
-                    - -gc
-                    - --gc-content
-                    args: !SimpleFlagArg
-                      name: FLOAT
-                    optional: true
-                  - !Flag
-                    description: "Infer parameters GC content and Quality model\n\
-                      from file"
-                    synonyms:
-                    - -i
-                    - --infer-params
-                    args: !SimpleFlagArg
-                      name: FILENAME
-                    optional: true
-                  - !Flag
-                    description: 'Proportion of coding sequences  [default: 0.0]'
-                    synonyms:
-                    - -r
-                    - --coding-prop
-                    args: !SimpleFlagArg
-                      name: FLOAT
-                    optional: true
-                  - !Flag
-                    description: 'Sequence length  [default: 150]'
-                    synonyms:
-                    - -l
-                    - --length
-                    args: !SimpleFlagArg
-                      name: INTEGER
-                    optional: true
-                  - !Flag
-                    description: Use a model with constant qualities + noise
-                    synonyms:
-                    - -d
-                    - --const-model
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: "Use as the starting point quality  [default:\n30.0]"
-                    synonyms:
-                    - -x
-                    - --dist-loc
-                    args: !SimpleFlagArg
-                      name: FLOAT
-                    optional: true
-                  - !Flag
-                    description: The output file is a FastQ file
-                    synonyms:
-                    - -q
-                    - --fastq
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: Save inferred qualities model to a pickle file
-                    synonyms:
-                    - -m
-                    - --save-model
-                    args: !SimpleFlagArg
-                      name: FILENAME
-                    optional: true
-                  - !Flag
-                    description: Load qualities model from a pickle file
-                    synonyms:
-                    - -a
-                    - --read-model
-                    args: !SimpleFlagArg
-                      name: FILENAME
-                    optional: true
-                  - !Flag
-                    description: Shows Progress Bar
-                    synonyms:
-                    - --progress
-                    args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
-                  help_flag: !Flag
-                    description: Show this message and exit.
-                    synonyms:
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: sampling-utils rand_seq [OPTIONS] [OUTPUT_FILE]\n\
@@ -416,20 +645,11 @@ subcommands:
                     \ file\n  --progress                   Shows Progress Bar\n  --help\
                     \                       Show this message and exit.\n"
                   generated_using: *id005
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: Show the version and exit.
-                  synonyms:
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "Usage: sampling-utils [OPTIONS] COMMAND [ARGS]...\n\n\
                   \  Main function\n\nOptions:\n  --version  Show the version and\
                   \ exit.\n  --cite\n  --help     Show this message and exit.\n\n\
@@ -438,32 +658,33 @@ subcommands:
                   \  Samples a FastA/Q one time, alternative to sample if...\n  sync\
                   \           Syncs a FastQ file generated with *sample* with the...\n"
                 generated_using: *id005
+                docker_image:
               subcommands:
               - !Command
                 command: *id006
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: sampling-utils
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: sync
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: true
                   position: 2
                   name: INPUT_FILE
-                  optional: true
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: true
                   position: 3
                   name: OUTPUT_FILE
-                  optional: true
+                  description: ''
                 named: []
-                parent: *id004
+                parent: *id011
                 subcommands: []
                 usage: []
                 help_flag:
@@ -473,6 +694,7 @@ subcommands:
                   Try 'sampling-utils sync --help' for help.\n\nError: no such option:\
                   \ -h\n"
                 generated_using: *id007
+                docker_image:
               usage: []
               help_flag:
               usage_flag:
@@ -484,16 +706,21 @@ subcommands:
                 \               the original pair  [required]\n\n  --help        \
                 \              Show this message and exit.\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id008
               positional:
               - !Positional
-                description: ''
+                optional: true
                 position: 0
                 name: INPUT_FILE
-                optional: true
+                description: ''
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - -v
+                - --verbose
                 description: "-p, --prefix TEXT      Prefix for the file name(s) in\
                   \ output  [default:\nsample]\n-n, --number INTEGER   Number of samples\
                   \ to take  [default: 1]\n-r, --prob FLOAT       Probability of picking\
@@ -501,12 +728,8 @@ subcommands:
                   \ of sequences  [default: 100000]\n-q, --fastq            The input\
                   \ file is a fastq file\n-z, --gzip             gzip output files\n\
                   --help                 Show this message and exit.\n"
-                synonyms:
-                - -v
-                - --verbose
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id012
               subcommands: []
               usage: []
               help_flag:
@@ -523,31 +746,32 @@ subcommands:
                 \    gzip output files\n  --help                 Show this message\
                 \ and exit.\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id009
               positional:
               - !Positional
-                description: ''
+                optional: true
                 position: 0
                 name: INPUT_FILE
-                optional: true
-              - !Positional
                 description: ''
+              - !Positional
+                optional: true
                 position: 1
                 name: OUTPUT_FILE
-                optional: true
+                description: ''
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - -v
+                - --verbose
                 description: "-r, --prob FLOAT       Probability of picking a sequence\n\
                   -x, --max-seq INTEGER  Maximum number of sequences\n-q, --fastq\
                   \            The input file is a fastq file\n--help            \
                   \     Show this message and exit.\n"
-                synonyms:
-                - -v
-                - --verbose
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id012
               subcommands: []
               usage: []
               help_flag:
@@ -561,16 +785,21 @@ subcommands:
                 \          The input file is a fastq file\n  --help              \
                 \   Show this message and exit.\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id010
               positional:
               - !Positional
-                description: ''
+                optional: true
                 position: 0
                 name: OUTPUT_FILE
-                optional: true
+                description: ''
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - -v
+                - --verbose
                 description: "-n, --num-seqs INTEGER       Number of sequences to\
                   \ generate  [default:\n1000]\n-gc, --gc-content FLOAT      GC content\
                   \ (defaults to .5 out of 1)  [default:\n0.5]\n-i, --infer-params\
@@ -585,12 +814,8 @@ subcommands:
                   \ --read-model FILENAME    Load qualities model from a pickle file\n\
                   --progress                   Shows Progress Bar\n--help        \
                   \               Show this message and exit.\n"
-                synonyms:
-                - -v
-                - --verbose
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id012
               subcommands: []
               usage: []
               help_flag:
@@ -615,6 +840,7 @@ subcommands:
                 \            Shows Progress Bar\n  --help                       Show\
                 \ this message and exit.\n"
               generated_using: *id005
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -627,32 +853,33 @@ subcommands:
               \ alternative to sample if...\n  sync           Syncs a FastQ file generated\
               \ with *sample* with the...\n"
             generated_using: *id005
+            docker_image:
           subcommands:
           - !Command
             command: *id006
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: sampling-utils
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: sync
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: true
               position: 2
               name: INPUT_FILE
-              optional: true
-            - !Positional
               description: ''
+            - !Positional
+              optional: true
               position: 3
               name: OUTPUT_FILE
-              optional: true
+              description: ''
             named: []
-            parent: *id011
+            parent: *id013
             subcommands: []
             usage: []
             help_flag:
@@ -662,6 +889,7 @@ subcommands:
               Try 'sampling-utils sync --help' for help.\n\nError: no such option:\
               \ -h\n"
             generated_using: *id007
+            docker_image:
           usage: []
           help_flag:
           usage_flag:
@@ -673,16 +901,21 @@ subcommands:
             \           the original pair  [required]\n\n  --help                \
             \      Show this message and exit.\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id008
           positional:
           - !Positional
-            description: ''
+            optional: true
             position: 0
             name: INPUT_FILE
-            optional: true
+            description: ''
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - -v
+            - --verbose
             description: "-p, --prefix TEXT      Prefix for the file name(s) in output\
               \  [default:\nsample]\n-n, --number INTEGER   Number of samples to take\
               \  [default: 1]\n-r, --prob FLOAT       Probability of picking a sequence\
@@ -690,12 +923,8 @@ subcommands:
               \  [default: 100000]\n-q, --fastq            The input file is a fastq\
               \ file\n-z, --gzip             gzip output files\n--help           \
               \      Show this message and exit.\n"
-            synonyms:
-            - -v
-            - --verbose
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id012
+          parent: *id014
           subcommands: []
           usage: []
           help_flag:
@@ -711,31 +940,32 @@ subcommands:
             \ file is a fastq file\n  -z, --gzip             gzip output files\n \
             \ --help                 Show this message and exit.\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id009
           positional:
           - !Positional
-            description: ''
+            optional: true
             position: 0
             name: INPUT_FILE
-            optional: true
-          - !Positional
             description: ''
+          - !Positional
+            optional: true
             position: 1
             name: OUTPUT_FILE
-            optional: true
+            description: ''
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - -v
+            - --verbose
             description: "-r, --prob FLOAT       Probability of picking a sequence\n\
               -x, --max-seq INTEGER  Maximum number of sequences\n-q, --fastq    \
               \        The input file is a fastq file\n--help                 Show\
               \ this message and exit.\n"
-            synonyms:
-            - -v
-            - --verbose
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id012
+          parent: *id014
           subcommands: []
           usage: []
           help_flag:
@@ -748,16 +978,21 @@ subcommands:
             \ number of sequences\n  -q, --fastq            The input file is a fastq\
             \ file\n  --help                 Show this message and exit.\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id010
           positional:
           - !Positional
-            description: ''
+            optional: true
             position: 0
             name: OUTPUT_FILE
-            optional: true
+            description: ''
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - -v
+            - --verbose
             description: "-n, --num-seqs INTEGER       Number of sequences to generate\
               \  [default:\n1000]\n-gc, --gc-content FLOAT      GC content (defaults\
               \ to .5 out of 1)  [default:\n0.5]\n-i, --infer-params FILENAME  Infer\
@@ -771,12 +1006,8 @@ subcommands:
               \ FILENAME    Load qualities model from a pickle file\n--progress  \
               \                 Shows Progress Bar\n--help                       Show\
               \ this message and exit.\n"
-            synonyms:
-            - -v
-            - --verbose
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id012
+          parent: *id014
           subcommands: []
           usage: []
           help_flag:
@@ -800,6 +1031,7 @@ subcommands:
             \                 Shows Progress Bar\n  --help                       Show\
             \ this message and exit.\n"
           generated_using: *id005
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -811,32 +1043,33 @@ subcommands:
           \  sample_stream  Samples a FastA/Q one time, alternative to sample if...\n\
           \  sync           Syncs a FastQ file generated with *sample* with the...\n"
         generated_using: *id005
+        docker_image:
       subcommands:
       - !Command
         command: *id006
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: sampling-utils
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: sync
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: true
           position: 2
           name: INPUT_FILE
-          optional: true
-        - !Positional
           description: ''
+        - !Positional
+          optional: true
           position: 3
           name: OUTPUT_FILE
-          optional: true
+          description: ''
         named: []
-        parent: *id013
+        parent: *id015
         subcommands: []
         usage: []
         help_flag:
@@ -845,6 +1078,7 @@ subcommands:
         help_text: "Usage: sampling-utils sync [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\
           Try 'sampling-utils sync --help' for help.\n\nError: no such option: -h\n"
         generated_using: *id007
+        docker_image:
       usage: []
       help_flag:
       usage_flag:
@@ -856,16 +1090,21 @@ subcommands:
         \ pair  [required]\n\n  --help                      Show this message and\
         \ exit.\n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id008
       positional:
       - !Positional
-        description: ''
+        optional: true
         position: 0
         name: INPUT_FILE
-        optional: true
+        description: ''
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - -v
+        - --verbose
         description: "-p, --prefix TEXT      Prefix for the file name(s) in output\
           \  [default:\nsample]\n-n, --number INTEGER   Number of samples to take\
           \  [default: 1]\n-r, --prob FLOAT       Probability of picking a sequence\
@@ -873,12 +1112,8 @@ subcommands:
           \  [default: 100000]\n-q, --fastq            The input file is a fastq file\n\
           -z, --gzip             gzip output files\n--help                 Show this\
           \ message and exit.\n"
-        synonyms:
-        - -v
-        - --verbose
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id014
+      parent: *id016
       subcommands: []
       usage: []
       help_flag:
@@ -894,31 +1129,32 @@ subcommands:
         \ --gzip             gzip output files\n  --help                 Show this\
         \ message and exit.\n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id009
       positional:
       - !Positional
-        description: ''
+        optional: true
         position: 0
         name: INPUT_FILE
-        optional: true
-      - !Positional
         description: ''
+      - !Positional
+        optional: true
         position: 1
         name: OUTPUT_FILE
-        optional: true
+        description: ''
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - -v
+        - --verbose
         description: "-r, --prob FLOAT       Probability of picking a sequence\n-x,\
           \ --max-seq INTEGER  Maximum number of sequences\n-q, --fastq          \
           \  The input file is a fastq file\n--help                 Show this message\
           \ and exit.\n"
-        synonyms:
-        - -v
-        - --verbose
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id014
+      parent: *id016
       subcommands: []
       usage: []
       help_flag:
@@ -931,16 +1167,21 @@ subcommands:
         \ of sequences\n  -q, --fastq            The input file is a fastq file\n\
         \  --help                 Show this message and exit.\n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id010
       positional:
       - !Positional
-        description: ''
+        optional: true
         position: 0
         name: OUTPUT_FILE
-        optional: true
+        description: ''
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - -v
+        - --verbose
         description: "-n, --num-seqs INTEGER       Number of sequences to generate\
           \  [default:\n1000]\n-gc, --gc-content FLOAT      GC content (defaults to\
           \ .5 out of 1)  [default:\n0.5]\n-i, --infer-params FILENAME  Infer parameters\
@@ -954,12 +1195,8 @@ subcommands:
           \    Load qualities model from a pickle file\n--progress               \
           \    Shows Progress Bar\n--help                       Show this message\
           \ and exit.\n"
-        synonyms:
-        - -v
-        - --verbose
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id014
+      parent: *id016
       subcommands: []
       usage: []
       help_flag:
@@ -982,6 +1219,7 @@ subcommands:
         \ pickle file\n  --progress                   Shows Progress Bar\n  --help\
         \                       Show this message and exit.\n"
       generated_using: *id005
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -993,32 +1231,33 @@ subcommands:
       \  Samples a FastA/Q one time, alternative to sample if...\n  sync         \
       \  Syncs a FastQ file generated with *sample* with the...\n"
     generated_using: *id005
+    docker_image:
   subcommands:
   - !Command
     command: *id006
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: sampling-utils
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 1
       name: sync
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: true
       position: 2
       name: INPUT_FILE
-      optional: true
-    - !Positional
       description: ''
+    - !Positional
+      optional: true
       position: 3
       name: OUTPUT_FILE
-      optional: true
+      description: ''
     named: []
-    parent: *id015
+    parent: *id017
     subcommands: []
     usage: []
     help_flag:
@@ -1027,6 +1266,7 @@ subcommands:
     help_text: "Usage: sampling-utils sync [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\
       Try 'sampling-utils sync --help' for help.\n\nError: no such option: -h\n"
     generated_using: *id007
+    docker_image:
   usage: []
   help_flag:
   usage_flag:
@@ -1037,31 +1277,73 @@ subcommands:
     \ that is out of sync with\n                              the original pair  [required]\n\
     \n  --help                      Show this message and exit.\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id008
   positional:
   - !Positional
-    description: ''
+    optional: true
     position: 0
     name: INPUT_FILE
-    optional: true
+    description: ''
   named:
   - !Flag
-    description: "-p, --prefix TEXT      Prefix for the file name(s) in output  [default:\n\
-      sample]\n-n, --number INTEGER   Number of samples to take  [default: 1]\n-r,\
-      \ --prob FLOAT       Probability of picking a sequence  [default: 0.001]\n-x,\
-      \ --max-seq INTEGER  Maximum number of sequences  [default: 100000]\n-q, --fastq\
-      \            The input file is a fastq file\n-z, --gzip             gzip output\
-      \ files\n--help                 Show this message and exit.\n"
+    optional: true
     synonyms:
     - -v
     - --verbose
-    args: !EmptyFlagArg {}
+    - -p
+    - --prefix
+    description: "Prefix for the file name(s) in output  [default:\nsample]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
     optional: true
-  parent: *id016
+    synonyms:
+    - -n
+    - --number
+    description: 'Number of samples to take  [default: 1]'
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --prob
+    description: 'Probability of picking a sequence  [default: 0.001]'
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --max-seq
+    description: 'Maximum number of sequences  [default: 100000]'
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --fastq
+    description: The input file is a fastq file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -z
+    - --gzip
+    description: gzip output files
+    args: !EmptyFlagArg {}
+  parent: *id018
   subcommands: []
   usage: []
-  help_flag:
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
   usage_flag:
   version_flag:
   help_text: "Usage: sampling-utils sample [OPTIONS] [INPUT_FILE]\n\n  Sample a FastA/Q\
@@ -1073,33 +1355,55 @@ subcommands:
     \       The input file is a fastq file\n  -z, --gzip             gzip output files\n\
     \  --help                 Show this message and exit.\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id009
   positional:
   - !Positional
-    description: ''
+    optional: true
     position: 0
     name: INPUT_FILE
-    optional: true
-  - !Positional
     description: ''
+  - !Positional
+    optional: true
     position: 1
     name: OUTPUT_FILE
-    optional: true
+    description: ''
   named:
   - !Flag
-    description: "-r, --prob FLOAT       Probability of picking a sequence\n-x, --max-seq\
-      \ INTEGER  Maximum number of sequences\n-q, --fastq            The input file\
-      \ is a fastq file\n--help                 Show this message and exit.\n"
+    optional: true
     synonyms:
     - -v
     - --verbose
-    args: !EmptyFlagArg {}
+    - -r
+    - --prob
+    description: Probability of picking a sequence
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
     optional: true
-  parent: *id016
+    synonyms:
+    - -x
+    - --max-seq
+    description: Maximum number of sequences
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --fastq
+    description: The input file is a fastq file
+    args: !EmptyFlagArg {}
+  parent: *id018
   subcommands: []
   usage: []
-  help_flag:
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
   usage_flag:
   version_flag:
   help_text: "Usage: sampling-utils sample_stream [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\
@@ -1109,36 +1413,111 @@ subcommands:
     \  -q, --fastq            The input file is a fastq file\n  --help           \
     \      Show this message and exit.\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id010
   positional:
   - !Positional
-    description: ''
+    optional: true
     position: 0
     name: OUTPUT_FILE
-    optional: true
+    description: ''
   named:
   - !Flag
-    description: "-n, --num-seqs INTEGER       Number of sequences to generate  [default:\n\
-      1000]\n-gc, --gc-content FLOAT      GC content (defaults to .5 out of 1)  [default:\n\
-      0.5]\n-i, --infer-params FILENAME  Infer parameters GC content and Quality model\n\
-      from file\n-r, --coding-prop FLOAT      Proportion of coding sequences  [default:\
-      \ 0.0]\n-l, --length INTEGER         Sequence length  [default: 150]\n-d, --const-model\
-      \            Use a model with constant qualities + noise\n-x, --dist-loc FLOAT\
-      \         Use as the starting point quality  [default:\n30.0]\n-q, --fastq \
-      \                 The output file is a FastQ file\n-m, --save-model FILENAME\
-      \    Save inferred qualities model to a pickle file\n-a, --read-model FILENAME\
-      \    Load qualities model from a pickle file\n--progress                   Shows\
-      \ Progress Bar\n--help                       Show this message and exit.\n"
+    optional: true
     synonyms:
     - -v
     - --verbose
-    args: !EmptyFlagArg {}
+    - -n
+    - --num-seqs
+    description: "Number of sequences to generate  [default:\n1000]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
     optional: true
-  parent: *id016
+    synonyms:
+    - -gc
+    - --gc-content
+    description: "GC content (defaults to .5 out of 1)  [default:\n0.5]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --infer-params
+    description: "Infer parameters GC content and Quality model\nfrom file"
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --coding-prop
+    description: 'Proportion of coding sequences  [default: 0.0]'
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --length
+    description: 'Sequence length  [default: 150]'
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --const-model
+    description: Use a model with constant qualities + noise
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --dist-loc
+    description: "Use as the starting point quality  [default:\n30.0]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --fastq
+    description: The output file is a FastQ file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --save-model
+    description: Save inferred qualities model to a pickle file
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --read-model
+    description: Load qualities model from a pickle file
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --progress
+    description: Shows Progress Bar
+    args: !EmptyFlagArg {}
+  parent: *id018
   subcommands: []
   usage: []
-  help_flag:
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
   usage_flag:
   version_flag:
   help_text: "Usage: sampling-utils rand_seq [OPTIONS] [OUTPUT_FILE]\n\n  Generates\
@@ -1157,6 +1536,7 @@ subcommands:
     \ from a pickle file\n  --progress                   Shows Progress Bar\n  --help\
     \                       Show this message and exit.\n"
   generated_using: *id005
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -1168,3 +1548,4 @@ help_text: "Usage: sampling-utils [OPTIONS] COMMAND [ARGS]...\n\n  Main function
   \ Samples a FastA/Q one time, alternative to sample if...\n  sync           Syncs\
   \ a FastQ file generated with *sample* with the...\n"
 generated_using: *id005
+docker_image:

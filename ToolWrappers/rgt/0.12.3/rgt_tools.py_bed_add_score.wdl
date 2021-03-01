@@ -12,6 +12,9 @@ task RgttoolspyBedAddScore {
       ~{if defined(output_bed_file) then ("-o " +  '"' + output_bed_file + '"') else ""} \
       ~{if defined(define_value_add) then ("-v " +  '"' + define_value_add + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bed_file: "Input BED file"
     output_bed_file: "Output BED file"

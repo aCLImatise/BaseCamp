@@ -12,6 +12,9 @@ task FfindexUnpack {
       ~{index_filename} \
       ~{out_dir}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_filename: ""
     index_filename: ""

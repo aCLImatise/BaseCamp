@@ -8,6 +8,9 @@ task HiLineParamsREFERENCE {
     HiLine params REFERENCE \
       ~{restriction_sites}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     restriction_sites: ""
   }

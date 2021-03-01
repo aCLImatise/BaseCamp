@@ -30,6 +30,9 @@ task MetageneChart {
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
       ~{if (stylesheet) then "--stylesheet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     labels: "Sample names for each metagene profile (optional)."
     landmark: "Name of landmark at zero point (e.g. 'CDS start' or\\n'CDS stop'; optional)"

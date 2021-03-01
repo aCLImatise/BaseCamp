@@ -14,6 +14,9 @@ task Dshfastqsequencelength {
       ~{if (fast_q_file) then "--fastq-file" else ""} \
       ~{if (sequence_length_file) then "--sequence-length-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     fast_q_file: "[class java.io.File]  input FASTQ file, default stdin [optional]"

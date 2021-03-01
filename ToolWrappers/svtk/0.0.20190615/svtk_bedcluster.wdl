@@ -22,6 +22,9 @@ task SvtkBedcluster {
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""} \
       ~{if defined(intersection) then ("--intersection " +  '"' + intersection + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     frac: "Minimum reciprocal overlap fraction to link variants.\\n[0.8]"
     region: "Region to cluster (chrom:start-end). Requires tabixed\\nbed."

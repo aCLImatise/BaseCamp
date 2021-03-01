@@ -36,6 +36,9 @@ task PancakeDbfilter {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sampling: "STR    Select sampling type: none, linear, random. Valid choices: (none, linear, random). [none]"
     sample_bases: "INT    Number of bases to sample. [0]"

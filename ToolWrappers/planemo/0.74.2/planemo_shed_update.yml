@@ -1,0 +1,186 @@
+!Command
+command:
+- planemo
+- shed_update
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: shed.
+  description: '% planemo shed_update --shed_target testtoolshed path/to/repo'
+- !Positional
+  optional: false
+  position: 0
+  name: changes.
+  description: The lower-level ``shed_upload`` command should be used instead if the
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --report_xunit
+  description: Output an XUnit report, useful for CI testing
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --recursive
+  description: "Recursively perform command for nested\nrepository directories."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fail_fast
+  description: "If multiple repositories are specified and an\nerror occurs stop immediately\
+    \ instead of\nprocessing remaining repositories."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --owner
+  description: Tool Shed repository owner (username).
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --name
+  description: "Tool Shed repository name (defaults to the\ninferred tool directory\
+    \ name)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --shed_email
+  description: "E-mail for Tool Shed auth (required unless\nshed_key is specified)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --shed_key
+  description: "API key for Tool Shed access. An API key is\nrequired unless e-mail\
+    \ and password is\nspecified. This key can be specified with\neither --shed_key\
+    \ or --shed_key_from_env."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --shed_key_from_env
+  description: "Environment variable to read API key for Tool\nShed access from."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --shed_password
+  description: "Password for Tool Shed auth (required unless\nshed_key is specified)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --shed_target
+  description: "Tool Shed to target (this can be 'toolshed',\n'testtoolshed', 'local'\
+    \ (alias for\nhttp://localhost:9009/), an arbitrary url or\nmappings defined ~/.planemo.yml."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --message
+  description: Commit message for tool shed upload.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --force_repository_creation
+  description: "If a repository cannot be found for the\nspecified user/repo name\
+    \ pair, then\nautomatically create the repository in the\ntoolshed."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --check_diff
+  description: "Skip uploading if the shed_diff detects there\nwould be no 'difference'\
+    \ (only attributes\npopulated by the shed would be updated.)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_upload
+  description: "Skip upload contents as part of operation, only\nupdate metadata."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_metadata
+  description: "Skip metadata update as part of operation, only\nupload new contents."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: planemo shed_update [OPTIONS] PROJECT\n\n  Update Tool Shed repository.\n\
+  \n  By default this command will update both repository metadata from\n  ``.shed.yml``\
+  \ and upload new contents from the repository directory.\n\n      % planemo shed_update\n\
+  \n  This will update the main tool shed with the repository defined by a\n  ``.shed.yml``\
+  \ file in the current working directory. Both the location of\n  the ``.shed.yml``\
+  \ and the tool shed to upload to can be easily configured.\n  For instance, the\
+  \ following command can be used if ``.shed.yml`` if\n  contained in ``path/to/repo``\
+  \ and the desire is to update the test tool\n  shed.\n\n      % planemo shed_update\
+  \ --shed_target testtoolshed path/to/repo\n\n  Another important option is ``--check_diff``\
+  \ - this doesn't affect the\n  updating of shed metadata but it will check for differences\
+  \ before\n  uploading new contents to the tool shed. This may important because\
+  \ the\n  tool shed will automatically populate certain attributes in tool shed\n\
+  \  artifact files (such as ``tool_dependencies.xml``) and this may cause\n  unwanted\
+  \ installable revisions to be created when there are no important\n  changes.\n\n\
+  \  The lower-level ``shed_upload`` command should be used instead if the\n  repository\
+  \ doesn't define complete metadata in a ``.shed.yml``.\n\nOptions:\n  --report_xunit\
+  \ PATH          Output an XUnit report, useful for CI testing\n  -r, --recursive\
+  \              Recursively perform command for nested\n                        \
+  \       repository directories.\n\n  --fail_fast                  If multiple repositories\
+  \ are specified and an\n                               error occurs stop immediately\
+  \ instead of\n                               processing remaining repositories.\n\
+  \n  --owner TEXT                 Tool Shed repository owner (username).\n  --name\
+  \ TEXT                  Tool Shed repository name (defaults to the\n           \
+  \                    inferred tool directory name).\n\n  --shed_email TEXT     \
+  \       E-mail for Tool Shed auth (required unless\n                           \
+  \    shed_key is specified).\n\n  --shed_key TEXT              API key for Tool\
+  \ Shed access. An API key is\n                               required unless e-mail\
+  \ and password is\n                               specified. This key can be specified\
+  \ with\n                               either --shed_key or --shed_key_from_env.\n\
+  \n  --shed_key_from_env TEXT     Environment variable to read API key for Tool\n\
+  \                               Shed access from.\n\n  --shed_password TEXT    \
+  \     Password for Tool Shed auth (required unless\n                           \
+  \    shed_key is specified).\n\n  -t, --shed_target TEXT       Tool Shed to target\
+  \ (this can be 'toolshed',\n                               'testtoolshed', 'local'\
+  \ (alias for\n                               http://localhost:9009/), an arbitrary\
+  \ url or\n                               mappings defined ~/.planemo.yml.\n\n  -m,\
+  \ --message TEXT           Commit message for tool shed upload.\n  --force_repository_creation\
+  \  If a repository cannot be found for the\n                               specified\
+  \ user/repo name pair, then\n                               automatically create\
+  \ the repository in the\n                               toolshed.\n\n  --check_diff\
+  \                 Skip uploading if the shed_diff detects there\n              \
+  \                 would be no 'difference' (only attributes\n                  \
+  \             populated by the shed would be updated.)\n\n  --skip_upload      \
+  \          Skip upload contents as part of operation, only\n                   \
+  \            update metadata.\n\n  --skip_metadata              Skip metadata update\
+  \ as part of operation, only\n                               upload new contents.\n\
+  \n  --help                       Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/planemo:0.74.2--py_0

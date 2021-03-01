@@ -12,6 +12,9 @@ task Reducealignment {
       ~{width} \
       ~{alignment}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     start: ""
     width: ""

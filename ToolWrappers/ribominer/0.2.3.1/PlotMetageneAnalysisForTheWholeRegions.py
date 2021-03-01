@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Int
+
+Plotmetageneanalysisforthewholeregions_V0_1_0 = CommandToolBuilder(tool="PlotMetageneAnalysisForTheWholeRegions", base_command=["PlotMetageneAnalysisForTheWholeRegions"], inputs=[ToolInput(tag="in_input", input_type=File(optional=True), prefix="--input", doc=InputDocumentation(doc="Input file in txt format.And the files have N columns,\nmeaning N samples and have total bins rows.\n[FiveUTR+CDS+ThreeUTR]")), ToolInput(tag="in_output", input_type=String(optional=True), prefix="--output", doc=InputDocumentation(doc="Prefix of output files.[required]")), ToolInput(tag="in_group", input_type=Int(optional=True), prefix="--group", doc=InputDocumentation(doc="Group name of each group separated by comma. e.g. 'si-\ncontrol,si-eIF3e'")), ToolInput(tag="in_replicate", input_type=Int(optional=True), prefix="--replicate", doc=InputDocumentation(doc="Replicate name of each group separated by comma. e.g.\n'si_3e_1_80S,si_3e_2_80S__si_cttl_1_80S,si_ctrl_2_80S'")), ToolInput(tag="in_format", input_type=File(optional=True), prefix="--format", doc=InputDocumentation(doc="Output file format,'pdf','png' or 'jpg'. default=pdf")), ToolInput(tag="in_bins", input_type=Int(optional=True), prefix="--bins", doc=InputDocumentation(doc="Bins to scale the transcript length.e.g.'15,90,60'.\nbins must be separated by comma, namely\n'5UTRBins,CDSBins,3UTRBins'. default=15,90,60")), ToolInput(tag="in_ymax", input_type=Int(optional=True), prefix="--ymax", doc=InputDocumentation(doc="The max of ylim. default=none")), ToolInput(tag="in_ymin", input_type=Int(optional=True), prefix="--ymin", doc=InputDocumentation(doc="The min of ylim. default=none")), ToolInput(tag="in_mode", input_type=String(optional=True), prefix="--mode", doc=InputDocumentation(doc="plot all samples or just mean samples [all or mean].If\nchoose 'all',output all samples as well as mean\nsamples, else just mean samples.default=all")), ToolInput(tag="in_xlabel_loc", input_type=String(optional=True), prefix="--xlabel-loc", doc=InputDocumentation(doc="Location of xlabel. Used to control the yaxis location\nof xlabel. default=none\n"))], outputs=[ToolOutput(tag="out_format", output_type=File(optional=True), selector=InputSelector(input_to_select="in_format", type_hint=File()), doc=OutputDocumentation(doc="Output file format,'pdf','png' or 'jpg'. default=pdf"))], container="quay.io/biocontainers/ribominer:0.2.3.1--pyh3252c3a_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Plotmetageneanalysisforthewholeregions_V0_1_0().translate("wdl")
+

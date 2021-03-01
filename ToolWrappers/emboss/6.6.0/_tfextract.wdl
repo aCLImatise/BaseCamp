@@ -4,6 +4,9 @@ task Tfextract {
   command <<<
     _tfextract
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

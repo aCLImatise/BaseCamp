@@ -28,6 +28,9 @@ task Sixpack {
       ~{if (offset) then "-offset" else ""} \
       ~{if (html) then "-html" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_seq: "seqoutall  [<sequence>.<format>] ORF sequence output"
     table: "menu       [0] Genetics code used for the translation\\n(Values: 0 (Standard); 1 (Standard (with\\nalternative initiation codons)); 2\\n(Vertebrate Mitochondrial); 3 (Yeast\\nMitochondrial); 4 (Mold, Protozoan,\\nCoelenterate Mitochondrial and\\nMycoplasma/Spiroplasma); 5 (Invertebrate\\nMitochondrial); 6 (Ciliate Macronuclear and\\nDasycladacean); 9 (Echinoderm\\nMitochondrial); 10 (Euplotid Nuclear); 11\\n(Bacterial); 12 (Alternative Yeast Nuclear);\\n13 (Ascidian Mitochondrial); 14 (Flatworm\\nMitochondrial); 15 (Blepharisma\\nMacronuclear); 16 (Chlorophycean\\nMitochondrial); 21 (Trematode\\nMitochondrial); 22 (Scenedesmus obliquus);\\n23 (Thraustochytrium Mitochondrial))"

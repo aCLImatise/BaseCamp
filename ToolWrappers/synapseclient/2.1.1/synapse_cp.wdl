@@ -18,6 +18,9 @@ task SynapseCp {
       ~{if (exclude_types) then "--excludeTypes" else ""} \
       ~{if (skip_copy_wiki) then "--skipCopyWiki" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     destination_id: "Synapse ID of project or folder where file will be\\ncopied to."
     set_provenance: "Has three values to set the provenance of the copied\\nentity-traceback: Sets to the source entityexisting:\\nSets to source entity's original provenance (if it\\nexists)None/none: No provenance is set"

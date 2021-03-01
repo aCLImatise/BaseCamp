@@ -6,9 +6,9 @@ task Pswdb {
     Int? penatly_default
     Int? matrix_default_blosumbla
     String? abc
-    Boolean? penalty_above_default
-    Boolean? b_penalty_above
-    Boolean? c_penalty_above
+    Boolean? a_penalty_above_default
+    Boolean? b_penalty_above_default
+    Boolean? c_penalty_above_default
     String? pba
     Int? max_desc
     Int? max_aln
@@ -38,9 +38,9 @@ task Pswdb {
       ~{if defined(penatly_default) then ("-e " +  '"' + penatly_default + '"') else ""} \
       ~{if defined(matrix_default_blosumbla) then ("-m " +  '"' + matrix_default_blosumbla + '"') else ""} \
       ~{if defined(abc) then ("-abc " +  '"' + abc + '"') else ""} \
-      ~{if (penalty_above_default) then "-a" else ""} \
-      ~{if (b_penalty_above) then "-b" else ""} \
-      ~{if (c_penalty_above) then "-c" else ""} \
+      ~{if (a_penalty_above_default) then "-a" else ""} \
+      ~{if (b_penalty_above_default) then "-b" else ""} \
+      ~{if (c_penalty_above_default) then "-c" else ""} \
       ~{if defined(pba) then ("-pba " +  '"' + pba + '"') else ""} \
       ~{if defined(max_desc) then ("-max_desc " +  '"' + max_desc + '"') else ""} \
       ~{if defined(max_aln) then ("-max_aln " +  '"' + max_aln + '"') else ""} \
@@ -64,14 +64,17 @@ task Pswdb {
       ~{if defined(error_off_std) then ("-erroroffstd " +  '"' + error_off_std + '"') else ""} \
       ~{if (error_log) then "-errorlog" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     penalty_default: "penalty (default 12)"
     penatly_default: "penatly (default 2)"
     matrix_default_blosumbla: "matrix (default BLOSUM62.bla)"
     abc: "the abc model"
-    penalty_above_default: "a penalty for above (default 120)"
-    b_penalty_above: "b penalty for above (default 10)"
-    c_penalty_above: "c penalty for above (default 3)"
+    a_penalty_above_default: "a penalty for above (default 120)"
+    b_penalty_above_default: "b penalty for above (default 10)"
+    c_penalty_above_default: "c penalty for above (default 3)"
     pba: "the pba model"
     max_desc: "of one line descriptions (default = 500)"
     max_aln: "of alignments to show (default = 50)"

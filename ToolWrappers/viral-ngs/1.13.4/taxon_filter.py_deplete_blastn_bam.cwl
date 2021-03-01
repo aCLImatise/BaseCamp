@@ -3,33 +3,33 @@ id: taxon_filter.py_deplete_blastn_bam.cwl
 inputs:
 - id: in_threads
   doc: The number of threads to use in running blastn.
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_chunksize
   doc: 'FASTA chunk size (default: 1000000)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --chunkSize
 - id: in_jvm_memory
   doc: 'JVM virtual memory size (default: 4g)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --JVMmemory
 - id: in_loglevel
   doc: 'Verboseness of output. [default: DEBUG]'
-  type: string
+  type: string?
   inputBinding:
     prefix: --loglevel
 - id: in_tmp_dir
   doc: 'Base directory for temp files. [default: /tmp]'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --tmp_dir
 - id: in_tmp_dir_keep
   doc: "Keep the tmp_dir if an exception occurs while running.\nDefault is to delete\
     \ all temp files at the end, even\nif there's a failure.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tmp_dirKeep
 - id: in_use_blastn_remove
@@ -56,6 +56,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - taxon_filter.py

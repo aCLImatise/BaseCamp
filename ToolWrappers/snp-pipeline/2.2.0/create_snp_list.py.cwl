@@ -4,29 +4,29 @@ inputs:
 - id: in_force
   doc: "Force processing even when result file already exists\nand is newer than inputs\
     \ (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_vcf_name
   doc: "File name of the VCF files which must exist in each of\nthe sample directories\
     \ (default: var.flt.vcf)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --vcfname
 - id: in_max_snps
   doc: "Exclude samples having more than this maximum allowed\nnumber of SNPs. Set\
     \ to -1 to disable this function.\n(default: -1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxsnps
 - id: in_output
   doc: "Output file. Relative or absolute path to the SNP list\nfile (default: snplist.txt)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_verbose
   doc: 'Verbose message level (0=no info, 5=lots) (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbose
 - id: in_sample_dirs_file
@@ -48,9 +48,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file. Relative or absolute path to the SNP list\nfile (default: snplist.txt)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - create_snp_list.py

@@ -28,6 +28,9 @@ task Simulate {
       ~{if defined(phasing_switch) then ("--phasing-switch " +  '"' + phasing_switch + '"') else ""} \
       ~{if defined(random_seed) then ("--random-seed " +  '"' + random_seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf: "(required)\\nName of input VCF file"
     sample_map: "(required)\\nSample subpop mapping file - also selects which samples will be used for simulation"

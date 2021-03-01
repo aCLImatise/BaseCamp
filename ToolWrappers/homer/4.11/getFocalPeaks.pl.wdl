@@ -12,6 +12,9 @@ task GetFocalPeakspl {
       ~{if (min) then "-min" else ""} \
       ~{if (max) then "-max" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min: "<#> (minimum focus ratio threshold, default: 0.75)"
     max: "<#> (maximum focus ratio threshold, default: none)"

@@ -20,6 +20,9 @@ task MakeLogitModelpy {
       ~{if defined(start) then ("--start " +  '"' + start + '"') else ""} \
       ~{if defined(stop) then ("--stop " +  '"' + stop + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     c_gene: "Protein coding transcripts (used to build logit model)\\neither in BED format or mRNA sequences in FASTA\\nformat: If this is BED format file, '-r' must be\\nspecified; if this is mRNA sequence file in FASTA\\nformat, ignore the '-r' option. The input BED or FASTA\\nfile could be regular text file or compressed file\\n(*.gz, *.bz2) or accessible url. NOTE: transcript ID\\nshould be unique."
     n_gene: "Non protein coding transcripts (used to build logit\\nmodel) either in BED format or mRNA sequences in FASTA\\nformat: If this is BED format file, '-r' must be\\nspecified; if this is mRNA sequence file in FASTA\\nformat, ignore the '-r' option. The input BED or FASTA\\nfile could be regular text file or compressed file\\n(*.gz, *.bz2) or accessible url.  NOTE: transcript ID\\nshould be unique."

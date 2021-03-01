@@ -4,6 +4,9 @@ task JunctionalReadspy {
   command <<<
     junctionalReads_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

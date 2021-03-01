@@ -10,6 +10,9 @@ task FpaKeepFLAGS {
       ~{fpa} \
       ~{if defined(var_input) then ("--input " +  '"' + var_input + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_input: ""
     fpa: ""

@@ -40,6 +40,9 @@ task Moodsdnapy {
       ~{if defined(lo_bg) then ("--lo-bg " +  '"' + lo_bg + '"') else ""} \
       ~{if defined(threshold_precision) then ("--threshold-precision " +  '"' + threshold_precision + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbosity: "verbose (-vv, -vvv for more)"
     matrices: "matrix files (count/frequency, will be converted to\\nPWM before matching)"

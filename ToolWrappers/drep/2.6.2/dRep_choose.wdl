@@ -26,6 +26,9 @@ task DRepChoose {
       ~{if defined(genome_info) then ("--genomeInfo " +  '"' + genome_info + '"') else ""} \
       ~{if (ignore_genome_quality) then "--ignoreGenomeQuality" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     processors: "threads (default: 6)"
     debug: "make extra debugging output (default: False)"

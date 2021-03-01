@@ -18,6 +18,9 @@ task Lordfast {
       ~{use} \
       ~{ignore}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ddeessccrriippttiioonn: "DDEESSCCRRIIPPTTIIOONN"
     sensitive_tool_mapping: "is  a  sensitive  tool for mapping long reads with high error"

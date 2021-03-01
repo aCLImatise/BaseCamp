@@ -16,6 +16,9 @@ task Mvp {
       ~{if defined(motif_list) then ("--motif-list " +  '"' + motif_list + '"') else ""} \
       ~{if defined(sequence_type) then ("--sequence-type " +  '"' + sequence_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "results table (default: stdout)"
     reference: "reference sequence in fasta format"

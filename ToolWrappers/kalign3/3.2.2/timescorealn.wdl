@@ -16,6 +16,9 @@ task Timescorealn {
       ~{if defined(test) then ("-test " +  '"' + test + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     program: ""

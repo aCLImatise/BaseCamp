@@ -3,7 +3,7 @@ id: download_plasmid_database.py.cwl
 inputs:
 - id: in_output
   doc: "REQUIRED. Output directory to extract plasmid database\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 outputs:
@@ -12,9 +12,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "REQUIRED. Output directory to extract plasmid database\n"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - download_plasmid_database.py

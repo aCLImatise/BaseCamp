@@ -3,135 +3,142 @@ command:
 - bowtie2-build-s
 positional:
 - !Positional
-  description: comma-separated list of files with ref sequences
+  optional: false
   position: 0
   name: reference_in
-  optional: false
+  description: comma-separated list of files with ref sequences
 - !Positional
-  description: write bt2 data to files with this dir/basename
+  optional: false
   position: 1
   name: bt2_index_base
-  optional: false
+  description: write bt2 data to files with this dir/basename
 named:
 - !Flag
-  description: reference files are Fasta (default)
+  optional: true
   synonyms:
   - -f
+  description: reference files are Fasta (default)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "reference sequences given on cmd line (as\n<reference_in>)"
+  optional: true
   synonyms:
   - -c
+  description: "reference sequences given on cmd line (as\n<reference_in>)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --noauto
   description: disable automatic -p/--bmax/--dcv memory-fitting
-  synonyms:
-  - -a/--noauto
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --packed
   description: use packed strings internally; slower, less memory
-  synonyms:
-  - -p/--packed
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: max bucket sz for blockwise suffix-array builder
+  optional: true
   synonyms:
   - --bmax
+  description: max bucket sz for blockwise suffix-array builder
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'max bucket sz as divisor of ref len (default: 4)'
+  optional: true
   synonyms:
   - --bmaxdivn
+  description: 'max bucket sz as divisor of ref len (default: 4)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'diff-cover period for blockwise (default: 1024)'
+  optional: true
   synonyms:
   - --dcv
+  description: 'diff-cover period for blockwise (default: 1024)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: disable diff-cover (algorithm becomes quadratic)
+  optional: true
   synonyms:
   - --nodc
+  description: disable diff-cover (algorithm becomes quadratic)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --noref
   description: don't build .3/.4 index files
-  synonyms:
-  - -r/--noref
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - '-3'
+  - --justref
   description: just build .3/.4 index files
-  synonyms:
-  - -3/--justref
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --offrate
   description: 'SA is sampled every 2^<int> BWT chars (default: 5)'
-  synonyms:
-  - -o/--offrate
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --ftabchars
   description: '# of chars consumed in initial lookup (default: 10)'
-  synonyms:
-  - -t/--ftabchars
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: '# of threads'
+  optional: true
   synonyms:
   - --threads
+  description: '# of threads'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: seed for random number generator
+  optional: true
   synonyms:
   - --seed
+  description: seed for random number generator
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
   description: verbose output (for debugging)
-  synonyms:
-  - -q/--quiet
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: print detailed description of tool and its options
-  synonyms:
-  - -h/--help
-  args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print detailed description of tool and its options
+  args: !EmptyFlagArg {}
 usage_flag: !Flag
-  description: print this usage message
+  optional: true
   synonyms:
   - --usage
+  description: print this usage message
   args: !EmptyFlagArg {}
-  optional: true
 version_flag: !Flag
-  description: print version information and quit
+  optional: true
   synonyms:
   - --version
+  description: print version information and quit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Bowtie 2 version 2.4.1 by Ben Langmead (langmea@cs.jhu.edu, www.cs.jhu.edu/~langmea)\n\
   Usage: bowtie2-build-s [options]* <reference_in> <bt2_index_base>\n    reference_in\
   \            comma-separated list of files with ref sequences\n    bt2_index_base\
@@ -155,3 +162,4 @@ help_text: "Bowtie 2 version 2.4.1 by Ben Langmead (langmea@cs.jhu.edu, www.cs.j
   \ message\n    --version               print version information and quit\n"
 generated_using:
 - --help
+docker_image:

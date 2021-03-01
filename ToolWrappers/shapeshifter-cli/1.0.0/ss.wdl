@@ -26,6 +26,9 @@ task Ss {
       ~{if (gzip) then "--gzip" else ""} \
       ~{if defined(set_index) then ("--set_index " +  '"' + set_index + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_type: "Type of file to be imported. If not specified, file\\ntype will be determined by the file extension given.\\nAvailable choices are: CSV, TSV, JSON, Excel, HDF5,\\nParquet, MsgPack, Stata, Pickle, SQLite, ARFF, GCT,\\nKallisto, GEO, Salmon"
     output_file_type: "Type of file to which results are exported. If not\\nspecified, file type will be determined by the file\\nextension given. Available choices are: CSV, TSV,\\nJSON, Excel, HDF5, Parquet, MsgPack, Stata, Pickle,\\nSQLite, ARFF, GCT, RMarkdown, JupyterNotebook"

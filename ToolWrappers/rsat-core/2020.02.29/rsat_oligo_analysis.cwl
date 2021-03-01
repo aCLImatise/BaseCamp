@@ -4,24 +4,24 @@ inputs:
 - id: in_specified_standard_input
   doc: "if not specified, the standard input is used.\nThis allows to place the command\
     \ within a pipe."
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_mask
   doc: "|lower\nMask lower or uppercases, respecively, i.e. replace\nselected case\
     \ by N characters."
-  type: string
+  type: string?
   inputBinding:
     prefix: -mask
 - id: in_format
   doc: "file format. Must be followed by one of the\nfollowing options:\nfasta (default)\n\
     wconsensus\nIG\nfilelist\nraw\nSee below for the description of these formats."
-  type: File
+  type: File?
   inputBinding:
     prefix: -format
 - id: in_oligomer_length
   doc: oligomer length.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_exp_freq
@@ -29,7 +29,7 @@ inputs:
     \ for expected oligomer\nfrequencies. This can be for instance the olignonucleotide\n\
     frequency measured in the whole genome, or in all intergenic\nregions, or in all\
     \ coding regions.\nThis information is used for the calculation of probabilities."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -expfreq
 - id: in_calib_n
@@ -39,20 +39,20 @@ inputs:
     \ other informations)\nthe occurrence means and variances of the simulation,\n\
     which is used for the calculation of probabilities, on\nthe basis of a negative\
     \ binomial model."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -calibN
 - id: in_calib_one
   doc: "file based on single sequence analysis.\nThe mean and variance of occurrences\
     \ are estimated my\nmultiplying single-sequence estimators by the number\nof sequences\
     \ (we checked the linearity)."
-  type: long
+  type: long?
   inputBinding:
     prefix: -calib1
 - id: in_ncf
   doc: "(deprecated, use \"-bg intergenic\" instead)\nuse intergenic frequencies as\
     \ background frequencies"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ncf
 - id: in_bg
@@ -65,20 +65,20 @@ inputs:
     with upstream ORFs\n-bg intergenic\nintergenic frequencies\nWhole set of intergenic\
     \ regions, including\nupstream and downstream sequences\n-bg input\nEstimate word\
     \ frequency from residue\nfrequencies in the input sequences (Bernoulli\nmodel)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bg
 - id: in_org
   doc: "organism\nOrganism used to estimate background frequencies.\nThe list of supported\
     \ organisms can be obtained with the\ncommand I<supported-organisms>."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -org
 - id: in_tax_on
   doc: "taxon\nOrganism or taxon that used as reference for the\nestimation of a background\
     \ model based on a genome\nsubset (option -bg).  Either -org or -taxon is\nrequired\
     \ with the option -bg.\nOptions -org and -taxon are mutually exclusive."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -taxon
 - id: in_markov
@@ -89,7 +89,7 @@ inputs:
     \ single nucleotide frequencies\n(-a input).\nEx: calculation of expected 6nt\
     \ frequencies on basis\nof a Markov chain of order 4 :\nobs(GATAA) x obs(ATAAG)\n\
     exp(GATAAG) = -----------------------\nobs(ATAA)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -markov
 - id: in_lexicon
@@ -99,7 +99,7 @@ inputs:
     GATAAG  G & ATAAG\nGA & TAAG\nGAT & TAG\nGATA & AG\nGATAA & G\nThe expected frequency\
     \ of each segmented pair is the\nproduct of expected frequencies of its members.\
     \ The\nexpected word frequency is the maximum expected pair\nfrequency."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -lexicon
 - id: in_pseudo
@@ -110,23 +110,23 @@ inputs:
     \ expected frequency is 0\n(leading to an impossible event). The expected\nfrequency\
     \ is corrected by a pseudo-frequency, which\nis the pseudo-frequency divided by\
     \ the number of\npossible patterns."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pseudo
 - id: in_noov
   doc: "no overlapping.\nDisable the detection of overlapping matches for\nself-overlapping\
     \ patterns (ex TATATA, GATAGA)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -noov
 - id: in_two_str
   doc: "(default)\noligonucleotide occurrences found on both stands are summed."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -2str
 - id: in_one_str
-  doc: inactivates the summation of occurrences on both strands.
-  type: boolean
+  doc: Output file. If not specified, the result is printed on the
+  type: File?
   inputBinding:
     prefix: -1str
 - id: in_seqtype
@@ -137,17 +137,166 @@ inputs:
     \ of oligomers with\ntheir reverse complements, and modifies the\nalphabet size.\n\
     . other\nAny type of letters found in the input sequence is\nconsidered valid.\
     \ This allows to analyze texts in\nhuman language."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -seqtype
-- id: in_lth
-  doc: "value\nLower threshold on some parameter. All patterns with a\nparameter value\
-    \ smaller than the threshold are\ndiscarded.\nSupported parameters: occ,occ_P,occ_E,occ_sig,observed_freq,exp_freq,zscore,mseq,ms_P,ms_E,ms_sig,ratio,rank\n\
-    Example: select patterns with a positive value for the\noccurrence significance.\n\
-    -lth occ_sig 0"
-  type: long
+- id: in_verbose_level_report
+  doc: "#    verbose level\n1 report parameters and statistics\n2 warn when the program\
+    \ enters a new subroutine\n3 warn when the program reads a new sequence\n4 very\
+    \ high verbosity (for debugging)"
+  type: boolean?
   inputBinding:
-    prefix: -lth
+    prefix: -v
+- id: in_return
+  doc: "of statistics to return\nthis option is followed by a list of words,\nseparated\
+    \ by commas, indicating which values\nhave to be returned for each oligomer.\n\
+    Supported statistics:\nocc     number of occurrences .\nmseq    number of matching\
+    \ sequences.\nfreq    relative frequencies\n(occurrences/sum of occurrences)\n\
+    proba   binomial probability for observing\n>= k occurrences\nratio   observed/expected\
+    \ ratio\nzscore  z-score\nlike    log likelihood\npos     matching positions for\
+    \ each oligomer\nrank    rank of the pattern according to the sorting\ncriterion\n\
+    ex: -return freq,occ,zscore"
+  type: long?
+  inputBinding:
+    prefix: -return
+- id: in_pal
+  doc: only return reverse palindroms
+  type: boolean?
+  inputBinding:
+    prefix: -pal
+- id: in_table
+  doc: "return a table where rows represents input sequences,\nand columns the counts\
+    \ of occurrences for each\npossible oligo"
+  type: boolean?
+  inputBinding:
+    prefix: -table
+- id: in_distrib
+  doc: return occurrence distributions (one row per pattern)
+  type: boolean?
+  inputBinding:
+    prefix: -distrib
+- id: in_group_rc
+  doc: "(default)\ngroup reverse complement with the direct sequence in the\noutput\
+    \ file. This avoids redundancy (since the frequence of\nAAAAA is the same as TTTTT\
+    \ when one searches on both strands).\nCan be inactivated by the -nogrouprc option.\n\
+    Incompatible with -1str."
+  type: File?
+  inputBinding:
+    prefix: -grouprc
+- id: in_nogroup_rc
+  doc: inactivates grouping of reverse complement pairs.
+  type: boolean?
+  inputBinding:
+    prefix: -nogrouprc
+- id: in_one_n
+  doc: "group oligonucleotides by neighborhood, where one neighborhood\nis defined\
+    \ as a set of oligo differing by one mismatch at a\ncommon position.\nex: the\
+    \ oligonucleotide atg admits 3 distinct neighborhoods:\natN\naNg\nNtg"
+  type: boolean?
+  inputBinding:
+    prefix: -oneN
+- id: in_one_deg
+  doc: "insert one ambiguous nucleotide code at each\nposition of each pattern"
+  type: string?
+  inputBinding:
+    prefix: -onedeg
+- id: in_accept
+  doc: "Specify a file containing a list of accepted\noligos. The analysis is then\
+    \ restricted to these\noligos. Since the number of tested oligos is reduced\n\
+    by this selection, the multitesting correction is\ngenerally lower, which increases\
+    \ the significance of\nthe accepted oligos, compared to the default situation\n\
+    where all oligos are analyzed.\nFile format: the first word of each row specifies\
+    \ a\noligo. Subsequent words are ignored."
+  type: File?
+  inputBinding:
+    prefix: -accept
+- id: in_sort
+  doc: "sort oligomers according to overrepresentation.\nThe sort criterion depends\
+    \ on the estimators returned,\nby preference:\n- Z-score\n- binomial significance\n\
+    - occurrence number"
+  type: boolean?
+  inputBinding:
+    prefix: -sort
+- id: in_under
+  doc: "detect under-represented instead of over-represented words\n(left-tail significance\
+    \ test, see below for details)."
+  type: boolean?
+  inputBinding:
+    prefix: -under
+- id: in_two_tails
+  doc: "detect under-represented and over-represented words\n(two-tails significance\
+    \ test, see below for details)."
+  type: boolean?
+  inputBinding:
+    prefix: -two_tails
+- id: in_zero_occ
+  doc: "Report also patterns with zero occurrences (provided\nthey fit the other thresholds).\n\
+    By default, the program reports only patterns present\nin the sequence.\nIf the\
+    \ left tail or two-tail test is applied, patterns\nwith zero occurrences are automatically\
+    \ taken into\naccount.-\nIn some other cases, one would also like to detect\n\
+    patterns absent from the sequence. This is the\nfunction of this option."
+  type: boolean?
+  inputBinding:
+    prefix: -zeroocc
+- id: in_quick
+  doc: "Quick count mode: delegate the counting of word\noccurrences to count-words,\
+    \ a program written in C by\nMatthieu Defrance.\nThis option is incompatible with\
+    \ the following output\nfields:\nIt is also incompatible with the output types\n\
+    -table\n-distrib"
+  type: boolean?
+  inputBinding:
+    prefix: -quick
+- id: in_quick_if_possible
+  doc: "Evaluate if the quick mode is compatible with the\nselected output parameters,\
+    \ and, if so, run in this\nmode."
+  type: boolean?
+  inputBinding:
+    prefix: -quick_if_possible
+- id: in_th_po
+  doc: "# where # is a real value comprised between 0 and 1.\nThreshold on occurrence\
+    \ probability: only returns the patterns\nfor which the probability to encounter\
+    \ a number of occurrences\nhigher or equals to that observed is smaller than #."
+  type: boolean?
+  inputBinding:
+    prefix: -thpo
+- id: in_tho_sig
+  doc: "#\nthreshold on occurence significance index.\nOnly returns the patterns for\
+    \ which the occurence significance\nindex is higher than or equal to #."
+  type: boolean?
+  inputBinding:
+    prefix: -thosig
+- id: in_th_ratio
+  doc: "#\nthreshold on observed/expected occurrence ratio\nOnly returns patterns\
+    \ with higher ratios than the threshold."
+  type: boolean?
+  inputBinding:
+    prefix: -thratio
+- id: in_thms
+  doc: "# where # is an integer. Threshold on matching\nsequences: only returns the\
+    \ patterns encountered at\nleast once in at least # sequences."
+  type: boolean?
+  inputBinding:
+    prefix: -thms
+- id: in_th_msf
+  doc: "on frequency of matching sequences (propotion\nof sequences with at least\
+    \ one occurrence of the\npattern)"
+  type: string?
+  inputBinding:
+    prefix: -thmsf
+- id: in_th_pms
+  doc: "#\nwhere # is a real value comprised between 0 and 1.\nThreshold on occurrence\
+    \ probability: only returns the patterns\nfor which the probability of a number\
+    \ of matching sequences\nhigher or equals to that observed is smaller than #."
+  type: boolean?
+  inputBinding:
+    prefix: -thpms
+- id: in_thms_sig
+  doc: "#\nthreshold on matching sequence significance index.\nOnly returns the patterns\
+    \ for which the significance\nindex of matching sequences is higher than or equal\
+    \ to #."
+  type: boolean?
+  inputBinding:
+    prefix: -thmssig
 - id: in_oligo_analysis
   doc: VERSION
   type: string
@@ -160,6 +309,15 @@ inputs:
     position: 1
 - id: in_sequences
   doc: motif discovery
+  type: string
+  inputBinding:
+    position: 0
+- id: in_thresholds
+  doc: "-lth param value\nLower threshold on some parameter. All patterns with a\n\
+    parameter value smaller than the threshold are\ndiscarded.\nSupported parameters:\
+    \ occ,occ_P,occ_E,occ_sig,observed_freq,exp_freq,zscore,mseq,ms_P,ms_E,ms_sig,ratio,rank\n\
+    Example: select patterns with a positive value for the\noccurrence significance.\n\
+    -lth occ_sig 0"
   type: string
   inputBinding:
     position: 0
@@ -188,18 +346,9 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_over_slash_under_representation
-  doc: "By default, the program calculates the P-value on the right\ntail of the probability\
-    \ distribution, which represents the\nprobability to observe at least x occurrences\
-    \ by chance:\nT\nP(X>=x) = SUM P(X=i)\ni=x\nWith the option -under, the P-value\
-    \ is calculated on the left\ntail of the distribution, which represents the probability\
-    \ of\nhaving at most x occurrences:\nx-1\nP(X<=x) =  SUM P(X=i)\ni=0\nThe option\
-    \ -under does not affect the other statistics\n(zscore, loglikelihood). For z-score,\
-    \ the negative values\nindicate under-representation.\nWith the option -two_tails,\
-    \ the P-value is calculated on\neither the left or the right-tail of the distribution,\n\
-    depending on the observed/expected comparison:\nif k >= exp_occ, right tail (over-representation)\n\
-    if k < exp_occ, left tail (under-representation)"
-  type: string
+- id: in_x_one
+  doc: P(X<=x) =  SUM P(X=i)
+  type: long
   inputBinding:
     position: 0
 - id: in_w_given_word
@@ -259,6 +408,20 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+- id: out_one_str
+  doc: Output file. If not specified, the result is printed on the
+  type: File?
+  outputBinding:
+    glob: $(inputs.in_one_str)
+- id: out_group_rc
+  doc: "(default)\ngroup reverse complement with the direct sequence in the\noutput\
+    \ file. This avoids redundancy (since the frequence of\nAAAAA is the same as TTTTT\
+    \ when one searches on both strands).\nCan be inactivated by the -nogrouprc option.\n\
+    Incompatible with -1str."
+  type: File?
+  outputBinding:
+    glob: $(inputs.in_group_rc)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

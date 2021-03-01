@@ -1,0 +1,93 @@
+&id001 !Command
+command:
+- bamheadrg.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --readgroup
+  description: Read group(s) to extract (comma separated)
+  args: !SimpleFlagArg
+    name: READGROUP
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --donor
+  description: Donor BAM/SAM file to extract read group info
+  args: !SimpleFlagArg
+    name: DONOR
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --donor_is_sam
+  description: Donor file is SAM
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - bamheadrg.py
+  - recipient
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    description: ''
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: ''
+    args: !SimpleFlagArg
+      name: DONOR
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: ''
+    args: !SimpleFlagArg
+      name: READGROUP
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: bamheadrg.py [-h] [-r READGROUP] -d DONOR [-S] [recipient]\n\
+    bamheadrg.py: error: argument recipient: can't open 'recipient': [Errno 2] No\
+    \ such file or directory: 'recipient'\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/bamkit:16.07.26--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: bamheadrg.py [-h] [-r READGROUP] -d DONOR [-S] [recipient]\n\n\
+  bamheadrg.py\nauthor: Author (email@site.com)\nversion: $Revision: 0.0.1 $\ndescription:\
+  \ Inject readgroup info\n\npositional arguments:\n  recipient             SAM file\
+  \ to inject header lines into. If '-' or absent then defaults to stdin.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -r READGROUP,\
+  \ --readgroup READGROUP\n                        Read group(s) to extract (comma\
+  \ separated)\n  -d DONOR, --donor DONOR\n                        Donor BAM/SAM file\
+  \ to extract read group info\n  -S, --donor_is_sam    Donor file is SAM\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/bamkit:16.07.26--py_0

@@ -4,6 +4,9 @@ task TbprofilerMutationStatspy {
   command <<<
     tbprofiler_mutation_stats_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

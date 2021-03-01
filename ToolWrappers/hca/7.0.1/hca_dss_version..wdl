@@ -10,6 +10,9 @@ task HcaDssVersion {
       ~{hca} \
       ~{dss}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hca: ""
     dss: ""

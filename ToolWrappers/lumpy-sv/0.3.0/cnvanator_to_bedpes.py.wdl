@@ -16,6 +16,9 @@ task CnvanatorToBedpespy {
       ~{if defined(dup_o) then ("--dup_o " +  '"' + dup_o + '"') else ""} \
       ~{if defined(breakpoint_size) then ("--breakpoint_size " +  '"' + breakpoint_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cnv_calls: "Output file from CNVanator"
     cnv_kit: "input is .cns file from cnvkit"

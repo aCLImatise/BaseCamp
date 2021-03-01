@@ -20,6 +20,9 @@ task Gubbins {
       ~{if (min_window_size) then "-a" else ""} \
       ~{if (max_window_size) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     newick_tree_file: "Newick tree file"
     vcf_file: "VCF file"

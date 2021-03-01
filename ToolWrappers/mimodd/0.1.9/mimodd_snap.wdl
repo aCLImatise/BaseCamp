@@ -14,7 +14,7 @@ task MimoddSnap {
     Boolean? cigar_strings_output
     Boolean? m_match_notation
     File? sort
-    Boolean? consider_overlapping_pairs
+    Boolean? consider_mate_pairs
     Int? max__spacing
     Int? distance__maxdist
     Int? max_seeds
@@ -52,7 +52,7 @@ task MimoddSnap {
       ~{if (cigar_strings_output) then "-X" else ""} \
       ~{if (m_match_notation) then "--mmatch-notation" else ""} \
       ~{if (sort) then "--sort" else ""} \
-      ~{if (consider_overlapping_pairs) then "-D" else ""} \
+      ~{if (consider_mate_pairs) then "-D" else ""} \
       ~{if defined(max__spacing) then ("-s " +  '"' + max__spacing + '"') else ""} \
       ~{if defined(distance__maxdist) then ("-d " +  '"' + distance__maxdist + '"') else ""} \
       ~{if defined(max_seeds) then ("--maxseeds " +  '"' + max_seeds + '"') else ""} \
@@ -74,6 +74,9 @@ task MimoddSnap {
       ~{if (no_prefetch) then "--no-prefetch" else ""} \
       ~{if (bind_threads) then "--bind-threads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ofile: "name of the output file (required)"
     i_format: "input file format; must be fastq, gz, sam or bam\\n(default: bam)"
@@ -87,7 +90,7 @@ task MimoddSnap {
     cigar_strings_output: "CIGAR strings in the output should use = and X to\\nindicate matches/mismatches rather than M (alignment\\nmatch); USE OF THIS OPTION IS DISCOURAGED as =/X CIGAR\\nstrings are still not fully supported by useful third-\\nparty tools like IGV"
     m_match_notation: "legacy option retained for backwards compatibility;\\nindicates that CIGAR strings in the output should use\\nM (alignment match) rather than = and X (sequence\\n(mis-)match); -M is implied by default, use -X to turn\\noff"
     sort: "legacy option retained for backwards compatibility;\\nsort output file by alignment location; implied by\\ndefault, use --no-sort to turn off"
-    consider_overlapping_pairs: "[RF|FR|FF|RR|ALL [RF|FR|FF|RR|ALL ...]], --discard-overlapping-mates [RF|FR|FF|RR|ALL [RF|FR|FF|RR|ALL ...]]\\nconsider overlapping mate pairs of the given\\norientation type(s) anomalous and discard them;\\ndefault: keep all overlapping mate pairs"
+    consider_mate_pairs: "[RF|FR|FF|RR|ALL [RF|FR|FF|RR|ALL ...]], --discard-overlapping-mates [RF|FR|FF|RR|ALL [RF|FR|FF|RR|ALL ...]]\\nconsider overlapping mate pairs of the given\\norientation type(s) anomalous and discard them;\\ndefault: keep all overlapping mate pairs"
     max__spacing: "MAX, --spacing MIN MAX\\nmin and max spacing to allow between paired ends\\n(default: 100 10000)"
     distance__maxdist: "DISTANCE, --maxdist EDIT DISTANCE\\nmaximum edit distance allowed per read or pair\\n(default: 8)"
     max_seeds: "number of seeds to use per read (default: 25)"

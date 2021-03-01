@@ -4,6 +4,9 @@ task Obsskmeans {
   command <<<
     obs_skmeans
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

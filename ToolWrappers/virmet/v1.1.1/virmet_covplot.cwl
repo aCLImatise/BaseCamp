@@ -3,12 +3,12 @@ id: virmet_covplot.cwl
 inputs:
 - id: in_outdir
   doc: path to sample results directory
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_organism
   doc: name of the organism as reported in orgs_list.tsv file
-  type: File
+  type: File?
   inputBinding:
     prefix: --organism
 - id: in_vir_met
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - virmet

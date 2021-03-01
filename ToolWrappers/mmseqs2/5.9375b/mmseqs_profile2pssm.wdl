@@ -18,6 +18,9 @@ task MmseqsProfile2pssm {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     comp_bias_corr: "1               correct for locally biased amino acid composition [0,1]"
     db_output: "false           Output a result db instead of a text file"

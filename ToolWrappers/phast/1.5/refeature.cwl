@@ -4,13 +4,13 @@ inputs:
 - id: in_include_only
   doc: "Include only features of the specified types (comma-delimited list);\nfilter\
     \ out everything else."
-  type: string
+  type: string?
   inputBinding:
     prefix: --include-only
 - id: in_include_groups
   doc: "Include only groups whose names are listed in the specified file.\nGroup names\
     \ in file must be delimited by white-space (can be on\nany number of lines)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --include-groups
 - id: in_sort
@@ -18,7 +18,7 @@ inputs:
     \ (usually has desired effect in case of short\noverlapping features, e.g., start\
     \ & stop codons).  Features\nwill be sorted both across groups and within groups,\
     \ but members\nof a group will be kept together."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sort
 - id: in_unique
@@ -26,12 +26,12 @@ inputs:
     \  If groups overlap, the one with the highest\nscore (if available) or longest\
     \ length (if no score) is kept and\nothers are discarded.  Warning: long UTRs\
     \ can have undesirable\nresults; filter out UTR exons to avoid."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --unique
 - id: in_group_by
   doc: Group features according to specified tag (default "transcript_id")
-  type: string
+  type: string?
   inputBinding:
     prefix: --groupby
 - id: in_exon_group
@@ -40,26 +40,26 @@ inputs:
     \ exons, e.g.,\neach CDS and its flanking splice sites.  Only features in the\n\
     same major group will be included in the same minor group\n(e.g., exons of the\
     \ same transcript)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --exongroup
 - id: in_fix_start_stop
   doc: "Ensure that CDS features include start codons and exclude stop\ncodons, as\
     \ required by the GTF2 standard.  Assumes at most one\nstart_codon and at most\
     \ one stop_codon per group."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fix-start-stop
 - id: in_add_utrs
   doc: "Create UTR features for portions of exons outside CDS (only\nuseful with GFF\
     \ output; features must be grouped at level\nof transcript)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --add-utrs
 - id: in_add_introns
   doc: "Create intron features between exons (only useful with GFF output;\nfeatures\
     \ must be grouped at level of transcript)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --add-introns
 - id: in_add_signals
@@ -68,24 +68,24 @@ inputs:
     \ Start and stop codons will be added\nas required by the GTF2 standard (--fix-start-stop\
     \ is not\nnecessary).  Warning: does not correctly handle case of splice\nsite\
     \ in middle of start or stop codon."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --add-signals
 - id: in_output
   doc: "|bed|genepred|wig\nOutput format (default gff).  Note that wig output is fixedStep\n\
     can only be used if all elements have a score and are of equal\nlength."
-  type: long
+  type: long?
   inputBinding:
     prefix: --output
 - id: in_simple_bed
   doc: "(for use with --output bed) Create a separate line for each\nfeature in bed\
     \ output (by default, all features of a group are\ndescribed by a single line)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --simplebed
 - id: in_discards
   doc: Write any discarded features to specified file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --discards
 - id: in_in_file
@@ -97,6 +97,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - refeature

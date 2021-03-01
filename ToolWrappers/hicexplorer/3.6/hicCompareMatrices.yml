@@ -1,0 +1,70 @@
+!Command
+command:
+- hicCompareMatrices
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: matrix.h5
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrices
+  description: "matrix.h5, -m matrix.h5 matrix.h5\nName of the matrices in .h5 format\
+    \ to use, separated\nby a space. (default: None)"
+  args: !SimpleFlagArg
+    name: matrix.h5
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: "File name to save the resulting matrix. The output is\nalso a .h5\
+    \ file. (default: None)"
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --operation
+  description: "Operation to apply to the matrices (Default:\nlog2ratio)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      diff:
+      ratio:
+      log2ratio:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicCompareMatrices --matrices matrix.h5 matrix.h5 --outFileName\n\
+  \                          OUTFILENAME [--operation {diff,ratio,log2ratio}]\n  \
+  \                        [--help] [--version]\n\nTakes two matrices as input, normalizes\
+  \ them and applies the given operation.\nTo normalize the matrices each element\
+  \ is divided by the sum of the matrix.\n\nRequired arguments:\n  --matrices matrix.h5\
+  \ matrix.h5, -m matrix.h5 matrix.h5\n                        Name of the matrices\
+  \ in .h5 format to use, separated\n                        by a space. (default:\
+  \ None)\n  --outFileName OUTFILENAME, -o OUTFILENAME\n                        File\
+  \ name to save the resulting matrix. The output is\n                        also\
+  \ a .h5 file. (default: None)\n\nOptional arguments:\n  --operation {diff,ratio,log2ratio}\n\
+  \                        Operation to apply to the matrices (Default:\n        \
+  \                log2ratio).\n  --help, -h            show this help message and\
+  \ exit\n  --version             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

@@ -1,0 +1,137 @@
+!Command
+command:
+- cthreepo
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --infile
+  description: input file
+  args: !SimpleFlagArg
+    name: INFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outfile
+  description: output file
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mapfile
+  description: NCBI style assembly_report file for mapping
+  args: !SimpleFlagArg
+    name: MAPFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --accn
+  description: NCBI Assembly Accession with version
+  args: !SimpleFlagArg
+    name: ACCN
+- !Flag
+  optional: true
+  synonyms:
+  - -if
+  - --id_from
+  description: "seq-id format in the input file; can be `ens`, `uc`,\n`gb`, or `rs`;\
+    \ default is `uc`"
+  args: !ChoiceFlagArg
+    choices: !!set
+      rs:
+      gb:
+      uc:
+      ens:
+- !Flag
+  optional: true
+  synonyms:
+  - -it
+  - --id_to
+  description: "seq-id format in the output file; can be `ens`, `uc`,\n`gb`, or `rs`;\
+    \ default is `rs`"
+  args: !ChoiceFlagArg
+    choices: !!set
+      rs:
+      gb:
+      uc:
+      ens:
+- !Flag
+  optional: true
+  synonyms:
+  - -ku
+  - --keep_unmapped
+  description: keep lines that don't have seq-id matches
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --primary
+  description: restrict to primary assembly only
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
+  description: "input file format; can be `gff3`, `gtf`, `bedgraph`,\n`bed`, `sam`,\
+    \ `vcf`, `wig` or `tsv`; default is `gff3`"
+  args: !ChoiceFlagArg
+    choices: !!set
+      tsv:
+      bedgraph:
+      bed:
+      gff3:
+      wig:
+      gtf:
+      vcf:
+      sam:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --column
+  description: "column where the seq-id is located; required for `tsv`\nformat\n"
+  args: !SimpleFlagArg
+    name: COLUMN
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: cthreepo [-h] [-i INFILE] [-o OUTFILE] (-m MAPFILE | -a ACCN)\n\
+  \                [-if {uc,rs,gb,ens}] [-it {uc,rs,gb,ens}] [-ku] [-p]\n        \
+  \        [-f {gff3,gtf,bedgraph,bed,sam,vcf,wig,tsv}] [-c COLUMN]\n\nThis script\
+  \ parses input file and converts the seq-id name from one kind to\nthe other\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ -i INFILE, --infile INFILE\n                        input file\n  -o OUTFILE,\
+  \ --outfile OUTFILE\n                        output file\n  -m MAPFILE, --mapfile\
+  \ MAPFILE\n                        NCBI style assembly_report file for mapping\n\
+  \  -a ACCN, --accn ACCN  NCBI Assembly Accession with version\n  -if {uc,rs,gb,ens},\
+  \ --id_from {uc,rs,gb,ens}\n                        seq-id format in the input file;\
+  \ can be `ens`, `uc`,\n                        `gb`, or `rs`; default is `uc`\n\
+  \  -it {uc,rs,gb,ens}, --id_to {uc,rs,gb,ens}\n                        seq-id format\
+  \ in the output file; can be `ens`, `uc`,\n                        `gb`, or `rs`;\
+  \ default is `rs`\n  -ku, --keep_unmapped  keep lines that don't have seq-id matches\n\
+  \  -p, --primary         restrict to primary assembly only\n  -f {gff3,gtf,bedgraph,bed,sam,vcf,wig,tsv},\
+  \ --format {gff3,gtf,bedgraph,bed,sam,vcf,wig,tsv}\n                        input\
+  \ file format; can be `gff3`, `gtf`, `bedgraph`,\n                        `bed`,\
+  \ `sam`, `vcf`, `wig` or `tsv`; default is `gff3`\n  -c COLUMN, --column COLUMN\n\
+  \                        column where the seq-id is located; required for `tsv`\n\
+  \                        format\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cthreepo:0.1.2--pyh3252c3a_0

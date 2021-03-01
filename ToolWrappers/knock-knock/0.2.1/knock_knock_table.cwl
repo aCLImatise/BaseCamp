@@ -4,7 +4,7 @@ inputs:
 - id: in_group
   doc: "if specified, the single group name to generate tables\nfor; if not specified,\
     \ all groups will be generated\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --group
 - id: in_project_directory
@@ -17,6 +17,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - knock-knock

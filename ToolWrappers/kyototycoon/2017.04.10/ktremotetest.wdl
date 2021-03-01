@@ -36,6 +36,9 @@ task Ktremotetest {
       ~{if (rnd) then "-rnd" else ""} \
       ~{if (bin) then "-bin" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     iv: ""
     xt: ""

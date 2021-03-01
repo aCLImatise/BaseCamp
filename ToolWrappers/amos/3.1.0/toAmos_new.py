@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Boolean
+
+Toamos_New_V0_1_0 = CommandToolBuilder(tool="toAmos_new", base_command=["toAmos_new"], inputs=[ToolInput(tag="in_library_matepair_information", input_type=File(optional=True), prefix="-m", doc=InputDocumentation(doc="- library and mate-pair information in Bambus format\nin Trace Archive format (not compatible with -i option)")), ToolInput(tag="in_location_where_bank", input_type=String(optional=True), prefix="-b", doc=InputDocumentation(doc="- The location where the AMOS bank will be stored.")), ToolInput(tag="in_include_surrogate_unitigs_asm", input_type=Boolean(optional=True), prefix="-S", doc=InputDocumentation(doc="- include the surrogate unitigs in the .asm file as AMOS contigs.")), ToolInput(tag="in_include_contigs_asm", input_type=Boolean(optional=True), prefix="-C", doc=InputDocumentation(doc="- include the contigs in the .asm file as AMOS contigs.")), ToolInput(tag="in_include_unitigs_implies", input_type=Boolean(optional=True), prefix="-U", doc=InputDocumentation(doc="- include the unitigs in the .asm file as AMOS contigs (implies -S and turns off -C).")), ToolInput(tag="in_include_surrogate_unitigs_have", input_type=Boolean(optional=True), prefix="-F", doc=InputDocumentation(doc="- include the surrogate unitigs as reads in the tilling for a contig. Without this option the contig may have 0-coverage regions of coverage.")), ToolInput(tag="in_output_only_layout", input_type=Boolean(optional=True), prefix="-L", doc=InputDocumentation(doc="- output only the layout, not the consensus sequence for contigs. Will not output contig links or scaffolds. Implies -F.")), ToolInput(tag="in_fastq_file_interleaved", input_type=Boolean(optional=True), prefix="-i", doc=InputDocumentation(doc="- fastq file is interleaved, parse mates from this file (mutually exclusive with -m option)")), ToolInput(tag="in__lib_identifier", input_type=Boolean(optional=True), prefix="-I", doc=InputDocumentation(doc="- lib Identifier")), ToolInput(tag="in_min_insert_length", input_type=Boolean(optional=True), prefix="-N", doc=InputDocumentation(doc="- min insert length")), ToolInput(tag="in_max_insert_length", input_type=Boolean(optional=True), prefix="-X", doc=InputDocumentation(doc="- max insert length")), ToolInput(tag="in_fastq_quality_type", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc="- fastq quality type. The currently supported types are ILLUMINA SANGER. The default is SANGER"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Toamos_New_V0_1_0().translate("wdl", allow_empty_container=True)
+

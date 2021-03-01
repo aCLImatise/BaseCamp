@@ -4,7 +4,7 @@ task IRep {
   input {
     Boolean? _fastas
     Boolean? sorted_sam_files
-    String? prefix_output_files
+    String? prefix_output_plots
     Boolean? pickle
     Int? mm
     Boolean? sort
@@ -19,7 +19,7 @@ task IRep {
       ~{i_rep} \
       ~{if (_fastas) then "-f" else ""} \
       ~{if (sorted_sam_files) then "-s" else ""} \
-      ~{if defined(prefix_output_files) then ("-o " +  '"' + prefix_output_files + '"') else ""} \
+      ~{if defined(prefix_output_plots) then ("-o " +  '"' + prefix_output_plots + '"') else ""} \
       ~{if (pickle) then "--pickle" else ""} \
       ~{if defined(mm) then ("-mm " +  '"' + mm + '"') else ""} \
       ~{if (sort) then "--sort" else ""} \
@@ -28,10 +28,13 @@ task IRep {
       ~{if (no_gc_correction) then "--no-gc-correction" else ""} \
       ~{if defined(threads_default) then ("-t " +  '"' + threads_default + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _fastas: "[F [F ...]]      fasta(s)"
     sorted_sam_files: "[S [S ...]]      sorted sam file(s) for each sample (e.g.: bowtie2"
-    prefix_output_files: "prefix for output files (table and plots)"
+    prefix_output_plots: "prefix for output files (table and plots)"
     pickle: "save pickle file (optional)"
     mm: "max. # of read mismatches allowed (default: 1)"
     sort: "optional - sort the sam file"

@@ -14,6 +14,9 @@ task TagDir2bedplLs {
       ~{if (len) then "-len" else ""} \
       ~{if (separate) then "-separate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     len: "<#> (read length to report, default: given sizes in tags.tsv file)"
     separate: "(report separate BED reads if there are multiple reads per position)"

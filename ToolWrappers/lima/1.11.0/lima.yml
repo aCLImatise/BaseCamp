@@ -3,356 +3,387 @@ command:
 - lima
 positional:
 - !Positional
-  description: STR    Source BAM or DATASET
+  optional: false
   position: 0
   name: INPUT
-  optional: false
+  description: STR    Source BAM or DATASET
 - !Positional
-  description: STR    FASTA or BARCODESET file
+  optional: false
   position: 1
   name: BARCODES
-  optional: false
+  description: STR    FASTA or BARCODESET file
 - !Positional
-  description: STR    Output BAM or DATASET file
+  optional: false
   position: 2
   name: OUTPUT
-  optional: false
+  description: STR    Output BAM or DATASET file
 - !Positional
-  description: --scored-adapter-ratio         FLOAT  Minimum ratio of scored vs sequenced
+  optional: false
   position: 0
   name: clustering.
-  optional: false
+  description: --scored-adapter-ratio         FLOAT  Minimum ratio of scored vs sequenced
 named:
 - !Flag
-  description: "Only keep same barcodes in a pair in\nBAM output."
+  optional: true
   synonyms:
   - -s
   - --same
+  description: "Only keep same barcodes in a pair in\nBAM output."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Only keep different barcodes in a pair\nin BAM output. Enforces --min-passes\n\
-    ≥ 1."
+  optional: true
   synonyms:
   - -d
   - --different
+  description: "Only keep different barcodes in a pair\nin BAM output. Enforces --min-passes\n\
+    ≥ 1."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Only output barcode pairs that are\nneighbors in barcode file."
+  optional: true
   synonyms:
   - -N
   - --neighbors
+  description: "Only output barcode pairs that are\nneighbors in barcode file."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not tag per ZMW, but per read.
+  optional: true
   synonyms:
   - -p
   - --per-read
+  description: Do not tag per ZMW, but per read.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Only use subreads flanked by adapters\nfor barcode identification."
+  optional: true
   synonyms:
   - -f
   - --score-full-pass
+  description: "Only use subreads flanked by adapters\nfor barcode identification."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    Only use up to N barcode pair regions\nto find the barcode,\
-    \ 0 means use all.\n[0]"
+  optional: true
   synonyms:
   - -n
   - --max-scored-barcode-pairs
+  description: "INT    Only use up to N barcode pair regions\nto find the barcode,\
+    \ 0 means use all.\n[0]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    Analyze at maximum the provided number\nof barcodes per ZMW;\
-    \ 0 means\ndeactivated. [0]"
+  optional: true
   synonyms:
   - -b
   - --max-scored-barcodes
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "INT    Analyze at maximum the provided number\nof adapters per ZMW;\
+  description: "INT    Analyze at maximum the provided number\nof barcodes per ZMW;\
     \ 0 means\ndeactivated. [0]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -a
   - --max-scored-adapters
+  description: "INT    Analyze at maximum the provided number\nof adapters per ZMW;\
+    \ 0 means\ndeactivated. [0]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: INT    Minimal number of full passes. [0]
+  optional: true
   synonyms:
   - -u
   - --min-passes
+  description: INT    Minimal number of full passes. [0]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    Minimum sequence length after clipping.\n[50]"
+  optional: true
   synonyms:
   - -l
   - --min-length
+  description: "INT    Minimum sequence length after clipping.\n[50]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    Maximum input sequence length, 0 means\ndeactivated. [0]"
+  optional: true
   synonyms:
   - -L
   - --max-input-length
+  description: "INT    Maximum input sequence length, 0 means\ndeactivated. [0]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: FLOAT  Maximum ratio of bad adapter. [0]
+  optional: true
   synonyms:
   - -M
   - --bad-adapter-ratio
+  description: FLOAT  Maximum ratio of bad adapter. [0]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Barcodes may be substrings of others.
+  optional: true
   synonyms:
   - -P
   - --shared-prefix
+  description: Barcodes may be substrings of others.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "FLOAT  The candidate region size multiplier:\nbarcode_length * multiplier.\
-    \ [3]"
+  optional: true
   synonyms:
   - -w
   - --window-size-multi
+  description: "FLOAT  The candidate region size multiplier:\nbarcode_length * multiplier.\
+    \ [3]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    The candidate region size in bp. If\nset, --window-size-mult\
-    \ will be\nignored. [0]"
+  optional: true
   synonyms:
   - -W
   - --window-size
+  description: "INT    The candidate region size in bp. If\nset, --window-size-mult\
+    \ will be\nignored. [0]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "FLOAT  Minimum reference span relative to the\nbarcode length. [0.5]"
+  optional: true
   synonyms:
   - -r
   - --min-ref-span
+  description: "FLOAT  Minimum reference span relative to the\nbarcode length. [0.5]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    Minimum number of barcode regions with\nsufficient relative\
-    \ span to the barcode\nlength. [1]"
+  optional: true
   synonyms:
   - -R
   - --min-scoring-regions
+  description: "INT    Minimum number of barcode regions with\nsufficient relative\
+    \ span to the barcode\nlength. [1]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    Reads below the minimum barcode score\nare removed from downstream\
-    \ analysis.\n[0]"
+  optional: true
   synonyms:
   - -m
   - --min-score
+  description: "INT    Reads below the minimum barcode score\nare removed from downstream\
+    \ analysis.\n[0]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    Minimum end barcode score threshold is\napplied to the individual\
-    \ leading and\ntrailing ends. [0]"
+  optional: true
   synonyms:
   - -i
   - --min-end-score
+  description: "INT    Minimum end barcode score threshold is\napplied to the individual\
+    \ leading and\ntrailing ends. [0]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    The minimal score difference, between\nfirst and combined,\
-    \ required to call a\nbarcode pair different. [10]"
+  optional: true
   synonyms:
   - -x
   - --min-signal-increase
+  description: "INT    The minimal score difference, between\nfirst and combined,\
+    \ required to call a\nbarcode pair different. [10]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    The minimal score lead required to call\na barcode pair significant.\
-    \ [10]"
+  optional: true
   synonyms:
   - -y
   - --min-score-lead
+  description: "INT    The minimal score lead required to call\na barcode pair significant.\
+    \ [10]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Keep identified order of barcode pair\nindices in BC tag; CCS only."
+  optional: true
   synonyms:
   - -k
   - --keep-tag-idx-order
+  description: "Keep identified order of barcode pair\nindices in BC tag; CCS only."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Keep identified order of barcode pair\nindices in split BAM names;\
-    \ CCS only."
+  optional: true
   synonyms:
   - -K
   - --keep-split-idx-order
+  description: "Keep identified order of barcode pair\nindices in split BAM names;\
+    \ CCS only."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "CCS mode, use optimal alignment options\n-A 1 -B 4 -D 3 -I 3 -X 4."
+  optional: true
   synonyms:
   - --ccs
+  description: CCS mode, use optimal alignment options
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    Score for a sequence match. [4]\n-B,--mismatch-penalty    \
-    \      INT    Penalty for a mismatch. [13]\n-D,--deletion-penalty          INT\
-    \    Deletions penalty. [7]\n-I,--insertion-penalty         INT    Insertion penalty.\
-    \ [7]\n-X,--branch-penalty            INT    Branch penalty. [4]"
+  optional: true
   synonyms:
   - -A
+  - -B
+  - -D
+  - -I
+  - -X
+  - -A
   - --match-score
-  args: !EmptyFlagArg {}
-  optional: true
+  description: INT    Score for a sequence match. [4]
+  args: !SimpleFlagArg
+    name: '1'
 - !Flag
-  description: Split BAM output by barcode pair.
+  optional: true
+  synonyms:
+  - -B
+  - --mismatch-penalty
+  description: INT    Penalty for a mismatch. [13]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --deletion-penalty
+  description: INT    Deletions penalty. [7]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --insertion-penalty
+  description: INT    Insertion penalty. [7]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --branch-penalty
+  description: INT    Branch penalty. [4]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --split-bam
+  description: Split BAM output by barcode pair.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Split BAM output by resolved barcode\npair name."
+  optional: true
   synonyms:
   - --split-bam-named
+  description: "Split BAM output by resolved barcode\npair name."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    Group maximum numbers of split barcode\noutput files per directory;\
-    \ 0 means\ndeactivated. [0]"
+  optional: true
   synonyms:
   - -F
   - --files-per-directory
+  description: "INT    Group maximum numbers of split barcode\noutput files per directory;\
+    \ 0 means\ndeactivated. [0]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use UUIDs from dataset XML input, must\nbe used with output BAM splitting."
+  optional: true
   synonyms:
   - -U
   - --reuse-uuids
+  description: "Use UUIDs from dataset XML input, must\nbe used with output BAM splitting."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: INT    Maximum number of open BAM files. [500]
+  optional: true
   synonyms:
   - --bam-handles
+  description: INT    Maximum number of open BAM files. [500]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Dump clipped regions in a separate\noutput file <prefix>.lima.clips"
+  optional: true
   synonyms:
   - --dump-clips
+  description: "Dump clipped regions in a separate\noutput file <prefix>.lima.clips"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Dump removed records to\n<prefix>.lima.removed.bam."
+  optional: true
   synonyms:
   - --dump-removed
+  description: "Dump removed records to\n<prefix>.lima.removed.bam."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not generate BAM output.
+  optional: true
   synonyms:
   - --no-bam
+  description: Do not generate BAM output.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not generate reports.
+  optional: true
   synonyms:
   - --no-reports
+  description: Do not generate reports.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Assign single side barcodes by score
+  optional: true
   synonyms:
   - -S
   - --single-side
+  description: Assign single side barcodes by score
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Activate specialized IsoSeq mode.
+  optional: true
   synonyms:
   - --isoseq
+  description: Activate specialized IsoSeq mode.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    Demux the first N ZMWs and return the\nmean score; 0 means\
-    \ peeking\ndeactivated. [0]"
+  optional: true
   synonyms:
   - --peek
+  description: "INT    Demux the first N ZMWs and return the\nmean score; 0 means\
+    \ peeking\ndeactivated. [0]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    Try to guess the used barcodes, using\nthe provided mean score\
-    \ threshold; 0\nmeans guessing deactivated. [0]"
+  optional: true
   synonyms:
   - --guess
+  description: "INT    Try to guess the used barcodes, using\nthe provided mean score\
+    \ threshold; 0\nmeans guessing deactivated. [0]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    Minimum number of ZMWs observed to\nwhitelist barcodes. [0]"
+  optional: true
   synonyms:
   - --guess-min-count
+  description: "INT    Minimum number of ZMWs observed to\nwhitelist barcodes. [0]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --peek-guess
   description: "Try to infer the used barcodes subset,\nby peeking at the first 50,000\
     \ ZMWs,\nwhitelisting barcode pairs with more\nthan 10 counts and mean score ≥\
     \ 45."
-  synonyms:
-  - --peek-guess
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Ignore <BioSamples> from XML input.
+  optional: true
   synonyms:
   - --ignore-biosamples
+  description: Ignore <BioSamples> from XML input.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "INT    Number of threads to use, 0 means\nautodetection. [0]"
+  optional: true
   synonyms:
   - -j
   - --num-threads
+  description: "INT    Number of threads to use, 0 means\nautodetection. [0]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "STR    Set log level. Valid choices: (TRACE,\nDEBUG, INFO, WARN, FATAL).\
-    \ [WARN]"
+  optional: true
   synonyms:
   - --log-level
+  description: "STR    Set log level. Valid choices: (TRACE,\nDEBUG, INFO, WARN, FATAL).\
+    \ [WARN]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: FILE   Log to a file, instead of stderr.
+  optional: true
   synonyms:
   - --log-file
+  description: FILE   Log to a file, instead of stderr.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this help and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this help and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Show application version and exit.
+  optional: true
   synonyms:
   - --version
+  description: Show application version and exit.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "lima - Lima, Demultiplex Barcoded PacBio Data and Clip Barcodes\n\nUsage:\n\
   \  lima [options] <INPUT> <BARCODES> <OUTPUT>\n\n  INPUT                       \
   \   STR    Source BAM or DATASET\n  BARCODES                       STR    FASTA\
@@ -448,3 +479,4 @@ help_text: "lima - Lima, Demultiplex Barcoded PacBio Data and Clip Barcodes\n\nU
   \                                        DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file\
   \                     FILE   Log to a file, instead of stderr.\n\n"
 generated_using: []
+docker_image:

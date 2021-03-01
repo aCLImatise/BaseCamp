@@ -8,6 +8,9 @@ task FsnvizFusioncatcher {
     fsnviz fusioncatcher \
       ~{var_input}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_input: ""
   }

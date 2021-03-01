@@ -14,6 +14,9 @@ task Coverage3Combine {
       ~{if defined(debug) then ("--debug " +  '"' + debug + '"') else ""} \
       ~{if defined(rcfile) then ("--rcfile " +  '"' + rcfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     append: "Append coverage data to .coverage, otherwise it starts\\nclean each time."
     debug: "Debug options, separated by commas"

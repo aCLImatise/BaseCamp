@@ -14,11 +14,9 @@ task Pgt {
     Float? track_label_fraction
     String? track_label_halign
     Boolean? decreasing_x_axis
-    Float one_zero_dot_one_zero_three_eight_slash_s_four_one_four_six_seven_zero_one_seven_zero_two_five_two_five_w
   }
   command <<<
     pgt \
-      ~{one_zero_dot_one_zero_three_eight_slash_s_four_one_four_six_seven_zero_one_seven_zero_two_five_two_five_w} \
       ~{if defined(tracks) then ("--tracks " +  '"' + tracks + '"') else ""} \
       ~{if defined(region) then ("--region " +  '"' + region + '"') else ""} \
       ~{if defined(bed) then ("--BED " +  '"' + bed + '"') else ""} \
@@ -32,6 +30,9 @@ task Pgt {
       ~{if defined(track_label_halign) then ("--trackLabelHAlign " +  '"' + track_label_halign + '"') else ""} \
       ~{if (decreasing_x_axis) then "--decreasingXAxis" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tracks: "File containing the instructions to plot the tracks.\\nThe tracks.ini file can be genarated using the\\n`make_tracks_file` program."
     region: "Region to plot, the format is chr:start-end"
@@ -45,7 +46,6 @@ task Pgt {
     track_label_fraction: "By default the space dedicated to the track labels is\\n0.05 of the plot width. This fraction can be changed\\nwith this parameter if needed."
     track_label_halign: "By default, the horizontal alignment of the track\\nlabels is left. This alignemnt can be changed to right\\nor center."
     decreasing_x_axis: "By default, the x-axis is increasing. Use this option\\nif you want to see all tracks with a decreasing\\nx-axis."
-    one_zero_dot_one_zero_three_eight_slash_s_four_one_four_six_seven_zero_one_seven_zero_two_five_two_five_w: "optional arguments:"
   }
   output {
     File out_stdout = stdout()

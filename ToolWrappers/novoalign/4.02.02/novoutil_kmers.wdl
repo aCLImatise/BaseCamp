@@ -10,6 +10,9 @@ task NovoutilKmers {
       ~{ref_idx} \
       ~{k}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_idx: ""
     k: ""

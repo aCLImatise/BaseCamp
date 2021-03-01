@@ -4,614 +4,629 @@ command:
 positional: []
 named:
 - !Flag
-  description: "--haplotype-length N\nAllow haplotype calls with contiguous embedded\
-    \ matches of up\nto this length. Set N=-1 to disable clumping. (default: 3)"
+  optional: true
   synonyms:
-  - -E
   - --max-complex-gap
-  args: !SimpleFlagArg
-    name: N
-  optional: true
+  description: ', which defaults to 3bp.  In practice, this can comfortably be'
+  args: !EmptyFlagArg {}
 - !Flag
-  description: "Require at least this fraction of observations supporting\nan alternate\
-    \ allele within a single individual in the\nin order to evaluate the position.\
-    \  default: 0.05"
-  synonyms:
-  - -F
-  - --min-alternate-fraction
-  args: !SimpleFlagArg
-    name: N
   optional: true
-- !Flag
-  description: Add FILE to the set of BAM files to be analyzed.
   synonyms:
   - -b
   - --bam
+  description: Add FILE to the set of BAM files to be analyzed.
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: A file containing a list of BAM files to be analyzed.
+  optional: true
   synonyms:
   - -L
   - --bam-list
+  description: A file containing a list of BAM files to be analyzed.
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: Read BAM input on stdin.
+  optional: true
   synonyms:
   - -c
   - --stdin
+  description: Read BAM input on stdin.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use FILE as the reference sequence for analysis.\nAn index file (FILE.fai)\
-    \ will be created if none exists.\nIf neither --targets nor --region are specified,\
-    \ FreeBayes\nwill analyze every position in this reference."
+  optional: true
   synonyms:
   - -f
   - --fasta-reference
+  description: "Use FILE as the reference sequence for analysis.\nAn index file (FILE.fai)\
+    \ will be created if none exists.\nIf neither --targets nor --region are specified,\
+    \ FreeBayes\nwill analyze every position in this reference."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: Limit analysis to targets listed in the BED-format FILE.
+  optional: true
   synonyms:
   - -t
   - --targets
+  description: Limit analysis to targets listed in the BED-format FILE.
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: ":<start_position>-<end_position>\nLimit analysis to the specified\
-    \ region, 0-base coordinates,\nend_position not included (same as BED format).\n\
-    Either '-' or '..' maybe used as a separator."
+  optional: true
   synonyms:
   - -r
   - --region
+  description: ":<start_position>-<end_position>\nLimit analysis to the specified\
+    \ region, 0-base coordinates,\nend_position not included (same as BED format).\n\
+    Either '-' or '..' maybe used as a separator."
   args: !SimpleFlagArg
     name: chrom
-  optional: true
 - !Flag
-  description: "Limit analysis to samples listed (one per line) in the FILE.\nBy default\
-    \ FreeBayes will analyze all samples in its input\nBAM files."
+  optional: true
   synonyms:
   - -s
   - --samples
+  description: "Limit analysis to samples listed (one per line) in the FILE.\nBy default\
+    \ FreeBayes will analyze all samples in its input\nBAM files."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --populations
   description: "Each line of FILE should list a sample and a population which\nit\
     \ is part of.  The population-based bayesian inference model\nwill then be partitioned\
     \ on the basis of the populations."
-  synonyms:
-  - --populations
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --cnv-map
   description: "Read a copy number map from the BED file FILE, which has\neither a\
     \ sample-level ploidy:\nsample_name copy_number\nor a region-specific format:\n\
     seq_name start end sample_name copy_number\n... for each region in each sample\
     \ which does not have the\ndefault copy number as set by --ploidy. These fields\
     \ can be delimited\nby space or tab."
-  synonyms:
-  - -A
-  - --cnv-map
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: 'Output VCF-format results to FILE. (default: stdout)'
+  optional: true
   synonyms:
   - -v
   - --vcf
+  description: 'Output VCF-format results to FILE. (default: stdout)'
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: Write gVCF output, which indicates coverage in uncalled regions.
+  optional: true
   synonyms:
   - --gvcf
+  description: Write gVCF output, which indicates coverage in uncalled regions.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: When writing gVCF output emit a record for every NUM bases.
+  optional: true
   synonyms:
   - --gvcf-chunk
+  description: When writing gVCF output emit a record for every NUM bases.
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: "Use variants reported in VCF file as input to the algorithm.\nVariants\
-    \ in this file will included in the output even if\nthere is not enough support\
-    \ in the data to pass input filters."
+  optional: true
   synonyms:
   - -@
   - --variant-input
+  description: "Use variants reported in VCF file as input to the algorithm.\nVariants\
+    \ in this file will included in the output even if\nthere is not enough support\
+    \ in the data to pass input filters."
   args: !SimpleFlagArg
     name: VCF
-  optional: true
 - !Flag
-  description: "Only provide variant calls and genotype likelihoods for sites\nand\
-    \ alleles which are provided in the VCF input, and provide\noutput in the VCF\
-    \ for all input alleles, not just those which\nhave support in the data."
+  optional: true
   synonyms:
   - -l
   - --only-use-input-alleles
+  description: "Only provide variant calls and genotype likelihoods for sites\nand\
+    \ alleles which are provided in the VCF input, and provide\noutput in the VCF\
+    \ for all input alleles, not just those which\nhave support in the data."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "When specified, only variant alleles provided in this input\nVCF will\
-    \ be used for the construction of complex or haplotype\nalleles."
+  optional: true
   synonyms:
   - --haplotype-basis-alleles
+  description: "When specified, only variant alleles provided in this input\nVCF will\
+    \ be used for the construction of complex or haplotype\nalleles."
   args: !SimpleFlagArg
     name: VCF
-  optional: true
 - !Flag
-  description: "At sites where genotypes are made over haplotype alleles,\nprovide\
-    \ information about all alleles in output, not only\nthose which are called."
+  optional: true
   synonyms:
   - --report-all-haplotype-alleles
+  description: "At sites where genotypes are made over haplotype alleles,\nprovide\
+    \ information about all alleles in output, not only\nthose which are called."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Report sites if the probability that there is a polymorphism\nat the\
-    \ site is greater than N.  default: 0.0.  Note that post-\nfiltering is generally\
-    \ recommended over the use of this parameter."
+  optional: true
+  synonyms:
+  - --report-monomorphic
+  description: "Report even loci which appear to be monomorphic, and report all\n\
+    considered alleles, even those which are not in called genotypes.\nLoci which\
+    \ do not have any potential alternates have '.' for ALT."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -P
   - --pvar
+  description: "Report sites if the probability that there is a polymorphism\nat the\
+    \ site is greater than N.  default: 0.0.  Note that post-\nfiltering is generally\
+    \ recommended over the use of this parameter."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Generate strict VCF format (FORMAT/GQ will be an int)
+  optional: true
   synonyms:
   - --strict-vcf
+  description: Generate strict VCF format (FORMAT/GQ will be an int)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The expected mutation rate or pairwise nucleotide diversity\namong\
-    \ the population under analysis.  This serves as the\nsingle parameter to the\
-    \ Ewens Sampling Formula prior model\ndefault: 0.001"
+  optional: true
   synonyms:
   - -T
   - --theta
+  description: "The expected mutation rate or pairwise nucleotide diversity\namong\
+    \ the population under analysis.  This serves as the\nsingle parameter to the\
+    \ Ewens Sampling Formula prior model\ndefault: 0.001"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: 'Sets the default ploidy for the analysis to N.  default: 2'
+  optional: true
   synonyms:
   - -p
   - --ploidy
+  description: 'Sets the default ploidy for the analysis to N.  default: 2'
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -J
+  - --pooled-discrete
   description: "Assume that samples result from pooled sequencing.\nModel pooled samples\
     \ using discrete genotypes across pools.\nWhen using this flag, set --ploidy to\
     \ the number of\nalleles in each sample or use the --cnv-map to define\nper-sample\
     \ ploidy."
-  synonyms:
-  - -J
-  - --pooled-discrete
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output all alleles which pass input filters, regardles of\ngenotyping\
-    \ outcome or model."
+  optional: true
   synonyms:
   - -K
   - --pooled-continuous
+  description: "Output all alleles which pass input filters, regardles of\ngenotyping\
+    \ outcome or model."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "This flag includes the reference allele in the analysis as\nif it\
-    \ is another sample from the same population."
+  optional: true
   synonyms:
   - -Z
   - --use-reference-allele
+  description: "This flag includes the reference allele in the analysis as\nif it\
+    \ is another sample from the same population."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ",BQ\nAssign mapping quality of MQ to the reference allele at each\n\
-    site and base quality of BQ.  default: 100,60"
+  optional: true
   synonyms:
   - --reference-quality
+  description: ",BQ\nAssign mapping quality of MQ to the reference allele at each\n\
+    site and base quality of BQ.  default: 100,60"
   args: !SimpleFlagArg
     name: MQ
-  optional: true
 - !Flag
-  description: "Evaluate only the best N SNP alleles, ranked by sum of\nsupporting\
-    \ quality scores.  (Set to 0 to use all; default: all)"
+  optional: true
   synonyms:
   - -n
   - --use-best-n-alleles
+  description: "Evaluate only the best N SNP alleles, ranked by sum of\nsupporting\
+    \ quality scores.  (Set to 0 to use all; default: all)"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "When assembling observations across repeats, require the total repeat\n\
-    length at least this many bp.  (default: 5)"
+  optional: true
+  synonyms:
+  - -E
+  - --max-complex-gap
+  - --haplotype-length
+  description: "Allow haplotype calls with contiguous embedded matches of up\nto this\
+    \ length. Set N=-1 to disable clumping. (default: 3)"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
   synonyms:
   - --min-repeat-size
+  description: "When assembling observations across repeats, require the total repeat\n\
+    length at least this many bp.  (default: 5)"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "To detect interrupted repeats, build across sequence until it has\n\
-    entropy > N bits per bp. Set to 0 to turn off. (default: 1)"
+  optional: true
   synonyms:
   - --min-repeat-entropy
+  description: "To detect interrupted repeats, build across sequence until it has\n\
+    entropy > N bits per bp. Set to 0 to turn off. (default: 1)"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-partial-observations
   description: "Exclude observations which do not fully span the dynamically-determined\n\
     detection window.  (default, use all observations, dividing partial\nsupport across\
     \ matching haplotypes when generating haplotypes.)"
-  synonyms:
-  - --no-partial-observations
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Remove SNP observations from input.
+  optional: true
   synonyms:
   - -I
   - --throw-away-snp-obs
+  description: Remove SNP observations from input.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Remove indel observations from input.
+  optional: true
   synonyms:
   - -i
   - --throw-away-indels-obs
+  description: Remove indel observations from input.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Remove MNP observations from input.
+  optional: true
   synonyms:
   - -X
   - --throw-away-mnp-obs
+  description: Remove MNP observations from input.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: complex allele observations from input.
+  optional: true
   synonyms:
   - -u
   - --throw-away-complex-obs
+  description: complex allele observations from input.
   args: !SimpleFlagArg
     name: Remove
-  optional: true
 - !Flag
-  description: Turn off left-alignment of indels, which is enabled by default.
+  optional: true
   synonyms:
   - -O
   - --dont-left-align-indels
+  description: Turn off left-alignment of indels, which is enabled by default.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Include duplicate-marked alignments in the analysis.\ndefault: exclude\
-    \ duplicates marked as such in alignments"
+  optional: true
   synonyms:
   - '-4'
   - --use-duplicate-reads
+  description: "Include duplicate-marked alignments in the analysis.\ndefault: exclude\
+    \ duplicates marked as such in alignments"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Exclude alignments from analysis if they have a mapping\nquality less\
-    \ than Q.  default: 1"
+  optional: true
   synonyms:
   - -m
   - --min-mapping-quality
+  description: "Exclude alignments from analysis if they have a mapping\nquality less\
+    \ than Q.  default: 1"
   args: !SimpleFlagArg
     name: Q
-  optional: true
 - !Flag
-  description: "Exclude alleles from analysis if their supporting base\nquality is\
-    \ less than Q.  default: 0"
+  optional: true
   synonyms:
   - -q
   - --min-base-quality
+  description: "Exclude alleles from analysis if their supporting base\nquality is\
+    \ less than Q.  default: 0"
   args: !SimpleFlagArg
     name: Q
-  optional: true
 - !Flag
-  description: "Consider any allele in which the sum of qualities of supporting\n\
-    observations is at least Q.  default: 0"
+  optional: true
   synonyms:
   - -R
   - --min-supporting-allele-qsum
+  description: "Consider any allele in which the sum of qualities of supporting\n\
+    observations is at least Q.  default: 0"
   args: !SimpleFlagArg
     name: Q
-  optional: true
 - !Flag
-  description: "Consider any allele in which and the sum of mapping qualities of\n\
-    supporting reads is at least Q.  default: 0"
+  optional: true
   synonyms:
   - -Y
   - --min-supporting-mapping-qsum
+  description: "Consider any allele in which and the sum of mapping qualities of\n\
+    supporting reads is at least Q.  default: 0"
   args: !SimpleFlagArg
     name: Q
-  optional: true
 - !Flag
-  description: "Count mismatches toward --read-mismatch-limit if the base\nquality\
-    \ of the mismatch is >= Q.  default: 10"
+  optional: true
   synonyms:
   - -Q
   - --mismatch-base-quality-threshold
+  description: "Count mismatches toward --read-mismatch-limit if the base\nquality\
+    \ of the mismatch is >= Q.  default: 10"
   args: !SimpleFlagArg
     name: Q
-  optional: true
 - !Flag
-  description: "Exclude reads with more than N mismatches where each mismatch\nhas\
-    \ base quality >= mismatch-base-quality-threshold.\ndefault: ~unbounded"
+  optional: true
   synonyms:
   - -U
   - --read-mismatch-limit
+  description: "Exclude reads with more than N mismatches where each mismatch\nhas\
+    \ base quality >= mismatch-base-quality-threshold.\ndefault: ~unbounded"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Exclude reads with more than N [0,1] fraction of mismatches where\n\
-    each mismatch has base quality >= mismatch-base-quality-threshold\ndefault: 1.0"
+  optional: true
   synonyms:
   - -z
   - --read-max-mismatch-fraction
+  description: "Exclude reads with more than N [0,1] fraction of mismatches where\n\
+    each mismatch has base quality >= mismatch-base-quality-threshold\ndefault: 1.0"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Exclude reads with more than N separate gaps.\ndefault: ~unbounded"
+  optional: true
   synonyms:
   - -e
   - --read-indel-limit
+  description: "Exclude reads with more than N separate gaps.\ndefault: ~unbounded"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Use stringent input base and mapping quality filters\nEquivalent to\
-    \ -m 30 -q 20 -R 0 -S 0"
+  optional: true
   synonyms:
   - '-0'
   - --standard-filters
+  description: "Use stringent input base and mapping quality filters\nEquivalent to\
+    \ -m 30 -q 20 -R 0 -S 0"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Require at least this count of observations supporting\nan alternate\
-    \ allele within a single individual in order\nto evaluate the position.  default:\
-    \ 2"
+  optional: true
+  synonyms:
+  - -F
+  - --min-alternate-fraction
+  description: "Require at least this fraction of observations supporting\nan alternate\
+    \ allele within a single individual in the\nin order to evaluate the position.\
+    \  default: 0.05"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
   synonyms:
   - -C
   - --min-alternate-count
+  description: "Require at least this count of observations supporting\nan alternate\
+    \ allele within a single individual in order\nto evaluate the position.  default:\
+    \ 2"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Require at least this sum of quality of observations supporting\n\
-    an alternate allele within a single individual in order\nto evaluate the position.\
-    \  default: 0"
+  optional: true
   synonyms:
   - '-3'
   - --min-alternate-qsum
+  description: "Require at least this sum of quality of observations supporting\n\
+    an alternate allele within a single individual in order\nto evaluate the position.\
+    \  default: 0"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Require at least this count of observations supporting\nan alternate\
-    \ allele within the total population in order\nto use the allele in analysis.\
-    \  default: 1"
+  optional: true
   synonyms:
   - -G
   - --min-alternate-total
+  description: "Require at least this count of observations supporting\nan alternate\
+    \ allele within the total population in order\nto use the allele in analysis.\
+    \  default: 1"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: 'Require at least this coverage to process a site. default: 0'
+  optional: true
   synonyms:
   - --min-coverage
+  description: 'Require at least this coverage to process a site. default: 0'
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Downsample per-sample coverage to this level if greater than this\
-    \ coverage.\ndefault: no limit"
+  optional: true
   synonyms:
   - --limit-coverage
+  description: "Downsample per-sample coverage to this level if greater than this\
+    \ coverage.\ndefault: no limit"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Skip processing of alignments overlapping positions with coverage\
-    \ >N.\nThis filters sites above this coverage, but will also reduce data nearby.\n\
-    default: no limit"
+  optional: true
   synonyms:
   - -g
   - --skip-coverage
+  description: "Skip processing of alignments overlapping positions with coverage\
+    \ >N.\nThis filters sites above this coverage, but will also reduce data nearby.\n\
+    default: no limit"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Equivalent to --pooled-discrete --hwe-priors-off and removal of\n\
-    Ewens Sampling Formula component of priors."
+  optional: true
   synonyms:
   - -k
   - --no-population-priors
+  description: "Equivalent to --pooled-discrete --hwe-priors-off and removal of\n\
+    Ewens Sampling Formula component of priors."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Disable estimation of the probability of the combination\narising\
-    \ under HWE given the allele frequency as estimated\nby observation frequency."
+  optional: true
   synonyms:
   - -w
   - --hwe-priors-off
+  description: "Disable estimation of the probability of the combination\narising\
+    \ under HWE given the allele frequency as estimated\nby observation frequency."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Disable incorporation of prior expectations about observations.\n\
-    Uses read placement probability, strand balance probability,\nand read position\
-    \ (5'-3') probability."
+  optional: true
   synonyms:
   - -V
   - --binomial-obs-priors-off
+  description: "Disable incorporation of prior expectations about observations.\n\
+    Uses read placement probability, strand balance probability,\nand read position\
+    \ (5'-3') probability."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Disable use of aggregate probability of observation balance between\
-    \ alleles\nas a component of the priors."
+  optional: true
   synonyms:
   - -a
   - --allele-balance-priors-off
+  description: "Disable use of aggregate probability of observation balance between\
+    \ alleles\nas a component of the priors."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --observation-bias
   description: "Read length-dependent allele observation biases from FILE.\nThe format\
     \ is [length] [alignment efficiency relative to reference]\nwhere the efficiency\
     \ is 1 if there is no relative observation bias."
-  synonyms:
-  - --observation-bias
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: Limit estimated observation quality by capping base quality at Q.
+  optional: true
   synonyms:
   - --base-quality-cap
+  description: Limit estimated observation quality by capping base quality at Q.
   args: !SimpleFlagArg
     name: Q
-  optional: true
 - !Flag
-  description: 'An estimate of contamination to use for all samples.  default: 10e-9'
+  optional: true
   synonyms:
   - --prob-contamination
+  description: 'An estimate of contamination to use for all samples.  default: 10e-9'
   args: !SimpleFlagArg
     name: F
-  optional: true
 - !Flag
-  description: Use legacy (polybayes equivalent) genotype likelihood calculations
+  optional: true
   synonyms:
   - --legacy-gls
+  description: Use legacy (polybayes equivalent) genotype likelihood calculations
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --contamination-estimates
   description: "A file containing per-sample estimates of contamination, such as\n\
     those generated by VerifyBamID.  The format should be:\nsample p(read=R|genotype=AR)\
     \ p(read=A|genotype=AA)\nSample '*' can be used to set default contamination estimates."
-  synonyms:
-  - --contamination-estimates
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Report genotypes using the maximum-likelihood estimate provided\n\
-    from genotype likelihoods."
+  optional: true
   synonyms:
   - --report-genotype-likelihood-max
+  description: "Report genotypes using the maximum-likelihood estimate provided\n\
+    from genotype likelihoods."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Iterate no more than N times during genotyping step. default: 1000.'
+  optional: true
   synonyms:
   - -B
   - --genotyping-max-iterations
+  description: 'Iterate no more than N times during genotyping step. default: 1000.'
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Integrate no deeper than the Nth best genotype by likelihood when\n\
-    genotyping. default: 6."
+  optional: true
   synonyms:
   - --genotyping-max-banddepth
+  description: "Integrate no deeper than the Nth best genotype by likelihood when\n\
+    genotyping. default: 6."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: ",M\nIntegrate all genotype combinations in our posterior space\nwhich\
-    \ include no more than N samples with their Mth best\ndata likelihood. default:\
-    \ 1,3."
+  optional: true
   synonyms:
   - -W
   - --posterior-integration-limits
+  description: ",M\nIntegrate all genotype combinations in our posterior space\nwhich\
+    \ include no more than N samples with their Mth best\ndata likelihood. default:\
+    \ 1,3."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Skip sample genotypings for which the sample has no supporting reads.
+  optional: true
   synonyms:
   - -N
   - --exclude-unobserved-genotypes
+  description: Skip sample genotypings for which the sample has no supporting reads.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Limit posterior integration to samples where the second-best\ngenotype\
-    \ likelihood is no more than log(N) from the highest\ngenotype likelihood for\
-    \ the sample.  default: ~unbounded"
+  optional: true
   synonyms:
   - -S
   - --genotype-variant-threshold
+  description: "Limit posterior integration to samples where the second-best\ngenotype\
+    \ likelihood is no more than log(N) from the highest\ngenotype likelihood for\
+    \ the sample.  default: ~unbounded"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Use mapping quality of alleles when calculating data likelihoods.
+  optional: true
   synonyms:
   - -j
   - --use-mapping-quality
+  description: Use mapping quality of alleles when calculating data likelihoods.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use a weighted sum of base qualities around an indel, scaled by the\n\
-    distance from the indel.  By default use a minimum BQ in flanking sequence."
+  optional: true
   synonyms:
   - -H
   - --harmonic-indel-quality
+  description: "Use a weighted sum of base qualities around an indel, scaled by the\n\
+    distance from the indel.  By default use a minimum BQ in flanking sequence."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Incorporate non-independence of reads by scaling successive\nobservations\
-    \ by this factor during data likelihood\ncalculations.  default: 0.9"
+  optional: true
   synonyms:
   - -D
   - --read-dependence-factor
+  description: "Incorporate non-independence of reads by scaling successive\nobservations\
+    \ by this factor during data likelihood\ncalculations.  default: 0.9"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Print debugging output.
+  optional: true
   synonyms:
   - -d
   - --debug
+  description: Print debugging output.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Print more verbose debugging output (requires "make DEBUG")
+  optional: true
   synonyms:
   - -dd
+  description: Print more verbose debugging output (requires "make DEBUG")
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Prints this help dialog.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Prints this help dialog.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Prints the release number and the git commit id.
+  optional: true
   synonyms:
   - --version
+  description: Prints the release number and the git commit id.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: freebayes [OPTION] ... [BAM FILE] ... \n\nBayesian haplotype-based\
   \ polymorphism discovery.\n\ncitation: Erik Garrison, Gabor Marth\n          \"\
   Haplotype-based variant detection from short-read sequencing\"\n          arXiv:1207.3907\
@@ -841,3 +856,4 @@ help_text: "usage: freebayes [OPTION] ... [BAM FILE] ... \n\nBayesian haplotype-
   version:  v1.3.1-dirty\n"
 generated_using:
 - --help
+docker_image:

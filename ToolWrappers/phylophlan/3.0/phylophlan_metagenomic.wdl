@@ -32,6 +32,9 @@ task PhylophlanMetagenomic {
       ~{if (overwrite) then "--overwrite" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_folder_containing: "Input folder containing the metagenomic bins to be\\nindexed (default: None)"
     output_prefix: "Prefix used for the output folders: indexed bins,\\ndistance estimations. If not specified, the input\\nfolder will be used (default: None)"

@@ -12,6 +12,9 @@ task PickLongReads {
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     length: ""

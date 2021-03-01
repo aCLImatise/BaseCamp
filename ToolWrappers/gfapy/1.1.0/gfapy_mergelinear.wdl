@@ -14,6 +14,9 @@ task Gfapymergelinear {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(v_level) then ("--vlevel " +  '"' + v_level + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     redundant: "create redundant paths, similar to the contigs\\nconstructed by Readjoiner"
     no_progress: "do not show progress log"

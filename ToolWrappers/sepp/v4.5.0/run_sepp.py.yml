@@ -1,0 +1,262 @@
+!Command
+command:
+- run_sepp.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --alignmentSize
+  description: "max alignment subset size of N [default: 10% of the\ntotal number\
+    \ of taxa or the placement subset size if\ngiven]"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --placementSize
+  description: "max placement subset size of N [default: 10% of the\ntotal number\
+    \ of taxa or the alignment length\n(whichever bigger)]"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --fragmentChunkSize
+  description: "maximum fragment chunk size of N. Helps controlling\nmemory. [default:\
+    \ 20000]"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --distance
+  description: "minimum p-distance before stopping the\ndecomposition[default: 1]"
+  args: !SimpleFlagArg
+    name: DISTANCE
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --diameter
+  description: "maximum tree diameter before stopping the\ndecomposition[default:\
+    \ None]"
+  args: !SimpleFlagArg
+    name: DIAMETER
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --decomp_strategy
+  description: "decomposition strategy [default: using tree branch\nlength]"
+  args: !SimpleFlagArg
+    name: DECOMP
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --tempdir
+  description: "Tempfile files will be written to DIR. Full-path\nrequired. [default:\
+    \ /tmp/sepp]"
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -rt
+  - --remtemp
+  description: 'Remove tempfile directory. [default: disabled]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: 'output files with prefix OUTPUT. [default: output]'
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --outdir
+  description: "output to OUTPUT_DIR directory. full-path required.\n[default: .]"
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config
+  description: "A config file, including options used to run SEPP.\nOptions provided\
+    \ as command line arguments overwrite\nconfig file values for those options. [default:\
+    \ None]"
+  args: !SimpleFlagArg
+    name: CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tree
+  description: 'Input tree file (newick format) [default: None]'
+  args: !SimpleFlagArg
+    name: TREE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --raxml
+  description: "RAxML_info file including model parameters, generated\nby RAxML.[default:\
+    \ None]"
+  args: !SimpleFlagArg
+    name: RAXML
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --alignment
+  description: 'Aligned fasta file [default: None]'
+  args: !SimpleFlagArg
+    name: ALIGN
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fragment
+  description: 'fragment file [default: None]'
+  args: !SimpleFlagArg
+    name: FRAG
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --molecule
+  description: "Molecule type of sequences. Can be amino, dna, or rna\n[default: dna]"
+  args: !SimpleFlagArg
+    name: MOLECULE
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-overlap
+  description: "When a query sequence has the same name as a backbone\nsequence, ignore\
+    \ the query sequences and keep the\nbackbone sequence[default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --cpu
+  description: "Use N cpus [default: number of cpus available on the\nmachine]"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -cp
+  - --checkpoint
+  description: 'checkpoint file [default: no checkpointing]'
+  args: !SimpleFlagArg
+    name: CHCK_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -cpi
+  - --interval
+  description: "Interval (in seconds) between checkpoint writes. Has\neffect only\
+    \ with -cp provided. [default: 3600]"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -seed
+  - --randomseed
+  description: "random seed number. [default: 297834]\n"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: run_sepp.py [-h] [-v] [-A N] [-P N] [-F N] [-D DISTANCE] [-M DIAMETER]\n\
+  \                   [-S DECOMP] [-p DIR] [-rt] [-o OUTPUT] [-d OUTPUT_DIR]\n   \
+  \                [-c CONFIG] [-t TREE] [-r RAXML] [-a ALIGN] [-f FRAG]\n       \
+  \            [-m MOLECULE] [--ignore-overlap] [-x N] [-cp CHCK_FILE]\n         \
+  \          [-cpi N] [-seed N]\n\nThis script runs the SEPP algorithm on an input\
+  \ tree, alignment, fragment\nfile, and RAxML info file.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -v, --version      \
+  \   show program's version number and exit\n\nDECOMPOSITION OPTIONS:\n  These options\
+  \ determine the alignment decomposition size and taxon\n  insertion size. If None\
+  \ is given, then the default is to align/place at\n  10% of total taxa. The alignment\
+  \ decomosition size must be less than the\n  taxon insertion size.\n\n  -A N, --alignmentSize\
+  \ N\n                        max alignment subset size of N [default: 10% of the\n\
+  \                        total number of taxa or the placement subset size if\n\
+  \                        given]\n  -P N, --placementSize N\n                   \
+  \     max placement subset size of N [default: 10% of the\n                    \
+  \    total number of taxa or the alignment length\n                        (whichever\
+  \ bigger)]\n  -F N, --fragmentChunkSize N\n                        maximum fragment\
+  \ chunk size of N. Helps controlling\n                        memory. [default:\
+  \ 20000]\n  -D DISTANCE, --distance DISTANCE\n                        minimum p-distance\
+  \ before stopping the\n                        decomposition[default: 1]\n  -M DIAMETER,\
+  \ --diameter DIAMETER\n                        maximum tree diameter before stopping\
+  \ the\n                        decomposition[default: None]\n  -S DECOMP, --decomp_strategy\
+  \ DECOMP\n                        decomposition strategy [default: using tree branch\n\
+  \                        length]\n\nOUTPUT OPTIONS:\n  These options control output.\n\
+  \n  -p DIR, --tempdir DIR\n                        Tempfile files will be written\
+  \ to DIR. Full-path\n                        required. [default: /tmp/sepp]\n  -rt,\
+  \ --remtemp        Remove tempfile directory. [default: disabled]\n  -o OUTPUT,\
+  \ --output OUTPUT\n                        output files with prefix OUTPUT. [default:\
+  \ output]\n  -d OUTPUT_DIR, --outdir OUTPUT_DIR\n                        output\
+  \ to OUTPUT_DIR directory. full-path required.\n                        [default:\
+  \ .]\n\nINPUT OPTIONS:\n  These options control input. To run SEPP the following\
+  \ is required. A\n  backbone tree (in newick format), a RAxML_info file (this is\
+  \ the file\n  generated by RAxML during estimation of the backbone tree. Pplacer\
+  \ uses\n  this info file to set model parameters), a backbone alignment file (in\n\
+  \  fasta format), and a fasta file including fragments. The input sequences\n  are\
+  \ assumed to be DNA unless specified otherwise.\n\n  -c CONFIG, --config CONFIG\n\
+  \                        A config file, including options used to run SEPP.\n  \
+  \                      Options provided as command line arguments overwrite\n  \
+  \                      config file values for those options. [default: None]\n \
+  \ -t TREE, --tree TREE  Input tree file (newick format) [default: None]\n  -r RAXML,\
+  \ --raxml RAXML\n                        RAxML_info file including model parameters,\
+  \ generated\n                        by RAxML.[default: None]\n  -a ALIGN, --alignment\
+  \ ALIGN\n                        Aligned fasta file [default: None]\n  -f FRAG,\
+  \ --fragment FRAG\n                        fragment file [default: None]\n  -m MOLECULE,\
+  \ --molecule MOLECULE\n                        Molecule type of sequences. Can be\
+  \ amino, dna, or rna\n                        [default: dna]\n  --ignore-overlap\
+  \      When a query sequence has the same name as a backbone\n                 \
+  \       sequence, ignore the query sequences and keep the\n                    \
+  \    backbone sequence[default: False]\n\nOTHER OPTIONS:\n  These options control\
+  \ how SEPP is run\n\n  -x N, --cpu N         Use N cpus [default: number of cpus\
+  \ available on the\n                        machine]\n  -cp CHCK_FILE, --checkpoint\
+  \ CHCK_FILE\n                        checkpoint file [default: no checkpointing]\n\
+  \  -cpi N, --interval N  Interval (in seconds) between checkpoint writes. Has\n\
+  \                        effect only with -cp provided. [default: 3600]\n  -seed\
+  \ N, --randomseed N\n                        random seed number. [default: 297834]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sepp:v4.5.0--py37_0

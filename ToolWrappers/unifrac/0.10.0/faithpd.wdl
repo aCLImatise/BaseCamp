@@ -12,6 +12,9 @@ task Faithpd {
       ~{if (input_phylogeny_newick) then "-t" else ""} \
       ~{if (the_output_series) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_biom_table: "The input BIOM table."
     input_phylogeny_newick: "The input phylogeny in newick."

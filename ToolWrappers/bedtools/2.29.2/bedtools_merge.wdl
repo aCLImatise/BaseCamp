@@ -2,7 +2,7 @@ version 1.0
 
 task BedtoolsMerge {
   input {
-    Boolean? force_strandedness_only
+    Boolean? force_strandedness_is
     Boolean? force_merge_force
     Boolean? maximum_distance_features
     Boolean? specify_columns_map
@@ -17,7 +17,7 @@ task BedtoolsMerge {
   }
   command <<<
     bedtools merge \
-      ~{if (force_strandedness_only) then "-s" else ""} \
+      ~{if (force_strandedness_is) then "-s" else ""} \
       ~{if (force_merge_force) then "-S" else ""} \
       ~{if (maximum_distance_features) then "-d" else ""} \
       ~{if (specify_columns_map) then "-c" else ""} \
@@ -30,8 +30,11 @@ task BedtoolsMerge {
       ~{if (i_obuf) then "-iobuf" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    force_strandedness_only: "Force strandedness.  That is, only merge features\\nthat are on the same strand.\\n- By default, merging is done without respect to strand."
+    force_strandedness_is: "Force strandedness.  That is, only merge features\\nthat are on the same strand.\\n- By default, merging is done without respect to strand."
     force_merge_force: "Force merge for one specific strand only.\\nFollow with + or - to force merge from only\\nthe forward or reverse strand, respectively.\\n- By default, merging is done without respect to strand."
     maximum_distance_features: "Maximum distance between features allowed for features\\nto be merged.\\n- Def. 0. That is, overlapping & book-ended features are merged.\\n- (INTEGER)\\n- Note: negative values enforce the number of b.p. required for overlap."
     specify_columns_map: "Specify columns from the B file to map onto intervals in A.\\nDefault: 5.\\nMultiple columns can be specified in a comma-delimited list."

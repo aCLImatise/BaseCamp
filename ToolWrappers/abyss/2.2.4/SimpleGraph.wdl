@@ -42,6 +42,9 @@ task SimpleGraph {
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: "k-mer size"
     n_pairs: "minimum number of pairs [0]"

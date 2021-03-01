@@ -32,6 +32,9 @@ task SvtoolsGenotype {
       ~{if defined(disc_weight) then ("--disc_weight " +  '"' + disc_weight + '"') else ""} \
       ~{if defined(write_alignment) then ("--write_alignment " +  '"' + write_alignment + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_vcf: "VCF input (default: stdin)"
     output_vcf: "output VCF to write (default: stdout)"

@@ -14,6 +14,9 @@ task MsstitchSplit {
       ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""} \
       ~{if defined(split_col) then ("--splitcol " +  '"' + split_col + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_format: "Input file of {} format"
     directory_to_output: "Directory to output in"

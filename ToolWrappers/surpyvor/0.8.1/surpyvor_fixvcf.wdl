@@ -12,6 +12,9 @@ task SurpyvorFixvcf {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(vcf_file_write) then ("--output " +  '"' + vcf_file_write + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print out more information while running."
     vcf_file_write: "vcf file to write to\\n"

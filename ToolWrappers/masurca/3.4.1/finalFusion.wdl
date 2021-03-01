@@ -13,7 +13,7 @@ task FinalFusion {
     Boolean? weight_threshold_outputting
     Boolean? o
     Boolean? var_10
-    Boolean? threshold_minimum_length
+    Boolean? threshold_minimum_k
     Boolean? overlap_percent_threshold_subgraphdefault
     Boolean? overlap_percent_threshold_pedefault
     Boolean? overlap_length_threshold
@@ -31,11 +31,14 @@ task FinalFusion {
       ~{if (weight_threshold_outputting) then "-u" else ""} \
       ~{if (o) then "-O" else ""} \
       ~{if (var_10) then "-S" else ""} \
-      ~{if (threshold_minimum_length) then "-L" else ""} \
+      ~{if (threshold_minimum_k) then "-L" else ""} \
       ~{if (overlap_percent_threshold_subgraphdefault) then "-P" else ""} \
       ~{if (overlap_percent_threshold_pedefault) then "-t" else ""} \
       ~{if (overlap_length_threshold) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     library_file: "Library file."
     prefix_input_files: "Prefix of input files."
@@ -48,7 +51,7 @@ task FinalFusion {
     weight_threshold_outputting: "Weight threshold for outputting bundle file.(default 3)"
     o: "Enable this mode."
     var_10: "Enable this mode."
-    threshold_minimum_length: "threshold for minimum length of contig(default K+2)."
+    threshold_minimum_k: "threshold for minimum length of contig(default K+2)."
     overlap_percent_threshold_subgraphdefault: "Overlap percent threshold for a subgraph(default 0.075)."
     overlap_percent_threshold_pedefault: "Overlap percent threshold for a PE(default 0.2)."
     overlap_length_threshold: "Overlap length threshold for remove transitive connect(default 20)."

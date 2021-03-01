@@ -14,6 +14,9 @@ task DepVersion {
       ~{platform} \
       ~{features}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version: ": devel"
     go_one_dot_one_three_dot_five: "go compiler : gc"

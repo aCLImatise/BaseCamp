@@ -32,6 +32,9 @@ task TEsorter {
       ~{if (no_reverse) then "--no-reverse" else ""} \
       ~{if (no_cleanup) then "--no-cleanup" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hmm_database: "the database used [default=rexdb]"
     seq_type: "'nucl' for DNA or 'prot' for protein [default=nucl]"

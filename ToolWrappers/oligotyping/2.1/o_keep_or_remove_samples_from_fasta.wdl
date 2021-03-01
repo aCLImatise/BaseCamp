@@ -14,6 +14,9 @@ task Okeeporremovesamplesfromfasta {
       ~{if (retain) then "--retain" else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     retain: "If declared, resulting FASTA file would contain\\nsamples that \\\"match\\\" sample names listed in the\\n\\\"samples\\\" file. The default behavior is the vice\\nversa."
     output_file_name: "Output file name.\\n"

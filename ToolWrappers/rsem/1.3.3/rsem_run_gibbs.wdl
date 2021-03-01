@@ -18,6 +18,9 @@ task Rsemrungibbs {
       ~{n_samples} \
       ~{gap}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_name: ""
     imd_name: ""

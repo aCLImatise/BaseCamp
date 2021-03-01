@@ -15,9 +15,11 @@ task ExploreThresholds {
     Int? variant_depth
     String? sample_id
     Boolean? plot_snp_distance
+    String module
   }
   command <<<
     explore_thresholds \
+      ~{module} \
       ~{if defined(data_frame) then ("--dataframe " +  '"' + data_frame + '"') else ""} \
       ~{if defined(callable_bed) then ("--callable_bed " +  '"' + callable_bed + '"') else ""} \
       ~{if defined(vcf) then ("--vcf " +  '"' + vcf + '"') else ""} \
@@ -32,6 +34,9 @@ task ExploreThresholds {
       ~{if defined(sample_id) then ("--sample_id " +  '"' + sample_id + '"') else ""} \
       ~{if (plot_snp_distance) then "--plot_snp_distance" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_frame: "Full path to csv output of pandas dataframe from\\nBAM_ANALYSIS module"
     callable_bed: "Full path to OPTIONAL external bed file with callable\\nregions. This script will plot based on filters only,\\ncallable sites only, and filters and callable sites\\ncombined. Default is 'None', which will plot based on\\nfilters only."
@@ -46,6 +51,7 @@ task ExploreThresholds {
     variant_depth: "Consider all SNPs with a sample depth greater than or\\nequal to this value. Default is 4."
     sample_id: "Sample ID or other identifier to be used in naming"
     plot_snp_distance: "If True, will also plot a histogram of distances\\nbetween SNPs. Will only run on a single chromosome.\\nDefault is False.\\n"
+    module: "--output_prefix OUTPUT_PREFIX"
   }
   output {
     File out_stdout = stdout()

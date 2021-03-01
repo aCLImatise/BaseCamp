@@ -12,6 +12,9 @@ task Unitigger {
       ~{if (depot) then "--depot" else ""} \
       ~{if (working_directory) then "--working_directory" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     spec_file: "spec file (string [=])"
     depot: "depot path (string)"

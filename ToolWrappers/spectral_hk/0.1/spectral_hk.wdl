@@ -4,6 +4,9 @@ task SpectralHk {
   command <<<
     spectral_hk
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

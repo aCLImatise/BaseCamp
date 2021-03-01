@@ -12,6 +12,9 @@ task AnnotateLengthpyInputFastx {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     i: ""

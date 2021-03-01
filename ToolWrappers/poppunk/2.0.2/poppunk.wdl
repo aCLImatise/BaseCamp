@@ -13,7 +13,7 @@ task Poppunk {
     File? q_files
     String? distances
     File? external_clustering
-    String? prefix_output_files
+    String? prefix_output_required
     Int? plot_fit
     Boolean? full_db
     Boolean? update_db
@@ -30,7 +30,7 @@ task Poppunk {
     Int? estimated_length
     Int? maximum_number_mixture
     Boolean? dbs_can
-    Int? maximum_number_clusters
+    Int? maximum_number_default
     Int? min_cluster_prop
     Float? pos_shift
     Float? neg_shift
@@ -74,7 +74,7 @@ task Poppunk {
       ~{if defined(q_files) then ("--q-files " +  '"' + q_files + '"') else ""} \
       ~{if defined(distances) then ("--distances " +  '"' + distances + '"') else ""} \
       ~{if defined(external_clustering) then ("--external-clustering " +  '"' + external_clustering + '"') else ""} \
-      ~{if defined(prefix_output_files) then ("--output " +  '"' + prefix_output_files + '"') else ""} \
+      ~{if defined(prefix_output_required) then ("--output " +  '"' + prefix_output_required + '"') else ""} \
       ~{if defined(plot_fit) then ("--plot-fit " +  '"' + plot_fit + '"') else ""} \
       ~{if (full_db) then "--full-db" else ""} \
       ~{if (update_db) then "--update-db" else ""} \
@@ -91,7 +91,7 @@ task Poppunk {
       ~{if defined(estimated_length) then ("--estimated-length " +  '"' + estimated_length + '"') else ""} \
       ~{if defined(maximum_number_mixture) then ("--K " +  '"' + maximum_number_mixture + '"') else ""} \
       ~{if (dbs_can) then "--dbscan" else ""} \
-      ~{if defined(maximum_number_clusters) then ("--D " +  '"' + maximum_number_clusters + '"') else ""} \
+      ~{if defined(maximum_number_default) then ("--D " +  '"' + maximum_number_default + '"') else ""} \
       ~{if defined(min_cluster_prop) then ("--min-cluster-prop " +  '"' + min_cluster_prop + '"') else ""} \
       ~{if defined(pos_shift) then ("--pos-shift " +  '"' + pos_shift + '"') else ""} \
       ~{if defined(neg_shift) then ("--neg-shift " +  '"' + neg_shift + '"') else ""} \
@@ -116,6 +116,9 @@ task Poppunk {
       ~{if defined(deviceid) then ("--deviceid " +  '"' + deviceid + '"') else ""} \
       ~{if (no_stream) then "--no-stream" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     easy_run: "Create clusters from assemblies with default settings"
     create_db: "Create pairwise distances database between reference"
@@ -128,7 +131,7 @@ task Poppunk {
     q_files: "File listing query input assemblies"
     distances: "Prefix of input pickle of pre-calculated distances"
     external_clustering: "File with cluster definitions or other labels\\ngenerated with any other method."
-    prefix_output_files: "Prefix for output files (required)"
+    prefix_output_required: "Prefix for output files (required)"
     plot_fit: "Create this many plots of some fits relating k-mer to\\ncore/accessory distances [default = 0]"
     full_db: "Keep full reference database, not just representatives"
     update_db: "Update reference database with query sequences"
@@ -145,7 +148,7 @@ task Poppunk {
     estimated_length: "Provide an integer estimated genome length when using\\n\\\"--ignore-length\\\" [default = 2000000]"
     maximum_number_mixture: "Maximum number of mixture components [default = 2]"
     dbs_can: "Use DBSCAN rather than mixture model"
-    maximum_number_clusters: "Maximum number of clusters in DBSCAN fitting [default\\n= 100]"
+    maximum_number_default: "Maximum number of clusters in DBSCAN fitting [default\\n= 100]"
     min_cluster_prop: "Minimum proportion of points in a cluster in DBSCAN\\nfitting [default = 0.0001]"
     pos_shift: "Maximum amount to move the boundary away from origin\\n[default = 0.2]"
     neg_shift: "Maximum amount to move the boundary towards the origin\\n[default = 0.4]"

@@ -58,6 +58,9 @@ task FlyesamtoolsMpileup {
       ~{if defined(input_fmt_option) then ("--input-fmt-option " +  '"' + input_fmt_option + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     illumina_one_dot_three: "+      quality is in the Illumina-1.3+ encoding"
     count_orphans: "do not discard anomalous read pairs"

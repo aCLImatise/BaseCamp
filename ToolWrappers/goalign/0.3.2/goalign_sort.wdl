@@ -34,6 +34,9 @@ task GoalignSort {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sorted_alignment_output: "Sorted alignment output file (default \\\"stdout\\\")"
     unaligned: "Considers sequences as unaligned and format fasta (phylip, nexus,... options are ignored)"

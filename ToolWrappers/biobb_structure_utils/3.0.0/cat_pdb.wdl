@@ -14,6 +14,9 @@ task CatPdb {
       ~{if defined(input_structure_two) then ("--input_structure2 " +  '"' + input_structure_two + '"') else ""} \
       ~{if defined(output_structure_path) then ("--output_structure_path " +  '"' + output_structure_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "This file can be a YAML file, JSON file or JSON string"
     input_structure_one: "Input structure 1 file path. Accepted formats: pdb."

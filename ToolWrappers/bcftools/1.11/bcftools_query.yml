@@ -1,0 +1,146 @@
+!Command
+command:
+- bcftools
+- query
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: A.vcf.gz
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --exclude
+  description: exclude sites for which the expression is true (see man page for details)
+  args: !SimpleFlagArg
+    name: expr
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
+  description: see man page for details
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --print-header
+  description: print header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --include
+  description: select sites for which the expression is true (see man page for details)
+  args: !SimpleFlagArg
+    name: expr
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --list-samples
+  description: print the list of samples and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: output file name [stdout]
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --regions
+  description: restrict to comma-separated list of regions
+  args: !SimpleFlagArg
+    name: region
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --regions-file
+  description: restrict to regions listed in a file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --samples
+  description: list of samples to include
+  args: !SimpleFlagArg
+    name: list
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --samples-file
+  description: file of samples to include
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --targets
+  description: similar to -r but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: region
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --targets-file
+  description: similar to -R but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --allow-undef-tags
+  description: print "." for undefined tags
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --vcf-list
+  description: process multiple VCFs listed in the file
+  args: !SimpleFlagArg
+    name: file
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nAbout:   Extracts fields from VCF/BCF file and prints them in user-defined\
+  \ format\nUsage:   bcftools query [options] <A.vcf.gz> [<B.vcf.gz> [...]]\n\nOptions:\n\
+  \    -e, --exclude <expr>              exclude sites for which the expression is\
+  \ true (see man page for details)\n    -f, --format <string>             see man\
+  \ page for details\n    -H, --print-header                print header\n    -i,\
+  \ --include <expr>              select sites for which the expression is true (see\
+  \ man page for details)\n    -l, --list-samples                print the list of\
+  \ samples and exit\n    -o, --output <file>               output file name [stdout]\n\
+  \    -r, --regions <region>            restrict to comma-separated list of regions\n\
+  \    -R, --regions-file <file>         restrict to regions listed in a file\n  \
+  \  -s, --samples <list>              list of samples to include\n    -S, --samples-file\
+  \ <file>         file of samples to include\n    -t, --targets <region>        \
+  \    similar to -r but streams rather than index-jumps\n    -T, --targets-file <file>\
+  \         similar to -R but streams rather than index-jumps\n    -u, --allow-undef-tags\
+  \            print \".\" for undefined tags\n    -v, --vcf-list <file>         \
+  \    process multiple VCFs listed in the file\n\nExamples:\n\tbcftools query -f\
+  \ '%CHROM\\t%POS\\t%REF\\t%ALT[\\t%SAMPLE=%GT]\\n' file.vcf.gz\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bcftools:1.11--h7c999a4_0

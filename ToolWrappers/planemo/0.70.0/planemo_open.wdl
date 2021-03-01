@@ -8,6 +8,9 @@ task PlanemoOpen {
     planemo open \
       ~{path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path: ""
   }

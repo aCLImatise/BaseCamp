@@ -34,6 +34,9 @@ task GoalignCodonalign {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "Input nucleotide Fasta file to be codon aligned (default \\\"stdin\\\")"
     output_codon_aligned: "Output codon aligned file (default \\\"stdout\\\")"

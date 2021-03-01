@@ -3,22 +3,22 @@ id: to_afg.cwl
 inputs:
 - id: in_reads
   doc: "(required)\ninput fasta/fastq reads file"
-  type: File
+  type: File?
   inputBinding:
     prefix: --reads
 - id: in_fast_q
   doc: "default: fasta format\nformat of input reads file"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fastq
 - id: in_out
   doc: output afg reads file
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_arguments
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: output afg reads file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - to_afg

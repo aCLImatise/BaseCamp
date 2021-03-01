@@ -2,7 +2,7 @@ version 1.0
 
 task H5stat {
   input {
-    Boolean? file
+    Boolean? print_file_information
     Boolean? file_metadata
     Boolean? group
     Int? links
@@ -21,7 +21,7 @@ task H5stat {
   command <<<
     h5stat \
       ~{options} \
-      ~{if (file) then "--file" else ""} \
+      ~{if (print_file_information) then "--file" else ""} \
       ~{if (file_metadata) then "--filemetadata" else ""} \
       ~{if (group) then "--group" else ""} \
       ~{if defined(links) then ("--links " +  '"' + links + '"') else ""} \
@@ -36,8 +36,11 @@ task H5stat {
       ~{if (summary) then "--summary" else ""} \
       ~{if (enable_error_stack) then "--enable-error-stack" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: "Print file information"
+    print_file_information: "Print file information"
     file_metadata: "Print file space information for file's metadata"
     group: "Print group information"
     links: "Set the threshold for the # of links when printing\\ninformation for small groups.  N is an integer greater\\nthan 0.  The default threshold is 10."

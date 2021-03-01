@@ -4,73 +4,73 @@ command:
 - simple
 positional:
 - !Positional
-  description: '- output database will contains only k-mers that are present in both
-    input sets'
+  optional: false
   position: 0
   name: intersect
-  optional: false
+  description: '- output database will contains only k-mers that are present in both
+    input sets'
 - !Positional
-  description: '- output database will contains each k-mer present in any of input
-    sets'
+  optional: false
   position: 1
   name: union
-  optional: false
+  description: '- output database will contains each k-mer present in any of input
+    sets'
 - !Positional
+  optional: false
+  position: 2
+  name: kmers_subtract
   description: "- difference of input sets based on k-mers. \nOutput database will\
     \ contains only k-mers that are present in first input set but absent in the second\
     \ one"
-  position: 2
-  name: kmers_subtract
-  optional: false
 - !Positional
+  optional: false
+  position: 3
+  name: counters_subtract
   description: "- difference of input sets based on k-mers and their counters (weaker\
     \ version of kmers_subtract).\nOutput database will contains all k-mers that are\
     \ present in first input,\nbeyond those for which counter operation will lead\
     \ to remove (i.e. counter equal to 0 or negative number)"
-  position: 3
-  name: counters_subtract
-  optional: false
 - !Positional
-  description: '- same as kmers_subtract but treat input2 as first and input1 as second'
+  optional: false
   position: 4
   name: reverse_kmers_subtract
-  optional: false
+  description: '- same as kmers_subtract but treat input2 as first and input1 as second'
 - !Positional
-  description: '- same as counters_subtract but treat input2 as first and input1 as
-    second'
+  optional: false
   position: 5
   name: reverse_counters_subtract
-  optional: false
+  description: '- same as counters_subtract but treat input2 as first and input1 as
+    second'
 named:
 - !Flag
-  description: <value>  - exclude k-mers occurring less than <value> times
+  optional: true
   synonyms:
   - -ci
+  description: <value>  - exclude k-mers occurring less than <value> times
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <value>  - exclude k-mers occurring more of than <value> times
+  optional: true
   synonyms:
   - -cx
+  description: <value>  - exclude k-mers occurring more of than <value> times
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <value>  - maximal value of a counter
+  optional: true
   synonyms:
   - -cs
+  description: <value>  - maximal value of a counter
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -oc
   description: "<value>  - redefine counter calculation mode for equal k-mers\nAvailable\
     \ values :\nmin   - get lower value of a k-mer counter (default value for intersect\
     \ operation)\nmax   - get upper value of a k-mer counter\nsum   - get sum of counters\
     \ from both databases\ndiff  - get difference between counters (default for counters_subtract\
     \ operation)\nleft  - get counter from first database (input1)\nright - get counter\
     \ from second database (input2)"
-  synonyms:
-  - -oc
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -110,3 +110,4 @@ help_text: "simple operation performs set operation on two input KMC's databases
   \ kmers1 -ci3 -cx70000 kmers2 union kmers1_kmers2_union -cs65536 -ocfirst intersect\
   \ intersect_kmers1_kmers2 intersect intersect_max_kmers1_kmers2 -ocmax\n"
 generated_using: []
+docker_image:

@@ -44,10 +44,13 @@ task RNApvmin {
       ~{if defined(param_file) then ("--paramFile " +  '"' + param_file + '"') else ""} \
       ~{if defined(max_bp_span) then ("--maxBPspan " +  '"' + max_bp_span + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     full_help: "Print help, including hidden options, and exit"
-    shape_conversion: "+ [optional parameters]\\nSpecify the method used to convert SHAPE\\nreactivities to pairing probabilities.\\n(default=`O')"
+    shape_conversion: "/C/S/L/O  + [optional parameters]\\nSpecify the method used to convert SHAPE\\nreactivities to pairing probabilities.\\n(default=`O')"
     tau_sigma_ratio: "Ratio of the weighting factors tau and sigma.\\n(default=`1.0')"
     objective_function: "The energies of the perturbation vector and the\\ndiscripancies between predicted and observed\\npairing probabilities contribute to the\\nobjective function. This parameter defines,\\nwhich function is used to process the\\ncontributions before summing them up.\\n0 square\\n1 absolute\\n(default=`0')"
     sample_size: "The iterative minimization process requires to\\nevaluate the gradient of the objective\\nfunction. A sample size of 0 leads to an\\nanalytical evaluation which scales as O(N^4).\\nChoosing a sample size >0 estimates the\\ngradient by sampling the given number of\\nsequences from the ensemble, which is much\\nfaster.\\n(default=`1000')"

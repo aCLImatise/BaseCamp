@@ -1,0 +1,64 @@
+!Command
+command:
+- faketime
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: switches
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: timestamp
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: program with arguments
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: ': Use the multi-threaded version of libfaketime'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: ': Use the advanced timestamp specification format (see manpage)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude-monotonic
+  description: ': Prevent monotonic clock from drifting (not the raw monotonic one)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage: faketime [switches] <timestamp> <program with arguments>\n\n\
+  This will run the specified 'program' with the given 'arguments'.\nThe program will\
+  \ be tricked into seeing the given 'timestamp' as its starting date and time.\n\
+  The clock will continue to run from this timestamp. Please see the manpage (man\
+  \ faketime)\nfor advanced options, such as stopping the wall clock and make it run\
+  \ faster or slower.\n\nThe optional switches are:\n  -m                  : Use the\
+  \ multi-threaded version of libfaketime\n  -f                  : Use the advanced\
+  \ timestamp specification format (see manpage)\n  --exclude-monotonic : Prevent\
+  \ monotonic clock from drifting (not the raw monotonic one)\n\nExamples:\nfaketime\
+  \ 'last friday 5 pm' /bin/date\nfaketime '2008-12-24 08:15:42' /bin/date\nfaketime\
+  \ -f '+2,5y x10,0' /bin/bash -c 'date; while true; do echo $SECONDS ; sleep 1 ;\
+  \ done'\nfaketime -f '+2,5y x0,50' /bin/bash -c 'date; while true; do echo $SECONDS\
+  \ ; sleep 1 ; done'\nfaketime -f '+2,5y i2,0' /bin/bash -c 'date; while true; do\
+  \ date; sleep 1 ; done'\nIn this single case all spawned processes will use the\
+  \ same global clock\nwithout restarting it at the start of each process.\n\n(Please\
+  \ note that it depends on your locale settings whether . or , has to be used for\
+  \ fractions)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tbl2asn-forever:25.7.2f--h516909a_0

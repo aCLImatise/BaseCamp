@@ -24,6 +24,9 @@ task TransformationEvaluation {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*        Input file containing the transformation description (valid formats: 'trafoXML')"
     out: "Output file containing original and transformed values; if empty, output is written to the screen (valid formats: 'trafoXML')"

@@ -3,62 +3,62 @@ command:
 - MakeNodeGraph.py
 positional:
 - !Positional
-  description: 'Input file: FASTQ/A file (can be gzipped).'
+  optional: false
   position: 0
   name: in_file
-  optional: false
+  description: 'Input file: FASTQ/A file (can be gzipped).'
 - !Positional
-  description: Output directory
+  optional: false
   position: 1
   name: out_dir
-  optional: false
+  description: Output directory
 named:
 - !Flag
-  description: 'False positive rate. (default: 0.0001)'
+  optional: true
   synonyms:
   - -fp
   - --fp_rate
+  description: 'False positive rate. (default: 0.0001)'
   args: !SimpleFlagArg
     name: FP_RATE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --intersect_nodegraph
   description: "Location of Node Graph. Will only insert query k-mers\nin bloom filter\
     \ if they appear anywhere in the\ntraining database. Note that the Jaccard estimates\n\
     will now be J(query intersect union_i training_i,\ntraining_i) instead of J(query,\
     \ training_i), but will\nuse significantly less space (unfortunately will also\n\
     disable threading). (default: None)"
-  synonyms:
-  - -i
-  - --intersect_nodegraph
   args: !SimpleFlagArg
     name: INTERSECT_NODEGRAPH
-  optional: true
 - !Flag
-  description: 'K-mer size (default: 21)'
+  optional: true
   synonyms:
   - -k
   - --k_size
+  description: 'K-mer size (default: 21)'
   args: !SimpleFlagArg
     name: K_SIZE
-  optional: true
 - !Flag
-  description: "Number of threads to use (default: 8)\n"
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: "Number of threads to use (default: 8)\n"
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: MakeNodeGraph.py [-h] [-fp FP_RATE] [-i INTERSECT_NODEGRAPH]\n\
@@ -81,3 +81,4 @@ help_text: "usage: MakeNodeGraph.py [-h] [-fp FP_RATE] [-i INTERSECT_NODEGRAPH]\
   \ 8)\n"
 generated_using:
 - --help
+docker_image:

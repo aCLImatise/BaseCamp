@@ -20,6 +20,9 @@ task XsvSearch {
       ~{if (no_headers) then "--no-headers" else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_case: "Case insensitive search. This is equivalent to\\nprefixing the regex with '(?i)'."
     select: "Select the columns to search. See 'xsv select -h'\\nfor the full syntax."

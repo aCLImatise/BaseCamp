@@ -20,6 +20,9 @@ task CramtoolsGetref {
       ~{if (input_file) then "--input-file" else ""} \
       ~{if (log_level) then "--log-level" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     destination_file: "Destination file."
     fast_a_line_length: "Wrap fasta lines accroding to this value. (default: 80)"

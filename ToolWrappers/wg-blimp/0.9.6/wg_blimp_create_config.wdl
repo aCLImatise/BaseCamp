@@ -16,6 +16,9 @@ task WgblimpCreateconfig {
       ~{if (genome_build) then "--genome_build" else ""} \
       ~{if defined(cores_per_job) then ("--cores-per-job " +  '"' + cores_per_job + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_build: "[hg19|hg38|mmul10|None]\\nBuild of the reference used for annotation."
     cores_per_job: "The number of cores to use per job.\\n[required]"

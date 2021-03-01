@@ -16,6 +16,9 @@ task Hmmfetch2 {
       ~{if (interpret_hmm_name) then "-n" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     interpret_hmm_name: ": interpret <HMM name> instead as an HMM number (0..nhmm-1)"
     options: ""

@@ -22,11 +22,9 @@ task XmlGrep {
     Boolean? text_only
     Boolean? html
     Boolean? tidy
-    String handlers_dot
   }
   command <<<
     xml_grep \
-      ~{handlers_dot} \
       ~{if (man) then "--man" else ""} \
       ~{if (version) then "--Version" else ""} \
       ~{if defined(root) then ("--root " +  '"' + root + '"') else ""} \
@@ -48,6 +46,9 @@ task XmlGrep {
       ~{if (html) then "--html" else ""} \
       ~{if (tidy) then "--Tidy" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "full documentation"
     version: "display the tool version"
@@ -69,7 +70,6 @@ task XmlGrep {
     text_only: "Displays the text of the results, one by line."
     html: "Allow HTML input, files are converted using HTML::TreeBuilder"
     tidy: "Allow HTML input, files are converted using HTML::Tidy"
-    handlers_dot: "examples: 'para' 'para[@compact=\\\"compact\\\"]' '*[@urgent]'"
   }
   output {
     File out_stdout = stdout()

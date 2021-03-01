@@ -5,54 +5,57 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --species_data
   description: "File containing species list and current IUCN status\nof species,\
     \ as well as generation length (GL) data\nestimates if available. GL data is only\
     \ used for '--\nextinction_probs_mode 0' ('species_data.txt' output\nfrom get_iucn_data\
     \ function)."
-  synonyms:
-  - --species_data
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: "File containing IUCN history of the reference group\nfor transition\
-    \ rate estimation ('*_iucn_history.txt'\noutput of get_iucn_data function)."
+  optional: true
   synonyms:
   - --iucn_history
+  description: "File containing IUCN history of the reference group\nfor transition\
+    \ rate estimation ('*_iucn_history.txt'\noutput of get_iucn_data function)."
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: Provide path to outdir where results will be saved.
+  optional: true
   synonyms:
   - --outdir
+  description: Provide path to outdir where results will be saved.
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extinction_probs_mode
   description: "Set to '0' to use IUCN defined extinction\nprobabilities (e.g. Mooers\
     \ et al, 2008 approach), also\nusing available GL data to estimate species-specific\n\
     extinction probabilities. Set to '1' to simulate\nextinctions based on recorded\
     \ extinctions in IUCN\nhistory (e.g. Monroe et al, 2019 approach, no GL data\n\
     is being used)."
-  synonyms:
-  - --extinction_probs_mode
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --possibly_extinct_list
   description: "File containing list of taxa that are likely extinct,\nbut that are\
     \ listed as extant in IUCN, including the\nyear of their assessment as possibly\
     \ extinct\n('possibly_extinct_reference_taxa.txt' output from\nget_iucn_data function).\
     \ These species will then be\nmodeled as extinct by the esimate_rates function,\n\
     which will effect the estimated extinction\nprobabilities when chosing `--extinction_probs_mode\
     \ 1`"
-  synonyms:
-  - --possibly_extinct_list
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --rate_samples
   description: "How many rates to sample from the posterior transition\nrate estimates.\
     \ These rates will be used to populate\ntransition rate q-matrices for downstream\
     \ simulations.\nLater on you can still chose to run more simulation\nreplicates\
@@ -60,42 +63,39 @@ named:
     \ case the\n`run_sim` function will randomely resample from the\navailable q-matrices\
     \ (default=100, this is ususally\nsufficient, larger numbers can lead to very\
     \ high\noutput file size volumes)."
-  synonyms:
-  - --rate_samples
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Number of generations for MCMC for transition rate\nestimation (default=100000)."
+  optional: true
   synonyms:
   - --n_gen
+  description: "Number of generations for MCMC for transition rate\nestimation (default=100000)."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Burn-in for MCMC for transition rate estimation\n(default=1000)."
+  optional: true
   synonyms:
   - --burnin
+  description: "Burn-in for MCMC for transition rate estimation\n(default=1000)."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Set random seed for the MCMC.
+  optional: true
   synonyms:
   - --seed
+  description: Set random seed for the MCMC.
   args: !SimpleFlagArg
     name: SEED
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: iucn_sim transition_rates [-h] --species_data <path> --iucn_history\n\
@@ -145,3 +145,4 @@ help_text: "usage: iucn_sim transition_rates [-h] --species_data <path> --iucn_h
   \ random seed for the MCMC.\n"
 generated_using:
 - --help
+docker_image:

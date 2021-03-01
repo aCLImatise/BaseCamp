@@ -56,6 +56,9 @@ task Vcf2kinship {
       ~{if (update_id) then "--update-id" else ""} \
       ~{if (thread) then "--thread" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_vcf: ": Input VCF File"
     out: ": Output prefix for autosomal kinship calculation"

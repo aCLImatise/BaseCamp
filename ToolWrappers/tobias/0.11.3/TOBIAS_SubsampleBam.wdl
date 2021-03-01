@@ -26,6 +26,9 @@ task TOBIASSubsampleBam {
       ~{if (force) then "--force" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Path to .bam-file"
     no_rand: "Number of randomizations (per step) (default: 3)"

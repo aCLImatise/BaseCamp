@@ -12,6 +12,9 @@ task CruxQrankerCruxoutput {
       ~{q_ranker} \
       ~{fragmentation_spectra}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     q_ranker: ""

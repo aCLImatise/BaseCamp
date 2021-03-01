@@ -16,6 +16,9 @@ task RdpClassifier {
       ~{if defined(query_file) then ("--queryFile " +  '"' + query_file + '"') else ""} \
       ~{if defined(train_prop_file) then ("--train_propfile " +  '"' + train_prop_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "all tab delimited output format: [allrank|fixrank|db]. Default is allrank.\\nallrank: outputs the results for all ranks applied for each sequence: seqname, orientation,\\ntaxon name, rank, conf, ...\\nfixrank: only outputs the results for fixed ranks in order: no rank, domain, phylum, class,\\norder, family, genus\\ndb: outputs the seqname, trainset_no, tax_id, conf. This is good for storing in a database"
     output_file: "output file name for classification assignment"

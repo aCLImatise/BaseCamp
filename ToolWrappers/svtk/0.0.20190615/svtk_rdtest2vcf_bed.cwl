@@ -3,7 +3,7 @@ id: svtk_rdtest2vcf_bed.cwl
 inputs:
 - id: in_contigs
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --contigs
 - id: in_samples
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - svtk

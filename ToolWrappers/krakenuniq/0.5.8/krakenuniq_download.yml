@@ -4,134 +4,134 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Folder to which the files are downloaded. Default: '.'"
+  optional: true
   synonyms:
   - -o
+  description: "Folder to which the files are downloaded. Default: '.'"
   args: !SimpleFlagArg
     name: directory
-  optional: true
 - !Flag
-  description: 'Alternative to -o: Download to <directory>/{library,taxonomy}.'
+  optional: true
   synonyms:
   - --db
+  description: 'Alternative to -o: Download to <directory>/{library,taxonomy}.'
   args: !SimpleFlagArg
     name: directory
-  optional: true
 - !Flag
-  description: "<# of threads>  Number of processes when downloading (uses xargs).\
-    \ Default: '5'"
+  optional: true
   synonyms:
   - --threads
+  description: "<# of threads>  Number of processes when downloading (uses xargs).\
+    \ Default: '5'"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Download using rsync.
+  optional: true
   synonyms:
   - --rsync
   - -R
+  description: Download using rsync.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Redownload and overwrite files with the same name.
+  optional: true
   synonyms:
   - --overwrite
+  description: Redownload and overwrite files with the same name.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Be verbose.
+  optional: true
   synonyms:
   - --verbose
+  description: Be verbose.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Mask low-complexity regions using dustmasker.
+  optional: true
   synonyms:
   - --dust
   - -D
+  description: Mask low-complexity regions using dustmasker.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Filter all sequences from the FASTA files that have less than X bp.
+  optional: true
   synonyms:
   - --min-seq-len
+  description: Filter all sequences from the FASTA files that have less than X bp.
   args: !SimpleFlagArg
     name: X
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --search
   description: "Download all sequences returned from a NCBI nucleotide search.\nWhen\
     \ used with viral-neighbors, it subsets the viral genomes by the search.\nE.g.\
     \ \"txid1570291[Organism]\" for Ebola virus sequences (taxonomy ID 1570291)."
-  synonyms:
-  - --search
   args: !SimpleFlagArg
     name: SEARCH_TERM
-  optional: true
 - !Flag
-  description: ',AC2          Alternative to --search. Download specified ACs of nucleotide
-    database.'
+  optional: true
   synonyms:
   - --ac
+  description: ',AC2          Alternative to --search. Download specified ACs of nucleotide
+    database.'
   args: !SimpleFlagArg
     name: AC1
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mapping-file
   description: "Map accessions using the specified mapping file(s) (comma-separated).\n\
     Possible values: nucl_est, nucl_gb, nucl_gss, nucl_wgs.\nFor viral-neighbors,\
     \ the default is nucl_gb. Unset by giving it an empty string.\nDownloaded from\
     \ ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/."
-  synonyms:
-  - --mapping-file
   args: !SimpleFlagArg
     name: MAP
-  optional: true
 - !Flag
-  description: 'Specify return mode. Possible options: text (default), asn.1, xml.'
+  optional: true
   synonyms:
   - --retmode
+  description: 'Specify return mode. Possible options: text (default), asn.1, xml.'
   args: !SimpleFlagArg
     name: RM
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --rettype
   description: "Specify return type for download. Note that no mapping files are generated\
     \ when\nrettype is specified. Possible options: fasta (default), gb, gbc, native,\
     \ acc, seqid, ft,\ngbwithparts, fasta_cds_na, fasta_cds_aa. Note that only gb\
     \ and fasta files are split, while the other formats stay in chunks.\nThe resulting\
     \ files will have the rettype as extension."
-  synonyms:
-  - --rettype
   args: !SimpleFlagArg
     name: RT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --taxa
   description: "Provide list of taxa that are kept in the database. Comma separated,\
     \ supply either taxIDs or\none of the following division names: archaea bacteria\
     \ fungi parasitic_worms protozoa viral\nDefault: \"bacteria,archaea,viral,fungi,protozoa\""
-  synonyms:
-  - --taxa
   args: !SimpleFlagArg
     name: TAXLIST
-  optional: true
 - !Flag
-  description: Exclude taxa that are named 'environmental samples'.
+  optional: true
   synonyms:
   - --exclude-environmental-taxa
+  description: Exclude taxa that are named 'environmental samples'.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fna
   description: "Comma-separated list of sequence types, including genomic, rna, rna_from_genomic,\
     \ cds_from_genomic. Default: genomic.\nSee the assembly project FTP site for available\
     \ sequences"
-  synonyms:
-  - --fna
   args: !SimpleFlagArg
     name: seq types
-  optional: true
 - !Flag
-  description: Filter unplaced sequences.
+  optional: true
   synonyms:
   - -u
+  description: Filter unplaced sequences.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -190,3 +190,4 @@ help_text: "Unknown database --help. \n\nkrakenuniq-download [<options>] <patter
   \ -u                 Filter unplaced sequences.\n"
 generated_using:
 - --help
+docker_image:

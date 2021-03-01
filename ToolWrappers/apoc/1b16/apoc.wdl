@@ -42,6 +42,9 @@ task Apoc {
       ~{if (normalize_score_minimum) then "-b" else ""} \
       ~{if (normalize_score_maximum) then "-c" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fa: "Global structure alignment: 1 - enable (default), 0 - disable."
     lt: "Provide a list of templates to compare in a file."

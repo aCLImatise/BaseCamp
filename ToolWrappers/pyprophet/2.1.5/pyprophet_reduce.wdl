@@ -10,6 +10,9 @@ task PyprophetReduce {
       ~{if defined(in) then ("--in " +  '"' + in + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Scored PyProphet input file.  [required]"
     out: "Reduced OSWR output file."

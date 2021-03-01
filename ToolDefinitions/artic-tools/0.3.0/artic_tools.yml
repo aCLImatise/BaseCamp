@@ -1,0 +1,291 @@
+&id001 !Command
+command:
+- artic-tools
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - artic-tools
+  - check_vcf
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: vcf
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: scheme
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --summaryOut
+    description: "REQUIRED\nSummary of variant checks will be written here (TSV format)"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --vcfOut
+    description: If provided, will write variants that pass checks to this file
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --minQual
+    description: Minimum quality score to keep a variant (default = 10)
+    args: !SimpleFlagArg
+      name: FLOAT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Print this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Check a VCF file based on primer scheme info and user-defined cut offs\n\
+    Usage: artic-tools check_vcf [OPTIONS] vcf scheme\n\nPositionals:\n  vcf TEXT:FILE\
+    \ REQUIRED      The input VCF file to filter\n  scheme TEXT:FILE REQUIRED   The\
+    \ primer scheme to use\n\nOptions:\n  -h,--help                   Print this help\
+    \ message and exit\n  -o,--summaryOut TEXT REQUIRED\n                        \
+    \      Summary of variant checks will be written here (TSV format)\n  --vcfOut\
+    \ TEXT               If provided, will write variants that pass checks to this\
+    \ file\n  -q,--minQual FLOAT          Minimum quality score to keep a variant\
+    \ (default = 10)\n\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/artic-tools:0.3.0--hee4d88c_0
+- !Command
+  command:
+  - artic-tools
+  - validate_scheme
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: scheme
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outputPrimerSeqs
+    description: If provided, will write primer sequences as multiFASTA (requires
+      --refSeq to be provided)
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --refSeq
+    description: The reference sequence for the primer scheme (FASTA format)
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --outputInserts
+    description: If provided, will write primer scheme inserts as BED (exluding primer
+      sequences)
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Print this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Validate an amplicon scheme for compliance with ARTIC standards\nUsage:\
+    \ artic-tools validate_scheme [OPTIONS] scheme\n\nPositionals:\n  scheme TEXT:FILE\
+    \ REQUIRED   The primer scheme to validate\n\nOptions:\n  -h,--help          \
+    \         Print this help message and exit\n  -o,--outputPrimerSeqs TEXT  If provided,\
+    \ will write primer sequences as multiFASTA (requires --refSeq to be provided)\n\
+    \  -r,--refSeq TEXT            The reference sequence for the primer scheme (FASTA\
+    \ format)\n  --outputInserts TEXT        If provided, will write primer scheme\
+    \ inserts as BED (exluding primer sequences)\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/artic-tools:0.3.0--hee4d88c_0
+- !Command
+  command:
+  - artic-tools
+  - get_scheme
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: scheme
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --schemeVersion
+    description: =0      The ARTIC primer scheme version (default = latest)
+    args: !SimpleFlagArg
+      name: UINT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outDir
+    description: The directory to write the scheme and reference sequence to
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Print this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Download an ARTIC primer scheme and reference sequence\nUsage: artic-tools\
+    \ get_scheme [OPTIONS] scheme\n\nPositionals:\n  scheme TEXT REQUIRED        The\
+    \ name of the scheme to download (ebola|nipah|scov2)\n\nOptions:\n  -h,--help\
+    \                   Print this help message and exit\n  --schemeVersion UINT=0\
+    \      The ARTIC primer scheme version (default = latest)\n  -o,--outDir TEXT\
+    \            The directory to write the scheme and reference sequence to\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/artic-tools:0.3.0--hee4d88c_0
+- !Command
+  command:
+  - artic-tools
+  - align_trim
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: scheme
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --inputFile
+    description: The input BAM file (will try STDIN if not provided)
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --minMAPQ
+    description: A minimum MAPQ threshold for processing alignments (default = 15)
+    args: !SimpleFlagArg
+      name: UINT
+  - !Flag
+    optional: true
+    synonyms:
+    - --normalise
+    description: Subsample to N coverage per strand (default = 100, deactivate with
+      0)
+    args: !SimpleFlagArg
+      name: UINT
+  - !Flag
+    optional: true
+    synonyms:
+    - --report
+    description: Output an align_trim report to file
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --start
+    description: Trim to start of primers instead of ends
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --remove-incorrect-pairs
+    description: Remove amplicons with incorrect primer pairs
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-read-groups
+    description: Do not divide reads into groups in SAM output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: Output debugging information to STDERR
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Print this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Trim alignments from an amplicon scheme\nUsage: artic-tools align_trim\
+    \ [OPTIONS] scheme\n\nPositionals:\n  scheme TEXT:FILE REQUIRED   The ARTIC primer\
+    \ scheme\n\nOptions:\n  -h,--help                   Print this help message and\
+    \ exit\n  -b,--inputFile TEXT         The input BAM file (will try STDIN if not\
+    \ provided)\n  --minMAPQ UINT              A minimum MAPQ threshold for processing\
+    \ alignments (default = 15)\n  --normalise UINT            Subsample to N coverage\
+    \ per strand (default = 100, deactivate with 0)\n  --report TEXT             \
+    \  Output an align_trim report to file\n  --start                     Trim to\
+    \ start of primers instead of ends\n  --remove-incorrect-pairs    Remove amplicons\
+    \ with incorrect primer pairs\n  --no-read-groups            Do not divide reads\
+    \ into groups in SAM output\n  --verbose                   Output debugging information\
+    \ to STDERR\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/artic-tools:0.3.0--hee4d88c_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Print version and exit
+  args: !EmptyFlagArg {}
+help_text: "artic-tools is a set of artic pipeline utilities\nUsage: artic-tools [OPTIONS]\
+  \ SUBCOMMAND\n\nOptions:\n  -h,--help                   Print this help message\
+  \ and exit\n  -v,--version                Print version and exit\n\nSubcommands:\n\
+  \  align_trim                  Trim alignments from an amplicon scheme\n  get_scheme\
+  \                  Download an ARTIC primer scheme and reference sequence\n  validate_scheme\
+  \             Validate an amplicon scheme for compliance with ARTIC standards\n\
+  \  check_vcf                   Check a VCF file based on primer scheme info and\
+  \ user-defined cut offs\n\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/artic-tools:0.3.0--hee4d88c_0

@@ -16,6 +16,9 @@ task SumProbpy {
       ~{if (input_file_containing) then "--input" else ""} \
       ~{if (debug_level) then "--debug_level" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threshold: "any probabilities below this threshold are\\nset to the threshold value. (default 1e-18)"
     input_file_containing: "input file containing probabilities (reads\\nfrom stdin by default)"

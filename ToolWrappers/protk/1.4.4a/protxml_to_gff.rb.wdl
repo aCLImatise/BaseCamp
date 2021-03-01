@@ -32,6 +32,9 @@ task ProtxmlToGffrb {
       ~{if defined(ignore_regex) then ("--ignore-regex " +  '"' + ignore_regex + '"') else ""} \
       ~{if (include_mods) then "--include-mods" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicitly_named_output: "An explicitly named output file."
     debug: "Run in debug mode [false]"

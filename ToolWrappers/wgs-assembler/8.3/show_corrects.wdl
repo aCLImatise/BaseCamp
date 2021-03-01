@@ -8,6 +8,9 @@ task Showcorrects {
     show_corrects \
       ~{filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: ""
   }

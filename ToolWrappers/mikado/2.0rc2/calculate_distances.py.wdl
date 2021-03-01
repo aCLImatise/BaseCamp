@@ -10,6 +10,9 @@ task CalculateDistancespy {
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     l: ""
     o: ""

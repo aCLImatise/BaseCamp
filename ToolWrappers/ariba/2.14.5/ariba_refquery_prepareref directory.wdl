@@ -10,6 +10,9 @@ task AribaRefqueryPreparerefdirectory {
       ~{prepare_ref_dir} \
       ~{search_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prepare_ref_dir: "Name of directory output by prepareref"
     search_name: "Name of cluster or sequence to search for"

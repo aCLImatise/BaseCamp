@@ -16,6 +16,9 @@ task AktPedphase {
       ~{if (threads) then "--threads" else ""} \
       ~{if (exclude_chromosome) then "--exclude-chromosome" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pedigree: "pedigree information in plink .fam format"
     output_file: "output file name [stdout]"

@@ -16,6 +16,9 @@ task LongFastx {
       ~{if defined(bases) then ("--bases " +  '"' + bases + '"') else ""} \
       ~{if defined(others) then ("--others " +  '"' + others + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     longest: "Percentage of longest reads to partition."
     bases: "Maximum number of bases (subject to at least one read.)"

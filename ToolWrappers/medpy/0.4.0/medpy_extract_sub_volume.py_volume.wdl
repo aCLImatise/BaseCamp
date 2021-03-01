@@ -20,6 +20,9 @@ task MedpyExtractSubVolumepyVolume {
       ~{if (v) then "-v" else ""} \
       ~{if (f) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d: ""
     v: ""

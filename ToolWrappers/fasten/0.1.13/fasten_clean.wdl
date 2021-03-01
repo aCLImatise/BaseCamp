@@ -18,6 +18,9 @@ task FastenClean {
       ~{if defined(min_avg_quality) then ("--min-avg-quality " +  '"' + min_avg_quality + '"') else ""} \
       ~{if defined(min_trim_quality) then ("--min-trim-quality " +  '"' + min_trim_quality + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_cpus: "Number of CPUs (default: 1)"
     paired_end: "The input reads are interleaved paired-end"

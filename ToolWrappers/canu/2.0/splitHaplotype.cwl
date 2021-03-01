@@ -3,33 +3,33 @@ id: splitHaplotype.cwl
 inputs:
 - id: in_range_reads_operate
   doc: '[-end]                     range of reads to operate on.'
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
 - id: in_path_input_fasta
   doc: "path to input FASTA or FASTQ of reads to classify.\nthese may be uncompressed,\
     \ gzip, bzip2 or xz compressed."
-  type: File
+  type: File?
   inputBinding:
     prefix: -R
 - id: in_parentkmershistogram_haplooutputfastagz
   doc: parent-kmers.histogram haplo-output.fasta.gz
-  type: string
+  type: string?
   inputBinding:
     prefix: -H
 - id: in_cr
   doc: minimum ratio between best and second best to classify
-  type: string
+  type: string?
   inputBinding:
     prefix: -cr
 - id: in_cl
   doc: minimum length of output read
-  type: long
+  type: long?
   inputBinding:
     prefix: -cl
 - id: in_report_batches_processed
   doc: report how many batches per second are being processed
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_s
@@ -66,6 +66,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - splitHaplotype

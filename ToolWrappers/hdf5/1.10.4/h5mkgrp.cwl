@@ -3,17 +3,17 @@ id: h5mkgrp.cwl
 inputs:
 - id: in_latest
   doc: Use latest version of file format to create groups
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --latest
 - id: in_parents
   doc: No error if existing, make parent groups as needed
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --parents
 - id: in_verbose
   doc: Print information about OBJECTS and OPTIONS
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_options
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - h5mkgrp

@@ -18,6 +18,9 @@ task GuidescanCuttingSpecificityProcesser {
       ~{if defined(database_directory_two) then ("--database_directory2 " +  '"' + database_directory_two + '"') else ""} \
       ~{if defined(database_name_two) then ("--database_name2 " +  '"' + database_name_two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database_directory: "absolute filepath to directory hosting sgRNA database\\nwith no cutting specificity scores"
     database_name: "filename of sgRNA database with no cutting specificity\\nscores"

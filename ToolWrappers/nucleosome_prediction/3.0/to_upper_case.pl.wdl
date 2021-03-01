@@ -10,6 +10,9 @@ task ToUpperCasepl {
       ~{if (convert_lower_case) then "-l" else ""} \
       ~{if defined(convert_column_default) then ("-c " +  '"' + convert_column_default + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     convert_lower_case: ":       Convert to lower case"
     convert_column_default: ": Convert only column <num> (default: convert the entire line)"

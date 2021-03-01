@@ -18,6 +18,9 @@ task DeepacstrainExplainTransfac2IC {
       ~{if defined(train) then ("--train " +  '"' + train + '"') else ""} \
       ~{if defined(out_file) then ("--out_file " +  '"' + out_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "File containing all filter motifs in transfac format"
     train: "Training data set (.npy) to normalize for GC-content"

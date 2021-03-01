@@ -4,7 +4,7 @@ task PyatacVplot {
   input {
     File? bed
     File? bam
-    Int? out
+    Int? cores
     Int? lower
     Int? upper
     Int? flank
@@ -20,7 +20,7 @@ task PyatacVplot {
       ~{include} \
       ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
-      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if defined(lower) then ("--lower " +  '"' + lower + '"') else ""} \
       ~{if defined(upper) then ("--upper " +  '"' + upper + '"') else ""} \
       ~{if defined(flank) then ("--flank " +  '"' + flank + '"') else ""} \
@@ -30,10 +30,13 @@ task PyatacVplot {
       ~{if (no_plot) then "--no_plot" else ""} \
       ~{if (plot_extra) then "--plot_extra" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "Positions around which to generate VPlot"
     bam: "Accepts sorted BAM file"
-    out: "--cores int     Number of cores to use"
+    cores: "Number of cores to use"
     lower: "lower limit on insert size"
     upper: "upper limit on insert size"
     flank: "how many bases on each side of site (or center of site) to"

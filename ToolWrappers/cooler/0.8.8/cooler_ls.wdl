@@ -10,6 +10,9 @@ task CoolerLs {
       ~{cool_path} \
       ~{if (long) then "--long" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     long: "Long listing format"
     cool_path: ""

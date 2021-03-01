@@ -24,6 +24,9 @@ task Droptag {
       ~{if defined(lib_tag) then ("--lib-tag " +  '"' + lib_tag + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: ": xml file with droptag parameters"
     log_prefix: ": logs prefix"

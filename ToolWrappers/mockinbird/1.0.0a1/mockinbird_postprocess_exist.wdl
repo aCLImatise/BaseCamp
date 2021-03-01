@@ -12,6 +12,9 @@ task MockinbirdPostprocessExist {
       ~{post_process} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: ""
     mock_in_bird: ""

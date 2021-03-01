@@ -14,6 +14,9 @@ task IssModel {
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
       ~{if defined(output_file_prefix) then ("--output " +  '"' + output_file_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Disable info logging. (default: False)."
     debug: "Enable debug logging. (default: False)."

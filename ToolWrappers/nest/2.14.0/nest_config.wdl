@@ -26,6 +26,9 @@ task Nestconfig {
       ~{if (datadir) then "--datadir" else ""} \
       ~{if (libdir) then "--libdir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "NEST install prefix for architecture-independent files"
     exec_prefix: "NEST install prefix for architecture-dependent files"

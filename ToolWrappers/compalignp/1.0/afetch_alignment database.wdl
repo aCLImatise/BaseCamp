@@ -10,6 +10,9 @@ task AfetchAlignmentdatabase {
       ~{name_or_accession} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
     name_or_accession: ""

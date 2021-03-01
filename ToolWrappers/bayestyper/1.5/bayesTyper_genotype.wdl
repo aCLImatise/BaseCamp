@@ -2,7 +2,7 @@ version 1.0
 
 task BayesTyperGenotype {
   input {
-    File? arg_file_output
+    File? arg_variantclustersbin_file
     Directory? parameterkmersfagz_bayestyper_cluster
     Boolean? arg_samples_file
     Boolean? arg_reference_genome
@@ -10,8 +10,8 @@ task BayesTyperGenotype {
     Boolean? arg_bayestyperoutput_prefix
     Boolean? compress_outputprefixvcf_using
     Boolean? arg_unix_time
-    Boolean? arg_number_threads
-    Boolean? arg_gender_file
+    Boolean? arg_number_used
+    Boolean? arg_chromosome_gender
     Int? gibbs_burn_in
     Int? gibbs_samples
     Int? number_of_gibbs_chains
@@ -25,7 +25,7 @@ task BayesTyperGenotype {
   }
   command <<<
     bayesTyper genotype \
-      ~{if (arg_file_output) then "-v" else ""} \
+      ~{if (arg_variantclustersbin_file) then "-v" else ""} \
       ~{if (parameterkmersfagz_bayestyper_cluster) then "-c" else ""} \
       ~{if (arg_samples_file) then "-s" else ""} \
       ~{if (arg_reference_genome) then "-g" else ""} \
@@ -33,8 +33,8 @@ task BayesTyperGenotype {
       ~{if (arg_bayestyperoutput_prefix) then "-o" else ""} \
       ~{if (compress_outputprefixvcf_using) then "-z" else ""} \
       ~{if (arg_unix_time) then "-r" else ""} \
-      ~{if (arg_number_threads) then "-p" else ""} \
-      ~{if (arg_gender_file) then "-y" else ""} \
+      ~{if (arg_number_used) then "-p" else ""} \
+      ~{if (arg_chromosome_gender) then "-y" else ""} \
       ~{if defined(gibbs_burn_in) then ("--gibbs-burn-in " +  '"' + gibbs_burn_in + '"') else ""} \
       ~{if defined(gibbs_samples) then ("--gibbs-samples " +  '"' + gibbs_samples + '"') else ""} \
       ~{if defined(number_of_gibbs_chains) then ("--number-of-gibbs-chains " +  '"' + number_of_gibbs_chains + '"') else ""} \
@@ -46,8 +46,11 @@ task BayesTyperGenotype {
       ~{if defined(min_number_of_km_ers) then ("--min-number-of-kmers " +  '"' + min_number_of_km_ers + '"') else ""} \
       ~{if (disable_observed_km_ers) then "--disable-observed-kmers" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    arg_file_output: "[ --variant-clusters-file ] arg    variant_clusters.bin file (BayesTyper cluster output)."
+    arg_variantclustersbin_file: "[ --variant-clusters-file ] arg    variant_clusters.bin file (BayesTyper cluster output)."
     parameterkmersfagz_bayestyper_cluster: "[ --cluster-data-dir ] arg         cluster data directory containing intercluster_regions.txt.gz, multigroup_kmers.bloom[Meta|Data] &\\nparameter_kmers.fa.gz (BayesTyper cluster output)."
     arg_samples_file: "[ --samples-file ] arg             samples file (see github documentation for format specifications)."
     arg_reference_genome: "[ --genome-file ] arg              reference genome file (fasta format)."
@@ -55,8 +58,8 @@ task BayesTyperGenotype {
     arg_bayestyperoutput_prefix: "[ --output-prefix ] arg (=bayestyper)\\noutput prefix."
     compress_outputprefixvcf_using: "[ --gzip-output ] [=arg(=1)] (=0)  compress <output-prefix>.vcf using gzip."
     arg_unix_time: "[ --random-seed ] arg (=unix time) seed for pseudo-random number generator."
-    arg_number_threads: "[ --threads ] arg (=1)             number of threads used (+= 2 I/O threads)."
-    arg_gender_file: "[ --chromosome-ploidy-file ] arg   chromosome gender ploidy file (see github documentation for format specifications). Human ploidy levels will be assumed\\nif no file is given."
+    arg_number_used: "[ --threads ] arg (=1)             number of threads used (+= 2 I/O threads)."
+    arg_chromosome_gender: "[ --chromosome-ploidy-file ] arg   chromosome gender ploidy file (see github documentation for format specifications). Human ploidy levels will be assumed\\nif no file is given."
     gibbs_burn_in: "(=100)            number of burn-in iterations."
     gibbs_samples: "(=250)            number of Gibbs iterations."
     number_of_gibbs_chains: "(=20)    number of independent Gibbs sampling chains."
@@ -70,7 +73,7 @@ task BayesTyperGenotype {
   }
   output {
     File out_stdout = stdout()
-    File out_arg_file_output = "${in_arg_file_output}"
+    File out_arg_variantclustersbin_file = "${in_arg_variantclustersbin_file}"
     Directory out_parameterkmersfagz_bayestyper_cluster = "${in_parameterkmersfagz_bayestyper_cluster}"
   }
 }

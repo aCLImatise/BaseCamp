@@ -22,6 +22,9 @@ task GffToVcf {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(global_reference) then ("--globalReference " +  '"' + global_reference + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     emit_tool_contract: "Emit Tool Contract to stdout (default: False)"
     resolved_tool_contract: "Run Tool directly from a PacBio Resolved tool contract\\n(default: None)"

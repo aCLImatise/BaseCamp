@@ -4,6 +4,9 @@ task AlignAndEstimateAbundancepl {
   command <<<
     align_and_estimate_abundance_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

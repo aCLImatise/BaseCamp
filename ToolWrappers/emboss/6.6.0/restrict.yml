@@ -3,26 +3,29 @@ command:
 - restrict
 positional:
 - !Positional
-  description: -[no]ambiguity      boolean    [Y] This allows those enzymes which
-    have one
+  optional: false
   position: 0
   name: considered.
-  optional: false
+  description: -[no]ambiguity      boolean    [Y] This allows those enzymes which
+    have one
 - !Positional
-  description: -alphabetic         boolean    [N] Sort output alphabetically
+  optional: false
   position: 0
   name: them.
-  optional: false
+  description: -alphabetic         boolean    [N] Sort output alphabetically
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -sitelen
   description: "integer    [4] This sets the minimum length of the\nrestriction enzyme\
     \ recognition site. Any\nenzymes with sites shorter than this will be\nignored.\
     \ (Integer from 2 to 20)"
-  synonyms:
-  - -sitelen
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -enzymes
   description: "string     [all] The name 'all' reads in all enzyme\nnames from the\
     \ REBASE database. You can\nspecify enzymes by giving their names with\ncommas\
     \ between then, such as:\n'HincII,hinfI,ppiI,hindiii'.\nThe case of the names\
@@ -33,88 +36,85 @@ named:
     \ a comma\ncharacter ',' and then treated as the list\nof enzymes to search for.\n\
     An example of a file of enzyme names is:\n! my enzymes\nHincII, ppiII\n! other\
     \ enzymes\nhindiii\nHinfI\nPpiI (Any string)"
-  synonyms:
-  - -enzymes
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: datafile   Restriction enzyme data file (optional)
+  optional: true
   synonyms:
   - -datafile
+  description: datafile   Restriction enzyme data file (optional)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "datafile   [Emethylsites.dat] Restriction enzyme\nmethylation data\
-    \ file"
+  optional: true
   synonyms:
   - -mfile
+  description: "datafile   [Emethylsites.dat] Restriction enzyme\nmethylation data\
+    \ file"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -min
   description: "integer    [1] This sets the minimum number of cuts for\nany restriction\
     \ enzyme that will be\nconsidered. Any enzymes that cut fewer times\nthan this\
     \ will be ignored. (Integer from 1\nto 1000)"
-  synonyms:
-  - -min
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -max
   description: "integer    [2000000000] This sets the maximum number of\ncuts for\
     \ any restriction enzyme that will\nbe considered. Any enzymes that cut more\n\
     times than this will be ignored. (Any\ninteger value)"
-  synonyms:
-  - -max
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -solofragment
   description: "boolean    [N] This gives the fragment lengths of the\nforward sense\
     \ strand produced by complete\nrestriction by each restriction enzyme on\nits\
     \ own. Results are added to the tail\nsection of the report."
-  synonyms:
-  - -solofragment
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -single
   description: "boolean    [N] If this is set then this forces the\nvalues of the\
     \ mincuts and maxcuts qualifiers\nto both be 1. Any other value you may have\n\
     set them to will be ignored."
-  synonyms:
-  - -single
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -plasmid
   description: "boolean    [N] If this is set then this allows searches\nfor restriction\
     \ enzyme recognition site and\ncut positions that span the end of the\nsequence\
     \ to be considered."
-  synonyms:
-  - -plasmid
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "boolean    [N] If this is set then RE recognition sites\nwill not\
-    \ match methylated bases."
+  optional: true
   synonyms:
   - -methylation
+  description: "boolean    [N] If this is set then RE recognition sites\nwill not\
+    \ match methylated bases."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -fragments
   description: "boolean    [N] This gives the fragment lengths of the\nforward sense\
     \ strand produced by complete\nrestriction using all of the input enzymes\ntogether.\
     \ Results are added to the tail\nsection of the report."
-  synonyms:
-  - -fragments
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "boolean    Report command line options and exit. More\ninformation\
-    \ on associated and general\nqualifiers can be found with -help -verbose\n"
+  optional: true
   synonyms:
   - -help
+  description: "boolean    Report command line options and exit. More\ninformation\
+    \ on associated and general\nqualifiers can be found with -help -verbose\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Report restriction enzyme cleavage sites in a nucleotide sequence\nVersion:\
@@ -216,3 +216,4 @@ help_text: "Report restriction enzyme cleavage sites in a nucleotide sequence\nV
   \                             qualifiers can be found with -help -verbose\n\n"
 generated_using:
 - --help
+docker_image:

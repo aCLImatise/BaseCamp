@@ -16,6 +16,9 @@ task SplitByTaxa {
       ~{if defined(tax_on_a_zip) then ("--taxon-a-zip " +  '"' + tax_on_a_zip + '"') else ""} \
       ~{if defined(tax_on_b_zip) then ("--taxon-b-zip " +  '"' + tax_on_b_zip + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genomes_a: "file with genome GenBank Project ID and Organism name on each line for taxon A"
     genomes_b: "file with genome GenBank Project ID and Organism name on each line for taxon B"

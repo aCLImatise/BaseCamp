@@ -24,6 +24,9 @@ task Fragfinder {
       ~{if defined(fra_glen) then ("-fraglen " +  '"' + fra_glen + '"') else ""} \
       ~{if (num_per_match) then "-numpermatch" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _contains_model: ", which contains a MODEL, or"
     model_file: ", where file contains any model structure, or"

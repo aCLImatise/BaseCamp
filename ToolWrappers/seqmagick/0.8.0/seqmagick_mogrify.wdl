@@ -92,6 +92,9 @@ task SeqmagickMogrify {
       ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
       ~{if defined(output_format) then ("--output-format " +  '"' + output_format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alphabet: "Input alphabet. Required for writing NEXUS."
     line_wrap: "Adjust line wrap for sequence strings. When N is 0,\\nall line breaks are removed. Only fasta files are\\nsupported for the output format."

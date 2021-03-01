@@ -24,6 +24,9 @@ task HicPlotSVL {
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
       ~{if defined(color_list) then ("--colorList " +  '"' + color_list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrices: "The matrix (or multiple matrices) to use for the\\ncomparison"
     plot_filename: "Plot name."

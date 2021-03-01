@@ -8,6 +8,9 @@ task BedparsePUTR {
     bedparse _pUTR \
       ~{bed_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_file: "Path to the BED file."
   }

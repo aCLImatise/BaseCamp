@@ -40,6 +40,9 @@ task Krakenuniqdownload {
       ~{if defined(fna) then ("--fna " +  '"' + fna + '"') else ""} \
       ~{if (filter_unplaced_sequences) then "-u" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     folder_files_downloaded: "Folder to which the files are downloaded. Default: '.'"
     db: "Alternative to -o: Download to <directory>/{library,taxonomy}."

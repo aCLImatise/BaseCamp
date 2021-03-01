@@ -90,6 +90,9 @@ task Sompy {
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_prefix: "Output file prefix for statistics and feature table\\n(when selected)"
     location: "Location for bcftools view (e.g. chr1)"

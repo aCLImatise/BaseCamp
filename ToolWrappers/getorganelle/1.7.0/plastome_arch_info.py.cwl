@@ -3,18 +3,18 @@ id: plastome_arch_info.py.cwl
 inputs:
 - id: in_output_file
   doc: output file.
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_minimum_repeat_length
   doc: "The minimum repeat length treated as the IR region of\nplastome. Default:\
     \ [5000]"
-  type: long
+  type: long?
   inputBinding:
     prefix: -r
-- id: in_valid_bases_default
+- id: in_valid_bases_atgcrmykhbdvatgcrmykhbdv
   doc: 'Valid bases. Default: ATGCRMYKHBDVatgcrmykhbdv'
-  type: string
+  type: string?
   inputBinding:
     prefix: -v
 - id: in_fast_a_format_sequence_file
@@ -28,9 +28,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: output file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - plastome_arch_info.py

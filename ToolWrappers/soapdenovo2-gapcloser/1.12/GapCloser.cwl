@@ -1,34 +1,34 @@
 class: CommandLineTool
 id: GapCloser.cwl
 inputs:
-- id: in_string_name_required
+- id: in_string_input_name
   doc: <string>        input scaffold file name, required.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
-- id: in_string_input_library
+- id: in_string_library_name
   doc: <string>        input library info file name, required.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
-- id: in_string_file_name
+- id: in_string_output_name
   doc: <string>        output file name, required.
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
-- id: in_int_maximum_read
+- id: in_int_maximum_length
   doc: <int>           maximum read length (<=155), default=100.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
-- id: in_int_overlap_default
+- id: in_int_overlap_param
   doc: <int>           overlap param(<=31), default=25.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
-- id: in_int_thread_number
+- id: in_int_number_default
   doc: <int>           thread number, default=1.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
 - id: in_one_dot_one_two
@@ -45,11 +45,12 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_string_file_name
+- id: out_string_output_name
   doc: <string>        output file name, required.
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_string_file_name)
+    glob: $(inputs.in_string_output_name)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - GapCloser

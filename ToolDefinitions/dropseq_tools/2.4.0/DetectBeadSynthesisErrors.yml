@@ -1,0 +1,163 @@
+!Command
+command:
+- DetectBeadSynthesisErrors
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: barcode.
+  description: 'The data has multiple columns: the cell barcode, the number of UMIs,
+    then one'
+- !Positional
+  optional: false
+  position: 0
+  name: bases.
+  description: Bases are ordered A,C,G,T for these columns.  An example output with
+    a single base
+- !Positional
+  optional: false
+  position: 1
+  name: errors.
+  description: This is typically the last base of the UMI.  If set to null, program
+    will use the
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: (default 4g)
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: final command line before executing
+  args: !SimpleFlagArg
+    name: echo
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: /usr/local/bin/DetectBeadSynthesisErrors [-m <jvm_heap_size>] [-v]\
+  \ program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
+  \ command line before executing\n\nProgram options:\nUSAGE: DetectBeadSynthesisErrors\
+  \ [options]\n\nFor each cell, gather up all the UMIs.  An error in synthesis will\
+  \ result in the last base of the synthesis being fixed\nin >90% of the UMIs for\
+  \ that cell, across all genes.This fixed base is T.  For cell barcodes where this\
+  \ occurs, output\nthe cell barcode in a file, as well as (optionally) pad the cell\
+  \ barcodes with N for the error bases.  In cases where we\ndon't know how to fixthe\
+  \ error - when there are too many missing bases in the synthesis, or the synthesis\
+  \ error isn't\none of the repairable types, we remove the read from the output BAM.\n\
+  Version: 2.4.0(3d2b3d8_1600201514)\n\n\nOptions:\n\n--help\n-h                 \
+  \           Displays options specific to this tool.\n\n--stdhelp\n-H           \
+  \                 Displays options specific to this tool AND options common to all\
+  \ Picard command line\n                              tools.\n\n--version       \
+  \              Displays program version.\n\nOUTPUT_STATS=File             Output\
+  \ of detailed information on each cell barcode analyzed.  Each row is a single cell\n\
+  \                              barcode.  The data has multiple columns: the cell\
+  \ barcode, the number of UMIs, then one\n                              column per\
+  \ UMI base position containing the count of the reads, with a | delimiter between\n\
+  \                              bases.  Bases are ordered A,C,G,T for these columns.\
+  \  An example output with a single base\n                              UMI would\
+  \ be:AAAAAA\t20\t\t5|4|6|5.  Required. \n\nINPUT=File\nI=File                  \
+  \      The input SAM or BAM files to analyze.  They must all have the same sort\
+  \ order  Default\n                              value: null. This option may be\
+  \ specified 0 or more times. \n\nSUMMARY=File                  Output a summary\
+  \ of the error types and frequencies detected  Required. \n\nOUTPUT=File\nO=File\
+  \                        The output BAM, with the synthesis error barcodes removed\
+  \  Default value: null. \n\nREPORT=File                   A report of which barcodes\
+  \ where collapsed, what the intended sequences were, and what\n                \
+  \              base positions were changed.  There are 2 modes of errors reported.\
+  \ The first is an\n                              insertion/deletion changes at bases\
+  \ 1-11 in the intended sequence, where a base in the\n                         \
+  \     intended sequence is partially incorperated into the related sequence resulting\
+  \ in a\n                              deletion in the intended sequence generating\
+  \ a new sequence, and an 'insertion' at the\n                              last\
+  \ base of the sequence, which is the first base of the UMI. The second is a\n  \
+  \                            substitution event at base 12, where the last base\
+  \ is partially incorporated.  Both\n                              changes are the\
+  \ same mechanism, but the signature of the change [indel vs subsitution]\n     \
+  \                         differs.Not all repaired barcodes will have an intended\
+  \ sequence - if the base is\n                              incorporated at a very\
+  \ low rate compared to the number of UMIs in the repaired cell\n               \
+  \               barcode library size, the intended sequence may be too small to\
+  \ find.  Default value:\n                              null. \n\nPRIMER_SEQUENCE=String\
+  \        The sequence of the primer.  Default value: null. \n\nEDIT_DISTANCE=Integer\
+  \         When looking at fixed UMIs, see if the edit distance from the UMI to the\
+  \ primer is within\n                              this threshold.  0 indicates a\
+  \ perfect match between the primer and the UMI.  Default\n                     \
+  \         value: 0. This option can be set to 'null' to clear the default value.\
+  \ \n\nCELL_BARCODE_TAG=String       The cell barcode tag.  Default value: XC. This\
+  \ option can be set to 'null' to clear the\n                              default\
+  \ value. \n\nMOLECULAR_BARCODE_TAG=String  The molecular barcode tag.  Default value:\
+  \ XM. This option can be set to 'null' to clear\n                              the\
+  \ default value. \n\nREAD_MQ=Integer               The map quality of the read to\
+  \ be included when calculating the barcodes in   Default\n                     \
+  \         value: 10. This option can be set to 'null' to clear the default value.\
+  \ \n\nMIN_UMIS_PER_CELL=Integer     The minimum number of UMIs required to report\
+  \ a cell barcode.  If this parameter is\n                              specified\
+  \ and [NUM_BARCODES or CELL_BC_FILE] are not specified, then all cell barcodes\n\
+  \                              with at least this many UMIs will be analyzed., optional=false\
+  \  Default value: 20. This\n                              option can be set to 'null'\
+  \ to clear the default value. \n\nNUM_BARCODES=Integer          Find the top set\
+  \ of  most common barcodes by HQ reads and only use this set for analysis. \n  \
+  \                            Default value: null. \n\nCELL_BC_FILE=File        \
+  \     Override NUM_BARCODES, and process reads that have the cell barcodes in this\
+  \ file instead.\n                              The file has 1 column with no header.\
+  \  Default value: null. \n\nUMI_BIAS_BASE=Integer         Which base to scan for\
+  \ UMI bias when repairing intended sequences with substitution\n               \
+  \               errors.  This is typically the last base of the UMI.  If set to\
+  \ null, program will use the\n                              last base of the UMI.\
+  \  This argument only needs to be set if you've done something unusual\n       \
+  \                       with your data.  Default value: null. \n\nNUM_THREADS=Integer\
+  \           Number of threads to use for edit distance collapse.  Defaults to 1.\
+  \  Default value: 1.\n                              This option can be set to 'null'\
+  \ to clear the default value. \n\nGENE_NAME_TAG=String          Gene Name tag. \
+  \ Takes on the gene name this read overlaps (if any)  Default value: gn.\n     \
+  \                         This option can be set to 'null' to clear the default\
+  \ value. \n\nGENE_STRAND_TAG=String        Gene Strand tag.  For a given gene name\
+  \ , this is the strand of the gene.  Default value:\n                          \
+  \    gs. This option can be set to 'null' to clear the default value. \n\nGENE_FUNCTION_TAG=String\
+  \      Gene Function tag.  For a given gene name , this is the function of the gene\
+  \ at this\n                              read's position: UTR/CODING/INTRONIC/...\
+  \  Default value: gf. This option can be set to\n                              'null'\
+  \ to clear the default value. \n\nSTRAND_STRATEGY=StrandStrategyThe strand strategy\
+  \ decides which reads will be used by analysis.  The SENSE strategy\n          \
+  \                    requires the read and annotation to have the same strand. \
+  \ The ANTISENSE strategy requires\n                              the read and annotation\
+  \ to be on opposite strands.  The BOTH strategy is permissive, and\n           \
+  \                   allows the read to be on either strand.  Default value: SENSE.\
+  \ This option can be set to\n                              'null' to clear the default\
+  \ value. Possible values: {SENSE, ANTISENSE, BOTH} \n\nLOCUS_FUNCTION_LIST=LocusFunction\n\
+  \                              A list of functional annotations that reads need\
+  \ to be completely contained by to be\n                              considered\
+  \ for analysis.  Default value: [CODING, UTR]. This option can be set to 'null'\n\
+  \                              to clear the default value. Possible values: {INTERGENIC,\
+  \ INTRONIC, UTR, CODING,\n                              RIBOSOMAL} This option may\
+  \ be specified 0 or more times. This option can be set to 'null'\n             \
+  \                 to clear the default list. \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/dropseq_tools:2.4.0--0

@@ -3,104 +3,104 @@ command:
 - extract_coverage_intervals
 positional:
 - !Positional
-  description: Input BAM file(s)
+  optional: false
   position: 0
   name: BAM
-  optional: false
+  description: Input BAM file(s)
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -r
   description: "Region of interested in BED format, e.g.\nHXB2:2253-3869. Loci are\
     \ interpreted using 0-based\nindexing, and a half-open interval is used, i.e,\n\
     [start:end) (default: None)"
-  synonyms:
-  - -r
   args: !SimpleFlagArg
     name: BED
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -cf
   description: "File containing coverage per locus per sample. Samples\nare expected\
     \ as columns and loci as rows. This option\nis not compatible with the read-window\
     \ overlap\nthresholding (default: None)"
-  synonyms:
-  - -cf
   args: !SimpleFlagArg
     name: TSV
-  optional: true
 - !Flag
-  description: 'Minimum read depth per window (default: 100)'
+  optional: true
   synonyms:
   - -c
+  description: 'Minimum read depth per window (default: 100)'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Threshold on the overlap between each read and the\nwindow (default:\
-    \ 0.85)"
+  optional: true
   synonyms:
   - -f
+  description: "Threshold on the overlap between each read and the\nwindow (default:\
+    \ 0.85)"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: ',len2,...      Window length used by ShoRAH (default: 201)'
+  optional: true
   synonyms:
   - -w
+  description: ',len2,...      Window length used by ShoRAH (default: 201)'
   args: !SimpleFlagArg
     name: len1
-  optional: true
 - !Flag
-  description: ", shift2, ...\nWindow shifts used by ShoRAH (default: 67)"
+  optional: true
   synonyms:
   - -s
+  description: ", shift2, ...\nWindow shifts used by ShoRAH (default: 67)"
   args: !SimpleFlagArg
     name: shift1
-  optional: true
 - !Flag
-  description: ",name2,...    Patient/sample identifiers as comma separated strings\n\
-    (default: None)"
+  optional: true
   synonyms:
   - -N
+  description: ",name2,...    Patient/sample identifiers as comma separated strings\n\
+    (default: None)"
   args: !SimpleFlagArg
     name: name1
-  optional: true
 - !Flag
-  description: "Indicate whether to apply a more liberal shift on\nintervals' right-endpoint\
-    \ (default: False)"
+  optional: true
   synonyms:
   - -e
+  description: "Indicate whether to apply a more liberal shift on\nintervals' right-endpoint\
+    \ (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Inidcate whether to report regions with sufficient\ncoverage rather\
-    \ than windows for SNV calling using\nShoRAH (default: False)"
+  optional: true
   synonyms:
   - --no-shorah
+  description: "Inidcate whether to report regions with sufficient\ncoverage rather\
+    \ than windows for SNV calling using\nShoRAH (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Number of threads (default: 1)'
+  optional: true
   synonyms:
   - -t
+  description: 'Number of threads (default: 1)'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: 'Output file name (default: coverage_intervals.tsv)'
+  optional: true
   synonyms:
   - -o
+  description: 'Output file name (default: coverage_intervals.tsv)'
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: extract_coverage_intervals [-h] [-r BED] [-cf TSV] [-c INT] [-f\
@@ -131,3 +131,4 @@ help_text: "usage: extract_coverage_intervals [-h] [-r BED] [-cf TSV] [-c INT] [
   \ coverage_intervals.tsv)\n"
 generated_using:
 - --help
+docker_image:

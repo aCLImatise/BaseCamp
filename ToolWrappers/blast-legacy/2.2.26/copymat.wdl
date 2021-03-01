@@ -16,6 +16,9 @@ task Copymat {
       ~{if (threshold_extending_hits) then "-f" else ""} \
       ~{if (word_size_rps) then "-W" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database_matrix_profiles: "Database for matrix profiles [File In]\\ndefault = stdin"
     print_help_overrides: "Print help; overrides all other arguments [T/F]\\ndefault = F"

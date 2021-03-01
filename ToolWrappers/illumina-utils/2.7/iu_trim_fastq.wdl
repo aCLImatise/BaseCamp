@@ -12,6 +12,9 @@ task Iutrimfastq {
       ~{if defined(trim_from) then ("--trim-from " +  '"' + trim_from + '"') else ""} \
       ~{if defined(trim_to) then ("--trim-to " +  '"' + trim_to + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     trim_from: "Trim from"
     trim_to: "Trim to\\n"

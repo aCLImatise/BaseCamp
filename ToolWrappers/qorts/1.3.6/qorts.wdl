@@ -16,6 +16,9 @@ task Qorts {
       ~{merchantability} \
       ~{citation_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     formatting_dot: "NOTE: if you run into OutOfMemoryExceptions, "
     identifiers_dot: "For more info, use:"

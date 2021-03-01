@@ -60,6 +60,9 @@ task Prepy {
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     location: "Comma-separated list of locations [use naming after\\npreprocessing], when not specified will use whole VCF."
     pass_only: "Keep only PASS variants."

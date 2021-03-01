@@ -12,6 +12,9 @@ task MsstitchConcat {
       ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""} \
       ~{if defined(multiple_input_files) then ("-i " +  '"' + multiple_input_files + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_to_output: "Directory to output in"
     output_file: "Output file"

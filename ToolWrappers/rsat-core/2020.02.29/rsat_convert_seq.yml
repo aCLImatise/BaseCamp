@@ -4,101 +4,104 @@ command:
 - convert-seq
 positional:
 - !Positional
-  description: v1.0, 1997 by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)
+  optional: false
   position: 0
   name: convert-seq
-  optional: false
+  description: v1.0, 1997 by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)
 - !Positional
-  description: sequences
+  optional: false
   position: 0
   name: util
-  optional: false
+  description: sequences
 - !Positional
-  description: embl
+  optional: false
   position: 0
   name: INPUT
-  optional: false
+  description: embl
 - !Positional
-  description: filelist
+  optional: false
   position: 1
   name: fasta
-  optional: false
+  description: filelist
 - !Positional
-  description: gcg
+  optional: false
   position: 2
   name: ft
-  optional: false
+  description: gcg
 - !Positional
-  description: ig
+  optional: false
   position: 3
-  name: genbank
-  optional: false
-- !Positional
-  description: multi
-  position: 4
   name: maf
-  optional: false
-- !Positional
-  description: raw
-  position: 5
-  name: ncbi
-  optional: false
-- !Positional
-  description: wc
-  position: 6
-  name: tab
-  optional: false
-- !Positional
-  description: 'OUTPUT '
-  position: 7
-  name: wconsensus
-  optional: false
-- !Positional
-  description: fastq
-  position: 8
-  name: fasta
-  optional: false
-- !Positional
   description: multi
+- !Positional
+  optional: false
+  position: 4
+  name: ncbi
+  description: raw
+- !Positional
+  optional: false
+  position: 5
+  name: tab
+  description: wc
+- !Positional
+  optional: false
+  position: 6
+  name: wconsensus
+  description: 'OUTPUT '
+- !Positional
+  optional: false
+  position: 7
+  name: fasta
+  description: fastq
+- !Positional
+  optional: false
+  position: 8
+  name: filelist
+  description: ft
+- !Positional
+  optional: false
   position: 9
   name: ig
-  optional: false
+  description: multi
 - !Positional
-  description: tab
+  optional: false
   position: 10
   name: raw
-  optional: false
+  description: tab
 - !Positional
-  description: wconsensus
+  optional: false
   position: 11
   name: wc
-  optional: false
+  description: wconsensus
 - !Positional
+  optional: false
+  position: 0
+  name: raw
   description: "The input file should contain raw sequences without any\ncomment or\
     \ other text. Tabs (\\t), blank spaces and newline\ncharacters (\\n) are accepted\
     \ (they will be automatically\nremoved before analysis). The sequence must be\
     \ terminated by\na newline character."
-  position: 0
-  name: raw
-  optional: false
 - !Positional
-  description: "same as raw except than each new line is considered to contain\na\
-    \ new independent sequence in raw format."
+  optional: false
   position: 1
   name: multi
-  optional: false
+  description: "same as raw except than each new line is considered to contain\na\
+    \ new independent sequence in raw format."
 - !Positional
-  description: "file list. Each line of the input file contains the\nname of a file\
-    \ containing a single sequence."
+  optional: false
   position: 2
   name: filelist
-  optional: false
+  description: "file list. Each line of the input file contains the\nname of a file\
+    \ containing a single sequence."
 - !Positional
-  description: FastA format.
+  optional: false
   position: 3
   name: fasta
-  optional: false
+  description: FastA format.
 - !Positional
+  optional: false
+  position: 4
+  name: IG
   description: "IntelliGenetics format.\nThe first non-comment line must be the sequence\
     \ identifier\n(a single word without spaces).\nThe sequence follows the identifier\
     \ line identifier. It can\ninclude spaces, tabs or newlines, that will be removed\
@@ -112,201 +115,199 @@ positional:
     \ 986890\n; upstream region size: 100\n; upstream region coord:        15 988873\
     \ 988774\nPUT4\nGGGTTTGTGTTCCTCTTCCTTTCCTTTTTTTTTCTCTCTT\nCCCTTCCAGTTTCTTTTATTCTTTGCTGTTTCGAAGAATC\n\
     ACACCATCAATGAATAAATC\n1"
-  position: 4
-  name: IG
-  optional: false
 named:
 - !Flag
-  description: "-from inputformat -to outputformat\n[-lw line_width]"
-  synonyms:
-  - -id
-  args: !SimpleFlagArg
-    name: identifier
   optional: true
-- !Flag
-  description: '#    verbose level'
   synonyms:
   - -v
+  description: '#    verbose level'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "if not specified, the standard input is used.\nThis allows to place\
-    \ the command within a pipe."
+  optional: true
   synonyms:
   - -i
+  description: "if not specified, the standard input is used.\nThis allows to place\
+    \ the command within a pipe."
   args: !SimpleFlagArg
     name: inputfile
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -mask
   description: "|lower|non-dna\nMask lowercases, uppercases, or non-dna characters,\
     \ respecively.\nMasked characters are replaced by by N characters, or\nby a dot\
     \ (option -dotmask)."
-  synonyms:
-  - -mask
   args: !SimpleFlagArg
     name: upper
-  optional: true
 - !Flag
-  description: Remove empty sequences from the set (same as -skip_short 1)
+  optional: true
   synonyms:
   - -noempty
+  description: Remove empty sequences from the set (same as -skip_short 1)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -mask_short
   description: "Mask (replace by N characters) sequences shorter than\nthe specified\
     \ length. This can be useful to discard\nshort intergenic segments from the motif\
     \ discovery\nstep, especially when working with bacterial genomes,\nwhere short\
     \ intergenic sequences generally correspond\nto intra-operon segments."
-  synonyms:
-  - -mask_short
   args: !SimpleFlagArg
     name: min_seq_len
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -skip_short
   description: "Skip sequences shorter than the specified length. Same\nfunctionality\
     \ as -mask_short, except that short\nsequences are not returned at all in the\
     \ output."
-  synonyms:
-  - -skip_short
   args: !SimpleFlagArg
     name: min_seq_len
-  optional: true
 - !Flag
-  description: "Skip sequences longer than the specified length. These\nsequences\
-    \ are not returned at all in the output."
+  optional: true
   synonyms:
   - -skip_long
+  description: "Skip sequences longer than the specified length. These\nsequences\
+    \ are not returned at all in the output."
   args: !SimpleFlagArg
     name: max_seq_len
-  optional: true
 - !Flag
-  description: Stop after the Nth sequence.
+  optional: true
   synonyms:
   - -last
+  description: Stop after the Nth sequence.
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Same as -last N\n(maintained for backward compatibility)"
+  optional: true
   synonyms:
   - -top
+  description: "Same as -last N\n(maintained for backward compatibility)"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Start at the Nth sequence (skip the N-1 first\nsequences)."
+  optional: true
   synonyms:
   - -first
+  description: "Start at the Nth sequence (skip the N-1 first\nsequences)."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -skip
   description: "Skip the N first sequences (start at sequence N+1).\nOptions -first\
     \ (or -skip) and -top can be combined to\nextract a subset from the i^th to the\
     \ j^th sequence (a\n\"slice\" of the sequence file).\nExample:\nconvert-seq -skip\
     \ 100 -last 200\nequivalent to\nconvert-seq -first 101 -last 200\nwill extract\
     \ the sequences 101 to 200 from the input\nfile."
-  synonyms:
-  - -skip
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "if not specified, the standard output is used.\nThis allows to place\
-    \ the command within a pipe."
+  optional: true
   synonyms:
   - -o
+  description: "if not specified, the standard output is used.\nThis allows to place\
+    \ the command within a pipe."
   args: !SimpleFlagArg
     name: outputfile
-  optional: true
 - !Flag
-  description: "input format\nSupported input formats :\nembl\nfasta\nfilelist\nft\n\
-    gcg\ngenbank\nig\nmaf\nmulti\nncbi\nraw\ntab\nwc\nwconsensus"
+  optional: true
   synonyms:
   - -from
+  description: "input format\nSupported input formats :\nembl\nfasta\nfilelist\nft\n\
+    gcg\ngenbank\nig\nmaf\nmulti\nncbi\nraw\ntab\nwc\nwconsensus"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "column containing sequence identifiers in tab format\n(default: 1)."
+  optional: true
   synonyms:
   - -id_col
+  description: "column containing sequence identifiers in tab format\n(default: 1)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "column containing sequence sequences in tab format\n(default: 2)."
+  optional: true
   synonyms:
   - -seq_col
+  description: "column containing sequence sequences in tab format\n(default: 2)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "column containing sequence comments (sequence\ndescription) in tab\
-    \ format (default:\n)."
+  optional: true
   synonyms:
   - -comment_col
+  description: "column containing sequence comments (sequence\ndescription) in tab\
+    \ format (default:\n)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "output format\nSupported output formats :\nfasta\nfastq\nfilelist\n\
-    ft\nig\nmulti\nraw\ntab\nwc\nwconsensus"
+  optional: true
   synonyms:
   - -to
+  description: "output format\nSupported output formats :\nfasta\nfastq\nfilelist\n\
+    ft\nig\nmulti\nraw\ntab\nwc\nwconsensus"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -lw
   description: "#   line width. A carriage return is inserted every #\ncharacters\
     \ within the output sequence.\nDefault is 60. A 0 value indicates that no carriage\n\
     return must be inserted."
-  synonyms:
-  - -lw
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -addrc
   description: "adds the reverse complement of each input sequence\nto the output\
     \ file. This is usefull for programs that\ncannot handle reverse complement (like\
     \ the Gibbs Sampler)."
-  synonyms:
-  - -addrc
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: lowercase. the sequence is printed in lowercase.
+  optional: true
   synonyms:
   - -lc
+  description: lowercase. the sequence is printed in lowercase.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: lowercase. the sequence is printed in uppercase.
+  optional: true
   synonyms:
   - -uc
+  description: lowercase. the sequence is printed in uppercase.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "convert any non-acgt character into \"n\" characters.\nThis is to\
-    \ filter out partly specified nucleotides."
+  optional: true
   synonyms:
   - -dna
+  description: "convert any non-acgt character into \"n\" characters.\nThis is to\
+    \ filter out partly specified nucleotides."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "convert masked characters into dots.\nThis is useful for programs\
-    \ like consensus, or\nAlignACE, which do not support N characters in the\nsequences."
+  optional: true
   synonyms:
   - -dotmask
+  description: "convert masked characters into dots.\nThis is useful for programs\
+    \ like consensus, or\nAlignACE, which do not support N characters in the\nsequences."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "sequence prefix (useful for converting from a multi\nsequence)"
+  optional: true
+  synonyms:
+  - -id
+  description: "sequence identifier (useful for converting a raw\nsequence from the\
+    \ STDIN)"
+  args: !SimpleFlagArg
+    name: identifier
+- !Flag
+  optional: true
   synonyms:
   - -prefix
+  description: "sequence prefix (useful for converting from a multi\nsequence)"
   args: !SimpleFlagArg
     name: prefix
-  optional: true
 - !Flag
-  description: Prevent to check sequence IDs for conversion to file list
+  optional: true
   synonyms:
   - -nocheckid
+  description: Prevent to check sequence IDs for conversion to file list
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -397,3 +398,4 @@ help_text: "NAME\n\tconvert-seq\n\n        v1.0, 1997 by Jacques van Helden (Jac
   \ -o myseq.FASTA\n\n"
 generated_using:
 - -h
+docker_image:

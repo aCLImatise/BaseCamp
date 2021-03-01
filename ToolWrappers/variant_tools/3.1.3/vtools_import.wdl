@@ -22,6 +22,9 @@ task VtoolsImport {
       ~{if (sort) then "--sort" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     build: "Build version of the reference genome (e.g. hg18) of\\nthe input data. If unspecified, it is assumed to be\\nthe primary reference genome of the project. If a\\nreference genome that is different from the primary\\nreference genome of the project is specified, it will\\nbecome the alternative reference genome of the\\nproject. The UCSC liftover tool will be automatically\\ncalled to map input coordinates between the primary\\nand alternative reference genomes. If you are\\nuncertain about the reference genome used in the data,\\nuse a recent standard reference genome (e.g. hg19) and\\nvalidate it after the data is imported (c.f. \\\"vtools\\nadmin --validate_build\\\")."
     format: "Format of the input text file. It can be one of the\\nvariant tools supported file types such as VCF (cf.\\n'vtools show formats'), or a local format\\nspecification file (with extension .fmt). If\\nunspecified, variant tools will try to guess format\\nfrom file extension. Some file formats accept\\nparameters (cf. 'vtools show format FMT') and allow\\nyou to import additional or alternative fields defined\\nfor the format."

@@ -20,6 +20,9 @@ task AntarnapyMFE {
       ~{if defined(strategy) then ("--strategy " +  '"' + strategy + '"') else ""} \
       ~{if (p) then "-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cstr: "Structure constraint using RNA dotbracket notation\\nwith fuzzy block constraint. (TYPE: str)"
     pk_parameter: "Enable optimized parameters for the usage of pseudo\\nknots (Further parameter input ignored)."

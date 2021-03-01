@@ -14,6 +14,9 @@ task SuppapyPsiPerIsoform {
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gtf_file: "Input gtf file"
     expression_file: "Input expression file"

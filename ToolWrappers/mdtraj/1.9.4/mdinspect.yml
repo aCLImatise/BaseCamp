@@ -1,0 +1,67 @@
+!Command
+command:
+- mdinspect
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: files
+  description: Input trajectory file(s), in any supported format.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --topology
+  description: Topology for the system (.prmtop/.pdb)
+  args: !SimpleFlagArg
+    name: TOPOLOGY
+- !Flag
+  optional: true
+  synonyms:
+  - --bond-low
+  description: "Minimum fraction of sum of covalent radii for bonded\natoms. Default=0.4"
+  args: !SimpleFlagArg
+    name: BOND_LOW
+- !Flag
+  optional: true
+  synonyms:
+  - --bond-high
+  description: "Maximum fraction of sum of covalent radii for bonded\natoms. Default=1.2"
+  args: !SimpleFlagArg
+    name: BOND_HIGH
+- !Flag
+  optional: true
+  synonyms:
+  - --rmsd-tolerance
+  description: "Maximum tolerance for percent change in RMSD.\nDefault=100.0\n"
+  args: !SimpleFlagArg
+    name: RMSD_TOLERANCE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: mdinspect [-h] [-t TOPOLOGY] [--bond-low BOND_LOW]\n          \
+  \       [--bond-high BOND_HIGH] [--rmsd-tolerance RMSD_TOLERANCE]\n            \
+  \     files [files ...]\n\nSanity checking for molecular dynamics trajectories.\
+  \ This script is currently\na work in progress. Contributions are encouraged.\n\n\
+  positional arguments:\n  files                 Input trajectory file(s), in any\
+  \ supported format.\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -t TOPOLOGY, --topology TOPOLOGY\n                       \
+  \ Topology for the system (.prmtop/.pdb)\n  --bond-low BOND_LOW   Minimum fraction\
+  \ of sum of covalent radii for bonded\n                        atoms. Default=0.4\n\
+  \  --bond-high BOND_HIGH\n                        Maximum fraction of sum of covalent\
+  \ radii for bonded\n                        atoms. Default=1.2\n  --rmsd-tolerance\
+  \ RMSD_TOLERANCE\n                        Maximum tolerance for percent change in\
+  \ RMSD.\n                        Default=100.0\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mdtraj:1.9.4

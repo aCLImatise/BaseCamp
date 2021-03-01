@@ -12,6 +12,9 @@ task PoretoolsCombine {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(name_output_tar) then ("-o " +  '"' + name_output_tar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     name_output_tar: "The name of the output TAR archive for the set of FAST5 files."

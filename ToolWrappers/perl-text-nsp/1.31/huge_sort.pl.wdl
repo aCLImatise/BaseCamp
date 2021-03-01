@@ -10,6 +10,9 @@ task Hugesortpl {
       ~{source} \
       ~{if (keep) then "--keep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep: "keep the unsorted file\\nThe default is to delete the unsorted file."
     source: ""

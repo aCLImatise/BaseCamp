@@ -4,6 +4,9 @@ task Bugzscout {
   command <<<
     bugzscout
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

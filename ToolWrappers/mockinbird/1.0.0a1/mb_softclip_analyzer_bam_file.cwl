@@ -3,7 +3,7 @@ id: mb_softclip_analyzer_bam_file.cwl
 inputs:
 - id: in_top_n
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --top_n
 - id: in_output_dir
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mb-softclip-analyzer

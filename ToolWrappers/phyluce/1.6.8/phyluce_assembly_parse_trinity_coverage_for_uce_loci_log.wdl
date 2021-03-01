@@ -10,6 +10,9 @@ task PhyluceAssemblyParseTrinityCoverageForUceLociLog {
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if defined(output_csv_file) then ("--output " +  '"' + output_csv_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log: "The log file to parse"
     output_csv_file: "The output CSV file to create"

@@ -16,9 +16,11 @@ task GtftkSelectByIntronSize {
     Boolean? keep_all
     Boolean? logger_file
     Boolean? write_message_to_file
+    Int arguments
   }
   command <<<
     gtftk select_by_intron_size \
+      ~{arguments} \
       ~{if (input_file) then "--inputfile" else ""} \
       ~{if (output_file) then "--outputfile" else ""} \
       ~{if (intron_size) then "--intron-size" else ""} \
@@ -34,6 +36,9 @@ task GtftkSelectByIntronSize {
       ~{if (logger_file) then "--logger-file" else ""} \
       ~{if (write_message_to_file) then "--write-message-to-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Path to the GTF file. Default to STDIN (default: <stdin>)"
     output_file: "Output file. (default: <stdout>)"
@@ -49,6 +54,7 @@ task GtftkSelectByIntronSize {
     keep_all: "Try to keep all temporary files even if process does not terminate normally. (default: False)"
     logger_file: "Stores the arguments passed to the command into a file. (default: None)"
     write_message_to_file: "Store all message into a file. (default: None)"
+    arguments: "Arguments:"
   }
   output {
     File out_stdout = stdout()

@@ -60,6 +60,9 @@ task Vcf2mafpl {
       ~{if (remap_chain) then "--remap-chain" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_vcf: "Path to input file in VCF format"
     output_maf: "Path to output MAF file"

@@ -4,213 +4,213 @@ command:
 - local-word-analysis
 positional:
 - !Positional
-  description: VERSION
+  optional: false
   position: 0
   name: local-word-analysis
-  optional: false
+  description: VERSION
 - !Positional
-  description: AUTHOR
+  optional: false
   position: 1
   name: '20181203'
-  optional: false
+  description: AUTHOR
 - !Positional
-  description: pattern discovery
+  optional: false
   position: 0
   name: sequences
-  optional: false
+  description: pattern discovery
 - !Positional
+  optional: false
+  position: 0
+  name: P-VALUE
   description: "The probability to observe exactly k occurrences of a given oligomer\n\
     is computed using the binomial statistics\nunderrepresentation\nk           k\
     \       (N-k)\nP(X<=k) = SUM C(k,N)  p   (1-p)\ni=0\noverreprensentation\nN  \
     \          k       (N-k)\nP(X>=k) = SUM  C(k,N)  p   (1-p)\ni=k"
-  position: 0
-  name: P-VALUE
-  optional: false
 - !Positional
-  description: E-VALUE = number_of_tests * P-VALUE
+  optional: false
   position: 1
   name: E-VALUE
-  optional: false
+  description: E-VALUE = number_of_tests * P-VALUE
 named:
 - !Flag
-  description: '#, --verbosity=#   set verbosity to level #'
+  optional: true
   synonyms:
   - -v
+  description: '#, --verbosity=#   set verbosity to level #'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#, --input=#       read sequence from # (must be in FASTA format)\n\
-    if not specified, the standard input is used"
+  optional: true
   synonyms:
   - -i
+  description: "#, --input=#       read sequence from # (must be in FASTA format)\n\
+    if not specified, the standard input is used"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#, --output=#      output results to #\nif not specified, the standard\
-    \ output is used"
+  optional: true
   synonyms:
   - -o
+  description: "#, --output=#      output results to #\nif not specified, the standard\
+    \ output is used"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#, --length=#      set oligomer length to # (REQUIRED ARGUMENT)\n\
-    when the option dyad is used # represents the length of one monad\nEXAMPLE: --length=7"
+  optional: true
   synonyms:
   - -l
+  description: "#, --length=#      set oligomer length to # (REQUIRED ARGUMENT)\n\
+    when the option dyad is used # represents the length of one monad\nEXAMPLE: --length=7"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: count dyads instead of oligomers
+  optional: true
   synonyms:
   - --dyad
+  description: count dyads instead of oligomers
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ":B         when using dyads set the spacing between A to B\nEXAMPLE:\
-    \ --length=3 --dyad --spacing=1:20"
+  optional: true
   synonyms:
   - --spacing
+  description: ":B         when using dyads set the spacing between A to B\nEXAMPLE:\
+    \ --length=3 --dyad --spacing=1:20"
   args: !SimpleFlagArg
     name: A
-  optional: true
 - !Flag
-  description: use under-represented words statistics
+  optional: true
   synonyms:
   - --under
+  description: use under-represented words statistics
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#, --strand=#      search in forward strand + or in both strands +-\
-    \ (default)\nEXAMPLE: --strand=+"
+  optional: true
   synonyms:
   - -s
+  description: "#, --strand=#      search in forward strand + or in both strands +-\
+    \ (default)\nEXAMPLE: --strand=+"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "allow overlapping oligomer occurrences\nEXAMPLE: --overlap"
+  optional: true
   synonyms:
   - -p
   - --overlap
+  description: "allow overlapping oligomer occurrences\nEXAMPLE: --overlap"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --window
   description: "=#            count oligomers in fixed window of length #\nuse --window=variable\
     \ to use a variable size window (slower)\nuse --window=none to search without\
     \ window\nEXAMPLE: --window=20 (window of length 20)"
-  synonyms:
-  - --window
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --windowgroup
   description: "=#       count oligomers in fixed window of length #, 2#, ...\nonly\
     \ valid when the --center option is used\nEXAMPLE: --center=0 --windowgroup=20\
     \ (use a window of length 20, 40, 60, ...)"
-  synonyms:
-  - --windowgroup
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --right
   description: "=#             use right bound position as reference\nposition #.\
     \ This should be used when dealing with\nupstream sequences.\nEXAMPLE: --right=-1\
     \ (use right bound of input\nsequence as position -1)"
-  synonyms:
-  - --right
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --left
   description: "=#              use left bound position as reference\nposition #.\
     \ This should be used when dealing with\ndownstream sequences.\nEXAMPLE: --left=0\
     \ (use left bound of input\nsequences as position 0)"
-  synonyms:
-  - --left
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=#            use center position as reference\nposition #.\nEXAMPLE:\
-    \ --center=0 (use center of input\nsequences as position 0)"
+  optional: true
   synonyms:
   - --center
+  description: "=#            use center position as reference\nposition #.\nEXAMPLE:\
+    \ --center=0 (use center of input\nsequences as position 0)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
   description: "#, --markov=#      use a Markov model of order # calibrated from\n\
     input sequences\norder 0 corresponds to single nucleotide frequencies\nEXAMPLE:\
     \ --markov=2 (Markov chain of order 2)"
-  synonyms:
-  - -m
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=#            use a predefined local-word-analysis background model.\n\
-    EXAMPLE --bgfile=mybgfile"
+  optional: true
   synonyms:
   - --bgfile
+  description: "=#            use a predefined local-word-analysis background model.\n\
+    EXAMPLE --bgfile=mybgfile"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=#           use a predefined oligo-analysis background model\nEXAMPLE:\
-    \ --bgolio=myfile.gz"
+  optional: true
   synonyms:
   - --bgoligo
+  description: "=#           use a predefined oligo-analysis background model\nEXAMPLE:\
+    \ --bgolio=myfile.gz"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=#     use a Markovian background model loaded from a\npredefined\
-    \ oligo-analysis file\nEXAMPLE: --bgoligomarkov=myfile.gz"
+  optional: true
   synonyms:
   - --bgoligomarkov
+  description: "=#     use a Markovian background model loaded from a\npredefined\
+    \ oligo-analysis file\nEXAMPLE: --bgoligomarkov=myfile.gz"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=#          use a widow size of length # in background model\nEXAMPLE:\
-    \ --bgwindow=200 (use a background window of length 200)"
+  optional: true
   synonyms:
   - --bgwindow
+  description: "=#          use a widow size of length # in background model\nEXAMPLE:\
+    \ --bgwindow=200 (use a background window of length 200)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max
   description: "VALUE     limit output to items that have PARAM <= VALUE\nEXAMPLE:\
     \ --max rank 10\nSupported parameters: seq,identifier,obs_freq,exp_\nfreq,occ,exp_occ,occ_P,occ_E,occ_sig,start,end,wid\n\
     th,n_win,n_pos,w_rank,rank"
-  synonyms:
-  - --max
   args: !SimpleFlagArg
     name: PARAM
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min
   description: "VALUE     limit output to items that have PARAM >= VALUE\nEXAMPLE:\
     \ --min occ_sig 0\nSupported parameters:seq,identifier,obs_freq,exp_f\nreq,occ,exp_occ,occ_P,occ_E,occ_sig,start,end,widt\n\
     h,n_win,n_pos,w_rank,rank"
-  synonyms:
-  - --min
   args: !SimpleFlagArg
     name: PARAM
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sort
   description: "=[+][-]PARAM    sort ouput according to PARAM in growing\norder (+)\
     \ or inverse (-)\nEXAMPLE: --sort=+label\nSupported parameters:seq,identifier,obs_freq,exp_f\n\
     req,occ,exp_occ,occ_P,occ_E,occ_sig,start,end,width\nh,n_win,n_pos,w_rank,rank"
-  synonyms:
-  - --sort
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "NAME\n        local-word-analysis\n\nVERSION\n        20181203\n\nAUTHOR\n\
   \        Matthieu Defrance <matthieu.dc.defrance@ulb.ac.be>\n\nDESCRIPTION\n   \
   \     compute oligomer frequencies in a set of sequences,\n        and detects locally\
@@ -286,3 +286,4 @@ help_text: "NAME\n        local-word-analysis\n\nVERSION\n        20181203\n\nAU
   \n"
 generated_using:
 - --help
+docker_image:

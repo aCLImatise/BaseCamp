@@ -42,6 +42,9 @@ task Sdiff {
       ~{if (speed_large_files) then "--speed-large-files" else ""} \
       ~{if defined(diff_program) then ("--diff-program " +  '"' + diff_program + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     operate_interactively_sending: "operate interactively, sending output to FILE"
     ignore_case: "consider upper- and lower-case to be the same"

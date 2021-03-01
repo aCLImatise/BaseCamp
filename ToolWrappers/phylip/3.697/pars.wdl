@@ -4,6 +4,9 @@ task Pars {
   command <<<
     pars
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

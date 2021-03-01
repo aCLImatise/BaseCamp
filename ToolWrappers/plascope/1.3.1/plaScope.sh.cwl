@@ -3,52 +3,52 @@ id: plaScope.sh.cwl
 inputs:
 - id: in_no_banner
   doc: don't print beautiful banners
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-banner
 - id: in_number_of_threads
   doc: 'number of threads[OPTIONAL] [default : 8]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
 - id: in_output_directory
   doc: 'output directory [OPTIONAL] [default : current directory]'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
 - id: in_sample
   doc: Sample name [MANDATORY]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sample
 - id: in_db_dir
   doc: path to centrifuge database [MANDATORY]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --db_dir
 - id: in_db_name
   doc: centrifuge database name [MANDATORY]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --db_name
 - id: in_forward_pairedend_reads
   doc: forward paired-end reads [MANDATORY]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: '-1'
 - id: in_reverse_pairedend_reads
   doc: reverse paired-end reads [MANDATORY]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: '-2'
 - id: in_fast_a
   doc: SPAdes assembly fasta file [MANDATORY]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fasta
 - id: in_arguments
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
@@ -57,9 +57,10 @@ outputs:
   type: stdout
 - id: out_output_directory
   doc: 'output directory [OPTIONAL] [default : current directory]'
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_directory)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - plaScope.sh

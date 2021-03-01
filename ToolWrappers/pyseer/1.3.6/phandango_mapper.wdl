@@ -18,6 +18,9 @@ task PhandangoMapper {
       ~{if defined(tmp_prefix) then ("--tmp-prefix " +  '"' + tmp_prefix + '"') else ""} \
       ~{if (use_filter_p) then "--use-filter-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bwa: "Location of bwa executable [Default: bwa]"
     tmp_prefix: "Directory to store temporary files [Default: cwd]"

@@ -48,6 +48,9 @@ task GtftkOverlapping {
       ~{if (logger_file) then "--logger-file" else ""} \
       ~{if (write_message_to_file) then "--write-message-to-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     annotate_gtf: "All lines of the original GTF will be printed. (default: False)"
     input_file: "Path to the GTF file. Default to STDIN (default: <stdin>)"

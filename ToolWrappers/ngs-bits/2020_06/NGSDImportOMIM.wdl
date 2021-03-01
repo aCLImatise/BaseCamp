@@ -18,6 +18,9 @@ task NGSDImportOMIM {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene: "OMIM 'mim2gene.txt' file from 'http://omim.org/downloads/'."
     morbid: "OMIM 'morbidmap.txt' file from 'http://omim.org/downloads/'."

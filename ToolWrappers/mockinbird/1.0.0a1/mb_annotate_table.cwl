@@ -3,7 +3,7 @@ id: mb_annotate_table.cwl
 inputs:
 - id: in_max_n
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_n
 - id: in_par_clip_table
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mb-annotate-table

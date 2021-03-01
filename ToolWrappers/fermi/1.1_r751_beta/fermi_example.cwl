@@ -3,17 +3,17 @@ id: fermi_example.cwl
 inputs:
 - id: in_l
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -l
 - id: in_k
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -k
 - id: in_ceu
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ceU
 - id: in_in_dot_fq
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fermi

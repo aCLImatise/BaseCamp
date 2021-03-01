@@ -3,7 +3,7 @@ id: anvi_init_bam.cwl
 inputs:
 - id: in_output_file
   doc: File path to store results.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file
 - id: in_num_threads
@@ -13,7 +13,7 @@ inputs:
     \ you are running your commands on a SGE\n--if you are clusterizing your runs,\
     \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
     \ fast.\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-threads
 - id: in_bam_file
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: File path to store results.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-init-bam

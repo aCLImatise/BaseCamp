@@ -32,6 +32,9 @@ task GoalignIdentical {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compared: "Compared alignment file (default \\\"none\\\")"
     align: "Alignment input file (default \\\"stdin\\\")"

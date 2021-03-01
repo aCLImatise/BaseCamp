@@ -3,128 +3,128 @@ command:
 - KmerFreq_HA
 positional:
 - !Positional
-  description: 'Usage:  KmerFreq_HA [OPTION]'
+  optional: false
   position: 0
   name: '05'
-  optional: false
+  description: 'Usage:  KmerFreq_HA [OPTION]'
 named:
 - !Flag
-  description: "Set kmer size(13~27), default=17.\nNote: kmer size should be set between\
-    \ 13 and 27."
+  optional: true
   synonyms:
   - -k
+  description: "Set kmer size(13~27), default=17.\nNote: kmer size should be set between\
+    \ 13 and 27."
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Set read length used to get kmers, default=read's real length.\nNote:\
-    \ the max read length to get kmer frequency spectrum."
+  optional: true
   synonyms:
   - -r
+  description: "Set read length used to get kmers, default=read's real length.\nNote:\
+    \ the max read length to get kmer frequency spectrum."
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Set ignored length of the beginning of a read, default=0.\nNote: set\
-    \ this option when sequencing quality is low in the beginning of reads."
+  optional: true
   synonyms:
   - -a
+  description: "Set ignored length of the beginning of a read, default=0.\nNote: set\
+    \ this option when sequencing quality is low in the beginning of reads."
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Set ignored length of the end of a read, default=0\nNote: set this\
-    \ option when sequencing quality is low in the end of reads."
+  optional: true
   synonyms:
   - -d
+  description: "Set ignored length of the end of a read, default=0\nNote: set this\
+    \ option when sequencing quality is low in the end of reads."
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -g
   description: "Set total bases number used to get kmers, default=all input bases.\n\
     Note: when sequencing depth is too much, you can set this option, about 30X\n\
     data bases is preferred."
-  synonyms:
-  - -g
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Set input read file list.\nNote: no default value, the address list\
-    \ of reads file, each reads files take a line."
+  optional: true
   synonyms:
   - -l
+  description: "Set input read file list.\nNote: no default value, the address list\
+    \ of reads file, each reads files take a line."
   args: !SimpleFlagArg
     name: str
-  optional: true
 - !Flag
-  description: "Set the output prefix, default=output.\nNote: often use species name\
-    \ as prefix."
+  optional: true
   synonyms:
   - -p
+  description: "Set the output prefix, default=output.\nNote: often use species name\
+    \ as prefix."
   args: !SimpleFlagArg
     name: str
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -i
   description: "Set initial size of hash table, default=50000000.\nNote: this is the\
     \ initial size, and program will enlarge the HashSet memory\nspace (*2 each time)\
     \ when memeory is insufficient."
-  synonyms:
-  - -i
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Set thread number, default=1.\nNote: the more thread number, the high\
-    \ speed, however, this should be less than\nthe number of CPU cores."
+  optional: true
   synonyms:
   - -t
+  description: "Set thread number, default=1.\nNote: the more thread number, the high\
+    \ speed, however, this should be less than\nthe number of CPU cores."
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -L
   description: "Set maximum read length, default=100.\nNote: program will alloc memeory\
     \ buffer base on read length, so you should set the\nmaximun read length in the\
     \ read files."
-  synonyms:
-  - -L
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
   description: "Set whether use Bloom filter to reduce memory usage, 0:no; 1:yes;\
     \ default=0.\nNote: reduce memeory usage by using Bloom filter to reduce kmer\
     \ which frequency lower than(<=) 2."
-  synonyms:
-  - -f
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Set the Bloom array size, default=1000000000.\nNote: you can set by\
-    \ this formula:(genome_size+genome_size*coverage*error_rate*kmer_size)*5/4."
+  optional: true
   synonyms:
   - -s
+  description: "Set the Bloom array size, default=1000000000.\nNote: you can set by\
+    \ this formula:(genome_size+genome_size*coverage*error_rate*kmer_size)*5/4."
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Set the kmer-freq analysis divide into how many steps(=1, 2, 4, 8),\
-    \ default =1.\nNote: the more step, the less memeory usage, but need more time."
+  optional: true
   synonyms:
   - -b
+  description: "Set the kmer-freq analysis divide into how many steps(=1, 2, 4, 8),\
+    \ default =1.\nNote: the more step, the less memeory usage, but need more time."
   args: !SimpleFlagArg
     name: int
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show detailed help
+  optional: true
   synonyms:
   - -h
+  description: Show detailed help
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nProgram:\tKmerFreq_HA\nVersion:\tv2.03\nAuthor:\t\tBGI-ShenZhen\nCompileDate:\t\
@@ -162,3 +162,4 @@ help_text: "\nProgram:\tKmerFreq_HA\nVersion:\tv2.03\nAuthor:\t\tBGI-ShenZhen\nC
   \ About 30X data is preferred in calculating the Kmer frequency spectrum.\n\n"
 generated_using:
 - -h
+docker_image:

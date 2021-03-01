@@ -30,6 +30,9 @@ task Gerpcol {
       ~{if defined(tree_scaling_factor) then ("-s " +  '"' + tree_scaling_factor + '"') else ""} \
       ~{if defined(suffix_naming_files) then ("-x " +  '"' + suffix_naming_files + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose_mode: "verbose mode"
     evolutionary_tree: "evolutionary tree"

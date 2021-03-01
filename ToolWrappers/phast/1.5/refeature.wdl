@@ -34,6 +34,9 @@ task Refeature {
       ~{if (simple_bed) then "--simplebed" else ""} \
       ~{if defined(discards) then ("--discards " +  '"' + discards + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     include_only: "Include only features of the specified types (comma-delimited list);\\nfilter out everything else."
     include_groups: "Include only groups whose names are listed in the specified file.\\nGroup names in file must be delimited by white-space (can be on\\nany number of lines)."

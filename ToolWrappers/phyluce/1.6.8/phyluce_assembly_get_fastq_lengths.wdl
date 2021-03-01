@@ -10,6 +10,9 @@ task PhyluceAssemblyGetFastqLengths {
       ~{if defined(directory_fastq_summarize) then ("--input " +  '"' + directory_fastq_summarize + '"') else ""} \
       ~{if (csv) then "--csv" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_fastq_summarize: "The directory of fastq files to summarize"
     csv: "Give output in CSV"

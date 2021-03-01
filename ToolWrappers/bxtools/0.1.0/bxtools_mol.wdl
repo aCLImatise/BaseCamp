@@ -10,6 +10,9 @@ task BxtoolsMol {
       ~{bam_slash_sam_slash_cram} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Set verbose output"
     bam_slash_sam_slash_cram: ""

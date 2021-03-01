@@ -2,7 +2,6 @@ version 1.0
 
 task SomaticVcf2tsvpy {
   input {
-    File? nba_m
     File? vcf_format
     File? bed_format
     String? positions_list
@@ -32,7 +31,6 @@ task SomaticVcf2tsvpy {
   }
   command <<<
     somatic_vcf2tsv_py \
-      ~{if defined(nba_m) then ("-nbam " +  '"' + nba_m + '"') else ""} \
       ~{if defined(vcf_format) then ("--vcf-format " +  '"' + vcf_format + '"') else ""} \
       ~{if defined(bed_format) then ("--bed-format " +  '"' + bed_format + '"') else ""} \
       ~{if defined(positions_list) then ("--positions-list " +  '"' + positions_list + '"') else ""} \
@@ -60,8 +58,10 @@ task SomaticVcf2tsvpy {
       ~{if defined(p_scale) then ("--p-scale " +  '"' + p_scale + '"') else ""} \
       ~{if defined(output_tsv_file) then ("--output-tsv-file " +  '"' + output_tsv_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    nba_m: "[-truth GROUND_TRUTH_VCF] [-dbsnp DBSNP_VCF]\\n[-cosmic COSMIC_VCF] [-mutect MUTECT_VCF]\\n[-strelka STRELKA_VCF] [-sniper SOMATICSNIPER_VCF]\\n[-varscan VARSCAN_VCF] [-jsm JSM_VCF]\\n[-vardict VARDICT_VCF] [-muse MUSE_VCF]\\n[-lofreq LOFREQ_VCF] [-scalpel SCALPEL_VCF]\\n[-tnscope TNSCOPE_VCF] [-platypus PLATYPUS_VCF] -ref\\nGENOME_REFERENCE [-dedup]\\n[-minMQ MINIMUM_MAPPING_QUALITY]\\n[-minBQ MINIMUM_BASE_QUALITY]\\n[-mincaller MINIMUM_NUM_CALLERS] [-scale P_SCALE]\\n[-outfile OUTPUT_TSV_FILE]"
     vcf_format: "Input file is VCF formatted. (default: None)"
     bed_format: "Input file is BED formatted. (default: None)"
     positions_list: "A list of positions: tab seperating contig and\\npositions. (default: None)"

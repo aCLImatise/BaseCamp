@@ -4,58 +4,71 @@ command:
 positional: []
 named:
 - !Flag
-  description: Increase output verbosity.
+  optional: true
+  synonyms:
+  - -i
+  - --infile
+  - --training
+  description: Set defaults that make sense for training data.
+  args: !SimpleFlagArg
+    name: INFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --legacy
+  description: "Use legacy APIs even for newer Galaxies that should\nhave a batch\
+    \ upload API enabled."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: Increase output verbosity.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Target Galaxy instance URL/IP address
+  optional: true
   synonyms:
   - -g
   - --galaxy
+  description: Target Galaxy instance URL/IP address
   args: !SimpleFlagArg
     name: GALAXY
-  optional: true
 - !Flag
-  description: Galaxy user email address
+  optional: true
   synonyms:
   - -u
   - --user
+  description: Galaxy user email address
   args: !SimpleFlagArg
     name: USER
-  optional: true
 - !Flag
-  description: Password for the Galaxy user
+  optional: true
   synonyms:
   - -p
   - --password
+  description: Password for the Galaxy user
   args: !SimpleFlagArg
     name: PASSWORD
-  optional: true
 - !Flag
-  description: "Galaxy admin user API key (required if not defined in\nthe tools list\
-    \ file)\n"
+  optional: true
   synonyms:
   - -a
   - --api_key
+  description: "Galaxy admin user API key (required if not defined in\nthe tools list\
+    \ file)\n"
   args: !SimpleFlagArg
     name: API_KEY
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-i INFILE, --infile INFILE\n--training\
-    \            Set defaults that make sense for training data.\n--legacy       \
-    \       Use legacy APIs even for newer Galaxies that should\nhave a batch upload\
-    \ API enabled."
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: setup-data-libraries [-h] [-v] [-g GALAXY] [-u USER] [-p PASSWORD]\n\
@@ -73,3 +86,4 @@ help_text: "usage: setup-data-libraries [-h] [-v] [-g GALAXY] [-u USER] [-p PASS
   \                        the tools list file)\n"
 generated_using:
 - --help
+docker_image:

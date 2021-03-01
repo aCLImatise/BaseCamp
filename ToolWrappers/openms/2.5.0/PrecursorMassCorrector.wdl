@@ -22,6 +22,9 @@ task PrecursorMassCorrector {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                            Input mzML file containing the spectra. (valid formats: 'mzML')"
     out: "*                           Output mzML file. (valid formats: 'mzML')"

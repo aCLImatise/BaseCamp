@@ -24,6 +24,9 @@ task GenesToBed {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     source: "Transcript source database.\\nValid: 'ccds,ensembl'"
     mode: "Mode: gene = start/end of all transcripts, exon = start/end of all exons of all transcripts.\\nValid: 'gene,exon'"

@@ -10,7 +10,7 @@ task Gth {
     Boolean? score_matrix
     Int? translation_table
     Boolean? analyze_only_forward
-    Boolean? analyze_only_strand
+    Boolean? analyze_reverse_strand
     Boolean? cdna_forward
     Boolean? from_pos
     Boolean? topos
@@ -50,7 +50,7 @@ task Gth {
       ~{if (score_matrix) then "-scorematrix" else ""} \
       ~{if defined(translation_table) then ("-translationtable " +  '"' + translation_table + '"') else ""} \
       ~{if (analyze_only_forward) then "-f" else ""} \
-      ~{if (analyze_only_strand) then "-r" else ""} \
+      ~{if (analyze_reverse_strand) then "-r" else ""} \
       ~{if (cdna_forward) then "-cdnaforward" else ""} \
       ~{if (from_pos) then "-frompos" else ""} \
       ~{if (topos) then "-topos" else ""} \
@@ -80,6 +80,9 @@ task Gth {
       ~{if (first) then "-first" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genomic: "specify input files containing genomic sequences\\nmandatory option"
     cdna: "specify input files containing cDNA/EST sequences"
@@ -89,7 +92,7 @@ task Gth {
     score_matrix: "read amino acid substitution scoring matrix from file in the\\npath given by the environment variable GTHDATADIR\\ndefault: BLOSUM62"
     translation_table: "the codon translation table used for codon translation in\\nmatching, DP, and output\\ndefault: 1"
     analyze_only_forward: "analyze only forward strand of genomic sequences\\ndefault: no"
-    analyze_only_strand: "analyze only reverse strand of genomic sequences\\ndefault: no"
+    analyze_reverse_strand: "analyze only reverse strand of genomic sequences\\ndefault: no"
     cdna_forward: "align only forward strand of cDNAs\\ndefault: no"
     from_pos: "analyze genomic sequence from this position\\nrequires -topos or -width; counting from 1 on\\ndefault: 0"
     topos: "analyze genomic sequence to this position\\nrequires -frompos; counting from 1 on\\ndefault: 0"

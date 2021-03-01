@@ -30,6 +30,9 @@ task PancakeSeqfetch {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_fmt: "STR   Output format. If an input file is FASTA and out format is FASTQ, dummy QVs\\nwill be added. Valid choices: (fasta, fastq). [fasta]"
     dummy_qv: "STR   Dummy QV to be added to sequences when input format is FASTA and output\\nFASTQ. [!]"

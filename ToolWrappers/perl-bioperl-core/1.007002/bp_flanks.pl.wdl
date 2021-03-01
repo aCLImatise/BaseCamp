@@ -3,7 +3,7 @@ version 1.0
 task BpFlankspl {
   input {
     Boolean? position_uses_table
-    Int? define_region_asnp
+    Int? define_region_repeat
     Boolean? defaults_length_nucleotides
     File? flank_len
     String var_4
@@ -50,13 +50,16 @@ task BpFlankspl {
       ~{var_22} \
       ~{var_23} \
       ~{if (position_uses_table) then "-p" else ""} \
-      ~{if defined(define_region_asnp) then ("--position " +  '"' + define_region_asnp + '"') else ""} \
+      ~{if defined(define_region_repeat) then ("--position " +  '"' + define_region_repeat + '"') else ""} \
       ~{if (defaults_length_nucleotides) then "-f" else ""} \
       ~{if defined(flank_len) then ("--flanklen " +  '"' + flank_len + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     position_uses_table: "Position uses simple nucleotide sequence feature table"
-    define_region_asnp: "to define the region of interest, typically a\\nSNP or microsatellite repeat around which the flanks are\\ndefined.\\nThere can be more than one position option or you can\\ngive a comma separated list to one position option.\\nThe format of a position is:\\n[id:] int | range | in-between [-]\\nThe optional id is the name you want to call the new\\nsequence. If it not given in joins running number to the\\nentry name with an underscore.\\nThe position is either a point (e.g. 234), a range (e.g\\n250..300) or insertion point between nucleotides\\n(e.g. 234^235)\\nIf the position is not completely within the source\\nsequence the output sequence will be truncated and it\\nwill print a warning.\\nThe optional hyphen [-] at the end of the position\\nindicates that that you want the retrieved sequence to be\\nin the opposite strand."
+    define_region_repeat: "to define the region of interest, typically a\\nSNP or microsatellite repeat around which the flanks are\\ndefined.\\nThere can be more than one position option or you can\\ngive a comma separated list to one position option.\\nThe format of a position is:\\n[id:] int | range | in-between [-]\\nThe optional id is the name you want to call the new\\nsequence. If it not given in joins running number to the\\nentry name with an underscore.\\nThe position is either a point (e.g. 234), a range (e.g\\n250..300) or insertion point between nucleotides\\n(e.g. 234^235)\\nIf the position is not completely within the source\\nsequence the output sequence will be truncated and it\\nwill print a warning.\\nThe optional hyphen [-] at the end of the position\\nindicates that that you want the retrieved sequence to be\\nin the opposite strand."
     defaults_length_nucleotides: "Defaults to 100. This is the length of the nucleotides"
     flank_len: "retrieved on both sides of the given position.\\nIf the source file does not contain"
     var_4: "SYNOPSIS\\nbp_flanks --position POS [-p POS ...]  [--flanklen INT]\\naccession | filename"

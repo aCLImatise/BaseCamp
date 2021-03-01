@@ -14,6 +14,9 @@ task GuppyToJson {
       ~{s} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "Display this list of options"
     to_json: ""

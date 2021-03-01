@@ -1,0 +1,189 @@
+!Command
+command:
+- hts_QWindowTrim
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: '[ --version ]                      Version print'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  description: '[ --notes ] arg                    Notes for the stats JSON'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: '[ --stats-file ] arg (=stats.log)  Write to stats file name'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: '[ --append-stats-file ] arg        Append to stats file name'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: "[ --read1-input ] arg              Read 1 paired end fastq input <space\n\
+    separated for multiple files>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: "[ --read2-input ] arg              Read 2 paired end fastq input <space\n\
+    separated for multiple files>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  description: "[ --singleend-input ] arg          Single end read fastq input <space\n\
+    separated for multiple files>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  description: "[ --interleaved-input ] arg        Interleaved fastq input <space\n\
+    separated for multiple files>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: "[ --tab-input ] arg                Tab-delimited (tab6) input <space\n\
+    separated for multiple files>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: '[ --force ]                        Forces overwrite of files'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: '[ --uncompressed ]                 Output uncompressed (not gzipped)
+    files'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "[ --fastq-output ] arg             Output to Fastq files <PE AND/OR\
+    \ SE\nfiles>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "[ --interleaved-output ] arg       Output to interleaved fastq files\n\
+    <INTERLEAVED PE AND/OR SE files>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: '[ --tab-output ] arg               Output to tab-delimited (tab6)
+    file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: '[ --unmapped-output ] arg          Output to unmapped sam file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: "[ --no-left ]                      Turns off trimming of the left\
+    \ side of\nthe read"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "[ --no-right ]                     Turns off trimming of the right\
+    \ side of\nthe read"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: "[ --window-size ] arg (=10)        Window size in which to trim (min\
+    \ 1,\nmax 10000)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: "[ --avg-qual-score ] arg (=20)     Threshold for quality score average\
+    \ in\nthe window (min 1, max 10000)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "[ --qual-offset ] arg (=33)        Quality offset for ascii q-score\n\
+    (default is 33) (min 1, max 10000)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: '[ --help ]                         Prints help documentation'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "HTStream <https://github.com/s4hts/HTStream> application: hts_QWindowTrim\n\
+  Version: 1.3.2\nhts_QWindowTrim uses a sliding window approach to remove low quality\n\
+  \  bases (5' or 3') from a read. A window will slide from each end of the\n  read,\
+  \ moving inwards. Once the window reaches an average quality <avg-qual-score>\n\
+  \  it will stop trimming.\n\nStandard Options:\n  -v [ --version ]             \
+  \         Version print\n  -h [ --help ]                         Prints help documentation\n\
+  \  -N [ --notes ] arg                    Notes for the stats JSON\n  -L [ --stats-file\
+  \ ] arg (=stats.log)  Write to stats file name\n  -A [ --append-stats-file ] arg\
+  \        Append to stats file name\n\nInput Options [default: tab6 format on stdin]:\n\
+  \  -1 [ --read1-input ] arg              Read 1 paired end fastq input <space \n\
+  \                                        separated for multiple files>\n  -2 [ --read2-input\
+  \ ] arg              Read 2 paired end fastq input <space \n                   \
+  \                     separated for multiple files>\n  -U [ --singleend-input ]\
+  \ arg          Single end read fastq input <space \n                           \
+  \             separated for multiple files>\n  -I [ --interleaved-input ] arg  \
+  \      Interleaved fastq input <space \n                                       \
+  \ separated for multiple files>\n  -T [ --tab-input ] arg                Tab-delimited\
+  \ (tab6) input <space \n                                        separated for multiple\
+  \ files>\n\nhts_QWindowTrim Output Options [default: tab6 format to stdout]:\n \
+  \ -F [ --force ]                        Forces overwrite of files\n  -u [ --uncompressed\
+  \ ]                 Output uncompressed (not gzipped) files\n  -f [ --fastq-output\
+  \ ] arg             Output to Fastq files <PE AND/OR SE \n                     \
+  \                   files>\n  -i [ --interleaved-output ] arg       Output to interleaved\
+  \ fastq files \n                                        <INTERLEAVED PE AND/OR SE\
+  \ files>\n  -t [ --tab-output ] arg               Output to tab-delimited (tab6)\
+  \ file\n  -z [ --unmapped-output ] arg          Output to unmapped sam file\n\n\
+  Application Specific Options:\n  -l [ --no-left ]                      Turns off\
+  \ trimming of the left side of \n                                        the read\n\
+  \  -r [ --no-right ]                     Turns off trimming of the right side of\n\
+  \                                        the read\n  -w [ --window-size ] arg (=10)\
+  \        Window size in which to trim (min 1, \n                               \
+  \         max 10000)\n  -q [ --avg-qual-score ] arg (=20)     Threshold for quality\
+  \ score average in \n                                        the window (min 1,\
+  \ max 10000)\n  -o [ --qual-offset ] arg (=33)        Quality offset for ascii q-score\
+  \ \n                                        (default is 33) (min 1, max 10000)\n\
+  \n\nPlease report any issues, request for enhancement, or comments to <https://github.com/s4hts/HTStream/issues>\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/htstream:1.3.3--h5ca1c16_0

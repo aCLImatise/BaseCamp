@@ -40,6 +40,9 @@ task Sistr {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genomename__inputfastagenomename: "genome_name, --input-fasta-genome-name fasta_path genome_name\\nfasta file path to genome name pair"
     output_format: "Output format (json, csv, pickle)"

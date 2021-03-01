@@ -4,6 +4,9 @@ task Pecat {
   command <<<
     pe_cat
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

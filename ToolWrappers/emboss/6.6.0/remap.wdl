@@ -52,6 +52,9 @@ task Remap {
       ~{if (offset) then "-offset" else ""} \
       ~{if (html) then "-html" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     enzymes: "string     [all] The name 'all' reads in all enzyme\\nnames from the REBASE database. You can\\nspecify enzymes by giving their names with\\ncommas between then, such as:\\n'HincII,hinfI,ppiI,hindiii'.\\nThe case of the names is not important. You\\ncan specify a file of enzyme names to read\\nin by giving the name of the file holding\\nthe enzyme names with a '@' character in\\nfront of it, for example, '@enz.list'.\\nBlank lines and lines starting with a hash\\ncharacter or '!' are ignored and all other\\nlines are concatenated together with a comma\\ncharacter ',' and then treated as the list\\nof enzymes to search for.\\nAn example of a file of enzyme names is:\\n! my enzymes\\nHincII, ppiII\\n! other enzymes\\nhindiii\\nHinfI\\nPpiI (Any string)"
     site_len: "integer    [4] This sets the minimum length of the\\nrestriction enzyme recognition site. Any\\nenzymes with sites shorter than this will be\\nignored. (Integer from 2 to 20)"

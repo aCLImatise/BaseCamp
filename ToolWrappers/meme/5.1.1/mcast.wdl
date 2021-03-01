@@ -46,6 +46,9 @@ task Mcast {
       ~{if (transfac) then "--transfac" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alpha: "The fraction of all TF binding sites that are binding sites\\nfor the TF of interest. Used in the calculation of PSP.\\n(default 1.0)"
     b_file: "File containing n-order Markov background model"

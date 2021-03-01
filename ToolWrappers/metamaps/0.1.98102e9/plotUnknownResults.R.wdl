@@ -4,6 +4,9 @@ task PlotUnknownResultsR {
   command <<<
     plotUnknownResults_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

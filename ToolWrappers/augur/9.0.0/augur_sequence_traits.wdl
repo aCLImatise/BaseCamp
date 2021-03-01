@@ -22,6 +22,9 @@ task AugurSequencetraits {
       ~{if defined(label) then ("--label " +  '"' + label + '"') else ""} \
       ~{if defined(output_node_data) then ("--output-node-data " +  '"' + output_node_data + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ancestral_sequences: "nucleotide alignment (VCF) to search for sequence\\ntraits in (can be generated from 'ancestral' using '--\\noutput-vcf') (default: None)"
     translations: "AA alignment to search for sequence traits in (can\\ninclude ancestral sequences) (default: None)"

@@ -12,6 +12,9 @@ task Cmsip {
       ~{if defined(define_variablevalue_suppress) then ("-D " +  '"' + define_variablevalue_suppress + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Configuration file in YAML format."
     define_variablevalue_suppress: "Define variable=value to suppress configuration file.\\ne.g. \\\"-D dhmrinfo.verbose=False\\\""

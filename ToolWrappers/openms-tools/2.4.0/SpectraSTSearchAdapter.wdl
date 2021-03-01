@@ -32,6 +32,9 @@ task SpectraSTSearchAdapter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     executable: "*                                                            Path to the SpectraST executable to use; may be empty if the executable is globally available."
     spectra_files: "[ <SearchFileName2> ... <SearchFileNameN> ]*  File names(s) of spectra to be searched. (valid formats: 'mzML', 'mzXML', 'mzData', 'dta', 'msp')"

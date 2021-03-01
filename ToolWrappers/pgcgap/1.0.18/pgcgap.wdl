@@ -14,7 +14,7 @@ task Pgcgap {
     Int blepharisma_nuclear_code
     Int chlorophycean_mitochondrial_code
     Int trematode_mitochondrial_code
-    Int scenedesmus_obliquus_mitochondrial
+    Int scenedesmus_obliquus_code
     Int thraustochytrium_mitochondrial_code
     String programs
   }
@@ -31,11 +31,14 @@ task Pgcgap {
       ~{blepharisma_nuclear_code} \
       ~{chlorophycean_mitochondrial_code} \
       ~{trematode_mitochondrial_code} \
-      ~{scenedesmus_obliquus_mitochondrial} \
+      ~{scenedesmus_obliquus_code} \
       ~{thraustochytrium_mitochondrial_code} \
       ~{programs} \
       ~{if defined(for_thresholds_) then ("-n " +  '"' + for_thresholds_ + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     for_thresholds_: "for thresholds 0.5-0.6, -n 4 for"
     roar_y: "[--OrthoF]                    Identify orthologous protein sequence"
@@ -49,7 +52,7 @@ task Pgcgap {
     blepharisma_nuclear_code: "Blepharisma nuclear code"
     chlorophycean_mitochondrial_code: "Chlorophycean mitochondrial code"
     trematode_mitochondrial_code: "Trematode mitochondrial code"
-    scenedesmus_obliquus_mitochondrial: "Scenedesmus obliquus mitochondrial code"
+    scenedesmus_obliquus_code: "Scenedesmus obliquus mitochondrial code"
     thraustochytrium_mitochondrial_code: "Thraustochytrium mitochondrial code"
     programs: "[--abyss-bin (PATH)]          Path to abyss binary file. Default tries\\nif abyss is in PATH;"
   }

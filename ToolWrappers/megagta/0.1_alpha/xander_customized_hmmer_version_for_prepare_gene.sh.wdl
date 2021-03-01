@@ -8,6 +8,9 @@ task XanderCustomizedHmmerVersionForPrepareGenesh {
     xander_customized_hmmer_version_for_prepare_gene_sh \
       ~{gene}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene: ""
   }

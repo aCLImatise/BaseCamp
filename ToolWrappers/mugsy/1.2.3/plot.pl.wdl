@@ -4,6 +4,9 @@ task Plotpl {
   command <<<
     plot_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

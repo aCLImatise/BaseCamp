@@ -8,6 +8,9 @@ task Fastagrep {
     fasta_grep \
       ~{copyright}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     copyright: "(2014) The Regents of the University of California."
   }

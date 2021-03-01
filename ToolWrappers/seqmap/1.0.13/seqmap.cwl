@@ -30,6 +30,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_output_file_name)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - seqmap

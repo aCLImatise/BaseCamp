@@ -48,6 +48,9 @@ task Srapileuporig {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aligned_region: "<name[:from-to]>  Filter by position on genome. Name can\\neither be file specific name (ex: \\\"chr1\\\" or\\n\\\"1\\\"). \\\"from\\\" and \\\"to\\\" are 1-based coordinates"
     outfile: "Output will be written to this file instead\\nof std-out"

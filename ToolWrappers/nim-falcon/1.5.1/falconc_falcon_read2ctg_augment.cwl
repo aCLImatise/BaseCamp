@@ -3,28 +3,29 @@ id: falconc_falcon_read2ctg_augment.cwl
 inputs:
 - id: in_help_syntax
   doc: 'advanced: prepend,plurals,..'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --help-syntax
-- id: in__phasefn_string
+- id: in_phasefn_string_required
   doc: =, --phase-fn=  string  REQUIRED  read2ctg.txt file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
-- id: in__bamfn_string
+- id: in__string_required
   doc: =, --bam-fn=    string  REQUIRED  bam/sam file of unphased reads mapped
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in__outfn_string
   doc: =, --out-fn=    string  REQUIRED  mostly same as read2ctg.txt, but augmented
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -o
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - falconc

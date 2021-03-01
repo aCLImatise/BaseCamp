@@ -8,6 +8,9 @@ task Astats {
     astats \
       ~{bank_path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bank_path: ""
   }

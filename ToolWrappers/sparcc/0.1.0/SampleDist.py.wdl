@@ -4,6 +4,9 @@ task SampleDistpy {
   command <<<
     SampleDist_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

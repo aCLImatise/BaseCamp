@@ -16,6 +16,9 @@ task NebulizerListRepositories {
       ~{if defined(owner) then ("--owner " +  '"' + owner + '"') else ""} \
       ~{if (updateable) then "--updateable" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "only list tool repositories matching NAME. Can include\\nglob-style wild-cards."
     toolshed: "only list repositories installed from toolshed matching\\nTOOLSHED. Can include glob-style wild-cards."

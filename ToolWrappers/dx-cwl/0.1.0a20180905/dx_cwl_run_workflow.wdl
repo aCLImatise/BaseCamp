@@ -18,6 +18,9 @@ task DxcwlRunworkflow {
       ~{if defined(project) then ("--project " +  '"' + project + '"') else ""} \
       ~{if defined(rootdir) then ("--rootdir " +  '"' + rootdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     token: "DNAnexus authentication token"
     project: "DNAnexus project ID"

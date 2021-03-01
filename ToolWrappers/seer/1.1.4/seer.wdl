@@ -3,7 +3,7 @@ version 1.0
 task Seer {
   input {
     File? arg_dsm_kmer
-    Boolean? arg_pheno_metadata
+    Boolean? _arg_metadata
     String? mds_values_kmds
     File? co_var_file
     Int? co_var_list
@@ -21,7 +21,7 @@ task Seer {
     seer \
       ~{in} \
       ~{if (arg_dsm_kmer) then "-k" else ""} \
-      ~{if (arg_pheno_metadata) then "-p" else ""} \
+      ~{if (_arg_metadata) then "-p" else ""} \
       ~{if defined(mds_values_kmds) then ("--struct " +  '"' + mds_values_kmds + '"') else ""} \
       ~{if defined(co_var_file) then ("--covar_file " +  '"' + co_var_file + '"') else ""} \
       ~{if defined(co_var_list) then ("--covar_list " +  '"' + co_var_list + '"') else ""} \
@@ -34,9 +34,12 @@ task Seer {
       ~{if defined(pval) then ("--pval " +  '"' + pval + '"') else ""} \
       ~{if (print_samples) then "--print_samples" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_dsm_kmer: "[ --kmers ] arg       dsm kmer output file"
-    arg_pheno_metadata: "[ --pheno ] arg       .pheno metadata"
+    _arg_metadata: "[ --pheno ] arg       .pheno metadata"
     mds_values_kmds: "mds values from kmds"
     co_var_file: "file containing covariates"
     co_var_list: "list of columns covariates to use. Format is 1,2q,3\\n(use q for quantitative)"

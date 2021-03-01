@@ -1,0 +1,938 @@
+&id001 !Command
+command:
+- refinem
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - refinem
+  - ssu_erroneous
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: genome_nt_dir
+    description: directory containing nucleotide scaffolds for each
+  - !Positional
+    optional: false
+    position: 1
+    name: genome
+    description: taxon_profile_dir     directory with results of taxon_profile command
+  - !Positional
+    optional: false
+    position: 2
+    name: ssu_db
+    description: BLAST database of 16S rRNA genes
+  - !Positional
+    optional: false
+    position: 3
+    name: ssu_taxonomy_file
+    description: taxonomy file for genes in the 16S rRNA database
+  - !Positional
+    optional: false
+    position: 4
+    name: output_dir
+    description: output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --genome_ext
+    description: "extension of genomes (other files in directory are\nignored) (default:\
+      \ fna)"
+    args: !SimpleFlagArg
+      name: GENOME_EXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --evalue
+    description: "e-value threshold for identifying and classifying 16S\nrRNA genes\
+      \ (default: 1e-05)"
+    args: !SimpleFlagArg
+      name: EVALUE
+  - !Flag
+    optional: true
+    synonyms:
+    - --concatenate
+    description: "concatenate hits within the specified number of base\npairs (default:\
+      \ 200)"
+    args: !SimpleFlagArg
+      name: CONCATENATE
+  - !Flag
+    optional: true
+    synonyms:
+    - --common_taxon
+    description: "threshold for defining a taxon as common (default:\n10.0)"
+    args: !SimpleFlagArg
+      name: COMMON_TAXON
+  - !Flag
+    optional: true
+    synonyms:
+    - --ssu_min_len
+    description: "minimum length of SSU 16S gene fragment to consider\nfor classification\
+      \ (default: 600)"
+    args: !SimpleFlagArg
+      name: SSU_MIN_LEN
+  - !Flag
+    optional: true
+    synonyms:
+    - --ssu_domain
+    description: "percent identity threshold for accepting domain\nclassification\
+      \ of SSU (default: 83.68)"
+    args: !SimpleFlagArg
+      name: SSU_DOMAIN
+  - !Flag
+    optional: true
+    synonyms:
+    - --ssu_phylum
+    description: "percent identity threshold for accepting phylum\nclassification\
+      \ of SSU (default: 86.35)"
+    args: !SimpleFlagArg
+      name: SSU_PHYLUM
+  - !Flag
+    optional: true
+    synonyms:
+    - --ssu_class
+    description: "percent identity threshold for accepting class\nclassification of\
+      \ SSU (default: 89.2)"
+    args: !SimpleFlagArg
+      name: SSU_CLASS
+  - !Flag
+    optional: true
+    synonyms:
+    - --ssu_order
+    description: "percent identity threshold for accepting order\nclassification of\
+      \ SSU (default: 92.25)"
+    args: !SimpleFlagArg
+      name: SSU_ORDER
+  - !Flag
+    optional: true
+    synonyms:
+    - --ssu_family
+    description: "percent identity threshold for accepting family\nclassification\
+      \ of SSU (default: 96.4)"
+    args: !SimpleFlagArg
+      name: SSU_FAMILY
+  - !Flag
+    optional: true
+    synonyms:
+    - --ssu_genus
+    description: "percent identity threshold for accepting genus\nclassification of\
+      \ SSU (default: 98.7)"
+    args: !SimpleFlagArg
+      name: SSU_GENUS
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cpus
+    description: 'number of CPUs to use (default: 1)'
+    args: !SimpleFlagArg
+      name: CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output of logger
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refinem ssu_erroneous [-h] [-x GENOME_EXT] [--evalue EVALUE]\n\
+    \                             [--concatenate CONCATENATE]\n                  \
+    \           [--common_taxon COMMON_TAXON]\n                             [--ssu_min_len\
+    \ SSU_MIN_LEN]\n                             [--ssu_domain SSU_DOMAIN]\n     \
+    \                        [--ssu_phylum SSU_PHYLUM] [--ssu_class SSU_CLASS]\n \
+    \                            [--ssu_order SSU_ORDER] [--ssu_family SSU_FAMILY]\n\
+    \                             [--ssu_genus SSU_GENUS] [-c CPUS] [--silent]\n \
+    \                            genome_nt_dir taxon_profile_dir ssu_db\n        \
+    \                     ssu_taxonomy_file output_dir\n\nIdentify scaffolds with\
+    \ erroneous 16S rRNA genes.\n\npositional arguments:\n  genome_nt_dir        \
+    \ directory containing nucleotide scaffolds for each\n                       \
+    \ genome\n  taxon_profile_dir     directory with results of taxon_profile command\n\
+    \  ssu_db                BLAST database of 16S rRNA genes\n  ssu_taxonomy_file\
+    \     taxonomy file for genes in the 16S rRNA database\n  output_dir         \
+    \   output directory\n\noptional arguments:\n  -h, --help            show this\
+    \ help message and exit\n  -x, --genome_ext GENOME_EXT\n                     \
+    \   extension of genomes (other files in directory are\n                     \
+    \   ignored) (default: fna)\n  --evalue EVALUE       e-value threshold for identifying\
+    \ and classifying 16S\n                        rRNA genes (default: 1e-05)\n \
+    \ --concatenate CONCATENATE\n                        concatenate hits within the\
+    \ specified number of base\n                        pairs (default: 200)\n  --common_taxon\
+    \ COMMON_TAXON\n                        threshold for defining a taxon as common\
+    \ (default:\n                        10.0)\n  --ssu_min_len SSU_MIN_LEN\n    \
+    \                    minimum length of SSU 16S gene fragment to consider\n   \
+    \                     for classification (default: 600)\n  --ssu_domain SSU_DOMAIN\n\
+    \                        percent identity threshold for accepting domain\n   \
+    \                     classification of SSU (default: 83.68)\n  --ssu_phylum SSU_PHYLUM\n\
+    \                        percent identity threshold for accepting phylum\n   \
+    \                     classification of SSU (default: 86.35)\n  --ssu_class SSU_CLASS\n\
+    \                        percent identity threshold for accepting class\n    \
+    \                    classification of SSU (default: 89.2)\n  --ssu_order SSU_ORDER\n\
+    \                        percent identity threshold for accepting order\n    \
+    \                    classification of SSU (default: 92.25)\n  --ssu_family SSU_FAMILY\n\
+    \                        percent identity threshold for accepting family\n   \
+    \                     classification of SSU (default: 96.4)\n  --ssu_genus SSU_GENUS\n\
+    \                        percent identity threshold for accepting genus\n    \
+    \                    classification of SSU (default: 98.7)\n  -c, --cpus CPUS\
+    \       number of CPUs to use (default: 1)\n  --silent              suppress output\
+    \ of logger\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/refinem:0.1.2--pyh3252c3a_0
+- !Command
+  command:
+  - refinem
+  - modify_bin
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: scaffold_file
+    description: scaffolds binned to generate putative genomes
+  - !Positional
+    optional: false
+    position: 1
+    name: genome_file
+    description: genome to be modified
+  - !Positional
+    optional: false
+    position: 2
+    name: output_genome
+    description: modified genome
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --min_len
+    description: "minimum length of scaffold to allow it to be added to\na genome"
+    args: !SimpleFlagArg
+      name: MIN_LEN
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --add
+    description: "ID of scaffold to add to genome (may specify multiple\ntimes)"
+    args: !SimpleFlagArg
+      name: ADD
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --remove
+    description: "ID of scaffold to remove from bin (may specify\nmultiple times)"
+    args: !SimpleFlagArg
+      name: REMOVE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outlier_file
+    description: "remove all scaffolds identified as outliers (see\noutlier command)"
+    args: !SimpleFlagArg
+      name: OUTLIER_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output of logger
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refinem modify_bin [-h] [-m MIN_LEN] [-a ADD] [-r REMOVE]\n \
+    \                         [-o OUTLIER_FILE] [--silent]\n                     \
+    \     scaffold_file genome_file output_genome\n\nModify scaffolds in a single\
+    \ bin.\n\npositional arguments:\n  scaffold_file         scaffolds binned to generate\
+    \ putative genomes\n  genome_file           genome to be modified\n  output_genome\
+    \         modified genome\n\noptional arguments:\n  -h, --help            show\
+    \ this help message and exit\n  -m, --min_len MIN_LEN\n                      \
+    \  minimum length of scaffold to allow it to be added to\n                   \
+    \     a genome\n  -a, --add ADD         ID of scaffold to add to genome (may specify\
+    \ multiple\n                        times)\n  -r, --remove REMOVE   ID of scaffold\
+    \ to remove from bin (may specify\n                        multiple times)\n \
+    \ -o, --outlier_file OUTLIER_FILE\n                        remove all scaffolds\
+    \ identified as outliers (see\n                        outlier command)\n  --silent\
+    \              suppress output of logger\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refinem:0.1.2--pyh3252c3a_0
+- !Command
+  command:
+  - refinem
+  - outliers
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: scaffold_stats_file
+    description: file with statistics for each scaffold
+  - !Positional
+    optional: false
+    position: 1
+    name: output_dir
+    description: output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --gc_perc
+    description: "percentile for identify scaffolds with divergent GC\ncontent (default:\
+      \ 98)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --td_perc
+    description: "percentile for identify scaffolds with divergent\ntetranucleotide\
+      \ signatures (default: 98)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --cov_corr
+    description: "correlation for identifying scaffolds with divergent\ncoverage profiles\
+      \ (default: -2)"
+    args: !SimpleFlagArg
+      name: COV_CORR
+  - !Flag
+    optional: true
+    synonyms:
+    - --cov_perc
+    description: "mean absolute percent error for identifying scaffolds\nwith divergent\
+      \ coverage profiles (default: 50)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --report_type
+    description: "report sequences that are outliers in 'all' or 'any'\nreference\
+      \ distribution (default: any)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        all:
+        any:
+  - !Flag
+    optional: true
+    synonyms:
+    - --create_plots
+    description: "create exploratory plots (currently unstable due to\nmpld3 limitations)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --individual_plots
+    description: create individual plots for each statistic
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --image_type
+    description: 'desired image type (default: png)'
+    args: !ChoiceFlagArg
+      choices: !!set
+        eps:
+        svg:
+        png:
+        pdf:
+        ps:
+  - !Flag
+    optional: true
+    synonyms:
+    - --point_size
+    description: 'desired size of points in scatterplot (default: 36)'
+    args: !SimpleFlagArg
+      name: POINT_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --highlight_file
+    description: file indicating scaffolds to highlight
+    args: !SimpleFlagArg
+      name: HIGHLIGHT_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --links_file
+    description: file indicating pairs of scaffolds to join by a line
+    args: !SimpleFlagArg
+      name: LINKS_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --dpi
+    description: 'desired DPI of output image (default: 96)'
+    args: !SimpleFlagArg
+      name: DPI
+  - !Flag
+    optional: true
+    synonyms:
+    - --label_font_size
+    description: 'desired font size for labels (default: 12)'
+    args: !SimpleFlagArg
+      name: LABEL_FONT_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --tick_font_size
+    description: 'desired font size for tick markers (default: 10)'
+    args: !SimpleFlagArg
+      name: TICK_FONT_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --width
+    description: 'width of output image (default: 12)'
+    args: !SimpleFlagArg
+      name: WIDTH
+  - !Flag
+    optional: true
+    synonyms:
+    - --height
+    description: 'height of output image (default: 6)'
+    args: !SimpleFlagArg
+      name: HEIGHT
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output of logger
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refinem outliers [-h] [--gc_perc int] [--td_perc int]\n     \
+    \                   [--cov_corr COV_CORR] [--cov_perc int] [-r {any,all}]\n  \
+    \                      [--create_plots] [--individual_plots]\n               \
+    \         [--image_type {eps,pdf,png,ps,svg}]\n                        [--point_size\
+    \ POINT_SIZE]\n                        [--highlight_file HIGHLIGHT_FILE]\n   \
+    \                     [--links_file LINKS_FILE] [--dpi DPI]\n                \
+    \        [--label_font_size LABEL_FONT_SIZE]\n                        [--tick_font_size\
+    \ TICK_FONT_SIZE] [--width WIDTH]\n                        [--height HEIGHT] [--silent]\n\
+    \                        scaffold_stats_file output_dir\n\nIdentify scaffolds\
+    \ with divergent genomic characteristics.\n\npositional arguments:\n  scaffold_stats_file\
+    \   file with statistics for each scaffold\n  output_dir            output directory\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --gc_perc int         percentile for identify scaffolds with divergent GC\n\
+    \                        content (default: 98)\n  --td_perc int         percentile\
+    \ for identify scaffolds with divergent\n                        tetranucleotide\
+    \ signatures (default: 98)\n  --cov_corr COV_CORR   correlation for identifying\
+    \ scaffolds with divergent\n                        coverage profiles (default:\
+    \ -2)\n  --cov_perc int        mean absolute percent error for identifying scaffolds\n\
+    \                        with divergent coverage profiles (default: 50)\n  -r,\
+    \ --report_type {any,all}\n                        report sequences that are outliers\
+    \ in 'all' or 'any'\n                        reference distribution (default:\
+    \ any)\n  --create_plots        create exploratory plots (currently unstable due\
+    \ to\n                        mpld3 limitations)\n  --individual_plots    create\
+    \ individual plots for each statistic\n  --image_type {eps,pdf,png,ps,svg}\n \
+    \                       desired image type (default: png)\n  --point_size POINT_SIZE\n\
+    \                        desired size of points in scatterplot (default: 36)\n\
+    \  --highlight_file HIGHLIGHT_FILE\n                        file indicating scaffolds\
+    \ to highlight\n  --links_file LINKS_FILE\n                        file indicating\
+    \ pairs of scaffolds to join by a line\n  --dpi DPI             desired DPI of\
+    \ output image (default: 96)\n  --label_font_size LABEL_FONT_SIZE\n          \
+    \              desired font size for labels (default: 12)\n  --tick_font_size\
+    \ TICK_FONT_SIZE\n                        desired font size for tick markers (default:\
+    \ 10)\n  --width WIDTH         width of output image (default: 12)\n  --height\
+    \ HEIGHT       height of output image (default: 6)\n  --silent              suppress\
+    \ output of logger\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refinem:0.1.2--pyh3252c3a_0
+- !Command
+  command:
+  - refinem
+  - taxon_filter
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: taxon_profile_dir
+    description: directory with results of taxon_profile command
+  - !Positional
+    optional: false
+    position: 1
+    name: output_file
+    description: file indicating divergent scaffolds
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --consensus_taxon
+    description: "threshold for accepting a consensus taxon (default:\n50.0)"
+    args: !SimpleFlagArg
+      name: CONSENSUS_TAXON
+  - !Flag
+    optional: true
+    synonyms:
+    - --trusted_scaffold
+    description: "threshold for treating a scaffold as trusted (default:\n50.0)"
+    args: !SimpleFlagArg
+      name: TRUSTED_SCAFFOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - --common_taxa
+    description: "threshold for treating a taxon as common (default:\n5.0)"
+    args: !SimpleFlagArg
+      name: COMMON_TAXA
+  - !Flag
+    optional: true
+    synonyms:
+    - --congruent_scaffold
+    description: "threshold for treating a scaffold as congruent\n(default: 10.0)"
+    args: !SimpleFlagArg
+      name: CONGRUENT_SCAFFOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_classified_per
+    description: "minimum percentage of genes with a classification to\nfilter a scaffold\
+      \ (default: 25.0)"
+    args: !SimpleFlagArg
+      name: MIN_CLASSIFIED_PER
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_classified
+    description: "minimum number of classified genes required to filter\na scaffold\
+      \ (default: 5)"
+    args: !SimpleFlagArg
+      name: MIN_CLASSIFIED
+  - !Flag
+    optional: true
+    synonyms:
+    - --consensus_scaffold
+    description: "threshold of consensus taxon for filtering a scaffold\n(default:\
+      \ 50.0)"
+    args: !SimpleFlagArg
+      name: CONSENSUS_SCAFFOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cpus
+    description: 'number of CPUs to use (default: 1)'
+    args: !SimpleFlagArg
+      name: CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output of logger
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refinem taxon_filter [-h] [--consensus_taxon CONSENSUS_TAXON]\n\
+    \                            [--trusted_scaffold TRUSTED_SCAFFOLD]\n         \
+    \                   [--common_taxa COMMON_TAXA]\n                            [--congruent_scaffold\
+    \ CONGRUENT_SCAFFOLD]\n                            [--min_classified_per MIN_CLASSIFIED_PER]\n\
+    \                            [--min_classified MIN_CLASSIFIED]\n             \
+    \               [--consensus_scaffold CONSENSUS_SCAFFOLD]\n                  \
+    \          [-c CPUS] [--silent]\n                            taxon_profile_dir\
+    \ output_file\n\nIdentify scaffolds with divergent taxonomic classification.\n\
+    \npositional arguments:\n  taxon_profile_dir     directory with results of taxon_profile\
+    \ command\n  output_file           file indicating divergent scaffolds\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  --consensus_taxon\
+    \ CONSENSUS_TAXON\n                        threshold for accepting a consensus\
+    \ taxon (default:\n                        50.0)\n  --trusted_scaffold TRUSTED_SCAFFOLD\n\
+    \                        threshold for treating a scaffold as trusted (default:\n\
+    \                        50.0)\n  --common_taxa COMMON_TAXA\n                \
+    \        threshold for treating a taxon as common (default:\n                \
+    \        5.0)\n  --congruent_scaffold CONGRUENT_SCAFFOLD\n                   \
+    \     threshold for treating a scaffold as congruent\n                       \
+    \ (default: 10.0)\n  --min_classified_per MIN_CLASSIFIED_PER\n               \
+    \         minimum percentage of genes with a classification to\n             \
+    \           filter a scaffold (default: 25.0)\n  --min_classified MIN_CLASSIFIED\n\
+    \                        minimum number of classified genes required to filter\n\
+    \                        a scaffold (default: 5)\n  --consensus_scaffold CONSENSUS_SCAFFOLD\n\
+    \                        threshold of consensus taxon for filtering a scaffold\n\
+    \                        (default: 50.0)\n  -c, --cpus CPUS       number of CPUs\
+    \ to use (default: 1)\n  --silent              suppress output of logger\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refinem:0.1.2--pyh3252c3a_0
+- !Command
+  command:
+  - refinem
+  - filter_bins
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: genome_nt_dir
+    description: directory containing nucleotide scaffolds for each
+  - !Positional
+    optional: false
+    position: 1
+    name: genome
+    description: filter_file           file specifying scaffolds to remove
+  - !Positional
+    optional: false
+    position: 2
+    name: output_dir
+    description: output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --genome_ext
+    description: "extension of genomes (other files in directory are\nignored) (default:\
+      \ fna)"
+    args: !SimpleFlagArg
+      name: GENOME_EXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --modified_only
+    description: only copy modified bins to the output folder
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output of logger
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refinem filter_bins [-h] [-x GENOME_EXT] [--modified_only] [--silent]\n\
+    \                           genome_nt_dir filter_file output_dir\n\nRemove scaffolds\
+    \ across a set of bins.\n\npositional arguments:\n  genome_nt_dir         directory\
+    \ containing nucleotide scaffolds for each\n                        genome\n \
+    \ filter_file           file specifying scaffolds to remove\n  output_dir    \
+    \        output directory\n\noptional arguments:\n  -h, --help            show\
+    \ this help message and exit\n  -x, --genome_ext GENOME_EXT\n                \
+    \        extension of genomes (other files in directory are\n                \
+    \        ignored) (default: fna)\n  --modified_only       only copy modified bins\
+    \ to the output folder\n  --silent              suppress output of logger\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refinem:0.1.2--pyh3252c3a_0
+- !Command
+  command:
+  - refinem
+  - call_genes
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: genome_nt_dir
+    description: directory containing nucleotide scaffolds for each
+  - !Positional
+    optional: false
+    position: 1
+    name: genome
+    description: output_dir            output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    - --unbinned_file
+    description: call genes on unbinned scaffolds
+    args: !SimpleFlagArg
+      name: UNBINNED_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --genome_ext
+    description: "extension of genomes (other files in directory are\nignored) (default:\
+      \ fna)"
+    args: !SimpleFlagArg
+      name: GENOME_EXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cpus
+    description: 'number of CPUs to use (default: 1)'
+    args: !SimpleFlagArg
+      name: CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output of logger
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refinem call_genes [-h] [-u UNBINNED_FILE] [-x GENOME_EXT] [-c\
+    \ CPUS]\n                          [--silent]\n                          genome_nt_dir\
+    \ output_dir\n\nIdentify genes within genomes.\n\npositional arguments:\n  genome_nt_dir\
+    \         directory containing nucleotide scaffolds for each\n               \
+    \         genome\n  output_dir            output directory\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -u, --unbinned_file\
+    \ UNBINNED_FILE\n                        call genes on unbinned scaffolds\n  -x,\
+    \ --genome_ext GENOME_EXT\n                        extension of genomes (other\
+    \ files in directory are\n                        ignored) (default: fna)\n  -c,\
+    \ --cpus CPUS       number of CPUs to use (default: 1)\n  --silent           \
+    \   suppress output of logger\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refinem:0.1.2--pyh3252c3a_0
+- !Command
+  command:
+  - refinem
+  - genome_stats
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: scaffold_stats_file
+    description: file with statistics for each scaffold
+  - !Positional
+    optional: false
+    position: 1
+    name: output_file
+    description: output file with genome statistics
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cpus
+    description: 'number of CPUs to use (default: 1)'
+    args: !SimpleFlagArg
+      name: CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: 'suppress output of logger (default: False)'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refinem genome_stats [-h] [-c CPUS] [--silent]\n            \
+    \                scaffold_stats_file output_file\n\nCalculate statistics for genomes.\n\
+    \npositional arguments:\n  scaffold_stats_file   file with statistics for each\
+    \ scaffold\n  output_file           output file with genome statistics\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  -c CPUS,\
+    \ --cpus CPUS  number of CPUs to use (default: 1)\n  --silent              suppress\
+    \ output of logger (default: False)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refinem:0.1.2--pyh3252c3a_0
+- !Command
+  command:
+  - refinem
+  - taxon_profile
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: genome_prot_dir
+    description: directory containing amino acid genes for each genome
+  - !Positional
+    optional: false
+    position: 1
+    name: scaffold_stats_file
+    description: file with statistics for each scaffold
+  - !Positional
+    optional: false
+    position: 2
+    name: db_file
+    description: DIAMOND database of reference genomes
+  - !Positional
+    optional: false
+    position: 3
+    name: taxonomy_file
+    description: taxonomic assignment of each reference genomes
+  - !Positional
+    optional: false
+    position: 4
+    name: output_dir
+    description: output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --per_to_classify
+    description: "minimum percentage of genes to assign a scaffold to a\ntaxonomic\
+      \ group (default: 20.0)"
+    args: !SimpleFlagArg
+      name: PER_TO_CLASSIFY
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --evalue
+    description: 'e-value of valid hits (default: 0.001)'
+    args: !SimpleFlagArg
+      name: EVALUE
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --per_identity
+    description: 'percent identity of valid hits (default: 30.0)'
+    args: !SimpleFlagArg
+      name: PER_IDENTITY
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --per_aln_len
+    description: "minimum percent coverage of query sequence for\nreporting an alignment\
+      \ (default: 50.0)"
+    args: !SimpleFlagArg
+      name: PER_ALN_LEN
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --protein_ext
+    description: "extension of amino acid gene files (other files in\ndirectory are\
+      \ ignored) (default: faa)"
+    args: !SimpleFlagArg
+      name: PROTEIN_EXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --tmpdir
+    description: "specify alternative directory for temporary files\n(default: /tmp)"
+    args: !SimpleFlagArg
+      name: TMPDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cpus
+    description: 'number of CPUs to use (default: 1)'
+    args: !SimpleFlagArg
+      name: CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output of logger
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refinem taxon_profile [-h] [-p PER_TO_CLASSIFY] [-e EVALUE]\n\
+    \                             [-i PER_IDENTITY] [-a PER_ALN_LEN]\n           \
+    \                  [-x PROTEIN_EXT] [--tmpdir TMPDIR] [-c CPUS]\n            \
+    \                 [--silent]\n                             genome_prot_dir scaffold_stats_file\
+    \ db_file\n                             taxonomy_file output_dir\n\nGenerate taxonomic\
+    \ profile of genes across scaffolds within a genome.\n\npositional arguments:\n\
+    \  genome_prot_dir       directory containing amino acid genes for each genome\n\
+    \  scaffold_stats_file   file with statistics for each scaffold\n  db_file   \
+    \            DIAMOND database of reference genomes\n  taxonomy_file         taxonomic\
+    \ assignment of each reference genomes\n  output_dir            output directory\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -p, --per_to_classify PER_TO_CLASSIFY\n                        minimum percentage\
+    \ of genes to assign a scaffold to a\n                        taxonomic group\
+    \ (default: 20.0)\n  -e, --evalue EVALUE   e-value of valid hits (default: 0.001)\n\
+    \  -i, --per_identity PER_IDENTITY\n                        percent identity of\
+    \ valid hits (default: 30.0)\n  -a, --per_aln_len PER_ALN_LEN\n              \
+    \          minimum percent coverage of query sequence for\n                  \
+    \      reporting an alignment (default: 50.0)\n  -x, --protein_ext PROTEIN_EXT\n\
+    \                        extension of amino acid gene files (other files in\n\
+    \                        directory are ignored) (default: faa)\n  --tmpdir TMPDIR\
+    \       specify alternative directory for temporary files\n                  \
+    \      (default: /tmp)\n  -c, --cpus CPUS       number of CPUs to use (default:\
+    \ 1)\n  --silent              suppress output of logger\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refinem:0.1.2--pyh3252c3a_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n                ...::: RefineM v0.1.2 :::...\n\n    Scaffold statistics:\n\
+  \     scaffold_stats -> Calculate statistics for scaffolds\n     genome_stats  \
+  \ -> Calculate statistics for genomes\n\n    Reduce contamination:\n     outliers\
+  \       -> Identify scaffolds with divergent GC, coverage, or tetranucleotide signatures\n\
+  \     taxon_profile  -> Generate a taxonomic profile from the genes within a genome\n\
+  \     taxon_filter   -> Identify scaffolds with divergent taxonomic classification\n\
+  \     ssu_erroneous  -> Identify scaffolds with erroneous 16S rRNA genes\n\n   \
+  \ Modify genome(s):\n     modify_bin     -> Modify scaffolds in a single bin\n \
+  \    filter_bins    -> Remove scaffolds across a set of bins\n\n    Utility functions:\n\
+  \     call_genes     -> Identify genes within genomes\n\n  Use: refinem <command>\
+  \ -h for command specific help.\n\n  Feature requests or bug reports can be sent\
+  \ to Donovan Parks (donovan.parks@gmail.com)\n    or posted on GitHub (https://github.com/dparks1134/refinem).\n\
+  \    \n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/refinem:0.1.2--pyh3252c3a_0

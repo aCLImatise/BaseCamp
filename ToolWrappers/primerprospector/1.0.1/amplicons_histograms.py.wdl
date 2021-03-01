@@ -16,6 +16,9 @@ task AmpliconsHistogramspy {
       ~{if defined(tax_a_map) then ("--taxa_map " +  '"' + tax_a_map + '"') else ""} \
       ~{if defined(amplicons_file_path) then ("--amplicons_filepath " +  '"' + amplicons_file_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     output_dir: "Specify output directory for amplicons and reads.\\n[default: .]"

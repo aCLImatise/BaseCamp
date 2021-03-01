@@ -10,6 +10,9 @@ task AddGeneAnnotationpl {
       ~{data_file} \
       ~{organism}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_file: ""
     organism: ""

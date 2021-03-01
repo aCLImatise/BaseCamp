@@ -44,6 +44,9 @@ task SVrefine {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(out_ref) then ("--outref " +  '"' + out_ref + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Specify a BAM file produced by MiniMap2 with the alignments to be\\nused for retrieving SV sequence information. (Either a BAM file or a\\nMUMmer-generated delta file is required)."
     delta: "Specify a delta file produced by MUMmer with the alignments to be\\nused for retrieving SV sequence information. Generally, one would\\nuse the same filtered delta file that was used to create the \\\"diff\\\"\\nfile (see below). (Either a BAM file or a MUMmer-generated delta\\nfile is required)."

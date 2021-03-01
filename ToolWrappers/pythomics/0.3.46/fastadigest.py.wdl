@@ -30,6 +30,9 @@ task Fastadigestpy {
       ~{if defined(max) then ("--max " +  '"' + max + '"') else ""} \
       ~{if (unique) then "--unique" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads_to_run: "Threads to run"
     fasta_file_operate: "[FASTA], --fasta [FASTA]\\nThe fasta file to operate on."

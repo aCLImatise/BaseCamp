@@ -3,6 +3,7 @@ version 1.0
 task Ccrewrite {
   input {
     Boolean? debug
+    Int? level
     Boolean? write_pdb_file
     Boolean? rewrite
     String? assembly
@@ -13,6 +14,7 @@ task Ccrewrite {
   command <<<
     ccrewrite \
       ~{if (debug) then "--debug" else ""} \
+      ~{if defined(level) then ("--level " +  '"' + level + '"') else ""} \
       ~{if (write_pdb_file) then "--writePDBFile" else ""} \
       ~{if (rewrite) then "--rewrite" else ""} \
       ~{if defined(assembly) then ("--assembly " +  '"' + assembly + '"') else ""} \
@@ -20,8 +22,12 @@ task Ccrewrite {
       ~{if (throw_on_failure) then "--throwOnFailure" else ""} \
       ~{if defined(output_filename_rewritten) then ("--output " +  '"' + output_filename_rewritten + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Use MDB or PDB debug information (default=true)."
+    level: "Instrumentation level, 0 - 4 (default=4)."
     write_pdb_file: "Write MDB or PDB file (default=true)."
     rewrite: "Rewrite the assembly (default=true)."
     assembly: "Assembly to rewrite."

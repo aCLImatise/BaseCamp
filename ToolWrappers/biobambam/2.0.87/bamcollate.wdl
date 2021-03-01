@@ -4,6 +4,9 @@ task Bamcollate {
   command <<<
     bamcollate
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

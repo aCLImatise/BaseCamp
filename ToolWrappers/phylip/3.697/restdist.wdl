@@ -4,6 +4,9 @@ task Restdist {
   command <<<
     restdist
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

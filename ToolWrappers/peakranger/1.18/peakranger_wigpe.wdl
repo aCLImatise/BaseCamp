@@ -22,6 +22,9 @@ task PeakrangerWigpe {
       ~{if (arg_read_length) then "-l" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_data_file: "[ --data ] arg             the data file"
     arg_output_location: "[ --output ] arg           the output location"

@@ -4,6 +4,9 @@ task Qcreporterpy {
   command <<<
     qcreporter_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

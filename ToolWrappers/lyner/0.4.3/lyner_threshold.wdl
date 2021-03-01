@@ -8,6 +8,9 @@ task LynerThreshold {
     lyner threshold \
       ~{value}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     value: ""
   }

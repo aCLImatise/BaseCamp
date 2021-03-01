@@ -2,7 +2,7 @@ version 1.0
 
 task Refseqsplitpy {
   input {
-    File? file
+    File? read_from_file
     String? dir
     String? prefix
     String? allow_only_entries
@@ -11,15 +11,18 @@ task Refseqsplitpy {
   }
   command <<<
     refseqsplit_py \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(read_from_file) then ("--file " +  '"' + read_from_file + '"') else ""} \
       ~{if defined(dir) then ("--dir " +  '"' + dir + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(allow_only_entries) then ("-t " +  '"' + allow_only_entries + '"') else ""} \
       ~{if defined(forbid_entries_tax) then ("-T " +  '"' + forbid_entries_tax + '"') else ""} \
       ~{if (increment_output_verbosity) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: "read from FILE"
+    read_from_file: "read from FILE"
     dir: "write files to DIR"
     prefix: "only take accession with prefix PFX (default: NC)"
     allow_only_entries: "allow only entries with TAX in the taxonomy"

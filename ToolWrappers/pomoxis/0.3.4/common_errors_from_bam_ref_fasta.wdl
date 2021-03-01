@@ -14,6 +14,9 @@ task CommonErrorsFromBamRefFasta {
       ~{ref_fast_a} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     common_errors_from_bam: ""

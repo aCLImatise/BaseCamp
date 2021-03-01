@@ -3,52 +3,73 @@ command:
 - plot_cladogram.py
 positional:
 - !Positional
-  description: tab delimited input file
+  optional: false
   position: 0
   name: INPUT_FILE
-  optional: false
+  description: tab delimited input file
 - !Positional
-  description: the file for the output image
+  optional: false
   position: 1
   name: OUTPUT_FILE
-  optional: false
+  description: the file for the output image
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --max_lev
-  args: !SimpleFlagArg
-    name: MAX_LEV
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - --clade_sep
+  - --max_lev
+  - --max_point_size
+  - --min_point_size
+  - --point_edge_width
+  - --siblings_connector_width
+  - --parents_connector_width
+  - --radial_start_lev
+  - --labeled_start_lev
+  - --labeled_stop_lev
+  - --abrv_start_lev
+  - --abrv_stop_lev
+  - --expand_void_lev
+  - --class_legend_vis
+  - --colored_connector
+  - --alpha
+  - --title
+  - --sub_clade
+  - --title_font_size
+  - --right_space_prop
+  - --left_space_prop
+  - --label_font_size
+  - --background_color
+  description: set the color of the background
   args: !SimpleFlagArg
     name: CLADE_SEP
+- !Flag
   optional: true
+  synonyms:
+  - --colored_labels
+  description: draw the label with class color (1) or in black (0)
+  args: !ChoiceFlagArg
+    choices: !!set
+      '0':
+      '1':
+- !Flag
+  optional: true
+  synonyms:
+  - --class_legend_font_size
+  - --dpi
+  - --format
+  description: the format for the output file
+  args: !SimpleFlagArg
+    name: CLASS_LEGEND_FONT_SIZE
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--clade_sep CLADE_SEP\n--max_lev\
-    \ MAX_LEV\n--max_point_size MAX_POINT_SIZE\n--min_point_size MIN_POINT_SIZE\n\
-    --point_edge_width MARKEREDGEWIDTH\n--siblings_connector_width SIBLINGS_CONNECTOR_WIDTH\n\
-    --parents_connector_width PARENTS_CONNECTOR_WIDTH\n--radial_start_lev RADIAL_START_LEV\n\
-    --labeled_start_lev LABELED_START_LEV\n--labeled_stop_lev LABELED_STOP_LEV\n--abrv_start_lev\
-    \ ABRV_START_LEV\n--abrv_stop_lev ABRV_STOP_LEV\n--expand_void_lev EXPAND_VOID_LEV\n\
-    --class_legend_vis CLASS_LEGEND_VIS\n--colored_connector COLORED_CONNECTORS\n\
-    --alpha ALPHA\n--title TITLE\n--sub_clade SUB_CLADE\n--title_font_size TITLE_FONT_SIZE\n\
-    --right_space_prop R_PROP\n--left_space_prop L_PROP\n--label_font_size LABEL_FONT_SIZE\n\
-    --background_color {k,w}\nset the color of the background\n--colored_labels {0,1}\n\
-    draw the label with class color (1) or in black (0)\n--class_legend_font_size\
-    \ CLASS_LEGEND_FONT_SIZE\n--dpi DPI\n--format {png,svg,pdf}\nthe format for the\
-    \ output file\n--all_feats ALL_FEATS\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: plot_cladogram.py [-h] [--clade_sep CLADE_SEP] [--max_lev MAX_LEV]\n\
@@ -88,3 +109,4 @@ help_text: "usage: plot_cladogram.py [-h] [--clade_sep CLADE_SEP] [--max_lev MAX
   \                        the format for the output file\n  --all_feats ALL_FEATS\n"
 generated_using:
 - --help
+docker_image:

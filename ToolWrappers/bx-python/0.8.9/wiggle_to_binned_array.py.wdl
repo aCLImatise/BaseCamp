@@ -12,6 +12,9 @@ task WiggleToBinnedArraypy {
       ~{out_file} \
       ~{if defined(comp) then ("--comp " +  '"' + comp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     comp: "compression type (none, zlib, lzo)"
     score_file: ""

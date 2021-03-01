@@ -3,46 +3,62 @@ command:
 - interleave-reads.py
 positional:
 - !Positional
-  description: right
+  optional: false
   position: 0
   name: left
-  optional: false
+  description: right
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: filename
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - --info
+  description: print citation information
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -o
+  - --output
+  - --no-reformat
+  description: "Do not reformat read names or enforce consistency\n(default: False)"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: 'Overwrite output file if it exists (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gzip
+  description: 'Compress output using gzip (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bzip
+  description: 'Compress output using bzip2 (default: False)'
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: "show program's version number and exit\n--info                print\
-    \ citation information\n-h, --help            show this help message and exit\n\
-    -o filename, --output filename\n--no-reformat         Do not reformat read names\
-    \ or enforce consistency\n(default: False)\n-f, --force           Overwrite output\
-    \ file if it exists (default: False)\n--gzip                Compress output using\
-    \ gzip (default: False)\n--bzip                Compress output using bzip2 (default:\
-    \ False)"
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: interleave-reads.py [--version] [--info] [-h] [-o filename]\n \
   \                          [--no-reformat] [-f] [--gzip | --bzip]\n            \
   \               left right\n\nProduce interleaved files from R1/R2 paired files\n\
@@ -63,3 +79,4 @@ help_text: "usage: interleave-reads.py [--version] [--info] [-h] [-o filename]\n
   \            tests/test-data/paired.fq.2 -o paired.fq\n"
 generated_using:
 - --help
+docker_image:

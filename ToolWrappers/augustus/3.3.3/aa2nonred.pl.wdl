@@ -22,6 +22,9 @@ task Aa2nonredpl {
       ~{if (diamond) then "--diamond" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_id: "maximum percent identity between to sequences\\n(#identical aa) / (length of shorter sequence) default: 0.8"
     blast_path: "path to blast (only implemented for NCBI BLAST)"

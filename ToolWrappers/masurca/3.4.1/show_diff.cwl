@@ -3,23 +3,23 @@ id: show_diff.cwl
 inputs:
 - id: in_output_diff_information
   doc: Output diff information as AMOS features
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_do_show_header
   doc: Do not show header
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -H
-- id: in_show_diff_information
+- id: in_show_diff_information_queries
   doc: Show diff information for queries
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
-- id: in_show_information_defaultoutputs
+- id: in_show_diff_information_defaultoutputs
   doc: "Show diff information for references (default)\nOutputs a list of structural\
     \ differences for each sequence in"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_delta_file
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - show-diff

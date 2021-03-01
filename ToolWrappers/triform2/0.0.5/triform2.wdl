@@ -28,6 +28,9 @@ task Triform2 {
       ~{if defined(flank_distance) then ("--flank-distance " +  '"' + flank_distance + '"') else ""} \
       ~{if defined(min_enrichment) then ("--min-enrichment " +  '"' + min_enrichment + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     treatment: "Treatment (pull-down) file(s) in\\nbam/bed/bed.gz/bed.bz2 format."
     control: "Control (input) file(s) in bam/bed/bed.gz/bed.bz2\\nformat."

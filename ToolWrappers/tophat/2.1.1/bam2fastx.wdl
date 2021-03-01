@@ -6,7 +6,7 @@ task Bam2fastx {
     Boolean? paired_reads_expected
     Boolean? convert_unmapped_reads
     Boolean? map_ed_only
-    Boolean? p_append_suffixes
+    Boolean? p_append_read
     Boolean? ignore_quality_values
     Boolean? color
     Boolean? sam
@@ -19,19 +19,22 @@ task Bam2fastx {
       ~{if (paired_reads_expected) then "-P" else ""} \
       ~{if (convert_unmapped_reads) then "-Q" else ""} \
       ~{if (map_ed_only) then "--maped-only" else ""} \
-      ~{if (p_append_suffixes) then "-N" else ""} \
+      ~{if (p_append_read) then "-N" else ""} \
       ~{if (ignore_quality_values) then "-O" else ""} \
       ~{if (color) then "--color" else ""} \
       ~{if (sam) then "--sam" else ""} \
       ~{if (fast_a) then "--fasta" else ""} \
       ~{if defined(output_file_name) then ("-o " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "convert all reads (mapped and unmapped)\\n(but discarding those flagged as QC failed, unless -Q)"
     paired_reads_expected: "paired reads are expected and converted into two output\\nfiles (see <outfname> comments below)"
     convert_unmapped_reads: "convert unmapped reads even when flagged as QC failed"
     map_ed_only: "convert only mapped reads"
-    p_append_suffixes: "for -P, append  /1 and /2 suffixes to read names"
+    p_append_read: "for -P, append  /1 and /2 suffixes to read names"
     ignore_quality_values: "ignore the original quality values (OQ tag) and write the\\ncurrent quality values (default is to use OQ data if found)"
     color: "reads are in ABI SOLiD color format"
     sam: "input is a SAM text file (default: BAM input expected)"

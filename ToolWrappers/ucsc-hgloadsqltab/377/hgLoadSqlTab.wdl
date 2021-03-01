@@ -8,18 +8,21 @@ task HgLoadSqlTab {
     String database
     String table
     File file_dot_sql
-    File file
+    File var_file
   }
   command <<<
     hgLoadSqlTab \
       ~{database} \
       ~{table} \
       ~{file_dot_sql} \
-      ~{file} \
+      ~{var_file} \
       ~{if (warn) then "-warn" else ""} \
       ~{if (not_on_server) then "-notOnServer" else ""} \
       ~{if (old_table) then "-oldTable" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     warn: "- warn instead of abort on mysql errors or warnings"
     not_on_server: "- file is *not* in a directory that the mysql server can see"
@@ -27,7 +30,7 @@ task HgLoadSqlTab {
     database: ""
     table: ""
     file_dot_sql: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

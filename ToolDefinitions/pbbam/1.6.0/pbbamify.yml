@@ -1,0 +1,87 @@
+!Command
+command:
+- pbbamify
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ref.fa
+  description: FILE  Reference used to align the input.
+- !Positional
+  optional: false
+  position: 1
+  name: IN.bam
+  description: 'FILE  Input file(s). Maybe one of: DataSetXML, BAM file(s), or FOFN'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --input
+  description: FILE  The aligned non-PacBio BAM file. If not provided, stdin will
+    be used as input.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: FILE  Path to the output BAM file. If not specified, output will be
+    to the stdout.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose-level
+  description: "INT   Specifies the level of info which will be output produced on\
+    \ stderr. 0 turns all output off, 1\noutputs only warnings, while levels 2 and\
+    \ above outputs a status message every 1000000 (2),\n100000 (3), 1000 (4), 100\
+    \ (5), 10 (6) and 1 (7) reads. [3]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [INFO]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE  Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "pbbamify - pbbamify converts an arbitray aligned BAM file to a PacBio-compatible\
+  \ BAM file.Input BAM file is read from a\n           file or stdin, the raw-reads\
+  \ PacBio BAM is givenas a parameter, and BAM output is written to stdout.\n\nUsage:\n\
+  \  pbbamify [options] <ref.fa> <IN.bam>\n\n  ref.fa           FILE  Reference used\
+  \ to align the input.\n  IN.bam           FILE  Input file(s). Maybe one of: DataSetXML,\
+  \ BAM file(s), or FOFN\n\n  --input          FILE  The aligned non-PacBio BAM file.\
+  \ If not provided, stdin will be used as input.\n  --output         FILE  Path to\
+  \ the output BAM file. If not specified, output will be to the stdout.\n  --verbose-level\
+  \  INT   Specifies the level of info which will be output produced on stderr. 0\
+  \ turns all output off, 1\n                         outputs only warnings, while\
+  \ levels 2 and above outputs a status message every 1000000 (2),\n             \
+  \            100000 (3), 1000 (4), 100 (5), 10 (6) and 1 (7) reads. [3]\n\n  -h,--help\
+  \              Show this help and exit.\n  --version              Show application\
+  \ version and exit.\n  --log-level      STR   Set log level. Valid choices: (TRACE,\
+  \ DEBUG, INFO, WARN, FATAL). [INFO]\n  --log-file       FILE  Log to a file, instead\
+  \ of stderr.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pbbam:1.6.0--h5b7e6e0_0

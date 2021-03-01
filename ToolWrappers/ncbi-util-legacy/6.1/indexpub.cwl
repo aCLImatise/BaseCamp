@@ -3,17 +3,17 @@ id: indexpub.cwl
 inputs:
 - id: in_input_data_default
   doc: "Input data [Data In]\ndefault = medline.val\nData Type = Pub-set"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_input_data_binary
   doc: "Input data is binary [T/F]  Optional\ndefault = T"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in_output_index_table
   doc: "Output index table [File Out]\ndefault = medline.idx\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: -t
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_index_table
   doc: "Output index table [File Out]\ndefault = medline.idx\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_index_table)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - indexpub

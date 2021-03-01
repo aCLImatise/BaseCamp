@@ -14,6 +14,9 @@ task CnvkitpyAntitarget {
       ~{if defined(min_size) then ("--min-size " +  '"' + min_size + '"') else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     access: "Regions of accessible sequence on chromosomes (.bed),\\nas output by genome2access.py."
     avg_size: "Average size of antitarget bins (results are\\napproximate). [Default: 150000]"

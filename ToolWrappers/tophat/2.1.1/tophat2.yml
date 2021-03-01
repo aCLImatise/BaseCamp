@@ -3,172 +3,460 @@ command:
 - tophat2
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: tophat
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: bowtie_index
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "-o/--output-dir                <string>    [ default: ./tophat_out\
-    \         ]\n--bowtie1                                  [ default: bowtie2   \
-    \           ]\n-N/--read-mismatches           <int>       [ default: 2       \
-    \             ]\n--read-gap-length              <int>       [ default: 2     \
-    \               ]\n--read-edit-dist               <int>       [ default: 2   \
-    \                 ]\n--read-realign-edit-dist       <int>       [ default: \"\
-    read-edit-dist\" + 1 ]\n-a/--min-anchor                <int>       [ default:\
-    \ 8                    ]\n-m/--splice-mismatches         <0-2>       [ default:\
-    \ 0                    ]\n-i/--min-intron-length         <int>       [ default:\
-    \ 50                   ]\n-I/--max-intron-length         <int>       [ default:\
-    \ 500000               ]\n-g/--max-multihits             <int>       [ default:\
-    \ 20                   ]\n--suppress-hits\n-x/--transcriptome-max-hits    <int>\
-    \       [ default: 60                   ]\n-M/--prefilter-multihits          \
-    \         ( for -G/--GTF option, enable\nan initial bowtie search\nagainst the\
-    \ genome )\n--max-insertion-length         <int>       [ default: 3          \
-    \          ]\n--max-deletion-length          <int>       [ default: 3        \
-    \            ]\n--solexa-quals\n--solexa1.3-quals                          (same\
-    \ as phred64-quals)\n--phred64-quals                            (same as solexa1.3-quals)\n\
-    -Q/--quals\n--integer-quals\n-C/--color                                 (Solid\
-    \ - color space)\n--color-out\n--library-type                 <string>    (fr-unstranded,\
-    \ fr-firststrand,\nfr-secondstrand)\n-p/--num-threads               <int>    \
-    \   [ default: 1                   ]\n-R/--resume                    <out_dir>\
-    \   ( try to resume execution )\n-G/--GTF                       <filename>  (GTF/GFF\
-    \ with known transcripts)\n--transcriptome-index          <bwtidx>    (transcriptome\
-    \ bowtie index)\n-T/--transcriptome-only                    (map only to the transcriptome)\n\
-    -j/--raw-juncs                 <filename>\n--insertions                   <filename>\n\
-    --deletions                    <filename>\n-r/--mate-inner-dist           <int>\
-    \       [ default: 50                  ]\n--mate-std-dev                 <int>\
-    \       [ default: 20                  ]\n--no-novel-juncs\n--no-novel-indels\n\
-    --no-gtf-juncs\n--no-coverage-search\n--coverage-search\n--microexon-search\n\
-    --keep-tmp\n--tmp-dir                      <dirname>   [ default: <output_dir>/tmp\
-    \ ]\n-z/--zpacker                   <program>   [ default: gzip             ]\n\
-    -X/--unmapped-fifo                         [use mkfifo to compress more temporary\n\
-    files for color space reads]"
-  synonyms:
-  - -v/--version
-  args: !EmptyFlagArg {}
   optional: true
+  synonyms:
+  - --bowtie1
+  description: '[ default: bowtie2              ]'
+  args: !EmptyFlagArg {}
 - !Flag
-  description: "--no-discordant\n--no-mixed\n--segment-mismatches           <int>\
-    \       [ default: 2                ]\n--segment-length               <int>  \
-    \     [ default: 25               ]\n--bowtie-n                              \
-    \   [ default: bowtie -v        ]\n--min-coverage-intron          <int>      \
-    \ [ default: 50               ]\n--max-coverage-intron          <int>       [\
-    \ default: 20000            ]\n--min-segment-intron           <int>       [ default:\
-    \ 50               ]\n--max-segment-intron           <int>       [ default: 500000\
-    \           ]\n--no-sort-bam                              (Output BAM is not coordinate-sorted)\n\
-    --no-convert-bam                           (Do not output bam format.\nOutput\
-    \ is <output_dir>/accepted_hits.sam)\n--keep-fasta-order\n--allow-partial-mapping"
+  optional: true
+  synonyms:
+  - -N
+  - --read-mismatches
+  description: '<int>       [ default: 2                    ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --read-gap-length
+  description: '<int>       [ default: 2                    ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --read-edit-dist
+  description: '<int>       [ default: 2                    ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --read-realign-edit-dist
+  description: '<int>       [ default: "read-edit-dist" + 1 ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --min-anchor
+  description: '<int>       [ default: 8                    ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --min-intron-length
+  description: '<int>       [ default: 50                   ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --max-intron-length
+  description: '<int>       [ default: 500000               ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --max-multihits
+  description: '<int>       [ default: 20                   ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --suppress-hits
+  - -x
+  - --transcriptome-max-hits
+  description: '<int>       [ default: 60                   ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --prefilter-multihits
+  description: "( for -G/--GTF option, enable\nan initial bowtie search\nagainst the\
+    \ genome )"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-insertion-length
+  description: '<int>       [ default: 3                    ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-deletion-length
+  description: '<int>       [ default: 3                    ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --solexa-quals
+  - --solexa1.3-quals
+  description: (same as phred64-quals)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --phred64-quals
+  description: (same as solexa1.3-quals)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  - --quals
+  - --integer-quals
+  - -C
+  - --color
+  description: (Solid - color space)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --color-out
+  - --library-type
+  description: "<string>    (fr-unstranded, fr-firststrand,\nfr-secondstrand)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --num-threads
+  description: '<int>       [ default: 1                   ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --resume
+  description: <out_dir>   ( try to resume execution )
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  - --GTF
+  description: <filename>  (GTF/GFF with known transcripts)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --transcriptome-index
+  description: <bwtidx>    (transcriptome bowtie index)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --transcriptome-only
+  description: (map only to the transcriptome)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --raw-juncs
+  description: <filename>
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --insertions
+  description: <filename>
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --deletions
+  description: <filename>
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --mate-inner-dist
+  description: '<int>       [ default: 50                  ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mate-std-dev
+  description: '<int>       [ default: 20                  ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-novel-juncs
+  - --no-novel-indels
+  - --no-gtf-juncs
+  - --no-coverage-search
+  - --coverage-search
+  - --microexon-search
+  - --keep-tmp
+  - --tmp-dir
+  description: '<dirname>   [ default: <output_dir>/tmp ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --zpacker
+  description: '<program>   [ default: gzip             ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --unmapped-fifo
+  description: "[use mkfifo to compress more temporary\nfiles for color space reads]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --report-secondary-alignments
+  - --no-discordant
+  - --no-mixed
+  - --segment-mismatches
+  description: '<int>       [ default: 2                ]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<func>      [ default: S,1,1.25         ]'
+  optional: true
+  synonyms:
+  - --segment-length
+  description: '<int>       [ default: 25               ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bowtie-n
+  description: '[ default: bowtie -v        ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-coverage-intron
+  description: '<int>       [ default: 50               ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-coverage-intron
+  description: '<int>       [ default: 20000            ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-segment-intron
+  description: '<int>       [ default: 50               ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-segment-intron
+  description: '<int>       [ default: 500000           ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-sort-bam
+  description: (Output BAM is not coordinate-sorted)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-convert-bam
+  description: "(Do not output bam format.\nOutput is <output_dir>/accepted_hits.sam)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --b2-N
+  description: '<int>       [ default: 0                ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --b2-L
+  description: '<int>       [ default: 20               ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --b2-i
+  description: '<func>      [ default: S,1,1.25         ]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<func>      [ default: L,0,0.15         ]'
+  optional: true
   synonyms:
   - --b2-n-ceil
+  description: '<func>      [ default: L,0,0.15         ]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<int>,<int> [ default: 6,2              ]'
+  optional: true
+  synonyms:
+  - --b2-gbar
+  description: '<int>       [ default: 4                ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --b2-mp
+  description: '<int>,<int> [ default: 6,2              ]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<int>,<int> [ default: 5,3              ]'
+  optional: true
+  synonyms:
+  - --b2-np
+  description: '<int>       [ default: 1                ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --b2-rdg
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: '<int>,<int> [ default: 5,3              ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --b2-rfg
+  description: '<int>,<int> [ default: 5,3              ]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<func>      [ default: L,-0.6,-0.6      ]'
+  optional: true
   synonyms:
   - --b2-score-min
+  description: '<func>      [ default: L,-0.6,-0.6      ]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "--fusion-anchor-length         <int>       [ default: 20         \
-    \      ]\n--fusion-min-dist              <int>       [ default: 10000000     \
-    \    ]\n--fusion-read-mismatches       <int>       [ default: 2              \
-    \  ]\n--fusion-multireads            <int>       [ default: 2                ]\n\
-    --fusion-multipairs            <int>       [ default: 2                ]\n--fusion-ignore-chromosomes\
-    \    <list>      [ e.g, <chrM,chrX>          ]\n--fusion-do-not-resolve-conflicts\
-    \          [this is for test purposes  ]"
+  optional: true
+  synonyms:
+  - --b2-D
+  description: '<int>       [ default: 15               ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --b2-R
+  description: '<int>       [ default: 2                ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --fusion-search
+  - --fusion-anchor-length
+  description: '<int>       [ default: 20               ]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <string>    (read group ID)
+  optional: true
+  synonyms:
+  - --fusion-min-dist
+  description: '<int>       [ default: 10000000         ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fusion-read-mismatches
+  description: '<int>       [ default: 2                ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fusion-multireads
+  description: '<int>       [ default: 2                ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fusion-multipairs
+  description: '<int>       [ default: 2                ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fusion-ignore-chromosomes
+  description: <list>      [ e.g, <chrM,chrX>          ]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fusion-do-not-resolve-conflicts
+  description: '[this is for test purposes  ]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --rg-id
+  description: <string>    (read group ID)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <string>    (sample ID)
+  optional: true
   synonyms:
   - --rg-sample
+  description: <string>    (sample ID)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <string>    (library ID)
+  optional: true
   synonyms:
   - --rg-library
+  description: <string>    (library ID)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <string>    (descriptive string, no tabs allowed)
+  optional: true
   synonyms:
   - --rg-description
+  description: <string>    (descriptive string, no tabs allowed)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <string>    (e.g Illumina lane ID)
+  optional: true
   synonyms:
   - --rg-platform-unit
+  description: <string>    (e.g Illumina lane ID)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <string>    (sequencing center name)
+  optional: true
   synonyms:
   - --rg-center
+  description: <string>    (sequencing center name)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <string>    (ISO 8601 date of the sequencing run)
+  optional: true
   synonyms:
   - --rg-date
+  description: <string>    (ISO 8601 date of the sequencing run)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <string>    (Sequencing platform descriptor)
+  optional: true
   synonyms:
   - --rg-platform
+  description: <string>    (Sequencing platform descriptor)
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag:
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  - -o
+  - --output-dir
+  description: '<string>    [ default: ./tophat_out         ]'
+  args: !EmptyFlagArg {}
 help_text: "tophat: \nTopHat maps short sequences from spliced transcripts to whole\
   \ genomes.\n\nUsage:\n    tophat [options] <bowtie_index> <reads1[,reads2,...]>\
   \ [reads1[,reads2,...]] \\\n                                    [quals1,[quals2,...]]\
@@ -254,3 +542,4 @@ help_text: "tophat: \nTopHat maps short sequences from spliced transcripts to wh
   \ platform descriptor)\n\n    for detailed help see http://ccb.jhu.edu/software/tophat/manual.shtml\n"
 generated_using:
 - --help
+docker_image:

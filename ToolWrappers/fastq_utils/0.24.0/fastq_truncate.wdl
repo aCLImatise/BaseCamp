@@ -10,6 +10,9 @@ task FastqTruncate {
       ~{fast_q_one} \
       ~{num_reads}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q_one: ""
     num_reads: ""

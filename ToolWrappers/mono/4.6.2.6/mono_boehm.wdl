@@ -36,6 +36,9 @@ task Monoboehm {
       ~{if (no_llvm) then "--nollvm" else ""} \
       ~{if (gc) then "--gc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aot: "[=<options>]      Compiles the assembly to native code"
     debug: "[=<options>]    Enable debugging support, use --help-debug for details"

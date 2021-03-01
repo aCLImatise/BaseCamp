@@ -1,19 +1,19 @@
 class: CommandLineTool
 id: bl_insert_stats.cwl
 inputs:
-- id: in_specify_sam_file
+- id: in_specify_input_file
   doc: specify the SAM input file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
-- id: in_specify_stats_file
+- id: in_specify_output_file
   doc: specify the STATS output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_maxinsert_bin_allocated
   doc: MAX_INSERT bin allocated for the histogram
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
 - id: in_insert_stats
@@ -25,11 +25,12 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_specify_stats_file
+- id: out_specify_output_file
   doc: specify the STATS output file
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_specify_stats_file)
+    glob: $(inputs.in_specify_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bl-insert-stats

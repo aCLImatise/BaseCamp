@@ -16,6 +16,9 @@ task TaxmapperPlot {
       ~{if defined(counts) then ("--counts " +  '"' + counts + '"') else ""} \
       ~{if defined(plot) then ("--plot " +  '"' + plot + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tax_a: "Taxonomy file(s), counted taxa for a taxonomic\\nhierarchy"
     samples: "Optional sample names, sample names have to be in the\\nsame order as taxonomy input files. If no samplenames\\nare provided, the base names of the taxa file(s) will\\nbe used."

@@ -10,6 +10,9 @@ task GcloudComponentsRestore {
       ~{optional} \
       ~{flags}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     optional: ""
     flags: ""

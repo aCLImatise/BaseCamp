@@ -2,134 +2,128 @@
 command:
 - tombo
 - test_significance
-positional:
-- !Positional
-  description: '[--control-fast5-basedirs CONTROL_FAST5_BASEDIRS [CONTROL_FAST5_BASEDIRS
-    ...]]'
-  position: 0
-  name: STATISTICS_FILE_BASENAME
-  optional: false
+positional: []
 named:
 - !Flag
-  description: Directories containing fast5 files.
+  optional: true
   synonyms:
   - --fast5-basedirs
+  description: Directories containing fast5 files.
   args: !RepeatFlagArg
     name: FAST5_BASEDIRS
-  optional: true
 - !Flag
-  description: "File base name to save base by base statistics from\ntesting. Filenames\
-    \ will be [--statistics-file-basename\n].[--alternate-bases]?.tombo.stats"
+  optional: true
   synonyms:
   - --statistics-file-basename
+  description: "File base name to save base by base statistics from\ntesting. Filenames\
+    \ will be [--statistics-file-basename\n].[--alternate-bases]?.tombo.stats"
   args: !SimpleFlagArg
     name: STATISTICS_FILE_BASENAME
-  optional: true
 - !Flag
-  description: "Control set of directories containing fast5 files.\nThese reads should\
-    \ contain only standard nucleotides."
+  optional: true
   synonyms:
   - --control-fast5-basedirs
+  description: "Control set of directories containing fast5 files.\nThese reads should\
+    \ contain only standard nucleotides."
   args: !RepeatFlagArg
     name: CONTROL_FAST5_BASEDIRS
-  optional: true
 - !Flag
-  description: "Tombo model for event-less resquiggle and significance\ntesting. If\
-    \ no model is provided the default DNA or\nRNA tombo model will be used."
+  optional: true
   synonyms:
   - --tombo-model-filename
+  description: "Tombo model for event-less resquiggle and significance\ntesting. If\
+    \ no model is provided the default DNA or\nRNA tombo model will be used."
   args: !SimpleFlagArg
     name: TOMBO_MODEL_FILENAME
-  optional: true
 - !Flag
-  description: "Tombo models for alternative likelihood ratio\nsignificance testing."
+  optional: true
   synonyms:
   - --alternate-model-filenames
+  description: "Tombo models for alternative likelihood ratio\nsignificance testing."
   args: !RepeatFlagArg
     name: ALTERNATE_MODEL_FILENAMES
-  optional: true
 - !Flag
-  description: "[{5mC} ...]\nDefault non-standard base model for testing."
+  optional: true
   synonyms:
   - --alternate-bases
+  description: "[{5mC} ...]\nDefault non-standard base model for testing."
   args: !ChoiceFlagArg
     choices: !!set
       5mC:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fishers-method-context
   description: "Number of context bases up and downstream over which\nto compute Fisher's\
     \ method combined p-values. Note:\nNot applicable for alternative model likelihood\
     \ ratio\ntests. Default: 1."
-  synonyms:
-  - --fishers-method-context
   args: !SimpleFlagArg
     name: FISHERS_METHOD_CONTEXT
-  optional: true
 - !Flag
-  description: "Number of reads required at a position to perform\nsignificance testing\
-    \ or contribute to model\nestimation. Default: 5"
+  optional: true
   synonyms:
   - --minimum-test-reads
+  description: "Number of reads required at a position to perform\nsignificance testing\
+    \ or contribute to model\nestimation. Default: 5"
   args: !SimpleFlagArg
     name: MINIMUM_TEST_READS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --single-read-threshold
   description: "P-value or log likelihood ratio threshold when\ncomputing fraction\
     \ of significant reads at each\ngenomic position. Default: pvalue:0.01; likelihood\n\
     ratio:2"
-  synonyms:
-  - --single-read-threshold
   args: !SimpleFlagArg
     name: SINGLE_READ_THRESHOLD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --multiprocess-region-size
   description: "Size of regions over which to multiprocesses statistic\ncomputation.\
     \ For very deep samples a smaller value is\nrecommmended in order to control memory\
     \ consumption.\nDefault: 10000"
-  synonyms:
-  - --multiprocess-region-size
   args: !SimpleFlagArg
     name: MULTIPROCESS_REGION_SIZE
-  optional: true
 - !Flag
-  description: 'Number of processes. Default: 1'
+  optional: true
   synonyms:
   - --processes
+  description: 'Number of processes. Default: 1'
   args: !SimpleFlagArg
     name: PROCESSES
-  optional: true
 - !Flag
-  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
+  optional: true
   synonyms:
   - --corrected-group
+  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
   args: !SimpleFlagArg
     name: CORRECTED_GROUP
-  optional: true
 - !Flag
-  description: "FAST5 subgroup(s) (under Analyses/[corrected-group])\ncontaining basecalls.\
-    \ Default: ['BaseCalled_template']"
+  optional: true
   synonyms:
   - --basecall-subgroups
+  description: "FAST5 subgroup(s) (under Analyses/[corrected-group])\ncontaining basecalls.\
+    \ Default: ['BaseCalled_template']"
   args: !RepeatFlagArg
     name: BASECALL_SUBGROUPS
-  optional: true
 - !Flag
-  description: Don't print status information.
+  optional: true
   synonyms:
   - --quiet
   - -q
+  description: Don't print status information.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: Print this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: tombo test_significance --fast5-basedirs FAST5_BASEDIRS\n     \
@@ -187,3 +181,4 @@ help_text: "usage: tombo test_significance --fast5-basedirs FAST5_BASEDIRS\n    
   \ -h            Print this help message and exit\n"
 generated_using:
 - --help
+docker_image:

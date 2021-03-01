@@ -8,6 +8,9 @@ task GffutilscliClean {
     gffutils_cli clean \
       ~{filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: "GFF or GTF file to use"
   }

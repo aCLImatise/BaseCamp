@@ -12,6 +12,9 @@ task Ctg2umdcontig {
       ~{file_dot_id_map} \
       ~{tigr}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_dot_ctg: ""
     file_dot_id_map: ""

@@ -20,6 +20,9 @@ task MegalodonExtrasCalibrateGenerateModifiedBaseStats {
       ~{if defined(out_filename) then ("--out-filename " +  '"' + out_filename + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     control_megalodon_results_dir: "Megalodon output directory with modified base control\\nsample."
     exclude_modified_bases: "Set of modified bases (single letter codes) to\\nexclude."

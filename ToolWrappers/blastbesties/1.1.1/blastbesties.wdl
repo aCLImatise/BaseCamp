@@ -22,6 +22,9 @@ task Blastbesties {
       ~{if defined(outdir) then ("--outDir " +  '"' + outdir + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     blast_a_vb: "Blast tab result file for fastaA query against fastaB\\nsubject"
     blast_bva: "Blast tab result file for fastaB query against fastaA\\nsubject"

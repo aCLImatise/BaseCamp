@@ -16,6 +16,9 @@ task RibotricerCountorfs {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if (report_all) then "--report_all" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ribot_ricer_index: "Path to the index file of ribotricer This file\\nshould be generated using ribotricer prepare-orfs\\n[required]"
     detected_orfs: "Path to the detected orfs file This file should be\\ngenerated using ribotricer detect-orfs  [required]"

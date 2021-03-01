@@ -18,6 +18,9 @@ task Hmoment {
       ~{if (plot) then "-plot" else ""} \
       ~{if (double) then "-double" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window: "integer    [10] Window (Any integer value)"
     a_angle: "integer    [100] Alpha helix angle (degrees) (Any\\ninteger value)"

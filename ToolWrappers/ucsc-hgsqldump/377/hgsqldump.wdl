@@ -8,6 +8,9 @@ task Hgsqldump {
     hgsqldump \
       ~{database}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: ""
   }

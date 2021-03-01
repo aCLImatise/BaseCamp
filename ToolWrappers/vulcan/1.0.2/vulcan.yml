@@ -1,0 +1,167 @@
+!Command
+command:
+- vulcan
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --work_dir
+  description: 'Directory of work, store temp files, default: ./vulcan_work'
+  args: !SimpleFlagArg
+    name: WORK_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'threads, default: 1'
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --percentile
+  description: 'percentile of cut-off, default: 90'
+  args: !RepeatFlagArg
+    name: PERCENTILE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --full
+  description: keep all temp file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dry
+  description: only generate config
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --raw_edit_distance
+  description: Use raw edit distance to do the cut-off
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -clr
+  - --pacbio_clr
+  description: Input reads is pacbio CLR reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -hifi
+  - --pacbio_hifi
+  description: Input reads is pacbio hifi reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ont
+  - --nanopore
+  description: Input reads is Nanopore reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -any
+  - --anylongread
+  description: Don't know which kind of long read
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -hclr
+  - --humanclr
+  description: Human pacbio CLR read
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -hhifi
+  - --humanhifi
+  description: Human pacbio hifi reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -hont
+  - --humannanopore
+  description: Human Nanopore reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cmd
+  - --custom_cmd
+  description: Use minimap2 and NGMLR with user's own parameter setting
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: input read path, can accept multiple files
+  args: !RepeatFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: reference path
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "vulcan's output's prefix, the output will be prefix_{percentile}.bam\n"
+  args: !SimpleFlagArg
+    name: OUTPUT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: vulcan [-h] -i INPUT [INPUT ...] -r REFERENCE -o OUTPUT [-w WORK_DIR]\n\
+  \              [-t THREADS] [-p PERCENTILE [PERCENTILE ...]] [-f] [-d] [-R]\n  \
+  \            [-clr | -hifi | -ont | -any | -hclr | -hhifi | -hont | -cmd]\n\nvulcan:\
+  \ map long reads and prosper\U0001F596, a long read mapping pipeline that melds\
+  \ minimap2 and NGMLR\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -w WORK_DIR, --work_dir WORK_DIR\n                       \
+  \ Directory of work, store temp files, default: ./vulcan_work\n  -t THREADS, --threads\
+  \ THREADS\n                        threads, default: 1\n  -p PERCENTILE [PERCENTILE\
+  \ ...], --percentile PERCENTILE [PERCENTILE ...]\n                        percentile\
+  \ of cut-off, default: 90\n  -f, --full            keep all temp file\n  -d, --dry\
+  \             only generate config\n  -R, --raw_edit_distance\n                \
+  \        Use raw edit distance to do the cut-off\n  -clr, --pacbio_clr    Input\
+  \ reads is pacbio CLR reads\n  -hifi, --pacbio_hifi  Input reads is pacbio hifi\
+  \ reads\n  -ont, --nanopore      Input reads is Nanopore reads\n  -any, --anylongread\
+  \   Don't know which kind of long read\n  -hclr, --humanclr     Human pacbio CLR\
+  \ read\n  -hhifi, --humanhifi   Human pacbio hifi reads\n  -hont, --humannanopore\n\
+  \                        Human Nanopore reads\n  -cmd, --custom_cmd    Use minimap2\
+  \ and NGMLR with user's own parameter setting\n\nRequired arguments::\n  -i INPUT\
+  \ [INPUT ...], --input INPUT [INPUT ...]\n                        input read path,\
+  \ can accept multiple files\n  -r REFERENCE, --reference REFERENCE\n           \
+  \             reference path\n  -o OUTPUT, --output OUTPUT\n                   \
+  \     vulcan's output's prefix, the output will be prefix_{percentile}.bam\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/vulcan:1.0.2--0

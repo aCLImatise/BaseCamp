@@ -12,6 +12,9 @@ task AlleyoopCollapse {
       ~{if defined(output_dir) then ("--outputDir " +  '"' + output_dir + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Output directory for mapped BAM files."
     threads: "Thread number (default: 1)\\n"

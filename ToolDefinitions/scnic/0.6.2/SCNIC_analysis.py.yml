@@ -1,0 +1,371 @@
+&id001 !Command
+command:
+- SCNIC_analysis.py
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - SCNIC_analysis.py
+  - modules
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input_loc
+    description: "location of output from SCNIC_analysis.py within\n(default: None)"
+    args: !SimpleFlagArg
+      name: INPUT_LOC
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output_loc
+    description: 'output directory (default: None)'
+    args: !SimpleFlagArg
+      name: OUTPUT_LOC
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_p
+    description: "minimum p-value to determine edges, p must have been\ncalculated\
+      \ (default: None)"
+    args: !SimpleFlagArg
+      name: MIN_P
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_r
+    description: "minimum correlation value to determine edges (default:\nNone)"
+    args: !SimpleFlagArg
+      name: MIN_R
+  - !Flag
+    optional: true
+    synonyms:
+    - --method
+    description: "method to be used for determining modules, pick from:\nnaive, k_cliques\
+      \ or louvain (default: naive)"
+    args: !SimpleFlagArg
+      name: METHOD
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --k_size
+    description: "k value for use with the k-clique communities\nalgorithm (default:\
+      \ 3)"
+    args: !SimpleFlagArg
+      name: K_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gamma
+    description: "gamma value for use with louvain modularity\nmaximization, between\
+      \ 0 and 1 where 0 makes small\nmodules and 1 large modules (default: 0.1)"
+    args: !SimpleFlagArg
+      name: GAMMA
+  - !Flag
+    optional: true
+    synonyms:
+    - --table_loc
+    description: "biom table used to make network to be collapsed\n(default: None)"
+    args: !SimpleFlagArg
+      name: TABLE_LOC
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix
+    description: "prefix for module names in collapsed file (default:\nmodule)"
+    args: !SimpleFlagArg
+      name: PREFIX
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: 'give verbose messages to STDOUT (default: False)'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: SCNIC_analysis.py modules [-h] -i INPUT_LOC [-o OUTPUT_LOC]\n\
+    \                                 [--min_p MIN_P] [--min_r MIN_R]\n          \
+    \                       [--method METHOD] [-k K_SIZE] [-g GAMMA]\n           \
+    \                      [--table_loc TABLE_LOC] [--prefix PREFIX]\n           \
+    \                      [-v]\n\noptional arguments:\n  -h, --help            show\
+    \ this help message and exit\n  -i INPUT_LOC, --input_loc INPUT_LOC\n        \
+    \                location of output from SCNIC_analysis.py within\n          \
+    \              (default: None)\n  -o OUTPUT_LOC, --output_loc OUTPUT_LOC\n   \
+    \                     output directory (default: None)\n  --min_p MIN_P      \
+    \   minimum p-value to determine edges, p must have been\n                   \
+    \     calculated (default: None)\n  --min_r MIN_R         minimum correlation\
+    \ value to determine edges (default:\n                        None)\n  --method\
+    \ METHOD       method to be used for determining modules, pick from:\n       \
+    \                 naive, k_cliques or louvain (default: naive)\n  -k K_SIZE, --k_size\
+    \ K_SIZE\n                        k value for use with the k-clique communities\n\
+    \                        algorithm (default: 3)\n  -g GAMMA, --gamma GAMMA\n \
+    \                       gamma value for use with louvain modularity\n        \
+    \                maximization, between 0 and 1 where 0 makes small\n         \
+    \               modules and 1 large modules (default: 0.1)\n  --table_loc TABLE_LOC\n\
+    \                        biom table used to make network to be collapsed\n   \
+    \                     (default: None)\n  --prefix PREFIX       prefix for module\
+    \ names in collapsed file (default:\n                        module)\n  -v, --verbose\
+    \         give verbose messages to STDOUT (default: False)\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/scnic:0.6.2--py_0
+- !Command
+  command:
+  - SCNIC_analysis.py
+  - within
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input_loc
+    description: 'location of input biom file (default: None)'
+    args: !SimpleFlagArg
+      name: INPUT_LOC
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output_loc
+    description: 'output directory (default: None)'
+    args: !SimpleFlagArg
+      name: OUTPUT_LOC
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --correl_method
+    description: 'correlation method (default: sparcc)'
+    args: !SimpleFlagArg
+      name: CORREL_METHOD
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --p_adjust
+    description: 'p-value adjustment (default: fdr_bh)'
+    args: !SimpleFlagArg
+      name: P_ADJUST
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --min_sample
+    description: 'minimum number of samples present in (default: None)'
+    args: !SimpleFlagArg
+      name: MIN_SAMPLE
+  - !Flag
+    optional: true
+    synonyms:
+    - --procs
+    description: 'number of processors to use (default: 1)'
+    args: !SimpleFlagArg
+      name: PROCS
+  - !Flag
+    optional: true
+    synonyms:
+    - --sparcc_filter
+    description: 'filter as described in SparCC paper (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sparcc_p
+    description: "Calculate p-value for sparCC R value, give number of\nbootstraps\
+      \ (default: None)"
+    args: !SimpleFlagArg
+      name: SPARCC_P
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: 'give verbose messages to STDOUT (default: False)'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: SCNIC_analysis.py within [-h] -i INPUT_LOC [-o OUTPUT_LOC]\n\
+    \                                [-m CORREL_METHOD] [-a P_ADJUST]\n          \
+    \                      [-s MIN_SAMPLE] [--procs PROCS]\n                     \
+    \           [--sparcc_filter] [--sparcc_p SPARCC_P]\n                        \
+    \        [--verbose]\n\noptional arguments:\n  -h, --help            show this\
+    \ help message and exit\n  -i INPUT_LOC, --input_loc INPUT_LOC\n             \
+    \           location of input biom file (default: None)\n  -o OUTPUT_LOC, --output_loc\
+    \ OUTPUT_LOC\n                        output directory (default: None)\n  -m CORREL_METHOD,\
+    \ --correl_method CORREL_METHOD\n                        correlation method (default:\
+    \ sparcc)\n  -a P_ADJUST, --p_adjust P_ADJUST\n                        p-value\
+    \ adjustment (default: fdr_bh)\n  -s MIN_SAMPLE, --min_sample MIN_SAMPLE\n   \
+    \                     minimum number of samples present in (default: None)\n \
+    \ --procs PROCS         number of processors to use (default: 1)\n  --sparcc_filter\
+    \       filter as described in SparCC paper (default: False)\n  --sparcc_p SPARCC_P\
+    \   Calculate p-value for sparCC R value, give number of\n                   \
+    \     bootstraps (default: None)\n  --verbose             give verbose messages\
+    \ to STDOUT (default: False)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/scnic:0.6.2--py_0
+- !Command
+  command:
+  - SCNIC_analysis.py
+  - between
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    - --table1
+    description: 'table to be correlated (default: None)'
+    args: !SimpleFlagArg
+      name: TABLE1
+  - !Flag
+    optional: true
+    synonyms:
+    - '-2'
+    - --table2
+    description: 'second table to be correlated (default: None)'
+    args: !SimpleFlagArg
+      name: TABLE2
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output_loc
+    description: 'output file location (default: None)'
+    args: !SimpleFlagArg
+      name: OUTPUT_LOC
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --correl_method
+    description: 'correlation method (default: spearman)'
+    args: !SimpleFlagArg
+      name: CORREL_METHOD
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --p_adjust
+    description: 'p-value adjustment (default: fdr_bh)'
+    args: !SimpleFlagArg
+      name: P_ADJUST
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --min_sample
+    description: 'minimum number of samples present in (default: None)'
+    args: !SimpleFlagArg
+      name: MIN_SAMPLE
+  - !Flag
+    optional: true
+    synonyms:
+    - --max_p
+    description: 'minimum p-value to determine edges (default: None)'
+    args: !SimpleFlagArg
+      name: MAX_P
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_r
+    description: 'minimum R to determine edges (default: None)'
+    args: !SimpleFlagArg
+      name: MIN_R
+  - !Flag
+    optional: true
+    synonyms:
+    - --sparcc_filter
+    description: "filter using parameters from SparCC publication\n(default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --procs
+    description: 'number of processors to use (default: 1)'
+    args: !SimpleFlagArg
+      name: PROCS
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --force
+    description: "force overwrite output folder if it already exists\n(default: False)\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: SCNIC_analysis.py between [-h] -1 TABLE1 -2 TABLE2 [-o OUTPUT_LOC]\n\
+    \                                 [-m CORREL_METHOD] [-a P_ADJUST]\n         \
+    \                        [-s MIN_SAMPLE] [--max_p MAX_P]\n                   \
+    \              [--min_r MIN_R] [--sparcc_filter]\n                           \
+    \      [--procs PROCS] [-f]\n\noptional arguments:\n  -h, --help            show\
+    \ this help message and exit\n  -1 TABLE1, --table1 TABLE1\n                 \
+    \       table to be correlated (default: None)\n  -2 TABLE2, --table2 TABLE2\n\
+    \                        second table to be correlated (default: None)\n  -o OUTPUT_LOC,\
+    \ --output_loc OUTPUT_LOC\n                        output file location (default:\
+    \ None)\n  -m CORREL_METHOD, --correl_method CORREL_METHOD\n                 \
+    \       correlation method (default: spearman)\n  -a P_ADJUST, --p_adjust P_ADJUST\n\
+    \                        p-value adjustment (default: fdr_bh)\n  -s MIN_SAMPLE,\
+    \ --min_sample MIN_SAMPLE\n                        minimum number of samples present\
+    \ in (default: None)\n  --max_p MAX_P         minimum p-value to determine edges\
+    \ (default: None)\n  --min_r MIN_R         minimum R to determine edges (default:\
+    \ None)\n  --sparcc_filter       filter using parameters from SparCC publication\n\
+    \                        (default: False)\n  --procs PROCS         number of processors\
+    \ to use (default: 1)\n  -f, --force           force overwrite output folder if\
+    \ it already exists\n                        (default: False)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/scnic:0.6.2--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: SCNIC_analysis.py [-h] {within,modules,between} ...\n\npositional\
+  \ arguments:\n  {within,modules,between}\n    within              Find pairwise\
+  \ correlations within a table\n    modules             Make modules on a network\n\
+  \    between             Find correlations between two tables\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/scnic:0.6.2--py_0

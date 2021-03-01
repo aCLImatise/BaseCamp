@@ -13,7 +13,7 @@ task AgatSpLoadFunctionFromProteinAlignpl {
     Boolean? sp
     String? priority
     Boolean? be_verbose
-    File? _output_file
+    File? output_gff_file
     String agat_sp_load_function_from_protein_align_do_tpl
     String option_dot
   }
@@ -32,8 +32,11 @@ task AgatSpLoadFunctionFromProteinAlignpl {
       ~{if (sp) then "--sp" else ""} \
       ~{if defined(priority) then ("--priority " +  '"' + priority + '"') else ""} \
       ~{if (be_verbose) then "-v" else ""} \
-      ~{if (_output_file) then "-o" else ""}
+      ~{if defined(output_gff_file) then ("--output " +  '"' + output_gff_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     annotation: "Input gtf/gff file of an annotation."
     pg_ff: "Input gff file of aligned proteins."
@@ -46,12 +49,12 @@ task AgatSpLoadFunctionFromProteinAlignpl {
     sp: "Species, between the set of the best protein aligned we try\\nfirst to take the one that follow the species prioritization\\ndefined. There is a default one, but you can define you own\\n(quoted and coma separated value)like that: \\\"mus Musculus, Homo\\nSapiens\\\" from the most important to the less important. In that\\ncase Mus will be taken first even if a better overlaping one\\nexist for human. If none of them is found we take anyway the\\nbest overlapping one."
     priority: "By default the priority is PE test before species test when both\\nare applied. You can flip these two test by activating this\\noption like this: -p species"
     be_verbose: "Be verbose."
-    _output_file: ", --output or --out\\nOutput GFF file. If no output file is specified, the output will\\nbe written to STDOUT."
+    output_gff_file: "Output GFF file. If no output file is specified, the output will\\nbe written to STDOUT."
     agat_sp_load_function_from_protein_align_do_tpl: "Description:"
     option_dot: "Usage:\\nagat_sp_load_function_from_protein_align.pl -a annotation.gff --pgff protein.gff --pfasta protein.fasta [ -o outfile ]\\nagat_sp_load_function_from_protein_align.pl --help"
   }
   output {
     File out_stdout = stdout()
-    File out__output_file = "${in__output_file}"
+    File out_output_gff_file = "${in_output_gff_file}"
   }
 }

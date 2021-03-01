@@ -90,6 +90,9 @@ task MethylDackelExtract {
       ~{if defined(nc_tot) then ("--nCTOT " +  '"' + nc_tot + '"') else ""} \
       ~{if defined(nc_tob) then ("--nCTOB " +  '"' + nc_tob + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minimum_mapq_threshold: "Minimum MAPQ threshold to include an alignment (default 10)"
     minimum_phred_threshold: "Minimum Phred threshold to include a base (default 5). This\\nmust be >0."

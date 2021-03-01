@@ -10,6 +10,9 @@ task Genomedataclosedata {
       ~{gd_archive} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print status updates and diagnostic messages"
     gd_archive: "genomedata archive"

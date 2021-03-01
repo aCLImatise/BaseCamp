@@ -3,7 +3,7 @@ version 1.0
 task SketchySurveyConstruct {
   input {
     File? directory
-    File? tabdelimited_genotype_feature
+    File? tabdelimited_genotype_index
     String? template
     Boolean? intersect
     String survey
@@ -16,13 +16,16 @@ task SketchySurveyConstruct {
       ~{m_tuberculosis} \
       ~{values} \
       ~{if defined(directory) then ("--directory " +  '"' + directory + '"') else ""} \
-      ~{if defined(tabdelimited_genotype_feature) then ("--output " +  '"' + tabdelimited_genotype_feature + '"') else ""} \
+      ~{if defined(tabdelimited_genotype_index) then ("--output " +  '"' + tabdelimited_genotype_index + '"') else ""} \
       ~{if defined(template) then ("--template " +  '"' + template + '"') else ""} \
       ~{if (intersect) then "--intersect" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory: "Input directory with collected output from Pathfinder"
-    tabdelimited_genotype_feature: "Tab-delimited genotype feature index for Sketchy"
+    tabdelimited_genotype_index: "Tab-delimited genotype feature index for Sketchy"
     template: "Use a configuration template: saureus, kpneumoniae,"
     intersect: "Take minimum intersection of all specified column"
     survey: "[required]"

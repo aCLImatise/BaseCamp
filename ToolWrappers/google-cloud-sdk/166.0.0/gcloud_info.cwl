@@ -4,17 +4,17 @@ inputs:
 - id: in_anonymize
   doc: "Minimize any personal identifiable information. Use it when sharing\noutput\
     \ with others."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --anonymize
 - id: in_run_diagnostics
   doc: Run diagnostics on your installation of the Cloud SDK.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --run-diagnostics
 - id: in_show_log
   doc: Print the contents of the last log file.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --show-log
 - id: in_connectivity_dot
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

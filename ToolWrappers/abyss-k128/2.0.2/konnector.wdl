@@ -80,6 +80,9 @@ task Konnector {
       ~{if defined(read_identity) then ("--read-identity " +  '"' + read_identity + '"') else ""} \
       ~{if defined(path_identity) then ("--path-identity " +  '"' + path_identity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "use N parallel threads [1]"
     km_er: "the size of a k-mer"

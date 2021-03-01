@@ -16,6 +16,9 @@ task BwtIndex {
       ~{prefix} \
       ~{my_ref}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_file: ""
     ex_dot: ""

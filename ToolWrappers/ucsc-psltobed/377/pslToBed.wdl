@@ -8,6 +8,9 @@ task PslToBed {
     pslToBed \
       ~{psl}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     psl: ""
   }

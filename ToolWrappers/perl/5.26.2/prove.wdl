@@ -2,24 +2,24 @@ version 1.0
 
 task Prove {
   input {
-    Boolean? _verbose_print
-    Boolean? _lib_add
-    Boolean? _blib_add
-    Boolean? _shuffle_run
-    Boolean? _color_default
+    Boolean? verbose
+    Boolean? lib
+    Boolean? blib
+    Boolean? shuffle
+    Boolean? color
     Boolean? no_color
     Boolean? count
     Boolean? no_count
-    Boolean? _dry_test
-    Boolean? _failures_show
-    Boolean? _comments_show
+    Boolean? dry
+    Boolean? failures
+    Boolean? comments
     Boolean? ignore_exit
-    Boolean? _merge_stderr
-    Boolean? _recurse_recursively
+    Boolean? merge
+    Boolean? recurse
     Boolean? reverse
-    Boolean? quiet_suppress_output
-    Boolean? _quiet_results
-    Boolean? _parse_show
+    Boolean? suppress_test_output
+    Boolean? only_print_summary
+    Boolean? parse
     Boolean? directives
     Boolean? timer
     Boolean? trap
@@ -28,19 +28,18 @@ task Prove {
     Boolean? enable_tainting_warnings
     Boolean? enable_fatal_warnings
     Boolean? enable_warnings
-    Boolean? _version_display
-    Boolean? _man_longer
+    Boolean? man
     Boolean? norc
     Boolean? library_paths_include
     Boolean? load_plugin_searches
     Boolean? load_a_module
-    Boolean? _exec_interpreter
+    Boolean? exec
     Boolean? ext
     Boolean? harness
     Boolean? formatter
     Boolean? source
-    File? _archive_outtgz
-    Boolean? _jobs_n
+    File? archive
+    Int? jobs
     String? state
     String? rc
     Boolean? rules
@@ -51,24 +50,24 @@ task Prove {
     prove \
       ~{files} \
       ~{or} \
-      ~{if (_verbose_print) then "-v" else ""} \
-      ~{if (_lib_add) then "-l" else ""} \
-      ~{if (_blib_add) then "-b" else ""} \
-      ~{if (_shuffle_run) then "-s" else ""} \
-      ~{if (_color_default) then "-c" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (lib) then "--lib" else ""} \
+      ~{if (blib) then "--blib" else ""} \
+      ~{if (shuffle) then "--shuffle" else ""} \
+      ~{if (color) then "--color" else ""} \
       ~{if (no_color) then "--nocolor" else ""} \
       ~{if (count) then "--count" else ""} \
       ~{if (no_count) then "--nocount" else ""} \
-      ~{if (_dry_test) then "-D" else ""} \
-      ~{if (_failures_show) then "-f" else ""} \
-      ~{if (_comments_show) then "-o" else ""} \
+      ~{if (dry) then "--dry" else ""} \
+      ~{if (failures) then "--failures" else ""} \
+      ~{if (comments) then "--comments" else ""} \
       ~{if (ignore_exit) then "--ignore-exit" else ""} \
-      ~{if (_merge_stderr) then "-m" else ""} \
-      ~{if (_recurse_recursively) then "-r" else ""} \
+      ~{if (merge) then "--merge" else ""} \
+      ~{if (recurse) then "--recurse" else ""} \
       ~{if (reverse) then "--reverse" else ""} \
-      ~{if (quiet_suppress_output) then "-q" else ""} \
-      ~{if (_quiet_results) then "-Q" else ""} \
-      ~{if (_parse_show) then "-p" else ""} \
+      ~{if (suppress_test_output) then "--quiet" else ""} \
+      ~{if (only_print_summary) then "--QUIET" else ""} \
+      ~{if (parse) then "--parse" else ""} \
       ~{if (directives) then "--directives" else ""} \
       ~{if (timer) then "--timer" else ""} \
       ~{if (trap) then "--trap" else ""} \
@@ -77,42 +76,44 @@ task Prove {
       ~{if (enable_tainting_warnings) then "-t" else ""} \
       ~{if (enable_fatal_warnings) then "-W" else ""} \
       ~{if (enable_warnings) then "-w" else ""} \
-      ~{if (_version_display) then "-V" else ""} \
-      ~{if (_man_longer) then "-H" else ""} \
+      ~{if (man) then "--man" else ""} \
       ~{if (norc) then "--norc" else ""} \
       ~{if (library_paths_include) then "-I" else ""} \
       ~{if (load_plugin_searches) then "-P" else ""} \
       ~{if (load_a_module) then "-M" else ""} \
-      ~{if (_exec_interpreter) then "-e" else ""} \
+      ~{if (exec) then "--exec" else ""} \
       ~{if (ext) then "--ext" else ""} \
       ~{if (harness) then "--harness" else ""} \
       ~{if (formatter) then "--formatter" else ""} \
       ~{if (source) then "--source" else ""} \
-      ~{if (_archive_outtgz) then "-a" else ""} \
-      ~{if (_jobs_n) then "-j" else ""} \
+      ~{if defined(archive) then ("--archive " +  '"' + archive + '"') else ""} \
+      ~{if defined(jobs) then ("--jobs " +  '"' + jobs + '"') else ""} \
       ~{if defined(state) then ("--state " +  '"' + state + '"') else ""} \
       ~{if defined(rc) then ("--rc " +  '"' + rc + '"') else ""} \
       ~{if (rules) then "--rules" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _verbose_print: ",  --verbose         Print all test lines."
-    _lib_add: ",  --lib             Add 'lib' to the path for your tests (-Ilib)."
-    _blib_add: ",  --blib            Add 'blib/lib' and 'blib/arch' to the path for\\nyour tests"
-    _shuffle_run: ",  --shuffle         Run the tests in random order."
-    _color_default: ",  --color           Colored test output (default)."
+    verbose: "Print all test lines."
+    lib: "Add 'lib' to the path for your tests (-Ilib)."
+    blib: "Add 'blib/lib' and 'blib/arch' to the path for\\nyour tests"
+    shuffle: "Run the tests in random order."
+    color: "Colored test output (default)."
     no_color: "Do not color test output."
     count: "Show the X/Y test count when not verbose\\n(default)"
     no_count: "Disable the X/Y test count."
-    _dry_test: "--dry             Dry run. Show test that would have run."
-    _failures_show: ",  --failures        Show failed tests."
-    _comments_show: ",  --comments        Show comments."
+    dry: "Dry run. Show test that would have run."
+    failures: "Show failed tests."
+    comments: "Show comments."
     ignore_exit: "Ignore exit status from test scripts."
-    _merge_stderr: ",  --merge           Merge test scripts' STDERR with their STDOUT."
-    _recurse_recursively: ",  --recurse         Recursively descend into directories."
+    merge: "Merge test scripts' STDERR with their STDOUT."
+    recurse: "Recursively descend into directories."
     reverse: "Run the tests in reverse order."
-    quiet_suppress_output: ",  --quiet           Suppress some test output while running tests."
-    _quiet_results: ",  --QUIET           Only print summary results."
-    _parse_show: ",  --parse           Show full list of TAP parse errors, if any."
+    suppress_test_output: "Suppress some test output while running tests."
+    only_print_summary: "Only print summary results."
+    parse: "Show full list of TAP parse errors, if any."
     directives: "Only show results with TODO or SKIP directives."
     timer: "Print elapsed time after each test."
     trap: "Trap Ctrl-C and print summary on interrupt."
@@ -121,19 +122,18 @@ task Prove {
     enable_tainting_warnings: "Enable tainting warnings."
     enable_fatal_warnings: "Enable fatal warnings."
     enable_warnings: "Enable warnings."
-    _version_display: ",  --version         Display the version"
-    _man_longer: ",  --man             Longer manpage for prove"
+    man: "Longer manpage for prove"
     norc: "Don't process default .proverc"
     library_paths_include: "Library paths to include."
     load_plugin_searches: "Load plugin (searches App::Prove::Plugin::*.)"
     load_a_module: "Load a module."
-    _exec_interpreter: ",  --exec            Interpreter to run the tests ('' for compiled\\ntests.)"
+    exec: "Interpreter to run the tests ('' for compiled\\ntests.)"
     ext: "Set the extension for tests (default '.t')"
     harness: "Define test harness to use.  See TAP::Harness."
     formatter: "Result formatter to use. See FORMATTERS."
     source: "Load and/or configure a SourceHandler. See\\nSOURCE HANDLERS."
-    _archive_outtgz: ",  --archive out.tgz Store the resulting TAP in an archive file."
-    _jobs_n: ",  --jobs N          Run N test jobs in parallel (try 9.)"
+    archive: "Store the resulting TAP in an archive file."
+    jobs: "Run N test jobs in parallel (try 9.)"
     state: "Control prove's persistent state."
     rc: "Process options from rcfile"
     rules: "Rules for parallel vs sequential processing."
@@ -142,6 +142,5 @@ task Prove {
   }
   output {
     File out_stdout = stdout()
-    File out__archive_outtgz = "${in__archive_outtgz}"
   }
 }

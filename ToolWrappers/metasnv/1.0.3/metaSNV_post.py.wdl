@@ -18,6 +18,9 @@ task MetaSNVPostpy {
       ~{if defined(filtering_step_ii_required) then ("-p " +  '"' + filtering_step_ii_required + '"') else ""} \
       ~{if (div) then "-div" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     coverage_breadth_minimal: "Coverage breadth: minimal horizontal genome coverage percentage\\nper sample per species (default: 40.0)"
     coverage_depth_minimal: "Coverage depth: minimal average vertical genome coverage per\\nsample per species (default: 5.0)"

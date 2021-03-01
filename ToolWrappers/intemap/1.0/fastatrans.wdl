@@ -8,6 +8,9 @@ task Fastatrans {
     fastatrans \
       ~{contig_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contig_file: ""
   }

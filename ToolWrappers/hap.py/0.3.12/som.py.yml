@@ -3,328 +3,328 @@ command:
 - som.py
 positional:
 - !Positional
-  description: Truth VCF file
+  optional: false
   position: 0
   name: truth
-  optional: false
+  description: Truth VCF file
 - !Positional
-  description: Query VCF file
+  optional: false
   position: 1
   name: query
-  optional: false
+  description: Query VCF file
 - !Positional
-  description: --normalize-truth     Enable running of bcftools norm on the truth
-    file.
+  optional: false
   position: 0
   name: extraction
-  optional: false
+  description: --normalize-truth     Enable running of bcftools norm on the truth
+    file.
 - !Positional
-  description: --verbose             Raise logging level from warning to info.
+  optional: false
   position: 1
   name: stderr
-  optional: false
+  description: --verbose             Raise logging level from warning to info.
 named:
 - !Flag
-  description: "Output file prefix for statistics and feature table\n(when selected)"
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "Output file prefix for statistics and feature table\n(when selected)"
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: Location for bcftools view (e.g. chr1)
+  optional: true
   synonyms:
   - -l
   - --location
+  description: Location for bcftools view (e.g. chr1)
   args: !SimpleFlagArg
     name: LOCATION
-  optional: true
 - !Flag
-  description: "Restrict analysis to given (sparse) regions (using -R\nin bcftools)."
+  optional: true
   synonyms:
   - -R
   - --restrict-regions
+  description: "Restrict analysis to given (sparse) regions (using -R\nin bcftools)."
   args: !SimpleFlagArg
     name: REGIONS_BEDFILE
-  optional: true
 - !Flag
-  description: "Restrict analysis to given (dense) regions (using -T\nin bcftools)."
+  optional: true
   synonyms:
   - -T
   - --target-regions
+  description: "Restrict analysis to given (dense) regions (using -T\nin bcftools)."
   args: !SimpleFlagArg
     name: TARGETS_BEDFILE
-  optional: true
 - !Flag
-  description: "False-positive region bed file to distinguish UNK from\nFP"
+  optional: true
   synonyms:
   - -f
   - --false-positives
+  description: "False-positive region bed file to distinguish UNK from\nFP"
   args: !SimpleFlagArg
     name: FP
-  optional: true
 - !Flag
-  description: "Ambiguous region bed file(s) to distinguish from FP\n(e.g. variant\
-    \ only observed in some replicates)"
+  optional: true
   synonyms:
   - -a
   - --ambiguous
+  description: "Ambiguous region bed file(s) to distinguish from FP\n(e.g. variant\
+    \ only observed in some replicates)"
   args: !SimpleFlagArg
     name: AMBI
-  optional: true
 - !Flag
-  description: Use FP calls from ambiguous region files also.
+  optional: true
   synonyms:
   - --ambi-fp
+  description: Use FP calls from ambiguous region files also.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not use FP calls from ambiguous region files also.
+  optional: true
   synonyms:
   - --no-ambi-fp
+  description: Do not use FP calls from ambiguous region files also.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Assume the truth set covers the whole genome and only\ncount FPs in\
-    \ regions specified by the truth VCF or\nambiguous/false-positive regions."
+  optional: true
   synonyms:
   - --count-unk
+  description: "Assume the truth set covers the whole genome and only\ncount FPs in\
+    \ regions specified by the truth VCF or\nambiguous/false-positive regions."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not use FP calls from ambiguous region files also.
+  optional: true
   synonyms:
   - --no-count-unk
+  description: Do not use FP calls from ambiguous region files also.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "print a table giving the number of ambiguous events\nper category"
+  optional: true
   synonyms:
   - -e
   - --explain_ambiguous
+  description: "print a table giving the number of ambiguous events\nper category"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Specify a reference file.
+  optional: true
   synonyms:
   - -r
   - --reference
+  description: Specify a reference file.
   args: !SimpleFlagArg
     name: REF
-  optional: true
 - !Flag
-  description: Filename prefix for scratch report output.
+  optional: true
   synonyms:
   - --scratch-prefix
+  description: Filename prefix for scratch report output.
   args: !SimpleFlagArg
     name: SCRATCH_PREFIX
-  optional: true
 - !Flag
-  description: Filename prefix for scratch report output.
+  optional: true
   synonyms:
   - --keep-scratch
+  description: Filename prefix for scratch report output.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Continue from scratch space (i.e. use VCFs in there if\nthey already\
-    \ exist)."
+  optional: true
   synonyms:
   - --continue
+  description: "Continue from scratch space (i.e. use VCFs in there if\nthey already\
+    \ exist)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Use to include failing variants in comparison.
+  optional: true
   synonyms:
   - -P
   - --include-nonpass
+  description: Use to include failing variants in comparison.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Select a feature table to output.
+  optional: true
   synonyms:
   - --feature-table
+  description: Select a feature table to output.
   args: !ChoiceFlagArg
     choices: !!set
-      hcc.strelka.snv:
       hcc.varscan2.indel:
       hcc.mutect.snv:
-      hcc.strelka.indel:
-      hcc.mutect.indel:
-      generic:
-      hcc.pisces.indel:
       hcc.pisces.snv:
-      admix.strelka.indel:
-      admix.strelka.snv:
       hcc.varscan2.snv:
-  optional: true
+      hcc.mutect.indel:
+      admix.strelka.indel:
+      generic:
+      hcc.strelka.snv:
+      hcc.strelka.indel:
+      hcc.pisces.indel:
+      admix.strelka.snv:
 - !Flag
-  description: Generate summary.csv.
+  optional: true
   synonyms:
   - --happy-stats
+  description: Generate summary.csv.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: pass one or more BAM files for feature table
+  optional: true
   synonyms:
   - --bam
+  description: pass one or more BAM files for feature table
   args: !SimpleFlagArg
     name: BAMS
-  optional: true
 - !Flag
-  description: Enable running of bcftools norm on the query file.
+  optional: true
   synonyms:
   - --normalize-query
+  description: Enable running of bcftools norm on the query file.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Enable running of bcftools norm on both truth and\nquery file."
+  optional: true
   synonyms:
   - -N
   - --normalize-all
+  description: "Enable running of bcftools norm on both truth and\nquery file."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Add chr prefix to truth file (default: true).'
+  optional: true
   synonyms:
   - --fixchr-truth
+  description: 'Add chr prefix to truth file (default: true).'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Add chr prefix to query file (default: true).'
+  optional: true
   synonyms:
   - --fixchr-query
+  description: 'Add chr prefix to query file (default: true).'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Same as --fixchr-truth.
+  optional: true
   synonyms:
   - --fix-chr-truth
+  description: Same as --fixchr-truth.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Same as --fixchr-query.
+  optional: true
   synonyms:
   - --fix-chr-query
+  description: Same as --fixchr-query.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Disable chr replacement for truth (default: false).'
+  optional: true
   synonyms:
   - --no-fixchr-truth
+  description: 'Disable chr replacement for truth (default: false).'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Add chr prefix to query file (default: false).'
+  optional: true
   synonyms:
   - --no-fixchr-query
+  description: 'Add chr prefix to query file (default: false).'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Disable checking the order of TP features (dev\nfeature)."
+  optional: true
   synonyms:
   - --no-order-check
+  description: "Disable checking the order of TP features (dev\nfeature)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Create a ROC-style table. This is caller specific -\nthis will override\
-    \ the --feature-table switch!"
+  optional: true
   synonyms:
   - --roc
+  description: "Create a ROC-style table. This is caller specific -\nthis will override\
+    \ the --feature-table switch!"
   args: !ChoiceFlagArg
     choices: !!set
-      mutect.snv:
-      strelka.snv:
-      strelka.snv.vqsr:
-      strelka.indel.evs:
-      varscan2.snv:
-      mutect.indel:
       strelka.snv.qss:
+      mutect.indel:
+      strelka.snv.vqsr:
       varscan2.indel:
+      strelka.snv:
+      varscan2.snv:
+      strelka.indel.evs:
       strelka.indel:
-  optional: true
+      mutect.snv:
 - !Flag
-  description: "Stratify into different AF buckets. This needs to have\nfeatures available\
-    \ for getting the AF both in truth\nand query variants."
+  optional: true
   synonyms:
   - --bin-afs
+  description: "Stratify into different AF buckets. This needs to have\nfeatures available\
+    \ for getting the AF both in truth\nand query variants."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --af-binsize
   description: "Bin size for AF binning (should be < 1). Multiple bin\nsizes can be\
     \ specified using a comma, e.g.\n0.1,0.2,0.5,0.2 will split at 0.1, 0.3, 0.8 and\
     \ 1.0."
-  synonyms:
-  - --af-binsize
   args: !SimpleFlagArg
     name: AF_STRAT_BINSIZE
-  optional: true
 - !Flag
-  description: "Feature name to use for retrieving AF for truth\nvariants (TP and\
-    \ FN)"
+  optional: true
   synonyms:
   - --af-truth
+  description: "Feature name to use for retrieving AF for truth\nvariants (TP and\
+    \ FN)"
   args: !SimpleFlagArg
     name: AF_STRAT_TRUTH
-  optional: true
 - !Flag
-  description: "Feature name to use for retrieving AF for query\nvariants (FP/UNK/AMBI)"
+  optional: true
   synonyms:
   - --af-query
+  description: "Feature name to use for retrieving AF for query\nvariants (FP/UNK/AMBI)"
   args: !SimpleFlagArg
     name: AF_STRAT_QUERY
-  optional: true
 - !Flag
-  description: "Count filtered vs. absent FN numbers. This requires\nthe -P switch\
-    \ (to use all variants) and either the\n--feature-table or --roc switch."
+  optional: true
   synonyms:
   - -FN
   - --count-filtered-fn
+  description: "Count filtered vs. absent FN numbers. This requires\nthe -P switch\
+    \ (to use all variants) and either the\n--feature-table or --roc switch."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fp-region-size
   description: "How to obtain the normalisation constant for FP rate.\nBy default,\
     \ this will use the FP region bed file size\nwhen using --count-unk and the size\
     \ of all reference\ncontigs that overlap with the location specified in -l\notherwise.\
     \ This can be overridden with: 1) a number of\nnucleotides, or 2) \"auto\" to\
     \ use the lengths of all\ncontigs that have calls. The resulting value is used\n\
     as fp.region.size."
-  synonyms:
-  - --fp-region-size
   args: !SimpleFlagArg
     name: FPR_SIZE
-  optional: true
 - !Flag
-  description: "Confidence level for precision/recall confidence\nintervals (default:\
-    \ 0.95)"
+  optional: true
   synonyms:
   - --ci-level
+  description: "Confidence level for precision/recall confidence\nintervals (default:\
+    \ 0.95)"
   args: !SimpleFlagArg
     name: CI_LEVEL
-  optional: true
 - !Flag
-  description: Write logging information into file rather than to
+  optional: true
   synonyms:
   - --logfile
+  description: Write logging information into file rather than to
   args: !SimpleFlagArg
     name: LOGFILE
-  optional: true
 - !Flag
-  description: Set logging level to output errors only.
+  optional: true
   synonyms:
   - --quiet
+  description: Set logging level to output errors only.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: Somatic Comparison [-h] -o OUTPUT [-l LOCATION] [-R REGIONS_BEDFILE]\n\
@@ -412,3 +412,4 @@ help_text: "usage: Somatic Comparison [-h] -o OUTPUT [-l LOCATION] [-R REGIONS_B
   \ warning to info.\n  --quiet               Set logging level to output errors only.\n"
 generated_using:
 - --help
+docker_image:

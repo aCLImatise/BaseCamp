@@ -14,6 +14,9 @@ task RibotricerOrfsseq {
       ~{if (protein) then "--protein" else ""} \
       ~{if defined(save_to) then ("--saveto " +  '"' + save_to + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ribot_ricer_index: "Path to the index file of ribotricer This file\\nshould be generated using ribotricer prepare-orfs\\n[required]"
     fast_a: "Path to FASTA file  [required]"

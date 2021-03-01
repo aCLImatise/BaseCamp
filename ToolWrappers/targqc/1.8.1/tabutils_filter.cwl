@@ -3,7 +3,7 @@ id: tabutils_filter.cwl
 inputs:
 - id: in_header
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -header
 - id: in_tab_filter_do_tpy
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tabutils

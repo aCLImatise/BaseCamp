@@ -54,6 +54,9 @@ task GetDiffExpressionpl {
       ~{if (simple_norm) then "-simpleNorm" else ""} \
       ~{if (raw) then "-raw" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rna: "(for analyzeRNA.pl formatted input, default)"
     repeats: "(for analyzeRepeats.pl formatted input file)"

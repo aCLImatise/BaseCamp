@@ -30,6 +30,9 @@ task MakeCutMatrix {
       ~{if defined(region_extension) then ("--region-extension " +  '"' + region_extension + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aggregate_output: "Requests a matrix in which each row represents a\\nposition in the extended region and the mean cut point\\ncount at that position across all motifs. See OUTPUT,\\nbelow."
     discrete_output: "Requests a matrix in which each row represents all the\\ncut point counts around one motif. See OUTPUT, below."

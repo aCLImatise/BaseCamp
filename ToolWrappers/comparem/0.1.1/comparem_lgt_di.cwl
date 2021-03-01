@@ -3,22 +3,22 @@ id: comparem_lgt_di.cwl
 inputs:
 - id: in_file_ext
   doc: 'extension of files to process (default: fna)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --file_ext
 - id: in_crit_value
   doc: "critical value for defining deviant genes (default:\n0.001)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --crit_value
 - id: in_cpus
   doc: 'number of CPUs to use (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --cpus
 - id: in_silent
   doc: suppress output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --silent
 - id: in_nucleotide_gene_files
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - comparem

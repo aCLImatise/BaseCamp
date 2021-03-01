@@ -18,6 +18,9 @@ task PePrpostprocess {
       ~{if defined(file_type) then ("--file-type " +  '"' + file_type + '"') else ""} \
       ~{if (remove_artefacts) then "--remove-artefacts" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     peak: "peak file"
     chip: "chip files separated by comma"

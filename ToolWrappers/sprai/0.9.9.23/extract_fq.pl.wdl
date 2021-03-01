@@ -12,6 +12,9 @@ task ExtractFqpl {
       ~{all_dot_fq} \
       ~{exclude_dot_list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this: ""
     all_dot_fq: ""

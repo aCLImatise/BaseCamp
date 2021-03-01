@@ -92,6 +92,9 @@ task Shapeit {
       ~{if defined(input_copy_states) then ("--input-copy-states " +  '"' + input_copy_states + '"') else ""} \
       ~{if (arg_phased_haplotypes) then "-O" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     produce_help_message: "[ --help ]                         Produce help message."
     licence: "Produce licence description."

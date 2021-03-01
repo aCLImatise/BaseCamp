@@ -4,6 +4,9 @@ task Bubbledetectorpy {
   command <<<
     bubbledetector_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

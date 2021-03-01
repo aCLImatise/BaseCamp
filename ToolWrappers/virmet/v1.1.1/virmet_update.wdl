@@ -20,6 +20,9 @@ task VirmetUpdate {
       ~{if (fungal) then "--fungal" else ""} \
       ~{if defined(picked) then ("--picked " +  '"' + picked + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     viral: "update viral [n]ucleic/[p]rotein"
     bact: "update bacterial database"

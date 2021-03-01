@@ -20,6 +20,9 @@ task AfplotWholegenomeScatter {
       ~{if defined(vcf) then ("--vcf " +  '"' + vcf + '"') else ""} \
       ~{if defined(color_palette) then ("--color-palette " +  '"' + color_palette + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_output_file: "Path to output file  [required]"
     exclude_pattern: "Regex pattern(s) to exclude from contig list"

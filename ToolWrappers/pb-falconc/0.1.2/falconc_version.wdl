@@ -8,6 +8,9 @@ task FalconcVersion {
     falconc version \
       ~{if (help_syntax) then "--help-syntax" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help_syntax: "advanced: prepend,plurals,.."
   }

@@ -14,6 +14,9 @@ task CheckmTaxonSetMarkerFile {
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""} \
       ~{if (q) then "-q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tmpdir: ""
     q: ""

@@ -14,6 +14,9 @@ task TophatReports {
       ~{deletions_dot_vcf} \
       ~{accepted_hits_dots_am}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     junctions_dot_bed: ""
     insertions_dot_vcf: ""

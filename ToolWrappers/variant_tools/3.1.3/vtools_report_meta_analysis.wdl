@@ -10,11 +10,11 @@ task VtoolsReportMetaAnalysis {
     String? method
     Int? to_db
     String? verbosity
-    File file
+    File input_text_files
   }
   command <<<
     vtools_report meta_analysis \
-      ~{file} \
+      ~{input_text_files} \
       ~{if defined(beta) then ("--beta " +  '"' + beta + '"') else ""} \
       ~{if defined(pval) then ("--pval " +  '"' + pval + '"') else ""} \
       ~{if defined(se) then ("--se " +  '"' + se + '"') else ""} \
@@ -24,6 +24,9 @@ task VtoolsReportMetaAnalysis {
       ~{if defined(to_db) then ("--to_db " +  '"' + to_db + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     beta: "column number of beta"
     pval: "column number of p-value"
@@ -33,7 +36,7 @@ task VtoolsReportMetaAnalysis {
     method: "Method (choose from \\\"ssb\\\" for sample based method and\\n\\\"ivb\\\" for inverse variance based method), default set\\nto \\\"ssb\\\""
     to_db: "will write the results also to a sqlite3 database\\ncompatible with vtools associate result format"
     verbosity: "Output error and warning (0), info (1), debug (2) and\\ntrace (3) information to standard output (default to\\n1).\\n"
-    file: "Input text files in the format of $vtools associate\\noutput (supports plain text, gz or bz2 compressed text\\nfiles)"
+    input_text_files: "Input text files in the format of $vtools associate\\noutput (supports plain text, gz or bz2 compressed text\\nfiles)"
   }
   output {
     File out_stdout = stdout()

@@ -32,6 +32,9 @@ task GotreeDrawText {
       ~{if (with_node_labels) then "--with-node-labels" else ""} \
       ~{if (with_node_symbols) then "--with-node-symbols" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     width: "Width of tree/terminal (in characters) (default 200)"
     format: "Input tree format (newick, nexus, or phyloxml) (default \\\"newick\\\")"

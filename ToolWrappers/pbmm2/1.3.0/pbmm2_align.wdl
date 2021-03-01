@@ -22,7 +22,7 @@ task Pbmm2Align {
     Boolean? gap_extend_two
     Boolean? lj_min_ratio
     Boolean? int_max_intron
-    Boolean? int_cost_gtag
+    Boolean? int_cost_noncanonical
     Boolean? no_splice_flank
     Boolean? sample
     Boolean? rg
@@ -87,7 +87,7 @@ task Pbmm2Align {
       ~{if (gap_extend_two) then "--gap-extend-2" else ""} \
       ~{if (lj_min_ratio) then "--lj-min-ratio" else ""} \
       ~{if (int_max_intron) then "-G" else ""} \
-      ~{if (int_cost_gtag) then "-C" else ""} \
+      ~{if (int_cost_noncanonical) then "-C" else ""} \
       ~{if (no_splice_flank) then "--no-splice-flank" else ""} \
       ~{if (sample) then "--sample" else ""} \
       ~{if (rg) then "--rg" else ""} \
@@ -108,6 +108,9 @@ task Pbmm2Align {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chunk_size: "INT    Process N records per chunk. [100]"
     sort: "Generate sorted BAM file."
@@ -129,7 +132,7 @@ task Pbmm2Align {
     gap_extend_two: "INT    Gap extension penalty 2. [-1]"
     lj_min_ratio: "FLOAT  Long join flank ratio. [-1]"
     int_max_intron: "INT    Max intron length (changes -r). [-1]"
-    int_cost_gtag: "INT    Cost for a non-canonical GT-AG splicing (effective in ISOSEQ preset). [-1]"
+    int_cost_noncanonical: "INT    Cost for a non-canonical GT-AG splicing (effective in ISOSEQ preset). [-1]"
     no_splice_flank: "Do not prefer splice flanks GT-AG (effective in ISOSEQ preset)."
     sample: "STR    Sample name for all read groups. Defaults, in order of precedence: SM field in\\ninput read group, biosample name, well sample name, \\\"UnnamedSample\\\"."
     rg: "STR    Read group header line such as '@RG\\tID:xyz\\tSM:abc'. Only for FASTA/Q inputs."

@@ -8,6 +8,9 @@ task UpdateDatabaseNew {
     update_database new \
       ~{if (_is_required) then "-d" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _is_required: "[option] is required"
   }

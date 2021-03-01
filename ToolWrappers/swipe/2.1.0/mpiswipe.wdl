@@ -4,6 +4,9 @@ task Mpiswipe {
   command <<<
     mpiswipe
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

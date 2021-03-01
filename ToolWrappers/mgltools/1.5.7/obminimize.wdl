@@ -4,6 +4,9 @@ task Obminimize {
   command <<<
     obminimize
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

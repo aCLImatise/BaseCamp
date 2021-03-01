@@ -3,15 +3,15 @@ version 1.0
 task Dcmp2pgm {
   input {
     Boolean? arguments
-    Boolean? _quiet_quiet
-    Boolean? _verbose_details
-    Boolean? _debug_information
+    Boolean? quiet
+    Boolean? verbose
+    Boolean? debug
     Boolean? log_level
     Boolean? log_config
-    Boolean? _pstate_stringprocess
-    Boolean? _config_ilename
-    Boolean? _frame_integerprocess
-    Boolean? _pgm_save
+    Boolean? p_state
+    Boolean? config
+    Boolean? frame
+    Boolean? pgm
     String dcm_file_in
     String bitmap_out
   }
@@ -20,27 +20,30 @@ task Dcmp2pgm {
       ~{dcm_file_in} \
       ~{bitmap_out} \
       ~{if (arguments) then "--arguments" else ""} \
-      ~{if (_quiet_quiet) then "-q" else ""} \
-      ~{if (_verbose_details) then "-v" else ""} \
-      ~{if (_debug_information) then "-d" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (debug) then "--debug" else ""} \
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_config) then "--log-config" else ""} \
-      ~{if (_pstate_stringprocess) then "-p" else ""} \
-      ~{if (_config_ilename) then "-c" else ""} \
-      ~{if (_frame_integerprocess) then "-f" else ""} \
-      ~{if (_pgm_save) then "-D" else ""}
+      ~{if (p_state) then "--pstate" else ""} \
+      ~{if (config) then "--config" else ""} \
+      ~{if (frame) then "--frame" else ""} \
+      ~{if (pgm) then "--pgm" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arguments: "print expanded command line arguments"
-    _quiet_quiet: "--quiet        quiet mode, print no warnings and errors"
-    _verbose_details: "--verbose      verbose mode, print processing details"
-    _debug_information: "--debug        debug mode, print debug information"
+    quiet: "quiet mode, print no warnings and errors"
+    verbose: "verbose mode, print processing details"
+    debug: "debug mode, print debug information"
     log_level: "[l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
     log_config: "[f]ilename: string\\nuse config file f for the logger"
-    _pstate_stringprocess: "--pstate       [f]ilename: string\\nprocess using presentation state file"
-    _config_ilename: "--config       [f]ilename: string\\nprocess using settings from configuration file"
-    _frame_integerprocess: "--frame        [f]rame: integer\\nprocess using image frame f (default: 1)"
-    _pgm_save: "--pgm          save image as PGM (default)"
+    p_state: "[f]ilename: string\\nprocess using presentation state file"
+    config: "[f]ilename: string\\nprocess using settings from configuration file"
+    frame: "[f]rame: integer\\nprocess using image frame f (default: 1)"
+    pgm: "save image as PGM (default)"
     dcm_file_in: "input DICOM image"
     bitmap_out: "output DICOM image or PGM bitmap"
   }

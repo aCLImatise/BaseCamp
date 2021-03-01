@@ -4,83 +4,83 @@ command:
 - partition_bmtagger
 positional:
 - !Positional
-  description: Input fastq file; 1st end of paired-end reads.
+  optional: false
   position: 0
   name: inFastq1
-  optional: false
+  description: Input fastq file; 1st end of paired-end reads.
 - !Positional
-  description: "Input fastq file; 2nd end of paired-end reads. Must\nhave same names\
-    \ as inFastq1"
+  optional: false
   position: 1
   name: inFastq2
-  optional: false
+  description: "Input fastq file; 2nd end of paired-end reads. Must\nhave same names\
+    \ as inFastq1"
 - !Positional
+  optional: false
+  position: 2
+  name: refDbs
   description: "Reference databases (one or more) to deplete from\ninput. For each\
     \ db, requires prior creation of\ndb.bitmask by bmtool, and db.srprism.idx,\n\
     db.srprism.map, etc. by srprism mkindex."
-  position: 2
-  name: refDbs
-  optional: false
 named:
 - !Flag
-  description: "OUTMATCH\nFilenames for fastq output of matching reads."
+  optional: true
   synonyms:
   - --outMatch
+  description: "OUTMATCH\nFilenames for fastq output of matching reads."
   args: !SimpleFlagArg
     name: OUTMATCH
-  optional: true
 - !Flag
-  description: "OUTNOMATCH\nFilenames for fastq output of unmatched reads."
+  optional: true
   synonyms:
   - --outNoMatch
+  description: "OUTNOMATCH\nFilenames for fastq output of unmatched reads."
   args: !SimpleFlagArg
     name: OUTNOMATCH
-  optional: true
 - !Flag
-  description: 'Verboseness of output. [default: DEBUG]'
+  optional: true
   synonyms:
   - --loglevel
+  description: 'Verboseness of output. [default: DEBUG]'
   args: !ChoiceFlagArg
     choices: !!set
-      CRITICAL:
-      ERROR:
       INFO:
-      WARNING:
       DEBUG:
+      CRITICAL:
+      WARNING:
+      ERROR:
       EXCEPTION:
-  optional: true
 - !Flag
-  description: 'Base directory for temp files. [default: /tmp]'
+  optional: true
   synonyms:
   - --tmp_dir
+  description: 'Base directory for temp files. [default: /tmp]'
   args: !SimpleFlagArg
     name: TMP_DIR
-  optional: true
 - !Flag
-  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
-    \ to delete all temp files at the end, even\nif there's a failure.\n"
+  optional: true
   synonyms:
   - --tmp_dirKeep
+  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
+    \ to delete all temp files at the end, even\nif there's a failure.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
   - -V
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: taxon_filter.py subcommand partition_bmtagger [-h]\n          \
   \                                           [--outMatch OUTMATCH OUTMATCH]\n   \
   \                                                  [--outNoMatch OUTNOMATCH OUTNOMATCH]\n\
@@ -109,3 +109,4 @@ help_text: "usage: taxon_filter.py subcommand partition_bmtagger [-h]\n         
   \ all temp files at the end, even\n                        if there's a failure.\n"
 generated_using:
 - --help
+docker_image:

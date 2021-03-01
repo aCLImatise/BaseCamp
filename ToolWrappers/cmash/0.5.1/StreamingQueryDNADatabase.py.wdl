@@ -30,6 +30,9 @@ task StreamingQueryDNADatabasepy {
       ~{if (sensitive) then "--sensitive" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads to use (default: 8)"
     containment_threshold: "Only return results with containment index above this\\nthreshold at the maximum k-mer size. (default: 0.1)"

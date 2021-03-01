@@ -16,6 +16,9 @@ task RegtoolsJunctionsAnnotate {
       ~{if defined(single_exon_genes) then ("-S " +  '"' + single_exon_genes + '"') else ""} \
       ~{if defined(file_write_output) then ("-o " +  '"' + file_write_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     single_exon_genes: "single exon genes"
     file_write_output: "The file to write output to. [STDOUT]"

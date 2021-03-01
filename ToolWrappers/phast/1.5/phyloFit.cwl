@@ -9,32 +9,15 @@ inputs:
     \ type of feature, and they will be numbered in\nthe order of appearance of the\
     \ features.  Features are assumed\nto use the coordinate frame of the first sequence\
     \ in the\nalignment and should be non-overlapping (see 'refeature\n--unique')."
-  type: File
+  type: File?
   inputBinding:
     prefix: --features
-- id: in__tree_
+- id: in__tree_hkyoutroot
   doc: "\").\nphyloFit --tree \"((human,chimp),(mouse,rat))\" --subst-mod HKY85\n\
     --out-root myfile --nrates 4 --msa-format SS\nprimate-rodent.ss"
-  type: long
+  type: long?
   inputBinding:
     prefix: -o
-- id: in_non_overlapping
-  doc: "(for use with context-dependent substitution models; not\ncompatible with\
-    \ --markov, --features, or\n--msa-format SS) Avoid using overlapping tuples of\
-    \ sites\nin parameter estimation.  If a dinucleotide model is selected,\nevery\
-    \ other tuple will be considered, and if a nucleotide\ntriplet model is selected,\
-    \ every third tuple will be\nconsidered.  This option cannot be used with an alignment\n\
-    represented only by unordered sufficient statistics."
-  type: boolean
-  inputBinding:
-    prefix: --non-overlapping
-- id: in_precision
-  doc: "|MED|LOW\n(default HIGH) Level of precision to use in estimating model\nparameters.\
-    \  Affects convergence criteria for iterative\nalgorithms: higher precision means\
-    \ more iterations and longer\nexecution time."
-  type: string
-  inputBinding:
-    prefix: --precision
 - id: in_tree
   doc: "|<tree_string>\n(Required if more than three species, or more than two species\n\
     and a non-reversible substitution model, e.g., UNREST, U2, U3)\nName of file or\
@@ -44,7 +27,7 @@ inputs:
     ,\n--tree \"(human,(mouse,rat))\".  Currently, the topology must be\nrooted. \
     \ When a reversible substitution model is used, the root\nis ignored during the\
     \ optimization procedure."
-  type: File
+  type: File?
   inputBinding:
     prefix: --tree
 - id: in_subst_mod
@@ -56,7 +39,7 @@ inputs:
     considered \"context-dependent\", are as defined in Siepel and\nHaussler, 2004.\
     \  The options --EM and --precision MED are\nrecommended with context-dependent\
     \ models (see below)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --subst-mod
 - id: in_msa_format
@@ -68,20 +51,26 @@ inputs:
     \ the\nsufficient statistics for phylogenetic inference (distinct columns\nor\
     \ tuple of columns and their counts).  Note that the program\n\"msa_view\" can\
     \ be used for file conversion."
-  type: File
+  type: File?
   inputBinding:
     prefix: --msa-format
+- id: in_out_root
+  doc: "(default \"phyloFit\").  Use specified string as root filename\nfor all files\
+    \ created."
+  type: File?
+  inputBinding:
+    prefix: --out-root
 - id: in_min_informative
   doc: "Require at least <ninf_sites> \"informative\" sites -- i.e.,\nsites at which\
     \ at least two non-gap and non-missing-data ('N'\nor '*') characters are present.\
     \  Default is 50."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-informative
 - id: in_gaps_as_bases
   doc: "Treat alignment gap characters ('-') like ordinary bases.  By\ndefault, they\
     \ are treated as missing data."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gaps-as-bases
 - id: in_ignore_branches
@@ -91,29 +80,36 @@ inputs:
     \ in the tree, indicating the\nbranches above these nodes, e.g., human-chimp,cow-dog.\
     \  (See\ntree_doctor --name-ancestors regarding names for ancestral nodes.)\n\
     This option does not currently work with --EM."
-  type: string
+  type: string?
   inputBinding:
     prefix: --ignore-branches
 - id: in_quiet
   doc: Proceed quietly.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_lnl
   doc: "(for use with --init-model) Simply evaluate the log likelihood of\nthe specified\
     \ tree model, without performing any further\noptimization.  Can be used with\
     \ --post-probs, --expected-subs, and\n--expected-total-subs."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --lnl
 - id: in_em
   doc: "Fit model(s) using EM rather than the BFGS quasi-Newton\nalgorithm (the default)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --EM
+- id: in_precision
+  doc: "|MED|LOW\n(default HIGH) Level of precision to use in estimating model\nparameters.\
+    \  Affects convergence criteria for iterative\nalgorithms: higher precision means\
+    \ more iterations and longer\nexecution time."
+  type: string?
+  inputBinding:
+    prefix: --precision
 - id: in_log
   doc: "Write log to <log_fname> describing details of the optimization\nprocedure."
-  type: string
+  type: string?
   inputBinding:
     prefix: --log
 - id: in_in_it_model
@@ -122,13 +118,13 @@ inputs:
     \ option is chosen, --tree\nis not allowed.  The substitution model used in the\
     \ given\nmodel will be used unless --subst-mod is also specified.\nNote: currently\
     \ only one mod_fname may be specified; it will be\nused for all categories."
-  type: string
+  type: string?
   inputBinding:
     prefix: --init-model
 - id: in_in_it_random
   doc: "Initialize parameters randomly.  Can be used multiple times to test\nwhether\
     \ the m.l.e. is real."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --init-random
 - id: in_seed
@@ -136,7 +132,7 @@ inputs:
     \ with --init-random, though random values are used in some\nother cases as well).\
     \  Should be an integer >=1.  If not provided,\nseed is chosen based on current\
     \ time."
-  type: long
+  type: long?
   inputBinding:
     prefix: --seed
 - id: in_in_it_parsimony
@@ -144,20 +140,20 @@ inputs:
     \ implemented for models with single character state\n(ie, not di- or tri-nucleotides).\
     \  Other --init options such\nas --init-random or --init-model can be used in\
     \ conjunction to\ninitialize substitution matrix parameters."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --init-parsimony
 - id: in_print_parsimony
   doc: "Print parsimony score to given file, and quit.  (Does not optimize\nor report\
     \ likelihoods)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --print-parsimony
 - id: in_clock
   doc: "Assume a molecular clock in estimation.  Causes the distances to all\ndescendant\
     \ leaves to be equal for each ancestral node and cuts the\nnumber of free branch-length\
     \ parameters roughly in half."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --clock
 - id: in_scale_only
@@ -165,7 +161,7 @@ inputs:
     \ individual branch lengths (branch proportions fixed).\nEquilibrium frequencies\
     \ and rate-matrix parameters will still be\nestimated unless --no-freqs and --no-rates\
     \ are used."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --scale-only
 - id: in_scale_subtree
@@ -174,33 +170,33 @@ inputs:
     \ with the subtree.  If \":loss\" or\n\":gain\" is appended to <node_name>, subtree\
     \ scale is constrained to\nbe greater than or less than (respectively) scale for\
     \ rest of tree."
-  type: string
+  type: string?
   inputBinding:
     prefix: --scale-subtree
 - id: in_estimate_freqs
   doc: "Estimate equilibrium frequencies by maximum likelihood, rather\nthan approximating\
     \ them by the relative frequencies in the data.\nIf using the SSREV model, this\
     \ option implies --sym-freqs."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --estimate-freqs
 - id: in_sym_freqs
   doc: "Estimate equilibrium frequencies, assuming freq(A)=freq(T) and\nfreq(C)=freq(G).\
     \  This only works for an alphabet ACGT (and possibly\ngap).  This option implies\
     \ --estimate-freqs."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sym-freqs
 - id: in_no_freqs
   doc: "(for use with --init-model) Do not estimate equilibrium\nfrequencies; just\
     \ use the ones from the given tree model."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-freqs
 - id: in_no_rates
   doc: "(for use with --init-model) Do not estimate rate-matrix\nparameters; just\
     \ use the ones from the given tree model."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-rates
 - id: in_ancestor
@@ -208,13 +204,13 @@ inputs:
     \ define this sequence to be a child of the root\n(in practice, the branch from\
     \ the root to the specified\nsequence will be retained, but will be constrained\
     \ to have\nlength zero)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --ancestor
 - id: in_error
   doc: "For each parameter, report estimate, variance, and 95%% confidence\ninterval,\
     \ printed to given filename, one parameter per line."
-  type: File
+  type: File?
   inputBinding:
     prefix: --error
 - id: in_no_opt
@@ -230,7 +226,7 @@ inputs:
     for enforcing a star-phylogeny.  However, note that the two branches\ncoming from\
     \ root of tree are treated as one.  So they should both\nbe held constant, or\
     \ not held constant.  This option does *not* work\nwith --scale-only or --clock."
-  type: string
+  type: string?
   inputBinding:
     prefix: --no-opt
 - id: in_bound
@@ -240,7 +236,7 @@ inputs:
     for a GC model.  Only applies to parameters for model in the \"main\"\ntree, but\
     \ similar syntax can be used within the --alt-mod arguments.\nCan be used multiple\
     \ times to set boundaries for different parameters."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bound
 - id: in_selection
@@ -249,20 +245,20 @@ inputs:
     \ this is done\nafter rate matrix is scaled to set expected number of substitutions\n\
     per unit time to 1.  If using codon models selection acts only on\nnonysynonymous\
     \ mutations."
-  type: long
+  type: long?
   inputBinding:
     prefix: --selection
 - id: in_n_rates
   doc: "(default 1).  Number of rate categories to use.  Specifying a\nvalue of greater\
     \ than one causes the discrete gamma model for\nrate variation to be used (Yang,\
     \ 1994)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --nrates
 - id: in_alpha
   doc: "(for use with --nrates).  Initial value for alpha, the shape\nparameter of\
     \ the gamma distribution.  Default is 1."
-  type: long
+  type: long?
   inputBinding:
     prefix: --alpha
 - id: in_rate_constants
@@ -272,7 +268,7 @@ inputs:
     associated with each rate constant will be estimated by EM\n(this option implies\
     \ --EM).  If --alpha is used with\nthis option, then the mixing proportions will\
     \ be initialized\nto reflect a gamma distribution with the specified shape\nparameter."
-  type: string
+  type: string?
   inputBinding:
     prefix: --rate-constants
 - id: in_cat_map
@@ -281,14 +277,14 @@ inputs:
     \ a simple category map, e.g., --catmap \"NCATS =\n3 ; CDS 1-3\" or --catmap \"\
     NCATS = 1 ; UTR 1\".  Note that\ncategory 0 is reserved for \"background\" (everything\
     \ that is\nnot described by a defined feature type)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --catmap
 - id: in_do_cats
   doc: "(optionally use with --features) Estimate models for only the\nspecified categories\
     \ (comma-delimited list categories, by name\nor numbera).  Default is to fit a\
     \ model for every category."
-  type: string
+  type: string?
   inputBinding:
     prefix: --do-cats
 - id: in_reverse_groups
@@ -297,7 +293,7 @@ inputs:
     \ to groups on the\nreverse strand.  Groups must be non-overlapping (see refeature\n\
     --unique).  Useful with categories corresponding to\nstrand-specific phenomena\
     \ (e.g., codon positions)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --reverse-groups
 - id: in_markov
@@ -314,9 +310,19 @@ inputs:
     \ without --markov, and\nthen the likelihood can be evaluated using --lnl and\n\
     --markov together.  This gives a lower bound on the\nlikelihood of the Markov-dependent\
     \ model."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --markov
+- id: in_non_overlapping
+  doc: "(for use with context-dependent substitution models; not\ncompatible with\
+    \ --markov, --features, or\n--msa-format SS) Avoid using overlapping tuples of\
+    \ sites\nin parameter estimation.  If a dinucleotide model is selected,\nevery\
+    \ other tuple will be considered, and if a nucleotide\ntriplet model is selected,\
+    \ every third tuple will be\nconsidered.  This option cannot be used with an alignment\n\
+    represented only by unordered sufficient statistics."
+  type: boolean?
+  inputBinding:
+    prefix: --non-overlapping
 - id: in_label_branches
   doc: ",branch2,branch3...:label\nCreate a group of branches by giving a set of branches\
     \ a\nsingle label.  The label should be a word which does not\ncontain special\
@@ -329,14 +335,14 @@ inputs:
     \ (mouse,rat)mouse-rat)\nThe same label could be defined without using --label-branches\n\
     by specifing the tree (either on the command-line or within\ninit-model) as follows:\n\
     (((hg18 # HC, chimp #HC)#HC, (mouse,rat))"
-  type: long
+  type: long?
   inputBinding:
     prefix: --label-branches
 - id: in_label_subtree
   doc: "[+]:label\nSimilar to label-branches, except labels the entire subtree\nof\
     \ the named node.  If the node name is followed by a \"+\" sign,\nthen includes\
     \ the branch leading up to the node in the subtree."
-  type: string
+  type: string?
   inputBinding:
     prefix: --label-subtree
 - id: in_alt_model
@@ -371,40 +377,40 @@ inputs:
     \ mouse,rat,mouse-rat:MR \\\n--alt-model \"MR:kappa[0,1]\"\nor\nphyloFit align.fa\
     \ --subst-mod HKY85 \\\n--tree \"(human, (mouse,rat)mouse-rat, cow)\" \\\n--label-subtree\
     \ \"mouse-rat+:MR\" \\\n--alt-model \"MR:kappa[0,1]\""
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --alt-model
 - id: in_post_probs
   doc: "Output posterior probabilities of all bases at all ancestral\nnodes.  Output\
     \ will be to auxiliary file(s) with suffix\n\".postprobs\"."
-  type: File
+  type: File?
   inputBinding:
     prefix: --post-probs
 - id: in_expected_subs
   doc: "Output posterior expected number of substitutions on each branch at\neach\
     \ site, summed across all types of substitutions.\nOutput will be to auxiliary\
     \ file(s) with suffix \".expsub\"."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --expected-subs
 - id: in_expected_subs_col
   doc: "Output posterior expected number of substitutions of each type\non each branch,\
     \ for each site.  Output will be to auxiliary\nfile(s) with suffix .expcolsub"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --expected-subs-col
 - id: in_expected_total_subs
   doc: "Output posterior expected number of substitutions of each type\non each branch,\
     \ summed across all sites.  Output will be to\nauxiliary file(s) with suffix \"\
     .exptotsub\"."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --expected-total-subs
 - id: in_column_probs
   doc: "(for use with -init-model; implies --lnl)  Output a separate log\nprobability\
     \ for each type of column in the input.  Output will\nbe to a file with suffix\
     \ \".colprobs\".  Values are log base 2."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --column-probs
 - id: in_windows
@@ -413,7 +419,7 @@ inputs:
     \ shift it on each iteration, both in bases\nof the first sequence in the alignment\
     \ (assumed to be the\nreference sequence).  Separate versions of all output files\n\
     will be created for each window."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --windows
 - id: in_windows_explicit
@@ -421,7 +427,7 @@ inputs:
     \ specified.  Each successive pair of numbers is\ninterpreted as defining the\
     \ start and end of a window.  Can be\nused with a two-column file and the '*'\
     \ operator, e.g.,\n--windows-explicit '*mycoords'."
-  type: File
+  type: File?
   inputBinding:
     prefix: --windows-explicit
 - id: in_frequencies_dot
@@ -436,9 +442,10 @@ outputs:
 - id: out_post_probs
   doc: "Output posterior probabilities of all bases at all ancestral\nnodes.  Output\
     \ will be to auxiliary file(s) with suffix\n\".postprobs\"."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_post_probs)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phyloFit

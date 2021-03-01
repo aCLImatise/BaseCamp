@@ -28,6 +28,9 @@ task Dbigcg {
       ~{if (sort_options) then "-sortoptions" else ""} \
       ~{if (index_outdir) then "-indexoutdir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id_format: "menu       [EMBL] Entry format (Values: EMBL (EMBL);\\nSWISS (Swiss-Prot, SpTrEMBL, TrEMBLnew);\\nGENBANK (Genbank, DDBJ); PIR (NBRF))"
     directory: "directory  [.] Database directory"

@@ -34,6 +34,9 @@ task DnaseToJavatreeviewpy {
       ~{if (randomise_ordering_output) then "-r" else ""} \
       ~{if (n) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window_size: "Size of flanking area around centre of the regions to\\nplot (default: 100)"
     ignores_strand_information: "Ignores strand information in BED file"

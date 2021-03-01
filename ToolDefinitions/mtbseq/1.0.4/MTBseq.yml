@@ -2,63 +2,41 @@
 command:
 - MTBseq
 positional: []
-named: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --check
+  description: Check the dependencies of MTBseq
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --step
+  description: "<ESSENTIAL> This is an essential option! Choose your pipeline step\
+    \ as a parameter!\nTBfull      Full workflow\nTBbwa       Read mapping\nTBrefine\
+    \    Refinement of mapping(s)\nTBpile      Creation of mpileup file(s)\nTBlist\
+    \      Creation of position list(s)\nTBvariants  Calling variants\nTBstats   \
+    \  Statisitcs of mapping(s) and variant calling(s)\nTBstrains   Calling lineage\
+    \ from sample(s)\nTBjoin      Joint variant analysis from defined samples\nTBamend\
+    \     Amending joint variant table(s)\nTBgroups    Detecting groups of samples"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "This help message\n--version      Version of MTBseq\n--check     \
-    \   Check the dependencies of MTBseq\n--step\n<ESSENTIAL> This is an essential\
-    \ option! Choose your pipeline step as a parameter!\nTBfull      Full workflow\n\
-    TBbwa       Read mapping\nTBrefine    Refinement of mapping(s)\nTBpile      Creation\
-    \ of mpileup file(s)\nTBlist      Creation of position list(s)\nTBvariants  Calling\
-    \ variants\nTBstats     Statisitcs of mapping(s) and variant calling(s)\nTBstrains\
-    \   Calling lineage from sample(s)\nTBjoin      Joint variant analysis from defined\
-    \ samples\nTBamend     Amending joint variant table(s)\nTBgroups    Detecting\
-    \ groups of samples\n--continue\n<OPTIONAL> Ensures that the pipeline continues\
-    \ after selecting a certain pipeline step that is not TBfull.\n--samples\n<OPTIONAL>\
-    \ Specifies a column separated text file with sampleID in column 1 and libID in\
-    \ column 2 for pipeline steps after TBstats.\n--project\n<OPTIONAL> Specifiies\
-    \ a project name to identify your joint analysis. Essential for TBamend and TBgroups.\n\
-    --resilist\n<OPTIONAL> Specifies a  file of resistance mediating SNPs for resistance\
-    \ prediction. See the README.pdf for file properties.\n--intregions\n<OPTIONAL>\
-    \ Specifies an interesting region files for extended resistance prediction. See\
-    \ the README.pdf for file properties.\n--categories\n<OPTIONAL> Specifies a gene\
-    \ categories file to detect essential and non-essential genes as well as repetitive\
-    \ regions. See the README.pdf for file properties.\n--basecalib\n<OPTIONAL> Specifies\
-    \ file for base quality recalibration. See the README.pdf for file properties.\n\
-    --ref M._tuberculosis_H37Rv_2015-11-13\n<OPTIONAL> Reference genome for mapping\
-    \ without .fasta extension.\n--minbqual 13\n<OPTIONAL> Defines minimum positional\
-    \ mapping quality during variant calling.\n--all_vars\n<OPTIONAL> If set, all\
-    \ variant (unambiguous and ambiguous) and invariant sites will be reported.\n\
-    --snp_vars\n<OPTIONAL> If set, only unambigous SNPs will be reported. No Insertions\
-    \ nd Deletions will be reported.\n--lowfreq_vars\n<OPTIONAL> If set, alternative\
-    \ low frequency alleles competing with majority reference alleles will be reported\
-    \ (useful for the detection of subpopulations).\n--mincovf 4\n<OPTIONAL> Defines\
-    \ minimum forward read coverage for a putative variant position.\n--mincovr 4\n\
-    <OPTIONAL> Defines minimum reverse read coverage for a putative variant position.\n\
-    --minphred20 4\n<OPTIONAL> Defines the minimum number of reads having a phred\
-    \ score above or equal 20 to be considered as a putative variant.\n--minfreq 75\n\
-    <OPTIONAL> Defines minimum allele frequency for majority allele.\n--unambig 95\n\
-    <OPTIONAL> Defines minimum percentage of samples having unambigous base call in\
-    \ TBamend analysis.\n--window 12\n<OPTIONAL> Defines window for SNP cluster look\
-    \ up. Reduces putative false positives in TBamend.\n--distance 12\n<OPTIONAL>\
-    \ Defines SNP distance for the single linkage clustering in TBgroups.\n--quiet\n\
-    <OPTIONAL> Turns off Display logging process.\n--threads 1\n<OPTIONAL> Defines\
-    \ number of CPUs to use. The usage of 8 CPUs is maximum.\n[EXAMPLES]:\nMTBseq\
-    \ --step TBfull\nDefault values and execute the whole pipeline.\nMTBseq --step\
-    \ TBrefine\nDefault values and execute only the \"TBrefine\" step.\nMTBseq --step\
-    \ TBbwa --continue\nDefault values and execute the \"TBbwa\" module as well as\
-    \ the downstream modules.\nMTBseq --step TBfull --threads 8 --lowfreq_vars --minfreq\
-    \ 20 --mincovf 2 --mincovr 2 --intregions /path/to/intregions/file\nExecute the\
-    \ whole pipeline with 8 threads, reporting low frequency variants with altered\
-    \ minimum threshholds and using an alternative intregions file.\n"
+  optional: true
   synonyms:
   - --help
+  description: This help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Version of MTBseq
+  args: !EmptyFlagArg {}
 help_text: "\n\n   MTBseq 1.0.3 - Copyright (C) 2018   Thomas A. Kohl, Robin Koch,\
   \ Christian Utpatel,\n                                 Maria Rosaria De Filippo,\
   \ Viola Schleusener,\n                                 Patrick Beckert, Daniela\
@@ -118,3 +96,4 @@ help_text: "\n\n   MTBseq 1.0.3 - Copyright (C) 2018   Thomas A. Kohl, Robin Koc
   \  \n"
 generated_using:
 - --help
+docker_image:

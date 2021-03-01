@@ -16,6 +16,9 @@ task SingularityOciKill {
       ~{if defined(signal) then ("--signal " +  '"' + signal + '"') else ""} \
       ~{if defined(timeout) then ("--timeout " +  '"' + timeout + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "kill container process with SIGKILL"
     signal: "signal sent to the container (default \\\"SIGTERM\\\")"

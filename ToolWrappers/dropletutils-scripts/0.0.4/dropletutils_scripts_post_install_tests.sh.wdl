@@ -12,6 +12,9 @@ task Dropletutilsscriptspostinstalltestssh {
       ~{action} \
       ~{use_existing_outputs}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r_seurat_workflow_post_install_tests_dots_h: ""
     action: ""

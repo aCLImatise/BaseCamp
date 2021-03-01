@@ -9,7 +9,7 @@ task Sv2 {
     Boolean? ped
     Boolean? genome
     Boolean? pcr_free
-    Boolean? bwa_mem_m
+    Boolean? bwa_mem_flagged
     Boolean? merge
     Boolean? min_ovr
     Boolean? no_an_no
@@ -37,7 +37,7 @@ task Sv2 {
       ~{if (ped) then "-ped" else ""} \
       ~{if (genome) then "-genome" else ""} \
       ~{if (pcr_free) then "-pcrfree" else ""} \
-      ~{if (bwa_mem_m) then "-M" else ""} \
+      ~{if (bwa_mem_flagged) then "-M" else ""} \
       ~{if (merge) then "-merge" else ""} \
       ~{if (min_ovr) then "-min-ovr" else ""} \
       ~{if (no_an_no) then "-no-anno" else ""} \
@@ -56,6 +56,9 @@ task Sv2 {
       ~{if (out) then "-out" else ""} \
       ~{if (o_dir) then "-odir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "...     bam file(s)"
     vcf: "...     vcf files(s) of SVs"
@@ -64,7 +67,7 @@ task Sv2 {
     ped: "...     ped files(s)"
     genome: "reference genome build <hg19, hg38, mm10> [default: hg19]"
     pcr_free: "GC content normalization for pcr free sequences"
-    bwa_mem_m: "bwa mem -M compatibility, split-reads flagged as secondary instead of supplementary"
+    bwa_mem_flagged: "bwa mem -M compatibility, split-reads flagged as secondary instead of supplementary"
     merge: "merge overlapping SV breakpoints after genotyping"
     min_ovr: "minimum reciprocal overlap for merging [default: 0.8]"
     no_an_no: "genotype without annotating variants"

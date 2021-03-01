@@ -14,6 +14,9 @@ task PslStats {
       ~{if (overall_stats) then "-overallStats" else ""} \
       ~{if defined(queries) then ("-queries " +  '"' + queries + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query_stats: "- output per-query statistics, the default is per-alignment stats"
     overall_stats: "- output overall statistics."

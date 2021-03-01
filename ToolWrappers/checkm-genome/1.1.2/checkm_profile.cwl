@@ -3,17 +3,17 @@ id: checkm_profile.cwl
 inputs:
 - id: in_file
   doc: 'print results to file (default: stdout)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --file
 - id: in_tab_table
   doc: print tab-separated values table
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tab_table
 - id: in_quiet
   doc: suppress console output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_coverage_file
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - checkm

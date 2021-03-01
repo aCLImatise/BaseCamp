@@ -18,6 +18,9 @@ task DRAMvpyDistill {
       ~{if (remove_transposons) then "--remove_transposons" else ""} \
       ~{if (remove_fs) then "--remove_fs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Annotations path (default: None)"
     output_dir: "Directory to write summarized genomes (default: None)"

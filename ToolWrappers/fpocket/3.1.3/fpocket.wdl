@@ -32,6 +32,9 @@ task Fpocket {
       ~{if (number_apol_asph_pocket) then "--number_apol_asph_pocket" else ""} \
       ~{if (iterations_volume_mc) then "--iterations_volume_mc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     calculate_interaction_grids: ": Specify this flag if you want fpocket to\\ncalculate VdW and Coulomb grids for each pocket"
     pocket_descr_stdout: ": Put this flag if you want to write fpocket\\ndescriptors to the standard output"

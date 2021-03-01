@@ -26,6 +26,9 @@ task TaxonkitList {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ids: "taxid(s), multiple values should be separated by comma"
     indent: "indent (default \\\"  \\\")"

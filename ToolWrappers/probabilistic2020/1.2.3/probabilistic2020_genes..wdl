@@ -14,6 +14,9 @@ task Probabilistic2020Genes {
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
       ~{if defined(ll) then ("-ll " +  '"' + ll + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
     l: ""

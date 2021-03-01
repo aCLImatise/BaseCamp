@@ -42,6 +42,9 @@ task Blat2hintspl {
       ~{if defined(terminus_file) then ("--terminusfile " +  '"' + terminus_file + '"') else ""} \
       ~{if defined(max_gene_len) then ("--maxgenelen " +  '"' + max_gene_len + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     priority: "priority of hint group (default 4)"
     max_gap_len: "gaps at most this length are simply closed (default 14)"

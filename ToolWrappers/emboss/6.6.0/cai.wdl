@@ -8,6 +8,9 @@ task Cai {
     cai \
       ~{if (c_file) then "-cfile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     c_file: "codon      [Eyeast_cai.cut] Codon usage table name"
   }

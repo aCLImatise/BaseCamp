@@ -14,6 +14,9 @@ task GenoStats {
       ~{if defined(eigen_strat_snp) then ("--eigenstratSnp " +  '"' + eigen_strat_snp + '"') else ""} \
       ~{if defined(eigen_strat_ind) then ("--eigenstratInd " +  '"' + eigen_strat_ind + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     freq_sum: "a freqsum file to read as input. Use - to read from\\nstdin (the default) (default: \\\"-\\\")"
     eigen_strat_geno: "Eigenstrat Geno File"

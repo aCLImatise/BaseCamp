@@ -24,6 +24,9 @@ task SocruCreate {
       ~{if (debug) then "--debug" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_bases_from_ends: "Only look at this number of bases from start and end\\nof fragment (default: None)"
     threads: "No. of threads to use (default: 1)"

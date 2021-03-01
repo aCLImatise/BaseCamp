@@ -20,6 +20,9 @@ task ReadCounter {
       ~{if defined(chromosome) then ("--chromosome " +  '"' + chromosome + '"') else ""} \
       ~{if (build) then "--build" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seg: "Outputs in SEG format"
     window: "Specify the size of non-overlapping windows [1000]"

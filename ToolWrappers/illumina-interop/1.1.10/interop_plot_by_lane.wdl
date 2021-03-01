@@ -32,6 +32,9 @@ task InteropPlotByLane {
       ~{if defined(option_two) then ("--option2 " +  '"' + option_two + '"') else ""} \
       ~{if defined(option_one) then ("--option1 " +  '"' + option_one + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metric_name: "[ClusterCount]: Metric to plot"
     filter_by_lane: "[]: Only the data for the selected lane will be displayed"

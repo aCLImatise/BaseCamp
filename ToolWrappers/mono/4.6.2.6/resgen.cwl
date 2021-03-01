@@ -5,13 +5,13 @@ inputs:
   doc: ", /compile\ntakes a list of .resX or .txt files to convert to .resources files\n\
     in one bulk operation, replacing .ext with .resources for the\noutput file name\
     \ (if not set)."
-  type: File
+  type: File?
   inputBinding:
     prefix: -compile
 - id: in_use_sourcepath
   doc: ", /useSourcePath\nto resolve relative file paths, use the directory of the\
     \ resource\nfile as current directory."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -usesourcepath
 - id: in_define
@@ -21,7 +21,7 @@ inputs:
     will be included in the destination file when SYMBOL1 has\nbeen specified using\
     \ /define option.\nResources enclosed with #if ! SYMBOL2 ... #endif directives\n\
     will be included only if SYMBOL2 has NOT been specified.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -define
 - id: in_source_do_text
@@ -37,9 +37,10 @@ outputs:
   doc: ", /compile\ntakes a list of .resX or .txt files to convert to .resources files\n\
     in one bulk operation, replacing .ext with .resources for the\noutput file name\
     \ (if not set)."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_compile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - resgen

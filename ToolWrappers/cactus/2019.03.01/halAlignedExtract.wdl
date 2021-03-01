@@ -24,6 +24,9 @@ task HalAlignedExtract {
       ~{if (complement) then "--complement" else ""} \
       ~{if (in_memory) then "--inMemory" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aligned_file: ":   path to bed file to write to [default = stdout]"
     cache_bytes: ":    maximum size in bytes of regular hdf5 cache [default =\\n15728640]"

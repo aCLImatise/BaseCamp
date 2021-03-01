@@ -1,0 +1,56 @@
+!Command
+command:
+- _toil_worker
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: jobName
+  description: Text name of the job being run
+- !Positional
+  optional: false
+  position: 1
+  name: jobStoreLocator
+  description: Information required to connect to the job store
+- !Positional
+  optional: false
+  position: 2
+  name: jobStoreID
+  description: ID of the job within the job store
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --context
+  description: "Pickled, base64-encoded context manager(s) to run job\ninside of.\
+    \ Allows the Toil leader to pass setup and\ncleanup work provided by the batch\
+    \ system, in the form of\npickled Python context manager objects, that the worker\n\
+    can then run before/after the job on the batch system's\nbehalf.\n"
+  args: !SimpleFlagArg
+    name: CONTEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: _toil_worker [-h] [--context CONTEXT]\n                    jobName\
+  \ jobStoreLocator jobStoreID\n\npositional arguments:\n  jobName            Text\
+  \ name of the job being run\n  jobStoreLocator    Information required to connect\
+  \ to the job store\n  jobStoreID         ID of the job within the job store\n\n\
+  optional arguments:\n  -h, --help         show this help message and exit\n  --context\
+  \ CONTEXT  Pickled, base64-encoded context manager(s) to run job\n             \
+  \        inside of. Allows the Toil leader to pass setup and\n                 \
+  \    cleanup work provided by the batch system, in the form of\n               \
+  \      pickled Python context manager objects, that the worker\n               \
+  \      can then run before/after the job on the batch system's\n               \
+  \      behalf.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/toil:5.2.0--py_0

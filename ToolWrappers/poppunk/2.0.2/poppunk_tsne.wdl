@@ -14,6 +14,9 @@ task PoppunkTsne {
       ~{if defined(perplexity) then ("--perplexity " +  '"' + perplexity + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     distances: "Prefix of input pickle and numpy file of pre-\\ncalculated distances"
     name_output_file: "Name of output file"

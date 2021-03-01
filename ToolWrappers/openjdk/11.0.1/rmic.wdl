@@ -15,7 +15,7 @@ task Rmic {
     File? classpath
     File? boot_classpath
     Directory? specify_where_place
-    Boolean? runtime_flag_argument
+    Boolean? runtime_flag_pass
     String options
     String class_names
   }
@@ -36,8 +36,11 @@ task Rmic {
       ~{if defined(classpath) then ("-classpath " +  '"' + classpath + '"') else ""} \
       ~{if defined(boot_classpath) then ("-bootclasspath " +  '"' + boot_classpath + '"') else ""} \
       ~{if defined(specify_where_place) then ("-d " +  '"' + specify_where_place + '"') else ""} \
-      ~{if (runtime_flag_argument) then "-J" else ""}
+      ~{if (runtime_flag_pass) then "-J" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     invalid_option_argument: "an invalid option or argument."
     keep: "Do not delete intermediate generated source files"
@@ -52,7 +55,7 @@ task Rmic {
     classpath: "Specify where to find input class files"
     boot_classpath: "Override location of bootstrap class files"
     specify_where_place: "Specify where to place generated class files"
-    runtime_flag_argument: "<runtime flag>       Pass argument to the java interpreter"
+    runtime_flag_pass: "<runtime flag>       Pass argument to the java interpreter"
     options: ""
     class_names: ""
   }

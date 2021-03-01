@@ -32,6 +32,9 @@ task Rapidnj {
       ~{if (no_negative_length) then "--no-negative-length" else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "turn on verbose output."
     input_format: "Specifies the type of input. pd = distance\\nmatrix in phylip format, sth = multiple alignment in (single line) stockholm format.\\nfa = multiple alignment in (single line) FASTA format."

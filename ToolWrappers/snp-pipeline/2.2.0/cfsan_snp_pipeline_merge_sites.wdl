@@ -20,6 +20,9 @@ task CfsanSnpPipelineMergeSites {
       ~{if defined(output_file_relative) then ("--output " +  '"' + output_file_relative + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "Force processing even when result file already exists\\nand is newer than inputs (default: False)"
     vcf_name: "File name of the VCF files which must exist in each of\\nthe sample directories (default: var.flt.vcf)"

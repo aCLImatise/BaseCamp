@@ -12,6 +12,9 @@ task Metalpdb2mol2py {
       ~{if defined(output_mol_file) then ("-o " +  '"' + output_mol_file + '"') else ""} \
       ~{if defined(charge_metal_ion) then ("-c " +  '"' + charge_metal_ion + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_pdb_file: "Input PDB file"
     output_mol_file: "Output mol2 file"

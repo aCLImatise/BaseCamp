@@ -1,14 +1,16 @@
 class: CommandLineTool
 id: dnadiff.cwl
 inputs:
-- id: in_delta_provide_precomputed
-  doc: "|delta        Provide precomputed delta file for analysis\n-h\n--help    \
-    \      Display help information and exit\n-p|prefix       Set the prefix of the\
-    \ output files (default \"out\")\n-V\n--version       Display the version information\
-    \ and exit\n"
-  type: File
+- id: in_delta_precomputed_file
+  doc: '|delta        Provide precomputed delta file for analysis'
+  type: boolean?
   inputBinding:
     prefix: -d
+- id: in_prefix_set_prefix
+  doc: '|prefix       Set the prefix of the output files (default "out")'
+  type: boolean?
+  inputBinding:
+    prefix: -p
 - id: in_dna_diff
   doc: '[options]  <reference>  <query>'
   type: string
@@ -38,14 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_delta_provide_precomputed
-  doc: "|delta        Provide precomputed delta file for analysis\n-h\n--help    \
-    \      Display help information and exit\n-p|prefix       Set the prefix of the\
-    \ output files (default \"out\")\n-V\n--version       Display the version information\
-    \ and exit\n"
-  type: File
-  outputBinding:
-    glob: $(inputs.in_delta_provide_precomputed)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dnadiff

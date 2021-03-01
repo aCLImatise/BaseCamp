@@ -12,6 +12,9 @@ task OboIntersectionpl {
       ~{if (l) then "-l" else ""} \
       ~{if (r) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     l: "OBO input file 1"
     r: "OBO input file 2"

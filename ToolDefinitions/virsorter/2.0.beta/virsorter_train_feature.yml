@@ -4,108 +4,108 @@ command:
 - train-feature
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: SNAKEMAKE_ARGS
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: output directory  [required]
+  optional: true
   synonyms:
   - -w
   - --working-dir
+  description: output directory  [required]
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "genome sequence file for training; for file\npattern globbing, put\
-    \ quotes around the pattern,\neg. \"fasta-dir/*.fa\"  [required]"
+  optional: true
   synonyms:
   - --seqfile
+  description: "genome sequence file for training; for file\npattern globbing, put\
+    \ quotes around the pattern,\neg. \"fasta-dir/*.fa\"  [required]"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "customized viral HMMs for training; default to\nthe one used in VirSorter2"
+  optional: true
   synonyms:
   - --hmm
+  description: "customized viral HMMs for training; default to\nthe one used in VirSorter2"
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --hallmark
   description: "hallmark gene hmm list from -hmm for training (a\ntab separated file\
     \ with three columns: 1. hmm\nname 2. gene name of hmm 3. hmm bit score\ncutoff);\
     \ default to the one used for dsDNAphage\nin VirSorter2"
-  synonyms:
-  - --hallmark
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "customized training db from prodigal; default to\nthe one used in\
-    \ prodigal --meta mode"
+  optional: true
   synonyms:
   - --prodigal-train
+  description: "customized training db from prodigal; default to\nthe one used in\
+    \ prodigal --meta mode"
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "number of random DNA fragments collected from\neach genome  [default:\
-    \ 5]"
+  optional: true
   synonyms:
   - --frags-per-genome
+  description: "number of random DNA fragments collected from\neach genome  [default:\
+    \ 5]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: 'max # of jobs in parallel  [default: 8]'
+  optional: true
   synonyms:
   - -j
   - --jobs
+  description: 'max # of jobs in parallel  [default: 8]'
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "minimum size of random DNA fragment for training\n[default: 1000]"
+  optional: true
   synonyms:
   - --min-length
+  description: "minimum size of random DNA fragment for training\n[default: 1000]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-orf-per-seq
   description: "Max # of orf used for computing taxonomic\nfeatures; if # of orf in\
     \ a seq exceeds the max\nlimit, it is sub-sampled to this # to reduce\ncomputation;\
     \ to turn off this, set it to -1\n[default: 20]"
-  synonyms:
-  - --max-orf-per-seq
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "if applied, each file (genome bin) is a genome\nin --seqfile, else\
-    \ each sequence is a genome\n[default: False]"
+  optional: true
   synonyms:
   - --genome-as-bin
+  description: "if applied, each file (genome bin) is a genome\nin --seqfile, else\
+    \ each sequence is a genome\n[default: False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --use-conda-off
   description: "Stop using the conda envs (vs2.yaml) that come\nwith this package\
     \ and use what are installed in\ncurrent system; Only useful when you want to\n\
     install dependencies on your own with your own\nprefer versions  [default: False]"
-  synonyms:
-  - --use-conda-off
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: virsorter train-feature [OPTIONS] [SNAKEMAKE_ARGS]...\n\n  Training\
@@ -143,3 +143,4 @@ help_text: "Usage: virsorter train-feature [OPTIONS] [SNAKEMAKE_ARGS]...\n\n  Tr
   \ Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

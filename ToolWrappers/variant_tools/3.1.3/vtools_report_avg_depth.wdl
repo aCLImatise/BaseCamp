@@ -14,6 +14,9 @@ task VtoolsReportAvgDepth {
       ~{if (group_by) then "--group_by" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_field: "Name of the field that holds sample variant count,\\nwhich is the field name for command 'vtools update\\ntable --from_stat \\\"num=#(alt)\\\"'."
     depth_field: "Name of the field that holds average depth of each\\nvariant, which is the field name for command 'vtools\\nupdate table --from_stat \\\"meanDP=avg(DP_geno)\\\"'."

@@ -10,6 +10,9 @@ task Annotate {
       ~{gap_file} \
       ~{data_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gap_file: ""
     data_file: ""

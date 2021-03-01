@@ -40,6 +40,9 @@ task Countpl {
       ~{if (extended) then "--extended" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_gram: "Creates n-grams of N tokens each. N = 2 by"
     token: "Uses regular expressions in FILE to create\\ntokens. By default two regular expressions\\nare provided (see README)."

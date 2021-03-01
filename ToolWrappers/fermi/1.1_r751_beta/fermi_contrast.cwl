@@ -3,17 +3,17 @@ id: fermi_contrast.cwl
 inputs:
 - id: in_minimum_occurrence
   doc: minimum occurrence [3]
-  type: long
+  type: long?
   inputBinding:
     prefix: -o
 - id: in_number_of_threads
   doc: number of threads [1]
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_kmer_length
   doc: k-mer length [55]
-  type: long
+  type: long?
   inputBinding:
     prefix: -k
 - id: in_idx_one_dot_fmd
@@ -50,6 +50,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fermi

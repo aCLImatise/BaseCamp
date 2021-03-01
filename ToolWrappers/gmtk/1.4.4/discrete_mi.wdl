@@ -15,7 +15,7 @@ task Discretemi {
     Boolean? i_swap_two
     Boolean? l_swap
     Boolean? lab_fmt
-    Boolean? print_raw_ints
+    Boolean? print_binary_ints
     Boolean? ns
     String options
   }
@@ -35,9 +35,12 @@ task Discretemi {
       ~{if (i_swap_two) then "-iswap2" else ""} \
       ~{if (l_swap) then "-lswap" else ""} \
       ~{if (lab_fmt) then "-labfmt" else ""} \
-      ~{if (print_raw_ints) then "-b" else ""} \
+      ~{if (print_binary_ints) then "-b" else ""} \
       ~{if (ns) then "-ns" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_pfile: "input pfile"
     ni_one: "for file 1"
@@ -52,7 +55,7 @@ task Discretemi {
     i_swap_two: "byte-swap input file 2"
     l_swap: "byte-swap label file"
     lab_fmt: "<format(htk,bin,asc,pfile)> for the label file"
-    print_raw_ints: "print raw binary data (ints and floats)"
+    print_binary_ints: "print raw binary data (ints and floats)"
     ns: "Don't print the frame IDs (i.e., sent and frame #)"
     options: ""
   }

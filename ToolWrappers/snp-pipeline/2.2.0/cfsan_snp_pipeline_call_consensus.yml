@@ -5,157 +5,157 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Force processing even when result file already exists\nand is newer\
-    \ than inputs. (default: False)"
+  optional: true
   synonyms:
   - -f
   - --force
+  description: "Force processing even when result file already exists\nand is newer\
+    \ than inputs. (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Relative or absolute path to the SNP list file across\nall samples.\
-    \ (default: snplist.txt)"
+  optional: true
   synonyms:
   - -l
   - --snpListFile
+  description: "Relative or absolute path to the SNP list file across\nall samples.\
+    \ (default: snplist.txt)"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: 'VCF file of positions to exclude. (default: None)'
+  optional: true
   synonyms:
   - -e
   - --excludeFile
+  description: 'VCF file of positions to exclude. (default: None)'
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Output file. Relative or absolute path to the\nconsensus fasta file\
-    \ for this sample. (default:\nconsensus.fasta)"
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "Output file. Relative or absolute path to the\nconsensus fasta file\
+    \ for this sample. (default:\nconsensus.fasta)"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Mimimum base quality score to count a read. All other\nsnp filters\
-    \ take effect after the low-quality reads\nare discarded. (default: 0)"
+  optional: true
   synonyms:
   - -q
   - --minBaseQual
+  description: "Mimimum base quality score to count a read. All other\nsnp filters\
+    \ take effect after the low-quality reads\nare discarded. (default: 0)"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Consensus frequency. Mimimum fraction of high-quality\nreads supporting\
-    \ the consensus to make a call.\n(default: 0.6)"
+  optional: true
   synonyms:
   - -c
   - --minConsFreq
+  description: "Consensus frequency. Mimimum fraction of high-quality\nreads supporting\
+    \ the consensus to make a call.\n(default: 0.6)"
   args: !SimpleFlagArg
     name: FREQ
-  optional: true
 - !Flag
-  description: "Consensus depth. Minimum number of high-quality reads\nsupporting\
-    \ the consensus to make a call. (default: 1)"
+  optional: true
   synonyms:
   - -D
   - --minConsDpth
+  description: "Consensus depth. Minimum number of high-quality reads\nsupporting\
+    \ the consensus to make a call. (default: 1)"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Consensus strand depth. Minimum number of high-quality\nreads supporting\
-    \ the consensus which must be present\non both the forward and reverse strands\
-    \ to make a\ncall. (default: 0)"
+  optional: true
   synonyms:
   - -d
   - --minConsStrdDpth
+  description: "Consensus strand depth. Minimum number of high-quality\nreads supporting\
+    \ the consensus which must be present\non both the forward and reverse strands\
+    \ to make a\ncall. (default: 0)"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --minConsStrdBias
   description: "Strand bias. Minimum fraction of the high-quality\nconsensus-supporting\
     \ reads which must be present on\nboth the forward and reverse strands to make\
     \ a call.\nThe numerator of this fraction is the number of high-\nquality consensus-supporting\
     \ reads on one strand. The\ndenominator is the total number of high-quality\n\
     consensus-supporting reads on both strands combined.\n(default: 0)"
-  synonyms:
-  - -b
-  - --minConsStrdBias
   args: !SimpleFlagArg
     name: FREQ
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --vcfFileName
   description: "VCF Output file name. If specified, a VCF file with\nthis file name\
     \ will be created in the same directory\nas the consensus fasta file for this\
     \ sample. (default:\nNone)"
-  synonyms:
-  - --vcfFileName
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: "Name of the reference file. This is only used in the\ngenerated VCF\
-    \ file header. (default: Unknown\nreference)"
+  optional: true
   synonyms:
   - --vcfRefName
+  description: "Name of the reference file. This is only used in the\ngenerated VCF\
+    \ file header. (default: Unknown\nreference)"
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --vcfAllPos
   description: "Flag to cause VCF file generation at all positions,\nnot just the\
     \ snp positions. This has no effect on the\nconsensus fasta file, it only affects\
     \ the VCF file.\nThis capability is intended primarily as a diagnostic\ntool and\
     \ enabling this flag will greatly increase\nexecution time. (default: False)"
-  synonyms:
-  - --vcfAllPos
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --vcfPreserveRefCase
   description: "Flag to cause the VCF file generator to emit each\nreference base\
     \ in uppercase/lowercase as it appears in\nthe reference sequence file. If not\
     \ specified, the\nreference base is emitted in uppercase. (default:\nFalse)"
-  synonyms:
-  - --vcfPreserveRefCase
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --vcfFailedSnpGt
   description: "{.,0,1}\nControls the VCF file GT data element when a snp fails\n\
     filters. Possible values: .) The GT element will be a\ndot, indicating unable\
     \ to make a call. 0) The GT\nelement will be 0, indicating the reference base.\
     \ 1)\nThe GT element will be the ALT index of the most\ncommonly occuring base,\
     \ usually 1. (default: .)"
-  synonyms:
-  - --vcfFailedSnpGt
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Verbose message level (0=no info, 5=lots) (default: 1)'
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: 'Verbose message level (0=no info, 5=lots) (default: 1)'
   args: !SimpleFlagArg
     name: 0..5
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: cfsan_snp_pipeline call_consensus [-h] [-f] [-l FILE] [-e FILE]\n\
   \                                         [-o FILE] [-q INT] [-c FREQ] [-D INT]\n\
   \                                         [-d INT] [-b FREQ]\n                 \
@@ -222,3 +222,4 @@ help_text: "usage: cfsan_snp_pipeline call_consensus [-h] [-f] [-l FILE] [-e FIL
   \ (default: 1)\n  --version             show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

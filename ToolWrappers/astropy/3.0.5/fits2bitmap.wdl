@@ -30,6 +30,9 @@ task Fits2bitmap {
       ~{if defined(percent) then ("--percent " +  '"' + percent + '"') else ""} \
       ~{if defined(cmap) then ("--cmap " +  '"' + cmap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ext: "Specify the HDU extension number or name (Default is\\n0)."
     filename_output_image: "Filename for the output image (Default is a PNG file\\nwith the same name as the FITS file)."

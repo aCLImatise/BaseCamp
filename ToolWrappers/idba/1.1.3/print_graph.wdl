@@ -4,6 +4,9 @@ task PrintGraph {
   command <<<
     print_graph
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

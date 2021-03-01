@@ -4,6 +4,9 @@ task RNAforester {
   command <<<
     RNAforester
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

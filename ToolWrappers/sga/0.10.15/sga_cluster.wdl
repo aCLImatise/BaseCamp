@@ -28,6 +28,9 @@ task SgaCluster {
       ~{if defined(extend) then ("--extend " +  '"' + extend + '"') else ""} \
       ~{if defined(limit) then ("--limit " +  '"' + limit + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     out: "write the clusters to FILE (default: clusters.txt)"

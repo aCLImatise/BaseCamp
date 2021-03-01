@@ -8,6 +8,9 @@ task ConvertDbpySequences {
     ConvertDb_py sequences \
       ~{convert_db_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     convert_db_do_tpy: ""
   }

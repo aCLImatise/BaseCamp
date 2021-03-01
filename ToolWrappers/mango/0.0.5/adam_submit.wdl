@@ -8,6 +8,9 @@ task Adamsubmit {
     adam_submit \
       ~{d_eight_b}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d_eight_b: "888   \\       d8b          d8b  d8b"
   }

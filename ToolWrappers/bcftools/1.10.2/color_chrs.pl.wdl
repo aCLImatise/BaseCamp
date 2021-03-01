@@ -12,6 +12,9 @@ task Colorchrspl {
       ~{if defined(colors) then ("--colors " +  '"' + colors + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     colors: "File with list of \\\"chr hap color\\\"."
     prefix: "Prefix of output files."

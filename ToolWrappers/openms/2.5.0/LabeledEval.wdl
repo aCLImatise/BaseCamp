@@ -22,6 +22,9 @@ task LabeledEval {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*        Feature result file (valid formats: 'featureXML')"
     truth: "*     Expected result file. (valid formats: 'consensusXML')"

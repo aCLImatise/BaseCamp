@@ -28,6 +28,9 @@ task Minimo {
       ~{open_source} \
       ~{if defined(d) then ("-D " +  '"' + d + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d: ""
     v_one_dot_eight: ""

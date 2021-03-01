@@ -14,6 +14,9 @@ task ColTransform {
       ~{add_factor} \
       ~{mul_factor}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     column: ""
     input_dot_tab: ""

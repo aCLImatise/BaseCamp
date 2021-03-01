@@ -4,65 +4,68 @@ command:
 - pattern-assembly
 positional:
 - !Positional
-  description: 1998 by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)
+  optional: false
   position: 0
   name: pattern-assembly
-  optional: false
+  description: 1998 by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)
 - !Positional
-  description: OPTIONS
+  optional: false
   position: 0
   name: sequences
-  optional: false
+  description: OPTIONS
 - !Positional
-  description: These options are mutually incompatible.
+  optional: false
   position: 0
   name: submitted.
-  optional: false
+  description: These options are mutually incompatible.
 named:
 - !Flag
-  description: (must be first argument) display options
+  optional: true
   synonyms:
   - -help
+  description: (must be first argument) display options
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: verbose
+  optional: true
   synonyms:
   - -v
+  description: verbose
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "if not specified, the standard input is used.\nThis allows to place\
-    \ the command within a pipe."
+  optional: true
   synonyms:
   - -i
+  description: "if not specified, the standard input is used.\nThis allows to place\
+    \ the command within a pipe."
   args: !SimpleFlagArg
     name: inputfile
-  optional: true
 - !Flag
-  description: "if not specified, the standard output is used.\nThis allows to place\
-    \ the command within a pipe."
+  optional: true
   synonyms:
   - -o
+  description: "if not specified, the standard output is used.\nThis allows to place\
+    \ the command within a pipe."
   args: !SimpleFlagArg
     name: outputfile
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -2str
   description: "strand insensitive assembly (default).\nWith the strand insensitive\
     \ option, patterns can be\nused either in direct or reverse complement\norientation\
     \ for assembly. For each pattern, the\norientation which offers the best match\
     \ is chosen."
-  synonyms:
-  - -2str
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: strand sensitive assembly.
+  optional: true
   synonyms:
   - -1str
+  description: strand sensitive assembly.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -sc
   description: "#   score column\nPattern assembly is a NP-hard problem, i.e. the\
     \ time\nof calculation increases exponentially with the number\nof patterns. Beyond\
     \ a certain number of patterns, it\nis impossible to envisage all possible assemblie\
@@ -70,110 +73,107 @@ named:
     \ which is sensitive to the order\nof entry of the patterns. When a score column\
     \ is\nspecified, patterns are incorporated accordingly to\ntheir scores (higher\
     \ scores are incorporated first."
-  synonyms:
-  - -sc
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -cc
   description: "cluster column\nDefine a column containing cluster names or numbers.\n\
     If cluster column is specified, each cluster is\ntreated as a separate set of\
     \ patterns for assembly."
-  synonyms:
-  - -cc
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -maxfl
   description: "#\nmaximum flanking segment size (default 1).\nThe flanking segment\
     \ is the portion of a fragment that\nextends outside of the assembly on which\
     \ it is aligned."
-  synonyms:
-  - -maxfl
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#\nmaximum allowed substitutions (default 0)."
+  optional: true
   synonyms:
   - -subst
+  description: "#\nmaximum allowed substitutions (default 0)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#\nminimum number of matching residues to include a\npattern in an\
-    \ assembly (default 0)."
+  optional: true
   synonyms:
   - -match
+  description: "#\nminimum number of matching residues to include a\npattern in an\
+    \ assembly (default 0)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -weight
   description: "#\nminimum matching weight to include a pattern in an\nassembly (default\
     \ 0). The weight is the sum\nof informative residue matches. A single-letter match\n\
     has weight 1. Matches between ambiguous nucleotides\nhave lower weight (for example\
     \ A versus [AT] has\nweight 0.5)."
-  synonyms:
-  - -weight
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#\nmaximal number of assemblies (default: 5)"
+  optional: true
   synonyms:
   - -max_asmb_nb
+  description: "#\nmaximal number of assemblies (default: 5)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#\nmaximal number of assemblies per cluster\n(default: 2).\nThis option\
-    \ is only valid in combination with the\noption -cc."
+  optional: true
   synonyms:
   - -max_asmb_per_cluster
+  description: "#\nmaximal number of assemblies per cluster\n(default: 2).\nThis option\
+    \ is only valid in combination with the\noption -cc."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#\nmaximal assembly size, i.e. the number of patterns per\nalignment\
-    \ group (default: 50)"
+  optional: true
   synonyms:
   - -max_asmb_size
+  description: "#\nmaximal assembly size, i.e. the number of patterns per\nalignment\
+    \ group (default: 50)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#\nmaximal width for an assembly (default: 0)"
+  optional: true
   synonyms:
   - -max_asmb_width
+  description: "#\nmaximal width for an assembly (default: 0)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -single_sep
   description: "Report the isolated words (i.e. words that do not\nmatch any other\
     \ words) separately. This was the\ndefault behaviour of the program before April\
     \ 2011.\nThe separate list of isolaed words presents the\nadvantage of compacity\
     \ (no need to create one assembly\nfor each isolated word), but a drawback is\
     \ that some\nsignificant single words may appear after less\nsignificant assemblies\
     \ of several words, and thus be\nignored for further processing (e.g. by\nmatrix-from-patterns)."
-  synonyms:
-  - -single_sep
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -toppat
   description: "#\nDefault: 100\nmaximum number of patterns to assemble.  If the number\n\
     of patterns in the input file exceeds the maximal\nnumber, the assembly is restrictedd\
     \ with the top patterns\nonly."
-  synonyms:
-  - -toppat
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -maxpat
   description: "#\nmaximum number of allowed patterns (default\n0).  If the number\
     \ of patterns in the\ninput file exceeds the maximal number, the program\ndoes\
     \ not performa ny assembly, and returns a\ncancellation message."
-  synonyms:
-  - -maxpat
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: (must be first argument) display full help message
+  optional: true
   synonyms:
   - -h
+  description: (must be first argument) display full help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "NAME\n\tpattern-assembly\n\n        1998 by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)\n\
@@ -238,3 +238,4 @@ help_text: "NAME\n\tpattern-assembly\n\n        1998 by Jacques van Helden (Jacq
   \ -v -i mydata -o myresult -2str\n\n"
 generated_using:
 - -h
+docker_image:

@@ -28,6 +28,9 @@ task Evolvepy {
       ~{if defined(tmp_dir) then ("--tmp-dir " +  '"' + tmp_dir + '"') else ""} \
       ~{if defined(params) then ("--params " +  '"' + params + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Path to output directory (default: None)"
     write_backups_every: "Number of iterations to go between writing backups of\\nprogram state (default: 100)"

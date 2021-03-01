@@ -22,6 +22,9 @@ task NebulizerInstallTool {
       ~{if defined(timeout) then ("--timeout " +  '"' + timeout + '"') else ""} \
       ~{if (no_wait) then "--no-wait" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tool_panel_section: "tool panel section name or id to install the\\ntool under; if the section doesn't exist\\nthen it will be created. If this option is\\nomitted then the tool will be installed at\\nthe top-level i.e. not in any section."
     install_tool_dependencies: "[yes|no]\\ninstall tool dependencies via the toolshed,\\nif any are defined (default is 'yes')"

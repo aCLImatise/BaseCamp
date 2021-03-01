@@ -10,17 +10,15 @@ task Bowtie2 {
     Boolean? query_input_files_raw
     Int? intiint_query_input
     Boolean? m_m_r
-    Int? s_slash_skip
-    Int? us_lash_up_to
-    Int? five_slash_trim_five
-    Int? three_slash_trim_three
+    Int? skip
+    Int? up_to
+    Int? trim_five
+    Int? trim_three
     Boolean? trim_to
     Boolean? phred_three_three
     Boolean? phred_six_four
     Boolean? int_quals
-    Int? max_mismatches_seed
-    Int? length_seed_substrings
-    Float? interval_seed_substrings
+    Int? sensitive
     Int? n_ceil
     Int? d_pad
     Int? g_bar
@@ -35,11 +33,9 @@ task Bowtie2 {
     Int? rdg
     Int? rfg
     Int? score_min
-    Int? give_extending_failed
-    Int? reads_repetitive_seeds
-    Int? i_slash_mini_ns
-    Int? x_slash_max_ins
-    Boolean? fr_slash_rf_slash_ff
+    Int? mini_ns
+    Int? max_ins
+    String? fr
     Boolean? no_mixed
     Boolean? no_discordant
     Boolean? dovetail
@@ -47,7 +43,7 @@ task Bowtie2 {
     Boolean? no_overlap
     Int? align_paired_reads
     Boolean? preserve_tags
-    Boolean? t_slash_time
+    Boolean? time
     File? un
     File? al
     File? un_conc
@@ -65,24 +61,23 @@ task Bowtie2 {
     String? sam_no_qname_trunc
     Boolean? xeq
     String? soft_clipped_unmapped_tlen
-    Int? p_slash_threads
+    Int? threads
     Boolean? reorder
     Boolean? mm
     Boolean? qc_filter
     Int? seed
     String? non_deterministic
-    Boolean? h_slash_help
     String could
     String note
-    String var_72
+    String var_67
     Int bt_two_idx
-    String var_74
+    String i
     Int m_one
     Int m_two
-    String var_77
-    String var_78
+    String var_72
+    String var_73
     String specified
-    File file
+    File var_file
     String files
     String index
     String be
@@ -94,34 +89,33 @@ task Bowtie2 {
     String times_dot
     String with
     String e_dot_gdot
-    String var_92
+    String var_87
     String interleaved
     String prefix
     String unaligned
     String unpaired
-    String var_97
+    String var_92
     String var_output
     String paired_end
     String reads_dot
-    String fast_q_slash_fast_a
+    String fast_q
     String sorted
     String by
-    String reads
     String read
   }
   command <<<
     bowtie2 \
       ~{could} \
       ~{note} \
-      ~{var_72} \
+      ~{var_67} \
       ~{bt_two_idx} \
-      ~{var_74} \
+      ~{i} \
       ~{m_one} \
       ~{m_two} \
-      ~{var_77} \
-      ~{var_78} \
+      ~{var_72} \
+      ~{var_73} \
       ~{specified} \
-      ~{file} \
+      ~{var_file} \
       ~{files} \
       ~{index} \
       ~{be} \
@@ -133,19 +127,18 @@ task Bowtie2 {
       ~{times_dot} \
       ~{with} \
       ~{e_dot_gdot} \
-      ~{var_92} \
+      ~{var_87} \
       ~{interleaved} \
       ~{prefix} \
       ~{unaligned} \
       ~{unpaired} \
-      ~{var_97} \
+      ~{var_92} \
       ~{var_output} \
       ~{paired_end} \
       ~{reads_dot} \
-      ~{fast_q_slash_fast_a} \
+      ~{fast_q} \
       ~{sorted} \
       ~{by} \
-      ~{reads} \
       ~{read} \
       ~{if (query_input_files_fastq) then "-q" else ""} \
       ~{if (tab_five) then "--tab5" else ""} \
@@ -155,17 +148,15 @@ task Bowtie2 {
       ~{if (query_input_files_raw) then "-r" else ""} \
       ~{if defined(intiint_query_input) then ("-F " +  '"' + intiint_query_input + '"') else ""} \
       ~{if (m_m_r) then "-c" else ""} \
-      ~{if defined(s_slash_skip) then ("-s/--skip " +  '"' + s_slash_skip + '"') else ""} \
-      ~{if defined(us_lash_up_to) then ("-u/--upto " +  '"' + us_lash_up_to + '"') else ""} \
-      ~{if defined(five_slash_trim_five) then ("-5/--trim5 " +  '"' + five_slash_trim_five + '"') else ""} \
-      ~{if defined(three_slash_trim_three) then ("-3/--trim3 " +  '"' + three_slash_trim_three + '"') else ""} \
+      ~{if defined(skip) then ("--skip " +  '"' + skip + '"') else ""} \
+      ~{if defined(up_to) then ("--upto " +  '"' + up_to + '"') else ""} \
+      ~{if defined(trim_five) then ("--trim5 " +  '"' + trim_five + '"') else ""} \
+      ~{if defined(trim_three) then ("--trim3 " +  '"' + trim_three + '"') else ""} \
       ~{if (trim_to) then "--trim-to" else ""} \
       ~{if (phred_three_three) then "--phred33" else ""} \
       ~{if (phred_six_four) then "--phred64" else ""} \
       ~{if (int_quals) then "--int-quals" else ""} \
-      ~{if defined(max_mismatches_seed) then ("-N " +  '"' + max_mismatches_seed + '"') else ""} \
-      ~{if defined(length_seed_substrings) then ("-L " +  '"' + length_seed_substrings + '"') else ""} \
-      ~{if defined(interval_seed_substrings) then ("-i " +  '"' + interval_seed_substrings + '"') else ""} \
+      ~{if defined(sensitive) then ("--sensitive " +  '"' + sensitive + '"') else ""} \
       ~{if defined(n_ceil) then ("--n-ceil " +  '"' + n_ceil + '"') else ""} \
       ~{if defined(d_pad) then ("--dpad " +  '"' + d_pad + '"') else ""} \
       ~{if defined(g_bar) then ("--gbar " +  '"' + g_bar + '"') else ""} \
@@ -180,11 +171,9 @@ task Bowtie2 {
       ~{if defined(rdg) then ("--rdg " +  '"' + rdg + '"') else ""} \
       ~{if defined(rfg) then ("--rfg " +  '"' + rfg + '"') else ""} \
       ~{if defined(score_min) then ("--score-min " +  '"' + score_min + '"') else ""} \
-      ~{if defined(give_extending_failed) then ("-D " +  '"' + give_extending_failed + '"') else ""} \
-      ~{if defined(reads_repetitive_seeds) then ("-R " +  '"' + reads_repetitive_seeds + '"') else ""} \
-      ~{if defined(i_slash_mini_ns) then ("-I/--minins " +  '"' + i_slash_mini_ns + '"') else ""} \
-      ~{if defined(x_slash_max_ins) then ("-X/--maxins " +  '"' + x_slash_max_ins + '"') else ""} \
-      ~{if (fr_slash_rf_slash_ff) then "--fr/--rf/--ff" else ""} \
+      ~{if defined(mini_ns) then ("--minins " +  '"' + mini_ns + '"') else ""} \
+      ~{if defined(max_ins) then ("--maxins " +  '"' + max_ins + '"') else ""} \
+      ~{if defined(fr) then ("--fr " +  '"' + fr + '"') else ""} \
       ~{if (no_mixed) then "--no-mixed" else ""} \
       ~{if (no_discordant) then "--no-discordant" else ""} \
       ~{if (dovetail) then "--dovetail" else ""} \
@@ -192,7 +181,7 @@ task Bowtie2 {
       ~{if (no_overlap) then "--no-overlap" else ""} \
       ~{if defined(align_paired_reads) then ("--align-paired-reads " +  '"' + align_paired_reads + '"') else ""} \
       ~{if (preserve_tags) then "--preserve-tags" else ""} \
-      ~{if (t_slash_time) then "-t/--time" else ""} \
+      ~{if (time) then "--time" else ""} \
       ~{if defined(un) then ("--un " +  '"' + un + '"') else ""} \
       ~{if defined(al) then ("--al " +  '"' + al + '"') else ""} \
       ~{if defined(un_conc) then ("--un-conc " +  '"' + un_conc + '"') else ""} \
@@ -210,14 +199,16 @@ task Bowtie2 {
       ~{if defined(sam_no_qname_trunc) then ("--sam-no-qname-trunc " +  '"' + sam_no_qname_trunc + '"') else ""} \
       ~{if (xeq) then "--xeq" else ""} \
       ~{if defined(soft_clipped_unmapped_tlen) then ("--soft-clipped-unmapped-tlen " +  '"' + soft_clipped_unmapped_tlen + '"') else ""} \
-      ~{if defined(p_slash_threads) then ("-p/--threads " +  '"' + p_slash_threads + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (reorder) then "--reorder" else ""} \
       ~{if (mm) then "--mm" else ""} \
       ~{if (qc_filter) then "--qc-filter" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{if defined(non_deterministic) then ("--non-deterministic " +  '"' + non_deterministic + '"') else ""} \
-      ~{if (h_slash_help) then "-h/--help" else ""}
+      ~{if defined(non_deterministic) then ("--non-deterministic " +  '"' + non_deterministic + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query_input_files_fastq: "query input files are FASTQ .fq/.fastq (default)"
     tab_five: "query input files are TAB5 .tab5"
@@ -227,17 +218,15 @@ task Bowtie2 {
     query_input_files_raw: "query input files are raw one-sequence-per-line"
     intiint_query_input: ":<int>,i:<int> query input files are continuous FASTA where reads\\nare substrings (k-mers) extracted from a FASTA file <s>\\nand aligned at offsets 1, 1+i, 1+2i ... end of reference"
     m_m_r: "<m1>, <m2>, <r> are sequences themselves, not files"
-    s_slash_skip: "skip the first <int> reads/pairs in the input (none)"
-    us_lash_up_to: "stop after first <int> reads/pairs (no limit)"
-    five_slash_trim_five: "trim <int> bases from 5'/left end of reads (0)"
-    three_slash_trim_three: "trim <int> bases from 3'/right end of reads (0)"
+    skip: "skip the first <int> reads/pairs in the input (none)"
+    up_to: "stop after first <int> reads/pairs (no limit)"
+    trim_five: "trim <int> bases from 5'/left end of reads (0)"
+    trim_three: "trim <int> bases from 3'/right end of reads (0)"
     trim_to: "[3:|5:]<int> trim reads exceeding <int> bases from either 3' or 5' end\\nIf the read end is not specified then it defaults to 3 (0)"
     phred_three_three: "qualities are Phred+33 (default)"
     phred_six_four: "qualities are Phred+64"
     int_quals: "qualities encoded as space-delimited integers"
-    max_mismatches_seed: "max # mismatches in seed alignment; can be 0 or 1 (0)"
-    length_seed_substrings: "length of seed substrings; must be >3, <32 (22)"
-    interval_seed_substrings: "interval between seed substrings w/r/t read len (S,1,1.15)"
+    sensitive: ",1,1.15 (default)"
     n_ceil: "func for max # non-A/C/G/Ts permitted in aln (L,0,0.15)"
     d_pad: "include <int> extra ref chars on sides of DP table (15)"
     g_bar: "disallow gaps within <int> nucs of read extremes (4)"
@@ -252,11 +241,9 @@ task Bowtie2 {
     rdg: ",<int>  read gap open, extend penalties (5,3)"
     rfg: ",<int>  reference gap open, extend penalties (5,3)"
     score_min: "min acceptable alignment score w/r/t read length\\n(G,20,8 for local, L,-0.6,-0.6 for end-to-end)"
-    give_extending_failed: "give up extending after <int> failed extends in a row (15)"
-    reads_repetitive_seeds: "for reads w/ repetitive seeds, try <int> sets of seeds (2)"
-    i_slash_mini_ns: "minimum fragment length (0)"
-    x_slash_max_ins: "maximum fragment length (500)"
-    fr_slash_rf_slash_ff: "-1, -2 mates align fw/rev, rev/fw, fw/fw (--fr)"
+    mini_ns: "minimum fragment length (0)"
+    max_ins: "maximum fragment length (500)"
+    fr: "align fw/rev, rev/fw, fw/fw (--fr)"
     no_mixed: "suppress unpaired alignments for paired reads"
     no_discordant: "suppress discordant alignments for paired reads"
     dovetail: "concordant when mates extend past each other"
@@ -264,7 +251,7 @@ task Bowtie2 {
     no_overlap: "not concordant when mates overlap at all"
     align_paired_reads: "will, by default, attempt to align unpaired BAM reads.\\nUse this option to align paired-end reads instead."
     preserve_tags: "Preserve tags from the original BAM record by\\nappending them to the end of the corresponding SAM output."
-    t_slash_time: "print wall-clock time taken by search phases"
+    time: "print wall-clock time taken by search phases"
     un: "write unpaired reads that didn't align to <path>"
     al: "write unpaired reads that aligned at least once to <path>"
     un_conc: "write pairs that didn't align concordantly to <path>"
@@ -282,24 +269,23 @@ task Bowtie2 {
     sam_no_qname_trunc: "standard behavior of truncating readname at first whitespace\\nat the expense of generating non-standard SAM."
     xeq: "Use '='/'X', instead of 'M,' to specify matches/mismatches in SAM record."
     soft_clipped_unmapped_tlen: "soft-clipped bases when reporting TLEN"
-    p_slash_threads: "number of alignment threads to launch (1)"
+    threads: "number of alignment threads to launch (1)"
     reorder: "force SAM output order to match order of input reads"
     mm: "use memory-mapped I/O for index; many 'bowtie's can share"
     qc_filter: "filter out reads that are bad according to QSEQ filter"
     seed: "seed for random number generator (0)"
     non_deterministic: "rand. gen. arbitrarily instead of using read attributes"
-    h_slash_help: "print this usage message"
     could: ""
     note: ""
-    var_72: ""
+    var_67: ""
     bt_two_idx: ""
-    var_74: ""
+    i: ""
     m_one: ""
     m_two: ""
-    var_77: ""
-    var_78: ""
+    var_72: ""
+    var_73: ""
     specified: ""
-    file: ""
+    var_file: ""
     files: ""
     index: ""
     be: ""
@@ -311,19 +297,18 @@ task Bowtie2 {
     times_dot: ""
     with: ""
     e_dot_gdot: ""
-    var_92: ""
+    var_87: ""
     interleaved: ""
     prefix: ""
     unaligned: ""
     unpaired: ""
-    var_97: ""
+    var_92: ""
     var_output: ""
     paired_end: ""
     reads_dot: ""
-    fast_q_slash_fast_a: ""
+    fast_q: ""
     sorted: ""
     by: ""
-    reads: ""
     read: ""
   }
   output {

@@ -28,6 +28,9 @@ task FilterCorrectionOverlaps {
       ~{if (no_log) then "-nolog" else ""} \
       ~{if (no_stats) then "-nostats" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_reads: "input reads"
     input_overlaps: "input overlaps"

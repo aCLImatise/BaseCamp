@@ -48,6 +48,9 @@ task BohraRun {
       ~{if (gubbins) then "--gubbins" else ""} \
       ~{if defined(keep) then ("--keep " +  '"' + keep + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Input file = tab-delimited with 3 columns\\n<isolatename> <path_to_read1> <path_to_read2>\\n(default: )"
     job_id: "Job ID, will be the name of the output directory\\n(default: )"

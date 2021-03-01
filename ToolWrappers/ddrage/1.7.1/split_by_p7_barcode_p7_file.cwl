@@ -3,7 +3,7 @@ id: split_by_p7_barcode_p7_file.cwl
 inputs:
 - id: in_f
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_split_by_p_seven_barcode
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - split_by_p7_barcode

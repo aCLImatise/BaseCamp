@@ -16,6 +16,9 @@ task Blockclust {
       ~{if (config) then "--config" else ""} \
       ~{if (out) then "--out" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     accept: "[accept annotations]"
     reject: "[reject annotations]"

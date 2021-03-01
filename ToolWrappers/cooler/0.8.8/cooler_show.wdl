@@ -30,6 +30,9 @@ task CoolerShow {
       ~{if defined(cmap) then ("--cmap " +  '"' + cmap + '"') else ""} \
       ~{if defined(field) then ("--field " +  '"' + field + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     range_two: "The coordinates of a genomic region shown\\nalong the column dimension. If omitted, the\\ncolumn range is the same as the row range.\\nUse to display asymmetric matrices or trans\\ninteractions."
     balanced: "Show the balanced contact matrix. If not\\nprovided, display the unbalanced counts."

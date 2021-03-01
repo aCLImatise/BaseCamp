@@ -16,6 +16,9 @@ task Vcfrandomsample {
       ~{if defined(random_seed) then ("--random-seed " +  '"' + random_seed + '"') else ""} \
       ~{if (pseudorandom_seed) then "--pseudorandom-seed" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rate: "base sampling probability per locus"
     scale_by: "scale sampling likelihood by this Float info field"

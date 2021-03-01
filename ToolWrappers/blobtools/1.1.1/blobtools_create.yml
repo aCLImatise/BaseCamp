@@ -5,149 +5,149 @@ command:
 positional: []
 named:
 - !Flag
-  description: FASTA file of assembly. Headers are split at whitespaces.
+  optional: true
   synonyms:
   - -i
   - --infile
+  description: FASTA file of assembly. Headers are split at whitespaces.
   args: !SimpleFlagArg
     name: FASTA
-  optional: true
 - !Flag
-  description: "Assembly program used to create FASTA. If specified,\ncoverage will\
-    \ be parsed from FASTA header.\n(Parsing supported for 'spades', 'velvet', 'platanus')"
+  optional: true
   synonyms:
   - -y
   - --type
+  description: "Assembly program used to create FASTA. If specified,\ncoverage will\
+    \ be parsed from FASTA header.\n(Parsing supported for 'spades', 'velvet', 'platanus')"
   args: !SimpleFlagArg
     name: FASTATYPE
-  optional: true
 - !Flag
-  description: "Hits file in format (qseqid\\ttaxid\\tbitscore)\n(e.g. BLAST output\
-    \ \"--outfmt '6 qseqid staxids bitscore'\")\nCan be specified multiple times"
+  optional: true
   synonyms:
   - -t
   - --hitsfile
+  description: "Hits file in format (qseqid\\ttaxid\\tbitscore)\n(e.g. BLAST output\
+    \ \"--outfmt '6 qseqid staxids bitscore'\")\nCan be specified multiple times"
   args: !SimpleFlagArg
     name: HITS...
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --taxrule
   description: "...      Taxrule determines how taxonomy of blobs\nis computed (by\
     \ default both are calculated)\n\"bestsum\"       : sum bitscore across all\n\
     hits for each taxonomic rank\n\"bestsumorder\"  : sum bitscore across all\nhits\
     \ for each taxonomic rank.\n- If first <TAX> file supplies hits, bestsum is calculated.\n\
     - If no hit is found, the next <TAX> file is used."
-  synonyms:
-  - -x
-  - --taxrule
   args: !SimpleFlagArg
     name: TAXRULE
-  optional: true
 - !Flag
-  description: "Minimal score necessary to be considered for taxonomy calculaton,\
-    \ otherwise set to 'no-hit'\n[default: 0.0]"
+  optional: true
   synonyms:
   - -m
   - --min_score
+  description: "Minimal score necessary to be considered for taxonomy calculaton,\
+    \ otherwise set to 'no-hit'\n[default: 0.0]"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Minimal score difference between highest scoring\ntaxonomies (otherwise\
-    \ \"unresolved\") [default: 0.0]"
+  optional: true
   synonyms:
   - -d
   - --min_diff
+  description: "Minimal score difference between highest scoring\ntaxonomies (otherwise\
+    \ \"unresolved\") [default: 0.0]"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Random allocation of taxonomy if highest scoring\ntaxonomies have\
-    \ equal scores (otherwise \"unresolved\") [default: False]"
+  optional: true
   synonyms:
   - --tax_collision_random
+  description: "Random allocation of taxonomy if highest scoring\ntaxonomies have\
+    \ equal scores (otherwise \"unresolved\") [default: False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: NCBI nodes.dmp file. Not required if '--db'
+  optional: true
   synonyms:
   - --nodes
+  description: NCBI nodes.dmp file. Not required if '--db'
   args: !SimpleFlagArg
     name: NODES
-  optional: true
 - !Flag
-  description: NCBI names.dmp file. Not required if '--db'
+  optional: true
   synonyms:
   - --names
+  description: NCBI names.dmp file. Not required if '--db'
   args: !SimpleFlagArg
     name: NAMES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --db
   description: "NodesDB file (default: $BLOBTOOLS/data/nodesDB.txt).  If --nodes,\
     \ --names and --db\nare all given and NODESDB does not exist, create it from NODES\
     \ and NAMES."
-  synonyms:
-  - --db
   args: !SimpleFlagArg
     name: NODESDB
-  optional: true
 - !Flag
-  description: '...              BAM file(s), can be specified multiple times'
+  optional: true
   synonyms:
   - -b
   - --bam
+  description: '...              BAM file(s), can be specified multiple times'
   args: !SimpleFlagArg
     name: BAM
-  optional: true
 - !Flag
-  description: '...              CAS file(s) (requires clc_mapping_info in $PATH),
-    can be specified multiple times'
+  optional: true
   synonyms:
   - -a
   - --cas
+  description: '...              CAS file(s) (requires clc_mapping_info in $PATH),
+    can be specified multiple times'
   args: !SimpleFlagArg
     name: CAS
-  optional: true
 - !Flag
-  description: '...              COV file(s), can be specified multiple times'
+  optional: true
   synonyms:
   - -c
   - --cov
+  description: '...              COV file(s), can be specified multiple times'
   args: !SimpleFlagArg
     name: COV
-  optional: true
 - !Flag
-  description: "Legacy coverage when getting coverage from BAM (does not apply to\
-    \ COV parsing).\nNew default is to estimate coverages which is faster,"
+  optional: true
   synonyms:
   - -C
   - --calculate_cov
+  description: "Legacy coverage when getting coverage from BAM (does not apply to\
+    \ COV parsing).\nNew default is to estimate coverages which is faster,"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: BlobDB output prefix
+  optional: true
   synonyms:
   - -o
   - --out
+  description: BlobDB output prefix
   args: !SimpleFlagArg
     name: PREFIX
-  optional: true
 - !Flag
-  description: 'Title of BlobDB [default: output prefix)'
+  optional: true
   synonyms:
   - --title
+  description: 'Title of BlobDB [default: output prefix)'
   args: !SimpleFlagArg
     name: TITLE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: blobtools create     -i FASTA [-y FASTATYPE] [-o PREFIX] [--title\
@@ -195,3 +195,4 @@ help_text: "usage: blobtools create     -i FASTA [-y FASTATYPE] [-o PREFIX] [--t
   \                   Title of BlobDB [default: output prefix)\n"
 generated_using:
 - --help
+docker_image:

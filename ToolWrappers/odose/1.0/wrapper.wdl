@@ -4,6 +4,9 @@ task Wrapper {
   command <<<
     wrapper
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

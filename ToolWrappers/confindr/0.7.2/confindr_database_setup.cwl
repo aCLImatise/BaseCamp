@@ -5,12 +5,12 @@ inputs:
   doc: "Path to download databases to - if folder does not\nexist, will be created.\
     \ If folder does exist, will be\ndeleted and updated sequences downloaded. Defaults\
     \ to\n~/.confindr_db, or the CONFINDR_DB environmental\nvariable."
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output_folder
 - id: in_secret_file
   doc: "Path to consumer secret file for rMLST database.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --secret_file
 outputs:
@@ -21,9 +21,10 @@ outputs:
   doc: "Path to download databases to - if folder does not\nexist, will be created.\
     \ If folder does exist, will be\ndeleted and updated sequences downloaded. Defaults\
     \ to\n~/.confindr_db, or the CONFINDR_DB environmental\nvariable."
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_folder)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - confindr_database_setup

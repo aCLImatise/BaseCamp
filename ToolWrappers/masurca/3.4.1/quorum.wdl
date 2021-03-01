@@ -42,6 +42,9 @@ task Quorum {
       ~{if (homo_trim) then "--homo-trim" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     size: "Mer database size (default 200M)"
     threads: "Number of threads (default number of cpus)"

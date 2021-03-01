@@ -20,6 +20,9 @@ task Bam2mr {
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_output_file: "Name of output file"
     suff: "read name suffix length (default: 0)"

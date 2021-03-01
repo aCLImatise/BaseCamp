@@ -12,6 +12,9 @@ task Eps2eps {
       ~{input_dot_eps} \
       ~{output_dot_eps}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     switches_dot_dot_dot: ""
     input_dot_eps: ""

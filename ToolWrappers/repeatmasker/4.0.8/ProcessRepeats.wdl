@@ -42,6 +42,9 @@ task ProcessRepeats {
       ~{if (mask_repeats_lower) then "-x" else ""} \
       ~{if (xsmall) then "-xsmall" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     species: "Post process RepeatMasker results run on sequence from this species.\\nDefault is human."
     lib: "Skips most processing, does not produce a .tbl file unless the\\ncustome library is in the \\\">name#class\\\" format."

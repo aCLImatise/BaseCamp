@@ -26,6 +26,9 @@ task PancakeGraph {
       ~{if (regions) then "-regions" else ""} \
       ~{if defined(output_dot_file) then ("--output " +  '"' + output_dot_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_file: "Name of PanCake Data Object File (required)"
     chrom_s: "Chromosomes in Output (by default all chromosomes\\ncovered in PAN_FILE)"

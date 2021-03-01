@@ -3,18 +3,18 @@ id: guidescan_guidequery.cwl
 inputs:
 - id: in_target
   doc: '[--flankdistance FLANKDISTANCE]'
-  type: string
+  type: string?
   inputBinding:
     prefix: --target
-- id: in_path_bam_file
+- id: in_path_bam_required
   doc: path to BAM file with precomputed guideRNAs. REQUIRED
-  type: File
+  type: File?
   inputBinding:
     prefix: -b
 - id: in_coordinates_form_example
   doc: "coordinates in the form \"<chr>:<start>-<end>\"\n;example: chrX:3364088-3372035,\
     \ mutually exclusive\nwith --batch"
-  type: long
+  type: long?
   inputBinding:
     prefix: -c
 - id: in_batch
@@ -22,7 +22,7 @@ inputs:
     \ contains chromosome information\n(chr#:), or a txt file composed of a single\
     \ field\n(column) of genomic coordinates of the following\nformat: chr#:start-end,\
     \ mutually exclusive with -c"
-  type: File
+  type: File?
   inputBinding:
     prefix: --batch
 - id: in_sequence
@@ -30,35 +30,35 @@ inputs:
     \ installed blat binary and\nsequences with perfect matches to a specified genome\n\
     will be processed. If a perfect match does not exist,\nthe individual query will\
     \ not be processed"
-  type: File
+  type: File?
   inputBinding:
     prefix: --sequence
 - id: in_flank_distance
   doc: "the distance flanking both the upstream and downstream\nregions of a target\
     \ coordinate.Default is 1000."
-  type: long
+  type: long?
   inputBinding:
     prefix: --flankdistance
 - id: in_input_coordinates_based
   doc: "whether input coordinates are 1-based (default is\n0-based); output is always\
     \ in BED format and 0-based"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --one
-- id: in_name_output_directory
+- id: in_name_output_required
   doc: name of output directory. REQUIRED
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
 - id: in_output_format
   doc: "file format for output can either be bed (bed) or csv\n(csv) format. Default\
     \ is csv."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_format
 - id: in_header
   doc: whether header should be included in output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --header
 - id: in_off
@@ -66,7 +66,7 @@ inputs:
     \ in output (each off-target\nin a separate line); default is to include only\n\
     summary about all off-targets of a guideRNA. Must be\nutilized with csv output\
     \ format (which is default)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --off
 - id: in_sort
@@ -74,7 +74,7 @@ inputs:
     \ efficiencyscore (score),\nhighest CFD cutting specificity (specificity), or\n\
     sgRNAs closest to the target region (coordinates).\nDefault is coordinates. Mutually\
     \ exclusive with\nselect."
-  type: long
+  type: long?
   inputBinding:
     prefix: --sort
 - id: in_select
@@ -84,13 +84,13 @@ inputs:
     \ then sorts by fewest off-\ntargets (score). Also can choose n sgRNAs closes\
     \ to\ntarget and sorts by offtargets (coordinates). Also can\nchoose n sgRNAs\
     \ with highest CFD score and sorts by\nofftargets. Mutually exclusive with sort."
-  type: long
+  type: long?
   inputBinding:
     prefix: --select
-- id: in_amount_optimal_desired
+- id: in_amount_optimal_sgrnas
   doc: "amount of optimal sgRNAs desired from the --select\nparameter. Ignored if\
     \ --select not used. Default is 3."
-  type: long
+  type: long?
   inputBinding:
     prefix: -n
 - id: in_an_not
@@ -100,43 +100,44 @@ inputs:
     \ files of various\nkinds; alternatively, use here short names for\npreinstalled\
     \ exon annotations: \"hg38\" for human, \"dm6\"\nfor fly, \"mm10\" for mouse,\
     \ \"sacSer3\" for yeast, ce11\nfor c. elegans"
-  type: File
+  type: File?
   inputBinding:
     prefix: --annot
 - id: in_feature_bed_file
   doc: "path to BED file with genomic features of interest\nsuch that user can upload\
     \ a BED file with feature\nnames (in 4th field) and GuideScan will map the\ngenomic\
     \ coordinates to the feature"
-  type: File
+  type: File?
   inputBinding:
     prefix: --feature_bed_file
 - id: in_fast_a_file
   doc: "fasta file with index located in same directory so\nthat --sequence queries\
     \ can be processed"
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta_file
 - id: in_blat
   doc: "absolute filepath to blat tool. Binary packages for\nlocally running blat\
     \ are found within GuideScan\nsoftware at ./blat_binaries"
-  type: File
+  type: File?
   inputBinding:
     prefix: --blat
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_name_output_directory
+- id: out_name_output_required
   doc: name of output directory. REQUIRED
-  type: Directory
+  type: Directory?
   outputBinding:
-    glob: $(inputs.in_name_output_directory)
+    glob: $(inputs.in_name_output_required)
 - id: out_output_format
   doc: "file format for output can either be bed (bed) or csv\n(csv) format. Default\
     \ is csv."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_format)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - guidescan_guidequery

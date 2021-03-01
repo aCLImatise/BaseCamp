@@ -12,6 +12,9 @@ task HailctlDataprocStop {
       ~{if (async) then "--async" else ""} \
       ~{if (dry_run) then "--dry-run" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     async: "Do not wait for cluster deletion."
     dry_run: "Print gcloud dataproc command, but don't run it."

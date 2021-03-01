@@ -14,6 +14,9 @@ task GhosttreeExtensionsARGS {
       ~{var_command} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ghost_tree: ""
     extensions: ""

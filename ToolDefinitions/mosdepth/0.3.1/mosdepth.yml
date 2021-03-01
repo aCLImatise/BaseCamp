@@ -1,0 +1,163 @@
+!Command
+command:
+- mosdepth
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: prefix
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: BAM-or-CRAM
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'number of BAM decompression threads [default: 0]'
+  args: !SimpleFlagArg
+    name: threads
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chrom
+  description: chromosome to restrict depth calculation.
+  args: !SimpleFlagArg
+    name: chrom
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --by
+  description: optional BED file or (integer) window-sizes.
+  args: !SimpleFlagArg
+    name: bed|window
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --no-per-base
+  description: "dont output per-base depth. skipping this output will speed execution\n\
+    substantially. prefer quantized or thresholded values if possible."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: 'fasta file for use with CRAM files [default: ].'
+  args: !SimpleFlagArg
+    name: fasta
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --flag
+  description: 'exclude reads with any of the bits in FLAG set [default: 1796]'
+  args: !SimpleFlagArg
+    name: FLAG
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --include-flag
+  description: 'only include reads with any of the bits in FLAG set. default is unset.
+    [default: 0]'
+  args: !SimpleFlagArg
+    name: FLAG
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --fast-mode
+  description: dont look at internal cigar operations or correct mate overlaps (recommended
+    for most use-cases).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quantize
+  description: write quantized output see docs for description.
+  args: !SimpleFlagArg
+    name: segments
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  - --mapq
+  description: 'mapping quality threshold. reads with a quality less than this value
+    are ignored [default: 0]'
+  args: !SimpleFlagArg
+    name: mapq
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --thresholds
+  description: "for each interval in --by, write number of bases covered by at\nleast\
+    \ threshold bases. Specify multiple integer values separated\nby ','."
+  args: !SimpleFlagArg
+    name: thresholds
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --use-median
+  description: output median of each region (in --by) instead of mean.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --read-groups
+  description: only calculate depth for these comma-separated read groups IDs.
+  args: !SimpleFlagArg
+    name: string
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show help
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "mosdepth 0.3.1\n\n  Usage: mosdepth [options] <prefix> <BAM-or-CRAM>\n\
+  \nArguments:\n\n  <prefix>       outputs: `{prefix}.mosdepth.dist.txt`\n       \
+  \                   `{prefix}.mosdepth.summary.txt`\n                          `{prefix}.per-base.bed.gz`\
+  \ (unless -n/--no-per-base is specified)\n                          `{prefix}.regions.bed.gz`\
+  \ (if --by is specified)\n                          `{prefix}.quantized.bed.gz`\
+  \ (if --quantize is specified)\n                          `{prefix}.thresholds.bed.gz`\
+  \ (if --thresholds is specified)\n\n  <BAM-or-CRAM>  the alignment file for which\
+  \ to calculate depth.\n\nCommon Options:\n\n  -t --threads <threads>     number\
+  \ of BAM decompression threads [default: 0]\n  -c --chrom <chrom>         chromosome\
+  \ to restrict depth calculation.\n  -b --by <bed|window>       optional BED file\
+  \ or (integer) window-sizes.\n  -n --no-per-base           dont output per-base\
+  \ depth. skipping this output will speed execution\n                           \
+  \  substantially. prefer quantized or thresholded values if possible.\n  -f --fasta\
+  \ <fasta>         fasta file for use with CRAM files [default: ].\n\nOther options:\n\
+  \n  -F --flag <FLAG>              exclude reads with any of the bits in FLAG set\
+  \ [default: 1796]\n  -i --include-flag <FLAG>      only include reads with any of\
+  \ the bits in FLAG set. default is unset. [default: 0]\n  -x --fast-mode       \
+  \         dont look at internal cigar operations or correct mate overlaps (recommended\
+  \ for most use-cases).\n  -q --quantize <segments>      write quantized output see\
+  \ docs for description.\n  -Q --mapq <mapq>              mapping quality threshold.\
+  \ reads with a quality less than this value are ignored [default: 0]\n  -T --thresholds\
+  \ <thresholds>  for each interval in --by, write number of bases covered by at\n\
+  \                                least threshold bases. Specify multiple integer\
+  \ values separated\n                                by ','.\n  -m --use-median \
+  \              output median of each region (in --by) instead of mean.\n  -R --read-groups\
+  \ <string>     only calculate depth for these comma-separated read groups IDs.\n\
+  \  -h --help                     show help\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mosdepth:0.3.1--ha7ba039_0

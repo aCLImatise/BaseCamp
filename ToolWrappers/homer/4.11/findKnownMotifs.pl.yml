@@ -4,35 +4,94 @@ command:
 positional: []
 named:
 - !Flag
-  description: "(tsv sequence file)\n-g <group file> (tsv group file)\n-o <output\
-    \ directory>\n-m <motif file> (Known motif file, default: /usr/local/share/homer-4.11-2/.//data/knownTFs/known.motifs)\n\
-    -strand <both|+|->\n-stat <hypergeo|binomial> (default: hypergeo)\n-pvalue <#>\
-    \ (p-value cutoff, default: 0.01)\n-optimize (Optimize motif degeneracy thresholds\
-    \ to maximize enrichment)\n-homer (use original homer, default, for now...)\n\
-    -homer2 (use homer2)\n-p <#> (number of CPUs to use, homer2 only)\n-cache <#>\
-    \ (size in MB of statistics cache, default: 500)\n-bits (scale logos by information\
-    \ content)\n-dbview (internal option)\n-seqlogo (Use Weblogo/seqlogo/ghostscript,\
-    \ by default now generates SVG logos)\n-rna (output RNA logos i.e. U instead of\
-    \ T)\n"
+  optional: true
   synonyms:
   - -s
+  description: (tsv sequence file)
   args: !SimpleFlagArg
     name: seq file
-  optional: true
 - !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: Output Directory
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - -g
+  description: (tsv group file)
   args: !SimpleFlagArg
     name: group file
+- !Flag
   optional: true
+  synonyms:
+  - -o
+  - -m
+  description: '(Known motif file, default: /usr/local/share/homer-4.11-2/.//data/knownTFs/known.motifs)'
+  args: !SimpleFlagArg
+    name: output directory
+- !Flag
+  optional: true
+  synonyms:
+  - -stat
+  description: '(default: hypergeo)'
+  args: !SimpleFlagArg
+    name: hypergeo|binomial
+- !Flag
+  optional: true
+  synonyms:
+  - -pvalue
+  description: '<#> (p-value cutoff, default: 0.01)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -optimize
+  description: (Optimize motif degeneracy thresholds to maximize enrichment)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -homer
+  description: (use original homer, default, for now...)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -homer2
+  description: (use homer2)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: <#> (number of CPUs to use, homer2 only)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cache
+  description: '<#> (size in MB of statistics cache, default: 500)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -bits
+  description: (scale logos by information content)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dbview
+  description: (internal option)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -seqlogo
+  description: (Use Weblogo/seqlogo/ghostscript, by default now generates SVG logos)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rna
+  description: (output RNA logos i.e. U instead of T)
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
@@ -54,3 +113,4 @@ help_text: "\n\tUsage: findKnownMotifs.pl -s <seq file> -g <group file> -o <Outp
   \ RNA logos i.e. U instead of T)\n\n"
 generated_using:
 - --help
+docker_image:

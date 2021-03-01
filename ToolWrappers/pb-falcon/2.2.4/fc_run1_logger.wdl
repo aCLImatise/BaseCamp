@@ -12,6 +12,9 @@ task FcRun1Logger {
       ~{config} \
       ~{logger}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fc_run_one: ""
     config: ""

@@ -2,16 +2,31 @@ version 1.0
 
 task Qvalue {
   input {
-    File? null
+    File? good_score
+    Int? header
+    Int? column
+    Int? append
+    Int? verbosity
     String p_values
   }
   command <<<
     qvalue \
       ~{p_values} \
-      ~{if defined(null) then ("--null " +  '"' + null + '"') else ""}
+      ~{if defined(good_score) then ("--good-score " +  '"' + good_score + '"') else ""} \
+      ~{if defined(header) then ("--header " +  '"' + header + '"') else ""} \
+      ~{if defined(column) then ("--column " +  '"' + column + '"') else ""} \
+      ~{if defined(append) then ("--append " +  '"' + append + '"') else ""} \
+      ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    null: "--good-score high|low\\n--pi-zero\\n--pi-zero-file <file>\\n--fdr\\n--bootstraps <int> (default=1000)\\n--header <int> (default=0)\\n--column <int> (default=1)\\n--append\\n--seed <int> (default from clock)\\n--verbosity 1|2|3|4 (default = 2)\\n"
+    good_score: "|low"
+    header: "(default=0)"
+    column: "(default=1)"
+    append: "(default from clock)"
+    verbosity: "|2|3|4 (default = 2)"
     p_values: ""
   }
   output {

@@ -3,22 +3,22 @@ id: get_repeat_coords.pl.cwl
 inputs:
 - id: in_identity_cutoff_default
   doc: 'the identity cutoff 0 to 100 (default: 95)'
-  type: long
+  type: long?
   inputBinding:
     prefix: -i
-- id: in_repeat_length_cutoff
+- id: in_repeat_length_default
   doc: the repeat length cutoff (default:0)
-  type: long
+  type: long?
   inputBinding:
     prefix: -l
 - id: in_output_filename_default
   doc: 'output filename (default: repeats_coords.txt)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_output_stats_filename
   doc: 'output stats filename (default: repeats_stats.txt)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -s
 outputs:
@@ -27,14 +27,15 @@ outputs:
   type: stdout
 - id: out_output_filename_default
   doc: 'output filename (default: repeats_coords.txt)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_filename_default)
 - id: out_output_stats_filename
   doc: 'output stats filename (default: repeats_stats.txt)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_stats_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - get_repeat_coords.pl

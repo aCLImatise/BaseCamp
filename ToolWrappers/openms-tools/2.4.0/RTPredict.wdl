@@ -28,6 +28,9 @@ task RTPredict {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_id: "Peptides with precursor information (valid formats: 'idXML')"
     in_text: "Peptides as text-based file (valid formats: 'txt')"

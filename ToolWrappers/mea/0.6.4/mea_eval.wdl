@@ -32,6 +32,9 @@ task MeaEval {
       ~{if (no_conflict_rule) then "--no-conflict-rule" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alpha: "slope of base pair distance penalty\\n(default=`0.012')"
     beta: "turning point of base pair distance penalty\\n(default=`315')"

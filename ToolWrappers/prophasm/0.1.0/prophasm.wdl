@@ -18,6 +18,9 @@ task Prophasm {
       ~{if defined(output_file_kmer) then ("-s " +  '"' + output_file_kmer + '"') else ""} \
       ~{if (silent_mode) then "-S" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_size: "K-mer size."
     input_fasta_file: "Input FASTA file (can be used multiple times)."

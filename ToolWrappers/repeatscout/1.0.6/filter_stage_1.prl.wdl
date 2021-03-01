@@ -10,6 +10,9 @@ task Filterstage1prl {
       ~{output_dot} \
       ~{executable_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dot: "SYNOPSIS"
     executable_dot: "DESCRIPTION"

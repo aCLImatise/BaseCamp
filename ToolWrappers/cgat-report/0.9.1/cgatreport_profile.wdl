@@ -14,6 +14,9 @@ task Cgatreportprofile {
       ~{if defined(time) then ("--time " +  '"' + time + '"') else ""} \
       ~{if defined(filter) then ("--filter " +  '"' + filter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     section: "only examine certain sections [default=[]]"
     time: "time to show [default=seconds]"

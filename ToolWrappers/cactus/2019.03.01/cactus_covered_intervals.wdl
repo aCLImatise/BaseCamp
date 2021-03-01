@@ -12,6 +12,9 @@ task CactusCoveredIntervals {
       ~{if (mark_end) then "--markend" else ""} \
       ~{if defined(progress) then ("--progress " +  '"' + progress + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query_offsets: "input query names contain offsets, as described below\\n(by default input query names do not contain offsets)"
     mark_end: "write a comment at the end of the output file"

@@ -3,31 +3,31 @@ id: get_organelle_from_reads.py.cwl
 inputs:
 - id: in_help
   doc: print verbose introduction for all options.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --help
-- id: in_input_file_forward
+- id: in_input_file_pairedend
   doc: "Input file with forward paired-end reads (format:\nfastq/fastq.gz/fastq.tar.gz)."
-  type: long
+  type: long?
   inputBinding:
     prefix: '-1'
 - id: in_input_file_reverse
   doc: "Input file with reverse paired-end reads (format:\nfastq/fastq.gz/fastq.tar.gz)."
-  type: long
+  type: long?
   inputBinding:
     prefix: '-2'
-- id: in_input_files_could
+- id: in_input_files_unpaired
   doc: "Input file(s) with unpaired (single-end) reads\n(format: fastq/fastq.gz/fastq.tar.gz).\
     \ files could be\ncomma-separated lists such as 'seq1.fq,seq2.fq'."
-  type: File
+  type: File?
   inputBinding:
     prefix: -u
 - id: in_output_directory_overwriting
   doc: Output directory. Overwriting files if directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
-- id: in_suggested_what_you
+- id: in_suggested_reallyknow_asantiseed
   doc: "Anti-seed(s). Not suggested unless what you really\nknow what you are doing.\
     \ Input fasta format file as\nanti-seed, where the extension process stop. Typically\n\
     serves as excluding plastid reads when extending\nmitochondrial reads, or the\
@@ -35,14 +35,14 @@ inputs:
     the anti-seed includes some word in the target but not\nin the seed, the result\
     \ would have gaps. For example,\nuse the embplant_mt and embplant_pt from the\
     \ same\nplant-species as seed and anti-seed."
-  type: File
+  type: File?
   inputBinding:
     prefix: -a
 - id: in_max_reads
   doc: "Hard bound for maximum number of reads to be used per\nfile. Default: 1.5E7\
     \ (-F\nembplant_pt/embplant_nr/fungus_mt); 7.5E7 (-F\nembplant_mt/other_pt/anonym);\
     \ 3E8 (-F animal_mt)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-reads
 - id: in_reduce_reads_for_coverage
@@ -53,37 +53,37 @@ inputs:
     greatly save computational resources in many\nsituations. A mean base coverage\
     \ over 500 is extremely\nsufficient for most cases. This VALUE must be larger\n\
     than 10. Set this VALUE to inf to disable reducing.\nDefault: 500."
-  type: long
+  type: long?
   inputBinding:
     prefix: --reduce-reads-for-coverage
 - id: in_max_ignore_percent
   doc: '" You can'
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-ignore-percent
 - id: in_min_quality_score
   doc: "Minimum quality score in extension. This value would\nbe automatically decreased\
     \ to prevent ignoring too\nmuch raw data (see --max-ignore-percent).Default: 1\n\
     ('\"' in Phred+33; 'A' in Phred+64/Solexa+64)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-quality-score
 - id: in_prefix
   doc: Add extra prefix to resulting files under the output
-  type: string
+  type: string?
   inputBinding:
     prefix: --prefix
 - id: in_zip_files
   doc: Choose to compress fq/sam files using gzip.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --zip-files
 - id: in_keep_temp
   doc: Choose to keep the running temp/index files.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep-temp
-- id: in_flag_should_followed
+- id: in_flag_followed_genomes
   doc: "This flag should be followed with embplant_pt\n(embryophyta plant plastome),\
     \ other_pt (non-\nembryophyta plant plastome), embplant_mt (plant\nmitogenome),\
     \ embplant_nr (plant nuclear ribosomal\nRNA), animal_mt (animal mitogenome), fungus_mt\
@@ -96,7 +96,7 @@ inputs:
     \ old versions,\nfollowing redirection would be automatically fulfilled\nwithout\
     \ warning:      plant_cp->embplant_pt;\nplant_pt->embplant_pt;  plant_mt->embplant_mt;\n\
     plant_nr->embplant_nr"
-  type: string
+  type: string?
   inputBinding:
     prefix: -F
 - id: in_fast
@@ -106,22 +106,22 @@ inputs:
     \ by adding that option\nalong with the \"--fast\" flag. You could try\nGetOrganelle\
     \ with this option for a list of samples\nand run a second time without this option\
     \ for the rest\nwith incomplete results."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fast
 - id: in_memory_save
   doc: "=\"--out-per-round -P 0 --remove-duplicates 0\" You can\noverwrite the value\
     \ of a specific option listed above\nby adding that option along with the \"--memory-save\"\
     \nflag. A larger '-R' value is suggested when \"--memory-\nsave\" is chosen."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --memory-save
 - id: in_memory_unlimited
   doc: ="-P 1E7 --index-in-memory --remove-duplicates 2E8
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --memory-unlimited
-- id: in_word_size_w
+- id: in_word_size_w_assigned
   doc: "Word size (W) for pre-grouping (if not assigned by '--\npre-w') and extending\
     \ process. This script would try\nto guess (auto-estimate) a proper W using an\
     \ empirical\nfunction based on average read length, reads quality,\ntarget genome\
@@ -129,27 +129,27 @@ inputs:
     \ could assign the\nratio (1>input>0) of W to read_length, based on which\nthis\
     \ script would estimate the W for you; or assign an\nabsolute W value (read length>input>=35).\
     \ Default:\nauto-estimated."
-  type: long
+  type: long?
   inputBinding:
     prefix: -w
 - id: in_pre_w
   doc: "Word size (W) for pre-grouping. Used to reproduce\nresult when word size is\
     \ a certain value during\npregrouping process and later changed during reads\n\
     extending process. Similar to word size. Default: the\nsame to word size."
-  type: long
+  type: long?
   inputBinding:
     prefix: --pre-w
 - id: in_max_rounds
   doc: "Maximum number of extending rounds (suggested: >=2).\nDefault: 15 (-F embplant_pt),\
     \ 30 (-F\nembplant_mt/other_pt), 10 (-F\nembplant_nr/animal_mt/fungus_mt), inf\
     \ (-P 0)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-rounds
 - id: in_max_n_words
   doc: "Maximum number of words to be used in total.Default:\n4E8 (-F embplant_pt),\
     \ 2E8 (-F\nembplant_nr/fungus_mt/animal_mt), 2E9 (-F\nembplant_mt/other_pt)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-n-words
 - id: in_length_step_checking
@@ -157,7 +157,7 @@ inputs:
     \ >= 1). When you have reads\nof high quality, the larger the number is, the faster\n\
     the extension will be, the more risk of missing reads\nin low coverage area. Choose\
     \ 1 to choose the slowest\nbut safest extension strategy. Default: 3"
-  type: long
+  type: long?
   inputBinding:
     prefix: -J
 - id: in_beta_parameter_length
@@ -168,13 +168,13 @@ inputs:
     \ larger mesh\nsize coupled with a smaller word size, which makes\nsmaller word\
     \ size feasible when memory is\nlimited.Choose 1 to choose the slowest but safest\n\
     extension strategy. Default: 2"
-  type: long
+  type: long?
   inputBinding:
     prefix: -M
 - id: in_bowtie_two_options
   doc: "Bowtie2 options, such as '--ma 3 --mp 5,2 --very-fast\n-t'. Default: --very-fast\
     \ -t."
-  type: long
+  type: long?
   inputBinding:
     prefix: --bowtie2-options
 - id: in_larger_auto_ws
@@ -182,7 +182,7 @@ inputs:
     \ produce a relative larger\nW, which would speed up the matching in extending,\n\
     reduce the memory cost in extending, but increase the\nrisk of broken final graph.\
     \ Suggested when the data is\ngood with high and homogenous coverage."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --larger-auto-ws
 - id: in_target_genome_size
@@ -192,7 +192,7 @@ inputs:
     \ (followed\nby '-F'). Default: 130000 (-F embplant_pt) or 390000\n(-F embplant_mt)\
     \ or 13000 (-F embplant_nr) or 39000\n(-F other_pt) or 13000 (-F animal_mt) or\
     \ 65000 (-F\nfungus_mt) or 39000,390000,65000 (-F\nother_pt,embplant_mt,fungus_mt)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --target-genome-size
 - id: in_max_extending_len
@@ -211,30 +211,30 @@ inputs:
     \ extending\nlength to inf. Should be a list of numbers/auto/no\nsplit by comma(s)\
     \ on a multi-organelle mode, with the\nsame list length to organelle_type (followed\
     \ by '-F').\nDefault: no."
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-extending-len
-- id: in_spades_kmer_settings
+- id: in_spades_settings_use
   doc: "SPAdes kmer settings. Use the same format as in\nSPAdes. illegal kmer values\
     \ would be automatically\ndiscarded by GetOrganelle. Default: 21,55,85,115"
-  type: long
+  type: long?
   inputBinding:
     prefix: -k
 - id: in_spades_options
   doc: "Other SPAdes options. Use double quotation marks to\ninclude all the arguments\
     \ and parameters."
-  type: string
+  type: string?
   inputBinding:
     prefix: --spades-options
 - id: in_no_spades
   doc: Disable SPAdes.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-spades
 - id: in_ignore_k
   doc: "A kmer threshold below which, no\nslimming/disentangling would be executed\
     \ on the\nresult. Default: 40"
-  type: long
+  type: long?
   inputBinding:
     prefix: --ignore-k
 - id: in_genes
@@ -247,7 +247,7 @@ inputs:
     \ database(s)\nin /usr/local/lib/python3.8/site-\npackages/GetOrganelleLib/LabelDatabase\
     \ would be used\ncontingent on the organelle types chosen (-F). The\ndefault value\
     \ no longer holds when '--genes' or '--ex-\ngenes' is used."
-  type: long
+  type: long?
   inputBinding:
     prefix: --genes
 - id: in_ex_genes
@@ -259,45 +259,45 @@ inputs:
     \ split by comma(s) but NOT required to have\nthe same list length to organelle_type\
     \ (followed by\n'-F'). The default value no longer holds when '--\ngenes' or '--ex-genes'\
     \ is used."
-  type: long
+  type: long?
   inputBinding:
     prefix: --ex-genes
 - id: in_disentangle_df
   doc: "Depth factor for differentiate genome type of contigs.\nThe genome type of\
     \ contigs are determined by blast.\nDefault: 10.0"
-  type: double
+  type: double?
   inputBinding:
     prefix: --disentangle-df
 - id: in_contamination_depth
   doc: "Depth factor for confirming contamination in parallel\ncontigs. Default: 3.0"
-  type: double
+  type: double?
   inputBinding:
     prefix: --contamination-depth
 - id: in_contamination_similarity
   doc: "Similarity threshold for confirming contaminating\ncontigs. Default: 0.9"
-  type: double
+  type: double?
   inputBinding:
     prefix: --contamination-similarity
 - id: in_no_degenerate
   doc: "Disable making consensus from parallel contig based on\nnucleotide degenerate\
     \ table."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-degenerate
 - id: in_degenerate_depth
   doc: "Depth factor for confirming parallel contigs. Default:\n1.5"
-  type: double
+  type: double?
   inputBinding:
     prefix: --degenerate-depth
 - id: in_degenerate_similarity
   doc: "Similarity threshold for confirming parallel contigs.\nDefault: 0.98"
-  type: double
+  type: double?
   inputBinding:
     prefix: --degenerate-similarity
 - id: in_disentangle_time_limit
   doc: "Time limit (second) for each try of disentangling a\ngraph file as a circular\
     \ genome. Disentangling a graph\nas contigs is not limited. Default: 1800"
-  type: File
+  type: File?
   inputBinding:
     prefix: --disentangle-time-limit
 - id: in_expected_max_size
@@ -306,14 +306,14 @@ inputs:
     same list length to organelle_type (followed by '-F').\nDefault: 250000 (-F embplant_pt/fungus_mt),\
     \ 25000 (-F\nembplant_nr/animal_mt), 1000000 (-F\nembplant_mt/other_pt),1000000,1000000,250000\
     \ (-F\nother_pt,embplant_mt,fungus_mt)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --expected-max-size
 - id: in_expected_min_size
   doc: "Expected minimum target genome size(s) for\ndisentangling. Should be a list\
     \ of INTEGER numbers\nsplit by comma(s) on a multi-organelle mode, with the\n\
     same list length to organelle_type (followed by '-F').\nDefault: 10000 for all."
-  type: long
+  type: long?
   inputBinding:
     prefix: --expected-min-size
 - id: in_reverse_lsc
@@ -323,19 +323,19 @@ inputs:
     \ sequence when\nresult is circular. Actually, both directions are\nbiologically\
     \ equivalent to each other. The reordering\nof the direction is only for easier\
     \ downstream\nanalysis."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reverse-lsc
 - id: in_max_paths_num
   doc: "Repeats would dramatically increase the number of\npotential isomers (paths).\
     \ This option was used to\nexport a certain amount of paths out of all possible\n\
     paths per assembly graph. Default: 1000"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-paths-num
 - id: in_maximum_threads_use
   doc: Maximum threads to use.
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_maximum_number_integer
@@ -345,43 +345,43 @@ inputs:
     \ For personal computer with 8G memory, we\nsuggest no more than 3E5. A larger\
     \ number (ex. 6E5)\nwould run faster but exhaust memory in the first few\nminutes.\
     \ Choose 0 to disable this process."
-  type: long
+  type: long?
   inputBinding:
     prefix: -P
 - id: in_which_blast
   doc: "Assign the path to BLAST binary files if not added to\nthe path. Default:\
     \ try \"/GetOrganelleDep/linux/ncbi-\nblast\" first, then $PATH"
-  type: File
+  type: File?
   inputBinding:
     prefix: --which-blast
 - id: in_which_bowtie_two
   doc: "Assign the path to Bowtie2 binary files if not added\nto the path. Default:\
     \ try\n\"/GetOrganelleDep/linux/bowtie2\" first, then $PATH"
-  type: long
+  type: long?
   inputBinding:
     prefix: --which-bowtie2
 - id: in_which_spades
   doc: "Assign the path to SPAdes binary files if not added to\nthe path. Default:\
     \ try \"/GetOrganelleDep/linux/SPAdes\"\nfirst, then $PATH"
-  type: File
+  type: File?
   inputBinding:
     prefix: --which-spades
 - id: in_which_bandage
   doc: "Assign the path to bandage binary file if not added to\nthe path. Default:\
     \ try $PATH"
-  type: File
+  type: File?
   inputBinding:
     prefix: --which-bandage
 - id: in_continue
   doc: "Several check points based on files produced, rather\nthan on the log file,\
     \ so keep in mind that this script\nwill not detect the difference between this\
     \ input\nparameters and the previous ones."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --continue
 - id: in_index_in_memory
   doc: "Keep index in memory. Choose save index in memory than\nin disk."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --index-in-memory
 - id: in_remove_duplicates
@@ -390,23 +390,23 @@ inputs:
     but exhaust memory in the first few minutes. Choose 0\nto disable this process.\
     \ Note that whether choose or\nnot will not disable the calling of replicate reads.\n\
     Default: 10000000.0."
-  type: long
+  type: long?
   inputBinding:
     prefix: --remove-duplicates
 - id: in_flush_step
   doc: "Flush step (INTEGER OR INF) for presenting progress.\nFor running in the background,\
     \ you could set this to\ninf, which would disable this. Default: 54321"
-  type: long
+  type: long?
   inputBinding:
     prefix: --flush-step
 - id: in_random_seed
   doc: 'Default: 12345'
-  type: long
+  type: long?
   inputBinding:
     prefix: --random-seed
 - id: in_verbose
   doc: "Verbose output. Choose to enable verbose running\nlog_handler.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_exists_dot
@@ -425,9 +425,10 @@ outputs:
   type: stdout
 - id: out_output_directory_overwriting
   doc: Output directory. Overwriting files if directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_directory_overwriting)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - get_organelle_from_reads.py

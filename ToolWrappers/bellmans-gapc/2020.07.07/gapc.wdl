@@ -9,7 +9,7 @@ task Gapc {
     String? class_name
     Boolean? print_code_stdout
     String? tab
-    Boolean? automatically_compute_conf
+    Boolean? automatically_compute_tableconfiguration
     Boolean? tab_all
     Boolean? cy_k
     Boolean? backtrace
@@ -24,7 +24,7 @@ task Gapc {
     Boolean? arg_log_level
     Boolean? arg_include_path
     Boolean? _version_string
-    Boolean? arg_implementation_use
+    Boolean? arg_implementation_pareto
     Boolean? multi_dim_pareto
     Boolean? arg_cutoff_value
     Boolean? arg_number_set
@@ -42,7 +42,7 @@ task Gapc {
       ~{if defined(class_name) then ("--class-name " +  '"' + class_name + '"') else ""} \
       ~{if (print_code_stdout) then "-E" else ""} \
       ~{if defined(tab) then ("--tab " +  '"' + tab + '"') else ""} \
-      ~{if (automatically_compute_conf) then "-t" else ""} \
+      ~{if (automatically_compute_tableconfiguration) then "-t" else ""} \
       ~{if (tab_all) then "--tab-all" else ""} \
       ~{if (cy_k) then "--cyk" else ""} \
       ~{if (backtrace) then "--backtrace" else ""} \
@@ -57,13 +57,16 @@ task Gapc {
       ~{if (arg_log_level) then "-l" else ""} \
       ~{if (arg_include_path) then "-I" else ""} \
       ~{if (_version_string) then "-v" else ""} \
-      ~{if (arg_implementation_use) then "-P" else ""} \
+      ~{if (arg_implementation_pareto) then "-P" else ""} \
       ~{if (multi_dim_pareto) then "--multi-dim-pareto" else ""} \
       ~{if (arg_cutoff_value) then "-c" else ""} \
       ~{if (arg_number_set) then "-f" else ""} \
       ~{if (arg_set_generate) then "-S" else ""} \
       ~{if defined(step_mode) then ("--step-mode " +  '"' + step_mode + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     try_inline_nts: "[ --inline ]              try to inline NTs"
     arg_use_instance: "[ --instance ] arg        use instance (else first)"
@@ -72,7 +75,7 @@ task Gapc {
     class_name: "default: basename(output)"
     print_code_stdout: "[ --stdout ]              print code to stdout"
     tab: "overwrite table conf with this list"
-    automatically_compute_conf: "[ --table-design ]        automatically compute optimal table\\nconfiguration (ignore conf from source file)"
+    automatically_compute_tableconfiguration: "[ --table-design ]        automatically compute optimal table\\nconfiguration (ignore conf from source file)"
     tab_all: "tabulate everything"
     cy_k: "bottom up evalulation codgen (default: top down\\nunger style)"
     backtrace: "use backtracing for the pretty print RHS of the"
@@ -87,7 +90,7 @@ task Gapc {
     arg_log_level: "[ --log-level ] arg       the log level, valid values are 0 (VERBOSE), 1\\n(INFO),  2 (NORMAL), 3 (WARNING), 4 (ERROR).\\nDefault is 2 (NORMAL)."
     arg_include_path: "[ --include ] arg         include path"
     _version_string: "[ --version ]             version string"
-    arg_implementation_use: "[ --pareto-version ] arg  Implementation of Pareto Product to use 0\\n(NoSort), 1 (Sort), 2 (ISort), 3\\n(MultiDimOptimized), 4 (NoSort, domination\\nordered)"
+    arg_implementation_pareto: "[ --pareto-version ] arg  Implementation of Pareto Product to use 0\\n(NoSort), 1 (Sort), 2 (ISort), 3\\n(MultiDimOptimized), 4 (NoSort, domination\\nordered)"
     multi_dim_pareto: "Use multi-dimensional Pareto. Works with -P 0,"
     arg_cutoff_value: "[ --cut-off ] arg         The cut-off value for -P 3 option (65 default)."
     arg_number_set: "[ --float-accuracy ] arg  The number of decimal places regarded for pareto\\nand sorting procedures. If this is not set the\\nfull floating point is compared."

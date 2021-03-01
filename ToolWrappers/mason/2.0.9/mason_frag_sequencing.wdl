@@ -148,6 +148,9 @@ task MasonFragSequencing {
       ~{if defined(four_five_four_background_noise_mean) then ("--454-background-noise-mean " +  '"' + four_five_four_background_noise_mean + '"') else ""} \
       ~{if defined(four_five_four_background_noise_stddev) then ("--454-background-noise-stddev " +  '"' + four_five_four_background_noise_stddev + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version_check: "Turn this option off to disable version update notifications of the\\napplication. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\\nDefault: 1."
     quiet: "Low verbosity."

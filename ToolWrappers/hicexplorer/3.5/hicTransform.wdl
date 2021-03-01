@@ -18,6 +18,9 @@ task HicTransform {
       ~{if defined(chromosomes) then ("--chromosomes " +  '"' + chromosomes + '"') else ""} \
       ~{if (per_chromosome) then "--perChromosome" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "input file. The computation is done per chromosome.\\n(default: None)"
     out_filename: "File name to save the exported matrix. (default: None)"

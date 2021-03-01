@@ -88,6 +88,9 @@ task NextflowRun {
       ~{if (without_pod_man) then "-without-podman" else ""} \
       ~{if (work_dir) then "-work-dir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exports_current_system: "Exports all current system environment\\nDefault: false"
     ansi_log: "Enable/disable ANSI console logging"

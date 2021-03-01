@@ -18,6 +18,9 @@ task SurpyvorInsseqVcf {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     verbose: ""

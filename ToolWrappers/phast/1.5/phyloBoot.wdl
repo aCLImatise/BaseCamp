@@ -3,6 +3,7 @@ version 1.0
 task PhyloBoot {
   input {
     File? tree
+    Int? n_sites
     Int? n_reps
     File? msa_format
     File? alignments_only
@@ -31,6 +32,7 @@ task PhyloBoot {
       ~{options_dot} \
       ~{non_par_errors} \
       ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""} \
+      ~{if defined(n_sites) then ("--nsites " +  '"' + n_sites + '"') else ""} \
       ~{if defined(n_reps) then ("--nreps " +  '"' + n_reps + '"') else ""} \
       ~{if defined(msa_format) then ("--msa-format " +  '"' + msa_format + '"') else ""} \
       ~{if defined(alignments_only) then ("--alignments-only " +  '"' + alignments_only + '"') else ""} \
@@ -52,8 +54,12 @@ task PhyloBoot {
       ~{if defined(subtree_switch) then ("--subtree-switch " +  '"' + subtree_switch + '"') else ""} \
       ~{if defined(scale_file) then ("--scale-file " +  '"' + scale_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree: "|<tree_string>\\n(Required if non-parametric and more than two species) Name\\nof file or literal string defining tree topology."
+    n_sites: "Number of sites in sampled alignments.  If an alignment is\\ngiven (non-parametric case), default is number of sites in\\nalignment, otherwise default is 1000."
     n_reps: "Number of replicates.  Default is 100."
     msa_format: "|PHYLIP|MPM|MAF|SS\\n(non-parametric case only)  Alignment format.  Default is to guess\\nformat from file contents."
     alignments_only: "Generate alignments and write them to files with given filename\\nroot, but do not estimate parameters."

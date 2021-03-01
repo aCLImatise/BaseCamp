@@ -12,6 +12,9 @@ task GcloudAuthRevoke {
       ~{optional} \
       ~{flags}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     accounts: ""
     optional: ""

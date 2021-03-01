@@ -12,6 +12,9 @@ task FaToTab {
       ~{if defined(type) then ("-type " +  '"' + type + '"') else ""} \
       ~{if (keep_acc_suffix) then "-keepAccSuffix" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type: "sequence type, dna or protein, default is dna"
     keep_acc_suffix: "- don't strip dot version off of sequence id, keep as is"

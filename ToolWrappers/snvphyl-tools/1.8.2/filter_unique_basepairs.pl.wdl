@@ -26,6 +26,9 @@ task FilterUniqueBasepairspl {
       ~{if (clade) then "--clade" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tsv: "The tsv file containing the snv_alignment"
     tree: "The .tre file that contains the data for making the tree"

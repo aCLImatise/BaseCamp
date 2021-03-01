@@ -3,102 +3,102 @@ command:
 - prepare-refseqs.pl
 positional:
 - !Positional
-  description: OPTIONS
+  optional: false
   position: 0
   name: used.
-  optional: false
+  description: OPTIONS
 named:
 - !Flag
-  description: "If using GFF or FASTA input, preserve the order of the reference\n\
-    sequences (sorts alphabetically by default)."
+  optional: true
   synonyms:
   - --noSort
+  description: "If using GFF or FASTA input, preserve the order of the reference\n\
+    sequences (sorts alphabetically by default)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "biodb-to-json.pl configuration file that defines a database from\n\
-    which to get reference sequence information."
+  optional: true
   synonyms:
   - --conf
+  description: "biodb-to-json.pl configuration file that defines a database from\n\
+    which to get reference sequence information."
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: Optional directory to write to. Defaults to data/.
+  optional: true
   synonyms:
   - --out
+  description: Optional directory to write to. Defaults to data/.
   args: !SimpleFlagArg
     name: output directory
-  optional: true
 - !Flag
-  description: "Do not store the actual sequence bases, just the sequence metadata\n\
-    (name, length, and so forth)."
+  optional: true
   synonyms:
   - --noseq
+  description: "Do not store the actual sequence bases, just the sequence metadata\n\
+    (name, length, and so forth)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Output only the sequences with the given names.
+  optional: true
   synonyms:
   - --refs
+  description: Output only the sequences with the given names.
   args: !SimpleFlagArg
     name: comma-separated list of refseq names
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --compress
   description: "If passed, compress the reference sequences with gzip, making the\n\
     chunks be .txt.gz. NOTE: this requires a bit of additional web\nserver configuration\
     \ to be served correctly."
-  synonyms:
-  - --compress
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --chunksize
   description: "Size of sequence chunks to make, in base pairs. Default 20kb. This\n\
     is multiplied by 4 if --compress is passed, so that the compressed\nsequence files\
     \ are still approximately this size."
-  synonyms:
-  - --chunksize
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
-  description: "Store sequences in a flat seq/$seqname/$chunk.txt structure, instead\n\
-    of the new (more scalable) /seq/hash/hash/hash/$seqname-$chunk.txt\nstructure."
+  optional: true
   synonyms:
   - --nohash
+  description: "Store sequences in a flat seq/$seqname/$chunk.txt structure, instead\n\
+    of the new (more scalable) /seq/hash/hash/hash/$seqname-$chunk.txt\nstructure."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The unique name of the sequence track, default 'DNA'.
+  optional: true
   synonyms:
   - --trackLabel
+  description: The unique name of the sequence track, default 'DNA'.
   args: !SimpleFlagArg
     name: label
-  optional: true
 - !Flag
-  description: "The displayed name of the sequence track, defaults to 'Reference\n\
-    sequence'."
+  optional: true
   synonyms:
   - --key
+  description: "The displayed name of the sequence track, defaults to 'Reference\n\
+    sequence'."
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: "The Name of the alphabet used for these reference sequences, usually\n\
-    either 'dna', 'rna', or 'protein'."
+  optional: true
   synonyms:
   - --seqType
+  description: "The Name of the alphabet used for these reference sequences, usually\n\
+    either 'dna', 'rna', or 'protein'."
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --trackConfig
   description: "'{ JSON-format extra configuration for this track }'\nAdditional top-level\
     \ configuration for the client, in JSON syntax.\nExample:\n--trackConfig '{ \"\
     glyph\": \"ProcessedTranscript\" }'"
-  synonyms:
-  - --trackConfig
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -156,3 +156,4 @@ help_text: "NAME\n    prepare-refseqs.pl - format reference sequences for use by
   \ for the full license text.\n\n"
 generated_using:
 - --help
+docker_image:

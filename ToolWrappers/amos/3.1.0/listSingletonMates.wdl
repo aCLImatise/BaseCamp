@@ -12,6 +12,9 @@ task ListSingletonMates {
       ~{if (disregard_bank_locks) then "-s" else ""} \
       ~{if (display_compatible_version) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     disregard_bank_locks: "Disregard bank locks and write permissions (spy mode)"
     display_compatible_version: "Display the compatible bank version"

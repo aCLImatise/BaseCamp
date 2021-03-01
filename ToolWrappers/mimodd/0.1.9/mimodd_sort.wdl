@@ -22,6 +22,9 @@ task MimoddSort {
       ~{if defined(memory) then ("--memory " +  '"' + memory + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ofile: "redirect the output to the specified file (default:\\nstdout)"
     i_format: "|sam     the format of the input file (default: assume bam)"

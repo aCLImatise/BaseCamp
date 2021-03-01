@@ -14,6 +14,9 @@ task PhylorankRankRes {
       ~{output_file} \
       ~{if defined(tax_a_file) then ("--taxa_file " +  '"' + tax_a_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tax_a_file: "output file indicating taxa within each resolution\\ncategory\\n"
     input_tree: "decorated tree"

@@ -8,6 +8,9 @@ task CirclatorCommand {
     circlator command \
       ~{required_arguments}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     required_arguments: ""
   }

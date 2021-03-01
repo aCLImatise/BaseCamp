@@ -10,6 +10,9 @@ task TripailleDbGetDbs {
       ~{if defined(db_id) then ("--db_id " +  '"' + db_id + '"') else ""} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db_id: "A db ID"
     name: "filter on db name"

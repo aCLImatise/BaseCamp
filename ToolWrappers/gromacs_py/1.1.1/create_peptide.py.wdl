@@ -14,6 +14,9 @@ task CreatePeptidepy {
       ~{if defined(m_steps) then ("-m_steps " +  '"' + m_steps + '"') else ""} \
       ~{if defined(time) then ("-time " +  '"' + time + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq: "Peptide sequence"
     output_directory: "Output Directory"

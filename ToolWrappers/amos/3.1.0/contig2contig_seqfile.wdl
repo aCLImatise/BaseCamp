@@ -10,6 +10,9 @@ task Contig2contigSeqfile {
       ~{contig_file} \
       ~{out_contig_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contig_file: ""
     out_contig_file: ""

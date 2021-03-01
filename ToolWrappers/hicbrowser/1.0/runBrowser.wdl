@@ -16,6 +16,9 @@ task RunBrowser {
       ~{if defined(num_processors) then ("--numProcessors " +  '"' + num_processors + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Configuration file with genomic tracks. (default:\\nNone)"
     port: "Local browser port to use. (default: 8000)"

@@ -12,6 +12,9 @@ task FcRunpyLogger {
       ~{config} \
       ~{logger}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fc_run_do_tpy: ""
     config: ""

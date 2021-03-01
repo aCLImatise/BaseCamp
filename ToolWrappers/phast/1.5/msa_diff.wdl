@@ -20,6 +20,9 @@ task MsaDiff {
       ~{if (ignore_base_id) then "--ignore-base-id" else ""} \
       ~{if (ignore_gap_type) then "--ignore-gap-type" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format_one: "|SS|PHYLIP|MPM|MAF\\nFormat of first alignment (default is to guess format from file contents)."
     format_two: "|SS|PHYLIP|MPM|MAF\\nFormat of second alignment (default is to guess format from file contents)."

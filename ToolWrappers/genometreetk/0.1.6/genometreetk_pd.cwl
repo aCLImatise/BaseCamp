@@ -3,12 +3,12 @@ id: genometreetk_pd.cwl
 inputs:
 - id: in_per_tax_a_pg_file
   doc: "file to record phylogenetic gain of each ingroup taxa\nrelative to the outgroup"
-  type: File
+  type: File?
   inputBinding:
     prefix: --per_taxa_pg_file
 - id: in_silent
   doc: suppress output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --silent
 - id: in_tree
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - genometreetk

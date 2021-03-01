@@ -32,6 +32,9 @@ task InclusionExclusionListCreator {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     include: "Inclusion list input file in FASTA or featureXML format. (valid formats: 'featureXML', 'fasta')"
     exclude: "Exclusion list input file in featureXML, idXML or FASTA format. (valid formats: 'featureXML', 'idXML', 'fasta')"

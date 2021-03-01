@@ -13,15 +13,15 @@ task Spaln {
     Boolean? mutlithread_operation_threads
     Boolean? minimum_score_report
     String? ls
-    Boolean? number_outputs_query
-    Boolean? gvsac_alignment_bed
+    Boolean? number_outputs_omitted
+    Boolean? gvsac_gffgene_alignment
     Boolean? dp_hspsearch_blocksearch
     Boolean? read_block_file
     Boolean? orientation_annotation_forward
     Boolean? subdirectory_where_reside
-    Boolean? specify_aadb_must
+    Boolean? specify_aadb_run
     Boolean? same_db_sequences
-    Boolean? specify_genome_must
+    Boolean? specify_genome_run
     Boolean? same_d_db
     Boolean? number_characters_line
     Boolean? filedirectoryprefix_where_written
@@ -31,7 +31,7 @@ task Spaln {
     Boolean? report_information_block
     Boolean? _gapextension_penalty
     Boolean? _gapopen_penalty
-    Boolean? band_width_dp
+    Boolean? band_width_scan
     Boolean? ya
     Boolean? yl_three
     Boolean? ym
@@ -68,15 +68,15 @@ task Spaln {
       ~{if (mutlithread_operation_threads) then "-t" else ""} \
       ~{if (minimum_score_report) then "-H" else ""} \
       ~{if defined(ls) then ("-LS " +  '"' + ls + '"') else ""} \
-      ~{if (number_outputs_query) then "-M" else ""} \
-      ~{if (gvsac_alignment_bed) then "-O" else ""} \
+      ~{if (number_outputs_omitted) then "-M" else ""} \
+      ~{if (gvsac_gffgene_alignment) then "-O" else ""} \
       ~{if (dp_hspsearch_blocksearch) then "-Q" else ""} \
       ~{if (read_block_file) then "-R" else ""} \
       ~{if (orientation_annotation_forward) then "-S" else ""} \
       ~{if (subdirectory_where_reside) then "-T" else ""} \
-      ~{if (specify_aadb_must) then "-a" else ""} \
+      ~{if (specify_aadb_run) then "-a" else ""} \
       ~{if (same_db_sequences) then "-A" else ""} \
-      ~{if (specify_genome_must) then "-d" else ""} \
+      ~{if (specify_genome_run) then "-d" else ""} \
       ~{if (same_d_db) then "-D" else ""} \
       ~{if (number_characters_line) then "-l" else ""} \
       ~{if (filedirectoryprefix_where_written) then "-o" else ""} \
@@ -86,7 +86,7 @@ task Spaln {
       ~{if (report_information_block) then "-r" else ""} \
       ~{if (_gapextension_penalty) then "-u" else ""} \
       ~{if (_gapopen_penalty) then "-v" else ""} \
-      ~{if (band_width_dp) then "-w" else ""} \
+      ~{if (band_width_scan) then "-w" else ""} \
       ~{if (ya) then "-ya" else ""} \
       ~{if (yl_three) then "-yl3" else ""} \
       ~{if (ym) then "-ym" else ""} \
@@ -104,6 +104,9 @@ task Spaln {
       ~{if (kd) then "-KD" else ""} \
       ~{if (var_45) then "-W" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     generate_local_table: "Generate local lookup table for each block"
     xc: "#    number of bit patterns < 6 (1)"
@@ -116,15 +119,15 @@ task Spaln {
     mutlithread_operation_threads: "#     Mutli-thread operation with # threads"
     minimum_score_report: "#     Minimum score for report (35)"
     ls: "#        semi-global or local alignment (-L)"
-    number_outputs_query: "#[,#2]        Number of outputs per query (1) (4 if # is omitted)\\n#2 (4) specifies the max number of candidate loci\\nThis option is effective only for map-and-align modes"
-    gvsac_alignment_bed: "#[,#2,..] (GvsA|C)    0:Gff3_gene; 1:alignment; 2:Gff3_match; 3:Bed; 4:exon-inf;\\n5:intron-inf; 6:cDNA; 7:translated; 8:block-only;\\n10:SAM; 12:binary; 15:query+GS (4)"
+    number_outputs_omitted: "#[,#2]        Number of outputs per query (1) (4 if # is omitted)\\n#2 (4) specifies the max number of candidate loci\\nThis option is effective only for map-and-align modes"
+    gvsac_gffgene_alignment: "#[,#2,..] (GvsA|C)    0:Gff3_gene; 1:alignment; 2:Gff3_match; 3:Bed; 4:exon-inf;\\n5:intron-inf; 6:cDNA; 7:translated; 8:block-only;\\n10:SAM; 12:binary; 15:query+GS (4)"
     dp_hspsearch_blocksearch: "#     0:DP; 1-3:HSP-Search; 4-7; Block-Search (3)"
     read_block_file: "$     Read block information file *.bkn, *.bkp or *.bka"
     orientation_annotation_forward: "#     Orientation. 0:annotation; 1:forward; 2:reverse; 3:both (3)"
     subdirectory_where_reside: "$     Subdirectory where species-specific parameters reside"
-    specify_aadb_must: "$     Specify AAdb. Must run `makeidx.pl -ia' breforehand"
+    specify_aadb_run: "$     Specify AAdb. Must run `makeidx.pl -ia' breforehand"
     same_db_sequences: "$     Same as -a but db sequences are stored in memory"
-    specify_genome_must: "$     Specify genome. Must run `makeidx.pl -i[n|p]' breforehand"
+    specify_genome_run: "$     Specify genome. Must run `makeidx.pl -i[n|p]' breforehand"
     same_d_db: "$     Same as -d but db sequences are stored in memory"
     number_characters_line: "#     Number of characters per line in alignment (60)"
     filedirectoryprefix_where_written: "$     File/directory/prefix where results are written (stdout)"
@@ -134,7 +137,7 @@ task Spaln {
     report_information_block: "$     Report information about block data file"
     _gapextension_penalty: "#     Gap-extension penalty (3)"
     _gapopen_penalty: "#     Gap-open penalty (8)"
-    band_width_dp: "#     Band width for DP matrix scan (100)"
+    band_width_scan: "#     Band width for DP matrix scan (100)"
     ya: "#    Stringency of splice site. 0->3:strong->weak"
     yl_three: "Ddouble affine gap penalty"
     ym: "#    Nucleotide match score (2)"

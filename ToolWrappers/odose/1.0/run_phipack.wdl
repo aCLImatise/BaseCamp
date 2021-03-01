@@ -4,6 +4,9 @@ task RunPhipack {
   command <<<
     run_phipack
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

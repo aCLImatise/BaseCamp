@@ -2,7 +2,6 @@ version 1.0
 
 task Anvidereplicategenomes {
   input {
-    Int? similarity_threshold
     File? internal_genomes
     File? external_genomes
     File? fast_a_text_file
@@ -22,6 +21,7 @@ task Anvidereplicategenomes {
     Int? min_full_percent_identity
     Int? km_er_size
     Int? scale
+    Float? similarity_threshold
     String? cluster_method
     String? representative_method
     Int? num_threads
@@ -31,7 +31,6 @@ task Anvidereplicategenomes {
   command <<<
     anvi_dereplicate_genomes \
       ~{it_dot} \
-      ~{if defined(similarity_threshold) then ("--similarity-threshold " +  '"' + similarity_threshold + '"') else ""} \
       ~{if defined(internal_genomes) then ("--internal-genomes " +  '"' + internal_genomes + '"') else ""} \
       ~{if defined(external_genomes) then ("--external-genomes " +  '"' + external_genomes + '"') else ""} \
       ~{if defined(fast_a_text_file) then ("--fasta-text-file " +  '"' + fast_a_text_file + '"') else ""} \
@@ -51,13 +50,16 @@ task Anvidereplicategenomes {
       ~{if defined(min_full_percent_identity) then ("--min-full-percent-identity " +  '"' + min_full_percent_identity + '"') else ""} \
       ~{if defined(km_er_size) then ("--kmer-size " +  '"' + km_er_size + '"') else ""} \
       ~{if defined(scale) then ("--scale " +  '"' + scale + '"') else ""} \
+      ~{if defined(similarity_threshold) then ("--similarity-threshold " +  '"' + similarity_threshold + '"') else ""} \
       ~{if defined(cluster_method) then ("--cluster-method " +  '"' + cluster_method + '"') else ""} \
       ~{if defined(representative_method) then ("--representative-method " +  '"' + representative_method + '"') else ""} \
       ~{if defined(num_threads) then ("--num-threads " +  '"' + num_threads + '"') else ""} \
       ~{if (just_do_it) then "--just-do-it" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    similarity_threshold: "[--cluster-method {simple_greedy}]\\n[--representative-method {Qscore,length,centrality}]\\n[-T NUM_THREADS] [--just-do-it]\\n[--log-file FILE_PATH]"
     internal_genomes: "A five-column TAB-delimited flat text file. The header\\nline must contain these columns: 'name', 'bin_id',\\n'collection_id', 'profile_db_path', 'contigs_db_path'.\\nEach line should list a single entry, where 'name' can\\nbe any name to describe the anvi'o bin identified as\\n'bin_id' that is stored in a collection."
     external_genomes: "A two-column TAB-delimited flat text file that lists\\nanvi'o contigs databases. The first item in the header\\nline should read 'name', and the second should read\\n'contigs_db_path'. Each line in the file should\\ndescribe a single entry, where the first column is the\\nname of the genome (or MAG), and the second column is\\nthe anvi'o contigs database generated for this genome."
     fast_a_text_file: "A two-column TAB-delimited file that lists multiple\\nFASTA files to import for analysis. If using for\\n`anvi-dereplicate-genomes` or `anvi-compute-distance`,\\neach FASTA is assumed to be a genome. The first item\\nin the header line should read 'name', and the second\\nitem should read 'path'. Each line in the field should\\ndescribe a single entry, where the first column is the\\nname of the FASTA file or corresponding sequence, and\\nthe second column is the path to the FASTA file\\nitself."
@@ -77,6 +79,7 @@ task Anvidereplicategenomes {
     min_full_percent_identity: "In some cases you may get high raw ANI estimates\\n(percent identity scores) between two genomes that\\nhave little to do with each other simply because only\\na small fraction of their content may be aligned. This\\ncan be partly alleviated by considering the *full*\\npercent identity, which includes in its calculation\\nregions that did not align. For example, if the\\nalignment is a whopping 97 percent identity but only 8\\npercent of the genome aligned, the *full* percent\\nidentity is 0.970 * 0.080 = 0.078 OR 7.8 percent.\\n*full* percent identity is always included in the\\nreport, but you can also use it as a filter for other\\nmetrics, such as percent identity. This filter will\\nset all ANI measures between two genomes to 0 if the\\n*full* percent identity is less than you deem\\ntrustable. When you set a value, anvi'o will go\\nthrough the ANI results, and set all ANI measures\\nbetween two genomes to 0 if the *full* percent\\nidentity *between either of them* is less than the\\nparameter described here. The default is 20."
     km_er_size: "Set the k-mer size for mash similarity checks. The\\ndefault is 13."
     scale: "Set the compression ratio for fasta signature file\\ncomputations. The default is 1000. Smaller ratios\\ndecrease sensitivity, while larger ratios will lead to\\nlarge fasta signatures."
+    similarity_threshold: "If two genomes have a similarity greater than or equal\\nto this threshold, they will belong to the same\\ncluster. Since measures of 'similarity' depend\\nstrongly on what method is used for calculation, and\\nsince the threshold at which two genomes should be\\nconsidered 'similar enough' to be considered redundant\\nwill depend on the application, anvi'o refuses to\\nprovide a default parameter. If you're using pyANI,\\nmaybe 0.90 is what you're after. If you're using\\nsourmash, maybe 0.25 is what you're after. Or maybe\\nnot? Anvi'o is feeling nervous about this decision."
     cluster_method: "Currently, genomes are clustered based on a simple\\ngreedy algorithm. Let's say your similarity threshold\\nis 0.90. If genome A is 0.95 similar to B, and B is\\n0.95 similar to C, and C is 0.95 similar to D, then\\n{A,B,C,D} will form a cluster. This is *even though* D\\nmay share a similarity to A of merely 0.80, which is\\nbelow similarity threshold. You want better\\nalternatives? Contact the developers."
     representative_method: "After genomes are grouped into redundancy clusters,\\nyou can define how anvi'o picks the representative\\ngenome from the cluster. 'Qscore' computes the genome\\nwith the highest completion and lowest redundancy as\\nthe representative. 'length' returns the longest\\ngenome. 'centrality' returns the genome with the\\nhighest average similarity to everything in the\\ncluster, i.e. the most central. The default is\\ncentrality"
     num_threads: "Maximum number of threads to use for multithreading\\nwhenever possible. Very conservatively, the default is\\n1. It is a good idea to not exceed the number of CPUs\\n/ cores on your system. Plus, please be careful with\\nthis option if you are running your commands on a SGE\\n--if you are clusterizing your runs, and asking for\\nmultiple threads to use, you may deplete your\\nresources very fast."

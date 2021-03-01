@@ -10,6 +10,9 @@ task Imagespread {
       ~{seq_name_list} \
       ~{msp_list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_name_list: ""
     msp_list: ""

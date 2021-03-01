@@ -3,17 +3,17 @@ id: famap.cwl
 inputs:
 - id: in_t
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_b
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -b
 - id: in_hv
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -hV
 - id: in_nucleotide_ambiquity_codes_allowed
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - famap

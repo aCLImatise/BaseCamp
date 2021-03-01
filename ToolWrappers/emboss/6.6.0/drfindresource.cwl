@@ -5,7 +5,7 @@ inputs:
   doc: "boolean    [N] By default, the query keywords are\nmatched against the EDAM\
     \ term names (and\nsynonyms) only. This option also matches the\nkeywords against\
     \ the EDAM term definitions\nand will therefore (typically) report more\nmatches."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -sensitive
 - id: in_name
@@ -17,6 +17,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - drfindresource

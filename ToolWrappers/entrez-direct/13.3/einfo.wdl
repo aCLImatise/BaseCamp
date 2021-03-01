@@ -14,6 +14,9 @@ task Einfo {
       ~{if (fields) then "-fields" else ""} \
       ~{if (links) then "-links" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Database name"
     dbs: "Get all database names"

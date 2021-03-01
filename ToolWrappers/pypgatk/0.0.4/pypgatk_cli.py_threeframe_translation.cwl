@@ -3,22 +3,22 @@ id: pypgatk_cli.py_threeframe_translation.cwl
 inputs:
 - id: in_config_file
   doc: "Configuration to perform conversion between\nENSEMBL Files"
-  type: string
+  type: string?
   inputBinding:
     prefix: --config_file
 - id: in_input_fast_a
   doc: input_fasta file to perform the translation
-  type: File
+  type: File?
   inputBinding:
     prefix: --input_fasta
 - id: in_translation_table
   doc: Translation table default value 1
-  type: long
+  type: long?
   inputBinding:
     prefix: --translation_table
 - id: in_output
   doc: Output File
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output File
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pypgatk_cli.py

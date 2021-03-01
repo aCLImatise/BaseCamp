@@ -20,6 +20,9 @@ task SplitSeqpyGroup {
       ~{if defined(annotation_field_split) then ("-f " +  '"' + annotation_field_split + '"') else ""} \
       ~{if defined(num) then ("--num " +  '"' + num + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_fastafastq_files: "A list of FASTA/FASTQ files containing sequences to\\nprocess. (default: None)"
     outdir: "Specify to changes the output directory to the\\nlocation specified. The input file directory is used\\nif this is not specified. (default: None)"

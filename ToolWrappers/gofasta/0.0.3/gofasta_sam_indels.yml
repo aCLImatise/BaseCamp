@@ -1,0 +1,86 @@
+!Command
+command:
+- gofasta
+- sam
+- indels
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --insertions-out
+  description: Where to write the insertions (default "insertions.txt")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --deletions-out
+  description: Where to write the deletions (default "deletions.txt")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --threshold
+  description: Minimum count for an indel to be included in the output (default 2)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: Reference fasta file used to generate the sam file
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --samfile
+  description: samfile to read. If none is specified, will read from stdin
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads to use (default 1)
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for indels
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Parse a SAM file for raw indel information\n\nParse a sam file for raw\
+  \ insertion and deletion information stored in the CIGAR. No attempt\nis made to\
+  \ consolidate indels within one query sequence's sam lines, so there may be some\
+  \ conflict.\n\nTwo files (default: insertions.txt and deletions.txt) are written,\
+  \ which contain a list of insertions\nor deletions represented in more than a threshold\
+  \ (default: 2) number of queries.\n\nThe format of insertions.txt is a three-column,\
+  \ tab-separated file with the headers: ref_start\tinsertion\tsamples\nThe format\
+  \ of deletions.txt is a three-column, tab-separated file with the headers: ref_start\t\
+  length\tsamples\n\nthe 'samples' column is a \"|\"-separated list of the queries\
+  \ with the insertion/deletion described by the first two columns.\n\nExample usage:\n\
+  \tgofasta sam indels -s aligned.sam --threshold 2 --insertions-out insertions.txt\
+  \ --deletions-out deletions.txt\n\nUsage:\n  gofasta sam indels [flags]\n\nFlags:\n\
+  \      --insertions-out string   Where to write the insertions (default \"insertions.txt\"\
+  )\n      --deletions-out string    Where to write the deletions (default \"deletions.txt\"\
+  )\n      --threshold int           Minimum count for an indel to be included in\
+  \ the output (default 2)\n  -h, --help                    help for indels\n\nGlobal\
+  \ Flags:\n  -r, --reference string   Reference fasta file used to generate the sam\
+  \ file\n  -s, --samfile string     samfile to read. If none is specified, will read\
+  \ from stdin\n  -t, --threads int        Number of threads to use (default 1)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gofasta:0.0.3--0

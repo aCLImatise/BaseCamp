@@ -3,7 +3,7 @@ version 1.0
 task StrideAssemble {
   input {
     Int? read_length
-    Boolean? _insertsize_insert
+    Boolean? insert_size
     String? prefix
     Int? km_er_size
     Int? km_er_threshold
@@ -19,7 +19,7 @@ task StrideAssemble {
   command <<<
     stride assemble \
       ~{if defined(read_length) then ("--read-length " +  '"' + read_length + '"') else ""} \
-      ~{if (_insertsize_insert) then "-i" else ""} \
+      ~{if (insert_size) then "--insert-size" else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(km_er_size) then ("--kmer-size " +  '"' + km_er_size + '"') else ""} \
       ~{if defined(km_er_threshold) then ("--kmer-threshold " +  '"' + km_er_threshold + '"') else ""} \
@@ -32,9 +32,12 @@ task StrideAssemble {
       ~{if (transitive_reduction) then "--transitive-reduction" else ""} \
       ~{if defined(max_edges) then ("--max-edges " +  '"' + max_edges + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_length: "original read length"
-    _insertsize_insert: ",  --insert-size               insert size of the paired-end library"
+    insert_size: "insert size of the paired-end library"
     prefix: "prefix of FM-index of paired-end reads (bwt, rbwt, sai, rsai)"
     km_er_size: "The length of the kmer to use. (default: 31)"
     km_er_threshold: "filter average kmer frequency vertex less than N (default: 3)"

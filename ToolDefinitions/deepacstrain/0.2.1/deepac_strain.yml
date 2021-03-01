@@ -1,0 +1,2078 @@
+&id001 !Command
+command:
+- deepac-strain
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug-no-eager
+  description: Disable eager mode.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug-tf
+  description: "Set tensorflow debug info verbosity level. 0 = max, 3\n= min. Default:\
+    \ 2 (errors); 3 for tests (muted)"
+  args: !SimpleFlagArg
+    name: DEBUG_TF
+- !Flag
+  optional: true
+  synonyms:
+  - --debug-device
+  description: Enable verbose device placement information.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force-cpu
+  description: Use a CPU even if GPUs are available.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tpu
+  description: "TPU name: 'colab' for Google Colab, or name of your\nTPU on GCE.\n"
+  args: !SimpleFlagArg
+    name: TPU
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - deepac-strain
+  - eval
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: deepac
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: eval
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --species
+    description: Species-wise evaluation.
+    args: !SimpleFlagArg
+      name: SPECIES_CONFIG
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --reads
+    description: Read-wise evaluation.
+    args: !SimpleFlagArg
+      name: READS_CONFIG
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --ensemble
+    description: "Simple ensemble evaluation.\n"
+    args: !SimpleFlagArg
+      name: ENS_CONFIG
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac eval\
+    \ [-h] (-s SPECIES_CONFIG | -r READS_CONFIG | -e ENS_CONFIG)\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -s SPECIES_CONFIG,\
+    \ --species SPECIES_CONFIG\n                        Species-wise evaluation.\n\
+    \  -r READS_CONFIG, --reads READS_CONFIG\n                        Read-wise evaluation.\n\
+    \  -e ENS_CONFIG, --ensemble ENS_CONFIG\n                        Simple ensemble\
+    \ evaluation.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+- !Command
+  command:
+  - deepac-strain
+  - getmodels
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: deepac
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: getmodels
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sensitive
+    description: Rebuild the sensitive model.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --rapid
+    description: Rebuild the rapid CNN model.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac getmodels\
+    \ [-h] [-s] [-r]\n\noptional arguments:\n  -h, --help       show this help message\
+    \ and exit\n\n  -s, --sensitive  Rebuild the sensitive model.\n  -r, --rapid \
+    \     Rebuild the rapid CNN model.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+- !Command
+  command:
+  - deepac-strain
+  - train
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: deepac
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: train
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sensitive
+    description: Use the sensitive model.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --rapid
+    description: Use the rapid CNN model.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --custom
+    description: Use the user-supplied configuration file.
+    args: !SimpleFlagArg
+      name: CUSTOM
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --n-cpus
+    description: 'Number of CPU cores. Default: all.'
+    args: !SimpleFlagArg
+      name: N_CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gpus
+    description: 'GPU devices to use (comma-separated). Default: all'
+    args: !RepeatFlagArg
+      name: GPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    - --train-data
+    description: Path to training data.
+    args: !SimpleFlagArg
+      name: TRAIN_DATA
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --train-labels
+    description: Path to training labels.
+    args: !SimpleFlagArg
+      name: TRAIN_LABELS
+  - !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --val-data
+    description: Path to validation data.
+    args: !SimpleFlagArg
+      name: VAL_DATA
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --val-labels
+    description: Path to validation labels.
+    args: !SimpleFlagArg
+      name: VAL_LABELS
+  - !Flag
+    optional: true
+    synonyms:
+    - -R
+    - --run-name
+    description: "Run name (default: based on chosen config).\n"
+    args: !SimpleFlagArg
+      name: RUN_NAME
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac train\
+    \ [-h] (-s | -r | -c CUSTOM) [-n N_CPUS]\n                    [-g GPUS [GPUS ...]]\
+    \ [-T TRAIN_DATA] [-t TRAIN_LABELS]\n                    [-V VAL_DATA] [-v VAL_LABELS]\
+    \ [-R RUN_NAME]\n\noptional arguments:\n  -h, --help            show this help\
+    \ message and exit\n  -s, --sensitive       Use the sensitive model.\n  -r, --rapid\
+    \           Use the rapid CNN model.\n  -c CUSTOM, --custom CUSTOM\n         \
+    \               Use the user-supplied configuration file.\n  -n N_CPUS, --n-cpus\
+    \ N_CPUS\n                        Number of CPU cores. Default: all.\n  -g GPUS\
+    \ [GPUS ...], --gpus GPUS [GPUS ...]\n                        GPU devices to use\
+    \ (comma-separated). Default: all\n  -T TRAIN_DATA, --train-data TRAIN_DATA\n\
+    \                        Path to training data.\n  -t TRAIN_LABELS, --train-labels\
+    \ TRAIN_LABELS\n                        Path to training labels.\n  -V VAL_DATA,\
+    \ --val-data VAL_DATA\n                        Path to validation data.\n  -v\
+    \ VAL_LABELS, --val-labels VAL_LABELS\n                        Path to validation\
+    \ labels.\n  -R RUN_NAME, --run-name RUN_NAME\n                        Run name\
+    \ (default: based on chosen config).\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+- !Command
+  command:
+  - deepac-strain
+  - convert
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: config
+    description: Training config file.
+  - !Positional
+    optional: false
+    position: 1
+    name: model
+    description: Saved model.
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --weights
+    description: Use prepared weights instead of the model file.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --init
+    description: Initialize a random model from config.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac convert\
+    \ [-h] [-w] [-i] config model\n\npositional arguments:\n  config         Training\
+    \ config file.\n  model          Saved model.\n\noptional arguments:\n  -h, --help\
+    \     show this help message and exit\n  -w, --weights  Use prepared weights instead\
+    \ of the model file.\n  -i, --init     Initialize a random model from config.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+- &id003 !Command
+  command:
+  - deepac-strain
+  - gwpa
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - deepac-strain
+    - gwpa
+    - factiv
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: deepac
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: gwpa
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: factiv
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -m
+      - --model
+      description: Model file (.h5)
+      args: !SimpleFlagArg
+        name: MODEL
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --test-data
+      description: Test data (.npy)
+      args: !SimpleFlagArg
+        name: TEST_DATA
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --test-fasta
+      description: Reads of the test data set (.fasta)
+      args: !SimpleFlagArg
+        name: TEST_FASTA
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --out-dir
+      description: Output directory
+      args: !SimpleFlagArg
+        name: OUT_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -l
+      - --inter-layer
+      description: Perform calculations for this intermediate layer
+      args: !SimpleFlagArg
+        name: INTER_LAYER
+    - !Flag
+      optional: true
+      synonyms:
+      - -c
+      - --seq-chunk
+      description: Sequence chunk size. Decrease for lower memory usage.
+      args: !SimpleFlagArg
+        name: CHUNK_SIZE
+    - !Flag
+      optional: true
+      synonyms:
+      - -F
+      description: "[INTER_NEURON [INTER_NEURON ...]], --inter-neuron [INTER_NEURON\
+        \ [INTER_NEURON ...]]\nPerform calculations for this filter only\n"
+      args: !EmptyFlagArg {}
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac\
+      \ gwpa factiv [-h] -m MODEL -t TEST_DATA -f TEST_FASTA\n                   \
+      \       [-o OUT_DIR] [-l INTER_LAYER] [-c CHUNK_SIZE]\n                    \
+      \      [-F [INTER_NEURON [INTER_NEURON ...]]]\n\noptional arguments:\n  -h,\
+      \ --help            show this help message and exit\n  -m MODEL, --model MODEL\n\
+      \                        Model file (.h5)\n  -t TEST_DATA, --test-data TEST_DATA\n\
+      \                        Test data (.npy)\n  -f TEST_FASTA, --test-fasta TEST_FASTA\n\
+      \                        Reads of the test data set (.fasta)\n  -o OUT_DIR,\
+      \ --out-dir OUT_DIR\n                        Output directory\n  -l INTER_LAYER,\
+      \ --inter-layer INTER_LAYER\n                        Perform calculations for\
+      \ this intermediate layer\n  -c CHUNK_SIZE, --seq-chunk CHUNK_SIZE\n       \
+      \                 Sequence chunk size. Decrease for lower memory usage.\n  -F\
+      \ [INTER_NEURON [INTER_NEURON ...]], --inter-neuron [INTER_NEURON [INTER_NEURON\
+      \ ...]]\n                        Perform calculations for this filter only\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+  - !Command
+    command:
+    - deepac-strain
+    - gwpa
+    - ntcontribs
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: deepac
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: gwpa
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: ntcontribs
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -m
+      - --model
+      description: Model file (.h5)
+      args: !SimpleFlagArg
+        name: MODEL
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --dir-fragmented-genomes
+      description: Directory containing the fragmented genomes (.fasta)
+      args: !SimpleFlagArg
+        name: DIR_FRAGMENTED_GENOMES
+    - !Flag
+      optional: true
+      synonyms:
+      - -g
+      - --genomes-dir
+      description: Directory containing genomes (.genome)
+      args: !SimpleFlagArg
+        name: GENOMES_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --out-dir
+      description: Output directory
+      args: !SimpleFlagArg
+        name: OUT_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -r
+      - --ref-mode
+      description: Modus to calculate reference sequences
+      args: !ChoiceFlagArg
+        choices: !!set
+          GC:
+          own_ref_file:
+          N:
+    - !Flag
+      optional: true
+      synonyms:
+      - -a
+      - --train-data
+      description: "Train data (.npy), necessary to calculate reference\nsequences\
+        \ if ref_mode is 'GC'"
+      args: !SimpleFlagArg
+        name: TRAIN_DATA
+    - !Flag
+      optional: true
+      synonyms:
+      - -F
+      - --ref-seqs
+      description: "User provided reference sequences (.fasta) if ref_mode\nis 'own_ref_file'"
+      args: !SimpleFlagArg
+        name: REF_SEQS
+    - !Flag
+      optional: true
+      synonyms:
+      - -L
+      - --read-length
+      description: Fragment length
+      args: !SimpleFlagArg
+        name: READ_LENGTH
+    - !Flag
+      optional: true
+      synonyms:
+      - -c
+      - --seq-chunk
+      description: Sequence chunk size. Decrease for lower memory usage.
+      args: !SimpleFlagArg
+        name: CHUNK_SIZE
+    - !Flag
+      optional: true
+      synonyms:
+      - -G
+      - --gradient
+      description: Use Integrated Gradients instead of DeepLIFT.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --no-check
+      description: Disable additivity check.
+      args: !EmptyFlagArg {}
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac\
+      \ gwpa ntcontribs [-h] -m MODEL -f DIR_FRAGMENTED_GENOMES -g\n             \
+      \                 GENOMES_DIR [-o OUT_DIR]\n                              [-r\
+      \ {N,GC,own_ref_file}] [-a TRAIN_DATA]\n                              [-F REF_SEQS]\
+      \ [-L READ_LENGTH] [-c CHUNK_SIZE]\n                              [-G] [--no-check]\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -m MODEL, --model MODEL\n                        Model file (.h5)\n  -f DIR_FRAGMENTED_GENOMES,\
+      \ --dir-fragmented-genomes DIR_FRAGMENTED_GENOMES\n                        Directory\
+      \ containing the fragmented genomes (.fasta)\n  -g GENOMES_DIR, --genomes-dir\
+      \ GENOMES_DIR\n                        Directory containing genomes (.genome)\n\
+      \  -o OUT_DIR, --out-dir OUT_DIR\n                        Output directory\n\
+      \  -r {N,GC,own_ref_file}, --ref-mode {N,GC,own_ref_file}\n                \
+      \        Modus to calculate reference sequences\n  -a TRAIN_DATA, --train-data\
+      \ TRAIN_DATA\n                        Train data (.npy), necessary to calculate\
+      \ reference\n                        sequences if ref_mode is 'GC'\n  -F REF_SEQS,\
+      \ --ref-seqs REF_SEQS\n                        User provided reference sequences\
+      \ (.fasta) if ref_mode\n                        is 'own_ref_file'\n  -L READ_LENGTH,\
+      \ --read-length READ_LENGTH\n                        Fragment length\n  -c CHUNK_SIZE,\
+      \ --seq-chunk CHUNK_SIZE\n                        Sequence chunk size. Decrease\
+      \ for lower memory usage.\n  -G, --gradient        Use Integrated Gradients\
+      \ instead of DeepLIFT.\n  --no-check            Disable additivity check.\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+  - !Command
+    command:
+    - deepac-strain
+    - gwpa
+    - granking
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: deepac
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: gwpa
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: granking
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      - --patho-dir
+      description: "Directory containing the pathogenicity scores over all\ngenomic\
+        \ regions per species (.bedgraph)"
+      args: !SimpleFlagArg
+        name: PATHO_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -g
+      - --gff-dir
+      description: "Directory containing the annotation data of the\nspecies (.gff)"
+      args: !SimpleFlagArg
+        name: GFF_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --out-dir
+      description: Output directory
+      args: !SimpleFlagArg
+        name: OUT_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -x
+      - --extended
+      description: Check for multiple CDSs per gene and unnamed genes.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -n
+      - --n-cpus
+      description: "Number of CPU cores.\n"
+      args: !SimpleFlagArg
+        name: N_CPUS
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac\
+      \ gwpa granking [-h] -p PATHO_DIR -g GFF_DIR [-o OUT_DIR] [-x]\n           \
+      \                 [-n N_CPUS]\n\noptional arguments:\n  -h, --help         \
+      \   show this help message and exit\n  -p PATHO_DIR, --patho-dir PATHO_DIR\n\
+      \                        Directory containing the pathogenicity scores over\
+      \ all\n                        genomic regions per species (.bedgraph)\n  -g\
+      \ GFF_DIR, --gff-dir GFF_DIR\n                        Directory containing the\
+      \ annotation data of the\n                        species (.gff)\n  -o OUT_DIR,\
+      \ --out-dir OUT_DIR\n                        Output directory\n  -x, --extended\
+      \        Check for multiple CDSs per gene and unnamed genes.\n  -n N_CPUS, --n-cpus\
+      \ N_CPUS\n                        Number of CPU cores.\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+  - !Command
+    command:
+    - deepac-strain
+    - gwpa
+    - gff2genome
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: gff3_dir
+      description: Input directory.
+    - !Positional
+      optional: false
+      position: 1
+      name: out_dir
+      description: Output directory.
+    named: []
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac\
+      \ gwpa gff2genome [-h] gff3_dir out_dir\n\npositional arguments:\n  gff3_dir\
+      \    Input directory.\n  out_dir     Output directory.\n\noptional arguments:\n\
+      \  -h, --help  show this help message and exit\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+  - !Command
+    command:
+    - deepac-strain
+    - gwpa
+    - fenrichment
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: deepac
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: gwpa
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: fenrichment
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --bed-dir
+      description: "Input directory with filter activation values for a\nspecies (.bed)"
+      args: !SimpleFlagArg
+        name: BED_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -g
+      - --gff
+      description: Gff file of species
+      args: !SimpleFlagArg
+        name: GFF
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --out-dir
+      description: Output directory
+      args: !SimpleFlagArg
+        name: OUT_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -l
+      - --motif-length
+      description: Motif length
+      args: !SimpleFlagArg
+        name: MOTIF_LENGTH
+    - !Flag
+      optional: true
+      synonyms:
+      - -n
+      - --n-cpus
+      description: Number of CPU cores.
+      args: !SimpleFlagArg
+        name: N_CPUS
+    - !Flag
+      optional: true
+      synonyms:
+      - -x
+      - --extended
+      description: Check for multiple CDSs per gene and unnamed genes.
+      args: !EmptyFlagArg {}
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac\
+      \ gwpa fenrichment [-h] -i BED_DIR -g GFF [-o OUT_DIR]\n                   \
+      \            [-l MOTIF_LENGTH] [-n N_CPUS] [-x]\n\noptional arguments:\n  -h,\
+      \ --help            show this help message and exit\n  -i BED_DIR, --bed-dir\
+      \ BED_DIR\n                        Input directory with filter activation values\
+      \ for a\n                        species (.bed)\n  -g GFF, --gff GFF     Gff\
+      \ file of species\n  -o OUT_DIR, --out-dir OUT_DIR\n                       \
+      \ Output directory\n  -l MOTIF_LENGTH, --motif-length MOTIF_LENGTH\n       \
+      \                 Motif length\n  -n N_CPUS, --n-cpus N_CPUS\n             \
+      \           Number of CPU cores.\n  -x, --extended        Check for multiple\
+      \ CDSs per gene and unnamed genes.\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+  - !Command
+    command:
+    - deepac-strain
+    - gwpa
+    - genomemap
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: deepac
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: gwpa
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: genomemap
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --dir-fragmented-genomes
+      description: Directory containing the fragmented genomes (.fasta)
+      args: !SimpleFlagArg
+        name: DIR_FRAGMENTED_GENOMES
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      - --dir-fragmented-genomes-preds
+      description: "Directory containing the predictions (.npy) of the\nfragmented\
+        \ genomes"
+      args: !SimpleFlagArg
+        name: DIR_FRAGMENTED_GENOMES_PREDS
+    - !Flag
+      optional: true
+      synonyms:
+      - -g
+      - --genomes-dir
+      description: Directory containing genomes (.genome)
+      args: !SimpleFlagArg
+        name: GENOMES_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --out-dir
+      description: "Output directory\n"
+      args: !SimpleFlagArg
+        name: OUT_DIR
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac\
+      \ gwpa genomemap [-h] -f DIR_FRAGMENTED_GENOMES -p\n                       \
+      \      DIR_FRAGMENTED_GENOMES_PREDS -g GENOMES_DIR\n                       \
+      \      [-o OUT_DIR]\n\noptional arguments:\n  -h, --help            show this\
+      \ help message and exit\n  -f DIR_FRAGMENTED_GENOMES, --dir-fragmented-genomes\
+      \ DIR_FRAGMENTED_GENOMES\n                        Directory containing the fragmented\
+      \ genomes (.fasta)\n  -p DIR_FRAGMENTED_GENOMES_PREDS, --dir-fragmented-genomes-preds\
+      \ DIR_FRAGMENTED_GENOMES_PREDS\n                        Directory containing\
+      \ the predictions (.npy) of the\n                        fragmented genomes\n\
+      \  -g GENOMES_DIR, --genomes-dir GENOMES_DIR\n                        Directory\
+      \ containing genomes (.genome)\n  -o OUT_DIR, --out-dir OUT_DIR\n          \
+      \              Output directory\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac gwpa\
+    \ [-h]\n                   {fragment,genomemap,granking,ntcontribs,factiv,fenrichment,gff2genome}\n\
+    \                   ...\n\npositional arguments:\n  {fragment,genomemap,granking,ntcontribs,factiv,fenrichment,gff2genome}\n\
+    \                        DeePaC gwpa subcommands. See command --help for\n   \
+    \                     details.\n    fragment            Fragment genomes for analysis.\n\
+    \    genomemap           Generate a genome-wide phenotype potential map.\n   \
+    \ granking            Generate gene rankings.\n    ntcontribs          Generate\
+    \ a genome-wide nt contribution map.\n    factiv              Get filter activations.\n\
+    \    fenrichment         Run filter enrichment analysis.\n    gff2genome     \
+    \     Generate .genome files.\n\noptional arguments:\n  -h, --help           \
+    \ show this help message and exit\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+- !Command
+  command:
+  - deepac-strain
+  - templates
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: deepac
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: templates
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac templates\
+    \ [-h]\n\noptional arguments:\n  -h, --help  show this help message and exit\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+- !Command
+  command:
+  - deepac-strain
+  - test
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: deepac
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: test
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --n-cpus
+    description: 'Number of CPU cores. Default: all.'
+    args: !SimpleFlagArg
+      name: N_CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gpus
+    description: 'GPU devices to use. Default: all'
+    args: !RepeatFlagArg
+      name: GPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --explain
+    description: Test explain workflows.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --gwpa
+    description: Test gwpa workflows.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --all
+    description: Test all functions.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quick
+    description: "Don't test heavy models (e.g. on low-memory machines\nor when no\
+      \ GPU available)."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --keep
+    description: Don't delete previous test output.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --scale
+    description: 'Generate s*1024 reads for testing (Default: s=1).'
+    args: !SimpleFlagArg
+      name: SCALE
+  - !Flag
+    optional: true
+    synonyms:
+    - -L
+    - --large
+    description: Test a larger, more complex custom model.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-modes
+    description: "[INPUT_MODES [INPUT_MODES ...]]\nInput modes to test: memory, sequence\
+      \ and/or tfdata.\nDefault: all."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-check
+    description: Disable additivity check.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac test\
+    \ [-h] [-n N_CPUS] [-g GPUS [GPUS ...]] [-x] [-p] [-a] [-q]\n                \
+    \   [-k] [-s SCALE] [-L]\n                   [--input-modes [INPUT_MODES [INPUT_MODES\
+    \ ...]]]\n                   [--no-check]\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  -n N_CPUS, --n-cpus N_CPUS\n \
+    \                       Number of CPU cores. Default: all.\n  -g GPUS [GPUS ...],\
+    \ --gpus GPUS [GPUS ...]\n                        GPU devices to use. Default:\
+    \ all\n  -x, --explain         Test explain workflows.\n  -p, --gwpa         \
+    \   Test gwpa workflows.\n  -a, --all             Test all functions.\n  -q, --quick\
+    \           Don't test heavy models (e.g. on low-memory machines\n           \
+    \             or when no GPU available).\n  -k, --keep            Don't delete\
+    \ previous test output.\n  -s SCALE, --scale SCALE\n                        Generate\
+    \ s*1024 reads for testing (Default: s=1).\n  -L, --large           Test a larger,\
+    \ more complex custom model.\n  --input-modes [INPUT_MODES [INPUT_MODES ...]]\n\
+    \                        Input modes to test: memory, sequence and/or tfdata.\n\
+    \                        Default: all.\n  --no-check            Disable additivity\
+    \ check.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+- !Command
+  command:
+  - deepac-strain
+  - preproc
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: config
+    description: Preprocessing config file.
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac preproc\
+    \ [-h] config\n\npositional arguments:\n  config      Preprocessing config file.\n\
+    \noptional arguments:\n  -h, --help  show this help message and exit\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+- !Command
+  command:
+  - deepac-strain
+  - predict
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: plot.
+    description: --replicates REPLICATES
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --array
+    description: Use .npy input instead.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sensitive
+    description: Use the sensitive model.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --rapid
+    description: Use the rapid CNN model.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --custom
+    description: Use the user-supplied, already compiled CUSTOM model.
+    args: !SimpleFlagArg
+      name: CUSTOM
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Output file path [.npy].
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --n-cpus
+    description: 'Number of CPU cores. Default: all.'
+    args: !SimpleFlagArg
+      name: N_CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gpus
+    description: 'GPU devices to use (comma-separated). Default: all'
+    args: !RepeatFlagArg
+      name: GPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - -R
+    - --rc-check
+    description: Check RC-constraint compliance (requires .npy input).
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --plot-kind
+    description: Plot kind for the RC-constraint compliance check.
+    args: !SimpleFlagArg
+      name: PLOT_KIND
+  - !Flag
+    optional: true
+    synonyms:
+    - --alpha
+    description: Alpha value for the RC-constraint compliance check
+    args: !SimpleFlagArg
+      name: ALPHA
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac predict\
+    \ [-h] [-a] (-s | -r | -c CUSTOM) [-o OUTPUT] [-n N_CPUS]\n                  \
+    \    [-g GPUS [GPUS ...]] [-R] [--plot-kind PLOT_KIND]\n                     \
+    \ [--alpha ALPHA] [--replicates REPLICATES]\n                      input\n\npositional\
+    \ arguments:\n  input                 Input file path [.fasta].\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -a, --array      \
+    \     Use .npy input instead.\n  -s, --sensitive       Use the sensitive model.\n\
+    \  -r, --rapid           Use the rapid CNN model.\n  -c CUSTOM, --custom CUSTOM\n\
+    \                        Use the user-supplied, already compiled CUSTOM model.\n\
+    \  -o OUTPUT, --output OUTPUT\n                        Output file path [.npy].\n\
+    \  -n N_CPUS, --n-cpus N_CPUS\n                        Number of CPU cores. Default:\
+    \ all.\n  -g GPUS [GPUS ...], --gpus GPUS [GPUS ...]\n                       \
+    \ GPU devices to use (comma-separated). Default: all\n  -R, --rc-check       \
+    \ Check RC-constraint compliance (requires .npy input).\n  --plot-kind PLOT_KIND\n\
+    \                        Plot kind for the RC-constraint compliance check.\n \
+    \ --alpha ALPHA         Alpha value for the RC-constraint compliance check\n \
+    \                       plot.\n  --replicates REPLICATES\n                   \
+    \     Number of replicates for MC uncertainty estimation.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+- !Command
+  command:
+  - deepac-strain
+  - filter
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input
+    description: Input file path [.fasta].
+  - !Positional
+    optional: false
+    position: 1
+    name: predictions
+    description: Predictions in matching order [.npy].
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --potentials
+    description: Print pathogenic potential values in .fasta headers.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Output file path [.fasta].
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --std
+    description: Standard deviations of predictions if MC dropout used.
+    args: !SimpleFlagArg
+      name: STD
+  - !Flag
+    optional: true
+    synonyms:
+    - --precision
+    description: "Format pathogenic potentials to given precision\n[default=3].\n"
+    args: !SimpleFlagArg
+      name: PRECISION
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: ''
+    args: !SimpleFlagArg
+      name: THRESHOLD
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac filter\
+    \ [-h] [-t THRESHOLD] [-p] [-o OUTPUT] [-s STD]\n                     [--precision\
+    \ PRECISION]\n                     input predictions\n\npositional arguments:\n\
+    \  input                 Input file path [.fasta].\n  predictions           Predictions\
+    \ in matching order [.npy].\n\noptional arguments:\n  -h, --help            show\
+    \ this help message and exit\n  -t THRESHOLD, --threshold THRESHOLD\n        \
+    \                Threshold [default=0.5].\n  -p, --potentials      Print pathogenic\
+    \ potential values in .fasta headers.\n  -o OUTPUT, --output OUTPUT\n        \
+    \                Output file path [.fasta].\n  -s STD, --std STD     Standard\
+    \ deviations of predictions if MC dropout used.\n  --precision PRECISION\n   \
+    \                     Format pathogenic potentials to given precision\n      \
+    \                  [default=3].\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+- &id004 !Command
+  command:
+  - deepac-strain
+  - explain
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - deepac-strain
+    - explain
+    - fa2transfac
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: deepac
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: explain
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: fa2transfac
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --in-dir
+      description: Directory containing motifs per filter (.fasta)
+      args: !SimpleFlagArg
+        name: IN_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --out-dir
+      description: Output directory
+      args: !SimpleFlagArg
+        name: OUT_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -w
+      - --weighting
+      description: Weight sequences by their DeepLIFT score
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -W
+      - --weight-dir
+      description: "Directory containing the DeepLIFT scores per filter\n(only required\
+        \ if --weighting is chosen)\n"
+      args: !SimpleFlagArg
+        name: WEIGHT_DIR
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac\
+      \ explain fa2transfac [-h] -i IN_DIR -o OUT_DIR [-w]\n                     \
+      \             [-W WEIGHT_DIR]\n\noptional arguments:\n  -h, --help         \
+      \   show this help message and exit\n  -i IN_DIR, --in-dir IN_DIR\n        \
+      \                Directory containing motifs per filter (.fasta)\n  -o OUT_DIR,\
+      \ --out-dir OUT_DIR\n                        Output directory\n  -w, --weighting\
+      \       Weight sequences by their DeepLIFT score\n  -W WEIGHT_DIR, --weight-dir\
+      \ WEIGHT_DIR\n                        Directory containing the DeepLIFT scores\
+      \ per filter\n                        (only required if --weighting is chosen)\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+  - !Command
+    command:
+    - deepac-strain
+    - explain
+    - transfac2IC
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: deepac
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: explain
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: transfac2IC
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --in-file
+      description: File containing all filter motifs in transfac format
+      args: !SimpleFlagArg
+        name: IN_FILE
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --train
+      description: Training data set (.npy) to normalize for GC-content
+      args: !SimpleFlagArg
+        name: TRAIN
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --out-file
+      description: "Name of the output file\n"
+      args: !SimpleFlagArg
+        name: OUT_FILE
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac\
+      \ explain transfac2IC [-h] -i IN_FILE -t TRAIN [-o OUT_FILE]\n\noptional arguments:\n\
+      \  -h, --help            show this help message and exit\n  -i IN_FILE, --in-file\
+      \ IN_FILE\n                        File containing all filter motifs in transfac\
+      \ format\n  -t TRAIN, --train TRAIN\n                        Training data set\
+      \ (.npy) to normalize for GC-content\n  -o OUT_FILE, --out-file OUT_FILE\n \
+      \                       Name of the output file\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+  - !Command
+    command:
+    - deepac-strain
+    - explain
+    - franking
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: OUT_DIR
+      description: 'optional arguments:'
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -m
+      - --mode
+      description: "Use original filter scores or normalize scores\nrelative to true\
+        \ or predicted classes."
+      args: !ChoiceFlagArg
+        choices: !!set
+          original:
+          rel_true_class:
+          rel_pred_class:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --scores-dir
+      description: Directory containing filter contribution scores (.csv)
+      args: !SimpleFlagArg
+        name: SCORES_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -y
+      - --true-label
+      description: File with true read labels (.npy)
+      args: !SimpleFlagArg
+        name: TRUE_LABEL
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      - --pred-label
+      description: File with predicted read labels (.npy)
+      args: !SimpleFlagArg
+        name: PRED_LABEL
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --out-dir
+      description: "Output directory\n"
+      args: !SimpleFlagArg
+        name: OUT_DIR
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac\
+      \ explain franking [-h]\n                               [-m {original,rel_true_class,rel_pred_class}]\n\
+      \                               -f SCORES_DIR -y TRUE_LABEL -p PRED_LABEL -o\n\
+      \                               OUT_DIR\n\noptional arguments:\n  -h, --help\
+      \            show this help message and exit\n  -m {original,rel_true_class,rel_pred_class},\
+      \ --mode {original,rel_true_class,rel_pred_class}\n                        Use\
+      \ original filter scores or normalize scores\n                        relative\
+      \ to true or predicted classes.\n  -f SCORES_DIR, --scores-dir SCORES_DIR\n\
+      \                        Directory containing filter contribution scores (.csv)\n\
+      \  -y TRUE_LABEL, --true-label TRUE_LABEL\n                        File with\
+      \ true read labels (.npy)\n  -p PRED_LABEL, --pred-label PRED_LABEL\n      \
+      \                  File with predicted read labels (.npy)\n  -o OUT_DIR, --out-dir\
+      \ OUT_DIR\n                        Output directory\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+  - !Command
+    command:
+    - deepac-strain
+    - explain
+    - weblogos
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: deepac
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: explain
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: weblogos
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --in-dir
+      description: Directory containing motifs per filter
+      args: !SimpleFlagArg
+        name: IN_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      description: "{.fasta,.transfac}, --file-ext {.fasta,.transfac}\nExtension of\
+        \ file format of input files (.fasta or\n.transfac)"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --train-data
+      description: "Training data set (.npy) to compute GC-content.\nN-padding lowers\
+        \ GC!"
+      args: !SimpleFlagArg
+        name: TRAIN_DATA
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --out-dir
+      description: "Output directory\n"
+      args: !SimpleFlagArg
+        name: OUT_DIR
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac\
+      \ explain weblogos [-h] -i IN_DIR [-f {.fasta,.transfac}]\n                \
+      \               [-t TRAIN_DATA] -o OUT_DIR\n\noptional arguments:\n  -h, --help\
+      \            show this help message and exit\n  -i IN_DIR, --in-dir IN_DIR\n\
+      \                        Directory containing motifs per filter\n  -f {.fasta,.transfac},\
+      \ --file-ext {.fasta,.transfac}\n                        Extension of file format\
+      \ of input files (.fasta or\n                        .transfac)\n  -t TRAIN_DATA,\
+      \ --train-data TRAIN_DATA\n                        Training data set (.npy)\
+      \ to compute GC-content.\n                        N-padding lowers GC!\n  -o\
+      \ OUT_DIR, --out-dir OUT_DIR\n                        Output directory\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+  - !Command
+    command:
+    - deepac-strain
+    - explain
+    - mcompare
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: deepac
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: explain
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: mcompare
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -q
+      - --in-file1
+      description: File containing all filter motifs in transfac format
+      args: !SimpleFlagArg
+        name: IN_FILE1
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --in-file2
+      description: File containing all filter motifs in transfac format
+      args: !SimpleFlagArg
+        name: IN_FILE2
+    - !Flag
+      optional: true
+      synonyms:
+      - -a
+      - --train-data
+      description: "Training data (.npy), necessary to calculate\nbackground GC content"
+      args: !SimpleFlagArg
+        name: TRAIN_DATA
+    - !Flag
+      optional: true
+      synonyms:
+      - -e
+      - --extensively
+      description: "Compare every motif from --in_file1 with every motif\nfrom --in_file2;\
+        \ default: compare only motifs with the\nsame ID"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -r
+      - --rc
+      description: Consider RC-complement of a motif
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --shift
+      description: Shift motifs to find best alignment
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -m
+      - --min-overlap
+      description: "Minimal overlap between two motifs if motifs are\nshifted to find\
+        \ the best alignment (--shift)"
+      args: !SimpleFlagArg
+        name: MIN_OVERLAP
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --out-dir
+      description: "Output directory\n"
+      args: !SimpleFlagArg
+        name: OUT_DIR
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac\
+      \ explain mcompare [-h] -q IN_FILE1 -t IN_FILE2 [-a TRAIN_DATA]\n          \
+      \                     [-e] [-r] [-s] [-m MIN_OVERLAP] [-o OUT_DIR]\n\noptional\
+      \ arguments:\n  -h, --help            show this help message and exit\n  -q\
+      \ IN_FILE1, --in-file1 IN_FILE1\n                        File containing all\
+      \ filter motifs in transfac format\n  -t IN_FILE2, --in-file2 IN_FILE2\n   \
+      \                     File containing all filter motifs in transfac format\n\
+      \  -a TRAIN_DATA, --train-data TRAIN_DATA\n                        Training\
+      \ data (.npy), necessary to calculate\n                        background GC\
+      \ content\n  -e, --extensively     Compare every motif from --in_file1 with\
+      \ every motif\n                        from --in_file2; default: compare only\
+      \ motifs with the\n                        same ID\n  -r, --rc             \
+      \ Consider RC-complement of a motif\n  -s, --shift           Shift motifs to\
+      \ find best alignment\n  -m MIN_OVERLAP, --min-overlap MIN_OVERLAP\n       \
+      \                 Minimal overlap between two motifs if motifs are\n       \
+      \                 shifted to find the best alignment (--shift)\n  -o OUT_DIR,\
+      \ --out-dir OUT_DIR\n                        Output directory\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+  - !Command
+    command:
+    - deepac-strain
+    - explain
+    - xlogos
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: deepac
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: explain
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: xlogos
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --fasta-dir
+      description: Directory containing motifs per filter (.fasta)
+      args: !SimpleFlagArg
+        name: FASTA_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --scores-dir
+      description: "Directory containing nucleotide scores per filter\n(.csv)"
+      args: !SimpleFlagArg
+        name: SCORES_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -I
+      - --logo-dir
+      description: "Directory containing motifs in weighted transfac\nformat (only\
+        \ required if weighted weblogos should be\ncreated)"
+      args: !SimpleFlagArg
+        name: LOGO_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -G
+      - --gain
+      description: "Color saturation gain. Weblogo colors reach saturation\nwhen the\
+        \ average nt score=1/gain. Default: 128000.\nRecommended: input length * number\
+        \ of filters."
+      args: !SimpleFlagArg
+        name: GAIN
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --train-data
+      description: Training data set to compute GC-content
+      args: !SimpleFlagArg
+        name: TRAIN_DATA
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --out-dir
+      description: "Output directory\n"
+      args: !SimpleFlagArg
+        name: OUT_DIR
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac\
+      \ explain xlogos [-h] -i FASTA_DIR -s SCORES_DIR [-I LOGO_DIR]\n           \
+      \                  [-G GAIN] [-t TRAIN_DATA] -o OUT_DIR\n\noptional arguments:\n\
+      \  -h, --help            show this help message and exit\n  -i FASTA_DIR, --fasta-dir\
+      \ FASTA_DIR\n                        Directory containing motifs per filter\
+      \ (.fasta)\n  -s SCORES_DIR, --scores-dir SCORES_DIR\n                     \
+      \   Directory containing nucleotide scores per filter\n                    \
+      \    (.csv)\n  -I LOGO_DIR, --logo-dir LOGO_DIR\n                        Directory\
+      \ containing motifs in weighted transfac\n                        format (only\
+      \ required if weighted weblogos should be\n                        created)\n\
+      \  -G GAIN, --gain GAIN  Color saturation gain. Weblogo colors reach saturation\n\
+      \                        when the average nt score=1/gain. Default: 128000.\n\
+      \                        Recommended: input length * number of filters.\n  -t\
+      \ TRAIN_DATA, --train-data TRAIN_DATA\n                        Training data\
+      \ set to compute GC-content\n  -o OUT_DIR, --out-dir OUT_DIR\n             \
+      \           Output directory\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+  - !Command
+    command:
+    - deepac-strain
+    - explain
+    - fcontribs
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: centered
+      description: -t TEST_DATA, --test_data TEST_DATA
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -m
+      - --model
+      description: Model file (.h5)
+      args: !SimpleFlagArg
+        name: MODEL
+    - !Flag
+      optional: true
+      synonyms:
+      - -b
+      - --w-norm
+      description: Set flag if filter weight matrices should be mean-
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -N
+      - --nonpatho-test
+      description: Nonpathogenic reads of the test data set (.fasta)
+      args: !SimpleFlagArg
+        name: NONPATHO_TEST
+    - !Flag
+      optional: true
+      synonyms:
+      - -P
+      - --patho-test
+      description: Pathogenic reads of the test data set (.fasta)
+      args: !SimpleFlagArg
+        name: PATHO_TEST
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --out-dir
+      description: Output directory
+      args: !SimpleFlagArg
+        name: OUT_DIR
+    - !Flag
+      optional: true
+      synonyms:
+      - -r
+      - --ref-mode
+      description: Modus to calculate reference sequences
+      args: !ChoiceFlagArg
+        choices: !!set
+          GC:
+          own_ref_file:
+          N:
+    - !Flag
+      optional: true
+      synonyms:
+      - -a
+      - --train-data
+      description: "Train data (.npy), necessary to calculate reference\nsequences\
+        \ if ref_mode is 'GC'"
+      args: !SimpleFlagArg
+        name: TRAIN_DATA
+    - !Flag
+      optional: true
+      synonyms:
+      - -F
+      - --ref-seqs
+      description: "User provided reference sequences (.fasta) if ref_mode\nis 'own_ref_file'"
+      args: !SimpleFlagArg
+        name: REF_SEQS
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      description: "[INTER_NEURON [INTER_NEURON ...]], --inter-neuron [INTER_NEURON\
+        \ [INTER_NEURON ...]]\nPerform calculations for this intermediate neuron only"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -l
+      - --inter-layer
+      description: Perform calculations for this intermediate layer
+      args: !SimpleFlagArg
+        name: INTER_LAYER
+    - !Flag
+      optional: true
+      synonyms:
+      - -c
+      - --seq-chunk
+      description: Sequence chunk size. Decrease for lower memory usage.
+      args: !SimpleFlagArg
+        name: CHUNK_SIZE
+    - !Flag
+      optional: true
+      synonyms:
+      - -A
+      - --all-occurrences
+      description: "Extract contributions for all occurrences of a filter\nper read\
+        \ (Default: max only)"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -R
+      - --recurrent
+      description: Interpret elements of the LSTM output
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --no-check
+      description: Disable additivity check.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      - --partial
+      description: Calculate partial nucleotide contributions per filter.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -e
+      - --easy-partial
+      description: "Calculate easy partial nucleotide contributions per\nfilter. Works\
+        \ for the first convolutional layer only;\ndisables all-occurences mode.\n"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      description: ''
+      args: !SimpleFlagArg
+        name: TEST_DATA
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac\
+      \ explain fcontribs [-h] -m MODEL [-b] -t TEST_DATA -N\n                   \
+      \             NONPATHO_TEST -P PATHO_TEST [-o OUT_DIR]\n                   \
+      \             [-r {N,GC,own_ref_file}] [-a TRAIN_DATA]\n                   \
+      \             [-F REF_SEQS]\n                                [-i [INTER_NEURON\
+      \ [INTER_NEURON ...]]]\n                                [-l INTER_LAYER] [-c\
+      \ CHUNK_SIZE] [-A] [-R]\n                                [--no-check] [-p |\
+      \ -e]\n\noptional arguments:\n  -h, --help            show this help message\
+      \ and exit\n  -m MODEL, --model MODEL\n                        Model file (.h5)\n\
+      \  -b, --w-norm          Set flag if filter weight matrices should be mean-\n\
+      \                        centered\n  -t TEST_DATA, --test_data TEST_DATA\n \
+      \                       Test data (.npy)\n  -N NONPATHO_TEST, --nonpatho-test\
+      \ NONPATHO_TEST\n                        Nonpathogenic reads of the test data\
+      \ set (.fasta)\n  -P PATHO_TEST, --patho-test PATHO_TEST\n                 \
+      \       Pathogenic reads of the test data set (.fasta)\n  -o OUT_DIR, --out-dir\
+      \ OUT_DIR\n                        Output directory\n  -r {N,GC,own_ref_file},\
+      \ --ref-mode {N,GC,own_ref_file}\n                        Modus to calculate\
+      \ reference sequences\n  -a TRAIN_DATA, --train-data TRAIN_DATA\n          \
+      \              Train data (.npy), necessary to calculate reference\n       \
+      \                 sequences if ref_mode is 'GC'\n  -F REF_SEQS, --ref-seqs REF_SEQS\n\
+      \                        User provided reference sequences (.fasta) if ref_mode\n\
+      \                        is 'own_ref_file'\n  -i [INTER_NEURON [INTER_NEURON\
+      \ ...]], --inter-neuron [INTER_NEURON [INTER_NEURON ...]]\n                \
+      \        Perform calculations for this intermediate neuron only\n  -l INTER_LAYER,\
+      \ --inter-layer INTER_LAYER\n                        Perform calculations for\
+      \ this intermediate layer\n  -c CHUNK_SIZE, --seq-chunk CHUNK_SIZE\n       \
+      \                 Sequence chunk size. Decrease for lower memory usage.\n  -A,\
+      \ --all-occurrences\n                        Extract contributions for all occurrences\
+      \ of a filter\n                        per read (Default: max only)\n  -R, --recurrent\
+      \       Interpret elements of the LSTM output\n  --no-check            Disable\
+      \ additivity check.\n  -p, --partial         Calculate partial nucleotide contributions\
+      \ per filter.\n  -e, --easy-partial    Calculate easy partial nucleotide contributions\
+      \ per\n                        filter. Works for the first convolutional layer\
+      \ only;\n                        disables all-occurences mode.\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac explain\
+    \ [-h]\n                      {maxact,fcontribs,franking,fa2transfac,weblogos,xlogos,transfac2IC,mcompare}\n\
+    \                      ...\n\npositional arguments:\n  {maxact,fcontribs,franking,fa2transfac,weblogos,xlogos,transfac2IC,mcompare}\n\
+    \                        DeePaC explain subcommands. See command --help for\n\
+    \                        details.\n    maxact              Get DeepBind-like max-activation\
+    \ scores.\n    fcontribs           Get DeepLIFT/SHAP filter contribution scores.\n\
+    \    franking            Generate filter rankings.\n    fa2transfac         Calculate\
+    \ transfac from fasta files.\n    weblogos            Get sequence logos.\n  \
+    \  xlogos              Get extended sequence logos.\n    transfac2IC         Calculate\
+    \ information content from transfac files.\n    mcompare            Compare motifs.\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Print version.
+  args: !EmptyFlagArg {}
+help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac [-h]\
+  \ [-v] [--debug-no-eager] [--debug-tf DEBUG_TF]\n              [--debug-device]\
+  \ [--force-cpu] [--tpu TPU]\n              {predict,filter,train,preproc,eval,convert,getmodels,test,explain,gwpa,templates}\n\
+  \              ...\n\nPredicting pathogenic potentials of novel DNA with reverse-complement\
+  \ neural\nnetworks.\n\npositional arguments:\n  {predict,filter,train,preproc,eval,convert,getmodels,test,explain,gwpa,templates}\n\
+  \                        DeePaC subcommands. See command --help for details.\n \
+  \   predict             Predict using a trained model.\n    filter             \
+  \ Filter prediction results.\n    train               Train a new model.\n    preproc\
+  \             Convert fasta files to numpy arrays for training.\n    eval      \
+  \          Predict using a trained model.\n    convert             Convert and compile\
+  \ a model to an equivalent.\n    getmodels           Get built-in weights and rebuild\
+  \ built-in models.\n    test                Run additional tests.\n    explain \
+  \            Run filter visualization workflows.\n    gwpa                Run GWPA\
+  \ workflows.\n    templates           Get config templates (in this directory).\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -v, --version         Print version.\n  --debug-no-eager      Disable eager mode.\n\
+  \  --debug-tf DEBUG_TF   Set tensorflow debug info verbosity level. 0 = max, 3\n\
+  \                        = min. Default: 2 (errors); 3 for tests (muted)\n  --debug-device\
+  \        Enable verbose device placement information.\n  --force-cpu           Use\
+  \ a CPU even if GPUs are available.\n  --tpu TPU             TPU name: 'colab' for\
+  \ Google Colab, or name of your\n                        TPU on GCE.\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0

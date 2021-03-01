@@ -10,6 +10,9 @@ task NovoutilTag {
       ~{ref_idx} \
       ~{k_mer}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_idx: "is an indexed reference sequence created by Novoindex."
     k_mer: "is a nucleotide tag not longer than index k-mer length."

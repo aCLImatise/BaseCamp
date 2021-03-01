@@ -14,6 +14,9 @@ task FastqCount {
       ~{var_output} \
       ~{if defined(input_fastq_gzipped) then ("--input " +  '"' + input_fastq_gzipped + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fastq_gzipped: "input fastq gzipped or not\\n"
     var_1: ""

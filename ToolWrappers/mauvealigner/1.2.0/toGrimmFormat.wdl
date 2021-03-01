@@ -8,6 +8,9 @@ task ToGrimmFormat {
     toGrimmFormat \
       ~{genome_n_chr_lengths}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_n_chr_lengths: ""
   }

@@ -16,6 +16,9 @@ task PypgatkClipyCbioportaldownloader {
       ~{if defined(download_study) then ("--download_study " +  '"' + download_study + '"') else ""} \
       ~{if (multithreading) then "--multithreading" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: "Configuration file for the ensembl data\\ndownloader pipeline"
     output_directory: "Output directory for the peptide databases"

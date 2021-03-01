@@ -24,6 +24,9 @@ task RnaseqPeakfinderpl {
       ~{if (out) then "--out" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bgp_os: "BedGraph input file containing coverage of the [+] strand."
     bgn_eg: "BedGraph input file containing coverage of the [-] strand."

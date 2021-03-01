@@ -3,22 +3,22 @@ id: bcftools_consensus.cwl
 inputs:
 - id: in_sample
   doc: apply variants of the given sample
-  type: string
+  type: string?
   inputBinding:
     prefix: --sample
 - id: in_chain
   doc: write a chain file for liftover
-  type: File
+  type: File?
   inputBinding:
     prefix: --chain
 - id: in_exclude
   doc: exclude sites for which the expression is true (see man page for details)
-  type: string
+  type: string?
   inputBinding:
     prefix: --exclude
 - id: in_fast_a_ref
   doc: reference sequence in fasta format
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta-ref
 - id: in_haplotype
@@ -27,37 +27,37 @@ inputs:
     \ of phasing\nR: REF allele in het genotypes\nA: ALT allele\nLR,LA: longer allele\
     \ and REF/ALT if equal length\nSR,SA: shorter allele and REF/ALT if equal length\n\
     1pIu,2pIu: first/second allele for phased and IUPAC code for unphased GTs"
-  type: long
+  type: long?
   inputBinding:
     prefix: --haplotype
 - id: in_include
   doc: select sites for which the expression is true (see man page for details)
-  type: string
+  type: string?
   inputBinding:
     prefix: --include
 - id: in_iupac_codes
   doc: output variants in the form of IUPAC ambiguity codes
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --iupac-codes
 - id: in_mask
   doc: replace regions with N
-  type: File
+  type: File?
   inputBinding:
     prefix: --mask
 - id: in_missing
   doc: output <char> instead of skipping the missing genotypes
-  type: string
+  type: string?
   inputBinding:
     prefix: --missing
 - id: in_output
   doc: write output to a file [standard output]
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_prefix
   doc: prefix to add to output sequence names
-  type: string
+  type: string?
   inputBinding:
     prefix: --prefix
 - id: in_file_dot_vcf_do_tgz
@@ -71,9 +71,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: write output to a file [standard output]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bcftools

@@ -3,27 +3,27 @@ id: nanosim_h_train.cwl
 inputs:
 - id: in_in_file
   doc: training ONT real reads, must be fasta files
-  type: string
+  type: string?
   inputBinding:
     prefix: --infile
 - id: in_maf
   doc: user can provide their own alignment file, with maf
-  type: File
+  type: File?
   inputBinding:
     prefix: --maf
 - id: in_no_model_fit
   doc: no model fitting
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-model-fit
 - id: in_b
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -b
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_extension
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nanosim-h-train

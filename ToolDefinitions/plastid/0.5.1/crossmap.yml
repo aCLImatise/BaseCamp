@@ -3,135 +3,135 @@ command:
 - crossmap
 positional:
 - !Positional
-  description: Final mask file annotation, in BED format
+  optional: false
   position: 0
   name: OUTBASE_READLENGTH_MISMATCHES_crossmap.bed
-  optional: false
+  description: Final mask file annotation, in BED format
 - !Positional
+  optional: false
+  position: 1
+  name: OUTBASE_READLENGTH_MISMATCHES_CHROMOSOME_kmers.fa
   description: "K-mers derived from chromosome `CHROMOSOME`. These\nfiles can be reused\
     \ in subsequent runs allowing a different number of\nmismatches, using the ``--have_kmers``\
     \ option"
-  position: 1
-  name: OUTBASE_READLENGTH_MISMATCHES_CHROMOSOME_kmers.fa
-  optional: false
 - !Positional
-  description: '- By default, crossmap creates BED files. Consider converting these
-    to'
+  optional: false
   position: 0
   name: sequence
-  optional: false
+  description: '- By default, crossmap creates BED files. Consider converting these
+    to'
 - !Positional
-  description: "Bowtie index of genome against which crossmap will be\nmade. In most\
-    \ cases, should be generated from the same\nsequences that are in `sequence_file`."
+  optional: false
   position: 0
   name: ebwt
-  optional: false
+  description: "Bowtie index of genome against which crossmap will be\nmade. In most\
+    \ cases, should be generated from the same\nsequences that are in `sequence_file`."
 - !Positional
-  description: Basename for output files
+  optional: false
   position: 1
   name: outbase
-  optional: false
+  description: Basename for output files
 - !Positional
-  description: 'warning/error options:'
+  optional: false
   position: 0
   name: chromosomes
-  optional: false
+  description: 'warning/error options:'
 named:
 - !Flag
-  description: "K-mer length to generate from input file. (Default:\n29)"
+  optional: true
   synonyms:
   - -k
+  description: "K-mer length to generate from input file. (Default:\n29)"
   args: !SimpleFlagArg
     name: READ_LENGTH
-  optional: true
 - !Flag
-  description: "Offset from 5' end of plus-strand read at which to\nattribute score\
-    \ (Default: 14)"
+  optional: true
   synonyms:
   - --offset
+  description: "Offset from 5' end of plus-strand read at which to\nattribute score\
+    \ (Default: 14)"
   args: !SimpleFlagArg
     name: OFFSET
-  optional: true
 - !Flag
-  description: "Number of mismatches tolerated in alignment. (Default:\n0)"
+  optional: true
   synonyms:
   - --mismatches
+  description: "Number of mismatches tolerated in alignment. (Default:\n0)"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Location of bowtie binary (Default:\n``/usr/local/bin/bowtie``)"
+  optional: true
   synonyms:
   - --bowtie
+  description: "Location of bowtie binary (Default:\n``/usr/local/bin/bowtie``)"
   args: !SimpleFlagArg
     name: BOWTIE
-  optional: true
 - !Flag
-  description: "If specified, use k-mer files from previous run. In\nthis case 'sequence_file'\
-    \ should be the value\n'outbase' from the k-mer files you want to use."
+  optional: true
   synonyms:
   - --have_kmers
+  description: "If specified, use k-mer files from previous run. In\nthis case 'sequence_file'\
+    \ should be the value\n'outbase' from the k-mer files you want to use."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Save k-mer files for reuse in a subsequent run.
+  optional: true
   synonyms:
   - --save_kmers
+  description: Save k-mer files for reuse in a subsequent run.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Number of processes to use (should be <= number of
+  optional: true
   synonyms:
   - -p
   - --processes
+  description: Number of processes to use (should be <= number of
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Suppress all warning messages. Cannot use with '-v'.
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: Suppress all warning messages. Cannot use with '-v'.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn\
-    \ warnings into exceptions. Cannot use\nwith '-q'. (Default: show each type of\
-    \ warning once)"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn\
+    \ warnings into exceptions. Cannot use\nwith '-q'. (Default: show each type of\
+    \ warning once)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[fasta | fastq | twobit | genbank | embl]\nA file of DNA sequence"
+  optional: true
   synonyms:
   - --sequence_file
+  description: "[fasta | fastq | twobit | genbank | embl]\nA file of DNA sequence"
   args: !SimpleFlagArg
     name: infile.
-  optional: true
 - !Flag
-  description: "Format of sequence_file (Default: fasta).\n"
+  optional: true
   synonyms:
   - --sequence_format
+  description: "Format of sequence_file (Default: fasta).\n"
   args: !ChoiceFlagArg
     choices: !!set
-      fastq:
       embl:
-      genbank:
       fasta:
+      fastq:
+      genbank:
       twobit:
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: crossmap [-h] [-q] [-v]\n                [--sequence_file infile.[fasta\
@@ -199,3 +199,4 @@ help_text: "usage: crossmap [-h] [-q] [-v]\n                [--sequence_file inf
   \                        Format of sequence_file (Default: fasta).\n"
 generated_using:
 - --help
+docker_image:

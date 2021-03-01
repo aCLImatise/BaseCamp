@@ -10,6 +10,9 @@ task ScpredPostInstallTestssh {
       ~{action} \
       ~{use_existing_outputs}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     action: ""
     use_existing_outputs: ""

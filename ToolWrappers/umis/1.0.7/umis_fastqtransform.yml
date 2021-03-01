@@ -4,39 +4,38 @@ command:
 - fastqtransform
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
-  name: TRANSFORM
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: FASTQ1
-  optional: false
-- !Positional
-  description: ''
-  position: 2
-  name: FASTQ2
-  optional: true
-- !Positional
-  description: ''
-  position: 3
-  name: FASTQ3
-  optional: true
+  name: stdout.
+  description: 'Options:'
 named:
 - !Flag
-  description: "--separate_cb         Keep dual index barcodes separate.\n--demuxed_cb\
-    \ TEXT\n--cores INTEGER\n--fastq1out TEXT\n--fastq2out TEXT\n--min_length INTEGER\
-    \  Minimum length of read to keep.\n--help                Show this message and\
-    \ exit.\n"
+  optional: true
   synonyms:
   - --keep_fastq_tags
+  - --separate_cb
+  description: Keep dual index barcodes separate.
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - --demuxed_cb
+  - --cores
+  - --fastq1out
+  - --fastq2out
+  - --min_length
+  description: Minimum length of read to keep.
+  args: !SimpleFlagArg
+    name: TEXT
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: umis fastqtransform [OPTIONS] TRANSFORM FASTQ1 [FASTQ2] [FASTQ3]\n\
@@ -48,3 +47,4 @@ help_text: "Usage: umis fastqtransform [OPTIONS] TRANSFORM FASTQ1 [FASTQ2] [FAST
   \ of read to keep.\n  --help                Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

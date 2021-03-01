@@ -32,6 +32,9 @@ task GqtConvert {
       ~{if (tmp_working_directory) then "-t" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ped_file_name: "PED file name (opt.)"
     sample_name_column: "Sample name column in PED (Default 2)"

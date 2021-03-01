@@ -11,8 +11,8 @@ task Alignit {
     Boolean? out_type
     Boolean? scores
     Boolean? cut_off
-    Boolean? rank_by
-    Boolean? func_group
+    Boolean? best
+    Boolean? epsilon
   }
   command <<<
     align_it \
@@ -25,9 +25,12 @@ task Alignit {
       ~{if (out_type) then "--outType" else ""} \
       ~{if (scores) then "--scores" else ""} \
       ~{if (cut_off) then "--cutOff" else ""} \
-      ~{if (rank_by) then "--rankBy" else ""} \
-      ~{if (func_group) then "--funcGroup" else ""}
+      ~{if (best) then "--best" else ""} \
+      ~{if (epsilon) then "--epsilon" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "<file>"
     reftype: "<type>"
@@ -38,8 +41,8 @@ task Alignit {
     out_type: "<type>"
     scores: "<file>"
     cut_off: "<double>"
-    rank_by: "<TANIMOTO|TVERSKY_REF|TVERSKY_DB>"
-    func_group: "<AROM|HDON|HACC|LIPO|CHARGE>\\n-e  --epsilon         <double>\\n-m  --merge\\n-n  --noNormal\\n--noHybrid\\n--withExclusion\\n--scoreOnly"
+    best: "<int>"
+    epsilon: "<double>"
   }
   output {
     File out_stdout = stdout()

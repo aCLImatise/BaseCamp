@@ -1,51 +1,57 @@
 class: CommandLineTool
 id: vep.cwl
 inputs:
-- id: in__inputfile_input
-  doc: '| --input_file      Input file'
-  type: boolean
+- id: in_input_file
+  doc: Input file
+  type: boolean?
   inputBinding:
-    prefix: -i
-- id: in__outputfile_output
-  doc: '| --output_file     Output file'
-  type: File
+    prefix: --input_file
+- id: in_output_file
+  doc: Output file
+  type: File?
   inputBinding:
-    prefix: -o
+    prefix: --output_file
 - id: in_force_overwrite
   doc: Force overwriting of output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --force_overwrite
 - id: in_species
   doc: '[species]    Species to use [default: "human"]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --species
 - id: in_everything
   doc: "Shortcut switch to turn on commonly used options. See web\ndocumentation for\
     \ details [default: off]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --everything
 - id: in_fork
   doc: '[num_forks]     Use forking to improve script runtime'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fork
+- id: in_ensembl
+  doc: ': 100.171092c'
+  type: string
+  inputBinding:
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out__outputfile_output
-  doc: '| --output_file     Output file'
-  type: File
+- id: out_output_file
+  doc: Output file
+  type: File?
   outputBinding:
-    glob: $(inputs.in__outputfile_output)
+    glob: $(inputs.in_output_file)
 - id: out_force_overwrite
   doc: Force overwriting of output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_force_overwrite)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vep

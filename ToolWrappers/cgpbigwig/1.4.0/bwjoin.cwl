@@ -3,22 +3,22 @@ id: bwjoin.cwl
 inputs:
 - id: in_input_path
   doc: '[dir]                           Path to the input bigwig files named [path]/<contig_name>.bw'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input-path
 - id: in_fast_a_index
   doc: '[file]                         Fasta index file (.fai)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fasta-index
 - id: in_outfile
   doc: "[file]                             Path to the output .bw file produced. [default:'concatenated.bw']"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outfile
 - id: in_ignore_contigs
   doc: '[comma separated list]      Comma separated list of contigs to ignore.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ignore-contigs
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: "[file]                             Path to the output .bw file produced. [default:'concatenated.bw']"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bwjoin

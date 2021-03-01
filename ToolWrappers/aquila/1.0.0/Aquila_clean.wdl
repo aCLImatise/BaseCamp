@@ -14,6 +14,9 @@ task AquilaClean {
       ~{if defined(chr_end) then ("--chr_end " +  '"' + chr_end + '"') else ""} \
       ~{if defined(num_of_threads) then ("--num_of_threads " +  '"' + num_of_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly_dir: "assembly folder"
     chr_start: "chromosome start from"

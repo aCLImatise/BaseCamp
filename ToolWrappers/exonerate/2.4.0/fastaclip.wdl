@@ -4,6 +4,9 @@ task Fastaclip {
   command <<<
     fastaclip
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

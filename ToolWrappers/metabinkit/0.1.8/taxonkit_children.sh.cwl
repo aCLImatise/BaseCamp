@@ -13,13 +13,14 @@ inputs:
     position: 1
 - id: in_path_to_folder_with_taxonomy
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - taxonkit_children.sh

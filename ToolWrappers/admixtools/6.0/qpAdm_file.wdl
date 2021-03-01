@@ -10,6 +10,9 @@ task QpAdmFile {
       ~{bad} \
       ~{params_dot_dot_dot_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bad: ""
     params_dot_dot_dot_dot: ""

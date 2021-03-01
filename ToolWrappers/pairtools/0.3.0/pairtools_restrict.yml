@@ -4,74 +4,74 @@ command:
 - restrict
 positional:
 - !Positional
-  description: input is decompressed by pbgzip/lz4c. By default, the input is read
+  optional: false
   position: 0
   name: the
-  optional: false
+  description: input is decompressed by pbgzip/lz4c. By default, the input is read
 named:
 - !Flag
-  description: "a tab-separated BED file with the positions of\nrestriction fragments\
-    \ (chrom, start, end). Can be\ngenerated using cooler digest.  [required]"
+  optional: true
   synonyms:
   - -f
   - --frags
+  description: "a tab-separated BED file with the positions of\nrestriction fragments\
+    \ (chrom, start, end). Can be\ngenerated using cooler digest.  [required]"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "output .pairs/.pairsam file. If the path ends with\n.gz/.lz4, the\
-    \ output is compressed by pbgzip/lz4c. By\ndefault, the output is printed into\
-    \ stdout."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "output .pairs/.pairsam file. If the path ends with\n.gz/.lz4, the\
+    \ output is compressed by pbgzip/lz4c. By\ndefault, the output is printed into\
+    \ stdout."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Number of processes used by the auto-guessed input\ndecompressing\
-    \ command.  [default: 3]"
+  optional: true
   synonyms:
   - --nproc-in
+  description: "Number of processes used by the auto-guessed input\ndecompressing\
+    \ command.  [default: 3]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Number of processes used by the auto-guessed output\ncompressing command.\
-    \  [default: 8]"
+  optional: true
   synonyms:
   - --nproc-out
+  description: "Number of processes used by the auto-guessed output\ncompressing command.\
+    \  [default: 8]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cmd-in
   description: "A command to decompress the input file. If provided,\nfully overrides\
     \ the auto-guessed command. Does not work\nwith stdin. Must read input from stdin\
     \ and print output\ninto stdout. EXAMPLE: pbgzip -dc -n 3"
-  synonyms:
-  - --cmd-in
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cmd-out
   description: "A command to compress the output file. If provided,\nfully overrides\
     \ the auto-guessed command. Does not work\nwith stdout. Must read input from stdin\
     \ and print\noutput into stdout. EXAMPLE: pbgzip -c -n 8"
-  synonyms:
-  - --cmd-out
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: pairtools restrict [OPTIONS] [PAIRS_PATH]\n\n  Assign restriction\
@@ -98,3 +98,4 @@ help_text: "Usage: pairtools restrict [OPTIONS] [PAIRS_PATH]\n\n  Assign restric
   \ message and exit.\n"
 generated_using:
 - --help
+docker_image:

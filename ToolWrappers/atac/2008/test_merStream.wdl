@@ -4,6 +4,9 @@ task TestmerStream {
   command <<<
     test_merStream
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

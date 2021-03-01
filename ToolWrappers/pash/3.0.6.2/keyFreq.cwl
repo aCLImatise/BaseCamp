@@ -3,12 +3,12 @@ id: keyFreq.cwl
 inputs:
 - id: in_p
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -p
 - id: in_o
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_o
   doc: ''
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_o)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - keyFreq

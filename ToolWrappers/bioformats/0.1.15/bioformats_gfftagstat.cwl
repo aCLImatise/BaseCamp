@@ -3,17 +3,17 @@ id: bioformats_gfftagstat.cwl
 inputs:
 - id: in_source
   doc: filter GFF3 features by the specified source
-  type: long
+  type: long?
   inputBinding:
     prefix: --source
 - id: in_type
   doc: filter GFF3 features by the specified type
-  type: long
+  type: long?
   inputBinding:
     prefix: --type
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_gff_file
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bioformats

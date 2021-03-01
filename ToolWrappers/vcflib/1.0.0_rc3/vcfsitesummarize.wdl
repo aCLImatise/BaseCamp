@@ -4,6 +4,9 @@ task Vcfsitesummarize {
   command <<<
     vcfsitesummarize
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

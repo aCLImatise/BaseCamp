@@ -8,6 +8,9 @@ task IucnSimRecord {
     iucn_sim record \
       ~{iucn_sim}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     iucn_sim: ""
   }

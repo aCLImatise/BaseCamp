@@ -4,18 +4,18 @@ inputs:
 - id: in_are_pt_ids
   doc: "set if the gold standard phenotype are index via\nphenotype ids rather than\
     \ accessions"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --are_pt_ids
 - id: in_phenotype_archive
   doc: "need if gold standard uses an accession index for\nmapping"
-  type: string
+  type: string?
   inputBinding:
     prefix: --phenotype_archive
 - id: in_min_samples
   doc: "minimum number of positive and negative samples to\nconsider phenotypes for\
     \ calculation of the macro\naccuracy\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_samples
 - id: in_trait_ar_pred_f
@@ -37,6 +37,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - traitar

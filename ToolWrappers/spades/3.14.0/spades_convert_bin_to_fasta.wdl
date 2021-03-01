@@ -12,6 +12,9 @@ task Spadesconvertbintofasta {
       ~{if defined(info_file) then ("--info_file " +  '"' + info_file + '"') else ""} \
       ~{if defined(output_file) then ("--output_file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "Prefix of .off and .seq file for contigs in binary format"
     info_file: "Path to info file for contigs in binary format"

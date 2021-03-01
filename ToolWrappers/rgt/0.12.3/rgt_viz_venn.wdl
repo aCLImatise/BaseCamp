@@ -11,7 +11,7 @@ task RgtvizVenn {
     Boolean? l_three
     Boolean? l_four
     Directory? directory_name_output
-    Boolean? title_shown_top
+    Boolean? title_shown_venndiagram
     Boolean? organism
   }
   command <<<
@@ -25,9 +25,12 @@ task RgtvizVenn {
       ~{if (l_three) then "-l3" else ""} \
       ~{if (l_four) then "-l4" else ""} \
       ~{if (directory_name_output) then "-o" else ""} \
-      ~{if (title_shown_top) then "-t" else ""} \
+      ~{if (title_shown_venndiagram) then "-t" else ""} \
       ~{if (organism) then "-organism" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s_one: "Define the file for gene set 1 (BED or gene list)"
     s_two: "Define the file for gene set 2 (BED or gene list)"
@@ -38,7 +41,7 @@ task RgtvizVenn {
     l_three: "Define label on venn diagram for set 3"
     l_four: "Define label on venn diagram for set 4"
     directory_name_output: "The directory name for the output files. For example, project\\nname. (default: None)"
-    title_shown_top: "The title shown on the top of the plot and also the folder\\nname. (default: venn_diagram)"
+    title_shown_venndiagram: "The title shown on the top of the plot and also the folder\\nname. (default: venn_diagram)"
     organism: "Define the organism."
   }
   output {

@@ -3,50 +3,87 @@ command:
 - sequana_taxonomy
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
-  name: Welcome
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: to
-  optional: false
-- !Positional
-  description: ''
-  position: 2
-  name: SEQUANA
-  optional: false
+  name: databases
+  description: --thread THREAD       number of threads to use (default 4)
 named:
 - !Flag
-  description: "/home/user/.config/sequana/kraken_toydb\n--show-html --thread 4"
+  optional: true
   synonyms:
   - --databases
+  description: /home/user/.config/sequana/kraken_toydb
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - --file1
+  description: R1 fastq file (zipped)
+  args: !SimpleFlagArg
+    name: FILE1
+- !Flag
+  optional: true
+  synonyms:
+  - --file2
+  description: R2 fastq file (zipped)
+  args: !SimpleFlagArg
+    name: FILE2
+- !Flag
+  optional: true
+  synonyms:
+  - --output-directory
+  description: name of the output directory
+  args: !SimpleFlagArg
+    name: DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-temp-files
+  description: keep temporary files (hierarchical case with several
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --show-html
+  description: "Results are stored in report/ directory and results\nare not shown\
+    \ by default"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --download
+  description: "download an official sequana DB. The sequana_db1 is\nstored in a dedicated\
+    \ Synapse page (www.synapse.org).\nminikraken is downloaded from the kraken's\
+    \ author\npage, and toydb from sequana github."
+  args: !ChoiceFlagArg
+    choices: !!set
+      sequana_db1:
+      minikraken:
+      toydb:
+- !Flag
+  optional: true
+  synonyms:
+  - --unclassified-out
+  description: save unclassified sequences to filename
+  args: !SimpleFlagArg
+    name: UNCLASSIFIED_OUT
+- !Flag
+  optional: true
+  synonyms:
+  - --classified-out
+  description: save unclassified sequences to filename
+  args: !SimpleFlagArg
+    name: CLASSIFIED_OUT
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--file1 FILE1         R1 fastq file\
-    \ (zipped)\n--file2 FILE2         R2 fastq file (zipped)\n--databases DATABASES\
-    \ [DATABASES ...]\nPath to a valid Kraken database(s). If you do not have\nany,\
-    \ use --download option. You may use several, in\nwhich case, an iterative taxonomy\
-    \ is performed as\nexplained in online sequana documentation (see\nHierarchicalKRaken\n\
-    --output-directory DIRECTORY\nname of the output directory\n--keep-temp-files\
-    \     keep temporary files (hierarchical case with several\ndatabases\n--thread\
-    \ THREAD       number of threads to use (default 4)\n--show-html           Results\
-    \ are stored in report/ directory and results\nare not shown by default\n--download\
-    \ {sequana_db1,toydb,minikraken}\ndownload an official sequana DB. The sequana_db1\
-    \ is\nstored in a dedicated Synapse page (www.synapse.org).\nminikraken is downloaded\
-    \ from the kraken's author\npage, and toydb from sequana github.\n--unclassified-out\
-    \ UNCLASSIFIED_OUT\nsave unclassified sequences to filename\n--classified-out\
-    \ CLASSIFIED_OUT\nsave unclassified sequences to filename\n--level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: Welcome to SEQUANA - Taxonomy standalone\n\n        This standalone\
@@ -89,3 +126,4 @@ help_text: "usage: Welcome to SEQUANA - Taxonomy standalone\n\n        This stan
   \  --level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\n"
 generated_using:
 - --help
+docker_image:

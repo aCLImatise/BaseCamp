@@ -20,6 +20,9 @@ task Reportpl {
       ~{into} \
       ~{one}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     merge: ""
     multiple: ""

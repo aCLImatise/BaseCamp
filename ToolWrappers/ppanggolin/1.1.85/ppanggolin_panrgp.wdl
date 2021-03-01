@@ -34,6 +34,9 @@ task PpanggolinPanrgp {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "A tab-separated file listing the organism names, and\\nthe fasta filepath of its genomic sequence(s) (the\\nfastas can be compressed). One line per organism. This\\noption can be used alone. (default: None)"
     an_no: "A tab-separated file listing the organism names, and\\nthe gff filepath of its annotations (the gffs can be\\ncompressed). One line per organism. This option can be\\nused alone IF the fasta sequences are in the gff\\nfiles, otherwise --fasta needs to be used. (default:\\nNone)"

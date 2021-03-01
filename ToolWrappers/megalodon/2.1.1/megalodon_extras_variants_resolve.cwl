@@ -3,25 +3,25 @@ id: megalodon_extras_variants_resolve.cwl
 inputs:
 - id: in_output_filename
   doc: "Output filename. Default:\nmegalodon.consolidated_variants.vcf"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-filename
 - id: in_max_likelihood_ratio
   doc: "Maximum likelihood ratio ([ref prob] / [max alt prob])\nto include variant\
     \ in output. Allows output of\nuncertain reference calls. Default: 1; Include\
     \ only\nsites called as alternative."
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-likelihood-ratio
 - id: in_min_depth
   doc: "Minimum depth to include a variant. Default: No depth\nfilter"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-depth
 - id: in_trim_variants
   doc: "Trim extra padding sequence included by megalodon\n(e.g. around repeat-region\
     \ indels). Default: Output as\nfound in input variants."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --trim-variants
 - id: in_reverse_strand_variants
@@ -32,18 +32,18 @@ inputs:
     \ and are thus excluded. Homopolymer variants\noccuring on both strands are included\
     \ by default.\nExclude these variants as well by setting --exclude-\nboth-strand-homopolymers\
     \ ."
-  type: File
+  type: File?
   inputBinding:
     prefix: --reverse-strand-variants
 - id: in_homopolymer_min_length
   doc: "Minimum length to consider a variant as a homopolymer.\nDefault: 4"
-  type: long
+  type: long?
   inputBinding:
     prefix: --homopolymer-min-length
 - id: in_exclude_both_strand_homopolymers
   doc: "By default homopolymer variants are included even if\nthey occur on both strands.\
     \ Set this flag to treat\nhomopolymer variants as other variants.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --exclude-both-strand-homopolymers
 - id: in_field_dot
@@ -57,9 +57,10 @@ outputs:
   type: stdout
 - id: out_output_filename
   doc: "Output filename. Default:\nmegalodon.consolidated_variants.vcf"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - megalodon_extras

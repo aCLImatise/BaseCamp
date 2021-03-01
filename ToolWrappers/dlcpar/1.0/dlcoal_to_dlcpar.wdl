@@ -20,6 +20,9 @@ task DlcoalToDlcpar {
       ~{if (use_locus_recon) then "--use-locus-recon" else ""} \
       ~{if (no_delay) then "--no-delay" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stree: "species tree file in newick format"
     s_map: "gene to species map"

@@ -1,0 +1,782 @@
+&id001 !Command
+command:
+- intervene
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cite
+  description: show citation information and exit
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - intervene
+  - upset
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\nInput genomic\
+      \ regions in (BED/GTF/GFF) format or lists of genes/SNPs IDs.\nFor files in\
+      \ a directory use *.<extension>. e.g. *.bed"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --type
+    description: Type of input sets. Genomic regions or lists of genes/SNPs sets.
+      Default is "genomic".
+    args: !ChoiceFlagArg
+      choices: !!set
+        list:
+        genomic:
+  - !Flag
+    optional: true
+    synonyms:
+    - --names
+    description: "Comma-separated list of names as labels for input files.\nIf it\
+      \ is not set file names will be used as labels.\nFor example: --names=A,B,C,D,E,F"
+    args: !SimpleFlagArg
+      name: LABELS
+  - !Flag
+    optional: true
+    synonyms:
+    - --filenames
+    description: Use file names as labels instead. Default is "False".
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --bedtools-options
+    description: "List any of the arguments available for bedtools intersect command.\n\
+      Type bedtools intersect --help to view all the options.\nFor example: --bedtools-options\
+      \ f=0.8,r,etc"
+    args: !SimpleFlagArg
+      name: BEDTOOLS_OPTIONS
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Output folder path where results will be stored. Default is current
+      working directory.
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --save-overlaps
+    description: Save overlapping regions/names for all the combinations as bed/txt.Default
+      is "False".
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --overlap-thresh
+    description: 'Minimum threshold to save the overlapping regions/names as bed/txt.
+      Default is: "1"'
+    args: !SimpleFlagArg
+      name: OVERLAPTHRESH
+  - !Flag
+    optional: true
+    synonyms:
+    - --project
+    description: 'Project name for the output. Default is: "Intervene"'
+    args: !SimpleFlagArg
+      name: PROJECT
+  - !Flag
+    optional: true
+    synonyms:
+    - --order
+    description: The order of intersections of sets. e.g. --order degree. Default
+      is "freq".
+    args: !ChoiceFlagArg
+      choices: !!set
+        degree:
+        freq:
+  - !Flag
+    optional: true
+    synonyms:
+    - --ninter
+    description: Number of top intersections to show in plot. Default is "30".
+    args: !SimpleFlagArg
+      name: NINTER
+  - !Flag
+    optional: true
+    synonyms:
+    - --showzero
+    description: Show empty intersection combinations. Default is "False".
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --showsize
+    description: Show intersection sizes above bars. Default is "True".
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --mbcolor
+    description: 'Color of the main bar plot. Default is: "#ea5d4e".'
+    args: !SimpleFlagArg
+      name: MBCOLOR
+  - !Flag
+    optional: true
+    synonyms:
+    - --sbcolor
+    description: 'Color of set size bar plot. Default is: "#317eab".'
+    args: !SimpleFlagArg
+      name: SBCOLOR
+  - !Flag
+    optional: true
+    synonyms:
+    - --mblabel
+    description: 'The y-axis label of the intersection size bars. Default is: "No.
+      of Intersections".'
+    args: !SimpleFlagArg
+      name: MBLABEL
+  - !Flag
+    optional: true
+    synonyms:
+    - --sxlabel
+    description: 'The x-axis label of the set size bars. Default is: "Set size".'
+    args: !SimpleFlagArg
+      name: SXLABEL
+  - !Flag
+    optional: true
+    synonyms:
+    - --figtype
+    description: Figure type for the plot. e.g. --figtype svg. Default is "pdf"
+    args: !ChoiceFlagArg
+      choices: !!set
+        tiff:
+        svg:
+        png:
+        pdf:
+        ps:
+  - !Flag
+    optional: true
+    synonyms:
+    - --figsize
+    description: "FIGSIZE\nFigure size for the output plot (width,height). e.g.  --figsize\
+      \ 14 8"
+    args: !SimpleFlagArg
+      name: FIGSIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --dpi
+    description: 'Dots-per-inch (DPI) for the output. Default is: "300".'
+    args: !SimpleFlagArg
+      name: DPI
+  - !Flag
+    optional: true
+    synonyms:
+    - --scriptonly
+    description: Set to generate Rscript only, if R/UpSetR package is not installed.
+      Default is "False".
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --showshiny
+    description: Print the combinations of intersections to input to Shiny App. Default
+      is "False".
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --test
+    description: This will run the program on test data.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: intervene upset [options]\n\nCreate UpSet diagram after intersection\
+    \ of genomic regions in (BED/GTF/GFF) or list sets.\n\noptional arguments:\n \
+    \ -h, --help            show this help message and exit\n  -i [INPUT [INPUT ...]],\
+    \ --input [INPUT [INPUT ...]]\n                        Input genomic regions in\
+    \ (BED/GTF/GFF) format or lists of genes/SNPs IDs.\n                         For\
+    \ files in a directory use *.<extension>. e.g. *.bed\n                       \
+    \ \n  --type {genomic,list}\n                        Type of input sets. Genomic\
+    \ regions or lists of genes/SNPs sets. Default is \"genomic\".\n             \
+    \           \n  --names LABELS        Comma-separated list of names as labels\
+    \ for input files.\n                        If it is not set file names will be\
+    \ used as labels.\n                        For example: --names=A,B,C,D,E,F\n\
+    \                        \n  --filenames           Use file names as labels instead.\
+    \ Default is \"False\".\n                        \n  --bedtools-options BEDTOOLS_OPTIONS\n\
+    \                        List any of the arguments available for bedtools intersect\
+    \ command.\n                        Type bedtools intersect --help to view all\
+    \ the options.\n                        For example: --bedtools-options f=0.8,r,etc\n\
+    \                        \n  -o OUTPUT, --output OUTPUT\n                    \
+    \    Output folder path where results will be stored. Default is current working\
+    \ directory.\n                        \n  --save-overlaps       Save overlapping\
+    \ regions/names for all the combinations as bed/txt.Default is \"False\".\n  \
+    \                      \n  --overlap-thresh OVERLAPTHRESH\n                  \
+    \      Minimum threshold to save the overlapping regions/names as bed/txt. Default\
+    \ is: \"1\"\n                        \n  --project PROJECT     Project name for\
+    \ the output. Default is: \"Intervene\"\n                        \n  --order {freq,degree}\n\
+    \                        The order of intersections of sets. e.g. --order degree.\
+    \ Default is \"freq\".\n                        \n  --ninter NINTER       Number\
+    \ of top intersections to show in plot. Default is \"30\".\n                 \
+    \       \n  --showzero            Show empty intersection combinations. Default\
+    \ is \"False\".\n                        \n  --showsize            Show intersection\
+    \ sizes above bars. Default is \"True\".\n                        \n  --mbcolor\
+    \ MBCOLOR     Color of the main bar plot. Default is: \"#ea5d4e\".\n         \
+    \               \n  --sbcolor SBCOLOR     Color of set size bar plot. Default\
+    \ is: \"#317eab\".\n                        \n  --mblabel MBLABEL     The y-axis\
+    \ label of the intersection size bars. Default is: \"No. of Intersections\".\n\
+    \                        \n  --sxlabel SXLABEL     The x-axis label of the set\
+    \ size bars. Default is: \"Set size\".\n                        \n  --figtype\
+    \ {pdf,svg,ps,tiff,png}\n                        Figure type for the plot. e.g.\
+    \ --figtype svg. Default is \"pdf\"\n                        \n  --figsize FIGSIZE\
+    \ FIGSIZE\n                        Figure size for the output plot (width,height).\
+    \ e.g.  --figsize 14 8\n                        \n  --dpi DPI             Dots-per-inch\
+    \ (DPI) for the output. Default is: \"300\".\n                        \n  --scriptonly\
+    \          Set to generate Rscript only, if R/UpSetR package is not installed.\
+    \ Default is \"False\".\n                        \n  --showshiny           Print\
+    \ the combinations of intersections to input to Shiny App. Default is \"False\"\
+    .\n                        \n  --test                This will run the program\
+    \ on test data.\n                        \n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/intervene:0.6.5--pyh3252c3a_1
+- !Command
+  command:
+  - intervene
+  - pairwise
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\nInput genomic\
+      \ regions in (BED/GTF/GFF) format.\nFor files in a directory use *.<extension>.\
+      \ e.g. *.bed"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --type
+    description: Type of input sets. Genomic regions or lists of genes/SNPs sets.
+      Default is "genomic".
+    args: !ChoiceFlagArg
+      choices: !!set
+        list:
+        genomic:
+  - !Flag
+    optional: true
+    synonyms:
+    - --compute
+    description: "Compute count/fraction of overlaps or other statistical relationships.\n\
+      count: calculates the number of overlaps.\nfrac: calculates the fraction of\
+      \ overlap. (Default)\njaccard: calculate the Jaccard statistic.\nreldist: calculate\
+      \ the distribution of relative distances.\nfisher: calculate Fisher`s statistic.\n\
+      Note: For jaccard and reldist regions should be pre-shorted or set --sort."
+    args: !ChoiceFlagArg
+      choices: !!set
+        jaccard:
+        fisher:
+        frac:
+        count:
+        reldist:
+  - !Flag
+    optional: true
+    synonyms:
+    - --bedtools-options
+    description: "List any of the arguments available for bedtools subcommands: interset,\
+      \ jaccard, fisher, reldist.\nType bedtools <subcommand> --help to view all the\
+      \ options.\nFor example: --bedtools-options f=0.8,r,etc"
+    args: !SimpleFlagArg
+      name: BEDTOOLS_OPTIONS
+  - !Flag
+    optional: true
+    synonyms:
+    - --corr
+    description: "Compute the correlation.\nDefault is \"False\"."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --corrtype
+    description: "Select the type of correlation.\npearson: computes the Pearson correlation.\
+      \ (Default)\nkendall: computes the Kendall correlation.\nspearman: computes\
+      \ the Spearman correlation.\nNote: This only works if --corr is set."
+    args: !ChoiceFlagArg
+      choices: !!set
+        pearson:
+        kendall:
+        spearman:
+  - !Flag
+    optional: true
+    synonyms:
+    - --htype
+    description: Heatmap plot type. Default is "tribar".
+    args: !ChoiceFlagArg
+      choices: !!set
+        color:
+        number:
+        circle:
+        shade:
+        dendrogram:
+        square:
+        tribar:
+        pie:
+        ellipse:
+  - !Flag
+    optional: true
+    synonyms:
+    - --triangle
+    description: Show lower/upper triangle of the matrix as heatmap if --htype=tribar.
+      Default is "lower".
+    args: !ChoiceFlagArg
+      choices: !!set
+        lower:
+        upper:
+  - !Flag
+    optional: true
+    synonyms:
+    - --diagonal
+    description: "Show the diagonal values in the heatmap.\nDefault is \"False\"."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --names
+    description: "Comma-separated list of names as labels for input files.\nIf it\
+      \ is not set file names will be used as labels.\nFor example: --names=A,B,C,D,E,F"
+    args: !SimpleFlagArg
+      name: LABELS
+  - !Flag
+    optional: true
+    synonyms:
+    - --filenames
+    description: "Use file names as labels instead.\nDefault is \"False\"."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sort
+    description: "Set this only if your files are not sorted.\nDefault is \"False\"\
+      ."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --genome
+    description: "Required argument if --compute=fisher.\nNeeds to be a string assembly\
+      \ name like \"mm10\" or \"hg38\""
+    args: !SimpleFlagArg
+      name: GENOME
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: "Output folder path where results will be stored.\nDefault is current\
+      \ working directory."
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --project
+    description: 'Project name for the output. Default is: "Intervene"'
+    args: !SimpleFlagArg
+      name: PROJECT
+  - !Flag
+    optional: true
+    synonyms:
+    - --barlabel
+    description: x-axis label of boxplot if --htype=tribar. Default is "Set size"
+    args: !SimpleFlagArg
+      name: BLABEL
+  - !Flag
+    optional: true
+    synonyms:
+    - --barcolor
+    description: Boxplot color (hex vlaue or name, e.g. blue). Default is "#53cfff".
+    args: !SimpleFlagArg
+      name: BARCOLOR
+  - !Flag
+    optional: true
+    synonyms:
+    - --fontsize
+    description: Label font size. Default is "8".
+    args: !SimpleFlagArg
+      name: FONTSIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --title
+    description: Heatmap main title. Default is "Pairwise intersection".
+    args: !SimpleFlagArg
+      name: TITLE
+  - !Flag
+    optional: true
+    synonyms:
+    - --space
+    description: White space between barplt and heatmap, if --htype=tribar. Default
+      is "1.3".
+    args: !SimpleFlagArg
+      name: SPACE
+  - !Flag
+    optional: true
+    synonyms:
+    - --figtype
+    description: Figure type for the plot. e.g. --figtype svg. Default is "pdf"
+    args: !ChoiceFlagArg
+      choices: !!set
+        tiff:
+        svg:
+        png:
+        pdf:
+        ps:
+  - !Flag
+    optional: true
+    synonyms:
+    - --figsize
+    description: "FIGSIZE\nFigure size for the output plot (width,height). e.g.  --figsize\
+      \ 8 8"
+    args: !SimpleFlagArg
+      name: FIGSIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --dpi
+    description: 'Dots-per-inch (DPI) for the output. Default is: "300".'
+    args: !SimpleFlagArg
+      name: DPI
+  - !Flag
+    optional: true
+    synonyms:
+    - --scriptonly
+    description: Set to generate Rscript only, if R/Corrplot package are not installed.
+      Default is "False".
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --test
+    description: This will run the program on test data.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: intervene pairwise [options]\n\nPairwise intersection and heatmap\
+    \ of N genomic region sets in (BED/GTF/GFF) format or list/name sets.\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  -i [INPUT\
+    \ [INPUT ...]], --input [INPUT [INPUT ...]]\n                        Input genomic\
+    \ regions in (BED/GTF/GFF) format. \n                        For files in a directory\
+    \ use *.<extension>. e.g. *.bed\n  --type {genomic,list}\n                   \
+    \     Type of input sets. Genomic regions or lists of genes/SNPs sets. Default\
+    \ is \"genomic\".\n                        \n  --compute {count,frac,jaccard,fisher,reldist}\n\
+    \                        Compute count/fraction of overlaps or other statistical\
+    \ relationships. \n                        count: calculates the number of overlaps.\
+    \ \n                        frac: calculates the fraction of overlap. (Default)\n\
+    \                        jaccard: calculate the Jaccard statistic. \n        \
+    \                reldist: calculate the distribution of relative distances.\n\
+    \                        fisher: calculate Fisher`s statistic. \n            \
+    \            Note: For jaccard and reldist regions should be pre-shorted or set\
+    \ --sort.\n                        \n  --bedtools-options BEDTOOLS_OPTIONS\n \
+    \                       List any of the arguments available for bedtools subcommands:\
+    \ interset, jaccard, fisher, reldist.\n                        Type bedtools <subcommand>\
+    \ --help to view all the options.\n                        For example: --bedtools-options\
+    \ f=0.8,r,etc\n                        \n  --corr                Compute the correlation.\
+    \ \n                        Default is \"False\".\n                        \n\
+    \  --corrtype {pearson,kendall,spearman}\n                        Select the type\
+    \ of correlation. \n                        pearson: computes the Pearson correlation.\
+    \ (Default) \n                        kendall: computes the Kendall correlation.\
+    \ \n                        spearman: computes the Spearman correlation. \n  \
+    \                      Note: This only works if --corr is set.\n             \
+    \           \n  --htype {tribar,dendrogram,color,pie,circle,square,ellipse,number,shade}\n\
+    \                        Heatmap plot type. Default is \"tribar\".\n         \
+    \               \n  --triangle {lower,upper}\n                        Show lower/upper\
+    \ triangle of the matrix as heatmap if --htype=tribar. Default is \"lower\".\n\
+    \                        \n  --diagonal            Show the diagonal values in\
+    \ the heatmap. \n                        Default is \"False\".\n             \
+    \           \n  --names LABELS        Comma-separated list of names as labels\
+    \ for input files.\n                        If it is not set file names will be\
+    \ used as labels.\n                        For example: --names=A,B,C,D,E,F\n\
+    \                        \n  --filenames           Use file names as labels instead.\
+    \ \n                        Default is \"False\".\n                        \n\
+    \  --sort                Set this only if your files are not sorted. \n      \
+    \                  Default is \"False\".\n                        \n  --genome\
+    \ GENOME       Required argument if --compute=fisher.\n                      \
+    \  Needs to be a string assembly name like \"mm10\" or \"hg38\"\n            \
+    \            \n  -o OUTPUT, --output OUTPUT\n                        Output folder\
+    \ path where results will be stored. \n                        Default is current\
+    \ working directory.\n                        \n  --project PROJECT     Project\
+    \ name for the output. Default is: \"Intervene\"\n                        \n \
+    \ --barlabel BLABEL     x-axis label of boxplot if --htype=tribar. Default is\
+    \ \"Set size\"\n                        \n  --barcolor BARCOLOR   Boxplot color\
+    \ (hex vlaue or name, e.g. blue). Default is \"#53cfff\".\n                  \
+    \      \n  --fontsize FONTSIZE   Label font size. Default is \"8\".\n        \
+    \                \n  --title TITLE         Heatmap main title. Default is \"Pairwise\
+    \ intersection\".\n                        \n  --space SPACE         White space\
+    \ between barplt and heatmap, if --htype=tribar. Default is \"1.3\".\n       \
+    \                 \n  --figtype {pdf,svg,ps,tiff,png}\n                      \
+    \  Figure type for the plot. e.g. --figtype svg. Default is \"pdf\"\n        \
+    \                \n  --figsize FIGSIZE FIGSIZE\n                        Figure\
+    \ size for the output plot (width,height). e.g.  --figsize 8 8\n             \
+    \           \n  --dpi DPI             Dots-per-inch (DPI) for the output. Default\
+    \ is: \"300\".\n                        \n  --scriptonly          Set to generate\
+    \ Rscript only, if R/Corrplot package are not installed. Default is \"False\"\
+    .\n                        \n  --test                This will run the program\
+    \ on test data.\n                        \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/intervene:0.6.5--pyh3252c3a_1
+- !Command
+  command:
+  - intervene
+  - venn
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\nInput genomic\
+      \ regions in (BED/GTF/GFF) format or lists of genes/SNPs IDs.\nFor files in\
+      \ a directory use *.<extension>. e.g. *.bed"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --type
+    description: Type of input sets. Genomic regions or lists of genes/SNPs. Default
+      is "genomic"
+    args: !ChoiceFlagArg
+      choices: !!set
+        list:
+        genomic:
+  - !Flag
+    optional: true
+    synonyms:
+    - --names
+    description: "Comma-separated list of names as labels for input files.\nIf it\
+      \ is not set file names will be used as labels.\nFor example: --names=A,B,C,D,E,F"
+    args: !SimpleFlagArg
+      name: LABELS
+  - !Flag
+    optional: true
+    synonyms:
+    - --filenames
+    description: Use file names as labels instead. Default is "False"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --bedtools-options
+    description: "List any of the arguments available for bedtools intersect command.\n\
+      Type bedtools intersect --help to view all the options.\nFor example: --bedtools-options\
+      \ f=0.8,r,etc"
+    args: !SimpleFlagArg
+      name: BEDTOOLS_OPTIONS
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Output folder path where results will be stored. Default is current
+      working directory.
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --save-overlaps
+    description: Save overlapping regions/names for all the combinations as bed/txt.
+      Default is "False".
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --overlap-thresh
+    description: 'Minimum threshold to save the overlapping regions/names as bed/txt.
+      Default is: "1"'
+    args: !SimpleFlagArg
+      name: OVERLAPTHRESH
+  - !Flag
+    optional: true
+    synonyms:
+    - --title
+    description: Title of the plot. By default it is not set.
+    args: !SimpleFlagArg
+      name: TITLE
+  - !Flag
+    optional: true
+    synonyms:
+    - --project
+    description: 'Project name for the output. Default is: "Intervene"'
+    args: !SimpleFlagArg
+      name: PROJECT
+  - !Flag
+    optional: true
+    synonyms:
+    - --colors
+    description: Comma-separated list of matplotlib-valid colors for fill. E.g., --colors=r,b,k
+    args: !SimpleFlagArg
+      name: COLORS
+  - !Flag
+    optional: true
+    synonyms:
+    - --bordercolors
+    description: A matplotlib-valid color for venn borders. E.g., --bordercolor=red
+    args: !SimpleFlagArg
+      name: BORDERCOLORS
+  - !Flag
+    optional: true
+    synonyms:
+    - --figtype
+    description: Figure type for the plot. e.g. --figtype svg. Default is "pdf"
+    args: !ChoiceFlagArg
+      choices: !!set
+        tiff:
+        svg:
+        png:
+        pdf:
+        ps:
+  - !Flag
+    optional: true
+    synonyms:
+    - --figsize
+    description: "FIGSIZE\nFigure size as width and height.e.g. --figsize 12 12."
+    args: !SimpleFlagArg
+      name: FIGSIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --fontsize
+    description: 'Font size for the plot labels.Default is: "14"'
+    args: !SimpleFlagArg
+      name: FONTSIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --dpi
+    description: 'Dots-per-inch (DPI) for the output. Default is: "300"'
+    args: !SimpleFlagArg
+      name: DPI
+  - !Flag
+    optional: true
+    synonyms:
+    - --fill
+    description: Report number or  percentage of overlaps (Only if --type=list). Default
+      is "number"
+    args: !ChoiceFlagArg
+      choices: !!set
+        number:
+        percentage:
+  - !Flag
+    optional: true
+    synonyms:
+    - --test
+    description: This will run the program on test data.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: intervene venn [options]\n\nCreate Venn diagram upto 6-way after\
+    \ intersection of genomic regions in (BED/GTF/GFF) format or list sets.\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  -i [INPUT\
+    \ [INPUT ...]], --input [INPUT [INPUT ...]]\n                        Input genomic\
+    \ regions in (BED/GTF/GFF) format or lists of genes/SNPs IDs.\n              \
+    \          For files in a directory use *.<extension>. e.g. *.bed\n          \
+    \              \n  --type {genomic,list}\n                        Type of input\
+    \ sets. Genomic regions or lists of genes/SNPs. Default is \"genomic\"\n  --names\
+    \ LABELS        Comma-separated list of names as labels for input files.\n   \
+    \                     If it is not set file names will be used as labels.\n  \
+    \                      For example: --names=A,B,C,D,E,F\n                    \
+    \    \n  --filenames           Use file names as labels instead. Default is \"\
+    False\"\n                        \n  --bedtools-options BEDTOOLS_OPTIONS\n   \
+    \                     List any of the arguments available for bedtools intersect\
+    \ command.\n                        Type bedtools intersect --help to view all\
+    \ the options.\n                        For example: --bedtools-options f=0.8,r,etc\n\
+    \                        \n  -o OUTPUT, --output OUTPUT\n                    \
+    \    Output folder path where results will be stored. Default is current working\
+    \ directory.\n                        \n  --save-overlaps       Save overlapping\
+    \ regions/names for all the combinations as bed/txt. Default is \"False\".\n \
+    \                       \n  --overlap-thresh OVERLAPTHRESH\n                 \
+    \       Minimum threshold to save the overlapping regions/names as bed/txt. Default\
+    \ is: \"1\"\n                        \n  --title TITLE         Title of the plot.\
+    \ By default it is not set.\n                        \n  --project PROJECT   \
+    \  Project name for the output. Default is: \"Intervene\"\n                  \
+    \      \n  --colors COLORS       Comma-separated list of matplotlib-valid colors\
+    \ for fill. E.g., --colors=r,b,k\n                        \n  --bordercolors BORDERCOLORS\n\
+    \                        A matplotlib-valid color for venn borders. E.g., --bordercolor=red\n\
+    \                        \n  --figtype {pdf,svg,ps,tiff,png}\n               \
+    \         Figure type for the plot. e.g. --figtype svg. Default is \"pdf\"\n \
+    \                       \n  --figsize FIGSIZE FIGSIZE\n                      \
+    \  Figure size as width and height.e.g. --figsize 12 12.\n                   \
+    \     \n  --fontsize FONTSIZE   Font size for the plot labels.Default is: \"14\"\
+    \n                        \n  --dpi DPI             Dots-per-inch (DPI) for the\
+    \ output. Default is: \"300\"\n                        \n  --fill {number,percentage}\n\
+    \                        Report number or  percentage of overlaps (Only if --type=list).\
+    \ Default is \"number\"\n                        \n  --test                This\
+    \ will run the program on test data.\n                        \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/intervene:0.6.5--pyh3252c3a_1
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: intervene <subcommand> [options]\n\n    Intervene: a tool for intersection\
+  \ and visualization of multiple genomic region and gene sets.\n    For more details\
+  \ check documentation: http://intervene.readthedocs.io\n    \n\npositional arguments:\n\
+  \  {venn,upset,pairwise}\n                        List of subcommands\n    venn\
+  \                Venn diagram of intersection of genomic regions or list sets (upto\
+  \ 6-way).\n    upset               UpSet diagram of intersection of genomic regions\
+  \ or list sets.\n    pairwise            Pairwise intersection and heatmap of N\
+  \ genomic region sets in <BED/GTF/GFF> format.\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -v, --version         show program's\
+  \ version number and exit\n  -c, --cite            show citation information and\
+  \ exit\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/intervene:0.6.5--pyh3252c3a_1

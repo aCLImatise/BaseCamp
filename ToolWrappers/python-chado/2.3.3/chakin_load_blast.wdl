@@ -20,6 +20,9 @@ task ChakinLoadBlast {
       ~{if defined(query_type) then ("--query_type " +  '"' + query_type + '"') else ""} \
       ~{if (match_on_name) then "--match_on_name" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     blast_db: "Name of the database blasted against (must be in the\\nChado db table)"
     blast_db_id: "ID of the database blasted against (must be in the\\nChado db table)"

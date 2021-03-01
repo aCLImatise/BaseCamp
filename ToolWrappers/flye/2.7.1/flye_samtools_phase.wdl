@@ -34,6 +34,9 @@ task FlyesamtoolsPhase {
       ~{if defined(output_fmt_option) then ("--output-fmt-option " +  '"' + output_fmt_option + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     block_length: "block length [13]"
     prefix_bams_output: "prefix of BAMs to output [null]"

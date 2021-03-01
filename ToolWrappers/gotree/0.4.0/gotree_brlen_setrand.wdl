@@ -22,6 +22,9 @@ task GotreeBrlenSetrand {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_mean: "Mean of the exponential distribution of branch lengths will be drawn uniformly in the interval [min-mean,max-mean] (default 0.05)"
     mean: "Mean of the exponential distribution of branch lengths (default 0.1)"

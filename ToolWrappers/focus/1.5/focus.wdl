@@ -24,6 +24,9 @@ task Focus {
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query: "Path to directory with FAST(A/Q) files"
     output_directory: "Path to output files"

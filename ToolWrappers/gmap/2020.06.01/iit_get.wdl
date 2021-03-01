@@ -3,7 +3,7 @@ version 1.0
 task IitGet {
   input {
     String? field
-    Boolean? interpret_query_queries_label
+    Boolean? interpret_query_queries_is
     Boolean? coords
     Boolean? an_not_only
     Boolean? sort
@@ -27,7 +27,7 @@ task IitGet {
       ~{start_dot_do_tend} \
       ~{options} \
       ~{if defined(field) then ("--field " +  '"' + field + '"') else ""} \
-      ~{if (interpret_query_queries_label) then "--label" else ""} \
+      ~{if (interpret_query_queries_is) then "--label" else ""} \
       ~{if (coords) then "--coords" else ""} \
       ~{if (an_not_only) then "--annotonly" else ""} \
       ~{if (sort) then "--sort" else ""} \
@@ -42,9 +42,12 @@ task IitGet {
       ~{if (zeroes) then "--zeroes" else ""} \
       ~{if (stats) then "--stats" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     field: "Show given field part of the annotation"
-    interpret_query_queries_label: "Interpret query or queries as a label, even if it is numeric"
+    interpret_query_queries_is: "Interpret query or queries as a label, even if it is numeric"
     coords: "Interpret query or queries as coords"
     an_not_only: "Show annotation lines only (no headers)"
     sort: "Sort results by coordinates"

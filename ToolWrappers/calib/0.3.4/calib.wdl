@@ -2,58 +2,61 @@ version 1.0
 
 task Calib {
   input {
-    Boolean? _inputforward_type
-    Boolean? _inputreverse_type
-    Boolean? _outputprefix_string
-    Boolean? _silent_type
-    Boolean? _nosort_type
-    Boolean? _gzipinput_type
-    Boolean? _barcodelength_int
-    Boolean? lone
-    Boolean? l_two
-    Boolean? _ignoredsequenceprefixlength_type
-    Boolean? _minimizercount_type
-    Boolean? _kmersize_type
-    Boolean? _errortolerance_type
-    Boolean? _minimizerthreshold_type
-    Boolean? _threads_type
+    Boolean? input_forward
+    Boolean? input_reverse
+    Boolean? output_prefix
+    Boolean? silent
+    Boolean? no_sort
+    Boolean? gzip_input
+    Boolean? barcode_length
+    Boolean? barcode_length_one
+    Boolean? barcode_length_two
+    Boolean? ignored_sequence_prefix_length
+    Boolean? minimizer_count
+    Boolean? km_er_size
+    Boolean? error_tolerance
+    Boolean? minimizer_threshold
+    Boolean? threads
     String? parameter
   }
   command <<<
     calib \
-      ~{if (_inputforward_type) then "-f" else ""} \
-      ~{if (_inputreverse_type) then "-r" else ""} \
-      ~{if (_outputprefix_string) then "-o" else ""} \
-      ~{if (_silent_type) then "-s" else ""} \
-      ~{if (_nosort_type) then "-q" else ""} \
-      ~{if (_gzipinput_type) then "-g" else ""} \
-      ~{if (_barcodelength_int) then "-l" else ""} \
-      ~{if (lone) then "-l1" else ""} \
-      ~{if (l_two) then "-l2" else ""} \
-      ~{if (_ignoredsequenceprefixlength_type) then "-p" else ""} \
-      ~{if (_minimizercount_type) then "-m" else ""} \
-      ~{if (_kmersize_type) then "-k" else ""} \
-      ~{if (_errortolerance_type) then "-e" else ""} \
-      ~{if (_minimizerthreshold_type) then "-t" else ""} \
-      ~{if (_threads_type) then "-c" else ""} \
+      ~{if (input_forward) then "--input-forward" else ""} \
+      ~{if (input_reverse) then "--input-reverse" else ""} \
+      ~{if (output_prefix) then "--output-prefix" else ""} \
+      ~{if (silent) then "--silent" else ""} \
+      ~{if (no_sort) then "--no-sort" else ""} \
+      ~{if (gzip_input) then "--gzip-input" else ""} \
+      ~{if (barcode_length) then "--barcode-length" else ""} \
+      ~{if (barcode_length_one) then "--barcode-length-1" else ""} \
+      ~{if (barcode_length_two) then "--barcode-length-2" else ""} \
+      ~{if (ignored_sequence_prefix_length) then "--ignored-sequence-prefix-length" else ""} \
+      ~{if (minimizer_count) then "--minimizer-count" else ""} \
+      ~{if (km_er_size) then "--kmer-size" else ""} \
+      ~{if (error_tolerance) then "--error-tolerance" else ""} \
+      ~{if (minimizer_threshold) then "--minimizer-threshold" else ""} \
+      ~{if (threads) then "--threads" else ""} \
       ~{if defined(parameter) then ("--PARAMETER " +  '"' + parameter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _inputforward_type: "--input-forward                   (type: string;   REQUIRED paramter)"
-    _inputreverse_type: "--input-reverse                   (type: string;   REQUIRED paramter)"
-    _outputprefix_string: "--output-prefix                   (type: string;   REQUIRED paramter)"
-    _silent_type: "--silent                          (type: no value; default: unset)"
-    _nosort_type: "--no-sort                         (type: no value; default:  unset)"
-    _gzipinput_type: "--gzip-input                      (type: no value; default:  unset)"
-    _barcodelength_int: "--barcode-length                  (type: int;      REQUIRED paramter unless -l1 and -l2 are provided)"
-    lone: "--barcode-length-1                (type: int;      REQUIRED paramter unless -l is provided)"
-    l_two: "--barcode-length-2                (type: int;      REQUIRED paramter unless -l is provided)"
-    _ignoredsequenceprefixlength_type: "--ignored-sequence-prefix-length  (type: int;      default: 0)"
-    _minimizercount_type: "--minimizer-count                 (type: int;      default: Depends on observed read length;)"
-    _kmersize_type: "--kmer-size                       (type: int;      default: Depends on observed read length;)"
-    _errortolerance_type: "--error-tolerance                 (type: int;      default: Depends on observed read length;)"
-    _minimizerthreshold_type: "--minimizer-threshold             (type: int;      default: Depends on observed read length;)"
-    _threads_type: "--threads                         (type: int;      default: 1)"
+    input_forward: "(type: string;   REQUIRED paramter)"
+    input_reverse: "(type: string;   REQUIRED paramter)"
+    output_prefix: "(type: string;   REQUIRED paramter)"
+    silent: "(type: no value; default: unset)"
+    no_sort: "(type: no value; default:  unset)"
+    gzip_input: "(type: no value; default:  unset)"
+    barcode_length: "(type: int;      REQUIRED paramter unless -l1 and -l2 are provided)"
+    barcode_length_one: "(type: int;      REQUIRED paramter unless -l is provided)"
+    barcode_length_two: "(type: int;      REQUIRED paramter unless -l is provided)"
+    ignored_sequence_prefix_length: "(type: int;      default: 0)"
+    minimizer_count: "(type: int;      default: Depends on observed read length;)"
+    km_er_size: "(type: int;      default: Depends on observed read length;)"
+    error_tolerance: "(type: int;      default: Depends on observed read length;)"
+    minimizer_threshold: "(type: int;      default: Depends on observed read length;)"
+    threads: "(type: int;      default: 1)"
     parameter: ""
   }
   output {

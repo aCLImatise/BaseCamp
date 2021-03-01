@@ -20,6 +20,9 @@ task Gdparttopng {
       ~{w} \
       ~{h}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gd_part_to_png: ""
     filename_dot_gd: ""

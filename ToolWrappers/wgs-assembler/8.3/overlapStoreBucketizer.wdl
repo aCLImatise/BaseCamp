@@ -28,6 +28,9 @@ task OverlapStoreBucketizer {
       ~{if defined(filter_overlaps_e) then ("-e " +  '"' + filter_overlaps_e + '"') else ""} \
       ~{if (raw) then "-raw" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_store_create: "path to store to create"
     path_gkpstore_assembly: "path to gkpStore for this assembly"

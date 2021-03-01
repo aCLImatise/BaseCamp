@@ -5,7 +5,9 @@ task DisentangleOrganelleAssemblypy {
     File? input_fastg_format
     File? input_tab_format
     Directory? output_directory
-    String? organelle_type_embplantptotherptembplantmtembpl
+    String? organelle_type_embplantptotherptembplantmtembplantnranimalmtfungusmtanonym
+    Boolean? linear
+    Float? weight_f
     Float? depth_f
     Float? type_f
     Float? contamination_depth
@@ -29,17 +31,15 @@ task DisentangleOrganelleAssemblypy {
     Boolean? continue
     Boolean? verbose
     Boolean? debug
-    String ant_nr_slash_animal_mt_slash_fungus_mt_slash_anonym_dot
-    String cases_dot
   }
   command <<<
     disentangle_organelle_assembly_py \
-      ~{ant_nr_slash_animal_mt_slash_fungus_mt_slash_anonym_dot} \
-      ~{cases_dot} \
       ~{if defined(input_fastg_format) then ("-g " +  '"' + input_fastg_format + '"') else ""} \
       ~{if defined(input_tab_format) then ("-t " +  '"' + input_tab_format + '"') else ""} \
       ~{if defined(output_directory) then ("-o " +  '"' + output_directory + '"') else ""} \
-      ~{if defined(organelle_type_embplantptotherptembplantmtembpl) then ("-F " +  '"' + organelle_type_embplantptotherptembplantmtembpl + '"') else ""} \
+      ~{if defined(organelle_type_embplantptotherptembplantmtembplantnranimalmtfungusmtanonym) then ("-F " +  '"' + organelle_type_embplantptotherptembplantmtembplantnranimalmtfungusmtanonym + '"') else ""} \
+      ~{if (linear) then "--linear" else ""} \
+      ~{if defined(weight_f) then ("--weight-f " +  '"' + weight_f + '"') else ""} \
       ~{if defined(depth_f) then ("--depth-f " +  '"' + depth_f + '"') else ""} \
       ~{if defined(type_f) then ("--type-f " +  '"' + type_f + '"') else ""} \
       ~{if defined(contamination_depth) then ("--contamination-depth " +  '"' + contamination_depth + '"') else ""} \
@@ -64,11 +64,16 @@ task DisentangleOrganelleAssemblypy {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fastg_format: "input fastg format file."
     input_tab_format: "input tab format file (*.csv; the postfix 'csv' was in\\nconformity with Bandage) produced by slim_graph.py."
     output_directory: "output directory."
-    organelle_type_embplantptotherptembplantmtembpl: "organelle type: embplant_pt/other_pt/embplant_mt/embpl"
+    organelle_type_embplantptotherptembplantmtembplantnranimalmtfungusmtanonym: "organelle type: embplant_pt/other_pt/embplant_mt/embpl\\nant_nr/animal_mt/fungus_mt/anonym."
+    linear: "By default, this script would only disentangle the\\ncircular graph (the complete circular organelle\\ngenome), and would directly give up linear/broken\\ngraphs). Choose this option to try for linear/broken\\ncases."
+    weight_f: "weight factor for excluding non-target contigs.\\nDefault:100.0"
     depth_f: "Depth factor for excluding non-target contigs.\\nDefault:10.0"
     type_f: "Type factor for identifying genome type tag.\\nDefault:3.0"
     contamination_depth: "Depth factor for confirming contaminating contigs.\\nDefault:3.0"
@@ -92,8 +97,6 @@ task DisentangleOrganelleAssemblypy {
     continue: "continue mode."
     verbose: "verbose logging."
     debug: "for debug."
-    ant_nr_slash_animal_mt_slash_fungus_mt_slash_anonym_dot: "--linear              By default, this script would only disentangle the"
-    cases_dot: "--weight-f=WEIGHT_FACTOR"
   }
   output {
     File out_stdout = stdout()

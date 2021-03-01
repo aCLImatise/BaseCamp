@@ -14,6 +14,9 @@ task Vcfcheck {
       ~{if defined(exclude_failures) then ("--exclude-failures " +  '"' + exclude_failures + '"') else ""} \
       ~{if (keep_failures) then "--keep-failures" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_reference: "FASTA reference file to use to obtain primer sequences"
     exclude_failures: "a record fails, don't print it.  Otherwise do."

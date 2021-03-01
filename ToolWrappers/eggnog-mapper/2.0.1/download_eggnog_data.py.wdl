@@ -18,6 +18,9 @@ task DownloadEggnogDatapy {
       ~{if (quietmode) then "-q" else ""} \
       ~{if (data_dir) then "--data_dir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     install_diamond_database: "Do not install the diamond database"
     assume__questions: "assume \\\"yes\\\" to all questions"

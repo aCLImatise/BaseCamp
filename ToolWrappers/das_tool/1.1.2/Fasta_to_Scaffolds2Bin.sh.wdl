@@ -10,6 +10,9 @@ task FastaToScaffolds2Binsh {
       ~{if (extension) then "--extension" else ""} \
       ~{if (input_folder) then "--input_folder" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     extension: "Extension of fasta files. (default: fasta)"
     input_folder: "Folder with bins in fasta format. (default: ./)"

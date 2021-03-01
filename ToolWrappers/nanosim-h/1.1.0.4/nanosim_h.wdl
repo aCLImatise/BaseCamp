@@ -40,6 +40,9 @@ task Nanosimh {
       ~{if defined(km_er_bias) then ("--kmer-bias " +  '"' + km_er_bias + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     profile: "error profile - one of precomputed profiles\\n('ecoli_UCSC1b', 'ecoli_R7.3', 'yeast', 'ecoli_R9_2D',\\n'ecoli_R7', 'ecoli_R9_1D') or own directory with an\\nerror profile [ecoli_R9_2D]"
     out_pref: "prefix of output file [simulated]"

@@ -4,105 +4,155 @@ command:
 - cnv
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: file.vcf
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "optional control sample name to highlight differences\n-f, --AF-file\
-    \ <file>               read allele frequencies from file (CHR\\tPOS\\tREF,ALT\\\
-    tAF)\n-o, --output-dir <path>\n-p, --plot-threshold <float>       plot aberrant\
-    \ chromosomes with quality at least 'float'\n-r, --regions <region>          \
-    \   restrict to comma-separated list of regions\n-R, --regions-file <file>   \
-    \       restrict to regions listed in a file\n-s, --query-sample <string>    \
-    \    query samply name\n-t, --targets <region>             similar to -r but streams\
-    \ rather than index-jumps\n-T, --targets-file <file>          similar to -R but\
-    \ streams rather than index-jumps"
+  optional: true
   synonyms:
   - -c
   - --control-sample
+  description: optional control sample name to highlight differences
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: <float[,float]>     fraction of aberrant cells in query and control
-    [1.0,1.0]
+  optional: true
+  synonyms:
+  - -f
+  - --AF-file
+  description: read allele frequencies from file (CHR\tPOS\tREF,ALT\tAF)
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-dir
+  - -p
+  - --plot-threshold
+  description: plot aberrant chromosomes with quality at least 'float'
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --regions
+  description: restrict to comma-separated list of regions
+  args: !SimpleFlagArg
+    name: region
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --regions-file
+  description: restrict to regions listed in a file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --query-sample
+  description: query samply name
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --targets
+  description: similar to -r but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: region
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --targets-file
+  description: similar to -R but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
   synonyms:
   - -a
   - --aberrant
+  description: <float[,float]>     fraction of aberrant cells in query and control
+    [1.0,1.0]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: relative contribution from BAF [1]
+  optional: true
   synonyms:
   - -b
   - --BAF-weight
+  description: relative contribution from BAF [1]
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: <float[,float]>      expected BAF deviation in query and control [0.04,0.04]
+  optional: true
   synonyms:
   - -d
   - --BAF-dev
+  description: <float[,float]>      expected BAF deviation in query and control [0.04,0.04]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: uniform error probability [1e-4]
+  optional: true
   synonyms:
   - -e
   - --err-prob
+  description: uniform error probability [1e-4]
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: <float[,float]>      expected LRR deviation [0.2,0.2]
+  optional: true
   synonyms:
   - -k
   - --LRR-dev
+  description: <float[,float]>      expected LRR deviation [0.2,0.2]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: relative contribution from LRR [0.2]
+  optional: true
   synonyms:
   - -l
   - --LRR-weight
+  description: relative contribution from LRR [0.2]
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: window of LRR moving average smoothing [10]
+  optional: true
   synonyms:
   - -L
   - --LRR-smooth-win
+  description: window of LRR moving average smoothing [10]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: estimate fraction of aberrant cells down to <float> [1.0]
+  optional: true
   synonyms:
   - -O
   - --optimize
+  description: estimate fraction of aberrant cells down to <float> [1.0]
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: prior probability of -s/-c being the same [0.5]
+  optional: true
   synonyms:
   - -P
   - --same-prob
+  description: prior probability of -s/-c being the same [0.5]
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: P(x|y) transition probability [1e-9]
+  optional: true
   synonyms:
   - -x
   - --xy-prob
+  description: P(x|y) transition probability [1e-9]
   args: !SimpleFlagArg
     name: float
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -135,3 +185,4 @@ help_text: "cnv: unrecognized option '--help'\n\nAbout:   Copy number variation 
   \ <float>              P(x|y) transition probability [1e-9]\n\n"
 generated_using:
 - --help
+docker_image:

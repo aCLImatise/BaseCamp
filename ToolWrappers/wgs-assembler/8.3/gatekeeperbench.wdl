@@ -9,7 +9,7 @@ task Gatekeeperbench {
     Boolean? reads
     String? very_useful_benchmark
     String? possibly_most_brutal
-    String? presumed_majority_accesses
+    String? presumed_be_majority
     String? opts
   }
   command <<<
@@ -22,8 +22,11 @@ task Gatekeeperbench {
       ~{if (reads) then "-reads" else ""} \
       ~{if defined(very_useful_benchmark) then ("-n " +  '"' + very_useful_benchmark + '"') else ""} \
       ~{if defined(possibly_most_brutal) then ("-m " +  '"' + possibly_most_brutal + '"') else ""} \
-      ~{if defined(presumed_majority_accesses) then ("-r " +  '"' + presumed_majority_accesses + '"') else ""}
+      ~{if defined(presumed_be_majority) then ("-r " +  '"' + presumed_be_majority + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gkpstorename_createreadwrite_store: "gkpStoreName    create/read/write the store called 'gkpStoreName'"
     seed: "s               use random seed s"
@@ -32,7 +35,7 @@ task Gatekeeperbench {
     reads: "numReads        read numReads random fragments"
     very_useful_benchmark: "not a very useful benchmark.  It is somewhat CPU bound, and simply writes"
     possibly_most_brutal: "possibly the most brutal test.  It reads and writes randomly to a moderately"
-    presumed_majority_accesses: "(presumed to be) the majority of accesses made by the assembler.  It reads a"
+    presumed_be_majority: "(presumed to be) the majority of accesses made by the assembler.  It reads a"
     opts: ""
   }
   output {

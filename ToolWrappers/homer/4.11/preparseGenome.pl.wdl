@@ -22,6 +22,9 @@ task PreparseGenomepl {
       ~{if (min_inc) then "-minInc" else ""} \
       ~{if defined(pre_parsed_dir) then ("-preparsedDir " +  '"' + pre_parsed_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     size: "<#> (size of fragments to use for preparsing the genome)"
     mask: "(mask repeats - i.e. lower-case bases)"

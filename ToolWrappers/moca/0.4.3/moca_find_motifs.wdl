@@ -24,6 +24,9 @@ task MocaFindMotifs {
       ~{if defined(genome_build) then ("--genome-build " +  '"' + genome_build + '"') else ""} \
       ~{if (show_progress) then "--show-progress" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_file: "Bed file input  [required]"
     oc: "Output Directory  [required]"

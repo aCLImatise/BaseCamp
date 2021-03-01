@@ -28,6 +28,9 @@ task EDTAProcessIpl {
       ~{if (prot_lib) then "-protlib" else ""} \
       ~{if (threads) then "-threads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "[File]  The genome FASTA"
     ltr: "[File]  The raw LTR library FASTA"

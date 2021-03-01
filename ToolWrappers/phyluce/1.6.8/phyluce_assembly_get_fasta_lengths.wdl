@@ -10,6 +10,9 @@ task PhyluceAssemblyGetFastaLengths {
       ~{if defined(fasta_file_summarize) then ("--input " +  '"' + fasta_file_summarize + '"') else ""} \
       ~{if (csv) then "--csv" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fasta_file_summarize: "The fasta file to summarize"
     csv: "Give output in CSV"

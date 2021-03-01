@@ -4,6 +4,9 @@ task OutputRecordsNotOnList {
   command <<<
     outputRecordsNotOnList
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

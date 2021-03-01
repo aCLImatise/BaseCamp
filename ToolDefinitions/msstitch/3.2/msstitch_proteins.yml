@@ -4,104 +4,109 @@ command:
 - proteins
 positional:
 - !Positional
-  description: --isobquantcolpattern QUANTCOLPATTERN
+  optional: false
   position: 0
   name: values.
-  optional: false
+  description: --isobquantcolpattern QUANTCOLPATTERN
 named:
 - !Flag
-  description: "[--logscore] [--isobquantcolpattern QUANTCOLPATTERN]\n[--minint MININT]\n\
-    [--denomcols DENOMCOLS [DENOMCOLS ...]]\n[--denompatterns DENOMPATTERNS [DENOMPATTERNS\
-    \ ...]]\n[--ms1quant] [--psmtable PSMFILE]"
-  synonyms:
-  - --decoyfn
-  - --scorecolpattern
-  args: !SimpleFlagArg
-    name: DECOYFN
   optional: true
-- !Flag
-  description: Input file of {} format
   synonyms:
   - -i
+  description: Input file of {} format
   args: !SimpleFlagArg
     name: FN
-  optional: true
 - !Flag
-  description: Directory to output in
+  optional: true
   synonyms:
   - -d
+  description: Directory to output in
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
-  description: Output file
+  optional: true
   synonyms:
   - -o
+  description: Output file
   args: !SimpleFlagArg
     name: OUTFILE
-  optional: true
 - !Flag
-  description: Score, e.g. q-values will be converted to -log10
+  optional: true
+  synonyms:
+  - --decoyfn
+  description: Decoy peptide table input file
+  args: !SimpleFlagArg
+    name: DECOYFN
+- !Flag
+  optional: true
+  synonyms:
+  - --scorecolpattern
+  description: "Regular expression pattern to find column where score\nto use (e.g.\
+    \ percolator svm-score) is written."
+  args: !SimpleFlagArg
+    name: SCORECOLPATTERN
+- !Flag
+  optional: true
   synonyms:
   - --logscore
+  description: Score, e.g. q-values will be converted to -log10
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Intensity threshold of PSMs when calculating isobaric\nratios. Values\
-    \ below threshold will be set to NA."
+  optional: true
   synonyms:
   - --minint
+  description: "Intensity threshold of PSMs when calculating isobaric\nratios. Values\
+    \ below threshold will be set to NA."
   args: !SimpleFlagArg
     name: MININT
-  optional: true
 - !Flag
-  description: "Column numbers of denominator channels when creating a\nsummarized\
-    \ feature table with isobaric ratios from\nPSMs"
+  optional: true
   synonyms:
   - --denomcols
+  description: "Column numbers of denominator channels when creating a\nsummarized\
+    \ feature table with isobaric ratios from\nPSMs"
   args: !RepeatFlagArg
     name: DENOMCOLS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --denompatterns
   description: "Regex patterns to detect denominator channels in a PSM\ntable, when\
     \ creating a table with summarized feature\nisobaric ratios. If both --denompatterns\
     \ and\n--denomcol are given then column numbers are used.\nUsage e.g. --denompattern\
     \ _126 _131. Also possible:\n--denompattern _12[6-7] to detect multiple columns."
-  synonyms:
-  - --denompatterns
   args: !RepeatFlagArg
     name: DENOMPATTERNS
-  optional: true
 - !Flag
-  description: "Specifies to add precursor quant data from lookup DB\nto output table"
+  optional: true
   synonyms:
   - --ms1quant
+  description: "Specifies to add precursor quant data from lookup DB\nto output table"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "PSM table file containing isobaric quant data to add\nto table.\n"
+  optional: true
   synonyms:
   - --psmtable
+  description: "PSM table file containing isobaric quant data to add\nto table.\n"
   args: !SimpleFlagArg
     name: PSMFILE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: msstitch proteins [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
   \                         --decoyfn DECOYFN --scorecolpattern SCORECOLPATTERN\n\
   \                         [--logscore] [--isobquantcolpattern QUANTCOLPATTERN]\n\
@@ -134,3 +139,4 @@ help_text: "usage: msstitch proteins [-h] [--version] -i FN [-d OUTDIR] [-o OUTF
   \ isobaric quant data to add\n                        to table.\n"
 generated_using:
 - --help
+docker_image:

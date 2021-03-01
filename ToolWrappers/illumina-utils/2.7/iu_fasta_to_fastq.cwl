@@ -3,17 +3,17 @@ id: iu_fasta_to_fastq.cwl
 inputs:
 - id: in_number_of_sequences
   doc: "Number of sequences to be converted (by default the\neverything will be processed)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --number-of-sequences
 - id: in_output
   doc: 'FASTQ output file name (default: [-i]-FASTA-[-n]'
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_rev_comp
   doc: "When set, during the conversion reads will be reverse\ncomplemented.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rev-comp
 - id: in_input
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: 'FASTQ output file name (default: [-i]-FASTA-[-n]'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - iu-fasta-to-fastq

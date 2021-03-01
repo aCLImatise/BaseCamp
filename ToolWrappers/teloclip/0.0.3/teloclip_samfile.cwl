@@ -3,17 +3,17 @@ id: teloclip_samfile.cwl
 inputs:
 - id: in_max_break
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxBreak
 - id: in_min_clip
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: --minClip
 - id: in_ref_idx
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --refIdx
 - id: in_telo_clip
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - teloclip

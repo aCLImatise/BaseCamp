@@ -8,6 +8,9 @@ task Ca2mates {
     ca2mates \
       ~{if (asm_file) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     asm_file: ".asm file"
   }

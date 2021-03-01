@@ -22,6 +22,9 @@ task Fmt {
       ~{if defined(goal) then ("--goal " +  '"' + goal + '"') else ""} \
       ~{if (var_7) then "-WIDTH" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crown_margin: "preserve indentation of first two lines"
     prefix: "reformat only lines beginning with STRING,\\nreattaching the prefix to reformatted lines"

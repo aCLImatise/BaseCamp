@@ -44,6 +44,9 @@ task BpSeqfeatureLoadpl {
       ~{if (no_summary) then "--nosummary" else ""} \
       ~{if (noalias_target) then "--noalias-target" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dsn: "DBI data source (default dbi:mysql:test)"
     namespace: "The table prefix to use (default undef) Allows several independent\\nsequence feature databases to be stored in a single database"

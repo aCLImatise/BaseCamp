@@ -4,55 +4,102 @@ command:
 - diff
 positional:
 - !Positional
-  description: sample id
+  optional: false
   position: 0
   name: sample
-  optional: false
+  description: sample id
 - !Positional
-  description: The graph to compare new sample against
+  optional: false
   position: 1
   name: graph
+  description: The graph to compare new sample against
+- !Positional
   optional: false
+  position: 0
+  name: threads
+  description: -m MEMORY, --memory MEMORY
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --keep_tmp
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --tmp
-  args: !SimpleFlagArg
-    name: TMP
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -k
+  - --kmer
+  description: kmer length (default:21)
   args: !SimpleFlagArg
     name: kmer
+- !Flag
   optional: true
+  synonyms:
+  - --tmp
+  description: 'tmp directory (default: /tmp/)'
+  args: !SimpleFlagArg
+    name: TMP
+- !Flag
+  optional: true
+  synonyms:
+  - --keep_tmp
+  description: Dont remove tmp files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skeleton_dir
+  description: directory for skeleton binaries
+  args: !SimpleFlagArg
+    name: SKELETON_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --mccortex31_path
+  description: Path to mccortex31. Default mccortex31
+  args: !SimpleFlagArg
+    name: MCCORTEX31_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --expected_depth
+  description: expected depth
+  args: !SimpleFlagArg
+    name: EXPECTED_DEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - --seq
+  description: sequence files (fasta,fastq,bam)
+  args: !RepeatFlagArg
+    name: seq
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --ctx
+  description: cortex graph binary
+  args: !SimpleFlagArg
+    name: ctx
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: do not output warnings to stderr
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --add
+  description: after comparing, add the new sample to the graph
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-k kmer, --kmer kmer  kmer length\
-    \ (default:21)\n--tmp TMP             tmp directory (default: /tmp/)\n--keep_tmp\
-    \            Dont remove tmp files\n--skeleton_dir SKELETON_DIR\ndirectory for\
-    \ skeleton binaries\n--mccortex31_path MCCORTEX31_PATH\nPath to mccortex31. Default\
-    \ mccortex31\n-t THREADS, --threads THREADS\nthreads\n-m MEMORY, --memory MEMORY\n\
-    memory for graph constuction\n--expected_depth EXPECTED_DEPTH\nexpected depth\n\
-    -1 seq [seq ...], --seq seq [seq ...]\nsequence files (fasta,fastq,bam)\n-c ctx,\
-    \ --ctx ctx     cortex graph binary\n-q, --quiet           do not output warnings\
-    \ to stderr\n--add                 after comparing, add the new sample to the\
-    \ graph\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: atlas diff [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n          \
@@ -74,3 +121,4 @@ help_text: "usage: atlas diff [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n         
   \  --add                 after comparing, add the new sample to the graph\n"
 generated_using:
 - --help
+docker_image:

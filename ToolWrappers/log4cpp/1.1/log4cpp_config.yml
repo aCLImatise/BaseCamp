@@ -4,34 +4,164 @@ command:
 positional: []
 named:
 - !Flag
-  description: "and   change $prefix and $exec-prefix\n--exec-prefix=DIR  (affects\
-    \ all other options)\n--prefix           $prefix        /usr/local\n--exec_prefix\
-    \  or...\n--eprefix          $exec_prefix   /usr/local\n--version          $version\
-    \        1.1\n--cflags           -I$includedir  unless it is /usr/include\n--libs\
-    \             -L$libdir $LIBS  -llog4cpp  -lnsl\n--package          $package \
-    \      log4cpp\n--bindir           $bindir        /usr/local/bin\n--sbindir  \
-    \        $sbindir       /usr/local/sbin\n--libexecdir       $libexecdir    /usr/local/libexec\n\
-    --datadir          $datadir       /usr/local/share\n--sysconfdir       $sysconfdir\
-    \    /usr/local/etc\n--sharedstatedir   $sharedstatedir/usr/local/com\n--localstatedir\
-    \    $localstatedir /usr/local/var\n--libdir           $libdir        /usr/local/lib\n\
-    --infodir          $infodir       /usr/local/share/info\n--mandir           $mandir\
-    \        /usr/local/share/man\n--target           $target\n--host            \
-    \ $host          x86_64-unknown-linux-gnu\n--build            $build         x86_64-unknown-linux-gnu\n\
-    --pkgdatadir       $datadir/$package    /usr/local/share/log4cpp\n--pkglibdir\
-    \        $libdir/$package     /usr/local/lib/log4cpp\n--pkgincludedir    $includedir/$package\
-    \ /usr/local/include/log4cpp\n--template-version $template_version     1.0.0\n\
-    --help\n"
+  optional: true
   synonyms:
   - --prefix
+  description: and   change $prefix and $exec-prefix
   args: !SimpleFlagArg
     name: DIR
+- !Flag
   optional: true
+  synonyms:
+  - --exec-prefix
+  description: (affects all other options)
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --exec_prefix
+  description: or...
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --eprefix
+  description: $exec_prefix   /usr/local
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cflags
+  - -I
+  description: $includedir  unless it is /usr/include
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --libs
+  - -L
+  description: $libdir $LIBS  -llog4cpp  -lnsl
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --package
+  description: $package       log4cpp
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bindir
+  description: $bindir        /usr/local/bin
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sbindir
+  description: $sbindir       /usr/local/sbin
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --libexecdir
+  description: $libexecdir    /usr/local/libexec
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --datadir
+  description: $datadir       /usr/local/share
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sysconfdir
+  description: $sysconfdir    /usr/local/etc
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sharedstatedir
+  description: $sharedstatedir/usr/local/com
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --localstatedir
+  description: $localstatedir /usr/local/var
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --libdir
+  description: $libdir        /usr/local/lib
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --infodir
+  description: $infodir       /usr/local/share/info
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mandir
+  description: $mandir        /usr/local/share/man
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --target
+  description: $target
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --host
+  description: $host          x86_64-unknown-linux-gnu
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --build
+  description: $build         x86_64-unknown-linux-gnu
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pkgdatadir
+  description: $datadir/$package    /usr/local/share/log4cpp
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pkglibdir
+  description: $libdir/$package     /usr/local/lib/log4cpp
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pkgincludedir
+  description: $includedir/$package /usr/local/include/log4cpp
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --template-version
+  description: $template_version     1.0.0
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag:
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: $version        1.1
+  args: !EmptyFlagArg {}
 help_text: "All available options:\n  --prefix=DIR and   change $prefix and $exec-prefix\n\
   \  --exec-prefix=DIR  (affects all other options)\n  --prefix           $prefix\
   \        /usr/local\n  --exec_prefix  or... \n  --eprefix          $exec_prefix\
@@ -51,3 +181,4 @@ help_text: "All available options:\n  --prefix=DIR and   change $prefix and $exe
   \  --template-version $template_version     1.0.0\n  --help\n"
 generated_using:
 - --help
+docker_image:

@@ -14,6 +14,9 @@ task AlleleSpecificModification {
       ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "Bed file to aggregate modifications on."
     cut_off: "FDR cutoff. Default: 0.05"

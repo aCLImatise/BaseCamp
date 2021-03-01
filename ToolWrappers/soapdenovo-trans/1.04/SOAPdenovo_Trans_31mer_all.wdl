@@ -8,8 +8,8 @@ task SOAPdenovoTrans31merAll {
     Boolean? optional_output_gap
     Boolean? optional_scaffold_structure
     Boolean? optional_fill_gaps
-    Boolean? int_kmermin_size
-    Boolean? int_number_cpu
+    Boolean? int_kmermin_max
+    Boolean? int_ncpu_number
     Boolean? int_kmerfreqcutoff_kmers
     Boolean? int_edgecovcutoff_edges
     Boolean? int_mergelevelmin_max
@@ -25,8 +25,8 @@ task SOAPdenovoTrans31merAll {
       ~{if (optional_output_gap) then "-f" else ""} \
       ~{if (optional_scaffold_structure) then "-S" else ""} \
       ~{if (optional_fill_gaps) then "-F" else ""} \
-      ~{if (int_kmermin_size) then "-K" else ""} \
-      ~{if (int_number_cpu) then "-p" else ""} \
+      ~{if (int_kmermin_max) then "-K" else ""} \
+      ~{if (int_ncpu_number) then "-p" else ""} \
       ~{if (int_kmerfreqcutoff_kmers) then "-d" else ""} \
       ~{if (int_edgecovcutoff_edges) then "-e" else ""} \
       ~{if (int_mergelevelmin_max) then "-M" else ""} \
@@ -34,6 +34,9 @@ task SOAPdenovoTrans31merAll {
       ~{if (int_locusmaxoutput_output) then "-t" else ""} \
       ~{if (int_gaplendiff_allowed) then "-G" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_configfile_file: "<string>        configFile: the config file of reads"
     string_outputgraph_prefix: "<string>        outputGraph: prefix of output graph file name"
@@ -41,8 +44,8 @@ task SOAPdenovoTrans31merAll {
     optional_output_gap: "(optional)      output gap related reads for SRkgf to fill gap, [NO]"
     optional_scaffold_structure: "(optional)      scaffold structure exists, [NO]"
     optional_fill_gaps: "(optional)      fill gaps in scaffolds, [NO]"
-    int_kmermin_size: "<int>           kmer(min 13, max 31): kmer size, [23]"
-    int_number_cpu: "<int>           n_cpu: number of cpu for use, [8]"
+    int_kmermin_max: "<int>           kmer(min 13, max 31): kmer size, [23]"
+    int_ncpu_number: "<int>           n_cpu: number of cpu for use, [8]"
     int_kmerfreqcutoff_kmers: "<int>           kmerFreqCutoff: kmers with frequency no larger than KmerFreqCutoff will be deleted, [0]"
     int_edgecovcutoff_edges: "<int>           EdgeCovCutoff: edges with coverage no larger than EdgeCovCutoff will be deleted, [2]"
     int_mergelevelmin_max: "<int>           mergeLevel(min 0, max 3): the strength of merging similar sequences during contiging, [1]"

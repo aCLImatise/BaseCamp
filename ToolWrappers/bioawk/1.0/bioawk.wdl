@@ -8,6 +8,9 @@ task Bioawk {
     bioawk \
       ~{if defined(f) then ("-F " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
   }

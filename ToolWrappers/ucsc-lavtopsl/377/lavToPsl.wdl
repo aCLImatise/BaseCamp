@@ -14,6 +14,9 @@ task LavToPsl {
       ~{if defined(bed) then ("-bed " +  '"' + bed + '"') else ""} \
       ~{if defined(score_file) then ("-scoreFile " +  '"' + score_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target_strand: "set the target strand to c (default is no strand)"
     bed: "bed instead of psl"

@@ -38,6 +38,9 @@ task GoalignTrimName {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     auto: "Automatically generates sequence identifiers (priority over --nb-cchar)"
     nb_char: "Number of characters to keep in sequence names (default 1)"

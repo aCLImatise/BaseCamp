@@ -28,6 +28,9 @@ task MagpurifyConspecific {
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mash_dist: "Mash distance to reference genomes (default: 0.05)"
     max_genomes: "Max number of genomes to use (default: 25)"

@@ -3,7 +3,7 @@ id: planemo_database_delete.cwl
 inputs:
 - id: in_postgres
   doc: Use postgres database type.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --postgres
 - id: in_database_type
@@ -14,32 +14,32 @@ inputs:
     \ a docker container\nrunning postgres. Data with postgres_docker\nis not yet\
     \ persisted past when you restart\nthe docker container launched by Planemo so\n\
     be careful with this option."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --database_type
 - id: in_postgres_psql_path
   doc: "Name or or path to postgres client binary\n(psql)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --postgres_psql_path
 - id: in_postgres_database_user
   doc: Postgres username for managed development
-  type: string
+  type: string?
   inputBinding:
     prefix: --postgres_database_user
-- id: in_docker_sudo
-  doc: "/ --no_docker_sudo\nFlag to use sudo when running docker."
-  type: boolean
+- id: in_no_docker_sudo
+  doc: Flag to use sudo when running docker.
+  type: boolean?
   inputBinding:
-    prefix: --docker_sudo
+    prefix: --no_docker_sudo
 - id: in_docker_host
   doc: "Docker host to target when executing docker\ncommands (defaults to localhost)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --docker_host
 - id: in_docker_sudo_cmd
   doc: "sudo command to use when --docker_sudo is\nenabled (defaults to sudo)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --docker_sudo_cmd
 - id: in_local
@@ -51,6 +51,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - planemo

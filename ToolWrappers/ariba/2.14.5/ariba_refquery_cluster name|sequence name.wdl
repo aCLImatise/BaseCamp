@@ -16,6 +16,9 @@ task AribaRefqueryClusternamesequencename {
       ~{cluster_vertical_line_seq} \
       ~{cluster_name_vertical_line_sequence_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ariba: ""
     ref_query: ""

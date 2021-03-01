@@ -1,0 +1,1200 @@
+!Command
+command:
+- gsnap.sse42
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Mode
+  description: "Hash offsets  Hash positions  Genome          Local hash offsets \
+    \ Local hash positions\n0      allocate      mmap            mmap            allocate\
+    \            mmap\n1      allocate      mmap & preload  mmap            allocate\
+    \            mmap & preload\n2      allocate      mmap & preload  mmap & preload\
+    \  allocate            mmap & preload\n3      allocate      allocate        mmap\
+    \ & preload  allocate            allocate"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --dir
+  description: "Genome directory.  Default (as specified by --with-gmapdb to the configure\
+    \ program) is\n/usr/local/share"
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --db
+  description: Genome database
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --use-localdb
+  description: "Whether to use the local hash tables, which help with finding extensions\
+    \ to the ends\nof alignments in the presence of splicing or indels (0=no, 1=yes\
+    \ if available (default))"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --transcriptdir
+  description: Transcriptome directory.  Default is the value for --dir above
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --transcriptdb
+  description: Transcriptome database
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --use-transcriptome-only
+  description: Use only the transcriptome index and not the genome index
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: "kmer size to use in genome database (allowed values: 16 or less)\n\
+    If not specified, the program will find the highest available\nkmer size in the\
+    \ genome database"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --sampling
+  description: "Sampling to use in genome database.  If not specified, the program\n\
+    will find the smallest available sampling value in the genome database\nwithin\
+    \ selected k-mer size"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --part
+  description: "/INT             Process only the i-th out of every n sequences\n\
+    e.g., 0/100 or 99/100 (useful for distributing jobs\nto a computer farm)."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --input-buffer-size
+  description: "Size of input buffer (program reads this many sequences\nat a time\
+    \ for efficiency) (default 1000)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --barcode-length
+  description: "Amount of barcode to remove from start of every read before alignment\n\
+    (default 0)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --endtrim-length
+  description: "Amount of trim to remove from the end of every read before alignment\n\
+    (default 0)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --orientation
+  description: "Orientation of paired-end reads\nAllowed values: FR (fwd-rev, or typical\
+    \ Illumina; default),\nRF (rev-fwd, for circularized inserts), or FF (fwd-fwd,\
+    \ same strand)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --fastq-id-start
+  description: Starting position of identifier in FASTQ header, space-delimited (>=
+    1)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --fastq-id-end
+  description: "Ending position of identifier in FASTQ header, space-delimited (>=\
+    \ 1)\nExamples:\n@HWUSI-EAS100R:6:73:941:1973#0/1\nstart=1, end=1 (default) =>\
+    \ identifier is HWUSI-EAS100R:6:73:941:1973#0\n@SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345\
+    \ length=36\nstart=1, end=1  => identifier is SRR001666.1\nstart=2, end=2  =>\
+    \ identifier is 071112_SLXA-EAS1_s_7:5:1:817:345\nstart=1, end=2  => identifier\
+    \ is SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --force-single-end
+  description: "When multiple FASTQ files are provided on the command line, GSNAP\
+    \ assumes\nthey are matching paired-end files.  This flag treats each file as\
+    \ single-end."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-chastity
+  description: "Skips reads marked by the Illumina chastity program.  Expecting a\
+    \ string\nafter the accession having a 'Y' after the first colon, like this:\n\
+    @accession 1:Y:0:CTTGTA\nwhere the 'Y' signifies filtering by chastity.\nValues:\
+    \ off (default), either, both.  For 'either', a 'Y' on either end\nof a paired-end\
+    \ read will be filtered.  For 'both', a 'Y' is required\non both ends of a paired-end\
+    \ read (or on the only end of a single-end read)."
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-pe-name-mismatch
+  description: Allows accession names of reads to mismatch in paired-end files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --interleaved
+  description: Input is in interleaved format (one read per line, tab-delimited
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gunzip
+  description: Uncompress gzipped input files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bunzip2
+  description: Uncompress bzip2-compressed input files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --batch
+  description: Batch mode (default = 2)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --use-shared-memory
+  description: "If 1, then allocated memory is shared among all processes on this\
+    \ node\nIf 0 (default), then each process has private allocated memory"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --preload-shared-memory
+  description: "Load files indicated by --batch mode into shared memory for use by\
+    \ other\nGMAP/GSNAP processes on this node, and then exit.  Ignore any input files."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --unload-shared-memory
+  description: "Unload files indicated by --batch mode into shared memory, or allow\
+    \ them\nto be unloaded when existing GMAP/GSNAP processes on this node are finished\n\
+    with them.  Ignore any input files."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --max-mismatches
+  description: "Maximum number of mismatches allowed (if not specified, then\nGSNAP\
+    \ tries to find the best possible match in the genome)\nIf specified between 0.0\
+    \ and 1.0, then treated as a fraction\nof each read length.  Otherwise, treated\
+    \ as an integral number\nof mismatches (including indel and splicing penalties).\n\
+    Default is to be unspecified (to find the best possible match)"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --max-ref-mismatches
+  description: If GSNAP is run under SNP-tolerant or masked genome mode, then the
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-coverage
+  description: "Minimum coverage required for an alignment.\nIf specified between\
+    \ 0.0 and 1.0, then treated as a fraction\nof each read length.  Otherwise, treated\
+    \ as an integral number\nof base pairs.  Default value is 0.5."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-within-trims
+  description: "Whether to count mismatches in trimmed part of alignment (1, yes)\
+    \ or\nmismatches to the ends of the read (0, no), when applying the\n--max-mismatches\
+    \ and --max-ref-mismatches parameters.\nDefault for RNA-Seq is 1 (yes) so we can\
+    \ allow for\nreads that align past the ends of an exon.  Default for DNA-Seq\n\
+    is 0 (no).\nFor RNA-Seq, trimmed ends should be ignored, because trimming\nis\
+    \ performed at probable splice sites, to allow for reads that\nalign past the\
+    \ ends of an exon."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --query-unk-mismatch
+  description: "Whether to count unknown (N) characters in the query as a mismatch\n\
+    (0=no (default), 1=yes)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --genome-unk-mismatch
+  description: "Whether to count unknown (N) characters in the genome as a mismatch\n\
+    (0=no, 1=yes).  If --use-mask is specified, default is no, otherwise yes."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --indel-penalty
+  description: "Penalty for an indel (default 2).\nCounts against mismatches allowed.\
+    \  To find indels, make\nindel-penalty less than or equal to max-mismatches.\n\
+    A value < 2 can lead to false positives at read ends"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --indel-endlength
+  description: Minimum length at end required for indel alignments (default 4)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --max-middle-insertions
+  description: "Maximum number of middle insertions allowed (default is 0.2)\nIf specified\
+    \ between 0.0 and 1.0, then treated as a fraction\nof each read length.  Otherwise,\
+    \ treated as an integral number\nof base pairs"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --max-middle-deletions
+  description: "Maximum number of middle deletions allowed (default 0.2)\nIf specified\
+    \ between 0.0 and 1.0, then treated as a fraction\nof each read length.  Otherwise,\
+    \ treated as an integral number\nof base pairs"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -Y
+  - --max-end-insertions
+  description: Maximum number of end insertions allowed (default 3)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -Z
+  - --max-end-deletions
+  description: Maximum number of end deletions allowed (default 6)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --suboptimal-levels
+  description: "Report suboptimal hits beyond best hit (default 0)\nAll hits with\
+    \ best score plus suboptimal-levels are reported"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --adapter-strip
+  description: "Method for removing adapters from reads.  Currently allowed values:\
+    \ off, paired.\nDefault is \"off\".  To turn on, specify \"paired\", which removes\
+    \ adapters\nfrom paired-end reads if they appear to be present."
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --trim-indel-score
+  description: "Score to use for indels when trimming at ends.  To turn off trimming,\n\
+    specify 0.  Default is -2 for both RNA-Seq and DNA-Seq.  Warning:\nTurning trimming\
+    \ off in RNA-Seq can give false positive indels\nat the ends of reads"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --use-mask
+  description: Use genome containing masks (e.g. for non-exons) for scoring preference
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --snpsdir
+  description: "Directory for SNPs index files (created using snpindex) (default is\n\
+    location of genome index files specified using -D and -d)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --use-snps
+  description: "Use database containing known SNPs (in <STRING>.iit, built\npreviously\
+    \ using snpindex) for tolerance to SNPs"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --cmetdir
+  description: "Directory for methylcytosine index files (created using cmetindex)\n\
+    (default is location of genome index files specified using -D, -V, and -d)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --atoidir
+  description: "Directory for A-to-I RNA editing index files (created using atoiindex)\n\
+    (default is location of genome index files specified using -D, -V, and -d)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --mode
+  description: "Alignment mode: standard (default), cmet-stranded, cmet-nonstranded,\n\
+    atoi-stranded, atoi-nonstranded, ttoc-stranded, or ttoc-nonstranded.\nNon-standard\
+    \ modes requires you to have previously run the cmetindex\nor atoiindex programs\
+    \ (which also cover the ttoc modes) on the genome"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --nthreads
+  description: Number of worker threads
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --max-anchors
+  description: "Controls number of candidate segments returned by the complete set\
+    \ algorithm\nDefault is 10.  Can be increased to higher values to solve alignments\
+    \ with\nevenly spaced mismatches at close distances.  However, higher values will\n\
+    cause GSNAP to run more slowly.  A value of 1000, for example, slows down\nthe\
+    \ program by a factor of 10 or so.  Therefore, change this value only if\nabsolutely\
+    \ necessary."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --find-dna-chimeras
+  description: "Look for distant splicing involving poor splice sites (0=no, 1=yes\
+    \ (default))\nCurrent implementation improves even RNA-Seq alignments at poor\
+    \ splice sites\nso it is now on by default."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --novelsplicing
+  description: Look for novel splicing (0=no (default), 1=yes)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --splicingdir
+  description: "Directory for splicing involving known sites or known introns,\nas\
+    \ specified by the -s or --use-splicing flag (default is\ndirectory computed from\
+    \ -D and -d flags).  Note: can\njust give full pathname to the -s flag instead."
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --use-splicing
+  description: "Look for splicing involving known sites or known introns\n(in <STRING>.iit),\
+    \ at short or long distances\nSee README instructions for the distinction between\
+    \ known sites\nand known introns"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --ambig-splice-noclip
+  description: "For ambiguous known splicing at ends of the read, do not clip at the\n\
+    splice site, but extend instead into the intron.  This flag makes\nsense only\
+    \ if you provide the --use-splicing flag, and you are trying\nto eliminate all\
+    \ soft clipping with --trim-mismatch-score=0"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --localsplicedist
+  description: Definition of local novel splicing event (default 200000)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --novelend-splicedist
+  description: Distance to look for novel splices at the ends of reads (default 80000)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --local-splice-penalty
+  description: Penalty for a local splice (default 0).  Counts against mismatches
+    allowed
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --distant-splice-penalty
+  description: "Penalty for a distant splice (default 1).  A distant splice is one\
+    \ where\nthe intron length exceeds the value of -w, or --localsplicedist, or is\
+    \ an\ninversion, scramble, or translocation between two different chromosomes\n\
+    Counts against mismatches allowed"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  - --distant-splice-endlength
+  description: "Minimum length at end required for distant spliced alignments (default\
+    \ 20, min\nallowed is the value of -k, or kmer size)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --shortend-splice-endlength
+  description: "Minimum length at end required for short-end spliced alignments (default\
+    \ 2,\nbut unless known splice sites are provided with the -s flag, GSNAP may still\n\
+    need the end length to be the value of -k, or kmer size to find a given splice"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --distant-splice-identity
+  description: Minimum identity at end required for distant spliced alignments (default
+    0.95)
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --antistranded-penalty
+  description: "(Not currently implemented, since it leads to poor results)\nPenalty\
+    \ for antistranded splicing when using stranded RNA-Seq protocols.\nA positive\
+    \ value, such as 1, expects antisense on the first read\nand sense on the second\
+    \ read.  Default is 0, which treats sense and antisense\nequally well"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --merge-distant-samechr
+  description: "Report distant splices on the same chromosome as a single splice,\
+    \ if possible.\nWill produce a single SAM line instead of two SAM lines, which\
+    \ is also done\nfor translocations, inversions, and scramble events"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pairmax-dna
+  description: "Max total genomic length for DNA-Seq paired reads, or other reads\n\
+    without splicing (default 2000).  Used if -N or -s is not specified.\nThis value\
+    \ is also used for circular chromosomes when splicing in\nlinear chromosomes is\
+    \ allowed"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --pairmax-rna
+  description: "Max total genomic length for RNA-Seq paired reads, or other reads\n\
+    that could have a splice (default 200000).  Used if -N or -s is specified.\nShould\
+    \ probably match the value for -w, --localsplicedist."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --pairexpect
+  description: "Expected paired-end length, used for calling splices in medial part\n\
+    of paired-end reads (default 500).  Was turned off in previous versions, but reinstated."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --pairdev
+  description: "Allowable deviation from expected paired-end length, used for\ncalling\
+    \ splices in medial part of paired-end reads (default 100).\nWas turned off in\
+    \ previous versions, but reinstated."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --quality-protocol
+  description: "Protocol for input quality scores.  Allowed values:\nillumina (ASCII\
+    \ 64-126) (equivalent to -J 64 -j -31)\nsanger   (ASCII 33-126) (equivalent to\
+    \ -J 33 -j 0)\nDefault is sanger (no quality print shift)\nSAM output files should\
+    \ have quality scores in sanger protocol\nOr you can customize this behavior with\
+    \ these flags:"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -J
+  - --quality-zero-score
+  description: "FASTQ quality scores are zero at this ASCII value\n(default is 33\
+    \ for sanger protocol; for Illumina, select 64)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --quality-print-shift
+  description: "Shift FASTQ quality scores by this amount in output\n(default is 0\
+    \ for sanger protocol; to change Illumina input\nto Sanger output, select -31)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --npaths
+  description: Maximum number of paths to print (default 100).
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  - --quiet-if-excessive
+  description: "If more than maximum number of paths are found,\nthen nothing is printed."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --ordered
+  description: "Print output in same order as input (relevant\nonly if there is more\
+    \ than one worker thread)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --show-refdiff
+  description: "For GSNAP output in SNP-tolerant alignment, shows all differences\n\
+    relative to the reference genome as lower case (otherwise, it shows\nall differences\
+    \ relative to both the reference and alternate genome)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --clip-overlap
+  description: For paired-end reads whose alignments overlap, clip the overlapping
+    region.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --merge-overlap
+  description: For paired-end reads whose alignments overlap, merge the two ends into
+    a single end (beta implementation)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print-snps
+  description: "Print detailed information about SNPs in reads (works only if -v also\
+    \ selected)\n(not fully implemented yet)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --failsonly
+  description: Print only failed alignments, those with no results
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nofails
+  description: Exclude printing of failed alignments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --format
+  description: "Another format type, other than default.\nCurrently implemented: sam,\
+    \ m8 (BLAST tabular format)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --split-output
+  description: "Basename for multiple-file output, separately for nomapping,\nhalfmapping_uniq,\
+    \ halfmapping_mult, unpaired_uniq, unpaired_mult,\npaired_uniq, paired_mult, concordant_uniq,\
+    \ and concordant_mult results"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-file
+  description: File name for a single stream of output results.
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --failed-input
+  description: "Print completely failed alignments as input FASTA or FASTQ format,\n\
+    to the given file, appending .1 or .2, for paired-end data.\nIf the --split-output\
+    \ flag is also given, this file is generated\nin addition to the output in the\
+    \ .nomapping file."
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --append-output
+  description: "When --split-output or --failed-input is given, this flag will append\
+    \ output\nto the existing files.  Otherwise, the default is to create new files."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --order-among-best
+  description: "Among alignments tied with the best score, order those alignments\
+    \ in this order.\nAllowed values: genomic, random (default)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --output-buffer-size
+  description: "Buffer size, in queries, for output thread (default 1000).  When the\
+    \ number\nof results to be printed exceeds this size, the worker threads are halted\n\
+    until the backlog is cleared"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --no-sam-headers
+  description: Do not print headers beginning with '@'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --add-paired-nomappers
+  description: "Add nomapper lines as needed to make all paired-end results alternate\n\
+    between first end and second end"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --paired-flag-means-concordant
+  description: "Whether the paired bit in the SAM flags means concordant only (1)\n\
+    or paired plus concordant (0, default)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --sam-headers-batch
+  description: Print headers only for this batch, as specified by -q
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --sam-hardclip-use-S
+  description: Use S instead of H for hardclips
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sam-use-0M
+  description: "Insert 0M in CIGAR between adjacent insertions, deletions, and introns\n\
+    Picard disallows 0M, other tools may require it"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sam-extended-cigar
+  description: "Use extended CIGAR format (using X and = symbols instead of M,\nto\
+    \ indicate matches and mismatches, respectively"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sam-multiple-primaries
+  description: "Allows multiple alignments to be marked as primary if they\nhave equally\
+    \ good mapping scores"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sam-sparse-secondaries
+  description: "For secondary alignments (in multiple mappings), uses '*' for SEQ\n\
+    and QUAL fields, to give smaller file sizes.  However, the output\nwill give warnings\
+    \ in Picard to give warnings and may not work\nwith downstream tools"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force-xs-dir
+  description: "For RNA-Seq alignments, disallows XS:A:? when the sense direction\n\
+    is unclear, and replaces this value arbitrarily with XS:A:+.\nMay be useful for\
+    \ some programs, such as Cufflinks, that cannot\nhandle XS:A:?.  However, if you\
+    \ use this flag, the reported value\nof XS:A:+ in these cases will not be meaningful."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --md-lowercase-snp
+  description: "In MD string, when known SNPs are given by the -v flag,\nprints difference\
+    \ nucleotides as lower-case when they,\ndiffer from reference but match a known\
+    \ alternate allele"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --extend-soft-clips
+  description: Extends alignments through soft clipped regions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --action-if-cigar-error
+  description: "Action to take if there is a disagreement between CIGAR length and\
+    \ sequence length\nAllowed values: ignore, warning (default), noprint, abort\n\
+    Note that the noprint option does not print the CIGAR string at all if there\n\
+    is an error, so it may break a SAM parser"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --read-group-id
+  description: Value to put into read-group id (RG-ID) field
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --read-group-name
+  description: Value to put into read-group name (RG-SM) field
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --read-group-library
+  description: Value to put into read-group library (RG-LB) field
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --read-group-platform
+  description: Value to put into read-group library (RG-PL) field
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --check
+  description: Check compiler assumptions
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show version
+  args: !EmptyFlagArg {}
+help_text: "Usage: gsnap [OPTIONS...] <FASTA file>, or\n       cat <FASTA file> |\
+  \ gmap [OPTIONS...]\n\nInput options (must include -d)\n  -D, --dir=directory  \
+  \          Genome directory.  Default (as specified by --with-gmapdb to the configure\
+  \ program) is\n                                   /usr/local/share\n  -d, --db=STRING\
+  \                Genome database\n  --use-localdb=INT              Whether to use\
+  \ the local hash tables, which help with finding extensions to the ends\n      \
+  \                             of alignments in the presence of splicing or indels\
+  \ (0=no, 1=yes if available (default))\n\nTranscriptome-guided options (optional)\n\
+  \  -C, --transcriptdir=directory  Transcriptome directory.  Default is the value\
+  \ for --dir above\n  -c, --transcriptdb=STRING      Transcriptome database\n  --use-transcriptome-only\
+  \       Use only the transcriptome index and not the genome index\n\nComputation\
+  \ options\n  -k, --kmer=INT                 kmer size to use in genome database\
+  \ (allowed values: 16 or less)\n                                   If not specified,\
+  \ the program will find the highest available\n                                \
+  \   kmer size in the genome database\n  --sampling=INT                 Sampling\
+  \ to use in genome database.  If not specified, the program\n                  \
+  \                 will find the smallest available sampling value in the genome\
+  \ database\n                                   within selected k-mer size\n  -q,\
+  \ --part=INT/INT             Process only the i-th out of every n sequences\n  \
+  \                                 e.g., 0/100 or 99/100 (useful for distributing\
+  \ jobs\n                                   to a computer farm).\n  --input-buffer-size=INT\
+  \        Size of input buffer (program reads this many sequences\n             \
+  \                      at a time for efficiency) (default 1000)\n  --barcode-length=INT\
+  \           Amount of barcode to remove from start of every read before alignment\n\
+  \                                   (default 0)\n  --endtrim-length=INT        \
+  \   Amount of trim to remove from the end of every read before alignment\n     \
+  \                              (default 0)\n  --orientation=STRING           Orientation\
+  \ of paired-end reads\n                                   Allowed values: FR (fwd-rev,\
+  \ or typical Illumina; default),\n                                   RF (rev-fwd,\
+  \ for circularized inserts), or FF (fwd-fwd, same strand)\n  --fastq-id-start=INT\
+  \           Starting position of identifier in FASTQ header, space-delimited (>=\
+  \ 1)\n  --fastq-id-end=INT             Ending position of identifier in FASTQ header,\
+  \ space-delimited (>= 1)\n                                 Examples:\n         \
+  \                          @HWUSI-EAS100R:6:73:941:1973#0/1\n                  \
+  \                    start=1, end=1 (default) => identifier is HWUSI-EAS100R:6:73:941:1973#0\n\
+  \                                   @SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345\
+  \ length=36\n                                      start=1, end=1  => identifier\
+  \ is SRR001666.1\n                                      start=2, end=2  => identifier\
+  \ is 071112_SLXA-EAS1_s_7:5:1:817:345\n                                      start=1,\
+  \ end=2  => identifier is SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345\n  --force-single-end\
+  \             When multiple FASTQ files are provided on the command line, GSNAP\
+  \ assumes\n                                    they are matching paired-end files.\
+  \  This flag treats each file as single-end.\n  --filter-chastity=STRING       Skips\
+  \ reads marked by the Illumina chastity program.  Expecting a string\n         \
+  \                          after the accession having a 'Y' after the first colon,\
+  \ like this:\n                                         @accession 1:Y:0:CTTGTA\n\
+  \                                   where the 'Y' signifies filtering by chastity.\n\
+  \                                   Values: off (default), either, both.  For 'either',\
+  \ a 'Y' on either end\n                                   of a paired-end read will\
+  \ be filtered.  For 'both', a 'Y' is required\n                                \
+  \   on both ends of a paired-end read (or on the only end of a single-end read).\n\
+  \  --allow-pe-name-mismatch       Allows accession names of reads to mismatch in\
+  \ paired-end files\n  --interleaved                  Input is in interleaved format\
+  \ (one read per line, tab-delimited\n  --gunzip                       Uncompress\
+  \ gzipped input files\n  --bunzip2                      Uncompress bzip2-compressed\
+  \ input files\n\nComputation options\n  -B, --batch=INT                Batch mode\
+  \ (default = 2)\n                                 Mode     Hash offsets  Hash positions\
+  \  Genome          Local hash offsets  Local hash positions\n                  \
+  \                 0      allocate      mmap            mmap            allocate\
+  \            mmap\n                                   1      allocate      mmap\
+  \ & preload  mmap            allocate            mmap & preload\n              \
+  \                     2      allocate      mmap & preload  mmap & preload  allocate\
+  \            mmap & preload\n                                   3      allocate\
+  \      allocate        mmap & preload  allocate            allocate\n          \
+  \            (default)    4      allocate      allocate        allocate        allocate\
+  \            allocate\n                           Note: For a single sequence, all\
+  \ data structures use mmap\n                           A batch level of 5 means\
+  \ the same as 4, and is kept only for backward compatibility\n  --use-shared-memory=INT\
+  \        If 1, then allocated memory is shared among all processes on this node\n\
+  \                                   If 0 (default), then each process has private\
+  \ allocated memory\n  --preload-shared-memory        Load files indicated by --batch\
+  \ mode into shared memory for use by other\n                                   GMAP/GSNAP\
+  \ processes on this node, and then exit.  Ignore any input files.\n  --unload-shared-memory\
+  \         Unload files indicated by --batch mode into shared memory, or allow them\n\
+  \                                   to be unloaded when existing GMAP/GSNAP processes\
+  \ on this node are finished\n                                   with them.  Ignore\
+  \ any input files.\n  -m, --max-mismatches=FLOAT     Maximum number of mismatches\
+  \ allowed (if not specified, then\n                                   GSNAP tries\
+  \ to find the best possible match in the genome)\n                             \
+  \      If specified between 0.0 and 1.0, then treated as a fraction\n          \
+  \                         of each read length.  Otherwise, treated as an integral\
+  \ number\n                                   of mismatches (including indel and\
+  \ splicing penalties).\n                                   Default is to be unspecified\
+  \ (to find the best possible match)\n  --max-ref-mismatches=FLOAT     If GSNAP is\
+  \ run under SNP-tolerant or masked genome mode, then the\n                     \
+  \              --max-mismatches parameter above is for mismatches against reference\
+  \ and\n                                   SNPs, or against the unmasked genome,\
+  \ respectively.  The --max-ref-mismatches\n                                   parameter\
+  \ is against mismatches against the reference genome or masked genome.\n  --min-coverage=FLOAT\
+  \           Minimum coverage required for an alignment.\n                      \
+  \             If specified between 0.0 and 1.0, then treated as a fraction\n   \
+  \                                of each read length.  Otherwise, treated as an\
+  \ integral number\n                                   of base pairs.  Default value\
+  \ is 0.5.\n  --filter-within-trims=INT      Whether to count mismatches in trimmed\
+  \ part of alignment (1, yes) or\n                                   mismatches to\
+  \ the ends of the read (0, no), when applying the\n                            \
+  \       --max-mismatches and --max-ref-mismatches parameters.\n                \
+  \                   Default for RNA-Seq is 1 (yes) so we can allow for\n       \
+  \                            reads that align past the ends of an exon.  Default\
+  \ for DNA-Seq\n                                   is 0 (no).\n                 \
+  \                For RNA-Seq, trimmed ends should be ignored, because trimming\n\
+  \                                   is performed at probable splice sites, to allow\
+  \ for reads that\n                                   align past the ends of an exon.\n\
+  \  --query-unk-mismatch=INT       Whether to count unknown (N) characters in the\
+  \ query as a mismatch\n                                   (0=no (default), 1=yes)\n\
+  \  --genome-unk-mismatch=INT      Whether to count unknown (N) characters in the\
+  \ genome as a mismatch\n                                   (0=no, 1=yes).  If --use-mask\
+  \ is specified, default is no, otherwise yes.\n  -i, --indel-penalty=INT       \
+  \ Penalty for an indel (default 2).\n                                   Counts against\
+  \ mismatches allowed.  To find indels, make\n                                  \
+  \ indel-penalty less than or equal to max-mismatches.\n                        \
+  \           A value < 2 can lead to false positives at read ends\n  --indel-endlength=INT\
+  \          Minimum length at end required for indel alignments (default 4)\n  -y,\
+  \ --max-middle-insertions=FLOAT  Maximum number of middle insertions allowed (default\
+  \ is 0.2)\n                                     If specified between 0.0 and 1.0,\
+  \ then treated as a fraction\n                                     of each read\
+  \ length.  Otherwise, treated as an integral number\n                          \
+  \           of base pairs\n  -z, --max-middle-deletions=FLOAT   Maximum number of\
+  \ middle deletions allowed (default 0.2)\n                                     If\
+  \ specified between 0.0 and 1.0, then treated as a fraction\n                  \
+  \                   of each read length.  Otherwise, treated as an integral number\n\
+  \                                     of base pairs\n  -Y, --max-end-insertions=INT\
+  \   Maximum number of end insertions allowed (default 3)\n  -Z, --max-end-deletions=INT\
+  \    Maximum number of end deletions allowed (default 6)\n  -M, --suboptimal-levels=INT\
+  \    Report suboptimal hits beyond best hit (default 0)\n                      \
+  \             All hits with best score plus suboptimal-levels are reported\n  -a,\
+  \ --adapter-strip=STRING     Method for removing adapters from reads.  Currently\
+  \ allowed values: off, paired.\n                                   Default is \"\
+  off\".  To turn on, specify \"paired\", which removes adapters\n               \
+  \                    from paired-end reads if they appear to be present.\n  --trim-indel-score=INT\
+  \         Score to use for indels when trimming at ends.  To turn off trimming,\n\
+  \                                   specify 0.  Default is -2 for both RNA-Seq and\
+  \ DNA-Seq.  Warning:\n                                   Turning trimming off in\
+  \ RNA-Seq can give false positive indels\n                                   at\
+  \ the ends of reads\n  -e, --use-mask=STRING          Use genome containing masks\
+  \ (e.g. for non-exons) for scoring preference\n  -V, --snpsdir=STRING          \
+  \ Directory for SNPs index files (created using snpindex) (default is\n        \
+  \                           location of genome index files specified using -D and\
+  \ -d)\n   -v, --use-snps=STRING          Use database containing known SNPs (in\
+  \ <STRING>.iit, built\n                                   previously using snpindex)\
+  \ for tolerance to SNPs\n  --cmetdir=STRING               Directory for methylcytosine\
+  \ index files (created using cmetindex)\n                                   (default\
+  \ is location of genome index files specified using -D, -V, and -d)\n  --atoidir=STRING\
+  \               Directory for A-to-I RNA editing index files (created using atoiindex)\n\
+  \                                   (default is location of genome index files specified\
+  \ using -D, -V, and -d)\n  --mode=STRING                  Alignment mode: standard\
+  \ (default), cmet-stranded, cmet-nonstranded,\n                                \
+  \    atoi-stranded, atoi-nonstranded, ttoc-stranded, or ttoc-nonstranded.\n    \
+  \                                Non-standard modes requires you to have previously\
+  \ run the cmetindex\n                                    or atoiindex programs (which\
+  \ also cover the ttoc modes) on the genome\n  -t, --nthreads=INT             Number\
+  \ of worker threads\n  --max-anchors=INT              Controls number of candidate\
+  \ segments returned by the complete set algorithm\n                            \
+  \       Default is 10.  Can be increased to higher values to solve alignments with\n\
+  \                                   evenly spaced mismatches at close distances.\
+  \  However, higher values will\n                                   cause GSNAP to\
+  \ run more slowly.  A value of 1000, for example, slows down\n                 \
+  \                  the program by a factor of 10 or so.  Therefore, change this\
+  \ value only if\n                                   absolutely necessary.\nSplicing\
+  \ options for DNA-Seq\n  --find-dna-chimeras=INT              Look for distant splicing\
+  \ involving poor splice sites (0=no, 1=yes (default))\n                        \
+  \                 Current implementation improves even RNA-Seq alignments at poor\
+  \ splice sites\n                                         so it is now on by default.\n\
+  \nSplicing options for RNA-Seq\n  -N, --novelsplicing=INT              Look for\
+  \ novel splicing (0=no (default), 1=yes)\n  --splicingdir=STRING               \
+  \  Directory for splicing involving known sites or known introns,\n            \
+  \                             as specified by the -s or --use-splicing flag (default\
+  \ is\n                                         directory computed from -D and -d\
+  \ flags).  Note: can\n                                         just give full pathname\
+  \ to the -s flag instead.\n  -s, --use-splicing=STRING            Look for splicing\
+  \ involving known sites or known introns\n                                     \
+  \    (in <STRING>.iit), at short or long distances\n                           \
+  \              See README instructions for the distinction between known sites\n\
+  \                                         and known introns\n  --ambig-splice-noclip\
+  \                For ambiguous known splicing at ends of the read, do not clip at\
+  \ the\n                                         splice site, but extend instead\
+  \ into the intron.  This flag makes\n                                         sense\
+  \ only if you provide the --use-splicing flag, and you are trying\n            \
+  \                             to eliminate all soft clipping with --trim-mismatch-score=0\n\
+  \  -w, --localsplicedist=INT            Definition of local novel splicing event\
+  \ (default 200000)\n  --novelend-splicedist=INT            Distance to look for\
+  \ novel splices at the ends of reads (default 80000)\n  --local-splice-penalty=INT\
+  \       Penalty for a local splice (default 0).  Counts against mismatches allowed\n\
+  \  --distant-splice-penalty=INT     Penalty for a distant splice (default 1).  A\
+  \ distant splice is one where\n                                         the intron\
+  \ length exceeds the value of -w, or --localsplicedist, or is an\n             \
+  \                            inversion, scramble, or translocation between two different\
+  \ chromosomes\n                                         Counts against mismatches\
+  \ allowed\n  -K, --distant-splice-endlength=INT   Minimum length at end required\
+  \ for distant spliced alignments (default 20, min\n                            \
+  \             allowed is the value of -k, or kmer size)\n  -l, --shortend-splice-endlength=INT\
+  \  Minimum length at end required for short-end spliced alignments (default 2,\n\
+  \                                         but unless known splice sites are provided\
+  \ with the -s flag, GSNAP may still\n                                         need\
+  \ the end length to be the value of -k, or kmer size to find a given splice\n  --distant-splice-identity=FLOAT\
+  \      Minimum identity at end required for distant spliced alignments (default\
+  \ 0.95)\n  --antistranded-penalty=INT           (Not currently implemented, since\
+  \ it leads to poor results)\n                                         Penalty for\
+  \ antistranded splicing when using stranded RNA-Seq protocols.\n               \
+  \                          A positive value, such as 1, expects antisense on the\
+  \ first read\n                                         and sense on the second read.\
+  \  Default is 0, which treats sense and antisense\n                            \
+  \             equally well\n  --merge-distant-samechr              Report distant\
+  \ splices on the same chromosome as a single splice, if possible.\n            \
+  \                             Will produce a single SAM line instead of two SAM\
+  \ lines, which is also done\n                                         for translocations,\
+  \ inversions, and scramble events\n\nOptions for paired-end reads\n  --pairmax-dna=INT\
+  \              Max total genomic length for DNA-Seq paired reads, or other reads\n\
+  \                                   without splicing (default 2000).  Used if -N\
+  \ or -s is not specified.\n                                   This value is also\
+  \ used for circular chromosomes when splicing in\n                             \
+  \      linear chromosomes is allowed\n  --pairmax-rna=INT              Max total\
+  \ genomic length for RNA-Seq paired reads, or other reads\n                    \
+  \               that could have a splice (default 200000).  Used if -N or -s is\
+  \ specified.\n                                   Should probably match the value\
+  \ for -w, --localsplicedist.\n  --pairexpect=INT               Expected paired-end\
+  \ length, used for calling splices in medial part\n                            \
+  \       of paired-end reads (default 500).  Was turned off in previous versions,\
+  \ but reinstated.\n  --pairdev=INT                  Allowable deviation from expected\
+  \ paired-end length, used for\n                                   calling splices\
+  \ in medial part of paired-end reads (default 100).\n                          \
+  \         Was turned off in previous versions, but reinstated.\n\nOptions for quality\
+  \ scores\n  --quality-protocol=STRING      Protocol for input quality scores.  Allowed\
+  \ values:\n                                   illumina (ASCII 64-126) (equivalent\
+  \ to -J 64 -j -31)\n                                   sanger   (ASCII 33-126) (equivalent\
+  \ to -J 33 -j 0)\n                                 Default is sanger (no quality\
+  \ print shift)\n                                 SAM output files should have quality\
+  \ scores in sanger protocol\n\n                                 Or you can customize\
+  \ this behavior with these flags:\n  -J, --quality-zero-score=INT   FASTQ quality\
+  \ scores are zero at this ASCII value\n                                   (default\
+  \ is 33 for sanger protocol; for Illumina, select 64)\n  -j, --quality-print-shift=INT\
+  \  Shift FASTQ quality scores by this amount in output\n                       \
+  \            (default is 0 for sanger protocol; to change Illumina input\n     \
+  \                              to Sanger output, select -31)\nOutput options\n \
+  \ -n, --npaths=INT               Maximum number of paths to print (default 100).\n\
+  \  -Q, --quiet-if-excessive       If more than maximum number of paths are found,\n\
+  \                                   then nothing is printed.\n  -O, --ordered  \
+  \                Print output in same order as input (relevant\n               \
+  \                    only if there is more than one worker thread)\n  --show-refdiff\
+  \                 For GSNAP output in SNP-tolerant alignment, shows all differences\n\
+  \                                   relative to the reference genome as lower case\
+  \ (otherwise, it shows\n                                   all differences relative\
+  \ to both the reference and alternate genome)\n  --clip-overlap                \
+  \ For paired-end reads whose alignments overlap, clip the overlapping region.\n\
+  \  --merge-overlap                For paired-end reads whose alignments overlap,\
+  \ merge the two ends into a single end (beta implementation)\n  --print-snps   \
+  \                Print detailed information about SNPs in reads (works only if -v\
+  \ also selected)\n                                   (not fully implemented yet)\n\
+  \  --failsonly                    Print only failed alignments, those with no results\n\
+  \  --nofails                      Exclude printing of failed alignments\n  -A, --format=STRING\
+  \            Another format type, other than default.\n                        \
+  \           Currently implemented: sam, m8 (BLAST tabular format)\n  --split-output=STRING\
+  \          Basename for multiple-file output, separately for nomapping,\n      \
+  \                             halfmapping_uniq, halfmapping_mult, unpaired_uniq,\
+  \ unpaired_mult,\n                                   paired_uniq, paired_mult, concordant_uniq,\
+  \ and concordant_mult results\n  -o, --output-file=STRING       File name for a\
+  \ single stream of output results.\n  --failed-input=STRING          Print completely\
+  \ failed alignments as input FASTA or FASTQ format,\n                          \
+  \          to the given file, appending .1 or .2, for paired-end data.\n       \
+  \                             If the --split-output flag is also given, this file\
+  \ is generated\n                                    in addition to the output in\
+  \ the .nomapping file.\n  --append-output                When --split-output or\
+  \ --failed-input is given, this flag will append output\n                      \
+  \              to the existing files.  Otherwise, the default is to create new files.\n\
+  \  --order-among-best=STRING      Among alignments tied with the best score, order\
+  \ those alignments in this order.\n                                    Allowed values:\
+  \ genomic, random (default)\n  --output-buffer-size=INT       Buffer size, in queries,\
+  \ for output thread (default 1000).  When the number\n                         \
+  \          of results to be printed exceeds this size, the worker threads are halted\n\
+  \                                   until the backlog is cleared\n\nOptions for\
+  \ SAM output\n  --no-sam-headers               Do not print headers beginning with\
+  \ '@'\n  --add-paired-nomappers         Add nomapper lines as needed to make all\
+  \ paired-end results alternate\n                                   between first\
+  \ end and second end\n  --paired-flag-means-concordant=INT  Whether the paired bit\
+  \ in the SAM flags means concordant only (1)\n                                 or\
+  \ paired plus concordant (0, default)\n  --sam-headers-batch=INT        Print headers\
+  \ only for this batch, as specified by -q\n  --sam-hardclip-use-S           Use\
+  \ S instead of H for hardclips\n  --sam-use-0M                   Insert 0M in CIGAR\
+  \ between adjacent insertions, deletions, and introns\n                        \
+  \           Picard disallows 0M, other tools may require it\n  --sam-extended-cigar\
+  \           Use extended CIGAR format (using X and = symbols instead of M,\n   \
+  \                                to indicate matches and mismatches, respectively\n\
+  \  --sam-multiple-primaries       Allows multiple alignments to be marked as primary\
+  \ if they\n                                   have equally good mapping scores\n\
+  \  --sam-sparse-secondaries       For secondary alignments (in multiple mappings),\
+  \ uses '*' for SEQ\n                                   and QUAL fields, to give\
+  \ smaller file sizes.  However, the output\n                                   will\
+  \ give warnings in Picard to give warnings and may not work\n                  \
+  \                 with downstream tools\n  --force-xs-dir                 For RNA-Seq\
+  \ alignments, disallows XS:A:? when the sense direction\n                      \
+  \             is unclear, and replaces this value arbitrarily with XS:A:+.\n   \
+  \                                May be useful for some programs, such as Cufflinks,\
+  \ that cannot\n                                   handle XS:A:?.  However, if you\
+  \ use this flag, the reported value\n                                   of XS:A:+\
+  \ in these cases will not be meaningful.\n  --md-lowercase-snp             In MD\
+  \ string, when known SNPs are given by the -v flag,\n                          \
+  \         prints difference nucleotides as lower-case when they,\n             \
+  \                      differ from reference but match a known alternate allele\n\
+  \  --extend-soft-clips            Extends alignments through soft clipped regions\n\
+  \  --action-if-cigar-error        Action to take if there is a disagreement between\
+  \ CIGAR length and sequence length\n                                   Allowed values:\
+  \ ignore, warning (default), noprint, abort\n                                  \
+  \ Note that the noprint option does not print the CIGAR string at all if there\n\
+  \                                   is an error, so it may break a SAM parser\n\
+  \  --read-group-id=STRING         Value to put into read-group id (RG-ID) field\n\
+  \  --read-group-name=STRING       Value to put into read-group name (RG-SM) field\n\
+  \  --read-group-library=STRING    Value to put into read-group library (RG-LB) field\n\
+  \  --read-group-platform=STRING   Value to put into read-group library (RG-PL) field\n\
+  \nHelp options\n  --check                        Check compiler assumptions\n  --version\
+  \                      Show version\n  --help                         Show this\
+  \ help message\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gmap:2020.10.14--pl526h2f06484_0

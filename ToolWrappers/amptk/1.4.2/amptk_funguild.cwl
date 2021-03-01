@@ -3,27 +3,27 @@ id: amptk_funguild.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_d
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -d
 - id: in_u
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -u
 - id: in_m
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
 - id: in_i
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -i
 - id: in_am_ptk
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - amptk

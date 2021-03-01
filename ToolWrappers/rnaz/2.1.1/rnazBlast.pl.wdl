@@ -16,6 +16,9 @@ task RnazBlastpl {
       ~{if defined(e_value) then ("--e-value " +  '"' + e_value + '"') else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     blast_dir: "The directory with your BLAST database. If not set, the value\\nfrom the \\\"BLASTDB\\\" environment variable is used."
     database: "Name of the BLAST database to compare with. Must exist in the\\ndirectory set with \\\"--blast-dir\\\" or in the directory set by\\n\\\"BLASTDB\\\"."

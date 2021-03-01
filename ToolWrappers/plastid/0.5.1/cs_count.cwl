@@ -3,14 +3,14 @@ id: cs_count.cwl
 inputs:
 - id: in_quiet
   doc: Suppress all warning messages. Cannot use with '-v'.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_verbose
   doc: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn warnings\
     \ into exceptions. Cannot use\nwith '-q'. (Default: show each type of warning\
     \ once)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_count_files
@@ -21,59 +21,59 @@ inputs:
     prefix: --count_files
 - id: in_count_file_format
   doc: "Format of file containing alignments or counts\n(Default: BAM)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --countfile_format
 - id: in_sum
   doc: "Sum used in normalization of counts and RPKM/RPNT\ncalculations (Default:\
     \ total mapped reads/counts in\ndataset)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --sum
 - id: in_min_length
   doc: "Minimum read length required to be included (BAM &\nbowtie files only. Default:\
     \ 25)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_length
 - id: in_max_length
   doc: "Maximum read length permitted to be included (BAM &\nbowtie files only. Default:\
     \ 100)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_length
 - id: in_maxmem
   doc: "Maximum desired memory footprint in MB to devote to\nBigBed/BigWig files.\
     \ May be exceeded by large queries.\n(Default: 0, No maximum)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxmem
 - id: in_big_genome
   doc: "Use slower but memory-efficient implementation for big\ngenomes or for memory-limited\
     \ computers. For wiggle &\nbowtie files only."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --big_genome
 - id: in_five_prime_variable
   doc: "Map read alignment to a variable offset from 5'\nposition of read, with offset\
     \ determined by read\nlength. Requires `--offset` below"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fiveprime_variable
 - id: in_five_prime
   doc: Map read alignment to 5' position.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fiveprime
 - id: in_three_prime
   doc: Map read alignment to 3' position
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --threeprime
 - id: in_center
   doc: "Subtract N positions from each end of read, and add\n1/(length-N), to each\
     \ remaining position, where N is\nspecified by `--nibble`"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --center
 - id: in_offset
@@ -84,13 +84,13 @@ inputs:
     special keyword `'default'`, and the second column\nrepresents the offset from\
     \ the five prime end of that\nread length at which the read should be mapped.\n\
     (Default: 0)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --offset
 - id: in_nibble
   doc: "For use with `--center` only. nt to remove from each\nend of read before mapping\
     \ (Default: 0)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --nibble
 - id: in_file_dot_positions
@@ -107,6 +107,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cs

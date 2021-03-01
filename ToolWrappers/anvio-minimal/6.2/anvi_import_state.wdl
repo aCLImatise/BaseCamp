@@ -12,6 +12,9 @@ task Anviimportstate {
       ~{if defined(state) then ("--state " +  '"' + state + '"') else ""} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_or_profile_db: "Anvi'o pan or profile database (and even genes\\ndatabase in appropriate contexts)."
     state: "JSON serializable anvi'o state file."

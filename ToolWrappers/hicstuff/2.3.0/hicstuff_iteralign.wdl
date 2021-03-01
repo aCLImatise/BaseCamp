@@ -26,6 +26,9 @@ task HicstuffIteralign {
       ~{if (a) then "-a" else ""} \
       ~{if defined(aligner) then ("--aligner " +  '"' + aligner + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "The genome on which to map the reads. Must be\\nthe path to the bowtie2/bwa index if using bowtie2/bwa\\nor to the genome in fasta format if using minimap2."
     threads: "Number of parallel threads allocated for the\\nalignment [default: 1]."

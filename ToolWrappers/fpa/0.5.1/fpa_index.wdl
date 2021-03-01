@@ -10,6 +10,9 @@ task FpaIndex {
       ~{if defined(filename) then ("--filename " +  '"' + filename + '"') else ""} \
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: "Write index of mapping passing filter in path passed as parameter"
     type: "Type of index, only reference read when it's query, target or both of them [default:\\nboth]  [possible values: query, target, both]\\n"

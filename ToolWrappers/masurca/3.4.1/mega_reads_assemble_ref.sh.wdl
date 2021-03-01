@@ -14,6 +14,9 @@ task MegaReadsAssembleRefsh {
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a: ""
     r: ""

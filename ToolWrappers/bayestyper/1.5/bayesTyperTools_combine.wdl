@@ -14,6 +14,9 @@ task BayesTyperToolsCombine {
       ~{if (compress_output_files) then "-z" else ""} \
       ~{if (filter_ambiguous_alleles) then "--filter-ambiguous-alleles" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_commaseparated_list: "[ --variant-files ] arg            comma-separated list of name and variant file (vcf format) pairs (<name>:<file>)."
     arg_output_prefix: "[ --output-prefix ] arg            output prefix."

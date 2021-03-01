@@ -14,6 +14,9 @@ task Kggseq {
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""} \
       ~{if (x_mx_on_eg) then "-Xmx1g" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jar: ""
     x_mx_on_eg: ""

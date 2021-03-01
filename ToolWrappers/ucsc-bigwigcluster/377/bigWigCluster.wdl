@@ -4,6 +4,9 @@ task BigWigCluster {
   command <<<
     bigWigCluster
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -12,6 +12,9 @@ task CactusFillAdjacencies {
       ~{if (cactus_disk) then "--cactusDisk" else ""} \
       ~{if (tempdir_root) then "--tempDirRoot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: ": Set the log level"
     cactus_disk: ": The location of the flower disk directory"

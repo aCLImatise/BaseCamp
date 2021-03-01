@@ -22,6 +22,9 @@ task SsueslalimaskMaskfile {
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rf_is_mask: ""
     p: ""

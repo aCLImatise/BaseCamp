@@ -18,6 +18,9 @@ task RefgenieserverArchive {
       ~{if defined(genomes_desc) then ("--genomes-desc " +  '"' + genomes_desc + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "A path to the refgenie config file (YAML). If not\\nprovided, the first available environment variable\\namong: 'REFGENIE' will be used if set. Currently: not\\nset"
     dbg: "Set logger verbosity to debug"

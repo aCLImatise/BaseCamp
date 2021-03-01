@@ -1,0 +1,141 @@
+!Command
+command:
+- anvi-script-get-coverage-from-bam
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: file
+  description: '🧀 Can consume: '
+- !Positional
+  optional: false
+  position: 0
+  name: coverages-txt
+  description: '🍺 More on `anvi-script-get-coverage-from-bam`:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bam-file
+  description: "Sorted and indexed BAM file to analyze. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: BAM_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --contig-name
+  description: 'The name of a single contig (default: None)'
+  args: !SimpleFlagArg
+    name: CONTIG_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --contigs-of-interest
+  description: "Provide here a file where each line is a contig name.\n(default: None)"
+  args: !SimpleFlagArg
+    name: CONTIGS_OF_INTEREST
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --collection-txt
+  description: "Provide a collection text file. The first column\nshould be contig\
+    \ names and the second column should be\nthe bin to which the contig belongs.\
+    \ If you have a\ncollection from a profile database, you can export it\nin this\
+    \ format with anvi-export-collection. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: COLLECTION_TXT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --method
+  description: "If pos, each nucleotide position will be reported\n(valid for OPTION\
+    \ #1, #2, #3). If contig, report\ncontains contig averages (valid for OPTION #2,\
+    \ #3). If\nbin, report contains bin averages (valid for OPTION\n#3). (default:\
+    \ None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      pos:
+      bin:
+      contig:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output tab-delimited file path. Will overwrite\nexisting files. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-contigs-check
+  description: "Checking to see that your collection text or contigs\nof interest\
+    \ file has correct names can take a really\nlong time if you have a large enough\
+    \ number of\ncontigs. Use this flag to forego checking, and find\nout the hard\
+    \ way. (default: False)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-script-get-coverage-from-bam [-h] -b BAM_FILE [-c CONTIG_NAME]\n\
+  \                                         [-l CONTIGS_OF_INTEREST]\n           \
+  \                              [-C COLLECTION_TXT] -m\n                        \
+  \                 {pos,contig,bin} -o OUTPUT\n                                 \
+  \        [--skip-contigs-check]\n\noptional arguments:\n  -h, --help           \
+  \ show this help message and exit\n\nREQUIRED:\n  Declare your BAM file here\n\n\
+  \  -b BAM_FILE, --bam-file BAM_FILE\n                        Sorted and indexed\
+  \ BAM file to analyze. (default:\n                        None)\n\nOPTION #1:\n\
+  \  This is the first and simplest option. Provide a contig name\n\n  -c CONTIG_NAME,\
+  \ --contig-name CONTIG_NAME\n                        The name of a single contig\
+  \ (default: None)\n\nOPTION #2:\n  Use this to characterize coverage for a list\
+  \ of contigs\n\n  -l CONTIGS_OF_INTEREST, --contigs-of-interest CONTIGS_OF_INTEREST\n\
+  \                        Provide here a file where each line is a contig name.\n\
+  \                        (default: None)\n\nOPTION #3:\n  Use this to characterize\
+  \ coverage for a collection of contig sets (bins)\n\n  -C COLLECTION_TXT, --collection-txt\
+  \ COLLECTION_TXT\n                        Provide a collection text file. The first\
+  \ column\n                        should be contig names and the second column should\
+  \ be\n                        the bin to which the contig belongs. If you have a\n\
+  \                        collection from a profile database, you can export it\n\
+  \                        in this format with anvi-export-collection. (default:\n\
+  \                        None)\n\nMETHOD:\n  Do you want to report coverage at a\
+  \ nucleotide level? Contig averages? Bin\n  averages? Pick the method here.\n\n\
+  \  -m {pos,contig,bin}, --method {pos,contig,bin}\n                        If pos,\
+  \ each nucleotide position will be reported\n                        (valid for\
+  \ OPTION #1, #2, #3). If contig, report\n                        contains contig\
+  \ averages (valid for OPTION #2, #3). If\n                        bin, report contains\
+  \ bin averages (valid for OPTION\n                        #3). (default: None)\n\
+  \nOUTPUT:\n  Your output file is decided here. Keep in mind if you use --method\
+  \ pos,\n  this file will contain as many lines as there are nucleotides defined\
+  \ by\n  your input option\n\n  -o OUTPUT, --output OUTPUT\n                    \
+  \    Output tab-delimited file path. Will overwrite\n                        existing\
+  \ files. (default: None)\n\nEXTRAS:\n  All the misfits\n\n  --skip-contigs-check\
+  \  Checking to see that your collection text or contigs\n                      \
+  \  of interest file has correct names can take a really\n                      \
+  \  long time if you have a large enough number of\n                        contigs.\
+  \ Use this flag to forego checking, and find\n                        out the hard\
+  \ way. (default: False)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   Get nucleotide-level, contig-level, or bin-level\
+  \ coverage values from a BAM\n   file\n\n\U0001F9C0 Can consume: \n\n   bam-file\
+  \ / collection-txt\n   \n\U0001F355 Can provide: \n\n   coverages-txt\n   \n\U0001F37A\
+  \ More on `anvi-script-get-coverage-from-bam`:\n\n   https://merenlab.org/software/anvio/help/7/programs/anvi-script-get-coverage-from-bam\n\
+  \n\U0001F37B All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

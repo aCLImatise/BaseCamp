@@ -4,6 +4,9 @@ task KmerFilter {
   command <<<
     KmerFilter
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

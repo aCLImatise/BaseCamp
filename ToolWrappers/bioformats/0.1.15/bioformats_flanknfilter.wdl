@@ -20,6 +20,9 @@ task BioformatsFlanknfilter {
       ~{if (strict) then "--strict" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type: "the input file type (default: bed)"
     length: "the flanking region length (default: 100)"

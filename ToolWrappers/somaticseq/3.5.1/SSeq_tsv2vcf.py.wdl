@@ -32,6 +32,9 @@ task SSeqTsv2vcfpy {
       ~{if (single_sample) then "--single-sample" else ""} \
       ~{if (paired_samples) then "--paired-samples" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tsv_in: "TSV in (default: None)"
     vcf_out: "VCF iut (default: None)"

@@ -3,39 +3,39 @@ id: tadbit_parse.cwl
 inputs:
 - id: in_workdir
   doc: path to working directory (generated with the tool tadbit mapper)
-  type: File
+  type: File?
   inputBinding:
     prefix: --workdir
 - id: in_type
   doc: '[map]file type to be parser, MAP (GEM-mapper), SAM or BAM'
-  type: File
+  type: File?
   inputBinding:
     prefix: --type
 - id: in_read
   doc: In case only one of the reads needs to be parsed
-  type: long
+  type: long?
   inputBinding:
     prefix: --read
 - id: in_filter_chrom
   doc: "default: --filter_chrom\n\"^(chr)?[A-Za-z]?[0-9]{0,3}[XVI]{0,3}(?:ito)?[A-Z-a-z]?(_dna)?$\"\
     ,\nregexp to consider only chromosome names passing"
-  type: long
+  type: long?
   inputBinding:
     prefix: --filter_chrom
 - id: in_skip
   doc: '[DEBUG] in case already mapped.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip
 - id: in_compress_input
   doc: "Compress input mapped files when parsing is done. This is done in\nbackground,\
     \ while next MAP file is processed, or while reads are\nsorted."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --compress_input
 - id: in_tmp_db
   doc: if provided uses this directory to manipulate the database
-  type: File
+  type: File?
   inputBinding:
     prefix: --tmpdb
 - id: in_genome
@@ -54,13 +54,14 @@ inputs:
     prefix: --jobids
 - id: in_nox
   doc: no display server (X screen)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noX
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tadbit

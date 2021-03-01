@@ -14,6 +14,9 @@ task IgdiscoverErrorplot {
       ~{if defined(multi) then ("--multi " +  '"' + multi + '"') else ""} \
       ~{if defined(boxplot) then ("--boxplot " +  '"' + boxplot + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minimum_group_size: "Plot only genes with at least N assigned sequences.\\nDefault: 0.1% of assigned sequences or 100, whichever\\nis smaller."
     max_j_shm: "Use only rows with J%SHM >= VALUE"

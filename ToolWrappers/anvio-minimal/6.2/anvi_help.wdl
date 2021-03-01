@@ -14,6 +14,9 @@ task Anvihelp {
       ~{if (name) then "--name" else ""} \
       ~{if defined(report) then ("--report " +  '"' + report + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     requires: "Restrict to programs that require this search term"
     provides: "Restrict to programs that provide this search term"

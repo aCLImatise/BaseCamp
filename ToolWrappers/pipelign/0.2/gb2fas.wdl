@@ -10,6 +10,9 @@ task Gb2fas {
       ~{input_dot_gb} \
       ~{output_dot_fas}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dot_gb: ""
     output_dot_fas: ""

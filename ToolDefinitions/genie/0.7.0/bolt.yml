@@ -1,0 +1,2194 @@
+!Command
+command: &id001
+- bolt
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command: &id002
+  - bolt
+  - fastq
+  positional: []
+  named: []
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - &id004 !Command
+      command: *id002
+      positional: []
+      named: []
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id012
+        - bolt
+        - fastq
+        - split
+        positional:
+        - !Positional
+          optional: false
+          position: 0
+          name: genie
+          description: ''
+        - !Positional
+          optional: false
+          position: 1
+          name: fastq
+          description: ''
+        - !Positional
+          optional: false
+          position: 2
+          name: split
+          description: ''
+        named:
+        - !Flag
+          optional: true
+          synonyms:
+          - -f
+          - --filepath
+          description: Input FASTQ file (*require)
+          args: !SimpleFlagArg
+            name: string
+        - !Flag
+          optional: true
+          synonyms:
+          - --fq
+          description: Output FASTQ1 file (*require)
+          args: !SimpleFlagArg
+            name: string
+        - !Flag
+          optional: true
+          synonyms:
+          - --fq2
+          description: Output FASTQ2 file (*require)
+          args: !SimpleFlagArg
+            name: string
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          optional: true
+          synonyms:
+          - -h
+          - --help
+          description: help for split
+          args: !EmptyFlagArg {}
+        usage_flag:
+        version_flag:
+        help_text: "split a single FASTQ file to pair FASTQ files (paired-end reads)\n\
+          \nUsage:\n  genie fastq split [flags]\n\nFlags:\n  -f, --filepath string\
+          \   Input FASTQ file (*require)\n      --fq string         Output FASTQ1\
+          \ file (*require)\n      --fq2 string        Output FASTQ2 file (*require)\n\
+          \  -h, --help              help for split\n"
+        generated_using: &id005
+        - --help
+        docker_image:
+      - !Command
+        command: &id013
+        - bolt
+        - fastq
+        - count
+        positional:
+        - !Positional
+          optional: false
+          position: 0
+          name: genie
+          description: ''
+        - !Positional
+          optional: false
+          position: 1
+          name: fastq
+          description: ''
+        - !Positional
+          optional: false
+          position: 2
+          name: count
+          description: ''
+        named:
+        - !Flag
+          optional: true
+          synonyms:
+          - -f
+          - --filepath
+          description: Input FASTQ file (*require)
+          args: !SimpleFlagArg
+            name: string
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          optional: true
+          synonyms:
+          - -h
+          - --help
+          description: help for count
+          args: !EmptyFlagArg {}
+        usage_flag:
+        version_flag:
+        help_text: "count a FASTQ file\n\nUsage:\n  genie fastq count [flags]\n\n\
+          Flags:\n  -f, --filepath string   Input FASTQ file (*require)\n  -h, --help\
+          \              help for count\n"
+        generated_using: *id005
+        docker_image:
+      usage: []
+      help_flag: !Flag
+        optional: true
+        synonyms:
+        - -h
+        - --help
+        description: help for fastq
+        args: !EmptyFlagArg {}
+      usage_flag:
+      version_flag:
+      help_text: "manage FASTQ file\n\nUsage:\n  genie fastq [flags]\n  genie fastq\
+        \ [command]\n\nAvailable Commands:\n  count       count a FASTQ file\n  split\
+        \       split a single FASTQ file to pair FASTQ files (paired-end reads)\n\
+        \nFlags:\n  -h, --help   help for fastq\n\nUse \"genie fastq [command] --help\"\
+        \ for more information about a command.\n"
+      generated_using: *id005
+      docker_image:
+    - !Command
+      command: &id014
+      - bolt
+      - version
+      positional:
+      - !Positional
+        optional: false
+        position: 0
+        name: genie
+        description: ''
+      - !Positional
+        optional: false
+        position: 1
+        name: version
+        description: ''
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        optional: true
+        synonyms:
+        - -h
+        - --help
+        description: help for version
+        args: !EmptyFlagArg {}
+      usage_flag:
+      version_flag:
+      help_text: "displays the current Genie version\n\nUsage:\n  genie version [flags]\n\
+        \nFlags:\n  -h, --help   help for version\n"
+      generated_using: *id005
+      docker_image:
+    - &id006 !Command
+      command: &id015
+      - bolt
+      - bam
+      positional: []
+      named: []
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id016
+        - bolt
+        - bam
+        - tofastq
+        positional:
+        - !Positional
+          optional: false
+          position: 0
+          name: genie
+          description: ''
+        - !Positional
+          optional: false
+          position: 1
+          name: bam
+          description: ''
+        - !Positional
+          optional: false
+          position: 2
+          name: tofastq
+          description: ''
+        named:
+        - !Flag
+          optional: true
+          synonyms:
+          - -b
+          - --bam
+          description: Input BAM file (*require)
+          args: !SimpleFlagArg
+            name: string
+        - !Flag
+          optional: true
+          synonyms:
+          - -F
+          - --excludedflags
+          description: excluded flags (int16)
+          args: !SimpleFlagArg
+            name: uint16
+        - !Flag
+          optional: true
+          synonyms:
+          - --fq
+          description: Output FASTQ file (fq1 for paired-end reads) (*require)
+          args: !SimpleFlagArg
+            name: string
+        - !Flag
+          optional: true
+          synonyms:
+          - --fq2
+          description: Output FASTQ2 for paired-end reads (If empty, all data will
+            be at fq)
+          args: !SimpleFlagArg
+            name: string
+        - !Flag
+          optional: true
+          synonyms:
+          - -f
+          - --requiredflags
+          description: required flags (int16)
+          args: !SimpleFlagArg
+            name: uint16
+        parent: *id006
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          optional: true
+          synonyms:
+          - -h
+          - --help
+          description: help for tofastq
+          args: !EmptyFlagArg {}
+        usage_flag:
+        version_flag:
+        help_text: "convert BAM to FASTQ\n\nUsage:\n  genie bam tofastq [flags]\n\n\
+          Flags:\n  -b, --bam string             Input BAM file (*require)\n  -F,\
+          \ --excludedflags uint16   excluded flags (int16)\n      --fq string   \
+          \           Output FASTQ file (fq1 for paired-end reads) (*require)\n  \
+          \    --fq2 string             Output FASTQ2 for paired-end reads (If empty,\
+          \ all data will be at fq)\n  -h, --help                   help for tofastq\n\
+          \  -f, --requiredflags uint16   required flags (int16)\n"
+        generated_using: *id005
+        docker_image:
+      - !Command
+        command: &id017
+        - bolt
+        - bam
+        - view
+        positional:
+        - !Positional
+          optional: false
+          position: 0
+          name: genie
+          description: ''
+        - !Positional
+          optional: false
+          position: 1
+          name: bam
+          description: ''
+        - !Positional
+          optional: false
+          position: 2
+          name: view
+          description: ''
+        named:
+        - !Flag
+          optional: true
+          synonyms:
+          - -f
+          - --filepath
+          description: A bam file (*require)
+          args: !SimpleFlagArg
+            name: string
+        - !Flag
+          optional: true
+          synonyms:
+          - -H
+          - --headeronly
+          description: Show the header only
+          args: !EmptyFlagArg {}
+        - !Flag
+          optional: true
+          synonyms:
+          - --human-readable
+          description: Show reads in human readable format
+          args: !EmptyFlagArg {}
+        - !Flag
+          optional: true
+          synonyms:
+          - -I
+          - --includeheader
+          description: Show header and records
+          args: !EmptyFlagArg {}
+        - !Flag
+          optional: true
+          synonyms:
+          - --limitreads
+          description: Limit reads (-1 is unlimited) (default -1)
+          args: !SimpleFlagArg
+            name: int
+        - !Flag
+          optional: true
+          synonyms:
+          - -s
+          - --scope
+          description: Scope chr:begin-end
+          args: !SimpleFlagArg
+            name: stringArray
+        parent: *id006
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          optional: true
+          synonyms:
+          - -h
+          - --help
+          description: help for view
+          args: !EmptyFlagArg {}
+        usage_flag:
+        version_flag:
+        help_text: "view a BAM file\n\nUsage:\n  genie bam view [flags]\n\nFlags:\n\
+          \  -f, --filepath string     A bam file (*require)\n  -H, --headeronly \
+          \         Show the header only\n  -h, --help                help for view\n\
+          \      --human-readable      Show reads in human readable format\n  -I,\
+          \ --includeheader       Show header and records\n      --limitreads int\
+          \      Limit reads (-1 is unlimited) (default -1)\n  -s, --scope stringArray\
+          \   Scope chr:begin-end\n"
+        generated_using: *id005
+        docker_image:
+      usage: []
+      help_flag: !Flag
+        optional: true
+        synonyms:
+        - -h
+        - --help
+        description: help for bam
+        args: !EmptyFlagArg {}
+      usage_flag:
+      version_flag:
+      help_text: "manage BAM files\n\nUsage:\n  genie bam [flags]\n  genie bam [command]\n\
+        \nAvailable Commands:\n  tofastq     convert BAM to FASTQ\n  view        view\
+        \ a BAM file\n\nFlags:\n  -h, --help   help for bam\n\nUse \"genie bam [command]\
+        \ --help\" for more information about a command.\n"
+      generated_using: *id005
+      docker_image:
+    - &id007 !Command
+      command: &id018
+      - bolt
+      - fasta
+      positional: []
+      named: []
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id019
+        - bolt
+        - fasta
+        - faidx
+        positional:
+        - !Positional
+          optional: false
+          position: 0
+          name: genie
+          description: ''
+        - !Positional
+          optional: false
+          position: 1
+          name: fasta
+          description: ''
+        - !Positional
+          optional: false
+          position: 2
+          name: faidx
+          description: ''
+        named:
+        - !Flag
+          optional: true
+          synonyms:
+          - -f
+          - --filepath
+          description: A bam file (*require)
+          args: !SimpleFlagArg
+            name: string
+        parent: *id007
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          optional: true
+          synonyms:
+          - -h
+          - --help
+          description: help for faidx
+          args: !EmptyFlagArg {}
+        usage_flag:
+        version_flag:
+        help_text: "generate faidx\n\nUsage:\n  genie fasta faidx [flags]\n\nFlags:\n\
+          \  -f, --filepath string   A bam file (*require)\n  -h, --help         \
+          \     help for faidx\n"
+        generated_using: *id005
+        docker_image:
+      - !Command
+        command: &id020
+        - bolt
+        - fasta
+        - view
+        positional:
+        - !Positional
+          optional: false
+          position: 0
+          name: genie
+          description: ''
+        - !Positional
+          optional: false
+          position: 1
+          name: fasta
+          description: ''
+        - !Positional
+          optional: false
+          position: 2
+          name: view
+          description: ''
+        named:
+        - !Flag
+          optional: true
+          synonyms:
+          - -f
+          - --filepath
+          description: A bam file (*require)
+          args: !SimpleFlagArg
+            name: string
+        - !Flag
+          optional: true
+          synonyms:
+          - -s
+          - --scope
+          description: Scope chr:begin-end (*require)
+          args: !SimpleFlagArg
+            name: string
+        parent: *id007
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          optional: true
+          synonyms:
+          - -h
+          - --help
+          description: help for view
+          args: !EmptyFlagArg {}
+        usage_flag:
+        version_flag:
+        help_text: "view a FASTA file\n\nUsage:\n  genie fasta view [flags]\n\nFlags:\n\
+          \  -f, --filepath string   A bam file (*require)\n  -h, --help         \
+          \     help for view\n  -s, --scope string      Scope chr:begin-end (*require)\n"
+        generated_using: *id005
+        docker_image:
+      usage: []
+      help_flag: !Flag
+        optional: true
+        synonyms:
+        - -h
+        - --help
+        description: help for fasta
+        args: !EmptyFlagArg {}
+      usage_flag:
+      version_flag:
+      help_text: "manage FASTA file\n\nUsage:\n  genie fasta [flags]\n  genie fasta\
+        \ [command]\n\nAvailable Commands:\n  faidx       generate faidx\n  view \
+        \       view a FASTA file\n\nFlags:\n  -h, --help   help for fasta\n\nUse\
+        \ \"genie fasta [command] --help\" for more information about a command.\n"
+      generated_using: *id005
+      docker_image:
+    - &id008 !Command
+      command: &id021
+      - bolt
+      - bed
+      positional: []
+      named: []
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id022
+        - bolt
+        - bed
+        - count
+        positional:
+        - !Positional
+          optional: false
+          position: 0
+          name: genie
+          description: ''
+        - !Positional
+          optional: false
+          position: 1
+          name: bed
+          description: ''
+        - !Positional
+          optional: false
+          position: 2
+          name: count
+          description: ''
+        named:
+        - !Flag
+          optional: true
+          synonyms:
+          - -f
+          - --filepath
+          description: A bam file (*require)
+          args: !SimpleFlagArg
+            name: string
+        parent: *id008
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          optional: true
+          synonyms:
+          - -h
+          - --help
+          description: help for count
+          args: !EmptyFlagArg {}
+        usage_flag:
+        version_flag:
+        help_text: "count a BED file\n\nUsage:\n  genie bed count [flags]\n\nFlags:\n\
+          \  -f, --filepath string   A bam file (*require)\n  -h, --help         \
+          \     help for count\n"
+        generated_using: *id005
+        docker_image:
+      - !Command
+        command: &id023
+        - bolt
+        - bed
+        - view
+        positional:
+        - !Positional
+          optional: false
+          position: 0
+          name: genie
+          description: ''
+        - !Positional
+          optional: false
+          position: 1
+          name: bed
+          description: ''
+        - !Positional
+          optional: false
+          position: 2
+          name: view
+          description: ''
+        named:
+        - !Flag
+          optional: true
+          synonyms:
+          - -f
+          - --filepath
+          description: A bam file (*require)
+          args: !SimpleFlagArg
+            name: string
+        parent: *id008
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          optional: true
+          synonyms:
+          - -h
+          - --help
+          description: help for view
+          args: !EmptyFlagArg {}
+        usage_flag:
+        version_flag:
+        help_text: "view a BED file\n\nUsage:\n  genie bed view [flags]\n\nFlags:\n\
+          \  -f, --filepath string   A bam file (*require)\n  -h, --help         \
+          \     help for view\n"
+        generated_using: *id005
+        docker_image:
+      usage: []
+      help_flag: !Flag
+        optional: true
+        synonyms:
+        - -h
+        - --help
+        description: help for bed
+        args: !EmptyFlagArg {}
+      usage_flag:
+      version_flag:
+      help_text: "manage BED file\n\nUsage:\n  genie bed [flags]\n  genie bed [command]\n\
+        \nAvailable Commands:\n  count       count a BED file\n  view        view\
+        \ a BED file\n\nFlags:\n  -h, --help   help for bed\n\nUse \"genie bed [command]\
+        \ --help\" for more information about a command.\n"
+      generated_using: *id005
+      docker_image:
+    - &id009 !Command
+      command: &id024
+      - bolt
+      - vcf
+      positional: []
+      named: []
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id025
+        - bolt
+        - vcf
+        - venn
+        positional:
+        - !Positional
+          optional: false
+          position: 0
+          name: genie
+          description: ''
+        - !Positional
+          optional: false
+          position: 1
+          name: vcf
+          description: ''
+        - !Positional
+          optional: false
+          position: 2
+          name: venn
+          description: ''
+        named:
+        - !Flag
+          optional: true
+          synonyms:
+          - -f
+          - --filepath
+          description: VCF files (*require at 3 files)
+          args: !SimpleFlagArg
+            name: stringArray
+        - !Flag
+          optional: true
+          synonyms:
+          - -p
+          - --primary
+          description: a primary VCF file (*require)
+          args: !SimpleFlagArg
+            name: string
+        - !Flag
+          optional: true
+          synonyms:
+          - -t
+          - --svtype
+          description: SVTYPE such as DEL, DUP, INV, INS and BND (*require, support
+            only one type)
+          args: !SimpleFlagArg
+            name: string
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          optional: true
+          synonyms:
+          - -h
+          - --help
+          description: help for venn
+          args: !EmptyFlagArg {}
+        usage_flag:
+        version_flag:
+        help_text: "Show a Venn diagram (this version support only three sets)\n\n\
+          Usage:\n  genie vcf venn [flags]\n\nFlags:\n  -f, --filepath stringArray\
+          \   VCF files (*require at 3 files)\n  -h, --help                   help\
+          \ for venn\n  -p, --primary string         a primary VCF file (*require)\n\
+          \  -t, --svtype string          SVTYPE such as DEL, DUP, INV, INS and BND\
+          \ (*require, support only one type)\n"
+        generated_using: *id005
+        docker_image:
+      - !Command
+        command: &id026
+        - bolt
+        - vcf
+        - filter
+        positional:
+        - !Positional
+          optional: false
+          position: 0
+          name: genie
+          description: ''
+        - !Positional
+          optional: false
+          position: 1
+          name: vcf
+          description: ''
+        - !Positional
+          optional: false
+          position: 2
+          name: filter
+          description: ''
+        named:
+        - !Flag
+          optional: true
+          synonyms:
+          - -f
+          - --filepath
+          description: a VCF file (*require)
+          args: !SimpleFlagArg
+            name: string
+        - !Flag
+          optional: true
+          synonyms:
+          - -m
+          - --maxlength
+          description: Max SVLENGTH (default 2147483647)
+          args: !SimpleFlagArg
+            name: int
+        - !Flag
+          optional: true
+          synonyms:
+          - -n
+          - --minlength
+          description: Min SVLENGTH (default -2147483647)
+          args: !SimpleFlagArg
+            name: int
+        - !Flag
+          optional: true
+          synonyms:
+          - -y
+          - --onlysv
+          description: Only SVs
+          args: !EmptyFlagArg {}
+        - !Flag
+          optional: true
+          synonyms:
+          - -o
+          - --output
+          description: output file
+          args: !SimpleFlagArg
+            name: string
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          optional: true
+          synonyms:
+          - -h
+          - --help
+          description: help for filter
+          args: !EmptyFlagArg {}
+        usage_flag:
+        version_flag:
+        help_text: "filter VCF file\n\nUsage:\n  genie vcf filter [flags]\n\nFlags:\n\
+          \  -f, --filepath string   a VCF file (*require)\n  -h, --help         \
+          \     help for filter\n  -m, --maxlength int     Max SVLENGTH (default 2147483647)\n\
+          \  -n, --minlength int     Min SVLENGTH (default -2147483647)\n  -y, --onlysv\
+          \            Only SVs\n  -o, --output string     output file\n"
+        generated_using: *id005
+        docker_image:
+      - !Command
+        command: &id027
+        - bolt
+        - vcf
+        - stats
+        positional:
+        - !Positional
+          optional: false
+          position: 0
+          name: genie
+          description: ''
+        - !Positional
+          optional: false
+          position: 1
+          name: vcf
+          description: ''
+        - !Positional
+          optional: false
+          position: 2
+          name: stats
+          description: ''
+        named:
+        - !Flag
+          optional: true
+          synonyms:
+          - -f
+          - --filepath
+          description: a VCF file (*require)
+          args: !SimpleFlagArg
+            name: string
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          optional: true
+          synonyms:
+          - -h
+          - --help
+          description: help for stats
+          args: !EmptyFlagArg {}
+        usage_flag:
+        version_flag:
+        help_text: "view statistics of a VCF file\n\nUsage:\n  genie vcf stats [flags]\n\
+          \nFlags:\n  -f, --filepath string   a VCF file (*require)\n  -h, --help\
+          \              help for stats\n"
+        generated_using: *id005
+        docker_image:
+      usage: []
+      help_flag: !Flag
+        optional: true
+        synonyms:
+        - -h
+        - --help
+        description: help for vcf
+        args: !EmptyFlagArg {}
+      usage_flag:
+      version_flag:
+      help_text: "manage VCF file\n\nUsage:\n  genie vcf [flags]\n  genie vcf [command]\n\
+        \nAvailable Commands:\n  comparetobed compare between BED and VCF files\n\
+        \  comparetovcf compare between VCF and VCF files\n  filter       filter VCF\
+        \ file\n  stats        view statistics of a VCF file\n  venn         Show\
+        \ a Venn diagram (this version support only three sets)\n\nFlags:\n  -h, --help\
+        \   help for vcf\n\nUse \"genie vcf [command] --help\" for more information\
+        \ about a command.\n"
+      generated_using: *id005
+      docker_image:
+    - !Command
+      command: &id028
+      - bolt
+      - help
+      positional:
+      - !Positional
+        optional: false
+        position: 0
+        name: genie
+        description: ''
+      - !Positional
+        optional: false
+        position: 1
+        name: help
+        description: ''
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        optional: true
+        synonyms:
+        - -h
+        - --help
+        description: help for help
+        args: !EmptyFlagArg {}
+      usage_flag:
+      version_flag:
+      help_text: "Need help? Go to the https://github.com/sakkayaphab/genie\n\nUsage:\n\
+        \  genie help [flags]\n\nFlags:\n  -h, --help   help for help\n"
+      generated_using: *id005
+      docker_image:
+    - &id010 !Command
+      command: &id029
+      - bolt
+      - sam
+      positional: []
+      named: []
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id030
+        - bolt
+        - sam
+        - tofastq
+        positional:
+        - !Positional
+          optional: false
+          position: 0
+          name: genie
+          description: ''
+        - !Positional
+          optional: false
+          position: 1
+          name: sam
+          description: ''
+        - !Positional
+          optional: false
+          position: 2
+          name: tofastq
+          description: ''
+        named:
+        - !Flag
+          optional: true
+          synonyms:
+          - -F
+          - --excludedflags
+          description: excluded flags (int16)
+          args: !SimpleFlagArg
+            name: uint16
+        - !Flag
+          optional: true
+          synonyms:
+          - --fq
+          description: Output FASTQ file (fq1 for paired-end reads) (*require)
+          args: !SimpleFlagArg
+            name: string
+        - !Flag
+          optional: true
+          synonyms:
+          - --fq2
+          description: Output FASTQ2 for paired-end reads (If empty, all data will
+            be at fq)
+          args: !SimpleFlagArg
+            name: string
+        - !Flag
+          optional: true
+          synonyms:
+          - -f
+          - --requiredflags
+          description: required flags (int16)
+          args: !SimpleFlagArg
+            name: uint16
+        - !Flag
+          optional: true
+          synonyms:
+          - -s
+          - --sam
+          description: Input SAM file (*require)
+          args: !SimpleFlagArg
+            name: string
+        parent: *id010
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          optional: true
+          synonyms:
+          - -h
+          - --help
+          description: help for tofastq
+          args: !EmptyFlagArg {}
+        usage_flag:
+        version_flag:
+        help_text: "convert SAM to FASTQ\n\nUsage:\n  genie sam tofastq [flags]\n\n\
+          Flags:\n  -F, --excludedflags uint16   excluded flags (int16)\n      --fq\
+          \ string              Output FASTQ file (fq1 for paired-end reads) (*require)\n\
+          \      --fq2 string             Output FASTQ2 for paired-end reads (If empty,\
+          \ all data will be at fq)\n  -h, --help                   help for tofastq\n\
+          \  -f, --requiredflags uint16   required flags (int16)\n  -s, --sam string\
+          \             Input SAM file (*require)\n"
+        generated_using: *id005
+        docker_image:
+      usage: []
+      help_flag: !Flag
+        optional: true
+        synonyms:
+        - -h
+        - --help
+        description: help for sam
+        args: !EmptyFlagArg {}
+      usage_flag:
+      version_flag:
+      help_text: "manage SAM files\n\nUsage:\n  genie sam [flags]\n  genie sam [command]\n\
+        \nAvailable Commands:\n  tofastq     convert SAM to FASTQ\n\nFlags:\n  -h,\
+        \ --help   help for sam\n\nUse \"genie sam [command] --help\" for more information\
+        \ about a command.\n"
+      generated_using: *id005
+      docker_image:
+    - &id011 !Command
+      command: &id031
+      - bolt
+      - gff3
+      positional: []
+      named: []
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id032
+        - bolt
+        - gff3
+        - convert
+        positional:
+        - !Positional
+          optional: false
+          position: 0
+          name: genie
+          description: ''
+        - !Positional
+          optional: false
+          position: 1
+          name: gff3
+          description: ''
+        - !Positional
+          optional: false
+          position: 2
+          name: convert
+          description: ''
+        named:
+        - !Flag
+          optional: true
+          synonyms:
+          - --attributes
+          description: select attributes by key
+          args: !SimpleFlagArg
+            name: stringArray
+        - !Flag
+          optional: true
+          synonyms:
+          - --end
+          description: select end
+          args: !EmptyFlagArg {}
+        - !Flag
+          optional: true
+          synonyms:
+          - -f
+          - --filepath
+          description: A bam file (*require)
+          args: !SimpleFlagArg
+            name: string
+        - !Flag
+          optional: true
+          synonyms:
+          - --header
+          description: hiding headers
+          args: !EmptyFlagArg {}
+        - !Flag
+          optional: true
+          synonyms:
+          - --limit
+          description: Output Limit (default -1)
+          args: !SimpleFlagArg
+            name: int
+        - !Flag
+          optional: true
+          synonyms:
+          - --phase
+          description: select phase
+          args: !EmptyFlagArg {}
+        - !Flag
+          optional: true
+          synonyms:
+          - --replacement
+          description: the replacement character if there is a blank value
+          args: !SimpleFlagArg
+            name: string
+        - !Flag
+          optional: true
+          synonyms:
+          - --score
+          description: select score
+          args: !EmptyFlagArg {}
+        - !Flag
+          optional: true
+          synonyms:
+          - --separator
+          description: the separator of each values (default "\t")
+          args: !SimpleFlagArg
+            name: string
+        - !Flag
+          optional: true
+          synonyms:
+          - --seqid
+          description: select seqid
+          args: !EmptyFlagArg {}
+        - !Flag
+          optional: true
+          synonyms:
+          - --source
+          description: select source
+          args: !EmptyFlagArg {}
+        - !Flag
+          optional: true
+          synonyms:
+          - --start
+          description: select start
+          args: !EmptyFlagArg {}
+        - !Flag
+          optional: true
+          synonyms:
+          - --strand
+          description: select strand
+          args: !EmptyFlagArg {}
+        - !Flag
+          optional: true
+          synonyms:
+          - --type
+          description: select type
+          args: !EmptyFlagArg {}
+        parent: *id011
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          optional: true
+          synonyms:
+          - -h
+          - --help
+          description: help for convert
+          args: !EmptyFlagArg {}
+        usage_flag:
+        version_flag:
+        help_text: "convert gff3 to other formats such as TSV and CSV\n\nUsage:\n\
+          \  genie gff3 convert [flags]\n\nFlags:\n      --attributes stringArray\
+          \   select attributes by key\n      --end                      select end\n\
+          \  -f, --filepath string          A bam file (*require)\n      --header\
+          \                   hiding headers\n  -h, --help                     help\
+          \ for convert\n      --limit int                Output Limit (default -1)\n\
+          \      --phase                    select phase\n      --replacement string\
+          \       the replacement character if there is a blank value\n      --score\
+          \                    select score\n      --separator string         the\
+          \ separator of each values (default \"\\t\")\n      --seqid            \
+          \        select seqid\n      --source                   select source\n\
+          \      --start                    select start\n      --strand         \
+          \          select strand\n      --type                     select type\n"
+        generated_using: *id005
+        docker_image:
+      usage: []
+      help_flag: !Flag
+        optional: true
+        synonyms:
+        - -h
+        - --help
+        description: help for gff3
+        args: !EmptyFlagArg {}
+      usage_flag:
+      version_flag:
+      help_text: "manage GFF3 file\n\nUsage:\n  genie gff3 [flags]\n  genie gff3 [command]\n\
+        \nAvailable Commands:\n  convert     convert gff3 to other formats such as\
+        \ TSV and CSV\n\nFlags:\n  -h, --help   help for gff3\n\nUse \"genie gff3\
+        \ [command] --help\" for more information about a command.\n"
+      generated_using: *id005
+      docker_image:
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for genie
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "A toolkit for working with next-generation sequencing data\n\nUsage:\n\
+      \  genie [flags]\n  genie [command]\n\nAvailable Commands:\n  bam         manage\
+      \ BAM files\n  bed         manage BED file\n  fasta       manage FASTA file\n\
+      \  fastq       manage FASTQ file\n  gff3        manage GFF3 file\n  help   \
+      \     help about any command\n  sam         manage SAM files\n  vcf        \
+      \ manage VCF file\n  version     displays the current Genie version\n\nFlags:\n\
+      \  -h, --help   help for genie\n\nUse \"genie [command] --help\" for more information\
+      \ about a command.\n"
+    generated_using: *id005
+    docker_image:
+  subcommands:
+  - !Command
+    command: *id012
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: genie
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: fastq
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: split
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --filepath
+      description: Input FASTQ file (*require)
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - --fq
+      description: Output FASTQ1 file (*require)
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - --fq2
+      description: Output FASTQ2 file (*require)
+      args: !SimpleFlagArg
+        name: string
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for split
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "split a single FASTQ file to pair FASTQ files (paired-end reads)\n\
+      \nUsage:\n  genie fastq split [flags]\n\nFlags:\n  -f, --filepath string   Input\
+      \ FASTQ file (*require)\n      --fq string         Output FASTQ1 file (*require)\n\
+      \      --fq2 string        Output FASTQ2 file (*require)\n  -h, --help     \
+      \         help for split\n"
+    generated_using: *id005
+    docker_image:
+  - !Command
+    command: *id013
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: genie
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: fastq
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: count
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --filepath
+      description: Input FASTQ file (*require)
+      args: !SimpleFlagArg
+        name: string
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for count
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "count a FASTQ file\n\nUsage:\n  genie fastq count [flags]\n\nFlags:\n\
+      \  -f, --filepath string   Input FASTQ file (*require)\n  -h, --help       \
+      \       help for count\n"
+    generated_using: *id005
+    docker_image:
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "manage FASTQ file\n\nUsage:\n  genie fastq [flags]\n  genie fastq [command]\n\
+    \nAvailable Commands:\n  count       count a FASTQ file\n  split       split a\
+    \ single FASTQ file to pair FASTQ files (paired-end reads)\n\nFlags:\n  -h, --help\
+    \   help for fastq\n\nUse \"genie fastq [command] --help\" for more information\
+    \ about a command.\n"
+  generated_using: *id005
+  docker_image:
+- !Command
+  command: *id014
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: genie
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: version
+    description: ''
+  named: []
+  parent: *id003
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help for version
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "displays the current Genie version\n\nUsage:\n  genie version [flags]\n\
+    \nFlags:\n  -h, --help   help for version\n"
+  generated_using: *id005
+  docker_image:
+- !Command
+  command: *id015
+  positional: []
+  named: []
+  parent: *id003
+  subcommands:
+  - !Command
+    command: *id016
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: genie
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: bam
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: tofastq
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -b
+      - --bam
+      description: Input BAM file (*require)
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -F
+      - --excludedflags
+      description: excluded flags (int16)
+      args: !SimpleFlagArg
+        name: uint16
+    - !Flag
+      optional: true
+      synonyms:
+      - --fq
+      description: Output FASTQ file (fq1 for paired-end reads) (*require)
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - --fq2
+      description: Output FASTQ2 for paired-end reads (If empty, all data will be
+        at fq)
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --requiredflags
+      description: required flags (int16)
+      args: !SimpleFlagArg
+        name: uint16
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for tofastq
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "convert BAM to FASTQ\n\nUsage:\n  genie bam tofastq [flags]\n\nFlags:\n\
+      \  -b, --bam string             Input BAM file (*require)\n  -F, --excludedflags\
+      \ uint16   excluded flags (int16)\n      --fq string              Output FASTQ\
+      \ file (fq1 for paired-end reads) (*require)\n      --fq2 string           \
+      \  Output FASTQ2 for paired-end reads (If empty, all data will be at fq)\n \
+      \ -h, --help                   help for tofastq\n  -f, --requiredflags uint16\
+      \   required flags (int16)\n"
+    generated_using: *id005
+    docker_image:
+  - !Command
+    command: *id017
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: genie
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: bam
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: view
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --filepath
+      description: A bam file (*require)
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -H
+      - --headeronly
+      description: Show the header only
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --human-readable
+      description: Show reads in human readable format
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -I
+      - --includeheader
+      description: Show header and records
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --limitreads
+      description: Limit reads (-1 is unlimited) (default -1)
+      args: !SimpleFlagArg
+        name: int
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --scope
+      description: Scope chr:begin-end
+      args: !SimpleFlagArg
+        name: stringArray
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for view
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "view a BAM file\n\nUsage:\n  genie bam view [flags]\n\nFlags:\n  -f,\
+      \ --filepath string     A bam file (*require)\n  -H, --headeronly          Show\
+      \ the header only\n  -h, --help                help for view\n      --human-readable\
+      \      Show reads in human readable format\n  -I, --includeheader       Show\
+      \ header and records\n      --limitreads int      Limit reads (-1 is unlimited)\
+      \ (default -1)\n  -s, --scope stringArray   Scope chr:begin-end\n"
+    generated_using: *id005
+    docker_image:
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "manage BAM files\n\nUsage:\n  genie bam [flags]\n  genie bam [command]\n\
+    \nAvailable Commands:\n  tofastq     convert BAM to FASTQ\n  view        view\
+    \ a BAM file\n\nFlags:\n  -h, --help   help for bam\n\nUse \"genie bam [command]\
+    \ --help\" for more information about a command.\n"
+  generated_using: *id005
+  docker_image:
+- !Command
+  command: *id018
+  positional: []
+  named: []
+  parent: *id003
+  subcommands:
+  - !Command
+    command: *id019
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: genie
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: fasta
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: faidx
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --filepath
+      description: A bam file (*require)
+      args: !SimpleFlagArg
+        name: string
+    parent: *id007
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for faidx
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "generate faidx\n\nUsage:\n  genie fasta faidx [flags]\n\nFlags:\n\
+      \  -f, --filepath string   A bam file (*require)\n  -h, --help             \
+      \ help for faidx\n"
+    generated_using: *id005
+    docker_image:
+  - !Command
+    command: *id020
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: genie
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: fasta
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: view
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --filepath
+      description: A bam file (*require)
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --scope
+      description: Scope chr:begin-end (*require)
+      args: !SimpleFlagArg
+        name: string
+    parent: *id007
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for view
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "view a FASTA file\n\nUsage:\n  genie fasta view [flags]\n\nFlags:\n\
+      \  -f, --filepath string   A bam file (*require)\n  -h, --help             \
+      \ help for view\n  -s, --scope string      Scope chr:begin-end (*require)\n"
+    generated_using: *id005
+    docker_image:
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "manage FASTA file\n\nUsage:\n  genie fasta [flags]\n  genie fasta [command]\n\
+    \nAvailable Commands:\n  faidx       generate faidx\n  view        view a FASTA\
+    \ file\n\nFlags:\n  -h, --help   help for fasta\n\nUse \"genie fasta [command]\
+    \ --help\" for more information about a command.\n"
+  generated_using: *id005
+  docker_image:
+- !Command
+  command: *id021
+  positional: []
+  named: []
+  parent: *id003
+  subcommands:
+  - !Command
+    command: *id022
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: genie
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: bed
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: count
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --filepath
+      description: A bam file (*require)
+      args: !SimpleFlagArg
+        name: string
+    parent: *id008
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for count
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "count a BED file\n\nUsage:\n  genie bed count [flags]\n\nFlags:\n\
+      \  -f, --filepath string   A bam file (*require)\n  -h, --help             \
+      \ help for count\n"
+    generated_using: *id005
+    docker_image:
+  - !Command
+    command: *id023
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: genie
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: bed
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: view
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --filepath
+      description: A bam file (*require)
+      args: !SimpleFlagArg
+        name: string
+    parent: *id008
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for view
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "view a BED file\n\nUsage:\n  genie bed view [flags]\n\nFlags:\n  -f,\
+      \ --filepath string   A bam file (*require)\n  -h, --help              help\
+      \ for view\n"
+    generated_using: *id005
+    docker_image:
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "manage BED file\n\nUsage:\n  genie bed [flags]\n  genie bed [command]\n\
+    \nAvailable Commands:\n  count       count a BED file\n  view        view a BED\
+    \ file\n\nFlags:\n  -h, --help   help for bed\n\nUse \"genie bed [command] --help\"\
+    \ for more information about a command.\n"
+  generated_using: *id005
+  docker_image:
+- !Command
+  command: *id024
+  positional: []
+  named: []
+  parent: *id003
+  subcommands:
+  - !Command
+    command: *id025
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: genie
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: vcf
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: venn
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --filepath
+      description: VCF files (*require at 3 files)
+      args: !SimpleFlagArg
+        name: stringArray
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      - --primary
+      description: a primary VCF file (*require)
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --svtype
+      description: SVTYPE such as DEL, DUP, INV, INS and BND (*require, support only
+        one type)
+      args: !SimpleFlagArg
+        name: string
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for venn
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Show a Venn diagram (this version support only three sets)\n\nUsage:\n\
+      \  genie vcf venn [flags]\n\nFlags:\n  -f, --filepath stringArray   VCF files\
+      \ (*require at 3 files)\n  -h, --help                   help for venn\n  -p,\
+      \ --primary string         a primary VCF file (*require)\n  -t, --svtype string\
+      \          SVTYPE such as DEL, DUP, INV, INS and BND (*require, support only\
+      \ one type)\n"
+    generated_using: *id005
+    docker_image:
+  - !Command
+    command: *id026
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: genie
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: vcf
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: filter
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --filepath
+      description: a VCF file (*require)
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -m
+      - --maxlength
+      description: Max SVLENGTH (default 2147483647)
+      args: !SimpleFlagArg
+        name: int
+    - !Flag
+      optional: true
+      synonyms:
+      - -n
+      - --minlength
+      description: Min SVLENGTH (default -2147483647)
+      args: !SimpleFlagArg
+        name: int
+    - !Flag
+      optional: true
+      synonyms:
+      - -y
+      - --onlysv
+      description: Only SVs
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --output
+      description: output file
+      args: !SimpleFlagArg
+        name: string
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for filter
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "filter VCF file\n\nUsage:\n  genie vcf filter [flags]\n\nFlags:\n\
+      \  -f, --filepath string   a VCF file (*require)\n  -h, --help             \
+      \ help for filter\n  -m, --maxlength int     Max SVLENGTH (default 2147483647)\n\
+      \  -n, --minlength int     Min SVLENGTH (default -2147483647)\n  -y, --onlysv\
+      \            Only SVs\n  -o, --output string     output file\n"
+    generated_using: *id005
+    docker_image:
+  - !Command
+    command: *id027
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: genie
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: vcf
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: stats
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --filepath
+      description: a VCF file (*require)
+      args: !SimpleFlagArg
+        name: string
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for stats
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "view statistics of a VCF file\n\nUsage:\n  genie vcf stats [flags]\n\
+      \nFlags:\n  -f, --filepath string   a VCF file (*require)\n  -h, --help    \
+      \          help for stats\n"
+    generated_using: *id005
+    docker_image:
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "manage VCF file\n\nUsage:\n  genie vcf [flags]\n  genie vcf [command]\n\
+    \nAvailable Commands:\n  comparetobed compare between BED and VCF files\n  comparetovcf\
+    \ compare between VCF and VCF files\n  filter       filter VCF file\n  stats \
+    \       view statistics of a VCF file\n  venn         Show a Venn diagram (this\
+    \ version support only three sets)\n\nFlags:\n  -h, --help   help for vcf\n\n\
+    Use \"genie vcf [command] --help\" for more information about a command.\n"
+  generated_using: *id005
+  docker_image:
+- !Command
+  command: *id028
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: genie
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: help
+    description: ''
+  named: []
+  parent: *id003
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help for help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Need help? Go to the https://github.com/sakkayaphab/genie\n\nUsage:\n\
+    \  genie help [flags]\n\nFlags:\n  -h, --help   help for help\n"
+  generated_using: *id005
+  docker_image:
+- !Command
+  command: *id029
+  positional: []
+  named: []
+  parent: *id003
+  subcommands:
+  - !Command
+    command: *id030
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: genie
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: sam
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: tofastq
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -F
+      - --excludedflags
+      description: excluded flags (int16)
+      args: !SimpleFlagArg
+        name: uint16
+    - !Flag
+      optional: true
+      synonyms:
+      - --fq
+      description: Output FASTQ file (fq1 for paired-end reads) (*require)
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - --fq2
+      description: Output FASTQ2 for paired-end reads (If empty, all data will be
+        at fq)
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --requiredflags
+      description: required flags (int16)
+      args: !SimpleFlagArg
+        name: uint16
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --sam
+      description: Input SAM file (*require)
+      args: !SimpleFlagArg
+        name: string
+    parent: *id010
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for tofastq
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "convert SAM to FASTQ\n\nUsage:\n  genie sam tofastq [flags]\n\nFlags:\n\
+      \  -F, --excludedflags uint16   excluded flags (int16)\n      --fq string  \
+      \            Output FASTQ file (fq1 for paired-end reads) (*require)\n     \
+      \ --fq2 string             Output FASTQ2 for paired-end reads (If empty, all\
+      \ data will be at fq)\n  -h, --help                   help for tofastq\n  -f,\
+      \ --requiredflags uint16   required flags (int16)\n  -s, --sam string      \
+      \       Input SAM file (*require)\n"
+    generated_using: *id005
+    docker_image:
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "manage SAM files\n\nUsage:\n  genie sam [flags]\n  genie sam [command]\n\
+    \nAvailable Commands:\n  tofastq     convert SAM to FASTQ\n\nFlags:\n  -h, --help\
+    \   help for sam\n\nUse \"genie sam [command] --help\" for more information about\
+    \ a command.\n"
+  generated_using: *id005
+  docker_image:
+- !Command
+  command: *id031
+  positional: []
+  named: []
+  parent: *id003
+  subcommands:
+  - !Command
+    command: *id032
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: genie
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: gff3
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: convert
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --attributes
+      description: select attributes by key
+      args: !SimpleFlagArg
+        name: stringArray
+    - !Flag
+      optional: true
+      synonyms:
+      - --end
+      description: select end
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --filepath
+      description: A bam file (*require)
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - --header
+      description: hiding headers
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --limit
+      description: Output Limit (default -1)
+      args: !SimpleFlagArg
+        name: int
+    - !Flag
+      optional: true
+      synonyms:
+      - --phase
+      description: select phase
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --replacement
+      description: the replacement character if there is a blank value
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - --score
+      description: select score
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --separator
+      description: the separator of each values (default "\t")
+      args: !SimpleFlagArg
+        name: string
+    - !Flag
+      optional: true
+      synonyms:
+      - --seqid
+      description: select seqid
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --source
+      description: select source
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --start
+      description: select start
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --strand
+      description: select strand
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --type
+      description: select type
+      args: !EmptyFlagArg {}
+    parent: *id011
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: help for convert
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "convert gff3 to other formats such as TSV and CSV\n\nUsage:\n  genie\
+      \ gff3 convert [flags]\n\nFlags:\n      --attributes stringArray   select attributes\
+      \ by key\n      --end                      select end\n  -f, --filepath string\
+      \          A bam file (*require)\n      --header                   hiding headers\n\
+      \  -h, --help                     help for convert\n      --limit int      \
+      \          Output Limit (default -1)\n      --phase                    select\
+      \ phase\n      --replacement string       the replacement character if there\
+      \ is a blank value\n      --score                    select score\n      --separator\
+      \ string         the separator of each values (default \"\\t\")\n      --seqid\
+      \                    select seqid\n      --source                   select source\n\
+      \      --start                    select start\n      --strand             \
+      \      select strand\n      --type                     select type\n"
+    generated_using: *id005
+    docker_image:
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "manage GFF3 file\n\nUsage:\n  genie gff3 [flags]\n  genie gff3 [command]\n\
+    \nAvailable Commands:\n  convert     convert gff3 to other formats such as TSV\
+    \ and CSV\n\nFlags:\n  -h, --help   help for gff3\n\nUse \"genie gff3 [command]\
+    \ --help\" for more information about a command.\n"
+  generated_using: *id005
+  docker_image:
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "A toolkit for working with next-generation sequencing data\n\nUsage:\n\
+  \  genie [flags]\n  genie [command]\n\nAvailable Commands:\n  bam         manage\
+  \ BAM files\n  bed         manage BED file\n  fasta       manage FASTA file\n  fastq\
+  \       manage FASTQ file\n  gff3        manage GFF3 file\n  help        help about\
+  \ any command\n  sam         manage SAM files\n  vcf         manage VCF file\n \
+  \ version     displays the current Genie version\n\nFlags:\n  -h, --help   help\
+  \ for genie\n\nUse \"genie [command] --help\" for more information about a command.\n"
+generated_using: *id005
+docker_image:

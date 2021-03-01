@@ -34,6 +34,9 @@ task Ramen {
       ~{if (pseudo_count) then "--pseudocount" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_f_scores: "[on|off] Regression on the log_e of the fluorescence scores\\non: (Default) Use the log_e(fluorescence) in the regression.\\noff: Use the score directly provided in the sequence file."
     log_pwm_scores: "[on|off] Regression on the log_e of the PWM scores\\non: Use the log_e(RMA or AMA Score) in the regression.\\noff: (Default) Use the RMA/AMA score directly."

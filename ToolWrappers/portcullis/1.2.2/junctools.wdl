@@ -28,6 +28,9 @@ task Junctools {
       ~{junction} \
       ~{files_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this: ""
     script: ""

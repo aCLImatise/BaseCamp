@@ -13,7 +13,7 @@ task EbisearchGetQueryResults {
     String? facets
     String? facet_fields
     Int? facet_count
-    File? file
+    File? optional_file_export
     String retrieve
   }
   command <<<
@@ -30,8 +30,11 @@ task EbisearchGetQueryResults {
       ~{if defined(facets) then ("--facets " +  '"' + facets + '"') else ""} \
       ~{if defined(facet_fields) then ("--facet_fields " +  '"' + facet_fields + '"') else ""} \
       ~{if defined(facet_count) then ("--facet_count " +  '"' + facet_count + '"') else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""}
+      ~{if defined(optional_file_export) then ("--file " +  '"' + optional_file_export + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     domain: "Domain id in EBI (accessible with\\nget_domains)"
     query: "Query (searchable fields accessible with\\nget_fields with searchable     as type)"
@@ -44,7 +47,7 @@ task EbisearchGetQueryResults {
     facets: "(Optional, Multiple) Facet selections to\\napply on search results     with\\nfacet_id:facet_value (facet_id accessible\\nwith get_fields with facet     as type)"
     facet_fields: "(Optional, Multiple) Facet field identifiers\\nassociated with facets     to retrieve\\n(facet_id accessible with get_fields with\\nfacet as type)"
     facet_count: "(Optional) Number of facet values to"
-    file: "(Optional) File to export the entry content"
+    optional_file_export: "(Optional) File to export the entry content"
     retrieve: "--facet_depth INTEGER           (Optional) Number of levels in the facet"
   }
   output {

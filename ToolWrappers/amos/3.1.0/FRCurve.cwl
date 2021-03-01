@@ -3,7 +3,7 @@ id: FRCurve.cwl
 inputs:
 - id: in_d
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -D
 - id: in_description
@@ -53,7 +53,7 @@ inputs:
     position: 0
 - id: in_params
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 - id: in_feature_response
@@ -240,6 +240,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - FRCurve

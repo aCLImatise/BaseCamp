@@ -12,6 +12,9 @@ task PalFinder {
       ~{pal_finder_v_zero_dot_zero_two_dot_zero_four_do_tpl} \
       ~{config_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     perl: ""
     pal_finder_v_zero_dot_zero_two_dot_zero_four_do_tpl: ""

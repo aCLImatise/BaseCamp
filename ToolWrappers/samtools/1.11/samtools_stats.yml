@@ -1,0 +1,239 @@
+!Command
+command:
+- samtools
+- stats
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: file.bam
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --coverage
+  description: ',<int>,<int>    Coverage distribution min,max,step [1,1000,1]'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --remove-dups
+  description: Exclude from statistics reads marked as duplicates
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --customized-index-file
+  description: Use a customized index file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --required-flag
+  description: <str|int>      Required flag, 0 for unset. See also `samtools flags`
+    [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --filtering-flag
+  description: Filtering flag, 0 for unset. See also `samtools flags` [0]
+  args: !SimpleFlagArg
+    name: str|int
+- !Flag
+  optional: true
+  synonyms:
+  - --GC-depth
+  description: the size of GC-depth bins (decreasing bin size increases memory requirement)
+    [2e4]
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --insert-size
+  description: Maximum insert size [8000]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --id
+  description: Include only listed read group or sample name
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --read-length
+  description: Include in the statistics only reads with the given read length [-1]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --most-inserts
+  description: Report only the main part of inserts [0.99]
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --split-prefix
+  description: Path or string prefix for filepaths output by -S (default is input
+    filename)
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --trim-quality
+  description: The BWA trimming parameter [0]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --ref-seq
+  description: Reference sequence (required for GC-depth and mismatches-per-cycle
+    calculation).
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sam
+  description: Ignored (input format is auto-detected).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --split
+  description: Also write statistics to separate files split by tagged field.
+  args: !SimpleFlagArg
+    name: tag
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --target-regions
+  description: Do stats in these regions only. Tab-delimited file chr,from,to, 1-based,
+    inclusive.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --sparse
+  description: Suppress outputting IS rows where there are no insertions.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --remove-overlaps
+  description: Remove overlaps of paired-end reads from coverage and base count computations.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --cov-threshold
+  description: Only bases with coverage above this value will be included in the target
+    percentage computation [0]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --input-fmt-option
+  description: "[=VAL]\nSpecify a single input file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  args: !SimpleFlagArg
+    name: OPT
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: Reference sequence FASTA FILE [null]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -@
+  - --threads
+  description: Number of additional threads to use [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: "Set level of verbosity\n"
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: This help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "About: The program collects statistics from BAM files. The output can\
+  \ be visualized using plot-bamstats.\nUsage: samtools stats [OPTIONS] file.bam\n\
+  \       samtools stats [OPTIONS] file.bam chr:from-to\nOptions:\n    -c, --coverage\
+  \ <int>,<int>,<int>    Coverage distribution min,max,step [1,1000,1]\n    -d, --remove-dups\
+  \                   Exclude from statistics reads marked as duplicates\n    -X,\
+  \ --customized-index-file         Use a customized index file\n    -f, --required-flag\
+  \  <str|int>      Required flag, 0 for unset. See also `samtools flags` [0]\n  \
+  \  -F, --filtering-flag <str|int>      Filtering flag, 0 for unset. See also `samtools\
+  \ flags` [0]\n        --GC-depth <float>              the size of GC-depth bins\
+  \ (decreasing bin size increases memory requirement) [2e4]\n    -h, --help     \
+  \                     This help message\n    -i, --insert-size <int>           \
+  \  Maximum insert size [8000]\n    -I, --id <string>                   Include only\
+  \ listed read group or sample name\n    -l, --read-length <int>             Include\
+  \ in the statistics only reads with the given read length [-1]\n    -m, --most-inserts\
+  \ <float>          Report only the main part of inserts [0.99]\n    -P, --split-prefix\
+  \ <str>            Path or string prefix for filepaths output by -S (default is\
+  \ input filename)\n    -q, --trim-quality <int>            The BWA trimming parameter\
+  \ [0]\n    -r, --ref-seq <file>                Reference sequence (required for\
+  \ GC-depth and mismatches-per-cycle calculation).\n    -s, --sam               \
+  \            Ignored (input format is auto-detected).\n    -S, --split <tag>   \
+  \                Also write statistics to separate files split by tagged field.\n\
+  \    -t, --target-regions <file>         Do stats in these regions only. Tab-delimited\
+  \ file chr,from,to, 1-based, inclusive.\n    -x, --sparse                      \
+  \  Suppress outputting IS rows where there are no insertions.\n    -p, --remove-overlaps\
+  \               Remove overlaps of paired-end reads from coverage and base count\
+  \ computations.\n    -g, --cov-threshold <int>           Only bases with coverage\
+  \ above this value will be included in the target percentage computation [0]\n \
+  \     --input-fmt-option OPT[=VAL]\n               Specify a single input file format\
+  \ option in the form\n               of OPTION or OPTION=VALUE\n      --reference\
+  \ FILE\n               Reference sequence FASTA FILE [null]\n  -@, --threads INT\n\
+  \               Number of additional threads to use [0]\n      --verbosity INT\n\
+  \               Set level of verbosity\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/samtools:1.11--h6270b1f_0

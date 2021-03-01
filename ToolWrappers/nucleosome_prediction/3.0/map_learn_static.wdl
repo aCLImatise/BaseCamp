@@ -10,6 +10,9 @@ task MapLearnStatic {
       ~{map_learn} \
       ~{map_xml_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     map_learn: ""
     map_xml_file: ""

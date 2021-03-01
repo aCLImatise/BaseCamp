@@ -22,6 +22,9 @@ task SynapseGet {
       ~{if (multithreaded) then "--multiThreaded" else ""} \
       ~{if defined(v) then ("-v " +  '"' + v + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query: "Optional query parameter, will fetch all of the\\nentities returned by a query (see query for help)."
     recursive: "Fetches content in Synapse recursively contained in\\nthe parentId specified by id."

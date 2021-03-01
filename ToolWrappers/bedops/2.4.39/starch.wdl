@@ -20,9 +20,12 @@ task Starch {
       ~{if defined(report_progress) then ("--report-progress " +  '"' + report_progress + '"') else ""} \
       ~{if (header) then "--header" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     note: "=\\\"foo bar...\\\"   Append note to output archive metadata (optional)."
-    bzip_two: "| --gzip      Specify backend compression type (optional, default\\nis bzip2)."
+    bzip_two: "Specify backend compression type (optional, default\\nis bzip2)."
     omit_signature: "Skip generating per-chromosome data integrity signature\\n(optional, default is to generate signature)."
     report_progress: "Report compression progress every N elements per\\nchromosome to standard error stream (optional)"
     header: "Support BED input with custom UCSC track, SAM or VCF\\nheaders, or generic comments (optional)."

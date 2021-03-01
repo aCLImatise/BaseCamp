@@ -32,6 +32,9 @@ task Dxgeneratedxapp {
       ~{if defined(release) then ("--release " +  '"' + release + '"') else ""} \
       ~{if defined(run_spec_version) then ("--runspec-version " +  '"' + run_spec_version + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target_module: "The fully-qualified module that contains the target\\nmethod."
     target_function: "The main function that is called by the target\\nexecutable. This should bewhere the ArgumentParser is\\nconfigured."

@@ -14,6 +14,9 @@ task Mawk {
       ~{if defined(sets_field_separator) then ("-F " +  '"' + sets_field_separator + '"') else ""} \
       ~{if defined(value_assigns_value) then ("-v " +  '"' + value_assigns_value + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     program_text_read: "Program  text is read from file instead of from the"
     sets_field_separator: "sets the field separator, FS, to value."

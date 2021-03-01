@@ -28,6 +28,9 @@ task RgttoolspyThorSplit {
       ~{if defined(dnc) then ("-dnc " +  '"' + dnc + '"') else ""} \
       ~{if defined(snc) then ("-snc " +  '"' + snc + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bed_file: "Input BED file"
     output_directory: "Output directory."

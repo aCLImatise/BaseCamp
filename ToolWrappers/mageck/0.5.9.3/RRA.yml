@@ -4,96 +4,96 @@ command:
 positional: []
 named:
 - !Flag
-  description: '. Format: <item id> <group id> <list id> <value> [<probability>] [<chosen>]'
+  optional: true
   synonyms:
   - -i
+  description: '. Format: <item id> <group id> <list id> <value> [<probability>] [<chosen>]'
   args: !SimpleFlagArg
     name: input data file
-  optional: true
 - !Flag
-  description: '. Format: <group id> <number of items in the group> <lo-value> <false
-    discovery rate>'
+  optional: true
   synonyms:
   - -o
+  description: '. Format: <group id> <number of items in the group> <lo-value> <false
+    discovery rate>'
   args: !SimpleFlagArg
     name: output file
-  optional: true
 - !Flag
-  description: . RRA only consider the items with percentile smaller than this parameter.
-    Default=0.1
+  optional: true
   synonyms:
   - -p
+  description: . RRA only consider the items with percentile smaller than this parameter.
+    Default=0.1
   args: !SimpleFlagArg
     name: maximum percentile
-  optional: true
 - !Flag
-  description: . RRA only consider the items with percentile greater than this parameter.
-    Default=-1.0
+  optional: true
   synonyms:
   - -P
+  description: . RRA only consider the items with percentile greater than this parameter.
+    Default=-1.0
   args: !SimpleFlagArg
     name: minimum percentile
-  optional: true
 - !Flag
-  description: . A list of control sgRNA names.
+  optional: true
   synonyms:
   - --control
+  description: . A list of control sgRNA names.
   args: !SimpleFlagArg
     name: control_sgrna list
-  optional: true
 - !Flag
-  description: . The number of rounds of permutation. Increase this value if the number
-    of genes is small. Default 100.
+  optional: true
   synonyms:
   - --permutation
+  description: . The number of rounds of permutation. Increase this value if the number
+    of genes is small. Default 100.
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-permutation-by-group.
   description: default, gene permutation is performed separately, by their number
     of sgRNAs. Turning this option will perform permutation on all genes together.
     This makes the program faster, but the p value estimation is accurate only if
     the number of sgRNAs per gene is approximately the same.
-  synonyms:
-  - --no-permutation-by-group.
   args: !SimpleFlagArg
     name: By
-  optional: true
 - !Flag
-  description: . Genes to skip from doing permutation. Specify it multiple times if
-    you need to skip more than 1 genes.
+  optional: true
   synonyms:
   - --skip-gene
+  description: . Genes to skip from doing permutation. Specify it multiple times if
+    you need to skip more than 1 genes.
   args: !SimpleFlagArg
     name: gene_name
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min-percentage-goodsgrna
   description: . Filter genes that have too few percentage of 'good sgrnas', or sgrnas
     that fall below the -p threshold. Must be a number between 0-1. Default 0 (do
     not filter genes).
-  synonyms:
-  - --min-percentage-goodsgrna
   args: !SimpleFlagArg
     name: min percentage
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min-number-goodsgrna
   description: . Filter genes that have too few number of 'good sgrnas', or sgrnas
     that fall below the -p threshold. Must be an integer. Default 0 (do not filter
     genes).
-  synonyms:
-  - --min-number-goodsgrna
   args: !SimpleFlagArg
     name: min number
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-sgrnapergene-permutation
   description: . Only permute genes by group if the number of sgRNAs per gene is smaller
     than this number. This will save a lot of time if some regions are targeted by
     a large number of sgRNAs (usually hundreds). Must be an integer. Default 100.
-  synonyms:
-  - --max-sgrnapergene-permutation
   args: !SimpleFlagArg
     name: max number
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -125,3 +125,4 @@ help_text: "Welcome to RRA v 0.5.9.\nRRA - Robust Rank Aggreation v 0.5.9.\nusag
   \ \nexample:\nRRA -i input.txt -o output.txt -p 0.1 \n"
 generated_using:
 - --help
+docker_image:

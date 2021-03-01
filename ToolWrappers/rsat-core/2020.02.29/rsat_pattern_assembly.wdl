@@ -50,6 +50,9 @@ task RsatPatternassembly {
       ~{if (top_pat) then "-toppat" else ""} \
       ~{if (max_pat) then "-maxpat" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "(must be first argument) display options"
     verbose: "verbose"

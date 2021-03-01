@@ -1,0 +1,287 @@
+&id001 !Command
+command:
+- advntr
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - advntr
+  - genotype
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: Illumina
+    description: -o/--outfile <file>             file to write results. adVNTR writes
+      output to stdout if oufile is not
+  - !Positional
+    optional: false
+    position: 1
+    name: specified.
+    description: -of/--outfmt <format>           output format. Allowed values are
+      {text, bed, vcf} [text]
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --alignment_file
+    description: alignment file in SAM/BAM/CRAM format
+    args: !SimpleFlagArg
+      name: file
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --reference_filename
+    description: "path to a FASTA-formatted reference file for CRAM files. It overrides\n\
+      filename specified in header, which is normally used to find the reference"
+    args: !SimpleFlagArg
+      name: file
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --fasta
+    description: Fasta file containing raw reads
+    args: !SimpleFlagArg
+      name: file
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --pacbio
+    description: set this flag if input file contains PacBio reads instead of Illumina
+      reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --nanopore
+    description: set this flag if input file contains Nanopore MinION reads instead
+      of
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -fs
+    - --frameshift
+    description: "set this flag to search for frameshifts in VNTR instead of copy\
+      \ number.\nSupported VNTR IDs: [25561, 519759]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --expansion
+    description: set this flag to determine long expansion from PCR-free data
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --coverage
+    description: average sequencing coverage in PCR-free sequencing
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - --haploid
+    description: set this flag if the organism is haploid
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -naive
+    - --naive
+    description: use naive approach for PacBio reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --working_directory
+    description: working directory for creating temporary files needed for computation
+    args: !SimpleFlagArg
+      name: path
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --models
+    description: VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]
+    args: !SimpleFlagArg
+      name: file
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: number of threads [1]
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    - --update
+    description: set this flag to iteratively update the model
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -vid
+    - --vntr_id
+    description: comma-separated list of VNTR IDs
+    args: !SimpleFlagArg
+      name: text
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: advntr genotype [options]\n\nInput/output options:\n  -a/--alignment_file\
+    \ <file>      alignment file in SAM/BAM/CRAM format\n  -r/--reference_filename\
+    \ <file>  path to a FASTA-formatted reference file for CRAM files. It overrides\n\
+    \                                  filename specified in header, which is normally\
+    \ used to find the reference\n  -f/--fasta <file>               Fasta file containing\
+    \ raw reads\n  -p/--pacbio                     set this flag if input file contains\
+    \ PacBio reads instead of Illumina reads\n  -n/--nanopore                   set\
+    \ this flag if input file contains Nanopore MinION reads instead of\n        \
+    \                          Illumina\n  -o/--outfile <file>             file to\
+    \ write results. adVNTR writes output to stdout if oufile is not\n           \
+    \                       specified.\n  -of/--outfmt <format>           output format.\
+    \ Allowed values are {text, bed, vcf} [text]\n\nAlgorithm options:\n  -fs/--frameshift\
+    \                set this flag to search for frameshifts in VNTR instead of copy\
+    \ number.\n                                  Supported VNTR IDs: [25561, 519759]\n\
+    \  -e/--expansion                  set this flag to determine long expansion from\
+    \ PCR-free data\n  -c/--coverage <float>           average sequencing coverage\
+    \ in PCR-free sequencing\n  --haploid                       set this flag if the\
+    \ organism is haploid\n  -naive/--naive                  use naive approach for\
+    \ PacBio reads\n\nOther options:\n  -h/--help                       show this\
+    \ help message and exit\n  --working_directory <path>      working directory for\
+    \ creating temporary files needed for computation\n  -m/--models <file>      \
+    \        VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]\n  -t/--threads\
+    \ <int>              number of threads [1]\n  -u/--update                    \
+    \ set this flag to iteratively update the model\n  -vid/--vntr_id <text>     \
+    \      comma-separated list of VNTR IDs\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/advntr:1.4.1--py27h76bc9d7_0
+- !Command
+  command:
+  - advntr
+  - addmodel
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --reference
+    description: Reference genome
+    args: !SimpleFlagArg
+      name: text
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --chromosome
+    description: Chromosome (e.g. chr1)
+    args: !SimpleFlagArg
+      name: text
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --pattern
+    description: First repeating pattern of VNTR in forward (5' to 3') direction
+    args: !SimpleFlagArg
+      name: text
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --start
+    description: Start coordinate of VNTR in forward (5' to 3') direction
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --end
+    description: End coordinate of VNTR in forward (5' to 3') direction
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gene
+    description: Gene name
+    args: !SimpleFlagArg
+      name: text
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --annotation
+    description: Annotation of VNTR region
+    args: !SimpleFlagArg
+      name: text
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --models
+    description: VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]
+    args: !SimpleFlagArg
+      name: file
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: advntr addmodel [options]\n\nRequired arguments:\n  -r/--reference\
+    \ <text>   Reference genome\n  -c/--chromosome <text>  Chromosome (e.g. chr1)\n\
+    \  -p/--pattern <text>     First repeating pattern of VNTR in forward (5' to 3')\
+    \ direction\n  -s/--start <int>        Start coordinate of VNTR in forward (5'\
+    \ to 3') direction\n  -e/--end <int>          End coordinate of VNTR in forward\
+    \ (5' to 3') direction\n\nOther options:\n  -g/--gene <text>        Gene name\n\
+    \  -a/--annotation <text>  Annotation of VNTR region\n  -m/--models <file>   \
+    \   VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]\n  -h/--help\
+    \               show this help message and exit\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/advntr:1.4.1--py27h76bc9d7_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Using TensorFlow backend.\nusage: \r=======================================================\n\
+  adVNTR 1.4.1: Genopyting tool for VNTRs\n=======================================================\n\
+  Source code: https://github.com/mehrdadbakhtiari/adVNTR\nInstructions: http://advntr.readthedocs.io\n\
+  -------------------------------------------------------\n\nusage: advntr <command>\
+  \ [options]\n\n\rCommand: genotype\tfind RU counts and mutations in VNTRs\n    \
+  \     viewmodel\tview existing models in database\n         addmodel\tadd custom\
+  \ VNTR to the database\n         delmodel\tremove a model from database\n\r\nadvntr:\
+  \ error: too few arguments\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/advntr:1.4.1--py27h76bc9d7_0

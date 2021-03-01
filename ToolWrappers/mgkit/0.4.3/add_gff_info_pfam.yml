@@ -4,30 +4,43 @@ command:
 - pfam
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: INPUT_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: OUTPUT_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-i, --id-attr TEXT   In which attribute the Pfam ID/ACCESSION is stored\n\
-    (defaults to *gene_id*)\n-a, --use-accession  If used, the attribute value is\
-    \ the Pfam ACCESSION\n(e.g. PF06894), not ID (e.g. Phage_TAC_2)\n--help      \
-    \         Show this message and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
-  args: !EmptyFlagArg {}
+  - -i
+  - --id-attr
+  description: "In which attribute the Pfam ID/ACCESSION is stored\n(defaults to *gene_id*)"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
   optional: true
+  synonyms:
+  - -a
+  - --use-accession
+  description: "If used, the attribute value is the Pfam ACCESSION\n(e.g. PF06894),\
+    \ not ID (e.g. Phage_TAC_2)"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: add-gff-info pfam [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Adds\
@@ -38,3 +51,4 @@ help_text: "Usage: add-gff-info pfam [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  A
   \  --help               Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

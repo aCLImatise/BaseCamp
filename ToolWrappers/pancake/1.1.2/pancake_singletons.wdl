@@ -10,7 +10,7 @@ task PancakeSingletons {
     Array[String] exclude_genomes
     Array[String] exclude_chromosomes
     Int? min_len
-    Directory? directory_files_singleton
+    Directory? directory_files_written
     Boolean? no_output
     File? bed_file
   }
@@ -24,10 +24,13 @@ task PancakeSingletons {
       ~{if defined(exclude_genomes) then ("--exclude_genomes " +  '"' + exclude_genomes + '"') else ""} \
       ~{if defined(exclude_chromosomes) then ("--exclude_chromosomes " +  '"' + exclude_chromosomes + '"') else ""} \
       ~{if defined(min_len) then ("--min_len " +  '"' + min_len + '"') else ""} \
-      ~{if defined(directory_files_singleton) then ("--output " +  '"' + directory_files_singleton + '"') else ""} \
+      ~{if defined(directory_files_written) then ("--output " +  '"' + directory_files_written + '"') else ""} \
       ~{if (no_output) then "--no_output" else ""} \
       ~{if defined(bed_file) then ("--bed_file " +  '"' + bed_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_file: "Name of PanCake Data Object File (required)"
     ref_chrom: "Reference CHROMOSOME (define either ONE reference\\nchromosome or ONE reference genome)"
@@ -37,7 +40,7 @@ task PancakeSingletons {
     exclude_genomes: "Names of GENOMES to exclude from singleton analysis\\n(DEFAULT: No genomes excluded)"
     exclude_chromosomes: "Names of CHROMOSOMES to exclude from singleton\\nanalysis (DEFAULT: No chromosomes excluded)"
     min_len: "minimum length of regions to identify as a singleton\\nregion (INTEGER, DEFAULT=25)"
-    directory_files_singleton: "directory to which .fasta files of singleton regions\\nare written (DEFAULT:\\nsingletons_{REF_CHROM|REF_GENOME})"
+    directory_files_written: "directory to which .fasta files of singleton regions\\nare written (DEFAULT:\\nsingletons_{REF_CHROM|REF_GENOME})"
     no_output: "if set, supress .fasta output of singleton regions"
     bed_file: ".bed file to which singleton regions are written\\n(DEFAULT= singletons_{REF_CHROM|REF_GENOME}.bed)\\n"
   }

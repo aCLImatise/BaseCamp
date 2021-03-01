@@ -4,8 +4,8 @@ task GetMirdeep2Precursorspl {
   input {
     Boolean? s
     Boolean? var_1
-    Boolean? output_dna_instead
-    Boolean? make_simple_d
+    Boolean? output_dna_rna
+    Boolean? make_d_only
     Boolean? getmature_instead_precursor
     Boolean? getstar_instead_precursor
     Boolean? trackname_for_bedfiles
@@ -18,8 +18,8 @@ task GetMirdeep2Precursorspl {
     get_mirdeep2_precursors_pl \
       ~{if (s) then "-s" else ""} \
       ~{if (var_1) then "-t" else ""} \
-      ~{if (output_dna_instead) then "-d" else ""} \
-      ~{if (make_simple_d) then "-p" else ""} \
+      ~{if (output_dna_rna) then "-d" else ""} \
+      ~{if (make_d_only) then "-p" else ""} \
       ~{if (getmature_instead_precursor) then "-m" else ""} \
       ~{if (getstar_instead_precursor) then "-k" else ""} \
       ~{if (trackname_for_bedfiles) then "-T" else ""} \
@@ -28,11 +28,14 @@ task GetMirdeep2Precursorspl {
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s: "[int]        output only precursors with min-score >= [int]"
     var_1: "[int]        output only precursors with score     <  [int]"
-    output_dna_instead: "output dna instead of rna"
-    make_simple_d: "make simple id with the name only"
+    output_dna_rna: "output dna instead of rna"
+    make_d_only: "make simple id with the name only"
     getmature_instead_precursor: "get_mature instead of precursor"
     getstar_instead_precursor: "get_star instead of precursor"
     trackname_for_bedfiles: "Trackname for bedfiles"

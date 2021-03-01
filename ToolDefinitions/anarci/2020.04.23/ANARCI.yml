@@ -4,134 +4,134 @@ command:
 positional: []
 named:
 - !Flag
-  description: A sequence or an input fasta file
+  optional: true
   synonyms:
   - --sequence
   - -i
+  description: A sequence or an input fasta file
   args: !SimpleFlagArg
     name: INPUTSEQUENCE
-  optional: true
 - !Flag
-  description: The output file to use. Default is stdout
+  optional: true
   synonyms:
   - --outfile
   - -o
+  description: The output file to use. Default is stdout
   args: !SimpleFlagArg
     name: OUTFILE
-  optional: true
 - !Flag
-  description: "Which numbering scheme should be used. i, k, c, m, w\nand a are shorthand\
-    \ for IMGT, Kabat, Chothia, Martin\n(Extended Chothia), Wolfguy and Aho respectively.\n\
-    Default IMGT"
+  optional: true
   synonyms:
   - --scheme
   - -s
+  description: "Which numbering scheme should be used. i, k, c, m, w\nand a are shorthand\
+    \ for IMGT, Kabat, Chothia, Martin\n(Extended Chothia), Wolfguy and Aho respectively.\n\
+    Default IMGT"
   args: !ChoiceFlagArg
     choices: !!set
-      w:
       i:
-      k:
       c:
+      k:
+      imgt:
+      aho:
+      martin:
       kabat:
       m:
-      aho:
-      a:
-      martin:
-      chothia:
       wolfguy:
-      imgt:
-  optional: true
+      a:
+      w:
+      chothia:
 - !Flag
+  optional: true
+  synonyms:
+  - --restrict
   description: "[{ig,tr,heavy,light,H,K,L,A,B} ...], -r {ig,tr,heavy,light,H,K,L,A,B}\
     \ [{ig,tr,heavy,light,H,K,L,A,B} ...]\nRestrict ANARCI to only recognise certain\
     \ types of\nreceptor chains."
-  synonyms:
-  - --restrict
   args: !ChoiceFlagArg
     choices: !!set
-      L:
-      A:
-      heavy:
-      tr:
-      K:
-      B:
       ig:
+      tr:
       light:
       H:
-  optional: true
+      B:
+      A:
+      heavy:
+      L:
+      K:
 - !Flag
+  optional: true
+  synonyms:
+  - --csv
   description: "Write the output in csv format. Outfile must be\nspecified. A csv\
     \ file is written for each chain type\n<outfile>_<chain_type>.csv. Kappa and lambda\
     \ are\nconsidered together."
-  synonyms:
-  - --csv
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output file for domain hit tables for each sequence.\nOtherwise not\
-    \ output."
+  optional: true
   synonyms:
   - --outfile_hits
   - -ht
+  description: "Output file for domain hit tables for each sequence.\nOtherwise not\
+    \ output."
   args: !SimpleFlagArg
     name: HITFILE
-  optional: true
 - !Flag
-  description: "The path to the directory containing hmmer programs.\n(including hmmscan)"
+  optional: true
   synonyms:
   - --hmmerpath
   - -hp
+  description: "The path to the directory containing hmmer programs.\n(including hmmscan)"
   args: !SimpleFlagArg
     name: HMMERPATH
-  optional: true
 - !Flag
-  description: Number of parallel processes to use. Default is 1.
+  optional: true
   synonyms:
   - --ncpu
   - -p
+  description: Number of parallel processes to use. Default is 1.
   args: !SimpleFlagArg
     name: NCPU
-  optional: true
 - !Flag
-  description: "Assign the v and j germlines to the sequence. The most\nsequence identical\
-    \ germline is assigned."
+  optional: true
   synonyms:
   - --assign_germline
+  description: "Assign the v and j germlines to the sequence. The most\nsequence identical\
+    \ germline is assigned."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Use a specific species in the germline assignment.
+  optional: true
   synonyms:
   - --use_species
+  description: Use a specific species in the germline assignment.
   args: !ChoiceFlagArg
     choices: !!set
-      alpaca:
-      mouse:
-      pig:
-      rat:
       rhesus:
-      human:
+      alpaca:
       rabbit:
+      pig:
+      human:
+      rat:
+      mouse:
       cow:
-  optional: true
 - !Flag
-  description: "Change the bit score threshold used to confirm an\nalignment should\
-    \ be used."
+  optional: true
   synonyms:
   - --bit_score_threshold
+  description: "Change the bit score threshold used to confirm an\nalignment should\
+    \ be used."
   args: !SimpleFlagArg
     name: BIT_SCORE_THRESHOLD
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: ANARCI [-h] [--sequence INPUTSEQUENCE] [--outfile OUTFILE]\n  \
@@ -184,3 +184,4 @@ help_text: "usage: ANARCI [-h] [--sequence INPUTSEQUENCE] [--outfile OUTFILE]\n 
   \ Group (OPIG)\nFreely distributed under the GNU General Public License (GPLv3).\n"
 generated_using:
 - --help
+docker_image:

@@ -28,6 +28,9 @@ task Pymdpbsa {
       ~{if defined(solv) then ("--solv " +  '"' + solv + '"') else ""} \
       ~{if (clean) then "--clean" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     proj: "global project name"
     t_raj: "MD trajectory file               (default: traj.binpos)"

@@ -3,175 +3,175 @@ command:
 - qcSTR
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: Tool
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: for
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: generating
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 3
   name: various
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 4
   name: QC
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 5
   name: plots
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 7
   name: TR
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 8
   name: callsets
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: VCF file to analyze.
+  optional: true
   synonyms:
   - --vcf
+  description: VCF file to analyze.
   args: !SimpleFlagArg
     name: VCF
-  optional: true
 - !Flag
-  description: Output prefix for files generated
+  optional: true
   synonyms:
   - --out
+  description: Output prefix for files generated
   args: !SimpleFlagArg
     name: OUT
-  optional: true
 - !Flag
-  description: "Which type of VCF to restrict the input to, or 'auto'\nfor no restrction\
-    \ (default: auto)"
+  optional: true
   synonyms:
   - --vcftype
+  description: "Which type of VCF to restrict the input to, or 'auto'\nfor no restrction\
+    \ (default: auto)"
   args: !ChoiceFlagArg
     choices: !!set
       eh:
+      gangstr:
       hipstr:
+      auto:
       popstr:
       advntr:
-      auto:
-      gangstr:
-  optional: true
 - !Flag
-  description: File containing list of samples to include
+  optional: true
   synonyms:
   - --samples
+  description: File containing list of samples to include
   args: !SimpleFlagArg
     name: SAMPLES
-  optional: true
 - !Flag
-  description: Only consider repeats with this motif length
+  optional: true
   synonyms:
   - --period
+  description: Only consider repeats with this motif length
   args: !SimpleFlagArg
     name: PERIOD
-  optional: true
 - !Flag
-  description: "Which quality plot(s) to produce. May be specified\nmore than once.\
-    \ See the README for more info (default:\n[])"
+  optional: true
   synonyms:
   - --quality
+  description: "Which quality plot(s) to produce. May be specified\nmore than once.\
+    \ See the README for more info (default:\n[])"
   args: !ChoiceFlagArg
     choices: !!set
-      per-call:
-      per-locus:
       per-sample:
-      locus-stratified:
+      per-locus:
       sample-stratified:
-  optional: true
+      locus-stratified:
+      per-call:
 - !Flag
+  optional: true
+  synonyms:
+  - --quality-ignore-no-call
   description: "Exclude no-calls from quality graph distributions\ninstead of the\
     \ default, which is to include them as\nzero quality calls. Setting this can cause\
     \ the\nplotting to crash if it reduces the number of valid\ncalls (in a strata)\
     \ to <= 1 (default: False)"
-  synonyms:
-  - --quality-ignore-no-call
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Which metric to use for the y-axis on the reference\nbias plot. (default:\
-    \ mean)"
+  optional: true
   synonyms:
   - --refbias-metric
+  description: "Which metric to use for the y-axis on the reference\nbias plot. (default:\
+    \ mean)"
   args: !ChoiceFlagArg
     choices: !!set
-      median:
       mean:
-  optional: true
+      median:
 - !Flag
-  description: "Don't compute points for the reference bias plot based\non fewer than\
-    \ this many genotypes (default: 100)"
+  optional: true
   synonyms:
   - --refbias-mingts
+  description: "Don't compute points for the reference bias plot based\non fewer than\
+    \ this many genotypes (default: 100)"
   args: !SimpleFlagArg
     name: REFBIAS_MINGTS
-  optional: true
 - !Flag
-  description: "Minimum x-axis value (bp) to show on the reference\nbias plot (default:\
-    \ 0)"
+  optional: true
   synonyms:
   - --refbias-xrange-min
+  description: "Minimum x-axis value (bp) to show on the reference\nbias plot (default:\
+    \ 0)"
   args: !SimpleFlagArg
     name: REFBIAS_XRANGE_MIN
-  optional: true
 - !Flag
-  description: "Maximum x-axis value (bp) to show on the reference\nbias plot (default:\
-    \ 100)"
+  optional: true
   synonyms:
   - --refbias-xrange-max
+  description: "Maximum x-axis value (bp) to show on the reference\nbias plot (default:\
+    \ 100)"
   args: !SimpleFlagArg
     name: REFBIAS_XRANGE_MAX
-  optional: true
 - !Flag
-  description: "Size (bp) of x-axis bins for the reference bias plot\n(default: 5)"
+  optional: true
   synonyms:
   - --refbias-binsize
+  description: "Size (bp) of x-axis bins for the reference bias plot\n(default: 5)"
   args: !SimpleFlagArg
     name: REFBIAS_BINSIZE
-  optional: true
 - !Flag
-  description: Only process this many records
+  optional: true
   synonyms:
   - --numrecords
+  description: Only process this many records
   args: !SimpleFlagArg
     name: NUMRECORDS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: \nTool for generating various QC plots for TR callsets\n\n    \
   \   [-h] --vcf VCF --out OUT\n       [--vcftype {gangstr,advntr,hipstr,eh,popstr,auto}]\
   \ [--samples SAMPLES]\n       [--period PERIOD]\n       [--quality {per-locus,sample-stratified,per-sample,locus-stratified,per-call}]\n\
@@ -208,3 +208,4 @@ help_text: "usage: \nTool for generating various QC plots for TR callsets\n\n   
   \  --version             show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

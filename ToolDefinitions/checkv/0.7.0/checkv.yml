@@ -1,0 +1,456 @@
+&id001 !Command
+command:
+- checkv
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - checkv
+  - contamination
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input
+    description: Input nucleotide sequences in FASTA format
+  - !Positional
+    optional: false
+    position: 1
+    name: output
+    description: Output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: "Reference database path. By default the CHECKVDB environment\nvariable\
+      \ is used"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: Number of threads to use for Prodigal and hmmsearch
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --restart
+    description: "Overwrite existing intermediate files. By default CheckV\ncontinues\
+      \ where program left off"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --quiet
+    description: Suppress logging messages
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Estimate host contamination for integrated proviruses\n\nusage: checkv\
+    \ contamination <input> <output> [options]\n\npositional arguments:\n  input \
+    \      Input nucleotide sequences in FASTA format\n  output      Output directory\n\
+    \noptional arguments:\n  -h, --help  show this help message and exit\n  -d PATH\
+    \     Reference database path. By default the CHECKVDB environment\n         \
+    \     variable is used\n  -t INT      Number of threads to use for Prodigal and\
+    \ hmmsearch\n  --restart   Overwrite existing intermediate files. By default CheckV\n\
+    \              continues where program left off\n  --quiet     Suppress logging\
+    \ messages\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/checkv:0.7.0--py_1
+- !Command
+  command:
+  - checkv
+  - quality_summary
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input
+    description: Input viral sequences in FASTA format
+  - !Positional
+    optional: false
+    position: 1
+    name: output
+    description: Output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --quiet
+    description: Suppress logging messages
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Summarize results across modules\n\nusage: checkv quality_summary <input>\
+    \ <output> [options]\n\npositional arguments:\n  input       Input viral sequences\
+    \ in FASTA format\n  output      Output directory\n\noptional arguments:\n  -h,\
+    \ --help  show this help message and exit\n  --quiet     Suppress logging messages\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/checkv:0.7.0--py_1
+- !Command
+  command:
+  - checkv
+  - completeness
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input
+    description: Input nucleotide sequences in FASTA format
+  - !Positional
+    optional: false
+    position: 1
+    name: output
+    description: Output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: "Reference database path. By default the CHECKVDB environment\nvariable\
+      \ is used"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: Number of threads to use for Prodigal and DIAMOND
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --restart
+    description: "Overwrite existing intermediate files. By default CheckV\ncontinues\
+      \ where program left off"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --quiet
+    description: Suppress logging messages
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Estimate completeness for genome fragments\n\nusage: checkv completeness\
+    \ <input> <output> [options]\n\npositional arguments:\n  input       Input nucleotide\
+    \ sequences in FASTA format\n  output      Output directory\n\noptional arguments:\n\
+    \  -h, --help  show this help message and exit\n  -d PATH     Reference database\
+    \ path. By default the CHECKVDB environment\n              variable is used\n\
+    \  -t INT      Number of threads to use for Prodigal and DIAMOND\n  --restart\
+    \   Overwrite existing intermediate files. By default CheckV\n              continues\
+    \ where program left off\n  --quiet     Suppress logging messages\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/checkv:0.7.0--py_1
+- !Command
+  command:
+  - checkv
+  - end_to_end
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input
+    description: Input nucleotide sequences in FASTA format
+  - !Positional
+    optional: false
+    position: 1
+    name: output
+    description: Output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: "Reference database path. By default the CHECKVDB environment\nvariable\
+      \ is used"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: Number of threads to use for Prodigal and DIAMOND
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --restart
+    description: "Overwrite existing intermediate files. By default CheckV\ncontinues\
+      \ where program left off"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --quiet
+    description: Suppress logging messages
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Run full pipeline to estimate completeness, contamination, and identify\
+    \ closed genomes\n\nusage: checkv end_to_end <input> <output> [options]\n\npositional\
+    \ arguments:\n  input       Input nucleotide sequences in FASTA format\n  output\
+    \      Output directory\n\noptional arguments:\n  -h, --help  show this help message\
+    \ and exit\n  -d PATH     Reference database path. By default the CHECKVDB environment\n\
+    \              variable is used\n  -t INT      Number of threads to use for Prodigal\
+    \ and DIAMOND\n  --restart   Overwrite existing intermediate files. By default\
+    \ CheckV\n              continues where program left off\n  --quiet     Suppress\
+    \ logging messages\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/checkv:0.7.0--py_1
+- !Command
+  command:
+  - checkv
+  - complete_genomes
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input
+    description: Input viral sequences in FASTA format
+  - !Positional
+    optional: false
+    position: 1
+    name: output
+    description: Output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --tr_min_len
+    description: Min length of TR (20)
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --tr_max_count
+    description: Max occurences of TR per contig (8)
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --tr_max_ambig
+    description: Max fraction of TR composed of Ns (0.20)
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --tr_max_basefreq
+    description: "Max fraction of TR composed of single nucleotide\n(0.75)"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --kmer_max_freq
+    description: "Max kmer frequency (1.5). Computed by splitting genome\ninto kmers,\
+      \ counting occurence of each kmer, and\ntaking the average count. Expected value\
+      \ of 1.0 for no\nduplicated regions; 2.0 for the same genome repeated\nback-to-back"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --quiet
+    description: Suppress logging messages
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Identify complete genomes based on terminal repeats and flanking host\
+    \ regions\n\nusage: checkv complete_genomes <input> <output> [options]\n\npositional\
+    \ arguments:\n  input                 Input viral sequences in FASTA format\n\
+    \  output                Output directory\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  --tr_min_len INT      Min length\
+    \ of TR (20)\n  --tr_max_count INT    Max occurences of TR per contig (8)\n  --tr_max_ambig\
+    \ FLOAT  Max fraction of TR composed of Ns (0.20)\n  --tr_max_basefreq FLOAT\n\
+    \                        Max fraction of TR composed of single nucleotide\n  \
+    \                      (0.75)\n  --kmer_max_freq FLOAT\n                     \
+    \   Max kmer frequency (1.5). Computed by splitting genome\n                 \
+    \       into kmers, counting occurence of each kmer, and\n                   \
+    \     taking the average count. Expected value of 1.0 for no\n               \
+    \         duplicated regions; 2.0 for the same genome repeated\n             \
+    \           back-to-back\n  --quiet               Suppress logging messages\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/checkv:0.7.0--py_1
+- !Command
+  command:
+  - checkv
+  - download_database
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: destination
+    description: Directory where the database will be downloaded to.
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --quiet
+    description: Suppress logging messages
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Download the latest version of CheckV's database\n\nusage: checkv download_database\
+    \ <destination>\n\npositional arguments:\n  destination  Directory where the database\
+    \ will be downloaded to.\n\noptional arguments:\n  -h, --help   show this help\
+    \ message and exit\n  --quiet      Suppress logging messages\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/checkv:0.7.0--py_1
+- !Command
+  command:
+  - checkv
+  - update_database
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: source_db
+    description: Path to current CheckV database.
+  - !Positional
+    optional: false
+    position: 1
+    name: dest_db
+    description: Path to updated CheckV database.
+  - !Positional
+    optional: false
+    position: 2
+    name: genomes
+    description: "FASTA file of complete genomes to add to database, where each\n\
+      nucleotide sequence represents one genome."
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --quiet
+    description: Suppress logging messages
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --restart
+    description: Overwrite existing database
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --threads
+    description: Number of threads for Prodigal and DIAMOND
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Update CheckV's database with your own complete genomes\n\nusage: checkv\
+    \ update_database <source_db> <dest_db> <genomes> [options]\n\npositional arguments:\n\
+    \  source_db      Path to current CheckV database.\n  dest_db        Path to updated\
+    \ CheckV database.\n  genomes        FASTA file of complete genomes to add to\
+    \ database, where each\n                 nucleotide sequence represents one genome.\n\
+    \noptional arguments:\n  -h, --help     show this help message and exit\n  --quiet\
+    \        Suppress logging messages\n  --restart      Overwrite existing database\n\
+    \  --threads INT  Number of threads for Prodigal and DIAMOND\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/checkv:0.7.0--py_1
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "CheckV v0.7.0: assessing the quality of metagenome-assembled viral genomes\n\
+  https://bitbucket.org/berkeleylab/checkv\n\nusage: checkv <program> [options]\n\n\
+  programs:\n    end_to_end          run full pipeline to estimate completeness, contamination,\
+  \ and identify closed genomes\n    contamination       identify and remove host\
+  \ contamination on integrated proviruses\n    completeness        estimate completeness\
+  \ for genome fragments\n    complete_genomes    identify complete genomes based\
+  \ on terminal repeats and flanking host regions\n    quality_summary     summarize\
+  \ results across modules\n    download_database   download the latest version of\
+  \ CheckV's database\n    update_database     update CheckV's database with your\
+  \ own complete genomes\n\noptional arguments:\n  -h, --help  show this help message\
+  \ and exit\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/checkv:0.7.0--py_1

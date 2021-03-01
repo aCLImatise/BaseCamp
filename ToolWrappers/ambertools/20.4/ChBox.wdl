@@ -22,6 +22,9 @@ task ChBox {
       ~{if (y_dimension_box) then "-Y" else ""} \
       ~{if (z_dimension_box) then "-Z" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     original_coordinate_file: ": the original coordinate file (.RST format, coordinates only)"
     output_coordinate_file: ": the output coordinate file (.RST format)"

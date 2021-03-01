@@ -4,15 +4,49 @@ command:
 positional: []
 named:
 - !Flag
-  description: "file\n-o output directory (optional). By default the BAM file will\
-    \ replace SAM in the same location\n-s sample name\n-g group name (optional).\
-    \ If unset, samples will be gathered in NO_GROUP group\n-T number of threads\n\
-    -v version\n-h display usage message"
+  optional: true
   synonyms:
   - -i
+  description: file
   args: !SimpleFlagArg
     name: input
+- !Flag
   optional: true
+  synonyms:
+  - -o
+  description: directory (optional). By default the BAM file will replace SAM in the
+    same location
+  args: !SimpleFlagArg
+    name: output
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: name
+  args: !SimpleFlagArg
+    name: sample
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: name (optional). If unset, samples will be gathered in NO_GROUP group
+  args: !SimpleFlagArg
+    name: group
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: of threads
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - -h
+  description: usage message
+  args: !SimpleFlagArg
+    name: version
 parent:
 subcommands: []
 usage: []
@@ -28,3 +62,4 @@ help_text: "\nSam_to_bam script converts a supplied SAM file into compressed bin
   \ usage message\n\nexample: sam_to_bam.sh -i ecoli.sam\n\n"
 generated_using:
 - --help
+docker_image:

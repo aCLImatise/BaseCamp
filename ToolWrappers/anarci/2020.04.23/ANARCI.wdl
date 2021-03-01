@@ -28,6 +28,9 @@ task ANARCI {
       ~{if defined(use_species) then ("--use_species " +  '"' + use_species + '"') else ""} \
       ~{if defined(bit_score_threshold) then ("--bit_score_threshold " +  '"' + bit_score_threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequence: "A sequence or an input fasta file"
     outfile: "The output file to use. Default is stdout"

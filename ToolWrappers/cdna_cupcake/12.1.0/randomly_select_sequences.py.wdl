@@ -16,6 +16,9 @@ task RandomlySelectSequencespy {
       ~{output_prefix} \
       ~{subsample_size}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outputprefix: "output_prefix"
     positional_arguments: "positional arguments:"

@@ -3,80 +3,80 @@ id: rna2meme.cwl
 inputs:
 - id: in_output_rna_motifs
   doc: Output RNA motifs (default).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -rna
 - id: in_output_dna_motifs
   doc: Output DNA motifs instead of RNA motifs.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -dna
 - id: in_seed_start
   doc: "starting offset of seed in RNA sequence,\nset to 0 to treat entire sequence\
     \ as seed;\ndefault: 0"
-  type: long
+  type: long?
   inputBinding:
     prefix: -seed_start
 - id: in_seed_end
   doc: "ending offset of seed in RNA sequence;\ndefault: 0"
-  type: long
+  type: long?
   inputBinding:
     prefix: -seed_end
 - id: in_start
   doc: "starting offset in RNA sequence (inclusive);\nuse negative numbers to count\
     \ from end;\ndefault: 1"
-  type: long
+  type: long?
   inputBinding:
     prefix: -start
 - id: in_ending_offset_rna
   doc: "ending offset in RNA sequence (inclusive);\nuse negative numbers to count\
     \ from end;\ndefault: -1"
-  type: long
+  type: long?
   inputBinding:
     prefix: -end
 - id: in_count_assign_match
   doc: "count to assign to a match (complement)\nin the seed region\ndefault: 1"
-  type: long
+  type: long?
   inputBinding:
     prefix: -match
 - id: in_wobble
   doc: "count to assign to a U for a G, or a G for a U\nin the seed region\ndefault:\
     \ 0.1"
-  type: double
+  type: double?
   inputBinding:
     prefix: -wobble
 - id: in_miss
   doc: "count to assign to a non-match non-wobble\nin the seed region\ndefault: 0.01"
-  type: double
+  type: double?
   inputBinding:
     prefix: -miss
 - id: in_other_count
   doc: "extra count added to match, wobble\nand misses in non-seed positions to reduce\n\
     their contribution to the score;\ndefault: 0.5"
-  type: double
+  type: double?
   inputBinding:
     prefix: -other_count
 - id: in_bg
   doc: "file with background frequencies of letters;\ndefault: uniform background"
-  type: File
+  type: File?
   inputBinding:
     prefix: -bg
 - id: in_pseudo
   doc: "add <total pseudocounts> times letter\nbackground to each frequency; default:\
     \ 0"
-  type: long
+  type: long?
   inputBinding:
     prefix: -pseudo
 - id: in_output_logodds_pssm
   doc: "output the log-odds (PSSM) and frequency\n(PSPM) motifs; default: PSPM motif\
     \ only"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -logodds
 - id: in_url
   doc: "website for the motif; The FASTA ID is\nsubstituted for MOTIF_NAME; The first\
     \ word\nafter the FASTA ID is substituted for\nMOTIF_AC; default: no url"
-  type: string
+  type: string?
   inputBinding:
     prefix: -url
 - id: in_var_14
@@ -353,6 +353,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rna2meme

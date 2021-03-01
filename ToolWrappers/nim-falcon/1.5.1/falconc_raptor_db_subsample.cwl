@@ -3,32 +3,32 @@ id: falconc_raptor_db_subsample.cwl
 inputs:
 - id: in_help_syntax
   doc: 'advanced: prepend,plurals,..'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --help-syntax
 - id: in__rdbfn_string
   doc: =, --rdb_fn=         string  REQUIRED  Path to the RaptorDB file.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
-- id: in__genomesize_int
+- id: in__genomesize_required
   doc: =, --genome_size=    int64   REQUIRED  Approximate genome size.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
 - id: in__coverage_float
   doc: =, --coverage=       float   REQUIRED  Coverage to select from the input
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_random_seed
   doc: =         int64   REQUIRED  Seed for random generation.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --random-seed
 - id: in__blocksizemb_float
   doc: =, --block-size-mb=  float   REQUIRED  Block size of the output DB, in
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in_raptor_db_dot
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - falconc

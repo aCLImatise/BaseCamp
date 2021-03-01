@@ -12,6 +12,9 @@ task AddErrorspyInputFasta {
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
       ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
     n: ""

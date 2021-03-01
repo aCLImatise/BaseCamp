@@ -70,6 +70,9 @@ task HaphpipeBuildTreeNG {
       ~{if defined(n_cpu) then ("--ncpu " +  '"' + n_cpu + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seqs: "Input alignment in FASTA or PHYLIP format"
     in_type: "File format: FASTA or PHYLIP (Default is FASTA)"

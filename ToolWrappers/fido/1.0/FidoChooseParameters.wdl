@@ -18,6 +18,9 @@ task FidoChooseParameters {
       ~{if (a) then "-a" else ""} \
       ~{if (p) then "-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     c: ""
     g: ""

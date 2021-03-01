@@ -14,6 +14,9 @@ task TwoBitMask {
       ~{if (add) then "-add" else ""} \
       ~{if (type) then "-type" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add: "Don't remove pre-existing masking before applying maskFile."
     type: "=.XXX   Type of maskFile is XXX (bed or out)."

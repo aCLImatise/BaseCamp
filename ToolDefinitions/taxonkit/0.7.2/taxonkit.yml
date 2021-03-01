@@ -1,0 +1,1060 @@
+&id001 !Command
+command:
+- taxonkit
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --data-dir
+  description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --line-buffered
+  description: use line buffering on output, i.e., immediately writing to stdin/file
+    for every line of output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-file
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: number of CPUs. 4 is enough (default 4)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: print verbose information
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - taxonkit
+  - reformat
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -P
+    - --add-prefix
+    description: add prefixes for all ranks, single prefix for a rank is defined by
+      flag --prefix-X
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --delimiter
+    description: field delimiter in input lineage (default ";")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --fill-miss-rank
+    description: fill missing rank with lineage information of the next higher rank
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --format
+    description: output format, placeholders of rank are needed (default "{k};{p};{c};{o};{f};{g};{s}")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --lineage-field
+    description: field index of lineage. data should be tab-separated (default 2)
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --miss-rank-repl
+    description: replacement string for missing rank
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --miss-rank-repl-prefix
+    description: prefix for estimated taxon level (default "unclassified ")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -R
+    - --miss-taxid-repl
+    description: replacement string for missing taxid
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix-S
+    description: prefix for subspecies, used along with flag -P/--add-prefix (default
+      "S__")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix-T
+    description: prefix for strain, used along with flag -P/--add-prefix (default
+      "T__")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix-c
+    description: prefix for class, used along with flag -P/--add-prefix (default "c__")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix-f
+    description: prefix for family, used along with flag -P/--add-prefix (default
+      "f__")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix-g
+    description: prefix for genus, used along with flag -P/--add-prefix (default "g__")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix-k
+    description: prefix for superkingdom, used along with flag -P/--add-prefix (default
+      "k__")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix-o
+    description: prefix for order, used along with flag -P/--add-prefix (default "o__")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix-p
+    description: prefix for phylum, used along with flag -P/--add-prefix (default
+      "p__")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix-s
+    description: prefix for species, used along with flag -P/--add-prefix (default
+      "s__")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix-t
+    description: prefix for subspecies/strain, used along with flag -P/--add-prefix
+      (default "t__")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    - --pseudo-strain
+    description: use the node with lowest rank as strain name, only if which rank
+      is lower than "species" and not "subpecies" nor "strain". This flag affects
+      {t}, {S}, {T}
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --show-lineage-taxids
+    description: show corresponding taxids of reformated lineage
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    - --trim
+    description: do not fill missing rank lower than current rank
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --data-dir
+    description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --line-buffered
+    description: use line buffering on output, i.e., immediately writing to stdin/file
+      for every line of output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out-file
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --threads
+    description: number of CPUs. 4 is enough (default 4)
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: print verbose information
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help for reformat
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Reformat lineage in canonical ranks\n\nOutput format can be formated\
+    \ by flag --format, available placeholders:\n\n    {k}: superkingdom\n    {p}:\
+    \ phylum\n    {c}: class\n    {o}: order\n    {f}: family\n    {g}: genus\n  \
+    \  {s}: species\n    {t}: subspecies/strain\n    \n    {S}: subspecies\n    {T}:\
+    \ strain\n\nWhen these's no nodes of rank \"subspecies\" nor \"stain\",\nyou can\
+    \ switch -S/--pseudo-strain to use the node with lowest rank\nas subspecies/strain\
+    \ name, if which rank is lower than \"species\". \nThis flag affects {t}, {S},\
+    \ {T}.\n    \nOutput format can contains some escape charactors like \"\\t\".\n\
+    \nThis command appends reformated lineage to the input line.\nThe corresponding\
+    \ taxIDs of reformated lineage can be provided as another\ncolumn by flag \"-t/--show-lineage-taxids\"\
+    .\n\nUsage:\n  taxonkit reformat [flags]\n\nFlags:\n  -P, --add-prefix       \
+    \              add prefixes for all ranks, single prefix for a rank is defined\
+    \ by flag --prefix-X\n  -d, --delimiter string               field delimiter in\
+    \ input lineage (default \";\")\n  -F, --fill-miss-rank                 fill missing\
+    \ rank with lineage information of the next higher rank\n  -f, --format string\
+    \                  output format, placeholders of rank are needed (default \"\
+    {k};{p};{c};{o};{f};{g};{s}\")\n  -h, --help                           help for\
+    \ reformat\n  -i, --lineage-field int              field index of lineage. data\
+    \ should be tab-separated (default 2)\n  -r, --miss-rank-repl string         \
+    \ replacement string for missing rank\n  -p, --miss-rank-repl-prefix string  \
+    \ prefix for estimated taxon level (default \"unclassified \")\n  -R, --miss-taxid-repl\
+    \ string         replacement string for missing taxid\n      --prefix-S string\
+    \                prefix for subspecies, used along with flag -P/--add-prefix (default\
+    \ \"S__\")\n      --prefix-T string                prefix for strain, used along\
+    \ with flag -P/--add-prefix (default \"T__\")\n      --prefix-c string       \
+    \         prefix for class, used along with flag -P/--add-prefix (default \"c__\"\
+    )\n      --prefix-f string                prefix for family, used along with flag\
+    \ -P/--add-prefix (default \"f__\")\n      --prefix-g string                prefix\
+    \ for genus, used along with flag -P/--add-prefix (default \"g__\")\n      --prefix-k\
+    \ string                prefix for superkingdom, used along with flag -P/--add-prefix\
+    \ (default \"k__\")\n      --prefix-o string                prefix for order,\
+    \ used along with flag -P/--add-prefix (default \"o__\")\n      --prefix-p string\
+    \                prefix for phylum, used along with flag -P/--add-prefix (default\
+    \ \"p__\")\n      --prefix-s string                prefix for species, used along\
+    \ with flag -P/--add-prefix (default \"s__\")\n      --prefix-t string       \
+    \         prefix for subspecies/strain, used along with flag -P/--add-prefix (default\
+    \ \"t__\")\n  -S, --pseudo-strain                  use the node with lowest rank\
+    \ as strain name, only if which rank is lower than \"species\" and not \"subpecies\"\
+    \ nor \"strain\". This flag affects {t}, {S}, {T}\n  -t, --show-lineage-taxids\
+    \            show corresponding taxids of reformated lineage\n  -T, --trim   \
+    \                        do not fill missing rank lower than current rank\n\n\
+    Global Flags:\n      --data-dir string   directory containing nodes.dmp and names.dmp\
+    \ (default \"/root/.taxonkit\")\n      --line-buffered     use line buffering\
+    \ on output, i.e., immediately writing to stdin/file for every line of output\n\
+    \  -o, --out-file string   out file (\"-\" for stdout, suffix .gz for gzipped\
+    \ out) (default \"-\")\n  -j, --threads int       number of CPUs. 4 is enough\
+    \ (default 4)\n      --verbose           print verbose information\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/taxonkit:0.7.2--0
+- !Command
+  command:
+  - taxonkit
+  - name2taxid
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --name-field
+    description: field index of name. data should be tab-separated (default 1)
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sci-name
+    description: only searching scientific names
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --show-rank
+    description: show rank
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --data-dir
+    description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --line-buffered
+    description: use line buffering on output, i.e., immediately writing to stdin/file
+      for every line of output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out-file
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --threads
+    description: number of CPUs. 4 is enough (default 4)
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: print verbose information
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help for name2taxid
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Convert scientific names to taxIDs\n\nAttention:\n\n  1. Some taxIDs\
+    \ share the same scientific names, e.g, Drosophila.\n     These input lines are\
+    \ duplicated with multiple taxIDs.\n\n    $ echo Drosophila | taxonkit name2taxid\
+    \ | taxonkit lineage -i 2 -r -L\n    Drosophila      7215    genus\n    Drosophila\
+    \      32281   subgenus\n    Drosophila      2081351 genus\n\nUsage:\n  taxonkit\
+    \ name2taxid [flags]\n\nFlags:\n  -h, --help             help for name2taxid\n\
+    \  -i, --name-field int   field index of name. data should be tab-separated (default\
+    \ 1)\n  -s, --sci-name         only searching scientific names\n  -r, --show-rank\
+    \        show rank\n\nGlobal Flags:\n      --data-dir string   directory containing\
+    \ nodes.dmp and names.dmp (default \"/root/.taxonkit\")\n      --line-buffered\
+    \     use line buffering on output, i.e., immediately writing to stdin/file for\
+    \ every line of output\n  -o, --out-file string   out file (\"-\" for stdout,\
+    \ suffix .gz for gzipped out) (default \"-\")\n  -j, --threads int       number\
+    \ of CPUs. 4 is enough (default 4)\n      --verbose           print verbose information\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/taxonkit:0.7.2--0
+- !Command
+  command:
+  - taxonkit
+  - list
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: '741158'
+    description: 'Usage:'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --ids
+    description: taxID(s), multiple values should be separated by comma
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    - --indent
+    description: indent (default "  ")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -J
+    - --json
+    description: output in JSON format. you can save the result in file with suffix
+      ".json" and open with modern text editor
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --show-name
+    description: output scientific name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --show-rank
+    description: output rank
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --data-dir
+    description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --line-buffered
+    description: use line buffering on output, i.e., immediately writing to stdin/file
+      for every line of output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out-file
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --threads
+    description: number of CPUs. 4 is enough (default 4)
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: print verbose information
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help for list
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "List taxonomic subtrees of given taxIDs\n\nExamples:\n\n    $ taxonkit\
+    \ list --ids 9606 -n -r --indent \"    \"\n    9606 [species] Homo sapiens\n \
+    \       63221 [subspecies] Homo sapiens neanderthalensis\n        741158 [subspecies]\
+    \ Homo sapiens subsp. 'Denisova'\n\n    $ taxonkit list --ids 9606 --indent \"\
+    \"\n    9606\n    63221\n    741158\n\nUsage:\n  taxonkit list [flags]\n\nFlags:\n\
+    \  -h, --help            help for list\n  -i, --ids string      taxID(s), multiple\
+    \ values should be separated by comma\n  -I, --indent string   indent (default\
+    \ \"  \")\n  -J, --json            output in JSON format. you can save the result\
+    \ in file with suffix \".json\" and open with modern text editor\n  -n, --show-name\
+    \       output scientific name\n  -r, --show-rank       output rank\n\nGlobal\
+    \ Flags:\n      --data-dir string   directory containing nodes.dmp and names.dmp\
+    \ (default \"/root/.taxonkit\")\n      --line-buffered     use line buffering\
+    \ on output, i.e., immediately writing to stdin/file for every line of output\n\
+    \  -o, --out-file string   out file (\"-\" for stdout, suffix .gz for gzipped\
+    \ out) (default \"-\")\n  -j, --threads int       number of CPUs. 4 is enough\
+    \ (default 4)\n      --verbose           print verbose information\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/taxonkit:0.7.2--0
+- !Command
+  command:
+  - taxonkit
+  - version
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    - --check-update
+    description: check update
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --data-dir
+    description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --line-buffered
+    description: use line buffering on output, i.e., immediately writing to stdin/file
+      for every line of output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out-file
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --threads
+    description: number of CPUs. 4 is enough (default 4)
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: print verbose information
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help for version
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "print version information and check for update\n\nUsage:\n  taxonkit\
+    \ version [flags]\n\nFlags:\n  -u, --check-update   check update\n  -h, --help\
+    \           help for version\n\nGlobal Flags:\n      --data-dir string   directory\
+    \ containing nodes.dmp and names.dmp (default \"/root/.taxonkit\")\n      --line-buffered\
+    \     use line buffering on output, i.e., immediately writing to stdin/file for\
+    \ every line of output\n  -o, --out-file string   out file (\"-\" for stdout,\
+    \ suffix .gz for gzipped out) (default \"-\")\n  -j, --threads int       number\
+    \ of CPUs. 4 is enough (default 4)\n      --verbose           print verbose information\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/taxonkit:0.7.2--0
+- !Command
+  command:
+  - taxonkit
+  - filter
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --save-predictable-norank
+    description: save some special ranks without order,
+    args: !SimpleFlagArg
+      name: to
+  - !Flag
+    optional: true
+    synonyms:
+    - -B
+    - --black-list
+    description: black list of ranks to discard, e.g., '-B "no rank" -B "clade"
+    args: !SimpleFlagArg
+      name: strings
+  - !Flag
+    optional: true
+    synonyms:
+    - -N
+    - --discard-noranks
+    description: discard all ranks without order, type "taxonkit filter --help" for
+      details
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -R
+    - --discard-root
+    description: discard root taxid, defined by --root-taxid
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -E
+    - --equal-to
+    description: output taxIDs with rank equal to some ranks, multiple values can
+      be separated with comma "," (e.g., -E "genus,species"), or give multiple times
+      (e.g., -E genus -E species)
+    args: !SimpleFlagArg
+      name: strings
+  - !Flag
+    optional: true
+    synonyms:
+    - -H
+    - --higher-than
+    description: output taxIDs with rank higher than a rank, exclusive with --lower-than
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --list-order
+    description: list user defined ranks in order, from "$HOME/.taxonkit/ranks.txt"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --list-ranks
+    description: list ordered ranks in taxonomy database, sorted in user defined order
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -L
+    - --lower-than
+    description: output taxIDs with rank lower than a rank, exclusive with --higher-than
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --rank-file
+    description: user-defined ordered taxonomic ranks, type "taxonkit filter --help"
+      for details
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --root-taxid
+    description: root taxid (default 1)
+    args: !SimpleFlagArg
+      name: uint32
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --taxid-field
+    description: field index of taxid. input data should be tab-separated (default
+      1)
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --data-dir
+    description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --line-buffered
+    description: use line buffering on output, i.e., immediately writing to stdin/file
+      for every line of output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out-file
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --threads
+    description: number of CPUs. 4 is enough (default 4)
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: print verbose information
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help for filter
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Filter taxIDs by taxonomic rank range\n\nAttentions:\n\n  1. Flag -L/--lower-than\
+    \ and -H/--higher-than are exclusive, and can be\n     used along with -E/--equal-to\
+    \ which values can be different.\n  2. A list of pre-ordered ranks is in ~/.taxonkit/ranks.txt,\
+    \ you can use\n     your list by -r/--rank-file, the format specification is below.\n\
+    \  3. All ranks in taxonomy database should be defined in rank file.\n  4. Ranks\
+    \ can be removed with black list via -B/--black-list.\n  5. TaxIDs with no rank\
+    \ can be optionally discarded by -N/--discard-noranks.\n  6. But when filtering\
+    \ with -L/--lower-than, you can use\n    -n/--save-predictable-norank to save\
+    \ some special ranks without order,\n    where rank of the closest higher node\
+    \ is still lower than rank cutoff.\n\nRank file:\n\n  1. Blank lines or lines\
+    \ starting with \"#\" are ignored.\n  2. Ranks are in decending order and case\
+    \ ignored.\n  3. Ranks with same order should be in one line separated with comma\
+    \ (\",\", no space).\n  4. Ranks without order should be assigned a prefix symbol\
+    \ \"!\" for each rank.\n\nUsage:\n  taxonkit filter [flags]\n\nFlags:\n  -B, --black-list\
+    \ strings        black list of ranks to discard, e.g., '-B \"no rank\" -B \"clade\"\
+    \n  -N, --discard-noranks           discard all ranks without order, type \"taxonkit\
+    \ filter --help\" for details\n  -R, --discard-root              discard root\
+    \ taxid, defined by --root-taxid\n  -E, --equal-to strings          output taxIDs\
+    \ with rank equal to some ranks, multiple values can be separated with comma \"\
+    ,\" (e.g., -E \"genus,species\"), or give multiple times (e.g., -E genus -E species)\n\
+    \  -h, --help                      help for filter\n  -H, --higher-than string\
+    \        output taxIDs with rank higher than a rank, exclusive with --lower-than\n\
+    \      --list-order                list user defined ranks in order, from \"$HOME/.taxonkit/ranks.txt\"\
+    \n      --list-ranks                list ordered ranks in taxonomy database, sorted\
+    \ in user defined order\n  -L, --lower-than string         output taxIDs with\
+    \ rank lower than a rank, exclusive with --higher-than\n  -r, --rank-file string\
+    \          user-defined ordered taxonomic ranks, type \"taxonkit filter --help\"\
+    \ for details\n      --root-taxid uint32         root taxid (default 1)\n  -n,\
+    \ --save-predictable-norank   do not discard some special ranks without order\
+    \ when using -L, where rank of the closest higher node is still lower than rank\
+    \ cutoff\n  -i, --taxid-field int           field index of taxid. input data should\
+    \ be tab-separated (default 1)\n\nGlobal Flags:\n      --data-dir string   directory\
+    \ containing nodes.dmp and names.dmp (default \"/root/.taxonkit\")\n      --line-buffered\
+    \     use line buffering on output, i.e., immediately writing to stdin/file for\
+    \ every line of output\n  -o, --out-file string   out file (\"-\" for stdout,\
+    \ suffix .gz for gzipped out) (default \"-\")\n  -j, --threads int       number\
+    \ of CPUs. 4 is enough (default 4)\n      --verbose           print verbose information\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/taxonkit:0.7.2--0
+- !Command
+  command:
+  - taxonkit
+  - lca
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --separater
+    description: separater for taxIDs (default " ")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -D
+    - --skip-deleted
+    description: skip deleted taxIDs and compute with left ones
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -U
+    - --skip-unfound
+    description: skip unfound taxIDs and compute with left ones
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --taxids-field
+    description: field index of taxid. input data should be tab-separated (default
+      1)
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --data-dir
+    description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --line-buffered
+    description: use line buffering on output, i.e., immediately writing to stdin/file
+      for every line of output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out-file
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --threads
+    description: number of CPUs. 4 is enough (default 4)
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: print verbose information
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help for lca
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Compute lowest common ancestor (LCA) for taxIDs\n\nAttention:\n\n  1.\
+    \ This command computes LCA taxID for a list of taxIDs \n     in a field (\"-i/--taxids-field)\
+    \ of tab-delimited file or STDIN.\n  2. TaxIDs should have the same separater\
+    \ (\"-s/--separater\"),\n     single charactor separater is prefered.\n  3. Empty\
+    \ lines or lines without valid taxIDs in the field are omitted.\n  4. If some\
+    \ taxIDs are not found in database, it returns 0.\n  \nExamples:\n\n    $ echo\
+    \ 239934, 239935, 349741 | taxonkit lca  -s \", \"\n    239934, 239935, 349741\
+    \  239934\n\n    $ time echo 239934  239935  349741 9606  | taxonkit lca\n   \
+    \ 239934 239935 349741 9606       131567\n\nUsage:\n  taxonkit lca [flags]\n\n\
+    Flags:\n  -h, --help               help for lca\n  -s, --separater string   separater\
+    \ for taxIDs (default \" \")\n  -D, --skip-deleted       skip deleted taxIDs and\
+    \ compute with left ones\n  -U, --skip-unfound       skip unfound taxIDs and compute\
+    \ with left ones\n  -i, --taxids-field int   field index of taxid. input data\
+    \ should be tab-separated (default 1)\n\nGlobal Flags:\n      --data-dir string\
+    \   directory containing nodes.dmp and names.dmp (default \"/root/.taxonkit\"\
+    )\n      --line-buffered     use line buffering on output, i.e., immediately writing\
+    \ to stdin/file for every line of output\n  -o, --out-file string   out file (\"\
+    -\" for stdout, suffix .gz for gzipped out) (default \"-\")\n  -j, --threads int\
+    \       number of CPUs. 4 is enough (default 4)\n      --verbose           print\
+    \ verbose information\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/taxonkit:0.7.2--0
+- !Command
+  command:
+  - taxonkit
+  - lineage
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --delimiter
+    description: field delimiter in lineage (default ";")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -L
+    - --no-lineage
+    description: do not show lineage, when user just want names or/and ranks
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -R
+    - --show-lineage-ranks
+    description: appending ranks of all levels
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --show-lineage-taxids
+    description: appending lineage consisting of taxids
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --show-name
+    description: appending scientific name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --show-rank
+    description: appending rank of taxids
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --show-status-code
+    description: show status code before lineage
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --taxid-field
+    description: field index of taxid. input data should be tab-separated (default
+      1)
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --data-dir
+    description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --line-buffered
+    description: use line buffering on output, i.e., immediately writing to stdin/file
+      for every line of output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out-file
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --threads
+    description: number of CPUs. 4 is enough (default 4)
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: print verbose information
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help for lineage
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Query taxonomic lineage of given taxIDs\n\nInput:\n\n  - List of taxIDs,\
+    \ one taxID per line.\n  - Or tab-delimited format, please specify taxID field\
+    \ \n    with flag -i/--taxid-field (default 1).\n  - Supporting (gzipped) file\
+    \ or STDIN.\n\nOutput:\n\n  1. Input line data.\n  2. (Optional) Status code (-c/--show-status-code),\
+    \ values:\n     - \"-1\" for queries not found in whole database.\n     - \"0\"\
+    \ for deleted taxIDs, provided by \"delnodes.dmp\".\n     - New taxIDs for merged\
+    \ taxIDs, provided by \"merged.dmp\".\n     - Taxids for these found in \"nodes.dmp\"\
+    .\n  3. Lineage, delimiter can be changed with flag -d/--delimiter.\n  4. (Optional)\
+    \ Lineage in taxIDs (-t/--show-lineage-taxids)\n  5. (Optional) Rank (-r/--show-rank)\n\
+    \nFilter out invalid and deleted taxids, and replace merged \ntaxids with new\
+    \ ones:\n    \n    # input is one-column-taxid\n    $ taxonkit lineage -c taxids.txt\
+    \ \\\n        | awk '$2>0' \\\n        | cut -f 2-\n        \n    # taxids are\
+    \ in 3rd field in a 4-columns tab-delimited file,\n    # for $5, where 5 = 4 +\
+    \ 1.\n    $ cat input.txt \\\n        | taxonkit lineage -c -i 3 \\\n        |\
+    \ csvtk filter2 -H -t -f '$5>0' \\\n        | csvtk -H -t cut -f -3\n\nUsage:\n\
+    \  taxonkit lineage [flags]\n\nFlags:\n  -d, --delimiter string      field delimiter\
+    \ in lineage (default \";\")\n  -h, --help                  help for lineage\n\
+    \  -L, --no-lineage            do not show lineage, when user just want names\
+    \ or/and ranks\n  -R, --show-lineage-ranks    appending ranks of all levels\n\
+    \  -t, --show-lineage-taxids   appending lineage consisting of taxids\n  -n, --show-name\
+    \             appending scientific name\n  -r, --show-rank             appending\
+    \ rank of taxids\n  -c, --show-status-code      show status code before lineage\n\
+    \  -i, --taxid-field int       field index of taxid. input data should be tab-separated\
+    \ (default 1)\n\nGlobal Flags:\n      --data-dir string   directory containing\
+    \ nodes.dmp and names.dmp (default \"/root/.taxonkit\")\n      --line-buffered\
+    \     use line buffering on output, i.e., immediately writing to stdin/file for\
+    \ every line of output\n  -o, --out-file string   out file (\"-\" for stdout,\
+    \ suffix .gz for gzipped out) (default \"-\")\n  -j, --threads int       number\
+    \ of CPUs. 4 is enough (default 4)\n      --verbose           print verbose information\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/taxonkit:0.7.2--0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for taxonkit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "TaxonKit - A Cross-platform and Efficient NCBI Taxonomy Toolkit\n\nVersion:\
+  \ 0.7.2\n\nAuthor: Wei Shen <shenwei356@gmail.com>\n\nSource code: https://github.com/shenwei356/taxonkit\n\
+  Documents  : https://bioinf.shenwei.me/taxonkit\nCitation   : https://www.biorxiv.org/content/early/2019/01/08/513523\n\
+  \nDataset:\n\n    Please download and decompress \"taxdump.tar.gz\":\n    ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz\n\
+  \n    and copy \"names.dmp\", \"nodes.dmp\", \"delnodes.dmp\" and \"merged.dmp\"\
+  \ to data directory:\n    \"/root/.taxonkit\"\n\n    or some other directory, and\
+  \ later you can refer to using flag --data-dir,\n    or environment variable TAXONKIT_DB\n\
+  \nUsage:\n  taxonkit [command]\n\nAvailable Commands:\n  filter          Filter\
+  \ taxIDs by taxonomic rank range\n  genautocomplete generate shell autocompletion\
+  \ script\n  help            Help about any command\n  lca             Compute lowest\
+  \ common ancestor (LCA) for taxIDs\n  lineage         Query taxonomic lineage of\
+  \ given taxIDs\n  list            List taxonomic subtrees of given taxIDs\n  name2taxid\
+  \      Convert scientific names to taxIDs\n  reformat        Reformat lineage in\
+  \ canonical ranks\n  taxid-changelog Create taxID changelog from dump archives\n\
+  \  version         print version information and check for update\n\nFlags:\n  \
+  \    --data-dir string   directory containing nodes.dmp and names.dmp (default \"\
+  /root/.taxonkit\")\n  -h, --help              help for taxonkit\n      --line-buffered\
+  \     use line buffering on output, i.e., immediately writing to stdin/file for\
+  \ every line of output\n  -o, --out-file string   out file (\"-\" for stdout, suffix\
+  \ .gz for gzipped out) (default \"-\")\n  -j, --threads int       number of CPUs.\
+  \ 4 is enough (default 4)\n      --verbose           print verbose information\n\
+  \nUse \"taxonkit [command] --help\" for more information about a command.\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/taxonkit:0.7.2--0

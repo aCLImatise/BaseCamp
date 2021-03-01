@@ -4,6 +4,9 @@ task GetOntologyR {
   command <<<
     getOntology_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

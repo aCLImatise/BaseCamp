@@ -10,6 +10,9 @@ task SeqSero2UpdateKmerDatabasepy {
       ~{just} \
       ~{type}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     just: ""
     type: ""

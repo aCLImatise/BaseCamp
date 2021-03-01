@@ -1,0 +1,129 @@
+!Command
+command:
+- snakefmt
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: provided.
+  description: Files are modified in-place by default; use diff, check, or  `snakefmt
+    - <
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --line-length
+  description: 'Lines longer than INT will be wrapped. [default: 88]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --check
+  description: "Don't write the files back, just return the status.\nReturn code 0\
+    \ means nothing would change. Return code\n1 means some files would be reformatted.\
+    \ Return code\n123 means there was an error."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --diff
+  description: "Don't write the files back, just output a diff for\neach file to stdout."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --compact-diff
+  description: "Same as --diff but only shows lines that would change\nplus a few\
+    \ lines of context."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include
+  description: "A regular expression that matches files and\ndirectories that should\
+    \ be included on recursive\nsearches.  An empty value means all files are\nincluded\
+    \ regardless of the name.  Use forward slashes\nfor directories on all platforms\
+    \ (Windows, too).\nExclusions are calculated first, inclusions later.\n[default:\
+    \ (\\.smk$|^Snakefile)]"
+  args: !SimpleFlagArg
+    name: PATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude
+  description: "A regular expression that matches files and\ndirectories that should\
+    \ be excluded on recursive\nsearches.  An empty value means no paths are\nexcluded.\
+    \ Use forward slashes for directories on all\nplatforms (Windows, too). Exclusions\
+    \ are calculated\nfirst, inclusions later.  [default: (\\.snakemake|\\.eg\ngs|\\\
+    .git|\\.hg|\\.mypy_cache|\\.nox|\\.tox|\\.venv|\\.svn|_\nbuild|buck-out|build|dist)]"
+  args: !SimpleFlagArg
+    name: PATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config
+  description: "Read configuration from PATH. By default, will try to\nread from `./pyproject.toml`"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Turns on debug-level logger.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: snakefmt [OPTIONS] [SRC]...\n\n  The uncompromising Snakemake code\
+  \ formatter.\n\n  SRC specifies directories and files to format. Directories will\
+  \ be\n  searched for file names that conform to the include/exclude patterns\n \
+  \ provided.\n\n  Files are modified in-place by default; use diff, check, or  `snakefmt\
+  \ - <\n  Snakefile` to avoid this.\n\nOptions:\n  -l, --line-length INT  Lines longer\
+  \ than INT will be wrapped. [default: 88]\n  --check                Don't write\
+  \ the files back, just return the status.\n                         Return code\
+  \ 0 means nothing would change. Return code\n                         1 means some\
+  \ files would be reformatted. Return code\n                         123 means there\
+  \ was an error.\n\n  -d, --diff             Don't write the files back, just output\
+  \ a diff for\n                         each file to stdout.\n\n  --compact-diff\
+  \         Same as --diff but only shows lines that would change\n              \
+  \           plus a few lines of context.\n\n  --include PATTERN      A regular expression\
+  \ that matches files and\n                         directories that should be included\
+  \ on recursive\n                         searches.  An empty value means all files\
+  \ are\n                         included regardless of the name.  Use forward slashes\n\
+  \                         for directories on all platforms (Windows, too).\n   \
+  \                      Exclusions are calculated first, inclusions later.\n    \
+  \                     [default: (\\.smk$|^Snakefile)]\n\n  --exclude PATTERN   \
+  \   A regular expression that matches files and\n                         directories\
+  \ that should be excluded on recursive\n                         searches.  An empty\
+  \ value means no paths are\n                         excluded. Use forward slashes\
+  \ for directories on all\n                         platforms (Windows, too). Exclusions\
+  \ are calculated\n                         first, inclusions later.  [default: (\\\
+  .snakemake|\\.eg\n                         gs|\\.git|\\.hg|\\.mypy_cache|\\.nox|\\\
+  .tox|\\.venv|\\.svn|_\n                         build|buck-out|build|dist)]\n\n\
+  \  -c, --config PATH      Read configuration from PATH. By default, will try to\n\
+  \                         read from `./pyproject.toml`\n\n  -h, --help         \
+  \    Show this message and exit.\n  -V, --version          Show the version and\
+  \ exit.\n  -v, --verbose          Turns on debug-level logger.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/snakefmt:0.3.1--py_0

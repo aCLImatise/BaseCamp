@@ -12,6 +12,9 @@ task CnvkitpyAccess {
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_gap_size: "Minimum gap size between accessible sequence regions.\\nRegions separated by less than this distance will be\\njoined together. [Default: 5000]"
     exclude: "Additional regions to exclude, in BED format. Can be\\nused multiple times."

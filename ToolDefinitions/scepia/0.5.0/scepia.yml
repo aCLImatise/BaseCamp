@@ -1,0 +1,198 @@
+&id001 !Command
+command:
+- scepia
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - scepia
+  - infer_motifs
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: name.
+    description: -a, --min_annotated INTEGER  Minimum number of cells per cell type
+      (50).
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --transpose
+    description: Transpose matrix.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cluster
+    description: "cluster name (default checks for 'louvain' or\n'leiden')."
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --dataset
+    description: Reference dataset (ENCODE.H3K27ac.human).
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --n_top_genes
+    description: "Maximum number of variable genes that is used\n(2000)."
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --pfmfile
+    description: Name of motif PFM file or GimmeMotifs database
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --num_enhancers
+    description: "Number of enhancers to use for motif activity\n(10000)."
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: scepia infer_motifs [OPTIONS] INFILE OUTDIR\n\n  Infer motifs.\n\
+    \nOptions:\n  --transpose                  Transpose matrix.\n  -c, --cluster\
+    \ TEXT           cluster name (default checks for 'louvain' or\n             \
+    \                  'leiden').\n\n  -d, --dataset TEXT           Reference dataset\
+    \ (ENCODE.H3K27ac.human).\n  -n, --n_top_genes INTEGER    Maximum number of variable\
+    \ genes that is used\n                               (2000).\n\n  -p, --pfmfile\
+    \ TEXT           Name of motif PFM file or GimmeMotifs database\n            \
+    \                   name.\n\n  -a, --min_annotated INTEGER  Minimum number of\
+    \ cells per cell type (50).\n  -e, --num_enhancers INTEGER  Number of enhancers\
+    \ to use for motif activity\n                               (10000).\n\n  -h,\
+    \ --help                   Show this message and exit.\n"
+  generated_using: &id003
+  - --help
+  docker_image: quay.io/biocontainers/scepia:0.5.0--py_0
+- &id002 !Command
+  command:
+  - scepia
+  - area27
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --window
+    description: window
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -N
+    - --nthreads
+    description: Number of threads.
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - scepia
+    - area27
+    - locations.
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: scepia
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: area27
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: BAMFILE
+      description: ''
+    - !Positional
+      optional: false
+      position: 3
+      name: OUTFILE
+      description: ''
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "/usr/local/lib/python3.8/site-packages/sklearn/utils/deprecation.py:143:\
+      \ FutureWarning: The sklearn.cluster.k_means_ module is  deprecated in version\
+      \ 0.22 and will be removed in version 0.24. The corresponding classes / functions\
+      \ should instead be imported from sklearn.cluster. Anything that cannot be imported\
+      \ from sklearn.cluster is now part of the private API.\n  warnings.warn(message,\
+      \ FutureWarning)\nUsage: scepia area27 [OPTIONS] BAMFILE OUTFILE\nTry 'scepia\
+      \ area27 -h' for help.\n\nError: Missing argument 'OUTFILE'.\n"
+    generated_using: []
+    docker_image: quay.io/biocontainers/scepia:0.5.0--py_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: scepia area27 [OPTIONS] BAMFILE OUTFILE\n\n  Determine the enhancer-based\
+    \ regulatory potential (ERP) score per gene.\n  This approach is based on the\
+    \ method developed by Wang et al., 2016. There\n  is one difference. In this implementation\
+    \ the score is calculated based\n  only on H3K27ac signal in enhancers. We use\
+    \ log-transformed, z-score\n  normalized H3K27ac read counts in 2kb windows centered\
+    \ at enhancer\n  locations.\n\nOptions:\n  -w, --window TEXT    window\n  -N,\
+    \ --nthreads TEXT  Number of threads.\n  -h, --help           Show this message\
+    \ and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/scepia:0.5.0--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: scepia [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --version   Show\
+  \ the version and exit.\n  -h, --help  Show this message and exit.\n\nCommands:\n\
+  \  area27        Determine the enhancer-based regulatory potential (ERP) score.\n\
+  \  infer_motifs  Run SCEPIA motif inference on any scanpy-compatible file.\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/scepia:0.5.0--py_0

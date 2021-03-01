@@ -24,6 +24,9 @@ task AlignTrimOrthologs {
       ~{if defined(stats) then ("--stats " +  '"' + stats + '"') else ""} \
       ~{if defined(scatterplot) then ("--scatterplot " +  '"' + scatterplot + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     orthologs_zip: "archive of orthologous genes in FASTA format"
     retained_threshold: "filter orthologs that retain less than PERC % of sequence after trimming alignment"

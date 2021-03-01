@@ -3,23 +3,37 @@ command:
 - drawmodel
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: modelfile
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: psfile
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "-mod  [n]      Draw first or nth model\n-reg  [n]      Draw first\
-    \ or nth regularizer\n-freq [n]      Draw first or nth frequencies\n"
-  synonyms:
-  - -landscape
-  args: !EmptyFlagArg {}
   optional: true
+  synonyms:
+  - -s
+  - -landscape
+  - -mod
+  description: '[n]      Draw first or nth model'
+  args: !SimpleFlagArg
+    name: scale
+- !Flag
+  optional: true
+  synonyms:
+  - -reg
+  description: '[n]      Draw first or nth regularizer'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -freq
+  description: '[n]      Draw first or nth frequencies'
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
@@ -31,3 +45,4 @@ help_text: "Usage: drawmodel modelfile psfile\nOptions: -s scale\n         -land
   \ or nth regularizer\n         -freq [n]      Draw first or nth frequencies\n"
 generated_using:
 - --help
+docker_image:

@@ -26,6 +26,9 @@ task RbcavityReceptorPrmFile {
       ~{if (site) then "-site" else ""} \
       ~{if defined(border) then ("-border " +  '"' + border + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     receptor: "receptor file"
     was: "write active site"

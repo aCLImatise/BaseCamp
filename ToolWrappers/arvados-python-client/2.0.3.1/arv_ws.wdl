@@ -22,6 +22,9 @@ task Arvws {
       ~{if defined(pipeline) then ("--pipeline " +  '"' + pipeline + '"') else ""} \
       ~{if defined(job) then ("--job " +  '"' + job + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     uuid: "Filter events on object_uuid"
     filters: "Arvados query filter to apply to log events (JSON\\nencoded)"

@@ -3,12 +3,12 @@ id: mb_plot_heatmap_prefix.cwl
 inputs:
 - id: in_upstream
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --upstream
 - id: in_downstream
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --downstream
 - id: in_mb_plot_heat_map
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mb-plot-heatmap

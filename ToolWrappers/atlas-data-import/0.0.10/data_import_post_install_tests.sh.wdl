@@ -12,6 +12,9 @@ task DataImportPostInstallTestssh {
       ~{action} \
       ~{use_existing_outputs}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     garnett_cli_post_install_tests_dots_h: ""
     action: ""

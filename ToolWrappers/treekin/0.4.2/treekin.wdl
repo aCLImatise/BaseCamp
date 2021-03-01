@@ -76,6 +76,9 @@ task Treekin {
       ~{if defined(times) then ("--times " +  '"' + times + '"') else ""} \
       ~{if (warnings) then "--warnings" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     absorb: "Make a state absorbing"
     method: "Select method to build transition matrix:\\nA ==> Arrhenius-like kinetics\\nI ==> use input as a rate matrix  (possible\\nvalues=\\\"A\\\", \\\"I\\\" default=`I')"

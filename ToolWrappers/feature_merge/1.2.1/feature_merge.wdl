@@ -22,6 +22,9 @@ task FeatureMerge {
       ~{if defined(component_features_output) then ("-e " +  '"' + component_features_output + '"') else ""} \
       ~{if defined(strategy_used_deal) then ("-m " +  '"' + strategy_used_deal + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version_and_exit: "version and exit"
     seperated_types_merge: "seperated types of features to merge. Must be terms or accessions from the SOFA sequence ontology, \\\"ALL\\\", or \\\"NONE\\\". (Can be provided more than once to specify multiple merge groups)"

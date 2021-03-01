@@ -4,161 +4,162 @@ command:
 positional: []
 named:
 - !Flag
-  description: "FASTAFILE Long reads to correct. Required in mode 0 or\n1. (default:\
-    \ None)"
+  optional: true
   synonyms:
   - --long_reads
+  description: "FASTAFILE Long reads to correct. Required in mode 0 or\n1. (default:\
+    \ None)"
   args: !SimpleFlagArg
     name: LONG_READS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --short_reads
   description: "[SHORT_READS [SHORT_READS ...]]\nFASTA/FASTQ FILE Short reads used\
     \ to correct the long\nreads. Can be multiple files. If choice is cps reads,\n\
     then there must be 2 files, the cps and the idx file\nfollowing --short reads.\
     \ Required in mode 0 or 1.\n(default: None)"
-  synonyms:
-  - --short_reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Short read file type (default: fa)'
+  optional: true
   synonyms:
   - --short_read_file_type
+  description: 'Short read file type (default: fa)'
   args: !ChoiceFlagArg
     choices: !!set
       fa:
-      cps:
       fq:
-  optional: true
+      cps:
 - !Flag
-  description: 'Number of threads (Default = cpu_count) (default: 0)'
+  optional: true
   synonyms:
   - --threads
+  description: 'Number of threads (Default = cpu_count) (default: 0)'
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: "FOLDERNAME where temporary files can be placed\n(default: /tmp)"
+  optional: true
   synonyms:
   - --tempdir
+  description: "FOLDERNAME where temporary files can be placed\n(default: /tmp)"
   args: !SimpleFlagArg
     name: TEMPDIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --specific_tempdir
   description: "FOLDERNAME of exactly where to place temproary\nfolders. Required\
     \ in mode 1, 2 or 3. Recommended for\nany run where you may want to look back\
     \ at\nintermediate files. (default: None)"
-  synonyms:
-  - --specific_tempdir
   args: !SimpleFlagArg
     name: SPECIFIC_TEMPDIR
-  optional: true
 - !Flag
-  description: "FOLDERNAME where output is to be written. Required in\nmode 0 or 3.\
-    \ (default: None)"
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "FOLDERNAME where output is to be written. Required in\nmode 0 or 3.\
+    \ (default: None)"
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mode
   description: "0: run through, 1: Prepare homopolymer compressed long\nand short\
     \ reads. 2: Execute correction on batches of\nlong reads. Can be superseded by\
     \ --parallelized_mode_2\nwhere you will only execute a single batch. 3: Combine\n\
     corrected batches into a final output folder.\n(default: 0)"
-  synonyms:
-  - --mode
   args: !ChoiceFlagArg
     choices: !!set
+      '3':
       '2':
       '0':
-      '3':
       '1':
-  optional: true
 - !Flag
-  description: "Mode 2, but you specify a sigle batch to execute.\n(default: None)"
+  optional: true
   synonyms:
   - --parallelized_mode_2
+  description: "Mode 2, but you specify a sigle batch to execute.\n(default: None)"
   args: !SimpleFlagArg
     name: PARALLELIZED_MODE_2
-  optional: true
 - !Flag
-  description: "Aligner choice. hisat parameters have not been\noptimized, so we recommend\
-    \ bowtie2. (default: bowtie2)"
+  optional: true
   synonyms:
   - --aligner
+  description: "Aligner choice. hisat parameters have not been\noptimized, so we recommend\
+    \ bowtie2. (default: bowtie2)"
   args: !ChoiceFlagArg
     choices: !!set
-      bowtie2:
       hisat:
-  optional: true
+      bowtie2:
 - !Flag
-  description: '-S option for memory in unix sort (default: None)'
+  optional: true
   synonyms:
   - --sort_mem_max
+  - -S
+  description: 'for memory in unix sort (default: None)'
   args: !SimpleFlagArg
     name: SORT_MEM_MAX
-  optional: true
 - !Flag
-  description: "Minimum number of non-N characters in the compressed\nread (default:\
-    \ 40)"
+  optional: true
   synonyms:
   - --minNumberofNonN
+  description: "Minimum number of non-N characters in the compressed\nread (default:\
+    \ 40)"
   args: !SimpleFlagArg
     name: MINNUMBEROFNONN
-  optional: true
 - !Flag
-  description: "Maximum number of Ns in the compressed read (default:\nNone)"
+  optional: true
   synonyms:
   - --maxN
+  description: "Maximum number of Ns in the compressed read (default:\nNone)"
   args: !SimpleFlagArg
     name: MAXN
-  optional: true
 - !Flag
-  description: "Maximum percent of errors in a read to use the\nalignment (default:\
-    \ 12)"
+  optional: true
   synonyms:
   - --error_rate_threshold
+  description: "Maximum percent of errors in a read to use the\nalignment (default:\
+    \ 12)"
   args: !SimpleFlagArg
     name: ERROR_RATE_THRESHOLD
-  optional: true
 - !Flag
-  description: "Minimum short read coverage to do correction (default:\n20)"
+  optional: true
   synonyms:
   - --short_read_coverage_threshold
+  description: "Minimum short read coverage to do correction (default:\n20)"
   args: !SimpleFlagArg
     name: SHORT_READ_COVERAGE_THRESHOLD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --long_read_batch_size
   description: "INT number of long reads to work on at a time. This is\na key parameter\
     \ to adjusting performance. A smaller\nbatch size keeps the sizes and runtimes\
     \ of\nintermediate steps tractable on large datasets, but\ncan slow down execution\
     \ on small datasets. The default\nvalue should be suitable for large datasets.\
     \ (default:\n500)"
-  synonyms:
-  - --long_read_batch_size
   args: !SimpleFlagArg
     name: LONG_READ_BATCH_SIZE
-  optional: true
 - !Flag
-  description: "Path to samtools by default assumes its installed. If\nnot specified,\
-    \ the included version will be used.\n(default: /usr/local/bin)\n"
+  optional: true
   synonyms:
   - --samtools_path
+  description: "Path to samtools by default assumes its installed. If\nnot specified,\
+    \ the included version will be used.\n(default: /usr/local/bin)\n"
   args: !SimpleFlagArg
     name: SAMTOOLS_PATH
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: runLSC.py [-h] [--long_reads LONG_READS]\n                 [--short_reads\
@@ -220,3 +221,4 @@ help_text: "usage: runLSC.py [-h] [--long_reads LONG_READS]\n                 [-
   \ /usr/local/bin)\n"
 generated_using:
 - --help
+docker_image:

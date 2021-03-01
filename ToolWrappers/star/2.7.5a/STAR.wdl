@@ -23,7 +23,7 @@ task STAR {
     String files_including_sa
     String _fasta_fastq
     String log
-    String alignments_file_output
+    String alignments_normally_are
     String bam_unsorted
     String bam_quant
     String var_24
@@ -34,7 +34,7 @@ task STAR {
     String output_sam_sorting
     String unsorted
     String standard
-    String nh_hi_nm
+    String nh_hi_as_nm_ch
     String va
     String ha
     String vg
@@ -62,7 +62,6 @@ task STAR {
     String remove_noncanonical_unannotated
     String remove_inconsistent_strands
     String var_59
-    String at_slash_ac
     String local
     String end_to_end
     Int extend_five_po_fread_one
@@ -125,7 +124,7 @@ task STAR {
       ~{files_including_sa} \
       ~{_fasta_fastq} \
       ~{log} \
-      ~{alignments_file_output} \
+      ~{alignments_normally_are} \
       ~{bam_unsorted} \
       ~{bam_quant} \
       ~{var_24} \
@@ -136,7 +135,7 @@ task STAR {
       ~{output_sam_sorting} \
       ~{unsorted} \
       ~{standard} \
-      ~{nh_hi_nm} \
+      ~{nh_hi_as_nm_ch} \
       ~{va} \
       ~{ha} \
       ~{vg} \
@@ -164,7 +163,6 @@ task STAR {
       ~{remove_noncanonical_unannotated} \
       ~{remove_inconsistent_strands} \
       ~{var_59} \
-      ~{at_slash_ac} \
       ~{local} \
       ~{end_to_end} \
       ~{extend_five_po_fread_one} \
@@ -210,6 +208,9 @@ task STAR {
       ~{if defined(out_sam_attr_rg_line) then ("--outSAMattrRGline " +  '"' + out_sam_attr_rg_line + '"') else ""} \
       ~{if (solo_cb_position) then "--soloCBposition" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _map_all_reads: ": map all reads"
     out_sam_attr_rg_line: ":xxx , ID:zzz \\\"DS:z z\\\" , ID:yyy DS:yyyy"
@@ -232,7 +233,7 @@ task STAR {
     files_including_sa: "... all files including big Genome, SA and SAindex - this will create a complete genome directory"
     _fasta_fastq: "... FASTA or FASTQ"
     log: "... log messages"
-    alignments_file_output: "... alignments in SAM format (which normally are output to Aligned.out.sam file), normal standard output will go into Log.std.out"
+    alignments_normally_are: "... alignments in SAM format (which normally are output to Aligned.out.sam file), normal standard output will go into Log.std.out"
     bam_unsorted: "... alignments in BAM format, unsorted. Requires --outSAMtype BAM Unsorted"
     bam_quant: "... alignments to transcriptome in BAM format, unsorted. Requires --quantMode TranscriptomeSAM"
     var_24: "... no output"
@@ -243,7 +244,7 @@ task STAR {
     output_sam_sorting: "... output SAM without sorting"
     unsorted: "... standard unsorted"
     standard: "... NH HI AS nM"
-    nh_hi_nm: "... NH HI AS nM NM MD jM jI MC ch"
+    nh_hi_as_nm_ch: "... NH HI AS nM NM MD jM jI MC ch"
     va: "... variant allele"
     ha: "... haplotype (1/2) when mapping to the diploid genome. Requires genome generated with --genomeTransformType Diploid"
     vg: "... genomic coordinate of the variant overlapped by the read"
@@ -271,7 +272,6 @@ task STAR {
     remove_noncanonical_unannotated: "... filter out alignments that contain non-canonical unannotated junctions when using annotated splice junctions database. The annotated non-canonical junctions will be kept."
     remove_inconsistent_strands: "... remove alignments that have junctions with inconsistent strands"
     var_59: "... no filtering"
-    at_slash_ac: "and GT/AT junction penalty  (in addition to scoreGap)"
     local: "... standard local alignment with soft-clipping allowed"
     end_to_end: "... force end-to-end read alignment, do not soft-clip"
     extend_five_po_fread_one: "... fully extend only the 5p of the read1, all other ends: local alignment"

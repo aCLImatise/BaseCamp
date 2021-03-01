@@ -26,6 +26,9 @@ task ChakinAnalysisDeleteAnalyses {
       ~{if defined(source_uri) then ("--sourceuri " +  '"' + source_uri + '"') else ""} \
       ~{if defined(description) then ("--description " +  '"' + description + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     analysis_id: "analysis_id filter"
     name: "analysis name filter"

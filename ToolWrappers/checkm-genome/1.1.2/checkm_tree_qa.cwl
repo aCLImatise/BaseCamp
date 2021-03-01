@@ -7,33 +7,34 @@ inputs:
     3. genome tree in Newick format decorated with IMG genome ids\n4. genome tree\
     \ in Newick format decorated with taxonomy strings\n5. multiple sequence alignment\
     \ of reference genomes and bins"
-  type: string
+  type: string?
   inputBinding:
     prefix: --out_format
 - id: in_file
   doc: 'print results to file (default: stdout)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --file
 - id: in_tab_table
   doc: print tab-separated values table
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tab_table
 - id: in_quiet
   doc: suppress console output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_tmpdir
   doc: specify an alternative directory for temporary files
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --tmpdir
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - checkm

@@ -1,0 +1,66 @@
+&id001 !Command
+command:
+- convertf
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: '... use parameters from <file> .'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: '... print version and exit.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  description: '... toggle verbose mode ON.'
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - convertf
+  - file
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bad
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: params....
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: bad params.... \n"
+  generated_using:
+  - --help
+  docker_image: quay.io/biocontainers/admixtools:7.0.1--h1d3628b_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: '... Print this message and exit.'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: convertf [options] <file>\n   -h          ... Print this message\
+  \ and exit.\n   -p <file>   ... use parameters from <file> .\n   -v          ...\
+  \ print version and exit.\n   -V          ... toggle verbose mode ON.\n"
+generated_using: []
+docker_image: quay.io/biocontainers/admixtools:7.0.1--h1d3628b_0

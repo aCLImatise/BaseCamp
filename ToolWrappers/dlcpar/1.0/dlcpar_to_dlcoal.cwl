@@ -3,22 +3,22 @@ id: dlcpar_to_dlcoal.cwl
 inputs:
 - id: in_stree
   doc: species tree file in newick format
-  type: File
+  type: File?
   inputBinding:
     prefix: --stree
 - id: in_s_map
   doc: gene to species map
-  type: string
+  type: string?
   inputBinding:
     prefix: --smap
 - id: in_input_ext
   doc: 'input file extension (default: ".tree")'
-  type: File
+  type: File?
   inputBinding:
     prefix: --inputext
 - id: in_output_ext
   doc: 'output file extension (default: "")'
-  type: File
+  type: File?
   inputBinding:
     prefix: --outputext
 - id: in_dlc_par_to_dl_coal
@@ -77,9 +77,10 @@ outputs:
   type: stdout
 - id: out_output_ext
   doc: 'output file extension (default: "")'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_ext)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dlcpar_to_dlcoal

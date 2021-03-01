@@ -16,6 +16,9 @@ task RtgSdfsubseq {
       ~{if (fast_q) then "--fastq" else ""} \
       ~{if defined(reverse_complement) then ("--reverse-complement " +  '"' + reverse_complement + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sdf: "input SDF"
     sequence_id: "if set, use sequence id instead of sequence name in\\nregion (0-based)\\nREGION+              the range to display. The format is one of\\n<sequence_name>, <sequence_name>:<start>-<end>,\\n<sequence_name>:<pos>+<length> or\\n<sequence_name>:<pos>~<padding>. Must be specified 1\\nor more times"

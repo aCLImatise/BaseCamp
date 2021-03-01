@@ -22,6 +22,9 @@ task Barrnappy {
       ~{if (in_cseq) then "--incseq" else ""} \
       ~{if (citation) then "--citation" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kingdom: "whether to look for eukaryotic, archaeal, or bacterial\\nrDNA; default: bac"
     threads: "Number of threads/cores/CPUs to use;default: 8"

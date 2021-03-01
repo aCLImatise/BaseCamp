@@ -10,6 +10,9 @@ task ExtractMiRNAspl {
       ~{e_dot_gdot} \
       ~{perl}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     e_dot_gdot: ""
     perl: ""

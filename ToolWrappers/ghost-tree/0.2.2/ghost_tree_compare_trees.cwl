@@ -3,7 +3,7 @@ id: ghost_tree_compare_trees.cwl
 inputs:
 - id: in_method
   doc: "[pearson|spearman]\ncorrelation method to use in Mantel test"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --method
 - id: in_tree_file_one
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ghost-tree

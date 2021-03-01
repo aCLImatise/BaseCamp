@@ -1,0 +1,149 @@
+!Command
+command:
+- groupBy
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: Input file. Assumes "stdin" if omitted.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - -grp
+  description: "Specify the columns (1-based) for the grouping.\nThe columns must\
+    \ be comma separated.\n- Default: 1,2,3"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - -opCols
+  description: "Specify the column (1-based) that should be summarized.\n- Required."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - -ops
+  description: "Specify the operation that should be applied to opCol.\nValid operations:\n\
+    sum, count, count_distinct, min, max,\nmean, median, mode, antimode,\nstdev, sstdev\
+    \ (sample standard dev.),\ncollapse (i.e., print a comma separated list (duplicates\
+    \ allowed)),\ndistinct (i.e., print a comma separated list (NO duplicates allowed)),\n\
+    distinct_sort_num (as distinct, but sorted numerically, ascending),\ndistinct_sort_num_desc\
+    \ (as distinct, but sorted numerically, descending),\nconcat   (i.e., merge values\
+    \ into a single, non-delimited string),\nfreqdesc (i.e., print desc. list of values:freq)\n\
+    freqasc (i.e., print asc. list of values:freq)\nfirst (i.e., print first value)\n\
+    last (i.e., print last value)\n- Default: sum\nIf there is only column, but multiple\
+    \ operations, all operations will be\napplied on that column. Likewise, if there\
+    \ is only one operation, but\nmultiple columns, that operation will be applied\
+    \ to all columns.\nOtherwise, the number of columns must match the the number\
+    \ of operations,\nand will be applied in respective order.\nE.g., \"-c 5,4,6 -o\
+    \ sum,mean,count\" will give the sum of column 5,\nthe mean of column 4, and the\
+    \ count of column 6.\nThe order of output columns will match the ordering given\
+    \ in the command."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -full
+  description: "Print all columns from input file.  The first line in the group is\
+    \ used.\nDefault: print only grouped columns."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -inheader
+  description: Input file has a header line - the first line will be ignored.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -outheader
+  description: "Print header line in the output, detailing the column names.\nIf the\
+    \ input file has headers (-inheader), the output file\nwill use the input's column\
+    \ names.\nIf the input file has no headers, the output file\nwill use \"col_1\"\
+    , \"col_2\", etc. as the column names."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -header
+  description: same as '-inheader -outheader'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ignorecase
+  description: Group values regardless of upper/lower case.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -prec
+  description: 'Sets the decimal precision for output (Default: 5)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -delim
+  description: "Specify a custom delimiter for the collapse operations.\n- Example:\
+    \ -delim \"|\"\n- Default: \",\"."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nTool:    bedtools groupby \nVersion: v2.30.0\nSummary: Summarizes a\
+  \ dataset column based upon\n\t common column groupings. Akin to the SQL \"group\
+  \ by\" command.\n\nUsage:\t bedtools groupby -g [group_column(s)] -c [op_column(s)]\
+  \ -o [ops] \n\t cat [FILE] | bedtools groupby -g [group_column(s)] -c [op_column(s)]\
+  \ -o [ops] \n\nOptions: \n\t-i\t\tInput file. Assumes \"stdin\" if omitted.\n\n\t\
+  -g -grp\t\tSpecify the columns (1-based) for the grouping.\n\t\t\tThe columns must\
+  \ be comma separated.\n\t\t\t- Default: 1,2,3\n\n\t-c -opCols\tSpecify the column\
+  \ (1-based) that should be summarized.\n\t\t\t- Required.\n\n\t-o -ops\t\tSpecify\
+  \ the operation that should be applied to opCol.\n\t\t\tValid operations:\n\t\t\t\
+  \    sum, count, count_distinct, min, max,\n\t\t\t    mean, median, mode, antimode,\n\
+  \t\t\t    stdev, sstdev (sample standard dev.),\n\t\t\t    collapse (i.e., print\
+  \ a comma separated list (duplicates allowed)), \n\t\t\t    distinct (i.e., print\
+  \ a comma separated list (NO duplicates allowed)), \n\t\t\t    distinct_sort_num\
+  \ (as distinct, but sorted numerically, ascending), \n\t\t\t    distinct_sort_num_desc\
+  \ (as distinct, but sorted numerically, descending), \n\t\t\t    concat   (i.e.,\
+  \ merge values into a single, non-delimited string), \n\t\t\t    freqdesc (i.e.,\
+  \ print desc. list of values:freq)\n\t\t\t    freqasc (i.e., print asc. list of\
+  \ values:freq)\n\t\t\t    first (i.e., print first value)\n\t\t\t    last (i.e.,\
+  \ print last value)\n\t\t\t- Default: sum\n\n\t\tIf there is only column, but multiple\
+  \ operations, all operations will be\n\t\tapplied on that column. Likewise, if there\
+  \ is only one operation, but\n\t\tmultiple columns, that operation will be applied\
+  \ to all columns.\n\t\tOtherwise, the number of columns must match the the number\
+  \ of operations,\n\t\tand will be applied in respective order.\n\t\tE.g., \"-c 5,4,6\
+  \ -o sum,mean,count\" will give the sum of column 5,\n\t\tthe mean of column 4,\
+  \ and the count of column 6.\n\t\tThe order of output columns will match the ordering\
+  \ given in the command.\n\n\n\t-full\t\tPrint all columns from input file.  The\
+  \ first line in the group is used.\n\t\t\tDefault: print only grouped columns.\n\
+  \n\t-inheader\tInput file has a header line - the first line will be ignored.\n\n\
+  \t-outheader\tPrint header line in the output, detailing the column names. \n\t\t\
+  \tIf the input file has headers (-inheader), the output file\n\t\t\twill use the\
+  \ input's column names.\n\t\t\tIf the input file has no headers, the output file\n\
+  \t\t\twill use \"col_1\", \"col_2\", etc. as the column names.\n\n\t-header\t\t\
+  same as '-inheader -outheader'\n\n\t-ignorecase\tGroup values regardless of upper/lower\
+  \ case.\n\n\t-prec\tSets the decimal precision for output (Default: 5)\n\n\t-delim\t\
+  Specify a custom delimiter for the collapse operations.\n\t\t- Example: -delim \"\
+  |\"\n\t\t- Default: \",\".\n\nExamples: \n\t$ cat ex1.out\n\tchr1 10  20  A   chr1\
+  \    15  25  B.1 1000    ATAT\n\tchr1 10  20  A   chr1    25  35  B.2 10000   CGCG\n\
+  \n\t$ groupBy -i ex1.out -g 1,2,3,4 -c 9 -o sum\n\tchr1 10  20  A   11000\n\n\t\
+  $ groupBy -i ex1.out -grp 1,2,3,4 -opCols 9,9 -ops sum,max\n\tchr1 10  20  A   11000\
+  \   10000\n\n\t$ groupBy -i ex1.out -g 1,2,3,4 -c 8,9 -o collapse,mean\n\tchr1 10\
+  \  20  A   B.1,B.2,    5500\n\n\t$ cat ex1.out | groupBy -g 1,2,3,4 -c 8,9 -o collapse,mean\n\
+  \tchr1 10  20  A   B.1,B.2,    5500\n\n\t$ cat ex1.out | groupBy -g 1,2,3,4 -c 10\
+  \ -o concat\n\tchr1 10  20  A   ATATCGCG\n\nNotes: \n\t(1)  The input file/stream\
+  \ should be sorted/grouped by the -grp. columns\n\t(2)  If -i is unspecified, input\
+  \ is assumed to come from stdin.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bedtools:2.30.0--hc088bd4_0

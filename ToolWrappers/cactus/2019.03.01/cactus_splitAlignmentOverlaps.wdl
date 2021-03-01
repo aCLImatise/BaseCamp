@@ -4,6 +4,9 @@ task CactusSplitAlignmentOverlaps {
   command <<<
     cactus_splitAlignmentOverlaps
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

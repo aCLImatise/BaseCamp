@@ -14,6 +14,9 @@ task Fitpkaeopy {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (graph) then "--graph" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     author: "show the program's author name and exit"
     verbose: "If stated, prints verbose showing initial and final\\nvalues of X2. Default: False"

@@ -34,6 +34,9 @@ task ScanpycliHvg {
       ~{if (subset) then "--subset" else ""} \
       ~{if defined(by_batch) then ("--by-batch " +  '"' + by_batch + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_format: "[anndata|loom]\\nInput object format.  [default: anndata]"
     output_format: "[anndata|loom|zarr]\\nOutput object format.  [default: anndata]"

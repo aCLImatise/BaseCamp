@@ -16,6 +16,9 @@ task MapToSlimpy {
       ~{if defined(association_file) then ("--association_file " +  '"' + association_file + '"') else ""} \
       ~{if defined(slim_out) then ("--slim_out " +  '"' + slim_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     term: "a term (association id) to map to slim IDs. This can\\nnot be used together with --association_file"
     association_file: "the file of protein products and their associations to\\nbe mapped to GO slim terms. This can not be used\\ntogether with --term"

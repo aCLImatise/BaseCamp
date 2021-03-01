@@ -3,248 +3,205 @@ id: hisat2_align_l.cwl
 inputs:
 - id: in_query_input_files_fastq
   doc: query input files are FASTQ .fq/.fastq (default)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
 - id: in_q_seq
   doc: query input files are in Illumina's qseq format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --qseq
 - id: in_query_input_files_multifasta
   doc: query input files are (multi-)FASTA .fa/.mfa
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_query_input_files_raw
   doc: query input files are raw one-sequence-per-line
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_m_m_r
   doc: <m1>, <m2>, <r> are sequences themselves, not files
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
-- id: in_s_slash_skip
+- id: in_skip
   doc: skip the first <int> reads/pairs in the input (none)
-  type: long
+  type: long?
   inputBinding:
-    prefix: -s/--skip
-- id: in_us_lash_up_to
+    prefix: --skip
+- id: in_up_to
   doc: stop after first <int> reads/pairs (no limit)
-  type: long
+  type: long?
   inputBinding:
-    prefix: -u/--upto
-- id: in_five_slash_trim_five
+    prefix: --upto
+- id: in_trim_five
   doc: trim <int> bases from 5'/left end of reads (0)
-  type: long
+  type: long?
   inputBinding:
-    prefix: -5/--trim5
-- id: in_three_slash_trim_three
+    prefix: --trim5
+- id: in_trim_three
   doc: trim <int> bases from 3'/right end of reads (0)
-  type: long
+  type: long?
   inputBinding:
-    prefix: -3/--trim3
+    prefix: --trim3
 - id: in_phred_three_three
   doc: qualities are Phred+33 (default)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --phred33
 - id: in_phred_six_four
   doc: qualities are Phred+64
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --phred64
 - id: in_int_quals
   doc: qualities encoded as space-delimited integers
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --int-quals
-- id: in_fast
-  doc: --no-repeat-index
-  type: boolean
+- id: in_no_repeat_index
+  doc: ',0,-0.5'
+  type: long?
   inputBinding:
-    prefix: --fast
-- id: in_sensitive
-  doc: --bowtie2-dp 1 -k 30 --score-min L,0,-0.5
-  type: boolean
-  inputBinding:
-    prefix: --sensitive
-- id: in_very_sensitive
-  doc: --bowtie2-dp 2 -k 50 --score-min L,0,-1
-  type: boolean
-  inputBinding:
-    prefix: --very-sensitive
-- id: in_bowtie_two_dp
-  doc: "use Bowtie2's dynamic programming alignment algorithm (0) - 0: no dynamic\
-    \ programming, 1: conditional dynamic programming, and 2: unconditional dynamic\
-    \ programming (slowest)"
-  type: long
-  inputBinding:
-    prefix: --bowtie2-dp
+    prefix: --no-repeat-index
 - id: in_n_ceil
   doc: 'func for max # non-A/C/G/Ts permitted in aln (L,0,0.15)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --n-ceil
 - id: in_ignore_quals
   doc: treat all quality values as 30 on Phred scale (off)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ignore-quals
 - id: in_no_fw
   doc: do not align forward (original) version of read (off)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nofw
 - id: in_norc
   doc: do not align reverse-complement version of read (off)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --norc
-- id: in_no_repeat_index
-  doc: do not use repeat index
-  type: boolean
-  inputBinding:
-    prefix: --no-repeat-index
 - id: in_pen_can_splice
   doc: penalty for a canonical splice site (0)
-  type: long
+  type: long?
   inputBinding:
     prefix: --pen-cansplice
 - id: in_pen_non_can_splice
   doc: penalty for a non-canonical splice site (12)
-  type: long
+  type: long?
   inputBinding:
     prefix: --pen-noncansplice
 - id: in_pen_can_intron_len
   doc: penalty for long introns (G,-8,1) with canonical splice sites
-  type: long
+  type: long?
   inputBinding:
     prefix: --pen-canintronlen
 - id: in_pen_non_can_intron_len
   doc: penalty for long introns (G,-8,1) with noncanonical splice sites
-  type: long
+  type: long?
   inputBinding:
     prefix: --pen-noncanintronlen
 - id: in_min_intron_len
   doc: minimum intron length (20)
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-intronlen
 - id: in_max_intron_len
   doc: maximum intron length (500000)
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-intronlen
 - id: in_known_splice_site_in_file
   doc: provide a list of known splice sites
-  type: File
+  type: File?
   inputBinding:
     prefix: --known-splicesite-infile
 - id: in_novel_splice_site_outfile
   doc: report a list of splice sites
-  type: File
+  type: File?
   inputBinding:
     prefix: --novel-splicesite-outfile
 - id: in_novel_splice_site_in_file
   doc: provide a list of novel splice sites
-  type: File
+  type: File?
   inputBinding:
     prefix: --novel-splicesite-infile
 - id: in_no_temp_splice_site
   doc: disable the use of splice sites found
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-temp-splicesite
 - id: in_no_spliced_alignment
   doc: disable spliced alignment
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-spliced-alignment
 - id: in_rna_strand_ness
   doc: specify strand-specific information (unstranded)
-  type: string
+  type: string?
   inputBinding:
     prefix: --rna-strandness
 - id: in_tmo
   doc: reports only those alignments within known transcriptome
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tmo
 - id: in_dta
   doc: reports alignments tailored for transcript assemblers
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dta
 - id: in_dta_cufflinks
   doc: reports alignments tailored specifically for cufflinks
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dta-cufflinks
 - id: in_avoid_pseudogene
   doc: tries to avoid aligning reads to pseudogenes (experimental option)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --avoid-pseudogene
 - id: in_no_template_len_adjustment
   doc: disables template length adjustment for RNA-seq reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-templatelen-adjustment
 - id: in_mp
   doc: ',<int>   max and min penalties for mismatch; lower qual = lower penalty <6,2>'
-  type: long
+  type: long?
   inputBinding:
     prefix: --mp
 - id: in_sp
   doc: ',<int>   max and min penalties for soft-clipping; lower qual = lower penalty
     <2,1>'
-  type: long
+  type: long?
   inputBinding:
     prefix: --sp
 - id: in_no_soft_clip
   doc: no soft-clipping
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-softclip
 - id: in_np
   doc: penalty for non-A/C/G/Ts in read/ref (1)
-  type: long
+  type: long?
   inputBinding:
     prefix: --np
 - id: in_rdg
   doc: ',<int>  read gap open, extend penalties (5,3)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --rdg
 - id: in_rfg
   doc: ',<int>  reference gap open, extend penalties (5,3)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --rfg
-- id: in_score_min
-  doc: "min acceptable alignment score w/r/t read length\n(L,0.0,-0.2)"
-  type: long
-  inputBinding:
-    prefix: --score-min
-- id: in_it_searches_find
-  doc: "It searches for at most <int> distinct, primary alignments for each read.\
-    \ Primary alignments mean\nalignments whose alignment score is equal to or higher\
-    \ than any other alignments. The search terminates\nwhen it cannot find more distinct\
-    \ valid alignments, or when it finds <int>, whichever happens first.\nThe alignment\
-    \ score for a paired-end alignment equals the sum of the alignment scores of\n\
-    the individual mates. Each reported read or pair alignment beyond the first has\
-    \ the SAM ‘secondary’ bit\n(which equals 256) set in its FLAGS field. For reads\
-    \ that have more than <int> distinct,\nvalid alignments, hisat2 does not guarantee\
-    \ that the <int> alignments reported are the best possible\nin terms of alignment\
-    \ score. Default: 5 (linear index) or 10 (graph index).\nNote: HISAT2 is not designed\
-    \ with large values for -k in mind, and when aligning reads to long,\nrepetitive\
-    \ genomes, large -k could make alignment much slower."
-  type: long
-  inputBinding:
-    prefix: -k
 - id: in_max_seeds
   doc: "HISAT2, like other aligners, uses seed-and-extend approaches. HISAT2 tries\
     \ to extend seeds to\nfull-length alignments. In HISAT2, --max-seeds is used to\
@@ -257,157 +214,152 @@ inputs:
     \ with large values for --max-seeds in mind, and when aligning\nreads to long,\
     \ repetitive genomes, large --max-seeds could make alignment much slower.\nThe\
     \ default value is the maximum of 5 and the value that comes with -k times 2."
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-seeds
-- id: in_a_slash_all
+- id: in_all
   doc: "HISAT2 reports all alignments it can find. Using the option is equivalent\
     \ to using both --max-seeds\nand -k with the maximum value that a 64-bit signed\
     \ integer can represent (9,223,372,036,854,775,807)."
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -a/--all
+    prefix: --all
 - id: in_repeat
   doc: report alignments to repeat sequences directly
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --repeat
-- id: in_i_slash_mini_ns
+- id: in_mini_ns
   doc: minimum fragment length (0), only valid with --no-spliced-alignment
-  type: long
+  type: long?
   inputBinding:
-    prefix: -I/--minins
-- id: in_x_slash_max_ins
+    prefix: --minins
+- id: in_max_ins
   doc: maximum fragment length (500), only valid with --no-spliced-alignment
-  type: long
+  type: long?
   inputBinding:
-    prefix: -X/--maxins
-- id: in_fr_slash_rf_slash_ff
-  doc: -1, -2 mates align fw/rev, rev/fw, fw/fw (--fr)
-  type: boolean
+    prefix: --maxins
+- id: in_fr
+  doc: align fw/rev, rev/fw, fw/fw (--fr)
+  type: string?
   inputBinding:
-    prefix: --fr/--rf/--ff
+    prefix: --fr
 - id: in_no_mixed
   doc: suppress unpaired alignments for paired reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-mixed
 - id: in_no_discordant
   doc: suppress discordant alignments for paired reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-discordant
-- id: in_t_slash_time
+- id: in_time
   doc: print wall-clock time taken by search phases
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -t/--time
+    prefix: --time
 - id: in_summary_file
   doc: print alignment summary to this file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --summary-file
 - id: in_new_summary
   doc: print alignment summary in a new style, which is more machine-friendly.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --new-summary
 - id: in_quiet
   doc: print nothing to stderr except serious errors
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_met_file
   doc: send metrics to file at <path> (off)
-  type: File
+  type: File?
   inputBinding:
     prefix: --met-file
 - id: in_met_stderr
   doc: send metrics to stderr (off)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --met-stderr
 - id: in_met
   doc: report internal counters & metrics every <int> secs (1)
-  type: long
+  type: long?
   inputBinding:
     prefix: --met
 - id: in_no_head
   doc: suppress header lines, i.e. lines starting with @
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-head
 - id: in_no_sq
   doc: suppress @SQ header lines
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-sq
 - id: in_rg_id
   doc: 'set read group id, reflected in @RG line and RG:Z: opt field'
-  type: string
+  type: string?
   inputBinding:
     prefix: --rg-id
 - id: in_rg
   doc: "add <text> (\"lab:value\") to @RG line of SAM header.\nNote: @RG line only\
     \ printed when --rg-id is set."
-  type: string
+  type: string?
   inputBinding:
     prefix: --rg
 - id: in_omit_sec_seq
   doc: put '*' in SEQ and QUAL fields for secondary alignments.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --omit-sec-seq
-- id: in_oslash_off_rate
+- id: in_off_rate
   doc: override offrate of index; must be >= index's offrate
-  type: long
+  type: long?
   inputBinding:
-    prefix: -o/--offrate
-- id: in_p_slash_threads
+    prefix: --offrate
+- id: in_threads
   doc: number of alignment threads to launch (1)
-  type: long
+  type: long?
   inputBinding:
-    prefix: -p/--threads
+    prefix: --threads
 - id: in_reorder
   doc: force SAM output order to match order of input reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reorder
 - id: in_mm
   doc: use memory-mapped I/O for index; many 'hisat2's can share
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mm
 - id: in_qc_filter
   doc: filter out reads that are bad according to QSEQ filter
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --qc-filter
 - id: in_seed
   doc: seed for random number generator (0)
-  type: long
+  type: long?
   inputBinding:
     prefix: --seed
 - id: in_non_deterministic
   doc: rand. gen. arbitrarily instead of using read attributes
-  type: string
+  type: string?
   inputBinding:
     prefix: --non-deterministic
 - id: in_remove_chr_name
   doc: remove 'chr' from reference names in alignment
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --remove-chrname
 - id: in_add_chr_name
   doc: add 'chr' to reference names in alignment
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --add-chrname
-- id: in_h_slash_help
-  doc: print this usage message
-  type: boolean
-  inputBinding:
-    prefix: -h/--help
 - id: in_his_at_two_align
   doc: ''
   type: long
@@ -428,12 +380,12 @@ inputs:
   type: long
   inputBinding:
     position: 0
-- id: in_var_80
+- id: in_var_73
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_var_81
+- id: in_var_74
   doc: ''
   type: string
   inputBinding:
@@ -488,7 +440,7 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: in_var_92
+- id: in_var_85
   doc: ''
   type: string
   inputBinding:
@@ -512,6 +464,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hisat2-align-l

@@ -24,6 +24,9 @@ task ReadAnalysispyDetectIr {
       ~{if defined(t_al_nm) then ("--t_alnm " +  '"' + t_al_nm + '"') else ""} \
       ~{if defined(num_threads) then ("--num_threads " +  '"' + num_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     annotation: "Annotation file in ensemble GTF/GFF formats"
     read: "Input read for training, not required if alignment\\nfiles are provided"

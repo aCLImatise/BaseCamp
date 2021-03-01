@@ -2,7 +2,6 @@ version 1.0
 
 task RemoveSelectedFeaturesSamplespy {
   input {
-    String? fft
     String? input_dataset_wide
     File? design
     String? id
@@ -17,7 +16,6 @@ task RemoveSelectedFeaturesSamplespy {
   }
   command <<<
     remove_selected_features_samples_py \
-      ~{if defined(fft) then ("-fft " +  '"' + fft + '"') else ""} \
       ~{if defined(input_dataset_wide) then ("--input " +  '"' + input_dataset_wide + '"') else ""} \
       ~{if defined(design) then ("--design " +  '"' + design + '"') else ""} \
       ~{if defined(id) then ("--ID " +  '"' + id + '"') else ""} \
@@ -30,8 +28,10 @@ task RemoveSelectedFeaturesSamplespy {
       ~{if defined(out_wide) then ("--outWide " +  '"' + out_wide + '"') else ""} \
       ~{if defined(out_flags) then ("--outFlags " +  '"' + out_flags + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    fft: "[-fid FLAGUNIQID] -fd FLAGDROP\\n[-val VALUE] [-con CONDITION] -ow\\nOUTWIDE -of OUTFLAGS"
     input_dataset_wide: "Input dataset in wide format."
     design: "Design file."
     id: "Name of the column with unique identifiers."

@@ -3,7 +3,7 @@ version 1.0
 task PauvreRedwood {
   input {
     Boolean? quiet
-    String? fasta_file_doubled
+    String? your_fasta_file
     Int? dpi
     File? gff
     Boolean? interlace
@@ -24,7 +24,7 @@ task PauvreRedwood {
     pauvre redwood \
       ~{higher} \
       ~{if (quiet) then "--quiet" else ""} \
-      ~{if defined(fasta_file_doubled) then ("-d " +  '"' + fasta_file_doubled + '"') else ""} \
+      ~{if defined(your_fasta_file) then ("-d " +  '"' + your_fasta_file + '"') else ""} \
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
       ~{if defined(gff) then ("--gff " +  '"' + gff + '"') else ""} \
       ~{if (interlace) then "--interlace" else ""} \
@@ -40,9 +40,12 @@ task PauvreRedwood {
       ~{if defined(ticks) then ("--ticks " +  '"' + ticks + '"') else ""} \
       ~{if (transparent) then "--transparent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
-    fasta_file_doubled: "[{main,rnaseq} ...], --doubled {main,rnaseq} [{main,rnaseq} ...]\\nIf your fasta file was doubled to map circularly, use\\nthis flag or you may encounter plotting errors.\\nAccepts multiple arguments. 'main' is for the sam file\\npassed with --sam, 'rnaseq' is for the sam file passed\\nwith --rnaseq"
+    your_fasta_file: "[{main,rnaseq} ...], --doubled {main,rnaseq} [{main,rnaseq} ...]\\nIf your fasta file was doubled to map circularly, use\\nthis flag or you may encounter plotting errors.\\nAccepts multiple arguments. 'main' is for the sam file\\npassed with --sam, 'rnaseq' is for the sam file passed\\nwith --rnaseq"
     dpi: "Change the dpi from the default 600 if you need it"
     gff: "The input filepath for the gff annotation to plot"
     interlace: "Interlace the reads so the pileup plot looks better.\\nDoesn't work currently"

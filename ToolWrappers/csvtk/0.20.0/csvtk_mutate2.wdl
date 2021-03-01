@@ -40,6 +40,9 @@ task CsvtkMutate2 {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     digits: "number of digits after the dot (default 2)"
     digits_as_string: "treate digits as string to avoid converting big digits into scientific notation"

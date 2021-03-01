@@ -4,48 +4,122 @@ command:
 positional: []
 named:
 - !Flag
-  description: "-s <substitution matrix file> (if not supplied an default matrix is\
-    \ used)\n-m <root file name for maln output file(s)> (assembly.maln.iter)"
+  optional: true
   synonyms:
   - -f
+  - -s
+  description: (if not supplied an default matrix is used)
   args: !SimpleFlagArg
     name: fasta or fastq file of fragments to align
-  optional: true
 - !Flag
-  description: "database has repeat sequences, keep one based on alignment score\n\
-    -U fasta database has repeat sequences, keep one based on sum of q-scores\n-C<tolerance>\
-    \ collapse sequences with same start, end, strand info into a single sequence\n\
-    Allow <tolerance> bases difference for start and end coordinates\nImportant: keep\
-    \ NO SPACE between parameter and value: e.g. -C3\n-A use adapter presence and\
-    \ coordinate information to more aggressively\nremove repeat sequences - suitable\
-    \ only for 454 sequences that have not\nalready been adapter trimmed\n-T fasta\
-    \ database has adapters, trim these\n-a <adapter sequence or code>\n-k <use kmer\
-    \ filter with kmers of this length>\n-I <filename of list of sequence IDs to use,\
-    \ ignoring all others>"
+  optional: true
+  synonyms:
+  - -m
+  description: <root file name for maln output file(s)> (assembly.maln.iter)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -u
+  description: database has repeat sequences, keep one based on alignment score
   args: !SimpleFlagArg
     name: fasta
-  optional: true
 - !Flag
-  description: "<consensus calling code; default = 1>\n-c means reference/assembly\
-    \ is circular\n-i iterate assembly until convergence (default)\n-n do not iterate\
-    \ assembly until convergence\n-F <only output the FINAL assembly, not each iteration>\n\
-    -D <distantly related reference sequence>\n-h give special discount for homopolymer\
-    \ gaps\n-M <use lower-case soft-masking of kmers>\n-H <do not do dynamic score\
-    \ cutoff, instead use this Hard score cutoff>\n-S <slope of length/score cutoff\
-    \ line>\n-N <intercept of length/score cutoff line>"
+  optional: true
+  synonyms:
+  - -U
+  description: database has repeat sequences, keep one based on sum of q-scores
+  args: !SimpleFlagArg
+    name: fasta
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  description: "<tolerance> collapse sequences with same start, end, strand info into\
+    \ a single sequence\nAllow <tolerance> bases difference for start and end coordinates\n\
+    Important: keep NO SPACE between parameter and value: e.g. -C3"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: "adapter presence and coordinate information to more aggressively\n\
+    remove repeat sequences - suitable only for 454 sequences that have not\nalready\
+    \ been adapter trimmed"
+  args: !SimpleFlagArg
+    name: use
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: database has adapters, trim these
+  args: !SimpleFlagArg
+    name: fasta
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - -k
+  - -I
+  description: <filename of list of sequence IDs to use, ignoring all others>
+  args: !SimpleFlagArg
+    name: adapter sequence or code
+- !Flag
+  optional: true
   synonyms:
   - -p
+  description: <consensus calling code; default = 1>
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
+  synonyms:
+  - -c
+  description: reference/assembly is circular
+  args: !SimpleFlagArg
+    name: means
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: assembly until convergence (default)
+  args: !SimpleFlagArg
+    name: iterate
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: not iterate assembly until convergence
+  args: !SimpleFlagArg
+    name: do
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: <only output the FINAL assembly, not each iteration>
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - -h
+  description: special discount for homopolymer gaps
+  args: !SimpleFlagArg
+    name: distantly related reference sequence
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - -H
+  description: <do not do dynamic score cutoff, instead use this Hard score cutoff>
+  args: !SimpleFlagArg
+    name: use lower-case soft-masking of kmers
+- !Flag
+  optional: true
   synonyms:
   - -r
+  description: ''
   args: !SimpleFlagArg
     name: reference sequence
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -98,3 +172,4 @@ help_text: "\n\nMIA -- Mapping Iterativ Assembler V 1.0\n       A tool for creat
   \              sequence (less than 127 nt) => user-specified adapter\n"
 generated_using:
 - --help
+docker_image:

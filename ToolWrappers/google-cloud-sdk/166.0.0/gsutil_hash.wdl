@@ -10,6 +10,9 @@ task GsutilHash {
       ~{if (calculate_crcc_hash) then "-c" else ""} \
       ~{if (calculate_md_hash) then "-m" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     calculate_crcc_hash: "Calculate a CRC32c hash for the file."
     calculate_md_hash: "Calculate a MD5 hash for the file."

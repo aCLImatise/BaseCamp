@@ -16,6 +16,9 @@ task Findpositionsusedpl {
       ~{if (tab) then "--tab" else ""} \
       ~{if (reference) then "--reference" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     core_pos: ":  Core positions file from vcf2core.pl (GFF format)."
     bad_pos: ": Bad positions file, format of"

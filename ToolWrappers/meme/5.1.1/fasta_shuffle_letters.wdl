@@ -8,6 +8,9 @@ task Fastashuffleletters {
     fasta_shuffle_letters \
       ~{sequence_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequence_file: ""
   }

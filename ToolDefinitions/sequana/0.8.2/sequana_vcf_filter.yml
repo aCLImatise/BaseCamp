@@ -3,34 +3,100 @@ command:
 - sequana_vcf_filter
 positional:
 - !Positional
-  description: 'DP>30&<60  # to keep only values in the range [30-60]'
+  optional: false
   position: 0
   name: or
-  optional: false
-named: []
+  description: 'DP>30&<60  # to keep only values in the range [30-60]'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --input
+  description: 'input fastq gzipped or not (default: None)'
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --quality
+  description: 'filter sites below this quality (default: -1)'
+  args: !SimpleFlagArg
+    name: QUALITY
+- !Flag
+  optional: true
+  synonyms:
+  - --apply-indel-filter
+  description: 'remove INDELs (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --apply-dp4-filter
+  description: "apply DP4 filters. see online doc, vcf_filter section\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --apply-af1-filter
+  description: "apply AF1 filters. see online doc, vcf_filter section\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minimum-af1
+  description: 'default to 0.95 (default: 0.95)'
+  args: !SimpleFlagArg
+    name: MINIMUM_AF1
+- !Flag
+  optional: true
+  synonyms:
+  - --minimum-ratio
+  description: 'default to 0.75 (default: 0.75)'
+  args: !SimpleFlagArg
+    name: MINIMUM_RATIO
+- !Flag
+  optional: true
+  synonyms:
+  - --minimum-depth
+  description: 'default to 4 (default: 4)'
+  args: !SimpleFlagArg
+    name: MINIMUM_DEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - --minimum_depth-strand
+  description: 'default to 2 (default: 2)'
+  args: !SimpleFlagArg
+    name: MINIMUM_DEPTH_STRAND
+- !Flag
+  optional: true
+  synonyms:
+  - --filter
+  description: "Provide as many filters as you want. See example above\n(default:\
+    \ [])"
+  args: !SimpleFlagArg
+    name: FILTER
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--input INPUT_FILENAME\ninput fastq\
-    \ gzipped or not (default: None)\n--quality QUALITY     filter sites below this\
-    \ quality (default: -1)\n--apply-indel-filter  remove INDELs (default: False)\n\
-    --apply-dp4-filter    apply DP4 filters. see online doc, vcf_filter section\n\
-    (default: False)\n--apply-af1-filter    apply AF1 filters. see online doc, vcf_filter\
-    \ section\n(default: False)\n--minimum-af1 MINIMUM_AF1\ndefault to 0.95 (default:\
-    \ 0.95)\n--minimum-ratio MINIMUM_RATIO\ndefault to 0.75 (default: 0.75)\n--minimum-depth\
-    \ MINIMUM_DEPTH\ndefault to 4 (default: 4)\n--minimum_depth-strand MINIMUM_DEPTH_STRAND\n\
-    default to 2 (default: 2)\n--filter FILTER       Provide as many filters as you\
-    \ want. See example above\n(default: [])\n--output OUTPUT_FILENAME\n--output-filtered\
-    \ OUTPUT_FILTERED_FILENAME\n--level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\n--version\
-    \             print version (default: False)"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --output
+  - --output-filtered
+  - --level
+  - --version
+  description: 'print version (default: False)'
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
 help_text: "Welcome to sequana_vcf_filter\nusage: sequana_vcf_filter Only for VCF\
   \ using mpileup version 4.1 for now\nusage2: sequana_vcf_filter vcf_filterExamples:\n\
   \n    sequana_vcf_filter --input test.vcf --quality 40\n                --filter\
@@ -67,3 +133,4 @@ help_text: "Welcome to sequana_vcf_filter\nusage: sequana_vcf_filter Only for VC
   Issues: http://github.com/sequana/sequana\n        \n"
 generated_using:
 - --help
+docker_image:

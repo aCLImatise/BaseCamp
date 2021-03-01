@@ -4,132 +4,126 @@ command:
 - synplot
 positional:
 - !Positional
-  description: --center_on CENTER_ON
+  optional: false
   position: 0
   name: contained.
-  optional: false
+  description: --center_on CENTER_ON
 - !Positional
-  description: --fileform {png,pdf,eps,jpeg,jpg,pdf,pgf,ps,raw,rgba,svg,svgz,tif,tiff}
-    [{png,pdf,eps,jpeg,jpg,pdf,pgf,ps,raw,rgba,svg,svgz,tif,tiff} ...]
+  optional: false
   position: 0
   name: higher
-  optional: false
+  description: --fileform {png,pdf,eps,jpeg,jpg,pdf,pgf,ps,raw,rgba,svg,svgz,tif,tiff}
+    [{png,pdf,eps,jpeg,jpg,pdf,pgf,ps,raw,rgba,svg,svgz,tif,tiff} ...]
 named:
 - !Flag
-  description: Do not output warnings to stderr
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: Do not output warnings to stderr
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The directory where all the fasta alignments are
+  optional: true
   synonyms:
   - --aln_dir
+  description: The directory where all the fasta alignments are
   args: !SimpleFlagArg
     name: aln_dir
-  optional: true
 - !Flag
-  description: Change the dpi from the default 600 if you need it
+  optional: true
   synonyms:
+  - --center_on
   - --dpi
+  description: Change the dpi from the default 600 if you need it
   args: !SimpleFlagArg
-    name: dpi
-  optional: true
+    name: COI
 - !Flag
-  description: "The input filepath. for the gff annotation to plot.\nIndividual filepaths\
-    \ separated by spaces. For example,\n--gff_paths sp1.gff sp2.gff sp3.gff"
+  optional: true
   synonyms:
   - --gff_paths
+  description: "The input filepath. for the gff annotation to plot.\nIndividual filepaths\
+    \ separated by spaces. For example,\n--gff_paths sp1.gff sp2.gff sp3.gff"
   args: !RepeatFlagArg
     name: gff_paths
-  optional: true
 - !Flag
-  description: "In case the gff names and sequence names don't match,\nchange the\
-    \ labels that will appear over the text."
+  optional: true
   synonyms:
   - --gff_labels
+  description: "In case the gff names and sequence names don't match,\nchange the\
+    \ labels that will appear over the text."
   args: !RepeatFlagArg
     name: gff_labels
-  optional: true
 - !Flag
-  description: Turn off time stamps in the filename output.
+  optional: true
   synonyms:
   - --no_timestamp
+  description: Turn off time stamps in the filename output.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --optimum_order
   description: "If selected, this doesn't plot the optimum arrangement\nof things\
     \ as they are input into gff_paths. Instead,\nit uses the first gff file as the\
     \ top-most sequence in\nthe plot, and reorganizes the remaining gff files to\n\
     minimize the number of intersections."
-  synonyms:
-  - --optimum_order
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify a base name for the output file(s). The input\nfile base name\
-    \ is the default."
+  optional: true
   synonyms:
   - -o
   - --output-basename
+  description: "Specify a base name for the output file(s). The input\nfile base name\
+    \ is the default."
   args: !SimpleFlagArg
     name: BASENAME
-  optional: true
 - !Flag
-  description: "Enter the dimensions (arbitrary units) to plot the\nfigure. For example\
-    \ a figure that is seven times wider\nthan tall is: --ratio 7 1"
+  optional: true
   synonyms:
   - --ratio
+  description: "Enter the dimensions (arbitrary units) to plot the\nfigure. For example\
+    \ a figure that is seven times wider\nthan tall is: --ratio 7 1"
   args: !RepeatFlagArg
     name: RATIO
-  optional: true
 - !Flag
-  description: "Put an additional copy of the first gff file on the\nbottom of the\
-    \ plot for comparison."
+  optional: true
   synonyms:
   - --sandwich
+  description: "Put an additional copy of the first gff file on the\nbottom of the\
+    \ plot for comparison."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimizes the number of intersections but only selects\ncombos where\
-    \ the first gene in each sequence is\naligned."
+  optional: true
   synonyms:
   - --start_with_aligned_genes
+  description: "Minimizes the number of intersections but only selects\ncombos where\
+    \ the first gene in each sequence is\naligned."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Performs some internal corrections if the gff\nannotation includes\
-    \ the stop codons in the coding\nsequences."
+  optional: true
   synonyms:
   - --stop_codons
+  description: "Performs some internal corrections if the gff\nannotation includes\
+    \ the stop codons in the coding\nsequences."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify this option if you DON'T want a transparent\nbackground. Default\
-    \ is on.\n"
+  optional: true
   synonyms:
   - -T
   - --transparent
+  description: "Specify this option if you DON'T want a transparent\nbackground. Default\
+    \ is on.\n"
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --center_on
-  args: !SimpleFlagArg
-    name: CENTER_ON
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: pauvre synplot [-h] [-q] [--aln_dir aln_dir] [--center_on CENTER_ON]\n\
@@ -177,3 +171,4 @@ help_text: "usage: pauvre synplot [-h] [-q] [--aln_dir aln_dir] [--center_on CEN
   \ on.\n"
 generated_using:
 - --help
+docker_image:

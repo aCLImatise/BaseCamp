@@ -1,53 +1,76 @@
 !Command
 command:
 - wes-client
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: workflow_url
+  description: job_order
+- !Positional
+  optional: false
+  position: 0
+  name: WES_API_HOST.
+  description: --auth AUTH           Defaults to WES_API_AUTH.
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --quiet
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --proto
-  args: !SimpleFlagArg
-    name: PROTO
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --auth
-  args: !SimpleFlagArg
-    name: AUTH
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - --host
+  description: "Example: '--host=localhost:8080'. Defaults to"
   args: !SimpleFlagArg
     name: HOST
+- !Flag
   optional: true
+  synonyms:
+  - --proto
+  description: "Options: [http, https]. Defaults to WES_API_PROTO\n(https)."
+  args: !SimpleFlagArg
+    name: PROTO
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  - --outdir
+  - --attachments
+  description: "A comma separated list of attachments to include.\nExample: --attachments=\"\
+    testdata/dockstore-tool-\nmd5sum.cwl,testdata/md5sum.input\""
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --page
+  - --page-size
+  - --run
+  - --get
+  description: "Specify a <workflow-id>. Example: '--get=<workflow-\nid>'"
+  args: !SimpleFlagArg
+    name: PAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: "Specify a <workflow-id>. Example: '--log=<workflow-\nid>'"
+  args: !SimpleFlagArg
+    name: LOG
+- !Flag
+  optional: true
+  synonyms:
+  - --auth
+  description: ''
+  args: !SimpleFlagArg
+    name: AUTH
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--host HOST           Example: '--host=localhost:8080'.\
-    \ Defaults to\nWES_API_HOST.\n--auth AUTH           Defaults to WES_API_AUTH.\n\
-    --proto PROTO         Options: [http, https]. Defaults to WES_API_PROTO\n(https).\n\
-    --quiet\n--outdir OUTDIR\n--attachments ATTACHMENTS\nA comma separated list of\
-    \ attachments to include.\nExample: --attachments=\"testdata/dockstore-tool-\n\
-    md5sum.cwl,testdata/md5sum.input\"\n--page PAGE\n--page-size PAGE_SIZE\n--run\n\
-    --get GET             Specify a <workflow-id>. Example: '--get=<workflow-\nid>'\n\
-    --log LOG             Specify a <workflow-id>. Example: '--log=<workflow-\nid>'\n\
-    --list\n--info\n--version\n--wait\n--no-wait\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: wes-client [-h] [--host HOST] [--auth AUTH] [--proto PROTO] [--quiet]\n\
@@ -69,3 +92,4 @@ help_text: "usage: wes-client [-h] [--host HOST] [--auth AUTH] [--proto PROTO] [
   \                id>'\n  --list\n  --info\n  --version\n  --wait\n  --no-wait\n"
 generated_using:
 - --help
+docker_image:

@@ -8,6 +8,9 @@ task GraftMUtilities {
     graftM Utilities \
       ~{graft_m}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graft_m: ""
   }

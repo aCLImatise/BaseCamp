@@ -22,6 +22,9 @@ task Segtoolshtmlreport {
       ~{if defined(results_dir) then ("--results-dir " +  '"' + results_dir + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clobber: "Overwrite any existing output files."
     quiet: "Do not print diagnostic messages."

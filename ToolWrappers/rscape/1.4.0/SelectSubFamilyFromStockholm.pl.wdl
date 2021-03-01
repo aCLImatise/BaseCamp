@@ -4,6 +4,9 @@ task SelectSubFamilyFromStockholmpl {
   command <<<
     SelectSubFamilyFromStockholm_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

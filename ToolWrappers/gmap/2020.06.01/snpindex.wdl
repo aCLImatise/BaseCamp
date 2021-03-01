@@ -24,6 +24,9 @@ task Snpindex {
       ~{if defined(snps_db) then ("--snpsdb " +  '"' + snps_db + '"') else ""} \
       ~{if defined(max_warnings) then ("--max-warnings " +  '"' + max_warnings + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     source_dir: "Directory where to read genome index files (default is\\nGMAP genome directory specified at compile time)"
     db: "Genome database"

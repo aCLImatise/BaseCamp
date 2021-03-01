@@ -9,9 +9,9 @@ task Unitigger {
     File? input_overlapfragmesgs_asmofg
     File? spurs_file
     Boolean? find_bubble_smoothing
-    Int? limit_path_length
+    Int? limit_path_walking
     Boolean? count_chimera_fragments
-    Int? enabledisable_fragment_overlap
+    Int? enabledisable_dechording_fragment
     Int? overlaps_error_rate
     Int? unique_unitig_cutoff
     Boolean? recalibrate_global_rate
@@ -22,9 +22,9 @@ task Unitigger {
     Boolean? disable_early_spur
     File? create_ovl_dump
     Int? work_limit_candidate
-    Int? dovetail_outgoing_degree
+    Int? dovetail_degree_threshold
     Int? ignore_nonblessed_overlap
-    Int? containment_outgoing_degree
+    Int? containment_degree_threshold
     String option
   }
   command <<<
@@ -37,9 +37,9 @@ task Unitigger {
       ~{if defined(input_overlapfragmesgs_asmofg) then ("-L " +  '"' + input_overlapfragmesgs_asmofg + '"') else ""} \
       ~{if defined(spurs_file) then ("-S " +  '"' + spurs_file + '"') else ""} \
       ~{if defined(find_bubble_smoothing) then ("-U " +  '"' + find_bubble_smoothing + '"') else ""} \
-      ~{if defined(limit_path_length) then ("-W " +  '"' + limit_path_length + '"') else ""} \
+      ~{if defined(limit_path_walking) then ("-W " +  '"' + limit_path_walking + '"') else ""} \
       ~{if defined(count_chimera_fragments) then ("-Y " +  '"' + count_chimera_fragments + '"') else ""} \
-      ~{if defined(enabledisable_fragment_overlap) then ("-d " +  '"' + enabledisable_fragment_overlap + '"') else ""} \
+      ~{if defined(enabledisable_dechording_fragment) then ("-d " +  '"' + enabledisable_dechording_fragment + '"') else ""} \
       ~{if defined(overlaps_error_rate) then ("-e " +  '"' + overlaps_error_rate + '"') else ""} \
       ~{if defined(unique_unitig_cutoff) then ("-j " +  '"' + unique_unitig_cutoff + '"') else ""} \
       ~{if (recalibrate_global_rate) then "-k" else ""} \
@@ -50,10 +50,13 @@ task Unitigger {
       ~{if (disable_early_spur) then "-s" else ""} \
       ~{if defined(create_ovl_dump) then ("-u " +  '"' + create_ovl_dump + '"') else ""} \
       ~{if defined(work_limit_candidate) then ("-w " +  '"' + work_limit_candidate + '"') else ""} \
-      ~{if defined(dovetail_outgoing_degree) then ("-x " +  '"' + dovetail_outgoing_degree + '"') else ""} \
+      ~{if defined(dovetail_degree_threshold) then ("-x " +  '"' + dovetail_degree_threshold + '"') else ""} \
       ~{if defined(ignore_nonblessed_overlap) then ("-y " +  '"' + ignore_nonblessed_overlap + '"') else ""} \
-      ~{if defined(containment_outgoing_degree) then ("-z " +  '"' + containment_outgoing_degree + '"') else ""}
+      ~{if defined(containment_degree_threshold) then ("-z " +  '"' + containment_degree_threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specifies_target_number: "Specifies the target number of fragments per partition."
     fragment_store_name: "The fragment store name."
@@ -62,9 +65,9 @@ task Unitigger {
     input_overlapfragmesgs_asmofg: "The input OverlapFragMesgs; asm.ofg."
     spurs_file: "Spurs file."
     find_bubble_smoothing: "Find bubble smoothing overlaps."
-    limit_path_length: "Limit in path length for graph walking."
+    limit_path_walking: "Limit in path length for graph walking."
     count_chimera_fragments: "Do not count chimera fragments."
-    enabledisable_fragment_overlap: "Enable/Disable de-chording of the fragment overlap graph."
+    enabledisable_dechording_fragment: "Enable/Disable de-chording of the fragment overlap graph."
     overlaps_error_rate: "Overlaps with error rate about this are ignored on input.\\nAn integer value is in parts per thousand."
     unique_unitig_cutoff: "Unique unitig cut-off"
     recalibrate_global_rate: "Recalibrate the global arrival rate to be the max unique local arrival rate"
@@ -75,9 +78,9 @@ task Unitigger {
     disable_early_spur: "Disable early spur fragment removal."
     create_ovl_dump: "Create a OVL compatible dump of the graph."
     work_limit_candidate: "The work limit per candidate edge for de-chording."
-    dovetail_outgoing_degree: "Dovetail outgoing degree threshold per fragment-end."
+    dovetail_degree_threshold: "Dovetail outgoing degree threshold per fragment-end."
     ignore_nonblessed_overlap: "Ignore non-blessed overlap edges to blessed fragment ends."
-    containment_outgoing_degree: "Containment outgoing degree threshold per fragment-end."
+    containment_degree_threshold: "Containment outgoing degree threshold per fragment-end."
     option: ""
   }
   output {

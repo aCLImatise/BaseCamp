@@ -2,7 +2,7 @@ version 1.0
 
 task SnpSiftVcf2tped {
   input {
-    Boolean? force_overwrite_files
+    Boolean? force_overwrite_new
     Boolean? num
     Boolean? only_snp
     Boolean? only_bi_allelic
@@ -18,7 +18,7 @@ task SnpSiftVcf2tped {
       ~{file_do_ttf_am} \
       ~{file_dot_vcf} \
       ~{output_name} \
-      ~{if (force_overwrite_files) then "-f" else ""} \
+      ~{if (force_overwrite_new) then "-f" else ""} \
       ~{if (num) then "-num" else ""} \
       ~{if (only_snp) then "-onlySnp" else ""} \
       ~{if (only_bi_allelic) then "-onlyBiAllelic" else ""} \
@@ -26,8 +26,11 @@ task SnpSiftVcf2tped {
       ~{if (use_missing_ref) then "-useMissingRef" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    force_overwrite_files: ": Force. Overwrite new files if they exist. Default: false"
+    force_overwrite_new: ": Force. Overwrite new files if they exist. Default: false"
     num: ": Use only numbers {1, 2, 3, 4} instead of bases {A, C, G, T}. Default: false"
     only_snp: ": Use only SNPs when converting VCF to TPED. Default: false"
     only_bi_allelic: ": Use only bi-allelic variants. Default: false"

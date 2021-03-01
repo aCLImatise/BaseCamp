@@ -14,6 +14,9 @@ task DASqv {
       ~{if (h) then "-H" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     c: ""
     h: ""

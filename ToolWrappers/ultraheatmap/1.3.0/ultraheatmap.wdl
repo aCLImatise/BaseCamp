@@ -8,6 +8,9 @@ task Ultraheatmap {
     ultraheatmap \
       ~{compute_ordered_matrix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compute_ordered_matrix: "addFeatureToMatrix"
   }

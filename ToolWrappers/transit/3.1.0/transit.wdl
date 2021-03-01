@@ -8,6 +8,9 @@ task Transit {
     transit \
       ~{python}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     python: ""
   }

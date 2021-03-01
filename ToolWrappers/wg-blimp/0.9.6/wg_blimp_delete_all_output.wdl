@@ -12,6 +12,9 @@ task WgblimpDeletealloutput {
       ~{if (dry_run) then "--dry-run" else ""} \
       ~{if (yes) then "--yes" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dry_run: "Only dry-run deleting the pipeline output."
     yes: "Confirm the action without prompting."

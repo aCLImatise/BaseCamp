@@ -3,12 +3,12 @@ id: msp_records.cwl
 inputs:
 - id: in_header
   doc: Print a header line in the output.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --header
 - id: in_precision
   doc: "The number of decimal places to print in records\n"
-  type: double
+  type: double?
   inputBinding:
     prefix: --precision
 - id: in_history_file
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - msp

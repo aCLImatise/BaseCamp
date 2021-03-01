@@ -14,6 +14,9 @@ task Mpa {
       ~{if defined(vcf_file_annotate) then ("--input " +  '"' + vcf_file_annotate + '"') else ""} \
       ~{if defined(output_vcf_file) then ("--output " +  '"' + output_vcf_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mpa_directory: "The path to the MPA installation folder. [Default:\\n/usr/local/bin]"
     logging_level: "The logger level. [Default: INFO]"

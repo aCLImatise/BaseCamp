@@ -96,6 +96,9 @@ task ModelAndAnalyzepy {
       ~{if (not_write_xyz) then "--not_write_xyz" else ""} \
       ~{if (not_write_json) then "--not_write_json" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cfg: "path to a configuration file with predefined parameters"
     analyze_only: "load precomputed models in outdir, skip optimization, modeling"

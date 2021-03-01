@@ -18,6 +18,9 @@ task SeqhaxPecheck {
       ~{if (print_tabular_summary) then "-q" else ""} \
       ~{if defined(number_parallel_threads) then ("-t " +  '"' + number_parallel_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_interleaved_reads: "Output interleaved reads to FILE. Use - for stdout.\\nAll sets of paired end files will end up in same\\noutput!!! (default: no output)"
     interleaved_inputs: "Interleaved inputs"

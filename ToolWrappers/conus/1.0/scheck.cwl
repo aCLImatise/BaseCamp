@@ -3,17 +3,17 @@ id: scheck.cwl
 inputs:
 - id: in_assume_khs_reversed
   doc: ': Assume KHS is reversed -- as in Infernal output'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
-- id: in_print_output_format
+- id: in_print_ct_output
   doc: ': print ct output format for predicted structure'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -options
 - id: in_s_test
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - scheck

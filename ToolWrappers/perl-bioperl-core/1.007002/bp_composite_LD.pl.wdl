@@ -18,6 +18,9 @@ task BpCompositeLDpl {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if (no_convert) then "--noconvert" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "format (prettybase or CSV)"
     sort_by_ld: "see data sorted by LD instead of just all the site1/site2"

@@ -3,22 +3,22 @@ id: HpsuisSero.sh.cwl
 inputs:
 - id: in_input_raw_reads
   doc: input raw reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_path_output_directory
   doc: path to output directory
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_sample_name
   doc: sample name
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_threads
   doc: number of threads [4]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --threads
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_path_output_directory
   doc: path to output directory
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_path_output_directory)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - HpsuisSero.sh

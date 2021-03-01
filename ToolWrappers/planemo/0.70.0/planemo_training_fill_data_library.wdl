@@ -16,6 +16,9 @@ task PlanemoTrainingFillDataLibrary {
       ~{if defined(zeno_do_link) then ("--zenodo_link " +  '"' + zeno_do_link + '"') else ""} \
       ~{if defined(data_types) then ("--datatypes " +  '"' + data_types + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     topic_name: "Name (directory name) of the topic to create or in\\nwhich a tutorial should be created or updates\\n[required]"
     tutorial_name: "Name (directory name) of the tutorial to modify\\n[required]"

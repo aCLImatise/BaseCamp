@@ -8,6 +8,9 @@ task Famdef {
     famdef \
       ~{seq_list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_list: ""
   }

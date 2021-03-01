@@ -20,6 +20,9 @@ task MedpyExtractContourpy {
       ~{if (display_debug_information) then "-d" else ""} \
       ~{if (silently_override_images) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     width: "Width of the contour."
     dimension: "Extract contours only along this dimension."

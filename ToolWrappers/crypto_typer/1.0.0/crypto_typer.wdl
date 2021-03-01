@@ -20,6 +20,9 @@ task CryptoTyper {
       ~{if defined(reverse_primer_name) then ("--reverseprimername " +  '"' + reverse_primer_name + '"') else ""} \
       ~{if defined(output_prefix) then ("--outputprefix " +  '"' + output_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Turn on verbose logging [False]."
     path_directory_forward: "Path to directory with AB1 forward and reverse files\\nOR path to a single AB1 file"

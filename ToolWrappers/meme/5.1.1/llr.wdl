@@ -20,6 +20,9 @@ task Llr {
       ~{if defined(minn) then ("-minN " +  '"' + minn + '"') else ""} \
       ~{if defined(n) then ("-N " +  '"' + n + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     range: ""
     frac: ""

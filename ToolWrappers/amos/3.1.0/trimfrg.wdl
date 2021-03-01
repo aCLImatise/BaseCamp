@@ -4,6 +4,9 @@ task Trimfrg {
   command <<<
     trimfrg
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

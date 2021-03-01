@@ -74,6 +74,9 @@ task PhaseBySize {
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
       ~{if (stylesheet) then "--stylesheet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     codon_buffer: "Codons before and after start codon to ignore\\n(Default: 5)"
     quiet: "Suppress all warning messages. Cannot use with '-v'."

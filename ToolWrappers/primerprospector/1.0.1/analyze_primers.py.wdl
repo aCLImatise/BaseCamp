@@ -30,6 +30,9 @@ task AnalyzePrimerspy {
       ~{if defined(non_three_prime_gap) then ("--non_three_prime_gap " +  '"' + non_three_prime_gap + '"') else ""} \
       ~{if defined(fast_a_seqs) then ("--fasta_seqs " +  '"' + fast_a_seqs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     primers_file_path: "Path to input primers file.  This file is tab\\ndelineated, with the first column being the primer\\nname, which must end with an 'f' or a 'r'.  The second\\ncolumn contains the primer sequence in 5' to  3'\\nformat. One must supply either a primer file or a\\nprimer name  (-p parameter) and primer sequence (-s\\nparameter). [default: none]"

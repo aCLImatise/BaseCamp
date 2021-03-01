@@ -4,7 +4,7 @@ inputs:
 - id: in_new_db
   doc: "Output data base name. Should replace\nper_read_modified_base_calls.db in\
     \ megalodon results\ndirectory in order to process further. Default:\nmegalodon_mods.db\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --new-db
 outputs:
@@ -14,9 +14,10 @@ outputs:
 - id: out_new_db
   doc: "Output data base name. Should replace\nper_read_modified_base_calls.db in\
     \ megalodon results\ndirectory in order to process further. Default:\nmegalodon_mods.db\n"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_new_db)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - megalodon_extras

@@ -4,6 +4,9 @@ task Bamfilterrg {
   command <<<
     bamfilterrg
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -28,6 +28,9 @@ task Sensv {
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
       ~{if defined(nprocs) then ("--nprocs " +  '"' + nprocs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample_name: "sample name"
     fast_q_file: "fastq file"

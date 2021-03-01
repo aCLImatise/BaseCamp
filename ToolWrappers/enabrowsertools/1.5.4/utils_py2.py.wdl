@@ -4,6 +4,9 @@ task UtilsPy2py {
   command <<<
     utils_py2_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

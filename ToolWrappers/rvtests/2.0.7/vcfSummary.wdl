@@ -4,6 +4,9 @@ task VcfSummary {
   command <<<
     vcfSummary
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

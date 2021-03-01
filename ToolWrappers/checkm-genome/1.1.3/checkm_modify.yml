@@ -1,0 +1,78 @@
+!Command
+command:
+- checkm
+- modify
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: seq_file
+  description: sequences used to generate bins (fasta format)
+- !Positional
+  optional: false
+  position: 1
+  name: bin_file
+  description: bin to be modified
+- !Positional
+  optional: false
+  position: 2
+  name: output_file
+  description: modified bin
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --add
+  description: ID of sequence to add to bin (may specify multiple times)
+  args: !SimpleFlagArg
+    name: ADD
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --remove
+  description: ID of sequence to remove from bin (may specify multiple times)
+  args: !SimpleFlagArg
+    name: REMOVE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outlier_file
+  description: remove all sequences marked as outliers in the bin (see outlier command)
+  args: !SimpleFlagArg
+    name: OUTLIER_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: suppress console output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: checkm modify [-h] [-a ADD] [-r REMOVE] [-o OUTLIER_FILE] [-q]\n\
+  \                     seq_file bin_file output_file\n\nModify sequences in a bin.\n\
+  \npositional arguments:\n  seq_file              sequences used to generate bins\
+  \ (fasta format)\n  bin_file              bin to be modified\n  output_file    \
+  \       modified bin\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -a, --add ADD         ID of sequence to add to bin (may specify\
+  \ multiple times)\n  -r, --remove REMOVE   ID of sequence to remove from bin (may\
+  \ specify multiple times)\n  -o, --outlier_file OUTLIER_FILE\n                 \
+  \       remove all sequences marked as outliers in the bin (see outlier command)\n\
+  \  -q, --quiet           suppress console output\n\nExample: checkm modify -r seq_id1\
+  \ -r seq_id2 seqs.fna bin.fna new_bin.fna\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/checkm-genome:1.1.3--py_1

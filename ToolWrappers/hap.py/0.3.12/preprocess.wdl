@@ -12,7 +12,7 @@ task Preprocess {
     Int? haploid_x
     String? progress_seconds
     Int? limit
-    Boolean? arg_apply_trimmingrealignment
+    Boolean? arg_apply_normalisations
     Boolean? arg_leftshift_indel
   }
   command <<<
@@ -27,9 +27,12 @@ task Preprocess {
       ~{if defined(haploid_x) then ("--haploid-x " +  '"' + haploid_x + '"') else ""} \
       ~{if defined(progress_seconds) then ("--progress-seconds " +  '"' + progress_seconds + '"') else ""} \
       ~{if defined(limit) then ("--limit " +  '"' + limit + '"') else ""} \
-      ~{if (arg_apply_trimmingrealignment) then "-V" else ""} \
+      ~{if (arg_apply_normalisations) then "-V" else ""} \
       ~{if (arg_leftshift_indel) then "-L" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_vcf: "VCF files to preprocess (use file:sample for\\na specific sample column)."
     arg_output_variant: "[ --output-vcf ] arg          Output variant comparison results to VCF."
@@ -41,7 +44,7 @@ task Preprocess {
     haploid_x: "Expand GTs on chrX: turn 1 into 1/1"
     progress_seconds: "Output progress information every n seconds."
     limit: "Maximum number of records to process."
-    arg_apply_trimmingrealignment: "[ --preprocess-variants ] arg Apply variant normalisations, trimming,\\nrealignment for complex variants (off by\\ndefault)."
+    arg_apply_normalisations: "[ --preprocess-variants ] arg Apply variant normalisations, trimming,\\nrealignment for complex variants (off by\\ndefault)."
     arg_leftshift_indel: "[ --leftshift ] arg           Left-shift indel alleles (off by default)."
   }
   output {

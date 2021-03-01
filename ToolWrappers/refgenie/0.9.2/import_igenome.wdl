@@ -14,6 +14,9 @@ task ImportIgenome {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path: "path to the desired genome tarball or directory to"
     config: "path to local genome configuration file. Optional if\\n'REFGENIE' environment variable is set.\\n"

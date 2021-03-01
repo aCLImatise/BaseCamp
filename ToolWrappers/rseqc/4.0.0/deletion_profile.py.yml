@@ -1,0 +1,82 @@
+!Command
+command:
+- deletion_profile.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Input BAM file. [required]
+  args: !SimpleFlagArg
+    name: INPUT_BAM
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --read-align-length
+  description: "Alignment length of read. It is usually set to the\norignial read\
+    \ length. For example, all these cigar\nstrings (\"101M\", \"68M140N33M\", \"\
+    53M1D48M\") suggest the\nread alignment length is 101. [required]"
+  args: !SimpleFlagArg
+    name: READ_ALIGNMENT_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-prefix
+  description: Prefix of output files(s). [required]
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --read-num
+  description: "Number of aligned reads with deletions used to\ncalculate the deletion\
+    \ profile. default=1000000"
+  args: !SimpleFlagArg
+    name: READ_NUMBER
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --mapq
+  description: "Minimum mapping quality. default=30\n"
+  args: !SimpleFlagArg
+    name: MAP_QUAL
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: deletion_profile.py [options]\n\nCalculate the distributions of\
+  \ deleted nucleotides across reads. \n\n\n\nOptions:\n  --version             show\
+  \ program's version number and exit\n  -h, --help            show this help message\
+  \ and exit\n  -i INPUT_BAM, --input=INPUT_BAM\n                        Input BAM\
+  \ file. [required]\n  -l READ_ALIGNMENT_LENGTH, --read-align-length=READ_ALIGNMENT_LENGTH\n\
+  \                        Alignment length of read. It is usually set to the\n  \
+  \                      orignial read length. For example, all these cigar\n    \
+  \                    strings (\"101M\", \"68M140N33M\", \"53M1D48M\") suggest the\n\
+  \                        read alignment length is 101. [required]\n  -o OUTPUT_PREFIX,\
+  \ --out-prefix=OUTPUT_PREFIX\n                        Prefix of output files(s).\
+  \ [required]\n  -n READ_NUMBER, --read-num=READ_NUMBER\n                       \
+  \ Number of aligned reads with deletions used to\n                        calculate\
+  \ the deletion profile. default=1000000\n  -q MAP_QUAL, --mapq=MAP_QUAL\n      \
+  \                  Minimum mapping quality. default=30\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rseqc:4.0.0--py38h0213d0e_0

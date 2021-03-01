@@ -4,211 +4,211 @@ command:
 - map
 positional:
 - !Positional
-  description: "specify \"SVD\" for Simple Variant Density analysis,\n\"VAF\" for\
-    \ Variant Allele Frequency analysis or \"VAC\"\nfor Variant Allele Contrast analysis."
+  optional: false
   position: 0
   name: analysis_mode
-  optional: false
+  description: "specify \"SVD\" for Simple Variant Density analysis,\n\"VAF\" for\
+    \ Variant Allele Frequency analysis or \"VAC\"\nfor Variant Allele Contrast analysis."
 - !Positional
+  optional: false
+  position: 1
+  name: input_file
   description: "valid input files are VCF files or per-variant report\nfiles (as generated\
     \ by this tool with the \"-t\" option\nor by the CloudMap Hawaiian Variant Density\
     \ Mapping\ntool)."
-  position: 1
-  name: input_file
-  optional: false
 - !Positional
-  description: '--ylim-hist FLOAT     upper limit for histogram plot y-axis (default:
-    auto)'
+  optional: false
   position: 0
   name: plots
-  optional: false
+  description: '--ylim-hist FLOAT     upper limit for histogram plot y-axis (default:
+    auto)'
 named:
 - !Flag
-  description: "redirect the binned variant counts to this file\n(default: stdout)."
+  optional: true
   synonyms:
   - -o
   - --ofile
+  description: "redirect the binned variant counts to this file\n(default: stdout)."
   args: !SimpleFlagArg
     name: OFILE
-  optional: true
 - !Flag
-  description: suppress warning messages about plotting problems.
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: suppress warning messages about plotting problems.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "list of bin sizes to be used for histogram plots and\nlinkage reports\
-    \ (default: 1Mb and 500Kb)"
+  optional: true
   synonyms:
   - -b
   - --bin-sizes
+  description: "list of bin sizes to be used for histogram plots and\nlinkage reports\
+    \ (default: 1Mb and 500Kb)"
   args: !RepeatFlagArg
     name: SIZE
-  optional: true
 - !Flag
-  description: "name of the sample (as appearing in the input vcf\nfile) for which\
-    \ variants should be mapped (cannot be\nused in SVD mode)"
+  optional: true
   synonyms:
   - -m
   - --mapping-sample
+  description: "name of the sample (as appearing in the input vcf\nfile) for which\
+    \ variants should be mapped (cannot be\nused in SVD mode)"
   args: !SimpleFlagArg
     name: sample_name
-  optional: true
 - !Flag
-  description: "name of the sample to provide related parent strain\n(mutagenesis\
-    \ strain) variants for the analysis in\nVariant Allele Frequency (VAF) mode."
+  optional: true
   synonyms:
   - -r
   - --related-parent
+  description: "name of the sample to provide related parent strain\n(mutagenesis\
+    \ strain) variants for the analysis in\nVariant Allele Frequency (VAF) mode."
   args: !SimpleFlagArg
     name: parent_name
-  optional: true
 - !Flag
-  description: "name of the sample to provide unrelated parent strain\n(mapping strain)\
-    \ variants for the analysis in Variant\nAllele Frequency (VAF) mode."
+  optional: true
   synonyms:
   - -u
   - --unrelated-parent
+  description: "name of the sample to provide unrelated parent strain\n(mapping strain)\
+    \ variants for the analysis in Variant\nAllele Frequency (VAF) mode."
   args: !SimpleFlagArg
     name: parent_name
-  optional: true
 - !Flag
-  description: "if variant data for either the related or the\nunrelated parent strain\
-    \ is not provided, the tool can\ntry to infer the alleles present in that parent\
-    \ from\nthe allele spectrum found in the mapping sample. Use\nwith caution on\
-    \ carefully filtered variant lists only!"
+  optional: true
   synonyms:
   - -i
   - --infer
   - --infer-missing
+  description: "if variant data for either the related or the\nunrelated parent strain\
+    \ is not provided, the tool can\ntry to infer the alleles present in that parent\
+    \ from\nthe allele spectrum found in the mapping sample. Use\nwith caution on\
+    \ carefully filtered variant lists only!"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "name of the sample (as appearing in the input vcf\nfile) that provides\
-    \ the contrast for the mapping\nsample"
+  optional: true
   synonyms:
   - -c
   - --contrast-sample
+  description: "name of the sample (as appearing in the input vcf\nfile) that provides\
+    \ the contrast for the mapping\nsample"
   args: !SimpleFlagArg
     name: sample_name
-  optional: true
 - !Flag
-  description: "generate text-based output for every variant position\nand save it\
-    \ to the specified file. This file can be\nused as input during later runs of\
-    \ the tool, which\nwill speed up replotting."
+  optional: true
   synonyms:
   - -t
   - --text-file
+  description: "generate text-based output for every variant position\nand save it\
+    \ to the specified file. This file can be\nused as input during later runs of\
+    \ the tool, which\nwill speed up replotting."
   args: !SimpleFlagArg
     name: TEXT_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --seqinfo
   description: "if an input file does not specify required contig\ninformation (chromosome\
     \ names and sizes), extract this\ninformation from SEQINFO_FILE. This file can\
     \ be a\nreference genome file in fasta format or a CloudMap-\nstyle sequence dictionary\
     \ file. This option is never\nnecessary with MiModD-generated input, but can be\n\
     useful with input files generated by third-party tools\nthat do not record contig\
     \ information in their output."
-  synonyms:
-  - -s
-  - --seqinfo
   args: !SimpleFlagArg
     name: SEQINFO_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cloudmap
   description: "generate valid input for the original CloudMap Mapping\ntools and\
     \ save it to the text output file specified by\nthe \"-t\" option. This option\
     \ can only be used in \"SVD\"\nor \"VAF\" mode, which have an equivalent in CloudMap."
-  synonyms:
-  - --cloudmap
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "generate graphical output and store it in the given\nfile (default:\
-    \ no graphical output)"
+  optional: true
   synonyms:
   - -p
   - --plot-file
+  description: "generate graphical output and store it in the given\nfile (default:\
+    \ no graphical output)"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: do not autoscale x-axes to size of largest contig
+  optional: true
   synonyms:
   - --fit-width
+  description: do not autoscale x-axes to size of largest contig
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "do not produce scatter plots of observed segregation\nrates; just\
-    \ plot histograms"
+  optional: true
   synonyms:
   - --no-scatter
+  description: "do not produce scatter plots of observed segregation\nrates; just\
+    \ plot histograms"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "span parameter for the Loess regression line through\nthe linkage\
-    \ data (default: 0.1, specify 0 to skip\ncalculation)"
+  optional: true
   synonyms:
   - -l
   - --loess-span
+  description: "span parameter for the Loess regression line through\nthe linkage\
+    \ data (default: 0.1, specify 0 to skip\ncalculation)"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: 'upper limit for scatter plot y-axis (default: 1)'
+  optional: true
   synonyms:
   - --ylim-scatter
+  description: 'upper limit for scatter plot y-axis (default: 1)'
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: color(s) for scatter plot data points
+  optional: true
   synonyms:
   - -z
   - --points-colors
+  description: color(s) for scatter plot data points
   args: !RepeatFlagArg
     name: COLOR
-  optional: true
 - !Flag
-  description: "color(s) for regression line(s) through scatter plot\ndata"
+  optional: true
   synonyms:
   - -k
   - --loess-colors
+  description: "color(s) for regression line(s) through scatter plot\ndata"
   args: !RepeatFlagArg
     name: COLOR
-  optional: true
 - !Flag
-  description: "do not produce linkage histogram plots; only generate\nscatter plots"
+  optional: true
   synonyms:
   - --no-hist
+  description: "do not produce linkage histogram plots; only generate\nscatter plots"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: do not add kernel density estimate lines to histogram
+  optional: true
   synonyms:
   - --no-kde
+  description: do not add kernel density estimate lines to histogram
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "list of colors to be used for plotting histogram bars\nof different\
-    \ width (default: darkgrey and red)\n"
+  optional: true
   synonyms:
   - --hist-colors
+  description: "list of colors to be used for plotting histogram bars\nof different\
+    \ width (default: darkgrey and red)\n"
   args: !RepeatFlagArg
     name: COLOR
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage:  map [-h] [-o OFILE] [-q] [-b SIZE [SIZE ...]] [-m sample_name]\n\
@@ -287,3 +287,4 @@ help_text: "usage:  map [-h] [-o OFILE] [-q] [-b SIZE [SIZE ...]] [-m sample_nam
   \ and red)\n"
 generated_using:
 - --help
+docker_image:

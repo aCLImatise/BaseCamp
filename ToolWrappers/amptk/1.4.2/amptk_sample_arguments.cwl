@@ -3,17 +3,17 @@ id: amptk_sample_arguments.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_n
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -n
 - id: in_i
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -i
 - id: in_am_ptk_barcode_rarifydotpy
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - amptk

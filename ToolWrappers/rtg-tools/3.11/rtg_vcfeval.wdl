@@ -46,6 +46,9 @@ task RtgVcfeval {
       ~{if (no_gzip) then "--no-gzip" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     baseline: "VCF file containing baseline variants"
     bed_regions: "if set, only read VCF records that overlap the\\nranges contained in the specified BED file"

@@ -28,6 +28,9 @@ task Monocle3OrderCells {
       ~{if defined(reduction_method) then ("--reduction-method " +  '"' + reduction_method + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_format: "Format of input object. [Default: cds3]"
     output_object_format: "Format of output object. [Default: cds3]"

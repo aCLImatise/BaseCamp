@@ -3,11 +3,11 @@ version 1.0
 task Dumpreads {
   input {
     Boolean? dump_reads_fastq
-    Int? use_min_base
+    Int? use_sanger_fastq
     Boolean? dump_qualities_fasta
-    Boolean? use_eids_fasta
+    Boolean? use_eids_iids
     Boolean? ignore_clear_range
-    Boolean? display_range_information
+    Boolean? display_clear_range
     File? dump_just_eids
     File? dump_just_iids
     Int? set_maximum_number
@@ -21,11 +21,11 @@ task Dumpreads {
     dumpreads \
       ~{dump_reads} \
       ~{if (dump_reads_fastq) then "-f" else ""} \
-      ~{if defined(use_min_base) then ("-Q " +  '"' + use_min_base + '"') else ""} \
+      ~{if defined(use_sanger_fastq) then ("-Q " +  '"' + use_sanger_fastq + '"') else ""} \
       ~{if (dump_qualities_fasta) then "-q" else ""} \
-      ~{if (use_eids_fasta) then "-e" else ""} \
+      ~{if (use_eids_iids) then "-e" else ""} \
       ~{if (ignore_clear_range) then "-r" else ""} \
-      ~{if (display_range_information) then "-c" else ""} \
+      ~{if (display_clear_range) then "-c" else ""} \
       ~{if defined(dump_just_eids) then ("-E " +  '"' + dump_just_eids + '"') else ""} \
       ~{if defined(dump_just_iids) then ("-I " +  '"' + dump_just_iids + '"') else ""} \
       ~{if defined(set_maximum_number) then ("-L " +  '"' + set_maximum_number + '"') else ""} \
@@ -34,13 +34,16 @@ task Dumpreads {
       ~{if (disregard_bank_locks) then "-s" else ""} \
       ~{if (display_compatible_version) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dump_reads_fastq: "Dump reads in fastq format"
-    use_min_base: "Use this as the min base quality (default: 33 / Sanger FASTQ)"
+    use_sanger_fastq: "Use this as the min base quality (default: 33 / Sanger FASTQ)"
     dump_qualities_fasta: "Dump qualities in fasta format instead of sequence"
-    use_eids_fasta: "Use EIDs for FastA header instead of IIDs"
+    use_eids_iids: "Use EIDs for FastA header instead of IIDs"
     ignore_clear_range: "Ignore clear range and dump entire sequence"
-    display_range_information: "Display clear range information on FASTA header for TIGR Assembler"
+    display_clear_range: "Display clear range information on FASTA header for TIGR Assembler"
     dump_just_eids: "Dump just the eids listed in file"
     dump_just_iids: "Dump just the iids listed in file"
     set_maximum_number: "Set the maximum number of bases per line (Default: 70)"

@@ -13,13 +13,13 @@ task Avro {
     String? input_type
     File? output_file
     String cat_vertical_line_write
-    File file
+    File var_file
     File? file_dot_dot_dot
   }
   command <<<
     avro \
       ~{cat_vertical_line_write} \
-      ~{file} \
+      ~{var_file} \
       ~{file_dot_dot_dot} \
       ~{if defined(count) then ("--count " +  '"' + count + '"') else ""} \
       ~{if defined(skip) then ("--skip " +  '"' + skip + '"') else ""} \
@@ -32,6 +32,9 @@ task Avro {
       ~{if defined(input_type) then ("--input-type " +  '"' + input_type + '"') else ""} \
       ~{if defined(output_file) then ("--output " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count: "number of records to print"
     skip: "number of records to skip"
@@ -44,7 +47,7 @@ task Avro {
     input_type: "input file(s) type (json or csv)"
     output_file: "output file\\n"
     cat_vertical_line_write: ""
-    file: ""
+    var_file: ""
     file_dot_dot_dot: ""
   }
   output {

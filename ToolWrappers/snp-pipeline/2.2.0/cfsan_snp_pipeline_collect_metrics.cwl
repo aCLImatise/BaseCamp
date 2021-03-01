@@ -4,46 +4,46 @@ inputs:
 - id: in_force
   doc: "Force processing even when result files already exist\nand are newer than\
     \ inputs (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_output
   doc: "Output file. Relative or absolute path to the metrics\nfile (default: metrics)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_max_snps
   doc: "Maximum allowed number of SNPs per sample (default:\n-1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxsnps
-- id: in_file_name_must_existin_consensusfasta
+- id: in_file_name_consensus_fasta
   doc: "File name of the consensus fasta file which must exist\nin the sample directory\
     \ (default: consensus.fasta)"
-  type: File
+  type: File?
   inputBinding:
     prefix: -c
 - id: in_file_name_fasta
   doc: "File name of the consensus preserved fasta file which\nmust exist in the sample\
     \ directory (default:\nconsensus_preserved.fasta)"
-  type: File
+  type: File?
   inputBinding:
     prefix: -C
-- id: in_file_name_must_existin_consensusvcf
+- id: in_file_name_consensus_vcf
   doc: "File name of the consensus vcf file which must exist\nin the sample directory\
     \ (default: consensus.vcf)"
-  type: File
+  type: File?
   inputBinding:
     prefix: -v
 - id: in_file_name_vcf
   doc: "File name of the consensus preserved vcf file which\nmust exist in the sample\
     \ directory (default:\nconsensus_preserved.vcf)"
-  type: File
+  type: File?
   inputBinding:
     prefix: -V
 - id: in_verbose
   doc: 'Verbose message level (0=no info, 5=lots) (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbose
 - id: in_sample_dir
@@ -62,9 +62,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file. Relative or absolute path to the metrics\nfile (default: metrics)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cfsan_snp_pipeline

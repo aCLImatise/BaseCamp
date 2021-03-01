@@ -26,6 +26,9 @@ task AugurAncestral {
       ~{if (infer_ambiguous) then "--infer-ambiguous" else ""} \
       ~{if (keep_overhangs) then "--keep-overhangs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree: "prebuilt Newick (default: None)"
     alignment: "alignment in fasta or VCF format (default: None)"

@@ -8,6 +8,9 @@ task LA4Falcon {
     LA4Falcon \
       ~{if (smfocargyufmpi) then "-smfocargyUFMPI" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     smfocargyufmpi: ""
   }

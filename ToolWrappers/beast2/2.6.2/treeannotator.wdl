@@ -26,6 +26,9 @@ task Treeannotator {
       ~{if defined(no_hpd_two_d) then ("-nohpd2D " +  '"' + no_hpd_two_d + '"') else ""} \
       ~{if defined(nos_a) then ("-noSA " +  '"' + nos_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     heights: "option of 'keep' (default), 'median', 'mean' or 'ca'"
     burnin: "percentage of states to be considered as 'burn-in'"

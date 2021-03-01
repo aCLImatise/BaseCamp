@@ -1,47 +1,79 @@
 !Command
 command:
 - pttree
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: node
+  description: --no-print-compression
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --print-size
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -S
-  args: !SimpleFlagArg
-    name: SORT_BY
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -L
+  - --max-level
+  description: "maximum branch depth of tree to display (-1 == no\nlimit)"
   args: !SimpleFlagArg
     name: MAX_DEPTH
+- !Flag
   optional: true
+  synonyms:
+  - -S
+  - --sort-by
+  description: "artificially order nodes, can be either \"size\", \"name\"\nor \"\
+    none\""
+  args: !SimpleFlagArg
+    name: SORT_BY
+- !Flag
+  optional: true
+  synonyms:
+  - --print-size
+  description: print size of each node/branch
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-print-size
+  - --print-shape
+  description: print shape of each node
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-print-shape
+  - --print-compression
+  description: print compression library(level) for each compressed
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print-percent
+  description: "print size of each node as a % of the total tree size\non disk"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-print-percent
+  - --use-si-units
+  description: report sizes in SI units (1 MB == 10^6 B)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-binary-units
+  description: report sizes in binary units (1 MiB == 2^20 B)
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-L MAX_DEPTH, --max-level MAX_DEPTH\n\
-    maximum branch depth of tree to display (-1 == no\nlimit)\n-S SORT_BY, --sort-by\
-    \ SORT_BY\nartificially order nodes, can be either \"size\", \"name\"\nor \"none\"\
-    \n--print-size          print size of each node/branch\n--no-print-size\n--print-shape\
-    \         print shape of each node\n--no-print-shape\n--print-compression   print\
-    \ compression library(level) for each compressed\nnode\n--no-print-compression\n\
-    --print-percent       print size of each node as a % of the total tree size\n\
-    on disk\n--no-print-percent\n--use-si-units        report sizes in SI units (1\
-    \ MB == 10^6 B)\n--use-binary-units    report sizes in binary units (1 MiB ==\
-    \ 2^20 B)\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: pttree [-h] [-L MAX_DEPTH] [-S SORT_BY] [--print-size]\n      \
@@ -68,3 +100,4 @@ help_text: "usage: pttree [-h] [-L MAX_DEPTH] [-S SORT_BY] [--print-size]\n     
   \ (1 MiB == 2^20 B)\n"
 generated_using:
 - --help
+docker_image:

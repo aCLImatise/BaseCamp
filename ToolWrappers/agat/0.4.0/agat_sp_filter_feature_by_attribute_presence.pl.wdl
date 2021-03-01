@@ -18,6 +18,9 @@ task AgatSpFilterFeatureByAttributePresencepl {
       ~{if (flip) then "--flip" else ""} \
       ~{if defined(output_gff_file) then ("--output " +  '"' + output_gff_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_file: "Input GFF3 file that will be read"
     type: "primary tag option, case insensitive, list. Allow to specied the\\nfeature types that will be handled. You can specified a specific\\nfeature by given its primary tag name (column 3) as: cds, Gene,\\nMrNa You can specify directly all the feature of a particular\\nlevel: level2=mRNA,ncRNA,tRNA,etc level3=CDS,exon,UTR,etc By\\ndefault all feature are taking into account. fill the option by\\nthe value \\\"all\\\" will have the same behaviour."

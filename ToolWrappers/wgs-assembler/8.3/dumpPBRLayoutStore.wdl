@@ -4,6 +4,9 @@ task DumpPBRLayoutStore {
   command <<<
     dumpPBRLayoutStore
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

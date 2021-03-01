@@ -3,7 +3,7 @@ id: bam_merge.cwl
 inputs:
 - id: in_q
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -Q
 - id: in_out_dot_bam
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bam_merge

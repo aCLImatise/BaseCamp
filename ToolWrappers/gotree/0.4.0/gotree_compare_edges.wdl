@@ -20,6 +20,9 @@ task GotreeCompareEdges {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     moved_tax_a: "only if --transfer-dist is given: Then display, for each branch, taxa that must be moved"
     transfer_dist: "If transfer dist must be computed for each edge"

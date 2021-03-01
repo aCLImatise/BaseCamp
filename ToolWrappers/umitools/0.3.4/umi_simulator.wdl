@@ -28,6 +28,9 @@ task UmiSimulator {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pcr_cycle: "number of PCR cycles (default: 10)"
     umi_length: "length of UMI (default: 18)"

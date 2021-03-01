@@ -8,7 +8,7 @@ task AgatConvertGenscan2gffpl {
     Boolean? inflate_off
     Boolean? inflate_type
     Boolean? verbose
-    File? _output_
+    File? outfile
     Int agat_convert_genscan_two_gff_do_tpl
   }
   command <<<
@@ -20,8 +20,11 @@ task AgatConvertGenscan2gffpl {
       ~{if (inflate_off) then "--inflate_off" else ""} \
       ~{if (inflate_type) then "--inflate_type" else ""} \
       ~{if (verbose) then "--verbose" else ""} \
-      ~{if (_output_) then "-o" else ""}
+      ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genscan: "Input bed file that will be convert."
     source: "The source informs about the tool used to produce the data and\\nis stored in 2nd field of a gff file. Example:\\nStringtie,Maker,Augustus,etc. [default: data]"
@@ -29,11 +32,11 @@ task AgatConvertGenscan2gffpl {
     inflate_off: "By default we inflate the block fields (blockCount, blockSizes,\\nblockStarts) to create subfeatures of the main feature\\n(primary_tag). Type of subfeature created based on the\\ninflate_type parameter. If you don't want this inflating\\nbehaviour you can deactivate it by using the option\\n--inflate_off."
     inflate_type: "Feature type (3rd column in gff) created when inflate parameter\\nactivated [default: exon]."
     verbose: "add verbosity"
-    _output_: ", --output , --out , --outfile or --gff\\nOutput GFF file. If no output file is specified, the output will\\nbe written to STDOUT."
+    outfile: "Output GFF file. If no output file is specified, the output will\\nbe written to STDOUT."
     agat_convert_genscan_two_gff_do_tpl: "Description:"
   }
   output {
     File out_stdout = stdout()
-    File out__output_ = "${in__output_}"
+    File out_outfile = "${in_outfile}"
   }
 }

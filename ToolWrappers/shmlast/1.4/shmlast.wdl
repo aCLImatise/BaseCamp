@@ -4,6 +4,9 @@ task Shmlast {
   command <<<
     shmlast
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

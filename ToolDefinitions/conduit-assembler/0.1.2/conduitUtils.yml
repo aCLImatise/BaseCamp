@@ -1,0 +1,149 @@
+&id001 !Command
+command:
+- conduitUtils
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - conduitUtils
+  - translate
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --fasta
+    description: "(default)\nInput file is in FASTA format"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --fastq
+    description: Input file is in FASTQ format
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --stranded
+    description: Input reads are forward stranded
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --min-length
+    description: "(75)\nMinimum length in Amino Acids necessary for a putative ORF\
+      \ to be reported\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "CONDUIT - CONsensus Decomposition Utility In Transcriptome-assembly:\n\
+    CONDUIT Utilities Version 0.1.2 by Nathan Roach ( nroach2@jhu.edu, https://github.com/NatPRoach/conduit/\
+    \ )\ntranslate   - Translates FASTA/Q nucleotide sequences into protein based\
+    \ on their longest ORF\nUsage:\n  ./conduitUtils translate [options] -i <transcripts.fa>\
+    \ -o <predicted_protein.fa>\n  <transcripts.fa>         FASTA/Q infile containing\
+    \ putative transcripts to be translated\n  <predicted_protein.fa>   FASTA outfile\
+    \ containing in silico translated ORFs from transcripts.fa\n\nOptions (defaults\
+    \ in parentheses):\n  Input Options:\n    -a, --fasta (default)\n        Input\
+    \ file is in FASTA format\n    -q, --fastq\n        Input file is in FASTQ format\n\
+    \    -s, --stranded\n        Input reads are forward stranded\n  Filtering Options:\n\
+    \    -l, --min-length (75)\n        Minimum length in Amino Acids necessary for\
+    \ a putative ORF to be reported\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/conduit-assembler:0.1.2--hbeb723e_0
+- !Command
+  command:
+  - conduitUtils
+  - bed2gtf
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --stranded
+    description: "Report gtf fields with strand information\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "CONDUIT - CONsensus Decomposition Utility In Transcriptome-assembly:\n\
+    CONDUIT Utilities Version 0.1.2 by Nathan Roach ( nroach2@jhu.edu, https://github.com/NatPRoach/conduit/\
+    \ )\nbed2gtf     - Converts BED12 files to well structured GTF file suitable for\
+    \ use in GFFcompare\nUsage:\n  ./conduitUtils bed2gtf -i <infile.bed> -o <outfile.gtf>\n\
+    \  <infile.bed>    BED12 infile to be converted in to GTF format\n  <outfile.gtf>\
+    \   GTF outfile\n\nOptions (defaults in parentheses):\n  Input Options:\n    -s,\
+    \ --stranded\n        Report gtf fields with strand information\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/conduit-assembler:0.1.2--hbeb723e_0
+- !Command
+  command:
+  - conduitUtils
+  - filterFASTA
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: "(5)\nMinimum number of reads that must support an isoform for it\
+      \ to be reported in the filtered FASTA\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "CONDUIT - CONsensus Decomposition Utility In Transcriptome-assembly:\n\
+    CONDUIT Utilities Version 0.1.2 by Nathan Roach ( nroach2@jhu.edu, https://github.com/NatPRoach/conduit/\
+    \ )\nfilterFASTA   - Filters CONDUIT produced FASTA file based on number of reads\
+    \ supporting each isoform\nUsage:\n  ./conduitUtils filterFASTA -i <inBLASTP.txt>\
+    \ -o <outPutativeOrthologs.tsv>\n  <conduit_output.fa>         CONDUIT produced\
+    \ FASTA file to be filtered based on number of reads supporting each isoform\n\
+    \  <filtered.fa>               Output FASTA file for filtered reads\nOptions:\
+    \ (defaults in parentheses)\n  Filtering options:\n     -n (5)\n        Minimum\
+    \ number of reads that must support an isoform for it to be reported in the filtered\
+    \ FASTA\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/conduit-assembler:0.1.2--hbeb723e_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "CONDUIT - CONsensus Decomposition Utility In Transcriptome-assembly:\n\
+  CONDUIT Utilities Version 0.1.2 by Nathan Roach ( nroach2@jhu.edu, https://github.com/NatPRoach/conduit/\
+  \ )\nUsage:\n  ./conduitUtils <function>\nWhere <function> is one of the following:\n\
+  \  translate   - Translates FASTA/Q nucleotide sequences into protein based on their\
+  \ longest ORF\n\n  bed2gtf     - Converts BED12 files to well structured GTF file\
+  \ suitable for use in GFFcompare\n\n  parseBLASTP   - Parses BLASTP output and outputs\
+  \ closest match for each query transcript as determined by BLASTP\n\n  compareBLASTP\
+  \ - Compares BLASTP output and reference proteome to determine the # of TP, FP,\
+  \ and FN for a sample\n\n  compareFASTA  - Compares two FASTA files, an input and\
+  \ a reference, to determine the # of TP, FP, and FN for a sample\n\n  splitFASTA\
+  \    - Splits CONDUIT produced FASTA file based on the number of reads supporting\
+  \ each isoform\n\n  filterFASTA   - Filters CONDUIT produced FASTA file based on\
+  \ number of reads supporting each isoform\n\n  extractIntrons   - Extracts out intronic\
+  \ sequences from BED12 formatted input and outputs as BED6\n\n  callNonCanonical\
+  \ - Reads in a FASTA file and reports the readIDs of sequences that dont begin with\
+  \ GT and end with AG\n\n  callNovelNonCanonical - Compares introns described by\
+  \ reference GTF file to introns described by a list of readIDs in the format produced\
+  \ by `bedtools getfasta -name` function, outputs the novel introns in BED format\n\
+  \n  callOverlapping - Compares two files of readIDs specifying introns in the format\
+  \ produced by `bedtools getfasta -name`, and reports the introns that are shared\
+  \ between the two files (not stranded)\n\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/conduit-assembler:0.1.2--hbeb723e_0

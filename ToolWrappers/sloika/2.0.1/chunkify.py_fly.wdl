@@ -8,6 +8,9 @@ task ChunkifypyFly {
     chunkify_py fly \
       ~{chunk_if_y_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chunk_if_y_do_tpy: ""
   }

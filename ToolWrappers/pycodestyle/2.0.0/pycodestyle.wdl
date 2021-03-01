@@ -46,6 +46,9 @@ task Pycodestyle {
       ~{if (benchmark) then "--benchmark" else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "print status messages, or debug with -vv"
     quiet: "report only file names, or nothing with -qq"

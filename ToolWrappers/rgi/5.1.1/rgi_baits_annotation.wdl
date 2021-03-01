@@ -8,6 +8,9 @@ task RgiBaitsAnnotation {
     rgi baits_annotation \
       ~{if defined(index_file) then ("--index_file " +  '"' + index_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index_file: "index file with baits information\\n"
   }

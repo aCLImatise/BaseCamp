@@ -100,6 +100,9 @@ task Dbgh5 {
       ~{if (skip_links) then "-skip-links" else ""} \
       ~{if (nb_glue_partitions) then "-nb-glue-partitions" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_mph_f: "(0 arg) :    don't construct the MPHF"
     in: "(1 arg) :    reads file"

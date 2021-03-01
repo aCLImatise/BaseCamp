@@ -18,6 +18,9 @@ task PeakrangerNr {
       ~{if (arg_read_length) then "-l" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_data_file: "[ --data ] arg               data file"
     arg_control_file: "[ --control ] arg            control file"

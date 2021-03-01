@@ -3,44 +3,44 @@ id: msstitch_filterperco.cwl
 inputs:
 - id: in_input_file_format
   doc: Input file of {} format
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_directory_to_output
   doc: Directory to output in
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -d
 - id: in_output_file
   doc: Output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_full_protein
   doc: "Store full protein sequences (at a minimum-match\nlength) in the SQLite file\
     \ rather than tryptic\nsequences"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fullprotein
 - id: in_de_ami_date
   doc: "Filter against both normal peptides and deamidated\npeptides where a D->N\
     \ transition has occurred."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --deamidate
 - id: in_fast_a
   doc: FASTA sequence database
-  type: string
+  type: string?
   inputBinding:
     prefix: --fasta
 - id: in_min_len
   doc: Minimum length of peptide to be included
-  type: long
+  type: long?
   inputBinding:
     prefix: --minlen
 - id: in_dbfile
   doc: Database lookup file
-  type: File
+  type: File?
   inputBinding:
     prefix: --dbfile
 - id: in_enforce_tryptic
@@ -48,7 +48,7 @@ inputs:
     \ match a whole protein but only if\nthey are fully tryptic, i.e. the protein\
     \ needs K,R 1\nposition upstream of the peptide, and the peptide\nC-terminal should\
     \ also be K,R. Useful when discerning\nfrom pseudogenes"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --enforce-tryptic
 - id: in_in_source_frag
@@ -58,7 +58,7 @@ inputs:
     \ number of amino\nacids that may be missing. Database should be built\nwith this\
     \ flag in order for the lookup to work, since\nsequences will be stored and looked\
     \ up reversed\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --insourcefrag
 outputs:
@@ -67,14 +67,15 @@ outputs:
   type: stdout
 - id: out_directory_to_output
   doc: Directory to output in
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_directory_to_output)
 - id: out_output_file
   doc: Output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - msstitch

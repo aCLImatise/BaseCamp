@@ -8,6 +8,9 @@ task Wcslint {
     wcslint \
       ~{filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: "Path to FITS file to check"
   }

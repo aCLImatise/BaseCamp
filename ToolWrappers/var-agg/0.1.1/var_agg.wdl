@@ -20,6 +20,9 @@ task Varagg {
       ~{if defined(input_ped) then ("--input-ped " +  '"' + input_ped + '"') else ""} \
       ~{if defined(input_fast_a) then ("--input-fasta " +  '"' + input_fast_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Increase verbosity"
     quiet: "Decrease verbosity"

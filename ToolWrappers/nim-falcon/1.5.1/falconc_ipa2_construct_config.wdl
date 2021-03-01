@@ -16,6 +16,9 @@ task FalconcIpa2constructconfig {
       ~{if (_infn_string) then "-i" else ""} \
       ~{if (no_sort) then "--no-sort" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help_syntax: "advanced: prepend,plurals,.."
     _outfn_string: "=, --out-fn=  string  REQUIRED  Output file."

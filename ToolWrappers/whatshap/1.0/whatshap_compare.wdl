@@ -28,6 +28,9 @@ task WhatshapCompare {
       ~{if defined(longest_block_tsv) then ("--longest-block-tsv " +  '"' + longest_block_tsv + '"') else ""} \
       ~{if defined(ploidy) then ("--ploidy " +  '"' + ploidy + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample: "Name of the sample to process. If not given, use first\\nsample found in VCF."
     names: "Comma-separated list of data set names to be used in\\nthe report (in same order as VCFs)."

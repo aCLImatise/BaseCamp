@@ -24,6 +24,9 @@ task SpecLibCreator {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     info: "*          Holds id, peptide, retention time etc. (valid formats: 'csv')"
     item_seperator: "Separator between items. e.g. , (default: ',')"

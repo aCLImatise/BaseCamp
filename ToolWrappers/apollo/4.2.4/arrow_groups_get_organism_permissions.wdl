@@ -8,6 +8,9 @@ task ArrowGroupsGetOrganismPermissions {
     arrow groups get_organism_permissions \
       ~{group}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     group: ""
   }

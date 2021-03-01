@@ -3,22 +3,22 @@ id: medpy_apparent_diffusion_coefficient.py.cwl
 inputs:
 - id: in_threshold
   doc: "set a fixed threshold for the input images to mask the\ncomputation"
-  type: string
+  type: string?
   inputBinding:
     prefix: --threshold
 - id: in_verbose
   doc: verbose output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_display_debug_information
   doc: Display debug information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_force
   doc: overwrite existing files
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_bzero_image
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - medpy_apparent_diffusion_coefficient.py

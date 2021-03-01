@@ -4,6 +4,9 @@ task Patmatdb {
   command <<<
     patmatdb
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

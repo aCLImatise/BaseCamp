@@ -1,0 +1,122 @@
+!Command
+command:
+- ob2fps
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: filenames
+  description: input structure files (default is stdin)
+- !Positional
+  optional: false
+  position: 0
+  name: SMARTS_InteLigand.txt
+  description: --MACCS               Open Babel's implementation of the MACCS 166
+    keys
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --FP2
+  description: linear fragments up to 7 atoms
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --FP3
+  description: SMARTS patterns specified in the file patterns.txt
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --FP4
+  description: SMARTS patterns specified in the file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --substruct
+  description: generate ChemFP substructure fingerprints
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --id-tag
+  description: tag name containing the record id (SD files only)
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --in
+  description: "input structure format (default autodetects from the\nfilename extension)"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: save the fingerprints to FILENAME (default=stdout)
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: "output structure format (default guesses from output\nfilename, or\
+    \ is 'fps')"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --errors
+  description: "how should structure parse errors be handled?\n(default=ignore)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      ignore:
+      strict:
+      report:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: ob2fps [-h]\n              [--FP2 | --FP3 | --FP4 | --MACCS | --substruct\
+  \ | --rdmaccs | --rdmaccs/1]\n              [--id-tag NAME] [--in FORMAT] [-o FILENAME]\
+  \ [--out FORMAT]\n              [--errors {strict,report,ignore}] [--version]\n\
+  \              [filenames [filenames ...]]\n\nGenerate FPS fingerprints from a structure\
+  \ file using Open Babel\n\npositional arguments:\n  filenames             input\
+  \ structure files (default is stdin)\n\noptional arguments:\n  -h, --help      \
+  \      show this help message and exit\n  --FP2                 linear fragments\
+  \ up to 7 atoms\n  --FP3                 SMARTS patterns specified in the file patterns.txt\n\
+  \  --FP4                 SMARTS patterns specified in the file\n               \
+  \         SMARTS_InteLigand.txt\n  --MACCS               Open Babel's implementation\
+  \ of the MACCS 166 keys\n  --substruct           generate ChemFP substructure fingerprints\n\
+  \  --rdmaccs, --rdmaccs/2\n                        166 bit RDKit/MACCS fingerprints\
+  \ (version 2)\n  --rdmaccs/1           use the version 1 definition for --rdmaccs\n\
+  \  --id-tag NAME         tag name containing the record id (SD files only)\n  --in\
+  \ FORMAT           input structure format (default autodetects from the\n      \
+  \                  filename extension)\n  -o FILENAME, --output FILENAME\n     \
+  \                   save the fingerprints to FILENAME (default=stdout)\n  --out\
+  \ FORMAT          output structure format (default guesses from output\n       \
+  \                 filename, or is 'fps')\n  --errors {strict,report,ignore}\n  \
+  \                      how should structure parse errors be handled?\n         \
+  \               (default=ignore)\n  --version             show program's version\
+  \ number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/chemfp:1.6.1--py27h3dcb392_0

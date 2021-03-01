@@ -20,6 +20,9 @@ task AnalyzeScaffolds {
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mandatory_path_gkpstore: "mandatory path to the gkpStore"
     version_mandatory_path: "version     mandatory path to the tigStore and version"

@@ -18,6 +18,9 @@ task SingularityOciMount {
       ~{mount} \
       ~{s_if_image}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

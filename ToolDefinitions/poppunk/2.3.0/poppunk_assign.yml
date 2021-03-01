@@ -1,0 +1,222 @@
+!Command
+command:
+- poppunk_assign
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --db
+  description: Location of built reference database
+  args: !SimpleFlagArg
+    name: DB
+- !Flag
+  optional: true
+  synonyms:
+  - --query
+  description: File listing query input assemblies
+  args: !SimpleFlagArg
+    name: QUERY
+- !Flag
+  optional: true
+  synonyms:
+  - --distances
+  description: "Prefix of input pickle of pre-calculated distances (if\nnot in --db)"
+  args: !SimpleFlagArg
+    name: DISTANCES
+- !Flag
+  optional: true
+  synonyms:
+  - --external-clustering
+  description: "File with cluster definitions or other labels\ngenerated with any\
+    \ other method."
+  args: !SimpleFlagArg
+    name: EXTERNAL_CLUSTERING
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: Prefix for output files (required)
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --plot-fit
+  description: "Create this many plots of some fits relating k-mer to\ncore/accessory\
+    \ distances [default = 0]"
+  args: !SimpleFlagArg
+    name: PLOT_FIT
+- !Flag
+  optional: true
+  synonyms:
+  - --write-references
+  description: "Write reference database isolates' cluster assignments\nout too"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --update-db
+  description: Update reference database with query sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --overwrite
+  description: Overwrite any existing database files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --graph-weights
+  description: Save within-strain Euclidean distances into the graph
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-kmer-count
+  description: "Minimum k-mer count when using reads as input [default\n= 0]"
+  args: !SimpleFlagArg
+    name: MIN_KMER_COUNT
+- !Flag
+  optional: true
+  synonyms:
+  - --exact-count
+  description: "Use the exact k-mer counter with reads [default = use\ncountmin counter]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --strand-preserved
+  description: "Treat input as being on the same strand, and ignore\nreverse complement\
+    \ k-mers [default = use canonical\nk-mers]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-a-dist
+  description: Maximum accessory distance to permit [default = 0.5]
+  args: !SimpleFlagArg
+    name: MAX_A_DIST
+- !Flag
+  optional: true
+  synonyms:
+  - --model-dir
+  description: "Directory containing model to use for assigning\nqueries to clusters\
+    \ [default = reference database\ndirectory]"
+  args: !SimpleFlagArg
+    name: MODEL_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --previous-clustering
+  description: "Directory containing previous cluster definitions and\nnetwork [default\
+    \ = use that in the directory\ncontaining the model]"
+  args: !SimpleFlagArg
+    name: PREVIOUS_CLUSTERING
+- !Flag
+  optional: true
+  synonyms:
+  - --core-only
+  description: "(with a 'refine' model) Use a core-distance only model\nfor assigning\
+    \ queries [default = False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --accessory-only
+  description: "(with a 'refine' or 'lineage' model) Use an accessory-\ndistance only\
+    \ model for assigning queries [default =\nFalse]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of threads to use [default = 1]
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --gpu-sketch
+  description: "Use a GPU when calculating sketches (read data only)\n[default = False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gpu-dist
+  description: Use a GPU when calculating distances [default = False]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --deviceid
+  description: CUDA device ID, if using GPU [default = 0]
+  args: !SimpleFlagArg
+    name: DEVICEID
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: poppunk_assign [-h] --db DB --query QUERY [--distances DISTANCES]\n\
+  \                      [--external-clustering EXTERNAL_CLUSTERING] --output\n  \
+  \                    OUTPUT [--plot-fit PLOT_FIT] [--write-references]\n       \
+  \               [--update-db] [--overwrite] [--graph-weights]\n                \
+  \      [--min-kmer-count MIN_KMER_COUNT] [--exact-count]\n                     \
+  \ [--strand-preserved] [--max-a-dist MAX_A_DIST]\n                      [--model-dir\
+  \ MODEL_DIR]\n                      [--previous-clustering PREVIOUS_CLUSTERING]\n\
+  \                      [--core-only] [--accessory-only] [--threads THREADS]\n  \
+  \                    [--gpu-sketch] [--gpu-dist] [--deviceid DEVICEID]\n       \
+  \               [--version]\n\nAssign isolates to strains (by POPulation Partitioning\
+  \ Using Nucleotide Kmers)\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n\nInput files:\n  --db DB               Location of built\
+  \ reference database\n  --query QUERY         File listing query input assemblies\n\
+  \  --distances DISTANCES\n                        Prefix of input pickle of pre-calculated\
+  \ distances (if\n                        not in --db)\n  --external-clustering EXTERNAL_CLUSTERING\n\
+  \                        File with cluster definitions or other labels\n       \
+  \                 generated with any other method.\n\nOutput options:\n  --output\
+  \ OUTPUT       Prefix for output files (required)\n  --plot-fit PLOT_FIT   Create\
+  \ this many plots of some fits relating k-mer to\n                        core/accessory\
+  \ distances [default = 0]\n  --write-references    Write reference database isolates'\
+  \ cluster assignments\n                        out too\n  --update-db          \
+  \ Update reference database with query sequences\n  --overwrite           Overwrite\
+  \ any existing database files\n  --graph-weights       Save within-strain Euclidean\
+  \ distances into the graph\n\nKmer comparison options:\n  --min-kmer-count MIN_KMER_COUNT\n\
+  \                        Minimum k-mer count when using reads as input [default\n\
+  \                        = 0]\n  --exact-count         Use the exact k-mer counter\
+  \ with reads [default = use\n                        countmin counter]\n  --strand-preserved\
+  \    Treat input as being on the same strand, and ignore\n                     \
+  \   reverse complement k-mers [default = use canonical\n                       \
+  \ k-mers]\n\nQuality control options:\n  --max-a-dist MAX_A_DIST\n             \
+  \           Maximum accessory distance to permit [default = 0.5]\n\nDatabase querying\
+  \ options:\n  --model-dir MODEL_DIR\n                        Directory containing\
+  \ model to use for assigning\n                        queries to clusters [default\
+  \ = reference database\n                        directory]\n  --previous-clustering\
+  \ PREVIOUS_CLUSTERING\n                        Directory containing previous cluster\
+  \ definitions and\n                        network [default = use that in the directory\n\
+  \                        containing the model]\n  --core-only           (with a\
+  \ 'refine' model) Use a core-distance only model\n                        for assigning\
+  \ queries [default = False]\n  --accessory-only      (with a 'refine' or 'lineage'\
+  \ model) Use an accessory-\n                        distance only model for assigning\
+  \ queries [default =\n                        False]\n\nOther options:\n  --threads\
+  \ THREADS     Number of threads to use [default = 1]\n  --gpu-sketch          Use\
+  \ a GPU when calculating sketches (read data only)\n                        [default\
+  \ = False]\n  --gpu-dist            Use a GPU when calculating distances [default\
+  \ = False]\n  --deviceid DEVICEID   CUDA device ID, if using GPU [default = 0]\n\
+  \  --version             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/poppunk:2.3.0--py_0

@@ -7,26 +7,26 @@ inputs:
     \ start URL. When\nusing a signed URL to start a resumable upload session, you\
     \ will\nneed to specify the 'x-goog-resumable:start' header in the\nrequest or\
     \ else signature validation will fail."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
-- id: in_specifies_duration_specified
+- id: in_specifies_duration_be
   doc: "Specifies the duration that the signed url should be valid\nfor, default duration\
     \ is 1 hour.\nTimes may be specified with no suffix (default hours), or\nwith\
     \ s = seconds, m = minutes, h = hours, d = days.\nThis option may be specified\
     \ multiple times, in which case\nthe duration the link remains valid is the sum\
     \ of all the\nduration options."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_specifies_content_type
   doc: "Specifies the content type for which the signed url is\nvalid for."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_specify_keystore_password
   doc: Specify the keystore password instead of prompting.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_documentation_dot
@@ -38,6 +38,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gsutil

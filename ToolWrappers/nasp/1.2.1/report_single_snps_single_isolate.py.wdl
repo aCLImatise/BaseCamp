@@ -10,6 +10,9 @@ task ReportSingleSnpsSingleIsolatepy {
       ~{if defined(input_matrix) then ("--input_matrix " +  '"' + input_matrix + '"') else ""} \
       ~{if defined(genome_name) then ("--genome_name " +  '"' + genome_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_matrix: "/path/to/NASP_matrix [REQUIRED]"
     genome_name: "genome to look for singleton SNPs [REQUIRED]\\n"

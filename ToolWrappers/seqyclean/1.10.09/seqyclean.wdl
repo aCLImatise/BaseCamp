@@ -20,7 +20,7 @@ task Seqyclean {
     Int? number_yet_applicable
     Boolean? fast_q
     Boolean? fast_a_out
-    File? using_custom_barcodes
+    File? using_custom_filename
     File? pairedend_mode_see
     File? _singleend_mode
     Boolean? shuffle
@@ -52,7 +52,7 @@ task Seqyclean {
       ~{if defined(number_yet_applicable) then ("-t " +  '"' + number_yet_applicable + '"') else ""} \
       ~{if (fast_q) then "-fastq" else ""} \
       ~{if (fast_a_out) then "-fasta_out" else ""} \
-      ~{if defined(using_custom_barcodes) then ("-m " +  '"' + using_custom_barcodes + '"') else ""} \
+      ~{if defined(using_custom_filename) then ("-m " +  '"' + using_custom_filename + '"') else ""} \
       ~{if defined(pairedend_mode_see) then ("-1 " +  '"' + pairedend_mode_see + '"') else ""} \
       ~{if defined(_singleend_mode) then ("-U " +  '"' + _singleend_mode + '"') else ""} \
       ~{if (shuffle) then "-shuffle" else ""} \
@@ -64,6 +64,9 @@ task Seqyclean {
       ~{if (gz) then "-gz" else ""} \
       ~{if (alen) then "-alen" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     turns_vector_trimming: "- Turns on vector trimming, default=off. <filename> - is a path to a FASTA-file containing vector genomes."
     turns_contaminants_screening: "- Turns on contaminants screening, default=off, <filename> - is a path to a FASTA-file containing contaminant genomes."
@@ -83,7 +86,7 @@ task Seqyclean {
     number_yet_applicable: "- Number of threads (not yet applicable to Illumina mode), default=4."
     fast_q: "- Output in FASTQ format, default=off."
     fast_a_out: "- Output in FASTA format, default=off."
-    using_custom_barcodes: "- Using custom barcodes, default=off. <filename> - a path to a FASTA-file with custom barcodes."
+    using_custom_filename: "- Using custom barcodes, default=off. <filename> - a path to a FASTA-file with custom barcodes."
     pairedend_mode_see: "- Paired-end mode (see examples below)"
     _singleend_mode: "- Single-end mode"
     shuffle: "- Store non-paired Illumina reads in shuffled file, default=off."

@@ -170,6 +170,9 @@ task Javadoc {
       ~{if (version) then "-version" else ""} \
       ~{if defined(window_title) then ("-windowtitle " +  '"' + window_title + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_modules: "(,<module>)*\\nRoot modules to resolve in addition to the initial modules,\\nor all modules on the module path if <module> is\\nALL-MODULE-PATH."
     boot_classpath: "Override location of platform class files used for non-modular\\nreleases"

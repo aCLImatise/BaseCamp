@@ -28,6 +28,9 @@ task PairtoolsMerge {
       ~{if defined(cmd_in) then ("--cmd-in " +  '"' + cmd_in + '"') else ""} \
       ~{if defined(cmd_out) then ("--cmd-out " +  '"' + cmd_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_path: "output file. If the path ends with .gz/.lz4, the\\noutput is compressed by pbgzip/lz4c. By default,\\nthe output is printed into stdout."
     max_n_merge: "The maximal number of inputs merged at once. For\\nmore, store merged intermediates in temporary\\nfiles.  [default: 8]"

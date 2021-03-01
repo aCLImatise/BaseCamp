@@ -36,6 +36,9 @@ task GetToolPerformanceTableR {
       ~{if (include_sem_sim_l) then "--include-sem-siml" else ""} \
       ~{if defined(output_path) then ("--output-path " +  '"' + output_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dir: "Path to the directory with standardised output .tsv files from multiple\\nmethods"
     ref_file: "Path to the file with reference, \\\"true\\\" cell type assignments"

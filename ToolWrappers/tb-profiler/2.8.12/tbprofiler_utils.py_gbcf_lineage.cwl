@@ -3,24 +3,25 @@ id: tbprofiler_utils.py_gbcf_lineage.cwl
 inputs:
 - id: in_prefix
   doc: 'Sample prefix (default: tbprofiler)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --prefix
 - id: in_out_fmt
   doc: 'Output format (default: json)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --outfmt
 - id: in_db
   doc: "Full path to mutation database json file to use\n(default: TBProfiler panel)\
     \ (default: drdb_v2)\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --db
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tbprofiler_utils.py

@@ -10,6 +10,9 @@ task RgttoolspyTpx2bed {
       ~{if defined(input_tpx_file) then ("-i " +  '"' + input_tpx_file + '"') else ""} \
       ~{if defined(output_bed_file) then ("-o " +  '"' + output_bed_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_tpx_file: "Input TPX file"
     output_bed_file: "Output BED file"

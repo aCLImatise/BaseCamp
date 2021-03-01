@@ -3,20 +3,20 @@ id: Tutorial_pipeline03.pl.cwl
 inputs:
 - id: in_out
   doc: Destination folder for the output Track Hub.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --out
 - id: in_baseurl
   doc: "BaseURL used within the Track Hub. This URL will be included\nverbatim in\
     \ the resulting Track Hub. It is crucial that this URl is\nvalid, else the resulting\
     \ Track Hub will be broken."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --baseurl
 - id: in_big_beds
   doc: "URLs pointing to big bed files to be included in the trackhub.\nMultiple URLs\
     \ are separated by the character #."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bigbeds
 - id: in_bigwigs
@@ -26,27 +26,27 @@ inputs:
     yields a multi big wig container displaying bar as positive reads in\ngreen and\
     \ bar2 as negative 3 red colored reads in the same track and\nadditionally bar3\
     \ in an own track colored blue."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bigwigs
 - id: in_man
   doc: "Prints the manual page and exits\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --man
 - id: in_i
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -I
 - id: in_path
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     position: 0
 - id: in_url
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 1
 outputs:
@@ -55,9 +55,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Destination folder for the output Track Hub.
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - Tutorial_pipeline03.pl

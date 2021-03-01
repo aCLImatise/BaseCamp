@@ -1,0 +1,59 @@
+!Command
+command:
+- muxbyname.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will\nspecify 200 megs. The max is\
+    \ typically 85% of physical memory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eoom
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: Disable assertions.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified June 22, 2016\n\nDescription:\
+  \  Multiplexes reads from multiple files after renaming them based on their initial\
+  \ file.\nOpposite of demuxbyname.\n\nUsage:  muxbyname.sh in=<file,file,file...>\
+  \ out=<output file>\nInput files may also be given without an in= prefix, so that\
+  \ you can use wildcards:\nmuxbyname.sh *.fastq out=muxed.fastq\n\n\nStandard parameters:\n\
+  in=<file,file>  A list of input files.\nin2=<file,file> Read 2 input if reads are\
+  \ in paired files.\nout=<file>      Primary output, or read 1 output.\nout2=<file>\
+  \     Read 2 output if reads are in paired files.\noverwrite=f     (ow) Set to false\
+  \ to force the program to abort rather than\n                overwrite an existing\
+  \ file.\nshowspeed=t     (ss) Set to 'f' to suppress display of processing speed.\n\
+  ziplevel=2      (zl) Set to 1 (lowest) through 9 (max) to change compression\n \
+  \               level; lower compression is faster.\n\nProcessing parameters:\n\
+  None yet!\n\nJava Parameters:\n-Xmx            This will set Java's memory usage,\
+  \ overriding autodetection.\n                -Xmx20g will specify 20 gigs of RAM,\
+  \ and -Xmx200m will\n                specify 200 megs. The max is typically 85%\
+  \ of physical memory.\n-eoom           This flag will cause the process to exit\
+  \ if an out-of-memory\n                exception occurs.  Requires Java 8u92+.\n\
+  -da             Disable assertions.\n\nPlease contact Brian Bushnell at bbushnell@lbl.gov\
+  \ if you encounter any problems.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

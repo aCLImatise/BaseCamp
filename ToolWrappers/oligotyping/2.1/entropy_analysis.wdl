@@ -4,6 +4,9 @@ task Entropyanalysis {
   command <<<
     entropy_analysis
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

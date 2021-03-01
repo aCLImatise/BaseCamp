@@ -102,6 +102,9 @@ task SvabaRun {
       ~{if (penalty_clip_three) then "--penalty-clip-3" else ""} \
       ~{if (penalty_clip_five) then "--penalty-clip-5" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Select verbosity level (0-4). Default: 0"
     threads: "Use NUM threads to run svaba. Default: 1"

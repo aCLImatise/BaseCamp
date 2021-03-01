@@ -28,6 +28,9 @@ task GUESSmyLT {
       ~{if defined(memory) then ("--memory " +  '"' + memory + '"') else ""} \
       ~{if defined(full_path_output) then ("--output " +  '"' + full_path_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     organism: "Mandatory when no annotation provided. What organism\\nare you dealing with? prokaryote or eukaryote."
     reads: "One or two read files in .fastq or .fastq.gz format.\\nFiles can be compressed or uncrompressed. Handles\\ninterleaved read files and any known .fastq header\\nformat."

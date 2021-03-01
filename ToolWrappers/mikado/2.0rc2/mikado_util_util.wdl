@@ -10,6 +10,9 @@ task MikadoUtilUtil {
       ~{mikado} \
       ~{util}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mikado: ""
     util: ""

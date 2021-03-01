@@ -3,43 +3,44 @@ id: bp_nrdb.pl.cwl
 inputs:
 - id: in_filename_db_written
   doc: '- the filename the db is written (STDOUT by default)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
-- id: in_filename_append_db
+- id: in__filename_append
   doc: '- the filename to append the db to'
-  type: File
+  type: File?
   inputBinding:
     prefix: -a
 - id: in_minimum_required_sequence
   doc: '#                  - minimum required sequence length'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in__check_duplicates
   doc: '- do not check for duplicates'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
-- id: in_max_number_report
+- id: in_max_number_descriptions
   doc: '#                  - max number of descriptions to report per seq'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_delimiter_use_consecutive
   doc: '#                  - delimiter to use between consecutive descriptions'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
-- id: in_use_database_i
+- id: in_use_database_prefixes
   doc: '- use database id prefixes from command line'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bp_nrdb.pl

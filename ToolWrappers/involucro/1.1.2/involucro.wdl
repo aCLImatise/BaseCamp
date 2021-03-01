@@ -2,10 +2,10 @@ version 1.0
 
 task Involucro {
   input {
-    String? set_url_docker
-    Boolean? shorthand__tasks
+    String? set_url_default
+    Boolean? shorthand_for_tasks
     File? evaluate_given_script
-    File? set_control_default
+    File? set_file_default
     String? host
     String? shorthand__set
     String? set
@@ -17,10 +17,10 @@ task Involucro {
   }
   command <<<
     involucro \
-      ~{if defined(set_url_docker) then ("-H " +  '"' + set_url_docker + '"') else ""} \
-      ~{if (shorthand__tasks) then "-T" else ""} \
+      ~{if defined(set_url_default) then ("-H " +  '"' + set_url_default + '"') else ""} \
+      ~{if (shorthand_for_tasks) then "-T" else ""} \
       ~{if defined(evaluate_given_script) then ("-e " +  '"' + evaluate_given_script + '"') else ""} \
-      ~{if defined(set_control_default) then ("-f " +  '"' + set_control_default + '"') else ""} \
+      ~{if defined(set_file_default) then ("-f " +  '"' + set_file_default + '"') else ""} \
       ~{if defined(host) then ("-host " +  '"' + host + '"') else ""} \
       ~{if defined(shorthand__set) then ("-s " +  '"' + shorthand__set + '"') else ""} \
       ~{if defined(set) then ("-set " +  '"' + set + '"') else ""} \
@@ -30,11 +30,14 @@ task Involucro {
       ~{if defined(set_working_dir) then ("-w " +  '"' + set_working_dir + '"') else ""} \
       ~{if defined(wrap) then ("-wrap " +  '"' + wrap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    set_url_docker: "Set the URL of the Docker instance (default \\\"unix:///var/run/docker.sock\\\")"
-    shorthand__tasks: "Shorthand for --tasks"
+    set_url_default: "Set the URL of the Docker instance (default \\\"unix:///var/run/docker.sock\\\")"
+    shorthand_for_tasks: "Shorthand for --tasks"
     evaluate_given_script: "Evaluate the given script directly, not evaluating the control file"
-    set_control_default: "Set the control file (default \\\"invfile.lua\\\")"
+    set_file_default: "Set the control file (default \\\"invfile.lua\\\")"
     host: "Long form for -H (default \\\"unix:///var/run/docker.sock\\\")"
     shorthand__set: "Shorthand for --set (default [])"
     set: "Used as KEY=VALUE, makes VAR[KEY] available with value VALUE in Lua script (default [])"

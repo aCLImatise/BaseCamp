@@ -10,6 +10,9 @@ task Dtc {
       ~{copyright} \
       ~{if defined(min_sum) then ("-minsum " +  '"' + min_sum + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_sum: ""
     copyright: "(2016) The Regents of the University of California"

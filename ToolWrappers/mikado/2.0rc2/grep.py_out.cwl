@@ -3,22 +3,22 @@ id: grep.py_out.cwl
 inputs:
 - id: in_q
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
 - id: in_f
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_s
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -s
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_grep_do_tpy
@@ -38,13 +38,14 @@ inputs:
     position: 2
 - id: in_out
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 3
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - grep.py

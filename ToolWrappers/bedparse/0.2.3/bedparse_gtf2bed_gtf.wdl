@@ -12,6 +12,9 @@ task BedparseGtf2bedGtf {
       ~{gtf_two_bed} \
       ~{if defined(extrafields) then ("--extraFields " +  '"' + extrafields + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     extrafields: ""
     bed_parse: ""

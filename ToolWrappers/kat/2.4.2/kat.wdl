@@ -10,6 +10,9 @@ task Kat {
       ~{distributions_dot} \
       ~{if (print_extra_information) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_extra_information: "[ --verbose ]      Print extra information"
     distributions_dot: "Options:"

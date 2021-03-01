@@ -3,99 +3,102 @@ command:
 - ref-eval
 positional:
 - !Positional
-  description: 'Score definitions: contig precision, recall, and F1'
+  optional: false
   position: 0
   name: sequences.
-  optional: false
+  description: 'Score definitions: contig precision, recall, and F1'
 - !Positional
-  description: b1
-  position: 0
-  name: b0
   optional: false
-- !Positional
-  description: a1        a2
-  position: 0
-  name: a0
-  optional: false
-- !Positional
-  description: b1
-  position: 0
-  name: b0
-  optional: false
-- !Positional
-  description: a1        a2
-  position: 0
-  name: a0
-  optional: false
-- !Positional
-  description: b1
-  position: 0
-  name: b0
-  optional: false
-- !Positional
-  description: a1        a2
-  position: 0
-  name: a0
-  optional: false
-- !Positional
-  description: a1        a2
-  position: 0
-  name: a0
-  optional: false
-- !Positional
-  description: b1
-  position: 0
-  name: b0
-  optional: false
-- !Positional
-  description: a1        a2
-  position: 0
-  name: a0
-  optional: false
-- !Positional
-  description: b1
-  position: 0
-  name: b0
-  optional: false
-- !Positional
-  description: a1        a2
-  position: 0
-  name: a0
-  optional: false
-- !Positional
-  description: b1
-  position: 0
-  name: b0
-  optional: false
-- !Positional
-  description: a1        a2
-  position: 0
-  name: a0
-  optional: false
-- !Positional
-  description: b1
-  position: 0
-  name: b0
-  optional: false
-- !Positional
-  description: "B: b   = AGCTCGACGT\nA: a_1 = AGCT\na_2 =     CGACGT"
   position: 0
   name: alignment.
-  optional: false
+  description: "B: b   = AGCTCGACGT\nA: a_1 = AGCT\na_2 =     CGACGT"
 - !Positional
-  description: To compute the WKR, the relative abundances of the reference elements
+  optional: false
   position: 0
   name: below.
-  optional: false
+  description: To compute the WKR, the relative abundances of the reference elements
 - !Positional
+  optional: false
+  position: 0
+  name: where
   description: "* $n_A$ is the total number of bases in the assembly $A$,\n* $N$ is\
     \ the total number of reads, as specified by --num-reads,\nand\n* $L$ is the read\
     \ length, as specified by --readlen."
-  position: 0
-  name: where
-  optional: false
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --weighted
+  description: \
+  args: !SimpleFlagArg
+    name: both
+- !Flag
+  optional: true
+  synonyms:
+  - --A-seqs
+  description: \
+  args: !SimpleFlagArg
+    name: A.fa
+- !Flag
+  optional: true
+  synonyms:
+  - --B-seqs
+  description: \
+  args: !SimpleFlagArg
+    name: B.fa
+- !Flag
+  optional: true
+  synonyms:
+  - --A-expr
+  description: \
+  args: !SimpleFlagArg
+    name: A_expr.isoforms.results
+- !Flag
+  optional: true
+  synonyms:
+  - --B-expr
+  description: \
+  args: !SimpleFlagArg
+    name: B_expr.isoforms.results
+- !Flag
+  optional: true
+  synonyms:
+  - --A-to-B
+  description: \
+  args: !SimpleFlagArg
+    name: A_to_B.psl
+- !Flag
+  optional: true
+  synonyms:
+  - --B-to-A
+  description: \
+  args: !SimpleFlagArg
+    name: B_to_A.psl
+- !Flag
+  optional: true
+  synonyms:
+  - --num-reads
+  description: \
+  args: !SimpleFlagArg
+    name: '5000000'
+- !Flag
+  optional: true
+  synonyms:
+  - --readlen
+  description: \
+  args: !SimpleFlagArg
+    name: '76'
+- !Flag
+  optional: true
+  synonyms:
+  - --kmerlen
+  description: \
+  args: !SimpleFlagArg
+    name: '76'
+- !Flag
+  optional: true
+  synonyms:
+  - --scores
   description: "The groups of scores to compute, separated by commas (e.g.,\n--scores=nucl,contig,kc).\
     \ It is more efficient to compute all\nthe scores you are interested in using\
     \ one invocation of\nREF-EVAL instead of using multiple invocations that each\n\
@@ -105,28 +108,12 @@ named:
     \ score groups:\n* kmer: kmer Kullback-Leibler divergence, Jensen-Shannon\ndivergence,\
     \ and Hellinger distance.\n* kc: kmer recall, number of nucleotides, and kmer\n\
     compression score.\nRequired unless --paper is given."
-  synonyms:
-  - --scores
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "A string indicating whether to compute weighted or unweighted\nvariants\
-    \ of scores, or both (e.g., --weighted=yes):\n* yes: compute weighted variants\
-    \ of scores.\n* no: compute unweighted variants of scores.\n* both: compute both\
-    \ weighted and unweighted variants of\nscores.\nIn weighted variants, the expression\
-    \ levels (TPM) of the\nassembly and reference sequences are taken into account,\
-    \ and\nhence need to be specified using --A-expr and --B-expr.\nUnweighted variants\
-    \ are equivalent to weighted variants with\nuniform expression.\nThe distinction\
-    \ between weighted and unweighted variants\ndoesn't make sense for the KC score,\
-    \ so this option is\nignored by the KC score.\nRequired unless --paper or only\
-    \ --score=kc is given."
+  optional: true
   synonyms:
-  - --weighted
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
+  - --paper
   description: "As an alternative to the above, if you are only interested in\ncomputing\
     \ the scores described in the main text of our paper\n[1], you can pass the --paper\
     \ flag instead of the --scores\nand --weighted options. In that case, the following\
@@ -136,114 +123,39 @@ named:
     \ with this flag.\n[1] Bo Li*, Nathanael Fillmore*, Yongsheng Bai, Mike Collins,\n\
     James A. Thompson, Ron Stewart, Colin N. Dewey. Evaluation of\nde novo transcriptome\
     \ assemblies from RNA-Seq data."
-  synonyms:
-  - --paper
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The assembly sequences, in FASTA format. Required.
-  synonyms:
-  - --A-seqs
-  args: !SimpleFlagArg
-    name: arg
   optional: true
-- !Flag
-  description: The reference sequences, in FASTA format. Required.
-  synonyms:
-  - --B-seqs
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
-  description: "The assembly expression, for use in weighted scores, as\nproduced\
-    \ by RSEM in a file called *.isoforms.results.\nRequired for weighted variants\
-    \ of scores."
-  synonyms:
-  - --A-expr
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
-  description: "The reference expression, for use in weighted scores, as\nproduced\
-    \ by RSEM in a file called *.isoforms.results.\nRequired for weighted variants\
-    \ of scores."
-  synonyms:
-  - --B-expr
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
-  description: "The alignments of the assembly to the reference. The file\nformat\
-    \ is specified by --alignment-type. Required for\nalignment-based scores."
-  synonyms:
-  - --A-to-B
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
-  description: "The alignments of the reference to the assembly. The file\nformat\
-    \ is specified by --alignment-type. Required for\nalignment-based scores."
-  synonyms:
-  - --B-to-A
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
-  description: "The type of alignments used, either blast or psl. Default:\npsl. Currently\
-    \ BLAST support is experimental, not well\ntested, and not recommended."
   synonyms:
   - --alignment-type
+  description: "The type of alignments used, either blast or psl. Default:\npsl. Currently\
+    \ BLAST support is experimental, not well\ntested, and not recommended."
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --strand-specific
   description: "If this flag is present, it is assumed that all the assembly\nand\
     \ reference sequences have the same orientation. Thus,\nalignments or kmer matches\
     \ that are to the reverse strand are\nignored."
-  synonyms:
-  - --strand-specific
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "This option only applies to the KC scores. The read length of\nthe\
-    \ reads used to build the assembly, used in the denominator\nof the ICR. Required\
-    \ for KC scores."
+  optional: true
   synonyms:
-  - --readlen
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
-  description: "This option only applies to the KC scores. The number of\nreads used\
-    \ to build the assembly, used in the denominator of\nthe ICR. Required for KC\
-    \ scores."
-  synonyms:
-  - --num-reads
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
-  description: "This option only applies to the kmer and KC scores. This is\nthe length\
-    \ (\"k\") of the kmers used in the definition of the\nKC and kmer scores. Required\
-    \ for KC and kmer scores."
-  synonyms:
-  - --kmerlen
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
+  - --min-frac-identity
   description: "This option only applies to contig scores. Alignments with\nfraction\
     \ identity less than this threshold are ignored. The\nfraction identity of an\
     \ alignment is min(x/y, x/z), where\n* $x$ is the number of bases in the assembly\
     \ sequence that\nare aligned to an identical base in the reference\nsequence,\
     \ according to the alignment,\n* $y$ is the number of bases in the assembly sequence,\
     \ and\n* $z$ is the number of bases in the reference sequence.\nDefault: 0.99."
-  synonyms:
-  - --min-frac-identity
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-frac-indel
   description: "This option only applies to contig scores. Alignments with\nfraction\
     \ indel greater than this threshold are ignored. For\npsl alignments, the fraction\
     \ indel of an alignment is\n$\\max(w/y, x/z)$, where\n* $w$ is the number of bases\
@@ -256,31 +168,31 @@ named:
     \ in the\nreference sequence, according to the alignment (\"gaps\"),\n* $y$ is\
     \ the number of bases in the assembly sequence, and\n* $z$ is the number of bases\
     \ in the reference sequence.\nDefault: 0.01."
-  synonyms:
-  - --max-frac-indel
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min-segment-len
   description: "This option only applies to nucleotide and pair scores.\nAlignment\
     \ segments that contain fewer than this number of\nbases will be discarded. Default:\
     \ 100. In the DETONATE paper,\nthis was set to the read length."
-  synonyms:
-  - --min-segment-len
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --hash-table-type
   description: "The type of hash table to use, either \"sparse\" or \"dense\".\nThis\
     \ is only relevant for KC and kmer scores. The sparse\ntable is slower but uses\
     \ less memory. The dense table is\nfaster but uses more memory. Default: \"sparse\"\
     ."
-  synonyms:
-  - --hash-table-type
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --hash-table-numeric-type
   description: "The numeric type to use to store values in the hash table,\neither\
     \ \"double\" or \"float\". This is only relevant for KC and\nkmer scores. Using\
     \ single-precision floating point numbers\n(\"float\") requires less memory than\
@@ -288,12 +200,12 @@ named:
     \ error. Note\nthat we use double-precision numbers throughout our\ncalculations\
     \ even if single-precision numbers are stored in\nthe table, so the additional\
     \ error should be minimal.\nDefault: \"double\"."
-  synonyms:
-  - --hash-table-numeric-type
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --hash-table-fudge-factor
   description: "This is only relevant for KC and kmer scores. When the hash\ntable\
     \ is created, its initial capacity is set as the total\nworst-case number of possible\
     \ kmers in the assembly and\nreference, based on each sequence's length, divided\
@@ -301,12 +213,12 @@ named:
     \ kmers should be shared by the assembly and the\nreference, and (2) many kmers\
     \ will be repeated several times.\nHowever, if you have a lot of memory or a really\
     \ bad\nassembly, you could try a smaller number. Default: 2.0."
-  synonyms:
-  - --hash-table-fudge-factor
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --trace
   description: "If given, the prefix for additional output that provides\ndetails\
     \ about the REF-EVAL scores; if not given, no such\noutput is produced. Currently,\
     \ the only such output is as\nfollows.\n* (--trace).{weighted,unweighted}_contig_{precision,recall}_matching\n\
@@ -328,34 +240,8 @@ named:
     \ In other words, each row corresponds to a\ncontig $a$ and contains information\
     \ about its matching\nto a reference sequence $b$, or all \"NA\" values if $a$\n\
     was not matched."
-  synonyms:
-  - --trace
   args: !SimpleFlagArg
     name: arg
-  optional: true
-- !Flag
-  description: "If --weighted=no, we construct the kmer occurrence frequency profiles\n\
-    $p_A$ and $p_B$ in the same way, except that uniform relative\nabundances are\
-    \ used, i.e., $\\tau(a) = 1/|A|$ for all $a$ in $A$, and\n$\\tau(b) = 1/|B|$ for\
-    \ all $b$ in $B$, where $|A|$ is the number of\ncontigs in $A$, and $|B|$ is the\
-    \ number of reference sequences in\n$B$.\nLet $m$ be the \"mean\" profile of $p_A$\
-    \ and $p_B$:\n$$ m(r) = (1/2) (p_A(r) + p_B(r)) \\qquad\\hbox{for every kmer $r$}.\
-    \ $$\nThe Jensen-Shannon divergence between $p_A$ and $p_B$ is defined in\nterms\
-    \ of the KL divergence between $p_A$ and the mean, and $p_B$ and\nthe mean, as\
-    \ follows:\n* Let $KL(p_A || m) = \\sum_r p_A(r) (\\log_2(p_A(r)) -\n\\log_2(m(r)))$.\n\
-    * Let $KL(p_B || m) = \\sum_r p_B(r) (\\log_2(p_B(r)) -\n\\log_2(m(r)))$.\n* Let\
-    \ $JS(p_A || p_B) = (1/2) (KL(p_A || m) + KL(p_B || m))$.\nIn the output file,\
-    \ these three scores are denoted\n(un)weighted_kmer_KL_A_to_M, (un)weighted_kmer_KL_B_to_M,\
-    \ and\n(un)weighted_kmer_jensen_shannon, respectively.\nThe Hellinger distance\
-    \ between $p_A$ and $p_B$ is defined as\n$$ \\sqrt{ (1/2) \\sum_r (\\sqrt{p_A(r)}\
-    \ - \\sqrt{p_B(r)})^2 } $$\nThe total variation distance between $p_A$ and $p_B$\
-    \ is defined as\n$$ (1/2) \\sum_r |p_A(r) - p_B(r)|, $$\nwhere $|\\cdot|$ denotes\
-    \ absolute value. Above, $\\sum_r$ denotes a sum\nover all possible kmers $r$\
-    \ (most of which will have $p_A(r) = p_B(r)\n= 0$)."
-  synonyms:
-  - --B-expr.
-  args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -731,3 +617,4 @@ help_text: "  REF-EVAL: A toolkit of reference-based scores for de novo transcri
   \n"
 generated_using:
 - --help
+docker_image:

@@ -10,6 +10,9 @@ task Xmfa2maf {
       ~{x_mfa_input} \
       ~{maf_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     x_mfa_input: ""
     maf_output: ""

@@ -3,100 +3,100 @@ command:
 - telseq
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: in.1.bam
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: in.2.bam
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "a file that contains a list of file paths of BAMs. It should has only\
-    \ one column,\nwith each row a BAM file path. -f has higher priority than <in.bam>.\
-    \ When specified,\n<in.bam> are ignored."
+  optional: true
   synonyms:
   - -f
   - --bamlist
+  description: "a file that contains a list of file paths of BAMs. It should has only\
+    \ one column,\nwith each row a BAM file path. -f has higher priority than <in.bam>.\
+    \ When specified,\n<in.bam> are ignored."
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: output file for results. Ignored when input is from stdin, in which
-    case output will be stdout.
+  optional: true
   synonyms:
   - -o
   - --output_dir
+  description: output file for results. Ignored when input is from stdin, in which
+    case output will be stdout.
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: remove header line, which is printed by default.
+  optional: true
   synonyms:
   - -H
+  description: remove header line, which is printed by default.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
   description: "merge read groups by taking a weighted average across read groups\
     \ of a sample, weighted by\nthe total number of reads in read group. Default is\
     \ to output each readgroup separately."
-  synonyms:
-  - -m
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ignore read groups. Treat all reads in BAM as if they were from a same
-    read group.
+  optional: true
   synonyms:
   - -u
+  description: ignore read groups. Treat all reads in BAM as if they were from a same
+    read group.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: threshold of the amount of TTAGGG/CCCTAA repeats in read for a read
-    to be considered telomeric. default = 7.
+  optional: true
   synonyms:
   - -k
+  description: threshold of the amount of TTAGGG/CCCTAA repeats in read for a read
+    to be considered telomeric. default = 7.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: read length. default = 100
+  optional: true
   synonyms:
   - -r
+  description: read length. default = 100
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: use user specified pattern for searching [ATGC]*.
+  optional: true
   synonyms:
   - -z
+  description: use user specified pattern for searching [ATGC]*.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: specifiy exome regions in BED format. These regions will be excluded
+  optional: true
   synonyms:
   - -e
   - --exomebed
+  description: specifiy exome regions in BED format. These regions will be excluded
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -w
   description: ",                      consider BAMs in the speicfied bamlist as one\
     \ single BAM. This is useful when\nthe initial alignemt is separated for some\
     \ reason, such as one for mapped and one for ummapped reads."
-  synonyms:
-  - -w
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: display this help and exit
+  optional: true
   synonyms:
   - --help
+  description: display this help and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Program: TelSeq\nVersion: 0.0.1\nContact: Zhihao Ding [zhihao.ding@gmail.com]\n\
@@ -128,3 +128,4 @@ help_text: "Program: TelSeq\nVersion: 0.0.1\nContact: Zhihao Ding [zhihao.ding@g
   \n"
 generated_using:
 - --help
+docker_image:

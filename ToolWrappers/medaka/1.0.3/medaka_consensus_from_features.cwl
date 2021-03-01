@@ -3,12 +3,12 @@ id: medaka_consensus_from_features.cwl
 inputs:
 - id: in_debug
   doc: 'Verbose logging of debug information. (default: 20)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_quiet
   doc: 'Minimal logging; warnings only). (default: 20)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_model
@@ -19,12 +19,12 @@ inputs:
     \ r941_prom_high_g303,\nr941_prom_high_g330, r941_prom_high_g344,\nr941_prom_high_g360,\
     \ r941_prom_snp_g303,\nr941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
     \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default: r941_min_high_g360)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --model
 - id: in_disable_cu_dnn
   doc: 'Disable use of cuDNN model layers. (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --disable_cudnn
 - id: in_features
@@ -36,6 +36,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - medaka

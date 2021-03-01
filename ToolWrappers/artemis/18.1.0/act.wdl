@@ -28,6 +28,9 @@ task Act {
       ~{if (dcha_do) then "-Dchado" else ""} \
       ~{if (dread_only) then "-Dread_only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: "Read a text file of options from FILE"
     chado: "Connect to a Chado database (using PGHOST, PGPORT, PGDATABASE, PGUSER environment variables)"

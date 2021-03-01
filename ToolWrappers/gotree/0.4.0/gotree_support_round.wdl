@@ -18,6 +18,9 @@ task GotreeSupportRound {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     precision: "Rounding support precision (x means 10^-x) (default 3)"
     format: "Input tree format (newick, nexus, or phyloxml) (default \\\"newick\\\")"

@@ -18,6 +18,9 @@ task Simpleoverlap {
       ~{if defined(set_minimum_overlap) then ("-o " +  '"' + set_minimum_overlap + '"') else ""} \
       ~{if defined(set_verbose_level) then ("-v " +  '"' + set_verbose_level + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     also_show_alignments: "Also show alignments of overlaps"
     maximum_error_rate: "Maximum error rate for overlaps is <x>\\ne.g., -E 0.06 for 6 6.898821e-310rror rate"

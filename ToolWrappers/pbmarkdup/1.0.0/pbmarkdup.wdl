@@ -14,7 +14,7 @@ task Pbmarkdup {
     String str
     String var_input
     String var_output
-    File file
+    File var_file
     String var_as
     String bam
   }
@@ -25,7 +25,7 @@ task Pbmarkdup {
       ~{str} \
       ~{var_input} \
       ~{var_output} \
-      ~{file} \
+      ~{var_file} \
       ~{var_as} \
       ~{bam} \
       ~{if (cross_library) then "--cross-library" else ""} \
@@ -36,6 +36,9 @@ task Pbmarkdup {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cross_library: "Identify duplicates across sequencing libraries (LB tag in read group)."
     rmd_up: "Exclude duplicates from OUTFILE. Redundant when --dup-file is provided."
@@ -49,7 +52,7 @@ task Pbmarkdup {
     str: ""
     var_input: ""
     var_output: ""
-    file: ""
+    var_file: ""
     var_as: ""
     bam: ""
   }

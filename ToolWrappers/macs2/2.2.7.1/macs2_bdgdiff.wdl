@@ -30,6 +30,9 @@ task Macs2Bdgdiff {
       ~{if defined(o_prefix) then ("--o-prefix " +  '"' + o_prefix + '"') else ""} \
       ~{if defined(ofile_ofile_) then ("-o " +  '"' + ofile_ofile_ + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tone: "MACS pileup bedGraph for condition 1. Incompatible\\nwith callpeak --SPMR output. REQUIRED"
     t_two: "MACS pileup bedGraph for condition 2. Incompatible\\nwith callpeak --SPMR output. REQUIRED"

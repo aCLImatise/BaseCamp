@@ -3,43 +3,39 @@ id: bowtie_inspect.cwl
 inputs:
 - id: in_large_index
   doc: "force inspection of the 'large' index, even if a\n'small' one is present."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --large-index
-- id: in_a_slash_across
+- id: in_across
   doc: 'Number of characters across in FASTA output (default: 60)'
-  type: long
+  type: long?
   inputBinding:
-    prefix: -a/--across
-- id: in_n_slash_names
+    prefix: --across
+- id: in_names
   doc: Print reference sequence names only
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -n/--names
-- id: in_s_slash_summary
+    prefix: --names
+- id: in_summary
   doc: Print summary incl. ref names, lengths, index properties
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -s/--summary
-- id: in_e_slash_e_bwt_ref
+    prefix: --summary
+- id: in_e_bwt_ref
   doc: Reconstruct reference from ebwt (slow, preserves colors)
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -e/--ebwt-ref
-- id: in_v_slash_verbose
+    prefix: --ebwt-ref
+- id: in_verbose
   doc: Verbose output (for debugging)
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -v/--verbose
-- id: in_h_slash_help
-  doc: print detailed description of tool and its options
-  type: boolean
-  inputBinding:
-    prefix: -h/--help
+    prefix: --verbose
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bowtie-inspect

@@ -24,6 +24,9 @@ task GotreePrune {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     comp: "Input compared tree  (default \\\"none\\\")"
     output_tree_default: "Output tree (default \\\"stdout\\\")"

@@ -14,6 +14,9 @@ task XsvSort {
       ~{if (no_headers) then "--no-headers" else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     select: "Select a subset of columns to sort.\\nSee 'xsv select --help' for the format details."
     write_output_file: "Write output to <file> instead of stdout."

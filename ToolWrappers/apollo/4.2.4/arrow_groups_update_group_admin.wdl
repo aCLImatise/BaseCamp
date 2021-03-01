@@ -10,6 +10,9 @@ task ArrowGroupsUpdateGroupAdmin {
       ~{group_id} \
       ~{if defined(users) then ("--users " +  '"' + users + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     users: "List of emails"
     group_id: ""

@@ -28,6 +28,9 @@ task CloneFilter {
       ~{if (inline_index) then "--inline-index" else ""} \
       ~{if (index_inline) then "--index-inline" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     oligo_len_one: ": length of the single-end oligo sequence in data set."
     oligo_len_two: ": length of the paired-end oligo sequence in data set."

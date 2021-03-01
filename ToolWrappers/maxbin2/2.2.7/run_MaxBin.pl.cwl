@@ -3,7 +3,7 @@ id: run_MaxBin.pl.cwl
 inputs:
 - id: in_out
   doc: (output file)
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
 - id: in_run_max_bin_do_tpl
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: (output file)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - run_MaxBin.pl

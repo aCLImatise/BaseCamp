@@ -12,6 +12,9 @@ task PhyluceSnpPrepIntervalListFileForPicard {
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
       ~{if defined(output_bed_file) then ("--output " +  '"' + output_bed_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "The BED file to filter."
     bam: "The BED file to filter."

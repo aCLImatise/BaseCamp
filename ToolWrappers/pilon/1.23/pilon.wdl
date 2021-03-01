@@ -70,6 +70,9 @@ task Pilon {
       ~{if (min_qual) then "--minqual" else ""} \
       ~{if (no_strays) then "--nostrays" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "The input genome we are trying to improve, which must be the reference used\\nfor the bam alignments.  At least one of --frags or --jumps must also be given."
     frags: "A bam file consisting of fragment paired-end alignments, aligned to the --genome\\nargument using bwa or bowtie2.  This argument may be specifed more than once."

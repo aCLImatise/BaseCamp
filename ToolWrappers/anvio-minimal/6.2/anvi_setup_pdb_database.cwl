@@ -9,7 +9,7 @@ inputs:
     data directory, but then you may need to run the setup\nprogram with superuser\
     \ privileges. If you don't have\nsuperuser privileges, then you can use this parameter\n\
     to tell anvi'o the location you wish to use to setup\nyour database."
-  type: File
+  type: File?
   inputBinding:
     prefix: --pdb-database-path
 - id: in_num_threads
@@ -19,12 +19,12 @@ inputs:
     \ you are running your commands on a SGE\n--if you are clusterizing your runs,\
     \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
     \ fast."
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-threads
 - id: in_update
   doc: Use this flag if you would like to update your current
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --update
 - id: in_reset
@@ -32,7 +32,7 @@ inputs:
     \ wrong for some reason and if you\nbelieve re-downloading files and setting them\
     \ up could\naddress the issue, this is the flag that will tell\nanvi'o to act\
     \ like a real computer scientist\nchallenged with a computational problem.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reset
 - id: in_database_dot
@@ -44,6 +44,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-setup-pdb-database

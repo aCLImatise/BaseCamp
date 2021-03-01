@@ -8,6 +8,9 @@ task Chromosemble {
     Chromosemble \
       ~{if (string_target_file) then "-t" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_target_file: "<string> : target fasta file (in chromosome coordinates)"
   }

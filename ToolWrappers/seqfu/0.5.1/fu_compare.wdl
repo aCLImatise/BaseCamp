@@ -4,6 +4,9 @@ task Fucompare {
   command <<<
     fu_compare
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

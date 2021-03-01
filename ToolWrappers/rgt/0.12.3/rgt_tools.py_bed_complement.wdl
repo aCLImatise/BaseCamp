@@ -12,6 +12,9 @@ task RgttoolspyBedComplement {
       ~{if defined(output_bed_file) then ("-o " +  '"' + output_bed_file + '"') else ""} \
       ~{if defined(organism) then ("-organism " +  '"' + organism + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bed_file: "Input BED file"
     output_bed_file: "Output BED file"

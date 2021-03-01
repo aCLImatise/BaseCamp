@@ -18,6 +18,9 @@ task AmptkStats {
       ~{if (out) then "--out" else ""} \
       ~{if (ignore_otus) then "--ignore_otus" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     biom: "Input BIOM file with taxonomy and metadata (Required)"
     tree: "Phylogeny of OTUs (from amptk taxonomy) (Required)"

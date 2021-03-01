@@ -18,6 +18,9 @@ task SweepFinder2 {
       ~{sweeps} \
       ~{spectrum}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     to: ""
     find: ""

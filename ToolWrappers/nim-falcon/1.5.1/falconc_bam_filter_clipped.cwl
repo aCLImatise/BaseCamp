@@ -3,35 +3,35 @@ id: falconc_bam_filter_clipped.cwl
 inputs:
 - id: in_help_syntax
   doc: 'advanced: prepend,plurals,..'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --help-syntax
 - id: in__outputcountfn_string
   doc: "=, --output-count-fn=  string  REQUIRED  file reporting the number of reads\n\
     post filtering"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -o
 - id: in_output_fn
   doc: "=             string  REQUIRED  Bam or Sam filename (based on its\nextension)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --output-fn
-- id: in__inputfn_string
+- id: in_inputfn_string_required
   doc: "=, --input-fn=         string  REQUIRED  Bam or Sam filename (based on its\n\
     extension), or '-'"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
-- id: in__maxclipping_int
+- id: in_maxclipping_int_maximum
   doc: "=, --max-clipping=     int     100       Maximum clipping on left or right\n\
     of query, in basepairs"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
-- id: in__endmargin_int
+- id: in__endmargin_margin
   doc: =, --end-margin=       int     25        Maximum margin on contig ends, in
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -e
 - id: in_base_pairs
@@ -54,6 +54,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - falconc

@@ -14,6 +14,9 @@ task RbtBamdepth {
       ~{if defined(maximum_read_length) then ("-m " +  '"' + maximum_read_length + '"') else ""} \
       ~{if defined(min_mapq) then ("--min-mapq " +  '"' + min_mapq + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     excl_flags: "Skip reads with mask bits set [UNMAP, SECONDARY, QCFAIL, DUP]."
     incl_flags: "Skip reads with mask bits unset []."

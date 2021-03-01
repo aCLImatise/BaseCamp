@@ -28,6 +28,9 @@ task AnnotateTranscriptspl {
       ~{if (strand) then "-strand" else ""} \
       ~{if (merge) then "-merge" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_repeats: "(skip repeat annotation)"
     min_overlap: "<#> (Min fraction of overlap to assign transcript as genic, 0.1)"

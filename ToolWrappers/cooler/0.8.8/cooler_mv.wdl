@@ -12,6 +12,9 @@ task CoolerMv {
       ~{dst_uri} \
       ~{if (overwrite) then "--overwrite" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     overwrite: "Truncate and replace destination file if it already exists."
     src_uri: ""

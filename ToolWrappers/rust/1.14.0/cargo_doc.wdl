@@ -44,6 +44,9 @@ task CargoDoc {
       ~{if (frozen) then "--frozen" else ""} \
       ~{if (locked) then "--locked" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     open: "Opens the docs in a browser after the operation"
     package: "to document"

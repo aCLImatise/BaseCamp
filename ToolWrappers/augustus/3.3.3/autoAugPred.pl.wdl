@@ -32,6 +32,9 @@ task AutoAugPredpl {
       ~{if defined(remote) then ("--remote " +  '"' + remote + '"') else ""} \
       ~{if defined(augustus_config_path) then ("--AUGUSTUS_CONFIG_PATH " +  '"' + augustus_config_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "fasta file with DNA sequences for training"
     species: "species name as used by AUGUSTUS"

@@ -3,22 +3,22 @@ version 1.0
 task Dcmpsmk {
   input {
     Boolean? arguments
-    Boolean? _quiet_quiet
-    Boolean? _verbose_details
-    Boolean? _debug_information
-    Boolean? ll
-    Boolean? lc
-    Boolean? _readdataset_read
+    Boolean? quiet
+    Boolean? verbose
+    Boolean? debug
+    Boolean? log_level
+    Boolean? log_config
+    Boolean? read_dataset
     Boolean? _readxferauto_use
     Boolean? read_xfer_detect
     Boolean? read_xfer_little
     Boolean? read_xfer_big
     Boolean? read_xfer_implicit
-    Boolean? _voiignore_ignore
-    Boolean? _curveignore_ignore
-    Boolean? _overlayignore_ignore
-    Boolean? _shutterignore_ignore
-    Boolean? _plutignore_shape
+    Boolean? voi_ignore
+    Boolean? curve_ignore
+    Boolean? overlay_ignore
+    Boolean? shutter_ignore
+    Boolean? plut_ignore
     Boolean? location_none
     Boolean? location_network
     Boolean? location_media
@@ -30,44 +30,47 @@ task Dcmpsmk {
       ~{dcm_file_in} \
       ~{dcm_file_out} \
       ~{if (arguments) then "--arguments" else ""} \
-      ~{if (_quiet_quiet) then "-q" else ""} \
-      ~{if (_verbose_details) then "-v" else ""} \
-      ~{if (_debug_information) then "-d" else ""} \
-      ~{if (ll) then "-ll" else ""} \
-      ~{if (lc) then "-lc" else ""} \
-      ~{if (_readdataset_read) then "-f" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (log_level) then "--log-level" else ""} \
+      ~{if (log_config) then "--log-config" else ""} \
+      ~{if (read_dataset) then "--read-dataset" else ""} \
       ~{if (_readxferauto_use) then "-t" else ""} \
       ~{if (read_xfer_detect) then "--read-xfer-detect" else ""} \
       ~{if (read_xfer_little) then "--read-xfer-little" else ""} \
       ~{if (read_xfer_big) then "--read-xfer-big" else ""} \
       ~{if (read_xfer_implicit) then "--read-xfer-implicit" else ""} \
-      ~{if (_voiignore_ignore) then "-V" else ""} \
-      ~{if (_curveignore_ignore) then "-c" else ""} \
-      ~{if (_overlayignore_ignore) then "-o" else ""} \
-      ~{if (_shutterignore_ignore) then "-s" else ""} \
-      ~{if (_plutignore_shape) then "-p" else ""} \
+      ~{if (voi_ignore) then "--voi-ignore" else ""} \
+      ~{if (curve_ignore) then "--curve-ignore" else ""} \
+      ~{if (overlay_ignore) then "--overlay-ignore" else ""} \
+      ~{if (shutter_ignore) then "--shutter-ignore" else ""} \
+      ~{if (plut_ignore) then "--plut-ignore" else ""} \
       ~{if (location_none) then "--location-none" else ""} \
       ~{if (location_network) then "--location-network" else ""} \
       ~{if (location_media) then "--location-media" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arguments: "print expanded command line arguments"
-    _quiet_quiet: "--quiet                quiet mode, print no warnings and errors"
-    _verbose_details: "--verbose              verbose mode, print processing details"
-    _debug_information: "--debug                debug mode, print debug information"
-    ll: "--log-level            [l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
-    lc: "--log-config           [f]ilename: string\\nuse config file f for the logger"
-    _readdataset_read: "--read-dataset         read data set without file meta information"
+    quiet: "quiet mode, print no warnings and errors"
+    verbose: "verbose mode, print processing details"
+    debug: "debug mode, print debug information"
+    log_level: "[l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
+    log_config: "[f]ilename: string\\nuse config file f for the logger"
+    read_dataset: "read data set without file meta information"
     _readxferauto_use: "=  --read-xfer-auto       use TS recognition (default)"
     read_xfer_detect: "ignore TS specified in the file meta header"
     read_xfer_little: "read with explicit VR little endian TS"
     read_xfer_big: "read with explicit VR big endian TS"
     read_xfer_implicit: "read with implicit VR little endian TS"
-    _voiignore_ignore: "--voi-ignore           ignore VOI LUT and window center/width"
-    _curveignore_ignore: "--curve-ignore         ignore curve data"
-    _overlayignore_ignore: "--overlay-ignore       ignore overlays"
-    _shutterignore_ignore: "--shutter-ignore       ignore shutter"
-    _plutignore_shape: "--plut-ignore          ignore presentation LUT shape"
+    voi_ignore: "ignore VOI LUT and window center/width"
+    curve_ignore: "ignore curve data"
+    overlay_ignore: "ignore overlays"
+    shutter_ignore: "ignore shutter"
+    plut_ignore: "ignore presentation LUT shape"
     location_none: "image reference without location (default)"
     location_network: "[a]etitle: string\\nimage located at application entity a"
     location_media: "[f]ilesetID, fileset[UID]: string\\nimage located on storage medium"

@@ -10,6 +10,9 @@ task GomoHighlight {
       ~{go_dag} \
       ~{gomo_xml}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     go_dag: ""
     gomo_xml: ""

@@ -14,6 +14,9 @@ task MegaReadsAssembleNomatchsh {
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a: ""
     p: ""

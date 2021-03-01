@@ -56,6 +56,9 @@ task HicBuildMatrix {
       ~{if (skip_duplication_check) then "--skipDuplicationCheck" else ""} \
       ~{if defined(chromosome_sizes) then ("--chromosomeSizes " +  '"' + chromosome_sizes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sam_files: "sam files two sam files, -s two sam files two sam files\\nThe two PE alignment sam files to process (default:\\nNone)"
     out_filename: "Output file name for the Hi-C matrix. (default: None)"

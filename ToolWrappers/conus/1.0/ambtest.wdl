@@ -8,8 +8,8 @@ task Ambtest {
     Boolean? _debugging_output
     Boolean? print_parameters_model
     Boolean? debugging_print_traceback
-    Boolean? debugging_print_ct
-    Boolean? debugging_print_fill
+    Boolean? debugging_print_format
+    Boolean? debugging_fill_matrix
     Boolean? options
     String seq_file_in
   }
@@ -22,10 +22,13 @@ task Ambtest {
       ~{if (_debugging_output) then "-d" else ""} \
       ~{if (print_parameters_model) then "-x" else ""} \
       ~{if (debugging_print_traceback) then "-t" else ""} \
-      ~{if (debugging_print_ct) then "-c" else ""} \
-      ~{if (debugging_print_fill) then "-f" else ""} \
+      ~{if (debugging_print_format) then "-c" else ""} \
+      ~{if (debugging_fill_matrix) then "-f" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     req_use_model: ": (req) Use model <file>"
     _verbose_output: ": verbose output"
@@ -33,8 +36,8 @@ task Ambtest {
     _debugging_output: ": debugging output"
     print_parameters_model: ": print out parameters of model"
     debugging_print_traceback: ": debugging, print traceback"
-    debugging_print_ct: ": debugging, print CT format of structure"
-    debugging_print_fill: ": debugging, print fill matrix from cyk"
+    debugging_print_format: ": debugging, print CT format of structure"
+    debugging_fill_matrix: ": debugging, print fill matrix from cyk"
     options: ""
     seq_file_in: ""
   }

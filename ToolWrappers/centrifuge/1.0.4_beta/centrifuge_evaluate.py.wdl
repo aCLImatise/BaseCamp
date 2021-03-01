@@ -28,6 +28,9 @@ task CentrifugeEvaluatepy {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index_base_for_read: "index base for read (default same as index base)"
     num_fragment: "Number of fragments in millions (default: 1)"

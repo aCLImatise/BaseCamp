@@ -12,6 +12,9 @@ task RgttoolspyBedPolya {
       ~{if defined(input_bam_file) then ("-b " +  '"' + input_bam_file + '"') else ""} \
       ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bed_file: "Input BED file"
     input_bam_file: "Input BAM file"

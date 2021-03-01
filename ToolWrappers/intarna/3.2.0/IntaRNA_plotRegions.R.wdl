@@ -4,6 +4,9 @@ task IntaRNAPlotRegionsR {
   command <<<
     IntaRNA_plotRegions_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -16,6 +16,9 @@ task Batchman {
       ~{if (quiet_mode_warnings) then "-q" else ""} \
       ~{if (_suppress_warnings) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_input_file: ": read input from <file>"
     logfile_write_output: ": (logfile) write output to <file>"

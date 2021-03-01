@@ -36,6 +36,9 @@ task Showfeat {
       ~{if (tags_how) then "-tagshow" else ""} \
       ~{if (strict_tags) then "-stricttags" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     source_match: "string     [*] By default any feature source in the\\nfeature table is shown. You can set this to\\nmatch any feature source you wish to show.\\nThe source name is usually either the name\\nof the program that detected the feature or\\nit is the feature table (eg: EMBL) that the\\nfeature came from.\\nThe source may be wildcarded by using '*'.\\nIf you wish to show more than one source,\\nseparate their names with the character '|',\\neg:\\ngene* | embl (Any string)"
     type_match: "string     [*] By default any feature type in the\\nfeature table is shown. You can set this to\\nmatch any feature type you wish to show.\\nSee http://www.ebi.ac.uk/embl/WebFeat/ for a\\nlist of the EMBL feature types and see\\nAppendix A of the Swissprot user manual in\\nhttp://www.expasy.org/sprot/userman.html for\\na list of the Swissprot feature types.\\nThe type may be wildcarded by using '*'.\\nIf you wish to show more than one type,\\nseparate their names with the character '|',\\neg:\\n*UTR | intron (Any string)"

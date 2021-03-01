@@ -4,7 +4,7 @@ inputs:
 - id: in_max_n_processors
   doc: "Specify the maximum number of processors to use, if\nabsent, all present processors\
     \ will be used.\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_n_processors
 - id: in_gene_file
@@ -26,6 +26,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gene_read_count_per_genome.py

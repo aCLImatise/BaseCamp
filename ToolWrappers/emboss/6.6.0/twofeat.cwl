@@ -9,7 +9,7 @@ inputs:
     \ feature types.\nThe type may be wildcarded by using '*'.\nIf you wish to allow\
     \ more than one type,\nseparate their names with the character '|',\neg:\n*UTR\
     \ | intron (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -atype
 - id: in_b_type
@@ -20,19 +20,19 @@ inputs:
     \ feature types.\nThe type may be wildcarded by using '*'.\nIf you wish to allow\
     \ more than one type,\nseparate their names with the character '|',\neg:\n*UTR\
     \ | intron (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -btype
 - id: in_min_range
   doc: "integer    [0] If this is greater or equal to\n'maxrange', then no min or\
     \ max range is\nspecified (Any integer value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -minrange
 - id: in_max_range
   doc: "integer    [0] If this is less than or equal to\n'minrange', then no min or\
     \ max range is\nspecified (Any integer value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -maxrange
 - id: in_a_source
@@ -42,26 +42,26 @@ inputs:
     it is the feature table (eg: EMBL) that the\nfeature came from.\nThe source may\
     \ be wildcarded by using '*'.\nIf you wish to allow more than one source,\nseparate\
     \ their names with the character '|',\neg:\ngene* | embl (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -asource
 - id: in_a_sense
   doc: "menu       [0] By default any feature sense is allowed.\nYou can set this\
     \ to match the required\nsense. (Values: 0 (Any sense); + (Forward\nsense); -\
     \ (Reverse sense))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -asense
 - id: in_am_in_score
   doc: "float      [0.0] If this is greater than or equal to\nthe maximum score, then\
     \ any score is\nallowed. (Any numeric value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -aminscore
 - id: in_a_max_score
   doc: "float      [0.0] If this is less than or equal to the\nmaximum score, then\
     \ any score is permitted.\n(Any numeric value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -amaxscore
 - id: in_a_tag
@@ -76,7 +76,7 @@ inputs:
     \ wish to allow.\nThe tag may be wildcarded by using '*'.\nIf you wish to allow\
     \ more than one tag,\nseparate their names with the character '|',\neg:\ngene\
     \ | label (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -atag
 - id: in_a_value
@@ -92,7 +92,7 @@ inputs:
     \ wish to\nallow.\nThe tag value may be wildcarded by using\n'*'.\nIf you wish\
     \ to allow more than one tag\nvalue, separate their names with the\ncharacter\
     \ '|', eg:\npax* | 10 (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -avalue
 - id: in_b_source
@@ -102,26 +102,26 @@ inputs:
     it is the feature table (eg: EMBL) that the\nfeature came from.\nThe source may\
     \ be wildcarded by using '*'.\nIf you wish to allow more than one source,\nseparate\
     \ their names with the character '|',\neg:\ngene* | embl (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bsource
 - id: in_b_sense
   doc: "menu       [0] By default any feature sense is allowed.\nYou can set this\
     \ to match the required\nsense. (Values: 0 (Any sense); + (Forward\nsense); -\
     \ (Reverse sense))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bsense
 - id: in_bm_in_score
   doc: "float      [0.0] If this is greater than or equal to\nthe maximum score, then\
     \ any score is\nallowed. (Any numeric value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bminscore
 - id: in_bmax_score
   doc: "float      [0.0] If this is less than or equal to the\nmaximum score, then\
     \ any score is permitted.\n(Any numeric value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bmaxscore
 - id: in_b_tag
@@ -136,7 +136,7 @@ inputs:
     \ wish to allow.\nThe tag may be wildcarded by using '*'.\nIf you wish to allow\
     \ more than one tag,\nseparate their names with the character '|',\neg:\ngene\
     \ | label (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -btag
 - id: in_b_value
@@ -152,7 +152,7 @@ inputs:
     \ wish to\nallow.\nThe tag value may be wildcarded by using\n'*'.\nIf you wish\
     \ to allow more than one tag\nvalue, separate their names with the\ncharacter\
     \ '|', eg:\npax* | 10 (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bvalue
 - id: in_overlap
@@ -162,21 +162,21 @@ inputs:
     \ (Values: A (Any); O\n(Overlap required); NO (No overlaps are\nallowed); NW (Overlap\
     \ required but not\nwithin); AW (A must be all within B); BW (B\nmust be all within\
     \ A))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -overlap
 - id: in_range_type
   doc: "menu       [N] This allows you to specify the positions\nfrom which the allowed\
     \ minimum or maximum\ndistance between the features is measured\n(Values: N (From\
     \ nearest ends); L (From left\nends); R (From right ends); F (From\nfurthest ends))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -rangetype
 - id: in_sense
   doc: "menu       [A] This allows you to specify the required\nsense that the two\
     \ features must be on. This\nis ignored (always 'Any') when looking at\nprotein\
     \ sequence features. (Values: A (Any\nsense); S (Same sense); O (Opposite sense))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -sense
 - id: in_order
@@ -184,20 +184,21 @@ inputs:
     \ The order is\nmeasured from the start positions of the\nfeatures. This criterion\
     \ is always applied\ndespite the specified overlap type required.\n(Values: A\
     \ (Any); AB (Feature A then\nfeature B); BA (Feature B then feature A))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -order
 - id: in_two_out
   doc: "toggle     [N] If you set this to be true, then the two\nfeatures themselves\
     \ will be written out. If\nit is left as false, then a single feature\nwill be\
     \ written out covering the two\nfeatures you found."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -twoout
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - twofeat

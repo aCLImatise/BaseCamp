@@ -20,6 +20,9 @@ task TangoFormat {
       ~{if defined(max_idle_n) then ("--maxidlen " +  '"' + max_idle_n + '"') else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "Force overwrite of existing reformatted fastafile"
     force_id_map: "Force overwrite of existing accession2taxid mapfile"

@@ -8,6 +8,9 @@ task DeepbgcDownload {
     deepbgc download \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: ""
   }

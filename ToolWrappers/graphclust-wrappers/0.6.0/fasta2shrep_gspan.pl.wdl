@@ -8,9 +8,9 @@ task Fasta2shrepGspanpl {
     Boolean? stack
     Boolean? float_eg_energy
     Boolean? integer_eg_relative
-    Boolean? integer_eg_shape
-    Boolean? integer_eg_max
-    Boolean? ignore_option_filters
+    Boolean? integer_shape_type
+    Boolean? integer_eg_number
+    Boolean? ignore_unstable_structures
     Boolean? calculate_structure_probabilities
     Boolean? int_eg_turn
     Boolean? sample_len
@@ -24,7 +24,7 @@ task Fasta2shrepGspanpl {
     Boolean? match_shape
     Boolean? vp
     Boolean? tmp
-    Directory? string_eg_output
+    Directory? string_eg_output_directory
     Boolean? group
     Boolean? stdout
     Boolean? ignore_header
@@ -46,9 +46,9 @@ task Fasta2shrepGspanpl {
       ~{if (stack) then "-stack" else ""} \
       ~{if (float_eg_energy) then "-e" else ""} \
       ~{if (integer_eg_relative) then "-c" else ""} \
-      ~{if (integer_eg_shape) then "-t" else ""} \
-      ~{if (integer_eg_max) then "-M" else ""} \
-      ~{if (ignore_option_filters) then "-u" else ""} \
+      ~{if (integer_shape_type) then "-t" else ""} \
+      ~{if (integer_eg_number) then "-M" else ""} \
+      ~{if (ignore_unstable_structures) then "-u" else ""} \
       ~{if (calculate_structure_probabilities) then "-r" else ""} \
       ~{if (int_eg_turn) then "-i" else ""} \
       ~{if (sample_len) then "-sample-len" else ""} \
@@ -62,12 +62,15 @@ task Fasta2shrepGspanpl {
       ~{if (match_shape) then "-match-shape" else ""} \
       ~{if (vp) then "-vp" else ""} \
       ~{if (tmp) then "-tmp" else ""} \
-      ~{if (string_eg_output) then "-o" else ""} \
+      ~{if (string_eg_output_directory) then "-o" else ""} \
       ~{if (group) then "-group" else ""} \
       ~{if (stdout) then "-stdout" else ""} \
       ~{if (ignore_header) then "-ignore-header" else ""} \
       ~{if (debug) then "-debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "full documentation"
     shift: "<INTEGER> e.g. 20\\nThe shift of the window, relative to the window size given in\\npercent. So you give which percent of the window size shall be\\nused for the shift. Of course the shift is rounded down to the\\nnearest whole number.\\nExample 20 % of a window 150 would result in a step size of 30 nt.\\nIt is a relative parameter, as you can give different window sizes.\\nIf you do not give this parameter there is a default shift of 1 nt."
@@ -75,9 +78,9 @@ task Fasta2shrepGspanpl {
     stack: "Adds stacking information to graphs. This adds an additional\\nvertex (type P) for each pair of stacked base-pairs and four edges\\n(type p) from each of the involved bases to the new vertex."
     float_eg_energy: "<FLOAT> e.g. 5.0\\nEnergy range in kcal/mol (RNAshapes)\\nUse only one of -e and -c!"
     integer_eg_relative: "<INTEGER> e.g. 10\\nRelative energy range, i.e. percentage (%) of MFE energy (RNAshapes)\\nUse only one of -e and -c!"
-    integer_eg_shape: "<INTEGER> [1-5] e.g. 3 OR \\\"3=0,4=100,5=200\\\"\\nThe shape type (RNAshapes). Default is 3.\\nWith the list format, the shape level can be changed for different window length\\n\\\"4=100\\\" means that shape level 4 is used from length 100nt (window length)\\nThe first given length has to be 0! Not continuous given levels are allowed!"
-    integer_eg_max: "<INTEGER> e.g. 10\\nMax number of shreps that should be taken per window."
-    ignore_option_filters: "Ignore unstable structures (RNAshapes).\\nThis option filters out closed structures with positive free energy."
+    integer_shape_type: "<INTEGER> [1-5] e.g. 3 OR \\\"3=0,4=100,5=200\\\"\\nThe shape type (RNAshapes). Default is 3.\\nWith the list format, the shape level can be changed for different window length\\n\\\"4=100\\\" means that shape level 4 is used from length 100nt (window length)\\nThe first given length has to be 0! Not continuous given levels are allowed!"
+    integer_eg_number: "<INTEGER> e.g. 10\\nMax number of shreps that should be taken per window."
+    ignore_unstable_structures: "Ignore unstable structures (RNAshapes).\\nThis option filters out closed structures with positive free energy."
     calculate_structure_probabilities: "Calculate structure probabilities for shreps (RNAshapes)"
     int_eg_turn: "<INT> e.g. 10\\nTurn on structure sampling and gives number of sampling iterations.\\nDefault no sampling (i=0)"
     sample_len: "<INT> e.g. 100\\nOnly in sampling mode: Sampling is only used for seqs/windows >= given length,\\nDefault: sample all lengths (0), if -i > 0"
@@ -91,7 +94,7 @@ task Fasta2shrepGspanpl {
     match_shape: "<SHAPE>\\nall seqs/windows will be constraint folded into that shape via\\nRNAshapes (if structure is given in another way this struct will be kept),\\nif this shape is not possible within given energy range, produce a\\nspecific t graph with only one vertex 'X'. By this the instance\\nbecomes very unsimilar to all other graphs (for knn)"
     vp: "enable graph computation with viewpoints:\\nsvmsgdnspdk will center on those nucleotides that are given\\nvia capital letters and ignore those given as lowercase letters"
     tmp: "<STRING> e.g. \\\"/scratch/1/sita/tmp\\\"\\nA directory for writing temporary files"
-    string_eg_output: "<STRING> e.g. \\\"ProjectX/MySequences/GSPAN/\\\"\\nOutput directory for gspan files containing graphs."
+    string_eg_output_directory: "<STRING> e.g. \\\"ProjectX/MySequences/GSPAN/\\\"\\nOutput directory for gspan files containing graphs."
     group: "<INTEGER> e.g. 5\\nCombine/group that number of input seqs into 1 gspan file\\noutput name is then '<INT>.group.gspan.bz2'"
     stdout: "send graphs to stdout instead of writing to files"
     ignore_header: "don't write fasta id part after first space to gspan"
@@ -103,6 +106,6 @@ task Fasta2shrepGspanpl {
   }
   output {
     File out_stdout = stdout()
-    Directory out_string_eg_output = "${in_string_eg_output}"
+    Directory out_string_eg_output_directory = "${in_string_eg_output_directory}"
   }
 }

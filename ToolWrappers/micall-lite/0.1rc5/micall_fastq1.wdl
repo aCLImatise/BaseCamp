@@ -16,6 +16,9 @@ task MicallFastq1 {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(batch) then ("--batch " +  '"' + batch + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep: ""
     unzipped: ""

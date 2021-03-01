@@ -18,6 +18,9 @@ task GdtoolsNORMALIZE {
       ~{if (repeat_adjacent) then "--repeat-adjacent" else ""} \
       ~{if (dont_check_apply) then "--dont-check-apply" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "verbose mode (flag)"
     output_genome_diff: "output Genome Diff file. (DEFAULT=output.gd)"

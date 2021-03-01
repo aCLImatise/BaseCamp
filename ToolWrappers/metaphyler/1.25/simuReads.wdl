@@ -4,6 +4,9 @@ task SimuReads {
   command <<<
     simuReads
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

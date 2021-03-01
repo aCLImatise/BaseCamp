@@ -36,6 +36,9 @@ task Glistcompare {
       ~{if (disable_scouts) then "--disable_scouts" else ""} \
       ~{if (increase_debug_level) then "-D" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     union: "- union of input lists"
     intersection: "- intersection of input lists"

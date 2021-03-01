@@ -20,6 +20,9 @@ task SplitFileByColumn {
       ~{if defined(ending) then ("-ending " +  '"' + ending + '"') else ""} \
       ~{if (tab) then "-tab" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     col: "- Use the Nth column value (default: N=1, first column)"
     head: "- Put head in front of each output"

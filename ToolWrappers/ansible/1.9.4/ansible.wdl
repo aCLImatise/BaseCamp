@@ -70,6 +70,9 @@ task Ansible {
       ~{if defined(vault_password_file) then ("--vault-password-file " +  '"' + vault_password_file + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     args: "module arguments"
     ask_become_pass: "ask for privilege escalation password"

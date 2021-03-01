@@ -14,6 +14,9 @@ task FastenKmer {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(km_er_length) then ("--kmer-length " +  '"' + km_er_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_cpus: "Number of CPUs (default: 1)"
     paired_end: "The input reads are interleaved paired-end"

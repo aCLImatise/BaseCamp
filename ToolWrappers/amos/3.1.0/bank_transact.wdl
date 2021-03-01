@@ -20,6 +20,9 @@ task Banktransact {
       ~{if (compress_sequence_values) then "-z" else ""} \
       ~{if (display_compatible_version) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_path_open: "The directory path of the banks to open or create"
     create_new_directory: "Create new bank directory if path does not exist"

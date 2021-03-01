@@ -11,7 +11,7 @@ task BioconvertBedgraph2bigwig {
     Array[String] benchmark_methods
     Boolean? allow_indirect_conversion
     String? extra_arguments
-    Boolean? method_use_conversion
+    Boolean? method_use_do
     Boolean? show_methods
     Int? chrom_sizes
     String input_file
@@ -30,10 +30,13 @@ task BioconvertBedgraph2bigwig {
       ~{if defined(benchmark_methods) then ("--benchmark-methods " +  '"' + benchmark_methods + '"') else ""} \
       ~{if (allow_indirect_conversion) then "--allow-indirect-conversion" else ""} \
       ~{if defined(extra_arguments) then ("--extra-arguments " +  '"' + extra_arguments + '"') else ""} \
-      ~{if (method_use_conversion) then "-m" else ""} \
+      ~{if (method_use_do) then "-m" else ""} \
       ~{if (show_methods) then "--show-methods" else ""} \
       ~{if defined(chrom_sizes) then ("--chrom-sizes " +  '"' + chrom_sizes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "if outfile exists, it is overwritten with this option\\n(default: False)"
     verbosity: "Set the outpout verbosity. (default: ERROR)"
@@ -44,7 +47,7 @@ task BioconvertBedgraph2bigwig {
     benchmark_methods: "Methods to include (default: all)"
     allow_indirect_conversion: "Allow to chain converter when direct conversion is\\nabsent (default: False)"
     extra_arguments: "Any arguments accepted by the method's tool (default:\\n)"
-    method_use_conversion: "[{ucsc}], --method [{ucsc}]\\nThe method to use to do the conversion. (default:\\nucsc)"
+    method_use_do: "[{ucsc}], --method [{ucsc}]\\nThe method to use to do the conversion. (default:\\nucsc)"
     show_methods: "A converter may have several methods (default: False)"
     chrom_sizes: "a two-column file/URL: <chromosome name> <size in\\nbases> (default: None)"
     input_file: "The path to the file to convert. (default: None)"

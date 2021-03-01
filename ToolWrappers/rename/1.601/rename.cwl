@@ -2,89 +2,90 @@ class: CommandLineTool
 id: rename.cwl
 inputs:
 - id: in_man
-  doc: "(read the full manual)\n-0/--null (when reading from STDIN)\n-f/--force or\
-    \ -i/--interactive (proceed or prompt when overwriting)\n-g/--glob (expand \"\
-    *\" etc. in filenames, useful in Windows\\x{2122} CMD.EXE)\n-k/--backwards/--reverse-order\n\
-    -l/--symlink or -L/--hardlink\n-M/--use=Module\n-n/--just-print/--dry-run\n-N/--counter-format\n\
-    -p/--mkpath/--make-dirs\n--stdin/--no-stdin\n-t/--sort-time\n-T/--transcode=encoding\n\
-    -v/--verbose\nTransforms, applied sequentially:\n-a/--append=str\n-A/--prepend=str\n\
-    -c/--lower-case\n-C/--upper-case\n-d/--delete=str\n-D/--delete-all=str\n-e/--expr=code\n\
-    -P/--pipe=cmd\n-s/--subst from to\n-S/--subst-all from to\n-x/--remove-extension\n\
-    -X/--keep-extension\n-z/--sanitize\n--camelcase --urlesc --nows --rews --noctrl\
-    \ --nometa --trim (see manual)\n"
-  type: boolean
+  doc: (read the full manual)
+  type: boolean?
   inputBinding:
     prefix: --man
-- id: in_trim
-  doc: ''
-  type: boolean
+- id: in_null
+  doc: (when reading from STDIN)
+  type: boolean?
   inputBinding:
-    prefix: --trim
-- id: in_no_meta
-  doc: ''
-  type: boolean
+    prefix: --null
+- id: in_interactive
+  doc: (proceed or prompt when overwriting)
+  type: string?
   inputBinding:
-    prefix: --nometa
-- id: in_no_ctrl
-  doc: ''
-  type: boolean
+    prefix: --interactive
+- id: in_glob
+  doc: (expand "*" etc. in filenames, useful in Windows\x{2122} CMD.EXE)
+  type: boolean?
   inputBinding:
-    prefix: --noctrl
-- id: in_re_ws
-  doc: ''
-  type: boolean
+    prefix: --glob
+- id: in_lower_case
+  doc: to
+  type: string?
   inputBinding:
-    prefix: --rews
-- id: in_now_s
-  doc: ''
-  type: boolean
+    prefix: --lower-case
+- id: in_subst_all
+  doc: to
+  type: string?
   inputBinding:
-    prefix: --nows
-- id: in_url_esc
-  doc: ''
-  type: boolean
+    prefix: --subst-all
+- id: in_remove_extension
+  doc: (see manual)
+  type: boolean?
   inputBinding:
-    prefix: --urlesc
-- id: in_camelcase
+    prefix: --remove-extension
+- id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: --camelcase
-- id: in_s_slash_subst_all
+    prefix: -v
+- id: in_var_8
   doc: ''
-  type: string
+  type: boolean?
   inputBinding:
-    prefix: -S/--subst-all
-- id: in_s_slash_subst
+    prefix: -T
+- id: in_var_9
   doc: ''
-  type: string
+  type: boolean?
   inputBinding:
-    prefix: -s/--subst
-- id: in_lslash_symlink
+    prefix: -t
+- id: in_stdin
   doc: ''
-  type: string
+  type: boolean?
   inputBinding:
-    prefix: -l/--symlink
-- id: in_g_slash_glob
+    prefix: --stdin
+- id: in_p
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -g/--glob
-- id: in_i_slash_interactive
+    prefix: -p
+- id: in_var_12
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -i/--interactive
-- id: in_f_slash_force
+    prefix: -N
+- id: in_var_13
   doc: ''
-  type: string
+  type: boolean?
   inputBinding:
-    prefix: -f/--force
-- id: in_zero_slash_null
+    prefix: -n
+- id: in_m
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -0/--null
+    prefix: -M
+- id: in_l
+  doc: ''
+  type: boolean?
+  inputBinding:
+    prefix: -l
+- id: in_k
+  doc: ''
+  type: boolean?
+  inputBinding:
+    prefix: -k
 - id: in_switches
   doc: ''
   type: string
@@ -97,13 +98,14 @@ inputs:
     position: 0
 - id: in_switches_vertical_line_transforms
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rename

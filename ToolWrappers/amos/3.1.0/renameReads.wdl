@@ -10,6 +10,9 @@ task RenameReads {
       ~{bank_name} \
       ~{old_iid_dot_new_iid}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bank_name: ""
     old_iid_dot_new_iid: ""

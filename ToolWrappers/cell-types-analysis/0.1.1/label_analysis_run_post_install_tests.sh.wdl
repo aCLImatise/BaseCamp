@@ -12,6 +12,9 @@ task LabelAnalysisRunPostInstallTestssh {
       ~{action} \
       ~{use_existing_outputs}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run_post_install_tests_dots_h: ""
     action: ""

@@ -12,6 +12,9 @@ task GetChrLengthspl {
       ~{fast_a} \
       ~{file_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_file: ""
     fast_a: ""

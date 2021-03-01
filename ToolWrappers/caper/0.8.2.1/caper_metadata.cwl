@@ -3,38 +3,38 @@ id: caper_metadata.cwl
 inputs:
 - id: in_dry_run
   doc: Caper does not take any action.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dry-run
 - id: in_debug
   doc: Prints all logs >= DEBUG level
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_port
   doc: Port for Caper server
-  type: string
+  type: string?
   inputBinding:
     prefix: --port
 - id: in_ip
   doc: IP address for Caper server
-  type: string
+  type: string?
   inputBinding:
     prefix: --ip
 - id: in_no_server_heartbeat
   doc: Disable server heartbeat file.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-server-heartbeat
 - id: in_server_heartbeat_file
   doc: "Heartbeat file for Caper clients to get IP and port of\na server"
-  type: File
+  type: File?
   inputBinding:
     prefix: --server-heartbeat-file
 - id: in_server_heartbeat_timeout
   doc: "Timeout for a heartbeat file in Milliseconds. A\nheartbeat file older than\
     \ this interval will be\nignored.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --server-heartbeat-timeout
 - id: in_wf_id_or_label
@@ -47,6 +47,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - caper

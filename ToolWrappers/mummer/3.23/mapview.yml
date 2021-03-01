@@ -3,48 +3,107 @@ command:
 - mapview
 positional:
 - !Positional
-  description: 'MANDATORY:'
+  optional: false
   position: 0
   name: printing.
-  optional: false
+  description: 'MANDATORY:'
 named:
 - !Flag
-  description: "|maxdist      Set the maximum base-pair distance between linked matches\n\
-    (default 50000)"
+  optional: true
   synonyms:
   - -d
+  description: "|maxdist      Set the maximum base-pair distance between linked matches\n\
+    (default 50000)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "|format       Set the output format to 'pdf', 'ps' or 'fig'\n(default\
-    \ 'fig')"
+  optional: true
   synonyms:
   - -f
+  description: "|format       Set the output format to 'pdf', 'ps' or 'fig'\n(default\
+    \ 'fig')"
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -m
+  description: "|mag          Set the magnification at which the figure is rendered,\n\
+    this is an option for fig2dev which is used to generate\nthe PDF and PS files\
+    \ (default 1.0)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "|num          Set the number of output files used to partition the\n\
+    output, this is to avoid generating files that are too\nlarge to display (default\
+    \ 10)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "|prefix       Set the output file prefix\n(default \"PROMER_graph\
+    \ or NUCMER_graph\")"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Verbose logging of the processed files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x1
+  description: Set the lower coordinate bound of the display
+  args: !SimpleFlagArg
+    name: coord
+- !Flag
+  optional: true
+  synonyms:
+  - -x2
+  description: Set the upper coordinate bound of the display
+  args: !SimpleFlagArg
+    name: coord
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: "|ref          If the input file is provided by 'mgaps', set the\n\
+    reference sequence ID (as it appears in the first column\nof the UTR/CDS coords\
+    \ file)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  description: Display the name of query sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Ir
+  description: Display the name of reference genes
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "--help          Display help information and exit\n-m|mag        \
-    \  Set the magnification at which the figure is rendered,\nthis is an option for\
-    \ fig2dev which is used to generate\nthe PDF and PS files (default 1.0)\n-n|num\
-    \          Set the number of output files used to partition the\noutput, this\
-    \ is to avoid generating files that are too\nlarge to display (default 10)\n-p|prefix\
-    \       Set the output file prefix\n(default \"PROMER_graph or NUCMER_graph\"\
-    )\n-v\n--verbose       Verbose logging of the processed files\n-V\n--version \
-    \      Display the version information and exit\n-x1 coord       Set the lower\
-    \ coordinate bound of the display\n-x2 coord       Set the upper coordinate bound\
-    \ of the display\n-g|ref          If the input file is provided by 'mgaps', set\
-    \ the\nreference sequence ID (as it appears in the first column\nof the UTR/CDS\
-    \ coords file)\n-I              Display the name of query sequences\n-Ir     \
-    \        Display the name of reference genes\n"
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: Display help information and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Display the version information and exit
+  args: !EmptyFlagArg {}
 help_text: "\n  USAGE: mapview  [options]  <coords file>  [UTR coords]  [CDS coords]\n\
   \n  DESCRIPTION:\n    mapview is a utility program for displaying sequence alignments\
   \ as\n    provided by MUMmer, NUCmer, PROmer or Mgaps. mapview takes the output\
@@ -73,3 +132,4 @@ help_text: "\n  USAGE: mapview  [options]  <coords file>  [UTR coords]  [CDS coo
   \ \n"
 generated_using:
 - --help
+docker_image:

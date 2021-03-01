@@ -10,7 +10,7 @@ task Acdiamond {
     File? in
     Boolean? arg_reference_sequence
     Boolean? sensitive
-    Boolean? arg_query_size
+    Boolean? arg_query_sequence
     Boolean? arg_input_query
     Boolean? arg_maximum_number
     Int? top
@@ -29,6 +29,7 @@ task Acdiamond {
     Int? un_gapped_score
     Int? hit_score
     Int? band
+    Int? index_mode
     Int? fetch_size
     Boolean? single_domain
     File? arg_output_file
@@ -53,7 +54,7 @@ task Acdiamond {
       ~{if defined(in) then ("--in " +  '"' + in + '"') else ""} \
       ~{if (arg_reference_sequence) then "-b" else ""} \
       ~{if (sensitive) then "--sensitive" else ""} \
-      ~{if (arg_query_size) then "-z" else ""} \
+      ~{if (arg_query_sequence) then "-z" else ""} \
       ~{if (arg_input_query) then "-q" else ""} \
       ~{if (arg_maximum_number) then "-k" else ""} \
       ~{if defined(top) then ("--top " +  '"' + top + '"') else ""} \
@@ -72,12 +73,16 @@ task Acdiamond {
       ~{if defined(un_gapped_score) then ("--ungapped-score " +  '"' + un_gapped_score + '"') else ""} \
       ~{if defined(hit_score) then ("--hit-score " +  '"' + hit_score + '"') else ""} \
       ~{if defined(band) then ("--band " +  '"' + band + '"') else ""} \
+      ~{if defined(index_mode) then ("--index-mode " +  '"' + index_mode + '"') else ""} \
       ~{if defined(fetch_size) then ("--fetch-size " +  '"' + fetch_size + '"') else ""} \
       ~{if (single_domain) then "--single-domain" else ""} \
       ~{if (arg_output_file) then "-o" else ""} \
       ~{if (arg_tab_output) then "-f" else ""} \
       ~{if (forward_only) then "--forwardonly" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_number_cpu: "[ --threads ] arg (=0) number of cpu threads"
     arg_database_file: "[ --db ] arg           database file"
@@ -87,7 +92,7 @@ task Acdiamond {
     in: "input reference file in FASTA format"
     arg_reference_sequence: "[ --block-size ] arg reference sequence block size in billions of letters\\n(default=4)"
     sensitive: "enable building index for sensitive mode\\n(default:fast)"
-    arg_query_size: "[ --query-block-size ] arg (=6) query sequence block size in billions of\\nletters (default=6)"
+    arg_query_sequence: "[ --query-block-size ] arg (=6) query sequence block size in billions of\\nletters (default=6)"
     arg_input_query: "[ --query ] arg                 input query file"
     arg_maximum_number: "[ --max-target-seqs ] arg (=25) maximum number of target sequences to\\nreport alignments for"
     top: "(=100)                   report alignments within this percentage\\nrange of top alignment score (overrides\\n--max-target-seqs)"
@@ -106,6 +111,7 @@ task Acdiamond {
     un_gapped_score: "(=0)       minimum raw alignment score to continue local"
     hit_score: "(=0)            minimum score to keep a tentative alignment"
     band: "(=0)                 band for dynamic programming computation"
+    index_mode: "(=0)           index mode (1=10x1, 2=10x8)"
     fetch_size: "(=4096)        trace point fetch size"
     single_domain: "Discard secondary domains within one target"
     arg_output_file: "[ --out ] arg           output file"

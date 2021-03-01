@@ -1,0 +1,91 @@
+!Command
+command:
+- mark_prophage_features.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genbank
+  description: Path to input GenBank file.
+  args: !SimpleFlagArg
+    name: GENBANK
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outdir
+  description: Path to output directory to write updated GenBank(s).
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --ppcoords
+  description: Path to prophage_coordinates.tsv file.
+  args: !SimpleFlagArg
+    name: PPCOORDS
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --table
+  description: "Path to tab-delimited file with confirmed prophage\nregions to mark.\
+    \ The file has to have the following\ncolumns: 1 - path to GenBank file, 2 - replicon\
+    \ id, 3\n- prophage start coordinate, 4 - prophage end\ncoordinate, 5 (optional)\
+    \ - prophage name (if not\nprovided pp1, pp2, etc. will be assigned for each\n\
+    file)"
+  args: !SimpleFlagArg
+    name: TABLE
+- !Flag
+  optional: true
+  synonyms:
+  - --gzip_files
+  description: "Gzip all output files. '.gz' extension will be added\nif missing.\
+    \ [Default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ungzip_files
+  description: "Ungzip all output files. '.gz' extension will be\nremoved if present.\
+    \ [Default: False]"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: mark_prophage_features.py [-h] [-g GENBANK] -o OUTDIR [-c PPCOORDS]\n\
+  \                                 [-t TABLE] [--gzip_files] [--ungzip_files]\n\n\
+  Updates GenBank files based on prophage_coordinates.tsv file or other tab-delimited\
+  \ table and marks features within indicated coordinates with 'is_phage=1' qualifier.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -g GENBANK, --genbank GENBANK\n                        Path to input GenBank\
+  \ file.\n  -o OUTDIR, --outdir OUTDIR\n                        Path to output directory\
+  \ to write updated GenBank(s).\n  -c PPCOORDS, --ppcoords PPCOORDS\n           \
+  \             Path to prophage_coordinates.tsv file.\n  -t TABLE, --table TABLE\n\
+  \                        Path to tab-delimited file with confirmed prophage\n  \
+  \                      regions to mark. The file has to have the following\n   \
+  \                     columns: 1 - path to GenBank file, 2 - replicon id, 3\n  \
+  \                      - prophage start coordinate, 4 - prophage end\n         \
+  \               coordinate, 5 (optional) - prophage name (if not\n             \
+  \           provided pp1, pp2, etc. will be assigned for each\n                \
+  \        file)\n  --gzip_files          Gzip all output files. '.gz' extension will\
+  \ be added\n                        if missing. [Default: False]\n  --ungzip_files\
+  \        Ungzip all output files. '.gz' extension will be\n                    \
+  \    removed if present. [Default: False]\n\nExample usages:\npython3 scripts/mark_prophage_features.py\
+  \ --genbank infile.gbk --outdir updated_genbanks --ppcoords PhiSpy_output/prophage_coordinates.tsv\n\
+  python3 scripts/mark_prophage_features.py --outdir updated_genbanks --table my_confirmed_predictions.tsv\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/phispy:4.2.6--py38hed8969a_0

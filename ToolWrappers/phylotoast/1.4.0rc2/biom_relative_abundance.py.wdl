@@ -12,6 +12,9 @@ task BiomRelativeAbundancepy {
       ~{if defined(output_tsv_fp) then ("--output_tsv_fp " +  '"' + output_tsv_fp + '"') else ""} \
       ~{if (stabilize_variance) then "--stabilize_variance" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_biom_fp: "BIOM file path."
     output_tsv_fp: "A TSV table of relative OTU abundance data."

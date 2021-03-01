@@ -20,6 +20,9 @@ task StrideAll {
       ~{if defined(km_er_threshold) then ("--kmer-threshold " +  '"' + km_er_threshold + '"') else ""} \
       ~{if defined(min_overlap) then ("--min-overlap " +  '"' + min_overlap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_length: "median read length (if there are multiple libraries, set to the max read length)"
     insert_size: "median insert size (if there are multiple libraries, set to the max insert size)"

@@ -52,6 +52,9 @@ task Maf2mafpl {
       ~{if (ref_fast_a) then "--ref-fasta" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_maf: "Path to input file in MAF format"
     output_maf: "Path to output MAF file [Default: STDOUT]"

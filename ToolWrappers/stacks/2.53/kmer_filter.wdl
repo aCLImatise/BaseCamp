@@ -26,6 +26,9 @@ task KmerFilter {
       ~{if (k_dist) then "--k-dist" else ""} \
       ~{if defined(read_k_freq) then ("--read-k-freq " +  '"' + read_k_freq + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rare: ": turn on filtering based on rare k-mers."
     abundant: ": turn on filtering based on abundant k-mers."

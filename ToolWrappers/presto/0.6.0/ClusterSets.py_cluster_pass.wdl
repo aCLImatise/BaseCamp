@@ -8,6 +8,9 @@ task ClusterSetspyClusterpass {
     ClusterSets_py cluster_pass \
       ~{cluster_sets_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cluster_sets_do_tpy: ""
   }

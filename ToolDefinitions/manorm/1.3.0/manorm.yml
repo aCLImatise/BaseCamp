@@ -4,189 +4,189 @@ command:
 positional: []
 named:
 - !Flag
-  description: Enable verbose log messages.
+  optional: true
   synonyms:
   - --verbose
+  description: Enable verbose log messages.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Peak file of sample 1.
+  optional: true
   synonyms:
   - --p1
   - --peak1
+  description: Peak file of sample 1.
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: Peak file of sample 2.
+  optional: true
   synonyms:
   - --p2
   - --peak2
+  description: Peak file of sample 2.
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Format of the peak files. Support ['bed',\n'bed3-summit', 'macs',\
-    \ 'macs2', 'narrowpeak',\n'broadpeak']. Default: bed"
+  optional: true
   synonyms:
   - --pf
   - --peak-format
+  description: "Format of the peak files. Support ['bed',\n'bed3-summit', 'macs',\
+    \ 'macs2', 'narrowpeak',\n'broadpeak']. Default: bed"
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
-  description: Read file of sample 1.
+  optional: true
   synonyms:
   - --r1
   - --read1
+  description: Read file of sample 1.
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: Read file of sample 2.
+  optional: true
   synonyms:
   - --r2
   - --read2
+  description: Read file of sample 2.
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Format of the read files. Support ['bed', 'bedpe',\n'sam', 'bam'].\
-    \ Default: bed"
+  optional: true
   synonyms:
   - --rf
   - --read-format
+  description: "Format of the read files. Support ['bed', 'bedpe',\n'sam', 'bam'].\
+    \ Default: bed"
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
-  description: "Name of sample 1. If not specified, the peak file name\nwill be used."
+  optional: true
   synonyms:
   - --n1
   - --name1
+  description: "Name of sample 1. If not specified, the peak file name\nwill be used."
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: "Name of sample 2. If not specified, the peak file name\nwill be used."
+  optional: true
   synonyms:
   - --n2
   - --name2
+  description: "Name of sample 2. If not specified, the peak file name\nwill be used."
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --s1
+  - --shiftsize1
   description: "Single-end reads shift size for sample 1. Reads are\nshifted by `N`\
     \ bp towards 3' direction and the 5' end\nof each shifted read is used to represent\
     \ the genomic\nlocus of the DNA fragment. Set to 0.5 * fragment size\nof the ChIP-seq\
     \ library. Default: 100"
-  synonyms:
-  - --s1
-  - --shiftsize1
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: 'Single-end reads shift size for sample 2. Default: 100'
+  optional: true
   synonyms:
   - --s2
   - --shiftsize2
+  description: 'Single-end reads shift size for sample 2. Default: 100'
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Paired-end mode. The middle point of each read pair is\nused to represent\
-    \ the genomic locus of the DNA\nfragment. If specified, `--s1` and `--s2` will\
-    \ be\nignored."
+  optional: true
   synonyms:
   - --pe
   - --paired-end
+  description: "Paired-end mode. The middle point of each read pair is\nused to represent\
+    \ the genomic locus of the DNA\nfragment. If specified, `--s1` and `--s2` will\
+    \ be\nignored."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Window size to count reads and calculate read\ndensities. Set to 2000\
-    \ is recommended for sharp\nhistone marks like H3K4me3 or H3K27ac and 1000 for\
-    \ TFs\nor DNase-seq. Default: 2000"
+  optional: true
   synonyms:
   - -w
   - --window-size
+  description: "Window size to count reads and calculate read\ndensities. Set to 2000\
+    \ is recommended for sharp\nhistone marks like H3K4me3 or H3K27ac and 1000 for\
+    \ TFs\nor DNase-seq. Default: 2000"
   args: !SimpleFlagArg
     name: LENGTH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --summit-dis
   description: "Summit-to-summit distance cutoff for overlapping\ncommon peaks. Common\
     \ peaks with summit distance beyond\nthe cutoff are excluded in model fitting.\
     \ Default:\n`window size` / 4"
-  synonyms:
-  - --summit-dis
   args: !SimpleFlagArg
     name: DISTANCE
-  optional: true
 - !Flag
-  description: "Number of random simulations to test the enrichment of\npeak overlap\
-    \ between the specified samples. Set to 0\nto disable the testing. Default: 10"
+  optional: true
   synonyms:
   - --n-random
+  description: "Number of random simulations to test the enrichment of\npeak overlap\
+    \ between the specified samples. Set to 0\nto disable the testing. Default: 10"
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: "Absolute M-value (log2-ratio) cutoff to define the\nbiased (differential\
-    \ binding) peaks. Default: 1.0"
+  optional: true
   synonyms:
   - -m
   - --m-cutoff
+  description: "Absolute M-value (log2-ratio) cutoff to define the\nbiased (differential\
+    \ binding) peaks. Default: 1.0"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "P-value cutoff to define the biased peaks. Default:\n0.01"
+  optional: true
   synonyms:
   - -p
   - --p-cutoff
+  description: "P-value cutoff to define the biased peaks. Default:\n0.01"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: 'Output directory. Default: Current working directory'
+  optional: true
   synonyms:
   - -o
   - --output-dir
+  description: 'Output directory. Default: Current working directory'
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
-  description: "Write two extra output files containing the results of\nthe original\
-    \ (unmerged) peaks."
+  optional: true
   synonyms:
   - --wa
   - --write-all
+  description: "Write two extra output files containing the results of\nthe original\
+    \ (unmerged) peaks."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -v
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -v
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: manorm [-h] [-v] --p1 FILE --p2 FILE [--pf FORMAT] --r1 FILE --r2\
   \ FILE\n              [--rf FORMAT] [--n1 NAME] [--n2 NAME] [--s1 N] [--s2 N] [--pe]\n\
   \              [-w LENGTH] [--summit-dis DISTANCE] [--n-random NUM] [-m FLOAT]\n\
@@ -241,3 +241,4 @@ help_text: "usage: manorm [-h] [-v] --p1 FILE --p2 FILE [--pf FORMAT] --r1 FILE 
   \ code: https://github.com/shao-lab/MAnorm\n  Bug reports: https://github.com/shao-lab/MAnorm/issues\n"
 generated_using:
 - --help
+docker_image:

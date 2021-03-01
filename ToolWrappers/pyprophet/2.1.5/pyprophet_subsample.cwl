@@ -3,33 +3,34 @@ id: pyprophet_subsample.cwl
 inputs:
 - id: in_in
   doc: OpenSWATH input file.  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --in
 - id: in_out
   doc: Subsampled OSWS output file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_subsample_ratio
   doc: 'Subsample ratio used per input file.  [default: 1]'
-  type: double
+  type: double?
   inputBinding:
     prefix: --subsample_ratio
-- id: in_test
-  doc: '/ --no-test       Run in test mode with fixed seed.  [default: False]'
-  type: boolean
+- id: in_no_test
+  doc: 'Run in test mode with fixed seed.  [default: False]'
+  type: boolean?
   inputBinding:
-    prefix: --test
+    prefix: --no-test
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
 - id: out_out
   doc: Subsampled OSWS output file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pyprophet

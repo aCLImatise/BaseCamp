@@ -10,6 +10,9 @@ task Computepriordist {
       ~{num_bins} \
       ~{psp_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_bins: ""
     psp_file: ""

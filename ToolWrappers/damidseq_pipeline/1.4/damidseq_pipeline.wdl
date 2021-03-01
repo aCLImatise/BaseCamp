@@ -78,6 +78,9 @@ task DamidseqPipeline {
       ~{if (save_defaults) then "--save_defaults" else ""} \
       ~{if (threads) then "--threads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam_files: "Only process BAM files"
     bed_tools_path: "path to BEDTools executable (leave blank if in path)"

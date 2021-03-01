@@ -20,6 +20,9 @@ task QCMerger {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*       List of qcml files to be merged. (valid formats: 'qcML')"
     out: "*       Output extended/reduced qcML file (valid formats: 'qcML')"

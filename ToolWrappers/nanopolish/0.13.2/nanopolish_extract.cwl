@@ -3,33 +3,33 @@ id: nanopolish_extract.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_recurse
   doc: recurse into subdirectories
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --recurse
 - id: in_fast_q
   doc: 'extract fastq (default: fasta)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fastq
 - id: in_type
   doc: "read type: template, complement, 2d, 2d-or-template, any\n(default: 2d-or-template)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --type
 - id: in_base_caller
   doc: "[:VERSION]      consider only data produced by basecaller NAME,\noptionally\
     \ with given exact VERSION"
-  type: string
+  type: string?
   inputBinding:
     prefix: --basecaller
 - id: in_output
   doc: write output to FILE
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_extract
@@ -63,9 +63,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: write output to FILE
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nanopolish

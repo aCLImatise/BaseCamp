@@ -3,22 +3,22 @@ id: comparem_aa_usage.cwl
 inputs:
 - id: in_counts
   doc: output raw counts instead of frequencies
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --counts
 - id: in_file_ext
   doc: 'extension of files to process (default: faa)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --file_ext
 - id: in_cpus
   doc: 'number of CPUs to use (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --cpus
 - id: in_silent
   doc: suppress output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --silent
 - id: in_protein_gene_files
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - comparem

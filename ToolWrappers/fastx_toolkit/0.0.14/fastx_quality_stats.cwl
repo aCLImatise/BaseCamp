@@ -3,17 +3,17 @@ id: fastx_quality_stats.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_i
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_n
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -N
 - id: in_column
@@ -140,6 +140,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fastx_quality_stats

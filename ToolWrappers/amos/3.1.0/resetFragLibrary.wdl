@@ -12,6 +12,9 @@ task ResetFragLibrary {
       ~{bank_name} \
       ~{frag_id_dot_newlib_id}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     update_clr_ranges: ""
     bank_name: ""

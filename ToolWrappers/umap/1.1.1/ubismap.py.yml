@@ -3,133 +3,133 @@ command:
 - ubismap.py
 positional:
 - !Positional
-  description: Path to the genome fasta file.
+  optional: false
   position: 0
   name: fasta_path
-  optional: false
+  description: Path to the genome fasta file.
 - !Positional
-  description: "Path to a 2-column file where the first column is the\nchromosome\
-    \ name and the second column is its size"
+  optional: false
   position: 1
   name: chrsize_path
-  optional: false
+  description: "Path to a 2-column file where the first column is the\nchromosome\
+    \ name and the second column is its size"
 - !Positional
-  description: Path to directory to create output files/folders
+  optional: false
   position: 2
   name: out_dir
-  optional: false
+  description: Path to directory to create output files/folders
 - !Positional
-  description: Queue name for qsub job submission.
+  optional: false
   position: 3
   name: queue_name
-  optional: false
+  description: Queue name for qsub job submission.
 - !Positional
-  description: Path to bowtie-build executable
+  optional: false
   position: 4
   name: bowtie_path
-  optional: false
+  description: Path to bowtie-build executable
 named:
 - !Flag
-  description: these options do not exist in your cluster,
+  optional: true
   synonyms:
   - -t
   - -tc
   - -cwd
   - -b
   - -terse.
+  description: these options do not exist in your cluster,
   args: !SimpleFlagArg
     name: y
-  optional: true
 - !Flag
-  description: "[KMERS [KMERS ...]]\nKmer length for mappability. e.g. 24 36 50 100"
+  optional: true
   synonyms:
   - --kmers
+  description: "[KMERS [KMERS ...]]\nKmer length for mappability. e.g. 24 36 50 100"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -GenomeReady
   description: "If in the 'out_dir' there already exists a /chrs and\n/genome subdirectory\
     \ where genome directory has a\ngenome.fasta with bowtie index suffix as\n'BisMap_bowtie.ind'\
     \ or 'Umap_bowtie.ind' if --Bismap\nis not specified and the ./chrs directory\
     \ has\nindivudal chromosome FASTA files, specify this option"
-  synonyms:
-  - -GenomeReady
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -Bismap
   description: "Specify -Bismap if double genome indexing is expected.\nThis would\
     \ create a genome that is concatenation of\nforward and reverse complement. If\
     \ -C2T or -G2A is\nexpected, this must be specified"
-  synonyms:
-  - -Bismap
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: If --Bismap is provided, specify --C2T or --G2A
+  optional: true
   synonyms:
   - -C2T
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: If --Bismap is provided, specify --C2T or --G2A
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -G2A
+  description: If --Bismap is provided, specify --C2T or --G2A
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: If you only want the index, specify this option
+  optional: true
   synonyms:
   - -ExitAfterIndexing
+  description: If you only want the index, specify this option
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Number of jobs to run simultaneously
+  optional: true
   synonyms:
   - -SimultaneousJobs
+  description: Number of jobs to run simultaneously
   args: !SimpleFlagArg
     name: SIMULTANEOUSJOBS
-  optional: true
 - !Flag
-  description: "Environmental variable for accessing job IDs. By\ndefault is set to\
-    \ SGE_TASK_ID assuming a sungrid\nengine environment."
+  optional: true
   synonyms:
   - -var_id
+  description: "Environmental variable for accessing job IDs. By\ndefault is set to\
+    \ SGE_TASK_ID assuming a sungrid\nengine environment."
   args: !SimpleFlagArg
     name: VAR_ID
-  optional: true
 - !Flag
-  description: "Specify -write <Path to output job submission file> if\ninstead of\
-    \ direct execution, you want to save the job\nsubmission file."
+  optional: true
   synonyms:
   - -write_script
+  description: "Specify -write <Path to output job submission file> if\ninstead of\
+    \ direct execution, you want to save the job\nsubmission file."
   args: !SimpleFlagArg
     name: WRITE_SCRIPT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -pipe
   description: "If -pipe is specified, the software command will be\npiped into the\
     \ qsub command. For example instead of:\n'qsub -q <queuename> -N <jobname> python\
     \ <script>.py\n<arg1> <arg2>', 'echo python <script>.py <arg1> <arg2>\n| qsub\
     \ -q <queuename> -N <jobname>' will be\nwritten/executed."
-  synonyms:
-  - -pipe
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Length of chromosomal chunks
+  optional: true
   synonyms:
   - -chunk
+  description: Length of chromosomal chunks
   args: !SimpleFlagArg
     name: CHUNK
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: ubismap.py [-h] [--kmers [KMERS [KMERS ...]]] [-GenomeReady] [-Bismap]\n\
@@ -176,3 +176,4 @@ help_text: "usage: ubismap.py [-h] [--kmers [KMERS [KMERS ...]]] [-GenomeReady] 
   \       written/executed.\n  -chunk CHUNK          Length of chromosomal chunks\n"
 generated_using:
 - --help
+docker_image:

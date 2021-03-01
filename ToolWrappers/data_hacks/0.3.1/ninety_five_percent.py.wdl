@@ -10,6 +10,9 @@ task NinetyFivePercentpy {
       ~{cat} \
       ~{data}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cat: ""
     data: ""

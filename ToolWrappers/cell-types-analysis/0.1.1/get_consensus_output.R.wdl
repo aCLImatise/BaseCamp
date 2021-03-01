@@ -32,6 +32,9 @@ task GetConsensusOutputR {
       ~{if defined(summary_table_output_path) then ("--summary-table-output-path " +  '"' + summary_table_output_path + '"') else ""} \
       ~{if defined(raw_table_output_path) then ("--raw-table-output-path " +  '"' + raw_table_output_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dir: "Path to the directory with standardised .tsv files from multiple\\nmethods"
     tool_table: "Path to the tool evaluation table in text format"

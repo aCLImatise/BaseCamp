@@ -18,6 +18,9 @@ task ExtractProteomeFromGff {
       ~{if defined(output_directory) then ("-d " +  '"' + output_directory + '"') else ""} \
       ~{if (print_version_exit) then "-w" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_suffix: "output suffix [proteome.faa]"
     translation_table: "translation table [11]"

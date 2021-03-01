@@ -14,6 +14,9 @@ task LociCounterWithLabelspy {
       ~{if defined(bed_out) then ("--bed-out " +  '"' + bed_out + '"') else ""} \
       ~{if (labels) then "-labels" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fai_file: ".fa.fai file (default: None)"
     beds: "[BED_FILES [BED_FILES ...]], --bed-files [BED_FILES [BED_FILES ...]]\\nBED files (default: None)"

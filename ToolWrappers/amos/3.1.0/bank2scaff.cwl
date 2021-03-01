@@ -3,62 +3,62 @@ id: bank2scaff.cwl
 inputs:
 - id: in_display_compatible_version
   doc: Display the compatible bank version
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
-- id: in_use_eids_names
+- id: in_use_eids_default
   doc: Use EIDs for names (DEFAULT)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -e
 - id: in_use_iids_names
   doc: Use IIDs for names
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_print_just_eids
   doc: Print just the contig eids listed in file
-  type: File
+  type: File?
   inputBinding:
     prefix: -E
-- id: in_print_just_iids
+- id: in_print_just_contig
   doc: Print just the contig iids listed in file
-  type: File
+  type: File?
   inputBinding:
     prefix: -I
 - id: in_show_ungapped_lengths
   doc: Show the ungapped contig lengths in the scaff file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -u
-- id: in_create_links_file
+- id: in_create_arachne_links
   doc: Create a Arachne links file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_print_scaffold_sequences
   doc: Print the scaffold consensus sequences in multi-fasta format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_use_estimated_size
   doc: Use the estimated gaps size to space contigs
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
 - id: in_join_contigs_spaced
   doc: Join contigs spaced by less than 2 bp (needs -f, if G provided overrides 2)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -j
-- id: in_gaps_val_will
+- id: in_gaps_val_have
   doc: Gaps < val will have val N's between them (-g)
-  type: string
+  type: string?
   inputBinding:
     prefix: -G
 - id: in_specify_number_place
   doc: Specify number of N's to place between contigs
-  type: long
+  type: long?
   inputBinding:
     prefix: -N
 - id: in_bank_two_sc_aff
@@ -70,6 +70,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bank2scaff

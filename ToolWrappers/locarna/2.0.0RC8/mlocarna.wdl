@@ -8,6 +8,9 @@ task Mlocarna {
     mlocarna \
       ~{fast_a_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_file: ""
   }

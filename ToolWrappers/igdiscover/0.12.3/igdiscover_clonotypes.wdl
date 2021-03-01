@@ -20,6 +20,9 @@ task IgdiscoverClonotypes {
       ~{if (aa) then "--aa" else ""} \
       ~{if defined(members) then ("--members " +  '"' + members + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sort: "Sort by group size (largest first). Default: Sort by\\nV/D/J gene names"
     limit: "Print out only the first N groups"

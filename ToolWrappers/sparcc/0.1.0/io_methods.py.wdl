@@ -4,6 +4,9 @@ task IoMethodspy {
   command <<<
     io_methods_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

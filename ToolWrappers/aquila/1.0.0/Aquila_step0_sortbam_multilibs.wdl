@@ -16,6 +16,9 @@ task AquilaStep0SortbamMultilibs {
       ~{if defined(required_parameter_sample) then ("--sample_name_list " +  '"' + required_parameter_sample + '"') else ""} \
       ~{if defined(num_threads_for_sam_tools_sort) then ("--num_threads_for_samtools_sort " +  '"' + num_threads_for_sam_tools_sort + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam_file_list: "Required Parameter, BAM file list, each BAM file is\\nseperately by comma \\\",\\\". For example: 1.bam,2.bam"
     out_dir: "Directory to store Aquila assembly results, default\\n=./Assembly_results"

@@ -4,38 +4,45 @@ command:
 positional: []
 named:
 - !Flag
-  description: "-modules module_name\n-results_dir /path/to/dir\n-outputdir /path/to/dir\n\
-    -outputfile filename.html\n-report report_name\n-generate_html\n-compress_old_versions\
-    \ number_to_keep\n-local\n"
+  optional: true
   synonyms:
   - -collect
   - -redo_cpancover_html
   - -redo_html
   - -force
   - -dryrun
-  args: !EmptyFlagArg {}
-  optional: true
+  - -modules
+  - -results_dir
+  description: /path/to/dir
+  args: !SimpleFlagArg
+    name: module_name
 - !Flag
-  description: ''
+  optional: true
+  synonyms:
+  - -outputdir
+  description: /path/to/dir
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -version
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -info
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -help
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage:\n     cpancover -help -info -version\n               -collect -redo_cpancover_html\
@@ -46,3 +53,4 @@ help_text: "Usage:\n     cpancover -help -info -version\n               -collect
   \             -local\n\n"
 generated_using:
 - --help
+docker_image:

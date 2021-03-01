@@ -2,16 +2,19 @@ version 1.0
 
 task ComputeSamTags {
   input {
-    Boolean? displays_options_specific
+    Boolean? std_help
     String substituted_dot
   }
   command <<<
     ComputeSamTags \
       ~{substituted_dot} \
-      ~{if (displays_options_specific) then "-H" else ""}
+      ~{if (std_help) then "--stdhelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    displays_options_specific: "Displays options specific to this tool AND options common to all Picard command line\\ntools."
+    std_help: "Displays options specific to this tool AND options common to all Picard command line\\ntools."
     substituted_dot: "Default value: true. This option can be set to 'null' to clear the default"
   }
   output {

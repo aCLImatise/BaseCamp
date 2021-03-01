@@ -4,76 +4,79 @@ command:
 positional: []
 named:
 - !Flag
-  description: "You must specify a workflow name. To see a list of\navailable workflows\
-    \ run --list-workflows."
+  optional: true
   synonyms:
   - -w
   - --workflow
+  description: "You must specify a workflow name. To see a list of\navailable workflows\
+    \ run --list-workflows."
   args: !SimpleFlagArg
     name: WORKFLOW
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --get-default-config
   description: "Store a json formatted config file with all the\ndefault settings\
     \ of the workflow. This is a good draft\nyou could use in order to write your\
     \ own config file.\nThis config file contains all parameters that could be\nconfigured\
     \ for this workflow. NOTICE: the config file\nis provided with default values\
     \ only for parameters\nthat are set by us in the workflow. The values for the\n\
     rest of the parameters are determined by the relevant\nprogram."
-  synonyms:
-  - --get-default-config
   args: !SimpleFlagArg
     name: OUTPUT_FILENAME
-  optional: true
 - !Flag
-  description: Print a list of available snakemake workflows
+  optional: true
   synonyms:
   - --list-workflows
+  description: Print a list of available snakemake workflows
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --list-dependencies
   description: "Print a list of the dependencies of this workflow. You\nmust provide\
     \ a workflow name and a config file.\nsnakemake will figure out which rules need\
     \ to be run\naccording to your config file, and according to the\nfiles available\
     \ on your disk. According to the rules\nthat need to be run, we will let you know\
     \ which\nprograms are going to be used, so that you can make\nsure you have all\
     \ of them installed and loaded."
-  synonyms:
-  - --list-dependencies
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: A JSON-formatted configuration file.
+  optional: true
   synonyms:
   - -c
   - --config-file
+  description: A JSON-formatted configuration file.
   args: !SimpleFlagArg
     name: CONFIG_FILE
-  optional: true
 - !Flag
-  description: "Don't do anything real. Test everything, and stop\nright before wherever\
-    \ the developer said 'well, this\nis enough testing', and decided to print out\
-    \ results."
+  optional: true
   synonyms:
   - --dry-run
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: "Don't do anything real. Test everything, and stop\nright before wherever\
     \ the developer said 'well, this\nis enough testing', and decided to print out\
     \ results."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --skip-dry-run
+  description: "Don't do anything real. Test everything, and stop\nright before wherever\
+    \ the developer said 'well, this\nis enough testing', and decided to print out\
+    \ results."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --save-workflow-graph
   description: "Save a graph representation of the workflow. If you\nare using this\
     \ flag and if your system is unable to\ngenerate such graph outputs, you will\
     \ hear anvi'o\ncomplaining (still, totally worth trying)."
-  synonyms:
-  - --save-workflow-graph
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -A
   description: "..., --additional-params ...\nAdditional snakemake parameters to add\
     \ when running\nsnakemake. NOTICE: --additional-params HAS TO BE THE\nLAST ARGUMENT\
     \ THAT IS PASSED TO anvi-run-workflow,\nANYTHING THAT FOLLOWS WILL BE CONSIDERED\
@@ -83,20 +86,17 @@ named:
     \ available\nplease refer to the snakemake documentation. For\nexample, you could\
     \ use this to set up cluster\nsubmission using --additional-params --cluster 'YOUR-\n\
     CLUSTER-SUBMISSION-CMD'.\n"
-  synonyms:
-  - -A
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: anvi-run-workflow [-h] [-w WORKFLOW]\n                        \
@@ -151,3 +151,4 @@ help_text: "usage: anvi-run-workflow [-h] [-w WORKFLOW]\n                       
   \ --cluster 'YOUR-\n                        CLUSTER-SUBMISSION-CMD'.\n"
 generated_using:
 - --help
+docker_image:

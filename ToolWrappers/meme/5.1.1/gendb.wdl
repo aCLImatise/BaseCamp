@@ -24,6 +24,9 @@ task Gendb {
       ~{if (dummy) then "-dummy" else ""} \
       ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alph: "Set the alphabet (overrides -type)"
     am_big: "Set the fraction of symbols that\\nwill be ambiguous (overrides -type)"

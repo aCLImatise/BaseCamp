@@ -3,7 +3,7 @@ id: test_table_equality.cwl
 inputs:
 - id: in_give_verbose_output
   doc: Give verbose output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_sort_keys
@@ -21,12 +21,12 @@ inputs:
   doc: "If specified, no header row is present. Columns for\nall other command-line\
     \ flags must be referenced by\nnumber (starting at zero) rather than name, and\
     \ will\nbe assumed to be in the same order in both files."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_header
 - id: in_to_l
   doc: "Tolerance by which floats are allowed to differ\n(Default: 1e-8)\n"
-  type: double
+  type: double?
   inputBinding:
     prefix: --tol
 - id: in_file_one
@@ -38,6 +38,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - test_table_equality

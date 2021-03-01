@@ -50,6 +50,9 @@ task SparseQuery {
       ~{if defined(kingdom) then ("--kingdom " +  '"' + kingdom + '"') else ""} \
       ~{if defined(superkingdom) then ("--superkingdom " +  '"' + superkingdom + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dbname: "Name for the database. REQUIRED."
     seq_list: "File name for the output. Default: to screen."

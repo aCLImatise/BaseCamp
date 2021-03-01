@@ -23,11 +23,11 @@ task TideHunter {
     Boolean? full_len
     Boolean? out_fmt
     Boolean? thread
-    String in_dot_f_a_slash_fq
+    String in_dot_fa
   }
   command <<<
     TideHunter \
-      ~{in_dot_f_a_slash_fq} \
+      ~{in_dot_fa} \
       ~{if defined(km_er_length) then ("--kmer-length " +  '"' + km_er_length + '"') else ""} \
       ~{if defined(window_size) then ("--window-size " +  '"' + window_size + '"') else ""} \
       ~{if (step_size) then "--step-size" else ""} \
@@ -50,6 +50,9 @@ task TideHunter {
       ~{if (out_fmt) then "--out-fmt" else ""} \
       ~{if (thread) then "--thread" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er_length: "k-mer length (no larger than 16). [8]"
     window_size: "window size. [1]"
@@ -72,7 +75,7 @@ task TideHunter {
     full_len: "only output full-length consensus sequence. [False]"
     out_fmt: "INT    output format. [1]\\n- 1: FASTA\\n- 2: Tabular"
     thread: "INT    number of threads to use. [4]"
-    in_dot_f_a_slash_fq: ""
+    in_dot_fa: ""
   }
   output {
     File out_stdout = stdout()

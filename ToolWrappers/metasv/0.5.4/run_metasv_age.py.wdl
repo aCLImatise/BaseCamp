@@ -18,7 +18,7 @@ task RunMetasvAgepy {
     Int? min_del_sub_align_len
     Int? min_in_v_sub_align_len
     Int? age_window
-    File? bed_file_none
+    File? bed_file_assembly
     String run_age_files
   }
   command <<<
@@ -40,8 +40,11 @@ task RunMetasvAgepy {
       ~{if defined(min_del_sub_align_len) then ("--min_del_subalign_len " +  '"' + min_del_sub_align_len + '"') else ""} \
       ~{if defined(min_in_v_sub_align_len) then ("--min_inv_subalign_len " +  '"' + min_in_v_sub_align_len + '"') else ""} \
       ~{if defined(age_window) then ("--age_window " +  '"' + age_window + '"') else ""} \
-      ~{if defined(bed_file_none) then ("--intervals_bed " +  '"' + bed_file_none + '"') else ""}
+      ~{if defined(bed_file_assembly) then ("--intervals_bed " +  '"' + bed_file_assembly + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "Reference FASTA (default: None)"
     assembly: "Assembly FASTA (default: None)"
@@ -59,7 +62,7 @@ task RunMetasvAgepy {
     min_del_sub_align_len: "Minimum length of deletion sub-alginment (default: 50)"
     min_in_v_sub_align_len: "Minimum length of inversion sub-alginment (default:\\n50)"
     age_window: "Window size for AGE to merge nearby breakpoints\\n(default: 20)"
-    bed_file_none: "BED file for assembly (default: None)\\n"
+    bed_file_assembly: "BED file for assembly (default: None)\\n"
     run_age_files: "Run AGE on files assembled under MetaSV."
   }
   output {

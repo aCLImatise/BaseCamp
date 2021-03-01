@@ -14,6 +14,9 @@ task Dotmatcher {
       ~{if (threshold) then "-threshold" else ""} \
       ~{if (stretch) then "-stretch" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix_file: "matrix     [EBLOSUM62 for protein, EDNAFULL for DNA]\\nThis is the scoring matrix file used when\\ncomparing sequences. By default it is the\\nfile 'EBLOSUM62' (for proteins) or the file\\n'EDNAFULL' (for nucleic sequences). These\\nfiles are found in the 'data' directory of\\nthe EMBOSS installation."
     window_size: "integer    [10] Window size over which to test\\nthreshold (Integer 3 or more)"

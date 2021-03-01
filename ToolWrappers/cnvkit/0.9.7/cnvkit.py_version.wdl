@@ -8,6 +8,9 @@ task CnvkitpyVersion {
     cnvkit_py version \
       ~{cnv_kit_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cnv_kit_do_tpy: ""
   }

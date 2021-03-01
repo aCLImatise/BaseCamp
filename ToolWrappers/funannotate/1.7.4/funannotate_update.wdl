@@ -80,6 +80,9 @@ task FunannotateUpdate {
       ~{if (seq_accession) then "--SeqAccession" else ""} \
       ~{if (cpus) then "--cpus" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     funannotate_folder_genome: "Funannotate folder or Genome in GenBank format (.gbk,.gbff)."
     gff: "Annotation in GFF3 format"

@@ -14,6 +14,9 @@ task SurpyvorMinlen {
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
       ~{if defined(vcf_file_write) then ("--output " +  '"' + vcf_file_write + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print out more information while running."
     length: "minimal SV length"

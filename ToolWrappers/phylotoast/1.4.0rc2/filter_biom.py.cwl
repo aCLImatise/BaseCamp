@@ -6,7 +6,7 @@ inputs:
     \ in mapping file. This output\nis usually used to filter out unwanted otuids\
     \ from\n.tre file. If not given, the discarded OTUIDs list\nwill be saved in the\
     \ current working directory.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --filter_otuids_fnh
 - id: in_input_biom_fnh
@@ -34,9 +34,10 @@ outputs:
     \ in mapping file. This output\nis usually used to filter out unwanted otuids\
     \ from\n.tre file. If not given, the discarded OTUIDs list\nwill be saved in the\
     \ current working directory.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_filter_ot_uids_fnh)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - filter_biom.py

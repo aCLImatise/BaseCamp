@@ -4,7 +4,7 @@ inputs:
 - id: in_menu
   doc: "menu       [C] Matrix set (Values: C (Core); F (Fam); P\n(Phylofacts); N (CNE);\
     \ O (POLII); S\n(SPLICE); B (PBM); L (PBM_HLH); H\n(PBM_HOMEO))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -menu
 - id: in_matrices
@@ -18,30 +18,31 @@ inputs:
     \ a comma\ncharacter ',' and then treated as the list\nof enzymes to search\n\
     for.\nAn example of a file of matrix names is:\n! my matrices\nma0001.1, ma0002.1\n\
     ! other matrices\nma0010.1\nma0032*\nma0053.1 (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -matrices
 - id: in_threshold
   doc: "float      [80.0] If the matrix score is greater than\nor equal to this percentage\n\
     then a hit will be reported (Any numeric\nvalue)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -threshold
 - id: in_exclude
   doc: "string     The names of any matrices to exclude from\nthe 'matrices'\nlist.\
     \ Matrices are specified in the same way\nas for the\nselection list. (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -exclude
 - id: in_both
   doc: "boolean    [N] If set then both the forward and reverse\nstrands are searched"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -both
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - jaspscan

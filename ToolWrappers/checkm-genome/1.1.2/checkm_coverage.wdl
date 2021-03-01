@@ -26,6 +26,9 @@ task CheckmCoverage {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     extension: "extension of bins (other files in directory are ignored) (default: fna)"
     all_reads: "use all reads to estimate coverage instead of just those in proper pairs"

@@ -12,6 +12,9 @@ task Vcfglbound {
       ~{if defined(bound) then ("--bound " +  '"' + bound + '"') else ""} \
       ~{if (exclude_broken) then "--exclude-broken" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bound: "Bound GLs to this limit."
     exclude_broken: "If GLs are > 0, remove site."

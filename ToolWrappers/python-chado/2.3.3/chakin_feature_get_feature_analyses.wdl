@@ -8,6 +8,9 @@ task ChakinFeatureGetFeatureAnalyses {
     chakin feature get_feature_analyses \
       ~{feature_id}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     feature_id: ""
   }

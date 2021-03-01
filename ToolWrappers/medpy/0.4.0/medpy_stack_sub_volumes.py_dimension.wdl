@@ -18,6 +18,9 @@ task MedpyStackSubVolumespyDimension {
       ~{if (v) then "-v" else ""} \
       ~{if (f) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     z: ""

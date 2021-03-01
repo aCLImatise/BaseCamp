@@ -14,6 +14,9 @@ task Segtoolsrelabel {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not print diagnostic messages."
     outfile: "Save relabeled bed file to FILE instead of printing to\\nstdout (default)\\n"

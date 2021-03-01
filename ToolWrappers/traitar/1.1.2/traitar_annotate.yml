@@ -4,60 +4,60 @@ command:
 - annotate
 positional:
 - !Positional
-  description: 'positional arguments:'
+  optional: false
   position: 0
   name: output_dir
-  optional: false
+  description: 'positional arguments:'
 - !Positional
-  description: directory with the input data
+  optional: false
   position: 1
   name: input_dir
-  optional: false
+  description: directory with the input data
 - !Positional
-  description: "mapping from samples to fasta files (also see gitHub\nhelp): sample1_file_name{tab}sample1_name\n\
-    sample2_file_name{tab}sample2_name"
+  optional: false
   position: 2
   name: sample2file
-  optional: false
+  description: "mapping from samples to fasta files (also see gitHub\nhelp): sample1_file_name{tab}sample1_name\n\
+    sample2_file_name{tab}sample2_name"
 - !Positional
-  description: "directory for the output; will be created if it\ndoesn't exist yet"
+  optional: false
   position: 0
   name: output_dir
-  optional: false
+  description: "directory for the output; will be created if it\ndoesn't exist yet"
 named:
 - !Flag
-  description: "if the input is amino acids the type of gene\nprediction GFF file\
-    \ can be specified for mapping the\nphenotype predictions to the genes"
+  optional: true
   synonyms:
   - -g
   - --gene_gff_type
+  description: "if the input is amino acids the type of gene\nprediction GFF file\
+    \ can be specified for mapping the\nphenotype predictions to the genes"
   args: !ChoiceFlagArg
     choices: !!set
-      img:
-      metagenemark:
       prodigal:
+      metagenemark:
+      img:
       refseq:
       genbank:
-  optional: true
 - !Flag
-  description: "number of cpus used for the individual steps; maximum\nis number of\
-    \ samples; needs parallel\n"
+  optional: true
   synonyms:
   - -c
   - --cpus
+  description: "number of cpus used for the individual steps; maximum\nis number of\
+    \ samples; needs parallel\n"
   args: !SimpleFlagArg
     name: CPUS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: traitar annotate [-h] [-g {genbank,refseq,img,prodigal,metagenemark}]\n\
@@ -81,3 +81,4 @@ help_text: "usage: traitar annotate [-h] [-g {genbank,refseq,img,prodigal,metage
   \ maximum\n                        is number of samples; needs parallel\n"
 generated_using:
 - --help
+docker_image:

@@ -10,6 +10,9 @@ task Hcamtxto10x {
       ~{in} \
       ~{out}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
     out: ""

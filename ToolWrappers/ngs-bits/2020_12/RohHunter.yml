@@ -1,0 +1,167 @@
+!Command
+command:
+- RohHunter
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: Input variant list in VCF format.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: Output TSV file with ROH regions.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -annotate
+  description: "List of BED files used for annotation. Each file adds a column to\
+    \ the output file. The base filename is used as colum name and 4th column of the\
+    \ BED file is used as annotation value.\nDefault value: ''"
+  args: !SimpleFlagArg
+    name: filelist
+- !Flag
+  optional: true
+  synonyms:
+  - -var_min_dp
+  description: "Minimum variant depth ('DP'). Variants with lower depth are excluded\
+    \ from the analysis.\nDefault value: '20'"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -var_min_q
+  description: "Minimum variant quality. Variants with lower quality are excluded\
+    \ from the analysis.\nDefault value: '30'"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -var_af_keys
+  description: "Comma-separated allele frequency info field names in 'in'.\nDefault\
+    \ value: ''"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -var_af_keys_vep
+  description: "Comma-separated VEP CSQ field names of allele frequency annotations\
+    \ in 'in'.\nDefault value: ''"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -roh_min_q
+  description: "Minimum Q score of output ROH regions.\nDefault value: '30'"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -roh_min_markers
+  description: "Minimum marker count of output ROH regions.\nDefault value: '20'"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -roh_min_size
+  description: "Minimum size in Kb of output ROH regions.\nDefault value: '20'"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -ext_marker_perc
+  description: "Percentage of ROH markers that can be spanned when merging ROH regions\
+    \ .\nDefault value: '1'"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -ext_size_perc
+  description: "Percentage of ROH size that can be spanned when merging ROH regions.\n\
+    Default value: '50'"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -inc_chrx
+  description: "Include chrX into the analysis. Excluded by default.\nDefault value:\
+    \ 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --changelog
+  description: Prints changeloge and exits.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tdx
+  description: Writes a Tool Definition Xml file. The file name is the application
+    name with the suffix '.tdx'.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows this help and exits.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Prints version and exits.
+  args: !EmptyFlagArg {}
+help_text: "RohHunter (2020_12)\n\nROH detection based on a variant list.\n\nRuns\
+  \ of homozygosity (ROH) are detected based on the genotype annotations in the VCF\
+  \ file.Based on the allele frequency of the contained variants, each ROH is assigned\
+  \ an estimated likelyhood to be observed by chance (Q score).\n\nMandatory parameters:\n\
+  \  -in <file>                Input variant list in VCF format.\n  -out <file>  \
+  \             Output TSV file with ROH regions.\n\nOptional parameters:\n  -annotate\
+  \ <filelist>      List of BED files used for annotation. Each file adds a column\
+  \ to the output file. The base filename is used as colum name and 4th column of\
+  \ the BED file is used as annotation value.\n                            Default\
+  \ value: ''\n  -var_min_dp <int>         Minimum variant depth ('DP'). Variants\
+  \ with lower depth are excluded from the analysis.\n                           \
+  \ Default value: '20'\n  -var_min_q <float>        Minimum variant quality. Variants\
+  \ with lower quality are excluded from the analysis.\n                         \
+  \   Default value: '30'\n  -var_af_keys <string>     Comma-separated allele frequency\
+  \ info field names in 'in'.\n                            Default value: ''\n  -var_af_keys_vep\
+  \ <string> Comma-separated VEP CSQ field names of allele frequency annotations in\
+  \ 'in'.\n                            Default value: ''\n  -roh_min_q <float>   \
+  \     Minimum Q score of output ROH regions.\n                            Default\
+  \ value: '30'\n  -roh_min_markers <int>    Minimum marker count of output ROH regions.\n\
+  \                            Default value: '20'\n  -roh_min_size <float>     Minimum\
+  \ size in Kb of output ROH regions.\n                            Default value:\
+  \ '20'\n  -ext_marker_perc <float>  Percentage of ROH markers that can be spanned\
+  \ when merging ROH regions .\n                            Default value: '1'\n \
+  \ -ext_size_perc <float>    Percentage of ROH size that can be spanned when merging\
+  \ ROH regions.\n                            Default value: '50'\n  -inc_chrx   \
+  \              Include chrX into the analysis. Excluded by default.\n          \
+  \                  Default value: 'false'\n\nSpecial parameters:\n  --help     \
+  \               Shows this help and exits.\n  --version                 Prints version\
+  \ and exits.\n  --changelog               Prints changeloge and exits.\n  --tdx\
+  \                     Writes a Tool Definition Xml file. The file name is the application\
+  \ name with the suffix '.tdx'.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ngs-bits:2020_12--py39h5902420_0

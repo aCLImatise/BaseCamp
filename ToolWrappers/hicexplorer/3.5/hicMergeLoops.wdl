@@ -12,6 +12,9 @@ task HicMergeLoops {
       ~{if defined(out_filename) then ("--outFileName " +  '"' + out_filename + '"') else ""} \
       ~{if defined(lowest_resolution) then ("--lowestResolution " +  '"' + lowest_resolution + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_files: "The loop files from hicDetectLoops. To use files from\\nother sources, please follow 'chr start end chr start\\nend' format and remove any header."
     out_filename: "The name of the merged loop file."

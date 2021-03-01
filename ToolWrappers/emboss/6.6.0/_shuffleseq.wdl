@@ -8,6 +8,9 @@ task Shuffleseq {
     _shuffleseq \
       ~{if (shuffle) then "-shuffle" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     shuffle: "integer    [1] Number of shuffles (Any integer value)"
   }

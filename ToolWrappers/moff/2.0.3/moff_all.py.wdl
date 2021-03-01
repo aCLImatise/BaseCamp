@@ -54,6 +54,9 @@ task MoffAllpy {
       ~{if defined(mbr) then ("--mbr " +  '"' + mbr + '"') else ""} \
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loc_in: "specify the folder of the input MS2 peptide list files"
     tsv_list: "[TSV_LIST [TSV_LIST ...]]\\nspecify the mzid file as a list"

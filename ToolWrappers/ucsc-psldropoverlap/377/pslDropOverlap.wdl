@@ -8,6 +8,9 @@ task PslDropOverlap {
     pslDropOverlap \
       ~{in_dot_psl}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_psl: ""
   }

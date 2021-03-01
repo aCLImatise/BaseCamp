@@ -12,6 +12,9 @@ task BwaPac2bwtgen {
       ~{in_dot_pac} \
       ~{out_dot_bwt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bwt_gen: ""
     in_dot_pac: ""

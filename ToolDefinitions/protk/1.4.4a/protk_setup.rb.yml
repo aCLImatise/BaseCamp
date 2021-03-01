@@ -4,58 +4,241 @@ command:
 positional: []
 named:
 - !Flag
-  description: "=[OUT]            Enable full backtrace.  OUT can be stderr (default)\
-    \ or stdout.\n--comments                   Show commented tasks only\n--job-stats\
-    \ [LEVEL]          Display job statistics. LEVEL=history displays a complete job\
-    \ list\n--rules                      Trace the rules resolution.\n--suppress-backtrace\
-    \ PATTERN Suppress backtrace lines matching regexp PATTERN. Ignored if --trace\
-    \ is on."
+  optional: true
   synonyms:
   - --backtrace
+  description: =[OUT]            Enable full backtrace.  OUT can be stderr (default)
+    or stdout.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Show all tasks, even uncommented ones (in combination with -T or -D)\n\
-    -B, --build-all                  Build all prerequisites, including those which\
-    \ are up-to-date.\n-D, --describe [PATTERN]         Describe the tasks (matching\
-    \ optional PATTERN), then exit.\n-e, --execute CODE               Execute some\
-    \ Ruby code and exit.\n-E, --execute-continue CODE      Execute some Ruby code,\
-    \ then continue with normal task processing.\n-f, --rakefile [FILENAME]      \
-    \  Use FILENAME as the rakefile to search for.\n-G, --no-system, --nosystem  \
-    \    Use standard project Rakefile search paths, ignore system wide rakefiles.\n\
-    -g, --system                     Using system wide (global) rakefiles (usually\
-    \ '~/.rake/*.rake').\n-I, --libdir LIBDIR              Include LIBDIR in the search\
-    \ path for required modules.\n-j, --jobs [NUMBER]              Specifies the maximum\
-    \ number of tasks to execute in parallel. (default is number of CPU cores + 4)\n\
-    -m, --multitask                  Treat all tasks as multitasks.\n-n, --dry-run\
-    \                    Do a dry run without executing actions.\n-N, --no-search,\
-    \ --nosearch      Do not search parent directories for the Rakefile.\n-P, --prereqs\
-    \                    Display the tasks and dependencies, then exit.\n-p, --execute-print\
-    \ CODE         Execute some Ruby code, print the result, then exit.\n-q, --quiet\
-    \                      Do not log messages to standard output.\n-r, --require\
-    \ MODULE             Require MODULE before executing rakefile.\n-R, --rakelibdir\
-    \ RAKELIBDIR,     Auto-import any .rake files in RAKELIBDIR. (default is 'rakelib')\n\
-    --rakelib\n-s, --silent                     Like --quiet, but also suppresses\
-    \ the 'in directory' announcement.\n-t, --trace=[OUT]                Turn on invoke/execute\
-    \ tracing, enable full backtrace. OUT can be stderr (default) or stdout.\n-T,\
-    \ --tasks [PATTERN]            Display the tasks (matching optional PATTERN) with\
-    \ descriptions, then exit. -AT combination displays all of tasks contained no\
-    \ description.\n-v, --verbose                    Log message to standard output.\n\
-    -V, --version                    Display the program version.\n-W, --where [PATTERN]\
-    \            Describe the tasks (matching optional PATTERN), then exit.\n-X, --no-deprecation-warnings\
-    \    Disable the deprecation warnings.\n-h, -H, --help                   Display\
-    \ this help message.\n"
+  optional: true
+  synonyms:
+  - --comments
+  description: Show commented tasks only
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --job-stats
+  description: '[LEVEL]          Display job statistics. LEVEL=history displays a
+    complete job list'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rules
+  description: Trace the rules resolution.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --suppress-backtrace
+  description: Suppress backtrace lines matching regexp PATTERN. Ignored if --trace
+    is on.
+  args: !SimpleFlagArg
+    name: PATTERN
+- !Flag
+  optional: true
   synonyms:
   - -A
   - --all
+  description: Show all tasks, even uncommented ones (in combination with -T or -D)
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -B
+  - --build-all
+  description: Build all prerequisites, including those which are up-to-date.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --describe
+  description: '[PATTERN]         Describe the tasks (matching optional PATTERN),
+    then exit.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --execute
+  description: Execute some Ruby code and exit.
+  args: !SimpleFlagArg
+    name: CODE
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  - --execute-continue
+  description: Execute some Ruby code, then continue with normal task processing.
+  args: !SimpleFlagArg
+    name: CODE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --rakefile
+  description: '[FILENAME]        Use FILENAME as the rakefile to search for.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  - --no-system
+  - --nosystem
+  description: Use standard project Rakefile search paths, ignore system wide rakefiles.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --system
+  description: Using system wide (global) rakefiles (usually '~/.rake/*.rake').
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --libdir
+  description: Include LIBDIR in the search path for required modules.
+  args: !SimpleFlagArg
+    name: LIBDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
+  description: '[NUMBER]              Specifies the maximum number of tasks to execute
+    in parallel. (default is number of CPU cores + 4)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --multitask
+  description: Treat all tasks as multitasks.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --dry-run
+  description: Do a dry run without executing actions.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --no-search
+  - --nosearch
+  description: Do not search parent directories for the Rakefile.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --prereqs
+  description: Display the tasks and dependencies, then exit.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --execute-print
+  description: Execute some Ruby code, print the result, then exit.
+  args: !SimpleFlagArg
+    name: CODE
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: Do not log messages to standard output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --require
+  description: Require MODULE before executing rakefile.
+  args: !SimpleFlagArg
+    name: MODULE
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --rakelibdir
+  description: ",     Auto-import any .rake files in RAKELIBDIR. (default is 'rakelib')"
+  args: !SimpleFlagArg
+    name: RAKELIBDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --rakelib
+  - -s
+  - --silent
+  description: Like --quiet, but also suppresses the 'in directory' announcement.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --trace
+  description: =[OUT]                Turn on invoke/execute tracing, enable full backtrace.
+    OUT can be stderr (default) or stdout.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --tasks
+  description: '[PATTERN]            Display the tasks (matching optional PATTERN)
+    with descriptions, then exit. -AT combination displays all of tasks contained
+    no description.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Log message to standard output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --where
+  description: '[PATTERN]            Describe the tasks (matching optional PATTERN),
+    then exit.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --no-deprecation-warnings
+  description: Disable the deprecation warnings.
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - -H
+  - --help
+  description: Display this help message.
+  args: !EmptyFlagArg {}
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Display the program version.
+  args: !EmptyFlagArg {}
 help_text: "protk_setup [-f rakefile] {options} targets...\n\nOptions are ...\n  \
   \      --backtrace=[OUT]            Enable full backtrace.  OUT can be stderr (default)\
   \ or stdout.\n        --comments                   Show commented tasks only\n \
@@ -95,3 +278,4 @@ help_text: "protk_setup [-f rakefile] {options} targets...\n\nOptions are ...\n 
   \    -h, -H, --help                   Display this help message.\n"
 generated_using:
 - --help
+docker_image:

@@ -38,6 +38,9 @@ task Vcf2distancematrixpy {
       ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""} \
       ~{if (with_stats) then "--with-stats" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "Path to the maxtrix output file in given format.\\n[REQUIRED. default format is tab separated. use\\n--format to change format]"
     directory: "Path to the directory with .vcf files. Input option 1."

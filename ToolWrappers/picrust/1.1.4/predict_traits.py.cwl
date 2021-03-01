@@ -3,24 +3,24 @@ id: predict_traits.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_output_trait_table
   doc: "the output filepath for trait predictions [default:\npredicted_states.tsv]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_trait_table
 - id: in_calculate_accuracy_metrics
   doc: "if specified, calculate accuracy metrics (i.e. how\naccurate does PICRUSt\
     \ expect its predictions to be?)\nand add to output file [default: False]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --calculate_accuracy_metrics
 - id: in_output_accuracy_metrics_only
   doc: "if specified, calculate accuracy metrics (e.g. NSTI),\noutput them to this\
     \ filepath, and do not do anything\nelse. [default: none]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_accuracy_metrics_only
 - id: in_prediction_method
@@ -34,7 +34,7 @@ inputs:
     the traits of the last reconstructed ancestor, without\nweighting. \"weighting_only\"\
     : weight all genomes by\ndistance, to the organism of interest using the\nspecified\
     \ weighting function and predict the weighted\naverage.   [default: asr_and_weighting]"
-  type: string
+  type: string?
   inputBinding:
     prefix: --prediction_method
 - id: in_weighting_method
@@ -48,26 +48,26 @@ inputs:
     \ as a linear function of weight,\nnormalized to the maximum possible distance\
     \ (max_d\n-d)/d. \"equal_weights\": set all weights to a constant\n(ignoring branch\
     \ length).   [default: exponential]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --weighting_method
 - id: in_limit_predictions_by_otu_table
   doc: "Specify a valid path to a legacy QIIME OTU table to\nperform predictions only\
     \ for tips that are listed in\nthe OTU table (regardless of abundance)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --limit_predictions_by_otu_table
 - id: in_limit_predictions_to_organisms
   doc: "Limit predictions to specific, comma-separated\norganims ids. (Generally only\
     \ useful for lists of < 10\norganism ids, for example when performing leave-one-\n\
     out cross-validation)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --limit_predictions_to_organisms
 - id: in_reconstructed_trait_table
   doc: "the input trait table describing reconstructed traits\n(from ancestral_state_reconstruction.py)\
     \ in tab-\ndelimited format [default: none]"
-  type: string
+  type: string?
   inputBinding:
     prefix: --reconstructed_trait_table
 - id: in_confidence_format
@@ -77,38 +77,38 @@ inputs:
     95% confidence intervals for phylogenetic independent\ncontrasts (e.g. from the\
     \ ape R packages ace function\nwith pic as the reconstruction method).  Valid\
     \ choices\nare:sigma,confidence_interval. [default: sigma]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --confidence_format
 - id: in_reconstruction_confidence
   doc: "the input trait table describing confidence intervals\nfor reconstructed traits\
     \ (from\nancestral_state_reconstruction.py) in tab-delimited\nformat [default:\
     \ none]"
-  type: string
+  type: string?
   inputBinding:
     prefix: --reconstruction_confidence
 - id: in_output_pre_calc_file_in_biom
   doc: "Instead of outputting the precalculated file in tab-\ndelimited format (with\
     \ otu ids as row ids and traits\nas columns) output the data in biom format (with\
     \ otu\nas SampleIds and traits as ObservationIds) [default:\nFalse]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_precalc_file_in_biom
 - id: in_no_round
   doc: "Flag to set if you do not want predictions to be\nrounded to the nearest integer\
     \ [default: False]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_round
 - id: in_observed_trait_table
   doc: "the input trait table describing directly observed\ntraits (e.g. sequenced\
     \ genomes) in tab-delimited\nformat [REQUIRED]"
-  type: string
+  type: string?
   inputBinding:
     prefix: --observed_trait_table
 - id: in_tree
   doc: "the full reference tree, in Newick format [REQUIRED]\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --tree
 - id: in_one_dot
@@ -133,28 +133,29 @@ outputs:
   type: stdout
 - id: out_output_trait_table
   doc: "the output filepath for trait predictions [default:\npredicted_states.tsv]"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_trait_table)
 - id: out_calculate_accuracy_metrics
   doc: "if specified, calculate accuracy metrics (i.e. how\naccurate does PICRUSt\
     \ expect its predictions to be?)\nand add to output file [default: False]"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_calculate_accuracy_metrics)
 - id: out_output_accuracy_metrics_only
   doc: "if specified, calculate accuracy metrics (e.g. NSTI),\noutput them to this\
     \ filepath, and do not do anything\nelse. [default: none]"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_accuracy_metrics_only)
 - id: out_output_pre_calc_file_in_biom
   doc: "Instead of outputting the precalculated file in tab-\ndelimited format (with\
     \ otu ids as row ids and traits\nas columns) output the data in biom format (with\
     \ otu\nas SampleIds and traits as ObservationIds) [default:\nFalse]"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_pre_calc_file_in_biom)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - predict_traits.py

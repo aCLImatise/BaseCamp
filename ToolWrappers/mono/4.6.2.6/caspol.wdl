@@ -8,6 +8,9 @@ task Caspol {
     caspol \
       ~{arguments}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arguments: ""
   }

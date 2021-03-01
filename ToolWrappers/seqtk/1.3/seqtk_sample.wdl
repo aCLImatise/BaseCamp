@@ -10,6 +10,9 @@ task SeqtkSample {
       ~{if defined(rng_seed) then ("-s " +  '"' + rng_seed + '"') else ""} \
       ~{if (pass_mode_slow) then "-2" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rng_seed: "RNG seed [11]"
     pass_mode_slow: "2-pass mode: twice as slow but with much reduced memory"

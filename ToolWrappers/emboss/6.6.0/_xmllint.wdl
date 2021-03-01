@@ -130,6 +130,9 @@ task Xmllint {
       ~{if (old_xml_one_zero) then "--oldxml10" else ""} \
       ~{if defined(xpath) then ("--xpath " +  '"' + xpath + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: ": dump a debug tree of the in-memory document"
     shell: ": run a navigating shell"

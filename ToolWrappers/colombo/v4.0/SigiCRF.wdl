@@ -4,6 +4,9 @@ task SigiCRF {
   command <<<
     SigiCRF
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

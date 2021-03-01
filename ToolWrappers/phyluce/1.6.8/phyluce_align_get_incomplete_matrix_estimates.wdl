@@ -18,6 +18,9 @@ task PhyluceAlignGetIncompleteMatrixEstimates {
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
       ~{if defined(include) then ("--include " +  '"' + include + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "The probe.matches.sqlite database to query"
     min: "The minimum of the range to evaluate"

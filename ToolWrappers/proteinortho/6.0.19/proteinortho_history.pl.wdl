@@ -16,6 +16,9 @@ task ProteinorthoHistorypl {
       ~{if (notable_format) then "-notableformat" else ""} \
       ~{if (delim) then "-delim" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     project: "The project name (as specified in proteinortho with -project) (default:auto detect in the current directory)"
     no_quotemeta: "(optional) If set, then the query will not be escaped."

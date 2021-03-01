@@ -22,6 +22,9 @@ task AMASpySummary {
       ~{if defined(data_type) then ("--data-type " +  '"' + data_type + '"') else ""} \
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     summary_out: "File name for the alignment summary. Default:\\n'summary.txt'"
     by_tax_on: "In addition to alignment summary, write by\\nsequence/taxon summaries. Default: Don't write"

@@ -40,6 +40,9 @@ task CPecanRealign {
       ~{if (output_expectations) then "--outputExpectations" else ""} \
       ~{if (load_hmm) then "--loadHmm" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: ": Set the log level"
     gap_gamma: ": (float >= 0) The gap gamma (as in the AMAP function)"

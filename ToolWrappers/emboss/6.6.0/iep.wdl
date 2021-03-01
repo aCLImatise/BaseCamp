@@ -20,6 +20,9 @@ task Iep {
       ~{if (step) then "-step" else ""} \
       ~{if (plot) then "-plot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     amino: "integer    [1] Number of N-termini (Integer 0 or more)"
     carboxyl: "integer    [1] Number of C-termini (Integer 0 or more)"

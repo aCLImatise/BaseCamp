@@ -26,6 +26,9 @@ task Kttimedtest {
       ~{if defined(it) then ("-it " +  '"' + it + '"') else ""} \
       ~{if defined(th) then ("-th " +  '"' + th + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rnd: ""
     hard: ""

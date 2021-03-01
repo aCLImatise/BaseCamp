@@ -3,17 +3,17 @@ id: psiCalculator.py.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_e
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -e
 - id: in_i
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_o
   doc: ''
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_o)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - psiCalculator.py

@@ -28,6 +28,9 @@ task FilterEukBinspy {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_output_table: "path for the output table"
     tempdir: "Will save temp files of the analysis here"

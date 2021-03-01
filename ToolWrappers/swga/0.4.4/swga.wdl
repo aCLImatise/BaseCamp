@@ -8,6 +8,9 @@ task Swga {
     swga \
       ~{usage}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     usage: ""
   }

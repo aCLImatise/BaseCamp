@@ -3,7 +3,7 @@ id: igdiscover_dbdiff.cwl
 inputs:
 - id: in_color
   doc: "Whether to colorize output\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --color
 - id: in_a
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - igdiscover

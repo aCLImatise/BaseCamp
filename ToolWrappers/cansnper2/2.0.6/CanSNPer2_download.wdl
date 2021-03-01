@@ -2,24 +2,27 @@ version 1.0
 
 task CanSNPer2download {
   input {
-    Boolean? db
-    Boolean? _source_source
-    Boolean? _outdir_reference
+    Boolean? database
+    Boolean? source
+    Boolean? outdir
     Boolean? logs
     Boolean? verbose
   }
   command <<<
     CanSNPer2_download \
-      ~{if (db) then "-db" else ""} \
-      ~{if (_source_source) then "-s" else ""} \
-      ~{if (_outdir_reference) then "-o" else ""} \
+      ~{if (database) then "--database" else ""} \
+      ~{if (source) then "--source" else ""} \
+      ~{if (outdir) then "--outdir" else ""} \
       ~{if (logs) then "--logs" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    db: ", --database   CanSNP database"
-    _source_source: ", --source      Source for download (genbank/refseq)"
-    _outdir_reference: ", --outdir      reference genomes folder"
+    database: "CanSNP database"
+    source: "Source for download (genbank/refseq)"
+    outdir: "reference genomes folder"
     logs: "Specify log directory"
     verbose: "Verbose logging"
   }

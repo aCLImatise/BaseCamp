@@ -24,6 +24,9 @@ task Macepy {
       ~{if defined(bg_window) then ("--bg-window " +  '"' + bg_window + '"') else ""} \
       ~{if defined(fold) then ("--fold " +  '"' + fold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     forward: "BigWig format file containing coverage calcualted from\\nreads mapped to *forward* strand."
     reverse: "BigWig format file containing coverage calcualted from\\nreads mapped to *reverse* strand."

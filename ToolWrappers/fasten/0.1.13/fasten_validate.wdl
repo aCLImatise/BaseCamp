@@ -2,32 +2,32 @@ version 1.0
 
 task FastenValidate {
   input {
-    Boolean? v
-    Boolean? print_reads
+    Int? num_cpus
     Boolean? paired_end
-    Float? min_quality
+    Boolean? verbose
     Int? min_length
-    Boolean? p
-    Int? n
+    Float? min_quality
+    Boolean? print_reads
   }
   command <<<
     fasten_validate \
-      ~{if (v) then "-v" else ""} \
-      ~{if (print_reads) then "--print-reads" else ""} \
+      ~{if defined(num_cpus) then ("--numcpus " +  '"' + num_cpus + '"') else ""} \
       ~{if (paired_end) then "--paired-end" else ""} \
-      ~{if defined(min_quality) then ("--min-quality " +  '"' + min_quality + '"') else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(min_length) then ("--min-length " +  '"' + min_length + '"') else ""} \
-      ~{if (p) then "-p" else ""} \
-      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
+      ~{if defined(min_quality) then ("--min-quality " +  '"' + min_quality + '"') else ""} \
+      ~{if (print_reads) then "--print-reads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    v: ""
-    print_reads: ""
-    paired_end: ""
-    min_quality: ""
-    min_length: ""
-    p: ""
-    n: ""
+    num_cpus: "Number of CPUs (default: 1)"
+    paired_end: "The input reads are interleaved paired-end"
+    verbose: "Print more status messages"
+    min_length: "Minimum read length allowed"
+    min_quality: "Minimum quality allowed"
+    print_reads: "Print the reads as they are being validated (useful\\nfor unix pipes)"
   }
   output {
     File out_stdout = stdout()

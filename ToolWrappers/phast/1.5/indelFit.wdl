@@ -24,6 +24,9 @@ task IndelFit {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alpha: "Starting value of alpha, the insertion rate.  Default is 0.02."
     beta: "Starting value of beta, the deletion rate.  Default is 0.04."

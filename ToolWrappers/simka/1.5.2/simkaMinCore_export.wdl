@@ -18,6 +18,9 @@ task SimkaMinCoreExport {
       ~{if (nb_cores) then "-nb-cores" else ""} \
       ~{if (verbose) then "-verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "(1 arg) :    input dir containing distance matrices in binary format (-out argument of ./simkaMin distance)"
     in_one: "(1 arg) :    first used sketch file (-in1 argument of ./simkaMin distance)"

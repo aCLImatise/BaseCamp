@@ -28,6 +28,9 @@ task Maskrcsvgpy {
       ~{if defined(svg_colour) then ("--svgcolour " +  '"' + svg_colour + '"') else ""} \
       ~{if (consensus) then "--consensus" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gubbins: "parse as Gubbins instead of ClonalFrameML"
     aln: "multiFASTA alignment used as input for CFML (required)"

@@ -4,6 +4,9 @@ task BrockmanPipeline {
   command <<<
     brockman_pipeline
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -12,6 +12,9 @@ task DeepacvirConvert {
       ~{model} \
       ~{if (weights) then "--weights" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     weights: "Use prepared weights instead of the model file."
     config: "Training config file."

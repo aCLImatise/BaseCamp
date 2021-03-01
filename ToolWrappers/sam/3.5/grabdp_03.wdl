@@ -22,6 +22,9 @@ task Grabdp3 {
       ~{if defined(dump_match_probs) then ("-dump_match_probs " +  '"' + dump_match_probs + '"') else ""} \
       ~{if defined(option) then ("-option " +  '"' + option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     required_or_modelfile: "required (or -modelfile)"
     db: "required if -match_probs not specified"

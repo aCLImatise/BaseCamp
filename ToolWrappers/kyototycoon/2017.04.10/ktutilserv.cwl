@@ -3,22 +3,22 @@ id: ktutilserv.cwl
 inputs:
 - id: in_th
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -th
 - id: in_tout
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -tout
 - id: in_port
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -port
 - id: in_host
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -host
 - id: in_echo
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ktutilserv

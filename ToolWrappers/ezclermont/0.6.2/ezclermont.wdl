@@ -12,6 +12,9 @@ task Ezclermont {
       ~{if defined(experiment_name) then ("--experiment_name " +  '"' + experiment_name + '"') else ""} \
       ~{if (no_partial) then "--no_partial" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_length: "minimum contig length to consider.default: 500"
     experiment_name: "name of experiment; defaults to file name without\\nextension. If reading from stdin, uses the first\\ncontig's ID"

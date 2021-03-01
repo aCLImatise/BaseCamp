@@ -3,22 +3,22 @@ id: rMETL_realignment.cwl
 inputs:
 - id: in_threads
   doc: Number of threads to use.[8]
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_presets
   doc: "The sequencing platform <pacbio,ont> of the\nreads.[pacbio]"
-  type: string
+  type: string?
   inputBinding:
     prefix: --presets
 - id: in_sub_read_length
   doc: Length of fragments reads are split into [128]
-  type: long
+  type: long?
   inputBinding:
     prefix: --subread_length
 - id: in_sub_read_corridor
   doc: "Length of corridor sub-reads are aligned with [20]\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --subread_corridor
 - id: in_t_jiang_at_hit_dot_edu_dot_cn
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rMETL

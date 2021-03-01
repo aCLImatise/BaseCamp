@@ -3,17 +3,17 @@ id: ace2sam.cwl
 inputs:
 - id: in_output_padded_sam
   doc: output padded SAM
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_write_contig_sequence
   doc: write the contig sequence in SAM
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_pc
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pc
 - id: in_in_dot_ace
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ace2sam

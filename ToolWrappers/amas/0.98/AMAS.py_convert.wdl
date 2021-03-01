@@ -18,6 +18,9 @@ task AMASpyConvert {
       ~{if defined(in_format) then ("--in-format " +  '"' + in_format + '"') else ""} \
       ~{if defined(data_type) then ("--data-type " +  '"' + data_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_format: "File format for the output alignment. Default: fasta"
     check_align: "Check if input sequences are aligned. Default: no"

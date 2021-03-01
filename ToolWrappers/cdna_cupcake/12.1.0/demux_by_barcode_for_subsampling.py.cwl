@@ -3,7 +3,7 @@ id: demux_by_barcode_for_subsampling.py.cwl
 inputs:
 - id: in_ignore_novel
   doc: 'Ignore novel genes/transcripts (default: off)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ignore_novel
 - id: in_positional_arguments
@@ -31,7 +31,7 @@ inputs:
   type: string
   inputBinding:
     position: 4
-- id: in_tuples_indicating_grouping
+- id: in_tuples_indicating_barcode
   doc: Tuples indicating barcode grouping
   type: string
   inputBinding:
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - demux_by_barcode_for_subsampling.py

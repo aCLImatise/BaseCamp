@@ -3,7 +3,7 @@ id: wiggle_to_binned_array.py.cwl
 inputs:
 - id: in_comp
   doc: compression type (none, zlib, lzo)
-  type: string
+  type: string?
   inputBinding:
     prefix: --comp
 - id: in_score_file
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - wiggle_to_binned_array.py

@@ -3,7 +3,7 @@ id: hca_dss_put_bundle.cwl
 inputs:
 - id: in_creator_uid
   doc: User ID who is creating this bundle.
-  type: string
+  type: string?
   inputBinding:
     prefix: --creator-uid
 - id: in_files
@@ -23,18 +23,19 @@ inputs:
     prefix: --files
 - id: in_uuid
   doc: A RFC4122-compliant ID for the bundle.
-  type: long
+  type: long?
   inputBinding:
     prefix: --uuid
 - id: in_replica
   doc: Replica to write to.
-  type: string
+  type: string?
   inputBinding:
     prefix: --replica
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hca

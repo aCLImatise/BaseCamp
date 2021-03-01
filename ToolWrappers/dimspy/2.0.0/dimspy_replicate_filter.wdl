@@ -2,7 +2,7 @@ version 1.0
 
 task DimspyReplicatefilter {
   input {
-    File? hdf_file_peaklist
+    File? hdf_file_objects
     File? hdf_file_save
     String? ppm
     Int? replicates
@@ -15,7 +15,7 @@ task DimspyReplicatefilter {
   }
   command <<<
     dimspy replicate_filter \
-      ~{if defined(hdf_file_peaklist) then ("--input " +  '"' + hdf_file_peaklist + '"') else ""} \
+      ~{if defined(hdf_file_objects) then ("--input " +  '"' + hdf_file_objects + '"') else ""} \
       ~{if defined(hdf_file_save) then ("--output " +  '"' + hdf_file_save + '"') else ""} \
       ~{if defined(ppm) then ("--ppm " +  '"' + ppm + '"') else ""} \
       ~{if defined(replicates) then ("--replicates " +  '"' + replicates + '"') else ""} \
@@ -26,8 +26,11 @@ task DimspyReplicatefilter {
       ~{if defined(block_size) then ("--block-size " +  '"' + block_size + '"') else ""} \
       ~{if defined(n_cpus) then ("--ncpus " +  '"' + n_cpus + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    hdf_file_peaklist: "HDF5 file (Peaklist objects) from step 'process-scans'\\nor directory path that contains tab-delimited\\npeaklists."
+    hdf_file_objects: "HDF5 file (Peaklist objects) from step 'process-scans'\\nor directory path that contains tab-delimited\\npeaklists."
     hdf_file_save: "HDF5 file to save the peaklist objects to."
     ppm: "Mass tolerance in Parts per million to group peaks\\nacross scans / mass spectra."
     replicates: "Number of technical replicates."

@@ -20,6 +20,9 @@ task Platon {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "database path (default = <platon_path>/db)"
     mode: "applied filter mode: sensitivity: RDS only (>= 95%\\nsensitivity); specificity: RDS only (>=99.9%\\nspecificity); accuracy: RDS & characterization\\nheuristics (highest accuracy) (default = accuracy)"

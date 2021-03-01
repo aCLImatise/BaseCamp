@@ -3,18 +3,18 @@ id: rsat_compare_patterns.cwl
 inputs:
 - id: in_help
   doc: (must be first argument) display options
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -help
 - id: in_verbose
   doc: verbose
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_seq_one
   doc: "first sequence for the comparison\nThis argument can be repeated on the same\
     \ command line\nto enter multiple patterns."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -seq1
 - id: in_seq_two
@@ -23,35 +23,35 @@ inputs:
     \ 1 is then compared to each sequence of group 2.\nex: -seq1 gataag -seq1 gattag\
     \ -seq1 gataah\n-seq2 agataata -seq2 gtttag\nNote that when many patterns have\
     \ to be entered, the\noptions -file1 and -file2 are more convenient."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -seq2
 - id: in_file_one
   doc: "file containing a list of patterns to be used as first\nsequences for the\
     \ comparison (see format below)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -file1
 - id: in_file_two
   doc: "file containing a list of patterns to be used as second\nsequences for the\
     \ comparison (see format below)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -file2
 - id: in_return
   doc: "fields\nEach selected field is returned in a separate column.\nSupported:\
     \ match,Pval,Eval_p,sig_p,Eval_f,sig_f,noffs,weight,seq,id,length,offset,strand,max_w,diff_w,rel_w,top_s"
-  type: long
+  type: long?
   inputBinding:
     prefix: -return
 - id: in_uth
   doc: "#\nupper threshold value for a given field\nSupported_fields: match,Pval,Eval_p,sig_p,Eval_f,sig_f,weight,len1,len2,mlen,tlen,offset,max_w1,max_w2,max_w,diff_w1,diff_w2,diff_w,rel_w1,rel_w2,rel_w"
-  type: long
+  type: long?
   inputBinding:
     prefix: -uth
 - id: in_lth
   doc: "#\nlower threshold value for a given field\n(same fields as -uth)"
-  type: string
+  type: string?
   inputBinding:
     prefix: -lth
 - id: in_slide
@@ -59,27 +59,27 @@ inputs:
     \ best offset is also\nreturned. The offset is the number of positions to\nshift\
     \ seq1 in order to obtain the best scoring\nalignment. Negative values represent\
     \ a shit of seq2 to\nthe left side, positive values ot the right side."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -slide
 - id: in_two_str
   doc: "Match on both strands\nIn addition to the direct matching (strand = D), the\n\
     reverse complement of each pattern of group 1\n(specified by -seq1 or -file1)\
     \ is matched against each\npattern of group2."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -2str
 - id: in_table
   doc: "Return a contingency table, where each row corresponds\nto one sequence from\
     \ file 1, each column to a sequence\nfrom file 2, and the cells contain the value\
     \ of the\nspecified field.\nSupported fields: match,Pval,Eval_p,sig_p,Eval_f,sig_f,weight,offset,strand,max_w,diff_w,rel_w1,rel_w2,rel_w,top_s"
-  type: File
+  type: File?
   inputBinding:
     prefix: -table
 - id: in_null
   doc: "null string (default ) displayed in\ncontingency tables when the cell contains\
     \ a value\nwhich does not pass the thresholds."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -null
 - id: in_compare_patterns
@@ -231,6 +231,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

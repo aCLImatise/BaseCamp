@@ -8,6 +8,9 @@ task GffjuncToBed12pyGff {
     gffjunc_to_bed12_py gff \
       ~{gff}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: ""
   }

@@ -20,6 +20,9 @@ task BedIntersectpy {
       ~{if (reverse) then "--reverse" else ""} \
       ~{if (booleans) then "--booleans" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_cols: "Require this much overlap (default 1bp)"
     upstream_pad: "upstream interval padding (default 0bp)"

@@ -12,6 +12,9 @@ task MtsvsignatureFLAGS {
       ~{if defined(var_input) then ("--input " +  '"' + var_input + '"') else ""} \
       ~{if defined(index) then ("--index " +  '"' + index + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     lca: ""
     var_input: ""

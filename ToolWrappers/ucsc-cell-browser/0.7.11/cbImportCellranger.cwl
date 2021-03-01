@@ -3,29 +3,29 @@ id: cbImportCellranger.cwl
 inputs:
 - id: in_debug
   doc: show debug messages
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_in_dir
   doc: "input folder with the cellranger analysis output. This\nis the directory with\
     \ the two directories 'analysis'\nand 'filtered_gene_bc_matrices'"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --inDir
 - id: in_outdir
   doc: output directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outDir
 - id: in_name
   doc: name of the dataset. No spaces or special characters.
-  type: string
+  type: string?
   inputBinding:
     prefix: --name
 - id: in_no_mat
   doc: "do not export the matrix again, saves some time if you\nchanged something\
     \ small since the last run\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noMat
 outputs:
@@ -34,9 +34,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: output directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cbImportCellranger

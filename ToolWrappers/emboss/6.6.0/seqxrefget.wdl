@@ -4,6 +4,9 @@ task Seqxrefget {
   command <<<
     seqxrefget
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

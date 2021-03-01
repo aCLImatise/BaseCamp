@@ -38,6 +38,9 @@ task GtftkRetrieve {
       ~{if (logger_file) then "--logger-file" else ""} \
       ~{if (write_message_to_file) then "--write-message-to-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     species_name: "The species name. (default: homo_sapiens)"
     output_file: "Output file (gtf.gz). (default: None)"

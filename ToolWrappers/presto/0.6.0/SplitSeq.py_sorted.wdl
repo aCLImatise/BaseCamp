@@ -8,6 +8,9 @@ task SplitSeqpySorted {
     SplitSeq_py sorted \
       ~{split_seq_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     split_seq_do_tpy: ""
   }

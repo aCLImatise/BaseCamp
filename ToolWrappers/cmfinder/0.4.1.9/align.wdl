@@ -10,6 +10,9 @@ task Align {
       ~{seq_file} \
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     m: ""
     seq_file: ""

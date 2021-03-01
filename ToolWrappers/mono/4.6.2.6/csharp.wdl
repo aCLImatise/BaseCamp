@@ -72,6 +72,9 @@ task Csharp {
       ~{if (win_three_two_res) then "-win32res" else ""} \
       ~{if (win_three_two_icon) then "-win32icon" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "About the Mono C# compiler"
     addmodule: ":M1[,Mn]   Adds the module to the generated assembly"

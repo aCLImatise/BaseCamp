@@ -3,69 +3,73 @@ command:
 - tree_doctor
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: file.mod
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --prune
+  - -p
   description: "Remove all leaves whose names are included in the given list\n(comma-separated),\
     \ then remove nodes and combine branches\nto restore as a complete binary tree\
     \ (i.e., with each\nnode having zero children or two children).  This option is\n\
     applied *before* all other options."
-  synonyms:
-  - --prune
-  - -p
   args: !SimpleFlagArg
     name: list
-  optional: true
 - !Flag
-  description: Like --prune, but remove all leaves *except* the ones specified.
+  optional: true
   synonyms:
   - --prune-all-but
   - -P
+  description: Like --prune, but remove all leaves *except* the ones specified.
   args: !SimpleFlagArg
     name: list
-  optional: true
 - !Flag
-  description: "Like --prune, but remove all leaves who are not descendants of\nnode.\
-    \  (Note: implies --name-ancestors if given node not\nexplicitly named in input\
-    \ tree)"
+  optional: true
   synonyms:
   - --get-subtree
   - -g
+  description: "Like --prune, but remove all leaves who are not descendants of\nnode.\
+    \  (Note: implies --name-ancestors if given node not\nexplicitly named in input\
+    \ tree)"
   args: !SimpleFlagArg
     name: node_name
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --rename
+  - -r
   description: "Rename leaves according to the given mapping.  The format of\n<mapping>\
     \ must be: \"oldname1 -> newname1 ; oldname2 ->\nnewname2 ; ...\".  This option\
     \ is applied *after* all other\noptions (i.e., old names will be used for --prune,\
     \ --merge,\netc.)"
-  synonyms:
-  - --rename
-  - -r
   args: !SimpleFlagArg
     name: mapping
-  optional: true
 - !Flag
-  description: Scale all branches by the specified factor.
+  optional: true
   synonyms:
   - --scale
   - -s
+  description: Scale all branches by the specified factor.
   args: !SimpleFlagArg
     name: factor
-  optional: true
 - !Flag
-  description: "Ensure names are assigned to all ancestral nodes.  If a node\nis unnamed,\
-    \ create a name by concatenating the names of a leaf\nfrom its left subtree and\
-    \ a leaf from its right subtree."
+  optional: true
   synonyms:
   - --name-ancestors
   - -a
+  description: "Ensure names are assigned to all ancestral nodes.  If a node\nis unnamed,\
+    \ create a name by concatenating the names of a leaf\nfrom its left subtree and\
+    \ a leaf from its right subtree."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --label-subtree
+  - -L
   description: "<node[+]:label>\nAdd a label to the subtree of the named node.  If\
     \ the node name\nis followed by a \"+\" sign, then the branch leading to that\
     \ node\nis included in the subtree.  This may be used multiple times to add\n\
@@ -73,87 +77,87 @@ named:
     \ and --label-branches options are parsed in\nthe order given, so that later uses\
     \ may override earlier ones.\nLabels are applied *after* all pruning, re-rooting,\
     \ and re-naming\noptions are applied."
-  synonyms:
-  - --label-subtree
-  - -L
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<branch1,branch2,...:label>\nAdd a label to the branches listed. \
-    \ Branches are named by the name\nof the node which descends from that branch.\
-    \  See --label-subtree\nabove for more information."
+  optional: true
   synonyms:
   - --label-branches
   - -l
+  description: "<branch1,branch2,...:label>\nAdd a label to the branches listed. \
+    \ Branches are named by the name\nof the node which descends from that branch.\
+    \  See --label-subtree\nabove for more information."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Output tree only in Newick format rather than complete tree model.
+  optional: true
   synonyms:
   - --tree-only
   - -t
+  description: Output tree only in Newick format rather than complete tree model.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (Implies --tree-only).  Output only topology in Newick format.
+  optional: true
   synonyms:
   - --no-branchlen
   - -N
+  description: (Implies --tree-only).  Output only topology in Newick format.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "In place of ordinary output, print a description of the id,\nname,\
-    \ parent, children, and distance to parent for each node\nof the tree.  Sometimes\
-    \ useful for debugging.  Can be used with\nother options."
+  optional: true
   synonyms:
   - --dissect
   - -d
+  description: "In place of ordinary output, print a description of the id,\nname,\
+    \ parent, children, and distance to parent for each node\nof the tree.  Sometimes\
+    \ useful for debugging.  Can be used with\nother options."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "In place of ordinary output, print the total branch length of\nthe\
-    \ tree that would have been printed."
+  optional: true
   synonyms:
   - --branchlen
   - -b
+  description: "In place of ordinary output, print the total branch length of\nthe\
+    \ tree that would have been printed."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "In place of ordinary output, report distance from named node to\n\
-    root"
+  optional: true
   synonyms:
   - --depth
   - -D
+  description: "In place of ordinary output, report distance from named node to\n\
+    root"
   args: !SimpleFlagArg
     name: node_name
-  optional: true
 - !Flag
-  description: Reroot tree at internal node with specified name.
+  optional: true
   synonyms:
   - --reroot
   - -R
+  description: Reroot tree at internal node with specified name.
   args: !SimpleFlagArg
     name: node_name
-  optional: true
 - !Flag
-  description: "(for use with --scale)  Alter only the branches in the subtree\nbeneath\
-    \ the specified node."
+  optional: true
   synonyms:
   - --subtree
   - -S
+  description: "(for use with --scale)  Alter only the branches in the subtree\nbeneath\
+    \ the specified node."
   args: !SimpleFlagArg
     name: node_name
-  optional: true
 - !Flag
-  description: "(For use with --reroot or --subtree) include branch above specified\n\
-    node with subtree beneath it."
+  optional: true
   synonyms:
   - --with-branch
   - -B
+  description: "(For use with --reroot or --subtree) include branch above specified\n\
+    node with subtree beneath it."
   args: !SimpleFlagArg
     name: node_name
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --merge
+  - -m
   description: "| <file2.nh>\nMerge with another tree model or tree.  The primary\
     \ model\n(<file.mod>) must have a subset of the species (leaves) in the\nsecondary\
     \ model (<file2.mod>), and the primary tree must be a\nproper subtree of the secondary\
@@ -167,13 +171,13 @@ named:
     \ to the primary tree has equal overall\nlength to the primary tree, then combining\
     \ the primary tree\nwith the non-overlapping portion of the secondary tree.  The\n\
     names of matching species (leaves) must be exactly equal."
-  synonyms:
-  - --merge
-  - -m
   args: !SimpleFlagArg
     name: file2.mod
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extrapolate
+  - -e
   description: "| default\nExtrapolate to a larger set of species based on the given\n\
     phylogeny (Newick-format).  The primary tree must be a subtree\nof the phylogeny\
     \ given in <phylog.nh>, but it need not be\na \"proper\" subtree (see --merge).\
@@ -187,30 +191,26 @@ named:
     \ to merge but differs in that the branch\nlength proportions of the output tree\
     \ come completely from the\nlarger tree and the smaller tree doesn't have to be\
     \ a proper\nsubset of the larger tree."
-  synonyms:
-  - --extrapolate
-  - -e
   args: !SimpleFlagArg
     name: phylog.nh
-  optional: true
 - !Flag
-  description: "The input file is in Newick format (necessary if file name does\n\
-    not end in .nh)"
+  optional: true
   synonyms:
   - --newick
   - -n
+  description: "The input file is in Newick format (necessary if file name does\n\
+    not end in .nh)"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "Print this help message.\n"
+  optional: true
   synonyms:
   - --help
   - -h
+  description: "Print this help message.\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nPROGRAM:      tree_doctor\n\nDESCRIPTION:  Scale, prune, merge, and\
@@ -291,3 +291,4 @@ help_text: "\nPROGRAM:      tree_doctor\n\nDESCRIPTION:  Scale, prune, merge, an
   \ help message.\n\n"
 generated_using:
 - --help
+docker_image:

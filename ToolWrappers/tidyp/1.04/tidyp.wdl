@@ -4,7 +4,7 @@ task Tidyp {
   input {
     File? write_output_specified
     File? config
-    File? file
+    File? write_errors_warnings
     Boolean? modify
     Boolean? indent
     Int? wrap
@@ -44,7 +44,7 @@ task Tidyp {
     tidyp \
       ~{if defined(write_output_specified) then ("-output " +  '"' + write_output_specified + '"') else ""} \
       ~{if defined(config) then ("-config " +  '"' + config + '"') else ""} \
-      ~{if defined(file) then ("-file " +  '"' + file + '"') else ""} \
+      ~{if defined(write_errors_warnings) then ("-file " +  '"' + write_errors_warnings + '"') else ""} \
       ~{if (modify) then "-modify" else ""} \
       ~{if (indent) then "-indent" else ""} \
       ~{if defined(wrap) then ("-wrap " +  '"' + wrap + '"') else ""} \
@@ -80,10 +80,13 @@ task Tidyp {
       ~{if (xml_config) then "-xml-config" else ""} \
       ~{if (show_config) then "-show-config" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     write_output_specified: "write output to the specified <file>"
     config: "set configuration options from the specified <file>"
-    file: "write errors and warnings to the specified <file>"
+    write_errors_warnings: "write errors and warnings to the specified <file>"
     modify: "modify the original input files"
     indent: "indent element content"
     wrap: "wrap text at the specified <column>. 0 is assumed if"

@@ -34,6 +34,9 @@ task Wgfast {
       ~{if defined(model) then ("--model " +  '"' + model + '"') else ""} \
       ~{if defined(g_atk_method) then ("--gatk_method " +  '"' + g_atk_method + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_directory: "path to reference file directory [REQUIRED]"
     read_directory: "path to directory of fastq files [REQUIRED]"

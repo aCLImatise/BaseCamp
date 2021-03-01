@@ -4,12 +4,12 @@ inputs:
 - id: in_svg
   doc: "Specify that the output file should be an SVG image file, rather than a\n\
     Postscript image file."
-  type: File
+  type: File?
   inputBinding:
     prefix: --svg
 - id: in_text
   doc: Specifies that output should be a dot plot (text) file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --text
 - id: in_desc
@@ -23,27 +23,27 @@ inputs:
     \ character immediately after \"~list\" will be\nused as the separator (i.e. it\
     \ need not be the bar (|) character. (5) Any\nother value is assumed to be the\
     \ literal description you want to have\ndisplayed in the plot legend."
-  type: File
+  type: File?
   inputBinding:
     prefix: --desc
 - id: in_entries
   doc: "Specifies the number of colors in the dot plot.\nDefault is 5 colors. Minimum\
     \ is 3 colors. Maximum is 15 colors."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --entries
 - id: in_maximum
   doc: "Specifies the maximum value that is viewable in the plot.\nDefault is the\
     \ largest allowable point in a given data file. If the given\nvalue is greater\
     \ than the default, it is ignored."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --maximum
 - id: in_minimum
   doc: "Specifies the minimum value that is viewable in the plot.\nDefault is the\
     \ smallest allowable point in a given data file. If the given\nvalue is less than\
     \ the default, it is ignored.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --minimum
 - id: in_folding_save_file
@@ -63,12 +63,12 @@ outputs:
 - id: out_svg
   doc: "Specify that the output file should be an SVG image file, rather than a\n\
     Postscript image file."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_svg)
 - id: out_text
   doc: Specifies that output should be a dot plot (text) file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_text)
 - id: out_desc
@@ -82,7 +82,7 @@ outputs:
     \ character immediately after \"~list\" will be\nused as the separator (i.e. it\
     \ need not be the bar (|) character. (5) Any\nother value is assumed to be the\
     \ literal description you want to have\ndisplayed in the plot legend."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_desc)
 - id: out_output_file
@@ -90,6 +90,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - EnergyPlot

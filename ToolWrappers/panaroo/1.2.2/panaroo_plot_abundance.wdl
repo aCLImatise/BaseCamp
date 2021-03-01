@@ -16,6 +16,9 @@ task Panarooplotabundance {
       ~{if defined(gene_presence_absence) then ("--input " +  '"' + gene_presence_absence + '"') else ""} \
       ~{if defined(out_dir) then ("--out_dir " +  '"' + out_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graph_type: "the type of graph to generate"
     n_boot: "the number of bootstrap replicates (default=100)"

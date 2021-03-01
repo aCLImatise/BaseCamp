@@ -23,7 +23,7 @@ task MakeUCSCfile {
     Boolean? subtract
     Boolean? input_tbp
     Int? bigwig
-    File? send_output_prints
+    File? send_output_gzipped
     Boolean? name
     Int? style
     Boolean? circo_s
@@ -55,13 +55,16 @@ task MakeUCSCfile {
       ~{if (subtract) then "-subtract" else ""} \
       ~{if (input_tbp) then "-inputtbp" else ""} \
       ~{if defined(bigwig) then ("-bigWig " +  '"' + bigwig + '"') else ""} \
-      ~{if defined(send_output_prints) then ("-o " +  '"' + send_output_prints + '"') else ""} \
+      ~{if defined(send_output_gzipped) then ("-o " +  '"' + send_output_gzipped + '"') else ""} \
       ~{if (name) then "-name" else ""} \
       ~{if defined(style) then ("-style " +  '"' + style + '"') else ""} \
       ~{if (circo_s) then "-circos" else ""} \
       ~{if defined(skip_chr) then ("-skipChr " +  '"' + skip_chr + '"') else ""} \
       ~{if (noheader) then "-noheader" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f_size: "<#> (Size of file, when gzipped, default: 1e10, i.e. no reduction)"
     strand: "<both|separate|+|-> (control if reads are separated by strand, default: both)"
@@ -84,7 +87,7 @@ task MakeUCSCfile {
     subtract: "(subtract input instead of taking the ratio between experiments, default: ratio)"
     input_tbp: "<#>, -inputFragLength <#>, -inputAdjust <#> can also be set"
     bigwig: "(creates a full resolution bigWig file and track line file)\\nThis requires bedGraphToBigWig to be available in your executable path\\nAlso, because how how bigWig files work, use \\\"-strand -\\\" and \\\"-strand +\\\"\\nin separate runs to make strand specific files: \\\"-strand separate\\\" will not work\\nConsider using makeBigWig.pl and makeMultiWigHub.pl if interested in bigWigs"
-    send_output_prints: "(send output to this file - will be gzipped, default: prints to stdout)\\nauto: this will place an appropriately named file in the tag directory"
+    send_output_gzipped: "(send output to this file - will be gzipped, default: prints to stdout)\\nauto: this will place an appropriately named file in the tag directory"
     name: "<...> (Name of UCSC track, default: auto generated)"
     style: "(See options below:)\\nchipseq (standard, default)\\nrnaseq (strand specific, if unstranded add '-strand both' to end of command)\\ntss (strand specific, single bp fragment length)\\ndnase (fragments centered on tag position instead of downstream)\\nmethylated (single bp resolution of cytosine methylation)\\nunmethylated (single bp resolution of unmethylated cytosines)\\ndamid (2kb fragments centered on 5' end of reads)"
     circo_s: "<chrN:XXX-YYY|genome> (output only a specific region for circos[no header])"
@@ -94,6 +97,6 @@ task MakeUCSCfile {
   }
   output {
     File out_stdout = stdout()
-    File out_send_output_prints = "${in_send_output_prints}"
+    File out_send_output_gzipped = "${in_send_output_gzipped}"
   }
 }

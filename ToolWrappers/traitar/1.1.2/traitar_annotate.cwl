@@ -4,13 +4,13 @@ inputs:
 - id: in_gene_gff_type
   doc: "if the input is amino acids the type of gene\nprediction GFF file can be specified\
     \ for mapping the\nphenotype predictions to the genes"
-  type: string
+  type: string?
   inputBinding:
     prefix: --gene_gff_type
 - id: in_cpus
   doc: "number of cpus used for the individual steps; maximum\nis number of samples;\
     \ needs parallel\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --cpus
 - id: in_positional_arguments
@@ -29,7 +29,7 @@ inputs:
   type: long
   inputBinding:
     position: 2
-- id: in_directory_output_will
+- id: in_directory_output_created
   doc: "directory for the output; will be created if it\ndoesn't exist yet"
   type: string
   inputBinding:
@@ -38,6 +38,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - traitar

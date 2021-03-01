@@ -34,6 +34,9 @@ task Desman {
       ~{if defined(random_seed) then ("--random_seed " +  '"' + random_seed + '"') else ""} \
       ~{if (specifies_minimum_defaults) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genomes: "specify the haplotype number"
     filters_variants_negative: "[FILTER_VARIANTS], --filter_variants [FILTER_VARIANTS]\\nfilters variants by negative binomial loge likelihood\\ndefaults to 3.84"

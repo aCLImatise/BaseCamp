@@ -1,0 +1,71 @@
+!Command
+command:
+- seqmagick
+- info
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sequence_files
+  description: 'optional arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --input-format
+  description: Input format. Overrides extension for all input files
+  args: !SimpleFlagArg
+    name: INPUT_FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --out-file
+  description: 'Output destination. Default: STDOUT'
+  args: !SimpleFlagArg
+    name: destination_file
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: "Specify output format as tab-delimited, CSV or aligned\nin a borderless\
+    \ table. Default is tab-delimited if the\noutput is directed to a file, aligned\
+    \ if output to the\nconsole."
+  args: !ChoiceFlagArg
+    choices: !!set
+      csv:
+      align:
+      tab:
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of threads (CPUs). [1]
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: seqmagick info [-h] [--input-format INPUT_FORMAT]\n           \
+  \           [--out-file destination_file] [--format {tab,csv,align}]\n         \
+  \             [--threads THREADS]\n                      sequence_files [sequence_files\
+  \ ...]\n\nInfo action\n\npositional arguments:\n  sequence_files\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --input-format INPUT_FORMAT\n\
+  \                        Input format. Overrides extension for all input files\n\
+  \  --out-file destination_file\n                        Output destination. Default:\
+  \ STDOUT\n  --format {tab,csv,align}\n                        Specify output format\
+  \ as tab-delimited, CSV or aligned\n                        in a borderless table.\
+  \ Default is tab-delimited if the\n                        output is directed to\
+  \ a file, aligned if output to the\n                        console.\n  --threads\
+  \ THREADS     Number of threads (CPUs). [1]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seqmagick:0.8.4--py_1

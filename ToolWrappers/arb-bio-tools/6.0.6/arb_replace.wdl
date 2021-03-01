@@ -12,6 +12,9 @@ task ArbReplace {
       ~{if (linemode_parse_lines) then "-L" else ""} \
       ~{if (patchmode_wildcards_allowed) then "-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     linemode_parse_line: "linemode, parse each line separately"
     linemode_parse_lines: "linemode, parse each line separately, delete empty lines"

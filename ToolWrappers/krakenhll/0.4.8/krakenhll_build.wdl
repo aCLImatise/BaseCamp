@@ -58,6 +58,9 @@ task Krakenhllbuild {
       ~{if defined(taxonomy_dir) then ("--taxonomy-dir " +  '"' + taxonomy_dir + '"') else ""} \
       ~{if (uid_database) then "--uid-database" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     download_taxonomy: "Download NCBI taxonomic information"
     download_library: "Download partial library (TYPE = one of \\\"refseq/bacteria\\\", \\\"refseq/archaea\\\", \\\"refseq/viral\\\").\\nUse krakenhll-download for more options."

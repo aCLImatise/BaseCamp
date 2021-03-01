@@ -20,6 +20,9 @@ task Dshsplitfastq {
       ~{if (left_pad) then "--left-pad" else ""} \
       ~{if (suffix) then "--suffix" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     input_file: "[class java.io.File]  input FASTQ file, default stdin [optional]"

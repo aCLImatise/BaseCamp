@@ -68,6 +68,9 @@ task Pbalign {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(tmpdir) then ("--tmpDir " +  '"' + tmpdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_file: "Write the log to file. Default(None) will write to\\nstdout. (default: None)"
     log_level: "Set log level (default: INFO)"

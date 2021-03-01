@@ -24,6 +24,9 @@ task SvmTheoreticalSpectrumGeneratorTrainer {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_spectra: "*          Input Training Spectra in mzML (valid formats: 'mzML')"
     in_identifications: "*  Input file with corresponding sequences in idXML (valid formats: 'idXML')"

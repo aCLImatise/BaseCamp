@@ -8,6 +8,9 @@ task Motif2Jasparpl {
     motif2Jaspar_pl \
       ~{motif_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     motif_file: ""
   }

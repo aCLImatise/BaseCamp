@@ -22,6 +22,9 @@ task TadtoolTads {
       ~{if defined(normalisation_window) then ("--normalisation-window " +  '"' + normalisation_window + '"') else ""} \
       ~{if (write_values) then "--write-values" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     algorithm: "TAD-calling algorithm. Options: insulation,\\nninsulation, directionality. Default: insulation."
     normalisation_window: "Normalisation window in number of regions. Only\\naffects ninsulation algorithm. If not specified,\\nwindow will be the whole chromosome."

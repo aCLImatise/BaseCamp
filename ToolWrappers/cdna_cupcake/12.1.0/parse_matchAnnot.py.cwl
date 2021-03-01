@@ -3,12 +3,12 @@ id: parse_matchAnnot.py.cwl
 inputs:
 - id: in_parse_fl_coverage
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --parse_FL_coverage
 - id: in_not_p_bid
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --not_pbid
 - id: in_parse
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - parse_matchAnnot.py

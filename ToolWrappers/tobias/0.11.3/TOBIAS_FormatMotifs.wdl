@@ -18,6 +18,9 @@ task TOBIASFormatMotifs {
       ~{if (filter) then "--filter" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     one_more_input: "[ [ ...]]  One or more input motif files (required)"
     task_join_output: "If task == join, output is the joined output file; if task == split,\\noutput is a directory (required)"

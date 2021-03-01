@@ -18,6 +18,9 @@ task Fissfc {
       ~{if (list_search_commands) then "-l" else ""} \
       ~{if defined(function) then ("--function " +  '"' + function + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     url: "Firecloud API root URL [default:\\nhttps://api.firecloud.org/api/]"
     credentials: "Firecloud credentials file"

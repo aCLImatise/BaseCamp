@@ -24,6 +24,9 @@ task PhyluceAlignExplodeAlignments {
       ~{if (by_tax_on) then "--by-taxon" else ""} \
       ~{if (include_locus) then "--include-locus" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignments: "Input folder of alignments"
     output_folder_fasta: "Output folder of fasta files"

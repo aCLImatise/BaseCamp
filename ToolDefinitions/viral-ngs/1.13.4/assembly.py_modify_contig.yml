@@ -4,153 +4,153 @@ command:
 - modify_contig
 positional:
 - !Positional
-  description: 'positional arguments:'
+  optional: false
   position: 0
   name: rsealfon.
-  optional: false
+  description: 'positional arguments:'
 - !Positional
-  description: "input alignment of reference and contig (should\ncontain exactly 2\
-    \ sequences)"
+  optional: false
   position: 1
   name: input
-  optional: false
+  description: "input alignment of reference and contig (should\ncontain exactly 2\
+    \ sequences)"
 - !Positional
-  description: Destination file for modified contigs
+  optional: false
   position: 2
   name: output
-  optional: false
+  description: Destination file for modified contigs
 - !Positional
-  description: reference sequence name (exact match required)
+  optional: false
   position: 3
   name: ref
-  optional: false
+  description: reference sequence name (exact match required)
 named:
 - !Flag
-  description: 'fasta header output name (default: existing header)'
+  optional: true
   synonyms:
   - -n
   - --name
+  description: 'fasta header output name (default: existing header)'
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: "should the reference sequence be called if there is an\nN in the contig\
-    \ and a more specific base in the\nreference (default: False)"
+  optional: true
   synonyms:
   - -cn
   - --call-reference-ns
+  description: "should the reference sequence be called if there is an\nN in the contig\
+    \ and a more specific base in the\nreference (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "should ends of contig.fasta be trimmed to length of\nreference (default:\
-    \ False)"
+  optional: true
   synonyms:
   - -t
   - --trim-ends
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "should the 5'-end of contig.fasta be replaced by\nreference (default:\
+  description: "should ends of contig.fasta be trimmed to length of\nreference (default:\
     \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -r5
   - --replace-5ends
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "should the 3'-end of contig.fasta be replaced by\nreference (default:\
+  description: "should the 5'-end of contig.fasta be replaced by\nreference (default:\
     \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -r3
   - --replace-3ends
+  description: "should the 3'-end of contig.fasta be replaced by\nreference (default:\
+    \ False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "length of ends to be replaced (if replace-ends is yes)\n(default:\
-    \ 10)"
+  optional: true
   synonyms:
   - -l
   - --replace-length
+  description: "length of ends to be replaced (if replace-ends is yes)\n(default:\
+    \ 10)"
   args: !SimpleFlagArg
     name: REPLACE_LENGTH
-  optional: true
 - !Flag
-  description: 'Format for input alignment (default: fasta)'
+  optional: true
   synonyms:
   - -f
   - --format
+  description: 'Format for input alignment (default: fasta)'
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
-  description: "Replace gaps at the beginning and end of the sequence\nwith reference\
-    \ sequence (default: False)"
+  optional: true
   synonyms:
   - -r
   - --replace-end-gaps
+  description: "Replace gaps at the beginning and end of the sequence\nwith reference\
+    \ sequence (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Remove leading and trailing N's in the contig\n(default: False)"
+  optional: true
   synonyms:
   - -rn
   - --remove-end-ns
+  description: "Remove leading and trailing N's in the contig\n(default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "should the reference sequence be called if the contig\nseq is ambiguous\
-    \ and the reference sequence is more\ninformative & consistant with the ambiguous\
-    \ base (ie\nY->C) (default: False)"
+  optional: true
   synonyms:
   - -ca
   - --call-reference-ambiguous
+  description: "should the reference sequence be called if the contig\nseq is ambiguous\
+    \ and the reference sequence is more\ninformative & consistant with the ambiguous\
+    \ base (ie\nY->C) (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Base directory for temp files. [default: /tmp]'
+  optional: true
   synonyms:
   - --tmp_dir
+  description: 'Base directory for temp files. [default: /tmp]'
   args: !SimpleFlagArg
     name: TMP_DIR
-  optional: true
 - !Flag
-  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
-    \ to delete all temp files at the end, even\nif there's a failure."
+  optional: true
   synonyms:
   - --tmp_dirKeep
+  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
+    \ to delete all temp files at the end, even\nif there's a failure."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Verboseness of output. [default: DEBUG]'
+  optional: true
   synonyms:
   - --loglevel
+  description: 'Verboseness of output. [default: DEBUG]'
   args: !ChoiceFlagArg
     choices: !!set
-      CRITICAL:
-      ERROR:
       INFO:
-      WARNING:
       DEBUG:
+      CRITICAL:
+      WARNING:
+      ERROR:
       EXCEPTION:
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
   - -V
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: assembly.py subcommand modify_contig [-h] [-n NAME] [-cn] [-t]\
   \ [-r5]\n                                            [-r3] [-l REPLACE_LENGTH]\n\
   \                                            [-f FORMAT] [-r] [-rn] [-ca]\n    \
@@ -193,3 +193,4 @@ help_text: "usage: assembly.py subcommand modify_contig [-h] [-n NAME] [-cn] [-t
   \         show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

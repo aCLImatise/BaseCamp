@@ -2,26 +2,20 @@ version 1.0
 
 task PeakachuWindow {
   input {
-    Int? m
-    Boolean? p
-    Boolean? r
-    Array[String] c
-    Array[String] t
+    Array[String] pairwise_replicates
+    Int? window_size
   }
   command <<<
     peakachu window \
-      ~{if defined(m) then ("-M " +  '"' + m + '"') else ""} \
-      ~{if (p) then "-P" else ""} \
-      ~{if (r) then "-r" else ""} \
-      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
+      ~{if defined(pairwise_replicates) then ("--pairwise_replicates " +  '"' + pairwise_replicates + '"') else ""} \
+      ~{if defined(window_size) then ("--window_size " +  '"' + window_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    m: ""
-    p: ""
-    r: ""
-    c: ""
-    t: ""
+    pairwise_replicates: "[FEATURES [FEATURES ...]]"
+    window_size: "[SIZE_FACTORS [SIZE_FACTORS ...]], --size_factors [SIZE_FACTORS [SIZE_FACTORS ...]]\\nNormalization factors for libraries in input order\\n(first experiment then control libraries)"
   }
   output {
     File out_stdout = stdout()

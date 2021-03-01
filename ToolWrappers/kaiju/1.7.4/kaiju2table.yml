@@ -1,0 +1,115 @@
+!Command
+command:
+- kaiju2table
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input1.tsv
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Name of output file.
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: Name of nodes.dmp file
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: Name of names.dmp file.
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: 'Taxonomic rank, must be one of: phylum, class, order, family, genus,
+    species'
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: 'Number in [0, 100], denoting the minimum required percentage for the
+    taxon (except viruses) to be reported (default: 0.0)'
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: 'Integer number > 0, denoting the minimum required number of reads
+    for the taxon (except viruses) to be reported (default: 0)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: Expand viruses, which are always shown as full taxon path and read
+    counts are not summarized in higher taxonomic levels.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: Unclassified reads are not counted for the total reads when calculating
+    percentages for classified reads.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: Print full taxon path.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: "Print taxon path containing only ranks specified by a comma-separated\
+    \ list,\nfor example: superkingdom,phylum,class,order,family,genus,species"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: Enable verbose output.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "kaiju2table: invalid option -- '-'\nKaiju 1.7.4\nCopyright 2015-2020 Peter\
+  \ Menzel, Anders Krogh\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
+  \nUsage:\n   kaiju2table -t nodes.dmp -n names.dmp -r species -o kaiju.table input1.tsv\
+  \ [input2.tsv ...]\n\nMandatory arguments:\n   -o FILENAME   Name of output file.\n\
+  \   -t FILENAME   Name of nodes.dmp file\n   -n FILENAME   Name of names.dmp file.\n\
+  \   -r STRING     Taxonomic rank, must be one of: phylum, class, order, family,\
+  \ genus, species\n\nOptional arguments:\n   -m FLOAT      Number in [0, 100], denoting\
+  \ the minimum required percentage for the taxon (except viruses) to be reported\
+  \ (default: 0.0)\n   -c INT        Integer number > 0, denoting the minimum required\
+  \ number of reads for the taxon (except viruses) to be reported (default: 0)\n \
+  \  -e            Expand viruses, which are always shown as full taxon path and read\
+  \ counts are not summarized in higher taxonomic levels.\n   -u            Unclassified\
+  \ reads are not counted for the total reads when calculating percentages for classified\
+  \ reads.\n   -p            Print full taxon path.\n   -l            Print taxon\
+  \ path containing only ranks specified by a comma-separated list,\n            \
+  \     for example: superkingdom,phylum,class,order,family,genus,species\n   -v \
+  \           Enable verbose output.\n\nOnly one of the options -m and -c may be used\
+  \ at a time.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/kaiju:1.7.4--h8b12597_0

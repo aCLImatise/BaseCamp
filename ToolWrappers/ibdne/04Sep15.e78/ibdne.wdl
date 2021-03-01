@@ -10,6 +10,9 @@ task Ibdne {
       ~{cat} \
       ~{ibd}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cat: ""
     ibd: ""

@@ -8,6 +8,9 @@ task SsucmcalibrateCmfile {
     ssu_cmcalibrate cmfile \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
   }

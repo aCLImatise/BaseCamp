@@ -40,6 +40,9 @@ task BETABasic {
       ~{if defined(da) then ("--da " +  '"' + da + '"') else ""} \
       ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     peak_file: "The bed format of peaks binding sites. (BETA support 3\\nor 5 columns bed format, CHROM, START, END (NAME,\\nSCORE))"
     diff_expr: "IThe differential expression file get from limma for\\nMicroArray ddata and cuffdiff for RNAseq data"

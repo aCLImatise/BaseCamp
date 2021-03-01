@@ -16,6 +16,9 @@ task WhatsGNUGetGenBankGenomespy {
       ~{if (contigs) then "--contigs" else ""} \
       ~{if (remove) then "--remove" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     faa: "protein faa file from GenBank"
     contigs: "genomic fna file from GenBank"

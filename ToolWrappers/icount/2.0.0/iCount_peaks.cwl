@@ -5,75 +5,73 @@ inputs:
   doc: "File name for \"scores\" output. File reports all cross-link events,\nindependent\
     \ from their FDR score It should have .tsv, .csv, .txt or .gz\nextension (default:\
     \ None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --scores
 - id: in_features
   doc: "[ ...]    Features from annotation to consider. If None, ['gene'] is used.\n\
     Sometimes, it is advised to use ['gene', 'intergenic'] (default: None)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --features
-- id: in__groupby_attribute
-  doc: ', --group_by       Attribute by which cross-link positions are grouped (default:
-    gene_id)'
-  type: boolean
+- id: in_group_by
+  doc: 'Attribute by which cross-link positions are grouped (default: gene_id)'
+  type: boolean?
   inputBinding:
-    prefix: -g
+    prefix: --group_by
 - id: in_merge_features
   doc: "Treat all features as one when grouping. Has no effect when only one\nfeature\
     \ is given in features parameter (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --merge_features
 - id: in_half_window
   doc: 'Half-window size (default: 3)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --half_window
 - id: in_fdr
   doc: 'FDR threshold (default: 0.05)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fdr
-- id: in__perms_number
-  doc: ', --perms          Number of permutations when calculating random distribution
-    (default: 100)'
-  type: boolean
+- id: in_perms
+  doc: 'Number of permutations when calculating random distribution (default: 100)'
+  type: boolean?
   inputBinding:
-    prefix: -p
-- id: in_rnd
-  doc: ', --rnd_seed     Seed for random generator (default: 42)'
-  type: boolean
+    prefix: --perms
+- id: in_rnd_seed
+  doc: 'Seed for random generator (default: 42)'
+  type: boolean?
   inputBinding:
-    prefix: -rnd
+    prefix: --rnd_seed
 - id: in_report_progress
   doc: 'Report analysis progress (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --report_progress
-- id: in__stdoutlog_threshold
-  doc: ', --stdout_log     Threshold value (0-50) for logging to stdout. If 0, logging
-    to stdout if turned OFF.'
-  type: boolean
+- id: in_stdout_log
+  doc: Threshold value (0-50) for logging to stdout. If 0, logging to stdout if turned
+    OFF.
+  type: boolean?
   inputBinding:
-    prefix: -S
-- id: in__filelog_threshold
-  doc: ', --file_log       Threshold value (0-50) for logging to file. If 0, logging
-    to file if turned OFF.'
-  type: boolean
+    prefix: --stdout_log
+- id: in_file_log
+  doc: Threshold value (0-50) for logging to file. If 0, logging to file if turned
+    OFF.
+  type: boolean?
   inputBinding:
-    prefix: -F
-- id: in__filelogpath_path
-  doc: ', --file_logpath   Path to log file.'
-  type: boolean
+    prefix: --file_log
+- id: in_file_log_path
+  doc: Path to log file.
+  type: boolean?
   inputBinding:
-    prefix: -P
-- id: in__file_store
-  doc: ', --results_file   File into which to store Metrics.'
-  type: boolean
+    prefix: --file_logpath
+- id: in_results_file
+  doc: File into which to store Metrics.
+  type: boolean?
   inputBinding:
-    prefix: -M
+    prefix: --results_file
 - id: in_annotation
   doc: Annotation file in GTF format, obtained from "iCount segment" command
   type: string
@@ -98,9 +96,10 @@ outputs:
   doc: "File name for \"scores\" output. File reports all cross-link events,\nindependent\
     \ from their FDR score It should have .tsv, .csv, .txt or .gz\nextension (default:\
     \ None)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_scores)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - iCount

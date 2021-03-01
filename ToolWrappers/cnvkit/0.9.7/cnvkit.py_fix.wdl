@@ -24,6 +24,9 @@ task CnvkitpyFix {
       ~{if (no_r_mask) then "--no-rmask" else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cluster: "Compare and use cluster-specific values present in the\\nreference profile. (Requires that the reference\\nprofile was built with the --cluster option.)"
     sample_id: "Sample ID for target/antitarget files. Otherwise\\ninferred from file names."

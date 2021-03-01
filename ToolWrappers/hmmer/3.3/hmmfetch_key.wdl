@@ -18,6 +18,9 @@ task HmmfetchKey {
       ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index: ""
     f: ""

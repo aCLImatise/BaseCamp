@@ -3,202 +3,202 @@ command:
 - utgcns
 positional:
 - !Positional
-  description: -S g            Load reads from sqStore 'g'
+  optional: false
   position: 0
   name: INPUT
-  optional: false
+  description: -S g            Load reads from sqStore 'g'
 - !Positional
+  optional: false
+  position: 1
+  name: ALGORITHM
   description: "-quick          Stitch reads together to cover the contig.  The bases\
     \ in the contig\nis formed from exactly one read; no consensus sequence is computed.\n\
     This is useful for checking intermediate assembly structure by mapping\nto reference,\
     \ or as input to a polishing step.  Read positions will be\nincorrect, and no\
     \ BAM output is possible."
-  position: 1
-  name: ALGORITHM
-  optional: false
 - !Positional
-  description: "-edlib          Myers' O(ND) algorithm from Edlib (https://github.com/Martinsos/edlib).\n\
-    This is the default (and, yes, there is no non-default aligner)."
+  optional: false
   position: 2
   name: ALIGNER
-  optional: false
+  description: "-edlib          Myers' O(ND) algorithm from Edlib (https://github.com/Martinsos/edlib).\n\
+    This is the default (and, yes, there is no non-default aligner)."
 - !Positional
-  description: -O results      Write computed tigs to binary output file 'results'
+  optional: false
   position: 3
   name: OUTPUT
-  optional: false
+  description: -O results      Write computed tigs to binary output file 'results'
 - !Positional
-  description: -e e            Expect alignments at up to fraction e error
+  optional: false
   position: 0
   name: PARAMETERS
-  optional: false
+  description: -e e            Expect alignments at up to fraction e error
 - !Positional
-  description: -v              Show multialigns.
+  optional: false
   position: 1
   name: LOGGING
-  optional: false
+  description: -v              Show multialigns.
 named:
 - !Flag
-  description: Load reads from partition file 'f'
+  optional: true
   synonyms:
   - -R
+  description: Load reads from partition file 'f'
   args: !SimpleFlagArg
     name: f
-  optional: true
 - !Flag
-  description: v          Load tig from tgStore 't'.
+  optional: true
   synonyms:
   - -T
+  description: v          Load tig from tgStore 't'.
   args: !SimpleFlagArg
     name: t
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
   description: "Test the computation of the tig layout in 'file'\n'file' can be from:\n\
     'tgStoreDump -d layout' (human readable layout format)\n'utgcns -L'          \
     \   (human readable layout format)\n'utgcns -O'             (binary multialignment\
     \ format)"
-  synonyms:
-  - -t
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "Load tig and reads from file 'name' created with -export.  This\n\
-    is usually used by developers."
+  optional: true
   synonyms:
   - -import
+  description: "Load tig and reads from file 'name' created with -export.  This\n\
+    is usually used by developers."
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -pbdagcon
   description: "Use pbdagcon (https://github.com/PacificBiosciences/pbdagcon).\nThis\
     \ is fast and robust.  It is the default algorithm.  It does not\ngenerate a final\
     \ multialignment output (the -v option will not show\nanything useful)."
-  synonyms:
-  - -pbdagcon
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Disable alignment of reads back to the final consensus sequence.
+  optional: true
   synonyms:
   - -norealign
+  description: Disable alignment of reads back to the final consensus sequence.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Write computed tigs to layout output file 'layouts'
+  optional: true
   synonyms:
   - -L
+  description: Write computed tigs to layout output file 'layouts'
   args: !SimpleFlagArg
     name: layouts
-  optional: true
 - !Flag
-  description: Write computed tigs to fasta  output file 'fasta'
+  optional: true
   synonyms:
   - -A
+  description: Write computed tigs to fasta  output file 'fasta'
   args: !SimpleFlagArg
     name: fasta
-  optional: true
 - !Flag
-  description: Write computed tigs to fastq  output file 'fastq'
+  optional: true
   synonyms:
   - -Q
+  description: Write computed tigs to fastq  output file 'fastq'
   args: !SimpleFlagArg
     name: fastq
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -export
   description: "Create a copy of the inputs needed to compute the tigs.  This\nfile\
     \ can then be sent to the developers for debugging.  The tig(s)\nare not processed\
     \ and no other outputs are created.  Ideally,\nonly one tig is selected (-u, below)."
-  synonyms:
-  - -export
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
-  description: Alias for -tig
+  optional: true
   synonyms:
   - -u
+  description: Alias for -tig
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not compute consensus for tigs shorter than l bases.
+  optional: true
   synonyms:
   - -minlength
+  description: Do not compute consensus for tigs shorter than l bases.
   args: !SimpleFlagArg
     name: l
-  optional: true
 - !Flag
-  description: Do not compute consensus for tigs longer than l bases.
+  optional: true
   synonyms:
   - -maxlength
+  description: Do not compute consensus for tigs longer than l bases.
   args: !SimpleFlagArg
     name: l
-  optional: true
 - !Flag
-  description: Only compute consensus for unassembled tigs.
+  optional: true
   synonyms:
   - -onlyunassem
+  description: Only compute consensus for unassembled tigs.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Only compute consensus for real unitigs/contigs.
+  optional: true
   synonyms:
   - -onlycontig
+  description: Only compute consensus for real unitigs/contigs.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not compute consensus for repeat tigs.
+  optional: true
   synonyms:
   - -norepeat
+  description: Do not compute consensus for repeat tigs.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not compute consensus for bubble tigs.
+  optional: true
   synonyms:
   - -nobubble
+  description: Do not compute consensus for bubble tigs.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not compute consensus for singleton (single-read) tigs.
+  optional: true
   synonyms:
   - -nosingleton
+  description: Do not compute consensus for singleton (single-read) tigs.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Don't ever allow alignments more than fraction m error
+  optional: true
   synonyms:
   - -em
+  description: Don't ever allow alignments more than fraction m error
   args: !SimpleFlagArg
     name: m
-  optional: true
 - !Flag
-  description: Expect alignments of at least l bases
+  optional: true
   synonyms:
   - -l
+  description: Expect alignments of at least l bases
   args: !SimpleFlagArg
     name: l
-  optional: true
 - !Flag
-  description: "Use non-contained reads and the longest contained reads, up to\nC\
-    \ coverage, for consensus generation.  The default is 0, and will\nuse all reads."
+  optional: true
   synonyms:
   - -maxcoverage
+  description: "Use non-contained reads and the longest contained reads, up to\nC\
+    \ coverage, for consensus generation.  The default is 0, and will\nuse all reads."
   args: !SimpleFlagArg
     name: c
-  optional: true
 - !Flag
-  description: Use 't' compute threads; default 1.
+  optional: true
   synonyms:
   - -threads
+  description: Use 't' compute threads; default 1.
   args: !SimpleFlagArg
     name: t
-  optional: true
 - !Flag
-  description: Enable debugging option 'verbosemultialign'.
+  optional: true
   synonyms:
   - -V
+  description: Enable debugging option 'verbosemultialign'.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -255,3 +255,4 @@ help_text: "usage: utgcns [opts]\n\n  INPUT\n    -S g            Load reads from
   \ OR no package (-p) supplied.\n"
 generated_using:
 - --help
+docker_image:

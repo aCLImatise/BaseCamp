@@ -16,6 +16,9 @@ task Sdrmsd {
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fit: "Superpose molecules before RMSD calculation"
     threshold: "Discard poses with RMSD < THRESHOLD with respect\\nprevious poses which where not rejected based on same\\nprinciple. A Population SDField will be added to\\noutput SD with the population number."

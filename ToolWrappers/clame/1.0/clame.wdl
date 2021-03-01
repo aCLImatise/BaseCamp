@@ -24,6 +24,9 @@ task Clame {
       ~{if defined(print) then ("-print " +  '"' + print + '"') else ""} \
       ~{if defined(size_bin) then ("-sizeBin " +  '"' + size_bin + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_take_default: "number of bases to take an alignment (default 70)"
     fm_nine: "fm9 file"

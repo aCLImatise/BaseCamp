@@ -50,6 +50,9 @@ task Epic2 {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (example) then "--example" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     treatment: "Treatment (pull-down) file(s) in one of these formats:\\nbed, bedpe, bed.gz, bedpe.gz or (single-end) bam, sam.\\nMixing file formats is allowed."
     control: "Control (input) file(s) in one of these formats: bed,\\nbedpe, bed.gz, bedpe.gz or (single-end) bam, sam.\\nMixing file formats is allowed."

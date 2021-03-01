@@ -3,7 +3,7 @@ id: novoutil_fafilt.cwl
 inputs:
 - id: in_length_limit_default
   doc: 999     Length limit, default 150.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_fast_a_files
@@ -16,6 +16,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - novoutil

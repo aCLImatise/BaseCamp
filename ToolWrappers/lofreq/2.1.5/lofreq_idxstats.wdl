@@ -12,6 +12,9 @@ task LofreqIdxstats {
       ~{idx_stats} \
       ~{in_dot_bam}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sam_tools: ""
     idx_stats: ""

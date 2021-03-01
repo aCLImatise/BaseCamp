@@ -4,6 +4,9 @@ task CheckUTR {
   command <<<
     checkUTR
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -12,11 +12,11 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -options
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -28,11 +28,11 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -options
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -44,11 +44,11 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -options
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -60,33 +60,15 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -options
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ': verbose output'
-                  synonyms:
-                  - -v
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ': debugging output'
-                  synonyms:
-                  - -d
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -options
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
@@ -94,12 +76,74 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -options
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -v
+                      description: ': verbose output'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -d
+                      description: ': debugging output'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -options
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -options
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "\nFATAL: Failed to open sequence file seqfile in\n\
+                        Usage: pocheck [-options] <seqfile in>\n\n\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      description: ': print short help, usage info, and grammar description'
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "CONUS: Single Sequence SCFG algorithms\n         CONUS\
+                      \ 1.0 (in progress)\nUsage: pocheck [-options] <seqfile in>\n\
+                      \nwhere options are:\n-h            : print short help, usage\
+                      \ info, and grammar description\n-v            : verbose output\
+                      \ \n-d            : debugging output \n\n\nUsage: pocheck [-options]\
+                      \ <seqfile in>\n\n\n"
+                    generated_using: &id005
+                    - -h
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -107,15 +151,10 @@ subcommands:
                   version_flag:
                   help_text: "\nFATAL: Failed to open sequence file seqfile in\nUsage:\
                     \ pocheck [-options] <seqfile in>\n\n\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: ': print short help, usage info, and grammar description'
-                  synonyms:
-                  - -h
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "CONUS: Single Sequence SCFG algorithms\n         CONUS\
@@ -124,8 +163,8 @@ subcommands:
                   \ and grammar description\n-v            : verbose output \n-d \
                   \           : debugging output \n\n\nUsage: pocheck [-options] <seqfile\
                   \ in>\n\n\n"
-                generated_using: &id005
-                - -h
+                generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -134,6 +173,7 @@ subcommands:
               help_text: "\nFATAL: Failed to open sequence file seqfile in\nUsage:\
                 \ pocheck [-options] <seqfile in>\n\n\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -144,6 +184,7 @@ subcommands:
               -v            : verbose output \n-d            : debugging output \n\
               \n\nUsage: pocheck [-options] <seqfile in>\n\n\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -152,6 +193,7 @@ subcommands:
           help_text: "\nFATAL: Failed to open sequence file seqfile in\nUsage: pocheck\
             \ [-options] <seqfile in>\n\n\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -162,6 +204,7 @@ subcommands:
           -v            : verbose output \n-d            : debugging output \n\n\n\
           Usage: pocheck [-options] <seqfile in>\n\n\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -170,6 +213,7 @@ subcommands:
       help_text: "\nFATAL: Failed to open sequence file seqfile in\nUsage: pocheck\
         \ [-options] <seqfile in>\n\n\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -180,6 +224,7 @@ subcommands:
       \ output \n-d            : debugging output \n\n\nUsage: pocheck [-options]\
       \ <seqfile in>\n\n\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -188,6 +233,7 @@ subcommands:
   help_text: "\nFATAL: Failed to open sequence file seqfile in\nUsage: pocheck [-options]\
     \ <seqfile in>\n\n\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -198,3 +244,4 @@ help_text: "CONUS: Single Sequence SCFG algorithms\n         CONUS 1.0 (in progr
   \ \n-d            : debugging output \n\n\nUsage: pocheck [-options] <seqfile in>\n\
   \n\n"
 generated_using: *id005
+docker_image:

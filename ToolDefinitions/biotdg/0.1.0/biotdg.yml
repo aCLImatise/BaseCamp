@@ -4,63 +4,105 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -s
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -p
-  args: !SimpleFlagArg
-    name: PLOIDY_TABLE
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --vcf
-  args: !SimpleFlagArg
-    name: VCF
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -r
+  - --reference
+  description: Reference genome for the sample.
   args: !SimpleFlagArg
     name: REFERENCE
+- !Flag
   optional: true
+  synonyms:
+  - --vcf
+  description: VCF file with mutations.
+  args: !SimpleFlagArg
+    name: VCF
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --ploidy-table
+  description: "Tab-delimited file with two columns specifying the\nchromosome name\
+    \ and its ploidy. By default all\nchromosomes have a ploidy of 2."
+  args: !SimpleFlagArg
+    name: PLOIDY_TABLE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sample-name
+  description: "Name of the sample to generate. The sample must be in\nthe VCF file."
+  args: !SimpleFlagArg
+    name: SAMPLE_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --random-seed
+  description: 'Random seed for dwgsim (default: 1).'
+  args: !SimpleFlagArg
+    name: RANDOM_SEED
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --read-length
+  description: Read length to be used by dwgsim.
+  args: !SimpleFlagArg
+    name: READ_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --coverage
+  description: "Average coverage for the generated reads. NOTE: This\nis multiplied\
+    \ by the ploidy of the chromosome."
+  args: !SimpleFlagArg
+    name: COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --read1-error-rate
+  description: "Same as -e flag in dwgsim. per base/color/flow error\nrate of the\
+    \ first read."
+  args: !SimpleFlagArg
+    name: READ1_ERROR_RATE
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  - --read2-error-rate
+  description: "Same as -E flag in dwgsim. per base/color/flow error\nrate of the\
+    \ second read."
+  args: !SimpleFlagArg
+    name: READ2_ERROR_RATE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --maximum-n-number
+  description: Maximum number of Ns allowed in a given read.
+  args: !SimpleFlagArg
+    name: MAXIMUM_N_NUMBER
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--version             show program's\
-    \ version number and exit\n-r REFERENCE, --reference REFERENCE\nReference genome\
-    \ for the sample.\n--vcf VCF             VCF file with mutations.\n-p PLOIDY_TABLE,\
-    \ --ploidy-table PLOIDY_TABLE\nTab-delimited file with two columns specifying\
-    \ the\nchromosome name and its ploidy. By default all\nchromosomes have a ploidy\
-    \ of 2.\n-s SAMPLE_NAME, --sample-name SAMPLE_NAME\nName of the sample to generate.\
-    \ The sample must be in\nthe VCF file.\n-z RANDOM_SEED, --random-seed RANDOM_SEED\n\
-    Random seed for dwgsim (default: 1).\n-l READ_LENGTH, --read-length READ_LENGTH\n\
-    Read length to be used by dwgsim.\n-C COVERAGE, --coverage COVERAGE\nAverage coverage\
-    \ for the generated reads. NOTE: This\nis multiplied by the ploidy of the chromosome.\n\
-    -e READ1_ERROR_RATE, --read1-error-rate READ1_ERROR_RATE\nSame as -e flag in dwgsim.\
-    \ per base/color/flow error\nrate of the first read.\n-E READ2_ERROR_RATE, --read2-error-rate\
-    \ READ2_ERROR_RATE\nSame as -E flag in dwgsim. per base/color/flow error\nrate\
-    \ of the second read.\n-n MAXIMUM_N_NUMBER, --maximum-n-number MAXIMUM_N_NUMBER\n\
-    Maximum number of Ns allowed in a given read.\n-o OUTPUT_DIR, --output-dir OUTPUT_DIR\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: biotdg [-h] [--version] -r REFERENCE --vcf VCF -p PLOIDY_TABLE\
   \ -s\n              SAMPLE_NAME [-z RANDOM_SEED] [-l READ_LENGTH] [-C COVERAGE]\n\
   \              [-e READ1_ERROR_RATE] [-E READ2_ERROR_RATE]\n              [-n MAXIMUM_N_NUMBER]\
@@ -88,3 +130,4 @@ help_text: "usage: biotdg [-h] [--version] -r REFERENCE --vcf VCF -p PLOIDY_TABL
   \ OUTPUT_DIR\n"
 generated_using:
 - --help
+docker_image:

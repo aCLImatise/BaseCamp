@@ -3,23 +3,23 @@ id: deepac_strain_explain_fa2transfac.cwl
 inputs:
 - id: in_in_dir
   doc: Directory containing motifs per filter (.fasta)
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --in_dir
 - id: in_out_dir
   doc: Output directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --out_dir
 - id: in_weighting
   doc: Weight sequences by their DeepLIFT score
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --weighting
 - id: in_weight_dir
   doc: "Directory containing the DeepLIFT scores per filter\n(only required if --weighting\
     \ is chosen)\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --weight_dir
 - id: in_deep_ac
@@ -43,9 +43,10 @@ outputs:
   type: stdout
 - id: out_out_dir
   doc: Output directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_out_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - deepac-strain

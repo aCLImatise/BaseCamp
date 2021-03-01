@@ -4,59 +4,62 @@ command:
 positional: []
 named:
 - !Flag
-  description: "provide a configuration file to override defaults in\nglobal config\
-    \ file (/usr/local/share/strelka-2.9.10-0/\nbin/configureStrelkaSomaticWorkflow.py.ini)"
+  optional: true
   synonyms:
   - --config
+  description: "provide a configuration file to override defaults in\nglobal config\
+    \ file (/usr/local/share/strelka-2.9.10-0/\nbin/configureStrelkaSomaticWorkflow.py.ini)"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: show all extended/hidden options
+  optional: true
   synonyms:
   - --allHelp
+  description: show all extended/hidden options
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Normal sample BAM or CRAM file. (no default)
+  optional: true
   synonyms:
   - --normalBam
+  description: Normal sample BAM or CRAM file. (no default)
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: Tumor sample BAM or CRAM file. [required] (no default)
+  optional: true
   synonyms:
   - --tumorBam
   - --tumourBam
+  description: Tumor sample BAM or CRAM file. [required] (no default)
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Output a bed file describing somatic callable regions\nof the genome"
+  optional: true
   synonyms:
   - --outputCallableRegions
+  description: "Output a bed file describing somatic callable regions\nof the genome"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: samtools-indexed reference fasta file [required]
+  optional: true
   synonyms:
   - --referenceFasta
+  description: samtools-indexed reference fasta file [required]
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --indelCandidates
   description: "Specify a VCF of candidate indel alleles. These\nalleles are always\
     \ evaluated but only reported in the\noutput when they are inferred to exist in\
     \ the sample.\nThe VCF must be tabix indexed. All indel alleles must\nbe left-shifted/normalized,\
     \ any unnormalized alleles\nwill be ignored. This option may be specified more\n\
     than once, multiple input VCFs will be merged.\n(default: None)"
-  synonyms:
-  - --indelCandidates
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --forcedGT
   description: "Specify a VCF of candidate alleles. These alleles are\nalways evaluated\
     \ and reported even if they are\nunlikely to exist in the sample. The VCF must\
     \ be tabix\nindexed. All indel alleles must be left-\nshifted/normalized, any\
@@ -64,55 +67,52 @@ named:
     more than once, multiple input VCFs will be merged.\nNote that for any SNVs provided\
     \ in the VCF, the SNV\nsite will be reported (and for gVCF, excluded from\nblock\
     \ compression), but the specific SNV alleles are\nignored. (default: None)"
-  synonyms:
-  - --forcedGT
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Set options for exome or other targeted input: note in\nparticular\
-    \ that this flag turns off high-depth filters"
+  optional: true
   synonyms:
   - --exome
   - --targeted
+  description: "Set options for exome or other targeted input: note in\nparticular\
+    \ that this flag turns off high-depth filters"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --callRegions
   description: "Optionally provide a bgzip-compressed/tabix-indexed\nBED file containing\
     \ the set of regions to call. No VCF\noutput will be provided outside of these\
     \ regions. The\nfull genome will still be used to estimate statistics\nfrom the\
     \ input (such as expected depth per\nchromosome). Only one BED file may be specified.\n\
     (default: call the entire genome)"
-  synonyms:
-  - --callRegions
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Name of directory to be created where all workflow\nscripts and output\
-    \ will be written. Each analysis\nrequires a separate directory. (default:\nStrelkaSomaticWorkflow)"
+  optional: true
   synonyms:
   - --runDir
+  description: "Name of directory to be created where all workflow\nscripts and output\
+    \ will be written. Each analysis\nrequires a separate directory. (default:\nStrelkaSomaticWorkflow)"
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: configureStrelkaSomaticWorkflow.py [options]\n\nVersion: 2.9.10\n\
   \nThis script configures Strelka somatic small variant calling.\nYou must specify\
   \ an alignment file (BAM or CRAM) for each sample of a matched tumor-normal pair.\n\
@@ -161,3 +161,4 @@ help_text: "Usage: configureStrelkaSomaticWorkflow.py [options]\n\nVersion: 2.9.
   \ (hidden):\n"
 generated_using:
 - --help
+docker_image:

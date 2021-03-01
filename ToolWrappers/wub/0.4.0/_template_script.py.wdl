@@ -8,6 +8,9 @@ task TemplateScriptpy {
     _template_script_py \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: "Input."
   }

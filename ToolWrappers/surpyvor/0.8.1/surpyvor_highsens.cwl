@@ -3,7 +3,7 @@ id: surpyvor_highsens.cwl
 inputs:
 - id: in_verbose
   doc: Print out more information while running.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_variants
@@ -13,17 +13,17 @@ inputs:
     prefix: --variants
 - id: in_output
   doc: output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_distance
   doc: distance between variants to merge
-  type: string
+  type: string?
   inputBinding:
     prefix: --distance
 - id: in_minlength
   doc: "Minimum length of variants to consider\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --minlength
 outputs:
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - surpyvor

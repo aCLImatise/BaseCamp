@@ -14,6 +14,9 @@ task Blpairreads {
       ~{if (specify_basename_output) then "-o" else ""} \
       ~{if (use_sep_separator) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specify_input_files: "specify multiple input FASTQ files"
     specify_basename_output: "specify the BASENAME for the output files"

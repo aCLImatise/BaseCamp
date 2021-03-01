@@ -10,6 +10,9 @@ task EslssdrawMsafile {
       ~{ss_postscript_template} \
       ~{output_postscript_file_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ss_postscript_template: ""
     output_postscript_file_name: ""

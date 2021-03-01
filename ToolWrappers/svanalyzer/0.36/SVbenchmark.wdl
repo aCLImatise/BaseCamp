@@ -32,6 +32,9 @@ task SVbenchmark {
       ~{if defined(norm_size_dist) then ("--normsizedist " +  '"' + norm_size_dist + '"') else ""} \
       ~{if defined(distance_file) then ("--distance_file " +  '"' + distance_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "The fasta file that was used as the reference for the two VCF files\\nbeing compared."
     test: "The file of variants to be compared to the variants in the truth\\nfile."

@@ -14,6 +14,9 @@ task Lefse2circladerpyOUTPUTFILE {
       ~{label} \
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     l: ""
     lefsetwocircladerdotpy: ""

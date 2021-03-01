@@ -16,6 +16,9 @@ task Gensub2 {
       ~{if (group_one) then "-group1" else ""} \
       ~{if (group_two) then "-group2" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     group_one: "- write elements in order Aa Ab Ac Ba Bb Bc Ca Cb Cc"
     group_two: "- write elements in order Aa Ba Ca Ab Bb Cb Ac Bc Cc"

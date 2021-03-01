@@ -8,6 +8,9 @@ task Expfitsh {
     expfit_sh \
       ~{par_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     par_file: ""
   }

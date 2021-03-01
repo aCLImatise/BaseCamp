@@ -4,26 +4,29 @@ command:
 - annotate
 positional:
 - !Positional
-  description: a vcf input file
+  optional: false
   position: 0
   name: input_file
-  optional: false
+  description: a vcf input file
 - !Positional
-  description: "the name of an installed SnpEff genome annotation file\n(the snpeff-genomes\
-    \ tool can be used to get a list of\nall such names)"
+  optional: false
   position: 1
   name: annotation_source
-  optional: false
+  description: "the name of an installed SnpEff genome annotation file\n(the snpeff-genomes\
+    \ tool can be used to get a list of\nall such names)"
 named:
 - !Flag
-  description: "redirect the output to the specified file (default:\nstdout)"
+  optional: true
   synonyms:
   - -o
   - --ofile
+  description: "redirect the output to the specified file (default:\nstdout)"
   args: !SimpleFlagArg
     name: OFILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --codon-tables
   description: "specify custom codon tables to be used in assessing\nvariant effects\
     \ at the protein level; if a codon table\nshould be used for only a specific chromosome,\
     \ use the\nformat CHROM:TABLE_NAME. Use TABLE_NAME alone to\nspecify a codon table\
@@ -31,97 +34,94 @@ named:
     Valid TABLE_NAMEs are those defined in the Codon\ntables section of the SnpEff\
     \ config file. NOTE: It is\nalso possible to associate chromosomes with a codon\n\
     table permanently by editing the SnpEff config file."
-  synonyms:
-  - --codon-tables
   args: !RepeatFlagArg
     name: TABLE_SPEC
-  optional: true
 - !Flag
-  description: generate a results summary file of the specified name
+  optional: true
   synonyms:
   - --stats
+  description: generate a results summary file of the specified name
   args: !SimpleFlagArg
     name: SUMMARY_FILE
-  optional: true
 - !Flag
-  description: do not include downstream effects in the output
+  optional: true
   synonyms:
   - --no-downstream
+  description: do not include downstream effects in the output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: do not include upstream effects in the output
+  optional: true
   synonyms:
   - --no-upstream
+  description: do not include upstream effects in the output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: do not include intron effects in the output
+  optional: true
   synonyms:
   - --no-intron
+  description: do not include intron effects in the output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: do not include intergenic effects in the output
+  optional: true
   synonyms:
   - --no-intergenic
+  description: do not include intergenic effects in the output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: do not include UTR effects in the output
+  optional: true
   synonyms:
   - --no-utr
+  description: do not include UTR effects in the output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "specify the upstream/downstream interval length, i.e.,\nvariants more\
-    \ than DISTANCE nts from the next\nannotated gene are considered to be intergenic"
+  optional: true
   synonyms:
   - --ud
+  description: "specify the upstream/downstream interval length, i.e.,\nvariants more\
+    \ than DISTANCE nts from the next\nannotated gene are considered to be intergenic"
   args: !SimpleFlagArg
     name: DISTANCE
-  optional: true
 - !Flag
-  description: "location of the SnpEff installation directory. Will\noverride MiModD\
-    \ SNPEFF_PATH config setting if\nprovided."
+  optional: true
   synonyms:
   - -c
   - --config
+  description: "location of the SnpEff installation directory. Will\noverride MiModD\
+    \ SNPEFF_PATH config setting if\nprovided."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: maximal memory to use in GB (overrides config setting)
+  optional: true
   synonyms:
   - -m
   - --memory
+  description: maximal memory to use in GB (overrides config setting)
   args: !SimpleFlagArg
     name: MEMORY
-  optional: true
 - !Flag
-  description: suppress original messages from SnpEff
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: suppress original messages from SnpEff
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: verbose output (independent of SnpEff)
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: verbose output (independent of SnpEff)
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage:  annotate [-h] [-o OFILE] [--codon-tables TABLE_SPEC [TABLE_SPEC\
@@ -160,3 +160,4 @@ help_text: "usage:  annotate [-h] [-o OFILE] [--codon-tables TABLE_SPEC [TABLE_S
   \ output (independent of SnpEff)\n"
 generated_using:
 - --help
+docker_image:

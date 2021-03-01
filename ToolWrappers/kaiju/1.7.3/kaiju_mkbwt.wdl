@@ -24,6 +24,9 @@ task Kaijumkbwt {
       ~{if (term) then "-term" else ""} \
       ~{if (rev_sort) then "-revsort" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_filename: "(string)\\nName of output. Several files with different extensions are produced\\n(if not given, input file name is used).\\nValue:  NULL (null)"
     alphabet: "(string)\\nAlphabet used. Must end with the sequence terminator. Instead of alphabet\\nyou can specify DNA, RNA or protein, in which case the alphabet is ACGT,\\nACGU, or ACDEFGHIKLMNPQRSTVWYX\\nValue:  protein"

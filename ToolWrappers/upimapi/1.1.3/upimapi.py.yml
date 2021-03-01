@@ -1,0 +1,199 @@
+!Command
+command:
+- upimapi.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "Input filename - can be: 1. a file containing a list\nof IDs (one\
+    \ per line) 2. a BLAST TSV result file\n(requires to be specified with the --blast\
+    \ parameter\n3. a protein FASTA file to be annotated (requires the\n--use-diamond\
+    \ and -db parameters) 4. nothing! If so,\nwill read input from command line, and\
+    \ parse as CSV\n(id1,id2,...)"
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: filename of output of UniProt information
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --excel
+  description: Will produce output in EXCEL format (default is TSV)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -anncols
+  - --annotation-columns
+  description: List of UniProt columns to obtain information from
+  args: !SimpleFlagArg
+    name: ANNOTATION_COLUMNS
+- !Flag
+  optional: true
+  synonyms:
+  - -anndbs
+  - --annotation-databases
+  description: "List of databases to cross-check with UniProt\ninformation"
+  args: !SimpleFlagArg
+    name: ANNOTATION_DATABASES
+- !Flag
+  optional: true
+  synonyms:
+  - --blast
+  description: "If input file is in BLAST TSV format (will consider\none ID per line\
+    \ if not set)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --full-id
+  description: "If IDs in database are in 'full' format: tr|XXX|XXX"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: Output will be generated in FASTA format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --step
+  description: "How many IDs to submit per request to the API (default\nis 1000)"
+  args: !SimpleFlagArg
+    name: STEP
+- !Flag
+  optional: true
+  synonyms:
+  - --max-tries
+  description: "How many times to try obtaining information from\nUniProt before giving\
+    \ up"
+  args: !SimpleFlagArg
+    name: MAX_TRIES
+- !Flag
+  optional: true
+  synonyms:
+  - --use-diamond
+  description: "Use DIAMOND to annotate sequences before mapping IDs.\nRequires protein\
+    \ FASTA files as input for \"-db\" and\n\"-i\" parameters"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -do
+  - --diamond-output
+  description: DIAMOND's output foldername
+  args: !SimpleFlagArg
+    name: DIAMOND_OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -db
+  - --database
+  description: "Reference database for annotation with DIAMOND.\nNOTICE: if database's\
+    \ IDs are in 'full' format\n(tr|XXX|XXX), specify with \"\"--full-id\" parameter."
+  args: !SimpleFlagArg
+    name: DATABASE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads to use in annotation steps
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -mts
+  - --max-target-seqs
+  description: Number of annotations to output per sequence inputed
+  args: !SimpleFlagArg
+    name: MAX_TARGET_SEQS
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --block-size
+  description: Number of annotations to output per sequence inputed
+  args: !SimpleFlagArg
+    name: BLOCK_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --index-chunks
+  description: Number of annotations to output per sequence inputed
+  args: !SimpleFlagArg
+    name: INDEX_CHUNKS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: upimapi.py [-h] [-i INPUT] [-o OUTPUT] [--excel]\n            \
+  \      [-anncols ANNOTATION_COLUMNS] [-anndbs ANNOTATION_DATABASES]\n          \
+  \        [--blast] [--full-id] [--fasta] [--step STEP]\n                  [--max-tries\
+  \ MAX_TRIES] [-v] [--use-diamond]\n                  [-do DIAMOND_OUTPUT] [-db DATABASE]\
+  \ [-t THREADS]\n                  [-mts MAX_TARGET_SEQS] [-b BLOCK_SIZE] [-c INDEX_CHUNKS]\n\
+  \nUniProt Id Mapping through API\n\noptional arguments:\n  -h, --help          \
+  \  show this help message and exit\n  -i INPUT, --input INPUT\n                \
+  \        Input filename - can be: 1. a file containing a list\n                \
+  \        of IDs (one per line) 2. a BLAST TSV result file\n                    \
+  \    (requires to be specified with the --blast parameter\n                    \
+  \    3. a protein FASTA file to be annotated (requires the\n                   \
+  \     --use-diamond and -db parameters) 4. nothing! If so,\n                   \
+  \     will read input from command line, and parse as CSV\n                    \
+  \    (id1,id2,...)\n  -o OUTPUT, --output OUTPUT\n                        filename\
+  \ of output of UniProt information\n  --excel               Will produce output\
+  \ in EXCEL format (default is TSV)\n  -anncols ANNOTATION_COLUMNS, --annotation-columns\
+  \ ANNOTATION_COLUMNS\n                        List of UniProt columns to obtain\
+  \ information from\n  -anndbs ANNOTATION_DATABASES, --annotation-databases ANNOTATION_DATABASES\n\
+  \                        List of databases to cross-check with UniProt\n       \
+  \                 information\n  --blast               If input file is in BLAST\
+  \ TSV format (will consider\n                        one ID per line if not set)\n\
+  \  --full-id             If IDs in database are in 'full' format: tr|XXX|XXX\n \
+  \ --fasta               Output will be generated in FASTA format\n  --step STEP\
+  \           How many IDs to submit per request to the API (default\n           \
+  \             is 1000)\n  --max-tries MAX_TRIES\n                        How many\
+  \ times to try obtaining information from\n                        UniProt before\
+  \ giving up\n  -v, --version         show program's version number and exit\n\n\
+  DIAMOND arguments:\n  --use-diamond         Use DIAMOND to annotate sequences before\
+  \ mapping IDs.\n                        Requires protein FASTA files as input for\
+  \ \"-db\" and\n                        \"-i\" parameters\n  -do DIAMOND_OUTPUT,\
+  \ --diamond-output DIAMOND_OUTPUT\n                        DIAMOND's output foldername\n\
+  \  -db DATABASE, --database DATABASE\n                        Reference database\
+  \ for annotation with DIAMOND.\n                        NOTICE: if database's IDs\
+  \ are in 'full' format\n                        (tr|XXX|XXX), specify with \"\"\
+  --full-id\" parameter.\n  -t THREADS, --threads THREADS\n                      \
+  \  Number of threads to use in annotation steps\n  -mts MAX_TARGET_SEQS, --max-target-seqs\
+  \ MAX_TARGET_SEQS\n                        Number of annotations to output per sequence\
+  \ inputed\n  -b BLOCK_SIZE, --block-size BLOCK_SIZE\n                        Number\
+  \ of annotations to output per sequence inputed\n  -c INDEX_CHUNKS, --index-chunks\
+  \ INDEX_CHUNKS\n                        Number of annotations to output per sequence\
+  \ inputed\n\nA tool for retrieving information from UniProt.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/upimapi:1.1.3--0

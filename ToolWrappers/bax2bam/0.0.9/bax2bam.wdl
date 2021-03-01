@@ -46,6 +46,9 @@ task Bax2bam {
       ~{if (internal) then "--internal" else ""} \
       ~{if (allow_unrecognized_chemistry_triple) then "--allowUnrecognizedChemistryTriple" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     xml: "DataSet XML file containing a list of movie names"
     fof_n: "File-of-file-names containing a list of input files"

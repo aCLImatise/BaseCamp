@@ -12,6 +12,9 @@ task PoretoolsEvents {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (pre_base_called) then "--pre-basecalled" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     pre_base_called: "Report pre-basecalled events"

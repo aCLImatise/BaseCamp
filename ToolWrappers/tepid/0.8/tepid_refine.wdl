@@ -24,6 +24,9 @@ task Tepidrefine {
       ~{if defined(split) then ("--split " +  '"' + split + '"') else ""} \
       ~{if defined(all_samples) then ("--all_samples " +  '"' + all_samples + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep: "keep all intermediate files"
     insertions: "File containing collapsed TE insertions for all\\nsamples in population"

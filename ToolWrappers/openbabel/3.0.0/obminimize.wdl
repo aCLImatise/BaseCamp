@@ -2,7 +2,7 @@ version 1.0
 
 task Obminimize {
   input {
-    Float? set_convergence_criteria
+    Float? set_criteria_defaulte
     Boolean? cg
     Boolean? sd
     Boolean? newton
@@ -17,7 +17,7 @@ task Obminimize {
   command <<<
     obminimize \
       ~{filename} \
-      ~{if defined(set_convergence_criteria) then ("-c " +  '"' + set_convergence_criteria + '"') else ""} \
+      ~{if defined(set_criteria_defaulte) then ("-c " +  '"' + set_criteria_defaulte + '"') else ""} \
       ~{if (cg) then "-cg" else ""} \
       ~{if (sd) then "-sd" else ""} \
       ~{if (newton) then "-newton" else ""} \
@@ -28,8 +28,11 @@ task Obminimize {
       ~{if defined(rele) then ("-rele " +  '"' + rele + '"') else ""} \
       ~{if defined(pf) then ("-pf " +  '"' + pf + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    set_convergence_criteria: "set convergence criteria (default=1e-6)"
+    set_criteria_defaulte: "set convergence criteria (default=1e-6)"
     cg: "use conjugate gradients algorithm (default)"
     sd: "use steepest descent algorithm"
     newton: "use Newton2Num linesearch (default=Simple)"

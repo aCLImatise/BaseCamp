@@ -20,6 +20,9 @@ task Interleafq {
       ~{if (force_interleave) then "--force-interleave" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_prefix: "Basename for the output file when deinterleaving. Will produce by\\ndefault \\\"{prefix}_R1.fastq\\\" and \\\"{prefix}_R2.fastq\\\"."
     first_pair: "Filename for the first pair produced when deinterleaving.\\nAlternative to \\\"-o\\\", if the specified output filename ends with\\n'.gz' will print a compressed file."

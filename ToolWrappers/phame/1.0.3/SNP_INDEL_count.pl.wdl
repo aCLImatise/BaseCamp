@@ -8,6 +8,9 @@ task SNPINDELCountpl {
     SNP_INDEL_count_pl \
       ~{perl}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     perl: ""
   }

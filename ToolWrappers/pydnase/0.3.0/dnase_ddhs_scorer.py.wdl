@@ -22,6 +22,9 @@ task DnaseDdhsScorerpy {
       ~{if (low_ram_mode) then "-l" else ""} \
       ~{if (atacseq_mode_default) then "-A" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     low_ram_mode: "low RAM mode (disables caching) (Default: False)"
     atacseq_mode_default: "ATAC-seq mode (default: False)"

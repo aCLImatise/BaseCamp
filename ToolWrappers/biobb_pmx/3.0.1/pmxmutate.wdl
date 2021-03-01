@@ -14,6 +14,9 @@ task Pmxmutate {
       ~{if defined(input_structure_path) then ("--input_structure_path " +  '"' + input_structure_path + '"') else ""} \
       ~{if defined(output_structure_path) then ("--output_structure_path " +  '"' + output_structure_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "This file can be a YAML file, JSON file or JSON string"
     input_b_structure_path: "Path to the mutated input structure file"

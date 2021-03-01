@@ -18,6 +18,9 @@ task GcloudSqlBackups {
       ~{list} \
       ~{restore}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     instances: "SYNOPSIS"
     create: "Creates a backup of a Cloud SQL instance."

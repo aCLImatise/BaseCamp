@@ -1,47 +1,41 @@
 class: CommandLineTool
 id: purge_haplotigs_place.cwl
 inputs:
-- id: in_primary_primary_contigs
-  doc: / -primary       Primary contigs fasta file
-  type: boolean
+- id: in_primary
+  doc: Primary contigs fasta file
+  type: boolean?
   inputBinding:
-    prefix: -p
-- id: in_placement_file_name
-  doc: / -out           Placement file name. DEFAULT = ncbi_placements.tsv
-  type: File
+    prefix: -primary
+- id: in_out
+  doc: Placement file name. DEFAULT = ncbi_placements.tsv
+  type: boolean?
   inputBinding:
-    prefix: -o
-- id: in_threads_threads_minimap
-  doc: / -threads       Threads for Minimap2. DEFAULT = 4
-  type: boolean
+    prefix: -out
+- id: in_threads
+  doc: Threads for Minimap2. DEFAULT = 4
+  type: boolean?
   inputBinding:
-    prefix: -t
-- id: in_coverage_coverage_cutoff
-  doc: "/ -coverage      Coverage cutoff percentage for pairing contigs.\nDEFAULT\
-    \ = 50 (%)"
-  type: boolean
+    prefix: -threads
+- id: in_coverage
+  doc: "Coverage cutoff percentage for pairing contigs.\nDEFAULT = 50 (%)"
+  type: boolean?
   inputBinding:
-    prefix: -c
-- id: in_falconnaming_rename_contigs
-  doc: "/ -falconNaming  Rename contigs in the style used by FALCON Unzip. Saved\n\
-    to <in-prefix>.FALC.fasta\n"
-  type: boolean
+    prefix: -coverage
+- id: in_falcon_naming
+  doc: "Rename contigs in the style used by FALCON Unzip. Saved\nto <in-prefix>.FALC.fasta\n"
+  type: boolean?
   inputBinding:
-    prefix: -f
+    prefix: -falconNaming
 - id: in_h
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -h
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_placement_file_name
-  doc: / -out           Placement file name. DEFAULT = ncbi_placements.tsv
-  type: File
-  outputBinding:
-    glob: $(inputs.in_placement_file_name)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - purge_haplotigs

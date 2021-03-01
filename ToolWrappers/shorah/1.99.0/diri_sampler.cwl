@@ -1,17 +1,31 @@
 class: CommandLineTool
 id: diri_sampler.cwl
 inputs:
-- id: in_sampling_iterationsa_alphak
-  doc: "parameters\n-j <sampling iterations>\n-a <alpha>\n-K <startvalue for number\
-    \ of clusters> not compat. with -k\n-k <avg. number of reads in each startcluster>\
-    \ not compat. with -K\n-t <history time>\n-R <randomseed>"
-  type: File
+- id: in_a
+  doc: not compat. with -k
+  type: string?
   inputBinding:
-    prefix: -i
+    prefix: -a
+- id: in_k
+  doc: not compat. with -K
+  type: long?
+  inputBinding:
+    prefix: -k
+- id: in_files
+  doc: -i <input data file>
+  type: string
+  inputBinding:
+    position: 0
+- id: in_parameters
+  doc: -j <sampling iterations>
+  type: string
+  inputBinding:
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - diri_sampler

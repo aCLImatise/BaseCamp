@@ -4,47 +4,48 @@ command:
 - varextract
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: varextract
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: keep all alternate allele candidates even if they do
-  synonyms:
-  - -a
-  - --keep-alts
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: OFILE
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -v
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -p
+  - --pre-vcf
+  - -a
+  - --keep-alts
+  description: "keep all alternate allele candidates even if they do\nnot appear in\
+    \ any genotype"
   args: !RepeatFlagArg
     name: VCF_INPUT
+- !Flag
   optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: verbose output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --ofile
+  description: "redirect the output (variant sites) to the specified\nfile (default:\
+    \ stdout)\n"
+  args: !SimpleFlagArg
+    name: OFILE
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage:  varextract [-h] [-p VCF_INPUT [VCF_INPUT ...]] [-a] [-v] [-o OFILE]\n\
@@ -58,3 +59,4 @@ help_text: "usage:  varextract [-h] [-p VCF_INPUT [VCF_INPUT ...]] [-a] [-v] [-o
   \ stdout)\n"
 generated_using:
 - --help
+docker_image:

@@ -6,28 +6,28 @@ inputs:
     \ genome sequence and feature table.\nIf this option is not used, the option -seq\
     \ must be used\ninstead.\n(type supported-organism to obtain the list of supported\n\
     organisms)"
-  type: string
+  type: string?
   inputBinding:
     prefix: -org
 - id: in_seq
   doc: "input sequence file\n(alternative to organism)\nSpecify the input sequence\
     \ file. See INPUT FORMAT\nbelow."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -seq
 - id: in_in_format
   doc: input sequence format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -informat
 - id: in_prefix
   doc: prefix for sequence identifier
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -prefix
 - id: in_feat_type
   doc: "Feature type.\nSupported: gene,mRNA,tRNA,rRNA,scRNA,misc_RNA,CDS,start_codon,stop_codon,exon"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -feattype
 - id: in_type
@@ -35,46 +35,46 @@ inputs:
     orf (warning: introns are not spliced out)\nrandom (random fragments)\nTo implement\
     \ in the future\nintrons\ncoding\nThe sub-option\n-type random\nrequires to use\
     \ the -n for specifying the number of sequences."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -type
 - id: in_sequecnes_only_type
   doc: of sequecnes (only with -type random)
-  type: long
+  type: long?
   inputBinding:
     prefix: -n
-- id: in_query_should_orf
+- id: in_query_be_eg
   doc: "The query should be an orf identifier (eg 'metR').\nThe query is case-insensitive.\n\
     Multiple queries can be entered by reiteratively using the -q\noption."
-  type: string
+  type: string?
   inputBinding:
     prefix: -q
-- id: in_query_file_first
+- id: in_query_file_taken
   doc: "query file. The first word of each line is taken as a query.\nThis option\
     \ is incompatible with -q."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_ids_only
   doc: "Use this option if the queries are provided as a list\nof IDs. This avoids\
     \ to load the table of synonyms, in\norder tos ave time."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ids_only
 - id: in_all
   doc: return all genomic upstream regions
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -all
 - id: in_name_output_file
   doc: name of the output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_oft
   doc: "output features file\nin addition to the sequences, export a feature file\
     \ with the\nchromosomal location of the retrieved sequences."
-  type: File
+  type: File?
   inputBinding:
     prefix: -oft
 - id: in_from
@@ -82,20 +82,20 @@ inputs:
     \ of the region to extract, relative to orf start\n(=position 0). Use negative\
     \ values for upstream sequence.\nexample: -from -800 -to -1\nwill extract the\
     \ 800 bp upstream the orf start.\n(this is the default)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -from
 - id: in_format
   doc: "to select different output formats, with the following\noptions:\nIG     \
     \ IntelliGenetics (default format)\nWC      wconsensus format\nraw     only the\
     \ sequence is returned, without spaces, newlines\nnor comments.\nFastA"
-  type: string
+  type: string?
   inputBinding:
     prefix: -format
 - id: in_lw
   doc: "##  Line width. A newline character will be inserted in the\nsequence every\
     \ ## bases. Default is 60.\n-lw 0 will prevent newline insertion."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -lw
 - id: in_label
@@ -104,12 +104,12 @@ inputs:
     Example:\n-label org,name,id\nIn this case, the sequence identifier will contain\
     \ all\nof these fields, separated by the separator specified\nwith the option\
     \ -labelsep."
-  type: string
+  type: string?
   inputBinding:
     prefix: -label
 - id: in_labelsep
   doc: 'Separator between label fields. Default: |'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -labelsep
 - id: in_no_orf
@@ -129,19 +129,19 @@ inputs:
     \ sequences, it is essential to prevent\noverlap with upstream genes, because\
     \ intergenic\ndistances are often very short, especially between\npairs of genes\
     \ comprised in the same operon."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -noorf
 - id: in_rm
   doc: "Use the repeat masked version of the genome.  Attention :\nrepeated regions\
     \ are annotated for some genomes only."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -rm
 - id: in_nocom
   doc: "no comments. Only the identifier and the sequence are\nreturned. By default,\
     \ the comment indicates the ORF and\nupstream sequence coordinates."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nocom
 - id: in_imp_pos
@@ -149,19 +149,19 @@ inputs:
     \ of some genes\nare imprecisely specified (e.g. <555245, >898098). By default,\n\
     these genes are not loaded. The option -imp_pos allows to\nretrieve sequence for\
     \ these genes as well, using the imprecise\ncoordinate as reference position."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -imp_pos
 - id: in_nowarn
   doc: Prevents warning when a gene cannot be identified.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nowarn
 - id: in_rand_sels
   doc: "#\nSelect a random set of # genes in the genome annotations.\nThis option\
     \ ois obsolete, it has been replaced by a\nseparate command: random-genes. The\
     \ option is\nmaintained for backward compatibility."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -randsels
 - id: in_lf
@@ -169,14 +169,14 @@ inputs:
     \ sequences with the same\nlengths as a set of reference sequences. The sequence\n\
     length file can be obtained with the command\nsequence-lengths\nThe length file\
     \ contains two columns :\n- sequence ID (ignored)\n- sequence length"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -lf
 - id: in_features
   doc: "alternate feature table. This option allows to speify\nan alternate file where\
     \ the ORF locations are found.\nSee below for a description of the feature file\
     \ format."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -features
 - id: in_genes_dot
@@ -200,15 +200,16 @@ outputs:
   type: stdout
 - id: out_name_output_file
   doc: name of the output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_name_output_file)
 - id: out_oft
   doc: "output features file\nin addition to the sequences, export a feature file\
     \ with the\nchromosomal location of the retrieved sequences."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_oft)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

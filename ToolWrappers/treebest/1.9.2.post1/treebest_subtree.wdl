@@ -10,6 +10,9 @@ task TreebestSubtree {
       ~{tree} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree: ""
     list: ""

@@ -5,7 +5,7 @@ task RsatGeneinfo {
     Boolean? help
     Boolean? verbose
     Boolean? org
-    Boolean? query_can_reiterated
+    Boolean? query_reiterated_same
     Boolean? query_file
     File? output_file
     Boolean? full
@@ -24,7 +24,7 @@ task RsatGeneinfo {
       ~{if (help) then "-help" else ""} \
       ~{if (verbose) then "-v" else ""} \
       ~{if (org) then "-org" else ""} \
-      ~{if (query_can_reiterated) then "-q" else ""} \
+      ~{if (query_reiterated_same) then "-q" else ""} \
       ~{if (query_file) then "-i" else ""} \
       ~{if (output_file) then "-o" else ""} \
       ~{if (full) then "-full" else ""} \
@@ -32,11 +32,14 @@ task RsatGeneinfo {
       ~{if (descr) then "-descr" else ""} \
       ~{if (feat_type) then "-feattype" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "display options"
     verbose: "verbose"
     org: "organism"
-    query_can_reiterated: "query. can be reiterated within the same command line"
+    query_reiterated_same: "query. can be reiterated within the same command line"
     query_file: "query file"
     output_file: "output file"
     full: "full match only (no substring matching)"

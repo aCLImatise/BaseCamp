@@ -24,6 +24,9 @@ task Showaligns {
       ~{if defined(set_matrix_type) then ("-x " +  '"' + set_matrix_type + '"') else ""} \
       ~{if defined(space_markers_default) then ("-m " +  '"' + space_markers_default + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sort_alignments_query: "Sort alignments by the query start coordinate"
     sort_alignments_reference: "Sort alignments by the reference start coordinate"

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, Boolean, File, String
+
+Streamingquerydnadatabase_Queue_Py_V0_1_0 = CommandToolBuilder(tool="StreamingQueryDNADatabase_queue.py", base_command=["StreamingQueryDNADatabase_queue.py"], inputs=[ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="Number of threads to use (default: 8)")), ToolInput(tag="in_containment_threshold", input_type=Int(optional=True), prefix="--containment_threshold", doc=InputDocumentation(doc="Only return results with containment index above this\nthreshold at the maximum k-mer size. (default: 0.1)")), ToolInput(tag="in_plot_file", input_type=Boolean(optional=True), prefix="--plot_file", doc=InputDocumentation(doc="Optional flag to specify that a plot of the k-mer\ncurves should also be saved (same basenameas the\nout_file). (default: False)")), ToolInput(tag="in_filter_file", input_type=File(optional=True), prefix="--filter_file", doc=InputDocumentation(doc="Location of pre-filter bloom filter. Use only if you\nabsolutely know what you're doing (hard to error check\nbloom filters). (default: None)")), ToolInput(tag="in_location_of_thresh", input_type=Int(optional=True), prefix="--location_of_thresh", doc=InputDocumentation(doc="Location in range to apply the threshold passed by the\n-c flag. -l 2 -c 5-50-10 means the threshold will be\napplied at k-size 25. Default is largest size.\n(default: -1)\n")), ToolInput(tag="in_script_calculates_indicies", input_type=String(), position=0, doc=InputDocumentation(doc="This script calculates containment indicies for each of the training/reference")), ToolInput(tag="in_in_file", input_type=String(), position=0, doc=InputDocumentation(doc="Input file: FASTA/Q file to be processes")), ToolInput(tag="in_reference_file", input_type=String(), position=1, doc=InputDocumentation(doc="Training database/reference file (in HDF5 format).\nCreated with MakeStreamingDNADatabase.py")), ToolInput(tag="in_out_file", input_type=String(), position=2, doc=InputDocumentation(doc="Output csv file with the containment indices.")), ToolInput(tag="in_range_kmer_sizes", input_type=String(), position=3, doc=InputDocumentation(doc="Range of k-mer sizes in the formate\n<start>-<end>-<increment>. So 5-10-2 means [5, 7, 9].\nIf <end> is larger than the k-mer sizeof the training\ndata, this will automatically be reduced."))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Streamingquerydnadatabase_Queue_Py_V0_1_0().translate("wdl", allow_empty_container=True)
+

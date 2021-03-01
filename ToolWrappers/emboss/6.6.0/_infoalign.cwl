@@ -6,7 +6,7 @@ inputs:
     \ matrix file used when\ncomparing sequences. By default it is the\nfile 'EBLOSUM62'\
     \ (for proteins) or the file\n'EDNAFULL' (for nucleic sequences). These\nfiles\
     \ are found in the 'data' directory of\nthe EMBOSS installation."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -matrix
 - id: in_refseq
@@ -15,12 +15,12 @@ inputs:
     \ one against which all the\nother sequences are compared. If this is set\nto\
     \ 0 then the consensus sequence will be\nused as the reference sequence. By default\n\
     the consensus sequence is used as the\nreference sequence. (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -refseq
 - id: in_html
   doc: boolean    [N] Format output as an HTML table
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -html
 - id: in_plurality
@@ -28,7 +28,7 @@ inputs:
     \ which there is no\nconsensus. The default plurality is taken as\n50% of the\
     \ total weight of all the\nsequences in the alignment. (Number from\n0.000 to\
     \ 100.000)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -plurality
 - id: in_identity
@@ -36,7 +36,7 @@ inputs:
     \ identities at a position\nfor it to give a consensus. Therefore, if\nthis is\
     \ set to 100% only columns of\nidentities contribute to the consensus.\n(Number\
     \ from 0.000 to 100.000)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -identity
 - id: in_only
@@ -44,42 +44,42 @@ inputs:
     \ a few things to be\ndisplayed. Instead of specifying:\n'-nohead -nousa -noname\
     \ -noalign -nogaps\n-nogapcount -nosimcount -noidcount\n-nodiffcount -noweight'\n\
     to get only the sequence length output, you\ncan specify\n'-only -seqlength'"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -only
 - id: in_heading
   doc: boolean    [@(!$(only))] Display column headings
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -heading
 - id: in_usa
   doc: boolean    [@(!$(only))] Display the USA of the
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -usa
 - id: in_seq_length
   doc: boolean    [@(!$(only))] Display 'seqlength' column
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -seqlength
 - id: in_align_length
   doc: boolean    [@(!$(only))] Display 'alignlength' column
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -alignlength
 - id: in_gaps
   doc: boolean    [@(!$(only))] Display number of gaps
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -gaps
 - id: in_gap_count
   doc: boolean    [@(!$(only))] Display number of gap
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -gapcount
 - id: in_description
   doc: boolean    [@(!$(only))] Display 'description' column
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -description
 - id: in_sequence
@@ -91,6 +91,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _infoalign

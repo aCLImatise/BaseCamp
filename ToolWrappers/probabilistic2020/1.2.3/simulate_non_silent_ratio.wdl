@@ -34,6 +34,9 @@ task SimulateNonSilentRatio {
       ~{if defined(observed_output) then ("--observed-output " +  '"' + observed_output + '"') else ""} \
       ~{if defined(output_text_file_simulation) then ("--output " +  '"' + output_text_file_simulation + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_level: "Write a log file (--log-level=DEBUG for debug mode,\\n--log-level=INFO for info mode)"
     log: "Path to log file. (accepts \\\"stdout\\\")"

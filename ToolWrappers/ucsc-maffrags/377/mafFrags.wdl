@@ -24,6 +24,9 @@ task MafFrags {
       ~{if (tx_starts) then "-txStarts" else ""} \
       ~{if (ref_coords) then "-refCoords" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     orgs: "- File with list of databases/organisms in order"
     be_done_two: "- If set, in.bed is a bed 12 file, including exons"

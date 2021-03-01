@@ -16,6 +16,9 @@ task Aadderrun {
       ~{if (report_not_found) then "--reportNotFound" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sam_files: "[string(s)]              Input SAM file(s) (.gz ok). Mandatory option."
     index: "[string]                 AAdd index directory. Mandatory option."

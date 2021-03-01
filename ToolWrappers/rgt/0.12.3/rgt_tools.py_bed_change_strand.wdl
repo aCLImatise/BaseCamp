@@ -18,6 +18,9 @@ task RgttoolspyBedChangeStrand {
       ~{if (reverse_the_strand) then "-r" else ""} \
       ~{if defined(define_stand_regions) then ("-a " +  '"' + define_stand_regions + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bed_file: "Input BED file"
     output_bed_file: "Output BED file"

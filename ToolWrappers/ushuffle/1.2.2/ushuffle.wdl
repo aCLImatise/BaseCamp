@@ -16,6 +16,9 @@ task Ushuffle {
       ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""} \
       ~{if (benchmark) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specifies_the_sequence: "specifies the sequence"
     specifies_number_generate: "specifies the number of random sequences to generate"

@@ -30,6 +30,9 @@ task RibotricerDetectorfs {
       ~{if defined(min_read_density) then ("--min_read_density " +  '"' + min_read_density + '"') else ""} \
       ~{if (report_all) then "--report_all" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Path to BAM file  [required]"
     ribot_ricer_index: "Path to the index file of ribotricer This\\nfile should be generated using ribotricer\\nprepare-orfs  [required]"

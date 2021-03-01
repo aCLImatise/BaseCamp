@@ -36,6 +36,9 @@ task Mosdepth {
       ~{if (use_median) then "--use-median" else ""} \
       ~{if defined(read_groups) then ("--read-groups " +  '"' + read_groups + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "number of BAM decompression threads [default: 0]"
     chrom: "chromosome to restrict depth calculation."

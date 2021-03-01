@@ -14,6 +14,9 @@ task Rankpl {
       ~{if defined(precision) then ("--precision " +  '"' + precision + '"') else ""} \
       ~{if (returns_count_ngrams) then "--N" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     precision: "Rounds coefficient to N places (default = 4)"
     returns_count_ngrams: "Returns count of ngrams in common between files"

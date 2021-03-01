@@ -4,6 +4,9 @@ task LorikeetFilter {
   command <<<
     lorikeet filter
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

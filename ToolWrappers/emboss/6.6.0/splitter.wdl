@@ -14,6 +14,9 @@ task Splitter {
       ~{if (feature) then "-feature" else ""} \
       ~{if (add_overlap) then "-addoverlap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     size: "integer    [10000] Size to split at (Integer 1 or more)"
     overlap: "integer    [0] Overlap between split sequences (Integer\\n0 or more)"

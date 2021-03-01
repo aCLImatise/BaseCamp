@@ -1,0 +1,1474 @@
+&id001 !Command
+command:
+- hailctl
+positional: []
+named: []
+parent:
+subcommands:
+- &id002 !Command
+  command:
+  - hailctl
+  - dataproc
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --beta
+    description: "Force use of `beta` in gcloud commands (default:\nFalse)\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - hailctl
+    - dataproc
+    - stop
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: name
+      description: Cluster name.
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --async
+      description: Do not wait for cluster deletion.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --dry-run
+      description: Print gcloud dataproc command, but don't run it.
+      args: !EmptyFlagArg {}
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl dataproc stop [-h] [--async] [--dry-run] name\n\nShut\
+      \ down a Dataproc cluster.\n\npositional arguments:\n  name        Cluster name.\n\
+      \noptional arguments:\n  -h, --help  show this help message and exit\n  --async\
+      \     Do not wait for cluster deletion.\n  --dry-run   Print gcloud dataproc\
+      \ command, but don't run it.\n"
+    generated_using: &id003
+    - --help
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  - !Command
+    command:
+    - hailctl
+    - dataproc
+    - connect
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --project
+      description: "Google Cloud project for the cluster (defaults to\ncurrently set\
+        \ project)."
+      args: !SimpleFlagArg
+        name: PROJECT
+    - !Flag
+      optional: true
+      synonyms:
+      - --port
+      - -p
+      description: "Local port to use for SSH tunnel to leader (master)\nnode (default:\
+        \ 10000)."
+      args: !SimpleFlagArg
+        name: PORT
+    - !Flag
+      optional: true
+      synonyms:
+      - --zone
+      - -z
+      description: Compute zone for Dataproc cluster.
+      args: !SimpleFlagArg
+        name: ZONE
+    - !Flag
+      optional: true
+      synonyms:
+      - --dry-run
+      description: Print gcloud dataproc command, but don't run it.
+      args: !EmptyFlagArg {}
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl dataproc connect [-h] [--project PROJECT] [--port PORT]\n\
+      \                                [--zone ZONE] [--dry-run]\n               \
+      \                 name\n                                {notebook,nb,spark-ui,ui,spark-history,hist}\n\
+      \nConnect to a running Dataproc cluster.\n\npositional arguments:\n  name  \
+      \                Cluster name.\n  {notebook,nb,spark-ui,ui,spark-history,hist}\n\
+      \                        Web service to launch.\n\noptional arguments:\n  -h,\
+      \ --help            show this help message and exit\n  --project PROJECT   \
+      \  Google Cloud project for the cluster (defaults to\n                     \
+      \   currently set project).\n  --port PORT, -p PORT  Local port to use for SSH\
+      \ tunnel to leader (master)\n                        node (default: 10000).\n\
+      \  --zone ZONE, -z ZONE  Compute zone for Dataproc cluster.\n  --dry-run   \
+      \          Print gcloud dataproc command, but don't run it.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  - !Command
+    command:
+    - hailctl
+    - dataproc
+    - modify
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: time.
+      description: --dry-run             Print gcloud dataproc command, but don't
+        run it.
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --num-workers
+      - --n-workers
+      - -w
+      description: New number of worker machines (min. 2).
+      args: !SimpleFlagArg
+        name: NUM_WORKERS
+    - !Flag
+      optional: true
+      synonyms:
+      - --num-secondary-workers
+      - --num-preemptible-workers
+      - --n-pre-workers
+      - -p
+      description: New number of secondary (preemptible) worker machines.
+      args: !SimpleFlagArg
+        name: NUM_SECONDARY_WORKERS
+    - !Flag
+      optional: true
+      synonyms:
+      - --graceful-decommission-timeout
+      - --graceful
+      description: "If set, cluster size downgrade will use graceful\ndecommissioning\
+        \ with the given timeout (e.g. \"60m\")."
+      args: !SimpleFlagArg
+        name: GRACEFUL_DECOMMISSION_TIMEOUT
+    - !Flag
+      optional: true
+      synonyms:
+      - --max-idle
+      description: New maximum idle time before shutdown (e.g. "60m").
+      args: !SimpleFlagArg
+        name: MAX_IDLE
+    - !Flag
+      optional: true
+      synonyms:
+      - --no-max-idle
+      description: Disable auto deletion after idle time.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --expiration-time
+      description: "The time when cluster will be auto-deleted. (e.g.\n\"2020-01-01T20:00:00Z\"\
+        ). Execute gcloud topic\ndatatimes for more information."
+      args: !SimpleFlagArg
+        name: EXPIRATION_TIME
+    - !Flag
+      optional: true
+      synonyms:
+      - --max-age
+      description: "If the cluster is older than this, it will be auto-\ndeleted.\
+        \ (e.g. \"2h\")Execute gcloud topic datatimes for\nmore information."
+      args: !SimpleFlagArg
+        name: MAX_AGE
+    - !Flag
+      optional: true
+      synonyms:
+      - --no-max-age
+      description: Disable auto-deletion due to max age or expiration
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --zone
+      - -z
+      description: Compute zone for Dataproc cluster.
+      args: !SimpleFlagArg
+        name: ZONE
+    - !Flag
+      optional: true
+      synonyms:
+      - --update-hail-version
+      description: "Update the version of hail running on cluster to match\nthe currently\
+        \ installed version."
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --wheel
+      description: New Hail installation.
+      args: !SimpleFlagArg
+        name: WHEEL
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl dataproc modify [-h] [--num-workers NUM_WORKERS]\n\
+      \                               [--num-secondary-workers NUM_SECONDARY_WORKERS]\n\
+      \                               [--graceful-decommission-timeout GRACEFUL_DECOMMISSION_TIMEOUT]\n\
+      \                               [--max-idle MAX_IDLE | --no-max-idle]\n    \
+      \                           [--expiration-time EXPIRATION_TIME | --max-age MAX_AGE\
+      \ | --no-max-age]\n                               [--dry-run] [--zone ZONE]\n\
+      \                               [--update-hail-version | --wheel WHEEL]\n  \
+      \                             name\n\nModify active Dataproc clusters.\n\npositional\
+      \ arguments:\n  name                  Cluster name.\n\noptional arguments:\n\
+      \  -h, --help            show this help message and exit\n  --num-workers NUM_WORKERS,\
+      \ --n-workers NUM_WORKERS, -w NUM_WORKERS\n                        New number\
+      \ of worker machines (min. 2).\n  --num-secondary-workers NUM_SECONDARY_WORKERS,\
+      \ --num-preemptible-workers NUM_SECONDARY_WORKERS, --n-pre-workers NUM_SECONDARY_WORKERS,\
+      \ -p NUM_SECONDARY_WORKERS\n                        New number of secondary\
+      \ (preemptible) worker machines.\n  --graceful-decommission-timeout GRACEFUL_DECOMMISSION_TIMEOUT,\
+      \ --graceful GRACEFUL_DECOMMISSION_TIMEOUT\n                        If set,\
+      \ cluster size downgrade will use graceful\n                        decommissioning\
+      \ with the given timeout (e.g. \"60m\").\n  --max-idle MAX_IDLE   New maximum\
+      \ idle time before shutdown (e.g. \"60m\").\n  --no-max-idle         Disable\
+      \ auto deletion after idle time.\n  --expiration-time EXPIRATION_TIME\n    \
+      \                    The time when cluster will be auto-deleted. (e.g.\n   \
+      \                     \"2020-01-01T20:00:00Z\"). Execute gcloud topic\n    \
+      \                    datatimes for more information.\n  --max-age MAX_AGE  \
+      \   If the cluster is older than this, it will be auto-\n                  \
+      \      deleted. (e.g. \"2h\")Execute gcloud topic datatimes for\n          \
+      \              more information.\n  --no-max-age          Disable auto-deletion\
+      \ due to max age or expiration\n                        time.\n  --dry-run \
+      \            Print gcloud dataproc command, but don't run it.\n  --zone ZONE,\
+      \ -z ZONE  Compute zone for Dataproc cluster.\n  --update-hail-version\n   \
+      \                     Update the version of hail running on cluster to match\n\
+      \                        the currently installed version.\n  --wheel WHEEL \
+      \        New Hail installation.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  - !Command
+    command:
+    - hailctl
+    - dataproc
+    - diagnose
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --dest
+      - -d
+      description: Directory for diagnose output -- must be local.
+      args: !SimpleFlagArg
+        name: DEST
+    - !Flag
+      optional: true
+      synonyms:
+      - --hail-log
+      - -l
+      description: Path for hail.log file.
+      args: !SimpleFlagArg
+        name: HAIL_LOG
+    - !Flag
+      optional: true
+      synonyms:
+      - --overwrite
+      description: Delete dest directory before adding new files.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --no-diagnose
+      description: Do not run gcloud dataproc clusters diagnose.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --compress
+      - -z
+      description: GZIP all files.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --workers
+      description: "[WORKERS [WORKERS ...]]\nSpecific workers to get log files from."
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --take
+      description: Only download logs from the first N workers.
+      args: !SimpleFlagArg
+        name: TAKE
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl dataproc diagnose [-h] --dest DEST [--hail-log HAIL_LOG]\n\
+      \                                 [--overwrite] [--no-diagnose] [--compress]\n\
+      \                                 [--workers [WORKERS [WORKERS ...]]]\n    \
+      \                             [--take TAKE]\n                              \
+      \   name\n\nDiagnose problems in a Dataproc cluster.\n\npositional arguments:\n\
+      \  name                  Cluster name.\n\noptional arguments:\n  -h, --help\
+      \            show this help message and exit\n  --dest DEST, -d DEST  Directory\
+      \ for diagnose output -- must be local.\n  --hail-log HAIL_LOG, -l HAIL_LOG\n\
+      \                        Path for hail.log file.\n  --overwrite           Delete\
+      \ dest directory before adding new files.\n  --no-diagnose         Do not run\
+      \ gcloud dataproc clusters diagnose.\n  --compress, -z        GZIP all files.\n\
+      \  --workers [WORKERS [WORKERS ...]]\n                        Specific workers\
+      \ to get log files from.\n  --take TAKE           Only download logs from the\
+      \ first N workers.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  - !Command
+    command:
+    - hailctl
+    - dataproc
+    - start
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --master-machine-type
+      - --master
+      - -m
+      description: 'Master machine type (default: n1-highmem-8).'
+      args: !SimpleFlagArg
+        name: MASTER_MACHINE_TYPE
+    - !Flag
+      optional: true
+      synonyms:
+      - --master-memory-fraction
+      description: "Fraction of master memory allocated to the JVM. Use a\nsmaller\
+        \ value to reserve more memory for Python.\n(default: 0.8)"
+      args: !SimpleFlagArg
+        name: MASTER_MEMORY_FRACTION
+    - !Flag
+      optional: true
+      synonyms:
+      - --master-boot-disk-size
+      description: 'Disk size of master machine, in GB (default: 100).'
+      args: !SimpleFlagArg
+        name: MASTER_BOOT_DISK_SIZE
+    - !Flag
+      optional: true
+      synonyms:
+      - --num-master-local-ssds
+      description: "Number of local SSDs to attach to the master machine\n(default:\
+        \ 0)."
+      args: !SimpleFlagArg
+        name: NUM_MASTER_LOCAL_SSDS
+    - !Flag
+      optional: true
+      synonyms:
+      - --num-secondary-workers
+      - --num-preemptible-workers
+      - --n-pre-workers
+      - -p
+      description: "Number of secondary (preemptible) worker machines\n(default: 0)."
+      args: !SimpleFlagArg
+        name: NUM_SECONDARY_WORKERS
+    - !Flag
+      optional: true
+      synonyms:
+      - --num-worker-local-ssds
+      description: "Number of local SSDs to attach to each worker machine\n(default:\
+        \ 0)."
+      args: !SimpleFlagArg
+        name: NUM_WORKER_LOCAL_SSDS
+    - !Flag
+      optional: true
+      synonyms:
+      - --num-workers
+      - --n-workers
+      - -w
+      description: 'Number of worker machines (default: 2).'
+      args: !SimpleFlagArg
+        name: NUM_WORKERS
+    - !Flag
+      optional: true
+      synonyms:
+      - --secondary-worker-boot-disk-size
+      - --preemptible-worker-boot-disk-size
+      description: "Disk size of secondary (preemptible) worker machines,\nin GB (default:\
+        \ 40)."
+      args: !SimpleFlagArg
+        name: SECONDARY_WORKER_BOOT_DISK_SIZE
+    - !Flag
+      optional: true
+      synonyms:
+      - --worker-boot-disk-size
+      description: 'Disk size of worker machines, in GB (default: 40).'
+      args: !SimpleFlagArg
+        name: WORKER_BOOT_DISK_SIZE
+    - !Flag
+      optional: true
+      synonyms:
+      - --worker-machine-type
+      - --worker
+      description: "Worker machine type (default: n1-standard-8, or\nn1-highmem-8\
+        \ with --vep)."
+      args: !SimpleFlagArg
+        name: WORKER_MACHINE_TYPE
+    - !Flag
+      optional: true
+      synonyms:
+      - --region
+      description: Compute region for the cluster.
+      args: !SimpleFlagArg
+        name: REGION
+    - !Flag
+      optional: true
+      synonyms:
+      - --zone
+      description: Compute zone for the cluster.
+      args: !SimpleFlagArg
+        name: ZONE
+    - !Flag
+      optional: true
+      synonyms:
+      - --properties
+      description: Additional configuration properties for the cluster
+      args: !SimpleFlagArg
+        name: PROPERTIES
+    - !Flag
+      optional: true
+      synonyms:
+      - --metadata
+      description: "Comma-separated list of metadata to add:\nKEY1=VALUE1,KEY2=VALUE2..."
+      args: !SimpleFlagArg
+        name: METADATA
+    - !Flag
+      optional: true
+      synonyms:
+      - --packages
+      - --pkgs
+      description: "Comma-separated list of Python packages to be\ninstalled on the\
+        \ master node."
+      args: !SimpleFlagArg
+        name: PACKAGES
+    - !Flag
+      optional: true
+      synonyms:
+      - --project
+      description: "Google Cloud project to start cluster (defaults to\ncurrently\
+        \ set project)."
+      args: !SimpleFlagArg
+        name: PROJECT
+    - !Flag
+      optional: true
+      synonyms:
+      - --configuration
+      description: "Google Cloud configuration to start cluster (defaults\nto currently\
+        \ set configuration)."
+      args: !SimpleFlagArg
+        name: CONFIGURATION
+    - !Flag
+      optional: true
+      synonyms:
+      - --max-idle
+      description: "If specified, maximum idle time before shutdown (e.g.\n60m)."
+      args: !SimpleFlagArg
+        name: MAX_IDLE
+    - !Flag
+      optional: true
+      synonyms:
+      - --expiration-time
+      description: "If specified, time at which cluster is shutdown (e.g.\n2020-01-01T00:00:00Z)."
+      args: !SimpleFlagArg
+        name: EXPIRATION_TIME
+    - !Flag
+      optional: true
+      synonyms:
+      - --max-age
+      description: If specified, maximum age before shutdown (e.g. 60m).
+      args: !SimpleFlagArg
+        name: MAX_AGE
+    - !Flag
+      optional: true
+      synonyms:
+      - --bucket
+      description: "The Google Cloud Storage bucket to use for cluster\nstaging (just\
+        \ the bucket name, no gs:// prefix)."
+      args: !SimpleFlagArg
+        name: BUCKET
+    - !Flag
+      optional: true
+      synonyms:
+      - --network
+      description: the network for all nodes in this cluster
+      args: !SimpleFlagArg
+        name: NETWORK
+    - !Flag
+      optional: true
+      synonyms:
+      - --master-tags
+      description: "comma-separated list of instance tags to apply to the\nmastern\
+        \ node"
+      args: !SimpleFlagArg
+        name: MASTER_TAGS
+    - !Flag
+      optional: true
+      synonyms:
+      - --wheel
+      description: 'Non-default Hail installation. Warning: experimental.'
+      args: !SimpleFlagArg
+        name: WHEEL
+    - !Flag
+      optional: true
+      synonyms:
+      - --init
+      description: Comma-separated list of init scripts to run.
+      args: !SimpleFlagArg
+        name: INIT
+    - !Flag
+      optional: true
+      synonyms:
+      - --init_timeout
+      description: "Flag to specify a timeout period for the\ninitialization action"
+      args: !SimpleFlagArg
+        name: INIT_TIMEOUT
+    - !Flag
+      optional: true
+      synonyms:
+      - --vep
+      description: Install VEP for the specified reference genome.
+      args: !ChoiceFlagArg
+        choices: !!set
+          GRCh37:
+          GRCh38:
+    - !Flag
+      optional: true
+      synonyms:
+      - --dry-run
+      description: Print gcloud dataproc command, but don't run it.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --requester-pays-allow-all
+      description: Allow reading from all requester-pays buckets.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --requester-pays-allow-buckets
+      description: "Comma-separated list of requester-pays buckets to\nallow reading\
+        \ from."
+      args: !SimpleFlagArg
+        name: REQUESTER_PAYS_ALLOW_BUCKETS
+    - !Flag
+      optional: true
+      synonyms:
+      - --requester-pays-allow-annotation-db
+      description: "Allows reading from any of the requester-pays buckets\nthat hold\
+        \ data for the annotation database."
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --debug-mode
+      description: "Enable debug features on created cluster (heap dump on\nout-of-memory\
+        \ error)\n"
+      args: !EmptyFlagArg {}
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl dataproc start [-h] [--master-machine-type MASTER_MACHINE_TYPE]\n\
+      \                              [--master-memory-fraction MASTER_MEMORY_FRACTION]\n\
+      \                              [--master-boot-disk-size MASTER_BOOT_DISK_SIZE]\n\
+      \                              [--num-master-local-ssds NUM_MASTER_LOCAL_SSDS]\n\
+      \                              [--num-secondary-workers NUM_SECONDARY_WORKERS]\n\
+      \                              [--num-worker-local-ssds NUM_WORKER_LOCAL_SSDS]\n\
+      \                              [--num-workers NUM_WORKERS]\n               \
+      \               [--secondary-worker-boot-disk-size SECONDARY_WORKER_BOOT_DISK_SIZE]\n\
+      \                              [--worker-boot-disk-size WORKER_BOOT_DISK_SIZE]\n\
+      \                              [--worker-machine-type WORKER_MACHINE_TYPE]\n\
+      \                              [--region REGION] [--zone ZONE]\n           \
+      \                   [--properties PROPERTIES] [--metadata METADATA]\n      \
+      \                        [--packages PACKAGES] [--project PROJECT]\n       \
+      \                       [--configuration CONFIGURATION]\n                  \
+      \            [--max-idle MAX_IDLE]\n                              [--expiration-time\
+      \ EXPIRATION_TIME | --max-age MAX_AGE]\n                              [--bucket\
+      \ BUCKET] [--network NETWORK]\n                              [--master-tags\
+      \ MASTER_TAGS] [--wheel WHEEL]\n                              [--init INIT]\
+      \ [--init_timeout INIT_TIMEOUT]\n                              [--vep {GRCh37,GRCh38}]\
+      \ [--dry-run]\n                              [--requester-pays-allow-all]\n\
+      \                              [--requester-pays-allow-buckets REQUESTER_PAYS_ALLOW_BUCKETS]\n\
+      \                              [--requester-pays-allow-annotation-db]\n    \
+      \                          [--debug-mode]\n                              name\n\
+      \nStart a Dataproc cluster configured for Hail.\n\npositional arguments:\n \
+      \ name                  Cluster name.\n\noptional arguments:\n  -h, --help \
+      \           show this help message and exit\n  --master-machine-type MASTER_MACHINE_TYPE,\
+      \ --master MASTER_MACHINE_TYPE, -m MASTER_MACHINE_TYPE\n                   \
+      \     Master machine type (default: n1-highmem-8).\n  --master-memory-fraction\
+      \ MASTER_MEMORY_FRACTION\n                        Fraction of master memory\
+      \ allocated to the JVM. Use a\n                        smaller value to reserve\
+      \ more memory for Python.\n                        (default: 0.8)\n  --master-boot-disk-size\
+      \ MASTER_BOOT_DISK_SIZE\n                        Disk size of master machine,\
+      \ in GB (default: 100).\n  --num-master-local-ssds NUM_MASTER_LOCAL_SSDS\n \
+      \                       Number of local SSDs to attach to the master machine\n\
+      \                        (default: 0).\n  --num-secondary-workers NUM_SECONDARY_WORKERS,\
+      \ --num-preemptible-workers NUM_SECONDARY_WORKERS, --n-pre-workers NUM_SECONDARY_WORKERS,\
+      \ -p NUM_SECONDARY_WORKERS\n                        Number of secondary (preemptible)\
+      \ worker machines\n                        (default: 0).\n  --num-worker-local-ssds\
+      \ NUM_WORKER_LOCAL_SSDS\n                        Number of local SSDs to attach\
+      \ to each worker machine\n                        (default: 0).\n  --num-workers\
+      \ NUM_WORKERS, --n-workers NUM_WORKERS, -w NUM_WORKERS\n                   \
+      \     Number of worker machines (default: 2).\n  --secondary-worker-boot-disk-size\
+      \ SECONDARY_WORKER_BOOT_DISK_SIZE, --preemptible-worker-boot-disk-size SECONDARY_WORKER_BOOT_DISK_SIZE\n\
+      \                        Disk size of secondary (preemptible) worker machines,\n\
+      \                        in GB (default: 40).\n  --worker-boot-disk-size WORKER_BOOT_DISK_SIZE\n\
+      \                        Disk size of worker machines, in GB (default: 40).\n\
+      \  --worker-machine-type WORKER_MACHINE_TYPE, --worker WORKER_MACHINE_TYPE\n\
+      \                        Worker machine type (default: n1-standard-8, or\n \
+      \                       n1-highmem-8 with --vep).\n  --region REGION       Compute\
+      \ region for the cluster.\n  --zone ZONE           Compute zone for the cluster.\n\
+      \  --properties PROPERTIES\n                        Additional configuration\
+      \ properties for the cluster\n  --metadata METADATA   Comma-separated list of\
+      \ metadata to add:\n                        KEY1=VALUE1,KEY2=VALUE2...\n  --packages\
+      \ PACKAGES, --pkgs PACKAGES\n                        Comma-separated list of\
+      \ Python packages to be\n                        installed on the master node.\n\
+      \  --project PROJECT     Google Cloud project to start cluster (defaults to\n\
+      \                        currently set project).\n  --configuration CONFIGURATION\n\
+      \                        Google Cloud configuration to start cluster (defaults\n\
+      \                        to currently set configuration).\n  --max-idle MAX_IDLE\
+      \   If specified, maximum idle time before shutdown (e.g.\n                \
+      \        60m).\n  --expiration-time EXPIRATION_TIME\n                      \
+      \  If specified, time at which cluster is shutdown (e.g.\n                 \
+      \       2020-01-01T00:00:00Z).\n  --max-age MAX_AGE     If specified, maximum\
+      \ age before shutdown (e.g. 60m).\n  --bucket BUCKET       The Google Cloud\
+      \ Storage bucket to use for cluster\n                        staging (just the\
+      \ bucket name, no gs:// prefix).\n  --network NETWORK     the network for all\
+      \ nodes in this cluster\n  --master-tags MASTER_TAGS\n                     \
+      \   comma-separated list of instance tags to apply to the\n                \
+      \        mastern node\n  --wheel WHEEL         Non-default Hail installation.\
+      \ Warning: experimental.\n  --init INIT           Comma-separated list of init\
+      \ scripts to run.\n  --init_timeout INIT_TIMEOUT\n                        Flag\
+      \ to specify a timeout period for the\n                        initialization\
+      \ action\n  --vep {GRCh37,GRCh38}\n                        Install VEP for the\
+      \ specified reference genome.\n  --dry-run             Print gcloud dataproc\
+      \ command, but don't run it.\n  --requester-pays-allow-all\n               \
+      \         Allow reading from all requester-pays buckets.\n  --requester-pays-allow-buckets\
+      \ REQUESTER_PAYS_ALLOW_BUCKETS\n                        Comma-separated list\
+      \ of requester-pays buckets to\n                        allow reading from.\n\
+      \  --requester-pays-allow-annotation-db\n                        Allows reading\
+      \ from any of the requester-pays buckets\n                        that hold\
+      \ data for the annotation database.\n  --debug-mode          Enable debug features\
+      \ on created cluster (heap dump on\n                        out-of-memory error)\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  - !Command
+    command:
+    - hailctl
+    - dataproc
+    - submit
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: name
+      description: Cluster name.
+    - !Positional
+      optional: false
+      position: 1
+      name: script
+      description: Path to script.
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --files
+      description: "Comma-separated list of files to add to the working\ndirectory\
+        \ of the Hail application."
+      args: !SimpleFlagArg
+        name: FILES
+    - !Flag
+      optional: true
+      synonyms:
+      - --pyfiles
+      description: "Comma-separated list of files (or directories with\npython files)\
+        \ to add to the PYTHONPATH."
+      args: !SimpleFlagArg
+        name: PYFILES
+    - !Flag
+      optional: true
+      synonyms:
+      - --properties
+      - -p
+      description: Extra Spark properties to set.
+      args: !SimpleFlagArg
+        name: PROPERTIES
+    - !Flag
+      optional: true
+      synonyms:
+      - --gcloud_configuration
+      description: "Google Cloud configuration to submit job (defaults to\ncurrently\
+        \ set configuration)."
+      args: !SimpleFlagArg
+        name: GCLOUD_CONFIGURATION
+    - !Flag
+      optional: true
+      synonyms:
+      - --dry-run
+      description: Print gcloud dataproc command, but don't run it.
+      args: !EmptyFlagArg {}
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl dataproc submit [-h] [--files FILES] [--pyfiles PYFILES]\n\
+      \                               [--properties PROPERTIES]\n                \
+      \               [--gcloud_configuration GCLOUD_CONFIGURATION]\n            \
+      \                   [--dry-run]\n                               name script\n\
+      \nSubmit a Python script to a running Dataproc cluster. To pass arguments to\
+      \ the\nscript being submitted, just list them after the name of the script.\n\
+      \npositional arguments:\n  name                  Cluster name.\n  script   \
+      \             Path to script.\n\noptional arguments:\n  -h, --help         \
+      \   show this help message and exit\n  --files FILES         Comma-separated\
+      \ list of files to add to the working\n                        directory of\
+      \ the Hail application.\n  --pyfiles PYFILES     Comma-separated list of files\
+      \ (or directories with\n                        python files) to add to the\
+      \ PYTHONPATH.\n  --properties PROPERTIES, -p PROPERTIES\n                  \
+      \      Extra Spark properties to set.\n  --gcloud_configuration GCLOUD_CONFIGURATION\n\
+      \                        Google Cloud configuration to submit job (defaults\
+      \ to\n                        currently set configuration).\n  --dry-run   \
+      \          Print gcloud dataproc command, but don't run it.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  - !Command
+    command:
+    - hailctl
+    - dataproc
+    - describe
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --requester-pays-project-id
+      - -u
+      description: "Project to be billed for GCS requests.\n"
+      args: !SimpleFlagArg
+        name: REQUESTER_PAYS_PROJECT_ID
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl dataproc describe [-h]\n                          \
+      \       [--requester-pays-project-id REQUESTER_PAYS_PROJECT_ID]\n          \
+      \                       file\n\nGather information about a hail file (including\
+      \ the schema)\n\npositional arguments:\n  file                  Path to hail\
+      \ file (either MatrixTable or Table).\n\noptional arguments:\n  -h, --help \
+      \           show this help message and exit\n  --requester-pays-project-id REQUESTER_PAYS_PROJECT_ID,\
+      \ -u REQUESTER_PAYS_PROJECT_ID\n                        Project to be billed\
+      \ for GCS requests.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: hailctl dataproc [-h] [--beta]\n                        {start,submit,connect,diagnose,stop,list,modify,describe}\n\
+    \                        ...\n\nManage and monitor Hail deployments.\n\npositional\
+    \ arguments:\n  {start,submit,connect,diagnose,stop,list,modify,describe}\n  \
+    \  start               Start a Dataproc cluster configured for Hail.\n    submit\
+    \              Submit a Python script to a running Dataproc cluster.\n    connect\
+    \             Connect to a running Dataproc cluster.\n    diagnose           \
+    \ Diagnose problems in a Dataproc cluster.\n    stop                Shut down\
+    \ a Dataproc cluster.\n    list                List active Dataproc clusters.\n\
+    \    modify              Modify active Dataproc clusters.\n    describe      \
+    \      Gather information about a hail file (including the\n                 \
+    \       schema)\n\noptional arguments:\n  -h, --help            show this help\
+    \ message and exit\n  --beta                Force use of `beta` in gcloud commands\
+    \ (default:\n                        False)\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+- &id004 !Command
+  command:
+  - hailctl
+  - batch
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - hailctl
+    - batch
+    - log
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: batch_id
+      description: ID number of the desired batch
+    - !Positional
+      optional: false
+      position: 1
+      name: job_id
+      description: ID number of the desired job
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      description: Specify output format
+      args: !ChoiceFlagArg
+        choices: !!set
+          yaml:
+          json:
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl batch log [-h] [-o {yaml,json}] batch_id job_id\n\n\
+      Get log for a job\n\npositional arguments:\n  batch_id        ID number of the\
+      \ desired batch\n  job_id          ID number of the desired job\n\noptional\
+      \ arguments:\n  -h, --help      show this help message and exit\n  -o {yaml,json}\
+      \  Specify output format\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  - !Command
+    command:
+    - hailctl
+    - batch
+    - delete
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: batch_id
+      description: ID number of batch to be deleted
+    named: []
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl batch delete [-h] batch_id\n\nDelete a batch\n\npositional\
+      \ arguments:\n  batch_id    ID number of batch to be deleted\n\noptional arguments:\n\
+      \  -h, --help  show this help message and exit\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  - !Command
+    command:
+    - hailctl
+    - batch
+    - cancel
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: id
+      description: 'optional arguments:'
+    named: []
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl batch cancel [-h] id\n\nCancel a batch\n\npositional\
+      \ arguments:\n  id\n\noptional arguments:\n  -h, --help  show this help message\
+      \ and exit\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  - !Command
+    command:
+    - hailctl
+    - batch
+    - wait
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: batch_id
+      description: 'optional arguments:'
+    named: []
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl batch wait [-h] batch_id\n\nWait for a batch to complete,\
+      \ then print JSON status.\n\npositional arguments:\n  batch_id\n\noptional arguments:\n\
+      \  -h, --help  show this help message and exit\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  - !Command
+    command:
+    - hailctl
+    - batch
+    - list
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --query
+      - -q
+      description: see docs at https://batch.hail.is/batches
+      args: !SimpleFlagArg
+        name: QUERY
+    - !Flag
+      optional: true
+      synonyms:
+      - --limit
+      - -l
+      description: number of batches to return (default 50)
+      args: !SimpleFlagArg
+        name: LIMIT
+    - !Flag
+      optional: true
+      synonyms:
+      - --all
+      - -a
+      description: list all batches (overrides --limit)
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --before
+      description: start listing before supplied id
+      args: !SimpleFlagArg
+        name: BEFORE
+    - !Flag
+      optional: true
+      synonyms:
+      - --full
+      description: when output is tabular, print more information
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --no-header
+      description: do not print a table header
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      description: "specify output format (json, yaml, csv, tsv, or any\ntabulate\
+        \ format)\n"
+      args: !SimpleFlagArg
+        name: O
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl batch list [-h] [--query QUERY] [--limit LIMIT] [--all]\n\
+      \                          [--before BEFORE] [--full] [--no-header] [-o O]\n\
+      \nList batches\n\noptional arguments:\n  -h, --help            show this help\
+      \ message and exit\n  --query QUERY, -q QUERY\n                        see docs\
+      \ at https://batch.hail.is/batches\n  --limit LIMIT, -l LIMIT\n            \
+      \            number of batches to return (default 50)\n  --all, -a         \
+      \    list all batches (overrides --limit)\n  --before BEFORE       start listing\
+      \ before supplied id\n  --full                when output is tabular, print\
+      \ more information\n  --no-header           do not print a table header\n  -o\
+      \ O                  specify output format (json, yaml, csv, tsv, or any\n \
+      \                       tabulate format)\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  - !Command
+    command:
+    - hailctl
+    - batch
+    - get
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: batch_id
+      description: ID number of the desired batch
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      description: Specify output format
+      args: !ChoiceFlagArg
+        choices: !!set
+          yaml:
+          json:
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl batch get [-h] [-o {yaml,json}] batch_id\n\nGet a particular\
+      \ batch's info\n\npositional arguments:\n  batch_id        ID number of the\
+      \ desired batch\n\noptional arguments:\n  -h, --help      show this help message\
+      \ and exit\n  -o {yaml,json}  Specify output format\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  - !Command
+    command:
+    - hailctl
+    - batch
+    - job
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: batch_id
+      description: ID number of the desired batch
+    - !Positional
+      optional: false
+      position: 1
+      name: job_id
+      description: ID number of the desired job
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      description: Specify output format
+      args: !ChoiceFlagArg
+        choices: !!set
+          yaml:
+          json:
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl batch job [-h] [-o {yaml,json}] batch_id job_id\n\n\
+      Get the status and specification for a job\n\npositional arguments:\n  batch_id\
+      \        ID number of the desired batch\n  job_id          ID number of the\
+      \ desired job\n\noptional arguments:\n  -h, --help      show this help message\
+      \ and exit\n  -o {yaml,json}  Specify output format\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: hailctl batch [-h] {billing,list,get,cancel,delete,log,job,wait}\
+    \ ...\n\nManage batches running on the batch service managed by the Hail team.\n\
+    \npositional arguments:\n  {billing,list,get,cancel,delete,log,job,wait}\n   \
+    \ billing             List billing\n    list                List batches\n   \
+    \ get                 Get a particular batch's info\n    cancel              Cancel\
+    \ a batch\n    delete              Delete a batch\n    log                 Get\
+    \ log for a job\n    job                 Get the status and specification for\
+    \ a job\n    wait                Wait for a batch to complete, then print JSON\
+    \ status.\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+- &id005 !Command
+  command:
+  - hailctl
+  - auth
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - hailctl
+    - auth
+    - login
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --namespace
+      - -n
+      description: "Specify namespace for auth server. (default: from\ndeploy configuration)\n"
+      args: !SimpleFlagArg
+        name: NAMESPACE
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl auth login [-h] [--namespace NAMESPACE]\n\nObtain Hail\
+      \ credentials.\n\noptional arguments:\n  -h, --help            show this help\
+      \ message and exit\n  --namespace NAMESPACE, -n NAMESPACE\n                \
+      \        Specify namespace for auth server. (default: from\n               \
+      \         deploy configuration)\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  - !Command
+    command:
+    - hailctl
+    - auth
+    - copy-paste-login
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --namespace
+      - -n
+      description: "Specify namespace for auth server. (default: from\ndeploy configuration)\n"
+      args: !SimpleFlagArg
+        name: NAMESPACE
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl auth copy-paste-login [-h] [--namespace NAMESPACE]\n\
+      \                                     copy_paste_token\n\nObtain Hail credentials\
+      \ with a copy paste token.\n\npositional arguments:\n  copy_paste_token    \
+      \  Copy paste token.\n\noptional arguments:\n  -h, --help            show this\
+      \ help message and exit\n  --namespace NAMESPACE, -n NAMESPACE\n           \
+      \             Specify namespace for auth server. (default: from\n          \
+      \              deploy configuration)\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: hailctl auth [-h] {login,copy-paste-login,logout,list,user} ...\n\
+    \nManage Hail credentials.\n\npositional arguments:\n  {login,copy-paste-login,logout,list,user}\n\
+    \    login               Obtain Hail credentials.\n    copy-paste-login    Obtain\
+    \ Hail credentials with a copy paste token.\n    logout              Revoke Hail\
+    \ credentials.\n    list                List Hail credentials.\n    user     \
+    \           Get Hail user information.\n\noptional arguments:\n  -h, --help  \
+    \          show this help message and exit\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+- &id006 !Command
+  command:
+  - hailctl
+  - dev
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - hailctl
+    - dev
+    - query
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: set
+      description: Set a Hail query resource value.
+    - !Positional
+      optional: false
+      position: 1
+      name: unset
+      description: "Unset a Hail query resource value (restore to default\nbehavior)."
+    - !Positional
+      optional: false
+      position: 2
+      name: get
+      description: "Get the value of a Hail query resource (or all values of a\nspecific\
+        \ resource type)."
+    named: []
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl dev query [-h] {set,unset,get} ...\n\nSet dev settings\
+      \ on query service\n\npositional arguments:\n  {set,unset,get}\n    set    \
+      \        Set a Hail query resource value.\n    unset          Unset a Hail query\
+      \ resource value (restore to default\n                   behavior).\n    get\
+      \            Get the value of a Hail query resource (or all values of a\n  \
+      \                 specific resource type).\n\noptional arguments:\n  -h, --help\
+      \       show this help message and exit\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  - !Command
+    command:
+    - hailctl
+    - dev
+    - deploy
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --branch
+      - -b
+      description: Fully-qualified branch, e.g., hail-is/hail:feature.
+      args: !SimpleFlagArg
+        name: BRANCH
+    - !Flag
+      optional: true
+      synonyms:
+      - --steps
+      - -s
+      description: Comma or space-separated list of steps to run.
+      args: !RepeatFlagArg
+        name: STEPS
+    - !Flag
+      optional: true
+      synonyms:
+      - --open
+      - -o
+      description: Open the deploy batch page in a web browser.
+      args: !EmptyFlagArg {}
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl dev deploy [-h] --branch BRANCH --steps STEPS [STEPS\
+      \ ...]\n                          [--open]\n\nDeploy a branch\n\noptional arguments:\n\
+      \  -h, --help            show this help message and exit\n  --branch BRANCH,\
+      \ -b BRANCH\n                        Fully-qualified branch, e.g., hail-is/hail:feature.\n\
+      \  --steps STEPS [STEPS ...], -s STEPS [STEPS ...]\n                       \
+      \ Comma or space-separated list of steps to run.\n  --open, -o            Open\
+      \ the deploy batch page in a web browser.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  - !Command
+    command:
+    - hailctl
+    - dev
+    - config
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: namespace
+      description: "Default namespace. Show the current configuration if\nnot specified."
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --location
+      - -l
+      description: 'Location. (default: external)'
+      args: !ChoiceFlagArg
+        choices: !!set
+          external:
+          k8s:
+          gce:
+    - !Flag
+      optional: true
+      synonyms:
+      - --override
+      - -o
+      description: "List of comma-separated service=namespace overrides.\n(default:\
+        \ none)\n"
+      args: !SimpleFlagArg
+        name: OVERRIDE
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl dev config [-h] [--location {external,gce,k8s}]\n \
+      \                         [--override OVERRIDE]\n                          [namespace]\n\
+      \nConfigure deployment\n\npositional arguments:\n  namespace             Default\
+      \ namespace. Show the current configuration if\n                        not\
+      \ specified.\n\noptional arguments:\n  -h, --help            show this help\
+      \ message and exit\n  --location {external,gce,k8s}, -l {external,gce,k8s}\n\
+      \                        Location. (default: external)\n  --override OVERRIDE,\
+      \ -o OVERRIDE\n                        List of comma-separated service=namespace\
+      \ overrides.\n                        (default: none)\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: hailctl dev [-h] {config,deploy,query} ...\n\nManage Hail development\
+    \ utilities.\n\npositional arguments:\n  {config,deploy,query}\n    config   \
+    \           Configure deployment\n    deploy              Deploy a branch\n  \
+    \  query               Set dev settings on query service\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: hailctl [-h] {dataproc,auth,dev,version,batch,curl,config} ...\n\
+  \nManage and monitor Hail deployments.\n\npositional arguments:\n  {dataproc,auth,dev,version,batch,curl,config}\n\
+  \    dataproc            Manage Google Dataproc clusters configured for Hail.\n\
+  \    auth                Manage Hail credentials.\n    dev                 Manage\
+  \ Hail development utilities.\n    version             Print version information\
+  \ and exit.\n    batch               Manage batches running on the batch service\
+  \ managed by\n                        the Hail team.\n    curl                Issue\
+  \ authenticated curl requests to Hail\n                        infrastructure.\n\
+  \    config              Manage Hail configuration.\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1

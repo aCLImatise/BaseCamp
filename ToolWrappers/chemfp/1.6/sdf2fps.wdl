@@ -48,6 +48,9 @@ task Sdf2fps {
       ~{if defined(decoder) then ("--decoder " +  '"' + decoder + '"') else ""} \
       ~{if (pubchem) then "--pubchem" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id_tag: "get the record id from TAG instead of the first line\\nof the record"
     fp_tag: "get the fingerprint from tag TAG (required)"

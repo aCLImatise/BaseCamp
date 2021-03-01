@@ -12,6 +12,9 @@ task ChakinScripts {
       ~{var_command} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chak_in: ""
     var_command: ""

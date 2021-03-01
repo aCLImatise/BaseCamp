@@ -4,194 +4,194 @@ command:
 positional: []
 named:
 - !Flag
-  description: location of the psm file to be processed
+  optional: true
   synonyms:
   - --file
   - -F
+  description: location of the psm file to be processed
   args: !SimpleFlagArg
     name: PSM_FILE
-  optional: true
 - !Flag
-  description: "name of the project (will be determine how the output\nfile is called"
+  optional: true
   synonyms:
   - --name
   - -N
+  description: "name of the project (will be determine how the output\nfile is called"
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: numpber of mismatches allowed during mapping
+  optional: true
   synonyms:
   - --mismatches
   - -M
+  description: numpber of mismatches allowed during mapping
   args: !ChoiceFlagArg
     choices: !!set
-      '2':
       '0':
+      '2':
+      '5':
+      '3':
       '1':
       '4':
-      '3':
-      '5':
-  optional: true
 - !Flag
-  description: "Which database has to be used (currently only ENSEMBL\nis available"
+  optional: true
   synonyms:
   - --database
   - -D
+  description: "Which database has to be used (currently only ENSEMBL\nis available"
   args: !ChoiceFlagArg
     choices: !!set
       ENSEMBL:
-  optional: true
 - !Flag
-  description: species to be used
+  optional: true
   synonyms:
   - --species
   - -S
+  description: species to be used
   args: !ChoiceFlagArg
     choices: !!set
-      homo_sapiens:
-      drosophila_melanogaster:
       danio_rerio:
+      homo_sapiens:
       mus_musculus:
-  optional: true
+      drosophila_melanogaster:
 - !Flag
-  description: location where to output files should be stored
+  optional: true
   synonyms:
   - --directory
   - -C
+  description: location where to output files should be stored
   args: !SimpleFlagArg
     name: DIRECTORY
-  optional: true
 - !Flag
-  description: Whether duplicates should be removes
+  optional: true
   synonyms:
   - --rm_duplicates
   - -R
+  description: Whether duplicates should be removes
   args: !ChoiceFlagArg
     choices: !!set
       Y:
       N:
-  optional: true
 - !Flag
-  description: translate transcript sequences in 3 frames
+  optional: true
   synonyms:
   - --three_frame_translation
   - -T
+  description: translate transcript sequences in 3 frames
   args: !ChoiceFlagArg
     choices: !!set
       Y:
       N:
-  optional: true
 - !Flag
-  description: annotation for DECOY PSM
+  optional: true
   synonyms:
   - --decoy_annotation
   - -E
+  description: annotation for DECOY PSM
   args: !SimpleFlagArg
     name: DECOY_ANNOTATION
-  optional: true
 - !Flag
-  description: sorting order of the SAM file
+  optional: true
   synonyms:
   - --sorting_order
   - -O
+  description: sorting order of the SAM file
   args: !ChoiceFlagArg
     choices: !!set
+      unknown:
       queryname:
       unsorted:
       coordinate:
-      unknown:
-  optional: true
 - !Flag
-  description: Which/How annotation should be identified
+  optional: true
   synonyms:
   - --pre_picked_annotation
   - -P
+  description: Which/How annotation should be identified
   args: !ChoiceFlagArg
     choices: !!set
-      UniProt_ACC:
-      all:
       Ensembl_pr:
-      UniProt_Entry:
-      First:
+      all:
       Ensembl_tr:
+      First:
+      UniProt_Entry:
+      UniProt_ACC:
       RefSeq:
-  optional: true
 - !Flag
-  description: Whether unmapped psm should be included in the output
+  optional: true
   synonyms:
   - --include_unmapped
   - -U
+  description: Whether unmapped psm should be included in the output
   args: !ChoiceFlagArg
     choices: !!set
       Y:
       N:
-  optional: true
 - !Flag
-  description: which ouput format should be generated
+  optional: true
   synonyms:
   - --conversion_mode
   - -X
+  description: which ouput format should be generated
   args: !ChoiceFlagArg
     choices: !!set
-      proBAM_peptide:
       proBAM_psm:
+      proBAM_peptide:
       proBED:
       proBAM_peptide_mod:
-  optional: true
 - !Flag
-  description: add a comment to the file
+  optional: true
   synonyms:
   - --comments
   - -Y
+  description: add a comment to the file
   args: !SimpleFlagArg
     name: COMMENTS
-  optional: true
 - !Flag
-  description: "only process validated PSMs (for mzIdentML\n"
+  optional: true
   synonyms:
   - --validated_only
   - -A
+  description: "only process validated PSMs (for mzIdentML\n"
   args: !ChoiceFlagArg
     choices: !!set
       Y:
       N:
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: ENSEMBL version to be used
+  optional: true
   synonyms:
   - --version
   - -V
+  description: ENSEMBL version to be used
   args: !ChoiceFlagArg
     choices: !!set
-      '81':
-      '79':
-      '87':
-      '82':
       '85':
-      '83':
-      '86':
+      '78':
+      '79':
+      '74':
       '84':
-      '75':
-      '77':
-      '88':
       '89':
       '76':
-      '74':
-      '78':
+      '75':
       '80':
-  optional: true
+      '77':
+      '87':
+      '83':
+      '86':
+      '82':
+      '88':
+      '81':
 help_text: "Creating directory /root/.config/bioservices \nusage: proBAM.py [-h] --name\
   \ NAME [--mismatches {0,1,2,3,4,5}]\n                 [--version {74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89}]\n\
   \                 [--database {ENSEMBL}] --species\n                 {homo_sapiens,mus_musculus,drosophila_melanogaster,danio_rerio}\n\
@@ -230,3 +230,4 @@ help_text: "Creating directory /root/.config/bioservices \nusage: proBAM.py [-h]
   \ {Y,N}\n                        only process validated PSMs (for mzIdentML\n"
 generated_using:
 - --help
+docker_image:

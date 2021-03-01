@@ -12,6 +12,9 @@ task ClusteringPredict {
       ~{if defined(input_model_path) then ("--input_model_path " +  '"' + input_model_path + '"') else ""} \
       ~{if defined(output_results_path) then ("--output_results_path " +  '"' + output_results_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Configuration file"
     input_model_path: "Path to the input model. Accepted formats: pkl."

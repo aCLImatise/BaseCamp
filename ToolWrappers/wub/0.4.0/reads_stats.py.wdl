@@ -16,6 +16,9 @@ task ReadsStatspy {
       ~{if (report) then "--report" else ""} \
       ~{if defined(tag) then ("--tag " +  '"' + tag + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_x: "input file fastq or fasta"
     raw: "save raw the gc content per read/contig.\\ndefault[False]"

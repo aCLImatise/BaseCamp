@@ -1,87 +1,87 @@
 class: CommandLineTool
 id: byobu_ulevel.cwl
 inputs:
-- id: in_accessibility_mode_enabled
+- id: in_accessibility_mode_only
   doc: ": Accessibility mode: only output ASCII.\n(Also enabled if variable 'BYOBU_A11Y'\
     \ set)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_display_current_value
   doc: ": Display current value as space if zero, rather than lowest\n'value' of theme."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
-- id: in_current_value_indicator
+- id: in_current_value_your
   doc: ': Current value of your indicator.'
-  type: long
+  type: long?
   inputBinding:
     prefix: -c
 - id: in_enable_debug_output
   doc: ': Enable debug output.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
-- id: in_number_decimal_use
+- id: in_number_decimal_places
   doc: ": Number of decimal places to use for accessibility mode\n(default=2)."
-  type: long
+  type: long?
   inputBinding:
     prefix: -e
-- id: in_invert_colour_scheme
+- id: in_invert_rating_themes
   doc: ': Invert colour scheme (rating themes only).'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_list_available_themes
   doc: ": List available themes. If '-t' also specified,\nshow all values for specified\
     \ theme."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_minimum_value_default
   doc: ': Minimum value (default=0).'
-  type: long
+  type: long?
   inputBinding:
     prefix: -m
 - id: in_supress_output_newline
   doc: ': Supress output of newline character.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_permissive_mode_current
   doc: ": Permissive mode - if current value out of bounds, set it\nto the nearest\
     \ bound (min or max)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_suppress_messages_requires
   doc: ": Suppress messages (requires '-t')."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
 - id: in_reverse_display_rating
   doc: ": Reverse 'direction' of display (rating theme only)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_name_theme_defaultvbars
   doc: ': Name of theme (default=vbars_8).'
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
-- id: in_specify_user_values
+- id: in_specify_user_theme
   doc: ': Specify a user theme (2 or more values).'
-  type: long
+  type: long?
   inputBinding:
     prefix: -u
-- id: in_width_rating_default
+- id: in_width_rating_theme
   doc: ': Width of rating theme (default=5).'
-  type: long
+  type: long?
   inputBinding:
     prefix: -w
 - id: in_maximum_value_default
   doc: ': Maximum value (default=100).'
-  type: long
+  type: long?
   inputBinding:
     prefix: -x
 - id: in_number_dot
@@ -93,6 +93,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - byobu-ulevel

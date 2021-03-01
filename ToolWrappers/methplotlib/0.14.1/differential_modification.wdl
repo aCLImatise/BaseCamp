@@ -16,6 +16,9 @@ task DifferentialModification {
       ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "Bed file to aggregate modifications on."
     a_group: "Frequencies of group A."

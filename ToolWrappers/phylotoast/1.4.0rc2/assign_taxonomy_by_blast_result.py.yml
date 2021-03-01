@@ -4,33 +4,39 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -t
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - -i
+  - --rep_set_fp
+  description: The set of representative sequences.
   args: !SimpleFlagArg
     name: REP_SET_FP
+- !Flag
   optional: true
+  synonyms:
+  - -t
+  - --id_to_taxonomy_fp
+  description: "Path to tab-delimited file mapping sequences to\nassigned taxonomy."
+  args: !SimpleFlagArg
+    name: ID_TO_TAXONOMY_FP
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --assigned_taxonomy_fp
+  description: "The path to the result file. By default outputs to\nassigned_taxonomy.txt"
+  args: !SimpleFlagArg
+    name: ASSIGNED_TAXONOMY_FP
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-i REP_SET_FP, --rep_set_fp REP_SET_FP\n\
-    The set of representative sequences.\n-t ID_TO_TAXONOMY_FP, --id_to_taxonomy_fp\
-    \ ID_TO_TAXONOMY_FP\nPath to tab-delimited file mapping sequences to\nassigned\
-    \ taxonomy.\n-o ASSIGNED_TAXONOMY_FP, --assigned_taxonomy_fp ASSIGNED_TAXONOMY_FP\n\
-    The path to the result file. By default outputs to\nassigned_taxonomy.txt\n-v,\
-    \ --verbose\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: assign_taxonomy_by_blast_result.py [-h] -i REP_SET_FP -t\n    \
@@ -46,3 +52,4 @@ help_text: "usage: assign_taxonomy_by_blast_result.py [-h] -i REP_SET_FP -t\n   
   \                      assigned_taxonomy.txt\n  -v, --verbose\n"
 generated_using:
 - --help
+docker_image:

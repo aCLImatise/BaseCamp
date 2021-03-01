@@ -3,7 +3,7 @@ version 1.0
 task Tandemgenotypes {
   input {
     File? genes
-    Int? output_format_default
+    Int? output_format_original
     Float? mis_map
     Int? post_mask
     Int? promoter
@@ -22,7 +22,7 @@ task Tandemgenotypes {
       ~{micro_sat_dot_txt} \
       ~{alignments_dot_maf} \
       ~{if defined(genes) then ("--genes " +  '"' + genes + '"') else ""} \
-      ~{if defined(output_format_default) then ("--output " +  '"' + output_format_default + '"') else ""} \
+      ~{if defined(output_format_original) then ("--output " +  '"' + output_format_original + '"') else ""} \
       ~{if defined(mis_map) then ("--mismap " +  '"' + mis_map + '"') else ""} \
       ~{if defined(post_mask) then ("--postmask " +  '"' + post_mask + '"') else ""} \
       ~{if defined(promoter) then ("--promoter " +  '"' + promoter + '"') else ""} \
@@ -34,9 +34,12 @@ task Tandemgenotypes {
       ~{if defined(scores) then ("--scores " +  '"' + scores + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genes: "read genes from a genePred or BED file"
-    output_format_default: "output format: 1=original, 2=alleles (default=1)"
+    output_format_original: "output format: 1=original, 2=alleles (default=1)"
     mis_map: "ignore any alignment with mismap probability > PROB\\n(default=1e-06)"
     post_mask: "ignore mostly-lowercase alignments (default=1)"
     promoter: "promoter length (default=300)"

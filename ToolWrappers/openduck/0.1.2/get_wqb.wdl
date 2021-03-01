@@ -12,6 +12,9 @@ task GetWqb {
       ~{if defined(ligand) then ("--ligand " +  '"' + ligand + '"') else ""} \
       ~{if defined(ligand_output_mol) then ("--output " +  '"' + ligand_output_mol + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "Directory with location of OpenDUck data"
     ligand: "Ligand in mol format"

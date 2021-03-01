@@ -10,6 +10,9 @@ task CentrifugeRemoveNpl {
       ~{a_dot_pl} \
       ~{xxx_dot_fa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_dot_pl: ""
     xxx_dot_fa: ""

@@ -12,6 +12,9 @@ task Rmdir {
       ~{if (parents) then "--parents" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_fail_on_non_empty: "ignore each failure that is solely because a directory\\nis non-empty"
     parents: "remove DIRECTORY and its ancestors; e.g., 'rmdir -p a/b/c' is\\nsimilar to 'rmdir a/b/c a/b a'"

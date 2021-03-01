@@ -18,15 +18,9 @@ task RunGubbinspy {
     Int? max_window_size
     String? ra_xml_model
     Boolean? remove_identical_sequences
-    String croucher_n_j
-    Float one_zero_dot_one_zero_nine_three_slash_narslashgkuoneoneninesix_dot
-    String multifasta_alignment_file
   }
   command <<<
     run_gubbins_py \
-      ~{croucher_n_j} \
-      ~{one_zero_dot_one_zero_nine_three_slash_narslashgkuoneoneninesix_dot} \
-      ~{multifasta_alignment_file} \
       ~{if defined(out_group) then ("--outgroup " +  '"' + out_group + '"') else ""} \
       ~{if defined(starting_tree) then ("--starting_tree " +  '"' + starting_tree + '"') else ""} \
       ~{if (use_time_stamp) then "--use_time_stamp" else ""} \
@@ -44,6 +38,9 @@ task RunGubbinspy {
       ~{if defined(ra_xml_model) then ("--raxml_model " +  '"' + ra_xml_model + '"') else ""} \
       ~{if (remove_identical_sequences) then "--remove_identical_sequences" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_group: "Outgroup name for rerooting. A list of comma separated\\nnames can be used if they form a clade (default: None)"
     starting_tree: "Starting tree (default: None)"
@@ -61,9 +58,6 @@ task RunGubbinspy {
     max_window_size: "Maximum window size (default: 10000)"
     ra_xml_model: "RAxML model (default: GTRCAT)"
     remove_identical_sequences: "Remove identical sequences (default: False)\\n"
-    croucher_n_j: "Croucher N. J., Page A. J., Connor T. R., Delaney A. J., Keane J. A., Bentley"
-    one_zero_dot_one_zero_nine_three_slash_narslashgkuoneoneninesix_dot: "positional arguments:"
-    multifasta_alignment_file: "Multifasta alignment file"
   }
   output {
     File out_stdout = stdout()

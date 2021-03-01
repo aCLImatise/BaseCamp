@@ -3,7 +3,7 @@ id: kttimedmgr.cwl
 inputs:
 - id: in_otr
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -otr
 - id: in_bgs_inform
@@ -90,6 +90,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kttimedmgr

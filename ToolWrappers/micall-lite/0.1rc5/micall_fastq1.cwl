@@ -3,22 +3,22 @@ id: micall_fastq1.cwl
 inputs:
 - id: in_keep
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep
 - id: in_unzipped
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --unzipped
 - id: in_outdir
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --outdir
 - id: in_batch
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --batch
 - id: in_mic_all
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - micall

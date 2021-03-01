@@ -12,6 +12,9 @@ task Tinysink {
       ~{if defined(server) then ("--Server " +  '"' + server + '"') else ""} \
       ~{if defined(displays) then ("--Displays " +  '"' + displays + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     user: "to log into the server with. [REQUIRED]."
     server: "to transfer to. [REQUIRED]."

@@ -12,6 +12,9 @@ task VcfutilsplHapmap2vcf {
       ~{in_dot_ucsc_dot_snp} \
       ~{in_dot_hapmap}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_utils_do_tpl: ""
     in_dot_ucsc_dot_snp: ""

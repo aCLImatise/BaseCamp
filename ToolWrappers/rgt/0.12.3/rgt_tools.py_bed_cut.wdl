@@ -14,6 +14,9 @@ task RgttoolspyBedCut {
       ~{if defined(define_target_file) then ("-t " +  '"' + define_target_file + '"') else ""} \
       ~{if (strandspecific) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bed_file: "Input BED file"
     output_bed_name: "Output BED name."

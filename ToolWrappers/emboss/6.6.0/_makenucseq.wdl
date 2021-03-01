@@ -16,6 +16,9 @@ task Makenucseq {
       ~{if (length) then "-length" else ""} \
       ~{if (use_insert) then "-useinsert" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     codon_file: "codon      Optional codon usage file. Nucleotide\\nsequences will be created as triplets\\nmatching the frequencies in the file, with\\nthe end trimmed to be in the correct reading\\nframe."
     amount: "integer    [100] Number of sequences created (Integer 1\\nor more)"

@@ -3,12 +3,12 @@ id: hgLoadOutJoined.cwl
 inputs:
 - id: in_tab_file
   doc: "- don't actually load database, just create tab file"
-  type: File
+  type: File?
   inputBinding:
     prefix: -tabFile
 - id: in_table
   doc: '- use a different suffix other than the default (rmskOutBaseline)'
-  type: string
+  type: string?
   inputBinding:
     prefix: -table
 - id: in_database
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hgLoadOutJoined

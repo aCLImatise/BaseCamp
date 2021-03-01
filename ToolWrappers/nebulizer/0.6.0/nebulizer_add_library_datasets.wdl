@@ -8,18 +8,21 @@ task NebulizerAddLibraryDatasets {
     Boolean? link
     String galaxy
     String dest
-    File? file
+    File? var_file
   }
   command <<<
     nebulizer add_library_datasets \
       ~{galaxy} \
       ~{dest} \
-      ~{file} \
+      ~{var_file} \
       ~{if defined(file_type) then ("--file-type " +  '"' + file_type + '"') else ""} \
       ~{if defined(db_key) then ("--dbkey " +  '"' + db_key + '"') else ""} \
       ~{if (server) then "--server" else ""} \
       ~{if (link) then "--link" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_type: "Galaxy data type to assign the files to (default is\\n'auto'). Must be a valid Galaxy data type. If not 'auto'\\nthen all files will be assigned the same type."
     db_key: "dbkey to assign to files (default is '?')"
@@ -27,7 +30,7 @@ task NebulizerAddLibraryDatasets {
     link: "create symlinks to files on server (only valid if used\\nwith --server; default is to copy files into Galaxy)"
     galaxy: ""
     dest: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

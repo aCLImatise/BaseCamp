@@ -22,6 +22,9 @@ task Fsmlite {
       ~{if defined(max_supp) then ("--maxsupp " +  '"' + max_supp + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list: "Text file that lists all input files as whitespace-separated pairs\\n<data-name> <data-filename>\\nwhere <data-name> is unique identifier (without whitespace)\\nand <data-filename> is full path to each input file.\\nDefault data file format is FASTA (uncompressed)."
     tmp: "Store temporary index data"

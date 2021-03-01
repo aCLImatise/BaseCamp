@@ -10,6 +10,9 @@ task Masurcasuperreads {
       ~{fragonedotfqdotgz} \
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Create the super reads in the directory given by PATH. Create\\nthe directory if it does not exists.\\n"
     fragonedotfqdotgz: "Unmated library"

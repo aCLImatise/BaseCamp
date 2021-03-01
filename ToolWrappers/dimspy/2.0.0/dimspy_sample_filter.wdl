@@ -20,6 +20,9 @@ task DimspySamplefilter {
       ~{if defined(qc_label) then ("--qc-label " +  '"' + qc_label + '"') else ""} \
       ~{if defined(labels) then ("--labels " +  '"' + labels + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hdf_file_file: "HDF5 file or tab-delimited file that contains a peak\\nmatrix."
     hdf_file_save: "HDF5 file to save the peak matrix object to."

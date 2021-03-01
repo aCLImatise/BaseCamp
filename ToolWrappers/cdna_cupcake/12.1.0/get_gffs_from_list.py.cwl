@@ -3,7 +3,7 @@ id: get_gffs_from_list.py.cwl
 inputs:
 - id: in_partial
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --partial
 - id: in_get
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - get_gffs_from_list.py

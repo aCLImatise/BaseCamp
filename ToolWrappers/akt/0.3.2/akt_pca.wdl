@@ -40,6 +40,9 @@ task AktPca {
       ~{if (sv_file) then "--svfile" else ""} \
       ~{if (assume_hom_ref) then "--assume-homref" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _output_vcf: ":                   output vcf"
     output_fmt: ":                output vcf format"

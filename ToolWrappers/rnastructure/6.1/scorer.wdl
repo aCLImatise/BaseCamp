@@ -18,6 +18,9 @@ task Scorer {
       ~{if (print) then "--print" else ""} \
       ~{if (number) then "--number" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exact: "Specify exact comparison when structure comparison is scored.\\nDefault is to allow flexible pairings."
     print: "Prints the output file to standard output. This won't override the default\\nbehavior of writing to a file."

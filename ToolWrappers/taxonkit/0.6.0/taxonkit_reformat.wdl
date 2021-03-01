@@ -32,6 +32,9 @@ task TaxonkitReformat {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     delimiter: "field delimiter in input lineage (default \\\";\\\")"
     fill_miss_rank: "fill missing rank with original lineage information (experimental)"

@@ -4,6 +4,9 @@ task Glimdiffawk {
   command <<<
     glim_diff_awk
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

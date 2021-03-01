@@ -18,6 +18,9 @@ task BioformatsVcfeffect2bed {
       ~{if (ignore_errors) then "--ignore_errors" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     impacts_effects_reported: "[{HIGH,MODERATE,LOW,MODIFIER} ...], --impacts {HIGH,MODERATE,LOW,MODIFIER} [{HIGH,MODERATE,LOW,MODIFIER} ...]\\nimpacts of effects to be reported"
     g: "[{REFHET,COMHET,ALTHOM} ...], --genotypes {REFHET,COMHET,ALTHOM} [{REFHET,COMHET,ALTHOM} ...]"

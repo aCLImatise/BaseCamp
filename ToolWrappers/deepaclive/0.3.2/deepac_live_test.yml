@@ -1,0 +1,86 @@
+!Command
+command:
+- deepac-live
+- test
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --command
+  description: DeePaC command to use (switches builtin models).
+  args: !SimpleFlagArg
+    name: COMMAND
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --custom
+  description: Use a custom model.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --model
+  description: Model to use. "rapid", "sensitive" or custom .h5 file.
+  args: !SimpleFlagArg
+    name: MODEL
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --n-cpus-rec
+  description: 'Number of cores used by the receiver. Default: all'
+  args: !SimpleFlagArg
+    name: N_CPUS_REC
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gpus
+  description: 'GPU devices to use (comma-separated). Default: all'
+  args: !RepeatFlagArg
+    name: GPUS
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --keep
+  description: Don't delete previous test output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --scale
+  description: "Generate s*1024 reads for testing (Default: s=1).\n"
+  args: !SimpleFlagArg
+    name: SCALE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: deepac-live test [-h] [-c COMMAND | -C] [-m MODEL] [-N N_CPUS_REC]\n\
+  \                        [-g GPUS [GPUS ...]] [-k] [-s SCALE]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -c COMMAND, --command\
+  \ COMMAND\n                        DeePaC command to use (switches builtin models).\n\
+  \  -C, --custom          Use a custom model.\n  -m MODEL, --model MODEL\n      \
+  \                  Model to use. \"rapid\", \"sensitive\" or custom .h5 file.\n\
+  \  -N N_CPUS_REC, --n-cpus-rec N_CPUS_REC\n                        Number of cores\
+  \ used by the receiver. Default: all\n  -g GPUS [GPUS ...], --gpus GPUS [GPUS ...]\n\
+  \                        GPU devices to use (comma-separated). Default: all\n  -k,\
+  \ --keep            Don't delete previous test output.\n  -s SCALE, --scale SCALE\n\
+  \                        Generate s*1024 reads for testing (Default: s=1).\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/deepaclive:0.3.2--py_0

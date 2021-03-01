@@ -10,6 +10,9 @@ task Nthll {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "use N parallel threads [1] (N>=2 should be used when input files are >=2)"
     km_er: "the length of kmer [64]"

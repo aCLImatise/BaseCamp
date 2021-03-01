@@ -3,7 +3,7 @@ version 1.0
 task Rsemsimulatereads {
   input {
     Int? seed
-    Boolean? set_it_will
+    Boolean? set_it_stop
     String reference_name
     String estimated_model_file
     String estimated_isoform_results
@@ -20,11 +20,14 @@ task Rsemsimulatereads {
       ~{n} \
       ~{output_name} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{if (set_it_will) then "-q" else ""}
+      ~{if (set_it_stop) then "-q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seed: ": Set seed for the random number generator used in simulation. The seed should be a 32-bit unsigned integer."
-    set_it_will: ": Set it will stop outputting intermediate information."
+    set_it_stop: ": Set it will stop outputting intermediate information."
     reference_name: ""
     estimated_model_file: ""
     estimated_isoform_results: ""

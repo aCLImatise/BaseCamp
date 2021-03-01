@@ -12,13 +12,13 @@ task BiocondautilsDuplicates {
     File? log_file
     File? log_file_level
     Int? log_command_max_lines
-    String detect_packages_defined
+    String detect_packages_bioconda
     String channels_dot
     String path_yaml_file
   }
   command <<<
     bioconda_utils duplicates \
-      ~{detect_packages_defined} \
+      ~{detect_packages_bioconda} \
       ~{channels_dot} \
       ~{path_yaml_file} \
       ~{if (strict_version) then "--strict-version" else ""} \
@@ -32,6 +32,9 @@ task BiocondautilsDuplicates {
       ~{if defined(log_file_level) then ("--logfile-level " +  '"' + log_file_level + '"') else ""} \
       ~{if defined(log_command_max_lines) then ("--log-command-max-lines " +  '"' + log_command_max_lines + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     strict_version: "Require version to strictly match. (default: False)"
     strict_build: "Require version and build to strictly match. (default:\\nFalse)"
@@ -43,7 +46,7 @@ task BiocondautilsDuplicates {
     log_file: "Write log to file (default: -)"
     log_file_level: "Log level for log file (default: 'debug')"
     log_command_max_lines: "Limit lines emitted for commands executed (default: -)\\n"
-    detect_packages_defined: "Detect packages in bioconda that have duplicates in the other defined"
+    detect_packages_bioconda: "Detect packages in bioconda that have duplicates in the other defined"
     channels_dot: "positional arguments:"
     path_yaml_file: "Path to yaml file specifying the configuration"
   }

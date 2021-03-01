@@ -1,0 +1,165 @@
+!Command
+command:
+- SomaticQC
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -tumor_bam
+  description: Input tumor BAM/CRAM file.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -normal_bam
+  description: Input normal BAM/CRAM file.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -somatic_vcf
+  description: Input somatic VCF file.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: "Output qcML file. If unset, writes to STDOUT.\nDefault value: ''"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -links
+  description: "Files that appear in the link part of the qcML file.\nDefault value:\
+    \ ''"
+  args: !SimpleFlagArg
+    name: filelist
+- !Flag
+  optional: true
+  synonyms:
+  - -target_bed
+  description: "Target file used for tumor and normal experiment.\nDefault value:\
+    \ ''"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -target_exons
+  description: "BED file containing target exons, neccessary for TMB calculation.\
+    \ Please provide a file that contains the coordinates of all exons in the reference\
+    \ genome.\nDefault value: ''"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -blacklist
+  description: "BED file containing regions which are ignored in TMB calculation.\n\
+    Default value: ''"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -tsg_bed
+  description: "BED file containing regions of tumor suppressor genes for TMB calculation.\n\
+    Default value: ''"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -ref
+  description: "Reference genome FASTA file. If unset 'reference_genome' from the\
+    \ 'settings.ini' file is used.\nDefault value: ''"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -skip_plots
+  description: "Skip plots (intended to increase speed of automated tests).\nDefault\
+    \ value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -build
+  description: "Genome build used to generate the input.\nDefault value: 'hg19'\n\
+    Valid: 'hg19,hg38'"
+  args: !SimpleFlagArg
+    name: enum
+- !Flag
+  optional: true
+  synonyms:
+  - -ref_cram
+  description: "Reference genome for CRAM support (mandatory if CRAM is used). If\
+    \ set, it is used for tumor and normal file.\nDefault value: ''"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --changelog
+  description: Prints changeloge and exits.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tdx
+  description: Writes a Tool Definition Xml file. The file name is the application
+    name with the suffix '.tdx'.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows this help and exits.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Prints version and exits.
+  args: !EmptyFlagArg {}
+help_text: "SomaticQC (2020_12)\n\nCalculates QC metrics based on tumor-normal pairs.\n\
+  \nSomaticQC integrates the output of the other QC tools and adds several metrics\
+  \ specific for tumor-normal pairs.\nAll tools produce qcML, a generic XML format\
+  \ for QC of -omics experiments, which we adapted for NGS.\n\nMandatory parameters:\n\
+  \  -tumor_bam <file>    Input tumor BAM/CRAM file.\n  -normal_bam <file>   Input\
+  \ normal BAM/CRAM file.\n  -somatic_vcf <file>  Input somatic VCF file.\n\nOptional\
+  \ parameters:\n  -out <file>          Output qcML file. If unset, writes to STDOUT.\n\
+  \                       Default value: ''\n  -links <filelist>    Files that appear\
+  \ in the link part of the qcML file.\n                       Default value: ''\n\
+  \  -target_bed <file>   Target file used for tumor and normal experiment.\n    \
+  \                   Default value: ''\n  -target_exons <file> BED file containing\
+  \ target exons, neccessary for TMB calculation. Please provide a file that contains\
+  \ the coordinates of all exons in the reference genome.\n                      \
+  \ Default value: ''\n  -blacklist <file>    BED file containing regions which are\
+  \ ignored in TMB calculation.\n                       Default value: ''\n  -tsg_bed\
+  \ <file>      BED file containing regions of tumor suppressor genes for TMB calculation.\n\
+  \                       Default value: ''\n  -ref <file>          Reference genome\
+  \ FASTA file. If unset 'reference_genome' from the 'settings.ini' file is used.\n\
+  \                       Default value: ''\n  -skip_plots          Skip plots (intended\
+  \ to increase speed of automated tests).\n                       Default value:\
+  \ 'false'\n  -build <enum>        Genome build used to generate the input.\n   \
+  \                    Default value: 'hg19'\n                       Valid: 'hg19,hg38'\n\
+  \  -ref_cram <string>   Reference genome for CRAM support (mandatory if CRAM is\
+  \ used). If set, it is used for tumor and normal file.\n                       Default\
+  \ value: ''\n\nSpecial parameters:\n  --help               Shows this help and exits.\n\
+  \  --version            Prints version and exits.\n  --changelog          Prints\
+  \ changeloge and exits.\n  --tdx                Writes a Tool Definition Xml file.\
+  \ The file name is the application name with the suffix '.tdx'.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ngs-bits:2020_12--py39h5902420_0

@@ -60,6 +60,9 @@ task Metrics {
       ~{if defined(number_threads_use) then ("-t " +  '"' + number_threads_use + '"') else ""} \
       ~{if (h) then "-h" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix_output_wig: "Prefix for output wig files [default: metrics]"
     manually_specify_number: "Manually specify the number of assemblies in the alignment; if not, it is computed from the MAF [default: 0]"

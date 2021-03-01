@@ -20,6 +20,9 @@ task RunProkka {
       ~{if defined(add_pro_kk_a_cmds) then ("--add_prokka_cmds " +  '"' + add_pro_kk_a_cmds + '"') else ""} \
       ~{if defined(num_training) then ("--num_training " +  '"' + num_training + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "number of threads to use (default=1)"
     verbose: "print additional output"

@@ -14,6 +14,9 @@ task Iugenconfigs {
       ~{if defined(e_mail) then ("--e-mail " +  '"' + e_mail + '"') else ""} \
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r_one_prefix: "Prefix for Read 1 to be put in every config file."
     r_two_prefix: "Prefix for Read 2."

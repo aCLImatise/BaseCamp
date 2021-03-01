@@ -12,6 +12,9 @@ task PhyluceProbeGetMultiFastaTable {
       ~{if defined(sqlite_database_create) then ("--output " +  '"' + sqlite_database_create + '"') else ""} \
       ~{if defined(base_tax_on) then ("--base-taxon " +  '"' + base_tax_on + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_as: "A folder of fasta files."
     sqlite_database_create: "A SQLite database to create during integration."

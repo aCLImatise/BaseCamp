@@ -15,14 +15,14 @@ task Picopore {
     String pico_pore_real_time
     String pico_pore_test
     String pico_pore_rename
-    String list_directories_shrink
+    String list_directories_files
   }
   command <<<
     picopore \
       ~{pico_pore_real_time} \
       ~{pico_pore_test} \
       ~{pico_pore_rename} \
-      ~{list_directories_shrink} \
+      ~{list_directories_files} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
       ~{if (revert) then "--revert" else ""} \
       ~{if (no_fast_q) then "--no-fastq" else ""} \
@@ -34,6 +34,9 @@ task Picopore {
       ~{if (no_skip_root) then "--no-skip-root" else ""} \
       ~{if defined(print_every) then ("--print-every " +  '"' + print_every + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: "choose compression mode"
     revert: "reverts files to original size (lossless modes only)"
@@ -48,7 +51,7 @@ task Picopore {
     pico_pore_real_time: "monitors a directory for new reads and compresses them in real time"
     pico_pore_test: "compresses to temporary files and checks that all datasets and attributes are equal (lossless modes only)"
     pico_pore_rename: "renames groups and datasets within FAST5 files"
-    list_directories_shrink: "list of directories or fast5 files to shrink"
+    list_directories_files: "list of directories or fast5 files to shrink"
   }
   output {
     File out_stdout = stdout()

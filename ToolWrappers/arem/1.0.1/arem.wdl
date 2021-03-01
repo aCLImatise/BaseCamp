@@ -86,6 +86,9 @@ task Arem {
       ~{if defined(prior_snp) then ("--prior-snp " +  '"' + prior_snp + '"') else ""} \
       ~{if (write_read_probs) then "--write-read-probs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     treatment: "ChIP-seq treatment files. REQUIRED. When ELANDMULTIPET\\nis selected, you must provide two files separated by\\ncomma, e.g.\\ns_1_1_eland_multi.txt,s_1_2_eland_multi.txt"
     control: "Control files. When ELANDMULTIPET is selected, you\\nmust provide two files separated by comma, e.g.\\ns_2_1_eland_multi.txt,s_2_2_eland_multi.txt"

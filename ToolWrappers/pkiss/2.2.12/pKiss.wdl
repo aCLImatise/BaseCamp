@@ -66,6 +66,9 @@ task PKiss {
       ~{if defined(varna) then ("--varna " +  '"' + varna + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: ": Select the computation mode. Available modes are \\\"mfe\\\",\\n\\\"subopt\\\", \\\"enforce\\\", \\\"local\\\", \\\"shapes\\\", \\\"probs\\\", \\\"cast\\\",\\n\\\"eval\\\", \\\"abstract\\\". Omit the ticks on input.\\nDefault is \\\"subopt\\\"."
     absolute_deviation: ": This sets the energy range as an absolute value\\nof the minimum free energy. For example, when\\n--absoluteDeviation 10.0 is specified, and the\\nminimum free energy is -10.0 kcal/mol, the\\nenergy range is set to 0.0 to -10.0 kcal/mol.\\n<float> must be a positive floating point\\nnumber.\\nConnot be combined with --relativeDeviation.\\nOnly available in modes: \\\"subopt\\\", \\\"local\\\",\\n\\\"shapes\\\", \\\"cast\\\"."

@@ -18,6 +18,9 @@ task Lc {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if (nologo) then "--nologo" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Verbose output"
     target: "Target assembly name"

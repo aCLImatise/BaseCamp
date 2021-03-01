@@ -10,6 +10,9 @@ task PyprophetIpfIPF {
       ~{py_prophet} \
       ~{ipf}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     py_prophet: ""
     ipf: ""

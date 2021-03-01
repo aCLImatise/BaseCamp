@@ -3,17 +3,17 @@ id: splash_eval_counts.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_d
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -d
 - id: in_s
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -s
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_o
   doc: ''
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_o)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - splash

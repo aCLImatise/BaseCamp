@@ -52,6 +52,9 @@ task Isoseq3Refine {
       ~{if (log_file) then "--log-file" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_polya_length: "INT   Minimum poly(A) tail length. [20]"
     require_polya: "Require FL reads to have a poly(A) tail and remove it."

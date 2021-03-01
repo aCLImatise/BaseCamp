@@ -16,6 +16,9 @@ task MakeHKY {
       ~{if defined(branch_length) then ("--branch-length " +  '"' + branch_length + '"') else ""} \
       ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gc: "Define base composition according to specified G+C composition,\\nassuming P(A)=P(T) and P(C)=P(G).  Default is 0.4."
     pi: "<pi_A,pi_C,pi_G,pi_T>\\nOverride --gc and define base composition explicitly.  Values will\\nbe renormalized to ensure they sum exactly to one."

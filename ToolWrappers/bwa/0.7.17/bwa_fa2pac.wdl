@@ -12,6 +12,9 @@ task BwaFa2pac {
       ~{out_dot_prefix} \
       ~{if (f) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
     in_dot_fast_a: ""

@@ -1,46 +1,40 @@
 class: CommandLineTool
 id: tombo_detect_modifications_de_novo.cwl
 inputs:
-- id: in_statistics_file_basename
-  doc: "STATISTICS_FILE_BASENAME [--dna]\n[--rna]\n[--fishers-method-context FISHERS_METHOD_CONTEXT]\n\
-    [--minimum-test-reads MINIMUM_TEST_READS]\n[--single-read-threshold SINGLE_READ_THRESHOLD\
-    \ [SINGLE_READ_THRESHOLD ...]]\n[--coverage-dampen-counts COVERAGE_DAMPEN_COUNTS\
-    \ COVERAGE_DAMPEN_COUNTS]\n[--per-read-statistics-basename PER_READ_STATISTICS_BASENAME]\n\
-    [--num-most-significant-stored NUM_MOST_SIGNIFICANT_STORED]\n[--multiprocess-region-size\
-    \ MULTIPROCESS_REGION_SIZE]\n[--processes PROCESSES]\n[--corrected-group CORRECTED_GROUP]\n\
-    [--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\n[--quiet]\
-    \ [--help]"
-  type: boolean
-  inputBinding:
-    prefix: --statistics-file-basename
 - id: in_fast_five_based_irs
   doc: Directories containing fast5 files.
   type: long[]
   inputBinding:
     prefix: --fast5-basedirs
+- id: in_statistics_file_basename
+  doc: "File base name to save base by base statistics from\ntesting. Filenames will\
+    \ be [--statistics-file-\nbasename].[--alternate-bases]?.tombo.stats"
+  type: File?
+  inputBinding:
+    prefix: --statistics-file-basename
 - id: in_dna
   doc: "Explicitly select canonical DNA model. Default:\nAutomatically determine from\
     \ FAST5s"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dna
 - id: in_rna
   doc: "Explicitly select canonical RNA model. Default:\nAutomatically determine from\
     \ FAST5s"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rna
 - id: in_fishers_method_context
   doc: "Number of context bases up and downstream over which\nto compute Fisher's\
     \ method combined p-values. Note:\nNot applicable for alternative model likelihood\
     \ ratio\ntests. Default: 1."
-  type: long
+  type: long?
   inputBinding:
     prefix: --fishers-method-context
 - id: in_minimum_test_reads
   doc: "Number of reads required at a position to perform\nsignificance testing or\
     \ contribute to model\nestimation. Default: 1"
-  type: long
+  type: long?
   inputBinding:
     prefix: --minimum-test-reads
 - id: in_single_read_threshold
@@ -55,37 +49,37 @@ inputs:
     sites. Two parameters are unmodified and modified\npseudo read counts. This is\
     \ equivalent to a beta prior\non the fraction estimate. Set to \"0 0\" to disable\n\
     dampened fraction estimation. Default: [2, 0]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --coverage-dampen-counts
 - id: in_per_read_statistics_basename
   doc: "Base for binary files containing per-read statistics\nfrom statistical testing.\
     \ Filenames will be [--per-\nread-statistics-basename].[--alternate-\nbases]?.tombo.per_read_stats"
-  type: string
+  type: string?
   inputBinding:
     prefix: --per-read-statistics-basename
 - id: in_num_most_significant_stored
   doc: "Number of the most significant sites to store for\nfaster access. If a longer\
     \ list of most significant\nsites is required the list must be re-computed from\n\
     all batches. Very large values can increase RAM usage.\nDefault: 100000"
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-most-significant-stored
 - id: in_multiprocess_region_size
   doc: "Size of regions over which to multiprocesses statistic\ncomputation. For very\
     \ deep samples a smaller value is\nrecommmended in order to control memory consumption.\n\
     Default: 10000"
-  type: long
+  type: long?
   inputBinding:
     prefix: --multiprocess-region-size
 - id: in_processes
   doc: 'Number of processes. Default: 1'
-  type: long
+  type: long?
   inputBinding:
     prefix: --processes
 - id: in_corrected_group
   doc: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
-  type: long
+  type: long?
   inputBinding:
     prefix: --corrected-group
 - id: in_base_call_subgroups
@@ -97,13 +91,14 @@ inputs:
     prefix: --basecall-subgroups
 - id: in_quiet
   doc: Don't print status information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tombo

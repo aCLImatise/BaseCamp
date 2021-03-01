@@ -12,6 +12,9 @@ task ExtractContig {
       ~{contig_iid} \
       ~{new_bank}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bank_name: ""
     contig_iid: ""

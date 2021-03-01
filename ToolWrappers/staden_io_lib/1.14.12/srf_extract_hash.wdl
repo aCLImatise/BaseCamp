@@ -12,6 +12,9 @@ task SrfExtractHash {
       ~{if (c) then "-c" else ""} \
       ~{if (fast_q) then "-fastq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     c: ""
     fast_q: ""

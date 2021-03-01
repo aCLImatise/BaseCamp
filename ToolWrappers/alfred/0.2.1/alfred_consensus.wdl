@@ -4,7 +4,7 @@ task AlfredConsensus {
   input {
     Boolean? f
     Boolean? arg_fraction_reads
-    Boolean? arg_min_quality
+    Boolean? arg_min_mapping
     Boolean? arg_chr_position
     Boolean? arg_window_fetch
     Boolean? consider_secondary_alignments
@@ -23,7 +23,7 @@ task AlfredConsensus {
       ~{consensus} \
       ~{if (f) then "-f" else ""} \
       ~{if (arg_fraction_reads) then "-d" else ""} \
-      ~{if (arg_min_quality) then "-q" else ""} \
+      ~{if (arg_min_mapping) then "-q" else ""} \
       ~{if (arg_chr_position) then "-p" else ""} \
       ~{if (arg_window_fetch) then "-w" else ""} \
       ~{if (consider_secondary_alignments) then "-s" else ""} \
@@ -36,10 +36,13 @@ task AlfredConsensus {
       ~{if (arg_verticalhorizontal_alignment) then "-a" else ""} \
       ~{if (_arg_consensus) then "-c" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: "[ --format ] arg (=bam)            input format [bam|fasta]"
     arg_fraction_reads: "[ --called ] arg (=0.5)            fraction of reads required for"
-    arg_min_quality: "[ --mapqual ] arg (=10)            min. mapping quality"
+    arg_min_mapping: "[ --mapqual ] arg (=10)            min. mapping quality"
     arg_chr_position: "[ --position ] arg (=chr4:500500)  position to generate consensus"
     arg_window_fetch: "[ --window ] arg (=5)              window around position to fetch reads"
     consider_secondary_alignments: "[ --secondary ]                    consider secondary alignments"

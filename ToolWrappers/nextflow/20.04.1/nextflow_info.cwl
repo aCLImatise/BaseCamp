@@ -3,17 +3,17 @@ id: nextflow_info.cwl
 inputs:
 - id: in_check_updates
   doc: "Check for remote updates\nDefault: false"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -check-updates
 - id: in_show_detailed_informationdefault
   doc: "Show detailed information\nDefault: false"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_output_format_yaml
   doc: "Output format, either: text (default), json, yaml\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -o
 - id: in_info
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nextflow

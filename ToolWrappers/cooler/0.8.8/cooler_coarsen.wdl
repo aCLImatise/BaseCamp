@@ -18,6 +18,9 @@ task CoolerCoarsen {
       ~{if defined(field) then ("--field " +  '"' + field + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     factor: "Gridding factor. The contact matrix is\\ncoarsegrained by grouping each chromosomal contact\\nblock into k-by-k element tiles  [default: 2]"
     nproc: "Number of processes to use for batch processing\\nchunks of pixels [default: 1, i.e. no process pool]"

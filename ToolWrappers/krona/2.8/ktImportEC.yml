@@ -1,0 +1,80 @@
+!Command
+command:
+- ktImportEC
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ec_numbers
+  description: "Tab-delimited files with EC numbers and (optionally) query IDs,\n\
+    magnitudes and scores. By default, query IDs, EC numbers and\nscores will be taken\
+    \ from columns 1, 2 and 3, respectively (see\n-q, -e, -s, and -m). By default,\
+    \ separate datasets will be\ncreated for each input (see [-c])."
+- !Positional
+  optional: false
+  position: 1
+  name: magnitudes
+  description: "Optional file listing query IDs with magnitudes, separated by\ntabs.\
+    \ This can be used to account for read length or contig\ndepth to obtain a more\
+    \ accurate representation of abundance. By\ndefault, query sequences without specified\
+    \ magnitudes will be\nassigned a magnitude of 1. Magnitude files for assemblies\
+    \ in ACE\nformat can be created with ktGetContigMagnitudes."
+- !Positional
+  optional: false
+  position: 2
+  name: name
+  description: "A name to show in the list of datasets in the Krona chart (if\nmultiple\
+    \ input files are present and [-c] is not specified). By\ndefault, the basename\
+    \ of the file will be used.\n_________"
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "                                             _______________________________\n\
+  ____________________________________________/ KronaTools 2.7.1 - ktImportEC \\___\n\
+  \nCreates a Krona chart of abundances of EC (Enzyme Commission) numbers in\ntab-delimited\
+  \ files.\n                                                                     _______\n\
+  ____________________________________________________________________/ Usage \\___\n\
+  \nktImportEC \\\n   [options] \\\n   ec_numbers_1[:magnitudes_1][,name_1] \\\n \
+  \  [ec_numbers_2[:magnitudes_2][,name_2]] \\\n   ...\n\n   ec_numbers  Tab-delimited\
+  \ files with EC numbers and (optionally) query IDs,\n               magnitudes and\
+  \ scores. By default, query IDs, EC numbers and\n               scores will be taken\
+  \ from columns 1, 2 and 3, respectively (see\n               -q, -e, -s, and -m).\
+  \ By default, separate datasets will be\n               created for each input (see\
+  \ [-c]).\n\n   magnitudes  Optional file listing query IDs with magnitudes, separated\
+  \ by\n               tabs. This can be used to account for read length or contig\n\
+  \               depth to obtain a more accurate representation of abundance. By\n\
+  \               default, query sequences without specified magnitudes will be\n\
+  \               assigned a magnitude of 1. Magnitude files for assemblies in ACE\n\
+  \               format can be created with ktGetContigMagnitudes.\n\n   name   \
+  \     A name to show in the list of datasets in the Krona chart (if\n          \
+  \     multiple input files are present and [-c] is not specified). By\n        \
+  \       default, the basename of the file will be used.\n                      \
+  \                                             _________\n__________________________________________________________________/\
+  \ Options \\___\n\n   [-o <string>]   Output file name. [Default: 'ec.krona.html']\n\
+  \n   [-n <string>]   Name of the highest level. [Default: 'root']\n\n   [-c]   \
+  \         Combine data from each file, rather than creating separate\n         \
+  \          datasets within the chart.\n\n   [-q <integer>]  Column of input files\
+  \ to use as query ID. Required if\n                   magnitude files are specified.\
+  \ [Default: '1']\n\n   [-e <integer>]  Column of input files to use as EC number.\
+  \ [Default: '2']\n\n   [-s <integer>]  Column of input files to use as score. [Default:\
+  \ '3']\n\n   [-m <integer>]  Column of input files to use as magnitude. If magnitude\n\
+  \                   files are specified, their magnitudes will override those in\n\
+  \                   this column.\n\n   [-i]            Include a wedge for queries\
+  \ with no hits.\n\n   [-d <integer>]  Maximum depth of wedges to include in the\
+  \ chart.\n\n   [-x <integer>]  Hue (0-360) for \"bad\" scores. [Default: '0']\n\n\
+  \   [-y <integer>]  Hue (0-360) for \"good\" scores. [Default: '120']\n\n   [-u\
+  \ <string>]   URL of Krona resources to use instead of bundling them with\n    \
+  \               the chart (e.g. \"http://krona.sourceforge.net\"). Reduces\n   \
+  \                size of charts and allows updates, though charts will not\n   \
+  \                work without access to this URL.\n\n   [-qp <string>]  Url to send\
+  \ query IDs to (instead of listing them) for each\n                   wedge. The\
+  \ query IDs will be sent as a comma separated list\n                   in the POST\
+  \ variable \"queries\", with the current dataset\n                   index (from\
+  \ 0) in the POST variable \"dataset\". The url can\n                   include additional\
+  \ variables encoded via GET.\n\n"
+generated_using: []
+docker_image: quay.io/biocontainers/krona:2.8--pl526_0

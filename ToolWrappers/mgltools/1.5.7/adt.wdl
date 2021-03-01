@@ -36,6 +36,9 @@ task Adt {
       ~{if defined(d_mode) then ("--dmode " +  '"' + d_mode + '"') else ""} \
       ~{if defined(c_mode) then ("--cmode " +  '"' + c_mode + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     again: ": play back lastlog file"
     overwrite_log: ": overwrite log file"

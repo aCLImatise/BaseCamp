@@ -3,119 +3,163 @@ command:
 - gFACs.pl
 positional:
 - !Positional
-  description: gene_table.txt
+  optional: false
   position: 0
   name: gFACs_log.txt
-  optional: false
+  description: gene_table.txt
 - !Positional
-  description: braker_2.05_gff
+  optional: false
   position: 0
   name: braker_2.05_gtf
-  optional: false
+  description: braker_2.05_gff
 - !Positional
-  description: braker_2.0_gff3
+  optional: false
   position: 1
   name: braker_2.05_gff3
-  optional: false
+  description: braker_2.0_gff3
 - !Positional
-  description: stringtie_1.3.4_gtf
+  optional: false
   position: 2
-  name: genomethreader_1.6.6_gff3
-  optional: false
+  name: braker_2.0_gff
+  description: braker_2.0_gtf
 - !Positional
-  description: exonerate_2.4.0_gff
+  optional: false
   position: 3
-  name: gffread_0.9.12_gff3
-  optional: false
+  name: braker_2.1.2_gtf
+  description: maker_2.31.9_gff
 - !Positional
-  description: CoGe_1.0_gff
+  optional: false
   position: 4
-  name: EVM_1.1.1_gff3
-  optional: false
+  name: prokka_1.11_gff
+  description: gmap_2017_03_17_gff3
 - !Positional
-  description: genbank_gbff - UNDER REPAIR
+  optional: false
   position: 5
-  name: refseq_gff
-  optional: false
+  name: genomethreader_1.6.6_gff3
+  description: stringtie_1.3.4_gtf
 - !Positional
-  description: '--compatibility [option] [option] etc... '
+  optional: false
+  position: 6
+  name: gffread_0.9.12_gff3
+  description: exonerate_2.4.0_gff
+- !Positional
+  optional: false
+  position: 7
+  name: EVM_1.1.1_gff3
+  description: CoGe_1.0_gff
+- !Positional
+  optional: false
+  position: 8
+  name: gFACs_gene_table
+  description: gFACs_gtf
+- !Positional
+  optional: false
+  position: 9
+  name: refseq_gff
+  description: genbank_gbff - UNDER REPAIR
+- !Positional
+  optional: false
   position: 0
   name: Jbrowse
-  optional: false
+  description: '--compatibility [option] [option] etc... '
 - !Positional
-  description: 'EVM_1.1.1_gene_prediction       '
+  optional: false
   position: 1
   name: SnpEff
-  optional: false
+  description: 'EVM_1.1.1_gene_prediction       '
 - !Positional
-  description: 'Distribution table creation:'
+  optional: false
   position: 2
   name: EVM_1.1.1_alignment
-  optional: false
+  description: 'Distribution table creation:'
 - !Positional
-  description: 'intron_lengths  '
+  optional: false
   position: 0
   name: exon_lengths
-  optional: false
+  description: 'intron_lengths  '
 - !Positional
-  description: 'gene_lengths    '
+  optional: false
   position: 1
   name: CDS_lengths
-  optional: false
+  description: 'gene_lengths    '
 - !Positional
-  description: 'exon_position_data      '
+  optional: false
   position: 2
   name: exon_position
-  optional: false
-- !Positional
-  description: 'intron_position_data    '
-  position: 3
-  name: intron_position
-  optional: false
+  description: 'exon_position_data      '
 named:
 - !Flag
-  description: "[prefix]\n--false-run\n--statistics\n--statistics-at-every-step\n\
-    --no-processing\n--no-gene-redefining\n--rem-5prime-incompletes\n--rem-3prime-incompletes\n\
-    --rem-5prime-3prime-incompletes\n--rem-all-incompletes\n--rem-monoexonics\n--rem-multiexonics\n\
-    --min-exon-size [nt number]\n--min-intron-size [nt number]\n--min-CDS-size [nt\
-    \ number]\n--unique-genes-only"
+  optional: true
+  synonyms:
+  - -f
+  description: '[format]     Specifying a format: A mandatory step to call upon the
+    right script.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -p
+  description: '[prefix]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[/path/to/your/entap/annotation.tsv]'
+  optional: true
+  synonyms:
+  - --false-run
+  - --statistics
+  - --statistics-at-every-step
+  - --no-processing
+  - --no-gene-redefining
+  - --rem-5prime-incompletes
+  - --rem-3prime-incompletes
+  - --rem-5prime-3prime-incompletes
+  - --rem-all-incompletes
+  - --rem-monoexonics
+  - --rem-multiexonics
+  - --min-exon-size
+  description: '[nt number]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-intron-size
+  description: '[nt number]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-CDS-size
+  description: '[nt number]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --entap-annotation
+  description: '[/path/to/your/entap/annotation.tsv]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: --annotated-all-genes-only
-  synonyms:
-  - --annotated-ss-genes-only
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: '[/path/to/your/nucleotide/fasta.fasta]'
   synonyms:
   - --fasta
+  description: '[/path/to/your/nucleotide/fasta.fasta]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "--canonical-only\n--rem-genes-without-start-codon\n--allow-alternate-starts\n\
-    --rem-genes-without-stop-codon\n--rem-genes-without-start-and-stop-codon\n--allowed-inframe-stop-codons\
-    \ [number]\n--nt-content\n--get-fasta-with-introns\n--get-protein-fasta\n--create-gtf\n\
-    --create-simple-gtf\n--create-gff3"
+  optional: true
   synonyms:
   - --splice-table
+  - --canonical-only
+  - --rem-genes-without-start-codon
+  - --allow-alternate-starts
+  - --rem-genes-without-stop-codon
+  - --rem-genes-without-start-and-stop-codon
+  - --allowed-inframe-stop-codons
+  description: '[number]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[option] [option] etc...'
+  optional: true
   synonyms:
   - --distributions
+  description: '[option] [option] etc...'
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -175,3 +219,4 @@ help_text: "gFACs.pl\nContact:\tMadison.Caballero@uconn.edu\n\nVersion: 1.1.1 (1
   \ received a copy of the GNU General Public License along with gFACs.\n\tIf not,\
   \ see <https://www.gnu.org/licenses/>.\n\n"
 generated_using: []
+docker_image:

@@ -10,6 +10,9 @@ task NebulizerAddKeyALIAS {
       ~{galaxy_url} \
       ~{api_key}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     galaxy_url: ""
     api_key: ""

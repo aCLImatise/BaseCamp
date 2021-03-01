@@ -5,172 +5,172 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Organism considered on the analysis. Must have been\nsetup in the\
-    \ RGTDATA folder. Common choices are hg19\nor hg38."
+  optional: true
   synonyms:
   - --organism
+  description: "Organism considered on the analysis. Must have been\nsetup in the\
+    \ RGTDATA folder. Common choices are hg19\nor hg38."
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: False positive rate cutoff.
+  optional: true
   synonyms:
   - --fpr
+  description: False positive rate cutoff.
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: Pseudocounts to be added to raw counts of each PFM.
+  optional: true
   synonyms:
   - --pseudocounts
+  description: Pseudocounts to be added to raw counts of each PFM.
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --rand-proportion
   description: "If set, a random regions file will be created (eg, for\nlater enrichment\
     \ analysis). The number of coordinates\nwill be equal to this value times the\
     \ size of the\ninputregions. We advise you use a value of at least\n10."
-  synonyms:
-  - --rand-proportion
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --norm-threshold
   description: "If this option is used, the thresholds for all PWMs\nwill be normalized\
     \ by their length. In this scheme,\nthe threshold cutoff is evaluated in the regular\
     \ way\nby the given fpr. Then, all thresholds are divided by\nthe length of the\
     \ motif. The final threshold consists\nof the average between all normalized motif\n\
     thresholds. This single threshold will be applied to\nall motifs."
-  synonyms:
-  - --norm-threshold
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "New 'motif DB' folders to use instead of the ones\nwithin the RGTDATA\
-    \ folder. Each folder must contain\nPWM files."
+  optional: true
   synonyms:
   - --motif-dbs
+  description: "New 'motif DB' folders to use instead of the ones\nwithin the RGTDATA\
+    \ folder. Each folder must contain\nPWM files."
   args: !RepeatFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --remove-strand-duplicates
   description: "Certain motifs are 'palindromic', or more specifically\nthey have\
     \ a palindromic consensus sequence. When this\nhappens, the output MPBS file will\
     \ have duplicates:\nsame chromosome and initial and final position, but\nopposing\
     \ strand. Select this option to only retain the\n'strand duplicate' with the highest\
     \ score. Duplicates\ndue to overlapping input regions are NOT affected by\nthis."
-  synonyms:
-  - --remove-strand-duplicates
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Remove any duplicate region from the input BED files.
+  optional: true
   synonyms:
   - --rmdup
+  description: Remove any duplicate region from the input BED files.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filter
   description: "List of key-value patterns to select a subset of TFs\nusing the metadata\
     \ (MTF files), e.g. for Mouse and\nHuman on Selex data use:\n\"species:sapiens,mus;data_source:selex\"\
     . NB: the\nDATABASE values must be written in full - exact\nmatching is always\
     \ performed.Valid key types are\n\"name\", \"gene_names\", \"family\", \"uniprot_ids\"\
     ,\n\"data_source\", \"tax_group\", \"species\", \"database\",\n\"name_file\" and\
     \ \"gene_names_file\""
-  synonyms:
-  - --filter
   args: !SimpleFlagArg
     name: KEY_VALUE_PATTERN
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filter-type
   description: "Only useful together with the --filter argument.Exact\nwill only match\
     \ perfect matching of the value for each\nkey. Inexact will match in case the\
     \ value pattern is\ncontained within the motif. Regex allows for a more\ncomplex\
     \ pattern use."
-  synonyms:
-  - --filter-type
   args: !ChoiceFlagArg
     choices: !!set
       exact:
-      inexact:
       regex:
-  optional: true
+      inexact:
 - !Flag
-  description: "The experimental matrix allows the specification of\ngene-association\
-    \ rules among input files (see online\ndocumentation for details)."
+  optional: true
   synonyms:
   - --input-matrix
+  description: "The experimental matrix allows the specification of\ngene-association\
+    \ rules among input files (see online\ndocumentation for details)."
   args: !SimpleFlagArg
     name: matrix.txt
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --promoters-only
   description: "If you ONLY want to perform promoter matching without\nproviding any\
     \ input file/matrix. If --target-genes is\nnot provided, then all available promoters\
     \ will be\nmatched against. Note how this makes '--make-\nbackground' redundant."
-  synonyms:
-  - --promoters-only
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: BED files to perform motif matching on.
+  optional: true
   synonyms:
   - --input-files
+  description: BED files to perform motif matching on.
   args: !RepeatFlagArg
     name: regions.bed
-  optional: true
 - !Flag
-  description: "List of genes (one per line) to get the promoter\nregions from."
+  optional: true
   synonyms:
   - --target-genes
+  description: "List of genes (one per line) to get the promoter\nregions from."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --make-background
   description: "If set, it will perform motif matching on the\n'background regions',\
     \ composed of the promoters of all\navailable genes (minus the target genes, if\n\
     specified). It doesn't require --target-genes."
-  synonyms:
-  - --make-background
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Length of the promoter region (in bp) to be extracted\nfrom each gene."
+  optional: true
   synonyms:
   - --promoter-length
+  description: "Length of the promoter region (in bp) to be extracted\nfrom each gene."
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Path where the output MPBS files will be written.\nDefaults to 'match'\
-    \ in the current directory."
+  optional: true
   synonyms:
   - --output-location
+  description: "Path where the output MPBS files will be written.\nDefaults to 'match'\
+    \ in the current directory."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "If this option is used, all bed files will be written\nas bigbed."
+  optional: true
   synonyms:
   - --bigbed
+  description: "If this option is used, all bed files will be written\nas bigbed."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --normalize-bitscore
   description: "In order to print bigbed files the scores need to be\nnormalized between\
     \ 0 and 1000. Don't use this option\nif real bitscores should be printed in the\
     \ resulting\nbed file. Without this option, bigbed files will never\nbe created.\n"
-  synonyms:
-  - --normalize-bitscore
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: rgt-motifanalysis matching [-h] [--organism STRING] [--fpr FLOAT]\n\
@@ -255,3 +255,4 @@ help_text: "usage: rgt-motifanalysis matching [-h] [--organism STRING] [--fpr FL
   \                        be created.\n"
 generated_using:
 - --help
+docker_image:

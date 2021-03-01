@@ -4,68 +4,71 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --tree
   description: "Name of file containing the tree in newick, nexus, or\nphylip format.\
     \ If none is provided, treetime will\nattempt to build a tree from the alignment\
     \ using\nfasttree, iqtree, or raxml (assuming they are\ninstalled)"
-  synonyms:
-  - --tree
   args: !SimpleFlagArg
     name: TREE
-  optional: true
 - !Flag
-  description: "length of the sequence, used to calculate expected\nvariation in branch\
-    \ length. Not required if alignment\nis provided."
+  optional: true
   synonyms:
   - --sequence-length
+  description: "length of the sequence, used to calculate expected\nvariation in branch\
+    \ length. Not required if alignment\nis provided."
   args: !SimpleFlagArg
     name: SEQUENCE_LENGTH
-  optional: true
 - !Flag
-  description: alignment file (fasta)
+  optional: true
   synonyms:
   - --aln
+  description: alignment file (fasta)
   args: !SimpleFlagArg
     name: ALN
-  optional: true
 - !Flag
-  description: "only for vcf input: fasta file of the sequence the VCF\nwas mapped\
-    \ to."
+  optional: true
   synonyms:
   - --vcf-reference
+  description: "only for vcf input: fasta file of the sequence the VCF\nwas mapped\
+    \ to."
   args: !SimpleFlagArg
     name: VCF_REFERENCE
-  optional: true
 - !Flag
-  description: "csv file with dates for nodes with 'node_name, date'\nwhere date is\
-    \ float (as in 2012.15)"
+  optional: true
   synonyms:
   - --dates
+  description: "csv file with dates for nodes with 'node_name, date'\nwhere date is\
+    \ float (as in 2012.15)"
   args: !SimpleFlagArg
     name: DATES
-  optional: true
 - !Flag
-  description: label of the column to be used as taxon name
+  optional: true
   synonyms:
   - --name-column
+  description: label of the column to be used as taxon name
   args: !SimpleFlagArg
     name: NAME_COLUMN
-  optional: true
 - !Flag
-  description: label of the column to be used as sampling date
+  optional: true
   synonyms:
   - --date-column
+  description: label of the column to be used as sampling date
   args: !SimpleFlagArg
     name: DATE_COLUMN
-  optional: true
 - !Flag
-  description: "ignore tips that don't follow a loose clock, 'clock-\nfilter=number\
-    \ of interquartile ranges from\nregression'. Default=3.0, set to 0 to switch off."
+  optional: true
   synonyms:
   - --clock-filter
+  description: "ignore tips that don't follow a loose clock, 'clock-\nfilter=number\
+    \ of interquartile ranges from\nregression'. Default=3.0, set to 0 to switch off."
   args: !SimpleFlagArg
     name: CLOCK_FILTER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --reroot
   description: "Reroot the tree using root-to-tip regression. Valid\nchoices are 'min_dev',\
     \ 'least-squares', and 'oldest'.\n'least-squares' adjusts the root to minimize\
     \ residuals\nof the root-to-tip vs sampling time regression,\n'min_dev' minimizes\
@@ -74,219 +77,216 @@ named:
     \ or a list of node names to be used\nas outgroup or use 'oldest' to reroot to\
     \ the oldest\nnode. By default, TreeTime will reroot using 'least-\nsquares'.\
     \ Use --keep-root to keep the current root."
-  synonyms:
-  - --reroot
   args: !RepeatFlagArg
     name: REROOT
-  optional: true
 - !Flag
-  description: "don't reroot the tree. Otherwise, reroot to minimize\nthe the residual\
-    \ of the regression of root-to-tip\ndistance and sampling time"
+  optional: true
   synonyms:
   - --keep-root
+  description: "don't reroot the tree. Otherwise, reroot to minimize\nthe the residual\
+    \ of the regression of root-to-tip\ndistance and sampling time"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "excess variance associated with terminal nodes\naccounting for overdisperion\
-    \ of the molecular clock"
+  optional: true
   synonyms:
   - --tip-slack
+  description: "excess variance associated with terminal nodes\naccounting for overdisperion\
+    \ of the molecular clock"
   args: !SimpleFlagArg
     name: TIP_SLACK
-  optional: true
 - !Flag
-  description: "Account for covariation when estimating rates or\nrerooting using\
-    \ root-to-tip regression, default False."
+  optional: true
   synonyms:
   - --covariation
+  description: "Account for covariation when estimating rates or\nrerooting using\
+    \ root-to-tip regression, default False."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gtr
   description: "GTR model to use. '--gtr infer' will infer a model\nfrom the data.\
     \ Alternatively, specify the model type.\nIf the specified model requires additional\
     \ options,\nuse '--gtr-params' to specify those."
-  synonyms:
-  - --gtr
   args: !SimpleFlagArg
     name: GTR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gtr-params
   description: "GTR parameters for the model specified by the --gtr\nargument. The\
     \ parameters should be feed as 'key=value'\nlist of parameters. Example: '--gtr\
     \ K80 --gtr-params\nkappa=0.2 pis=0.25,0.25,0.25,0.25'. See the exact\ndefinitions\
     \ of the parameters in the GTR creation\nmethods in treetime/nuc_models.py or\n\
     treetime/aa_models.py"
-  synonyms:
-  - --gtr-params
   args: !RepeatFlagArg
     name: GTR_PARAMS
-  optional: true
 - !Flag
-  description: use aminoacid alphabet
+  optional: true
   synonyms:
   - --aa
+  description: use aminoacid alphabet
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "if specified, the rate of the molecular clock won't be\noptimized."
+  optional: true
   synonyms:
   - --clock-rate
+  description: "if specified, the rate of the molecular clock won't be\noptimized."
   args: !SimpleFlagArg
     name: CLOCK_RATE
-  optional: true
 - !Flag
-  description: standard deviation of the provided clock rate estimate
+  optional: true
   synonyms:
   - --clock-std-dev
+  description: standard deviation of the provided clock rate estimate
   args: !SimpleFlagArg
     name: CLOCK_STD_DEV
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --branch-length-mode
   description: "If set to 'input', the provided branch length will be\nused without\
     \ modification. Note that branch lengths\noptimized by treetime are only accurate\
     \ at short\nevolutionary distances."
-  synonyms:
-  - --branch-length-mode
   args: !ChoiceFlagArg
     choices: !!set
+      input:
+      auto:
       joint:
       marginal:
-      auto:
-      input:
-  optional: true
 - !Flag
-  description: estimate confidence intervals of divergence times.
+  optional: true
   synonyms:
   - --confidence
+  description: estimate confidence intervals of divergence times.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Don't resolve polytomies using temporal information.
+  optional: true
   synonyms:
   - --keep-polytomies
+  description: Don't resolve polytomies using temporal information.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --relax
   description: "RELAX   use an autocorrelated molecular clock. Strength of the\ngaussian\
     \ priors on branch specific rate deviation and\nthe coupling of parent and offspring\
     \ rates can be\nspecified e.g. as --relax 1.0 0.5. Values around 1.0\ncorrespond\
     \ to weak priors, larger values constrain\nrate deviations more strongly. Coupling\
     \ 0 (--relax 1.0\n0) corresponds to an un-correlated clock."
-  synonyms:
-  - --relax
   args: !SimpleFlagArg
     name: RELAX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-iter
   description: "maximal number of iterations the inference cycle is\nrun. Note that\
     \ for polytomy resolution and coalescence\nmodels max_iter should be at least\
     \ 2"
-  synonyms:
-  - --max-iter
   args: !SimpleFlagArg
     name: MAX_ITER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --coalescent
   description: "coalescent time scale -- sensible values are on the\norder of the\
     \ average hamming distance of\ncontemporaneous sequences. In addition, 'opt'\n\
     'skyline' are valid options and estimate a constant\ncoalescent rate or a piecewise\
     \ linear coalescent rate\nhistory"
-  synonyms:
-  - --coalescent
   args: !SimpleFlagArg
     name: COALESCENT
-  optional: true
 - !Flag
-  description: number of grid points in skyline coalescent model
+  optional: true
   synonyms:
   - --n-skyline
+  description: number of grid points in skyline coalescent model
   args: !SimpleFlagArg
     name: N_SKYLINE
-  optional: true
 - !Flag
-  description: "filename to save the plot to. Suffix will determine\nformat (choices\
-    \ pdf, png, svg, default=pdf)"
+  optional: true
   synonyms:
   - --plot-tree
-  args: !SimpleFlagArg
-    name: PLOT_TREE
-  optional: true
-- !Flag
   description: "filename to save the plot to. Suffix will determine\nformat (choices\
     \ pdf, png, svg, default=pdf)"
+  args: !SimpleFlagArg
+    name: PLOT_TREE
+- !Flag
+  optional: true
   synonyms:
   - --plot-rtt
+  description: "filename to save the plot to. Suffix will determine\nformat (choices\
+    \ pdf, png, svg, default=pdf)"
   args: !SimpleFlagArg
     name: PLOT_RTT
-  optional: true
 - !Flag
-  description: "add tip labels (default for small trees with <30\nleaves)"
+  optional: true
   synonyms:
   - --tip-labels
+  description: "add tip labels (default for small trees with <30\nleaves)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "don't show tip labels (default for small trees with\n>=30 leaves)"
+  optional: true
   synonyms:
   - --no-tip-labels
+  description: "don't show tip labels (default for small trees with\n>=30 leaves)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: do not fill terminal gaps
+  optional: true
   synonyms:
   - --keep-overhangs
+  description: do not fill terminal gaps
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: zero based mutation indexing
+  optional: true
   synonyms:
   - --zero-based
+  description: zero based mutation indexing
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "overwrite ambiguous states on tips with the most\nlikely inferred\
-    \ state"
+  optional: true
   synonyms:
   - --reconstruct-tip-states
+  description: "overwrite ambiguous states on tips with the most\nlikely inferred\
+    \ state"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: include transitions involving ambiguous states
+  optional: true
   synonyms:
   - --report-ambiguous
+  description: include transitions involving ambiguous states
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: verbosity of output 0-6
+  optional: true
   synonyms:
   - --verbose
+  description: verbosity of output 0-6
   args: !SimpleFlagArg
     name: VERBOSE
-  optional: true
 - !Flag
-  description: directory to write the output to
+  optional: true
   synonyms:
   - --outdir
+  description: directory to write the output to
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: TreeTime: Maximum Likelihood Phylodynamics\n\npositional arguments:\n\
   \  {homoplasy,ancestral,mugration,clock,version}\n\noptional arguments:\n  -h, --help\
   \            show this help message and exit\n  --tree TREE           Name of file\
@@ -375,3 +375,4 @@ help_text: "usage: TreeTime: Maximum Likelihood Phylodynamics\n\npositional argu
   \    show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

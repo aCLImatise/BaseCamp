@@ -20,13 +20,16 @@ task XamCoverageBinspl {
       ~{if (man) then "-man" else ""} \
       ~{if (x_am_files) then "-xam_files" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    x_am_file: "-f    bam|cram file to check coverage."
-    target_file: "-r    bed|gff3 file of targets."
-    output_file: "-o    file to write JSON string output of coverage"
-    type: "-t    Type of target file provided [bed|gff3]"
-    version: "-v   Print version and exit."
-    man: "-m   Full documentation."
+    x_am_file: "bam|cram file to check coverage."
+    target_file: "bed|gff3 file of targets."
+    output_file: "file to write JSON string output of coverage"
+    type: "Type of target file provided [bed|gff3]"
+    version: "Print version and exit."
+    man: "Full documentation."
     x_am_files: "bam|cram file to check coverage."
   }
   output {

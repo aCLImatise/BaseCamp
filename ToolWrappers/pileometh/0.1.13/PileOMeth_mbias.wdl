@@ -40,6 +40,9 @@ task PileOMethMbias {
       ~{if (chg) then "--CHG" else ""} \
       ~{if (chh) then "--CHH" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minimum_mapq_threshold: "Minimum MAPQ threshold to include an alignment (default 10)"
     minimum_phred_threshold: "Minimum Phred threshold to include a base (default 5). This\\nmust be >0."

@@ -1,0 +1,362 @@
+!Command
+command:
+- chewiesnake
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --prodigal
+  description: '[--bsr_threshold BSR_THRESHOLD]'
+  args: !SimpleFlagArg
+    name: PRODIGAL
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --sample_list
+  description: "List of samples to analyze, as a two column tsv file\nwith columns\
+    \ sample and assembly. Can be generated\nwith provided script create_sampleSheet,sh"
+  args: !SimpleFlagArg
+    name: SAMPLE_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --working_directory
+  description: Working directory where results are saved
+  args: !SimpleFlagArg
+    name: WORKING_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - --condaprefix
+  description: "Path of default conda environment, enables recycling\nbuilt environments,\
+    \ default is in folder conda_env in\nrepository directory."
+  args: !SimpleFlagArg
+    name: CONDAPREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --reads
+  description: "Input data is reads. Assemble (using shovill) prior to\nallele calling\
+    \ (default is contigs)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --scheme
+  description: Path to directory of the cgmlst scheme
+  args: !SimpleFlagArg
+    name: SCHEME
+- !Flag
+  optional: true
+  synonyms:
+  - --bsr_threshold
+  description: blast scoring ratio threshold to use , default = 0.6
+  args: !SimpleFlagArg
+    name: BSR_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --size_threshold
+  description: "size threshold, default at 0.2 means alleles with size\nvariation\
+    \ of +-20 percent will be tagged as ASM/ALM ,\ndefault = 0.2"
+  args: !SimpleFlagArg
+    name: SIZE_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --distance_method
+  description: Grapetree distance method; default = 3
+  args: !SimpleFlagArg
+    name: DISTANCE_METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - --clustering_method
+  description: "The agglomeration method to be used for hierarchical\nclustering.\
+    \ This should be (an unambiguous\nabbreviation of) one of \"ward.D\", \"ward.D2\"\
+    , \"single\",\n\"complete\", \"average\" (= UPGMA), \"mcquitty\" (= WPGMA),\n\"\
+    median\" (= WPGMC) or \"centroid\" (= UPGMC); default =\nsingle"
+  args: !SimpleFlagArg
+    name: CLUSTERING_METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - --distance_threshold
+  description: "A single distance threshold for the extraction of sub-\ntrees; default\
+    \ = 10"
+  args: !SimpleFlagArg
+    name: DISTANCE_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --address_range
+  description: "A comma separated set of cutoff values for defining\nthe clustering\
+    \ address (Default:\n1,5,10,20,50,100,200,1000)"
+  args: !SimpleFlagArg
+    name: ADDRESS_RANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --report
+  description: Create html report
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --comparison
+  description: Compare these results to pre-computed allele database
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --comparison_db
+  description: Path to pre-computed allele database for comparison
+  args: !SimpleFlagArg
+    name: COMPARISON_DB
+- !Flag
+  optional: true
+  synonyms:
+  - --joining_threshold
+  description: "A distance threshold for joining data with\ncomparsion_db; default\
+    \ = 30"
+  args: !SimpleFlagArg
+    name: JOINING_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --remove_frameshifts
+  description: remove frameshift alleles by deviating allele length
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --allele_length_threshold
+  description: "Maximum tolerated allele length deviance compared to\nmedian allele\
+    \ length of locus; choose integer for\n\"absolute frameshift mode and float (0..1)\
+    \ for\n\"relative\" frameshift mode ; default=0.1"
+  args: !SimpleFlagArg
+    name: ALLELE_LENGTH_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --frameshift_mode
+  description: "Whether to consider absolute or relative differences\nof allele length\
+    \ for frameshifts removal. Choose from\n\"absolute\" and \"relative\", default=\"\
+    relative\""
+  args: !SimpleFlagArg
+    name: FRAMESHIFT_MODE
+- !Flag
+  optional: true
+  synonyms:
+  - --min_trimmed_length
+  description: Minimum length of a read to keep, default = 15
+  args: !SimpleFlagArg
+    name: MIN_TRIMMED_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --assembler
+  description: "Assembler to use in shovill, choose from megahit\nvelvet skesa spades\
+    \ (default: spades)"
+  args: !SimpleFlagArg
+    name: ASSEMBLER
+- !Flag
+  optional: true
+  synonyms:
+  - --shovill_output_options
+  description: 'Extra output options for shovill (default: "")'
+  args: !SimpleFlagArg
+    name: SHOVILL_OUTPUT_OPTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --shovill_extraopts
+  description: 'Extra options for shovill (default: "")'
+  args: !SimpleFlagArg
+    name: SHOVILL_EXTRAOPTS
+- !Flag
+  optional: true
+  synonyms:
+  - --shovill_modules
+  description: "Module options for shovill, choose from --noreadcorr\n--trim --nostitch\
+    \ --nocorr --noreadcorr (default: \"--\nnoreadcorr\")"
+  args: !SimpleFlagArg
+    name: SHOVILL_MODULES
+- !Flag
+  optional: true
+  synonyms:
+  - --shovill_depth
+  description: "Sub-sample --R1/--R2 to this depth. Disable with\n--depth 0 (default:\
+    \ 100)"
+  args: !SimpleFlagArg
+    name: SHOVILL_DEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - --shovill_tmpdir
+  description: 'Fast temporary directory (default: "")'
+  args: !SimpleFlagArg
+    name: SHOVILL_TMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --use_conda
+  description: "Utilize \"--useconda\" option, i.e. all software\ndependencies are\
+    \ available in a single env"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --conda_frontend
+  description: "Do not mamba but conda as frontend to create\nindividual module' software\
+    \ environments"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads_sample
+  description: Number of Threads to use per sample, default = 10
+  args: !SimpleFlagArg
+    name: THREADS_SAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: "Number of Threads to use. Note that samples can only\nbe processed\
+    \ sequentially due to the required database\naccess. However the allele calling\
+    \ can be executed in\nparallel for the different loci, default = 10"
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --dryrun
+  description: "Snakemake dryrun. Only calculate graph without\nexecuting anything"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --forceall
+  description: Snakemake force. Force recalculation of all steps
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --unlock
+  description: unlock snakemake
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --logdir
+  description: "Path to directory whete .snakemake output is to be\nsaved\n"
+  args: !SimpleFlagArg
+    name: LOGDIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: chewiesnake [-h] -l SAMPLE_LIST -d WORKING_DIRECTORY\n        \
+  \           [--condaprefix CONDAPREFIX] [--reads] --scheme SCHEME\n            \
+  \       --prodigal PRODIGAL [--bsr_threshold BSR_THRESHOLD]\n                  \
+  \ [--size_threshold SIZE_THRESHOLD]\n                   [--distance_method DISTANCE_METHOD]\n\
+  \                   [--clustering_method CLUSTERING_METHOD]\n                  \
+  \ [--distance_threshold DISTANCE_THRESHOLD]\n                   [--address_range\
+  \ ADDRESS_RANGE] [--report] [--comparison]\n                   [--comparison_db\
+  \ COMPARISON_DB]\n                   [--joining_threshold JOINING_THRESHOLD] [-f]\n\
+  \                   [--allele_length_threshold ALLELE_LENGTH_THRESHOLD]\n      \
+  \             [--frameshift_mode FRAMESHIFT_MODE]\n                   [--min_trimmed_length\
+  \ MIN_TRIMMED_LENGTH]\n                   [--assembler ASSEMBLER]\n            \
+  \       [--shovill_output_options SHOVILL_OUTPUT_OPTIONS]\n                   [--shovill_extraopts\
+  \ SHOVILL_EXTRAOPTS]\n                   [--shovill_modules SHOVILL_MODULES]\n \
+  \                  [--shovill_depth SHOVILL_DEPTH]\n                   [--shovill_tmpdir\
+  \ SHOVILL_TMPDIR] [--use_conda]\n                   [--conda_frontend] [--threads_sample\
+  \ THREADS_SAMPLE]\n                   [-t THREADS] [-n] [--forceall] [--unlock]\
+  \ [--logdir LOGDIR]\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -l SAMPLE_LIST, --sample_list SAMPLE_LIST\n              \
+  \          List of samples to analyze, as a two column tsv file\n              \
+  \          with columns sample and assembly. Can be generated\n                \
+  \        with provided script create_sampleSheet,sh\n  -d WORKING_DIRECTORY, --working_directory\
+  \ WORKING_DIRECTORY\n                        Working directory where results are\
+  \ saved\n  --condaprefix CONDAPREFIX\n                        Path of default conda\
+  \ environment, enables recycling\n                        built environments, default\
+  \ is in folder conda_env in\n                        repository directory.\n  --reads\
+  \               Input data is reads. Assemble (using shovill) prior to\n       \
+  \                 allele calling (default is contigs)\n  --scheme SCHEME       Path\
+  \ to directory of the cgmlst scheme\n  --prodigal PRODIGAL   Path to prodigal_training_file\
+  \ (e.g. provided in\n                        chewbbaca, path/to/chewieSnake/chewBBACA/CHEWBBACA/pro\n\
+  \                        digal_training_files, e.g. /usr/local/opt/chewiesnake/\n\
+  \                        chewBBACA/CHEWBBACA/prodigal_training_files/Salmonella\n\
+  \                        _enterica.trn\n  --bsr_threshold BSR_THRESHOLD\n      \
+  \                  blast scoring ratio threshold to use , default = 0.6\n  --size_threshold\
+  \ SIZE_THRESHOLD\n                        size threshold, default at 0.2 means alleles\
+  \ with size\n                        variation of +-20 percent will be tagged as\
+  \ ASM/ALM ,\n                        default = 0.2\n  --distance_method DISTANCE_METHOD\n\
+  \                        Grapetree distance method; default = 3\n  --clustering_method\
+  \ CLUSTERING_METHOD\n                        The agglomeration method to be used\
+  \ for hierarchical\n                        clustering. This should be (an unambiguous\n\
+  \                        abbreviation of) one of \"ward.D\", \"ward.D2\", \"single\"\
+  ,\n                        \"complete\", \"average\" (= UPGMA), \"mcquitty\" (=\
+  \ WPGMA),\n                        \"median\" (= WPGMC) or \"centroid\" (= UPGMC);\
+  \ default =\n                        single\n  --distance_threshold DISTANCE_THRESHOLD\n\
+  \                        A single distance threshold for the extraction of sub-\n\
+  \                        trees; default = 10\n  --address_range ADDRESS_RANGE\n\
+  \                        A comma separated set of cutoff values for defining\n \
+  \                       the clustering address (Default:\n                     \
+  \   1,5,10,20,50,100,200,1000)\n  --report              Create html report\n  --comparison\
+  \          Compare these results to pre-computed allele database\n  --comparison_db\
+  \ COMPARISON_DB\n                        Path to pre-computed allele database for\
+  \ comparison\n  --joining_threshold JOINING_THRESHOLD\n                        A\
+  \ distance threshold for joining data with\n                        comparsion_db;\
+  \ default = 30\n  -f, --remove_frameshifts\n                        remove frameshift\
+  \ alleles by deviating allele length\n  --allele_length_threshold ALLELE_LENGTH_THRESHOLD\n\
+  \                        Maximum tolerated allele length deviance compared to\n\
+  \                        median allele length of locus; choose integer for\n   \
+  \                     \"absolute frameshift mode and float (0..1) for\n        \
+  \                \"relative\" frameshift mode ; default=0.1\n  --frameshift_mode\
+  \ FRAMESHIFT_MODE\n                        Whether to consider absolute or relative\
+  \ differences\n                        of allele length for frameshifts removal.\
+  \ Choose from\n                        \"absolute\" and \"relative\", default=\"\
+  relative\"\n  --min_trimmed_length MIN_TRIMMED_LENGTH\n                        Minimum\
+  \ length of a read to keep, default = 15\n  --assembler ASSEMBLER\n            \
+  \            Assembler to use in shovill, choose from megahit\n                \
+  \        velvet skesa spades (default: spades)\n  --shovill_output_options SHOVILL_OUTPUT_OPTIONS\n\
+  \                        Extra output options for shovill (default: \"\")\n  --shovill_extraopts\
+  \ SHOVILL_EXTRAOPTS\n                        Extra options for shovill (default:\
+  \ \"\")\n  --shovill_modules SHOVILL_MODULES\n                        Module options\
+  \ for shovill, choose from --noreadcorr\n                        --trim --nostitch\
+  \ --nocorr --noreadcorr (default: \"--\n                        noreadcorr\")\n\
+  \  --shovill_depth SHOVILL_DEPTH\n                        Sub-sample --R1/--R2 to\
+  \ this depth. Disable with\n                        --depth 0 (default: 100)\n \
+  \ --shovill_tmpdir SHOVILL_TMPDIR\n                        Fast temporary directory\
+  \ (default: \"\")\n  --use_conda           Utilize \"--useconda\" option, i.e. all\
+  \ software\n                        dependencies are available in a single env\n\
+  \  --conda_frontend      Do not mamba but conda as frontend to create\n        \
+  \                individual module' software environments\n  --threads_sample THREADS_SAMPLE\n\
+  \                        Number of Threads to use per sample, default = 10\n  -t\
+  \ THREADS, --threads THREADS\n                        Number of Threads to use.\
+  \ Note that samples can only\n                        be processed sequentially\
+  \ due to the required database\n                        access. However the allele\
+  \ calling can be executed in\n                        parallel for the different\
+  \ loci, default = 10\n  -n, --dryrun          Snakemake dryrun. Only calculate graph\
+  \ without\n                        executing anything\n  --forceall            Snakemake\
+  \ force. Force recalculation of all steps\n  --unlock              unlock snakemake\n\
+  \  --logdir LOGDIR       Path to directory whete .snakemake output is to be\n  \
+  \                      saved\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/chewiesnake:3.0.0--1

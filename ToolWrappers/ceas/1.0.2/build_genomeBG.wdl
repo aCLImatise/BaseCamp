@@ -22,6 +22,9 @@ task BuildGenomeBG {
       ~{if defined(downstream) then ("--downstream " +  '"' + downstream + '"') else ""} \
       ~{if defined(binsize) then ("--binsize " +  '"' + binsize + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Genome of UCSC (eg hg18). If -d (--db) is not given,\\nthis script searches for a local sqlite3 referenced by\\n-g (--gt). WARNING: MySQLdb must be installed to use\\nthe tables of UCSC."
     gt: "Name of the gene annotation table (or local sqlite3\\nfile) (eg refGene or knownGene). If -d (--db) is\\ngiven, build_genomeBG will connect to UCSC and\\ndownload the specified gene table. Otherwise,\\nbuild_genomeBG search for a local sqlite3 file with\\nthe name."

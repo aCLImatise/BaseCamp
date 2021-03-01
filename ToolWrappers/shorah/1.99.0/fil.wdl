@@ -4,6 +4,9 @@ task Fil {
   command <<<
     fil
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

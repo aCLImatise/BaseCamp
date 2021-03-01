@@ -4,6 +4,9 @@ task MpiEvaluator {
   command <<<
     mpi_evaluator
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

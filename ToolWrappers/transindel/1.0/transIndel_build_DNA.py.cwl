@@ -3,22 +3,22 @@ id: transIndel_build_DNA.py.cwl
 inputs:
 - id: in_mapq_cut_off
   doc: :minimal MapQ in SAM for support SV event, default 15
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mapq_cutoff
 - id: in_max_del_length
   doc: :maximum deletion length to be detected (10e6)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --max_del_length
 - id: in_o
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_i
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_o
   doc: ''
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_o)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - transIndel_build_DNA.py

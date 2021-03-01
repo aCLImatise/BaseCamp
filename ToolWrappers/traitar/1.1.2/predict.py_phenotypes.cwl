@@ -3,7 +3,7 @@ id: predict.py_phenotypes.cwl
 inputs:
 - id: in_voters
   doc: "use this number of voters for the classification\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --voters
 - id: in_positional_arguments
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - predict.py

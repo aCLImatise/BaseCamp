@@ -18,6 +18,9 @@ task NormalizeScaffold {
       ~{if defined(just_normalize_eid) then ("-e " +  '"' + just_normalize_eid + '"') else ""} \
       ~{if defined(just_normalize_iid) then ("-i " +  '"' + just_normalize_iid + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     display_compatible_version: "Display the compatible bank version"
     just_normalize_eids: "Just normalize the scaffolds eids listed in file"

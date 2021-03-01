@@ -3,42 +3,42 @@ id: fast5_subset.cwl
 inputs:
 - id: in_input
   doc: Path to Fast5 file or directory of Fast5 files
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_save_path
   doc: Folder to output MultiRead subset to
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --save_path
 - id: in_read_id_list
   doc: "File containing list of read ids to extract (or\nsequencing_summary.txt file)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --read_id_list
 - id: in_filename_base
   doc: "Root of output filename, default='batch' ->\n'batch_0.fast5'"
-  type: File
+  type: File?
   inputBinding:
     prefix: --filename_base
 - id: in_batch_size
   doc: Number of reads per multi-read file
-  type: long
+  type: long?
   inputBinding:
     prefix: --batch_size
 - id: in_threads
   doc: Maximum number of threads to use
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_recursive
   doc: Search recursively through folders for MultiRead fast5
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --recursive
 - id: in_file_list
   doc: "File containing names of files to search in\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --file_list
 - id: in_tool
@@ -92,14 +92,15 @@ outputs:
   type: stdout
 - id: out_save_path
   doc: Folder to output MultiRead subset to
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_save_path)
 - id: out_filename_base
   doc: "Root of output filename, default='batch' ->\n'batch_0.fast5'"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_filename_base)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fast5_subset

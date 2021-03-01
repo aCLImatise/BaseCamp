@@ -14,6 +14,9 @@ task AddTradisTags {
       ~{if (output_bam_name) then "-o" else ""} \
       ~{if (verbose_debugging_output) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam_file_tradis: ": bam file with tradis tags"
     output_bam_name: ": output BAM name (optional. default: <file>.tr.bam)"

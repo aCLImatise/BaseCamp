@@ -5,227 +5,227 @@ command:
 positional: []
 named:
 - !Flag
-  description: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\nInput genomic regions\
-    \ in (BED/GTF/GFF) format.\nFor files in a directory use *.<extension>. e.g. *.bed"
+  optional: true
   synonyms:
   - -i
+  description: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\nInput genomic regions\
+    \ in (BED/GTF/GFF) format.\nFor files in a directory use *.<extension>. e.g. *.bed"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Type of input sets. Genomic regions or lists of genes/SNPs sets. Default
-    is "genomic".
+  optional: true
   synonyms:
   - --type
+  description: Type of input sets. Genomic regions or lists of genes/SNPs sets. Default
+    is "genomic".
   args: !ChoiceFlagArg
     choices: !!set
-      genomic:
       list:
-  optional: true
+      genomic:
 - !Flag
+  optional: true
+  synonyms:
+  - --compute
   description: "Compute count/fraction of overlaps or other statistical relationships.\n\
     count: calculates the number of overlaps.\nfrac: calculates the fraction of overlap.\
     \ (Default)\njaccard: calculate the Jaccard statistic.\nreldist: calculate the\
     \ distribution of relative distances.\nfisher: calculate Fisher`s statistic.\n\
     Note: For jaccard and reldist regions should be pre-shorted or set --sort."
-  synonyms:
-  - --compute
   args: !ChoiceFlagArg
     choices: !!set
-      fisher:
-      frac:
-      count:
       reldist:
+      fisher:
+      count:
+      frac:
       jaccard:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bedtools-options
   description: "List any of the arguments available for bedtools subcommands: interset,\
     \ jaccard, fisher, reldist.\nType bedtools <subcommand> --help to view all the\
     \ options.\nFor example: --bedtools-options f=0.8,r,etc"
-  synonyms:
-  - --bedtools-options
   args: !SimpleFlagArg
     name: BEDTOOLS_OPTIONS
-  optional: true
 - !Flag
-  description: "Compute the correlation.\nDefault is \"False\"."
+  optional: true
   synonyms:
   - --corr
+  description: "Compute the correlation.\nDefault is \"False\"."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --corrtype
   description: "Select the type of correlation.\npearson: computes the Pearson correlation.\
     \ (Default)\nkendall: computes the Kendall correlation.\nspearman: computes the\
     \ Spearman correlation.\nNote: This only works if --corr is set."
-  synonyms:
-  - --corrtype
   args: !ChoiceFlagArg
     choices: !!set
-      kendall:
-      pearson:
       spearman:
-  optional: true
+      pearson:
+      kendall:
 - !Flag
-  description: Heatmap plot type. Default is "tribar".
+  optional: true
   synonyms:
   - --htype
+  description: Heatmap plot type. Default is "tribar".
   args: !ChoiceFlagArg
     choices: !!set
       tribar:
       shade:
-      circle:
-      number:
-      pie:
       square:
       ellipse:
+      circle:
       dendrogram:
+      pie:
       color:
-  optional: true
+      number:
 - !Flag
-  description: Show lower/upper triangle of the matrix as heatmap if --htype=tribar.
-    Default is "lower".
+  optional: true
   synonyms:
   - --triangle
+  description: Show lower/upper triangle of the matrix as heatmap if --htype=tribar.
+    Default is "lower".
   args: !ChoiceFlagArg
     choices: !!set
-      upper:
       lower:
-  optional: true
+      upper:
 - !Flag
-  description: "Show the diagonal values in the heatmap.\nDefault is \"False\"."
+  optional: true
   synonyms:
   - --diagonal
+  description: "Show the diagonal values in the heatmap.\nDefault is \"False\"."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Comma-separated list of names as labels for input files.\nIf it is\
-    \ not set file names will be used as labels.\nFor example: --names=A,B,C,D,E,F"
+  optional: true
   synonyms:
   - --names
+  description: "Comma-separated list of names as labels for input files.\nIf it is\
+    \ not set file names will be used as labels.\nFor example: --names=A,B,C,D,E,F"
   args: !SimpleFlagArg
     name: LABELS
-  optional: true
 - !Flag
-  description: "Use file names as labels instead.\nDefault is \"False\"."
+  optional: true
   synonyms:
   - --filenames
+  description: "Use file names as labels instead.\nDefault is \"False\"."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Set this only if your files are not sorted.\nDefault is \"False\"."
+  optional: true
   synonyms:
   - --sort
+  description: "Set this only if your files are not sorted.\nDefault is \"False\"."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Required argument if --compute=fisher.\nNeeds to be a string assembly\
-    \ name like \"mm10\" or \"hg38\""
+  optional: true
   synonyms:
   - --genome
+  description: "Required argument if --compute=fisher.\nNeeds to be a string assembly\
+    \ name like \"mm10\" or \"hg38\""
   args: !SimpleFlagArg
     name: GENOME
-  optional: true
 - !Flag
-  description: "Output folder path where results will be stored.\nDefault is current\
-    \ working directory."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "Output folder path where results will be stored.\nDefault is current\
+    \ working directory."
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: 'Project name for the output. Default is: "Intervene"'
+  optional: true
   synonyms:
   - --project
+  description: 'Project name for the output. Default is: "Intervene"'
   args: !SimpleFlagArg
     name: PROJECT
-  optional: true
 - !Flag
-  description: x-axis label of boxplot if --htype=tribar. Default is "Set size"
+  optional: true
   synonyms:
   - --barlabel
+  description: x-axis label of boxplot if --htype=tribar. Default is "Set size"
   args: !SimpleFlagArg
     name: BLABEL
-  optional: true
 - !Flag
-  description: Boxplot color (hex vlaue or name, e.g. blue). Default is "#53cfff".
+  optional: true
   synonyms:
   - --barcolor
+  description: Boxplot color (hex vlaue or name, e.g. blue). Default is "#53cfff".
   args: !SimpleFlagArg
     name: BARCOLOR
-  optional: true
 - !Flag
-  description: Label font size. Default is "8".
+  optional: true
   synonyms:
   - --fontsize
+  description: Label font size. Default is "8".
   args: !SimpleFlagArg
     name: FONTSIZE
-  optional: true
 - !Flag
-  description: Heatmap main title. Default is "Pairwise intersection".
+  optional: true
   synonyms:
   - --title
+  description: Heatmap main title. Default is "Pairwise intersection".
   args: !SimpleFlagArg
     name: TITLE
-  optional: true
 - !Flag
-  description: White space between barplt and heatmap, if --htype=tribar. Default
-    is "1.3".
+  optional: true
   synonyms:
   - --space
+  description: White space between barplt and heatmap, if --htype=tribar. Default
+    is "1.3".
   args: !SimpleFlagArg
     name: SPACE
-  optional: true
 - !Flag
-  description: Figure type for the plot. e.g. --figtype svg. Default is "pdf"
+  optional: true
   synonyms:
   - --figtype
+  description: Figure type for the plot. e.g. --figtype svg. Default is "pdf"
   args: !ChoiceFlagArg
     choices: !!set
-      ps:
-      tiff:
       png:
       svg:
+      tiff:
       pdf:
-  optional: true
+      ps:
 - !Flag
-  description: "FIGSIZE\nFigure size for the output plot (width,height). e.g.  --figsize\
-    \ 8 8"
+  optional: true
   synonyms:
   - --figsize
+  description: "FIGSIZE\nFigure size for the output plot (width,height). e.g.  --figsize\
+    \ 8 8"
   args: !SimpleFlagArg
     name: FIGSIZE
-  optional: true
 - !Flag
-  description: 'Dots-per-inch (DPI) for the output. Default is: "300".'
+  optional: true
   synonyms:
   - --dpi
+  description: 'Dots-per-inch (DPI) for the output. Default is: "300".'
   args: !SimpleFlagArg
     name: DPI
-  optional: true
 - !Flag
-  description: Set to generate Rscript only, if R/Corrplot package are not installed.
-    Default is "False".
+  optional: true
   synonyms:
   - --scriptonly
+  description: Set to generate Rscript only, if R/Corrplot package are not installed.
+    Default is "False".
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: This will run the program on test data.
+  optional: true
   synonyms:
   - --test
+  description: This will run the program on test data.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: intervene pairwise [options]\n\nPairwise intersection and heatmap\
@@ -290,3 +290,4 @@ help_text: "usage: intervene pairwise [options]\n\nPairwise intersection and hea
   \                     \n"
 generated_using:
 - --help
+docker_image:

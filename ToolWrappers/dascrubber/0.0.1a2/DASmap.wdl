@@ -8,6 +8,9 @@ task DASmap {
     DASmap \
       ~{if (p) then "-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     p: ""
   }

@@ -30,6 +30,9 @@ task ProphyleClassify {
       ~{if (force_restarted_mode) then "-K" else ""} \
       ~{if (advanced_configuration_json) then "-c" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_length: "k-mer length [detect automatically from the index]"
     measure_hhit_countcnormcoverage: "measure: h1=hit count, c1=coverage, h2=norm.hit count,\\nc2=norm.coverage [h1]"

@@ -24,6 +24,9 @@ task IucnSimTransitionRates {
       ~{if defined(burnin) then ("--burnin " +  '"' + burnin + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     species_data: "File containing species list and current IUCN status\\nof species, as well as generation length (GL) data\\nestimates if available. GL data is only used for '--\\nextinction_probs_mode 0' ('species_data.txt' output\\nfrom get_iucn_data function)."
     iucn_history: "File containing IUCN history of the reference group\\nfor transition rate estimation ('*_iucn_history.txt'\\noutput of get_iucn_data function)."

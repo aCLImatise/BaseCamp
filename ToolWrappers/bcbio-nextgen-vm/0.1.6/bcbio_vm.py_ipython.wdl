@@ -30,6 +30,9 @@ task BcbioVmpyIpython {
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""} \
       ~{if defined(image) then ("--image " +  '"' + image + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fc_dir: "A directory of Illumina output or fastq files to"
     system_config: "Global YAML configuration file specifying system\\ndetails. Defaults to installed bcbio_system.yaml."

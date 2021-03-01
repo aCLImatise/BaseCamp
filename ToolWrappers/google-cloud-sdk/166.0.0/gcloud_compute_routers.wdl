@@ -30,6 +30,9 @@ task GcloudComputeRouters {
       ~{update_bgp_peer} \
       ~{update_interface}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     routers: "SYNOPSIS"
     add_bgp_peer: "Add a BGP peer to a Google Compute Engine router."

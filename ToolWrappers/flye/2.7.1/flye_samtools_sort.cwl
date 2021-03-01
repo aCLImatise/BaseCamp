@@ -3,60 +3,60 @@ id: flye_samtools_sort.cwl
 inputs:
 - id: in_set_compression_level
   doc: Set compression level, from 0 (uncompressed) to 9 (best)
-  type: long
+  type: long?
   inputBinding:
     prefix: -l
 - id: in_set_maximum_memory
   doc: Set maximum memory per thread; suffix K/M/G recognized [768M]
-  type: long
+  type: long?
   inputBinding:
     prefix: -m
 - id: in_sort_read_name
   doc: Sort by read name
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_sort_value_tag
   doc: Sort by value of TAG. Uses position as secondary index (or read name if -n
     is set)
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_write_final_output
   doc: Write final output to FILE rather than standard output
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_write_temporary_files
   doc: Write temporary files to PREFIX.nnnn.bam
-  type: string
+  type: string?
   inputBinding:
     prefix: -T
 - id: in_input_fmt_option
   doc: "[=VAL]\nSpecify a single input file format option in the form\nof OPTION or\
     \ OPTION=VALUE"
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-fmt-option
 - id: in_output_fmt
   doc: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --output-fmt
 - id: in_output_fmt_option
   doc: "[=VAL]\nSpecify a single output file format option in the form\nof OPTION\
     \ or OPTION=VALUE"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-fmt-option
 - id: in_reference
   doc: Reference sequence FASTA FILE [null]
-  type: File
+  type: File?
   inputBinding:
     prefix: --reference
 - id: in_threads
   doc: "Number of additional threads to use [0]\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_sam_tools
@@ -71,12 +71,12 @@ inputs:
     position: 1
 - id: in_options_dot_dot_dot
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 2
 - id: in_in_dot_bam
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 3
 outputs:
@@ -85,15 +85,16 @@ outputs:
   type: stdout
 - id: out_write_final_output
   doc: Write final output to FILE rather than standard output
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_write_final_output)
 - id: out_output_fmt_option
   doc: "[=VAL]\nSpecify a single output file format option in the form\nof OPTION\
     \ or OPTION=VALUE"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_fmt_option)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - flye-samtools

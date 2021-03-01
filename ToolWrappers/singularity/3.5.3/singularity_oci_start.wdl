@@ -16,6 +16,9 @@ task SingularityOciStart {
       ~{oci} \
       ~{start}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

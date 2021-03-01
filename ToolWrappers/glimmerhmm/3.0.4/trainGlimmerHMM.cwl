@@ -5,42 +5,42 @@ inputs:
   doc: ",i2,...,in\nisochores to be considered (e.g. if two isochores are desired\
     \ between\n0-40% GC content and 40-100% then the option should be: -i 0,40,100;\n\
     default is -i 0,100 )"
-  type: long
+  type: long?
   inputBinding:
     prefix: -i
 - id: in_name_name_training
   doc: name = name of training directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -d
-- id: in_val_average_value_upstream_known
+- id: in_val_average_value_upstream
   doc: val = average value of upstream UTR region if known
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
-- id: in_val_average_value_downstream_known
+- id: in_val_average_value_downstream
   doc: val = average value of downstream UTR region if known
-  type: string
+  type: string?
   inputBinding:
     prefix: -l
-- id: in_val_average_value_intergenic_known
+- id: in_val_average_value_intergenic
   doc: val = average value of intergenic region if known
-  type: string
+  type: string?
   inputBinding:
     prefix: -n
 - id: in_val_value_flanking
   doc: val = value of flanking region around genes (default=200)
-  type: long
+  type: long?
   inputBinding:
     prefix: -v
-- id: in_val_build_default
+- id: in_val_build_st
   doc: val = build 1st or 2nd order markov model (default=1)
-  type: long
+  type: long?
   inputBinding:
     prefix: -b
 - id: in_val_when_constructing
   doc: val = 1 when constructing decision trees from false.* files (default=0)
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_agtcgtcgctagctagctagcatc_gag_tcttttcgatcgaggactagactt
@@ -57,6 +57,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - trainGlimmerHMM

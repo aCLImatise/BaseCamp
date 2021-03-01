@@ -4,7 +4,7 @@ task TestRegexp {
   input {
     Boolean? debug_show_compiled
     Boolean? show_information_compiled
-    Int? set_size_offsets
+    Int? set_size_n
     Boolean? use_posix_interface
     Boolean? output_store_information
     Boolean? time_compilation_execution
@@ -19,15 +19,18 @@ task TestRegexp {
       ~{var_output} \
       ~{if (debug_show_compiled) then "-d" else ""} \
       ~{if (show_information_compiled) then "-i" else ""} \
-      ~{if defined(set_size_offsets) then ("-o " +  '"' + set_size_offsets + '"') else ""} \
+      ~{if defined(set_size_n) then ("-o " +  '"' + set_size_n + '"') else ""} \
       ~{if (use_posix_interface) then "-p" else ""} \
       ~{if (output_store_information) then "-s" else ""} \
       ~{if (time_compilation_execution) then "-t" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug_show_compiled: "debug: show compiled code; implies -i"
     show_information_compiled: "show information about compiled pattern"
-    set_size_offsets: "set size of offsets vector to <n>"
+    set_size_n: "set size of offsets vector to <n>"
     use_posix_interface: "use POSIX interface"
     output_store_information: "output store information"
     time_compilation_execution: "time compilation and execution"

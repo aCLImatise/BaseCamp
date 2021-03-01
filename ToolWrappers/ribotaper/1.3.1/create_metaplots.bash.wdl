@@ -12,6 +12,9 @@ task CreateMetaplotsbash {
       ~{bed_file} \
       ~{name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ribo_dot_bam: ""
     bed_file: ""

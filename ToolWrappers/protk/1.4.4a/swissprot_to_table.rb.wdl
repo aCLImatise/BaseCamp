@@ -26,6 +26,9 @@ task SwissprotToTablerb {
       ~{if defined(query_separator) then ("--query-separator " +  '"' + query_separator + '"') else ""} \
       ~{if defined(id_column) then ("--id-column " +  '"' + id_column + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicitly_named_output: "An explicitly named output file."
     debug: "Run in debug mode [false]"

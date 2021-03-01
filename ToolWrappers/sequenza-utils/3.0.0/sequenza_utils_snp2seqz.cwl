@@ -4,61 +4,61 @@ inputs:
 - id: in_output
   doc: "Output file. For gzip compressed output name the file\nending in .gz. Default\
     \ STDOUT"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_vcf
   doc: VCF input file
-  type: File
+  type: File?
   inputBinding:
     prefix: --vcf
 - id: in_gc
   doc: The GC-content wiggle file
-  type: File
+  type: File?
   inputBinding:
     prefix: -gc
 - id: in_vcf_depth
   doc: "Column separated VCF tags in the format column for the\nread depth for the\
     \ normal and for the tumor. Default\n\"DP:DP\""
-  type: string
+  type: string?
   inputBinding:
     prefix: --vcf-depth
 - id: in_vcf_samples
-  doc: "Order of the normal and tumor sample in the VCF\ncolumn, choices are \"n/t\"\
-    \ or \"t/n\". Default \"n/t\""
-  type: string
+  doc: "{n/t,t/n}\nOrder of the normal and tumor sample in the VCF\ncolumn, choices\
+    \ are \"n/t\" or \"t/n\". Default \"n/t\""
+  type: boolean?
   inputBinding:
     prefix: --vcf-samples
 - id: in_vcf_alleles
   doc: "Column separated VCF tags in the format column for the\nalleles depth for\
     \ the normal and for the tumor.\nDefault \"AD:AD\""
-  type: string
+  type: string?
   inputBinding:
     prefix: --vcf-alleles
 - id: in_preset
   doc: "Preset set of options to parse VCF from popular\nvariant callers"
-  type: string
+  type: string?
   inputBinding:
     prefix: --preset
 - id: in_hom
   doc: Threshold to select homozygous positions. Default 0.9
-  type: double
+  type: double?
   inputBinding:
     prefix: --hom
 - id: in_het
   doc: Threshold to select heterozygous positions. Default
-  type: string
+  type: string?
   inputBinding:
     prefix: --het
 - id: in_tab_ix
   doc: Path of the tabix binary. Default "tabix"
-  type: File
+  type: File?
   inputBinding:
     prefix: --tabix
 - id: in_threshold_filter_positions
   doc: "Threshold to filter positions by the sum of read depth\nof the two samples.\
     \ Default 20.\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: -N
 - id: in_zero_dot_two_five_dot
@@ -73,9 +73,10 @@ outputs:
 - id: out_output
   doc: "Output file. For gzip compressed output name the file\nending in .gz. Default\
     \ STDOUT"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sequenza-utils

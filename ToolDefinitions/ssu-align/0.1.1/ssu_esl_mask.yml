@@ -11,22 +11,22 @@ subcommands:
   - maskfile
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: ssu-esl-mask
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: sqfile
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 2
     name: maskfile
-    optional: false
+    description: ''
   named: []
-  parent: &id009 !Command
+  parent: &id010 !Command
     command: *id001
     positional: []
     named: []
@@ -36,22 +36,22 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: ssu-esl-mask
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: sqfile
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 2
         name: maskfile
-        optional: false
+        description: ''
       named: []
-      parent: &id008 !Command
+      parent: &id009 !Command
         command: *id001
         positional: []
         named: []
@@ -61,22 +61,22 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: ssu-esl-mask
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: sqfile
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 2
             name: maskfile
-            optional: false
+            description: ''
           named: []
-          parent: &id007 !Command
+          parent: &id008 !Command
             command: *id001
             positional: []
             named: []
@@ -86,93 +86,187 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: ssu-esl-mask
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: sqfile
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 2
                 name: maskfile
-                optional: false
+                description: ''
               named: []
-              parent: &id003 !Command
+              parent: &id007 !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ': output masked sequences to file <f> instead of stdout'
-                  synonyms:
-                  - -o
-                  args: !SimpleFlagArg
-                    name: f
-                  optional: true
-                - !Flag
-                  description: ': reverse: mask exclusive of <start>..<end>, not inclusive'
-                  synonyms:
-                  - -r
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ': random access: fetch seqs from ssi-indexed <sqfile>'
-                  synonyms:
-                  - -R
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ': convert masked residues to lower case'
-                  synonyms:
-                  - -l
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ': convert masked residues to character <c>'
-                  synonyms:
-                  - -m
-                  args: !SimpleFlagArg
-                    name: c
-                  optional: true
-                - !Flag
-                  description: ': mask additional <n> residues beyond <start>,<end>'
-                  synonyms:
-                  - -x
-                  args: !SimpleFlagArg
-                    name: n
-                  optional: true
-                - !Flag
-                  description: ': specify that input file is in format <s>'
-                  synonyms:
-                  - --informat
-                  args: !SimpleFlagArg
-                    name: s
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: ssu-esl-mask
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: sqfile
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 2
                     name: maskfile
-                    optional: false
+                    description: ''
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -o
+                      description: ': output masked sequences to file <f> instead
+                        of stdout'
+                      args: !SimpleFlagArg
+                        name: f
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -r
+                      description: ': reverse: mask exclusive of <start>..<end>, not
+                        inclusive'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -R
+                      description: ': random access: fetch seqs from ssi-indexed <sqfile>'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -l
+                      description: ': convert masked residues to lower case'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -m
+                      description: ': convert masked residues to character <c>'
+                      args: !SimpleFlagArg
+                        name: c
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -x
+                      description: ': mask additional <n> residues beyond <start>,<end>'
+                      args: !SimpleFlagArg
+                        name: n
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --informat
+                      description: ': specify that input file is in format <s>'
+                      args: !SimpleFlagArg
+                        name: s
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: ssu-esl-mask
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: sqfile
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 2
+                        name: maskfile
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: ssu-esl-mask [options] <sqfile> <maskfile>\n\
+                        \nTo see more help on available options, do ssu-esl-mask -h\n\
+                        \n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - ssu-esl-mask
+                      - sqfile
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: maskfile
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: ssu-esl-mask [options] <sqfile> <maskfile>\n\
+                        \nTo see more help on available options, do ssu-esl-mask -h\n\
+                        \n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      description: ': help; show brief info on version and usage'
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "# ssu-esl-mask :: mask sequences in a sequence file\n\
+                      # Easel s0.1.1 (Feb 2016)\n# Copyright (C) 2016 HHMI Janelia\
+                      \ Farm Research Campus\n# Freely distributed under the BSD open\
+                      \ source license.\n# - - - - - - - - - - - - - - - - - - - -\
+                      \ - - - - - - - - - - - - - - - -\nUsage: ssu-esl-mask [options]\
+                      \ <sqfile> <maskfile>\n\n where general options are:\n  -h \
+                      \            : help; show brief info on version and usage\n\
+                      \  -o <f>         : output masked sequences to file <f> instead\
+                      \ of stdout\n  -r             : reverse: mask exclusive of <start>..<end>,\
+                      \ not inclusive\n  -R             : random access: fetch seqs\
+                      \ from ssi-indexed <sqfile>\n  -l             : convert masked\
+                      \ residues to lower case\n  -m <c>         : convert masked\
+                      \ residues to character <c>\n  -x <n>         : mask additional\
+                      \ <n> residues beyond <start>,<end>\n  --informat <s> : specify\
+                      \ that input file is in format <s>\n\nThe <seqfile> is a sequence\
+                      \ file in any accepted format, such as FASTA.\nIt may be indexed\
+                      \ (see esl-sfetch --index) for faster performance.\n\nThe <maskfile>\
+                      \ is a space-delimited file; each data line with 3 columns:\n\
+                      \  field 1: <seqname> to fetch from <sqfile>\n  field 2: <start>\
+                      \ coordinate for mask operation, 1..n\n  field 3: <end> coordinate\
+                      \ for mask operation, 1..n\nLines starting with # are comments,\
+                      \ and ignored.)\n\n"
+                    generated_using: &id006
+                    - -h
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -180,18 +274,16 @@ subcommands:
                   version_flag:
                   help_text: "Usage: ssu-esl-mask [options] <sqfile> <maskfile>\n\n\
                     To see more help on available options, do ssu-esl-mask -h\n\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - ssu-esl-mask
-                  - sqfile
+                  command: *id005
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: maskfile
-                    optional: false
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
@@ -202,13 +294,9 @@ subcommands:
                   help_text: "Usage: ssu-esl-mask [options] <sqfile> <maskfile>\n\n\
                     To see more help on available options, do ssu-esl-mask -h\n\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: ': help; show brief info on version and usage'
-                  synonyms:
-                  - -h
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "# ssu-esl-mask :: mask sequences in a sequence file\n\
@@ -232,8 +320,8 @@ subcommands:
                   \ <sqfile>\n  field 2: <start> coordinate for mask operation, 1..n\n\
                   \  field 3: <end> coordinate for mask operation, 1..n\nLines starting\
                   \ with # are comments, and ignored.)\n\n"
-                generated_using: &id006
-                - -h
+                generated_using: *id006
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -242,16 +330,17 @@ subcommands:
               help_text: "Usage: ssu-esl-mask [options] <sqfile> <maskfile>\n\nTo\
                 \ see more help on available options, do ssu-esl-mask -h\n\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: maskfile
-                optional: false
+                description: ''
               named: []
-              parent: *id003
+              parent: *id007
               subcommands: []
               usage: []
               help_flag:
@@ -260,6 +349,7 @@ subcommands:
               help_text: "Usage: ssu-esl-mask [options] <sqfile> <maskfile>\n\nTo\
                 \ see more help on available options, do ssu-esl-mask -h\n\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -285,6 +375,7 @@ subcommands:
               \  field 3: <end> coordinate for mask operation, 1..n\nLines starting\
               \ with # are comments, and ignored.)\n\n"
             generated_using: *id006
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -293,16 +384,17 @@ subcommands:
           help_text: "Usage: ssu-esl-mask [options] <sqfile> <maskfile>\n\nTo see\
             \ more help on available options, do ssu-esl-mask -h\n\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: maskfile
-            optional: false
+            description: ''
           named: []
-          parent: *id007
+          parent: *id008
           subcommands: []
           usage: []
           help_flag:
@@ -311,6 +403,7 @@ subcommands:
           help_text: "Usage: ssu-esl-mask [options] <sqfile> <maskfile>\n\nTo see\
             \ more help on available options, do ssu-esl-mask -h\n\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -335,6 +428,7 @@ subcommands:
           \ coordinate for mask operation, 1..n\nLines starting with # are comments,\
           \ and ignored.)\n\n"
         generated_using: *id006
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -343,16 +437,17 @@ subcommands:
       help_text: "Usage: ssu-esl-mask [options] <sqfile> <maskfile>\n\nTo see more\
         \ help on available options, do ssu-esl-mask -h\n\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: maskfile
-        optional: false
+        description: ''
       named: []
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag:
@@ -361,6 +456,7 @@ subcommands:
       help_text: "Usage: ssu-esl-mask [options] <sqfile> <maskfile>\n\nTo see more\
         \ help on available options, do ssu-esl-mask -h\n\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -384,6 +480,7 @@ subcommands:
       \ for mask operation, 1..n\nLines starting with # are comments, and ignored.)\n\
       \n"
     generated_using: *id006
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -392,16 +489,17 @@ subcommands:
   help_text: "Usage: ssu-esl-mask [options] <sqfile> <maskfile>\n\nTo see more help\
     \ on available options, do ssu-esl-mask -h\n\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: maskfile
-    optional: false
+    description: ''
   named: []
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag:
@@ -410,6 +508,7 @@ subcommands:
   help_text: "Usage: ssu-esl-mask [options] <sqfile> <maskfile>\n\nTo see more help\
     \ on available options, do ssu-esl-mask -h\n\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -432,3 +531,4 @@ help_text: "# ssu-esl-mask :: mask sequences in a sequence file\n# Easel s0.1.1 
   \  field 3: <end> coordinate for mask operation, 1..n\nLines starting with # are\
   \ comments, and ignored.)\n\n"
 generated_using: *id006
+docker_image:

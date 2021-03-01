@@ -8,6 +8,9 @@ task ArbNotify {
     arb_notify \
       ~{id}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id: ""
   }

@@ -3,17 +3,17 @@ id: bstats.cwl
 inputs:
 - id: in__verbose
   doc: ': verbose'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in__sampling_iterations
   doc: ': Sampling iterations (100)'
-  type: long
+  type: long?
   inputBinding:
     prefix: -i
 - id: in_output_diff_data
   doc: ': Output diff data to <file>'
-  type: File
+  type: File?
   inputBinding:
     prefix: -d
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_diff_data
   doc: ': Output diff data to <file>'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_diff_data)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bstats

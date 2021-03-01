@@ -8,6 +8,9 @@ task DRAMsetuppyUpdateDescriptionDb {
     DRAM_setup_py update_description_db \
       ~{dram_setup_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dram_setup_do_tpy: ""
   }

@@ -30,15 +30,13 @@ task InDelFixer {
     Boolean? var_25
     Boolean? var_26
     String? jar
-    Int four_five_four_slash_roche
-    String java_jar_indelfixerjar_i_libcaseccsfastq
-    String java_jar_indelfixerjar_i_libcaserfastq
+    String java_jar_indelfixerjar_referencegenomesfasta
+    String java_jar_indelfixerjar_g
   }
   command <<<
     InDelFixer \
-      ~{four_five_four_slash_roche} \
-      ~{java_jar_indelfixerjar_i_libcaseccsfastq} \
-      ~{java_jar_indelfixerjar_i_libcaserfastq} \
+      ~{java_jar_indelfixerjar_referencegenomesfasta} \
+      ~{java_jar_indelfixerjar_g} \
       ~{if defined(path_output_directory) then ("-o " +  '"' + path_output_directory + '"') else ""} \
       ~{if defined(path_ngs_input) then ("-i " +  '"' + path_ngs_input + '"') else ""} \
       ~{if defined(ir) then ("-ir " +  '"' + ir + '"') else ""} \
@@ -68,6 +66,9 @@ task InDelFixer {
       ~{if (var_26) then "-pacbio" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_output_directory: ": Path to the output directory (default: current directory)."
     path_ngs_input: ": Path to the NGS input file (FASTA, FASTQ or SFF format) [REQUIRED]."
@@ -97,9 +98,8 @@ task InDelFixer {
     var_25: ": 30 open / 3 extend"
     var_26: ": 5 open / 3 extend"
     jar: ""
-    four_five_four_slash_roche: ": java -jar InDelFixer.jar -i libCase102.fastq -g referenceGenomes.fasta -454"
-    java_jar_indelfixerjar_i_libcaseccsfastq: ": java -jar InDelFixer.jar -i libCase102.ccs.fastq -g referenceGenomes.fasta -noHashing -pacbio"
-    java_jar_indelfixerjar_i_libcaserfastq: ": java -jar InDelFixer.jar -i libCase102_R1.fastq -ir libCase102_R2.fastq -g referenceGenomes.fasta -illumina"
+    java_jar_indelfixerjar_referencegenomesfasta: ": java -jar InDelFixer.jar -i libCase102.ccs.fastq -g referenceGenomes.fasta -noHashing -pacbio"
+    java_jar_indelfixerjar_g: ": java -jar InDelFixer.jar -i libCase102_R1.fastq -ir libCase102_R2.fastq -g referenceGenomes.fasta -illumina"
   }
   output {
     File out_stdout = stdout()

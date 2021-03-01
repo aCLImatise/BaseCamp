@@ -34,6 +34,9 @@ task Rsamplesmp {
       ~{if (seed) then "--seed" else ""} \
       ~{if (temperature) then "--temperature" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "Specify that the sequence is DNA, and DNA parameters are to be used.\\nDefault is to use RNA parameters."
     c_param: "Specify a C parameter used in Rsample calculations.\\nDefault is 0.5 kcal/mol."

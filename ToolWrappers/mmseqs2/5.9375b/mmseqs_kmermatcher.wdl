@@ -36,6 +36,9 @@ task MmseqsKmermatcher {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alph_size: "13              alphabet size [2,21]"
     mask: "0               0: w/o low complexity masking, 1: with low complexity masking"

@@ -20,6 +20,9 @@ task KodojaRetrievepy {
       ~{if (genus) then "--genus" else ""} \
       ~{if (stringent) then "--stringent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_dir: "Path to directory of kodoja_search results, required"
     read_one: "Read 1 file path, required"

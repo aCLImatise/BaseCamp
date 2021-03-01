@@ -56,6 +56,9 @@ task Sffdump2 {
       ~{if (ncbi_error_report) then "--ncbi_error_report" else ""} \
       ~{if (legacy_report) then "--legacy-report" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     accession: "Replaces accession derived from <path> in\\nfilename(s) and deflines (only for single\\ntable dump)"
     outdir: "Output directory, default is working\\ndirectory '.' )"

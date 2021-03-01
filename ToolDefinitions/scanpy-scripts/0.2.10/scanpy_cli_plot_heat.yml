@@ -5,161 +5,161 @@ command:
 - heat
 positional:
 - !Positional
-  description: --groups TEXT[,TEXT...]         The groups for which to show the gene
+  optional: false
   position: 0
   name: adata.var_names.
-  optional: false
+  description: --groups TEXT[,TEXT...]         The groups for which to show the gene
 - !Positional
-  description: '-n, --n-genes INTEGER           Number of genes to show.  [default:
-    10]'
+  optional: false
   position: 1
   name: ranking.
-  optional: false
+  description: '-n, --n-genes INTEGER           Number of genes to show.  [default:
+    10]'
 - !Positional
-  description: '--log                           Plot on logarithmic axis.  [default:
-    False]'
+  optional: false
   position: 2
   name: consider.
-  optional: false
+  description: '--log                           Plot on logarithmic axis.  [default:
+    False]'
 named:
 - !Flag
-  description: "[anndata|loom]\nInput object format.  [default: anndata]"
+  optional: true
   synonyms:
   - -f
   - --input-format
+  description: "[anndata|loom]\nInput object format.  [default: anndata]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ',INTEGER      Figure size.  [default: 7,7]'
+  optional: true
   synonyms:
   - --fig-size
+  description: ',INTEGER      Figure size.  [default: 7,7]'
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: 'Figure DPI.  [default: 80]'
+  optional: true
   synonyms:
   - --fig-dpi
+  description: 'Figure DPI.  [default: 80]'
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: 'Figure font size.  [default: 15]'
+  optional: true
   synonyms:
   - --fig-fontsize
+  description: 'Figure font size.  [default: 15]'
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "/ --no-raw            Use expression values in `.raw` if present.\n\
-    [default: True]"
+  optional: true
   synonyms:
   - --use-raw
+  - --no-raw
+  description: "Use expression values in `.raw` if present.\n[default: True]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: var_names should be a valid subset of
+  optional: true
   synonyms:
   - --var-names
+  description: var_names should be a valid subset of
   args: !OptionalFlagArg
     names:
     - TEXT
     - TEXT...
     separator: ','
-  optional: true
 - !Flag
-  description: "When set, use the rank_genes_groups_ form of\nthe function, where\
-    \ gene lists are\nautomatically selected.  [default: False]"
+  optional: true
   synonyms:
   - --rgg
+  description: "When set, use the rank_genes_groups_ form of\nthe function, where\
+    \ gene lists are\nautomatically selected.  [default: False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The key of the observation grouping to
+  optional: true
   synonyms:
   - --groupby
+  description: The key of the observation grouping to
   args: !OptionalFlagArg
     names:
     - TEXT
     - TEXT...
     separator: ','
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --num-categories
   description: "Only used if groupby observation is not\ncategorical. This value determines\
     \ the\nnumber of groups into which the groupby\nobservation should be subdivided.\
     \  [default:\n7]"
-  synonyms:
-  - --num-categories
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --dendrogram
   description: "If True, a dendrogram based on the\nhierarchical clustering between\
     \ the groupby\ncategories is added. The dendrogram\ninformation is computed using\n\
     scanpy.tl.dendrogram(). If tl.dendrogram has\nnot been called previously the function\
     \ is\ncalled with default parameters."
-  synonyms:
-  - --dendrogram
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --layer
   description: "Name of the AnnData object layer that wants\nto be plotted. By default\
     \ adata.raw.X is\nplotted. If use_raw=False is set, then\nadata.X is plotted.\
     \ If layer is set to a\nvalid layer name, then the layer is plotted.\nlayer takes\
     \ precedence over use_raw."
-  synonyms:
-  - --layer
   args: !OptionalFlagArg
     names:
     - TEXT
     - TEXT...
     separator: ','
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --standard-scale
   description: "[var|obs]      Whether or not to standardize that dimension\nbetween\
     \ 0 and 1, meaning for each variable\nor group, subtract the minimum and divide\n\
     each by its maximum."
-  synonyms:
-  - --standard-scale
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gene-symbols
   description: "Column name in .var DataFrame that stores\ngene symbols. By default\
     \ this is assumed to\nbe the index column of the .var DataFrame.\nSetting this\
     \ option allows alternative names\nto be used."
-  synonyms:
-  - --gene-symbols
   args: !OptionalFlagArg
     names:
     - TEXT
     - TEXT...
     separator: ','
-  optional: true
 - !Flag
-  description: "By default gene labels are shown when there\nare 50 or less genes.\
-    \ Otherwise the labels\nare removed."
+  optional: true
   synonyms:
   - --show-gene-labels
+  description: "By default gene labels are shown when there\nare 50 or less genes.\
+    \ Otherwise the labels\nare removed."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --swap-axes
   description: "By default, the x axis contains var_names\n(e.g. genes) and the y\
     \ axis the groupby\ncategories. By setting swap_axes then x are\nthe groupby categories\
     \ and y the var_names.\nWhen swapping axes var_group_positions are\nno longer\
     \ used.  [default: False]"
-  synonyms:
-  - --swap-axes
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: scanpy-cli plot heat [OPTIONS] <input_obj> <output_fig>\n\n  Plot\
@@ -216,3 +216,4 @@ help_text: "Usage: scanpy-cli plot heat [OPTIONS] <input_obj> <output_fig>\n\n  
   \                         Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

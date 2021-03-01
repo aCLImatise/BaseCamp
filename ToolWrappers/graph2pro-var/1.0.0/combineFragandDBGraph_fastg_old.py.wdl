@@ -1,15 +1,11 @@
 version 1.0
 
 task CombineFragandDBGraphFastgOldpy {
-  input {
-    String continue
-  }
   command <<<
-    combineFragandDBGraph_fastg_old_py \
-      ~{continue}
+    combineFragandDBGraph_fastg_old_py
   >>>
-  parameter_meta {
-    continue: "^"
+  runtime {
+    docker: "None"
   }
   output {
     File out_stdout = stdout()

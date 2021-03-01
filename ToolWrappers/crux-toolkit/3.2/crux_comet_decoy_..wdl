@@ -12,6 +12,9 @@ task CruxCometDecoy_ {
       ~{comet} \
       ~{input_spectra}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     comet: ""

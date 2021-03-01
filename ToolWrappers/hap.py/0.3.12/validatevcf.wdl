@@ -32,6 +32,9 @@ task Validatevcf {
       ~{if defined(expand_hap_blocks) then ("--expand-hapblocks " +  '"' + expand_hap_blocks + '"') else ""} \
       ~{if defined(apply_filters) then ("--apply-filters " +  '"' + apply_filters + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_vcf: "VCF file to validate."
     arg_output_failure: "[ --output-errors ] arg    Output failure information in a bed file."

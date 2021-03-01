@@ -16,6 +16,9 @@ task SortByRefAndCorpl {
       ~{if defined(contig_cordinate_field) then ("--c " +  '"' + contig_cordinate_field + '"') else ""} \
       ~{if defined(tmp) then ("--tmp " +  '"' + tmp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contig_name_field: ":   contig name is in the field POS (1-based)\\nof input lines."
     contig_cordinate_field: ":   contig cordinate is in the field COR (1-based)\\nof input lines."

@@ -20,6 +20,9 @@ task VawkVcf {
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
       ~{if defined(v) then ("-v " +  '"' + v + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: ""
     header: ""

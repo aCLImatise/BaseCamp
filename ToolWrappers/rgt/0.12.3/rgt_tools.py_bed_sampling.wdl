@@ -12,6 +12,9 @@ task RgttoolspyBedSampling {
       ~{if defined(output_bed_file) then ("-o " +  '"' + output_bed_file + '"') else ""} \
       ~{if defined(number_output_regions) then ("-s " +  '"' + number_output_regions + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bed_file: "Input BED file"
     output_bed_file: "Output BED file"

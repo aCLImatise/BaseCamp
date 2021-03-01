@@ -1,91 +1,101 @@
 !Command
 command:
 - phyluce_assembly_match_contigs_to_probes
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: OUTPUT
+  description: '[--verbosity {INFO,WARN,CRITICAL}]'
 named:
 - !Flag
-  description: "OUTPUT\n[--verbosity {INFO,WARN,CRITICAL}]\n[--log-path LOG_PATH]\n\
-    [--min-coverage MIN_COVERAGE]\n[--min-identity MIN_IDENTITY]\n[--dupefile DUPEFILE]\n\
-    [--regex REGEX]\n[--keep-duplicates KEEP_DUPLICATES]"
-  synonyms:
-  - --probes
-  - --output
-  args: !SimpleFlagArg
-    name: PROBES
   optional: true
-- !Flag
-  description: "The directory containing the assembled contigs in\nwhich you are searching\
-    \ for UCE loci."
   synonyms:
   - --contigs
+  description: "The directory containing the assembled contigs in\nwhich you are searching\
+    \ for UCE loci."
   args: !SimpleFlagArg
     name: CONTIGS
-  optional: true
 - !Flag
-  description: The logging level to use.
+  optional: true
+  synonyms:
+  - --probes
+  description: The bait/probe file in FASTA format.
+  args: !SimpleFlagArg
+    name: PROBES
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: "The directory in which to store the resulting SQL\ndatabase and LASTZ\
+    \ files."
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
   synonyms:
   - --verbosity
+  description: The logging level to use.
   args: !ChoiceFlagArg
     choices: !!set
+      INFO:
       WARN:
       CRITICAL:
-      INFO:
-  optional: true
 - !Flag
-  description: The path to a directory to hold logs.
+  optional: true
   synonyms:
   - --log-path
+  description: The path to a directory to hold logs.
   args: !SimpleFlagArg
     name: LOG_PATH
-  optional: true
 - !Flag
-  description: "The minimum percent coverage required for a match\n[default=80]."
+  optional: true
   synonyms:
   - --min-coverage
+  description: "The minimum percent coverage required for a match\n[default=80]."
   args: !SimpleFlagArg
     name: MIN_COVERAGE
-  optional: true
 - !Flag
-  description: "The minimum percent identity required for a match\n[default=80]."
+  optional: true
   synonyms:
   - --min-identity
+  description: "The minimum percent identity required for a match\n[default=80]."
   args: !SimpleFlagArg
     name: MIN_IDENTITY
-  optional: true
 - !Flag
-  description: "Path to self-to-self lastz results for baits to remove\npotential\
-    \ duplicate probes."
+  optional: true
   synonyms:
   - --dupefile
+  description: "Path to self-to-self lastz results for baits to remove\npotential\
+    \ duplicate probes."
   args: !SimpleFlagArg
     name: DUPEFILE
-  optional: true
 - !Flag
-  description: "A regular expression to apply to the probe names for\nreplacement\
-    \ [default='^(uce-\\d+)(?:_p\\d+.*)']."
+  optional: true
   synonyms:
   - --regex
+  description: "A regular expression to apply to the probe names for\nreplacement\
+    \ [default='^(uce-\\d+)(?:_p\\d+.*)']."
   args: !SimpleFlagArg
     name: REGEX
-  optional: true
 - !Flag
-  description: "A optional output file in which to store those loci\nthat appear to\
-    \ be duplicates.\n"
+  optional: true
   synonyms:
   - --keep-duplicates
+  description: "A optional output file in which to store those loci\nthat appear to\
+    \ be duplicates.\n"
   args: !SimpleFlagArg
     name: KEEP_DUPLICATES
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: phyluce_assembly_match_contigs_to_probes [-h] --contigs CONTIGS\n\
@@ -122,3 +132,4 @@ help_text: "usage: phyluce_assembly_match_contigs_to_probes [-h] --contigs CONTI
   \                     that appear to be duplicates.\n"
 generated_using:
 - --help
+docker_image:

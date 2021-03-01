@@ -23,13 +23,11 @@ task RNAup {
     Boolean? no_closing_gu
     File? param_file
     String program
-    String interaction
     String only
   }
   command <<<
     RNAup \
       ~{program} \
-      ~{interaction} \
       ~{only} \
       ~{if (detailed_help) then "--detailed-help" else ""} \
       ~{if (full_help) then "--full-help" else ""} \
@@ -52,6 +50,9 @@ task RNAup {
       ~{if (no_closing_gu) then "--noClosingGU" else ""} \
       ~{if defined(param_file) then ("--paramFile " +  '"' + param_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     full_help: "Print help, including hidden options, and exit"
@@ -74,7 +75,6 @@ task RNAup {
     no_closing_gu: "Do not allow GU pairs at the end of helices\\n(default=off)"
     param_file: "Read energy parameters from paramfile, instead of\\nusing the default parameter set."
     program: "-C, --constraint            Calculate structures subject to constraints.\\n(default=off)"
-    interaction: "(default=`25')"
     only: "(default=off)"
   }
   output {

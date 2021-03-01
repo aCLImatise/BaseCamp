@@ -26,6 +26,9 @@ task Monocle3ReduceDim {
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_format: "Format of input object. [Default: cds3]"
     output_object_format: "Format of output object. [Default: cds3]"

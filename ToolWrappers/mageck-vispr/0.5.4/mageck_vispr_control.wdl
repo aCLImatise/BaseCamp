@@ -18,6 +18,9 @@ task MageckvisprControl {
       ~{quality} \
       ~{control}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mage_ck_vis_pr: ""
     is: ""

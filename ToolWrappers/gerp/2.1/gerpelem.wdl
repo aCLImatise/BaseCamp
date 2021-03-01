@@ -13,7 +13,7 @@ task Gerpelem {
     Float? depth_threshold_shallow
     Float? penalty_coefficient_shallow
     Int? number_border_nucleotides
-    Int? total_number_allowed
+    Int? total_number_nucleotides
     Float? acceptable_false_positive
     Float? denominator_minimum_candidate
     Float? exponent_minimum_candidate
@@ -31,11 +31,14 @@ task Gerpelem {
       ~{if defined(depth_threshold_shallow) then ("-d " +  '"' + depth_threshold_shallow + '"') else ""} \
       ~{if defined(penalty_coefficient_shallow) then ("-p " +  '"' + penalty_coefficient_shallow + '"') else ""} \
       ~{if defined(number_border_nucleotides) then ("-b " +  '"' + number_border_nucleotides + '"') else ""} \
-      ~{if defined(total_number_allowed) then ("-a " +  '"' + total_number_allowed + '"') else ""} \
+      ~{if defined(total_number_nucleotides) then ("-a " +  '"' + total_number_nucleotides + '"') else ""} \
       ~{if defined(acceptable_false_positive) then ("-e " +  '"' + acceptable_false_positive + '"') else ""} \
       ~{if defined(denominator_minimum_candidate) then ("-q " +  '"' + denominator_minimum_candidate + '"') else ""} \
       ~{if defined(exponent_minimum_candidate) then ("-r " +  '"' + exponent_minimum_candidate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose_mode: "verbose mode"
     column_scores_filename: "column scores filename"
@@ -48,7 +51,7 @@ task Gerpelem {
     depth_threshold_shallow: "depth threshold for shallow columns, in substitutions per site [default = 0.5]"
     penalty_coefficient_shallow: "penalty coefficient for shallow columns, as fraction of the median neutral rate [default = 0.5]"
     number_border_nucleotides: "number of border nucleotides for shallow regions [default = 2]"
-    total_number_allowed: "total number of allowed non-border shallow nucleotides per element [default = 10]"
+    total_number_nucleotides: "total number of allowed non-border shallow nucleotides per element [default = 10]"
     acceptable_false_positive: "acceptable false positive rate [default = 0.05]"
     denominator_minimum_candidate: "denominator for minimum candidate element score formula [default = 10.0]"
     exponent_minimum_candidate: "exponent for minimum candidate element score formula [default = 1.15]"

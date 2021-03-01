@@ -3,7 +3,7 @@ version 1.0
 task FermiClean {
   input {
     Int? read_maximum_neighbors
-    Float? drop_neighbor_overlap
+    Float? drop_neighbor_ratio
     Boolean? clean_the_graph
     Int? minimum_tip_length
     Int? minimum_tip_read
@@ -21,7 +21,7 @@ task FermiClean {
     fermi clean \
       ~{in_dot_mog} \
       ~{if defined(read_maximum_neighbors) then ("-N " +  '"' + read_maximum_neighbors + '"') else ""} \
-      ~{if defined(drop_neighbor_overlap) then ("-d " +  '"' + drop_neighbor_overlap + '"') else ""} \
+      ~{if defined(drop_neighbor_ratio) then ("-d " +  '"' + drop_neighbor_ratio + '"') else ""} \
       ~{if (clean_the_graph) then "-C" else ""} \
       ~{if defined(minimum_tip_length) then ("-l " +  '"' + minimum_tip_length + '"') else ""} \
       ~{if defined(minimum_tip_read) then ("-e " +  '"' + minimum_tip_read + '"') else ""} \
@@ -34,9 +34,12 @@ task FermiClean {
       ~{if defined(minimum_coverage_keep) then ("-w " +  '"' + minimum_coverage_keep + '"') else ""} \
       ~{if defined(minimum_fraction_keep) then ("-r " +  '"' + minimum_fraction_keep + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_maximum_neighbors: "read maximum INT neighbors per node [512]"
-    drop_neighbor_overlap: "drop a neighbor if relative overlap ratio below FLOAT [0.70]"
+    drop_neighbor_ratio: "drop a neighbor if relative overlap ratio below FLOAT [0.70]"
     clean_the_graph: "clean the graph"
     minimum_tip_length: "minimum tip length [300]"
     minimum_tip_read: "minimum tip read count [0]"

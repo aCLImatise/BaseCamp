@@ -3,7 +3,7 @@ version 1.0
 task Rblist {
   input {
     Boolean? input_ligand_sd
-    File? output_sd_file
+    File? outputsdfile_output_sd
     Boolean? ap
     Boolean? an
     Boolean? all_h
@@ -17,16 +17,19 @@ task Rblist {
       ~{inputs_d_file} \
       ~{outputs_d_file} \
       ~{if (input_ligand_sd) then "-i" else ""} \
-      ~{if (output_sd_file) then "-o" else ""} \
+      ~{if (outputsdfile_output_sd) then "-o" else ""} \
       ~{if (ap) then "-ap" else ""} \
       ~{if (an) then "-an" else ""} \
       ~{if (all_h) then "-allH" else ""} \
       ~{if (tr) then "-tr" else ""} \
       ~{if (verbose_listing_ligand) then "-l" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_ligand_sd: "<InputSDFile> - input ligand SD file"
-    output_sd_file: "<OutputSDFile> - output SD file with descriptors (default=no output)"
+    outputsdfile_output_sd: "<OutputSDFile> - output SD file with descriptors (default=no output)"
     ap: "- protonate all neutral amines, guanidines, imidazoles (default=disabled)"
     an: "- deprotonate all carboxylic, sulphur and phosphorous acid groups (default=disabled)"
     all_h: "- read all hydrogens present (default=polar hydrogens only)"
@@ -37,6 +40,6 @@ task Rblist {
   }
   output {
     File out_stdout = stdout()
-    File out_output_sd_file = "${in_output_sd_file}"
+    File out_outputsdfile_output_sd = "${in_outputsdfile_output_sd}"
   }
 }

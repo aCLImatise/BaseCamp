@@ -16,6 +16,9 @@ task ProsicControlfdr {
       ~{if defined(min_len) then ("--min-len " +  '"' + min_len + '"') else ""} \
       ~{if defined(var) then ("--var " +  '"' + var + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fdr: "FDR to control for. [default: 0.05]"
     event: "Event to consider."

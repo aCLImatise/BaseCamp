@@ -17,6 +17,7 @@ task MapAndProfilepy {
     String required_dot
     String setup_data_dots_h
     String processing_dot
+    String estimation_dot
   }
   command <<<
     map_and_profile_py \
@@ -24,6 +25,7 @@ task MapAndProfilepy {
       ~{required_dot} \
       ~{setup_data_dots_h} \
       ~{processing_dot} \
+      ~{estimation_dot} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(db_info) then ("--dbinfo " +  '"' + db_info + '"') else ""} \
       ~{if defined(input_type) then ("--input_type " +  '"' + input_type + '"') else ""} \
@@ -36,6 +38,9 @@ task MapAndProfilepy {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Path to database from select_db.py. Required if read\\nfiles given"
     db_info: "Location of db_info file. Default: data/db_info.txt"
@@ -52,6 +57,7 @@ task MapAndProfilepy {
     required_dot: "data                  Path to data/ directory with the files from"
     setup_data_dots_h: "optional arguments:"
     processing_dot: "--min_abundance MIN_ABUNDANCE"
+    estimation_dot: "--read_cutoff READ_CUTOFF"
   }
   output {
     File out_stdout = stdout()

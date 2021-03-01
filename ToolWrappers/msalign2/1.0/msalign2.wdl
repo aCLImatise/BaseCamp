@@ -18,6 +18,9 @@ task Msalign2 {
       ~{if (two) then "-2" else ""} \
       ~{if (one) then "-1" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     e: ""
     two: ""

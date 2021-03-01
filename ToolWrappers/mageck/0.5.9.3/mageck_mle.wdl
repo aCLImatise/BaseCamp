@@ -64,6 +64,9 @@ task MageckMle {
       ~{if defined(ppi_weighting) then ("--PPI-weighting " +  '"' + ppi_weighting + '"') else ""} \
       ~{if defined(negative_control) then ("--negative-control " +  '"' + negative_control + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count_table: "Provide a tab-separated count table. Each line in the\\ntable should include sgRNA name (1st column), target\\ngene (2nd column) and read counts in each sample."
     design_matrix: "Provide a design matrix, either a file name or a\\nquoted string of the design matrix. For example,\\n\\\"1,1;1,0\\\". The row of the design matrix must match the\\norder of the samples in the count table (if --include-\\nsamples is not specified), or the order of the samples\\nby the --include-samples option."

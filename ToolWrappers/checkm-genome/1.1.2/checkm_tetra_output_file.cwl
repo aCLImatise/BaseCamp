@@ -3,12 +3,12 @@ id: checkm_tetra_output_file.cwl
 inputs:
 - id: in_q
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
 - id: in_t
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_check_m
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - checkm

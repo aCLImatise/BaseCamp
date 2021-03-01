@@ -18,6 +18,9 @@ task Stagsplitterpl {
       ~{if (name) then "-name" else ""} \
       ~{if (dir) then "-dir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     parser_formatformat_one: "|parser FORMAT\\nFORMAT is one of xml, sxpr or itext, or the name of a perl module\\nxml assumed as default"
     writer_formatformat_one: "|writer FORMAT\\nFORMAT is one of xml, sxpr or itext, or the name of a perl module"

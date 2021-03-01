@@ -2,7 +2,7 @@ version 1.0
 
 task TomboTextOutputSignifSequenceContext {
   input {
-    File? file_saveload_base
+    File? statistics_filename
     File? genome_fast_a
     Array[Int] fast_five_based_irs
     Int? num_regions
@@ -11,12 +11,10 @@ task TomboTextOutputSignifSequenceContext {
     Int? corrected_group
     Array[String] base_call_subgroups
     Boolean? quiet
-    String var_9
   }
   command <<<
     tombo text_output signif_sequence_context \
-      ~{var_9} \
-      ~{if defined(file_saveload_base) then ("--statistics-filename " +  '"' + file_saveload_base + '"') else ""} \
+      ~{if defined(statistics_filename) then ("--statistics-filename " +  '"' + statistics_filename + '"') else ""} \
       ~{if defined(genome_fast_a) then ("--genome-fasta " +  '"' + genome_fast_a + '"') else ""} \
       ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
       ~{if defined(num_regions) then ("--num-regions " +  '"' + num_regions + '"') else ""} \
@@ -26,8 +24,11 @@ task TomboTextOutputSignifSequenceContext {
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file_saveload_base: "File to save/load genomic base anchored statistics."
+    statistics_filename: "File to save/load genomic base anchored statistics."
     genome_fast_a: "FASTA file used to re-squiggle. For faster sequence\\naccess."
     fast_five_based_irs: "Directories containing fast5 files."
     num_regions: "Number of regions to plot. Default: 100"
@@ -36,7 +37,6 @@ task TomboTextOutputSignifSequenceContext {
     corrected_group: "FAST5 group created by resquiggle command. Default:\\nRawGenomeCorrected_000"
     base_call_subgroups: "FAST5 subgroup(s) (under /Analyses/[--basecall-\\ngroup]/) containing basecalls and created within\\n[--corrected-group] containing re-squiggle results.\\nDefault: ['BaseCalled_template']"
     quiet: "Don't print status information."
-    var_9: "[--genome-fasta GENOME_FASTA]"
   }
   output {
     File out_stdout = stdout()

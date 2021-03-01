@@ -28,6 +28,9 @@ task TreebestPwalign {
       ~{if defined(bad_splicing_penalty) then ("-b " +  '"' + bad_splicing_penalty + '"') else ""} \
       ~{if (output_miscellaneous_information) then "-m" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     generate_full_alignment: "generate full alignment"
     apply_matrix_mean: "do not apply matrix mean in local alignment"

@@ -1,0 +1,165 @@
+&id001 !Command
+command:
+- tbprofiler_gene_profiler.py
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - tbprofiler_gene_profiler.py
+  - collate
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --dir
+    description: 'Result directory (default: .)'
+    args: !SimpleFlagArg
+      name: DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --suffix
+    description: 'Output file suffix (default: .results.json)'
+    args: !SimpleFlagArg
+      name: SUFFIX
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: tbprofiler_gene_profiler.py collate [-h] [--dir DIR] [--suffix\
+    \ SUFFIX]\n\noptional arguments:\n  -h, --help       show this help message and\
+    \ exit\n  --dir DIR        Result directory (default: .)\n  --suffix SUFFIX  Output\
+    \ file suffix (default: .results.json)\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/tb-profiler:2.8.14--pypyh3252c3a_0
+- !Command
+  command:
+  - tbprofiler_gene_profiler.py
+  - profile
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --bam
+    description: 'BAM file (default: None)'
+    args: !SimpleFlagArg
+      name: BAM
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix
+    description: "Sample prefix for all results generated (default:\nNone)"
+    args: !SimpleFlagArg
+      name: PREFIX
+  - !Flag
+    optional: true
+    synonyms:
+    - --suffix
+    description: 'Output file suffix (default: .results.json)'
+    args: !SimpleFlagArg
+      name: SUFFIX
+  - !Flag
+    optional: true
+    synonyms:
+    - --platform
+    - -m
+    description: 'NGS Platform used to generate data (default: illumina)'
+    args: !ChoiceFlagArg
+      choices: !!set
+        illumina:
+        nanopore:
+  - !Flag
+    optional: true
+    synonyms:
+    - --caller
+    description: 'Variant calling tool to use. (default: bcftools)'
+    args: !ChoiceFlagArg
+      choices: !!set
+        bcftools:
+        gatk:
+  - !Flag
+    optional: true
+    synonyms:
+    - --db
+    description: 'Mutation panel name (default: tbdb)'
+    args: !SimpleFlagArg
+      name: DB
+  - !Flag
+    optional: true
+    synonyms:
+    - --external_db
+    description: "Path to db files prefix (overrides \"--db\" parameter)\n(default:\
+      \ None)"
+    args: !SimpleFlagArg
+      name: EXTERNAL_DB
+  - !Flag
+    optional: true
+    synonyms:
+    - --threads
+    - -t
+    description: "Threads to use (default: 1)\n"
+    args: !SimpleFlagArg
+      name: THREADS
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: tbprofiler_gene_profiler.py profile [-h] --bam BAM [--prefix\
+    \ PREFIX]\n                                           [--suffix SUFFIX]\n    \
+    \                                       [--platform {illumina,nanopore}]\n   \
+    \                                        [--caller {bcftools,gatk}]\n        \
+    \                                   [--db DB]\n                              \
+    \             [--external_db EXTERNAL_DB]\n                                  \
+    \         [--threads THREADS]\n\noptional arguments:\n  -h, --help           \
+    \ show this help message and exit\n  --bam BAM             BAM file (default:\
+    \ None)\n  --prefix PREFIX       Sample prefix for all results generated (default:\n\
+    \                        None)\n  --suffix SUFFIX       Output file suffix (default:\
+    \ .results.json)\n  --platform {illumina,nanopore}, -m {illumina,nanopore}\n \
+    \                       NGS Platform used to generate data (default: illumina)\n\
+    \  --caller {bcftools,gatk}\n                        Variant calling tool to use.\
+    \ (default: bcftools)\n  --db DB               Mutation panel name (default: tbdb)\n\
+    \  --external_db EXTERNAL_DB\n                        Path to db files prefix\
+    \ (overrides \"--db\" parameter)\n                        (default: None)\n  --threads\
+    \ THREADS, -t THREADS\n                        Threads to use (default: 1)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/tb-profiler:2.8.14--pypyh3252c3a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: tbprofiler_gene_profiler.py [-h] {profile,collate} ...\n\nTBProfiler\
+  \ pipeline\n\npositional arguments:\n  {profile,collate}  Task to perform\n    profile\
+  \          (BETA) Run profiling pipeline on Fasta file. Warning:\n             \
+  \        this assumes that this is a good quality assembly which\n             \
+  \        coveres all drug resistance loci\n    collate          Output program version\
+  \ and exit\n\noptional arguments:\n  -h, --help         show this help message and\
+  \ exit\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/tb-profiler:2.8.14--pypyh3252c3a_0

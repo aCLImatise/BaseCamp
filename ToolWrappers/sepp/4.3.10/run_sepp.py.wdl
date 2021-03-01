@@ -46,6 +46,9 @@ task RunSepppy {
       ~{if defined(random_seed) then ("--randomseed " +  '"' + random_seed + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignment_size: "max alignment subset size of N [default: 10% of the\\ntotal number of taxa or the placement subset size if\\ngiven]"
     placement_size: "max placement subset size of N [default: 10% of the\\ntotal number of taxa or the alignment length\\n(whichever bigger)]"

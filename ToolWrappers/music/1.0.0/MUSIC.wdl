@@ -66,6 +66,9 @@ task MUSIC {
       ~{if (l_win_max) then "-l_win_max" else ""} \
       ~{if (l_win_step) then "-l_win_step" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     preprocess: "[File format (\\\"SAM\\\"/\\\"ELAND\\\"/\\\"bowtie\\\"/\\\"tagAlign\\\"/\\\"BED5\\\"/\\\"BED6\\\")] [Mapped reads file path (\\\"stdin\\\" for piped input)] [Output directory]"
     sort_reads: "[Reads directory] [Output directory]"

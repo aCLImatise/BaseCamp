@@ -3,7 +3,7 @@ id: cmsip.cwl
 inputs:
 - id: in_config
   doc: Configuration file in YAML format.
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_define_variablevalue_suppress
@@ -13,13 +13,14 @@ inputs:
     prefix: -D
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cmsip

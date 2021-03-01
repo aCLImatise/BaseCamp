@@ -8,6 +8,9 @@ task QacToWigExist {
     qacToWig exist_ \
       ~{if defined(not_valid_option) then ("-h " +  '"' + not_valid_option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     not_valid_option: "not a valid option"
   }

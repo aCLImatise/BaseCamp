@@ -4,6 +4,9 @@ task ExeSeq {
   command <<<
     exeSeq
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

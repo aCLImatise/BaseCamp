@@ -20,6 +20,9 @@ task CheckmModify {
       ~{if defined(outlier_file) then ("--outlier_file " +  '"' + outlier_file + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add: "ID of sequence to add to bin (may specify multiple times)"
     remove: "ID of sequence to remove from bin (may specify multiple times)"

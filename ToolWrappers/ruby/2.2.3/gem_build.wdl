@@ -20,6 +20,9 @@ task GemBuild {
       ~{if (backtrace) then "--backtrace" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "skip validation of the spec"
     _verbose_set: ", --[no-]verbose               Set the verbose level of output"

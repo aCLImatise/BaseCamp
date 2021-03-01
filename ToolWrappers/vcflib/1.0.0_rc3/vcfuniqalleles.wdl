@@ -4,6 +4,9 @@ task Vcfuniqalleles {
   command <<<
     vcfuniqalleles
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

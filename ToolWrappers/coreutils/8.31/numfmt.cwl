@@ -3,88 +3,88 @@ id: numfmt.cwl
 inputs:
 - id: in_debug
   doc: print warnings about invalid input
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_delimiter
   doc: use X instead of whitespace for field delimiter
-  type: string
+  type: string?
   inputBinding:
     prefix: --delimiter
 - id: in_field
   doc: "replace the numbers in these input fields (default=1)\nsee FIELDS below"
-  type: long
+  type: long?
   inputBinding:
     prefix: --field
 - id: in_format
   doc: "use printf style floating-point FORMAT;\nsee FORMAT below for details"
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
 - id: in_from
   doc: "auto-scale input numbers to UNITs; default is 'none';\nsee UNIT below"
-  type: string
+  type: string?
   inputBinding:
     prefix: --from
 - id: in_from_unit
   doc: specify the input unit size (instead of the default 1)
-  type: long
+  type: long?
   inputBinding:
     prefix: --from-unit
 - id: in_grouping
   doc: "use locale-defined grouping of digits, e.g. 1,000,000\n(which means it has\
     \ no effect in the C/POSIX locale)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --grouping
 - id: in_header
   doc: "[=N]     print (without converting) the first N header lines;\nN defaults\
     \ to 1 if not specified"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --header
 - id: in_invalid
   doc: "failure mode for invalid numbers: MODE can be:\nabort (default), fail, warn,\
     \ ignore"
-  type: string
+  type: string?
   inputBinding:
     prefix: --invalid
 - id: in_padding
   doc: "pad the output to N characters; positive N will\nright-align; negative N will\
     \ left-align;\npadding is ignored if the output is wider than N;\nthe default\
     \ is to automatically pad if a whitespace\nis found"
-  type: string
+  type: string?
   inputBinding:
     prefix: --padding
 - id: in_round
   doc: "use METHOD for rounding when scaling; METHOD can be:\nup, down, from-zero\
     \ (default), towards-zero, nearest"
-  type: string
+  type: string?
   inputBinding:
     prefix: --round
 - id: in_suffix
   doc: "add SUFFIX to output numbers, and accept optional\nSUFFIX in input numbers"
-  type: string
+  type: string?
   inputBinding:
     prefix: --suffix
 - id: in_to
   doc: auto-scale output numbers to UNITs; see UNIT below
-  type: string
+  type: string?
   inputBinding:
     prefix: --to
 - id: in_to_unit
   doc: the output unit size (instead of the default 1)
-  type: long
+  type: long?
   inputBinding:
     prefix: --to-unit
 - id: in_zero_terminated
   doc: line delimiter is NUL, not newline
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --zero-terminated
 - id: in_first_mth_field
   doc: from first to M'th field (inclusive)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -M
 - id: in_none
@@ -127,6 +127,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - numfmt

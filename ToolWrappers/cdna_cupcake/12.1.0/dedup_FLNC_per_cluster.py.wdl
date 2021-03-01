@@ -20,6 +20,9 @@ task DedupFLNCPerClusterpy {
       ~{if defined(gff) then ("--gff " +  '"' + gff + '"') else ""} \
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: ""
     fast_a: ""

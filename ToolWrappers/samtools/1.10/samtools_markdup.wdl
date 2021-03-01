@@ -3,7 +3,7 @@ version 1.0
 task SamtoolsMarkdup {
   input {
     Boolean? remove_duplicate_reads
-    Int? max_read_default
+    Int? max_read_bases
     Boolean? mark_supplementary_alignments
     Boolean? report_stats
     File? write_stats_named
@@ -29,7 +29,7 @@ task SamtoolsMarkdup {
       ~{input_dot_bam} \
       ~{output_dot_bam} \
       ~{if (remove_duplicate_reads) then "-r" else ""} \
-      ~{if defined(max_read_default) then ("-l " +  '"' + max_read_default + '"') else ""} \
+      ~{if defined(max_read_bases) then ("-l " +  '"' + max_read_bases + '"') else ""} \
       ~{if (mark_supplementary_alignments) then "-S" else ""} \
       ~{if (report_stats) then "-s" else ""} \
       ~{if defined(write_stats_named) then ("-f " +  '"' + write_stats_named + '"') else ""} \
@@ -48,9 +48,12 @@ task SamtoolsMarkdup {
       ~{if (write_index) then "--write-index" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     remove_duplicate_reads: "Remove duplicate reads"
-    max_read_default: "Max read length (default 300 bases)"
+    max_read_bases: "Max read length (default 300 bases)"
     mark_supplementary_alignments: "Mark supplementary alignments of duplicates as duplicates (slower)."
     report_stats: "Report stats."
     write_stats_named: "Write stats to named file.  Implies -s."

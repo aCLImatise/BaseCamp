@@ -22,6 +22,9 @@ task SingleToMultiFast5 {
       ~{if (recursive) then "--recursive" else ""} \
       ~{if (ignore_symlinks) then "--ignore_symlinks" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_path: "Folder containing single read fast5 files"
     save_path: "Folder to output multi read files to"

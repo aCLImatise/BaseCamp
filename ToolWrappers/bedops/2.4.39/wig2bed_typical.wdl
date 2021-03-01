@@ -24,6 +24,9 @@ task Wig2bedtypical {
       ~{if (starch_gzip) then "--starch-gzip" else ""} \
       ~{if (starch_note) then "--starch-note" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep_header: "(-k)\\nPreserve header section as pseudo-BED elements"
     multi_split: "(-b <basename>)\\nA single input file may have multiple WIG sections. With this option\\nevery section gets an ID prefix starting with <basename>.1, then\\n<basename>.2, and so on"

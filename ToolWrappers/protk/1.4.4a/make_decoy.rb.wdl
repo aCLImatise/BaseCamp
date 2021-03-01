@@ -20,6 +20,9 @@ task MakeDecoyrb {
       ~{if defined(id_regex) then ("--id-regex " +  '"' + id_regex + '"') else ""} \
       ~{if (append) then "--append" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicitly_named_output: "An explicitly named output file."
     db_length: "Number of sequences to generate [0]"

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Int, Boolean
+
+Nl_V0_1_0 = CommandToolBuilder(tool="nl", base_command=["nl"], inputs=[ToolInput(tag="in_body_numbering", input_type=String(optional=True), prefix="--body-numbering", doc=InputDocumentation(doc="use STYLE for numbering body lines")), ToolInput(tag="in_section_delimiter", input_type=String(optional=True), prefix="--section-delimiter", doc=InputDocumentation(doc="use CC for logical page delimiters")), ToolInput(tag="in_footer_numbering", input_type=String(optional=True), prefix="--footer-numbering", doc=InputDocumentation(doc="use STYLE for numbering footer lines")), ToolInput(tag="in_header_numbering", input_type=String(optional=True), prefix="--header-numbering", doc=InputDocumentation(doc="use STYLE for numbering header lines")), ToolInput(tag="in_line_increment", input_type=Int(optional=True), prefix="--line-increment", doc=InputDocumentation(doc="line number increment at each line")), ToolInput(tag="in_join_blank_lines", input_type=Int(optional=True), prefix="--join-blank-lines", doc=InputDocumentation(doc="group of NUMBER empty lines counted as one")), ToolInput(tag="in_number_format", input_type=Int(optional=True), prefix="--number-format", doc=InputDocumentation(doc="insert line numbers according to FORMAT")), ToolInput(tag="in_no_re_number", input_type=Boolean(optional=True), prefix="--no-renumber", doc=InputDocumentation(doc="do not reset line numbers for each section")), ToolInput(tag="in_number_separator", input_type=Int(optional=True), prefix="--number-separator", doc=InputDocumentation(doc="add STRING after (possible) line number")), ToolInput(tag="in_starting_line_number", input_type=Int(optional=True), prefix="--starting-line-number", doc=InputDocumentation(doc="first line number for each section")), ToolInput(tag="in_number_width", input_type=Int(optional=True), prefix="--number-width", doc=InputDocumentation(doc="use NUMBER columns for line numbers")), ToolInput(tag="in_pb_re", input_type=String(), position=0, doc=InputDocumentation(doc="number only lines that contain a match for the basic regular\nexpression, BRE")), ToolInput(tag="in_ln", input_type=String(), position=0, doc=InputDocumentation(doc="left justified, no leading zeros")), ToolInput(tag="in_rn", input_type=String(), position=1, doc=InputDocumentation(doc="right justified, no leading zeros")), ToolInput(tag="in_rz", input_type=String(), position=2, doc=InputDocumentation(doc="right justified, leading zeros"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Nl_V0_1_0().translate("wdl", allow_empty_container=True)
+

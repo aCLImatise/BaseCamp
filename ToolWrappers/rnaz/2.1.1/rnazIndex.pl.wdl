@@ -28,6 +28,9 @@ task RnazIndexpl {
       ~{if (html) then "--html" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Generate GFF formatted output."
     bed: "Generate BED formatted output."

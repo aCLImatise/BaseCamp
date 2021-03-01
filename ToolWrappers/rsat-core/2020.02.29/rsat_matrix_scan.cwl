@@ -3,17 +3,17 @@ id: rsat_matrix_scan.cwl
 inputs:
 - id: in_last_seq
   doc: order to select a subset of sequences for quick
-  type: string
+  type: string?
   inputBinding:
     prefix: -last_seq
 - id: in_two_str
   doc: ). The maximum size for a CRER is defined by the
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -2str
 - id: in_return
   doc: 0.0001 -lth crer_size 20 -uth crer_size 200
-  type: double
+  type: double?
   inputBinding:
     prefix: -return
 - id: in_matrix_scan
@@ -125,6 +125,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

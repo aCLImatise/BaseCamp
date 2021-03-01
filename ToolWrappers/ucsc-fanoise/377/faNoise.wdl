@@ -20,6 +20,9 @@ task FaNoise {
       ~{delete_ppt} \
       ~{if (upper) then "-upper" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     upper: "- output in upper case"
     in_name: ""

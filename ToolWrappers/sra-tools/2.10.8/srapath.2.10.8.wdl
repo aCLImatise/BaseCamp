@@ -44,6 +44,9 @@ task Srapath2108 {
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     function: "function to perform (resolve, names,\\nsearch) default=resolve or names if\\nprotocol is specified"
     timeout: "timeout-value for request"

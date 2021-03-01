@@ -4,7 +4,7 @@ task RibotishTisdiff {
   input {
     Int? one
     Int? two
-    Int? group_tis_enriched
+    Int? group_tis_files
     File? output_result_file
     Int? t_is_one_para
     Int? tis_two_para
@@ -45,7 +45,7 @@ task RibotishTisdiff {
       ~{normalization} \
       ~{if defined(one) then ("-1 " +  '"' + one + '"') else ""} \
       ~{if defined(two) then ("-2 " +  '"' + two + '"') else ""} \
-      ~{if defined(group_tis_enriched) then ("-a " +  '"' + group_tis_enriched + '"') else ""} \
+      ~{if defined(group_tis_files) then ("-a " +  '"' + group_tis_files + '"') else ""} \
       ~{if defined(output_result_file) then ("-o " +  '"' + output_result_file + '"') else ""} \
       ~{if defined(t_is_one_para) then ("--tis1para " +  '"' + t_is_one_para + '"') else ""} \
       ~{if defined(tis_two_para) then ("--tis2para " +  '"' + tis_two_para + '"') else ""} \
@@ -78,10 +78,13 @@ task RibotishTisdiff {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (b) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     one: "Prediction results of group 1 TIS data"
     two: "Prediction results of group 2 TIS data"
-    group_tis_enriched: "Group 1 TIS enriched riboseq bam files, comma"
+    group_tis_files: "Group 1 TIS enriched riboseq bam files, comma"
     output_result_file: "Output result file"
     t_is_one_para: "Input offset parameter files for group 1 bam files"
     tis_two_para: "Input offset parameter files for group 2 bam files"

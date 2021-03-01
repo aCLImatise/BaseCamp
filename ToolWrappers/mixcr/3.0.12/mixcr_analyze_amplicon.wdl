@@ -48,6 +48,9 @@ task MixcrAnalyzeAmplicon {
       ~{if defined(three_end) then ("--3-end " +  '"' + three_end + '"') else ""} \
       ~{if defined(region_of_interest) then ("--region-of-interest " +  '"' + region_of_interest + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_warnings: "Suppress all warning messages."
     verbose: "Verbose warning messages."

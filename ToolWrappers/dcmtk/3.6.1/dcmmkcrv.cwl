@@ -3,62 +3,62 @@ id: dcmmkcrv.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --arguments
-- id: in__quiet_quiet
-  doc: --quiet        quiet mode, print no warnings and errors
-  type: boolean
+- id: in_quiet
+  doc: quiet mode, print no warnings and errors
+  type: boolean?
   inputBinding:
-    prefix: -q
-- id: in__verbose_details
-  doc: --verbose      verbose mode, print processing details
-  type: boolean
+    prefix: --quiet
+- id: in_verbose
+  doc: verbose mode, print processing details
+  type: boolean?
   inputBinding:
-    prefix: -v
-- id: in__debug_information
-  doc: --debug        debug mode, print debug information
-  type: boolean
+    prefix: --verbose
+- id: in_debug
+  doc: debug mode, print debug information
+  type: boolean?
   inputBinding:
-    prefix: -d
-- id: in_ll
-  doc: "--log-level    [l]evel: string constant\n(fatal, error, warn, info, debug,\
-    \ trace)\nuse level l for the logger"
-  type: boolean
+    prefix: --debug
+- id: in_log_level
+  doc: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\nuse level\
+    \ l for the logger"
+  type: boolean?
   inputBinding:
-    prefix: -ll
-- id: in_lc
-  doc: "--log-config   [f]ilename: string\nuse config file f for the logger"
-  type: boolean
+    prefix: --log-level
+- id: in_log_config
+  doc: "[f]ilename: string\nuse config file f for the logger"
+  type: boolean?
   inputBinding:
-    prefix: -lc
-- id: in__poly_create
-  doc: --poly         create as POLY curve (default)
-  type: boolean
+    prefix: --log-config
+- id: in_poly
+  doc: create as POLY curve (default)
+  type: boolean?
   inputBinding:
-    prefix: -r
-- id: in__curvevr_umber
-  doc: "--curve-vr     [n]umber: integer 0..2 (default: 0)\nselect VR with which the\
-    \ Curve Data element is written\n0=VR according to --data-vr, 1=OB, 2=OW"
-  type: boolean
+    prefix: --poly
+- id: in_curve_vr
+  doc: "[n]umber: integer 0..2 (default: 0)\nselect VR with which the Curve Data element\
+    \ is written\n0=VR according to --data-vr, 1=OB, 2=OW"
+  type: boolean?
   inputBinding:
-    prefix: -c
-- id: in__group_umber
-  doc: "--group        [n]umber: integer 0..15 (default: 0)\nselect repeating group:\
-    \ 0=0x5000, 1=0x5002 etc."
-  type: boolean
+    prefix: --curve-vr
+- id: in_group
+  doc: "[n]umber: integer 0..15 (default: 0)\nselect repeating group: 0=0x5000, 1=0x5002\
+    \ etc."
+  type: boolean?
   inputBinding:
-    prefix: -g
-- id: in__label_label
-  doc: "--label        s: string\nset Curve Label to s (default: absent)"
-  type: boolean
+    prefix: --group
+- id: in_label
+  doc: "s: string\nset Curve Label to s (default: absent)"
+  type: boolean?
   inputBinding:
-    prefix: -l
-- id: in__axis_string
-  doc: "--axis         x: string, y: string\nset Axis Units to x\\y (default: absent)\n"
-  type: boolean
+    prefix: --label
+- id: in_axis
+  doc: "x: string, y: string\nset Axis Units to x\\y (default: absent)\n"
+  type: boolean?
   inputBinding:
-    prefix: -a
+    prefix: --axis
 - id: in_dcm_file_in
   doc: DICOM input image file
   type: string
@@ -83,6 +83,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dcmmkcrv

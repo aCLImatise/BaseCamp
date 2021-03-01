@@ -16,6 +16,9 @@ task UpdateDeltaClr {
       ~{if (depend) then "-depend" else ""} \
       ~{if defined(debug) then ("-debug " +  '"' + debug + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version_print_version: "|version      - Print the version and exit;"
     depend: "- Print the program and database dependency list;"

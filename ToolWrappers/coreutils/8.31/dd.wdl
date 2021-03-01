@@ -66,6 +66,9 @@ task Dd {
       ~{skip_bytes} \
       ~{seek_bytes}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ascii: "from EBCDIC to ASCII"
     ebcdic: "from ASCII to EBCDIC"

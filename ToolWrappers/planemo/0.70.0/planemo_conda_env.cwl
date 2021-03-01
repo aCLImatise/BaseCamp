@@ -3,22 +3,22 @@ id: planemo_conda_env.cwl
 inputs:
 - id: in_cond_a_prefix
   doc: Conda prefix to use for conda dependency
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --conda_prefix
 - id: in_cond_a_debug
   doc: Enable more verbose conda logging.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --conda_debug
 - id: in_cond_a_ensure_channels
   doc: "Ensure conda is configured with specified\ncomma separated list of channels."
-  type: string
+  type: string?
   inputBinding:
     prefix: --conda_ensure_channels
 - id: in_cond_a_use_local
   doc: "Use locally built packages while building\nConda environments."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --conda_use_local
 - id: in_tool_dot
@@ -37,6 +37,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - planemo

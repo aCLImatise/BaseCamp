@@ -18,6 +18,9 @@ task SuppapyPsiPerEvent {
       ~{if (save_tpm_events) then "--save_tpm_events" else ""} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ioe_file: "Input file with the event-transcripts equivalence\\n(.ioe format)."
     expression_file: "Input transcript expression file."

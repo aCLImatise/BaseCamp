@@ -46,6 +46,9 @@ task Addbwtrackpl {
       ~{if defined(height) then ("--height " +  '"' + height + '"') else ""} \
       ~{if (config) then "--config" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bicolor_pivot: "point where to set pivot for color changes - can be \\\"mean\\\", \\\"zero\\\",\\nor a numeric value [default: zero]"
     plot: "display as XY plot instead of density heatmap"

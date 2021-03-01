@@ -4,6 +4,9 @@ task TransMapPslToGenePred {
   command <<<
     transMapPslToGenePred
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

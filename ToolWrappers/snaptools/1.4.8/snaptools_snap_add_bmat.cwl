@@ -3,7 +3,7 @@ id: snaptools_snap_add_bmat.cwl
 inputs:
 - id: in_snap_file
   doc: 'snap file. (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --snap-file
 - id: in_bin_size_list
@@ -18,18 +18,19 @@ inputs:
 - id: in_tmp_folder
   doc: "a directory to store temporary files. If not given,\nsnaptools will automatically\
     \ generate a temporary\nlocation to store temporary files. (default: None)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --tmp-folder
 - id: in_verbose
   doc: "a boolen tag indicates output the progress. (default:\nTrue)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbose
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - snaptools

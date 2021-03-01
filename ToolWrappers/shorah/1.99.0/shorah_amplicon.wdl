@@ -3,7 +3,7 @@ version 1.0
 task ShorahAmplicon {
   input {
     Float? alpha
-    Int? startstop__region
+    Int? region_chrmstartstopregion_format
     Int? seed
     Int? max_cov
     Float? sigma
@@ -25,7 +25,7 @@ task ShorahAmplicon {
       ~{subcommand} \
       ~{amplicon} \
       ~{if defined(alpha) then ("--alpha " +  '"' + alpha + '"') else ""} \
-      ~{if defined(startstop__region) then ("-r " +  '"' + startstop__region + '"') else ""} \
+      ~{if defined(region_chrmstartstopregion_format) then ("-r " +  '"' + region_chrmstartstopregion_format + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(max_cov) then ("--maxcov " +  '"' + max_cov + '"') else ""} \
       ~{if defined(sigma) then ("--sigma " +  '"' + sigma + '"') else ""} \
@@ -38,9 +38,12 @@ task ShorahAmplicon {
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alpha: "alpha in dpm sampling"
-    startstop__region: ":start-stop, --region chrm:start-stop\\nregion in format 'chr:start-stop', e.g.\\n'chrm:1000-3000'"
+    region_chrmstartstopregion_format: ":start-stop, --region chrm:start-stop\\nregion in format 'chr:start-stop', e.g.\\n'chrm:1000-3000'"
     seed: "set seed for reproducible results"
     max_cov: "approximate max coverage allowed"
     sigma: "sigma value to use when calling SNVs"

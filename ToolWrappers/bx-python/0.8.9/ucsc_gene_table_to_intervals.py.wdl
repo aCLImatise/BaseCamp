@@ -14,6 +14,9 @@ task UcscGeneTableToIntervalspy {
       ~{if (strand) then "--strand" else ""} \
       ~{if (no_bin) then "--nobin" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     region: "Limit to region: one of coding, utr3, utr5,\\ntranscribed [default]"
     exons: "Only print intervals overlapping an exon"

@@ -22,6 +22,9 @@ task Macs2Pileup {
       ~{if defined(buffer_size) then ("--buffer-size " +  '"' + buffer_size + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i_file: "Alignment file. If multiple files are given as '-t A B\\nC', then they will all be read and combined. Note that\\npair-end data is not supposed to work with this\\ncommand. REQUIRED."
     ofile: "Output bedGraph file name. If not specified, will\\nwrite to standard output. REQUIRED."

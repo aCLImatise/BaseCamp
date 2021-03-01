@@ -14,6 +14,9 @@ task EslseqrangeProcidx {
       ~{proc_idx} \
       ~{nproc}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     esl_seq_range: ""
     sq_file: ""

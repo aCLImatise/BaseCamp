@@ -50,6 +50,9 @@ task Clmformat {
       ~{if defined(ccm) then ("-ccm " +  '"' + ccm + '"') else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     icl: "read clustering matrix from file"
     imx: "read graph matrix from file"

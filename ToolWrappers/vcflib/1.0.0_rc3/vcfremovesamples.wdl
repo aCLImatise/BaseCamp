@@ -12,6 +12,9 @@ task Vcfremovesamples {
       ~{sample_one} \
       ~{sample_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file: ""
     sample_one: ""

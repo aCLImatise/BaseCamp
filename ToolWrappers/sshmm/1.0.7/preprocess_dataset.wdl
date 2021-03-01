@@ -14,7 +14,7 @@ task PreprocessDataset {
     Boolean? skip_check
     String working_dir
     String dataset_name
-    String input_file_format
+    String input_file_bed
     String genome
     String genome_sizes
   }
@@ -22,7 +22,7 @@ task PreprocessDataset {
     preprocess_dataset \
       ~{working_dir} \
       ~{dataset_name} \
-      ~{input_file_format} \
+      ~{input_file_bed} \
       ~{genome} \
       ~{genome_sizes} \
       ~{if (disable_filtering) then "--disable_filtering" else ""} \
@@ -36,6 +36,9 @@ task PreprocessDataset {
       ~{if defined(genome_genes) then ("--genome_genes " +  '"' + genome_genes + '"') else ""} \
       ~{if (skip_check) then "--skip_check" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     disable_filtering: "skip the filtering step"
     disable_rna_shapes: "skip secondary structure prediction with RNAshapes"
@@ -49,7 +52,7 @@ task PreprocessDataset {
     skip_check: "skip check for installed prerequisites"
     working_dir: "working/output directory"
     dataset_name: "dataset name"
-    input_file_format: "input file in .bed format"
+    input_file_bed: "input file in .bed format"
     genome: "reference genome in FASTA format"
     genome_sizes: "chromosome sizes of reference genome (e.g. from http:/\\n/hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.\\nchrom.sizes)"
   }

@@ -12,6 +12,9 @@ task SynapseStoretable {
       ~{if defined(parentid) then ("--parentid " +  '"' + parentid + '"') else ""} \
       ~{if defined(csv) then ("--csv " +  '"' + csv + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "Name of Table"
     parentid: "Synapse ID of project"

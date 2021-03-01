@@ -1,74 +1,73 @@
 class: CommandLineTool
 id: saxs_md.cwl
 inputs:
-- id: in__solvent_file
-  doc: --solvent      pdb file of the solvent
-  type: boolean
+- id: in_solvent
+  doc: pdb file of the solvent
+  type: boolean?
   inputBinding:
-    prefix: -w
-- id: in__qcut_cutoff
-  doc: --qcut         momentum transfer q cutoff [default 1.0 A^-1]
-  type: boolean
+    prefix: --solvent
+- id: in_q_cut
+  doc: momentum transfer q cutoff [default 1.0 A^-1]
+  type: boolean?
   inputBinding:
-    prefix: -q
-- id: in__dq_q
-  doc: --dq           q spacing [default 0.01 A^-1]
-  type: boolean
+    prefix: --qcut
+- id: in_dq
+  doc: q spacing [default 0.01 A^-1]
+  type: boolean?
   inputBinding:
-    prefix: -d
-- id: in__cutoff_generate
-  doc: "--cutoff       generate a box with buffer=cutoff [default 10A]. Only keeping\
-    \ solvent molecules\nwithin this box for SAXS calculation"
-  type: boolean
+    prefix: --dq
+- id: in_cut_off
+  doc: "generate a box with buffer=cutoff [default 10A]. Only keeping solvent molecules\n\
+    within this box for SAXS calculation"
+  type: boolean?
   inputBinding:
-    prefix: -c
-- id: in__tight_use
-  doc: --tight        use tighter convergence criteria for Lebedev quadrature
-  type: boolean
+    prefix: --cutoff
+- id: in_tight
+  doc: use tighter convergence criteria for Lebedev quadrature
+  type: boolean?
   inputBinding:
-    prefix: -t
-- id: in__anomf_anomalous
-  doc: "--anom_f       f' for anomalous scattering, used for ASAXS calculation,\n\
-    currently only support Rb+, Sr2+ and Br- [default 0: off-edge]"
-  type: boolean
+    prefix: --tight
+- id: in_anom_f
+  doc: "f' for anomalous scattering, used for ASAXS calculation,\ncurrently only support\
+    \ Rb+, Sr2+ and Br- [default 0: off-edge]"
+  type: boolean?
   inputBinding:
-    prefix: -a
-- id: in__expli_flag
-  doc: --expli        flag for accounting for explicit H atoms in pdb file
-  type: boolean
+    prefix: --anom_f
+- id: in_expl_i
+  doc: flag for accounting for explicit H atoms in pdb file
+  type: boolean?
   inputBinding:
-    prefix: -e
-- id: in__corrected_d
-  doc: "--corrected    correction d for bulk density difference between the blank\
-    \ and sample simulation\nthe excess density will be g = (1-d)rho_sample - rho_blank"
-  type: boolean
+    prefix: --expli
+- id: in_corrected
+  doc: "correction d for bulk density difference between the blank and sample simulation\n\
+    the excess density will be g = (1-d)rho_sample - rho_blank"
+  type: boolean?
   inputBinding:
-    prefix: -k
-- id: in__bcutoff_distance
-  doc: --bcutoff      minimum distance between the solvent and solute to apply the
-    above correction
-  type: boolean
+    prefix: --corrected
+- id: in_b_cut_off
+  doc: minimum distance between the solvent and solute to apply the above correction
+  type: boolean?
   inputBinding:
-    prefix: -b
-- id: in__exper_experiment
-  doc: "--exper        experiment data file to read q from, once specified this overrides\
-    \ dq and qcut\nExpect the first column is q (A^-1)"
-  type: boolean
+    prefix: --bcutoff
+- id: in_exper
+  doc: "experiment data file to read q from, once specified this overrides dq and\
+    \ qcut\nExpect the first column is q (A^-1)"
+  type: boolean?
   inputBinding:
-    prefix: -x
-- id: in__output_output
-  doc: --output       output file
-  type: File
+    prefix: --exper
+- id: in_output
+  doc: output file
+  type: File?
   inputBinding:
-    prefix: -o
+    prefix: --output
 - id: in_system
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --system
 - id: in_i
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_saxs_md
@@ -80,11 +79,12 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out__output_output
-  doc: --output       output file
-  type: File
+- id: out_output
+  doc: output file
+  type: File?
   outputBinding:
-    glob: $(inputs.in__output_output)
+    glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - saxs_md

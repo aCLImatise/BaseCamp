@@ -12,6 +12,9 @@ task AirrtoolsMerge {
       ~{if (drop) then "--drop" else ""} \
       ~{if defined(list_airr_rearrangement) then ("-a " +  '"' + list_airr_rearrangement + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_name: "Output file name."
     drop: "If specified, drop fields that do not exist in all\\ninput files. Otherwise, include all columns in all\\nfiles and fill missing data with empty strings."

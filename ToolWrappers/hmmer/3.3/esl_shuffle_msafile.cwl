@@ -3,12 +3,12 @@ id: esl_shuffle_msafile.cwl
 inputs:
 - id: in_g
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -G
 - id: in_a
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -A
 - id: in_esl_shuffle
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - esl-shuffle

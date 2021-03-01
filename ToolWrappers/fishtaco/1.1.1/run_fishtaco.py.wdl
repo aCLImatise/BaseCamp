@@ -54,6 +54,9 @@ task RunFishtacopy {
       ~{if (functional_profile_already_corrected_with_music_c) then "-functional_profile_already_corrected_with_musicc" else ""} \
       ~{if (log) then "--log" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     taxonomic_abundance_profiles: "Input file of taxonomic abundance profiles"
     functional_abundance_profiles: "Input file of functional abundance profiles"

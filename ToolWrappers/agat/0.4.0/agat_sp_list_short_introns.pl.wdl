@@ -14,6 +14,9 @@ task AgatSpListShortIntronspl {
       ~{if defined(size) then ("--size " +  '"' + size + '"') else ""} \
       ~{if defined(output_gff_file) then ("--output " +  '"' + output_gff_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_file: "Input GTF/GFF file."
     size: "Minimum intron size accepted in nucleotide. All introns under\\nthis size will be reported. Default value = 10."

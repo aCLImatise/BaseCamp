@@ -22,6 +22,9 @@ task ImportClassificationDataR {
       ~{if (get_tool_perf_table) then "--get-tool-perf-table" else ""} \
       ~{if defined(tool_perf_table_output_path) then ("--tool-perf-table-output-path " +  '"' + tool_perf_table_output_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: "Config file in .yaml format"
     tool: "Which tool's classifiers should be imported?"

@@ -3,32 +3,32 @@ id: RNAsoup.cwl
 inputs:
 - id: in_tree_newick_format
   doc: Tree in NEWICK format
-  type: File
+  type: File?
   inputBinding:
     prefix: -t
 - id: in_fasta_file_sequences
   doc: FASTA file of all sequences in tree
-  type: File
+  type: File?
   inputBinding:
     prefix: -f
 - id: in_file_containing_mfe
   doc: File containing the RNAalifold consensus MFE for each subtree < 500 sequences
-  type: File
+  type: File?
   inputBinding:
     prefix: -m
 - id: in_output_directory_created
   doc: Output directory which is created to store the output
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
 - id: in_significance_level_k
   doc: Significance level k
-  type: double
+  type: double?
   inputBinding:
     prefix: -k
 - id: in_print_version_information
   doc: Print version information
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_output_directory_created
   doc: Output directory which is created to store the output
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_directory_created)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - RNAsoup

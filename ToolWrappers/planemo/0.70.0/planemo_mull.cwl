@@ -3,28 +3,28 @@ id: planemo_mull.cwl
 inputs:
 - id: in_cond_a_requirements
   doc: '`` on the target tool(s).'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --conda_requirements
 - id: in_recursive
   doc: Recursively perform command for
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --recursive
 - id: in_mulled_namespace
   doc: "Build a mulled image with the specified\nnamespace - defaults to biocontainers.\n\
     Galaxy currently only recognizes images with\nthe namespace biocontainers."
-  type: string
+  type: string?
   inputBinding:
     prefix: --mulled_namespace
 - id: in_mulled_command
   doc: "Mulled action to perform for targets - this\ndefaults to 'build-and-test'."
-  type: string
+  type: string?
   inputBinding:
     prefix: --mulled_command
 - id: in_cond_a_ensure_channels
   doc: "Ensure conda is configured with specified\ncomma separated list of channels."
-  type: string
+  type: string?
   inputBinding:
     prefix: --conda_ensure_channels
 - id: in_subdirectories_dot
@@ -36,6 +36,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - planemo

@@ -1,0 +1,180 @@
+!Command
+command:
+- mulled-build
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: COMMAND
+  description: Command (build-and-test, build, all)
+- !Positional
+  optional: false
+  position: 1
+  name: TARGETS
+  description: Build a single container with specific package(s).
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --involucro-path
+  description: Path to involucro (if not set will look in working directory and on
+    PATH).
+  args: !SimpleFlagArg
+    name: INVOLUCRO_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --dry-run
+  description: Just print commands instead of executing them.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Cause process to be verbose.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --singularity
+  description: Additionally build a singularity image.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --singularity-image-dir
+  description: Directory to write singularity images too.
+  args: !SimpleFlagArg
+    name: SINGULARITY_IMAGE_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --namespace
+  description: quay.io namespace.
+  args: !SimpleFlagArg
+    name: NAMESPACE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --repository_template
+  description: Docker repository target for publication (only quay.io or compat. API
+    is currently supported).
+  args: !SimpleFlagArg
+    name: REPOSITORY_TEMPLATE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --channels
+  description: Comma separated list of target conda channels.
+  args: !SimpleFlagArg
+    name: CHANNELS
+- !Flag
+  optional: true
+  synonyms:
+  - --conda-version
+  description: Change to specified version of Conda before installing packages.
+  args: !SimpleFlagArg
+    name: CONDA_VERSION
+- !Flag
+  optional: true
+  synonyms:
+  - --oauth-token
+  description: If set, use this token when communicating with quay.io API.
+  args: !SimpleFlagArg
+    name: OAUTH_TOKEN
+- !Flag
+  optional: true
+  synonyms:
+  - --check-published
+  - --hash
+  - --name-override
+  description: Override mulled image name - this is not recommended since metadata
+    will not be detectable from the name of resulting images
+  args: !ChoiceFlagArg
+    choices: !!set
+      v2:
+      v1:
+- !Flag
+  optional: true
+  synonyms:
+  - --image-build
+  description: Build a versioned variant of this image.
+  args: !SimpleFlagArg
+    name: IMAGE_BUILD
+- !Flag
+  optional: true
+  synonyms:
+  - --repository-name
+  description: Name of mulled container (leave blank to auto-generate based on packages
+    - recommended).
+  args: !SimpleFlagArg
+    name: REPOSITORY_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --test
+  description: Provide a test command for the container.
+  args: !SimpleFlagArg
+    name: TEST
+- !Flag
+  optional: true
+  synonyms:
+  - --test-files
+  description: Provide test-files that may be required to run the test command. Individual
+    mounts are separated by comma.The source:dest docker syntax is respected. If relative
+    file paths are given, files will be mounted in /source/<relative_file_path>
+  args: !SimpleFlagArg
+    name: TEST_FILES
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: mulled-build [-h] [--involucro-path INVOLUCRO_PATH] [--dry-run]\n\
+  \                    [--verbose] [--singularity]\n                    [--singularity-image-dir\
+  \ SINGULARITY_IMAGE_DIR]\n                    [-n NAMESPACE] [-r REPOSITORY_TEMPLATE]\
+  \ [-c CHANNELS]\n                    [--conda-version CONDA_VERSION]\n         \
+  \           [--oauth-token OAUTH_TOKEN] [--check-published]\n                  \
+  \  [--hash {v1,v2}] [--name-override NAME_OVERRIDE]\n                    [--image-build\
+  \ IMAGE_BUILD]\n                    [--repository-name REPOSITORY_NAME] [--test\
+  \ TEST]\n                    [--test-files TEST_FILES]\n                    COMMAND\
+  \ TARGETS\n\nBuild a mulled image for specified conda targets.\n\npositional arguments:\n\
+  \  COMMAND               Command (build-and-test, build, all)\n  TARGETS       \
+  \        Build a single container with specific package(s).\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --involucro-path INVOLUCRO_PATH\n\
+  \                        Path to involucro (if not set will look in working directory\
+  \ and on PATH).\n  --dry-run             Just print commands instead of executing\
+  \ them.\n  --verbose             Cause process to be verbose.\n  --singularity \
+  \        Additionally build a singularity image.\n  --singularity-image-dir SINGULARITY_IMAGE_DIR\n\
+  \                        Directory to write singularity images too.\n  -n NAMESPACE,\
+  \ --namespace NAMESPACE\n                        quay.io namespace.\n  -r REPOSITORY_TEMPLATE,\
+  \ --repository_template REPOSITORY_TEMPLATE\n                        Docker repository\
+  \ target for publication (only quay.io or compat. API is currently supported).\n\
+  \  -c CHANNELS, --channels CHANNELS\n                        Comma separated list\
+  \ of target conda channels.\n  --conda-version CONDA_VERSION\n                 \
+  \       Change to specified version of Conda before installing packages.\n  --oauth-token\
+  \ OAUTH_TOKEN\n                        If set, use this token when communicating\
+  \ with quay.io API.\n  --check-published\n  --hash {v1,v2}\n  --name-override NAME_OVERRIDE\n\
+  \                        Override mulled image name - this is not recommended since\
+  \ metadata will not be detectable from the name of resulting images\n  --image-build\
+  \ IMAGE_BUILD\n                        Build a versioned variant of this image.\n\
+  \  --repository-name REPOSITORY_NAME\n                        Name of mulled container\
+  \ (leave blank to auto-generate based on packages - recommended).\n  --test TEST\
+  \           Provide a test command for the container.\n  --test-files TEST_FILES\n\
+  \                        Provide test-files that may be required to run the test\
+  \ command. Individual mounts are separated by comma.The source:dest docker syntax\
+  \ is respected. If relative file paths are given, files will be mounted in /source/<relative_file_path>\n\
+  \nExamples\n\nBuild a mulled image with:\n\n    mulled-build build 'samtools=1.3.1--4,bedtools=2.22'\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/galaxy-tool-util:20.9.1--py_0

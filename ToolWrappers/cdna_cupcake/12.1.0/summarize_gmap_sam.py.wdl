@@ -5,7 +5,7 @@ task SummarizeGmapSampy {
     String summarize
     String gmap
     String sam
-    File file
+    File var_file
     String in
     String tab_delimited
     File file_dot
@@ -15,16 +15,19 @@ task SummarizeGmapSampy {
       ~{summarize} \
       ~{gmap} \
       ~{sam} \
-      ~{file} \
+      ~{var_file} \
       ~{in} \
       ~{tab_delimited} \
       ~{file_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     summarize: ""
     gmap: ""
     sam: ""
-    file: ""
+    var_file: ""
     in: ""
     tab_delimited: ""
     file_dot: ""

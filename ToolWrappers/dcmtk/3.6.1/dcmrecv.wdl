@@ -3,22 +3,22 @@ version 1.0
 task Dcmrecv {
   input {
     Boolean? arguments
-    Boolean? _quiet_quiet
-    Boolean? _verbose_details
-    Boolean? _debug_information
-    Boolean? ll
-    Boolean? lc
-    Boolean? xf
+    Boolean? quiet
+    Boolean? verbose
+    Boolean? debug
+    Boolean? log_level
+    Boolean? log_config
+    Boolean? config_file
     Boolean? ae_title
     Boolean? use_called_ae_title
-    Boolean? ta
-    Boolean? td
+    Boolean? acse_timeout
+    Boolean? dim_se_timeout
     Boolean? max_pdu
     Boolean? disable_host_lookup
-    Directory? od
-    Boolean? _nosubdir_generate
-    Boolean? fe
-    Boolean? _normal_allow
+    Directory? output_directory
+    Boolean? no_subdir
+    Boolean? filename_extension
+    Boolean? normal
     Boolean? ignore
     String port
   }
@@ -26,47 +26,50 @@ task Dcmrecv {
     dcmrecv \
       ~{port} \
       ~{if (arguments) then "--arguments" else ""} \
-      ~{if (_quiet_quiet) then "-q" else ""} \
-      ~{if (_verbose_details) then "-v" else ""} \
-      ~{if (_debug_information) then "-d" else ""} \
-      ~{if (ll) then "-ll" else ""} \
-      ~{if (lc) then "-lc" else ""} \
-      ~{if (xf) then "-xf" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (log_level) then "--log-level" else ""} \
+      ~{if (log_config) then "--log-config" else ""} \
+      ~{if (config_file) then "--config-file" else ""} \
       ~{if (ae_title) then "--aetitle" else ""} \
       ~{if (use_called_ae_title) then "--use-called-aetitle" else ""} \
-      ~{if (ta) then "-ta" else ""} \
-      ~{if (td) then "-td" else ""} \
+      ~{if (acse_timeout) then "--acse-timeout" else ""} \
+      ~{if (dim_se_timeout) then "--dimse-timeout" else ""} \
       ~{if (max_pdu) then "--max-pdu" else ""} \
       ~{if (disable_host_lookup) then "--disable-host-lookup" else ""} \
-      ~{if (od) then "-od" else ""} \
-      ~{if (_nosubdir_generate) then "-s" else ""} \
-      ~{if (fe) then "-fe" else ""} \
-      ~{if (_normal_allow) then "-B" else ""} \
+      ~{if (output_directory) then "--output-directory" else ""} \
+      ~{if (no_subdir) then "--no-subdir" else ""} \
+      ~{if (filename_extension) then "--filename-extension" else ""} \
+      ~{if (normal) then "--normal" else ""} \
       ~{if (ignore) then "--ignore" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arguments: "print expanded command line arguments"
-    _quiet_quiet: "--quiet                quiet mode, print no warnings and errors"
-    _verbose_details: "--verbose              verbose mode, print processing details"
-    _debug_information: "--debug                debug mode, print debug information"
-    ll: "--log-level            [l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
-    lc: "--log-config           [f]ilename: string\\nuse config file f for the logger"
-    xf: "--config-file          [f]ilename, [p]rofile: string\\nuse profile p from configuration file f"
+    quiet: "quiet mode, print no warnings and errors"
+    verbose: "verbose mode, print processing details"
+    debug: "debug mode, print debug information"
+    log_level: "[l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
+    log_config: "[f]ilename: string\\nuse config file f for the logger"
+    config_file: "[f]ilename, [p]rofile: string\\nuse profile p from configuration file f"
     ae_title: "[a]etitle: string\\nset my AE title (default: DCMRECV)"
     use_called_ae_title: "always respond with called AE title"
-    ta: "--acse-timeout         [s]econds: integer (default: 30)\\ntimeout for ACSE messages"
-    td: "--dimse-timeout        [s]econds: integer (default: unlimited)\\ntimeout for DIMSE messages"
+    acse_timeout: "[s]econds: integer (default: 30)\\ntimeout for ACSE messages"
+    dim_se_timeout: "[s]econds: integer (default: unlimited)\\ntimeout for DIMSE messages"
     max_pdu: "[n]umber of bytes: integer (4096..131072)\\nset max receive pdu to n bytes (default: 16384)"
     disable_host_lookup: "disable hostname lookup"
-    od: "--output-directory     [d]irectory: string (default: \\\".\\\")\\nwrite received objects to existing directory d"
-    _nosubdir_generate: "--no-subdir            do not generate any subdirectories (default)"
-    fe: "--filename-extension   [e]xtension: string (default: none)\\nappend e to all generated filenames"
-    _normal_allow: "--normal               allow implicit format conversions (default)"
+    output_directory: "[d]irectory: string (default: \\\".\\\")\\nwrite received objects to existing directory d"
+    no_subdir: "do not generate any subdirectories (default)"
+    filename_extension: "[e]xtension: string (default: none)\\nappend e to all generated filenames"
+    normal: "allow implicit format conversions (default)"
     ignore: "ignore dataset, receive but do not store it"
     port: "tcp/ip port number to listen on"
   }
   output {
     File out_stdout = stdout()
-    Directory out_od = "${in_od}"
+    Directory out_output_directory = "${in_output_directory}"
   }
 }

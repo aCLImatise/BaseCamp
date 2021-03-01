@@ -22,6 +22,9 @@ task CpinsimSimulate {
       ~{if defined(output_graph) then ("--output-graph " +  '"' + output_graph + '"') else ""} \
       ~{if defined(output_log) then ("--output-log " +  '"' + output_log + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     concentrations: "PATH/TO/CONCENTRATIONS, -c MAX-PROTEIN-INSTANCES PATH/TO/CONCENTRATIONS\\nMaximum number of protein instances and path to a csv-\\nfile containing a concentration for each protein."
     number_of_copies: "Number of copies for each protein type."

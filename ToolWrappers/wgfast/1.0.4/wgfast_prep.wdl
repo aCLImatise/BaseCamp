@@ -12,6 +12,9 @@ task WgfastPrep {
       ~{if defined(model) then ("--model " +  '"' + model + '"') else ""} \
       ~{if defined(processors) then ("--processors " +  '"' + processors + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     snp_matrix: "path to NASP snp_matrix [REQUIRED]"
     model: "model for RAxML, defaults to ASC_GTRGAMMA, can also be\\nGTRGAMMA"

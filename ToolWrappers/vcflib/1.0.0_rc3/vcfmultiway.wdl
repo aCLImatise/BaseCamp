@@ -4,6 +4,9 @@ task Vcfmultiway {
   command <<<
     vcfmultiway
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

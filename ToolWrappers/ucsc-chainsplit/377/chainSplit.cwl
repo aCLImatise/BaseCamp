@@ -3,12 +3,12 @@ id: chainSplit.cwl
 inputs:
 - id: in_split_query_default
   doc: '- Split on query (default is on target)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
 - id: in_lump
   doc: Lump together so have only N split files.
-  type: string
+  type: string?
   inputBinding:
     prefix: -lump
 - id: in_outdir
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - chainSplit

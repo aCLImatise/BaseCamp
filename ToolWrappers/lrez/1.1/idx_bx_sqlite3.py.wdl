@@ -14,6 +14,9 @@ task IdxBxSqlite3py {
       ~{if (gz) then "--gz" else ""} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     basic: "barcoded Fastq file from reads obtained with\\nlongranger basic"
     idx: "output indexed file"

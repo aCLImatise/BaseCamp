@@ -14,6 +14,9 @@ task SegmentationfoldutilsExtractboxedsequences {
       ~{if defined(max_inner_dist) then ("--max-inner-dist " +  '"' + max_inner_dist + '"') else ""} \
       ~{if defined(bp_extension) then ("--bp-extension " +  '"' + bp_extension + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_inner_dist: "Maximal distance between the boxes\\n(default=250bp)"
     bp_extension: "Extend extracted sequences with this number of\\nbases (default: 10bp)"

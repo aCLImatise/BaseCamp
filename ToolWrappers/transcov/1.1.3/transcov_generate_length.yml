@@ -4,29 +4,35 @@ command:
 - generate-length
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: BAM_FILE
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: BED_FILE
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "-m, --max-length INTEGER RANGE\n--help                          Show\
-    \ this message and exit.\n"
+  optional: true
   synonyms:
   - -o
   - --output-file
+  - -m
+  - --max-length
+  description: RANGE
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: transcov generate-length [OPTIONS] BAM_FILE BED_FILE\n\nOptions:\n\
@@ -34,3 +40,4 @@ help_text: "Usage: transcov generate-length [OPTIONS] BAM_FILE BED_FILE\n\nOptio
   \                Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

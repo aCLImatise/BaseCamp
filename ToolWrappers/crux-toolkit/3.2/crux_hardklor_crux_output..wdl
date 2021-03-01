@@ -10,6 +10,9 @@ task CruxHardklorCruxoutput {
       ~{crux} \
       ~{hard_klor}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     hard_klor: ""

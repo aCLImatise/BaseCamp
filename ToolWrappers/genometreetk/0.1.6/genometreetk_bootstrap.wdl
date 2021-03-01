@@ -28,6 +28,9 @@ task GenometreetkBootstrap {
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     boot_dir: "directory containing pre-computed bootstrap trees\\n(must have '.tree', '.tre', or '.treefile' extension)"
     base_type: "indicates if bases are nucleotides or amino acids\\n(default: prot)"

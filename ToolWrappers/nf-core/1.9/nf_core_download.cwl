@@ -3,22 +3,22 @@ id: nf_core_download.cwl
 inputs:
 - id: in_release
   doc: Pipeline release
-  type: string
+  type: string?
   inputBinding:
     prefix: --release
 - id: in_singularity
   doc: Download singularity containers
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --singularity
 - id: in_outdir
   doc: Output directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_compress
   doc: "[tar.gz|tar.bz2|zip|none]\nCompression type"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --compress
 - id: in_pipeline_name
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: Output directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nf-core

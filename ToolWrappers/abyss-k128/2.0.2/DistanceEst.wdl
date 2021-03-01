@@ -50,6 +50,9 @@ task DistanceEst {
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mind: "minimum distance between contigs [-(k-1)]"
     maxd: "maximum distance between contigs"

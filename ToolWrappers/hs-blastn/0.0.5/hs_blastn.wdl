@@ -8,6 +8,9 @@ task Hsblastn {
     hs_blastn \
       ~{or}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     or: "hs-blastn align -help"
   }

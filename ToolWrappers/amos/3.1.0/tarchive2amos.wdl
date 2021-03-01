@@ -24,6 +24,9 @@ task Tarchive2amos {
       ~{if defined(max) then ("-max " +  '"' + max + '"') else ""} \
       ~{if defined(qual) then ("-qual " +  '"' + qual + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly: "- XML file containing assembly in assembly archive format\\nhttp://www.ncbi.nlm.nih.gov/Traces/assembly/assmbrowser.cgi\\nusually named ASSEMBLY.xml in the tar-ball downloaded from NCBI"
     trace_dir: "- directory containing the trace information as downloaded\\nfrom the NCBI, either from the assembly archive or through\\na direct query in the trace archive.  This directory must contain\\na file named TRACEINFO.xml as well as one or more subdirs\\ncontaining the trace information for the organism(s) whose\\ntraces are being processed."

@@ -18,6 +18,9 @@ task RNAsoup {
       ~{if defined(significance_level_k) then ("-k " +  '"' + significance_level_k + '"') else ""} \
       ~{if (print_version_information) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree_newick_format: "Tree in NEWICK format"
     fasta_file_sequences: "FASTA file of all sequences in tree"

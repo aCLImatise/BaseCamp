@@ -13,7 +13,7 @@ task ClipAndMerge {
     Int? require_alignment_length
     Int? max_parallel_reads
     Int? min_qual_bad_reads
-    Boolean? discard_sequences_unknown
+    Boolean? discard_sequences_is
     Boolean? no_clip_stats
     Boolean? no_clipping
     Boolean? no_merging
@@ -24,7 +24,7 @@ task ClipAndMerge {
     Int? qo
     Boolean? qt
     Float? qual_freq_bad_reads
-    String? reverse_reads_agatcggaagagcgtcgtgtagggaaagagtgta
+    String? reverse_reads_default
     Boolean? rm_no_partner
     Boolean? time_estimation
     Int? trim_three_p
@@ -45,7 +45,7 @@ task ClipAndMerge {
       ~{if defined(require_alignment_length) then ("-m " +  '"' + require_alignment_length + '"') else ""} \
       ~{if defined(max_parallel_reads) then ("-maxParallelReads " +  '"' + max_parallel_reads + '"') else ""} \
       ~{if defined(min_qual_bad_reads) then ("-minQualBadReads " +  '"' + min_qual_bad_reads + '"') else ""} \
-      ~{if (discard_sequences_unknown) then "-n" else ""} \
+      ~{if (discard_sequences_is) then "-n" else ""} \
       ~{if (no_clip_stats) then "-no_clip_stats" else ""} \
       ~{if (no_clipping) then "-no_clipping" else ""} \
       ~{if (no_merging) then "-no_merging" else ""} \
@@ -56,7 +56,7 @@ task ClipAndMerge {
       ~{if defined(qo) then ("-qo " +  '"' + qo + '"') else ""} \
       ~{if (qt) then "-qt" else ""} \
       ~{if defined(qual_freq_bad_reads) then ("-qualFreqBadReads " +  '"' + qual_freq_bad_reads + '"') else ""} \
-      ~{if defined(reverse_reads_agatcggaagagcgtcgtgtagggaaagagtgta) then ("-r " +  '"' + reverse_reads_agatcggaagagcgtcgtgtagggaaagagtgta + '"') else ""} \
+      ~{if defined(reverse_reads_default) then ("-r " +  '"' + reverse_reads_default + '"') else ""} \
       ~{if (rm_no_partner) then "-rm_no_partner" else ""} \
       ~{if (time_estimation) then "-timeEstimation" else ""} \
       ~{if defined(trim_three_p) then ("-trim3p " +  '"' + trim_three_p + '"') else ""} \
@@ -64,6 +64,9 @@ task ClipAndMerge {
       ~{if defined(reversefile_write_unmerged) then ("-u " +  '"' + reversefile_write_unmerged + '"') else ""} \
       ~{if (verbose) then "-verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     discard_bad_reads: ": Discard reads after merging that do not fulfill the quality criteria. (default:\\nfalse)"
     error_rate_merging: ": Error rate for merging forward and reverse reads. A value of 0.05 means that 5%\\nmismatches are allowed in the overlap region. (default: 0.05)"
@@ -76,7 +79,7 @@ task ClipAndMerge {
     require_alignment_length: ": Require a minimum adapter alignment length. If less nucleotides align with the\\nadapter, the sequences are not clipped. (default: 8)"
     max_parallel_reads: ": Maximal number of reads, that can be processed in parallel. This number largely\\ndepends on the processing system settings! Only change it if you know what you\\nare doing! (default: 1000)"
     min_qual_bad_reads: ": Minimal base quality for keeping bad reads. If 0 is specified, then all reads\\nare kept. (default: 0)"
-    discard_sequences_unknown: ": Discard sequences with unknown (N) nucleotides. Default is to keep such\\nsequences. (default: false)"
+    discard_sequences_is: ": Discard sequences with unknown (N) nucleotides. Default is to keep such\\nsequences. (default: false)"
     no_clip_stats: ": Disable the display of clipping statistics. (default: false)"
     no_clipping: ": Skip adapter clipping. Only read merging is performed! (This is only recommended\\nif every forward and reverse read has a corresponding partner in the other\\nrespective fastq-file! Otherwise merging can not be performed correctly.\\n(default: false)"
     no_merging: ": Skip read merging for paired-end sequencing data! Only adapter clipping is\\nperformed. This parameter is not needed for single-end data. (default: false)"
@@ -87,7 +90,7 @@ task ClipAndMerge {
     qo: ": Phred Score offset. (default: 33)"
     qt: ": Enable quality trimming for non-merged reads. (default: true)"
     qual_freq_bad_reads: ": Percentage of reads that have to fulfill minimal base quality criterion.\\n(default: 0.9)"
-    reverse_reads_agatcggaagagcgtcgtgtagggaaagagtgta: ": Reverse reads adapter sequence. (default: AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA)"
+    reverse_reads_default: ": Reverse reads adapter sequence. (default: AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA)"
     rm_no_partner: ": Remove reads with no pairing partner after adapter clipping. (default: false)"
     time_estimation: ": Perform remaining time estimation. Note: this can take long for large gzipped\\ninput files. (default: false)"
     trim_three_p: ": Trim N nucleotides from the 3' end of each read. This step is performed after\\nadapter clipping. Reverse reads are not reverse trancriped before trimming.\\n(default: 0)"

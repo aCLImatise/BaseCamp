@@ -9,13 +9,13 @@ task GemInstall {
     Boolean? vendor
     Boolean? no_document
     Boolean? _envshebang_rewrite
-    Boolean? _force_force
+    Boolean? _force_gem
     String? trust_policy
     Boolean? ignore_dependencies
     Boolean? development
     Boolean? conservative
     Boolean? minimal_deps
-    Boolean? file
+    Boolean? read_file_andinstall
     File? without
     Boolean? default
     Boolean? explain
@@ -57,13 +57,13 @@ task GemInstall {
       ~{if (vendor) then "--vendor" else ""} \
       ~{if (no_document) then "--no-document" else ""} \
       ~{if (_envshebang_rewrite) then "-E" else ""} \
-      ~{if (_force_force) then "-f" else ""} \
+      ~{if (_force_gem) then "-f" else ""} \
       ~{if defined(trust_policy) then ("--trust-policy " +  '"' + trust_policy + '"') else ""} \
       ~{if (ignore_dependencies) then "--ignore-dependencies" else ""} \
       ~{if (development) then "--development" else ""} \
       ~{if (conservative) then "--conservative" else ""} \
       ~{if (minimal_deps) then "--minimal-deps" else ""} \
-      ~{if (file) then "--file" else ""} \
+      ~{if (read_file_andinstall) then "--file" else ""} \
       ~{if defined(without) then ("--without " +  '"' + without + '"') else ""} \
       ~{if (default) then "--default" else ""} \
       ~{if (explain) then "--explain" else ""} \
@@ -80,6 +80,9 @@ task GemInstall {
       ~{if (backtrace) then "--backtrace" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     platform: "Specify the platform of gem to install"
     _updatesources_update: ", --[no-]update-sources        Update local source cache"
@@ -88,13 +91,13 @@ task GemInstall {
     vendor: "Install gem into the vendor directory.\\nOnly for use by gem repackagers."
     no_document: "Disable documentation generation"
     _envshebang_rewrite: ", --[no-]env-shebang           Rewrite the shebang line on installed\\nscripts to use /usr/bin/env"
-    _force_force: ", --[no-]force                 Force gem to install, bypassing dependency"
+    _force_gem: ", --[no-]force                 Force gem to install, bypassing dependency"
     trust_policy: "Specify gem trust policy"
     ignore_dependencies: "Do not install any required dependent gems"
     development: "Install additional development"
     conservative: "Don't attempt to upgrade gems already\\nmeeting version requirement"
     minimal_deps: "Don't upgrade any dependencies that already\\nmeet version requirements"
-    file: "[FILE]                Read from a gem dependencies API file and\\ninstall the listed gems"
+    read_file_andinstall: "[FILE]                Read from a gem dependencies API file and\\ninstall the listed gems"
     without: "Omit the named groups (comma separated)\\nwhen installing from a gem dependencies\\nfile"
     default: "Add the gem's full specification to\\nspecifications/default and extract only its bin"
     explain: "Rather than install the gems, indicate which would\\nbe installed"

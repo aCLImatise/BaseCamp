@@ -48,6 +48,9 @@ task Swarm {
       ~{if defined(gap_opening_penalty) then ("--gap-opening-penalty " +  '"' + gap_opening_penalty + '"') else ""} \
       ~{if defined(gap_extension_penalty) then ("--gap-extension-penalty " +  '"' + gap_extension_penalty + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "number of threads to use (1)"
     differences: "resolution (1)"

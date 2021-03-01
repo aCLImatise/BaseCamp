@@ -18,6 +18,9 @@ task EstAbundancepy {
       ~{if defined(out_report) then ("--out-report " +  '"' + out_report + '"') else ""} \
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_kraken_report: "Input kraken report file."
     km_er_distr: "Kmer distribution file."

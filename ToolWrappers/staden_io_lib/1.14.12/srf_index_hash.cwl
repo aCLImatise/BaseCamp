@@ -3,7 +3,7 @@ id: srf_index_hash.cwl
 inputs:
 - id: in_check_existing_index
   doc: check an existing index, don't re-index
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_srf_file
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - srf_index_hash

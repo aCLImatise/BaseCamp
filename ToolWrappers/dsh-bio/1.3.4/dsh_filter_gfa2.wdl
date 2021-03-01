@@ -14,6 +14,9 @@ task Dshfiltergfa2 {
       ~{if (input_gfa_two_file) then "--input-gfa2-file" else ""} \
       ~{if (output_gfa_two_file) then "--output-gfa2-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     script: "[class java.lang.String]  filter by script, eval against r [optional]"

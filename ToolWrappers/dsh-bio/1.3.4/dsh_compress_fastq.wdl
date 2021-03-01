@@ -14,6 +14,9 @@ task Dshcompressfastq {
       ~{if (input_fast_q_file) then "--input-fastq-file" else ""} \
       ~{if (output_fast_q_file) then "--output-fastq-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     input_fast_q_file: "[class java.io.File]  input FASTQ file, default stdin [optional]"

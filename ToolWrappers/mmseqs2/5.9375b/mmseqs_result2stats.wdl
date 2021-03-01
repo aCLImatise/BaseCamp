@@ -12,6 +12,9 @@ task MmseqsResult2stats {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stat: "can be one of: linecount, mean, doolittle, charges, seqlen, firstline."
     threads: "8               number of cores used for the computation (uses all cores by default)"

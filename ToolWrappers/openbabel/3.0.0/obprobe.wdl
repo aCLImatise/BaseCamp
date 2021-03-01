@@ -14,6 +14,9 @@ task Obprobe {
       ~{if defined(step_size) then ("-s " +  '"' + step_size + '"') else ""} \
       ~{if defined(padding) then ("-p " +  '"' + padding + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     step_size: "step size"
     padding: "padding"

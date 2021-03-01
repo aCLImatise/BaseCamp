@@ -12,6 +12,9 @@ task PsiCalculatorpy {
       ~{if defined(e) then ("-e " +  '"' + e + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     e: ""

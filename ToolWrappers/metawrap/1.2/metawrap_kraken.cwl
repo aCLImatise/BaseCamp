@@ -3,22 +3,22 @@ id: metawrap_kraken.cwl
 inputs:
 - id: in_output_directory
   doc: output directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
 - id: in_number_of_threads
   doc: number of threads
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
-- id: in_read_subsampling_defaultall
+- id: in_read_subsampling_number
   doc: read subsampling number (default=all)
-  type: long
+  type: long?
   inputBinding:
     prefix: -s
 - id: in_no_preload
   doc: do not pre-load the kraken DB into memory (slower, but lower memory requirement)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-preload
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output_directory
   doc: output directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_directory)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - metawrap

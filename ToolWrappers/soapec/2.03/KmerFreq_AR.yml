@@ -3,92 +3,92 @@ command:
 - KmerFreq_AR
 positional:
 - !Positional
-  description: 'Usage:  KmerFreq_AR [OPTION] <reads_files_list>'
+  optional: false
   position: 0
   name: '03'
-  optional: false
+  description: 'Usage:  KmerFreq_AR [OPTION] <reads_files_list>'
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -k
   description: "Set the kmer size, default=17.\nNote: when k=17, kmer theoretic number\
     \ is 4^17 = 16G,\nstore 1 byte for a kmer, the kmer frequency spectrum will use\n\
     16G memory(k=16, 4G; k=18, 64G)."
-  synonyms:
-  - -k
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
   description: "Set the size of space-seed in kmer, default=0.\nNote: for consecutive\
     \ kmer, use default value: 0; for space-kmer, set this\noption and make sure it\
     \ is set to be one even number when kmer size is\nodd number(for reverse and complement\
     \ kmer). When kmer size is one even number,\nthe space-kmer format will be like\
     \ this(for k=10, s=5): 'ATTCG-----GTACG'.\nWhen kmer size is odd number, the space-kmer\
     \ format will be like this(for k=11, s=4):\n'ATTCG--A--GTACG'."
-  synonyms:
-  - -s
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
   description: "Set min precision rate for kmer, default=-1.\nNote: program caculate\
     \ the precision of kmer base on the quality score,\nset between 0~0.99, or -1\
     \ for unrestrained."
-  synonyms:
-  - -c
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: "Set the thread number, default=1.\nNote: the more thread number, the\
-    \ high speed, however, this should be less than\nthe number of CPU cores."
+  optional: true
   synonyms:
   - -t
+  description: "Set the thread number, default=1.\nNote: the more thread number, the\
+    \ high speed, however, this should be less than\nthe number of CPU cores."
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Set the ASCII shift of the quality value(Q_SHIFT), default=64.\nNote:\
-    \ usually 64 or 33 for Illumina data."
+  optional: true
   synonyms:
   - -q
+  description: "Set the ASCII shift of the quality value(Q_SHIFT), default=64.\nNote:\
+    \ usually 64 or 33 for Illumina data."
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
   description: "Set whether to output kmers depth file, 1:yes, 0:no, default=1.\n\
     Note: if you just want to get the distribution curve of kmer frequency, set '-m\
     \ 0'."
-  synonyms:
-  - -m
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -b
   description: "Set total bases number used to get kmers, default: all the bases of\
     \ read files.\nNote: when sequencing depth is too much, you can set this option,\
     \ about 30X\ndata bases is preferred."
-  synonyms:
-  - -b
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Set the output prefix, default=output.\nNote: often use species name\
-    \ as prefix."
+  optional: true
   synonyms:
   - -p
+  description: "Set the output prefix, default=output.\nNote: often use species name\
+    \ as prefix."
   args: !SimpleFlagArg
     name: str
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show help information.
+  optional: true
   synonyms:
   - -h
+  description: Show help information.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nProgram:\tKmerFreq_AR\nVersion:\tv2.03\nAuthor:\t\tBGI-ShenZhen\nCompileDate:\t\
@@ -124,3 +124,4 @@ help_text: "\nProgram:\tKmerFreq_AR\nVersion:\tv2.03\nAuthor:\t\tBGI-ShenZhen\nC
   \ 30X data is preferred in calculating the Kmer frequency spectrum.\n\n"
 generated_using:
 - --help
+docker_image:

@@ -3,18 +3,21 @@ version 1.0
 task Fastagetmarkov {
   input {
     String? sequence
-    File? file
+    File? var_file
     String? background
   }
   command <<<
     fasta_get_markov \
       ~{sequence} \
-      ~{file} \
+      ~{var_file} \
       ~{background}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequence: ""
-    file: ""
+    var_file: ""
     background: ""
   }
   output {

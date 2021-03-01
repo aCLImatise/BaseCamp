@@ -14,6 +14,9 @@ task RefinemGenomeStats {
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cpus: "number of CPUs to use (default: 1)"
     silent: "suppress output of logger (default: False)"

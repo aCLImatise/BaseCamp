@@ -38,6 +38,9 @@ task Maker2evalGtf {
       ~{gtf} \
       ~{formated}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this: ""
     evaluating: ""

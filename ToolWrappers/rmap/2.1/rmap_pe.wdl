@@ -30,6 +30,9 @@ task Rmappe {
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_name: "output file name"
     chrom: "chromosomes in FASTA file or dir"

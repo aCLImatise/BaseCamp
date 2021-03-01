@@ -10,6 +10,9 @@ task HicCreateThresholdFile {
       ~{if defined(range) then ("--range " +  '"' + range + '"') else ""} \
       ~{if defined(threshold_value) then ("--thresholdValue " +  '"' + threshold_value + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     range: ""
     threshold_value: ""

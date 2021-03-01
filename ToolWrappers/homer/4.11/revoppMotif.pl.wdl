@@ -8,6 +8,9 @@ task RevoppMotifpl {
     revoppMotif_pl \
       ~{motif_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     motif_file: ""
   }

@@ -3,133 +3,163 @@ command:
 - mhcflurry-class1-select-processing-models
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: Model
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: select
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: antigen
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 3
   name: processing
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 4
   name: models.
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "Model selection data CSV. Expected columns: peptide,\nhit, fold_0,\
-    \ ..., fold_N"
+  optional: true
   synonyms:
   - --data
+  description: "Model selection data CSV. Expected columns: peptide,\nhit, fold_0,\
+    \ ..., fold_N"
   args: !SimpleFlagArg
     name: FILE.csv
-  optional: true
 - !Flag
-  description: Directory to read models
+  optional: true
   synonyms:
   - --models-dir
+  description: Directory to read models
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
-  description: Directory to write selected models
+  optional: true
   synonyms:
   - --out-models-dir
+  description: Directory to write selected models
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
-  description: Min number of models to select per fold
+  optional: true
   synonyms:
   - --min-models-per-fold
+  description: Min number of models to select per fold
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Max number of models to select per fold
+  optional: true
   synonyms:
   - --max-models-per-fold
+  description: Max number of models to select per fold
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: 'Keras verbosity. Default: 0'
+  optional: true
   synonyms:
   - --verbosity
+  description: 'Keras verbosity. Default: 0'
   args: !SimpleFlagArg
     name: VERBOSITY
-  optional: true
 - !Flag
-  description: "Number of local processes to parallelize training\nover. Set to 0\
-    \ for serial run. Default: 0."
+  optional: true
   synonyms:
   - --num-jobs
+  description: "Number of local processes to parallelize training\nover. Set to 0\
+    \ for serial run. Default: 0."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Keras backend. If not specified will use system\ndefault."
+  optional: true
   synonyms:
   - --backend
+  description: "Keras backend. If not specified will use system\ndefault."
   args: !ChoiceFlagArg
     choices: !!set
-      tensorflow-gpu:
       tensorflow-default:
       tensorflow-cpu:
-  optional: true
+      tensorflow-gpu:
 - !Flag
-  description: "Number of GPUs to attempt to parallelize across.\nRequires running\
-    \ in parallel."
+  optional: true
   synonyms:
   - --gpus
+  description: "Number of GPUs to attempt to parallelize across.\nRequires running\
+    \ in parallel."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Maximum number of workers to assign to a GPU.\nAdditional tasks will\
-    \ run on CPU."
+  optional: true
   synonyms:
   - --max-workers-per-gpu
+  description: "Maximum number of workers to assign to a GPU.\nAdditional tasks will\
+    \ run on CPU."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Restart workers after N tasks. Workaround for\ntensorflow memory leaks.\
-    \ Requires Python >=3.2."
+  optional: true
   synonyms:
   - --max-tasks-per-worker
+  description: "Restart workers after N tasks. Workaround for\ntensorflow memory leaks.\
+    \ Requires Python >=3.2."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Write worker stdout and stderr logs to given\ndirectory."
+  optional: true
   synonyms:
   - --worker-log-dir
+  description: "Write worker stdout and stderr logs to given\ndirectory."
   args: !SimpleFlagArg
     name: WORKER_LOG_DIR
+- !Flag
   optional: true
+  synonyms:
+  - --cluster-parallelism
+  - --cluster-submit-command
+  description: 'Default: sh'
+  args: !SimpleFlagArg
+    name: CLUSTER_SUBMIT_COMMAND
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster-results-workdir
+  description: 'Default: ./cluster-workdir'
+  args: !SimpleFlagArg
+    name: CLUSTER_RESULTS_WORKDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --additional-complete-file
+  description: "Additional file to monitor for job completion.\nDefault: STDERR"
+  args: !SimpleFlagArg
+    name: ADDITIONAL_COMPLETE_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster-script-prefix-path
+  - --cluster-max-retries
+  description: "How many times to rerun failing jobs. Default: 3\n"
+  args: !SimpleFlagArg
+    name: CLUSTER_SCRIPT_PREFIX_PATH
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "To show stack trace, run:\nkill -s USR1 686\nusage: \nModel select antigen\
@@ -165,3 +195,4 @@ help_text: "To show stack trace, run:\nkill -s USR1 686\nusage: \nModel select a
   \                    How many times to rerun failing jobs. Default: 3\n"
 generated_using:
 - --help
+docker_image:

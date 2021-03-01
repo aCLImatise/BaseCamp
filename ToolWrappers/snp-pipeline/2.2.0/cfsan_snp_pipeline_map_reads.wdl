@@ -18,6 +18,9 @@ task CfsanSnpPipelineMapReads {
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "Force processing even when result files already exist\\nand are newer than inputs (default: False)"
     verbose: "Verbose message level (0=no info, 5=lots) (default: 1)"

@@ -3,17 +3,17 @@ id: filter_lq_isoforms.py.cwl
 inputs:
 - id: in_min_fl_count
   doc: 'Minimum FL count (default: 2).'
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_fl_count
 - id: in_min_exp_acc
   doc: 'Minimum predicted accuracy (default: 0.99).'
-  type: double
+  type: double?
   inputBinding:
     prefix: --min_exp_acc
 - id: in_is_fl_nc
   doc: Input FASTQ is FLNC, not LQ
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --is_flnc
 - id: in_fast_q_filename
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - filter_lq_isoforms.py

@@ -23,11 +23,11 @@ task Testformat2sh {
     Boolean? trimmed_at_q_one_zero
     Boolean? trimmed_at_q_one_five
     Boolean? trimmed_at_q_two_zero
-    File file
+    File var_file
   }
   command <<<
     testformat2_sh \
-      ~{file} \
+      ~{var_file} \
       ~{if (junk_reads) then "-JunkReads" else ""} \
       ~{if (chastity_fail) then "-ChastityFail" else ""} \
       ~{if (bad_pair_names) then "-BadPairNames" else ""} \
@@ -50,6 +50,9 @@ task Testformat2sh {
       ~{if (trimmed_at_q_one_five) then "-TrimmedAtQ15" else ""} \
       ~{if (trimmed_at_q_two_zero) then "-TrimmedAtQ20" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     junk_reads: "Reads with invalid bases or other problems."
     chastity_fail: "Reads failing Illumina's chastity filter."
@@ -72,7 +75,7 @@ task Testformat2sh {
     trimmed_at_q_one_zero: "Fraction of bases trimmed at Q10."
     trimmed_at_q_one_five: "Fraction of bases trimmed at Q15."
     trimmed_at_q_two_zero: "Fraction of bases trimmed at Q20."
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

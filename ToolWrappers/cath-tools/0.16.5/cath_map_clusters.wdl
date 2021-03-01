@@ -28,6 +28,9 @@ task Cathmapclusters {
       ~{if (print_entry_results) then "--print-entry-results" else ""} \
       ~{if (sorting_help) then "--sorting-help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_version_information: "[ --version ]                      Output version information"
     map_from_clust_memb_file: "Map numbers from previous clusters specified in <file> to their equivalents in the working clusters where possible and\\nif all the cluster names in <file> are positive integers, renumber leftover new clusters from one plus the largest\\nor if not, rename with new_cmc_cluster_1, new_cmc_cluster_2, ...\\n(of, if unspecified, renumber all working clusters from 1 upwards)"

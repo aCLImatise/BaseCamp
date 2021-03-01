@@ -1,0 +1,194 @@
+!Command
+command:
+- bowtie2-build
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: reference_in
+  description: comma-separated list of files with ref sequences
+- !Positional
+  optional: false
+  position: 1
+  name: bt2_index_base
+  description: write bt2 data to files with this dir/basename
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: reference files are Fasta (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "reference sequences given on cmd line (as\n<reference_in>)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --large-index
+  description: "force generated index to be 'large', even if ref\nhas fewer than 4\
+    \ billion nucleotides"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: use the debug binary; slower, assertions enabled
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sanitized
+  description: use sanitized binary; slower, uses ASan and/or UBSan
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: log the issued command
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --noauto
+  description: disable automatic -p/--bmax/--dcv memory-fitting
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --packed
+  description: use packed strings internally; slower, less memory
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bmax
+  description: max bucket sz for blockwise suffix-array builder
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --bmaxdivn
+  description: 'max bucket sz as divisor of ref len (default: 4)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --dcv
+  description: 'diff-cover period for blockwise (default: 1024)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --nodc
+  description: disable diff-cover (algorithm becomes quadratic)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --noref
+  description: don't build .3/.4 index files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-3'
+  - --justref
+  description: just build .3/.4 index files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --offrate
+  description: 'SA is sampled every 2^<int> BWT chars (default: 5)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --ftabchars
+  description: '# of chars consumed in initial lookup (default: 10)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: '# of threads'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: seed for random number generator
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: verbose output (for debugging)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print detailed description of tool and its options
+  args: !EmptyFlagArg {}
+usage_flag: !Flag
+  optional: true
+  synonyms:
+  - --usage
+  description: print this usage message
+  args: !EmptyFlagArg {}
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version information and quit
+  args: !EmptyFlagArg {}
+help_text: "Bowtie 2 version 2.4.2 by Ben Langmead (langmea@cs.jhu.edu, www.cs.jhu.edu/~langmea)\n\
+  Usage: bowtie2-build [options]* <reference_in> <bt2_index_base>\n    reference_in\
+  \            comma-separated list of files with ref sequences\n    bt2_index_base\
+  \          write bt2 data to files with this dir/basename\n*** Bowtie 2 indexes\
+  \ work only with v2 (not v1).  Likewise for v1 indexes. ***\nOptions:\n    -f  \
+  \                    reference files are Fasta (default)\n    -c               \
+  \       reference sequences given on cmd line (as\n                            <reference_in>)\n\
+  \    --large-index           force generated index to be 'large', even if ref\n\
+  \                            has fewer than 4 billion nucleotides\n    --debug \
+  \                use the debug binary; slower, assertions enabled\n    --sanitized\
+  \             use sanitized binary; slower, uses ASan and/or UBSan\n    --verbose\
+  \               log the issued command\n    -a/--noauto             disable automatic\
+  \ -p/--bmax/--dcv memory-fitting\n    -p/--packed             use packed strings\
+  \ internally; slower, less memory\n    --bmax <int>            max bucket sz for\
+  \ blockwise suffix-array builder\n    --bmaxdivn <int>        max bucket sz as divisor\
+  \ of ref len (default: 4)\n    --dcv <int>             diff-cover period for blockwise\
+  \ (default: 1024)\n    --nodc                  disable diff-cover (algorithm becomes\
+  \ quadratic)\n    -r/--noref              don't build .3/.4 index files\n    -3/--justref\
+  \            just build .3/.4 index files\n    -o/--offrate <int>      SA is sampled\
+  \ every 2^<int> BWT chars (default: 5)\n    -t/--ftabchars <int>    # of chars consumed\
+  \ in initial lookup (default: 10)\n    --threads <int>         # of threads\n  \
+  \  --seed <int>            seed for random number generator\n    -q/--quiet    \
+  \          verbose output (for debugging)\n    -h/--help               print detailed\
+  \ description of tool and its options\n    --usage                 print this usage\
+  \ message\n    --version               print version information and quit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bowtie2:2.4.2--py38h1c8e9b9_1

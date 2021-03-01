@@ -10,6 +10,9 @@ task Xtandem {
       ~{tandem} \
       ~{filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tandem: ""
     filename: ""

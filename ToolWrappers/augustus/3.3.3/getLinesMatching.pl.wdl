@@ -16,6 +16,9 @@ task GetLinesMatchingpl {
       ~{if defined(pat_from) then ("--patfrom " +  '"' + pat_from + '"') else ""} \
       ~{if (whitespace) then "--whitespace" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     use_complement_print: "Use complement. Print all lines NOT matching."
     pat_from: "query replace regular expression to the\\nentry in the n-th column first before\\nchecking for membership in the list.\\nWill use the pattern s/$patfrom/$patto/\\nUseful for removing modifications, e.g.\\ntripping a trailing -1 before performing the\\ncheck.\\nBoth default to empty patterns."

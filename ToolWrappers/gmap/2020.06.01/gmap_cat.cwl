@@ -3,18 +3,18 @@ id: gmap_cat.cwl
 inputs:
 - id: in_dir
   doc: Destination directory for output genome index
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --dir
 - id: in_db
   doc: Output genome name
-  type: string
+  type: string?
   inputBinding:
     prefix: --db
 - id: in_names
   doc: 'Substitute names for renaming contigs, provided in a file.  The file have
     two formats:'
-  type: File
+  type: File?
   inputBinding:
     prefix: --names
 - id: in_one_dot
@@ -39,9 +39,10 @@ outputs:
   type: stdout
 - id: out_dir
   doc: Destination directory for output genome index
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gmap_cat

@@ -6,7 +6,7 @@ task ConterminatorProtein {
     Boolean? add_self_matches
     File? seed_sub_mat
     Float? sensitivity_faster_fast
-    Int? kmer_size_range
+    Int? kmer_size_set
     Int? k_score
     Int? alph_size
     Int? split
@@ -97,7 +97,7 @@ task ConterminatorProtein {
       ~{if (add_self_matches) then "--add-self-matches" else ""} \
       ~{if defined(seed_sub_mat) then ("--seed-sub-mat " +  '"' + seed_sub_mat + '"') else ""} \
       ~{if defined(sensitivity_faster_fast) then ("-s " +  '"' + sensitivity_faster_fast + '"') else ""} \
-      ~{if defined(kmer_size_range) then ("-k " +  '"' + kmer_size_range + '"') else ""} \
+      ~{if defined(kmer_size_set) then ("-k " +  '"' + kmer_size_set + '"') else ""} \
       ~{if defined(k_score) then ("--k-score " +  '"' + k_score + '"') else ""} \
       ~{if defined(alph_size) then ("--alph-size " +  '"' + alph_size + '"') else ""} \
       ~{if defined(split) then ("--split " +  '"' + split + '"') else ""} \
@@ -182,12 +182,15 @@ task ConterminatorProtein {
       ~{if defined(merge_query) then ("--merge-query " +  '"' + merge_query + '"') else ""} \
       ~{if defined(strand) then ("--strand " +  '"' + strand + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     comp_bias_corr: "correct for locally biased amino acid composition (range 0-1) [1]"
     add_self_matches: "artificially add entries of queries with themselves (for clustering)"
     seed_sub_mat: "amino acid substitution matrix for kmer generation file [nucl:nucleotide.out,aa:VTML80.out]"
     sensitivity_faster_fast: "sensitivity: 1.0 faster; 4.0 fast default; 7.5 sensitive (range 1.0-7.5) [4.000]"
-    kmer_size_range: "k-mer size in the range (0: set automatically to optimum) [0]"
+    kmer_size_set: "k-mer size in the range (0: set automatically to optimum) [0]"
     k_score: "K-mer threshold for generating similar k-mer lists [2147483647]"
     alph_size: "alphabet size (range 2-21) [21]"
     split: "Splits input sets into N equally distributed chunks. The default value sets the best split automatically. createindex can only be used with split 1. [0]"

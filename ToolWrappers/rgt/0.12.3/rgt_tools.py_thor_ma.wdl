@@ -18,6 +18,9 @@ task RgttoolspyThorMa {
       ~{if defined(define_extension_size) then ("-e " +  '"' + define_extension_size + '"') else ""} \
       ~{if defined(size_define_size) then ("-b " +  '"' + size_define_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_data_config: "Input data config."
     thor: "result  Output directory of THOR."

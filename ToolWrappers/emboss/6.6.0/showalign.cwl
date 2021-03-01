@@ -6,7 +6,7 @@ inputs:
     \ matrix file used when\ncomparing sequences. By default it is the\nfile 'EBLOSUM62'\
     \ (for proteins) or the file\n'EDNAFULL' (for nucleic sequences). These\nfiles\
     \ are found in the 'data' directory of\nthe EMBOSS installation."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -matrix
 - id: in_refseq
@@ -16,21 +16,21 @@ inputs:
     \ If this is set to 0 then the\nconsensus sequence will be used as the\nreference\
     \ sequence. By default the consensus\nsequence is used as the reference sequence.\n\
     (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -refseq
 - id: in_show
   doc: "menu       [N] What to show (Values: A (All of the\nsequences); I (Identities\
     \ between the\nsequences); N (Non-identities between the\nsequences); S (Similarities\
     \ between the\nsequences); D (Dissimilarities between the\nsequences))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -show
 - id: in_order
   doc: "menu       [I] Output order of the sequences (Values: I\n(Input order - no\
     \ change); A (Alphabetical\norder of the names); S (Similarity to the\nreference\
     \ sequence))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -order
 - id: in_uppercase
@@ -39,12 +39,12 @@ inputs:
     \ is left alone.\nA set of regions is specified by a set of\npairs of positions.\n\
     The positions are integers.\nThey are separated by any non-digit,\nnon-alpha character.\n\
     Examples of region specifications are:\n24-45, 56-78\n1:45, 67=99;765..888\n1,5,8,10,23,45,57,99"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -uppercase
 - id: in_width
   doc: "integer    [60] Width of sequence to display (Integer 1\nor more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -width
 - id: in_margin
@@ -55,12 +55,12 @@ inputs:
     \ If\nthe margin is set to -1 then the minimum\nmargin width that will allow all\
     \ the\nsequence names to be displayed in full plus\na space at the end of the\
     \ name will\nautomatically be selected. (Integer -1 or\nmore)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -margin
 - id: in_html
   doc: boolean    [N] Use HTML formatting
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -html
 - id: in_highlight
@@ -70,7 +70,7 @@ inputs:
     \ are followed by any valid HTML font\ncolour.\nExamples of region specifications\
     \ are:\n24-45 blue 56-78 orange\n1-100 green 120-156 red\nA file of ranges to\
     \ colour (one range per\nline) can be specified as '@filename'."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -highlight
 - id: in_plurality
@@ -78,7 +78,7 @@ inputs:
     \ which there is no\nconsensus. The default plurality is taken as\n50% of the\
     \ total weight of all the\nsequences in the alignment. (Number from\n0.000 to\
     \ 100.000)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -plurality
 - id: in_set_case
@@ -87,7 +87,7 @@ inputs:
     \ which the consensus is\nin lower-case. By default this is set to be\nhalf of\
     \ the (weight-adjusted) number of\nsequences in the alignment. (Any numeric\n\
     value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -setcase
 - id: in_identity
@@ -95,7 +95,7 @@ inputs:
     \ identities at a position\nfor it to give a consensus. Therefore, if\nthis is\
     \ set to 100% only columns of\nidentities contribute to the consensus.\n(Number\
     \ from 0.000 to 100.000)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -identity
 - id: in_alignment_dot
@@ -107,6 +107,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - showalign

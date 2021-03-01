@@ -10,6 +10,9 @@ task SixgillBuildFastqfiles {
       ~{six_gill_build} \
       ~{if defined(minlength) then ("--minlength " +  '"' + minlength + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minlength: ""
     six_gill_build: ""

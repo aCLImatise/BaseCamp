@@ -58,6 +58,9 @@ task Mimeomap {
       ~{if defined(max_tandem) then ("--maxtandem " +  '"' + max_tandem + '"') else ""} \
       ~{if (write_trf) then "--writeTRF" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_dir: "Name of directory containing sequences from A genome."
     b_dir: "Name of directory containing sequences from B genome."

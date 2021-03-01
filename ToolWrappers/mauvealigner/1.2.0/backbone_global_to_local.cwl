@@ -25,6 +25,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - backbone_global_to_local

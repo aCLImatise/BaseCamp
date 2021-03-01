@@ -3,7 +3,7 @@ id: rsat_matrix_distrib.cwl
 inputs:
 - id: in_bg_format_dot_supported
   doc: ': oligo-analysis, MotifSampler, meme. Default is:'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bg_format.Supported
 - id: in_matrix_distrib
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

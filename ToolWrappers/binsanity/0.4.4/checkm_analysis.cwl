@@ -3,12 +3,12 @@ id: checkm_analysis.cwl
 inputs:
 - id: in_check_m
   doc: Specify the CHeckM output File (should be the one created using --tab_table
-  type: File
+  type: File?
   inputBinding:
     prefix: -checkM
 - id: in_identify_what_suffix
   doc: 'Identify what your suffix for fasta file is [default: .fna]'
-  type: File
+  type: File?
   inputBinding:
     prefix: -f
 - id: in_suffix
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_check_m
   doc: Specify the CHeckM output File (should be the one created using --tab_table
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_check_m)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - checkm_analysis

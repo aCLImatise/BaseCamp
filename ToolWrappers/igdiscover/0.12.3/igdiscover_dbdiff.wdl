@@ -12,6 +12,9 @@ task IgdiscoverDbdiff {
       ~{b} \
       ~{if defined(color) then ("--color " +  '"' + color + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     color: "Whether to colorize output\\n"
     a: ""

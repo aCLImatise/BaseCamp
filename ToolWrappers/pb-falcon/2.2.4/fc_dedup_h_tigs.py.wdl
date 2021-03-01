@@ -8,6 +8,9 @@ task FcDedupHTigspy {
     fc_dedup_h_tigs_py \
       ~{ctg_id}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ctg_id: "optional arguments:"
   }

@@ -14,6 +14,9 @@ task Tcode {
       ~{if (step) then "-step" else ""} \
       ~{if (plot) then "-plot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window: "integer    [200] This is the number of nucleotide bases\\nover which the TESTCODE statistic will be\\nperformed each time. The window will then\\nslide along the sequence, covering the same\\nnumber of bases each time. (Integer 200 or\\nmore)"
     data_file: "datafile   [Etcode.dat] The default data file is\\nEtcode.dat and contains coding probabilities\\nfor each base. The probabilities are for\\nboth positional and compositional\\ninformation."

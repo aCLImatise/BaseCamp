@@ -1,17 +1,7 @@
 class: CommandLineTool
 id: trim_galore.cwl
 inputs:
-- id: in_h_slash_help
-  doc: Print this help message and exits.
-  type: boolean
-  inputBinding:
-    prefix: -h/--help
-- id: in_v_slash_version
-  doc: Print the version information and exits.
-  type: boolean
-  inputBinding:
-    prefix: -v/--version
-- id: in_q_slash_quality
+- id: in_quality
   doc: "Trim low-quality ends from reads in addition to adapter removal. For\nRRBS\
     \ samples, quality trimming will be performed first, and adapter\ntrimming is\
     \ carried in a second round. Other files are quality and adapter\ntrimmed in a\
@@ -19,24 +9,24 @@ inputs:
     \ from all qualities; compute partial sums from all indices\nto the end of the\
     \ sequence; cut sequence at the index at which the sum is\nminimal). Default Phred\
     \ score: 20."
-  type: long
+  type: long?
   inputBinding:
-    prefix: -q/--quality
+    prefix: --quality
 - id: in_phred_three_three
   doc: "Instructs Cutadapt to use ASCII+33 quality scores as Phred scores\n(Sanger/Illumina\
     \ 1.9+ encoding) for quality trimming. Default: ON."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --phred33
 - id: in_phred_six_four
   doc: "Instructs Cutadapt to use ASCII+64 quality scores as Phred scores\n(Illumina\
     \ 1.5 encoding) for quality trimming."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --phred64
 - id: in_fast_qc
   doc: Run FastQC in the default mode on the FastQ file once trimming is complete.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fastqc
 - id: in_fast_qc_args
@@ -45,10 +35,10 @@ inputs:
     \ would be:\n--fastqc_args \"--nogroup --outdir /home/\". Passing extra arguments\
     \ will\nautomatically invoke FastQC, so --fastqc does not have to be specified\n\
     separately."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fastqc_args
-- id: in_a_slash_adapter
+- id: in_adapter
   doc: "Adapter sequence to be trimmed. If not specified explicitly, Trim Galore will\n\
     try to auto-detect whether the Illumina universal, Nextera transposase or Illumina\n\
     small RNA adapter sequence was used. Also see '--illumina', '--nextera' and\n\
@@ -57,28 +47,28 @@ inputs:
     Trim Galore defaults to '--illumina' (as long as the Illumina adapter was one\
     \ of the\noptions, else '--nextera' is the default). A single base\nmay also be\
     \ given as e.g. -a A{10}, to be expanded to -a AAAAAAAAAA."
-  type: File
+  type: File?
   inputBinding:
-    prefix: -a/--adapter
-- id: in_a_two_slash_adapter_two
+    prefix: --adapter
+- id: in_adapter_two
   doc: "Optional adapter sequence to be trimmed off read 2 of paired-end files. This\n\
     option requires '--paired' to be specified as well. If the libraries to be trimmed\n\
     are smallRNA then a2 will be set to the Illumina small RNA 5' adapter automatically\n\
     (GATCGTCGGACT). A single base may also be given as e.g. -a2 A{10}, to be expanded\n\
     to -a2 AAAAAAAAAA."
-  type: long
+  type: long?
   inputBinding:
-    prefix: -a2/--adapter2
+    prefix: --adapter2
 - id: in_illumina
   doc: "Adapter sequence to be trimmed is the first 13bp of the Illumina universal\
     \ adapter\n'AGATCGGAAGAGC' instead of the default auto-detection of adapter sequence."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --illumina
 - id: in_next_era
   doc: "Adapter sequence to be trimmed is the first 12bp of the Nextera adapter\n\
     'CTGTCTCTTATA' instead of the default auto-detection of adapter sequence."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nextera
 - id: in_small_rna
@@ -88,7 +78,7 @@ inputs:
     \ value to 18bp. If the smallRNA\nlibraries are paired-end then a2 will be set\
     \ to the Illumina small RNA 5' adapter\nautomatically (GATCGTCGGACT) unless -a\
     \ 2 had been defined explicitly."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --small_rna
 - id: in_consider_already_trimmed
@@ -98,38 +88,38 @@ inputs:
     \ will be performed (technically,\nthe adapter is set to '-a X'). Quality trimming\
     \ is still performed as usual.\nDefault: NOT SELECTED (i.e. normal auto-detection\
     \ precedence rules apply)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --consider_already_trimmed
 - id: in_max_length
   doc: "Discard reads that are longer than <INT> bp after trimming. This is only advised\
     \ for\nsmallRNA sequencing to remove non-small RNA sequences."
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_length
 - id: in_stringency
   doc: "Overlap with adapter sequence required to trim a sequence. Defaults to a\n\
     very stringent setting of 1, i.e. even a single bp of overlapping sequence\nwill\
     \ be trimmed off from the 3' end of any read."
-  type: long
+  type: long?
   inputBinding:
     prefix: --stringency
 - id: in_maximum_allowed_rate
   doc: "Maximum allowed error rate (no. of errors divided by the length of the matching\n\
     region) (default: 0.1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: -e
 - id: in_gzip
   doc: "Compress the output file with GZIP. If the input files are GZIP-compressed\n\
     the output files will automatically be GZIP compressed as well. As of v0.2.8 the\n\
     compression will take place on the fly."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gzip
 - id: in_dont_gzip
   doc: Output files won't be compressed with GZIP. This option overrides --gzip.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dont_gzip
 - id: in_length
@@ -139,43 +129,43 @@ inputs:
     <INT> bp to be printed out to validated paired-end files (see option --paired).\n\
     If only one read became too short there is the possibility of keeping such\nunpaired\
     \ single-end reads (see --retain_unpaired). Default pair-cutoff: 20 bp."
-  type: long
+  type: long?
   inputBinding:
     prefix: --length
 - id: in_max_n
   doc: "The total number of Ns (as integer) a read may contain before it will be removed\
     \ altogether.\nIn a paired-end setting, either read exceeding this limit will\
     \ result in the entire\npair being removed from the trimmed output files."
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_n
 - id: in_trim_n
   doc: Removes Ns from either side of the read. This option does currently not work
     in RRBS mode.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --trim-n
-- id: in_oslash_output_dir
+- id: in_output_dir
   doc: "If specified all output will be written to this directory instead of the current\n\
     directory. If the directory doesn't exist it will be created for you."
-  type: Directory
+  type: Directory?
   inputBinding:
-    prefix: -o/--output_dir
+    prefix: --output_dir
 - id: in_no_report_file
   doc: If specified no report file will be generated.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_report_file
 - id: in_suppress_warn
   doc: If specified any output to STDOUT or STDERR will be suppressed.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --suppress_warn
 - id: in_clip_r_one
   doc: "Instructs Trim Galore to remove <int> bp from the 5' end of read 1 (or single-end\n\
     reads). This may be useful if the qualities were very poor, or if there is some\n\
     sort of unwanted bias at the 5' end. Default: OFF."
-  type: long
+  type: long?
   inputBinding:
     prefix: --clip_R1
 - id: in_clip_r_two
@@ -185,7 +175,7 @@ inputs:
     \ to remove\nthe first few bp because the end-repair reaction may introduce a\
     \ bias towards low\nmethylation. Please refer to the M-bias plot section in the\
     \ Bismark User Guide for\nsome examples. Default: OFF."
-  type: long
+  type: long?
   inputBinding:
     prefix: --clip_R2
 - id: in_three_prime_clip_r_one
@@ -193,7 +183,7 @@ inputs:
     reads) AFTER adapter/quality trimming has been performed. This may remove some\
     \ unwanted\nbias from the 3' end that is not directly related to adapter sequence\
     \ or basecall quality.\nDefault: OFF."
-  type: long
+  type: long?
   inputBinding:
     prefix: --three_prime_clip_R1
 - id: in_three_prime_clip_r_two
@@ -201,23 +191,23 @@ inputs:
     adapter/quality trimming has been performed. This may remove some unwanted bias\
     \ from\nthe 3' end that is not directly related to adapter sequence or basecall\
     \ quality.\nDefault: OFF."
-  type: long
+  type: long?
   inputBinding:
     prefix: --three_prime_clip_R2
-- id: in_two_colour_slash_next_seq
+- id: in_two_colour
   doc: "This enables the option '--nextseq-trim=3'CUTOFF' within Cutadapt, which will\
     \ set a quality\ncutoff (that is normally given with -q instead), but qualities\
     \ of G bases are ignored.\nThis trimming is in common for the NextSeq- and NovaSeq-platforms,\
     \ where basecalls without\nany signal are called as high-quality G bases. This\
     \ is mutually exlusive with '-q INT'."
-  type: long
+  type: long?
   inputBinding:
-    prefix: --2colour/--nextseq
+    prefix: --2colour
 - id: in_path_to_cut_adapt
   doc: "</path/to/cutadapt>     You may use this option to specify a path to the Cutadapt\
     \ executable,\ne.g. /my/home/cutadapt-1.7.1/bin/cutadapt. Else it is assumed that\
     \ Cutadapt is in\nthe PATH."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --path_to_cutadapt
 - id: in_basename
@@ -226,10 +216,10 @@ inputs:
     \ or\nPREFERRED_NAME_val_1.fq(.gz) and PREFERRED_NAME_val_2.fq(.gz) for paired-end\
     \ data. --basename\nonly works when 1 file (single-end) or 2 files (paired-end)\
     \ are specified, but not for longer lists."
-  type: File
+  type: File?
   inputBinding:
     prefix: --basename
-- id: in_j_slash_cores
+- id: in_cores
   doc: "Number of cores to be used for trimming [default: 1]. For Cutadapt to work\
     \ with multiple cores, it\nrequires Python 3 as well as parallel gzip (pigz) installed\
     \ on the system. The version of Python used\nis detected from the shebang line\
@@ -249,16 +239,16 @@ inputs:
     \ out) step.\n--cores 4 would then be: 4 (read) + 4 (write) + 4 (Cutadapt) + 2\
     \ (extra Cutadapt) +     1 (Trim Galore) = 15.\nIt seems that --cores 4 could\
     \ be a sweet spot, anything above has diminishing returns."
-  type: long
+  type: long?
   inputBinding:
-    prefix: -j/--cores
+    prefix: --cores
 - id: in_hard_trim_five
   doc: "Instead of performing adapter-/quality trimming, this option will simply hard-trim\
     \ sequences\nto <int> bp at the 5'-end. Once hard-trimming of files is complete,\
     \ Trim Galore will exit.\nHard-trimmed output files will end in .<int>_5prime.fq(.gz).\
     \ Here is an example:\nbefore:         CCTAAGGAAACAAGTACACTCCACACATGCATAAAGGAAATCAAATGTTATTTTTAAGAAAATGGAAAAT\n\
     --hardtrim5 20: CCTAAGGAAACAAGTACACT"
-  type: long
+  type: long?
   inputBinding:
     prefix: --hardtrim5
 - id: in_hard_trim_three
@@ -267,7 +257,7 @@ inputs:
     \ Trim Galore will exit.\nHard-trimmed output files will end in .<int>_3prime.fq(.gz).\
     \ Here is an example:\nbefore:         CCTAAGGAAACAAGTACACTCCACACATGCATAAAGGAAATCAAATGTTATTTTTAAGAAAATGGAAAAT\n\
     --hardtrim3 20:                                                   TTTTTAAGAAAATGGAAAAT"
-  type: long
+  type: long?
   inputBinding:
     prefix: --hardtrim3
 - id: in_clock
@@ -296,7 +286,7 @@ inputs:
     \ '--dual_index' mode (see here: https://github.com/FelixKrueger/Umi-Grinder).\
     \ UmiBam recognises\nthe UMIs within this pattern: R1:(ATCTAGTT):R2:(CAATTTTG):\
     \ as (UMI R1) and (UMI R2)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --clock
 - id: in_polya
@@ -323,7 +313,7 @@ inputs:
     \ and Illumina adapter contamination, 2) find and remove PolyA contamination.\n\
     Finally, if desired, 3) will specifically find PolyA trimmed sequences to a specific\
     \ FastQ file of your choice."
-  type: File
+  type: File?
   inputBinding:
     prefix: --polyA
 - id: in_rrbs
@@ -336,7 +326,7 @@ inputs:
     cytosine positions close to the 3' MspI site in sequenced fragments.\nThis option\
     \ is not recommended for users of the NuGEN ovation RRBS System 1-16\nkit (see\
     \ below)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rrbs
 - id: in_non_directional
@@ -346,7 +336,7 @@ inputs:
     \ positions that were filled-in\nduring the end-repair step. '--non_directional'\
     \ requires '--rrbs' to\nbe specified as well. Note that this option does not set\
     \ '--clip_r2 2' in\npaired-end mode."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --non_directional
 - id: in_keep
@@ -354,7 +344,7 @@ inputs:
     \ temporary file is being deleted after adapter trimming. Only has\nan effect\
     \ for RRBS samples since other FastQ files are not trimmed\nfor poor qualities\
     \ separately."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep
 - id: in_paired
@@ -367,10 +357,10 @@ inputs:
     \ order\nof FastQ files which is required by many aligners.\nTrim Galore! expects\
     \ paired-end files to be supplied in a pairwise fashion, e.g.\nfile1_1.fq file1_2.fq\
     \ SRR2_1.fq.gz SRR2_2.fq.gz ... ."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --paired
-- id: in_t_slash_trim_one
+- id: in_trim_one
   doc: "Trims 1 bp off every read from its 3' end. This may be needed for FastQ files\
     \ that\nare to be aligned as paired-end data with Bowtie. This is because Bowtie\
     \ (1) regards\nalignments like this:\nR1 --------------------------->     or this:\
@@ -378,41 +368,41 @@ inputs:
     \            <-----------------  R2\nas invalid (whenever a start/end coordinate\
     \ is contained within the other read).\nNOTE: If you are planning to use Bowtie2,\
     \ BWA etc. you don't need to specify this option."
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -t/--trim1
+    prefix: --trim1
 - id: in_retain_unpaired
   doc: "If only one of the two paired-end reads became too short, the longer\nread\
     \ will be written to either '.unpaired_1.fq' or '.unpaired_2.fq'\noutput files.\
     \ The length cutoff for unpaired single-end reads is\ngoverned by the parameters\
     \ -r1/--length_1 and -r2/--length_2. Default: OFF."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --retain_unpaired
-- id: in_r_one_slash_length_one
+- id: in_length_one
   doc: "Unpaired single-end read length cutoff needed for read 1 to be written to\n\
     '.unpaired_1.fq' output file. These reads may be mapped in single-end mode.\n\
     Default: 35 bp."
-  type: long
+  type: long?
   inputBinding:
-    prefix: -r1/--length_1
-- id: in_r_two_slash_length_two
+    prefix: --length_1
+- id: in_length_two
   doc: "Unpaired single-end read length cutoff needed for read 2 to be written to\n\
     '.unpaired_2.fq' output file. These reads may be mapped in single-end mode.\n\
     Default: 35 bp."
-  type: long
+  type: long?
   inputBinding:
-    prefix: -r2/--length_2
+    prefix: --length_2
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_oslash_output_dir
+- id: out_output_dir
   doc: "If specified all output will be written to this directory instead of the current\n\
     directory. If the directory doesn't exist it will be created for you."
-  type: Directory
+  type: Directory?
   outputBinding:
-    glob: $(inputs.in_oslash_output_dir)
+    glob: $(inputs.in_output_dir)
 - id: out_polya
   doc: "This is a new, still experimental, trimming mode to identify and remove poly-A\
     \ tails from sequences.\nWhen --polyA is selected, Trim Galore attempts to identify\
@@ -437,9 +427,10 @@ outputs:
     \ and Illumina adapter contamination, 2) find and remove PolyA contamination.\n\
     Finally, if desired, 3) will specifically find PolyA trimmed sequences to a specific\
     \ FastQ file of your choice."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_polya)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - trim_galore

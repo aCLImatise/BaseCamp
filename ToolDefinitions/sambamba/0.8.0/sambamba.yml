@@ -1,0 +1,1080 @@
+&id001 !Command
+command:
+- sambamba
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: quiet mode (do not show banner)
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - sambamba
+  - view
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: sambamba-view
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: input.bam | input.sam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --filter
+    description: set custom filter for alignments
+    args: !SimpleFlagArg
+      name: FILTER
+  - !Flag
+    optional: true
+    synonyms:
+    - --num-filter
+    description: "filter flag bits; 'i1/i2' corresponds to -f i1 -F i2 samtools arguments;\n\
+      either of the numbers can be omitted"
+    args: !SimpleFlagArg
+      name: NUMFILTER
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --format
+    description: "|bam|json|unpack\nspecify which format to use for output (default\
+      \ is SAM);\nunpack streams unpacked BAM"
+    args: !SimpleFlagArg
+      name: sam
+  - !Flag
+    optional: true
+    synonyms:
+    - -H
+    - --header
+    description: output only header to stdout (if format=bam, the header is printed
+      as SAM)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    - --reference-info
+    description: output to stdout only reference names and lengths in JSON
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -L
+    - --regions
+    description: output only reads overlapping one of regions from the BED file
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --count
+    description: output to stdout only count of matching records, hHI are ignored
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --valid
+    description: output only valid alignments
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    - --sam-input
+    description: specify that input is in SAM format
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    - --ref-filename
+    description: specify reference for writing (NA)
+    args: !SimpleFlagArg
+      name: FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --show-progress
+    description: show progressbar in STDERR (works only for BAM files with no regions
+      specified)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --compression-level
+    description: specify compression level (from 0 to 9, works only for BAM output)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-filename
+    description: specify output filename
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --nthreads
+    description: maximum number of threads to use
+    args: !SimpleFlagArg
+      name: NTHREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --subsample
+    description: subsample reads (read pairs)
+    args: !SimpleFlagArg
+      name: FRACTION
+  - !Flag
+    optional: true
+    synonyms:
+    - --subsampling-seed
+    description: "set seed for subsampling\n"
+    args: !SimpleFlagArg
+      name: SEED
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --with-header
+    description: print header before reads (always done for BAM output)
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n\
+    \    LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler\
+    \ (0.17.6)\n\nUsage: sambamba-view [options] <input.bam | input.sam> [region1\
+    \ [...]]\n\nOptions: -F, --filter=FILTER\n                    set custom filter\
+    \ for alignments\n         --num-filter=NUMFILTER\n                    filter\
+    \ flag bits; 'i1/i2' corresponds to -f i1 -F i2 samtools arguments;\n        \
+    \            either of the numbers can be omitted\n         -f, --format=sam|bam|json|unpack\n\
+    \                    specify which format to use for output (default is SAM);\n\
+    \                    unpack streams unpacked BAM\n         -h, --with-header\n\
+    \                    print header before reads (always done for BAM output)\n\
+    \         -H, --header\n                    output only header to stdout (if format=bam,\
+    \ the header is printed as SAM)\n         -I, --reference-info\n             \
+    \       output to stdout only reference names and lengths in JSON\n         -L,\
+    \ --regions=FILENAME\n                    output only reads overlapping one of\
+    \ regions from the BED file\n         -c, --count\n                    output\
+    \ to stdout only count of matching records, hHI are ignored\n         -v, --valid\n\
+    \                    output only valid alignments\n         -S, --sam-input\n\
+    \                    specify that input is in SAM format\n         -T, --ref-filename=FASTA\n\
+    \                    specify reference for writing (NA)\n         -p, --show-progress\n\
+    \                    show progressbar in STDERR (works only for BAM files with\
+    \ no regions specified)\n         -l, --compression-level\n                  \
+    \  specify compression level (from 0 to 9, works only for BAM output)\n      \
+    \   -o, --output-filename\n                    specify output filename\n     \
+    \    -t, --nthreads=NTHREADS\n                    maximum number of threads to\
+    \ use\n         -s, --subsample=FRACTION\n                    subsample reads\
+    \ (read pairs)\n         --subsampling-seed=SEED\n                    set seed\
+    \ for subsampling\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0
+- !Command
+  command:
+  - sambamba
+  - sort
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: sambamba-sort
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: input.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --memory-limit
+    description: approximate total memory limit for all threads (by default 2GB)
+    args: !SimpleFlagArg
+      name: LIMIT
+  - !Flag
+    optional: true
+    synonyms:
+    - --tmpdir
+    description: directory for storing intermediate files; default is system directory
+      for temporary files
+    args: !SimpleFlagArg
+      name: TMPDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out
+    description: output file name; if not provided, the result is written to a file
+      with .sorted.bam extension
+    args: !SimpleFlagArg
+      name: OUTPUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --sort-by-name
+    description: sort by read name instead of coordinate (lexicographical order)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sort-picard
+    description: sort by query name like in picard
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -N
+    - --natural-sort
+    description: sort by read name instead of coordinate (so-called 'natural' sort
+      as in samtools)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -M
+    - --match-mates
+    description: pull mates of the same alignment together when sorting by read name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --compression-level
+    description: level of compression for sorted BAM, from 0 to 9
+    args: !SimpleFlagArg
+      name: COMPRESSION_LEVEL
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    - --uncompressed-chunks
+    description: write sorted chunks as uncompressed BAM (default is writing with
+      compression level 1), that might be faster in some cases but uses more disk
+      space
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --show-progress
+    description: show progressbar in STDERR
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --nthreads
+    description: use specified number of threads
+    args: !SimpleFlagArg
+      name: NTHREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --filter
+    description: "keep only reads that satisfy FILTER\n"
+    args: !SimpleFlagArg
+      name: FILTER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n\
+    \    LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler\
+    \ (0.17.6)\n\nUsage: sambamba-sort [options] <input.bam>\n\nOptions: -m, --memory-limit=LIMIT\n\
+    \               approximate total memory limit for all threads (by default 2GB)\n\
+    \         --tmpdir=TMPDIR\n               directory for storing intermediate files;\
+    \ default is system directory for temporary files\n         -o, --out=OUTPUTFILE\n\
+    \               output file name; if not provided, the result is written to a\
+    \ file with .sorted.bam extension\n         -n, --sort-by-name\n             \
+    \  sort by read name instead of coordinate (lexicographical order)\n         --sort-picard\n\
+    \               sort by query name like in picard\n         -N, --natural-sort\n\
+    \               sort by read name instead of coordinate (so-called 'natural' sort\
+    \ as in samtools)\n         -M, --match-mates\n               pull mates of the\
+    \ same alignment together when sorting by read name\n         -l, --compression-level=COMPRESSION_LEVEL\n\
+    \               level of compression for sorted BAM, from 0 to 9\n         -u,\
+    \ --uncompressed-chunks\n               write sorted chunks as uncompressed BAM\
+    \ (default is writing with compression level 1), that might be faster in some\
+    \ cases but uses more disk space\n         -p, --show-progress\n             \
+    \  show progressbar in STDERR\n         -t, --nthreads=NTHREADS\n            \
+    \   use specified number of threads\n         -F, --filter=FILTER\n          \
+    \     keep only reads that satisfy FILTER\n"
+  generated_using: &id003 []
+  docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0
+- !Command
+  command:
+  - sambamba
+  - index
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: sambamba-index
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: input.bam|input.fasta
+    description: ''
+  - !Positional
+    optional: true
+    position: 2
+    name: output_file
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --nthreads
+    description: number of threads to use for decompression
+    args: !SimpleFlagArg
+      name: NTHREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --show-progress
+    description: show progress bar in STDERR
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --check-bins
+    description: check that bins are set correctly
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --fasta-input
+    description: "specify that input is in FASTA format\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n\
+    \    LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler\
+    \ (0.17.6)\n\nUsage: sambamba-index [OPTIONS] <input.bam|input.fasta> [output_file]\n\
+    \n\tCreates index for a BAM, or FASTA file\n\nOptions: -t, --nthreads=NTHREADS\n\
+    \               number of threads to use for decompression\n         -p, --show-progress\n\
+    \               show progress bar in STDERR\n         -c, --check-bins\n     \
+    \          check that bins are set correctly\n         -F, --fasta-input\n   \
+    \            specify that input is in FASTA format\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0
+- !Command
+  command:
+  - sambamba
+  - slice
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: sambamba-slice
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: input.bam|input.fasta
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-filename
+    description: output BAM or FASTA filename
+    args: !SimpleFlagArg
+      name: OUTPUT_FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -L
+    - --regions
+    description: output only reads overlapping one of regions from the BED file
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --fasta-input
+    description: "specify that input is in FASTA format\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n\
+    \    LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler\
+    \ (0.17.6)\n\nUsage: sambamba-slice [options] <input.bam|input.fasta> [region1\
+    \ [...]]\n\n       Fast copy of a region from indexed BAM or FASTA file to a new\
+    \ file\n\n       Regions are given in standard form ref:beg-end.\n       FASTA\
+    \ index file name must match FASTA file name, e.g. <input.fai>\n       In addition,\
+    \ region '*' denotes reads with no reference.\n       Output is to STDOUT unless\
+    \ output filename is specified.\n\nOPTIONS: -o, --output-filename=OUTPUT_FILENAME\n\
+    \            output BAM or FASTA filename\n         -L, --regions=FILENAME\n \
+    \           output only reads overlapping one of regions from the BED file\n \
+    \        -F, --fasta-input\n               specify that input is in FASTA format\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0
+- !Command
+  command:
+  - sambamba
+  - validate
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input.bam
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: sambamba validate [options] <input.bam> [<input2.bam> [...]]\n\
+    \n       Validates a bam file.\n\nOptions:\n         (...)\n\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0
+- !Command
+  command:
+  - sambamba
+  - mpileup
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: sambamba-pileup
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: input.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -L
+    - --regions
+    description: "provide BED file with regions\n(no need to duplicate it in samtools\
+      \ args);\nall input files must be indexed"
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-filename
+    description: specify output filename
+    args: !SimpleFlagArg
+      name: STDOUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --tmpdir
+    description: directory for temporary files
+    args: !SimpleFlagArg
+      name: TMPDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --nthreads
+    description: maximum number of threads to use
+    args: !SimpleFlagArg
+      name: NTHREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --buffer-size
+    description: chunk size (in bytes)
+    args: !SimpleFlagArg
+      name: '64_000_000'
+  - !Flag
+    optional: true
+    synonyms:
+    - -B
+    - --output-buffer-size
+    description: output buffer size (in bytes)
+    args: !SimpleFlagArg
+      name: '512_000_000'
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n\
+    \    LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler\
+    \ (0.17.6)\n\nusage: sambamba-pileup [options] input.bam [input2.bam [...]]\n\
+    \                       [--samtools <samtools mpileup args>]\n               \
+    \        [--bcftools <bcftools call args>]\n\nThis subcommand relies on external\
+    \ tools and acts as a multi-core\nimplementation of samtools and bcftools.\n\n\
+    Therefore, the following tools should be present in $PATH:\n    * samtools\n \
+    \   * bcftools (when used)\n\nIf --samtools is skipped, samtools mpileup is called\
+    \ with default arguments\nIf --bcftools is used without parameters, samtools is\
+    \ called with\n     switch '-gu' and bcftools is called as 'bcftools view -'\n\
+    If --bcftools is skipped, bcftools is not called\n\nSambamba splits input BAM\
+    \ files into chunks and feeds them\nto samtools mpileup and, optionally, bcftools\
+    \ in parallel.\nThe chunks are slightly overlapping so that variant calling\n\
+    should not be impacted by these manipulations. The obtained results\nfrom the\
+    \ multiple processes are combined as ordered output.\n\nSambamba options:\n  \
+    \       -L, --regions=FILENAME\n                    provide BED file with regions\n\
+    \                    (no need to duplicate it in samtools args);\n           \
+    \         all input files must be indexed\n         -o, --output-filename=<STDOUT>\n\
+    \                    specify output filename\n         --tmpdir=TMPDIR\n     \
+    \               directory for temporary files\n         -t, --nthreads=NTHREADS\n\
+    \                    maximum number of threads to use\n         -b, --buffer-size=64_000_000\n\
+    \                    chunk size (in bytes)\n         -B, --output-buffer-size=512_000_000\n\
+    \                    output buffer size (in bytes)\n\nSambamba paths:\n\nsambamba-pileup:\
+    \ failed to locate samtools executable in PATH\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0
+- !Command
+  command:
+  - sambamba
+  - markdup
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: sambamba-markdup
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: input.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --remove-duplicates
+    description: remove duplicates instead of just marking them
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --nthreads
+    description: number of threads to use
+    args: !SimpleFlagArg
+      name: NTHREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --compression-level
+    description: specify compression level of the resulting file (from 0 to 9)
+    args: !SimpleFlagArg
+      name: N
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --show-progress
+    description: show progressbar in STDERR
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --tmpdir
+    description: specify directory for temporary files
+    args: !SimpleFlagArg
+      name: TMPDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --hash-table-size
+    description: "size of hash table for finding read pairs (default is 262144 reads);\n\
+      will be rounded down to the nearest power of two;\nshould be > (average coverage)\
+      \ * (insert size) for good performance"
+    args: !SimpleFlagArg
+      name: HASH_TABLE_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --overflow-list-size
+    description: "size of the overflow list where reads, thrown from the hash table,\n\
+      get a second chance to meet their pairs (default is 200000 reads);\nincreasing\
+      \ the size reduces the number of temporary files created"
+    args: !SimpleFlagArg
+      name: OVERFLOW_LIST_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --sort-buffer-size
+    description: "total amount of memory (in *megabytes*) used for sorting purposes;\n\
+      the default is 2048, increasing it will reduce the number of created\ntemporary\
+      \ files and the time spent in the main thread"
+    args: !SimpleFlagArg
+      name: SORT_BUFFER_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --io-buffer-size
+    description: "two buffers of BUFFER_SIZE *megabytes* each are used\nfor reading\
+      \ and writing BAM during the second pass (default is 128)\n"
+    args: !SimpleFlagArg
+      name: BUFFER_SIZE
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n\
+    \    LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler\
+    \ (0.17.6)\n\nUsage: sambamba-markdup [options] <input.bam> [<input2.bam> [...]]\
+    \ <output.bam>\n       By default, marks the duplicates without removing them\n\
+    \nOptions: -r, --remove-duplicates\n                    remove duplicates instead\
+    \ of just marking them\n         -t, --nthreads=NTHREADS\n                   \
+    \ number of threads to use\n         -l, --compression-level=N\n             \
+    \       specify compression level of the resulting file (from 0 to 9)\n      \
+    \   -p, --show-progress\n                    show progressbar in STDERR\n    \
+    \     --tmpdir=TMPDIR\n                    specify directory for temporary files\n\
+    \nPerformance tweaking parameters\n         --hash-table-size=HASH_TABLE_SIZE\n\
+    \                    size of hash table for finding read pairs (default is 262144\
+    \ reads);\n                    will be rounded down to the nearest power of two;\n\
+    \                    should be > (average coverage) * (insert size) for good performance\n\
+    \         --overflow-list-size=OVERFLOW_LIST_SIZE\n                    size of\
+    \ the overflow list where reads, thrown from the hash table,\n               \
+    \     get a second chance to meet their pairs (default is 200000 reads);\n   \
+    \                 increasing the size reduces the number of temporary files created\n\
+    \         --sort-buffer-size=SORT_BUFFER_SIZE\n                    total amount\
+    \ of memory (in *megabytes*) used for sorting purposes;\n                    the\
+    \ default is 2048, increasing it will reduce the number of created\n         \
+    \           temporary files and the time spent in the main thread\n         --io-buffer-size=BUFFER_SIZE\n\
+    \                    two buffers of BUFFER_SIZE *megabytes* each are used\n  \
+    \                  for reading and writing BAM during the second pass (default\
+    \ is 128)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0
+- !Command
+  command:
+  - sambamba
+  - depth
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: sambamba-depth
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: region|window|base
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: input.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --filter
+    description: "set custom filter for alignments; the default value is\n'mapping_quality\
+      \ > 0 and not duplicate and not failed_quality_control'"
+    args: !SimpleFlagArg
+      name: FILTER
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-file
+    description: output filename (by default /dev/stdout)
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --nthreads
+    description: maximum number of threads to use
+    args: !SimpleFlagArg
+      name: NTHREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --min-coverage
+    description: 'minimum mean coverage for output (default: 0 for region/window,
+      1 for base)'
+    args: !SimpleFlagArg
+      name: MINCOVERAGE
+  - !Flag
+    optional: true
+    synonyms:
+    - -C
+    - --max-coverage
+    description: maximum mean coverage for output
+    args: !SimpleFlagArg
+      name: MAXCOVERAGE
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --min-base-quality
+    description: don't count bases with lower base quality
+    args: !SimpleFlagArg
+      name: QUAL
+  - !Flag
+    optional: true
+    synonyms:
+    - --combined
+    description: output combined statistics for all samples
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --annotate
+    description: "add additional column of y/n instead of\nskipping records not satisfying\
+      \ the criteria"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --fix-mate-overlaps
+    description: detect overlaps of mate reads and handle them on per-base basis
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -L
+    - --regions
+    description: "|REGION\nlist or regions of interest or a single region in form\
+      \ chr:beg-end (optional)"
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -z
+    - --report-zero-coverage
+    description: "(DEPRECATED, use --min-coverage=0 instead)\ndon't skip zero coverage\
+      \ bases"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    - --cov-threshold
+    description: "multiple thresholds can be provided,\nfor each one an extra column\
+      \ will be added,\nthe percentage of bases in the region\nwhere coverage is more\
+      \ than this value"
+    args: !SimpleFlagArg
+      name: COVTHRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --window-size
+    description: breadth of the window, in bp (required)
+    args: !SimpleFlagArg
+      name: WINDOWSIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --overlap
+    description: overlap of successive windows, in bp (default is 0)
+    args: !SimpleFlagArg
+      name: OVERLAP
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n\
+    \    LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler\
+    \ (0.17.6)\n\nUsage: sambamba-depth region|window|base [options] input.bam  [input2.bam\
+    \ [...]]\n\n          All BAM files must be coordinate-sorted and indexed.\n\n\
+    \          The tool has three modes: base, region, and window,\n          each\
+    \ name means per which unit to print the statistics.\n\nCommon options:\n    \
+    \     -F, --filter=FILTER\n                    set custom filter for alignments;\
+    \ the default value is\n                    'mapping_quality > 0 and not duplicate\
+    \ and not failed_quality_control'\n         -o, --output-file=FILENAME\n     \
+    \               output filename (by default /dev/stdout)\n         -t, --nthreads=NTHREADS\n\
+    \                    maximum number of threads to use\n         -c, --min-coverage=MINCOVERAGE\n\
+    \                    minimum mean coverage for output (default: 0 for region/window,\
+    \ 1 for base)\n         -C, --max-coverage=MAXCOVERAGE\n                    maximum\
+    \ mean coverage for output\n         -q, --min-base-quality=QUAL\n           \
+    \         don't count bases with lower base quality\n         --combined\n   \
+    \                 output combined statistics for all samples\n         -a, --annotate\n\
+    \                    add additional column of y/n instead of\n               \
+    \     skipping records not satisfying the criteria\n         -m, --fix-mate-overlaps\n\
+    \                    detect overlaps of mate reads and handle them on per-base\
+    \ basis\nbase subcommand options:\n         -L, --regions=FILENAME|REGION\n  \
+    \                  list or regions of interest or a single region in form chr:beg-end\
+    \ (optional)\n         -z, --report-zero-coverage (DEPRECATED, use --min-coverage=0\
+    \ instead)\n                    don't skip zero coverage bases\nregion subcommand\
+    \ options:\n         -L, --regions=FILENAME|REGION\n                    list or\
+    \ regions of interest or a single region in form chr:beg-end (required)\n    \
+    \     -T, --cov-threshold=COVTHRESHOLD\n                    multiple thresholds\
+    \ can be provided,\n                    for each one an extra column will be added,\n\
+    \                    the percentage of bases in the region\n                 \
+    \   where coverage is more than this value\nwindow subcommand options:\n     \
+    \    -w, --window-size=WINDOWSIZE\n                    breadth of the window,\
+    \ in bp (required)\n         --overlap=OVERLAP\n                    overlap of\
+    \ successive windows, in bp (default is 0)\n         -T, --cov-threshold=COVTHRESHOLD\n\
+    \                    same meaning as in 'region' subcommand\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0
+- !Command
+  command:
+  - sambamba
+  - merge
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: sambamba-merge
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: output.bam
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: input1.bam
+    description: ''
+  - !Positional
+    optional: false
+    position: 3
+    name: input2.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --nthreads
+    description: number of threads to use for compression/decompression
+    args: !SimpleFlagArg
+      name: NTHREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --compression-level
+    description: level of compression for merged BAM file, number from 0 to 9
+    args: !SimpleFlagArg
+      name: COMPRESSION_LEVEL
+  - !Flag
+    optional: true
+    synonyms:
+    - -H
+    - --header
+    description: output merged header to stdout in SAM format, other options are ignored;
+      mainly for debug purposes
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --show-progress
+    description: show progress bar in STDERR
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --filter
+    description: "keep only reads that satisfy FILTER\n"
+    args: !SimpleFlagArg
+      name: FILTER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n\
+    \    LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler\
+    \ (0.17.6)\n\nUsage: sambamba-merge [options] <output.bam> <input1.bam> <input2.bam>\
+    \ [...]\n\nOptions: -t, --nthreads=NTHREADS\n               number of threads\
+    \ to use for compression/decompression\n         -l, --compression-level=COMPRESSION_LEVEL\n\
+    \               level of compression for merged BAM file, number from 0 to 9\n\
+    \         -H, --header\n               output merged header to stdout in SAM format,\
+    \ other options are ignored; mainly for debug purposes\n         -p, --show-progress\n\
+    \               show progress bar in STDERR\n         -F, --filter=FILTER\n  \
+    \             keep only reads that satisfy FILTER\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0
+- !Command
+  command:
+  - sambamba
+  - subsample
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --type
+    description: '[fasthash]   Algorithm for subsampling (fasthash, default is none)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-cov
+    description: '[depth]   Maximum coverage (approx)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Set output file (default stdout)
+    args: !SimpleFlagArg
+      name: fn
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --remove
+    description: Remove over sampled reads from output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --logging
+    description: Set logging to debug|info|warning|critical -nyi
+    args: !SimpleFlagArg
+      name: type
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: sambamba subsample [options] <input.bam> [<input2.bam> [...]]\n\
+    \n       Subsample a bam file.\n\nOptions:\n\n         --type [fasthash]   Algorithm\
+    \ for subsampling (fasthash, default is none)\n         --max-cov [depth]   Maximum\
+    \ coverage (approx)\n         -o, --output fn     Set output file (default stdout)\n\
+    \         -r, --remove        Remove over sampled reads from output\n\n      \
+    \   --logging type   Set logging to debug|info|warning|critical -nyi\n\nExamples:\n\
+    \n       sambamba subsample --type=fasthash input.bam -ooutput.bam\n\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0
+- !Command
+  command:
+  - sambamba
+  - flagstat
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: sambamba-flagstat
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: input.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --nthreads
+    description: use NTHREADS for decompression
+    args: !SimpleFlagArg
+      name: NTHREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --show-progress
+    description: show progressbar in STDERR
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --tabular
+    description: "output in csv format\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n\
+    \    LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler\
+    \ (0.17.6)\n\nUsage: sambamba-flagstat [options] <input.bam>\n\nOPTIONS: -t, --nthreads=NTHREADS\n\
+    \            use NTHREADS for decompression\n         -p, --show-progress\n  \
+    \          show progressbar in STDERR\n         -b, --tabular\n            output\
+    \ in csv format\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n  \
+  \  LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler (0.17.6)\n\
+  \n\nUsage: sambamba [command] [args...]\n\n  Available commands:\n\n    view   \
+  \     view contents and convert from one format\n                to another (SAM/BAM/JSON/UNPACK)\n\
+  \    index       build index (BAI)\n    merge       merge files (BAM)\n    sort\
+  \        sort file (BAM)\n    slice       slice file (BAM using BED)\n    markdup\
+  \     mark or remove duplicates (BAM)\n    subsample   subsample (BAM)\n    flagstat\
+  \    output statistics (BAM)\n    depth       output statistics (BAM)\n    validate\
+  \    simple validator (BAM)\n\n  No longer recommended:\n\n    mpileup     parallel\
+  \ execution of samtools (BAM)\n\nTo get help on a particular command, call it without\
+  \ args.\n\nGlobal options\n\n    -q          quiet mode (do not show banner)\n\n\
+  For bug reports and feature requests see\n\n       https://github.com/biod/\n\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0

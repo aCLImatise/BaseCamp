@@ -18,6 +18,9 @@ task BedIntersect {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_two: "Second input BED file."
     mode: "Output mode: intersect of both files (intersect), original entry of file 1 (in) or original entry of file 2 (in2).\\nDefault value: 'intersect'\\nValid: 'intersect,in,in2'"

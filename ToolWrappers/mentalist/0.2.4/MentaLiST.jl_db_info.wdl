@@ -8,6 +8,9 @@ task MentaLiSTjlDbInfo {
     MentaLiST_jl db_info \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "MentaLiST kmer database"
   }

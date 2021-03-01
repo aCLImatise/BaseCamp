@@ -16,6 +16,9 @@ task Mhcflurryclusterworkerentrypoint {
       ~{cluster} \
       ~{workers}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     entry: ""
     point: ""

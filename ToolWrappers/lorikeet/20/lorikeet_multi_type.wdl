@@ -2,11 +2,11 @@ version 1.0
 
 task LorikeetMultitype {
   input {
-    Directory? _input_valueinput
-    String? _output_valueoutput
-    String? _threshold_valueminimum
-    Boolean? _recursivesearch_input
-    File? _pattern_valuefile
+    Directory? input_directory_contains
+    String? output_prefix
+    String? threshold
+    Boolean? recursive
+    File? pattern
     String? jar
     String java
     String multi_typing
@@ -15,19 +15,22 @@ task LorikeetMultitype {
     lorikeet multi_type \
       ~{java} \
       ~{multi_typing} \
-      ~{if defined(_input_valueinput) then ("-i " +  '"' + _input_valueinput + '"') else ""} \
-      ~{if defined(_output_valueoutput) then ("-o " +  '"' + _output_valueoutput + '"') else ""} \
-      ~{if defined(_threshold_valueminimum) then ("-t " +  '"' + _threshold_valueminimum + '"') else ""} \
-      ~{if (_recursivesearch_input) then "-r" else ""} \
-      ~{if defined(_pattern_valuefile) then ("-p " +  '"' + _pattern_valuefile + '"') else ""} \
+      ~{if defined(input_directory_contains) then ("--input " +  '"' + input_directory_contains + '"') else ""} \
+      ~{if defined(output_prefix) then ("--output " +  '"' + output_prefix + '"') else ""} \
+      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
+      ~{if (recursive) then "--recursive" else ""} \
+      ~{if defined(pattern) then ("--pattern " +  '"' + pattern + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _input_valueinput: "| --input <value>\\nInput directory that contains all spoligotype files. You can specify multiple -i arguments"
-    _output_valueoutput: "| --output <value>\\nOutput prefix"
-    _threshold_valueminimum: "| --threshold <value>\\nMinimum threshold"
-    _recursivesearch_input: "| --recursive\\nSearch input directories recursively [Default=true]"
-    _pattern_valuefile: "| --pattern <value>\\nFile name pattern for the input files. [Default=\\\".*.spoligotype]\\\"\\n"
+    input_directory_contains: "Input directory that contains all spoligotype files. You can specify multiple -i arguments"
+    output_prefix: "Output prefix"
+    threshold: "Minimum threshold"
+    recursive: "Search input directories recursively [Default=true]"
+    pattern: "File name pattern for the input files. [Default=\\\".*.spoligotype]\\\"\\n"
     jar: ""
     java: ""
     multi_typing: ""

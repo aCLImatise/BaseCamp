@@ -3,7 +3,7 @@ id: obtautomer.cwl
 inputs:
 - id: in_canonical_tautomer_only
   doc: ': Canonical tautomer only'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_filename
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - obtautomer

@@ -35,7 +35,7 @@ task GmvalueutlContig {
     String match
     String overlap
     String threads
-    File file
+    File var_file
     Int length
     String var_output
     String to
@@ -77,7 +77,7 @@ task GmvalueutlContig {
       ~{match} \
       ~{overlap} \
       ~{threads} \
-      ~{file} \
+      ~{var_file} \
       ~{length} \
       ~{var_output} \
       ~{to} \
@@ -108,6 +108,9 @@ task GmvalueutlContig {
       ~{if defined(thread) then ("--thread " +  '"' + thread + '"') else ""} \
       ~{if defined(var_11) then ("--help " +  '"' + var_11 + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query: "input contig fasta file (e.g., contig1.fa)"
     ref: "input reference file (e.g., ref.fa)"
@@ -142,7 +145,7 @@ task GmvalueutlContig {
     match: ""
     overlap: ""
     threads: ""
-    file: ""
+    var_file: ""
     length: ""
     var_output: ""
     to: ""

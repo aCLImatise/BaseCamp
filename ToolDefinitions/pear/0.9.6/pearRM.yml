@@ -3,113 +3,117 @@ command:
 - pearRM
 positional:
 - !Positional
-  description: 'assembled  sequences  may be arbitrary short. (default:'
+  optional: false
   position: 1
   name: and
-  optional: false
+  description: 'assembled  sequences  may be arbitrary short. (default:'
 - !Positional
-  description: part  of  a  read.  If  the  quality  scores of two
+  optional: false
   position: 0
   name: quality
-  optional: false
+  description: part  of  a  read.  If  the  quality  scores of two
 - !Positional
-  description: bases  are  strictly  less  than  the specified
+  optional: false
   position: 1
   name: consecutive
-  optional: false
+  description: bases  are  strictly  less  than  the specified
 - !Positional
-  description: by  one  of  the  letters  K,  M,  or  G  denoting
+  optional: false
   position: 0
   name: followed
-  optional: false
+  description: by  one  of  the  letters  K,  M,  or  G  denoting
 - !Positional
-  description: out  of which none is degenerate, set the merged base
+  optional: false
   position: 0
   name: bases
-  optional: false
+  description: out  of which none is degenerate, set the merged base
 named:
 - !Flag
-  description: <str>     Forward paired-end FASTQ file.
+  optional: true
   synonyms:
   - -f
   - --forward-fastq
+  description: <str>     Forward paired-end FASTQ file.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <str>     Reverse paired-end FASTQ file.
+  optional: true
   synonyms:
   - -r
   - --reverse-fastq
+  description: <str>     Reverse paired-end FASTQ file.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <str>     Output filename.
+  optional: true
   synonyms:
   - -o
   - --output
+  description: <str>     Output filename.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --p-value
   description: "<float>   Specify  a p-value for the statistical test. If the computed\n\
     p-value of a possible assembly exceeds the specified p-value\nthen  paired-end\
     \  read  will not be assembled. Valid options\nare: 0.0001, 0.001, 0.01, 0.05\
     \ and 1.0. Setting 1.0 disables\nthe test. (default: 0.01)"
-  synonyms:
-  - -p
-  - --p-value
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --min-overlap
   description: "<int>     Specify the minimum overlap size. The minimum overlap may\
     \ be\nset to 1 when the statistical test is used. However, further\nrestricting\
     \  the  minimum overlap size to a proper value may\nreduce false-positive assembles.\
     \ (default: 10)"
-  synonyms:
-  - -v
-  - --min-overlap
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <int>     Specify   the  maximum  possible  length  of  the  assembled
+  optional: true
   synonyms:
   - -m
   - --max-assembly-length
+  description: <int>     Specify   the  maximum  possible  length  of  the  assembled
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <int>     Specify   the  minimum  possible  length  of  the  assembled
+  optional: true
   synonyms:
   - -n
   - --min-assembly-length
+  description: <int>     Specify   the  minimum  possible  length  of  the  assembled
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<int>     Specify  the  minimum length of reads after trimming the\
-    \ low\nquality part (see option -q). (default: 1)"
+  optional: true
   synonyms:
   - -t
   - --min-trim-length
+  description: "<int>     Specify  the  minimum length of reads after trimming the\
+    \ low\nquality part (see option -q). (default: 1)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <int>     Specify  the  quality  score  threshold for trimming the
-    low
+  optional: true
   synonyms:
   - -q
   - --quality-threshold
+  description: <int>     Specify  the  quality  score  threshold for trimming the
+    low
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --max-uncalled-base
   description: "<float>   Specify  the maximal proportion of uncalled bases in a read.\n\
     Setting this value to 0 will cause PEAR to discard all reads\ncontaining  uncalled\
     \  bases.  The other extreme setting is 1\nwhich  causes  PEAR  to process all\
     \ reads independent on the\nnumber of uncalled bases. (default: 1)"
-  synonyms:
-  - -u
-  - --max-uncalled-base
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --test-method
   description: "<int>     Specify  the  type  of  statistical  test.  Two  options\
     \ are\navailable. (default: 1)\n1: Given the minimum allowed overlap, test using\
     \ the highest\nOES. Note that due to its discrete nature, this test usually\n\
@@ -124,76 +128,72 @@ named:
     \ practice that for\nthe case the actual overlap sizes are relatively small, test\n\
     2  can  correctly  assemble  more  reads  with only slightly\nhigher false-positive\
     \ rate."
-  synonyms:
-  - -g
-  - --test-method
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Disable  empirical base frequencies. (default: use empirical\nbase\
-    \ frequencies)"
+  optional: true
   synonyms:
   - -e
   - --empirical-freqs
+  description: "Disable  empirical base frequencies. (default: use empirical\nbase\
+    \ frequencies)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --score-method
   description: "<int>     Specify the scoring method. (default: 2)\n1. OES with +1\
     \ for match and -1 for mismatch.\n2: Assembly score (AS). Use +1 for match and\
     \ -1 for mismatch\nmultiplied by base quality scores.\n3: Ignore quality scores\
     \ and use +1 for a match and -1 for a\nmismatch."
-  synonyms:
-  - -s
-  - --score-method
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<int>     Base PHRED quality score. (default: 33)'
+  optional: true
   synonyms:
   - -b
   - --phred-base
+  description: '<int>     Base PHRED quality score. (default: 33)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <str>     Specify  the  amount of memory to be used. The number may
-    be
+  optional: true
   synonyms:
   - -y
   - --memory
+  description: <str>     Specify  the  amount of memory to be used. The number may
+    be
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<int>     Specify  the upper bound for the resulting quality score.\
-    \ If\nset to zero, capping is disabled. (default: 40)"
+  optional: true
   synonyms:
   - -c
   - --cap
+  description: "<int>     Specify  the upper bound for the resulting quality score.\
+    \ If\nset to zero, capping is disabled. (default: 40)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <int>     Number of threads to use
+  optional: true
   synonyms:
   - -j
   - --threads
+  description: <int>     Number of threads to use
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: When  merging  a  base-pair  that  consists of two non-equal
+  optional: true
   synonyms:
   - -z
   - --nbase
+  description: When  merging  a  base-pair  that  consists of two non-equal
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: This help screen.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: This help screen.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: " ____  _____    _    ____ \n|  _ \\| ____|  / \\  |  _ \\\n| |_) |  _|\
@@ -284,3 +284,4 @@ help_text: " ____  _____    _    ____ \n|  _ \\| ____|  / \\  |  _ \\\n| |_) |  
   \                       This help screen.\n\n"
 generated_using:
 - --help
+docker_image:

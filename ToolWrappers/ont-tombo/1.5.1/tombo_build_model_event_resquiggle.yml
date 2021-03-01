@@ -5,222 +5,222 @@ command:
 - event_resquiggle
 positional:
 - !Positional
-  description: "Directory containing fast5 files. All files ending in\n\"fast5\" found\
-    \ recursively within this base directory\nwill be processed."
+  optional: false
   position: 0
   name: fast5s_basedir
-  optional: false
+  description: "Directory containing fast5 files. All files ending in\n\"fast5\" found\
+    \ recursively within this base directory\nwill be processed."
 - !Positional
-  description: Reference genome/transcriptome FASTA file for mapping.
+  optional: false
   position: 1
   name: reference_fasta
-  optional: false
+  description: Reference genome/transcriptome FASTA file for mapping.
 named:
 - !Flag
-  description: Path to minimap2 executable.
+  optional: true
   synonyms:
   - --minimap2-executable
+  description: Path to minimap2 executable.
   args: !SimpleFlagArg
     name: MINIMAP2_EXECUTABLE
-  optional: true
 - !Flag
-  description: "Path to minimap2 index (with map-ont preset) file\ncorresponding to\
-    \ the [genome_fasta] provided."
+  optional: true
   synonyms:
   - --minimap2-index
+  description: "Path to minimap2 index (with map-ont preset) file\ncorresponding to\
+    \ the [genome_fasta] provided."
   args: !SimpleFlagArg
     name: MINIMAP2_INDEX
-  optional: true
 - !Flag
-  description: Path to bwa-mem executable.
+  optional: true
   synonyms:
   - --bwa-mem-executable
+  description: Path to bwa-mem executable.
   args: !SimpleFlagArg
     name: BWA_MEM_EXECUTABLE
-  optional: true
 - !Flag
-  description: Path to graphmap executable.
+  optional: true
   synonyms:
   - --graphmap-executable
+  description: Path to graphmap executable.
   args: !SimpleFlagArg
     name: GRAPHMAP_EXECUTABLE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --alignment-batch-size
   description: "Number of reads included in each alignment call. Note:\nA new system\
     \ mapping call is made for each batch\n(including loading of the genome), so it\
     \ is advised to\nuse larger values for larger genomes. Default: 1000"
-  synonyms:
-  - --alignment-batch-size
   args: !SimpleFlagArg
     name: ALIGNMENT_BATCH_SIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --normalization-type
   description: "Choices: \"none\": raw 16-bit DAQ values, \"pA_raw\": pA\nas in the\
     \ ONT events (using offset, range and\ndigitization), \"pA\": k-mer-based correction\
     \ for pA\ndrift as in nanopolish (requires [--pore-model-\nfilename]), \"median\"\
     : median and MAD from raw signal.\nDefault: median"
-  synonyms:
-  - --normalization-type
   args: !ChoiceFlagArg
     choices: !!set
       median:
       none:
       pA_raw:
       pA:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pore-model-filename
   description: "File containing kmer model parameters (level_mean and\nlevel_stdv)\
     \ used in order to compute kmer-based\ncorrected pA values. E.g. https://github.com/jts/nanop\n\
     olish/blob/master/etc/r9-models/template_median68pA.5m\ners.model"
-  synonyms:
-  - --pore-model-filename
   args: !SimpleFlagArg
     name: PORE_MODEL_FILENAME
-  optional: true
 - !Flag
-  description: "Windosrize the signal at this number of scale values.\nNegative value\
-    \ disables outlier clipping. Default:\n5.000000"
+  optional: true
   synonyms:
   - --outlier-threshold
+  description: "Windosrize the signal at this number of scale values.\nNegative value\
+    \ disables outlier clipping. Default:\n5.000000"
   args: !SimpleFlagArg
     name: OUTLIER_THRESHOLD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --segmentation-parameters
   description: "SEGMENTATION_PARAMETERS\nSpecify the 2 parameters for segmentation\
     \ 1) running\nneighboring windows width 2) minimum raw observations\nper genomic\
     \ base. Sample type defaults: RNA : 12 6 ||\nDNA : 5 3"
-  synonyms:
-  - --segmentation-parameters
   args: !SimpleFlagArg
     name: SEGMENTATION_PARAMETERS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --obs-per-base-filter
   description: "Filter reads based on observations per base percentile\nthresholds.\
     \ Format thresholds as \"percentile:thresh\n[pctl2:thresh2 ...]\". For example\
     \ to filter reads with\n99th pctl > 200 obs/base or max > 5k obs/base use\n\"\
     99:200 100:5000\"."
-  synonyms:
-  - --obs-per-base-filter
   args: !RepeatFlagArg
     name: OBS_PER_BASE_FILTER
-  optional: true
 - !Flag
-  description: "Timeout in seconds for processing a single read.\nDefault: No timeout."
+  optional: true
   synonyms:
   - --timeout
+  description: "Timeout in seconds for processing a single read.\nDefault: No timeout."
   args: !SimpleFlagArg
     name: TIMEOUT
-  optional: true
 - !Flag
-  description: "Maximum number of changepoints to find within a single\nindel group.\
-    \ Default: No limit."
+  optional: true
   synonyms:
   - --cpts-limit
+  description: "Maximum number of changepoints to find within a single\nindel group.\
+    \ Default: No limit."
   args: !SimpleFlagArg
     name: CPTS_LIMIT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --skip-index
   description: "Skip creation of tombo index. This drastically slows\ndownstream tombo\
     \ commands. Default stores tombo index\nnamed \".[--fast5-basedir].[--corrected-\n\
     group].tombo.index\" to be loaded automatically for\ndownstream commands."
-  synonyms:
-  - --skip-index
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Overwrite previous corrected group in FAST5 files.\nNote: only effects\
-    \ --corrected-group or --new-\ncorrected-group."
+  optional: true
   synonyms:
   - --overwrite
+  description: "Overwrite previous corrected group in FAST5 files.\nNote: only effects\
+    \ --corrected-group or --new-\ncorrected-group."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output failed read filenames with assoicated error.\nDefault: Do not\
-    \ store failed reads."
+  optional: true
   synonyms:
   - --failed-reads-filename
+  description: "Output failed read filenames with assoicated error.\nDefault: Do not\
+    \ store failed reads."
   args: !SimpleFlagArg
     name: FAILED_READS_FILENAME
-  optional: true
 - !Flag
-  description: "Include corrected event standard deviation in output\nFAST5 data."
+  optional: true
   synonyms:
   - --include-event-stdev
+  description: "Include corrected event standard deviation in output\nFAST5 data."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
+  optional: true
   synonyms:
   - --corrected-group
+  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
   args: !SimpleFlagArg
     name: CORRECTED_GROUP
-  optional: true
 - !Flag
-  description: "FAST5 group obtain original basecalls (under Analyses\ngroup). Default:\
-    \ Basecall_1D_000"
+  optional: true
   synonyms:
   - --basecall-group
+  description: "FAST5 group obtain original basecalls (under Analyses\ngroup). Default:\
+    \ Basecall_1D_000"
   args: !SimpleFlagArg
     name: BASECALL_GROUP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --basecall-subgroups
   description: "FAST5 subgroup(s) (under /Analyses/[--basecall-\ngroup]/) containing\
     \ basecalls and created within\n[--corrected-group] containing re-squiggle results.\n\
     Default: ['BaseCalled_template']"
-  synonyms:
-  - --basecall-subgroups
   args: !RepeatFlagArg
     name: BASECALL_SUBGROUPS
-  optional: true
 - !Flag
-  description: 'Number of processes. Default: 2'
+  optional: true
   synonyms:
   - --processes
+  description: 'Number of processes. Default: 2'
   args: !SimpleFlagArg
     name: PROCESSES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --align-processes
   description: "Number of processes to use for parsing and aligning\noriginal basecalls.\
     \ Each process will independently\nload the genome into memory, so use caution\
     \ with\nlarger genomes (e.g. human). Default: 1"
-  synonyms:
-  - --align-processes
   args: !SimpleFlagArg
     name: ALIGN_PROCESSES
-  optional: true
 - !Flag
-  description: "Number of threads to use for aligner system call.\nDefault: [--processes]\
-    \ / (2 * [--align-processes)]"
+  optional: true
   synonyms:
   - --align-threads-per-process
+  description: "Number of threads to use for aligner system call.\nDefault: [--processes]\
+    \ / (2 * [--align-processes)]"
   args: !SimpleFlagArg
     name: ALIGN_THREADS_PER_PROCESS
-  optional: true
 - !Flag
-  description: "Number of processes to use for resquiggle algorithm.\nDefault: [--processes]\
-    \ / 2"
+  optional: true
   synonyms:
   - --resquiggle-processes
+  description: "Number of processes to use for resquiggle algorithm.\nDefault: [--processes]\
+    \ / 2"
   args: !SimpleFlagArg
     name: RESQUIGGLE_PROCESSES
-  optional: true
 - !Flag
-  description: Don't print status information.
+  optional: true
   synonyms:
   - --quiet
   - -q
+  description: Don't print status information.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: Print this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: tombo build_model event_resquiggle\n                          \
@@ -323,3 +323,4 @@ help_text: "usage: tombo build_model event_resquiggle\n                         
   \  --help, -h            Print this help message and exit\n"
 generated_using:
 - --help
+docker_image:

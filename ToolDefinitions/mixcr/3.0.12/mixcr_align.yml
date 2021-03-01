@@ -4,137 +4,162 @@ command:
 - align
 positional:
 - !Positional
-  description: file_R1.(fastq[.gz]|fasta) [file_R2.fastq[.gz]] alignments.vdjca
-  position: 0
-  name: files
   optional: false
+  position: 0
+  name: scr
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: align
+  description: ''
+- !Positional
+  optional: true
+  position: 2
+  name: failedReadsR1
+  description: ''
+- !Positional
+  optional: true
+  position: 3
+  name: trimmingQualityThreshold
+  description: ''
+- !Positional
+  optional: true
+  position: 4
+  name: library
+  description: ''
+- !Positional
+  optional: true
+  position: 5
+  name: reportFile
+  description: ''
 named:
 - !Flag
-  description: Suppress all warning messages.
+  optional: true
   synonyms:
   - -nw
   - --no-warnings
+  description: Suppress all warning messages.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Verbose warning messages.
+  optional: true
   synonyms:
   - --verbose
+  description: Verbose warning messages.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Force overwrite of output file(s).
+  optional: true
   synonyms:
   - -f
   - --force-overwrite
+  description: Force overwrite of output file(s).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --overwrite-if-required
   description: "Overwrite output file if it is corrupted or if it was generated from\n\
     different input file or with different parameters. -f / --force-overwrite\noverrides\
     \ this option."
-  synonyms:
-  - --overwrite-if-required
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Species (organism), as specified in library file or taxon id.\nPossible\
-    \ values: hs, HomoSapiens, musmusculus, mmu, hsa, 9606, 10090 etc."
+  optional: true
   synonyms:
   - -s
   - --species
+  description: "Species (organism), as specified in library file or taxon id.\nPossible\
+    \ values: hs, HomoSapiens, musmusculus, mmu, hsa, 9606, 10090 etc."
   args: !SimpleFlagArg
     name: species
-  optional: true
 - !Flag
-  description: "Report file (human readable version, see -j / --json-report for machine\n\
-    readable report)"
+  optional: true
   synonyms:
   - -r
   - --report
+  description: "Report file (human readable version, see -j / --json-report for machine\n\
+    readable report)"
   args: !SimpleFlagArg
     name: reportFile
-  optional: true
 - !Flag
-  description: JSON formatted report file
+  optional: true
   synonyms:
   - -j
   - --json-report
+  description: JSON formatted report file
   args: !SimpleFlagArg
     name: jsonReport
-  optional: true
 - !Flag
-  description: V/D/J/C gene library
+  optional: true
   synonyms:
   - -b
   - --library
+  description: V/D/J/C gene library
   args: !SimpleFlagArg
     name: library
-  optional: true
 - !Flag
-  description: 'Read pre-processing: trimming quality threshold'
+  optional: true
   synonyms:
   - --trimming-quality-threshold
+  description: 'Read pre-processing: trimming quality threshold'
   args: !SimpleFlagArg
     name: trimmingQualityThreshold
-  optional: true
 - !Flag
-  description: 'Read pre-processing: trimming window size'
+  optional: true
   synonyms:
   - --trimming-window-size
+  description: 'Read pre-processing: trimming window size'
   args: !SimpleFlagArg
     name: trimmingWindowSize
-  optional: true
 - !Flag
-  description: Parameters preset.
+  optional: true
   synonyms:
   - -p
   - --parameters
+  description: Parameters preset.
   args: !SimpleFlagArg
     name: alignerParametersName
-  optional: true
 - !Flag
-  description: <String=String>       Overrides default aligner parameter values
+  optional: true
   synonyms:
   - -O
+  description: <String=String>       Overrides default aligner parameter values
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Write alignment results for all input reads (even if alignment failed).
+  optional: true
   synonyms:
   - --write-all
+  description: Write alignment results for all input reads (even if alignment failed).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Pipe not aligned R1 reads into separate file.
+  optional: true
   synonyms:
   - --not-aligned-R1
+  description: Pipe not aligned R1 reads into separate file.
   args: !SimpleFlagArg
     name: failedReadsR1
-  optional: true
 - !Flag
-  description: Pipe not aligned R2 reads into separate file.
+  optional: true
   synonyms:
   - --not-aligned-R2
+  description: Pipe not aligned R2 reads into separate file.
   args: !SimpleFlagArg
     name: failedReadsR2
-  optional: true
 - !Flag
-  description: Maximal number of reads to process
+  optional: true
   synonyms:
   - -n
   - --limit
+  description: Maximal number of reads to process
   args: !SimpleFlagArg
     name: limit
-  optional: true
 - !Flag
-  description: Processing threads
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: Processing threads
   args: !SimpleFlagArg
     name: threads
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -174,3 +199,4 @@ help_text: "ERROR: -h / --help is not supported: use `mixcr help [command]` for 
   \ number of reads to process\n  -t, --threads <threads>   Processing threads\n"
 generated_using:
 - --help
+docker_image:

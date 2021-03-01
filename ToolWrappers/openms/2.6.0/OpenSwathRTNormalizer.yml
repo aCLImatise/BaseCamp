@@ -1,0 +1,137 @@
+!Command
+command:
+- OpenSwathRTNormalizer
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: "*            Input files separated by blank (valid formats: 'mzML')"
+  args: !SimpleFlagArg
+    name: files
+- !Flag
+  optional: true
+  synonyms:
+  - -tr
+  description: "*             Transition file with the RT peptides ('TraML' or 'csv')\
+    \ (valid formats: 'csv', 'traML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: "*            Output file (valid formats: 'trafoXML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -rt_norm
+  description: "RT normalization file (how to map the RTs of this run to the ones\
+    \ stored in the library) (valid formats: 'trafoXML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -min_rsq
+  description: "Minimum r-squared of RT peptides regression (default: '0.95')"
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - -min_coverage
+  description: "Minimum relative amount of RT peptides to keep (default: '0.6')"
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - -estimateBestPeptides
+  description: Whether the algorithms should try to choose the best peptides based
+    on their peak shape for normalization. Use this option you do not expect all your
+    peptides to be detected in a sample and too many 'bad' peptides enter the outlier
+    removal step (e.g. due to them being endogenous peptides or using a less curated
+    list of peptides).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ini
+  description: Use the given TOPP INI file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -threads
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -write_ini
+  description: Writes the default configuration file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --helphelp
+  description: Shows all options (including advanced)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows options
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nOpenSwathRTNormalizer\
+  \ -- This tool will take a description of RT peptides and their normalized retention\
+  \ time to write out a transformation file on how to transform the RT space into\
+  \ the normalized space.\nFull documentation: http://www.openms.de/documentation/TOPP_OpenSwathRTNormalizer.html\n\
+  Version: 2.6.0-pre-exported-20201001 Oct  1 2020, 01:37:06\nTo cite OpenMS:\n  Rost\
+  \ HL, Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible open-source software\
+  \ platform for mass spectrometry data analysis. Nat Meth. 2016; 13, 9: 741-748.\
+  \ doi:10.1038/nmeth.3959.\n\nUsage:\n  OpenSwathRTNormalizer <options>\n\nThis tool\
+  \ has algorithm parameters that are not shown here! Please check the ini file for\
+  \ a detailed description or use the --helphelp option.\n\nOptions (mandatory options\
+  \ marked with '*'):\n  -in <files>*            Input files separated by blank (valid\
+  \ formats: 'mzML')\n  -tr <file>*             Transition file with the RT peptides\
+  \ ('TraML' or 'csv') (valid formats: 'csv', 'traML')\n  -out <file>*           \
+  \ Output file (valid formats: 'trafoXML')\n  -rt_norm <file>         RT normalization\
+  \ file (how to map the RTs of this run to the ones stored in the library) (valid\
+  \ formats: 'trafoXML')\n  -min_rsq <double>       Minimum r-squared of RT peptides\
+  \ regression (default: '0.95')\n  -min_coverage <double>  Minimum relative amount\
+  \ of RT peptides to keep (default: '0.6')\n  -estimateBestPeptides   Whether the\
+  \ algorithms should try to choose the best peptides based on their peak shape for\
+  \ normalization. Use this option you do not expect all your peptides to be detected\
+  \ in a sample and too many 'bad' peptides enter the outlier removal step (e.g. due\
+  \ to them being endogenous peptides or using a less curated list of peptides).\n\
+  \                          \nCommon TOPP options:\n  -ini <file>             Use\
+  \ the given TOPP INI file\n  -threads <n>            Sets the number of threads\
+  \ allowed to be used by the TOPP tool (default: '1')\n  -write_ini <file>      \
+  \ Writes the default configuration file\n  --help                  Shows options\n\
+  \  --helphelp              Shows all options (including advanced)\n\nThe following\
+  \ configuration subsections are valid:\n - RTNormalization     Parameters for the\
+  \ RTNormalization. RT normalization and outlier detection can be done iteratively\
+  \ (by default) which removes one outlier per iteration or using the RANSAC algorithm.\n\
+  \ - algorithm           Algorithm parameters section\n - peptideEstimation   Parameters\
+  \ for the peptide estimation (use -estimateBestPeptides to enable).\n\nYou can write\
+  \ an example INI file using the '-write_ini' option.\nDocumentation of subsection\
+  \ parameters can be found in the doxygen documentation or the INIFileEditor.\nFor\
+  \ more information, please consult the online documentation for this tool:\n  -\
+  \ http://www.openms.de/documentation/TOPP_OpenSwathRTNormalizer.html\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/openms:2.6.0--h4afb90d_0

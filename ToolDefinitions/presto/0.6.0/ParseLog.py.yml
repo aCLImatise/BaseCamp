@@ -3,78 +3,78 @@ command:
 - ParseLog.py
 positional:
 - !Positional
-  description: tab delimited table of the selected annotations.
+  optional: false
   position: 0
   name: table
-  optional: false
+  description: tab delimited table of the selected annotations.
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -o
   description: "Explicit output file name(s). Note, this argument\ncannot be used\
     \ with the --failed, --outdir, or\n--outname arguments. If unspecified, then the\
     \ output\nfilename will be based on the input filename(s).\n(default: None)"
-  synonyms:
-  - -o
   args: !RepeatFlagArg
     name: OUT_FILES
-  optional: true
 - !Flag
-  description: "Specify to changes the output directory to the\nlocation specified.\
-    \ The input file directory is used\nif this is not specified. (default: None)"
+  optional: true
   synonyms:
   - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
   args: !SimpleFlagArg
     name: OUT_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outname
   description: "Changes the prefix of the successfully processed\noutput file to the\
     \ string specified. May not be\nspecified with multiple input files. (default:\
     \ None)"
-  synonyms:
-  - --outname
   args: !SimpleFlagArg
     name: OUT_NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --delim
   description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
     annotation blocks, field names and values, and values\nwithin a field, respectively.\
     \ (default: ('|', '=',\n','))"
-  synonyms:
-  - --delim
   args: !SimpleFlagArg
     name: DELIMITER
-  optional: true
 - !Flag
-  description: 'List of log files to parse. (default: None)'
+  optional: true
   synonyms:
   - -l
+  description: 'List of log files to parse. (default: None)'
   args: !RepeatFlagArg
     name: RECORD_FILES
-  optional: true
 - !Flag
-  description: "List of fields to collect. The sequence identifier may\nbe specified\
-    \ using the hidden field name \"ID\".\n(default: None)"
+  optional: true
   synonyms:
   - -f
+  description: "List of fields to collect. The sequence identifier may\nbe specified\
+    \ using the hidden field name \"ID\".\n(default: None)"
   args: !RepeatFlagArg
     name: FIELDS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: ParseLog.py [--version] [-h] [-o OUT_FILES [OUT_FILES ...]]\n \
   \                  [--outdir OUT_DIR] [--outname OUT_NAME]\n                   [--delim\
   \ DELIMITER DELIMITER DELIMITER] -l RECORD_FILES\n                   [RECORD_FILES\
@@ -103,3 +103,4 @@ help_text: "usage: ParseLog.py [--version] [-h] [-o OUT_FILES [OUT_FILES ...]]\n
   \    <user defined>\n        annotation fields specified by the -f argument.\n"
 generated_using:
 - --help
+docker_image:

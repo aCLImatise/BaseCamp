@@ -3,24 +3,24 @@ id: diamond_add_taxonomy.cwl
 inputs:
 - id: in_tax_dump_filename
   doc: Path to local copy of NCBI taxdump.tar.gz file
-  type: File
+  type: File?
   inputBinding:
     prefix: --taxdump_filename
 - id: in_tax_db_filename
   doc: "Name for the processed database, will be\nloaded if it exists"
-  type: File
+  type: File?
   inputBinding:
     prefix: --taxdb_filename
 - id: in_diamond_output_format
   doc: "Output format used by DIAMOND (most include\nstaxids)  [default: 6 qseqid\
     \ sseqid pident\nlength mismatch gapopen qstart qend sstart\nsend evalue bitscore\
     \ slen qlen qcovhsp stitle\nstaxids]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --diamond_output_format
 - id: in_output_file
   doc: "Output file to write output with expanded\ntaxonomy information (TSV format)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_file
 - id: in_stax_ids
@@ -39,9 +39,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: "Output file to write output with expanded\ntaxonomy information (TSV format)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - diamond_add_taxonomy

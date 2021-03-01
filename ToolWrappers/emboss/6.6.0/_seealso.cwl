@@ -12,29 +12,29 @@ inputs:
     \ at least some of\nthe expanded names than using the\nnon-exploded names and\
     \ so you will get more\nprograms reported as sharing a similar\nfunction than\
     \ you will if you specify that\nyou wish to use non-exploded names"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -explode
 - id: in_outfile
   doc: outfile    [stdout] Output file name
-  type: File
+  type: File?
   inputBinding:
     prefix: -outfile
 - id: in_html
   doc: "toggle     [N] If you are sending the output to a file,\nthis will format\
     \ it for displaying as a\ntable in a WWW document."
-  type: File
+  type: File?
   inputBinding:
     prefix: -html
 - id: in_groups
   doc: "boolean    [N] If you use this option, then only the\ngroup names will output\
     \ to the file"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -groups
 - id: in_emboss
   doc: is true). EMBASSY programs
-  type: string
+  type: string?
   inputBinding:
     prefix: -emboss
 - id: in_show_embassy
@@ -43,7 +43,7 @@ inputs:
     \ the same code\nlibraries and share the same look and feel,\nbut are generally\
     \ developed by people who\nwish the programs to be outside of the GNU\nPublic\
     \ Licence scheme (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -showembassy
 - id: in_colon
@@ -53,7 +53,7 @@ inputs:
     LOCAL, MULTIPLE. To aid programs that parse\nthe output of seealso that require\
     \ the names\nof these subgroups, a colon ':' will be\nplaced between the first\
     \ and second level of\nthe group name if this option is true."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -colon
 outputs:
@@ -62,15 +62,16 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: outfile    [stdout] Output file name
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
 - id: out_html
   doc: "toggle     [N] If you are sending the output to a file,\nthis will format\
     \ it for displaying as a\ntable in a WWW document."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_html)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _seealso

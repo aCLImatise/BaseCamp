@@ -3,33 +3,34 @@ id: arrow_annotations_add_transcripts.cwl
 inputs:
 - id: in_transcripts
   doc: Transcript data
-  type: string
+  type: string?
   inputBinding:
     prefix: --transcripts
 - id: in_suppress_history
   doc: Suppress the history of this operation
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --suppress_history
 - id: in_suppress_events
   doc: Suppress instant update of the user interface
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --suppress_events
 - id: in_organism
   doc: Organism Common Name
-  type: string
+  type: string?
   inputBinding:
     prefix: --organism
 - id: in_sequence
   doc: Sequence Name
-  type: string
+  type: string?
   inputBinding:
     prefix: --sequence
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - arrow

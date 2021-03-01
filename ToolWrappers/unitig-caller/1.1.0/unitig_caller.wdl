@@ -18,11 +18,11 @@ task Unitigcaller {
     Boolean? no_save_idx
     Int? threads
     String? location_bifrost_executable
-    String _query_query
+    String _query_presenceabsence
   }
   command <<<
     unitig_caller \
-      ~{_query_query} \
+      ~{_query_presenceabsence} \
       ~{if (build) then "--build" else ""} \
       ~{if (simple) then "--simple" else ""} \
       ~{if defined(refs) then ("--refs " +  '"' + refs + '"') else ""} \
@@ -40,6 +40,9 @@ task Unitigcaller {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(location_bifrost_executable) then ("--bifrost " +  '"' + location_bifrost_executable + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     build: "Build coloured/uncoloured de Bruijn graph using"
     simple: "Use FM-index to make calls"
@@ -57,7 +60,7 @@ task Unitigcaller {
     no_save_idx: "Do not save FM-indexes for reuse"
     threads: "Number of threads to use [default = 1]"
     location_bifrost_executable: "Location of bifrost executable [default = Bifrost]"
-    _query_query: "--query               Query unitig presence/absence across input genomes"
+    _query_presenceabsence: "--query               Query unitig presence/absence across input genomes"
   }
   output {
     File out_stdout = stdout()

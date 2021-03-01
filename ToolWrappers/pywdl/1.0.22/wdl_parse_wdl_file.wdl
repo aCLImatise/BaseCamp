@@ -12,6 +12,9 @@ task WdlParseWdlFile {
       ~{if (no_color) then "--no-color" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_color: ""
     debug: ""

@@ -3,69 +3,176 @@ command:
 - correct.py
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: families
   description: "The sorted output of make-barcodes.awk. The important\npart is that\
     \ it's a tab-delimited file with at least 2\ncolumns: the barcode sequence and\
     \ order, and it must\nbe sorted in the same order as the \"reads\" in the SAM\n\
     file."
-  position: 0
-  name: families
-  optional: false
 - !Positional
-  description: "The fasta/q file given to the aligner. Used to get\nbarcode sequences\
-    \ from read names."
+  optional: false
   position: 1
   name: reads
-  optional: false
+  description: "The fasta/q file given to the aligner. Used to get\nbarcode sequences\
+    \ from read names."
 - !Positional
+  optional: false
+  position: 2
+  name: sam
   description: "Barcode alignment, in SAM format. Omit to read from\nstdin. The read\
     \ names must be integers, representing\nthe (1-based) order they appear in the\
     \ families file."
-  position: 2
-  name: sam
-  optional: false
-named: []
-parent:
-subcommands: []
-usage: []
-help_flag: !Flag
-  description: "show this help message and exit\n-P, --prepend         Prepend the\
-    \ corrected barcodes and orders to the\noriginal columns.\n-d DIST, --dist DIST\
-    \  NM edit distance threshold. Default: 1\n-m MAPQ, --mapq MAPQ  MAPQ threshold.\
-    \ Default: 20\n-p POS, --pos POS     POS tolerance. Alignments will be ignored\
-    \ if abs(POS -\n1) is greater than this value. Set to greater than the\nbarcode\
-    \ length for no threshold. Default: 2\n-c {count,connect}, --choose-by {count,connect}\n\
-    Choose the \"correct\" barcode in a network of related\nbarcodes by either the\
-    \ count of how many times the\nbarcode was observed (\"freq\") or how connected\
-    \ the\nbarcode is to the others in the network (\"connect\").\n-I, --no-check-ids\
-    \    Don't check to make sure read pairs have identical\nids. By default, if this\
-    \ encounters a pair of reads in\nfamilies.tsv with ids that aren't identical (minus\
-    \ an\nending /1 or /2), it will throw an error.\n--limit LIMIT         Limit the\
-    \ number of lines that will be read from each\ninput file, for testing purposes.\n\
-    -S, --structures      Print a list of the unique isoforms\n--struct-human\n-V\
-    \ [networks.png], --visualize [networks.png]\nProduce a visualization of the unique\
-    \ structures and\nwrite the image to this file. If you omit a filename,\nit will\
-    \ be displayed in a window.\n-F {dot,graphviz,png}, --viz-format {dot,graphviz,png}\n\
-    -n, --no-output\n-l LOG, --log LOG     Print log messages to this file instead\
-    \ of to stderr.\nWarning: Will overwrite the file.\n-q, --quiet\n-i, --info\n\
-    -v, --verbose\n-D, --debug           Print debug messages (very verbose).\n--phone-home\
-    \          Report helpful usage data to the developer, to better\nunderstand the\
-    \ use cases and performance of the tool.\nThe only data which will be recorded\
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --prepend
+  description: "Prepend the corrected barcodes and orders to the\noriginal columns."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dist
+  description: 'NM edit distance threshold. Default: 1'
+  args: !SimpleFlagArg
+    name: DIST
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mapq
+  description: 'MAPQ threshold. Default: 20'
+  args: !SimpleFlagArg
+    name: MAPQ
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pos
+  description: "POS tolerance. Alignments will be ignored if abs(POS -\n1) is greater\
+    \ than this value. Set to greater than the\nbarcode length for no threshold. Default:\
+    \ 2"
+  args: !SimpleFlagArg
+    name: POS
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --choose-by
+  description: "Choose the \"correct\" barcode in a network of related\nbarcodes by\
+    \ either the count of how many times the\nbarcode was observed (\"freq\") or how\
+    \ connected the\nbarcode is to the others in the network (\"connect\")."
+  args: !ChoiceFlagArg
+    choices: !!set
+      connect:
+      count:
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --no-check-ids
+  description: "Don't check to make sure read pairs have identical\nids. By default,\
+    \ if this encounters a pair of reads in\nfamilies.tsv with ids that aren't identical\
+    \ (minus an\nending /1 or /2), it will throw an error."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --limit
+  description: "Limit the number of lines that will be read from each\ninput file,\
+    \ for testing purposes."
+  args: !SimpleFlagArg
+    name: LIMIT
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --structures
+  description: Print a list of the unique isoforms
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --struct-human
+  - -V
+  description: "[networks.png], --visualize [networks.png]\nProduce a visualization\
+    \ of the unique structures and\nwrite the image to this file. If you omit a filename,\n\
+    it will be displayed in a window."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --viz-format
+  - -n
+  - --no-output
+  - -l
+  - --log
+  description: "Print log messages to this file instead of to stderr.\nWarning: Will\
+    \ overwrite the file."
+  args: !ChoiceFlagArg
+    choices: !!set
+      dot:
+      graphviz:
+      png:
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  - -i
+  - --info
+  - -v
+  - --verbose
+  - -D
+  - --debug
+  description: Print debug messages (very verbose).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --phone-home
+  description: "Report helpful usage data to the developer, to better\nunderstand\
+    \ the use cases and performance of the tool.\nThe only data which will be recorded\
     \ is the name and\nversion of the tool, the size of the input data, the\ntime\
     \ and memory taken to process it, and the IP\naddress of the machine running it.\
     \ Also, if the script\nfails, it will report the name of the exception thrown\n\
     and the line of code it occurred in. No parameters or\nfilenames are sent. All\
-    \ the reporting and recording\ncode is available at https://github.com/NickSto/ET.\n\
-    --galaxy              Tell the script it's running on Galaxy. Currently this\n\
-    only affects data reported when phoning home.\n--test                If reporting\
-    \ usage data, mark this as a test run.\n--version             Print the version\
-    \ number and exit.\n"
+    \ the reporting and recording\ncode is available at https://github.com/NickSto/ET."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --galaxy
+  description: "Tell the script it's running on Galaxy. Currently this\nonly affects\
+    \ data reported when phoning home."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --test
+  description: If reporting usage data, mark this as a test run.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print the version number and exit.
+  args: !EmptyFlagArg {}
 help_text: "usage: $ correct.py [options] families.tsv barcodes.fa barcodes.sam >\
   \ families.corrected.tsv\n\nCorrect barcodes using an alignment of all barcodes\
   \ to themselves. Reads the\nalignment in SAM format and corrects the barcodes in\
@@ -121,3 +228,4 @@ help_text: "usage: $ correct.py [options] families.tsv barcodes.fa barcodes.sam 
   \      Print the version number and exit.\n"
 generated_using:
 - --help
+docker_image:

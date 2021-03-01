@@ -3,7 +3,7 @@ id: nw_match.cwl
 inputs:
 - id: in_hv
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -hv
 - id: in_target_trees_filename_vertical_line
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nw_match

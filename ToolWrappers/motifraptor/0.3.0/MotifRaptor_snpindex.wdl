@@ -14,6 +14,9 @@ task MotifRaptorSnpindex {
       ~{if defined(mk_sary) then ("--mksary " +  '"' + mk_sary + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_filename: "input - VCF file for SNPs, first five columns need to\\nbe CHR,POS,ID,REF,ALT"
     indexed_genome_db: "output - indexed genome_database_folder"

@@ -46,6 +46,9 @@ task DsCompareCurves {
       ~{if defined(wilcox_plot_height) then ("--wilcoxPlotHeight " +  '"' + wilcox_plot_height + '"') else ""} \
       ~{if defined(font) then ("--font " +  '"' + font + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     deeptools_file_obtained: "DeepTools file obtained from computeMatrix\\n--outFileNameMatrix. Alternatively, a .dscc file from\\nprevious dsCompareCurves runs can be provided for\\nreplotting purposes and to avoid the bootstraps\\ncomputation once more."
     output_prefix_files: "Output prefix. Three files will be generated, a .pdf\\nfile containing the plot and a .dscc file containing\\nthe bootsraps information ( RDS file ). If a .dscc\\nfile is provided as input, only the plot will be\\nproduced as pdf."

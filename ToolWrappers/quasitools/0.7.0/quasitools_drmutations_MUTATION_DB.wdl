@@ -18,6 +18,9 @@ task QuasitoolsDrmutationsMUTATIONDB {
       ~{variants} \
       ~{bed_four_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quasi_tools: ""
     dr_mutations: ""

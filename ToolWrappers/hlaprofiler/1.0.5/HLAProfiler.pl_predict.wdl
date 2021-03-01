@@ -44,6 +44,9 @@ task HLAProfilerplPredict {
       ~{if (kraken_path) then "-kraken_path" else ""} \
       ~{if (log) then "-log" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q_one: "|fq1             location of read1 fastq (required)"
     fast_q_two: "|fq2             location of read2 fastq (required)"

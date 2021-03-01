@@ -8,7 +8,7 @@ task SnapalignerSingle {
     Boolean? sc
     Boolean? ms
     Boolean? number_threads_default
-    Boolean? bind_thread_processor
+    Boolean? bind_thread_its
     Boolean? disables_cache_prefetching
     File? so
     Boolean? sm
@@ -16,7 +16,7 @@ task SnapalignerSingle {
     Boolean? stop_first_match
     Boolean? filter_output_aaligned
     Boolean? alternate_fully_general
-    Boolean? suppress_additional_processing
+    Boolean? suppress_output_onlyiindex
     Boolean? ignore_ids_match
     String? cxx
     Boolean? indicates_strings_use
@@ -56,7 +56,7 @@ task SnapalignerSingle {
       ~{if (sc) then "-sc" else ""} \
       ~{if (ms) then "-ms" else ""} \
       ~{if (number_threads_default) then "-t" else ""} \
-      ~{if (bind_thread_processor) then "-b" else ""} \
+      ~{if (bind_thread_its) then "-b" else ""} \
       ~{if (disables_cache_prefetching) then "-P" else ""} \
       ~{if (so) then "-so" else ""} \
       ~{if (sm) then "-sm" else ""} \
@@ -64,7 +64,7 @@ task SnapalignerSingle {
       ~{if (stop_first_match) then "-f" else ""} \
       ~{if (filter_output_aaligned) then "-F" else ""} \
       ~{if (alternate_fully_general) then "-E" else ""} \
-      ~{if (suppress_additional_processing) then "-S" else ""} \
+      ~{if (suppress_output_onlyiindex) then "-S" else ""} \
       ~{if (ignore_ids_match) then "-I" else ""} \
       ~{if defined(cxx) then ("-Cxx " +  '"' + cxx + '"') else ""} \
       ~{if (indicates_strings_use) then "-M" else ""} \
@@ -94,6 +94,9 @@ task SnapalignerSingle {
       ~{if (sid) then "-sid" else ""} \
       ~{if (pro) then "-pro" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename_output_alignments: "filename  output alignments to filename in SAM or BAM format, depending on the file extension or\\nexplicit type specifier (see below).  Use a dash with an explicit type specifier to write to\\nstdout, so for example -o -sam - would write SAM output to stdout"
     maximum_edit_distance: "maximum edit distance allowed per read or pair (default: 14)"
@@ -101,7 +104,7 @@ task SnapalignerSingle {
     sc: "Seed coverage (i.e., readSize/seedSize).  Floating point.  Exclusive with -n.  (default uses -n)"
     ms: "minimum seed matches per location (default: 1)"
     number_threads_default: "number of threads (default is one per core)"
-    bind_thread_processor: "bind each thread to its processor (this is the default)"
+    bind_thread_its: "bind each thread to its processor (this is the default)"
     disables_cache_prefetching: "disables cache prefetching in the genome; may be helpful for machines\\nwith small caches or lots of cores/cache"
     so: "sort output file by alignment location"
     sm: "memory to use for sorting in Gb"
@@ -109,7 +112,7 @@ task SnapalignerSingle {
     stop_first_match: "stop on first match within edit distance limit (filtering mode)"
     filter_output_aaligned: "filter output (a=aligned only, s=single hit only (MAPQ >= 10), u=unaligned only, l=long enough to align (see -mrl))"
     alternate_fully_general: "an alternate (and fully general) way to specify filter options.  Emit only these types s = single hit (MAPQ >= 10), m = multiple hit (MAPQ < 10),\\nx = not long enough to align, u = unaligned, b = filter must apply to both ends of a paired-end read.  Combine the letters after\\n-E, so for example -E smu will emit all reads that aren't too short/have too many Ns (because it leaves off l).  -E smx is the same\\nas -F a, -E ux is the same as -F u, and so forth.\\nWhen filtering in paired-end mode (either with -F or -E) unless you specify the b flag a read will be emitted if it's mate pair passes the filter\\nEven if the read itself does not.  If you specify b mode, then a read will be emitted only if it and its partner both pass the filter."
-    suppress_additional_processing: "suppress additional processing (sorted BAM output only)\\ni=index, d=duplicate marking"
+    suppress_output_onlyiindex: "suppress additional processing (sorted BAM output only)\\ni=index, d=duplicate marking"
     ignore_ids_match: "ignore IDs that don't match in the paired-end aligner"
     cxx: "be followed by two + or - symbols saying whether to clip low-quality\\nbases from front and back of read respectively; default: back only (-C-+)"
     indicates_strings_use: "indicates that CIGAR strings in the generated SAM file should use M (alignment\\nmatch) rather than = and X (sequence (mis-)match).  This is the default"

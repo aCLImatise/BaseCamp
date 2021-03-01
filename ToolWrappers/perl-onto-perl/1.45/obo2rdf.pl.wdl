@@ -14,6 +14,9 @@ task Obo2rdfpl {
       ~{if (url) then "-u" else ""} \
       ~{if (namespace) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     obo_input_file: "OBO input file"
     url: "URL"

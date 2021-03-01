@@ -86,6 +86,9 @@ task Afterpy {
       ~{if (gzip) then "--gzip" else ""} \
       ~{if defined(compression) then ("--compression " +  '"' + compression + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_one_file: "file name of read1, required. If input_dir is\\nspecified, then this arg is ignored."
     read_two_file: "file name of read2, if paired. If input_dir is\\nspecified, then this arg is ignored."

@@ -14,6 +14,9 @@ task MotifRaptorSnpmotifradar {
       ~{if defined(snp_feature_file) then ("--snp_feature_file " +  '"' + snp_feature_file + '"') else ""} \
       ~{if defined(snp_motif_id) then ("--snp_motif_id " +  '"' + snp_motif_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     workdir: "Working directory"
     snp_motif_file: "SNP motif pair-wise list File, usually from step2"

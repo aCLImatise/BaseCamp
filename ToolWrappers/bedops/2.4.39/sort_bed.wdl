@@ -20,6 +20,9 @@ task Sortbed {
       ~{if defined(max_mem) then ("--max-mem " +  '"' + max_mem + '"') else ""} \
       ~{if (check_sort) then "--check-sort" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tmpdir: "useful only with --max-mem."
     unique: "be used to print only unique BED elements (similar to 'sort -u'). Cannot be used with --duplicates."

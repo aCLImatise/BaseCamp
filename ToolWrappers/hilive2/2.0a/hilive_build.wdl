@@ -16,6 +16,9 @@ task Hilivebuild {
       ~{if (do_not_convert_spaces) then "--do-not-convert-spaces" else ""} \
       ~{if (trim_after_space) then "--trim-after-space" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_licensing_information: "[ --license ]         Print licensing information and exit"
     arg_reference_genomes: "[ --input ] arg       Reference genome(s) in (multi-)FASTA format.\\n[REQUIRED]"

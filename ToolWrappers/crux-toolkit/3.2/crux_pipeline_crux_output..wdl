@@ -12,6 +12,9 @@ task CruxPipelineCruxoutput {
       ~{pipeline} \
       ~{mass_spectra}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     pipeline: ""

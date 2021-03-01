@@ -14,6 +14,9 @@ task ArrowMetricsARGS {
       ~{var_command} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arrow: ""
     metrics: ""

@@ -3,17 +3,17 @@ id: tgt_shift_boundaries.py_shift.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_f
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_e
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -e
 - id: in_tgt_shift_boundaries_do_tpy
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tgt-shift-boundaries.py

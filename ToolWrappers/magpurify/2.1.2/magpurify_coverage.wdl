@@ -18,6 +18,9 @@ task MagpurifyCoverage {
       ~{if (weighted_mean) then "--weighted-mean" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_deviation: "Contigs with coverage greater than [max-deviation *\\nmean coverage] or less than [(1/max-deviation) * mean\\ncoverage] will be flagged as outliers (default: 5.0)"
     weighted_mean: "Compute the mean weighted by the contig length\\n(default: False)"

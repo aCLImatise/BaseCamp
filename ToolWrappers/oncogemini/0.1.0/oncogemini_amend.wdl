@@ -12,6 +12,9 @@ task OncogeminiAmend {
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
       ~{if (clear) then "--clear" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample: "New sample information file to load"
     clear: "Set all values in this column to NULL before loading."

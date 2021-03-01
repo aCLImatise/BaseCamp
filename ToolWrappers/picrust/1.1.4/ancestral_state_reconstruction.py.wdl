@@ -26,6 +26,9 @@ task AncestralStateReconstructionpy {
       ~{if defined(input_tree_fp) then ("--input_tree_fp " +  '"' + input_tree_fp + '"') else ""} \
       ~{if defined(input_trait_table_fp) then ("--input_trait_table_fp " +  '"' + input_trait_table_fp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     asr_method: "Method for ancestral state reconstruction. Valid\\nchoices are: ace_ml, ace_reml, ace_pic, wagner\\n[default: ace_pic]"

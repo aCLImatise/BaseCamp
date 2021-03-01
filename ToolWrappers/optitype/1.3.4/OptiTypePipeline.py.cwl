@@ -10,44 +10,44 @@ inputs:
     prefix: --input
 - id: in_rna
   doc: Use with RNA sequencing data.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rna
 - id: in_dna
   doc: Use with DNA sequencing data.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dna
 - id: in_beta
   doc: "The beta value for for homozygosity detection (see\npaper). Default: 0.009.\
     \ Handle with care."
-  type: double
+  type: double?
   inputBinding:
     prefix: --beta
 - id: in_enumerate
   doc: "Number of enumerations. OptiType will output the\noptimal solution and the\
     \ top N-1 suboptimal solutions\nin the results CSV. Default: 1"
-  type: long
+  type: long?
   inputBinding:
     prefix: --enumerate
 - id: in_outdir
   doc: "Specifies the out directory to which all files should\nbe written."
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_prefix
   doc: Specifies prefix of output files
-  type: string
+  type: string?
   inputBinding:
     prefix: --prefix
 - id: in_verbose
   doc: Set verbose mode on.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_config
   doc: "Path to config file. Default: config.ini in the same\ndirectory as this script\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_opti_type
@@ -61,9 +61,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: "Specifies the out directory to which all files should\nbe written."
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - OptiTypePipeline.py

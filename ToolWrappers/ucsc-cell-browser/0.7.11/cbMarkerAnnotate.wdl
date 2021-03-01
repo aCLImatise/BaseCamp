@@ -4,42 +4,45 @@ task CbMarkerAnnotate {
   input {
     Boolean? debug
     File? hprd
+    File? hgnc
+    File? s_far_i
     File? cosmic
-    Int geneannot_slash_hprd_molecular_class_zero_eight_one_nine_one_four_dot_txt
-    Int geneannot_slash_hgnc_complete_set_zero_five_dec_one_seven_dot_txt
+    File? hpo
+    File? lmd
+    File? mgi_ortho
+    File? eur_express
+    File? brain_span_mouse_dev
     Int gene_genes_export_zero_six_one_two_two_zero_one_seven_dot_csv
-    Int geneannot_slash_census_all_wed_dec_six_one_eight_three_five_five_four_two_zero_one_seven_dot_tsv
-    Int geneannot_slash_hpo_frequent_seven_dec_one_seven_dot_txt
-    String geneannot_slash_brain_span_genes_dot_csv
-    Int geneannot_slash_mgi_hgnc_homologene_eight_dec_one_seven_dot_txt
-    Int geneannot_slash_eur_express_seven_dec_one_seven_dot_txt
   }
   command <<<
     cbMarkerAnnotate \
-      ~{geneannot_slash_hprd_molecular_class_zero_eight_one_nine_one_four_dot_txt} \
-      ~{geneannot_slash_hgnc_complete_set_zero_five_dec_one_seven_dot_txt} \
       ~{gene_genes_export_zero_six_one_two_two_zero_one_seven_dot_csv} \
-      ~{geneannot_slash_census_all_wed_dec_six_one_eight_three_five_five_four_two_zero_one_seven_dot_tsv} \
-      ~{geneannot_slash_hpo_frequent_seven_dec_one_seven_dot_txt} \
-      ~{geneannot_slash_brain_span_genes_dot_csv} \
-      ~{geneannot_slash_mgi_hgnc_homologene_eight_dec_one_seven_dot_txt} \
-      ~{geneannot_slash_eur_express_seven_dec_one_seven_dot_txt} \
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(hprd) then ("--hprd " +  '"' + hprd + '"') else ""} \
-      ~{if defined(cosmic) then ("--cosmic " +  '"' + cosmic + '"') else ""}
+      ~{if defined(hgnc) then ("--hgnc " +  '"' + hgnc + '"') else ""} \
+      ~{if defined(s_far_i) then ("--sfari " +  '"' + s_far_i + '"') else ""} \
+      ~{if defined(cosmic) then ("--cosmic " +  '"' + cosmic + '"') else ""} \
+      ~{if defined(hpo) then ("--hpo " +  '"' + hpo + '"') else ""} \
+      ~{if defined(lmd) then ("--lmd " +  '"' + lmd + '"') else ""} \
+      ~{if defined(mgi_ortho) then ("--mgiOrtho " +  '"' + mgi_ortho + '"') else ""} \
+      ~{if defined(eur_express) then ("--eurexpress " +  '"' + eur_express + '"') else ""} \
+      ~{if defined(brain_span_mouse_dev) then ("--brainspanMouseDev " +  '"' + brain_span_mouse_dev + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "show debug messages"
-    hprd: "location of HPRD file, default"
-    cosmic: "location of COSMIC Census file, default"
-    geneannot_slash_hprd_molecular_class_zero_eight_one_nine_one_four_dot_txt: "--hgnc=HGNC           location of HGNC file, default"
-    geneannot_slash_hgnc_complete_set_zero_five_dec_one_seven_dot_txt: "--sfari=SFARI         location of SFARI file, default geneAnnot/SFARI-"
+    hprd: "location of HPRD file, default\\ngeneAnnot/HPRD_molecular_class_081914.txt"
+    hgnc: "location of HGNC file, default\\ngeneAnnot/hgnc_complete_set_05Dec17.txt"
+    s_far_i: "location of SFARI file, default geneAnnot/SFARI-"
+    cosmic: "location of COSMIC Census file, default\\ngeneAnnot/Census_allWed_Dec__6_18_35_54_2017.tsv"
+    hpo: "location of HPO gene/disease/phenotype file, default\\ngeneAnnot/hpo_frequent_7Dec17.txt"
+    lmd: "location of BrainSpan LMD file, default\\ngeneAnnot/brainspan_genes.csv"
+    mgi_ortho: "location of MGI Homologene file, default\\ngeneAnnot/mgi_HGNC_homologene_8Dec17.txt"
+    eur_express: "location of Eurexpress file, default\\ngeneAnnot/eurexpress_7Dec17.txt"
+    brain_span_mouse_dev: "location of brainspan Mouse Development ISH file,\\ndefault geneAnnot/brainspanMouse_9Dec17.txt\\n"
     gene_genes_export_zero_six_one_two_two_zero_one_seven_dot_csv: "--omim=OMIM           location of OMIM file, default geneAnnot/mim2gene.txt"
-    geneannot_slash_census_all_wed_dec_six_one_eight_three_five_five_four_two_zero_one_seven_dot_tsv: "--hpo=HPO             location of HPO gene/disease/phenotype file, default"
-    geneannot_slash_hpo_frequent_seven_dec_one_seven_dot_txt: "--lmd=LMD             location of BrainSpan LMD file, default"
-    geneannot_slash_brain_span_genes_dot_csv: "--mgiOrtho=MGIORTHO   location of MGI Homologene file, default"
-    geneannot_slash_mgi_hgnc_homologene_eight_dec_one_seven_dot_txt: "--eurexpress=EUREXPRESS"
-    geneannot_slash_eur_express_seven_dec_one_seven_dot_txt: "--brainspanMouseDev=BRAINSPANMOUSEDEV"
   }
   output {
     File out_stdout = stdout()

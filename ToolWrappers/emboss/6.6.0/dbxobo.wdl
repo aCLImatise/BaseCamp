@@ -22,6 +22,9 @@ task Dbxobo {
       ~{if (exclude) then "-exclude" else ""} \
       ~{if (index_outdir) then "-indexoutdir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory: "directory  [.] Database directory"
     filenames: "string     [*.obo] Wildcard database filename (Any\\nstring)"

@@ -8,6 +8,9 @@ task Flairpy {
     flair_py \
       ~{mode}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: ""
   }

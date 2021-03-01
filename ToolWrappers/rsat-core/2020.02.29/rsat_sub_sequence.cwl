@@ -3,30 +3,30 @@ id: rsat_sub_sequence.cwl
 inputs:
 - id: in_help
   doc: (must be first argument) display options
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -help
 - id: in_verbose
   doc: verbose
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_specified_standard_input
   doc: "if not specified, the standard input is used.\nThis allows to place the command\
     \ within a pipe."
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_mask
   doc: "|lower\nMask lower or uppercases, respecively, i.e. replace\nselected case\
     \ by N characters."
-  type: string
+  type: string?
   inputBinding:
     prefix: -mask
 - id: in_specified_standard_output
   doc: "if not specified, the standard output is used.\nThis allows to place the command\
     \ within a pipe."
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_frag
@@ -37,7 +37,7 @@ inputs:
     \ (optional). If not specified, all\nfragments are taken on the direct strand.\n\
     example:\nfrag1   chr2L   344641  348496  D\nfrag2   chr2L   346419  350309  R\n\
     frag3   chr2R   350781  354418  D"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -frag
 - id: in_origin
@@ -46,42 +46,42 @@ inputs:
     \ sequences\n-origin end for promoter sequences\n-origin center can be useful\
     \ for ChIP-seq peaks, which\ncan have variable lengths, but are supposed to\n\
     be more or less centred on the TF binding\nqsites."
-  type: string
+  type: string?
   inputBinding:
     prefix: -origin
 - id: in_from
   doc: "# starting position\nif not specified, the subsequence starts at 1st position."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -from
 - id: in_to
   doc: "#   end position\nif not specified, the end of the sequence is used."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -to
 - id: in_i_format
   doc: input format. Default is fasta
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -iformat
 - id: in_o_format
   doc: output format. Default is fasta
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -oformat
 - id: in_format
   doc: format. Default is fasta
-  type: string
+  type: string?
   inputBinding:
     prefix: -format
 - id: in_rc
   doc: return the reverse complement of the sub-sequences
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -rc
 - id: in_limits
   doc: "add a suffix to sequence IDs to indicate the limits of\nthe sub-sequence."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -limits
 - id: in_sub_sequence
@@ -101,9 +101,10 @@ outputs:
 - id: out_specified_standard_output
   doc: "if not specified, the standard output is used.\nThis allows to place the command\
     \ within a pipe."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_specified_standard_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

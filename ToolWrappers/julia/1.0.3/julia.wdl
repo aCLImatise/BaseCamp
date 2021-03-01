@@ -60,6 +60,9 @@ task Julia {
       ~{if (code_coverage) then "--code-coverage" else ""} \
       ~{if (track_allocation) then "--track-allocation" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     project: "[={<dir>|@.}]    Set <dir> as the home project/environment"
     sys_image: "Start up with the given system image file"

@@ -5,12 +5,12 @@ inputs:
   doc: "Path to a FASTA file with a set of \"known\" sequences.\nSequences in the\
     \ main file that do *not* occur here\nwill be marked with (new). If not given,\
     \ no sequences\nwill be marked (use this to compare two databases)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --mark
 - id: in_method
   doc: "Linkage method. Default: \"average\" (=UPGMA)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --method
 - id: in_fast_a
@@ -27,6 +27,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - igdiscover

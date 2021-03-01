@@ -10,6 +10,9 @@ task CruxLocalizemodificationCruxoutput {
       ~{crux} \
       ~{localize_modification}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     localize_modification: ""

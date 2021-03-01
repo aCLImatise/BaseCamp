@@ -20,6 +20,9 @@ task Isoseq3Collapse {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_aln_coverage: "FLOAT  Ignore alignments with less than minimum query read coverage. [0.99]"
     min_aln_identity: "FLOAT  Ignore alignments with less than minimum alignment identity. [0.95]"

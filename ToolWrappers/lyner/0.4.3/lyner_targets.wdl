@@ -2,14 +2,17 @@ version 1.0
 
 task LynerTargets {
   input {
-    File? targets
+    File? from_file
   }
   command <<<
     lyner targets \
-      ~{if defined(targets) then ("--targets " +  '"' + targets + '"') else ""}
+      ~{if defined(from_file) then ("--from-file " +  '"' + from_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    targets: "-f, --from-file FILENAME\\n-m, --mode [exclude|intersect]\\n--help                          Show this message and exit.\\n"
+    from_file: "[exclude|intersect]"
   }
   output {
     File out_stdout = stdout()

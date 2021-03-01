@@ -3,7 +3,7 @@ id: slicedimage_checksum_out_path.cwl
 inputs:
 - id: in_pretty
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pretty
 - id: in_sliced_image
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - slicedimage

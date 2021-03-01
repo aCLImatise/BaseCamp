@@ -3,7 +3,7 @@ id: arrow_groups_update_group_admin.cwl
 inputs:
 - id: in_users
   doc: List of emails
-  type: string
+  type: string?
   inputBinding:
     prefix: --users
 - id: in_group_id
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - arrow

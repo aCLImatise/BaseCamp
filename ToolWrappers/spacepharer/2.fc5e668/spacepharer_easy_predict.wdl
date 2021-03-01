@@ -6,7 +6,7 @@ task SpacepharerEasypredict {
     Boolean? add_self_matches
     File? seed_sub_mat
     Float? sensitivity_faster_fast
-    Int? kmer_length_automatically
+    Int? kmer_length_set
     Int? k_score
     Int? alph_size
     Int? max_seqs
@@ -22,7 +22,7 @@ task SpacepharerEasypredict {
     Int? spaced_km_er_pattern
     File? local_tmp
     Int? disk_space_limit
-    Boolean? add_backtrace_string
+    Boolean? add_string_convert
     Int? alignment_mode
     Boolean? wrapped_scoring
     Float? list_matches_evalue
@@ -99,7 +99,7 @@ task SpacepharerEasypredict {
       ~{if defined(add_self_matches) then ("--add-self-matches " +  '"' + add_self_matches + '"') else ""} \
       ~{if defined(seed_sub_mat) then ("--seed-sub-mat " +  '"' + seed_sub_mat + '"') else ""} \
       ~{if defined(sensitivity_faster_fast) then ("-s " +  '"' + sensitivity_faster_fast + '"') else ""} \
-      ~{if defined(kmer_length_automatically) then ("-k " +  '"' + kmer_length_automatically + '"') else ""} \
+      ~{if defined(kmer_length_set) then ("-k " +  '"' + kmer_length_set + '"') else ""} \
       ~{if defined(k_score) then ("--k-score " +  '"' + k_score + '"') else ""} \
       ~{if defined(alph_size) then ("--alph-size " +  '"' + alph_size + '"') else ""} \
       ~{if defined(max_seqs) then ("--max-seqs " +  '"' + max_seqs + '"') else ""} \
@@ -115,7 +115,7 @@ task SpacepharerEasypredict {
       ~{if defined(spaced_km_er_pattern) then ("--spaced-kmer-pattern " +  '"' + spaced_km_er_pattern + '"') else ""} \
       ~{if defined(local_tmp) then ("--local-tmp " +  '"' + local_tmp + '"') else ""} \
       ~{if defined(disk_space_limit) then ("--disk-space-limit " +  '"' + disk_space_limit + '"') else ""} \
-      ~{if defined(add_backtrace_string) then ("-a " +  '"' + add_backtrace_string + '"') else ""} \
+      ~{if defined(add_string_convert) then ("-a " +  '"' + add_string_convert + '"') else ""} \
       ~{if defined(alignment_mode) then ("--alignment-mode " +  '"' + alignment_mode + '"') else ""} \
       ~{if defined(wrapped_scoring) then ("--wrapped-scoring " +  '"' + wrapped_scoring + '"') else ""} \
       ~{if defined(list_matches_evalue) then ("-e " +  '"' + list_matches_evalue + '"') else ""} \
@@ -186,12 +186,15 @@ task SpacepharerEasypredict {
       ~{if defined(merge_query) then ("--merge-query " +  '"' + merge_query + '"') else ""} \
       ~{if defined(strand) then ("--strand " +  '"' + strand + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     comp_bias_corr: "Correct for locally biased amino acid composition (range 0-1) [1]"
     add_self_matches: "Artificially add entries of queries with themselves (for clustering) [0]"
     seed_sub_mat: "Substitution matrix file for k-mer generation [nucl:nucleotide.out,aa:VTML80.out]"
     sensitivity_faster_fast: "Sensitivity: 1.0 faster; 4.0 fast; 7.5 sensitive [5.700]"
-    kmer_length_automatically: "k-mer length (0: automatically set to optimum) [6]"
+    kmer_length_set: "k-mer length (0: automatically set to optimum) [6]"
     k_score: "k-mer threshold for generating similar k-mer lists [2147483647]"
     alph_size: "Alphabet size (range 2-21) [nucl:5,aa:21]"
     max_seqs: "Maximum results per query sequence allowed to pass the prefilter (affects sensitivity) [300]"
@@ -207,7 +210,7 @@ task SpacepharerEasypredict {
     spaced_km_er_pattern: "User-specified spaced k-mer pattern [11011101]"
     local_tmp: "Path where some of the temporary files will be created []"
     disk_space_limit: "Set max disk space to use for reverse profile searches. E.g. 800B, 5K, 10M, 1G. Default (0) to all available disk space in the temp folder [0]"
-    add_backtrace_string: "Add backtrace string (convert to alignments with mmseqs convertalis module) [1]"
+    add_string_convert: "Add backtrace string (convert to alignments with mmseqs convertalis module) [1]"
     alignment_mode: "How to compute the alignment:\\n0: automatic\\n1: only score and end_pos\\n2: also start_pos and cov\\n3: also seq.id\\n4: only ungapped alignment [2]"
     wrapped_scoring: "Double the (nucleotide) query sequence during the scoring process to allow wrapped diagonal scoring around end and start [0]"
     list_matches_evalue: "List matches below this E-value (range 0.0-inf) [200.000]"

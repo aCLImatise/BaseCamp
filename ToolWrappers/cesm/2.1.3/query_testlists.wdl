@@ -28,6 +28,9 @@ task QueryTestlists {
       ~{if defined(xml_compiler) then ("--xml-compiler " +  '"' + xml_compiler + '"') else ""} \
       ~{if defined(xml_test_list) then ("--xml-testlist " +  '"' + xml_test_list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Print debug information (very verbose) to file /query_testlists.log"
     verbose: "Add additional context (time and file) to log messages"

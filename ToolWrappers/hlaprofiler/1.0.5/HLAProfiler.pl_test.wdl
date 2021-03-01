@@ -16,6 +16,9 @@ task HLAProfilerplTest {
       ~{if (directory) then "-directory" else ""} \
       ~{if (output_directory) then "-output_directory" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     test: "|t         Denotes the module to test\\nAvailable_tests:\\nall\\nSequenceFunctions\\nMergeDuplicates\\nHLATaxonomy\\nHLADistractome\\nTaxonomyDivisions\\nRunKraken\\nSimulateReads\\nReadCounter\\nDetermineProfile\\nPairPicker\\nAlleleRefiner"
     kraken_path: "|kp base directory of kraken installation. (default:base directory of path returned by `which kraken`)"

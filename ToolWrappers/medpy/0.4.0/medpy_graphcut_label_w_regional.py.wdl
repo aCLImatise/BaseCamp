@@ -28,6 +28,9 @@ task MedpyGraphcutLabelWRegionalpy {
       ~{if (display_more_information) then "-v" else ""} \
       ~{if (display_debug_information) then "-d" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     boundary: "The boundary term to use. Note that difference of means (means) requires the original image, while stawiaski requires the gradient image of the original image to be passed to badditional."
     regional: "The regional term to use. Note that the atlas requires to provide an atlas image."

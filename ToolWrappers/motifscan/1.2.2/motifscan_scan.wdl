@@ -4,7 +4,7 @@ task MotifscanScan {
   input {
     Boolean? verbose
     File? input_genomic_regions
-    String? format_input_file
+    String? format_default_bed
     String? motif
     String? genome
     String? p_value_cutoff
@@ -35,7 +35,7 @@ task MotifscanScan {
       ~{sites_dot} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(input_genomic_regions) then ("-i " +  '"' + input_genomic_regions + '"') else ""} \
-      ~{if defined(format_input_file) then ("-f " +  '"' + format_input_file + '"') else ""} \
+      ~{if defined(format_default_bed) then ("-f " +  '"' + format_default_bed + '"') else ""} \
       ~{if defined(motif) then ("--motif " +  '"' + motif + '"') else ""} \
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
       ~{if defined(p_value_cutoff) then ("-p " +  '"' + p_value_cutoff + '"') else ""} \
@@ -52,10 +52,13 @@ task MotifscanScan {
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
       ~{if (site) then "--site" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Enable verbose log messages."
     input_genomic_regions: "Input genomic regions (peaks) to be scanned."
-    format_input_file: "Format of the input file. Default: bed"
+    format_default_bed: "Format of the input file. Default: bed"
     motif: "Motif set name to scan for."
     genome: "Genome assembly name."
     p_value_cutoff: "P value cutoff for motif scores. Default: 1e-4"

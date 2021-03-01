@@ -14,6 +14,9 @@ task Filtervariations {
       ~{if (arg_maximum_allowed_difference) then "-z" else ""} \
       ~{if (arg_minimum_length) then "-l" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_maximum_allowed_distance: "[ --max_offset ] arg (=100)     Maximum allowed distance."
     arg_maximum_allowed_difference: "[ --max_length_diff ] arg (=20) Maximum allowed length difference."

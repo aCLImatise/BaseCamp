@@ -1,50 +1,62 @@
 !Command
 command:
 - run_tipp_tool.py
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: PREFIX
+  description: -i INPUT, --input INPUT
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -p
-  args: !SimpleFlagArg
-    name: PREFIX
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: OUTPUT
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -a
-  args: !SimpleFlagArg
-    name: ACTION
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -g
+  - --gene
+  description: use GENE's reference package
   args: !SimpleFlagArg
     name: GENE
+- !Flag
   optional: true
+  synonyms:
+  - -a
+  - --action
+  description: Run ACTION
+  args: !SimpleFlagArg
+    name: ACTION
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: OUTPUT directory
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threshold
+  description: "threshold for classification\n"
+  args: !SimpleFlagArg
+    name: THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: ''
+  args: !SimpleFlagArg
+    name: PREFIX
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-g GENE, --gene GENE  use GENE's\
-    \ reference package\n-a ACTION, --action ACTION\nRun ACTION\n-o OUTPUT, --output\
-    \ OUTPUT\nOUTPUT directory\n-p PREFIX, --prefix PREFIX\nPREFIX\n-i INPUT, --input\
-    \ INPUT\nINPUT destination\n-t THRESHOLD, --threshold THRESHOLD\nthreshold for\
-    \ classification\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: run_tipp_tool.py [-h] [-g GENE] -a ACTION [-o OUTPUT] [-p PREFIX]\n\
@@ -58,3 +70,4 @@ help_text: "usage: run_tipp_tool.py [-h] [-g GENE] -a ACTION [-o OUTPUT] [-p PRE
   \ for classification\n"
 generated_using:
 - --help
+docker_image:

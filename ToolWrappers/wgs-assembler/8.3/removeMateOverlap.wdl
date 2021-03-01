@@ -8,6 +8,9 @@ task RemoveMateOverlap {
     removeMateOverlap \
       ~{opts}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     opts: ""
   }

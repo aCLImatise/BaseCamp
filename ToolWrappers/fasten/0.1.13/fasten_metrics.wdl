@@ -16,6 +16,9 @@ task FastenMetrics {
       ~{if (each_read) then "--each-read" else ""} \
       ~{if defined(distribution) then ("--distribution " +  '"' + distribution + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_cpus: "Number of CPUs (default: 1)"
     paired_end: "The input reads are interleaved paired-end"

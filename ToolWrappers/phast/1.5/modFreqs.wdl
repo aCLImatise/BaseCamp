@@ -8,6 +8,9 @@ task ModFreqs {
     modFreqs \
       ~{or}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     or: "modFreqs tree.mod <G+Cfreq> > new.mod"
   }

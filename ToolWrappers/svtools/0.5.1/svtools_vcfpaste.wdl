@@ -14,6 +14,9 @@ task SvtoolsVcfpaste {
       ~{if defined(tempdir) then ("--tempdir " +  '"' + tempdir + '"') else ""} \
       ~{if (sum_quals) then "--sum-quals" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_list: "file containing a line-delimited list of VCF files to\\npaste (required)"
     master: "VCF file to set first 8 columns of variant info\\n(otherwise first file in --vcf-list)"

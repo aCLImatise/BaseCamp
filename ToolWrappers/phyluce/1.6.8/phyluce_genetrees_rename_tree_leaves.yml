@@ -4,81 +4,85 @@ command:
 positional: []
 named:
 - !Flag
-  description: "[--order {left:right,right:left}]\n[--input-format {nexus,newick,fasta,phylip}]\n\
-    [--output-format {nexus,newick,fasta,phylip}]\n[--reroot REROOT]\n[--do-not-preserve-spaces\
-    \ DO_NOT_PRESERVE_SPACES]"
-  synonyms:
-  - --output
-  - --section
-  args: !SimpleFlagArg
-    name: OUTPUT
   optional: true
-- !Flag
-  description: The input tree file
   synonyms:
   - --input
+  description: The input tree file
   args: !SimpleFlagArg
     name: INPUT
-  optional: true
 - !Flag
-  description: A python config file mapping one name to another
+  optional: true
   synonyms:
   - --config
+  description: A python config file mapping one name to another
   args: !SimpleFlagArg
     name: CONFIG
-  optional: true
 - !Flag
-  description: "{left:right,right:left}\nMap the names as entered or in reverse"
+  optional: true
+  synonyms:
+  - --output
+  description: The output tree file
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --section
+  description: The section of the conf file to use
+  args: !SimpleFlagArg
+    name: SECTION
+- !Flag
+  optional: true
   synonyms:
   - --order
+  description: "{left:right,right:left}\nMap the names as entered or in reverse"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The tree file format
+  optional: true
   synonyms:
   - --input-format
+  description: The tree file format
   args: !ChoiceFlagArg
     choices: !!set
       phylip:
-      fasta:
-      newick:
       nexus:
-  optional: true
+      newick:
+      fasta:
 - !Flag
-  description: The tree file format
+  optional: true
   synonyms:
   - --output-format
+  description: The tree file format
   args: !ChoiceFlagArg
     choices: !!set
       phylip:
-      fasta:
-      newick:
       nexus:
-  optional: true
+      newick:
+      fasta:
 - !Flag
-  description: The resulting name to root the tree on
+  optional: true
   synonyms:
   - --reroot
+  description: The resulting name to root the tree on
   args: !SimpleFlagArg
     name: REROOT
-  optional: true
 - !Flag
-  description: "Do not retain spaces in output names\n"
+  optional: true
   synonyms:
   - --do-not-preserve-spaces
+  description: "Do not retain spaces in output names\n"
   args: !SimpleFlagArg
     name: DO_NOT_PRESERVE_SPACES
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: phyluce_genetrees_rename_tree_leaves [-h] --input INPUT --config\
@@ -100,3 +104,4 @@ help_text: "usage: phyluce_genetrees_rename_tree_leaves [-h] --input INPUT --con
   \                        Do not retain spaces in output names\n"
 generated_using:
 - --help
+docker_image:

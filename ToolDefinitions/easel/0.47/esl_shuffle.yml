@@ -1,0 +1,242 @@
+&id001 !Command
+command:
+- esl-shuffle
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ': direct output data to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  description: ': generate <n> samples (per input seq/msa)  [1]  (n>0)'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: ': truncate outputs to length <n>  [0]  (n>=0)'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: ': shuffle preserving monoresidue composition  [default]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: ': shuffle preserving mono- and di-residue composition'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: ': shuffle nonoverlapping <n>-mers  (n>0)'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - '-0'
+  description: ': generate with 0th order Markov properties per input'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: ': generate with 1st order Markov properties per input'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: ': reverse each input'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: ': regionally shuffle inputs in window size <n>  (n>0)'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: ': take bootstrapping samples'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ': shuffle residues in each column independently'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rna
+  description: ': generate RNA sequence  [default]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dna
+  description: ': generate DNA sequence'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --amino
+  description: ': generate protein sequence'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: ": set random number generator's seed to <n>  [0]  (n>=0)"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --informat
+  description: ': specify that input file is in format <s>'
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - esl-shuffle
+  - msafile
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: esl-shuffle
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: seqfile
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -G
+    description: ''
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -A
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: esl-shuffle    [options] <seqfile>  (shuffles individual sequences)\n\
+    Usage: esl-shuffle -A [options] <msafile>  (shuffles msa columnwise)\nUsage: esl-shuffle\
+    \ -G [options]            (generates random sequences)\n\nTo see more help on\
+    \ available options, do esl-shuffle -h\n\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/easel:0.47--h516909a_0
+- !Command
+  command:
+  - esl-shuffle
+  - seqfile
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: esl-shuffle
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: msafile
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -G
+    description: ''
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -A
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: esl-shuffle    [options] <seqfile>  (shuffles individual sequences)\n\
+    Usage: esl-shuffle -A [options] <msafile>  (shuffles msa columnwise)\nUsage: esl-shuffle\
+    \ -G [options]            (generates random sequences)\n\nTo see more help on\
+    \ available options, do esl-shuffle -h\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/easel:0.47--h516909a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ': help; show brief info on version and usage'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "# esl-shuffle :: shuffling or generating random sequences\n# Easel 0.47\
+  \ (Jul 2020)\n# Copyright (C) 2020 Howard Hughes Medical Institute\n# Freely distributed\
+  \ under the BSD open source license.\n# - - - - - - - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - - - - - -\nUsage: esl-shuffle    [options] <seqfile>  (shuffles\
+  \ individual sequences)\nUsage: esl-shuffle -A [options] <msafile>  (shuffles msa\
+  \ columnwise)\nUsage: esl-shuffle -G [options]            (generates random sequences)\n\
+  \n where general options are:\n  -h     : help; show brief info on version and usage\n\
+  \  -o <f> : direct output data to file <f>\n  -N <n> : generate <n> samples (per\
+  \ input seq/msa)  [1]  (n>0)\n  -L <n> : truncate outputs to length <n>  [0]  (n>=0)\n\
+  \n options for shuffling input sequences (default mode):\n  -m     : shuffle preserving\
+  \ monoresidue composition  [default]\n  -d     : shuffle preserving mono- and di-residue\
+  \ composition\n  -k <n> : shuffle nonoverlapping <n>-mers  (n>0)\n  -0     : generate\
+  \ with 0th order Markov properties per input\n  -1     : generate with 1st order\
+  \ Markov properties per input\n  -r     : reverse each input\n  -w <n> : regionally\
+  \ shuffle inputs in window size <n>  (n>0)\n\n options for shuffling alignments\
+  \ (-A mode):\n  -b : take bootstrapping samples\n  -v : shuffle residues in each\
+  \ column independently\n\n options for generating sequences de novo (w/ -G option):\n\
+  \  --rna   : generate RNA sequence  [default]\n  --dna   : generate DNA sequence\n\
+  \  --amino : generate protein sequence\n\n other infrequently used options:\n  --seed\
+  \ <n>     : set random number generator's seed to <n>  [0]  (n>=0)\n  --informat\
+  \ <s> : specify that input file is in format <s>\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/easel:0.47--h516909a_0

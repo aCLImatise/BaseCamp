@@ -18,6 +18,9 @@ task RsatMatrixdistrib {
       ~{convert_background_model_dot} \
       ~{if (bg_format_dot_supported) then "-bg_format.Supported" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bg_format_dot_supported: ": oligo-analysis, MotifSampler, meme. Default is:"
     matrix_distrib: "[1mDESCRIPTION[0m"

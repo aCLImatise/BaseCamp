@@ -62,6 +62,9 @@ task Tpage {
       ~{if defined(template_module) then ("--template_module " +  '"' + template_module + '"') else ""} \
       ~{if defined(while_max) then ("--while_max " +  '"' + while_max + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     define: "=value       Define template variable"
     interpolate: "Interpolate '$var' references in text"

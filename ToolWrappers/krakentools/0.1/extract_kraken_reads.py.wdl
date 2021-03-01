@@ -34,6 +34,9 @@ task ExtractKrakenReadspy {
       ~{if (exclude) then "--exclude" else ""} \
       ~{if (fast_q_output) then "--fastq-output" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kraken_output_file: "Kraken output file to parse"
     s_one: "FASTA/FASTQ File containing the raw sequence letters."

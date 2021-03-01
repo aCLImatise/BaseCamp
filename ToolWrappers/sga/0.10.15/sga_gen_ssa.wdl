@@ -14,6 +14,9 @@ task SgaGenssa {
       ~{if (check) then "--check" else ""} \
       ~{if (sai_only) then "--sai-only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     threads: "use NUM threads to construct the index (default: 1)"

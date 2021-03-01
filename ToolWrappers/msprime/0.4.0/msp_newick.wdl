@@ -10,6 +10,9 @@ task MspNewick {
       ~{history_file} \
       ~{if defined(precision) then ("--precision " +  '"' + precision + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     precision: "The number of decimal places in branch lengths\\n"
     history_file: "The msprime history file in HDF5 format"

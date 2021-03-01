@@ -12,6 +12,9 @@ task MhapConvert {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(s) then ("-S " +  '"' + s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     s: ""

@@ -14,6 +14,9 @@ task Filterfa {
       ~{if (paired) then "--paired" else ""} \
       ~{if (merge) then "--merge" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     paired: "if the reads are paired-end"
     merge: "if the reads are paired-end in two files"

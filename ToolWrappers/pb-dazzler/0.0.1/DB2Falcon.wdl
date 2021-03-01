@@ -10,6 +10,9 @@ task DB2Falcon {
       ~{db_two_fast_a} \
       ~{if (u) then "-U" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     u: ""
     db_two_fast_a: ""

@@ -30,6 +30,9 @@ task Pytleap {
       ~{if defined(l_frc) then ("--lfrc " +  '"' + l_frc + '"') else ""} \
       ~{if defined(ctrl) then ("--ctrl " +  '"' + ctrl + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prot: "protein PDB file                       (no default)"
     pep: "peptide PDB file                       (no default)"

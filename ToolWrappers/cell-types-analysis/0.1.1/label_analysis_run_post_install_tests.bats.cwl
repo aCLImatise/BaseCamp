@@ -3,17 +3,17 @@ id: label_analysis_run_post_install_tests.bats.cwl
 inputs:
 - id: in_count
   doc: Count the number of test cases without running any tests
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --count
 - id: in_pretty
   doc: Show results in pretty format (default for terminals)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pretty
 - id: in_tap
   doc: Show results in TAP format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tap
 - id: in_bats
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - label_analysis_run_post_install_tests.bats

@@ -7,7 +7,7 @@ task TOBIASPlotAggregate {
     Boolean? regions
     Boolean? whitelist
     Boolean? blacklist
-    File? path_output_tobiasaggregatepdf
+    File? path_output_default
     Boolean? title
     Boolean? flank
     Boolean? tfbs_labels
@@ -30,7 +30,7 @@ task TOBIASPlotAggregate {
       ~{if (regions) then "--regions" else ""} \
       ~{if (whitelist) then "--whitelist" else ""} \
       ~{if (blacklist) then "--blacklist" else ""} \
-      ~{if (path_output_tobiasaggregatepdf) then "--output" else ""} \
+      ~{if (path_output_default) then "--output" else ""} \
       ~{if (title) then "--title" else ""} \
       ~{if (flank) then "--flank" else ""} \
       ~{if (tfbs_labels) then "--TFBS-labels" else ""} \
@@ -46,13 +46,16 @@ task TOBIASPlotAggregate {
       ~{if defined(remove_outliers) then ("--remove-outliers " +  '"' + remove_outliers + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tfbs: "[<bed> [<bed> ...]]           TFBS sites (*required)"
     signals: "[<bigwig> [<bigwig> ...]]  Signals in bigwig format (*required)"
     regions: "[<bed> [<bed> ...]]        Regions to overlap with TFBS (optional)"
     whitelist: "[<bed> [<bed> ...]]      Only plot sites overlapping whitelist (optional)"
     blacklist: "[<bed> [<bed> ...]]      Exclude sites overlapping blacklist (optional)"
-    path_output_tobiasaggregatepdf: "Path to output (default: TOBIAS_aggregate.pdf)"
+    path_output_default: "Path to output (default: TOBIAS_aggregate.pdf)"
     title: "Title of plot (default: \\\"Aggregated signals\\\")"
     flank: "Flanking basepairs (+/-) to show in plot (counted\\nfrom middle of the TFBS) (default: 60)"
     tfbs_labels: "[ [ ...]]              Labels used for each TFBS file (default: prefix of\\neach --TFBS)"
@@ -70,6 +73,6 @@ task TOBIASPlotAggregate {
   }
   output {
     File out_stdout = stdout()
-    File out_path_output_tobiasaggregatepdf = "${in_path_output_tobiasaggregatepdf}"
+    File out_path_output_default = "${in_path_output_default}"
   }
 }

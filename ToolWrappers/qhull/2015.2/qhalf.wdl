@@ -4,6 +4,9 @@ task Qhalf {
   command <<<
     qhalf
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

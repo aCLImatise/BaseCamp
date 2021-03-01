@@ -4,6 +4,9 @@ task Rebaseextract {
   command <<<
     _rebaseextract
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

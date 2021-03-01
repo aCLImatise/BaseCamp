@@ -18,6 +18,9 @@ task PhyluceAlignMoveAlignByConfFile {
       ~{if (opposite) then "--opposite" else ""} \
       ~{if defined(extension) then ("--extension " +  '"' + extension + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     conf: "The configuration file giving locus names"
     alignments: "The input directory for the alignments"

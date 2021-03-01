@@ -40,6 +40,9 @@ task GenomepyInstall {
       ~{if defined(ucsc_annotation) then ("--ucsc-annotation " +  '"' + ucsc_annotation + '"') else ""} \
       ~{if defined(url_to_annotation) then ("--url-to-annotation " +  '"' + url_to_annotation + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genomes_dir: "genomes directory"
     local_name: "custom name"

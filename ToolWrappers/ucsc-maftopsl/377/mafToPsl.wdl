@@ -12,6 +12,9 @@ task MafToPsl {
       ~{target_src} \
       ~{in_dot_maf}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query_src: ""
     target_src: ""

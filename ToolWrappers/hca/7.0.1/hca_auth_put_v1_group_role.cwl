@@ -2,19 +2,20 @@ class: CommandLineTool
 id: hca_auth_put_v1_group_role.cwl
 inputs:
 - id: in_group_id
-  doc: "The name of the group.\n--action ACTION\n"
-  type: string
+  doc: The name of the group.
+  type: string?
   inputBinding:
     prefix: --group-id
 - id: in_roles
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --roles
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hca

@@ -3,52 +3,52 @@ id: PgSAtest.cwl
 inputs:
 - id: in_by_position
   doc: by position
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_reads_uncorrecly_concatenated
   doc: reads (for uncorrecly concatenated pair-ended data)
-  type: string
+  type: string?
   inputBinding:
     prefix: -s
 - id: in_filter
   doc: reads (for compatibility with CGk tests)
-  type: string
+  type: string?
   inputBinding:
     prefix: -filter
 - id: in_c
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -c
 - id: in_n
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -n
 - id: in_r
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
 - id: in_k
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -k
 - id: in_of
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 - id: in_repeats
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 1
 - id: in_test_km_ers
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 3
 - id: in_index_file
@@ -60,6 +60,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - PgSAtest

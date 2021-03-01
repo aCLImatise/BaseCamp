@@ -1,56 +1,57 @@
 class: CommandLineTool
 id: ibs.cwl
 inputs:
-- id: in_glf_slash_f
+- id: in_glf
   doc: 'input GLF filename:'
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -glf/-f
-- id: in_out_filename_slash_o
+    prefix: -glf
+- id: in_out_filename
   doc: 'filename(prefix):'
-  type: File
+  type: File?
   inputBinding:
-    prefix: -outFileName/-o
-- id: in_ninds_lash_n
+    prefix: -outFileName
+- id: in_n_ind
   doc: 'nubmer of individuals in GLF file:'
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -nInd/-n
-- id: in_in_done_slash_i_one
-  doc: 'individuals 1:'
-  type: boolean
+    prefix: -nInd
+- id: in_in_done
+  doc: '/i1        individuals 1:'
+  type: boolean?
   inputBinding:
-    prefix: -ind1/i1
-- id: in_ind_two_slash_i_two
-  doc: 'individuals 2:'
-  type: boolean
+    prefix: -ind1
+- id: in_ind_two
+  doc: '/i2        individuals 2:'
+  type: boolean?
   inputBinding:
-    prefix: -ind2/i2
-- id: in_all_pairs_slash_a
+    prefix: -ind2
+- id: in_all_pairs
   doc: 'analyse all pairs:'
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -allpairs/-a
-- id: in_max_sites_slash_m
+    prefix: -allpairs
+- id: in_max_sites
   doc: 'maximum sites to analyze:'
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -maxSites/-m
+    prefix: -maxSites
 - id: in_model
   doc: "ibs model\nsingle:        0 all 10 genotypes, 1 HO/HE\npair:          0 all\
     \ 10 genotypes, 1 HO/HE, 2 ABCD"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -model
 - id: in_seed
   doc: ibs -seed 0 use seed for random start
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -seed
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ibs

@@ -11,7 +11,7 @@ task Recognizerpy {
     Boolean? tsv
     Boolean? remove_spaces
     Boolean? output_sequences
-    File? file
+    File? fasta_file_protein
   }
   command <<<
     recognizer_py \
@@ -24,8 +24,11 @@ task Recognizerpy {
       ~{if (tsv) then "--tsv" else ""} \
       ~{if (remove_spaces) then "--remove-spaces" else ""} \
       ~{if (output_sequences) then "--output-sequences" else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""}
+      ~{if defined(fasta_file_protein) then ("--file " +  '"' + fasta_file_protein + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads for reCOGnizer to use. Default is\\nnumber of CPUs available minus 2."
     output_directory: "Output directory"
@@ -36,7 +39,7 @@ task Recognizerpy {
     tsv: "Tables will be produced in TSV format (and not EXCEL)."
     remove_spaces: "BLAST ignores sequences IDs after the first space.\\nThis option changes all spaces to underscores to keep\\nthe full IDs."
     output_sequences: "Protein sequences from the FASTA input will be stored\\nin their own column. This produces considerably larger\\nfiles."
-    file: "Fasta file with protein sequences for annotation"
+    fasta_file_protein: "Fasta file with protein sequences for annotation"
   }
   output {
     File out_stdout = stdout()

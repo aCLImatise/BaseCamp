@@ -2,14 +2,20 @@ version 1.0
 
 task Lordeccorrect {
   input {
-    Boolean? solidthreshold_solid_kmer
+    File? short_reads
+    Int? corrected_read_file
   }
   command <<<
     lordec_correct \
-      ~{if (solidthreshold_solid_kmer) then "-s" else ""}
+      ~{if defined(short_reads) then ("--short_reads " +  '"' + short_reads + '"') else ""} \
+      ~{if defined(corrected_read_file) then ("--corrected_read_file " +  '"' + corrected_read_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    solidthreshold_solid_kmer: "|solid_threshold <solid k-mer abundance threshold>"
+    short_reads: "<short read FASTA/Q file(s)>"
+    corrected_read_file: "|solid_threshold <solid k-mer abundance threshold>"
   }
   output {
     File out_stdout = stdout()

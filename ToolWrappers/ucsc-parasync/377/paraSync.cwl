@@ -3,17 +3,17 @@ id: paraSync.cwl
 inputs:
 - id: in_means_accept_files
   doc: ='ext1,ext2'  means accept only files with ext1 or ext2
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -A
 - id: in_newer
   doc: only download a file if it is newer than the version we already have.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -newer
 - id: in_progress
   doc: Show progress of download.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -progress
 - id: in_where
@@ -65,6 +65,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - paraSync

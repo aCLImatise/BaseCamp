@@ -2,7 +2,6 @@ version 1.0
 
 task Phrasesearch {
   input {
-    Boolean? count
     String done
     String do
     String sort
@@ -42,7 +41,7 @@ task Phrasesearch {
     String antagonism_blocking
     String bc
     String decreases_expressionproduction
-    String var_40
+    String var_39
     String sa
     String pr
     String pa
@@ -97,7 +96,7 @@ task Phrasesearch {
       ~{antagonism_blocking} \
       ~{bc} \
       ~{decreases_expressionproduction} \
-      ~{var_40} \
+      ~{var_39} \
       ~{sa} \
       ~{pr} \
       ~{pa} \
@@ -109,11 +108,12 @@ task Phrasesearch {
       ~{md} \
       ~{bg} \
       ~{eg} \
-      ~{rg} \
-      ~{if (count) then "-count" else ""}
+      ~{rg}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    count: "| -counts | -query | -filter | -exact | -terms"
     done: "declare -a THEMES"
     do: "num=$(phrase-search -query \\\"$fst [THME]\\\" | wc -l)\\necho -e \\\"$fst\\t \\t$num\\\"\\nfor scd in ${REMAINS[@]}\\ndo\\nnum=$(phrase-search -query \\\"$fst [THME] AND $scd [THME]\\\" | wc -l)\\necho -e \\\"$fst\\t$scd\\t$num\\\"\\necho -e \\\"$scd\\t$fst\\t$num\\\"\\ndone\\nREMAINS=(\\\"${REMAINS[@]:1}\\\")"
     sort: "ENTREZ INTEGRATION"
@@ -153,7 +153,7 @@ task Phrasesearch {
     antagonism_blocking: "antagonism, blocking"
     bc: "binding, ligand (especially receptors)"
     decreases_expressionproduction: "decreases expression/production"
-    var_40: "affects expression/production (neutral)"
+    var_39: "affects expression/production (neutral)"
     sa: "side effect/adverse event"
     pr: "prevents, suppresses"
     pa: "alleviates, reduces"

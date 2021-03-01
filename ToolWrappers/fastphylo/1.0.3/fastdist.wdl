@@ -44,6 +44,9 @@ task Fastdist {
       ~{if (print_relaxng_input) then "--print-relaxng-input" else ""} \
       ~{if (print_relaxng_output) then "--print-relaxng-output" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "output filename. If not specifed, output is\\nwritten to stdout"
     input_format: "input format. xml means the Fastphylo sequence\\nXML format  (possible values=\\\"fasta\\\",\\n\\\"phylip\\\", \\\"xml\\\" default=`fasta')"

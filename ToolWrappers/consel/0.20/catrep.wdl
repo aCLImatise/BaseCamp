@@ -4,6 +4,9 @@ task Catrep {
   command <<<
     catrep
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

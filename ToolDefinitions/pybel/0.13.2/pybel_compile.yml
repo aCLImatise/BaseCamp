@@ -4,26 +4,61 @@ command:
 - compile
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: PATH
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "Enable lenient parsing for naked names\n--allow-nested           \
-    \       Enable lenient parsing for nested statements\n--disallow-unqualified-translocations\n\
-    Disallow unqualified translocations\n--no-identifier-validation      Turn off\
-    \ identifier validation\n--no-citation-clearing          Turn off citation clearing\n\
-    -r, --required-annotations TEXT\nSpecify multiple required annotations\n--skip-tqdm\n\
-    -v, --verbose\n--help                          Show this message and exit.\n"
+  optional: true
   synonyms:
   - --allow-naked-names
+  description: Enable lenient parsing for naked names
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - --allow-nested
+  description: Enable lenient parsing for nested statements
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disallow-unqualified-translocations
+  description: Disallow unqualified translocations
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-identifier-validation
+  description: Turn off identifier validation
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-citation-clearing
+  description: Turn off citation clearing
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --required-annotations
+  description: Specify multiple required annotations
+  args: !SimpleFlagArg
+    name: TEXT
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --skip-tqdm
+  - -v
+  - --verbose
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: pybel compile [OPTIONS] PATH\n\n  Compile a BEL script to a graph.\n\
@@ -37,3 +72,4 @@ help_text: "Usage: pybel compile [OPTIONS] PATH\n\n  Compile a BEL script to a g
   \           Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

@@ -22,6 +22,9 @@ task MapPacBiosh {
       ~{if (e_oom) then "-eoom" else ""} \
       ~{if (da) then "-da" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     x_mx: "This will set Java's memory usage,\\noverriding autodetection.\\n-Xmx20g will specify 20 gigs of RAM, and -Xmx800m\\nwill specify 800 megs.  The max is typically 85% of\\nphysical memory.  The human genome requires around 24g,\\nor 12g with the 'usemodulo' flag.  The index uses\\nroughly 6 bytes per reference base."
     e_oom: "This flag will cause the process to exit if an\\nout-of-memory exception occurs.  Requires Java 8u92+."

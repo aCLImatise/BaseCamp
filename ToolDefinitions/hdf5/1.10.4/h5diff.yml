@@ -3,42 +3,45 @@ command:
 - h5diff
 positional:
 - !Positional
-  description: File name of the first HDF5 file
+  optional: false
   position: 0
   name: file1
-  optional: false
+  description: File name of the first HDF5 file
 - !Positional
-  description: File name of the second HDF5 file
+  optional: false
   position: 1
   name: file2
-  optional: false
+  description: File name of the second HDF5 file
 - !Positional
-  description: "-h, --help\nPrint a usage message and exit."
+  optional: false
   position: 0
   name: OPTIONS
-  optional: false
+  description: "-h, --help\nPrint a usage message and exit."
 named:
 - !Flag
-  description: Report mode. Print differences.
+  optional: true
   synonyms:
   - -r
   - --report
+  description: Report mode. Print differences.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Quiet mode. Do not produce output.
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: Quiet mode. Do not produce output.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Prints messages from the HDF5 error stack as they occur.
+  optional: true
   synonyms:
   - --enable-error-stack
+  description: Prints messages from the HDF5 error stack as they occur.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --follow-symlinks
   description: "Follow symbolic links (soft links and external links and compare the)\n\
     links' target objects.\nIf symbolic link(s) with the same name exist in the files\
     \ being\ncompared, then determine whether the target of each link is an existing\n\
@@ -54,73 +57,73 @@ named:
     \ point to existing objects, h5diff compares the\ntwo objects.\nIf any symbolic\
     \ link specified in the call to h5diff does not exist,\nh5diff treats it as an\
     \ error and returns an exit code of 2."
-  synonyms:
-  - --follow-symlinks
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-dangling-links
   description: "Must be used with --follow-symlinks option; otherwise, h5diff shows\n\
     error message and returns an exit code of 2.\nCheck for any symbolic links (soft\
     \ links or external links) that do not\nresolve to an existing object (dataset,\
     \ group, or named datatype).\nIf any dangling link is found, this situation is\
     \ treated as an error\nand h5diff returns an exit code of 2."
-  synonyms:
-  - --no-dangling-links
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: List objects that are not comparable
+  optional: true
   synonyms:
   - -c
   - --compare
+  description: List objects that are not comparable
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Avoid NaNs detection
+  optional: true
   synonyms:
   - -N
   - --nan
+  description: Avoid NaNs detection
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Print differences up to C. C must be a positive integer.
+  optional: true
   synonyms:
   - -n
   - --count
+  description: Print differences up to C. C must be a positive integer.
   args: !SimpleFlagArg
     name: C
-  optional: true
 - !Flag
-  description: "Print difference if (|a-b| > D). D must be a positive number. Where\
-    \ a\nis the data point value in file1 and b is the data point value in file2.\n\
-    Can not use with '-p' or '--use-system-epsilon'."
+  optional: true
   synonyms:
   - -d
   - --delta
+  description: "Print difference if (|a-b| > D). D must be a positive number. Where\
+    \ a\nis the data point value in file1 and b is the data point value in file2.\n\
+    Can not use with '-p' or '--use-system-epsilon'."
   args: !SimpleFlagArg
     name: D
-  optional: true
 - !Flag
-  description: "Print difference if (|(a-b)/b| > R). R must be a positive number.\
-    \ Where a\nis the data point value in file1 and b is the data point value in file2.\n\
-    Can not use with '-d' or '--use-system-epsilon'."
+  optional: true
   synonyms:
   - -p
   - --relative
+  description: "Print difference if (|(a-b)/b| > R). R must be a positive number.\
+    \ Where a\nis the data point value in file1 and b is the data point value in file2.\n\
+    Can not use with '-d' or '--use-system-epsilon'."
   args: !SimpleFlagArg
     name: R
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --use-system-epsilon
   description: "Print difference if (|a-b| > EPSILON), EPSILON is system defined value.\
     \ Where a\nis the data point value in file1 and b is the data point value in file2.\n\
     If the system epsilon is not defined,one of the following predefined\nvalues will\
     \ be used:\nFLT_EPSILON = 1.19209E-07 for floating-point type\nDBL_EPSILON = 2.22045E-16\
     \ for double precision type\nCan not use with '-p' or '-d'."
-  synonyms:
-  - --use-system-epsilon
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --exclude-path
   description: "\"path\"\nExclude the specified path to an object when comparing files\
     \ or groups.\nIf a group is excluded, all member objects will also be excluded.\n\
     The specified path is excluded wherever it occurs.\nThis flexibility enables the\
@@ -135,29 +138,26 @@ named:
     \ to an object, only the specified path(s)\nwill be excluded; the comparison will\
     \ include any path not explicitly\nexcluded.\nThis option can be used repeatedly\
     \ to exclude multiple paths."
-  synonyms:
-  - --exclude-path
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'mode: print the above plus a list of objects and warnings'
+  optional: true
   synonyms:
   - -v
+  description: 'mode: print the above plus a list of objects and warnings'
   args: !SimpleFlagArg
     name: Verbose
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag
-  description: Print version number and exit.
+  optional: true
   synonyms:
   - -V
   - --version
+  description: Print version number and exit.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: h5diff [OPTIONS] file1 file2 [obj1[ obj2]]\n  file1           \
   \  File name of the first HDF5 file\n  file2             File name of the second\
   \ HDF5 file\n  [obj1]            Name of an HDF5 object, in absolute path\n  [obj2]\
@@ -248,3 +248,4 @@ help_text: "usage: h5diff [OPTIONS] file1 file2 [obj1[ obj2]]\n  file1          
   \ same file\n\n"
 generated_using:
 - --help
+docker_image:

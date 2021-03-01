@@ -28,6 +28,9 @@ task Abysslayout {
       ~{if (no_ss) then "--no-SS" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_length: "minimum sequence length [0]"
     min_overlap: "minimum overlap [0]"

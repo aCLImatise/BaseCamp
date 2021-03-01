@@ -3,17 +3,17 @@ id: Bandage_image.cwl
 inputs:
 - id: in_height
   doc: 'Image height (default: 1000)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --height
 - id: in_width
   doc: 'Image width (default: not set)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --width
 - id: in_help_all
   doc: View all command line settings
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --helpall
 - id: in_graph
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - Bandage

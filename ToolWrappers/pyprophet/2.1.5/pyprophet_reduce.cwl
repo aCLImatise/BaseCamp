@@ -3,12 +3,12 @@ id: pyprophet_reduce.cwl
 inputs:
 - id: in_in
   doc: Scored PyProphet input file.  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --in
 - id: in_out
   doc: Reduced OSWR output file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Reduced OSWR output file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pyprophet

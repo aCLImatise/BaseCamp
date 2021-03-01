@@ -8,6 +8,9 @@ task Removemicrobessh {
     removemicrobes_sh \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
   }

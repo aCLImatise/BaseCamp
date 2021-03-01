@@ -17,12 +17,11 @@ task Wtgbo {
     Boolean? use_number_matches
     Float? best_score_cutoff
     Boolean? turn_homopolymer_compression
-    Int? smaller_kmer_size
     Int? filter_high_frequency
     Int? zmer_window
     Int? minimum_size_seeding
     Int? minimum_size_total
-    Int? maximum_variant_hzkmer
+    Int? maximum_variant_uncompressed
     Int? alignment_penalty_match
     Int? alignment_penalty_mismatch
     Int? alignment_penalty_insertion
@@ -50,12 +49,11 @@ task Wtgbo {
       ~{if (use_number_matches) then "-Q" else ""} \
       ~{if defined(best_score_cutoff) then ("-q " +  '"' + best_score_cutoff + '"') else ""} \
       ~{if (turn_homopolymer_compression) then "-H" else ""} \
-      ~{if defined(smaller_kmer_size) then ("-z " +  '"' + smaller_kmer_size + '"') else ""} \
       ~{if defined(filter_high_frequency) then ("-Z " +  '"' + filter_high_frequency + '"') else ""} \
       ~{if defined(zmer_window) then ("-y " +  '"' + zmer_window + '"') else ""} \
       ~{if defined(minimum_size_seeding) then ("-R " +  '"' + minimum_size_seeding + '"') else ""} \
       ~{if defined(minimum_size_total) then ("-r " +  '"' + minimum_size_total + '"') else ""} \
-      ~{if defined(maximum_variant_hzkmer) then ("-l " +  '"' + maximum_variant_hzkmer + '"') else ""} \
+      ~{if defined(maximum_variant_uncompressed) then ("-l " +  '"' + maximum_variant_uncompressed + '"') else ""} \
       ~{if defined(alignment_penalty_match) then ("-M " +  '"' + alignment_penalty_match + '"') else ""} \
       ~{if defined(alignment_penalty_mismatch) then ("-X " +  '"' + alignment_penalty_mismatch + '"') else ""} \
       ~{if defined(alignment_penalty_insertion) then ("-O " +  '"' + alignment_penalty_insertion + '"') else ""} \
@@ -66,6 +64,9 @@ task Wtgbo {
       ~{if (refine_the_alignment) then "-n" else ""} \
       ~{if defined(max_turns_iteration) then ("-N " +  '"' + max_turns_iteration + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_threads: "Number of threads, [1]"
     long_reads_files: "Long reads sequences file(s), + *"
@@ -82,12 +83,11 @@ task Wtgbo {
     use_number_matches: "Use number of matches as alignment score"
     best_score_cutoff: "Best score cutoff, say best overlap MUST have alignment score >= <-r> * read's best score [0.95]"
     turn_homopolymer_compression: "Turn off homopolymer compression"
-    smaller_kmer_size: "Smaller kmer size (z-mer), 5 <= <-z> <= 16, [10]"
     filter_high_frequency: "Filter high frequency z-mers, maybe repetitive, [100]"
     zmer_window: "Zmer window, [800]"
     minimum_size_seeding: "Minimum size of seeding region within zmer window, [200]"
     minimum_size_total: "Minimum size of total seeding region for zmer windows, [300]"
-    maximum_variant_hzkmer: "Maximum variant of uncompressed sizes between two matched hz-kmer, [2]"
+    maximum_variant_uncompressed: "Maximum variant of uncompressed sizes between two matched hz-kmer, [2]"
     alignment_penalty_match: "Alignment penalty: match, [2]"
     alignment_penalty_mismatch: "Alignment penalty: mismatch, [-5]"
     alignment_penalty_insertion: "Alignment penalty: insertion or deletion, [-3]"

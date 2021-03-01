@@ -1,0 +1,196 @@
+!Command
+command:
+- testformat2.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -JunkReads
+  description: Reads with invalid bases or other problems.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ChastityFail
+  description: Reads failing Illumina's chastity filter.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -BadPairNames
+  description: Read pairs whose names don't match.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Lowercase
+  description: Lowercase bases.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Uppercase
+  description: Uppercase bases.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Non-Letter
+  description: Non-letter symbols in bases.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -FullyDefined
+  description: A, C, G, T, or U bases.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -No-call
+  description: N bases.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Degenerate
+  description: Non-ACGTUN valid IUPAC symbols.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Gap
+  description: '- symbol.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Invalid
+  description: Symbols that are not valid characters for sequence.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -InsertMean
+  description: Average insert size, from merging.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -InsertMode
+  description: Insert size mode from, merging.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -AdapterReads
+  description: Fraction of reads with adapter sequence, from merging.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -AdapterBases
+  description: Fraction of bases that are adapter sequence, from merging.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -QAvgLog
+  description: Logarithmic average quality score.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -QAvgLinear
+  description: Linear average quality score.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -TrimmedAtQ5
+  description: Fraction of bases trimmed at Q5.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -TrimmedAtQ10
+  description: Fraction of bases trimmed at Q10.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -TrimmedAtQ15
+  description: Fraction of bases trimmed at Q15.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -TrimmedAtQ20
+  description: Fraction of bases trimmed at Q20.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified September 25, 2019\n\nDescription:\
+  \  Reads the entire file to find extended information about the format and contents.\n\
+  \nUsage:  testformat2.sh <file>\n\n\nParameters:\n\nfull=t          Process the\
+  \ full file.\nspeed=f         Print processing time.\n\nprintjunk=f     Print headers\
+  \ of junk reads to stdout.\nprintbarcodes=f Print barcodes to stdout.\nzmw=t   \
+  \        Parse PacBio ZMW IDs.\n\nprintqhist=f    Print quality histogram to stdout.\n\
+  printihist=f    Print insert size histogram to stdout.\n\nbhistlen=10k    bhist.txt\
+  \ will be calculated from reads up to this length.\n                To allow all\
+  \ reads, set to 0.\n\nmerge=t         Calculate mergability via BBMerge.\nsketch=t\
+  \        (card) Calculate cardinality via BBSketch.\n                If enabled,\
+  \ also sends the sketch to the refseq server.\ntrim=t          Calculate trimmability\
+  \ from quality.\n\n\nFile output parameters (these can be eliminated by setting\
+  \ to null):\n\njunk=junk.txt          Print headers of junk reads to this file.\n\
+  barcodes=barcodes.txt  Print barcodes to this file.\n\nhist=t                 False\
+  \ will clear all default histogram files.\nqhist=qhist.txt        Print quality\
+  \ histogram to this file.\nihist=ihist.txt        Print insert size histogram to\
+  \ this file.\nkhist=khist.txt        Print kmer frequency histogram to this file.\n\
+  bhist=bhist.txt        Print base composition histogram to this file.\nlhist=lhist.txt\
+  \        Print length histogram to this file.\ngchist=gchist.txt      Print gc histogram\
+  \ to this file.\nzmwhist=zmwhist.txt    Print ZMW pass count histogram to this file.\n\
+  \n\nTerminology:\n\nFormat          File format, e.g. fastq.\nCompression     Compression\
+  \ format, e.g. gz.\nInterleaved     True if reads are paired in a single file.\n\
+  MaxLen          Maximum observed read length.\nMinLen          Minimum observed\
+  \ read length.\nStdevLen        Standard deviation of observed read lengths.\nModeLen\
+  \         Mode of observed read lengths.\nQualOffset      Quality score offset.\n\
+  NegativeQuals   Number of bases with negative quality scores.\n\nContent       \
+  \  Nucleotides or AminoAcids.\nType            RNA, DNA, or Mixed.\nReads      \
+  \     Number of reads processed.\n-JunkReads      Reads with invalid bases or other\
+  \ problems.\n-ChastityFail   Reads failing Illumina's chastity filter.\n-BadPairNames\
+  \   Read pairs whose names don't match.\n\nBases           Number of bases processed.\n\
+  -Lowercase      Lowercase bases.\n-Uppercase      Uppercase bases.\n-Non-Letter\
+  \     Non-letter symbols in bases.\n-FullyDefined   A, C, G, T, or U bases.\n-No-call\
+  \        N bases.\n-Degenerate     Non-ACGTUN valid IUPAC symbols.\n-Gap       \
+  \     - symbol.\n-Invalid        Symbols that are not valid characters for sequence.\n\
+  \nGC              GC content: (C+G)/(C+G+A+T+U).\nCardinality     Approximate number\
+  \ of unique 31-mers in the file.\nOrganism        Taxonomic name of top hit from\
+  \ BBSketch RefSeq server.\nTaxID           TaxID from BBSketch.\nBarcodes      \
+  \  Number of observed barcodes (for Illumina).\nZMWs            Number of observed\
+  \ ZMWs (for PacBio).\n\nMergable        Fraction of read pairs that appear to overlap.\n\
+  -InsertMean     Average insert size, from merging.\n-InsertMode     Insert size\
+  \ mode from, merging.\n-AdapterReads   Fraction of reads with adapter sequence,\
+  \ from merging.\n-AdapterBases   Fraction of bases that are adapter sequence, from\
+  \ merging.\n\nQErrorRate      Average error rate from quality scores.\n-QAvgLog\
+  \        Logarithmic average quality score.\n-QAvgLinear     Linear average quality\
+  \ score.\n-TrimmedAtQ5    Fraction of bases trimmed at Q5.\n-TrimmedAtQ10   Fraction\
+  \ of bases trimmed at Q10.\n-TrimmedAtQ15   Fraction of bases trimmed at Q15.\n\
+  -TrimmedAtQ20   Fraction of bases trimmed at Q20.\n\nQhist           Quality score\
+  \ histogram, one line per observed quality bin.\nIhist           Insert size histogram,\
+  \ based on pair merging.\nBarcodeList     List of observed barcodes.\nJunkList \
+  \       List of headers of problematic reads.\n\nPlease contact Brian Bushnell at\
+  \ bbushnell@lbl.gov if you encounter any problems.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

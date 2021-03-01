@@ -24,6 +24,9 @@ task PurityEM {
       ~{if (nrs) then "--nRS" else ""} \
       ~{if (subsample) then "--subsample" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_name_default: ": the output name; default <stdout>"
     print_best_model: ": print the best model for each ploidy number"

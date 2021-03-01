@@ -16,6 +16,9 @@ task SeqtkSubseq {
       ~{if (exclusion_instead_inclusion) then "-e" else ""} \
       ~{if defined(sequence_line_length) then ("-l " +  '"' + sequence_line_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tab_delimited_output: "TAB delimited output"
     exclusion_instead_inclusion: "exclusion instead of inclusion for sequences from <name.list>"

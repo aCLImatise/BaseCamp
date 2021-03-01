@@ -6,22 +6,25 @@ task Ffactor {
     Boolean? factors
     File? out_factor_file
     File? out_an_c_file
-    File file
+    File additional_optional_qualifiers
   }
   command <<<
     ffactor \
-      ~{file} \
+      ~{additional_optional_qualifiers} \
       ~{if (anc) then "-anc" else ""} \
       ~{if (factors) then "-factors" else ""} \
       ~{if (out_factor_file) then "-outfactorfile" else ""} \
       ~{if (out_an_c_file) then "-outancfile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     anc: "boolean    [N] Put ancestral states in output file"
     factors: "boolean    [N] Put factors information in output file"
     out_factor_file: "outfile    [*.ffactor] Phylip factor data output file\\n(optional)"
     out_an_c_file: "outfile    [*.ffactor] Phylip ancestor data output file\\n(optional)"
-    file: "Additional (Optional) qualifiers:"
+    additional_optional_qualifiers: "Additional (Optional) qualifiers:"
   }
   output {
     File out_stdout = stdout()

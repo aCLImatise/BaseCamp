@@ -86,6 +86,9 @@ task Cmbuild {
       ~{if (not_run_c) then "--notrunc" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_cms_s: ": name the CM(s) <s>, (only if single aln in file)"
     force_allow_overwriting: ": force; allow overwriting of <cmfile_out>"

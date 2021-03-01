@@ -24,6 +24,9 @@ task Cfmidprecomputed {
       ~{score_type} \
       ~{output_filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cfm_id_dot_exe: ""
     spectrum_file: ""

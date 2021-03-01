@@ -1,70 +1,75 @@
 !Command
 command:
 - fast5seek
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: files.
+  description: --log_level {0,1,2,3,4,5}
 named:
 - !Flag
-  description: "Directory of fast5 files you want to query. Program\nwill walk recursively\
-    \ through subdirectories."
+  optional: true
   synonyms:
   - -i
   - --fast5_dir
+  description: "Directory of fast5 files you want to query. Program\nwill walk recursively\
+    \ through subdirectories."
   args: !RepeatFlagArg
     name: FAST5_DIR
-  optional: true
 - !Flag
-  description: Fastq or BAM/SAM file(s).
+  optional: true
   synonyms:
   - -r
   - --reference
+  description: Fastq or BAM/SAM file(s).
   args: !RepeatFlagArg
     name: REFERENCE
-  optional: true
 - !Flag
-  description: "Filename to write fast5 paths to. If nothing is\nentered, it will\
-    \ write the paths to STDOUT."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "Filename to write fast5 paths to. If nothing is\nentered, it will\
+    \ write the paths to STDOUT."
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: Only extract read ids for mapped reads in BAM/SAM
+  optional: true
   synonyms:
   - -m
   - --mapped
+  description: Only extract read ids for mapped reads in BAM/SAM
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not display progress bar.
+  optional: true
   synonyms:
   - --no_progress_bar
+  description: Do not display progress bar.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - --log_level
+  description: ''
   args: !ChoiceFlagArg
     choices: !!set
-      '2':
       '0':
+      '2':
+      '5':
+      '3':
       '1':
       '4':
-      '3':
-      '5':
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: fast5seek [-h] -i FAST5_DIR [FAST5_DIR ...] -r REFERENCE\n    \
@@ -88,3 +93,4 @@ help_text: "usage: fast5seek [-h] -i FAST5_DIR [FAST5_DIR ...] -r REFERENCE\n   
   \ display progress bar.\n"
 generated_using:
 - --help
+docker_image:

@@ -4,7 +4,7 @@ inputs:
 - id: in_user
   doc: "USER specifies the username to get the password for. If omitted, the\nusername\
     \ is derived from your authenticated account email address."
-  type: string
+  type: string?
   inputBinding:
     prefix: --user
 - id: in_zone
@@ -16,7 +16,7 @@ inputs:
     \ set compute/zone ZONE\nA list of zones can be fetched by running:\n$ gcloud\
     \ compute zones list\nTo unset the property, run:\n$ gcloud config unset compute/zone\n\
     Alternatively, the zone can be stored in the environment variable\nCLOUDSDK_COMPUTE_ZONE."
-  type: string
+  type: string?
   inputBinding:
     prefix: --zone
 - id: in_instance_name
@@ -28,6 +28,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

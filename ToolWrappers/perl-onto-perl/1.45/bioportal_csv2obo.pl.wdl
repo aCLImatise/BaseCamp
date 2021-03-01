@@ -10,6 +10,9 @@ task BioportalCsv2obopl {
       ~{usage} \
       ~{if (csv_input_file) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     csv_input_file: "CSV input file"
     usage: ": bioportal_csv2obo.pl [options]"

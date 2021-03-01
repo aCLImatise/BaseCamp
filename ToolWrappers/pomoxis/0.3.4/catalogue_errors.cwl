@@ -3,17 +3,17 @@ id: catalogue_errors.cwl
 inputs:
 - id: in_bed
   doc: ".bed file of reference regions to include. (default:\nNone)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --bed
 - id: in_threads
   doc: 'Number of threads for parallel execution. (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_outdir
   doc: "Output directory. (default: error_catalogue)\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_bam
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: "Output directory. (default: error_catalogue)\n"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - catalogue_errors

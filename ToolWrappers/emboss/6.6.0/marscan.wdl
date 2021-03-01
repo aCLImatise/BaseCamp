@@ -4,6 +4,9 @@ task Marscan {
   command <<<
     marscan
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

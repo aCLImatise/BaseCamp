@@ -3,110 +3,112 @@ id: qcat.cwl
 inputs:
 - id: in_log
   doc: Print debug information
-  type: string
+  type: string?
   inputBinding:
     prefix: --log
 - id: in_quiet
   doc: Don't print summary
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_fast_q
   doc: Barcoded read file
-  type: File
+  type: File?
   inputBinding:
     prefix: --fastq
 - id: in_barcode_dir
   doc: "If specified, qcat will demultiplex reads to this\nfolder"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --barcode_dir
 - id: in_output
   doc: "Output file trimmed reads will be written to (default:\nstdout)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_min_score
   doc: "Minimum barcode score. Barcode calls with a lower\nscore will be discarded.\
     \ Must be between 0 and 100.\n(default: 60)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-score
 - id: in_detect_middle
   doc: Search for adapters in the whole read
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --detect-middle
 - id: in_threads
   doc: Number of threads. Only works with in guppy mode
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_min_read_length
   doc: "Reads short than <min-read-length> after trimming will\nbe discarded."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-read-length
 - id: in_tsv
   doc: "Prints a tsv file containing barcode information each\nread to stdout."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tsv
 - id: in_trim
   doc: Remove adapter and barcode sequences from reads.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --trim
-- id: in_kit
-  doc: "Sequencing kit. Specifying the correct kit will\nimprove sensitivity and specificity\
+- id: in_sequencing_kit_specifying
+  doc: "{Auto,RAB204/RAB214,PBC001,PBC096,DUAL,RPB004/RLB001,RAB204,NBD104/NBD114,NBD114,VMK001,RBK001,RAB214,PBK004/LWB001,NBD103/NBD104,RBK004},\
+    \ --kit {Auto,RAB204/RAB214,PBC001,PBC096,DUAL,RPB004/RLB001,RAB204,NBD104/NBD114,NBD114,VMK001,RBK001,RAB214,PBK004/LWB001,NBD103/NBD104,RBK004}\n\
+    Sequencing kit. Specifying the correct kit will\nimprove sensitivity and specificity\
     \ and runtime\n(default: auto)"
-  type: string
+  type: boolean?
   inputBinding:
-    prefix: --kit
+    prefix: -k
 - id: in_list_kits
   doc: List all supported kits
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --list-kits
 - id: in_guppy
   doc: "Use Guppy's demultiplexing algorithm (default: false)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --guppy
 - id: in_epi_two_me
   doc: "Use EPI2ME's demultiplexing algorithm (default: true)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --epi2me
 - id: in_dual
   doc: Use dual barcoding algorithm
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dual
 - id: in_simple
   doc: "Use simple demultiplexing algorithm. Only looks for\nbarcodes, not for adapter\
     \ sequences. Use only for\ntesting purposes!"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --simple
 - id: in_no_batch
   doc: "Don't use information from multiple reads for kit\ndetection (default: false)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-batch
 - id: in_filter_barcodes
   doc: Filter rare barcode calls when run in batch mode
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --filter-barcodes
 - id: in_simple_barcodes
   doc: "Use 12 (standard) or 96 (extended) barcodes for\ndemultiplexing\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --simple-barcodes
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -V
 outputs:
@@ -115,9 +117,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file trimmed reads will be written to (default:\nstdout)."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - qcat

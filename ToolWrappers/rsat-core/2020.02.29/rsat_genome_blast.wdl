@@ -2,7 +2,7 @@ version 1.0
 
 task RsatGenomeblast {
   input {
-    String? db_tax_on
+    String? _blastall
     String genome_blast
     String util
     String organism_dot
@@ -22,10 +22,13 @@ task RsatGenomeblast {
       ~{comparisons_dot} \
       ~{default_dot} \
       ~{blast_dot} \
-      ~{if defined(db_tax_on) then ("-dbtaxon " +  '"' + db_tax_on + '"') else ""}
+      ~{if defined(_blastall) then ("-task " +  '"' + _blastall + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    db_tax_on: "In the latter case, there is no need to run the reciprocal blast, since\\nthe query yaxon is the same as the database taxon."
+    _blastall: ",blastall"
     genome_blast: "[1mDESCRIPTION[0m"
     util: "[1mINPUT FORMAT[0m"
     organism_dot: "Although the matching is performed at the protein level, the table"

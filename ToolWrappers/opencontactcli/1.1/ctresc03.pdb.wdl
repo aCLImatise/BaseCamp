@@ -4,6 +4,9 @@ task Ctresc03pdb {
   command <<<
     ctresc03_pdb
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

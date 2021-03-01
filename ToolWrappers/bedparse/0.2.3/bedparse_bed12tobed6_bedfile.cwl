@@ -3,12 +3,12 @@ id: bedparse_bed12tobed6_bedfile.cwl
 inputs:
 - id: in_which_exon
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --whichExon
 - id: in_append_exn
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --appendExN
 - id: in_bed_parse
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bedparse

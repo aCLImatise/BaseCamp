@@ -30,6 +30,9 @@ task RNAeval {
       ~{if (circ) then "--circ" else ""} \
       ~{if (log_ml) then "--logML" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     verbose: "Print out energy contribution of each loop in the"

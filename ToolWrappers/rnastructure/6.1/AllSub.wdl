@@ -20,6 +20,9 @@ task AllSub {
       ~{if (percent) then "--percent" else ""} \
       ~{if (temperature) then "--temperature" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "Specify that the sequence is DNA, and DNA parameters are to be used.\\nDefault is to use RNA parameters."
     absolute: "Specify a maximum absolute energy difference.\\nDefault is determined by the length of the sequence."

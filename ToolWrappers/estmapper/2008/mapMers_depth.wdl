@@ -18,6 +18,9 @@ task MapMersdepth {
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
       ~{if defined(mers) then ("-mers " +  '"' + mers + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count: "- report the count (c) of the single kmer that starts at position (p).\\nFormat: 's p c'"
     depth: "- report the number (n) of kmers that span position (p).  Format: 's p n'"

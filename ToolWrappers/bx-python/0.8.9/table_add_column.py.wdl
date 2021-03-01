@@ -14,6 +14,9 @@ task TableAddColumnpy {
       ~{if (header) then "--header" else ""} \
       ~{if (comments) then "--comments" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     header: "keep header in output"
     comments: "keep comments in output"

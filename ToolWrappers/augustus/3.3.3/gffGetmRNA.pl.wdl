@@ -10,6 +10,9 @@ task GffGetmRNApl {
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
       ~{if defined(mrna) then ("--mrna " +  '"' + mrna + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "Input a fasta file with the genomic sequences."
     mrna: "Output fasta file with mRNA sequences."

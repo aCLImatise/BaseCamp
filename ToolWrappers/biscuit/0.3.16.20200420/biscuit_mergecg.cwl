@@ -3,13 +3,13 @@ id: biscuit_mergecg.cwl
 inputs:
 - id: in_nomeseq_mode_only
   doc: NOMe-seq mode, only merge C,G both in HCGD context
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_minimum_depth_merging
   doc: "minimum depth after merging (0). This applies to the maximum depth\nacross\
     \ samples."
-  type: long
+  type: long?
   inputBinding:
     prefix: -k
 - id: in_ref
@@ -28,6 +28,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - biscuit

@@ -14,6 +14,9 @@ task XsvInput {
       ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quote: "The quote character to use. [default: \\\"]"
     escape: "The escape character to use. When not specified,\\nquotes are escaped by doubling them."

@@ -4,76 +4,79 @@ command:
 - dna-pattern
 positional:
 - !Positional
-  description: perl script v1.1 by Jacques van Helden, 30 July 1997.
+  optional: false
   position: 0
   name: dna-pattern
-  optional: false
+  description: perl script v1.1 by Jacques van Helden, 30 July 1997.
 - !Positional
-  description: CATEGORY
+  optional: false
   position: 0
   name: expressions.
-  optional: false
+  description: CATEGORY
 - !Positional
-  description: pattern matching
+  optional: false
   position: 1
   name: sequences
-  optional: false
+  description: pattern matching
 - !Positional
-  description: "-i sequencefile -format seq_format -p pattern [-id identifier]\n[-1str|-2str|-R]\
-    \ [-c|-ct] [-noov]\n[-N flanking] [-v]"
+  optional: false
   position: 0
   name: dna-pattern
-  optional: false
+  description: "-i sequencefile -format seq_format -p pattern [-id identifier]\n[-1str|-2str|-R]\
+    \ [-c|-ct] [-noov]\n[-N flanking] [-v]"
 - !Positional
-  description: FastA format
+  optional: false
   position: 0
   name: fasta
-  optional: false
+  description: FastA format
 - !Positional
-  description: IntelliGenetics format
+  optional: false
   position: 1
   name: IG
-  optional: false
+  description: IntelliGenetics format
 - !Positional
-  description: a single sequence in a file
+  optional: false
   position: 2
   name: raw
-  optional: false
+  description: a single sequence in a file
 - !Positional
-  description: each new line is a new sequence
+  optional: false
   position: 3
   name: multi
-  optional: false
+  description: each new line is a new sequence
 - !Positional
-  description: "a list of files containing each\na single raw sequence"
+  optional: false
   position: 4
   name: filelist
-  optional: false
+  description: "a list of files containing each\na single raw sequence"
 - !Positional
-  description: Nucleotide(s)   Description
+  optional: false
   position: 0
   name: Symbol
-  optional: false
+  description: Nucleotide(s)   Description
 - !Positional
-  description: DIRECT PATTERN INPUT
+  optional: false
   position: 0
   name: nucleotides.
-  optional: false
+  description: DIRECT PATTERN INPUT
 - !Positional
+  optional: false
+  position: 0
+  name: raw
   description: "The input file must contain raw sequences without any\ncomment or\
     \ other text. Tabs (\\t), blank spaces and newline\ncharacters (\\n) are accepted\
     \ (they will be automatically\nremoved before analysis). The sequence must be\
     \ terminated by\na newline character."
-  position: 0
-  name: raw
-  optional: false
 - !Positional
-  description: "file list. Each line of the input file contains the\nname of a file\
-    \ containing a single sequence in raw format."
+  optional: false
   position: 1
   name: filelist
-  optional: false
+  description: "file list. Each line of the input file contains the\nname of a file\
+    \ containing a single sequence in raw format."
 - !Positional
+  optional: false
+  position: 2
+  name: IG
   description: "IntelliGenetics format.\nThe first non-comment line must be the sequence\
     \ identifier\n(a single word without spaces).\nThe sequence follows the identifier\
     \ line identifier. It can\ninclude spaces, tabs or newlines, that will be removed\
@@ -87,122 +90,122 @@ positional:
     \ 986890\n; upstream region size: 100\n; upstream region coord:        15 988873\
     \ 988774\nPUT4\nGGGTTTGTGTTCCTCTTCCTTTCCTTTTTTTTTCTCTCTT\nCCCTTCCAGTTTCTTTTATTCTTTGCTGTTTCGAAGAATC\n\
     ACACCATCAATGAATAAATC\n1"
-  position: 2
-  name: IG
-  optional: false
 named:
 - !Flag
-  description: short help message
+  optional: true
   synonyms:
   - -help
+  description: short help message
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -i
   description: "input sequence file. This file contains the sequences where the pattern(s)\n\
     will be searched for.\nVarious format are accepted\nIf omitted, standard input\
     \ (eg keyboard) will be used.\nThis allows to use the program within a pipe."
-  synonyms:
-  - -i
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "|lower\nMask lower or uppercases, respecively, i.e. replace\nselected\
-    \ case by N characters."
+  optional: true
   synonyms:
   - -mask
+  description: "|lower\nMask lower or uppercases, respecively, i.e. replace\nselected\
+    \ case by N characters."
   args: !SimpleFlagArg
     name: upper
-  optional: true
 - !Flag
-  description: sequence format. The accepted formats are
+  optional: true
   synonyms:
   - -format
+  description: sequence format. The accepted formats are
   args: !SimpleFlagArg
     name: input
-  optional: true
 - !Flag
-  description: "output file.\nIf omitted, standard output (eg screen) will be used.\n\
-    This allows to use the program within a pipe."
+  optional: true
   synonyms:
   - -o
+  description: "output file.\nIf omitted, standard output (eg screen) will be used.\n\
+    This allows to use the program within a pipe."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "pattern entered directly after -p.\nAlternatively use -pl."
+  optional: true
   synonyms:
   - -p
+  description: "pattern entered directly after -p.\nAlternatively use -pl."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "name of the file containing the patterns to search .\n(see format\
-    \ below)"
+  optional: true
   synonyms:
   - -pl
+  description: "name of the file containing the patterns to search .\n(see format\
+    \ below)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#\nallow # substitutions."
+  optional: true
   synonyms:
   - -subst
+  description: "#\nallow # substitutions."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -noIUPAC
   description: "The pattern is considered as a standard regular expression.\nIt is\
     \ convenient to specifically search for masked sequences represented\nby \"N\"\
     \ characters in sequences:\nie : dna-pattern -i your_sequence_file -p \"N+\" -noov\
     \ -1str -noIUPAC"
-  synonyms:
-  - -noIUPAC
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -sc
   description: "#\nscore column\nthe #th column of the pattern file contains a number\n\
     indicating the score for a match of this pattern. This\noption allows to weight\
     \ the matches according to a\nuser-defined scheme."
-  synonyms:
-  - -sc
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "do not search pattern identifier in the second column\nof pattern\
-    \ file. instead the id takes the same content\nas the pattern sequence."
+  optional: true
   synonyms:
   - -noid
+  description: "do not search pattern identifier in the second column\nof pattern\
+    \ file. instead the id takes the same content\nas the pattern sequence."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not count overlapping matches for self-overlapping\npatterns."
+  optional: true
   synonyms:
   - -noov
+  description: "Do not count overlapping matches for self-overlapping\npatterns."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: search matches on both strands (direct and reverse complement)
+  optional: true
   synonyms:
   - -2str
+  description: search matches on both strands (direct and reverse complement)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: search matches only on the direct strand.
+  optional: true
   synonyms:
   - -1str
+  description: search matches only on the direct strand.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: search matches only on the reverse complement strand.
+  optional: true
   synonyms:
   - -R
+  description: search matches only on the reverse complement strand.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -id
   description: "pattern identifier (one word).\nUse this option combined with -p,\
     \ to specify the ID of\na unique pattern entered on the command line. For\nmultple\
     \ patterns, it is more convenient to use a\npattern file (option -pl)."
-  synonyms:
-  - -id
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -return
   description: "[,field2,...]\nList of fields to return. Multiple fields can be\n\
     entered separated by commas, or by using iteratively\nthe option.\n-return field1\
     \ [-return field2 ...]\nSupported fields: colsum,counts,ct,limits,notacgt,profiles,rank,rowsum,scores,sites,stats,table,total.\n\
@@ -224,96 +227,93 @@ named:
     \ occurrences per\nsequence and an extra row with total occurrences\nper pattern.\
     \  (amounts to combine -colsum and\n-rowsum)\n-return stats return matching statistics\n\
     -return profiles return matching profiles with sliding\nwindows."
-  synonyms:
-  - -return
   args: !SimpleFlagArg
     name: field1
-  optional: true
 - !Flag
-  description: 'format for returning matches (supported: fasta, table)'
+  optional: true
   synonyms:
   - -match_format
+  description: 'format for returning matches (supported: fasta, table)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#   Threshold.\nReturn match count only for sequences with >= # matches.\n\
-    Only valid in combination with -c."
+  optional: true
   synonyms:
   - -th
+  description: "#   Threshold.\nReturn match count only for sequences with >= # matches.\n\
+    Only valid in combination with -c."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -merge
   description: "merge mutually overlapping matches. When succesive\nmatches overlap,\
     \ they are converted into a single\nmatch. The merged match takes the ID \"merged\"\
     . The\nscore is the highest score of the matching patterns."
-  synonyms:
-  - -merge
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '#    return matching sequences with # flanking nucleotides'
+  optional: true
   synonyms:
   - -N
+  description: '#    return matching sequences with # flanking nucleotides'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '#   return matching sequences with # left flanking nucleotides'
+  optional: true
   synonyms:
   - -NL
+  description: '#   return matching sequences with # left flanking nucleotides'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '#   return matching sequences with # right flanking nucleotides'
+  optional: true
   synonyms:
   - -NR
+  description: '#   return matching sequences with # right flanking nucleotides'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: verbose.
+  optional: true
   synonyms:
   - -v
+  description: verbose.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -origin
   description: "#\ndefine # as the origin for the calculation of positions.\n-origin\
     \ -0 defines the end of each sequence as the\norigin. The matching positions are\
     \ then negative values,\nproviding the distance between the match and the end\
     \ of the\nsequence."
-  synonyms:
-  - -origin
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -window
   description: "#\nSliding window size. The score at each position is\ncalculated\
     \ by summing the scores of all patterns\nencountered within a sliding window of\
     \ size #. This\noption automatically returns matching positions.\nA threshold\
     \ can be specified to specify the minimal\nmatching score to be returned."
-  synonyms:
-  - -window
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(with sliding window only)\nonly return the top score obtained with\
-    \ the sliding\nwindow for each sequence."
+  optional: true
   synonyms:
   - -top
+  description: "(with sliding window only)\nonly return the top score obtained with\
+    \ the sliding\nwindow for each sequence."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(with -top only)\nsort sequences according to their top score"
+  optional: true
   synonyms:
   - -sort
+  description: "(with -top only)\nsort sequences according to their top score"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: help (displays the current message)
+  optional: true
   synonyms:
   - -h
+  description: help (displays the current message)
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "NAME\n\tdna-pattern\n\tperl script v1.1 by Jacques van Helden, 30 July\
@@ -460,3 +460,4 @@ help_text: "NAME\n\tdna-pattern\n\tperl script v1.1 by Jacques van Helden, 30 Ju
   \ 'GATAA' and 'GATTA' present\n\tin the file my_file.fasta\nWEB VERSION\n\thttp://www.bigre.ulb.ac.be/bioinformatics/rsa-tools/\n"
 generated_using:
 - -h
+docker_image:

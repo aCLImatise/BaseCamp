@@ -4,7 +4,11 @@ task PedParser {
   input {
     Boolean? family_type
     File? outfile
-    File? cmms_check
+    Boolean? cmms_check
+    Boolean? to_json
+    Boolean? to_madeline
+    Boolean? to_ped
+    Boolean? loglevel
     String family_file
     String or
   }
@@ -14,17 +18,27 @@ task PedParser {
       ~{or} \
       ~{if (family_type) then "--family_type" else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
-      ~{if (cmms_check) then "--cmms_check" else ""}
+      ~{if (cmms_check) then "--cmms_check" else ""} \
+      ~{if (to_json) then "--to_json" else ""} \
+      ~{if (to_madeline) then "--to_madeline" else ""} \
+      ~{if (to_ped) then "--to_ped" else ""} \
+      ~{if (loglevel) then "--loglevel" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     family_type: "[ped|alt|cmms|mip]\\nIf the analysis use one of the known setups,\\nplease specify which one. Default is ped"
     outfile: "Specify the path to a file where results\\nshould be stored."
-    cmms_check: "If the id is in cmms format.\\n--to_json                       Print the ped file in json format.\\n--to_madeline                   Print the ped file in madeline format.\\n--to_ped                        Print the ped file in ped format with\\nheaders.\\n--to_dict                       Print the ped file in ped format with\\nheaders.\\n-v, --verbose                   Increase output verbosity.\\n--version\\n-l, --logfile PATH              Path to log file. If none logging is printed\\nto stderr.\\n--loglevel [DEBUG|INFO|WARNING|ERROR|CRITICAL]\\nSet the level of log output.\\n--help                          Show this message and exit.\\n"
+    cmms_check: "If the id is in cmms format."
+    to_json: "Print the ped file in json format."
+    to_madeline: "Print the ped file in madeline format."
+    to_ped: "Print the ped file in ped format with"
+    loglevel: "[DEBUG|INFO|WARNING|ERROR|CRITICAL]\\nSet the level of log output."
     family_file: ""
     or: ""
   }
   output {
     File out_stdout = stdout()
-    File out_cmms_check = "${in_cmms_check}"
   }
 }

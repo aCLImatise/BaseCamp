@@ -1,0 +1,89 @@
+!Command
+command:
+- checkm
+- lineage_set
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: tree_dir
+  description: directory specified during tree command
+- !Positional
+  optional: false
+  position: 1
+  name: marker_file
+  description: output file describing marker set for each bin
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --unique
+  description: 'minimum number of unique phylogenetic markers required to use lineage-specific
+    marker set (default: 10)'
+  args: !SimpleFlagArg
+    name: UNIQUE
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --multi
+  description: 'maximum number of multi-copy phylogenetic markers before defaulting
+    to domain-level marker set (default: 10)'
+  args: !SimpleFlagArg
+    name: MULTI
+- !Flag
+  optional: true
+  synonyms:
+  - --force_domain
+  description: use domain-level sets for all bins
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_refinement
+  description: do not perform lineage-specific marker set refinement
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: suppress console output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: specify an alternative directory for temporary files
+  args: !SimpleFlagArg
+    name: TMPDIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: checkm lineage_set [-h] [-u UNIQUE] [-m MULTI] [--force_domain]\n\
+  \                          [--no_refinement] [-q] [--tmpdir TMPDIR]\n          \
+  \                tree_dir marker_file\n\nInfer lineage-specific marker sets for\
+  \ each bin.\n\npositional arguments:\n  tree_dir             directory specified\
+  \ during tree command\n  marker_file          output file describing marker set\
+  \ for each bin\n\noptional arguments:\n  -h, --help           show this help message\
+  \ and exit\n  -u, --unique UNIQUE  minimum number of unique phylogenetic markers\
+  \ required to use lineage-specific marker set (default: 10)\n  -m, --multi MULTI\
+  \    maximum number of multi-copy phylogenetic markers before defaulting to domain-level\
+  \ marker set (default: 10)\n  --force_domain       use domain-level sets for all\
+  \ bins\n  --no_refinement      do not perform lineage-specific marker set refinement\n\
+  \  -q, --quiet          suppress console output\n  --tmpdir TMPDIR      specify\
+  \ an alternative directory for temporary files\n\nExample: checkm lineage_set ./output\
+  \ lineage.ms\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/checkm-genome:1.1.3--py_1

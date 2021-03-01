@@ -34,6 +34,9 @@ task Exonpairs {
       ~{if defined(flank_length) then ("-flank-length " +  '"' + flank_length + '"') else ""} \
       ~{if (lc_mask) then "-lcmask" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_intron: "minimum Intron length [30]"
     max_intron: "maximum Intron length [10000]"

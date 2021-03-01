@@ -16,6 +16,9 @@ task NGSDInit {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add: "Additional SQL script to execute after database initialization.\\nDefault value: ''"
     force: "Database password needed to re-initialize the production database.\\nDefault value: ''"

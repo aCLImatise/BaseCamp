@@ -26,6 +26,9 @@ task Graphlanpy {
       ~{if (external_legends) then "--external_legends" else ""} \
       ~{if (avoid_reordering) then "--avoid_reordering" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "['output_image_format']\\nset the format of the output image (default none\\nmeaning that the format is guessed from the output\\nfile extension)"
     warnings: "set whether warning messages should be reported or not\\n(default 1)"

@@ -8,6 +8,9 @@ task ArrowStatusFindStatusByValue {
     arrow status findStatusByValue \
       ~{value}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     value: ""
   }

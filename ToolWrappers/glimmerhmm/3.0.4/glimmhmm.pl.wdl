@@ -14,6 +14,9 @@ task Glimmhmmpl {
       ~{train_dir} \
       ~{options}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     glimmer_hmm_program: ""
     fast_a_file: ""

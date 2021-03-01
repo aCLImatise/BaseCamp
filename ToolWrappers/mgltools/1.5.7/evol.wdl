@@ -4,6 +4,9 @@ task Evol {
   command <<<
     evol
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

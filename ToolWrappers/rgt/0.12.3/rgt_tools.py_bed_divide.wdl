@@ -18,6 +18,9 @@ task RgttoolspyBedDivide {
       ~{if defined(define_the_cutoff) then ("-c " +  '"' + define_the_cutoff + '"') else ""} \
       ~{if defined(define_mode_such) then ("-m " +  '"' + define_mode_such + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "Input BED file"
     input_expression_table: "Input expression table (Gene name should match the region name."

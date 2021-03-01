@@ -12,6 +12,9 @@ task CompareHLAOmixonpyOmixonFname {
       ~{his_at_genotype_fname} \
       ~{omix_on_fname}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compare_hla_omix_on_do_tpy: ""
     his_at_genotype_fname: ""

@@ -54,6 +54,9 @@ task Abidump2108 {
       ~{if (no_dot_reads) then "--noDotReads" else ""} \
       ~{if (bzip_two) then "--bzip2" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     accession: "Replaces accession derived from <path> in\\nfilename(s) and deflines (only for single\\ntable dump)"
     outdir: "Output directory, default is working\\ndirectory '.' )"

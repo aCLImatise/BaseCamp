@@ -3,42 +3,42 @@ id: EBFilter.cwl
 inputs:
 - id: in_format_annovar_tsv
   doc: the format of mutation file vcf or annovar (tsv)
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_threshold_mapping_quality
   doc: "threshold for mapping quality for calculating base\ncounts"
-  type: string
+  type: string?
   inputBinding:
     prefix: -q
 - id: in_threshold_base_quality
   doc: threshold for base quality for calculating base counts
-  type: string
+  type: string?
   inputBinding:
     prefix: -Q
 - id: in_ff
   doc: skip reads with mask bits set
-  type: string
+  type: string?
   inputBinding:
     prefix: --ff
 - id: in_l_option
   doc: use samtools mpileup -l option
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --loption
 - id: in_region
   doc: "restrict the chromosomal region for mutation. active\nonly if loption is on"
-  type: string
+  type: string?
   inputBinding:
     prefix: --region
 - id: in_debug
   doc: keep intermediate files
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_t
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_target_dot_vcf
@@ -70,6 +70,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - EBFilter

@@ -46,6 +46,9 @@ task ProcessRadtags {
       ~{if (barcode_dist_one) then "--barcode-dist-1" else ""} \
       ~{if (barcode_dist_two) then "--barcode-dist-2" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     inline_null: ":   barcode is inline with sequence, occurs only on single-end read (default)."
     index_null: ":    barcode is provded in FASTQ header (Illumina i5 or i7 read)."

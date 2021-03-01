@@ -3,7 +3,7 @@ id: scf_update.cwl
 inputs:
 - id: in_v
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -v
 - id: in_source
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - scf_update

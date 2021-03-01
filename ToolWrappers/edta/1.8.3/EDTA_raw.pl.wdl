@@ -18,6 +18,9 @@ task EDTARawpl {
       ~{if (convert_seq_name) then "--convert_seq_name" else ""} \
       ~{if (threads) then "--threads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "[File]  The genome FASTA"
     species: "[rice|maize|others]   Specify the species for identification of TIR candidates. Default: others"

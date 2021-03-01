@@ -12,6 +12,9 @@ task DrdiscoDetect {
       ~{output_file} \
       ~{if defined(min_e_score) then ("--min-e-score " +  '"' + min_e_score + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_e_score: "Minimal score to initiate pulling sub-graphs\\n(larger numbers boost performance but result in\\nsuboptimal results) [default=8]"
     bam_input_file: ""

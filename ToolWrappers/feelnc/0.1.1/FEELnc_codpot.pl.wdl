@@ -52,13 +52,16 @@ task FEELncCodpotpl {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(to) then ("-to " +  '"' + to + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "Open man page"
     verbosity: "Level of verbosity"
-    in_file: "Specify the .GTF or .FASTA file  (such as a cufflinks transcripts/merged .GTF or .FASTA file)"
-    mrna_file: "Specify the annotation .GTF or .FASTA file  (file of protein coding transcripts .GTF or .FASTA file)"
+    in_file: "/.fasta           Specify the .GTF or .FASTA file  (such as a cufflinks transcripts/merged .GTF or .FASTA file)"
+    mrna_file: "/.fasta         Specify the annotation .GTF or .FASTA file  (file of protein coding transcripts .GTF or .FASTA file)"
     genome: "Genome file or directory with chr files (mandatory if input is .GTF) [ default undef ]"
-    l_ncrna_file: "Specify a known set of lncRNA for training .GTF or .FASTA  [ default undef ]"
+    l_ncrna_file: "/.fasta       Specify a known set of lncRNA for training .GTF or .FASTA  [ default undef ]"
     biotype: "Only consider transcripts having this(these) biotype(s) from the reference annotation (e.g : -b transcript_biotype=protein_coding,pseudogene) [default undef i.e all transcripts]"
     num_tx: "Number of mRNA and lncRNA transcripts required for the training. mRNAs and lncRNAs numbers need to be separate by a ',': i.e. 1500,1000 for 1500 mRNAs and 1000 lncRNAs. For all the annotation, let it blank [ default undef, all the two annotations ]"
     rf_cut: "=[0-1]                      Random forest voting cutoff [ default undef i.e will compute best cutoff ]"

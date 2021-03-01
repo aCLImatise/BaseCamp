@@ -1,0 +1,202 @@
+!Command
+command:
+- clumpify.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: compression.
+  description: Should be disabled for paired reads.
+- !Positional
+  optional: false
+  position: 0
+  name: reads.
+  description: Yields the highest compression.
+- !Positional
+  optional: false
+  position: 0
+  name: nonduplicate.
+  description: Improves detection of inexact duplicates.
+- !Positional
+  optional: false
+  position: 0
+  name: NextSeq
+  description: 40  (and spany=t)
+- !Positional
+  optional: false
+  position: 0
+  name: y-axis.
+  description: 'Should only be enabled when looking for '
+- !Positional
+  optional: false
+  position: 0
+  name: correlations.
+  description: Increasing this number can reduce false-
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eoom
+  description: "This flag will cause the process to exit if an\nout-of-memory exception\
+    \ occurs.  Requires Java 8u92+."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: Disable assertions.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified October 30, 2019\n\nDescription:\
+  \  Sorts sequences to put similar reads near each other.\nCan be used for increased\
+  \ compression or error correction.\nPlease read bbmap/docs/guides/ClumpifyGuide.txt\
+  \ for more information.\n\nUsage:   clumpify.sh in=<file> out=<file> reorder\n\n\
+  Input may be fasta or fastq, compressed or uncompressed.  Cannot accept sam.\n\n\
+  Parameters and their defaults:\nin=<file>           Input file.\nin2=<file>    \
+  \      Optional input for read 2 of twin paired files.\nout=<file>          Output\
+  \ file.  May not be standard out.\nout2=<file>         Optional output for read\
+  \ 2 of twin paired files.\ngroups=auto         Use this many intermediate files\
+  \ (to save memory).\n                    1 group is fastest.  Auto will estimate\
+  \ the number\n                    of groups needed based on the file size, so it\
+  \ should\n                    not ever run out of memory.\nlowcomplexity=f     For\
+  \ compressed low-complexity libraries such as RNA-seq,\n                    this\
+  \ will more conservatively estimate how much memory\n                    is needed\
+  \ to automatically decide the number of groups.\nrcomp=f             Give read clumps\
+  \ the same orientation to increase \n                    compression.  Should be\
+  \ disabled for paired reads.\noverwrite=f         (ow) Set to false to force the\
+  \ program to abort rather \n                    than overwrite an existing file.\n\
+  qin=auto            Auto-detect input quality encoding.  May be set to:\n      \
+  \                 33:  ASCII-33 (Sanger) encoding.\n                       64: \
+  \ ASCII-64 (old Illumina) encoding.\n                    All modern sequence is\
+  \ encoded as ASCII-33.\nqout=auto           Use input quality encoding as output\
+  \ quality encoding.\nchangequality=f     (cq) If true, fix broken quality scores\
+  \ such as Ns with\n                    Q>0.  Default is false to ensure lossless\
+  \ compression.\nfastawrap=70        Set to a higher number like 4000 for longer\
+  \ lines in \n                    fasta format, which increases compression.\n\n\
+  Compression parameters:\nziplevel=6          (zl) Gzip compression level (1-11).\
+  \  Higher is slower.\n                    Level 11 is only available if pigz is\
+  \ installed and is\n                    extremely slow to compress, but faster to\
+  \ decompress.\n                    Naming the output file to *.bz2 will use bzip2\
+  \ instead of\n                    gzip for ~9% additional compression, which requires\n\
+  \                    bzip2, pbzip2, or lbzip2 in the path.\nblocksize=128      \
+  \ Size of blocks for pigz, in kb.  Higher gives slightly\n                    better\
+  \ compression.\nshortname=f         Make the names as short as possible.  'shortname=shrink'\n\
+  \                    will shorten the names where possible, but retain the \n  \
+  \                  flowcell and barcode information.\nreorder=f           Reorder\
+  \ clumps for additional compression.  Only valid\n                    when groups=1,\
+  \ passes=1, and ecc=f.  Possible modes:\n                       f:  Do not reorder\
+  \ clumps.\n                       c:  Reorder using consensus reads.  Uses additional\n\
+  \                           time and memory.\n                       p:  Reorder\
+  \ using pair information.  Requires paired\n                           reads.  Yields\
+  \ the highest compression.\n                       a:  Automatically choose between\
+  \ 'c' and 'p'.  The\n                           flag reorder with no argument will\
+  \ set 'reorder=a'.\nquantize=f          Bin the quality scores, like NextSeq.  This\
+  \ greatly\n                    increases compression, but information is lost.\n\
+  \nTemp file parameters:\ncompresstemp=auto   (ct) Gzip temporary files.  By default\
+  \ temp files will be\n                    compressed if the output file is compressed.\n\
+  deletetemp=t        Delete temporary files.\ndeleteinput=f       Delete input upon\
+  \ successful completion.\nusetmpdir=f         Use tmpdir for temp files.\ntmpdir=\
+  \             By default, this is the environment variable TMPDIR.\n\nHashing parameters:\n\
+  k=31                Use kmers of this length (1-31).  Shorter kmers may\n      \
+  \              increase compression, but 31 is recommended for error\n         \
+  \           correction.\nmincount=0          Don't use pivot kmers with count less\
+  \ than this.\n                    Setting mincount=2 can increase compression.\n\
+  \                    Increases time and memory usage.\nseed=1              Random\
+  \ number generator seed for hashing.  \n                    Set to a negative number\
+  \ to use a random seed.\nhashes=4            Use this many masks when hashing. \
+  \ 0 uses raw kmers.\n                    Often hashes=0 increases compression, but\
+  \ it should\n                    not be used with error-correction.\nborder=1  \
+  \          Do not use kmers within this many bases of read ends.\n\nDeduplication\
+  \ parameters:\ndedupe=f            Remove duplicate reads.  For pairs, both must\
+  \ match.\n                    By default, deduplication does not occur.\n      \
+  \              If dedupe and markduplicates are both false, none of\n          \
+  \          the other duplicate-related flags will have any effect.\nmarkduplicates=f\
+  \    Don't remove; just append ' duplicate' to the name.\nallduplicates=f     Mark\
+  \ or remove all copies of duplicates, instead of\n                    keeping the\
+  \ highest-quality copy.\naddcount=f          Append the number of copies to the\
+  \ read name.\n                    Mutually exclusive with markduplicates or allduplicates.\n\
+  subs=2              (s) Maximum substitutions allowed between duplicates.\nsubrate=0.0\
+  \         (dsr) If set, the number of substitutions allowed will be\n          \
+  \          max(subs, subrate*min(length1, length2)) for 2 sequences.\nallowns=t\
+  \           No-called bases will not be considered substitutions.\nscanlimit=5 \
+  \        (scan) Continue for this many reads after encountering a\n            \
+  \        nonduplicate.  Improves detection of inexact duplicates.\ncontainment=f\
+  \       Allow containments (where one sequence is shorter).\naffix=f           \
+  \  For containments, require one sequence to be an affix\n                    (prefix\
+  \ or suffix) of the other.\noptical=f           If true, mark or remove optical\
+  \ duplicates only.\n                    This means they are Illumina reads within\
+  \ a certain\n                    distance on the flowcell.  Normal Illumina names\
+  \ needed.\n                    Also for tile-edge and well duplicates.\ndupedist=40\
+  \         (dist) Max distance to consider for optical duplicates.\n            \
+  \        Higher removes more duplicates but is more likely to\n                \
+  \    remove PCR rather than optical duplicates.\n                    This is platform-specific;\
+  \ recommendations:\n                       NextSeq      40  (and spany=t)\n    \
+  \                   HiSeq 1T     40\n                       HiSeq 2500   40\n  \
+  \                     HiSeq 3k/4k  2500\n                       Novaseq      12000\n\
+  spany=f             Allow reads to be considered optical duplicates if they\n  \
+  \                  are on different tiles, but are within dupedist in the\n    \
+  \                y-axis.  Should only be enabled when looking for \n           \
+  \         tile-edge duplicates (as in NextSeq).\nspanx=f             Like spany,\
+  \ but for the x-axis.  Not necessary \n                    for NextSeq.\nspantiles=f\
+  \         Set both spanx and spany.\nadjacent=f          Limit tile-spanning to\
+  \ adjacent tiles (those with \n                    consecutive numbers).\n*** Thus,\
+  \ for NextSeq, the recommended deduplication flags are: ***\ndedupe optical spany\
+  \ adjacent\n\nPairing/ordering parameters (for use with error-correction):\nunpair=f\
+  \            For paired reads, clump all of them rather than just\n            \
+  \        read 1.  Destroys pairing.  Without this flag, for paired\n           \
+  \         reads, only read 1 will be error-corrected.\nrepair=f            After\
+  \ clumping and error-correction, restore pairing.\n                    If groups>1\
+  \ this will sort by name which will destroy\n                    clump ordering;\
+  \ with a single group, clumping will\n                    be retained.\n\nError-correction\
+  \ parameters:\necc=f               Error-correct reads.  Requires multiple passes\
+  \ for\n                    complete correction.\necco=f              Error-correct\
+  \ paired reads via overlap before clumping.\npasses=1            Use this many error-correction\
+  \ passes.  6 passes are \n                    suggested.\nconsensus=f         Output\
+  \ consensus sequence instead of clumps.\n\nAdvanced error-correction parameters:\n\
+  mincc=4             (mincountcorrect) Do not correct to alleles occuring less\n\
+  \                    often than this.\nminss=4             (minsizesplit) Do not\
+  \ split into new clumps smaller than \n                    this.\nminsfs=0.17  \
+  \       (minsizefractionsplit) Do not split on pivot alleles in\n              \
+  \      areas with local depth less than this fraction of clump size.\nminsfc=0.20\
+  \         (minsizefractioncorrect) Do not correct in areas with local\n        \
+  \            depth less than this.\nminr=30.0           (minratio) Correct to the\
+  \ consensus if the ratio of the\n                    consensus allele to second-most-common\
+  \ allele is >=minr,\n                    for high depth.  Actual ratio used is:\n\
+  \                    min(minr, minro+minorCount*minrm+quality*minrqm).\nminro=1.9\
+  \           (minratiooffset) Base ratio.\nminrm=1.8           (minratiomult) Ratio\
+  \ multiplier for secondary allele count.\nminrqm=0.08         (minratioqmult) Ratio\
+  \ multiplier for base quality.\nminqr=2.8           (minqratio) Do not correct bases\
+  \ when cq*minqr>rqsum.\nminaqr=0.70         (minaqratio) Do not correct bases when\
+  \ cq*minaqr>5+rqavg.\nminid=0.97          (minidentity) Do not correct reads with\
+  \ identity to \n                    consensus less than this.\nmaxqadjust=0    \
+  \    Adjust quality scores by at most maxqadjust per pass.\nmaxqi=-1           \
+  \ (maxqualityincorrect) Do not correct bases with quality \n                   \
+  \ above this (if positive).\nmaxci=-1            (maxcountincorrect) Do not correct\
+  \ alleles with count \n                    above this (if positive).\nfindcorrelations=t\
+  \  Look for correlated SNPs in clumps to split into alleles.\nmaxcorrelations=12\
+  \  Maximum number of eligible SNPs per clump to consider for\n                 \
+  \   correlations.  Increasing this number can reduce false-\n                  \
+  \  positive corrections at the possible expense of speed.\n\nJava Parameters:\n\
+  -Xmx                This will set Java's memory usage, overriding autodetection.\n\
+  \                    -Xmx20g will specify 20 gigs of RAM, and -Xmx200m will specify\
+  \ 200 megs.\n                    The max is typically 85% of physical memory.\n\
+  -eoom               This flag will cause the process to exit if an\n           \
+  \         out-of-memory exception occurs.  Requires Java 8u92+.\n-da           \
+  \      Disable assertions.\n\nPlease contact Brian Bushnell at bbushnell@lbl.gov\
+  \ if you encounter any problems.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

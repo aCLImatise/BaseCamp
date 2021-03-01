@@ -12,6 +12,9 @@ task DgeniesInforun {
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""} \
       ~{if (clear) then "--clear" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     message: "Message to add"
     type: "Type of message"

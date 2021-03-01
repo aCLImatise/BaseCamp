@@ -4,24 +4,28 @@ command:
 positional: []
 named:
 - !Flag
-  description: "The directory with your BLAST database. If not set, the value\nfrom\
-    \ the \"BLASTDB\" environment variable is used."
+  optional: true
   synonyms:
   - -b
   - --blast-dir
+  description: "The directory with your BLAST database. If not set, the value\nfrom\
+    \ the \"BLASTDB\" environment variable is used."
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
-  description: "Name of the BLAST database to compare with. Must exist in the\ndirectory\
-    \ set with \"--blast-dir\" or in the directory set by\n\"BLASTDB\"."
+  optional: true
   synonyms:
   - -d
   - --database
+  description: "Name of the BLAST database to compare with. Must exist in the\ndirectory\
+    \ set with \"--blast-dir\" or in the directory set by\n\"BLASTDB\"."
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --seq-dir
   description: "Directory with sequence files. For each sequence identifier in\nyour\
     \ input file you need to have a corresponding FASTA formatted\nfile. The files\
     \ should be named with the sequence identifier and\nthe extension \".fa\" or \"\
@@ -30,44 +34,40 @@ named:
     \ of the form\n``assembly.chromosome\" as for example used by UCSC alignments,\n\
     it is also possible to name the file \"chr22.fa\" for a sequence\nidentifier \"\
     hg17.chr22\")."
-  synonyms:
-  - -s
-  - --seq-dir
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
-  description: "E-value cutoff. All hits with E < X are reported. (Default:\n1e-06)"
+  optional: true
   synonyms:
   - -e
   - --e-value
+  description: "E-value cutoff. All hits with E < X are reported. (Default:\n1e-06)"
   args: !SimpleFlagArg
     name: X
-  optional: true
 - !Flag
-  description: Prints the manual page and exits.
+  optional: true
   synonyms:
   - --man
+  description: Prints the manual page and exits.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Prints a brief help message and exits.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Prints a brief help message and exits.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Prints version information and exits.
+  optional: true
   synonyms:
   - -v
   - --version
+  description: Prints version information and exits.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage:\n     rnazBlast.pl [options] [file]\n\nOptions:\n    -b name, --blast-dir=name\n\
   \            The directory with your BLAST database. If not set, the value\n   \
   \         from the \"BLASTDB\" environment variable is used.\n\n    -d name, --database=name\n\
@@ -88,3 +88,4 @@ help_text: "Usage:\n     rnazBlast.pl [options] [file]\n\nOptions:\n    -b name,
   \    --man   Prints the manual page and exits.\n\n"
 generated_using:
 - --help
+docker_image:

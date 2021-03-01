@@ -4,79 +4,82 @@ command:
 positional: []
 named:
 - !Flag
-  description: level (0/default=1/2/3)
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: level (0/default=1/2/3)
   args: !SimpleFlagArg
     name: verbosity
-  optional: true
 - !Flag
-  description: pattern to glob '_l10abfs_raw' files from 'eqtlbma_bf'
+  optional: true
   synonyms:
   - --in
+  description: pattern to glob '_l10abfs_raw' files from 'eqtlbma_bf'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: file with grid weights (one per line, only the value)
+  optional: true
   synonyms:
   - --gwts
+  description: file with grid weights (one per line, only the value)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "ind-ex/icies of grid weights to keep (all by default)\ne.g. '1+3+5+7+9'\
-    \ to keep only those with no heterogeneity"
+  optional: true
   synonyms:
   - --gtk
+  description: "ind-ex/icies of grid weights to keep (all by default)\ne.g. '1+3+5+7+9'\
+    \ to keep only those with no heterogeneity"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: which model (default=configs/types)
+  optional: true
   synonyms:
   - --model
+  description: which model (default=configs/types)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: of subgroups
+  optional: true
   synonyms:
   - --nsubgrp
+  description: of subgroups
   args: !SimpleFlagArg
     name: number
-  optional: true
 - !Flag
-  description: dimension of the model (nb of active configs or types)
+  optional: true
   synonyms:
   - --dim
+  description: dimension of the model (nb of active configs or types)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "file with configuration weights (one per line, name<sep>value)\nonly\
-    \ a subset of the configs can be given, in agreement with --nsubgrp and --dim"
+  optional: true
   synonyms:
   - --cwts
+  description: "file with configuration weights (one per line, name<sep>value)\nonly\
+    \ a subset of the configs can be given, in agreement with --nsubgrp and --dim"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: file with type and subgroup weights (one per line, name<sep>value)
+  optional: true
   synonyms:
   - --tswts
+  description: file with type and subgroup weights (one per line, name<sep>value)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "precise what to save (bf/post/bf+post)\n'post' requires also options\
-    \ --pi0 and --post"
+  optional: true
   synonyms:
   - --save
+  description: "precise what to save (bf/post/bf+post)\n'post' requires also options\
+    \ --pi0 and --post"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "proba for a gene to have no eQTL in any subgroup\nif not provided,\
-    \ BFs will be saved instead of posterior probability"
+  optional: true
   synonyms:
   - --pi0
+  description: "proba for a gene to have no eQTL in any subgroup\nif not provided,\
+    \ BFs will be saved instead of posterior probability"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --post
   description: "save various kinds of posterior probabilities (e.g. 'a+b')\na: the\
     \ gene has at least one eQTL\nb: the SNP is 'the' eQTL for the gene, in at least\
     \ one subgroup, given that the gene has exactly one eQTL,\nassuming all cis SNPs\
@@ -84,86 +87,83 @@ named:
     \ gene, in at least one subgroup, given that the gene contains at least one eQTL\n\
     and that SNPs are independent\nd: the SNP is an eQTL in subgroup s, given that\
     \ it is 'the' eQTL for the gene, the configs/types being marginalized"
-  synonyms:
-  - --post
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: file with subset of gene(s) to keep (one per line)
+  optional: true
   synonyms:
   - --gene
+  description: file with subset of gene(s) to keep (one per line)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "file with subset of snp(s) to keep (one per line)\ncaution, it can\
-    \ change the gene-level BFs and posteriors"
+  optional: true
   synonyms:
   - --snp
+  description: "file with subset of snp(s) to keep (one per line)\ncaution, it can\
+    \ change the gene-level BFs and posteriors"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "file with subset of gene-snp pai(s) to keep (gene<tab>snp, one per\
-    \ line)\ncaution, it can change the gene-level BFs and posteriors"
+  optional: true
   synonyms:
   - --gene-snp
+  description: "file with subset of gene-snp pai(s) to keep (gene<tab>snp, one per\
+    \ line)\ncaution, it can change the gene-level BFs and posteriors"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bestsnp
   description: "the best SNP(s) per gene\n0: report all SNPs (default)\n1: report\
     \ only the single best SNP (pick one if tie)\n2: report the best SNP(s) listed\
     \ in decreasing order of their probability of being the eQTL (conditional on the\
     \ gene containing an eQTL), such that the sum of these probabilities exceeds 0.95"
-  synonyms:
-  - --bestsnp
   args: !SimpleFlagArg
     name: report
-  optional: true
 - !Flag
-  description: the best config/type per SNP (and its posterior)
+  optional: true
   synonyms:
   - --bestdim
+  description: the best config/type per SNP (and its posterior)
   args: !SimpleFlagArg
     name: report
-  optional: true
 - !Flag
-  description: "report also BF and/or posterior for all dimensions (configs or types)\n\
-    caution, the number of configurations can be big"
+  optional: true
   synonyms:
   - --alldim
+  description: "report also BF and/or posterior for all dimensions (configs or types)\n\
+    caution, the number of configurations can be big"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "name of the output file (gzipped)\nif --cwts is not provided, the\
-    \ output file will be used as input for 'eqtlbma_hm'"
+  optional: true
   synonyms:
   - --out
+  description: "name of the output file (gzipped)\nif --cwts is not provided, the\
+    \ output file will be used as input for 'eqtlbma_hm'"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: number of threads (default=1)
+  optional: true
   synonyms:
   - --thread
+  description: number of threads (default=1)
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: display the help and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: display the help and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: version information and exit
+  optional: true
   synonyms:
   - -V
   - --version
+  description: version information and exit
   args: !SimpleFlagArg
     name: output
-  optional: true
 help_text: "`eqtlbma_avg_bfs' averages the raw BFs over the grid only,\nor over both\
   \ the grid and the configurations,\nand it can also compute posteriors.\n\nUsage:\
   \ eqtlbma_avg_bfs [OPTIONS] ...\n\nOptions:\n  -h, --help\tdisplay the help and\
@@ -203,3 +203,4 @@ help_text: "`eqtlbma_avg_bfs' averages the raw BFs over the grid only,\nor over 
   \ of threads (default=1)\n\n"
 generated_using:
 - --help
+docker_image:

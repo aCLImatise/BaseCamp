@@ -3,7 +3,7 @@ id: chakin_organism_delete_all_organisms.cwl
 inputs:
 - id: in_confirm
   doc: Confirm that you really do want to delete ALL of the organisms.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --confirm
 - id: in_none
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - chakin

@@ -20,6 +20,9 @@ task MimoddRebase {
       ~{if (r) then "-r" else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
     f: ""

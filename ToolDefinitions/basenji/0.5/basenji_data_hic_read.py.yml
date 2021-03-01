@@ -1,0 +1,92 @@
+!Command
+command:
+- basenji_data_hic_read.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: genome_hic_file
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: seqs_bed_file
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: seqs_hic_file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: Set blacklist nucleotides to a baseline value.
+  args: !SimpleFlagArg
+    name: BLACKLIST_BED
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: 'Clip values post-summary to a maximum [Default: none]'
+  args: !SimpleFlagArg
+    name: CLIP
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: 'Scale values by [Default: 1.0]'
+  args: !SimpleFlagArg
+    name: SCALE
+- !Flag
+  optional: true
+  synonyms:
+  - --soft
+  description: "Soft clip values, applying sqrt to the execess above the\nthreshold\
+    \ [Default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: 'Summary statistic to compute in windows [Default: sum]'
+  args: !SimpleFlagArg
+    name: SUM_STAT
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: 'Average pooling width [Default: 1]'
+  args: !SimpleFlagArg
+    name: POOL_WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - --as_obsexp
+  description: save targets as obsexp profiles
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: basenji_data_hic_read.py [options] <genome_hic_file> <seqs_bed_file>\
+  \ <seqs_hic_file>\n\nOptions:\n  -h, --help        show this help message and exit\n\
+  \  -b BLACKLIST_BED  Set blacklist nucleotides to a baseline value.\n  -c CLIP \
+  \          Clip values post-summary to a maximum [Default: none]\n  -s SCALE   \
+  \       Scale values by [Default: 1.0]\n  --soft            Soft clip values, applying\
+  \ sqrt to the execess above the\n                    threshold [Default: False]\n\
+  \  -u SUM_STAT       Summary statistic to compute in windows [Default: sum]\n  -w\
+  \ POOL_WIDTH     Average pooling width [Default: 1]\n  --as_obsexp       save targets\
+  \ as obsexp profiles\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/basenji:0.5--py_0

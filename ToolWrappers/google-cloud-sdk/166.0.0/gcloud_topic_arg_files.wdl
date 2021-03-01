@@ -14,6 +14,9 @@ task GcloudTopicArgfiles {
       ~{file_dot} \
       ~{if defined(device_ids) then ("--device-ids " +  '"' + device_ids + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     device_ids: ",htc_m8,g3"
     composition: "A special include: [ARG_GROUP1, ...] syntax allows merging or composition"

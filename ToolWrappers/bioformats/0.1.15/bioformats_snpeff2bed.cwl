@@ -3,12 +3,12 @@ id: bioformats_snpeff2bed.cwl
 inputs:
 - id: in_bed_three
   doc: convert to the BED3 format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bed3
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_vcf_file
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bioformats

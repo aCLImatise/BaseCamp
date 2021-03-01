@@ -3,7 +3,7 @@ id: gcloud_topic_arg_files.cwl
 inputs:
 - id: in_device_ids
   doc: ',htc_m8,g3'
-  type: long
+  type: long?
   inputBinding:
     prefix: --device-ids
 - id: in_composition
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

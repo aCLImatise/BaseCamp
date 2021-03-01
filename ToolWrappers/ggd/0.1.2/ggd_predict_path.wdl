@@ -14,6 +14,9 @@ task GgdPredictpath {
       ~{if defined(package_name) then ("--package-name " +  '"' + package_name + '"') else ""} \
       ~{if defined(file_name) then ("--file-name " +  '"' + file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     channel: "The ggd channel of the recipe to find. (Default =\\ngenomics)"
     prefix: "(Optional) The name or the full directory path to an\\nconda environment. The predicted path will be based on\\nthis conda environment. When installing, the data\\npackage should also be installed in this environment.\\n(Only needed if not predicting for a path in the\\ncurrent conda enviroment)"

@@ -4,6 +4,9 @@ task Bam2starchSgefloat128 {
   command <<<
     bam2starch_sge_float128
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

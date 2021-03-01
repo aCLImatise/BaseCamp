@@ -5,7 +5,7 @@ inputs:
   doc: "Cap to limit the downstream sequence length for\nframeshifts when creating\
     \ the fasta file. Use 'full'\nto include the full downstream sequence. Default:\
     \ 1000\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --downstream-sequence-length
 - id: in_positional_arguments
@@ -33,6 +33,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pvacseq

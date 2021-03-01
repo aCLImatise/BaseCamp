@@ -10,6 +10,9 @@ task Dxnotebookreconnect {
       ~{job_id} \
       ~{if defined(port) then ("--port " +  '"' + port + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     port: "Local port to use for connecting."
     job_id: "Job-id of the notebook job to reconnect to."

@@ -12,6 +12,9 @@ task UploadGenomes {
       ~{if (external_genomes) then "--external-genomes" else ""} \
       ~{if defined(external_zip) then ("--external-zip " +  '"' + external_zip + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     external_genomes: "=    comma-separated list of label:nucleotide fasta file pairs of externally supplied genomes.\\nlabel:FILE,...     labels should be unique as genomes will be identified by this label in further output files"
     external_zip: "destination path for archive of user provided external genomes containing formatted nucleotide fasta files"

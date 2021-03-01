@@ -4,6 +4,7 @@ task Metalignpy {
   input {
     Float? cut_off
     Directory? db_dir
+    Boolean? keep_temp_files
     String? input_type
     Boolean? length_normalize
     Boolean? low_mem
@@ -23,7 +24,6 @@ task Metalignpy {
     String data
     String setup_data_dots_h
     String database_dot
-    String data_slash_db_info_dot_txt
     String processing_dot
     String hit_dot
   }
@@ -33,11 +33,11 @@ task Metalignpy {
       ~{data} \
       ~{setup_data_dots_h} \
       ~{database_dot} \
-      ~{data_slash_db_info_dot_txt} \
       ~{processing_dot} \
       ~{hit_dot} \
       ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""} \
       ~{if defined(db_dir) then ("--db_dir " +  '"' + db_dir + '"') else ""} \
+      ~{if (keep_temp_files) then "--keep_temp_files" else ""} \
       ~{if defined(input_type) then ("--input_type " +  '"' + input_type + '"') else ""} \
       ~{if (length_normalize) then "--length_normalize" else ""} \
       ~{if (low_mem) then "--low_mem" else ""} \
@@ -54,9 +54,13 @@ task Metalignpy {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cut_off: "CMash cutoff value. Default is 0.01."
     db_dir: "Directory with all organism files in the full"
+    keep_temp_files: "Retain KMC files after this script finishes."
     input_type: "Type of input file (fastq/fasta). Default: try to\\nauto-determine"
     length_normalize: "Normalize abundances by genome length."
     low_mem: "Run in low memory mode, with inexact multimapped"
@@ -76,7 +80,6 @@ task Metalignpy {
     data: "Path to data/ directory with the files from"
     setup_data_dots_h: "optional arguments:"
     database_dot: "--dbinfo_in DBINFO_IN"
-    data_slash_db_info_dot_txt: "--keep_temp_files     Retain KMC files after this script finishes."
     processing_dot: "--min_abundance MIN_ABUNDANCE"
     hit_dot: "--precise             Run in precise mode. Overwrites --read_cutoff and"
   }

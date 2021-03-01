@@ -24,6 +24,9 @@ task Genseq {
       ~{if (sd_log_len) then "-sdloglen" else ""} \
       ~{if defined(option) then ("-option " +  '"' + option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_seq: "number of sequences to generate"
     alphabet_for_sequences: "alphabet for sequences"

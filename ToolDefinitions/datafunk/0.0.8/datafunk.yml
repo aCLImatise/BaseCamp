@@ -1,0 +1,1533 @@
+&id001 !Command
+command:
+- datafunk
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - datafunk
+  - exclude_uk_seqs
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input-fasta
+    description: Fasta file to read
+    args: !SimpleFlagArg
+      name: input.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-fasta
+    description: "Fasta file to write\n"
+    args: !SimpleFlagArg
+      name: output.fasta
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk exclude_uk_seqs -i <input.fasta> -o <output.fasta>\n\
+    \nexclude UK sequences from fasta\n\nrequired arguments:\n  -i input.fasta, --input-fasta\
+    \ input.fasta\n                        Fasta file to read\n  -o output.fasta,\
+    \ --output-fasta output.fasta\n                        Fasta file to write\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - sam_2_fasta
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: samfile
+    description: -r reference.fasta, --reference reference.fasta
+  - !Positional
+    optional: false
+    position: 1
+    name: reference
+    description: 'optional arguments:'
+  - !Positional
+    optional: false
+    position: 2
+    name: file
+    description: --log-inserts         log non-singleton insertions relative to the
+      reference
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-fasta
+    description: "FASTA format file to write. Prints to stdout if not\nspecified"
+    args: !SimpleFlagArg
+      name: out.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: "[[start]:[end]], --trim [[start]:[end]]\ntrim the alignment to these\
+      \ coordinates (0-based,\nhalf-open)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --pad
+    description: "if --trim, pad trimmed ends with Ns, to retain\nreference length"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix-ref
+    description: write the reference sequence at the beginning of the
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-all-inserts
+    description: "log all (including singleton) insertions relative to\nthe reference"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-deletions
+    description: log non-singleton deletions relative to the reference
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-all-deletions
+    description: "log all (including singleton) deletions relative to\nthe reference"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --stdout
+    description: "Overides -o/--output-fasta if present and prints\noutput to stdout\n"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: ''
+    args: !SimpleFlagArg
+      name: reference.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: ''
+    args: !SimpleFlagArg
+      name: input.sam
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk sam_2_fasta -s <input.sam> -r <reference.fasta> [-o\
+    \ <output.fasta>] [-t [INT]:[INT]] [--prefix-ref] [--stdout]\n\naligned sam ->\
+    \ fasta (with optional trim to user-defined (reference) co-\nordinates)\n\nrequired\
+    \ arguments:\n  -s in.sam, --sam in.sam\n                        samfile\n  -r\
+    \ reference.fasta, --reference reference.fasta\n                        reference\n\
+    \noptional arguments:\n  -o out.fasta, --output-fasta out.fasta\n            \
+    \            FASTA format file to write. Prints to stdout if not\n           \
+    \             specified\n  -t [[start]:[end]], --trim [[start]:[end]]\n      \
+    \                  trim the alignment to these coordinates (0-based,\n       \
+    \                 half-open)\n  --pad                 if --trim, pad trimmed ends\
+    \ with Ns, to retain\n                        reference length\n  --prefix-ref\
+    \          write the reference sequence at the beginning of the\n            \
+    \            file\n  --log-inserts         log non-singleton insertions relative\
+    \ to the reference\n  --log-all-inserts     log all (including singleton) insertions\
+    \ relative to\n                        the reference\n  --log-deletions      \
+    \ log non-singleton deletions relative to the reference\n  --log-all-deletions\
+    \   log all (including singleton) deletions relative to\n                    \
+    \    the reference\n  --stdout              Overides -o/--output-fasta if present\
+    \ and prints\n                        output to stdout\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - phylotype_consensus
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input-fasta
+    description: Fasta file for splitting into phylotypes
+    args: !SimpleFlagArg
+      name: INPUT_FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --input-metadata
+    description: Input metadata (csv) with phylotype information
+    args: !SimpleFlagArg
+      name: INPUT_METADATA
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --clade-file
+    description: Clade file stating the phylotypes needed to be grouped
+    args: !SimpleFlagArg
+      name: CLADE_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-folder
+    description: "Output folder for the phylotype fasta files and\nconsensus file"
+    args: !SimpleFlagArg
+      name: OUTPUT_FOLDER
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: Run with high verbosity (debug level logging)
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk phylotype_consensus -i <input_fasta> -m <input_metadata>\
+    \ -c <clade_file> -o <output_folder>\n\noptional arguments:\n  -h, --help    \
+    \        show this help message and exit\n  -i INPUT_FASTA, --input-fasta INPUT_FASTA\n\
+    \                        Fasta file for splitting into phylotypes\n  -m INPUT_METADATA,\
+    \ --input-metadata INPUT_METADATA\n                        Input metadata (csv)\
+    \ with phylotype information\n  -c CLADE_FILE, --clade-file CLADE_FILE\n     \
+    \                   Clade file stating the phylotypes needed to be grouped\n \
+    \ -o OUTPUT_FOLDER, --output-folder OUTPUT_FOLDER\n                        Output\
+    \ folder for the phylotype fasta files and\n                        consensus\
+    \ file\n  -v, --verbose         Run with high verbosity (debug level logging)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - snp_finder
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: datafunk
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: subcommand
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: options
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk <subcommand> <options>\ndatafunk: error: unrecognized\
+    \ arguments: --usage\n"
+  generated_using:
+  - --usage
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - process_gisaid_sequence_data
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "OR GISAID.json, --input GISAID.fasta OR GISAID.json\nSequence data\
+      \ in FASTA/json format"
+    args: !SimpleFlagArg
+      name: GISAID.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-fasta
+    description: "FASTA format file to write, print to stdout if\nunspecified"
+    args: !SimpleFlagArg
+      name: OUTPUT.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --exclude
+    description: "A file that contains (anywhere) EPI_ISL_###### IDs to\nexclude (can\
+      \ provide many files, e.g. -e FILE1 -e\nFILE2 ...)"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --exclude-uk
+    description: "Removes all GISAID entries with containing England,\nIreland, Scotland\
+      \ or Wales"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --exclude-undated
+    description: Removes all GISAID entries with an incomplete date
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk process_gisaid_sequence_data -i <input.json OR input.fasta>\
+    \ [-o <output.fasta>] [-e file1 -e file2 ...] [--stdout]\n\nProcess raw sequence\
+    \ data in fasta or json format\n\nrequired arguments:\n  -i GISAID.fasta OR GISAID.json,\
+    \ --input GISAID.fasta OR GISAID.json\n                        Sequence data in\
+    \ FASTA/json format\n\noptional arguments:\n  -o OUTPUT.fasta, --output-fasta\
+    \ OUTPUT.fasta\n                        FASTA format file to write, print to stdout\
+    \ if\n                        unspecified\n  -e FILE, --exclude FILE\n       \
+    \                 A file that contains (anywhere) EPI_ISL_###### IDs to\n    \
+    \                    exclude (can provide many files, e.g. -e FILE1 -e\n     \
+    \                   FILE2 ...)\n  --exclude-uk          Removes all GISAID entries\
+    \ with containing England,\n                        Ireland, Scotland or Wales\n\
+    \  --exclude-undated     Removes all GISAID entries with an incomplete date\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - curate_lineages
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input-directory
+    description: Path to input directory containing traits.csv files
+    args: !SimpleFlagArg
+      name: INPUT_DIRECTORY
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output_file
+    description: "Name of output CSV\n"
+    args: !SimpleFlagArg
+      name: OUTPUT_FILE
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk curate_lineages -i <input_directory>\n\nFind new lineages,\
+    \ merge ones that need merging, split ones that need\nsplitting\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -i INPUT_DIRECTORY,\
+    \ --input-directory INPUT_DIRECTORY\n                        Path to input directory\
+    \ containing traits.csv files\n  -o OUTPUT_FILE, --output_file OUTPUT_FILE\n \
+    \                       Name of output CSV\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - mask
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input-fasta
+    description: Fasta file to mask
+    args: !SimpleFlagArg
+      name: input.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-fasta
+    description: Fasta file to write
+    args: !SimpleFlagArg
+      name: output.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: ", mask.txt, --mask-file mask.txt\nFile with mask instructions to\
+      \ parse\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk mask -i <file.fasta> -m <mask.txt> -o <file.masked.fasta>\n\
+    \nmask regions of a fasta file using information in an external file\n\nrequired\
+    \ arguments:\n  -i input.fasta, --input-fasta input.fasta\n                  \
+    \      Fasta file to mask\n  -o output.fasta, --output-fasta output.fasta\n  \
+    \                      Fasta file to write\n  -m, mask.txt, --mask-file mask.txt\n\
+    \                        File with mask instructions to parse\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - bootstrap
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input-fasta
+    description: Alignment in fasta format to bootstrap
+    args: !SimpleFlagArg
+      name: input.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --output-prefix
+    description: Prefix for output files (default is "bootstrap_")
+    args: !SimpleFlagArg
+      name: boot
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: Number of bootstraps to generate (default is 1)
+    args: !SimpleFlagArg
+      name: '1'
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk bootstrap -i <input.fasta> --output-prefix boot -n 100\n\
+    \nbootstrap an alignment\n\nrequired arguments:\n  -i input.fasta, --input-fasta\
+    \ input.fasta\n                        Alignment in fasta format to bootstrap\n\
+    \noptional arguments:\n  -p boot, --output-prefix boot\n                     \
+    \   Prefix for output files (default is \"bootstrap_\")\n  -n 1              \
+    \    Number of bootstraps to generate (default is 1)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - del_finder
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input-fasta
+    description: Alignment (to Wuhan-Hu-1) in Fasta format to type
+    args: !SimpleFlagArg
+      name: input.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - --deletions-file
+    description: "Input CSV file with deletions type. Format is: 1-based\nstart position\
+      \ of deletion,length of deletion (dont\ninclude a header line), eg: 1605,3"
+    args: !SimpleFlagArg
+      name: deletions.csv
+  - !Flag
+    optional: true
+    synonyms:
+    - --genotypes-table
+    description: "CSV file with deletion typing results to write.\nReturns the genotype\
+      \ for each deletion in --deletions-\nfile for each sequence in --input-fasta:\
+      \ either \"ref\",\n\"del\" or \"X\" (for missing data)"
+    args: !SimpleFlagArg
+      name: results.csv
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-fasta
+    description: Fasta file to write
+    args: !SimpleFlagArg
+      name: output.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - --append-as-SNP
+    description: "If invoked, then append the genotype of the deletion\nas a SNP on\
+      \ the end of the alignment\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk del_finder -i <input.fasta> --deletions-file <deletions.csv>\
+    \ --genotypes-table <results.csv>\n\nQuery an alignment position for deletions\n\
+    \nrequired arguments:\n  -i input.fasta, --input-fasta input.fasta\n         \
+    \               Alignment (to Wuhan-Hu-1) in Fasta format to type\n  --deletions-file\
+    \ deletions.csv\n                        Input CSV file with deletions type. Format\
+    \ is: 1-based\n                        start position of deletion,length of deletion\
+    \ (dont\n                        include a header line), eg: 1605,3\n  --genotypes-table\
+    \ results.csv\n                        CSV file with deletion typing results to\
+    \ write.\n                        Returns the genotype for each deletion in --deletions-\n\
+    \                        file for each sequence in --input-fasta: either \"ref\"\
+    ,\n                        \"del\" or \"X\" (for missing data)\n\noptional arguments:\n\
+    \  -o output.fasta, --output-fasta output.fasta\n                        Fasta\
+    \ file to write\n  --append-as-SNP       If invoked, then append the genotype\
+    \ of the deletion\n                        as a SNP on the end of the alignment\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - consensus
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: datafunk
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: subcommand
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: options
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk <subcommand> <options>\ndatafunk: error: argument :\
+    \ invalid choice: 'consensus' (choose from 'repair_names', 'remove_fasta', 'clean_names',\
+    \ 'merge_fasta', 'filter_fasta_by_covg_and_length', 'process_gisaid_sequence_data',\
+    \ 'sam_2_fasta', 'phylotype_consensus', 'gisaid_json_2_metadata', 'set_uniform_header',\
+    \ 'add_epi_week', 'process_gisaid_data', 'pad_alignment -i <input.fasta> -o <output.fasta>\
+    \ --left-pad <int> --right-pad <int> [--stdout]', 'exclude_uk_seqs', 'get_CDS',\
+    \ 'distance_to_root', 'mask', 'curate_lineages', 'snp_finder', 'del_finder', 'add_header_column',\
+    \ 'extract_unannotated_seqs', 'AA_finder', 'bootstrap')\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - remove_fasta
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input-fasta
+    description: 'Input file: something about the input file format'
+    args: !SimpleFlagArg
+      name: INPUT_FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --filter-file
+    description: Filter file for filtering based on filter file
+    args: !SimpleFlagArg
+      name: FILTER_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-fasta
+    description: Output file name for resulting filtered fasta file
+    args: !SimpleFlagArg
+      name: OUTPUT_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: Run with high verbosity (debug level logging)
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk remove_fasta -i <input_fasta_file> -f <filter_file>\
+    \ -o <output_file>\n\noptional arguments:\n  -h, --help            show this help\
+    \ message and exit\n  -i INPUT_FASTA, --input-fasta INPUT_FASTA\n            \
+    \            Input file: something about the input file format\n  -f FILTER_FILE,\
+    \ --filter-file FILTER_FILE\n                        Filter file for filtering\
+    \ based on filter file\n  -o OUTPUT_FILE, --output-fasta OUTPUT_FILE\n       \
+    \                 Output file name for resulting filtered fasta file\n  -v, --verbose\
+    \         Run with high verbosity (debug level logging)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - extract_unannotated_seqs
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fasta
+    description: fasta file to extract sequences from
+    args: !SimpleFlagArg
+      name: input.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-metadata
+    description: metadata whose columns and rows will be checked
+    args: !SimpleFlagArg
+      name: input.csv
+  - !Flag
+    optional: true
+    synonyms:
+    - --null-column
+    description: metadata column which will be checked as empty
+    args: !SimpleFlagArg
+      name: NULL_COLUMN
+  - !Flag
+    optional: true
+    synonyms:
+    - --index-column
+    description: metadata column to match to fasta file
+    args: !SimpleFlagArg
+      name: INDEX_COLUMN
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fasta
+    description: "fasta file to write\n"
+    args: !SimpleFlagArg
+      name: output.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-metadata
+    description: ''
+    args: !SimpleFlagArg
+      name: file.csv
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-tree
+    description: ''
+    args: !SimpleFlagArg
+      name: file.tree
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-tree
+    description: ''
+    args: !SimpleFlagArg
+      name: file.tree
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk extract_unannotated_seqs --input-tree <file.tree> --input-metadata\
+    \ <file.csv> --output-tree <file.tree> --output-metadata <file.csv>\n\nextract\
+    \ sequences with an empty cell in a specified cell in a metadata table\n\nrequired\
+    \ arguments:\n  --input-fasta input.fasta\n                        fasta file\
+    \ to extract sequences from\n  --input-metadata input.csv\n                  \
+    \      metadata whose columns and rows will be checked\n  --null-column NULL_COLUMN\n\
+    \                        metadata column which will be checked as empty\n  --index-column\
+    \ INDEX_COLUMN\n                        metadata column to match to fasta file\n\
+    \  --output-fasta output.fasta\n                        fasta file to write\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - clean_names
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input-metadata
+    description: 'Input file: metadata (csv) for location curation'
+    args: !SimpleFlagArg
+      name: INPUT_METADATA
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --trait
+    description: Column name containing the locations
+    args: !SimpleFlagArg
+      name: TRAIT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-metadata
+    description: Output file name for resulting filtered metadata
+    args: !SimpleFlagArg
+      name: OUTPUT_METADATA
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: Run with high verbosity (debug level logging)
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk clean_names -i <input_metadata> -t <trait> -o <output_file>\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -i INPUT_METADATA, --input-metadata INPUT_METADATA\n                      \
+    \  Input file: metadata (csv) for location curation\n  -t TRAIT, --trait TRAIT\n\
+    \                        Column name containing the locations\n  -o OUTPUT_METADATA,\
+    \ --output-metadata OUTPUT_METADATA\n                        Output file name\
+    \ for resulting filtered metadata\n  -v, --verbose         Run with high verbosity\
+    \ (debug level logging)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - merge_fasta
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --folder
+    description: Folder containing all fasta files needed to be merged
+    args: !SimpleFlagArg
+      name: FOLDER
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input-metadata
+    description: "Input metadata (csv) for validating sequence\ninformation"
+    args: !SimpleFlagArg
+      name: INPUT_METADATA
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-fasta
+    description: Output for merged fasta file
+    args: !SimpleFlagArg
+      name: OUTPUT_FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: Run with high verbosity (debug level logging)
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk merge_fasta -f <folder> -i <input_metadata> -o <output_file>\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -f FOLDER, --folder FOLDER\n                        Folder containing all fasta\
+    \ files needed to be merged\n  -i INPUT_METADATA, --input-metadata INPUT_METADATA\n\
+    \                        Input metadata (csv) for validating sequence\n      \
+    \                  information\n  -o OUTPUT_FASTA, --output-fasta OUTPUT_FASTA\n\
+    \                        Output for merged fasta file\n  -v, --verbose       \
+    \  Run with high verbosity (debug level logging)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - repair_names
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --out
+    description: ''
+    args: !SimpleFlagArg
+      name: outfile
+  - !Flag
+    optional: true
+    synonyms:
+    - --tree
+    description: ''
+    args: !SimpleFlagArg
+      name: tree
+  - !Flag
+    optional: true
+    synonyms:
+    - --fasta
+    description: ''
+    args: !SimpleFlagArg
+      name: fasta
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk repair_names --fasta <fasta> --tree <tree> --out <outfile>\n\
+    \noptional arguments:\n  -h, --help     show this help message and exit\n  --fasta\
+    \ FASTA\n  --tree TREE\n  --out OUT\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - get_CDS
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input-fasta
+    description: Fasta file to read
+    args: !SimpleFlagArg
+      name: input.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-fasta
+    description: Fasta file to write. Prints to stdout if not specified
+    args: !SimpleFlagArg
+      name: output.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - --translate
+    description: output amino acid sequence (default is nucleotides)
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk get_CDS -i <input.fasta> -o <output.fasta> [--translate]\n\
+    \nExtracts CDS from alignments in Wuhan-Hu-1 coordinates\n\nrequired arguments:\n\
+    \  -i input.fasta, --input-fasta input.fasta\n                        Fasta file\
+    \ to read\n\noptional arguments:\n  -o output.fasta, --output-fasta output.fasta\n\
+    \                        Fasta file to write. Prints to stdout if not specified\n\
+    \  --translate           output amino acid sequence (default is nucleotides)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - metadata
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: datafunk
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: subcommand
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: options
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk <subcommand> <options>\ndatafunk: error: argument :\
+    \ invalid choice: 'metadata' (choose from 'repair_names', 'remove_fasta', 'clean_names',\
+    \ 'merge_fasta', 'filter_fasta_by_covg_and_length', 'process_gisaid_sequence_data',\
+    \ 'sam_2_fasta', 'phylotype_consensus', 'gisaid_json_2_metadata', 'set_uniform_header',\
+    \ 'add_epi_week', 'process_gisaid_data', 'pad_alignment -i <input.fasta> -o <output.fasta>\
+    \ --left-pad <int> --right-pad <int> [--stdout]', 'exclude_uk_seqs', 'get_CDS',\
+    \ 'distance_to_root', 'mask', 'curate_lineages', 'snp_finder', 'del_finder', 'add_header_column',\
+    \ 'extract_unannotated_seqs', 'AA_finder', 'bootstrap')\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - process_gisaid_data
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-json
+    description: Gisaid json data
+    args: !SimpleFlagArg
+      name: gisaid.json
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-metadata
+    description: previous metadata (can be 'False')
+    args: !SimpleFlagArg
+      name: metadata.in.csv
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fasta
+    description: fasta format file to write.
+    args: !SimpleFlagArg
+      name: output.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-metadata
+    description: metadata file to write.
+    args: !SimpleFlagArg
+      name: metadata.out.csv
+  - !Flag
+    optional: true
+    synonyms:
+    - --exclude-file
+    description: "A file that contains (anywhere) EPI_ISL_###### IDs to\nexclude (can\
+      \ provide many files, e.g. -e FILE1 -e\nFILE2 ...)"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --exclude-uk
+    description: "Excludes GISAID entries from England, Ireland,\nScotland or Wales\
+      \ from being written to fasta (default\nis to include them)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --exclude-undated
+    description: "Excludes GISAID entries with an incomplete date from\nbeing written\
+      \ to fasta (default is to include them)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --include-subsampled
+    description: "Write GISAID entries previously flagged as duplicated\nto fasta\
+      \ (default is to exclude them)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --include-omitted-file
+    description: "Write GISAID entries excluded in --exclude-file FILE\nto fasta (default\
+      \ is to exclude them)\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk process_gisaid_data --input-json <export.json> --input-metadata\
+    \ <in.csv>\n                 --output-fasta <out.fa> --output-metadata <out.csv>\
+    \ --exclude-file <omissions.txt> --exclude-uk --exclude-undated\n\nGisaid json\
+    \ (+ metadata) -> (new) gisaid.fasta + metadata\n\nrequired arguments:\n  --input-json\
+    \ gisaid.json\n                        Gisaid json data\n  --input-metadata metadata.in.csv\n\
+    \                        previous metadata (can be 'False')\n\noptional arguments:\n\
+    \  --output-fasta output.fasta\n                        fasta format file to write.\n\
+    \  --output-metadata metadata.out.csv\n                        metadata file to\
+    \ write.\n  --exclude-file FILE   A file that contains (anywhere) EPI_ISL_######\
+    \ IDs to\n                        exclude (can provide many files, e.g. -e FILE1\
+    \ -e\n                        FILE2 ...)\n  --exclude-uk          Excludes GISAID\
+    \ entries from England, Ireland,\n                        Scotland or Wales from\
+    \ being written to fasta (default\n                        is to include them)\n\
+    \  --exclude-undated     Excludes GISAID entries with an incomplete date from\n\
+    \                        being written to fasta (default is to include them)\n\
+    \  --include-subsampled  Write GISAID entries previously flagged as duplicated\n\
+    \                        to fasta (default is to exclude them)\n  --include-omitted-file\n\
+    \                        Write GISAID entries excluded in --exclude-file FILE\n\
+    \                        to fasta (default is to exclude them)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - duplicates
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: datafunk
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: subcommand
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: options
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk <subcommand> <options>\ndatafunk: error: argument :\
+    \ invalid choice: 'duplicates' (choose from 'repair_names', 'remove_fasta', 'clean_names',\
+    \ 'merge_fasta', 'filter_fasta_by_covg_and_length', 'process_gisaid_sequence_data',\
+    \ 'sam_2_fasta', 'phylotype_consensus', 'gisaid_json_2_metadata', 'set_uniform_header',\
+    \ 'add_epi_week', 'process_gisaid_data', 'pad_alignment -i <input.fasta> -o <output.fasta>\
+    \ --left-pad <int> --right-pad <int> [--stdout]', 'exclude_uk_seqs', 'get_CDS',\
+    \ 'distance_to_root', 'mask', 'curate_lineages', 'snp_finder', 'del_finder', 'add_header_column',\
+    \ 'extract_unannotated_seqs', 'AA_finder', 'bootstrap')\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - add_epi_week
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input-metadata
+    description: Input CSV or TSV
+    args: !SimpleFlagArg
+      name: INPUT_METADATA
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-metadata
+    description: Input CSV or TSV
+    args: !SimpleFlagArg
+      name: OUTPUT_METADATA
+  - !Flag
+    optional: true
+    synonyms:
+    - --date-column
+    description: Column name to convert to epi week
+    args: !SimpleFlagArg
+      name: DATE_COLUMN
+  - !Flag
+    optional: true
+    synonyms:
+    - --epi-week-column-name
+    description: Column name for epi week column
+    args: !SimpleFlagArg
+      name: EPI_WEEK_COLUMN_NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --epi-day-column-name
+    description: "Column name for epi day column\n"
+    args: !SimpleFlagArg
+      name: EPI_DAY_COLUMN_NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --epi-column-name
+    description: ''
+    args: !SimpleFlagArg
+      name: column
+  - !Flag
+    optional: true
+    synonyms:
+    - --date_column
+    description: ''
+    args: !SimpleFlagArg
+      name: column
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk add_epi_week -i <input_metadata> -o <output_metadata>\
+    \ --date_column <column> [--epi-column-name <column>]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -i INPUT_METADATA,\
+    \ --input-metadata INPUT_METADATA\n                        Input CSV or TSV\n\
+    \  -o OUTPUT_METADATA, --output-metadata OUTPUT_METADATA\n                   \
+    \     Input CSV or TSV\n  --date-column DATE_COLUMN\n                        Column\
+    \ name to convert to epi week\n  --epi-week-column-name EPI_WEEK_COLUMN_NAME\n\
+    \                        Column name for epi week column\n  --epi-day-column-name\
+    \ EPI_DAY_COLUMN_NAME\n                        Column name for epi day column\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - set_uniform_header
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: INPUT_FASTA
+    description: --input-metadata
+  - !Positional
+    optional: false
+    position: 1
+    name: INPUT_METADATA
+    description: --output-fasta
+  - !Positional
+    optional: false
+    position: 2
+    name: OUTPUT_FASTA
+    description: --output-metadata
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fasta
+    description: Input FASTA
+    args: !SimpleFlagArg
+      name: INPUT_FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-metadata
+    description: Input CSV or TSV
+    args: !SimpleFlagArg
+      name: INPUT_METADATA
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fasta
+    description: Input FASTA
+    args: !SimpleFlagArg
+      name: OUTPUT_FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-metadata
+    description: Input CSV or TSV
+    args: !SimpleFlagArg
+      name: OUTPUT_METADATA
+  - !Flag
+    optional: true
+    synonyms:
+    - --gisaid
+    description: Input data is from GISAID
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cog-uk
+    description: Input data is from COG-UK
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log
+    description: Log file to use (otherwise uses stdout)
+    args: !SimpleFlagArg
+      name: LOG_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --column-name
+    description: "Name of column in metadata corresponding to fasta\nheader"
+    args: !SimpleFlagArg
+      name: COLUMN_NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --index-column
+    description: "Name of column in metadata to parse for string\nmatching with fasta\
+      \ header"
+    args: !SimpleFlagArg
+      name: INDEX_COLUMN
+  - !Flag
+    optional: true
+    synonyms:
+    - --extended
+    description: Longer fasta name
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk <subcommand> <options> set_uniform_header [-h] --input-fasta\n\
+    \                                                          INPUT_FASTA\n     \
+    \                                                     --input-metadata\n     \
+    \                                                     INPUT_METADATA\n       \
+    \                                                   --output-fasta\n         \
+    \                                                 OUTPUT_FASTA\n             \
+    \                                             --output-metadata\n            \
+    \                                              OUTPUT_METADATA\n             \
+    \                                             [--gisaid]\n                   \
+    \                                       [--cog-uk]\n                         \
+    \                                 [--log LOG_FILE]\n                         \
+    \                                 [--column-name COLUMN_NAME]\n              \
+    \                                            [--index-column INDEX_COLUMN]\n \
+    \                                                         [--extended]\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  --input-fasta\
+    \ INPUT_FASTA\n                        Input FASTA\n  --input-metadata INPUT_METADATA\n\
+    \                        Input CSV or TSV\n  --output-fasta OUTPUT_FASTA\n   \
+    \                     Input FASTA\n  --output-metadata OUTPUT_METADATA\n     \
+    \                   Input CSV or TSV\n  --gisaid              Input data is from\
+    \ GISAID\n  --cog-uk              Input data is from COG-UK\n  --log LOG_FILE\
+    \        Log file to use (otherwise uses stdout)\n  --column-name COLUMN_NAME\n\
+    \                        Name of column in metadata corresponding to fasta\n \
+    \                       header\n  --index-column INDEX_COLUMN\n              \
+    \          Name of column in metadata to parse for string\n                  \
+    \      matching with fasta header\n  --extended            Longer fasta name\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - add_header_column
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: INPUT_FASTA
+    description: --input-metadata
+  - !Positional
+    optional: false
+    position: 1
+    name: INPUT_METADATA
+    description: --output-metadata
+  - !Positional
+    optional: false
+    position: 2
+    name: OUTPUT_METADATA
+    description: --output-fasta
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fasta
+    description: Input FASTA
+    args: !SimpleFlagArg
+      name: INPUT_FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-metadata
+    description: Input CSV or TSV
+    args: !SimpleFlagArg
+      name: INPUT_METADATA
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-metadata
+    description: Output CSV
+    args: !SimpleFlagArg
+      name: OUTPUT_METADATA
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fasta
+    description: Output FASTA
+    args: !SimpleFlagArg
+      name: OUTPUT_FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - --gisaid
+    description: Input data is from GISAID
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cog-uk
+    description: Input data is from COG-UK
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log
+    description: Log file to use (otherwise uses stdout)
+    args: !SimpleFlagArg
+      name: LOG_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --column-name
+    description: "Name of column in metadata corresponding to fasta\nheader"
+    args: !SimpleFlagArg
+      name: COLUMN_NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --columns
+    description: "List of columns in metadata to parse for string\nmatching with fasta\
+      \ header\n"
+    args: !RepeatFlagArg
+      name: COLUMNS
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk <subcommand> <options> add_header_column [-h] --input-fasta\n\
+    \                                                         INPUT_FASTA\n      \
+    \                                                   --input-metadata\n       \
+    \                                                  INPUT_METADATA\n          \
+    \                                               --output-metadata\n          \
+    \                                               OUTPUT_METADATA\n            \
+    \                                             --output-fasta\n               \
+    \                                          OUTPUT_FASTA\n                    \
+    \                                     [--gisaid] [--cog-uk]\n                \
+    \                                         [--log LOG_FILE]\n                 \
+    \                                        [--column-name COLUMN_NAME]\n       \
+    \                                                  [--columns COLUMNS [COLUMNS\
+    \ ...]]\n\nAdd header column to metadata table corresponding to fasta record ids\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --input-fasta INPUT_FASTA\n                        Input FASTA\n  --input-metadata\
+    \ INPUT_METADATA\n                        Input CSV or TSV\n  --output-metadata\
+    \ OUTPUT_METADATA\n                        Output CSV\n  --output-fasta OUTPUT_FASTA\n\
+    \                        Output FASTA\n  --gisaid              Input data is from\
+    \ GISAID\n  --cog-uk              Input data is from COG-UK\n  --log LOG_FILE\
+    \        Log file to use (otherwise uses stdout)\n  --column-name COLUMN_NAME\n\
+    \                        Name of column in metadata corresponding to fasta\n \
+    \                       header\n  --columns COLUMNS [COLUMNS ...]\n          \
+    \              List of columns in metadata to parse for string\n             \
+    \           matching with fasta header\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - AA_finder
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input-fasta
+    description: Alignment (to Wuhan-Hu-1) in Fasta format to type
+    args: !SimpleFlagArg
+      name: input.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - --codons-file
+    description: "Input CSV file with codon locations to parse. Format\nis: name,1-based\
+      \ start position of codon (dont include\na header line), eg: d614g,23402"
+    args: !SimpleFlagArg
+      name: codons.csv
+  - !Flag
+    optional: true
+    synonyms:
+    - --genotypes-table
+    description: "CSV file with amino acid typing results to write.\nReturns the amino\
+      \ acid at each position in --codons-\nfile for each sequence in --input-fasta,\
+      \ or \"X\" for\nmissing data\n"
+    args: !SimpleFlagArg
+      name: results.csv
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk AA_finder -i <input.fasta> --codons-file <codons.csv>\
+    \ --genotypes-table <results.csv>\n\nQuery a codon position for amino acids\n\n\
+    required arguments:\n  -i input.fasta, --input-fasta input.fasta\n           \
+    \             Alignment (to Wuhan-Hu-1) in Fasta format to type\n  --codons-file\
+    \ codons.csv\n                        Input CSV file with codon locations to parse.\
+    \ Format\n                        is: name,1-based start position of codon (dont\
+    \ include\n                        a header line), eg: d614g,23402\n  --genotypes-table\
+    \ results.csv\n                        CSV file with amino acid typing results\
+    \ to write.\n                        Returns the amino acid at each position in\
+    \ --codons-\n                        file for each sequence in --input-fasta,\
+    \ or \"X\" for\n                        missing data\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+- !Command
+  command:
+  - datafunk
+  - distance_to_root
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fasta
+    description: Fasta file to read. Must be aligned to Wuhan-Hu-1
+    args: !SimpleFlagArg
+      name: input.fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-metadata
+    description: "Metadata to read. Must contain epi week information\n"
+    args: !SimpleFlagArg
+      name: input.csv
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: datafunk distance_to_root --input-fasta <file> --input-metadata\
+    \ <file>\n\ncalculates per sample genetic distance to WH04 and writes it to\n\
+    'distances.tsv'\n\nrequired arguments:\n  --input-fasta input.fasta\n        \
+    \                Fasta file to read. Must be aligned to Wuhan-Hu-1\n  --input-metadata\
+    \ input.csv\n                        Metadata to read. Must contain epi week information\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: datafunk <subcommand> <options>\n\nMiscellaneous data manipulation\
+  \ tools\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  --version             show program's version number and exit\n\nAvailable\
+  \ subcommands:\n  \n    repair_names        Returns iqtree taxa names to their former\
+  \ glory\n    remove_fasta        Removing sequences based on a filtering file\n\
+  \    clean_names         Standardizing country names based on trait given\n    merge_fasta\
+  \         Merge fasta file into one single file with removal of\n              \
+  \          duplicates\n    filter_fasta_by_covg_and_length\n                   \
+  \     Removes sequences where the fraction of non-N bases\n                    \
+  \    falls below the threshold\n    process_gisaid_sequence_data\n             \
+  \           Process raw sequence data in fasta or json format\n    sam_2_fasta \
+  \        Convert sam format alignment to fasta format multiple\n               \
+  \         alignment, with optional trimming\n    phylotype_consensus\n         \
+  \               Split sequences according to lineage and create an\n           \
+  \             consensus\n    gisaid_json_2_metadata\n                        Add\
+  \ the info from a Gisaid json dump to an existing\n                        metadata\
+  \ table (or create a new one)\n    set_uniform_header  Adds a header column to metadata\
+  \ table and converts\n                        fasta to have a uniform header\n \
+  \   add_epi_week        Adds a column for epi week to metadata table, and\n    \
+  \                    optionally a column for epi day\n    process_gisaid_data\n\
+  \                        Gisaid json (+ metadata) -> (new) gisaid.fasta +\n    \
+  \                    metadata\n    pad_alignment -i <input.fasta> -o <output.fasta>\
+  \ --left-pad <int> --right-pad <int> [--stdout]\n                        pad alignment\
+  \ with leading and trailing Ns\n    exclude_uk_seqs     exclude UK sequences from\
+  \ fasta\n    get_CDS             Extracts CDS from alignments in Wuhan-Hu-1 coordinates\n\
+  \    distance_to_root    calculates per sample genetic distance to WH04 and\n  \
+  \                      writes it to 'distances.tsv\n    mask                mask\
+  \ regions of a fasta file using information in an\n                        external\
+  \ file\n    curate_lineages     Find new lineages, merge ones that need merging,\
+  \ split\n                        ones that need splitting\n    snp_finder      \
+  \    Query an alignment position for informative SNP\n    del_finder          Query\
+  \ an alignment position for deletions\n    add_header_column   Add header column\
+  \ to metadata table corresponding to\n                        fasta record ids\n\
+  \    extract_unannotated_seqs\n                        extract sequences with an\
+  \ empty cell in a specified\n                        cell in a metadata table\n\
+  \    AA_finder           Query a codon position for amino acids\n    bootstrap \
+  \          bootstrap an alignment\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0

@@ -10,6 +10,9 @@ task Readinfo2cam {
       ~{contig_info_file} \
       ~{repeat_coord_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contig_info_file: ""
     repeat_coord_file: ""

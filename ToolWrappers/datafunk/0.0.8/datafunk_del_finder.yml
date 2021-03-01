@@ -1,0 +1,69 @@
+!Command
+command:
+- datafunk
+- del_finder
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-fasta
+  description: Alignment (to Wuhan-Hu-1) in Fasta format to type
+  args: !SimpleFlagArg
+    name: input.fasta
+- !Flag
+  optional: true
+  synonyms:
+  - --deletions-file
+  description: "Input CSV file with deletions type. Format is: 1-based\nstart position\
+    \ of deletion,length of deletion (dont\ninclude a header line), eg: 1605,3"
+  args: !SimpleFlagArg
+    name: deletions.csv
+- !Flag
+  optional: true
+  synonyms:
+  - --genotypes-table
+  description: "CSV file with deletion typing results to write.\nReturns the genotype\
+    \ for each deletion in --deletions-\nfile for each sequence in --input-fasta:\
+    \ either \"ref\",\n\"del\" or \"X\" (for missing data)"
+  args: !SimpleFlagArg
+    name: results.csv
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-fasta
+  description: Fasta file to write
+  args: !SimpleFlagArg
+    name: output.fasta
+- !Flag
+  optional: true
+  synonyms:
+  - --append-as-SNP
+  description: "If invoked, then append the genotype of the deletion\nas a SNP on\
+    \ the end of the alignment\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: datafunk del_finder -i <input.fasta> --deletions-file <deletions.csv>\
+  \ --genotypes-table <results.csv>\n\nQuery an alignment position for deletions\n\
+  \nrequired arguments:\n  -i input.fasta, --input-fasta input.fasta\n           \
+  \             Alignment (to Wuhan-Hu-1) in Fasta format to type\n  --deletions-file\
+  \ deletions.csv\n                        Input CSV file with deletions type. Format\
+  \ is: 1-based\n                        start position of deletion,length of deletion\
+  \ (dont\n                        include a header line), eg: 1605,3\n  --genotypes-table\
+  \ results.csv\n                        CSV file with deletion typing results to\
+  \ write.\n                        Returns the genotype for each deletion in --deletions-\n\
+  \                        file for each sequence in --input-fasta: either \"ref\"\
+  ,\n                        \"del\" or \"X\" (for missing data)\n\noptional arguments:\n\
+  \  -o output.fasta, --output-fasta output.fasta\n                        Fasta file\
+  \ to write\n  --append-as-SNP       If invoked, then append the genotype of the\
+  \ deletion\n                        as a SNP on the end of the alignment\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0

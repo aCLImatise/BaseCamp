@@ -8,6 +8,9 @@ task Fitsinfo {
     fitsinfo \
       ~{filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: "Path to one or more FITS files. Wildcards are supported."
   }

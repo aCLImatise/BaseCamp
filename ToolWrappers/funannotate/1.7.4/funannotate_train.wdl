@@ -60,6 +60,9 @@ task FunannotateTrain {
       ~{if (isolate) then "--isolate" else ""} \
       ~{if (cpus) then "--cpus" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_multifasta_file: "Genome multi-fasta file"
     out: "Output folder name"

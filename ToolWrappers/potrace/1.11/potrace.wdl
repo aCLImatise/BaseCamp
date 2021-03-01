@@ -90,6 +90,9 @@ task Potrace {
       ~{if (progress) then "--progress" else ""} \
       ~{if defined(tty) then ("--tty " +  '"' + tty + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     license: "- print license info and exit"
     write_output_file: "- write all output to this file"

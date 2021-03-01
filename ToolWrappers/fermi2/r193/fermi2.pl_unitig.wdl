@@ -34,6 +34,9 @@ task Fermi2plUnitig {
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_prefix: "output prefix [fmdef]"
     approximate_genome_size: "approximate genome size [100m]"

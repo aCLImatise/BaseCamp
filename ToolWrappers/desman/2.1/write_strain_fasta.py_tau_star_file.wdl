@@ -16,6 +16,9 @@ task WriteStrainFastapyTauStarFile {
       ~{et_as_file} \
       ~{out_base}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     write_strain_fasta_do_tpy: ""
     fast_a: ""

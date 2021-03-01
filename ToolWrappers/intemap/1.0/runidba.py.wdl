@@ -12,6 +12,9 @@ task Runidbapy {
       ~{readfile} \
       ~{output_path_dir}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     para_file: ""
     readfile: ""

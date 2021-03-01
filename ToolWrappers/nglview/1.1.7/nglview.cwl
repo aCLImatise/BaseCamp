@@ -3,47 +3,47 @@ id: nglview.cwl
 inputs:
 - id: in_crd
   doc: coordinate filename
-  type: File
+  type: File?
   inputBinding:
     prefix: --crd
 - id: in_browser
   doc: web browser
-  type: string
+  type: string?
   inputBinding:
     prefix: --browser
 - id: in_j_exe
   doc: jupyter path
-  type: File
+  type: File?
   inputBinding:
     prefix: --jexe
 - id: in_notebook_name
   doc: notebook name
-  type: string
+  type: string?
   inputBinding:
     prefix: --notebook-name
 - id: in_port
   doc: port number
-  type: long
+  type: long?
   inputBinding:
     prefix: --port
 - id: in_remote
   doc: create remote notebook
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --remote
 - id: in_clean
   doc: delete temp file after closing notebook
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --clean
 - id: in_auto
   doc: Run 1st cell right after openning notebook
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --auto
 - id: in_symlink
   doc: Create symlink for nglview-js-widgets (developer mode)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --symlink
 - id: in_command
@@ -62,6 +62,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nglview

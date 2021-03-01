@@ -28,7 +28,7 @@ task Beast {
     String? beagle_scaling
     String? version
     String? strict_versions
-    Int? pairs_replaced_d
+    Int? pairs_replaced_xml
     String? sample_from_prior
     File? input_file_name
   }
@@ -61,9 +61,12 @@ task Beast {
       ~{if defined(beagle_scaling) then ("-beagle_scaling " +  '"' + beagle_scaling + '"') else ""} \
       ~{if defined(version) then ("-version " +  '"' + version + '"') else ""} \
       ~{if defined(strict_versions) then ("-strictversions " +  '"' + strict_versions + '"') else ""} \
-      ~{if defined(pairs_replaced_d) then ("-D " +  '"' + pairs_replaced_d + '"') else ""} \
+      ~{if defined(pairs_replaced_xml) then ("-D " +  '"' + pairs_replaced_xml + '"') else ""} \
       ~{if defined(sample_from_prior) then ("-sampleFromPrior " +  '"' + sample_from_prior + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window: "a console window"
     options: "an options dialog"
@@ -91,7 +94,7 @@ task Beast {
     beagle_scaling: ": specify scaling scheme to use"
     version: "version and stop"
     strict_versions: "only package versions as specified in the 'required' attribute"
-    pairs_replaced_d: "pairs to be replaced in the XML, e.g., -D \\\"arg1=10,arg2=20\\\""
+    pairs_replaced_xml: "pairs to be replaced in the XML, e.g., -D \\\"arg1=10,arg2=20\\\""
     sample_from_prior: "from prior for MCMC analysis (by adding sampleFromPrior=\\\"true\\\" in the first run element)"
     input_file_name: ""
   }

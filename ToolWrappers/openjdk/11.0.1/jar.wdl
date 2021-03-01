@@ -7,8 +7,8 @@ task Jar {
     Boolean? update
     Boolean? extract
     Boolean? describe_module
-    File? change_include_thefollowing
-    File? file
+    File? change_include_file
+    File? archive_file_name
     Directory? release
     Boolean? verbose
     String? main_class
@@ -29,8 +29,8 @@ task Jar {
       ~{if (update) then "--update" else ""} \
       ~{if (extract) then "--extract" else ""} \
       ~{if (describe_module) then "--describe-module" else ""} \
-      ~{if defined(change_include_thefollowing) then ("-C " +  '"' + change_include_thefollowing + '"') else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(change_include_file) then ("-C " +  '"' + change_include_file + '"') else ""} \
+      ~{if defined(archive_file_name) then ("--file " +  '"' + archive_file_name + '"') else ""} \
       ~{if defined(release) then ("--release " +  '"' + release + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(main_class) then ("--main-class " +  '"' + main_class + '"') else ""} \
@@ -42,14 +42,17 @@ task Jar {
       ~{if (no_compress) then "--no-compress" else ""} \
       ~{if (help_extra) then "--help-extra" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create the archive"
     generate_index: "Generate index information for the specified jar"
     update: "Update an existing jar archive"
     extract: "Extract named (or all) files from the archive"
     describe_module: "Print the module descriptor, or automatic module name"
-    change_include_thefollowing: "Change to the specified directory and include the\\nfollowing file"
-    file: "The archive file name. When omitted, either stdin or\\nstdout is used based on the operation"
+    change_include_file: "Change to the specified directory and include the\\nfollowing file"
+    archive_file_name: "The archive file name. When omitted, either stdin or\\nstdout is used based on the operation"
     release: "Places all following files in a versioned directory\\nof the jar (i.e. META-INF/versions/VERSION/)"
     verbose: "Generate verbose output on standard output"
     main_class: "The application entry point for stand-alone\\napplications bundled into a modular, or executable,\\njar archive"

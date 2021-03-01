@@ -18,6 +18,9 @@ task ExonUtils {
       ~{from} \
       ~{gff}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     to: ""
     fetch: ""

@@ -4,110 +4,110 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Print information during execution -- useful for\ndebugging [default:\
-    \ False]"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: "Print information during execution -- useful for\ndebugging [default:\
+    \ False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Type of functional predictions. Valid choices are: ko,\ncog, rfam\
-    \ [default: ko]"
+  optional: true
   synonyms:
   - -t
   - --type_of_prediction
+  description: "Type of functional predictions. Valid choices are: ko,\ncog, rfam\
+    \ [default: ko]"
   args: !SimpleFlagArg
     name: TYPE_OF_PREDICTION
-  optional: true
 - !Flag
-  description: "Version of GreenGenes that was used for OTU picking.\nValid choices\
-    \ are: 13_5, 18may2012 [default: 13_5]"
+  optional: true
   synonyms:
   - -g
   - --gg_version
+  description: "Version of GreenGenes that was used for OTU picking.\nValid choices\
+    \ are: 13_5, 18may2012 [default: 13_5]"
   args: !SimpleFlagArg
     name: GG_VERSION
-  optional: true
 - !Flag
-  description: "Precalculated function predictions on per otu basis in\nbiom format\
-    \ (can be gzipped). Note: using this option\noverrides --type_of_prediction and\
-    \ --gg_version.\n[default: none]"
+  optional: true
   synonyms:
   - -c
   - --input_count_table
+  description: "Precalculated function predictions on per otu basis in\nbiom format\
+    \ (can be gzipped). Note: using this option\noverrides --type_of_prediction and\
+    \ --gg_version.\n[default: none]"
   args: !SimpleFlagArg
     name: INPUT_COUNT_TABLE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --suppress_subset_loading
   description: "Normally, only counts for OTUs present in the sample\nare loaded.\
     \  If this flag is passed, the full biom\ntable is loaded.  This makes no difference\
     \ for the\nanalysis, but may result in faster load times (at the\ncost of more\
     \ memory usage)"
-  synonyms:
-  - --suppress_subset_loading
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --load_precalc_file_in_biom
   description: "Instead of loading the precalculated file in tab-\ndelimited format\
     \ (with otu ids as row ids and traits\nas columns) load the data in biom format\
     \ (with otu as\nSampleIds and traits as ObservationIds) [default:\nFalse]"
-  synonyms:
-  - --load_precalc_file_in_biom
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If provided only output prediction for functions that\nmatch the specified\
-    \ functional category. Multiple\ncategories can be passed as a list separated\
-    \ by |\n[default: False]"
+  optional: true
   synonyms:
   - -f
   - --limit_to_functional_categories
+  description: "If provided only output prediction for functions that\nmatch the specified\
+    \ functional category. Multiple\ncategories can be passed as a list separated\
+    \ by |\n[default: False]"
   args: !SimpleFlagArg
     name: LIMIT_TO_FUNCTIONAL_CATEGORIES
-  optional: true
 - !Flag
-  description: "If provided, only output predictions for the specified\nfunction ids.\
-    \  Multiple function ids can be passed\nusing comma delimiters."
+  optional: true
   synonyms:
   - -l
   - --limit_to_function
+  description: "If provided, only output predictions for the specified\nfunction ids.\
+    \  Multiple function ids can be passed\nusing comma delimiters."
   args: !SimpleFlagArg
     name: LIMIT_TO_FUNCTION
-  optional: true
 - !Flag
-  description: the input otu table in biom format [REQUIRED]
+  optional: true
   synonyms:
   - -i
   - --input_otu_table
+  description: the input otu table in biom format [REQUIRED]
   args: !SimpleFlagArg
     name: INPUT_OTU_TABLE
-  optional: true
 - !Flag
-  description: "the output file for the metagenome contributions\n[REQUIRED]\n"
+  optional: true
   synonyms:
   - -o
   - --output_fp
+  description: "the output file for the metagenome contributions\n[REQUIRED]\n"
   args: !SimpleFlagArg
     name: OUTPUT_FP
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: metagenome_contributions.py [options] {-i/--input_otu_table INPUT_OTU_TABLE\
   \ -o/--output_fp OUTPUT_FP}\n\n[] indicates optional input (order unimportant)\n\
   {} indicates required input (order unimportant)\n\n\n\nExample usage: \nPrint help\
@@ -153,3 +153,4 @@ help_text: "Usage: metagenome_contributions.py [options] {-i/--input_otu_table I
   \ contributions\n                        [REQUIRED]\n"
 generated_using:
 - --help
+docker_image:

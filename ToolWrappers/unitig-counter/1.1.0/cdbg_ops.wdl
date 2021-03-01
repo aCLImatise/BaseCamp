@@ -28,6 +28,9 @@ task Cdbgops {
       ~{if (repeats) then "--repeats" else ""} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graph: "Prefix of graph files"
     nodes: "Name of .node file"

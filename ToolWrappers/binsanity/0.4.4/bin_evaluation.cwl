@@ -1,19 +1,19 @@
 class: CommandLineTool
 id: bin_evaluation.cwl
 inputs:
-- id: in_specify_directory_containing_putative_genomes
+- id: in_specify_directory_containing_putative
   doc: Specify the directory containing Putative genomes
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
-- id: in_specify_directory_containing_reference_genomes
+- id: in_specify_directory_containing_reference
   doc: Specify directory containing reference genomes
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
-- id: in_specify_suffix_bins
+- id: in_specify_suffix_eg
   doc: specify suffix of bins e.g .fa, .fna, .fasta, etc.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_var_3
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bin_evaluation

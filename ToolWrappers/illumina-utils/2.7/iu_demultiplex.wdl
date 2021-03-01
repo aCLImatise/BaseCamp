@@ -18,6 +18,9 @@ task Iudemultiplex {
       ~{if (rev_comp_barcodes) then "--rev-comp-barcodes" else ""} \
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample_barcode_mapping: "TAB-delimited file of sample-barcode associations"
     r_one: "FASTQ file for R1"

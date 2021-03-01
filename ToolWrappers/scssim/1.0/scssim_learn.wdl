@@ -22,6 +22,9 @@ task ScssimLearn {
       ~{if defined(output_file) then ("--output " +  '"' + output_file + '"') else ""} \
       ~{if defined(sam_tools) then ("--samtools " +  '"' + sam_tools + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "normal BAM file"
     target: "exome target file (.bed) for whole-exome sequencing[default:null]"

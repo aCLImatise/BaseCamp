@@ -1,0 +1,279 @@
+!Command
+command:
+- MetageneAnalysis
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --bamListFile
+  description: "Bam file list, containing 4 columns.Namely\nbamFiles,readLength, offSet,\
+    \ bamLegend. '-f' and '-i,\n-r, -s, -t' parameters are mutually\nexclusive.default=none."
+  args: !SimpleFlagArg
+    name: BAMLISTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "Input file(s) in bam format. All files should be split\nby comma e.g.\
+    \ 1.bam,2.bam,3.bam[required]. '-i' and\n'-f' are mutually exclusive. default=none"
+  args: !SimpleFlagArg
+    name: BAM_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --coordinateFile
+  description: "The file should contain the coordinate of start and\nstop codon. Generated\
+    \ by\nOutputTranscriptInfo.py.[required]"
+  args: !SimpleFlagArg
+    name: COORFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --otput_prefix
+  description: Prefix of output files.[required]
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --specific_reads_length
+  description: "Specific the lenght to do analysis, comma split. e.g.\n'28,29,30'.If\
+    \ use all length set 'All'. Bam files diff\nlength select split by '_' e.g. '28,29,30_ALL_27,28'\n\
+    [required]. '-r' and '-f' are mutually exclusive."
+  args: !SimpleFlagArg
+    name: READ_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --offset
+  description: "Specific the offset corresponding to read length,\ncomma split. e.g.\
+    \ '12,13,13'. No offset set 0. Bam\nfiles diff offset select split by '_' e.g.\n\
+    '12,13,13_0_12,12' [required]. '-s' and '-f' are\nmutually exclusive."
+  args: !SimpleFlagArg
+    name: READ_OFFSET
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --bam_file_legend
+  description: "The legend of each bam files, comma split. e.g.\n'condition1,condition2,condition3'\
+    \ [required]. '-t'\nand '-f' are mutually exclusive."
+  args: !SimpleFlagArg
+    name: BAM_FILE_LEGEND
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  - --unit_type
+  description: "Unit type we used for metagene analysis. Either 'nt'\nor 'codon'.\
+    \ default=codon"
+  args: !SimpleFlagArg
+    name: UNIT
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --filter_mode
+  description: "Mode for filtering transcripts. Either 'counts' or\n'RPKM'. default=counts."
+  args: !SimpleFlagArg
+    name: MODE
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --select_trans_list
+  description: "Selected transcript list used for metagene\nanalysis.This files requires\
+    \ the first column must be\nthe transcript ID  with a column name."
+  args: !SimpleFlagArg
+    name: IN_SELECTTRANS
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --minimum_cds_codon
+  description: "Minimum CDS codon (codon unit). CDS codons smaller\nthan \"minimum_cds_codon\"\
+    \ will be skipped. default=150"
+  args: !SimpleFlagArg
+    name: MIN_CDS_CODON
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --minimum_cds_counts
+  description: "Minimum CDS counts. CDS counts smaller than\n\"min_cds_counts\" will\
+    \ be skipped. default=128"
+  args: !SimpleFlagArg
+    name: MIN_CDS_COUNTS
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --minimum_norm_region_counts
+  description: "Minimum counts in normalization region . Counts in\nnorm region smaller\
+    \ than \"minimum_norm_region_counts\"\nwill be skipped. default=64"
+  args: !SimpleFlagArg
+    name: MIN_NORM_REGION_COUNTS
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --upstream_codon
+  description: "Upstream codon corresponding to start codon (codon\nunit). While corresponding\
+    \ to stop codon, it is the\ndownstream codon."
+  args: !SimpleFlagArg
+    name: UPSTREAM_CODON
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --downstream_codon
+  description: "Downstream codon corresponding to start codon (codon\nunit). While\
+    \ corresponding to stop codon, it is the\nupstream codon."
+  args: !SimpleFlagArg
+    name: DOWNSTREAM_CODON
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --normalize_exclude_codon
+  description: "The region of the normalization for each genes should\nexclude the\
+    \ first \"normalize_exclude_codon\".\ndefault=30"
+  args: !SimpleFlagArg
+    name: NORM_EXCLUDE_CODON
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --normalize_codon_density_num
+  description: "Output the first \"normalize_codon_density_num\" from\nthe start codon\
+    \ for each qualified genes in each bam\nfiles. Pay attention that this parameter\
+    \ should not\nbigger than -l parameter. default=100"
+  args: !SimpleFlagArg
+    name: NORM_CODON_DENSITY_NUM
+- !Flag
+  optional: true
+  synonyms:
+  - --type
+  description: "Type of counts statistics.[CDS/cds or\nUTR/utr].default=CDS"
+  args: !SimpleFlagArg
+    name: TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - --id-type
+  description: "define the id type users input. the default is\ntranscript id, if\
+    \ not, will be transformed into\ntranscript id. default=transcript_id"
+  args: !SimpleFlagArg
+    name: ID_TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - --CI
+  description: "The confidence intervals of mean on each position\nbased on t distribution.\
+    \ default=0.95"
+  args: !SimpleFlagArg
+    name: CONFIDENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --norm
+  description: "Use density beyound the first 30 (-e) codons for\nnormalization or\
+    \ not. [yes/no]"
+  args: !SimpleFlagArg
+    name: NORM
+- !Flag
+  optional: true
+  synonyms:
+  - --plot
+  description: Output a metagene plot or not. default=yes
+  args: !SimpleFlagArg
+    name: PLOT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: python MetageneAnalysis [options]\n\nAuthor: Li Fajin\n\n\n\n\n\
+  Options:\n  --version             show program's version number and exit\n  -h,\
+  \ --help            show this help message and exit\n  -f BAMLISTFILE, --bamListFile=BAMLISTFILE\n\
+  \                        Bam file list, containing 4 columns.Namely\n          \
+  \              bamFiles,readLength, offSet, bamLegend. '-f' and '-i,\n         \
+  \               -r, -s, -t' parameters are mutually\n                        exclusive.default=none.\n\
+  \  -i BAM_FILES, --input=BAM_FILES\n                        Input file(s) in bam\
+  \ format. All files should be split\n                        by comma e.g. 1.bam,2.bam,3.bam[required].\
+  \ '-i' and\n                        '-f' are mutually exclusive. default=none\n\
+  \  -c COORFILE, --coordinateFile=COORFILE\n                        The file should\
+  \ contain the coordinate of start and\n                        stop codon. Generated\
+  \ by\n                        OutputTranscriptInfo.py.[required]\n  -o OUTPUT_PREFIX,\
+  \ --otput_prefix=OUTPUT_PREFIX\n                        Prefix of output files.[required]\n\
+  \  -r READ_LENGTH, --specific_reads_length=READ_LENGTH\n                       \
+  \ Specific the lenght to do analysis, comma split. e.g.\n                      \
+  \  '28,29,30'.If use all length set 'All'. Bam files diff\n                    \
+  \    length select split by '_' e.g. '28,29,30_ALL_27,28'\n                    \
+  \    [required]. '-r' and '-f' are mutually exclusive.\n  -s READ_OFFSET, --offset=READ_OFFSET\n\
+  \                        Specific the offset corresponding to read length,\n   \
+  \                     comma split. e.g. '12,13,13'. No offset set 0. Bam\n     \
+  \                   files diff offset select split by '_' e.g.\n               \
+  \         '12,13,13_0_12,12' [required]. '-s' and '-f' are\n                   \
+  \     mutually exclusive.\n  -t BAM_FILE_LEGEND, --bam_file_legend=BAM_FILE_LEGEND\n\
+  \                        The legend of each bam files, comma split. e.g.\n     \
+  \                   'condition1,condition2,condition3' [required]. '-t'\n      \
+  \                  and '-f' are mutually exclusive.\n  -U UNIT, --unit_type=UNIT\n\
+  \                        Unit type we used for metagene analysis. Either 'nt'\n\
+  \                        or 'codon'. default=codon\n  -M MODE, --filter_mode=MODE\n\
+  \                        Mode for filtering transcripts. Either 'counts' or\n  \
+  \                      'RPKM'. default=counts.\n  -S IN_SELECTTRANS, --select_trans_list=IN_SELECTTRANS\n\
+  \                        Selected transcript list used for metagene\n          \
+  \              analysis.This files requires the first column must be\n         \
+  \               the transcript ID  with a column name.\n  -l MIN_CDS_CODON, --minimum_cds_codon=MIN_CDS_CODON\n\
+  \                        Minimum CDS codon (codon unit). CDS codons smaller\n  \
+  \                      than \"minimum_cds_codon\" will be skipped. default=150\n\
+  \  -n MIN_CDS_COUNTS, --minimum_cds_counts=MIN_CDS_COUNTS\n                    \
+  \    Minimum CDS counts. CDS counts smaller than\n                        \"min_cds_counts\"\
+  \ will be skipped. default=128\n  -m MIN_NORM_REGION_COUNTS, --minimum_norm_region_counts=MIN_NORM_REGION_COUNTS\n\
+  \                        Minimum counts in normalization region . Counts in\n  \
+  \                      norm region smaller than \"minimum_norm_region_counts\"\n\
+  \                        will be skipped. default=64\n  -u UPSTREAM_CODON, --upstream_codon=UPSTREAM_CODON\n\
+  \                        Upstream codon corresponding to start codon (codon\n  \
+  \                      unit). While corresponding to stop codon, it is the\n   \
+  \                     downstream codon.\n  -d DOWNSTREAM_CODON, --downstream_codon=DOWNSTREAM_CODON\n\
+  \                        Downstream codon corresponding to start codon (codon\n\
+  \                        unit). While corresponding to stop codon, it is the\n \
+  \                       upstream codon.\n  -e NORM_EXCLUDE_CODON, --normalize_exclude_codon=NORM_EXCLUDE_CODON\n\
+  \                        The region of the normalization for each genes should\n\
+  \                        exclude the first \"normalize_exclude_codon\".\n      \
+  \                  default=30\n  -y NORM_CODON_DENSITY_NUM, --normalize_codon_density_num=NORM_CODON_DENSITY_NUM\n\
+  \                        Output the first \"normalize_codon_density_num\" from\n\
+  \                        the start codon for each qualified genes in each bam\n\
+  \                        files. Pay attention that this parameter should not\n \
+  \                       bigger than -l parameter. default=100\n  --type=TYPE   \
+  \        Type of counts statistics.[CDS/cds or\n                        UTR/utr].default=CDS\n\
+  \  --id-type=ID_TYPE     define the id type users input. the default is\n      \
+  \                  transcript id, if not, will be transformed into\n           \
+  \             transcript id. default=transcript_id\n  --CI=CONFIDENCE       The\
+  \ confidence intervals of mean on each position\n                        based on\
+  \ t distribution. default=0.95\n  --norm=NORM           Use density beyound the\
+  \ first 30 (-e) codons for\n                        normalization or not. [yes/no]\n\
+  \  --plot=PLOT           Output a metagene plot or not. default=yes\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ribominer:0.2.3.1--pyh3252c3a_0

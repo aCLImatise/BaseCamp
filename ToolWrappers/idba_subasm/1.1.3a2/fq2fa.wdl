@@ -16,6 +16,9 @@ task Fq2fa {
       ~{if (merge) then "--merge" else ""} \
       ~{if (filter) then "--filter" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     paired: "if the reads are paired-end in one file"
     merge: "if the reads are paired-end in two files"

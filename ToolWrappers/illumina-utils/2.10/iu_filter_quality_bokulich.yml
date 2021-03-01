@@ -1,0 +1,122 @@
+!Command
+command:
+- iu-filter-quality-bokulich
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: 'Minimal high-quality read length (default: 0.75)'
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: "Minimum PHRED score to identify low quality bases\n(default: 3)"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: 'Maximum of consecutive low-quality calls (default: 3)'
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: 'Maximum of ambiguous calls allowed (default: 0)'
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-deflines
+  description: "If FASTQ files are not CASAVA outputs, parsing the\nheader info may\
+    \ go wrong. This flag tells the software\nto skip parsing deflines."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --visualize-quality-curves
+  description: "When set, mean quality score for individual bases will\nbe stored\
+    \ and visualized for each group of reads."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --limit-num-pairs
+  description: "Put a limit to the number of pairs to analyze. For\ntesting purposes."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --print-qual-scores
+  description: "When set, the script will print out the Q-scores the\nway it sees\
+    \ it in the FASTQ file. This flag will\ngenerate a lot of useless output to the\
+    \ stdout, and\nyou should not use it if you are not testing\nsomething."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --store-read-fate
+  description: "As it goes through your raw reads, this program keeps\ntrack of the\
+    \ read fate so you can learn what happened\nto a given read ID in your raw input\
+    \ data once the\nanalysis is done. This output can become extremely\nlarge, and\
+    \ often is utterly useless to you unless you\nhave a very specific benchmarking\
+    \ or debugging\ninterestes, hence, it is not stored by default. You\ncan change\
+    \ that behavior by using this flag, and ask\nillumina-utils to store this data\
+    \ on your disk.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: iu-filter-quality-bokulich [-h] [-p FLOAT] [-q INTEGER] [-r INTEGER]\n\
+  \                                  [-n INTEGER] [--ignore-deflines]\n          \
+  \                        [--visualize-quality-curves]\n                        \
+  \          [--limit-num-pairs INTEGER]\n                                  [--print-qual-scores]\
+  \ [--store-read-fate]\n                                  CONFIG_FILE\n\nImplementation\
+  \ of\n\"http://www.nature.com/nmeth/journal/v10/n1/full/nmeth.2276.html\"\n\npositional\
+  \ arguments:\n  CONFIG_FILE           User configuration to run. See the source\
+  \ code to see\n                        an example.\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -p FLOAT              Minimal\
+  \ high-quality read length (default: 0.75)\n  -q INTEGER            Minimum PHRED\
+  \ score to identify low quality bases\n                        (default: 3)\n  -r\
+  \ INTEGER            Maximum of consecutive low-quality calls (default: 3)\n  -n\
+  \ INTEGER            Maximum of ambiguous calls allowed (default: 0)\n  --ignore-deflines\
+  \     If FASTQ files are not CASAVA outputs, parsing the\n                     \
+  \   header info may go wrong. This flag tells the software\n                   \
+  \     to skip parsing deflines.\n  --visualize-quality-curves\n                \
+  \        When set, mean quality score for individual bases will\n              \
+  \          be stored and visualized for each group of reads.\n  --limit-num-pairs\
+  \ INTEGER\n                        Put a limit to the number of pairs to analyze.\
+  \ For\n                        testing purposes.\n  --print-qual-scores   When set,\
+  \ the script will print out the Q-scores the\n                        way it sees\
+  \ it in the FASTQ file. This flag will\n                        generate a lot of\
+  \ useless output to the stdout, and\n                        you should not use\
+  \ it if you are not testing\n                        something.\n  --store-read-fate\
+  \     As it goes through your raw reads, this program keeps\n                  \
+  \      track of the read fate so you can learn what happened\n                 \
+  \       to a given read ID in your raw input data once the\n                   \
+  \     analysis is done. This output can become extremely\n                     \
+  \   large, and often is utterly useless to you unless you\n                    \
+  \    have a very specific benchmarking or debugging\n                        interestes,\
+  \ hence, it is not stored by default. You\n                        can change that\
+  \ behavior by using this flag, and ask\n                        illumina-utils to\
+  \ store this data on your disk.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/illumina-utils:2.10--py_0

@@ -8,6 +8,9 @@ task RsemforebseqfindDE {
     rsem_for_ebseq_find_DE \
       ~{number_of_replicate_for_condition_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_replicate_for_condition_two: ""
   }

@@ -3,33 +3,33 @@ id: msstitch_trypsinize.cwl
 inputs:
 - id: in_input_file_format
   doc: Input file of {} format
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_directory_to_output
   doc: Directory to output in
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -d
 - id: in_output_file
   doc: Output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_misc_leav
   doc: "Amount of missed cleavages to allow when trypsinizing,\ndefault is 0"
-  type: long
+  type: long?
   inputBinding:
     prefix: --miscleav
 - id: in_min_len
   doc: Minimum length of peptide to be included
-  type: long
+  type: long?
   inputBinding:
     prefix: --minlen
 - id: in_cut_proline
   doc: "Flag to make trypsin before a proline residue. Then\nfiltering will be done\
     \ against both cut and non-cut\npeptides.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cutproline
 outputs:
@@ -38,14 +38,15 @@ outputs:
   type: stdout
 - id: out_directory_to_output
   doc: Directory to output in
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_directory_to_output)
 - id: out_output_file
   doc: Output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - msstitch

@@ -4,6 +4,9 @@ task Cpuid {
   command <<<
     cpuid
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

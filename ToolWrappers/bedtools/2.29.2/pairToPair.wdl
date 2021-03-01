@@ -22,6 +22,9 @@ task PairToPair {
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
       ~{if defined(a) then ("-a " +  '"' + a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minimum_overlap_required: "Minimum overlap required as fraction of A (e.g. 0.05).\\nDefault is 1E-9 (effectively 1bp)."
     type: "Approach to reporting overlaps between A and B.\\nneither Report overlaps if neither end of A overlaps B.\\neither  Report overlaps if either ends of A overlap B.\\nboth    Report overlaps if both ends of A overlap B.\\nnotboth Report overlaps if one or neither of A's overlap B.\\n- Default = both."

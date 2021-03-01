@@ -12,12 +12,12 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - --debug
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
-  parent: &id011 !Command
+  parent: &id012 !Command
     command: *id001
     positional: []
     named: []
@@ -28,12 +28,12 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --debug
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: &id010 !Command
+      parent: &id011 !Command
         command: *id001
         positional: []
         named: []
@@ -44,12 +44,12 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --debug
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: &id009 !Command
+          parent: &id010 !Command
             command: *id001
             positional: []
             named: []
@@ -60,12 +60,12 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --debug
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: &id009 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -76,123 +76,680 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --debug
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --debug
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: deepbgc info [-h] [--debug]\n\nShow DeepBGC\
+                        \ summary information about downloaded models and dependencies.\n\
+                        \noptional arguments:\n  -h, --help  show this help message\
+                        \ and exit\n  --debug\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - deepbgc
+                      - train
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: inputs
+                        description: Training sequences (Pfam TSV) file paths
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --debug
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -m
+                        - --model
+                        description: Path to JSON model config file
+                        args: !SimpleFlagArg
+                          name: MODEL
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        - --target
+                        description: Target column to predict in sequence prediction
+                        args: !SimpleFlagArg
+                          name: TARGET
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --output
+                        description: Output trained model file path
+                        args: !SimpleFlagArg
+                          name: OUTPUT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        - --log
+                        description: Progress log output path (e.g. TensorBoard)
+                        args: !SimpleFlagArg
+                          name: LOG
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        - --classes
+                        description: Class TSV file path - train a sequence classifier
+                          using provided classes (binary columns), indexed by sequence_id
+                          column
+                        args: !SimpleFlagArg
+                          name: CLASSES
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --config
+                        description: "CONFIG\nVariables in model JSON file to replace\
+                          \ (e.g. --config PFAM2VEC path/to/pfam2vec.csv)"
+                        args: !SimpleFlagArg
+                          name: CONFIG
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -v
+                        - --validation
+                        description: Validation sequence file path. Repeat to specify
+                          multiple files
+                        args: !SimpleFlagArg
+                          name: VALIDATION
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --verbose
+                        description: 'Verbosity level: 0=none, 1=progress bar, 2=once
+                          per epoch (default: 2)'
+                        args: !SimpleFlagArg
+                          name: INT
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: deepbgc train [-h] [--debug] -m MODEL [-t\
+                        \ TARGET] -o OUTPUT [-l LOG]\n                     [-c CLASSES]\
+                        \ [--config CONFIG CONFIG] [-v VALIDATION]\n             \
+                        \        [--verbose INT]\n                     inputs [inputs\
+                        \ ...]\n\nTrain a BGC detector/classifier on a set of BGC\
+                        \ samples.\n    \nExamples:\n    \n  # Train a detector using\
+                        \ pre-processed samples in Pfam CSV format. \n  deepbgc train\
+                        \ --model deepbgc.json --output MyDeepBGCDetector.pkl BGCs.pfam.tsv\
+                        \ negatives.pfam.tsv\n    \n  # Train a BGC classifier using\
+                        \ a TSV classes file and a set of BGC samples in Pfam TSV\
+                        \ format and save the trained classifier to a file. \n  deepbgc\
+                        \ train --model random_forest.json --output MyDeepBGCClassifier.pkl\
+                        \ --classes path/to/BGCs.classes.csv BGCs.pfam.tsv\n  \n\n\
+                        positional arguments:\n  inputs                Training sequences\
+                        \ (Pfam TSV) file paths\n\noptional arguments:\n  -h, --help\
+                        \            show this help message and exit\n  --debug\n\
+                        \  -m MODEL, --model MODEL\n                        Path to\
+                        \ JSON model config file\n  -t TARGET, --target TARGET\n \
+                        \                       Target column to predict in sequence\
+                        \ prediction\n  -o OUTPUT, --output OUTPUT\n             \
+                        \           Output trained model file path\n  -l LOG, --log\
+                        \ LOG     Progress log output path (e.g. TensorBoard)\n  -c\
+                        \ CLASSES, --classes CLASSES\n                        Class\
+                        \ TSV file path - train a sequence classifier using provided\
+                        \ classes (binary columns), indexed by sequence_id column\n\
+                        \  --config CONFIG CONFIG\n                        Variables\
+                        \ in model JSON file to replace (e.g. --config PFAM2VEC path/to/pfam2vec.csv)\n\
+                        \  -v VALIDATION, --validation VALIDATION\n              \
+                        \          Validation sequence file path. Repeat to specify\
+                        \ multiple files\n  --verbose INT         Verbosity level:\
+                        \ 0=none, 1=progress bar, 2=once per epoch (default: 2)\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - deepbgc
+                      - pipeline
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: inputs
+                        description: Input sequence file path (FASTA, GenBank, Pfam
+                          CSV)
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --debug
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --output
+                        description: Custom output directory path
+                        args: !SimpleFlagArg
+                          name: OUTPUT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --limit-to-record
+                        description: Process only specific record ID. Can be provided
+                          multiple times
+                        args: !SimpleFlagArg
+                          name: LIMIT_TO_RECORD
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --minimal-output
+                        description: Produce minimal output with just the GenBank
+                          sequence file
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --prodigal-meta-mode
+                        description: Run Prodigal in '-p meta' mode to enable detecting
+                          genes in short contigs
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --protein
+                        description: Accept amino-acid protein sequences as input
+                          (experimental). Will treat each file as a single record
+                          with multiple proteins.
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -d
+                        - --detector
+                        description: Trained detection model name (run "deepbgc download"
+                          to download models) or path to trained model pickle file.
+                          Can be provided multiple times (-d first -d second)
+                        args: !SimpleFlagArg
+                          name: DETECTORS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --no-detector
+                        description: Disable BGC detection
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        - --label
+                        description: Label for detected clusters (equal to --detector
+                          by default). If multiple detectors are provided, a label
+                          should be provided for each one
+                        args: !SimpleFlagArg
+                          name: LABELS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        - --score
+                        description: 'Average protein-wise DeepBGC score threshold
+                          for extracting BGC regions from Pfam sequences (default:
+                          0.5)'
+                        args: !SimpleFlagArg
+                          name: SCORE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --merge-max-protein-gap
+                        description: 'Merge detected BGCs within given number of proteins
+                          (default: 0)'
+                        args: !SimpleFlagArg
+                          name: MERGE_MAX_PROTEIN_GAP
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --merge-max-nucl-gap
+                        description: 'Merge detected BGCs within given number of nucleotides
+                          (default: 0)'
+                        args: !SimpleFlagArg
+                          name: MERGE_MAX_NUCL_GAP
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min-nucl
+                        description: 'Minimum BGC nucleotide length (default: 1)'
+                        args: !SimpleFlagArg
+                          name: MIN_NUCL
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min-proteins
+                        description: 'Minimum number of proteins in a BGC (default:
+                          1)'
+                        args: !SimpleFlagArg
+                          name: MIN_PROTEINS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min-domains
+                        description: 'Minimum number of protein domains in a BGC (default:
+                          1)'
+                        args: !SimpleFlagArg
+                          name: MIN_DOMAINS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min-bio-domains
+                        description: 'Minimum number of known biosynthetic (as defined
+                          by antiSMASH) protein domains in a BGC (default: 0)'
+                        args: !SimpleFlagArg
+                          name: MIN_BIO_DOMAINS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        - --classifier
+                        description: Trained classification model name (run "deepbgc
+                          download" to download models) or path to trained model pickle
+                          file. Can be provided multiple times (-c first -c second)
+                        args: !SimpleFlagArg
+                          name: CLASSIFIERS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --no-classifier
+                        description: Disable BGC classification
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --classifier-score
+                        description: "DeepBGC classification score threshold for assigning\
+                          \ classes to BGCs (default: 0.5)\n"
+                        args: !SimpleFlagArg
+                          name: CLASSIFIER_SCORE
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: deepbgc pipeline [-h] [--debug] [-o OUTPUT]\n\
+                        \                        [--limit-to-record LIMIT_TO_RECORD]\
+                        \ [--minimal-output]\n                        [--prodigal-meta-mode]\
+                        \ [--protein] [-d DETECTORS]\n                        [--no-detector]\
+                        \ [-l LABELS] [-s SCORE]\n                        [--merge-max-protein-gap\
+                        \ MERGE_MAX_PROTEIN_GAP]\n                        [--merge-max-nucl-gap\
+                        \ MERGE_MAX_NUCL_GAP]\n                        [--min-nucl\
+                        \ MIN_NUCL] [--min-proteins MIN_PROTEINS]\n              \
+                        \          [--min-domains MIN_DOMAINS]\n                 \
+                        \       [--min-bio-domains MIN_BIO_DOMAINS] [-c CLASSIFIERS]\n\
+                        \                        [--no-classifier]\n             \
+                        \           [--classifier-score CLASSIFIER_SCORE]\n      \
+                        \                  inputs [inputs ...]\n\nRun DeepBGC pipeline:\
+                        \ Preparation, BGC detection, BGC classification and generate\
+                        \ the report directory.\n    \nExamples:\n    \n  # Show detailed\
+                        \ help \n  deepbgc pipeline --help \n    \n  # Detect BGCs\
+                        \ in a nucleotide FASTA sequence using DeepBGC model \n  deepbgc\
+                        \ pipeline sequence.fa\n  \n  # Detect BGCs using the ClusterFinder\
+                        \ GeneBorder detection model and a higher score threshold\n\
+                        \  deepbgc pipeline --detector clusterfinder_geneborder --score\
+                        \ 0.8 sequence.fa\n  \n  # Add additional clusters detected\
+                        \ using DeepBGC model with a strict score threshold\n  deepbgc\
+                        \ pipeline --continue --output sequence/ --label deepbgc_90_score\
+                        \ --score 0.9 sequence/sequence.full.gbk\n  \n\npositional\
+                        \ arguments:\n  inputs                Input sequence file\
+                        \ path (FASTA, GenBank, Pfam CSV)\n\noptional arguments:\n\
+                        \  -h, --help            show this help message and exit\n\
+                        \  --debug\n  -o OUTPUT, --output OUTPUT\n               \
+                        \         Custom output directory path\n  --limit-to-record\
+                        \ LIMIT_TO_RECORD\n                        Process only specific\
+                        \ record ID. Can be provided multiple times\n  --minimal-output\
+                        \      Produce minimal output with just the GenBank sequence\
+                        \ file\n  --prodigal-meta-mode  Run Prodigal in '-p meta'\
+                        \ mode to enable detecting genes in short contigs\n  --protein\
+                        \             Accept amino-acid protein sequences as input\
+                        \ (experimental). Will treat each file as a single record\
+                        \ with multiple proteins.\n\nBGC detection options:\n\n  -d\
+                        \ DETECTORS, --detector DETECTORS\n                      \
+                        \  Trained detection model name (run \"deepbgc download\"\
+                        \ to download models) or path to trained model pickle file.\
+                        \ Can be provided multiple times (-d first -d second)\n  --no-detector\
+                        \         Disable BGC detection\n  -l LABELS, --label LABELS\n\
+                        \                        Label for detected clusters (equal\
+                        \ to --detector by default). If multiple detectors are provided,\
+                        \ a label should be provided for each one\n  -s SCORE, --score\
+                        \ SCORE\n                        Average protein-wise DeepBGC\
+                        \ score threshold for extracting BGC regions from Pfam sequences\
+                        \ (default: 0.5)\n  --merge-max-protein-gap MERGE_MAX_PROTEIN_GAP\n\
+                        \                        Merge detected BGCs within given\
+                        \ number of proteins (default: 0)\n  --merge-max-nucl-gap\
+                        \ MERGE_MAX_NUCL_GAP\n                        Merge detected\
+                        \ BGCs within given number of nucleotides (default: 0)\n \
+                        \ --min-nucl MIN_NUCL   Minimum BGC nucleotide length (default:\
+                        \ 1)\n  --min-proteins MIN_PROTEINS\n                    \
+                        \    Minimum number of proteins in a BGC (default: 1)\n  --min-domains\
+                        \ MIN_DOMAINS\n                        Minimum number of protein\
+                        \ domains in a BGC (default: 1)\n  --min-bio-domains MIN_BIO_DOMAINS\n\
+                        \                        Minimum number of known biosynthetic\
+                        \ (as defined by antiSMASH) protein domains in a BGC (default:\
+                        \ 0)\n\nBGC classification options:\n\n  -c CLASSIFIERS, --classifier\
+                        \ CLASSIFIERS\n                        Trained classification\
+                        \ model name (run \"deepbgc download\" to download models)\
+                        \ or path to trained model pickle file. Can be provided multiple\
+                        \ times (-c first -c second)\n  --no-classifier       Disable\
+                        \ BGC classification\n  --classifier-score CLASSIFIER_SCORE\n\
+                        \                        DeepBGC classification score threshold\
+                        \ for assigning classes to BGCs (default: 0.5)\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - deepbgc
+                      - prepare
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: inputs
+                        description: Input sequence file path(s) (FASTA/GenBank)
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --debug
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --limit-to-record
+                        description: Process only specific record ID. Can be provided
+                          multiple times
+                        args: !SimpleFlagArg
+                          name: LIMIT_TO_RECORD
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --prodigal-meta-mode
+                        description: Run Prodigal in '-p meta' mode to enable detecting
+                          genes in short contigs
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --protein
+                        description: Accept amino-acid protein sequences as input
+                          (experimental). Will treat each file as a single record
+                          with multiple proteins.
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --output-gbk
+                        description: Output GenBank file path
+                        args: !SimpleFlagArg
+                          name: OUTPUT_GBK
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --output-tsv
+                        description: "Output TSV file path\n"
+                        args: !SimpleFlagArg
+                          name: OUTPUT_TSV
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: deepbgc prepare [-h] [--debug] [--limit-to-record\
+                        \ LIMIT_TO_RECORD]\n                       [--prodigal-meta-mode]\
+                        \ [--protein]\n                       [--output-gbk OUTPUT_GBK]\
+                        \ [--output-tsv OUTPUT_TSV]\n                       inputs\
+                        \ [inputs ...]\n\nPrepare genomic sequence by annotating proteins\
+                        \ and Pfam domains.\n    \nExamples:\n    \n  # Show detailed\
+                        \ help \n  deepbgc prepare --help \n    \n  # Detect proteins\
+                        \ and pfam domains in a FASTA sequence and save the result\
+                        \ as GenBank file \n  deepbgc prepare --output sequence.prepared.gbk\
+                        \ sequence.fa\n  \n\npositional arguments:\n  inputs     \
+                        \           Input sequence file path(s) (FASTA/GenBank)\n\n\
+                        optional arguments:\n  -h, --help            show this help\
+                        \ message and exit\n  --debug\n  --limit-to-record LIMIT_TO_RECORD\n\
+                        \                        Process only specific record ID.\
+                        \ Can be provided multiple times\n\nrequired arguments:\n\n\
+                        \  --prodigal-meta-mode  Run Prodigal in '-p meta' mode to\
+                        \ enable detecting genes in short contigs\n  --protein   \
+                        \          Accept amino-acid protein sequences as input (experimental).\
+                        \ Will treat each file as a single record with multiple proteins.\n\
+                        \  --output-gbk OUTPUT_GBK\n                        Output\
+                        \ GenBank file path\n  --output-tsv OUTPUT_TSV\n         \
+                        \               Output TSV file path\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id008
+                      - deepbgc
+                      - download
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --debug
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: deepbgc download [-h] [--debug]\n\n    Download\
+                        \ trained models and other file dependencies to the DeepBGC\
+                        \ downloads directory.\n    \n    By default, files are downloaded\
+                        \ to: '/root/.local/share/deepbgc/data'\n    Set DEEPBGC_DOWNLOADS_DIR\
+                        \ env variable to specify a different downloads directory.\"\
+                        \n    \n\noptional arguments:\n  -h, --help  show this help\
+                        \ message and exit\n  --debug\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: deepbgc [-h] COMMAND ...\n\nDeepBGC - Biosynthetic\
+                      \ Gene Cluster detection and classification\n\noptional arguments:\n\
+                      \  -h, --help  show this help message and exit\n\nAvailable\
+                      \ Commands:\n  COMMAND     Use: deepbgc COMMAND --help for command-specific\
+                      \ help\n    download  \n                  Download trained models\
+                      \ and other file dependencies to the DeepBGC downloads directory.\n\
+                      \                  \n                  By default, files are\
+                      \ downloaded to: '/root/.local/share/deepbgc/data'\n       \
+                      \           Set DEEPBGC_DOWNLOADS_DIR env variable to specify\
+                      \ a different downloads directory.\"\n                  \n \
+                      \   prepare   Prepare genomic sequence by annotating proteins\
+                      \ and Pfam domains.\n                  \n              Examples:\n\
+                      \                  \n                # Show detailed help \n\
+                      \                deepbgc prepare --help \n                 \
+                      \ \n                # Detect proteins and pfam domains in a\
+                      \ FASTA sequence and save the result as GenBank file \n    \
+                      \            deepbgc prepare --output sequence.prepared.gbk\
+                      \ sequence.fa\n                \n    pipeline  Run DeepBGC pipeline:\
+                      \ Preparation, BGC detection, BGC classification and generate\
+                      \ the report directory.\n                  \n              Examples:\n\
+                      \                  \n                # Show detailed help \n\
+                      \                deepbgc pipeline --help \n                \
+                      \  \n                # Detect BGCs in a nucleotide FASTA sequence\
+                      \ using DeepBGC model \n                deepbgc pipeline sequence.fa\n\
+                      \                \n                # Detect BGCs using the ClusterFinder\
+                      \ GeneBorder detection model and a higher score threshold\n\
+                      \                deepbgc pipeline --detector clusterfinder_geneborder\
+                      \ --score 0.8 sequence.fa\n                \n              \
+                      \  # Add additional clusters detected using DeepBGC model with\
+                      \ a strict score threshold\n                deepbgc pipeline\
+                      \ --continue --output sequence/ --label deepbgc_90_score --score\
+                      \ 0.9 sequence/sequence.full.gbk\n                \n    train\
+                      \     Train a BGC detector/classifier on a set of BGC samples.\n\
+                      \                  \n              Examples:\n             \
+                      \     \n                # Train a detector using pre-processed\
+                      \ samples in Pfam CSV format. \n                deepbgc train\
+                      \ --model deepbgc.json --output MyDeepBGCDetector.pkl BGCs.pfam.tsv\
+                      \ negatives.pfam.tsv\n                  \n                #\
+                      \ Train a BGC classifier using a TSV classes file and a set\
+                      \ of BGC samples in Pfam TSV format and save the trained classifier\
+                      \ to a file. \n                deepbgc train --model random_forest.json\
+                      \ --output MyDeepBGCClassifier.pkl --classes path/to/BGCs.classes.csv\
+                      \ BGCs.pfam.tsv\n                \n    info      Show DeepBGC\
+                      \ summary information about downloaded models and dependencies.\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: "show this help message and exit\n--debug\n"
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: deepbgc info [-h] [--debug]\n\nShow DeepBGC summary\
                     \ information about downloaded models and dependencies.\n\noptional\
                     \ arguments:\n  -h, --help  show this help message and exit\n\
                     \  --debug\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - deepbgc
-                  - train
+                  command: *id005
                   positional:
                   - !Positional
-                    description: Training sequences (Pfam TSV) file paths
+                    optional: false
                     position: 0
                     name: inputs
-                    optional: false
+                    description: Training sequences (Pfam TSV) file paths
                   named:
                   - !Flag
-                    description: ''
-                    synonyms:
-                    - --debug
-                    args: !EmptyFlagArg {}
                     optional: true
-                  - !Flag
-                    description: Path to JSON model config file
-                    synonyms:
-                    - -m
-                    - --model
-                    args: !SimpleFlagArg
-                      name: MODEL
-                    optional: true
-                  - !Flag
-                    description: Target column to predict in sequence prediction
-                    synonyms:
-                    - -t
-                    - --target
-                    args: !SimpleFlagArg
-                      name: TARGET
-                    optional: true
-                  - !Flag
-                    description: Output trained model file path
-                    synonyms:
-                    - -o
-                    - --output
-                    args: !SimpleFlagArg
-                      name: OUTPUT
-                    optional: true
-                  - !Flag
-                    description: Progress log output path (e.g. TensorBoard)
                     synonyms:
                     - -l
-                    - --log
+                    description: ''
                     args: !SimpleFlagArg
                       name: LOG
-                    optional: true
                   - !Flag
-                    description: Class TSV file path - train a sequence classifier
-                      using provided classes (binary columns), indexed by sequence_id
-                      column
-                    synonyms:
-                    - -c
-                    - --classes
-                    args: !SimpleFlagArg
-                      name: CLASSES
                     optional: true
+                    synonyms:
+                    - -o
+                    description: ''
+                    args: !SimpleFlagArg
+                      name: OUTPUT
                   - !Flag
-                    description: "CONFIG\nVariables in model JSON file to replace\
-                      \ (e.g. --config PFAM2VEC path/to/pfam2vec.csv)"
-                    synonyms:
-                    - --config
-                    args: !SimpleFlagArg
-                      name: CONFIG
                     optional: true
+                    synonyms:
+                    - -t
+                    description: ''
+                    args: !SimpleFlagArg
+                      name: TARGET
                   - !Flag
-                    description: Validation sequence file path. Repeat to specify
-                      multiple files
-                    synonyms:
-                    - -v
-                    - --validation
-                    args: !SimpleFlagArg
-                      name: VALIDATION
                     optional: true
+                    synonyms:
+                    - -m
+                    description: ''
+                    args: !SimpleFlagArg
+                      name: MODEL
                   - !Flag
-                    description: 'Verbosity level: 0=none, 1=progress bar, 2=once
-                      per epoch (default: 2)'
-                    synonyms:
-                    - --verbose
-                    args: !SimpleFlagArg
-                      name: INT
                     optional: true
+                    synonyms:
+                    - --debug
+                    description: ''
+                    args: !EmptyFlagArg {}
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: "show this help message and exit\n--debug\n-m MODEL,\
+                      \ --model MODEL\nPath to JSON model config file\n-t TARGET,\
+                      \ --target TARGET\nTarget column to predict in sequence prediction\n\
+                      -o OUTPUT, --output OUTPUT\nOutput trained model file path\n\
+                      -l LOG, --log LOG     Progress log output path (e.g. TensorBoard)\n\
+                      -c CLASSES, --classes CLASSES\nClass TSV file path - train a\
+                      \ sequence classifier using provided classes (binary columns),\
+                      \ indexed by sequence_id column\n--config CONFIG CONFIG\nVariables\
+                      \ in model JSON file to replace (e.g. --config PFAM2VEC path/to/pfam2vec.csv)\n\
+                      -v VALIDATION, --validation VALIDATION\nValidation sequence\
+                      \ file path. Repeat to specify multiple files\n--verbose INT\
+                      \         Verbosity level: 0=none, 1=progress bar, 2=once per\
+                      \ epoch (default: 2)\n"
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: deepbgc train [-h] [--debug] -m MODEL [-t TARGET]\
@@ -226,175 +783,152 @@ subcommands:
                     \     Verbosity level: 0=none, 1=progress bar, 2=once per epoch\
                     \ (default: 2)\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - deepbgc
-                  - pipeline
+                  command: *id006
                   positional:
                   - !Positional
-                    description: Input sequence file path (FASTA, GenBank, Pfam CSV)
+                    optional: false
                     position: 0
                     name: inputs
-                    optional: false
+                    description: Input sequence file path (FASTA, GenBank, Pfam CSV)
                   named:
                   - !Flag
-                    description: ''
-                    synonyms:
-                    - --debug
-                    args: !EmptyFlagArg {}
                     optional: true
-                  - !Flag
-                    description: Custom output directory path
-                    synonyms:
-                    - -o
-                    - --output
-                    args: !SimpleFlagArg
-                      name: OUTPUT
-                    optional: true
-                  - !Flag
-                    description: Process only specific record ID. Can be provided
-                      multiple times
-                    synonyms:
-                    - --limit-to-record
-                    args: !SimpleFlagArg
-                      name: LIMIT_TO_RECORD
-                    optional: true
-                  - !Flag
-                    description: Produce minimal output with just the GenBank sequence
-                      file
-                    synonyms:
-                    - --minimal-output
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: Run Prodigal in '-p meta' mode to enable detecting
-                      genes in short contigs
-                    synonyms:
-                    - --prodigal-meta-mode
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: Accept amino-acid protein sequences as input (experimental).
-                      Will treat each file as a single record with multiple proteins.
-                    synonyms:
-                    - --protein
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: Trained detection model name (run "deepbgc download"
-                      to download models) or path to trained model pickle file. Can
-                      be provided multiple times (-d first -d second)
                     synonyms:
                     - -d
                     - --detector
+                    description: Trained detection model name (run "deepbgc download"
+                      to download models) or path to trained model pickle file. Can
+                      be provided multiple times (-d first -d second)
                     args: !SimpleFlagArg
                       name: DETECTORS
-                    optional: true
                   - !Flag
-                    description: Disable BGC detection
+                    optional: true
                     synonyms:
                     - --no-detector
+                    description: Disable BGC detection
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Label for detected clusters (equal to --detector
-                      by default). If multiple detectors are provided, a label should
-                      be provided for each one
+                    optional: true
                     synonyms:
                     - -l
                     - --label
+                    description: Label for detected clusters (equal to --detector
+                      by default). If multiple detectors are provided, a label should
+                      be provided for each one
                     args: !SimpleFlagArg
                       name: LABELS
-                    optional: true
                   - !Flag
-                    description: 'Average protein-wise DeepBGC score threshold for
-                      extracting BGC regions from Pfam sequences (default: 0.5)'
+                    optional: true
                     synonyms:
                     - -s
                     - --score
+                    description: 'Average protein-wise DeepBGC score threshold for
+                      extracting BGC regions from Pfam sequences (default: 0.5)'
                     args: !SimpleFlagArg
                       name: SCORE
-                    optional: true
                   - !Flag
-                    description: 'Merge detected BGCs within given number of proteins
-                      (default: 0)'
+                    optional: true
                     synonyms:
                     - --merge-max-protein-gap
+                    description: 'Merge detected BGCs within given number of proteins
+                      (default: 0)'
                     args: !SimpleFlagArg
                       name: MERGE_MAX_PROTEIN_GAP
-                    optional: true
                   - !Flag
-                    description: 'Merge detected BGCs within given number of nucleotides
-                      (default: 0)'
+                    optional: true
                     synonyms:
                     - --merge-max-nucl-gap
+                    description: 'Merge detected BGCs within given number of nucleotides
+                      (default: 0)'
                     args: !SimpleFlagArg
                       name: MERGE_MAX_NUCL_GAP
-                    optional: true
                   - !Flag
-                    description: 'Minimum BGC nucleotide length (default: 1)'
+                    optional: true
                     synonyms:
                     - --min-nucl
+                    description: 'Minimum BGC nucleotide length (default: 1)'
                     args: !SimpleFlagArg
                       name: MIN_NUCL
-                    optional: true
                   - !Flag
-                    description: 'Minimum number of proteins in a BGC (default: 1)'
+                    optional: true
                     synonyms:
                     - --min-proteins
+                    description: 'Minimum number of proteins in a BGC (default: 1)'
                     args: !SimpleFlagArg
                       name: MIN_PROTEINS
-                    optional: true
                   - !Flag
-                    description: 'Minimum number of protein domains in a BGC (default:
-                      1)'
+                    optional: true
                     synonyms:
                     - --min-domains
+                    description: 'Minimum number of protein domains in a BGC (default:
+                      1)'
                     args: !SimpleFlagArg
                       name: MIN_DOMAINS
-                    optional: true
                   - !Flag
-                    description: 'Minimum number of known biosynthetic (as defined
-                      by antiSMASH) protein domains in a BGC (default: 0)'
+                    optional: true
                     synonyms:
                     - --min-bio-domains
+                    description: 'Minimum number of known biosynthetic (as defined
+                      by antiSMASH) protein domains in a BGC (default: 0)'
                     args: !SimpleFlagArg
                       name: MIN_BIO_DOMAINS
-                    optional: true
                   - !Flag
-                    description: Trained classification model name (run "deepbgc download"
-                      to download models) or path to trained model pickle file. Can
-                      be provided multiple times (-c first -c second)
+                    optional: true
                     synonyms:
                     - -c
                     - --classifier
+                    description: Trained classification model name (run "deepbgc download"
+                      to download models) or path to trained model pickle file. Can
+                      be provided multiple times (-c first -c second)
                     args: !SimpleFlagArg
                       name: CLASSIFIERS
-                    optional: true
                   - !Flag
-                    description: Disable BGC classification
+                    optional: true
                     synonyms:
                     - --no-classifier
+                    description: Disable BGC classification
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "DeepBGC classification score threshold for assigning\
-                      \ classes to BGCs (default: 0.5)\n"
+                    optional: true
                     synonyms:
                     - --classifier-score
+                    description: "DeepBGC classification score threshold for assigning\
+                      \ classes to BGCs (default: 0.5)\n"
                     args: !SimpleFlagArg
                       name: CLASSIFIER_SCORE
+                  - !Flag
                     optional: true
+                    synonyms:
+                    - -o
+                    description: ''
+                    args: !SimpleFlagArg
+                      name: OUTPUT
+                  - !Flag
+                    optional: true
+                    synonyms:
+                    - --debug
+                    description: ''
+                    args: !EmptyFlagArg {}
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: "show this help message and exit\n--debug\n-o OUTPUT,\
+                      \ --output OUTPUT\nCustom output directory path\n--limit-to-record\
+                      \ LIMIT_TO_RECORD\nProcess only specific record ID. Can be provided\
+                      \ multiple times\n--minimal-output      Produce minimal output\
+                      \ with just the GenBank sequence file\n--prodigal-meta-mode\
+                      \  Run Prodigal in '-p meta' mode to enable detecting genes\
+                      \ in short contigs\n--protein             Accept amino-acid\
+                      \ protein sequences as input (experimental). Will treat each\
+                      \ file as a single record with multiple proteins."
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: deepbgc pipeline [-h] [--debug] [-o OUTPUT]\n\
@@ -461,69 +995,69 @@ subcommands:
                     \                        DeepBGC classification score threshold\
                     \ for assigning classes to BGCs (default: 0.5)\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - deepbgc
-                  - prepare
+                  command: *id007
                   positional:
                   - !Positional
-                    description: Input sequence file path(s) (FASTA/GenBank)
+                    optional: false
                     position: 0
                     name: inputs
-                    optional: false
+                    description: Input sequence file path(s) (FASTA/GenBank)
                   named:
                   - !Flag
-                    description: ''
-                    synonyms:
-                    - --debug
-                    args: !EmptyFlagArg {}
                     optional: true
-                  - !Flag
-                    description: Process only specific record ID. Can be provided
-                      multiple times
-                    synonyms:
-                    - --limit-to-record
-                    args: !SimpleFlagArg
-                      name: LIMIT_TO_RECORD
-                    optional: true
-                  - !Flag
-                    description: Run Prodigal in '-p meta' mode to enable detecting
-                      genes in short contigs
                     synonyms:
                     - --prodigal-meta-mode
+                    description: Run Prodigal in '-p meta' mode to enable detecting
+                      genes in short contigs
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Accept amino-acid protein sequences as input (experimental).
-                      Will treat each file as a single record with multiple proteins.
+                    optional: true
                     synonyms:
                     - --protein
+                    description: Accept amino-acid protein sequences as input (experimental).
+                      Will treat each file as a single record with multiple proteins.
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Output GenBank file path
+                    optional: true
                     synonyms:
                     - --output-gbk
+                    description: Output GenBank file path
                     args: !SimpleFlagArg
                       name: OUTPUT_GBK
-                    optional: true
                   - !Flag
-                    description: "Output TSV file path\n"
+                    optional: true
                     synonyms:
                     - --output-tsv
+                    description: "Output TSV file path\n"
                     args: !SimpleFlagArg
                       name: OUTPUT_TSV
+                  - !Flag
                     optional: true
+                    synonyms:
+                    - --limit-to-record
+                    description: ''
+                    args: !SimpleFlagArg
+                      name: LIMIT_TO_RECORD
+                  - !Flag
+                    optional: true
+                    synonyms:
+                    - --debug
+                    description: ''
+                    args: !EmptyFlagArg {}
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: "show this help message and exit\n--debug\n--limit-to-record\
+                      \ LIMIT_TO_RECORD\nProcess only specific record ID. Can be provided\
+                      \ multiple times"
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: deepbgc prepare [-h] [--debug] [--limit-to-record\
@@ -548,28 +1082,27 @@ subcommands:
                     \  --output-tsv OUTPUT_TSV\n                        Output TSV\
                     \ file path\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id008
-                  - deepbgc
-                  - download
+                  command: *id008
                   positional: []
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --debug
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: "show this help message and exit\n--debug\n"
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: deepbgc download [-h] [--debug]\n\n    Download\
@@ -579,14 +1112,9 @@ subcommands:
                     \ downloads directory.\"\n    \n\noptional arguments:\n  -h, --help\
                     \  show this help message and exit\n  --debug\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "usage: deepbgc [-h] COMMAND ...\n\nDeepBGC - Biosynthetic\
@@ -632,68 +1160,74 @@ subcommands:
                   \     \n    info      Show DeepBGC summary information about downloaded\
                   \ models and dependencies.\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: "show this help message and exit\n--debug\n"
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: "show this help message and exit\n--debug\n"
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: deepbgc info [-h] [--debug]\n\nShow DeepBGC summary\
                 \ information about downloaded models and dependencies.\n\noptional\
                 \ arguments:\n  -h, --help  show this help message and exit\n  --debug\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
-                description: Training sequences (Pfam TSV) file paths
+                optional: false
                 position: 0
                 name: inputs
-                optional: false
+                description: Training sequences (Pfam TSV) file paths
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -l
+                description: ''
                 args: !SimpleFlagArg
                   name: LOG
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -o
+                description: ''
                 args: !SimpleFlagArg
                   name: OUTPUT
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -t
+                description: ''
                 args: !SimpleFlagArg
                   name: TARGET
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -m
+                description: ''
                 args: !SimpleFlagArg
                   name: MODEL
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --debug
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
+                optional: true
+                synonyms:
+                - -h
+                - --help
                 description: "show this help message and exit\n--debug\n-m MODEL,\
                   \ --model MODEL\nPath to JSON model config file\n-t TARGET, --target\
                   \ TARGET\nTarget column to predict in sequence prediction\n-o OUTPUT,\
@@ -706,11 +1240,7 @@ subcommands:
                   \ --validation VALIDATION\nValidation sequence file path. Repeat\
                   \ to specify multiple files\n--verbose INT         Verbosity level:\
                   \ 0=none, 1=progress bar, 2=once per epoch (default: 2)\n"
-                synonyms:
-                - -h
-                - --help
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: deepbgc train [-h] [--debug] -m MODEL [-t TARGET]\
@@ -741,137 +1271,142 @@ subcommands:
                 \ Repeat to specify multiple files\n  --verbose INT         Verbosity\
                 \ level: 0=none, 1=progress bar, 2=once per epoch (default: 2)\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: Input sequence file path (FASTA, GenBank, Pfam CSV)
+                optional: false
                 position: 0
                 name: inputs
-                optional: false
+                description: Input sequence file path (FASTA, GenBank, Pfam CSV)
               named:
               - !Flag
-                description: Trained detection model name (run "deepbgc download"
-                  to download models) or path to trained model pickle file. Can be
-                  provided multiple times (-d first -d second)
+                optional: true
                 synonyms:
                 - -d
                 - --detector
+                description: Trained detection model name (run "deepbgc download"
+                  to download models) or path to trained model pickle file. Can be
+                  provided multiple times (-d first -d second)
                 args: !SimpleFlagArg
                   name: DETECTORS
-                optional: true
               - !Flag
-                description: Disable BGC detection
+                optional: true
                 synonyms:
                 - --no-detector
+                description: Disable BGC detection
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Label for detected clusters (equal to --detector by default).
-                  If multiple detectors are provided, a label should be provided for
-                  each one
+                optional: true
                 synonyms:
                 - -l
                 - --label
+                description: Label for detected clusters (equal to --detector by default).
+                  If multiple detectors are provided, a label should be provided for
+                  each one
                 args: !SimpleFlagArg
                   name: LABELS
-                optional: true
               - !Flag
-                description: 'Average protein-wise DeepBGC score threshold for extracting
-                  BGC regions from Pfam sequences (default: 0.5)'
+                optional: true
                 synonyms:
                 - -s
                 - --score
+                description: 'Average protein-wise DeepBGC score threshold for extracting
+                  BGC regions from Pfam sequences (default: 0.5)'
                 args: !SimpleFlagArg
                   name: SCORE
-                optional: true
               - !Flag
-                description: 'Merge detected BGCs within given number of proteins
-                  (default: 0)'
+                optional: true
                 synonyms:
                 - --merge-max-protein-gap
+                description: 'Merge detected BGCs within given number of proteins
+                  (default: 0)'
                 args: !SimpleFlagArg
                   name: MERGE_MAX_PROTEIN_GAP
-                optional: true
               - !Flag
-                description: 'Merge detected BGCs within given number of nucleotides
-                  (default: 0)'
+                optional: true
                 synonyms:
                 - --merge-max-nucl-gap
+                description: 'Merge detected BGCs within given number of nucleotides
+                  (default: 0)'
                 args: !SimpleFlagArg
                   name: MERGE_MAX_NUCL_GAP
-                optional: true
               - !Flag
-                description: 'Minimum BGC nucleotide length (default: 1)'
+                optional: true
                 synonyms:
                 - --min-nucl
+                description: 'Minimum BGC nucleotide length (default: 1)'
                 args: !SimpleFlagArg
                   name: MIN_NUCL
-                optional: true
               - !Flag
-                description: 'Minimum number of proteins in a BGC (default: 1)'
+                optional: true
                 synonyms:
                 - --min-proteins
+                description: 'Minimum number of proteins in a BGC (default: 1)'
                 args: !SimpleFlagArg
                   name: MIN_PROTEINS
-                optional: true
               - !Flag
-                description: 'Minimum number of protein domains in a BGC (default:
-                  1)'
+                optional: true
                 synonyms:
                 - --min-domains
+                description: 'Minimum number of protein domains in a BGC (default:
+                  1)'
                 args: !SimpleFlagArg
                   name: MIN_DOMAINS
-                optional: true
               - !Flag
-                description: 'Minimum number of known biosynthetic (as defined by
-                  antiSMASH) protein domains in a BGC (default: 0)'
+                optional: true
                 synonyms:
                 - --min-bio-domains
+                description: 'Minimum number of known biosynthetic (as defined by
+                  antiSMASH) protein domains in a BGC (default: 0)'
                 args: !SimpleFlagArg
                   name: MIN_BIO_DOMAINS
-                optional: true
               - !Flag
-                description: Trained classification model name (run "deepbgc download"
-                  to download models) or path to trained model pickle file. Can be
-                  provided multiple times (-c first -c second)
+                optional: true
                 synonyms:
                 - -c
                 - --classifier
+                description: Trained classification model name (run "deepbgc download"
+                  to download models) or path to trained model pickle file. Can be
+                  provided multiple times (-c first -c second)
                 args: !SimpleFlagArg
                   name: CLASSIFIERS
-                optional: true
               - !Flag
-                description: Disable BGC classification
+                optional: true
                 synonyms:
                 - --no-classifier
+                description: Disable BGC classification
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "DeepBGC classification score threshold for assigning\
-                  \ classes to BGCs (default: 0.5)\n"
+                optional: true
                 synonyms:
                 - --classifier-score
+                description: "DeepBGC classification score threshold for assigning\
+                  \ classes to BGCs (default: 0.5)\n"
                 args: !SimpleFlagArg
                   name: CLASSIFIER_SCORE
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -o
+                description: ''
                 args: !SimpleFlagArg
                   name: OUTPUT
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --debug
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
+                optional: true
+                synonyms:
+                - -h
+                - --help
                 description: "show this help message and exit\n--debug\n-o OUTPUT,\
                   \ --output OUTPUT\nCustom output directory path\n--limit-to-record\
                   \ LIMIT_TO_RECORD\nProcess only specific record ID. Can be provided\
@@ -881,11 +1416,7 @@ subcommands:
                   --protein             Accept amino-acid protein sequences as input\
                   \ (experimental). Will treat each file as a single record with multiple\
                   \ proteins."
-                synonyms:
-                - -h
-                - --help
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: deepbgc pipeline [-h] [--debug] [-o OUTPUT]\n   \
@@ -949,68 +1480,69 @@ subcommands:
                 \                        DeepBGC classification score threshold for\
                 \ assigning classes to BGCs (default: 0.5)\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional:
               - !Positional
-                description: Input sequence file path(s) (FASTA/GenBank)
+                optional: false
                 position: 0
                 name: inputs
-                optional: false
+                description: Input sequence file path(s) (FASTA/GenBank)
               named:
               - !Flag
-                description: Run Prodigal in '-p meta' mode to enable detecting genes
-                  in short contigs
+                optional: true
                 synonyms:
                 - --prodigal-meta-mode
+                description: Run Prodigal in '-p meta' mode to enable detecting genes
+                  in short contigs
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Accept amino-acid protein sequences as input (experimental).
-                  Will treat each file as a single record with multiple proteins.
+                optional: true
                 synonyms:
                 - --protein
+                description: Accept amino-acid protein sequences as input (experimental).
+                  Will treat each file as a single record with multiple proteins.
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Output GenBank file path
+                optional: true
                 synonyms:
                 - --output-gbk
+                description: Output GenBank file path
                 args: !SimpleFlagArg
                   name: OUTPUT_GBK
-                optional: true
               - !Flag
-                description: "Output TSV file path\n"
+                optional: true
                 synonyms:
                 - --output-tsv
+                description: "Output TSV file path\n"
                 args: !SimpleFlagArg
                   name: OUTPUT_TSV
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --limit-to-record
+                description: ''
                 args: !SimpleFlagArg
                   name: LIMIT_TO_RECORD
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --debug
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: "show this help message and exit\n--debug\n--limit-to-record\
-                  \ LIMIT_TO_RECORD\nProcess only specific record ID. Can be provided\
-                  \ multiple times"
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: "show this help message and exit\n--debug\n--limit-to-record\
+                  \ LIMIT_TO_RECORD\nProcess only specific record ID. Can be provided\
+                  \ multiple times"
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: deepbgc prepare [-h] [--debug] [--limit-to-record\
@@ -1034,26 +1566,27 @@ subcommands:
                 \             Output GenBank file path\n  --output-tsv OUTPUT_TSV\n\
                 \                        Output TSV file path\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id008
               positional: []
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --debug
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: "show this help message and exit\n--debug\n"
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: "show this help message and exit\n--debug\n"
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: deepbgc download [-h] [--debug]\n\n    Download trained\
@@ -1063,6 +1596,7 @@ subcommands:
                 \ downloads directory.\"\n    \n\noptional arguments:\n  -h, --help\
                 \  show this help message and exit\n  --debug\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -1108,68 +1642,74 @@ subcommands:
               \      Show DeepBGC summary information about downloaded models and\
               \ dependencies.\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: "show this help message and exit\n--debug\n"
+            optional: true
             synonyms:
             - -h
             - --help
+            description: "show this help message and exit\n--debug\n"
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: deepbgc info [-h] [--debug]\n\nShow DeepBGC summary information\
             \ about downloaded models and dependencies.\n\noptional arguments:\n \
             \ -h, --help  show this help message and exit\n  --debug\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: Training sequences (Pfam TSV) file paths
+            optional: false
             position: 0
             name: inputs
-            optional: false
+            description: Training sequences (Pfam TSV) file paths
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -l
+            description: ''
             args: !SimpleFlagArg
               name: LOG
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -o
+            description: ''
             args: !SimpleFlagArg
               name: OUTPUT
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -t
+            description: ''
             args: !SimpleFlagArg
               name: TARGET
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -m
+            description: ''
             args: !SimpleFlagArg
               name: MODEL
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --debug
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
+            optional: true
+            synonyms:
+            - -h
+            - --help
             description: "show this help message and exit\n--debug\n-m MODEL, --model\
               \ MODEL\nPath to JSON model config file\n-t TARGET, --target TARGET\n\
               Target column to predict in sequence prediction\n-o OUTPUT, --output\
@@ -1181,11 +1721,7 @@ subcommands:
               -v VALIDATION, --validation VALIDATION\nValidation sequence file path.\
               \ Repeat to specify multiple files\n--verbose INT         Verbosity\
               \ level: 0=none, 1=progress bar, 2=once per epoch (default: 2)\n"
-            synonyms:
-            - -h
-            - --help
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: deepbgc train [-h] [--debug] -m MODEL [-t TARGET] -o\
@@ -1216,136 +1752,141 @@ subcommands:
             \  Verbosity level: 0=none, 1=progress bar, 2=once per epoch (default:\
             \ 2)\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: Input sequence file path (FASTA, GenBank, Pfam CSV)
+            optional: false
             position: 0
             name: inputs
-            optional: false
+            description: Input sequence file path (FASTA, GenBank, Pfam CSV)
           named:
           - !Flag
-            description: Trained detection model name (run "deepbgc download" to download
-              models) or path to trained model pickle file. Can be provided multiple
-              times (-d first -d second)
+            optional: true
             synonyms:
             - -d
             - --detector
+            description: Trained detection model name (run "deepbgc download" to download
+              models) or path to trained model pickle file. Can be provided multiple
+              times (-d first -d second)
             args: !SimpleFlagArg
               name: DETECTORS
-            optional: true
           - !Flag
-            description: Disable BGC detection
+            optional: true
             synonyms:
             - --no-detector
+            description: Disable BGC detection
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Label for detected clusters (equal to --detector by default).
-              If multiple detectors are provided, a label should be provided for each
-              one
+            optional: true
             synonyms:
             - -l
             - --label
+            description: Label for detected clusters (equal to --detector by default).
+              If multiple detectors are provided, a label should be provided for each
+              one
             args: !SimpleFlagArg
               name: LABELS
-            optional: true
           - !Flag
-            description: 'Average protein-wise DeepBGC score threshold for extracting
-              BGC regions from Pfam sequences (default: 0.5)'
+            optional: true
             synonyms:
             - -s
             - --score
+            description: 'Average protein-wise DeepBGC score threshold for extracting
+              BGC regions from Pfam sequences (default: 0.5)'
             args: !SimpleFlagArg
               name: SCORE
-            optional: true
           - !Flag
-            description: 'Merge detected BGCs within given number of proteins (default:
-              0)'
+            optional: true
             synonyms:
             - --merge-max-protein-gap
+            description: 'Merge detected BGCs within given number of proteins (default:
+              0)'
             args: !SimpleFlagArg
               name: MERGE_MAX_PROTEIN_GAP
-            optional: true
           - !Flag
-            description: 'Merge detected BGCs within given number of nucleotides (default:
-              0)'
+            optional: true
             synonyms:
             - --merge-max-nucl-gap
+            description: 'Merge detected BGCs within given number of nucleotides (default:
+              0)'
             args: !SimpleFlagArg
               name: MERGE_MAX_NUCL_GAP
-            optional: true
           - !Flag
-            description: 'Minimum BGC nucleotide length (default: 1)'
+            optional: true
             synonyms:
             - --min-nucl
+            description: 'Minimum BGC nucleotide length (default: 1)'
             args: !SimpleFlagArg
               name: MIN_NUCL
-            optional: true
           - !Flag
-            description: 'Minimum number of proteins in a BGC (default: 1)'
+            optional: true
             synonyms:
             - --min-proteins
+            description: 'Minimum number of proteins in a BGC (default: 1)'
             args: !SimpleFlagArg
               name: MIN_PROTEINS
-            optional: true
           - !Flag
-            description: 'Minimum number of protein domains in a BGC (default: 1)'
+            optional: true
             synonyms:
             - --min-domains
+            description: 'Minimum number of protein domains in a BGC (default: 1)'
             args: !SimpleFlagArg
               name: MIN_DOMAINS
-            optional: true
           - !Flag
-            description: 'Minimum number of known biosynthetic (as defined by antiSMASH)
-              protein domains in a BGC (default: 0)'
+            optional: true
             synonyms:
             - --min-bio-domains
+            description: 'Minimum number of known biosynthetic (as defined by antiSMASH)
+              protein domains in a BGC (default: 0)'
             args: !SimpleFlagArg
               name: MIN_BIO_DOMAINS
-            optional: true
           - !Flag
-            description: Trained classification model name (run "deepbgc download"
-              to download models) or path to trained model pickle file. Can be provided
-              multiple times (-c first -c second)
+            optional: true
             synonyms:
             - -c
             - --classifier
+            description: Trained classification model name (run "deepbgc download"
+              to download models) or path to trained model pickle file. Can be provided
+              multiple times (-c first -c second)
             args: !SimpleFlagArg
               name: CLASSIFIERS
-            optional: true
           - !Flag
-            description: Disable BGC classification
+            optional: true
             synonyms:
             - --no-classifier
+            description: Disable BGC classification
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "DeepBGC classification score threshold for assigning classes\
-              \ to BGCs (default: 0.5)\n"
+            optional: true
             synonyms:
             - --classifier-score
+            description: "DeepBGC classification score threshold for assigning classes\
+              \ to BGCs (default: 0.5)\n"
             args: !SimpleFlagArg
               name: CLASSIFIER_SCORE
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -o
+            description: ''
             args: !SimpleFlagArg
               name: OUTPUT
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --debug
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
+            optional: true
+            synonyms:
+            - -h
+            - --help
             description: "show this help message and exit\n--debug\n-o OUTPUT, --output\
               \ OUTPUT\nCustom output directory path\n--limit-to-record LIMIT_TO_RECORD\n\
               Process only specific record ID. Can be provided multiple times\n--minimal-output\
@@ -1354,11 +1895,7 @@ subcommands:
               \ genes in short contigs\n--protein             Accept amino-acid protein\
               \ sequences as input (experimental). Will treat each file as a single\
               \ record with multiple proteins."
-            synonyms:
-            - -h
-            - --help
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: deepbgc pipeline [-h] [--debug] [-o OUTPUT]\n       \
@@ -1418,68 +1955,69 @@ subcommands:
             \ CLASSIFIER_SCORE\n                        DeepBGC classification score\
             \ threshold for assigning classes to BGCs (default: 0.5)\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional:
           - !Positional
-            description: Input sequence file path(s) (FASTA/GenBank)
+            optional: false
             position: 0
             name: inputs
-            optional: false
+            description: Input sequence file path(s) (FASTA/GenBank)
           named:
           - !Flag
-            description: Run Prodigal in '-p meta' mode to enable detecting genes
-              in short contigs
+            optional: true
             synonyms:
             - --prodigal-meta-mode
+            description: Run Prodigal in '-p meta' mode to enable detecting genes
+              in short contigs
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Accept amino-acid protein sequences as input (experimental).
-              Will treat each file as a single record with multiple proteins.
+            optional: true
             synonyms:
             - --protein
+            description: Accept amino-acid protein sequences as input (experimental).
+              Will treat each file as a single record with multiple proteins.
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Output GenBank file path
+            optional: true
             synonyms:
             - --output-gbk
+            description: Output GenBank file path
             args: !SimpleFlagArg
               name: OUTPUT_GBK
-            optional: true
           - !Flag
-            description: "Output TSV file path\n"
+            optional: true
             synonyms:
             - --output-tsv
+            description: "Output TSV file path\n"
             args: !SimpleFlagArg
               name: OUTPUT_TSV
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --limit-to-record
+            description: ''
             args: !SimpleFlagArg
               name: LIMIT_TO_RECORD
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --debug
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: "show this help message and exit\n--debug\n--limit-to-record\
-              \ LIMIT_TO_RECORD\nProcess only specific record ID. Can be provided\
-              \ multiple times"
+            optional: true
             synonyms:
             - -h
             - --help
+            description: "show this help message and exit\n--debug\n--limit-to-record\
+              \ LIMIT_TO_RECORD\nProcess only specific record ID. Can be provided\
+              \ multiple times"
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: deepbgc prepare [-h] [--debug] [--limit-to-record LIMIT_TO_RECORD]\n\
@@ -1502,26 +2040,27 @@ subcommands:
             \ GenBank file path\n  --output-tsv OUTPUT_TSV\n                     \
             \   Output TSV file path\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id008
           positional: []
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --debug
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: "show this help message and exit\n--debug\n"
+            optional: true
             synonyms:
             - -h
             - --help
+            description: "show this help message and exit\n--debug\n"
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: deepbgc download [-h] [--debug]\n\n    Download trained\
@@ -1531,6 +2070,7 @@ subcommands:
             \ directory.\"\n    \n\noptional arguments:\n  -h, --help  show this help\
             \ message and exit\n  --debug\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -1574,68 +2114,74 @@ subcommands:
           \   info      Show DeepBGC summary information about downloaded models and\
           \ dependencies.\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: "show this help message and exit\n--debug\n"
+        optional: true
         synonyms:
         - -h
         - --help
+        description: "show this help message and exit\n--debug\n"
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: deepbgc info [-h] [--debug]\n\nShow DeepBGC summary information\
         \ about downloaded models and dependencies.\n\noptional arguments:\n  -h,\
         \ --help  show this help message and exit\n  --debug\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: Training sequences (Pfam TSV) file paths
+        optional: false
         position: 0
         name: inputs
-        optional: false
+        description: Training sequences (Pfam TSV) file paths
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -l
+        description: ''
         args: !SimpleFlagArg
           name: LOG
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -o
+        description: ''
         args: !SimpleFlagArg
           name: OUTPUT
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -t
+        description: ''
         args: !SimpleFlagArg
           name: TARGET
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -m
+        description: ''
         args: !SimpleFlagArg
           name: MODEL
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --debug
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
+        optional: true
+        synonyms:
+        - -h
+        - --help
         description: "show this help message and exit\n--debug\n-m MODEL, --model\
           \ MODEL\nPath to JSON model config file\n-t TARGET, --target TARGET\nTarget\
           \ column to predict in sequence prediction\n-o OUTPUT, --output OUTPUT\n\
@@ -1647,11 +2193,7 @@ subcommands:
           \ VALIDATION, --validation VALIDATION\nValidation sequence file path. Repeat\
           \ to specify multiple files\n--verbose INT         Verbosity level: 0=none,\
           \ 1=progress bar, 2=once per epoch (default: 2)\n"
-        synonyms:
-        - -h
-        - --help
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: deepbgc train [-h] [--debug] -m MODEL [-t TARGET] -o OUTPUT\
@@ -1680,136 +2222,141 @@ subcommands:
         \       Verbosity level: 0=none, 1=progress bar, 2=once per epoch (default:\
         \ 2)\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: Input sequence file path (FASTA, GenBank, Pfam CSV)
+        optional: false
         position: 0
         name: inputs
-        optional: false
+        description: Input sequence file path (FASTA, GenBank, Pfam CSV)
       named:
       - !Flag
-        description: Trained detection model name (run "deepbgc download" to download
-          models) or path to trained model pickle file. Can be provided multiple times
-          (-d first -d second)
+        optional: true
         synonyms:
         - -d
         - --detector
+        description: Trained detection model name (run "deepbgc download" to download
+          models) or path to trained model pickle file. Can be provided multiple times
+          (-d first -d second)
         args: !SimpleFlagArg
           name: DETECTORS
-        optional: true
       - !Flag
-        description: Disable BGC detection
+        optional: true
         synonyms:
         - --no-detector
+        description: Disable BGC detection
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Label for detected clusters (equal to --detector by default).
-          If multiple detectors are provided, a label should be provided for each
-          one
+        optional: true
         synonyms:
         - -l
         - --label
+        description: Label for detected clusters (equal to --detector by default).
+          If multiple detectors are provided, a label should be provided for each
+          one
         args: !SimpleFlagArg
           name: LABELS
-        optional: true
       - !Flag
-        description: 'Average protein-wise DeepBGC score threshold for extracting
-          BGC regions from Pfam sequences (default: 0.5)'
+        optional: true
         synonyms:
         - -s
         - --score
+        description: 'Average protein-wise DeepBGC score threshold for extracting
+          BGC regions from Pfam sequences (default: 0.5)'
         args: !SimpleFlagArg
           name: SCORE
-        optional: true
       - !Flag
-        description: 'Merge detected BGCs within given number of proteins (default:
-          0)'
+        optional: true
         synonyms:
         - --merge-max-protein-gap
+        description: 'Merge detected BGCs within given number of proteins (default:
+          0)'
         args: !SimpleFlagArg
           name: MERGE_MAX_PROTEIN_GAP
-        optional: true
       - !Flag
-        description: 'Merge detected BGCs within given number of nucleotides (default:
-          0)'
+        optional: true
         synonyms:
         - --merge-max-nucl-gap
+        description: 'Merge detected BGCs within given number of nucleotides (default:
+          0)'
         args: !SimpleFlagArg
           name: MERGE_MAX_NUCL_GAP
-        optional: true
       - !Flag
-        description: 'Minimum BGC nucleotide length (default: 1)'
+        optional: true
         synonyms:
         - --min-nucl
+        description: 'Minimum BGC nucleotide length (default: 1)'
         args: !SimpleFlagArg
           name: MIN_NUCL
-        optional: true
       - !Flag
-        description: 'Minimum number of proteins in a BGC (default: 1)'
+        optional: true
         synonyms:
         - --min-proteins
+        description: 'Minimum number of proteins in a BGC (default: 1)'
         args: !SimpleFlagArg
           name: MIN_PROTEINS
-        optional: true
       - !Flag
-        description: 'Minimum number of protein domains in a BGC (default: 1)'
+        optional: true
         synonyms:
         - --min-domains
+        description: 'Minimum number of protein domains in a BGC (default: 1)'
         args: !SimpleFlagArg
           name: MIN_DOMAINS
-        optional: true
       - !Flag
-        description: 'Minimum number of known biosynthetic (as defined by antiSMASH)
-          protein domains in a BGC (default: 0)'
+        optional: true
         synonyms:
         - --min-bio-domains
+        description: 'Minimum number of known biosynthetic (as defined by antiSMASH)
+          protein domains in a BGC (default: 0)'
         args: !SimpleFlagArg
           name: MIN_BIO_DOMAINS
-        optional: true
       - !Flag
-        description: Trained classification model name (run "deepbgc download" to
-          download models) or path to trained model pickle file. Can be provided multiple
-          times (-c first -c second)
+        optional: true
         synonyms:
         - -c
         - --classifier
+        description: Trained classification model name (run "deepbgc download" to
+          download models) or path to trained model pickle file. Can be provided multiple
+          times (-c first -c second)
         args: !SimpleFlagArg
           name: CLASSIFIERS
-        optional: true
       - !Flag
-        description: Disable BGC classification
+        optional: true
         synonyms:
         - --no-classifier
+        description: Disable BGC classification
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "DeepBGC classification score threshold for assigning classes\
-          \ to BGCs (default: 0.5)\n"
+        optional: true
         synonyms:
         - --classifier-score
+        description: "DeepBGC classification score threshold for assigning classes\
+          \ to BGCs (default: 0.5)\n"
         args: !SimpleFlagArg
           name: CLASSIFIER_SCORE
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -o
+        description: ''
         args: !SimpleFlagArg
           name: OUTPUT
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --debug
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
+        optional: true
+        synonyms:
+        - -h
+        - --help
         description: "show this help message and exit\n--debug\n-o OUTPUT, --output\
           \ OUTPUT\nCustom output directory path\n--limit-to-record LIMIT_TO_RECORD\n\
           Process only specific record ID. Can be provided multiple times\n--minimal-output\
@@ -1817,11 +2364,7 @@ subcommands:
           \  Run Prodigal in '-p meta' mode to enable detecting genes in short contigs\n\
           --protein             Accept amino-acid protein sequences as input (experimental).\
           \ Will treat each file as a single record with multiple proteins."
-        synonyms:
-        - -h
-        - --help
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: deepbgc pipeline [-h] [--debug] [-o OUTPUT]\n           \
@@ -1879,68 +2422,69 @@ subcommands:
         \                        DeepBGC classification score threshold for assigning\
         \ classes to BGCs (default: 0.5)\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional:
       - !Positional
-        description: Input sequence file path(s) (FASTA/GenBank)
+        optional: false
         position: 0
         name: inputs
-        optional: false
+        description: Input sequence file path(s) (FASTA/GenBank)
       named:
       - !Flag
-        description: Run Prodigal in '-p meta' mode to enable detecting genes in short
-          contigs
+        optional: true
         synonyms:
         - --prodigal-meta-mode
+        description: Run Prodigal in '-p meta' mode to enable detecting genes in short
+          contigs
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Accept amino-acid protein sequences as input (experimental).
-          Will treat each file as a single record with multiple proteins.
+        optional: true
         synonyms:
         - --protein
+        description: Accept amino-acid protein sequences as input (experimental).
+          Will treat each file as a single record with multiple proteins.
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Output GenBank file path
+        optional: true
         synonyms:
         - --output-gbk
+        description: Output GenBank file path
         args: !SimpleFlagArg
           name: OUTPUT_GBK
-        optional: true
       - !Flag
-        description: "Output TSV file path\n"
+        optional: true
         synonyms:
         - --output-tsv
+        description: "Output TSV file path\n"
         args: !SimpleFlagArg
           name: OUTPUT_TSV
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --limit-to-record
+        description: ''
         args: !SimpleFlagArg
           name: LIMIT_TO_RECORD
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --debug
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: "show this help message and exit\n--debug\n--limit-to-record\
-          \ LIMIT_TO_RECORD\nProcess only specific record ID. Can be provided multiple\
-          \ times"
+        optional: true
         synonyms:
         - -h
         - --help
+        description: "show this help message and exit\n--debug\n--limit-to-record\
+          \ LIMIT_TO_RECORD\nProcess only specific record ID. Can be provided multiple\
+          \ times"
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: deepbgc prepare [-h] [--debug] [--limit-to-record LIMIT_TO_RECORD]\n\
@@ -1962,26 +2506,27 @@ subcommands:
         \     Output GenBank file path\n  --output-tsv OUTPUT_TSV\n              \
         \          Output TSV file path\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id008
       positional: []
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --debug
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: "show this help message and exit\n--debug\n"
+        optional: true
         synonyms:
         - -h
         - --help
+        description: "show this help message and exit\n--debug\n"
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: deepbgc download [-h] [--debug]\n\n    Download trained models\
@@ -1991,6 +2536,7 @@ subcommands:
         \ directory.\"\n    \n\noptional arguments:\n  -h, --help  show this help\
         \ message and exit\n  --debug\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -2032,83 +2578,108 @@ subcommands:
       \                \n    info      Show DeepBGC summary information about downloaded\
       \ models and dependencies.\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: "show this help message and exit\n--debug\n"
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: deepbgc info [-h] [--debug]\n\nShow DeepBGC summary information\
     \ about downloaded models and dependencies.\n\noptional arguments:\n  -h, --help\
     \  show this help message and exit\n  --debug\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: Training sequences (Pfam TSV) file paths
+    optional: false
     position: 0
     name: inputs
-    optional: false
+    description: Training sequences (Pfam TSV) file paths
   named:
   - !Flag
-    description: ''
-    synonyms:
-    - -l
-    args: !SimpleFlagArg
-      name: LOG
     optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -o
-    args: !SimpleFlagArg
-      name: OUTPUT
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -t
-    args: !SimpleFlagArg
-      name: TARGET
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -m
-    args: !SimpleFlagArg
-      name: MODEL
-    optional: true
-  - !Flag
-    description: ''
     synonyms:
     - --debug
-    args: !EmptyFlagArg {}
+    - -m
+    - --model
+    description: Path to JSON model config file
+    args: !SimpleFlagArg
+      name: MODEL
+  - !Flag
     optional: true
-  parent: *id011
+    synonyms:
+    - -t
+    - --target
+    description: Target column to predict in sequence prediction
+    args: !SimpleFlagArg
+      name: TARGET
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Output trained model file path
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --log
+    description: Progress log output path (e.g. TensorBoard)
+    args: !SimpleFlagArg
+      name: LOG
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --classes
+    description: Class TSV file path - train a sequence classifier using provided
+      classes (binary columns), indexed by sequence_id column
+    args: !SimpleFlagArg
+      name: CLASSES
+  - !Flag
+    optional: true
+    synonyms:
+    - --config
+    description: "CONFIG\nVariables in model JSON file to replace (e.g. --config PFAM2VEC\
+      \ path/to/pfam2vec.csv)"
+    args: !SimpleFlagArg
+      name: CONFIG
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --validation
+    description: Validation sequence file path. Repeat to specify multiple files
+    args: !SimpleFlagArg
+      name: VALIDATION
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: 'Verbosity level: 0=none, 1=progress bar, 2=once per epoch (default:
+      2)'
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: "show this help message and exit\n--debug\n-m MODEL, --model MODEL\n\
-      Path to JSON model config file\n-t TARGET, --target TARGET\nTarget column to\
-      \ predict in sequence prediction\n-o OUTPUT, --output OUTPUT\nOutput trained\
-      \ model file path\n-l LOG, --log LOG     Progress log output path (e.g. TensorBoard)\n\
-      -c CLASSES, --classes CLASSES\nClass TSV file path - train a sequence classifier\
-      \ using provided classes (binary columns), indexed by sequence_id column\n--config\
-      \ CONFIG CONFIG\nVariables in model JSON file to replace (e.g. --config PFAM2VEC\
-      \ path/to/pfam2vec.csv)\n-v VALIDATION, --validation VALIDATION\nValidation\
-      \ sequence file path. Repeat to specify multiple files\n--verbose INT      \
-      \   Verbosity level: 0=none, 1=progress bar, 2=once per epoch (default: 2)\n"
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: deepbgc train [-h] [--debug] -m MODEL [-t TARGET] -o OUTPUT [-l\
@@ -2136,146 +2707,164 @@ subcommands:
     \ files\n  --verbose INT         Verbosity level: 0=none, 1=progress bar, 2=once\
     \ per epoch (default: 2)\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: Input sequence file path (FASTA, GenBank, Pfam CSV)
+    optional: false
     position: 0
     name: inputs
-    optional: false
+    description: Input sequence file path (FASTA, GenBank, Pfam CSV)
   named:
   - !Flag
-    description: Trained detection model name (run "deepbgc download" to download
-      models) or path to trained model pickle file. Can be provided multiple times
-      (-d first -d second)
+    optional: true
+    synonyms:
+    - --debug
+    - -o
+    - --output
+    description: Custom output directory path
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --limit-to-record
+    description: Process only specific record ID. Can be provided multiple times
+    args: !SimpleFlagArg
+      name: LIMIT_TO_RECORD
+  - !Flag
+    optional: true
+    synonyms:
+    - --minimal-output
+    description: Produce minimal output with just the GenBank sequence file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --prodigal-meta-mode
+    description: Run Prodigal in '-p meta' mode to enable detecting genes in short
+      contigs
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --protein
+    description: Accept amino-acid protein sequences as input (experimental). Will
+      treat each file as a single record with multiple proteins.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
     synonyms:
     - -d
     - --detector
+    description: Trained detection model name (run "deepbgc download" to download
+      models) or path to trained model pickle file. Can be provided multiple times
+      (-d first -d second)
     args: !SimpleFlagArg
       name: DETECTORS
-    optional: true
   - !Flag
-    description: Disable BGC detection
+    optional: true
     synonyms:
     - --no-detector
+    description: Disable BGC detection
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Label for detected clusters (equal to --detector by default). If
-      multiple detectors are provided, a label should be provided for each one
+    optional: true
     synonyms:
     - -l
     - --label
+    description: Label for detected clusters (equal to --detector by default). If
+      multiple detectors are provided, a label should be provided for each one
     args: !SimpleFlagArg
       name: LABELS
-    optional: true
   - !Flag
-    description: 'Average protein-wise DeepBGC score threshold for extracting BGC
-      regions from Pfam sequences (default: 0.5)'
+    optional: true
     synonyms:
     - -s
     - --score
+    description: 'Average protein-wise DeepBGC score threshold for extracting BGC
+      regions from Pfam sequences (default: 0.5)'
     args: !SimpleFlagArg
       name: SCORE
-    optional: true
   - !Flag
-    description: 'Merge detected BGCs within given number of proteins (default: 0)'
+    optional: true
     synonyms:
     - --merge-max-protein-gap
+    description: 'Merge detected BGCs within given number of proteins (default: 0)'
     args: !SimpleFlagArg
       name: MERGE_MAX_PROTEIN_GAP
-    optional: true
   - !Flag
-    description: 'Merge detected BGCs within given number of nucleotides (default:
-      0)'
+    optional: true
     synonyms:
     - --merge-max-nucl-gap
+    description: 'Merge detected BGCs within given number of nucleotides (default:
+      0)'
     args: !SimpleFlagArg
       name: MERGE_MAX_NUCL_GAP
-    optional: true
   - !Flag
-    description: 'Minimum BGC nucleotide length (default: 1)'
+    optional: true
     synonyms:
     - --min-nucl
+    description: 'Minimum BGC nucleotide length (default: 1)'
     args: !SimpleFlagArg
       name: MIN_NUCL
-    optional: true
   - !Flag
-    description: 'Minimum number of proteins in a BGC (default: 1)'
+    optional: true
     synonyms:
     - --min-proteins
+    description: 'Minimum number of proteins in a BGC (default: 1)'
     args: !SimpleFlagArg
       name: MIN_PROTEINS
-    optional: true
   - !Flag
-    description: 'Minimum number of protein domains in a BGC (default: 1)'
+    optional: true
     synonyms:
     - --min-domains
+    description: 'Minimum number of protein domains in a BGC (default: 1)'
     args: !SimpleFlagArg
       name: MIN_DOMAINS
-    optional: true
   - !Flag
-    description: 'Minimum number of known biosynthetic (as defined by antiSMASH) protein
-      domains in a BGC (default: 0)'
+    optional: true
     synonyms:
     - --min-bio-domains
+    description: 'Minimum number of known biosynthetic (as defined by antiSMASH) protein
+      domains in a BGC (default: 0)'
     args: !SimpleFlagArg
       name: MIN_BIO_DOMAINS
-    optional: true
   - !Flag
-    description: Trained classification model name (run "deepbgc download" to download
-      models) or path to trained model pickle file. Can be provided multiple times
-      (-c first -c second)
+    optional: true
     synonyms:
     - -c
     - --classifier
+    description: Trained classification model name (run "deepbgc download" to download
+      models) or path to trained model pickle file. Can be provided multiple times
+      (-c first -c second)
     args: !SimpleFlagArg
       name: CLASSIFIERS
-    optional: true
   - !Flag
-    description: Disable BGC classification
+    optional: true
     synonyms:
     - --no-classifier
+    description: Disable BGC classification
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "DeepBGC classification score threshold for assigning classes to\
-      \ BGCs (default: 0.5)\n"
+    optional: true
     synonyms:
     - --classifier-score
+    description: "DeepBGC classification score threshold for assigning classes to\
+      \ BGCs (default: 0.5)\n"
     args: !SimpleFlagArg
       name: CLASSIFIER_SCORE
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -o
-    args: !SimpleFlagArg
-      name: OUTPUT
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - --debug
-    args: !EmptyFlagArg {}
-    optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: "show this help message and exit\n--debug\n-o OUTPUT, --output OUTPUT\n\
-      Custom output directory path\n--limit-to-record LIMIT_TO_RECORD\nProcess only\
-      \ specific record ID. Can be provided multiple times\n--minimal-output     \
-      \ Produce minimal output with just the GenBank sequence file\n--prodigal-meta-mode\
-      \  Run Prodigal in '-p meta' mode to enable detecting genes in short contigs\n\
-      --protein             Accept amino-acid protein sequences as input (experimental).\
-      \ Will treat each file as a single record with multiple proteins."
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: deepbgc pipeline [-h] [--debug] [-o OUTPUT]\n               \
@@ -2330,67 +2919,62 @@ subcommands:
     \                 DeepBGC classification score threshold for assigning classes\
     \ to BGCs (default: 0.5)\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional:
   - !Positional
-    description: Input sequence file path(s) (FASTA/GenBank)
+    optional: false
     position: 0
     name: inputs
-    optional: false
+    description: Input sequence file path(s) (FASTA/GenBank)
   named:
   - !Flag
-    description: Run Prodigal in '-p meta' mode to enable detecting genes in short
-      contigs
-    synonyms:
-    - --prodigal-meta-mode
-    args: !EmptyFlagArg {}
     optional: true
-  - !Flag
-    description: Accept amino-acid protein sequences as input (experimental). Will
-      treat each file as a single record with multiple proteins.
-    synonyms:
-    - --protein
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: Output GenBank file path
-    synonyms:
-    - --output-gbk
-    args: !SimpleFlagArg
-      name: OUTPUT_GBK
-    optional: true
-  - !Flag
-    description: "Output TSV file path\n"
-    synonyms:
-    - --output-tsv
-    args: !SimpleFlagArg
-      name: OUTPUT_TSV
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - --limit-to-record
-    args: !SimpleFlagArg
-      name: LIMIT_TO_RECORD
-    optional: true
-  - !Flag
-    description: ''
     synonyms:
     - --debug
-    args: !EmptyFlagArg {}
+    - --limit-to-record
+    description: Process only specific record ID. Can be provided multiple times
+    args: !SimpleFlagArg
+      name: LIMIT_TO_RECORD
+  - !Flag
     optional: true
-  parent: *id011
+    synonyms:
+    - --prodigal-meta-mode
+    description: Run Prodigal in '-p meta' mode to enable detecting genes in short
+      contigs
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --protein
+    description: Accept amino-acid protein sequences as input (experimental). Will
+      treat each file as a single record with multiple proteins.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-gbk
+    description: Output GenBank file path
+    args: !SimpleFlagArg
+      name: OUTPUT_GBK
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-tsv
+    description: "Output TSV file path\n"
+    args: !SimpleFlagArg
+      name: OUTPUT_TSV
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: "show this help message and exit\n--debug\n--limit-to-record LIMIT_TO_RECORD\n\
-      Process only specific record ID. Can be provided multiple times"
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: deepbgc prepare [-h] [--debug] [--limit-to-record LIMIT_TO_RECORD]\n\
@@ -2411,26 +2995,27 @@ subcommands:
     \                        Output GenBank file path\n  --output-tsv OUTPUT_TSV\n\
     \                        Output TSV file path\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id008
   positional: []
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - --debug
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: "show this help message and exit\n--debug\n"
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: deepbgc download [-h] [--debug]\n\n    Download trained models\
@@ -2440,6 +3025,7 @@ subcommands:
     \n    \n\noptional arguments:\n  -h, --help  show this help message and exit\n\
     \  --debug\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -2479,3 +3065,4 @@ help_text: "usage: deepbgc [-h] COMMAND ...\n\nDeepBGC - Biosynthetic Gene Clust
   \                \n    info      Show DeepBGC summary information about downloaded\
   \ models and dependencies.\n"
 generated_using: *id004
+docker_image:

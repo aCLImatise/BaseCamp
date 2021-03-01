@@ -72,6 +72,9 @@ task Cathrefinealign {
       ~{if (scores_to_equivs) then "--scores-to-equivs" else ""} \
       ~{if (normalise_scores) then "--normalise-scores" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_version_information: "[ --version ]                   Output version information"
     res_name_align: "Align residues by simply matching their names (numbers+insert)\\n(for multiple models of the same structure)"

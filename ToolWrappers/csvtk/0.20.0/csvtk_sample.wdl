@@ -38,6 +38,9 @@ task CsvtkSample {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     line_number: "print line number as the first column (\\\"n\\\")"
     proportion: "sample by proportion"

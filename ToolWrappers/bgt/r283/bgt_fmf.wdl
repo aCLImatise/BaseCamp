@@ -18,6 +18,9 @@ task BgtFmf {
       ~{if (only_output_name) then "-n" else ""} \
       ~{if (mn) then "-mn" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     load_entire_fmf: "load the entire FMF into RAM"
     only_output_name: "only output the row name (the 1st column)"

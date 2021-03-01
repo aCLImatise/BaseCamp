@@ -3,87 +3,87 @@ id: jaotc.cwl
 inputs:
 - id: in_output
   doc: Output file name
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_class_name
   doc: List of classes to compile
-  type: string
+  type: string?
   inputBinding:
     prefix: --class-name
 - id: in_jar
   doc: List of jar files to compile
-  type: string
+  type: string?
   inputBinding:
     prefix: --jar
 - id: in_module
   doc: List of modules to compile
-  type: string
+  type: string?
   inputBinding:
     prefix: --module
 - id: in_directory
   doc: List of directories where to search for files to compile
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --directory
 - id: in_search_path
   doc: List of directories where to search for specified files
-  type: File
+  type: File?
   inputBinding:
     prefix: --search-path
 - id: in_compile_commands
   doc: Name of file with compile commands
-  type: File
+  type: File?
   inputBinding:
     prefix: --compile-commands
 - id: in_compile_for_tiered
   doc: Generate profiling code for tiered compilation
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --compile-for-tiered
 - id: in_compile_with_assertions
   doc: Compile with java assertions
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --compile-with-assertions
 - id: in_compile_threads
   doc: Number of compilation threads to be used
-  type: long
+  type: long?
   inputBinding:
     prefix: --compile-threads
 - id: in_ignore_errors
   doc: Ignores all exceptions thrown during class loading
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ignore-errors
 - id: in_exit_on_error
   doc: Exit on compilation errors
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --exit-on-error
 - id: in_info
   doc: Print information during compilation
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --info
 - id: in_verbose
   doc: Print verbose information
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_debug
   doc: Print debug information
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_linker_path
   doc: Full path to linker executable
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --linker-path
 - id: in_flag_pass_flag
   doc: <flag>                   Pass <flag> directly to the runtime system
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -J
 - id: in_list
@@ -98,9 +98,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output file name
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - jaotc

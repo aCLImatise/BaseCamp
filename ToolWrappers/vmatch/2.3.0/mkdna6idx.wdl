@@ -8,6 +8,9 @@ task Mkdna6idx {
     mkdna6idx \
       ~{index_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index_name: ""
   }

@@ -12,6 +12,9 @@ task Bg2bw {
       ~{if (outfile) then "--outfile" else ""} \
       ~{if (chrom_list) then "--chromList" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     am_file: "[file]           Path to the input [b|cr]am file."
     outfile: "[file]         Path to the output .bw file produced. [default:'output.bw']"

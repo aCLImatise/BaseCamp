@@ -88,6 +88,9 @@ task Daameganizer {
       ~{if (accession_tags) then "--accessionTags" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metadata_file: "[string(s)]     Files containing metadata to be included in files."
     paired_suffix_length: "[number]   Length of name suffix used to distinguish between name of read and its mate. Default value: 0."

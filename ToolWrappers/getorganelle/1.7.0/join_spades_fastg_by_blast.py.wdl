@@ -2,7 +2,7 @@ version 1.0
 
 task JoinSpadesFastgByBlastpy {
   input {
-    File? followed_input_fastg
+    File? followed_your_input
     String? followed_fasta_index
     Boolean? keep_temp
     Float? bt
@@ -13,7 +13,7 @@ task JoinSpadesFastgByBlastpy {
   }
   command <<<
     join_spades_fastg_by_blast_py \
-      ~{if defined(followed_input_fastg) then ("-g " +  '"' + followed_input_fastg + '"') else ""} \
+      ~{if defined(followed_your_input) then ("-g " +  '"' + followed_your_input + '"') else ""} \
       ~{if defined(followed_fasta_index) then ("-f " +  '"' + followed_fasta_index + '"') else ""} \
       ~{if (keep_temp) then "--keep-temp" else ""} \
       ~{if defined(bt) then ("--bt " +  '"' + bt + '"') else ""} \
@@ -22,8 +22,11 @@ task JoinSpadesFastgByBlastpy {
       ~{if defined(depth) then ("--depth " +  '"' + depth + '"') else ""} \
       ~{if defined(which_blast) then ("--which-blast " +  '"' + which_blast + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    followed_input_fastg: "followed by your input fastg file"
+    followed_your_input: "followed by your input fastg file"
     followed_fasta_index: "followed by Fasta index format"
     keep_temp: "Choose to disable deleting temp files produced by\\nblast and this script"
     bt: "Default: 0.60"

@@ -5,7 +5,7 @@ task Jq {
     Boolean? compact_instead_prettyprinted
     Boolean? use_null_single
     Boolean? set_status_code
-    Boolean? read_slurp_inputs
+    Boolean? slurp_inputs_apply
     Boolean? output_raw_strings
     Boolean? read_raw_strings
     Boolean? colorize_json
@@ -25,7 +25,7 @@ task Jq {
       ~{if (compact_instead_prettyprinted) then "-c" else ""} \
       ~{if (use_null_single) then "-n" else ""} \
       ~{if (set_status_code) then "-e" else ""} \
-      ~{if (read_slurp_inputs) then "-s" else ""} \
+      ~{if (slurp_inputs_apply) then "-s" else ""} \
       ~{if (output_raw_strings) then "-r" else ""} \
       ~{if (read_raw_strings) then "-R" else ""} \
       ~{if (colorize_json) then "-C" else ""} \
@@ -36,11 +36,14 @@ task Jq {
       ~{if defined(arg_json) then ("--argjson " +  '"' + arg_json + '"') else ""} \
       ~{if defined(slurp_file) then ("--slurpfile " +  '"' + slurp_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compact_instead_prettyprinted: "compact instead of pretty-printed output;"
     use_null_single: "use `null` as the single input value;"
     set_status_code: "set the exit status code based on the output;"
-    read_slurp_inputs: "read (slurp) all inputs into an array; apply filter to it;"
+    slurp_inputs_apply: "read (slurp) all inputs into an array; apply filter to it;"
     output_raw_strings: "output raw strings, not JSON texts;"
     read_raw_strings: "read raw strings, not JSON texts;"
     colorize_json: "colorize JSON;"

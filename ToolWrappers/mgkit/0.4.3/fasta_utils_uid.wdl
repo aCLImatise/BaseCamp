@@ -2,7 +2,7 @@ version 1.0
 
 task FastautilsUid {
   input {
-    Boolean? verbose
+    File? verbose
     String? fast_a_file
     String? output_file
   }
@@ -10,10 +10,13 @@ task FastautilsUid {
     fasta_utils uid \
       ~{fast_a_file} \
       ~{output_file} \
-      ~{if (verbose) then "--verbose" else ""}
+      ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    verbose: "-t, --table FILENAME  Filename of a table to record the changes (by default\\ndiscards it)\\n--help                Show this message and exit.\\n"
+    verbose: "Filename of a table to record the changes (by default\\ndiscards it)"
     fast_a_file: ""
     output_file: ""
   }

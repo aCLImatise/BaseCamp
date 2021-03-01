@@ -8,6 +8,9 @@ task Downloaddfampy {
     download_dfam_py \
       ~{if defined(give_output_destination) then ("--output " +  '"' + give_output_destination + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     give_output_destination: "Give an output destination /home/user/Dfam.hmm.gz"
   }

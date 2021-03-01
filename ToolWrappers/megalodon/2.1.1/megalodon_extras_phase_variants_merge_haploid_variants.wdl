@@ -16,6 +16,9 @@ task MegalodonExtrasPhaseVariantsMergeHaploidVariants {
       ~{merged_haploid_variants_dot_vcf} \
       ~{if defined(out_vcf) then ("--out-vcf " +  '"' + out_vcf + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_vcf: "Output name for VCF. Default:"
     diploid_called_variants: "Phased variants from which the diploid calls are"

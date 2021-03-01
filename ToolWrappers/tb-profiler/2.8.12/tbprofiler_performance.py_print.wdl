@@ -8,6 +8,9 @@ task TbprofilerPerformancepyPrint {
     tbprofiler_performance_py print \
       ~{if defined(drugs) then ("--drugs " +  '"' + drugs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     drugs: "NGS Platform (default: None)\\n"
   }

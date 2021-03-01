@@ -22,6 +22,9 @@ task MendelscanRhro {
       ~{if (inheritance) then "--inheritance" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ped_file: "Pedigree file in 6-column tab-delimited format"
     centromere_file: "A tab-delimited, BED-like file indicating centromere locations by chromosome    --output-file   Output file to contain informative variants"

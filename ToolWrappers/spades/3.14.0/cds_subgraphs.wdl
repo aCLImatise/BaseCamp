@@ -22,6 +22,9 @@ task Cdssubgraphs {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_folder: "output folder to use for GFA files"
     part_desc: "file with partial genes description (.gff)"

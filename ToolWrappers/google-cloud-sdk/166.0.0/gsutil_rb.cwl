@@ -5,7 +5,7 @@ inputs:
   doc: "Continues silently (without printing error messages) despite\nerrors when\
     \ removing buckets. If some buckets couldn't be removed,\ngsutil's exit status\
     \ will be non-zero even if this flag is set.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_the_mdot
@@ -17,6 +17,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gsutil

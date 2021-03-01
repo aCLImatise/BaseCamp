@@ -38,6 +38,9 @@ task PredictMetagenomespy {
       ~{if defined(input_otu_table) then ("--input_otu_table " +  '"' + input_otu_table + '"') else ""} \
       ~{if defined(output_meta_genome_table) then ("--output_metagenome_table " +  '"' + output_meta_genome_table + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     type_of_prediction: "Type of functional predictions. Valid choices are: ko,\\ncog, rfam [default: ko]"

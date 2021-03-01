@@ -1,0 +1,135 @@
+!Command
+command:
+- hicTransform
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  - -m
+  description: "input file. The computation is done per chromosome.\n(default: None)"
+  args: !SimpleFlagArg
+    name: MATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: 'File name to save the exported matrix. (default: None)'
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --method
+  - -me
+  description: "Transformation methods to use for input matrix.\nTransformation is\
+    \ computed per chromosome.obs_exp\ncomputes the expected matrix as the sum per\
+    \ genomic\ndistance j divided by maximal possible contacts:\nsum(diagonal(j) /\
+    \ number of elements in diagonal(j)\nobs_exp_lieberman computes the expected matrix\
+    \ as the\nsum per genomic distance j divided by the :\nsum(diagonal(j) / (length\
+    \ of chromosome -\nj))obs_exp_non_zero computes the expected matrix as\nthe sum\
+    \ per genomic distance j divided by sum of non-\nzero contacts: sum(diagonal(j)\
+    \ / number of non-zero\nelements in diagonal(j)Optionally,\n``--ligation_factor`\
+    \ can be used for this method as\nhas been used by HOMER software. If --ligation_factor,\n\
+    then exp_i,j = exp_i,j * sum(row(i)) * sum(row(j)) /\nsum(matrix)pearson computes\
+    \ the Pearson correlation of\nthe input matrix: Pearson_i,j = C_i,j / sqrt(C_i,i\
+    \ *\nC_j,j) and C is the covariance matrixcovariance\ncomputes the Covariance\
+    \ of the input matrix: Cov_i,j =\nE[M_i, M_j] - my_i * my_j where M is the input\
+    \ matrix\nand my the mean (Default: obs_exp)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      pearson:
+      covariance:
+      obs_exp_lieberman:
+      obs_exp_non_zero:
+      obs_exp:
+- !Flag
+  optional: true
+  synonyms:
+  - --ligation_factor
+  description: "Setting this flag, multiplies a scaling factor to each\nentry of the\
+    \ expected matrix to take care of the\nproximity ligation as has been explained\
+    \ in Homer\nsoftware. This flag is only affective with\nobs_exp_non_zero method\
+    \ and will be ignored if any\nother obs/exp method is chosen. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosomes
+  description: "List of chromosomes to be included in the computation.\n(default:\
+    \ None)"
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+- !Flag
+  optional: true
+  synonyms:
+  - --perChromosome
+  - -pc
+  description: "Each chromosome is processed individually, inter-\nchromosomal interactions\
+    \ are ignored. Option not valid\nfor obs_exp_lieberman. (default: False)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Show this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicTransform --matrix MATRIX --outFileName OUTFILENAME\n      \
+  \              [--method {obs_exp,obs_exp_lieberman,obs_exp_non_zero,pearson,covariance}]\n\
+  \                    [--ligation_factor]\n                    [--chromosomes CHROMOSOMES\
+  \ [CHROMOSOMES ...]]\n                    [--perChromosome] [--help] [--version]\n\
+  \nConverts the (interaction) matrix to different types of obs/exp, pearson or\n\
+  covariance matrix.\n\nRequired arguments:\n  --matrix MATRIX, -m MATRIX\n      \
+  \                  input file. The computation is done per chromosome.\n       \
+  \                 (default: None)\n  --outFileName OUTFILENAME, -o OUTFILENAME\n\
+  \                        File name to save the exported matrix. (default: None)\n\
+  \nOptional arguments:\n  --method {obs_exp,obs_exp_lieberman,obs_exp_non_zero,pearson,covariance},\
+  \ -me {obs_exp,obs_exp_lieberman,obs_exp_non_zero,pearson,covariance}\n        \
+  \                Transformation methods to use for input matrix.\n             \
+  \           Transformation is computed per chromosome.obs_exp\n                \
+  \        computes the expected matrix as the sum per genomic\n                 \
+  \       distance j divided by maximal possible contacts:\n                     \
+  \   sum(diagonal(j) / number of elements in diagonal(j)\n                      \
+  \  obs_exp_lieberman computes the expected matrix as the\n                     \
+  \   sum per genomic distance j divided by the :\n                        sum(diagonal(j)\
+  \ / (length of chromosome -\n                        j))obs_exp_non_zero computes\
+  \ the expected matrix as\n                        the sum per genomic distance j\
+  \ divided by sum of non-\n                        zero contacts: sum(diagonal(j)\
+  \ / number of non-zero\n                        elements in diagonal(j)Optionally,\n\
+  \                        ``--ligation_factor` can be used for this method as\n \
+  \                       has been used by HOMER software. If --ligation_factor,\n\
+  \                        then exp_i,j = exp_i,j * sum(row(i)) * sum(row(j)) /\n\
+  \                        sum(matrix)pearson computes the Pearson correlation of\n\
+  \                        the input matrix: Pearson_i,j = C_i,j / sqrt(C_i,i *\n\
+  \                        C_j,j) and C is the covariance matrixcovariance\n     \
+  \                   computes the Covariance of the input matrix: Cov_i,j =\n   \
+  \                     E[M_i, M_j] - my_i * my_j where M is the input matrix\n  \
+  \                      and my the mean (Default: obs_exp).\n  --ligation_factor\
+  \     Setting this flag, multiplies a scaling factor to each\n                 \
+  \       entry of the expected matrix to take care of the\n                     \
+  \   proximity ligation as has been explained in Homer\n                        software.\
+  \ This flag is only affective with\n                        obs_exp_non_zero method\
+  \ and will be ignored if any\n                        other obs/exp method is chosen.\
+  \ (default: False)\n  --chromosomes CHROMOSOMES [CHROMOSOMES ...]\n            \
+  \            List of chromosomes to be included in the computation.\n          \
+  \              (default: None)\n  --perChromosome, -pc  Each chromosome is processed\
+  \ individually, inter-\n                        chromosomal interactions are ignored.\
+  \ Option not valid\n                        for obs_exp_lieberman. (default: False)\n\
+  \  --help, -h            Show this help message and exit.\n  --version         \
+  \    show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

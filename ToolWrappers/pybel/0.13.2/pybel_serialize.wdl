@@ -20,6 +20,9 @@ task PybelSerialize {
       ~{if defined(json) then ("--json " +  '"' + json + '"') else ""} \
       ~{if defined(bel) then ("--bel " +  '"' + bel + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     csv: "Path to output a CSV file."
     s_if: "Path to output an SIF file."

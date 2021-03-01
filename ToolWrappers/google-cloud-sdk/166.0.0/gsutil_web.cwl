@@ -4,13 +4,13 @@ inputs:
 - id: in_specifies_object_name
   doc: "Specifies the object name to serve when a bucket\nlisting is requested via\
     \ the CNAME alias to\nc.storage.googleapis.com."
-  type: string
+  type: string?
   inputBinding:
     prefix: -m
 - id: in_specifies_error_page
   doc: "Specifies the error page to serve when a request is made\nfor a non-existent\
     \ object via the CNAME alias to\nc.storage.googleapis.com."
-  type: long
+  type: long?
   inputBinding:
     prefix: -e
 - id: in_page_dot
@@ -22,6 +22,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gsutil

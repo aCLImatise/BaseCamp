@@ -14,6 +14,9 @@ task Mobster {
       ~{if (out) then "-out" else ""} \
       ~{if (sn) then "-sn" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     properties: "[properties]"
     in: "[input .bam file]. This value will override corresponding value in properties file. Multiple BAM files may be specified if seperated by a comma"

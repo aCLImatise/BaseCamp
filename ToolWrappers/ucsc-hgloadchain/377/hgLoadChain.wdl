@@ -26,6 +26,9 @@ task HgLoadChain {
       ~{if defined(q_prefix) then ("-qPrefix " +  '"' + q_prefix + '"') else ""} \
       ~{if (test) then "-test" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t_index: "Include tName in indexes (for non-split chain tables)"
     no_bin: "suppress bin field, default: bin field is added"

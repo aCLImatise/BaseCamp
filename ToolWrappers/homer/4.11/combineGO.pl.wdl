@@ -18,6 +18,9 @@ task CombineGOpl {
       ~{if (ratio) then "-ratio" else ""} \
       ~{if (pseudo_fraction) then "-pseudoFraction" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename_join_values: "(Filename to join enrichment values from)"
     findmotifspl_output_directories: "[directory2] ... (findMotifs.pl output directories to join)"

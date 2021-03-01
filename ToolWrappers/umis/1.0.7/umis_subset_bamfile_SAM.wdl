@@ -8,6 +8,9 @@ task UmisSubsetBamfileSAM {
     umis subset_bamfile SAM \
       ~{barcodes}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     barcodes: "Options:"
   }

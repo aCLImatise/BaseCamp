@@ -42,7 +42,7 @@ task Z {
     Boolean? set_type_archive
     Boolean? _update_options
     Boolean? _create_volumes
-    Boolean? assign_work_directory
+    Boolean? assign_path_means
     Boolean? _exclude_filenames
     Boolean? _assume_queries
     String var_command
@@ -96,10 +96,13 @@ task Z {
       ~{if (set_type_archive) then "-t" else ""} \
       ~{if (_update_options) then "-u" else ""} \
       ~{if (_create_volumes) then "-v" else ""} \
-      ~{if (assign_work_directory) then "-w" else ""} \
+      ~{if (assign_path_means) then "-w" else ""} \
       ~{if (_exclude_filenames) then "-x" else ""} \
       ~{if (_assume_queries) then "-y" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_i: "[r[-|0]]{@listfile|!wildcard} : Include archives"
     a_x: "[r[-|0]]{@listfile|!wildcard} : eXclude archives"
@@ -141,7 +144,7 @@ task Z {
     set_type_archive: "{Type} : Set type of archive"
     _update_options: "[-][p#][q#][r#][x#][y#][z#][!newArchiveName] : Update options"
     _create_volumes: "{Size}[b|k|m|g] : Create volumes"
-    assign_work_directory: "[{path}] : assign Work directory. Empty path means a temporary directory"
+    assign_path_means: "[{path}] : assign Work directory. Empty path means a temporary directory"
     _exclude_filenames: "[r[-|0]]]{@listfile|!wildcard} : eXclude filenames"
     _assume_queries: ": assume Yes on all queries"
     var_command: ""

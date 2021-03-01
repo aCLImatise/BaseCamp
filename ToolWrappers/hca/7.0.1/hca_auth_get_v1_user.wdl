@@ -8,6 +8,9 @@ task HcaAuthGetv1user {
     hca auth get_v1_user \
       ~{if defined(user_id) then ("--user-id " +  '"' + user_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     user_id: "User ID (email)."
   }

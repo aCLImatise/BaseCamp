@@ -10,6 +10,9 @@ task CentAdjust {
       ~{input_center} \
       ~{input_data_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_center: ""
     input_data_file: ""

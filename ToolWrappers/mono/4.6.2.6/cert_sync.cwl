@@ -3,12 +3,12 @@ id: cert_sync.cwl
 inputs:
 - id: in_user
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --user
 - id: in_quiet
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_system_ca_bundle_dot_crt
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cert-sync

@@ -46,6 +46,9 @@ task AssayGeneratorMetabo {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     executable: "SIRIUS executable e.g. sirius"
     in: "<file(s)>*                                       MzML input file(s) used for assay library generation (valid formats: 'mzML')"

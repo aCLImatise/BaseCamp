@@ -4,6 +4,9 @@ task Dbicadmin {
   command <<<
     dbicadmin
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -32,6 +32,9 @@ task ScanpycliPca {
       ~{if (chunked) then "--chunked" else ""} \
       ~{if defined(chunk_size) then ("--chunk-size " +  '"' + chunk_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_format: "[anndata|loom]\\nInput object format.  [default: anndata]"
     output_format: "[anndata|loom|zarr]\\nOutput object format.  [default: anndata]"

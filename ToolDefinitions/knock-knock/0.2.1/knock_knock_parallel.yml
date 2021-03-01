@@ -4,45 +4,43 @@ command:
 - parallel
 positional:
 - !Positional
-  description: "the base directory to store input data, reference\nannotations, and\
-    \ analysis output for a project"
+  optional: false
   position: 0
   name: project_directory
-  optional: false
+  description: "the base directory to store input data, reference\nannotations, and\
+    \ analysis output for a project"
 - !Positional
-  description: maximum number of samples to process at once
+  optional: false
   position: 1
   name: max_procs
-  optional: false
+  description: maximum number of samples to process at once
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --conditions
-  args: !SimpleFlagArg
-    name: CONDITIONS
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - --group
+  description: "if specified, the single group name to process; if not\nspecified,\
+    \ all groups will be processed"
   args: !SimpleFlagArg
     name: GROUP
+- !Flag
   optional: true
+  synonyms:
+  - --conditions
+  description: "if specified, conditions that samples must satisfy to\nbe processed,\
+    \ given as yaml; if not specified, all\nsamples will be processed"
+  args: !SimpleFlagArg
+    name: CONDITIONS
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--group GROUP         if specified,\
-    \ the single group name to process; if not\nspecified, all groups will be processed\n\
-    --conditions CONDITIONS\nif specified, conditions that samples must satisfy to\n\
-    be processed, given as yaml; if not specified, all\nsamples will be processed\n\
-    --stages STAGES\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: knock-knock parallel [-h] [--group GROUP] [--conditions CONDITIONS]\n\
@@ -58,3 +56,4 @@ help_text: "usage: knock-knock parallel [-h] [--group GROUP] [--conditions CONDI
   \ all\n                        samples will be processed\n  --stages STAGES\n"
 generated_using:
 - --help
+docker_image:

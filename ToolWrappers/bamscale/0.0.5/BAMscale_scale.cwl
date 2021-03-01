@@ -3,29 +3,29 @@ id: BAMscale_scale.cwl
 inputs:
 - id: in_bam
   doc: Input BAM file. This has to be specified at least two times.
-  type: File
+  type: File?
   inputBinding:
     prefix: --bam
 - id: in_lib_type
   doc: 'Sequencing type to be used. Can be: single, paired, and auto (default: autodetect)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --libtype
 - id: in_frag
   doc: 'Compute coverage using fragments instead of reads (default: no)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --frag
 - id: in_frag_size
   doc: Fragment size to be used to extend single-end library reads
-  type: long
+  type: long?
   inputBinding:
     prefix: --fragsize
 - id: in_norm_type
   doc: "Type of normalization. (default: base)\nIf no normalization is needed, set\
     \ '--scale no' argument, the program will disregard this option.\nOptions:\n1)\
     \ reads: No. of mapped reads/fragments\n2) base: Sum of per-base coverage of reads/fragments"
-  type: long
+  type: long?
   inputBinding:
     prefix: --normtype
 - id: in_method_scale_samples
@@ -34,14 +34,14 @@ inputs:
     \ (multiple-samples only)\n3) genome: scale samples to 1x genome coverage (only\
     \ possible with 'base' normalization type)\n4) custom: scale to custom scaling\
     \ factor (--factor or -F <float> has to be supplied)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --scale
 - id: in_factor
   doc: "Scaling factor(s) when \"--scale custom\" normalization is selected.\nIf multiple\
     \ samples are specified, scaling factors should be comma (\",\") delimited.\n\
     example in case of three input BAM files: 0.643,0.45667,1.3."
-  type: double
+  type: double?
   inputBinding:
     prefix: --factor
 - id: in_operation
@@ -66,17 +66,17 @@ inputs:
     \ strand\nstrandrnaR: stranded coverage of RNA-seq, useful for accurate coverages\
     \ at exon-intron boundaries,\ncreating separate tracks for forward and reverse\
     \ strand, reverse strand is negated"
-  type: File
+  type: File?
   inputBinding:
     prefix: --operation
 - id: in_output_strandspecific_normalized
   doc: Output strand-specific normalized tracks. One BAM file can be specified only
-  type: File
+  type: File?
   inputBinding:
     prefix: -S
 - id: in_binsize
   doc: 'Size of bins for output bigWig/bedgraph generation (default: 5)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --binsize
 - id: in_seq_cov
@@ -84,18 +84,18 @@ inputs:
     \ parsing BAM)\nOptions are:\n1) 0: use reads in index (only if normalization\
     \ is set to 'reads')\n2) 1: count reads while parsing BAM(s)\nWARNING: this option\
     \ is only useful when 'reads' are used for normalization"
-  type: long
+  type: long?
   inputBinding:
     prefix: --seqcov
 - id: in_blacklist
   doc: Input file with list of chromosomes to blacklist during scaling analysis
-  type: File
+  type: File?
   inputBinding:
     prefix: --blacklist
 - id: in_bed_subtract
   doc: "BED file with regions to subtract when computing coverage for normalization\n\
     These coordinates should not overlap so reads are not counted multiple times"
-  type: long
+  type: long?
   inputBinding:
     prefix: --bedsubtract
 - id: in_smoothen
@@ -103,7 +103,7 @@ inputs:
     \ bin (default: 0)\nIf set to '0', the signal is not smoothened. To turn on specify\
     \ a value greater than '0'.\nFor replication timing, a good value is to smoothen\
     \ to 100k bases. If binSize is 100bp, this would be '1000'"
-  type: long
+  type: long?
   inputBinding:
     prefix: --smoothen
 - id: in_track_smooth
@@ -111,57 +111,57 @@ inputs:
     \ meaning only binned track).\nOptions are:\n1) 0: Smoothen scaled and transformed\
     \ tracks (log2, ratio or subtracted)\n2) 1: Smoothen only the scaled sequencing\
     \ track\n3) 2: Smoothen only the transformed (log2, ratio or subtract) track"
-  type: long
+  type: long?
   inputBinding:
     prefix: --tracksmooth
 - id: in_mapq
   doc: 'Minimum (at least) mapping quality (default: 0)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --mapq
 - id: in_keep_dup
   doc: 'Keep duplicated reads (default: no)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --keepdup
 - id: in_no_proper
   doc: 'Do not filter un-proper alignments (default: filter)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --noproper
 - id: in_unmap_pair
   doc: Do not remove reads with unmapped pairs
-  type: string
+  type: string?
   inputBinding:
     prefix: --unmappair
 - id: in_min_frag
   doc: 'Minimum fragment size for read pairs (default: 0)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --minfrag
 - id: in_max_frag
   doc: 'Maximum fragment size for read pairs (default: 2000)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxfrag
 - id: in_frag_filt
   doc: 'Filter reads based on fragment size (default: no)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --fragfilt
 - id: in_diff_chr
   doc: 'Keep reads where read pair aligns to different chromosome (default: no)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --diffchr
 - id: in_outdir
   doc: "Output directory name (default: '.')"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_threads
   doc: 'No. of threads to use (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_var_25
@@ -195,19 +195,20 @@ outputs:
     \ strand\nstrandrnaR: stranded coverage of RNA-seq, useful for accurate coverages\
     \ at exon-intron boundaries,\ncreating separate tracks for forward and reverse\
     \ strand, reverse strand is negated"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_operation)
 - id: out_output_strandspecific_normalized
   doc: Output strand-specific normalized tracks. One BAM file can be specified only
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_strandspecific_normalized)
 - id: out_outdir
   doc: "Output directory name (default: '.')"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - BAMscale

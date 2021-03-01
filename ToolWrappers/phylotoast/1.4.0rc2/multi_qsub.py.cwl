@@ -3,7 +3,7 @@ id: multi_qsub.py.cwl
 inputs:
 - id: in_test
   doc: "Only print each of the qsub commands instead of actually\nrunning the commands.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --test
 - id: in_job_scripts
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - multi_qsub.py

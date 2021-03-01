@@ -12,13 +12,13 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: File to export the domain information (optional)
+    optional: true
     synonyms:
     - --file
+    description: File to export the domain information (optional)
     args: !SimpleFlagArg
       name: PATH
-    optional: true
-  parent: &id010 !Command
+  parent: &id011 !Command
     command: *id001
     positional: []
     named: []
@@ -29,13 +29,13 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: File to export the domain information (optional)
+        optional: true
         synonyms:
         - --file
+        description: File to export the domain information (optional)
         args: !SimpleFlagArg
           name: PATH
-        optional: true
-      parent: &id009 !Command
+      parent: &id010 !Command
         command: *id001
         positional: []
         named: []
@@ -46,13 +46,13 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: File to export the domain information (optional)
+            optional: true
             synonyms:
             - --file
+            description: File to export the domain information (optional)
             args: !SimpleFlagArg
               name: PATH
-            optional: true
-          parent: &id008 !Command
+          parent: &id009 !Command
             command: *id001
             positional: []
             named: []
@@ -63,13 +63,13 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: File to export the domain information (optional)
+                optional: true
                 synonyms:
                 - --file
+                description: File to export the domain information (optional)
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
-              parent: &id003 !Command
+              parent: &id008 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -80,143 +80,479 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: File to export the domain information (optional)
+                    optional: true
                     synonyms:
                     - --file
+                    description: File to export the domain information (optional)
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --file
+                        description: File to export the domain information (optional)
+                        args: !SimpleFlagArg
+                          name: PATH
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: ebisearch get_domains [OPTIONS]\n\n  Return\
+                        \ the list of domains in EBI\n\nOptions:\n  --file PATH  File\
+                        \ to export the domain information (optional)\n  --help  \
+                        \     Show this message and exit.\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - ebisearch
+                      - get_query_results
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: retrieve
+                        description: --facet_depth INTEGER           (Optional) Number
+                          of levels in the facet
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --domain
+                        description: "Domain id in EBI (accessible with\nget_domains)"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --query
+                        description: "Query (searchable fields accessible with\nget_fields\
+                          \ with searchable     as type)"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --field
+                        description: "(Multiple) Field to export (accessible with\n\
+                          get_fields with    retrievable as type)"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --order
+                        description: "[ascending|descending]  (Optional) Order to\
+                          \ sort the results\n(optional), should come along     with\n\
+                          \"sortfield\" and not allowed to use with\n\"sort\" parameters"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --sort_field
+                        description: "(Optional) Field to sort on (accessible via\n\
+                          get_fields with sortable     as option),\nshould come along\
+                          \ with \"sortfield\""
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --sort
+                        description: "(Optional, Multiple) Sorting criteria with\n\
+                          field_id:order (field_id     accessible with\nget_fields\
+                          \ with retrievable as type), should\nnot be used     in\
+                          \ conjunction with any of\n\"sortfield\" and \"order\" parameters"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --field_url
+                        description: Include the field links
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --view_url
+                        description: Include other view links
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --facets
+                        description: "(Optional, Multiple) Facet selections to\napply\
+                          \ on search results     with\nfacet_id:facet_value (facet_id\
+                          \ accessible\nwith get_fields with facet     as type)"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --facet_fields
+                        description: "(Optional, Multiple) Facet field identifiers\n\
+                          associated with facets     to retrieve\n(facet_id accessible\
+                          \ with get_fields with\nfacet as type)"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --facet_count
+                        description: (Optional) Number of facet values to
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --file
+                        description: (Optional) File to export the entry content
+                        args: !SimpleFlagArg
+                          name: PATH
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: ebisearch get_query_results [OPTIONS]\n\n\
+                        \  Return the all the results for a query on a specific domain\
+                        \ in EBI\n\nOptions:\n  --domain TEXT                   Domain\
+                        \ id in EBI (accessible with\n                           \
+                        \       get_domains)\n  --query TEXT                    Query\
+                        \ (searchable fields accessible with\n                   \
+                        \               get_fields with searchable     as type)\n\
+                        \  --field TEXT                    (Multiple) Field to export\
+                        \ (accessible with\n                                  get_fields\
+                        \ with    retrievable as type)\n  --order [ascending|descending]\
+                        \  (Optional) Order to sort the results\n                \
+                        \                  (optional), should come along     with\n\
+                        \                                  \"sortfield\" and not allowed\
+                        \ to use with\n                                  \"sort\"\
+                        \ parameters\n  --sort_field TEXT               (Optional)\
+                        \ Field to sort on (accessible via\n                     \
+                        \             get_fields with sortable     as option),\n \
+                        \                                 should come along with \"\
+                        sortfield\"\n  --sort TEXT                     (Optional,\
+                        \ Multiple) Sorting criteria with\n                      \
+                        \            field_id:order (field_id     accessible with\n\
+                        \                                  get_fields with retrievable\
+                        \ as type), should\n                                  not\
+                        \ be used     in conjunction with any of\n               \
+                        \                   \"sortfield\" and \"order\" parameters\n\
+                        \  --field_url                     Include the field links\n\
+                        \  --view_url                      Include other view links\n\
+                        \  --facets TEXT                   (Optional, Multiple) Facet\
+                        \ selections to\n                                  apply on\
+                        \ search results     with\n                              \
+                        \    facet_id:facet_value (facet_id accessible\n         \
+                        \                         with get_fields with facet     as\
+                        \ type)\n  --facet_fields TEXT             (Optional, Multiple)\
+                        \ Facet field identifiers\n                              \
+                        \    associated with facets     to retrieve\n            \
+                        \                      (facet_id accessible with get_fields\
+                        \ with\n                                  facet as type)\n\
+                        \  --facet_count INTEGER           (Optional) Number of facet\
+                        \ values to\n                                  retrieve\n\
+                        \  --facet_depth INTEGER           (Optional) Number of levels\
+                        \ in the facet\n                                  hierarchy\
+                        \ to retrieve\n  --file PATH                     (Optional)\
+                        \ File to export the entry content\n  --help             \
+                        \             Show this message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - ebisearch
+                      - get_entries
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: retrieva
+                        description: ble as type
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --domain
+                        description: Domain id in EBI (accessible with get_domains)
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --entry_id
+                        description: (Multiple) Entry identifier to retrieve
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --field
+                        description: (Multiple) Field to export (accessible with get_fields
+                          with
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --field_url
+                        description: Include the field links
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --view_url
+                        description: Include other view links
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --file
+                        description: (Optional) File to export the entry content
+                        args: !SimpleFlagArg
+                          name: PATH
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: ebisearch get_entries [OPTIONS]\n\n  Return\
+                        \ content of entries on a specific domain in EBI\n\nOptions:\n\
+                        \  --domain TEXT    Domain id in EBI (accessible with get_domains)\n\
+                        \  --entry_id TEXT  (Multiple) Entry identifier to retrieve\n\
+                        \  --field TEXT     (Multiple) Field to export (accessible\
+                        \ with get_fields with\n                   retrieva    ble\
+                        \ as type\n  --field_url      Include the field links\n  --view_url\
+                        \       Include other view links\n  --file PATH      (Optional)\
+                        \ File to export the entry content\n  --help           Show\
+                        \ this message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - ebisearch
+                      - get_fields
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: information
+                        description: --help                          Show this message
+                          and exit.
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --domain
+                        description: "Domain id in EBI (accessible with\nget_domains)"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --field_type
+                        description: "[searchable|retrievable|sortable|facet|topterms]\n\
+                          Type fo field"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --file
+                        description: (Optional) File to export the domain
+                        args: !SimpleFlagArg
+                          name: PATH
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: ebisearch get_fields [OPTIONS]\n\n  Return\
+                        \ the list of fields of a type for a specific domain in EBI\n\
+                        \nOptions:\n  --domain TEXT                   Domain id in\
+                        \ EBI (accessible with\n                                 \
+                        \ get_domains)\n  --field_type [searchable|retrievable|sortable|facet|topterms]\n\
+                        \                                  Type fo field\n  --file\
+                        \ PATH                     (Optional) File to export the domain\n\
+                        \                                  information\n  --help \
+                        \                         Show this message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --help
+                      description: Show this message and exit.
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: ebisearch [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n\
+                      \  --help  Show this message and exit.\n\nCommands:\n  get_domains\
+                      \        Get domains\n  get_entries        Get entry content\n\
+                      \  get_fields         Get retrievable fields\n  get_query_results\
+                      \  Get results for a query\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: ebisearch get_domains [OPTIONS]\n\n  Return the\
                     \ list of domains in EBI\n\nOptions:\n  --file PATH  File to export\
                     \ the domain information (optional)\n  --help       Show this\
                     \ message and exit.\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - ebisearch
-                  - get_query_results
+                  command: *id005
                   positional:
                   - !Positional
-                    description: --facet_depth INTEGER           (Optional) Number
-                      of levels in the facet
+                    optional: false
                     position: 0
                     name: retrieve
-                    optional: false
+                    description: --facet_depth INTEGER           (Optional) Number
+                      of levels in the facet
                   named:
                   - !Flag
-                    description: "Domain id in EBI (accessible with\nget_domains)"
+                    optional: true
                     synonyms:
                     - --domain
+                    description: "Domain id in EBI (accessible with\nget_domains)"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: "Query (searchable fields accessible with\nget_fields\
-                      \ with searchable     as type)"
+                    optional: true
                     synonyms:
                     - --query
+                    description: "Query (searchable fields accessible with\nget_fields\
+                      \ with searchable     as type)"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: "(Multiple) Field to export (accessible with\nget_fields\
-                      \ with    retrievable as type)"
+                    optional: true
                     synonyms:
                     - --field
+                    description: "(Multiple) Field to export (accessible with\nget_fields\
+                      \ with    retrievable as type)"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --order
                     description: "[ascending|descending]  (Optional) Order to sort\
                       \ the results\n(optional), should come along     with\n\"sortfield\"\
                       \ and not allowed to use with\n\"sort\" parameters"
-                    synonyms:
-                    - --order
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "(Optional) Field to sort on (accessible via\nget_fields\
-                      \ with sortable     as option),\nshould come along with \"sortfield\""
+                    optional: true
                     synonyms:
                     - --sort_field
+                    description: "(Optional) Field to sort on (accessible via\nget_fields\
+                      \ with sortable     as option),\nshould come along with \"sortfield\""
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --sort
                     description: "(Optional, Multiple) Sorting criteria with\nfield_id:order\
                       \ (field_id     accessible with\nget_fields with retrievable\
                       \ as type), should\nnot be used     in conjunction with any\
                       \ of\n\"sortfield\" and \"order\" parameters"
-                    synonyms:
-                    - --sort
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: Include the field links
+                    optional: true
                     synonyms:
                     - --field_url
+                    description: Include the field links
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Include other view links
+                    optional: true
                     synonyms:
                     - --view_url
+                    description: Include other view links
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --facets
                     description: "(Optional, Multiple) Facet selections to\napply\
                       \ on search results     with\nfacet_id:facet_value (facet_id\
                       \ accessible\nwith get_fields with facet     as type)"
-                    synonyms:
-                    - --facets
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --facet_fields
                     description: "(Optional, Multiple) Facet field identifiers\nassociated\
                       \ with facets     to retrieve\n(facet_id accessible with get_fields\
                       \ with\nfacet as type)"
-                    synonyms:
-                    - --facet_fields
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: (Optional) Number of facet values to
+                    optional: true
                     synonyms:
                     - --facet_count
+                    description: (Optional) Number of facet values to
                     args: !SimpleFlagArg
                       name: INTEGER
-                    optional: true
                   - !Flag
-                    description: (Optional) File to export the entry content
+                    optional: true
                     synonyms:
                     - --file
+                    description: (Optional) File to export the entry content
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: ebisearch get_query_results [OPTIONS]\n\n  Return\
@@ -261,67 +597,66 @@ subcommands:
                     \ to export the entry content\n  --help                      \
                     \    Show this message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - ebisearch
-                  - get_entries
+                  command: *id006
                   positional:
                   - !Positional
-                    description: ble as type
+                    optional: false
                     position: 0
                     name: retrieva
-                    optional: false
+                    description: ble as type
                   named:
                   - !Flag
-                    description: Domain id in EBI (accessible with get_domains)
+                    optional: true
                     synonyms:
                     - --domain
+                    description: Domain id in EBI (accessible with get_domains)
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: (Multiple) Entry identifier to retrieve
+                    optional: true
                     synonyms:
                     - --entry_id
+                    description: (Multiple) Entry identifier to retrieve
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: (Multiple) Field to export (accessible with get_fields
-                      with
+                    optional: true
                     synonyms:
                     - --field
+                    description: (Multiple) Field to export (accessible with get_fields
+                      with
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: Include the field links
+                    optional: true
                     synonyms:
                     - --field_url
+                    description: Include the field links
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Include other view links
+                    optional: true
                     synonyms:
                     - --view_url
+                    description: Include other view links
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: (Optional) File to export the entry content
+                    optional: true
                     synonyms:
                     - --file
+                    description: (Optional) File to export the entry content
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: ebisearch get_entries [OPTIONS]\n\n  Return content\
@@ -334,39 +669,38 @@ subcommands:
                     \ view links\n  --file PATH      (Optional) File to export the\
                     \ entry content\n  --help           Show this message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - ebisearch
-                  - get_fields
+                  command: *id007
                   positional:
                   - !Positional
-                    description: --help                          Show this message
-                      and exit.
+                    optional: false
                     position: 0
                     name: information
-                    optional: false
+                    description: --help                          Show this message
+                      and exit.
                   named:
                   - !Flag
-                    description: "Domain id in EBI (accessible with\nget_domains)"
+                    optional: true
                     synonyms:
                     - --domain
+                    description: "Domain id in EBI (accessible with\nget_domains)"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: "[searchable|retrievable|sortable|facet|topterms]\n\
-                      Type fo field"
+                    optional: true
                     synonyms:
                     - --field_type
+                    description: "[searchable|retrievable|sortable|facet|topterms]\n\
+                      Type fo field"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: (Optional) File to export the domain
+                    optional: true
                     synonyms:
                     - --file
+                    description: (Optional) File to export the domain
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -383,13 +717,9 @@ subcommands:
                     \                          information\n  --help             \
                     \             Show this message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "Usage: ebisearch [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n\
@@ -398,14 +728,15 @@ subcommands:
                   \ get_fields         Get retrievable fields\n  get_query_results\
                   \  Get results for a query\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: ebisearch get_domains [OPTIONS]\n\n  Return the list\
@@ -413,118 +744,119 @@ subcommands:
                 \ domain information (optional)\n  --help       Show this message\
                 \ and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
-                description: --facet_depth INTEGER           (Optional) Number of
-                  levels in the facet
+                optional: false
                 position: 0
                 name: retrieve
-                optional: false
+                description: --facet_depth INTEGER           (Optional) Number of
+                  levels in the facet
               named:
               - !Flag
-                description: "Domain id in EBI (accessible with\nget_domains)"
+                optional: true
                 synonyms:
                 - --domain
+                description: "Domain id in EBI (accessible with\nget_domains)"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "Query (searchable fields accessible with\nget_fields\
-                  \ with searchable     as type)"
+                optional: true
                 synonyms:
                 - --query
+                description: "Query (searchable fields accessible with\nget_fields\
+                  \ with searchable     as type)"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "(Multiple) Field to export (accessible with\nget_fields\
-                  \ with    retrievable as type)"
+                optional: true
                 synonyms:
                 - --field
+                description: "(Multiple) Field to export (accessible with\nget_fields\
+                  \ with    retrievable as type)"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --order
                 description: "[ascending|descending]  (Optional) Order to sort the\
                   \ results\n(optional), should come along     with\n\"sortfield\"\
                   \ and not allowed to use with\n\"sort\" parameters"
-                synonyms:
-                - --order
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "(Optional) Field to sort on (accessible via\nget_fields\
-                  \ with sortable     as option),\nshould come along with \"sortfield\""
+                optional: true
                 synonyms:
                 - --sort_field
+                description: "(Optional) Field to sort on (accessible via\nget_fields\
+                  \ with sortable     as option),\nshould come along with \"sortfield\""
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --sort
                 description: "(Optional, Multiple) Sorting criteria with\nfield_id:order\
                   \ (field_id     accessible with\nget_fields with retrievable as\
                   \ type), should\nnot be used     in conjunction with any of\n\"\
                   sortfield\" and \"order\" parameters"
-                synonyms:
-                - --sort
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: Include the field links
+                optional: true
                 synonyms:
                 - --field_url
+                description: Include the field links
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Include other view links
+                optional: true
                 synonyms:
                 - --view_url
+                description: Include other view links
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --facets
                 description: "(Optional, Multiple) Facet selections to\napply on search\
                   \ results     with\nfacet_id:facet_value (facet_id accessible\n\
                   with get_fields with facet     as type)"
-                synonyms:
-                - --facets
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --facet_fields
                 description: "(Optional, Multiple) Facet field identifiers\nassociated\
                   \ with facets     to retrieve\n(facet_id accessible with get_fields\
                   \ with\nfacet as type)"
-                synonyms:
-                - --facet_fields
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: (Optional) Number of facet values to
+                optional: true
                 synonyms:
                 - --facet_count
+                description: (Optional) Number of facet values to
                 args: !SimpleFlagArg
                   name: INTEGER
-                optional: true
               - !Flag
-                description: (Optional) File to export the entry content
+                optional: true
                 synonyms:
                 - --file
+                description: (Optional) File to export the entry content
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: ebisearch get_query_results [OPTIONS]\n\n  Return\
@@ -567,65 +899,66 @@ subcommands:
                 \ File to export the entry content\n  --help                     \
                 \     Show this message and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: ble as type
+                optional: false
                 position: 0
                 name: retrieva
-                optional: false
+                description: ble as type
               named:
               - !Flag
-                description: Domain id in EBI (accessible with get_domains)
+                optional: true
                 synonyms:
                 - --domain
+                description: Domain id in EBI (accessible with get_domains)
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: (Multiple) Entry identifier to retrieve
+                optional: true
                 synonyms:
                 - --entry_id
+                description: (Multiple) Entry identifier to retrieve
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: (Multiple) Field to export (accessible with get_fields
-                  with
+                optional: true
                 synonyms:
                 - --field
+                description: (Multiple) Field to export (accessible with get_fields
+                  with
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: Include the field links
+                optional: true
                 synonyms:
                 - --field_url
+                description: Include the field links
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Include other view links
+                optional: true
                 synonyms:
                 - --view_url
+                description: Include other view links
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: (Optional) File to export the entry content
+                optional: true
                 synonyms:
                 - --file
+                description: (Optional) File to export the entry content
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: ebisearch get_entries [OPTIONS]\n\n  Return content\
@@ -638,38 +971,39 @@ subcommands:
                 \ --file PATH      (Optional) File to export the entry content\n \
                 \ --help           Show this message and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional:
               - !Positional
-                description: --help                          Show this message and
-                  exit.
+                optional: false
                 position: 0
                 name: information
-                optional: false
+                description: --help                          Show this message and
+                  exit.
               named:
               - !Flag
-                description: "Domain id in EBI (accessible with\nget_domains)"
+                optional: true
                 synonyms:
                 - --domain
+                description: "Domain id in EBI (accessible with\nget_domains)"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "[searchable|retrievable|sortable|facet|topterms]\nType\
-                  \ fo field"
+                optional: true
                 synonyms:
                 - --field_type
+                description: "[searchable|retrievable|sortable|facet|topterms]\nType\
+                  \ fo field"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: (Optional) File to export the domain
+                optional: true
                 synonyms:
                 - --file
+                description: (Optional) File to export the domain
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag:
@@ -684,6 +1018,7 @@ subcommands:
                 \                           information\n  --help                \
                 \          Show this message and exit.\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -694,132 +1029,134 @@ subcommands:
               \         Get retrievable fields\n  get_query_results  Get results for\
               \ a query\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: ebisearch get_domains [OPTIONS]\n\n  Return the list\
             \ of domains in EBI\n\nOptions:\n  --file PATH  File to export the domain\
             \ information (optional)\n  --help       Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: --facet_depth INTEGER           (Optional) Number of levels
-              in the facet
+            optional: false
             position: 0
             name: retrieve
-            optional: false
+            description: --facet_depth INTEGER           (Optional) Number of levels
+              in the facet
           named:
           - !Flag
-            description: "Domain id in EBI (accessible with\nget_domains)"
+            optional: true
             synonyms:
             - --domain
+            description: "Domain id in EBI (accessible with\nget_domains)"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "Query (searchable fields accessible with\nget_fields with\
-              \ searchable     as type)"
+            optional: true
             synonyms:
             - --query
+            description: "Query (searchable fields accessible with\nget_fields with\
+              \ searchable     as type)"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "(Multiple) Field to export (accessible with\nget_fields\
-              \ with    retrievable as type)"
+            optional: true
             synonyms:
             - --field
+            description: "(Multiple) Field to export (accessible with\nget_fields\
+              \ with    retrievable as type)"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --order
             description: "[ascending|descending]  (Optional) Order to sort the results\n\
               (optional), should come along     with\n\"sortfield\" and not allowed\
               \ to use with\n\"sort\" parameters"
-            synonyms:
-            - --order
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "(Optional) Field to sort on (accessible via\nget_fields\
-              \ with sortable     as option),\nshould come along with \"sortfield\""
+            optional: true
             synonyms:
             - --sort_field
+            description: "(Optional) Field to sort on (accessible via\nget_fields\
+              \ with sortable     as option),\nshould come along with \"sortfield\""
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --sort
             description: "(Optional, Multiple) Sorting criteria with\nfield_id:order\
               \ (field_id     accessible with\nget_fields with retrievable as type),\
               \ should\nnot be used     in conjunction with any of\n\"sortfield\"\
               \ and \"order\" parameters"
-            synonyms:
-            - --sort
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: Include the field links
+            optional: true
             synonyms:
             - --field_url
+            description: Include the field links
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Include other view links
+            optional: true
             synonyms:
             - --view_url
+            description: Include other view links
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --facets
             description: "(Optional, Multiple) Facet selections to\napply on search\
               \ results     with\nfacet_id:facet_value (facet_id accessible\nwith\
               \ get_fields with facet     as type)"
-            synonyms:
-            - --facets
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --facet_fields
             description: "(Optional, Multiple) Facet field identifiers\nassociated\
               \ with facets     to retrieve\n(facet_id accessible with get_fields\
               \ with\nfacet as type)"
-            synonyms:
-            - --facet_fields
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: (Optional) Number of facet values to
+            optional: true
             synonyms:
             - --facet_count
+            description: (Optional) Number of facet values to
             args: !SimpleFlagArg
               name: INTEGER
-            optional: true
           - !Flag
-            description: (Optional) File to export the entry content
+            optional: true
             synonyms:
             - --file
+            description: (Optional) File to export the entry content
             args: !SimpleFlagArg
               name: PATH
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: ebisearch get_query_results [OPTIONS]\n\n  Return the\
@@ -859,64 +1196,65 @@ subcommands:
             \ PATH                     (Optional) File to export the entry content\n\
             \  --help                          Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: ble as type
+            optional: false
             position: 0
             name: retrieva
-            optional: false
+            description: ble as type
           named:
           - !Flag
-            description: Domain id in EBI (accessible with get_domains)
+            optional: true
             synonyms:
             - --domain
+            description: Domain id in EBI (accessible with get_domains)
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: (Multiple) Entry identifier to retrieve
+            optional: true
             synonyms:
             - --entry_id
+            description: (Multiple) Entry identifier to retrieve
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: (Multiple) Field to export (accessible with get_fields with
+            optional: true
             synonyms:
             - --field
+            description: (Multiple) Field to export (accessible with get_fields with
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: Include the field links
+            optional: true
             synonyms:
             - --field_url
+            description: Include the field links
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Include other view links
+            optional: true
             synonyms:
             - --view_url
+            description: Include other view links
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: (Optional) File to export the entry content
+            optional: true
             synonyms:
             - --file
+            description: (Optional) File to export the entry content
             args: !SimpleFlagArg
               name: PATH
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: ebisearch get_entries [OPTIONS]\n\n  Return content of\
@@ -928,37 +1266,38 @@ subcommands:
             \       Include other view links\n  --file PATH      (Optional) File to\
             \ export the entry content\n  --help           Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional:
           - !Positional
-            description: --help                          Show this message and exit.
+            optional: false
             position: 0
             name: information
-            optional: false
+            description: --help                          Show this message and exit.
           named:
           - !Flag
-            description: "Domain id in EBI (accessible with\nget_domains)"
+            optional: true
             synonyms:
             - --domain
+            description: "Domain id in EBI (accessible with\nget_domains)"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "[searchable|retrievable|sortable|facet|topterms]\nType fo\
-              \ field"
+            optional: true
             synonyms:
             - --field_type
+            description: "[searchable|retrievable|sortable|facet|topterms]\nType fo\
+              \ field"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: (Optional) File to export the domain
+            optional: true
             synonyms:
             - --file
+            description: (Optional) File to export the domain
             args: !SimpleFlagArg
               name: PATH
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag:
@@ -973,6 +1312,7 @@ subcommands:
             \                   information\n  --help                          Show\
             \ this message and exit.\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -982,131 +1322,133 @@ subcommands:
           \  get_entries        Get entry content\n  get_fields         Get retrievable\
           \ fields\n  get_query_results  Get results for a query\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: ebisearch get_domains [OPTIONS]\n\n  Return the list of domains\
         \ in EBI\n\nOptions:\n  --file PATH  File to export the domain information\
         \ (optional)\n  --help       Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: --facet_depth INTEGER           (Optional) Number of levels in
-          the facet
+        optional: false
         position: 0
         name: retrieve
-        optional: false
+        description: --facet_depth INTEGER           (Optional) Number of levels in
+          the facet
       named:
       - !Flag
-        description: "Domain id in EBI (accessible with\nget_domains)"
+        optional: true
         synonyms:
         - --domain
+        description: "Domain id in EBI (accessible with\nget_domains)"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "Query (searchable fields accessible with\nget_fields with searchable\
-          \     as type)"
+        optional: true
         synonyms:
         - --query
+        description: "Query (searchable fields accessible with\nget_fields with searchable\
+          \     as type)"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "(Multiple) Field to export (accessible with\nget_fields with\
-          \    retrievable as type)"
+        optional: true
         synonyms:
         - --field
+        description: "(Multiple) Field to export (accessible with\nget_fields with\
+          \    retrievable as type)"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --order
         description: "[ascending|descending]  (Optional) Order to sort the results\n\
           (optional), should come along     with\n\"sortfield\" and not allowed to\
           \ use with\n\"sort\" parameters"
-        synonyms:
-        - --order
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "(Optional) Field to sort on (accessible via\nget_fields with\
-          \ sortable     as option),\nshould come along with \"sortfield\""
+        optional: true
         synonyms:
         - --sort_field
+        description: "(Optional) Field to sort on (accessible via\nget_fields with\
+          \ sortable     as option),\nshould come along with \"sortfield\""
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --sort
         description: "(Optional, Multiple) Sorting criteria with\nfield_id:order (field_id\
           \     accessible with\nget_fields with retrievable as type), should\nnot\
           \ be used     in conjunction with any of\n\"sortfield\" and \"order\" parameters"
-        synonyms:
-        - --sort
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: Include the field links
+        optional: true
         synonyms:
         - --field_url
+        description: Include the field links
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Include other view links
+        optional: true
         synonyms:
         - --view_url
+        description: Include other view links
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --facets
         description: "(Optional, Multiple) Facet selections to\napply on search results\
           \     with\nfacet_id:facet_value (facet_id accessible\nwith get_fields with\
           \ facet     as type)"
-        synonyms:
-        - --facets
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --facet_fields
         description: "(Optional, Multiple) Facet field identifiers\nassociated with\
           \ facets     to retrieve\n(facet_id accessible with get_fields with\nfacet\
           \ as type)"
-        synonyms:
-        - --facet_fields
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: (Optional) Number of facet values to
+        optional: true
         synonyms:
         - --facet_count
+        description: (Optional) Number of facet values to
         args: !SimpleFlagArg
           name: INTEGER
-        optional: true
       - !Flag
-        description: (Optional) File to export the entry content
+        optional: true
         synonyms:
         - --file
+        description: (Optional) File to export the entry content
         args: !SimpleFlagArg
           name: PATH
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: ebisearch get_query_results [OPTIONS]\n\n  Return the all\
@@ -1144,64 +1486,65 @@ subcommands:
         \  --file PATH                     (Optional) File to export the entry content\n\
         \  --help                          Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: ble as type
+        optional: false
         position: 0
         name: retrieva
-        optional: false
+        description: ble as type
       named:
       - !Flag
-        description: Domain id in EBI (accessible with get_domains)
+        optional: true
         synonyms:
         - --domain
+        description: Domain id in EBI (accessible with get_domains)
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: (Multiple) Entry identifier to retrieve
+        optional: true
         synonyms:
         - --entry_id
+        description: (Multiple) Entry identifier to retrieve
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: (Multiple) Field to export (accessible with get_fields with
+        optional: true
         synonyms:
         - --field
+        description: (Multiple) Field to export (accessible with get_fields with
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: Include the field links
+        optional: true
         synonyms:
         - --field_url
+        description: Include the field links
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Include other view links
+        optional: true
         synonyms:
         - --view_url
+        description: Include other view links
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: (Optional) File to export the entry content
+        optional: true
         synonyms:
         - --file
+        description: (Optional) File to export the entry content
         args: !SimpleFlagArg
           name: PATH
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: ebisearch get_entries [OPTIONS]\n\n  Return content of entries\
@@ -1213,36 +1556,37 @@ subcommands:
         \  --file PATH      (Optional) File to export the entry content\n  --help\
         \           Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional:
       - !Positional
-        description: --help                          Show this message and exit.
+        optional: false
         position: 0
         name: information
-        optional: false
+        description: --help                          Show this message and exit.
       named:
       - !Flag
-        description: "Domain id in EBI (accessible with\nget_domains)"
+        optional: true
         synonyms:
         - --domain
+        description: "Domain id in EBI (accessible with\nget_domains)"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "[searchable|retrievable|sortable|facet|topterms]\nType fo field"
+        optional: true
         synonyms:
         - --field_type
+        description: "[searchable|retrievable|sortable|facet|topterms]\nType fo field"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: (Optional) File to export the domain
+        optional: true
         synonyms:
         - --file
+        description: (Optional) File to export the domain
         args: !SimpleFlagArg
           name: PATH
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag:
@@ -1257,6 +1601,7 @@ subcommands:
         \           information\n  --help                          Show this message\
         \ and exit.\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -1266,130 +1611,132 @@ subcommands:
       \  get_entries        Get entry content\n  get_fields         Get retrievable\
       \ fields\n  get_query_results  Get results for a query\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: ebisearch get_domains [OPTIONS]\n\n  Return the list of domains\
     \ in EBI\n\nOptions:\n  --file PATH  File to export the domain information (optional)\n\
     \  --help       Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: --facet_depth INTEGER           (Optional) Number of levels in the
-      facet
+    optional: false
     position: 0
     name: retrieve
-    optional: false
+    description: --facet_depth INTEGER           (Optional) Number of levels in the
+      facet
   named:
   - !Flag
-    description: "Domain id in EBI (accessible with\nget_domains)"
+    optional: true
     synonyms:
     - --domain
+    description: "Domain id in EBI (accessible with\nget_domains)"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "Query (searchable fields accessible with\nget_fields with searchable\
-      \     as type)"
+    optional: true
     synonyms:
     - --query
+    description: "Query (searchable fields accessible with\nget_fields with searchable\
+      \     as type)"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "(Multiple) Field to export (accessible with\nget_fields with   \
-      \ retrievable as type)"
+    optional: true
     synonyms:
     - --field
+    description: "(Multiple) Field to export (accessible with\nget_fields with   \
+      \ retrievable as type)"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --order
     description: "[ascending|descending]  (Optional) Order to sort the results\n(optional),\
       \ should come along     with\n\"sortfield\" and not allowed to use with\n\"\
       sort\" parameters"
-    synonyms:
-    - --order
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "(Optional) Field to sort on (accessible via\nget_fields with sortable\
-      \     as option),\nshould come along with \"sortfield\""
+    optional: true
     synonyms:
     - --sort_field
+    description: "(Optional) Field to sort on (accessible via\nget_fields with sortable\
+      \     as option),\nshould come along with \"sortfield\""
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --sort
     description: "(Optional, Multiple) Sorting criteria with\nfield_id:order (field_id\
       \     accessible with\nget_fields with retrievable as type), should\nnot be\
       \ used     in conjunction with any of\n\"sortfield\" and \"order\" parameters"
-    synonyms:
-    - --sort
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: Include the field links
+    optional: true
     synonyms:
     - --field_url
+    description: Include the field links
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Include other view links
+    optional: true
     synonyms:
     - --view_url
+    description: Include other view links
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --facets
     description: "(Optional, Multiple) Facet selections to\napply on search results\
       \     with\nfacet_id:facet_value (facet_id accessible\nwith get_fields with\
       \ facet     as type)"
-    synonyms:
-    - --facets
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "(Optional, Multiple) Facet field identifiers\nassociated with facets\
-      \     to retrieve\n(facet_id accessible with get_fields with\nfacet as type)"
+    optional: true
     synonyms:
     - --facet_fields
+    description: "(Optional, Multiple) Facet field identifiers\nassociated with facets\
+      \     to retrieve\n(facet_id accessible with get_fields with\nfacet as type)"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: (Optional) Number of facet values to
+    optional: true
     synonyms:
     - --facet_count
+    description: (Optional) Number of facet values to
     args: !SimpleFlagArg
       name: INTEGER
-    optional: true
   - !Flag
-    description: (Optional) File to export the entry content
+    optional: true
     synonyms:
     - --file
+    description: (Optional) File to export the entry content
     args: !SimpleFlagArg
       name: PATH
-    optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: ebisearch get_query_results [OPTIONS]\n\n  Return the all the\
@@ -1426,64 +1773,65 @@ subcommands:
     \ PATH                     (Optional) File to export the entry content\n  --help\
     \                          Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: ble as type
+    optional: false
     position: 0
     name: retrieva
-    optional: false
+    description: ble as type
   named:
   - !Flag
-    description: Domain id in EBI (accessible with get_domains)
+    optional: true
     synonyms:
     - --domain
+    description: Domain id in EBI (accessible with get_domains)
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: (Multiple) Entry identifier to retrieve
+    optional: true
     synonyms:
     - --entry_id
+    description: (Multiple) Entry identifier to retrieve
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: (Multiple) Field to export (accessible with get_fields with
+    optional: true
     synonyms:
     - --field
+    description: (Multiple) Field to export (accessible with get_fields with
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: Include the field links
+    optional: true
     synonyms:
     - --field_url
+    description: Include the field links
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Include other view links
+    optional: true
     synonyms:
     - --view_url
+    description: Include other view links
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: (Optional) File to export the entry content
+    optional: true
     synonyms:
     - --file
+    description: (Optional) File to export the entry content
     args: !SimpleFlagArg
       name: PATH
-    optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: ebisearch get_entries [OPTIONS]\n\n  Return content of entries\
@@ -1495,36 +1843,37 @@ subcommands:
     \ --file PATH      (Optional) File to export the entry content\n  --help     \
     \      Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional:
   - !Positional
-    description: --help                          Show this message and exit.
+    optional: false
     position: 0
     name: information
-    optional: false
+    description: --help                          Show this message and exit.
   named:
   - !Flag
-    description: "Domain id in EBI (accessible with\nget_domains)"
+    optional: true
     synonyms:
     - --domain
+    description: "Domain id in EBI (accessible with\nget_domains)"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "[searchable|retrievable|sortable|facet|topterms]\nType fo field"
+    optional: true
     synonyms:
     - --field_type
+    description: "[searchable|retrievable|sortable|facet|topterms]\nType fo field"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: (Optional) File to export the domain
+    optional: true
     synonyms:
     - --file
+    description: (Optional) File to export the domain
     args: !SimpleFlagArg
       name: PATH
-    optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:
@@ -1538,6 +1887,7 @@ subcommands:
     \       (Optional) File to export the domain\n                               \
     \   information\n  --help                          Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -1547,3 +1897,4 @@ help_text: "Usage: ebisearch [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --help  
   \        Get entry content\n  get_fields         Get retrievable fields\n  get_query_results\
   \  Get results for a query\n"
 generated_using: *id004
+docker_image:

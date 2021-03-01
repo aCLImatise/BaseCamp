@@ -2,7 +2,7 @@ version 1.0
 
 task ExtractDEs {
   input {
-    File? write_output_stdout
+    File? write_output_omitted
     Boolean? regions
     Boolean? mapper
     Boolean? tech
@@ -13,15 +13,18 @@ task ExtractDEs {
   command <<<
     extractDEs \
       ~{mapped_reads} \
-      ~{if (write_output_stdout) then "-output" else ""} \
+      ~{if (write_output_omitted) then "-output" else ""} \
       ~{if (regions) then "-regions" else ""} \
       ~{if (mapper) then "-mapper" else ""} \
       ~{if (tech) then "-tech" else ""} \
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    write_output_stdout: "Write output to this file (STDOUT if omitted)."
+    write_output_omitted: "Write output to this file (STDOUT if omitted)."
     regions: "the genomic regions, in BED format, corresponding to the input\\nsequences for Zagros."
     mapper: "the mapper used to map the reads (Default: rmap)"
     tech: "the technology type used in the experiment (default iCLIP)"
@@ -31,6 +34,6 @@ task ExtractDEs {
   }
   output {
     File out_stdout = stdout()
-    File out_write_output_stdout = "${in_write_output_stdout}"
+    File out_write_output_omitted = "${in_write_output_omitted}"
   }
 }

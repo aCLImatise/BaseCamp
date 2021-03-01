@@ -20,6 +20,9 @@ task Consensus {
       ~{if (variants) then "--variants" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "write the output FASTA file to OUTPUT"
     pile_up: "write the pileup to PILEUP"

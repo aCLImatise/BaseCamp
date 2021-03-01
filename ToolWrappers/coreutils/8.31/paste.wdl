@@ -12,6 +12,9 @@ task Paste {
       ~{if (serial) then "--serial" else ""} \
       ~{if (zero_terminated) then "--zero-terminated" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     delimiters: "reuse characters from LIST instead of TABs"
     serial: "paste one file at a time instead of in parallel"

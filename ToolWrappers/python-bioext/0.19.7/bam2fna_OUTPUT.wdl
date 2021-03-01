@@ -12,6 +12,9 @@ task Bam2fnaOUTPUT {
       ~{var_input} \
       ~{var_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam_two_fna: ""
     var_input: ""

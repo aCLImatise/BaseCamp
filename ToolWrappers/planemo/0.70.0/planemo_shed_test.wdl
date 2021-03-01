@@ -20,16 +20,16 @@ task PlanemoShedTest {
     Boolean? skip_v_env
     Boolean? no_cache_galaxy
     Boolean? no_cleanup
-    Boolean? docker
+    Boolean? no_docker
     String? docker_cmd
-    Boolean? docker_sudo
+    Boolean? no_docker_sudo
     String? docker_host
     String? docker_sudo_cmd
     Boolean? mulled_containers
     File? job_config_file
     Directory? tool_dependency_dir
     Boolean? update_test_data
-    Boolean? paste_test_data_paths
+    Boolean? no_paste_test_data_paths
     File? test_output
     File? test_output_text
     File? test_output_markdown
@@ -60,16 +60,16 @@ task PlanemoShedTest {
       ~{if (skip_v_env) then "--skip_venv" else ""} \
       ~{if (no_cache_galaxy) then "--no_cache_galaxy" else ""} \
       ~{if (no_cleanup) then "--no_cleanup" else ""} \
-      ~{if (docker) then "--docker" else ""} \
+      ~{if (no_docker) then "--no_docker" else ""} \
       ~{if defined(docker_cmd) then ("--docker_cmd " +  '"' + docker_cmd + '"') else ""} \
-      ~{if (docker_sudo) then "--docker_sudo" else ""} \
+      ~{if (no_docker_sudo) then "--no_docker_sudo" else ""} \
       ~{if defined(docker_host) then ("--docker_host " +  '"' + docker_host + '"') else ""} \
       ~{if defined(docker_sudo_cmd) then ("--docker_sudo_cmd " +  '"' + docker_sudo_cmd + '"') else ""} \
       ~{if (mulled_containers) then "--mulled_containers" else ""} \
       ~{if defined(job_config_file) then ("--job_config_file " +  '"' + job_config_file + '"') else ""} \
       ~{if defined(tool_dependency_dir) then ("--tool_dependency_dir " +  '"' + tool_dependency_dir + '"') else ""} \
       ~{if (update_test_data) then "--update_test_data" else ""} \
-      ~{if (paste_test_data_paths) then "--paste_test_data_paths" else ""} \
+      ~{if (no_paste_test_data_paths) then "--no_paste_test_data_paths" else ""} \
       ~{if defined(test_output) then ("--test_output " +  '"' + test_output + '"') else ""} \
       ~{if defined(test_output_text) then ("--test_output_text " +  '"' + test_output_text + '"') else ""} \
       ~{if defined(test_output_markdown) then ("--test_output_markdown " +  '"' + test_output_markdown + '"') else ""} \
@@ -78,6 +78,9 @@ task PlanemoShedTest {
       ~{if (summary) then "--summary" else ""} \
       ~{if (skip_dependencies) then "--skip_dependencies" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     recursive: "Recursively perform command for nested\\nrepository directories."
     fail_fast: "If multiple repositories are specified and\\nan error occurs stop immediately instead of\\nprocessing remaining repositories."
@@ -97,16 +100,16 @@ task PlanemoShedTest {
     skip_v_env: "Do not create or source a virtualenv\\nenvironment for Galaxy, this should be used\\nor instance to preserve an externally\\nconfigured virtual environment or conda\\nenvironment."
     no_cache_galaxy: "Skip caching of Galaxy source and\\ndependencies obtained with --install_galaxy.\\nNot caching this results in faster downloads\\n(no git) - so is better on throw away\\ninstances such with TravisCI."
     no_cleanup: "Do not cleanup temp files created for and by"
-    docker: "/ --no_docker          Run Galaxy tools in Docker if enabled."
+    no_docker: "Run Galaxy tools in Docker if enabled."
     docker_cmd: "Command used to launch docker (defaults to\\ndocker)."
-    docker_sudo: "/ --no_docker_sudo\\nFlag to use sudo when running docker."
+    no_docker_sudo: "Flag to use sudo when running docker."
     docker_host: "Docker host to target when executing docker\\ncommands (defaults to localhost)."
     docker_sudo_cmd: "sudo command to use when --docker_sudo is\\nenabled (defaults to sudo)."
     mulled_containers: "Test tools against mulled containers (forces\\n--docker)."
     job_config_file: "Job configuration file for Galaxy to target."
     tool_dependency_dir: "Tool dependency dir for Galaxy to target."
     update_test_data: "Update test-data directory with job outputs\\n(normally written to directory\\n--job_output_files if specified.)"
-    paste_test_data_paths: "/ --no_paste_test_data_paths\\nBy default Planemo will use or not use\\nGalaxy's path paste option to load test data\\ninto a history based on the engine type it\\nis targeting. This can override the logic to\\nexplicitly enable or disable path pasting."
+    no_paste_test_data_paths: "By default Planemo will use or not use\\nGalaxy's path paste option to load test data\\ninto a history based on the engine type it\\nis targeting. This can override the logic to\\nexplicitly enable or disable path pasting."
     test_output: "Output test report (HTML - for humans)\\ndefaults to tool_test_output.html."
     test_output_text: "Output test report (Basic text - for display\\nin CI)"
     test_output_markdown: "Output test report (Markdown style - for\\nhumans & computers)"

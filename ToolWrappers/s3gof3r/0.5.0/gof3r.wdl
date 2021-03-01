@@ -18,6 +18,9 @@ task Gof3r {
       ~{if (man_page) then "--manpage" else ""} \
       ~{if (write_ini) then "--writeini" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man_page: "Create gof3r.man man page in current directory"
     write_ini: "Write .gof3r.ini in current user's home directory"

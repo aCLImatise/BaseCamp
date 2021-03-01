@@ -2,7 +2,7 @@ version 1.0
 
 task ScHicPlotClusterProfiles {
   input {
-    String? schic_matrix_m
+    String? schic_matrix_scool
     File? clusters
     Array[String] chromosomes
     Int? maximal_distance
@@ -19,7 +19,7 @@ task ScHicPlotClusterProfiles {
     scHicPlotClusterProfiles \
       ~{sch_i_c} \
       ~{var_11} \
-      ~{if defined(schic_matrix_m) then ("--matrix " +  '"' + schic_matrix_m + '"') else ""} \
+      ~{if defined(schic_matrix_scool) then ("--matrix " +  '"' + schic_matrix_scool + '"') else ""} \
       ~{if defined(clusters) then ("--clusters " +  '"' + clusters + '"') else ""} \
       ~{if defined(chromosomes) then ("--chromosomes " +  '"' + chromosomes + '"') else ""} \
       ~{if defined(maximal_distance) then ("--maximalDistance " +  '"' + maximal_distance + '"') else ""} \
@@ -30,8 +30,11 @@ task ScHicPlotClusterProfiles {
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    schic_matrix_m: "scHi-C matrix, -m scool scHi-C matrix\\nThe single cell Hi-C interaction matrices to\\ninvestigate for QC. Needs to be in scool format\\n(default: None)"
+    schic_matrix_scool: "scHi-C matrix, -m scool scHi-C matrix\\nThe single cell Hi-C interaction matrices to\\ninvestigate for QC. Needs to be in scool format\\n(default: None)"
     clusters: "file, -c cluster file\\nText file which contains per matrix the associated\\ncluster. (default: None)"
     chromosomes: "List of to be plotted chromosomes (default: None)"
     maximal_distance: "maximal distance in bases (default: 50000000)"

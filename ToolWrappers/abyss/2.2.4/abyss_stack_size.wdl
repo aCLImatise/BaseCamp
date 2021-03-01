@@ -10,6 +10,9 @@ task Abyssstacksize {
       ~{stack_size} \
       ~{var_command}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stack_size: ""
     var_command: ""

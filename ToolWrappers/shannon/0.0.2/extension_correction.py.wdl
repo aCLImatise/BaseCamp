@@ -4,6 +4,9 @@ task ExtensionCorrectionpy {
   command <<<
     extension_correction_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

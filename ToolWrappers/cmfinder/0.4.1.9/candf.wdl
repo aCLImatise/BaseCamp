@@ -24,6 +24,9 @@ task Candf {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
     r: ""

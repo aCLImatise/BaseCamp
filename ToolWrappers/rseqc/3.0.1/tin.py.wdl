@@ -16,6 +16,9 @@ task Tinpy {
       ~{if defined(sample_size) then ("--sample-size " +  '"' + sample_size + '"') else ""} \
       ~{if (subtract_background) then "--subtract-background" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bam_files: "Input BAM file(s). \\\"-i\\\" takes these input: 1) a single\\nBAM file. 2) \\\",\\\" separated BAM files (no spaces\\nallowed). 3) directory containing one or more bam\\nfiles. 4) plain text file containing the path of one\\nor more bam files (Each row is a BAM file path). All\\nBAM files should be sorted and indexed using samtools.\\n[required]"
     ref_gene: "Reference gene model in BED format. Must be strandard\\n12-column BED file. [required]"

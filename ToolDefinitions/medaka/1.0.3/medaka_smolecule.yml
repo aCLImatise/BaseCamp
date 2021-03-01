@@ -4,57 +4,60 @@ command:
 - smolecule
 positional:
 - !Positional
-  description: Single-molecule reads, one file per read.
+  optional: false
   position: 0
   name: fasta
-  optional: false
+  description: Single-molecule reads, one file per read.
 - !Positional
-  description: Output directory.
+  optional: false
   position: 1
   name: output
-  optional: false
+  description: Output directory.
 named:
 - !Flag
-  description: 'Verbose logging of debug information. (default: 20)'
+  optional: true
   synonyms:
   - --debug
+  description: 'Verbose logging of debug information. (default: 20)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Minimal logging; warnings only). (default: 20)'
+  optional: true
   synonyms:
   - --quiet
+  description: 'Minimal logging; warnings only). (default: 20)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Inference batch size. (default: 100)'
+  optional: true
   synonyms:
   - --batch_size
+  description: 'Inference batch size. (default: 100)'
   args: !SimpleFlagArg
     name: BATCH_SIZE
-  optional: true
 - !Flag
-  description: "Genomic regions to analyse, or a bed file. (default:\nNone)"
+  optional: true
   synonyms:
   - --regions
+  description: "Genomic regions to analyse, or a bed file. (default:\nNone)"
   args: !RepeatFlagArg
     name: REGIONS
-  optional: true
 - !Flag
-  description: 'Chunk length of samples. (default: 1000)'
+  optional: true
   synonyms:
   - --chunk_len
+  description: 'Chunk length of samples. (default: 1000)'
   args: !SimpleFlagArg
     name: CHUNK_LEN
-  optional: true
 - !Flag
-  description: 'Overlap of chunks. (default: 500)'
+  optional: true
   synonyms:
   - --chunk_ovlp
+  description: 'Overlap of chunks. (default: 500)'
   args: !SimpleFlagArg
     name: CHUNK_OVLP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --model
   description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\nr103_prom_high_g360,\
     \ r103_prom_snp_g3210,\nr103_prom_variant_g3210, r10_min_high_g303,\nr10_min_high_g340,\
     \ r941_min_fast_g303,\nr941_min_high_g303, r941_min_high_g330,\nr941_min_high_g340_rle,\
@@ -62,60 +65,57 @@ named:
     \ r941_prom_high_g303,\nr941_prom_high_g330, r941_prom_high_g344,\nr941_prom_high_g360,\
     \ r941_prom_snp_g303,\nr941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
     \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default: r941_min_high_g360)"
-  synonyms:
-  - --model
   args: !SimpleFlagArg
     name: MODEL
-  optional: true
 - !Flag
-  description: 'Disable use of cuDNN model layers. (default: False)'
+  optional: true
   synonyms:
   - --disable_cudnn
+  description: 'Disable use of cuDNN model layers. (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Minimum subread count. (default: 3)'
+  optional: true
   synonyms:
   - --depth
+  description: 'Minimum subread count. (default: 3)'
   args: !SimpleFlagArg
     name: DEPTH
-  optional: true
 - !Flag
-  description: 'Minimum median subread length. (default: 400)'
+  optional: true
   synonyms:
   - --length
+  description: 'Minimum median subread length. (default: 400)'
   args: !SimpleFlagArg
     name: LENGTH
-  optional: true
 - !Flag
-  description: 'Number of threads used by inference. (default: 1)'
+  optional: true
   synonyms:
   - --threads
+  description: 'Number of threads used by inference. (default: 1)'
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: "Verify integrity of output file after inference.\n(default: False)"
+  optional: true
   synonyms:
   - --check_output
+  description: "Verify integrity of output file after inference.\n(default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Save features with consensus probabilities. (default:\nFalse)\n"
+  optional: true
   synonyms:
   - --save_features
+  description: "Save features with consensus probabilities. (default:\nFalse)\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: medaka smolecule [-h] [--debug | --quiet] [--batch_size BATCH_SIZE]\n\
@@ -153,3 +153,4 @@ help_text: "usage: medaka smolecule [-h] [--debug | --quiet] [--batch_size BATCH
   \        False)\n"
 generated_using:
 - --help
+docker_image:

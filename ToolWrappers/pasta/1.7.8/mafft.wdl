@@ -20,6 +20,9 @@ task Mafft {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (thread) then "--thread" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     op: "# :         Gap opening penalty, default: 1.53"
     ep: "# :         Offset (works like gap extension penalty), default: 0.0"

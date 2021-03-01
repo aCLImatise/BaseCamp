@@ -4,6 +4,9 @@ task MSESplitpy {
   command <<<
     MSE_split_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

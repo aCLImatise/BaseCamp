@@ -3,12 +3,12 @@ id: SnpSift_gt.cwl
 inputs:
 - id: in_uncompress_restore_fields
   doc: ': Uncompress (restore genotype fields).'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -u
 - id: in_jar
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -jar
 - id: in_java
@@ -23,13 +23,14 @@ inputs:
     position: 1
 - id: in_file_dot_vcf
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - SnpSift

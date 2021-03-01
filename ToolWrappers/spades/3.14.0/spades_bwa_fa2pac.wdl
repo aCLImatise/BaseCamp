@@ -16,6 +16,9 @@ task SpadesbwaFa2pac {
       ~{out_dot_prefix} \
       ~{if (f) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
     bwa: ""

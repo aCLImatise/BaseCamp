@@ -3,12 +3,12 @@ id: genometreetk_pull.cwl
 inputs:
 - id: in_no_validation
   doc: do not assume decorated nodes adhear to standard taxonomy
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_validation
 - id: in_silent
   doc: suppress output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --silent
 - id: in_input_tree
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - genometreetk

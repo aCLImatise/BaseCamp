@@ -12,6 +12,9 @@ task Indexpub {
       ~{if (input_data_binary) then "-b" else ""} \
       ~{if (output_index_table) then "-t" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_data_default: "Input data [Data In]\\ndefault = medline.val\\nData Type = Pub-set"
     input_data_binary: "Input data is binary [T/F]  Optional\\ndefault = T"

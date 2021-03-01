@@ -22,6 +22,9 @@ task FilterSeer {
       ~{if (pos_beta) then "--pos_beta" else ""} \
       ~{if (arg_field_sort) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_file_output: "[ --kmers ] arg     file of output from seer"
     chisq: "minimum unadjusted p-value to output"

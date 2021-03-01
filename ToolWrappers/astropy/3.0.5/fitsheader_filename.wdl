@@ -18,6 +18,9 @@ task FitsheaderFilename {
       ~{if defined(k) then ("-k " +  '"' + k + '"') else ""} \
       ~{if defined(e) then ("-e " +  '"' + e + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     c: ""
     t: ""

@@ -4,51 +4,174 @@ command:
 - prepare
 positional:
 - !Positional
-  description: Input GFF/GTF file(s).
+  optional: false
   position: 0
   name: gff
-  optional: false
+  description: Input GFF/GTF file(s).
 named:
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - --fasta
+  description: Genome FASTA file. Required.
   args: !SimpleFlagArg
     name: FASTA
+- !Flag
   optional: true
+  synonyms:
+  - -v
+  - --verbose
+  - -q
+  - --quiet
+  - --start-method
+  description: Multiprocessing start method.
+  args: !ChoiceFlagArg
+    choices: !!set
+      fork:
+      forkserver:
+      spawn:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --strand-specific
+  description: "Flag. If set, monoexonic transcripts will be left on\ntheir strand\
+    \ rather than being moved to the unknown\nstrand."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -sa
+  - --strand-specific-assemblies
+  description: Comma-delimited list of strand specific assemblies.
+  args: !SimpleFlagArg
+    name: STRAND_SPECIFIC_ASSEMBLIES
+- !Flag
+  optional: true
+  synonyms:
+  - --list
+  description: "Tab-delimited file containing rows with the following\nformat: <file>\
+    \ <label> <strandedness>\n<score(optional)> <is_reference(optional)>\n<always_keep(optional)\
+    \ strandedness, is_reference and\nalways_keep must be boolean values (True, False)\
+    \ score\nmust be a valid floating number."
+  args: !SimpleFlagArg
+    name: LIST
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log
+  description: Log file. Optional.
+  args: !SimpleFlagArg
+    name: LOG
+- !Flag
+  optional: true
+  synonyms:
+  - --lenient
+  description: "Flag. If set, transcripts with only non-canonical\nsplices will be\
+    \ output as well."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --minimum-cdna-length
+  description: 'Minimum length for transcripts. Default: 200 bps.'
+  args: !SimpleFlagArg
+    name: MINIMUM_CDNA_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -MI
+  - --max-intron-size
+  description: "Maximum intron length for transcripts. Default:\n1,000,000 bps."
+  args: !SimpleFlagArg
+    name: MAX_INTRON_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --procs
+  description: Number of processors to use (default None)
+  args: !SimpleFlagArg
+    name: PROCS
+- !Flag
+  optional: true
+  synonyms:
+  - -scds
+  - --strip_cds
+  description: Boolean flag. If set, ignores any CDS/UTR segment.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --labels
+  description: "Labels to attach to the IDs of the transcripts of the\ninput files,\
+    \ separated by comma."
+  args: !SimpleFlagArg
+    name: LABELS
+- !Flag
+  optional: true
+  synonyms:
+  - --single
+  - --single-thread
+  description: Disable multi-threading. Useful for debugging.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -od
+  - --output-dir
+  description: 'Output directory. Default: current working directory'
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: 'Output file. Default: mikado_prepared.gtf.'
+  args: !SimpleFlagArg
+    name: OUT
+- !Flag
+  optional: true
+  synonyms:
+  - -of
+  - --out_fasta
+  description: 'Output file. Default: mikado_prepared.fasta.'
+  args: !SimpleFlagArg
+    name: OUT_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --json-conf
+  description: Configuration file.
+  args: !SimpleFlagArg
+    name: JSON_CONF
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --keep-redundant
+  description: "Boolean flag. If invoked, Mikado prepare will retain\nredundant models."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: Random seed number.
+  args: !SimpleFlagArg
+    name: SEED
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--fasta FASTA         Genome FASTA\
-    \ file. Required.\n-v, --verbose\n-q, --quiet\n--start-method {fork,spawn,forkserver}\n\
-    Multiprocessing start method.\n-s, --strand-specific\nFlag. If set, monoexonic\
-    \ transcripts will be left on\ntheir strand rather than being moved to the unknown\n\
-    strand.\n-sa STRAND_SPECIFIC_ASSEMBLIES, --strand-specific-assemblies STRAND_SPECIFIC_ASSEMBLIES\n\
-    Comma-delimited list of strand specific assemblies.\n--list LIST           Tab-delimited\
-    \ file containing rows with the following\nformat: <file> <label> <strandedness>\n\
-    <score(optional)> <is_reference(optional)>\n<always_keep(optional) strandedness,\
-    \ is_reference and\nalways_keep must be boolean values (True, False) score\nmust\
-    \ be a valid floating number.\n-l LOG, --log LOG     Log file. Optional.\n--lenient\
-    \             Flag. If set, transcripts with only non-canonical\nsplices will\
-    \ be output as well.\n-m MINIMUM_CDNA_LENGTH, --minimum-cdna-length MINIMUM_CDNA_LENGTH\n\
-    Minimum length for transcripts. Default: 200 bps.\n-MI MAX_INTRON_LENGTH, --max-intron-size\
-    \ MAX_INTRON_LENGTH\nMaximum intron length for transcripts. Default:\n1,000,000\
-    \ bps.\n-p PROCS, --procs PROCS\nNumber of processors to use (default None)\n\
-    -scds, --strip_cds    Boolean flag. If set, ignores any CDS/UTR segment.\n--labels\
-    \ LABELS       Labels to attach to the IDs of the transcripts of the\ninput files,\
-    \ separated by comma.\n--single, --single-thread\nDisable multi-threading. Useful\
-    \ for debugging.\n-od OUTPUT_DIR, --output-dir OUTPUT_DIR\nOutput directory. Default:\
-    \ current working directory\n-o OUT, --out OUT     Output file. Default: mikado_prepared.gtf.\n\
-    -of OUT_FASTA, --out_fasta OUT_FASTA\nOutput file. Default: mikado_prepared.fasta.\n\
-    --json-conf JSON_CONF\nConfiguration file.\n-k, --keep-redundant  Boolean flag.\
-    \ If invoked, Mikado prepare will retain\nredundant models.\n--seed SEED     \
-    \      Random seed number.\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: Mikado prepare [-h] [--fasta FASTA] [-v | -q]\n               \
@@ -92,3 +215,4 @@ help_text: "usage: Mikado prepare [-h] [--fasta FASTA] [-v | -q]\n              
   \ number.\n"
 generated_using:
 - --help
+docker_image:

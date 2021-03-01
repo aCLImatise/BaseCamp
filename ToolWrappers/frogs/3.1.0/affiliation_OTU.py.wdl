@@ -28,6 +28,9 @@ task AffiliationOTUpy {
       ~{if defined(summary) then ("--summary " +  '"' + summary + '"') else ""} \
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nb_cpus: "The maximum number of CPUs used. [Default: 1]"
     java_mem: "Java memory allocation in Go. [Default: 2]"

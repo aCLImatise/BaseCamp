@@ -42,6 +42,9 @@ task BcftoolsMerge {
       ~{if defined(regions_file) then ("--regions-file " +  '"' + regions_file + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force_samples: "resolve duplicate sample names"
     print_header: "print only the merged header and exit"

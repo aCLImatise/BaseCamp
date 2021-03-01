@@ -34,6 +34,9 @@ task HalReplaceGenome {
       ~{if (no_top_alignment) then "--noTopAlignment" else ""} \
       ~{if defined(top_alignment_file) then ("--topAlignmentFile " +  '"' + top_alignment_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bottom_alignment_file: ":   hal file containing an alignment of the genome and\\nits children. Required for non-leaf genomes.\\n[default = \\\"\\\"]"
     cache_bytes: ":            maximum size in bytes of regular hdf5 cache [default\\n= 15728640]"

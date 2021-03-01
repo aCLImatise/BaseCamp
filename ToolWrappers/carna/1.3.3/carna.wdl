@@ -29,14 +29,11 @@ task Carna {
     String? ub
     Int? c_d
     Int? time_limit
-    Boolean? verbose
-    File file_one
-    File file_two
+    String verbose
   }
   command <<<
     carna \
-      ~{file_one} \
-      ~{file_two} \
+      ~{verbose} \
       ~{if defined(match) then ("--match " +  '"' + match + '"') else ""} \
       ~{if defined(mismatch) then ("--mismatch " +  '"' + mismatch + '"') else ""} \
       ~{if defined(ribo_sum_file) then ("--ribosum-file " +  '"' + ribo_sum_file + '"') else ""} \
@@ -63,9 +60,11 @@ task Carna {
       ~{if defined(lb) then ("--lb " +  '"' + lb + '"') else ""} \
       ~{if defined(ub) then ("--ub " +  '"' + ub + '"') else ""} \
       ~{if defined(c_d) then ("--c_d " +  '"' + c_d + '"') else ""} \
-      ~{if defined(time_limit) then ("--time-limit " +  '"' + time_limit + '"') else ""} \
-      ~{if (verbose) then "--verbose" else ""}
+      ~{if defined(time_limit) then ("--time-limit " +  '"' + time_limit + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     match: "(50)\\nMatch score"
     mismatch: "(0)\\nMismatch score"
@@ -94,9 +93,7 @@ task Carna {
     ub: "Upper score bound"
     c_d: "(1)\\nRecomputation distance"
     time_limit: "(300000)\\nTime limit in ms (always search first solution; turn off by 0)."
-    verbose: "Verbose"
-    file_one: ""
-    file_two: ""
+    verbose: "RNA sequences and pair probabilities:"
   }
   output {
     File out_stdout = stdout()

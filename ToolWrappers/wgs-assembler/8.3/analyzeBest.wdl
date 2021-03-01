@@ -12,6 +12,9 @@ task AnalyzeBest {
       ~{if defined(e) then ("-e " +  '"' + e + '"') else ""} \
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     c: ""
     e: ""

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean
+
+Lz4_V0_1_0 = CommandToolBuilder(tool="lz4", base_command=["lz4"], inputs=[ToolInput(tag="in_fast_compression_default", input_type=Boolean(optional=True), prefix="-1", doc=InputDocumentation(doc=": Fast compression (default)")), ToolInput(tag="in__high_compression", input_type=Boolean(optional=True), prefix="-9", doc=InputDocumentation(doc=": High compression")), ToolInput(tag="in_decompression_default_extension", input_type=Boolean(optional=True), prefix="-d", doc=InputDocumentation(doc=": decompression (default for .lz4 extension)")), ToolInput(tag="in__force_compression", input_type=Boolean(optional=True), prefix="-z", doc=InputDocumentation(doc=": force compression")), ToolInput(tag="in_overwrite_output_prompting", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc=": overwrite output without prompting")), ToolInput(tag="in_display_version_number", input_type=Boolean(optional=True), prefix="-V", doc=InputDocumentation(doc=": display Version number and exit")), ToolInput(tag="in__verbose_mode", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc=": verbose mode")), ToolInput(tag="in_suppress_warnings_specify", input_type=Boolean(optional=True), prefix="-q", doc=InputDocumentation(doc=": suppress warnings; specify twice to suppress errors too")), ToolInput(tag="in_force_write_is", input_type=Boolean(optional=True), prefix="-c", doc=InputDocumentation(doc=": force write to standard output, even if it is the console")), ToolInput(tag="in_test_compressed_file", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc=": test compressed file integrity")), ToolInput(tag="in_compress_using_compression", input_type=Boolean(optional=True), prefix="-l", doc=InputDocumentation(doc=": compress using Legacy format (Linux kernel compression)")), ToolInput(tag="in_bd", input_type=Boolean(optional=True), prefix="-BD", doc=InputDocumentation(doc=": Block dependency (improve compression ratio)")), ToolInput(tag="in_sx", input_type=Boolean(optional=True), prefix="-Sx", doc=InputDocumentation(doc=": disable stream checksum (default:enabled)")), ToolInput(tag="in__benchmark_files", input_type=Boolean(optional=True), prefix="-b", doc=InputDocumentation(doc=": benchmark file(s)")), ToolInput(tag="in_iteration_loops_only", input_type=Boolean(optional=True), prefix="-i", doc=InputDocumentation(doc="#    : iteration loops [1-9](default : 3), benchmark mode only"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Lz4_V0_1_0().translate("wdl", allow_empty_container=True)
+

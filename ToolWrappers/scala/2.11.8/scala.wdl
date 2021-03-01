@@ -8,6 +8,9 @@ task Scala {
     scala \
       ~{or}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     or: "scala -help"
   }

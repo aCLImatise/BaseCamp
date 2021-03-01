@@ -20,6 +20,9 @@ task VennMplpy {
       ~{if defined(output_file_save) then ("-o " +  '"' + output_file_save + '"') else ""} \
       ~{if (test) then "--test" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_use_leftmost: "File to use for the left-most circle"
     file_use_rightmost: "File to use for the right-most circle"

@@ -4,119 +4,125 @@ command:
 - xlsites
 positional:
 - !Positional
-  description: Input BAM file with mapped reads
+  optional: false
   position: 0
   name: bam
-  optional: false
+  description: Input BAM file with mapped reads
 - !Positional
-  description: Output BED6 file to store data from uniquely mapped reads
+  optional: false
   position: 1
   name: sites_unique
-  optional: false
+  description: Output BED6 file to store data from uniquely mapped reads
 - !Positional
-  description: Output BED6 file to store data from multi-mapped reads
+  optional: false
   position: 2
   name: sites_multi
-  optional: false
+  description: Output BED6 file to store data from multi-mapped reads
 - !Positional
+  optional: false
+  position: 3
+  name: skipped
   description: "Output BAM file to store reads that do not map as expected by segmentation\
     \ and\nreference genome sequence. If read's second start does not fall on any\
     \ of\nsegmentation borders, it is considered problematic. If segmentation is not\
     \ provided,\nevery read in two parts with gap longer than gap_th is not used (skipped).\n\
     All such reads are reported to the user for further exploration"
-  position: 3
-  name: skipped
-  optional: false
 named:
 - !Flag
-  description: ", --group_by       Assign score of a read to either 'start', 'middle'\
-    \ or 'end' nucleotide (default: start)"
+  optional: true
   synonyms:
   - -g
+  - --group_by
+  description: "Assign score of a read to either 'start', 'middle' or 'end' nucleotide\
+    \ (default: start)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Report number of 'cDNA' or number of 'reads' (default: cDNA)"
+  optional: true
   synonyms:
   - --quant
+  description: "Report number of 'cDNA' or number of 'reads' (default: cDNA)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'File with custon segmentation format (obtained by ``iCount segment``)
-    (default: None)'
+  optional: true
   synonyms:
   - --segmentation
+  description: 'File with custon segmentation format (obtained by ``iCount segment``)
+    (default: None)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ", --mismatches   Reads on same position with random barcode differing\
-    \ less than\n``mismatches`` are grouped together (default: 2)"
+  optional: true
   synonyms:
   - -mis
+  - --mismatches
+  description: "Reads on same position with random barcode differing less than\n``mismatches``\
+    \ are grouped together (default: 2)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Ignore hits with MAPQ < mapq_th (default: 0)'
+  optional: true
   synonyms:
   - --mapq_th
+  description: 'Ignore hits with MAPQ < mapq_th (default: 0)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Ignore reads, mapped to more than ``multimax`` places (default: 50)'
+  optional: true
   synonyms:
   - --multimax
+  description: 'Ignore reads, mapped to more than ``multimax`` places (default: 50)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Reads with gaps less than gap_th are treated as if they have no gap
-    (default: 4)'
+  optional: true
   synonyms:
   - --gap_th
+  description: 'Reads with gaps less than gap_th are treated as if they have no gap
+    (default: 4)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Switch to report progress (default: False)'
+  optional: true
   synonyms:
   - -prog
   - --report_progress
+  description: 'Switch to report progress (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ', --stdout_log     Threshold value (0-50) for logging to stdout. If
-    0, logging to stdout if turned OFF.'
+  optional: true
   synonyms:
   - -S
+  - --stdout_log
+  description: Threshold value (0-50) for logging to stdout. If 0, logging to stdout
+    if turned OFF.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ', --file_log       Threshold value (0-50) for logging to file. If
-    0, logging to file if turned OFF.'
+  optional: true
   synonyms:
   - -F
+  - --file_log
+  description: Threshold value (0-50) for logging to file. If 0, logging to file if
+    turned OFF.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ', --file_logpath   Path to log file.'
+  optional: true
   synonyms:
   - -P
+  - --file_logpath
+  description: Path to log file.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ', --results_file   File into which to store Metrics.'
+  optional: true
   synonyms:
   - -M
+  - --results_file
+  description: File into which to store Metrics.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: iCount xlsites [-h] [-g] [--quant] [--segmentation] [-mis] [--mapq_th]\n\
@@ -194,3 +200,4 @@ help_text: "usage: iCount xlsites [-h] [-g] [--quant] [--segmentation] [-mis] [-
   \   File into which to store Metrics.\n"
 generated_using:
 - --help
+docker_image:

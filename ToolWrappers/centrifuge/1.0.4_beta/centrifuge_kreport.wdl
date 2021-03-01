@@ -18,6 +18,9 @@ task Centrifugekreport {
       ~{if defined(min_score) then ("--min-score " +  '"' + min_score + '"') else ""} \
       ~{if defined(min_length) then ("--min-length " +  '"' + min_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     required_centrifuge_index: "(REQUIRED) Centrifuge index"
     no_lca: "Do not report the LCA of multiple assignments, but report count fractions at the taxa."

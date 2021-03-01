@@ -4,6 +4,9 @@ task Seatac {
   command <<<
     seatac
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -8,6 +8,9 @@ task Freq2grouppl {
     freq2group_pl \
       ~{freq}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     freq: "Bin     Count"
   }

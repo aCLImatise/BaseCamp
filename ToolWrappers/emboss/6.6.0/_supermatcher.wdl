@@ -20,6 +20,9 @@ task Supermatcher {
       ~{if (word_len) then "-wordlen" else ""} \
       ~{if (errfile) then "-errfile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gap_open: "float      [10.0 for any sequence type] Gap opening\\npenalty (Number from 0.000 to 100.000)"
     gap_extend: "float      [0.5 for any sequence type] Gap extension\\npenalty (Number from 0.000 to 10.000)"

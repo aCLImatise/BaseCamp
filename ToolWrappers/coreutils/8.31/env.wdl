@@ -26,6 +26,9 @@ task Env {
       ~{if (list_signal_handling) then "--list-signal-handling" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_environment: "start with an empty environment"
     null: "end each output line with NUL, not newline"

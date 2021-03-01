@@ -14,6 +14,9 @@ task Anvigenphylogenomictree {
       ~{if defined(program) then ("--program " +  '"' + program + '"') else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "File path to store results."
     program: "Program name.\\n"

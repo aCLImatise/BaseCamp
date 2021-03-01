@@ -4,214 +4,214 @@ command:
 positional: []
 named:
 - !Flag
-  description: '[--machine MACHINE] [--compiler COMPILER]'
+  optional: true
   synonyms:
   - --res
+  description: '[--machine MACHINE] [--compiler COMPILER]'
   args: !SimpleFlagArg
     name: GRID
-  optional: true
 - !Flag
-  description: Print debug information (very verbose) to file /create_newcase.log
+  optional: true
   synonyms:
   - -d
   - --debug
+  description: Print debug information (very verbose) to file /create_newcase.log
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Add additional context (time and file) to log messages
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: Add additional context (time and file) to log messages
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Print only warnings and error messages
+  optional: true
   synonyms:
   - -s
   - --silent
+  description: Print only warnings and error messages
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --case
+  - -case
   description: "(required) Specify the case name.\nIf this is simply a name (not a\
     \ path), the case directory is created in the current working directory.\nThis\
     \ can also be a relative or absolute path specifying where the case should be\
     \ created;\nwith this usage, the name of the case will be the last component of\
     \ the path."
-  synonyms:
-  - --case
-  - -case
   args: !SimpleFlagArg
     name: CASENAME
-  optional: true
 - !Flag
-  description: "(required) Specify a compset.\nTo see list of current compsets, use\
-    \ the utility ./query_config --compsets in this directory."
+  optional: true
   synonyms:
   - --compset
   - -compset
+  description: "(required) Specify a compset.\nTo see list of current compsets, use\
+    \ the utility ./query_config --compsets in this directory."
   args: !SimpleFlagArg
     name: COMPSET
-  optional: true
 - !Flag
-  description: "Specify a machine. The default value is the match to NODENAME_REGEX\
-    \ in config_machines.xml. To see\nthe list of current machines, invoke ./query_config\
-    \ --machines."
+  optional: true
   synonyms:
   - --machine
   - -mach
+  description: "Specify a machine. The default value is the match to NODENAME_REGEX\
+    \ in config_machines.xml. To see\nthe list of current machines, invoke ./query_config\
+    \ --machines."
   args: !SimpleFlagArg
     name: MACHINE
-  optional: true
 - !Flag
-  description: "Specify a compiler.\nTo see list of supported compilers for each machine,\
-    \ use the utility\n./query_config --machines in this directory.\nThe default value\
-    \ will be the first one listed."
+  optional: true
   synonyms:
   - --compiler
   - -compiler
+  description: "Specify a compiler.\nTo see list of supported compilers for each machine,\
+    \ use the utility\n./query_config --machines in this directory.\nThe default value\
+    \ will be the first one listed."
   args: !SimpleFlagArg
     name: COMPILER
-  optional: true
 - !Flag
-  description: "Specify that --ninst should modify the number of driver/coupler instances.\n\
-    The default is to have one driver/coupler supporting multiple component instances."
+  optional: true
   synonyms:
   - --multi-driver
+  description: "Specify that --ninst should modify the number of driver/coupler instances.\n\
+    The default is to have one driver/coupler supporting multiple component instances."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ninst
   description: "Specify number of model ensemble instances.\nThe default is multiple\
     \ components and one driver/coupler.\nUse --multi-driver to run multiple driver/couplers\
     \ in the ensemble."
-  synonyms:
-  - --ninst
   args: !SimpleFlagArg
     name: NINST
-  optional: true
 - !Flag
-  description: "Specify the MPI library. To see list of supported mpilibs for each\
-    \ machine, invoke ./query_config --machines.\nThe default is the first listing\
-    \ in MPILIBS in config_machines.xml."
+  optional: true
   synonyms:
   - --mpilib
   - -mpilib
+  description: "Specify the MPI library. To see list of supported mpilibs for each\
+    \ machine, invoke ./query_config --machines.\nThe default is the first listing\
+    \ in MPILIBS in config_machines.xml."
   args: !SimpleFlagArg
     name: MPILIB
-  optional: true
 - !Flag
-  description: Specify a project id as used in batch system accounting.
+  optional: true
   synonyms:
   - --project
   - -project
+  description: Specify a project id as used in batch system accounting.
   args: !SimpleFlagArg
     name: PROJECT
-  optional: true
 - !Flag
-  description: "Specify a target size description for the number of cores.\nThis is\
-    \ used to query the appropriate config_pes.xml file and find the\noptimal PE-layout\
-    \ for your case - if it exists there.\nAllowed options are  ('S','M','L','X1','X2','[0-9]x[0-9]','[0-9]')."
+  optional: true
   synonyms:
   - --pecount
   - -pecount
+  description: "Specify a target size description for the number of cores.\nThis is\
+    \ used to query the appropriate config_pes.xml file and find the\noptimal PE-layout\
+    \ for your case - if it exists there.\nAllowed options are  ('S','M','L','X1','X2','[0-9]x[0-9]','[0-9]')."
   args: !SimpleFlagArg
     name: PECOUNT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --user-mods-dir
   description: "Full pathname to a directory containing any combination of user_nl_*\
     \ files\nand a shell_commands script (typically containing xmlchange commands).\n\
     The directory can also contain an SourceMods/ directory with the same structure\n\
     as would be found in a case directory."
-  synonyms:
-  - --user-mods-dir
   args: !SimpleFlagArg
     name: USER_MODS_DIR
-  optional: true
 - !Flag
-  description: "Full pathname of an optional pes specification file.\nThe file can\
-    \ follow either the config_pes.xml or the env_mach_pes.xml format."
+  optional: true
   synonyms:
   - --pesfile
+  description: "Full pathname of an optional pes specification file.\nThe file can\
+    \ follow either the config_pes.xml or the env_mach_pes.xml format."
   args: !SimpleFlagArg
     name: PESFILE
-  optional: true
 - !Flag
-  description: "Full pathname of config grid file to use.\nThis should be a copy of\
-    \ config/config_grids.xml with the new user grid changes added to it."
+  optional: true
   synonyms:
   - --gridfile
+  description: "Full pathname of config grid file to use.\nThis should be a copy of\
+    \ config/config_grids.xml with the new user grid changes added to it."
   args: !SimpleFlagArg
     name: GRIDFILE
-  optional: true
 - !Flag
-  description: A workflow from config_workflow.xml to apply to this case.
+  optional: true
   synonyms:
   - --workflow
+  description: A workflow from config_workflow.xml to apply to this case.
   args: !SimpleFlagArg
     name: WORKFLOW
-  optional: true
 - !Flag
-  description: Alternative pathname for source root directory. The default is cimeroot/../
+  optional: true
   synonyms:
   - --srcroot
+  description: Alternative pathname for source root directory. The default is cimeroot/../
   args: !SimpleFlagArg
     name: SRCROOT
-  optional: true
 - !Flag
-  description: Alternative pathname for the directory where case output is written.
+  optional: true
   synonyms:
   - --output-root
+  description: Alternative pathname for the directory where case output is written.
   args: !SimpleFlagArg
     name: OUTPUT_ROOT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --walltime
   description: "Set the wallclock limit for this case in the format (the usual format\
     \ is HH:MM:SS).\nYou may use env var CIME_GLOBAL_WALLTIME to set this.\nIf CIME_GLOBAL_WALLTIME\
     \ is not defined in the environment, then the walltime\nwill be the maximum allowed\
     \ time defined for the queue in config_batch.xml."
-  synonyms:
-  - --walltime
   args: !SimpleFlagArg
     name: WALLTIME
-  optional: true
 - !Flag
-  description: Force batch system to use the specified queue.
+  optional: true
   synonyms:
   - -q
   - --queue
+  description: Force batch system to use the specified queue.
   args: !SimpleFlagArg
     name: QUEUE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --handle-preexisting-dirs
   description: "Do not query how to handle pre-existing bld/exe dirs.\nValid options\
     \ are (a)bort (r)eplace or (u)se existing.\nThis can be useful if you need to\
     \ run create_newcase non-iteractively."
-  synonyms:
-  - --handle-preexisting-dirs
   args: !ChoiceFlagArg
     choices: !!set
-      a:
       r:
       u:
-  optional: true
+      a:
 - !Flag
-  description: "Use a non-default location for input files. This will change the xml\
-    \ value of DIN_LOC_ROOT.\n"
+  optional: true
   synonyms:
   - -i
   - --input-dir
+  description: "Use a non-default location for input files. This will change the xml\
+    \ value of DIN_LOC_ROOT.\n"
   args: !SimpleFlagArg
     name: INPUT_DIR
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: create_newcase [-h] [-d] [-v] [-s] --case CASENAME --compset COMPSET\n\
@@ -287,3 +287,4 @@ help_text: "usage: create_newcase [-h] [-d] [-v] [-s] --case CASENAME --compset 
   \ location for input files. This will change the xml value of DIN_LOC_ROOT.\n"
 generated_using:
 - --help
+docker_image:

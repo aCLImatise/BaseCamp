@@ -38,6 +38,9 @@ task CMV {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     model_file: "Path to covariance model file"
     alignment_file: "Path to stockholm alignment file"

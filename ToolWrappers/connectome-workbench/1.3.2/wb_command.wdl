@@ -28,6 +28,9 @@ task WbCommand {
       ~{if (list_deprecated_commands) then "-list-deprecated-commands" else ""} \
       ~{if (all_commands_help) then "-all-commands-help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arguments_help: "explain the format of subcommand help info"
     global_options: "display options that can be added to any command"

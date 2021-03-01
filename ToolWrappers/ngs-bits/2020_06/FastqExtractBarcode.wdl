@@ -18,6 +18,9 @@ task FastqExtractBarcode {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "input fastq file1."
     out_main: "output filename for main fastq."

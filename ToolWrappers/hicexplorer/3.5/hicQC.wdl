@@ -6,22 +6,22 @@ task HicQC {
     Array[String] labels
     Directory? output_folder
     Int? dpi
-    Int matrix_two_qc_folder_slash_qc_dot_log
   }
   command <<<
     hicQC \
-      ~{matrix_two_qc_folder_slash_qc_dot_log} \
       ~{if defined(log_files) then ("--logfiles " +  '"' + log_files + '"') else ""} \
       ~{if defined(labels) then ("--labels " +  '"' + labels + '"') else ""} \
       ~{if defined(output_folder) then ("--outputFolder " +  '"' + output_folder + '"') else ""} \
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_files: "Path to the log files to be processed"
     labels: "Label to assign to each log file. Each label should be\\nseparated by a space. Quote labels that contain\\nspaces: E.g. --labels label1 \\\"labels 2\\\""
     output_folder: "Several files with be saved under this folder: A table\\ncontaining the results and a html file with several\\nimages."
     dpi: "Image resolution. By default high resolution png\\nimages with a 200 dpi are created."
-    matrix_two_qc_folder_slash_qc_dot_log: ""
   }
   output {
     File out_stdout = stdout()

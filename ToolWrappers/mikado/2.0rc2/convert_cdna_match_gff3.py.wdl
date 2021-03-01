@@ -12,10 +12,7 @@ task ConvertCdnaMatchGff3py {
     String exonerate
     String into
     String either
-    String match_slash_match_part
-    String or
-    String gtf
-    File file_dot
+    String match
   }
   command <<<
     convert_cdna_match_gff3_py \
@@ -29,11 +26,11 @@ task ConvertCdnaMatchGff3py {
       ~{exonerate} \
       ~{into} \
       ~{either} \
-      ~{match_slash_match_part} \
-      ~{or} \
-      ~{gtf} \
-      ~{file_dot}
+      ~{match}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     script: ""
     to: ""
@@ -45,10 +42,7 @@ task ConvertCdnaMatchGff3py {
     exonerate: ""
     into: ""
     either: ""
-    match_slash_match_part: ""
-    or: ""
-    gtf: ""
-    file_dot: ""
+    match: ""
   }
   output {
     File out_stdout = stdout()

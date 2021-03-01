@@ -12,12 +12,12 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - --fasta
+    description: ''
     args: !SimpleFlagArg
       name: FASTA
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -29,12 +29,12 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --fasta
+        description: ''
         args: !SimpleFlagArg
           name: FASTA
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -46,12 +46,12 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --fasta
+            description: ''
             args: !SimpleFlagArg
               name: FASTA
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -63,95 +63,16 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --fasta
+                description: ''
                 args: !SimpleFlagArg
                   name: FASTA
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: Include this flag to trigger debug-level logging.
-                  synonyms:
-                  - -v
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: 'Edit distance to tolerate in matched reference sites
-                    [default: 3]'
-                  synonyms:
-                  - -e
-                  - --edits
-                  args: !SimpleFlagArg
-                    name: EDIT_TOLERANCE
-                  optional: true
-                - !Flag
-                  description: Absolute path to FASTA query file.
-                  synonyms:
-                  - -f
-                  - --fasta
-                  args: !SimpleFlagArg
-                    name: FASTA
-                  optional: true
-                - !Flag
-                  description: Absolute path to mtsv index file.
-                  synonyms:
-                  - -i
-                  - --index
-                  args: !SimpleFlagArg
-                    name: INDEX
-                  optional: true
-                - !Flag
-                  description: 'Skip seeds with more than MAX_HITS hits. [default:
-                    20000]'
-                  synonyms:
-                  - --max-hits
-                  args: !SimpleFlagArg
-                    name: MAX_HITS
-                  optional: true
-                - !Flag
-                  description: "Set to override minimum number of seeds to perform\
-                    \ alignment of a candidate site.\n[default: 2]"
-                  synonyms:
-                  - --min-seeds
-                  args: !SimpleFlagArg
-                    name: MIN_SEEDS
-                  optional: true
-                - !Flag
-                  description: 'Number of worker threads to spawn. [default: 4]'
-                  synonyms:
-                  - -t
-                  - --threads
-                  args: !SimpleFlagArg
-                    name: NUM_THREADS
-                  optional: true
-                - !Flag
-                  description: Path to write results file to.
-                  synonyms:
-                  - -r
-                  - --results
-                  args: !SimpleFlagArg
-                    name: RESULTS_PATH
-                  optional: true
-                - !Flag
-                  description: 'Set to override gap between seeds used for initial
-                    exact match. [default: 3]'
-                  synonyms:
-                  - --seed-gap
-                  args: !SimpleFlagArg
-                    name: SEED_GAP
-                  optional: true
-                - !Flag
-                  description: 'Set to override inital exact match query size. [default:
-                    20]'
-                  synonyms:
-                  - --seed-size
-                  args: !SimpleFlagArg
-                    name: SEED_SIZE
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
@@ -159,13 +80,160 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --fasta
+                    description: ''
                     args: !SimpleFlagArg
                       name: FASTA
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -v
+                      description: Include this flag to trigger debug-level logging.
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -e
+                      - --edits
+                      description: 'Edit distance to tolerate in matched reference
+                        sites [default: 3]'
+                      args: !SimpleFlagArg
+                        name: EDIT_TOLERANCE
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -f
+                      - --fasta
+                      description: Absolute path to FASTA query file.
+                      args: !SimpleFlagArg
+                        name: FASTA
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -i
+                      - --index
+                      description: Absolute path to mtsv index file.
+                      args: !SimpleFlagArg
+                        name: INDEX
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --max-hits
+                      description: 'Skip seeds with more than MAX_HITS hits. [default:
+                        20000]'
+                      args: !SimpleFlagArg
+                        name: MAX_HITS
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --min-seeds
+                      description: "Set to override minimum number of seeds to perform\
+                        \ alignment of a candidate site.\n[default: 2]"
+                      args: !SimpleFlagArg
+                        name: MIN_SEEDS
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -t
+                      - --threads
+                      description: 'Number of worker threads to spawn. [default: 4]'
+                      args: !SimpleFlagArg
+                        name: NUM_THREADS
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -r
+                      - --results
+                      description: Path to write results file to.
+                      args: !SimpleFlagArg
+                        name: RESULTS_PATH
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --seed-gap
+                      description: 'Set to override gap between seeds used for initial
+                        exact match. [default: 3]'
+                      args: !SimpleFlagArg
+                        name: SEED_GAP
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --seed-size
+                      description: 'Set to override inital exact match query size.
+                        [default: 20]'
+                      args: !SimpleFlagArg
+                        name: SEED_SIZE
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --fasta
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: FASTA
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "error: Found argument 'FLAGS' which wasn't expected,\
+                        \ or isn't valid in this context\n\nUSAGE:\n    mtsv-binner\
+                        \ [FLAGS] [OPTIONS] --fasta <FASTA> --index <INDEX>\n\nFor\
+                        \ more information try --help\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: Prints help information
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -V
+                      - --version
+                      description: Prints version information
+                      args: !EmptyFlagArg {}
+                    help_text: "mtsv 0.4.0\nAdam Perry <adam.n.perry@gmail.com>:Tsosie\
+                      \ Schneider <tes87@nau.edu>\nMetagenomics binning tool.\n\n\
+                      USAGE:\n    mtsv-binner [FLAGS] [OPTIONS] --fasta <FASTA> --index\
+                      \ <INDEX>\n\nFLAGS:\n    -v               Include this flag\
+                      \ to trigger debug-level logging.\n    -h, --help       Prints\
+                      \ help information\n    -V, --version    Prints version information\n\
+                      \nOPTIONS:\n    -e, --edits <EDIT_TOLERANCE>    Edit distance\
+                      \ to tolerate in matched reference sites [default: 3]\n    -f,\
+                      \ --fasta <FASTA>             Absolute path to FASTA query file.\n\
+                      \    -i, --index <INDEX>             Absolute path to mtsv index\
+                      \ file.\n        --max-hits <MAX_HITS>       Skip seeds with\
+                      \ more than MAX_HITS hits. [default: 20000]\n        --min-seeds\
+                      \ <MIN_SEEDS>     Set to override minimum number of seeds to\
+                      \ perform alignment of a candidate site.\n                 \
+                      \                   [default: 2]\n    -t, --threads <NUM_THREADS>\
+                      \     Number of worker threads to spawn. [default: 4]\n    -r,\
+                      \ --results <RESULTS_PATH>    Path to write results file to.\n\
+                      \        --seed-gap <SEED_GAP>       Set to override gap between\
+                      \ seeds used for initial exact match. [default: 3]\n       \
+                      \ --seed-size <SEED_SIZE>     Set to override inital exact match\
+                      \ query size. [default: 20]\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -175,24 +243,12 @@ subcommands:
                     \ or isn't valid in this context\n\nUSAGE:\n    mtsv-binner [FLAGS]\
                     \ [OPTIONS] --fasta <FASTA> --index <INDEX>\n\nFor more information\
                     \ try --help\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: Prints help information
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: Prints version information
-                  synonyms:
-                  - -V
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "mtsv 0.4.0\nAdam Perry <adam.n.perry@gmail.com>:Tsosie\
                   \ Schneider <tes87@nau.edu>\nMetagenomics binning tool.\n\nUSAGE:\n\
                   \    mtsv-binner [FLAGS] [OPTIONS] --fasta <FASTA> --index <INDEX>\n\
@@ -213,6 +269,7 @@ subcommands:
                   \ exact match. [default: 3]\n        --seed-size <SEED_SIZE>   \
                   \  Set to override inital exact match query size. [default: 20]\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -222,6 +279,7 @@ subcommands:
                 \ isn't valid in this context\n\nUSAGE:\n    mtsv-binner [FLAGS] [OPTIONS]\
                 \ --fasta <FASTA> --index <INDEX>\n\nFor more information try --help\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -246,6 +304,7 @@ subcommands:
               \ --seed-size <SEED_SIZE>     Set to override inital exact match query\
               \ size. [default: 20]\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -255,6 +314,7 @@ subcommands:
             \ valid in this context\n\nUSAGE:\n    mtsv-binner [FLAGS] [OPTIONS] --fasta\
             \ <FASTA> --index <INDEX>\n\nFor more information try --help\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -278,6 +338,7 @@ subcommands:
           \        --seed-size <SEED_SIZE>     Set to override inital exact match\
           \ query size. [default: 20]\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -287,6 +348,7 @@ subcommands:
         \ in this context\n\nUSAGE:\n    mtsv-binner [FLAGS] [OPTIONS] --fasta <FASTA>\
         \ --index <INDEX>\n\nFor more information try --help\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -309,6 +371,7 @@ subcommands:
       \      --seed-size <SEED_SIZE>     Set to override inital exact match query\
       \ size. [default: 20]\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -318,6 +381,7 @@ subcommands:
     \ in this context\n\nUSAGE:\n    mtsv-binner [FLAGS] [OPTIONS] --fasta <FASTA>\
     \ --index <INDEX>\n\nFor more information try --help\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -339,3 +403,4 @@ help_text: "mtsv 0.4.0\nAdam Perry <adam.n.perry@gmail.com>:Tsosie Schneider <te
   \ 3]\n        --seed-size <SEED_SIZE>     Set to override inital exact match query\
   \ size. [default: 20]\n"
 generated_using: *id004
+docker_image:

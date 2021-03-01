@@ -3,12 +3,12 @@ id: splitchr.py_size.cwl
 inputs:
 - id: in_reformat
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reformat
 - id: in_bed
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --bed
 - id: in_split_chr_do_tpy
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - splitchr.py

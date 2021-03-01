@@ -16,6 +16,9 @@ task SplashEvalreadsBam {
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     b: ""

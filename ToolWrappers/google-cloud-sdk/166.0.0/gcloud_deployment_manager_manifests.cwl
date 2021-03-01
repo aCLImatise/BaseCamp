@@ -1,12 +1,6 @@
 class: CommandLineTool
 id: gcloud_deployment_manager_manifests.cwl
 inputs:
-- id: in_deployment
-  doc: "To see the list of all manifests in a deployment, run:\n$ gcloud deployment-manager\
-    \ manifests list --deployment my-deployment\n"
-  type: string
-  inputBinding:
-    prefix: --deployment
 - id: in_manifests
   doc: SYNOPSIS
   type: string
@@ -26,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

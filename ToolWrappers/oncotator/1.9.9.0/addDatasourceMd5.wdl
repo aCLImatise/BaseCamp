@@ -8,6 +8,9 @@ task AddDatasourceMd5 {
     addDatasourceMd5 \
       ~{ds_dir}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ds_dir: "datasource directory.  This should be the genome_build dir inside a datasource dir."
   }

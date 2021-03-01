@@ -1,0 +1,133 @@
+!Command
+command:
+- run_panacota.py
+- align
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: Core or persistent genome whose families must be aligned.
+  args: !SimpleFlagArg
+    name: COREPERS
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: "File containing the list of all the genomes you want to\nalign from\
+    \ their core/persistent families. 1 genome per\nline: it can be the LSTINFO-<list_file>.lst\
+    \ file of\n'PanACoTA annotate' module. Here, only the first column\n(genome name\
+    \ without extension) will be used. The final\nalignment file will contain 1 alignment\
+    \ per genome in\nthis file."
+  args: !SimpleFlagArg
+    name: LIST_GENOMES
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "Name of the dataset which will be aligned (for example,\nSAEN1234\
+    \ for 1234 Salmonella enterica genomes). This name\nwill be used to name the alignment\
+    \ file."
+  args: !SimpleFlagArg
+    name: DATASET_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "Path to the folder containing the directories 'Proteins'\nand 'Genes',\
+    \ created by 'PanACoTA annotate'."
+  args: !SimpleFlagArg
+    name: DBPATH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Output directory, where all results must be saved
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: "add this option if you want to parallelize on several\nthreads. Indicate\
+    \ on how many threads you want to\nparallelize. By default, it uses 1 thread.\
+    \ Put 0 if you\nwant to use all threads of your computer."
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --force
+  description: "Force run: Add this option if you want to redo all\nalignments for\
+    \ all families, even if their result file\nalready exists. Without this option,\
+    \ if an alignment file\nalready exists, it will be used for the next step. If\
+    \ you\nwant to redo only a given alignment, just delete its\nfile, without using\
+    \ this option."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Increase verbosity in stdout/stderr.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: "Do not display anything to stdout/stderr. log files will\nstill be\
+    \ created."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: run_panacota.py align -c COREPERS -l LIST_GENOMES -n DATASET_NAME\
+  \ -d\n                             DBPATH -o OUTDIR [--threads THREADS] [-F] [-v]\n\
+  \                             [-q] [-h]\n\n ___                 _____  ___     \
+  \    _____  _____\n(  _`\\              (  _  )(  _`\\      (_   _)(  _  )\n| |_)\
+  \ )  _ _   ___  | (_) || ( (_)   _   | |  | (_) |\n| ,__/'/'_` )/' _ `\\|  _  ||\
+  \ |  _  /'_`\\ | |  |  _  |\n| |   ( (_| || ( ) || | | || (_( )( (_) )| |  | | |\
+  \ |\n(_)   `\\__,_)(_) (_)(_) (_)(____/'`\\___/'(_)  (_) (_)\n\n       Large scale\
+  \ comparative genomics tools\n\n     -------------------------------------------\n\
+  \n=> Align Core/Persistent families\n\nRequired arguments:\n  -c COREPERS      \
+  \  Core or persistent genome whose families must be aligned.\n  -l LIST_GENOMES\
+  \    File containing the list of all the genomes you want to\n                 \
+  \    align from their core/persistent families. 1 genome per\n                 \
+  \    line: it can be the LSTINFO-<list_file>.lst file of\n                     'PanACoTA\
+  \ annotate' module. Here, only the first column\n                     (genome name\
+  \ without extension) will be used. The final\n                     alignment file\
+  \ will contain 1 alignment per genome in\n                     this file.\n  -n\
+  \ DATASET_NAME    Name of the dataset which will be aligned (for example,\n    \
+  \                 SAEN1234 for 1234 Salmonella enterica genomes). This name\n  \
+  \                   will be used to name the alignment file.\n  -d DBPATH      \
+  \    Path to the folder containing the directories 'Proteins'\n                \
+  \     and 'Genes', created by 'PanACoTA annotate'.\n  -o OUTDIR          Output\
+  \ directory, where all results must be saved\n\nOptional arguments:\n  --threads\
+  \ THREADS  add this option if you want to parallelize on several\n             \
+  \        threads. Indicate on how many threads you want to\n                   \
+  \  parallelize. By default, it uses 1 thread. Put 0 if you\n                   \
+  \  want to use all threads of your computer.\n  -F, --force        Force run: Add\
+  \ this option if you want to redo all\n                     alignments for all families,\
+  \ even if their result file\n                     already exists. Without this option,\
+  \ if an alignment file\n                     already exists, it will be used for\
+  \ the next step. If you\n                     want to redo only a given alignment,\
+  \ just delete its\n                     file, without using this option.\n\nOthers:\n\
+  \  -v, --verbose      Increase verbosity in stdout/stderr.\n  -q, --quiet      \
+  \  Do not display anything to stdout/stderr. log files will\n                  \
+  \   still be created.\n  -h, --help         show this help message and exit\n\n\
+  For more details, see PanACoTA documentation.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/panacota:1.2.0--py_0

@@ -40,6 +40,9 @@ task RemuRNA {
       ~{if (mutations) then "--mutations" else ""} \
       ~{if (no_dangle) then "--nodangle" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     na: "=RNA (default) | DNA"
     energy: "=|sig| (default) | sig"

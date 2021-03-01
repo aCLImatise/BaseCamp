@@ -5,7 +5,7 @@ inputs:
   doc: "Type of file to be imported. If not specified, file\ntype will be determined\
     \ by the file extension given.\nAvailable choices are: CSV, TSV, JSON, Excel,\
     \ HDF5,\nParquet, MsgPack, Stata, Pickle, SQLite, ARFF, GCT,\nKallisto, GEO, Salmon"
-  type: File
+  type: File?
   inputBinding:
     prefix: --input_file_type
 - id: in_output_file_type
@@ -13,40 +13,40 @@ inputs:
     \ be determined by the file\nextension given. Available choices are: CSV, TSV,\n\
     JSON, Excel, HDF5, Parquet, MsgPack, Stata, Pickle,\nSQLite, ARFF, GCT, RMarkdown,\
     \ JupyterNotebook"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_file_type
 - id: in_transpose
   doc: Transpose index and columns in the output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --transpose
 - id: in_filter_data_using
   doc: "\"FILTER\", --filter \"FILTER\"\nFilter data using python logical syntax.\
     \ Your filter\nmust be surrounded by quotes. For example: -f\n\"ColumnName1 >\
     \ 12.5 and (ColumnName2 == 'x' or\nColumnName2 =='y')\""
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_columns
   doc: "List of additional column names to include in the\noutput file. Column names\
     \ must be seperated by commas\nand without spaces. For example: -c\nColumnName1,ColumnName2,ColumnName3"
-  type: File
+  type: File?
   inputBinding:
     prefix: --columns
 - id: in_all_columns
   doc: "Includes all columns in the output file. Overrides the\n\"--columns\" flag"
-  type: File
+  type: File?
   inputBinding:
     prefix: --all_columns
 - id: in_gzip
   doc: Gzips the output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --gzip
 - id: in_set_index
   doc: "Sets the given column to become the index column,\nwhere appropriate.\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --set_index
 - id: in_input_file
@@ -65,25 +65,26 @@ outputs:
   type: stdout
 - id: out_transpose
   doc: Transpose index and columns in the output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_transpose)
 - id: out_columns
   doc: "List of additional column names to include in the\noutput file. Column names\
     \ must be seperated by commas\nand without spaces. For example: -c\nColumnName1,ColumnName2,ColumnName3"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_columns)
 - id: out_all_columns
   doc: "Includes all columns in the output file. Overrides the\n\"--columns\" flag"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_all_columns)
 - id: out_gzip
   doc: Gzips the output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_gzip)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ss

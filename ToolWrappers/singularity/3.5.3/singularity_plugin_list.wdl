@@ -10,6 +10,9 @@ task SingularityPluginList {
       ~{enabled} \
       ~{yes}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     enabled: "NAME"
     yes: "example.org/plugin"

@@ -4,48 +4,48 @@ inputs:
 - id: in_num_top_targets
   doc: "number of top scoring target genomes to report per\nquery genome (default:\
     \ 1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --num_top_targets
 - id: in_taxonomy_file
   doc: "file indicating taxonomic identification of all target\ngenomes"
-  type: File
+  type: File?
   inputBinding:
     prefix: --taxonomy_file
 - id: in_evalue
   doc: "e-value cutoff for identifying initial blast hits\n(default: 0.001)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --evalue
 - id: in_per_identity
   doc: 'percent identity for defining homology (default: 30.0)'
-  type: double
+  type: double?
   inputBinding:
     prefix: --per_identity
 - id: in_per_aln_len
   doc: "percent alignment length of query sequence for\ndefining homology (default:\
     \ 70.0)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --per_aln_len
 - id: in_file_ext
   doc: 'extension of files to process (default: fna)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --file_ext
 - id: in_keep_r_bhs
   doc: create file with reciprocal best hits
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep_rbhs
 - id: in_cpus
   doc: 'number of CPUs to use (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --cpus
 - id: in_silent
   doc: suppress output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --silent
 - id: in_identify_similar_genomes
@@ -77,6 +77,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - comparem

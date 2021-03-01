@@ -54,6 +54,9 @@ task DeepModpyDetect {
       ~{if defined(signal_group) then ("--SignalGroup " +  '"' + signal_group + '"') else ""} \
       ~{if (move) then "--move" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "The reference sequence"
     pred_det: "pred first and then detect (1) or only detect (0). Default: 1"

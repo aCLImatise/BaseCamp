@@ -10,6 +10,9 @@ task BedIntersectBasewisepy {
       ~{bed_file_one} \
       ~{bed_file_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_file_one: ""
     bed_file_two: ""

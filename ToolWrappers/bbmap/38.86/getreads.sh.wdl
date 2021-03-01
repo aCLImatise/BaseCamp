@@ -8,6 +8,9 @@ task Getreadssh {
     getreads_sh \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
   }

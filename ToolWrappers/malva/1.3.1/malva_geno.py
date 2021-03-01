@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String
+
+Malva_Geno_V0_1_0 = CommandToolBuilder(tool="malva_geno", base_command=["malva-geno"], inputs=[ToolInput(tag="in_km_er_size", input_type=Boolean(optional=True), prefix="--kmer-size", doc=InputDocumentation(doc="size of the kmers to index (default:35)")), ToolInput(tag="in_ref_km_er_size", input_type=Boolean(optional=True), prefix="--ref-kmer-size", doc=InputDocumentation(doc="size of the reference kmers to index (default:43)")), ToolInput(tag="in_error_rate", input_type=Boolean(optional=True), prefix="--error-rate", doc=InputDocumentation(doc="expected sample error rate (default:0.001)")), ToolInput(tag="in_samples", input_type=Boolean(optional=True), prefix="--samples", doc=InputDocumentation(doc="file containing the list of (VCF) samples to consider (default:-, i.e. all samples)")), ToolInput(tag="in_freq_key", input_type=Boolean(optional=True), prefix="--freq-key", doc=InputDocumentation(doc="a priori frequency key in the INFO column of the input VCF (default:AF)")), ToolInput(tag="in_max_coverage", input_type=Boolean(optional=True), prefix="--max-coverage", doc=InputDocumentation(doc="maximum coverage for variant alleles (default:200)")), ToolInput(tag="in_bf_size", input_type=Boolean(optional=True), prefix="--bf-size", doc=InputDocumentation(doc="bloom filter size in GB (default:4)")), ToolInput(tag="in_strip_chr", input_type=Boolean(optional=True), prefix="--strip-chr", doc=InputDocumentation(doc="strip 'chr' from sequence names (default:false)")), ToolInput(tag="in_uniform", input_type=Boolean(optional=True), prefix="--uniform", doc=InputDocumentation(doc="use uniform a priori probabilities (default:false)")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="output COVS and GTS in INFO column (default: false)")), ToolInput(tag="in_haploid", input_type=Boolean(optional=True), prefix="--haploid", doc=InputDocumentation(doc="run MALVA in haploid mode (default: false)")), ToolInput(tag="in_reference_dot_fa", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_variants_dot_vcf", input_type=String(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_kmc_output_prefix", input_type=String(), position=2, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Malva_Geno_V0_1_0().translate("wdl", allow_empty_container=True)
+

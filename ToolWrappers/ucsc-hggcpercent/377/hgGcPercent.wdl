@@ -4,7 +4,7 @@ task HgGcPercent {
   input {
     Int? win
     Boolean? no_load
-    File? file
+    File? output_filename_stdout
     String? chr
     Boolean? no_random
     Boolean? no_dots
@@ -23,7 +23,7 @@ task HgGcPercent {
       ~{nib_dir} \
       ~{if defined(win) then ("-win " +  '"' + win + '"') else ""} \
       ~{if (no_load) then "-noLoad" else ""} \
-      ~{if defined(file) then ("-file " +  '"' + file + '"') else ""} \
+      ~{if defined(output_filename_stdout) then ("-file " +  '"' + output_filename_stdout + '"') else ""} \
       ~{if defined(chr) then ("-chr " +  '"' + chr + '"') else ""} \
       ~{if (no_random) then "-noRandom" else ""} \
       ~{if (no_dots) then "-noDots" else ""} \
@@ -34,10 +34,13 @@ task HgGcPercent {
       ~{if defined(bed_region_in) then ("-bedRegionIn " +  '"' + bed_region_in + '"') else ""} \
       ~{if defined(bed_region_out) then ("-bedRegionOut " +  '"' + bed_region_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     win: "- change windows size (default 20000)"
     no_load: "- do not load mysql table - create bed file"
-    file: "- output to <filename> (stdout OK) (implies -noLoad)"
+    output_filename_stdout: "- output to <filename> (stdout OK) (implies -noLoad)"
     chr: "- process only chrN from the nibDir"
     no_random: "- ignore randome chromosomes from the nibDir"
     no_dots: "- do not display ... progress during processing"
@@ -52,6 +55,6 @@ task HgGcPercent {
   }
   output {
     File out_stdout = stdout()
-    File out_file = "${in_file}"
+    File out_output_filename_stdout = "${in_output_filename_stdout}"
   }
 }

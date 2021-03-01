@@ -8,6 +8,9 @@ task Wdltool {
     wdltool \
       ~{workflow_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     workflow_dot: "Fill in the values in this JSON document and"
   }

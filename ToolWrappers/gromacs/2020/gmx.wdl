@@ -12,6 +12,9 @@ task Gmx {
       ~{selections} \
       ~{if (nice) then "-nice" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nice: "<int>              (19)\\nSet the nicelevel (default depends on command)"
     commands: "List of available commands"

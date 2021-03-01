@@ -3,12 +3,12 @@ id: addVariants.py_output.cwl
 inputs:
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_variants
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --variants
 - id: in_add_variants_do_tpy
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - addVariants.py

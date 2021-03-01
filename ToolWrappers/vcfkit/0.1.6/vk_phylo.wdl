@@ -12,6 +12,9 @@ task VkPhylo {
       ~{tree} \
       ~{vcf}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: ""
     tree: ""

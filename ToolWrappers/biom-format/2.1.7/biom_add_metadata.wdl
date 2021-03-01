@@ -28,6 +28,9 @@ task BiomAddmetadata {
       ~{if defined(observation_header) then ("--observation-header " +  '"' + observation_header + '"') else ""} \
       ~{if (output_as_json) then "--output-as-json" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fp: "The input BIOM table  [required]"
     output_fp: "The output BIOM table  [required]"

@@ -14,6 +14,9 @@ task IgdiscoverRename {
       ~{if defined(rename_from) then ("--rename-from " +  '"' + rename_from + '"') else ""} \
       ~{if defined(order_by) then ("--order-by " +  '"' + order_by + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_sort: "Do not sort sequences by name"
     not_found: "Append this text to the record name when the sequence\\nwas not found in the template. Default: ' (not found)'"

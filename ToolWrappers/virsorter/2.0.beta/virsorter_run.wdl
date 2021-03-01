@@ -42,6 +42,9 @@ task VirsorterRun {
       ~{if (use_cond_a_off) then "--use-conda-off" else ""} \
       ~{if (rm_tmpdir) then "--rm-tmpdir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     working_dir: "output directory"
     db_dir: "database directory, default to the --db-dir\\nset during installation"

@@ -8,7 +8,7 @@ inputs:
     position: 0
 - id: in_train_vertical_line_seq_match
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 1
 - id: in_args
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - SequenceMatch

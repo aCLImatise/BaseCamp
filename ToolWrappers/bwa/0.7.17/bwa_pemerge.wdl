@@ -22,6 +22,9 @@ task BwaPemerge {
       ~{if defined(max_sum_errors) then ("-Q " +  '"' + max_sum_errors + '"') else ""} \
       ~{if (mu) then "-mu" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_merged_reads: "output merged reads only"
     output_unmerged_reads: "output unmerged reads only"

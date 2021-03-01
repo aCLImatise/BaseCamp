@@ -10,6 +10,9 @@ task Addrg {
       ~{file_dot_bam} \
       ~{rg_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_dot_bam: ""
     rg_name: ""

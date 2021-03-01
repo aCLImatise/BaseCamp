@@ -14,6 +14,9 @@ task SpacepharerSummarizeresults {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(verbosity_level_errors) then ("-v " +  '"' + verbosity_level_errors + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fmt: "0: short (only matches); 1: long (matches and hits); 2: long with nucleotide alignment [1]"
     compressed: "Write compressed output [0]"

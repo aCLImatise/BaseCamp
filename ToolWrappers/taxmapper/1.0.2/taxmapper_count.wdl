@@ -12,6 +12,9 @@ task TaxmapperCount {
       ~{if defined(out_one) then ("--out1 " +  '"' + out_one + '"') else ""} \
       ~{if defined(out_two) then ("--out2 " +  '"' + out_two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tax: "Filtered taxonomy mapping file."
     out_one: "Output file 1, counted taxa for first taxonomic\\nhierarchy [default: taxa_counts_level1.tsv]"

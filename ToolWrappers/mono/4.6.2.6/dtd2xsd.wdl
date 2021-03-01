@@ -10,6 +10,9 @@ task Dtd2xsd {
       ~{instance_xml_file} \
       ~{output_xsd_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     instance_xml_file: ""
     output_xsd_file: ""

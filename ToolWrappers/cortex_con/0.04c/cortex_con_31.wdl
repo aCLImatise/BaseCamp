@@ -14,6 +14,9 @@ task CortexCon31 {
       ~{if defined(mem_height) then ("--mem_height " +  '"' + mem_height + '"') else ""} \
       ~{if defined(var_input) then ("--input " +  '"' + var_input + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dump_binary: ""
     mem_height: ""

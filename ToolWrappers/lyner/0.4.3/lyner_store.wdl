@@ -2,16 +2,16 @@ version 1.0
 
 task LynerStore {
   input {
-    Boolean? mode
     String? out
   }
   command <<<
     lyner store \
-      ~{out} \
-      ~{if (mode) then "--mode" else ""}
+      ~{out}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    mode: "[csv|pickle|auto]"
     out: ""
   }
   output {

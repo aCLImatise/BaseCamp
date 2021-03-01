@@ -8,6 +8,9 @@ task AugurAcids {
     augur acids_ \
       ~{augur}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     augur: ""
   }

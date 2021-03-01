@@ -16,6 +16,9 @@ task ExpressionFromGenomicSetpy {
       ~{output_dir} \
       ~{if defined(dist) then ("--dist " +  '"' + dist + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dist: "threshDist of GenomicReginSet.filter_by_gene_association_old.\\n[default: 50000]\\n"
     experimental_matrix_file: ""

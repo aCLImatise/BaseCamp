@@ -54,6 +54,9 @@ task CnvkitpyBatch {
       ~{if (create_wholegenome_profile) then "--scatter" else ""} \
       ~{if (diagram) then "--diagram" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_method: "Sequencing assay type: hybridization capture\\n('hybrid'), targeted amplicon sequencing ('amplicon'),\\nor whole genome sequencing ('wgs'). Determines whether\\nand how to use antitarget bins. [Default: hybrid]"
     segment_method: "Method used in the 'segment' step. [Default: cbs]"

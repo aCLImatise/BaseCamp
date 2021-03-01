@@ -30,6 +30,9 @@ task SqtBameofBAM {
       ~{read_len_histo} \
       ~{cut_vect}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     align: "Compare two strings"
     bam_two_fast_q: "Extract all reads from a BAM file that map to a\\ncertain location, but try hard"

@@ -8,6 +8,9 @@ task Checkdisorderpl {
     check_disorder_pl \
       ~{if (list) then "--list" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list: "list all IDs that have children features appearing in front of themselves"
   }

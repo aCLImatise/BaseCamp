@@ -4,7 +4,7 @@ inputs:
 - id: in_instead_computing_entropy
   doc: "Instead of computing the relative entropy from two .mod files,\njust use the\
     \ specified value.  The .mod files aren't required\nin this case."
-  type: string
+  type: string?
   inputBinding:
     prefix: --H
 - id: in_l_minh
@@ -12,7 +12,7 @@ inputs:
     \ would produce the specified value\nof L_min * H (i.e., the specified PIT), assuming\
     \ H remains constant\n(it generally won't).  Can be used iteratively to converge\
     \ on a\ndesired PIT."
-  type: long
+  type: long?
   inputBinding:
     prefix: --LminH
 - id: in_target_coverage
@@ -29,6 +29,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - consEntropy

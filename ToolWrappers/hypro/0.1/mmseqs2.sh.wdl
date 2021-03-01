@@ -10,7 +10,7 @@ task Mmseqs2sh {
     Int? compressed
     Int? verbosity_level_nothing
     File? seed_sub_mat
-    Int? kmer_size_range
+    Int? kmer_size_set
     Int? alph_size
     Int? comp_bias_corr
     Int? max_seqs
@@ -110,7 +110,7 @@ task Mmseqs2sh {
       ~{if defined(compressed) then ("--compressed " +  '"' + compressed + '"') else ""} \
       ~{if defined(verbosity_level_nothing) then ("-v " +  '"' + verbosity_level_nothing + '"') else ""} \
       ~{if defined(seed_sub_mat) then ("--seed-sub-mat " +  '"' + seed_sub_mat + '"') else ""} \
-      ~{if defined(kmer_size_range) then ("-k " +  '"' + kmer_size_range + '"') else ""} \
+      ~{if defined(kmer_size_set) then ("-k " +  '"' + kmer_size_set + '"') else ""} \
       ~{if defined(alph_size) then ("--alph-size " +  '"' + alph_size + '"') else ""} \
       ~{if defined(comp_bias_corr) then ("--comp-bias-corr " +  '"' + comp_bias_corr + '"') else ""} \
       ~{if defined(max_seqs) then ("--max-seqs " +  '"' + max_seqs + '"') else ""} \
@@ -190,6 +190,9 @@ task Mmseqs2sh {
       ~{if defined(format_mode) then ("--format-mode " +  '"' + format_mode + '"') else ""} \
       ~{if defined(format_output) then ("--format-output " +  '"' + format_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dont_split_seq_by_len: "Dont split sequences by --max-seq-len [1, set to 0 to disable]"
     dbtype: "Database type 0: auto, 1: amino acid 2: nucleotides [0]"
@@ -199,7 +202,7 @@ task Mmseqs2sh {
     compressed: "write results in compressed format [0]"
     verbosity_level_nothing: "verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info [3]"
     seed_sub_mat: "amino acid substitution matrix for kmer generation file [nucl:nucleotide.out,aa:VTML80.out]"
-    kmer_size_range: "k-mer size in the range (0: set automatically to optimum) [0]"
+    kmer_size_set: "k-mer size in the range (0: set automatically to optimum) [0]"
     alph_size: "alphabet size (range 2-21) [21]"
     comp_bias_corr: "correct for locally biased amino acid composition (range 0-1) [1]"
     max_seqs: "Maximum result sequences per query allowed to pass the prefilter (this parameter affects sensitivity) [300]"

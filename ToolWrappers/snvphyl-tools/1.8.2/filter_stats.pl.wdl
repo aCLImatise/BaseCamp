@@ -12,6 +12,9 @@ task Filterstatspl {
       ~{if (psudoalignment_positions_tab) then "--input" else ""} \
       ~{if (all) then "--all" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     psudoalignment_positions_tab: "The psudo-alignment positions tab delimited file"
     all: "When this option is set, the results will include all the\\nentries marked as 'filtered-invalid'"

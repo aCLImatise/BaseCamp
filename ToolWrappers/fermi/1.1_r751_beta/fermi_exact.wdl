@@ -12,6 +12,9 @@ task FermiExact {
       ~{src_dot_fa} \
       ~{if (ms) then "-Ms" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ms: ""
     idx_based_ot_bwt: ""

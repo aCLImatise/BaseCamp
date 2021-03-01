@@ -8,6 +8,9 @@ task Yank {
     _yank \
       ~{if (new_file) then "-newfile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     new_file: "boolean    [N] Overwrite existing output file"
   }

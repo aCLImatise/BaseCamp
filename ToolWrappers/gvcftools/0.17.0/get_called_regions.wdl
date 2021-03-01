@@ -10,6 +10,9 @@ task GetCalledRegions {
       ~{gvc_f} \
       ~{called_dot_bed}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gvc_f: ""
     called_dot_bed: ""

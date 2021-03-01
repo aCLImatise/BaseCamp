@@ -22,6 +22,9 @@ task PhyluceAlignRemoveEmptyTaxa {
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignments: "The directory containing alignments to be screened.\\n(default: None)"
     directory_store_resultingalignments: "The directory in which to store the resulting\\nalignments. (default: None)"

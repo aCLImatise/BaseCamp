@@ -14,6 +14,9 @@ task Compare {
       ~{if (in) then "--in" else ""} \
       ~{if defined(size) then ("--size " +  '"' + size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: ": bam file"
     list: ": list of regions (optional)"

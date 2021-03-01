@@ -12,6 +12,9 @@ task BpAacomppl {
       ~{filename} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
     aa_comp: ""

@@ -18,6 +18,9 @@ task RunMetasvBed2vcfpy {
       ~{if defined(work) then ("--work " +  '"' + work + '"') else ""} \
       ~{if (pass_only) then "--pass_only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample: "Sample name (default: None)"
     bed: "MetaSV final BED (default: None)"

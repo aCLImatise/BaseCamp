@@ -24,6 +24,9 @@ task NextflowbakClone {
       ~{if (revision_clone_it) then "-r" else ""} \
       ~{if (user) then "-user" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hub: "Service hub where the project is hosted"
     revision_clone_it: "Revision to clone - It can be a git branch, tag or revision number"

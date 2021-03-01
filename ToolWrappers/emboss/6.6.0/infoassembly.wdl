@@ -12,6 +12,9 @@ task Infoassembly {
       ~{if (window_size) then "-windowsize" else ""} \
       ~{if (bisulfite) then "-bisulfite" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_sequence: "seqset     Reference sequences in the assembly"
     window_size: "integer    [100] The size of windows on the genome that\\nare used to bin reads. (Any integer value)"

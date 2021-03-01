@@ -4,6 +4,9 @@ task Quiver {
   command <<<
     quiver
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

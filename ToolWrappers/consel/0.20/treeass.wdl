@@ -4,6 +4,9 @@ task Treeass {
   command <<<
     treeass
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

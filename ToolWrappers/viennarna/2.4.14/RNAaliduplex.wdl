@@ -28,6 +28,9 @@ task RNAaliduplex {
       ~{if defined(nsp) then ("--nsp " +  '"' + nsp + '"') else ""} \
       ~{if defined(param_file) then ("--paramFile " +  '"' + param_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     sorted: "print output sorted by free energy\\n(default=off)"

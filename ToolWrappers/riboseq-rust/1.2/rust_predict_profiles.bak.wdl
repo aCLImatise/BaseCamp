@@ -24,6 +24,9 @@ task RustPredictProfilesbak {
       ~{if defined(directory_path_outputfile) then ("-o " +  '"' + directory_path_outputfile + '"') else ""} \
       ~{if (writes_profiles_produce) then "-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_path_outputfile: "directory  path to outputfile, default is \\\"predict_profiles\\\""
     writes_profiles_produce: "writes all profiles in csv files, may produce >10,000"

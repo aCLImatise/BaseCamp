@@ -22,6 +22,9 @@ task Timeout {
       ~{if defined(signal) then ("--signal " +  '"' + signal + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     preserve_status: "exit with the same status as COMMAND, even when the\\ncommand times out"
     foreground: "when not running timeout directly from a shell prompt,\\nallow COMMAND to read from the TTY and get TTY signals;\\nin this mode, children of COMMAND will not be timed out"

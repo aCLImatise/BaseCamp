@@ -38,6 +38,9 @@ task Croo {
       ~{if (no_checksum) then "--no-checksum" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_def_json: "Output definition JSON file for a WDL file\\ncorresponding to the specified metadata.json file"
     method: "Method to localize files on output directory/bucket.\\n\\\"link\\\" means a soft-linking and it's for local\\ndirectory only. Original output files will be kept in\\nCromwell's output directory. \\\"copy\\\" makes copies of\\nCromwell's original outputs"

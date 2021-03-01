@@ -12,6 +12,9 @@ task GcloudAppRegions {
       ~{list} \
       ~{region_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     environments: "SYNOPSIS"
     list: "List the availability of flex and standard environments for each"

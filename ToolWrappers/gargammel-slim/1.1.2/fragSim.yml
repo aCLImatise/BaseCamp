@@ -1,0 +1,171 @@
+!Command
+command:
+- fragSim
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: '[number]                        Generate [number] fragments (default:
+    10)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --comp
+  description: '[file]                          Base composition for the fragments
+    (default none)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dist
+  description: "[file]                          Distance from ends to consider  (default:\
+    \ 1)\nif this is not specified, the base composition\nwill only reflect the chromosome\
+    \ file used"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --norev
+  description: 'Do not reverse complement (default: rev. comp half of seqs.)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --case
+  description: 'Do not set the sequence to upper-case (default: uppercase the seqs.)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: '[bam out]                       Write output as a BAM file (default:
+    fasta in stdout)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: '[fasta out]                     Write output as a zipped fasta (default:
+    fasta in stdout)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: Produce uncompressed BAM (good for unix pipe)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tag
+  description: '[tag]                           Append this string to deflines or
+    BAM tags (Default:  not on/not used)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tmp
+  description: '[tmp dir]                       Use this directory as the temporary
+    dir for zipped files (default:  /tmp/)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -uniq
+  description: "Make sure that the fragment names are unique by appending a suffix\
+    \ (default:  not on/not used)\nnote: this might not be practical for large datasets"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: '[length]                        Minimum fragments length < (default:
+    0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: '[length]                        Maximum fragments length > (default:
+    1000)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: '[length]                        Generate fragments of fixed length  (default:
+    20)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: '[file]                          Open file with size distribution (one
+    fragment length per line)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "[file]                          Open file with size frequency in the\
+    \ following format:\nlength[TAB]freq ex:\n40      0.0525\n41      0.0491\n..."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --loc
+  description: '[file]                  Location for lognormal distribution (default
+    none)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --scale
+  description: '[file]                  Scale for lognormal distribution      (default
+    none)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gc
+  description: '[gc bias]                       Use GC bias factor  (default: 0)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n This program takes a fasta file representing a chromosome and generates\n\
+  \ aDNA fragments according to a certain distribution\n\n fragSim [options]  [chromosome\
+  \ fasta] \n\n\t\t-n\t[number]\t\t\tGenerate [number] fragments (default: 10)\n\n\
+  \t\t--comp\t[file]\t\t\t\tBase composition for the fragments (default none)\n\t\t\
+  --dist\t[file]\t\t\t\tDistance from ends to consider  (default: 1)\n\t\t\t\t\t\t\
+  \tif this is not specified, the base composition\n\t\t\t\t\t\t\twill only reflect\
+  \ the chromosome file used\n\t\t--norev\t\t\t\t\tDo not reverse complement (default:\
+  \ rev. comp half of seqs.)\n\t\t--case\t\t\t\t\tDo not set the sequence to upper-case\
+  \ (default: uppercase the seqs.)\n\n\tOutput options\n\t\t-b\t[bam out]\t\t\tWrite\
+  \ output as a BAM file (default: fasta in stdout)\n\t\t-o\t[fasta out]\t\t\tWrite\
+  \ output as a zipped fasta (default: fasta in stdout)\n\t\t-u\t\t\t\t\tProduce uncompressed\
+  \ BAM (good for unix pipe)\n\t\t-tag\t[tag]\t\t\t\tAppend this string to deflines\
+  \ or BAM tags (Default:  not on/not used)\n\t\t-tmp\t[tmp dir]\t\t\tUse this directory\
+  \ as the temporary dir for zipped files (default:  /tmp/)\n\t\t-uniq\t\t\t\t\tMake\
+  \ sure that the fragment names are unique by appending a suffix (default:  not on/not\
+  \ used)\n\t\t\t\t\t\t\tnote: this might not be practical for large datasets\n\n\t\
+  Fragment size: \n\t\t-m\t[length]\t\t\tMinimum fragments length < (default: 0)\n\
+  \t\t-M\t[length]\t\t\tMaximum fragments length > (default: 1000)\n\n\tFragment size\
+  \ distribution: specify either one of the 4 possible options\n\t\t-l\t[length]\t\
+  \t\tGenerate fragments of fixed length  (default: 20)\n\t\t-s\t[file]\t\t\t\tOpen\
+  \ file with size distribution (one fragment length per line)\n\t\t-f\t[file]\t\t\
+  \t\tOpen file with size frequency in the following format:\n\t\t\t\t\t\t\t\tlength[TAB]freq\t\
+  ex:\n\t\t\t\t\t\t\t\t40\t0.0525\n\t\t\t\t\t\t\t\t41\t0.0491\n\t\t\t\t\t\t\t\t...\n\
+  \n\t\tLength options:\n\t\t\t--loc\t[file]\t\t\tLocation for lognormal distribution\
+  \ (default none)\n\t\t\t--scale\t[file]\t\t\tScale for lognormal distribution  \
+  \    (default none)\n\n\t\tGC bias options:\n\t\t-gc\t[gc bias]\t\t\tUse GC bias\
+  \ factor  (default: 0)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gargammel-slim:1.1.2--h68ad25a_0

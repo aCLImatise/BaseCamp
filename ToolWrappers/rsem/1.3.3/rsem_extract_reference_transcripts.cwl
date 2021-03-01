@@ -28,7 +28,7 @@ inputs:
     position: 4
 - id: in_mapping_file
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 5
 - id: in_chromosome_file_one
@@ -38,13 +38,14 @@ inputs:
     position: 6
 - id: in_chromosome_file_two
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     position: 7
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsem-extract-reference-transcripts

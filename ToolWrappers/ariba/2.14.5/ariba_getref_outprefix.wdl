@@ -14,6 +14,9 @@ task AribaGetrefOutprefix {
       ~{db} \
       ~{out_prefix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ariba: ""
     get_ref: ""

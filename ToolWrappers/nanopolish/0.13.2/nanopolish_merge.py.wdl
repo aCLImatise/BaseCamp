@@ -4,6 +4,9 @@ task NanopolishMergepy {
   command <<<
     nanopolish_merge_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

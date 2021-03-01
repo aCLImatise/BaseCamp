@@ -12,6 +12,9 @@ task Mdocvalidate {
       ~{validate} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "The documentation FORMAT used within PATHS.  Valid\\nformats include:\\necma\\nIf no format provided, `ecma' is used."
     mdoc: ""

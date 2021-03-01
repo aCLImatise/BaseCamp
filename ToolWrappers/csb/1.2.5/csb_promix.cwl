@@ -3,12 +3,12 @@ id: csb_promix.cwl
 inputs:
 - id: in_components
   doc: Number of components (default=-1)
-  type: long
+  type: long?
   inputBinding:
     prefix: --components
 - id: in_type
   doc: "Type of mixture (default=segments)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --type
 - id: in_positional_arguments
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - csb-promix

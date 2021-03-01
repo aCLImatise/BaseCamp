@@ -42,6 +42,9 @@ task Megalodon {
       ~{if defined(verbose_read_progress) then ("--verbose-read-progress " +  '"' + verbose_read_progress + '"') else ""} \
       ~{if (rna) then "--rna" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     guppy_config: "Guppy config. Default: dna_r9.4.1_450bps_modbases_dam-\\ndcm-cpg_hac.cfg"
     guppy_server_path: "Path to guppy server executable. Default: ./ont-\\nguppy/bin/guppy_basecall_server"

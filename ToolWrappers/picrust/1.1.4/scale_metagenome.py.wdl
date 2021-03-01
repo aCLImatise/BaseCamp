@@ -14,6 +14,9 @@ task ScaleMetagenomepy {
       ~{if defined(input_count_table) then ("--input_count_table " +  '"' + input_count_table + '"') else ""} \
       ~{if defined(output_meta_genome_table) then ("--output_metagenome_table " +  '"' + output_meta_genome_table + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     input_seq_depth_file: "an input tab-delimited table, with samples as the\\nfirst column and an integer sequencing depth as the\\nsecond [REQUIRED]"

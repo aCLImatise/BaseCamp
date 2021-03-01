@@ -32,6 +32,9 @@ task OncogeminiQuery {
       ~{if defined(region) then ("--region " +  '"' + region + '"') else ""} \
       ~{if defined(carrier_summary_by_phenotype) then ("--carrier-summary-by-phenotype " +  '"' + carrier_summary_by_phenotype + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query_issued_database: "The query to be issued to the database"
     gt_filter: "Restrictions to apply to genotype values"

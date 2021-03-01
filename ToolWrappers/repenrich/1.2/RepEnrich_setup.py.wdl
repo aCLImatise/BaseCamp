@@ -20,6 +20,9 @@ task RepEnrichSetuppy {
       ~{if defined(flanking_length) then ("--flankinglength " +  '"' + flanking_length + '"') else ""} \
       ~{if defined(is_bed) then ("--is_bed " +  '"' + is_bed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_fragments_file_one: "Output location of a description file that saves the\\nnumber of fragments processed per repname. Default\\n./repnames_nfragments.txt"
     gap_length: "Length of the spacer used to build repeat\\npsuedogeneomes. Default 200"

@@ -20,6 +20,9 @@ task RgiKmerBuild {
       ~{if defined(batch_size) then ("--batch_size " +  '"' + batch_size + '"') else ""} \
       ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_directory: "input directory of prevalence data"
     card: "fasta file of CARD reference sequences. If missing,\\nrun 'rgi card_annotation' to generate."

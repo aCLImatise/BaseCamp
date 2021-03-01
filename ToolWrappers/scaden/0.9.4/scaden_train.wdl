@@ -18,6 +18,9 @@ task ScadenTrain {
       ~{if defined(learning_rate) then ("--learning_rate " +  '"' + learning_rate + '"') else ""} \
       ~{if defined(steps) then ("--steps " +  '"' + steps + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     train_datasets: "Datasets used for training. Uses all by default."
     model_dir: "Path to store the model in"

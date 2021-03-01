@@ -1,0 +1,202 @@
+&id001 !Command
+command:
+- fasta-utils
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - fasta-utils
+  - split
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: FASTA_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -p
+    - --prefix
+    description: 'Prefix for the file name in output  [default: split]'
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --number
+    description: "Number of chunks into which split the FASTA file\n[default: 10]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -z
+    - --gzip
+    description: gzip output files
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fasta-utils split [OPTIONS] [FASTA_FILE]\n\n  Splits a FASTA\
+    \ file [fasta-file] in a number of fragments\n\nOptions:\n  -v, --verbose\n  -p,\
+    \ --prefix TEXT     Prefix for the file name in output  [default: split]\n  -n,\
+    \ --number INTEGER  Number of chunks into which split the FASTA file\n       \
+    \                 [default: 10]\n\n  -z, --gzip            gzip output files\n\
+    \  --help                Show this message and exit.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - fasta-utils
+  - uid
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: FASTA_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -t
+    - --table
+    description: "Filename of a table to record the changes (by default\ndiscards\
+      \ it)"
+    args: !SimpleFlagArg
+      name: FILENAME
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fasta-utils uid [OPTIONS] [FASTA_FILE] [OUTPUT_FILE]\n\n  Changes\
+    \ each header of a FASTA file [file-file] to a uid (unique ID)\n\nOptions:\n \
+    \ -v, --verbose\n  -t, --table FILENAME  Filename of a table to record the changes\
+    \ (by default\n                        discards it)\n\n  --help              \
+    \  Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - fasta-utils
+  - translate
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: FASTA_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -t
+    - --trans-table
+    description: "[bac_plt|drs_mit|inv_mit|prt_mit|universal|vt_mit|yst_alt|yst_mit]\n\
+      translation table  [default: universal]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    - --one-seq
+    description: "Only translate the sequence, instead of all\n6 frames  [default:\
+      \ False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --no-wrap
+    description: "Make a sequence use only 1 line (2 including\nheader)  [default:\
+      \ False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --progress
+    description: Shows Progress Bar
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fasta-utils translate [OPTIONS] [FASTA_FILE] [OUTPUT_FILE]\n\n\
+    \  Translate FASTA file [fasta-file] in all 6 frames to [output-file]\n\nOptions:\n\
+    \  -v, --verbose\n  -t, --trans-table [bac_plt|drs_mit|inv_mit|prt_mit|universal|vt_mit|yst_alt|yst_mit]\n\
+    \                                  translation table  [default: universal]\n \
+    \ -1, --one-seq                   Only translate the sequence, instead of all\n\
+    \                                  6 frames  [default: False]\n\n  -w, --no-wrap\
+    \                   Make a sequence use only 1 line (2 including\n           \
+    \                       header)  [default: False]\n\n  --progress            \
+    \          Shows Progress Bar\n  --help                          Show this message\
+    \ and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --cite
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: fasta-utils [OPTIONS] COMMAND [ARGS]...\n\n  Main function\n\n\
+  Options:\n  --version  Show the version and exit.\n  --cite\n  --help     Show this\
+  \ message and exit.\n\nCommands:\n  split      Splits a FASTA file [fasta-file]\
+  \ in a number of fragments\n  translate  Translate FASTA file [fasta-file] in all\
+  \ 6 frames to...\n  uid        Changes each header of a FASTA file [file-file] to\
+  \ a uid...\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0

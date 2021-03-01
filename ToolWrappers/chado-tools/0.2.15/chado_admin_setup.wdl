@@ -16,6 +16,9 @@ task ChadoAdminSetup {
       ~{if defined(schema) then ("--schema " +  '"' + schema + '"') else ""} \
       ~{if defined(schema_file) then ("--schema_file " +  '"' + schema_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "verbose mode"
     config: "YAML file containing connection details"

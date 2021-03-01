@@ -16,6 +16,9 @@ task OverlapConvert {
       ~{if (hangs) then "-hangs" else ""} \
       ~{if (unaligned) then "-unaligned" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seqstore_needed_default: "seqStore (needed for -coords, the default)"
     coords: "output coordiantes on reads"

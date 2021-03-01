@@ -22,6 +22,9 @@ task ReportspyAssemblyStats {
       ~{if defined(reads_dir) then ("--reads_dir " +  '"' + reads_dir + '"') else ""} \
       ~{if defined(raw_reads_dir) then ("--raw_reads_dir " +  '"' + raw_reads_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cov_thresholds: "Genome coverage thresholds to report on. (default: (1,\\n5, 20, 100))"
     assembly_dir: "Directory with assembly outputs. (default:\\ndata/02_assembly)"

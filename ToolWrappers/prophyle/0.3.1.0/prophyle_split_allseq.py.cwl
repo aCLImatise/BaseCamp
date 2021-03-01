@@ -3,7 +3,7 @@ id: prophyle_split_allseq.py.cwl
 inputs:
 - id: in_fasta_file
   doc: Fasta file [stdin]
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_output_dir
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - prophyle_split_allseq.py

@@ -5,12 +5,12 @@ inputs:
   doc: "where X is one of:\nmean - average value in region (default)\nmin - minimum\
     \ value in region\nmax - maximum value in region\nstd - standard deviation in\
     \ region\ncoverage - % of region that is covered"
-  type: long
+  type: long?
   inputBinding:
     prefix: -type
 - id: in_udc_dir
   doc: =/dir/to/cache - place to put cache for remote bigBed/bigWigs
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -udcDir
 - id: in_file_dot_bigwig
@@ -37,6 +37,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bigWigSummary

@@ -150,6 +150,9 @@ task Brakerpl {
       ~{if defined(translation_table) then ("--translation_table " +  '"' + translation_table + '"') else ""} \
       ~{if defined(gc_probability) then ("--gc_probability " +  '"' + gc_probability + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "fasta file with DNA sequences"
     bam: "bam file with spliced alignments from\\nRNA-Seq"

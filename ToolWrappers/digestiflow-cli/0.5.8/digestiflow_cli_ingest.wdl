@@ -34,6 +34,9 @@ task DigestiflowcliIngest {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (v) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     analyze_adapters: "Read adapters from binary base call files"
     dry_run: "Do not perform any modifying operations"

@@ -12,6 +12,9 @@ task Cassiopeeknife {
       ~{if (_output_file) then "-o" else ""} \
       ~{if (_show_version) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _sequence_convert: ": sequence to convert"
     _output_file: ": output file"

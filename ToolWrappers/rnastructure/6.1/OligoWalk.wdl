@@ -50,6 +50,9 @@ task OligoWalk {
       ~{if (test) then "-test" else ""} \
       ~{if (unit) then "--unit" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "Indicate that the oligomers are DNA (as opposed to RNA)."
     html: "Write the report in HTML mode instead of plain text."

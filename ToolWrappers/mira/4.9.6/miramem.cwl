@@ -3,12 +3,12 @@ id: miramem.cwl
 inputs:
 - id: in_as
   doc: :amm, -AS:kpmf, -AS:mps
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -AS
 - id: in_sk
   doc: :mhim, -SK:mchr (both runtime); -SK:mhpr (accuracy)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -SK
 - id: in_mira_talk_at_freelists_dot_org
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - miramem

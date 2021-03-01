@@ -12,6 +12,9 @@ task RgttoolspyGtfIntergenic {
       ~{if defined(output_directory_bed) then ("-o " +  '"' + output_directory_bed + '"') else ""} \
       ~{if (organism) then "-organism" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_gtf_file: "Input GTF file"
     output_directory_bed: "Output directory for BED file"

@@ -3,7 +3,7 @@ id: missing_regions.cwl
 inputs:
 - id: in_h
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -h
 - id: in_show
@@ -70,6 +70,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - missing_regions

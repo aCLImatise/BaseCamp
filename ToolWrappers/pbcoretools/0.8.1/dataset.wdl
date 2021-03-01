@@ -20,6 +20,9 @@ task Dataset {
       ~{if (strict) then "--strict" else ""} \
       ~{if (skip_counts) then "--skipCounts" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_file: "Write the log to file. Default(None) will write to\\nstdout. (default: None)"
     log_level: "Set log level (default: WARNING)"

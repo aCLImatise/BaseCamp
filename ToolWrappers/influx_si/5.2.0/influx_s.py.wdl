@@ -70,6 +70,9 @@ task InfluxSpy {
       ~{if (prof) then "--prof" else ""} \
       ~{if defined(tb_limit) then ("--tblimit " +  '"' + tb_limit + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_opt: "no optimization, just use free parameters as is (after a\\nprojection on feasibility domain), to calculate dependent\\nfluxes, cumomers, stats and so on"
     no_scale: "no scaling factors to optimize => all scaling factors are\\nassumed to be 1"

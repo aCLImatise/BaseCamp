@@ -98,6 +98,9 @@ task HaphpipeMultipleAlign {
       ~{if (fast_a_only) then "--fastaonly" else ""} \
       ~{if (align_all) then "--alignall" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seqs: "FASTA file with sequences to be aligned"
     dir_list: "List of directories which include either a final.fna\\nor ph_haplotypes.fna file, one on each line"

@@ -12,6 +12,9 @@ task Estherfiltersh {
       ~{reference} \
       ~{cut_off}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query: ""
     reference: ""

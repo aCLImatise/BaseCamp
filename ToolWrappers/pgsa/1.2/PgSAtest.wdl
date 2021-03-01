@@ -28,6 +28,9 @@ task PgSAtest {
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
       ~{if defined(k) then ("-k " +  '"' + k + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     by_position: "by position"
     reads_uncorrecly_concatenated: "reads (for uncorrecly concatenated pair-ended data)"

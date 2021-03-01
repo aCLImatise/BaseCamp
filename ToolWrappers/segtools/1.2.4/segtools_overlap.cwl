@@ -3,33 +3,33 @@ id: segtools_overlap.cwl
 inputs:
 - id: in_clobber
   doc: Overwrite any existing output files.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --clobber
 - id: in_quiet
   doc: Do not print diagnostic messages.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_quick
   doc: Compute values only for one chromosome.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quick
 - id: in_replot
   doc: "Load data from output tab files and regenerate plots\ninstead of recomputing\
     \ data."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --replot
 - id: in_no_plot
   doc: Do not generate any plots.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noplot
 - id: in_cluster
   doc: Cluster rows and columns in heat map plot
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cluster
 - id: in_print_segments
@@ -37,12 +37,12 @@ inputs:
     \ that contains a list of all the\nsegments that the group was found to overlap\
     \ with.\nOutput files are named overlap.segments.X.txt, where X\nis the name of\
     \ the SEGMENTATION group."
-  type: File
+  type: File?
   inputBinding:
     prefix: --print-segments
 - id: in_max_contrast
   doc: "Saturate color range instead of having it go from 0 to\n1"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --max-contrast
 - id: in_by
@@ -50,7 +50,7 @@ inputs:
     \ @segments: The value associated\nwith two features overlapping will be 1 if\
     \ they\noverlap, and 0 otherwise. @bases: The value associated\nwith two features\
     \ overlapping will be number of base\npairs which they overlap. [default: bases]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --by
 - id: in_min_overlap
@@ -59,28 +59,28 @@ inputs:
     \ overlap\nonly if they share at least this many bases) or\nnegative (features\
     \ overlap if there are no more than\nthis many bases between them). Both a negative\
     \ min-\noverlap and --by=bases cannot be specified together.\n[default: 1]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-overlap
 - id: in_mnemonic_file
   doc: "If specified, labels will be shown using mnemonics\nfound in FILE"
-  type: File
+  type: File?
   inputBinding:
     prefix: --mnemonic-file
 - id: in_feature_mnemonic_file
   doc: "If specified, ANNOTATION groups will be shown using\nmnemonics found in FILE."
-  type: File
+  type: File?
   inputBinding:
     prefix: --feature-mnemonic-file
 - id: in_outdir
   doc: "File output directory (will be created if it does not\nexist) [default: overlap]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_val_pass_val
   doc: "=VAL        Pass VAL for PARAM when calling R functions. May be\nspecified\
     \ multiple times.\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: -R
 - id: in_segmentation
@@ -102,14 +102,15 @@ outputs:
     \ that contains a list of all the\nsegments that the group was found to overlap\
     \ with.\nOutput files are named overlap.segments.X.txt, where X\nis the name of\
     \ the SEGMENTATION group."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_print_segments)
 - id: out_outdir
   doc: "File output directory (will be created if it does not\nexist) [default: overlap]"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - segtools-overlap

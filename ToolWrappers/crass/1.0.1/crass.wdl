@@ -38,6 +38,9 @@ task Crass {
       ~{if (long_description) then "--longDescription" else ""} \
       ~{if (show_singl_tons) then "--showSingltons" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: "<INT>   Output a log file and set a log level [1 - 4]"
     outdir: "<DIR>   Output directory [default: .]"

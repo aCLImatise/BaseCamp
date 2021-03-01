@@ -30,6 +30,9 @@ task Minced {
       ~{if (gff_full) then "-gffFull" else ""} \
       ~{if (spacers) then "-spacers" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     search_wl: "Length of search window used to discover CRISPRs (range: 6-9). Default: 8"
     min_nr: "Minimum number of repeats a CRISPR must contain. Default: 3"

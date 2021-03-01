@@ -16,6 +16,9 @@ task FfindexOrder {
       ~{sorted_data_out_file} \
       ~{sorted_index_out_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     order_filename: ""
     data_filename: ""

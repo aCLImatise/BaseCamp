@@ -4,200 +4,200 @@ command:
 - dedup
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: PAIRS_PATH
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "output file for pairs after duplicate\nremoval. If the path ends with\
-    \ .gz or .lz4,\nthe output is pbgzip-/lz4c-compressed. By\ndefault, the output\
-    \ is printed into stdout."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "output file for pairs after duplicate\nremoval. If the path ends with\
+    \ .gz or .lz4,\nthe output is pbgzip-/lz4c-compressed. By\ndefault, the output\
+    \ is printed into stdout."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --output-dups
   description: "output file for duplicated pairs.  If the\npath ends with .gz or .lz4,\
     \ the output is\npbgzip-/lz4c-compressed. If the path is the\nsame as in --output\
     \ or -, output duplicates\ntogether  with deduped pairs. By default,\nduplicates\
     \ are dropped."
-  synonyms:
-  - --output-dups
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --output-unmapped
   description: "output file for unmapped pairs. If the path\nends with .gz or .lz4,\
     \ the output is\npbgzip-/lz4c-compressed. If the path is the\nsame as in --output\
     \ or -, output unmapped\npairs together with deduped pairs. If the\npath is the\
     \ same as --output-dups, output\nunmapped reads together with dups. By\ndefault,\
     \ unmapped pairs are dropped."
-  synonyms:
-  - --output-unmapped
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --output-stats
   description: "output file for duplicate statistics.  If\nfile exists, it will be\
     \ open in the append\nmode. If the path ends with .gz or .lz4, the\noutput is\
     \ pbgzip-/lz4c-compressed. By\ndefault, statistics are not printed."
-  synonyms:
-  - --output-stats
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Pairs with both sides mapped within this\ndistance (bp) from each\
-    \ other are considered\nduplicates.  [default: 3]"
+  optional: true
   synonyms:
   - --max-mismatch
+  description: "Pairs with both sides mapped within this\ndistance (bp) from each\
+    \ other are considered\nduplicates.  [default: 3]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --method
   description: "[max|sum]              define the mismatch as either the max or the\n\
     sum of the mismatches ofthe genomic\nlocations of the both sides of the two\n\
     compared molecules  [default: max]"
-  synonyms:
-  - --method
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Separator (\\t, \\v, etc. characters are\nsupported, pass them in\
-    \ quotes)"
+  optional: true
   synonyms:
   - --sep
+  description: "Separator (\\t, \\v, etc. characters are\nsupported, pass them in\
+    \ quotes)"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: The first character of comment lines
+  optional: true
   synonyms:
   - --comment-char
+  description: The first character of comment lines
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "[dups|dedup|both|none]\nWhich of the outputs should receive header\n\
-    and comment lines"
+  optional: true
   synonyms:
   - --send-header-to
+  description: "[dups|dedup|both|none]\nWhich of the outputs should receive header\n\
+    and comment lines"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Chrom 1 column; default 1
+  optional: true
   synonyms:
   - --c1
+  description: Chrom 1 column; default 1
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Chrom 2 column; default 3
+  optional: true
   synonyms:
   - --c2
+  description: Chrom 2 column; default 3
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Position 1 column; default 2
+  optional: true
   synonyms:
   - --p1
+  description: Position 1 column; default 2
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Position 2 column; default 4
+  optional: true
   synonyms:
   - --p2
+  description: Position 2 column; default 4
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Strand 1 column; default 5
+  optional: true
   synonyms:
   - --s1
+  description: Strand 1 column; default 5
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Strand 2 column; default 6
+  optional: true
   synonyms:
   - --s2
+  description: Strand 2 column; default 6
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Placeholder for a chromosome on an unmapped\nside; default !"
+  optional: true
   synonyms:
   - --unmapped-chrom
+  description: "Placeholder for a chromosome on an unmapped\nside; default !"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "If specified, duplicate pairs are marked as\nDD in \"pair_type\" and\
-    \ as a duplicate in the\nsam entries."
+  optional: true
   synonyms:
   - --mark-dups
+  description: "If specified, duplicate pairs are marked as\nDD in \"pair_type\" and\
+    \ as a duplicate in the\nsam entries."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extra-col-pair
   description: "Extra columns that also must match for two\npairs to be marked as\
     \ duplicates. Can be\neither provided as 0-based column indices or\nas column\
     \ names (requires the \"#columns\"\nheader field). The option can be provided\n\
     multiple times if multiple column pairs must\nmatch. Example: --extra-col-pair\
     \ \"phase1\"\n\"phase2\""
-  synonyms:
-  - --extra-col-pair
   args: !SimpleFlagArg
     name: TEXT...
-  optional: true
 - !Flag
-  description: "Number of processes used by the auto-guessed\ninput decompressing\
-    \ command.  [default: 3]"
+  optional: true
   synonyms:
   - --nproc-in
+  description: "Number of processes used by the auto-guessed\ninput decompressing\
+    \ command.  [default: 3]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Number of processes used by the auto-guessed\noutput compressing command.\
-    \  [default: 8]"
+  optional: true
   synonyms:
   - --nproc-out
+  description: "Number of processes used by the auto-guessed\noutput compressing command.\
+    \  [default: 8]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cmd-in
   description: "A command to decompress the input file. If\nprovided, fully overrides\
     \ the auto-guessed\ncommand. Does not work with stdin. Must read\ninput from stdin\
     \ and print output into\nstdout. EXAMPLE: pbgzip -dc -n 3"
-  synonyms:
-  - --cmd-in
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cmd-out
   description: "A command to compress the output file. If\nprovided, fully overrides\
     \ the auto-guessed\ncommand. Does not work with stdout. Must\nread input from\
     \ stdin and print output into\nstdout. EXAMPLE: pbgzip -c -n 8"
-  synonyms:
-  - --cmd-out
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: pairtools dedup [OPTIONS] [PAIRS_PATH]\n\n  Find and remove PCR/optical\
@@ -271,3 +271,4 @@ help_text: "Usage: pairtools dedup [OPTIONS] [PAIRS_PATH]\n\n  Find and remove P
   \ -c -n 8\n  -h, --help                      Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

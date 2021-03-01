@@ -4,37 +4,37 @@ inputs:
 - id: in_input_fmt_option
   doc: "[=VAL]\nSpecify a single input file format option in the form\nof OPTION or\
     \ OPTION=VALUE"
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-fmt-option
 - id: in_reference
   doc: "Reference sequence FASTA FILE [null]\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --reference
 - id: in_two
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: '-2'
 - id: in_one
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: '-1'
 - id: in_zero
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: '-0'
 - id: in_i
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -i
 - id: in_q
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -Q
 - id: in_sam_tools
@@ -56,6 +56,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - flye-samtools

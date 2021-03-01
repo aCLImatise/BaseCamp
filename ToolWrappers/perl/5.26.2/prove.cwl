@@ -1,236 +1,226 @@
 class: CommandLineTool
 id: prove.cwl
 inputs:
-- id: in__verbose_print
-  doc: ',  --verbose         Print all test lines.'
-  type: boolean
+- id: in_verbose
+  doc: Print all test lines.
+  type: boolean?
   inputBinding:
-    prefix: -v
-- id: in__lib_add
-  doc: ",  --lib             Add 'lib' to the path for your tests (-Ilib)."
-  type: boolean
+    prefix: --verbose
+- id: in_lib
+  doc: Add 'lib' to the path for your tests (-Ilib).
+  type: boolean?
   inputBinding:
-    prefix: -l
-- id: in__blib_add
-  doc: ",  --blib            Add 'blib/lib' and 'blib/arch' to the path for\nyour\
-    \ tests"
-  type: boolean
+    prefix: --lib
+- id: in_blib
+  doc: "Add 'blib/lib' and 'blib/arch' to the path for\nyour tests"
+  type: boolean?
   inputBinding:
-    prefix: -b
-- id: in__shuffle_run
-  doc: ',  --shuffle         Run the tests in random order.'
-  type: boolean
+    prefix: --blib
+- id: in_shuffle
+  doc: Run the tests in random order.
+  type: boolean?
   inputBinding:
-    prefix: -s
-- id: in__color_default
-  doc: ',  --color           Colored test output (default).'
-  type: boolean
+    prefix: --shuffle
+- id: in_color
+  doc: Colored test output (default).
+  type: boolean?
   inputBinding:
-    prefix: -c
+    prefix: --color
 - id: in_no_color
   doc: Do not color test output.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nocolor
 - id: in_count
   doc: "Show the X/Y test count when not verbose\n(default)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --count
 - id: in_no_count
   doc: Disable the X/Y test count.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nocount
-- id: in__dry_test
-  doc: --dry             Dry run. Show test that would have run.
-  type: boolean
+- id: in_dry
+  doc: Dry run. Show test that would have run.
+  type: boolean?
   inputBinding:
-    prefix: -D
-- id: in__failures_show
-  doc: ',  --failures        Show failed tests.'
-  type: boolean
+    prefix: --dry
+- id: in_failures
+  doc: Show failed tests.
+  type: boolean?
   inputBinding:
-    prefix: -f
-- id: in__comments_show
-  doc: ',  --comments        Show comments.'
-  type: boolean
+    prefix: --failures
+- id: in_comments
+  doc: Show comments.
+  type: boolean?
   inputBinding:
-    prefix: -o
+    prefix: --comments
 - id: in_ignore_exit
   doc: Ignore exit status from test scripts.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ignore-exit
-- id: in__merge_stderr
-  doc: ",  --merge           Merge test scripts' STDERR with their STDOUT."
-  type: boolean
+- id: in_merge
+  doc: Merge test scripts' STDERR with their STDOUT.
+  type: boolean?
   inputBinding:
-    prefix: -m
-- id: in__recurse_recursively
-  doc: ',  --recurse         Recursively descend into directories.'
-  type: boolean
+    prefix: --merge
+- id: in_recurse
+  doc: Recursively descend into directories.
+  type: boolean?
   inputBinding:
-    prefix: -r
+    prefix: --recurse
 - id: in_reverse
   doc: Run the tests in reverse order.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reverse
-- id: in_quiet_suppress_output
-  doc: ',  --quiet           Suppress some test output while running tests.'
-  type: boolean
+- id: in_suppress_test_output
+  doc: Suppress some test output while running tests.
+  type: boolean?
   inputBinding:
-    prefix: -q
-- id: in__quiet_results
-  doc: ',  --QUIET           Only print summary results.'
-  type: boolean
+    prefix: --quiet
+- id: in_only_print_summary
+  doc: Only print summary results.
+  type: boolean?
   inputBinding:
-    prefix: -Q
-- id: in__parse_show
-  doc: ',  --parse           Show full list of TAP parse errors, if any.'
-  type: boolean
+    prefix: --QUIET
+- id: in_parse
+  doc: Show full list of TAP parse errors, if any.
+  type: boolean?
   inputBinding:
-    prefix: -p
+    prefix: --parse
 - id: in_directives
   doc: Only show results with TODO or SKIP directives.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --directives
 - id: in_timer
   doc: Print elapsed time after each test.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --timer
 - id: in_trap
   doc: Trap Ctrl-C and print summary on interrupt.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --trap
 - id: in_normalize
   doc: Normalize TAP output in verbose output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --normalize
 - id: in_enable_tainting_checks
   doc: Enable tainting checks.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -T
 - id: in_enable_tainting_warnings
   doc: Enable tainting warnings.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
 - id: in_enable_fatal_warnings
   doc: Enable fatal warnings.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -W
 - id: in_enable_warnings
   doc: Enable warnings.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -w
-- id: in__version_display
-  doc: ',  --version         Display the version'
-  type: boolean
+- id: in_man
+  doc: Longer manpage for prove
+  type: boolean?
   inputBinding:
-    prefix: -V
-- id: in__man_longer
-  doc: ',  --man             Longer manpage for prove'
-  type: boolean
-  inputBinding:
-    prefix: -H
+    prefix: --man
 - id: in_norc
   doc: Don't process default .proverc
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --norc
 - id: in_library_paths_include
   doc: Library paths to include.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -I
 - id: in_load_plugin_searches
   doc: Load plugin (searches App::Prove::Plugin::*.)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -P
 - id: in_load_a_module
   doc: Load a module.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -M
-- id: in__exec_interpreter
-  doc: ",  --exec            Interpreter to run the tests ('' for compiled\ntests.)"
-  type: boolean
+- id: in_exec
+  doc: "Interpreter to run the tests ('' for compiled\ntests.)"
+  type: boolean?
   inputBinding:
-    prefix: -e
+    prefix: --exec
 - id: in_ext
   doc: Set the extension for tests (default '.t')
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ext
 - id: in_harness
   doc: Define test harness to use.  See TAP::Harness.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --harness
 - id: in_formatter
   doc: Result formatter to use. See FORMATTERS.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --formatter
 - id: in_source
   doc: "Load and/or configure a SourceHandler. See\nSOURCE HANDLERS."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --source
-- id: in__archive_outtgz
-  doc: ',  --archive out.tgz Store the resulting TAP in an archive file.'
-  type: File
+- id: in_archive
+  doc: Store the resulting TAP in an archive file.
+  type: File?
   inputBinding:
-    prefix: -a
-- id: in__jobs_n
-  doc: ',  --jobs N          Run N test jobs in parallel (try 9.)'
-  type: boolean
+    prefix: --archive
+- id: in_jobs
+  doc: Run N test jobs in parallel (try 9.)
+  type: long?
   inputBinding:
-    prefix: -j
+    prefix: --jobs
 - id: in_state
   doc: Control prove's persistent state.
-  type: string
+  type: string?
   inputBinding:
     prefix: --state
 - id: in_rc
   doc: Process options from rcfile
-  type: string
+  type: string?
   inputBinding:
     prefix: --rc
 - id: in_rules
   doc: Rules for parallel vs sequential processing.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rules
 - id: in_files
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 - id: in_or
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out__archive_outtgz
-  doc: ',  --archive out.tgz Store the resulting TAP in an archive file.'
-  type: File
-  outputBinding:
-    glob: $(inputs.in__archive_outtgz)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - prove

@@ -14,6 +14,9 @@ task MobInit {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (v) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database_directory: "Directory to download databases to. Defaults to\\n/usr/local/lib/python3.8/site-\\npackages/mob_suite/databases"
     verbose: "Set the verbosity level. Can by used multiple times"

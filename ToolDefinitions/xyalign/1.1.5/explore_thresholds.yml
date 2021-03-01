@@ -1,121 +1,126 @@
 !Command
 command:
 - explore_thresholds
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: module
+  description: --output_prefix OUTPUT_PREFIX
 named:
 - !Flag
-  description: "Full path to csv output of pandas dataframe from\nBAM_ANALYSIS module"
+  optional: true
   synonyms:
   - --dataframe
+  description: "Full path to csv output of pandas dataframe from\nBAM_ANALYSIS module"
   args: !SimpleFlagArg
     name: DATAFRAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --callable_bed
   description: "Full path to OPTIONAL external bed file with callable\nregions. This\
     \ script will plot based on filters only,\ncallable sites only, and filters and\
     \ callable sites\ncombined. Default is 'None', which will plot based on\nfilters\
     \ only."
-  synonyms:
-  - --callable_bed
   args: !SimpleFlagArg
     name: CALLABLE_BED
-  optional: true
 - !Flag
-  description: Full path to Platypus VCF output from BAM_ANALYSIS
+  optional: true
   synonyms:
   - --vcf
+  description: Full path to Platypus VCF output from BAM_ANALYSIS
   args: !SimpleFlagArg
     name: VCF
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --chrom
   description: "Name of chromosome to analyze. Default is 'ALL', which\nwill analyze\
     \ all chromosomes in dataframe together.\nOtherwise, will only plot for chromosome\
     \ listed."
-  synonyms:
-  - --chrom
   args: !SimpleFlagArg
     name: CHROM
-  optional: true
 - !Flag
-  description: "If flag provided, use full dataset to calculate mean\nfor filters.\
-    \ Otherwise, will calculate mean per\nchromosome."
+  optional: true
   synonyms:
   - --whole_genome_threshold
+  description: "If flag provided, use full dataset to calculate mean\nfor filters.\
+    \ Otherwise, will calculate mean per\nchromosome."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min_depth_filter
   description: "[MIN_DEPTH_FILTER [MIN_DEPTH_FILTER ...]]\nMinimum depth threshold\
     \ for a window to be considered\nhigh quality. Calculated as mean depth *\nmin_depth_filter.\
     \ So, a min_depth_filter of 0.2 would\nrequire at least a minimum depth of 2 if\
     \ the mean\ndepth was 10. Default is 0.0 to consider all windows."
-  synonyms:
-  - --min_depth_filter
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max_depth_filter
   description: "[MAX_DEPTH_FILTER [MAX_DEPTH_FILTER ...]]\nMaximum depth threshold\
     \ for a window to be considered\nhigh quality. Calculated as mean depth *\nmax_depth_filter.\
     \ So, a max_depth_filter of 4 would\nrequire depths to be less than or equal to\
     \ 40 if the\nmean depth was 10. Default is 100000.0 to consider all\nwindows."
-  synonyms:
-  - --max_depth_filter
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[MAPQ_CUTOFF [MAPQ_CUTOFF ...]]\nMinimum mean mapq threshold for a\
-    \ window to be\nconsidered high quality. Default is 20."
+  optional: true
   synonyms:
   - --mapq_cutoff
+  description: "[MAPQ_CUTOFF [MAPQ_CUTOFF ...]]\nMinimum mean mapq threshold for a\
+    \ window to be\nconsidered high quality. Default is 20."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Consider all SNPs with a site quality (QUAL) greater\nthan or equal\
-    \ to this value. Default is 30."
+  optional: true
   synonyms:
   - --variant_site_quality
+  description: "Consider all SNPs with a site quality (QUAL) greater\nthan or equal\
+    \ to this value. Default is 30."
   args: !SimpleFlagArg
     name: VARIANT_SITE_QUALITY
-  optional: true
 - !Flag
-  description: "Consider all SNPs with a sample genotype quality\ngreater than or\
-    \ equal to this value. Default is 30."
+  optional: true
   synonyms:
   - --variant_genotype_quality
+  description: "Consider all SNPs with a sample genotype quality\ngreater than or\
+    \ equal to this value. Default is 30."
   args: !SimpleFlagArg
     name: VARIANT_GENOTYPE_QUALITY
-  optional: true
 - !Flag
-  description: "Consider all SNPs with a sample depth greater than or\nequal to this\
-    \ value. Default is 4."
+  optional: true
   synonyms:
   - --variant_depth
+  description: "Consider all SNPs with a sample depth greater than or\nequal to this\
+    \ value. Default is 4."
   args: !SimpleFlagArg
     name: VARIANT_DEPTH
-  optional: true
 - !Flag
-  description: Sample ID or other identifier to be used in naming
+  optional: true
   synonyms:
   - --sample_id
+  description: Sample ID or other identifier to be used in naming
   args: !SimpleFlagArg
     name: SAMPLE_ID
-  optional: true
 - !Flag
-  description: "If True, will also plot a histogram of distances\nbetween SNPs. Will\
-    \ only run on a single chromosome.\nDefault is False.\n"
+  optional: true
   synonyms:
   - --plot_snp_distance
+  description: "If True, will also plot a histogram of distances\nbetween SNPs. Will\
+    \ only run on a single chromosome.\nDefault is False.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: explore_thresholds [-h] --dataframe DATAFRAME\n               \
@@ -174,3 +179,4 @@ help_text: "usage: explore_thresholds [-h] --dataframe DATAFRAME\n              
   \ False.\n"
 generated_using:
 - --help
+docker_image:

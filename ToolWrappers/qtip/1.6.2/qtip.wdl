@@ -3,7 +3,7 @@ version 1.0
 task Qtip {
   input {
     Array[File] ref
-    Array[File] unpaired_read_fastq
+    Array[File] unpaired_read_name
     Array[File] m_one
     Array[File] m_two
     File? index
@@ -56,7 +56,7 @@ task Qtip {
   command <<<
     qtip \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
-      ~{if defined(unpaired_read_fastq) then ("--U " +  '"' + unpaired_read_fastq + '"') else ""} \
+      ~{if defined(unpaired_read_name) then ("--U " +  '"' + unpaired_read_name + '"') else ""} \
       ~{if defined(m_one) then ("--m1 " +  '"' + m_one + '"') else ""} \
       ~{if defined(m_two) then ("--m2 " +  '"' + m_two + '"') else ""} \
       ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
@@ -106,9 +106,12 @@ task Qtip {
       ~{if (profile) then "--profile" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "FASTA file, or many FASTAs separated by spaces,\\ncontaining reference genome sequences (default: None)"
-    unpaired_read_fastq: "Unpaired read FASTQ file name, or many FASTQ file\\nnames separated by spaces (default: None)"
+    unpaired_read_name: "Unpaired read FASTQ file name, or many FASTQ file\\nnames separated by spaces (default: None)"
     m_one: "Mate 1 FASTQ file name, or many FASTQ file names\\nseparated by spaces; must be specified in same order\\nas --m2 (default: None)"
     m_two: "Mate 2 FASTQ file name, or many FASTQ file names\\nseparated by spaces; must be specified in same order\\nas --m1 (default: None)"
     index: "Index file to use; specify the appropriate prefix,\\ne.g. Bowtie 2 index file name without the .X.bt2\\nsuffix. (default: None)"

@@ -24,6 +24,9 @@ task CentreseqCore {
       ~{if (pairwise) then "--pairwise" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_dir: "Path to directory containing *.fasta files for\\ninput to the core pipeline  [required]"
     outdir: "Root directory to store all output files. If\\nthis directory already exists, the pipeline\\nwill attempt to skip the Prokka step by reading\\nin the existing Prokka output directory, but\\nwill overwrite all other existing result files.\\n[required]"

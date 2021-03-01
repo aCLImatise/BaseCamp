@@ -4,6 +4,9 @@ task BaseErrordll {
   command <<<
     BaseError_dll
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

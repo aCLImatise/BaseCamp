@@ -24,6 +24,9 @@ task HalTreeNIConservationpy {
       ~{if defined(pval) then ("--pval " +  '"' + pval + '"') else ""} \
       ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     background_bed_name: "Name function for background bed files where genome\\nname is specified as %s. Computed using\\nhalTreeNIBackground (default: %%s_bg.bed)"
     mutations_bed_name: "Name function for background bed files where genome\\nname is specified as %s. Computed using\\nhalTreeMutations (default: %%s.bed)"

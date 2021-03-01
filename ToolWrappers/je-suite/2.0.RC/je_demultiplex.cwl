@@ -1,12 +1,12 @@
 class: CommandLineTool
 id: je_demultiplex.cwl
 inputs:
-- id: in_displays_options_specific
+- id: in_std_help
   doc: "Displays options specific to this tool AND options common to all Picard command\
     \ line\ntools."
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -H
+    prefix: --stdhelp
 - id: in_data_dot
   doc: 'Required. '
   type: string
@@ -63,6 +63,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - je

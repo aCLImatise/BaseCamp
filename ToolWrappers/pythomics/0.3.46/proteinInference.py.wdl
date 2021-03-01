@@ -70,6 +70,9 @@ task ProteinInferencepy {
       ~{if defined(mod_col) then ("--mod-col " +  '"' + mod_col + '"') else ""} \
       ~{if defined(mod_col_func) then ("--mod-col-func " +  '"' + mod_col_func + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads_to_run: "Threads to run"
     fasta_file_match: "[FASTA], --fasta [FASTA]\\nThe fasta file to match peptides against."

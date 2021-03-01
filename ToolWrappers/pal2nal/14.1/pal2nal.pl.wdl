@@ -17,7 +17,7 @@ task Pal2nalpl {
     Int blepharisma_nuclear_code
     Int chlorophycean_mitochondrial_code
     Int trematode_mitochondrial_code
-    Int scenedesmus_obliquus_mitochondrial
+    Int scenedesmus_obliquus_code
     Int thraustochytrium_mitochondrial_code
   }
   command <<<
@@ -30,7 +30,7 @@ task Pal2nalpl {
       ~{blepharisma_nuclear_code} \
       ~{chlorophycean_mitochondrial_code} \
       ~{trematode_mitochondrial_code} \
-      ~{scenedesmus_obliquus_mitochondrial} \
+      ~{scenedesmus_obliquus_code} \
       ~{thraustochytrium_mitochondrial_code} \
       ~{if (clustalpamlfastacodonoutput_format_default) then "-output" else ""} \
       ~{if (block_only) then "-blockonly" else ""} \
@@ -40,6 +40,9 @@ task Pal2nalpl {
       ~{if (html) then "-html" else ""} \
       ~{if (no_stderr) then "-nostderr" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clustalpamlfastacodonoutput_format_default: "(clustal|paml|fasta|codon)\\nOutput format; default = clustal"
     block_only: "Show only user specified blocks\\n'#' under CLUSTAL alignment (see example)"
@@ -56,7 +59,7 @@ task Pal2nalpl {
     blepharisma_nuclear_code: "Blepharisma nuclear code"
     chlorophycean_mitochondrial_code: "Chlorophycean mitochondrial code"
     trematode_mitochondrial_code: "Trematode mitochondrial code"
-    scenedesmus_obliquus_mitochondrial: "Scenedesmus obliquus mitochondrial code"
+    scenedesmus_obliquus_code: "Scenedesmus obliquus mitochondrial code"
     thraustochytrium_mitochondrial_code: "Thraustochytrium mitochondrial code"
   }
   output {

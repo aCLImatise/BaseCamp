@@ -20,6 +20,9 @@ task Fdnamove {
       ~{if (screen_lines) then "-screenlines" else ""} \
       ~{if (out_tree_file) then "-outtreefile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     weights: "properties Weights file - ignore sites with weight zero"
     out_gr_no: "integer    [0] Species number to use as outgroup\\n(Integer 0 or more)"

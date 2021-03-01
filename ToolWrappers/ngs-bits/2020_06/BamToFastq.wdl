@@ -24,6 +24,9 @@ task BamToFastq {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input BAM file."
     out_one: "Read 1 output FASTQ.GZ file."

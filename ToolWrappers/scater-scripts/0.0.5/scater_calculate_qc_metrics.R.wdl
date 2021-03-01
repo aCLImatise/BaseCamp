@@ -22,6 +22,9 @@ task ScatercalculateqcmetricsR {
       ~{if defined(use_spikes) then ("--use-spikes " +  '"' + use_spikes + '"') else ""} \
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "singleCellExperiment object containing expression values and experimental information. Must have been appropriately prepared."
     exprs_values: "A string indicating which ‘assays’ in the ‘object’ should be used to define expression."

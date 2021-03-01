@@ -46,6 +46,9 @@ task AmptkHeatmap {
       ~{if (vmax) then "--vmax" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_otu_table: "Input OTU table (Required)"
     output_file_required: "Output file (Required)"

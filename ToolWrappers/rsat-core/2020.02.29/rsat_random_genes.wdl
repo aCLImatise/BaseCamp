@@ -48,6 +48,9 @@ task RsatRandomgenes {
       ~{if defined(fam) then ("-fam " +  '"' + fam + '"') else ""} \
       ~{if (repeat) then "-repeat" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "(must be first argument) display options"
     verbose: "verbose"

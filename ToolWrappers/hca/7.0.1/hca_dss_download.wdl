@@ -24,6 +24,9 @@ task HcaDssDownload {
       ~{if defined(num_retries) then ("--num-retries " +  '"' + num_retries + '"') else ""} \
       ~{if defined(min_delay_seconds) then ("--min-delay-seconds " +  '"' + min_delay_seconds + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_data: "if using the CLI or pass the no_data=True argument if calling the download() API method."
     bundle_uuid: "The uuid of the bundle to download"

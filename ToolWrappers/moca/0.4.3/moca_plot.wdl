@@ -28,6 +28,9 @@ task MocaPlot {
       ~{if (show_progress) then "--show-progress" else ""} \
       ~{if defined(genome_build) then ("--genome-build " +  '"' + genome_build + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     meme_dir: "MEME output directory  [required]"
     centri_mo_dir: "Centrimo output directory  [required]"

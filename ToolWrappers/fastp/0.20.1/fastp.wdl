@@ -166,6 +166,9 @@ task Fastp {
       ~{if (cut_by_quality_aggressive) then "--cut_by_quality_aggressive" else ""} \
       ~{if (discard_un_merged) then "--discard_unmerged" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_one: "read1 input file name (string [=])"
     out_one: "read1 output file name (string [=])"

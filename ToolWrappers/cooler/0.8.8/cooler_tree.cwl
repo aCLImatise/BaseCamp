@@ -1,11 +1,6 @@
 class: CommandLineTool
 id: cooler_tree.cwl
 inputs:
-- id: in_level
-  doc: "-h, --help           Show this message and exit.\n"
-  type: long
-  inputBinding:
-    prefix: --level
 - id: in_uri
   doc: ''
   type: string
@@ -15,6 +10,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cooler

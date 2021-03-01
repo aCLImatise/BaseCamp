@@ -28,6 +28,9 @@ task BlobtoolsTaxify {
       ~{if defined(custom_taxid) then ("--custom_taxid " +  '"' + custom_taxid + '"') else ""} \
       ~{if defined(custom_score) then ("--custom_score " +  '"' + custom_score + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hit_file: "BLAST/Diamond similarity search result (TSV format).\\nDefaults assume \\\"-outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore'\\\""
     hit_column_q_seq_id: "Zero-based column of qseqid in similarity search result [default: 0]\\nChange if different format than (-outfmt '6')"

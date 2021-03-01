@@ -12,6 +12,9 @@ task Varda2clientStab {
       ~{if defined(end) then ("--end " +  '"' + end + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     start: "Start of region"
     end: "End of region"

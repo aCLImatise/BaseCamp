@@ -8,7 +8,7 @@ inputs:
     \ specified without a value, variants\nbelonging to any of the samples will be\
     \ counted. If\nthis parameter is left unspecified, all variants,\nincluding those\
     \ that do not belong to any samples will\nbe counted."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_group_samples_certain
@@ -16,13 +16,13 @@ inputs:
     \ [GROUP_BY [GROUP_BY ...]]\nGroup samples by certain conditions such as 'aff=1'.\
     \ A\ncommon usage is to group variants by 'filename' and\n'sample_name' so that\
     \ variant statistics are outputted\nfor each sample."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
 - id: in_verbosity
   doc: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
     \ to standard output (default to\n1).\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbosity
 - id: in_calculated_dot
@@ -34,6 +34,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vtools_report

@@ -13,7 +13,7 @@ task CheckmQa {
     Float? e_value
     Int? length
     File? coverage_file
-    File? file
+    File? print_results_file
     Boolean? tab_table
     Int? threads
     Boolean? quiet
@@ -36,12 +36,15 @@ task CheckmQa {
       ~{if defined(e_value) then ("--e_value " +  '"' + e_value + '"') else ""} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
       ~{if defined(coverage_file) then ("--coverage_file " +  '"' + coverage_file + '"') else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(print_results_file) then ("--file " +  '"' + print_results_file + '"') else ""} \
       ~{if (tab_table) then "--tab_table" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_format: "desired output: (default: 1)\\n1. summary of bin completeness and contamination\\n2. extended summary of bin statistics (includes GC, genome size, ...)\\n3. summary of bin quality for increasingly basal lineage-specific marker sets\\n4. list of marker genes and their counts\\n5. list of bin id, marker gene id, gene id\\n6. list of marker genes present multiple times in a bin\\n7. list of marker genes present multiple times on the same scaffold\\n8. list indicating position of each marker gene within a bin\\n9. FASTA file of marker genes identified in each bin"
     exclude_markers: "file specifying markers to exclude from marker sets"
@@ -54,7 +57,7 @@ task CheckmQa {
     e_value: "e-value cut off (default: 1e-10)"
     length: "percent overlap between target and query (default: 0.7)"
     coverage_file: "file containing coverage of each sequence; coverage information added to table type 2 (see coverage command)"
-    file: "print results to file (default: stdout)"
+    print_results_file: "print results to file (default: stdout)"
     tab_table: "print tab-separated values table"
     threads: "number of threads (default: 1)"
     quiet: "suppress console output"

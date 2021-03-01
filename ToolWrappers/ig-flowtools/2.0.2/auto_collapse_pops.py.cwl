@@ -3,22 +3,22 @@ id: auto_collapse_pops.py.cwl
 inputs:
 - id: in_flock_output_file
   doc: FLOCK output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_name_output_file
   doc: Name of the output file.
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_name_report_file
   doc: Name of the report file.
-  type: File
+  type: File?
   inputBinding:
     prefix: -r
 - id: in_file_location_profiletxt
   doc: File location for the profile.txt from FLOCK.
-  type: File
+  type: File?
   inputBinding:
     prefix: -p
 - id: in_auto_pop_collapse_from_profile
@@ -32,14 +32,15 @@ outputs:
   type: stdout
 - id: out_flock_output_file
   doc: FLOCK output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_flock_output_file)
 - id: out_name_output_file
   doc: Name of the output file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_name_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - auto_collapse_pops.py

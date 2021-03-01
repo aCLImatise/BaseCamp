@@ -3,7 +3,7 @@ id: mb_cap_occupancy_outputfile.cwl
 inputs:
 - id: in_quantile
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --quantile
 - id: in_mb_cap_occupancy
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mb-cap-occupancy

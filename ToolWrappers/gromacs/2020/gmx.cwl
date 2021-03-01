@@ -3,7 +3,7 @@ id: gmx.cwl
 inputs:
 - id: in_nice
   doc: "<int>              (19)\nSet the nicelevel (default depends on command)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nice
 - id: in_commands
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gmx

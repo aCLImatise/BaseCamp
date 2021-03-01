@@ -3,7 +3,7 @@ version 1.0
 task OverlapInCore {
   input {
     File? contig_mode_specify
-    Boolean? contig_mode_use
+    Boolean? contig_mode_stores
     Boolean? do_partial_overlaps
     String? specify_fragments_put
     Boolean? designate_file_limit
@@ -11,7 +11,7 @@ task OverlapInCore {
     Boolean? specify_maximum_number
     Boolean? allow_multiple_overlaps
     Boolean? specify_memory_size
-    File? specify_output_file
+    File? specify_output_name
     Boolean? write_protoio_output
     String? specify_old_fragments
     Boolean? ignore_screen_information
@@ -34,7 +34,7 @@ task OverlapInCore {
     overlapInCore \
       ~{gkp_storepath} \
       ~{if defined(contig_mode_specify) then ("-b " +  '"' + contig_mode_specify + '"') else ""} \
-      ~{if (contig_mode_use) then "-c" else ""} \
+      ~{if (contig_mode_stores) then "-c" else ""} \
       ~{if (do_partial_overlaps) then "-G" else ""} \
       ~{if defined(specify_fragments_put) then ("-h " +  '"' + specify_fragments_put + '"') else ""} \
       ~{if (designate_file_limit) then "-I" else ""} \
@@ -42,7 +42,7 @@ task OverlapInCore {
       ~{if (specify_maximum_number) then "-l" else ""} \
       ~{if (allow_multiple_overlaps) then "-m" else ""} \
       ~{if (specify_memory_size) then "-M" else ""} \
-      ~{if (specify_output_file) then "-o" else ""} \
+      ~{if (specify_output_name) then "-o" else ""} \
       ~{if (write_protoio_output) then "-P" else ""} \
       ~{if defined(specify_old_fragments) then ("-r " +  '"' + specify_old_fragments + '"') else ""} \
       ~{if (ignore_screen_information) then "-s" else ""} \
@@ -60,9 +60,12 @@ task OverlapInCore {
       ~{if defined(reads_per_batch) then ("--readsperbatch " +  '"' + reads_per_batch + '"') else ""} \
       ~{if defined(reads_per_thread) then ("--readsperthread " +  '"' + reads_per_thread + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contig_mode_specify: "in contig mode, specify the output file"
-    contig_mode_use: "contig mode.  Use 2 frag stores.  First is\\nfor reads; second is for contigs"
+    contig_mode_stores: "contig mode.  Use 2 frag stores.  First is\\nfor reads; second is for contigs"
     do_partial_overlaps: "do partial overlaps"
     specify_fragments_put: "to specify fragments to put in hash table\\nImplies LSF mode (no changes to frag store)"
     designate_file_limit: "designate a file of frag iids to limit olaps to\\n(Contig mode only)"
@@ -70,7 +73,7 @@ task OverlapInCore {
     specify_maximum_number: "specify the maximum number of overlaps per\\nfragment-end per batch of fragments."
     allow_multiple_overlaps: "allow multiple overlaps per oriented fragment pair"
     specify_memory_size: "specify memory size.  Valid values are '8GB', '4GB',\\n'2GB', '1GB', '256MB'.  (Not for Contig mode)"
-    specify_output_file: "specify output file name"
+    specify_output_name: "specify output file name"
     write_protoio_output: "write protoIO output (if not -G)"
     specify_old_fragments: "specify old fragments to overlap"
     ignore_screen_information: "ignore screen information with fragments"
@@ -92,6 +95,6 @@ task OverlapInCore {
   output {
     File out_stdout = stdout()
     File out_contig_mode_specify = "${in_contig_mode_specify}"
-    File out_specify_output_file = "${in_specify_output_file}"
+    File out_specify_output_name = "${in_specify_output_name}"
   }
 }

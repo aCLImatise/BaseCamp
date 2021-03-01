@@ -4,123 +4,123 @@ command:
 positional: []
 named:
 - !Flag
-  description: "gene-cell expression matrix file, possible formats:\n.csv, .h5, .mtx,\
-    \ .txt, .tab, .loom, .h5ad. Existing\nmeta data from .loom and .h5ad will be kept\
-    \ and\nexported."
+  optional: true
   synonyms:
   - -e
   - --exprMatrix
+  description: "gene-cell expression matrix file, possible formats:\n.csv, .h5, .mtx,\
+    \ .txt, .tab, .loom, .h5ad. Existing\nmeta data from .loom and .h5ad will be kept\
+    \ and\nexported."
   args: !SimpleFlagArg
     name: EXPRMATRIX
-  optional: true
 - !Flag
-  description: "name of cell meta data table. A table like tsv or csv\nformat, first\
-    \ row has cellId and the cellId must match\na sample name in the expression matrix.\
-    \ Optional but\nrequired if you use --inCluster. 'inMeta' in\nscanpy.conf"
+  optional: true
   synonyms:
   - -m
   - --meta
+  description: "name of cell meta data table. A table like tsv or csv\nformat, first\
+    \ row has cellId and the cellId must match\na sample name in the expression matrix.\
+    \ Optional but\nrequired if you use --inCluster. 'inMeta' in\nscanpy.conf"
   args: !SimpleFlagArg
     name: META
-  optional: true
 - !Flag
-  description: output directory
+  optional: true
   synonyms:
   - -o
   - --outDir
+  description: output directory
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
-  description: "internal name of dataset in cell browser. No spaces or\nspecial characters.\
-    \ default: name of output directory\n(-o)"
+  optional: true
   synonyms:
   - -n
   - --name
+  description: "internal name of dataset in cell browser. No spaces or\nspecial characters.\
+    \ default: name of output directory\n(-o)"
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: copy sample scanpy.conf to current directory
+  optional: true
   synonyms:
   - --init
+  description: copy sample scanpy.conf to current directory
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "when reading the expression matrix from a text file,\nassume that\
-    \ samples are on lines (default behavior is\none-gene-per-line, one-sample-per-column).\
-    \ Also in\nscanpy.conf."
+  optional: true
   synonyms:
   - -s
   - --samplesOnRows
+  description: "when reading the expression matrix from a text file,\nassume that\
+    \ samples are on lines (default behavior is\none-gene-per-line, one-sample-per-column).\
+    \ Also in\nscanpy.conf."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "config file from which settings are read, default is\nscanpy.conf"
+  optional: true
   synonyms:
   - -c
   - --confFname
+  description: "config file from which settings are read, default is\nscanpy.conf"
   args: !SimpleFlagArg
     name: CONFFNAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --inCluster
   description: "Do not run louvain-clustering, but use this meta field\nfrom ad.obs\
     \ when calculating marker genes. The default\nis to use the louvain clustering\
     \ results. Can be\nspecified also in scanpy.conf."
-  synonyms:
-  - --inCluster
   args: !SimpleFlagArg
     name: INCLUSTER
-  optional: true
 - !Flag
-  description: "do not write the scanpy matrix to the destination\ndirectory as a\
-    \ file exprMatrix.tsv.gz"
+  optional: true
   synonyms:
   - --skipMatrix
+  description: "do not write the scanpy matrix to the destination\ndirectory as a\
+    \ file exprMatrix.tsv.gz"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --copyMatrix
   description: "Instead of reading the input matrix into scanpy and\nthen writing\
     \ it back out, just copy the input matrix.\nOnly works if the input matrix is\
     \ gzipped and in the\nright format and a tsv or csv file, not mtx or\nh5-based\
     \ files."
-  synonyms:
-  - --copyMatrix
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "when reading 10X HDF5 files, the genome to read.\nDefault is GRCh38.\
-    \ Use h5ls <h5file> to show possible\ngenomes"
+  optional: true
   synonyms:
   - -g
   - --genome
+  description: "when reading 10X HDF5 files, the genome to read.\nDefault is GRCh38.\
+    \ Use h5ls <h5file> to show possible\ngenomes"
   args: !SimpleFlagArg
     name: GENOME
-  optional: true
 - !Flag
-  description: run doctests
+  optional: true
   synonyms:
   - --test
+  description: run doctests
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "open an iPython shell when an exception occurs. also\noutput debug\
-    \ messages\n"
+  optional: true
   synonyms:
   - -d
   - --debug
+  description: "open an iPython shell when an exception occurs. also\noutput debug\
+    \ messages\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: cbScanpy [options] -e matrixFile -o outDir -n datasetName - run\
@@ -160,3 +160,4 @@ help_text: "Usage: cbScanpy [options] -e matrixFile -o outDir -n datasetName - r
   \           output debug messages\n"
 generated_using:
 - --help
+docker_image:

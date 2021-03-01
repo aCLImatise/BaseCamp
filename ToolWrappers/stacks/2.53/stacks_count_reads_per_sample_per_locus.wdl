@@ -8,6 +8,9 @@ task Stackscountreadspersampleperlocus {
     stacks_count_reads_per_sample_per_locus \
       ~{stacks_de_novo_dir}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stacks_de_novo_dir: ""
   }

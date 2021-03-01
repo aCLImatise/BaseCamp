@@ -22,6 +22,9 @@ task Kcforesttest {
       ~{if defined(th) then ("-th " +  '"' + th + '"') else ""} \
       ~{if (rnd) then "-rnd" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hard: ""
     it: ""

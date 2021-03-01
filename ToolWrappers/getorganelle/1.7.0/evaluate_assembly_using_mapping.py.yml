@@ -1,70 +1,179 @@
 !Command
 command:
 - evaluate_assembly_using_mapping.py
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: installed.
+  description: --plot-format=PLOT_FORMAT
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: output
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - '-2'
-  args: !SimpleFlagArg
-    name: RAW_2.fq
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - '-1'
-  args: !SimpleFlagArg
-    name: RAW_1.fq
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -f
+  description: input assembly fasta file.
   args: !SimpleFlagArg
-    name: fasta_file
+    name: FASTA
+- !Flag
   optional: true
+  synonyms:
+  - '-1'
+  - '-2'
+  - -u
+  description: "Input file(s) with unpaired (single-end) reads to be\nadded to the\
+    \ pool. files could be comma-separated\nlists such as 'seq1,seq2'."
+  args: !SimpleFlagArg
+    name: ORIGINAL_FQ_1
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --max-lib-len
+  description: "Corresponding to '-X' option in Bowtie2. Default:\n1200."
+  args: !SimpleFlagArg
+    name: MAX_LIB_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "(yes/no/auto) input fasta is circular. If auto was\nchosen, the input\
+    \ fasta would be treated as circular\nwhen the sequence name ends with '(circular)'.\n\
+    Default: auto"
+  args: !SimpleFlagArg
+    name: IS_CIRCULAR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: output folder.
+  args: !SimpleFlagArg
+    name: OUTPUT_BASE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: threads.
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --continue
+  - --seed
+  description: 'Seed for random number generator. Default: 12345'
+  args: !SimpleFlagArg
+    name: RANDOM_SEED
+- !Flag
+  optional: true
+  synonyms:
+  - --draw
+  description: Draw density plot using matplotlib, which should be
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --plot-title
+  description: 'Default: `the file name of the input fasta`'
+  args: !SimpleFlagArg
+    name: PLOT_TITLE
+- !Flag
+  optional: true
+  synonyms:
+  - --plot-subtitle
+  description: 'A 4-space indicates a line break. Default: None'
+  args: !SimpleFlagArg
+    name: PLOT_SUBTITLE
+- !Flag
+  optional: true
+  synonyms:
+  - --plot-transparent
+  description: 'Default: False'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --plot-x-density
+  description: 'Default: 12000.0'
+  args: !SimpleFlagArg
+    name: PLOT_X_DENSITY
+- !Flag
+  optional: true
+  synonyms:
+  - --plot-x-gap-dots
+  description: "Number of sites added in-between isolated contigs.\nDefault: 3000"
+  args: !SimpleFlagArg
+    name: GAP_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - --plot-figure-height
+  description: 'Default: 5.0'
+  args: !SimpleFlagArg
+    name: FIGURE_HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - --plot-y-lim
+  description: Y axis value limit.
+  args: !SimpleFlagArg
+    name: Y_LIM
+- !Flag
+  optional: true
+  synonyms:
+  - --plot-font
+  description: "For plot of unicode characters in some environments.\nUse 'Times New\
+    \ Roman','Arial' etc. Default: none."
+  args: !SimpleFlagArg
+    name: PLOT_FONT
+- !Flag
+  optional: true
+  synonyms:
+  - --disable-customized-error-rate
+  - --which-bowtie2
+  description: "Assign the path to Bowtie2 binary files if not added\nto the path.\
+    \ Default: try\nGetOrganelleDep/linux/bowtie2 first, then $PATH"
+  args: !SimpleFlagArg
+    name: WHICH_BOWTIE2
+- !Flag
+  optional: true
+  synonyms:
+  - --bowtie2-mode
+  description: 'Default: --sensitive'
+  args: !SimpleFlagArg
+    name: BOWTIE2_MODE
+- !Flag
+  optional: true
+  synonyms:
+  - --bowtie2-options
+  description: 'Default: --no-discordant --dovetail'
+  args: !SimpleFlagArg
+    name: OTHER_BOWTIE2_OPTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --stat-mode
+  description: "Statistical mode for counting multiple hits of a\nsingle read: best/all.\
+    \ The all mode is meaningful only\nwhen '-k <INT>' was included in '--bowtie2-options'.\n\
+    Default: best"
+  args: !SimpleFlagArg
+    name: STAT_MODE
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Turn on debug mode.
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-f FASTA              input assembly\
-    \ fasta file.\n-1 ORIGINAL_FQ_1\n-2 ORIGINAL_FQ_2\n-u UNPAIRED_FQ_FILES  Input\
-    \ file(s) with unpaired (single-end) reads to be\nadded to the pool. files could\
-    \ be comma-separated\nlists such as 'seq1,seq2'.\n-X MAX_LIB_LEN, --max-lib-len=MAX_LIB_LEN\n\
-    Corresponding to '-X' option in Bowtie2. Default:\n1200.\n-c IS_CIRCULAR     \
-    \   (yes/no/auto) input fasta is circular. If auto was\nchosen, the input fasta\
-    \ would be treated as circular\nwhen the sequence name ends with '(circular)'.\n\
-    Default: auto\n-o OUTPUT_BASE        output folder.\n-t THREADS            threads.\n\
-    --continue\n--seed=RANDOM_SEED    Seed for random number generator. Default: 12345\n\
-    --draw                Draw density plot using matplotlib, which should be\ninstalled.\n\
-    --plot-format=PLOT_FORMAT\nDefault: pdf,png\n--plot-title=PLOT_TITLE\nDefault:\
-    \ `the file name of the input fasta`\n--plot-subtitle=PLOT_SUBTITLE\nA 4-space\
-    \ indicates a line break. Default: None\n--plot-transparent    Default: False\n\
-    --plot-x-density=PLOT_X_DENSITY\nDefault: 12000.0\n--plot-x-gap-dots=GAP_LEN\n\
-    Number of sites added in-between isolated contigs.\nDefault: 3000\n--plot-figure-height=FIGURE_HEIGHT\n\
-    Default: 5.0\n--plot-y-lim=Y_LIM    Y axis value limit.\n--plot-font=PLOT_FONT\n\
-    For plot of unicode characters in some environments.\nUse 'Times New Roman','Arial'\
-    \ etc. Default: none.\n--disable-customized-error-rate\n--which-bowtie2=WHICH_BOWTIE2\n\
-    Assign the path to Bowtie2 binary files if not added\nto the path. Default: try\n\
-    GetOrganelleDep/linux/bowtie2 first, then $PATH\n--bowtie2-mode=BOWTIE2_MODE\n\
-    Default: --sensitive\n--bowtie2-options=OTHER_BOWTIE2_OPTIONS\nDefault: --no-discordant\
-    \ --dovetail\n--stat-mode=STAT_MODE\nStatistical mode for counting multiple hits\
-    \ of a\nsingle read: best/all. The all mode is meaningful only\nwhen '-k <INT>'\
-    \ was included in '--bowtie2-options'.\nDefault: best\n--debug               Turn\
-    \ on debug mode.\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: evaluate_assembly_using_mapping.py -f fasta_file -1 RAW_1.fq -2\
@@ -103,3 +212,4 @@ help_text: "Usage: evaluate_assembly_using_mapping.py -f fasta_file -1 RAW_1.fq 
   \                      Default: best\n  --debug               Turn on debug mode.\n"
 generated_using:
 - --help
+docker_image:

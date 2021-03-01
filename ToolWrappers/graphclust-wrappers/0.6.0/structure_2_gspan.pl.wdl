@@ -13,7 +13,7 @@ task Structure2Gspanpl {
     Boolean? match_shape
     Boolean? vp
     Boolean? tmp
-    Directory? string_eg_output
+    Directory? string_eg_output_directory
     Boolean? group
     Boolean? stdout
     Boolean? ignore_header
@@ -40,12 +40,15 @@ task Structure2Gspanpl {
       ~{if (match_shape) then "-match-shape" else ""} \
       ~{if (vp) then "-vp" else ""} \
       ~{if (tmp) then "-tmp" else ""} \
-      ~{if (string_eg_output) then "-o" else ""} \
+      ~{if (string_eg_output_directory) then "-o" else ""} \
       ~{if (group) then "-group" else ""} \
       ~{if (stdout) then "-stdout" else ""} \
       ~{if (ignore_header) then "-ignore-header" else ""} \
       ~{if (debug) then "-debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "full documentation"
     input_structure_type: "Structure type from the input to use. Allowed types: \\\"MFE\\\", \\\"MEA\\\""
@@ -58,7 +61,7 @@ task Structure2Gspanpl {
     match_shape: "<SHAPE>\\nall seqs/windows will be constraint folded into that shape via\\nRNAshapes (if structure is given in another way this struct will be kept),\\nif this shape is not possible within given energy range, produce a\\nspecific t graph with only one vertex 'X'. By this the instance\\nbecomes very unsimilar to all other graphs (for knn)"
     vp: "enable graph computation with viewpoints:\\nsvmsgdnspdk will center on those nucleotides that are given\\nvia capital letters and ignore those given as lowercase letters"
     tmp: "<STRING> e.g. \\\"/scratch/1/sita/tmp\\\"\\nA directory for writing temporary files"
-    string_eg_output: "<STRING> e.g. \\\"ProjectX/MySequences/GSPAN/\\\"\\nOutput directory for gspan files containing graphs."
+    string_eg_output_directory: "<STRING> e.g. \\\"ProjectX/MySequences/GSPAN/\\\"\\nOutput directory for gspan files containing graphs."
     group: "<INTEGER> e.g. 5\\nCombine/group that number of input seqs into 1 gspan file\\noutput name is then '<INT>.group.gspan.bz2'"
     stdout: "send graphs to stdout instead of writing to files"
     ignore_header: "don't write fasta id part after first space to gspan"
@@ -70,6 +73,6 @@ task Structure2Gspanpl {
   }
   output {
     File out_stdout = stdout()
-    Directory out_string_eg_output = "${in_string_eg_output}"
+    Directory out_string_eg_output_directory = "${in_string_eg_output_directory}"
   }
 }

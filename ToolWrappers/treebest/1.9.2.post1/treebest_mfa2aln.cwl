@@ -3,7 +3,7 @@ id: treebest_mfa2aln.cwl
 inputs:
 - id: in_n
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_fast_a_align
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - treebest

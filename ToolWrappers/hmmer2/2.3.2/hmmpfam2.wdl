@@ -4,7 +4,7 @@ task Hmmpfam2 {
   input {
     Boolean? nucleic_acid_modelssequence
     String? sets_alignment_limit
-    Int? sets_cutoff_globe
+    Int? sets_e_value
     String? sets_bit_threshold
     String? sets_z_models
     Boolean? acc
@@ -32,7 +32,7 @@ task Hmmpfam2 {
       ~{sequence_file_or_database} \
       ~{if (nucleic_acid_modelssequence) then "-n" else ""} \
       ~{if defined(sets_alignment_limit) then ("-A " +  '"' + sets_alignment_limit + '"') else ""} \
-      ~{if defined(sets_cutoff_globe) then ("-E " +  '"' + sets_cutoff_globe + '"') else ""} \
+      ~{if defined(sets_e_value) then ("-E " +  '"' + sets_e_value + '"') else ""} \
       ~{if defined(sets_bit_threshold) then ("-T " +  '"' + sets_bit_threshold + '"') else ""} \
       ~{if defined(sets_z_models) then ("-Z " +  '"' + sets_z_models + '"') else ""} \
       ~{if (acc) then "--acc" else ""} \
@@ -50,10 +50,13 @@ task Hmmpfam2 {
       ~{if (xnu) then "--xnu" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nucleic_acid_modelssequence: ": nucleic acid models/sequence (default protein)"
     sets_alignment_limit: ": sets alignment output limit to <n> best domain alignments"
-    sets_cutoff_globe: ": sets E value cutoff (globE) to <x>; default 10"
+    sets_e_value: ": sets E value cutoff (globE) to <x>; default 10"
     sets_bit_threshold: ": sets T bit threshold (globT) to <x>; no threshold by default"
     sets_z_models: ": sets Z (# models) for E-value calculation"
     acc: ": use HMM accession numbers instead of names in output"

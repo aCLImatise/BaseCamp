@@ -4,80 +4,80 @@ command:
 - convert
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: convert
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: 'the format of the input file(s) (default: bam)'
+  optional: true
   synonyms:
   - --iformat
+  description: 'the format of the input file(s) (default: bam)'
   args: !ChoiceFlagArg
     choices: !!set
-      fastq:
-      bam:
-      fastq_pe:
-      gz:
-      gz_pe:
       sam:
-  optional: true
+      gz_pe:
+      bam:
+      gz:
+      fastq_pe:
+      fastq:
 - !Flag
-  description: "redirect the output to the specified file (default:\nstdout)"
+  optional: true
   synonyms:
   - -o
   - --ofile
+  description: "redirect the output to the specified file (default:\nstdout)"
   args: !SimpleFlagArg
     name: OFILE
-  optional: true
 - !Flag
-  description: 'the output format (default: sam)'
+  optional: true
   synonyms:
   - --oformat
+  description: 'the output format (default: sam)'
   args: !ChoiceFlagArg
     choices: !!set
       fastq:
-      bam:
       sam:
+      bam:
       gz:
-  optional: true
 - !Flag
-  description: "optional SAM file, the header information of which\nshould be used\
-    \ in the output (will overwrite pre-\nexisting header information from the input\
-    \ file); not\nallowed for input in SAM/BAM format"
+  optional: true
   synonyms:
   - -h
   - --header
+  description: "optional SAM file, the header information of which\nshould be used\
+    \ in the output (will overwrite pre-\nexisting header information from the input\
+    \ file); not\nallowed for input in SAM/BAM format"
   args: !SimpleFlagArg
     name: HEADER
-  optional: true
 - !Flag
-  description: "if the input file has reads from different read\ngroups, write them\
-    \ to separate output files (using\n--ofile OFILE as a file name template); implied\
-    \ for\nconversions to fastq format"
+  optional: true
   synonyms:
   - -r
   - --split-on-rgs
+  description: "if the input file has reads from different read\ngroups, write them\
+    \ to separate output files (using\n--ofile OFILE as a file name template); implied\
+    \ for\nconversions to fastq format"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "the number of threads to use (overrides config\nsetting; ignored if\
-    \ not applicable to the conversion)\n"
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: "the number of threads to use (overrides config\nsetting; ignored if\
+    \ not applicable to the conversion)\n"
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage:  convert [--help] [--iformat {fastq,fastq_pe,gz,gz_pe,sam,bam}]\n\
@@ -102,3 +102,4 @@ help_text: "usage:  convert [--help] [--iformat {fastq,fastq_pe,gz,gz_pe,sam,bam
   \ if not applicable to the conversion)\n"
 generated_using:
 - --help
+docker_image:

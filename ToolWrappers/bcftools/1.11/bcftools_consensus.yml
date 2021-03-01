@@ -1,0 +1,149 @@
+!Command
+command:
+- bcftools
+- consensus
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: file.vcf.gz
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sample
+  description: apply variants of the given sample
+  args: !SimpleFlagArg
+    name: name
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chain
+  description: write a chain file for liftover
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --absent
+  description: replace positions absent from VCF with <char>
+  args: !SimpleFlagArg
+    name: char
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --exclude
+  description: exclude sites for which the expression is true (see man page for details)
+  args: !SimpleFlagArg
+    name: expr
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta-ref
+  description: reference sequence in fasta format
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --haplotype
+  description: "choose which allele to use from the FORMAT/GT field, note\nthe codes\
+    \ are case-insensitive:\n1: first allele from GT, regardless of phasing\n2: second\
+    \ allele from GT, regardless of phasing\nR: REF allele in het genotypes\nA: ALT\
+    \ allele\nLR,LA: longer allele and REF/ALT if equal length\nSR,SA: shorter allele\
+    \ and REF/ALT if equal length\n1pIu,2pIu: first/second allele for phased and IUPAC\
+    \ code for unphased GTs"
+  args: !SimpleFlagArg
+    name: which
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --include
+  description: select sites for which the expression is true (see man page for details)
+  args: !SimpleFlagArg
+    name: expr
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --iupac-codes
+  description: output variants in the form of IUPAC ambiguity codes
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mask
+  description: replace regions with N
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --missing
+  description: output <char> instead of skipping a missing genotype "./."
+  args: !SimpleFlagArg
+    name: char
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: write output to a file [standard output]
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --prefix
+  description: prefix to add to output sequence names
+  args: !SimpleFlagArg
+    name: string
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "consensus: unrecognized option '--help'\n\nAbout: Create consensus sequence\
+  \ by applying VCF variants to a reference fasta\n       file. By default, the program\
+  \ will apply all ALT variants. Using the\n       --sample (and, optionally, --haplotype)\
+  \ option will apply genotype\n       (or haplotype) calls from FORMAT/GT. The program\
+  \ ignores allelic depth\n       information, such as INFO/AD or FORMAT/AD.\nUsage:\
+  \   bcftools consensus [OPTIONS] <file.vcf.gz>\nOptions:\n    -c, --chain <file>\
+  \         write a chain file for liftover\n    -a, --absent <char>        replace\
+  \ positions absent from VCF with <char>\n    -e, --exclude <expr>       exclude\
+  \ sites for which the expression is true (see man page for details)\n    -f, --fasta-ref\
+  \ <file>     reference sequence in fasta format\n    -H, --haplotype <which>   \
+  \ choose which allele to use from the FORMAT/GT field, note\n                  \
+  \             the codes are case-insensitive:\n                                \
+  \   1: first allele from GT, regardless of phasing\n                           \
+  \        2: second allele from GT, regardless of phasing\n                     \
+  \              R: REF allele in het genotypes\n                                \
+  \   A: ALT allele\n                                   LR,LA: longer allele and REF/ALT\
+  \ if equal length\n                                   SR,SA: shorter allele and\
+  \ REF/ALT if equal length\n                                   1pIu,2pIu: first/second\
+  \ allele for phased and IUPAC code for unphased GTs\n    -i, --include <expr>  \
+  \     select sites for which the expression is true (see man page for details)\n\
+  \    -I, --iupac-codes          output variants in the form of IUPAC ambiguity codes\n\
+  \    -m, --mask <file>          replace regions with N\n    -M, --missing <char>\
+  \       output <char> instead of skipping a missing genotype \"./.\"\n    -o, --output\
+  \ <file>        write output to a file [standard output]\n    -p, --prefix <string>\
+  \      prefix to add to output sequence names\n    -s, --sample <name>        apply\
+  \ variants of the given sample\nExamples:\n   # Get the consensus for one region.\
+  \ The fasta header lines are then expected\n   # in the form \">chr:from-to\".\n\
+  \   samtools faidx ref.fa 8:11870-11890 | bcftools consensus in.vcf.gz > out.fa\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bcftools:1.11--h7c999a4_0

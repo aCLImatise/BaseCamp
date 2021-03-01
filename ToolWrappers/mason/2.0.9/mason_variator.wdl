@@ -35,7 +35,6 @@ task MasonVariator {
     Float? meth_chh_sigma
     File? meth_fast_a_in
     File? meth_fast_a_out
-    File? in_variant_tsv_slash_it_dot
     String ins
     String del
     String in_v
@@ -81,9 +80,11 @@ task MasonVariator {
       ~{if defined(meth_chh_mu) then ("--meth-chh-mu " +  '"' + meth_chh_mu + '"') else ""} \
       ~{if defined(meth_chh_sigma) then ("--meth-chh-sigma " +  '"' + meth_chh_sigma + '"') else ""} \
       ~{if defined(meth_fast_a_in) then ("--meth-fasta-in " +  '"' + meth_fast_a_in + '"') else ""} \
-      ~{if defined(meth_fast_a_out) then ("--meth-fasta-out " +  '"' + meth_fast_a_out + '"') else ""} \
-      ~{if defined(in_variant_tsv_slash_it_dot) then ("--in-variant-tsv/-it. " +  '"' + in_variant_tsv_slash_it_dot + '"') else ""}
+      ~{if defined(meth_fast_a_out) then ("--meth-fasta-out " +  '"' + meth_fast_a_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version_check: "Turn this option off to disable version update notifications of the\\napplication. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\\nDefault: 1."
     quiet: "Set verbosity to a minimum."
@@ -91,7 +92,7 @@ task MasonVariator {
     very_verbose: "Enable very verbose output."
     seed: "The seed to use for the random number generator. Default: 0."
     in_reference: "FASTA file with reference. Valid filetypes are: .fasta and .fa."
-    in_variant_tsv: "TSV file with variants to simulate. See Section on the Variant TSV\\nFile below. Valid filetypes are: .txt and .tsv."
+    in_variant_tsv: "first two columns of this TSV file are"
     out_vcf: "VCF file to write simulated variations to. Valid filetype is: .vcf."
     out_fast_a: "FASTA file to write simulated haplotypes to. Valid filetypes are:\\n.fasta and .fa."
     out_breakpoints: "TSV file to write breakpoints in variants to. Valid filetypes are:\\n.txt and .tsv."
@@ -118,7 +119,6 @@ task MasonVariator {
     meth_chh_sigma: "Standard deviation of beta distribution for methylation level of CHH\\nloci. In range [0..1]. Default: 0.005."
     meth_fast_a_in: "Path to load original methylation levels from. Methylation levels\\nare simulated if omitted. Valid filetypes are: .sam[.*], .raw[.*],\\n.gbk[.*], .frn[.*], .fq[.*], .fna[.*], .ffn[.*], .fastq[.*],\\n.fasta[.*], .faa[.*], .fa[.*], .embl[.*], and .bam, where * is any\\nof the following extensions: gz and bgzf for transparent\\n(de)compression."
     meth_fast_a_out: "Path to write methylation levels to as FASTA. Only written if\\n-of/--out-fasta is given. Valid filetypes are: .sam[.*], .raw[.*],\\n.frn[.*], .fq[.*], .fna[.*], .ffn[.*], .fastq[.*], .fasta[.*],\\n.faa[.*], .fa[.*], and .bam, where * is any of the following\\nextensions: gz and bgzf for transparent (de)compression."
-    in_variant_tsv_slash_it_dot: "first two columns of this TSV file are"
     ins: "An insertion."
     del: "A deletion."
     in_v: "An inversion."

@@ -1,0 +1,134 @@
+!Command
+command:
+- sam_compare_w_feature.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --length
+  description: Read length
+  args: !SimpleFlagArg
+    name: LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --fastq
+  description: Source FastQ data file name
+  args: !SimpleFlagArg
+    name: FASTQ
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --sama
+  description: First SAM file (A)
+  args: !SimpleFlagArg
+    name: SAM_A
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --samb
+  description: Second SAM file (B)
+  args: !SimpleFlagArg
+    name: SAM_B
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --feature
+  description: Fusion file name, TSV or BED
+  args: !SimpleFlagArg
+    name: FEATURE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --counts
+  description: "Output file name for the counts - CSV file. Defaults\nto counts_username_date_time_rand.csv.\
+    \ To output to\nconsole, set to -o stdout"
+  args: !SimpleFlagArg
+    name: COUNTS
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --totals
+  description: "Output file name for the totals - text file. Defaults\nto totals_username_date_time_randint.txt.\
+    \ To output to\nconsole, set to -t stdout"
+  args: !SimpleFlagArg
+    name: TOTALS
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --nofqids
+  description: "Do not check SAM reads QNAME against the fastq\nsequence ids. Saves\
+    \ time if already known to be good.\nMust still set -q op ion."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --log
+  description: "Log file name. Defaults to\nsamcompare_username_date_time_rand.log.\
+    \ To output to\nconsole, set to -g stdout. There is normally no stdout\nunless\
+    \ specifically requested via options."
+  args: !SimpleFlagArg
+    name: LOG
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: "Debugging mode (verbose). Includes elapsed time\ndisplay for performance\
+    \ tracking."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: sam_compare_w_feature.py [-h] -l LENGTH -q FASTQ -A SAM_A -B SAM_B\
+  \ -f\n                                FEATURE [-c COUNTS] [-t TOTALS] [-n] [-g LOG]\n\
+  \                                [-d]\n\nMerge 2 sam files and count variant combinations.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -l LENGTH, --length LENGTH\n                        Read length\n  -q FASTQ,\
+  \ --fastq FASTQ\n                        Source FastQ data file name\n  -A SAM_A,\
+  \ --sama SAM_A\n                        First SAM file (A)\n  -B SAM_B, --samb SAM_B\n\
+  \                        Second SAM file (B)\n  -f FEATURE, --feature FEATURE\n\
+  \                        Fusion file name, TSV or BED\n  -c COUNTS, --counts COUNTS\n\
+  \                        Output file name for the counts - CSV file. Defaults\n\
+  \                        to counts_username_date_time_rand.csv. To output to\n \
+  \                       console, set to -o stdout\n  -t TOTALS, --totals TOTALS\n\
+  \                        Output file name for the totals - text file. Defaults\n\
+  \                        to totals_username_date_time_randint.txt. To output to\n\
+  \                        console, set to -t stdout\n  -n, --nofqids         Do not\
+  \ check SAM reads QNAME against the fastq\n                        sequence ids.\
+  \ Saves time if already known to be good.\n                        Must still set\
+  \ -q op ion.\n  -g LOG, --log LOG     Log file name. Defaults to\n             \
+  \           samcompare_username_date_time_rand.log. To output to\n             \
+  \           console, set to -g stdout. There is normally no stdout\n           \
+  \             unless specifically requested via options.\n  -d, --debug        \
+  \   Debugging mode (verbose). Includes elapsed time\n                        display\
+  \ for performance tracking.\n\nThis tool keeps track of the number of alignments,\
+  \ whether the alignment is\nexact, and chromosome (RNAME) and position of the alignment.\
+  \ Only alignments\nin the top 'strata' are counted, meaning if there is 1 exact\
+  \ match and 3\ninexact matches, the alignment count for that read will be 1. Strata\
+  \ is\ndetermined by subtracting the edit distance from the number of read\nnucleotides\
+  \ aligned. In the event of an exact match, this number is equal to\nthe read length.\
+  \ Once both alignments processed, reads are compared one at a\ntime and counted\
+  \ depending on the relationship between the two alignments.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bayesase:21.1.13.1--py_0

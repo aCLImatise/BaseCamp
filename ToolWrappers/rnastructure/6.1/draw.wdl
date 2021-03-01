@@ -36,6 +36,9 @@ task Draw {
       ~{if (shape) then "--SHAPE" else ""} \
       ~{if (text) then "--text" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     circle: "Specify that the structure should be drawn with its backbone stretched\\naround a circle. Note that pseudoknotted structures will be drawn\\ncircularized even if this option is not specified.\\nDefault is to show a collapsed structure."
     flat: "Specify that the structure should be drawn with its backbone stretched in a\\nstraight line.\\nDefault is to show a collapsed structure."

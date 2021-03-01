@@ -18,6 +18,9 @@ task RtgSdfstats {
       ~{if defined(taxonomy) then ("--taxonomy " +  '"' + taxonomy + '"') else ""} \
       ~{if defined(unknowns) then ("--unknowns " +  '"' + unknowns + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     lengths: "print out the name and length of each sequence. (Not\\nrecommended for read sets)"
     position: "display info about unknown bases (Ns) by read position"

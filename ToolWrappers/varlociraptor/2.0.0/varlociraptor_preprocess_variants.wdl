@@ -32,6 +32,9 @@ task VarlociraptorPreprocessVariants {
       ~{if defined(spurious_ins_rate) then ("--spurious-ins-rate " +  '"' + spurious_ins_rate + '"') else ""} \
       ~{if defined(spurious_in_sext_rate) then ("--spurious-insext-rate " +  '"' + spurious_in_sext_rate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     omit_insert_size: "Do not consider insert size when calculating support for a variant. Use this flag when\\nprocessing amplicon data, where indels do not impact the observed insert size"
     alignment_properties: "Alignment properties JSON file for sample. If not provided, properties will be estimated from the given BAM\\nfile."

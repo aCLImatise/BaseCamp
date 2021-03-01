@@ -20,6 +20,9 @@ task SampleAncestry {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input variant list(s) in VCF format."
     out: "Output TSV file. If unset, writes to STDOUT.\\nDefault value: ''"

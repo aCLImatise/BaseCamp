@@ -1,12 +1,6 @@
 class: CommandLineTool
 id: gcloud_config_get_value.cwl
 inputs:
-- id: in_section_slash_property
-  doc: "The property to be fetched. Note that SECTION/ is optional while\nreferring\
-    \ to properties in the core section."
-  type: string
-  inputBinding:
-    position: 0
 - id: in_core
   doc: "account\nThe account gcloud should use for authentication. You can run\ngcloud\
     \ auth list to see the accounts you currently have available."
@@ -239,6 +233,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

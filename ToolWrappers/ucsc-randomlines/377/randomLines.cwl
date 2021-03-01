@@ -3,12 +3,12 @@ id: randomLines.cwl
 inputs:
 - id: in_seed
   doc: '- Set seed used for randomizing, useful for debugging.'
-  type: string
+  type: string?
   inputBinding:
     prefix: -seed
 - id: in_de_comment
   doc: '- remove blank lines and those starting with'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -decomment
 - id: in_in_file
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - randomLines

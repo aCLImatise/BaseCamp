@@ -16,6 +16,9 @@ task CnvkitpyImportseg {
       ~{if (from_log_one_zero) then "--from-log10" else ""} \
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chromosomes: "Mapping of chromosome indexes to names. Syntax:\\n\\\"from1:to1,from2:to2\\\". Or use \\\"human\\\" for the preset:\\n\\\"23:X,24:Y,25:M\\\"."
     prefix: "Prefix to add to chromosome names (e.g 'chr' to rename\\n'8' in the SEG file to 'chr8' in the output)."

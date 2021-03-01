@@ -42,6 +42,9 @@ task PanphlanProfilingpy {
       ~{if defined(func_an_not) then ("--func_annot " +  '"' + func_an_not + '"') else ""} \
       ~{if defined(field) then ("--field " +  '"' + field + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i_dna: "Input directory of panphlan_map.py results, containing\\nSAMPLE.csv.bz2 files"
     pan_genome: "Path to pangenome tsv file exported from ChocoPhlAn"

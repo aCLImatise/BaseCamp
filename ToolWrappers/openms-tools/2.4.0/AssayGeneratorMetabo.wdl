@@ -38,6 +38,9 @@ task AssayGeneratorMetabo {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                            MzML Input file (valid formats: 'mzml')"
     in_id: "*                         FeatureXML Input with id information (accurate mass search) (valid formats: 'featurexml')"

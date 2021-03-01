@@ -28,6 +28,9 @@ task TangoSearch {
       ~{if defined(min_len) then ("--minlen " +  '"' + min_len + '"') else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: "Choice of search mode for diamond: 'blastx' (default)\\nfor DNA query sequences or 'blastp' for amino acid\\nquery sequences"
     cpus: "Number of cpus to use for diamond"

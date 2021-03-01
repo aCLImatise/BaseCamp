@@ -12,6 +12,9 @@ task Cdhitdiv {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(div) then ("-div " +  '"' + div + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: ", required"
     o: ", required"

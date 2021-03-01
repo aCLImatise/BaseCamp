@@ -4,6 +4,9 @@ task FCSKeywordR {
   command <<<
     FCSKeyword_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

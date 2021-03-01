@@ -18,6 +18,9 @@ task FlyesamtoolsCat {
       ~{if defined(copy_header_file) then ("-h " +  '"' + copy_header_file + '"') else ""} \
       ~{if defined(output_bamcram) then ("-o " +  '"' + output_bamcram + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_input_bamcram: "list of input BAM/CRAM file names, one per line"
     copy_header_file: "copy the header from FILE [default is 1st input file]"

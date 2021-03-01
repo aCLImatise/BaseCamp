@@ -5,7 +5,7 @@ task VtoolsSelect {
     Boolean? limiting_variants_samples
     Boolean? destination_variant_table
     Boolean? count
-    Boolean? list_will_outputted
+    Boolean? list_outputted_expressions
     String? verbosity
     Boolean? header
     String? delimiter
@@ -26,7 +26,7 @@ task VtoolsSelect {
       ~{if (limiting_variants_samples) then "-s" else ""} \
       ~{if (destination_variant_table) then "-t" else ""} \
       ~{if (count) then "--count" else ""} \
-      ~{if (list_will_outputted) then "-o" else ""} \
+      ~{if (list_outputted_expressions) then "-o" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if (header) then "--header" else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""} \
@@ -38,11 +38,14 @@ task VtoolsSelect {
       ~{if (all) then "--all" else ""} \
       ~{if defined(order_by) then ("--order_by " +  '"' + order_by + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     limiting_variants_samples: "[COND [COND ...]], --samples [COND [COND ...]]\\nLimiting variants from samples that match conditions\\nthat use columns shown in command 'vtools show sample'\\n(e.g. 'aff=1', 'filename like \\\"MG%\\\"')."
     destination_variant_table: "[TABLE [DESC ...]], --to_table [TABLE [DESC ...]]\\nDestination variant table."
     count: "Output number of variant, which is a shortcut to '--\\noutput count(1)'."
-    list_will_outputted: "[FIELDS [FIELDS ...]], --output [FIELDS [FIELDS ...]]\\nA list of fields that will be outputted. SQL-\\ncompatible expressions or functions such as \\\"pos-1\\\",\\n\\\"count(1)\\\" or \\\"sum(num)\\\" are also allowed."
+    list_outputted_expressions: "[FIELDS [FIELDS ...]], --output [FIELDS [FIELDS ...]]\\nA list of fields that will be outputted. SQL-\\ncompatible expressions or functions such as \\\"pos-1\\\",\\n\\\"count(1)\\\" or \\\"sum(num)\\\" are also allowed."
     verbosity: "Output error and warning (0), info (1), debug (2) and\\ntrace (3) information to standard output (default to\\n1)."
     header: "[HEADER [HEADER ...]]\\nA complete header or a list of names that will be\\njoined by a delimiter (parameter --delimiter). If a\\nspecial name - is specified, the header will be read\\nfrom the standard input, which is the preferred way to\\nspecify large multi-line headers (e.g. cat myheader |\\nvtools export --header -). If this parameter is given\\nwithout parameter, a default header will be derived\\nfrom field names."
     delimiter: "Delimiter use to separate columns of output. The\\ndefault output uses tabs to delimit columns padded to\\nthe same width by spaces. You can use '-d,' for csv\\noutput, or -d'\\t' for unpadded tab-delimited output."

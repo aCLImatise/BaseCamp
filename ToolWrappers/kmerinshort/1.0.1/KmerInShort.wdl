@@ -4,7 +4,7 @@ task KmerInShort {
   input {
     Boolean? nb_cores
     Boolean? verbose
-    Boolean? file
+    Boolean? arg_input_file
     Boolean? km_er_size
     File? out
     Boolean? offset
@@ -18,7 +18,7 @@ task KmerInShort {
     KmerInShort \
       ~{if (nb_cores) then "-nb-cores" else ""} \
       ~{if (verbose) then "-verbose" else ""} \
-      ~{if (file) then "-file" else ""} \
+      ~{if (arg_input_file) then "-file" else ""} \
       ~{if (km_er_size) then "-kmer-size" else ""} \
       ~{if (out) then "-out" else ""} \
       ~{if (offset) then "-offset" else ""} \
@@ -28,10 +28,13 @@ task KmerInShort {
       ~{if (freq) then "-freq" else ""} \
       ~{if (per_seq) then "-perSeq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nb_cores: "(1 arg) :    number of cores  [default '0']"
     verbose: "(1 arg) :    verbosity level  [default '1']"
-    file: "(1 arg) :    input file"
+    arg_input_file: "(1 arg) :    input file"
     km_er_size: "(1 arg) :    ksize"
     out: "(1 arg) :    output file  [default '']"
     offset: "(1 arg) :    starting offset  [default '0']"

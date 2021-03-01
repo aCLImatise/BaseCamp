@@ -14,6 +14,9 @@ task InStrainOther {
       ~{if defined(old_is) then ("--old_IS " +  '"' + old_is + '"') else ""} \
       ~{if defined(run_statistics) then ("--run_statistics " +  '"' + run_statistics + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     processes: "Number of processes to use (default: 6)"
     debug: "Make extra debugging output (default: False)"

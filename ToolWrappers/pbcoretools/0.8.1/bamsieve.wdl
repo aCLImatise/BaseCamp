@@ -48,6 +48,9 @@ task Bamsieve {
       ~{if (keep_uuid) then "--keep-uuid" else ""} \
       ~{if defined(min_adapters) then ("--min-adapters " +  '"' + min_adapters + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_file: "Write the log to file. Default(None) will write to\\nstdout. (default: None)"
     log_level: "Set log level (default: WARN)"

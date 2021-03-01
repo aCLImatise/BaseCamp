@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File
+
+Assess_Assembly_V0_1_0 = CommandToolBuilder(tool="assess_assembly", base_command=["assess_assembly"], inputs=[ToolInput(tag="in_reference_be_file", input_type=Boolean(optional=True), prefix="-r", doc=InputDocumentation(doc="reference, should be a fasta file. If correspondng minimap2 indices\ndo not exist they will be created. (required).")), ToolInput(tag="in_fastqa_input_assembly", input_type=Boolean(optional=True), prefix="-i", doc=InputDocumentation(doc="fastq/a input assembly (required).")), ToolInput(tag="in_chunk_size_input", input_type=Boolean(optional=True), prefix="-c", doc=InputDocumentation(doc="chunk size. Input reads/contigs will be broken into chunks\nprior to alignment, 0 will not chunk (default 100000).")), ToolInput(tag="in_catalogue_errors", input_type=Boolean(optional=True), prefix="-C", doc=InputDocumentation(doc="catalogue errors.")), ToolInput(tag="in_count_homopolymers", input_type=Boolean(optional=True), prefix="-H", doc=InputDocumentation(doc="count homopolymers.")), ToolInput(tag="in_alignment_threads_default", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc="alignment threads (default: 1).")), ToolInput(tag="in_output_file_prefix", input_type=File(optional=True), prefix="-p", doc=InputDocumentation(doc="output file prefix (default: assm).")), ToolInput(tag="in_trim_consensus_primary", input_type=Boolean(optional=True), prefix="-T", doc=InputDocumentation(doc="trim consensus to primary alignments of truth to assembly.")), ToolInput(tag="in_file_reference_assess", input_type=Boolean(optional=True), prefix="-b", doc=InputDocumentation(doc=".bed file of reference regions to assess.")), ToolInput(tag="in_list_indels_default", input_type=Boolean(optional=True), prefix="-l", doc=InputDocumentation(doc="list all indels at least this long (default: 100).")), ToolInput(tag="in_use_create_file", input_type=Boolean(optional=True), prefix="-e", doc=InputDocumentation(doc="use with -l option to create a .bed file to exclude indels. If the -b option is used, the two bed files will be combined."))], outputs=[ToolOutput(tag="out_output_file_prefix", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_file_prefix", type_hint=File()), doc=OutputDocumentation(doc="output file prefix (default: assm)."))], container="quay.io/biocontainers/pomoxis:0.3.6--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Assess_Assembly_V0_1_0().translate("wdl")
+

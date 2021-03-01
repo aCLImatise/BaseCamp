@@ -7,7 +7,7 @@ task B2w {
     Boolean? minimum_overlap_int
     Boolean? max_reads_starting
     Boolean? coverage_threshold_windows
-    Boolean? drop_snvs_adjacent
+    Boolean? drop_snvs_are
     String in_dot_bam
     String in_dot_fast_a
     String? region
@@ -22,15 +22,18 @@ task B2w {
       ~{if (minimum_overlap_int) then "-m" else ""} \
       ~{if (max_reads_starting) then "-x" else ""} \
       ~{if (coverage_threshold_windows) then "-c" else ""} \
-      ~{if (drop_snvs_adjacent) then "-d" else ""}
+      ~{if (drop_snvs_are) then "-d" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window_length_int: ": window length (INT)"
     _increment_int: ": increment (INT)"
     minimum_overlap_int: ": minimum overlap (INT)"
     max_reads_starting: ": max reads starting at a position (INT)"
     coverage_threshold_windows: ": coverage threshold. Omit windows with low coverage (INT)"
-    drop_snvs_adjacent: ": drop SNVs that are adjacent to insertions/deletions (alternate behaviour)"
+    drop_snvs_are: ": drop SNVs that are adjacent to insertions/deletions (alternate behaviour)"
     in_dot_bam: ""
     in_dot_fast_a: ""
     region: ""

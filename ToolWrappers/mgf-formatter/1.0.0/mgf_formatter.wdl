@@ -18,6 +18,9 @@ task Mgfformatter {
       ~{if (no_split_multiple_charge_states) then "--no_split_multiple_charge_states" else ""} \
       ~{if (var_output) then "--output" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     it_raq_filter: "Default: false"
     mgf_format: "Default: DEFAULT"

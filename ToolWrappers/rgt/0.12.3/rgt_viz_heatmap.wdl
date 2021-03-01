@@ -4,7 +4,7 @@ task RgtvizHeatmap {
   input {
     Directory? directory_name_output
     Boolean? ga
-    Boolean? title_shown_top
+    Boolean? title_shown_heatmap
     Boolean? center
     Boolean? sort
     Boolean? col
@@ -25,7 +25,7 @@ task RgtvizHeatmap {
     rgt_viz heatmap \
       ~{if (directory_name_output) then "-o" else ""} \
       ~{if (ga) then "-ga" else ""} \
-      ~{if (title_shown_top) then "-t" else ""} \
+      ~{if (title_shown_heatmap) then "-t" else ""} \
       ~{if (center) then "-center" else ""} \
       ~{if (sort) then "-sort" else ""} \
       ~{if (col) then "-col" else ""} \
@@ -42,10 +42,13 @@ task RgtvizHeatmap {
       ~{if (show) then "-show" else ""} \
       ~{if (table) then "-table" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_name_output: "The directory name for the output files. For example, project\\nname. (default: None)"
     ga: "Use genetic annotation data as input regions (e.g. TSS, TTS,\\nexons and introns) instead of the BED files in the input\\nmatrix. (default: False)"
-    title_shown_top: "The title shown on the top of the plot and also the folder\\nname. (default: heatmap)"
+    title_shown_heatmap: "The title shown on the top of the plot and also the folder\\nname. (default: heatmap)"
     center: "Define the center to calculate coverage on the regions.\\nOptions are: midpoint, bothends, upstream,\\ndownstream.(Default:midpoint) The bothend mode will flap the\\nright end region for calculation. (default: midpoint)"
     sort: "Define the way to sort the signals.Default is no sorting at\\nall, the signals arrange in the order of their position; \\\"0\\\"\\nis sorting by the average ranking of all signals; \\\"1\\\" is\\nsorting by the ranking of 1st column; \\\"2\\\" is 2nd and so on...\\n(default: None)"
     col: "Group the data in columns by reads(needs 'factor' column),\\nregions(needs 'factor' column), another name of column (for\\nexample, 'cell')in the header of experimental matrix, or None.\\n(default: regions)"

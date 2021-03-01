@@ -18,13 +18,13 @@ task Ccs {
     Boolean? log_level
     Boolean? log_file
     String in_dot_sub_reads_dot_bam_vertical_line_xml
-    File file
+    File var_file
     String sub_reads
   }
   command <<<
     ccs \
       ~{in_dot_sub_reads_dot_bam_vertical_line_xml} \
-      ~{file} \
+      ~{var_file} \
       ~{sub_reads} \
       ~{if (min_passes) then "--min-passes" else ""} \
       ~{if (min_snr) then "--min-snr" else ""} \
@@ -42,6 +42,9 @@ task Ccs {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_passes: "INT    Minimum number of full-length subreads\\nrequired to generate CCS for a ZMW. [3]"
     min_snr: "FLOAT  Minimum SNR of subreads to use for\\ngenerating CCS [2.5]"
@@ -59,7 +62,7 @@ task Ccs {
     log_level: "STR    Set log level. Valid choices: (TRACE,\\nDEBUG, INFO, WARN, FATAL). [WARN]"
     log_file: "FILE   Log to a file, instead of stderr."
     in_dot_sub_reads_dot_bam_vertical_line_xml: ""
-    file: ""
+    var_file: ""
     sub_reads: ""
   }
   output {

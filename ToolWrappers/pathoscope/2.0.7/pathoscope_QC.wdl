@@ -3,7 +3,7 @@ version 1.0
 task PathoscopeQC {
   input {
     Int? st_pair_read
-    Int? nd_pair_per
+    Int? nd_pair_read
     Int? let_us_know
     Int? specify_phred_offset
     File? specify_output_directory
@@ -13,7 +13,7 @@ task PathoscopeQC {
     Int? a_two
     Int? specify_cutoff_trim
     Int? set_you_want_mask
-    Float? specify_cutoff_set
+    Float? specify_cutoff_complexityto
     Int? filtering_duplicates_duplicate
     Int? set_you_want_add
     Boolean? no_prin_seq
@@ -23,7 +23,7 @@ task PathoscopeQC {
   command <<<
     pathoscope QC \
       ~{if defined(st_pair_read) then ("-1 " +  '"' + st_pair_read + '"') else ""} \
-      ~{if defined(nd_pair_per) then ("-2 " +  '"' + nd_pair_per + '"') else ""} \
+      ~{if defined(nd_pair_read) then ("-2 " +  '"' + nd_pair_read + '"') else ""} \
       ~{if defined(let_us_know) then ("-r " +  '"' + let_us_know + '"') else ""} \
       ~{if defined(specify_phred_offset) then ("-t " +  '"' + specify_phred_offset + '"') else ""} \
       ~{if defined(specify_output_directory) then ("-o " +  '"' + specify_output_directory + '"') else ""} \
@@ -33,16 +33,19 @@ task PathoscopeQC {
       ~{if defined(a_two) then ("-a2 " +  '"' + a_two + '"') else ""} \
       ~{if defined(specify_cutoff_trim) then ("-q " +  '"' + specify_cutoff_trim + '"') else ""} \
       ~{if defined(set_you_want_mask) then ("-R " +  '"' + set_you_want_mask + '"') else ""} \
-      ~{if defined(specify_cutoff_set) then ("-e " +  '"' + specify_cutoff_set + '"') else ""} \
+      ~{if defined(specify_cutoff_complexityto) then ("-e " +  '"' + specify_cutoff_complexityto + '"') else ""} \
       ~{if defined(filtering_duplicates_duplicate) then ("-d " +  '"' + filtering_duplicates_duplicate + '"') else ""} \
       ~{if defined(set_you_want_add) then ("-g " +  '"' + set_you_want_add + '"') else ""} \
       ~{if (no_prin_seq) then "--no_prinseq" else ""} \
       ~{if defined(specify_total_number) then ("-p " +  '"' + specify_total_number + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     st_pair_read: "1st pair of read in PER or SER"
-    nd_pair_per: "2nd pair of read in PER"
+    nd_pair_read: "2nd pair of read in PER"
     let_us_know: "let us know a mean read length (0:ignore. [1]:I want\\nto know the range of read length after trimming,\\ni:user_specified_mean_read_length)"
     specify_phred_offset: "specify a phred offset used in encoding base\\nquality(0:not sure?, [33]:phred+33, 64:phred+64)"
     specify_output_directory: "specify output directory in full path"
@@ -52,7 +55,7 @@ task PathoscopeQC {
     a_two: "specify a second adaptor if it is different from the\\nfirst one (Y:have pathoQC detect it, [N]:ignore,\\nACGT:adaptor)"
     specify_cutoff_trim: "specify a cutoff of base quality value to trim at the\\nend of reads([0]:ignore, 1:let pathoQC take care of\\nit, i:user_specified_cutoff_value)"
     set_you_want_mask: "set to 1 if you want to mask all lower case bases that\\nmay correspond to sequence tag or adaptor in Roche454\\nor IonTorrent"
-    specify_cutoff_set: "specify a cutoff of entropy of low sequence complexity\\nto filter out[0..100],default:30, set 0 to disable"
+    specify_cutoff_complexityto: "specify a cutoff of entropy of low sequence complexity\\nto filter out[0..100],default:30, set 0 to disable"
     filtering_duplicates_duplicate: "filtering duplicates: [1] (exact duplicate), 2 (5'\\nduplicate), 3 (3' duplicate), 4 (reverse complement\\nexact duplicate), 5 (reverse complement 5'/3'\\nduplicate)"
     set_you_want_add: "Set to 1 if you want to add a valid single read into a\\nreduced valid PER set. Note that this option works\\nonly with PER"
     no_prin_seq: "to force to skip prinseq module"

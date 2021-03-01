@@ -1,0 +1,76 @@
+!Command
+command:
+- phirbo.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: virus_dir
+  description: Input directory w/ ranked lists for viruses
+- !Positional
+  optional: false
+  position: 1
+  name: host_dir
+  description: Input directory w/ ranked lists for hosts
+- !Positional
+  optional: false
+  position: 2
+  name: output_file
+  description: Output file name
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --p
+  description: "RBO parameter in range (0, 1) determines the degree of top-\nweightedness\
+    \ of RBO measure. High p implies strong emphasis\non top ranked items [default\
+    \ = 0.75]"
+  args: !SimpleFlagArg
+    name: P
+- !Flag
+  optional: true
+  synonyms:
+  - --k
+  description: "Truncate all ranked lists to the first `k` rankings to\ncalculate\
+    \ RBO. To disable the truncation use --k 0 [default\n= 30]"
+  args: !SimpleFlagArg
+    name: K
+- !Flag
+  optional: true
+  synonyms:
+  - --t
+  description: Number of threads (CPUs) [default = 8]
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show tool's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: phirbo.py [-h] [--p P] [--k K] [--t NUM_THREADS] [--version]\n\
+  \                 virus_dir host_dir output_file\n\nPhirbo (v1.0) predicts hosts\
+  \ from phage (meta)genomic data\n\npositional arguments:\n  virus_dir        Input\
+  \ directory w/ ranked lists for viruses\n  host_dir         Input directory w/ ranked\
+  \ lists for hosts\n  output_file      Output file name\n\noptional arguments:\n\
+  \  -h, --help       show this help message and exit\n  --p P            RBO parameter\
+  \ in range (0, 1) determines the degree of top-\n                   weightedness\
+  \ of RBO measure. High p implies strong emphasis\n                   on top ranked\
+  \ items [default = 0.75]\n  --k K            Truncate all ranked lists to the first\
+  \ `k` rankings to\n                   calculate RBO. To disable the truncation use\
+  \ --k 0 [default\n                   = 30]\n  --t NUM_THREADS  Number of threads\
+  \ (CPUs) [default = 8]\n  --version        Show tool's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/phirbo:1.0--0

@@ -26,6 +26,9 @@ task GcloudComputeBackendservices {
       ~{update} \
       ~{update_backend}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_backend: "Add a backend to a backend service."
     create: "Create a backend service."

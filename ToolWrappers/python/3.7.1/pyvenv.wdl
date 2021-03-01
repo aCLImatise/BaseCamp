@@ -24,6 +24,9 @@ task Pyvenv {
       ~{if (without_pip) then "--without-pip" else ""} \
       ~{if defined(prompt) then ("--prompt " +  '"' + prompt + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     system_site_packages: "Give the virtual environment access to the system\\nsite-packages dir."
     symlinks: "Try to use symlinks rather than copies, when symlinks\\nare not the default for the platform."

@@ -32,6 +32,9 @@ task Decoypyrat {
       ~{if (memory_save) then "--memory_save" else ""} \
       ~{if (keep_names) then "--keep_names" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cleavage_sites: "A list of amino acids at which to cleave during\\ndigestion. Default = KR"
     anti_cleavage_sites: "A list of amino acids at which not to cleave if\\nfollowing cleavage site ie. Proline. Default = none"

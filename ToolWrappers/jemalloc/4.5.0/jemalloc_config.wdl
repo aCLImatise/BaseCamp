@@ -32,6 +32,9 @@ task Jemallocconfig {
       ~{if (ldflags) then "--ldflags" else ""} \
       ~{if (libs) then "--libs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     revision: ": Print shared library revision number."
     config: ": Print configure options used to build jemalloc."

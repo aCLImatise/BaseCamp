@@ -10,6 +10,9 @@ task Gbff2gffsh {
       ~{gb_ff_file} \
       ~{gff_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gb_ff_file: ""
     gff_file: ""

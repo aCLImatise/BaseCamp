@@ -16,6 +16,9 @@ task Gctx2gct {
       ~{if defined(row_an_not_path) then ("-row_annot_path " +  '"' + row_an_not_path + '"') else ""} \
       ~{if defined(col_an_not_path) then ("-col_annot_path " +  '"' + col_an_not_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: ".gctx file that you would like to converted to .gct\\n(default: None)"
     output_file_path: "out path/name for output gct file. Default is just to\\nmodify the extension (default: None)"

@@ -11,15 +11,15 @@ subcommands:
   - file
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: bad
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: params....
-    optional: false
+    description: ''
   named: []
   parent: !Command
     command: *id001
@@ -31,15 +31,15 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: bad
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: params....
-        optional: false
+        description: ''
       named: []
       parent: !Command
         command: *id001
@@ -51,15 +51,15 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: bad
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: params....
-            optional: false
+            description: ''
           named: []
           parent: !Command
             command: *id001
@@ -71,120 +71,165 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: bad
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: params....
-                optional: false
+                description: ''
               named: []
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: '... use <val> as Z threshold.'
-                  synonyms:
-                  - -z
-                  args: !SimpleFlagArg
-                    name: val
-                  optional: true
-                - !Flag
-                  description: '... use <val> seed.'
-                  synonyms:
-                  - -s
-                  args: !SimpleFlagArg
-                    name: val
-                  optional: true
-                - !Flag
-                  description: '... use parameters from <file> .'
-                  synonyms:
-                  - -p
-                  args: !SimpleFlagArg
-                    name: file
-                  optional: true
-                - !Flag
-                  description: '... use <nam> as graph name.'
-                  synonyms:
-                  - -g
-                  args: !SimpleFlagArg
-                    name: nam
-                  optional: true
-                - !Flag
-                  description: '... use <nam> au out graph.'
-                  synonyms:
-                  - -o
-                  args: !SimpleFlagArg
-                    name: nam
-                  optional: true
-                - !Flag
-                  description: '... use <nam> for graph dot name.'
-                  synonyms:
-                  - -d
-                  args: !SimpleFlagArg
-                    name: nam
-                  optional: true
-                - !Flag
-                  description: '... use <nam> as oulier name.'
-                  synonyms:
-                  - -x
-                  args: !SimpleFlagArg
-                    name: nam
-                  optional: true
-                - !Flag
-                  description: '... use <val> as lambda scale value.'
-                  synonyms:
-                  - -l
-                  args: !SimpleFlagArg
-                    name: val
-                  optional: true
-                - !Flag
-                  description: '... print version and exit.'
-                  synonyms:
-                  - -v
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: '... toggle verbose mode ON.'
-                  synonyms:
-                  - -V
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: bad
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: params....
-                    optional: false
+                    description: ''
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -z
+                      description: '... use <val> as Z threshold.'
+                      args: !SimpleFlagArg
+                        name: val
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -s
+                      description: '... use <val> seed.'
+                      args: !SimpleFlagArg
+                        name: val
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -p
+                      description: '... use parameters from <file> .'
+                      args: !SimpleFlagArg
+                        name: file
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -g
+                      description: '... use <nam> as graph name.'
+                      args: !SimpleFlagArg
+                        name: nam
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -o
+                      description: '... use <nam> au out graph.'
+                      args: !SimpleFlagArg
+                        name: nam
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -d
+                      description: '... use <nam> for graph dot name.'
+                      args: !SimpleFlagArg
+                        name: nam
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -x
+                      description: '... use <nam> as oulier name.'
+                      args: !SimpleFlagArg
+                        name: nam
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -l
+                      description: '... use <val> as lambda scale value.'
+                      args: !SimpleFlagArg
+                        name: val
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -v
+                      description: '... print version and exit.'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -V
+                      description: '... toggle verbose mode ON.'
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: bad
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: params....
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: bad params.... \n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      description: '... Print this message and exit.'
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: qpGraph [options] <file>\n   -h          ...\
+                      \ Print this message and exit.\n   -z <val>    ... use <val>\
+                      \ as Z threshold.\n   -s <val>    ... use <val> seed.\n   -p\
+                      \ <file>   ... use parameters from <file> .\n   -g <nam>   \
+                      \ ... use <nam> as graph name.\n   -o <nam>    ... use <nam>\
+                      \ au out graph.\n   -d <nam>    ... use <nam> for graph dot\
+                      \ name.\n   -x <nam>    ... use <nam> as oulier name.\n   -l\
+                      \ <val>    ... use <val> as lambda scale value.\n   -v     \
+                      \     ... print version and exit.\n   -V          ... toggle\
+                      \ verbose mode ON.\n"
+                    generated_using: &id005 []
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: bad params.... \n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: '... Print this message and exit.'
-                  synonyms:
-                  - -h
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "Usage: qpGraph [options] <file>\n   -h          ... Print\
@@ -196,7 +241,8 @@ subcommands:
                   \ name.\n   -l <val>    ... use <val> as lambda scale value.\n \
                   \  -v          ... print version and exit.\n   -V          ... toggle\
                   \ verbose mode ON.\n"
-                generated_using: &id005 []
+                generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -204,6 +250,7 @@ subcommands:
               version_flag:
               help_text: "Usage: bad params.... \n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -218,6 +265,7 @@ subcommands:
               \  ... print version and exit.\n   -V          ... toggle verbose mode\
               \ ON.\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -225,6 +273,7 @@ subcommands:
           version_flag:
           help_text: "Usage: bad params.... \n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -238,6 +287,7 @@ subcommands:
           \ as lambda scale value.\n   -v          ... print version and exit.\n \
           \  -V          ... toggle verbose mode ON.\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -245,6 +295,7 @@ subcommands:
       version_flag:
       help_text: "Usage: bad params.... \n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -258,6 +309,7 @@ subcommands:
       \          ... print version and exit.\n   -V          ... toggle verbose mode\
       \ ON.\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -265,6 +317,7 @@ subcommands:
   version_flag:
   help_text: "Usage: bad params.... \n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -277,3 +330,4 @@ help_text: "Usage: qpGraph [options] <file>\n   -h          ... Print this messa
   \   -l <val>    ... use <val> as lambda scale value.\n   -v          ... print version\
   \ and exit.\n   -V          ... toggle verbose mode ON.\n"
 generated_using: *id005
+docker_image:

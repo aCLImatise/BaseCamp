@@ -16,6 +16,9 @@ task CvgChop {
       ~{if (by_scf) then "-byscf" else ""} \
       ~{if (split) then "-split" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sum: "- summarize the coverages"
     build_map_coverage: "- build map of coverage areas"

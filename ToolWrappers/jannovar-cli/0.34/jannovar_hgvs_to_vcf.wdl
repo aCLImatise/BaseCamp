@@ -2,7 +2,6 @@ version 1.0
 
 task JannovarHgvstovcf {
   input {
-    String? i
     File? reference_fast_a
     File? database
     File? input_txt
@@ -23,7 +22,6 @@ task JannovarHgvstovcf {
     jannovar hgvs_to_vcf \
       ~{jan_novar_cli} \
       ~{hgvs_to_vcf} \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(reference_fast_a) then ("--reference-fasta " +  '"' + reference_fast_a + '"') else ""} \
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if defined(input_txt) then ("--input-txt " +  '"' + input_txt + '"') else ""} \
@@ -38,8 +36,10 @@ task JannovarHgvstovcf {
       ~{if defined(https_proxy) then ("--https-proxy " +  '"' + https_proxy + '"') else ""} \
       ~{if defined(ftp_proxy) then ("--ftp-proxy " +  '"' + ftp_proxy + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    i: "[--show-all SHOW_ALL]"
     reference_fast_a: "Path to reference FASTA file"
     database: "Path to database .ser file"
     input_txt: "Input file  with  HGVS  transcript-level  changes,\\nline-by-line"

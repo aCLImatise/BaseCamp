@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Directory, File, Int, Boolean
+
+Secapr_Find_Target_Contigs_V0_1_0 = CommandToolBuilder(tool="secapr_find_target_contigs", base_command=["secapr", "find_target_contigs"], inputs=[ToolInput(tag="in_contigs", input_type=Directory(optional=True), prefix="--contigs", doc=InputDocumentation(doc="The directory containing the assembled contigs in\nfasta format. Alternatively you can provide a\ndirectory with subfolders containing results of\nvarious assembly runs (e.g. based on different kmer\nvalues). In the latter case it is recommended to use\nthe --keep_paralogs flag, to avoid the majority of\nloci being discarded as paralogous.")), ToolInput(tag="in_reference", input_type=File(optional=True), prefix="--reference", doc=InputDocumentation(doc="The fasta-file containing the reference sequences (one\nsequence per targeted locus).")), ToolInput(tag="in_output", input_type=Directory(optional=True), prefix="--output", doc=InputDocumentation(doc="The directory in which to store the extracted target\ncontigs and lastz results.")), ToolInput(tag="in_target_length", input_type=Int(optional=True), prefix="--target_length", doc=InputDocumentation(doc="The required length of the matching sequence stretch\nbetween contigs and target sequences. This does not\nhave to be a perfect match but can be adjusted with\nthe --min_identity flag [default=50].")), ToolInput(tag="in_min_identity", input_type=Int(optional=True), prefix="--min_identity", doc=InputDocumentation(doc="The minimum percent identity required for a match\n[default=90].")), ToolInput(tag="in_seed_length", input_type=Int(optional=True), prefix="--seed_length", doc=InputDocumentation(doc="Length of initial seed sequence for finding BLAST\nmatches. The seed has to be a perfect match between a\ngiven contig and a reference locus (default=11).")), ToolInput(tag="in_remove_multilocus_contigs", input_type=Boolean(optional=True), prefix="--remove_multilocus_contigs", doc=InputDocumentation(doc="Drop those contigs that match multiple exons.")), ToolInput(tag="in_keep_paralogs", input_type=Boolean(optional=True), prefix="--keep_paralogs", doc=InputDocumentation(doc="Keep contigs for loci that are flagged as potentially\nparalogous (multiple contigs matching same locus). The\nlongest contig will be selected for these loci.\n"))], outputs=[], container="quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Secapr_Find_Target_Contigs_V0_1_0().translate("wdl")
+

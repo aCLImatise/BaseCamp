@@ -3,22 +3,22 @@ id: fitsheader_filename.cwl
 inputs:
 - id: in_c
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_t
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
 - id: in_k
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -k
 - id: in_e
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -e
 - id: in_fits_header
@@ -28,13 +28,14 @@ inputs:
     position: 0
 - id: in_format
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fitsheader

@@ -10,6 +10,9 @@ task SamToBam {
       ~{if defined(convert) then ("--convert " +  '"' + convert + '"') else ""} \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     convert: "Convert given SAM file to indexed, sorted BAM file with\\nheaders. Takes SAM filename and output directory."
     ref: "References file to use to get chromosome lengths."

@@ -4,6 +4,9 @@ task LengthFilter {
   command <<<
     lengthFilter
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

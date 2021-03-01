@@ -46,6 +46,9 @@ task MixcrAnalyzeShotgun {
       ~{if defined(receptor_type) then ("--receptor-type " +  '"' + receptor_type + '"') else ""} \
       ~{if defined(starting_material) then ("--starting-material " +  '"' + starting_material + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_warnings: "Suppress all warning messages."
     verbose: "Verbose warning messages."

@@ -12,6 +12,9 @@ task WgblimpRunsnakemakefromconfig {
       ~{if (dry_run) then "--dry-run" else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dry_run: "Only dry-run the workflow."
     cores: "The maximum number of cores to use for running the\\npipeline. Cores per job are set in configuration file.\\n[required]"

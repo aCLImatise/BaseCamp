@@ -18,6 +18,9 @@ task GcloudComputeXpn {
       ~{get_host_project} \
       ~{list_associated_resources}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     associated_projects: "Configure associated projects for cross-project networking (XPN)."
     organizations: "Configure organizations for cross-project networking (XPN)."

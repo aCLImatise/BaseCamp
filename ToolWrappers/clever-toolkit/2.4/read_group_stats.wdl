@@ -8,6 +8,9 @@ task Readgroupstats {
     read_group_stats \
       ~{read_group_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_group_file: ""
   }

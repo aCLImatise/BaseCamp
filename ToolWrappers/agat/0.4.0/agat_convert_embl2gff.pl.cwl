@@ -3,24 +3,24 @@ id: agat_convert_embl2gff.pl.cwl
 inputs:
 - id: in_embl
   doc: Input EMBL file that will be read
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --embl
 - id: in_primary_tag
   doc: "List of \"primary tag\". Useful to discard or keep specific\nfeatures. Multiple\
     \ tags must be coma-separated."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --primary_tag
 - id: in_means_tags_discarded
   doc: "Means that primary tags provided by the option \"primary_tag\"\nwill be discarded."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_outfile
   doc: "Output GFF file. If no output file is specified, the output will\nbe written\
     \ to STDOUT."
-  type: File
+  type: File?
   inputBinding:
     prefix: --outfile
 - id: in_gaas_converter_embl_two_gff_do_tpl
@@ -40,9 +40,10 @@ outputs:
 - id: out_outfile
   doc: "Output GFF file. If no output file is specified, the output will\nbe written\
     \ to STDOUT."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agat_convert_embl2gff.pl

@@ -8,6 +8,9 @@ task Txt2ftblpyNET {
     txt2ftbl_py NET \
       ~{txttwoftbldotpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     txttwoftbldotpy: ""
   }

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String
+
+Hyphympi_Sa_V0_1_0 = CommandToolBuilder(tool="HYPHYMPI_sa", base_command=["HYPHYMPI", "sa"], inputs=[ToolInput(tag="in_fprintfstdout", input_type=String(), position=0, doc=InputDocumentation(doc="fprintf(stdout, 'Input file contained 3 or fewer sequences - not much inference to be done!\n');")), ToolInput(tag="in_branch_under_condition", input_type=String(), position=1, doc=InputDocumentation(doc="Branch under condition 'randomOption==1'")), ToolInput(tag="in_treenodes", input_type=String(), position=2, doc=InputDocumentation(doc="treeNodes={filteredData.species,1};")), ToolInput(tag="in_additionorder", input_type=String(), position=3, doc=InputDocumentation(doc="additionOrder={filteredData.species,1};"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Hyphympi_Sa_V0_1_0().translate("wdl", allow_empty_container=True)
+

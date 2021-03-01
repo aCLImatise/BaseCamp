@@ -1,0 +1,155 @@
+!Command
+command:
+- SplitSeq.py
+- samplepair
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: "An ordered list of FASTA/FASTQ files containing\nhead/primary sequences.\
+    \ (default: None)"
+  args: !RepeatFlagArg
+    name: SEQ_FILES_1
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: "An ordered list of FASTA/FASTQ files containing\ntail/secondary sequences.\
+    \ (default: None)"
+  args: !RepeatFlagArg
+    name: SEQ_FILES_2
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --outname
+  description: "Changes the prefix of the successfully processed\noutput file to the\
+    \ string specified. May not be\nspecified with multiple input files. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --delim
+  description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
+    annotation blocks, field names and values, and values\nwithin a field, respectively.\
+    \ (default: ('|', '=',\n','))"
+  args: !SimpleFlagArg
+    name: DELIMITER
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "Maximum number of paired sequences to sample from each\nset of files,\
+    \ fields or annotations. The default\nbehavior, without the -f argument, is to\
+    \ sample from\nthe complete set of paired sequences in the input\nfiles. (default:\
+    \ None)"
+  args: !RepeatFlagArg
+    name: MAX_COUNT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "The annotation field for sampling criteria. If the -u\nargument is\
+    \ not also specified, then sampling will be\nperformed for each unique annotation\
+    \ value in the\ndeclared field separately. (default: None)"
+  args: !SimpleFlagArg
+    name: FIELD
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: "If specified, sampling will be restricted to sequences\nthat contain\
+    \ one of the declared annotation values in\nthe specified field. Requires the\
+    \ -f argument.\n(default: None)"
+  args: !RepeatFlagArg
+    name: VALUES
+- !Flag
+  optional: true
+  synonyms:
+  - --coord
+  description: "The format of the sequence identifier which defines\nshared coordinate\
+    \ information across paired read\nfiles. (default: presto)\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '454':
+      illumina:
+      solexa:
+      presto:
+      sra:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: SplitSeq.py samplepair [--version] [-h] -1 SEQ_FILES_1\n      \
+  \                        [SEQ_FILES_1 ...] -2 SEQ_FILES_2\n                    \
+  \          [SEQ_FILES_2 ...] [--outdir OUT_DIR]\n                              [--outname\
+  \ OUT_NAME] [--fasta]\n                              [--delim DELIMITER DELIMITER\
+  \ DELIMITER] -n\n                              MAX_COUNT [MAX_COUNT ...] [-f FIELD]\n\
+  \                              [-u VALUES [VALUES ...]]\n                      \
+  \        [--coord {illumina,solexa,sra,454,presto}]\n\nRandomly samples from paired-end\
+  \ sequences files.\n\nhelp:\n  --version             show program's version number\
+  \ and exit\n  -h, --help            show this help message and exit\n\nstandard\
+  \ arguments:\n  -1 SEQ_FILES_1 [SEQ_FILES_1 ...]\n                        An ordered\
+  \ list of FASTA/FASTQ files containing\n                        head/primary sequences.\
+  \ (default: None)\n  -2 SEQ_FILES_2 [SEQ_FILES_2 ...]\n                        An\
+  \ ordered list of FASTA/FASTQ files containing\n                        tail/secondary\
+  \ sequences. (default: None)\n  --outdir OUT_DIR      Specify to changes the output\
+  \ directory to the\n                        location specified. The input file directory\
+  \ is used\n                        if this is not specified. (default: None)\n \
+  \ --outname OUT_NAME    Changes the prefix of the successfully processed\n     \
+  \                   output file to the string specified. May not be\n          \
+  \              specified with multiple input files. (default: None)\n  --fasta \
+  \              Specify to force output as FASTA rather than FASTQ.\n           \
+  \             (default: None)\n  --delim DELIMITER DELIMITER DELIMITER\n       \
+  \                 A list of the three delimiters that separate\n               \
+  \         annotation blocks, field names and values, and values\n              \
+  \          within a field, respectively. (default: ('|', '=',\n                \
+  \        ','))\n\nsampling arguments:\n  -n MAX_COUNT [MAX_COUNT ...]\n        \
+  \                Maximum number of paired sequences to sample from each\n      \
+  \                  set of files, fields or annotations. The default\n          \
+  \              behavior, without the -f argument, is to sample from\n          \
+  \              the complete set of paired sequences in the input\n             \
+  \           files. (default: None)\n  -f FIELD              The annotation field\
+  \ for sampling criteria. If the -u\n                        argument is not also\
+  \ specified, then sampling will be\n                        performed for each unique\
+  \ annotation value in the\n                        declared field separately. (default:\
+  \ None)\n  -u VALUES [VALUES ...]\n                        If specified, sampling\
+  \ will be restricted to sequences\n                        that contain one of the\
+  \ declared annotation values in\n                        the specified field. Requires\
+  \ the -f argument.\n                        (default: None)\n  --coord {illumina,solexa,sra,454,presto}\n\
+  \                        The format of the sequence identifier which defines\n \
+  \                       shared coordinate information across paired read\n     \
+  \                   files. (default: presto)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/presto:0.6.2--py_0

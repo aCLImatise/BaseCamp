@@ -5,44 +5,53 @@ command:
 positional: []
 named:
 - !Flag
-  description: SETNAMES [SETNAMES ...]
-  synonyms:
-  - --spectra
-  - --setnames
-  args: !RepeatFlagArg
-    name: SPECTRAFNS
   optional: true
-- !Flag
-  description: Database lookup file
   synonyms:
   - --dbfile
+  description: Database lookup file
   args: !SimpleFlagArg
     name: LOOKUPFN
-  optional: true
 - !Flag
-  description: Output file
+  optional: true
   synonyms:
   - -o
+  description: Output file
   args: !SimpleFlagArg
     name: OUTFILE
+- !Flag
   optional: true
+  synonyms:
+  - --spectra
+  description: "Spectra files in mzML format. Multiple files can be\nspecified, if\
+    \ order is important, e.g. when matching\nthem with quant data, the order will\
+    \ be their input\norder at the command line."
+  args: !RepeatFlagArg
+    name: SPECTRAFNS
+- !Flag
+  optional: true
+  synonyms:
+  - --setnames
+  description: "Names of biological sets. Can be specified with\nquotation marks if\
+    \ spaces are used\n"
+  args: !RepeatFlagArg
+    name: SETNAMES
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: msstitch storespectra [-h] [--version] [--dbfile LOOKUPFN] [-o\
   \ OUTFILE]\n                             --spectra SPECTRAFNS [SPECTRAFNS ...] --setnames\n\
   \                             SETNAMES [SETNAMES ...]\n\noptional arguments:\n \
@@ -57,3 +66,4 @@ help_text: "usage: msstitch storespectra [-h] [--version] [--dbfile LOOKUPFN] [-
   \                        quotation marks if spaces are used\n"
 generated_using:
 - --help
+docker_image:

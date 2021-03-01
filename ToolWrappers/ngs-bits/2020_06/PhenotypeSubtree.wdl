@@ -16,6 +16,9 @@ task PhenotypeSubtree {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "HPO phenotype identifier, e.g. HP:0002066."
     out: "Output TSV file with phenotypes identifiers (column 1) and names (column 2). If unset, writes to STDOUT.\\nDefault value: ''"

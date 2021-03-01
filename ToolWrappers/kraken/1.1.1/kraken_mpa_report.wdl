@@ -14,6 +14,9 @@ task Krakenmpareport {
       ~{if (header_line) then "--header-line" else ""} \
       ~{if (intermediate_ranks) then "--intermediate-ranks" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Name of Kraken database\\n(default: none)"
     show_zeros: "Display taxa even if they lack a read in any sample"

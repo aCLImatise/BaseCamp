@@ -22,6 +22,9 @@ task EvalCGPpl {
       ~{if defined(no_selection) then ("--noselection " +  '"' + no_selection + '"') else ""} \
       ~{if defined(no_join) then ("--nojoin " +  '"' + no_join + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     eval_exec_dir: "Directory that contains the executable evaluate_gtf.pl from the eval package.\\nIf not specified it must be in \\$PATH environment variable."
     join_genes: "Use this option to merge genes in the prediction set and filter out duplicates (default: 0)"

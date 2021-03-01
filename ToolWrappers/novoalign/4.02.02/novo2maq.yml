@@ -3,11 +3,14 @@ command:
 - novo2maq
 positional:
 - !Positional
-  description: is file name for the output MAQ map file.
+  optional: false
   position: 0
   name: out.map
-  optional: false
+  description: is file name for the output MAQ map file.
 - !Positional
+  optional: false
+  position: 1
+  name: in.list
   description: "is a list of reference sequence headers to be selected. This file\
     \ servers to specify\nreference sequences to be selected for conversion to the\
     \ MAQ map format and also allows\ntranslation of the header sequence. Each line\
@@ -15,32 +18,29 @@ positional:
     \ sequences not listed in this file will not be converted to MAQ map file.\nUse\
     \ '-' rather than a filename to specify that all sequences are to be selected\
     \ and converted."
-  position: 1
-  name: in.list
-  optional: false
 - !Positional
-  description: is the Novoalign report file to be converted. Use '-' to specify that
-    the report is to be read from stdin
+  optional: false
   position: 2
   name: in.novo
-  optional: false
+  description: is the Novoalign report file to be converted. Use '-' to specify that
+    the report is to be read from stdin
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -s
   description: '|off Turns on or off the Smith-Waterman check of indels. When only
     indels that/n                          would be part of optimum local alignment
     are converted as MAQ indels. Default is off /n                          which
     will report all indels found by Novoalign.'
-  synonyms:
-  - -s
   args: !SimpleFlagArg
     name: on
-  optional: true
 - !Flag
-  description: Produces short report on number of alignments per reference sequence.
+  optional: true
   synonyms:
   - -r
+  description: Produces short report on number of alignments per reference sequence.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -68,3 +68,4 @@ help_text: "novo2maq: invalid option -- '-'\nnovo2maq: invalid option -- 'h'\nno
   \ from stdin\n"
 generated_using:
 - --help
+docker_image:

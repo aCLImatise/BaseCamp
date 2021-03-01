@@ -3,23 +3,23 @@ id: eval_dualdecomp.pl.cwl
 inputs:
 - id: in_intput_augustus_file
   doc: intput AUGUSTUS file
-  type: File
+  type: File?
   inputBinding:
     prefix: --f
-- id: in_directory_recognized_out
+- id: in_directory_input_augustus
   doc: directory of input AUGUSTUS files (recognized by .out file extension)
-  type: File
+  type: File?
   inputBinding:
     prefix: --d
 - id: in_hist_iterations
   doc: output histogram of iterations to out.pdf
-  type: string
+  type: string?
   inputBinding:
     prefix: --hist_iterations
 - id: in_hist_errors
   doc: "output histogram of error estimates to out.pdf for all cases, where\nno convergence\
     \ is achieved."
-  type: string
+  type: string?
   inputBinding:
     prefix: --hist_errors
 - id: in_err_per_iter
@@ -27,20 +27,20 @@ inputs:
     If after a certain number of iterations the error no further drops,\nearly stopping\
     \ is recommended, i.e. in the next run, the number of\nDD iterations can be restricted\
     \ to this number of iterations."
-  type: long
+  type: long?
   inputBinding:
     prefix: --err_per_iter
-- id: in_threshold_percentage_initial
+- id: in_threshold_evolution_helps
   doc: "threshold for percentage of initial error. For all cases with an estimated\n\
     error higher than this threshold, the evolution of primal an dual values\nare\
     \ plotted against the iterations. This helps debugging cases with a\nhigh error\
     \ estimate. The threshold is between [0-100] (default: 5)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --t
 - id: in_outdir
   doc: put all plots in this output directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 outputs:
@@ -49,9 +49,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: put all plots in this output directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - eval_dualdecomp.pl

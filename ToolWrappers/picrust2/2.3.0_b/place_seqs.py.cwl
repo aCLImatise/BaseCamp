@@ -3,7 +3,7 @@ id: place_seqs.py.cwl
 inputs:
 - id: in_study_fast_a
   doc: FASTA of unaligned study sequences.
-  type: File
+  type: File?
   inputBinding:
     prefix: --study_fasta
 - id: in_ref_dir
@@ -11,23 +11,23 @@ inputs:
     packages/picrust2/default_files/prokaryotic/pro_ref).\nPlease see the online documentation\
     \ for how to name\nthe files in this directory in order to use custom\nreference\
     \ files."
-  type: File
+  type: File?
   inputBinding:
     prefix: --ref_dir
 - id: in_out_tree
   doc: Name of final output tree.
-  type: File
+  type: File?
   inputBinding:
     prefix: --out_tree
 - id: in_processes
   doc: "Number of processes to run in parallel (default: 1).\nNote that this refers\
     \ to multithreading rather than\nmultiprocessing when running EPA-ng and GAPPA."
-  type: long
+  type: long?
   inputBinding:
     prefix: --processes
 - id: in_intermediate
   doc: "Output folder for intermediate files (will be deleted\notherwise)."
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --intermediate
 - id: in_min_align
@@ -35,17 +35,17 @@ inputs:
     \ with reference sequences. Any\nsequences with lengths below this value after\
     \ making\nan alignment with reference sequences will be excluded\nfrom the placement\
     \ and all subsequent steps. (default:\n0)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_align
 - id: in_chunk_size
   doc: "Number of query seqs to read in at once for EPA-ng\n(default: 5000)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --chunk_size
 - id: in_verbose
   doc: "If specified, print out wrapped commands and other\ndetails to screen."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 outputs:
@@ -54,9 +54,10 @@ outputs:
   type: stdout
 - id: out_intermediate
   doc: "Output folder for intermediate files (will be deleted\notherwise)."
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_intermediate)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - place_seqs.py

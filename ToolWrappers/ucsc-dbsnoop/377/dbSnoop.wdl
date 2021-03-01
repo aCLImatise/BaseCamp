@@ -18,6 +18,9 @@ task DbSnoop {
       ~{if defined(skip_table) then ("-skipTable " +  '"' + skip_table + '"') else ""} \
       ~{if defined(profile) then ("-profile " +  '"' + profile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     unsplit: "- if set will merge together tables split by chromosome"
     no_number_commas: "- if set will leave out commas in big numbers"

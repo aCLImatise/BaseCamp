@@ -3,12 +3,12 @@ version 1.0
 task Skewer {
   input {
     File? adapter_sequencefile_agatcggaagagcacacgtctgaactccagtcac
-    File? adapter_sequencefile_pairend
+    File? adapter_sequencefile_agatcggaagagcgtcgtgtagggaaagagtgtaimplied
     File? matrix
     File? junction_adapter_sequencefile
     Int? mode
     Boolean? barcode
-    Int? maximum_allowed_errors
+    Int? maximum_allowed_normalized
     Int? maximum_allowed_rate
     Int? minimum_overlap_length
     Int? cut
@@ -17,7 +17,7 @@ task Skewer {
     Int? mean_quality
     Int? min
     Int? max
-    Boolean? filter_degenerative_many
+    Boolean? filter_degenerative_reads
     Boolean? filter_undetermined_matepair
     String? fill_ns
     String? format
@@ -38,12 +38,12 @@ task Skewer {
       ~{reads_dot_fast_q} \
       ~{paired_reads_dot_fast_q} \
       ~{if defined(adapter_sequencefile_agatcggaagagcacacgtctgaactccagtcac) then ("-x " +  '"' + adapter_sequencefile_agatcggaagagcacacgtctgaactccagtcac + '"') else ""} \
-      ~{if defined(adapter_sequencefile_pairend) then ("-y " +  '"' + adapter_sequencefile_pairend + '"') else ""} \
+      ~{if defined(adapter_sequencefile_agatcggaagagcgtcgtgtagggaaagagtgtaimplied) then ("-y " +  '"' + adapter_sequencefile_agatcggaagagcgtcgtgtagggaaagagtgtaimplied + '"') else ""} \
       ~{if defined(matrix) then ("--matrix " +  '"' + matrix + '"') else ""} \
       ~{if defined(junction_adapter_sequencefile) then ("-j " +  '"' + junction_adapter_sequencefile + '"') else ""} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
       ~{if (barcode) then "--barcode" else ""} \
-      ~{if defined(maximum_allowed_errors) then ("-r " +  '"' + maximum_allowed_errors + '"') else ""} \
+      ~{if defined(maximum_allowed_normalized) then ("-r " +  '"' + maximum_allowed_normalized + '"') else ""} \
       ~{if defined(maximum_allowed_rate) then ("-d " +  '"' + maximum_allowed_rate + '"') else ""} \
       ~{if defined(minimum_overlap_length) then ("-k " +  '"' + minimum_overlap_length + '"') else ""} \
       ~{if defined(cut) then ("--cut " +  '"' + cut + '"') else ""} \
@@ -52,7 +52,7 @@ task Skewer {
       ~{if defined(mean_quality) then ("--mean-quality " +  '"' + mean_quality + '"') else ""} \
       ~{if defined(min) then ("--min " +  '"' + min + '"') else ""} \
       ~{if defined(max) then ("--max " +  '"' + max + '"') else ""} \
-      ~{if (filter_degenerative_many) then "-n" else ""} \
+      ~{if (filter_degenerative_reads) then "-n" else ""} \
       ~{if (filter_undetermined_matepair) then "-u" else ""} \
       ~{if defined(fill_ns) then ("--fillNs " +  '"' + fill_ns + '"') else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
@@ -66,14 +66,17 @@ task Skewer {
       ~{if (intelligent) then "--intelligent" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     adapter_sequencefile_agatcggaagagcacacgtctgaactccagtcac: "Adapter sequence/file (AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC)"
-    adapter_sequencefile_pairend: "Adapter sequence/file for pair-end reads (AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA),\\nimplied by -x if -x is the only one specified explicitly."
+    adapter_sequencefile_agatcggaagagcgtcgtgtagggaaagagtgtaimplied: "Adapter sequence/file for pair-end reads (AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA),\\nimplied by -x if -x is the only one specified explicitly."
     matrix: "File indicates valid adapter pairing (all-ones matrix)."
     junction_adapter_sequencefile: "Junction adapter sequence/file for Nextera Mate Pair reads (CTGTCTCTTATACACATCTAGATGTGTATAAGAGACAG)"
     mode: "trimming mode; 1) single-end -- head: 5' end; tail: 3' end; any: anywhere (tail)\\n2) paired-end -- pe: paired-end; mp: mate-pair; ap: amplicon (pe)"
     barcode: "Demultiplex reads according to adapters/primers (no)"
-    maximum_allowed_errors: "Maximum allowed error rate (normalized #errors / length of aligned region) [0, 0.5], (0.1)"
+    maximum_allowed_normalized: "Maximum allowed error rate (normalized #errors / length of aligned region) [0, 0.5], (0.1)"
     maximum_allowed_rate: "Maximum allowed indel error rate [0, r], (0.03)\\nreciprocal is used for -r, -e and -d when num > or = 2"
     minimum_overlap_length: "Minimum overlap length for adapter detection [1, inf);\\n(max(1, int(4-10*r)) for single-end; (<junction length>/2) for mate-pair)"
     cut: ",<int> Hard clip off the 5' leading bases as the barcodes in amplicon mode; (no)"
@@ -82,7 +85,7 @@ task Skewer {
     mean_quality: "The lowest mean quality value allowed before trimming; (0)"
     min: "The minimum read length allowed after trimming; (18)"
     max: "The maximum read length allowed after trimming; (no limit)"
-    filter_degenerative_many: "Whether to filter out highly degenerative (many Ns) reads; (no)"
+    filter_degenerative_reads: "Whether to filter out highly degenerative (many Ns) reads; (no)"
     filter_undetermined_matepair: "Whether to filter out undetermined mate-pair reads; (no)"
     fill_ns: "to replace trimmed bases with Ns (has no effect with 'b' or '-m mp'); (no)"
     format: "Format of FASTQ quality value: sanger|solexa|auto; (auto)"

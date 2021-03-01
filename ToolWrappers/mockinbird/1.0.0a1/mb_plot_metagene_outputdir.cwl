@@ -3,7 +3,7 @@ id: mb_plot_metagene_outputdir.cwl
 inputs:
 - id: in_downstream_bp
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --downstream_bp
 - id: in_mb_plot_meta_gene
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mb-plot-metagene

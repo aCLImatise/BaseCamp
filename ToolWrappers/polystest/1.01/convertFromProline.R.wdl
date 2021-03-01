@@ -4,6 +4,9 @@ task ConvertFromProlineR {
   command <<<
     convertFromProline_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

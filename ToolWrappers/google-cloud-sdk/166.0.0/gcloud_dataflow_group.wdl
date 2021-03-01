@@ -16,6 +16,9 @@ task GcloudDataflowGroup {
       ~{flags} \
       ~{group}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     g_cloud: ""
     data_flow: ""

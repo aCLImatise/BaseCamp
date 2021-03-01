@@ -3,7 +3,7 @@ id: anvi_script_gen_CPR_classifier.cwl
 inputs:
 - id: in_output
   doc: "Output file name for the classifier.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_matrix_file
@@ -19,9 +19,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file name for the classifier.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-script-gen-CPR-classifier

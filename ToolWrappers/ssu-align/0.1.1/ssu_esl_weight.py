@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, Float
+
+Ssu_Esl_Weight_V0_1_0 = CommandToolBuilder(tool="ssu_esl_weight", base_command=["ssu-esl-weight"], inputs=[ToolInput(tag="in_gersteinsonnhammerchothia_tree_weights", input_type=Boolean(optional=True), prefix="-g", doc=InputDocumentation(doc=": Gerstein/Sonnhammer/Chothia tree weights  [default]")), ToolInput(tag="in_henikoff_positionbased_weights", input_type=Boolean(optional=True), prefix="-p", doc=InputDocumentation(doc=": Henikoff position-based weights")), ToolInput(tag="in_henikoff_simple_filter", input_type=Boolean(optional=True), prefix="-b", doc=InputDocumentation(doc=": Henikoff simple filter weights")), ToolInput(tag="in_filter_seqs_fractional", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc=": filter out seqs by fractional identity")), ToolInput(tag="in_send_output_file", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc=": send output to file <f>, not stdout")), ToolInput(tag="in_id", input_type=Float(optional=True), prefix="--id", doc=InputDocumentation(doc=": for -b: set identity cutoff  [0.62]  (0<=x<=1)")), ToolInput(tag="in_idf", input_type=Float(optional=True), prefix="--idf", doc=InputDocumentation(doc=": for -f: set identity cutoff  [0.80]  (0<=x<=1)")), ToolInput(tag="in_in_format", input_type=File(optional=True), prefix="--informat", doc=InputDocumentation(doc=": specify that input file is in format <s>")), ToolInput(tag="in_amino", input_type=Boolean(optional=True), prefix="--amino", doc=InputDocumentation(doc=": <msa file> contains protein alignments")), ToolInput(tag="in_dna", input_type=Boolean(optional=True), prefix="--dna", doc=InputDocumentation(doc=": <msa file> contains DNA alignments")), ToolInput(tag="in_rna", input_type=Boolean(optional=True), prefix="--rna", doc=InputDocumentation(doc=": <msa file> contains RNA alignments")), ToolInput(tag="in_options", input_type=Boolean(optional=True), prefix="-options", doc=InputDocumentation(doc="")), ToolInput(tag="in_msa_file", input_type=File(), position=0, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_send_output_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_send_output_file", type_hint=File()), doc=OutputDocumentation(doc=": send output to file <f>, not stdout"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Ssu_Esl_Weight_V0_1_0().translate("wdl", allow_empty_container=True)
+

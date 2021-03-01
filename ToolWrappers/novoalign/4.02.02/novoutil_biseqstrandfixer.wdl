@@ -10,6 +10,9 @@ task NovoutilBiseqstrandfixer {
       ~{input_dots_am} \
       ~{output_dots_am}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dots_am: ""
     output_dots_am: ""

@@ -8,12 +8,12 @@ task SmofUniq {
     Boolean? pack
     String? pack_sep
     Boolean? final_header
-    String input_fasta_default
+    String input_fasta_sequence
     String headers
   }
   command <<<
     smof uniq \
-      ~{input_fasta_default} \
+      ~{input_fasta_sequence} \
       ~{headers} \
       ~{if (count) then "--count" else ""} \
       ~{if (repeated) then "--repeated" else ""} \
@@ -22,6 +22,9 @@ task SmofUniq {
       ~{if defined(pack_sep) then ("--pack-sep " +  '"' + pack_sep + '"') else ""} \
       ~{if (final_header) then "--final-header" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count: "writes (count|header) in tab-delimited format"
     repeated: "print only repeated entries"
@@ -29,7 +32,7 @@ task SmofUniq {
     pack: "combine redundant sequences by concatenating the"
     pack_sep: "set delimiting string for pack/unpack operations (SOH,\\n0x01, by default)"
     final_header: "make headers unique by deleting all but the final\\nentry with a given header (the sequence is ignored, so\\norder matters, you may want to sort by sequence first\\nfor reproducibility)\\n"
-    input_fasta_default: "input fasta sequence (default = stdin)"
+    input_fasta_sequence: "input fasta sequence (default = stdin)"
     headers: "-P, --unpack          reverse the pack operation"
   }
   output {

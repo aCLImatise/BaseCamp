@@ -56,6 +56,9 @@ task Alimask {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     direct_summary_output: ": direct summary output to file <f>, not stdout"
     model_range: ": range(s) for mask(s) in model coordinates"

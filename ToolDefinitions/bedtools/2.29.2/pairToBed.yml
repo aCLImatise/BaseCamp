@@ -3,116 +3,116 @@ command:
 - pairToBed
 positional:
 - !Positional
-  description: "Report overlaps if either end of A overlaps B.\n- Default."
+  optional: false
   position: 0
   name: either
-  optional: false
+  description: "Report overlaps if either end of A overlaps B.\n- Default."
 - !Positional
-  description: Report overlaps if both ends of A overlap  B.
+  optional: false
   position: 0
   name: both
-  optional: false
+  description: Report overlaps if both ends of A overlap  B.
 - !Positional
-  description: Report overlaps if one and only one end of A overlaps B.
+  optional: false
   position: 1
   name: xor
-  optional: false
+  description: Report overlaps if one and only one end of A overlaps B.
 - !Positional
-  description: "Report overlaps between [end1, start2] of A and B.\n- Note: If chrom1\
-    \ <> chrom2, entry is ignored."
+  optional: false
   position: 0
   name: ispan
-  optional: false
-- !Positional
-  description: "Report overlaps between [start1, end2] of A and B.\n- Note: If chrom1\
+  description: "Report overlaps between [end1, start2] of A and B.\n- Note: If chrom1\
     \ <> chrom2, entry is ignored."
+- !Positional
+  optional: false
   position: 1
   name: ospan
-  optional: false
+  description: "Report overlaps between [start1, end2] of A and B.\n- Note: If chrom1\
+    \ <> chrom2, entry is ignored."
 - !Positional
-  description: "Report A if ispan of A doesn't overlap B.\n- Note: If chrom1 <> chrom2,\
-    \ entry is ignored."
+  optional: false
   position: 2
   name: notispan
-  optional: false
-- !Positional
-  description: "Report A if ospan of A doesn't overlap B.\n- Note: If chrom1 <> chrom2,\
+  description: "Report A if ispan of A doesn't overlap B.\n- Note: If chrom1 <> chrom2,\
     \ entry is ignored."
+- !Positional
+  optional: false
   position: 3
   name: notospan
-  optional: false
+  description: "Report A if ospan of A doesn't overlap B.\n- Note: If chrom1 <> chrom2,\
+    \ entry is ignored."
 named:
 - !Flag
-  description: "The A input file is in BAM format.  Output will be BAM as well. Replaces\
-    \ -a.\n- Requires BAM to be grouped or sorted by query."
+  optional: true
   synonyms:
   - -abam
+  description: "The A input file is in BAM format.  Output will be BAM as well. Replaces\
+    \ -a.\n- Requires BAM to be grouped or sorted by query."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Write uncompressed BAM output. Default writes compressed BAM.\nis\
-    \ to write output in BAM when using -abam."
+  optional: true
   synonyms:
   - -ubam
+  description: "Write uncompressed BAM output. Default writes compressed BAM.\nis\
+    \ to write output in BAM when using -abam."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "When using BAM input (-abam), write output as BEDPE. The default\n\
-    is to write output in BAM when using -abam."
+  optional: true
   synonyms:
   - -bedpe
+  description: "When using BAM input (-abam), write output as BEDPE. The default\n\
+    is to write output in BAM when using -abam."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -ed
   description: "Use BAM total edit distance (NM tag) for BEDPE score.\n- Default for\
     \ BEDPE is to use the minimum of\nof the two mapping qualities for the pair.\n\
     - When -ed is used the total edit distance\nfrom the two mates is reported as\
     \ the score."
-  synonyms:
-  - -ed
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum overlap required as fraction of A (e.g. 0.05).\nDefault is\
-    \ 1E-9 (effectively 1bp)."
+  optional: true
   synonyms:
   - -f
+  description: "Minimum overlap required as fraction of A (e.g. 0.05).\nDefault is\
+    \ 1E-9 (effectively 1bp)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Require same strandedness when finding overlaps.\nDefault is to ignore\
-    \ stand.\nNot applicable with -type inspan or -type outspan."
+  optional: true
   synonyms:
   - -s
+  description: "Require same strandedness when finding overlaps.\nDefault is to ignore\
+    \ stand.\nNot applicable with -type inspan or -type outspan."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Require different strandedness when finding overlaps.\nDefault is\
-    \ to ignore stand.\nNot applicable with -type inspan or -type outspan."
+  optional: true
   synonyms:
   - -S
+  description: "Require different strandedness when finding overlaps.\nDefault is\
+    \ to ignore stand.\nNot applicable with -type inspan or -type outspan."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Approach to reporting overlaps between BEDPE and BED.
+  optional: true
   synonyms:
   - -type
+  description: Approach to reporting overlaps between BEDPE and BED.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -b
+  description: ''
   args: !SimpleFlagArg
     name: bed/gff/vcf
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -a
+  description: ''
   args: !SimpleFlagArg
     name: bedpe
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -150,3 +150,4 @@ help_text: "\n*****ERROR: Unrecognized parameter: --help *****\n\n\n*****\n*****
   \ entry is ignored.\n\nRefer to the BEDTools manual for BEDPE format.\n\n"
 generated_using:
 - --help
+docker_image:

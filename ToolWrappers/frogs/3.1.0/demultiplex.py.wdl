@@ -28,6 +28,9 @@ task Demultiplexpy {
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mismatches: "Number of mismatches allowed in barcode. [Default: 0]"
     end: "barcode is at the begining of the forward end (bol) or\\nof the reverse (eol) or both (both). [Default: bol]"

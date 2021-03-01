@@ -12,6 +12,9 @@ task HtsboxBamidx {
       ~{in_dot_bam} \
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s: ""
     bam_idx: ""

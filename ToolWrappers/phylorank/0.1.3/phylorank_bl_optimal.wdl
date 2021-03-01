@@ -16,6 +16,9 @@ task PhylorankBlOptimal {
       ~{if defined(max_dist) then ("--max_dist " +  '"' + max_dist + '"') else ""} \
       ~{if defined(step_size) then ("--step_size " +  '"' + step_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_dist: "minimum mean branch length value to evaluate (default:\\n0.5)"
     max_dist: "maximum mean branch length value to evaluate (default:\\n1.2)"

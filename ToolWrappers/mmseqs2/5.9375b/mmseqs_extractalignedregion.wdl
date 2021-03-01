@@ -14,6 +14,9 @@ task MmseqsExtractalignedregion {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     extract_mode: "2               Query 1, Target 2"
     no_preload: "false           Do not preload database"

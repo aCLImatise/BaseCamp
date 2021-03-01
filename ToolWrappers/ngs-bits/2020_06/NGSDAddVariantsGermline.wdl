@@ -34,6 +34,9 @@ task NGSDAddVariantsGermline {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ps: "Processed sample name"
     var: "Small variant list in GSvar format (as produced by megSAP).\\nDefault value: ''"

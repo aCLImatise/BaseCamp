@@ -3,22 +3,22 @@ id: pca.cwl
 inputs:
 - id: in_l
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -l
 - id: in_e
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -e
 - id: in_o
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -o
 - id: in_i
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_must
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pca

@@ -3,7 +3,7 @@ id: gfapy_renumber.cwl
 inputs:
 - id: in_out
   doc: output GFA file [/dev/stdout]
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_gfa
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: output GFA file [/dev/stdout]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gfapy-renumber

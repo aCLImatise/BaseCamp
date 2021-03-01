@@ -60,6 +60,9 @@ task Pmmerge {
       ~{if defined(exec) then ("-exec " +  '"' + exec + '"') else ""} \
       ~{if (hl) then "-HL" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     follow: "Follow symlinks"
     command_line_only: "...on command line only"
@@ -78,8 +81,8 @@ task Pmmerge {
     mtime: "mtime is greater than (+N), less than (-N),\\nor exactly N days in the past"
     mm_in: "mtime is greater than (+N), less than (-N),\\nor exactly N minutes in the past"
     newer: "mtime is more recent than FILE's"
-    user: "File is owned by given user"
-    group: "File is owned by given group"
+    user: "/ID   File is owned by given user"
+    group: "/ID  File is owned by given group"
     size: "[bck]    File size is N (c:bytes,k:kbytes,b:512 bytes(def.))\\n+/-N: file size is bigger/smaller than N"
     prune: "If current file is directory, don't descend into it"
     print: "Print file name"

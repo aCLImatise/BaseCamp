@@ -2,7 +2,6 @@ version 1.0
 
 task AMASpyConcat {
   input {
-    Array[String] i
     File? concat_part
     File? concat_out
     File? out_format
@@ -15,7 +14,6 @@ task AMASpyConcat {
   command <<<
     AMAS_py concat \
       ~{check} \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(concat_part) then ("--concat-part " +  '"' + concat_part + '"') else ""} \
       ~{if defined(concat_out) then ("--concat-out " +  '"' + concat_out + '"') else ""} \
       ~{if defined(out_format) then ("--out-format " +  '"' + out_format + '"') else ""} \
@@ -24,8 +22,10 @@ task AMASpyConcat {
       ~{if defined(in_format) then ("--in-format " +  '"' + in_format + '"') else ""} \
       ~{if defined(data_type) then ("--data-type " +  '"' + data_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    i: "{fasta,phylip,nexus,phylip-int,nexus-int} -d {aa,dna}"
     concat_part: "File name for th0e concatenated alignment partitions.\\nDefault: 'partitions.txt'"
     concat_out: "File name for the concatenated alignment. Default:\\n'concatenated.out'"
     out_format: "File format for the output alignment. Default: fasta"

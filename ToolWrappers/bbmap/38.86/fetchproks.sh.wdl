@@ -10,6 +10,9 @@ task Fetchprokssh {
       ~{url} \
       ~{outfile}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     url: ""
     outfile: ""

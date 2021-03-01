@@ -3,27 +3,27 @@ id: OMSSAAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                            Input file  (valid formats: 'mzML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -in
 - id: in_out
   doc: "*                           Output file  (valid formats: 'idXML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
 - id: in_precursor_mass_tolerance
   doc: "Precursor monoisotopic mass tolerance (default: '10')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -precursor_mass_tolerance
 - id: in_precursor_error_units
   doc: "Unit of precursor mass tolerance (default: 'ppm' valid: 'Da', 'ppm')"
-  type: string
+  type: string?
   inputBinding:
     prefix: -precursor_error_units
 - id: in_fragment_mass_tolerance
   doc: "Fragment mass error in Dalton (default: '0.3')"
-  type: double
+  type: double?
   inputBinding:
     prefix: -fragment_mass_tolerance
 - id: in_database
@@ -31,17 +31,17 @@ inputs:
     \ e.g. 'SwissProt.fasta.psq'. If the filename does not end in '.psq' (e.g., SwissProt.fasta)\
     \ the psq suffix will be added automatically. Non-existing relative file-names\
     \ are looked up via'OpenMS.ini:id_db_dir' (valid formats: 'psq', 'fasta')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -database
 - id: in_min_precursor_charge
   doc: "Minimum precursor ion charge (default: '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -min_precursor_charge
 - id: in_max_precursor_charge
   doc: "Maximum precursor ion charge (default: '3')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -max_precursor_charge
 - id: in_fixed_modifications
@@ -721,7 +721,7 @@ inputs:
     \ 'Xlink:DMP-s (K)', 'Xlink:DSS (K)', 'Xlink:DSS-NH2 (K)', 'Xlink:DST (K)', 'Xlink:DTSSP\
     \ (K)', 'Xlink:EGS (K)', 'Xlink:EGScleaved (K)', 'Xlink:SMCC (C)', 'Xlink:SSD\
     \ (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -fixed_modifications
 - id: in_variable_modifications
@@ -1401,17 +1401,17 @@ inputs:
     \ 'Xlink:DMP-s (K)', 'Xlink:DSS (K)', 'Xlink:DSS-NH2 (K)', 'Xlink:DST (K)', 'Xlink:DTSSP\
     \ (K)', 'Xlink:EGS (K)', 'Xlink:EGScleaved (K)', 'Xlink:SMCC (C)', 'Xlink:SSD\
     \ (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -variable_modifications
 - id: in_om_ssa_executable
   doc: "*        The 'omssacl' executable of the OMSSA installation"
-  type: string
+  type: string?
   inputBinding:
     prefix: -omssa_executable
 - id: in_number_missed_cleavages
   doc: "Number of missed cleavages allowed (default: '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -v
 - id: in_enzyme
@@ -1419,13 +1419,13 @@ inputs:
     \ 'Lys-C/P', 'PepsinA', 'CNBr', 'Formic_acid', 'Chymotrypsin', 'Asp-N_ambic',\
     \ 'no cleavage', 'TrypChymo', 'glutamyl endopeptidase', 'Arg-C', 'unspecific cleavage',\
     \ 'Trypsin/P', 'Lys-C', 'Asp-N')"
-  type: string
+  type: string?
   inputBinding:
     prefix: -enzyme
 - id: in_hl
   doc: "Maximum number of hits retained for one spectrum. Note: even when set to 1\
     \ OMSSA may report multiple hits with different charge states (default: '30')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -hl
 - id: in_he
@@ -1433,27 +1433,27 @@ inputs:
     \ small (e.g., he=1), this will effectively introduce FDR filtering. Thus, allowing\
     \ a less stringent FDR during post-processing will nevertheless return the (better)\
     \ FDR introduced here, since mediocre hits are not even reported. (default: '1000')"
-  type: double
+  type: double?
   inputBinding:
     prefix: -he
 - id: in_ini
   doc: Use the given TOPP INI file
-  type: File
+  type: File?
   inputBinding:
     prefix: -ini
 - id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -threads
 - id: in_write_ini
   doc: Writes the default configuration file
-  type: File
+  type: File?
   inputBinding:
     prefix: -write_ini
 - id: in_helphelp
   doc: Shows all options (including advanced)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --helphelp
 outputs:
@@ -1462,9 +1462,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: "*                           Output file  (valid formats: 'idXML')"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - OMSSAAdapter

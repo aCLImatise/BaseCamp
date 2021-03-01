@@ -34,6 +34,9 @@ task Snpmutator {
       ~{if defined(vcf) then ("--vcf " +  '"' + vcf + '"') else ""} \
       ~{if defined(metrics) then ("--metrics " +  '"' + metrics + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_simulations: "Number of mutated sequences to generate. (default:\\n100)"
     num_substitutions: "Number of substitutions. (default: 500)"

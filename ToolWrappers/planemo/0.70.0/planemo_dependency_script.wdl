@@ -14,6 +14,9 @@ task PlanemoDependencyScript {
       ~{if (fail_fast) then "--fail_fast" else ""} \
       ~{if defined(download_cache) then ("--download_cache " +  '"' + download_cache + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     recursive: "Recursively perform command for nested\\nrepository directories."
     fail_fast: "If multiple repositories are specified and an\\nerror occurs stop immediately instead of\\nprocessing remaining repositories."

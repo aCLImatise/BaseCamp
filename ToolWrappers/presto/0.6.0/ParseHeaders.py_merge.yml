@@ -5,117 +5,117 @@ command:
 positional: []
 named:
 - !Flag
-  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
-    \ None)"
+  optional: true
   synonyms:
   - -s
+  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
+    \ None)"
   args: !RepeatFlagArg
     name: SEQ_FILES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
   description: "Explicit output file name(s). Note, this argument\ncannot be used\
     \ with the --failed, --outdir, or\n--outname arguments. If unspecified, then the\
     \ output\nfilename will be based on the input filename(s).\n(default: None)"
-  synonyms:
-  - -o
   args: !RepeatFlagArg
     name: OUT_FILES
-  optional: true
 - !Flag
-  description: "Specify to changes the output directory to the\nlocation specified.\
-    \ The input file directory is used\nif this is not specified. (default: None)"
+  optional: true
   synonyms:
   - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
   args: !SimpleFlagArg
     name: OUT_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outname
   description: "Changes the prefix of the successfully processed\noutput file to the\
     \ string specified. May not be\nspecified with multiple input files. (default:\
     \ None)"
-  synonyms:
-  - --outname
   args: !SimpleFlagArg
     name: OUT_NAME
-  optional: true
 - !Flag
-  description: "If specified create files containing records that fail\nprocessing.\
-    \ (default: False)"
+  optional: true
   synonyms:
   - --failed
+  description: "If specified create files containing records that fail\nprocessing.\
+    \ (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
+  optional: true
   synonyms:
   - --fasta
+  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --delim
   description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
     annotation blocks, field names and values, and values\nwithin a field, respectively.\
     \ (default: ('|', '=',\n','))"
-  synonyms:
-  - --delim
   args: !SimpleFlagArg
     name: DELIMITER
-  optional: true
 - !Flag
-  description: 'List of fields to merge. (default: None)'
+  optional: true
   synonyms:
   - -f
+  description: 'List of fields to merge. (default: None)'
   args: !RepeatFlagArg
     name: FIELDS
-  optional: true
 - !Flag
-  description: "Name for the merged field. If the new field is already\npresent, the\
-    \ merged fields will be merged into the\nexisting field. (default: None)"
+  optional: true
   synonyms:
   - -k
+  description: "Name for the merged field. If the new field is already\npresent, the\
+    \ merged fields will be merged into the\nexisting field. (default: None)"
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --act
   description: "List of collapse actions to take on the new field\nfollowing the merge\
     \ defining how to combine the\nannotations into a single value. The actions \"\
     min\",\n\"max\", \"sum\" perform the corresponding mathematical\noperation on\
     \ numeric annotations. The action \"set\"\ncollapses annotations into a comma\
     \ delimited list of\nunique values. The action \"cat\" concatenates the\nvalues\
     \ together into a single string. (default: None)"
-  synonyms:
-  - --act
   args: !ChoiceFlagArg
     choices: !!set
-      min:
       cat:
       set:
       sum:
+      min:
       max:
-  optional: true
 - !Flag
-  description: "If specified, delete the field that were merged from\nthe output header.\
-    \ (default: False)\n"
+  optional: true
   synonyms:
   - --delete
+  description: "If specified, delete the field that were merged from\nthe output header.\
+    \ (default: False)\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: ParseHeaders.py merge [--version] [-h] -s SEQ_FILES [SEQ_FILES\
   \ ...]\n                             [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n\
   \                             [--outname OUT_NAME] [--failed] [--fasta]\n      \
@@ -159,3 +159,4 @@ help_text: "usage: ParseHeaders.py merge [--version] [-h] -s SEQ_FILES [SEQ_FILE
   \              the output header. (default: False)\n"
 generated_using:
 - --help
+docker_image:

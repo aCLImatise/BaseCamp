@@ -18,6 +18,9 @@ task WisestorkNewref {
       ~{if defined(path_output_bed) then ("--output " +  '"' + path_output_bed + '"') else ""} \
       ~{if defined(n_bins) then ("--n-bins " +  '"' + n_bins + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     binsize: "RANGE  Bin size to use. Default = 50000"
     reference: "Path to reference fasta  [required]"

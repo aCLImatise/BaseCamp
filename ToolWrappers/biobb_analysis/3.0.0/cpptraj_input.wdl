@@ -10,6 +10,9 @@ task CpptrajInput {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if defined(input_instructions_path) then ("--input_instructions_path " +  '"' + input_instructions_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Configuration file"
     input_instructions_path: "Path of the instructions file.\\n"

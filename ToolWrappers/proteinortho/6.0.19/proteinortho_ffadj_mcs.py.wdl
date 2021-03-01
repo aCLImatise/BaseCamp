@@ -2,20 +2,23 @@ version 1.0
 
 task ProteinorthoFfadjMcspy {
   input {
+    Int? repeat_matching
+    Int? min_cs_size
     String? g
-    String? m
-    String? r
   }
   command <<<
     proteinortho_ffadj_mcs_py \
-      ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
-      ~{if defined(m) then ("-M " +  '"' + m + '"') else ""} \
-      ~{if defined(r) then ("-R " +  '"' + r + '"') else ""}
+      ~{if defined(repeat_matching) then ("--repeat-matching " +  '"' + repeat_matching + '"') else ""} \
+      ~{if defined(min_cs_size) then ("--min-cs-size " +  '"' + min_cs_size + '"') else ""} \
+      ~{if defined(g) then ("-g " +  '"' + g + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
+    repeat_matching: "match N repetitions (default: 0)"
+    min_cs_size: "minimal cs size (default: 1)"
     g: ""
-    m: ""
-    r: ""
   }
   output {
     File out_stdout = stdout()

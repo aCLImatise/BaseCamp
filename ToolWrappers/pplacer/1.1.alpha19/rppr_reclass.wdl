@@ -28,6 +28,9 @@ task RpprReclass {
       ~{if (specified_path_write) then "-t" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_package_path: "Reference package path. Required."
     specify_filename_write: "Specify the filename to write to."

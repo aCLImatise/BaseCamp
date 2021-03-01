@@ -3,103 +3,103 @@ command:
 - snp_filter.py
 positional:
 - !Positional
-  description: "Relative or absolute path to file containing a list of\ndirectories\
-    \ -- one per sample"
+  optional: false
   position: 0
   name: sampleDirsFile
-  optional: false
+  description: "Relative or absolute path to file containing a list of\ndirectories\
+    \ -- one per sample"
 - !Positional
-  description: Relative or absolute path to the reference fasta file
+  optional: false
   position: 1
   name: refFastaFile
-  optional: false
+  description: Relative or absolute path to the reference fasta file
 named:
 - !Flag
-  description: "Force processing even when result files already exist\nand are newer\
-    \ than inputs (default: False)"
+  optional: true
   synonyms:
   - -f
   - --force
+  description: "Force processing even when result files already exist\nand are newer\
+    \ than inputs (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "File name of the input VCF files which must exist in\neach of the\
-    \ sample directories (default: var.flt.vcf)"
+  optional: true
   synonyms:
   - -n
   - --vcfname
+  description: "File name of the input VCF files which must exist in\neach of the\
+    \ sample directories (default: var.flt.vcf)"
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: "The length of the edge regions in a contig, in which\nall SNPs will\
-    \ be removed. (default: 500)"
+  optional: true
   synonyms:
   - -l
   - --edge_length
+  description: "The length of the edge regions in a contig, in which\nall SNPs will\
+    \ be removed. (default: 500)"
   args: !SimpleFlagArg
     name: EDGE_LENGTH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -w
   description: "[WINDOW_SIZE [WINDOW_SIZE ...]], --window_size [WINDOW_SIZE [WINDOW_SIZE\
     \ ...]]\nThe length of the window in which the number of SNPs\nshould be no more\
     \ than max_num_snp. (default: [1000])"
-  synonyms:
-  - -w
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[MAX_NUM_SNPs [MAX_NUM_SNPs ...]], --max_snp [MAX_NUM_SNPs [MAX_NUM_SNPs\
-    \ ...]]\nThe maximum number of SNPs allowed in a window.\n(default: [3])"
+  optional: true
   synonyms:
   - -m
+  description: "[MAX_NUM_SNPs [MAX_NUM_SNPs ...]], --max_snp [MAX_NUM_SNPs [MAX_NUM_SNPs\
+    \ ...]]\nThe maximum number of SNPs allowed in a window.\n(default: [3])"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Relative or absolute path to the file indicating\noutgroup samples,\
-    \ one sample ID per line. (default:\nNone)"
+  optional: true
   synonyms:
   - -g
   - --out_group
+  description: "Relative or absolute path to the file indicating\noutgroup samples,\
+    \ one sample ID per line. (default:\nNone)"
   args: !SimpleFlagArg
     name: OUT_GROUP
-  optional: true
 - !Flag
-  description: "Control whether dense snp regions found in any sample\nare filtered\
-    \ from all of the samples, or each sample\nindependently. (default: all)"
+  optional: true
   synonyms:
   - -M
   - --mode
+  description: "Control whether dense snp regions found in any sample\nare filtered\
+    \ from all of the samples, or each sample\nindependently. (default: all)"
   args: !ChoiceFlagArg
     choices: !!set
-      each:
       all:
-  optional: true
+      each:
 - !Flag
-  description: 'Verbose message level (0=no info, 5=lots) (default: 1)'
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: 'Verbose message level (0=no info, 5=lots) (default: 1)'
   args: !SimpleFlagArg
     name: 0..5
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: cfsan_snp_pipeline filter_regions [-h] [-f] [-n NAME] [-l EDGE_LENGTH]\n\
   \                                         [-w [WINDOW_SIZE [WINDOW_SIZE ...]]]\n\
   \                                         [-m [MAX_NUM_SNPs [MAX_NUM_SNPs ...]]]\n\
@@ -136,3 +136,4 @@ help_text: "usage: cfsan_snp_pipeline filter_regions [-h] [-f] [-n NAME] [-l EDG
   \ than 3 snps in 1000\nbases and also more than 2 snps in 100 bases.\n"
 generated_using:
 - --help
+docker_image:

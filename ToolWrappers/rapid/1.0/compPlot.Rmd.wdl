@@ -4,6 +4,9 @@ task CompPlotRmd {
   command <<<
     compPlot_Rmd
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

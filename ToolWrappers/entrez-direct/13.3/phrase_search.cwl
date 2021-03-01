@@ -1,11 +1,6 @@
 class: CommandLineTool
 id: phrase_search.cwl
 inputs:
-- id: in_count
-  doc: '| -counts | -query | -filter | -exact | -terms'
-  type: boolean
-  inputBinding:
-    prefix: -count
 - id: in_done
   doc: declare -a THEMES
   type: string
@@ -204,7 +199,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_var_40
+- id: in_var_39
   doc: affects expression/production (neutral)
   type: string
   inputBinding:
@@ -273,6 +268,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phrase-search

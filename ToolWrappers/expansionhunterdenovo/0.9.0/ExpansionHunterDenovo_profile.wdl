@@ -22,6 +22,9 @@ task ExpansionHunterDenovoProfile {
       ~{if defined(max_irr_mapq) then ("--max-irr-mapq " +  '"' + max_irr_mapq + '"') else ""} \
       ~{if (log_reads) then "--log-reads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reads: "BAM or CRAM file with aligned reads"
     reference: "FASTA file with reference assembly"

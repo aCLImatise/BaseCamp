@@ -3,14 +3,14 @@ version 1.0
 task Dcmpsprt {
   input {
     Boolean? arguments
-    Boolean? _quiet_quiet
-    Boolean? _verbose_details
-    Boolean? _debug_information
-    Boolean? ll
-    Boolean? lc
-    Boolean? _config_stringprocess
-    Boolean? _printer_ame
-    Boolean? _spool_spool
+    Boolean? quiet
+    Boolean? verbose
+    Boolean? debug
+    Boolean? log_level
+    Boolean? log_config
+    Boolean? config
+    Boolean? printer
+    Boolean? spool
     Boolean? no_spool
     Boolean? portrait
     Boolean? landscape
@@ -36,11 +36,11 @@ task Dcmpsprt {
     Boolean? priority
     Boolean? owner
     Boolean? no_annotation
-    Boolean? _annotation_ext
-    Boolean? pd
-    Boolean? pn
-    Boolean? pl
-    Boolean? _layout_ows
+    Boolean? annotation
+    Boolean? print_no_date
+    Boolean? print_no_name
+    Boolean? print_no_lighting
+    Boolean? layout
     Boolean? film_size
     Boolean? magnification
     Boolean? smoothing
@@ -61,14 +61,14 @@ task Dcmpsprt {
     dcmpsprt \
       ~{dcm_file_in} \
       ~{if (arguments) then "--arguments" else ""} \
-      ~{if (_quiet_quiet) then "-q" else ""} \
-      ~{if (_verbose_details) then "-v" else ""} \
-      ~{if (_debug_information) then "-d" else ""} \
-      ~{if (ll) then "-ll" else ""} \
-      ~{if (lc) then "-lc" else ""} \
-      ~{if (_config_stringprocess) then "-c" else ""} \
-      ~{if (_printer_ame) then "-p" else ""} \
-      ~{if (_spool_spool) then "-s" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (log_level) then "--log-level" else ""} \
+      ~{if (log_config) then "--log-config" else ""} \
+      ~{if (config) then "--config" else ""} \
+      ~{if (printer) then "--printer" else ""} \
+      ~{if (spool) then "--spool" else ""} \
       ~{if (no_spool) then "--nospool" else ""} \
       ~{if (portrait) then "--portrait" else ""} \
       ~{if (landscape) then "--landscape" else ""} \
@@ -94,11 +94,11 @@ task Dcmpsprt {
       ~{if (priority) then "--priority" else ""} \
       ~{if (owner) then "--owner" else ""} \
       ~{if (no_annotation) then "--no-annotation" else ""} \
-      ~{if (_annotation_ext) then "-a" else ""} \
-      ~{if (pd) then "-pd" else ""} \
-      ~{if (pn) then "-pn" else ""} \
-      ~{if (pl) then "-pl" else ""} \
-      ~{if (_layout_ows) then "-l" else ""} \
+      ~{if (annotation) then "--annotation" else ""} \
+      ~{if (print_no_date) then "--print-no-date" else ""} \
+      ~{if (print_no_name) then "--print-no-name" else ""} \
+      ~{if (print_no_lighting) then "--print-no-lighting" else ""} \
+      ~{if (layout) then "--layout" else ""} \
       ~{if (film_size) then "--filmsize" else ""} \
       ~{if (magnification) then "--magnification" else ""} \
       ~{if (smoothing) then "--smoothing" else ""} \
@@ -114,16 +114,19 @@ task Dcmpsprt {
       ~{if (img_smoothing) then "--img-smoothing" else ""} \
       ~{if (img_config_info) then "--img-configinfo" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arguments: "print expanded command line arguments"
-    _quiet_quiet: "--quiet                quiet mode, print no warnings and errors"
-    _verbose_details: "--verbose              verbose mode, print processing details"
-    _debug_information: "--debug                debug mode, print debug information"
-    ll: "--log-level            [l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
-    lc: "--log-config           [f]ilename: string\\nuse config file f for the logger"
-    _config_stringprocess: "--config               [f]ilename: string\\nprocess using settings from configuration file f"
-    _printer_ame: "--printer              [n]ame: string (default: 1st printer in cfg file)\\nselect printer with identifier n from cfg file"
-    _spool_spool: "--spool                spool print job to DICOM printer"
+    quiet: "quiet mode, print no warnings and errors"
+    verbose: "verbose mode, print processing details"
+    debug: "debug mode, print debug information"
+    log_level: "[l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
+    log_config: "[f]ilename: string\\nuse config file f for the logger"
+    config: "[f]ilename: string\\nprocess using settings from configuration file f"
+    printer: "[n]ame: string (default: 1st printer in cfg file)\\nselect printer with identifier n from cfg file"
+    spool: "spool print job to DICOM printer"
     no_spool: "do not spool print job to DICOM printer (default)"
     portrait: "set portrait orientation"
     landscape: "set landscape orientation"
@@ -149,11 +152,11 @@ task Dcmpsprt {
     priority: "[v]alue: string\\nset print priority to v"
     owner: "[v]alue: string\\nset film session owner ID to v"
     no_annotation: "do not create annotation (default)"
-    _annotation_ext: "--annotation           [t]ext: string\\ncreate annotation with text t"
-    pd: "--print-no-date        do not prepend date/time to annotation"
-    pn: "--print-no-name        do not prepend printer name to annotation"
-    pl: "--print-no-lighting    do not prepend illumination to annotation"
-    _layout_ows: "--layout               [c]olumns [r]ows: integer (default: 1 1)\\nuse 'STANDARD\\c,r' image display format"
+    annotation: "[t]ext: string\\ncreate annotation with text t"
+    print_no_date: "do not prepend date/time to annotation"
+    print_no_name: "do not prepend printer name to annotation"
+    print_no_lighting: "do not prepend illumination to annotation"
+    layout: "[c]olumns [r]ows: integer (default: 1 1)\\nuse 'STANDARD\\c,r' image display format"
     film_size: "[v]alue: string\\nset film size ID to v"
     magnification: "[v]alue: string\\nset magnification type to v"
     smoothing: "[v]alue: string\\nset smoothing type to v"

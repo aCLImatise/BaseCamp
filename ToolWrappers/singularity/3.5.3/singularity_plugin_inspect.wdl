@@ -16,6 +16,9 @@ task SingularityPluginInspect {
       ~{plugin} \
       ~{inspect}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

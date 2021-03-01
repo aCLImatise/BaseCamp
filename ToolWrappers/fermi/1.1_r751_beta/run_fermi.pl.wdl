@@ -4,7 +4,7 @@ task Runfermipl {
   input {
     Boolean? input_files_paired
     Boolean? input_collatediniterleaved_fastq
-    Boolean? halve_number_jobs
+    Boolean? halve_number_effective
     Boolean? use_original_algorithm
     Boolean? skip_error_correction
     File? fermi_executable
@@ -21,7 +21,7 @@ task Runfermipl {
       ~{in_one_dot_fq} \
       ~{if (input_files_paired) then "-P" else ""} \
       ~{if (input_collatediniterleaved_fastq) then "-c" else ""} \
-      ~{if (halve_number_jobs) then "-D" else ""} \
+      ~{if (halve_number_effective) then "-D" else ""} \
       ~{if (use_original_algorithm) then "-B" else ""} \
       ~{if (skip_error_correction) then "-C" else ""} \
       ~{if defined(fermi_executable) then ("-e " +  '"' + fermi_executable + '"') else ""} \
@@ -32,10 +32,13 @@ task Runfermipl {
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_files_paired: "the input files are paired (ends in separate files)"
     input_collatediniterleaved_fastq: "the input is collated/initerleaved FASTQ (two ends in the same file)"
-    halve_number_jobs: "halve the number of jobs for building the split index (effective with -B)"
+    halve_number_effective: "halve the number of jobs for building the split index (effective with -B)"
     use_original_algorithm: "use the original algorithm for constructing FMD-index (default is BCR)"
     skip_error_correction: "skip error correction"
     fermi_executable: "fermi executable [fermi]"

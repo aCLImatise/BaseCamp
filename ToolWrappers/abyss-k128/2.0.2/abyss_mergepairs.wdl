@@ -32,6 +32,9 @@ task Abyssmergepairs {
       ~{if (illumina_quality) then "--illumina-quality" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "the prefix of all output files [out]"
     identity: "minimum overlap identity [0.9]"

@@ -46,20 +46,23 @@ task Bmtool {
       ~{if (slow) then "--slow" else ""} \
       ~{if (bit_test) then "--bit-test" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    quiet: "-q     Do not show progress indicators [off]"
+    quiet: "Do not show progress indicators [off]"
     fast_a_file: "=''        -d ''  Input fasta or blastdb file"
     output_file: "=''       -o ''  Output word bitmask file"
     gi_list: "=''           -l ''  Set gi list for blastdb file"
     input_file: "=''        -i ''  Set word bitmask file as input"
     fast_a_parse_ids: "Parse FASTA ids (becomes broken if ranges are used)"
-    word_size: "-w 18  Word size to use"
-    word_step: "-S 1   Step (stride size) to use"
-    max_amb: "-A 0   Maximal number of ambiguities to count"
-    pattern: "-p 0   Set pattern to use with discontiguous words, 0x or 0b prefix may be used for hex or bin (-w## will be ignored)"
-    max_word_count: "-W 0   Do not include words counted more than this value (for 16-mers or less)"
-    compress: "-z     Compress bitmask (requires version 2) [off]"
-    extra_compress: "-Z     Compress bitmask (requires version 2) looking for duplicate extension sets [off]"
+    word_size: "Word size to use"
+    word_step: "Step (stride size) to use"
+    max_amb: "Maximal number of ambiguities to count"
+    pattern: "Set pattern to use with discontiguous words, 0x or 0b prefix may be used for hex or bin (-w## will be ignored)"
+    max_word_count: "Do not include words counted more than this value (for 16-mers or less)"
+    compress: "Compress bitmask (requires version 2) [off]"
+    extra_compress: "Compress bitmask (requires version 2) looking for duplicate extension sets [off]"
     pack_prefix_bits: "Bits to use for compression prefix"
     pack_offset_bits: "Number of bits in table to use for data segment offset"
     pack_count_bits: "Number of bits to reserve for entry count within segment"

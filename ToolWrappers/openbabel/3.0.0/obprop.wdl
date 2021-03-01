@@ -8,6 +8,9 @@ task Obprop {
     obprop \
       ~{filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: ""
   }

@@ -16,6 +16,9 @@ task Bed2bedGraphpl {
       ~{if (file_standard_bed) then "-a" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_file_conversion: "BED file for conversion."
     file_containing_sizes: "File containing chromosome sizes"

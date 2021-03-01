@@ -6,10 +6,10 @@ task JAMMsh {
     Boolean? genome_size_file
     Directory? output_directory_required
     Boolean? directory_containing_input_files
-    Boolean? fragment_lengths_default
+    Boolean? fragment_lengths_estimated
     Boolean? resolution_peak_region
     Boolean? mode_normal_narrow
-    Boolean? clustering_initialization_selection
+    Boolean? clustering_selection_default
     Boolean? bin_size_default
     Boolean? minimum_window_size
     Boolean? window_enrichment_cutoff
@@ -24,10 +24,10 @@ task JAMMsh {
       ~{if (genome_size_file) then "-g" else ""} \
       ~{if (output_directory_required) then "-o" else ""} \
       ~{if (directory_containing_input_files) then "-c" else ""} \
-      ~{if (fragment_lengths_default) then "-f" else ""} \
+      ~{if (fragment_lengths_estimated) then "-f" else ""} \
       ~{if (resolution_peak_region) then "-r" else ""} \
       ~{if (mode_normal_narrow) then "-m" else ""} \
-      ~{if (clustering_initialization_selection) then "-i" else ""} \
+      ~{if (clustering_selection_default) then "-i" else ""} \
       ~{if (bin_size_default) then "-b" else ""} \
       ~{if (minimum_window_size) then "-w" else ""} \
       ~{if (window_enrichment_cutoff) then "-e" else ""} \
@@ -36,15 +36,18 @@ task JAMMsh {
       ~{if (number_processors_used) then "-p" else ""} \
       ~{if (directory_where_created) then "-T" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_containing_sample_files: "directory containing Sample files (required)"
     genome_size_file: "Genome size file (required)"
     output_directory_required: "Output directory (required)"
     directory_containing_input_files: "directory containing input or Control files"
-    fragment_lengths_default: "Fragment length(s) (default: estimated)"
+    fragment_lengths_estimated: "Fragment length(s) (default: estimated)"
     resolution_peak_region: "Resolution, peak or region or window (default: peak)"
     mode_normal_narrow: "Mode, normal or narrow (default: normal)"
-    clustering_initialization_selection: "clustering Initialization window selection, deterministic or stochastic (default: deterministic)"
+    clustering_selection_default: "clustering Initialization window selection, deterministic or stochastic (default: deterministic)"
     bin_size_default: "Bin Size (default: estimated)"
     minimum_window_size: "minimum Window size (default: 2 --- Note: this means minimum_window_size = bin_size x the_value_of_-w)"
     window_enrichment_cutoff: "window Enrichment cutoff, auto or any numeric value (default: 1 --- Set this to \\\"auto\\\" to estimate the window enrichment cutoff)"

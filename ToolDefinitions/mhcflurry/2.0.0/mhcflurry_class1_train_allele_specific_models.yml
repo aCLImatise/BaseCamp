@@ -3,159 +3,159 @@ command:
 - mhcflurry-class1-train-allele-specific-models
 positional:
 - !Positional
-  description: --out-models-dir DIR  Directory to write models and manifest
+  optional: false
   position: 0
   name: measurement_value
-  optional: false
+  description: --out-models-dir DIR  Directory to write models and manifest
 named:
 - !Flag
-  description: 'Training data CSV. Expected columns: allele, peptide,'
+  optional: true
   synonyms:
   - --data
+  description: 'Training data CSV. Expected columns: allele, peptide,'
   args: !SimpleFlagArg
     name: FILE.csv
-  optional: true
 - !Flag
-  description: JSON or YAML of hyperparameters
+  optional: true
   synonyms:
   - --hyperparameters
+  description: JSON or YAML of hyperparameters
   args: !SimpleFlagArg
     name: FILE.json
-  optional: true
 - !Flag
-  description: "Alleles to train models for. If not specified, all\nalleles with enough\
-    \ measurements will be used."
+  optional: true
   synonyms:
   - --allele
+  description: "Alleles to train models for. If not specified, all\nalleles with enough\
+    \ measurements will be used."
   args: !RepeatFlagArg
     name: ALLELE
-  optional: true
 - !Flag
-  description: Train models for alleles with >=N measurements.
+  optional: true
   synonyms:
   - --min-measurements-per-allele
+  description: Train models for alleles with >=N measurements.
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Hold out 1/N fraction of data (for e.g. subsequent\nmodel selection.\
-    \ For example, specify 5 to hold out 20\npercent of the data."
+  optional: true
   synonyms:
   - --held-out-fraction-reciprocal
+  description: "Hold out 1/N fraction of data (for e.g. subsequent\nmodel selection.\
+    \ For example, specify 5 to hold out 20\npercent of the data."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Seed for randomizing which measurements are held out.\nOnly matters\
-    \ when --held-out-fraction is specified.\nDefault: 0."
+  optional: true
   synonyms:
   - --held-out-fraction-seed
+  description: "Seed for randomizing which measurements are held out.\nOnly matters\
+    \ when --held-out-fraction is specified.\nDefault: 0."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Do not use affinity value inequalities even when\npresent in data"
+  optional: true
   synonyms:
   - --ignore-inequalities
+  description: "Do not use affinity value inequalities even when\npresent in data"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Ensemble size, i.e. how many models to train for each\narchitecture.\
-    \ If specified here it overrides any\n'n_models' specified in the hyperparameters."
+  optional: true
   synonyms:
   - --n-models
+  description: "Ensemble size, i.e. how many models to train for each\narchitecture.\
+    \ If specified here it overrides any\n'n_models' specified in the hyperparameters."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Max training epochs. If specified here it overrides\nany 'max_epochs'\
-    \ specified in the hyperparameters."
+  optional: true
   synonyms:
   - --max-epochs
+  description: "Max training epochs. If specified here it overrides\nany 'max_epochs'\
+    \ specified in the hyperparameters."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Allele sequences file. Used for computing allele\nsimilarity matrix."
+  optional: true
   synonyms:
   - --allele-sequences
+  description: "Allele sequences file. Used for computing allele\nsimilarity matrix."
   args: !SimpleFlagArg
     name: FILE.csv
-  optional: true
 - !Flag
-  description: "Write models to disk every N seconds. Only affects\nparallel runs;\
-    \ serial runs write each model to disk as\nit is trained."
+  optional: true
   synonyms:
   - --save-interval
+  description: "Write models to disk every N seconds. Only affects\nparallel runs;\
+    \ serial runs write each model to disk as\nit is trained."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: 'Keras verbosity. Default: 0'
+  optional: true
   synonyms:
   - --verbosity
+  description: 'Keras verbosity. Default: 0'
   args: !SimpleFlagArg
     name: VERBOSITY
-  optional: true
 - !Flag
-  description: "Number of local processes to parallelize training\nover. Set to 0\
-    \ for serial run. Default: 0."
+  optional: true
   synonyms:
   - --num-jobs
+  description: "Number of local processes to parallelize training\nover. Set to 0\
+    \ for serial run. Default: 0."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Keras backend. If not specified will use system\ndefault."
+  optional: true
   synonyms:
   - --backend
+  description: "Keras backend. If not specified will use system\ndefault."
   args: !ChoiceFlagArg
     choices: !!set
-      tensorflow-gpu:
       tensorflow-default:
       tensorflow-cpu:
-  optional: true
+      tensorflow-gpu:
 - !Flag
-  description: "Number of GPUs to attempt to parallelize across.\nRequires running\
-    \ in parallel."
+  optional: true
   synonyms:
   - --gpus
+  description: "Number of GPUs to attempt to parallelize across.\nRequires running\
+    \ in parallel."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Maximum number of workers to assign to a GPU.\nAdditional tasks will\
-    \ run on CPU."
+  optional: true
   synonyms:
   - --max-workers-per-gpu
+  description: "Maximum number of workers to assign to a GPU.\nAdditional tasks will\
+    \ run on CPU."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Restart workers after N tasks. Workaround for\ntensorflow memory leaks.\
-    \ Requires Python >=3.2."
+  optional: true
   synonyms:
   - --max-tasks-per-worker
+  description: "Restart workers after N tasks. Workaround for\ntensorflow memory leaks.\
+    \ Requires Python >=3.2."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Write worker stdout and stderr logs to given\ndirectory.\n"
+  optional: true
   synonyms:
   - --worker-log-dir
+  description: "Write worker stdout and stderr logs to given\ndirectory.\n"
   args: !SimpleFlagArg
     name: WORKER_LOG_DIR
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "To show stack trace, run:\nkill -s USR1 183\nusage: \nTrain Class1 single\
@@ -198,3 +198,4 @@ help_text: "To show stack trace, run:\nkill -s USR1 183\nusage: \nTrain Class1 s
   \ given\n                        directory.\n"
 generated_using:
 - --help
+docker_image:

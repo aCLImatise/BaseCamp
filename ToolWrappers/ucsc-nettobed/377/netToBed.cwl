@@ -3,12 +3,12 @@ id: netToBed.cwl
 inputs:
 - id: in_max_gap
   doc: '- break up at gaps of given size or more'
-  type: long
+  type: long?
   inputBinding:
     prefix: -maxGap
 - id: in_min_fill
   doc: '- only include fill of given size of above.'
-  type: long
+  type: long?
   inputBinding:
     prefix: -minFill
 - id: in_in_dotnet
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - netToBed

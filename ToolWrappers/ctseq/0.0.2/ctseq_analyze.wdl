@@ -44,6 +44,9 @@ task CtseqAnalyze {
       ~{if defined(cisc_g) then ("--cisCG " +  '"' + cisc_g + '"') else ""} \
       ~{if defined(molecule_threshold) then ("--moleculeThreshold " +  '"' + molecule_threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     umi_type: "Choose 'separate' if the UMIs for the reads are\\ncontained in a separate fastq file where the line\\nafter the read name is the UMI. Choose 'inline' if the\\nUMIs are already included in the forward/reverse read\\nfastq files in the following format: '@M01806:488:0000\\n00000-J36GT:1:1101:15963:1363:GTAGGTAAAGTG\\n1:N:0:CGAGTAAT' where 'GTAGGTAAAGTG' is the UMI"
     umi_length: "Length of UMI sequence, e.g. 12 (required)"

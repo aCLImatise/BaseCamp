@@ -3,6 +3,9 @@ command:
 - nanocall
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: nanocall
   description: "[-t <int>] [-o <file>] [--write-fast5] [--pore <r73|r9>] [-m\n<strand:file>]\
     \ ...  [--model-fofn <file>] [-s <file>]\n[--pr-stay <float>] [--pr-skip <float>]\
     \ [--no-basecall]\n[--basecall] [--no-train] [--train] [--no-train-scaling]\n\
@@ -13,260 +16,251 @@ positional:
     \ <int>]\n[--trim-ed-hp-start <int>] [--trim-ed-hp-end <int>]\n[--train-drift\
     \ <0|1>] [--stats <file>] [--log <string>] ...\n[--chunk-size <int>] [--ed-group\
     \ <000|001|...>] [--]\n[--version] [-h] <path> ..."
-  position: 0
-  name: nanocall
-  optional: false
 - !Positional
-  description: --write-fast5
+  optional: false
   position: 0
   name: Output.
+  description: --write-fast5
+- !Positional
   optional: false
+  position: 0
+  name: Stats.
+  description: --log <string>  (accepted multiple times)
 named:
 - !Flag
-  description: ",  --threads <int>\nNumber of parallel threads. (default: 1)"
+  optional: true
   synonyms:
   - -t
+  - --threads
+  description: 'Number of parallel threads. (default: 1)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: ',  --output <file>'
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: file
   optional: true
-- !Flag
-  description: 'Pore name, used to select builtin pore model. (default: r9)'
   synonyms:
   - --pore
+  description: 'Pore name, used to select builtin pore model. (default: r9)'
   args: !SimpleFlagArg
     name: r73|r9
-  optional: true
 - !Flag
-  description: "<strand:file>,  --model <strand:file>  (accepted multiple times)\n\
-    Custom pore model for strand (0=template, 1=complement, 2=both)."
+  optional: true
   synonyms:
   - -m
+  description: "<strand:file>,  --model <strand:file>  (accepted multiple times)\n\
+    Custom pore model for strand (0=template, 1=complement, 2=both)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: File of pore models.
+  optional: true
   synonyms:
   - --model-fofn
+  description: File of pore models.
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: ",  --trans <file>\nCustom initial state transitions."
+  optional: true
   synonyms:
   - -s
+  - --trans
+  description: Custom initial state transitions.
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: 'Transition probability of staying in the same state. (default: 0.1)'
+  optional: true
   synonyms:
   - --pr-stay
+  description: 'Transition probability of staying in the same state. (default: 0.1)'
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: 'Transition probability of skipping at least 1 state. (default: 0.3)'
+  optional: true
   synonyms:
   - --pr-skip
+  description: 'Transition probability of skipping at least 1 state. (default: 0.3)'
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: Disable basecalling.
+  optional: true
   synonyms:
   - --no-basecall
+  description: Disable basecalling.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Enable basecalling (default).
+  optional: true
   synonyms:
   - --basecall
+  description: Enable basecalling (default).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Disable all training.
+  optional: true
   synonyms:
   - --no-train
+  description: Disable all training.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Enable training. (default)
+  optional: true
   synonyms:
   - --train
+  description: Enable training. (default)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not train pore model scaling.
+  optional: true
   synonyms:
   - --no-train-scaling
+  description: Do not train pore model scaling.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not train state transitions.
+  optional: true
   synonyms:
   - --no-train-transitions
+  description: Do not train state transitions.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Train scaling parameters per read. (default)
+  optional: true
   synonyms:
   - --double-strand-scaling
+  description: Train scaling parameters per read. (default)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Train scaling parameters per strand.
+  optional: true
   synonyms:
   - --single-strand-scaling
+  description: Train scaling parameters per strand.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Interpret entire read as 1D template only.
+  optional: true
   synonyms:
   - --1d
+  description: Interpret entire read as 1D template only.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Number of events used for model scaling. (default: 200)'
+  optional: true
   synonyms:
   - --scaling-num-events
+  description: 'Number of events used for model scaling. (default: 200)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'Maximum scaling rounds. (default: 10)'
+  optional: true
   synonyms:
   - --scaling-max-rounds
+  description: 'Maximum scaling rounds. (default: 10)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'Minimum scaling fit progress. (default: 1)'
+  optional: true
   synonyms:
   - --scaling-min-progress
+  description: 'Minimum scaling fit progress. (default: 1)'
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: "Select best model per strand during scaling if log score better by\n\
-    threshold. (default: 20)"
+  optional: true
   synonyms:
   - --scaling-select-threshold
+  description: "Select best model per strand during scaling if log score better by\n\
+    threshold. (default: 20)"
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: 'Maximum fasta line width. (default: 80)'
+  optional: true
   synonyms:
   - --fasta-line-width
+  description: 'Maximum fasta line width. (default: 80)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'Minimum EventDetection events. (default: 10)'
+  optional: true
   synonyms:
   - --min-ed-events
+  description: 'Minimum EventDetection events. (default: 10)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'Maximum EventDetection events. (default: 100000)'
+  optional: true
   synonyms:
   - --max-ed-events
+  description: 'Maximum EventDetection events. (default: 100000)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'Number of events to trim after sequence start. (default: 50)'
+  optional: true
   synonyms:
   - --trim-ed-sq-start
+  description: 'Number of events to trim after sequence start. (default: 50)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'Number of events to trim before sequence end. (default: 50)'
+  optional: true
   synonyms:
   - --trim-ed-sq-end
+  description: 'Number of events to trim before sequence end. (default: 50)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'Number of events to trim before hairpin start. (default: 50)'
+  optional: true
   synonyms:
   - --trim-ed-hp-start
+  description: 'Number of events to trim before hairpin start. (default: 50)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'Number of events to trim after hairpin end. (default: 50)'
+  optional: true
   synonyms:
   - --trim-ed-hp-end
+  description: 'Number of events to trim after hairpin end. (default: 50)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'Train drift parameter. (default: yes for R73, no for R9)'
+  optional: true
   synonyms:
   - --train-drift
+  description: 'Train drift parameter. (default: yes for R73, no for R9)'
   args: !SimpleFlagArg
     name: 0|1
-  optional: true
 - !Flag
-  description: Stats.
-  synonyms:
-  - --stats
-  args: !SimpleFlagArg
-    name: file
   optional: true
-- !Flag
-  description: "(accepted multiple times)\nLog level. (default: info)"
-  synonyms:
-  - --log
-  args: !SimpleFlagArg
-    name: string
-  optional: true
-- !Flag
-  description: 'Thread chunk size. (default: 1)'
   synonyms:
   - --chunk-size
+  description: 'Thread chunk size. (default: 1)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'EventDetection group to use. (default: smallest available)'
+  optional: true
   synonyms:
   - --ed-group
+  description: 'EventDetection group to use. (default: smallest available)'
   args: !SimpleFlagArg
     name: 000|001|...
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - --write-fast5
+  description: ''
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -o
+  description: ''
+  args: !SimpleFlagArg
+    name: file
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ",  --help\nDisplays usage information and exits."
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: Displays usage information and exits.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Displays version information and exits.
+  optional: true
   synonyms:
   - --version
+  description: Displays version information and exits.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "\nUSAGE: \n\n   nanocall  [-t <int>] [-o <file>] [--write-fast5] [--pore\
   \ <r73|r9>] [-m\n             <strand:file>] ...  [--model-fofn <file>] [-s <file>]\n\
   \             [--pr-stay <float>] [--pr-skip <float>] [--no-basecall]\n        \
@@ -319,3 +313,4 @@ help_text: "\nUSAGE: \n\n   nanocall  [-t <int>] [-o <file>] [--write-fast5] [--
   \n\n   Call bases in Oxford Nanopore reads.\n\n"
 generated_using:
 - --help
+docker_image:

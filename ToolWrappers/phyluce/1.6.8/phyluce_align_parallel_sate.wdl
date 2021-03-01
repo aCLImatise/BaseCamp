@@ -14,6 +14,9 @@ task PhyluceAlignParallelSate {
       ~{if defined(output_directory_hold) then ("--output " +  '"' + output_directory_hold + '"') else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sate_conf: "[--cores CORES]"
     input_directory_containing: "The input directory containing fasta files"

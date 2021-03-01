@@ -4,6 +4,9 @@ task Estparamsr {
   command <<<
     est_params_r
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

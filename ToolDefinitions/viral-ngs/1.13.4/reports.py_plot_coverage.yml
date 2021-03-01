@@ -4,157 +4,157 @@ command:
 - plot_coverage
 positional:
 - !Positional
-  description: Input reads, BAM format.
+  optional: false
   position: 0
   name: in_bam
-  optional: false
+  description: Input reads, BAM format.
 - !Positional
-  description: The generated chart file
+  optional: false
   position: 1
   name: out_plot_file
-  optional: false
+  description: The generated chart file
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --plotFormat
   description: "File format of the coverage plot. By default it is\ninferred from\
     \ the file extension of out_plot_file, but\nit can be set explicitly via --plotFormat.\
     \ Valid\nformats include: ps, jpg, rgba, jpeg, eps, png, raw,\ntif, tiff, svg,\
     \ pdf, svgz, pgf"
-  synonyms:
-  - --plotFormat
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The plot data display style. Valid options: filled,\nline, dots (default:\
-    \ filled)"
+  optional: true
   synonyms:
   - --plotDataStyle
+  description: "The plot data display style. Valid options: filled,\nline, dots (default:\
+    \ filled)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --plotStyle
   description: "The plot visual style. Valid options: fivethirtyeight,\nseaborn-talk,\
     \ seaborn-ticks, seaborn-deep,\ndark_background, seaborn-dark, seaborn-colorblind,\n\
     seaborn-whitegrid, seaborn-dark-palette, grayscale,\nseaborn-paper, seaborn-bright,\
     \ classic, seaborn-muted,\nseaborn-darkgrid, seaborn-notebook, seaborn-pastel,\n\
     seaborn-white, bmh, ggplot, seaborn-poster (default:\nggplot)"
-  synonyms:
-  - --plotStyle
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Width of the plot in pixels (default: 1024)'
+  optional: true
   synonyms:
   - --plotWidth
+  description: 'Width of the plot in pixels (default: 1024)'
   args: !SimpleFlagArg
     name: PLOT_WIDTH
-  optional: true
 - !Flag
-  description: 'Width of the plot in pixels (default: 768)'
+  optional: true
   synonyms:
   - --plotHeight
+  description: 'Width of the plot in pixels (default: 768)'
   args: !SimpleFlagArg
     name: PLOT_HEIGHT
-  optional: true
 - !Flag
-  description: "dots per inch for rendered output, more useful for\nvector modes (default:\
-    \ 80.0)"
+  optional: true
   synonyms:
   - --plotDPI
+  description: "dots per inch for rendered output, more useful for\nvector modes (default:\
+    \ 80.0)"
   args: !SimpleFlagArg
     name: PLOT_DPI
-  optional: true
 - !Flag
-  description: "The title displayed on the coverage plot (default:\n'Coverage Plot')"
+  optional: true
   synonyms:
   - --plotTitle
+  description: "The title displayed on the coverage plot (default:\n'Coverage Plot')"
   args: !SimpleFlagArg
     name: PLOT_TITLE
-  optional: true
 - !Flag
-  description: The minimum base quality threshold
+  optional: true
   synonyms:
   - -q
+  description: The minimum base quality threshold
   args: !SimpleFlagArg
     name: BASE_Q_THRESHOLD
-  optional: true
 - !Flag
-  description: The minimum mapping quality threshold
+  optional: true
   synonyms:
   - -Q
+  description: The minimum mapping quality threshold
   args: !SimpleFlagArg
     name: MAPPING_Q_THRESHOLD
-  optional: true
 - !Flag
-  description: 'The max coverage depth (default: 1000000)'
+  optional: true
   synonyms:
   - -m
+  description: 'The max coverage depth (default: 1000000)'
   args: !SimpleFlagArg
     name: MAX_COVERAGE_DEPTH
-  optional: true
 - !Flag
-  description: Read length threshold
+  optional: true
   synonyms:
   - -l
+  description: Read length threshold
   args: !SimpleFlagArg
     name: READ_LENGTH_THRESHOLD
-  optional: true
 - !Flag
-  description: "Coverage summary TSV file. Default is to write to\ntemp."
+  optional: true
   synonyms:
   - --outSummary
+  description: "Coverage summary TSV file. Default is to write to\ntemp."
   args: !SimpleFlagArg
     name: OUT_SUMMARY
-  optional: true
 - !Flag
-  description: Plot only non-duplicates (samtools -F 1024)
+  optional: true
   synonyms:
   - --plotOnlyNonDuplicates
+  description: Plot only non-duplicates (samtools -F 1024)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Verboseness of output. [default: DEBUG]'
+  optional: true
   synonyms:
   - --loglevel
+  description: 'Verboseness of output. [default: DEBUG]'
   args: !ChoiceFlagArg
     choices: !!set
-      CRITICAL:
-      ERROR:
       INFO:
-      WARNING:
       DEBUG:
+      CRITICAL:
+      WARNING:
+      ERROR:
       EXCEPTION:
-  optional: true
 - !Flag
-  description: 'Base directory for temp files. [default: /tmp]'
+  optional: true
   synonyms:
   - --tmp_dir
+  description: 'Base directory for temp files. [default: /tmp]'
   args: !SimpleFlagArg
     name: TMP_DIR
-  optional: true
 - !Flag
-  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
-    \ to delete all temp files at the end, even\nif there's a failure.\n"
+  optional: true
   synonyms:
   - --tmp_dirKeep
+  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
+    \ to delete all temp files at the end, even\nif there's a failure.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
   - -V
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: reports.py subcommand plot_coverage [-h] [--plotFormat]\n     \
   \                                      [--plotDataStyle] [--plotStyle]\n       \
   \                                    [--plotWidth PLOT_WIDTH]\n                \
@@ -206,3 +206,4 @@ help_text: "usage: reports.py subcommand plot_coverage [-h] [--plotFormat]\n    
   \                        if there's a failure.\n"
 generated_using:
 - --help
+docker_image:

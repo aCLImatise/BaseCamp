@@ -22,6 +22,9 @@ task SimulateGenomepy {
       ~{if defined(relative_base_frequencies) then ("-b " +  '"' + relative_base_frequencies + '"') else ""} \
       ~{if defined(random_seed_none) then ("-z " +  '"' + random_seed_none + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_chromosomes: "Number of chromosomes (23)."
     mean_length_chromosomes: "Mean length of chromosomes (5000000)."

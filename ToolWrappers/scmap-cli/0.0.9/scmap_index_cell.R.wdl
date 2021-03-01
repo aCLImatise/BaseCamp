@@ -18,6 +18,9 @@ task ScmapindexcellR {
       ~{if defined(random_seed) then ("--random-seed " +  '"' + random_seed + '"') else ""} \
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "singleCellExperiment object containing expression values and experimental information. Must have been appropriately prepared."
     number_chunks: "Number of chunks into which the expr matrix is split."

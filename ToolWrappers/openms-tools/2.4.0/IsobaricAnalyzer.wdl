@@ -20,6 +20,9 @@ task IsobaricAnalyzer {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type: "Isobaric Quantitation method used in the experiment. (default: 'itraq4plex' valid: 'itraq4plex', 'itraq8plex', 'tmt10plex', 'tmt11plex', 'tmt6plex')"
     in: "*        Input raw/picked data file  (valid formats: 'mzML')"

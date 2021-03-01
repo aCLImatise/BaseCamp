@@ -4,33 +4,71 @@ command:
 - cov
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: INPUT_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: OUTPUT_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-f, --reference FILENAME  Reference FASTA file for the GFF  [required]\n\
-    -s, --strand-specific     If the coverage must be calculated on each strand\n\
-    -t, --sorted              Assumes the GFF to be correctly sorted\n-c, --min-coverage\
-    \ FLOAT  Minimum coverage for the contig/strand\n-r, --rename              Emulates\
-    \ BLAST in reading the FASTA file (keeps\nonly the header before the first space)\n\
-    --progress                Shows Progress Bar\n--help                    Show this\
-    \ message and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
-  args: !EmptyFlagArg {}
+  - -f
+  - --reference
+  description: Reference FASTA file for the GFF  [required]
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
   optional: true
+  synonyms:
+  - -s
+  - --strand-specific
+  description: If the coverage must be calculated on each strand
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --sorted
+  description: Assumes the GFF to be correctly sorted
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --min-coverage
+  description: Minimum coverage for the contig/strand
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rename
+  description: "Emulates BLAST in reading the FASTA file (keeps\nonly the header before\
+    \ the first space)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: Shows Progress Bar
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: filter-gff cov [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Filter\
@@ -44,3 +82,4 @@ help_text: "Usage: filter-gff cov [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Filt
   \ this message and exit.\n"
 generated_using:
 - --help
+docker_image:

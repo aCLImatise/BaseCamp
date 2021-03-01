@@ -4,6 +4,9 @@ task Goleft {
   command <<<
     goleft
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

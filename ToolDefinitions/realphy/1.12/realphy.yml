@@ -3,247 +3,253 @@ command:
 - realphy
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: java
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: available
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 2
   name: RAM
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 3
   name: in
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 4
   name: MB
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 5
   name: m
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 6
   name: Sequence
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 7
   name: folder
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 8
   name: Output
-  optional: true
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -readLength
   description: '[integer] default=50 Possible values: Integer greater than 30; Size
     of fragments that are to be produced from the FASTA/GBK input sequences. With
     longer read lengths the mapping will take longer but will also map more divergent
     sequences.'
-  synonyms:
-  - -readLength
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -quality
   description: '[integer] default=20; Possible values: Integer value between 0 and
     41 that corresponds to quality values in fastq files (PHRED+33). Bases with values
     below thresold in fastq file will not be considered (fasta files will be converted
     into fastq files with a quality of 20).'
-  synonyms:
-  - -quality
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -polyThreshold
   description: '[double] default=0.95; Possible values: Double value between 0 and
     1.  Polymorphisms that occur at lower frequency than the specified threshold at
     any given position of the alignment will not be considered.'
-  synonyms:
-  - -polyThreshold
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -perBaseCov
   description: '[integer] default=10; Possible values: Integer greater than or equal
     to 10.  Polymorphisms will only be extracted for regions that are covered by more
     than the set threshold of reads.'
-  synonyms:
-  - -perBaseCov
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -ref
   description: '[sequence file name (without extension or path!)] default=random;
     Possible values: The file name of a sequence data set without the extension (.fas,
     .fasta, .fa, .fna, .fastq, .fastq.gz, .gb or .gbk). Sets the reference sequence.'
-  synonyms:
-  - -ref
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -root
   description: '[sequence file name (without extension or path!)] default=random;
     Possible values: The file name of a sequence data set without the extension (.fas,
     .fasta, .fa, .fna, .fastq, .fastq.gz, .gb or .gbk).  Specifies the root of the
     tree.'
-  synonyms:
-  - -root
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -refN
   description: '[sequence file name (without extension or path!)] where N is the n-th
     reference genome; default=not set; Possible values: The file name of a sequence
     data set without the extension (.fas, .fasta, .fa, .fna, .fastq, .fastq.gz, .gb
     or .gbk).'
-  synonyms:
-  - -refN
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: set then genes (CDS) are extracted from a given genbank file.
+  optional: true
   synonyms:
   - -genes
+  description: set then genes (CDS) are extracted from a given genbank file.
   args: !SimpleFlagArg
     name: If
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -gapThreshold
   description: '[double] default=0; specifies the proportion of input sequences that
     are allowed to contain gaps in the final sequence alignment (i.e. if set to 0.2
     at most 20% of all nucleotides in each final alignment column are allowed to be
     gaps).'
-  synonyms:
-  - -gapThreshold
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -clean
+  - -c
   description: set then the whole analysis will be rerun and existing data will be
     overwritten!
-  synonyms:
-  - -clean/-c
   args: !SimpleFlagArg
     name: If
-  optional: true
 - !Flag
-  description: "[integer] default=4;\n0=Do not build a tree;\n1=treepuzzle;\n2=raxml\n\
-    3=max. parsimony (dnapars)\n4=PhyML (default)"
+  optional: true
   synonyms:
   - -treeBuilder
+  description: "[integer] default=4;\n0=Do not build a tree;\n1=treepuzzle;\n2=raxml\n\
+    3=max. parsimony (dnapars)\n4=PhyML (default)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: set then it suppresses any program output except for errors or warnings.
+  optional: true
   synonyms:
-  - -quiet/-q
+  - -quiet
+  - -q
+  description: set then it suppresses any program output except for errors or warnings.
   args: !SimpleFlagArg
     name: If
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -varOnly
+  - -v
   description: set then homologous positions that are conserved in all input sequences
     are put out. If set then the reconstructed tree may be wrong.
-  synonyms:
-  - -varOnly/-v
   args: !SimpleFlagArg
     name: If
-  optional: true
 - !Flag
-  description: '[integer] default=22 Possible values: Integer between 4 and 32; specifies
-    k-mer length in bowtie2.'
+  optional: true
   synonyms:
   - -seedLength
+  description: '[integer] default=22 Possible values: Integer between 4 and 32; specifies
+    k-mer length in bowtie2.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[string] default=not set; appends a suffix to the reference output
-    folder.'
+  optional: true
   synonyms:
   - -suffix
+  description: '[string] default=not set; appends a suffix to the reference output
+    folder.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -d
+  - -delete
   description: this option is set then all alignment output files and sequence cut
     files will be deleted after the program is terminated.
-  synonyms:
-  - -d/-delete
   args: !SimpleFlagArg
     name: If
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -merge
+  - -m
   description: this option is set multiple references are selected, a final polymorphism
     file will be generated which combines all polymorphism files for all references.
-  synonyms:
-  - -merge/-m
   args: !SimpleFlagArg
     name: If
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -gaps
+  - -g
   description: this option is set. The gapThreshold is automatically set to 100%,
     unless a different gapThreshold is specified.
-  synonyms:
-  - -gaps/-g
   args: !SimpleFlagArg
     name: If
-  optional: true
 - !Flag
-  description: '[string] this specifies the location of the config.txt. If not set
-    it is assumed that the config.txt is in the working directory.'
+  optional: true
   synonyms:
   - -config
+  description: '[string] this specifies the location of the config.txt. If not set
+    it is assumed that the config.txt is in the working directory.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[text file] This option allows the user to provide command line parameters
-    to the tree program in the first line of a given text file.'
+  optional: true
   synonyms:
   - -treeOptions
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: '[text file] This option allows the user to provide command line parameters
-    to bowtie2 in the first line of a given text file.'
+    to the tree program in the first line of a given text file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -bowtieOptions
+  description: '[text file] This option allows the user to provide command line parameters
+    to bowtie2 in the first line of a given text file.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: this help.
-  synonyms:
-  - -h/-help
-  args: !SimpleFlagArg
-    name: Shows
   optional: true
-- !Flag
-  description: the program's version.
   synonyms:
   - -version
+  description: the program's version.
   args: !SimpleFlagArg
     name: Prints
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -jar
+  description: ''
   args: !SimpleFlagArg
     name: RealPhy_v1.12.jar
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -Xmx
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - -help
+  description: this help.
+  args: !SimpleFlagArg
+    name: Shows
 usage_flag:
 version_flag:
 help_text: "/usr/local/bin\nUsage:\njava -Xmx[available RAM in MB]m -jar RealPhy_v1.12.jar\
@@ -299,3 +305,4 @@ help_text: "/usr/local/bin\nUsage:\njava -Xmx[available RAM in MB]m -jar RealPhy
   \ the program's version.\nProgram execution took 0.0 minutes.\n"
 generated_using:
 - --help
+docker_image:

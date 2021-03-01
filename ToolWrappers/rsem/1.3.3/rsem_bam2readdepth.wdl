@@ -10,6 +10,9 @@ task Rsembam2readdepth {
       ~{sorted_bam_input} \
       ~{read_depth_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sorted_bam_input: ""
     read_depth_output: ""

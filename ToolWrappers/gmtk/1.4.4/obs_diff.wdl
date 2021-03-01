@@ -4,6 +4,9 @@ task Obsdiff {
   command <<<
     obs_diff
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

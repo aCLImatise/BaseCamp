@@ -4,6 +4,9 @@ task Vcfgenosamplenames {
   command <<<
     vcfgenosamplenames
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

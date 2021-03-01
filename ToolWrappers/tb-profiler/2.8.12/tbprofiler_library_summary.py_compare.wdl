@@ -12,6 +12,9 @@ task TbprofilerLibrarySummarypyCompare {
       ~{prefix_two} \
       ~{if defined(drugs) then ("--drugs " +  '"' + drugs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     drugs: "NGS Platform (default: None)"
     prefix_one: "NGS Platform"

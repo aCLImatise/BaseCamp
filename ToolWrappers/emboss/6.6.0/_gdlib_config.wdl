@@ -30,6 +30,9 @@ task Gdlibconfig {
       ~{if (features) then "--features" else ""} \
       ~{if (all) then "--all" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     libdir: "# directory where GD library is installed"
     includedir: "# directory where GD library headers are installed"

@@ -22,6 +22,9 @@ task Mapsembler2Extremities {
       ~{if (nb_cores) then "-nb-cores" else ""} \
       ~{if (verbose) then "-verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_kmer_size: "(1 arg) :    kmer size that will be used for mapsembler2  [default '']"
     starters: "(1 arg) :    starters fasta file  [default '']"

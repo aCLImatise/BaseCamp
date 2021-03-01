@@ -1,0 +1,69 @@
+!Command
+command:
+- GatherGeneGCLength
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: (default 4g)
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: final command line before executing
+  args: !SimpleFlagArg
+    name: echo
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: /usr/local/bin/GatherGeneGCLength [-m <jvm_heap_size>] [-v] program\
+  \ args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final command\
+  \ line before executing\n\nProgram options:\nUSAGE: GatherGeneGCLength [options]\n\
+  \nGiven a GTF file and a reference sequence, produce a report containing the %GC\
+  \ and length of each gene.  GC is\ncalculated for each gene by finding the unique\
+  \ set of base positions overlapping an exon and counting [G/C] bases\ncompared to\
+  \ the total number of bases.Length is calculated by computing the length of each\
+  \ transcript for the gene, and\ntaking the median value\nVersion: 2.4.0(3d2b3d8_1600201514)\n\
+  \n\nOptions:\n\n--help\n-h                            Displays options specific\
+  \ to this tool.\n\n--stdhelp\n-H                            Displays options specific\
+  \ to this tool AND options common to all Picard command line\n                 \
+  \             tools.\n\n--version                     Displays program version.\n\
+  \nANNOTATIONS_FILE=File         The annotations file containing gene models to generate\
+  \ length and GC metrics from.\n                              Supports GTF or refFlat\
+  \ format.  Required. \n\nOUTPUT=File\nO=File                        The output report\
+  \ containg the genes and GC/Length metrics.  Output at the gene level,\n       \
+  \                       using the median values across transcripts.  Required. \n\
+  \nOUTPUT_TRANSCRIPT_LEVEL=File  The output report containg the genes and GC/Length\
+  \ metrics at the transcript level. \n                              Default value:\
+  \ null. \n\nOUTPUT_TRANSCRIPT_SEQUENCES=File\n                              The\
+  \ sequences of each transcript  Default value: null. \n\nREFERENCE_SEQUENCE=File\n\
+  R=File                        Reference sequence file.  Required. \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/dropseq_tools:2.4.0--0

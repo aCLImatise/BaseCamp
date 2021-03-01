@@ -14,6 +14,9 @@ task FermiExample {
       ~{if defined(k) then ("-k " +  '"' + k + '"') else ""} \
       ~{if (ceu) then "-ceU" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     l: ""
     k: ""

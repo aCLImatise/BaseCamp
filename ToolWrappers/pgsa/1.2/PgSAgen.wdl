@@ -22,6 +22,9 @@ task PgSAgen {
       ~{if defined(use_after_generation) then ("-v " +  '"' + use_after_generation + '"') else ""} \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_length: "kmer length"
     cache_file: "cache file"

@@ -52,6 +52,9 @@ task MQCpl {
       ~{if (out_html) then "--outhtml" else ""} \
       ~{if (out_zip) then "--outzip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     work_dir: "working directory to run the scripts in (default: current working directory)"
     experiment_name: "customly chosen experiment name for the mappingQC run (mandatory)"

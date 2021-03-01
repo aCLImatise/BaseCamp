@@ -14,6 +14,9 @@ task PizzlyGetFragmentLengthpy {
       ~{h_five_file} \
       ~{cut_off}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     python: ""
     get_fragment_length_do_tpy: ""

@@ -30,6 +30,9 @@ task ParallelPredictTraitspy {
       ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""} \
       ~{if defined(output_trait_table) then ("--output_trait_table " +  '"' + output_trait_table + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     calculate_accuracy_metrics: "if specified, calculate accuracy metrics (i.e. how\\naccurate does PICRUSt expect its predictions to be?)\\nand add to output file [default: False]"

@@ -16,6 +16,9 @@ task GdtoolsPHYLOGENY {
       ~{if (missing_as_ancestral) then "--missing-as-ancestral" else ""} \
       ~{if (phylogeny_aware) then "--phylogeny-aware" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "produce output for each mutation counted."
     path_output_file: "path to output file with added mutation data. (DEFAULT=.)"

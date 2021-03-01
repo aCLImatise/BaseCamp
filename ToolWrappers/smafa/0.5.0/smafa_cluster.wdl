@@ -20,6 +20,9 @@ task SmafaCluster {
       ~{if defined(divergence) then ("--divergence " +  '"' + divergence + '"') else ""} \
       ~{if defined(km_er_length) then ("--kmer-length " +  '"' + km_er_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     amino_acid: "Sequences are amino acid [default: nucleotide]"
     fragment_method: "Use the 'fragment' method for clustering"

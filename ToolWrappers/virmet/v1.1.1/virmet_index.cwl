@@ -3,27 +3,27 @@ id: virmet_index.cwl
 inputs:
 - id: in_viral
   doc: make blast index of viral database
-  type: string
+  type: string?
   inputBinding:
     prefix: --viral
 - id: in_human
   doc: make bwa index of human database
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --human
 - id: in_bact
   doc: make bwa index of bacterial database
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bact
 - id: in_fungal
   doc: make bwa index of fungal database
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fungal
 - id: in_bovine
   doc: make bwa index of bovine database
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bovine
 - id: in_vir_met
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - virmet

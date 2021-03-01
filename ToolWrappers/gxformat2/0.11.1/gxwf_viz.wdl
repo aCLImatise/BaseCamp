@@ -4,6 +4,9 @@ task Gxwfviz {
   command <<<
     gxwf_viz
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

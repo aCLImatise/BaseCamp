@@ -44,6 +44,9 @@ task Ecotaxspecificity {
       ~{if (_errorsmaximum_errors) then "-e" else ""} \
       ~{if defined(quorum) then ("--quorum " +  '"' + quorum + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Set logging in debug mode"
     without_progress_bar: "desactivate progress bar"

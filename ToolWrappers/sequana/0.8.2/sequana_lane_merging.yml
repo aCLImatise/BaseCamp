@@ -3,32 +3,60 @@ command:
 - sequana_lane_merging
 positional:
 - !Positional
-  description: "This searches for data stored in this format:\n<sampleID_1>/*fastq.gz\n\
-    <sampleID_2>/*fastq.gz\n<sampleID_3>/*fastq.gz"
+  optional: false
   position: 0
   name: sequana_lane_fusion
-  optional: false
-- !Positional
-  description: sampleID_L002_.fastq.gz
-  position: 0
-  name: sampleID_L001_.fastq.gz
-  optional: false
-named: []
+  description: "This searches for data stored in this format:\n<sampleID_1>/*fastq.gz\n\
+    <sampleID_2>/*fastq.gz\n<sampleID_3>/*fastq.gz"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --output-directory
+  description: Where to store the new fastq files
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --pattern
+  description: "pattern for the input fastq files. Use quotes if\nwildcards are used"
+  args: !SimpleFlagArg
+    name: PATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: number of threads per job (pigz)
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --queue
+  description: queue to use on the cluster
+  args: !ChoiceFlagArg
+    choices: !!set
+      common:
+      biomics:
+- !Flag
+  optional: true
+  synonyms:
+  - --lanes
+  - --dry-run
+  description: just createt the script but do not launch them
+  args: !RepeatFlagArg
+    name: LANES
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--output-directory OUTDIR\nWhere\
-    \ to store the new fastq files\n--pattern PATTERN     pattern for the input fastq\
-    \ files. Use quotes if\nwildcards are used\n--threads THREADS     number of threads\
-    \ per job (pigz)\n--queue {biomics,common}\nqueue to use on the cluster\n--lanes\
-    \ LANES [LANES ...]\n--dry-run             just createt the script but do not\
-    \ launch them\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: {'prog': 'sequana_backspace_fusion'}\n\n        sequana_lane_fusion\n\
@@ -45,3 +73,4 @@ help_text: "usage: {'prog': 'sequana_backspace_fusion'}\n\n        sequana_lane_
   \ do not launch them\n"
 generated_using:
 - --help
+docker_image:

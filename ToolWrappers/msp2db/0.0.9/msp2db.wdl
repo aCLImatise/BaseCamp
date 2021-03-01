@@ -28,6 +28,9 @@ task Msp2db {
       ~{if defined(schema) then ("--schema " +  '"' + schema + '"') else ""} \
       ~{if (ignore_compound_lookup) then "--ignore_compound_lookup" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     msp_pth: "Path to the MSP file (or directory of msp files)"
     source: "Name of data source (e.g. MassBank, LipidBlast)"

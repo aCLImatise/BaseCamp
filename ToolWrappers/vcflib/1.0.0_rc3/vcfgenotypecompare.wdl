@@ -10,6 +10,9 @@ task Vcfgenotypecompare {
       ~{other_genotype_tag} \
       ~{vcf_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     other_genotype_tag: ""
     vcf_file: ""

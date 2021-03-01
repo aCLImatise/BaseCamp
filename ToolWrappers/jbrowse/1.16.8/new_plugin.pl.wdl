@@ -8,6 +8,9 @@ task Newpluginpl {
     new_plugin_pl \
       ~{plugin_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     plugin_dot: "USAGE\\nbin/new-plugin.pl MyNewPlugin\\n"
   }

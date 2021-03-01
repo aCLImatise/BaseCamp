@@ -12,6 +12,9 @@ task HtsboxBam2bed {
       ~{in_dot_bam} \
       ~{if (se) then "-Se" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     se: ""
     bam_two_bed: ""

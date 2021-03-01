@@ -20,6 +20,9 @@ task ReadSeqSelectseqs {
       ~{y_vertical_linen} \
       ~{seq_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequence_selector: ""
     ids_file: ""

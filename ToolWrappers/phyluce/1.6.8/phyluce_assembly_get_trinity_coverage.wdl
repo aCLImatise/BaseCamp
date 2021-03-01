@@ -26,6 +26,9 @@ task PhyluceAssemblyGetTrinityCoverage {
       ~{if defined(assembler) then ("--assembler " +  '"' + assembler + '"') else ""} \
       ~{if (trim) then "--trim" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assemblies: "The directory containing the assemblies"
     assemb_lo_config: "The assemblo_trinity configuration file"

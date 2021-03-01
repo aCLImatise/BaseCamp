@@ -28,6 +28,9 @@ task GrootIndex {
       ~{if defined(processors) then ("--processors " +  '"' + processors + '"') else ""} \
       ~{if (profiling) then "--profiling" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er_size: "size of k-mer (default 31)"
     max_k: "maxK in the LSH Ensemble (default 4)"

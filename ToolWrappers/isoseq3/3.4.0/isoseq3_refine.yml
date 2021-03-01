@@ -1,0 +1,170 @@
+!Command
+command:
+- isoseq3
+- refine
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: flnc.bam|xml
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: isoseq
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: STR
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: refine
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: Input
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: Output
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: ccs.demux.bam|xml
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: demuxed
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: flnc
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: primer
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: primer.fasta|xml
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: FASTA
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: ccs
+  description: ''
+- !Positional
+  optional: false
+  position: 5
+  name: BAM
+  description: ''
+- !Positional
+  optional: false
+  position: 6
+  name: BarcodeSet
+  description: ''
+- !Positional
+  optional: false
+  position: 6
+  name: or
+  description: ''
+- !Positional
+  optional: false
+  position: 7
+  name: ConsensusReadSet
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --min-polya-length
+  description: INT    Minimum poly(A) tail length. [20]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --require-polya
+  description: Require FL reads to have a poly(A) tail and remove it.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-rq
+  description: FLOAT  Minimum CCS RQ. Default is -1, deactivated [-1]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --num-threads
+  description: INT    Number of threads to use, 0 means autodetection. [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: 'STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [WARN]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE   Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Use verbose output.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "isoseq refine - Remove polyA and concatemers from FL reads and generate\
+  \ FLNC transcripts (FL to FLNC)\n\nUsage:\n  isoseq refine [options] <ccs.demux.bam|xml>\
+  \ <primer.fasta|xml> <flnc.bam|xml>\n\n  ccs.demux.bam|xml   STR    Input demuxed\
+  \ ccs BAM or ConsensusReadSet XML\n  primer.fasta|xml    STR    Input primer FASTA\
+  \ or BarcodeSet XML\n  flnc.bam|xml        STR    Output flnc BAM or ConsensusReadSet\
+  \ XML\n\nPreprocessing:\n  --min-polya-length  INT    Minimum poly(A) tail length.\
+  \ [20]\n  --require-polya            Require FL reads to have a poly(A) tail and\
+  \ remove it.\n  --min-rq            FLOAT  Minimum CCS RQ. Default is -1, deactivated\
+  \ [-1]\n\n  -h,--help                  Show this help and exit.\n  --version   \
+  \               Show application version and exit.\n  -j,--num-threads    INT  \
+  \  Number of threads to use, 0 means autodetection. [0]\n  --log-level         STR\
+  \    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n \
+  \ --log-file          FILE   Log to a file, instead of stderr.\n  -v,--verbose \
+  \              Use verbose output.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/isoseq3:3.4.0--0

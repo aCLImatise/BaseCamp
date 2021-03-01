@@ -14,6 +14,9 @@ task NwClade {
       ~{if defined(clade_defined_labels) then ("-r " +  '"' + clade_defined_labels + '"') else ""} \
       ~{if (prints_siblings_clade) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     levels_int_give: "<levels (int)>: give context, i.e. start the subtree not at the last\\ncommon ancestor of the labels, but 'level' nodes higher (limited\\nby the tree's root, of course)."
     only_prints_clade: ": only prints the clade if it is monophyletic, in the sense that ONLY\\nthe labels passed as arguments are found in the clade.\\nSee also -s."

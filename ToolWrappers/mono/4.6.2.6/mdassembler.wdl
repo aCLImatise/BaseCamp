@@ -18,6 +18,9 @@ task Mdassembler {
       ~{if defined(drop_ns) then ("--dropns " +  '"' + drop_ns + '"') else ""} \
       ~{if (n_types) then "--ntypes" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "The documentation FORMAT used in DIRECTORIES.\\nValid formats include:\\necma\\necmaspec\\nerror\\nhb\\nman\\nsimple\\nxhtml\\nIf not specified, the default format is `ecma'."
     out: "Provides the output file prefix; the files PREFIX.\\nzip and PREFIX.tree will be created.\\nIf not specified, `tree' is the default PREFIX."

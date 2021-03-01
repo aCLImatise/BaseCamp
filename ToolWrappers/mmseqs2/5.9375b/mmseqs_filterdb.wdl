@@ -42,10 +42,13 @@ task MmseqsFilterdb {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_self_matches: "false           artificially add entries of queries with themselves (for clustering)"
     filter_column: "1               column"
-    column_to_take: "-1              column to take in join mode. If -1, the whole line is taken"
+    column_to_take: "column to take in join mode. If -1, the whole line is taken"
     filter_regex: "^.*$            regex to select column (example float: [0-9]*(.[0-9]+)? int:[1-9]{1}[0-9])"
     positive_filter: "true            used in conjunction with --filter-file. If true, out  = in \\intersect filter ; if false, out = in - filter"
     filter_file: "specify a file that contains the filtering elements"

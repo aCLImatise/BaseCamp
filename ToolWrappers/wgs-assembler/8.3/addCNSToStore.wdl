@@ -10,6 +10,9 @@ task AddCNSToStore {
       ~{if (path) then "-path" else ""} \
       ~{if (prefix) then "-prefix" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path: "Path to smrtportal installation. Required if smrtportal is not in path."
     prefix: "Prefix for stores to write to"

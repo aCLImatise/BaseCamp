@@ -14,6 +14,9 @@ task Dshcompressbed {
       ~{if (input_bed_file) then "--input-bed-file" else ""} \
       ~{if (output_bed_file) then "--output-bed-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     input_bed_file: "[class java.io.File]  input BED file, default stdin [optional]"

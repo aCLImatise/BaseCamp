@@ -1,0 +1,135 @@
+!Command
+command:
+- hhconsensus
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: query alignment (A2M, A3M, or FASTA), or query HMM
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: append consensus sequence in FASTA (default=<infile.seq>)
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: write alignment with consensus sequence in A3M
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -oa3m
+  description: same
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -oa2m
+  description: write alignment with consensus sequence in A2M
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -ofas
+  description: write alignment with consensus sequence in FASTA
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'verbose mode: 0:no screen output  1:only warings  2: verbose'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -id
+  description: '[0,100] maximum pairwise sequence identity (%) (def=100)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -diff
+  description: "[0,inf[ filter most diverse set of sequences, keeping at least this\n\
+    many sequences in each block of >50 columns (def=0)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cov
+  description: '[0,100] minimum coverage with query (%) (def=0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -qid
+  description: '[0,100] minimum sequence identity with query (%) (def=0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -qsc
+  description: '[0,100] minimum score per column with query  (def=-20.0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -maxseq
+  description: max number of input rows (def=65535)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -maxres
+  description: max number of HMM columns (def=20001)
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "HHconsensus 3.3.0\nCalculate the consensus sequence for an A3M/FASTA input\
+  \ file.   \n(c) The HH-suite development team\nSteinegger M, Meier M, Mirdita M,\
+  \ Vöhringer H, Haunsberger S J, and Söding J (2019)\nHH-suite3 for fast remote homology\
+  \ detection and deep protein annotation.\nBMC Bioinformatics, doi:10.1186/s12859-019-3019-7\n\
+  \nUsage: hhconsensus -i <file> [options]                           \n -i <file>\
+  \     query alignment (A2M, A3M, or FASTA), or query HMM          \n\nOutput options:\
+  \                                                            \n -s <file>     append\
+  \ consensus sequence in FASTA (default=<infile.seq>)   \n -o <file>     write alignment\
+  \ with consensus sequence in A3M              \n -oa3m <file>  same            \
+  \                                            \n -oa2m <file>  write alignment with\
+  \ consensus sequence in A2M              \n -ofas <file>  write alignment with consensus\
+  \ sequence in FASTA            \n -v <int>      verbose mode: 0:no screen output\
+  \  1:only warings  2: verbose\n\nFilter input alignment (options can be combined):\
+  \                         \n -id   [0,100] maximum pairwise sequence identity (%)\
+  \ (def=100)   \n -diff [0,inf[ filter most diverse set of sequences, keeping at\
+  \ least this    \n               many sequences in each block of >50 columns (def=0)\n\
+  \ -cov  [0,100] minimum coverage with query (%) (def=0) \n -qid  [0,100] minimum\
+  \ sequence identity with query (%) (def=0) \n -qsc  [0,100] minimum score per column\
+  \ with query  (def=-20.0)\n\nInput alignment format:                           \
+  \                         \n -M a2m        use A2M/A3M (default): upper case = Match;\
+  \ lower case = Insert;\n               '-' = Delete; '.' = gaps aligned to inserts\
+  \ (may be omitted)   \n -M first      use FASTA: columns with residue in 1st sequence\
+  \ are match states\n -M [0,100]    use FASTA: columns with fewer than X% gaps are\
+  \ match states   \n\nOther options:                                            \
+  \                   \n -maxseq <int>  max number of input rows (def=65535)\n -maxres\
+  \ <int> max number of HMM columns (def=20001)\n\nExample: hhconsensus -i stdin -s\
+  \ stdout\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hhsuite:3.3.0--py38pl526h6ed170a_0

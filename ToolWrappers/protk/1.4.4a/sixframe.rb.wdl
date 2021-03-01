@@ -20,6 +20,9 @@ task Sixframerb {
       ~{if defined(min_len) then ("--min-len " +  '"' + min_len + '"') else ""} \
       ~{if (gff_three) then "--gff3" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicitly_named_output: "An explicitly named output file."
     peptide_shaker: "Format fasta output for peptideshaker compatibility [false]"

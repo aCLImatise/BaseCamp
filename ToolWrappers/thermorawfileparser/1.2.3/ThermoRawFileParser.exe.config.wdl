@@ -4,6 +4,9 @@ task ThermoRawFileParserexeconfig {
   command <<<
     ThermoRawFileParser_exe_config
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

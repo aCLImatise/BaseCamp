@@ -3,12 +3,12 @@ id: dnase_ddhs_scorer.py.cwl
 inputs:
 - id: in_low_ram_mode
   doc: 'low RAM mode (disables caching) (Default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_atacseq_mode_default
   doc: 'ATAC-seq mode (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -A
 - id: in_regions
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dnase_ddhs_scorer.py

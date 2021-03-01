@@ -18,6 +18,9 @@ task Humann2RnaDnaNorm {
       ~{if (log_transform) then "--log_transform" else ""} \
       ~{if defined(log_base) then ("--log_base " +  '"' + log_base + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dna: "Original DNA output table (tsv or biom format)"
     input_rna: "Original RNA output table (tsv or biom format)"

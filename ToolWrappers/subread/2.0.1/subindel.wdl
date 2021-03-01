@@ -12,6 +12,9 @@ task Subindel {
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     g: ""

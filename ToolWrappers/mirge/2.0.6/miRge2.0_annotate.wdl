@@ -40,6 +40,9 @@ task MiRge20Annotate {
       ~{if (gff) then "-gff" else ""} \
       ~{if (trf) then "-trf" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     two_options_file: "[sample <required> [sample <required> ...]]\\ntwo options: 1. A file where each row represents one\\nsample name; 2. *.fastq *.fastq ... Or *.fastq.gz\\n*.fastq.gz ..."
     directory_outputs_default: "the directory of the outputs (default: current\\ndirectory)"

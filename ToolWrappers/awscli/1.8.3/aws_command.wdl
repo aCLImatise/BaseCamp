@@ -10,6 +10,9 @@ task AwsCommand {
       ~{subcommand} \
       ~{parameters}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     subcommand: ""
     parameters: ""

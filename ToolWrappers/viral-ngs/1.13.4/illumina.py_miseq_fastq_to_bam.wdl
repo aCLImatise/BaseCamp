@@ -28,6 +28,9 @@ task IlluminapyMiseqFastqToBam {
       ~{if defined(tmp_dir) then ("--tmp_dir " +  '"' + tmp_dir + '"') else ""} \
       ~{if (tmp_dir_keep) then "--tmp_dirKeep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_fast_q_two: "Input fastq file; 2nd end of paired-end reads."
     run_info: "Input RunInfo.xml file."

@@ -2,19 +2,55 @@ class: CommandLineTool
 id: imsindel.cwl
 inputs:
 - id: in_bam
-  doc: "/path/to/foo.bam\n--chr chromosome\n--outd /path/to/outoput-dir\n--indelsize\
-    \ maximal indel-size\n--reffa /path/to/ref.fa\n--baseq [20]\n--mapq [20]\n--within\
-    \ [3]\n--pair-within [5]\n--alt-read-depth [5]\n--support-reads [3]\n--clip-length\
-    \ [5]\n--support-clip-length [5]\n--glsearch [glsearch36]\n--glsearch-mat [data/mydna.mat]\n\
-    --mafft [mafft]\n--samtools [samtools]\n--temp [/temp]\n--thread [1]\n--output-consensus-seq\
-    \ /path/to/output-dir\n--exclude-region /path/to/exclude-list\n"
-  type: boolean
+  doc: /path/to/foo.bam
+  type: boolean?
   inputBinding:
     prefix: --bam
+- id: in_out_d
+  doc: /path/to/outoput-dir
+  type: File?
+  inputBinding:
+    prefix: --outd
+- id: in_in_del_size
+  doc: indel-size
+  type: long?
+  inputBinding:
+    prefix: --indelsize
+- id: in_re_ffa
+  doc: /path/to/ref.fa
+  type: boolean?
+  inputBinding:
+    prefix: --reffa
+- id: in_gl_search
+  doc: '[glsearch36]'
+  type: boolean?
+  inputBinding:
+    prefix: --glsearch
+- id: in_sam_tools
+  doc: '[samtools]'
+  type: boolean?
+  inputBinding:
+    prefix: --samtools
+- id: in_output_consensus_seq
+  doc: /path/to/output-dir
+  type: File?
+  inputBinding:
+    prefix: --output-consensus-seq
+- id: in_exclude_region
+  doc: /path/to/exclude-list
+  type: boolean?
+  inputBinding:
+    prefix: --exclude-region
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+- id: out_output_consensus_seq
+  doc: /path/to/output-dir
+  type: File?
+  outputBinding:
+    glob: $(inputs.in_output_consensus_seq)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - imsindel

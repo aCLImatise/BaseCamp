@@ -10,6 +10,9 @@ task SketchyUtilsFxsort {
       ~{if defined(fast_x) then ("--fastx " +  '"' + fast_x + '"') else ""} \
       ~{if defined(output_fast_file) then ("--output " +  '"' + output_fast_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_x: "Path to Fast{a,q} input file.  [required]"
     output_fast_file: "Output to Fast{a,q} file. Default stdout [-]"

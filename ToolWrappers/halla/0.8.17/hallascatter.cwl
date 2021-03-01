@@ -3,12 +3,12 @@ id: hallascatter.cwl
 inputs:
 - id: in_input
   doc: HAllA output directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --input
 - id: in_outfile
   doc: output file name
-  type: File
+  type: File?
   inputBinding:
     prefix: --outfile
 outputs:
@@ -17,14 +17,15 @@ outputs:
   type: stdout
 - id: out_input
   doc: HAllA output directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_input)
 - id: out_outfile
   doc: output file name
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hallascatter

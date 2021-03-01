@@ -3,9 +3,9 @@ version 1.0
 task Tantan {
   input {
     Boolean? interpret_sequences_proteins
-    Boolean? letter_use_masking
+    Boolean? letter_use_lowercase
     Boolean? preserve_uppercaselowercase_nonmasked
-    Boolean? file_letter_pair
+    Boolean? file_letter_selects
     Boolean? probability_repeat_starting
     Boolean? probability_repeat_ending
     Boolean? maximum_tandem_repeat
@@ -20,9 +20,9 @@ task Tantan {
     tantan \
       ~{fast_a_sequence_file} \
       ~{if (interpret_sequences_proteins) then "-p" else ""} \
-      ~{if (letter_use_masking) then "-x" else ""} \
+      ~{if (letter_use_lowercase) then "-x" else ""} \
       ~{if (preserve_uppercaselowercase_nonmasked) then "-c" else ""} \
-      ~{if (file_letter_pair) then "-m" else ""} \
+      ~{if (file_letter_selects) then "-m" else ""} \
       ~{if (probability_repeat_starting) then "-r" else ""} \
       ~{if (probability_repeat_ending) then "-e" else ""} \
       ~{if (maximum_tandem_repeat) then "-w" else ""} \
@@ -32,11 +32,14 @@ task Tantan {
       ~{if (minimum_repeat_probability) then "-s" else ""} \
       ~{if (output_type_masked) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     interpret_sequences_proteins: "interpret the sequences as proteins"
-    letter_use_masking: "letter to use for masking, instead of lowercase"
+    letter_use_lowercase: "letter to use for masking, instead of lowercase"
     preserve_uppercaselowercase_nonmasked: "preserve uppercase/lowercase in non-masked regions"
-    file_letter_pair: "file for letter pair scores (+1/-1, but -p selects BLOSUM62)"
+    file_letter_selects: "file for letter pair scores (+1/-1, but -p selects BLOSUM62)"
     probability_repeat_starting: "probability of a repeat starting per position (0.005)"
     probability_repeat_ending: "probability of a repeat ending per position (0.05)"
     maximum_tandem_repeat: "maximum tandem repeat period to consider (100, but -p selects 50)"

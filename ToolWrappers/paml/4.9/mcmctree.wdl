@@ -4,6 +4,9 @@ task Mcmctree {
   command <<<
     mcmctree
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

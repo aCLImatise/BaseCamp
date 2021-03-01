@@ -18,6 +18,9 @@ task GotreeMerge {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compared: "Compared tree input file (default \\\"stdin\\\")"
     merged_tree_output: "Merged tree output file (default \\\"stdout\\\")"

@@ -8,7 +8,7 @@ task MapKmerssh {
     Boolean? show_names_do
     Boolean? show_only_count
     Boolean? show_only_part
-    Boolean? quiet_return_found
+    Boolean? quiet_return_pattern
     Boolean? select_nonmatching_lines
     Boolean? suppress_open_read
     Boolean? recurse
@@ -40,32 +40,25 @@ task MapKmerssh {
     Boolean? lines_terminated_newline
     Boolean? mst
     Boolean? nrugmcszbdfimstokt
-    String? a_slash_b_slash_c
     Boolean? hhnlloqvsriwfe
     String bed_tools
     String grep
     String sort
-    String pattern_slash_e
     String get_fast_a
-    String pattern_dot_dot_dot_slash_f
-    File? file
   }
   command <<<
     map_kmers_sh \
       ~{bed_tools} \
       ~{grep} \
       ~{sort} \
-      ~{pattern_slash_e} \
       ~{get_fast_a} \
-      ~{pattern_dot_dot_dot_slash_f} \
-      ~{file} \
       ~{if (h) then "-H" else ""} \
       ~{if (n) then "-n" else ""} \
       ~{if (show_names_match) then "-l" else ""} \
       ~{if (show_names_do) then "-L" else ""} \
       ~{if (show_only_count) then "-c" else ""} \
       ~{if (show_only_part) then "-o" else ""} \
-      ~{if (quiet_return_found) then "-q" else ""} \
+      ~{if (quiet_return_pattern) then "-q" else ""} \
       ~{if (select_nonmatching_lines) then "-v" else ""} \
       ~{if (suppress_open_read) then "-s" else ""} \
       ~{if (recurse) then "-r" else ""} \
@@ -97,9 +90,11 @@ task MapKmerssh {
       ~{if (lines_terminated_newline) then "-z" else ""} \
       ~{if (mst) then "-mST" else ""} \
       ~{if (nrugmcszbdfimstokt) then "-nrugMcszbdfimSTokt" else ""} \
-      ~{if defined(a_slash_b_slash_c) then ("-A/B/C " +  '"' + a_slash_b_slash_c + '"') else ""} \
       ~{if (hhnlloqvsriwfe) then "-HhnlLoqvsriwFE" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     h: "Add 'filename:' prefix"
     n: "Add 'line_no:' prefix"
@@ -107,7 +102,7 @@ task MapKmerssh {
     show_names_do: "Show only names of files that don't match"
     show_only_count: "Show only count of matching lines"
     show_only_part: "Show only the matching part of line"
-    quiet_return_found: "Quiet. Return 0 if PATTERN is found, 1 otherwise"
+    quiet_return_pattern: "Quiet. Return 0 if PATTERN is found, 1 otherwise"
     select_nonmatching_lines: "Select non-matching lines"
     suppress_open_read: "Suppress open and read errors"
     recurse: "Recurse"
@@ -139,15 +134,11 @@ task MapKmerssh {
     lines_terminated_newline: "Lines are terminated by NUL, not newline"
     mst: "Ignored for GNU compatibility"
     nrugmcszbdfimstokt: ""
-    a_slash_b_slash_c: ""
     hhnlloqvsriwfe: ""
     bed_tools: ""
     grep: ""
     sort: ""
-    pattern_slash_e: ""
     get_fast_a: ""
-    pattern_dot_dot_dot_slash_f: ""
-    file: ""
   }
   output {
     File out_stdout = stdout()

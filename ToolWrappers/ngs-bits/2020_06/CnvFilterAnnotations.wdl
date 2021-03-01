@@ -16,6 +16,9 @@ task CnvFilterAnnotations {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input structural variant list in Bedpe format."
     out: "Output structural variant list in Bedpe format."

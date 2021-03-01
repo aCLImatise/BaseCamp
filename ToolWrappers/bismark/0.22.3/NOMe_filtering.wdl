@@ -10,6 +10,9 @@ task NOMeFiltering {
       ~{var_input} \
       ~{if defined(genome_folder) then ("--genome_folder " +  '"' + genome_folder + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_folder: "Enter the genome folder you wish to use to extract sequences from (full path only!). Accepted\\nformats are FastA files ending with '.fa' or '.fasta'. Specifying a genome folder path is mandatory."
     var_input: ""

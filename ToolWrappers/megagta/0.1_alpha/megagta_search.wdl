@@ -20,6 +20,9 @@ task MegagtaSearch {
       ~{prune_len} \
       ~{low_cov_penalty}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     search: ""
     succinct_dbg: ""

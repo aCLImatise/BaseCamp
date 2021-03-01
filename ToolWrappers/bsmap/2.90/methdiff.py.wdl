@@ -26,6 +26,9 @@ task Methdiffpy {
       ~{if defined(strand) then ("--strand " +  '"' + strand + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "output differential methylation file name. (required)"
     ref: "reference genome fasta file. (required)"

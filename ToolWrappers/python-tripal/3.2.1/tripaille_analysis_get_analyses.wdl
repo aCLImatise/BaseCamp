@@ -24,6 +24,9 @@ task TripailleAnalysisGetAnalyses {
       ~{if defined(source_uri) then ("--sourceuri " +  '"' + source_uri + '"') else ""} \
       ~{if defined(date_executed) then ("--date_executed " +  '"' + date_executed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     analysis_id: "An analysis ID"
     name: "analysis name"

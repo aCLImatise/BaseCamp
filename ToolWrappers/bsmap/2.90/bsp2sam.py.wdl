@@ -14,6 +14,9 @@ task Bsp2sampy {
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "output file name. (required)"
     ref: "reference genome fasta file. (required)"

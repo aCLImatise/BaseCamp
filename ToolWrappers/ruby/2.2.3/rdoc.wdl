@@ -13,14 +13,14 @@ task Rdoc {
     Boolean? opname
     Boolean? promiscuous
     Boolean? ri_system
-    String? preferred_specifies_encoding
+    String? preferred_charset_specifies
     Boolean? encoding
     String? locale
     Directory? locale_data_dir
     Boolean? all
     String? exclude
     File? extension
-    Boolean? _forceupdate_forces
+    Boolean? forceupdate_forces_rdoc
     Boolean? pipe
     String? tab_width
     String? visibility
@@ -31,7 +31,7 @@ task Rdoc {
     String? format
     Boolean? prints_report_undocumented
     Directory? set_output_directory
-    Boolean? deprecated__diagram
+    Boolean? deprecated__optionprevents
     String? charset
     Boolean? hyperlink_all
     String? main
@@ -50,7 +50,7 @@ task Rdoc {
     Boolean? verbose
     String processed_dot
     String pot
-    String creates_ri_files
+    String creates_data_files
     String dark_fish
     String i__includedirectories
   }
@@ -58,7 +58,7 @@ task Rdoc {
     rdoc \
       ~{processed_dot} \
       ~{pot} \
-      ~{creates_ri_files} \
+      ~{creates_data_files} \
       ~{dark_fish} \
       ~{i__includedirectories} \
       ~{if (access_or) then "--accessor" else ""} \
@@ -72,14 +72,14 @@ task Rdoc {
       ~{if (opname) then "--opname" else ""} \
       ~{if (promiscuous) then "--promiscuous" else ""} \
       ~{if (ri_system) then "--ri-system" else ""} \
-      ~{if defined(preferred_specifies_encoding) then ("-e " +  '"' + preferred_specifies_encoding + '"') else ""} \
+      ~{if defined(preferred_charset_specifies) then ("-e " +  '"' + preferred_charset_specifies + '"') else ""} \
       ~{if (encoding) then "--encoding" else ""} \
       ~{if defined(locale) then ("--locale " +  '"' + locale + '"') else ""} \
       ~{if defined(locale_data_dir) then ("--locale-data-dir " +  '"' + locale_data_dir + '"') else ""} \
       ~{if (all) then "--all" else ""} \
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
       ~{if defined(extension) then ("--extension " +  '"' + extension + '"') else ""} \
-      ~{if (_forceupdate_forces) then "-U" else ""} \
+      ~{if (forceupdate_forces_rdoc) then "-U" else ""} \
       ~{if (pipe) then "--pipe" else ""} \
       ~{if defined(tab_width) then ("--tab-width " +  '"' + tab_width + '"') else ""} \
       ~{if defined(visibility) then ("--visibility " +  '"' + visibility + '"') else ""} \
@@ -90,7 +90,7 @@ task Rdoc {
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if (prints_report_undocumented) then "-C" else ""} \
       ~{if defined(set_output_directory) then ("--output " +  '"' + set_output_directory + '"') else ""} \
-      ~{if (deprecated__diagram) then "-d" else ""} \
+      ~{if (deprecated__optionprevents) then "-d" else ""} \
       ~{if defined(charset) then ("--charset " +  '"' + charset + '"') else ""} \
       ~{if (hyperlink_all) then "--hyperlink-all" else ""} \
       ~{if defined(main) then ("--main " +  '"' + main + '"') else ""} \
@@ -108,6 +108,9 @@ task Rdoc {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     access_or: "support discontinued"
     diagram: "support discontinued"
@@ -120,14 +123,14 @@ task Rdoc {
     opname: "support discontinued"
     promiscuous: "files always only document their content"
     ri_system: "Ruby installers use other techniques"
-    preferred_specifies_encoding: "preferred over --charset,  Specifies the output encoding.  All files"
+    preferred_charset_specifies: "preferred over --charset,  Specifies the output encoding.  All files"
     encoding: "read will be converted to this encoding.\\nThe default encoding is UTF-8."
     locale: "Specifies the output locale."
     locale_data_dir: "Specifies the directory where locale data live."
     all: "Synonym for --visibility=private."
     exclude: "Do not process files or directories\\nmatching PATTERN."
     extension: "=OLD          Treat files ending with .new as if they\\nended with .old. Using '-E cgi=rb' will\\ncause xxx.cgi to be parsed as a Ruby file."
-    _forceupdate_forces: ", --[no-]force-update          Forces rdoc to scan all sources even if\\nnewer than the flag file."
+    forceupdate_forces_rdoc: ", --[no-]force-update          Forces rdoc to scan all sources even if\\nnewer than the flag file."
     pipe: "Convert RDoc on stdin to HTML"
     tab_width: "Set the width of tab characters."
     visibility: "Minimum visibility to document a method.\\nOne of 'public', 'protected' (the default),\\n'private' or 'nodoc' (show everything)"
@@ -138,7 +141,7 @@ task Rdoc {
     format: "Set the output formatter.  One of:"
     prints_report_undocumented: "[LEVEL],                       Prints a report on undocumented items.\\n--[no-]coverage-report       Does not generate files.\\n--[no-]dcov"
     set_output_directory: "Set the output directory."
-    deprecated__diagram: "Deprecated --diagram option.\\nPrevents firing debug mode\\nwith legacy invocation."
+    deprecated__optionprevents: "Deprecated --diagram option.\\nPrevents firing debug mode\\nwith legacy invocation."
     charset: "Specifies the output HTML character-set.\\nUse --encoding instead of --charset if\\navailable."
     hyperlink_all: "Generate hyperlinks for all words that\\ncorrespond to known methods, even if they\\ndo not start with '#' or '::' (legacy\\nbehavior)."
     main: "NAME will be the initial page displayed."
@@ -157,7 +160,7 @@ task Rdoc {
     verbose: "Display extra progress as RDoc parses"
     processed_dot: "How RDoc generates output depends on the output formatter being used, and on"
     pot: "- creates .pot file"
-    creates_ri_files: "- creates ri data files"
+    creates_data_files: "- creates ri data files"
     dark_fish: "pot"
     i__includedirectories: "-i, --include=DIRECTORIES        Set (or add to) the list of directories to"
   }

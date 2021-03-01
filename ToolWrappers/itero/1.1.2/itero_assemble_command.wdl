@@ -10,6 +10,9 @@ task IteroAssembleCommand {
       ~{it_ero} \
       ~{assemble}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     it_ero: ""
     assemble: ""

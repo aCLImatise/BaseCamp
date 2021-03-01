@@ -4,6 +4,9 @@ task Intersect {
   command <<<
     intersect
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

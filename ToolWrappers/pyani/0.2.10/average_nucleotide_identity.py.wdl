@@ -70,6 +70,9 @@ task AverageNucleotideIdentitypy {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(job_prefix) then ("--jobprefix " +  '"' + job_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "Output directory (required)"
     in_dir: "Input directory name (required)"

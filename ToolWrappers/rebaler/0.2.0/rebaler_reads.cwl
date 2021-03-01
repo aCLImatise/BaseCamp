@@ -3,17 +3,17 @@ id: rebaler_reads.cwl
 inputs:
 - id: in_random
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --random
 - id: in_t
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_d
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_re_baler
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rebaler

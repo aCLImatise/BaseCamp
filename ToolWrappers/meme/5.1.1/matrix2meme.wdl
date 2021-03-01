@@ -26,6 +26,9 @@ task Matrix2meme {
       ~{if (log_odds) then "-logodds" else ""} \
       ~{if defined(url) then ("-url " +  '"' + url + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "use DNA IUPAC alphabet"
     rna: "use RNA IUPAC alphabet"

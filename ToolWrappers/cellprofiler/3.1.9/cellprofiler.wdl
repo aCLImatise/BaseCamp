@@ -50,6 +50,9 @@ task Cellprofiler {
       ~{if defined(omer_o_credentials) then ("--omero-credentials " +  '"' + omer_o_credentials + '"') else ""} \
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pipeline: "Load this pipeline file or project on startup. If\\nspecifying a pipeline file rather than a project, the\\n-i flag is also needed unless the pipeline is saved\\nwith the file list."
     run_headless: "Run headless (without the GUI)"

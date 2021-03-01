@@ -3,11 +3,34 @@ command:
 - toil-cwl-runner
 positional:
 - !Positional
-  description: cwljob
+  optional: false
   position: 0
   name: cwltool
-  optional: false
+  description: cwljob
 - !Positional
+  optional: false
+  position: 0
+  name: exit
+  description: --preserve-environment VAR1 VAR2 [VAR1 VAR2 ...]
+- !Positional
+  optional: false
+  position: 0
+  name: CommandLineTools
+  description: --preserve-entire-environment
+- !Positional
+  optional: false
+  position: 0
+  name: CommandLineTools.
+  description: --destBucket DESTBUCKET
+- !Positional
+  optional: false
+  position: 0
+  name: only
+  description: --strict-memory-limit
+- !Positional
+  optional: false
+  position: 0
+  name: jobStore
   description: "The location of the job store for the workflow. A job\nstore holds\
     \ persistent information about the jobs and\nfiles in a workflow. If the workflow\
     \ is run with a\ndistributed batch system, the job store must be\naccessible by\
@@ -19,74 +42,162 @@ positional:
     \ e.g.\nS3 buckets. google:<project_id>:<prefix> TODO: explain\nFor backwards\
     \ compatibility, you may also specify\n./foo (equivalent to file:./foo or just\
     \ file:foo) or\n/bar (equivalent to file:/bar)."
-  position: 0
-  name: jobStore
-  optional: false
 - !Positional
-  description: "--provisioner {aws,gce}\nThe provisioner for cluster auto-scaling.\
-    \ The\ncurrently supported choices are'gce', or 'aws'. The\ndefault is None."
+  optional: false
   position: 0
   name: provisioning.
-  optional: false
+  description: "--provisioner {aws,gce}\nThe provisioner for cluster auto-scaling.\
+    \ The\ncurrently supported choices are'gce', or 'aws'. The\ndefault is None."
 named:
 - !Flag
-  description: Same as --logCritical
+  optional: true
+  synonyms:
+  - --jobStore
+  - --not-strict
+  - --enable-dev
+  description: Enable loading and running development versions of CWL
+  args: !SimpleFlagArg
+    name: JOBSTORE
+- !Flag
+  optional: true
+  synonyms:
+  - --user-space-docker-cmd
+  description: "(Linux/OS X only) Specify a user space docker command\n(like udocker\
+    \ or dx-docker) that will be used to call\n'pull' and 'run'"
+  args: !SimpleFlagArg
+    name: USER_SPACE_DOCKER_CMD
+- !Flag
+  optional: true
+  synonyms:
+  - --singularity
+  description: "[experimental] Use Singularity runtime for running\ncontainers. Requires\
+    \ Singularity v2.6.1+ and Linux\nwith kernel version v3.18+ or with overlayfs\
+    \ support\nbackported."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-container
+  description: "Do not execute jobs in a Docker container, even when\n`DockerRequirement`\
+    \ is specified under `hints`."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --leave-container
+  description: Do not delete Docker container used by jobs after they
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --beta-dependency-resolvers-configuration
+  - --beta-dependencies-directory
+  - --beta-use-biocontainers
+  - --beta-conda-dependencies
+  - --tmpdir-prefix
+  description: Path prefix for temporary directories
+  args: !SimpleFlagArg
+    name: BETA_DEPENDENCY_RESOLVERS_CONFIGURATION
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp-outdir-prefix
+  description: Path prefix for intermediate output directories
+  args: !SimpleFlagArg
+    name: TMP_OUTDIR_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --force-docker-pull
+  description: Pull latest docker image even if it is locally present
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-match-user
+  description: Disable passing the current uid to `docker run --user`
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-read-only
+  description: Do not set root directory in the container as read-
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --relax-path-checks
+  description: "Relax requirements on path names to permit spaces and\nhash characters."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --default-container
+  description: "Specify a default docker container that will be used\nif the workflow\
+    \ fails to specify one."
+  args: !SimpleFlagArg
+    name: DEFAULT_CONTAINER
+- !Flag
+  optional: true
   synonyms:
   - --logOff
+  description: Same as --logCritical
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Turn on logging at level CRITICAL and above. (default\nis INFO)"
+  optional: true
   synonyms:
   - --logCritical
+  description: "Turn on logging at level CRITICAL and above. (default\nis INFO)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Turn on logging at level ERROR and above. (default is\nINFO)"
+  optional: true
   synonyms:
   - --logError
+  description: "Turn on logging at level ERROR and above. (default is\nINFO)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Turn on logging at level WARNING and above. (default\nis INFO)"
+  optional: true
   synonyms:
   - --logWarning
+  description: "Turn on logging at level WARNING and above. (default\nis INFO)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Turn on logging at level INFO and above. (default is\nINFO)"
+  optional: true
   synonyms:
   - --logInfo
+  description: "Turn on logging at level INFO and above. (default is\nINFO)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Turn on logging at level DEBUG and above. (default is\nINFO)"
+  optional: true
   synonyms:
   - --logDebug
+  description: "Turn on logging at level DEBUG and above. (default is\nINFO)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Log at given level (may be either OFF (or CRITICAL),\nERROR, WARN\
-    \ (or WARNING), INFO or DEBUG). (default is\nINFO)"
+  optional: true
   synonyms:
   - --logLevel
+  description: "Log at given level (may be either OFF (or CRITICAL),\nERROR, WARN\
+    \ (or WARNING), INFO or DEBUG). (default is\nINFO)"
   args: !SimpleFlagArg
     name: LOGLEVEL
-  optional: true
 - !Flag
-  description: File to log in
+  optional: true
   synonyms:
   - --logFile
+  description: File to log in
   args: !SimpleFlagArg
     name: LOGFILE
-  optional: true
 - !Flag
-  description: "Turn on rotating logging, which prevents log files\ngetting too big."
+  optional: true
   synonyms:
   - --rotatingLogging
+  description: "Turn on rotating logging, which prevents log files\ngetting too big."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --workDir
   description: "Absolute path to directory where temporary files\ngenerated during\
     \ the Toil run should be placed.\nStandard output and error from batch system\
     \ jobs\n(unless --noStdOutErr) will be placed in this\ndirectory. A cache directory\
@@ -98,183 +209,183 @@ named:
     \ is desired, it will generally need to be\non a shared file system. When sharing\
     \ a cache between\ncontainers on a host, this directory must be shared\nbetween\
     \ the containers."
-  synonyms:
-  - --workDir
   args: !SimpleFlagArg
     name: WORKDIR
-  optional: true
 - !Flag
-  description: "Do not capture standard output and error from batch\nsystem jobs."
+  optional: true
   synonyms:
   - --noStdOutErr
+  description: "Do not capture standard output and error from batch\nsystem jobs."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Records statistics about the toil workflow to be used\nby 'toil stats'."
+  optional: true
   synonyms:
   - --stats
+  description: "Records statistics about the toil workflow to be used\nby 'toil stats'."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --clean
   description: "Determines the deletion of the jobStore upon\ncompletion of the program.\
     \ Choices: 'always',\n'onError','never', 'onSuccess'. The --stats option\nrequires\
     \ information from the jobStore upon completion\nso the jobStore will never be\
     \ deleted withthat flag.\nIf you wish to be able to restart the run, choose\n\
     'never' or 'onSuccess'. Default is 'never' if stats is\nenabled, and 'onSuccess'\
     \ otherwise"
-  synonyms:
-  - --clean
   args: !ChoiceFlagArg
     choices: !!set
-      always:
       never:
       onError:
       onSuccess:
-  optional: true
+      always:
 - !Flag
+  optional: true
+  synonyms:
+  - --cleanWorkDir
   description: "Determines deletion of temporary worker directory upon\ncompletion\
     \ of a job. Choices: 'always', 'never',\n'onSuccess'. Default = always. WARNING:\
     \ This option\nshould be changed for debugging only. Running a full\npipeline\
     \ with this option could fill your disk with\nintermediate data."
-  synonyms:
-  - --cleanWorkDir
   args: !ChoiceFlagArg
     choices: !!set
-      always:
       never:
       onError:
       onSuccess:
-  optional: true
+      always:
 - !Flag
+  optional: true
+  synonyms:
+  - --clusterStats
   description: "[CLUSTERSTATS]\nIf enabled, writes out JSON resource usage statistics\n\
     to a file. The default location for this file is the\ncurrent working directory,\
     \ but an absolute path can\nalso be passed to specify where this file should be\n\
     written. This options only applies when using scalable\nbatch systems."
-  synonyms:
-  - --clusterStats
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --restart
   description: "If --restart is specified then will attempt to restart\nexisting workflow\
     \ at the location pointed to by the\n--jobStore option. Will raise an exception\
     \ if the\nworkflow does not exist"
-  synonyms:
-  - --restart
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --batchSystem
   description: "The type of batch system to run the job(s) with,\ncurrently can be\
     \ one of Slurm, Torque, LSF,\nKubernetes, Mesos, HTCondor, singleMachine, parasol,\n\
     gridEngine'. default=singleMachine"
-  synonyms:
-  - --batchSystem
   args: !SimpleFlagArg
     name: BATCHSYSTEM
-  optional: true
 - !Flag
-  description: "Hot-deployment was renamed to auto-deployment. Option\nnow redirects\
-    \ to --disableAutoDeployment. Left in for\nbackwards compatibility."
+  optional: true
   synonyms:
   - --disableHotDeployment
+  description: "Hot-deployment was renamed to auto-deployment. Option\nnow redirects\
+    \ to --disableAutoDeployment. Left in for\nbackwards compatibility."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --disableAutoDeployment
   description: "Should auto-deployment of the user script be\ndeactivated? If True,\
     \ the user script/package should\nbe present at the same location on all workers.\n\
     default=false"
-  synonyms:
-  - --disableAutoDeployment
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxLocalJobs
   description: "For batch systems that support a local queue for\nhousekeeping jobs\
     \ (Mesos, GridEngine, htcondor, lsf,\nslurm, torque), the maximum number of these\n\
     housekeeping jobs to run on the local system. The\ndefault (equal to the number\
     \ of cores) is a maximum of\n8 concurrent local housekeeping jobs."
-  synonyms:
-  - --maxLocalJobs
   args: !SimpleFlagArg
     name: MAXLOCALJOBS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --manualMemArgs
   description: "Do not add the default arguments: 'hv=MEMORY' &\n'h_vmem=MEMORY' to\
     \ the qsub call, and instead rely on\nTOIL_GRIDGENGINE_ARGS to supply alternative\
     \ arguments.\nRequires that TOIL_GRIDGENGINE_ARGS be set."
-  synonyms:
-  - --manualMemArgs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --runCwlInternalJobsOnWorkers
   description: "Whether to run CWL internal jobs (e.g. CWLScatter) on\nthe worker\
     \ nodes instead of the primary node. If false\n(default), then all such jobs are\
     \ run on the primary\nnode. Setting this to true can speed up the pipeline\nfor\
     \ very large workflows with many sub-workflows\nand/or scatters, provided that\
     \ the worker pool is\nlarge enough."
-  synonyms:
-  - --runCwlInternalJobsOnWorkers
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The name or path of the parasol program. Will be\nlooked up on PATH\
-    \ unless it starts with a slash.\ndefault=parasol"
+  optional: true
   synonyms:
   - --parasolCommand
+  description: "The name or path of the parasol program. Will be\nlooked up on PATH\
+    \ unless it starts with a slash.\ndefault=parasol"
   args: !SimpleFlagArg
     name: PARASOLCOMMAND
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --parasolMaxBatches
   description: "Maximum number of job batches the Parasol batch is\nallowed to create.\
     \ One batch is created for jobs with\na a unique set of resource requirements.\
     \ default=1000"
-  synonyms:
-  - --parasolMaxBatches
   args: !SimpleFlagArg
     name: PARASOLMAXBATCHES
-  optional: true
 - !Flag
-  description: "A scaling factor to change the value of all submitted\ntasks's submitted\
-    \ cores. Used in singleMachine batch\nsystem. default=1"
+  optional: true
   synonyms:
   - --scale
+  description: "A scaling factor to change the value of all submitted\ntasks's submitted\
+    \ cores. Used in singleMachine batch\nsystem. default=1"
   args: !SimpleFlagArg
     name: SCALE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --noLinkImports
   description: "When using a filesystem based job store, CWL input\nfiles are by default\
     \ symlinked in. Specifying this\noption instead copies the files into the job\
     \ store,\nwhich may protect them from being modified externally.\nWhen not specified\
     \ and as long as caching is enabled,\nToil will protect the file automatically\
     \ by changing\nthe permissions to read-only."
-  synonyms:
-  - --noLinkImports
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --noMoveExports
   description: "When using a filesystem based job store, output files\nare by default\
     \ moved to the output directory, and a\nsymlink to the moved exported file is\
     \ created at the\ninitial location. Specifying this option instead\ncopies the\
     \ files into the output directory. Applies to\nfilesystem-based job stores only."
-  synonyms:
-  - --noMoveExports
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The host and port of the Mesos master separated by\ncolon. (default:\
-    \ 172.17.0.4:5050)"
+  optional: true
   synonyms:
   - --mesosMaster
+  description: "The host and port of the Mesos master separated by\ncolon. (default:\
+    \ 172.17.0.4:5050)"
   args: !SimpleFlagArg
     name: MESOSMASTERADDRESS
-  optional: true
 - !Flag
-  description: "Path on Kubernetes hosts to use as shared inter-pod\ntemp directory\
-    \ (default: None)"
+  optional: true
   synonyms:
   - --kubernetesHostPath
+  description: "Path on Kubernetes hosts to use as shared inter-pod\ntemp directory\
+    \ (default: None)"
   args: !SimpleFlagArg
     name: KUBERNETESHOSTPATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nodeTypes
   description: "List of node types separated by commas. The syntax for\neach node\
     \ type depends on the provisioner used. For\nthe cgcloud and AWS provisioners\
     \ this is the name of\nan EC2 instance type, optionally followed by a colon\n\
@@ -284,202 +395,217 @@ named:
     \ including it\ntwice in the list. In that case,preemptable nodes of\nthat type\
     \ will be preferred when creating new nodes\nonce the maximum number of preemptable-nodes\
     \ has\nbeenreached."
-  synonyms:
-  - --nodeTypes
   args: !SimpleFlagArg
     name: NODETYPES
-  optional: true
 - !Flag
-  description: "Options for provisioning the nodes. The syntax depends\non the provisioner\
-    \ used. Neither the CGCloud nor the\nAWS provisioner support any node options."
+  optional: true
   synonyms:
   - --nodeOptions
+  description: "Options for provisioning the nodes. The syntax depends\non the provisioner\
+    \ used. Neither the CGCloud nor the\nAWS provisioner support any node options."
   args: !SimpleFlagArg
     name: NODEOPTIONS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --minNodes
   description: "Mininum number of nodes of each type in the cluster,\nif using auto-scaling.\
     \ This should be provided as a\ncomma-separated list of the same length as the\
     \ list of\nnode types. default=0"
-  synonyms:
-  - --minNodes
   args: !SimpleFlagArg
     name: MINNODES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxNodes
   description: "Maximum number of nodes of each type in the cluster,\nif using autoscaling,\
     \ provided as a comma-separated\nlist. The first value is used as a default if\
     \ the list\nlength is less than the number of nodeTypes.\ndefault=10"
-  synonyms:
-  - --maxNodes
   args: !SimpleFlagArg
     name: MAXNODES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --targetTime
   description: "Sets how rapidly you aim to complete jobs in seconds.\nShorter times\
     \ mean more aggressive parallelization.\nThe autoscaler attempts to scale up/down\
     \ so that it\nexpects all queued jobs will complete within\ntargetTime seconds.\
     \ default=1800"
-  synonyms:
-  - --targetTime
   args: !SimpleFlagArg
     name: TARGETTIME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --betaInertia
   description: "A smoothing parameter to prevent unnecessary\noscillations in the\
     \ number of provisioned nodes. This\ncontrols an exponentially weighted moving\
     \ average of\nthe estimated number of nodes. A value of 0.0 disables\nany smoothing,\
     \ and a value of 0.9 will smooth so much\nthat few changes will ever be made.\
     \ Must be between\n0.0 and 0.9. default=0.1"
-  synonyms:
-  - --betaInertia
   args: !SimpleFlagArg
     name: BETAINERTIA
-  optional: true
 - !Flag
-  description: "The interval (seconds) between assessing if the scale\nof the cluster\
-    \ needs to change. default=60"
+  optional: true
   synonyms:
   - --scaleInterval
+  description: "The interval (seconds) between assessing if the scale\nof the cluster\
+    \ needs to change. default=60"
   args: !SimpleFlagArg
     name: SCALEINTERVAL
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --preemptableCompensation
   description: "The preference of the autoscaler to replace\npreemptable nodes with\
     \ non-preemptable nodes, when\npreemptable nodes cannot be started for some reason.\n\
     Defaults to 0.0. This value must be between 0.0 and\n1.0, inclusive. A value of\
     \ 0.0 disables such\ncompensation, a value of 0.5 compensates two missing\npreemptable\
     \ nodes with a non-preemptable one. A value\nof 1.0 replaces every missing pre-emptable\
     \ node with a\nnon-preemptable one."
-  synonyms:
-  - --preemptableCompensation
   args: !SimpleFlagArg
     name: PREEMPTABLECOMPENSATION
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nodeStorage
   description: "Specify the size of the root volume of worker nodes\nwhen they are\
     \ launched in gigabytes. You may want to\nset this if your jobs require a lot\
     \ of disk space. The\ndefault value is 50."
-  synonyms:
-  - --nodeStorage
   args: !SimpleFlagArg
     name: NODESTORAGE
-  optional: true
 - !Flag
-  description: "Enable the prometheus/grafana dashboard for monitoring\nCPU/RAM usage,\
-    \ queue size, and issued jobs."
+  optional: true
   synonyms:
   - --metrics
+  description: "Enable the prometheus/grafana dashboard for monitoring\nCPU/RAM usage,\
+    \ queue size, and issued jobs."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --defaultMemory
   description: "The default amount of memory to request for a job.\nOnly applicable\
     \ to jobs that do not specify an\nexplicit value for this requirement. Standard\
     \ suffixes\nlike K, Ki, M, Mi, G or Gi are supported. Default is\n2.0 Gi"
-  synonyms:
-  - --defaultMemory
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --defaultCores
   description: "The default number of CPU cores to dedicate a job.\nOnly applicable\
     \ to jobs that do not specify an\nexplicit value for this requirement. Fractions\
     \ of a\ncore (for example 0.1) are supported on some batch\nsystems, namely Mesos\
     \ and singleMachine. Default is\n1.0"
-  synonyms:
-  - --defaultCores
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --defaultDisk
   description: "The default amount of disk space to dedicate a job.\nOnly applicable\
     \ to jobs that do not specify an\nexplicit value for this requirement. Standard\
     \ suffixes\nlike K, Ki, M, Mi, G or Gi are supported. Default is\n2.0 Gi"
-  synonyms:
-  - --defaultDisk
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "--maxCores INT        The maximum number of CPU cores to request from\
-    \ the\nbatch system at any one time. Standard suffixes like\nK, Ki, M, Mi, G or\
-    \ Gi are supported. Default is 8.0 Ei\n--maxMemory INT       The maximum amount\
-    \ of memory to request from the batch\nsystem at any one time. Standard suffixes\
-    \ like K, Ki,\nM, Mi, G or Gi are supported. Default is 8.0 Ei\n--maxDisk INT\
-    \         The maximum amount of disk space to request from the\nbatch system at\
-    \ any one time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported. Default\
-    \ is 8.0 Ei"
+  optional: true
   synonyms:
   - --defaultPreemptable
-  args: !EmptyFlagArg {}
-  optional: true
+  - --maxCores
+  description: "The maximum number of CPU cores to request from the\nbatch system\
+    \ at any one time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported.\
+    \ Default is 8.0 Ei"
+  args: !SimpleFlagArg
+    name: INT
 - !Flag
-  description: "Number of times to retry a failing job before giving\nup and labeling\
-    \ job failed. default=1"
+  optional: true
+  synonyms:
+  - --maxMemory
+  description: "The maximum amount of memory to request from the batch\nsystem at\
+    \ any one time. Standard suffixes like K, Ki,\nM, Mi, G or Gi are supported. Default\
+    \ is 8.0 Ei"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --maxDisk
+  description: "The maximum amount of disk space to request from the\nbatch system\
+    \ at any one time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported.\
+    \ Default is 8.0 Ei"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
   synonyms:
   - --retryCount
+  description: "Number of times to retry a failing job before giving\nup and labeling\
+    \ job failed. default=1"
   args: !SimpleFlagArg
     name: RETRYCOUNT
-  optional: true
 - !Flag
-  description: "If set, preemptable failures (or any failure due to an\ninstance getting\
-    \ unexpectedly terminated) would not\ncount towards job failures and --retryCount."
+  optional: true
   synonyms:
   - --enableUnlimitedPreemptableRetries
+  description: "If set, preemptable failures (or any failure due to an\ninstance getting\
+    \ unexpectedly terminated) would not\ncount towards job failures and --retryCount."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxJobDuration
   description: "Maximum runtime of a job (in seconds) before we kill\nit (this is\
     \ a lower bound, and the actual time before\nkilling the job may be longer).\n\
     default=9223372036854775807"
-  synonyms:
-  - --maxJobDuration
   args: !SimpleFlagArg
     name: MAXJOBDURATION
-  optional: true
 - !Flag
-  description: "Period of time to wait (in seconds) between checking\nfor missing/overlong\
-    \ jobs, that is jobs which get lost\nby the batch system. Expert parameter. default=3600"
+  optional: true
   synonyms:
   - --rescueJobsFrequency
+  description: "Period of time to wait (in seconds) between checking\nfor missing/overlong\
+    \ jobs, that is jobs which get lost\nby the batch system. Expert parameter. default=3600"
   args: !SimpleFlagArg
     name: RESCUEJOBSFREQUENCY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --disableCaching
   description: "[DISABLECACHING]\nDisables caching in the file store. This flag must\
     \ be\nset to use a batch system that does not support\ncaching such as Grid Engine,\
     \ Parasol, LSF, or Slurm"
-  synonyms:
-  - --disableCaching
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Disables chaining of jobs (chaining uses one job's\nresource allocation\
-    \ for its successor job if\npossible)."
+  optional: true
   synonyms:
   - --disableChaining
+  description: "Disables chaining of jobs (chaining uses one job's\nresource allocation\
+    \ for its successor job if\npossible)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --disableJobStoreChecksumVerification
   description: "Disables checksum verification for files transferred\nto/from the\
     \ job store. Checksum verification is a\nsafety check to ensure the data is not\
     \ corrupted\nduring transfer. Currently only supported for non-\nstreaming AWS\
     \ files."
-  synonyms:
-  - --disableJobStoreChecksumVerification
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxLogFileSize
   description: "The maximum size of a job log file to keep (in bytes),\nlog files\
     \ larger than this will be truncated to the\nlast X bytes. Setting this option\
     \ to zero will prevent\nany truncation. Setting this option to a negative\nvalue\
     \ will truncate from the beginning.Default=62.5 K"
-  synonyms:
-  - --maxLogFileSize
   args: !SimpleFlagArg
     name: MAXLOGFILESIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --writeLogs
   description: "[WRITELOGS]\nWrite worker logs received by the leader into their\n\
     own files at the specified path. Any non-empty\nstandard output and error from\
     \ failed batch system\njobs will also be written into files at this path. The\n\
@@ -488,191 +614,171 @@ named:
     level to 'debug' or enable '--writeLogsFromAllJobs' to\nget logs back from successful\
     \ jobs, and adjust\n'maxLogFileSize' to control the truncation limit for\nworker\
     \ logs."
-  synonyms:
-  - --writeLogs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[WRITELOGSGZIP]\nIdentical to --writeLogs except the logs files are\n\
-    gzipped on the leader."
+  optional: true
   synonyms:
   - --writeLogsGzip
+  description: "[WRITELOGSGZIP]\nIdentical to --writeLogs except the logs files are\n\
+    gzipped on the leader."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --writeLogsFromAllJobs
   description: "Whether to write logs from all jobs (including the\nsuccessful ones)\
     \ without necessarily setting the log\nlevel to 'debug'. Ensure that either --writeLogs\
     \ or\n--writeLogsGzip is set if enabling this option."
-  synonyms:
-  - --writeLogsFromAllJobs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Enable real-time logging from workers to masters
+  optional: true
   synonyms:
   - --realTimeLogging
+  description: Enable real-time logging from workers to masters
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sseKey
   description: "Path to file containing 32 character key to be used\nfor server-side\
     \ encryption on awsJobStore or\ngoogleJobStore. SSE will not be used if this flag\
     \ is\nnot passed."
-  synonyms:
-  - --sseKey
   args: !SimpleFlagArg
     name: SSEKEY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --setEnv
   description: "=VALUE or NAME, -e NAME=VALUE or NAME\nSet an environment variable\
     \ early on in the worker. If\nVALUE is omitted, it will be looked up in the current\n\
     environment. Independently of this option, the worker\nwill try to emulate the\
     \ leader's environment before\nrunning a job, except for some variables known\
     \ to vary\nacross systems. Using this option, a variable can be\ninjected into\
     \ the worker process itself before it is\nstarted."
-  synonyms:
-  - --setEnv
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: "Interval of time service jobs wait between polling for\nthe existence\
-    \ of the keep-alive flag (defailt=60)"
+  optional: true
   synonyms:
   - --servicePollingInterval
+  description: "Interval of time service jobs wait between polling for\nthe existence\
+    \ of the keep-alive flag (defailt=60)"
   args: !SimpleFlagArg
     name: SERVICEPOLLINGINTERVAL
-  optional: true
 - !Flag
-  description: "Disables sanity checking the existence of the docker\nimage specified\
-    \ by TOIL_APPLIANCE_SELF, which Toil\nuses to provision mesos for autoscaling."
+  optional: true
   synonyms:
   - --forceDockerAppliance
+  description: "Disables sanity checking the existence of the docker\nimage specified\
+    \ by TOIL_APPLIANCE_SELF, which Toil\nuses to provision mesos for autoscaling."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Disables the progress bar shown when standard error is\na terminal."
+  optional: true
   synonyms:
   - --disableProgress
+  description: "Disables the progress bar shown when standard error is\na terminal."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Experimental no forking mode for local debugging.\nSpecifically, workers\
-    \ are not forked and stderr/stdout\nare not redirected to the log."
+  optional: true
   synonyms:
   - --debugWorker
+  description: "Experimental no forking mode for local debugging.\nSpecifically, workers\
+    \ are not forked and stderr/stdout\nare not redirected to the log."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Let worker output go to worker's standard out/error\ninstead of per-job\
-    \ logs."
+  optional: true
   synonyms:
   - --disableWorkerOutputCapture
+  description: "Let worker output go to worker's standard out/error\ninstead of per-job\
+    \ logs."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "For testing purposes randomly kill 'badWorker'\nproportion of jobs\
-    \ using SIGKILL, default=0.0"
+  optional: true
   synonyms:
   - --badWorker
+  description: "For testing purposes randomly kill 'badWorker'\nproportion of jobs\
+    \ using SIGKILL, default=0.0"
   args: !SimpleFlagArg
     name: BADWORKER
-  optional: true
 - !Flag
-  description: "When killing the job pick uniformly within the\ninterval from 0.0\
-    \ to 'badWorkerFailInterval' seconds\nafter the worker starts, default=0.01"
+  optional: true
   synonyms:
   - --badWorkerFailInterval
+  description: "When killing the job pick uniformly within the\ninterval from 0.0\
+    \ to 'badWorkerFailInterval' seconds\nafter the worker starts, default=0.01"
   args: !SimpleFlagArg
     name: BADWORKERFAILINTERVAL
-  optional: true
 - !Flag
-  description: "Save provenance to specified folder as a Research\nObject that captures\
-    \ and aggregates workflow execution\nand data products."
+  optional: true
   synonyms:
   - --provenance
+  description: "Save provenance to specified folder as a Research\nObject that captures\
+    \ and aggregates workflow execution\nand data products."
   args: !SimpleFlagArg
     name: PROVENANCE
-  optional: true
 - !Flag
-  description: Record user account info as part of provenance.
+  optional: true
   synonyms:
   - --enable-user-provenance
+  description: Record user account info as part of provenance.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not record user account info in provenance.
+  optional: true
   synonyms:
   - --disable-user-provenance
+  description: Do not record user account info in provenance.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Record host info as part of provenance.
+  optional: true
   synonyms:
   - --enable-host-provenance
+  description: Record host info as part of provenance.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not record host info in provenance.
+  optional: true
   synonyms:
   - --disable-host-provenance
+  description: Do not record host info in provenance.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --orcid
   description: "Record user ORCID identifier as part of provenance,\ne.g. https://orcid.org/0000-0002-1825-0097\
     \ or\n0000-0002-1825-0097. Alternatively the environment\nvariable ORCID may be\
     \ set."
-  synonyms:
-  - --orcid
   args: !SimpleFlagArg
     name: ORCID
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --full-name
   description: "Record full name of user as part of provenance, e.g.\nJosiah Carberry.\
     \ You may need to use shell quotes to\npreserve spaces. Alternatively the environment\n\
     variable CWL_FULL_NAME may be set.\n"
-  synonyms:
-  - --full-name
   args: !SimpleFlagArg
     name: CWL_FULL_NAME
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--jobStore JOBSTORE\n--not-strict\n\
-    --enable-dev          Enable loading and running development versions of CWL\n\
-    --quiet\n--basedir BASEDIR\n--outdir OUTDIR\n--version             show program's\
-    \ version number and exit\n--user-space-docker-cmd USER_SPACE_DOCKER_CMD\n(Linux/OS\
-    \ X only) Specify a user space docker command\n(like udocker or dx-docker) that\
-    \ will be used to call\n'pull' and 'run'\n--singularity         [experimental]\
-    \ Use Singularity runtime for running\ncontainers. Requires Singularity v2.6.1+\
-    \ and Linux\nwith kernel version v3.18+ or with overlayfs support\nbackported.\n\
-    --no-container        Do not execute jobs in a Docker container, even when\n`DockerRequirement`\
-    \ is specified under `hints`.\n--leave-container     Do not delete Docker container\
-    \ used by jobs after they\nexit\n--preserve-environment VAR1 VAR2 [VAR1 VAR2 ...]\n\
-    Preserve specified environment variables when running\nCommandLineTools\n--preserve-entire-environment\n\
-    Preserve all environment variable when running\nCommandLineTools.\n--destBucket\
-    \ DESTBUCKET\nSpecify a cloud bucket endpoint for output files.\n--beta-dependency-resolvers-configuration\
-    \ BETA_DEPENDENCY_RESOLVERS_CONFIGURATION\n--beta-dependencies-directory BETA_DEPENDENCIES_DIRECTORY\n\
-    --beta-use-biocontainers\n--beta-conda-dependencies\n--tmpdir-prefix TMPDIR_PREFIX\n\
-    Path prefix for temporary directories\n--tmp-outdir-prefix TMP_OUTDIR_PREFIX\n\
-    Path prefix for intermediate output directories\n--force-docker-pull   Pull latest\
-    \ docker image even if it is locally present\n--no-match-user       Disable passing\
-    \ the current uid to `docker run --user`\n--no-read-only        Do not set root\
-    \ directory in the container as read-\nonly\n--strict-memory-limit\nWhen running\
-    \ with software containers and the Docker\nengine, pass either the calculated\
-    \ memory allocation\nfrom ResourceRequirements or the default of 1 gigabyte\n\
-    to Docker's --memory option.\n--relax-path-checks   Relax requirements on path\
-    \ names to permit spaces and\nhash characters.\n--default-container DEFAULT_CONTAINER\n\
-    Specify a default docker container that will be used\nif the workflow fails to\
-    \ specify one."
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  - --basedir
+  - --outdir
+  - --version
+  description: show program's version number and exit
+  args: !SimpleFlagArg
+    name: BASEDIR
 help_text: "usage: toil-cwl-runner [-h] [--logOff] [--logCritical] [--logError]\n\
   \                       [--logWarning] [--logInfo] [--logDebug]\n              \
   \         [--logLevel LOGLEVEL] [--logFile LOGFILE]\n                       [--rotatingLogging]\
@@ -1059,3 +1165,4 @@ help_text: "usage: toil-cwl-runner [-h] [--logOff] [--logCritical] [--logError]\
   \ may be set.\n"
 generated_using:
 - --help
+docker_image:

@@ -18,6 +18,9 @@ task FalconcM4filtcontained {
       ~{if (min_len) then "--min-len" else ""} \
       ~{if (min_idt_pct) then "--min-idt-pct" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help_syntax: "advanced: prepend,plurals,.."
     _infn_string: "=, --in-fn=   string  REQUIRED  Input m4 overlap file"

@@ -40,10 +40,10 @@ task Samdump2108 {
     File? option_file
     String __primary
     String name
-    String _gzip_output
+    String gzip_output_using
     String type
     String evidence
-    String _report_options
+    String report_report_options
     String _cgnames_prints
     String names
     String printed
@@ -54,10 +54,10 @@ task Samdump2108 {
     sam_dump_2_10_8 \
       ~{__primary} \
       ~{name} \
-      ~{_gzip_output} \
+      ~{gzip_output_using} \
       ~{type} \
       ~{evidence} \
-      ~{_report_options} \
+      ~{report_report_options} \
       ~{_cgnames_prints} \
       ~{names} \
       ~{printed} \
@@ -100,6 +100,9 @@ task Samdump2108 {
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     unaligned: "output unaligned reads along with aligned"
     cigar_long: "output long version of CIGAR"
@@ -139,10 +142,10 @@ task Samdump2108 {
     option_file: "Read more options and parameters from the"
     __primary: "-1|--primary                     output only primary alignments"
     name: "-=|--hide-identical              Output '=' if base is identical to"
-    _gzip_output: "--gzip                        Compress output using gzip"
+    gzip_output_using: "--gzip                        Compress output using gzip"
     type: "--cigar-cg-merge              Apply CG fixups to CIGAR/SEQ/QUAL and"
     evidence: "--CG-mappings                 Output CG sequences aligned to reference"
-    _report_options: "--report                      report options instead of executing"
+    report_report_options: "--report                      report options instead of executing"
     _cgnames_prints: "--CG-names                    prints cg-style spotgroup.spotid formed"
     names: "--cursor-cache <size>         open cached cursor with this size"
     printed: "--no-mate-cache               do not use mate-cache, slower but less"

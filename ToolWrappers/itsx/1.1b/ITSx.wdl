@@ -90,6 +90,9 @@ task ITSx {
       ~{if (bugs) then "--bugs" else ""} \
       ~{if (license) then "--license" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna_fasta_input: ": DNA FASTA input file to investigate"
     base_names_output: ": Base for the names of output file(s)"

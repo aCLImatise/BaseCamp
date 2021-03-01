@@ -18,6 +18,9 @@ task SketchySurveyPopmap {
       ~{if defined(column) then ("--column " +  '"' + column + '"') else ""} \
       ~{if defined(path_output_gif) then ("--output " +  '"' + path_output_gif + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ssh: "Path to sum of shared hashes file to map to population\\n[required]  [required]"
     tree: "Path to phylogeny [newick] to use as population map\\n[required] NOTE: This argument is mutually exclusive with\\narguments: [graph]."

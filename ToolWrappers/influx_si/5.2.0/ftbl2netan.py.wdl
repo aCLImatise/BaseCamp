@@ -8,6 +8,9 @@ task Ftbl2netanpy {
     ftbl2netan_py \
       ~{network}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     network: ""
   }

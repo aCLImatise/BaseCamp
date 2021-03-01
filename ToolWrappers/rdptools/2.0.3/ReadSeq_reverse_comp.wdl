@@ -16,6 +16,9 @@ task ReadSeqReversecomp {
       ~{if defined(in_file) then ("--infile " +  '"' + in_file + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     check: "If set, will check orientation of the rRNA sequenc, only reverse complement if needed"
     format: "output format, fasta or fastq. Default is fasta"

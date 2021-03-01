@@ -10,6 +10,9 @@ task Pglite {
       ~{if defined(personality) then ("--personality " +  '"' + personality + '"') else ""} \
       ~{if (directory) then "--directory" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     personality: "|postgres\\nDefaults to `postgres`. The `pipeline` personality exists to support\\nPipelineDB."
     directory: "/path/to/data\\nDefaults to `./var`.\\n"

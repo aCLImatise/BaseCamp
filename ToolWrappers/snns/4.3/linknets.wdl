@@ -14,6 +14,9 @@ task Linknets {
       ~{if (direct) then "-direct" else ""} \
       ~{if defined(out_connect) then ("-outconnect " +  '"' + out_connect + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_units: "use copies of input units"
     in_connect: "fully connect with <n> input units"

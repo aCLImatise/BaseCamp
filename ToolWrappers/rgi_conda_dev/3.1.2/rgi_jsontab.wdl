@@ -12,6 +12,9 @@ task RgiJsontab {
       ~{if defined(out_file) then ("--out_file " +  '"' + out_file + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_file: "must be a json file generated from RGI in JSON or gzip\\nformat e.g out.json, out.json.gz"
     out_file: "Output Tab-delimited file (default=dataSummary)"

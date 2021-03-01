@@ -10,6 +10,9 @@ task Messagevalidate {
       ~{message} \
       ~{path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     message: ""
     path: ""

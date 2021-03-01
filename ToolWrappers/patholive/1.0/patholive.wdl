@@ -38,6 +38,9 @@ task Patholive {
       ~{if defined(max_tile) then ("--max_tile " +  '"' + max_tile + '"') else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bcl_dir: "Illumina BaseCalls directory which contains the\\nsequence information of the reads."
     index: "Reference index directory for HiLive2."

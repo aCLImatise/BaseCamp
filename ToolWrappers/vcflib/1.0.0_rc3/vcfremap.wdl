@@ -28,6 +28,9 @@ task Vcfremap {
       ~{if defined(repeat_gap_extend) then ("--repeat-gap-extend " +  '"' + repeat_gap_extend + '"') else ""} \
       ~{if defined(adjust_vcf) then ("--adjust-vcf " +  '"' + adjust_vcf + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_window_size: "align using this many bases flanking each side of the reference allele"
     alt_window_size: "align using this many flanking bases from the reference around each alternate allele"

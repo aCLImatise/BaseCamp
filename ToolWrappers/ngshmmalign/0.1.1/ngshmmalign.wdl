@@ -8,10 +8,10 @@ task Ngshmmalign {
     Int? number_threads_use
     Boolean? clean_mafft_files
     Boolean? use_search_avoiding
-    String? consensus_name_created
+    String? consensus_name_willbe
     Boolean? loci_ambiguous_bases
     Boolean? arg_value_seed
-    Boolean? hardclip_reads_bein
+    Boolean? hardclip_reads_bases
     Boolean? extreme_hardclip_reads
     Boolean? show_progress_indicator
     Int? l_minimum_mapped
@@ -39,10 +39,10 @@ task Ngshmmalign {
       ~{if defined(number_threads_use) then ("-t " +  '"' + number_threads_use + '"') else ""} \
       ~{if (clean_mafft_files) then "-l" else ""} \
       ~{if (use_search_avoiding) then "-E" else ""} \
-      ~{if defined(consensus_name_created) then ("-N " +  '"' + consensus_name_created + '"') else ""} \
+      ~{if defined(consensus_name_willbe) then ("-N " +  '"' + consensus_name_willbe + '"') else ""} \
       ~{if (loci_ambiguous_bases) then "-U" else ""} \
       ~{if (arg_value_seed) then "-s" else ""} \
-      ~{if (hardclip_reads_bein) then "--hard" else ""} \
+      ~{if (hardclip_reads_bases) then "--hard" else ""} \
       ~{if (extreme_hardclip_reads) then "--HARD" else ""} \
       ~{if (show_progress_indicator) then "-v" else ""} \
       ~{if defined(l_minimum_mapped) then ("-M " +  '"' + l_minimum_mapped + '"') else ""} \
@@ -58,6 +58,9 @@ task Ngshmmalign {
       ~{if defined(rco) then ("--rco " +  '"' + rco + '"') else ""} \
       ~{if defined(rce) then ("--rce " +  '"' + rce + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_containing_profilemsa: "File containing the profile/MSA of the"
     alnsam_filename_written: "(=aln.sam)                Filename where alignment will be written to"
@@ -65,10 +68,10 @@ task Ngshmmalign {
     number_threads_use: "(=8)                      Number of threads to use for alignment.\\nDefaults to number of logical cores found"
     clean_mafft_files: "Do not clean up MAFFT temporary MSA files"
     use_search_avoiding: "Use full-exhaustive search, avoiding indexed"
-    consensus_name_created: "(=CONSENSUS)              Name of consensus reference contig that will\\nbe created"
+    consensus_name_willbe: "(=CONSENSUS)              Name of consensus reference contig that will\\nbe created"
     loci_ambiguous_bases: "Loci with ambiguous bases get their emission\\nprobabilities according to their allele\\nfrequencies. In practice this is\\nundesirable, as it leads to systematic\\naccumulation of gaps in homopolymeric\\nregions with SNVs"
     arg_value_seed: "[ --seed ] arg (=42)          Value of seed for deterministic run. A value\\nof 0 will pick a random seed from some\\nnon-deterministic entropy source"
-    hardclip_reads_bein: "Hard-clip reads. Clipped bases will NOT be\\nin the sequence in the alignment"
+    hardclip_reads_bases: "Hard-clip reads. Clipped bases will NOT be\\nin the sequence in the alignment"
     extreme_hardclip_reads: "Extreme Hard-clip reads. Do not write\\nhard-clip in CIGAR, as if the hard-clipped\\nbases never existed. Mutually exclusive with\\nprevious option"
     show_progress_indicator: "Show progress indicator while aligning"
     l_minimum_mapped: "(=L * 0.8)                Minimum mapped length of read"

@@ -16,6 +16,9 @@ task SimpleContigLoader {
       ~{if (append_contigs_instead) then "-a" else ""} \
       ~{if (use_read_eids) then "-e" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     be_verbose: "Be Verbose"
     append_contigs_instead: "Append contigs instead of overwriting them"

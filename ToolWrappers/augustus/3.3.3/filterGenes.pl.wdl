@@ -10,6 +10,9 @@ task FilterGenespl {
       ~{name_file} \
       ~{dbfile}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_file: ""
     dbfile: ""

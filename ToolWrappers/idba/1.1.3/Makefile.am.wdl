@@ -4,6 +4,9 @@ task Makefileam {
   command <<<
     Makefile_am
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

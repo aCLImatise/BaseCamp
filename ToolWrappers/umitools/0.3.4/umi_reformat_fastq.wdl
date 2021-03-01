@@ -26,6 +26,9 @@ task UmiReformatFastq {
       ~{if defined(quality) then ("--quality " +  '"' + quality + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_left: "the input fastq file for r1. (default: None)"
     var_right: "the input fastq file for r2. (default: None)"

@@ -8,6 +8,9 @@ task Mothur {
     mothur \
       ~{path_to_old_version}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_to_old_version: "for example: yourusername$ which mothur"
   }

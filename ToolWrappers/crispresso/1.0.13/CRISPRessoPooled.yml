@@ -4,79 +4,270 @@ command:
 positional: []
 named:
 - !Flag
-  description: "CRISPR/Cas9 outcomes from POOLED deep sequencing data-\n)        \
-    \                                    )"
+  optional: true
   synonyms:
   - -Analysis
+  description: "CRISPR/Cas9 outcomes from POOLED deep sequencing data-\n)        \
+    \                                    )"
   args: !SimpleFlagArg
     name: of
-  optional: true
 - !Flag
-  description: Enable the trimming of Illumina adapters with
-  synonyms:
-  - --trim_sequences
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: Ignore insertions events for the quantification and
-  synonyms:
-  - --ignore_insertions
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Ignore deletions events for the quantification and
-  synonyms:
-  - --ignore_deletions
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'Keep all the intermediate files (default: False)'
-  synonyms:
-  - --keep_intermediate
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Dump numpy arrays and pandas dataframes to file for
-  synonyms:
-  - --dump
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Save also .png images additionally to .pdf files
-  synonyms:
-  - --save_also_png
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -f
-  args: !SimpleFlagArg
-    name: AMPLICONS_FILE
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -r2
-  args: !SimpleFlagArg
-    name: FASTQ_R2
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -r1
+  - --fastq_r1
+  description: 'First fastq file (default: Fastq filename)'
   args: !SimpleFlagArg
     name: FASTQ_R1
+- !Flag
   optional: true
+  synonyms:
+  - -r2
+  - --fastq_r2
+  description: 'Second fastq file for paired end reads (default: )'
+  args: !SimpleFlagArg
+    name: FASTQ_R2
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --amplicons_file
+  description: "Amplicons description file. In particular, this file,\nis a tab delimited\
+    \ text file with up to 5 columns (2\nrequired): AMPLICON_NAME: an identifier for\
+    \ the\namplicon (must be unique) AMPLICON_SEQUENCE: amplicon\nsequence used in\
+    \ the design of the experiment\nsgRNA_SEQUENCE (OPTIONAL): sgRNA sequence used\
+    \ for\nthis amplicon without the PAM sequence. If more than\none separate them\
+    \ by commas and not spaces. If not\navailable enter NA. EXPECTED_AMPLICON_AFTER_HDR\n\
+    (OPTIONAL): expected amplicon sequence in case of HDR.\nIf not available enter\
+    \ NA. CODING_SEQUENCE (OPTIONAL):\nSubsequence(s) of the amplicon corresponding\
+    \ to coding\nsequences. If more than one separate them by commas\nand not spaces.\
+    \ If not available enter NA. (default: )"
+  args: !SimpleFlagArg
+    name: AMPLICONS_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --bowtie2_index
+  description: "Basename of Bowtie2 index for the reference genome\n(default: )"
+  args: !SimpleFlagArg
+    name: BOWTIE2_INDEX
+- !Flag
+  optional: true
+  synonyms:
+  - --gene_annotations
+  description: "Gene Annotation Table from UCSC Genome Browser Tables\n(http://genome.ucsc.edu/cgi-\n\
+    bin/hgTables?command=start), please select as table\n\"knowGene\", as output format\
+    \ \"all fields from selected\ntable\" and as file returned \"gzip compressed\"\
+    \n(default: )"
+  args: !SimpleFlagArg
+    name: GENE_ANNOTATIONS
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --n_processes
+  description: "Specify the number of processes to use for the\nquantification. Please\
+    \ use with caution since\nincreasing this parameter will increase significantly\n\
+    the memory required to run CRISPResso. (default: 1)"
+  args: !SimpleFlagArg
+    name: N_PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - --bowtie2_options_string
+  description: "Override options for the Bowtie2 alignment command\n(default: -k 1\
+    \ --end-to-end -N 0 --np 0 )"
+  args: !SimpleFlagArg
+    name: BOWTIE2_OPTIONS_STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --min_reads_to_use_region
+  description: "Minimum number of reads that align to a region to\nperform the CRISPResso\
+    \ analysis (default: 1000)"
+  args: !SimpleFlagArg
+    name: MIN_READS_TO_USE_REGION
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --min_average_read_quality
+  description: "Minimum average quality score (phred33) to keep a read\n(default:\
+    \ 0)"
+  args: !SimpleFlagArg
+    name: MIN_AVERAGE_READ_QUALITY
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --min_single_bp_quality
+  description: "Minimum single bp score (phred33) to keep a read\n(default: 0)"
+  args: !SimpleFlagArg
+    name: MIN_SINGLE_BP_QUALITY
+- !Flag
+  optional: true
+  synonyms:
+  - --min_identity_score
+  description: 'Min identity score for the alignment (default: 60.0)'
+  args: !SimpleFlagArg
+    name: MIN_IDENTITY_SCORE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --name
+  description: 'Output name (default: )'
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_folder
+  - --trim_sequences
+  description: "Enable the trimming of Illumina adapters with\nTrimmomatic (default:\
+    \ False)"
+  args: !SimpleFlagArg
+    name: OUTPUT_FOLDER
+- !Flag
+  optional: true
+  synonyms:
+  - --trimmomatic_options_string
+  description: "Override options for Trimmomatic (default:\nILLUMINACLIP:/usr/local/lib/python2.7/site-\n\
+    packages/CRISPResso/data/NexteraPE-\nPE.fa:0:90:10:0:true MINLEN:40)"
+  args: !SimpleFlagArg
+    name: TRIMMOMATIC_OPTIONS_STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --min_paired_end_reads_overlap
+  description: "Minimum required overlap length between two reads to\nprovide a confident\
+    \ overlap. (default: 4)"
+  args: !SimpleFlagArg
+    name: MIN_PAIRED_END_READS_OVERLAP
+- !Flag
+  optional: true
+  synonyms:
+  - --max_paired_end_reads_overlap
+  description: "parameter for the flash merging step, this parameter\nis the maximum\
+    \ overlap length expected in\napproximately 90% of read pairs. Please see the\
+    \ flash\nmanual for more information. (default: 100)"
+  args: !SimpleFlagArg
+    name: MAX_PAIRED_END_READS_OVERLAP
+- !Flag
+  optional: true
+  synonyms:
+  - --hide_mutations_outside_window_NHEJ
+  description: "This parameter allows to visualize only the mutations\noverlapping\
+    \ the cleavage site and used to classify a\nread as NHEJ. This parameter has no\
+    \ effect on the\nquanitification of the NHEJ. It may be helpful to mask\na pre-existing\
+    \ and known mutations or sequencing\nerrors outside the window used for quantification\
+    \ of\nNHEJ events. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window_around_sgrna
+  description: "Window(s) in bp around the cleavage position (half on\non each side)\
+    \ as determined by the provide guide RNA\nsequence to quantify the indels. Any\
+    \ indels outside\nthis window are excluded. A value of 0 disables this\nfilter.\
+    \ (default: 1)"
+  args: !SimpleFlagArg
+    name: WINDOW_AROUND_SGRNA
+- !Flag
+  optional: true
+  synonyms:
+  - --cleavage_offset
+  description: "Cleavage offset to use within respect to the 3' end of\nthe provided\
+    \ sgRNA sequence. Remember that the sgRNA\nsequence must be entered without the\
+    \ PAM. The default\nis -3 and is suitable for the SpCas9 system. For\nalternate\
+    \ nucleases, other cleavage offsets may be\nappropriate, for example, if using\
+    \ Cpf1 this parameter\nwould be set to 1. (default: -3)"
+  args: !SimpleFlagArg
+    name: CLEAVAGE_OFFSET
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude_bp_from_left
+  description: "Exclude bp from the left side of the amplicon sequence\nfor the quantification\
+    \ of the indels (default: 15)"
+  args: !SimpleFlagArg
+    name: EXCLUDE_BP_FROM_LEFT
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude_bp_from_right
+  description: "Exclude bp from the right side of the amplicon\nsequence for the quantification\
+    \ of the indels\n(default: 15)"
+  args: !SimpleFlagArg
+    name: EXCLUDE_BP_FROM_RIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - --hdr_perfect_alignment_threshold
+  description: "Sequence homology % for an HDR occurrence (default:\n98.0)"
+  args: !SimpleFlagArg
+    name: HDR_PERFECT_ALIGNMENT_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore_substitutions
+  description: "Ignore substitutions events for the quantification and\nvisualization\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore_insertions
+  description: "Ignore insertions events for the quantification and\nvisualization\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore_deletions
+  description: "Ignore deletions events for the quantification and\nvisualization\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --needle_options_string
+  description: "Override options for the Needle aligner (default:\n-gapopen=10 -gapextend=0.5\
+    \ -awidth3=5000)"
+  args: !SimpleFlagArg
+    name: NEEDLE_OPTIONS_STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --keep_intermediate
+  description: 'Keep all the intermediate files (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dump
+  description: "Dump numpy arrays and pandas dataframes to file for\ndebugging purposes\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --save_also_png
+  description: "Save also .png images additionally to .pdf files\n(default: False)\n"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "  \n~~~CRISPRessoPooled~~~\n-Analysis of CRISPR/Cas9 outcomes from POOLED\
@@ -201,3 +392,4 @@ help_text: "  \n~~~CRISPRessoPooled~~~\n-Analysis of CRISPR/Cas9 outcomes from P
   \   (default: False)\n"
 generated_using:
 - --help
+docker_image:

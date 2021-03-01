@@ -3,17 +3,17 @@ id: cassiopeeknife.cwl
 inputs:
 - id: in__sequence_convert
   doc: ': sequence to convert'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in__output_file
   doc: ': output file'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in__show_version
   doc: ': show version'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out__output_file
   doc: ': output file'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in__output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cassiopeeknife

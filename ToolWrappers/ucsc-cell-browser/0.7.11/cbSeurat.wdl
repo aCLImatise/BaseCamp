@@ -20,6 +20,9 @@ task CbSeurat {
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_it: "copy sample seurat.conf to current directory"
     expr_matrix: "gene-cell expression matrix file, possible formats:\\n.mtx, .txt.gz, .csv.gz, .rds. For .mtx, specify the\\ndirectory where the matrix.mtx file is stored, e.g.\\nfiltered_gene_bc_matrices/hg19/"

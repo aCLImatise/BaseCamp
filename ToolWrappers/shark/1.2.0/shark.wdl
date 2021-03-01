@@ -34,6 +34,9 @@ task Shark {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "reference sequences in FASTA format (can be gzipped)"
     sample_one: "sample in FASTQ (can be gzipped)"

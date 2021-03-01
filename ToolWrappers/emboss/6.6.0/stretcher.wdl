@@ -12,6 +12,9 @@ task Stretcher {
       ~{if (gap_open) then "-gapopen" else ""} \
       ~{if (gap_extend) then "-gapextend" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_file: "matrix     [EBLOSUM62 for protein, EDNAFULL for DNA]\\nThis is the scoring matrix file used when\\ncomparing sequences. By default it is the\\nfile 'EBLOSUM62' (for proteins) or the file\\n'EDNAFULL' (for nucleic sequences). These\\nfiles are found in the 'data' directory of\\nthe EMBOSS installation."
     gap_open: "integer    [12 for protein, 16 for nucleic] Gap penalty\\n(Positive integer)"

@@ -64,6 +64,9 @@ task Abysspaireddbg {
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""} \
       ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chastity: "discard unchaste reads [default]"
     no_chastity: "do not discard unchaste reads"

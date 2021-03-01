@@ -4,6 +4,9 @@ task StPinchesAndCactiTests {
   command <<<
     stPinchesAndCactiTests
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

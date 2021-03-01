@@ -14,6 +14,9 @@ task Canda {
       ~{out_file} \
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
     c_and_file: ""

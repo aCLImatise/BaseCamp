@@ -1,0 +1,214 @@
+!Command
+command:
+- genome_updater.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: v0.2.4
+  description: '-g Organism group (one or more comma-separated entries) [archaea,
+    bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate,
+    metagenomes (genbank), other (synthetic genomes - only genbank), plant, protozoa,
+    vertebrate_mammalian, vertebrate_other, viral (only refseq)]. Example: archaea,bacteria'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "[genbank, refseq]\nDefault: refseq"
+  args: !SimpleFlagArg
+    name: Database
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "Category [all, reference genome, representative genome, na]\nDefault:\
+    \ all"
+  args: !SimpleFlagArg
+    name: RefSeq
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: "level [all, Complete Genome, Chromosome, Scaffold, Contig]\nDefault:\
+    \ all"
+  args: !SimpleFlagArg
+    name: Assembly
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "formats [genomic.fna.gz,assembly_report.txt, ...]\ncheck ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt\
+    \ for all file formats\nDefault: assembly_report.txt"
+  args: !SimpleFlagArg
+    name: File
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  description: "of top references for each species/taxids to download [\"\", species:INT,\
+    \ taxids:INT]. Example: \"species:3\". Selection is based on 1) RefSeq Category,\
+    \ 2) Assembly level, 3) Relation to type material and 4) Date (most recent first)\n\
+    Default: \"\""
+  args: !SimpleFlagArg
+    name: Number
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: ', no data is downloaded or updated - just checks for available sequences
+    and changes'
+  args: !SimpleFlagArg
+    name: Dry-run
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: failed downloads or any incomplete data from a previous run, keep current
+    version
+  args: !SimpleFlagArg
+    name: Fix
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: the deletion of extra files if some are found in the repository folder
+  args: !SimpleFlagArg
+    name: Allow
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: of updated assembly accessions (Added/Removed, assembly accession,
+    url)
+  args: !SimpleFlagArg
+    name: Report
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: of updated sequence accessions (Added/Removed, assembly accession,
+    genbank accession, refseq accession, sequence length, taxid). Only available when
+    file assembly_report.txt selected and successfully downloaded
+  args: !SimpleFlagArg
+    name: Report
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: list of URLs for downloaded and failed files
+  args: !SimpleFlagArg
+    name: Output
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: the current version of the Taxonomy database (taxdump.tar.gz)
+  args: !SimpleFlagArg
+    name: Download
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "output directory\nDefault: ./tmp.XXXXXXXXXX"
+  args: !SimpleFlagArg
+    name: Working
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: "label\nDefault: current timestamp (YYYY-MM-DD_HH-MM-SS)"
+  args: !SimpleFlagArg
+    name: Version
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: "\"assembly_summary.txt\" file to recover data from\nDefault: \"\""
+  args: !SimpleFlagArg
+    name: External
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: 'Default: 1'
+  args: !SimpleFlagArg
+    name: Threads
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: MD5 for downloaded files
+  args: !SimpleFlagArg
+    name: Check
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: output
+  args: !SimpleFlagArg
+    name: Silent
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: output with download progress (%) and download version at the end
+  args: !SimpleFlagArg
+    name: Silent
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "exit status. Exit Code = 1 if more than N files failed to download\
+    \ (integer for file number, float for percentage, 0 -> off)\nDefault: 0"
+  args: !SimpleFlagArg
+    name: Conditional
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  description: print debug information and exit
+  args: !SimpleFlagArg
+    name: Print
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐\n│ ┬├┤ ││││ ││││├┤     │\
+  \ │├─┘ ││├─┤ │ ├┤ ├┬┘\n└─┘└─┘┘└┘└─┘┴ ┴└─┘────└─┘┴  ─┴┘┴ ┴ ┴ └─┘┴└─\n           \
+  \                          v0.2.4 \n\n -g Organism group (one or more comma-separated\
+  \ entries) [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian),\
+  \ invertebrate, metagenomes (genbank), other (synthetic genomes - only genbank),\
+  \ plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)].\
+  \ Example: archaea,bacteria\n    or Species level taxids (one or more comma-separated\
+  \ entries). Example: species:622,562\n    or Any level taxids - lineage will be\
+  \ generated (one or more comma-separated entries). Example: taxids:620,649776\n\n\
+  \ -d Database [genbank, refseq]\n\tDefault: refseq\n -c RefSeq Category [all, reference\
+  \ genome, representative genome, na]\n\tDefault: all\n -l Assembly level [all, Complete\
+  \ Genome, Chromosome, Scaffold, Contig]\n\tDefault: all\n -f File formats [genomic.fna.gz,assembly_report.txt,\
+  \ ...]\n\tcheck ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats\n\
+  \tDefault: assembly_report.txt\n -j Number of top references for each species/taxids\
+  \ to download [\"\", species:INT, taxids:INT]. Example: \"species:3\". Selection\
+  \ is based on 1) RefSeq Category, 2) Assembly level, 3) Relation to type material\
+  \ and 4) Date (most recent first)\n\tDefault: \"\"\n\n -k Dry-run, no data is downloaded\
+  \ or updated - just checks for available sequences and changes\n -i Fix failed downloads\
+  \ or any incomplete data from a previous run, keep current version\n -x Allow the\
+  \ deletion of extra files if some are found in the repository folder\n\n -u Report\
+  \ of updated assembly accessions (Added/Removed, assembly accession, url)\n -r Report\
+  \ of updated sequence accessions (Added/Removed, assembly accession, genbank accession,\
+  \ refseq accession, sequence length, taxid). Only available when file assembly_report.txt\
+  \ selected and successfully downloaded\n -p Output list of URLs for downloaded and\
+  \ failed files\n -a Download the current version of the Taxonomy database (taxdump.tar.gz)\n\
+  \n -o Working output directory \n\tDefault: ./tmp.XXXXXXXXXX\n -b Version label\n\
+  \tDefault: current timestamp (YYYY-MM-DD_HH-MM-SS)\n -e External \"assembly_summary.txt\"\
+  \ file to recover data from \n\tDefault: \"\"\n -t Threads\n\tDefault: 1\n\n -m\
+  \ Check MD5 for downloaded files\n -s Silent output\n -w Silent output with download\
+  \ progress (%) and download version at the end\n -n Conditional exit status. Exit\
+  \ Code = 1 if more than N files failed to download (integer for file number, float\
+  \ for percentage, 0 -> off)\n\tDefault: 0\n\n -D Print print debug information and\
+  \ exit\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/genome_updater:0.2.4--0

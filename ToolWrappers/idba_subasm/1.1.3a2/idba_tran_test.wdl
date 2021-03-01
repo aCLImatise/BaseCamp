@@ -52,6 +52,9 @@ task IdbaTranTest {
       ~{if defined(max_isoforms) then ("--max_isoforms " +  '"' + max_isoforms + '"') else ""} \
       ~{if defined(max_component_size) then ("--max_component_size " +  '"' + max_component_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "(=out)                   output directory"
     read: "fasta read file (<=512)"

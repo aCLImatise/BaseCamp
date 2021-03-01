@@ -40,6 +40,9 @@ task BcftoolsConcat {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     allow_overlaps: "First coordinate of the next file can precede last record of the current file."
     compact_ps: "Do not output PS tag at each site, only at the start of a new phase set block."

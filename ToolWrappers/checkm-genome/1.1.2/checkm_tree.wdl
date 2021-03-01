@@ -28,6 +28,9 @@ task CheckmTree {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reduced_tree: "use reduced tree (requires <16GB of memory) for determining lineage of each bin"
     ali: "generate HMMER alignment file for each bin"

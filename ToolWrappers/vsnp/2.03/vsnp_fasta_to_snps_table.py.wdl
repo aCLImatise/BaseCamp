@@ -12,6 +12,9 @@ task VsnpFastaToSnpsTablepy {
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "provide an aligned fasta"
     v: ""

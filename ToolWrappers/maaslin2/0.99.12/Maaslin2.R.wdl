@@ -34,6 +34,9 @@ task Maaslin2R {
       ~{if defined(plot_scatter) then ("--plot_scatter " +  '"' + plot_scatter + '"') else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_abundance: "The minimum abundance for each feature [ Default: 0 ]"
     min_prevalence: "The minimum percent of samples for whicha feature is detected at minimum abundance [ Default: 0.1 ]"

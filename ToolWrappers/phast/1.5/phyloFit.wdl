@@ -3,18 +3,18 @@ version 1.0
 task PhyloFit {
   input {
     File? features
-    Int? _tree_
-    Boolean? non_overlapping
-    String? precision
+    Int? _tree_hkyoutroot
     File? tree
     Int? subst_mod
     File? msa_format
+    File? out_root
     Int? min_informative
     Boolean? gaps_as_bases
     String? ignore_branches
     Boolean? quiet
     Boolean? lnl
     Boolean? em
+    String? precision
     String? log
     String? in_it_model
     Boolean? in_it_random
@@ -40,6 +40,7 @@ task PhyloFit {
     String? do_cats
     String? reverse_groups
     Boolean? markov
+    Boolean? non_overlapping
     Int? label_branches
     String? label_subtree
     Boolean? alt_model
@@ -56,18 +57,18 @@ task PhyloFit {
     phyloFit \
       ~{frequencies_dot} \
       ~{if defined(features) then ("--features " +  '"' + features + '"') else ""} \
-      ~{if defined(_tree_) then ("-o " +  '"' + _tree_ + '"') else ""} \
-      ~{if (non_overlapping) then "--non-overlapping" else ""} \
-      ~{if defined(precision) then ("--precision " +  '"' + precision + '"') else ""} \
+      ~{if defined(_tree_hkyoutroot) then ("-o " +  '"' + _tree_hkyoutroot + '"') else ""} \
       ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""} \
       ~{if defined(subst_mod) then ("--subst-mod " +  '"' + subst_mod + '"') else ""} \
       ~{if defined(msa_format) then ("--msa-format " +  '"' + msa_format + '"') else ""} \
+      ~{if defined(out_root) then ("--out-root " +  '"' + out_root + '"') else ""} \
       ~{if defined(min_informative) then ("--min-informative " +  '"' + min_informative + '"') else ""} \
       ~{if (gaps_as_bases) then "--gaps-as-bases" else ""} \
       ~{if defined(ignore_branches) then ("--ignore-branches " +  '"' + ignore_branches + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (lnl) then "--lnl" else ""} \
       ~{if (em) then "--EM" else ""} \
+      ~{if defined(precision) then ("--precision " +  '"' + precision + '"') else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if defined(in_it_model) then ("--init-model " +  '"' + in_it_model + '"') else ""} \
       ~{if (in_it_random) then "--init-random" else ""} \
@@ -93,6 +94,7 @@ task PhyloFit {
       ~{if defined(do_cats) then ("--do-cats " +  '"' + do_cats + '"') else ""} \
       ~{if defined(reverse_groups) then ("--reverse-groups " +  '"' + reverse_groups + '"') else ""} \
       ~{if (markov) then "--markov" else ""} \
+      ~{if (non_overlapping) then "--non-overlapping" else ""} \
       ~{if defined(label_branches) then ("--label-branches " +  '"' + label_branches + '"') else ""} \
       ~{if defined(label_subtree) then ("--label-subtree " +  '"' + label_subtree + '"') else ""} \
       ~{if (alt_model) then "--alt-model" else ""} \
@@ -104,20 +106,23 @@ task PhyloFit {
       ~{if (windows) then "--windows" else ""} \
       ~{if defined(windows_explicit) then ("--windows-explicit " +  '"' + windows_explicit + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     features: "Annotations file (GFF or BED format) describing features on\\none or more sequences in the alignment.  Together with a\\ncategory map (see --catmap), will be taken to define site\\ncategories, and a separate model will be estimated for each\\ncategory.  If no category map is specified, a category will be\\nassumed for each type of feature, and they will be numbered in\\nthe order of appearance of the features.  Features are assumed\\nto use the coordinate frame of the first sequence in the\\nalignment and should be non-overlapping (see 'refeature\\n--unique')."
-    _tree_: "\\\").\\nphyloFit --tree \\\"((human,chimp),(mouse,rat))\\\" --subst-mod HKY85\\n--out-root myfile --nrates 4 --msa-format SS\\nprimate-rodent.ss"
-    non_overlapping: "(for use with context-dependent substitution models; not\\ncompatible with --markov, --features, or\\n--msa-format SS) Avoid using overlapping tuples of sites\\nin parameter estimation.  If a dinucleotide model is selected,\\nevery other tuple will be considered, and if a nucleotide\\ntriplet model is selected, every third tuple will be\\nconsidered.  This option cannot be used with an alignment\\nrepresented only by unordered sufficient statistics."
-    precision: "|MED|LOW\\n(default HIGH) Level of precision to use in estimating model\\nparameters.  Affects convergence criteria for iterative\\nalgorithms: higher precision means more iterations and longer\\nexecution time."
+    _tree_hkyoutroot: "\\\").\\nphyloFit --tree \\\"((human,chimp),(mouse,rat))\\\" --subst-mod HKY85\\n--out-root myfile --nrates 4 --msa-format SS\\nprimate-rodent.ss"
     tree: "|<tree_string>\\n(Required if more than three species, or more than two species\\nand a non-reversible substitution model, e.g., UNREST, U2, U3)\\nName of file or literal string defining tree topology.  Tree\\nmust be in Newick format, with the label at each leaf equal to\\nthe index or name of the corresponding sequence in the alignment\\n(indexing begins with 1).  Examples: --tree \\\"(1,(2,3))\\\",\\n--tree \\\"(human,(mouse,rat))\\\".  Currently, the topology must be\\nrooted.  When a reversible substitution model is used, the root\\nis ignored during the optimization procedure."
     subst_mod: "|F81|HKY85|HKY85+Gap|REV|SSREV|UNREST|R2|R2S|U2|U2S|R3|R3S|U3|U3S\\n(default REV).  Nucleotide substitution model.  JC69, F81, HKY85\\nREV, and UNREST have the usual meanings (see, e.g., Yang,\\nGoldman, and Friday, 1994).  SSREV is a strand-symmetric version\\nof REV.  HKY85+Gap is an adaptation of HKY that treats gaps as a\\nfifth character (courtesy of James Taylor).  The others, all\\nconsidered \\\"context-dependent\\\", are as defined in Siepel and\\nHaussler, 2004.  The options --EM and --precision MED are\\nrecommended with context-dependent models (see below)."
     msa_format: "|PHYLIP|MPM|MAF|SS\\n(default is to guess format from file contents) Alignment format.\\nFASTA is as usual.  PHYLIP is compatible with the formats used in\\nthe PHYLIP and PAML packages.  MPM is the format used by the\\nMultiPipMaker aligner and some other of Webb Miller's older tools.\\nMAF (\\\"Multiple Alignment Format\\\") is used by MULTIZ/TBA and the\\nUCSC Genome Browser.  SS is a simple format describing the\\nsufficient statistics for phylogenetic inference (distinct columns\\nor tuple of columns and their counts).  Note that the program\\n\\\"msa_view\\\" can be used for file conversion."
+    out_root: "(default \\\"phyloFit\\\").  Use specified string as root filename\\nfor all files created."
     min_informative: "Require at least <ninf_sites> \\\"informative\\\" sites -- i.e.,\\nsites at which at least two non-gap and non-missing-data ('N'\\nor '*') characters are present.  Default is 50."
     gaps_as_bases: "Treat alignment gap characters ('-') like ordinary bases.  By\\ndefault, they are treated as missing data."
     ignore_branches: "Ignore specified branches in likelihood computations and parameter\\nestimation, and treat the induced subtrees as independent.  Can be\\nuseful for likelihood ratio tests.  The argument <branches> should\\nbe a comma-separated list of nodes in the tree, indicating the\\nbranches above these nodes, e.g., human-chimp,cow-dog.  (See\\ntree_doctor --name-ancestors regarding names for ancestral nodes.)\\nThis option does not currently work with --EM."
     quiet: "Proceed quietly."
     lnl: "(for use with --init-model) Simply evaluate the log likelihood of\\nthe specified tree model, without performing any further\\noptimization.  Can be used with --post-probs, --expected-subs, and\\n--expected-total-subs."
     em: "Fit model(s) using EM rather than the BFGS quasi-Newton\\nalgorithm (the default)."
+    precision: "|MED|LOW\\n(default HIGH) Level of precision to use in estimating model\\nparameters.  Affects convergence criteria for iterative\\nalgorithms: higher precision means more iterations and longer\\nexecution time."
     log: "Write log to <log_fname> describing details of the optimization\\nprocedure."
     in_it_model: "Initialize with specified tree model.  By choosing good\\nstarting values for parameters, it is possible to reduce\\nexecution time dramatically.  If this option is chosen, --tree\\nis not allowed.  The substitution model used in the given\\nmodel will be used unless --subst-mod is also specified.\\nNote: currently only one mod_fname may be specified; it will be\\nused for all categories."
     in_it_random: "Initialize parameters randomly.  Can be used multiple times to test\\nwhether the m.l.e. is real."
@@ -143,6 +148,7 @@ task PhyloFit {
     do_cats: "(optionally use with --features) Estimate models for only the\\nspecified categories (comma-delimited list categories, by name\\nor numbera).  Default is to fit a model for every category."
     reverse_groups: "(optionally use with --features) Group features by <tag> (e.g.,\\n\\\"transcript_id\\\" or \\\"exon_id\\\") and reverse complement\\nsegments of the alignment corresponding to groups on the\\nreverse strand.  Groups must be non-overlapping (see refeature\\n--unique).  Useful with categories corresponding to\\nstrand-specific phenomena (e.g., codon positions)."
     markov: "(for use with context-dependent substitutions models and not\\navailable with --EM.)  Assume Markov dependence of alignment\\ncolumns, and compute the conditional probability of each\\ncolumn given its N-1 predecessors using the two-pass algorithm\\ndescribed by Siepel and Haussler (2004).  (Here, N is the\\n\\\"order\\\" of the model, as defined by --subst-mod; e.g., N=1\\nfor REV, N=2 for U2S, N=3 for U3S.) The alternative (the\\ndefault) is simply to work with joint probabilities of tuples\\nof columns.  (You can ensure that these tuples are\\nnon-overlapping with the --non-overlapping option.)  The use\\nof joint probabilities during parameter estimation allows the\\nuse of the --EM option and can be much faster; in addition, it\\nappears to produce nearly equivalent estimates.  If desired,\\nparameters can be estimated without --markov, and\\nthen the likelihood can be evaluated using --lnl and\\n--markov together.  This gives a lower bound on the\\nlikelihood of the Markov-dependent model."
+    non_overlapping: "(for use with context-dependent substitution models; not\\ncompatible with --markov, --features, or\\n--msa-format SS) Avoid using overlapping tuples of sites\\nin parameter estimation.  If a dinucleotide model is selected,\\nevery other tuple will be considered, and if a nucleotide\\ntriplet model is selected, every third tuple will be\\nconsidered.  This option cannot be used with an alignment\\nrepresented only by unordered sufficient statistics."
     label_branches: ",branch2,branch3...:label\\nCreate a group of branches by giving a set of branches a\\nsingle label.  The label should be a word which does not\\ncontain special characters (in particular, no spaces, brackets,\\nparentheses, pound signs, commas, or colons).\\nThe label is for use with --alt-model option below, so that an\\nalternate model can be defined for a set of branches.  A branch\\nis specified by the name of the node which is a descendant of\\nthat branch.\\nFor example,\\n--label-branches hg18,chimp,hg18-chimp:HC\\nwill apply the label \\\"HC\\\" to the hg18,chimp,and hg18-chimp\\nbranches in the following tree:\\n(((hg18,chimp)hg18-chimp, (mouse,rat)mouse-rat)\\nThe same label could be defined without using --label-branches\\nby specifing the tree (either on the command-line or within\\ninit-model) as follows:\\n(((hg18 # HC, chimp #HC)#HC, (mouse,rat))"
     label_subtree: "[+]:label\\nSimilar to label-branches, except labels the entire subtree\\nof the named node.  If the node name is followed by a \\\"+\\\" sign,\\nthen includes the branch leading up to the node in the subtree."
     alt_model: "<label:(model|param_list)>\\nCreate a lineage-specific substitution model on a group of branches.\\nThe group is defined by a label, which can be specified within\\nthe tree string (using the # sign notation), or by using the\\n--label-branches or --label-subtree arguments.  If the alt-model\\napplies to only a single branch, labelling is not necessary and\\nthe name of the node descending from the branch can be used instead.\\nSee --label-branches above for more details on labelling groups of\\nbranches.\\nIf a name of a substitution model (HKY85, REV, UNREST, etc)\\nis given after the colon, then this model will be used for the\\ngroup of branches, and parameters relevant to the model will be\\nestimated separately in this group.  This model may be different\\n(or the same) as the model used in the rest of the tree, but it\\nmust have the same number of states and be of the same order as\\nthe model used for the rest of the tree.\\nAlternately, a list of parameter names can be given after the colon.\\nIn this case, the same substitution model will be used for the\\nentire tree, but the parameters listed will be estimated separately\\nin the specified group of branches.\\nThe parameter names are model-specific, and include \\\"kappa\\\" for\\nHKY models, \\\"alpha\\\" for GC models, \\\"ratematrix\\\" to specify\\nall rate-matrix parameters in general models, and \\\"backgd\\\" for\\nthe equilibrium background frequencies.  The parameter names\\nmay optionally be followed by boundaries in square brackets to\\nspecify parameter bounds, as described in --bound option.\\nThe --alt-model argument may be used multiple times, if one\\nwishes to (for example) optimize a parameter independently\\non several different groups of branches.\\nExample:\\nphyloFit align.fa --subst-mod HKY85 \\\\n--tree \\\"(human, (mouse#MR, rat#MR)#MR, cow)\\\"\\\\n--alt-model \\\"MR:kappa[0, 1]\\\"\\nwill estimate the HKY85 parameter kappa separately on the\\nmouse/rat subtree, and constrain kappa between 0 and 1.  The\\nquotes are often necessary to prevent the square brakcets from\\nbeing parsed by the shell.  The same model could be achieved with:\\nphyloFit align.fa --subst-mod HKY85 \\\\n--tree \\\"(human, (mouse,rat)mouse-rat, cow)\\\"\\\\n--label-branches mouse,rat,mouse-rat:MR \\\\n--alt-model \\\"MR:kappa[0,1]\\\"\\nor\\nphyloFit align.fa --subst-mod HKY85 \\\\n--tree \\\"(human, (mouse,rat)mouse-rat, cow)\\\" \\\\n--label-subtree \\\"mouse-rat+:MR\\\" \\\\n--alt-model \\\"MR:kappa[0,1]\\\""

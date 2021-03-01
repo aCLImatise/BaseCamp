@@ -22,6 +22,9 @@ task PeakPiepy {
       ~{if (exclude) then "--exclude" else ""} \
       ~{if defined(thresh) then ("--thresh " +  '"' + thresh + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "BED file of e.g. peaks"
     gff: "GFF file of e.g. annotations"

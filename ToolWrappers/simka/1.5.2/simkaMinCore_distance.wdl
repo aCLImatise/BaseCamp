@@ -24,6 +24,9 @@ task SimkaMinCoreDistance {
       ~{if (n_i) then "-n-i" else ""} \
       ~{if (n_j) then "-n-j" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_one: "(1 arg) :    filename to a sketch file to compare with -in2"
     in_two: "(1 arg) :    filename to a sketch file to compare with -in1"

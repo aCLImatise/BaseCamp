@@ -12,6 +12,9 @@ task ArrowAnnotationsAddFeature {
       ~{if defined(organism) then ("--organism " +  '"' + organism + '"') else ""} \
       ~{if defined(sequence) then ("--sequence " +  '"' + sequence + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     feature: "Feature information"
     organism: "Organism Common Name"

@@ -2,7 +2,7 @@ version 1.0
 
 task Sim4db {
   input {
-    Boolean? print_status_running
+    Boolean? print_status_stderr
     Boolean? print_script_lines_stderr
     Boolean? yn
     Boolean? cdna
@@ -33,7 +33,7 @@ task Sim4db {
   }
   command <<<
     sim4db \
-      ~{if (print_status_running) then "-v" else ""} \
+      ~{if (print_status_stderr) then "-v" else ""} \
       ~{if (print_script_lines_stderr) then "-V" else ""} \
       ~{if (yn) then "-YN" else ""} \
       ~{if (cdna) then "-cdna" else ""} \
@@ -62,8 +62,11 @@ task Sim4db {
       ~{if (ma) then "-Ma" else ""} \
       ~{if (mp) then "-Mp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    print_status_running: "print status to stderr while running"
+    print_status_stderr: "print status to stderr while running"
     print_script_lines_stderr: "print script lines (stderr) as they are processed"
     yn: "print script lines (to given file) as they are processed, annotated with yes/no"
     cdna: "use these cDNA sequences"

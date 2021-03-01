@@ -28,6 +28,9 @@ task ScranbuildsnngraphR {
       ~{if defined(use_dim_red) then ("--use-dimred " +  '"' + use_dim_red + '"') else ""} \
       ~{if defined(output_i_graph_object) then ("--output-igraph-object " +  '"' + output_i_graph_object + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sce_object: "Path to the input SCE object in rds format."
     shared: "Logical specifying wether to compute a Shared NN Graph (if shared=TRUE) or a kNN Graph(if shared=FALSE)."

@@ -46,6 +46,9 @@ task BpBiofetchGenbankProxypl {
       ~{_dbj_idjhsfos} \
       ~{var_19}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Option  : db"
     _database_name: ": database name"

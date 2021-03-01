@@ -12,6 +12,9 @@ task Gdtopng {
       ~{filename_dot_gd} \
       ~{filename_dot_png}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gd_to_png: ""
     filename_dot_gd: ""

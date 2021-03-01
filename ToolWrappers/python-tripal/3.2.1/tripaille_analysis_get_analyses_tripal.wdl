@@ -8,6 +8,9 @@ task TripailleAnalysisGetAnalysesTripal {
     tripaille analysis get_analyses_tripal \
       ~{if defined(analysis_id) then ("--analysis_id " +  '"' + analysis_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     analysis_id: "An analysis entity/node ID"
   }

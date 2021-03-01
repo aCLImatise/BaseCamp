@@ -3,27 +3,27 @@ id: map2assembly.cwl
 inputs:
 - id: in_cpus
   doc: '|c  <integer>  Tells how many cpus to use for BLAST analysis.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -cpus
 - id: in_retry
   doc: '|r <integer>  Rerun failed contigs up to the specified count.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -retry
 - id: in_force
   doc: '|f            Delete old files before running again.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -force
 - id: in_again
   doc: '|a            Run again without deleting files.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -again
 - id: in_quiet
   doc: '|q            Silences most status messages.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -quiet
 - id: in_maps
@@ -80,6 +80,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - map2assembly

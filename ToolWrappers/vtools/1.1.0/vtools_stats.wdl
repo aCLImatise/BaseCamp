@@ -8,6 +8,9 @@ task Vtoolsstats {
     vtools_stats \
       ~{if defined(input_vcf_file) then ("--input " +  '"' + input_vcf_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_vcf_file: "Input VCF file  [required]"
   }

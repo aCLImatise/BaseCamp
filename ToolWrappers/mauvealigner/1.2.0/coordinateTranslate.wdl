@@ -10,6 +10,9 @@ task CoordinateTranslate {
       ~{x_mfa_alignment} \
       ~{alignment_coordinate_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     x_mfa_alignment: ""
     alignment_coordinate_file: ""

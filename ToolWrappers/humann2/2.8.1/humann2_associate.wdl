@@ -18,6 +18,9 @@ task Humann2Associate {
       ~{if defined(where_save_output) then ("--output " +  '"' + where_save_output + '"') else ""} \
       ~{if defined(fdr) then ("--fdr " +  '"' + fdr + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     humann_table_metadata: "HUMAnN2 table with metadata rows at the top"
     focal_meta_datum: "Indicate metadatum to test vs. community feature totals"

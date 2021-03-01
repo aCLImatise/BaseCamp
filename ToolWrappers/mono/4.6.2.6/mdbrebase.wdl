@@ -22,6 +22,9 @@ task Mdbrebase {
       ~{if defined(output_pattern) then ("--output-pattern " +  '"' + output_pattern + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_directory_mdb: "Output directory to the mdb file, replace existing\\none if ommited"
     verbose: "Be verbose with output (show individual path\\nrewrites)"

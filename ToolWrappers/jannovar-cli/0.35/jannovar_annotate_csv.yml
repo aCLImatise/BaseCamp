@@ -1,0 +1,197 @@
+!Command
+command:
+- jannovar
+- annotate-csv
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: jannovar-cli
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: annotate-csv
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - -a
+  description: '[-t {Default,TDF,RFC4180,Excel,MySQL}]'
+  args: !SimpleFlagArg
+    name: REF
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --database
+  description: Path to database .ser file
+  args: !SimpleFlagArg
+    name: DATABASE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: CSV file
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chr
+  description: Column of chr (1 based)
+  args: !SimpleFlagArg
+    name: CHR
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pos
+  description: Column of pos (1 based)
+  args: !SimpleFlagArg
+    name: POS
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --ref
+  description: Column of ref (1 based)
+  args: !SimpleFlagArg
+    name: REF
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --alt
+  description: Column of alt (1 based)
+  args: !SimpleFlagArg
+    name: ALT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --type
+  description: Type of csv file.
+  args: !ChoiceFlagArg
+    choices: !!set
+      Excel:
+      RFC4180:
+      MySQL:
+      Default:
+      TDF:
+- !Flag
+  optional: true
+  synonyms:
+  - --header
+  description: Set if the file contains a header.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --show-all
+  description: Show all effects
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-3-prime-shifting
+  description: Disable shifting towards 3' of transcript
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --3-letter-amino-acids
+  description: Enable usage of 3 letter amino acid codes
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --report-no-progress
+  description: Disable progress report, more quiet mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Enable verbose mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -vv
+  - --very-verbose
+  description: Enable very verbose mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --http-proxy
+  description: Set HTTP proxy to use, if any
+  args: !SimpleFlagArg
+    name: HTTP_PROXY
+- !Flag
+  optional: true
+  synonyms:
+  - --https-proxy
+  description: Set HTTPS proxy to use, if any
+  args: !SimpleFlagArg
+    name: HTTPS_PROXY
+- !Flag
+  optional: true
+  synonyms:
+  - --ftp-proxy
+  description: Set FTP proxy to use, if any
+  args: !SimpleFlagArg
+    name: FTP_PROXY
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show Jannovar version
+  args: !EmptyFlagArg {}
+help_text: "usage: jannovar-cli annotate-csv [-h] -d DATABASE -i INPUT -c CHR -p POS\n\
+  \                    -r REF -a ALT [-t {Default,TDF,RFC4180,Excel,MySQL}]\n    \
+  \                [--header] [--show-all] [--no-3-prime-shifting]\n             \
+  \       [--3-letter-amino-acids] [--version]\n                    [--report-no-progress]\
+  \ [-v] [-vv]\n                    [--http-proxy HTTP_PROXY] [--https-proxy HTTPS_PROXY]\n\
+  \                    [--ftp-proxy FTP_PROXY]\n\nPerform annotation of genomic changes\
+  \ given on the command line\n\noptional arguments:\n  -h, --help             show\
+  \ this help message and exit\n  --version              Show Jannovar version\n\n\
+  Required arguments:\n  -d DATABASE, --database DATABASE\n                      \
+  \   Path to database .ser file\n  -i INPUT, --input INPUT\n                    \
+  \     CSV file\n  -c CHR, --chr CHR      Column of chr (1 based)\n  -p POS, --pos\
+  \ POS      Column of pos (1 based)\n  -r REF, --ref REF      Column of ref (1 based)\n\
+  \  -a ALT, --alt ALT      Column of alt (1 based)\n\nAdditional CSV arguments (optional):\n\
+  \  -t {Default,TDF,RFC4180,Excel,MySQL}, --type {Default,TDF,RFC4180,Excel,MySQL}\n\
+  \                         Type of csv file. \n  --header               Set if the\
+  \ file contains a header. \n\nOptional Arguments:\n  --show-all             Show\
+  \ all effects\n  --no-3-prime-shifting  Disable shifting towards 3' of transcript\n\
+  \  --3-letter-amino-acids\n                         Enable usage of 3 letter amino\
+  \ acid codes\n\nVerbosity Options:\n  --report-no-progress   Disable progress report,\
+  \ more quiet mode\n  -v, --verbose          Enable verbose mode\n  -vv, --very-verbose\
+  \    Enable very verbose mode\n\nProxy Options:\n  Configuration related to Proxy,\
+  \  note  that environment variables *_proxy\n  and *_PROXY are also interpreted\n\
+  \n  --http-proxy HTTP_PROXY\n                         Set HTTP proxy to use, if\
+  \ any\n  --https-proxy HTTPS_PROXY\n                         Set HTTPS proxy to\
+  \ use, if any\n  --ftp-proxy FTP_PROXY  Set FTP proxy to use, if any\n\nExample:\
+  \ java -jar Jannovar.jar annotate-csv -d hg19_refseq.ser -c 1 -p 2 -\nr 3 -r 4 -t\
+  \ TDF --header -i input.csv\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/jannovar-cli:0.35--0

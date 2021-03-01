@@ -3,12 +3,12 @@ id: iu_deinterleave_fastq.cwl
 inputs:
 - id: in_two
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: '-2'
 - id: in_one
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: '-1'
 - id: in_fast_q
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - iu-deinterleave-fastq

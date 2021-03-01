@@ -8,6 +8,9 @@ task OrthomclReduceFasta {
     orthomclReduceFasta \
       ~{fast_a_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_file: ""
   }

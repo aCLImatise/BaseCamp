@@ -10,6 +10,9 @@ task BaitFisher {
       ~{parameter_file} \
       ~{gff_file_test}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     parameter_file: ""
     gff_file_test: ""

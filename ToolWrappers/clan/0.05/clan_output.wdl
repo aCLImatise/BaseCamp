@@ -22,6 +22,9 @@ task ClanOutput {
       ~{if (o) then "-o" else ""} \
       ~{if (i) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     f: ""

@@ -9,7 +9,7 @@ task Df {
     Boolean? like__blocksizek
     Boolean? local
     Boolean? no_sync
-    Boolean? use_output_format_defined
+    Boolean? use_output_format
     Boolean? portability
     Boolean? sync
     Boolean? total
@@ -27,7 +27,7 @@ task Df {
       ~{if (like__blocksizek) then "-k" else ""} \
       ~{if (local) then "--local" else ""} \
       ~{if (no_sync) then "--no-sync" else ""} \
-      ~{if (use_output_format_defined) then "--output" else ""} \
+      ~{if (use_output_format) then "--output" else ""} \
       ~{if (portability) then "--portability" else ""} \
       ~{if (sync) then "--sync" else ""} \
       ~{if (total) then "--total" else ""} \
@@ -36,6 +36,9 @@ task Df {
       ~{if defined(exclude_type) then ("--exclude-type " +  '"' + exclude_type + '"') else ""} \
       ~{if (ignored) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "include pseudo, duplicate, inaccessible file systems"
     block_size: "scale sizes by SIZE before printing them; e.g.,\\n'-BM' prints sizes in units of 1,048,576 bytes;\\nsee SIZE format below"
@@ -44,7 +47,7 @@ task Df {
     like__blocksizek: "like --block-size=1K"
     local: "limit listing to local file systems"
     no_sync: "do not invoke sync before getting usage info (default)"
-    use_output_format_defined: "[=FIELD_LIST]  use the output format defined by FIELD_LIST,\\nor print all fields if FIELD_LIST is omitted."
+    use_output_format: "[=FIELD_LIST]  use the output format defined by FIELD_LIST,\\nor print all fields if FIELD_LIST is omitted."
     portability: "use the POSIX output format"
     sync: "invoke sync before getting usage info"
     total: "elide all entries insignificant to available space,\\nand produce a grand total"

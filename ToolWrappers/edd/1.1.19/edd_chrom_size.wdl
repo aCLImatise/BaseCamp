@@ -16,6 +16,9 @@ task EddChromSize {
       ~{if defined(n) then ("-n " +  '"' + n + '"') else ""} \
       ~{if defined(bin_size) then ("--bin-size " +  '"' + bin_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fdr: ""
     p: ""

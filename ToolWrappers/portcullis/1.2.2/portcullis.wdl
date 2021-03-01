@@ -10,6 +10,9 @@ task Portcullis {
       ~{junctions} \
       ~{if (print_extra_information) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_extra_information: "[ --verbose ]      Print extra information"
     junctions: "Usage: portcullis [options] <mode> <mode_args>"

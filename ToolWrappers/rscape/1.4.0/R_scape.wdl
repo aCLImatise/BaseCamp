@@ -3,7 +3,7 @@ version 1.0
 task Rscape {
   input {
     Int? eval_max_expected
-    Boolean? twoset_test_basepairs
+    Boolean? test_basepairs_other
     Boolean? structured
     Boolean? sample_contacts
     Boolean? sample_bp
@@ -18,9 +18,9 @@ task Rscape {
     Boolean? one_msa
     Boolean? no_figures
     Boolean? roc
-    Float? filter_seqs_xseqcons
-    Float? var_17
-    Float? var_18
+    Float? filter_xseqcons_residues
+    Float? require_d_
+    Float? require_seqs_
     Int? t_start
     Int? tend
     Boolean? consensus
@@ -113,7 +113,7 @@ task Rscape {
       ~{expectation} \
       ~{msa_file} \
       ~{if defined(eval_max_expected) then ("-E " +  '"' + eval_max_expected + '"') else ""} \
-      ~{if (twoset_test_basepairs) then "-s" else ""} \
+      ~{if (test_basepairs_other) then "-s" else ""} \
       ~{if (structured) then "--structured" else ""} \
       ~{if (sample_contacts) then "--samplecontacts" else ""} \
       ~{if (sample_bp) then "--samplebp" else ""} \
@@ -128,9 +128,9 @@ task Rscape {
       ~{if (one_msa) then "--onemsa" else ""} \
       ~{if (no_figures) then "--nofigures" else ""} \
       ~{if (roc) then "--roc" else ""} \
-      ~{if defined(filter_seqs_xseqcons) then ("-F " +  '"' + filter_seqs_xseqcons + '"') else ""} \
-      ~{if defined(var_17) then ("-I " +  '"' + var_17 + '"') else ""} \
-      ~{if defined(var_18) then ("-i " +  '"' + var_18 + '"') else ""} \
+      ~{if defined(filter_xseqcons_residues) then ("-F " +  '"' + filter_xseqcons_residues + '"') else ""} \
+      ~{if defined(require_d_) then ("-I " +  '"' + require_d_ + '"') else ""} \
+      ~{if defined(require_seqs_) then ("-i " +  '"' + require_seqs_ + '"') else ""} \
       ~{if defined(t_start) then ("--tstart " +  '"' + t_start + '"') else ""} \
       ~{if defined(tend) then ("--tend " +  '"' + tend + '"') else ""} \
       ~{if (consensus) then "--consensus" else ""} \
@@ -206,9 +206,12 @@ task Rscape {
       ~{if defined(pm_ass) then ("--pmass " +  '"' + pm_ass + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     eval_max_expected: ": Eval: max expected number of covNBPs allowed  [0.05]  (x>=0)"
-    twoset_test_basepairs: ": two-set test: basepairs / all other pairs. Requires a given structure"
+    test_basepairs_other: ": two-set test: basepairs / all other pairs. Requires a given structure"
     structured: ": This is a structural RNA of unknown structure"
     sample_contacts: ": basepair-set sample size is all contacts (default for amino acids)"
     sample_bp: ": basepair-set sample size is all 12-type basepairs (default for RNA/DNA)"
@@ -223,9 +226,9 @@ task Rscape {
     one_msa: ": if file has more than one msa, analyze only the first one"
     no_figures: ": do not produce R2R and dotplot outputs"
     roc: ": write .roc file"
-    filter_seqs_xseqcons: ": filter out seqs <x*seq_cons residues  (0<x<=1.0)"
-    var_17: ": require seqs to have < <x> id  [1.0]  (0<x<=1.0)"
-    var_18: ": require seqs to have >= <x> id  (0<=x<1.0)"
+    filter_xseqcons_residues: ": filter out seqs <x*seq_cons residues  (0<x<=1.0)"
+    require_d_: ": require seqs to have < <x> id  [1.0]  (0<x<=1.0)"
+    require_seqs_: ": require seqs to have >= <x> id  (0<=x<1.0)"
     t_start: ": min alignment position to analyze [1..alen]  (n>0)"
     tend: ": max alignment position to analyze [1..alen]  (n>0)"
     consensus: ": analyze only consensus (seq_cons) positions"

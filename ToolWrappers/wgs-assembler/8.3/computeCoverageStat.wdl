@@ -7,8 +7,8 @@ task ComputeCoverageStat {
     Int? optional_assume_s
     String? recommended_prefix_output
     Boolean? update_tigstore_default
-    Boolean? estimate_based_n
-    Boolean? leniant_require_start
+    Boolean? estimate_based_use
+    Boolean? be_leniant_require
     String version
   }
   command <<<
@@ -19,17 +19,20 @@ task ComputeCoverageStat {
       ~{if defined(optional_assume_s) then ("-s " +  '"' + optional_assume_s + '"') else ""} \
       ~{if defined(recommended_prefix_output) then ("-o " +  '"' + recommended_prefix_output + '"') else ""} \
       ~{if (update_tigstore_default) then "-n" else ""} \
-      ~{if (estimate_based_n) then "-u" else ""} \
-      ~{if (leniant_require_start) then "-L" else ""}
+      ~{if (estimate_based_use) then "-u" else ""} \
+      ~{if (be_leniant_require) then "-L" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mandatory_path_g: "Mandatory, path G to a gkpStore directory."
     mandatory_path_t: "<v> Mandatory, path T to a tigStore, and version V."
     optional_assume_s: "Optional, assume genome size S."
     recommended_prefix_output: "Recommended, prefix for output files."
     update_tigstore_default: "Do not update the tigStore (default = do update)."
-    estimate_based_n: "Do not estimate based on N50 (default = use N50)."
-    leniant_require_start: "Be leniant; don't require reads start at position zero."
+    estimate_based_use: "Do not estimate based on N50 (default = use N50)."
+    be_leniant_require: "Be leniant; don't require reads start at position zero."
     version: ""
   }
   output {

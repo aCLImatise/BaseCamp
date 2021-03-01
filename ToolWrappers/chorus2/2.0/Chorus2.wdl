@@ -32,6 +32,9 @@ task Chorus2 {
       ~{if defined(docker) then ("--docker " +  '"' + docker + '"') else ""} \
       ~{if defined(ploidy) then ("--ploidy " +  '"' + ploidy + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jellyfish: "The path where Jellyfish software installed"
     bwa: "The path where BWA software installed"

@@ -28,6 +28,9 @@ task HomGeneMapping {
       ~{if defined(print_homologs) then ("--printHomologs " +  '"' + print_homologs + '"') else ""} \
       ~{if defined(dbaccess) then ("--dbaccess " +  '"' + dbaccess + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hal_file: "input hal file"
     gt_fs: "a text file containing the locations of the input gene files\\nand optionally the hints files (both in GTF format).\\nThe file is formatted as follows:\\nname_of_genome_1  path/to/genefile/of/genome_1  path/to/hintsfile/of/genome_1\\nname_of_genome_2  path/to/genefile/of/genome_2  path/to/hintsfile/of/genome_2\\n...\\nname_of_genome_N  path/to/genefile/of/genome_N  path/to/hintsfile/of/genome_N"

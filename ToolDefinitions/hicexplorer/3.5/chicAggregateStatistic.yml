@@ -4,75 +4,92 @@ command:
 positional: []
 named:
 - !Flag
-  description: "path to the interaction files which should be used for\naggregation\
-    \ of the statistics."
+  optional: true
   synonyms:
   - --interactionFile
   - -if
+  description: "path to the interaction files which should be used for\naggregation\
+    \ of the statistics."
   args: !RepeatFlagArg
     name: INTERACTIONFILE
-  optional: true
 - !Flag
-  description: "path to the target files which contains the target\nregions to prepare\
-    \ data for differential analysis."
+  optional: true
   synonyms:
   - --targetFile
   - -tf
+  description: "path to the target files which contains the target\nregions to prepare\
+    \ data for differential analysis."
   args: !RepeatFlagArg
     name: TARGETFILE
-  optional: true
 - !Flag
-  description: File name suffix to save the result.
+  optional: true
   synonyms:
   - --outFileNameSuffix
   - -suffix
+  description: File name suffix to save the result.
   args: !SimpleFlagArg
     name: OUTFILENAMESUFFIX
-  optional: true
 - !Flag
-  description: "Folder where the interaction files are stored. Applies\nonly for batch\
-    \ mode."
+  optional: true
   synonyms:
   - --interactionFileFolder
   - -iff
+  description: "Folder where the interaction files are stored. Applies\nonly for batch\
+    \ mode."
   args: !SimpleFlagArg
     name: INTERACTIONFILEFOLDER
-  optional: true
 - !Flag
-  description: "Folder where the target files are stored. Applies only\nfor batch\
-    \ mode."
+  optional: true
   synonyms:
   - --targetFileFolder
   - -tff
+  description: "Folder where the target files are stored. Applies only\nfor batch\
+    \ mode."
   args: !SimpleFlagArg
     name: TARGETFILEFOLDER
-  optional: true
 - !Flag
-  description: Output folder containing the files.
+  optional: true
   synonyms:
   - --outputFolder
   - -o
+  description: Output folder containing the files.
   args: !SimpleFlagArg
     name: OUTPUTFOLDER
-  optional: true
 - !Flag
-  description: "--batchMode, -bm      turns on batch mode. The files provided by\n\
-    --interactionFile and/or --targetFile contain a list\nof the files to be processed.\n\
-    --threads THREADS, -t THREADS\nNumber of threads (uses the python multiprocessing\n\
-    module).\n--help, -h            show this help message and exit\n--version   \
-    \          show program's version number and exit\n"
+  optional: true
   synonyms:
   - --writeFileNamesToFile
   - -w
+  - --batchMode
+  - -bm
+  description: turns on batch mode. The files provided by
   args: !SimpleFlagArg
     name: WRITEFILENAMESTOFILE
+- !Flag
   optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Number of threads (uses the python multiprocessing\nmodule)."
+  args: !SimpleFlagArg
+    name: THREADS
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
 help_text: "usage: chicAggregateStatistic --interactionFile INTERACTIONFILE\n    \
   \                          [INTERACTIONFILE ...]\n                             \
   \ [--targetFile TARGETFILE [TARGETFILE ...]]\n                              [--outFileNameSuffix\
@@ -119,3 +136,4 @@ help_text: "usage: chicAggregateStatistic --interactionFile INTERACTIONFILE\n   
   \ and exit\n  --version             show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

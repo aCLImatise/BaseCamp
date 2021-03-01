@@ -14,6 +14,9 @@ task TigmintarcstsvOutFile {
       ~{out_file} \
       ~{fast_a_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tig_mint_arcs_tsv: ""
     graph_file: ""

@@ -1,0 +1,65 @@
+!Command
+command:
+- datafunk
+- process_gisaid_sequence_data
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "OR GISAID.json, --input GISAID.fasta OR GISAID.json\nSequence data\
+    \ in FASTA/json format"
+  args: !SimpleFlagArg
+    name: GISAID.fasta
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-fasta
+  description: "FASTA format file to write, print to stdout if\nunspecified"
+  args: !SimpleFlagArg
+    name: OUTPUT.fasta
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --exclude
+  description: "A file that contains (anywhere) EPI_ISL_###### IDs to\nexclude (can\
+    \ provide many files, e.g. -e FILE1 -e\nFILE2 ...)"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude-uk
+  description: "Removes all GISAID entries with containing England,\nIreland, Scotland\
+    \ or Wales"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude-undated
+  description: Removes all GISAID entries with an incomplete date
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: datafunk process_gisaid_sequence_data -i <input.json OR input.fasta>\
+  \ [-o <output.fasta>] [-e file1 -e file2 ...] [--stdout]\n\nProcess raw sequence\
+  \ data in fasta or json format\n\nrequired arguments:\n  -i GISAID.fasta OR GISAID.json,\
+  \ --input GISAID.fasta OR GISAID.json\n                        Sequence data in\
+  \ FASTA/json format\n\noptional arguments:\n  -o OUTPUT.fasta, --output-fasta OUTPUT.fasta\n\
+  \                        FASTA format file to write, print to stdout if\n      \
+  \                  unspecified\n  -e FILE, --exclude FILE\n                    \
+  \    A file that contains (anywhere) EPI_ISL_###### IDs to\n                   \
+  \     exclude (can provide many files, e.g. -e FILE1 -e\n                      \
+  \  FILE2 ...)\n  --exclude-uk          Removes all GISAID entries with containing\
+  \ England,\n                        Ireland, Scotland or Wales\n  --exclude-undated\
+  \     Removes all GISAID entries with an incomplete date\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0

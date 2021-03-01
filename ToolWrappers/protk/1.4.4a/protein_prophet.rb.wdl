@@ -40,6 +40,9 @@ task ProteinProphetrb {
       ~{if defined(min_prob) then ("--minprob " +  '"' + min_prob + '"') else ""} \
       ~{if defined(min_indep) then ("--minindep " +  '"' + min_indep + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_prefix: "A string to prepend to the name of output files"
     replace_output: "Dont skip analyses for which the output file already exists [false]"

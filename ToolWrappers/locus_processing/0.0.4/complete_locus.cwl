@@ -3,22 +3,22 @@ id: complete_locus.cwl
 inputs:
 - id: in_input
   doc: Path to input locus file
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_input_directory
   doc: Path to directory containing locus files
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --input-directory
 - id: in_output_directory
   doc: Path to output directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output-directory
 - id: in_suppress_warnings
   doc: Suppress warnings
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --suppress-warnings
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output_directory
   doc: Path to output directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_directory)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - complete_locus

@@ -12,6 +12,9 @@ task Gnali {
       ~{if defined(output_dir) then ("--output_dir " +  '"' + output_dir + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "File of genes to test. Accepted formats: csv, txt"
     output_dir: "Name of output directory. Default: results-ID/"

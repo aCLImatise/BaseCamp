@@ -14,6 +14,9 @@ task TeloclipAlignment {
       ~{if defined(min_clip) then ("--minClip " +  '"' + min_clip + '"') else ""} \
       ~{if defined(ref_idx) then ("--refIdx " +  '"' + ref_idx + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_break: ""
     min_clip: ""

@@ -3,30 +3,34 @@ command:
 - ct2dot
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: ct file
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: structure number
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: bracket file
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "Suppress unnecessary output. This option is implied when the output\
-    \ file is\n'-' (STDOUT)."
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: "Suppress unnecessary output. This option is implied when the output\
+    \ file is\n'-' (STDOUT)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
   description: "A number or name that indicates how subsequent sub-structures are\
     \ formatted\n(relevant only when more than one structure is being written).\n\
     Valid values are:\n(1) simple -- Susbequent structures (after the first one) are\
@@ -37,29 +41,25 @@ named:
     (4) full   -- All structures written with a full header, including a\n'>TITLE'\
     \ line followed by a Sequence-Line and then a Structure-Line.\nThe default is\
     \ 'multi'.\n"
-  synonyms:
-  - -f
-  - --format
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Display the usage details message.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Display the usage details message.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Display version and copyright information for this interface.
+  optional: true
   synonyms:
   - -v
   - --version
+  description: Display version and copyright information for this interface.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "USAGE: ct2dot <ct file> <structure number> <bracket file> [options]\n\
   All flags are case-insensitive, and grouping of flags is not allowed.\n\n=============================\n\
   ==== Required Parameters ====\n=============================\n<ct file>\n    The\
@@ -89,3 +89,4 @@ help_text: "USAGE: ct2dot <ct file> <structure number> <bracket file> [options]\
   \ 'multi'.\n\n"
 generated_using:
 - --help
+docker_image:

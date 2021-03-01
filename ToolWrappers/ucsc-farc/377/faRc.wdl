@@ -16,6 +16,9 @@ task FaRc {
       ~{if (just_reverse) then "-justReverse" else ""} \
       ~{if (just_complement) then "-justComplement" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep_name: "- keep name identical (don't prepend RC)"
     keep_case: "- works well for ACGTUN in either case. bizarre for other letters.\\nwithout it bases are turned to lower, all else to n's"

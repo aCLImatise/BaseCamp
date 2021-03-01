@@ -8,6 +8,9 @@ task Uniquepl {
     unique_pl \
       ~{input_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: ""
   }

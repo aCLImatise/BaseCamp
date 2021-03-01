@@ -20,6 +20,9 @@ task Anviscriptprocessgenbank {
       ~{if defined(annotation_source) then ("--annotation-source " +  '"' + annotation_source + '"') else ""} \
       ~{if defined(annotation_version) then ("--annotation-version " +  '"' + annotation_version + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_genbank: "Input GenBank file"
     output_file_prefix: "A prefix to be used while naming the output files (no\\nfile type extensions please; just a prefix)."

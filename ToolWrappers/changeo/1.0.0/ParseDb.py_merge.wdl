@@ -16,6 +16,9 @@ task ParseDbpyMerge {
       ~{if defined(explicit_output_file) then ("-o " +  '"' + explicit_output_file + '"') else ""} \
       ~{if (drop) then "--drop" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_tab_defaultnone: "A list of tab delimited database files. (default:\\nNone)"
     outdir: "Specify to changes the output directory to the\\nlocation specified. The input file directory is used\\nif this is not specified. (default: None)"

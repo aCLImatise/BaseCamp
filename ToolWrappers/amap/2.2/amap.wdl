@@ -44,6 +44,9 @@ task Amap {
       ~{if (print_posteriors) then "--print-posteriors" else ""} \
       ~{if (gui) then "-gui" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clustalw: "use CLUSTALW output format instead of MFA"
     consistency: "use 0 <= REPS <= 5 (default: 0) passes of consistency transformation"

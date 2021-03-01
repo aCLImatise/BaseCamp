@@ -4,7 +4,7 @@ task Sdsort {
   input {
     Boolean? numeric_sort_default
     Boolean? descending_sort_default
-    Boolean? specifies_sort_field
+    Boolean? datafield_specifies_sort
     Boolean? fast_mode_sorts
     Boolean? id
     String? data_field
@@ -16,14 +16,17 @@ task Sdsort {
       ~{sd_files} \
       ~{if (numeric_sort_default) then "-n" else ""} \
       ~{if (descending_sort_default) then "-r" else ""} \
-      ~{if (specifies_sort_field) then "-f" else ""} \
+      ~{if (datafield_specifies_sort) then "-f" else ""} \
       ~{if (fast_mode_sorts) then "-s" else ""} \
       ~{if (id) then "-id" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     numeric_sort_default: "numeric sort (default is text sort)"
     descending_sort_default: "descending sort (default is ascending sort)"
-    specifies_sort_field: "<DataField>   specifies sort field"
+    datafield_specifies_sort: "<DataField>   specifies sort field"
     fast_mode_sorts: "fast mode. Sorts the records for each named compound independently (must be consecutive)"
     id: "<NameField>  specifies compound name field (default = 1st title line)"
     data_field: ""

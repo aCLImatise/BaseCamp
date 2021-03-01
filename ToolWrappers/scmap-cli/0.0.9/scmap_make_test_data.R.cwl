@@ -3,7 +3,7 @@ id: scmap_make_test_data.R.cwl
 inputs:
 - id: in_output_object_file
   doc: file name in which to store serialized R object of type 'SingleCellExperiment'.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-object-file
 outputs:
@@ -12,9 +12,10 @@ outputs:
   type: stdout
 - id: out_output_object_file
   doc: file name in which to store serialized R object of type 'SingleCellExperiment'.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_object_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - scmap-make-test-data.R

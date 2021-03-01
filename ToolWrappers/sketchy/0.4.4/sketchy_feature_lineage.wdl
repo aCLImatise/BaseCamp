@@ -22,6 +22,9 @@ task SketchyFeatureLineage {
       ~{if defined(key) then ("--key " +  '"' + key + '"') else ""} \
       ~{if (re_index) then "--reindex" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data: "Path to data file to summarize trait data from\\n[required]  [required]"
     lineage: "Trait to show summary for; columns in data file\\n[required]"

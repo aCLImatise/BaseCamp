@@ -26,6 +26,9 @@ task PlanemoShedInit {
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     from_workflow: "Attempt to generate repository dependencies\\nfrom specified workflow."
     description: "Specify repository description for\\n.shed.yml."

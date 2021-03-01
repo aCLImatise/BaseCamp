@@ -18,6 +18,9 @@ task MetametaStartup {
       ~{if (print_shell_cmds) then "--printshellcmds" else ""} \
       ~{if (timestamp) then "--timestamp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     use_cond_a: "use conda to automatically install pre-configured packages"
     cores: "number of cores"

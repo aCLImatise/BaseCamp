@@ -3,7 +3,7 @@ id: agat_convert_sp_gxf2gxf.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GTF/GFF file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --gff
 - id: in_ct
@@ -11,7 +11,7 @@ inputs:
     \ to group features using a common/shared\nattribute (i.e. a locus tag.). By default\
     \ locus_tag and gene_id.\nYou can provide another specific common/shared attribute\
     \ using\nthis option."
-  type: string
+  type: string?
   inputBinding:
     prefix: --ct
 - id: in_expose
@@ -23,7 +23,7 @@ inputs:
     \ not defined, you can provide\ninformation about it within the exposed json files.\
     \ Indeed, if\nthe json files exists in your working directory, they will be\n\
     used by default."
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --expose
 - id: in_merge_loci
@@ -33,44 +33,44 @@ inputs:
     \ can have\noverlaping loci so it should not use it for prokaryote\nannotation.\
     \ In eukaryote, loci rarely overlap. Overlaps could be\ndue to error in the file,\
     \ mRNA can be merged under the same\nparent gene if you acticate the option."
-  type: File
+  type: File?
   inputBinding:
     prefix: --merge_loci
 - id: in_verbose_option_modify
   doc: "Verbose option. To modify verbosity. Default is 1. 0 is quiet, 2\nand 3 are\
     \ increasing verbosity."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_no_check
   doc: "To deacticate all check that can be performed by the parser (e.g\nfixing UTR,\
     \ exon, coordinates etc...)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --no_check
 - id: in_debug
   doc: debug purpose
-  type: string
+  type: string?
   inputBinding:
     prefix: --debug
 - id: in_output
   doc: "Output GFF file. If no output file is specified, the output will\nbe written\
     \ to STDOUT."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_gff_version_input
   doc: "If you don't want to use the autodection of the gff/gft version\nyou give\
     \ as input, you can force the tool to use the parser of\nthe gff version you decide\
     \ to use: 1,2,2.5 or 3. Remind: 2.5 is\nsuposed to be gtf."
-  type: double
+  type: double?
   inputBinding:
     prefix: --gff_version_input
 - id: in_gff_version_output
   doc: "If you don't want to use the autodection of the gff/gft version\nyou give\
     \ as input, you can force the tool to use the parser of\nthe gff version you decide\
     \ to use: 1,2,2.5 or 3. Remind: 2.5 is\nsuposed to be gtf."
-  type: double
+  type: double?
   inputBinding:
     prefix: --gff_version_output
 - id: in_agat_convert_sp_gxftwogxfdotpl
@@ -85,9 +85,10 @@ outputs:
 - id: out_output
   doc: "Output GFF file. If no output file is specified, the output will\nbe written\
     \ to STDOUT."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agat_convert_sp_gxf2gxf.pl

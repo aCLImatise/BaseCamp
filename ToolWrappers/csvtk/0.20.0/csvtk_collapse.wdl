@@ -42,6 +42,9 @@ task CsvtkCollapse {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fields: "key fields. e.g -f 1,2 or -f columnA,columnB (default \\\"1\\\")"
     fuzzy_fields: "using fuzzy fields (only for key fields), e.g., -F -f \\\"*name\\\" or -F -f \\\"id123*\\\""

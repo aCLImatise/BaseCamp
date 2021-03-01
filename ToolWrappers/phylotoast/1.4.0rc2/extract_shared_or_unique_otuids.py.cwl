@@ -4,13 +4,13 @@ inputs:
 - id: in_prefix
   doc: "Provide specific text to prepend the output file\nnames. By default, the 'unique'\
     \ will be added in front\nof output filenames, for uniques calculations only."
-  type: File
+  type: File?
   inputBinding:
     prefix: --prefix
 - id: in_reverse
   doc: "Get shared OTUIDs among all unique combinations of\ngroups and write out the\
     \ results to path provided to\nthis option.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --reverse
 - id: in_input_biom_fp
@@ -40,15 +40,16 @@ outputs:
 - id: out_prefix
   doc: "Provide specific text to prepend the output file\nnames. By default, the 'unique'\
     \ will be added in front\nof output filenames, for uniques calculations only."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_prefix)
 - id: out_reverse
   doc: "Get shared OTUIDs among all unique combinations of\ngroups and write out the\
     \ results to path provided to\nthis option.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_reverse)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - extract_shared_or_unique_otuids.py

@@ -64,6 +64,9 @@ task Abyssfiltergraph {
       ~{if (sam) then "--sam" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: "k-mer size"
     ss: "expect contigs to be oriented correctly"

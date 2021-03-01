@@ -3,29 +3,29 @@ id: Lace.py.cwl
 inputs:
 - id: in_cores
   doc: "The number of cores you wish to run the job on\n(default = 1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --cores
 - id: in_alternate
   doc: "Create alternate annotations and create metrics on\nsuccess of SuperTranscript\
     \ Building"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --alternate
 - id: in_tidy
   doc: "Move intermediate fasta files into folder: SuperFiles\nafter running"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tidy
 - id: in_max_tran
   doc: "Set a maximum for the number of transcripts from a\ncluster to be included\
     \ for building the\nSuperTranscript (default=50)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxTran
 - id: in_output_dir
   doc: "Output Directory\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outputDir
 - id: in_genome_file
@@ -44,9 +44,10 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: "Output Directory\n"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - Lace.py

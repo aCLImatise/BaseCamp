@@ -13,7 +13,7 @@ task Mapping {
     File? print
     Int? size
     Int? total_reads
-    Int? offset_start_default
+    Int? offset_start_alignemnt
   }
   command <<<
     mapping \
@@ -28,8 +28,11 @@ task Mapping {
       ~{if defined(print) then ("-print " +  '"' + print + '"') else ""} \
       ~{if defined(size) then ("-size " +  '"' + size + '"') else ""} \
       ~{if defined(total_reads) then ("-totalReads " +  '"' + total_reads + '"') else ""} \
-      ~{if defined(offset_start_default) then ("-w " +  '"' + offset_start_default + '"') else ""}
+      ~{if defined(offset_start_alignemnt) then ("-w " +  '"' + offset_start_alignemnt + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_take_default: "number of bases to take an alignment (default 20)"
     fm_nine: "fm9 file"
@@ -42,7 +45,7 @@ task Mapping {
     print: "the result file (default false)"
     size: "for the block aligment (default all dataset)"
     total_reads: "of reads to exclude from list2Exclude"
-    offset_start_default: "offset to start the alignemnt (default 0)"
+    offset_start_alignemnt: "offset to start the alignemnt (default 0)"
   }
   output {
     File out_stdout = stdout()

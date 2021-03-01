@@ -8,6 +8,9 @@ task SplitSeqpySelected {
     SplitSeq_py selected \
       ~{split_seq_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     split_seq_do_tpy: ""
   }

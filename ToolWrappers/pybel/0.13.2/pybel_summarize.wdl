@@ -8,6 +8,9 @@ task PybelSummarize {
     pybel summarize \
       ~{path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path: ""
   }

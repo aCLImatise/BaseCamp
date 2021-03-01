@@ -4,31 +4,56 @@ command:
 - unipfile
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: INPUT_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: OUTPUT_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-i, --mapping-file TEXT         Uniprot mapping file  [required]\n\
-    -f, --force-taxon-id            Overwrite taxon_id if already present\n-m, --mapping\
-    \ [NCBI_TaxID|eggNOG|KO|KEGG|BioCyc|UniPathway|EMBL|EMBL-CDS|GI|STRING]\nMappings\
-    \ to add  [required]\n--progress                      Shows Progress Bar\n--help\
-    \                          Show this message and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
-  args: !EmptyFlagArg {}
+  - -i
+  - --mapping-file
+  description: Uniprot mapping file  [required]
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
   optional: true
+  synonyms:
+  - -f
+  - --force-taxon-id
+  description: Overwrite taxon_id if already present
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mapping
+  description: "[NCBI_TaxID|eggNOG|KO|KEGG|BioCyc|UniPathway|EMBL|EMBL-CDS|GI|STRING]\n\
+    Mappings to add  [required]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: Shows Progress Bar
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: add-gff-info unipfile [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n\
@@ -41,3 +66,4 @@ help_text: "Usage: add-gff-info unipfile [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\
   \ message and exit.\n"
 generated_using:
 - --help
+docker_image:

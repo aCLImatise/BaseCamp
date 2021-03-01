@@ -8,6 +8,9 @@ task Proteinortho2treepl {
     proteinortho2tree_pl \
       ~{ortho_matrix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ortho_matrix: ""
   }

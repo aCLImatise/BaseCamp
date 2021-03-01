@@ -18,6 +18,9 @@ task Mkfake {
       ~{if (fields) then "-fields" else ""} \
       ~{if (debug) then "-debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     plates: ": number of plates (default: 1)"
     runs: ": number of plate runs (acquisitions) (default: 1)"

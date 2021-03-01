@@ -3,12 +3,12 @@ id: phyluce_probe_get_clusters_from_bed.cwl
 inputs:
 - id: in_bed
   doc: The BED directory you want to search for clusters
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --bed
 - id: in_outdir
   doc: The output directory to store results
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_files
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: The output directory to store results
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phyluce_probe_get_clusters_from_bed

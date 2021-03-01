@@ -1,0 +1,260 @@
+!Command
+command:
+- eukcc
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --db
+  description: Path to EukCC DB
+  args: !SimpleFlagArg
+    name: DB
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  - -o
+  description: "Location for the output. Names will be prefixed using\nthe bin filenames"
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --config
+  - -c
+  description: Config file to define parameters, YAML
+  args: !SimpleFlagArg
+    name: CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - --ncores
+  - -n
+  description: set number of cores for GeneMark-ES, pplacer and Hmmer
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --ncorespplacer
+  description: "Pplacer requires a lot of memory. If you want you can\nset less cores\
+    \ for pplacer, which improves memory\nconsumption significantly"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --node
+  description: 'Use Node (default: None)'
+  args: !SimpleFlagArg
+    name: NODE
+- !Flag
+  optional: true
+  synonyms:
+  - --hmm
+  description: run hmmer on all these HMMs instead
+  args: !SimpleFlagArg
+    name: HMM
+- !Flag
+  optional: true
+  synonyms:
+  - --training
+  description: "Run EukCC in training mode (needed to create a new\nrelease of the\
+    \ DB)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --proteins
+  description: Input fasta is proteins
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bed
+  - -b
+  description: "You can pass a bedfile of the protein location to omit\nfragmented\
+    \ proteins being detected twice"
+  args: !SimpleFlagArg
+    name: file.bed
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  - -f
+  description: "Force rerun of computation even if output is newer\nthan input. Don't\
+    \ resume previous run."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keeptemp
+  description: "Keep all temporary files, by default EukCC will remove\nsome temp\
+    \ files"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fplace
+  - -p
+  description: Force rerun of placement and subsequent steps
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noglob
+  - -g
+  description: Do not expand paths using glob
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  - -q
+  description: Silcence most output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  - -d
+  description: Debug and thus ignore safety
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --HPA
+  description: Set placement method to HPA
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nPlacements
+  description: "Set number of proteins to support location in tree\n(default: 2)"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --minGenomes
+  description: "Minimal number of genomes to support a set (default:\n3)"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --fullineage
+  description: Output full lineage for MAGs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minPlacementLikelyhood
+  description: 'minimal pplacer likelyhood (default: 0.4)'
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --mindist
+  description: 'Distance to collapse hits (default: 2000)'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --touch
+  description: Do not run, but touch all output files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gmes
+  description: only run GeneMark-ES
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pygmes
+  description: "Use pygmes, will improve eukccs capability of running\non highly fragmented\
+    \ bins but will take longer"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --diamond
+  description: required to use pygmes option
+  args: !SimpleFlagArg
+    name: DIAMOND
+- !Flag
+  optional: true
+  synonyms:
+  - --plot
+  description: produce plots
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: eukcc [-h] --db DB [--outdir OUTDIR] [--config CONFIG] [--ncores\
+  \ int]\n             [--ncorespplacer int] [--node NODE] [--hmm HMM] [--training]\n\
+  \             [--proteins] [--bed file.bed] [--force] [--keeptemp] [--fplace]\n\
+  \             [--noglob] [--quiet] [--debug] [--HPA] [--nPlacements n]\n       \
+  \      [--minGenomes n] [--fullineage] [--minPlacementLikelyhood float]\n      \
+  \       [--mindist n] [--touch] [--gmes] [--pygmes] [--diamond DIAMOND]\n      \
+  \       [--plot] [-v]\n             fasta\n\nEvaluate completeness and contamination\
+  \ of a MAG. Args that start with '--'\n(eg. --db) can also be set in a config file\
+  \ (specified via --config). Config\nfile syntax allows: key=value, flag=true, stuff=[a,b,c]\
+  \ (for details, see\nsyntax at https://goo.gl/R74nmi). If an arg is specified in\
+  \ more than one\nplace, then commandline values override config file values which\
+  \ override\ndefaults.\n\npositional arguments:\n  fasta                 Run script\
+  \ on this bin (fasta file)\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --db DB               Path to EukCC DB\n  --outdir\
+  \ OUTDIR, -o OUTDIR\n                        Location for the output. Names will\
+  \ be prefixed using\n                        the bin filenames\n  --config CONFIG,\
+  \ -c CONFIG\n                        Config file to define parameters, YAML\n  --ncores\
+  \ int, -n int  set number of cores for GeneMark-ES, pplacer and Hmmer\n  --ncorespplacer\
+  \ int   Pplacer requires a lot of memory. If you want you can\n                \
+  \        set less cores for pplacer, which improves memory\n                   \
+  \     consumption significantly\n  --node NODE           Use Node (default: None)\n\
+  \  --hmm HMM             run hmmer on all these HMMs instead\n  --training     \
+  \       Run EukCC in training mode (needed to create a new\n                   \
+  \     release of the DB)\n  --proteins            Input fasta is proteins\n  --bed\
+  \ file.bed, -b file.bed\n                        You can pass a bedfile of the protein\
+  \ location to omit\n                        fragmented proteins being detected twice\n\
+  \  --force, -f           Force rerun of computation even if output is newer\n  \
+  \                      than input. Don't resume previous run.\n  --keeptemp    \
+  \        Keep all temporary files, by default EukCC will remove\n              \
+  \          some temp files\n  --fplace, -p          Force rerun of placement and\
+  \ subsequent steps\n  --noglob, -g          Do not expand paths using glob\n  --quiet,\
+  \ -q           Silcence most output\n  --debug, -d           Debug and thus ignore\
+  \ safety\n  --HPA                 Set placement method to HPA\n  --nPlacements n\
+  \       Set number of proteins to support location in tree\n                   \
+  \     (default: 2)\n  --minGenomes n        Minimal number of genomes to support\
+  \ a set (default:\n                        3)\n  --fullineage          Output full\
+  \ lineage for MAGs\n  --minPlacementLikelyhood float\n                        minimal\
+  \ pplacer likelyhood (default: 0.4)\n  --mindist n           Distance to collapse\
+  \ hits (default: 2000)\n  --touch               Do not run, but touch all output\
+  \ files\n  --gmes                only run GeneMark-ES\n  --pygmes              Use\
+  \ pygmes, will improve eukccs capability of running\n                        on\
+  \ highly fragmented bins but will take longer\n  --diamond DIAMOND     required\
+  \ to use pygmes option\n  --plot                produce plots\n  -v, --version \
+  \        show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/eukcc:0.3--py_0

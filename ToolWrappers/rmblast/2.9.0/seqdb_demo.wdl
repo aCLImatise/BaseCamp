@@ -16,6 +16,9 @@ task SeqdbDemo {
       ~{if (iteration_threaded) then "-iteration-threaded" else ""} \
       ~{if (seq_id_to_bio_seq) then "-seqid-to-bioseq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     get_sequence: ":\\nGetSequence() provides a basic interface to fetch\\na sequence from a SeqDB object given an OID."
     iteration_chunk: ":\\nGetNextOIDChunk() provides versatile iteration meant\\nfor multithreaded applications.  Each thread fetches\\na set of OIDs to work with, only returning for more\\nwhen done with that set.  SeqDB guarantees that all\\nOIDs will be assigned, and no OID will be returned\\nmore than once.\\nThe data will be returned in one of two forms, either\\nas a pair of numbers representing a range of OIDs, or\\nin a vector.  The number of OIDs desired is indicated\\nby setting the size of the vector on input."

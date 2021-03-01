@@ -44,6 +44,9 @@ task UnitTestLV {
       ~{if (rng_seed) then "--rng-seed" else ""} \
       ~{if (force_colour) then "--force-colour" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_tests: "list all/matching test cases"
     list_tags: "list all/matching tags"

@@ -64,6 +64,9 @@ task MetageneCount {
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
       ~{if (stylesheet) then "--stylesheet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_counts: "Minimum counts required in normalization region to be\\nincluded in metagene average (Default: 10)"
     normalize_over: "N  Portion of each window against which its individual\\nraw count profile will be normalized. Specify two\\nintegers, in nucleotide distance from landmark\\n(negative for upstream, positive for downstream.\\nSurround negative numbers with quotes.). (Default: 20\\n50)"

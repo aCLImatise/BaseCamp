@@ -4,177 +4,169 @@ command:
 - vcf-to-proteindb
 positional:
 - !Positional
-  description: -o, --output_proteindb TEXT     Output file name, exits if already
-    exists
+  optional: false
   position: 0
   name: peps
-  optional: false
+  description: -o, --output_proteindb TEXT     Output file name, exits if already
+    exists
 - !Positional
-  description: --transcript_index INTEGER      Index of transcript ID in the annotated
+  optional: false
   position: 1
   name: variants
-  optional: false
+  description: --transcript_index INTEGER      Index of transcript ID in the annotated
 named:
 - !Flag
-  description: "Configuration to perform conversion between\nENSEMBL Files"
+  optional: true
   synonyms:
   - -c
   - --config_file
+  description: "Configuration to perform conversion between\nENSEMBL Files"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Path to the transcript sequence
+  optional: true
   synonyms:
   - -f
   - --input_fasta
+  description: Path to the transcript sequence
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Path to the vep annotated VCF file
+  optional: true
   synonyms:
   - -v
   - --vep_annotated_vcf
+  description: Path to the vep annotated VCF file
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Path to the gene annotations file
+  optional: true
   synonyms:
   - -g
   - --gene_annotations_gtf
+  description: Path to the gene annotations file
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Translation table (Default 1)
+  optional: true
   synonyms:
   - -t
   - --translation_table
+  description: Translation table (Default 1)
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Mito_trans_table (default 2)
-  synonyms:
-  - -m
-  - --mito_translation_table
-  args: !SimpleFlagArg
-    name: INTEGER
   optional: true
-- !Flag
-  description: String to add before the variant peptides
   synonyms:
   - -p
   - --var_prefix
+  description: String to add before the variant peptides
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: In addition to var peps, also report all ref
+  optional: true
   synonyms:
   - --report_ref_seq
+  description: In addition to var peps, also report all ref
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Annotation field name found in the INFO\ncolumn, e.g CSQ or vep"
+  optional: true
   synonyms:
   - --annotation_field_name
+  description: "Annotation field name found in the INFO\ncolumn, e.g CSQ or vep"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "field name in the VCF INFO column to use for\nfiltering on AF, (Default\
-    \ None)"
+  optional: true
   synonyms:
   - --af_field
+  description: "field name in the VCF INFO column to use for\nfiltering on AF, (Default\
+    \ None)"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Minium AF threshold for considering common
+  optional: true
   synonyms:
   - --af_threshold
+  description: Minium AF threshold for considering common
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Index of consequence in the annotated\ncolumns (separated by |)"
+  optional: true
   synonyms:
   - --consequence_index
+  description: "Index of consequence in the annotated\ncolumns (separated by |)"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Excluded Biotypes
+  optional: true
   synonyms:
   - --exclude_biotypes
+  description: Excluded Biotypes
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Excluded Consequences  [default:\ndownstream_gene_variant,\nupstream_gene_variant,\
-    \ intergenic_variant,\nintron_variant, synonymous_variant]"
+  optional: true
   synonyms:
   - --exclude_consequences
+  description: "Excluded Consequences  [default:\ndownstream_gene_variant,\nupstream_gene_variant,\
+    \ intergenic_variant,\nintron_variant, synonymous_variant]"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "by default any transcript that has a defined\nCDS will be used, this\
-    \ option disables this\nfeatures instead it only depends on the\nbiotypes"
+  optional: true
   synonyms:
   - -s
   - --skip_including_all_cds
+  description: "by default any transcript that has a defined\nCDS will be used, this\
+    \ option disables this\nfeatures instead it only depends on the\nbiotypes"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Only genes/transcripts (depending on
+  optional: true
   synonyms:
   - --include_biotypes
+  description: Only genes/transcripts (depending on
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: ) from these biotypes are
+  optional: true
   synonyms:
   - --biotype_str
+  description: ) from these biotypes are
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: included_consequences, default all
+  optional: true
   synonyms:
   - --include_consequences
+  description: included_consequences, default all
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ignore_filters
   description: "enabling this option causes or variants to\nbe parsed. By default\
     \ only variants that\nhave not failed any filters will be\nprocessed (FILTER column\
     \ is PASS, None, .)\nor if the filters are subset of the accepted\nfilters. (default\
     \ is False)"
-  synonyms:
-  - --ignore_filters
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Accepted filters for variant parsing
+  optional: true
   synonyms:
   - --accepted_filters
+  description: Accepted filters for variant parsing
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: pypgatk_cli.py vcf-to-proteindb [OPTIONS]\n\nOptions:\n  -c, --config_file\
@@ -221,3 +213,4 @@ help_text: "Usage: pypgatk_cli.py vcf-to-proteindb [OPTIONS]\n\nOptions:\n  -c, 
   \ and exit.\n"
 generated_using:
 - --help
+docker_image:

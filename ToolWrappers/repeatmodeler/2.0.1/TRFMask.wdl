@@ -8,6 +8,9 @@ task TRFMask {
     TRFMask \
       ~{repeat_modeler}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     repeat_modeler: "COPYRIGHT"
   }

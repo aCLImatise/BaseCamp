@@ -18,6 +18,9 @@ task KssdSet {
       ~{if defined(subtract) then ("--subtract " +  '"' + subtract + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     union: "get union set of the sketches."
     int_sect: "intersect with the pan-sketch for all input\\nsketches."

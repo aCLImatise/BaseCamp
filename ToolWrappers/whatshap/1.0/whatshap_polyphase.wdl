@@ -38,6 +38,9 @@ task WhatshapPolyphase {
       ~{if defined(ce_refinements) then ("--ce-refinements " +  '"' + ce_refinements + '"') else ""} \
       ~{if defined(block_cut_sensitivity) then ("--block-cut-sensitivity " +  '"' + block_cut_sensitivity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ploidy: "The ploidy of the sample(s). Argument is required."
     output_vcf_file: "Output VCF file. Add .gz to the file name to get\\ncompressed output. If omitted, use standard output."

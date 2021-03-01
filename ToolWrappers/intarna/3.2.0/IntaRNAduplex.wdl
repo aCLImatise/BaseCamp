@@ -2,8 +2,8 @@ version 1.0
 
 task IntaRNAduplex {
   input {
-    Boolean? q
-    Boolean? t
+    Boolean? arg_rna_sequence_streamfile_where_read_query
+    Boolean? arg_rna_sequence_streamfile_where_read_sequences
     Int? helix_min_bp
     Int? helix_max_bp
     Int? helix_max_il
@@ -20,23 +20,23 @@ task IntaRNAduplex {
     Int? int_loop_max
     File? out
     String? out_sep
-    Boolean? arg_number_suboptimal
+    Boolean? arg_number_reportarg
     String? out_overlap
     Int? threads
     String? personality
     File? parameter_file
     Boolean? full_help
-    String _outmode_arg
+    String outmode_arg_n
     String arguments
     String parameters
   }
   command <<<
     IntaRNAduplex \
-      ~{_outmode_arg} \
+      ~{outmode_arg_n} \
       ~{arguments} \
       ~{parameters} \
-      ~{if (q) then "-q" else ""} \
-      ~{if (t) then "-t" else ""} \
+      ~{if (arg_rna_sequence_streamfile_where_read_query) then "-q" else ""} \
+      ~{if (arg_rna_sequence_streamfile_where_read_sequences) then "-t" else ""} \
       ~{if defined(helix_min_bp) then ("--helixMinBP " +  '"' + helix_min_bp + '"') else ""} \
       ~{if defined(helix_max_bp) then ("--helixMaxBP " +  '"' + helix_max_bp + '"') else ""} \
       ~{if defined(helix_max_il) then ("--helixMaxIL " +  '"' + helix_max_il + '"') else ""} \
@@ -53,16 +53,19 @@ task IntaRNAduplex {
       ~{if defined(int_loop_max) then ("--intLoopMax " +  '"' + int_loop_max + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(out_sep) then ("--outSep " +  '"' + out_sep + '"') else ""} \
-      ~{if (arg_number_suboptimal) then "-n" else ""} \
+      ~{if (arg_number_reportarg) then "-n" else ""} \
       ~{if defined(out_overlap) then ("--outOverlap " +  '"' + out_overlap + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(personality) then ("--personality " +  '"' + personality + '"') else ""} \
       ~{if defined(parameter_file) then ("--parameterFile " +  '"' + parameter_file + '"') else ""} \
       ~{if (full_help) then "--fullhelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    q: "[ --query ] arg            either an RNA sequence or the stream/file name\\nfrom where to read the query sequences (should\\nbe the shorter sequences to increase\\nefficiency); use 'STDIN' to read from standard\\ninput stream; sequences have to use IUPAC\\nnucleotide encoding; output alias is [seq2]"
-    t: "[ --target ] arg           either an RNA sequence or the stream/file name\\nfrom where to read the target sequences (should\\nbe the longer sequences to increase\\nefficiency); use 'STDIN' to read from standard\\ninput stream; sequences have to use IUPAC\\nnucleotide encoding; output alias is [seq1]"
+    arg_rna_sequence_streamfile_where_read_query: "[ --query ] arg            either an RNA sequence or the stream/file name\\nfrom where to read the query sequences (should\\nbe the shorter sequences to increase\\nefficiency); use 'STDIN' to read from standard\\ninput stream; sequences have to use IUPAC\\nnucleotide encoding; output alias is [seq2]"
+    arg_rna_sequence_streamfile_where_read_sequences: "[ --target ] arg           either an RNA sequence or the stream/file name\\nfrom where to read the target sequences (should\\nbe the longer sequences to increase\\nefficiency); use 'STDIN' to read from standard\\ninput stream; sequences have to use IUPAC\\nnucleotide encoding; output alias is [seq1]"
     helix_min_bp: "(=2)         minimal number of base pairs inside a helix\\n(arg in range [2,4])"
     helix_max_bp: "(=10)        maximal number of base pairs inside a helix\\n(arg in range [2,20])"
     helix_max_il: "(=0)         maximal size for each internal loop size in a\\nhelix (arg in range [0,2])."
@@ -79,13 +82,13 @@ task IntaRNAduplex {
     int_loop_max: "(=10)        interaction site : maximal number of unpaired\\nbases between neighbored interacting bases to\\nbe considered in interactions (arg in range\\n[0,30]; 0 enforces stackings only)"
     out: "(=STDOUT)           output (multi-arg) : provide a file name for\\noutput (will be overwritten) or 'STDOUT/STDERR'\\nto write to the according stream (according to\\n--outMode).\\nUse one of the following PREFIXES\\n(colon-separated) to generate ADDITIONAL\\noutput:\\n'qMinE:' (query) for each position the minimal\\nenergy of any interaction covering the position\\n(CSV format)\\n'qSpotProb:' (query) for each position the\\nprobability that is is covered by an\\ninteraction covering (CSV format)\\n'qAcc:' (query) ED accessibility values\\n('qPu'-like format).\\n'qPu:' (query) unpaired probabilities values\\n(RNAplfold format).\\n'tMinE:' (target) for each position the\\nminimal energy of any interaction covering the\\nposition (CSV format)\\n'tSpotProb:' (target) for each position the\\nprobability that is is covered by an\\ninteraction covering (CSV format)\\n'tAcc:' (target) ED accessibility values\\n('tPu'-like format).\\n'tPu:' (target) unpaired probabilities values\\n(RNAplfold format).\\n'pMinE:' (target+query) for each index pair\\nthe minimal energy of any interaction covering\\nthe pair (CSV format)\\n'spotProb:' (target+query) tracks for a given\\nset of interaction spots their probability to\\nbe covered by an interaction. If no spots are\\nprovided, probabilities for all index\\ncombinations are computed. Spots are encoded by\\ncomma-separated 'idxT&idxQ' pairs\\n(target-query). For each spot a probability is\\nprovided in concert with the probability that\\nnone of the spots (encoded by '0&0') is covered\\n(CSV format). The spot encoding is followed\\ncolon-separated by the output stream/file name,\\neg. '--out=\\\"spotProb:3&76,59&2:STDERR\\\"'. NOTE:\\nvalue has to be quoted due to '&' symbol!\\nFor each, provide a file name or STDOUT/STDERR\\nto write to the respective output stream."
     out_sep: "(=;)             column separator to be used in tabular CSV"
-    arg_number_suboptimal: "[ --outNumber ] arg (=1)   number of (sub)optimal interactions to report\\n(arg in range [0,1000])"
+    arg_number_reportarg: "[ --outNumber ] arg (=1)   number of (sub)optimal interactions to report\\n(arg in range [0,1000])"
     out_overlap: "(=B)         suboptimal output : interactions can overlap\\n'N' in none of the sequences,\\n'T' in the target only,\\n'Q' in the query only,\\n'B' in both sequences"
     threads: "(=1)            maximal number of threads to be used for\\nparallel computation of query-target\\ncombinations. A value of 0 requests all\\navailable CPUs. Note, the number of threads\\nmultiplies the required memory used for\\ncomputation! (arg in range [0,8])"
     personality: "IntaRNA personality to be used, which defines\\ndefault values, available program arguments and\\ntool behavior"
     parameter_file: "file from where to read additional command line"
     full_help: "show the extended help page for all available"
-    _outmode_arg: "--outMode arg (=N)            output mode :\\n'N' normal output (ASCII char + energy),\\n'D' detailed output (ASCII char +"
+    outmode_arg_n: "--outMode arg (=N)            output mode :\\n'N' normal output (ASCII char + energy),\\n'D' detailed output (ASCII char +"
     arguments: "-h [ --help ]                 show the help page for basic parameters"
     parameters: "Run --fullhelp for the extended list of parameters"
   }

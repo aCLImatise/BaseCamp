@@ -3,12 +3,12 @@ id: mb_plot_kmer_logodds_genome.cwl
 inputs:
 - id: in_gff
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --gff
 - id: in_km_er
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --kmer
 - id: in_mb_plot_km_er_log_odds
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mb-plot-kmer-logodds

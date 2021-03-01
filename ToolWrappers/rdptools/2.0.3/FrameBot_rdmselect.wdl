@@ -16,6 +16,9 @@ task FrameBotRdmselect {
       ~{if defined(num_selection) then ("--num-selection " +  '"' + num_selection + '"') else ""} \
       ~{if defined(exclude_samples) then ("--exclude-samples " +  '"' + exclude_samples + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_selection: "number of sequence IDs for each sample. Default is the smallest sample size"
     exclude_samples: "list of sample names to be excluded from selection"

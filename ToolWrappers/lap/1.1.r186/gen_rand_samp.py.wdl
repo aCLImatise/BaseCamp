@@ -12,6 +12,9 @@ task GenRandSamppy {
       ~{if (output_dir) then "--output_dir" else ""} \
       ~{if (debug_level) then "--debug_level" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fastq_filenames_separated: "Fastq filenames separated by commas that contain the first"
     output_dir: "Base output directory."

@@ -12,6 +12,9 @@ task GffutilscliSanitize {
       ~{if (in_memory) then "--in-memory" else ""} \
       ~{if (in_place) then "--in-place" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_memory: "Load GFF into memory for processing. (default: True)"
     in_place: "Sanitize file in-place: overwrites current file with sanitized\\nversion. (default: False)\\n"

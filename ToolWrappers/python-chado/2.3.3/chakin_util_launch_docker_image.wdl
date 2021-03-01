@@ -12,6 +12,9 @@ task ChakinUtilLaunchDockerImage {
       ~{if (background) then "--background" else ""} \
       ~{if (no_yeast) then "--no_yeast" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     background: "Launch the image in the background"
     no_yeast: "Disable loading of example yeast data"

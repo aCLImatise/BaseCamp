@@ -4,112 +4,115 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --genome
   description: "The input genome we are trying to improve, which must be the reference\
     \ used\nfor the bam alignments.  At least one of --frags or --jumps must also\
     \ be given."
-  synonyms:
-  - --genome
   args: !SimpleFlagArg
     name: genome.fasta
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --frags
   description: "A bam file consisting of fragment paired-end alignments, aligned to\
     \ the --genome\nargument using bwa or bowtie2.  This argument may be specifed\
     \ more than once."
-  synonyms:
-  - --frags
   args: !SimpleFlagArg
     name: frags.bam
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --jumps
   description: "A bam file consisting of jump (mate pair) paired-end alignments, aligned\
     \ to the\n--genome argument using bwa or bowtie2.  This argument may be specifed\
     \ more than once."
-  synonyms:
-  - --jumps
   args: !SimpleFlagArg
     name: jumps.bam
-  optional: true
 - !Flag
-  description: "A bam file consisting of unpaired alignments, aligned to the --genome\
-    \ argument\nusing bwa or bowtie2.  This argument may be specifed more than once."
+  optional: true
   synonyms:
   - --unpaired
+  description: "A bam file consisting of unpaired alignments, aligned to the --genome\
+    \ argument\nusing bwa or bowtie2.  This argument may be specifed more than once."
   args: !SimpleFlagArg
     name: unpaired.bam
-  optional: true
 - !Flag
-  description: "A bam file of unknown type; Pilon will scan it and attempt to classify\
-    \ it as one\nof the above bam types."
+  optional: true
   synonyms:
   - --bam
+  description: "A bam file of unknown type; Pilon will scan it and attempt to classify\
+    \ it as one\nof the above bam types."
   args: !SimpleFlagArg
     name: any.bam
-  optional: true
 - !Flag
-  description: Prefix for output files
+  optional: true
   synonyms:
   - --output
+  description: Prefix for output files
   args: !SimpleFlagArg
     name: prefix
-  optional: true
 - !Flag
-  description: Use this directory for all output files.
+  optional: true
   synonyms:
   - --outdir
+  description: Use this directory for all output files.
   args: !SimpleFlagArg
     name: directory
-  optional: true
 - !Flag
-  description: If specified, a file listing changes in the <output>.fasta will be
-    generated.
+  optional: true
   synonyms:
   - --changes
+  description: If specified, a file listing changes in the <output>.fasta will be
+    generated.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: If specified, a vcf file will be generated
+  optional: true
   synonyms:
   - --vcf
+  description: If specified, a vcf file will be generated
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --vcfqe
   description: "If specified, the VCF will contain a QE (quality-weighted evidence)\
     \ field rather\nthan the default QP (quality-weighted percentage of evidence)\
     \ field."
-  synonyms:
-  - --vcfqe
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "This options will cause many track files (*.bed, *.wig) suitable for\
-    \ viewing in\na genome browser to be written."
+  optional: true
   synonyms:
   - --tracks
+  description: "This options will cause many track files (*.bed, *.wig) suitable for\
+    \ viewing in\na genome browser to be written."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Sets up heuristics for variant calling, as opposed to assembly improvement;\n\
-    equivalent to \"--vcf --fix all,breaks\"."
+  optional: true
   synonyms:
   - --variant
+  description: "Sets up heuristics for variant calling, as opposed to assembly improvement;\n\
+    equivalent to \"--vcf --fix all,breaks\"."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Input FASTA elements larger than this will be processed in smaller\
-    \ pieces not to\nexceed this size (default 10000000)."
+  optional: true
   synonyms:
   - --chunksize
+  description: "Input FASTA elements larger than this will be processed in smaller\
+    \ pieces not to\nexceed this size (default 10000000)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Sample is from diploid organism; will eventually affect calling of
-    heterozygous SNPs
+  optional: true
   synonyms:
   - --diploid
+  description: Sample is from diploid organism; will eventually affect calling of
+    heterozygous SNPs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fix
   description: "A comma-separated list of categories of issues to try to fix:\n\"\
     snps\": try to fix individual base errors;\n\"indels\": try to fix small indels;\n\
     \"gaps\": try to fill gaps;\n\"local\": try to detect and fix local misassemblies;\n\
@@ -120,144 +123,141 @@ named:
     \ local reassembly to open new gaps (with \"local\");\n\"circles\": try to close\
     \ circlar elements when used with long corrected reads;\n\"novel\": assemble novel\
     \ sequence from unaligned non-jump reads."
-  synonyms:
-  - --fix
   args: !SimpleFlagArg
     name: fixlist
-  optional: true
 - !Flag
-  description: Dump reads for local re-assemblies.
+  optional: true
   synonyms:
   - --dumpreads
+  description: Dump reads for local re-assemblies.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Use reads marked as duplicates in the input BAMs (ignored by default).
+  optional: true
   synonyms:
   - --duplicates
+  description: Use reads marked as duplicates in the input BAMs (ignored by default).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Output IUPAC ambiguous base codes in the output FASTA file when appropriate.
+  optional: true
   synonyms:
   - --iupac
+  description: Output IUPAC ambiguous base codes in the output FASTA file when appropriate.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Use reads which failed sequencer quality filtering (ignored by default).
+  optional: true
   synonyms:
   - --nonpf
+  description: Use reads which failed sequencer quality filtering (ignored by default).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --targets
   description: "Only process the specified target(s).  Targets are comma-separated,\
     \ and each target\nis a fasta element name optionally followed by a base range.\n\
     Example: \"scaffold00001,scaffold00002:10000-20000\" would result in processing\
     \ all of\nscaffold00001 and coordinates 10000-20000 of scaffold00002.\nIf \"targetlist\"\
     \ is the name of a file, each line will be treated as a target\nspecification."
-  synonyms:
-  - --targets
   args: !SimpleFlagArg
     name: targetlist
-  optional: true
 - !Flag
-  description: Degree of parallelism to use for certain processing (default 1). Experimental.
+  optional: true
   synonyms:
   - --threads
+  description: Degree of parallelism to use for certain processing (default 1). Experimental.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: More verbose output.
+  optional: true
   synonyms:
   - --verbose
+  description: More verbose output.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Debugging output (implies verbose).
+  optional: true
   synonyms:
   - --debug
+  description: Debugging output (implies verbose).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Assumes bases are of this quality if quals are no present in input
-    BAMs (default 10).
+  optional: true
   synonyms:
   - --defaultqual
+  description: Assumes bases are of this quality if quals are no present in input
+    BAMs (default 10).
   args: !SimpleFlagArg
     name: qual
-  optional: true
 - !Flag
-  description: "Controls how much of the well-aligned reads will be used; this many\
-    \ bases at each\nend of the good reads will be ignored (default 10)."
+  optional: true
   synonyms:
   - --flank
+  description: "Controls how much of the well-aligned reads will be used; this many\
+    \ bases at each\nend of the good reads will be ignored (default 10)."
   args: !SimpleFlagArg
     name: nbases
-  optional: true
 - !Flag
-  description: Closed gaps must be within this number of bases of true size to be
-    closed (100000)
+  optional: true
   synonyms:
   - --gapmargin
+  description: Closed gaps must be within this number of bases of true size to be
+    closed (100000)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Kmer size used by internal assembler (default 47).
+  optional: true
   synonyms:
   - --K
+  description: Kmer size used by internal assembler (default 47).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mindepth
   description: "Variants (snps and indels) will only be called if there is coverage\
     \ of good pairs\nat this depth or more; if this value is >= 1, it is an absolute\
     \ depth, if it is a\nfraction < 1, then minimum depth is computed by multiplying\
     \ this value by the mean\ncoverage for the region, with a minumum value of 5 (default\
     \ 0.1: min depth to call\nis 10% of mean coverage or 5, whichever is greater)."
-  synonyms:
-  - --mindepth
   args: !SimpleFlagArg
     name: depth
-  optional: true
 - !Flag
-  description: Minimum size for unclosed gaps (default 10)
+  optional: true
   synonyms:
   - --mingap
+  description: Minimum size for unclosed gaps (default 10)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Minimum alignment mapping quality for a read to count in pileups (default
-    0)
+  optional: true
   synonyms:
   - --minmq
+  description: Minimum alignment mapping quality for a read to count in pileups (default
+    0)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Minimum base quality to consider for pileups (default 0)
+  optional: true
   synonyms:
   - --minqual
+  description: Minimum base quality to consider for pileups (default 0)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nostrays
   description: "Skip making a pass through the input BAM files to identify stray pairs,\
     \ that is,\nthose pairs in which both reads are aligned but not marked valid because\
     \ they have\ninconsistent orientation or separation. Identifying stray pairs can\
     \ help fill gaps\nand assemble larger insertions, especially of repeat content.\
     \  However, doing so\nsometimes consumes considerable memory.\n"
-  synonyms:
-  - --nostrays
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag
-  description: Print version string and exit.
+  optional: true
   synonyms:
   - --version
+  description: Print version string and exit.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Pilon version 1.23 Mon Nov 26 16:04:05 2018 -0500\n\n    Usage: pilon\
   \ --genome genome.fasta [--frags frags.bam] [--jumps jumps.bam] [--unpaired unpaired.bam]\n\
   \                 [...other options...]\n           pilon --help for option details\
@@ -340,3 +340,4 @@ help_text: "Pilon version 1.23 Mon Nov 26 16:04:05 2018 -0500\n\n    Usage: pilo
   \ content.  However, doing so\n              sometimes consumes considerable memory.\n"
 generated_using:
 - --help
+docker_image:

@@ -3,24 +3,24 @@ id: anvi_push.cwl
 inputs:
 - id: in_user
   doc: The user for an anvi'server.
-  type: string
+  type: string?
   inputBinding:
     prefix: --user
 - id: in_api_url
   doc: Anvi'server url
-  type: string
+  type: string?
   inputBinding:
     prefix: --api-url
 - id: in_project_name
   doc: "Name of the project. Please choose a short but\ndescriptive name (so anvi'o\
     \ can use it whenever she\nneeds to name an output file, or add a new table in\
     \ a\ndatabase, or name her first born)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --project-name
 - id: in_tree
   doc: NEWICK formatted tree structure
-  type: string
+  type: string?
   inputBinding:
     prefix: --tree
 - id: in_items_order
@@ -29,17 +29,17 @@ inputs:
     \ of items\nin your mind, and do not want to display a tree in the\nmiddle (or\
     \ simply you don't have one). The file format\nis simple: each line should have\
     \ an item name, and\nthere should be no header."
-  type: File
+  type: File?
   inputBinding:
     prefix: --items-order
 - id: in_fast_a_file
   doc: A FASTA-formatted input file
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta-file
 - id: in_view_data
   doc: A TAB-delimited file for view data
-  type: File
+  type: File?
   inputBinding:
     prefix: --view-data
 - id: in_additional_layers
@@ -48,12 +48,12 @@ inputs:
     \ The\nfile does not need to contain all split names, or\nvalues for each split\
     \ in every column. Anvi'o will try\nto deal with missing data nicely. Each column\
     \ in this\nfile will be visualized as a new layer in the tree."
-  type: File
+  type: File?
   inputBinding:
     prefix: --additional-layers
 - id: in_state
   doc: "State file, you can export states from database using\nanvi-export-state program"
-  type: File
+  type: File?
   inputBinding:
     prefix: --state
 - id: in_description
@@ -61,13 +61,13 @@ inputs:
     \ use Markdwon syntax. The\ndescription text will be rendered and shown in all\n\
     relevant interfaces, including the anvi'o interactive\ninterface, or anvi'o summary\
     \ outputs."
-  type: File
+  type: File?
   inputBinding:
     prefix: --description
 - id: in_bins
   doc: "Tab-delimited file, first column contains tree leaves\n(gene clusters, splits,\
     \ contigs etc.) and second\ncolumn contains which Bin they belong."
-  type: File
+  type: File?
   inputBinding:
     prefix: --bins
 - id: in_bins_info
@@ -81,12 +81,12 @@ inputs:
     not *that* critical what it says there, but on the\nother hand it is, becuse we\
     \ should also think about\npeople who may end up having to work with what we put\n\
     together later."
-  type: File
+  type: File?
   inputBinding:
     prefix: --bins-info
 - id: in_delete_if_exists
   doc: Be bold (at your own risk), and delete if exists.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --delete-if-exists
 outputs:
@@ -97,9 +97,10 @@ outputs:
   doc: "Name of the project. Please choose a short but\ndescriptive name (so anvi'o\
     \ can use it whenever she\nneeds to name an output file, or add a new table in\
     \ a\ndatabase, or name her first born)."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_project_name)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-push

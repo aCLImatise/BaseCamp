@@ -1,0 +1,190 @@
+!Command
+command:
+- bcftools
+- merge
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: A.vcf.gz
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: B.vcf.gz
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --force-samples
+  description: resolve duplicate sample names
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print-header
+  description: print only the merged header and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-header
+  description: use the provided header
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - '-0'
+  - --missing-to-ref
+  description: assume genotypes at missing sites are 0/0
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --apply-filters
+  description: require at least one of the listed FILTER strings (e.g. "PASS,.")
+  args: !SimpleFlagArg
+    name: list
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --filter-logic
+  description: <x|+>           remove filters if some input is PASS ("x"), or apply
+    all filters ("+") [+]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gvcf
+  description: <-|ref.fa>              merge gVCF blocks, INFO/END tag is expected.
+    Implies -i QS:sum,MinDP:min,I16:sum,IDV:max,IMF:max
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --info-rules
+  description: <tag:method,..>   rules for merging INFO fields (method is one of sum,avg,min,max,join)
+    or "-" to turn off the default [DP:sum,DP4:sum]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --file-list
+  description: read file names from the file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --local-alleles
+  description: 'EXPERIMENTAL: if more than <int> ALT alleles are encountered, drop
+    FMT/PL and output LAA+LPL instead; 0=unlimited [0]'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --merge
+  description: allow multiallelic records for <snps|indels|both|all|none|id>, see
+    man page for details [both]
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --no-index
+  description: merge unindexed files, the same chromosomal order is required and -r/-R
+    are not allowed
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-version
+  description: do not append version and command line to the header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: write output to a file [standard output]
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --output-type
+  description: "'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed VCF; 'v'\
+    \ uncompressed VCF [v]"
+  args: !SimpleFlagArg
+    name: b|u|z|v
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --regions
+  description: restrict to comma-separated list of regions
+  args: !SimpleFlagArg
+    name: region
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --regions-file
+  description: restrict to regions listed in a file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: use multithreading with <int> worker threads [0]
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nAbout:   Merge multiple VCF/BCF files from non-overlapping sample sets\
+  \ to create one multi-sample file.\n         Note that only records from different\
+  \ files can be merged, never from the same file. For\n         \"vertical\" merge\
+  \ take a look at \"bcftools norm\" instead.\nUsage:   bcftools merge [options] <A.vcf.gz>\
+  \ <B.vcf.gz> [...]\n\nOptions:\n        --force-samples                resolve duplicate\
+  \ sample names\n        --print-header                 print only the merged header\
+  \ and exit\n        --use-header <file>            use the provided header\n   \
+  \ -0  --missing-to-ref               assume genotypes at missing sites are 0/0\n\
+  \    -f, --apply-filters <list>         require at least one of the listed FILTER\
+  \ strings (e.g. \"PASS,.\")\n    -F, --filter-logic <x|+>           remove filters\
+  \ if some input is PASS (\"x\"), or apply all filters (\"+\") [+]\n    -g, --gvcf\
+  \ <-|ref.fa>              merge gVCF blocks, INFO/END tag is expected. Implies -i\
+  \ QS:sum,MinDP:min,I16:sum,IDV:max,IMF:max\n    -i, --info-rules <tag:method,..>\
+  \   rules for merging INFO fields (method is one of sum,avg,min,max,join) or \"\
+  -\" to turn off the default [DP:sum,DP4:sum]\n    -l, --file-list <file>       \
+  \      read file names from the file\n    -L, --local-alleles <int>          EXPERIMENTAL:\
+  \ if more than <int> ALT alleles are encountered, drop FMT/PL and output LAA+LPL\
+  \ instead; 0=unlimited [0]\n    -m, --merge <string>               allow multiallelic\
+  \ records for <snps|indels|both|all|none|id>, see man page for details [both]\n\
+  \        --no-index                     merge unindexed files, the same chromosomal\
+  \ order is required and -r/-R are not allowed\n        --no-version            \
+  \       do not append version and command line to the header\n    -o, --output <file>\
+  \                write output to a file [standard output]\n    -O, --output-type\
+  \ <b|u|z|v>        'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed VCF;\
+  \ 'v' uncompressed VCF [v]\n    -r, --regions <region>             restrict to comma-separated\
+  \ list of regions\n    -R, --regions-file <file>          restrict to regions listed\
+  \ in a file\n        --threads <int>                use multithreading with <int>\
+  \ worker threads [0]\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bcftools:1.11--h7c999a4_0

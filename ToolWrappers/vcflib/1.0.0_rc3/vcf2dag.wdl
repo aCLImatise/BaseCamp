@@ -10,6 +10,9 @@ task Vcf2dag {
       ~{vcf_file} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "FASTA reference file."
     vcf_file: ""

@@ -3,32 +3,32 @@ id: qiimeToMaaslin.py.cwl
 inputs:
 - id: in_normalize_data_values
   doc: Don't normalize data values by column sums
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
-- id: in_string_representing_missing
+- id: in_string_representing_values
   doc: String representing missing metadata values
-  type: string
+  type: string?
   inputBinding:
     prefix: -s
-- id: in_percolumn_control_fraction
+- id: in_percolumn_quality_control
   doc: Per-column quality control, minimum fraction of maximum
-  type: long
+  type: long?
   inputBinding:
     prefix: -m
-- id: in_file_sample_ids
+- id: in_file_ids_exclude
   doc: File from which sample IDs to exclude are read
-  type: File
+  type: File?
   inputBinding:
     prefix: -x
 - id: in_l
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_t
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_metadata_dot_txt
@@ -50,6 +50,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - qiimeToMaaslin.py

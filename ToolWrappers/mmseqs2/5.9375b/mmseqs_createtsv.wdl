@@ -18,6 +18,9 @@ task MmseqsCreatetsv {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     first_seq_as_repr: "false           Use the first sequence of the clustering result as representative sequence"
     target_column: "1               Select a target column (default 1), 0 if no target id exists."

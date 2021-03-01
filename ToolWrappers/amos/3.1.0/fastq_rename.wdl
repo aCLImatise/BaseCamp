@@ -18,6 +18,9 @@ task FastqRename {
       ~{if defined(trc) then ("-trc " +  '"' + trc + '"') else ""} \
       ~{if defined(suffix) then ("-suffix " +  '"' + suffix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: ": add prefix to each readname"
     renum: ": replace the readname as a sequential number 1,2,...,E,F,10,11..."

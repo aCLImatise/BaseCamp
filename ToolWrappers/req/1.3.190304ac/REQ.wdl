@@ -14,6 +14,9 @@ task REQ {
       ~{outfile} \
       ~{if (verbose_mode) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose_mode: "verbose mode"
     d_file: ""

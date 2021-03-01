@@ -3,394 +3,395 @@ command:
 - findMotifs.pl
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: input list
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: promoter set
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: output directory
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 3
   name: additoinal
-  optional: true
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -len
   description: "<#>[,<#>,<#>...] (motif length, default=8,10,12) [NOTE: values greater\
     \ 12 may cause the program\nto run out of memmory - in these cases decrease the\
     \ number of sequences analyzed]"
-  synonyms:
-  - -len
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '(ids to use as background, default: all genes)'
+  optional: true
   synonyms:
   - -bg
+  description: '(ids to use as background, default: all genes)'
   args: !SimpleFlagArg
     name: background file
-  optional: true
 - !Flag
-  description: <#> (offset from TSS, default=-300) [max=based on Promoter Set]
+  optional: true
   synonyms:
   - -start
+  description: <#> (offset from TSS, default=-300) [max=based on Promoter Set]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <#> (offset from TSS, default=50) [max=based on Promoter Set]
+  optional: true
   synonyms:
   - -end
+  description: <#> (offset from TSS, default=50) [max=based on Promoter Set]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (output RNA motif logos and compare to RNA motif database, automatically
-    sets -norevopp)
+  optional: true
   synonyms:
   - -rna
+  description: (output RNA motif logos and compare to RNA motif database, automatically
+    sets -norevopp)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(use/don't use repeatmasked files, default: -mask)"
+  optional: true
   synonyms:
-  - -mask/-nomask
+  - -mask
+  - -nomask
+  description: "(use/don't use repeatmasked files, default: -mask)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Number of motifs to optimize, default: 25)'
+  optional: true
   synonyms:
   - -S
+  description: '<#> (Number of motifs to optimize, default: 25)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (global optimization: searches for strings with # mismatches,
-    default: 1)'
+  optional: true
   synonyms:
   - -mis
+  description: '<#> (global optimization: searches for strings with # mismatches,
+    default: 1)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (will not worry about converting input files into unigene ids)
+  optional: true
   synonyms:
   - -noconvert
+  description: (will not worry about converting input files into unigene ids)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (do not search the reverse strand for motifs)
+  optional: true
   synonyms:
   - -norevopp
+  description: (do not search the reverse strand for motifs)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (don't search for de novo motif enrichment)
+  optional: true
   synonyms:
   - -nomotif
+  description: (don't search for de novo motif enrichment)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (This will cause the program to only scan for motifs)
+  optional: true
   synonyms:
   - -find
+  description: (This will cause the program to only scan for motifs)
   args: !SimpleFlagArg
     name: motif file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -enhancers
   description: "<genome verion>\n(enhancers to include in search space, peaks/sequences\
     \ should be named with a gene ID\nIf multiple enhancers per gene, use the same\
     \ gene ID, and all will be included)"
-  synonyms:
-  - -enhancers
   args: !SimpleFlagArg
     name: peak file
-  optional: true
 - !Flag
-  description: (do not include promoter sequence in motif search)
+  optional: true
   synonyms:
   - -enhancersOnly
+  description: (do not include promoter sequence in motif search)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (This is recommended for fasta based analysis)
+  optional: true
   synonyms:
   - -fastaBg
+  description: (This is recommended for fasta based analysis)
   args: !SimpleFlagArg
     name: background fasta file
-  optional: true
 - !Flag
-  description: "(chops up background regions to match size of target regions)\ni.e.\
-    \ if background is a full genome or all mRNAs"
+  optional: true
   synonyms:
   - -chopify
+  description: "(chops up background regions to match size of target regions)\ni.e.\
+    \ if background is a full genome or all mRNAs"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '(check against motif collects, default: auto)'
+  optional: true
   synonyms:
   - -mset
+  description: '(check against motif collects, default: auto)'
   args: !SimpleFlagArg
     name: vertebrates|insects|worms|plants|yeast|all
-  optional: true
 - !Flag
-  description: (don't check de novo motifs for similarity to known motifs)
+  optional: true
   synonyms:
   - -basic
+  description: (don't check de novo motifs for similarity to known motifs)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(scale sequence logos by information content, default: doesn't scale)"
+  optional: true
   synonyms:
   - -bits
+  description: "(scale sequence logos by information content, default: doesn't scale)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (don't check for similarity between novo motif motifs and known motifs)
+  optional: true
   synonyms:
   - -nocheck
+  description: (don't check for similarity between novo motif motifs and known motifs)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (known motifs to check against de novo motifs,
+  optional: true
   synonyms:
   - -mcheck
+  description: (known motifs to check against de novo motifs,
   args: !SimpleFlagArg
     name: motif file
-  optional: true
 - !Flag
-  description: "(don't search for known motif enrichment, default: -known)"
+  optional: true
   synonyms:
   - -noknown
+  description: "(don't search for known motif enrichment, default: -known)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (known motifs to check for enrichment,
+  optional: true
   synonyms:
   - -mknown
+  description: (known motifs to check for enrichment,
   args: !SimpleFlagArg
     name: motif file
-  optional: true
 - !Flag
-  description: (omit humor)
+  optional: true
   synonyms:
   - -nofacts
+  description: (omit humor)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (uses weblogo/seqlogo/ghostscript to visualize motifs, default uses
-    SVG)
+  optional: true
   synonyms:
   - -seqlogo
+  description: (uses weblogo/seqlogo/ghostscript to visualize motifs, default uses
+    SVG)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (use binomial distribution to calculate p-values, hypergeometric is
-    default)
+  optional: true
   synonyms:
   - -b
+  description: (use binomial distribution to calculate p-values, hypergeometric is
+    default)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (don't search for gene ontology enrichment)
+  optional: true
   synonyms:
   - -nogo
+  description: (don't search for gene ontology enrichment)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (Convert IDs to human for GO analysis)
+  optional: true
   synonyms:
   - -humanGO
+  description: (Convert IDs to human for GO analysis)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[ont.genes] ... (custom ontologies for GO analysis)'
+  optional: true
   synonyms:
   - -ontology
+  description: '[ont.genes] ... (custom ontologies for GO analysis)'
   args: !SimpleFlagArg
     name: ont.genes
-  optional: true
 - !Flag
-  description: (no CG correction)
+  optional: true
   synonyms:
   - -noweight
+  description: (no CG correction)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (Don't remove predetermined redundant promoters/sequences)
+  optional: true
   synonyms:
   - -noredun
+  description: (Don't remove predetermined redundant promoters/sequences)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (input file is a group file, i.e. 1st column = id, 2nd = 0 or 1 [1=target,0=back])
+  optional: true
   synonyms:
   - -g
+  description: (input file is a group file, i.e. 1st column = id, 2nd = 0 or 1 [1=target,0=back])
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (use CpG% instead of GC% for sequence normalization)
+  optional: true
   synonyms:
   - -cpg
+  description: (use CpG% instead of GC% for sequence normalization)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (randomize labels for target and backgound sequences)
+  optional: true
   synonyms:
   - -rand
+  description: (randomize labels for target and backgound sequences)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[motif file 2] ... (motifs to mask before motif finding)'
+  optional: true
   synonyms:
   - -maskMotif
+  description: '[motif file 2] ... (motifs to mask before motif finding)'
   args: !SimpleFlagArg
     name: motif file 1
-  optional: true
 - !Flag
-  description: '[motif file 2] ... (motifs to optimize/change length)'
+  optional: true
   synonyms:
   - -opt
+  description: '[motif file 2] ... (motifs to optimize/change length)'
   args: !SimpleFlagArg
     name: motif file 1
-  optional: true
 - !Flag
-  description: (will produce peak file of promoters to use with findMotifsGenome.pl)
+  optional: true
   synonyms:
   - -peaks
+  description: (will produce peak file of promoters to use with findMotifsGenome.pl)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (no warnings)
+  optional: true
   synonyms:
   - -nowarn
+  description: (no warnings)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (don't delete temporary files)
+  optional: true
   synonyms:
   - -keepFiles
+  description: (don't delete temporary files)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (create target.fa and background.fa files)
+  optional: true
   synonyms:
   - -dumpFasta
+  description: (create target.fa and background.fa files)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (remove sequences shorter than #, default: 0)'
+  optional: true
   synonyms:
   - -min
+  description: '<#> (remove sequences shorter than #, default: 0)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (remove sequences longer than #, default: 1e10)'
+  optional: true
   synonyms:
   - -max
+  description: '<#> (remove sequences longer than #, default: 1e10)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(rerun homer using old seq files etc. with new options\nand ignores\
-    \ input list, organism)"
+  optional: true
   synonyms:
   - -reuse
+  description: "(rerun homer using old seq files etc. with new options\nand ignores\
+    \ input list, organism)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Calculate empirical FDR for de novo discovery #=number of randomizations)'
+  optional: true
   synonyms:
   - -fdr
+  description: '<#> (Calculate empirical FDR for de novo discovery #=number of randomizations)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (use homer2 instead of original homer, default)
+  optional: true
   synonyms:
   - -homer2
+  description: (use homer2 instead of original homer, default)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (length of lower-order oligos to normalize - general sequences,
-    default: 3)'
+  optional: true
   synonyms:
   - -nlen
+  description: '<#> (length of lower-order oligos to normalize - general sequences,
+    default: 3)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Max normalization iterations, default: 160)'
+  optional: true
   synonyms:
   - -nmax
+  description: '<#> (Max normalization iterations, default: 160)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (weight sequences to neutral frequencies, i.e. 25%, 6.25%, etc.)
+  optional: true
   synonyms:
   - -neutral
+  description: (weight sequences to neutral frequencies, i.e. 25%, 6.25%, etc.)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <#> (lower-order oligo normalization for oligo table, use if -nlen
-    isn't working well)
+  optional: true
   synonyms:
   - -olen
+  description: <#> (lower-order oligo normalization for oligo table, use if -nlen
+    isn't working well)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Number of processors to use, default: 1)'
+  optional: true
   synonyms:
   - -p
+  description: '<#> (Number of processors to use, default: 1)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (Maximum expected motif instance per bp in random sequence, default:
-    0.01)'
+  optional: true
   synonyms:
   - -e
+  description: '<#> (Maximum expected motif instance per bp in random sequence, default:
+    0.01)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (size in MB for statistics cache, default: 500)'
+  optional: true
   synonyms:
   - -cache
+  description: '<#> (size in MB for statistics cache, default: 500)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (skip full masking after finding motifs, similar to original homer)
+  optional: true
   synonyms:
   - -quickMask
+  description: (skip full masking after finding motifs, similar to original homer)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (to force the use of the original homer)
+  optional: true
   synonyms:
   - -homer1
+  description: (to force the use of the original homer)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '<#> (stop looking for motifs when seed logp score gets above #, default:
-    -10)'
+  optional: true
   synonyms:
   - -minlp
+  description: '<#> (stop looking for motifs when seed logp score gets above #, default:
+    -10)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (allow adjustment of the degeneracy threshold for known motifs to improve
-    p-value[dangerous])
+  optional: true
   synonyms:
   - -float
+  description: (allow adjustment of the degeneracy threshold for known motifs to improve
+    p-value[dangerous])
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[low|med|high|allnight] (time spent on local optimization default:
-    med)'
+  optional: true
   synonyms:
   - -depth
+  description: '[low|med|high|allnight] (time spent on local optimization default:
+    med)'
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -472,3 +473,4 @@ help_text: "\n\tProgram will find de novo and known motifs in a gene list\n\n\t\
   \ default: med)\n\n"
 generated_using:
 - --help
+docker_image:

@@ -22,6 +22,9 @@ task Minidot {
       ~{if (do_print_labels) then "-L" else ""} \
       ~{if (try_put_hits) then "-D" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_match_length: "min match length [100]"
     min_identity: "min identity [0.10]"

@@ -29,7 +29,6 @@ task Oncotator {
     String input_file
     String options_dot
     String genome_build
-    Int ga_slash_reference_slash_annotation_slash_db_slash_on_cot_at_or_v_one_ds_gen_code_cur
     String field
   }
   command <<<
@@ -37,7 +36,6 @@ task Oncotator {
       ~{input_file} \
       ~{options_dot} \
       ~{genome_build} \
-      ~{ga_slash_reference_slash_annotation_slash_db_slash_on_cot_at_or_v_one_ds_gen_code_cur} \
       ~{field} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(input_format) then ("--input_format " +  '"' + input_format + '"') else ""} \
@@ -64,10 +62,13 @@ task Oncotator {
       ~{if (longer_other_tx) then "--longer-other-tx" else ""} \
       ~{if (v) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "set verbosity level [default: 5]"
     input_format: "Input format. Note that MAFLITE will work for any tsv\\nfile with appropriate headers, so long as all of the\\nrequired headers (or an alias -- see maflite.config)\\nare present. Note that \\\"-i TCGAMAF\\\" is the same as\\nspecifying \\\"-i MAFLITE --prune-tcga-maf-cols --allow-\\noverwriting\\\" [default: MAFLITE]"
-    db_dir: "Main annotation database directory. [default: /xchip/c"
+    db_dir: "Main annotation database directory. [default: /xchip/c\\nga/reference/annotation/db/oncotator_v1_ds_gencode_cur\\nrent/]"
     output_format: "Output format. [default: TCGAMAF]"
     override_config: "File path to manual annotations in a config file\\nformat (section is 'manual_annotations' and\\nannotation:value pairs)."
     default_config: "File path to default annotation values in a config\\nfile format (section is 'manual_annotations' and\\nannotation:value pairs)."
@@ -92,7 +93,6 @@ task Oncotator {
     input_file: "Input file to be annotated. Type is specified through"
     options_dot: "output_file           Output file name of annotated file."
     genome_build: "Genome build. For example: hg19"
-    ga_slash_reference_slash_annotation_slash_db_slash_on_cot_at_or_v_one_ds_gen_code_cur: "rent/]"
     field: "--prune-filter-cols   Prune mutations from VCF input as based on 'filter'"
   }
   output {

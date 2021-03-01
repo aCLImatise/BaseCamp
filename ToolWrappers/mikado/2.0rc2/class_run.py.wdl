@@ -24,6 +24,9 @@ task ClassRunpy {
       ~{class_dot} \
       ~{if (clean) then "--clean" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clean: ""
     quick: ""

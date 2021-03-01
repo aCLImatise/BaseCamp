@@ -1,0 +1,124 @@
+!Command
+command:
+- Fast5_to_seq_summary
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --fast5_dir
+  - -f
+  description: "Directory containing fast5 files. Can contain multiple\nsubdirectories"
+  args: !SimpleFlagArg
+    name: FAST5_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --seq_summary_fn
+  - -s
+  description: "path of the summary sequencing file where to write the\ndata extracted\
+    \ from the fast5 files"
+  args: !SimpleFlagArg
+    name: SEQ_SUMMARY_FN
+- !Flag
+  optional: true
+  synonyms:
+  - --max_fast5
+  description: "Maximum number of file to try to parse. 0 to\ndeactivate (default:\
+    \ 0)"
+  args: !SimpleFlagArg
+    name: MAX_FAST5
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Total number of threads to use. 1 thread is used for\nthe reader and\
+    \ 1 for the writer. Minimum 3 (default:\n4)"
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --basecall_id
+  description: "id of the basecalling group. By default leave to 0,\nbut if you perfome\
+    \ multiple basecalling on the same\nfast5 files, this can be used to indicate\
+    \ the\ncorresponding group (1, 2 ...) (default: 0)"
+  args: !SimpleFlagArg
+    name: BASECALL_ID
+- !Flag
+  optional: true
+  synonyms:
+  - --fields
+  description: "list of field names corresponding to attributes to try\nto fetch from\
+    \ the fast5 files (default: ['read_id',\n'run_id', 'channel', 'start_time',\n\
+    'sequence_length_template', 'mean_qscore_template',\n'calibration_strand_genome_template',\n\
+    'barcode_arrangement'])"
+  args: !RepeatFlagArg
+    name: FIELDS
+- !Flag
+  optional: true
+  synonyms:
+  - --include_path
+  description: "If given, the absolute path to the corresponding file\nis added in\
+    \ an extra column (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose_level
+  description: "Level of verbosity, from 2 (Chatty) to 0 (Nothing)\n(default: 0)\n"
+  args: !SimpleFlagArg
+    name: VERBOSE_LEVEL
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -v
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: Fast5_to_seq_summary [-h] [--version] --fast5_dir FAST5_DIR\n \
+  \                           --seq_summary_fn SEQ_SUMMARY_FN\n                  \
+  \          [--max_fast5 MAX_FAST5] [--threads THREADS]\n                       \
+  \     [--basecall_id BASECALL_ID]\n                            [--fields FIELDS\
+  \ [FIELDS ...]] [--include_path]\n                            [--verbose_level VERBOSE_LEVEL]\n\
+  \nFast5_to_seq_summary generate a sequencing summary like file from a directory\n\
+  containing Fast5 files\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --version, -v         show program's version number and\
+  \ exit\n  --fast5_dir FAST5_DIR, -f FAST5_DIR\n                        Directory\
+  \ containing fast5 files. Can contain multiple\n                        subdirectories\n\
+  \  --seq_summary_fn SEQ_SUMMARY_FN, -s SEQ_SUMMARY_FN\n                        path\
+  \ of the summary sequencing file where to write the\n                        data\
+  \ extracted from the fast5 files\n  --max_fast5 MAX_FAST5\n                    \
+  \    Maximum number of file to try to parse. 0 to\n                        deactivate\
+  \ (default: 0)\n  --threads THREADS, -t THREADS\n                        Total number\
+  \ of threads to use. 1 thread is used for\n                        the reader and\
+  \ 1 for the writer. Minimum 3 (default:\n                        4)\n  --basecall_id\
+  \ BASECALL_ID\n                        id of the basecalling group. By default leave\
+  \ to 0,\n                        but if you perfome multiple basecalling on the\
+  \ same\n                        fast5 files, this can be used to indicate the\n\
+  \                        corresponding group (1, 2 ...) (default: 0)\n  --fields\
+  \ FIELDS [FIELDS ...]\n                        list of field names corresponding\
+  \ to attributes to try\n                        to fetch from the fast5 files (default:\
+  \ ['read_id',\n                        'run_id', 'channel', 'start_time',\n    \
+  \                    'sequence_length_template', 'mean_qscore_template',\n     \
+  \                   'calibration_strand_genome_template',\n                    \
+  \    'barcode_arrangement'])\n  --include_path        If given, the absolute path\
+  \ to the corresponding file\n                        is added in an extra column\
+  \ (default: False)\n  --verbose_level VERBOSE_LEVEL\n                        Level\
+  \ of verbosity, from 2 (Chatty) to 0 (Nothing)\n                        (default:\
+  \ 0)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pycoqc:2.5.2--py_0

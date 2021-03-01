@@ -12,13 +12,13 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: MentaLiST kmer database
+    optional: true
     synonyms:
     - --db
+    description: MentaLiST kmer database
     args: !SimpleFlagArg
       name: DB
-    optional: true
-  parent: &id017 !Command
+  parent: &id019 !Command
     command: *id001
     positional: []
     named: []
@@ -29,13 +29,13 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: MentaLiST kmer database
+        optional: true
         synonyms:
         - --db
+        description: MentaLiST kmer database
         args: !SimpleFlagArg
           name: DB
-        optional: true
-      parent: &id015 !Command
+      parent: &id017 !Command
         command: *id001
         positional: []
         named: []
@@ -46,13 +46,13 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: MentaLiST kmer database
+            optional: true
             synonyms:
             - --db
+            description: MentaLiST kmer database
             args: !SimpleFlagArg
               name: DB
-            optional: true
-          parent: &id013 !Command
+          parent: &id015 !Command
             command: *id001
             positional: []
             named: []
@@ -63,22 +63,16 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: MentaLiST kmer database
+                optional: true
                 synonyms:
                 - --db
+                description: MentaLiST kmer database
                 args: !SimpleFlagArg
                   name: DB
-                optional: true
-              parent: &id003 !Command
+              parent: &id013 !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -v
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
@@ -86,100 +80,554 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: MentaLiST kmer database
+                    optional: true
                     synonyms:
                     - --db
+                    description: MentaLiST kmer database
                     args: !SimpleFlagArg
                       name: DB
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -v
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --db
+                        description: MentaLiST kmer database
+                        args: !SimpleFlagArg
+                          name: DB
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: MentaLiST.jl db_info --db DB [-h]\n\noptional\
+                        \ arguments:\n  --db DB     MentaLiST kmer database\n  -h,\
+                        \ --help  show this help message and exit\n\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - MentaLiST.jl
+                      - download_enterobase
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        description: '[-h]'
+                        args: !SimpleFlagArg
+                          name: TYPE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --db
+                        description: Output file (kmer database)
+                        args: !SimpleFlagArg
+                          name: DB
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -k
+                        description: 'Kmer size (type: Int8)'
+                        args: !SimpleFlagArg
+                          name: K
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --threads
+                        description: "Number of threads used in parallel. (type:\n\
+                          Int64, default: 2)"
+                        args: !SimpleFlagArg
+                          name: THREADS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --output
+                        description: Output folder for the scheme Fasta files.
+                        args: !SimpleFlagArg
+                          name: OUTPUT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        - --scheme
+                        description: "Letter identifying which scheme: (S)almonella,\n\
+                          (Y)ersinia, or (E)scherichia/Shigella."
+                        args: !SimpleFlagArg
+                          name: SCHEME
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        - --type
+                        description: "Choose the type: 'cg' or 'wg' for cgMLST or\n\
+                          wgMLST scheme, respectively."
+                        args: !SimpleFlagArg
+                          name: TYPE
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: MentaLiST.jl download_enterobase --db DB\
+                        \ -k K\n                        [--threads THREADS] -o OUTPUT\
+                        \ -s SCHEME\n                        -t TYPE [-h]\n\noptional\
+                        \ arguments:\n  --db DB              Output file (kmer database)\n\
+                        \  -k K                 Kmer size (type: Int8)\n  --threads\
+                        \ THREADS    Number of threads used in parallel. (type:\n\
+                        \                       Int64, default: 2)\n  -o, --output\
+                        \ OUTPUT  Output folder for the scheme Fasta files.\n  -s,\
+                        \ --scheme SCHEME  Letter identifying which scheme: (S)almonella,\n\
+                        \                       (Y)ersinia, or (E)scherichia/Shigella.\n\
+                        \  -t, --type TYPE      Choose the type: 'cg' or 'wg' for\
+                        \ cgMLST or\n                       wgMLST scheme, respectively.\n\
+                        \  -h, --help           show this help message and exit\n\n"
+                      generated_using: *id004
+                      docker_image:
+                    - &id005 !Command
+                      command: &id007
+                      - MentaLiST.jl
+                      - call
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        description: Output file with MLST call
+                        args: !SimpleFlagArg
+                          name: O
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --db
+                        description: Kmer database
+                        args: !SimpleFlagArg
+                          name: DB
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        - --mutation_threshold
+                        description: "Maximum number of mutations when looking for\n\
+                          novel alleles. (type: Int64, default: 6)"
+                        args: !SimpleFlagArg
+                          name: MUTATION_THRESHOLD
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --kt
+                        description: "Minimum # of times a kmer is seen to be\nconsidered\
+                          \ present in the sample (solid).\n(type: Int64, default:\
+                          \ 10)"
+                        args: !SimpleFlagArg
+                          name: KT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --output_votes
+                        description: Outputs the results for the original voting
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -i
+                        - --sample_input_file
+                        description: "Input TXT file for multiple samples. First\n\
+                          column has the sample name, second the FASTQ\nfile. Repeat\
+                          \ the sample name for samples with\nmore than one file (paired\
+                          \ reads, f.i.)"
+                        args: !SimpleFlagArg
+                          name: SAMPLE_INPUT_FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - '-1'
+                        description: "[_1...]            FastQ input files, one per\
+                          \ sample, forward\nreads (or unpaired reads)."
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - '-2'
+                        description: '[_2...]            FastQ input files, one per
+                          sample, reverse'
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands:
+                      - !Command
+                        command: &id008
+                        - MentaLiST.jl
+                        - call
+                        - algorithm.
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: MentaLiST.jl
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: call
+                          description: ''
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -t
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: MUTATION_THRESHOLD
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --db
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: DB
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -o
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: O
+                        parent: *id005
+                        subcommands: []
+                        usage: []
+                        help_flag:
+                        usage_flag:
+                        version_flag:
+                        help_text: "WARNING: imported binding for VERSION overwritten\
+                          \ in module Main\ntoo many arguments\nusage: MentaLiST.jl\
+                          \ call -o O --db DB [-t MUTATION_THRESHOLD]\n          \
+                          \              [--kt KT] [--output_votes] [--output_special]\n\
+                          \                        [-i SAMPLE_INPUT_FILE] [-1 [_1...]]\n\
+                          \                        [-2 [_2...]] [--fasta]\n"
+                        generated_using: *id004
+                        docker_image:
+                      - !Command
+                        command: &id009
+                        - MentaLiST.jl
+                        - call
+                        - reads.
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: MentaLiST.jl
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: call
+                          description: ''
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -t
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: MUTATION_THRESHOLD
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --db
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: DB
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -o
+                          description: ''
+                          args: !SimpleFlagArg
+                            name: O
+                        parent: *id005
+                        subcommands: []
+                        usage: []
+                        help_flag:
+                        usage_flag:
+                        version_flag:
+                        help_text: "WARNING: imported binding for VERSION overwritten\
+                          \ in module Main\ntoo many arguments\nusage: MentaLiST.jl\
+                          \ call -o O --db DB [-t MUTATION_THRESHOLD]\n          \
+                          \              [--kt KT] [--output_votes] [--output_special]\n\
+                          \                        [-i SAMPLE_INPUT_FILE] [-1 [_1...]]\n\
+                          \                        [-2 [_2...]] [--fasta]\n"
+                        generated_using: *id004
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: MentaLiST.jl call -o O --db DB [-t MUTATION_THRESHOLD]\n\
+                        \                        [--kt KT] [--output_votes] [--output_special]\n\
+                        \                        [-i SAMPLE_INPUT_FILE] [-1 [_1...]]\n\
+                        \                        [-2 [_2...]] [--fasta] [-h]\n\noptional\
+                        \ arguments:\n  -o O                  Output file with MLST\
+                        \ call\n  --db DB               Kmer database\n  -t, --mutation_threshold\
+                        \ MUTATION_THRESHOLD\n                        Maximum number\
+                        \ of mutations when looking for\n                        novel\
+                        \ alleles. (type: Int64, default: 6)\n  --kt KT          \
+                        \     Minimum # of times a kmer is seen to be\n          \
+                        \              considered present in the sample (solid).\n\
+                        \                        (type: Int64, default: 10)\n  --output_votes\
+                        \        Outputs the results for the original voting\n   \
+                        \                     algorithm.\n  --output_special     \
+                        \ Outputs a FASTA file with the alleles from\n           \
+                        \             'special cases' such as incomplete coverage,\n\
+                        \                        novel, and multiple alleles.\n  -i,\
+                        \ --sample_input_file SAMPLE_INPUT_FILE\n                \
+                        \        Input TXT file for multiple samples. First\n    \
+                        \                    column has the sample name, second the\
+                        \ FASTQ\n                        file. Repeat the sample name\
+                        \ for samples with\n                        more than one\
+                        \ file (paired reads, f.i.)\n  -1 [_1...]            FastQ\
+                        \ input files, one per sample, forward\n                 \
+                        \       reads (or unpaired reads).\n  -2 [_2...]         \
+                        \   FastQ input files, one per sample, reverse\n         \
+                        \               reads.\n  --fasta               Input files\
+                        \ are in FASTA format, instead of\n                      \
+                        \  the default FASTQs.\n  -h, --help            show this\
+                        \ help message and exit\n\nMentaLiST MLST calling function.\
+                        \ Calls alleles on a given MLST database.\nYou can create\
+                        \ a custom DB with 'create_db' or other MentaLiST functions\
+                        \ that download schemes from pubmlst, cgmlst.org or Enterobase.\n\
+                        \nExamples:\nmentalist call -o my_sample.mlst --db my_scheme.db\
+                        \ -1 sample_1.fastq.gz -2 sample_2.fastq.gz # one paired-end\
+                        \ sample.\nmentalist call -o all_samples.mlst --db my_scheme.db\
+                        \ -1 *.fastq.gz -2 *.fastq.gz # multiple paired-end samples.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id010
+                      - MentaLiST.jl
+                      - list_pubmlst
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -p
+                        - --prefix
+                        description: "Only list schemes where the species name starts\n\
+                          with this prefix."
+                        args: !SimpleFlagArg
+                          name: PREFIX
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: MentaLiST.jl list_pubmlst [-p PREFIX] [-h]\n\
+                        \noptional arguments:\n  -p, --prefix PREFIX  Only list schemes\
+                        \ where the species name starts\n                       with\
+                        \ this prefix.\n  -h, --help           show this help message\
+                        \ and exit\n\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id011
+                      - MentaLiST.jl
+                      - list_cgmlst
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -p
+                        - --prefix
+                        description: "Only list schemes where the species name starts\n\
+                          with this prefix."
+                        args: !SimpleFlagArg
+                          name: PREFIX
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: MentaLiST.jl list_cgmlst [-p PREFIX] [-h]\n\
+                        \noptional arguments:\n  -p, --prefix PREFIX  Only list schemes\
+                        \ where the species name starts\n                       with\
+                        \ this prefix.\n  -h, --help           show this help message\
+                        \ and exit\n\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -v
+                      - --version
+                      description: show version information and exit
+                      args: !EmptyFlagArg {}
+                    help_text: "usage: MentaLiST.jl [-v] [-h]\n                  \
+                      \  {call|build_db|db_info|list_pubmlst|download_pubmlst|list_cgmlst|download_cgmlst|download_enterobase}\n\
+                      \ncommands:\n  call                 MLST caller, given a sample\
+                      \ and a k-mer\n                       database.\n  build_db\
+                      \             Build a MLST k-mer database, given a list of\n\
+                      \                       FASTA files.\n  db_info            \
+                      \  Extract information from an existing MentaLiST\n        \
+                      \               k-mer database\n  list_pubmlst         List\
+                      \ all available MLST schemes from\n                       www.pubmlst.org.\n\
+                      \  download_pubmlst     Dowload a MLST scheme from pubmlst and\
+                      \ build a\n                       MLST k-mer database.\n  list_cgmlst\
+                      \          List all available cgMLST schemes from\n        \
+                      \               www.cgmlst.org.\n  download_cgmlst      Dowload\
+                      \ a MLST scheme from cgmlst.org and build\n                \
+                      \       a MLST k-mer database.\n  download_enterobase  Dowload\
+                      \ a MLST scheme from Enterobase\n                       (enterobase.warwick.ac.uk)\
+                      \ and build a MLST\n                       k-mer database.\n\
+                      \noptional arguments:\n  -v, --version        show version information\
+                      \ and exit\n  -h, --help           show this help message and\
+                      \ exit\n\nMentaLiST -- The MLST pipeline developed by the PathOGiST\
+                      \ research group. https://github.com/WGS-TB/MentaLiST\nTo cite:\
+                      \ Feijao P, Yao H, Fornika D, Gardy J, Hsiao W, Chauve C, Chindelevitch\
+                      \ L. 10/01/2018. Microbial Genomics 4(2): doi:10.1099/mgen.0.000146\n\
+                      \n"
+                    generated_using: &id012
+                    - -h
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: MentaLiST.jl db_info --db DB [-h]\n\noptional\
                     \ arguments:\n  --db DB     MentaLiST kmer database\n  -h, --help\
                     \  show this help message and exit\n\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - MentaLiST.jl
-                  - download_enterobase
+                  command: *id006
                   positional: []
                   named:
                   - !Flag
-                    description: '[-h]'
-                    synonyms:
-                    - -t
-                    args: !SimpleFlagArg
-                      name: TYPE
                     optional: true
-                  - !Flag
-                    description: Output file (kmer database)
                     synonyms:
                     - --db
+                    description: Output file (kmer database)
                     args: !SimpleFlagArg
                       name: DB
-                    optional: true
                   - !Flag
-                    description: 'Kmer size (type: Int8)'
+                    optional: true
                     synonyms:
                     - -k
+                    description: 'Kmer size (type: Int8)'
                     args: !SimpleFlagArg
                       name: K
-                    optional: true
                   - !Flag
-                    description: "Number of threads used in parallel. (type:\nInt64,\
-                      \ default: 2)"
+                    optional: true
                     synonyms:
                     - --threads
+                    description: "Number of threads used in parallel. (type:\nInt64,\
+                      \ default: 2)"
                     args: !SimpleFlagArg
                       name: THREADS
-                    optional: true
                   - !Flag
-                    description: Output folder for the scheme Fasta files.
+                    optional: true
                     synonyms:
                     - -o
                     - --output
+                    description: Output folder for the scheme Fasta files.
                     args: !SimpleFlagArg
                       name: OUTPUT
-                    optional: true
                   - !Flag
-                    description: "Letter identifying which scheme: (S)almonella,\n\
-                      (Y)ersinia, or (E)scherichia/Shigella."
+                    optional: true
                     synonyms:
                     - -s
                     - --scheme
+                    description: "Letter identifying which scheme: (S)almonella,\n\
+                      (Y)ersinia, or (E)scherichia/Shigella."
                     args: !SimpleFlagArg
                       name: SCHEME
-                    optional: true
                   - !Flag
-                    description: "Choose the type: 'cg' or 'wg' for cgMLST or\nwgMLST\
-                      \ scheme, respectively."
+                    optional: true
                     synonyms:
                     - -t
                     - --type
+                    description: "Choose the type: 'cg' or 'wg' for cgMLST or\nwgMLST\
+                      \ scheme, respectively."
                     args: !SimpleFlagArg
                       name: TYPE
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: MentaLiST.jl download_enterobase --db DB -k K\n\
@@ -196,113 +644,48 @@ subcommands:
                     \ scheme, respectively.\n  -h, --help           show this help\
                     \ message and exit\n\n"
                   generated_using: *id004
-                - &id005 !Command
-                  command: &id007
-                  - MentaLiST.jl
-                  - call
+                  docker_image:
+                - &id014 !Command
+                  command: *id007
                   positional: []
-                  named:
-                  - !Flag
-                    description: Output file with MLST call
-                    synonyms:
-                    - -o
-                    args: !SimpleFlagArg
-                      name: O
-                    optional: true
-                  - !Flag
-                    description: Kmer database
-                    synonyms:
-                    - --db
-                    args: !SimpleFlagArg
-                      name: DB
-                    optional: true
-                  - !Flag
-                    description: "Maximum number of mutations when looking for\nnovel\
-                      \ alleles. (type: Int64, default: 6)"
-                    synonyms:
-                    - -t
-                    - --mutation_threshold
-                    args: !SimpleFlagArg
-                      name: MUTATION_THRESHOLD
-                    optional: true
-                  - !Flag
-                    description: "Minimum # of times a kmer is seen to be\nconsidered\
-                      \ present in the sample (solid).\n(type: Int64, default: 10)"
-                    synonyms:
-                    - --kt
-                    args: !SimpleFlagArg
-                      name: KT
-                    optional: true
-                  - !Flag
-                    description: Outputs the results for the original voting
-                    synonyms:
-                    - --output_votes
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: "Input TXT file for multiple samples. First\ncolumn\
-                      \ has the sample name, second the FASTQ\nfile. Repeat the sample\
-                      \ name for samples with\nmore than one file (paired reads, f.i.)"
-                    synonyms:
-                    - -i
-                    - --sample_input_file
-                    args: !SimpleFlagArg
-                      name: SAMPLE_INPUT_FILE
-                    optional: true
-                  - !Flag
-                    description: "[_1...]            FastQ input files, one per sample,\
-                      \ forward\nreads (or unpaired reads)."
-                    synonyms:
-                    - '-1'
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: '[_2...]            FastQ input files, one per sample,
-                      reverse'
-                    synonyms:
-                    - '-2'
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  named: []
                   parent: *id003
                   subcommands:
                   - !Command
-                    command: &id008
-                    - MentaLiST.jl
-                    - call
-                    - algorithm.
+                    command: *id008
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: MentaLiST.jl
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 1
                       name: call
-                      optional: false
+                      description: ''
                     named:
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - -t
+                      description: ''
                       args: !SimpleFlagArg
                         name: MUTATION_THRESHOLD
-                      optional: true
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - --db
+                      description: ''
                       args: !SimpleFlagArg
                         name: DB
-                      optional: true
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - -o
+                      description: ''
                       args: !SimpleFlagArg
                         name: O
-                      optional: true
                     parent: *id005
                     subcommands: []
                     usage: []
@@ -316,44 +699,42 @@ subcommands:
                       \                  [-i SAMPLE_INPUT_FILE] [-1 [_1...]]\n   \
                       \                     [-2 [_2...]] [--fasta]\n"
                     generated_using: *id004
+                    docker_image:
                   - !Command
-                    command: &id009
-                    - MentaLiST.jl
-                    - call
-                    - reads.
+                    command: *id009
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: MentaLiST.jl
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 1
                       name: call
-                      optional: false
+                      description: ''
                     named:
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - -t
+                      description: ''
                       args: !SimpleFlagArg
                         name: MUTATION_THRESHOLD
-                      optional: true
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - --db
+                      description: ''
                       args: !SimpleFlagArg
                         name: DB
-                      optional: true
                     - !Flag
-                      description: ''
+                      optional: true
                       synonyms:
                       - -o
+                      description: ''
                       args: !SimpleFlagArg
                         name: O
-                      optional: true
                     parent: *id005
                     subcommands: []
                     usage: []
@@ -367,14 +748,9 @@ subcommands:
                       \                  [-i SAMPLE_INPUT_FILE] [-1 [_1...]]\n   \
                       \                     [-2 [_2...]] [--fasta]\n"
                     generated_using: *id004
+                    docker_image:
                   usage: []
-                  help_flag: !Flag
-                    description: show this help message and exit
-                    synonyms:
-                    - -h
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "usage: MentaLiST.jl call -o O --db DB [-t MUTATION_THRESHOLD]\n\
@@ -413,31 +789,30 @@ subcommands:
                     \ --db my_scheme.db -1 *.fastq.gz -2 *.fastq.gz # multiple paired-end\
                     \ samples.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id010
-                  - MentaLiST.jl
-                  - list_pubmlst
+                  command: *id010
                   positional: []
                   named:
                   - !Flag
-                    description: "Only list schemes where the species name starts\n\
-                      with this prefix."
+                    optional: true
                     synonyms:
                     - -p
                     - --prefix
+                    description: "Only list schemes where the species name starts\n\
+                      with this prefix."
                     args: !SimpleFlagArg
                       name: PREFIX
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: MentaLiST.jl list_pubmlst [-p PREFIX] [-h]\n\n\
@@ -446,31 +821,30 @@ subcommands:
                     \ prefix.\n  -h, --help           show this help message and exit\n\
                     \n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id011
-                  - MentaLiST.jl
-                  - list_cgmlst
+                  command: *id011
                   positional: []
                   named:
                   - !Flag
-                    description: "Only list schemes where the species name starts\n\
-                      with this prefix."
+                    optional: true
                     synonyms:
                     - -p
                     - --prefix
+                    description: "Only list schemes where the species name starts\n\
+                      with this prefix."
                     args: !SimpleFlagArg
                       name: PREFIX
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: MentaLiST.jl list_cgmlst [-p PREFIX] [-h]\n\n\
@@ -479,22 +853,11 @@ subcommands:
                     \ prefix.\n  -h, --help           show this help message and exit\n\
                     \n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: show version information and exit
-                  synonyms:
-                  - -v
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "usage: MentaLiST.jl [-v] [-h]\n                    {call|build_db|db_info|list_pubmlst|download_pubmlst|list_cgmlst|download_cgmlst|download_enterobase}\n\
                   \ncommands:\n  call                 MLST caller, given a sample\
                   \ and a k-mer\n                       database.\n  build_db    \
@@ -517,85 +880,86 @@ subcommands:
                   To cite: Feijao P, Yao H, Fornika D, Gardy J, Hsiao W, Chauve C,\
                   \ Chindelevitch L. 10/01/2018. Microbial Genomics 4(2): doi:10.1099/mgen.0.000146\n\
                   \n"
-                generated_using: &id012
-                - -h
+                generated_using: *id012
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: MentaLiST.jl db_info --db DB [-h]\n\noptional arguments:\n\
                 \  --db DB     MentaLiST kmer database\n  -h, --help  show this help\
                 \ message and exit\n\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional: []
               named:
               - !Flag
-                description: Output file (kmer database)
+                optional: true
                 synonyms:
                 - --db
+                description: Output file (kmer database)
                 args: !SimpleFlagArg
                   name: DB
-                optional: true
               - !Flag
-                description: 'Kmer size (type: Int8)'
+                optional: true
                 synonyms:
                 - -k
+                description: 'Kmer size (type: Int8)'
                 args: !SimpleFlagArg
                   name: K
-                optional: true
               - !Flag
-                description: "Number of threads used in parallel. (type:\nInt64, default:\
-                  \ 2)"
+                optional: true
                 synonyms:
                 - --threads
+                description: "Number of threads used in parallel. (type:\nInt64, default:\
+                  \ 2)"
                 args: !SimpleFlagArg
                   name: THREADS
-                optional: true
               - !Flag
-                description: Output folder for the scheme Fasta files.
+                optional: true
                 synonyms:
                 - -o
                 - --output
+                description: Output folder for the scheme Fasta files.
                 args: !SimpleFlagArg
                   name: OUTPUT
-                optional: true
               - !Flag
-                description: "Letter identifying which scheme: (S)almonella,\n(Y)ersinia,\
-                  \ or (E)scherichia/Shigella."
+                optional: true
                 synonyms:
                 - -s
                 - --scheme
+                description: "Letter identifying which scheme: (S)almonella,\n(Y)ersinia,\
+                  \ or (E)scherichia/Shigella."
                 args: !SimpleFlagArg
                   name: SCHEME
-                optional: true
               - !Flag
-                description: "Choose the type: 'cg' or 'wg' for cgMLST or\nwgMLST\
-                  \ scheme, respectively."
+                optional: true
                 synonyms:
                 - -t
                 - --type
+                description: "Choose the type: 'cg' or 'wg' for cgMLST or\nwgMLST\
+                  \ scheme, respectively."
                 args: !SimpleFlagArg
                   name: TYPE
-                optional: true
-              parent: *id003
+              parent: *id013
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: MentaLiST.jl download_enterobase --db DB -k K\n \
@@ -611,48 +975,49 @@ subcommands:
                 \                       wgMLST scheme, respectively.\n  -h, --help\
                 \           show this help message and exit\n\n"
               generated_using: *id004
-            - &id014 !Command
+              docker_image:
+            - &id016 !Command
               command: *id007
               positional: []
               named: []
-              parent: *id003
+              parent: *id013
               subcommands:
               - !Command
                 command: *id008
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: MentaLiST.jl
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: call
-                  optional: false
+                  description: ''
                 named:
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - -t
+                  description: ''
                   args: !SimpleFlagArg
                     name: MUTATION_THRESHOLD
-                  optional: true
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - --db
+                  description: ''
                   args: !SimpleFlagArg
                     name: DB
-                  optional: true
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - -o
+                  description: ''
                   args: !SimpleFlagArg
                     name: O
-                  optional: true
-                parent: *id005
+                parent: *id014
                 subcommands: []
                 usage: []
                 help_flag:
@@ -664,42 +1029,43 @@ subcommands:
                   \ [--output_special]\n                        [-i SAMPLE_INPUT_FILE]\
                   \ [-1 [_1...]]\n                        [-2 [_2...]] [--fasta]\n"
                 generated_using: *id004
+                docker_image:
               - !Command
                 command: *id009
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: MentaLiST.jl
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: call
-                  optional: false
+                  description: ''
                 named:
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - -t
+                  description: ''
                   args: !SimpleFlagArg
                     name: MUTATION_THRESHOLD
-                  optional: true
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - --db
+                  description: ''
                   args: !SimpleFlagArg
                     name: DB
-                  optional: true
                 - !Flag
-                  description: ''
+                  optional: true
                   synonyms:
                   - -o
+                  description: ''
                   args: !SimpleFlagArg
                     name: O
-                  optional: true
-                parent: *id005
+                parent: *id014
                 subcommands: []
                 usage: []
                 help_flag:
@@ -711,6 +1077,7 @@ subcommands:
                   \ [--output_special]\n                        [-i SAMPLE_INPUT_FILE]\
                   \ [-1 [_1...]]\n                        [-2 [_2...]] [--fasta]\n"
                 generated_using: *id004
+                docker_image:
               usage: []
               help_flag:
               usage_flag:
@@ -749,29 +1116,30 @@ subcommands:
                 \ all_samples.mlst --db my_scheme.db -1 *.fastq.gz -2 *.fastq.gz #\
                 \ multiple paired-end samples.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id010
               positional: []
               named:
               - !Flag
-                description: "Only list schemes where the species name starts\nwith\
-                  \ this prefix."
+                optional: true
                 synonyms:
                 - -p
                 - --prefix
+                description: "Only list schemes where the species name starts\nwith\
+                  \ this prefix."
                 args: !SimpleFlagArg
                   name: PREFIX
-                optional: true
-              parent: *id003
+              parent: *id013
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: MentaLiST.jl list_pubmlst [-p PREFIX] [-h]\n\noptional\
@@ -779,29 +1147,30 @@ subcommands:
                 \ name starts\n                       with this prefix.\n  -h, --help\
                 \           show this help message and exit\n\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id011
               positional: []
               named:
               - !Flag
-                description: "Only list schemes where the species name starts\nwith\
-                  \ this prefix."
+                optional: true
                 synonyms:
                 - -p
                 - --prefix
+                description: "Only list schemes where the species name starts\nwith\
+                  \ this prefix."
                 args: !SimpleFlagArg
                   name: PREFIX
-                optional: true
-              parent: *id003
+              parent: *id013
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: MentaLiST.jl list_cgmlst [-p PREFIX] [-h]\n\noptional\
@@ -809,6 +1178,7 @@ subcommands:
                 \ name starts\n                       with this prefix.\n  -h, --help\
                 \           show this help message and exit\n\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -835,83 +1205,85 @@ subcommands:
               \ L. 10/01/2018. Microbial Genomics 4(2): doi:10.1099/mgen.0.000146\n\
               \n"
             generated_using: *id012
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: MentaLiST.jl db_info --db DB [-h]\n\noptional arguments:\n\
             \  --db DB     MentaLiST kmer database\n  -h, --help  show this help message\
             \ and exit\n\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional: []
           named:
           - !Flag
-            description: Output file (kmer database)
+            optional: true
             synonyms:
             - --db
+            description: Output file (kmer database)
             args: !SimpleFlagArg
               name: DB
-            optional: true
           - !Flag
-            description: 'Kmer size (type: Int8)'
+            optional: true
             synonyms:
             - -k
+            description: 'Kmer size (type: Int8)'
             args: !SimpleFlagArg
               name: K
-            optional: true
           - !Flag
-            description: "Number of threads used in parallel. (type:\nInt64, default:\
-              \ 2)"
+            optional: true
             synonyms:
             - --threads
+            description: "Number of threads used in parallel. (type:\nInt64, default:\
+              \ 2)"
             args: !SimpleFlagArg
               name: THREADS
-            optional: true
           - !Flag
-            description: Output folder for the scheme Fasta files.
+            optional: true
             synonyms:
             - -o
             - --output
+            description: Output folder for the scheme Fasta files.
             args: !SimpleFlagArg
               name: OUTPUT
-            optional: true
           - !Flag
-            description: "Letter identifying which scheme: (S)almonella,\n(Y)ersinia,\
-              \ or (E)scherichia/Shigella."
+            optional: true
             synonyms:
             - -s
             - --scheme
+            description: "Letter identifying which scheme: (S)almonella,\n(Y)ersinia,\
+              \ or (E)scherichia/Shigella."
             args: !SimpleFlagArg
               name: SCHEME
-            optional: true
           - !Flag
-            description: "Choose the type: 'cg' or 'wg' for cgMLST or\nwgMLST scheme,\
-              \ respectively."
+            optional: true
             synonyms:
             - -t
             - --type
+            description: "Choose the type: 'cg' or 'wg' for cgMLST or\nwgMLST scheme,\
+              \ respectively."
             args: !SimpleFlagArg
               name: TYPE
-            optional: true
-          parent: *id013
+          parent: *id015
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: MentaLiST.jl download_enterobase --db DB -k K\n     \
@@ -926,48 +1298,49 @@ subcommands:
             \ 'cg' or 'wg' for cgMLST or\n                       wgMLST scheme, respectively.\n\
             \  -h, --help           show this help message and exit\n\n"
           generated_using: *id004
-        - &id016 !Command
+          docker_image:
+        - &id018 !Command
           command: *id007
           positional: []
           named: []
-          parent: *id013
+          parent: *id015
           subcommands:
           - !Command
             command: *id008
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: MentaLiST.jl
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: call
-              optional: false
+              description: ''
             named:
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - -t
+              description: ''
               args: !SimpleFlagArg
                 name: MUTATION_THRESHOLD
-              optional: true
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - --db
+              description: ''
               args: !SimpleFlagArg
                 name: DB
-              optional: true
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - -o
+              description: ''
               args: !SimpleFlagArg
                 name: O
-              optional: true
-            parent: *id014
+            parent: *id016
             subcommands: []
             usage: []
             help_flag:
@@ -979,42 +1352,43 @@ subcommands:
               \ [--output_special]\n                        [-i SAMPLE_INPUT_FILE]\
               \ [-1 [_1...]]\n                        [-2 [_2...]] [--fasta]\n"
             generated_using: *id004
+            docker_image:
           - !Command
             command: *id009
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: MentaLiST.jl
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: call
-              optional: false
+              description: ''
             named:
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - -t
+              description: ''
               args: !SimpleFlagArg
                 name: MUTATION_THRESHOLD
-              optional: true
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - --db
+              description: ''
               args: !SimpleFlagArg
                 name: DB
-              optional: true
             - !Flag
-              description: ''
+              optional: true
               synonyms:
               - -o
+              description: ''
               args: !SimpleFlagArg
                 name: O
-              optional: true
-            parent: *id014
+            parent: *id016
             subcommands: []
             usage: []
             help_flag:
@@ -1026,6 +1400,7 @@ subcommands:
               \ [--output_special]\n                        [-i SAMPLE_INPUT_FILE]\
               \ [-1 [_1...]]\n                        [-2 [_2...]] [--fasta]\n"
             generated_using: *id004
+            docker_image:
           usage: []
           help_flag:
           usage_flag:
@@ -1062,29 +1437,30 @@ subcommands:
             \ # one paired-end sample.\nmentalist call -o all_samples.mlst --db my_scheme.db\
             \ -1 *.fastq.gz -2 *.fastq.gz # multiple paired-end samples.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id010
           positional: []
           named:
           - !Flag
-            description: "Only list schemes where the species name starts\nwith this\
-              \ prefix."
+            optional: true
             synonyms:
             - -p
             - --prefix
+            description: "Only list schemes where the species name starts\nwith this\
+              \ prefix."
             args: !SimpleFlagArg
               name: PREFIX
-            optional: true
-          parent: *id013
+          parent: *id015
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: MentaLiST.jl list_pubmlst [-p PREFIX] [-h]\n\noptional\
@@ -1092,29 +1468,30 @@ subcommands:
             \ name starts\n                       with this prefix.\n  -h, --help\
             \           show this help message and exit\n\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id011
           positional: []
           named:
           - !Flag
-            description: "Only list schemes where the species name starts\nwith this\
-              \ prefix."
+            optional: true
             synonyms:
             - -p
             - --prefix
+            description: "Only list schemes where the species name starts\nwith this\
+              \ prefix."
             args: !SimpleFlagArg
               name: PREFIX
-            optional: true
-          parent: *id013
+          parent: *id015
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: MentaLiST.jl list_cgmlst [-p PREFIX] [-h]\n\noptional\
@@ -1122,6 +1499,7 @@ subcommands:
             \ name starts\n                       with this prefix.\n  -h, --help\
             \           show this help message and exit\n\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -1146,83 +1524,85 @@ subcommands:
           To cite: Feijao P, Yao H, Fornika D, Gardy J, Hsiao W, Chauve C, Chindelevitch\
           \ L. 10/01/2018. Microbial Genomics 4(2): doi:10.1099/mgen.0.000146\n\n"
         generated_using: *id012
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: MentaLiST.jl db_info --db DB [-h]\n\noptional arguments:\n\
         \  --db DB     MentaLiST kmer database\n  -h, --help  show this help message\
         \ and exit\n\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional: []
       named:
       - !Flag
-        description: Output file (kmer database)
+        optional: true
         synonyms:
         - --db
+        description: Output file (kmer database)
         args: !SimpleFlagArg
           name: DB
-        optional: true
       - !Flag
-        description: 'Kmer size (type: Int8)'
+        optional: true
         synonyms:
         - -k
+        description: 'Kmer size (type: Int8)'
         args: !SimpleFlagArg
           name: K
-        optional: true
       - !Flag
-        description: "Number of threads used in parallel. (type:\nInt64, default:\
-          \ 2)"
+        optional: true
         synonyms:
         - --threads
+        description: "Number of threads used in parallel. (type:\nInt64, default:\
+          \ 2)"
         args: !SimpleFlagArg
           name: THREADS
-        optional: true
       - !Flag
-        description: Output folder for the scheme Fasta files.
+        optional: true
         synonyms:
         - -o
         - --output
+        description: Output folder for the scheme Fasta files.
         args: !SimpleFlagArg
           name: OUTPUT
-        optional: true
       - !Flag
-        description: "Letter identifying which scheme: (S)almonella,\n(Y)ersinia,\
-          \ or (E)scherichia/Shigella."
+        optional: true
         synonyms:
         - -s
         - --scheme
+        description: "Letter identifying which scheme: (S)almonella,\n(Y)ersinia,\
+          \ or (E)scherichia/Shigella."
         args: !SimpleFlagArg
           name: SCHEME
-        optional: true
       - !Flag
-        description: "Choose the type: 'cg' or 'wg' for cgMLST or\nwgMLST scheme,\
-          \ respectively."
+        optional: true
         synonyms:
         - -t
         - --type
+        description: "Choose the type: 'cg' or 'wg' for cgMLST or\nwgMLST scheme,\
+          \ respectively."
         args: !SimpleFlagArg
           name: TYPE
-        optional: true
-      parent: *id015
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: MentaLiST.jl download_enterobase --db DB -k K\n         \
@@ -1237,48 +1617,49 @@ subcommands:
         \       wgMLST scheme, respectively.\n  -h, --help           show this help\
         \ message and exit\n\n"
       generated_using: *id004
-    - &id018 !Command
+      docker_image:
+    - &id020 !Command
       command: *id007
       positional: []
       named: []
-      parent: *id015
+      parent: *id017
       subcommands:
       - !Command
         command: *id008
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: MentaLiST.jl
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: call
-          optional: false
+          description: ''
         named:
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - -t
+          description: ''
           args: !SimpleFlagArg
             name: MUTATION_THRESHOLD
-          optional: true
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - --db
+          description: ''
           args: !SimpleFlagArg
             name: DB
-          optional: true
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - -o
+          description: ''
           args: !SimpleFlagArg
             name: O
-          optional: true
-        parent: *id016
+        parent: *id018
         subcommands: []
         usage: []
         help_flag:
@@ -1290,42 +1671,43 @@ subcommands:
           \                        [-i SAMPLE_INPUT_FILE] [-1 [_1...]]\n         \
           \               [-2 [_2...]] [--fasta]\n"
         generated_using: *id004
+        docker_image:
       - !Command
         command: *id009
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: MentaLiST.jl
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: call
-          optional: false
+          description: ''
         named:
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - -t
+          description: ''
           args: !SimpleFlagArg
             name: MUTATION_THRESHOLD
-          optional: true
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - --db
+          description: ''
           args: !SimpleFlagArg
             name: DB
-          optional: true
         - !Flag
-          description: ''
+          optional: true
           synonyms:
           - -o
+          description: ''
           args: !SimpleFlagArg
             name: O
-          optional: true
-        parent: *id016
+        parent: *id018
         subcommands: []
         usage: []
         help_flag:
@@ -1337,6 +1719,7 @@ subcommands:
           \                        [-i SAMPLE_INPUT_FILE] [-1 [_1...]]\n         \
           \               [-2 [_2...]] [--fasta]\n"
         generated_using: *id004
+        docker_image:
       usage: []
       help_flag:
       usage_flag:
@@ -1372,28 +1755,29 @@ subcommands:
         \ sample.\nmentalist call -o all_samples.mlst --db my_scheme.db -1 *.fastq.gz\
         \ -2 *.fastq.gz # multiple paired-end samples.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id010
       positional: []
       named:
       - !Flag
-        description: "Only list schemes where the species name starts\nwith this prefix."
+        optional: true
         synonyms:
         - -p
         - --prefix
+        description: "Only list schemes where the species name starts\nwith this prefix."
         args: !SimpleFlagArg
           name: PREFIX
-        optional: true
-      parent: *id015
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: MentaLiST.jl list_pubmlst [-p PREFIX] [-h]\n\noptional arguments:\n\
@@ -1401,28 +1785,29 @@ subcommands:
         \                       with this prefix.\n  -h, --help           show this\
         \ help message and exit\n\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id011
       positional: []
       named:
       - !Flag
-        description: "Only list schemes where the species name starts\nwith this prefix."
+        optional: true
         synonyms:
         - -p
         - --prefix
+        description: "Only list schemes where the species name starts\nwith this prefix."
         args: !SimpleFlagArg
           name: PREFIX
-        optional: true
-      parent: *id015
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: MentaLiST.jl list_cgmlst [-p PREFIX] [-h]\n\noptional arguments:\n\
@@ -1430,6 +1815,7 @@ subcommands:
         \                       with this prefix.\n  -h, --help           show this\
         \ help message and exit\n\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -1454,80 +1840,82 @@ subcommands:
       \ Gardy J, Hsiao W, Chauve C, Chindelevitch L. 10/01/2018. Microbial Genomics\
       \ 4(2): doi:10.1099/mgen.0.000146\n\n"
     generated_using: *id012
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: MentaLiST.jl db_info --db DB [-h]\n\noptional arguments:\n  --db\
     \ DB     MentaLiST kmer database\n  -h, --help  show this help message and exit\n\
     \n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional: []
   named:
   - !Flag
-    description: Output file (kmer database)
+    optional: true
     synonyms:
     - --db
+    description: Output file (kmer database)
     args: !SimpleFlagArg
       name: DB
-    optional: true
   - !Flag
-    description: 'Kmer size (type: Int8)'
+    optional: true
     synonyms:
     - -k
+    description: 'Kmer size (type: Int8)'
     args: !SimpleFlagArg
       name: K
-    optional: true
   - !Flag
-    description: "Number of threads used in parallel. (type:\nInt64, default: 2)"
+    optional: true
     synonyms:
     - --threads
+    description: "Number of threads used in parallel. (type:\nInt64, default: 2)"
     args: !SimpleFlagArg
       name: THREADS
-    optional: true
   - !Flag
-    description: Output folder for the scheme Fasta files.
+    optional: true
     synonyms:
     - -o
     - --output
+    description: Output folder for the scheme Fasta files.
     args: !SimpleFlagArg
       name: OUTPUT
-    optional: true
   - !Flag
-    description: "Letter identifying which scheme: (S)almonella,\n(Y)ersinia, or (E)scherichia/Shigella."
+    optional: true
     synonyms:
     - -s
     - --scheme
+    description: "Letter identifying which scheme: (S)almonella,\n(Y)ersinia, or (E)scherichia/Shigella."
     args: !SimpleFlagArg
       name: SCHEME
-    optional: true
   - !Flag
-    description: "Choose the type: 'cg' or 'wg' for cgMLST or\nwgMLST scheme, respectively."
+    optional: true
     synonyms:
     - -t
     - --type
+    description: "Choose the type: 'cg' or 'wg' for cgMLST or\nwgMLST scheme, respectively."
     args: !SimpleFlagArg
       name: TYPE
-    optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: MentaLiST.jl download_enterobase --db DB -k K\n             \
@@ -1541,48 +1929,49 @@ subcommands:
     \ the type: 'cg' or 'wg' for cgMLST or\n                       wgMLST scheme,\
     \ respectively.\n  -h, --help           show this help message and exit\n\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional: []
   named: []
-  parent: *id017
+  parent: *id019
   subcommands:
   - !Command
     command: *id008
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: MentaLiST.jl
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 1
       name: call
-      optional: false
+      description: ''
     named:
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - -t
+      description: ''
       args: !SimpleFlagArg
         name: MUTATION_THRESHOLD
-      optional: true
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - --db
+      description: ''
       args: !SimpleFlagArg
         name: DB
-      optional: true
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - -o
+      description: ''
       args: !SimpleFlagArg
         name: O
-      optional: true
-    parent: *id018
+    parent: *id020
     subcommands: []
     usage: []
     help_flag:
@@ -1594,42 +1983,43 @@ subcommands:
       \                     [-i SAMPLE_INPUT_FILE] [-1 [_1...]]\n                \
       \        [-2 [_2...]] [--fasta]\n"
     generated_using: *id004
+    docker_image:
   - !Command
     command: *id009
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: MentaLiST.jl
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 1
       name: call
-      optional: false
+      description: ''
     named:
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - -t
+      description: ''
       args: !SimpleFlagArg
         name: MUTATION_THRESHOLD
-      optional: true
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - --db
+      description: ''
       args: !SimpleFlagArg
         name: DB
-      optional: true
     - !Flag
-      description: ''
+      optional: true
       synonyms:
       - -o
+      description: ''
       args: !SimpleFlagArg
         name: O
-      optional: true
-    parent: *id018
+    parent: *id020
     subcommands: []
     usage: []
     help_flag:
@@ -1641,6 +2031,7 @@ subcommands:
       \                     [-i SAMPLE_INPUT_FILE] [-1 [_1...]]\n                \
       \        [-2 [_2...]] [--fasta]\n"
     generated_using: *id004
+    docker_image:
   usage: []
   help_flag:
   usage_flag:
@@ -1674,28 +2065,29 @@ subcommands:
     \ -2 sample_2.fastq.gz # one paired-end sample.\nmentalist call -o all_samples.mlst\
     \ --db my_scheme.db -1 *.fastq.gz -2 *.fastq.gz # multiple paired-end samples.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id010
   positional: []
   named:
   - !Flag
-    description: "Only list schemes where the species name starts\nwith this prefix."
+    optional: true
     synonyms:
     - -p
     - --prefix
+    description: "Only list schemes where the species name starts\nwith this prefix."
     args: !SimpleFlagArg
       name: PREFIX
-    optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: MentaLiST.jl list_pubmlst [-p PREFIX] [-h]\n\noptional arguments:\n\
@@ -1703,28 +2095,29 @@ subcommands:
     \                   with this prefix.\n  -h, --help           show this help message\
     \ and exit\n\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id011
   positional: []
   named:
   - !Flag
-    description: "Only list schemes where the species name starts\nwith this prefix."
+    optional: true
     synonyms:
     - -p
     - --prefix
+    description: "Only list schemes where the species name starts\nwith this prefix."
     args: !SimpleFlagArg
       name: PREFIX
-    optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: MentaLiST.jl list_cgmlst [-p PREFIX] [-h]\n\noptional arguments:\n\
@@ -1732,6 +2125,7 @@ subcommands:
     \                   with this prefix.\n  -h, --help           show this help message\
     \ and exit\n\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -1755,3 +2149,4 @@ help_text: "usage: MentaLiST.jl [-v] [-h]\n                    {call|build_db|db
   \ Feijao P, Yao H, Fornika D, Gardy J, Hsiao W, Chauve C, Chindelevitch L. 10/01/2018.\
   \ Microbial Genomics 4(2): doi:10.1099/mgen.0.000146\n\n"
 generated_using: *id012
+docker_image:

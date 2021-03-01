@@ -24,6 +24,9 @@ task OncogeminiSetSomatic {
       ~{if defined(tu_mdp) then ("--tumDP " +  '"' + tu_mdp + '"') else ""} \
       ~{if (dry_run) then "--dry-run" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mind_p: "Minimum depth required in all samples (default is 0)"
     ming_q: "Minimum genotype quality required in all samples\\n(default is 0)"

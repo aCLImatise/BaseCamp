@@ -26,6 +26,9 @@ task Aav {
       ~{if (no_ensembl_lookup) then "--no-ensembl-lookup" else ""} \
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path: "Path to array file (default: None)"
     build: "Genome build (default: GRCh37)"

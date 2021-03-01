@@ -20,6 +20,9 @@ task Splitsam6waysh {
       ~{r_two_minus} \
       ~{r_two_unmapped}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_input: ""
     r_one_plus: ""

@@ -1,0 +1,221 @@
+!Command
+command:
+- cooler
+- cload
+- pairs
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: BINS
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: PAIRS_PATH
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: COOL_PATH
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --metadata
+  description: Path to JSON file containing user metadata.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --assembly
+  description: Name of genome assembly (e.g. hg19, mm10)
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -c1
+  - --chrom1
+  description: chrom1 field number (one-based)  [required]
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -p1
+  - --pos1
+  description: pos1 field number (one-based)  [required]
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -c2
+  - --chrom2
+  description: chrom2 field number (one-based)  [required]
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -p2
+  - --pos2
+  description: pos2 field number (one-based)  [required]
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --chunksize
+  description: Number of input lines to load at a time
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - '-0'
+  - --zero-based
+  description: 'Positions are zero-based  [default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --comment-char
+  description: Comment character that indicates lines to
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --no-symmetric-upper
+  description: "Create a complete square matrix without\nimplicit symmetry. This allows\
+    \ for distinct\nupper- and lower-triangle values"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --input-copy-status
+  description: "[unique|duplex]\nCopy status of input data when using\nsymmetric-upper\
+    \ storage. | `unique`:\nIncoming data comes from a unique half of a\nsymmetric\
+    \ map, regardless of how the\ncoordinates of a pair are ordered. `duplex`:\nIncoming\
+    \ data contains upper- and lower-\ntriangle duplicates. All input records that\n\
+    map to the lower triangle will be discarded!\n| If you wish to treat lower- and\
+    \ upper-\ntriangle input data as distinct, use the\n``--no-symmetric-upper`` option.\
+    \   [default:\nunique]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --field
+  description: "Specify quantitative input fields to\naggregate into value columns\
+    \ using the\nsyntax ``--field <field-name>=<field-\nnumber>``. Optionally, append\
+    \ ``:`` followed\nby ``dtype=<dtype>`` to specify the data\ntype (e.g. float),\
+    \ and/or ``agg=<agg>`` to\nspecify an aggregation function different\nfrom sum\
+    \ (e.g. mean). Field numbers are\n1-based. Passing 'count' as the target name\n\
+    will override the default behavior of\nstoring pair counts. Repeat the ``--field``\n\
+    option for each additional field."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --temp-dir
+  description: "Create temporary files in a specified\ndirectory. Pass ``-`` to use\
+    \ the platform\ndefault temp dir."
+  args: !SimpleFlagArg
+    name: DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - --no-delete-temp
+  description: Do not delete temporary files when finished.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-merge
+  description: "Maximum number of chunks to merge before\ninvoking recursive merging\
+    \  [default: 200]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --storage-options
+  description: "Options to modify the data filter pipeline.\nProvide as a comma-separated\
+    \ list of key-\nvalue pairs of the form 'k1=v1,k2=v2,...'.\nSee http://docs.h5py.org/en/stable/high/data\n\
+    set.html#filter-pipeline for more details."
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cooler cload pairs [OPTIONS] BINS PAIRS_PATH COOL_PATH\n\n  Bin\
+  \ any text file or stream of pairs.\n\n  Pairs data need not be sorted. Accepts\
+  \ compressed files. To pipe input\n  from stdin, set PAIRS_PATH to '-'.\n\n  BINS\
+  \ : One of the following\n\n      <TEXT:INTEGER> : 1. Path to a chromsizes file,\
+  \ 2. Bin size in bp\n\n      <TEXT> : Path to BED file defining the genomic bin\
+  \ segmentation.\n\n  PAIRS_PATH : Path to contacts (i.e. read pairs) file.\n\n \
+  \ COOL_PATH : Output COOL file path or URI.\n\nOptions:\n  --metadata TEXT     \
+  \            Path to JSON file containing user metadata.\n  --assembly TEXT    \
+  \             Name of genome assembly (e.g. hg19, mm10)\n  -c1, --chrom1 INTEGER\
+  \           chrom1 field number (one-based)  [required]\n  -p1, --pos1 INTEGER \
+  \            pos1 field number (one-based)  [required]\n  -c2, --chrom2 INTEGER\
+  \           chrom2 field number (one-based)  [required]\n  -p2, --pos2 INTEGER \
+  \            pos2 field number (one-based)  [required]\n  --chunksize INTEGER  \
+  \           Number of input lines to load at a time\n  -0, --zero-based        \
+  \        Positions are zero-based  [default: False]\n  --comment-char TEXT     \
+  \        Comment character that indicates lines to\n                           \
+  \       ignore.  [default: #]\n\n  -N, --no-symmetric-upper        Create a complete\
+  \ square matrix without\n                                  implicit symmetry. This\
+  \ allows for distinct\n                                  upper- and lower-triangle\
+  \ values\n\n  --input-copy-status [unique|duplex]\n                            \
+  \      Copy status of input data when using\n                                  symmetric-upper\
+  \ storage. | `unique`:\n                                  Incoming data comes from\
+  \ a unique half of a\n                                  symmetric map, regardless\
+  \ of how the\n                                  coordinates of a pair are ordered.\
+  \ `duplex`:\n                                  Incoming data contains upper- and\
+  \ lower-\n                                  triangle duplicates. All input records\
+  \ that\n                                  map to the lower triangle will be discarded!\n\
+  \                                  | If you wish to treat lower- and upper-\n  \
+  \                                triangle input data as distinct, use the\n    \
+  \                              ``--no-symmetric-upper`` option.   [default:\n  \
+  \                                unique]\n\n  --field TEXT                    Specify\
+  \ quantitative input fields to\n                                  aggregate into\
+  \ value columns using the\n                                  syntax ``--field <field-name>=<field-\n\
+  \                                  number>``. Optionally, append ``:`` followed\n\
+  \                                  by ``dtype=<dtype>`` to specify the data\n  \
+  \                                type (e.g. float), and/or ``agg=<agg>`` to\n  \
+  \                                specify an aggregation function different\n   \
+  \                               from sum (e.g. mean). Field numbers are\n      \
+  \                            1-based. Passing 'count' as the target name\n     \
+  \                             will override the default behavior of\n          \
+  \                        storing pair counts. Repeat the ``--field``\n         \
+  \                         option for each additional field.\n\n  --temp-dir DIRECTORY\
+  \            Create temporary files in a specified\n                           \
+  \       directory. Pass ``-`` to use the platform\n                            \
+  \      default temp dir.\n\n  --no-delete-temp                Do not delete temporary\
+  \ files when finished.\n  --max-merge INTEGER             Maximum number of chunks\
+  \ to merge before\n                                  invoking recursive merging\
+  \  [default: 200]\n\n  --storage-options TEXT          Options to modify the data\
+  \ filter pipeline.\n                                  Provide as a comma-separated\
+  \ list of key-\n                                  value pairs of the form 'k1=v1,k2=v2,...'.\n\
+  \                                  See http://docs.h5py.org/en/stable/high/data\n\
+  \                                  set.html#filter-pipeline for more details.\n\n\
+  \  -h, --help                      Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cooler:0.8.10--pyh3252c3a_0

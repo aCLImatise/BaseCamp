@@ -4,119 +4,125 @@ command:
 - peaks
 positional:
 - !Positional
-  description: Annotation file in GTF format, obtained from "iCount segment" command
+  optional: false
   position: 0
   name: annotation
-  optional: false
+  description: Annotation file in GTF format, obtained from "iCount segment" command
 - !Positional
-  description: File with cross-links in BED6 format
+  optional: false
   position: 1
   name: sites
-  optional: false
+  description: File with cross-links in BED6 format
 - !Positional
-  description: "File name for \"peaks\" output. File reports positions with significant\n\
-    number of cross-link events. It should have .bed or .bed.gz extension"
+  optional: false
   position: 2
   name: peaks
-  optional: false
+  description: "File name for \"peaks\" output. File reports positions with significant\n\
+    number of cross-link events. It should have .bed or .bed.gz extension"
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --scores
   description: "File name for \"scores\" output. File reports all cross-link events,\n\
     independent from their FDR score It should have .tsv, .csv, .txt or .gz\nextension\
     \ (default: None)"
-  synonyms:
-  - --scores
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[ ...]    Features from annotation to consider. If None, ['gene']\
-    \ is used.\nSometimes, it is advised to use ['gene', 'intergenic'] (default: None)"
+  optional: true
   synonyms:
   - --features
+  description: "[ ...]    Features from annotation to consider. If None, ['gene']\
+    \ is used.\nSometimes, it is advised to use ['gene', 'intergenic'] (default: None)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ', --group_by       Attribute by which cross-link positions are grouped
-    (default: gene_id)'
+  optional: true
   synonyms:
   - -g
+  - --group_by
+  description: 'Attribute by which cross-link positions are grouped (default: gene_id)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Treat all features as one when grouping. Has no effect when only one\n\
-    feature is given in features parameter (default: False)"
+  optional: true
   synonyms:
   - --merge_features
+  description: "Treat all features as one when grouping. Has no effect when only one\n\
+    feature is given in features parameter (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Half-window size (default: 3)'
+  optional: true
   synonyms:
   - --half_window
+  description: 'Half-window size (default: 3)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'FDR threshold (default: 0.05)'
+  optional: true
   synonyms:
   - --fdr
+  description: 'FDR threshold (default: 0.05)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ', --perms          Number of permutations when calculating random
-    distribution (default: 100)'
+  optional: true
   synonyms:
   - -p
+  - --perms
+  description: 'Number of permutations when calculating random distribution (default:
+    100)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ', --rnd_seed     Seed for random generator (default: 42)'
+  optional: true
   synonyms:
   - -rnd
+  - --rnd_seed
+  description: 'Seed for random generator (default: 42)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Report analysis progress (default: False)'
+  optional: true
   synonyms:
   - -prog
   - --report_progress
+  description: 'Report analysis progress (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ', --stdout_log     Threshold value (0-50) for logging to stdout. If
-    0, logging to stdout if turned OFF.'
+  optional: true
   synonyms:
   - -S
+  - --stdout_log
+  description: Threshold value (0-50) for logging to stdout. If 0, logging to stdout
+    if turned OFF.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ', --file_log       Threshold value (0-50) for logging to file. If
-    0, logging to file if turned OFF.'
+  optional: true
   synonyms:
   - -F
+  - --file_log
+  description: Threshold value (0-50) for logging to file. If 0, logging to file if
+    turned OFF.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ', --file_logpath   Path to log file.'
+  optional: true
   synonyms:
   - -P
+  - --file_logpath
+  description: Path to log file.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ', --results_file   File into which to store Metrics.'
+  optional: true
   synonyms:
   - -M
+  - --results_file
+  description: File into which to store Metrics.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: iCount peaks [-h] [--scores] [--features  [...]] [-g]\n       \
@@ -204,3 +210,4 @@ help_text: "usage: iCount peaks [-h] [--scores] [--features  [...]] [-g]\n      
   \   Path to log file.\n  -M , --results_file   File into which to store Metrics.\n"
 generated_using:
 - --help
+docker_image:

@@ -9,18 +9,14 @@ task Tagore {
     Boolean? of_mt
     Boolean? verbose
     String? var_output
-    File? file
+    File? var_file
     String? prefix
-    Int? hg_seven_eight_slash_hg_three_eight
-    String? png_slash_pdf
   }
   command <<<
     tagore \
       ~{var_output} \
-      ~{file} \
+      ~{var_file} \
       ~{prefix} \
-      ~{hg_seven_eight_slash_hg_three_eight} \
-      ~{png_slash_pdf} \
       ~{if defined(input_bedlike_file) then ("--input " +  '"' + input_bedlike_file + '"') else ""} \
       ~{if (p) then "-p" else ""} \
       ~{if (b) then "-b" else ""} \
@@ -28,6 +24,9 @@ task Tagore {
       ~{if (of_mt) then "-ofmt" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bedlike_file: "Input BED-like file"
     p: "[output file prefix], --prefix [output file prefix]  Output prefix [Default: \\\"out\\\"]"
@@ -36,10 +35,8 @@ task Tagore {
     of_mt: "[png/pdf], --oformat [png/pdf]                    Output format for conversion (pdf requires rsvg-convert)"
     verbose: "Display verbose output"
     var_output: ""
-    file: ""
+    var_file: ""
     prefix: ""
-    hg_seven_eight_slash_hg_three_eight: ""
-    png_slash_pdf: ""
   }
   output {
     File out_stdout = stdout()

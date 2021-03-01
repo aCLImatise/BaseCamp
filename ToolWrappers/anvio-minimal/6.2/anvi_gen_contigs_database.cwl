@@ -6,19 +6,19 @@ inputs:
     \ against. This could be a reference\ngenome, or contigs from your assembler.\
     \ Contig names\nin this file must match to those in other input files.\nIf there\
     \ is a problem anvi'o will gracefully complain\nabout it."
-  type: File
+  type: File?
   inputBinding:
     prefix: --contigs-fasta
 - id: in_project_name
   doc: "Name of the project. Please choose a short but\ndescriptive name (so anvi'o\
     \ can use it whenever she\nneeds to name an output file, or add a new table in\
     \ a\ndatabase, or name her first born)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --project-name
 - id: in_output_db_path
   doc: Output file path for the new database.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-db-path
 - id: in_description
@@ -26,7 +26,7 @@ inputs:
     \ use Markdwon syntax. The\ndescription text will be rendered and shown in all\n\
     relevant interfaces, including the anvi'o interactive\ninterface, or anvi'o summary\
     \ outputs."
-  type: File
+  type: File?
   inputBinding:
     prefix: --description
 - id: in_split_length
@@ -42,7 +42,7 @@ inputs:
     \ the split size as low as you want.\nIf you do not want your contigs to be split,\
     \ you can\nset the split size to '0' or any other negative\ninteger (lots of unnecessary\
     \ freedom here, enjoy!)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --split-length
 - id: in_km_er_size
@@ -51,7 +51,7 @@ inputs:
     \ offer the the sweet spot of sensitivity,\ninformation density, and manageable\
     \ number of\ndimensions for clustering approaches, you are welcome\nto experiment\
     \ (but maybe you should leave it as is for\nyour first set of analyses)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --kmer-size
 - id: in_skip_mindful_splitting
@@ -63,7 +63,7 @@ inputs:
     \ When this flag is used, anvi'o\ndoes what the user wants and creates splits\
     \ at desired\nlengths (although some functionality may become\nunavailable for\
     \ the projects that rely on a contigs\ndatabase that is initiated this way)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip-mindful-splitting
 - id: in_skip_gene_calling
@@ -71,7 +71,7 @@ inputs:
     \ of open reading frames in\ncontigs by running a bacterial gene caller. Declaring\n\
     this flag will by-pass that process. If you prefer,\nyou can later import your\
     \ own gene calling results\ninto the database."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip-gene-calling
 - id: in_prodigal_translation_table
@@ -80,7 +80,7 @@ inputs:
     of which is 11 (so if you do not set anything, it will\nbe set to 11 in Prodigal\
     \ runtime. Please refer to the\nProdigal documentation to determine what is the\
     \ right\ntranslation table for you if you think you need it.)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --prodigal-translation-table
 - id: in_external_gene_calls
@@ -93,7 +93,7 @@ inputs:
     \ 0 for complete\ncalls), 'source' (the gene caller), and 'version' (the\nversion\
     \ of the gene caller, i.e., v2.6.7 or v1.0). An\nexample file can be found via\
     \ the URL\nhttps://bit.ly/2qEEHuQ"
-  type: long
+  type: long?
   inputBinding:
     prefix: --external-gene-calls
 - id: in_ignore_internal_stop_codons
@@ -107,7 +107,7 @@ inputs:
     \ with an 'X' character. Please let us\nknow if you used this and things failed,\
     \ so we can\ntell you that you shouldn't have really used it if you\ndidn't like\
     \ failures at the first place (smiley).\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --ignore-internal-stop-codons
 outputs:
@@ -118,12 +118,12 @@ outputs:
   doc: "Name of the project. Please choose a short but\ndescriptive name (so anvi'o\
     \ can use it whenever she\nneeds to name an output file, or add a new table in\
     \ a\ndatabase, or name her first born)."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_project_name)
 - id: out_output_db_path
   doc: Output file path for the new database.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_db_path)
 - id: out_ignore_internal_stop_codons
@@ -137,9 +137,10 @@ outputs:
     \ with an 'X' character. Please let us\nknow if you used this and things failed,\
     \ so we can\ntell you that you shouldn't have really used it if you\ndidn't like\
     \ failures at the first place (smiley).\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_ignore_internal_stop_codons)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-gen-contigs-database

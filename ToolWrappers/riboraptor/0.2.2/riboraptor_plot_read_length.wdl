@@ -16,6 +16,9 @@ task RiboraptorPlotreadlength {
       ~{if defined(save_to) then ("--saveto " +  '"' + save_to + '"') else ""} \
       ~{if (ascii) then "--ascii" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_lengths: "Path to read length pickle file"
     title: "Plot Title"

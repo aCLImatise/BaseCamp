@@ -14,6 +14,9 @@ task MicroPITApyOutputtxt {
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
       ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a: ""
     m: ""

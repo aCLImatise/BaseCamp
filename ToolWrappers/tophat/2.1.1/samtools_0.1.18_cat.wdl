@@ -18,6 +18,9 @@ task Samtools0118Cat {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(h) then ("-h " +  '"' + h + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     h: ""

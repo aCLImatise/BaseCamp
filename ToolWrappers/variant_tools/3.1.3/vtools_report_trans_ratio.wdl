@@ -12,6 +12,9 @@ task VtoolsReportTransRatio {
       ~{if (group_by) then "--group_by" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_field: "Name of the field that holds sample variant count,\\nwhich is the field name for command 'vtools update\\ntable --from_stat \\\"num=#(alt)\\\"'."
     group_by: "[GROUP_BY [GROUP_BY ...]], --group-by [GROUP_BY [GROUP_BY ...]]\\nOutput transition/transversion rate for groups of\\nvariants. e.g. --group_by num for each sample variant\\nfrequency group."

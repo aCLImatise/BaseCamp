@@ -3,12 +3,12 @@ id: halRandGen.cwl
 inputs:
 - id: in_preset
   doc: <small, medium, big, large> [medum]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --preset
 - id: in_seed
   doc: '[system time]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --seed
 - id: in_hal_stats
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - halRandGen

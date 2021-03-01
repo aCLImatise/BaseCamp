@@ -20,6 +20,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_output_postscript_file_name)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ssu-esl-ssdraw

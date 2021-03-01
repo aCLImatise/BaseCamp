@@ -26,6 +26,9 @@ task MglexcliTrain {
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     responsibility: "Responsibility (weight) matrix file; default standard input"
     out_model: "Output classificaton model file"

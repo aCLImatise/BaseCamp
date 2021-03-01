@@ -14,6 +14,9 @@ task CoolerMakebins {
       ~{if (header) then "--header" else ""} \
       ~{if (rel_ids) then "--rel-ids" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "Output file (defaults to stdout)"
     header: "Print the header of column names as the first row.\\n[default: False]"

@@ -12,6 +12,9 @@ task Vcfkeepgeno {
       ~{field_one} \
       ~{field_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file: ""
     field_one: ""

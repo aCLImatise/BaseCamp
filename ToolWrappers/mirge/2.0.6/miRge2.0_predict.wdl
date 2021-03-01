@@ -12,6 +12,7 @@ task MiRge20Predict {
     File? pr
     Float? ex
     String? ad
+    Boolean? phred_six_four
     Boolean? spike_in
     Boolean? tcf
     Boolean? di
@@ -42,6 +43,7 @@ task MiRge20Predict {
       ~{if defined(pr) then ("-pr " +  '"' + pr + '"') else ""} \
       ~{if defined(ex) then ("-ex " +  '"' + ex + '"') else ""} \
       ~{if defined(ad) then ("-ad " +  '"' + ad + '"') else ""} \
+      ~{if (phred_six_four) then "-phred64" else ""} \
       ~{if (spike_in) then "-spikeIn" else ""} \
       ~{if (tcf) then "-tcf" else ""} \
       ~{if (di) then "-di" else ""} \
@@ -58,6 +60,9 @@ task MiRge20Predict {
       ~{if defined(olc) then ("-olc " +  '"' + olc + '"') else ""} \
       ~{if defined(clc) then ("-clc " +  '"' + clc + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     two_options_file: "[sample <required> [sample <required> ...]]\\ntwo options: 1. A file where each row represents one\\nsample name; 2. *.fastq *.fastq ... Or *.fastq.gz\\n*.fastq.gz ..."
     directory_outputs_default: "the directory of the outputs (default: current\\ndirectory)"
@@ -69,6 +74,7 @@ task MiRge20Predict {
     pr: "the path to the system's rnafold binary"
     ex: "the threshold of the proportion of canonical reads for\\nthe miRNAs to determine whether keeping them or not\\nwhen counting. Users can set it between 0 and 0.5.\\n(default: 0.1)"
     ad: "the adapter need to be removed which could be\\nillumina, ion or a defined sequence (default: none)"
+    phred_six_four: "phred64 format(default: 64)"
     spike_in: "switch to annotate spike-ins if the bowtie index files\\nare loacted at the path of bowtie's index files\\n(default: off)"
     tcf: "switch to write trimmed and collapsed fasta file\\n(default: off)"
     di: "switch to calculate of isomirs entropy (default: off)"

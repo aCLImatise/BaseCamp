@@ -22,6 +22,9 @@ task FindMatchesBetweenKUnitigsAndReads {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     long: "Long output format (false)"
     output_file_kunitigsreadsmatches: "Output file (kunitigs_reads_matches)"

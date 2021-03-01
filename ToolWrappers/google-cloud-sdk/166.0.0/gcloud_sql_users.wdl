@@ -14,6 +14,9 @@ task GcloudSqlUsers {
       ~{list} \
       ~{set_password}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Creates a user in a given instance."
     delete: "Deletes a Cloud SQL user in a given instance."

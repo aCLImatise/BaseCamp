@@ -4,60 +4,60 @@ command:
 - species
 positional:
 - !Positional
-  description: Directory for output files
+  optional: false
   position: 0
   name: outdir
-  optional: false
+  description: Directory for output files
 named:
 - !Flag
-  description: Input to sample directories output by run_midas.py; see '-t' for details
+  optional: true
   synonyms:
   - -i
+  description: Input to sample directories output by run_midas.py; see '-t' for details
   args: !SimpleFlagArg
     name: INPUT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
   description: "Specify one of the following:\nlist: -i is a comma-separated list\
     \ (ex: /samples/sample_1,/samples/sample_2)\ndir: -i is a directory containing\
     \ all samples (ex: /samples)\nfile: -i is a file of paths to samples (ex: /sample_paths.txt)"
-  synonyms:
-  - -t
   args: !SimpleFlagArg
     name: INPUT_TYPE
-  optional: true
 - !Flag
-  description: "Path to reference database\nBy default the MIDAS_DB environmental\
-    \ variable is used"
+  optional: true
   synonyms:
   - -d
+  description: "Path to reference database\nBy default the MIDAS_DB environmental\
+    \ variable is used"
   args: !SimpleFlagArg
     name: DB
-  optional: true
 - !Flag
-  description: Minimum per-sample marker-gene-depth for estimating species prevalence
-    (1.0)
+  optional: true
   synonyms:
   - --sample_depth
+  description: Minimum per-sample marker-gene-depth for estimating species prevalence
+    (1.0)
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Maximum number of samples to process.\nUseful for testing (use all)"
+  optional: true
   synonyms:
   - --max_samples
+  description: "Maximum number of samples to process.\nUseful for testing (use all)"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Description: Merge species abundance files across samples\n\nUsage: merge_midas.py\
@@ -82,3 +82,4 @@ help_text: "Description: Merge species abundance files across samples\n\nUsage: 
   \ -t dir --max_samples 2\n\t\n"
 generated_using:
 - --help
+docker_image:

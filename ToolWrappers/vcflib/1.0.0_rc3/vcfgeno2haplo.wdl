@@ -14,6 +14,9 @@ task Vcfgeno2haplo {
       ~{if defined(window_size) then ("--window-size " +  '"' + window_size + '"') else ""} \
       ~{if (only_variants) then "--only-variants" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "FASTA reference file, required with -i and -u"
     window_size: "Merge variants at most this many bp apart (default 30)"

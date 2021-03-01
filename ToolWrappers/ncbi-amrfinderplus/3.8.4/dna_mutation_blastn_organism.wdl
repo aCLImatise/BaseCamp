@@ -14,6 +14,9 @@ task DnaMutationBlastnOrganism {
       ~{mutation} \
       ~{organism}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna_mutation: ""
     blastn: ""

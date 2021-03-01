@@ -74,6 +74,9 @@ task Svviz {
       ~{if defined(summary) then ("--summary " +  '"' + summary + '"') else ""} \
       ~{if (lenient) then "--lenient" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "sorted, indexed bam file containing reads of interest to plot; can be specified multiple\\ntimes to load multiple samples"
     type: "event type: either del[etion], ins[ertion], inv[ersion], mei (mobile element insertion),\\ntra[nslocation], largedeletion (ldel), breakend (bkend) or batch (for reading variants\\nfrom a VCF file in batch mode)"

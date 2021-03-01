@@ -18,6 +18,9 @@ task BiomToTsvpy {
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_biom: "The abundance file (format: BIOM)."
     input_fast_a: "The sequences file (format: fasta). If you use this\\noption the sequences will be add in TSV."

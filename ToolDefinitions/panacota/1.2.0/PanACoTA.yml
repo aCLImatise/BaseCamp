@@ -1,0 +1,1440 @@
+&id001 !Command
+command:
+- PanACoTA
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - PanACoTA
+  - corepers
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: genome.
+    description: 'Optional arguments:'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: "PanGenome file (1 line per family, first column is fam\nnumber)"
+    args: !SimpleFlagArg
+      name: PANGENOME
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Specify the output directory for your core/persistent
+    args: !SimpleFlagArg
+      name: OUTPUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --tol
+    description: "min % of genomes having at least 1 member in a family to\nconsider\
+      \ the family as persistent (between 0 and 1,\ndefault is 1 = 100% of genomes\
+      \ = Core genome).By default,\nthe minimum number of genomes will be ceil('tol'*N)\
+      \ (N\nbeing the total number of genomes). If you want to use\nfloor('tol'*N)\
+      \ instead, add the '-F' option."
+    args: !SimpleFlagArg
+      name: TOL
+  - !Flag
+    optional: true
+    synonyms:
+    - -M
+    description: "Add this option if you allow several members in any\ngenome of a\
+      \ family. By default, only 1 (or 0 if tol<1)\nmember per genome are allowed\
+      \ in all genomes. If you want\nto allow exactly 1 member in 'tol'% of the genomes,\
+      \ and\n0, 1 or several members in the '1-tol'% left, use the\noption -X instead\
+      \ of this one: -M and -X options are not\ncompatible."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -X
+    description: "Add this option if you want to allow families having\nseveral members\
+      \ only in '1-tol'% of the genomes. In the\nother genomes, only 1 member exactly\
+      \ is allowed. This\noption is not compatible with -M (which is allowing\nmultigenic\
+      \ families: having several members in any number\nof genomes)."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    description: "When you specify the '-tol' option, with a number lower\nthan 1,\
+      \ you can add this option to use floor('tol'*N) as\na minimum number of genomes\
+      \ instead of ceil('tol'*N)\nwhich is the default behavior."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: Increase verbosity in stdout/stderr.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quiet
+    description: "Do not display anything to stdout/stderr. log files will\nstill\
+      \ be created."
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: PanACoTA corepers -p PANGENOME -o OUTPUTDIR [-t TOL] [-M] [-X]\
+    \ [-F]\n                         [-v] [-q] [-h]\n\n ___                 _____\
+    \  ___         _____  _____\n(  _`\\              (  _  )(  _`\\      (_   _)(\
+    \  _  )\n| |_) )  _ _   ___  | (_) || ( (_)   _   | |  | (_) |\n| ,__/'/'_` )/'\
+    \ _ `\\|  _  || |  _  /'_`\\ | |  |  _  |\n| |   ( (_| || ( ) || | | || (_( )(\
+    \ (_) )| |  | | | |\n(_)   `\\__,_)(_) (_)(_) (_)(____/'`\\___/'(_)  (_) (_)\n\
+    \n       Large scale comparative genomics tools\n\n     -------------------------------------------\n\
+    \n=> Compute a Core or Persistent genome of your dataset\n\nRequired arguments:\n\
+    \  -p PANGENOME       PanGenome file (1 line per family, first column is fam\n\
+    \                     number)\n  -o OUTPUTDIR       Specify the output directory\
+    \ for your core/persistent\n                     genome.\n\nOptional arguments:\n\
+    \  -t TOL, --tol TOL  min % of genomes having at least 1 member in a family to\n\
+    \                     consider the family as persistent (between 0 and 1,\n  \
+    \                   default is 1 = 100% of genomes = Core genome).By default,\n\
+    \                     the minimum number of genomes will be ceil('tol'*N) (N\n\
+    \                     being the total number of genomes). If you want to use\n\
+    \                     floor('tol'*N) instead, add the '-F' option.\n  -M     \
+    \            Add this option if you allow several members in any\n           \
+    \          genome of a family. By default, only 1 (or 0 if tol<1)\n          \
+    \           member per genome are allowed in all genomes. If you want\n      \
+    \               to allow exactly 1 member in 'tol'% of the genomes, and\n    \
+    \                 0, 1 or several members in the '1-tol'% left, use the\n    \
+    \                 option -X instead of this one: -M and -X options are not\n \
+    \                    compatible.\n  -X                 Add this option if you\
+    \ want to allow families having\n                     several members only in\
+    \ '1-tol'% of the genomes. In the\n                     other genomes, only 1\
+    \ member exactly is allowed. This\n                     option is not compatible\
+    \ with -M (which is allowing\n                     multigenic families: having\
+    \ several members in any number\n                     of genomes).\n  -F     \
+    \            When you specify the '-tol' option, with a number lower\n       \
+    \              than 1, you can add this option to use floor('tol'*N) as\n    \
+    \                 a minimum number of genomes instead of ceil('tol'*N)\n     \
+    \                which is the default behavior.\n\nOthers:\n  -v, --verbose  \
+    \    Increase verbosity in stdout/stderr.\n  -q, --quiet        Do not display\
+    \ anything to stdout/stderr. log files will\n                     still be created.\n\
+    \  -h, --help         show this help message and exit\n\nFor more details, see\
+    \ PanACoTA documentation.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/panacota:1.2.0--py_0
+- !Command
+  command:
+  - PanACoTA
+  - align
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: Core or persistent genome whose families must be aligned.
+    args: !SimpleFlagArg
+      name: COREPERS
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: "File containing the list of all the genomes you want to\nalign from\
+      \ their core/persistent families. 1 genome per\nline: it can be the LSTINFO-<list_file>.lst\
+      \ file of\n'PanACoTA annotate' module. Here, only the first column\n(genome\
+      \ name without extension) will be used. The final\nalignment file will contain\
+      \ 1 alignment per genome in\nthis file."
+    args: !SimpleFlagArg
+      name: LIST_GENOMES
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: "Name of the dataset which will be aligned (for example,\nSAEN1234\
+      \ for 1234 Salmonella enterica genomes). This name\nwill be used to name the\
+      \ alignment file."
+    args: !SimpleFlagArg
+      name: DATASET_NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: "Path to the folder containing the directories 'Proteins'\nand 'Genes',\
+      \ created by 'PanACoTA annotate'."
+    args: !SimpleFlagArg
+      name: DBPATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output directory, where all results must be saved
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --threads
+    description: "add this option if you want to parallelize on several\nthreads.\
+      \ Indicate on how many threads you want to\nparallelize. By default, it uses\
+      \ 1 thread. Put 0 if you\nwant to use all threads of your computer."
+    args: !SimpleFlagArg
+      name: THREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --force
+    description: "Force run: Add this option if you want to redo all\nalignments for\
+      \ all families, even if their result file\nalready exists. Without this option,\
+      \ if an alignment file\nalready exists, it will be used for the next step. If\
+      \ you\nwant to redo only a given alignment, just delete its\nfile, without using\
+      \ this option."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: Increase verbosity in stdout/stderr.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quiet
+    description: "Do not display anything to stdout/stderr. log files will\nstill\
+      \ be created."
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: PanACoTA align -c COREPERS -l LIST_GENOMES -n DATASET_NAME -d\
+    \ DBPATH -o\n                      OUTDIR [--threads THREADS] [-F] [-v] [-q] [-h]\n\
+    \n ___                 _____  ___         _____  _____\n(  _`\\              (\
+    \  _  )(  _`\\      (_   _)(  _  )\n| |_) )  _ _   ___  | (_) || ( (_)   _   |\
+    \ |  | (_) |\n| ,__/'/'_` )/' _ `\\|  _  || |  _  /'_`\\ | |  |  _  |\n| |   (\
+    \ (_| || ( ) || | | || (_( )( (_) )| |  | | | |\n(_)   `\\__,_)(_) (_)(_) (_)(____/'`\\\
+    ___/'(_)  (_) (_)\n\n       Large scale comparative genomics tools\n\n     -------------------------------------------\n\
+    \n=> Align Core/Persistent families\n\nRequired arguments:\n  -c COREPERS    \
+    \    Core or persistent genome whose families must be aligned.\n  -l LIST_GENOMES\
+    \    File containing the list of all the genomes you want to\n               \
+    \      align from their core/persistent families. 1 genome per\n             \
+    \        line: it can be the LSTINFO-<list_file>.lst file of\n               \
+    \      'PanACoTA annotate' module. Here, only the first column\n             \
+    \        (genome name without extension) will be used. The final\n           \
+    \          alignment file will contain 1 alignment per genome in\n           \
+    \          this file.\n  -n DATASET_NAME    Name of the dataset which will be\
+    \ aligned (for example,\n                     SAEN1234 for 1234 Salmonella enterica\
+    \ genomes). This name\n                     will be used to name the alignment\
+    \ file.\n  -d DBPATH          Path to the folder containing the directories 'Proteins'\n\
+    \                     and 'Genes', created by 'PanACoTA annotate'.\n  -o OUTDIR\
+    \          Output directory, where all results must be saved\n\nOptional arguments:\n\
+    \  --threads THREADS  add this option if you want to parallelize on several\n\
+    \                     threads. Indicate on how many threads you want to\n    \
+    \                 parallelize. By default, it uses 1 thread. Put 0 if you\n  \
+    \                   want to use all threads of your computer.\n  -F, --force \
+    \       Force run: Add this option if you want to redo all\n                 \
+    \    alignments for all families, even if their result file\n                \
+    \     already exists. Without this option, if an alignment file\n            \
+    \         already exists, it will be used for the next step. If you\n        \
+    \             want to redo only a given alignment, just delete its\n         \
+    \            file, without using this option.\n\nOthers:\n  -v, --verbose    \
+    \  Increase verbosity in stdout/stderr.\n  -q, --quiet        Do not display anything\
+    \ to stdout/stderr. log files will\n                     still be created.\n \
+    \ -h, --help         show this help message and exit\n\nFor more details, see\
+    \ PanACoTA documentation.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/panacota:1.2.0--py_0
+- !Command
+  command:
+  - PanACoTA
+  - all
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: parameters.
+    description: -o OUTDIR             Path to your output folder, where all results
+      from all
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: Path to your configuration file, defining values of
+    args: !SimpleFlagArg
+      name: CONFIGFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --threads
+    description: Specify how many threads can be used (default=1)
+    args: !SimpleFlagArg
+      name: THREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: "Species taxid to download, corresponding to the\n'species taxid'\
+      \ provided by the NCBI. A comma-\nseparated list of taxid can also be provided."
+    args: !SimpleFlagArg
+      name: NCBI_SPECIES_TAXID
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: "Species to download, corresponding to the 'organism\nname' provided\
+      \ by the NCBI. Give name between quotes\n(for example \"escherichia coli\")"
+    args: !SimpleFlagArg
+      name: NCBI_SPECIES
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --assembly_level
+    description: "Assembly levels of genomes to download (default: all).\nPossible\
+      \ levels are: 'all', 'complete', 'chromosome',\n'scaffold', 'contig'.You can\
+      \ also provide a comma-\nseparated list of assembly levels. For ex:\n'complete,chromosome'"
+    args: !SimpleFlagArg
+      name: LEVELS
+  - !Flag
+    optional: true
+    synonyms:
+    - --cutn
+    description: "By default, each genome will be cut into new contigs\nwhen at least\
+      \ 5 'N' in a row are found in its\nsequence. If you don't want to cut genomes\
+      \ into new\ncontigs when there are rows of 'N', put 0 to this\noption. If you\
+      \ want to cut from a different number of\n'N' in a row, put this value to this\
+      \ option."
+    args: !SimpleFlagArg
+      name: CUTN
+  - !Flag
+    optional: true
+    synonyms:
+    - --l90
+    description: "Maximum value of L90 allowed to keep a genome. Default\nis 100."
+    args: !SimpleFlagArg
+      name: L90
+  - !Flag
+    optional: true
+    synonyms:
+    - --nbcont
+    description: "Maximum number of contigs allowed to keep a genome.\nDefault is\
+      \ 999."
+    args: !SimpleFlagArg
+      name: NBCONT
+  - !Flag
+    optional: true
+    synonyms:
+    - --prodigal
+    description: "Add this option if you only want syntactical\nannotation, given\
+      \ by prodigal, and not functional\nannotation requiring prokka and is slower."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: "Choose a name for your annotated genomes. This name\nshould contain\
+      \ 4 alphanumeric characters. Generally,\nthey correspond to the 2 first letters\
+      \ of genus, and 2\nfirst letters of species, e.g. ESCO for Escherichia\nColi."
+    args: !SimpleFlagArg
+      name: NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "Minimum sequence identity to be considered in the same\ncluster\
+      \ (float between 0 and 1). Default is 0.8."
+    args: !SimpleFlagArg
+      name: MIN_ID
+  - !Flag
+    optional: true
+    synonyms:
+    - --tol
+    description: "min % of genomes having at least 1 member in a family\nto consider\
+      \ the family as persistent (between 0 and 1,\ndefault is 1 = 100% of genomes\
+      \ = Core genome).By\ndefault, the minimum number of genomes will be\nceil('tol'*N)\
+      \ (N being the total number of genomes).\nIf you want to use floor('tol'*N)\
+      \ instead, add the\n'-F' option."
+    args: !SimpleFlagArg
+      name: TOL
+  - !Flag
+    optional: true
+    synonyms:
+    - -Mu
+    description: "Add this option if you allow several members in any\ngenome of a\
+      \ family. By default, only 1 (or 0 if tol<1)\nmember per genome are allowed\
+      \ in all genomes. If you\nwant to allow exactly 1 member in 'tol'% of the\n\
+      genomes, and 0, 1 or several members in the '1-tol'%\nleft, use the option -X\
+      \ instead of this one: -M and -X\noptions are not compatible."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -X
+    description: "Add this option if you want to allow families having\nseveral members\
+      \ only in '1-tol'% of the genomes. In\nthe other genomes, only 1 member exactly\
+      \ is allowed.\nThis option is not compatible with -M (which is\nallowing multigenic\
+      \ families: having several members\nin any number of genomes)."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --soft
+    description: "Choose with which software you want to infer the\nphylogenetic tree.\
+      \ Default is IQtree."
+    args: !ChoiceFlagArg
+      choices: !!set
+        fasttree:
+        quicktree:
+        iqtree:
+        fastme:
+        iqtree2:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: Increase verbosity in stdout/stderr.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quiet
+    description: "Do not display anything to stdout/stderr. log files\nwill still\
+      \ be created."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: ''
+    args: !SimpleFlagArg
+      name: OUTDIR
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: PanACoTA all [-c CONFIGFILE] -o OUTDIR [--threads THREADS]\n\
+    \                    [-t NCBI_SPECIES_TAXID] [-s NCBI_SPECIES] [-l LEVELS]\n \
+    \                   [--cutn CUTN] [--l90 L90] [--nbcont NBCONT] [--prodigal]\n\
+    \                    -n NAME [-i MIN_ID] [--tol TOL] [-Mu] [-X]\n            \
+    \        [--soft {fasttree,fastme,quicktree,iqtree,iqtree2}] [-v]\n          \
+    \          [-q] [-h]\n\n ___                 _____  ___         _____  _____\n\
+    (  _`\\              (  _  )(  _`\\      (_   _)(  _  )\n| |_) )  _ _   ___  |\
+    \ (_) || ( (_)   _   | |  | (_) |\n| ,__/'/'_` )/' _ `\\|  _  || |  _  /'_`\\\
+    \ | |  |  _  |\n| |   ( (_| || ( ) || | | || (_( )( (_) )| |  | | | |\n(_)   `\\\
+    __,_)(_) (_)(_) (_)(____/'`\\___/'(_)  (_) (_)\n\n       Large scale comparative\
+    \ genomics tools\n\n     -------------------------------------------\n\n=> Run\
+    \ all PanACoTA modules\n\nGeneral arguments:\n  -c CONFIGFILE         Path to\
+    \ your configuration file, defining values of\n                        parameters.\n\
+    \  -o OUTDIR             Path to your output folder, where all results from all\n\
+    \                        6 modules will be saved.\n  --threads THREADS     Specify\
+    \ how many threads can be used (default=1)\n\n'prepare' module arguments:\n  -t\
+    \ NCBI_SPECIES_TAXID\n                        Species taxid to download, corresponding\
+    \ to the\n                        'species taxid' provided by the NCBI. A comma-\n\
+    \                        separated list of taxid can also be provided.\n  -s NCBI_SPECIES\
+    \       Species to download, corresponding to the 'organism\n                \
+    \        name' provided by the NCBI. Give name between quotes\n              \
+    \          (for example \"escherichia coli\")\n  -l LEVELS, --assembly_level LEVELS\n\
+    \                        Assembly levels of genomes to download (default: all).\n\
+    \                        Possible levels are: 'all', 'complete', 'chromosome',\n\
+    \                        'scaffold', 'contig'.You can also provide a comma-\n\
+    \                        separated list of assembly levels. For ex:\n        \
+    \                'complete,chromosome'\n\nCommon arguments to 'prepare' and 'annotate'\
+    \ modules:\n  --cutn CUTN           By default, each genome will be cut into new\
+    \ contigs\n                        when at least 5 'N' in a row are found in its\n\
+    \                        sequence. If you don't want to cut genomes into new\n\
+    \                        contigs when there are rows of 'N', put 0 to this\n \
+    \                       option. If you want to cut from a different number of\n\
+    \                        'N' in a row, put this value to this option.\n  --l90\
+    \ L90             Maximum value of L90 allowed to keep a genome. Default\n   \
+    \                     is 100.\n  --nbcont NBCONT       Maximum number of contigs\
+    \ allowed to keep a genome.\n                        Default is 999.\n\n'annotate'\
+    \ module arguments:\n  --prodigal            Add this option if you only want\
+    \ syntactical\n                        annotation, given by prodigal, and not\
+    \ functional\n                        annotation requiring prokka and is slower.\n\
+    \  -n NAME               Choose a name for your annotated genomes. This name\n\
+    \                        should contain 4 alphanumeric characters. Generally,\n\
+    \                        they correspond to the 2 first letters of genus, and\
+    \ 2\n                        first letters of species, e.g. ESCO for Escherichia\n\
+    \                        Coli.\n\n'pangenome' module arguments:\n  -i MIN_ID \
+    \            Minimum sequence identity to be considered in the same\n        \
+    \                cluster (float between 0 and 1). Default is 0.8.\n\n'corepers'\
+    \ module arguments:\n  --tol TOL             min % of genomes having at least\
+    \ 1 member in a family\n                        to consider the family as persistent\
+    \ (between 0 and 1,\n                        default is 1 = 100% of genomes =\
+    \ Core genome).By\n                        default, the minimum number of genomes\
+    \ will be\n                        ceil('tol'*N) (N being the total number of\
+    \ genomes).\n                        If you want to use floor('tol'*N) instead,\
+    \ add the\n                        '-F' option.\n  -Mu                   Add this\
+    \ option if you allow several members in any\n                        genome of\
+    \ a family. By default, only 1 (or 0 if tol<1)\n                        member\
+    \ per genome are allowed in all genomes. If you\n                        want\
+    \ to allow exactly 1 member in 'tol'% of the\n                        genomes,\
+    \ and 0, 1 or several members in the '1-tol'%\n                        left, use\
+    \ the option -X instead of this one: -M and -X\n                        options\
+    \ are not compatible.\n  -X                    Add this option if you want to\
+    \ allow families having\n                        several members only in '1-tol'%\
+    \ of the genomes. In\n                        the other genomes, only 1 member\
+    \ exactly is allowed.\n                        This option is not compatible with\
+    \ -M (which is\n                        allowing multigenic families: having several\
+    \ members\n                        in any number of genomes).\n\n'tree' module\
+    \ arguments:\n  --soft {fasttree,fastme,quicktree,iqtree,iqtree2}\n          \
+    \              Choose with which software you want to infer the\n            \
+    \            phylogenetic tree. Default is IQtree.\n\nOthers:\n  -v, --verbose\
+    \         Increase verbosity in stdout/stderr.\n  -q, --quiet           Do not\
+    \ display anything to stdout/stderr. log files\n                        will still\
+    \ be created.\n  -h, --help            show this help message and exit\n\nFor\
+    \ more details, see PanACoTA documentation.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/panacota:1.2.0--py_0
+- !Command
+  command:
+  - PanACoTA
+  - pangenome
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: "File containing the list of all genomes to include in the\npan-genome,\
+      \ 1 genome per line: it can be the\nLSTINFO-<list_file>.lst file of 'PanACoTA\
+      \ annotate'\nmodule.Here, only the first column (genome name without\nextension)\
+      \ will be used. All proteins of all these\ngenomes will be concatenated in a\
+      \ file called\n<dataset_name>.All.prt. The column header must be\n'gembase_name'."
+    args: !SimpleFlagArg
+      name: LSTINFO_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: "Name of the dataset which will be clustered (for example,\nSAEN1234\
+      \ for 1234 Salmonella enterica genomes). This name\nwill be used to name the\
+      \ protein databank, a well as the\npangenome files."
+    args: !SimpleFlagArg
+      name: DATASET_NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: "Path to the folder containing all protein files\ncorresponding to\
+      \ the genomes of the dataset (output\ndirectory 'Proteins' of 'PanACoTA annotate'\
+      \ module)."
+    args: !SimpleFlagArg
+      name: DBPATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "Output directory, where all results must be saved\n(including tmp\
+      \ folder)"
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "Minimum sequence identity to be considered in the same\ncluster\
+      \ (float between 0 and 1). Default is 0.8."
+    args: !SimpleFlagArg
+      name: MIN_ID
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: "Use this option if you want to give the name of the\npangenome output\
+      \ file (without path). Otherwise, by\ndefault, it is called PanGenome-mmseq_<given_dataset_name\n\
+      >.All.prt_<information_on_parameters>.lst"
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: "Choose the clustering mode: 0 for 'set cover', 1 for\n'single-linkage',\
+      \ 2 for 'CD-Hit'. Default is 'single-\nlinkage' (1)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        '2':
+        '1':
+        '0':
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: "use this option if you want to save the concatenated\nprotein databank\
+      \ in another directory than the one\ncontaining all individual protein files\
+      \ ('Proteins'\nfolder)."
+    args: !SimpleFlagArg
+      name: SPEDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --threads
+    description: "add this option if you want to parallelize on several\nthreads.\
+      \ Indicate on how many threads you want to\nparallelize. By default, it uses\
+      \ 1 thread. Put 0 if you\nwant to use all threads of your computer."
+    args: !SimpleFlagArg
+      name: THREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: Increase verbosity in stdout/stderr.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quiet
+    description: "Do not display anything to stdout/stderr. log files will\nstill\
+      \ be created."
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: PanACoTA pangenome -l LSTINFO_FILE -n DATASET_NAME -d DBPATH\
+    \ -o OUTDIR\n                          [-i MIN_ID] [-f OUTFILE] [-c {0,1,2}] [-s\
+    \ SPEDIR]\n                          [--threads THREADS] [-v] [-q] [-h]\n\n ___\
+    \                 _____  ___         _____  _____\n(  _`\\              (  _ \
+    \ )(  _`\\      (_   _)(  _  )\n| |_) )  _ _   ___  | (_) || ( (_)   _   | | \
+    \ | (_) |\n| ,__/'/'_` )/' _ `\\|  _  || |  _  /'_`\\ | |  |  _  |\n| |   ( (_|\
+    \ || ( ) || | | || (_( )( (_) )| |  | | | |\n(_)   `\\__,_)(_) (_)(_) (_)(____/'`\\\
+    ___/'(_)  (_) (_)\n\n       Large scale comparative genomics tools\n\n     -------------------------------------------\n\
+    \n=> Generate a pan-genome of your dataset\n\nRequired arguments:\n  -l LSTINFO_FILE\
+    \    File containing the list of all genomes to include in the\n             \
+    \        pan-genome, 1 genome per line: it can be the\n                     LSTINFO-<list_file>.lst\
+    \ file of 'PanACoTA annotate'\n                     module.Here, only the first\
+    \ column (genome name without\n                     extension) will be used. All\
+    \ proteins of all these\n                     genomes will be concatenated in\
+    \ a file called\n                     <dataset_name>.All.prt. The column header\
+    \ must be\n                     'gembase_name'.\n  -n DATASET_NAME    Name of\
+    \ the dataset which will be clustered (for example,\n                     SAEN1234\
+    \ for 1234 Salmonella enterica genomes). This name\n                     will\
+    \ be used to name the protein databank, a well as the\n                     pangenome\
+    \ files.\n  -d DBPATH          Path to the folder containing all protein files\n\
+    \                     corresponding to the genomes of the dataset (output\n  \
+    \                   directory 'Proteins' of 'PanACoTA annotate' module).\n  -o\
+    \ OUTDIR          Output directory, where all results must be saved\n        \
+    \             (including tmp folder)\n\nOptional arguments:\n  -i MIN_ID     \
+    \     Minimum sequence identity to be considered in the same\n               \
+    \      cluster (float between 0 and 1). Default is 0.8.\n  -f OUTFILE        \
+    \ Use this option if you want to give the name of the\n                     pangenome\
+    \ output file (without path). Otherwise, by\n                     default, it\
+    \ is called PanGenome-mmseq_<given_dataset_name\n                     >.All.prt_<information_on_parameters>.lst\n\
+    \  -c {0,1,2}         Choose the clustering mode: 0 for 'set cover', 1 for\n \
+    \                    'single-linkage', 2 for 'CD-Hit'. Default is 'single-\n \
+    \                    linkage' (1)\n  -s SPEDIR          use this option if you\
+    \ want to save the concatenated\n                     protein databank in another\
+    \ directory than the one\n                     containing all individual protein\
+    \ files ('Proteins'\n                     folder).\n  --threads THREADS  add this\
+    \ option if you want to parallelize on several\n                     threads.\
+    \ Indicate on how many threads you want to\n                     parallelize.\
+    \ By default, it uses 1 thread. Put 0 if you\n                     want to use\
+    \ all threads of your computer.\n\nOthers:\n  -v, --verbose      Increase verbosity\
+    \ in stdout/stderr.\n  -q, --quiet        Do not display anything to stdout/stderr.\
+    \ log files will\n                     still be created.\n  -h, --help       \
+    \  show this help message and exit\n\nFor more details, see PanACoTA documentation.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/panacota:1.2.0--py_0
+- !Command
+  command:
+  - PanACoTA
+  - tree
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: iqtree.
+    description: -fast                 Use -fast option with iqtree.
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: "Alignment file in multi-fasta: each header will be a\nleaf of the\
+      \ inferred tree."
+    args: !SimpleFlagArg
+      name: ALIGNMENT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Directory where tree results will be saved.
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --soft
+    description: "Choose with which software you want to infer the\nphylogenetic tree.\
+      \ Default is IQtree2 (versions 2.x of\nIQtree). If you want version 1.x of IQtree,\
+      \ use '-s\niqtree'"
+    args: !ChoiceFlagArg
+      choices: !!set
+        fasttree:
+        quicktree:
+        iqtree:
+        fastme:
+        iqtree2:
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --boot
+    description: "Indicate how many bootstraps you want to compute. By\ndefault, no\
+      \ bootstrap is calculated. For IQtree, it\nwill use ultrafast bootstrap (>=1000)."
+    args: !SimpleFlagArg
+      name: BOOT
+  - !Flag
+    optional: true
+    synonyms:
+    - --threads
+    description: "add this option if you want to parallelize on several\nthreads.\
+      \ Indicate on how many threads you want to\nparallelize. By default, it uses\
+      \ 1 thread. Put 0 if\nyou want to use all threads of your computer. Not\navailable\
+      \ with quicktree."
+    args: !SimpleFlagArg
+      name: THREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --model
+    description: "Choose your DNA substitution model. Default for\nFastTree and IQtree:\
+      \ GTR. Default for FastME: TN93.\nFor FastTree, the choices are 'GTR' and 'JC'.\
+      \ For\nFastME, choices are: 'p-distance' (or 'p'), 'RY\nsymmetric' (or 'Y'),\
+      \ 'RY' (or 'R'), 'JC69' (or 'J'),\n'K2P' (or 'K'), 'F81' (or '1'), 'F84' (or\
+      \ '4'), 'TN93'\n(or 'T'), 'LogDet' (or 'L'). For IQtree, choices are\nHKY, JC,\
+      \ F81, K2P, K3P, K81uf, TNef, TIM, TIMef, TVM,\nTVMef, SYM, GTR."
+    args: !SimpleFlagArg
+      name: MODEL
+  - !Flag
+    optional: true
+    synonyms:
+    - -B
+    description: "Add this option if you want to write all bootstrap\npseudo-trees.\
+      \ Only available with FastME and IQtree."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --mem
+    description: Maximal RAM usage in GB | MB. Only available with
+    args: !SimpleFlagArg
+      name: MEMORY
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: Increase verbosity in stdout/stderr.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quiet
+    description: "Do not display anything to stdout/stderr. log files\nwill still\
+      \ be created."
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: PanACoTA tree -a ALIGNMENT -o OUTDIR\n                     [-s\
+    \ {fasttree,fastme,quicktree,iqtree,iqtree2}] [-b BOOT]\n                    \
+    \ [--threads THREADS] [-m MODEL] [-B] [--mem MEMORY]\n                     [-fast]\
+    \ [-v] [-q] [-h]\n\n ___                 _____  ___         _____  _____\n(  _`\\\
+    \              (  _  )(  _`\\      (_   _)(  _  )\n| |_) )  _ _   ___  | (_) ||\
+    \ ( (_)   _   | |  | (_) |\n| ,__/'/'_` )/' _ `\\|  _  || |  _  /'_`\\ | |  |\
+    \  _  |\n| |   ( (_| || ( ) || | | || (_( )( (_) )| |  | | | |\n(_)   `\\__,_)(_)\
+    \ (_)(_) (_)(____/'`\\___/'(_)  (_) (_)\n\n       Large scale comparative genomics\
+    \ tools\n\n     -------------------------------------------\n\n=> Infer phylogenetic\
+    \ tree based on core/persistent genome\n\nRequired arguments:\n  -a ALIGNMENT\
+    \          Alignment file in multi-fasta: each header will be a\n            \
+    \            leaf of the inferred tree.\n  -o OUTDIR             Directory where\
+    \ tree results will be saved.\n\nChoose soft to use (default is IQtree2):\n  -s\
+    \ {fasttree,fastme,quicktree,iqtree,iqtree2}, --soft {fasttree,fastme,quicktree,iqtree,iqtree2}\n\
+    \                        Choose with which software you want to infer the\n  \
+    \                      phylogenetic tree. Default is IQtree2 (versions 2.x of\n\
+    \                        IQtree). If you want version 1.x of IQtree, use '-s\n\
+    \                        iqtree'\n\nOptional arguments:\n  -b BOOT, --boot BOOT\
+    \  Indicate how many bootstraps you want to compute. By\n                    \
+    \    default, no bootstrap is calculated. For IQtree, it\n                   \
+    \     will use ultrafast bootstrap (>=1000).\n  --threads THREADS     add this\
+    \ option if you want to parallelize on several\n                        threads.\
+    \ Indicate on how many threads you want to\n                        parallelize.\
+    \ By default, it uses 1 thread. Put 0 if\n                        you want to\
+    \ use all threads of your computer. Not\n                        available with\
+    \ quicktree.\n  -m MODEL, --model MODEL\n                        Choose your DNA\
+    \ substitution model. Default for\n                        FastTree and IQtree:\
+    \ GTR. Default for FastME: TN93.\n                        For FastTree, the choices\
+    \ are 'GTR' and 'JC'. For\n                        FastME, choices are: 'p-distance'\
+    \ (or 'p'), 'RY\n                        symmetric' (or 'Y'), 'RY' (or 'R'), 'JC69'\
+    \ (or 'J'),\n                        'K2P' (or 'K'), 'F81' (or '1'), 'F84' (or\
+    \ '4'), 'TN93'\n                        (or 'T'), 'LogDet' (or 'L'). For IQtree,\
+    \ choices are\n                        HKY, JC, F81, K2P, K3P, K81uf, TNef, TIM,\
+    \ TIMef, TVM,\n                        TVMef, SYM, GTR.\n  -B                \
+    \    Add this option if you want to write all bootstrap\n                    \
+    \    pseudo-trees. Only available with FastME and IQtree.\n  --mem MEMORY    \
+    \      Maximal RAM usage in GB | MB. Only available with\n                   \
+    \     iqtree.\n  -fast                 Use -fast option with iqtree.\n\nOthers:\n\
+    \  -v, --verbose         Increase verbosity in stdout/stderr.\n  -q, --quiet \
+    \          Do not display anything to stdout/stderr. log files\n             \
+    \           will still be created.\n  -h, --help            show this help message\
+    \ and exit\n\nFor more details, see PanACoTA documentation.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/panacota:1.2.0--py_0
+- !Command
+  command:
+  - PanACoTA
+  - prepare
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    description: "Species taxid to download, corresponding to the\n'species taxid'\
+      \ provided by the NCBI. This will\ndownload all sequences of this species and\
+      \ all its\nsub-species.A comma-separated list of species taxids\ncan also be\
+      \ provided. (Ex: -T 573 for Klebsiella\npneumoniae)"
+    args: !SimpleFlagArg
+      name: NCBI_SPECIES_TAXID
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: "Taxid to download. This can be the taxid of a sub-\nspecies, or\
+      \ of a specific strain. A taxid of a\nsubspecies will download all strains in\
+      \ this\nsubspecies EXCEPT the ones which have a specific\ntaxid.A comma-separated\
+      \ list of taxids can also be\nprovided.Ex: '-t 72407' will download all 'general'\
+      \ K.\npneumoniae subsp. pneumoniae strains, and '-t 1123862'\nwill download\
+      \ the strain K. pneumoniae subsp.\npneumoniae Kp13 (not included in -t 72407,\
+      \ as it is a\nstrain of the subspecies with a specific taxid)."
+    args: !SimpleFlagArg
+      name: NCBI_TAXID
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: "Species to download, corresponding to the 'organism\nname' provided\
+      \ by the NCBI. Give name between quotes\n(for example \"escherichia coli\")"
+    args: !SimpleFlagArg
+      name: NCBI_SPECIES_NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: "NCBI section to download: all genbank, or only refseq\n(default)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        refseq:
+        genbank:
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --assembly_level
+    description: "Assembly levels of genomes to download (default: all).\nPossible\
+      \ levels are: 'all', 'complete', 'chromosome',\n'scaffold', 'contig'.You can\
+      \ also provide a comma-\nseparated list of assembly levels. For ex:\n'complete,chromosome'"
+    args: !SimpleFlagArg
+      name: LEVELS
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "Give the path to the directory where you want to save\nthe downloaded\
+      \ database. In the given directory, it\nwill create a folder 'Database_init'\
+      \ containing all\nfasta files that will be sent to the control\nprocedure, as\
+      \ well as a folder 'refseq' with all\noriginal compressed files downloaded from\
+      \ refseq. By\ndefault, this output dir name is the ncbi_species name\nif given,\
+      \ or ncbi_species_taxid or ncbi_taxid\notherwise."
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --tmp
+    description: "Specify where the temporary files (sequence split by\nrows of 'N',\
+      \ sequence with new contig names etc.) must\nbe saved. By default, it will be\
+      \ saved in your\nout_dir/tmp_files."
+    args: !SimpleFlagArg
+      name: TMP_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --cutn
+    description: "By default, each genome will be cut into new contigs\nwhen at least\
+      \ 5 'N' in a row are found in its\nsequence. If you don't want to cut genomes\
+      \ into new\ncontigs when there are rows of 'N', put 0 to this\noption. If you\
+      \ want to cut from a different number of\n'N' in a row, put this value to this\
+      \ option."
+    args: !SimpleFlagArg
+      name: CUTN
+  - !Flag
+    optional: true
+    synonyms:
+    - --l90
+    description: "Maximum value of L90 allowed to keep a genome. Default\nis 100."
+    args: !SimpleFlagArg
+      name: L90
+  - !Flag
+    optional: true
+    synonyms:
+    - --nbcont
+    description: "Maximum number of contigs allowed to keep a genome.\nDefault is\
+      \ 999."
+    args: !SimpleFlagArg
+      name: NBCONT
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_dist
+    description: "By default, genomes whose distance to the reference is\nnot between\
+      \ 1e-4 and 0.06 are discarded. You can\nspecify your own lower limit (instead\
+      \ of 1e-4) with\nthis option."
+    args: !SimpleFlagArg
+      name: MIN_DIST
+  - !Flag
+    optional: true
+    synonyms:
+    - --max_dist
+    description: "By default, genomes whose distance to the reference is\nnot between\
+      \ 1e-4 and 0.06 are discarded. You can\nspecify your own lower limit (instead\
+      \ of 0.06) with\nthis option."
+    args: !SimpleFlagArg
+      name: MAX_DIST
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --threads
+    description: "Run 'N' downloads in parallel (default=1). Put 0 if\nyou want to\
+      \ use all cores of your computer."
+    args: !SimpleFlagArg
+      name: PARALLEL
+  - !Flag
+    optional: true
+    synonyms:
+    - --norefseq
+    description: "If you already downloaded refseq genomes and do not\nwant to check\
+      \ them, add this option to directly go to\nthe next steps:quality control (L90,\
+      \ number of\ncontigs...) and mash filter. Don't forget to specify\nthe db_dir\
+      \ (-d option) where you already have your\ngenome sequences."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: "If your already downloaded sequences are not in the\ndefault directory\
+      \ (outdir/Database_init), you can\nspecify here the path to those fasta files."
+    args: !SimpleFlagArg
+      name: DB_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -M
+    - --only-mash
+    description: "Add this option if you already downloaded complete and\nrefseq genomes,\
+      \ and ran quality control (you have, a\nfile containing all genome names, as\
+      \ well as their\ngenome size, number of contigs and L90 values). It\nwill then\
+      \ get information on genomes quality from this\nfile, and run mash steps."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --info
+    description: "If you already ran the quality control, specify from\nwhich file\
+      \ PanACoTA can read this information, in\norder to proceed to the mash step.\
+      \ This file must\ncontain at least 4 columns, tab separated, with the\nfollowing\
+      \ headers: 'to_annotate', 'gsize', 'nb_conts',\n'L90'. Any other column will\
+      \ be ignored."
+    args: !SimpleFlagArg
+      name: INFO_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: Increase verbosity in stdout/stderr and log files.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quiet
+    description: "Do not display anything to stdout/stderr. log files\nwill still\
+      \ be created."
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: PanACoTA prepare [-T NCBI_SPECIES_TAXID] [-t NCBI_TAXID]\n  \
+    \                      [-g NCBI_SPECIES_NAME] [-s {refseq,genbank}]\n        \
+    \                [-l LEVELS] [-o OUTDIR] [--tmp TMP_DIR] [--cutn CUTN]\n     \
+    \                   [--l90 L90] [--nbcont NBCONT] [--min_dist MIN_DIST]\n    \
+    \                    [--max_dist MAX_DIST] [-p PARALLEL] [--norefseq]\n      \
+    \                  [-d DB_DIR] [-M] [--info INFO_FILE] [-v] [-q] [-h]\n\n ___\
+    \                 _____  ___         _____  _____\n(  _`\\              (  _ \
+    \ )(  _`\\      (_   _)(  _  )\n| |_) )  _ _   ___  | (_) || ( (_)   _   | | \
+    \ | (_) |\n| ,__/'/'_` )/' _ `\\|  _  || |  _  /'_`\\ | |  |  _  |\n| |   ( (_|\
+    \ || ( ) || | | || (_( )( (_) )| |  | | | |\n(_)   `\\__,_)(_) (_)(_) (_)(____/'`\\\
+    ___/'(_)  (_) (_)\n\n       Large scale comparative genomics tools\n\n     -------------------------------------------\n\
+    \n=> Prepare draft dataset\n\nGeneral arguments:\n  -T NCBI_SPECIES_TAXID\n  \
+    \                      Species taxid to download, corresponding to the\n     \
+    \                   'species taxid' provided by the NCBI. This will\n        \
+    \                download all sequences of this species and all its\n        \
+    \                sub-species.A comma-separated list of species taxids\n      \
+    \                  can also be provided. (Ex: -T 573 for Klebsiella\n        \
+    \                pneumoniae)\n  -t NCBI_TAXID         Taxid to download. This\
+    \ can be the taxid of a sub-\n                        species, or of a specific\
+    \ strain. A taxid of a\n                        subspecies will download all strains\
+    \ in this\n                        subspecies EXCEPT the ones which have a specific\n\
+    \                        taxid.A comma-separated list of taxids can also be\n\
+    \                        provided.Ex: '-t 72407' will download all 'general' K.\n\
+    \                        pneumoniae subsp. pneumoniae strains, and '-t 1123862'\n\
+    \                        will download the strain K. pneumoniae subsp.\n     \
+    \                   pneumoniae Kp13 (not included in -t 72407, as it is a\n  \
+    \                      strain of the subspecies with a specific taxid).\n  -g\
+    \ NCBI_SPECIES_NAME  Species to download, corresponding to the 'organism\n   \
+    \                     name' provided by the NCBI. Give name between quotes\n \
+    \                       (for example \"escherichia coli\")\n  -s {refseq,genbank}\
+    \   NCBI section to download: all genbank, or only refseq\n                  \
+    \      (default)\n  -l LEVELS, --assembly_level LEVELS\n                     \
+    \   Assembly levels of genomes to download (default: all).\n                 \
+    \       Possible levels are: 'all', 'complete', 'chromosome',\n              \
+    \          'scaffold', 'contig'.You can also provide a comma-\n              \
+    \          separated list of assembly levels. For ex:\n                      \
+    \  'complete,chromosome'\n  -o OUTDIR             Give the path to the directory\
+    \ where you want to save\n                        the downloaded database. In\
+    \ the given directory, it\n                        will create a folder 'Database_init'\
+    \ containing all\n                        fasta files that will be sent to the\
+    \ control\n                        procedure, as well as a folder 'refseq' with\
+    \ all\n                        original compressed files downloaded from refseq.\
+    \ By\n                        default, this output dir name is the ncbi_species\
+    \ name\n                        if given, or ncbi_species_taxid or ncbi_taxid\n\
+    \                        otherwise.\n  --tmp TMP_DIR         Specify where the\
+    \ temporary files (sequence split by\n                        rows of 'N', sequence\
+    \ with new contig names etc.) must\n                        be saved. By default,\
+    \ it will be saved in your\n                        out_dir/tmp_files.\n  --cutn\
+    \ CUTN           By default, each genome will be cut into new contigs\n      \
+    \                  when at least 5 'N' in a row are found in its\n           \
+    \             sequence. If you don't want to cut genomes into new\n          \
+    \              contigs when there are rows of 'N', put 0 to this\n           \
+    \             option. If you want to cut from a different number of\n        \
+    \                'N' in a row, put this value to this option.\n  --l90 L90   \
+    \          Maximum value of L90 allowed to keep a genome. Default\n          \
+    \              is 100.\n  --nbcont NBCONT       Maximum number of contigs allowed\
+    \ to keep a genome.\n                        Default is 999.\n  --min_dist MIN_DIST\
+    \   By default, genomes whose distance to the reference is\n                 \
+    \       not between 1e-4 and 0.06 are discarded. You can\n                   \
+    \     specify your own lower limit (instead of 1e-4) with\n                  \
+    \      this option.\n  --max_dist MAX_DIST   By default, genomes whose distance\
+    \ to the reference is\n                        not between 1e-4 and 0.06 are discarded.\
+    \ You can\n                        specify your own lower limit (instead of 0.06)\
+    \ with\n                        this option.\n  -p PARALLEL, --threads PARALLEL\n\
+    \                        Run 'N' downloads in parallel (default=1). Put 0 if\n\
+    \                        you want to use all cores of your computer.\n\nAlternatives:\n\
+    \  --norefseq            If you already downloaded refseq genomes and do not\n\
+    \                        want to check them, add this option to directly go to\n\
+    \                        the next steps:quality control (L90, number of\n    \
+    \                    contigs...) and mash filter. Don't forget to specify\n  \
+    \                      the db_dir (-d option) where you already have your\n  \
+    \                      genome sequences.\n  -d DB_DIR             If your already\
+    \ downloaded sequences are not in the\n                        default directory\
+    \ (outdir/Database_init), you can\n                        specify here the path\
+    \ to those fasta files.\n  -M, --only-mash       Add this option if you already\
+    \ downloaded complete and\n                        refseq genomes, and ran quality\
+    \ control (you have, a\n                        file containing all genome names,\
+    \ as well as their\n                        genome size, number of contigs and\
+    \ L90 values). It\n                        will then get information on genomes\
+    \ quality from this\n                        file, and run mash steps.\n  --info\
+    \ INFO_FILE      If you already ran the quality control, specify from\n      \
+    \                  which file PanACoTA can read this information, in\n       \
+    \                 order to proceed to the mash step. This file must\n        \
+    \                contain at least 4 columns, tab separated, with the\n       \
+    \                 following headers: 'to_annotate', 'gsize', 'nb_conts',\n   \
+    \                     'L90'. Any other column will be ignored.\n\nOthers:\n  -v,\
+    \ --verbose         Increase verbosity in stdout/stderr and log files.\n  -q,\
+    \ --quiet           Do not display anything to stdout/stderr. log files\n    \
+    \                    will still be created.\n  -h, --help            show this\
+    \ help message and exit\n\nFor more details, see PanACoTA documentation.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/panacota:1.2.0--py_0
+- !Command
+  command:
+  - PanACoTA
+  - annotate
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: saved
+    description: 'Optional arguments:'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Path to folder containing all multifasta genome files
+    args: !SimpleFlagArg
+      name: DB_PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: Path to folder where output annotated genomes must be
+    args: !SimpleFlagArg
+      name: RES_PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: "File containing the list of genome filenames to\nannotate (1 genome\
+      \ per line). Each genome must be in\nmulti-fasta format. You can specify the\
+      \ species name\n(4 characters) you want to give to some genome, as\nwell as\
+      \ the download (or any other reason) date of\nyour choice. Format 'genome_name\
+      \ :: name.date'. name\nand date are optional. See doc for more information on\n\
+      this file format. If you want to run this module from\n'prepare_module' results,\
+      \ use '--info' instead."
+    args: !SimpleFlagArg
+      name: LIST_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: "Choose a name for your annotated genomes. This name\nshould contain\
+      \ 4 alphanumeric characters. Generally,\nthey correspond to the 2 first letters\
+      \ of genus, and 2\nfirst letters of species, e.g. ESCO for Escherichia\nColi."
+    args: !SimpleFlagArg
+      name: NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -Q
+    description: "Add this option if you want only to do quality control\non your\
+      \ genomes (cut at 5N if asked, calculate L90 and\nnumber of contigs and plot\
+      \ their distributions). This\nallows you to check which genomes would be annotated\n\
+      with the given parameters, and to modify those\nparameters if you want, before\
+      \ you launch the\nannotation and formatting steps."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --info
+    description: "If you already ran the 'prepare' data module, or\nalready calculated\
+      \ yourself the L90 and number of\ncontigs for each genome, you can give this\n\
+      information, to go directly to annotation and\nformatting steps. This file contains\
+      \ at least 4\ncolumns, tab separated, with the following headers:\n'to_annotate',\
+      \ 'gsize', 'nb_conts', 'L90'. Any other\ncolumn will be ignored."
+    args: !SimpleFlagArg
+      name: FROM_INFO
+  - !Flag
+    optional: true
+    synonyms:
+    - --prodigal
+    description: "Add this option if you only want syntactical\nannotation, given\
+      \ by prodigal, and not functional\nannotation requiring prokka and is slower."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --small
+    description: "If you use Prodigal to annotate genomes, if you\nsequences are too\
+      \ small (less than 20000 characters),\nit cannot annotate them with the default\
+      \ options. Add\nthis option to use 'meta' procedure."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --l90
+    description: "Maximum value of L90 allowed to keep a genome. Default\nis 100."
+    args: !SimpleFlagArg
+      name: L90
+  - !Flag
+    optional: true
+    synonyms:
+    - --nbcont
+    description: "Maximum number of contigs allowed to keep a genome.\nDefault is\
+      \ 999."
+    args: !SimpleFlagArg
+      name: NBCONT
+  - !Flag
+    optional: true
+    synonyms:
+    - --cutn
+    description: "By default, each genome will be cut into new contigs\nwhen at least\
+      \ 5 'N' in a row are found in its\nsequence. If you don't want to cut genomes\
+      \ into new\ncontigs when there are rows of 'N', put 0 to this\noption. If you\
+      \ want to cut from a different number of\n'N' occurrences, put this value to\
+      \ this option."
+    args: !SimpleFlagArg
+      name: CUTN
+  - !Flag
+    optional: true
+    synonyms:
+    - --date
+    description: "Specify the date (MMYY) to give to your annotated\ngenomes. By default,\
+      \ will give today's date. The only\nrequirement on the given date is that it\
+      \ is 4\ncharacters long. You can use letters if you want. But\nthe common way\
+      \ is to use 4 digits, corresponding to\nMMYY."
+    args: !SimpleFlagArg
+      name: DATE
+  - !Flag
+    optional: true
+    synonyms:
+    - --tmp
+    description: "Specify where the temporary files (sequence split by\nrows of 'N',\
+      \ sequence with new contig names etc.) must\nbe saved. By default, it will be\
+      \ saved in your\nresult_directory/tmp_files."
+    args: !SimpleFlagArg
+      name: TMPDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --annot_dir
+    description: "Specify in which directory the prokka/prodigal output\nfiles (1\
+      \ folder per genome, called\n<genome_name>-[prokka, Prodigal]Res) must be saved.\
+      \ By\ndefault, they are saved in the same directory as your\ntemporary files\
+      \ (see --tmp option to change it)."
+    args: !SimpleFlagArg
+      name: ANNOTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --force
+    description: "Force run: Add this option if you want to (re)run\nannotation and\
+      \ formatting steps for all genomes even\nif their result folder (for annotation\
+      \ step) or files\n(for format step) already exist: override existing\nresults.\
+      \ Without this option, if there already are\nresults in the given result folder,\
+      \ the program stops.\nIf there are no results, but prokka/prodigal folder\n\
+      already exists, prokka/prodigal won't run again, and\nthe formating step will\
+      \ use the already existing\nfolder if correct, or skip the genome if there are\n\
+      problems in prokka/prodigal folder."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --threads
+    description: Specify how many threads can be used (default=1)
+    args: !SimpleFlagArg
+      name: THREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: Increase verbosity in stdout/stderr.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quiet
+    description: "Do not display anything to stdout/stderr. log files\nwill still\
+      \ be created."
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: PanACoTA annotate [-d DB_PATH] -r RES_PATH [-l LIST_FILE] [-n\
+    \ NAME]\n                         [-Q] [--info FROM_INFO] [--prodigal] [--small]\n\
+    \                         [--l90 L90] [--nbcont NBCONT] [--cutn CUTN]\n      \
+    \                   [--date DATE] [--tmp TMPDIR] [--annot_dir ANNOTDIR]\n    \
+    \                     [-F] [--threads THREADS] [-v] [-q] [-h]\n\n ___        \
+    \         _____  ___         _____  _____\n(  _`\\              (  _  )(  _`\\\
+    \      (_   _)(  _  )\n| |_) )  _ _   ___  | (_) || ( (_)   _   | |  | (_) |\n\
+    | ,__/'/'_` )/' _ `\\|  _  || |  _  /'_`\\ | |  |  _  |\n| |   ( (_| || ( ) ||\
+    \ | | || (_( )( (_) )| |  | | | |\n(_)   `\\__,_)(_) (_)(_) (_)(____/'`\\___/'(_)\
+    \  (_) (_)\n\n       Large scale comparative genomics tools\n\n     -------------------------------------------\n\
+    \n=> Quality control and annotation of genomes\n\nRequired arguments:\n  -d DB_PATH\
+    \            Path to folder containing all multifasta genome files\n  -r RES_PATH\
+    \           Path to folder where output annotated genomes must be\n          \
+    \              saved\n\nOptional arguments:\n  -l LIST_FILE          File containing\
+    \ the list of genome filenames to\n                        annotate (1 genome\
+    \ per line). Each genome must be in\n                        multi-fasta format.\
+    \ You can specify the species name\n                        (4 characters) you\
+    \ want to give to some genome, as\n                        well as the download\
+    \ (or any other reason) date of\n                        your choice. Format 'genome_name\
+    \ :: name.date'. name\n                        and date are optional. See doc\
+    \ for more information on\n                        this file format. If you want\
+    \ to run this module from\n                        'prepare_module' results, use\
+    \ '--info' instead.\n  -n NAME               Choose a name for your annotated\
+    \ genomes. This name\n                        should contain 4 alphanumeric characters.\
+    \ Generally,\n                        they correspond to the 2 first letters of\
+    \ genus, and 2\n                        first letters of species, e.g. ESCO for\
+    \ Escherichia\n                        Coli.\n  -Q                    Add this\
+    \ option if you want only to do quality control\n                        on your\
+    \ genomes (cut at 5N if asked, calculate L90 and\n                        number\
+    \ of contigs and plot their distributions). This\n                        allows\
+    \ you to check which genomes would be annotated\n                        with\
+    \ the given parameters, and to modify those\n                        parameters\
+    \ if you want, before you launch the\n                        annotation and formatting\
+    \ steps.\n  --info FROM_INFO      If you already ran the 'prepare' data module,\
+    \ or\n                        already calculated yourself the L90 and number of\n\
+    \                        contigs for each genome, you can give this\n        \
+    \                information, to go directly to annotation and\n             \
+    \           formatting steps. This file contains at least 4\n                \
+    \        columns, tab separated, with the following headers:\n               \
+    \         'to_annotate', 'gsize', 'nb_conts', 'L90'. Any other\n             \
+    \           column will be ignored.\n  --prodigal            Add this option if\
+    \ you only want syntactical\n                        annotation, given by prodigal,\
+    \ and not functional\n                        annotation requiring prokka and\
+    \ is slower.\n  --small               If you use Prodigal to annotate genomes,\
+    \ if you\n                        sequences are too small (less than 20000 characters),\n\
+    \                        it cannot annotate them with the default options. Add\n\
+    \                        this option to use 'meta' procedure.\n  --l90 L90   \
+    \          Maximum value of L90 allowed to keep a genome. Default\n          \
+    \              is 100.\n  --nbcont NBCONT       Maximum number of contigs allowed\
+    \ to keep a genome.\n                        Default is 999.\n  --cutn CUTN  \
+    \         By default, each genome will be cut into new contigs\n             \
+    \           when at least 5 'N' in a row are found in its\n                  \
+    \      sequence. If you don't want to cut genomes into new\n                 \
+    \       contigs when there are rows of 'N', put 0 to this\n                  \
+    \      option. If you want to cut from a different number of\n               \
+    \         'N' occurrences, put this value to this option.\n  --date DATE     \
+    \      Specify the date (MMYY) to give to your annotated\n                   \
+    \     genomes. By default, will give today's date. The only\n                \
+    \        requirement on the given date is that it is 4\n                     \
+    \   characters long. You can use letters if you want. But\n                  \
+    \      the common way is to use 4 digits, corresponding to\n                 \
+    \       MMYY.\n  --tmp TMPDIR          Specify where the temporary files (sequence\
+    \ split by\n                        rows of 'N', sequence with new contig names\
+    \ etc.) must\n                        be saved. By default, it will be saved in\
+    \ your\n                        result_directory/tmp_files.\n  --annot_dir ANNOTDIR\
+    \  Specify in which directory the prokka/prodigal output\n                   \
+    \     files (1 folder per genome, called\n                        <genome_name>-[prokka,\
+    \ Prodigal]Res) must be saved. By\n                        default, they are saved\
+    \ in the same directory as your\n                        temporary files (see\
+    \ --tmp option to change it).\n  -F, --force           Force run: Add this option\
+    \ if you want to (re)run\n                        annotation and formatting steps\
+    \ for all genomes even\n                        if their result folder (for annotation\
+    \ step) or files\n                        (for format step) already exist: override\
+    \ existing\n                        results. Without this option, if there already\
+    \ are\n                        results in the given result folder, the program\
+    \ stops.\n                        If there are no results, but prokka/prodigal\
+    \ folder\n                        already exists, prokka/prodigal won't run again,\
+    \ and\n                        the formating step will use the already existing\n\
+    \                        folder if correct, or skip the genome if there are\n\
+    \                        problems in prokka/prodigal folder.\n  --threads THREADS\
+    \     Specify how many threads can be used (default=1)\n\nOthers:\n  -v, --verbose\
+    \         Increase verbosity in stdout/stderr.\n  -q, --quiet           Do not\
+    \ display anything to stdout/stderr. log files\n                        will still\
+    \ be created.\n  -h, --help            show this help message and exit\n\nFor\
+    \ more details, see PanACoTA documentation.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/panacota:1.2.0--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print the version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: PanACoTA [-h] [-V]\n                {all,prepare,annotate,pangenome,corepers,align,tree}\
+  \ ...\n\n ___                 _____  ___         _____  _____\n(  _`\\         \
+  \     (  _  )(  _`\\      (_   _)(  _  )\n| |_) )  _ _   ___  | (_) || ( (_)   _\
+  \   | |  | (_) |\n| ,__/'/'_` )/' _ `\\|  _  || |  _  /'_`\\ | |  |  _  |\n| | \
+  \  ( (_| || ( ) || | | || (_( )( (_) )| |  | | | |\n(_)   `\\__,_)(_) (_)(_) (_)(____/'`\\\
+  ___/'(_)  (_) (_)\n\n       Large scale comparative genomics tools\n\n     -------------------------------------------\n\
+  \npositional arguments:\n  {all,prepare,annotate,pangenome,corepers,align,tree}\n\
+  \    all                 Run all PanACoTA modules\n    prepare             Prepare\
+  \ draft dataset\n    annotate            Quality control and annotation of genomes\n\
+  \    pangenome           Generate a pan-genome of your dataset\n    corepers   \
+  \         Compute a Core or Persistent genome of your dataset\n    align       \
+  \        Align Core/Persistent families\n    tree                Infer phylogenetic\
+  \ tree based on core/persistent\n                        genome\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -V, --version      \
+  \   Print the version number and exit\n\nFor more details, see PanACoTA documentation.\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/panacota:1.2.0--py_0

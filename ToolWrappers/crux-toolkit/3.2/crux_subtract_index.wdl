@@ -10,6 +10,9 @@ task CruxSubtractindex {
       ~{tide_index_one} \
       ~{tide_index_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tide_index_one: ""
     tide_index_two: ""

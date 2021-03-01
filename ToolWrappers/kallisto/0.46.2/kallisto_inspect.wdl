@@ -14,6 +14,9 @@ task KallistoInspect {
       ~{if defined(gtf) then ("--gtf " +  '"' + gtf + '"') else ""} \
       ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gfa: "Filename for GFA output of T-DBG"
     gtf: "Filename for GTF file"

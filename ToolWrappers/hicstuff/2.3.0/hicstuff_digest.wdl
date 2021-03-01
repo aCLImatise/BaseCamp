@@ -22,6 +22,9 @@ task HicstuffDigest {
       ~{if (plot) then "--plot" else ""} \
       ~{if defined(fig_dir) then ("--figdir " +  '"' + fig_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     circular: "Specify if the genome is circular."
     enzyme: "[,ENZ2,...]     A restriction enzyme or an integer\\nrepresenting fixed chunk sizes (in bp).\\nMultiple comma-separated enzymes can\\nbe given."

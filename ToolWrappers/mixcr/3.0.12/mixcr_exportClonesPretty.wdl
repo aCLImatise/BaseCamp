@@ -28,6 +28,9 @@ task MixcrExportClonesPretty {
       ~{if defined(skip) then ("--skip " +  '"' + skip + '"') else ""} \
       ~{if (nw) then "-nw" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Verbose warning messages."
     limit_before: "Limit number of alignments before filtering"

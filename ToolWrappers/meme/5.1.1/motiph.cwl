@@ -2,22 +2,110 @@ class: CommandLineTool
 id: motiph.cwl
 inputs:
 - id: in_bg
-  doc: "(default=1.0)\n--column-freqs simulated|empirical (default=simulated)\n--fg\
-    \ <float> (default=1.0)\n--gap skip | fixed | wildcard | minimum (default=skip)\n\
-    --gap-cost <float> (default=0.0)\n--hb (defalut false)\n--model bls|single|average|jc|k2|f81|f84|hky|tn\
-    \ (default=f81)\n--pur-pyr <float> (default=1.0)\n--transition-transversion <float>\
-    \ (default=0.5)\n--ustar <label>\n--motif <id> (default=all)\n--bfile <background>\
-    \ (default from motif file)\n--list\n--no-qvalue (default false)\n--norc (default\
-    \ false)\n--flip true|false (Allow BLS matches in reverse. Default: true)\n--bls-dist\
-    \ <int> (Distance threshold for BLS. Default:20)\n--max-stored-scores (Default\
-    \ 100,000)\n--o <output dir> (default=motiph_out)\n--oc <output dir> (default=motiph_out)\n\
-    --print-col-freqs\n--print-trimmed-tree\n--pseudocount <float> (default=0.1)\n\
-    --output-pthresh <float> (default 1e-4)\n--output-qthresh <float> (default 1.0)\n\
-    --seed <long> (default from time())\n--text (default false)\n--verbosity [1|2|3|4]\
-    \ (default 2)\n"
-  type: double
+  doc: (default=1.0)
+  type: double?
   inputBinding:
     prefix: --bg
+- id: in_column_freqs
+  doc: '|empirical (default=simulated)'
+  type: string?
+  inputBinding:
+    prefix: --column-freqs
+- id: in_fg
+  doc: (default=1.0)
+  type: double?
+  inputBinding:
+    prefix: --fg
+- id: in_gap
+  doc: '| fixed | wildcard | minimum (default=skip)'
+  type: string?
+  inputBinding:
+    prefix: --gap
+- id: in_gap_cost
+  doc: (default=0.0)
+  type: double?
+  inputBinding:
+    prefix: --gap-cost
+- id: in_hb
+  doc: (defalut false)
+  type: boolean?
+  inputBinding:
+    prefix: --hb
+- id: in_model
+  doc: '|single|average|jc|k2|f81|f84|hky|tn (default=f81)'
+  type: long?
+  inputBinding:
+    prefix: --model
+- id: in_pur_pyr
+  doc: (default=1.0)
+  type: double?
+  inputBinding:
+    prefix: --pur-pyr
+- id: in_transition_transversion
+  doc: (default=0.5)
+  type: double?
+  inputBinding:
+    prefix: --transition-transversion
+- id: in_ustar
+  doc: (default=all)
+  type: string?
+  inputBinding:
+    prefix: --ustar
+- id: in_b_file
+  doc: (default from motif file)
+  type: File?
+  inputBinding:
+    prefix: --bfile
+- id: in_no_q_value
+  doc: (default false)
+  type: boolean?
+  inputBinding:
+    prefix: --no-qvalue
+- id: in_norc
+  doc: (default false)
+  type: boolean?
+  inputBinding:
+    prefix: --norc
+- id: in_flip
+  doc: '|false (Allow BLS matches in reverse. Default: true)'
+  type: string?
+  inputBinding:
+    prefix: --flip
+- id: in_bls_dist
+  doc: (Distance threshold for BLS. Default:20)
+  type: long?
+  inputBinding:
+    prefix: --bls-dist
+- id: in_max_stored_scores
+  doc: (Default 100,000)
+  type: boolean?
+  inputBinding:
+    prefix: --max-stored-scores
+- id: in_print_trimmed_tree
+  doc: (default=0.1)
+  type: double?
+  inputBinding:
+    prefix: --print-trimmed-tree
+- id: in_output_p_thresh
+  doc: (default 1e-4)
+  type: double?
+  inputBinding:
+    prefix: --output-pthresh
+- id: in_output_q_thresh
+  doc: (default 1.0)
+  type: double?
+  inputBinding:
+    prefix: --output-qthresh
+- id: in_seed
+  doc: (default from time())
+  type: string?
+  inputBinding:
+    prefix: --seed
+- id: in_text
+  doc: (default false)
+  type: boolean?
+  inputBinding:
+    prefix: --text
 - id: in_alignment
   doc: ''
   type: string
@@ -37,6 +125,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - motiph

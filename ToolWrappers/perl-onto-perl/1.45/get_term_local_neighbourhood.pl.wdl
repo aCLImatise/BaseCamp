@@ -14,6 +14,9 @@ task GetTermLocalNeighbourhoodpl {
       ~{if (term_id) then "-t" else ""} \
       ~{if (relationship_type) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     obo_input_file: "OBO input file"
     term_id: "term ID"

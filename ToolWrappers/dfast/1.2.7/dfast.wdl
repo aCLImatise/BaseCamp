@@ -90,6 +90,9 @@ task Dfast {
       ~{if (debug) then "--debug" else ""} \
       ~{if (show_config) then "--show_config" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "Genomic FASTA file"
     out: "Output directory (default:OUT)"

@@ -10,6 +10,9 @@ task GetTermsAndSynonymspl {
       ~{usage} \
       ~{if (obo_input_file) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     obo_input_file: "OBO input file"
     usage: ": get_terms_and_synonyms.pl [options]"

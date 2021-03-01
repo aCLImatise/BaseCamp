@@ -2,8 +2,8 @@ version 1.0
 
 task Estscan {
   input {
-    Boolean? one_sequence_output
-    Float? only_results_shown
+    Boolean? all_one_sequence
+    Float? only_results_have
     Int? deletion_penalty
     Int? insertion_penalty
     Int? only_results_longer
@@ -23,8 +23,8 @@ task Estscan {
   }
   command <<<
     estscan \
-      ~{if (one_sequence_output) then "-a" else ""} \
-      ~{if defined(only_results_shown) then ("-b " +  '"' + only_results_shown + '"') else ""} \
+      ~{if (all_one_sequence) then "-a" else ""} \
+      ~{if defined(only_results_have) then ("-b " +  '"' + only_results_have + '"') else ""} \
       ~{if defined(deletion_penalty) then ("-d " +  '"' + deletion_penalty + '"') else ""} \
       ~{if defined(insertion_penalty) then ("-i " +  '"' + insertion_penalty + '"') else ""} \
       ~{if defined(only_results_longer) then ("-l " +  '"' + only_results_longer + '"') else ""} \
@@ -42,9 +42,12 @@ task Estscan {
       ~{if (version_information) then "-v" else ""} \
       ~{if defined(width_fasta_sequence) then ("-w " +  '"' + width_fasta_sequence + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    one_sequence_output: "All in one sequence output"
-    only_results_shown: "only results are shown, which have scores higher than this\\nfraction of the best score [1.000000]."
+    all_one_sequence: "All in one sequence output"
+    only_results_have: "only results are shown, which have scores higher than this\\nfraction of the best score [1.000000]."
     deletion_penalty: "deletion penalty [-50]"
     insertion_penalty: "insertion penalty [-50]"
     only_results_longer: "only results longer than this length are shown [0]"

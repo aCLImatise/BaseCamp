@@ -18,6 +18,9 @@ task SnpSiftIntIdx {
       ~{if (genomic_intervals_command) then "-i" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_offset_coordinates: ": Input offset. Default 0 (i.e. zero-based coordinates)."
     genomic_intervals_command: ": Genomic intervals in command line."

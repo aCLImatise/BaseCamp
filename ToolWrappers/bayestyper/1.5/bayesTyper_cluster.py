@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Int
+
+Bayestyper_Cluster_V0_1_0 = CommandToolBuilder(tool="bayesTyper_cluster", base_command=["bayesTyper", "cluster"], inputs=[ToolInput(tag="in_arg_variant_file", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc="[ --variant-file ] arg             variant file (vcf format).")), ToolInput(tag="in_arg_samples_file", input_type=Boolean(optional=True), prefix="-s", doc=InputDocumentation(doc="[ --samples-file ] arg             samples file (see github documentation for format specifications).")), ToolInput(tag="in_arg_reference_genome", input_type=Boolean(optional=True), prefix="-g", doc=InputDocumentation(doc="[ --genome-file ] arg              reference genome file (fasta format).")), ToolInput(tag="in_arg_decoy_sequences", input_type=Boolean(optional=True), prefix="-d", doc=InputDocumentation(doc="[ --decoy-file ] arg               decoy sequences file (fasta format).")), ToolInput(tag="in_arg_bayestyperoutput_prefix", input_type=Boolean(optional=True), prefix="-o", doc=InputDocumentation(doc="[ --output-prefix ] arg (=bayestyper)\noutput prefix.")), ToolInput(tag="in_arg_unix_time", input_type=Boolean(optional=True), prefix="-r", doc=InputDocumentation(doc="[ --random-seed ] arg (=unix time) seed for pseudo-random number generator.")), ToolInput(tag="in_arg_number_used", input_type=Boolean(optional=True), prefix="-p", doc=InputDocumentation(doc="[ --threads ] arg (=1)             number of threads used (+= 2 I/O threads).")), ToolInput(tag="in_arg_minimum_number", input_type=Boolean(optional=True), prefix="-u", doc=InputDocumentation(doc="[ --min-number-of-unit-variants ] arg (=5000000)\nminimum number of variants per inference unit.")), ToolInput(tag="in_max_allele_length", input_type=Int(optional=True), prefix="--max-allele-length", doc=InputDocumentation(doc="(=500000)     exclude alleles (reference and alternative) longer than <length>.")), ToolInput(tag="in_copy_number_variant_threshold", input_type=Int(optional=True), prefix="--copy-number-variant-threshold", doc=InputDocumentation(doc="(=0.5)\nminimum fraction of identical kmers required between an allele and the downstream reference sequence in order for it to\nbe classified as a copy number.")), ToolInput(tag="in_max_number_of_sample_haplotypes", input_type=Int(optional=True), prefix="--max-number-of-sample-haplotypes", doc=InputDocumentation(doc="(=32)\nmaximum number of haplotype candidates per sample.\n"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Bayestyper_Cluster_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -10,6 +10,9 @@ task Parsecategory {
       ~{cat} \
       ~{data_dot_txt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cat: ""
     data_dot_txt: ""

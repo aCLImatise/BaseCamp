@@ -24,6 +24,9 @@ task MegalodonExtrasValidateResults {
       ~{if defined(out_filename) then ("--out-filename " +  '"' + out_filename + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     control_megalodon_results_dirs: "Megalodon output directories for modified base control\\nsample(s). Could be a PCR or IVT sample. Either a\\nsingle control for all modified samples or one control\\nsample for each modified sample should be provided."
     ground_truth_data: "Ground truth csv with (chrm, strand, pos, is_mod)\\nvalues."

@@ -20,7 +20,7 @@ task Sort {
     Int? files_zero_from
     String? key
     Boolean? merge
-    File? write_result_file
+    File? write_result_output
     Boolean? stable
     Int? buffer_size
     String? field_separator
@@ -49,7 +49,7 @@ task Sort {
       ~{if defined(files_zero_from) then ("--files0-from " +  '"' + files_zero_from + '"') else ""} \
       ~{if defined(key) then ("--key " +  '"' + key + '"') else ""} \
       ~{if (merge) then "--merge" else ""} \
-      ~{if defined(write_result_file) then ("--output " +  '"' + write_result_file + '"') else ""} \
+      ~{if defined(write_result_output) then ("--output " +  '"' + write_result_output + '"') else ""} \
       ~{if (stable) then "--stable" else ""} \
       ~{if defined(buffer_size) then ("--buffer-size " +  '"' + buffer_size + '"') else ""} \
       ~{if defined(field_separator) then ("--field-separator " +  '"' + field_separator + '"') else ""} \
@@ -58,6 +58,9 @@ task Sort {
       ~{if (unique) then "--unique" else ""} \
       ~{if (zero_terminated) then "--zero-terminated" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_leading_blanks: "ignore leading blanks"
     dictionary_order: "consider only blanks and alphanumeric characters"
@@ -77,7 +80,7 @@ task Sort {
     files_zero_from: "read input from the files specified by\\nNUL-terminated names in file F;\\nIf F is - then read names from standard input"
     key: "sort via a key; KEYDEF gives location and type"
     merge: "merge already sorted files; do not sort"
-    write_result_file: "write result to FILE instead of standard output"
+    write_result_output: "write result to FILE instead of standard output"
     stable: "stabilize sort by disabling last-resort comparison"
     buffer_size: "use SIZE for main memory buffer"
     field_separator: "use SEP instead of non-blank to blank transition"
@@ -88,6 +91,6 @@ task Sort {
   }
   output {
     File out_stdout = stdout()
-    File out_write_result_file = "${in_write_result_file}"
+    File out_write_result_output = "${in_write_result_output}"
   }
 }

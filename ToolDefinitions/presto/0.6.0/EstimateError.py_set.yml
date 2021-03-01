@@ -5,126 +5,126 @@ command:
 positional: []
 named:
 - !Flag
-  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
-    \ None)"
+  optional: true
   synonyms:
   - -s
+  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
+    \ None)"
   args: !RepeatFlagArg
     name: SEQ_FILES
-  optional: true
 - !Flag
-  description: "Specify to changes the output directory to the\nlocation specified.\
-    \ The input file directory is used\nif this is not specified. (default: None)"
+  optional: true
   synonyms:
   - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
   args: !SimpleFlagArg
     name: OUT_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outname
   description: "Changes the prefix of the successfully processed\noutput file to the\
     \ string specified. May not be\nspecified with multiple input files. (default:\
     \ None)"
-  synonyms:
-  - --outname
   args: !SimpleFlagArg
     name: OUT_NAME
-  optional: true
 - !Flag
-  description: "Specify to write verbose logging to a file. May not be\nspecified\
-    \ with multiple input files. (default: None)"
+  optional: true
   synonyms:
   - --log
+  description: "Specify to write verbose logging to a file. May not be\nspecified\
+    \ with multiple input files. (default: None)"
   args: !SimpleFlagArg
     name: LOG_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --delim
   description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
     annotation blocks, field names and values, and values\nwithin a field, respectively.\
     \ (default: ('|', '=',\n','))"
-  synonyms:
-  - --delim
   args: !SimpleFlagArg
     name: DELIMITER
-  optional: true
 - !Flag
-  description: "The number of simultaneous computational processes to\nexecute (CPU\
-    \ cores to utilized). (default: 8)"
+  optional: true
   synonyms:
   - --nproc
+  description: "The number of simultaneous computational processes to\nexecute (CPU\
+    \ cores to utilized). (default: 8)"
   args: !SimpleFlagArg
     name: NPROC
-  optional: true
 - !Flag
-  description: "The name of the annotation field to group sequences by\n(default:\
-    \ BARCODE)"
+  optional: true
   synonyms:
   - -f
+  description: "The name of the annotation field to group sequences by\n(default:\
+    \ BARCODE)"
   args: !SimpleFlagArg
     name: SET_FIELD
-  optional: true
 - !Flag
-  description: "The minimum number of sequences needed to consider a\nset (default:\
-    \ 20)"
+  optional: true
   synonyms:
   - -n
+  description: "The minimum number of sequences needed to consider a\nset (default:\
+    \ 20)"
   args: !SimpleFlagArg
     name: MIN_COUNT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mode
   description: "Specifies which method to use to determine the\nconsensus sequence.\
     \ The \"freq\" method will determine\nthe consensus by nucleotide frequency at\
     \ each position\nand assign the most common value. The \"qual\" method\nwill weight\
     \ values by their quality scores to\ndetermine the consensus nucleotide at each\
     \ position.\n(default: freq)"
-  synonyms:
-  - --mode
   args: !ChoiceFlagArg
     choices: !!set
-      freq:
       qual:
-  optional: true
+      freq:
 - !Flag
-  description: "Consensus quality score cut-off under which an\nambiguous character\
-    \ is assigned. (default: 0)"
+  optional: true
   synonyms:
   - -q
+  description: "Consensus quality score cut-off under which an\nambiguous character\
+    \ is assigned. (default: 0)"
   args: !SimpleFlagArg
     name: MIN_QUAL
-  optional: true
 - !Flag
-  description: "Fraction of character occurrences under which an\nambiguous character\
-    \ is assigned. (default: 0.6)"
+  optional: true
   synonyms:
   - --freq
+  description: "Fraction of character occurrences under which an\nambiguous character\
+    \ is assigned. (default: 0.6)"
   args: !SimpleFlagArg
     name: MIN_FREQ
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxdiv
   description: "Specify to calculate the nucleotide diversity of each\nread group\
     \ (average pairwise error rate) and exclude\ngroups which exceed the given diversity\
     \ threshold.\n(default: None)\n"
-  synonyms:
-  - --maxdiv
   args: !SimpleFlagArg
     name: MAX_DIVERSITY
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: EstimateError.py set [--version] [-h] -s SEQ_FILES [SEQ_FILES ...]\n\
   \                            [--outdir OUT_DIR] [--outname OUT_NAME]\n         \
   \                   [--log LOG_FILE]\n                            [--delim DELIMITER\
@@ -168,3 +168,4 @@ help_text: "usage: EstimateError.py set [--version] [-h] -s SEQ_FILES [SEQ_FILES
   \ (default: None)\n"
 generated_using:
 - --help
+docker_image:

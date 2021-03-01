@@ -28,6 +28,9 @@ task ModulatedModularityClusteringpy {
       ~{if defined(palette) then ("--palette " +  '"' + palette + '"') else ""} \
       ~{if defined(color) then ("--color " +  '"' + color + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dataset_wide: "Input dataset in wide format."
     design: "Design file."

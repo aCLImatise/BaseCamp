@@ -14,6 +14,9 @@ task Genomedatahistogram {
       ~{if defined(include_coords) then ("--include-coords " +  '"' + include_coords + '"') else ""} \
       ~{if defined(num_bins) then ("--num-bins " +  '"' + num_bins + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     include_coords: "limit summary to genomic coordinates in FILE"
     num_bins: "use BINS bins\\n"

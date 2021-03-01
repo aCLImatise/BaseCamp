@@ -5,14 +5,18 @@ command:
 positional: []
 named:
 - !Flag
-  description: "MACS score in bedGraph for each replicate. Require at\nleast 2 files\
-    \ such as '-i A B C D'. REQUIRED"
+  optional: true
   synonyms:
   - -i
+  description: "MACS score in bedGraph for each replicate. Require at\nleast 2 files\
+    \ such as '-i A B C D'. REQUIRED"
   args: !RepeatFlagArg
     name: IFILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --method
   description: "Method to use while combining scores from replicates.\n1) fisher:\
     \ Fisher's combined probability test. It\nrequires scores in ppois form (-log10\
     \ pvalues) from\nbdgcmp. Other types of scores for this method may\ncause cmbreps\
@@ -20,41 +24,37 @@ named:
     \ genomic\nposition. 3) mean: take the average value. Note,\nexcept for Fisher's\
     \ method, max or mean will take\nscores AS IS which means they won't convert scores\n\
     from log scale to linear scale or vice versa."
-  synonyms:
-  - -m
-  - --method
   args: !ChoiceFlagArg
     choices: !!set
-      max:
-      fisher:
       mean:
-  optional: true
+      fisher:
+      max:
 - !Flag
-  description: "If specified all output files will be written to that\ndirectory.\
-    \ Default: the current working directory"
+  optional: true
   synonyms:
   - --outdir
+  description: "If specified all output files will be written to that\ndirectory.\
+    \ Default: the current working directory"
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
-  description: "Output BEDGraph filename for combined scores.\n"
+  optional: true
   synonyms:
   - -o
   - --ofile
+  description: "Output BEDGraph filename for combined scores.\n"
   args: !SimpleFlagArg
     name: OFILE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: macs2 cmbreps [-h] -i IFILE [IFILE ...] [-m {fisher,max,mean}]\n\
@@ -77,3 +77,4 @@ help_text: "usage: macs2 cmbreps [-h] -i IFILE [IFILE ...] [-m {fisher,max,mean}
   \     Output BEDGraph filename for combined scores.\n"
 generated_using:
 - --help
+docker_image:

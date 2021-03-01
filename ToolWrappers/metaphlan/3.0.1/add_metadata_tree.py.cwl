@@ -1,20 +1,22 @@
 class: CommandLineTool
 id: add_metadata_tree.py.cwl
 inputs:
-- id: in_f
-  doc: ''
+- id: in_string_to_remove
+  doc: string to be removed in the tree node names
   type: string[]
   inputBinding:
-    prefix: -f
-- id: in_t
-  doc: ''
+    prefix: --string_to_remove
+- id: in_metadata_s
+  doc: "The metadata fields that you want to add. Default: add\nall metadata from\
+    \ the first line.\n"
   type: string[]
   inputBinding:
-    prefix: -t
+    prefix: --metadatas
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - add_metadata_tree.py

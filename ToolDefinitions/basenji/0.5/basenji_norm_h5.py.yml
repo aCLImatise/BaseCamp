@@ -1,0 +1,103 @@
+!Command
+command:
+- basenji_norm_h5.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: params_file
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: model_file
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: test_hdf5_file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: 'Uniformly sample across the seq length [Default: 1]'
+  args: !SimpleFlagArg
+    name: SAMPLE_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - --mc
+  description: 'Monte carlo test iterations [Default: 0]'
+  args: !SimpleFlagArg
+    name: MC_N
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: 'Output directory for test statistics [Default: test_out]'
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --rc
+  description: 'Average the fwd and rc predictions [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: 'Sample sequences [Default: 1.0]'
+  args: !SimpleFlagArg
+    name: SAMPLE_SEQS
+- !Flag
+  optional: true
+  synonyms:
+  - --save
+  description: 'Save predictions to HDF5. [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --shifts
+  description: 'Ensemble prediction shifts [Default: 0]'
+  args: !SimpleFlagArg
+    name: SHIFTS
+- !Flag
+  optional: true
+  synonyms:
+  - --train
+  description: 'Process the training set [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'Process the validation set [Default: False]'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: basenji_norm_h5.py [options] <params_file> <model_file> <test_hdf5_file>\n\
+  \nOptions:\n  -h, --help       show this help message and exit\n  -l SAMPLE_LEN\
+  \    Uniformly sample across the seq length [Default: 1]\n  --mc=MC_N        Monte\
+  \ carlo test iterations [Default: 0]\n  -o OUT_DIR       Output directory for test\
+  \ statistics [Default: test_out]\n  --rc             Average the fwd and rc predictions\
+  \ [Default: False]\n  -s SAMPLE_SEQS   Sample sequences [Default: 1.0]\n  --save\
+  \           Save predictions to HDF5. [Default: False]\n  --shifts=SHIFTS  Ensemble\
+  \ prediction shifts [Default: 0]\n  --train          Process the training set [Default:\
+  \ False]\n  -v               Process the validation set [Default: False]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/basenji:0.5--py_0

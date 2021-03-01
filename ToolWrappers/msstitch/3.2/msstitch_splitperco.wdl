@@ -12,6 +12,9 @@ task MsstitchSplitperco {
       ~{if defined(directory_to_output) then ("-d " +  '"' + directory_to_output + '"') else ""} \
       ~{if defined(prot_headers) then ("--protheaders " +  '"' + prot_headers + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_format: "Input file of {} format"
     directory_to_output: "Directory to output in"

@@ -4,14 +4,18 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Print information during execution -- useful for\ndebugging [default:\
-    \ False]"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: "Print information during execution -- useful for\ndebugging [default:\
+    \ False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --field_order
   description: "pass comma-separated categories, in the order they\nappear in file\
     \ names.   Categories are \"file_type\",\"pr\nediction_method\",\"weighting_method\"\
     ,\"holdout_method\"\n(randomization vs. holdout),\"distance\",and \"organism\"\
@@ -19,64 +23,60 @@ named:
     \ be in the form:\npredict_traits--distance_exclusion--wagner.  Any\nunspecified\
     \ values are set to \"not_specified\".\n[default: file_type,prediction_method,weighting_method\n\
     ,holdout_method,distance,organism]"
-  synonyms:
-  - -f
-  - --field_order
   args: !SimpleFlagArg
     name: FIELD_ORDER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pool_by
   description: "pass comma-separated categories to pool results by\nthose metadata\
     \ categories. Valid categories are:\nholdout_method,\nprediction_method,weighting_method,distance\
     \ and\norganism. For example, pass \"distance\" to output\nresults pooled by holdout\
     \ distance in addition to\nholdout method and prediction method  [default: False]"
-  synonyms:
-  - -p
-  - --pool_by
   args: !SimpleFlagArg
     name: POOL_BY
-  optional: true
 - !Flag
-  description: "the input trait table directory (files in biom format)\n[REQUIRED]"
+  optional: true
   synonyms:
   - -i
   - --trait_table_dir
+  description: "the input trait table directory (files in biom format)\n[REQUIRED]"
   args: !SimpleFlagArg
     name: TRAIT_TABLE_DIR
-  optional: true
 - !Flag
-  description: "the input expected trait table directory (files in\nbiom format) [REQUIRED]"
+  optional: true
   synonyms:
   - -e
   - --exp_trait_table_dir
+  description: "the input expected trait table directory (files in\nbiom format) [REQUIRED]"
   args: !SimpleFlagArg
     name: EXP_TRAIT_TABLE_DIR
-  optional: true
 - !Flag
-  description: "the output directory [REQUIRED]\n"
+  optional: true
   synonyms:
   - -o
   - --output_dir
+  description: "the output directory [REQUIRED]\n"
   args: !SimpleFlagArg
     name: OUTPUT_DIR
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: pool_test_datasets.py [options] {-i/--trait_table_dir TRAIT_TABLE_DIR\
   \ -e/--exp_trait_table_dir EXP_TRAIT_TABLE_DIR -o/--output_dir OUTPUT_DIR}\n\n[]\
   \ indicates optional input (order unimportant)\n{} indicates required input (order\
@@ -113,3 +113,4 @@ help_text: "Usage: pool_test_datasets.py [options] {-i/--trait_table_dir TRAIT_T
   \                        the output directory [REQUIRED]\n"
 generated_using:
 - --help
+docker_image:

@@ -4,6 +4,9 @@ task CleanAtac {
   command <<<
     cleanAtac
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -22,6 +22,9 @@ task TaxonomyFilterFastq {
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(tax_report_filename) then ("--tax_report_filename " +  '"' + tax_report_filename + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Directory to deposited filtered output files in"
     centrifuge: "Filter using report from Centrifuge"

@@ -8,6 +8,9 @@ task WgfastGenbankqcGenomePATH {
     wgfast_genbankqc genome PATH \
       ~{if (metadata) then "--metadata" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metadata: "Get metadata for genome at PATH"
   }

@@ -44,6 +44,9 @@ task Sourcetracker2Gibbs {
       ~{if defined(sink_column_value) then ("--sink_column_value " +  '"' + sink_column_value + '"') else ""} \
       ~{if defined(source_category_column) then ("--source_category_column " +  '"' + source_category_column + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     table_fp: "Path to input BIOM table.  [required]"
     mapping_fp: "Path to sample metadata mapping file.\\n[required]"

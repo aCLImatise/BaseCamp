@@ -1,0 +1,282 @@
+!Command
+command:
+- f5c
+- eventalign
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: fastq/fasta read file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: sorted bam file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: reference genome
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: limit processing to genomic region string of format chr:start-end
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: number of processing threads [8]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  description: batch size (max number of reads loaded at once) [512]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  description: '[K/M/G]            max number of bases loaded at once [5.0M]'
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: output to file [stdout]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: "parameter profile to be used for better performance (always applied\
+    \ before other options)\ne.g., laptop, desktop, hpc; see https://f5c.page.link/profiles\
+    \ for the full list"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --iop
+  description: number of I/O processes to read fast5 files [1]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-mapq
+  description: minimum mapping quality [20]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --secondary
+  description: '|no         consider secondary mappings or not [no]'
+  args: !SimpleFlagArg
+    name: yes
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: verbosity level [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-ultra
+  description: skip ultra long reads and write those entries to the bam file provided
+    as the argument
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --ultra-thresh
+  description: threshold to skip ultra long reads [100000]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-unreadable
+  description: '|no   skip any unreadable fast5 or terminate program [yes]'
+  args: !SimpleFlagArg
+    name: yes
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer-model
+  description: custom nucleotide k-mer model file (format similar to test/r9-models/r9.4_450bps.nucleotide.6mer.template.model)
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --summary
+  description: summarise the alignment of each read/strand in FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --sam
+  description: write output in SAM format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print-read-names
+  description: print read names instead of indexes
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --scale-events
+  description: scale events to the model, rather than vice-versa
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --samples
+  description: write the raw samples for the event to the tsv output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --signal-index
+  description: write the raw signal start and end index values for the event to the
+    tsv output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rna
+  description: the dataset is direct RNA
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print-events
+  description: '|no      prints the event table'
+  args: !SimpleFlagArg
+    name: yes
+- !Flag
+  optional: true
+  synonyms:
+  - --print-banded-aln
+  description: '|no  prints the event alignment'
+  args: !SimpleFlagArg
+    name: yes
+- !Flag
+  optional: true
+  synonyms:
+  - --print-scaling
+  description: '|no     prints the estimated scalings'
+  args: !SimpleFlagArg
+    name: yes
+- !Flag
+  optional: true
+  synonyms:
+  - --print-raw
+  description: '|no         prints the raw signal'
+  args: !SimpleFlagArg
+    name: yes
+- !Flag
+  optional: true
+  synonyms:
+  - --debug-break
+  description: break after processing the specified no. of batches
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --profile-cpu
+  description: '|no       process section by section (used for profiling on CPU)'
+  args: !SimpleFlagArg
+    name: yes
+- !Flag
+  optional: true
+  synonyms:
+  - --write-dump
+  description: '|no        write the fast5 dump to a file or not'
+  args: !SimpleFlagArg
+    name: yes
+- !Flag
+  optional: true
+  synonyms:
+  - --read-dump
+  description: '|no         read from a fast5 dump file or not'
+  args: !SimpleFlagArg
+    name: yes
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: help
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version
+  args: !EmptyFlagArg {}
+help_text: "Usage: f5c eventalign [OPTIONS] -r reads.fa -b alignments.bam -g genome.fa\n\
+  \nbasic options:\n   -r FILE                    fastq/fasta read file\n   -b FILE\
+  \                    sorted bam file\n   -g FILE                    reference genome\n\
+  \   -w STR                     limit processing to genomic region string of format\
+  \ chr:start-end\n   -t INT                     number of processing threads [8]\n\
+  \   -K INT                     batch size (max number of reads loaded at once) [512]\n\
+  \   -B FLOAT[K/M/G]            max number of bases loaded at once [5.0M]\n   -h\
+  \                         help\n   -o FILE                    output to file [stdout]\n\
+  \   -x STR                     parameter profile to be used for better performance\
+  \ (always applied before other options)\n                              e.g., laptop,\
+  \ desktop, hpc; see https://f5c.page.link/profiles for the full list\n   --iop INT\
+  \                  number of I/O processes to read fast5 files [1]\n   --min-mapq\
+  \ INT             minimum mapping quality [20]\n   --secondary=yes|no         consider\
+  \ secondary mappings or not [no]\n   --verbose INT              verbosity level\
+  \ [0]\n   --version                  print version\n\nadvanced options:\n   --skip-ultra\
+  \ FILE          skip ultra long reads and write those entries to the bam file provided\
+  \ as the argument\n   --ultra-thresh INT         threshold to skip ultra long reads\
+  \ [100000]\n   --skip-unreadable=yes|no   skip any unreadable fast5 or terminate\
+  \ program [yes]\n   --kmer-model FILE          custom nucleotide k-mer model file\
+  \ (format similar to test/r9-models/r9.4_450bps.nucleotide.6mer.template.model)\n\
+  \   --summary FILE             summarise the alignment of each read/strand in FILE\n\
+  \   --sam                      write output in SAM format\n   --print-read-names\
+  \         print read names instead of indexes\n   --scale-events             scale\
+  \ events to the model, rather than vice-versa\n   --samples                  write\
+  \ the raw samples for the event to the tsv output\n   --signal-index           \
+  \  write the raw signal start and end index values for the event to the tsv output\n\
+  \   --rna                      the dataset is direct RNA\n\ndeveloper options:\n\
+  \   --print-events=yes|no      prints the event table\n   --print-banded-aln=yes|no\
+  \  prints the event alignment\n   --print-scaling=yes|no     prints the estimated\
+  \ scalings\n   --print-raw=yes|no         prints the raw signal\n   --debug-break\
+  \ INT          break after processing the specified no. of batches\n   --profile-cpu=yes|no\
+  \       process section by section (used for profiling on CPU)\n   --write-dump=yes|no\
+  \        write the fast5 dump to a file or not\n   --read-dump=yes|no         read\
+  \ from a fast5 dump file or not\n\nSee the manual page for details (`man ./docs/f5c.1'\
+  \ or https://f5c.page.link/man).\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/f5c:0.6--h8b6279f_0

@@ -3,30 +3,60 @@ command:
 - safety-not-guaranteed.py
 positional:
 - !Positional
-  description: Input FASTA reads. Omit to read from stdin.
+  optional: false
   position: 0
   name: reads.fa
-  optional: false
-named: []
+  description: Input FASTA reads. Omit to read from stdin.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Write output FASTQ reads to this file. If not given,\nwill print to\
+    \ stdout."
+  args: !SimpleFlagArg
+    name: reads.fq
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --phred-score
+  description: "The quality score to give to all bases. There is no\nmeaningful quality\
+    \ score we can automatically give, so\nyou will have to specify an artificial\
+    \ one. A good\nchoice is 40, the maximum score normally output by\nsequencers."
+  args: !SimpleFlagArg
+    name: PHRED_SCORE
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --qual-format
+  description: "FASTQ quality score format. Sanger scores are assumed\nto begin at\
+    \ '33' (!). Default: sanger."
+  args: !ChoiceFlagArg
+    choices: !!set
+      solexa:
+      sanger:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log
+  description: "Print log messages to this file instead of to stderr.\nWarning: Will\
+    \ overwrite the file."
+  args: !SimpleFlagArg
+    name: LOG
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-o reads.fq, --output reads.fq\n\
-    Write output FASTQ reads to this file. If not given,\nwill print to stdout.\n\
-    -q PHRED_SCORE, --phred-score PHRED_SCORE\nThe quality score to give to all bases.\
-    \ There is no\nmeaningful quality score we can automatically give, so\nyou will\
-    \ have to specify an artificial one. A good\nchoice is 40, the maximum score normally\
-    \ output by\nsequencers.\n-F {sanger,solexa}, --qual-format {sanger,solexa}\n\
-    FASTQ quality score format. Sanger scores are assumed\nto begin at '33' (!). Default:\
-    \ sanger.\n-l LOG, --log LOG     Print log messages to this file instead of to\
-    \ stderr.\nWarning: Will overwrite the file.\n-Q, --quiet\n-v, --verbose\n-D,\
-    \ --debug"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: $ safety-not-guaranteed.py -q [phred score] reads.fa > reads.fq\n\
@@ -49,3 +79,4 @@ help_text: "usage: $ safety-not-guaranteed.py -q [phred score] reads.fa > reads.
   information, so keep that in mind when using the output in downstream tools.\n"
 generated_using:
 - --help
+docker_image:

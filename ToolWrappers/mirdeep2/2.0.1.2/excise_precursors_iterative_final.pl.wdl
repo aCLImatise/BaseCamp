@@ -8,6 +8,9 @@ task ExcisePrecursorsIterativeFinalpl {
     excise_precursors_iterative_final_pl \
       ~{if (output_progress_screen) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_progress_screen: "Output progress to screen"
   }

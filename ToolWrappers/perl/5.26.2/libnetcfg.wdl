@@ -16,6 +16,9 @@ task Libnetcfg {
       ~{if defined(specific_file_new) then ("-o " +  '"' + specific_file_new + '"') else ""} \
       ~{if defined(this_help) then ("-h " +  '"' + this_help + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     the_configuration: "the configuration"
     defaults_old_config: "defaults from the old config (implies -c, non-interactive)"

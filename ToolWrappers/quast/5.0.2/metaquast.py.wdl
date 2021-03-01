@@ -88,6 +88,9 @@ task Metaquastpy {
       ~{if (test) then "--test" else ""} \
       ~{if (test_no_ref) then "--test-no-ref" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "<dirname>       Directory to store all result files [default: quast_results/results_<datetime>]"
     filenamefilename_commaseparated_list: "<filename,filename,...>      Comma-separated list of reference genomes or directory with reference genomes"

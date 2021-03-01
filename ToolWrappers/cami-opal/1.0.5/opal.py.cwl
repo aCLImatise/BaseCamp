@@ -3,54 +3,54 @@ id: opal.py.cwl
 inputs:
 - id: in_gold_standard_file
   doc: Gold standard file
-  type: File
+  type: File?
   inputBinding:
     prefix: --gold_standard_file
 - id: in_output_dir
   doc: Directory to write the results to
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output_dir
 - id: in_no_normalization
   doc: Do not normalize samples
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_normalization
 - id: in_plot_abundances
   doc: "Plot abundances in the gold standard (can take some\nminutes)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --plot_abundances
 - id: in_labels
   doc: Comma-separated profiles names
-  type: string
+  type: string?
   inputBinding:
     prefix: --labels
 - id: in_time
   doc: Comma-separated runtimes in hours
-  type: string
+  type: string?
   inputBinding:
     prefix: --time
 - id: in_memory
   doc: Comma-separated memory usages in gigabytes
-  type: string
+  type: string?
   inputBinding:
     prefix: --memory
 - id: in_desc
   doc: Description for HTML page
-  type: string
+  type: string?
   inputBinding:
     prefix: --desc
 - id: in_ranks
   doc: "Highest and lowest taxonomic ranks to consider in\nperformance rankings, comma-separated.\
     \ Valid ranks:\nsuperkingdom, phylum, class, order, family, genus,\nspecies, strain\
     \ (default:superkingdom,species)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --ranks
 - id: in_silent
   doc: Silent mode
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --silent
 - id: in_profiles_files
@@ -62,6 +62,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - opal.py

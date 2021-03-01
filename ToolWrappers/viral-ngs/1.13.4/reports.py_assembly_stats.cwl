@@ -8,27 +8,27 @@ inputs:
     prefix: --cov_thresholds
 - id: in_assembly_dir
   doc: "Directory with assembly outputs. (default:\ndata/02_assembly)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --assembly_dir
 - id: in_assembly_tmp
   doc: "Directory with assembly temp files. (default:\ntmp/02_assembly)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --assembly_tmp
 - id: in_align_dir
   doc: "Directory with reads aligned to own assembly.\n(default: data/02_align_to_self)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --align_dir
 - id: in_reads_dir
   doc: "Directory with unaligned filtered read BAMs. (default:\ndata/01_per_sample)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --reads_dir
 - id: in_raw_reads_dir
   doc: "Directory with unaligned raw read BAMs. (default:\ndata/00_raw)\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --raw_reads_dir
 - id: in_samples
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - reports.py

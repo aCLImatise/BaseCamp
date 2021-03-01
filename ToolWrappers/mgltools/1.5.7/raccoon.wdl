@@ -18,6 +18,9 @@ task Raccoon {
       ~{if defined(run) then ("--run " +  '"' + run + '"') else ""} \
       ~{if defined(run_and_exit) then ("--runAndExit " +  '"' + run_and_exit + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_splash: ": doesn't show the Vision splash screen (works only if registered)"
     no_terminal: ": vision provides its own shell (under menu 'Edit')\\ninstead of the terminal"

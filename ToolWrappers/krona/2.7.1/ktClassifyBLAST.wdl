@@ -20,6 +20,9 @@ task KtClassifyBLAST {
       ~{score} \
       ~{count}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     blast_output: "File containing BLAST results in tabular format (\\\"Hit table\\n(text)\\\" when downloading from NCBI). If running BLAST locally,\\nsubject IDs in the local database must contain accession\\nnumbers, either bare or in the fourth field of the\\npipe-separated (\\\"gi|12345|xx|ABC123.1|\\\") format.\\n_________"
     e_value_dot: "[-b]           Use bit score for average scores instead of log[10] e-value."

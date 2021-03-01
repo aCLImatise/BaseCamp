@@ -10,6 +10,9 @@ task BcbioVmpySaveconfig {
       ~{bc_bio_v_mdot_py} \
       ~{if defined(datadir) then ("--datadir " +  '"' + datadir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     datadir: ""
     bc_bio_v_mdot_py: ""

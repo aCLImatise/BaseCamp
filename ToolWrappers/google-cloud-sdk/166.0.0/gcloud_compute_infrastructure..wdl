@@ -16,6 +16,9 @@ task GcloudComputeInfrastructure {
       ~{flags} \
       ~{group_vertical_line_command}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     g_cloud: ""
     compute: ""

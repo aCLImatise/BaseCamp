@@ -4,72 +4,74 @@ command:
 positional: []
 named:
 - !Flag
-  description: 'Paired-end mode. (Default: OFF).'
+  optional: true
   synonyms:
   - --paired
+  description: 'Paired-end mode. (Default: OFF).'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outdir
   description: "Write all output files into this directory. By default the output\
     \ files will be written into\nthe same folder as the input file(s)."
-  synonyms:
-  - -o/--outdir
   args: !SimpleFlagArg
     name: dir
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --singletons
   description: "If the allele-tagged paired-end file also contains singleton alignments\
     \ (which is the\ndefault for e.g. TopHat), these will be written out to extra\
     \ files (ending in _st.bam)\ninstead of writing everything to combined paired-end\
     \ and singleton files. Default: OFF."
-  synonyms:
-  - --singletons
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --hic
   description: "Assumes Hi-C data processed with HiCUP (www.bioinformatics.babraham.ac.uk/projects/hicup/)\n\
     as input, i.e. the input BAM file is paired-end and Reads 1 and 2 follow each\
     \ other. Thus,\nthis option also sets the flags --paired and --no_sort. Default:\
     \ OFF."
-  synonyms:
-  - --hic
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The path to your Samtools installation, e.g. /home/user/samtools/.\
-    \ Does not need to\nbe specified explicitly if Samtools is in the PATH already."
+  optional: true
   synonyms:
   - --samtools_path
+  description: "The path to your Samtools installation, e.g. /home/user/samtools/.\
+    \ Does not need to\nbe specified explicitly if Samtools is in the PATH already."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --conflicting
+  - --weird
   description: "Reads or read pairs that were classified as 'Conflicting' (XX:Z:CF)\
     \ will be written to\nan extra file (ending in .conflicting.bam) instead of being\
     \ simply skipped. Reads may be\nclassified as 'Conflicting' if a single read contains\
     \ SNP information for both genomes at\nthe same time, or if the SNP position was\
     \ deleted from the read. Read-pairs are considered\n'Conflicting' if either read\
     \ is was tagged with the XX:Z:CF flag. Default: OFF."
-  synonyms:
-  - --conflicting/--weird
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Displays this help information and exits.
+  optional: true
   synonyms:
   - --help
+  description: Displays this help information and exits.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: "Displays version information and exits.\nScript last modified: 04\
-    \ September 2017\n"
+  optional: true
   synonyms:
   - --version
+  description: "Displays version information and exits.\nScript last modified: 04\
+    \ September 2017\n"
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "\n  SYNOPSIS:\n\n  This script processes allele tagged input files produced\
   \ by SNPsplit and sorts the 'allele_tagged.bam'\n  file into several sub-files,\
   \ depending on the experiment type and options selected. By default reads are\n\
@@ -107,3 +109,4 @@ help_text: "\n  SYNOPSIS:\n\n  This script processes allele tagged input files p
   \ last modified: 04 September 2017\n\n"
 generated_using:
 - --help
+docker_image:

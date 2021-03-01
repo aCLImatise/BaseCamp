@@ -16,6 +16,9 @@ task VcfToBedpe {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input structural variant list in VCF format."
     out: "Output structural variant list in BEDPE format."

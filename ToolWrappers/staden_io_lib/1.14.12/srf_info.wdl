@@ -12,6 +12,9 @@ task SrfInfo {
       ~{if defined(count_goodbad_reads) then ("-l " +  '"' + count_goodbad_reads + '"') else ""} \
       ~{if defined(level) then ("-level " +  '"' + level + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count_goodbad_reads: "1 Count of good/bad reads.\\n2 Counts for selected chunk types.\\n4 Trace count and trace name prefix for each trace_header.\\n8 Base count.\\n"
     level: ""

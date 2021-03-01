@@ -12,6 +12,9 @@ task NebulizerListToolPanel {
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if (list_tools) then "--list-tools" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "only list tool panel sections where name or id match NAME. Can\\ninclude glob-style wild-cards."
     list_tools: "also list the associated tools for each section"

@@ -3,17 +3,17 @@ id: svtk_count_svtypes_vcf.cwl
 inputs:
 - id: in_total_variants
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --total-variants
 - id: in_total_obs
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --total-obs
 - id: in_no_header
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-header
 - id: in_s_vtk
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - svtk

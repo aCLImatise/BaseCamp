@@ -52,6 +52,9 @@ task Cpanm {
       ~{if (look) then "--look" else ""} \
       ~{if (uninstall) then "--uninstall" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Turns on chatty output"
     quiet: "Turns off the most output"

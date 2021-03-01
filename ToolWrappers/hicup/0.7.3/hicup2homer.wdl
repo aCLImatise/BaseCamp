@@ -8,6 +8,9 @@ task Hicup2homer {
     hicup2homer \
       ~{if (zip) then "--zip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     zip: "Write output to a gzip file"
   }

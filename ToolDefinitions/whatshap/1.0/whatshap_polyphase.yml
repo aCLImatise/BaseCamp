@@ -4,138 +4,138 @@ command:
 - polyphase
 positional:
 - !Positional
-  description: "VCF file with variants to be phased (can be gzip-\ncompressed)"
+  optional: false
   position: 0
   name: VCF
-  optional: false
+  description: "VCF file with variants to be phased (can be gzip-\ncompressed)"
 - !Positional
-  description: BAM or CRAM with sequencing reads.
+  optional: false
   position: 1
   name: PHASEINPUT
-  optional: false
+  description: BAM or CRAM with sequencing reads.
 named:
 - !Flag
-  description: The ploidy of the sample(s). Argument is required.
+  optional: true
   synonyms:
   - --ploidy
   - -p
+  description: The ploidy of the sample(s). Argument is required.
   args: !SimpleFlagArg
     name: PLOIDY
-  optional: true
 - !Flag
-  description: "Output VCF file. Add .gz to the file name to get\ncompressed output.\
-    \ If omitted, use standard output."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "Output VCF file. Add .gz to the file name to get\ncompressed output.\
+    \ If omitted, use standard output."
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: "Reference file. Provide this to detect alleles through\nre-alignment.\
-    \ If no index (.fai) exists, it will be\ncreated"
+  optional: true
   synonyms:
   - --reference
   - -r
+  description: "Reference file. Provide this to detect alleles through\nre-alignment.\
+    \ If no index (.fai) exists, it will be\ncreated"
   args: !SimpleFlagArg
     name: FASTA
-  optional: true
 - !Flag
-  description: "Store phasing information with PS tag (standardized)\nor HP tag (used\
-    \ by GATK ReadBackedPhasing) (default:\nPS)"
+  optional: true
   synonyms:
   - --tag
+  description: "Store phasing information with PS tag (standardized)\nor HP tag (used\
+    \ by GATK ReadBackedPhasing) (default:\nPS)"
   args: !ChoiceFlagArg
     choices: !!set
       HP:
       PS:
-  optional: true
 - !Flag
-  description: Write reads that have been used for phasing to FILE.
+  optional: true
   synonyms:
   - --output-read-list
+  description: Write reads that have been used for phasing to FILE.
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: 'Minimum mapping quality (default: 20)'
+  optional: true
   synonyms:
   - --mapping-quality
   - --mapq
+  description: 'Minimum mapping quality (default: 20)'
   args: !SimpleFlagArg
     name: QUAL
-  optional: true
 - !Flag
-  description: 'Also phase indels (default: do not phase indels)'
+  optional: true
   synonyms:
   - --indels
+  description: 'Also phase indels (default: do not phase indels)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Ignore read groups in BAM/CRAM header and assume all\nreads come from\
-    \ the same sample."
+  optional: true
   synonyms:
   - --ignore-read-groups
+  description: "Ignore read groups in BAM/CRAM header and assume all\nreads come from\
+    \ the same sample."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Name of a sample to phase. If not given, all samples\nin the input\
-    \ VCF are phased. Can be used multiple\ntimes."
+  optional: true
   synonyms:
   - --sample
+  description: "Name of a sample to phase. If not given, all samples\nin the input\
+    \ VCF are phased. Can be used multiple\ntimes."
   args: !SimpleFlagArg
     name: SAMPLE
-  optional: true
 - !Flag
-  description: "Name of chromosome to phase. If not given, all\nchromosomes in the\
-    \ input VCF are phased. Can be used\nmultiple times."
+  optional: true
   synonyms:
   - --chromosome
+  description: "Name of chromosome to phase. If not given, all\nchromosomes in the\
+    \ input VCF are phased. Can be used\nmultiple times."
   args: !SimpleFlagArg
     name: CHROMOSOME
-  optional: true
 - !Flag
-  description: "Verify input genotypes by re-typing them using the\ngiven reads."
+  optional: true
   synonyms:
   - --verify-genotypes
+  description: "Verify input genotypes by re-typing them using the\ngiven reads."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum required read overlap for internal read\nclustering stage\
-    \ (default: 2)."
+  optional: true
   synonyms:
   - --min-overlap
+  description: "Minimum required read overlap for internal read\nclustering stage\
+    \ (default: 2)."
   args: !SimpleFlagArg
     name: OVERLAP
-  optional: true
 - !Flag
-  description: "Maximum number of refinement steps for internal read\nclustering stage\
-    \ (default: 1)."
+  optional: true
   synonyms:
   - --ce-refinements
+  description: "Maximum number of refinement steps for internal read\nclustering stage\
+    \ (default: 1)."
   args: !SimpleFlagArg
     name: REFINEMENTS
-  optional: true
 - !Flag
-  description: "Strategy to determine block borders. 0 yields the\nlongest blocks\
-    \ with more switch errors, 5 has the\nshortest blocks with lowest switch error\
-    \ rate\n(default: 4).\n"
+  optional: true
   synonyms:
   - --block-cut-sensitivity
   - -B
+  description: "Strategy to determine block borders. 0 yields the\nlongest blocks\
+    \ with more switch errors, 5 has the\nshortest blocks with lowest switch error\
+    \ rate\n(default: 4).\n"
   args: !SimpleFlagArg
     name: SENSITIVITY
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: whatshap polyphase [-h] [-o OUTPUT] [--reference FASTA] [--tag\
@@ -185,3 +185,4 @@ help_text: "usage: whatshap polyphase [-h] [-o OUTPUT] [--reference FASTA] [--ta
   \                        (default: 4).\n"
 generated_using:
 - --help
+docker_image:

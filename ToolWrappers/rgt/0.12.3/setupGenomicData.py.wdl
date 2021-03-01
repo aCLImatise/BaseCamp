@@ -46,6 +46,9 @@ task SetupGenomicDatapy {
       ~{if defined(zv_one_zero_gtf_path) then ("--zv10-gtf-path " +  '"' + zv_one_zero_gtf_path + '"') else ""} \
       ~{if (hg_three_eight_rm) then "--hg38-rm" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "Fetch all data sets."
     h_gone_nine: "Fetch human genome files."

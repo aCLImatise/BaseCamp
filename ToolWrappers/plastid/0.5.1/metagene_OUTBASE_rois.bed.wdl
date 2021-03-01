@@ -8,6 +8,9 @@ task MetageneOUTBASERoisbed {
     metagene OUTBASE_rois_bed \
       ~{meta_gene}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     meta_gene: ""
   }

@@ -18,6 +18,9 @@ task PlotCountsCorrelationpy {
       ~{if defined(merged_data_tsv) then ("-t " +  '"' + merged_data_tsv + '"') else ""} \
       ~{if defined(correlation_tsv) then ("-o " +  '"' + correlation_tsv + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report_pdf: "Report PDF."
     data_tags_tagtag: "Data tags: tag1,tag2."

@@ -8,6 +8,9 @@ task EslhistplotDatafile {
     esl_histplot datafile \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
   }

@@ -10,14 +10,14 @@ inputs:
 - id: in_out_filename
   doc: "File name to save information of the matrix instead of\nwriting it to the\
     \ bash."
-  type: File
+  type: File?
   inputBinding:
     prefix: --outFileName
 - id: in_no_metadata
   doc: "Do not use meta data from cooler file to display\ninformation. This method\
     \ is slower and was the default\nuntil version 2.2 of HiCExplorer. H5 files always\
     \ use\nthis parameter."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_metadata
 outputs:
@@ -27,9 +27,10 @@ outputs:
 - id: out_out_filename
   doc: "File name to save information of the matrix instead of\nwriting it to the\
     \ bash."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicInfo

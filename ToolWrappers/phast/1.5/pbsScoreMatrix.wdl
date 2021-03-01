@@ -16,6 +16,9 @@ task PbsScoreMatrix {
       ~{if (no_pbs) then "--no-pbs" else ""} \
       ~{if (half_pbs) then "--half-pbs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     branch_length: "Output a matrix for a branch of the specified length, rather\\nthan a matrix for every branch of the tree.  The given length\\nmust be non-negative and in units of expected substitutions\\nper site."
     no_pbs: "Output a 4 x 4 matrix, as described above.  With this option,\\na code file is not needed."

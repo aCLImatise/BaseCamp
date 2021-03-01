@@ -48,6 +48,9 @@ task HaphpipeModelTest {
       ~{if (debug) then "--debug" else ""} \
       ~{if (keep_tmp) then "--keep_tmp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seqs: "Alignment in FASTA or PHYLIP format"
     run_id: "Prefix for output files"

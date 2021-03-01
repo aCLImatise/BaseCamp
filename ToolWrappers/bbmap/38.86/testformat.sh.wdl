@@ -2,14 +2,17 @@ version 1.0
 
 task Testformatsh {
   input {
-    File file
+    File var_file
   }
   command <<<
     testformat_sh \
-      ~{file}
+      ~{var_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

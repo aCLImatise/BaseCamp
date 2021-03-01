@@ -18,6 +18,9 @@ task ClusteringDemultiplex {
       ~{tab_index} \
       ~{output_directory}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     demultiplex: ""
     id_mapping: ""

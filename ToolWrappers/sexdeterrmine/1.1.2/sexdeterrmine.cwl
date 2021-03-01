@@ -3,18 +3,18 @@ id: sexdeterrmine.cwl
 inputs:
 - id: in_input
   doc: "The input samtools depth file. Omit to read from\nstdin."
-  type: File
+  type: File?
   inputBinding:
     prefix: --Input
 - id: in_sample_list
   doc: "A list of samples/bams that were in the depth file.\nOne per line. Should\
     \ be in the order of the samtools\ndepth output."
-  type: File
+  type: File?
   inputBinding:
     prefix: --SampleList
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
@@ -24,9 +24,10 @@ outputs:
 - id: out_sample_list
   doc: "A list of samples/bams that were in the depth file.\nOne per line. Should\
     \ be in the order of the samtools\ndepth output."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_sample_list)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sexdeterrmine

@@ -52,6 +52,9 @@ task SeqkitWatch {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bins: "number of histogram bins (default -1)"
     delay: "sleep this many seconds after online plotting (default 1)"

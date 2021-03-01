@@ -14,6 +14,9 @@ task IxIxx {
       ~{if defined(prefix_size) then ("-prefixSize " +  '"' + prefix_size + '"') else ""} \
       ~{if defined(binsize) then ("-binSize " +  '"' + binsize + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix_size: "Size of prefix to index on in ixx.  Default is 5."
     binsize: "Size of bins in ixx.  Default is 64k."

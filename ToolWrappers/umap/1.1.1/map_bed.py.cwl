@@ -3,13 +3,13 @@ id: map_bed.py.cwl
 inputs:
 - id: in_wig_dir
   doc: use a faster algorithm.
-  type: string
+  type: string?
   inputBinding:
     prefix: -wigdir
 - id: in_single_nucleotide
   doc: "If specified, assumes each region is only one nucleotide.\nYou must specify\
     \ -wig as well."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -SingleNucleotide
 - id: in_bed_path
@@ -23,12 +23,12 @@ inputs:
   inputBinding:
     position: 1
 - id: in_u_map_dir
-  doc: Path to directory with uint8 binary files produced by
+  doc: "Path to directory with uint8 binary files produced by\nUmap/Bismap."
   type: string
   inputBinding:
     position: 2
-- id: in_u_map_slash_bis_map_dot
-  doc: kmer               The read length for defining single-read and multi-read
+- id: in_km_er
+  doc: The read length for defining single-read and multi-read
   type: string
   inputBinding:
     position: 3
@@ -41,6 +41,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - map_bed.py

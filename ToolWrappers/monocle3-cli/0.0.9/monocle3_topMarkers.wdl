@@ -36,6 +36,9 @@ task Monocle3TopMarkers {
       ~{if defined(save_full_markers) then ("--save-full-markers " +  '"' + save_full_markers + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_format: "Format of input object. [Default: cds3]"
     output_table_format: "Format of output table, choose from {tsv, csv}. [Default: tsv]"

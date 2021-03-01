@@ -4,6 +4,9 @@ task Bamauxsort {
   command <<<
     bamauxsort
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

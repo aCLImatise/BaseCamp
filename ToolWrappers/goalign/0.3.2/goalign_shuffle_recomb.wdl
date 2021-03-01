@@ -36,6 +36,9 @@ task GoalignShuffleRecomb {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prop_length: "Proportion of length of sequences to recombine (default 0.5)"
     prop_seq: "Proportion of the  sequences to recombine (default 0.5)"

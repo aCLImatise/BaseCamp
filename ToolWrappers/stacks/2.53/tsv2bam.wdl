@@ -16,6 +16,9 @@ task Tsv2bam {
       ~{if (pe_reads_dir) then "--pe-reads-dir" else ""} \
       ~{if (number_use_default) then "-t" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dir: ": input directory."
     pop_map: ": population map."

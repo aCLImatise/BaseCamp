@@ -4,6 +4,9 @@ task FilterjuncbyROCarguNonCanonical {
   command <<<
     filterjuncbyROCarguNonCanonical
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

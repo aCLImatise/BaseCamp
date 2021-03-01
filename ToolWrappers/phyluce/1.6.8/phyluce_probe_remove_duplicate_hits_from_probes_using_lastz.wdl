@@ -20,6 +20,9 @@ task PhyluceProbeRemoveDuplicateHitsFromProbesUsingLastz {
       ~{if defined(locus_bed) then ("--locus-bed " +  '"' + locus_bed + '"') else ""} \
       ~{if (long) then "--long" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "The fasta file to screen"
     last_z: "The lastz file to use"

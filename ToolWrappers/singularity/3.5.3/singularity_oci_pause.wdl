@@ -16,6 +16,9 @@ task SingularityOciPause {
       ~{oci} \
       ~{pause}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

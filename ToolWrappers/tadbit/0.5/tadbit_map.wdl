@@ -52,6 +52,9 @@ task TadbitMap {
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""} \
       ~{if defined(descr) then ("--descr " +  '"' + descr + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     skip_mapping: "generate a Hi-C specific quality plot from FASTQ and exits"
     workdir: "path to an output folder."

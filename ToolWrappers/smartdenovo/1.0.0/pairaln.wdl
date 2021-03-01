@@ -24,6 +24,9 @@ task Pairaln {
       ~{if defined(alignment_penalty_read) then ("-T " +  '"' + alignment_penalty_read + '"') else ""} \
       ~{if (output_alignment) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     try_both_strands: "Try both strands"
     alignment_penalty_match: "Alignment penalty: match, [2]"

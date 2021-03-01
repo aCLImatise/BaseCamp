@@ -8,6 +8,9 @@ task OmetaMDSanalysisR {
     o_metaMDS_analysis_R \
       ~{permute}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     permute: "Error in file(file, \\\"rt\\\") : cannot open the connection"
   }

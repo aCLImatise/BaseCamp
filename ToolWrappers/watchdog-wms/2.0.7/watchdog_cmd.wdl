@@ -48,6 +48,9 @@ task Watchdogcmd {
       ~{if (validate) then "-validate" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     attach_info: "path to a file that is used to restore the info on previously running\\ntasks when Wathdog should be re-attached to running tasks; (can not be\\nused in combination with -resume as resume file is automatically loaded)"
     auto_detach: "stops the execution of Watchdog whenever possible (running tasks on an\\nexternal executor will not be terminated on detach); status of\\npreviously running tasks is checked when Watchdog is started with the\\n-restart and -attachInfo option;\\nDefault: false"

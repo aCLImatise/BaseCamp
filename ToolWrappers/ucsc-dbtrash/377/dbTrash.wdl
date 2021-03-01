@@ -28,6 +28,9 @@ task DbTrash {
       ~{if (del_lost_table) then "-delLostTable" else ""} \
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     age: "- number of hours old to qualify for drop.  N can be a float."
     drop: "- actually drop the tables, default is merely to display tables."

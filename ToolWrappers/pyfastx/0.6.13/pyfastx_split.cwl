@@ -1,19 +1,19 @@
 class: CommandLineTool
 id: pyfastx_split.cwl
 inputs:
-- id: in_split_fastaq_file_n
+- id: in_split_fastaq_file_new
   doc: split a fasta/q file into N new files with even size
-  type: long
+  type: long?
   inputBinding:
     prefix: -n
-- id: in_split_fastaq_file_counts
+- id: in_split_fastaq_file_containingthe
   doc: "split a fasta/q file into multiple files containing\nthe same sequence counts"
-  type: long
+  type: long?
   inputBinding:
     prefix: -c
 - id: in_out_dir
   doc: "output directory, default is current folder\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --out-dir
 - id: in_fast_x
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_out_dir
   doc: "output directory, default is current folder\n"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_out_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pyfastx

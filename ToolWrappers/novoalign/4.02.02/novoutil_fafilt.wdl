@@ -10,6 +10,9 @@ task NovoutilFafilt {
       ~{fast_a_files} \
       ~{if (length_limit_default) then "-l" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     length_limit_default: "999     Length limit, default 150."
     fast_a_files: "is one or more fasta files to be processed.\\nInput files may be compressed with gzip or bzip."

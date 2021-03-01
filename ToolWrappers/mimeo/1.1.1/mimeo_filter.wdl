@@ -34,6 +34,9 @@ task Mimeofilter {
       ~{if defined(tmax_period) then ("--tmaxperiod " +  '"' + tmax_period + '"') else ""} \
       ~{if defined(max_tandem) then ("--maxtandem " +  '"' + max_tandem + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "Name of directory containing sequences from A genome."
     outdir: "Write output files to this directory. (Default: cwd)"

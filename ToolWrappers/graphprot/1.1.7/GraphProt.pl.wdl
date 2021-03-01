@@ -48,6 +48,9 @@ task GraphProtpl {
       ~{if (motif_len) then "-motif_len" else ""} \
       ~{if defined(motif_top_n) then ("-motif_top_n " +  '"' + motif_top_n + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: "'regression' or 'classification'\\ndefault: classification"
     action: "what should GraphProt do?\\nls: optimize parameters\\ncv: run a crossvalidation\\ntrain: train a model\\npredict: predict binding for a whole site\\npredict_profile: predict binding profiles\\npredict_has: predict high-affinity sites\\nmotif: create sequence and structure motifs given a model"

@@ -8,6 +8,9 @@ task MlocarnaNnames {
     mlocarna_nnames \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "Full documentation"
   }

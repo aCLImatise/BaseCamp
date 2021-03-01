@@ -8,6 +8,9 @@ task TripailleJobWait {
     tripaille job wait \
       ~{job_id}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     job_id: ""
   }

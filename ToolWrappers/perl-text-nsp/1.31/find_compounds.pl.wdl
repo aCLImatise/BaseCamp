@@ -14,6 +14,9 @@ task Findcompoundspl {
       ~{compound_word_list} \
       ~{if (new_line) then "--newline" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     new_line: "Find compound words in one line."
     output_file: ""

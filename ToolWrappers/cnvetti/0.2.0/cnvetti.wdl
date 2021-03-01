@@ -22,6 +22,9 @@ task Cnvetti {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(io_threads) then ("--io-threads " +  '"' + io_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Increase verbosity"
     quiet: "Decrease verbosity"

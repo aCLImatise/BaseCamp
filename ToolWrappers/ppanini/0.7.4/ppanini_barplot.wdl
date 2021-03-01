@@ -16,6 +16,9 @@ task PpaniniBarplot {
       ~{if defined(scale) then ("--scale " +  '"' + scale + '"') else ""} \
       ~{if defined(output_plot) then ("--output " +  '"' + output_plot + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     p_panini_input: "Gene abundance table"
     p_panini_output: "PPANINI output table"

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Float, Int, Directory
+
+Motus_Snv_Call_V0_1_0 = CommandToolBuilder(tool="motus_snv_call", base_command=["motus", "snv_call"], inputs=[ToolInput(tag="in_dir_call_metasnv", input_type=Boolean(optional=True), prefix="-d", doc=InputDocumentation(doc="DIR     Call metaSNV on all bam files in the directory. [Mandatory]")), ToolInput(tag="in_fb", input_type=Float(optional=True), prefix="-fb", doc=InputDocumentation(doc="Coverage breadth: minimal horizontal genome coverage percentage per sample per species. Default=80.0")), ToolInput(tag="in_fd", input_type=Float(optional=True), prefix="-fd", doc=InputDocumentation(doc="Coverage depth: minimal average vertical genome coverage per sample per species. Default=5.0")), ToolInput(tag="in_fm", input_type=Int(optional=True), prefix="-fm", doc=InputDocumentation(doc="Minimum number of samples per species. Default=2")), ToolInput(tag="in_fp", input_type=Float(optional=True), prefix="-fp", doc=InputDocumentation(doc="FILTERING STEP II: Required proportion of informative samples (coverage non-zero) per position. Default=0.50")), ToolInput(tag="in_fc", input_type=Float(optional=True), prefix="-fc", doc=InputDocumentation(doc="FILTERING STEP II: Minimum coverage per position per sample per species. Default=5.0")), ToolInput(tag="in_int_number_default", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc="INT     Number of threads. Default=1")), ToolInput(tag="in_dir_output_directory", input_type=Directory(optional=True), prefix="-o", doc=InputDocumentation(doc="DIR     Output directory. Will fail if already exists. [Mandatory]")), ToolInput(tag="in_keep_directories_produced", input_type=Boolean(optional=True), prefix="-K", doc=InputDocumentation(doc="Keep all the directories produced by metaSNV. Default is to remove cov, distances, filtered, snpCaller")), ToolInput(tag="in_verbose_level_error", input_type=Int(optional=True), prefix="-v", doc=InputDocumentation(doc="Verbose level: 1=error, 2=warning, 3=message, 4+=debugging. Default=3"))], outputs=[ToolOutput(tag="out_dir_output_directory", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_dir_output_directory", type_hint=File()), doc=OutputDocumentation(doc="DIR     Output directory. Will fail if already exists. [Mandatory]"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Motus_Snv_Call_V0_1_0().translate("wdl", allow_empty_container=True)
+

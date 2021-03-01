@@ -12,6 +12,9 @@ task BpSeqconvertpl {
       ~{if defined(to) then ("--to " +  '"' + to + '"') else ""} \
       ~{if defined(from) then ("--from " +  '"' + from + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     to: ""
     from: ""

@@ -62,6 +62,9 @@ task Reparationpl {
       ~{if defined(by) then ("-by " +  '"' + by + '"') else ""} \
       ~{if (score) then "-score" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Ribosome alignment file (bam)"
     genome_fasta_file: "Genome fasta file. This should be the same genome fasta file used in\\nthe alignment of the Ribo-seq reads."

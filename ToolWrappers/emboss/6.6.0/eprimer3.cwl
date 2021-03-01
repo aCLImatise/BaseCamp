@@ -4,7 +4,7 @@ inputs:
 - id: in_hybrid_probe
   doc: "toggle     [N] An 'internal oligo' is intended to be\nused as a hybridization\
     \ probe (hyb probe) to\ndetect the PCR product after amplification."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -hybridprobe
 - id: in_num_return
@@ -13,7 +13,7 @@ inputs:
     \ objective function (where a lower\nnumber indicates a better primer pair).\n\
     Caution: setting this parameter to a large\nvalue will increase running time.\
     \ (Integer 0\nor more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -numreturn
 - id: in_included_region
@@ -22,7 +22,7 @@ inputs:
     \ are vector, and should be\nexcluded from consideration. The value for\nthis\
     \ parameter has the form\n(start),(end)\nwhere (start) is the index of the first\
     \ base\nto consider, and (end) is the last in the\nprimer-picking region."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -includedregion
 - id: in_target_region
@@ -32,7 +32,7 @@ inputs:
     \ The value should be a\nspace-separated list of\n(start),(end)\npairs where (start)\
     \ is the index of the\nfirst base of a Target, and (end) is the\nlast\nE.g. 50,51\
     \ requires primers to surround the\n2 bases at positions 50 and 51."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -targetregion
 - id: in_excluded_region
@@ -43,21 +43,21 @@ inputs:
     \ of low\nsequence quality or for excluding regions\ncontaining repetitive elements\
     \ such as ALUs\nor LINEs.\nE.g. 401,407 68,70 forbids selection of\nprimers in\
     \ the 7 bases starting at 401 and\nthe 3 bases at 68."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -excludedregion
 - id: in_forward_input
   doc: "string     The sequence of a forward primer to check\nand around which to\
     \ design reverse primers\nand optional internal oligos. Must be a\nsubstring of\
     \ SEQUENCE. (Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -forwardinput
 - id: in_reverse_input
   doc: "string     The sequence of a reverse primer to check\nand around which to\
     \ design forward primers\nand optional internal oligos. Must be a\nsubstring of\
     \ the reverse strand of SEQUENCE.\n(Any string)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -reverseinput
 - id: in_mis_priming_library_file
@@ -83,7 +83,7 @@ inputs:
     \ / IUPAC\ncodes for ambiguous bases are converted to\n'N'). There are no restrictions\
     \ on line\nlength.\nAn empty value for this parameter indicates\nthat no repeat\
     \ library should be used."
-  type: File
+  type: File?
   inputBinding:
     prefix: -mispriminglibraryfile
 - id: in_explain_flag
@@ -91,7 +91,7 @@ inputs:
     \ and\nINTERNAL-OLIGO-EXPLAIN output tags, which\nare intended to provide information\
     \ on the\nnumber of oligos and primer pairs that\nEPrimer3 examined, and statistics\
     \ on the\nnumber discarded for various reasons."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -explainflag
 - id: in_file_flag
@@ -102,7 +102,7 @@ inputs:
     \ SEQUENCE-ID tag (which must be\nsupplied). In addition, if the input tag\nTASK\
     \ is 1 or 4, EPrimer3 produces a file\n(sequence-id).int, which lists all\nacceptable\
     \ internal oligos."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -fileflag
 - id: in_first_base_index
@@ -112,32 +112,32 @@ inputs:
     input and output using 0-based indexing set\nthis parameter to 0. (This parameter\
     \ also\naffects the indexes in the contents of the\nfiles produced when the primer\
     \ file flag is\nset.) (Any integer value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -firstbaseindex
 - id: in_pick_anyway
   doc: "boolean    [N] If true pick a primer pair even if\nLEFT-INPUT, RIGHT-INPUT,\
     \ or\nINTERNAL-OLIGO-INPUT violates specific\nconstraints."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pickanyway
 - id: in_max_mis_priming
   doc: "float      [12.00] The maximum allowed weighted\nsimilarity with any sequence\
     \ in\nMISPRIMING-LIBRARY. (Number up to 9999.990)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -maxmispriming
 - id: in_pair_max_mis_priming
   doc: "float      [24.00] The maximum allowed sum of weighted\nsimilarities of a\
     \ primer pair (one\nsimilarity for each primer) with any single\nsequence in MISPRIMING-LIBRARY.\
     \ (Number up\nto 9999.990)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pairmaxmispriming
 - id: in_num_ns_accepted
   doc: "integer    [0] Maximum number of unknown bases (N)\nallowable in any primer.\
     \ (Integer 0 or more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -numnsaccepted
 - id: in_self_any
@@ -153,7 +153,7 @@ inputs:
     \ but\nthe alignment\n5' ATCCGNA 3'\n...|| | |\n3' TA--CGT 5'\nis not considered.\
     \ Scores are non-negative,\nand a score of 0.00 indicates that there is\nno reasonable\
     \ local alignment between two\noligos. (Number from 0.000 to 9999.990)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -selfany
 - id: in_self_end
@@ -173,7 +173,7 @@ inputs:
     this parameter than for the Maximum (local)\nComplementarity parameter because\
     \ the score\nof a local alignment will always be at least\nas great as the score\
     \ of a global\nalignment. (Number 0.000 or more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -selfend
 - id: in_max_end_stability
@@ -188,7 +188,7 @@ inputs:
     \ Ed., 'Methods in\nMolecular Biology, Vol. 15: PCR Protocols:\nCurrent Methods\
     \ and Applications', 1993, pp\n31-40, Humana Press, Totowa NJ). (Number up\nto\
     \ 1000.000)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -maxendstability
 - id: in_length_dot
@@ -196,15 +196,11 @@ inputs:
   type: long
   inputBinding:
     position: 0
-- id: in_six_zero_zero_slash_length
-  doc: Where [Na+} is the molar sodium
-  type: long
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - eprimer3

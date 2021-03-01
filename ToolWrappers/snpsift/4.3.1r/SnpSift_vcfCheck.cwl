@@ -3,7 +3,7 @@ id: SnpSift_vcfCheck.cwl
 inputs:
 - id: in_jar
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -jar
 - id: in_java
@@ -23,13 +23,14 @@ inputs:
     position: 2
 - id: in_file_ndot_vcf
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 3
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - SnpSift

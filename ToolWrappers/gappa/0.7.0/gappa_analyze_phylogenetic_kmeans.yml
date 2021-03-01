@@ -1,0 +1,223 @@
+!Command
+command:
+- gappa
+- analyze
+- phylogenetic-kmeans
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --jplace-path
+  description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+    \ to process. For directories, only files with the extension `.jplace[.gz]` are\
+    \ processed."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --k
+  description: REQUIRED           Number of clusters to find. Can be a comma-separated
+    list of multiple values or ranges for k, such as `"1-5,8,10,12"`
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --write-overview-file
+  description: If provided, a table file is written that summarizes the average distance
+    and variance of the clusters for each k. Useful for elbow plots.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --point-mass
+  description: Treat every pquery as a point mass concentrated on the highest-weight
+    placement.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-multiplicities
+  description: Set the multiplicity of each pquery to 1.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bins
+  description: =0               Bin the masses per-branch in order to save time and
+    memory, with only minor differences in the cluster assignments. Default is 0,
+    that is, no binning. If set, we recommend to use 50 bins or more.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --color-list
+  description: =BuPuBk    List of colors to use for the palette. Can either be the
+    name of a color list, a file containing one color per line, or an actual list
+    of colors.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --reverse-color-list
+  description: If set, the `--color-list` is reversed.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-scaling
+  description: If set, the sequential color list is logarithmically scaled instead
+    of linearily.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --out-dir
+  description: =.            Directory to write files to
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-prefix
+  description: =pkmeans_ File prefix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-suffix
+  description: File suffix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --write-newick-tree
+  description: If set, the tree is written to a Newick file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-nexus-tree
+  description: If set, the tree is written to a Nexus file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-phyloxml-tree
+  description: If set, the tree is written to a Phyloxml file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-svg-tree
+  description: If set, the tree is written to a Svg file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --svg-tree-shape
+  description: ":{circular,rectangular}=circular\nShape of the tree."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --svg-tree-type
+  description: ":{cladogram,phylogram}=cladogram\nType of the tree."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --svg-tree-stroke-width
+  description: "=5\nSvg stroke width for the branches of the tree."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --svg-tree-ladderize
+  description: If set, the tree is ladderized.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-file-overwriting
+  description: Allow to overwrite existing output files instead of aborting the command.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Produce more verbose output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: =8            Number of threads to use for calculations.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: Write all output to a log file, in addition to standard output to the
+    terminal.
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Run Phylogenetic k-means clustering on a set of samples.\nUsage: gappa\
+  \ analyze phylogenetic-kmeans [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[]\
+  \ ... REQUIRED\n                              List of jplace files or directories\
+  \ to process. For directories, only files with the extension `.jplace[.gz]` are\
+  \ processed.\n\n\nSettings:\n  --k TEXT REQUIRED           Number of clusters to\
+  \ find. Can be a comma-separated list of multiple values or ranges for k, such as\
+  \ `\"1-5,8,10,12\"`\n  --write-overview-file       If provided, a table file is\
+  \ written that summarizes the average distance and variance of the clusters for\
+  \ each k. Useful for elbow plots.\n  --point-mass                Treat every pquery\
+  \ as a point mass concentrated on the highest-weight placement.\n  --ignore-multiplicities\
+  \     Set the multiplicity of each pquery to 1.\n  --bins UINT=0               Bin\
+  \ the masses per-branch in order to save time and memory, with only minor differences\
+  \ in the cluster assignments. Default is 0, that is, no binning. If set, we recommend\
+  \ to use 50 bins or more.\n\n\nColor:\n  --color-list TEXT=BuPuBk    List of colors\
+  \ to use for the palette. Can either be the name of a color list, a file containing\
+  \ one color per line, or an actual list of colors.\n  --reverse-color-list     \
+  \   If set, the `--color-list` is reversed.\n  --log-scaling               If set,\
+  \ the sequential color list is logarithmically scaled instead of linearily.\n\n\n\
+  Output:\n  --out-dir TEXT=.            Directory to write files to\n  --file-prefix\
+  \ TEXT=pkmeans_ File prefix for output files\n  --file-suffix TEXT          File\
+  \ suffix for output files\n\n\nTree Output:\n  --write-newick-tree         If set,\
+  \ the tree is written to a Newick file.\n  --write-nexus-tree          If set, the\
+  \ tree is written to a Nexus file.\n  --write-phyloxml-tree       If set, the tree\
+  \ is written to a Phyloxml file.\n  --write-svg-tree            If set, the tree\
+  \ is written to a Svg file.\n\n\nSvg Tree Output:\n  --svg-tree-shape TEXT:{circular,rectangular}=circular\n\
+  \                              Shape of the tree.\n  --svg-tree-type TEXT:{cladogram,phylogram}=cladogram\n\
+  \                              Type of the tree.\n  --svg-tree-stroke-width FLOAT=5\n\
+  \                              Svg stroke width for the branches of the tree.\n\
+  \  --svg-tree-ladderize        If set, the tree is ladderized.\n\n\nGlobal Options:\n\
+  \  --allow-file-overwriting    Allow to overwrite existing output files instead\
+  \ of aborting the command.\n  --verbose                   Produce more verbose output.\n\
+  \  --threads UINT=8            Number of threads to use for calculations.\n  --log-file\
+  \ TEXT             Write all output to a log file, in addition to standard output\
+  \ to the terminal.\n  --help                      Print this help message and exit.\n\
+  \ngappa - a toolkit for analyzing and visualizing phylogenetic (placement) data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gappa:0.7.0--he513fc3_0

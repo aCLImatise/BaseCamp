@@ -4,6 +4,9 @@ task Drttest {
   command <<<
     drttest
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

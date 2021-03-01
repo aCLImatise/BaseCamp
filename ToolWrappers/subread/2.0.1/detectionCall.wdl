@@ -4,6 +4,9 @@ task DetectionCall {
   command <<<
     detectionCall
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -46,6 +46,9 @@ task Albatradis {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     span_gaps: "Span a gap if it is this multiple of a window size\\n(default: 1)"
     iterations: "No. of times to rescan (default: 1)"

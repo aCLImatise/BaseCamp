@@ -3,6 +3,8 @@ version 1.0
 task Emapperpy {
   input {
     Boolean? guess_db
+    Boolean? database
+    String? data_dir
     Boolean? tax_scope
     String? target_orthologs
     Boolean? excluded_tax_a
@@ -21,7 +23,7 @@ task Emapperpy {
     Int? subject_cover
     Boolean? seed_ortholog_evalue
     Boolean? seed_ortholog_score
-    Boolean? o_base_name
+    Boolean? base_name_output
     File? resume
     Boolean? override
     Boolean? no_refine
@@ -41,14 +43,14 @@ task Emapperpy {
     Boolean? server_mode
     Boolean? use_mem
     Boolean? annotate_hits_table
-    String? dbtype
-    Boolean? database
     String files
   }
   command <<<
     emapper_py \
       ~{files} \
       ~{if (guess_db) then "--guessdb" else ""} \
+      ~{if (database) then "--database" else ""} \
+      ~{if defined(data_dir) then ("--data_dir " +  '"' + data_dir + '"') else ""} \
       ~{if (tax_scope) then "--tax_scope" else ""} \
       ~{if defined(target_orthologs) then ("--target_orthologs " +  '"' + target_orthologs + '"') else ""} \
       ~{if (excluded_tax_a) then "--excluded_taxa" else ""} \
@@ -67,7 +69,7 @@ task Emapperpy {
       ~{if defined(subject_cover) then ("--subject-cover " +  '"' + subject_cover + '"') else ""} \
       ~{if (seed_ortholog_evalue) then "--seed_ortholog_evalue" else ""} \
       ~{if (seed_ortholog_score) then "--seed_ortholog_score" else ""} \
-      ~{if (o_base_name) then "--output" else ""} \
+      ~{if (base_name_output) then "--output" else ""} \
       ~{if (resume) then "--resume" else ""} \
       ~{if (override) then "--override" else ""} \
       ~{if (no_refine) then "--no_refine" else ""} \
@@ -86,12 +88,15 @@ task Emapperpy {
       ~{if (translate) then "--translate" else ""} \
       ~{if (server_mode) then "--servermode" else ""} \
       ~{if (use_mem) then "--usemem" else ""} \
-      ~{if (annotate_hits_table) then "--annotate_hits_table" else ""} \
-      ~{if defined(dbtype) then ("--dbtype " +  '"' + dbtype + '"') else ""} \
-      ~{if (database) then "--database" else ""}
+      ~{if (annotate_hits_table) then "--annotate_hits_table" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    guess_db: "guess eggnog db based on the provided taxid\\n--database , -d       specify the target database for sequence searches.\\nChoose among: euk,bact,arch, host:port, or a local\\nhmmpressed database\\n--dbtype {hmmdb,seqdb}\\n--data_dir            Directory to use for DATA_PATH.\\n--qtype {hmm,seq}"
+    guess_db: "guess eggnog db based on the provided taxid"
+    database: "specify the target database for sequence searches.\\nChoose among: euk,bact,arch, host:port, or a local\\nhmmpressed database"
+    data_dir: "Directory to use for DATA_PATH."
     tax_scope: "Fix the taxonomic scope used for annotation, so only\\northologs from a particular clade are used for\\nfunctional transfer. By default, this is automatically\\nadjusted for every query sequence."
     target_orthologs: "defines what type of orthologs should be used for\\nfunctional transfer"
     excluded_tax_a: "(for debugging and benchmark purposes)"
@@ -110,7 +115,7 @@ task Emapperpy {
     subject_cover: "Report only alignments above the given percentage of\\nsubject cover. Default=0"
     seed_ortholog_evalue: "Min E-value expected when searching for seed eggNOG\\northolog. Applies to phmmer/diamond searches. Queries\\nnot having a significant seed orthologs will not be\\nannotated. Default=0.001"
     seed_ortholog_score: "Min bit score expected when searching for seed eggNOG\\northolog. Applies to phmmer/diamond searches. Queries\\nnot having a significant seed orthologs will not be\\nannotated. Default=60"
-    o_base_name: ", -o         base name for output files"
+    base_name_output: "base name for output files"
     resume: "Resumes a previous execution skipping reported hits in\\nthe output file."
     override: "Overwrites output files if they exist."
     no_refine: "Skip hit refinement, reporting only HMM hits."
@@ -130,8 +135,6 @@ task Emapperpy {
     server_mode: "Loads target database in memory and keeps running in\\nserver mode, so another instance of eggnog-mapper can\\nconnect to this sever. Auto turns on the --usemem flag"
     use_mem: "If a local hmmpressed database is provided as target\\nusing --db, this flag will allocate the whole database\\nin memory using hmmpgmd. Database will be unloaded\\nafter execution."
     annotate_hits_table: "Annotatate TSV formatted table of query->hits. 4\\nfields required: query, hit, evalue, score. Implies\\n--no_search and --no_refine.\\n"
-    dbtype: ""
-    database: ""
     files: "--keep_mapping_files  Do not delete temporary mapping files used for"
   }
   output {

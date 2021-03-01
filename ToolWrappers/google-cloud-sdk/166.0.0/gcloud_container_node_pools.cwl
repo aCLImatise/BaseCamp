@@ -4,7 +4,7 @@ inputs:
 - id: in_zone
   doc: "The compute zone (e.g. us-central1-a) for the cluster. Overrides the\ndefault\
     \ compute/zone property value for this command invocation."
-  type: long
+  type: long?
   inputBinding:
     prefix: --zone
 - id: in_create
@@ -36,6 +36,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

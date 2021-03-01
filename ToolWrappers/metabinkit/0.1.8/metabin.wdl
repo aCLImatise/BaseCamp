@@ -15,9 +15,6 @@ task Metabin {
     File? family_bl
     File? filter_file
     File? filter_col
-    Int? top_species
-    Int? top_genus
-    Int? top_family
     Int? to_paf
     File? no_mbk
     Boolean? sp_discard_sp
@@ -40,9 +37,6 @@ task Metabin {
       ~{if defined(family_bl) then ("--FamilyBL " +  '"' + family_bl + '"') else ""} \
       ~{if defined(filter_file) then ("--FilterFile " +  '"' + filter_file + '"') else ""} \
       ~{if defined(filter_col) then ("--FilterCol " +  '"' + filter_col + '"') else ""} \
-      ~{if defined(top_species) then ("--TopSpecies " +  '"' + top_species + '"') else ""} \
-      ~{if defined(top_genus) then ("--TopGenus " +  '"' + top_genus + '"') else ""} \
-      ~{if defined(top_family) then ("--TopFamily " +  '"' + top_family + '"') else ""} \
       ~{if defined(to_paf) then ("--TopAF " +  '"' + to_paf + '"') else ""} \
       ~{if (no_mbk) then "--no_mbk" else ""} \
       ~{if (sp_discard_sp) then "--sp_discard_sp" else ""} \
@@ -50,6 +44,9 @@ task Metabin {
       ~{if (sp_discard_num) then "--sp_discard_num" else ""} \
       ~{if (minimal_cols) then "--minimal_cols" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tsv_file_name: "TSV file name"
     out: "output file prefix"
@@ -64,9 +61,6 @@ task Metabin {
     family_bl: "families blacklist (file with one taxid per line) [default= NULL]"
     filter_file: "file name with the entries from the input to exclude (on entry per line)  [default= NULL]"
     filter_col: "Column name to look for the values found the the file provided in the --Filter parameter  [default= sseqid]"
-    top_species: "TODO [default= 100]"
-    top_genus: "TODO [default= 1]"
-    top_family: "TODO [default= 1]"
     to_paf: "TODO above family? [default= 1]"
     no_mbk: "Do not use mbk: codes in the output file to explain why a sequence was not binned at a given level (NA is used throughout)"
     sp_discard_sp: "Discard species with sp. in the name"

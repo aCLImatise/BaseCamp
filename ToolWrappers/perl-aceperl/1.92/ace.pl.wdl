@@ -24,6 +24,9 @@ task Acepl {
       ~{if (save) then "-save" else ""} \
       ~{if defined(exec) then ("-exec " +  '"' + exec + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     host: "Server host (localhost)"
     port: "Server port (200005)"

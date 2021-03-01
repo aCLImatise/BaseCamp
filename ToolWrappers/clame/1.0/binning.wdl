@@ -24,6 +24,9 @@ task Binning {
       ~{if defined(size_bin) then ("-sizeBin " +  '"' + size_bin + '"') else ""} \
       ~{if defined(to_l) then ("-tol " +  '"' + to_l + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dm: "MAD processs (default enabled)"
     index_file_reads: "Index file with reads name"

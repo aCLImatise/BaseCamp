@@ -20,6 +20,9 @@ task WhatshapStats {
       ~{if defined(block_list) then ("--block-list " +  '"' + block_list + '"') else ""} \
       ~{if defined(chromosome) then ("--chromosome " +  '"' + chromosome + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gtf: "Write phased blocks to GTF file."
     sample: "Name of the sample to process. If not given, use first\\nsample found in VCF."

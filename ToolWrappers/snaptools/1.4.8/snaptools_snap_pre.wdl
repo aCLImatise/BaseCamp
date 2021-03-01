@@ -38,6 +38,9 @@ task SnaptoolsSnappre {
       ~{if defined(qc_file) then ("--qc-file " +  '"' + qc_file + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "input bam, bed or bed.gz file. (default: None)"
     output_snap: "output snap file. (default: None)"

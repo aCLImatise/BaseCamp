@@ -1,0 +1,506 @@
+!Command
+command:
+- gffread
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: discard transcripts having an intron larger than <maxintron>
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: discard transcripts shorter than <minlen> bases
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "only show transcripts overlapping coordinate range <start>..<end>\n\
+    (on chromosome/contig <chr>, strand <strand> if provided)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: "for -r option, discard all transcripts that are not fully\ncontained\
+    \ within the given range"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  description: discard single-exon transcripts
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  description: 'coding only: discard mRNAs that have no CDS features'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nc
+  description: 'only: discard mRNAs that have CDS features'
+  args: !SimpleFlagArg
+    name: non-coding
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-locus
+  description: ': discard locus features and attributes found in the input'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: "use the description field from <seq_info.fsize> and add it\nas the\
+    \ value for a 'descr' attribute to the GFF record"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "<seq_info.fsize> is a tab-delimited file providing this info\nfor\
+    \ each of the mapped sequences:\n<seq-name> <seq-length> <seq-description>\n(useful\
+    \ for -A option with mRNA/EST/protein mappings)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sort-alpha
+  description: ': chromosomes (reference sequences) are sorted alphabetically'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sort-by
+  description: ": sort the reference sequences by the order in which their\nnames\
+    \ are given in the <refseq.lst> file"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: preserve all GFF attributes (for non-exon features)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-exon-attrs
+  description: ": for -F option, do not attempt to reduce redundant\nexon/CDS attributes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  description: "do not keep exon attributes, move them to the transcript feature\n\
+    (for GFF3 output)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-genes
+  description: ': in transcript-only mode (default), also preserve gene records'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-comments
+  description: ': for GFF3 input/output, try to preserve comments'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  description: "process other non-transcript GFF records (by default non-transcript\n\
+    records are ignored)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  description: discard any mRNAs with CDS having in-frame stop codons (requires -g)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  description: "for -V option, check and adjust the starting CDS phase\nif the original\
+    \ phase leads to a translation with an\nin-frame stop codon"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  description: "for -V option, single-exon transcripts are also checked on the\nopposite\
+    \ strand (requires -g)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  description: "add transcript level GFF attributes about the coding status of each\n\
+    transcript, including partialness or in-frame stop codons (requires -g)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --add-hasCDS
+  description: ": add a \"hasCDS\" attribute with value \"true\" for transcripts\n\
+    that have CDS features"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --adj-stop
+  description: "codon adjustment: enables -P and performs automatic\nadjustment of\
+    \ the CDS stop coordinate if premature or downstream"
+  args: !SimpleFlagArg
+    name: stop
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  description: "discard multi-exon mRNAs that have any intron with a non-canonical\n\
+    splice site consensus (i.e. not GT-AG, GC-AG or AT-AC)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -J
+  description: "discard any mRNAs that either lack initial START codon\nor the terminal\
+    \ STOP codon, or have an in-frame stop codon\n(i.e. only print mRNAs with a complete\
+    \ CDS)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-pseudo
+  description: ": filter out records matching the 'pseudo' keyword"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --in-bed
+  description: ": input should be parsed as BED format (automatic if the input\nfilename\
+    \ ends with .bed*)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --in-tlf
+  description: ": input GFF-like one-line-per-transcript format without exon/CDS\n\
+    features (see --tlf option below); automatic if the input\nfilename ends with\
+    \ .tlf)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stream
+  description: ": fast processing of input GFF/BED transcripts as they are received\n\
+    ((no sorting, exons must be grouped by transcript in the input data)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --merge
+  description: ": cluster the input transcripts into loci, discarding\n\"duplicated\"\
+    \ transcripts (those with the same exact introns\nand fully contained or equal\
+    \ boundaries)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: ': for -M option, write duplication info to file <dupinfo>'
+  args: !SimpleFlagArg
+    name: dupinfo
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster-only
+  description: ": same as -M/--merge but without discarding any of the\n\"duplicate\"\
+    \ transcripts, only create \"locus\" features"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  description: "for -M option: also discard as redundant the shorter, fully contained\n\
+    transcripts (intron chains matching a part of the container)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  description: "for -M option, no longer require boundary containment when assessing\n\
+    redundancy (can be combined with -K); only introns have to match for\nmulti-exon\
+    \ transcripts, and >=80% overlap for single-exon transcripts"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Y
+  description: "for -M option, enforce -Q but also discard overlapping single-exon\n\
+    transcripts, even on the opposite strand (can be combined with -K)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force-exons
+  description: ": make sure that the lowest level GFF features are considered\n\"\
+    exon\" features"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gene2exon
+  description: ": for single-line genes not parenting any transcripts, add an\nexon\
+    \ feature spanning the entire gene (treat it as a transcript)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --t-adopt
+  description: ":  try to find a parent gene overlapping/containing a transcript\n\
+    that does not have any explicit gene Parent"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  description: decode url encoded characters within attributes
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Z
+  description: merge very close exons into a single exon (when intron size<4)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: "full path to a multi-fasta file with the genomic sequences\nfor all\
+    \ input mappings, OR a directory with single-fasta files\n(one per genomic sequence,\
+    \ with file names matching sequence names)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: write a fasta file with spliced exons for each transcript
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --w-add
+  description: "for the -w option, extract additional <N> bases\nboth upstream and\
+    \ downstream of the transcript boundaries"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: write a fasta file with spliced CDS for each GFF transcript
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  description: write a protein fasta file with the translation of CDS for each record
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  description: "for -w and -x options, write in the FASTA defline all the exon\ncoordinates\
+    \ projected onto the spliced sequence;"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: for -y option, use '*' instead of '.' as stop codon translation
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: Ensembl GTF to GFF3 conversion (implies -F; should be used with -m)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "<chr_replace> is a name mapping table for converting reference\nsequence\
+    \ names, having this 2-column format:\n<original_ref_ID> <new_ref_ID>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: use <trackname> in the 2nd column of each GFF/GTF output line
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: write the records into <outfile> instead of stdout
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: main output will be GTF instead of GFF3
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bed
+  description: records in BED format instead of default GFF3
+  args: !SimpleFlagArg
+    name: output
+- !Flag
+  optional: true
+  synonyms:
+  - --tlf
+  description: "\"transcript line format\" which is like GFF\nbut exons, CDS features\
+    \ and related data are stored as GFF\nattributes in the transcript feature line,\
+    \ like this:\nexoncount=N;exons=<exons>;CDSphase=<N>;CDS=<CDScoords>\n<exons>\
+    \ is a comma-delimited list of exon_start-exon_end coordinates;\n<CDScoords> is\
+    \ CDS_start:CDS_end coordinates or a list like <exons>"
+  args: !SimpleFlagArg
+    name: output
+- !Flag
+  optional: true
+  synonyms:
+  - --table
+  description: "a simple tab delimited format instead of GFF, with columns\nhaving\
+    \ the values of GFF attributes given in <attrlist>; special\npseudo-attributes\
+    \ (prefixed by @) are recognized:\n@id, @geneid, @chr, @start, @end, @strand,\
+    \ @numexons, @exons,\n@cds, @covlen, @cdslen\nIf any of -w/-y/-x FASTA output\
+    \ files are enabled, the same fields\n(excluding @id) are appended to the definition\
+    \ line of corresponding\nFASTA records"
+  args: !SimpleFlagArg
+    name: output
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - -E
+  description: "(warn about) duplicate transcript IDs and other potential\nproblems\
+    \ with the given GFF/GTF records\n"
+  args: !SimpleFlagArg
+    name: expose
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "gffread v0.12.1. Usage:\ngffread <input_gff> [-g <genomic_seqs_fasta>\
+  \ | <dir>][-s <seq_info.fsize>] \n [-o <outfile>] [-t <trackname>] [-r [[<strand>]<chr>:]<start>..<end>\
+  \ [-R]]\n [-CTVNJMKQAFPGUBHZWTOLE] [-w <exons.fa>] [-x <cds.fa>] [-y <tr_cds.fa>]\n\
+  \ [-i <maxintron>] [--stream] [--bed] [--table <attrlist>] [--sort-by <ref.lst>]\n\
+  \ \n Filter, convert or cluster GFF/GTF/BED records, extract the sequence of\n transcripts\
+  \ (exon or CDS) and more.\n By default (i.e. without -O) only transcripts are processed,\
+  \ discarding any\n other non-transcript features. Default output is a simplified\
+  \ GFF3 with only\n the basic attributes.\n \n <input_gff> is a GFF file, use '-'\
+  \ for stdin\n \nOptions:\n -i   discard transcripts having an intron larger than\
+  \ <maxintron>\n -l   discard transcripts shorter than <minlen> bases\n -r   only\
+  \ show transcripts overlapping coordinate range <start>..<end>\n      (on chromosome/contig\
+  \ <chr>, strand <strand> if provided)\n -R   for -r option, discard all transcripts\
+  \ that are not fully \n      contained within the given range\n -U   discard single-exon\
+  \ transcripts\n -C   coding only: discard mRNAs that have no CDS features\n --nc\
+  \ non-coding only: discard mRNAs that have CDS features\n --ignore-locus : discard\
+  \ locus features and attributes found in the input\n -A   use the description field\
+  \ from <seq_info.fsize> and add it\n      as the value for a 'descr' attribute to\
+  \ the GFF record\n -s   <seq_info.fsize> is a tab-delimited file providing this\
+  \ info\n      for each of the mapped sequences:\n      <seq-name> <seq-length> <seq-description>\n\
+  \      (useful for -A option with mRNA/EST/protein mappings)\nSorting: (by default,\
+  \ chromosomes are kept in the order they were found)\n --sort-alpha : chromosomes\
+  \ (reference sequences) are sorted alphabetically\n --sort-by : sort the reference\
+  \ sequences by the order in which their\n      names are given in the <refseq.lst>\
+  \ file\nMisc options: \n -F   preserve all GFF attributes (for non-exon features)\n\
+  \ --keep-exon-attrs : for -F option, do not attempt to reduce redundant\n      exon/CDS\
+  \ attributes\n -G   do not keep exon attributes, move them to the transcript feature\n\
+  \      (for GFF3 output)\n --keep-genes : in transcript-only mode (default), also\
+  \ preserve gene records\n --keep-comments: for GFF3 input/output, try to preserve\
+  \ comments\n -O   process other non-transcript GFF records (by default non-transcript\n\
+  \      records are ignored)\n -V   discard any mRNAs with CDS having in-frame stop\
+  \ codons (requires -g)\n -H   for -V option, check and adjust the starting CDS phase\n\
+  \      if the original phase leads to a translation with an \n      in-frame stop\
+  \ codon\n -B   for -V option, single-exon transcripts are also checked on the\n\
+  \      opposite strand (requires -g)\n -P   add transcript level GFF attributes\
+  \ about the coding status of each\n      transcript, including partialness or in-frame\
+  \ stop codons (requires -g)\n --add-hasCDS : add a \"hasCDS\" attribute with value\
+  \ \"true\" for transcripts\n      that have CDS features\n --adj-stop stop codon\
+  \ adjustment: enables -P and performs automatic\n      adjustment of the CDS stop\
+  \ coordinate if premature or downstream\n -N   discard multi-exon mRNAs that have\
+  \ any intron with a non-canonical\n      splice site consensus (i.e. not GT-AG,\
+  \ GC-AG or AT-AC)\n -J   discard any mRNAs that either lack initial START codon\n\
+  \      or the terminal STOP codon, or have an in-frame stop codon\n      (i.e. only\
+  \ print mRNAs with a complete CDS)\n --no-pseudo: filter out records matching the\
+  \ 'pseudo' keyword\n --in-bed: input should be parsed as BED format (automatic if\
+  \ the input\n           filename ends with .bed*)\n --in-tlf: input GFF-like one-line-per-transcript\
+  \ format without exon/CDS\n           features (see --tlf option below); automatic\
+  \ if the input\n           filename ends with .tlf)\n --stream: fast processing\
+  \ of input GFF/BED transcripts as they are received\n           ((no sorting, exons\
+  \ must be grouped by transcript in the input data)\nClustering:\n -M/--merge : cluster\
+  \ the input transcripts into loci, discarding\n      \"duplicated\" transcripts\
+  \ (those with the same exact introns\n      and fully contained or equal boundaries)\n\
+  \ -d <dupinfo> : for -M option, write duplication info to file <dupinfo>\n --cluster-only:\
+  \ same as -M/--merge but without discarding any of the\n      \"duplicate\" transcripts,\
+  \ only create \"locus\" features\n -K   for -M option: also discard as redundant\
+  \ the shorter, fully contained\n       transcripts (intron chains matching a part\
+  \ of the container)\n -Q   for -M option, no longer require boundary containment\
+  \ when assessing\n      redundancy (can be combined with -K); only introns have\
+  \ to match for\n      multi-exon transcripts, and >=80% overlap for single-exon\
+  \ transcripts\n -Y   for -M option, enforce -Q but also discard overlapping single-exon\
+  \ \n      transcripts, even on the opposite strand (can be combined with -K)\nOutput\
+  \ options:\n --force-exons: make sure that the lowest level GFF features are considered\n\
+  \       \"exon\" features\n --gene2exon: for single-line genes not parenting any\
+  \ transcripts, add an\n       exon feature spanning the entire gene (treat it as\
+  \ a transcript)\n --t-adopt:  try to find a parent gene overlapping/containing a\
+  \ transcript\n       that does not have any explicit gene Parent\n -D    decode\
+  \ url encoded characters within attributes\n -Z    merge very close exons into a\
+  \ single exon (when intron size<4)\n -g   full path to a multi-fasta file with the\
+  \ genomic sequences\n      for all input mappings, OR a directory with single-fasta\
+  \ files\n      (one per genomic sequence, with file names matching sequence names)\n\
+  \ -w    write a fasta file with spliced exons for each transcript\n --w-add <N>\
+  \ for the -w option, extract additional <N> bases\n       both upstream and downstream\
+  \ of the transcript boundaries\n -x    write a fasta file with spliced CDS for each\
+  \ GFF transcript\n -y    write a protein fasta file with the translation of CDS\
+  \ for each record\n -W    for -w and -x options, write in the FASTA defline all\
+  \ the exon\n       coordinates projected onto the spliced sequence;\n -S    for\
+  \ -y option, use '*' instead of '.' as stop codon translation\n -L    Ensembl GTF\
+  \ to GFF3 conversion (implies -F; should be used with -m)\n -m    <chr_replace>\
+  \ is a name mapping table for converting reference \n       sequence names, having\
+  \ this 2-column format:\n       <original_ref_ID> <new_ref_ID>\n -t    use <trackname>\
+  \ in the 2nd column of each GFF/GTF output line\n -o    write the records into <outfile>\
+  \ instead of stdout\n -T    main output will be GTF instead of GFF3\n --bed output\
+  \ records in BED format instead of default GFF3\n --tlf output \"transcript line\
+  \ format\" which is like GFF\n       but exons, CDS features and related data are\
+  \ stored as GFF \n       attributes in the transcript feature line, like this:\n\
+  \         exoncount=N;exons=<exons>;CDSphase=<N>;CDS=<CDScoords> \n       <exons>\
+  \ is a comma-delimited list of exon_start-exon_end coordinates;\n       <CDScoords>\
+  \ is CDS_start:CDS_end coordinates or a list like <exons>\n --table output a simple\
+  \ tab delimited format instead of GFF, with columns\n       having the values of\
+  \ GFF attributes given in <attrlist>; special\n       pseudo-attributes (prefixed\
+  \ by @) are recognized:\n       @id, @geneid, @chr, @start, @end, @strand, @numexons,\
+  \ @exons, \n       @cds, @covlen, @cdslen\n       If any of -w/-y/-x FASTA output\
+  \ files are enabled, the same fields\n       (excluding @id) are appended to the\
+  \ definition line of corresponding\n       FASTA records\n -v,-E expose (warn about)\
+  \ duplicate transcript IDs and other potential\n       problems with the given GFF/GTF\
+  \ records\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gffread:0.12.1--h8b12597_0

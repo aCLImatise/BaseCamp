@@ -12,6 +12,9 @@ task ArbExportTree {
       ~{if (no_branch_lens) then "--nobranchlens" else ""} \
       ~{if (double_quotes) then "--doublequotes" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bifurcated: "write a bifurcated tree (default is a trifurcated tree)"
     no_branch_lens: "do not write branchlengths"

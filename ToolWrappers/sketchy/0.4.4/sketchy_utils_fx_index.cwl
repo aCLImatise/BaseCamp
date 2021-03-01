@@ -3,17 +3,17 @@ id: sketchy_utils_fx_index.cwl
 inputs:
 - id: in_fast_x
   doc: "Path to Fast{a,q} input file to index reads from headers\n[required]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --fastx
 - id: in_sort_by
   doc: "Sort read index by column: runid, sampleid, barcode,\nname, start_time [start_time]"
-  type: string
+  type: string?
   inputBinding:
     prefix: --sort_by
 - id: in_output
   doc: "Output sorted read index to tab-delimited file\n[read_index.tsv]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output sorted read index to tab-delimited file\n[read_index.tsv]"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sketchy

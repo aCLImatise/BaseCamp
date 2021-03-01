@@ -28,6 +28,9 @@ task MagpurifyClademarkers {
       ~{if defined(lowest_rank) then ("--lowest_rank " +  '"' + lowest_rank + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Path to reference database. By default, the MAGPURIFY\\nenvironmental variable is used (default: None)"
     exclude_clades: "List of clades to exclude (ex: s__Variovorax_sp_CF313)\\n(default: None)"

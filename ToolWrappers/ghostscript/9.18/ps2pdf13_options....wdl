@@ -4,6 +4,9 @@ task Ps2pdf13Options {
   command <<<
     ps2pdf13 options___
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

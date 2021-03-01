@@ -10,6 +10,9 @@ task BcbioVmpyCwl {
       ~{if defined(system_config) then ("--systemconfig " +  '"' + system_config + '"') else ""} \
       ~{if defined(add_container_tag) then ("--add-container-tag " +  '"' + add_container_tag + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     system_config: "Global YAML configuration file specifying system\\ndetails. Defaults to installed bcbio_system.yaml."
     add_container_tag: "Add a container revision tag to CWL ('quay_lookup`\\nretrieves lates from quay.io)\\n"

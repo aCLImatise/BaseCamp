@@ -3,7 +3,7 @@ id: gvcf_regions.py.cwl
 inputs:
 - id: in_unreported_is_called
   doc: use this flag to treat unreported sites as called
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --unreported_is_called
 - id: in_ignore_phrases
@@ -14,12 +14,12 @@ inputs:
     prefix: --ignore_phrases
 - id: in_min_gq
   doc: minimum GQ (Genotype Quality) considered as called
-  type: string
+  type: string?
   inputBinding:
     prefix: --min_GQ
 - id: in_min_qual
   doc: minimum QUAL considered as called
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_QUAL
 - id: in_pass_phrases
@@ -33,13 +33,14 @@ inputs:
     \ pass_phrases]\npresets: complete_genomics: [True, ['CNV', 'INS:ME'],\nNone,\
     \ None, ['PASS']]. freebayes: [False, None, None,\nNone, ['PASS']]. gatk: [False,\
     \ None, 5, None, None].\nplatypus: [False, None, None, None, ['PASS',\n'REFCALL']].\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --gvcf_type
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gvcf_regions.py

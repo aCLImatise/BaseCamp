@@ -8,6 +8,9 @@ task GtfJuncs {
     gtf_juncs \
       ~{transcripts_dot_gtf}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     transcripts_dot_gtf: ""
   }

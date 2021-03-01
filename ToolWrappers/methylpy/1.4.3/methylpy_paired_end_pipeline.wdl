@@ -2,11 +2,12 @@ version 1.0
 
 task MethylpyPairedendpipeline {
   input {
-    Int? reverse_ref
     Array[Int] read_one_files
     Array[Int] read_two_files
     String? sample
     File? forward_ref
+    File? reverse_ref
+    File? string_indicating_path
     Array[String] libraries
     File? path_to_output
     Boolean? pb_at
@@ -49,14 +50,17 @@ task MethylpyPairedendpipeline {
     Int? min_read_len
     Int? min_base_quality
     Boolean? keep_temp_files
+    String var_48
   }
   command <<<
     methylpy paired_end_pipeline \
-      ~{if defined(reverse_ref) then ("--reverse-ref " +  '"' + reverse_ref + '"') else ""} \
+      ~{var_48} \
       ~{if defined(read_one_files) then ("--read1-files " +  '"' + read_one_files + '"') else ""} \
       ~{if defined(read_two_files) then ("--read2-files " +  '"' + read_two_files + '"') else ""} \
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
       ~{if defined(forward_ref) then ("--forward-ref " +  '"' + forward_ref + '"') else ""} \
+      ~{if defined(reverse_ref) then ("--reverse-ref " +  '"' + reverse_ref + '"') else ""} \
+      ~{if defined(string_indicating_path) then ("--ref-fasta " +  '"' + string_indicating_path + '"') else ""} \
       ~{if defined(libraries) then ("--libraries " +  '"' + libraries + '"') else ""} \
       ~{if defined(path_to_output) then ("--path-to-output " +  '"' + path_to_output + '"') else ""} \
       ~{if defined(pb_at) then ("--pbat " +  '"' + pb_at + '"') else ""} \
@@ -100,12 +104,16 @@ task MethylpyPairedendpipeline {
       ~{if defined(min_base_quality) then ("--min-base-quality " +  '"' + min_base_quality + '"') else ""} \
       ~{if defined(keep_temp_files) then ("--keep-temp-files " +  '"' + keep_temp_files + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    reverse_ref: "REF_FASTA\\n[--libraries LIBRARIES [LIBRARIES ...]]\\n[--path-to-output PATH_TO_OUTPUT]\\n[--pbat PBAT]\\n[--check-dependency CHECK_DEPENDENCY]\\n[--num-procs NUM_PROCS]\\n[--sort-mem SORT_MEM]\\n[--num-upstream-bases NUM_UPSTREAM_BASES]\\n[--num-downstream-bases NUM_DOWNSTREAM_BASES]\\n[--generate-allc-file GENERATE_ALLC_FILE]\\n[--generate-mpileup-file GENERATE_MPILEUP_FILE]\\n[--compress-output COMPRESS_OUTPUT]\\n[--bgzip BGZIP]\\n[--path-to-bgzip PATH_TO_BGZIP]\\n[--path-to-tabix PATH_TO_TABIX]\\n[--trim-reads TRIM_READS]\\n[--path-to-cutadapt PATH_TO_CUTADAPT]\\n[--path-to-aligner PATH_TO_ALIGNER]\\n[--aligner ALIGNER]\\n[--aligner-options ALIGNER_OPTIONS [ALIGNER_OPTIONS ...]]\\n[--merge-by-max-mapq MERGE_BY_MAX_MAPQ]\\n[--remove-clonal REMOVE_CLONAL]\\n[--path-to-picard PATH_TO_PICARD]\\n[--keep-clonal-stats KEEP_CLONAL_STATS]\\n[--java-options JAVA_OPTIONS]\\n[--path-to-samtools PATH_TO_SAMTOOLS]\\n[--adapter-seq-read1 ADAPTER_SEQ_READ1]\\n[--adapter-seq-read2 ADAPTER_SEQ_READ2]\\n[--remove-chr-prefix REMOVE_CHR_PREFIX]\\n[--add-snp-info ADD_SNP_INFO]\\n[--unmethylated-control UNMETHYLATED_CONTROL]\\n[--binom-test BINOM_TEST]\\n[--sig-cutoff SIG_CUTOFF]\\n[--min-mapq MIN_MAPQ] [--min-cov MIN_COV]\\n[--max-adapter-removal MAX_ADAPTER_REMOVAL]\\n[--overlap-length OVERLAP_LENGTH]\\n[--zero-cap ZERO_CAP]\\n[--error-rate ERROR_RATE]\\n[--min-qual-score MIN_QUAL_SCORE]\\n[--min-read-len MIN_READ_LEN]\\n[--min-base-quality MIN_BASE_QUALITY]\\n[--keep-temp-files KEEP_TEMP_FILES]"
     read_one_files: "list of all the read 1 fastq files you would like to\\nrun through the pipeline. Note that globbing is\\nsupported here (i.e., you can use * in your paths)\\n(default: None)"
     read_two_files: "list of all the read 2 fastq files you would like to\\nrun through the pipeline. Note that globbing is\\nsupported here (i.e., you can use * in your paths)\\n(default: None)"
     sample: "String indicating the name of the sample you are\\nprocessing. It will be included in the output files.\\n(default: None)"
     forward_ref: "string indicating the path to the forward strand\\nreference created by build_ref (default: None)"
+    reverse_ref: "string indicating the path to the reverse strand\\nreference created by build_ref (default: None)"
+    string_indicating_path: "string indicating the path to a fasta file containing\\nthe sequences you used for mapping (default: None)"
     libraries: "list of library IDs (in the same order as the files\\nlist) indiciating which libraries each set of fastq\\nfiles belong to. If you use a glob, you only need to\\nindicate the library ID for those fastqs once (i.e.,\\nthe length of files and libraries should be the same)\\n(default: ['libA'])"
     path_to_output: "Path to a directory where you would like the output to\\nbe stored. The default is the same directory as the\\ninput fastqs. (default: )"
     pb_at: "Boolean indicating whether to process data in PBAT\\n(Post-Bisulfite Adaptor Tagging) mode, in which reads\\nwill be mapped to opposite strand of C-T converted\\ngenome and the forward strand of G-A converted genome.\\n(default: False)"
@@ -148,6 +156,7 @@ task MethylpyPairedendpipeline {
     min_read_len: "indicates the minimum length a read must be to be\\nkept. Reads that are too short even before adapter\\nremoval are also discarded. In colorspace, an initial\\nprimer is not counted. (default: 30)"
     min_base_quality: "Integer indicating the minimum PHRED quality score for\\na base to be included in the mpileup file (and\\nsubsequently to be considered for methylation\\ncalling). (default: 1)"
     keep_temp_files: "Boolean indicating that you would like to keep the\\nintermediate files generated by this function. This\\ncan be useful for debugging, but in general should be\\nleft False. (default: False)\\n"
+    var_48: "[--libraries LIBRARIES [LIBRARIES ...]]"
   }
   output {
     File out_stdout = stdout()

@@ -3,22 +3,22 @@ id: mapper.cwl
 inputs:
 - id: in_name_coordinates_source
   doc: Name and Coordinates of source contig, e.g. CONSENSUS:100-200
-  type: long
+  type: long?
   inputBinding:
     prefix: -f
 - id: in_name_target_contig
   doc: Name of target contig
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
-- id: in_coordinates_should_treated
+- id: in_coordinates_treated_based
   doc: Whether coordinates should be treated 1-based
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: '-1'
 - id: in_print_more_information
   doc: Print more information (such as subsequences in references)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_msa_file
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mapper

@@ -1,0 +1,209 @@
+!Command
+command:
+- CAT
+- bin
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bin_fasta
+  - -d
+  - --database_folder
+  description: Path to folder that contains database files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --taxonomy_folder
+  description: Path to folder that contains taxonomy files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --range
+  description: 'r parameter [0-49] (default: 5).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out_prefix
+  description: 'Prefix for output files (default: ./out.BAT).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --proteins_fasta
+  description: "Path to predicted proteins fasta file. If supplied,\nthe protein prediction\
+    \ step is skipped."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --diamond_alignment
+  description: "Path to alignment table. If supplied, the alignment\nstep is skipped\
+    \ and classification is carried out\ndirectly. A predicted proteins fasta file\
+    \ should also\nbe supplied with argument [-p / --proteins]."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --path_to_prodigal
+  description: "Path to Prodigal binaries. Supply if CAT/BAT cannot\nfind Prodigal"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --path_to_diamond
+  description: "Path to DIAMOND binaries. Supply if CAT/BAT cannot\nfind DIAMOND."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_stars
+  description: Suppress marking of suggestive taxonomic assignments.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: Force overwrite existing files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: Suppress verbosity.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Increase verbosity.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_log
+  description: Suppress log file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --I_know_what_Im_doing
+  description: Flag for experimental features.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --nproc
+  description: "Number of cores to deploy by DIAMOND (default:\nmaximum)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sensitive
+  description: 'Run DIAMOND in sensitive mode (default: not enabled).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_self_hits
+  description: "Do not report identical self hits by DIAMOND (default:\nnot enabled)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --block_size
+  description: "DIAMOND block-size parameter (default: 2.0). Lower\nnumbers will decrease\
+    \ memory and temporary disk space\nusage."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --index_chunks
+  description: "DIAMOND index-chunks parameter (default: 4). Set to 1\non high memory\
+    \ machines. The parameter has no effect\non temporary disk space usage."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: "Directory for temporary DIAMOND files (default:\ndirectory to which\
+    \ output files are written)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --compress
+  description: "Compress DIAMOND alignment file (default: not\nenabled)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --top
+  description: "DIAMOND top parameter [0-50] (default: 50). Governs\nhits within range\
+    \ of best hit that are written to the\nalignment file. This is not the [-r / --range]\n\
+    parameter! Can only be set with the\n[--I_know_what_Im_doing] flag, see README.md.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: CAT bin -b -d -t [options] [-h / --help]\n\nRun Bin Annotation\
+  \ Tool (BAT) on a single bin.\n\nRequired arguments:\n  -b , --bin_fasta \n  -d\
+  \ , --database_folder \n                        Path to folder that contains database\
+  \ files.\n  -t , --taxonomy_folder \n                        Path to folder that\
+  \ contains taxonomy files.\n\nOptional arguments:\n  -r , --range          r parameter\
+  \ [0-49] (default: 5).\n  -f , --fraction       f parameter [0-0.99] (default: 0.30).\n\
+  \  -o , --out_prefix     Prefix for output files (default: ./out.BAT).\n  -p , --proteins_fasta\
+  \ \n                        Path to predicted proteins fasta file. If supplied,\n\
+  \                        the protein prediction step is skipped.\n  -a , --diamond_alignment\
+  \ \n                        Path to alignment table. If supplied, the alignment\n\
+  \                        step is skipped and classification is carried out\n   \
+  \                     directly. A predicted proteins fasta file should also\n  \
+  \                      be supplied with argument [-p / --proteins].\n  --path_to_prodigal\
+  \    Path to Prodigal binaries. Supply if CAT/BAT cannot\n                     \
+  \   find Prodigal\n  --path_to_diamond     Path to DIAMOND binaries. Supply if CAT/BAT\
+  \ cannot\n                        find DIAMOND.\n  --no_stars            Suppress\
+  \ marking of suggestive taxonomic assignments.\n  --force               Force overwrite\
+  \ existing files.\n  -q, --quiet           Suppress verbosity.\n  --verbose    \
+  \         Increase verbosity.\n  --no_log              Suppress log file.\n  -h,\
+  \ --help            Show this help message and exit.\n  --I_know_what_Im_doing\n\
+  \                        Flag for experimental features.\n\nDIAMOND specific optional\
+  \ arguments:\n  -n , --nproc          Number of cores to deploy by DIAMOND (default:\n\
+  \                        maximum).\n  --sensitive           Run DIAMOND in sensitive\
+  \ mode (default: not enabled).\n  --no_self_hits        Do not report identical\
+  \ self hits by DIAMOND (default:\n                        not enabled).\n  --block_size\
+  \          DIAMOND block-size parameter (default: 2.0). Lower\n                \
+  \        numbers will decrease memory and temporary disk space\n               \
+  \         usage.\n  --index_chunks        DIAMOND index-chunks parameter (default:\
+  \ 4). Set to 1\n                        on high memory machines. The parameter has\
+  \ no effect\n                        on temporary disk space usage.\n  --tmpdir\
+  \              Directory for temporary DIAMOND files (default:\n               \
+  \         directory to which output files are written).\n  --compress          \
+  \  Compress DIAMOND alignment file (default: not\n                        enabled).\n\
+  \  --top                 DIAMOND top parameter [0-50] (default: 50). Governs\n \
+  \                       hits within range of best hit that are written to the\n\
+  \                        alignment file. This is not the [-r / --range]\n      \
+  \                  parameter! Can only be set with the\n                       \
+  \ [--I_know_what_Im_doing] flag, see README.md.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cat:5.2.3--0

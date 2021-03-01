@@ -38,6 +38,9 @@ task MrnaToGene {
       ~{if (quiet) then "-quiet" else ""} \
       ~{if (ignore_uniq_suffix) then "-ignoreUniqSuffix" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "- get PSLs and CDS from this database, psl specifies the table."
     cds_db: "- get CDS from this database, psl is a file."

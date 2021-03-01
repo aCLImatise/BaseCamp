@@ -44,6 +44,9 @@ task StrideCorrect {
       ~{if defined(branch_cut_off) then ("--branch-cutoff " +  '"' + branch_cut_off + '"') else ""} \
       ~{if defined(rounds) then ("--rounds " +  '"' + rounds + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     prefix: "use PREFIX for the names of the index files (default: prefix of the input file)"

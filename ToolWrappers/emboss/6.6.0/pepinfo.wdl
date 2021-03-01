@@ -14,6 +14,9 @@ task Pepinfo {
       ~{if (aa_hydropathy) then "-aahydropathy" else ""} \
       ~{if (h_window) then "-hwindow" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graph: "xygraph    [$EMBOSS_GRAPHICS value, or png] Graph type\\n(ps, hpgl, hp7470, hp7580, meta, cps, tek,\\ntekt, none, data, png, gif, svg)"
     aa_properties: "datafile   [Eaa_properties.dat] Amino acid chemical\\nclasses data file"

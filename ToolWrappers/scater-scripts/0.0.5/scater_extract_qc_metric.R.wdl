@@ -12,6 +12,9 @@ task ScaterextractqcmetricR {
       ~{if defined(metric) then ("--metric " +  '"' + metric + '"') else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "singleCellExperiment object containing expression values and experimental information. Must have been appropriately prepared."
     metric: "Metric name."

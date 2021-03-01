@@ -60,6 +60,9 @@ task MapCaller {
       ~{if (filter) then "-filter" else ""} \
       ~{if (version) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bwtindexprefix: "BWT_Index_Prefix"
     reference_filename_formatfa: "Reference filename (format:fa)"

@@ -12,6 +12,9 @@ task TomboClearFilters {
       ~{if defined(corrected_group) then ("--corrected-group " +  '"' + corrected_group + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_five_based_irs: "Directories containing fast5 files."
     corrected_group: "FAST5 group created by resquiggle command. Default:\\nRawGenomeCorrected_000"

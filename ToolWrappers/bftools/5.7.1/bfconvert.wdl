@@ -42,6 +42,9 @@ task Bfconvert {
       ~{if (channel) then "-channel" else ""} \
       ~{if (time_point) then "-timepoint" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version: ": print the library version and exit"
     no_upgrade: ": do not perform the upgrade check"

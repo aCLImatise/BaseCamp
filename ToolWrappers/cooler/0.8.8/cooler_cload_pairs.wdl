@@ -18,11 +18,15 @@ task CoolerCloadPairs {
     Boolean? no_delete_temp
     Int? max_merge
     Int? storage_options
-    String ignore_dot
+    String bins
+    String pairs_path
+    String cool_path
   }
   command <<<
     cooler cload pairs \
-      ~{ignore_dot} \
+      ~{bins} \
+      ~{pairs_path} \
+      ~{cool_path} \
       ~{if defined(metadata) then ("--metadata " +  '"' + metadata + '"') else ""} \
       ~{if defined(assembly) then ("--assembly " +  '"' + assembly + '"') else ""} \
       ~{if defined(chrom_one) then ("--chrom1 " +  '"' + chrom_one + '"') else ""} \
@@ -40,6 +44,9 @@ task CoolerCloadPairs {
       ~{if defined(max_merge) then ("--max-merge " +  '"' + max_merge + '"') else ""} \
       ~{if defined(storage_options) then ("--storage-options " +  '"' + storage_options + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metadata: "Path to JSON file containing user metadata."
     assembly: "Name of genome assembly (e.g. hg19, mm10)"
@@ -57,7 +64,9 @@ task CoolerCloadPairs {
     no_delete_temp: "Do not delete temporary files when finished."
     max_merge: "Maximum number of chunks to merge before\\ninvoking recursive merging  [default: 200]"
     storage_options: "Options to modify the data filter pipeline.\\nProvide as a comma-separated list of key-\\nvalue pairs of the form 'k1=v1,k2=v2,...'.\\nSee http://docs.h5py.org/en/stable/high/data\\nset.html#filter-pipeline for more details."
-    ignore_dot: "[default: #]"
+    bins: ""
+    pairs_path: ""
+    cool_path: ""
   }
   output {
     File out_stdout = stdout()

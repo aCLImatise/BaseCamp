@@ -6,7 +6,7 @@ task MakeDISTRST {
     File? ual
     File? vol
     File? pdb
-    File? map_file_defaultmapdgamber
+    File? _map_file
     File? dgm
     File? rst
     File? rm_six
@@ -22,7 +22,7 @@ task MakeDISTRST {
       ~{if defined(ual) then ("-ual " +  '"' + ual + '"') else ""} \
       ~{if defined(vol) then ("-vol " +  '"' + vol + '"') else ""} \
       ~{if defined(pdb) then ("-pdb " +  '"' + pdb + '"') else ""} \
-      ~{if defined(map_file_defaultmapdgamber) then ("-map " +  '"' + map_file_defaultmapdgamber + '"') else ""} \
+      ~{if defined(_map_file) then ("-map " +  '"' + _map_file + '"') else ""} \
       ~{if defined(dgm) then ("-dgm " +  '"' + dgm + '"') else ""} \
       ~{if defined(rst) then ("-rst " +  '"' + rst + '"') else ""} \
       ~{if defined(rm_six) then ("-rm6 " +  '"' + rm_six + '"') else ""} \
@@ -32,12 +32,15 @@ task MakeDISTRST {
       ~{if (report) then "-report" else ""} \
       ~{if (i_mix) then "-imix" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     up_b: ": 7-col_NOE (necessary) distance bound file, OR"
     ual: ": 8-col_UAL (necessary) upper/lower file, OR"
     vol: ": 7-col_VOL (necessary) VOLUME file, one or more volumes"
     pdb: ": PDBFILE using AMBER nomenclature and numbering"
-    map_file_defaultmapdgamber: ": MAP file  (default:map.DG-AMBER)"
+    _map_file: ": MAP file  (default:map.DG-AMBER)"
     dgm: ":  DGEOM95 restraint format"
     rst: ":  SANDER restraint format"
     rm_six: ":  DISGEO/NOEVIO format"

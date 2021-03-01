@@ -8,6 +8,9 @@ task PFAMtoGoParserpl {
     PFAMtoGoParser_pl \
       ~{pfam_to_go}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pfam_to_go: ""
   }

@@ -22,6 +22,9 @@ task Compare {
       ~{if (core) then "-core" else ""} \
       ~{if (col) then "-col" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     an_not: ""
     caps: ""

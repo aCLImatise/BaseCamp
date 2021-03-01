@@ -4,6 +4,9 @@ task HalLiftoverTests {
   command <<<
     halLiftoverTests
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

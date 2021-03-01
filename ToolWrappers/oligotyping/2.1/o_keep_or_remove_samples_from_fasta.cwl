@@ -4,12 +4,12 @@ inputs:
 - id: in_retain
   doc: "If declared, resulting FASTA file would contain\nsamples that \"match\" sample\
     \ names listed in the\n\"samples\" file. The default behavior is the vice\nversa."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --retain
 - id: in_output
   doc: "Output file name.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_fast_a_file_path
@@ -28,9 +28,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file name.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - o-keep-or-remove-samples-from-fasta

@@ -12,6 +12,9 @@ task SketchyUtilsFxindex {
       ~{if defined(sort_by) then ("--sort_by " +  '"' + sort_by + '"') else ""} \
       ~{if defined(output_sorted_read) then ("--output " +  '"' + output_sorted_read + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_x: "Path to Fast{a,q} input file to index reads from headers\\n[required]"
     sort_by: "Sort read index by column: runid, sampleid, barcode,\\nname, start_time [start_time]"

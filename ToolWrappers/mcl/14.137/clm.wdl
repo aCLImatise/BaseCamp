@@ -12,6 +12,9 @@ task Clm {
       ~{files} \
       ~{if (nop) then "--nop" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nop: ""
     mode: ""

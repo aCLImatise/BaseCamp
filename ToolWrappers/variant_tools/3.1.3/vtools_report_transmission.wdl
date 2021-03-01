@@ -2,7 +2,7 @@ version 1.0
 
 task VtoolsReportTransmission {
   input {
-    String? parentsnames_should_identify
+    String? parentsnames_uniquely_identify
     Array[String] offspring
     Boolean? de_novo
     Boolean? recessive
@@ -13,15 +13,18 @@ task VtoolsReportTransmission {
   command <<<
     vtools_report transmission \
       ~{var_6} \
-      ~{if defined(parentsnames_should_identify) then ("--parents " +  '"' + parentsnames_should_identify + '"') else ""} \
+      ~{if defined(parentsnames_uniquely_identify) then ("--parents " +  '"' + parentsnames_uniquely_identify + '"') else ""} \
       ~{if defined(offspring) then ("--offspring " +  '"' + offspring + '"') else ""} \
       ~{if (de_novo) then "--denovo" else ""} \
       ~{if (recessive) then "--recessive" else ""} \
       ~{if (inconsistent) then "--inconsistent" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    parentsnames_should_identify: "PARENTS\\nNames of parents, which should uniquely identify two\\nsamples."
+    parentsnames_uniquely_identify: "PARENTS\\nNames of parents, which should uniquely identify two\\nsamples."
     offspring: "Names of one or more offspring samples."
     de_novo: "[DENOVO [DENOVO ...]]\\nA list of tables to store denovo variants for each\\noffspring. DeNovo variants are defined as offspring\\nvariants that do not exist in any of the parents,\\nincluding the cases when the offspring have different\\nvariants from what parents have at the same genomic\\nlocations."
     recessive: "[RECESSIVE [RECESSIVE ...]]\\nA list of tables to store recessive variants for each\\noffspring. Recessive variants are defined as variants\\nthat are homozygous in offspring, and heterozygous in\\nboth parents."

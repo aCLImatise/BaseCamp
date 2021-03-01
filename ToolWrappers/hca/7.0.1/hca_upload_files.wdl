@@ -16,6 +16,9 @@ task HcaUploadFiles {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (sync) then "--sync" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target_filename: "Filename to use in upload area (if you wish to change\\nit during upload). Only valid when one file is being\\nuploaded."
     file_extension: "File extension to limit which files should be uploaded\\nOnly valid when directories are targeted for upload."

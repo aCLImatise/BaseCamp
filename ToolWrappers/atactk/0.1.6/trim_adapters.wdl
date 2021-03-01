@@ -20,6 +20,9 @@ task TrimAdapters {
       ~{if defined(rc_length) then ("--rc-length " +  '"' + rc_length + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_edit_distance: "The maximum edit distance permitted when aligning the\\npaired reads (default: 1)."
     fudge: "An arbitrary number of extra bases to trim from the\\nends of reads (default: 1) because the original\\npyadapter_trim.py script did so."

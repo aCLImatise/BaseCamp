@@ -36,6 +36,9 @@ task CargoRun {
       ~{if (frozen) then "--frozen" else ""} \
       ~{if (locked) then "--locked" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bin: "Name of the bin target to run"
     example: "Name of the example target to run"

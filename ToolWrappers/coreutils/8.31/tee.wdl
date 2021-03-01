@@ -14,6 +14,9 @@ task Tee {
       ~{if (diagnose_errors_writing) then "-p" else ""} \
       ~{if (output_error) then "--output-error" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     append: "append to the given FILEs, do not overwrite"
     ignore_interrupts: "ignore interrupt signals"

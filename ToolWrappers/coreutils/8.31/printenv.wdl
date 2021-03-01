@@ -8,6 +8,9 @@ task Printenv {
     printenv \
       ~{if (null) then "--null" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     null: "end each output line with NUL, not newline"
   }

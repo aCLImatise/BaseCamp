@@ -64,6 +64,9 @@ task PbsvCall {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chunk_length: "STR   Process in chunks of N reference bp. [1M]"
     region: "STR   Limit discovery to this reference region: CHR|CHR:START-END."

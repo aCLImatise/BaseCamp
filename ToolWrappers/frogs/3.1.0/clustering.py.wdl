@@ -28,6 +28,9 @@ task Clusteringpy {
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     distance: "Maximum distance between sequences in each aggregation\\nstep. [Default: 2]"
     nb_cpus: "The maximum number of CPUs used. [Default: 1]"

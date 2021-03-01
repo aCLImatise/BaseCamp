@@ -4,6 +4,9 @@ task Bamclip {
   command <<<
     bamclip
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

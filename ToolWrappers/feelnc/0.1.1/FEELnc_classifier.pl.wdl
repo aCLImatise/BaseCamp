@@ -22,6 +22,9 @@ task FEELncClassifierpl {
       ~{if defined(window) then ("--window " +  '"' + window + '"') else ""} \
       ~{if defined(max_window) then ("--maxwindow " +  '"' + max_window + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     biotype: "Print the biotype of each transcripts in the output"
     log: "Specify the name for the log file"

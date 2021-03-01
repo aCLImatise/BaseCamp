@@ -12,6 +12,9 @@ task MergeCoords {
       ~{coords} \
       ~{if defined(output_file_stdout) then ("--output " +  '"' + output_file_stdout + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_stdout: "Output file (stdout)"
     merge_coords_cmdline: ""

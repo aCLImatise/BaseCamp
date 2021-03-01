@@ -3,36 +3,40 @@ command:
 - kmer-cov-plot
 positional:
 - !Positional
-  description: -s, --sum-only       Display only the combined count of the forward
-    and
+  optional: false
   position: 0
   name: only.
-  optional: false
+  description: -s, --sum-only       Display only the combined count of the forward
+    and
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jellyfish
   description: "Use k-mer counts from a Jellyfish hash table.\nKMER_FILE specifies\
     \ a hash table produced by the\n`jellyfish count' command.  Only available if\n\
     compiled with Jellyfish support.  Note: Jellyfish's\nhash table is optimized for\
     \ memory usage and\nmultithreaded updating, so it is slower than a\nnormal hash\
     \ table for lookups."
-  synonyms:
-  - -j
-  - --jellyfish
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --jellyfish-preload
   description: "Access the Jellyfish hash table sequentially before\nbeginning plotting\
     \ the k-mer coverage.  This can\ngreatly improve performance on large Jellyfish\n\
     files that have not been pre-loaded into the\nkernel's buffer cache, as they would\
     \ otherwise\nbe accessed randomly and gradually be loaded into\nmemory by random\
     \ page faults.  If you do not have\nenough memory to hold the entire hash table\
     \ in memory,\nthis option will not be very helpful."
-  synonyms:
-  - -l
-  - --jellyfish-preload
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --ranges
   description: "...\nOnly print the k-mer coverages at the positions\nspecified by\
     \ the comma-separated list of ranges.\nEach range is two numbers separated by\
     \ a colon.\nPositive integral numbers are taken to be base\npositions numbered\
@@ -43,64 +47,60 @@ named:
     \ of\nthe first and last 10 k-mers of each sequence;\n--ranges=0.45:0.55 to print\
     \ k-mer coverage of the\nthe middle 10% of each sequence's k-mers.  The output\n\
     is in ascending order of base position and no position\nis printed multiple times."
-  synonyms:
-  - -r
-  - --ranges
   args: !OptionalFlagArg
     names:
     - RANGE
     - RANGE
     separator: ','
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tabular
   description: "Output the information as one read per line, as the\nFASTA/FASTQ tag\
     \ followed by the k-mer coverage\nvalues, tab-delimited.  The coverage of invalid\n\
     k-mers is marked as -1.  Without -f, the sum of\nthe coverage of the forward and\
     \ reverse complement\nk-mers is printed.  Cannot be used with\n--display-kmers."
-  synonyms:
-  - -t
-  - --tabular
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Display the actual k-mer in addition to the counts.\nCannot be used\
-    \ with --tabular."
+  optional: true
   synonyms:
   - -k
   - --display-kmers
+  description: "Display the actual k-mer in addition to the counts.\nCannot be used\
+    \ with --tabular."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Display count (and k-mer with -k) for the forward k-mer
+  optional: true
   synonyms:
   - -f
   - --forward-only
+  description: Display count (and k-mer with -k) for the forward k-mer
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not print sequence tags.
+  optional: true
   synonyms:
   - -n
   - --no-tags
+  description: Do not print sequence tags.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not print the index of each k-mer.  Ignored if
+  optional: true
   synonyms:
   - -N
   - --no-indices
+  description: Do not print the index of each k-mer.  Ignored if
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this usage message.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Print this usage message.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: kmer-cov-plot KMER_FILE < (FASTA_FILE | FASTQ_FILE)\nPrints the\
@@ -161,3 +161,4 @@ help_text: "Usage: kmer-cov-plot KMER_FILE < (FASTA_FILE | FASTQ_FILE)\nPrints t
   \ message.\n"
 generated_using:
 - --help
+docker_image:

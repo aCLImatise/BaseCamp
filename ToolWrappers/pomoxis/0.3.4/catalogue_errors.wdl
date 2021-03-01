@@ -14,6 +14,9 @@ task CatalogueErrors {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: ".bed file of reference regions to include. (default:\\nNone)"
     threads: "Number of threads for parallel execution. (default: 1)"

@@ -3,22 +3,22 @@ id: plantcv_train.py_naive_bayes.cwl
 inputs:
 - id: in_img_dir
   doc: Input directory containing images.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --imgdir
 - id: in_mask_dir
   doc: Input directory containing black/white masks.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --maskdir
 - id: in_outfile
   doc: Trained classifier output filename.
-  type: File
+  type: File?
   inputBinding:
     prefix: --outfile
 - id: in_plots
   doc: Make output plots.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --plots
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: Trained classifier output filename.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - plantcv-train.py

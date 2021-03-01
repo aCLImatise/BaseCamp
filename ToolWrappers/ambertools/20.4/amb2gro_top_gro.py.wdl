@@ -16,6 +16,9 @@ task Amb2groTopGropy {
       ~{if defined(gromacs_gro_file) then ("-g " +  '"' + gromacs_gro_file + '"') else ""} \
       ~{if defined(pdb_file_generate) then ("-b " +  '"' + pdb_file_generate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prmtop_file: "Prmtop file"
     inpcrd_file: "Inpcrd file"

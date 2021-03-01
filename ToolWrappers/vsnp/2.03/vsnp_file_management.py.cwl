@@ -4,17 +4,17 @@ inputs:
 - id: in_codes
   doc: "Excel file containing genotype code Column 1: to match\nsample name minus\
     \ everything left of first occurring _\nor . Column 2: New name"
-  type: File
+  type: File?
   inputBinding:
     prefix: --codes
 - id: in_extension
   doc: File extension type to be renamed
-  type: File
+  type: File?
   inputBinding:
     prefix: --extension
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_prog
@@ -26,6 +26,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vsnp_file_management.py

@@ -46,6 +46,9 @@ task BiocondautilsLint {
       ~{if defined(log_file_level) then ("--logfile-level " +  '"' + log_file_level + '"') else ""} \
       ~{if defined(log_command_max_lines) then ("--log-command-max-lines " +  '"' + log_command_max_lines + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     packages: "Glob for package[s] to build. Default is to build all\\npackages. Can be specified more than once (default:\\n'*')"
     cache: "To speed up debugging, use repodata cached locally in\\nthe provided filename. If the file does not exist, it\\nwill be created the first time. (default: -)"

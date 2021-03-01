@@ -2,10 +2,11 @@ version 1.0
 
 task KneaddataBowtie2DiscordantPairs {
   input {
-    Int? un_pair
     Int? one
     Int? two
     File? database_index_file
+    String? un_pair
+    String? al_pair
     String? un_single
     String? al_single
     String? fastq_files_orphan
@@ -18,10 +19,11 @@ task KneaddataBowtie2DiscordantPairs {
   }
   command <<<
     kneaddata_bowtie2_discordant_pairs \
-      ~{if defined(un_pair) then ("--un-pair " +  '"' + un_pair + '"') else ""} \
       ~{if defined(one) then ("-1 " +  '"' + one + '"') else ""} \
       ~{if defined(two) then ("-2 " +  '"' + two + '"') else ""} \
       ~{if defined(database_index_file) then ("-x " +  '"' + database_index_file + '"') else ""} \
+      ~{if defined(un_pair) then ("--un-pair " +  '"' + un_pair + '"') else ""} \
+      ~{if defined(al_pair) then ("--al-pair " +  '"' + al_pair + '"') else ""} \
       ~{if defined(un_single) then ("--un-single " +  '"' + un_single + '"') else ""} \
       ~{if defined(al_single) then ("--al-single " +  '"' + al_single + '"') else ""} \
       ~{if defined(fastq_files_orphan) then ("-U " +  '"' + fastq_files_orphan + '"') else ""} \
@@ -32,11 +34,15 @@ task KneaddataBowtie2DiscordantPairs {
       ~{if (cat_pairs) then "--cat-pairs" else ""} \
       ~{if (reorder) then "--reorder" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    un_pair: "--un-single UN_SINGLE --al-single\\nAL_SINGLE [-U ORPHAN] [-S SAM]\\n[--bowtie2 BOWTIE2]\\n[--threads THREADS]\\n[--bowtie2-options BOWTIE2_OPTIONS]\\n[--cat-pairs] [--reorder]"
     one: "the fastq file of pair1 reads"
     two: "the fastq file of pair2 reads"
     database_index_file: "the database index file"
+    un_pair: "the name of the output files for the paired reads without any alignments"
+    al_pair: "the name of the output files for the paired reads with concordant alignments"
     un_single: "the name of the output files for the orphan reads without alignments"
     al_single: "the name of the output files for the orphan reads with alignments"
     fastq_files_orphan: "the fastq files of orphan reads in comma-delimited list"

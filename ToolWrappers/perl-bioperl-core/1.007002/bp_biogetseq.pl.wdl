@@ -1,15 +1,11 @@
 version 1.0
 
 task BpBiogetseqpl {
-  input {
-    String? namespace
-  }
   command <<<
-    bp_biogetseq_pl \
-      ~{if defined(namespace) then ("--namespace " +  '"' + namespace + '"') else ""}
+    bp_biogetseq_pl
   >>>
-  parameter_meta {
-    namespace: "id [ ids... ]"
+  runtime {
+    docker: "None"
   }
   output {
     File out_stdout = stdout()

@@ -20,6 +20,9 @@ task MafFrag {
       ~{strand} \
       ~{if defined(out_name) then ("-outName " +  '"' + out_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_name: "Use XXX instead of database.chrom for the name"
     database: ""

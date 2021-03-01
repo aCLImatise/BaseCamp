@@ -3,220 +3,214 @@ command:
 - InDelFixer
 positional:
 - !Positional
-  description: ': java -jar InDelFixer.jar -i libCase102.fastq -g referenceGenomes.fasta
-    -454'
-  position: 0
-  name: 454/Roche
   optional: false
-- !Positional
+  position: 0
+  name: PacBio
   description: ': java -jar InDelFixer.jar -i libCase102.ccs.fastq -g referenceGenomes.fasta
     -noHashing -pacbio'
-  position: 1
-  name: PacBio
-  optional: false
 - !Positional
+  optional: false
+  position: 1
+  name: Illumina
   description: ': java -jar InDelFixer.jar -i libCase102_R1.fastq -ir libCase102_R2.fastq
     -g referenceGenomes.fasta -illumina'
-  position: 2
-  name: Illumina
-  optional: false
 named:
 - !Flag
-  description: ': Path to the output directory (default: current directory).'
+  optional: true
   synonyms:
   - -o
+  description: ': Path to the output directory (default: current directory).'
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: ': Path to the NGS input file (FASTA, FASTQ or SFF format) [REQUIRED].'
+  optional: true
   synonyms:
   - -i
+  description: ': Path to the NGS input file (FASTA, FASTQ or SFF format) [REQUIRED].'
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: ': Path to the second paired end file (FASTQ) [ONLY REQUIRED if first
-    file is also fastq].'
+  optional: true
   synonyms:
   - -ir
+  description: ': Path to the second paired end file (FASTQ) [ONLY REQUIRED if first
+    file is also fastq].'
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: ': Path to the reference genomes file (FASTA format) [REQUIRED].'
+  optional: true
   synonyms:
   - -g
+  description: ': Path to the reference genomes file (FASTA format) [REQUIRED].'
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: ': Region on the reference genome (i.e. 342-944).'
+  optional: true
   synonyms:
   - -r
+  description: ': Region on the reference genome (i.e. 342-944).'
   args: !SimpleFlagArg
     name: interval
-  optional: true
 - !Flag
-  description: ': Kmer size (default 10).'
+  optional: true
   synonyms:
   - -k
+  description: ': Kmer size (default 10).'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: ': Kmer offset (default 2).'
+  optional: true
   synonyms:
   - -v
+  description: ': Kmer offset (default 2).'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: ": Cut given number of bases (primer) at 5' and 3' (default 0)."
+  optional: true
   synonyms:
   - -cut
+  description: ": Cut given number of bases (primer) at 5' and 3' (default 0)."
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: ": Computes a consensus sequence from alignment and re-aligns against\
-    \ that.\nRefinement is repeated as many times as specified."
+  optional: true
   synonyms:
   - -refine
+  description: ": Computes a consensus sequence from alignment and re-aligns against\
+    \ that.\nRefinement is repeated as many times as specified."
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: ': Minimal coverage to replace a reference base in the consensus (default
-    1).'
+  optional: true
   synonyms:
   - -mcc
+  description: ': Minimal coverage to replace a reference base in the consensus (default
+    1).'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: ': Removes conserved gaps from consensus sequence during refinement.'
+  optional: true
   synonyms:
   - -rmDel
+  description: ': Removes conserved gaps from consensus sequence during refinement.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': More sensitive but slower alignment.'
+  optional: true
   synonyms:
   - -sensitive
+  description: ': More sensitive but slower alignment.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': Fill frame-shift causing deletions with consensus sequence.'
+  optional: true
   synonyms:
   - -fix
+  description: ': Fill frame-shift causing deletions with consensus sequence.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': No fast kmer-matching to find approximate mapping region. Please
-    use with PacBio data!'
+  optional: true
   synonyms:
   - -noHashing
+  description: ': No fast kmer-matching to find approximate mapping region. Please
+    use with PacBio data!'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ": Reads are aligned to the whole reference sequence,\nif the relative\
-    \ mismatch rate is above the given threshold (default 0.1)."
+  optional: true
   synonyms:
   - -realign
+  description: ": Reads are aligned to the whole reference sequence,\nif the relative\
+    \ mismatch rate is above the given threshold (default 0.1)."
   args: !SimpleFlagArg
     name: DOUBLE
-  optional: true
 - !Flag
-  description: ': Minimal read-length prior alignment (default 0).'
+  optional: true
   synonyms:
   - -l
+  description: ': Minimal read-length prior alignment (default 0).'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: ': Minimal read-length after alignment (default 0).'
+  optional: true
   synonyms:
   - -la
+  description: ': Minimal read-length after alignment (default 0).'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: ': The maximum percentage of insertions allowed [range 0.0 - 1.0] (default
-    1.0).'
+  optional: true
   synonyms:
   - -ins
+  description: ': The maximum percentage of insertions allowed [range 0.0 - 1.0] (default
+    1.0).'
   args: !SimpleFlagArg
     name: DOUBLE
-  optional: true
 - !Flag
-  description: ': The maximum percentage of deletions allowed [range 0.0 - 1.0] (default
-    1.0).'
+  optional: true
   synonyms:
   - -del
+  description: ': The maximum percentage of deletions allowed [range 0.0 - 1.0] (default
+    1.0).'
   args: !SimpleFlagArg
     name: DOUBLE
-  optional: true
 - !Flag
-  description: ': The maximum percentage of substitutions allowed [range 0.0 - 1.0]
-    (default 0.5).'
+  optional: true
   synonyms:
   - -sub
+  description: ': The maximum percentage of substitutions allowed [range 0.0 - 1.0]
+    (default 0.5).'
   args: !SimpleFlagArg
     name: DOUBLE
-  optional: true
 - !Flag
-  description: ': The maximum number of consecutive deletions allowed (default no
-    filtering).'
+  optional: true
   synonyms:
   - -maxDel
+  description: ': The maximum number of consecutive deletions allowed (default no
+    filtering).'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: ': Minimal average Phred score of the aligned read (default 20).'
+  optional: true
   synonyms:
   - -q
+  description: ': Minimal average Phred score of the aligned read (default 20).'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: ': Gap opening costs for Smith-Waterman (default 30).'
+  optional: true
   synonyms:
   - -gop
+  description: ': Gap opening costs for Smith-Waterman (default 30).'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': Gap extension costs for Smith-Waterman (default 3).'
+  optional: true
   synonyms:
   - -gex
+  description: ': Gap extension costs for Smith-Waterman (default 3).'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': 10 open / 1 extend'
+  optional: true
   synonyms:
   - '-454'
+  description: ': 10 open / 1 extend'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': 30 open / 3 extend'
+  optional: true
   synonyms:
   - -illumina
+  description: ': 30 open / 3 extend'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': 5 open / 3 extend'
+  optional: true
   synonyms:
   - -pacbio
+  description: ': 5 open / 3 extend'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -jar
+  description: ''
   args: !SimpleFlagArg
     name: InDelFixer.jar
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -261,3 +255,4 @@ help_text: "/usr/local/bin/InDelFixer: line 7: warning: setlocale: LC_ALL: canno
   \ ------------------------\n"
 generated_using:
 - --help
+docker_image:

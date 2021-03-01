@@ -4,29 +4,29 @@ inputs:
 - id: in_force
   doc: "Force processing even when result files already exist\nand are newer than\
     \ inputs (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_metrics
   doc: "File name of the metrics files which must exist in\neach of the sample directories.\
     \ (default: metrics)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --metrics
 - id: in_output
   doc: "Output file. Relative or absolute path to the combined\nmetrics file. (default:\
     \ metrics.tsv)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_spaces
   doc: "Emit column headings with spaces instead of\nunderscores (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --spaces
 - id: in_verbose
   doc: 'Verbose message level (0=no info, 5=lots) (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbose
 - id: in_cfsan_snp_pipeline
@@ -46,9 +46,10 @@ outputs:
 - id: out_output
   doc: "Output file. Relative or absolute path to the combined\nmetrics file. (default:\
     \ metrics.tsv)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - combineSampleMetrics.sh

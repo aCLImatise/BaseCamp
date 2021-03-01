@@ -3,58 +3,62 @@ command:
 - mkarv
 positional:
 - !Positional
-  description: The path to the directory where the web app will be
+  optional: false
   position: 0
   name: directory
-  optional: false
+  description: The path to the directory where the web app will be
 - !Positional
-  description: metrics               One or more ataqv metrics files in JSON format.
+  optional: false
   position: 1
   name: created.
-  optional: false
+  description: metrics               One or more ataqv metrics files in JSON format.
 named:
 - !Flag
-  description: "The number of concurrent processes to use (default:\n1). (default:\
-    \ 1)"
+  optional: true
   synonyms:
   - -c
   - --concurrency
+  description: "The number of concurrent processes to use (default:\n1). (default:\
+    \ 1)"
   args: !SimpleFlagArg
     name: CONCURRENCY
-  optional: true
 - !Flag
-  description: 'A description for the viewer instance. (default: None)'
+  optional: true
   synonyms:
   - -d
   - --description
+  description: 'A description for the viewer instance. (default: None)'
   args: !SimpleFlagArg
     name: DESCRIPTION
-  optional: true
 - !Flag
-  description: "Overwrite the output directory if it exists. (default:\nFalse)"
+  optional: true
   synonyms:
   - -f
   - --force
+  description: "Overwrite the output directory if it exists. (default:\nFalse)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If indent is given, JSON output will be pretty-printed\nand indented.\
-    \ (default: False)"
+  optional: true
   synonyms:
   - -i
   - --indent
+  description: "If indent is given, JSON output will be pretty-printed\nand indented.\
+    \ (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The maximum fragment length for which the distance to\nthe reference\
-    \ fragment length count distribution will\nbe measured. (default: 1000)"
+  optional: true
   synonyms:
   - -m
   - --maximum-fragment-length
+  description: "The maximum fragment length for which the distance to\nthe reference\
+    \ fragment length count distribution will\nbe measured. (default: 1000)"
   args: !SimpleFlagArg
     name: MAXIMUM_FRAGMENT_LENGTH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --peak-reference
   description: "A reference set of peak metrics to plot. The default\nvalue is \"\
     SRR891268\", the peak metrics of that sample\nin the ATAC-seq paper, as generated\
     \ with MACS2 in our\npipeline. It can be specified as \"calculate\", in which\n\
@@ -65,13 +69,13 @@ named:
     respectively. A tab- or comma-separated value file may\nalso be given, in which\
     \ each line contains two\nfractions, of HQAA and peak territory. All of these\n\
     arrays should represent values at percentiles from\n1-100. (default: SRR891268)"
-  synonyms:
-  - -p
-  - --peak-reference
   args: !SimpleFlagArg
     name: PEAK_REFERENCE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
   description: "How to make the reference fragment length count\ndistribution. The\
     \ default value is \"SRR891268\", the\nfragment length distribution of that sample\
     \ in the\nATAC-seq paper. It can be specified as \"calculate\", in\nwhich case\
@@ -81,44 +85,40 @@ named:
     \ containing an object\nmapping fragment lengths to counts (e.g. \"{0: 0, 1:\n\
     10, 2: 17}\", or it may be a tab- or comma-separated\nvalue file in which each\
     \ line contains a fragment\nlength and count. It may (default: SRR891268)"
-  synonyms:
-  - -r
-  - --reference
   args: !SimpleFlagArg
     name: REFERENCE
-  optional: true
 - !Flag
-  description: "The location of the web app directory template.\n(default: /usr/local/web)"
+  optional: true
   synonyms:
   - -t
   - --template-directory
+  description: "The location of the web app directory template.\n(default: /usr/local/web)"
   args: !SimpleFlagArg
     name: TEMPLATE_DIRECTORY
-  optional: true
 - !Flag
-  description: 'Talk more. (default: False)'
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: 'Talk more. (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: mkarv [-h] [-c CONCURRENCY] [-d DESCRIPTION] [-f] [-i]\n      \
   \       [-m MAXIMUM_FRAGMENT_LENGTH] [-p PEAK_REFERENCE] [-r REFERENCE]\n      \
   \       [-t TEMPLATE_DIRECTORY] [-v] [--version]\n             directory [metrics\
@@ -175,3 +175,4 @@ help_text: "usage: mkarv [-h] [-c CONCURRENCY] [-d DESCRIPTION] [-f] [-i]\n     
   \ program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

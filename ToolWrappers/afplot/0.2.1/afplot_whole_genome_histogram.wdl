@@ -22,6 +22,9 @@ task AfplotWholegenomeHistogram {
       ~{if defined(color_palette) then ("--color-palette " +  '"' + color_palette + '"') else ""} \
       ~{if (kde_only) then "--kde-only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_output_file: "Path to output file  [required]"
     exclude_pattern: "Regex pattern(s) to exclude from contig list"

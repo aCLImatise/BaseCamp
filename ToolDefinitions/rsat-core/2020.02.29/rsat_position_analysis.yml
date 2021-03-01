@@ -4,48 +4,51 @@ command:
 - position-analysis
 positional:
 - !Positional
-  description: 1998 by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)
+  optional: false
   position: 0
   name: position-analysis
-  optional: false
+  description: 1998 by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)
 - !Positional
-  description: pattern-discovery
+  optional: false
   position: 0
   name: sequences
-  optional: false
+  description: pattern-discovery
 named:
 - !Flag
-  description: "if not specified, the standard input is used.\nThis allows to place\
-    \ the command within a pipe."
+  optional: true
   synonyms:
   - -i
+  description: "if not specified, the standard input is used.\nThis allows to place\
+    \ the command within a pipe."
   args: !SimpleFlagArg
     name: inputfile
-  optional: true
 - !Flag
-  description: "|any\nSequence type"
+  optional: true
   synonyms:
   - -seqtype
+  description: "|any\nSequence type"
   args: !SimpleFlagArg
     name: dna
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -last
   description: "#\nStop after # sequences (for quick testing)\nThe possibility to\
     \ limit the analysis to a few sequences\n(e.g.50 of the input file can be useful\
     \ for fine-tuning\nthe options and ensuring that the result will appear as\nrequested.\
     \ Note that this option should not be used for\nthe final analysis, since the\
     \ significance drastically\ndepends on the number of input sequences."
-  synonyms:
-  - -last
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#\nSkip the first # sequences."
+  optional: true
   synonyms:
   - -skip
+  description: "#\nSkip the first # sequences."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -first
   description: "#\nFirst sequence to analyze.\nThe option \"-first n\" has the same\
     \ effect as \"-skip x\",\nwhere x = n-1.  These two somewhat redundant options\n\
     exist because in some cases it is easier to indicate the\nfirst sequences (e.g.\
@@ -58,77 +61,77 @@ named:
     \ slice-based\nanalysis is to estimate the number of relevant sequences\nin peaks\
     \ returned by applying peak-calling programs on\nChIP-seq reads.  Peak sequences\
     \ should be sorted by\ndecreasing score values."
-  synonyms:
-  - -first
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -seqnb
   description: "#\nMaximal number of sequences to analyze. The program stops\nreading\
     \ the sequences after having reached this\nnumber. This option is convenient for\
     \ analyzing\nsuccessive slices of at different depths in the sequence\nfile (e.g.\
     \ for peak sequences sorted by decreasing\nscores.\nExample: analyze N sequences\
     \ starting from the X_th one.\n-first X -seqnnb N\nWhen used without -skip or\
     \ -first, the option -seqnb\ngives the same result as -last."
-  synonyms:
-  - -seqnb
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "|lower\nMask lower or uppercases, respecively, i.e. replace\nselected\
-    \ case by N characters."
+  optional: true
   synonyms:
   - -mask
+  description: "|lower\nMask lower or uppercases, respecively, i.e. replace\nselected\
+    \ case by N characters."
   args: !SimpleFlagArg
     name: upper
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -format
   description: "file format. Must be followed by one of the\nfollowing options:\n\
     fasta (default)\nwconsensus\nIG\nfilelist\nraw\nSee below for the description\
     \ of these formats."
-  synonyms:
-  - -format
   args: !SimpleFlagArg
     name: input
-  optional: true
 - !Flag
-  description: "outputfile. Returns a list of the oligonucleotides\nencountered in\
-    \ the sequences, with their frequencies."
+  optional: true
   synonyms:
   - -o
+  description: "outputfile. Returns a list of the oligonucleotides\nencountered in\
+    \ the sequences, with their frequencies."
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: '#    verbose level.'
+  optional: true
   synonyms:
   - -v
+  description: '#    verbose level.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: oligonucleotide length.
+  optional: true
   synonyms:
   - -l
+  description: oligonucleotide length.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "window interval (default 20 bases).\nThe width of the position windows\
-    \ (in number of bases)"
+  optional: true
   synonyms:
   - -ci
+  description: "window interval (default 20 bases).\nThe width of the position windows\
+    \ (in number of bases)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -origin
   description: "| center | end\nReference for calculating positions.\nThe value should\
     \ be chosen according to the sequence\ntype. For instance:\n-origin start for\
     \ downstream sequences\n-origin end for promoter sequences\n-origin center can\
     \ be useful for ChIP-seq peaks, which\ncan have variable lengths, but are supposed\
     \ to\nbe more or less centred on the TF binding\nqsites."
-  synonyms:
-  - -origin
   args: !SimpleFlagArg
     name: start
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -offset
   description: "Add an offset to site positions. The offset value must\nbe an Integer\
     \ number (positive, null or\nnegative). This option allows to select an arbitrary\n\
     position as origin.\nExample: the option I<-offset -100> can be used to\nspecify\
@@ -136,61 +139,61 @@ named:
     \ including 100\nresidues downstream of the TSS.\nNote: in previous versions,\
     \ -origin was used to\nspecify both the reference point and the offset. Since\n\
     March 2010, the offset is specified with the option\n-offset."
-  synonyms:
-  - -offset
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: group reverse complement pairs
+  optional: true
   synonyms:
   - -grouprc
+  description: group reverse complement pairs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: do not group reverse complement pairs
+  optional: true
   synonyms:
   - -nogrouprc
+  description: do not group reverse complement pairs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "sort oligonucleotides according to the chi2\nstatistics, reflecting\
-    \ the level of bias in\ndistribution profile"
+  optional: true
   synonyms:
   - -sort
+  description: "sort oligonucleotides according to the chi2\nstatistics, reflecting\
+    \ the level of bias in\ndistribution profile"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "inactivates the summation of occurrences on both\nstrands."
+  optional: true
   synonyms:
   - -1str
+  description: "inactivates the summation of occurrences on both\nstrands."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "oligonucleotide occurrences found on both stands are\nsummed."
+  optional: true
   synonyms:
   - -2str
+  description: "oligonucleotide occurrences found on both stands are\nsummed."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "no overlap\noverlapping occurrences of the same pattern are\nonly\
-    \ taken into account once"
+  optional: true
   synonyms:
   - -noov
+  description: "no overlap\noverlapping occurrences of the same pattern are\nonly\
+    \ taken into account once"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -return
   description: "supported fields:\nhtml    HTML formatted results + index file\ndistrib\
     \ k-mer occurrences per position window\nexp_occ expected occurrences for each\
     \ window\nchi     chi-square value\nrank    rank of the pattern according to the\
     \ sorting\ncriterion\ngraphs  one graph file per oligont profile\nclusters run\
     \ k-mer clustering (regroup k-mers having\nsimilar occurrence profiles).\nSeveral\
     \ return fields can be entered, separated by\ncommas."
-  synonyms:
-  - -return
   args: !SimpleFlagArg
     name: fields_to_return
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -task
   description: "task1,task2,...\nSupported tasks:\npos: analyze oligonucleotide occurrences\
     \ (\"main\"\nanalysis)\nclusters: cluster oligonucleotides according to\ntheir\
     \ occurrence profiles.\nmatrices: build position-specific scoring matrices\nfrom\
@@ -203,158 +206,155 @@ named:
     \ tasks above\nRun specific tasks rather than the whole analysis.\nThis option\
     \ mainly serve to avoir re-running the whole\nsequence analysis for re-running\
     \ cluster analysis with\nmodified parameters."
-  synonyms:
-  - -task
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -markov
   description: "Order for the Markov model use to compute\nposition-specific expected\
     \ word frequencies.\nBy default, expected frequencies are estimated by\nassuming\
     \ a homogeneous repartition of k-mer\noccurrences (as in the original publication\
     \ by van\nHelden et al., 2000).\nAlternatively, the option -markov indicates that\n\
     expected frequency of each k-mer in each position\nwindow will be calculated on\
     \ the basis of the observed\nfrequencies for smaller words."
-  synonyms:
-  - -markov
   args: !SimpleFlagArg
     name: markov_order
-  optional: true
 - !Flag
-  description: "#      lower threshold on chi2\nreturn only words with a chi2 value\
-    \ > #"
+  optional: true
   synonyms:
   - -lth_chi
+  description: "#      lower threshold on chi2\nreturn only words with a chi2 value\
+    \ > #"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#      lower threshold on significance\nreturn only words with a sig\
-    \ value > #"
+  optional: true
   synonyms:
   - -lth_sig
+  description: "#      lower threshold on significance\nreturn only words with a sig\
+    \ value > #"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#      lower threshold on occurrences\nreturn only words with a number\
-    \ of occurrences > #"
+  optional: true
   synonyms:
   - -lth_occ
+  description: "#      lower threshold on occurrences\nreturn only words with a number\
+    \ of occurrences > #"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#     upper threshold on rank\nreturn maximum # words"
+  optional: true
   synonyms:
   - -uth_rank
+  description: "#     upper threshold on rank\nreturn maximum # words"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '#   maximal number of graphs to export'
+  optional: true
   synonyms:
   - -max_graphs
+  description: '#   maximal number of graphs to export'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -pl
   description: "A file containing a selection of patterns.  The\nanalysis is then\
     \ restricted to these patterns.  The\nfirst word of each new line is considered\
     \ as a new\npattern.  A score can be associated to each pattern\nwith the option\
     \ -sc."
-  synonyms:
-  - -pl
   args: !SimpleFlagArg
     name: pattern_file
-  optional: true
 - !Flag
-  description: "#   score column\n(only valid whith the option -pl)\nThe column containing\
-    \ a score value for each pattern\nof the pattern file"
+  optional: true
   synonyms:
   - -sc
+  description: "#   score column\n(only valid whith the option -pl)\nThe column containing\
+    \ a score value for each pattern\nof the pattern file"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#\nminimal position to take into account for the\nchi-square calculation\
-    \ This value must be a multiple\nof the window interval."
+  optional: true
   synonyms:
   - -minpos
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "#\nmaximal position to take into account for the\nchi-square calculation\
+  description: "#\nminimal position to take into account for the\nchi-square calculation\
     \ This value must be a multiple\nof the window interval."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -maxpos
+  description: "#\nmaximal position to take into account for the\nchi-square calculation\
+    \ This value must be a multiple\nof the window interval."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -nocheck
   description: "do not check the applicability condition on the\nchi-square. By default,\
     \ the program checks that each\nwindow has at least 5 observations. The chi-square\
     \ is\nbracketed for words which do not fill this\nconditions. It is now recognized\
     \ that this condition\nis too restrictive, and that the chi2 is still valid\n\
     with smaller clas effective. We allow to suppress the\nchecking, but the responsibility\
     \ is left to the user,\nto decide whether the chi2 is or not significant."
-  synonyms:
-  - -nocheck
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not discard oligos which do not fit the condition\nof applicability.\
-    \ Instead, mark them by including the\nchi2 value in curly brackets."
+  optional: true
   synonyms:
   - -nofilter
+  description: "Do not discard oligos which do not fit the condition\nof applicability.\
+    \ Instead, mark them by including the\nchi2 value in curly brackets."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -header
   description: "| midfloor | min | max | interval\nInformation to display in column\
     \ headers of the\ndistributions.\nmid: class middle points (centers)\nmidfloor:\
     \ floor of class middle points (centers).\nthis avoids to display non-integer\
     \ mid points\n(e.g. for interval 1-10 the midpoint is 5.5)\nmin: class min\nmax:\
     \ class max\ninterval: class intervals: [min,max]"
-  synonyms:
-  - -header
   args: !SimpleFlagArg
     name: mid
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -top_seq_for_matrices
   description: "#\nSelect the top # sequences for building position-specific\nscoring\
     \ matrices (PSSM).  This argument is passed to the\nprogram matrix-from-pattern.\n\
     This option does not affect the number of sequences used\nfor motif discovery\
     \ (detecting positionally biased\noligonucelotides), but it can be useful to test\
     \ the\nsecond phase of motif discovery: extracion of matrices\nfrom the selected\
     \ oligonucleotides."
-  synonyms:
-  - -top_seq_for_matrices
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Image format (this parameter is passed to XYgraph).
+  optional: true
   synonyms:
   - -img_format
+  description: Image format (this parameter is passed to XYgraph).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Title for the index table and position profile plots.
+  optional: true
   synonyms:
   - -title
+  description: Title for the index table and position profile plots.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Agglomeration rule for the hierarchical\nclustering. Supported: complete,\
-    \ average, single,\nward. Default: complete."
+  optional: true
   synonyms:
   - -clust_method
+  description: "Agglomeration rule for the hierarchical\nclustering. Supported: complete,\
+    \ average, single,\nward. Default: complete."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "#\nNumber of clusters (default: 8)."
+  optional: true
   synonyms:
   - -clust_nb
+  description: "#\nNumber of clusters (default: 8)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Suffix to append to the cluster file and the directory\ncontianing\
-    \ cluster graphics. Default: 'clusters'.\n"
+  optional: true
   synonyms:
   - -clust_suffix
+  description: "Suffix to append to the cluster file and the directory\ncontianing\
+    \ cluster graphics. Default: 'clusters'.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -506,3 +506,4 @@ help_text: "NAME\n\tposition-analysis\n\n        1998 by Jacques van Helden (Jac
   \ Default: 'clusters'.\n\n\n"
 generated_using:
 - -h
+docker_image:

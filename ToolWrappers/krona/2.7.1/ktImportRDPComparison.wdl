@@ -10,6 +10,9 @@ task KtImportRDPComparison {
       ~{rdp_comparison} \
       ~{name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rdp_comparison: "RDP comparison result downloaded as text."
     name: "A name for each library to appear in the chart. The default\\nis \\\"Library [1/2]\\\".\\n_________"

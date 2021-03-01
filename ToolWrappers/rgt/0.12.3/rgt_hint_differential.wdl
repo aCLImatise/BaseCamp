@@ -32,6 +32,9 @@ task RgthintDifferential {
       ~{if defined(output_prefix) then ("--output-prefix " +  '"' + output_prefix + '"') else ""} \
       ~{if (standardize) then "--standardize" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     organism: "Organism considered on the analysis. Must have been\\nsetup in the RGTDATA folder. Common choices are hg19,\\nhg38. mm9, and mm10. DEFAULT: hg19"
     m_pbs_files: ",FILE2...\\nPredicted motif binding sites for each condition.Files\\nshould be separated with comma."

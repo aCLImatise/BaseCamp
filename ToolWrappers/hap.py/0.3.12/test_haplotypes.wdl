@@ -3,10 +3,11 @@ version 1.0
 task TestHaplotypes {
   input {
     Boolean? auto_start_dbg
+    Boolean? break_exec_path
     Boolean? build_info
     Boolean? detect_memory_leaks
-    Boolean? list_content
     Boolean? list_labels
+    Boolean? log_format
     Boolean? log_level
     Boolean? log_sink
     Boolean? logger
@@ -27,10 +28,11 @@ task TestHaplotypes {
       ~{use} \
       ~{or} \
       ~{if (auto_start_dbg) then "--auto_start_dbg" else ""} \
+      ~{if (break_exec_path) then "--break_exec_path" else ""} \
       ~{if (build_info) then "--build_info" else ""} \
       ~{if (detect_memory_leaks) then "--detect_memory_leaks" else ""} \
-      ~{if (list_content) then "--list_content" else ""} \
       ~{if (list_labels) then "--list_labels" else ""} \
+      ~{if (log_format) then "--log_format" else ""} \
       ~{if (log_level) then "--log_level" else ""} \
       ~{if (log_sink) then "--log_sink" else ""} \
       ~{if (logger) then "--logger" else ""} \
@@ -42,12 +44,16 @@ task TestHaplotypes {
       ~{if (show_progress) then "--show_progress" else ""} \
       ~{if (wait_for_debugger) then "--wait_for_debugger" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     auto_start_dbg: "[1;33;49m[=<boolean value>]"
+    break_exec_path: "[1;33;49m=<value>"
     build_info: "[1;33;49m[=<boolean value>]"
     detect_memory_leaks: "[1;33;49m[=<alloc order number>]"
-    list_content: "[1;33;49m[=<HRF|DOT>]"
     list_labels: "[1;33;49m[=<boolean value>]"
+    log_format: "[1;33;49m=<HRF|CLF|XML|JUNIT>"
     log_level: "[1;33;49m=<all|success|test_suite|unit_scope|message|warning|error|cpp_exception|system_error|fatal_error|nothing>"
     log_sink: "[1;33;49m=<stderr|stdout|file name>"
     logger: "[1;33;49m=log_format,log_level,log_sink[:log_format,log_level,log_sink]"

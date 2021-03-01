@@ -1,0 +1,119 @@
+!Command
+command:
+- secapr
+- assemble_reads
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --input
+  description: "Call the folder that contains the trimmed reads,\norganized in a separate\
+    \ subfolder for each sample. The\nname of the subfolder has to start with the\
+    \ sample\nname, delimited with an underscore [_] (default output\nof secapr clean_reads\
+    \ function)"
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: The output directory where results will be saved
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --assembler
+  description: The assembler to use (default = spades).
+  args: !ChoiceFlagArg
+    choices: !!set
+      spades:
+      abyss:
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer
+  description: "Set the kmer value (only available for Abyss and\nSpades). Provide\
+    \ single value for Abyss, or list of\nkmers for Spades, e.g. \"--kmer 21,33,55\"\
+    . Default for\nAbyss is 35, and for spades it is 21,33,55,77,99,127.\nNote that\
+    \ Spades only accepts uneven kmer values."
+  args: !SimpleFlagArg
+    name: KMER
+- !Flag
+  optional: true
+  synonyms:
+  - --contig_length
+  description: "Set the minimum contig length for the assembly.\nContigs that are\
+    \ shorter than this threshold will be\ndiscarded."
+  args: !SimpleFlagArg
+    name: CONTIG_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --max_memory
+  description: "Set the maximum memory to be used during assembly in\nGB (only available\
+    \ for Spades). This can be necessary\nwhen working with computing nodes with limited\
+    \ memory\nor to avoid over-allocation of computing resources on\nclusters which\
+    \ can in some cases cause your assembly\nto be stopped or interrupted."
+  args: !SimpleFlagArg
+    name: MAX_MEMORY
+- !Flag
+  optional: true
+  synonyms:
+  - --single_reads
+  description: "Use this flag if you additionally want to use single\nreads for the\
+    \ assembly"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cores
+  description: "For parallel processing you can set the number of\ncores you want\
+    \ to run the assembly on.\n"
+  args: !SimpleFlagArg
+    name: CORES
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: secapr assemble_reads [-h] --input INPUT --output OUTPUT\n    \
+  \                         [--assembler {spades,abyss}] [--kmer KMER]\n         \
+  \                    [--contig_length CONTIG_LENGTH]\n                         \
+  \    [--max_memory MAX_MEMORY] [--single_reads]\n                             [--cores\
+  \ CORES]\n\nAssemble trimmed Illumina read files (fastq)\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --input INPUT      \
+  \   Call the folder that contains the trimmed reads,\n                        organized\
+  \ in a separate subfolder for each sample. The\n                        name of\
+  \ the subfolder has to start with the sample\n                        name, delimited\
+  \ with an underscore [_] (default output\n                        of secapr clean_reads\
+  \ function)\n  --output OUTPUT       The output directory where results will be\
+  \ saved\n  --assembler {spades,abyss}\n                        The assembler to\
+  \ use (default = spades).\n  --kmer KMER           Set the kmer value (only available\
+  \ for Abyss and\n                        Spades). Provide single value for Abyss,\
+  \ or list of\n                        kmers for Spades, e.g. \"--kmer 21,33,55\"\
+  . Default for\n                        Abyss is 35, and for spades it is 21,33,55,77,99,127.\n\
+  \                        Note that Spades only accepts uneven kmer values.\n  --contig_length\
+  \ CONTIG_LENGTH\n                        Set the minimum contig length for the assembly.\n\
+  \                        Contigs that are shorter than this threshold will be\n\
+  \                        discarded.\n  --max_memory MAX_MEMORY\n               \
+  \         Set the maximum memory to be used during assembly in\n               \
+  \         GB (only available for Spades). This can be necessary\n              \
+  \          when working with computing nodes with limited memory\n             \
+  \           or to avoid over-allocation of computing resources on\n            \
+  \            clusters which can in some cases cause your assembly\n            \
+  \            to be stopped or interrupted.\n  --single_reads        Use this flag\
+  \ if you additionally want to use single\n                        reads for the\
+  \ assembly\n  --cores CORES         For parallel processing you can set the number\
+  \ of\n                        cores you want to run the assembly on.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0

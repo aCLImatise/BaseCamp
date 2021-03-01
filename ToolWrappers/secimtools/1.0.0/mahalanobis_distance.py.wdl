@@ -34,6 +34,9 @@ task MahalanobisDistancepy {
       ~{if defined(palette) then ("--palette " +  '"' + palette + '"') else ""} \
       ~{if defined(color) then ("--color " +  '"' + color + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dataset_wide_format: "Dataset in Wide format"
     design: "Design file"

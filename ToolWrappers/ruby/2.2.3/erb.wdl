@@ -26,6 +26,9 @@ task Erb {
       ~{if defined(specify_trimmode_) then ("-T " +  '"' + specify_trimmode_ + '"') else ""} \
       ~{if (ignore_lines_start) then "-P" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_ruby_script: "print ruby script"
     print_ruby_script_line: "print ruby script with line number"

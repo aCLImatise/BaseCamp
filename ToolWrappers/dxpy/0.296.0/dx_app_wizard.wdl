@@ -14,6 +14,9 @@ task Dxappwizard {
       ~{if defined(language) then ("--language " +  '"' + language + '"') else ""} \
       ~{if defined(template) then ("--template " +  '"' + template + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     json_file: "Use the metadata and IO spec found in the given file"
     language: "Programming language of your app"

@@ -8,6 +8,9 @@ task LynerEstimate {
     lyner estimate \
       ~{if defined(distribution) then ("--distribution " +  '"' + distribution + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     distribution: "May be any of ['negbinom', 'gamma', 'laisson', 't',\\n'norm', 'cauchy', 'lognorm'] as well as any\\ndistribution in `scipy.stats.rv_continuous`."
   }

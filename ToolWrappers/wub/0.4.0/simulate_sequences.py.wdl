@@ -16,6 +16,9 @@ task SimulateSequencespy {
       ~{if defined(relative_base_frequencies) then ("-b " +  '"' + relative_base_frequencies + '"') else ""} \
       ~{if defined(random_seed_none) then ("-z " +  '"' + random_seed_none + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_sequences: "Number of sequences (1)."
     length_simulated_sequences: "Length of simulated sequences (3000)."

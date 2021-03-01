@@ -20,6 +20,9 @@ task TallyVariantsFromMultipleVcfspy {
       ~{if defined(num_threads) then ("--num-threads " +  '"' + num_threads + '"') else ""} \
       ~{if defined(minimum_samples) then ("--minimum-samples " +  '"' + minimum_samples + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_files: "multiple vcf files (default: None)"
     bam_files: "multiple bam files (default: None)"

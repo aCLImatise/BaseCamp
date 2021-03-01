@@ -16,6 +16,9 @@ task NanoModpy {
       ~{downsampling} \
       ~{annotate}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detect: "Detect nucleotide modifications from nanopore signal data"
     simulate: "Simulate with different percentage of modifications"

@@ -4,99 +4,96 @@ command:
 positional: []
 named:
 - !Flag
-  description: "[--input-format {fasta,nexus,phylip,phylip-relaxed,phylip-sequential,clustal,emboss,stockholm}]\n\
-    [--output-format {fasta,nexus,phylip,phylip-relaxed,phylip-sequential,clustal,emboss,stockholm}]\n\
-    [--cores CORES]\n[--shorten-names]\n[--name-conf NAME_CONF]\n[--verbosity {INFO,WARN,CRITICAL}]\n\
-    [--log-path LOG_PATH]"
-  synonyms:
-  - --output
-  args: !SimpleFlagArg
-    name: OUTPUT
   optional: true
-- !Flag
-  description: The directory containing the alignments to convert.
   synonyms:
   - --alignments
+  description: The directory containing the alignments to convert.
   args: !SimpleFlagArg
     name: ALIGNMENTS
-  optional: true
 - !Flag
-  description: The input alignment format
+  optional: true
+  synonyms:
+  - --output
+  description: An output directory to hold the converted alignments.
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
   synonyms:
   - --input-format
+  description: The input alignment format
   args: !ChoiceFlagArg
     choices: !!set
-      clustal:
+      fasta:
+      emboss:
       stockholm:
+      clustal:
       phylip:
       phylip-relaxed:
-      fasta:
-      phylip-sequential:
-      emboss:
       nexus:
-  optional: true
+      phylip-sequential:
 - !Flag
-  description: The input alignment format
+  optional: true
   synonyms:
   - --output-format
+  description: The input alignment format
   args: !ChoiceFlagArg
     choices: !!set
-      clustal:
+      fasta:
+      emboss:
       stockholm:
+      clustal:
       phylip:
       phylip-relaxed:
-      fasta:
-      phylip-sequential:
-      emboss:
       nexus:
-  optional: true
+      phylip-sequential:
 - !Flag
-  description: The number of compute cores to use
+  optional: true
   synonyms:
   - --cores
+  description: The number of compute cores to use
   args: !SimpleFlagArg
     name: CORES
-  optional: true
 - !Flag
-  description: Convert names to a 6 or 7 character representation
+  optional: true
   synonyms:
   - --shorten-names
+  description: Convert names to a 6 or 7 character representation
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "A config-formatted file containing full-name:shortname\nmappings"
+  optional: true
   synonyms:
   - --name-conf
+  description: "A config-formatted file containing full-name:shortname\nmappings"
   args: !SimpleFlagArg
     name: NAME_CONF
-  optional: true
 - !Flag
-  description: The logging level to use.
+  optional: true
   synonyms:
   - --verbosity
+  description: The logging level to use.
   args: !ChoiceFlagArg
     choices: !!set
+      INFO:
       WARN:
       CRITICAL:
-      INFO:
-  optional: true
 - !Flag
-  description: The path to a directory to hold logs.
+  optional: true
   synonyms:
   - --log-path
+  description: The path to a directory to hold logs.
   args: !SimpleFlagArg
     name: LOG_PATH
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: phyluce_align_convert_one_align_to_another [-h] --alignments ALIGNMENTS\n\
@@ -121,3 +118,4 @@ help_text: "usage: phyluce_align_convert_one_align_to_another [-h] --alignments 
   \ level to use.\n  --log-path LOG_PATH   The path to a directory to hold logs.\n"
 generated_using:
 - --help
+docker_image:

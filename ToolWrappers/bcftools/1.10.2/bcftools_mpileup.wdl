@@ -82,6 +82,9 @@ task BcftoolsMpileup {
       ~{if (per_sample_mf) then "--per-sample-mF" else ""} \
       ~{if defined(platforms) then ("--platforms " +  '"' + platforms + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     illumina_one_dot_three: "+      quality is in the Illumina-1.3+ encoding"
     count_orphans: "do not discard anomalous read pairs"

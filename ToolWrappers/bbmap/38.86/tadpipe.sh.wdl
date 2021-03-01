@@ -8,6 +8,9 @@ task Tadpipesh {
     tadpipe_sh \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
   }

@@ -4,6 +4,9 @@ task Sagapythonversion {
   command <<<
     sagapython_version
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

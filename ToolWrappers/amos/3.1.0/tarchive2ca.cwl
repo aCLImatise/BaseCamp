@@ -3,18 +3,18 @@ id: tarchive2ca.cwl
 inputs:
 - id: in_prefix_output_files
   doc: prefix for the output files
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_file_containing_ranges
   doc: "file containing clear ranges for the reads.  If this file\nis provided, any\
     \ sequence that does not appear in it is excluded\nfrom the output."
-  type: File
+  type: File?
   inputBinding:
     prefix: -c
-- id: in_file_libid_mean
+- id: in_tabdelimited_file_libid
   doc: tab-delimited file of lib_id, mean, stdev
-  type: File
+  type: File?
   inputBinding:
     prefix: -l
 outputs:
@@ -24,9 +24,10 @@ outputs:
 - id: out_file_containing_ranges
   doc: "file containing clear ranges for the reads.  If this file\nis provided, any\
     \ sequence that does not appear in it is excluded\nfrom the output."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_file_containing_ranges)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tarchive2ca

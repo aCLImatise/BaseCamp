@@ -30,6 +30,9 @@ task Rustoverlaps {
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
       ~{if defined(worker_threads) then ("--worker_threads " +  '"' + worker_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     edit_distance: "Uses Levenshtein / edit distance instead of Hamming distance"
     format_line: "The first line of the output file will contain a TSV header line."

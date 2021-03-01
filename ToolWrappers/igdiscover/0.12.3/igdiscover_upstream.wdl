@@ -22,6 +22,9 @@ task IgdiscoverUpstream {
       ~{if (part) then "--part" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_error_percentage: "Allow PERCENT errors in V gene match. Default: 1"
     max_fr_one_errors: "Allow PERCENT errors in FR1 region."

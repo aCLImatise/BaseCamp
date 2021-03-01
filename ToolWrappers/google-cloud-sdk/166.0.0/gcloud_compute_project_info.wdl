@@ -14,6 +14,9 @@ task GcloudComputeProjectinfo {
       ~{remove_metadata} \
       ~{set_usage_bucket}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_metadata: "Add or update project-wide metadata."
     describe: "Describe the Google Compute Engine project resource."

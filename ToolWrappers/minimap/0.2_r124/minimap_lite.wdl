@@ -10,6 +10,9 @@ task Minimaplite {
       ~{target_dot_fa} \
       ~{query_dot_fa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target_dot_fa: ""
     query_dot_fa: ""

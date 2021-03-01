@@ -1,0 +1,71 @@
+!Command
+command:
+- RNA_fragment_size.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Input BAM file
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --refgene
+  description: "Reference gene model in BED format. Must be strandard\n12-column BED\
+    \ file. [required]"
+  args: !SimpleFlagArg
+    name: REFGENE_BED
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --mapq
+  description: "Minimum mapping quality (phred scaled) for an\nalignment to be called\
+    \ \"uniquely mapped\". default=30"
+  args: !SimpleFlagArg
+    name: MAP_QUAL
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --frag-num
+  description: "Minimum number of fragment. default=3\n"
+  args: !SimpleFlagArg
+    name: FRAGMENT_NUM
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: RNA_fragment_size.py [options]\n\ncalculate fragment size for each\
+  \ gene/transcript. For each transcript/gene, it Will report:\n1) # of fragment that\
+  \ was used.\n2) mean of fragment size\n3) median of fragment size\n4) stdev of fragment\
+  \ size\n\n\n\nOptions:\n  --version             show program's version number and\
+  \ exit\n  -h, --help            show this help message and exit\n  -i INPUT_FILE,\
+  \ --input=INPUT_FILE\n                        Input BAM file\n  -r REFGENE_BED,\
+  \ --refgene=REFGENE_BED\n                        Reference gene model in BED format.\
+  \ Must be strandard\n                        12-column BED file. [required]\n  -q\
+  \ MAP_QUAL, --mapq=MAP_QUAL\n                        Minimum mapping quality (phred\
+  \ scaled) for an\n                        alignment to be called \"uniquely mapped\"\
+  . default=30\n  -n FRAGMENT_NUM, --frag-num=FRAGMENT_NUM\n                     \
+  \   Minimum number of fragment. default=3\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rseqc:4.0.0--py38h0213d0e_0

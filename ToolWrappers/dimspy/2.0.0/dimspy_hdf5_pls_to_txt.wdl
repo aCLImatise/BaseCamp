@@ -12,6 +12,9 @@ task DimspyHdf5plstotxt {
       ~{if defined(directory_to_write) then ("--output " +  '"' + directory_to_write + '"') else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hdf_file_contains: "HDF5 file that contains a list of peaklist objects\\nfrom one of the processing steps."
     directory_to_write: "Directory to write to."

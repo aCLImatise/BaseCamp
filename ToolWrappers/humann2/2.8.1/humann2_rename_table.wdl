@@ -16,6 +16,9 @@ task Humann2RenameTable {
       ~{if (simplify) then "--simplify" else ""} \
       ~{if defined(path_modified_output) then ("--output " +  '"' + path_modified_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     original_output_table: "Original output table (tsv or biom format); default=[TSV/STDIN]"
     names: "Table features that can be renamed with included data files"

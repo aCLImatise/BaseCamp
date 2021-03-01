@@ -3,17 +3,17 @@ id: bedtools_split.cwl
 inputs:
 - id: in_input
   doc: (file)       BED input file (req'd).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input
 - id: in_number
   doc: (int)       Number of files to create (req'd).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --number
 - id: in_prefix
   doc: (string)    Output BED file prefix.
-  type: File
+  type: File?
   inputBinding:
     prefix: --prefix
 - id: in_algorithm
@@ -21,7 +21,7 @@ inputs:
     \ algorithm to group the items\nso all files contain the ~ same number of bases\n\
     * simple : route records such that each split file has\napproximately equal records\
     \ (like Unix split)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --algorithm
 outputs:
@@ -30,9 +30,10 @@ outputs:
   type: stdout
 - id: out_prefix
   doc: (string)    Output BED file prefix.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_prefix)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bedtools

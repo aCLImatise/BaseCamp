@@ -3,12 +3,12 @@ id: msstitch_splitperco.cwl
 inputs:
 - id: in_input_file_format
   doc: Input file of {} format
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_directory_to_output
   doc: Directory to output in
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -d
 - id: in_prot_headers
@@ -24,9 +24,10 @@ outputs:
   type: stdout
 - id: out_directory_to_output
   doc: Directory to output in
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_directory_to_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - msstitch

@@ -3,7 +3,7 @@ id: mafFrag.cwl
 inputs:
 - id: in_out_name
   doc: Use XXX instead of database.chrom for the name
-  type: string
+  type: string?
   inputBinding:
     prefix: -outName
 - id: in_database
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mafFrag

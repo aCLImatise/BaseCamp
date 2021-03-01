@@ -3,7 +3,7 @@ version 1.0
 task ScriptTreeTestSortpy {
   input {
     File? file_to_sort
-    Int? threshold_function_isused
+    Int? threshold_sort_function
     Boolean? logoff
     Boolean? loginfo
     Boolean? log_debug
@@ -34,7 +34,7 @@ task ScriptTreeTestSortpy {
   command <<<
     scriptTreeTest_Sort_py \
       ~{if defined(file_to_sort) then ("--fileToSort " +  '"' + file_to_sort + '"') else ""} \
-      ~{if defined(threshold_function_isused) then ("--N " +  '"' + threshold_function_isused + '"') else ""} \
+      ~{if defined(threshold_sort_function) then ("--N " +  '"' + threshold_sort_function + '"') else ""} \
       ~{if (logoff) then "--logOff" else ""} \
       ~{if (loginfo) then "--logInfo" else ""} \
       ~{if (log_debug) then "--logDebug" else ""} \
@@ -62,9 +62,12 @@ task ScriptTreeTestSortpy {
       ~{if defined(max_log_file_size) then ("--maxLogFileSize " +  '"' + max_log_file_size + '"') else ""} \
       ~{if defined(command_run_generate) then ("--command " +  '"' + command_run_generate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_to_sort: "The file you wish to sort"
-    threshold_function_isused: "The threshold below which a serial sort function is\\nused to sort file. All lines must of length less than\\nor equal to N or program will fail"
+    threshold_sort_function: "The threshold below which a serial sort function is\\nused to sort file. All lines must of length less than\\nor equal to N or program will fail"
     logoff: "Turn off logging. (default is CRITICAL)"
     loginfo: "Turn on logging at INFO level. (default is CRITICAL)"
     log_debug: "Turn on logging at DEBUG level. (default is CRITICAL)"

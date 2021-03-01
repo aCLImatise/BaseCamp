@@ -3,52 +3,52 @@ id: getsize.cwl
 inputs:
 - id: in_codons
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -codons
 - id: in_x
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -x
 - id: in_nd
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nd
 - id: in_l
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_ft
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ft
 - id: in_f
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_alph
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -alph
 - id: in_prot
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -prot
 - id: in_var_8
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -rna
 - id: in_var_9
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -dna
 - id: in_measure
@@ -255,6 +255,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - getsize

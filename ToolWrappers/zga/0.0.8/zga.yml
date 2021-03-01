@@ -1,0 +1,551 @@
+!Command
+command:
+- zga
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: flowcell.
+  description: --min-short-read-length MIN_SHORT_READ_LENGTH
+- !Positional
+  optional: false
+  position: 0
+  name: trimming.
+  description: --entropy-cutoff ENTROPY_CUTOFF
+- !Positional
+  optional: false
+  position: 0
+  name: default.
+  description: --spades-k-list SPADES_K_LIST
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --first-step
+  description: 'First step of the pipeline. Default: readqc'
+  args: !ChoiceFlagArg
+    choices: !!set
+      annotation:
+      assembling:
+      processing:
+      polishing:
+      check_genome:
+      readqc:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --last-step
+  description: 'Last step of the pipeline. Default: annotation'
+  args: !ChoiceFlagArg
+    choices: !!set
+      annotation:
+      assembling:
+      processing:
+      polishing:
+      check_genome:
+      readqc:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-dir
+  description: Output directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: Overwrite output directory if exists
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of CPU threads to use (where possible)
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --memory-limit
+  description: Memory limit in GB (default 8)
+  args: !SimpleFlagArg
+    name: MEMORY_LIMIT
+- !Flag
+  optional: true
+  synonyms:
+  - --genus
+  description: Provide genus if known
+  args: !SimpleFlagArg
+    name: GENUS
+- !Flag
+  optional: true
+  synonyms:
+  - --species
+  description: Provide species if known
+  args: !SimpleFlagArg
+    name: SPECIES
+- !Flag
+  optional: true
+  synonyms:
+  - --strain
+  description: Provide strain if known
+  args: !SimpleFlagArg
+    name: STRAIN
+- !Flag
+  optional: true
+  synonyms:
+  - --transparent
+  description: Show output from tools inside the pipeline
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --domain
+  description: 'Provide prokaryotic domain: bacteria or archaea'
+  args: !ChoiceFlagArg
+    choices: !!set
+      bacteria:
+      archaea:
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - --pe-1
+  description: "FASTQ file(s) with first (left) paired-end reads.\nSpace-separated\
+    \ if multiple."
+  args: !RepeatFlagArg
+    name: PE_1
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  - --pe-2
+  description: "FASTQ file(s) with second (right) paired-end reads.\nSpace-separated\
+    \ if multiple."
+  args: !RepeatFlagArg
+    name: PE_2
+- !Flag
+  optional: true
+  synonyms:
+  - --pe-merged
+  description: FASTQ file(s) with merged overlapped paired-end reads
+  args: !RepeatFlagArg
+    name: PE_MERGED
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --single-end
+  description: FASTQ file(s) with unpaired or single-end reads
+  args: !RepeatFlagArg
+    name: SINGLE_END
+- !Flag
+  optional: true
+  synonyms:
+  - --mp-1
+  description: Mate pair forward reads. SPAdes only
+  args: !RepeatFlagArg
+    name: MP_1
+- !Flag
+  optional: true
+  synonyms:
+  - --mp-2
+  description: Mate pair forward reads. SPAdes only
+  args: !RepeatFlagArg
+    name: MP_2
+- !Flag
+  optional: true
+  synonyms:
+  - --pacbio
+  description: PacBio reads. Space-separated if multiple.
+  args: !RepeatFlagArg
+    name: PACBIO
+- !Flag
+  optional: true
+  synonyms:
+  - --nanopore
+  description: Nanopore reads. Space-separated if multiple.
+  args: !RepeatFlagArg
+    name: NANOPORE
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quality-cutoff
+  description: 'Base quality cutoff for short reads, default: 18'
+  args: !SimpleFlagArg
+    name: QUALITY_CUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - --adapters
+  description: "Adapter sequences for short reads trimming (FASTA). By\ndefault Illumina\
+    \ and BGI adapter sequences are used."
+  args: !SimpleFlagArg
+    name: ADAPTERS
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-by-tile
+  description: Filter short reads based on positional quality over a
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tadpole-correct
+  description: "Perform error correction of short reads with\ntadpole.sh from BBtools.SPAdes\
+    \ correction may be\ndisabled with \"--no-spades-correction\"."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bbmerge-extend
+  description: "Perform k-mer read extension by specified length if\ninitial merging\
+    \ wasn't succesfull."
+  args: !SimpleFlagArg
+    name: BBMERGE_EXTEND
+- !Flag
+  optional: true
+  synonyms:
+  - --bbmerge-extend-kmer
+  description: K-mer length for read extension, default 40.
+  args: !SimpleFlagArg
+    name: BBMERGE_EXTEND_KMER
+- !Flag
+  optional: true
+  synonyms:
+  - --bbmerge-trim
+  description: "Before merging trim bases with phred score less than a\nspecified\
+    \ value."
+  args: !SimpleFlagArg
+    name: BBMERGE_TRIM
+- !Flag
+  optional: true
+  synonyms:
+  - --calculate-genome-size
+  description: Estimate genome size with mash.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --genome-size-estimation
+  description: "Genome size in bp (no K/M suffix supported) for Flye\nassembler, if\
+    \ known."
+  args: !SimpleFlagArg
+    name: GENOME_SIZE_ESTIMATION
+- !Flag
+  optional: true
+  synonyms:
+  - --mash-kmer-copies
+  description: "Minimum copies of each k-mer to include in size\nestimation"
+  args: !SimpleFlagArg
+    name: MASH_KMER_COPIES
+- !Flag
+  optional: true
+  synonyms:
+  - --use-unknown-mp
+  description: "NxTrim: Include reads that are probably mate pairs\n(default: only\
+    \ known MP used)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-nxtrim
+  description: "Don't process mate-pair reads with NxTrim. Usefull for\npreprocessed\
+    \ reads"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --assembler
+  description: "Assembler: unicycler (default; better quality), spades\n(faster, may\
+    \ use mate-pair reads) or Flye (long reads\nonly)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      unicycler:
+      flye:
+      spades:
+- !Flag
+  optional: true
+  synonyms:
+  - --no-spades-correction
+  description: "Disable short read correction by SPAdes (works for\nSPAdes and unicycler)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-scaffolds
+  description: 'SPAdes: Use assembled scaffolds. Contigs are used by'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --unicycler-mode
+  description: "Unicycler: assember mode: conservative, normal\n(default) or bold."
+  args: !ChoiceFlagArg
+    choices: !!set
+      conservative:
+      normal:
+      bold:
+- !Flag
+  optional: true
+  synonyms:
+  - --linear-seqs
+  description: Expected number of linear sequences
+  args: !SimpleFlagArg
+    name: LINEAR_SEQS
+- !Flag
+  optional: true
+  synonyms:
+  - --extract-replicons
+  description: "Unicycler: extract complete replicons (e.g. plasmids)\nfrom the short-read\
+    \ based assembly to separate files"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --flye-short-polish
+  description: "Perform polishing of Flye assembly with short reads\nusing racon."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --flye-skip-long-polish
+  description: Skip stage of genome polishing with long reads.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --perform-polishing
+  description: "Perform polishing. Useful only for flye assembly of\nlong reads and\
+    \ short reads available."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --polishing-iterations
+  description: Number of polishing iterations.
+  args: !SimpleFlagArg
+    name: POLISHING_ITERATIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --check-phix
+  description: Check genome for presence of PhiX control sequence.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --checkm-mode
+  description: "Select CheckM working mode. Default is checking for\ndomain-specific\
+    \ marker-set."
+  args: !ChoiceFlagArg
+    choices: !!set
+      lineage_wf:
+      taxonomy_wf:
+- !Flag
+  optional: true
+  synonyms:
+  - --checkm-rank
+  description: "Rank of taxon for CheckM. Run 'checkm taxon_list' for\ndetails."
+  args: !SimpleFlagArg
+    name: CHECKM_RANK
+- !Flag
+  optional: true
+  synonyms:
+  - --checkm-taxon
+  description: Taxon for CheckM. Run 'checkm taxon_list' for details.
+  args: !SimpleFlagArg
+    name: CHECKM_TAXON
+- !Flag
+  optional: true
+  synonyms:
+  - --checkm-full-tree
+  description: "Use full tree for inference of marker set, requires\nLOTS of memory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome
+  description: Genome assembly (when starting from annotation).
+  args: !SimpleFlagArg
+    name: GENOME
+- !Flag
+  optional: true
+  synonyms:
+  - --gcode
+  description: Genetic code.
+  args: !SimpleFlagArg
+    name: GCODE
+- !Flag
+  optional: true
+  synonyms:
+  - --locus-tag
+  description: "Locus tag prefix. If not provided prefix will be\ngenerated from MD5\
+    \ checksum."
+  args: !SimpleFlagArg
+    name: LOCUS_TAG
+- !Flag
+  optional: true
+  synonyms:
+  - --locus-tag-inc
+  description: Locus tag increment, default = 10
+  args: !SimpleFlagArg
+    name: LOCUS_TAG_INC
+- !Flag
+  optional: true
+  synonyms:
+  - --center-name
+  description: Genome center name.
+  args: !SimpleFlagArg
+    name: CENTER_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --minimum-contig-length
+  description: "Minimum sequence length in genome assembly.\n"
+  args: !SimpleFlagArg
+    name: MINIMUM_CONTIG_LENGTH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: zga [-h]\n           [-s {readqc,processing,assembling,polishing,check_genome,annotation}]\n\
+  \           [-l {readqc,processing,assembling,polishing,check_genome,annotation}]\n\
+  \           -o OUTPUT_DIR [--force] [-t THREADS] [-m MEMORY_LIMIT]\n           [--genus\
+  \ GENUS] [--species SPECIES] [--strain STRAIN]\n           [--transparent] [--domain\
+  \ {archaea,bacteria}] [-V]\n           [-1 PE_1 [PE_1 ...]] [-2 PE_2 [PE_2 ...]]\n\
+  \           [--pe-merged PE_MERGED [PE_MERGED ...]]\n           [-S SINGLE_END [SINGLE_END\
+  \ ...]] [--mp-1 MP_1 [MP_1 ...]]\n           [--mp-2 MP_2 [MP_2 ...]] [--pacbio\
+  \ PACBIO [PACBIO ...]]\n           [--nanopore NANOPORE [NANOPORE ...]] [-q QUALITY_CUTOFF]\n\
+  \           [--adapters ADAPTERS] [--filter-by-tile]\n           [--min-short-read-length\
+  \ MIN_SHORT_READ_LENGTH]\n           [--entropy-cutoff ENTROPY_CUTOFF] [--tadpole-correct]\n\
+  \           [--bbmerge-extend BBMERGE_EXTEND]\n           [--bbmerge-extend-kmer\
+  \ BBMERGE_EXTEND_KMER]\n           [--bbmerge-trim BBMERGE_TRIM] [--calculate-genome-size]\n\
+  \           [--genome-size-estimation GENOME_SIZE_ESTIMATION]\n           [--mash-kmer-copies\
+  \ MASH_KMER_COPIES] [--use-unknown-mp]\n           [--no-nxtrim] [-a {spades,unicycler,flye}]\
+  \ [--no-spades-correction]\n           [--use-scaffolds] [--spades-k-list SPADES_K_LIST]\n\
+  \           [--unicycler-mode {conservative,normal,bold}]\n           [--linear-seqs\
+  \ LINEAR_SEQS] [--extract-replicons]\n           [--flye-short-polish] [--flye-skip-long-polish]\n\
+  \           [--perform-polishing] [--polishing-iterations POLISHING_ITERATIONS]\n\
+  \           [--check-phix] [--checkm-mode {taxonomy_wf,lineage_wf}]\n          \
+  \ [--checkm-rank CHECKM_RANK] [--checkm-taxon CHECKM_TAXON]\n           [--checkm-full-tree]\
+  \ [-g GENOME] [--gcode GCODE]\n           [--locus-tag LOCUS_TAG] [--locus-tag-inc\
+  \ LOCUS_TAG_INC]\n           [--center-name CENTER_NAME]\n           [--minimum-contig-length\
+  \ MINIMUM_CONTIG_LENGTH]\n\nZGA genome assembly and annotation pipeline ver. 0.0.8\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -V, --version         show program's version number and exit\n\nGeneral options:\n\
+  \n  -s {readqc,processing,assembling,polishing,check_genome,annotation}, --first-step\
+  \ {readqc,processing,assembling,polishing,check_genome,annotation}\n           \
+  \             First step of the pipeline. Default: readqc\n  -l {readqc,processing,assembling,polishing,check_genome,annotation},\
+  \ --last-step {readqc,processing,assembling,polishing,check_genome,annotation}\n\
+  \                        Last step of the pipeline. Default: annotation\n  -o OUTPUT_DIR,\
+  \ --output-dir OUTPUT_DIR\n                        Output directory\n  --force \
+  \              Overwrite output directory if exists\n  -t THREADS, --threads THREADS\n\
+  \                        Number of CPU threads to use (where possible)\n  -m MEMORY_LIMIT,\
+  \ --memory-limit MEMORY_LIMIT\n                        Memory limit in GB (default\
+  \ 8)\n  --genus GENUS         Provide genus if known\n  --species SPECIES     Provide\
+  \ species if known\n  --strain STRAIN       Provide strain if known\n  --transparent\
+  \         Show output from tools inside the pipeline\n  --domain {archaea,bacteria}\n\
+  \                        Provide prokaryotic domain: bacteria or archaea\n\nInput\
+  \ files and options:\n  Sequencing reads should be in FASTQ format and may be GZipped.\
+  \ Multiple\n  libraries should be provided as space-separated list. If some type\
+  \ of\n  short reads are partialyy available use n/a. e.g. -1 Monday.R1.fq\n  Friday.R1.fq\
+  \ -2 Monday.R2.fq Friday.R2.fq --pe-merged n/a Friday.merged.fq\n\n  -1 PE_1 [PE_1\
+  \ ...], --pe-1 PE_1 [PE_1 ...]\n                        FASTQ file(s) with first\
+  \ (left) paired-end reads.\n                        Space-separated if multiple.\n\
+  \  -2 PE_2 [PE_2 ...], --pe-2 PE_2 [PE_2 ...]\n                        FASTQ file(s)\
+  \ with second (right) paired-end reads.\n                        Space-separated\
+  \ if multiple.\n  --pe-merged PE_MERGED [PE_MERGED ...]\n                      \
+  \  FASTQ file(s) with merged overlapped paired-end reads\n  -S SINGLE_END [SINGLE_END\
+  \ ...], --single-end SINGLE_END [SINGLE_END ...]\n                        FASTQ\
+  \ file(s) with unpaired or single-end reads\n  --mp-1 MP_1 [MP_1 ...]\n        \
+  \                Mate pair forward reads. SPAdes only\n  --mp-2 MP_2 [MP_2 ...]\n\
+  \                        Mate pair forward reads. SPAdes only\n  --pacbio PACBIO\
+  \ [PACBIO ...]\n                        PacBio reads. Space-separated if multiple.\n\
+  \  --nanopore NANOPORE [NANOPORE ...]\n                        Nanopore reads. Space-separated\
+  \ if multiple.\n\nRead processing settings:\n  -q QUALITY_CUTOFF, --quality-cutoff\
+  \ QUALITY_CUTOFF\n                        Base quality cutoff for short reads, default:\
+  \ 18\n  --adapters ADAPTERS   Adapter sequences for short reads trimming (FASTA).\
+  \ By\n                        default Illumina and BGI adapter sequences are used.\n\
+  \  --filter-by-tile      Filter short reads based on positional quality over a\n\
+  \                        flowcell.\n  --min-short-read-length MIN_SHORT_READ_LENGTH\n\
+  \                        Minimum short read length to keep after quality\n     \
+  \                   trimming.\n  --entropy-cutoff ENTROPY_CUTOFF\n             \
+  \           Set between 0 and 1 to filter reads with entropy below\n           \
+  \             that value. Higher is more stringent. Default = -1,\n            \
+  \            filtering disabled.\n  --tadpole-correct     Perform error correction\
+  \ of short reads with\n                        tadpole.sh from BBtools.SPAdes correction\
+  \ may be\n                        disabled with \"--no-spades-correction\".\n  --bbmerge-extend\
+  \ BBMERGE_EXTEND\n                        Perform k-mer read extension by specified\
+  \ length if\n                        initial merging wasn't succesfull.\n  --bbmerge-extend-kmer\
+  \ BBMERGE_EXTEND_KMER\n                        K-mer length for read extension,\
+  \ default 40.\n  --bbmerge-trim BBMERGE_TRIM\n                        Before merging\
+  \ trim bases with phred score less than a\n                        specified value.\n\
+  \  --calculate-genome-size\n                        Estimate genome size with mash.\n\
+  \  --genome-size-estimation GENOME_SIZE_ESTIMATION\n                        Genome\
+  \ size in bp (no K/M suffix supported) for Flye\n                        assembler,\
+  \ if known.\n  --mash-kmer-copies MASH_KMER_COPIES\n                        Minimum\
+  \ copies of each k-mer to include in size\n                        estimation\n\
+  \  --use-unknown-mp      NxTrim: Include reads that are probably mate pairs\n  \
+  \                      (default: only known MP used)\n  --no-nxtrim           Don't\
+  \ process mate-pair reads with NxTrim. Usefull for\n                        preprocessed\
+  \ reads\n\nAssembly settings:\n  -a {spades,unicycler,flye}, --assembler {spades,unicycler,flye}\n\
+  \                        Assembler: unicycler (default; better quality), spades\n\
+  \                        (faster, may use mate-pair reads) or Flye (long reads\n\
+  \                        only).\n  --no-spades-correction\n                    \
+  \    Disable short read correction by SPAdes (works for\n                      \
+  \  SPAdes and unicycler).\n  --use-scaffolds       SPAdes: Use assembled scaffolds.\
+  \ Contigs are used by\n                        default.\n  --spades-k-list SPADES_K_LIST\n\
+  \                        SPAdes: List of kmers, comma-separated even numbers\n \
+  \                       e.g. '21,33,55,77'\n  --unicycler-mode {conservative,normal,bold}\n\
+  \                        Unicycler: assember mode: conservative, normal\n      \
+  \                  (default) or bold.\n  --linear-seqs LINEAR_SEQS\n           \
+  \             Expected number of linear sequences\n  --extract-replicons   Unicycler:\
+  \ extract complete replicons (e.g. plasmids)\n                        from the short-read\
+  \ based assembly to separate files\n  --flye-short-polish   Perform polishing of\
+  \ Flye assembly with short reads\n                        using racon.\n  --flye-skip-long-polish\n\
+  \                        Skip stage of genome polishing with long reads.\n  --perform-polishing\
+  \   Perform polishing. Useful only for flye assembly of\n                      \
+  \  long reads and short reads available.\n  --polishing-iterations POLISHING_ITERATIONS\n\
+  \                        Number of polishing iterations.\n\nGenome check settings:\n\
+  \  --check-phix          Check genome for presence of PhiX control sequence.\n \
+  \ --checkm-mode {taxonomy_wf,lineage_wf}\n                        Select CheckM\
+  \ working mode. Default is checking for\n                        domain-specific\
+  \ marker-set.\n  --checkm-rank CHECKM_RANK\n                        Rank of taxon\
+  \ for CheckM. Run 'checkm taxon_list' for\n                        details.\n  --checkm-taxon\
+  \ CHECKM_TAXON\n                        Taxon for CheckM. Run 'checkm taxon_list'\
+  \ for details.\n  --checkm-full-tree    Use full tree for inference of marker set,\
+  \ requires\n                        LOTS of memory.\n\nAnnotation settings:\n  -g\
+  \ GENOME, --genome GENOME\n                        Genome assembly (when starting\
+  \ from annotation).\n  --gcode GCODE         Genetic code.\n  --locus-tag LOCUS_TAG\n\
+  \                        Locus tag prefix. If not provided prefix will be\n    \
+  \                    generated from MD5 checksum.\n  --locus-tag-inc LOCUS_TAG_INC\n\
+  \                        Locus tag increment, default = 10\n  --center-name CENTER_NAME\n\
+  \                        Genome center name.\n  --minimum-contig-length MINIMUM_CONTIG_LENGTH\n\
+  \                        Minimum sequence length in genome assembly.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/zga:0.0.8--py_0

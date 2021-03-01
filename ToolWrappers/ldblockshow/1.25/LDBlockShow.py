@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, Int, String
+
+Ldblockshow_V0_1_0 = CommandToolBuilder(tool="LDBlockShow", base_command=["LDBlockShow"], inputs=[ToolInput(tag="in_in_vcf", input_type=Boolean(optional=True), prefix="-InVCF", doc=InputDocumentation(doc="<str>      Input SNP VCF Format")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="-OutPut", doc=InputDocumentation(doc="<str>      OutPut File of LD Blocks")), ToolInput(tag="in_region", input_type=Boolean(optional=True), prefix="-Region", doc=InputDocumentation(doc="<str>      In One Region to show LD info svg Figure")), ToolInput(tag="in_sele_var", input_type=Boolean(optional=True), prefix="-SeleVar", doc=InputDocumentation(doc="<int>      Select statistic for deal. 1: D' 2: R^2[1]")), ToolInput(tag="in_sub_pop", input_type=Boolean(optional=True), prefix="-SubPop", doc=InputDocumentation(doc="<str>      SubGroup Sample File List[ALLsample]")), ToolInput(tag="in_blocktype", input_type=Boolean(optional=True), prefix="-BlockType", doc=InputDocumentation(doc="<int>      method to detect Block [beta] [1]\n1. Block by PLINK (Gabriel method)\n2. Solid Spine of LD RR/D' 3. Blockcut with self-defined RR or D'\n4. FixBlock by input blocks files")), ToolInput(tag="in_ing_was", input_type=Boolean(optional=True), prefix="-InGWAS", doc=InputDocumentation(doc="<str>      InPut GWAS Pvalue File(chr site Pvalue)")), ToolInput(tag="in_in_gff", input_type=Boolean(optional=True), prefix="-InGFF", doc=InputDocumentation(doc="<str>      InPut GFF3 file to show Gene CDS and name")), ToolInput(tag="in_block_cut", input_type=Boolean(optional=True), prefix="-BlockCut", doc=InputDocumentation(doc="<float>    'Strong LD' cutoff and ratio for BlockType3[0.85:0.90]")), ToolInput(tag="in_fix_block", input_type=Boolean(optional=True), prefix="-FixBlock", doc=InputDocumentation(doc="<str>      Input fixed block region")), ToolInput(tag="in_mermin_snp_num", input_type=Int(optional=True), prefix="-MerMinSNPNum", doc=InputDocumentation(doc="merger color grids when SNPnumber over N[50]")), ToolInput(tag="in_ld_block_show", input_type=String(), position=0, doc=InputDocumentation(doc="-InVCF  <in.vcf.gz>  -OutPut <outPrefix>  -Region  chr1:10000-20000"))], outputs=[ToolOutput(tag="out_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="<str>      OutPut File of LD Blocks"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Ldblockshow_V0_1_0().translate("wdl", allow_empty_container=True)
+

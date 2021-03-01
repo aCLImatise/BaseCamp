@@ -10,6 +10,9 @@ task LoadFeatures {
       ~{if defined(are_ungapped) then ("-u " +  '"' + are_ungapped + '"') else ""} \
       ~{if defined(is_the_iid) then ("-i " +  '"' + is_the_iid + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     are_ungapped: "are ungapped"
     is_the_iid: "is the IID"

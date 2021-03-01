@@ -4,77 +4,77 @@ command:
 positional: []
 named:
 - !Flag
-  description: "BED file which stores a list of regions to\nkeep/remove."
-  synonyms:
-  - --regions
-  - -r
-  args: !SimpleFlagArg
-    name: REGIONS
   optional: true
-- !Flag
-  description: List of chromosomes to keep/remove.
   synonyms:
   - --chromosomes
   - -c
+  description: List of chromosomes to keep/remove.
   args: !RepeatFlagArg
     name: CHROMOSOMES
-  optional: true
 - !Flag
-  description: Bad regions are identified and masked.
+  optional: true
+  synonyms:
+  - --regions
+  - -r
+  description: "BED file which stores a list of regions to\nkeep/remove."
+  args: !SimpleFlagArg
+    name: REGIONS
+- !Flag
+  optional: true
   synonyms:
   - --maskBadRegions
   - -mbr
+  description: Bad regions are identified and masked.
   args: !SimpleFlagArg
     name: MASKBADREGIONS
-  optional: true
 - !Flag
-  description: "The Hi-C matrix to adjust. HiCExplorer supports the\nfollowing file\
-    \ formats: h5 (native HiCExplorer format)\nand cool."
+  optional: true
   synonyms:
   - --matrix
   - -m
+  description: "The Hi-C matrix to adjust. HiCExplorer supports the\nfollowing file\
+    \ formats: h5 (native HiCExplorer format)\nand cool."
   args: !SimpleFlagArg
     name: MATRIX
-  optional: true
 - !Flag
-  description: File name to save the adjusted matrix.
+  optional: true
   synonyms:
   - --outFileName
   - -o
+  description: File name to save the adjusted matrix.
   args: !SimpleFlagArg
     name: OUTFILENAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --action
+  - -a
   description: "Keep, remove or mask the list of specified\nchromosomes/regions. keep/remove:\
     \ These options\nkeep/remove bins of matrix by deleting them. This may\ncause\
     \ issue plotting the matrix if several parts of a\nsingle chromosome are going\
     \ to be deleted. In that\ncase, one may consider using the mask option."
-  synonyms:
-  - --action
-  - -a
   args: !ChoiceFlagArg
     choices: !!set
       remove:
-      keep:
       mask:
-  optional: true
+      keep:
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: hicAdjustMatrix --matrix MATRIX --outFileName OUTFILENAME\n   \
   \                    [--chromosomes CHROMOSOMES [CHROMOSOMES ...] |\n          \
   \             --regions REGIONS | --maskBadRegions MASKBADREGIONS]\n           \
@@ -101,3 +101,4 @@ help_text: "usage: hicAdjustMatrix --matrix MATRIX --outFileName OUTFILENAME\n  
   \ and exit\n"
 generated_using:
 - --help
+docker_image:

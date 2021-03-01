@@ -10,6 +10,9 @@ task Dirname {
       ~{name_dot_dot_dot} \
       ~{if (end_output_line) then "--zero" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     end_output_line: "end each output line with NUL, not newline"
     name_dot_dot_dot: ""

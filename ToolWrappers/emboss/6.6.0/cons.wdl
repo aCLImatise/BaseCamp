@@ -16,6 +16,9 @@ task Cons {
       ~{if (set_case) then "-setcase" else ""} \
       ~{if (name) then "-name" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_file: "matrix     [EBLOSUM62 for protein, EDNAFULL for DNA]\\nThis is the scoring matrix file used when\\ncomparing sequences. By default it is the\\nfile 'EBLOSUM62' (for proteins) or the file\\n'EDNAFULL' (for nucleic sequences). These\\nfiles are found in the 'data' directory of\\nthe EMBOSS installation."
     plurality: "float      [Half the total sequence weighting] Set a\\ncut-off for the number of positive matches\\nbelow which there is no consensus. The\\ndefault plurality is taken as half the total\\nweight of all the sequences in the\\nalignment. (Any numeric value)"

@@ -11,17 +11,17 @@ subcommands:
   - gff
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: gffToBed
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - --emit-tool-contract
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -32,17 +32,17 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: gffToBed
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --emit-tool-contract
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -53,17 +53,17 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: gffToBed
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --emit-tool-contract
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -74,132 +74,227 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: gffToBed
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --emit-tool-contract
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: 'Emit Tool Contract to stdout (default: False)'
-                  synonyms:
-                  - --emit-tool-contract
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Run Tool directly from a PacBio Resolved tool contract\n\
-                    (default: None)"
-                  synonyms:
-                  - --resolved-tool-contract
-                  args: !SimpleFlagArg
-                    name: RESOLVED_TOOL_CONTRACT
-                  optional: true
-                - !Flag
-                  description: "Write the log to file. Default(None) will write to\n\
-                    stdout. (default: None)"
-                  synonyms:
-                  - --log-file
-                  args: !SimpleFlagArg
-                    name: LOG_FILE
-                  optional: true
-                - !Flag
-                  description: 'Set log level (default: INFO)'
-                  synonyms:
-                  - --log-level
-                  args: !ChoiceFlagArg
-                    choices: !!set
-                      ? ERROR
-                      ? INFO
-                      ? DEBUG
-                      ? WARNING
-                      ? CRITICAL
-                  optional: true
-                - !Flag
-                  description: 'Alias for setting log level to DEBUG (default: False)'
-                  synonyms:
-                  - --debug
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Alias for setting log level to CRITICAL to suppress\n\
-                    output. (default: False)"
-                  synonyms:
-                  - --quiet
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: 'Set the verbosity level. (default: None)'
-                  synonyms:
-                  - -v
-                  - --verbose
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: 'track name to display in header (default: variants)'
-                  synonyms:
-                  - --name
-                  args: !SimpleFlagArg
-                    name: NAME
-                  optional: true
-                - !Flag
-                  description: "track description to display in header (default:\n\
-                    PacBio: snps, insertions, and deletions derived from\nconsensus\
-                    \ calls against reference)"
-                  synonyms:
-                  - --description
-                  args: !SimpleFlagArg
-                    name: DESCRIPTION
-                  optional: true
-                - !Flag
-                  description: "whether or not to use score for feature display\n\
-                    (default: 0)\n"
-                  synonyms:
-                  - --useScore
-                  args: !SimpleFlagArg
-                    name: USESCORE
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: gffToBed
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --emit-tool-contract
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --emit-tool-contract
+                      description: 'Emit Tool Contract to stdout (default: False)'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --resolved-tool-contract
+                      description: "Run Tool directly from a PacBio Resolved tool\
+                        \ contract\n(default: None)"
+                      args: !SimpleFlagArg
+                        name: RESOLVED_TOOL_CONTRACT
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --log-file
+                      description: "Write the log to file. Default(None) will write\
+                        \ to\nstdout. (default: None)"
+                      args: !SimpleFlagArg
+                        name: LOG_FILE
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --log-level
+                      description: 'Set log level (default: INFO)'
+                      args: !ChoiceFlagArg
+                        choices: !!set
+                          ? ERROR
+                          ? INFO
+                          ? DEBUG
+                          ? WARNING
+                          ? CRITICAL
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --debug
+                      description: 'Alias for setting log level to DEBUG (default:
+                        False)'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --quiet
+                      description: "Alias for setting log level to CRITICAL to suppress\n\
+                        output. (default: False)"
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -v
+                      - --verbose
+                      description: 'Set the verbosity level. (default: None)'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --name
+                      description: 'track name to display in header (default: variants)'
+                      args: !SimpleFlagArg
+                        name: NAME
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --description
+                      description: "track description to display in header (default:\n\
+                        PacBio: snps, insertions, and deletions derived from\nconsensus\
+                        \ calls against reference)"
+                      args: !SimpleFlagArg
+                        name: DESCRIPTION
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --useScore
+                      description: "whether or not to use score for feature display\n\
+                        (default: 0)\n"
+                      args: !SimpleFlagArg
+                        name: USESCORE
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: gffToBed
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --emit-tool-contract
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --version
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      help_text: "usage: gffToBed [-h] [--version] [--emit-tool-contract]\n\
+                        \                [--resolved-tool-contract RESOLVED_TOOL_CONTRACT]\n\
+                        \                [--log-file LOG_FILE]\n                [--log-level\
+                        \ {DEBUG,INFO,WARNING,ERROR,CRITICAL} | --debug | --quiet\
+                        \ | -v]\n                [--name NAME] [--description DESCRIPTION]\n\
+                        \                [--useScore USESCORE]\n                {variants,coverage}\
+                        \ gff\ngffToBed: error: argument purpose: invalid choice:\
+                        \ 'gff' (choose from 'variants', 'coverage')\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --version
+                      description: show program's version number and exit
+                      args: !EmptyFlagArg {}
+                    help_text: "usage: gffToBed [-h] [--version] [--emit-tool-contract]\n\
+                      \                [--resolved-tool-contract RESOLVED_TOOL_CONTRACT]\n\
+                      \                [--log-file LOG_FILE]\n                [--log-level\
+                      \ {DEBUG,INFO,WARNING,ERROR,CRITICAL} | --debug | --quiet |\
+                      \ -v]\n                [--name NAME] [--description DESCRIPTION]\n\
+                      \                [--useScore USESCORE]\n                {variants,coverage}\
+                      \ gff\n\nConvert .gff to .bed format.\n\npositional arguments:\n\
+                      \  {variants,coverage}   Run purpose\n  gff                \
+                      \   GFF file\n\noptional arguments:\n  -h, --help          \
+                      \  show this help message and exit\n  --version            \
+                      \ show program's version number and exit\n  --emit-tool-contract\
+                      \  Emit Tool Contract to stdout (default: False)\n  --resolved-tool-contract\
+                      \ RESOLVED_TOOL_CONTRACT\n                        Run Tool directly\
+                      \ from a PacBio Resolved tool contract\n                   \
+                      \     (default: None)\n  --log-file LOG_FILE   Write the log\
+                      \ to file. Default(None) will write to\n                   \
+                      \     stdout. (default: None)\n  --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\n\
+                      \                        Set log level (default: INFO)\n  --debug\
+                      \               Alias for setting log level to DEBUG (default:\
+                      \ False)\n  --quiet               Alias for setting log level\
+                      \ to CRITICAL to suppress\n                        output. (default:\
+                      \ False)\n  -v, --verbose         Set the verbosity level. (default:\
+                      \ None)\n  --name NAME           track name to display in header\
+                      \ (default: variants)\n  --description DESCRIPTION\n       \
+                      \                 track description to display in header (default:\n\
+                      \                        PacBio: snps, insertions, and deletions\
+                      \ derived from\n                        consensus calls against\
+                      \ reference)\n  --useScore USESCORE   whether or not to use\
+                      \ score for feature display\n                        (default:\
+                      \ 0)\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --version
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   help_text: "usage: gffToBed [-h] [--version] [--emit-tool-contract]\n\
                     \                [--resolved-tool-contract RESOLVED_TOOL_CONTRACT]\n\
                     \                [--log-file LOG_FILE]\n                [--log-level\
@@ -208,23 +303,12 @@ subcommands:
                     \               [--useScore USESCORE]\n                {variants,coverage}\
                     \ gff\ngffToBed: error: argument purpose: invalid choice: 'gff'\
                     \ (choose from 'variants', 'coverage')\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: show program's version number and exit
-                  synonyms:
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "usage: gffToBed [-h] [--version] [--emit-tool-contract]\n\
                   \                [--resolved-tool-contract RESOLVED_TOOL_CONTRACT]\n\
                   \                [--log-file LOG_FILE]\n                [--log-level\
@@ -255,21 +339,22 @@ subcommands:
                   \ to use score for feature display\n                        (default:\
                   \ 0)\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --version
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               help_text: "usage: gffToBed [-h] [--version] [--emit-tool-contract]\n\
                 \                [--resolved-tool-contract RESOLVED_TOOL_CONTRACT]\n\
                 \                [--log-file LOG_FILE]\n                [--log-level\
@@ -279,6 +364,7 @@ subcommands:
                 \ gff\ngffToBed: error: argument purpose: invalid choice: 'gff' (choose\
                 \ from 'variants', 'coverage')\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -311,21 +397,22 @@ subcommands:
               \ against reference)\n  --useScore USESCORE   whether or not to use\
               \ score for feature display\n                        (default: 0)\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - --version
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           help_text: "usage: gffToBed [-h] [--version] [--emit-tool-contract]\n  \
             \              [--resolved-tool-contract RESOLVED_TOOL_CONTRACT]\n   \
             \             [--log-file LOG_FILE]\n                [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\
@@ -334,6 +421,7 @@ subcommands:
             \  {variants,coverage} gff\ngffToBed: error: argument purpose: invalid\
             \ choice: 'gff' (choose from 'variants', 'coverage')\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -364,21 +452,22 @@ subcommands:
           \ USESCORE   whether or not to use score for feature display\n         \
           \               (default: 0)\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - --version
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       help_text: "usage: gffToBed [-h] [--version] [--emit-tool-contract]\n      \
         \          [--resolved-tool-contract RESOLVED_TOOL_CONTRACT]\n           \
         \     [--log-file LOG_FILE]\n                [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\
@@ -387,6 +476,7 @@ subcommands:
         \ gff\ngffToBed: error: argument purpose: invalid choice: 'gff' (choose from\
         \ 'variants', 'coverage')\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -416,21 +506,22 @@ subcommands:
       \  --useScore USESCORE   whether or not to use score for feature display\n \
       \                       (default: 0)\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - --version
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   help_text: "usage: gffToBed [-h] [--version] [--emit-tool-contract]\n          \
     \      [--resolved-tool-contract RESOLVED_TOOL_CONTRACT]\n                [--log-file\
     \ LOG_FILE]\n                [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\
@@ -439,6 +530,7 @@ subcommands:
     gffToBed: error: argument purpose: invalid choice: 'gff' (choose from 'variants',\
     \ 'coverage')\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -468,3 +560,4 @@ help_text: "usage: gffToBed [-h] [--version] [--emit-tool-contract]\n           
   \  whether or not to use score for feature display\n                        (default:\
   \ 0)\n"
 generated_using: *id004
+docker_image:

@@ -4,53 +4,176 @@ command:
 - hydra
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: FORWARD
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: REVERSE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "[required]\n-m, --mutation_db FILE\n-rt, --reporting_threshold INTEGER\
-    \ RANGE\nMinimum mutation frequency percent to\nreport.\n-gc, --generate_consensus\
-    \       Generate a mixed base consensus sequence.\n-cp, --consensus_pct INTEGER\
-    \ RANGE\nMinimum percentage a base needs to be\nincorporated into the consensus\
-    \ sequence.\n-q, --quiet                     Suppress all normal output.\n-tr,\
-    \ --trim_reads               Iteratively trim reads based on filter\nvalues if\
-    \ enabled. Remove reads which do not\nmeet filter values if disabled.\n-mr, --mask_reads\
-    \               Mask low coverage regions in reads if below\nminimum read quality.\
-    \ This option and --ns\ncannot be both enabled simultaneously.\n-rq, --min_read_qual\
-    \ INTEGER    Minimum quality for a position in a read to\nbe masked.\n-lc, --length_cutoff\
-    \ INTEGER    Reads which fall short of the specified\nlength will be filtered\
-    \ out.\n-sc, --score_cutoff INTEGER     Reads that have a median or mean quality\n\
-    score (depending on the score type\nspecified) less than the score cutoff value\n\
-    will be filtered out.\n-me, --median / -mn, --mean     Use either median score\
-    \ (default) or mean\nscore for the score cutoff value.\n-n, --ns             \
-    \           Flag to enable the filtering of n's.  This\noption and --mask_reads\
-    \ cannot be both\nenabled simultaneously.\n-e, --error_rate FLOAT          Error\
-    \ rate for the sequencing platform.\n-vq, --min_variant_qual INTEGER\nMinimum\
-    \ quality for variant to be considered\nlater on in the pipeline.\n-md, --min_dp\
-    \ INTEGER           Minimum required read depth for variant to\nbe considered\
-    \ later on in the pipeline.\n-ma, --min_ac INTEGER           The minimum required\
-    \ allele count for\nvariant to be considered later on in the\npipeline.\n-mf,\
-    \ --min_freq FLOAT           The minimum required frequency for mutation\nto be\
-    \ considered in drug resistance report.\n-i, --id TEXT                   Specify\
-    \ FASTA sequence identifier to be used\nin the consensus report.\n--help     \
-    \                     Show this message and exit.\n"
+  optional: true
   synonyms:
   - -o
   - --output_dir
+  description: '[required]'
   args: !SimpleFlagArg
     name: DIRECTORY
+- !Flag
   optional: true
+  synonyms:
+  - -m
+  - --mutation_db
+  - -rt
+  - --reporting_threshold
+  description: "RANGE\nMinimum mutation frequency percent to\nreport."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -gc
+  - --generate_consensus
+  description: Generate a mixed base consensus sequence.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cp
+  - --consensus_pct
+  description: "RANGE\nMinimum percentage a base needs to be\nincorporated into the\
+    \ consensus sequence."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: Suppress all normal output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tr
+  - --trim_reads
+  description: "Iteratively trim reads based on filter\nvalues if enabled. Remove\
+    \ reads which do not\nmeet filter values if disabled."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mr
+  - --mask_reads
+  description: "Mask low coverage regions in reads if below\nminimum read quality.\
+    \ This option and --ns\ncannot be both enabled simultaneously."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rq
+  - --min_read_qual
+  description: "Minimum quality for a position in a read to\nbe masked."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -lc
+  - --length_cutoff
+  description: "Reads which fall short of the specified\nlength will be filtered out."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -sc
+  - --score_cutoff
+  description: "Reads that have a median or mean quality\nscore (depending on the\
+    \ score type\nspecified) less than the score cutoff value\nwill be filtered out."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -me
+  - --median
+  - -mn
+  - --mean
+  description: "Use either median score (default) or mean\nscore for the score cutoff\
+    \ value."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --ns
+  description: "Flag to enable the filtering of n's.  This\noption and --mask_reads\
+    \ cannot be both\nenabled simultaneously."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --error_rate
+  description: Error rate for the sequencing platform.
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -vq
+  - --min_variant_qual
+  description: "Minimum quality for variant to be considered\nlater on in the pipeline."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -md
+  - --min_dp
+  description: "Minimum required read depth for variant to\nbe considered later on\
+    \ in the pipeline."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -ma
+  - --min_ac
+  description: "The minimum required allele count for\nvariant to be considered later\
+    \ on in the\npipeline."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -mf
+  - --min_freq
+  description: "The minimum required frequency for mutation\nto be considered in drug\
+    \ resistance report."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --id
+  description: "Specify FASTA sequence identifier to be used\nin the consensus report."
+  args: !SimpleFlagArg
+    name: TEXT
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: quasitools hydra [OPTIONS] FORWARD [REVERSE]\n\nOptions:\n  -o,\
@@ -92,3 +215,4 @@ help_text: "Usage: quasitools hydra [OPTIONS] FORWARD [REVERSE]\n\nOptions:\n  -
   \                          Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

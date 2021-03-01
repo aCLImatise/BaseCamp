@@ -1,0 +1,103 @@
+!Command
+command:
+- eval_dualdecomp.pl
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --f
+  description: intput AUGUSTUS file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --d
+  description: directory of input AUGUSTUS files (recognized by .out file extension)
+  args: !SimpleFlagArg
+    name: dir
+- !Flag
+  optional: true
+  synonyms:
+  - --hist_iterations
+  description: output histogram of iterations to out.pdf
+  args: !SimpleFlagArg
+    name: out.pdf
+- !Flag
+  optional: true
+  synonyms:
+  - --hist_errors
+  description: "output histogram of error estimates to out.pdf for all cases, where\n\
+    no convergence is achieved."
+  args: !SimpleFlagArg
+    name: out.pdf
+- !Flag
+  optional: true
+  synonyms:
+  - --err_per_iter
+  description: "plots the average percentage of initial error against the iterations\
+    \ to out.pdf.\nIf after a certain number of iterations the error no further drops,\n\
+    early stopping is recommended, i.e. in the next run, the number of\nDD iterations\
+    \ can be restricted to this number of iterations."
+  args: !SimpleFlagArg
+    name: out.pdf
+- !Flag
+  optional: true
+  synonyms:
+  - --t
+  description: "threshold for percentage of initial error. For all cases with an estimated\n\
+    error higher than this threshold, the evolution of primal an dual values\nare\
+    \ plotted against the iterations. This helps debugging cases with a\nhigh error\
+    \ estimate. The threshold is between [0-100] (default: 5)"
+  args: !SimpleFlagArg
+    name: foat
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: put all plots in this output directory
+  args: !SimpleFlagArg
+    name: dir
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: output this help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "perl module Statistics::R not installed.\nPlease install, e.g. via CPAN.\
+  \ On command line, type:\n\nperl -MCPAN -e 'install Statistics::R'\neither an input\
+  \ directory (option --d) or input file (option --f) is required.\neval_dualdecomp.pl\
+  \    evaluate the effectivness of dual decomposition either on a single\n      \
+  \                AUGUSTUS output file or a directory of AUGUSTUS output files.\n\
+  SYNOPSIS\n\neval_dualdecomp.pl [ --f=input_file | --d=input_directory ]\n\n    --f=<file>\
+  \                          intput AUGUSTUS file \n    --d=<dir>                \
+  \           directory of input AUGUSTUS files (recognized by .out file extension)\n\
+  \nOPTIONS\n\n    --help                              output this help message\n\
+  \    --hist_iterations=<out.pdf>         output histogram of iterations to out.pdf\n\
+  \    --hist_errors=<out.pdf>             output histogram of error estimates to\
+  \ out.pdf for all cases, where\n                                        no convergence\
+  \ is achieved.\n    --err_per_iter=<out.pdf>            plots the average percentage\
+  \ of initial error against the iterations to out.pdf.\n                        \
+  \                If after a certain number of iterations the error no further drops,\
+  \ \n                                        early stopping is recommended, i.e.\
+  \ in the next run, the number of \n                                        DD iterations\
+  \ can be restricted to this number of iterations.\n    --t=<foat>              \
+  \            threshold for percentage of initial error. For all cases with an estimated\n\
+  \                                        error higher than this threshold, the evolution\
+  \ of primal an dual values\n                                        are plotted\
+  \ against the iterations. This helps debugging cases with a\n                  \
+  \                      high error estimate. The threshold is between [0-100] (default:\
+  \ 5)\n    --outdir=<dir>                      put all plots in this output directory\n\
+  \n\nDESCRIPTION\n      \n  Example:\n\n    eval_dualdecomp.pl --d=augouts --hist_iterations=iterations.pdf\
+  \ --hist_errors=errors.pdf\n    eval_dualdecomp.pl --d=augouts --hist_iterations=iterations.pdf\
+  \ --hist_errors=errors.pdf --err_per_iter=error_per_iter.pdf --outdir=out\n    eval_dualdecomp.pl\
+  \ --f=aug.out --t=0\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/augustus:3.4.0--pl526h0faeac2_0

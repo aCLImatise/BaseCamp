@@ -8,6 +8,9 @@ task Gmtime {
     gmtime \
       ~{time_stamp}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     time_stamp: ""
   }

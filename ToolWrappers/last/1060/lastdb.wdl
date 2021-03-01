@@ -18,7 +18,7 @@ task Lastdb {
     Boolean? _bucket_depth
     Boolean? child_table_type
     Boolean? just_count_sequences
-    Boolean? verbose_write_messages
+    Boolean? be_verbose_write
     String output_name
     File fast_a_sequence_file
   }
@@ -42,8 +42,11 @@ task Lastdb {
       ~{if (_bucket_depth) then "-b" else ""} \
       ~{if (child_table_type) then "-C" else ""} \
       ~{if (just_count_sequences) then "-x" else ""} \
-      ~{if (verbose_write_messages) then "-v" else ""}
+      ~{if (be_verbose_write) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     interpret_sequences_proteins: ": interpret the sequences as proteins"
     repeatmarking_options_default: ": repeat-marking options (default=10)"
@@ -61,7 +64,7 @@ task Lastdb {
     _bucket_depth: ": bucket depth"
     child_table_type: ": child table type: 0=none, 1=byte-size, 2=short-size, 3=full (0)"
     just_count_sequences: ": just count sequences and letters"
-    verbose_write_messages: ": be verbose: write messages about what lastdb is doing"
+    be_verbose_write: ": be verbose: write messages about what lastdb is doing"
     output_name: ""
     fast_a_sequence_file: ""
   }

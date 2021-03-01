@@ -9,7 +9,7 @@ task Id {
     Boolean? name
     Boolean? real
     Boolean? user
-    Boolean? delimit_entries_permitted
+    Boolean? delimit_entries_whitespacenot
   }
   command <<<
     id \
@@ -20,8 +20,11 @@ task Id {
       ~{if (name) then "--name" else ""} \
       ~{if (real) then "--real" else ""} \
       ~{if (user) then "--user" else ""} \
-      ~{if (delimit_entries_permitted) then "--zero" else ""}
+      ~{if (delimit_entries_whitespacenot) then "--zero" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_compatibility_other: "ignore, for compatibility with other versions"
     context: "print only the security context of the process"
@@ -30,7 +33,7 @@ task Id {
     name: "print a name instead of a number, for -ugG"
     real: "print the real ID instead of the effective ID, with -ugG"
     user: "print only the effective user ID"
-    delimit_entries_permitted: "delimit entries with NUL characters, not whitespace;\\nnot permitted in default format"
+    delimit_entries_whitespacenot: "delimit entries with NUL characters, not whitespace;\\nnot permitted in default format"
   }
   output {
     File out_stdout = stdout()

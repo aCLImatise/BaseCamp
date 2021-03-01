@@ -4,6 +4,9 @@ task DepthOfPolishes {
   command <<<
     depthOfPolishes
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

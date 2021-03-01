@@ -1,0 +1,434 @@
+&id001 !Command
+command:
+- esl-alimask
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - -g
+  description: ', which can be used in combination with each other.'
+  args: !SimpleFlagArg
+    name: and
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ': output the final alignment to file <f>, not stdout'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: ": be quiet; w/-o, don't print mask info to stdout"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --small
+  description: ': use minimal RAM (RAM usage will be independent of aln size)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --informat
+  description: ': specify that input file is in format <s>'
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --outformat
+  description: ': specify that output aln be format <s>'
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --fmask-rf
+  description: ': output final mask of non-gap RF len to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --fmask-all
+  description: ': output final mask of full aln len to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --amino
+  description: ': <msafile> contains protein alignments'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dna
+  description: ': <msafile> contains DNA alignments'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rna
+  description: ': <msafile> contains RNA alignments'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --t-rf
+  description: ': <coords> string corresponds to non-gap RF positions'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --t-rmins
+  description: ': remove all gap RF positions within <coords>'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gapthresh
+  description: ': only keep columns with <= <x> fraction of gaps in them  [0.5]'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --gmask-rf
+  description: ': output gap-based 0/1 mask of non-gap RF len to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --gmask-all
+  description: ': output gap-based 0/1 mask of   full aln len to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --pfract
+  description: ': keep cols w/<x> fraction of seqs w/PP >= --pthresh  [0.95]'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --pthresh
+  description: ': set post prob threshold for --pfract as <x>  [0.95]'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --pavg
+  description: ': keep cols with average post prob >= <x>'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --ppcons
+  description: ': keep cols with PP_cons value >= <x>'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --pallgapok
+  description: ": keep 100% gap columns (by default, they're removed w/-p)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pmask-rf
+  description: ': output PP-based 0/1 mask of non-gap RF len to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --pmask-all
+  description: ': output PP-based 0/1 mask of   full aln len to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --keepins
+  description: ': if msa has RF annotation, allow gap-RF columns to possibly survive'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rf-is-mask
+  description: ''
+  args: !SimpleFlagArg
+    name: msafile
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: ''
+  args: !SimpleFlagArg
+    name: msafile
+parent:
+subcommands:
+- !Command
+  command:
+  - esl-alimask
+  - msafile
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: esl-alimask
+    description: ''
+  - !Positional
+    optional: false
+    position: 0
+    name: maskfile
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: coords
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --rf-is-mask
+    description: ''
+    args: !SimpleFlagArg
+      name: msafile
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: ''
+    args: !SimpleFlagArg
+      name: msafile
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: ''
+    args: !SimpleFlagArg
+      name: msafile
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: ''
+    args: !SimpleFlagArg
+      name: msafile
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Incorrect number of command line arguments.\nUsage: esl-alimask [options]\
+    \ <msafile> <maskfile>   (use mask from maskfile)\nUsage: esl-alimask [options]\
+    \ -t <msafile> <coords>  (truncate alignment to coords)\nUsage: esl-alimask [options]\
+    \ -g <msafile>           (use gap frequencies in aln)\nUsage: esl-alimask [options]\
+    \ -p <msafile>           (use post probs (PP) in aln)\nUsage: esl-alimask [options]\
+    \ --rf-is-mask <msafile> (use #=GC RF in aln as mask)\n\nTo see more help on available\
+    \ options, do esl-alimask -h\n\n"
+  generated_using: &id002 []
+  docker_image: quay.io/biocontainers/easel:0.47--h516909a_0
+- !Command
+  command:
+  - esl-alimask
+  - coords
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: esl-alimask
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: msafile
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: maskfile
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --rf-is-mask
+    description: ''
+    args: !SimpleFlagArg
+      name: msafile
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: ''
+    args: !SimpleFlagArg
+      name: msafile
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: ''
+    args: !SimpleFlagArg
+      name: msafile
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: ''
+    args: !SimpleFlagArg
+      name: msafile
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Incorrect number of command line arguments.\nUsage: esl-alimask [options]\
+    \ <msafile> <maskfile>   (use mask from maskfile)\nUsage: esl-alimask [options]\
+    \ -t <msafile> <coords>  (truncate alignment to coords)\nUsage: esl-alimask [options]\
+    \ -g <msafile>           (use gap frequencies in aln)\nUsage: esl-alimask [options]\
+    \ -p <msafile>           (use post probs (PP) in aln)\nUsage: esl-alimask [options]\
+    \ --rf-is-mask <msafile> (use #=GC RF in aln as mask)\n\nTo see more help on available\
+    \ options, do esl-alimask -h\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/easel:0.47--h516909a_0
+- !Command
+  command:
+  - esl-alimask
+  - maskfile
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: esl-alimask
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: coords
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: msafile
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: maskfile
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --rf-is-mask
+    description: ''
+    args: !SimpleFlagArg
+      name: msafile
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: ''
+    args: !SimpleFlagArg
+      name: msafile
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: ''
+    args: !SimpleFlagArg
+      name: msafile
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: ''
+    args: !SimpleFlagArg
+      name: msafile
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Incorrect number of command line arguments.\nUsage: esl-alimask [options]\
+    \ <msafile> <maskfile>   (use mask from maskfile)\nUsage: esl-alimask [options]\
+    \ -t <msafile> <coords>  (truncate alignment to coords)\nUsage: esl-alimask [options]\
+    \ -g <msafile>           (use gap frequencies in aln)\nUsage: esl-alimask [options]\
+    \ -p <msafile>           (use post probs (PP) in aln)\nUsage: esl-alimask [options]\
+    \ --rf-is-mask <msafile> (use #=GC RF in aln as mask)\n\nTo see more help on available\
+    \ options, do esl-alimask -h\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/easel:0.47--h516909a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ': help; show brief info on version and usage'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "# esl-alimask :: remove columns from a multiple sequence alignment\n#\
+  \ Easel 0.47 (Jul 2020)\n# Copyright (C) 2020 Howard Hughes Medical Institute\n\
+  # Freely distributed under the BSD open source license.\n# - - - - - - - - - - -\
+  \ - - - - - - - - - - - - - - - - - - - - - - - - -\nUsage: esl-alimask [options]\
+  \ <msafile> <maskfile>   (use mask from maskfile)\nUsage: esl-alimask [options]\
+  \ -t <msafile> <coords>  (truncate alignment to coords)\nUsage: esl-alimask [options]\
+  \ -g <msafile>           (use gap frequencies in aln)\nUsage: esl-alimask [options]\
+  \ -p <msafile>           (use post probs (PP) in aln)\nUsage: esl-alimask [options]\
+  \ --rf-is-mask <msafile> (use #=GC RF in aln as mask)\n\n  Only one usage listed\
+  \ above can be used per execution with the exception of\n  -p and -g, which can\
+  \ be used in combination with each other.\n\n  With -t, <coords> is a string that\
+  \ specifies positive integer start and end\n  coordinates seperated by any nonnumeric,\
+  \ nonspace character(s).\n  For example, \"23..100\" or \"23/100\" or \"23-100\"\
+  \ all specify that columns\n  23 to 100 be kept and all other columns be removed.\
+  \ Additionally, to retrieve\n  all columns from a position to the end, omit the\
+  \ end coord; \"23:\" will work.\n  With -t and --t-rf, coordinates are interpreted\
+  \ as non-gap positions in the\n  reference (\"#=GC RF\") annotation.\n\n  With --rf-is-mask,\
+  \ all columns that are not gaps in the reference annotation\n  will be kept and\
+  \ all other columns will be removed.\n\n other options are:\n  -h              :\
+  \ help; show brief info on version and usage\n  -o <f>          : output the final\
+  \ alignment to file <f>, not stdout\n  -q              : be quiet; w/-o, don't print\
+  \ mask info to stdout\n  --small         : use minimal RAM (RAM usage will be independent\
+  \ of aln size)\n  --informat <s>  : specify that input file is in format <s>\n \
+  \ --outformat <s> : specify that output aln be format <s>\n  --fmask-rf <f>  : output\
+  \ final mask of non-gap RF len to file <f>\n  --fmask-all <f> : output final mask\
+  \ of full aln len to file <f>\n\n options for specifying alphabet in <msafile>,\
+  \ one is required w/--small:\n  --amino : <msafile> contains protein alignments\n\
+  \  --dna   : <msafile> contains DNA alignments\n  --rna   : <msafile> contains RNA\
+  \ alignments\n\n options related to truncating the alignment (require -t):\n  --t-rf\
+  \    : <coords> string corresponds to non-gap RF positions\n  --t-rmins : remove\
+  \ all gap RF positions within <coords>\n\n options for masking based on gap frequencies\
+  \ (require -g):\n  --gapthresh <x> : only keep columns with <= <x> fraction of gaps\
+  \ in them  [0.5]\n  --gmask-rf <f>  : output gap-based 0/1 mask of non-gap RF len\
+  \ to file <f>\n  --gmask-all <f> : output gap-based 0/1 mask of   full aln len to\
+  \ file <f>\n\n options for masking based on posterior probabilities (require -p):\n\
+  \  --pfract <x>    : keep cols w/<x> fraction of seqs w/PP >= --pthresh  [0.95]\n\
+  \  --pthresh <x>   : set post prob threshold for --pfract as <x>  [0.95]\n  --pavg\
+  \ <x>      : keep cols with average post prob >= <x>\n  --ppcons <x>    : keep cols\
+  \ with PP_cons value >= <x>\n  --pallgapok     : keep 100% gap columns (by default,\
+  \ they're removed w/-p)\n  --pmask-rf <f>  : output PP-based 0/1 mask of non-gap\
+  \ RF len to file <f>\n  --pmask-all <f> : output PP-based 0/1 mask of   full aln\
+  \ len to file <f>\n\n options that modify masking behavior when -g and/or -p are\
+  \ used:\n  --keepins : if msa has RF annotation, allow gap-RF columns to possibly\
+  \ survive\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/easel:0.47--h516909a_0

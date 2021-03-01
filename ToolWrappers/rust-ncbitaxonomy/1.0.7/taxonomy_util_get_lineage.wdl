@@ -14,6 +14,9 @@ task TaxonomyUtilGetLineage {
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     show_names: "Show taxon names, not just IDs"
     delimiter: "Delimiter for lineage string"

@@ -68,6 +68,9 @@ task InspectAdapter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                      Input file in mzXML or mzData format.\\nNote: In mode 'inspect_out' an Inspect results file is read. (valid formats: 'mzXML', 'mzData')"
     out: "*                     Output file in idXML format.\\nNote: In mode 'inspect_in' an Inspect input file is written. (valid formats: 'idXML')"

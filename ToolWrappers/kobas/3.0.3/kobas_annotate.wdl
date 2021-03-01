@@ -38,6 +38,9 @@ task Kobasannotate {
       ~{if defined(blastp) then ("--blastp " +  '"' + blastp + '"') else ""} \
       ~{if defined(blastx) then ("--blastx " +  '"' + blastx + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list: "list available species, or list available databases\\nfor a specific species"
     in_file: "input data file"

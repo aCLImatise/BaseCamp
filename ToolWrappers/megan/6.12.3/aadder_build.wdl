@@ -24,6 +24,9 @@ task Aadderbuild {
       ~{if (extra_strict) then "--extraStrict" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_gff: "[string(s)]        Input GFF3 files or directory (.gz ok). Mandatory option."
     index: "[string]                 Index directory. Mandatory option."

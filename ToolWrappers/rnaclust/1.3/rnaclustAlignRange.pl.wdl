@@ -36,6 +36,9 @@ task RnaclustAlignRangepl {
       ~{if defined(loca_rna_path) then ("--locarna-path " +  '"' + loca_rna_path + '"') else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     range: "<i-j>                          specifies pairwise alignments which will be calculated (e.g. --range 1-100)\\n(required)"
     tgt_dir: "<dir>                          target directory\\n(required)"

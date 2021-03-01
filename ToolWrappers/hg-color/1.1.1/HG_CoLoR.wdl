@@ -28,6 +28,9 @@ task HGCoLoR {
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""} \
       ~{if defined(kmc_mem) then ("--kmcmem " +  '"' + kmc_mem + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_order: ":        Minimum k-mer size of the variable-order de Bruijn graph (default: K/2)."
     solid: ":           Minimum number of occurrences to consider a short read k-mer as solid, after correction (default: 1).\\nThis parameter should be carefully raised accordingly to the short reads coverage and accuracy,\\nand to the chosen maximum order of the graph.\\nIt should only be increased when using high coverage of short reads, or a small maximum order."

@@ -14,6 +14,9 @@ task Xsd {
       ~{cxx_tree} \
       ~{cxx_parser}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "Print usage information and exit. Use\\n'help <cmd>' for command-specific options."
     version: "Print version and exit."

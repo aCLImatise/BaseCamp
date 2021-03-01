@@ -14,6 +14,9 @@ task KmcDump {
       ~{if (ci) then "-ci" else ""} \
       ~{if (cx) then "-cx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ci: "<value> - exclude k-mers occurring less than <value> times"
     cx: "<value> - exclude k-mers occurring more of than <value> times"

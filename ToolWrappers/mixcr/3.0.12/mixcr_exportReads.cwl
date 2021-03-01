@@ -3,17 +3,17 @@ id: mixcr_exportReads.cwl
 inputs:
 - id: in_verbose
   doc: Verbose warning messages.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_force_overwrite
   doc: Force overwrite of output file(s).
-  type: File
+  type: File?
   inputBinding:
     prefix: --force-overwrite
 - id: in_no_warnings
   doc: Suppress all warning messages.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-warnings
 - id: in_scr
@@ -42,9 +42,10 @@ outputs:
   type: stdout
 - id: out_force_overwrite
   doc: Force overwrite of output file(s).
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_force_overwrite)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mixcr

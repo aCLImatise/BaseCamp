@@ -4,83 +4,83 @@ inputs:
 - id: in_function
   doc: "function to perform (resolve, names,\nsearch) default=resolve or names if\n\
     protocol is specified"
-  type: string
+  type: string?
   inputBinding:
     prefix: --function
 - id: in_timeout
   doc: timeout-value for request
-  type: string
+  type: string?
   inputBinding:
     prefix: --timeout
 - id: in_protocol
   doc: "protocol (fasp; http; https; fasp,http;\n..) default=https"
-  type: string
+  type: string?
   inputBinding:
     prefix: --protocol
 - id: in_vers
   doc: version-string for cgi-calls
-  type: string
+  type: string?
   inputBinding:
     prefix: --vers
 - id: in_url
   doc: url to be used for cgi-calls
-  type: string
+  type: string?
   inputBinding:
     prefix: --url
 - id: in_param
   doc: 'param to be added to cgi-call (tic=XXXXX):'
-  type: string
+  type: string?
   inputBinding:
     prefix: --param
 - id: in_json
   doc: print the reply in JSON
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --json
 - id: in_project
   doc: '> <project-id>       use numeric [dbGaP] project-id in'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --project
 - id: in_path
   doc: 'print path of object: names function-only'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --path
 - id: in_ngc
   doc: <path> to ngc file
-  type: File
+  type: File?
   inputBinding:
     prefix: --ngc
 - id: in_perm
   doc: <path> to permission file
-  type: File
+  type: File?
   inputBinding:
     prefix: --perm
 - id: in_location
   doc: location in cloud
-  type: string
+  type: string?
   inputBinding:
     prefix: --location
 - id: in_cart
   doc: <path> to cart file
-  type: File
+  type: File?
   inputBinding:
     prefix: --cart
 - id: in_disable_multithreading
   doc: disable multithreading
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --disable-multithreading
 - id: in_log_level
   doc: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
     \ or\n(0-6) Current/default is warn"
-  type: long
+  type: long?
   inputBinding:
     prefix: --log-level
 - id: in_option_file
   doc: Read more options and parameters from the
-  type: File
+  type: File?
   inputBinding:
     prefix: --option-file
 - id: in_raw_only
@@ -102,6 +102,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - srapath.2.10.8

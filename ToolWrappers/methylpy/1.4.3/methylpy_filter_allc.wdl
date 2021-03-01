@@ -2,8 +2,8 @@ version 1.0
 
 task MethylpyFilterallc {
   input {
-    Array[String] output_files
     Array[String] all_c_files
+    File? output_files
     Int? num_procs
     File? mc_type
     Int? min_cov
@@ -15,8 +15,8 @@ task MethylpyFilterallc {
   }
   command <<<
     methylpy filter_allc \
-      ~{if defined(output_files) then ("--output-files " +  '"' + output_files + '"') else ""} \
       ~{if defined(all_c_files) then ("--allc-files " +  '"' + all_c_files + '"') else ""} \
+      ~{if defined(output_files) then ("--output-files " +  '"' + output_files + '"') else ""} \
       ~{if defined(num_procs) then ("--num-procs " +  '"' + num_procs + '"') else ""} \
       ~{if defined(mc_type) then ("--mc-type " +  '"' + mc_type + '"') else ""} \
       ~{if defined(min_cov) then ("--min-cov " +  '"' + min_cov + '"') else ""} \
@@ -26,9 +26,12 @@ task MethylpyFilterallc {
       ~{if defined(compress_output) then ("--compress-output " +  '"' + compress_output + '"') else ""} \
       ~{if defined(chrom_s) then ("--chroms " +  '"' + chrom_s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    output_files: "[--num-procs NUM_PROCS]\\n[--mc-type MC_TYPE [MC_TYPE ...]]\\n[--min-cov MIN_COV] [--max-cov MAX_COV]\\n[--max-mismatch MAX_MISMATCH [MAX_MISMATCH ...]]\\n[--max-mismatch-frac MAX_MISMATCH_FRAC [MAX_MISMATCH_FRAC ...]]\\n[--compress-output COMPRESS_OUTPUT]\\n[--chroms CHROMS [CHROMS ...]]"
     all_c_files: "allc files to filter. (default: None)"
+    output_files: "Name of output files. Each output file matches each\\nallc file. (default: None)"
     num_procs: "Number of processors you wish to use to parallelize\\nthis function (default: 1)"
     mc_type: "List of space separated cytosine nucleotide contexts\\nfor sites to be included in output file. These\\nclassifications may use the wildcards H (indicating\\nanything but a G) and N (indicating any nucleotide).\\n(default: None)"
     min_cov: "Minimum number of reads that must cover a site for it\\nto be included in the output file. (default: 0)"
@@ -40,6 +43,7 @@ task MethylpyFilterallc {
   }
   output {
     File out_stdout = stdout()
+    File out_output_files = "${in_output_files}"
     File out_mc_type = "${in_mc_type}"
     File out_max_mismatch = "${in_max_mismatch}"
     File out_max_mismatch_frac = "${in_max_mismatch_frac}"

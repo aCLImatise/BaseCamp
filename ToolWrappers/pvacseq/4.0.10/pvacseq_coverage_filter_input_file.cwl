@@ -3,7 +3,7 @@ id: pvacseq_coverage_filter_input_file.cwl
 inputs:
 - id: in_normal_cov
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --normal-cov
 - id: in_pvac_seq
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pvacseq

@@ -2,7 +2,7 @@ version 1.0
 
 task ChemblM2t {
   input {
-    File? input_file_input
+    File? input_file_standard
     File? output_file_output
     File? source_format
     File? destination_format
@@ -13,7 +13,7 @@ task ChemblM2t {
   }
   command <<<
     chembl_m2t \
-      ~{if defined(input_file_input) then ("--input " +  '"' + input_file_input + '"') else ""} \
+      ~{if defined(input_file_standard) then ("--input " +  '"' + input_file_standard + '"') else ""} \
       ~{if defined(output_file_output) then ("--output " +  '"' + output_file_output + '"') else ""} \
       ~{if defined(source_format) then ("--source-format " +  '"' + source_format + '"') else ""} \
       ~{if defined(destination_format) then ("--destination-format " +  '"' + destination_format + '"') else ""} \
@@ -22,8 +22,11 @@ task ChemblM2t {
       ~{if (parent) then "--parent" else ""} \
       ~{if defined(chunk_size) then ("--chunk-size " +  '"' + chunk_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    input_file_input: "input file, standard input by default"
+    input_file_standard: "input file, standard input by default"
     output_file_output: "output file, standard output by default"
     source_format: "input file format. Can be one of 3: chembl_id (a comma\\nseparated list of chembl IDs), sdf: (MDL molfile), smi\\n(file containing smiles)"
     destination_format: "output file format. can be chosen from 3 options:\\n[uniprot, gene_name, chembl_id]"

@@ -4,54 +4,54 @@ command:
 - variant_stat
 positional:
 - !Positional
-  description: 'optional arguments:'
+  optional: false
   position: 1
   name: calculated.
-  optional: false
+  description: 'optional arguments:'
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -s
   description: "[SAMPLES [SAMPLES ...]], --samples [SAMPLES [SAMPLES ...]]\nLimiting\
     \ variants from samples that match conditions\nthat use columns shown in command\
     \ 'vtools show sample'\n(e.g. 'aff=1', 'filename like \"MG%\"'). If this\nparameter\
     \ is specified without a value, variants\nbelonging to any of the samples will\
     \ be counted. If\nthis parameter is left unspecified, all variants,\nincluding\
     \ those that do not belong to any samples will\nbe counted."
-  synonyms:
-  - -s
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -g
   description: "[GROUP_BY [GROUP_BY ...]], --group_by [GROUP_BY [GROUP_BY ...]], --group-by\
     \ [GROUP_BY [GROUP_BY ...]]\nGroup samples by certain conditions such as 'aff=1'.\
     \ A\ncommon usage is to group variants by 'filename' and\n'sample_name' so that\
     \ variant statistics are outputted\nfor each sample."
-  synonyms:
-  - -g
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
-    \ to standard output (default to\n1).\n"
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1).\n"
   args: !ChoiceFlagArg
     choices: !!set
+      '3':
       '2':
       '0':
-      '3':
       '1':
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: vtools_report variant_stat [-h] [-s [SAMPLES [SAMPLES ...]]]\n\
@@ -85,3 +85,4 @@ help_text: "usage: vtools_report variant_stat [-h] [-s [SAMPLES [SAMPLES ...]]]\
   \                   1).\n"
 generated_using:
 - --help
+docker_image:

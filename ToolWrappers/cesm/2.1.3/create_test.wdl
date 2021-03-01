@@ -90,6 +90,9 @@ task CreateTest {
       ~{if defined(mail_user) then ("--mail-user " +  '"' + mail_user + '"') else ""} \
       ~{if defined(mail_type) then ("--mail-type " +  '"' + mail_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Print debug information (very verbose) to file /create_test.log"
     verbose: "Add additional context (time and file) to log messages"

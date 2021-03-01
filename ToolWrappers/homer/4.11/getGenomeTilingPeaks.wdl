@@ -12,6 +12,9 @@ task GetGenomeTilingPeaks {
       ~{if defined(tag_directories_analyze) then ("-d " +  '"' + tag_directories_analyze + '"') else ""} \
       ~{if (res) then "-res" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tag_directories_analyze: "[tag directory 2] ... (tag directories to analyze)"
     res: "<#> (resolution of analysis)"

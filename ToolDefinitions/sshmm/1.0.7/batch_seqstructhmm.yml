@@ -3,101 +3,101 @@ command:
 - batch_seqstructhmm
 positional:
 - !Positional
-  description: "data directory; must contain the sequence files under\nfasta/<protein>/positive.fasta\
-    \ and structure files\nunder <structure_type>/<protein>/positive.txt"
+  optional: false
   position: 0
   name: data_directory
-  optional: false
+  description: "data directory; must contain the sequence files under\nfasta/<protein>/positive.fasta\
+    \ and structure files\nunder <structure_type>/<protein>/positive.txt"
 - !Positional
-  description: "list of RNA-binding proteins to analyze (surrounded by\nquotation\
-    \ marks, separated by whitespace)"
+  optional: false
   position: 1
   name: proteins
-  optional: false
+  description: "list of RNA-binding proteins to analyze (surrounded by\nquotation\
+    \ marks, separated by whitespace)"
 - !Positional
-  description: directory for batch output
+  optional: false
   position: 2
   name: batch_directory
-  optional: false
+  description: directory for batch output
 named:
 - !Flag
-  description: "number of cores to use (if not given, all cores are\nused)"
+  optional: true
   synonyms:
   - --cores
   - -c
+  description: "number of cores to use (if not given, all cores are\nused)"
   args: !SimpleFlagArg
     name: CORES
-  optional: true
 - !Flag
-  description: "structure type to use; must match location of\nstructure files (see\
-    \ data_directory argument above)\n(default: shapes)"
+  optional: true
   synonyms:
   - --structure_type
   - -s
+  description: "structure type to use; must match location of\nstructure files (see\
+    \ data_directory argument above)\n(default: shapes)"
   args: !SimpleFlagArg
     name: STRUCTURE_TYPE
-  optional: true
 - !Flag
-  description: 'length of the motifs that shall be found (default: 6)'
+  optional: true
   synonyms:
   - --motif_length
   - -n
+  description: 'length of the motifs that shall be found (default: 6)'
   args: !SimpleFlagArg
     name: MOTIF_LENGTH
-  optional: true
 - !Flag
-  description: "should the models be initialized with a Baum-Welch\noptimized sequence\
-    \ motif (default: yes)"
+  optional: true
   synonyms:
   - --baum_welch
   - -b
+  description: "should the models be initialized with a Baum-Welch\noptimized sequence\
+    \ motif (default: yes)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "greedyness of Gibbs sampler: model parameters are\nsampled from among\
-    \ the top f configurations (default:\nf=10), set f to 0 in order to include all\
-    \ possible\nconfigurations"
+  optional: true
   synonyms:
   - --flexibility
   - -f
+  description: "greedyness of Gibbs sampler: model parameters are\nsampled from among\
+    \ the top f configurations (default:\nf=10), set f to 0 in order to include all\
+    \ possible\nconfigurations"
   args: !SimpleFlagArg
     name: FLEXIBILITY
-  optional: true
 - !Flag
-  description: "number of sequences to be held-out in each iteration\n(default: 1)"
+  optional: true
   synonyms:
   - --block_size
+  description: "number of sequences to be held-out in each iteration\n(default: 1)"
   args: !SimpleFlagArg
     name: BLOCK_SIZE
-  optional: true
 - !Flag
-  description: "the iterative algorithm is terminated if this\nreduction in sequence\
-    \ structure loglikelihood is not\nreached for any of the 3 last measurements (default:\n\
-    10)"
+  optional: true
   synonyms:
   - --threshold
   - -t
+  description: "the iterative algorithm is terminated if this\nreduction in sequence\
+    \ structure loglikelihood is not\nreached for any of the 3 last measurements (default:\n\
+    10)"
   args: !SimpleFlagArg
     name: THRESHOLD
-  optional: true
 - !Flag
-  description: "produce output every <i> iterations (default: i=100)\n"
+  optional: true
   synonyms:
   - --termination_interval
   - -i
+  description: "produce output every <i> iterations (default: i=100)\n"
   args: !SimpleFlagArg
     name: TERMINATION_INTERVAL
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: batch_seqstructhmm [-h] [--cores CORES]\n                     \
@@ -140,3 +140,4 @@ help_text: "usage: batch_seqstructhmm [-h] [--cores CORES]\n                    
   \                        produce output every <i> iterations (default: i=100)\n"
 generated_using:
 - --help
+docker_image:

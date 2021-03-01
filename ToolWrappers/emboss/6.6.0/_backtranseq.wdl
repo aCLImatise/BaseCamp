@@ -8,6 +8,9 @@ task Backtranseq {
     _backtranseq \
       ~{if (c_file) then "-cfile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     c_file: "codon      [Ehuman.cut] Codon usage table name"
   }

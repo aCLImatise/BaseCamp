@@ -3,23 +3,23 @@ id: msstitch_storeseq.cwl
 inputs:
 - id: in_dbfile
   doc: Database lookup file
-  type: File
+  type: File?
   inputBinding:
     prefix: --dbfile
 - id: in_input_file_format
   doc: Input file of {} format
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_output_file
   doc: Output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_full_protein
   doc: "Store full protein sequences (at a minimum-match\nlength) in the SQLite file\
     \ rather than tryptic\nsequences"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fullprotein
 - id: in_in_source_frag
@@ -29,28 +29,28 @@ inputs:
     \ number of amino\nacids that may be missing. Database should be built\nwith this\
     \ flag in order for the lookup to work, since\nsequences will be stored and looked\
     \ up reversed"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --insourcefrag
 - id: in_cut_proline
   doc: "Flag to make trypsin before a proline residue. Then\nfiltering will be done\
     \ against both cut and non-cut\npeptides."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cutproline
 - id: in_min_len
   doc: Minimum length of peptide to be included
-  type: long
+  type: long?
   inputBinding:
     prefix: --minlen
 - id: in_no_trypsin
   doc: "Do not trypsinize. User is expected to deliver\napretrypsinized FASTA file"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --notrypsin
 - id: in_misc_leav
   doc: "Amount of missed cleavages to allow when trypsinizing,\ndefault is 0\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --miscleav
 outputs:
@@ -59,9 +59,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: Output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - msstitch

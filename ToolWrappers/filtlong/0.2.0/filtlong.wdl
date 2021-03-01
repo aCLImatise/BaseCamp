@@ -38,6 +38,9 @@ task Filtlong {
       ~{if (window_size) then "--window_size" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep_only_best: "[int], --target_bases [int]          keep only the best reads up to this many total bases"
     keep_only_percentage: "[float], --keep_percent [float]      keep only this percentage of the best reads (measured by bases)"

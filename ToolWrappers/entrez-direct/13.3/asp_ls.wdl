@@ -4,6 +4,9 @@ task Aspls {
   command <<<
     asp_ls
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -16,6 +16,9 @@ task Vcfroc {
       ~{if (complex) then "--complex" else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     truth_vcf: "use this VCF as ground truth for ROC generation"
     window_size: "compare records up to this many bp away (default 30)"

@@ -3,12 +3,12 @@ id: phyluce_utilities_sample_reads_from_files.cwl
 inputs:
 - id: in_conf
   doc: The path to the config file giving reads to sample
-  type: File
+  type: File?
   inputBinding:
     prefix: --conf
 - id: in_path_output_directory
   doc: The path to output directory
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_optional_arguments
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_path_output_directory
   doc: The path to output directory
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_path_output_directory)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phyluce_utilities_sample_reads_from_files

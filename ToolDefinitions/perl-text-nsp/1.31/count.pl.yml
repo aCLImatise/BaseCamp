@@ -3,147 +3,147 @@ command:
 - count.pl
 positional:
 - !Positional
-  description: --window N         Sets window size to N. Defaults to n-gram
+  optional: false
   position: 0
   name: default.
-  optional: false
+  description: --window N         Sets window size to N. Defaults to n-gram
 named:
 - !Flag
-  description: Creates n-grams of N tokens each. N = 2 by
+  optional: true
   synonyms:
   - --ngram
+  description: Creates n-grams of N tokens each. N = 2 by
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Uses regular expressions in FILE to create\ntokens. By default two\
-    \ regular expressions\nare provided (see README)."
+  optional: true
   synonyms:
   - --token
+  description: "Uses regular expressions in FILE to create\ntokens. By default two\
+    \ regular expressions\nare provided (see README)."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Removes all characters sequences that match\nPerl regular expressions\
-    \ specified in FILE."
+  optional: true
   synonyms:
   - --nontoken
+  description: "Removes all characters sequences that match\nPerl regular expressions\
+    \ specified in FILE."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Uses the frequency combinations in FILE to\ndecide which combinations\
-    \ of tokens to\ncount in a given n-gram. By default, all\ncombinations are counted."
+  optional: true
   synonyms:
   - --set_freq_combo
+  description: "Uses the frequency combinations in FILE to\ndecide which combinations\
+    \ of tokens to\ncount in a given n-gram. By default, all\ncombinations are counted."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --get_freq_combo
   description: "Prints out the frequency combinations used\nto FILE. If frequency\
     \ combinations have been\nprovided through --set_freq_combo switch above\nthese\
     \ are output; otherwise the default\ncombinations being used are output."
-  synonyms:
-  - --get_freq_combo
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --stop
   description: "Removes n-grams containing at least one (in\nOR mode) or all stop\
     \ words (in AND mode).\nStop words should be declared as Perl Regular\nexpressions\
     \ in FILE."
-  synonyms:
-  - --stop
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Does not display n-grams that occur less\nthan N times."
+  optional: true
   synonyms:
   - --frequency
+  description: "Does not display n-grams that occur less\nthan N times."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Does not display n-grams that occur more\nthan N times. Default value\
-    \ is 100,000,000"
+  optional: true
   synonyms:
   - --ufrequency
+  description: "Does not display n-grams that occur more\nthan N times. Default value\
+    \ is 100,000,000"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Ignores n-grams that occur less than N\ntimes. Ignored n-grams are\
-    \ not counted and\nso do not affect counts and frequencies."
+  optional: true
   synonyms:
   - --remove
+  description: "Ignores n-grams that occur less than N\ntimes. Ignored n-grams are\
+    \ not counted and\nso do not affect counts and frequencies."
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --uremove
   description: "Ignores n-grams that occur more than N\ntimes. Ignored n-grams are\
     \ not counted and\nso do not affect counts and frequencies.\nDefault value is\
     \ 100,000,000."
-  synonyms:
-  - --uremove
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Prevents n-grams from spanning across the\nnew-line character."
+  optional: true
   synonyms:
   - --newLine
+  description: "Prevents n-grams from spanning across the\nnew-line character."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Prints out all n-grams to the output file.
+  optional: true
   synonyms:
   - --tokenlist
+  description: Prints out all n-grams to the output file.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Outputs histogram to FILE. Tabulates how\nmany times n-grams of a\
-    \ given frequency\nhave occurred."
+  optional: true
   synonyms:
   - --histogram
+  description: "Outputs histogram to FILE. Tabulates how\nmany times n-grams of a\
+    \ given frequency\nhave occurred."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "If SOURCE is a directory, uses all files\nin SOURCE as well as all\
-    \ subdirectories of\nSOURCE recursively as input."
+  optional: true
   synonyms:
   - --recurse
+  description: "If SOURCE is a directory, uses all files\nin SOURCE as well as all\
+    \ subdirectories of\nSOURCE recursively as input."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Outputs values of the above switches, if\ndefault values are not used."
+  optional: true
   synonyms:
   - --extended
+  description: "Outputs values of the above switches, if\ndefault values are not used."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Outputs to stderr information about\ncurrent program status."
+  optional: true
   synonyms:
   - --verbose
+  description: "Outputs to stderr information about\ncurrent program status."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Prints this help message.
+  optional: true
   synonyms:
   - --help
+  description: Prints this help message.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Prints the version number.
+  optional: true
   synonyms:
   - --version
+  description: Prints the version number.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: count.pl [OPTIONS] DESTINATION SOURCE [[, SOURCE] ...]\n\nCounts\
   \ up the frequency of all n-grams occurring in SOURCE.\nSends to DESTINATION the\
   \ list of n-grams found, along with the\nfrequencies of combinations of the n tokens\
@@ -186,3 +186,4 @@ help_text: "Usage: count.pl [OPTIONS] DESTINATION SOURCE [[, SOURCE] ...]\n\nCou
   \ the version number.\n\n  --help             Prints this help message.\n\n"
 generated_using:
 - --help
+docker_image:

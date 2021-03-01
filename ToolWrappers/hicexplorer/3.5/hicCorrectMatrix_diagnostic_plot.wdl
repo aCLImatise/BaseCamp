@@ -18,6 +18,9 @@ task HicCorrectMatrixDiagnosticPlot {
       ~{if (per_chr) then "--perchr" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "Name of the Hi-C matrix to correct in .h5 format.\\n(default: None)"
     plot_name: "File name to save the diagnostic plot. (default: None)"

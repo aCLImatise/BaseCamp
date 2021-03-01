@@ -8,6 +8,9 @@ task Obdistgen {
     obdistgen \
       ~{filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: ""
   }

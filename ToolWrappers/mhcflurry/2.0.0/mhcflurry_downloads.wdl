@@ -10,6 +10,9 @@ task Mhcflurrydownloads {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Output less"
     verbose: "Output more"

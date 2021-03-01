@@ -26,6 +26,9 @@ task Merylimport {
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(memory) then ("-memory " +  '"' + memory + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_ers: "A file consisting of kmers and values, one per line, separated\\nby white space ('AGTTGCC 4').  Order of kmers is not important.\\nDuplicate kmers will be handled according to the -multiset\\noption.\\nA persistent value can be specified as '#<value>' (e.g., '#3')\\nAll kmers with no value after this line will use this value."
     size_setting_larger: "The size of a kmer, in bases.  Setting this larger than the\\nkmers in the input will probably lead to a crash.  Setting it\\nsmaller will result in only the left-most bases being used."

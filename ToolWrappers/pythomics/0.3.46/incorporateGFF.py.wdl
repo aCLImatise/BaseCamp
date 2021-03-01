@@ -4,7 +4,7 @@ task IncorporateGFFpy {
   input {
     String? threads_to_run
     Boolean? fasta_file_reference
-    File? file_write_resulting
+    File? file_write_file
     File? vcf
     Boolean? no_homozygous
     Boolean? heterozygous
@@ -28,7 +28,7 @@ task IncorporateGFFpy {
       ~{out} \
       ~{if defined(threads_to_run) then ("-p " +  '"' + threads_to_run + '"') else ""} \
       ~{if (fasta_file_reference) then "-f" else ""} \
-      ~{if (file_write_resulting) then "-o" else ""} \
+      ~{if (file_write_file) then "-o" else ""} \
       ~{if defined(vcf) then ("--vcf " +  '"' + vcf + '"') else ""} \
       ~{if (no_homozygous) then "--no-homozygous" else ""} \
       ~{if (heterozygous) then "--heterozygous" else ""} \
@@ -44,10 +44,13 @@ task IncorporateGFFpy {
       ~{if (variants_only) then "--variants-only" else ""} \
       ~{if (splice_partial) then "--splice-partial" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads_to_run: "Threads to run"
     fasta_file_reference: "[FASTA], --fasta [FASTA]\\nThe fasta file to reference."
-    file_write_resulting: "[OUT], --out [OUT]\\nThe file to write resulting fasta file to."
+    file_write_file: "[OUT], --out [OUT]\\nThe file to write resulting fasta file to."
     vcf: "The VCF file to use."
     no_homozygous: "Don't include homozygous variants (default to include)"
     heterozygous: "Use heterozygous variants"
@@ -67,7 +70,7 @@ task IncorporateGFFpy {
   }
   output {
     File out_stdout = stdout()
-    File out_file_write_resulting = "${in_file_write_resulting}"
+    File out_file_write_file = "${in_file_write_file}"
     File out_cufflinks = "${in_cufflinks}"
   }
 }

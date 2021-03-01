@@ -8,6 +8,9 @@ task MobSuitepostlinksh {
     _mob_suite_post_link_sh \
       ~{d_load}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d_load: "Upload   Total   Spent    Left  Speed"
   }

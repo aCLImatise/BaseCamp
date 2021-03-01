@@ -14,6 +14,9 @@ task RenameFastqTag {
       ~{if (string_add_tag) then "-T" else ""} \
       ~{if (log) then "-log" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "(string)        input fastq file."
     string_tag_find: "(string)        tag to find for cutting read name"

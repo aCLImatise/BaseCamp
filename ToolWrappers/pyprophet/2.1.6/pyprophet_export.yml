@@ -1,0 +1,159 @@
+!Command
+command:
+- pyprophet
+- export
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --in
+  description: PyProphet input file.  [required]
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: "Output TSV/CSV (matrix, legacy_split,\nlegacy_merged) file."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: "[matrix|legacy_split|legacy_merged|score_plots]\nExport format, either\
+    \ matrix,\nlegacy_split/legacy_merged\n(mProphet/PyProphet) or score_plots format.\n\
+    [default: legacy_split]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --csv
+  - --no-csv
+  description: "Export CSV instead of TSV file.  [default:\nFalse]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --transition_quantification
+  - --no-transition_quantification
+  description: "[format: legacy] Report aggregated\ntransition-level quantification.\
+    \  [default:\nTrue]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max_transition_pep
+  description: "[format: legacy] Maximum PEP to retain\nscored transitions for quantification\n\
+    (requires transition-level scoring).\n[default: 0.7]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --ipf
+  description: "[peptidoform|augmented|disable]\n[format: matrix/legacy] Should IPF\
+    \ results\nbe reported if present? \"peptidoform\":\nReport results on peptidoform-level,\n\
+    \"augmented\": Augment OpenSWATH results with\nIPF scores, \"disable\": Ignore\
+    \ IPF results\n[default: peptidoform]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ipf_max_peptidoform_pep
+  description: "[format: matrix/legacy] IPF: Filter results\nto maximum run-specific\
+    \ peptidoform-level\nPEP.  [default: 0.4]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --max_rs_peakgroup_qvalue
+  description: "[format: matrix/legacy] Filter results to\nmaximum run-specific peak\
+    \ group-level\nq-value.  [default: 0.05]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --peptide
+  - --no-peptide
+  description: Append peptide-level error-rate estimates if
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max_global_peptide_qvalue
+  description: "[format: matrix/legacy] Filter results to\nmaximum global peptide-level\
+    \ q-value.\n[default: 0.01]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --protein
+  - --no-protein
+  description: Append protein-level error-rate estimates if
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max_global_protein_qvalue
+  description: "[format: matrix/legacy] Filter results to\nmaximum global protein-level\
+    \ q-value.\n[default: 0.01]"
+  args: !SimpleFlagArg
+    name: FLOAT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: pyprophet export [OPTIONS]\n\n  Export TSV/CSV tables\n\nOptions:\n\
+  \  --in PATH                       PyProphet input file.  [required]\n  --out PATH\
+  \                      Output TSV/CSV (matrix, legacy_split,\n                 \
+  \                 legacy_merged) file.\n\n  --format [matrix|legacy_split|legacy_merged|score_plots]\n\
+  \                                  Export format, either matrix,\n             \
+  \                     legacy_split/legacy_merged\n                             \
+  \     (mProphet/PyProphet) or score_plots format.\n                            \
+  \      [default: legacy_split]\n\n  --csv / --no-csv                Export CSV instead\
+  \ of TSV file.  [default:\n                                  False]\n\n  --transition_quantification\
+  \ / --no-transition_quantification\n                                  [format: legacy]\
+  \ Report aggregated\n                                  transition-level quantification.\
+  \  [default:\n                                  True]\n\n  --max_transition_pep\
+  \ FLOAT      [format: legacy] Maximum PEP to retain\n                          \
+  \        scored transitions for quantification\n                               \
+  \   (requires transition-level scoring).\n                                  [default:\
+  \ 0.7]\n\n  --ipf [peptidoform|augmented|disable]\n                            \
+  \      [format: matrix/legacy] Should IPF results\n                            \
+  \      be reported if present? \"peptidoform\":\n                              \
+  \    Report results on peptidoform-level,\n                                  \"\
+  augmented\": Augment OpenSWATH results with\n                                  IPF\
+  \ scores, \"disable\": Ignore IPF results\n                                  [default:\
+  \ peptidoform]\n\n  --ipf_max_peptidoform_pep FLOAT\n                          \
+  \        [format: matrix/legacy] IPF: Filter results\n                         \
+  \         to maximum run-specific peptidoform-level\n                          \
+  \        PEP.  [default: 0.4]\n\n  --max_rs_peakgroup_qvalue FLOAT\n           \
+  \                       [format: matrix/legacy] Filter results to\n            \
+  \                      maximum run-specific peak group-level\n                 \
+  \                 q-value.  [default: 0.05]\n\n  --peptide / --no-peptide      \
+  \  Append peptide-level error-rate estimates if\n                              \
+  \    available.  [default: True]\n\n  --max_global_peptide_qvalue FLOAT\n      \
+  \                            [format: matrix/legacy] Filter results to\n       \
+  \                           maximum global peptide-level q-value.\n            \
+  \                      [default: 0.01]\n\n  --protein / --no-protein        Append\
+  \ protein-level error-rate estimates if\n                                  available.\
+  \  [default: True]\n\n  --max_global_protein_qvalue FLOAT\n                    \
+  \              [format: matrix/legacy] Filter results to\n                     \
+  \             maximum global protein-level q-value.\n                          \
+  \        [default: 0.01]\n\n  --help                          Show this message\
+  \ and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pyprophet:2.1.6--py37hf01694f_0

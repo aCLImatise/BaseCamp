@@ -5,122 +5,122 @@ command:
 positional: []
 named:
 - !Flag
-  description: '[ --version ]              print version string'
+  optional: true
   synonyms:
   - -v
+  description: '[ --version ]              print version string'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[ --transcripts ] arg      Transcript fasta file.'
+  optional: true
   synonyms:
   - -t
+  description: '[ --transcripts ] arg      Transcript fasta file.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[ --kmerLen ] arg (=31)    The size of k-mers that should be used\
-    \ for the\nquasi index."
+  optional: true
   synonyms:
   - -k
+  description: "[ --kmerLen ] arg (=31)    The size of k-mers that should be used\
+    \ for the\nquasi index."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[ --index ] arg            salmon index.'
+  optional: true
   synonyms:
   - -i
+  description: '[ --index ] arg            salmon index.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gencode
   description: "This flag will expect the input transcript\nfasta to be in GENCODE\
     \ format, and will split\nthe transcript name at the first '|' character.\nThese\
     \ reduced names will be used in the output\nand when looking for these transcripts\
     \ in a\ngene to transcript GTF."
-  synonyms:
-  - --gencode
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --features
   description: "This flag will expect the input reference to be\nin the tsv file format,\
     \ and will split the\nfeature name at the first 'tab' character.\nThese reduced\
     \ names will be used in the output\nand when looking for the sequence of the\n\
     features.GTF."
-  synonyms:
-  - --features
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --keepDuplicates
   description: "This flag will disable the default indexing\nbehavior of discarding\
     \ sequence-identical\nduplicate transcripts.  If this flag is passed,\nthen duplicate\
     \ transcripts that appear in the\ninput will be retained and quantified\nseparately."
-  synonyms:
-  - --keepDuplicates
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[ --threads ] arg (=2)     Number of threads to use during indexing.'
+  optional: true
   synonyms:
   - -p
+  description: '[ --threads ] arg (=2)     Number of threads to use during indexing.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Retain the fixed fasta file (without short\ntranscripts and duplicates,\
-    \ clipped, etc.)\ngenerated during indexing"
+  optional: true
   synonyms:
   - --keepFixedFasta
+  description: "Retain the fixed fasta file (without short\ntranscripts and duplicates,\
+    \ clipped, etc.)\ngenerated during indexing"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
   description: "[ --filterSize ] arg (=-1) The size of the Bloom filter that will\
     \ be used\nby TwoPaCo during indexing. The filter will be\nof size 2^{filterSize}.\
     \ The default value of -1\nmeans that the filter size will be\nautomatically set\
     \ based on the number of\ndistinct k-mers in the input, as estimated by\nnthll."
-  synonyms:
-  - -f
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
   description: "The directory location that will be used for\nTwoPaCo temporary files;\
     \ it will be created if\nneed be and be removed prior to indexing\ncompletion.\
     \ The default value will cause a\n(temporary) subdirectory of the salmon index\n\
     directory to be used for this purpose."
-  synonyms:
-  - --tmpdir
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sparse
   description: "Build the index using a sparse sampling of\nk-mer positions This will\
     \ require less memory\n(especially during quantification), but will\ntake longer\
     \ to construct and can slow down\nmapping / alignment"
-  synonyms:
-  - --sparse
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -d
   description: "[ --decoys ] arg           Treat these sequences ids from the reference\
     \ as\nthe decoys that may have sequence homologous to\nsome known transcript.\
     \ for example in case of\nthe genome, provide a list of chromosome name\n--- one\
     \ per line"
-  synonyms:
-  - -d
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=puff)            The type of index to build; the only option is\n\
-    \"puff\" in this version of salmon.\n"
+  optional: true
   synonyms:
   - --type
+  description: "(=puff)            The type of index to build; the only option is\n\
+    \"puff\" in this version of salmon.\n"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: '[ --help ]                 produce help message'
+  optional: true
   synonyms:
   - -h
+  description: '[ --help ]                 produce help message'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Version Info: This is the most recent version of salmon.\n\nIndex\n==========\n\
@@ -175,3 +175,4 @@ help_text: "Version Info: This is the most recent version of salmon.\n\nIndex\n=
   puff\" in this version of salmon.\n\n"
 generated_using:
 - --help
+docker_image:

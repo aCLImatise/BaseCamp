@@ -2,10 +2,10 @@ version 1.0
 
 task NucleoatacNuc {
   input {
-    Int? out
     File? bed
     File? vm_at
     File? bam
+    String? out
     File? fast_a
     Int? pwm
     File? sizes
@@ -21,10 +21,10 @@ task NucleoatacNuc {
   }
   command <<<
     nucleoatac nuc \
-      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
       ~{if defined(vm_at) then ("--vmat " +  '"' + vm_at + '"') else ""} \
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
       ~{if defined(pwm) then ("--pwm " +  '"' + pwm + '"') else ""} \
       ~{if defined(sizes) then ("--sizes " +  '"' + sizes + '"') else ""} \
@@ -38,11 +38,14 @@ task NucleoatacNuc {
       ~{if defined(redundant_sep) then ("--redundant_sep " +  '"' + redundant_sep + '"') else ""} \
       ~{if defined(sd) then ("--sd " +  '"' + sd + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    out: "[--fasta genome_seq] [--pwm Tn5_PWM]"
     bed: "Regions for which to do stuff."
     vm_at: "VMat object"
     bam: "Accepts sorted BAM file"
+    out: "give output basename"
     fast_a: "Indexed fasta file"
     pwm: "PWM descriptor file. Default is Human.PWM.txt included\\nin package"
     sizes: "File with fragment size distribution. Use if don't\\nwant calculation of fragment size"

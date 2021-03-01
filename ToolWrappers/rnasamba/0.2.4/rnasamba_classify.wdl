@@ -16,6 +16,9 @@ task RnasambaClassify {
       ~{if defined(protein_fast_a) then ("--protein_fasta " +  '"' + protein_fast_a + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     protein_fast_a: "output FASTA file containing translated sequences for\\nthe predicted coding ORFs. (default: None)"
     verbose: "print the progress of the classification. 0 = silent,\\n1 = current step. (default: 0)\\n"

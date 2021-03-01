@@ -38,6 +38,9 @@ task AugurExportV2 {
       ~{if (mini_fy_json) then "--minify-json" else ""} \
       ~{if (include_root_sequence) then "--include-root-sequence" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree: "Phylogenetic tree, usually output from `augur refine`"
     node_data: "JSON files containing metadata for nodes in the tree"

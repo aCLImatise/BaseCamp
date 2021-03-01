@@ -5,118 +5,118 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Install missing databases. Downloads and preps where\nnecessary (default:\
-    \ False)"
+  optional: true
   synonyms:
   - --install
+  description: "Install missing databases. Downloads and preps where\nnecessary (default:\
+    \ False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --database-dir
   description: "Directory to store databases. Existing databases will\nnot be overwritten.\
     \ By default, the database directory\nis $HOME/.dammit/databases. (default:\n\
     /root/.dammit/databases)"
-  synonyms:
-  - --database-dir
   args: !SimpleFlagArg
     name: DATABASE_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --busco-group
   description: "[metazoa, eukaryota, vertebrata, ...]\nWhich BUSCO group to use. Should\
     \ be chosen based on\nthe organism being annotated. Full list of options is\n\
     below. (default: metazoa)"
-  synonyms:
-  - --busco-group
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "For annotate, number of threads to pass to programs\nsupporting multithreading.\
-    \ For databases, number of\nsimultaneous tasks to execute. (default: 1)"
+  optional: true
   synonyms:
   - --n_threads
+  description: "For annotate, number of threads to pass to programs\nsupporting multithreading.\
+    \ For databases, number of\nsimultaneous tasks to execute. (default: 1)"
   args: !SimpleFlagArg
     name: N_THREADS
-  optional: true
 - !Flag
-  description: "A JSON file providing values to override built-in\nconfig. Advanced\
-    \ use only! (default: None)"
+  optional: true
   synonyms:
   - --config-file
+  description: "A JSON file providing values to override built-in\nconfig. Advanced\
+    \ use only! (default: None)"
   args: !SimpleFlagArg
     name: CONFIG_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --busco-config-file
   description: "Path to an alternative BUSCO config file; otherwise,\nBUSCO will attempt\
     \ to use its default installation\nwhich will likely only work on bioconda. Advanced\
     \ use\nonly! (default: None)"
-  synonyms:
-  - --busco-config-file
   args: !SimpleFlagArg
     name: BUSCO_CONFIG_FILE
-  optional: true
 - !Flag
-  description: 'Verbosity level for doit tasks. (default: 0)'
+  optional: true
   synonyms:
   - --verbosity
+  description: 'Verbosity level for doit tasks. (default: 0)'
   args: !ChoiceFlagArg
     choices: !!set
       '2':
       '0':
       '1':
-  optional: true
 - !Flag
-  description: 'Profile task execution. (default: False)'
+  optional: true
   synonyms:
   - --profile
+  description: 'Profile task execution. (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Ignore missing database tasks. (default: False)'
+  optional: true
   synonyms:
   - --force
+  description: 'Ignore missing database tasks. (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Keep original transcript names. Note: make sure your\ntranscript names\
-    \ do not contain unusual characters.\n(default: False)"
+  optional: true
   synonyms:
   - --no-rename
+  description: "Keep original transcript names. Note: make sure your\ntranscript names\
+    \ do not contain unusual characters.\n(default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --full
   description: "Run a \"complete\" annotation; includes uniref90, which\nis left out\
     \ of the default pipeline because it is huge\nand homology searches take a long\
     \ time. (default:\nFalse)"
-  synonyms:
-  - --full
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nr
   description: "Also include annotation to NR database, which is left\nout of the\
     \ default and \"full\" pipelines because it is\nhuge and homology searches take\
     \ a long time. (default:\nFalse)"
-  synonyms:
-  - --nr
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --quick
   description: "Run a \"quick\" annotation; excludes the Infernal Rfam\ntasks, the\
     \ HMMER Pfam tasks, and the LAST OrthoDB and\nuniref90 tasks. Best for users just\
     \ looking to get\nbasic stats and conditional reciprocal best LAST from\na protein\
     \ database. (default: False)"
-  synonyms:
-  - --quick
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: dammit databases [-h] [--install] [--database-dir DATABASE_DIR]\n\
@@ -171,3 +171,4 @@ help_text: "usage: dammit databases [-h] [--install] [--database-dir DATABASE_DI
   sordariomyceta, spirochaetes, tenericutes, tetrapoda, vertebrata\n"
 generated_using:
 - --help
+docker_image:

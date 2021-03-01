@@ -8,6 +8,9 @@ task SketchyList {
     sketchy list \
       ~{if defined(path) then ("--path " +  '"' + path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path: "Path to sketchy home directory [~/.sketchy]"
   }

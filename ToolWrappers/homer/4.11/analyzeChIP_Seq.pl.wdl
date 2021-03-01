@@ -14,6 +14,8 @@ task AnalyzeChIPSeqpl {
     Boolean? skip_freq
     Boolean? cpg
     Boolean? tag_go
+    Directory? normally_a_experimentsam
+    Directory? inputdirectory_go_expdirectorygoanalysis
     Directory exp_tag_directory
     String genome
     String? global
@@ -36,8 +38,13 @@ task AnalyzeChIPSeqpl {
       ~{if (mask) then "-mask" else ""} \
       ~{if (skip_freq) then "-skipFreq" else ""} \
       ~{if (cpg) then "-cpg" else ""} \
-      ~{if (tag_go) then "-tagGO" else ""}
+      ~{if (tag_go) then "-tagGO" else ""} \
+      ~{if defined(normally_a_experimentsam) then ("-A " +  '"' + normally_a_experimentsam + '"') else ""} \
+      ~{if defined(inputdirectory_go_expdirectorygoanalysis) then ("-D " +  '"' + inputdirectory_go_expdirectorygoanalysis + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     or: "(or)"
     i_raw: "[input alignment file2] ...(creates temporary input directory)"
@@ -51,6 +58,8 @@ task AnalyzeChIPSeqpl {
     skip_freq: "(skips nucleotide frequency and GC quality control calculations)"
     cpg: "(For motif finding, use CpG% sequence bias correction, default: GC%)"
     tag_go: "(perform Genome Ontology Analysis on tags - need ~ 3Gbs of memory)"
+    normally_a_experimentsam: "(normally -A experiment1.sam  ...)"
+    inputdirectory_go_expdirectorygoanalysis: "INPUT_DIRECTORY -go EXP_DIRECTORY/GOanalysis"
     exp_tag_directory: ""
     genome: ""
     global: ""

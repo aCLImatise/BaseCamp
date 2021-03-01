@@ -18,6 +18,9 @@ task VarlociraptorFiltercallsControlfdr {
       ~{if defined(min_len) then ("--minlen " +  '"' + min_len + '"') else ""} \
       ~{if defined(var) then ("--var " +  '"' + var + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     events: "...    Events to consider."
     fdr: "FDR to control for."

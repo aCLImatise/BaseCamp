@@ -16,6 +16,9 @@ task AlleyoopDedupBam {
       ~{if defined(tc) then ("-tc " +  '"' + tc + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
     tc: ""

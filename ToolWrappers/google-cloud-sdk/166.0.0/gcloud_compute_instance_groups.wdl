@@ -20,6 +20,9 @@ task GcloudComputeInstancegroups {
       ~{list_instances} \
       ~{set_named_ports}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     managed: "Read and manipulate Google Compute Engine managed instance groups."
     unmanaged: "Read and manipulate Google Compute Engine unmanaged instance group."

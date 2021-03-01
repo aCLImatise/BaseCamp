@@ -18,6 +18,9 @@ task Dshfiltersam {
       ~{if (input_sam_file) then "--input-sam-file" else ""} \
       ~{if (output_sam_file) then "--output-sam-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     range: "[class java.lang.String]  filter by range, specify as chrom:start-end in 0-based coordindates [optional]"

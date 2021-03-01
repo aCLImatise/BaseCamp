@@ -12,6 +12,9 @@ task HpDemoDload {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if (ref_only) then "--refonly" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "Output directory (default: .)"
     ref_only: "Does not run entire demo, only pulls the reference files\\n(default: False)\\n"

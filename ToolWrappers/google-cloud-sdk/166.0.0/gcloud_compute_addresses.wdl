@@ -16,6 +16,9 @@ task GcloudComputeAddresses {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     addresses: "SYNOPSIS"
     create: "Reserve IP addresses."

@@ -4,6 +4,9 @@ task MakeMatchListspl {
   command <<<
     makeMatchLists_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

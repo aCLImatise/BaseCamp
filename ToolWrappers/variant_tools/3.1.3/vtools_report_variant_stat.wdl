@@ -14,6 +14,9 @@ task VtoolsReportVariantStat {
       ~{if (group_samples_certain) then "-g" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     limiting_variants_samples: "[SAMPLES [SAMPLES ...]], --samples [SAMPLES [SAMPLES ...]]\\nLimiting variants from samples that match conditions\\nthat use columns shown in command 'vtools show sample'\\n(e.g. 'aff=1', 'filename like \\\"MG%\\\"'). If this\\nparameter is specified without a value, variants\\nbelonging to any of the samples will be counted. If\\nthis parameter is left unspecified, all variants,\\nincluding those that do not belong to any samples will\\nbe counted."
     group_samples_certain: "[GROUP_BY [GROUP_BY ...]], --group_by [GROUP_BY [GROUP_BY ...]], --group-by [GROUP_BY [GROUP_BY ...]]\\nGroup samples by certain conditions such as 'aff=1'. A\\ncommon usage is to group variants by 'filename' and\\n'sample_name' so that variant statistics are outputted\\nfor each sample."

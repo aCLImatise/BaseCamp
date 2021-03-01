@@ -2,9 +2,9 @@ version 1.0
 
 task TomboPlotMotifWithStats {
   input {
-    File? statistics_filename
     Array[Int] fast_five_based_irs
     String? motif
+    File? statistics_filename
     File? genome_fast_a
     Array[Int] control_fast_five_based_irs
     Boolean? plot_standard_model
@@ -21,9 +21,9 @@ task TomboPlotMotifWithStats {
   }
   command <<<
     tombo plot motif_with_stats \
-      ~{if defined(statistics_filename) then ("--statistics-filename " +  '"' + statistics_filename + '"') else ""} \
       ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
       ~{if defined(motif) then ("--motif " +  '"' + motif + '"') else ""} \
+      ~{if defined(statistics_filename) then ("--statistics-filename " +  '"' + statistics_filename + '"') else ""} \
       ~{if defined(genome_fast_a) then ("--genome-fasta " +  '"' + genome_fast_a + '"') else ""} \
       ~{if defined(control_fast_five_based_irs) then ("--control-fast5-basedirs " +  '"' + control_fast_five_based_irs + '"') else ""} \
       ~{if (plot_standard_model) then "--plot-standard-model" else ""} \
@@ -38,10 +38,13 @@ task TomboPlotMotifWithStats {
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    statistics_filename: "--genome-fasta GENOME_FASTA\\n[--control-fast5-basedirs CONTROL_FAST5_BASEDIRS [CONTROL_FAST5_BASEDIRS ...]]\\n[--plot-standard-model]\\n[--plot-alternate-model {dam,CpG,6mA,5mC,dcm}]\\n[--overplot-threshold OVERPLOT_THRESHOLD]\\n[--num-regions NUM_REGIONS]\\n[--num-context NUM_CONTEXT]\\n[--num-statistics NUM_STATISTICS]\\n[--coverage-dampen-counts COVERAGE_DAMPEN_COUNTS COVERAGE_DAMPEN_COUNTS]\\n[--pdf-filename PDF_FILENAME]\\n[--corrected-group CORRECTED_GROUP]\\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\\n[--quiet] [--help]"
     fast_five_based_irs: "Directories containing fast5 files."
     motif: "Motif of interest at which to plot signal and\\nstatsitics. Supports IUPAC single letter codes (use T\\nfor RNA)."
+    statistics_filename: "File to save/load genomic base anchored statistics."
     genome_fast_a: "FASTA file used to re-squiggle. For faster sequence\\naccess."
     control_fast_five_based_irs: "Set of directories containing fast5 files for control\\nreads, containing only canonical nucleotides."
     plot_standard_model: "Add default standard model distribution to the plot."

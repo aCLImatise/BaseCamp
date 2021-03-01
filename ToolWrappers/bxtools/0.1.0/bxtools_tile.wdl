@@ -18,6 +18,9 @@ task BxtoolsTile {
       ~{if (bed) then "--bed" else ""} \
       ~{if (tag) then "--tag" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Set verbose output"
     width: "Width of the tile [1000]"

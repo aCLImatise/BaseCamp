@@ -12,6 +12,9 @@ task MatchesByFeature {
       ~{gff_features} \
       ~{match_files}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff_three_file: ""
     gff_features: ""

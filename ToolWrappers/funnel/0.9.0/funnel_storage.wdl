@@ -18,6 +18,9 @@ task FunnelStorage {
       ~{stat_task} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Config File"
     get: "Get the object at the given URL."

@@ -18,6 +18,9 @@ task TripailleAnalysisAddAnalysis {
       ~{if defined(description) then ("--description " +  '"' + description + '"') else ""} \
       ~{if defined(date_executed) then ("--date_executed " +  '"' + date_executed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     algorithm: "analysis algorithm"
     source_version: "analysis sourceversion"

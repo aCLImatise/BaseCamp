@@ -22,6 +22,9 @@ task SeqseqpanExtract {
       ~{if defined(genome_desc) then ("--genome_desc " +  '"' + genome_desc + '"') else ""} \
       ~{if defined(extract_region) then ("--extractregion " +  '"' + extract_region + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Suppress warnings."
     output_path: "path to output directory"

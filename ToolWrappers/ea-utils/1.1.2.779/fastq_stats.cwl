@@ -3,43 +3,43 @@ id: fastq_stats.cwl
 inputs:
 - id: in_cyclemax_max_cycles
   doc: 'cyclemax: max cycles for which following quality stats are produced [35]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_window_max_window
   doc: 'window: max window size for generating duplicate read statistics [2000000]'
-  type: long
+  type: long?
   inputBinding:
     prefix: -w
 - id: in_debug_prints_statements
   doc: 'debug: prints out debug statements'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
-- id: in_duplicate_read_statistics
+- id: in_do_duplicate_read
   doc: don't do duplicate read statistics
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -D
 - id: in_number_top_duplicate
   doc: number of top duplicate reads to display
-  type: long
+  type: long?
   inputBinding:
     prefix: -s
-- id: in_output_fastx_statistics
+- id: in_output_fastx_requires
   doc: output fastx statistics (requires an output filename)
-  type: File
+  type: File?
   inputBinding:
     prefix: -x
 - id: in_output_base_breakdown
   doc: "output base breakdown by per phred quality at every cycle.\nIt sets cylemax\
     \ to longest read length"
-  type: long
+  type: long?
   inputBinding:
     prefix: -b
 - id: in_output_length_counts
   doc: Output length counts
-  type: long
+  type: long?
   inputBinding:
     prefix: -L
 - id: in_reads
@@ -81,11 +81,12 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_output_fastx_statistics
+- id: out_output_fastx_requires
   doc: output fastx statistics (requires an output filename)
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_output_fastx_statistics)
+    glob: $(inputs.in_output_fastx_requires)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fastq-stats

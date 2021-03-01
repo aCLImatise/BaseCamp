@@ -12,11 +12,9 @@ task Iridauploader {
     Boolean? cp
     Boolean? cb
     Boolean? cr
-    String files_dot
   }
   command <<<
     irida_uploader \
-      ~{files_dot} \
       ~{if defined(directory) then ("--directory " +  '"' + directory + '"') else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if (force) then "--force" else ""} \
@@ -28,6 +26,9 @@ task Iridauploader {
       ~{if (cb) then "-cb" else ""} \
       ~{if (cr) then "-cr" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory: "Location of sequencing run to upload.\\nDirectory must be writable."
     config: "Path to an alternative configuration file. This\\noverrides the default config file in the config\\ndirectory"
@@ -39,7 +40,6 @@ task Iridauploader {
     cp: "[CONFIG_PASSWORD], --config_password [CONFIG_PASSWORD]\\nOverride \\\"password\\\" in config file. This corresponds\\nto your IRIDA account."
     cb: "[CONFIG_BASE_URL], --config_base_url [CONFIG_BASE_URL]\\nOverride \\\"base_url\\\" in config file. The api url for\\nyour irida instance (example:\\nhttps://my.irida.server/api/)"
     cr: "[CONFIG_PARSER], --config_parser [CONFIG_PARSER]\\nOverride \\\"parser\\\" in config file. Choose the type of\\nsequencer data that is being uploaded. Supported\\nparsers: ['miseq', 'miseq_v26', 'miseq_v31',\\n'miniseq', 'nextseq', 'iseq', 'directory']"
-    files_dot: "-ci [CONFIG_CLIENT_ID], --config_client_id [CONFIG_CLIENT_ID]"
   }
   output {
     File out_stdout = stdout()

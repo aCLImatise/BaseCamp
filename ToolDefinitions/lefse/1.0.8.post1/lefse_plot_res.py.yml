@@ -3,43 +3,95 @@ command:
 - lefse-plot_res.py
 positional:
 - !Positional
-  description: tab delimited input file
+  optional: false
   position: 0
   name: INPUT_FILE
-  optional: false
+  description: tab delimited input file
 - !Positional
-  description: the file for the output image
+  optional: false
   position: 1
   name: OUTPUT_FILE
-  optional: false
+  description: the file for the output image
 named:
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - --feature_font_size
+  description: the file for the output image
   args: !SimpleFlagArg
     name: FEATURE_FONT_SIZE
+- !Flag
   optional: true
+  synonyms:
+  - --format
+  description: the format for the output file
+  args: !ChoiceFlagArg
+    choices: !!set
+      svg:
+      pdf:
+      png:
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  - --title
+  - --title_font_size
+  - --class_legend_font_size
+  - --width
+  - --height
+  description: only for vertical histograms
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - --left_space
+  - --right_space
+  - --orientation
+  - --autoscale
+  - --background_color
+  description: set the color of the background
+  args: !SimpleFlagArg
+    name: LS
+- !Flag
+  optional: true
+  synonyms:
+  - --subclades
+  description: "number of label levels to be dislayed (starting from\nthe leaves,\
+    \ -1 means all the levels, 1 is default )"
+  args: !SimpleFlagArg
+    name: N_SCL
+- !Flag
+  optional: true
+  synonyms:
+  - --max_feature_len
+  description: Maximum length of feature strings (def 60)
+  args: !SimpleFlagArg
+    name: MAX_FEATURE_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - --all_feats
+  - --otu_only
+  description: "Plot only species resolved OTUs (as opposed to all\nlevels)"
+  args: !SimpleFlagArg
+    name: ALL_FEATS
+- !Flag
+  optional: true
+  synonyms:
+  - --report_features
+  description: Report important features to STDOUT
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--feature_font_size FEATURE_FONT_SIZE\n\
-    the file for the output image\n--format {png,svg,pdf}\nthe format for the output\
-    \ file\n--dpi DPI\n--title TITLE\n--title_font_size TITLE_FONT_SIZE\n--class_legend_font_size\
-    \ CLASS_LEGEND_FONT_SIZE\n--width WIDTH\n--height HEIGHT       only for vertical\
-    \ histograms\n--left_space LS\n--right_space RS\n--orientation {h,v}\n--autoscale\
-    \ {0,1}\n--background_color {k,w}\nset the color of the background\n--subclades\
-    \ N_SCL     number of label levels to be dislayed (starting from\nthe leaves,\
-    \ -1 means all the levels, 1 is default )\n--max_feature_len MAX_FEATURE_LEN\n\
-    Maximum length of feature strings (def 60)\n--all_feats ALL_FEATS\n--otu_only\
-    \            Plot only species resolved OTUs (as opposed to all\nlevels)\n--report_features\
-    \     Report important features to STDOUT\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: lefse-plot_res.py [-h] [--feature_font_size FEATURE_FONT_SIZE]\n\
@@ -69,3 +121,4 @@ help_text: "usage: lefse-plot_res.py [-h] [--feature_font_size FEATURE_FONT_SIZE
   \     Report important features to STDOUT\n"
 generated_using:
 - --help
+docker_image:

@@ -12,6 +12,9 @@ task FaRandomize {
       ~{randomized_dot_fa} \
       ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seed: ""
     in_dot_fa: ""

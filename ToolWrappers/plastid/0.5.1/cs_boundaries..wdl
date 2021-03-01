@@ -8,6 +8,9 @@ task CsBoundaries {
     cs boundaries_ \
       ~{cs}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cs: ""
   }

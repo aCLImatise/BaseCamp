@@ -12,6 +12,9 @@ task Checksub {
       ~{if (input_data_binary) then "-b" else ""} \
       ~{if (output_data_default) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_data_type: "Input data [Data In]\\nData Type = Seq-submit"
     input_data_binary: "Input data is binary [T/F]  Optional\\ndefault = F"

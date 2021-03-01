@@ -12,6 +12,9 @@ task ArrowAnnotationsLoadLegacyGff3 {
       ~{gff_three} \
       ~{if defined(source) then ("--source " +  '"' + source + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     source: "URL where the input dataset can be found."
     organism: ""

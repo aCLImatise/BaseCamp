@@ -10,6 +10,9 @@ task Assemblyscan {
       ~{assembly_summary_do_tpy} \
       ~{assembly}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly_summary_do_tpy: ""
     assembly: ""

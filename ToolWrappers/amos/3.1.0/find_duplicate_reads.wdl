@@ -8,6 +8,9 @@ task Findduplicatereads {
     find_duplicate_reads \
       ~{bank_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bank_name: ""
   }

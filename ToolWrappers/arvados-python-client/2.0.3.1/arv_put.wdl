@@ -72,6 +72,9 @@ task Arvput {
       ~{if (no_cache) then "--no-cache" else ""} \
       ~{if defined(retries) then ("--retries " +  '"' + retries + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     normalize: "Normalize the manifest by re-ordering files and\\nstreams after writing data."
     dry_run: "Don't actually upload files, but only check if any\\nfile should be uploaded. Exit with code=2 when files\\nare pending for upload."

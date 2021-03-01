@@ -8,6 +8,9 @@ task AssemblePairspyAssemblepass {
     AssemblePairs_py assemble_pass \
       ~{assemble_pairs_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assemble_pairs_do_tpy: ""
   }

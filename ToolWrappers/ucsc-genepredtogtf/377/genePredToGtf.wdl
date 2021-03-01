@@ -18,6 +18,9 @@ task GenePredToGtf {
       ~{if defined(source) then ("-source " +  '"' + source + '"') else ""} \
       ~{if (add_comments) then "-addComments" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     utr: "- Add 5UTR and 3UTR features"
     honor_cds_stat: "- use cdsStartStat/cdsEndStat when defining start/end\\ncodon records"

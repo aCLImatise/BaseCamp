@@ -12,6 +12,9 @@ task SeedRandpyN {
       ~{seed} \
       ~{n}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     see_dr_and_do_tpy: ""
     seed: ""

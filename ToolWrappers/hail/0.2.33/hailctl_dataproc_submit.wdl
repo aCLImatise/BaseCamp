@@ -20,6 +20,9 @@ task HailctlDataprocSubmit {
       ~{if defined(g_cloud_configuration) then ("--gcloud_configuration " +  '"' + g_cloud_configuration + '"') else ""} \
       ~{if (dry_run) then "--dry-run" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     files: "Comma-separated list of files to add to the working\\ndirectory of the Hail application."
     py_files: "Comma-separated list of files (or directories with\\npython files) to add to the PYTHONPATH."

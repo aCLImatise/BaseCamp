@@ -5,313 +5,313 @@ command:
 positional: []
 named:
 - !Flag
-  description: "path to a (multi)fasta or a directory containing one\nor more chromosomal\
-    \ sequences in fasta format.\nRequired, unless using a config file"
+  optional: true
   synonyms:
   - -r
   - --reference_fasta
+  description: "path to a (multi)fasta or a directory containing one\nor more chromosomal\
+    \ sequences in fasta format.\nRequired, unless using a config file"
   args: !SimpleFlagArg
     name: reference.fasta
-  optional: true
 - !Flag
-  description: 'config file; if none given, create one; default: /'
+  optional: true
   synonyms:
   - -c
   - --config
+  description: 'config file; if none given, create one; default: /'
   args: !SimpleFlagArg
     name: config_file
-  optional: true
 - !Flag
-  description: "/output/dir/, --output /output/dir/\noutput directory; default:\n\
-    /2020-09-10T0043_riboSeed_pipeline_results/"
+  optional: true
   synonyms:
   - -o
+  description: "/output/dir/, --output /output/dir/\noutput directory; default:\n\
+    /2020-09-10T0043_riboSeed_pipeline_results/"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'prefix for results files; default: inferred'
+  optional: true
   synonyms:
   - -e
   - --experiment_name
+  description: 'prefix for results files; default: inferred'
   args: !SimpleFlagArg
     name: experiment_name
-  optional: true
 - !Flag
-  description: "whether to look for eukaryotic, archaeal, or bacterial\nrDNA; default:\
-    \ bac"
+  optional: true
   synonyms:
   - -K
   - --Kingdom
+  description: "whether to look for eukaryotic, archaeal, or bacterial\nrDNA; default:\
+    \ bac"
   args: !ChoiceFlagArg
     choices: !!set
-      euk:
+      mito:
       arc:
       bac:
-      mito:
-  optional: true
+      euk:
 - !Flag
-  description: ":23S:5S, --specific_features 16S:23S:5S\ncolon:separated -- specific\
-    \ features; default:\n16S:23S:5S"
+  optional: true
   synonyms:
   - -S
+  description: ":23S:5S, --specific_features 16S:23S:5S\ncolon:separated -- specific\
+    \ features; default:\n16S:23S:5S"
   args: !SimpleFlagArg
     name: 16S
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --clusters
   description: "number of rDNA clusters;if submitting multiple\nrecords, must be a\
     \ colon:separated list whose length\nmatches number of genbank records. Default\
     \ is inferred\nfrom specific feature with fewest hits"
-  synonyms:
-  - --clusters
   args: !SimpleFlagArg
     name: str
-  optional: true
 - !Flag
-  description: "clustered_loci file output from riboSelect;this is\ncreated by default\
-    \ from run_riboSeed, but if you don't\nagree with the operon structure predicted\
-    \ by\nriboSelect, you can use your alternate clustered_loci\nfile. default: None"
+  optional: true
   synonyms:
   - -C
   - --cluster_file
+  description: "clustered_loci file output from riboSelect;this is\ncreated by default\
+    \ from run_riboSeed, but if you don't\nagree with the operon structure predicted\
+    \ by\nriboSelect, you can use your alternate clustered_loci\nfile. default: None"
   args: !SimpleFlagArg
     name: str
-  optional: true
 - !Flag
-  description: path to forward fastq file, can be compressed
+  optional: true
   synonyms:
   - -F
   - --fastq1
+  description: path to forward fastq file, can be compressed
   args: !SimpleFlagArg
     name: reads_F.fq
-  optional: true
 - !Flag
-  description: path to reverse fastq file, can be compressed
+  optional: true
   synonyms:
   - -R
   - --fastq2
+  description: path to reverse fastq file, can be compressed
   args: !SimpleFlagArg
     name: reads_R.fq
-  optional: true
 - !Flag
-  description: path to single fastq file
+  optional: true
   synonyms:
   - -S1
   - --fastq_single1
+  description: path to single fastq file
   args: !SimpleFlagArg
     name: reads_S.fq
-  optional: true
 - !Flag
-  description: "If using smalt, this sets the '-m' param; default with\nsmalt is inferred\
-    \ from read length. If using BWA,\nreads mapping with ASscore lower than this\
-    \ will be\nrejected; default with BWA is half of read length"
+  optional: true
   synonyms:
   - -s
   - --score_min
+  description: "If using smalt, this sets the '-m' param; default with\nsmalt is inferred\
+    \ from read length. If using BWA,\nreads mapping with ASscore lower than this\
+    \ will be\nrejected; default with BWA is half of read length"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ref_as_contig
   description: "ignore: reference will not be used in subassembly.\ntrusted: SPAdes\
     \ will use the seed sequences as a\n--trusted-contig; untrusted: SPAdes will treat\
     \ as\n--untrusted-contig. infer: if mapping percentage over\n80%, 'trusted'; else\
     \ 'untrusted'. See SPAdes docs for\ndetails. default: infer"
-  synonyms:
-  - --ref_as_contig
   args: !ChoiceFlagArg
     choices: !!set
+      trusted:
       untrusted:
       ignore:
       infer:
-      trusted:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --linear
   description: "if genome is known to not be circular and a region of\ninterest (including\
     \ flanking bits) extends past\nchromosome end, this extends the seqence past\n\
     chromosome origin forward by --padding; default: False"
-  synonyms:
-  - --linear
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "assembler to use for subassembly scheme. SPAdes is\nused by default,\
-    \ but Skesa is a new addition that\nseems to work for subassembly and is faster"
+  optional: true
   synonyms:
   - --subassembler
+  description: "assembler to use for subassembly scheme. SPAdes is\nused by default,\
+    \ but Skesa is a new addition that\nseems to work for subassembly and is faster"
   args: !ChoiceFlagArg
     choices: !!set
-      spades:
       skesa:
-  optional: true
+      spades:
 - !Flag
-  description: "Don't do an assembly, just generate the long read\n'seeds'; default:\
-    \ False"
+  optional: true
   synonyms:
   - -j
   - --just_seed
+  description: "Don't do an assembly, just generate the long read\n'seeds'; default:\
+    \ False"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'length of flanking regions, in bp; default: 1000'
+  optional: true
   synonyms:
   - -l
   - --flanking_length
+  description: 'length of flanking regions, in bp; default: 1000'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -k
   description: ",33,55,77,99,127, --kmers 21,33,55,77,99,127\nkmers used for final\
     \ assembly, separated by commas\nsuch as21,33,55,77,99,127. Can be set to 'auto',\
     \ where\nSPAdes chooses. We ensure kmers are not too big or too\nclose to read\
     \ length; default: 21,33,55,77,99,127"
-  synonyms:
-  - -k
   args: !SimpleFlagArg
     name: '21'
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --force_kmers
   description: "skip checking to see if kmerchoice is appropriate to\nread length.\
     \ Sometimes kmers longer than reads can\nhelp in the final assembly, as the long\
     \ reads\ngenerated by riboSeed contain kmers longer than the\nread length"
-  synonyms:
-  - --force_kmers
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ",33,55,77,99, --pre_kmers 21,33,55,77,99\nkmers used during seeding\
-    \ assemblies, separated bt\ncommas; default: 21,33,55,77,99"
+  optional: true
   synonyms:
   - -p
+  description: ",33,55,77,99, --pre_kmers 21,33,55,77,99\nkmers used during seeding\
+    \ assemblies, separated bt\ncommas; default: 21,33,55,77,99"
   args: !SimpleFlagArg
     name: '21'
-  optional: true
 - !Flag
-  description: "a subassembly won't be performed if this minimum depth\nis not achieved\
-    \ on both the 3' and5' end of the\npseudocontig. default: 0"
+  optional: true
   synonyms:
   - -d
   - --min_flank_depth
+  description: "a subassembly won't be performed if this minimum depth\nis not achieved\
+    \ on both the 3' and5' end of the\npseudocontig. default: 0"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "if --clean_temps, mapping files will be removed once\nthey are no\
-    \ no longer needed during the mapping\niterations to save space; default: False"
+  optional: true
   synonyms:
   - --clean_temps
+  description: "if --clean_temps, mapping files will be removed once\nthey are no\
+    \ no longer needed during the mapping\niterations to save space; default: False"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "if iterations>1, multiple seedings will occur after\nsubassembly of\
-    \ seed regions; if setting --target_len,\nseedings will continue until --iterations\
-    \ are\ncompleted or --target_len is matched or exceeded;\ndefault: 3"
+  optional: true
   synonyms:
   - -i
   - --iterations
+  description: "if iterations>1, multiple seedings will occur after\nsubassembly of\
+    \ seed regions; if setting --target_len,\nseedings will continue until --iterations\
+    \ are\ncompleted or --target_len is matched or exceeded;\ndefault: 3"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "if --skip_control, no de novo assembly will be done;\ndefault: False"
+  optional: true
   synonyms:
   - --skip_control
+  description: "if --skip_control, no de novo assembly will be done;\ndefault: False"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Logger writes debug to file in output dir; this sets\nverbosity level\
-    \ sent to stderr. 1 = debug(), 2 =\ninfo(), 3 = warning(), 4 = error() and 5 =\
-    \ critical();\ndefault: 2"
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Logger writes debug to file in output dir; this sets\nverbosity level\
+    \ sent to stderr. 1 = debug(), 2 =\ninfo(), 3 = warning(), 4 = error() and 5 =\
+    \ critical();\ndefault: 2"
   args: !ChoiceFlagArg
     choices: !!set
       '2':
+      '5':
+      '3':
       '1':
       '4':
-      '3':
-      '5':
-  optional: true
 - !Flag
-  description: 'cores used; default: None'
+  optional: true
   synonyms:
   - --cores
+  description: 'cores used; default: None'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'cores for multiprocessing; default: 8'
+  optional: true
   synonyms:
   - --memory
+  description: 'cores for multiprocessing; default: 8'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Ignore certain errors, full speed ahead!
+  optional: true
   synonyms:
   - --damn_the_torpedos
+  description: Ignore certain errors, full speed ahead!
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[{sketch,spec,snag,score,stack,none} ...]\nWhich assessment stages\
-    \ you wish to run: sketch, spec,\nsnag, score, stack. Any combination thereof"
+  optional: true
   synonyms:
   - --stages
+  description: "[{sketch,spec,snag,score,stack,none} ...]\nWhich assessment stages\
+    \ you wish to run: sketch, spec,\nsnag, score, stack. Any combination thereof"
   args: !ChoiceFlagArg
     choices: !!set
-      score:
-      none:
-      sketch:
       spec:
-      snag:
+      score:
+      sketch:
       stack:
-  optional: true
+      none:
+      snag:
 - !Flag
-  description: "if your cores are hyperthreaded, set number threads to\nthe number\
-    \ of threads per processer.If unsure, see\n'cat /proc/cpuinfo' under 'cpu cores',\
-    \ or 'lscpu'\nunder 'Thread(s) per core'.: 1"
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: "if your cores are hyperthreaded, set number threads to\nthe number\
+    \ of threads per processer.If unsure, see\n'cat /proc/cpuinfo' under 'cpu cores',\
+    \ or 'lscpu'\nunder 'Thread(s) per core'.: 1"
   args: !ChoiceFlagArg
     choices: !!set
-      '4':
       '2':
       '1':
-  optional: true
+      '4':
 - !Flag
+  optional: true
+  synonyms:
+  - --additional_libs
   description: "include these libraries in final assembly in addition\nto the reads\
     \ supplied as -F and -R. They must be\nsupplied according to SPAdes arg naming\
     \ scheme. Use at\nown risk.default: None"
-  synonyms:
-  - --additional_libs
   args: !SimpleFlagArg
     name: str
-  optional: true
 - !Flag
-  description: "if --serialize, runs seeding and assembly without\nmultiprocessing.\
-    \ We recommend this for machines with\nless than 8GB RAM: False"
+  optional: true
   synonyms:
   - -z
   - --serialize
+  description: "if --serialize, runs seeding and assembly without\nmultiprocessing.\
+    \ We recommend this for machines with\nless than 8GB RAM: False"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Displays this help message
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Displays this help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: ribo run [-r reference.fasta] -c config_file [-o /output/dir/]\n\
   \                [-e experiment_name] [-K {bac,euk,arc,mito}] [-S 16S:23S:5S]\n\
   \                [--clusters str] [-C str] [-F reads_F.fq] [-R reads_R.fq]\n   \
@@ -416,3 +416,4 @@ help_text: "usage: ribo run [-r reference.fasta] -c config_file [-o /output/dir/
   \ program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

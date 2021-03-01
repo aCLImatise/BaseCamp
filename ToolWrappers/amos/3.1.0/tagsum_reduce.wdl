@@ -4,6 +4,9 @@ task Tagsumreduce {
   command <<<
     tagsum_reduce
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -3,7 +3,7 @@ id: chromosomer_assemble_fragment_fasta.cwl
 inputs:
 - id: in_s
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_chromosome_r
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - chromosomer

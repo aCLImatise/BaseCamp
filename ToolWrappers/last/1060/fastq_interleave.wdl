@@ -4,6 +4,9 @@ task Fastqinterleave {
   command <<<
     fastq_interleave
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

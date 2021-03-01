@@ -10,6 +10,9 @@ task ProteinorthoDoMclpl {
       ~{cores} \
       ~{blast_graph_one}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cores: ""
     blast_graph_one: ""

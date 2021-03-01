@@ -12,12 +12,11 @@ task Rsemevalcalculatescore {
     Boolean? bowtie_two
     Boolean? sam
     Boolean? bam
-    Int? p_slash_num_threads
+    Int? num_threads
     Boolean? output_bam
     Boolean? sampling_for_bam
     Int? seed
-    Boolean? q_slash_quiet
-    Boolean? h_slash_help
+    Boolean? quiet
     File? sam_header_info
     Int? seed_length
     Int? tag
@@ -52,7 +51,7 @@ task Rsemevalcalculatescore {
     String sample_name_dot_transcript_dot_sorted_do_tba_mdot_bai
     String sample_name_dot_time
     String sample_name_dot_stat
-    Int rsemeval_score_can
+    Int rsemeval_score_found
   }
   command <<<
     rsem_eval_calculate_score \
@@ -66,7 +65,7 @@ task Rsemevalcalculatescore {
       ~{sample_name_dot_transcript_dot_sorted_do_tba_mdot_bai} \
       ~{sample_name_dot_time} \
       ~{sample_name_dot_stat} \
-      ~{rsemeval_score_can} \
+      ~{rsemeval_score_found} \
       ~{if defined(overlap_size) then ("--overlap-size " +  '"' + overlap_size + '"') else ""} \
       ~{if defined(transcript_length_parameters) then ("--transcript-length-parameters " +  '"' + transcript_length_parameters + '"') else ""} \
       ~{if defined(transcript_length_mean) then ("--transcript-length-mean " +  '"' + transcript_length_mean + '"') else ""} \
@@ -77,12 +76,11 @@ task Rsemevalcalculatescore {
       ~{if (bowtie_two) then "--bowtie2" else ""} \
       ~{if (sam) then "--sam" else ""} \
       ~{if (bam) then "--bam" else ""} \
-      ~{if defined(p_slash_num_threads) then ("-p/--num-threads " +  '"' + p_slash_num_threads + '"') else ""} \
+      ~{if defined(num_threads) then ("--num-threads " +  '"' + num_threads + '"') else ""} \
       ~{if (output_bam) then "--output-bam" else ""} \
       ~{if (sampling_for_bam) then "--sampling-for-bam" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{if (q_slash_quiet) then "-q/--quiet" else ""} \
-      ~{if (h_slash_help) then "-h/--help" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(sam_header_info) then ("--sam-header-info " +  '"' + sam_header_info + '"') else ""} \
       ~{if defined(seed_length) then ("--seed-length " +  '"' + seed_length + '"') else ""} \
       ~{if defined(tag) then ("--tag " +  '"' + tag + '"') else ""} \
@@ -108,6 +106,9 @@ task Rsemevalcalculatescore {
       ~{if defined(temporary_folder) then ("--temporary-folder " +  '"' + temporary_folder + '"') else ""} \
       ~{if (time) then "--time" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     overlap_size: "The minimum overlap size required to join two reads together.\\n(Default: 0)"
     transcript_length_parameters: "Read the true transcript length distribution's mean and standard\\ndeviation from <file>. This option is mutually exclusive with\\n'--transcript-length-mean' and '--transcript-length-sd'. (Default:\\noff)"
@@ -119,12 +120,11 @@ task Rsemevalcalculatescore {
     bowtie_two: "Use Bowtie 2 instead of Bowtie to align reads. Since currently\\nRSEM-EVAL does not handle indel, local and discordant alignments,\\nthe Bowtie2 parameters are set in a way to avoid those alignments.\\nIn particular, we use options '--sensitive --dpad 0 --gbar 99999999\\n--mp 1,1 --np 1 --score-min L,0,-0.1' by default. \\\"-0.1\\\", the last\\nparameter of '--score-min' is the negative value of the maximum\\nmismatch rate allowed. This rate can be set by option\\n'--bowtie2-mismatch-rate'. If reads are paired-end, we additionally\\nuse options '--no-mixed' and '--no-discordant'. (Default: off)"
     sam: "Input file is in SAM format. (Default: off)"
     bam: "Input file is in BAM format. (Default: off)"
-    p_slash_num_threads: "Number of threads to use. Both Bowtie/Bowtie2, expression estimation\\nand 'samtools sort' will use this many threads. (Default: 1)"
+    num_threads: "Number of threads to use. Both Bowtie/Bowtie2, expression estimation\\nand 'samtools sort' will use this many threads. (Default: 1)"
     output_bam: "Generate BAM outputs. (Default: off)"
     sampling_for_bam: "When RSEM-EVAL generates a BAM file, instead of outputing all\\nalignments a read has with their posterior probabilities, one\\nalignment is sampled according to the posterior probabilities. The\\nsampling procedure includes the alignment to the \\\"noise\\\" transcript,\\nwhich does not appear in the BAM file. Only the sampled alignment\\nhas a weight of 1. All other alignments have weight 0. If the\\n\\\"noise\\\" transcript is sampled, all alignments appeared in the BAM\\nfile should have weight 0. (Default: off)"
     seed: "Set the seed for the random number generators used in calculating\\nposterior mean estimates and credibility intervals. The seed must be\\na non-negative 32 bit interger. (Default: off)"
-    q_slash_quiet: "Suppress the output of logging information. (Default: off)"
-    h_slash_help: "Show help information."
+    quiet: "Suppress the output of logging information. (Default: off)"
     sam_header_info: "RSEM-EVAL reads header information from input by default. If this\\noption is on, header information is read from the specified file.\\nFor the format of the file, please see SAM official website.\\n(Default: \\\"\\\")"
     seed_length: "Seed length used by the read aligner. Providing the correct value is\\nimportant for RSEM-EVAL. If RSEM-EVAL runs Bowtie, it uses this\\nvalue for Bowtie's seed length parameter. Any read with its or at\\nleast one of its mates' (for paired-end reads) length less than this\\nvalue will be ignored. If the references are not added poly(A)\\ntails, the minimum allowed value is 5, otherwise, the minimum\\nallowed value is 25. Note that this script will only check if the\\nvalue >= 5 and give a warning message if the value < 25 but >= 5.\\n(Default: 25)"
     tag: "The name of the optional field used in the SAM input for identifying\\na read with too many valid alignments. The field should have the\\nformat <tagName>:i:<value>, where a <value> bigger than 0 indicates\\na read with too many alignments. (Default: \\\"\\\")"
@@ -159,7 +159,7 @@ task Rsemevalcalculatescore {
     sample_name_dot_transcript_dot_sorted_do_tba_mdot_bai: "Only generated when --output-bam is specified.\\n'sample_name.transcript.bam' is a BAM-formatted file of read\\nalignments in transcript coordinates. The MAPQ field of each\\nalignment is set to min(100, floor(-10 * log10(1.0 - w) + 0.5)),\\nwhere w is the posterior probability of that alignment being the\\ntrue mapping of a read. In addition, RSEM-EVAL pads a new tag\\nZW:f:value, where value is a single precision floating number\\nrepresenting the posterior probability. Because this file contains\\nall alignment lines produced by bowtie or user-specified aligners,\\nit can also be used as a replacement of the aligner generated\\nBAM/SAM file. For paired-end reads, if one mate has alignments but\\nthe other does not, this file marks the alignable mate as\\n\\\"unmappable\\\" (flag bit 0x4) and appends an optional field \\\"Z0:A:!\\\".\\n'sample_name.transcript.sorted.bam' and\\n'sample_name.transcript.sorted.bam.bai' are the sorted BAM file and\\nindices generated by samtools (included in RSEM-EVAL package)."
     sample_name_dot_time: "Only generated when --time is specified.\\nIt contains time (in seconds) consumed by building references,\\naligning reads, estimating expression levels and calculating\\ncredibility intervals."
     sample_name_dot_stat: "This is a folder instead of a file. All model related statistics are\\nstored in this folder. Use 'rsem-plot-model' can generate plots\\nusing this folder."
-    rsemeval_score_can: "The RSEM-EVAL score can be found in 'assembly1_rsem_eval.score' and the"
+    rsemeval_score_found: "The RSEM-EVAL score can be found in 'assembly1_rsem_eval.score' and the"
   }
   output {
     File out_stdout = stdout()

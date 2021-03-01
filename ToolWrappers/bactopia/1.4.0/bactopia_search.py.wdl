@@ -28,6 +28,9 @@ task Bactopiasearchpy {
       ~{if defined(min_coverage) then ("--min_coverage " +  '"' + min_coverage + '"') else ""} \
       ~{if defined(genome_size) then ("--genome_size " +  '"' + genome_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exact_tax_on: "Exclude Taxon ID descendents."
     outdir: "Directory to write output. (Default: .)"

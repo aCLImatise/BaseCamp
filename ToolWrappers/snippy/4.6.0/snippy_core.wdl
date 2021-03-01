@@ -24,6 +24,9 @@ task Snippycore {
       ~{if defined(mask_char) then ("--mask-char " +  '"' + mask_char + '"') else ""} \
       ~{if defined(in_prefix) then ("--inprefix " +  '"' + in_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "!        Output verbose debug info (default '0')."
     check: "!        Check dependencies and exit (default '0')."

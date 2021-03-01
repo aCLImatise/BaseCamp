@@ -40,6 +40,9 @@ task Ococo {
       ~{if defined(min_cov) then ("--min-cov " +  '"' + min_cov + '"') else ""} \
       ~{if defined(maj_th_res) then ("--maj-thres " +  '"' + maj_th_res + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sambam_file: "input SAM/BAM file (- for standard input)"
     fast_a_ref: "initial FASTA reference (otherwise seq of N's is used)"

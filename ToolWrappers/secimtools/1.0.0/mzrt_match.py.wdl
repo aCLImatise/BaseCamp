@@ -42,6 +42,9 @@ task MzrtMatchpy {
       ~{if defined(name_one) then ("--name1 " +  '"' + name_one + '"') else ""} \
       ~{if defined(name_two) then ("--name2 " +  '"' + name_two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     an_no_one: "Out path for first file"
     an_no_two: "Out path for second file"

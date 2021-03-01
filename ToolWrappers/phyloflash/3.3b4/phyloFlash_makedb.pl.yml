@@ -3,123 +3,119 @@ command:
 - phyloFlash_makedb.pl
 positional:
 - !Positional
-  description: '## Get help'
-  position: 0
-  name: path/to/univec_db
   optional: false
-- !Positional
-  description: 'Default: 10'
   position: 0
   name: recommended.
-  optional: false
+  description: 'Default: 10'
 named:
 - !Flag
-  description: Download databases via FTP
+  optional: true
   synonyms:
   - --remote
+  description: Download databases via FTP
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Path to local copy of SILVA database file. Ignored if --remote\nflag\
-    \ is used.\nThis should be the Fasta-formatted SILVA SSURef file, clustered\n\
-    at 99% identity, with SILVA taxonomy strings in file header, and\nsequences truncated\
-    \ to SSU gene boundaries. The file name should\nbe in the form\nSILVA_[Release]_SSURef_Nr99_tax_silva_trunc.fasta.gz\
-    \ (release\n132 and before) or\nSILVA_[Release]_SSURef_NR99_tax_silva_trunc.fasta.gz\
-    \ (from\nrelease 138 onwards)"
+  optional: true
   synonyms:
   - --silva_file
+  description: "/to/silva_db\nPath to local copy of SILVA database file. Ignored if\
+    \ --remote\nflag is used.\nThis should be the Fasta-formatted SILVA SSURef file,\
+    \ clustered\nat 99% identity, with SILVA taxonomy strings in file header, and\n\
+    sequences truncated to SSU gene boundaries. The file name should\nbe in the form\n\
+    SILVA_[Release]_SSURef_Nr99_tax_silva_trunc.fasta.gz (release\n132 and before)\
+    \ or\nSILVA_[Release]_SSURef_NR99_tax_silva_trunc.fasta.gz (from\nrelease 138\
+    \ onwards)"
   args: !SimpleFlagArg
-    name: path/to/silva_db
-  optional: true
+    name: path
 - !Flag
-  description: "Path to local copy of Univec database file. Ignored if --remote\n\
-    flag is used."
+  optional: true
   synonyms:
   - --univec_file
+  description: "/to/univec_db\nPath to local copy of Univec database file. Ignored\
+    \ if --remote\nflag is used."
   args: !SimpleFlagArg
-    name: path/to/univec_db
-  optional: true
+    name: path
 - !Flag
-  description: "Index database with Bowtie v1 for Emirge. Requires bowtie-build\n\
-    to be in path.\nDefault: Yes (turn off with --noemirge)"
+  optional: true
   synonyms:
   - --emirge
+  description: "Index database with Bowtie v1 for Emirge. Requires bowtie-build\n\
+    to be in path.\nDefault: Yes (turn off with --noemirge)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sortmerna
   description: "Index database for Sortmerna, if you wish to use it as an\nalternative\
     \ to BBmap for extracting rRNA reads from the read\nfile. Requires indexdb_rna\
     \ to be in path.\nDefault: No (--nosortmerna)."
-  synonyms:
-  - --sortmerna
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not delete intermediary files
+  optional: true
   synonyms:
   - --keep
+  description: Do not delete intermediary files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --overwrite
   description: "Overwrite files if already present. Files are not overwritten by\n\
     default, allowing you to restart the DB build process if it was\ninterrupted (but\
     \ you will have to do find and delete corrupted\nfiles manually).\nDefault: No\
     \ (\"--nooverwrite\")"
-  synonyms:
-  - --overwrite
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Number of processors to use\nDefault: All available"
+  optional: true
   synonyms:
   - --CPUs
+  description: "Number of processors to use\nDefault: All available"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Memory limit (in Gb) for indexing tools. At least 10 is
+  optional: true
   synonyms:
   - --mem
+  description: Memory limit (in Gb) for indexing tools. At least 10 is
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "Write phyloFlash_makedb.pl log to a file.\nDefault: None"
+  optional: true
   synonyms:
   - --log
+  description: "Write phyloFlash_makedb.pl log to a file.\nDefault: None"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --check_env
   description: "Check that required dependencies are available in your path. If\n\
     specifying optional tools --sortmerna and --emirge, put the\n--check_env argument\
     \ at the end of the command."
-  synonyms:
-  - --check_env
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Full manual page
+  optional: true
   synonyms:
   - --man
+  description: Full manual page
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Help message
+  optional: true
   synonyms:
   - --help
+  description: Help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: "Report version\n"
+  optional: true
   synonyms:
   - --version
+  description: "Report version\n"
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage:\n    ### download databases via FTP\n\n    phyloFlash_makedb.pl\
   \ --remote\n\n    ### use local copies\n\n    phyloFlash_makedb.pl --silva_file\
   \ path/to/silva_db --univec_file\n    path/to/univec_db\n\n    ## Get help\n\n \
@@ -155,3 +151,4 @@ help_text: "Usage:\n    ### download databases via FTP\n\n    phyloFlash_makedb.
   \ version\n\n"
 generated_using:
 - --help
+docker_image:

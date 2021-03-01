@@ -10,6 +10,9 @@ task DremeXmlToTxt {
       ~{dre_me_xml_to_html} \
       ~{dre_me_xml_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dre_me_xml_to_html: ""
     dre_me_xml_file: ""

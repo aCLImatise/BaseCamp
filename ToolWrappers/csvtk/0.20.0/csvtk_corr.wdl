@@ -40,6 +40,9 @@ task CsvtkCorr {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fields: "comma separated fields"
     ignore_nan: "Ignore non-numeric fields to avoid returning NaN"

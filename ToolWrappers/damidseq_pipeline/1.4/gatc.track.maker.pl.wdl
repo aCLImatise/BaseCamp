@@ -12,6 +12,9 @@ task Gatctrackmakerpl {
       ~{if (name) then "--name" else ""} \
       ~{if (scaffolds) then "--scaffolds" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mi_to: "Process mitochondrial chromosome (not recommended)"
     name: "Name of organism (for output file)"

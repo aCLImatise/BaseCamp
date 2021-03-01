@@ -102,6 +102,9 @@ task Diff {
       ~{if (color) then "--color" else ""} \
       ~{if defined(palette) then ("--palette " +  '"' + palette + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     normal: "output a normal diff (the default)"
     brief: "report only when files differ"

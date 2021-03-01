@@ -4,62 +4,56 @@ command:
 - prepare
 positional:
 - !Positional
-  description: Input sequence file path(s) (FASTA/GenBank)
+  optional: false
   position: 0
   name: inputs
-  optional: false
+  description: Input sequence file path(s) (FASTA/GenBank)
 named:
 - !Flag
-  description: Run Prodigal in '-p meta' mode to enable detecting genes in short contigs
-  synonyms:
-  - --prodigal-meta-mode
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: Accept amino-acid protein sequences as input (experimental). Will treat
-    each file as a single record with multiple proteins.
-  synonyms:
-  - --protein
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Output GenBank file path
-  synonyms:
-  - --output-gbk
-  args: !SimpleFlagArg
-    name: OUTPUT_GBK
-  optional: true
-- !Flag
-  description: "Output TSV file path\n"
-  synonyms:
-  - --output-tsv
-  args: !SimpleFlagArg
-    name: OUTPUT_TSV
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --limit-to-record
-  args: !SimpleFlagArg
-    name: LIMIT_TO_RECORD
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - --debug
-  args: !EmptyFlagArg {}
+  - --limit-to-record
+  description: Process only specific record ID. Can be provided multiple times
+  args: !SimpleFlagArg
+    name: LIMIT_TO_RECORD
+- !Flag
   optional: true
+  synonyms:
+  - --prodigal-meta-mode
+  description: Run Prodigal in '-p meta' mode to enable detecting genes in short contigs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --protein
+  description: Accept amino-acid protein sequences as input (experimental). Will treat
+    each file as a single record with multiple proteins.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output-gbk
+  description: Output GenBank file path
+  args: !SimpleFlagArg
+    name: OUTPUT_GBK
+- !Flag
+  optional: true
+  synonyms:
+  - --output-tsv
+  description: "Output TSV file path\n"
+  args: !SimpleFlagArg
+    name: OUTPUT_TSV
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--debug\n--limit-to-record LIMIT_TO_RECORD\n\
-    Process only specific record ID. Can be provided multiple times"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: deepbgc prepare [-h] [--debug] [--limit-to-record LIMIT_TO_RECORD]\n\
@@ -81,3 +75,4 @@ help_text: "usage: deepbgc prepare [-h] [--debug] [--limit-to-record LIMIT_TO_RE
   \ file path\n"
 generated_using:
 - --help
+docker_image:

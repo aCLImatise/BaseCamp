@@ -3,8 +3,8 @@ version 1.0
 task AggGenotype {
   input {
     Int? regions
-    File? _outputfile_file
-    Boolean? _outputtype_buzv
+    File? output_file
+    String? output_type
     Int? thread
     Int chunk_one
   }
@@ -12,19 +12,22 @@ task AggGenotype {
     agg genotype \
       ~{chunk_one} \
       ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
-      ~{if (_outputfile_file) then "-o" else ""} \
-      ~{if (_outputtype_buzv) then "-O" else ""} \
+      ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
+      ~{if defined(output_type) then ("--output-type " +  '"' + output_type + '"') else ""} \
       ~{if defined(thread) then ("--thread " +  '"' + thread + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     regions: "region to genotype eg. chr1 or chr20:5000000-6000000"
-    _outputfile_file: ",   --output-file <file>          output file name [stdout]"
-    _outputtype_buzv: ",   --output-type <b|u|z|v>       b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed VCF [v]"
+    output_file: "output file name [stdout]"
+    output_type: "b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed VCF [v]"
     thread: "number of threads [0]"
     chunk_one: ""
   }
   output {
     File out_stdout = stdout()
-    File out__outputfile_file = "${in__outputfile_file}"
+    File out_output_file = "${in_output_file}"
   }
 }

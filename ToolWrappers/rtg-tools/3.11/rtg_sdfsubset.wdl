@@ -18,6 +18,9 @@ task RtgSdfsubset {
       ~{if defined(id_file) then ("--id-file " +  '"' + id_file + '"') else ""} \
       ~{if (names) then "--names" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sdf_containing_sequences: "SDF containing sequences"
     output_sdf: "output SDF"

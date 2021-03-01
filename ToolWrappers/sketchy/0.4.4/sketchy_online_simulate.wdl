@@ -24,6 +24,9 @@ task SketchyOnlineSimulate {
       ~{if defined(start_time_regex) then ("--start_time_regex " +  '"' + start_time_regex + '"') else ""} \
       ~{if defined(test) then ("--test " +  '"' + test + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_x: "Path to Fast{a,q} file to simulate run\\n[required]  [required]"
     index: "Path to Fast{a,q} index file from previous\\nsimulation [none]"

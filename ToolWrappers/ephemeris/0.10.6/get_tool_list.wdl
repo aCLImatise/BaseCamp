@@ -28,6 +28,9 @@ task Gettoollist {
       ~{if defined(password) then ("--password " +  '"' + password + '"') else ""} \
       ~{if defined(api_key) then ("--api_key " +  '"' + api_key + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "tool_list.yml output file (default: None)"
     include_tool_panel_id: "Include tool_panel_id in tool_list.yml ? Use this only\\nif the tool panel id already exists. See\\nhttps://github.com/galaxyproject/ansible-galaxy-\\ntools/blob/master/files/tool_list.yaml.sample\\n(default: False)"

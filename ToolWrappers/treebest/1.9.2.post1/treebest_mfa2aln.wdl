@@ -10,6 +10,9 @@ task TreebestMfa2aln {
       ~{fast_a_align} \
       ~{if (n) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n: ""
     fast_a_align: ""

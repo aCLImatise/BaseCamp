@@ -6,18 +6,18 @@ inputs:
     \ In this mode, the\nRunCommand action will create a shell script and\nsubmit\
     \ the job using a command specified by option\n``submitter``, if this parameter\
     \ is defined."
-  type: long
+  type: long?
   inputBinding:
     prefix: --jobs
 - id: in_delimiter
   doc: Delimiter used to output results of a SQL query.
-  type: string
+  type: string?
   inputBinding:
     prefix: --delimiter
 - id: in_verbosity
   doc: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
     \ to standard output (default to\n1).\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbosity
 - id: in_spec_file
@@ -48,6 +48,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vtools

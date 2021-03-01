@@ -12,6 +12,9 @@ task Rrbsreference {
       ~{maxlength} \
       ~{ccgg_dot_tsv}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_dot_nix: "is an unmasked indexed reference genome from novoindex"
     maxlength: "is maximum expected read length and sets maximum distance between unmasked CCGG sites."

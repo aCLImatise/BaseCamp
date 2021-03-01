@@ -20,6 +20,9 @@ task Findknotspy {
       ~{if (small_count) then "--small-count" else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     info: "print citation information"
     k_size: "k-mer size to use (default: 32)"

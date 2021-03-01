@@ -46,6 +46,9 @@ task LiftOver {
       ~{if (chain_table) then "-chainTable" else ""} \
       ~{if (error_help) then "-errorHelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_match: "Minimum ratio of bases that must remap. Default 0.95"
     gff: "File is in gff/gtf format.  Note that the gff lines are converted"

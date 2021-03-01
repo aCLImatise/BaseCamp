@@ -18,6 +18,9 @@ task SnpSiftIntervals {
       ~{if (exclude_vcf_entries) then "-x" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file_default: ":     VCF file. Default STDIN"
     exclude_vcf_entries: ":     Exclude VCF entries in intervals"

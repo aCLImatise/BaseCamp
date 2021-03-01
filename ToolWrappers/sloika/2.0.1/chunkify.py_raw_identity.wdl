@@ -36,6 +36,9 @@ task ChunkifypyRawIdentity {
       ~{if defined(down_sample_factor) then ("--downsample_factor " +  '"' + down_sample_factor + '"') else ""} \
       ~{if (no_interpolation) then "--no-interpolation" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alphabet: "Alphabet of the sequences (default: b'ACGT')"
     input_strand_list: "Strand summary file containing subset (default: None)"

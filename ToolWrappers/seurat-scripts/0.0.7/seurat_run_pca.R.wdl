@@ -38,6 +38,9 @@ task SeuratrunpcaR {
       ~{if defined(reduction_key) then ("--reduction-key " +  '"' + reduction_key + '"') else ""} \
       ~{if defined(reduction_name) then ("--reduction-name " +  '"' + reduction_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name in which a serialized R matrix object may be found."
     input_format: "Either loom, seurat, anndata or singlecellexperiment for the input format to read."

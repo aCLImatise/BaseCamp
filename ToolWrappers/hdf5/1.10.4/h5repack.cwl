@@ -3,120 +3,120 @@ id: h5repack.cwl
 inputs:
 - id: in_verbose
   doc: Verbose mode, print object information
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_native
   doc: Use a native HDF5 type when repacking
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --native
 - id: in_enable_error_stack
   doc: Prints messages from the HDF5 error stack as they occur
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --enable-error-stack
 - id: in_latest
   doc: "Use latest version of file format\nThis option will take precedence over the\
     \ -j and -k options"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --latest
 - id: in_low
   doc: "The low bound for library release versions to use when creating\nobjects in\
     \ the file (default is H5F_LIBVER_EARLIEST)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --low
 - id: in_high
   doc: "The high bound for library release versions to use when creating\nobjects\
     \ in the file (default is H5F_LIBVER_LATEST)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --high
 - id: in_compact
   doc: Maximum number of links in header messages
-  type: long
+  type: long?
   inputBinding:
     prefix: --compact
 - id: in_indexed
   doc: Minimum number of links in the indexed format
-  type: long
+  type: long?
   inputBinding:
     prefix: --indexed
 - id: in_shared_object_header
   doc: '[:F], --ssize=S[:F] Shared object header message minimum size'
-  type: long
+  type: long?
   inputBinding:
     prefix: -s
 - id: in_minimum
   doc: Do not apply the filter to datasets smaller than M
-  type: string
+  type: string?
   inputBinding:
     prefix: --minimum
 - id: in_file
   doc: Name of file E with the -f and -l options
-  type: File
+  type: File?
   inputBinding:
     prefix: --file
 - id: in_u_block
   doc: Name of file U with user block data to be added
-  type: File
+  type: File?
   inputBinding:
     prefix: --ublock
 - id: in_block
   doc: Size of user block to be added
-  type: long
+  type: long?
   inputBinding:
     prefix: --block
 - id: in_metadata_block_size
   doc: Metadata block size for H5Pset_meta_block_size
-  type: long
+  type: long?
   inputBinding:
     prefix: --metadata_block_size
 - id: in_threshold
   doc: Threshold value for H5Pset_alignment
-  type: long
+  type: long?
   inputBinding:
     prefix: --threshold
 - id: in_alignment
   doc: Alignment value for H5Pset_alignment
-  type: long
+  type: long?
   inputBinding:
     prefix: --alignment
 - id: in_sort_by
   doc: Sort groups and attributes by index Q
-  type: string
+  type: string?
   inputBinding:
     prefix: --sort_by
 - id: in_sort_order
   doc: Sort groups and attributes by order Z
-  type: string
+  type: string?
   inputBinding:
     prefix: --sort_order
 - id: in_filter
   doc: Filter type
-  type: string
+  type: string?
   inputBinding:
     prefix: --filter
 - id: in_layout
   doc: Layout type
-  type: string
+  type: string?
   inputBinding:
     prefix: --layout
 - id: in_fs_strategy
   doc: File space management strategy for H5Pset_file_space_strategy
-  type: File
+  type: File?
   inputBinding:
     prefix: --fs_strategy
 - id: in_fs_persist
   doc: Persisting or not persisting free-space for H5Pset_file_space_strategy
-  type: long
+  type: long?
   inputBinding:
     prefix: --fs_persist
 - id: in_fs_threshold
   doc: Free-space section threshold for H5Pset_file_space_strategy
-  type: long
+  type: long?
   inputBinding:
     prefix: --fs_threshold
 - id: in_fs_pagesize
@@ -169,7 +169,7 @@ inputs:
     COMPA, to apply compact layout\nCONTI, to apply contiguous layout\n<layout parameters>\
     \ is optional layout information\nCHUNK=DIM[xDIM...xDIM], the chunk size of each\
     \ dimension\nCOMPA (no parameter)\nCONTI (no parameter)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --fs_pagesize
 - id: in_file_one
@@ -191,6 +191,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - h5repack

@@ -2,9 +2,8 @@ class: CommandLineTool
 id: pybel_neo.cwl
 inputs:
 - id: in_connection
-  doc: "Connection string for neo4j upload.\n--password TEXT\n--help             Show\
-    \ this message and exit.\n"
-  type: string
+  doc: Connection string for neo4j upload.
+  type: string?
   inputBinding:
     prefix: --connection
 - id: in_path
@@ -16,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pybel

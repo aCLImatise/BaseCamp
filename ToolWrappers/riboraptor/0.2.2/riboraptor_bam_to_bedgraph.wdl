@@ -14,6 +14,9 @@ task RiboraptorBamtobedgraph {
       ~{if (end_type) then "--end_type" else ""} \
       ~{if defined(save_to) then ("--saveto " +  '"' + save_to + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Path to BAM file  [required]"
     strand: "[+|-|both]         Count from strand of this type only"

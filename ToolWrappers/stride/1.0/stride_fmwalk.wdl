@@ -32,6 +32,9 @@ task StrideFmwalk {
       ~{if defined(min_overlap) then ("--min-overlap " +  '"' + min_overlap + '"') else ""} \
       ~{if defined(max_overlap) then ("--max-overlap " +  '"' + max_overlap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     prefix: "use PREFIX for the names of the index files (default: prefix of the input file)"

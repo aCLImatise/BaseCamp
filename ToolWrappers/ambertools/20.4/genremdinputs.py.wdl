@@ -28,6 +28,9 @@ task Genremdinputspy {
       ~{if (no_sort) then "-nosort" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     author: "show the program's author name and exit"
     overwrite: "Allow existing outputs to be overwritten. Default:"

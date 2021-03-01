@@ -12,6 +12,9 @@ task MafRegionCoverageBySrcpy {
       ~{if defined(src) then ("--src " +  '"' + src + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     src: "Use this src for all intervals"
     prefix: "Prepend this to each src before lookup\\n"

@@ -7,7 +7,7 @@ task Hapflk {
     Boolean? eigen
     File? ped
     File? map_file_default
-    File? file
+    File? plink_file_prefix
     String? b_file
     Int? miss_geno
     Int? miss_pheno
@@ -33,7 +33,7 @@ task Hapflk {
       ~{if (eigen) then "--eigen" else ""} \
       ~{if defined(ped) then ("--ped " +  '"' + ped + '"') else ""} \
       ~{if defined(map_file_default) then ("--map " +  '"' + map_file_default + '"') else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(plink_file_prefix) then ("--file " +  '"' + plink_file_prefix + '"') else ""} \
       ~{if defined(b_file) then ("--bfile " +  '"' + b_file + '"') else ""} \
       ~{if defined(miss_geno) then ("--miss_geno " +  '"' + miss_geno + '"') else ""} \
       ~{if defined(miss_pheno) then ("--miss_pheno " +  '"' + miss_pheno + '"') else ""} \
@@ -52,13 +52,16 @@ task Hapflk {
       ~{if (phased) then "--phased" else ""} \
       ~{if (no_k_frq) then "--no-kfrq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "prefix for output files (default: hapflk)"
     n_cpu: "Use N processors when possible (default: 1)"
     eigen: "Perform eigen decomposition of tests (default: False)"
     ped: "PED file (default: None)"
     map_file_default: "MAP file (default: None)"
-    file: "PLINK file prefix (ped,map) (default: None)"
+    plink_file_prefix: "PLINK file prefix (ped,map) (default: None)"
     b_file: "PLINK bfile prefix (bim,fam,bed) (default: None)"
     miss_geno: "Missing Genotype Code (default: 0)"
     miss_pheno: "Missing Phenotype Code (default: -9)"

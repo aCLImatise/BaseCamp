@@ -10,6 +10,9 @@ task MbbampostprocessOutputDirectory {
       ~{mock_in_bird_bam_post_process} \
       ~{if defined(min_length) then ("--min-length " +  '"' + min_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_length: ""
     mock_in_bird_bam_post_process: ""

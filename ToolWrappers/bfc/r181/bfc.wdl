@@ -11,7 +11,7 @@ task Bfc {
     Boolean? skip_error_correction
     Boolean? refine_bfccorrected_reads
     File? restore_hash_table
-    Int? more_ec_ec
+    Int? no_more_ec
     Int? min_kmer_coverage
     Boolean? force_fasta_output
     Boolean? drop_reads_containing
@@ -32,12 +32,15 @@ task Bfc {
       ~{if (skip_error_correction) then "-E" else ""} \
       ~{if (refine_bfccorrected_reads) then "-R" else ""} \
       ~{if defined(restore_hash_table) then ("-r " +  '"' + restore_hash_table + '"') else ""} \
-      ~{if defined(more_ec_ec) then ("-w " +  '"' + more_ec_ec + '"') else ""} \
+      ~{if defined(no_more_ec) then ("-w " +  '"' + no_more_ec + '"') else ""} \
       ~{if defined(min_kmer_coverage) then ("-c " +  '"' + min_kmer_coverage + '"') else ""} \
       ~{if (force_fasta_output) then "-Q" else ""} \
       ~{if (drop_reads_containing) then "-1" else ""} \
       ~{if (show_version_number) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     approx_genome_size: "approx genome size (k/m/g allowed; change -k and -b) [unset]"
     kmer_length: "k-mer length [33]"
@@ -48,7 +51,7 @@ task Bfc {
     skip_error_correction: "skip error correction"
     refine_bfccorrected_reads: "refine bfc-corrected reads"
     restore_hash_table: "restore hash table from FILE [null]"
-    more_ec_ec: "no more than 5 ec or 2 highQ ec in INT-bp window [10]"
+    no_more_ec: "no more than 5 ec or 2 highQ ec in INT-bp window [10]"
     min_kmer_coverage: "min k-mer coverage [3]"
     force_fasta_output: "force FASTA output"
     drop_reads_containing: "drop reads containing unique k-mers"

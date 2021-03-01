@@ -30,6 +30,9 @@ task Kcutilmgr {
       ~{if defined(key) then ("-key " +  '"' + key + '"') else ""} \
       ~{if (d) then "-d" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ic: ""
     alt: ""

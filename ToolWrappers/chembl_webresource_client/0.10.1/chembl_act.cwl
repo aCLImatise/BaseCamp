@@ -3,12 +3,12 @@ id: chembl_act.cwl
 inputs:
 - id: in_input
   doc: input file with names, one line each
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: "output file with ChEMBL IDs\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_ch_embl_ids
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "output file with ChEMBL IDs\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - chembl_act

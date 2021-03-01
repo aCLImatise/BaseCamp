@@ -14,6 +14,9 @@ task BioformatsVcfgeno2bed {
       ~{if defined(individuals) then ("--individuals " +  '"' + individuals + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     individuals: "a file with the list of individuals to be considered\\nfor genotype counting\\n"
     v: ""

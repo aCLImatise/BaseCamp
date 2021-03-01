@@ -2,7 +2,7 @@ version 1.0
 
 task Eslalistat {
   input {
-    Boolean? use_tabular_output
+    Boolean? use_tabular_line
     File? in_format
     Boolean? amino
     Boolean? dna
@@ -23,7 +23,7 @@ task Eslalistat {
   command <<<
     esl_alistat \
       ~{msa_file} \
-      ~{if (use_tabular_output) then "-1" else ""} \
+      ~{if (use_tabular_line) then "-1" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if (amino) then "--amino" else ""} \
       ~{if (dna) then "--dna" else ""} \
@@ -40,8 +40,11 @@ task Eslalistat {
       ~{if defined(bp_info) then ("--bpinfo " +  '"' + bp_info + '"') else ""} \
       ~{if (weight) then "--weight" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    use_tabular_output: ": use tabular output, one line per alignment"
+    use_tabular_line: ": use tabular output, one line per alignment"
     in_format: ": specify that input file is in format <s>"
     amino: ": <msafile> contains protein alignments"
     dna: ": <msafile> contains DNA alignments"

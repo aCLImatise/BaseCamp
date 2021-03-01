@@ -8,6 +8,9 @@ task CsCalculate {
     cs Calculate \
       ~{cs}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cs: ""
   }

@@ -4,28 +4,28 @@ inputs:
 - id: in_abi
   doc: "Generate ABI, not API; contains only classes with\ninstance fields which are\
     \ not [NonSerialized]."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --abi
 - id: in_follow_forwarders
   doc: Follow type forwarders.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --follow-forwarders
 - id: in_search_directory
   doc: Check for assembly references in DIRECTORY.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --search-directory
 - id: in_read_register_assembly
   doc: "Read and register the file ASSEMBLY, and add the\ndirectory containing ASSEMBLY\
     \ to the search path."
-  type: File
+  type: File?
   inputBinding:
     prefix: -r
 - id: in_output_file_specified
   doc: "The output file. If not specified the output will\nbe written to stdout."
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 outputs:
@@ -34,9 +34,10 @@ outputs:
   type: stdout
 - id: out_output_file_specified
   doc: "The output file. If not specified the output will\nbe written to stdout."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file_specified)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mono-api-info

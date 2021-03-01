@@ -10,6 +10,9 @@ task ProteinAlignmentFromNucleotides {
       ~{if (nucleotide_alignment_mafft) then "-n" else ""} \
       ~{if (verbose_output_stdout) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nucleotide_alignment_mafft: "nucleotide alignment with MAFFT"
     verbose_output_stdout: "verbose output to STDOUT"

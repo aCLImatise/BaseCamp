@@ -8,6 +8,9 @@ task JassPhenotypes {
     jass phenotypes \
       ~{jass}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jass: ""
   }

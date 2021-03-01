@@ -16,6 +16,9 @@ task PeUtils {
       ~{if defined(sd_max) then ("--sd-max " +  '"' + sd_max + '"') else ""} \
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compute_insert_len: "Compute insert length for given sample. Takes as input\\n(1) a comma-separated list of sorted, indexed BAM\\nfiles with headers (or a single BAM filename), (2) a\\nGFF file with constitutive exons. Outputs the insert\\nlength distribution into the output directory."
     no_bam_filter: "If provided, this ignores the BAM file flags that\\nstate whether the read was paired or not, and instead\\nuses only the read IDs to pair up the mates. Use this\\nif your paired-end BAM was the result of a samtools\\nmerge operation."

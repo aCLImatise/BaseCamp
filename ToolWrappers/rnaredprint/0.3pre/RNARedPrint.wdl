@@ -18,6 +18,9 @@ task RNARedPrint {
       ~{if defined(model) then ("--model " +  '"' + model + '"') else ""} \
       ~{if (prefix) then "--prefix" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num: "- Sets number of generated sequences (default 10)"
     count: "- Simply compute the partition function and report the result."

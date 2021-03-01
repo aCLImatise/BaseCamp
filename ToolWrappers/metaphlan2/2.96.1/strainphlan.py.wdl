@@ -88,6 +88,9 @@ task Strainphlanpy {
       ~{if (save_sample_two_full_freq) then "--save_sample2fullfreq" else ""} \
       ~{if (use_threads) then "--use_threads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ifn_samples: "The list of sample files (space separated).The\\nwildcard can also be used."
     ifn_second_samples: "The list of second sample files (space separated).The\\nwildcard can also be used. Note that only the markers\\nfound in the samples or reference genomes specified by\\n--ifn_samples or --ifn_representative_sample or\\n--ifn_ref_genomes with\\nadd_reference_genomes_as_second_samples=False will be\\nused to build the phylogenetic trees."

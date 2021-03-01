@@ -4,6 +4,9 @@ task ChiselPseudonormalpy {
   command <<<
     chisel_pseudonormal_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

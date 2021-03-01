@@ -32,6 +32,9 @@ task SeqkitRename {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     by_name: "check duplication by full name instead of just id"
     force: "overwrite output directory"

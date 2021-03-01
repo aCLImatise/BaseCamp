@@ -22,6 +22,9 @@ task Nuduppy {
       ~{if (old_sam_tools) then "--old-samtools" else ""} \
       ~{if (rmd_up_only) then "--rmdup-only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     paired_end: "use paired end deduping with template. SAM/BAM\\nalignment must contain paired end reads. Degenerate\\nread pairs (alignments for one read of pair) will be\\ndiscarded."
     readfq_fastq_file: "|READ.fq   FASTQ file containing the molecular tag sequence for\\neach read name in the corresponding SAM/BAM file\\n(required only for CASE 1 detailed above)"

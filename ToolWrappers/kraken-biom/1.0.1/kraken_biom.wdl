@@ -22,6 +22,9 @@ task Krakenbiom {
       ~{if (gzip) then "--gzip" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max: "Assigned reads will be recorded only if they are at or\\nbelow max rank. Default: O."
     min: "Reads assigned at and below min rank will be recorded\\nas being assigned to the min rank level. Default: S."

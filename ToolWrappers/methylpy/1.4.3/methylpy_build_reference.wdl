@@ -18,6 +18,9 @@ task MethylpyBuildreference {
       ~{if defined(path_to_aligner) then ("--path-to-aligner " +  '"' + path_to_aligner + '"') else ""} \
       ~{if defined(buff_size) then ("--buffsize " +  '"' + buff_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_files: "List of genome fasta files to build a reference from.\\n(default: None)"
     output_prefix: "the prefix of the two output reference files that will\\nbe created. (default: None)"

@@ -8,6 +8,9 @@ task Mkvtree {
     mkvtree \
       ~{index_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index_name: ""
   }

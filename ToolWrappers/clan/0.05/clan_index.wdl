@@ -14,6 +14,9 @@ task ClanIndex {
       ~{if (d) then "-d" else ""} \
       ~{if (f) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d: ""
     f: ""

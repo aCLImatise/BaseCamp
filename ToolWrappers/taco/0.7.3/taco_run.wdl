@@ -56,6 +56,9 @@ task TacoRun {
       ~{if defined(path_frac) then ("--path-frac " +  '"' + path_frac + '"') else ""} \
       ~{if defined(max_paths) then ("--max-paths " +  '"' + max_paths + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "directory where output files will be stored (if\\nalready exists then --resume must be specified)\\n[default=output]"
     num_processes: "Run TACO in parallel with N processes [default=1]"

@@ -38,6 +38,9 @@ task SlivarExpr {
       ~{if defined(info) then ("--info " +  '"' + info + '"') else ""} \
       ~{if defined(g_notate) then ("--gnotate " +  '"' + g_notate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf: "path to VCF/BCF"
     region: "optional region to limit evaluation. e.g. chr1 or 1:222-333 (or a BED file of regions)"

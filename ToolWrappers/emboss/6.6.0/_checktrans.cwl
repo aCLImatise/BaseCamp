@@ -3,7 +3,7 @@ id: _checktrans.cwl
 inputs:
 - id: in_or_fml
   doc: "integer    [100] Minimum ORF Length to report (Integer\n1 or more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -orfml
 - id: in_stops_dot
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _checktrans

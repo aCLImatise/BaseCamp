@@ -3,43 +3,43 @@ id: MyriMatchAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                            Input file (valid formats: 'mzML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -in
 - id: in_out
   doc: "*                           Output file (valid formats: 'idXML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
 - id: in_precursor_mass_tolerance
   doc: "Precursor monoisotopic mass tolerance. (default: '10.0')"
-  type: double
+  type: double?
   inputBinding:
     prefix: -precursor_mass_tolerance
 - id: in_precursor_mass_tolerance_unit
   doc: "Unit to be used for precursor mass tolerance. (default: 'ppm' valid: 'Da',\
     \ 'ppm')"
-  type: string
+  type: string?
   inputBinding:
     prefix: -precursor_mass_tolerance_unit
 - id: in_precursor_mass_tolerance_avg
   doc: If this flag is set, the average mass is used in the precursor mass tolerance.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -precursor_mass_tolerance_avg
 - id: in_fragment_mass_tolerance
   doc: "Fragment mass error in Dalton (default: '0.3')"
-  type: double
+  type: double?
   inputBinding:
     prefix: -fragment_mass_tolerance
 - id: in_fragment_mass_tolerance_unit
   doc: "Unit to be used for fragment mass tolerance. (default: 'Da' valid: 'Da', 'ppm')"
-  type: string
+  type: string?
   inputBinding:
     prefix: -fragment_mass_tolerance_unit
 - id: in_database
   doc: "*                FASTA protein database. (valid formats: 'FASTA')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -database
 - id: in_fixed_modifications
@@ -754,7 +754,7 @@ inputs:
     \ 'Xlink:DTSSP (Protein N-term)', 'Xlink:EGS (K)', 'Xlink:EGS (Protein N-term)',\
     \ 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC (C)',\
     \ 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -fixed_modifications
 - id: in_variable_modifications
@@ -1469,19 +1469,19 @@ inputs:
     \ 'Xlink:DTSSP (Protein N-term)', 'Xlink:EGS (K)', 'Xlink:EGS (Protein N-term)',\
     \ 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC (C)',\
     \ 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -variable_modifications
 - id: in_my_ri_match_executable
   doc: "*    The 'myrimatch' executable of the MyriMatch installation. Provide a full\
     \ or relative path, or make sure it can be found in your PATH environment."
-  type: File
+  type: File?
   inputBinding:
     prefix: -myrimatch_executable
 - id: in_num_charge_states
   doc: "The number of charge states that MyriMatch will handle during all stages of\
     \ the program. (default: '3')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -NumChargeStates
 - id: in_tic_cut_off_percentage
@@ -1489,19 +1489,19 @@ inputs:
     \ of intensity, and then picking peaks from that list until the cumulative ion\
     \ current of the picked peaks divided by the total ion current (TIC) is greater\
     \ than or equal to this parameter. (default: '0.98')"
-  type: double
+  type: double?
   inputBinding:
     prefix: -TicCutoffPercentage
 - id: in_max_dynamic_mods
   doc: "This parameter sets the maximum number of modified residues that may be in\
     \ any candidate sequence. (default: '2')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -MaxDynamicMods
 - id: in_max_result_rank
   doc: "This parameter sets the maximum rank of peptide-spectrum-matches to report\
     \ for each spectrum. (default: '5')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -MaxResultRank
 - id: in_cleavage_rules
@@ -1511,7 +1511,7 @@ inputs:
     \ 'Formic_acid', 'Lys-C', 'Lys-C/P', 'PepsinA', 'TrypChymo', 'V8-DE', 'V8-E',\
     \ 'glutamyl endopeptidase', 'leukocyte elastase', 'no cleavage', 'proline endopeptidase',\
     \ 'unspecific cleavage')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -CleavageRules
 - id: in_min_termini_cleavages
@@ -1521,7 +1521,7 @@ inputs:
     \ of the peptide must match one of the cleavage rules specified in the CleavageRules\
     \ parameter. This parameter is useful to turn a tryptic digest into a semi-tryptic\
     \ digest. (default: '2')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -MinTerminiCleavages
 - id: in_max_missed_cleavages
@@ -1531,27 +1531,27 @@ inputs:
     \ Settings this parameter to some other number will stop generating peptides from\
     \ a sequence if it contains more than the specified number of missed cleavages.\
     \ (default: '-1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -MaxMissedCleavages
 - id: in_ini
   doc: Use the given TOPP INI file
-  type: File
+  type: File?
   inputBinding:
     prefix: -ini
 - id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -threads
 - id: in_write_ini
   doc: Writes the default configuration file
-  type: File
+  type: File?
   inputBinding:
     prefix: -write_ini
 - id: in_helphelp
   doc: Shows all options (including advanced)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --helphelp
 outputs:
@@ -1560,9 +1560,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: "*                           Output file (valid formats: 'idXML')"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - MyriMatchAdapter

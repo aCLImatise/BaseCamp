@@ -44,6 +44,9 @@ task Hotspot3dVisual {
       ~{if (script_only) then "--script-only" else ""} \
       ~{if (clusters_file_type) then "--clusters-file-type" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clusters_file: "Clusters file"
     pdb: "PDB ID on which to view clusters\\nAT LEAST ONE"

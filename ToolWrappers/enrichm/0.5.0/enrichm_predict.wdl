@@ -18,6 +18,9 @@ task EnrichmPredict {
       ~{if defined(forester_model_directory) then ("--forester_model_directory " +  '"' + forester_model_directory + '"') else ""} \
       ~{if defined(input_matrix) then ("--input_matrix " +  '"' + input_matrix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log: "Output logging information to this file."
     verbosity: "Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent"

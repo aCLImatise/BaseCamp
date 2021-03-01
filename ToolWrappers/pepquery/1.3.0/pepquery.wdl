@@ -7,14 +7,14 @@ task Pepquery {
     Int? cpu
     File? db
     Boolean? decoy
-    Int? non_enzyme_rule
+    Int? non_enzyme_trypsin
     Int? frame_translate_sequence
     Float? fix_mod
     Int? fragment_method
     Boolean? hc
     String? take_protein_dna
     Float? it_ol
-    Int? scoring_hyperscore_default
+    Int? scoring_method_hyperscore
     Int? max_charge
     Int? maxlength
     Int? max_var
@@ -46,14 +46,14 @@ task Pepquery {
       ~{if defined(cpu) then ("-cpu " +  '"' + cpu + '"') else ""} \
       ~{if defined(db) then ("-db " +  '"' + db + '"') else ""} \
       ~{if (decoy) then "-decoy" else ""} \
-      ~{if defined(non_enzyme_rule) then ("-e " +  '"' + non_enzyme_rule + '"') else ""} \
+      ~{if defined(non_enzyme_trypsin) then ("-e " +  '"' + non_enzyme_trypsin + '"') else ""} \
       ~{if defined(frame_translate_sequence) then ("-f " +  '"' + frame_translate_sequence + '"') else ""} \
       ~{if defined(fix_mod) then ("-fixMod " +  '"' + fix_mod + '"') else ""} \
       ~{if defined(fragment_method) then ("-fragmentMethod " +  '"' + fragment_method + '"') else ""} \
       ~{if (hc) then "-hc" else ""} \
       ~{if defined(take_protein_dna) then ("-i " +  '"' + take_protein_dna + '"') else ""} \
       ~{if defined(it_ol) then ("-itol " +  '"' + it_ol + '"') else ""} \
-      ~{if defined(scoring_hyperscore_default) then ("-m " +  '"' + scoring_hyperscore_default + '"') else ""} \
+      ~{if defined(scoring_method_hyperscore) then ("-m " +  '"' + scoring_method_hyperscore + '"') else ""} \
       ~{if defined(max_charge) then ("-maxCharge " +  '"' + max_charge + '"') else ""} \
       ~{if defined(maxlength) then ("-maxLength " +  '"' + maxlength + '"') else ""} \
       ~{if defined(max_var) then ("-maxVar " +  '"' + max_var + '"') else ""} \
@@ -74,20 +74,23 @@ task Pepquery {
       ~{if (tp) then "-tp" else ""} \
       ~{if (um) then "-um" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     an_no: "Annotation files folder for VCF/BED/GTF"
     max_missed_cleavages: "The max missed cleavages, default is 2"
     cpu: "The number of cpus used, default is 1"
     db: "Fasta format database file"
     decoy: "In target protein identification mode, try to\\nidentity the decoy version of the selected target\\nprotein. Default is false."
-    non_enzyme_rule: "0:Non enzyme, 1:Trypsin (default), 2:Trypsin (no\\nP rule), 3:Arg-C, 4:Arg-C (no P rule), 5:Arg-N,\\n6:Glu-C, 7:Lys-C"
+    non_enzyme_trypsin: "0:Non enzyme, 1:Trypsin (default), 2:Trypsin (no\\nP rule), 3:Arg-C, 4:Arg-C (no P rule), 5:Arg-N,\\n6:Glu-C, 7:Lys-C"
     frame_translate_sequence: "The frame to translate DNA sequence to protein.\\nThe right format is like this:\\n\\\"1,2,3,4,5,6\\\",\\\"1,2,3\\\",\\\"1\\\". \\\"0\\\" means to keep the\\nlongest frame. In default, for each frame only\\nthe longest protein is used."
     fix_mod: "Fixed modification, the format is like : 1,2,3.\\nDefault is 6 (Carbamidomethylation(C)[57.02])"
     fragment_method: "1: CID/HCD (default), 2: ETD"
     hc: "When perform validation with unrestricted\\nmodification searching (UMS), whether or not to\\nuse more stringent criterion. TRUE:\\nscore(UMS)>=score(targetPSM); FALSE:\\nscore(UMS)>score(targetPSM), default"
     take_protein_dna: "Take protein, DNA or VCF as input"
     it_ol: "Fragment ion m/z tolerance, default is 0.6da"
-    scoring_hyperscore_default: "Scoring method: 1=HyperScore (default), 2=MVH"
+    scoring_method_hyperscore: "Scoring method: 1=HyperScore (default), 2=MVH"
     max_charge: "The maximum charge to consider if the charge\\nstate is not available, default is 3"
     maxlength: "The maximum length of peptide to consider,\\ndefault is 45"
     max_var: "Max number of variable modifications, default is\\n3"

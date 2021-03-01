@@ -3,27 +3,27 @@ id: htsbox_razip.cwl
 inputs:
 - id: in_write_keep_files
   doc: write on standard output, keep original files unchanged
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_decompress
   doc: decompress
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
-- id: in_list_compressed_contents
+- id: in_list_compressed_file
   doc: list compressed file contents
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_decompress_int_position
   doc: decompress at INT position in the uncompressed file
-  type: long
+  type: long?
   inputBinding:
     prefix: -b
 - id: in_decompress_int_bytes
   doc: decompress INT bytes in the uncompressed file
-  type: long
+  type: long?
   inputBinding:
     prefix: -s
 - id: in_ra_zip
@@ -33,13 +33,14 @@ inputs:
     position: 0
 - id: in_file
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - htsbox

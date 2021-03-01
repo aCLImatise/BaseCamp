@@ -3,7 +3,7 @@ id: mimodd_vcf_filter.cwl
 inputs:
 - id: in_ofile
   doc: "redirect the output to the specified file (default:\nstdout)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --ofile
 - id: in_samples
@@ -36,24 +36,24 @@ inputs:
   doc: "#:MIN_FRACTION:MAX_FRACTION [ALLELE#:MIN_FRACTION:MAX_FRACTION ...]\nthe fraction\
     \ of reads supporting a specific ALLELE#\nmust be between MIN_FRACTION and MAX_FRACTION\
     \ to\ninclude the site in the output"
-  type: string
+  type: string?
   inputBinding:
     prefix: --af
 - id: in_keep_only_variants
   doc: "[REGION_FILTER [REGION_FILTER ...]], --region [REGION_FILTER [REGION_FILTER\
     \ ...]]\nkeep only variants that fall in one of the given\nchromsomal regions\
     \ (specified in the format\nCHROM:START-STOP or CHROM: for a whole chromosome)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_no_indels
   doc: skip indels in the output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-indels
 - id: in_indels_only
   doc: keep only indels in the output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --indels-only
 - id: in_v_filter
@@ -73,9 +73,10 @@ outputs:
   type: stdout
 - id: out_ofile
   doc: "redirect the output to the specified file (default:\nstdout)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_ofile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mimodd

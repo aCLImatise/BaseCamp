@@ -12,6 +12,9 @@ task SummarizeMiso {
       ~{if defined(summary_label) then ("--summary-label " +  '"' + summary_label + '"') else ""} \
       ~{if defined(use_compressed) then ("--use-compressed " +  '"' + use_compressed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     summarize_samples: "Compute summary statistics of the given set of\\nsamples. Expects a directory with MISO output and a\\ndirectory to output summary file to."
     summary_label: "Label for MISO summary file. If not given, uses\\nbasename of MISO output directory."

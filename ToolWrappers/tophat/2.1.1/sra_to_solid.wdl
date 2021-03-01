@@ -8,6 +8,9 @@ task SraToSolid {
     sra_to_solid \
       ~{input_dot_fast_q}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dot_fast_q: ""
   }

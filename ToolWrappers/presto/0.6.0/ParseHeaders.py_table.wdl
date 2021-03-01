@@ -8,7 +8,7 @@ task ParseHeaderspyTable {
     File? out_name
     Boolean? failed
     String? delim
-    Array[String] list_collect_identifier
+    Array[String] list_collect_sequence
   }
   command <<<
     ParseHeaders_py table \
@@ -18,8 +18,11 @@ task ParseHeaderspyTable {
       ~{if defined(out_name) then ("--outname " +  '"' + out_name + '"') else ""} \
       ~{if (failed) then "--failed" else ""} \
       ~{if defined(delim) then ("--delim " +  '"' + delim + '"') else ""} \
-      ~{if defined(list_collect_identifier) then ("-f " +  '"' + list_collect_identifier + '"') else ""}
+      ~{if defined(list_collect_sequence) then ("-f " +  '"' + list_collect_sequence + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_fastafastq_files: "A list of FASTA/FASTQ files containing sequences to\\nprocess. (default: None)"
     explicit_output_file: "Explicit output file name(s). Note, this argument\\ncannot be used with the --failed, --outdir, or\\n--outname arguments. If unspecified, then the output\\nfilename will be based on the input filename(s).\\n(default: None)"
@@ -27,7 +30,7 @@ task ParseHeaderspyTable {
     out_name: "Changes the prefix of the successfully processed\\noutput file to the string specified. May not be\\nspecified with multiple input files. (default: None)"
     failed: "If specified create files containing records that fail\\nprocessing. (default: False)"
     delim: "DELIMITER DELIMITER\\nA list of the three delimiters that separate\\nannotation blocks, field names and values, and values\\nwithin a field, respectively. (default: ('|', '=',\\n','))"
-    list_collect_identifier: "List of fields to collect. The sequence identifier may\\nbe specified using the hidden field name \\\"ID\\\".\\n(default: None)\\n"
+    list_collect_sequence: "List of fields to collect. The sequence identifier may\\nbe specified using the hidden field name \\\"ID\\\".\\n(default: None)\\n"
   }
   output {
     File out_stdout = stdout()

@@ -22,6 +22,9 @@ task WigToBigWig {
       ~{if (fixed_summaries) then "-fixedSummaries" else ""} \
       ~{if (keep_all_chromosomes) then "-keepAllChromosomes" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     block_size: "- Number of items to bundle in r-tree.  Default 256"
     items_per_slot: "- Number of data points bundled at lowest level. Default 1024"

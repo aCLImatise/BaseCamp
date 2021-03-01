@@ -12,6 +12,9 @@ task MbbsfinderOutputfile {
       ~{if defined(min_cov) then ("--mincov " +  '"' + min_cov + '"') else ""} \
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_cov: ""
     threshold: ""

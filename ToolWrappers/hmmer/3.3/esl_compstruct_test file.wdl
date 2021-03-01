@@ -14,6 +14,9 @@ task EslcompstructTestfile {
       ~{test_file} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
     esl_comp_struct: ""

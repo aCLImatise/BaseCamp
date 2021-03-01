@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Int, Boolean, Float
+
+Svtools_Genotype_V0_1_0 = CommandToolBuilder(tool="svtools_genotype", base_command=["svtools", "genotype"], inputs=[ToolInput(tag="in_input_vcf", input_type=String(optional=True), prefix="--input_vcf", doc=InputDocumentation(doc="VCF input (default: stdin)")), ToolInput(tag="in_output_vcf", input_type=String(optional=True), prefix="--output_vcf", doc=InputDocumentation(doc="output VCF to write (default: stdout)")), ToolInput(tag="in_bam", input_type=File(optional=True), prefix="--bam", doc=InputDocumentation(doc="BAM or CRAM file")), ToolInput(tag="in_ref_fast_a", input_type=File(optional=True), prefix="--ref_fasta", doc=InputDocumentation(doc="Indexed reference FASTA file (recommended for reading\nCRAM files)")), ToolInput(tag="in_lib_info", input_type=File(optional=True), prefix="--lib_info", doc=InputDocumentation(doc="create/read JSON file of library information")), ToolInput(tag="in_min_aligned", input_type=Int(optional=True), prefix="--min_aligned", doc=InputDocumentation(doc="minimum number of aligned bases to consider read as\nevidence [20]")), ToolInput(tag="in_number_pairs_sample", input_type=Int(optional=True), prefix="-n", doc=InputDocumentation(doc="number of pairs to sample from BAM file for building\ninsert size distribution [1000000]")), ToolInput(tag="in_sum_quals", input_type=Boolean(optional=True), prefix="--sum_quals", doc=InputDocumentation(doc="add genotyping quality to existing QUAL (default:\noverwrite QUAL field)")), ToolInput(tag="in_max_reads", input_type=Int(optional=True), prefix="--max_reads", doc=InputDocumentation(doc="maximum number of reads to assess at any variant\n(reduces processing time in high-depth regions,\ndefault: 10000)")), ToolInput(tag="in_max_ci_dist", input_type=Int(optional=True), prefix="--max_ci_dist", doc=InputDocumentation(doc="maximum size of a confidence interval before 95% CI is\nused intead (default: 1e10)")), ToolInput(tag="in_split_weight", input_type=Float(optional=True), prefix="--split_weight", doc=InputDocumentation(doc="weight for split reads [1]")), ToolInput(tag="in_disc_weight", input_type=Float(optional=True), prefix="--disc_weight", doc=InputDocumentation(doc="weight for discordant paired-end reads [1]")), ToolInput(tag="in_write_alignment", input_type=File(optional=True), prefix="--write_alignment", doc=InputDocumentation(doc="write relevant reads to BAM file\n"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Svtools_Genotype_V0_1_0().translate("wdl", allow_empty_container=True)
+

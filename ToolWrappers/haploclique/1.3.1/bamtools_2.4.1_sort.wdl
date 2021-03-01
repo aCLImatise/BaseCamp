@@ -22,6 +22,9 @@ task Bamtools241Sort {
       ~{if defined(max_number_alignments) then ("-n " +  '"' + max_number_alignments + '"') else ""} \
       ~{if defined(mem) then ("-mem " +  '"' + mem + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "the input BAM file [stdin]"
     out: "the output BAM file [stdout]"

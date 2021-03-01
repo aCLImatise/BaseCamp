@@ -16,6 +16,9 @@ task CIRCexplorer2Parse {
       ~{if (pe) then "--pe" else ""} \
       ~{if (statistics_fragment_numbers) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aligner_tophatfusion_star: "Aligner (TopHat-Fusion, STAR, MapSplice, BWA, segemehl)."
     bed: "Output file.\\n[default: back_spliced_junction.bed]"

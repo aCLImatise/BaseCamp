@@ -18,6 +18,9 @@ task MascotToPepxmlrb {
       ~{if defined(enzyme) then ("--enzyme " +  '"' + enzyme + '"') else ""} \
       ~{if (short_id) then "--shortid" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     replace_output: "Dont skip analyses for which the output file already exists [false]"
     explicitly_named_output: "An explicitly named output file."

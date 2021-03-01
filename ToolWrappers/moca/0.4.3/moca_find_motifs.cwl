@@ -3,47 +3,47 @@ id: moca_find_motifs.cwl
 inputs:
 - id: in_bed_file
   doc: Bed file input  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --bedfile
 - id: in_oc
   doc: Output Directory  [required]
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --oc
 - id: in_configuration
   doc: Configuration file  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --configuration
 - id: in_slop_length
   doc: Flanking sequence length
-  type: long
+  type: long?
   inputBinding:
     prefix: --slop-length
 - id: in_flank_motif
   doc: Length of sequence flanking motif
-  type: long
+  type: long?
   inputBinding:
     prefix: --flank-motif
 - id: in_n_motif
   doc: Number of motifs
-  type: long
+  type: long?
   inputBinding:
     prefix: --n-motif
 - id: in_cores
   doc: Number of parallel MEME jobs  [required]
-  type: long
+  type: long?
   inputBinding:
     prefix: --cores
 - id: in_genome_build
   doc: "Key denoting genome build to use in\nconfiguration file  [required]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --genome-build
 - id: in_show_progress
   doc: Print progress
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --show-progress
 outputs:
@@ -52,9 +52,10 @@ outputs:
   type: stdout
 - id: out_oc
   doc: Output Directory  [required]
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_oc)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - moca

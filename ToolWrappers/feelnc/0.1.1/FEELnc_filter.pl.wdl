@@ -30,6 +30,9 @@ task FEELncFilterpl {
       ~{if defined(proc) then ("--proc " +  '"' + proc + '"') else ""} \
       ~{if defined(out_log) then ("--outlog " +  '"' + out_log + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "Open man page"
     verbosity: "Level of verbosity 0, 1 and 2 [default 1]"

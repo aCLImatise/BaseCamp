@@ -14,6 +14,9 @@ task FcOvlpToGraph {
       ~{if (disable_chime_r_bridge_removal) then "--disable-chimer-bridge-removal" else ""} \
       ~{if defined(ctg_prefix) then ("--ctg-prefix " +  '"' + ctg_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     overlap_file: "a file that contains the overlap information. (default: preads.m4)"
     lfc: "use local flow constraint method rather than best overlap method to resolve knots in string graph (default: False)"

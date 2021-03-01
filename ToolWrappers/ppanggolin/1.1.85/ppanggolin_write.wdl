@@ -3,7 +3,7 @@ version 1.0
 task PpanggolinWrite {
   input {
     File? pan_genome
-    File? output_directory_where
+    File? output_directory_be
     Float? soft_core
     Float? dup_margin
     Boolean? gex_f
@@ -31,7 +31,7 @@ task PpanggolinWrite {
   command <<<
     ppanggolin write \
       ~{if defined(pan_genome) then ("--pangenome " +  '"' + pan_genome + '"') else ""} \
-      ~{if defined(output_directory_where) then ("--output " +  '"' + output_directory_where + '"') else ""} \
+      ~{if defined(output_directory_be) then ("--output " +  '"' + output_directory_be + '"') else ""} \
       ~{if defined(soft_core) then ("--soft_core " +  '"' + soft_core + '"') else ""} \
       ~{if defined(dup_margin) then ("--dup_margin " +  '"' + dup_margin + '"') else ""} \
       ~{if (gex_f) then "--gexf" else ""} \
@@ -56,9 +56,12 @@ task PpanggolinWrite {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_genome: "The pangenome .h5 file (default: None)"
-    output_directory_where: "Output directory where the file(s) will be written\\n(default: None)"
+    output_directory_be: "Output directory where the file(s) will be written\\n(default: None)"
     soft_core: "Soft core threshold to use (default: 0.95)"
     dup_margin: "minimum ratio of organisms in which the family must\\nhave multiple genes for it to be considered\\n'duplicated' (default: 0.05)"
     gex_f: "write a gexf file with all the annotations and all the\\ngenes of each gene family (default: False)"
@@ -85,7 +88,7 @@ task PpanggolinWrite {
   }
   output {
     File out_stdout = stdout()
-    File out_output_directory_where = "${in_output_directory_where}"
+    File out_output_directory_be = "${in_output_directory_be}"
     File out_log = "${in_log}"
     File out_force = "${in_force}"
   }

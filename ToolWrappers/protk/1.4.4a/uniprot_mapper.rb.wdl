@@ -16,6 +16,9 @@ task UniprotMapperrb {
       ~{if defined(id_column) then ("--id-column " +  '"' + id_column + '"') else ""} \
       ~{if defined(to_id) then ("--to-id " +  '"' + to_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicitly_named_output: "An explicitly named output file."
     id_column: "Specify a column for ids (default is column 1)"

@@ -2,7 +2,7 @@ version 1.0
 
 task PreseqGcExtrap {
   input {
-    File? coverage_yield_default
+    File? coverage_yield_output
     Boolean? max_width
     Boolean? extra_p
     Boolean? step
@@ -20,7 +20,7 @@ task PreseqGcExtrap {
   command <<<
     preseq gc_extrap \
       ~{reads} \
-      ~{if (coverage_yield_default) then "-output" else ""} \
+      ~{if (coverage_yield_output) then "-output" else ""} \
       ~{if (max_width) then "-max_width" else ""} \
       ~{if (extra_p) then "-extrap" else ""} \
       ~{if (step) then "-step" else ""} \
@@ -34,8 +34,11 @@ task PreseqGcExtrap {
       ~{if (seed) then "-seed" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    coverage_yield_default: "coverage yield output file (default: stdout)"
+    coverage_yield_output: "coverage yield output file (default: stdout)"
     max_width: "max fragment length, set equal to read length for single end"
     extra_p: "maximum extrapolation in base pairs(default: 1e+12)"
     step: "step size in bases between extrapolations (default: 1e+08)"
@@ -52,6 +55,6 @@ task PreseqGcExtrap {
   }
   output {
     File out_stdout = stdout()
-    File out_coverage_yield_default = "${in_coverage_yield_default}"
+    File out_coverage_yield_output = "${in_coverage_yield_output}"
   }
 }

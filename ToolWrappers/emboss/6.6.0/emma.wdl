@@ -18,6 +18,9 @@ task Emma {
       ~{if (gap_dist) then "-gapdist" else ""} \
       ~{if (max_div) then "-maxdiv" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     only_d_end: "toggle     [N] Only produce dendrogram file"
     gap_open: "float      [10.0] The penalty for opening a gap in the\\nalignment. Increasing the gap opening\\npenalty will make gaps less frequent.\\n(Positive floating point number)"

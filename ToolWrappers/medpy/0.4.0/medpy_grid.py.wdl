@@ -26,6 +26,9 @@ task MedpyGridpy {
       ~{if (display_debug_information) then "-d" else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     example: "Option 1/2: Supply an image to create the grid volume\\nby example (i.e. with same shape, voxel spacing and\\noffset)."
     shape: "Option 2/2: Supply a colon-separated list of integers\\nthat constitute the target volumes shape."

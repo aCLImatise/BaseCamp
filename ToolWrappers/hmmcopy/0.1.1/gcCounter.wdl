@@ -16,6 +16,9 @@ task GcCounter {
       ~{if (list) then "--list" else ""} \
       ~{if defined(chromosome) then ("--chromosome " +  '"' + chromosome + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seg: "Outputs in SEG format"
     window: "Specify the size of non-overlapping windows [1000]"

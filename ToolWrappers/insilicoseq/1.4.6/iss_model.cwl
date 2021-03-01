@@ -3,22 +3,22 @@ id: iss_model.cwl
 inputs:
 - id: in_quiet
   doc: 'Disable info logging. (default: False).'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_debug
   doc: 'Enable debug logging. (default: False).'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_bam
   doc: "aligned reads from which the model will be inferred\n(Required)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --bam
 - id: in_output
   doc: "Output file prefix (Required)\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file prefix (Required)\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - iss

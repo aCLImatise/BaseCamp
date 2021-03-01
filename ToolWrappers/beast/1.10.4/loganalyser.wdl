@@ -24,6 +24,9 @@ task Loganalyser {
       ~{if defined(stderr) then ("-stdErr " +  '"' + stderr + '"') else ""} \
       ~{if defined(marginal) then ("-marginal " +  '"' + marginal + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     burnin: "number of states to be considered as 'burn-in'"
     short: "this option to produce a short report"

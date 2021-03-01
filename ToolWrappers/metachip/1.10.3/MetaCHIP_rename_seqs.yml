@@ -1,0 +1,84 @@
+!Command
+command:
+- MetaCHIP
+- rename_seqs
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: name
+  description: -sep_in SEP_IN    separator for input sequences
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: input sequence file
+  args: !SimpleFlagArg
+    name: IN
+- !Flag
+  optional: true
+  synonyms:
+  - -inc_suffix
+  description: rename sequences by incrementally adding suffix to file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -sep_out
+  description: 'separator for output sequences, default: same as sep_in'
+  args: !SimpleFlagArg
+    name: SEP_OUT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: the number of columns to keep
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -prefix
+  description: add prefix to sequence
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: file extension
+  args: !SimpleFlagArg
+    name: X
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: \n========================= rename_seqs example commands =========================\n\
+  \n# rename sequences according to the file name by incrementally adding 1 to suffix\n\
+  MetaCHIP rename_seqs -inc_suffix -in Contigs.fa\nMetaCHIP rename_seqs -inc_suffix\
+  \ -in bin_folder -x fa\n\n# rename \"NODE_941_length_17600_cov_52.7123\" to \"NODE_941\"\
+  \nMetaCHIP rename_seqs -in Contigs.fa -sep_in \"_\" -n 2\n\n# rename \"Seawater|NODE|941|length|17600|cov|52.7123\"\
+  \ to \"Seawater_NODE_941\"\nMetaCHIP rename_seqs -in Contigs.fa -sep_in \"|\" -sep_out\
+  \ \"_\" -n 3\n\n# add prefix to all sequences in a fasta file\nMetaCHIP rename_seqs\
+  \ -in Contigs.fa -prefix seawater\n\n# rename \"NODE_941_length_17600_cov_52.7123\"\
+  \ to \"Seawater_NODE_941\"\nMetaCHIP rename_seqs -in Contigs.fa -sep_in \"_\" -n\
+  \ 2 -prefix Seawater\n\n===============================================================================\n\
+  \nrename sequences in a file\n\noptional arguments:\n  -h, --help        show this\
+  \ help message and exit\n  -in IN            input sequence file\n  -inc_suffix\
+  \       rename sequences by incrementally adding suffix to file\n              \
+  \      name\n  -sep_in SEP_IN    separator for input sequences\n  -sep_out SEP_OUT\
+  \  separator for output sequences, default: same as sep_in\n  -n N             \
+  \ the number of columns to keep\n  -prefix PREFIX    add prefix to sequence\n  -x\
+  \ X              file extension\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/metachip:1.10.3--pyh3252c3a_0

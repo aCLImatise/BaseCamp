@@ -4,20 +4,19 @@ task Bowtie2buildl {
   input {
     Boolean? reference_files_fasta
     Boolean? reference_sequences_given
-    Boolean? a_slash_no_auto
-    Boolean? p_slash_packed
+    Boolean? no_auto
+    Boolean? packed
     Int? bmax
     Int? bmax_divn
     Int? dcv
     Boolean? no_dc
-    Boolean? r_slash_no_ref
-    Boolean? three_slash_just_ref
-    Int? oslash_off_rate
-    Int? t_slash_f_tab_chars
+    Boolean? no_ref
+    Boolean? just_ref
+    Int? off_rate
+    Int? f_tab_chars
     Int? threads
     Int? seed
-    Boolean? q_slash_quiet
-    Boolean? h_slash_help
+    Boolean? quiet
     String reference_in
     Int bt_two_index_base
   }
@@ -27,38 +26,39 @@ task Bowtie2buildl {
       ~{bt_two_index_base} \
       ~{if (reference_files_fasta) then "-f" else ""} \
       ~{if (reference_sequences_given) then "-c" else ""} \
-      ~{if (a_slash_no_auto) then "-a/--noauto" else ""} \
-      ~{if (p_slash_packed) then "-p/--packed" else ""} \
+      ~{if (no_auto) then "--noauto" else ""} \
+      ~{if (packed) then "--packed" else ""} \
       ~{if defined(bmax) then ("--bmax " +  '"' + bmax + '"') else ""} \
       ~{if defined(bmax_divn) then ("--bmaxdivn " +  '"' + bmax_divn + '"') else ""} \
       ~{if defined(dcv) then ("--dcv " +  '"' + dcv + '"') else ""} \
       ~{if (no_dc) then "--nodc" else ""} \
-      ~{if (r_slash_no_ref) then "-r/--noref" else ""} \
-      ~{if (three_slash_just_ref) then "-3/--justref" else ""} \
-      ~{if defined(oslash_off_rate) then ("-o/--offrate " +  '"' + oslash_off_rate + '"') else ""} \
-      ~{if defined(t_slash_f_tab_chars) then ("-t/--ftabchars " +  '"' + t_slash_f_tab_chars + '"') else ""} \
+      ~{if (no_ref) then "--noref" else ""} \
+      ~{if (just_ref) then "--justref" else ""} \
+      ~{if defined(off_rate) then ("--offrate " +  '"' + off_rate + '"') else ""} \
+      ~{if defined(f_tab_chars) then ("--ftabchars " +  '"' + f_tab_chars + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{if (q_slash_quiet) then "-q/--quiet" else ""} \
-      ~{if (h_slash_help) then "-h/--help" else ""}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_files_fasta: "reference files are Fasta (default)"
     reference_sequences_given: "reference sequences given on cmd line (as\\n<reference_in>)"
-    a_slash_no_auto: "disable automatic -p/--bmax/--dcv memory-fitting"
-    p_slash_packed: "use packed strings internally; slower, less memory"
+    no_auto: "disable automatic -p/--bmax/--dcv memory-fitting"
+    packed: "use packed strings internally; slower, less memory"
     bmax: "max bucket sz for blockwise suffix-array builder"
     bmax_divn: "max bucket sz as divisor of ref len (default: 4)"
     dcv: "diff-cover period for blockwise (default: 1024)"
     no_dc: "disable diff-cover (algorithm becomes quadratic)"
-    r_slash_no_ref: "don't build .3/.4 index files"
-    three_slash_just_ref: "just build .3/.4 index files"
-    oslash_off_rate: "SA is sampled every 2^<int> BWT chars (default: 5)"
-    t_slash_f_tab_chars: "# of chars consumed in initial lookup (default: 10)"
+    no_ref: "don't build .3/.4 index files"
+    just_ref: "just build .3/.4 index files"
+    off_rate: "SA is sampled every 2^<int> BWT chars (default: 5)"
+    f_tab_chars: "# of chars consumed in initial lookup (default: 10)"
     threads: "# of threads"
     seed: "seed for random number generator"
-    q_slash_quiet: "verbose output (for debugging)"
-    h_slash_help: "print detailed description of tool and its options"
+    quiet: "verbose output (for debugging)"
     reference_in: "comma-separated list of files with ref sequences"
     bt_two_index_base: "write bt2l data to files with this dir/basename"
   }

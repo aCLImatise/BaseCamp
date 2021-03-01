@@ -3,12 +3,12 @@ id: hgSpeciesRna.cwl
 inputs:
 - id: in_est
   doc: '- If set will get ESTs rather than mRNAs'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -est
 - id: in_filter
   doc: '- only read accessions listed in file'
-  type: File
+  type: File?
   inputBinding:
     prefix: -filter
 - id: in_database
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hgSpeciesRna

@@ -4,29 +4,36 @@ command:
 - coverage
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: INPUT_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: OUTPUT_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-a, --sample-alignment TEXT  sample name and correspondent alignment\
-    \ file\nseparated by comma  [required]\n--help                       Show this\
-    \ message and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
+  - -a
+  - --sample-alignment
+  description: "sample name and correspondent alignment file\nseparated by comma \
+    \ [required]"
+  args: !SimpleFlagArg
+    name: TEXT
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: add-gff-info coverage [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n\
@@ -36,3 +43,4 @@ help_text: "Usage: add-gff-info coverage [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\
   \                 Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

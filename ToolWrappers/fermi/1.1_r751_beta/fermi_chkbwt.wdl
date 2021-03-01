@@ -14,6 +14,9 @@ task FermiChkbwt {
       ~{if (check_rank) then "-r" else ""} \
       ~{if (print_bwt_stdout) then "-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     load_fmindex_memory: "load the FM-index as a memory mapped file"
     check_rank: "check rank"

@@ -16,6 +16,9 @@ task Ktserver {
       ~{if defined(port) then ("-port " +  '"' + port + '"') else ""} \
       ~{if defined(host) then ("-host " +  '"' + host + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log: ""
     th: ""

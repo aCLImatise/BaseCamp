@@ -1,0 +1,85 @@
+!Command
+command:
+- referenceseeker_db
+- import
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --db
+  - -d
+  description: ReferenceSeeker database path
+  args: !SimpleFlagArg
+    name: DB
+- !Flag
+  optional: true
+  synonyms:
+  - --genome
+  - -g
+  description: Genome path [Fasta, GenBank, EMBL]
+  args: !SimpleFlagArg
+    name: GENOME
+- !Flag
+  optional: true
+  synonyms:
+  - --id
+  - -i
+  description: "Unique genome identifier (default sequence id of first\nrecord)"
+  args: !SimpleFlagArg
+    name: ID
+- !Flag
+  optional: true
+  synonyms:
+  - --taxonomy
+  - -t
+  description: Taxonomy ID (default = 12908 [unclassified sequences])
+  args: !SimpleFlagArg
+    name: TAXONOMY
+- !Flag
+  optional: true
+  synonyms:
+  - --status
+  - -s
+  description: Assembly level (default = contig)
+  args: !ChoiceFlagArg
+    choices: !!set
+      complete:
+      chromosome:
+      scaffold:
+      contig:
+- !Flag
+  optional: true
+  synonyms:
+  - --organism
+  - -o
+  description: "Organism name (default = \"NA\")\n"
+  args: !SimpleFlagArg
+    name: ORGANISM
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: referenceseeker_db import [-h] --db DB --genome GENOME [--id ID]\n\
+  \                                 [--taxonomy TAXONOMY]\n                      \
+  \           [--status {complete,chromosome,scaffold,contig}]\n                 \
+  \                [--organism ORGANISM]\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n  --db DB, -d DB        ReferenceSeeker\
+  \ database path\n  --genome GENOME, -g GENOME\n                        Genome path\
+  \ [Fasta, GenBank, EMBL]\n  --id ID, -i ID        Unique genome identifier (default\
+  \ sequence id of first\n                        record)\n  --taxonomy TAXONOMY,\
+  \ -t TAXONOMY\n                        Taxonomy ID (default = 12908 [unclassified\
+  \ sequences])\n  --status {complete,chromosome,scaffold,contig}, -s {complete,chromosome,scaffold,contig}\n\
+  \                        Assembly level (default = contig)\n  --organism ORGANISM,\
+  \ -o ORGANISM\n                        Organism name (default = \"NA\")\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/referenceseeker:1.6.4--py_0

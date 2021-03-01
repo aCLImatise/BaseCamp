@@ -22,6 +22,9 @@ task ChainToAxt {
       ~{if defined(mini_d) then ("-minId " +  '"' + mini_d + '"') else ""} \
       ~{if (bed) then "-bed" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_gap: "gap sized allowed without breaking, default 100"
     max_chain: "chain size allowed without breaking, default 1073741823"

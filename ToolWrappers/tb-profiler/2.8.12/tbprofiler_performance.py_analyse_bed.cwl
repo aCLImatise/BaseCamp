@@ -3,12 +3,12 @@ id: tbprofiler_performance.py_analyse_bed.cwl
 inputs:
 - id: in_it_ol
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --itol
 - id: in_dir
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --dir
 - id: in_tb_profiler_performance_do_tpy
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tbprofiler_performance.py

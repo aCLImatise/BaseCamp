@@ -11,7 +11,7 @@ task SnoStrippl {
     Boolean? quiet_suppress_unnecessary
     Boolean? force_force_search
     Boolean? targets
-    Boolean? sequences_directory_targetrnas
+    Boolean? sequences__directory
     Boolean? alignments_directory_targetrna
     Boolean? profiles_directory_targetrna
     String perl
@@ -28,10 +28,13 @@ task SnoStrippl {
       ~{if (quiet_suppress_unnecessary) then "-q" else ""} \
       ~{if (force_force_search) then "-f" else ""} \
       ~{if (targets) then "--targets" else ""} \
-      ~{if (sequences_directory_targetrnas) then "-s" else ""} \
+      ~{if (sequences__directory) then "-s" else ""} \
       ~{if (alignments_directory_targetrna) then "-a" else ""} \
       ~{if (profiles_directory_targetrna) then "-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir_output_directory: "|dir             Output directory where all retrieved information will\\nbe stored.\\n[REQUIRED]"
     kingdom_specify_kingdom: "|kingdom         Specify the kingdom which shall be analyzed.\\n'pro' ... Protostomia\\n'deu' ... Deuterostomia\\n'fun' ... Fungi\\n'pla' ... Plants\\n[REQUIRED]"
@@ -42,7 +45,7 @@ task SnoStrippl {
     quiet_suppress_unnecessary: "|quiet           Suppress unnecessary output."
     force_force_search: "|force           Force to search for novel snoRNA candidates in every\\norganism, even though there are already species-specific\\nsequences in the current family."
     targets: "Enable target prediction and make use of the target RNAs\\nthat were shipped with snoStrip.\\nLocation: /"
-    sequences_directory_targetrnas: "|sequences       Directory of targetRNAs."
+    sequences__directory: "|sequences       Directory of targetRNAs."
     alignments_directory_targetrna: "|alignments      Directory of targetRNA alignments."
     profiles_directory_targetrna: "|profiles        Directory of targetRNA profiles."
     perl: ""

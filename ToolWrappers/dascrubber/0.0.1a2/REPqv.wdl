@@ -4,6 +4,9 @@ task REPqv {
   command <<<
     REPqv
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -58,6 +58,9 @@ task Skesa {
       ~{if defined(hist) then ("--hist " +  '"' + hist + '"') else ""} \
       ~{if defined(connected_reads) then ("--connected_reads " +  '"' + connected_reads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _print_version: "[ --version ]              Print version"
     cores: "(=0)              Number of cores to use (default all) [integer]"

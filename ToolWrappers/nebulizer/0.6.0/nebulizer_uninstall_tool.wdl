@@ -12,6 +12,9 @@ task NebulizerUninstallTool {
       ~{if (remove_from_disk) then "--remove_from_disk" else ""} \
       ~{if (yes) then "--yes" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     remove_from_disk: "remove the uninstalled tool from disk (otherwise tool is\\njust deactivated)."
     yes: "don't ask for confirmation of uninstallation."

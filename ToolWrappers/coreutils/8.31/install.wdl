@@ -19,7 +19,7 @@ task Install {
     Boolean? no_target_directory
     Boolean? verbose
     Boolean? preserve_context
-    Boolean? set_selinux_context
+    Boolean? set_security_context
     Boolean? context
   }
   command <<<
@@ -41,9 +41,12 @@ task Install {
       ~{if (no_target_directory) then "--no-target-directory" else ""} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (preserve_context) then "--preserve-context" else ""} \
-      ~{if (set_selinux_context) then "-Z" else ""} \
+      ~{if (set_security_context) then "-Z" else ""} \
       ~{if (context) then "--context" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     backup: "[=CONTROL]  make a backup of each existing destination file"
     _backup_accept: "like --backup but does not accept an argument"
@@ -62,7 +65,7 @@ task Install {
     no_target_directory: "treat DEST as a normal file"
     verbose: "print the name of each directory as it is created"
     preserve_context: "preserve SELinux security context"
-    set_selinux_context: "set SELinux security context of destination\\nfile and each created directory to default type"
+    set_security_context: "set SELinux security context of destination\\nfile and each created directory to default type"
     context: "[=CTX]     like -Z, or if CTX is specified then set the\\nSELinux or SMACK security context to CTX"
   }
   output {

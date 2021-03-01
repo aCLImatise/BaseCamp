@@ -22,6 +22,9 @@ task ProphaneTarget {
       ~{if (print_shell_cmds) then "--printshellcmds" else ""} \
       ~{if (timestamp) then "--timestamp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_dbs: "print list of configured databases\\ndatabases are looked up in 'db_base_dir' configured in:\\n/usr/local/opt/prophane/general_config.yaml"
     list_styles: "print list of available input file styles\\nstyles are looked up in the following folder:\\n/usr/local/opt/prophane/styles"

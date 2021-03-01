@@ -3,13 +3,13 @@ id: generate_names.pl.cwl
 inputs:
 - id: in_out
   doc: Data directory to process. Default 'data/'.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --out
 - id: in_tracks
   doc: "[,...]\nComma-separated list of which tracks to include in the names index.\n\
     If not passed, all tracks are indexed."
-  type: string
+  type: string?
   inputBinding:
     prefix: --tracks
 - id: in_compress
@@ -18,26 +18,26 @@ inputs:
     \ if you use this option\nyou must configure your web server to serve these files\
     \ with the\ncorrect Content-Encoding HTTP header. See the JBrowse Configuration\n\
     Guide on the GMOD wiki for help with this."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --compress
 - id: in_incremental
-  doc: "| -i\nDo not completely rebuild the names index in the given location,\nonly\
-    \ insert new names into it."
-  type: boolean
+  doc: "Do not completely rebuild the names index in the given location,\nonly insert\
+    \ new names into it."
+  type: boolean?
   inputBinding:
     prefix: --incremental
 - id: in_location_limit
   doc: "Maximum number of distinct locations to store for a single name.\nDefault\
     \ 100."
-  type: long
+  type: long?
   inputBinding:
     prefix: --locationLimit
 - id: in_mem
   doc: "Number of bytes of RAM we are allowed to use for caching memory.\nDefault\
     \ 256000000 (256 MiB). If your machine has enough RAM,\nincreasing this can speed\
     \ up this script's running time\nsignificantly."
-  type: long
+  type: long?
   inputBinding:
     prefix: --mem
 - id: in_workdir
@@ -48,7 +48,7 @@ inputs:
     \ RAM usage reasonable. If a fast filesystem (e.g. tmpfs) is\navailable and large\
     \ enough, indexing can be speeded up by using it\nto store the intermediate results\
     \ of name indexing."
-  type: string
+  type: string?
   inputBinding:
     prefix: --workdir
 - id: in_completion_limit
@@ -56,12 +56,12 @@ inputs:
     \ Set to 0 to disable auto-completion of feature names.\nNote that the name index\
     \ always contains exact matches for feature\nnames; this setting only disables\
     \ autocompletion based on incomplete\nnames."
-  type: long
+  type: long?
   inputBinding:
     prefix: --completionLimit
 - id: in_verbose
   doc: Print more progress messages.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_generate_names_do_tpl
@@ -73,6 +73,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - generate-names.pl

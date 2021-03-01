@@ -4,12 +4,12 @@ inputs:
 - id: in_seed
   doc: ': Set seed for the random number generator used in simulation. The seed should
     be a 32-bit unsigned integer.'
-  type: long
+  type: long?
   inputBinding:
     prefix: --seed
-- id: in_set_it_will
+- id: in_set_it_stop
   doc: ': Set it will stop outputting intermediate information.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
 - id: in_reference_name
@@ -46,6 +46,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsem-simulate-reads

@@ -14,6 +14,9 @@ task Syco {
       ~{if (uncommon) then "-uncommon" else ""} \
       ~{if (minimum) then "-minimum" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     c_file: "codon      Codon usage file"
     window: "integer    [30] Averaging window (Any integer value)"

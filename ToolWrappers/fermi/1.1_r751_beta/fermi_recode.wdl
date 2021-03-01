@@ -8,6 +8,9 @@ task FermiRecode {
     fermi recode \
       ~{in_dot_rld}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_rld: ""
   }

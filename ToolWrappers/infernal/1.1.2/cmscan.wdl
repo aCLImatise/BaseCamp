@@ -3,7 +3,7 @@ version 1.0
 task Cmscan {
   input {
     Boolean? configure_cm_glocal
-    Int? set_space_size
+    Int? set_search_size
     Boolean? devhelp
     File? direct_output_file
     File? tbl_out
@@ -13,8 +13,8 @@ task Cmscan {
     Boolean? no_text_w
     Int? text_w
     Boolean? verbose
-    Float? report_sequences_evalue_threshold
-    String? report_sequences_score_threshold
+    Float? report_sequences_threshold
+    String? report_sequences_score
     Float? ince
     String? in_ct
     Boolean? cut_ga
@@ -54,7 +54,7 @@ task Cmscan {
       ~{cmdb} \
       ~{seq_file} \
       ~{if (configure_cm_glocal) then "-g" else ""} \
-      ~{if defined(set_space_size) then ("-Z " +  '"' + set_space_size + '"') else ""} \
+      ~{if defined(set_search_size) then ("-Z " +  '"' + set_search_size + '"') else ""} \
       ~{if (devhelp) then "--devhelp" else ""} \
       ~{if defined(direct_output_file) then ("-o " +  '"' + direct_output_file + '"') else ""} \
       ~{if defined(tbl_out) then ("--tblout " +  '"' + tbl_out + '"') else ""} \
@@ -64,8 +64,8 @@ task Cmscan {
       ~{if (no_text_w) then "--notextw" else ""} \
       ~{if defined(text_w) then ("--textw " +  '"' + text_w + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""} \
-      ~{if defined(report_sequences_evalue_threshold) then ("-E " +  '"' + report_sequences_evalue_threshold + '"') else ""} \
-      ~{if defined(report_sequences_score_threshold) then ("-T " +  '"' + report_sequences_score_threshold + '"') else ""} \
+      ~{if defined(report_sequences_threshold) then ("-E " +  '"' + report_sequences_threshold + '"') else ""} \
+      ~{if defined(report_sequences_score) then ("-T " +  '"' + report_sequences_score + '"') else ""} \
       ~{if defined(ince) then ("--incE " +  '"' + ince + '"') else ""} \
       ~{if defined(in_ct) then ("--incT " +  '"' + in_ct + '"') else ""} \
       ~{if (cut_ga) then "--cut_ga" else ""} \
@@ -98,9 +98,12 @@ task Cmscan {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     configure_cm_glocal: ": configure CM for glocal alignment [default: local]"
-    set_space_size: ": set search space size in *Mb* to <x> for E-value calculations  (x>0)"
+    set_search_size: ": set search space size in *Mb* to <x> for E-value calculations  (x>0)"
     devhelp: ": show list of otherwise hidden developer/expert options"
     direct_output_file: ": direct output to file <f>, not stdout"
     tbl_out: ": save parseable table of hits to file <s>"
@@ -110,8 +113,8 @@ task Cmscan {
     no_text_w: ": unlimit ASCII text output line width"
     text_w: ": set max width of ASCII text output lines  [120]  (n>=120)"
     verbose: ": report extra information; mainly useful for debugging"
-    report_sequences_evalue_threshold: ": report sequences <= this E-value threshold in output  [10.0]  (x>0)"
-    report_sequences_score_threshold: ": report sequences >= this score threshold in output"
+    report_sequences_threshold: ": report sequences <= this E-value threshold in output  [10.0]  (x>0)"
+    report_sequences_score: ": report sequences >= this score threshold in output"
     ince: ": consider sequences <= this E-value threshold as significant  [0.01]"
     in_ct: ": consider sequences >= this score threshold as significant"
     cut_ga: ": use CM's GA gathering cutoffs as reporting thresholds"

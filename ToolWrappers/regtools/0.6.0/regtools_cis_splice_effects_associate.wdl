@@ -12,8 +12,8 @@ task RegtoolsCisspliceeffectsAssociate {
     Int? maximum_distance_exonic
     Int? maximum_distance_intronic
     Boolean? annotate_variants_intronic
-    Boolean? annotate_variants_used
-    Boolean? skip_single_transcripts
+    Boolean? annotate_variants_exonic
+    Boolean? skip_exon_transcripts
     String variants_dot_vcf
     String junctions_dot_bed
     String ref_dot_fa
@@ -35,9 +35,12 @@ task RegtoolsCisspliceeffectsAssociate {
       ~{if defined(maximum_distance_exonic) then ("-e " +  '"' + maximum_distance_exonic + '"') else ""} \
       ~{if defined(maximum_distance_intronic) then ("-i " +  '"' + maximum_distance_intronic + '"') else ""} \
       ~{if (annotate_variants_intronic) then "-I" else ""} \
-      ~{if (annotate_variants_used) then "-E" else ""} \
-      ~{if (skip_single_transcripts) then "-S" else ""}
+      ~{if (annotate_variants_exonic) then "-E" else ""} \
+      ~{if (skip_exon_transcripts) then "-S" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_containing_aberrant_splice_junctions: "Output file containing the aberrant splice junctions with annotations. [STDOUT]"
     output_file_containing_variants: "Output file containing variants annotated as splice relevant (VCF format)."
@@ -49,8 +52,8 @@ task RegtoolsCisspliceeffectsAssociate {
     maximum_distance_exonic: "Maximum distance from the start/end of an exon\\nto annotate a variant as relevant to splicing, the variant\\nis in exonic space, i.e a coding variant. [3]"
     maximum_distance_intronic: "Maximum distance from the start/end of an exon\\nto annotate a variant as relevant to splicing, the variant\\nis in intronic space. [2]"
     annotate_variants_intronic: "Annotate variants in intronic space within a transcript(not to be used with -i)."
-    annotate_variants_used: "Annotate variants in exonic space within a transcript(not to be used with -e)."
-    skip_single_transcripts: "Don't skip single exon transcripts."
+    annotate_variants_exonic: "Annotate variants in exonic space within a transcript(not to be used with -e)."
+    skip_exon_transcripts: "Don't skip single exon transcripts."
     variants_dot_vcf: ""
     junctions_dot_bed: ""
     ref_dot_fa: ""

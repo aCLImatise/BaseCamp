@@ -3,53 +3,53 @@ id: TOBIAS_SubsampleBam.cwl
 inputs:
 - id: in_bam
   doc: Path to .bam-file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bam
 - id: in_no_rand
   doc: 'Number of randomizations (per step) (default: 3)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_rand
 - id: in_start
   doc: 'Start of percent subsample (default: 0)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --start
 - id: in_end
   doc: 'End of percent subsample (default: 100)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --end
 - id: in_step
   doc: 'Step between --start and --end (default: 10)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --step
 - id: in_cores
   doc: 'Cores for multiprocessing (default: 1)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cores
 - id: in_outdir
   doc: 'Output directory (default: subsamplebam_output)'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_prefix
   doc: 'Prefix for output files (default: prefix of .bam)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --prefix
 - id: in_force
   doc: 'Force creation of subsampled .bam-files (default: only create if not existing)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_verbosity
   doc: "Level of output logging (0: silent, 1: errors/warnings, 2: info, 3: stats,\
     \ 4:\ndebug, 5: spam) (default: 3)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbosity
 outputs:
@@ -58,9 +58,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: 'Output directory (default: subsamplebam_output)'
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - TOBIAS

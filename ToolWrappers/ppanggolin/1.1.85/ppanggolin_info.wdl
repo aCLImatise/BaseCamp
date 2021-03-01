@@ -14,6 +14,9 @@ task PpanggolinInfo {
       ~{if (content) then "--content" else ""} \
       ~{if (status) then "--status" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_genome: "The pangenome .h5 file (default: None)"
     parameters: "Shows the parameters used (or computed) for each step\\nof the pangenome generation (default: False)"

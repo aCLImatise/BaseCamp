@@ -3,12 +3,12 @@ id: gensub2.cwl
 inputs:
 - id: in_group_one
   doc: '- write elements in order Aa Ab Ac Ba Bb Bc Ca Cb Cc'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -group1
 - id: in_group_two
   doc: '- write elements in order Aa Ba Ca Ab Bb Cb Ac Bc Cc'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -group2
 - id: in_file_list_one
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gensub2

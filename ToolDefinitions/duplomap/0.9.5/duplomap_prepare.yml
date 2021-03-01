@@ -1,0 +1,190 @@
+!Command
+command:
+- duplomap-prepare
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Csv file with segmental duplications
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: Reference genome in the indexed fasta format
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --annotate
+  description: 'Optional: gene annotation in the GFF format, used for database annotation'
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output directory
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: Force work with non-empty output directory
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --anchor
+  description: 'Anchor size [default: 6]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --area
+  description: 'Anchor should be unique in the area with radius INT [default: 20]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --length
+  description: "Discard duplication pairs if at least one of the sequences is shorter\
+    \ than INT\n[default: 5000]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --seq-similarity
+  description: "Discard duplication pairs with sequence similarity (fracMatch) less\
+    \ that FLOAT\n[default: 0.97]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --minimap-kmer
+  description: 'Minimap2 k-mer size [default: 15]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --window-size
+  description: 'Window size used for the identification of diverse regions [default:
+    100]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-windows
+  description: "Number of consecutive windows necessary to mark a region as similar\
+    \ or diverse\n[default: 3]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --window-similarity
+  description: "Window similarity threshold (diverse regions have similarity lower\
+    \ than FLOAT)\n[default: 95.0]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --comp-dist
+  description: 'Distance between components containing segmental duplications [default:
+    500]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-copy-num
+  description: "<INT>    Do not analyze regions with copy number higher or equal than\
+    \ INT[1]. If region\nlength is less than INT[2], PSVs in the region are not constructed.\n\
+    [default 6 3000]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: "Logging level in log files (stderr shows logs with info level and\
+    \ higher)\n[default: debug]  [possible values: trace, debug, info, warning, error,\
+    \ critical,\nnone]"
+  args: !SimpleFlagArg
+    name: LEVEL
+- !Flag
+  optional: true
+  synonyms:
+  - --human
+  description: Human readable database (currently cannot be loaded)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "duplomap-prepare 0.9.5\nTimofey Prodanov, Vikas Bansal\nPrepare a PSV\
+  \ database for segmental duplications\n\nUSAGE:\n    duplomap-prepare -i <csv> -r\
+  \ <fasta> [-a <gff>] -o <dir> [args]\n\nOPTIONS:\n    -i, --input <FILE>       \
+  \          Csv file with segmental duplications\n    -r, --reference <FILE>    \
+  \         Reference genome in the indexed fasta format\n    -a, --annotate <FILE>\
+  \              Optional: gene annotation in the GFF format, used for database annotation\n\
+  \    -o, --output <DIR>                 Output directory\n    -f, --force      \
+  \                  Force work with non-empty output directory\n        --anchor\
+  \ <INT>                 Anchor size [default: 6]\n        --area <INT>         \
+  \          Anchor should be unique in the area with radius INT [default: 20]\n \
+  \       --length <INT>                 Discard duplication pairs if at least one\
+  \ of the sequences is shorter than INT\n                                       [default:\
+  \ 5000]\n        --seq-similarity <FLOAT>       Discard duplication pairs with sequence\
+  \ similarity (fracMatch) less that FLOAT\n                                     \
+  \  [default: 0.97]\n        --minimap-kmer <INT>           Minimap2 k-mer size [default:\
+  \ 15]\n        --window-size <INT>            Window size used for the identification\
+  \ of diverse regions [default: 100]\n        --min-windows <INT>            Number\
+  \ of consecutive windows necessary to mark a region as similar or diverse\n    \
+  \                                   [default: 3]\n        --window-similarity <FLOAT>\
+  \    Window similarity threshold (diverse regions have similarity lower than FLOAT)\n\
+  \                                       [default: 95.0]\n        --comp-dist <INT>\
+  \              Distance between components containing segmental duplications [default:\
+  \ 500]\n        --skip-copy-num <INT> <INT>    Do not analyze regions with copy\
+  \ number higher or equal than INT[1]. If region\n                              \
+  \         length is less than INT[2], PSVs in the region are not constructed. \n\
+  \                                       [default 6 3000]\n        --log <LEVEL>\
+  \                  Logging level in log files (stderr shows logs with info level\
+  \ and higher)\n                                       [default: debug]  [possible\
+  \ values: trace, debug, info, warning, error, critical,\n                      \
+  \                 none]\n        --human                        Human readable database\
+  \ (currently cannot be loaded)\n    -h, --help                         Prints help\
+  \ information\n    -V, --version                      Prints version information\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/duplomap:0.9.5--hed695b0_0

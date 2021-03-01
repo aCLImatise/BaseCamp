@@ -1,36 +1,37 @@
 class: CommandLineTool
 id: ecoPCRFormat.py.cwl
 inputs:
-- id: in__embl_mbl
-  doc: --embl        :[E]mbl format
-  type: boolean
+- id: in_embl
+  doc: :[E]mbl format
+  type: boolean?
   inputBinding:
-    prefix: -e
-- id: in__fasta_format
-  doc: --fasta       :[F]asta format
-  type: boolean
+    prefix: --embl
+- id: in_fast_a
+  doc: :[F]asta format
+  type: boolean?
   inputBinding:
-    prefix: -f
-- id: in__genbank_format
-  doc: --genbank     :[G]enbank format
-  type: boolean
+    prefix: --fasta
+- id: in_genbank
+  doc: :[G]enbank format
+  type: boolean?
   inputBinding:
-    prefix: -g
-- id: in__name_ame
-  doc: --name        :[N]ame of the new database created
-  type: boolean
+    prefix: --genbank
+- id: in_name
+  doc: :[N]ame of the new database created
+  type: boolean?
   inputBinding:
-    prefix: -n
-- id: in__taxonomy_path
-  doc: "--taxonomy    :[T]axonomy - path to the taxonomy database\n:bcp-like dump\
-    \ from GenBank taxonomy database."
-  type: boolean
+    prefix: --name
+- id: in_taxonomy
+  doc: ":[T]axonomy - path to the taxonomy database\n:bcp-like dump from GenBank taxonomy\
+    \ database."
+  type: boolean?
   inputBinding:
-    prefix: -t
+    prefix: --taxonomy
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ecoPCRFormat.py

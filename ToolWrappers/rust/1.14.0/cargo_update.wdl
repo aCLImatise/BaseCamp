@@ -26,6 +26,9 @@ task CargoUpdate {
       ~{if (frozen) then "--frozen" else ""} \
       ~{if (locked) then "--locked" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     package: "to update"
     aggressive: "Force updating all dependencies of <name> as well"

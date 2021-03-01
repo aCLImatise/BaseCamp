@@ -10,6 +10,9 @@ task SubtractBedGraphsDirectorypl {
       ~{if defined(prefix) then ("-prefix " +  '"' + prefix + '"') else ""} \
       ~{if (center) then "-center" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "(will separate bedGraphs based on this name)"
     center: "(center bedGraphs on average signal, removes global differences)"

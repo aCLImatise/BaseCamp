@@ -20,6 +20,9 @@ task PhyluceGenetreesLocusStats {
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "The gene tree configuration file"
     alignment_files_process: "Alignment files to process"

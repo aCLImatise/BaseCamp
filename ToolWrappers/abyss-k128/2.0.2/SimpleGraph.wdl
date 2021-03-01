@@ -38,6 +38,9 @@ task SimpleGraph {
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: "k-mer size"
     dist_error: "acceptable error of a distance estimate\\ndefault is 6 bp"

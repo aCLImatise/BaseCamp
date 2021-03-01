@@ -8,6 +8,9 @@ task ProjectAndStrip {
     projectAndStrip \
       ~{seq_n}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_n: ""
   }

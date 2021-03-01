@@ -36,6 +36,9 @@ task GoalignTrimSeq {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     from_start: "If true: trims n char from the start, else from the end"
     nb_char: "Number of characters to trim from sequences (default 1)"

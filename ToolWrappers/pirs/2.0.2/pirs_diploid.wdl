@@ -48,6 +48,9 @@ task PirsDiploid {
       ~{if defined(random_seed) then ("--random-seed " +  '"' + random_seed + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     snp_rate: "A floating-point number in the interval [0, 1] that\\nspecifies the heterozygous SNP rate.  Default: 0.001"
     in_del_rate: "A floating-point number in the interval [0, 1] that\\nspecifies the heterozygous indel rate.\\nDefault: 0.0001"

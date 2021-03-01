@@ -16,14 +16,14 @@ inputs:
     \ pattern is restricted to either the\nN- or C-terminal of a sequence, that pattern\n\
     either starts with a '<' symbol or\nrespectively ends with a '>' symbol.\nA period\
     \ ends the pattern. (Optional in\nfuzztran).\nFor example, [DE](2)HS{P}X(2)PX(2,4)C"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pattern
 - id: in_frame
   doc: "menu       [1] Frame(s) to translate (Values: 1 (1); 2\n(2); 3 (3); F (Forward\
     \ three frames); -1\n(-1); -2 (-2); -3 (-3); R (Reverse three\nframes); 6 (All\
     \ six frames))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -frame
 - id: in_table
@@ -35,13 +35,14 @@ inputs:
     \ Yeast Nuclear);\n13 (Ascidian Mitochondrial); 14 (Flatworm\nMitochondrial);\
     \ 15 (Blepharisma\nMacronuclear); 16 (Chlorophycean\nMitochondrial); 21 (Trematode\n\
     Mitochondrial); 22 (Scenedesmus obliquus);\n23 (Thraustochytrium Mitochondrial))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -table
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fuzztran

@@ -3,146 +3,146 @@ command:
 - run_spp.R
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: options
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: ', full path and name (or URL) of tagAlign/BAM file (can be gzipped)
-    (FILE EXTENSION MUST BE tagAlign.gz, tagAlign, bam or bam.gz)'
+  optional: true
   synonyms:
   - -c
-  args: !SimpleFlagArg
-    name: ChIP_alignFile
-  optional: true
-- !Flag
   description: ', full path and name (or URL) of tagAlign/BAM file (can be gzipped)
     (FILE EXTENSION MUST BE tagAlign.gz, tagAlign, bam or bam.gz)'
+  args: !SimpleFlagArg
+    name: ChIP_alignFile
+- !Flag
+  optional: true
   synonyms:
   - -i
+  description: ', full path and name (or URL) of tagAlign/BAM file (can be gzipped)
+    (FILE EXTENSION MUST BE tagAlign.gz, tagAlign, bam or bam.gz)'
   args: !SimpleFlagArg
     name: Input_alignFile
-  optional: true
 - !Flag
-  description: :<step>:<max> , strand shifts at which cross-correlation is evaluated,
-    default=-500:5:1500
+  optional: true
   synonyms:
   - -s
+  description: :<step>:<max> , strand shifts at which cross-correlation is evaluated,
+    default=-500:5:1500
   args: !SimpleFlagArg
     name: min
-  optional: true
 - !Flag
-  description: ', user-defined cross-correlation peak strandshift'
+  optional: true
   synonyms:
   - -speak
+  description: ', user-defined cross-correlation peak strandshift'
   args: !SimpleFlagArg
     name: strPeak
-  optional: true
 - !Flag
-  description: :<max>, strand shifts to exclude (This is mainly to avoid region around
-    phantom peak) default=10:(readlen+10)
+  optional: true
   synonyms:
   - -x
+  description: :<max>, strand shifts to exclude (This is mainly to avoid region around
+    phantom peak) default=10:(readlen+10)
   args: !SimpleFlagArg
     name: min
-  optional: true
 - !Flag
-  description: ', number of parallel processing nodes, default=0'
+  optional: true
   synonyms:
   - -p
+  description: ', number of parallel processing nodes, default=0'
   args: !SimpleFlagArg
     name: nodes
-  optional: true
 - !Flag
-  description: ', false discovery rate threshold for peak calling'
+  optional: true
   synonyms:
   - -fdr
+  description: ', false discovery rate threshold for peak calling'
   args: !SimpleFlagArg
     name: falseDisoveryRate
-  optional: true
 - !Flag
-  description: ', threshold on number of peaks to call'
+  optional: true
   synonyms:
   - -npeak
+  description: ', threshold on number of peaks to call'
   args: !SimpleFlagArg
     name: numPeaks
-  optional: true
 - !Flag
-  description: ', Temporary directory (if not specified R function tempdir() is used)'
+  optional: true
   synonyms:
   - -tmpdir
+  description: ', Temporary directory (if not specified R function tempdir() is used)'
   args: !SimpleFlagArg
     name: tempdir
-  optional: true
 - !Flag
-  description: ', Pattern to use to remove tags that map to specific chromosomes e.g.
-    _ will remove all tags that map to chromosomes with _ in their name'
+  optional: true
   synonyms:
   - -filtchr
+  description: ', Pattern to use to remove tags that map to specific chromosomes e.g.
+    _ will remove all tags that map to chromosomes with _ in their name'
   args: !SimpleFlagArg
     name: chrnamePattern
-  optional: true
 - !Flag
-  description: name of output directory (If not set same as ChIP file directory is
-    used)
+  optional: true
   synonyms:
   - -odir
+  description: name of output directory (If not set same as ChIP file directory is
+    used)
   args: !SimpleFlagArg
     name: outputDirectory
-  optional: true
 - !Flag
-  description: OR -savn NarrowPeak file name (fixed width peaks)
+  optional: true
   synonyms:
   - -savn
+  description: OR -savn NarrowPeak file name (fixed width peaks)
   args: !SimpleFlagArg
     name: narrowpeakfilename
-  optional: true
 - !Flag
-  description: OR -savr RegionPeak file name (variable width peaks with regions of
-    enrichment)
+  optional: true
   synonyms:
   - -savr
+  description: OR -savr RegionPeak file name (variable width peaks with regions of
+    enrichment)
   args: !SimpleFlagArg
     name: regionpeakfilename
-  optional: true
 - !Flag
-  description: OR -savd, save Rdata file
+  optional: true
   synonyms:
   - -savd
+  description: OR -savd, save Rdata file
   args: !SimpleFlagArg
     name: rdatafile
-  optional: true
 - !Flag
-  description: OR -savp, save cross-correlation plot
+  optional: true
   synonyms:
   - -savp
+  description: OR -savp, save cross-correlation plot
   args: !SimpleFlagArg
     name: plotdatafile
-  optional: true
 - !Flag
-  description: ", append peakshift/phantomPeak results to a file\nformat:Filename<tab>numReads<tab>estFragLen<tab>corr_estFragLen<tab>PhantomPeak<tab>corr_phantomPeak<tab>argmin_corr<tab>min_corr<tab>Normalized\
-    \ SCC (NSC)<tab>Relative SCC (RSC)<tab>QualityTag)"
+  optional: true
   synonyms:
   - -out
+  description: ", append peakshift/phantomPeak results to a file\nformat:Filename<tab>numReads<tab>estFragLen<tab>corr_estFragLen<tab>PhantomPeak<tab>corr_phantomPeak<tab>argmin_corr<tab>min_corr<tab>Normalized\
+    \ SCC (NSC)<tab>Relative SCC (RSC)<tab>QualityTag)"
   args: !SimpleFlagArg
     name: resultfile
-  optional: true
 - !Flag
-  description: ', if plot or rdata or narrowPeak file exists replace it. If not used
-    then the run is aborted if the plot or Rdata or narrowPeak file exists'
+  optional: true
   synonyms:
   - -rf
+  description: ', if plot or rdata or narrowPeak file exists replace it. If not used
+    then the run is aborted if the plot or Rdata or narrowPeak file exists'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -clean
   description: ', if present will remove the original chip and control files after
     reading them in. CAUTION: Use only if the script calling run_spp.R is creating
     temporary files'
-  synonyms:
-  - -clean
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -176,3 +176,4 @@ help_text: "Loading required package: Rcpp\nUsage: Rscript run_spp.R <options>\n
   \ control files after reading them in. CAUTION: Use only if the script calling run_spp.R\
   \ is creating temporary files\n"
 generated_using: []
+docker_image:

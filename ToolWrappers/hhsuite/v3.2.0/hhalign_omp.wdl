@@ -3,8 +3,8 @@ version 1.0
 task HhalignOmp {
   input {
     File? inputquery_single_sequence
-    File? single_sequence_alignment
-    Boolean? tags_slash_no_tags
+    File? inputtemplate_single_sequence
+    Boolean? no_tags
     File? write_results_file
     File? o_a_three_m
     File? aa_three_m
@@ -22,16 +22,16 @@ task HhalignOmp {
     Boolean? mark
     Boolean? no_realign
     Boolean? mact
-    Boolean? glob_slash_loc
-    Int? verbose_mode_output
+    Boolean? glob
+    Int? verbose_mode_screen
     String hh_align
   }
   command <<<
     hhalign_omp \
       ~{hh_align} \
       ~{if defined(inputquery_single_sequence) then ("-i " +  '"' + inputquery_single_sequence + '"') else ""} \
-      ~{if defined(single_sequence_alignment) then ("-t " +  '"' + single_sequence_alignment + '"') else ""} \
-      ~{if (tags_slash_no_tags) then "-tags/-notags" else ""} \
+      ~{if defined(inputtemplate_single_sequence) then ("-t " +  '"' + inputtemplate_single_sequence + '"') else ""} \
+      ~{if (no_tags) then "-notags" else ""} \
       ~{if defined(write_results_file) then ("-o " +  '"' + write_results_file + '"') else ""} \
       ~{if defined(o_a_three_m) then ("-oa3m " +  '"' + o_a_three_m + '"') else ""} \
       ~{if defined(aa_three_m) then ("-aa3m " +  '"' + aa_three_m + '"') else ""} \
@@ -49,13 +49,16 @@ task HhalignOmp {
       ~{if (mark) then "-mark" else ""} \
       ~{if (no_realign) then "-norealign" else ""} \
       ~{if (mact) then "-mact" else ""} \
-      ~{if (glob_slash_loc) then "-glob/-loc" else ""} \
-      ~{if defined(verbose_mode_output) then ("-v " +  '"' + verbose_mode_output + '"') else ""}
+      ~{if (glob) then "-glob" else ""} \
+      ~{if defined(verbose_mode_screen) then ("-v " +  '"' + verbose_mode_screen + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     inputquery_single_sequence: "input/query: single sequence or multiple sequence alignment (MSA)\\nin a3m, a2m, or FASTA format, or HMM in hhm format"
-    single_sequence_alignment: "input/template: single sequence or multiple sequence alignment (MSA)\\nin a3m, a2m, or FASTA format, or HMM in hhm format"
-    tags_slash_no_tags: "do NOT / do neutralize His-, C-myc-, FLAG-tags, and trypsin\\nrecognition sequence to background distribution (def=-notags)"
+    inputtemplate_single_sequence: "input/template: single sequence or multiple sequence alignment (MSA)\\nin a3m, a2m, or FASTA format, or HMM in hhm format"
+    no_tags: "do NOT / do neutralize His-, C-myc-, FLAG-tags, and trypsin\\nrecognition sequence to background distribution (def=-notags)"
     write_results_file: "write results in standard format to file (default=<infile.hhr>)"
     o_a_three_m: "write query alignment in a3m or PSI-BLAST format (-opsi) to file (default=none)"
     aa_three_m: "append query alignment in a3m (-aa3m) or PSI-BLAST format (-apsi )to file (default=none)"
@@ -73,8 +76,8 @@ task HhalignOmp {
     mark: "do not filter out sequences marked by \\\">@\\\"in their name line"
     no_realign: "do NOT realign displayed hits with MAC algorithm (def=realign)"
     mact: "[0,1[    posterior prob threshold for MAC realignment controlling greedi-\\nness at alignment ends: 0:global >0.1:local (default=0.35)"
-    glob_slash_loc: "use global/local alignment mode for searching/ranking (def=local)"
-    verbose_mode_output: "verbose mode: 0:no screen output  1:only warings  2: verbose (def=2)"
+    glob: "use global/local alignment mode for searching/ranking (def=local)"
+    verbose_mode_screen: "verbose mode: 0:no screen output  1:only warings  2: verbose (def=2)"
     hh_align: ""
   }
   output {

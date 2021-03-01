@@ -18,6 +18,9 @@ task HtsboxSamview {
       ~{if defined(var_2) then ("-L " +  '"' + var_2 + '"') else ""} \
       ~{if (bs_ipo) then "-bSIpO" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     e: ""
     var_1: ""

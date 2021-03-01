@@ -8,6 +8,9 @@ task Jstat {
     jstat \
       ~{if (flag_pass_flag) then "-J" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     flag_pass_flag: "<flag>      Pass <flag> directly to the runtime system."
   }

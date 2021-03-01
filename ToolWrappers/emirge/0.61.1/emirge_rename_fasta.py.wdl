@@ -16,6 +16,9 @@ task EmirgeRenameFastapy {
       ~{if (no_n) then "--no_N" else ""} \
       ~{if (no_trim_n) then "--no_trim_N" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prob_min: "Only include sequences in output with prior\\nprobability above PROB_MIN (Default: include all\\nsequences)"
     record_prefix: "Add the specified prefix to each fasta record title"

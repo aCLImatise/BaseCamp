@@ -4,6 +4,9 @@ task Paraviewconfig {
   command <<<
     paraview_config
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

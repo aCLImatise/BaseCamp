@@ -8,6 +8,9 @@ task NextflowConsole {
     nextflow console \
       ~{filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: ""
   }

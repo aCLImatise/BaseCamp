@@ -10,6 +10,9 @@ task HtsboxFaidx {
       ~{fa_idx} \
       ~{in_dot_fast_a}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fa_idx: ""
     in_dot_fast_a: ""

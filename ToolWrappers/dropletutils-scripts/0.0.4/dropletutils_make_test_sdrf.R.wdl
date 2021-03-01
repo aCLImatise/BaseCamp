@@ -10,6 +10,9 @@ task DropletutilsmaketestsdrfR {
       ~{if defined(barcodes) then ("--barcodes " +  '"' + barcodes + '"') else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     barcodes: "path to the cell barcodes file in .tsv format"
     output_file: "path to the tab-deilmited output file"

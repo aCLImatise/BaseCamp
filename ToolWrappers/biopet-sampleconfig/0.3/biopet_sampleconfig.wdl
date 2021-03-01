@@ -10,6 +10,9 @@ task Biopetsampleconfig {
       ~{tool_name} \
       ~{if defined(log_level) then ("--log_level " +  '"' + log_level + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_level: "Level of log information printed. Possible levels: 'debug', 'info', 'warn', 'error'"
     tool_name: "Name of the tool to execute"

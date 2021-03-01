@@ -26,6 +26,9 @@ task FastqToCA {
       ~{if (nonrandom) then "-nonrandom" else ""} \
       ~{if defined(feature) then ("-feature " +  '"' + feature + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     insert_size: "d    Mates are on average i +- d bp apart.\\nIf the word 'constant' follows the insert size, no changes will be\\nmade to the insert size."
     library_name: "The UID of the library these reads are added to."

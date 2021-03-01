@@ -18,6 +18,9 @@ task HcaDssGetevents {
       ~{if defined(token) then ("--token " +  '"' + token + '"') else ""} \
       ~{if (no_paginate) then "--no-paginate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     replica: "[--per-page PER_PAGE]"
     from_date: "Timestamp to begin replaying events, in DSS_VERSION format.  If this is not provided, replay from the earliest event."

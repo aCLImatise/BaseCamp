@@ -20,6 +20,9 @@ task Findtandem {
       ~{if defined(min_unit_length) then ("-m " +  '"' + min_unit_length + '"') else ""} \
       ~{if defined(flanking_bp_report) then ("-k " +  '"' + flanking_bp_report + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     multifasta_file_scan: "multifasta file to scan"
     minimum_number_report: "minimum number of units to report (default: 3)"

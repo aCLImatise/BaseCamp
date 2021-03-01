@@ -6,7 +6,7 @@ inputs:
     \ for further details. Note that rsync will\ndecide whether or not to perform\
     \ a copy based only on object size\nand modification time, not current ACL state.\
     \ Also see the -p\noption below."
-  type: long
+  type: long?
   inputBinding:
     prefix: -a
 - id: in_causes_command_compute
@@ -14,7 +14,7 @@ inputs:
     \ mtime) for files if the size of source and\ndestination as well as mtime (if\
     \ available) match. This option\nincreases local disk I/O and run time if either\
     \ src_url or\ndst_url are on the local file system."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_error_occurs_continue
@@ -24,7 +24,7 @@ inputs:
     \ applies to the\nactual copying operation. If an error occurs while iterating\n\
     over the files in the local directory (e.g., invalid Unicode\nfile name) gsutil\
     \ will print an error message and abort."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -C
 - id: in_delete_extra_files
@@ -32,19 +32,19 @@ inputs:
     \ files are not deleted. Note: this option can\ndelete data quickly if you specify\
     \ the wrong source/destination\ncombination. See the help section above,\n\"BE\
     \ CAREFUL WHEN USING -d OPTION!\"."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
-- id: in_exclude_symlinks_specified
+- id: in_exclude_symlinks_when
   doc: "Exclude symlinks. When specified, symbolic links will be\nignored. Note that\
     \ gsutil does not follow directory symlinks,\nregardless of whether -e is specified."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -e
 - id: in_causes_rsync_run
   doc: "Causes rsync to run in \"dry run\" mode, i.e., just outputting\nwhat would\
     \ be copied or deleted without actually doing any\ncopying/deleting."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_causes_acls_preserved
@@ -62,7 +62,7 @@ inputs:
     \ cost of using\nrsync -p if you want all objects in the destination bucket to\n\
     end up with the same ACL by setting a default object ACL on that\nbucket instead\
     \ of using rsync -p. See 'gsutil help defacl'."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_causes_posix_attributes
@@ -73,7 +73,7 @@ inputs:
     attributes will only be set if the source objects were uploaded\nwith this flag\
     \ enabled.\nOn Windows, this flag will only set and restore access time and\n\
     modification time. This is because Windows doesn't have a notion\nof POSIX uid/gid/mode."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -P
 - id: in_r_r_options
@@ -81,16 +81,16 @@ inputs:
     \ subdirectories to be synchronized\nrecursively. If you neglect to use this option\
     \ gsutil will make\nonly the top-level directory in the source and destination\
     \ URLs\nmatch, skipping any sub-directories."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -R
-- id: in_skip_objects_unsupported
+- id: in_skip_objects_objects
   doc: "Skip objects with unsupported object types instead of failing.\nUnsupported\
     \ object types are Amazon S3 Objects in the GLACIER\nstorage class."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -U
-- id: in_causes_filesobjects_matching
+- id: in_causes_pattern_excluded
   doc: "Causes files/objects matching pattern to be excluded, i.e., any\nmatching\
     \ files/objects will not be copied or deleted. Note that\nthe pattern is a Python\
     \ regular expression, not a wildcard (so,\nmatching any string ending in \"abc\"\
@@ -102,7 +102,7 @@ inputs:
     .jpg$\" dir gs://my-bucket\nNOTE: While it will work to surround the regular expression\
     \ with\neither single or double quotes on Linux and MacOS, on Windows\nyou need\
     \ to use double quotes.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: -x
 - id: in_workstation_dot
@@ -124,6 +124,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gsutil

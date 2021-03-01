@@ -18,6 +18,9 @@ task VarscanLimit {
       ~{if (not_file) then "--not-file" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     regions_file: "- a file of chromosome-start-stops, tab delimited"
     margin_size: "- shoulder bases to allow on either side of targets [0]"

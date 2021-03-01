@@ -20,6 +20,9 @@ task AssignGenomeAnnotation {
       ~{if defined(ann) then ("-ann " +  '"' + ann + '"') else ""} \
       ~{if defined(stats) then ("-stats " +  '"' + stats + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tags: "(Use if first argument is a tag directory)"
     frag_length: "<#|auto> (Approximate fragment length, default: auto)"

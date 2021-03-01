@@ -3,12 +3,12 @@ id: o_populate_datasets_from_VAMPS_download.cwl
 inputs:
 - id: in_tax_on
   doc: Isolate a particular taxon
-  type: string
+  type: string?
   inputBinding:
     prefix: --taxon
 - id: in_output
   doc: "Output file name\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file name\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - o-populate-datasets-from-VAMPS-download

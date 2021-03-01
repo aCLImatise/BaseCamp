@@ -24,6 +24,9 @@ task CnvkitpyDiagram {
       ~{if defined(output_pdf_file) then ("--output " +  '"' + output_pdf_file + '"') else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     segment: "Segmentation calls (.cns), the output of the 'segment'\\ncommand."
     threshold: "Copy number change threshold to label genes. [Default:\\n0.5]"

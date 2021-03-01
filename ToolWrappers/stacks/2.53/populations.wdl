@@ -114,6 +114,9 @@ task Populations {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (log_fst_comp) then "--log-fst-comp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_path: ": path to a directory containing Stacks ouput files."
     in_vcf: ": path to a standalone input VCF file."

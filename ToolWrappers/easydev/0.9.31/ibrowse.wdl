@@ -4,6 +4,9 @@ task Ibrowse {
   command <<<
     ibrowse
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

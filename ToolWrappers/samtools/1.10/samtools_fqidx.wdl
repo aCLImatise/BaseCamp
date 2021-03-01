@@ -20,6 +20,9 @@ task SamtoolsFqidx {
       ~{if defined(reverse_complement) then ("--reverse-complement " +  '"' + reverse_complement + '"') else ""} \
       ~{if defined(mark_strand) then ("--mark-strand " +  '"' + mark_strand + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     write_fastq_file: "Write FASTQ to file."
     length: "Length of FASTQ sequence line. [60]"

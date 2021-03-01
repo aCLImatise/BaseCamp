@@ -12,12 +12,12 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: not a valid option
+    optional: true
     synonyms:
     - -h
+    description: not a valid option
     args: !SimpleFlagArg
       name: is
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -29,12 +29,12 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: not a valid option
+        optional: true
         synonyms:
         - -h
+        description: not a valid option
         args: !SimpleFlagArg
           name: is
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -46,12 +46,12 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: not a valid option
+            optional: true
             synonyms:
             - -h
+            description: not a valid option
             args: !SimpleFlagArg
               name: is
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -63,29 +63,16 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: not a valid option
+                optional: true
                 synonyms:
                 - -h
+                description: not a valid option
                 args: !SimpleFlagArg
                   name: is
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: "outputs name and size of each record\nhas the side\
-                    \ effect of printing nothing else"
-                  synonyms:
-                  - -detailed
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: output statistics in a tab separated format
-                  synonyms:
-                  - -tab
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
@@ -93,21 +80,71 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: not a valid option
+                    optional: true
                     synonyms:
                     - -h
+                    description: not a valid option
                     args: !SimpleFlagArg
                       name: is
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -detailed
+                      description: "outputs name and size of each record\nhas the\
+                        \ side effect of printing nothing else"
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -tab
+                      description: output statistics in a tab separated format
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: not a valid option
+                        args: !SimpleFlagArg
+                          name: is
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "-h is not a valid option\n"
+                      generated_using: &id004
+                      - -h
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "faSize - print total base count in fa files.\nusage:\n\
+                      \   faSize file(s).fa\nCommand flags\n   -detailed        outputs\
+                      \ name and size of each record\n                    has the\
+                      \ side effect of printing nothing else\n   -tab            \
+                      \ output statistics in a tab separated format\n\n"
+                    generated_using: &id005 []
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "-h is not a valid option\n"
-                  generated_using: &id004
-                  - -h
+                  generated_using: *id004
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -117,7 +154,8 @@ subcommands:
                   \ name and size of each record\n                    has the side\
                   \ effect of printing nothing else\n   -tab             output statistics\
                   \ in a tab separated format\n\n"
-                generated_using: &id005 []
+                generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -125,6 +163,7 @@ subcommands:
               version_flag:
               help_text: "-h is not a valid option\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -135,6 +174,7 @@ subcommands:
               \ nothing else\n   -tab             output statistics in a tab separated\
               \ format\n\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -142,6 +182,7 @@ subcommands:
           version_flag:
           help_text: "-h is not a valid option\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -152,6 +193,7 @@ subcommands:
           \ else\n   -tab             output statistics in a tab separated format\n\
           \n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -159,6 +201,7 @@ subcommands:
       version_flag:
       help_text: "-h is not a valid option\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -168,6 +211,7 @@ subcommands:
       \                  has the side effect of printing nothing else\n   -tab   \
       \          output statistics in a tab separated format\n\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -175,6 +219,7 @@ subcommands:
   version_flag:
   help_text: "-h is not a valid option\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -184,3 +229,4 @@ help_text: "faSize - print total base count in fa files.\nusage:\n   faSize file
   \              has the side effect of printing nothing else\n   -tab           \
   \  output statistics in a tab separated format\n\n"
 generated_using: *id005
+docker_image:

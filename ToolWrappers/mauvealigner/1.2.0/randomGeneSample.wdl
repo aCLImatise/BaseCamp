@@ -20,6 +20,9 @@ task RandomGeneSample {
       ~{random} \
       ~{seed}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_x_mfa: ""
     backbone_seq_file: ""

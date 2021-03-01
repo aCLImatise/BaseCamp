@@ -8,6 +8,9 @@ task TbprofilerVersion {
     tb_profiler version \
       ~{tb_profiler}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tb_profiler: ""
   }

@@ -10,6 +10,9 @@ task CompareMaskingpl {
       ~{file_one_dot_fa} \
       ~{file_two_dot_fa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_one_dot_fa: "softmasked fasta file"
     file_two_dot_fa: "softmasked second fasta file"

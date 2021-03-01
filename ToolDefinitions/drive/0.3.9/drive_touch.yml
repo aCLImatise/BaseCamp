@@ -5,32 +5,75 @@ command:
 positional: []
 named:
 - !Flag
-  description: max traversal depth (default -1)
+  optional: true
   synonyms:
   - -depth
+  description: max traversal depth (default -1)
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: the duration offset from now that each file's modification time should
-    be set to e.g -32h
+  optional: true
   synonyms:
   - -duration
+  description: the duration offset from now that each file's modification time should
+    be set to e.g -32h
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: the custom layout that you'd like your time to be set in, representative
-    of the way 'Mon Jan 2 15:04:05 -0700 MST 2006' should be represented
+  optional: true
   synonyms:
   - -format
+  description: the custom layout that you'd like your time to be set in, representative
+    of the way 'Mon Jan 2 15:04:05 -0700 MST 2006' should be represented
   args: !SimpleFlagArg
     name: string
+- !Flag
   optional: true
+  synonyms:
+  - -id
+  description: share by id instead of path
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -matches
+  description: search by prefix and touch
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -quiet
+  description: if set, do not log anything but errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -recursive
+  description: toggles recursive touching
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -time
+  description: the time each file's modification time should be set to
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -verbose
+  description: "show step by step information verbosely (default true)\n"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - -hidden
+  description: allows pushing of hidden paths
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage of touch:\n  -depth int\n    \tmax traversal depth (default -1)\n\
@@ -46,3 +89,4 @@ help_text: "Usage of touch:\n  -depth int\n    \tmax traversal depth (default -1
   \ \tshow step by step information verbosely (default true)\n"
 generated_using:
 - --help
+docker_image:

@@ -28,6 +28,9 @@ task Bam2bw {
       ~{if (overlap) then "--overlap" else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     am_file: "[file]                                Path to the input [b|cr]am file."
     filter: "[int]                                SAM flags to filter. [default: 4]"

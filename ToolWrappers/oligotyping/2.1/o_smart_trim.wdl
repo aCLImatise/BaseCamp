@@ -14,6 +14,9 @@ task Osmarttrim {
       ~{if (from_start) then "--from-start" else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_percent: "Even if there is only one read that is too short and\\ntherefore full of gap characters, the first location\\nin the alignment file that *every* read has a base\\nwould have to match the length of that short read.\\nWith this percentage you can specify what is the\\npercentage of reads you expect to pass while this\\ntrimming script tries to maximize the remaining read\\nlength after trimming. Default is 95.00"
     from_end: "Trim from the end of the file"

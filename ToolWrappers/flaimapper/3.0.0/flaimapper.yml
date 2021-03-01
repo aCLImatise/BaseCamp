@@ -4,33 +4,85 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  - -q
+  - --quiet
+  - -p
+  - --parameters
+  description: "File containing the filtering parameters, using\ndefault if none is\
+    \ provided"
+  args: !SimpleFlagArg
+    name: PARAMETERS
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: output filename; '-' for stdout
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
+  description: "file format of the output: [1: table; per fragment],\n[2: GTF (default)]"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '2':
+      '1':
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --fasta
+  description: "Single reference FASTA file (+faid index) containing\nall genomic\
+    \ reference sequences"
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --offset5p
+  description: "Offset in bp added to the exon-type annotations in the\nGTF file.\
+    \ This offset is used in tools estimating the\nexpression levels (default=4)"
+  args: !SimpleFlagArg
+    name: OFFSET5P
+- !Flag
+  optional: true
+  synonyms:
+  - --offset3p
+  description: "Offset in bp added to the exon-type annotations in the\nGTF file.\
+    \ This offset is used in tools estimating the\nexpression levels (default=4)"
+  args: !SimpleFlagArg
+    name: OFFSET3P
+- !Flag
+  optional: true
   synonyms:
   - -V
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-V, --version         show program's\
-    \ version number and exit\n-v, --verbose\n-q, --quiet\n-p PARAMETERS, --parameters\
-    \ PARAMETERS\nFile containing the filtering parameters, using\ndefault if none\
-    \ is provided\n-o OUTPUT, --output OUTPUT\noutput filename; '-' for stdout\n-f\
-    \ {1,2}, --format {1,2}\nfile format of the output: [1: table; per fragment],\n\
-    [2: GTF (default)]\n-r FASTA, --fasta FASTA\nSingle reference FASTA file (+faid\
-    \ index) containing\nall genomic reference sequences\n--offset5p OFFSET5P   Offset\
-    \ in bp added to the exon-type annotations in the\nGTF file. This offset is used\
-    \ in tools estimating the\nexpression levels (default=4)\n--offset3p OFFSET3P\
-    \   Offset in bp added to the exon-type annotations in the\nGTF file. This offset\
-    \ is used in tools estimating the\nexpression levels (default=4)"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
 help_text: "usage: flaimapper [-h] [-V] [-v | -q] [-p PARAMETERS] [-o OUTPUT] [-f\
   \ {1,2}]\n                  [-r FASTA] [--offset5p OFFSET5P] [--offset3p OFFSET3P]\n\
   \                  alignment_file\n\npositional arguments:\n  alignment_file   \
@@ -52,3 +104,4 @@ help_text: "usage: flaimapper [-h] [-V] [-v | -q] [-p PARAMETERS] [-o OUTPUT] [-
   \ details can be found in the manual:\n<https://github.com/yhoogstrate/flaimapper>\n"
 generated_using:
 - --help
+docker_image:

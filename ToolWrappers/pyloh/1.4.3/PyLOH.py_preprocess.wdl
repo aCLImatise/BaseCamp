@@ -26,6 +26,9 @@ task PyLOHpyPreprocess {
       ~{if defined(min_map_qual) then ("--min_map_qual " +  '"' + min_map_qual + '"') else ""} \
       ~{if defined(process_num) then ("--process_num " +  '"' + process_num + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     segments_bed: "BED file for segments. If not provided, use autosomes\\nas segments. Default is None."
     wes: "Flag indicating whether the BAM files are whole exome\\nsequencing(WES) or not. If not provided, the BAM files\\nare assumed to be whole genome sequencing(WGS).\\nDefault is False."

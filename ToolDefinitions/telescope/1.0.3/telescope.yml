@@ -11,92 +11,95 @@ subcommands:
   - assign
   positional:
   - !Positional
+    optional: false
+    position: 0
+    name: samfile
     description: "Path to alignment file. Alignment file can be in SAM\nor BAM format.\
       \ File must be collated so that all\nalignments for a read pair appear sequentially\
       \ in the\nfile."
-    position: 0
-    name: samfile
-    optional: false
   - !Positional
-    description: Path to annotation file (GTF format)
+    optional: false
     position: 1
     name: gtffile
-    optional: false
+    description: Path to annotation file (GTF format)
   named:
   - !Flag
+    optional: true
+    synonyms:
+    - --attribute
     description: "GTF attribute that defines a transposable element\nlocus. GTF features\
       \ that share the same value for\n--attribute will be considered as part of the\
       \ same\nlocus. (default: locus)"
-    synonyms:
-    - --attribute
     args: !SimpleFlagArg
       name: ATTRIBUTE
-    optional: true
   - !Flag
-    description: "Used internally to represent alignments. Must be\ndifferent from\
-      \ all other feature names. (default:\n__no_feature)"
+    optional: true
     synonyms:
     - --no_feature_key
+    description: "Used internally to represent alignments. Must be\ndifferent from\
+      \ all other feature names. (default:\n__no_feature)"
     args: !SimpleFlagArg
       name: NO_FEATURE_KEY
-    optional: true
   - !Flag
-    description: "Number of cores to use. (Multiple cores not supported\nyet). (default:\
-      \ 1)"
+    optional: true
     synonyms:
     - --ncpu
+    description: "Number of cores to use. (Multiple cores not supported\nyet). (default:\
+      \ 1)"
     args: !SimpleFlagArg
       name: NCPU
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --tempdir
     description: "Path to temporary directory. Temporary files will be\nstored here.\
       \ Default uses python tempfile package to\ncreate the temporary directory. (default:\
       \ None)"
-    synonyms:
-    - --tempdir
     args: !SimpleFlagArg
       name: TEMPDIR
-    optional: true
   - !Flag
-    description: 'Silence (most) output. (default: False)'
+    optional: true
     synonyms:
     - --quiet
+    description: 'Silence (most) output. (default: False)'
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: 'Print debug messages. (default: False)'
+    optional: true
     synonyms:
     - --debug
+    description: 'Print debug messages. (default: False)'
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: 'Log output to this file. (default: None)'
+    optional: true
     synonyms:
     - --logfile
+    description: 'Log output to this file. (default: None)'
     args: !SimpleFlagArg
       name: LOGFILE
-    optional: true
   - !Flag
-    description: 'Output directory. (default: .)'
+    optional: true
     synonyms:
     - --outdir
+    description: 'Output directory. (default: .)'
     args: !SimpleFlagArg
       name: OUTDIR
-    optional: true
   - !Flag
-    description: 'Experiment tag (default: telescope)'
+    optional: true
     synonyms:
     - --exp_tag
+    description: 'Experiment tag (default: telescope)'
     args: !SimpleFlagArg
       name: EXP_TAG
-    optional: true
   - !Flag
-    description: 'Generate an updated alignment file. (default: False)'
+    optional: true
     synonyms:
     - --updated_sam
+    description: 'Generate an updated alignment file. (default: False)'
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --reassign_mode
     description: "Reassignment mode. After EM is complete, each fragment\nis reassigned\
       \ according to the expected value of its\nmembership weights. The reassignment\
       \ method is the\nmethod for resolving the \"best\" reassignment for\nfragments\
@@ -109,99 +112,96 @@ subcommands:
       \ reads are\nincluded. NOTE: Results using all assignment modes are\nincluded\
       \ in the Telescope report by default. This\nargument determines what mode will\
       \ be used for the\n\"final counts\" column. (default: exclude)"
-    synonyms:
-    - --reassign_mode
     args: !ChoiceFlagArg
       choices: !!set
-        exclude:
-        conf:
         unique:
-        choose:
+        conf:
         average:
-    optional: true
+        choose:
+        exclude:
   - !Flag
-    description: "Minimum probability for high confidence assignment.\n(default: 0.9)"
+    optional: true
     synonyms:
     - --conf_prob
+    description: "Minimum probability for high confidence assignment.\n(default: 0.9)"
     args: !SimpleFlagArg
       name: CONF_PROB
-    optional: true
   - !Flag
-    description: "Overlap mode. The method used to determine whether a\nfragment overlaps\
-      \ feature. (default: threshold)"
+    optional: true
     synonyms:
     - --overlap_mode
+    description: "Overlap mode. The method used to determine whether a\nfragment overlaps\
+      \ feature. (default: threshold)"
     args: !ChoiceFlagArg
       choices: !!set
+        intersection-strict:
         threshold:
         union:
-        intersection-strict:
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --overlap_threshold
     description: "Fraction of fragment that must be contained within a\nfeature to\
       \ be assigned to that locus. Ignored if\n--overlap_method is not \"threshold\"\
       . (default: 0.2)"
-    synonyms:
-    - --overlap_threshold
     args: !SimpleFlagArg
       name: OVERLAP_THRESHOLD
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --annotation_class
     description: "Annotation class to use for finding overlaps. Both\nhtseq and intervaltree\
       \ appear to yield identical\nresults. Performance differences are TBD. (default:\n\
       intervaltree)"
-    synonyms:
-    - --annotation_class
     args: !ChoiceFlagArg
       choices: !!set
-        intervaltree:
         htseq:
-    optional: true
+        intervaltree:
   - !Flag
-    description: "Prior on π. Equivalent to adding n unique reads.\n(default: 0)"
+    optional: true
     synonyms:
     - --pi_prior
+    description: "Prior on π. Equivalent to adding n unique reads.\n(default: 0)"
     args: !SimpleFlagArg
       name: PI_PRIOR
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --theta_prior
     description: "Prior on θ. Equivalent to adding n non-unique reads.\nNOTE: It is\
       \ recommended to set this prior to a large\nvalue. This increases the penalty\
       \ for non-unique reads\nand improves accuracy. (default: 200000)"
-    synonyms:
-    - --theta_prior
     args: !SimpleFlagArg
       name: THETA_PRIOR
-    optional: true
   - !Flag
-    description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
+    optional: true
     synonyms:
     - --em_epsilon
+    description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
     args: !SimpleFlagArg
       name: EM_EPSILON
-    optional: true
   - !Flag
-    description: 'EM Algorithm maximum iterations (default: 100)'
+    optional: true
     synonyms:
     - --max_iter
+    description: 'EM Algorithm maximum iterations (default: 100)'
     args: !SimpleFlagArg
       name: MAX_ITER
-    optional: true
   - !Flag
-    description: "Use difference in log-likelihood as convergence\ncriteria. (default:\
-      \ False)"
+    optional: true
     synonyms:
     - --use_likelihood
+    description: "Use difference in log-likelihood as convergence\ncriteria. (default:\
+      \ False)"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "Exits after loading alignment and saving checkpoint\nfile. (default:\
-      \ False)\n"
+    optional: true
     synonyms:
     - --skip_em
+    description: "Exits after loading alignment and saving checkpoint\nfile. (default:\
+      \ False)\n"
     args: !EmptyFlagArg {}
-    optional: true
-  parent: &id011 !Command
+  parent: &id012 !Command
     command: *id001
     positional: []
     named: []
@@ -211,92 +211,95 @@ subcommands:
       command: *id002
       positional:
       - !Positional
+        optional: false
+        position: 0
+        name: samfile
         description: "Path to alignment file. Alignment file can be in SAM\nor BAM\
           \ format. File must be collated so that all\nalignments for a read pair\
           \ appear sequentially in the\nfile."
-        position: 0
-        name: samfile
-        optional: false
       - !Positional
-        description: Path to annotation file (GTF format)
+        optional: false
         position: 1
         name: gtffile
-        optional: false
+        description: Path to annotation file (GTF format)
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - --attribute
         description: "GTF attribute that defines a transposable element\nlocus. GTF\
           \ features that share the same value for\n--attribute will be considered\
           \ as part of the same\nlocus. (default: locus)"
-        synonyms:
-        - --attribute
         args: !SimpleFlagArg
           name: ATTRIBUTE
-        optional: true
       - !Flag
-        description: "Used internally to represent alignments. Must be\ndifferent\
-          \ from all other feature names. (default:\n__no_feature)"
+        optional: true
         synonyms:
         - --no_feature_key
+        description: "Used internally to represent alignments. Must be\ndifferent\
+          \ from all other feature names. (default:\n__no_feature)"
         args: !SimpleFlagArg
           name: NO_FEATURE_KEY
-        optional: true
       - !Flag
-        description: "Number of cores to use. (Multiple cores not supported\nyet).\
-          \ (default: 1)"
+        optional: true
         synonyms:
         - --ncpu
+        description: "Number of cores to use. (Multiple cores not supported\nyet).\
+          \ (default: 1)"
         args: !SimpleFlagArg
           name: NCPU
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --tempdir
         description: "Path to temporary directory. Temporary files will be\nstored\
           \ here. Default uses python tempfile package to\ncreate the temporary directory.\
           \ (default: None)"
-        synonyms:
-        - --tempdir
         args: !SimpleFlagArg
           name: TEMPDIR
-        optional: true
       - !Flag
-        description: 'Silence (most) output. (default: False)'
+        optional: true
         synonyms:
         - --quiet
+        description: 'Silence (most) output. (default: False)'
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: 'Print debug messages. (default: False)'
+        optional: true
         synonyms:
         - --debug
+        description: 'Print debug messages. (default: False)'
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: 'Log output to this file. (default: None)'
+        optional: true
         synonyms:
         - --logfile
+        description: 'Log output to this file. (default: None)'
         args: !SimpleFlagArg
           name: LOGFILE
-        optional: true
       - !Flag
-        description: 'Output directory. (default: .)'
+        optional: true
         synonyms:
         - --outdir
+        description: 'Output directory. (default: .)'
         args: !SimpleFlagArg
           name: OUTDIR
-        optional: true
       - !Flag
-        description: 'Experiment tag (default: telescope)'
+        optional: true
         synonyms:
         - --exp_tag
+        description: 'Experiment tag (default: telescope)'
         args: !SimpleFlagArg
           name: EXP_TAG
-        optional: true
       - !Flag
-        description: 'Generate an updated alignment file. (default: False)'
+        optional: true
         synonyms:
         - --updated_sam
+        description: 'Generate an updated alignment file. (default: False)'
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --reassign_mode
         description: "Reassignment mode. After EM is complete, each fragment\nis reassigned\
           \ according to the expected value of its\nmembership weights. The reassignment\
           \ method is the\nmethod for resolving the \"best\" reassignment for\nfragments\
@@ -310,101 +313,98 @@ subcommands:
           \ modes are\nincluded in the Telescope report by default. This\nargument\
           \ determines what mode will be used for the\n\"final counts\" column. (default:\
           \ exclude)"
-        synonyms:
-        - --reassign_mode
         args: !ChoiceFlagArg
           choices: !!set
             ? exclude
-            ? choose
-            ? unique
-            ? average
             ? conf
-        optional: true
+            ? unique
+            ? choose
+            ? average
       - !Flag
-        description: "Minimum probability for high confidence assignment.\n(default:\
-          \ 0.9)"
+        optional: true
         synonyms:
         - --conf_prob
+        description: "Minimum probability for high confidence assignment.\n(default:\
+          \ 0.9)"
         args: !SimpleFlagArg
           name: CONF_PROB
-        optional: true
       - !Flag
-        description: "Overlap mode. The method used to determine whether a\nfragment\
-          \ overlaps feature. (default: threshold)"
+        optional: true
         synonyms:
         - --overlap_mode
+        description: "Overlap mode. The method used to determine whether a\nfragment\
+          \ overlaps feature. (default: threshold)"
         args: !ChoiceFlagArg
           choices: !!set
-            ? intersection-strict
             ? threshold
             ? union
-        optional: true
+            ? intersection-strict
       - !Flag
+        optional: true
+        synonyms:
+        - --overlap_threshold
         description: "Fraction of fragment that must be contained within a\nfeature\
           \ to be assigned to that locus. Ignored if\n--overlap_method is not \"threshold\"\
           . (default: 0.2)"
-        synonyms:
-        - --overlap_threshold
         args: !SimpleFlagArg
           name: OVERLAP_THRESHOLD
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --annotation_class
         description: "Annotation class to use for finding overlaps. Both\nhtseq and\
           \ intervaltree appear to yield identical\nresults. Performance differences\
           \ are TBD. (default:\nintervaltree)"
-        synonyms:
-        - --annotation_class
         args: !ChoiceFlagArg
           choices: !!set
             ? intervaltree
             ? htseq
-        optional: true
       - !Flag
-        description: "Prior on π. Equivalent to adding n unique reads.\n(default:\
-          \ 0)"
+        optional: true
         synonyms:
         - --pi_prior
+        description: "Prior on π. Equivalent to adding n unique reads.\n(default:\
+          \ 0)"
         args: !SimpleFlagArg
           name: PI_PRIOR
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --theta_prior
         description: "Prior on θ. Equivalent to adding n non-unique reads.\nNOTE:\
           \ It is recommended to set this prior to a large\nvalue. This increases\
           \ the penalty for non-unique reads\nand improves accuracy. (default: 200000)"
-        synonyms:
-        - --theta_prior
         args: !SimpleFlagArg
           name: THETA_PRIOR
-        optional: true
       - !Flag
-        description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
+        optional: true
         synonyms:
         - --em_epsilon
+        description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
         args: !SimpleFlagArg
           name: EM_EPSILON
-        optional: true
       - !Flag
-        description: 'EM Algorithm maximum iterations (default: 100)'
+        optional: true
         synonyms:
         - --max_iter
+        description: 'EM Algorithm maximum iterations (default: 100)'
         args: !SimpleFlagArg
           name: MAX_ITER
-        optional: true
       - !Flag
-        description: "Use difference in log-likelihood as convergence\ncriteria. (default:\
-          \ False)"
+        optional: true
         synonyms:
         - --use_likelihood
+        description: "Use difference in log-likelihood as convergence\ncriteria. (default:\
+          \ False)"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "Exits after loading alignment and saving checkpoint\nfile. (default:\
-          \ False)\n"
+        optional: true
         synonyms:
         - --skip_em
+        description: "Exits after loading alignment and saving checkpoint\nfile. (default:\
+          \ False)\n"
         args: !EmptyFlagArg {}
-        optional: true
-      parent: &id010 !Command
+      parent: &id011 !Command
         command: *id001
         positional: []
         named: []
@@ -414,92 +414,95 @@ subcommands:
           command: *id002
           positional:
           - !Positional
+            optional: false
+            position: 0
+            name: samfile
             description: "Path to alignment file. Alignment file can be in SAM\nor\
               \ BAM format. File must be collated so that all\nalignments for a read\
               \ pair appear sequentially in the\nfile."
-            position: 0
-            name: samfile
-            optional: false
           - !Positional
-            description: Path to annotation file (GTF format)
+            optional: false
             position: 1
             name: gtffile
-            optional: false
+            description: Path to annotation file (GTF format)
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - --attribute
             description: "GTF attribute that defines a transposable element\nlocus.\
               \ GTF features that share the same value for\n--attribute will be considered\
               \ as part of the same\nlocus. (default: locus)"
-            synonyms:
-            - --attribute
             args: !SimpleFlagArg
               name: ATTRIBUTE
-            optional: true
           - !Flag
-            description: "Used internally to represent alignments. Must be\ndifferent\
-              \ from all other feature names. (default:\n__no_feature)"
+            optional: true
             synonyms:
             - --no_feature_key
+            description: "Used internally to represent alignments. Must be\ndifferent\
+              \ from all other feature names. (default:\n__no_feature)"
             args: !SimpleFlagArg
               name: NO_FEATURE_KEY
-            optional: true
           - !Flag
-            description: "Number of cores to use. (Multiple cores not supported\n\
-              yet). (default: 1)"
+            optional: true
             synonyms:
             - --ncpu
+            description: "Number of cores to use. (Multiple cores not supported\n\
+              yet). (default: 1)"
             args: !SimpleFlagArg
               name: NCPU
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --tempdir
             description: "Path to temporary directory. Temporary files will be\nstored\
               \ here. Default uses python tempfile package to\ncreate the temporary\
               \ directory. (default: None)"
-            synonyms:
-            - --tempdir
             args: !SimpleFlagArg
               name: TEMPDIR
-            optional: true
           - !Flag
-            description: 'Silence (most) output. (default: False)'
+            optional: true
             synonyms:
             - --quiet
+            description: 'Silence (most) output. (default: False)'
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: 'Print debug messages. (default: False)'
+            optional: true
             synonyms:
             - --debug
+            description: 'Print debug messages. (default: False)'
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: 'Log output to this file. (default: None)'
+            optional: true
             synonyms:
             - --logfile
+            description: 'Log output to this file. (default: None)'
             args: !SimpleFlagArg
               name: LOGFILE
-            optional: true
           - !Flag
-            description: 'Output directory. (default: .)'
+            optional: true
             synonyms:
             - --outdir
+            description: 'Output directory. (default: .)'
             args: !SimpleFlagArg
               name: OUTDIR
-            optional: true
           - !Flag
-            description: 'Experiment tag (default: telescope)'
+            optional: true
             synonyms:
             - --exp_tag
+            description: 'Experiment tag (default: telescope)'
             args: !SimpleFlagArg
               name: EXP_TAG
-            optional: true
           - !Flag
-            description: 'Generate an updated alignment file. (default: False)'
+            optional: true
             synonyms:
             - --updated_sam
+            description: 'Generate an updated alignment file. (default: False)'
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --reassign_mode
             description: "Reassignment mode. After EM is complete, each fragment\n\
               is reassigned according to the expected value of its\nmembership weights.\
               \ The reassignment method is the\nmethod for resolving the \"best\"\
@@ -513,102 +516,99 @@ subcommands:
               \ NOTE: Results using all assignment modes are\nincluded in the Telescope\
               \ report by default. This\nargument determines what mode will be used\
               \ for the\n\"final counts\" column. (default: exclude)"
-            synonyms:
-            - --reassign_mode
             args: !ChoiceFlagArg
               choices: !!set
-                ? unique
-                ? conf
-                ? average
                 ? exclude
                 ? choose
-            optional: true
+                ? unique
+                ? average
+                ? conf
           - !Flag
-            description: "Minimum probability for high confidence assignment.\n(default:\
-              \ 0.9)"
+            optional: true
             synonyms:
             - --conf_prob
+            description: "Minimum probability for high confidence assignment.\n(default:\
+              \ 0.9)"
             args: !SimpleFlagArg
               name: CONF_PROB
-            optional: true
           - !Flag
-            description: "Overlap mode. The method used to determine whether a\nfragment\
-              \ overlaps feature. (default: threshold)"
+            optional: true
             synonyms:
             - --overlap_mode
+            description: "Overlap mode. The method used to determine whether a\nfragment\
+              \ overlaps feature. (default: threshold)"
             args: !ChoiceFlagArg
               choices: !!set
-                ? union
-                ? threshold
                 ? intersection-strict
-            optional: true
+                ? threshold
+                ? union
           - !Flag
+            optional: true
+            synonyms:
+            - --overlap_threshold
             description: "Fraction of fragment that must be contained within a\nfeature\
               \ to be assigned to that locus. Ignored if\n--overlap_method is not\
               \ \"threshold\". (default: 0.2)"
-            synonyms:
-            - --overlap_threshold
             args: !SimpleFlagArg
               name: OVERLAP_THRESHOLD
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --annotation_class
             description: "Annotation class to use for finding overlaps. Both\nhtseq\
               \ and intervaltree appear to yield identical\nresults. Performance differences\
               \ are TBD. (default:\nintervaltree)"
-            synonyms:
-            - --annotation_class
             args: !ChoiceFlagArg
               choices: !!set
-                ? htseq
                 ? intervaltree
-            optional: true
+                ? htseq
           - !Flag
-            description: "Prior on π. Equivalent to adding n unique reads.\n(default:\
-              \ 0)"
+            optional: true
             synonyms:
             - --pi_prior
+            description: "Prior on π. Equivalent to adding n unique reads.\n(default:\
+              \ 0)"
             args: !SimpleFlagArg
               name: PI_PRIOR
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --theta_prior
             description: "Prior on θ. Equivalent to adding n non-unique reads.\nNOTE:\
               \ It is recommended to set this prior to a large\nvalue. This increases\
               \ the penalty for non-unique reads\nand improves accuracy. (default:\
               \ 200000)"
-            synonyms:
-            - --theta_prior
             args: !SimpleFlagArg
               name: THETA_PRIOR
-            optional: true
           - !Flag
-            description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
+            optional: true
             synonyms:
             - --em_epsilon
+            description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
             args: !SimpleFlagArg
               name: EM_EPSILON
-            optional: true
           - !Flag
-            description: 'EM Algorithm maximum iterations (default: 100)'
+            optional: true
             synonyms:
             - --max_iter
+            description: 'EM Algorithm maximum iterations (default: 100)'
             args: !SimpleFlagArg
               name: MAX_ITER
-            optional: true
           - !Flag
-            description: "Use difference in log-likelihood as convergence\ncriteria.\
-              \ (default: False)"
+            optional: true
             synonyms:
             - --use_likelihood
+            description: "Use difference in log-likelihood as convergence\ncriteria.\
+              \ (default: False)"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "Exits after loading alignment and saving checkpoint\nfile.\
-              \ (default: False)\n"
+            optional: true
             synonyms:
             - --skip_em
+            description: "Exits after loading alignment and saving checkpoint\nfile.\
+              \ (default: False)\n"
             args: !EmptyFlagArg {}
-            optional: true
-          parent: &id009 !Command
+          parent: &id010 !Command
             command: *id001
             positional: []
             named: []
@@ -618,92 +618,95 @@ subcommands:
               command: *id002
               positional:
               - !Positional
+                optional: false
+                position: 0
+                name: samfile
                 description: "Path to alignment file. Alignment file can be in SAM\n\
                   or BAM format. File must be collated so that all\nalignments for\
                   \ a read pair appear sequentially in the\nfile."
-                position: 0
-                name: samfile
-                optional: false
               - !Positional
-                description: Path to annotation file (GTF format)
+                optional: false
                 position: 1
                 name: gtffile
-                optional: false
+                description: Path to annotation file (GTF format)
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - --attribute
                 description: "GTF attribute that defines a transposable element\n\
                   locus. GTF features that share the same value for\n--attribute will\
                   \ be considered as part of the same\nlocus. (default: locus)"
-                synonyms:
-                - --attribute
                 args: !SimpleFlagArg
                   name: ATTRIBUTE
-                optional: true
               - !Flag
-                description: "Used internally to represent alignments. Must be\ndifferent\
-                  \ from all other feature names. (default:\n__no_feature)"
+                optional: true
                 synonyms:
                 - --no_feature_key
+                description: "Used internally to represent alignments. Must be\ndifferent\
+                  \ from all other feature names. (default:\n__no_feature)"
                 args: !SimpleFlagArg
                   name: NO_FEATURE_KEY
-                optional: true
               - !Flag
-                description: "Number of cores to use. (Multiple cores not supported\n\
-                  yet). (default: 1)"
+                optional: true
                 synonyms:
                 - --ncpu
+                description: "Number of cores to use. (Multiple cores not supported\n\
+                  yet). (default: 1)"
                 args: !SimpleFlagArg
                   name: NCPU
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --tempdir
                 description: "Path to temporary directory. Temporary files will be\n\
                   stored here. Default uses python tempfile package to\ncreate the\
                   \ temporary directory. (default: None)"
-                synonyms:
-                - --tempdir
                 args: !SimpleFlagArg
                   name: TEMPDIR
-                optional: true
               - !Flag
-                description: 'Silence (most) output. (default: False)'
+                optional: true
                 synonyms:
                 - --quiet
+                description: 'Silence (most) output. (default: False)'
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: 'Print debug messages. (default: False)'
+                optional: true
                 synonyms:
                 - --debug
+                description: 'Print debug messages. (default: False)'
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: 'Log output to this file. (default: None)'
+                optional: true
                 synonyms:
                 - --logfile
+                description: 'Log output to this file. (default: None)'
                 args: !SimpleFlagArg
                   name: LOGFILE
-                optional: true
               - !Flag
-                description: 'Output directory. (default: .)'
+                optional: true
                 synonyms:
                 - --outdir
+                description: 'Output directory. (default: .)'
                 args: !SimpleFlagArg
                   name: OUTDIR
-                optional: true
               - !Flag
-                description: 'Experiment tag (default: telescope)'
+                optional: true
                 synonyms:
                 - --exp_tag
+                description: 'Experiment tag (default: telescope)'
                 args: !SimpleFlagArg
                   name: EXP_TAG
-                optional: true
               - !Flag
-                description: 'Generate an updated alignment file. (default: False)'
+                optional: true
                 synonyms:
                 - --updated_sam
+                description: 'Generate an updated alignment file. (default: False)'
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --reassign_mode
                 description: "Reassignment mode. After EM is complete, each fragment\n\
                   is reassigned according to the expected value of its\nmembership\
                   \ weights. The reassignment method is the\nmethod for resolving\
@@ -718,102 +721,99 @@ subcommands:
                   \ Results using all assignment modes are\nincluded in the Telescope\
                   \ report by default. This\nargument determines what mode will be\
                   \ used for the\n\"final counts\" column. (default: exclude)"
-                synonyms:
-                - --reassign_mode
                 args: !ChoiceFlagArg
                   choices: !!set
+                    ? unique
                     ? conf
                     ? average
-                    ? unique
-                    ? choose
                     ? exclude
-                optional: true
+                    ? choose
               - !Flag
-                description: "Minimum probability for high confidence assignment.\n\
-                  (default: 0.9)"
+                optional: true
                 synonyms:
                 - --conf_prob
+                description: "Minimum probability for high confidence assignment.\n\
+                  (default: 0.9)"
                 args: !SimpleFlagArg
                   name: CONF_PROB
-                optional: true
               - !Flag
-                description: "Overlap mode. The method used to determine whether a\n\
-                  fragment overlaps feature. (default: threshold)"
+                optional: true
                 synonyms:
                 - --overlap_mode
+                description: "Overlap mode. The method used to determine whether a\n\
+                  fragment overlaps feature. (default: threshold)"
                 args: !ChoiceFlagArg
                   choices: !!set
-                    ? intersection-strict
-                    ? threshold
                     ? union
-                optional: true
+                    ? threshold
+                    ? intersection-strict
               - !Flag
+                optional: true
+                synonyms:
+                - --overlap_threshold
                 description: "Fraction of fragment that must be contained within a\n\
                   feature to be assigned to that locus. Ignored if\n--overlap_method\
                   \ is not \"threshold\". (default: 0.2)"
-                synonyms:
-                - --overlap_threshold
                 args: !SimpleFlagArg
                   name: OVERLAP_THRESHOLD
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --annotation_class
                 description: "Annotation class to use for finding overlaps. Both\n\
                   htseq and intervaltree appear to yield identical\nresults. Performance\
                   \ differences are TBD. (default:\nintervaltree)"
-                synonyms:
-                - --annotation_class
                 args: !ChoiceFlagArg
                   choices: !!set
-                    ? intervaltree
                     ? htseq
-                optional: true
+                    ? intervaltree
               - !Flag
-                description: "Prior on π. Equivalent to adding n unique reads.\n(default:\
-                  \ 0)"
+                optional: true
                 synonyms:
                 - --pi_prior
+                description: "Prior on π. Equivalent to adding n unique reads.\n(default:\
+                  \ 0)"
                 args: !SimpleFlagArg
                   name: PI_PRIOR
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --theta_prior
                 description: "Prior on θ. Equivalent to adding n non-unique reads.\n\
                   NOTE: It is recommended to set this prior to a large\nvalue. This\
                   \ increases the penalty for non-unique reads\nand improves accuracy.\
                   \ (default: 200000)"
-                synonyms:
-                - --theta_prior
                 args: !SimpleFlagArg
                   name: THETA_PRIOR
-                optional: true
               - !Flag
-                description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
+                optional: true
                 synonyms:
                 - --em_epsilon
+                description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
                 args: !SimpleFlagArg
                   name: EM_EPSILON
-                optional: true
               - !Flag
-                description: 'EM Algorithm maximum iterations (default: 100)'
+                optional: true
                 synonyms:
                 - --max_iter
+                description: 'EM Algorithm maximum iterations (default: 100)'
                 args: !SimpleFlagArg
                   name: MAX_ITER
-                optional: true
               - !Flag
-                description: "Use difference in log-likelihood as convergence\ncriteria.\
-                  \ (default: False)"
+                optional: true
                 synonyms:
                 - --use_likelihood
+                description: "Use difference in log-likelihood as convergence\ncriteria.\
+                  \ (default: False)"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "Exits after loading alignment and saving checkpoint\n\
-                  file. (default: False)\n"
+                optional: true
                 synonyms:
                 - --skip_em
+                description: "Exits after loading alignment and saving checkpoint\n\
+                  file. (default: False)\n"
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: &id009 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -823,92 +823,95 @@ subcommands:
                   command: *id002
                   positional:
                   - !Positional
+                    optional: false
+                    position: 0
+                    name: samfile
                     description: "Path to alignment file. Alignment file can be in\
                       \ SAM\nor BAM format. File must be collated so that all\nalignments\
                       \ for a read pair appear sequentially in the\nfile."
-                    position: 0
-                    name: samfile
-                    optional: false
                   - !Positional
-                    description: Path to annotation file (GTF format)
+                    optional: false
                     position: 1
                     name: gtffile
-                    optional: false
+                    description: Path to annotation file (GTF format)
                   named:
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --attribute
                     description: "GTF attribute that defines a transposable element\n\
                       locus. GTF features that share the same value for\n--attribute\
                       \ will be considered as part of the same\nlocus. (default: locus)"
-                    synonyms:
-                    - --attribute
                     args: !SimpleFlagArg
                       name: ATTRIBUTE
-                    optional: true
                   - !Flag
-                    description: "Used internally to represent alignments. Must be\n\
-                      different from all other feature names. (default:\n__no_feature)"
+                    optional: true
                     synonyms:
                     - --no_feature_key
+                    description: "Used internally to represent alignments. Must be\n\
+                      different from all other feature names. (default:\n__no_feature)"
                     args: !SimpleFlagArg
                       name: NO_FEATURE_KEY
-                    optional: true
                   - !Flag
-                    description: "Number of cores to use. (Multiple cores not supported\n\
-                      yet). (default: 1)"
+                    optional: true
                     synonyms:
                     - --ncpu
+                    description: "Number of cores to use. (Multiple cores not supported\n\
+                      yet). (default: 1)"
                     args: !SimpleFlagArg
                       name: NCPU
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --tempdir
                     description: "Path to temporary directory. Temporary files will\
                       \ be\nstored here. Default uses python tempfile package to\n\
                       create the temporary directory. (default: None)"
-                    synonyms:
-                    - --tempdir
                     args: !SimpleFlagArg
                       name: TEMPDIR
-                    optional: true
                   - !Flag
-                    description: 'Silence (most) output. (default: False)'
+                    optional: true
                     synonyms:
                     - --quiet
+                    description: 'Silence (most) output. (default: False)'
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: 'Print debug messages. (default: False)'
+                    optional: true
                     synonyms:
                     - --debug
+                    description: 'Print debug messages. (default: False)'
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: 'Log output to this file. (default: None)'
+                    optional: true
                     synonyms:
                     - --logfile
+                    description: 'Log output to this file. (default: None)'
                     args: !SimpleFlagArg
                       name: LOGFILE
-                    optional: true
                   - !Flag
-                    description: 'Output directory. (default: .)'
+                    optional: true
                     synonyms:
                     - --outdir
+                    description: 'Output directory. (default: .)'
                     args: !SimpleFlagArg
                       name: OUTDIR
-                    optional: true
                   - !Flag
-                    description: 'Experiment tag (default: telescope)'
+                    optional: true
                     synonyms:
                     - --exp_tag
+                    description: 'Experiment tag (default: telescope)'
                     args: !SimpleFlagArg
                       name: EXP_TAG
-                    optional: true
                   - !Flag
-                    description: 'Generate an updated alignment file. (default: False)'
+                    optional: true
                     synonyms:
                     - --updated_sam
+                    description: 'Generate an updated alignment file. (default: False)'
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --reassign_mode
                     description: "Reassignment mode. After EM is complete, each fragment\n\
                       is reassigned according to the expected value of its\nmembership\
                       \ weights. The reassignment method is the\nmethod for resolving\
@@ -924,111 +927,666 @@ subcommands:
                       \ modes are\nincluded in the Telescope report by default. This\n\
                       argument determines what mode will be used for the\n\"final\
                       \ counts\" column. (default: exclude)"
-                    synonyms:
-                    - --reassign_mode
                     args: !ChoiceFlagArg
                       choices: !!set
-                        ? unique
-                        ? exclude
                         ? conf
-                        ? choose
                         ? average
-                    optional: true
+                        ? unique
+                        ? choose
+                        ? exclude
                   - !Flag
-                    description: "Minimum probability for high confidence assignment.\n\
-                      (default: 0.9)"
+                    optional: true
                     synonyms:
                     - --conf_prob
+                    description: "Minimum probability for high confidence assignment.\n\
+                      (default: 0.9)"
                     args: !SimpleFlagArg
                       name: CONF_PROB
-                    optional: true
                   - !Flag
-                    description: "Overlap mode. The method used to determine whether\
-                      \ a\nfragment overlaps feature. (default: threshold)"
+                    optional: true
                     synonyms:
                     - --overlap_mode
+                    description: "Overlap mode. The method used to determine whether\
+                      \ a\nfragment overlaps feature. (default: threshold)"
                     args: !ChoiceFlagArg
                       choices: !!set
-                        ? threshold
                         ? intersection-strict
+                        ? threshold
                         ? union
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --overlap_threshold
                     description: "Fraction of fragment that must be contained within\
                       \ a\nfeature to be assigned to that locus. Ignored if\n--overlap_method\
                       \ is not \"threshold\". (default: 0.2)"
-                    synonyms:
-                    - --overlap_threshold
                     args: !SimpleFlagArg
                       name: OVERLAP_THRESHOLD
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --annotation_class
                     description: "Annotation class to use for finding overlaps. Both\n\
                       htseq and intervaltree appear to yield identical\nresults. Performance\
                       \ differences are TBD. (default:\nintervaltree)"
-                    synonyms:
-                    - --annotation_class
                     args: !ChoiceFlagArg
                       choices: !!set
-                        ? htseq
                         ? intervaltree
-                    optional: true
+                        ? htseq
                   - !Flag
-                    description: "Prior on π. Equivalent to adding n unique reads.\n\
-                      (default: 0)"
+                    optional: true
                     synonyms:
                     - --pi_prior
+                    description: "Prior on π. Equivalent to adding n unique reads.\n\
+                      (default: 0)"
                     args: !SimpleFlagArg
                       name: PI_PRIOR
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --theta_prior
                     description: "Prior on θ. Equivalent to adding n non-unique reads.\n\
                       NOTE: It is recommended to set this prior to a large\nvalue.\
                       \ This increases the penalty for non-unique reads\nand improves\
                       \ accuracy. (default: 200000)"
-                    synonyms:
-                    - --theta_prior
                     args: !SimpleFlagArg
                       name: THETA_PRIOR
-                    optional: true
                   - !Flag
-                    description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
+                    optional: true
                     synonyms:
                     - --em_epsilon
+                    description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
                     args: !SimpleFlagArg
                       name: EM_EPSILON
-                    optional: true
                   - !Flag
-                    description: 'EM Algorithm maximum iterations (default: 100)'
+                    optional: true
                     synonyms:
                     - --max_iter
+                    description: 'EM Algorithm maximum iterations (default: 100)'
                     args: !SimpleFlagArg
                       name: MAX_ITER
-                    optional: true
                   - !Flag
-                    description: "Use difference in log-likelihood as convergence\n\
-                      criteria. (default: False)"
+                    optional: true
                     synonyms:
                     - --use_likelihood
+                    description: "Use difference in log-likelihood as convergence\n\
+                      criteria. (default: False)"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "Exits after loading alignment and saving checkpoint\n\
-                      file. (default: False)\n"
+                    optional: true
                     synonyms:
                     - --skip_em
+                    description: "Exits after loading alignment and saving checkpoint\n\
+                      file. (default: False)\n"
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: samfile
+                        description: "Path to alignment file. Alignment file can be\
+                          \ in SAM\nor BAM format. File must be collated so that all\n\
+                          alignments for a read pair appear sequentially in the\n\
+                          file."
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: gtffile
+                        description: Path to annotation file (GTF format)
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --attribute
+                        description: "GTF attribute that defines a transposable element\n\
+                          locus. GTF features that share the same value for\n--attribute\
+                          \ will be considered as part of the same\nlocus. (default:\
+                          \ locus)"
+                        args: !SimpleFlagArg
+                          name: ATTRIBUTE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --no_feature_key
+                        description: "Used internally to represent alignments. Must\
+                          \ be\ndifferent from all other feature names. (default:\n\
+                          __no_feature)"
+                        args: !SimpleFlagArg
+                          name: NO_FEATURE_KEY
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --ncpu
+                        description: "Number of cores to use. (Multiple cores not\
+                          \ supported\nyet). (default: 1)"
+                        args: !SimpleFlagArg
+                          name: NCPU
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --tempdir
+                        description: "Path to temporary directory. Temporary files\
+                          \ will be\nstored here. Default uses python tempfile package\
+                          \ to\ncreate the temporary directory. (default: None)"
+                        args: !SimpleFlagArg
+                          name: TEMPDIR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --quiet
+                        description: 'Silence (most) output. (default: False)'
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --debug
+                        description: 'Print debug messages. (default: False)'
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --logfile
+                        description: 'Log output to this file. (default: None)'
+                        args: !SimpleFlagArg
+                          name: LOGFILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --outdir
+                        description: 'Output directory. (default: .)'
+                        args: !SimpleFlagArg
+                          name: OUTDIR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --exp_tag
+                        description: 'Experiment tag (default: telescope)'
+                        args: !SimpleFlagArg
+                          name: EXP_TAG
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --updated_sam
+                        description: 'Generate an updated alignment file. (default:
+                          False)'
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --reassign_mode
+                        description: "Reassignment mode. After EM is complete, each\
+                          \ fragment\nis reassigned according to the expected value\
+                          \ of its\nmembership weights. The reassignment method is\
+                          \ the\nmethod for resolving the \"best\" reassignment for\n\
+                          fragments that have multiple possible reassignments.\nAvailable\
+                          \ modes are: \"exclude\" - fragments with\nmultiple best\
+                          \ assignments are excluded from the final\ncounts; \"choose\"\
+                          \ - the best assignment is randomly\nchosen from among the\
+                          \ set of best assignments;\n\"average\" - the fragment is\
+                          \ divided evenly among the\nbest assignments; \"conf\" -\
+                          \ only assignments that\nexceed a certain threshold (see\
+                          \ --conf_prob) are\naccepted; \"unique\" - only uniquely\
+                          \ aligned reads are\nincluded. NOTE: Results using all assignment\
+                          \ modes are\nincluded in the Telescope report by default.\
+                          \ This\nargument determines what mode will be used for the\n\
+                          \"final counts\" column. (default: exclude)"
+                        args: !ChoiceFlagArg
+                          choices: !!set
+                            ? unique
+                            ? exclude
+                            ? conf
+                            ? choose
+                            ? average
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --conf_prob
+                        description: "Minimum probability for high confidence assignment.\n\
+                          (default: 0.9)"
+                        args: !SimpleFlagArg
+                          name: CONF_PROB
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --overlap_mode
+                        description: "Overlap mode. The method used to determine whether\
+                          \ a\nfragment overlaps feature. (default: threshold)"
+                        args: !ChoiceFlagArg
+                          choices: !!set
+                            ? threshold
+                            ? intersection-strict
+                            ? union
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --overlap_threshold
+                        description: "Fraction of fragment that must be contained\
+                          \ within a\nfeature to be assigned to that locus. Ignored\
+                          \ if\n--overlap_method is not \"threshold\". (default: 0.2)"
+                        args: !SimpleFlagArg
+                          name: OVERLAP_THRESHOLD
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --annotation_class
+                        description: "Annotation class to use for finding overlaps.\
+                          \ Both\nhtseq and intervaltree appear to yield identical\n\
+                          results. Performance differences are TBD. (default:\nintervaltree)"
+                        args: !ChoiceFlagArg
+                          choices: !!set
+                            ? htseq
+                            ? intervaltree
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --pi_prior
+                        description: "Prior on π. Equivalent to adding n unique reads.\n\
+                          (default: 0)"
+                        args: !SimpleFlagArg
+                          name: PI_PRIOR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --theta_prior
+                        description: "Prior on θ. Equivalent to adding n non-unique\
+                          \ reads.\nNOTE: It is recommended to set this prior to a\
+                          \ large\nvalue. This increases the penalty for non-unique\
+                          \ reads\nand improves accuracy. (default: 200000)"
+                        args: !SimpleFlagArg
+                          name: THETA_PRIOR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --em_epsilon
+                        description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
+                        args: !SimpleFlagArg
+                          name: EM_EPSILON
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --max_iter
+                        description: 'EM Algorithm maximum iterations (default: 100)'
+                        args: !SimpleFlagArg
+                          name: MAX_ITER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --use_likelihood
+                        description: "Use difference in log-likelihood as convergence\n\
+                          criteria. (default: False)"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --skip_em
+                        description: "Exits after loading alignment and saving checkpoint\n\
+                          file. (default: False)\n"
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: telescope assign [-h] [--attribute ATTRIBUTE]\n\
+                        \                        [--no_feature_key NO_FEATURE_KEY]\
+                        \ [--ncpu NCPU]\n                        [--tempdir TEMPDIR]\
+                        \ [--quiet] [--debug]\n                        [--logfile\
+                        \ LOGFILE] [--outdir OUTDIR]\n                        [--exp_tag\
+                        \ EXP_TAG] [--updated_sam]\n                        [--reassign_mode\
+                        \ {exclude,choose,average,conf,unique}]\n                \
+                        \        [--conf_prob CONF_PROB]\n                       \
+                        \ [--overlap_mode {threshold,intersection-strict,union}]\n\
+                        \                        [--overlap_threshold OVERLAP_THRESHOLD]\n\
+                        \                        [--annotation_class {intervaltree,htseq}]\n\
+                        \                        [--pi_prior PI_PRIOR] [--theta_prior\
+                        \ THETA_PRIOR]\n                        [--em_epsilon EM_EPSILON]\
+                        \ [--max_iter MAX_ITER]\n                        [--use_likelihood]\
+                        \ [--skip_em]\n                        samfile gtffile\n\n\
+                        Reassign ambiguous fragments that map to repetitive elements\n\
+                        \noptional arguments:\n  -h, --help            show this help\
+                        \ message and exit\n\nInput Options:\n\n  samfile        \
+                        \       Path to alignment file. Alignment file can be in SAM\n\
+                        \                        or BAM format. File must be collated\
+                        \ so that all\n                        alignments for a read\
+                        \ pair appear sequentially in the\n                      \
+                        \  file.\n  gtffile               Path to annotation file\
+                        \ (GTF format)\n  --attribute ATTRIBUTE\n                \
+                        \        GTF attribute that defines a transposable element\n\
+                        \                        locus. GTF features that share the\
+                        \ same value for\n                        --attribute will\
+                        \ be considered as part of the same\n                    \
+                        \    locus. (default: locus)\n  --no_feature_key NO_FEATURE_KEY\n\
+                        \                        Used internally to represent alignments.\
+                        \ Must be\n                        different from all other\
+                        \ feature names. (default:\n                        __no_feature)\n\
+                        \  --ncpu NCPU           Number of cores to use. (Multiple\
+                        \ cores not supported\n                        yet). (default:\
+                        \ 1)\n  --tempdir TEMPDIR     Path to temporary directory.\
+                        \ Temporary files will be\n                        stored\
+                        \ here. Default uses python tempfile package to\n        \
+                        \                create the temporary directory. (default:\
+                        \ None)\n\nReporting Options:\n\n  --quiet               Silence\
+                        \ (most) output. (default: False)\n  --debug             \
+                        \  Print debug messages. (default: False)\n  --logfile LOGFILE\
+                        \     Log output to this file. (default: None)\n  --outdir\
+                        \ OUTDIR       Output directory. (default: .)\n  --exp_tag\
+                        \ EXP_TAG     Experiment tag (default: telescope)\n  --updated_sam\
+                        \         Generate an updated alignment file. (default: False)\n\
+                        \nRun Modes:\n\n  --reassign_mode {exclude,choose,average,conf,unique}\n\
+                        \                        Reassignment mode. After EM is complete,\
+                        \ each fragment\n                        is reassigned according\
+                        \ to the expected value of its\n                        membership\
+                        \ weights. The reassignment method is the\n              \
+                        \          method for resolving the \"best\" reassignment\
+                        \ for\n                        fragments that have multiple\
+                        \ possible reassignments.\n                        Available\
+                        \ modes are: \"exclude\" - fragments with\n              \
+                        \          multiple best assignments are excluded from the\
+                        \ final\n                        counts; \"choose\" - the\
+                        \ best assignment is randomly\n                        chosen\
+                        \ from among the set of best assignments;\n              \
+                        \          \"average\" - the fragment is divided evenly among\
+                        \ the\n                        best assignments; \"conf\"\
+                        \ - only assignments that\n                        exceed\
+                        \ a certain threshold (see --conf_prob) are\n            \
+                        \            accepted; \"unique\" - only uniquely aligned\
+                        \ reads are\n                        included. NOTE: Results\
+                        \ using all assignment modes are\n                       \
+                        \ included in the Telescope report by default. This\n    \
+                        \                    argument determines what mode will be\
+                        \ used for the\n                        \"final counts\" column.\
+                        \ (default: exclude)\n  --conf_prob CONF_PROB\n          \
+                        \              Minimum probability for high confidence assignment.\n\
+                        \                        (default: 0.9)\n  --overlap_mode\
+                        \ {threshold,intersection-strict,union}\n                \
+                        \        Overlap mode. The method used to determine whether\
+                        \ a\n                        fragment overlaps feature. (default:\
+                        \ threshold)\n  --overlap_threshold OVERLAP_THRESHOLD\n  \
+                        \                      Fraction of fragment that must be contained\
+                        \ within a\n                        feature to be assigned\
+                        \ to that locus. Ignored if\n                        --overlap_method\
+                        \ is not \"threshold\". (default: 0.2)\n  --annotation_class\
+                        \ {intervaltree,htseq}\n                        Annotation\
+                        \ class to use for finding overlaps. Both\n              \
+                        \          htseq and intervaltree appear to yield identical\n\
+                        \                        results. Performance differences\
+                        \ are TBD. (default:\n                        intervaltree)\n\
+                        \nModel Parameters:\n\n  --pi_prior PI_PRIOR   Prior on π.\
+                        \ Equivalent to adding n unique reads.\n                 \
+                        \       (default: 0)\n  --theta_prior THETA_PRIOR\n      \
+                        \                  Prior on θ. Equivalent to adding n non-unique\
+                        \ reads.\n                        NOTE: It is recommended\
+                        \ to set this prior to a large\n                        value.\
+                        \ This increases the penalty for non-unique reads\n      \
+                        \                  and improves accuracy. (default: 200000)\n\
+                        \  --em_epsilon EM_EPSILON\n                        EM Algorithm\
+                        \ Epsilon cutoff (default: 1e-7)\n  --max_iter MAX_ITER  \
+                        \ EM Algorithm maximum iterations (default: 100)\n  --use_likelihood\
+                        \      Use difference in log-likelihood as convergence\n \
+                        \                       criteria. (default: False)\n  --skip_em\
+                        \             Exits after loading alignment and saving checkpoint\n\
+                        \                        file. (default: False)\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - telescope
+                      - test
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: telescope
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --version
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      help_text: "usage: telescope [-h] [--version] {assign,resume,test}\
+                        \ ...\ntelescope: error: unrecognized arguments: --usage\n"
+                      generated_using: &id006
+                      - --usage
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - telescope
+                      - resume
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --quiet
+                        description: 'Silence (most) output. (default: False)'
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --debug
+                        description: 'Print debug messages. (default: False)'
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --logfile
+                        description: 'Log output to this file. (default: None)'
+                        args: !SimpleFlagArg
+                          name: LOGFILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --outdir
+                        description: 'Output directory. (default: .)'
+                        args: !SimpleFlagArg
+                          name: OUTDIR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --exp_tag
+                        description: 'Experiment tag (default: telescope)'
+                        args: !SimpleFlagArg
+                          name: EXP_TAG
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --reassign_mode
+                        description: "Reassignment mode. After EM is complete, each\
+                          \ fragment\nis reassigned according to the expected value\
+                          \ of its\nmembership weights. The reassignment method is\
+                          \ the\nmethod for resolving the \"best\" reassignment for\n\
+                          fragments that have multiple possible reassignments.\nAvailable\
+                          \ modes are: \"exclude\" - fragments with\nmultiple best\
+                          \ assignments are excluded from the final\ncounts; \"choose\"\
+                          \ - the best assignment is randomly\nchosen from among the\
+                          \ set of best assignments;\n\"average\" - the fragment is\
+                          \ divided evenly among the\nbest assignments; \"conf\" -\
+                          \ only assignments that\nexceed a certain threshold (see\
+                          \ --conf_prob) are\naccepted; \"unique\" - only uniquely\
+                          \ aligned reads are\nincluded. NOTE: Results using all assignment\
+                          \ modes are\nincluded in the Telescope report by default.\
+                          \ This\nargument determines what mode will be used for the\n\
+                          \"final counts\" column. (default: exclude)"
+                        args: !ChoiceFlagArg
+                          choices: !!set
+                            ? unique
+                            ? exclude
+                            ? conf
+                            ? choose
+                            ? average
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --conf_prob
+                        description: "Minimum probability for high confidence assignment.\n\
+                          (default: 0.9)"
+                        args: !SimpleFlagArg
+                          name: CONF_PROB
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --pi_prior
+                        description: "Prior on π. Equivalent to adding n unique reads.\n\
+                          (default: 0)"
+                        args: !SimpleFlagArg
+                          name: PI_PRIOR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --theta_prior
+                        description: "Prior on θ. Equivalent to adding n non-unique\
+                          \ reads.\nNOTE: It is recommended to set this prior to a\
+                          \ large\nvalue. This increases the penalty for non-unique\
+                          \ reads\nand improves accuracy. (default: 200000)"
+                        args: !SimpleFlagArg
+                          name: THETA_PRIOR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --em_epsilon
+                        description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
+                        args: !SimpleFlagArg
+                          name: EM_EPSILON
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --max_iter
+                        description: 'EM Algorithm maximum iterations (default: 100)'
+                        args: !SimpleFlagArg
+                          name: MAX_ITER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --use_likelihood
+                        description: "Use difference in log-likelihood as convergence\n\
+                          criteria. (default: False)\n"
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: telescope resume [-h] [--quiet] [--debug]\
+                        \ [--logfile LOGFILE]\n                        [--outdir OUTDIR]\
+                        \ [--exp_tag EXP_TAG]\n                        [--reassign_mode\
+                        \ {exclude,choose,average,conf,unique}]\n                \
+                        \        [--conf_prob CONF_PROB] [--pi_prior PI_PRIOR]\n \
+                        \                       [--theta_prior THETA_PRIOR] [--em_epsilon\
+                        \ EM_EPSILON]\n                        [--max_iter MAX_ITER]\
+                        \ [--use_likelihood]\n                        checkpoint\n\
+                        \nResume a previous telescope run\n\noptional arguments:\n\
+                        \  -h, --help            show this help message and exit\n\
+                        \nInput Options:\n\n  checkpoint            Path to checkpoint\
+                        \ file.\n\nReporting Options:\n\n  --quiet               Silence\
+                        \ (most) output. (default: False)\n  --debug             \
+                        \  Print debug messages. (default: False)\n  --logfile LOGFILE\
+                        \     Log output to this file. (default: None)\n  --outdir\
+                        \ OUTDIR       Output directory. (default: .)\n  --exp_tag\
+                        \ EXP_TAG     Experiment tag (default: telescope)\n\nRun Modes:\n\
+                        \n  --reassign_mode {exclude,choose,average,conf,unique}\n\
+                        \                        Reassignment mode. After EM is complete,\
+                        \ each fragment\n                        is reassigned according\
+                        \ to the expected value of its\n                        membership\
+                        \ weights. The reassignment method is the\n              \
+                        \          method for resolving the \"best\" reassignment\
+                        \ for\n                        fragments that have multiple\
+                        \ possible reassignments.\n                        Available\
+                        \ modes are: \"exclude\" - fragments with\n              \
+                        \          multiple best assignments are excluded from the\
+                        \ final\n                        counts; \"choose\" - the\
+                        \ best assignment is randomly\n                        chosen\
+                        \ from among the set of best assignments;\n              \
+                        \          \"average\" - the fragment is divided evenly among\
+                        \ the\n                        best assignments; \"conf\"\
+                        \ - only assignments that\n                        exceed\
+                        \ a certain threshold (see --conf_prob) are\n            \
+                        \            accepted; \"unique\" - only uniquely aligned\
+                        \ reads are\n                        included. NOTE: Results\
+                        \ using all assignment modes are\n                       \
+                        \ included in the Telescope report by default. This\n    \
+                        \                    argument determines what mode will be\
+                        \ used for the\n                        \"final counts\" column.\
+                        \ (default: exclude)\n  --conf_prob CONF_PROB\n          \
+                        \              Minimum probability for high confidence assignment.\n\
+                        \                        (default: 0.9)\n\nModel Parameters:\n\
+                        \n  --pi_prior PI_PRIOR   Prior on π. Equivalent to adding\
+                        \ n unique reads.\n                        (default: 0)\n\
+                        \  --theta_prior THETA_PRIOR\n                        Prior\
+                        \ on θ. Equivalent to adding n non-unique reads.\n       \
+                        \                 NOTE: It is recommended to set this prior\
+                        \ to a large\n                        value. This increases\
+                        \ the penalty for non-unique reads\n                     \
+                        \   and improves accuracy. (default: 200000)\n  --em_epsilon\
+                        \ EM_EPSILON\n                        EM Algorithm Epsilon\
+                        \ cutoff (default: 1e-7)\n  --max_iter MAX_ITER   EM Algorithm\
+                        \ maximum iterations (default: 100)\n  --use_likelihood  \
+                        \    Use difference in log-likelihood as convergence\n   \
+                        \                     criteria. (default: False)\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage:  telescope <command> [<args>]\n\nThe most commonly\
+                      \ used commands are:\n   assign    Reassign ambiguous fragments\
+                      \ that map to repetitive elements\n   resume    Resume previous\
+                      \ run from checkpoint file\n   test      Generate a command\
+                      \ line for testing\n\nTools for analysis of repetitive DNA elements\n\
+                      \noptional arguments:\n  -h, --help  show this help message\
+                      \ and exit\n"
+                    generated_using: &id008 []
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: telescope assign [-h] [--attribute ATTRIBUTE]\n\
@@ -1123,79 +1681,78 @@ subcommands:
                     \                        criteria. (default: False)\n  --skip_em\
                     \             Exits after loading alignment and saving checkpoint\n\
                     \                        file. (default: False)\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - telescope
-                  - test
+                  command: *id005
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: telescope
-                    optional: false
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --version
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   help_text: "usage: telescope [-h] [--version] {assign,resume,test}\
                     \ ...\ntelescope: error: unrecognized arguments: --usage\n"
-                  generated_using: &id006
-                  - --usage
+                  generated_using: *id006
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - telescope
-                  - resume
+                  command: *id007
                   positional: []
                   named:
                   - !Flag
-                    description: 'Silence (most) output. (default: False)'
+                    optional: true
                     synonyms:
                     - --quiet
+                    description: 'Silence (most) output. (default: False)'
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: 'Print debug messages. (default: False)'
+                    optional: true
                     synonyms:
                     - --debug
+                    description: 'Print debug messages. (default: False)'
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: 'Log output to this file. (default: None)'
+                    optional: true
                     synonyms:
                     - --logfile
+                    description: 'Log output to this file. (default: None)'
                     args: !SimpleFlagArg
                       name: LOGFILE
-                    optional: true
                   - !Flag
-                    description: 'Output directory. (default: .)'
+                    optional: true
                     synonyms:
                     - --outdir
+                    description: 'Output directory. (default: .)'
                     args: !SimpleFlagArg
                       name: OUTDIR
-                    optional: true
                   - !Flag
-                    description: 'Experiment tag (default: telescope)'
+                    optional: true
                     synonyms:
                     - --exp_tag
+                    description: 'Experiment tag (default: telescope)'
                     args: !SimpleFlagArg
                       name: EXP_TAG
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --reassign_mode
                     description: "Reassignment mode. After EM is complete, each fragment\n\
                       is reassigned according to the expected value of its\nmembership\
                       \ weights. The reassignment method is the\nmethod for resolving\
@@ -1211,73 +1768,70 @@ subcommands:
                       \ modes are\nincluded in the Telescope report by default. This\n\
                       argument determines what mode will be used for the\n\"final\
                       \ counts\" column. (default: exclude)"
-                    synonyms:
-                    - --reassign_mode
                     args: !ChoiceFlagArg
                       choices: !!set
-                        ? unique
-                        ? exclude
                         ? conf
-                        ? choose
                         ? average
-                    optional: true
+                        ? unique
+                        ? choose
+                        ? exclude
                   - !Flag
-                    description: "Minimum probability for high confidence assignment.\n\
-                      (default: 0.9)"
+                    optional: true
                     synonyms:
                     - --conf_prob
+                    description: "Minimum probability for high confidence assignment.\n\
+                      (default: 0.9)"
                     args: !SimpleFlagArg
                       name: CONF_PROB
-                    optional: true
                   - !Flag
-                    description: "Prior on π. Equivalent to adding n unique reads.\n\
-                      (default: 0)"
+                    optional: true
                     synonyms:
                     - --pi_prior
+                    description: "Prior on π. Equivalent to adding n unique reads.\n\
+                      (default: 0)"
                     args: !SimpleFlagArg
                       name: PI_PRIOR
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --theta_prior
                     description: "Prior on θ. Equivalent to adding n non-unique reads.\n\
                       NOTE: It is recommended to set this prior to a large\nvalue.\
                       \ This increases the penalty for non-unique reads\nand improves\
                       \ accuracy. (default: 200000)"
-                    synonyms:
-                    - --theta_prior
                     args: !SimpleFlagArg
                       name: THETA_PRIOR
-                    optional: true
                   - !Flag
-                    description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
+                    optional: true
                     synonyms:
                     - --em_epsilon
+                    description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
                     args: !SimpleFlagArg
                       name: EM_EPSILON
-                    optional: true
                   - !Flag
-                    description: 'EM Algorithm maximum iterations (default: 100)'
+                    optional: true
                     synonyms:
                     - --max_iter
+                    description: 'EM Algorithm maximum iterations (default: 100)'
                     args: !SimpleFlagArg
                       name: MAX_ITER
-                    optional: true
                   - !Flag
-                    description: "Use difference in log-likelihood as convergence\n\
-                      criteria. (default: False)\n"
+                    optional: true
                     synonyms:
                     - --use_likelihood
+                    description: "Use difference in log-likelihood as convergence\n\
+                      criteria. (default: False)\n"
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: telescope resume [-h] [--quiet] [--debug] [--logfile\
@@ -1332,14 +1886,9 @@ subcommands:
                     \  --use_likelihood      Use difference in log-likelihood as convergence\n\
                     \                        criteria. (default: False)\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "usage:  telescope <command> [<args>]\n\nThe most commonly\
@@ -1349,16 +1898,17 @@ subcommands:
                   \ for testing\n\nTools for analysis of repetitive DNA elements\n\
                   \noptional arguments:\n  -h, --help  show this help message and\
                   \ exit\n"
-                generated_using: &id008 []
+                generated_using: *id008
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: telescope assign [-h] [--attribute ATTRIBUTE]\n \
@@ -1449,72 +1999,77 @@ subcommands:
                 \ (default: False)\n  --skip_em             Exits after loading alignment\
                 \ and saving checkpoint\n                        file. (default: False)\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: telescope
-                optional: false
+                description: ''
               named: []
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --version
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               help_text: "usage: telescope [-h] [--version] {assign,resume,test} ...\n\
                 telescope: error: unrecognized arguments: --usage\n"
               generated_using: *id006
+              docker_image:
             - !Command
               command: *id007
               positional: []
               named:
               - !Flag
-                description: 'Silence (most) output. (default: False)'
+                optional: true
                 synonyms:
                 - --quiet
+                description: 'Silence (most) output. (default: False)'
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: 'Print debug messages. (default: False)'
+                optional: true
                 synonyms:
                 - --debug
+                description: 'Print debug messages. (default: False)'
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: 'Log output to this file. (default: None)'
+                optional: true
                 synonyms:
                 - --logfile
+                description: 'Log output to this file. (default: None)'
                 args: !SimpleFlagArg
                   name: LOGFILE
-                optional: true
               - !Flag
-                description: 'Output directory. (default: .)'
+                optional: true
                 synonyms:
                 - --outdir
+                description: 'Output directory. (default: .)'
                 args: !SimpleFlagArg
                   name: OUTDIR
-                optional: true
               - !Flag
-                description: 'Experiment tag (default: telescope)'
+                optional: true
                 synonyms:
                 - --exp_tag
+                description: 'Experiment tag (default: telescope)'
                 args: !SimpleFlagArg
                   name: EXP_TAG
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --reassign_mode
                 description: "Reassignment mode. After EM is complete, each fragment\n\
                   is reassigned according to the expected value of its\nmembership\
                   \ weights. The reassignment method is the\nmethod for resolving\
@@ -1529,73 +2084,70 @@ subcommands:
                   \ Results using all assignment modes are\nincluded in the Telescope\
                   \ report by default. This\nargument determines what mode will be\
                   \ used for the\n\"final counts\" column. (default: exclude)"
-                synonyms:
-                - --reassign_mode
                 args: !ChoiceFlagArg
                   choices: !!set
+                    ? unique
                     ? conf
                     ? average
-                    ? unique
-                    ? choose
                     ? exclude
-                optional: true
+                    ? choose
               - !Flag
-                description: "Minimum probability for high confidence assignment.\n\
-                  (default: 0.9)"
+                optional: true
                 synonyms:
                 - --conf_prob
+                description: "Minimum probability for high confidence assignment.\n\
+                  (default: 0.9)"
                 args: !SimpleFlagArg
                   name: CONF_PROB
-                optional: true
               - !Flag
-                description: "Prior on π. Equivalent to adding n unique reads.\n(default:\
-                  \ 0)"
+                optional: true
                 synonyms:
                 - --pi_prior
+                description: "Prior on π. Equivalent to adding n unique reads.\n(default:\
+                  \ 0)"
                 args: !SimpleFlagArg
                   name: PI_PRIOR
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --theta_prior
                 description: "Prior on θ. Equivalent to adding n non-unique reads.\n\
                   NOTE: It is recommended to set this prior to a large\nvalue. This\
                   \ increases the penalty for non-unique reads\nand improves accuracy.\
                   \ (default: 200000)"
-                synonyms:
-                - --theta_prior
                 args: !SimpleFlagArg
                   name: THETA_PRIOR
-                optional: true
               - !Flag
-                description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
+                optional: true
                 synonyms:
                 - --em_epsilon
+                description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
                 args: !SimpleFlagArg
                   name: EM_EPSILON
-                optional: true
               - !Flag
-                description: 'EM Algorithm maximum iterations (default: 100)'
+                optional: true
                 synonyms:
                 - --max_iter
+                description: 'EM Algorithm maximum iterations (default: 100)'
                 args: !SimpleFlagArg
                   name: MAX_ITER
-                optional: true
               - !Flag
-                description: "Use difference in log-likelihood as convergence\ncriteria.\
-                  \ (default: False)\n"
+                optional: true
                 synonyms:
                 - --use_likelihood
+                description: "Use difference in log-likelihood as convergence\ncriteria.\
+                  \ (default: False)\n"
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: telescope resume [-h] [--quiet] [--debug] [--logfile\
@@ -1647,6 +2199,7 @@ subcommands:
                 \      Use difference in log-likelihood as convergence\n         \
                 \               criteria. (default: False)\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -1658,15 +2211,16 @@ subcommands:
               \nTools for analysis of repetitive DNA elements\n\noptional arguments:\n\
               \  -h, --help  show this help message and exit\n"
             generated_using: *id008
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: telescope assign [-h] [--attribute ATTRIBUTE]\n     \
@@ -1754,72 +2308,77 @@ subcommands:
             \ after loading alignment and saving checkpoint\n                    \
             \    file. (default: False)\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: telescope
-            optional: false
+            description: ''
           named: []
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - --version
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           help_text: "usage: telescope [-h] [--version] {assign,resume,test} ...\n\
             telescope: error: unrecognized arguments: --usage\n"
           generated_using: *id006
+          docker_image:
         - !Command
           command: *id007
           positional: []
           named:
           - !Flag
-            description: 'Silence (most) output. (default: False)'
+            optional: true
             synonyms:
             - --quiet
+            description: 'Silence (most) output. (default: False)'
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: 'Print debug messages. (default: False)'
+            optional: true
             synonyms:
             - --debug
+            description: 'Print debug messages. (default: False)'
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: 'Log output to this file. (default: None)'
+            optional: true
             synonyms:
             - --logfile
+            description: 'Log output to this file. (default: None)'
             args: !SimpleFlagArg
               name: LOGFILE
-            optional: true
           - !Flag
-            description: 'Output directory. (default: .)'
+            optional: true
             synonyms:
             - --outdir
+            description: 'Output directory. (default: .)'
             args: !SimpleFlagArg
               name: OUTDIR
-            optional: true
           - !Flag
-            description: 'Experiment tag (default: telescope)'
+            optional: true
             synonyms:
             - --exp_tag
+            description: 'Experiment tag (default: telescope)'
             args: !SimpleFlagArg
               name: EXP_TAG
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --reassign_mode
             description: "Reassignment mode. After EM is complete, each fragment\n\
               is reassigned according to the expected value of its\nmembership weights.\
               \ The reassignment method is the\nmethod for resolving the \"best\"\
@@ -1833,73 +2392,70 @@ subcommands:
               \ NOTE: Results using all assignment modes are\nincluded in the Telescope\
               \ report by default. This\nargument determines what mode will be used\
               \ for the\n\"final counts\" column. (default: exclude)"
-            synonyms:
-            - --reassign_mode
             args: !ChoiceFlagArg
               choices: !!set
-                ? unique
-                ? conf
-                ? average
                 ? exclude
                 ? choose
-            optional: true
+                ? unique
+                ? average
+                ? conf
           - !Flag
-            description: "Minimum probability for high confidence assignment.\n(default:\
-              \ 0.9)"
+            optional: true
             synonyms:
             - --conf_prob
+            description: "Minimum probability for high confidence assignment.\n(default:\
+              \ 0.9)"
             args: !SimpleFlagArg
               name: CONF_PROB
-            optional: true
           - !Flag
-            description: "Prior on π. Equivalent to adding n unique reads.\n(default:\
-              \ 0)"
+            optional: true
             synonyms:
             - --pi_prior
+            description: "Prior on π. Equivalent to adding n unique reads.\n(default:\
+              \ 0)"
             args: !SimpleFlagArg
               name: PI_PRIOR
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --theta_prior
             description: "Prior on θ. Equivalent to adding n non-unique reads.\nNOTE:\
               \ It is recommended to set this prior to a large\nvalue. This increases\
               \ the penalty for non-unique reads\nand improves accuracy. (default:\
               \ 200000)"
-            synonyms:
-            - --theta_prior
             args: !SimpleFlagArg
               name: THETA_PRIOR
-            optional: true
           - !Flag
-            description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
+            optional: true
             synonyms:
             - --em_epsilon
+            description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
             args: !SimpleFlagArg
               name: EM_EPSILON
-            optional: true
           - !Flag
-            description: 'EM Algorithm maximum iterations (default: 100)'
+            optional: true
             synonyms:
             - --max_iter
+            description: 'EM Algorithm maximum iterations (default: 100)'
             args: !SimpleFlagArg
               name: MAX_ITER
-            optional: true
           - !Flag
-            description: "Use difference in log-likelihood as convergence\ncriteria.\
-              \ (default: False)\n"
+            optional: true
             synonyms:
             - --use_likelihood
+            description: "Use difference in log-likelihood as convergence\ncriteria.\
+              \ (default: False)\n"
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: telescope resume [-h] [--quiet] [--debug] [--logfile\
@@ -1949,6 +2505,7 @@ subcommands:
             \      Use difference in log-likelihood as convergence\n             \
             \           criteria. (default: False)\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -1960,15 +2517,16 @@ subcommands:
           \ DNA elements\n\noptional arguments:\n  -h, --help  show this help message\
           \ and exit\n"
         generated_using: *id008
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: telescope assign [-h] [--attribute ATTRIBUTE]\n         \
@@ -2050,72 +2608,77 @@ subcommands:
         \ alignment and saving checkpoint\n                        file. (default:\
         \ False)\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: telescope
-        optional: false
+        description: ''
       named: []
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - --version
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       help_text: "usage: telescope [-h] [--version] {assign,resume,test} ...\ntelescope:\
         \ error: unrecognized arguments: --usage\n"
       generated_using: *id006
+      docker_image:
     - !Command
       command: *id007
       positional: []
       named:
       - !Flag
-        description: 'Silence (most) output. (default: False)'
+        optional: true
         synonyms:
         - --quiet
+        description: 'Silence (most) output. (default: False)'
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: 'Print debug messages. (default: False)'
+        optional: true
         synonyms:
         - --debug
+        description: 'Print debug messages. (default: False)'
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: 'Log output to this file. (default: None)'
+        optional: true
         synonyms:
         - --logfile
+        description: 'Log output to this file. (default: None)'
         args: !SimpleFlagArg
           name: LOGFILE
-        optional: true
       - !Flag
-        description: 'Output directory. (default: .)'
+        optional: true
         synonyms:
         - --outdir
+        description: 'Output directory. (default: .)'
         args: !SimpleFlagArg
           name: OUTDIR
-        optional: true
       - !Flag
-        description: 'Experiment tag (default: telescope)'
+        optional: true
         synonyms:
         - --exp_tag
+        description: 'Experiment tag (default: telescope)'
         args: !SimpleFlagArg
           name: EXP_TAG
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --reassign_mode
         description: "Reassignment mode. After EM is complete, each fragment\nis reassigned\
           \ according to the expected value of its\nmembership weights. The reassignment\
           \ method is the\nmethod for resolving the \"best\" reassignment for\nfragments\
@@ -2129,72 +2692,69 @@ subcommands:
           \ modes are\nincluded in the Telescope report by default. This\nargument\
           \ determines what mode will be used for the\n\"final counts\" column. (default:\
           \ exclude)"
-        synonyms:
-        - --reassign_mode
         args: !ChoiceFlagArg
           choices: !!set
             ? exclude
-            ? choose
-            ? unique
-            ? average
             ? conf
-        optional: true
+            ? unique
+            ? choose
+            ? average
       - !Flag
-        description: "Minimum probability for high confidence assignment.\n(default:\
-          \ 0.9)"
+        optional: true
         synonyms:
         - --conf_prob
+        description: "Minimum probability for high confidence assignment.\n(default:\
+          \ 0.9)"
         args: !SimpleFlagArg
           name: CONF_PROB
-        optional: true
       - !Flag
-        description: "Prior on π. Equivalent to adding n unique reads.\n(default:\
-          \ 0)"
+        optional: true
         synonyms:
         - --pi_prior
+        description: "Prior on π. Equivalent to adding n unique reads.\n(default:\
+          \ 0)"
         args: !SimpleFlagArg
           name: PI_PRIOR
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --theta_prior
         description: "Prior on θ. Equivalent to adding n non-unique reads.\nNOTE:\
           \ It is recommended to set this prior to a large\nvalue. This increases\
           \ the penalty for non-unique reads\nand improves accuracy. (default: 200000)"
-        synonyms:
-        - --theta_prior
         args: !SimpleFlagArg
           name: THETA_PRIOR
-        optional: true
       - !Flag
-        description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
+        optional: true
         synonyms:
         - --em_epsilon
+        description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
         args: !SimpleFlagArg
           name: EM_EPSILON
-        optional: true
       - !Flag
-        description: 'EM Algorithm maximum iterations (default: 100)'
+        optional: true
         synonyms:
         - --max_iter
+        description: 'EM Algorithm maximum iterations (default: 100)'
         args: !SimpleFlagArg
           name: MAX_ITER
-        optional: true
       - !Flag
-        description: "Use difference in log-likelihood as convergence\ncriteria. (default:\
-          \ False)\n"
+        optional: true
         synonyms:
         - --use_likelihood
+        description: "Use difference in log-likelihood as convergence\ncriteria. (default:\
+          \ False)\n"
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: telescope resume [-h] [--quiet] [--debug] [--logfile LOGFILE]\n\
@@ -2241,6 +2801,7 @@ subcommands:
         \ (default: 100)\n  --use_likelihood      Use difference in log-likelihood\
         \ as convergence\n                        criteria. (default: False)\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -2251,15 +2812,16 @@ subcommands:
       \ a command line for testing\n\nTools for analysis of repetitive DNA elements\n\
       \noptional arguments:\n  -h, --help  show this help message and exit\n"
     generated_using: *id008
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: telescope assign [-h] [--attribute ATTRIBUTE]\n             \
@@ -2336,72 +2898,77 @@ subcommands:
     \   criteria. (default: False)\n  --skip_em             Exits after loading alignment\
     \ and saving checkpoint\n                        file. (default: False)\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: telescope
-    optional: false
+    description: ''
   named: []
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - --version
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   help_text: "usage: telescope [-h] [--version] {assign,resume,test} ...\ntelescope:\
     \ error: unrecognized arguments: --usage\n"
   generated_using: *id006
+  docker_image:
 - !Command
   command: *id007
   positional: []
   named:
   - !Flag
-    description: 'Silence (most) output. (default: False)'
+    optional: true
     synonyms:
     - --quiet
+    description: 'Silence (most) output. (default: False)'
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: 'Print debug messages. (default: False)'
+    optional: true
     synonyms:
     - --debug
+    description: 'Print debug messages. (default: False)'
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: 'Log output to this file. (default: None)'
+    optional: true
     synonyms:
     - --logfile
+    description: 'Log output to this file. (default: None)'
     args: !SimpleFlagArg
       name: LOGFILE
-    optional: true
   - !Flag
-    description: 'Output directory. (default: .)'
+    optional: true
     synonyms:
     - --outdir
+    description: 'Output directory. (default: .)'
     args: !SimpleFlagArg
       name: OUTDIR
-    optional: true
   - !Flag
-    description: 'Experiment tag (default: telescope)'
+    optional: true
     synonyms:
     - --exp_tag
+    description: 'Experiment tag (default: telescope)'
     args: !SimpleFlagArg
       name: EXP_TAG
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --reassign_mode
     description: "Reassignment mode. After EM is complete, each fragment\nis reassigned\
       \ according to the expected value of its\nmembership weights. The reassignment\
       \ method is the\nmethod for resolving the \"best\" reassignment for\nfragments\
@@ -2414,70 +2981,67 @@ subcommands:
       \ reads are\nincluded. NOTE: Results using all assignment modes are\nincluded\
       \ in the Telescope report by default. This\nargument determines what mode will\
       \ be used for the\n\"final counts\" column. (default: exclude)"
-    synonyms:
-    - --reassign_mode
     args: !ChoiceFlagArg
       choices: !!set
-        exclude:
-        conf:
         unique:
-        choose:
+        conf:
         average:
-    optional: true
+        choose:
+        exclude:
   - !Flag
-    description: "Minimum probability for high confidence assignment.\n(default: 0.9)"
+    optional: true
     synonyms:
     - --conf_prob
+    description: "Minimum probability for high confidence assignment.\n(default: 0.9)"
     args: !SimpleFlagArg
       name: CONF_PROB
-    optional: true
   - !Flag
-    description: "Prior on π. Equivalent to adding n unique reads.\n(default: 0)"
+    optional: true
     synonyms:
     - --pi_prior
+    description: "Prior on π. Equivalent to adding n unique reads.\n(default: 0)"
     args: !SimpleFlagArg
       name: PI_PRIOR
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --theta_prior
     description: "Prior on θ. Equivalent to adding n non-unique reads.\nNOTE: It is\
       \ recommended to set this prior to a large\nvalue. This increases the penalty\
       \ for non-unique reads\nand improves accuracy. (default: 200000)"
-    synonyms:
-    - --theta_prior
     args: !SimpleFlagArg
       name: THETA_PRIOR
-    optional: true
   - !Flag
-    description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
+    optional: true
     synonyms:
     - --em_epsilon
+    description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
     args: !SimpleFlagArg
       name: EM_EPSILON
-    optional: true
   - !Flag
-    description: 'EM Algorithm maximum iterations (default: 100)'
+    optional: true
     synonyms:
     - --max_iter
+    description: 'EM Algorithm maximum iterations (default: 100)'
     args: !SimpleFlagArg
       name: MAX_ITER
-    optional: true
   - !Flag
-    description: "Use difference in log-likelihood as convergence\ncriteria. (default:\
-      \ False)\n"
+    optional: true
     synonyms:
     - --use_likelihood
+    description: "Use difference in log-likelihood as convergence\ncriteria. (default:\
+      \ False)\n"
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: telescope resume [-h] [--quiet] [--debug] [--logfile LOGFILE]\n\
@@ -2524,6 +3088,7 @@ subcommands:
     \ difference in log-likelihood as convergence\n                        criteria.\
     \ (default: False)\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -2534,3 +3099,4 @@ help_text: "usage:  telescope <command> [<args>]\n\nThe most commonly used comma
   \ command line for testing\n\nTools for analysis of repetitive DNA elements\n\n\
   optional arguments:\n  -h, --help  show this help message and exit\n"
 generated_using: *id008
+docker_image:

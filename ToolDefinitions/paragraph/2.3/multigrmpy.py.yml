@@ -3,216 +3,216 @@ command:
 - multigrmpy.py
 positional:
 - !Positional
-  description: --graph-sequence-matching GRAPH_SEQUENCE_MATCHING
+  optional: false
   position: 0
   name: stderr
-  optional: false
+  description: --graph-sequence-matching GRAPH_SEQUENCE_MATCHING
 named:
 - !Flag
-  description: Input file of variants. Must be either JSON or VCF.
+  optional: true
   synonyms:
   - -i
   - --input
+  description: Input file of variants. Must be either JSON or VCF.
   args: !SimpleFlagArg
     name: INPUT
-  optional: true
 - !Flag
-  description: Manifest of samples with path and bam stats.
+  optional: true
   synonyms:
   - -m
   - --manifest
+  description: Manifest of samples with path and bam stats.
   args: !SimpleFlagArg
     name: MANIFEST
-  optional: true
 - !Flag
-  description: Output directory.
+  optional: true
   synonyms:
   - -o
   - --output
+  description: Output directory.
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: "Write alignment JSON files into the output folder\n(large!)."
+  optional: true
   synonyms:
   - -A
   - --write-alignments
+  description: "Write alignment JSON files into the output folder\n(large!)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Infer read haplotype paths
+  optional: true
   synonyms:
   - --infer-read-haplotypes
+  description: Infer read haplotype paths
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Reference genome fasta file.
+  optional: true
   synonyms:
   - -r
   - --reference-sequence
+  description: Reference genome fasta file.
   args: !SimpleFlagArg
     name: REFERENCE
-  optional: true
 - !Flag
-  description: Number of events to process in parallel.
+  optional: true
   synonyms:
   - --threads
   - -t
+  description: Number of events to process in parallel.
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: Do not delete temp files.
+  optional: true
   synonyms:
   - --keep-scratch
+  description: Do not delete temp files.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Directory for temp files
+  optional: true
   synonyms:
   - --scratch-dir
+  description: Directory for temp files
   args: !SimpleFlagArg
     name: SCRATCH_DIR
-  optional: true
 - !Flag
-  description: Path to the grmpy executable
+  optional: true
   synonyms:
   - --grmpy
+  description: Path to the grmpy executable
   args: !SimpleFlagArg
     name: GRMPY
-  optional: true
 - !Flag
-  description: Write logging information into file rather than to
+  optional: true
   synonyms:
   - --logfile
+  description: Write logging information into file rather than to
   args: !SimpleFlagArg
     name: LOGFILE
-  optional: true
 - !Flag
-  description: Use klib smith waterman aligner.
+  optional: true
   synonyms:
   - --klib-sequence-matching
+  description: Use klib smith waterman aligner.
   args: !SimpleFlagArg
     name: KLIB_SEQUENCE_MATCHING
-  optional: true
 - !Flag
-  description: Use kmer aligner.
+  optional: true
   synonyms:
   - --kmer-sequence-matching
+  description: Use kmer aligner.
   args: !SimpleFlagArg
     name: KMER_SEQUENCE_MATCHING
-  optional: true
 - !Flag
-  description: "Kmer length for uniqueness check during read\nfiltering."
+  optional: true
   synonyms:
   - --bad-align-uniq-kmer-len
+  description: "Kmer length for uniqueness check during read\nfiltering."
   args: !SimpleFlagArg
     name: BAD_ALIGN_UNIQ_KMER_LEN
-  optional: true
 - !Flag
-  description: "Keep long insertion sequences in the graph rather than\ntrimming them\
-    \ at the read / padding length."
+  optional: true
   synonyms:
   - --no-alt-splitting
+  description: "Keep long insertion sequences in the graph rather than\ntrimming them\
+    \ at the read / padding length."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Raise logging level from warning to info.
+  optional: true
   synonyms:
   - --verbose
+  description: Raise logging level from warning to info.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Set logging level to output errors only.
+  optional: true
   synonyms:
   - --quiet
+  description: Set logging level to output errors only.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Log debug level events.
+  optional: true
   synonyms:
   - --debug
+  description: Log debug level events.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: JSON string or file with genotyping model parameters.
+  optional: true
   synonyms:
   - -G
   - --genotyping-parameters
+  description: JSON string or file with genotyping model parameters.
   args: !SimpleFlagArg
     name: GENOTYPING_PARAMETERS
-  optional: true
 - !Flag
-  description: Maximum number of reads to process for a single event.
+  optional: true
   synonyms:
   - -M
   - --max-reads-per-event
+  description: Maximum number of reads to process for a single event.
   args: !SimpleFlagArg
     name: MAX_READS_PER_EVENT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --vcf-split
   description: "Mode for splitting the input VCF: lines (default) --\none graph per\
     \ record ; full -- one graph for the whole\nVCF ; by_id -- use the VCF id column\
     \ to group adjacent\nrecords ; superloci -- split VCF into blocks where\nrecords\
     \ are separated by at least read-length\ncharacters"
-  synonyms:
-  - --vcf-split
   args: !ChoiceFlagArg
     choices: !!set
       lines:
       by_id:
       full:
       superloci:
-  optional: true
 - !Flag
-  description: "Read length -- this is used to add reference padding\nwhen converting\
-    \ VCF to graphs."
+  optional: true
   synonyms:
   - -p
   - --read-length
+  description: "Read length -- this is used to add reference padding\nwhen converting\
+    \ VCF to graphs."
   args: !SimpleFlagArg
     name: READ_LENGTH
-  optional: true
 - !Flag
-  description: "Maximum length of reference nodes before they get\npadded and truncated."
+  optional: true
   synonyms:
   - -l
   - --max-ref-node-length
+  description: "Maximum length of reference nodes before they get\npadded and truncated."
   args: !SimpleFlagArg
     name: MAX_REF_NODE_LENGTH
-  optional: true
 - !Flag
-  description: Retrieve reference sequence for REF nodes
+  optional: true
   synonyms:
   - --retrieve-reference-sequence
+  description: Retrieve reference sequence for REF nodes
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Type of complex graph to generate. Same as --graph-\ntype in vcf2paragraph."
+  optional: true
   synonyms:
   - --graph-type
+  description: "Type of complex graph to generate. Same as --graph-\ntype in vcf2paragraph."
   args: !ChoiceFlagArg
     choices: !!set
-      alleles:
       haplotypes:
-  optional: true
+      alleles:
 - !Flag
-  description: "Key in INFO field to indicate sequence of symbolic\n<INS>\n"
+  optional: true
   synonyms:
   - --ins-info-key
+  description: "Key in INFO field to indicate sequence of symbolic\n<INS>\n"
   args: !SimpleFlagArg
     name: INS_INFO_KEY
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: Multigrmpy.py [-h] -i INPUT -m MANIFEST -o OUTPUT [-A]\n      \
@@ -270,3 +270,4 @@ help_text: "usage: Multigrmpy.py [-h] -i INPUT -m MANIFEST -o OUTPUT [-A]\n     
   \ symbolic\n                        <INS>\n"
 generated_using:
 - --help
+docker_image:

@@ -1,0 +1,104 @@
+&id001 !Command
+command:
+- plot_sequence_properties.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: Input format (fastq).
+  args: !SimpleFlagArg
+    name: format
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: Number of bins on histograms (50).
+  args: !SimpleFlagArg
+    name: bins
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: Report pdf (plot_sequence_properties.pdf).
+  args: !SimpleFlagArg
+    name: report_pdf
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  description: "Produce joint plot of lengths and mean quality values\n(False).\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - plot_sequence_properties.py
+  - input_fastx
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: plot_sequence_properties.py
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: ''
+    args: !SimpleFlagArg
+      name: report_pdf
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: ''
+    args: !SimpleFlagArg
+      name: bins
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: ''
+    args: !SimpleFlagArg
+      name: format
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: plot_sequence_properties.py [-h] [-f format] [-b bins] [-r report_pdf]\n\
+    \                                   [-j]\n                                   [input_fastx]\n\
+    plot_sequence_properties.py: error: argument input_fastx: can't open 'input_fastx':\
+    \ [Errno 2] No such file or directory: 'input_fastx'\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/wub:0.5.1--pyh3252c3a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: plot_sequence_properties.py [-h] [-f format] [-b bins] [-r report_pdf]\n\
+  \                                   [-j]\n                                   [input_fastx]\n\
+  \nPlot histograms of lengths and quality values.\n\npositional arguments:\n  input_fastx\
+  \    Input (default: stdin).\n\noptional arguments:\n  -h, --help     show this\
+  \ help message and exit\n  -f format      Input format (fastq).\n  -b bins     \
+  \   Number of bins on histograms (50).\n  -r report_pdf  Report pdf (plot_sequence_properties.pdf).\n\
+  \  -j             Produce joint plot of lengths and mean quality values\n      \
+  \           (False).\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/wub:0.5.1--pyh3252c3a_0

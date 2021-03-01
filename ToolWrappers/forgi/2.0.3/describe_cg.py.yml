@@ -3,144 +3,144 @@ command:
 - describe_cg.py
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: rna
   description: "One or more files containing one or more RNAs each.\nSupported Filetypes\
     \ are: pdb files, forgi cg files,\nforgi bg files, fasta files,\ndotbracketfilesAlternatively\
     \ you can supply a\ndotbracket-string (containing only the characters\n'.()[]{}&')\
     \ from the commandline."
-  position: 0
-  name: rna
-  optional: false
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --keep-length-one-stems
   description: "For all input formats except forgi bg/cg files, this\ncontrolls whether\
     \ stems of length one are dissolved to\nunpaired regions (default) or kept (if\
     \ this option is\npresent). In the case of input in forgi-format, the\nRNA from\
     \ the file is not modified."
-  synonyms:
-  - --keep-length-one-stems
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Store dataframe under this filename. (Prints to stdout\nif not given)"
+  optional: true
   synonyms:
   - --csv
+  description: "Store dataframe under this filename. (Prints to stdout\nif not given)"
   args: !SimpleFlagArg
     name: CSV
-  optional: true
 - !Flag
-  description: "Only print the following properties. (A comma-\nseperated list of\
-    \ column headers, e.g. rog_vres"
+  optional: true
   synonyms:
   - -k
   - --keys
+  description: "Only print the following properties. (A comma-\nseperated list of\
+    \ column headers, e.g. rog_vres"
   args: !SimpleFlagArg
     name: KEYS
-  optional: true
 - !Flag
-  description: "Store the angles between the given pairs of elements.\nComma-seperated\
-    \ element tuples, seperated by colons.\n(e.g.: 's0,s1:s1,s2')"
+  optional: true
   synonyms:
   - --angles
+  description: "Store the angles between the given pairs of elements.\nComma-seperated\
+    \ element tuples, seperated by colons.\n(e.g.: 's0,s1:s1,s2')"
   args: !SimpleFlagArg
     name: ANGLES
-  optional: true
 - !Flag
-  description: "Store the distances between the given nucleotides.\nComma-seperated\
-    \ nucleotide tuples, seperated by\ncolons. (e.g.: '1,20:2,19')"
+  optional: true
   synonyms:
   - --distances
+  description: "Store the distances between the given nucleotides.\nComma-seperated\
+    \ nucleotide tuples, seperated by\ncolons. (e.g.: '1,20:2,19')"
   args: !SimpleFlagArg
     name: DISTANCES
-  optional: true
 - !Flag
-  description: "Describe junction segments instead of the whole cg\n(one entry per\
-    \ segment)"
+  optional: true
   synonyms:
   - --per-ml
+  description: "Describe junction segments instead of the whole cg\n(one entry per\
+    \ segment)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "For use with --csv. Either 'a' for append or 'o' for\noverwrite. Default:\
-    \ Abort if file exists."
+  optional: true
   synonyms:
   - --mode
+  description: "For use with --csv. Either 'a' for append or 'o' for\noverwrite. Default:\
+    \ Abort if file exists."
   args: !SimpleFlagArg
     name: MODE
-  optional: true
 - !Flag
-  description: "Allow pseudoknots when extracting the structure from\nPDB files."
+  optional: true
   synonyms:
   - --pseudoknots
+  description: "Allow pseudoknots when extracting the structure from\nPDB files."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "When reading pdb-files: Only extract the given\nchain(s). Comma-seperated"
+  optional: true
   synonyms:
   - --chains
+  description: "When reading pdb-files: Only extract the given\nchain(s). Comma-seperated"
   args: !SimpleFlagArg
     name: CHAINS
-  optional: true
 - !Flag
-  description: "When reading a single chain from a pdb-files: Enforce\nthe secondary\
-    \ structure given as dotbracket string.\n(This only works, if --chain is given!)"
+  optional: true
   synonyms:
   - --pdb-secondary-structure
+  description: "When reading a single chain from a pdb-files: Enforce\nthe secondary\
+    \ structure given as dotbracket string.\n(This only works, if --chain is given!)"
   args: !SimpleFlagArg
     name: PDB_SECONDARY_STRUCTURE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pdb-annotation-tool
   description: "What program to use for detecting basepairs in PDB/\nMMCIF structures.\
     \ This commandline option overrides\nthe value in the config file (if present).If\
     \ this is\nnot present and no config-file is given, we try to\ndetect the installed\
     \ programs."
-  synonyms:
-  - --pdb-annotation-tool
   args: !SimpleFlagArg
     name: PDB_ANNOTATION_TOOL
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pdb-allow-www-query
   description: "Usually, if modified residues/ ligand with an unknown\n3-letter code\
     \ are encountered in PDB files, they are\nremoved from the chain and a log message\
     \ of severity\nINFO is issued. With this option, we first try to\nquery the PDBeChem\
     \ database for the 3-letter code, to\nsee whether or not it is a modified residue\
     \ that can\nbe converted to its standard parent and should be part\nof the chain."
-  synonyms:
-  - --pdb-allow-www-query
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Show verbose output (Output logged at level\nlogging.INFO)"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: "Show verbose output (Output logged at level\nlogging.INFO)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --debug
   description: "[DEBUG]       A comma-seperated list of logger names for which debug\n\
     output will be activated.WARNING: If you misspell the\nlogger name, this argument\
     \ will be ignored"
-  synonyms:
-  - --debug
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -q
   description: "[QUIET], --quiet [QUIET]\nA comma-seperated list of logger names for\
     \ which only\nmessages logged at the level 'CRITICAL' will be\nshown.Use this\
     \ without arguments if everything should\nbe quiet.\n"
-  synonyms:
-  - -q
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: describe_cg.py [-h] [--keep-length-one-stems] [--pseudoknots]\n\
@@ -205,3 +205,4 @@ help_text: "usage: describe_cg.py [-h] [--keep-length-one-stems] [--pseudoknots]
   \ if everything should\n                        be quiet.\n"
 generated_using:
 - --help
+docker_image:

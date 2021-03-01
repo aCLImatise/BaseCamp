@@ -18,6 +18,9 @@ task SamtoolsDict {
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""} \
       ~{if defined(uri) then ("--uri " +  '"' + uri + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly: "assembly"
     no_header: "do not print @HD line"

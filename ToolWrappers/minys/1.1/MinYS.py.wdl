@@ -46,6 +46,9 @@ task MinYSpy {
       ~{if (graph) then "-graph" else ""} \
       ~{if (nb_cores) then "-nb-cores" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "(1 arg) :    Input reads file"
     arg_input_reads_first_file: "(1 arg) :    Input reads first file"

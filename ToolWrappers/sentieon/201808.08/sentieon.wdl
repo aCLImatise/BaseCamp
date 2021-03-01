@@ -4,6 +4,9 @@ task Sentieon {
   command <<<
     sentieon
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

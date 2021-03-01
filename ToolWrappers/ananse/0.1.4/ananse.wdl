@@ -8,6 +8,9 @@ task Ananse {
     ananse \
       ~{subcommand}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     subcommand: ""
   }

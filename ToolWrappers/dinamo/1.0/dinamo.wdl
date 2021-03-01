@@ -10,6 +10,9 @@ task Dinamo {
       ~{if (norc) then "--norc" else ""} \
       ~{if (no_log) then "--no-log" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     norc: ": When -p is not used, prevents dinamo to link motif to their reverse complement\\n(Please be warned : not linking the motif to their reverse complement usually doubles memory usage)"
     no_log: ": Prevents the log ouput from being displayed"

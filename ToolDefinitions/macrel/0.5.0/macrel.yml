@@ -4,52 +4,98 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --file-output
-  args: !SimpleFlagArg
-    name: OUTPUT_FILE
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: OUTPUT
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -t
+  - --threads
+  description: 'Number of threads to use (default: 1)'
   args: !SimpleFlagArg
     name: THREADS
+- !Flag
   optional: true
+  synonyms:
+  - -o
+  - --output
+  description: 'path to the output directory (default: None)'
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-output
+  description: 'path to the output file (default: None)'
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --tag
+  description: 'Set output tag (default: macrel.out)'
+  args: !SimpleFlagArg
+    name: OUTTAG
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: "path to the input FASTA file. This is used in both the\npeptides command\
+    \ (where the file is expected to\ncontain short amino-acid sequences) and in the\
+    \ contigs\ncommand (where the file is expected to contain longer\nnucleotide contigs)\
+    \ (default: None)"
+  args: !SimpleFlagArg
+    name: FASTA_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - --reads1
+  - '-2'
+  - --reads2
+  - --mem
+  - --cluster
+  description: "Whether to pre-cluster the smORFs (at 100% identity)\nto avoid repeats\
+    \ (default: False)"
+  args: !SimpleFlagArg
+    name: READS1
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  - --keep-fasta-headers
+  description: "Keep complete FASTA headers [get-smorfs command]\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: "Temporary directory to use (default: $TMPDIR in the\nenvironment or\
+    \ /tmp) (default: None)"
+  args: !SimpleFlagArg
+    name: TMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-negatives
+  description: "Whether to keep non-AMPs in the output (default:\nFalse)"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-t THREADS, --threads THREADS\nNumber\
-    \ of threads to use (default: 1)\n-o OUTPUT, --output OUTPUT\npath to the output\
-    \ directory (default: None)\n--file-output OUTPUT_FILE\npath to the output file\
-    \ (default: None)\n--tag OUTTAG          Set output tag (default: macrel.out)\n\
-    -f FASTA_FILE, --fasta FASTA_FILE\npath to the input FASTA file. This is used\
-    \ in both the\npeptides command (where the file is expected to\ncontain short\
-    \ amino-acid sequences) and in the contigs\ncommand (where the file is expected\
-    \ to contain longer\nnucleotide contigs) (default: None)\n-1 READS1, --reads1\
-    \ READS1\n-2 READS2, --reads2 READS2\n--mem MEM\n--cluster             Whether\
-    \ to pre-cluster the smORFs (at 100% identity)\nto avoid repeats (default: False)\n\
-    --force\n--keep-fasta-headers  Keep complete FASTA headers [get-smorfs command]\n\
-    (default: False)\n--tmpdir TMPDIR       Temporary directory to use (default: $TMPDIR\
-    \ in the\nenvironment or /tmp) (default: None)\n--keep-negatives      Whether\
-    \ to keep non-AMPs in the output (default:\nFalse)\n--version, -v         show\
-    \ program's version number and exit\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -v
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
 help_text: "usage: macrel [-h] [-t THREADS] [-o OUTPUT] [--file-output OUTPUT_FILE]\n\
   \              [--tag OUTTAG] [-f FASTA_FILE] [-1 READS1] [-2 READS2]\n        \
   \      [--mem MEM] [--cluster] [--force] [--keep-fasta-headers]\n              [--tmpdir\
@@ -76,3 +122,4 @@ help_text: "usage: macrel [-h] [-t THREADS] [-o OUTPUT] [--file-output OUTPUT_FI
   \ -v         show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

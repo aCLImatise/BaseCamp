@@ -2,20 +2,17 @@ version 1.0
 
 task PanphlanDownloadPangenomepy {
   input {
-    Boolean? v
-    String? o
-    String? i
+    String? input_name
   }
   command <<<
     panphlan_download_pangenome_py \
-      ~{if (v) then "-v" else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
+      ~{if defined(input_name) then ("--input_name " +  '"' + input_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    v: ""
-    o: ""
-    i: ""
+    input_name: "Show progress information"
   }
   output {
     File out_stdout = stdout()

@@ -40,6 +40,9 @@ task Mdasim {
       ~{if (read_length) then "--readLength" else ""} \
       ~{if (single) then "--single" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log: "= file name for a log file of all single nucleotide errors that happen during amplification"
     mutation_rate: "= chance of a nucleotide substitution"

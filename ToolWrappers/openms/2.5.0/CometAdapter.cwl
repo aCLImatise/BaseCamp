@@ -3,89 +3,89 @@ id: CometAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                            Input file (valid formats: 'mzML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -in
 - id: in_out
   doc: "*                           Output file (valid formats: 'idXML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
 - id: in_database
   doc: "*                      FASTA file (valid formats: 'FASTA')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -database
 - id: in_comet_executable
   doc: '*        The Comet executable. Provide a full or relative path, or make sure
     it can be found in your PATH environment.'
-  type: File
+  type: File?
   inputBinding:
     prefix: -comet_executable
 - id: in_comet_version
   doc: "Comet version: (year,version,revision) (default: '2016.01 rev. 2')"
-  type: double
+  type: double?
   inputBinding:
     prefix: -comet_version
 - id: in_pin_out
   doc: "Output file - for Percolator input (valid formats: 'tsv')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -pin_out
 - id: in_default_params_file
   doc: "Default Comet params file. All parameters of this take precedence. A template\
     \ file can be generated using comet.exe -p (valid formats: 'txt')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -default_params_file
 - id: in_precursor_mass_tolerance
   doc: "Precursor monoisotopic mass tolerance (Comet parameter: peptide_mass_tolerance).\
     \  See also precursor_error_units to set the unit. (default: '10.0')"
-  type: double
+  type: double?
   inputBinding:
     prefix: -precursor_mass_tolerance
 - id: in_precursor_error_units
   doc: "Unit of precursor monoisotopic mass tolerance for parameter precursor_mass_tolerance\
     \ (Comet parameter: peptide_mass_units) (default: 'ppm' valid: 'amu', 'ppm', 'Da')"
-  type: string
+  type: string?
   inputBinding:
     prefix: -precursor_error_units
 - id: in_isotope_error
   doc: "This parameter controls whether the peptide_mass_tolerance takes into account\
     \ possible isotope errors in the precursor mass measurement. Use -8/-4/0/4/8 only\
     \ for SILAC. (default: 'off' valid: 'off', '0/1', '0/1/2', '-1/0/1/2/3', '-8/-4/0/4/8')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -isotope_error
 - id: in_enzyme
   doc: "The enzyme used for peptide digestion. (default: 'Trypsin' valid: 'unspecific\
     \ cleavage', 'PepsinA', 'CNBr', 'Lys-N', 'Lys-C', 'glutamyl endopeptidase', 'Trypsin/P',\
     \ 'Asp-N', 'Arg-C', 'Chymotrypsin', 'Trypsin')"
-  type: string
+  type: string?
   inputBinding:
     prefix: -enzyme
 - id: in_num_enzyme_termini
   doc: "Specify the termini where the cleavage rule has to match (default: 'fully'\
     \ valid: 'semi', 'fully', 'C-term unspecific', 'N-term unspecific')"
-  type: string
+  type: string?
   inputBinding:
     prefix: -num_enzyme_termini
 - id: in_allowed_missed_cleavages
   doc: "Number of possible cleavage sites missed by the enzyme. It has no effect if\
     \ enzyme is unspecific cleavage. (default: '0' min: '0' max: '5')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -allowed_missed_cleavages
 - id: in_num_hits
   doc: "Number of peptide hits in output file (default: '5')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -num_hits
 - id: in_precursor_charge
   doc: "[min]:[max]          Precursor charge range to search (if spectrum is not\
     \ annotated with a charge or if override_charge!=keep any known): 0:[num] == search\
     \ all charges, 2:6 == from +2 to +6, 3:3 == +3 (default: '0:0')"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -precursor_charge
 - id: in_override_charge
@@ -97,32 +97,32 @@ inputs:
     \ or use the precursor_charge range (default: 'keep known search unknown' valid:\
     \ 'keep any known', 'ignore known', 'ignore outside range', 'keep known search\
     \ unknown')"
-  type: string
+  type: string?
   inputBinding:
     prefix: -override_charge
 - id: in_ms_level
   doc: "MS level to analyze, valid are levels 2 (default) or 3 (default: '2' min:\
     \ '2' max: '3')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -ms_level
 - id: in_activation_method
   doc: "If not ALL, only searches spectra of the given method (default: 'ALL' valid:\
     \ 'ALL', 'CID', 'ECD', 'ETD', 'PQD', 'HCD', 'IRMPD')"
-  type: string
+  type: string?
   inputBinding:
     prefix: -activation_method
 - id: in_max_fragment_charge
   doc: "Set maximum fragment charge state to analyze as long as still lower than precursor\
     \ charge - 1. (Allowed max 5) (default: '3' min: '1' max: '5')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -max_fragment_charge
 - id: in_clip_n_term_methionine
   doc: "If set to true, also considers the peptide sequence w/o N-term methionine\
     \ separately and applies appropriate N-term mods to it (default: 'false' valid:\
     \ 'true', 'false')"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -clip_nterm_methionine
 - id: in_fixed_modifications
@@ -837,7 +837,7 @@ inputs:
     \ 'Xlink:DTSSP (Protein N-term)', 'Xlink:EGS (K)', 'Xlink:EGS (Protein N-term)',\
     \ 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC (C)',\
     \ 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -fixed_modifications
 - id: in_variable_modifications
@@ -1552,27 +1552,27 @@ inputs:
     \ 'Xlink:DTSSP (Protein N-term)', 'Xlink:EGS (K)', 'Xlink:EGS (Protein N-term)',\
     \ 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC (C)',\
     \ 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -variable_modifications
 - id: in_ini
   doc: Use the given TOPP INI file
-  type: File
+  type: File?
   inputBinding:
     prefix: -ini
 - id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -threads
 - id: in_write_ini
   doc: Writes the default configuration file
-  type: File
+  type: File?
   inputBinding:
     prefix: -write_ini
 - id: in_helphelp
   doc: Shows all options (including advanced)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --helphelp
 outputs:
@@ -1581,9 +1581,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: "*                           Output file (valid formats: 'idXML')"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - CometAdapter

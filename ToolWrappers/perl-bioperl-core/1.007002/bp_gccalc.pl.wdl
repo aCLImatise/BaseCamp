@@ -12,6 +12,9 @@ task BpGccalcpl {
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: ""
     f: ""

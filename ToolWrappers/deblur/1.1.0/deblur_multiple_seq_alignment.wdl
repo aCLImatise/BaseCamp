@@ -16,6 +16,9 @@ task DeblurMultipleseqalignment {
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""} \
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads_per_sample: "Number of threads to use per sample (0 to\\nuse all)  [default: 1]"
     log_level: "RANGE       Level of messages for log file(range 1-debug\\nto 5-critical  [default: 2]"

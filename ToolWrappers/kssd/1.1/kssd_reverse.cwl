@@ -3,27 +3,27 @@ id: kssd_reverse.cwl
 inputs:
 - id: in_by_reads
   doc: recover k-mer from sketched reads .
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --byreads
 - id: in_s_huf_file
   doc: provide .shuf file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --shufFile
 - id: in_outdir
   doc: path for recovered k-mer files.
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_threads
   doc: threads num.
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_option_dot_dot_dot
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 - id: in_co_dir
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kssd

@@ -2,7 +2,7 @@ version 1.0
 
 task CanSNPer2 {
   input {
-    Boolean? db
+    Boolean? database
     Directory? outdir
     Boolean? save_tree
     Boolean? no_snp_files
@@ -26,7 +26,7 @@ task CanSNPer2 {
   command <<<
     CanSNPer2 \
       ~{query} \
-      ~{if (db) then "-db" else ""} \
+      ~{if (database) then "--database" else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if (save_tree) then "--save_tree" else ""} \
       ~{if (no_snp_files) then "--no_snpfiles" else ""} \
@@ -46,8 +46,11 @@ task CanSNPer2 {
       ~{if (debug) then "--debug" else ""} \
       ~{if (supress) then "--supress" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    db: ", --database      CanSNP database"
+    database: "CanSNP database"
     outdir: "Output directory"
     save_tree: "Save tree as PDF using ETE3 (default False)"
     no_snp_files: "Don´t save output files."

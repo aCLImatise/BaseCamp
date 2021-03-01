@@ -14,6 +14,9 @@ task Blthreshold {
       ~{if defined(nonnegative_length) then ("-n " +  '"' + nonnegative_length + '"') else ""} \
       ~{if defined(file_print_reads) then ("-s " +  '"' + file_print_reads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nonnegative_length: "non-negative length"
     file_print_reads: "file to print short reads to"

@@ -13,12 +13,12 @@ inputs:
     prefix: --filename
 - id: in_flag_uniqid
   doc: "Name of the column with unique identifiers in the flag\nfiles."
-  type: string
+  type: string?
   inputBinding:
     prefix: --flagUniqID
 - id: in_output
   doc: "Output file\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - merge_flags.py

@@ -28,6 +28,9 @@ task Cathscorealign {
       ~{if defined(pdb_in_file) then ("--pdb-infile " +  '"' + pdb_in_file + '"') else ""} \
       ~{if (pdb_s_from_stdin) then "--pdbs-from-stdin" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_version_information: "[ --version ]                Output version information"
     res_name_align: "Align residues by simply matching their names (numbers+insert)\\n(for multiple models of the same structure)"

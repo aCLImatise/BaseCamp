@@ -14,6 +14,9 @@ task IgdiscoverDendrogram {
       ~{if defined(mark) then ("--mark " +  '"' + mark + '"') else ""} \
       ~{if defined(method) then ("--method " +  '"' + method + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mark: "Path to a FASTA file with a set of \\\"known\\\" sequences.\\nSequences in the main file that do *not* occur here\\nwill be marked with (new). If not given, no sequences\\nwill be marked (use this to compare two databases)."
     method: "Linkage method. Default: \\\"average\\\" (=UPGMA)\\n"

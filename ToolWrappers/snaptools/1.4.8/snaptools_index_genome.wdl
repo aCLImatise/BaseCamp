@@ -16,6 +16,9 @@ task SnaptoolsIndexgenome {
       ~{if defined(path_to_aligner) then ("--path-to-aligner " +  '"' + path_to_aligner + '"') else ""} \
       ~{if defined(num_threads) then ("--num-threads " +  '"' + num_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fast_a: "genome fasta file to build the index from (default:\\nNone)"
     output_prefix: "prefix of indexed file (default: None)"

@@ -3,23 +3,24 @@ id: rbt_vcf_to_txt.cwl
 inputs:
 - id: in_genotypes
   doc: Display genotypes.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --genotypes
 - id: in_fmt
   doc: '...     Select FORMAT tags.'
-  type: string
+  type: string?
   inputBinding:
     prefix: --fmt
 - id: in_info
   doc: '...    Select INFO tags.'
-  type: string
+  type: string?
   inputBinding:
     prefix: --info
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rbt

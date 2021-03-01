@@ -8,6 +8,9 @@ task GhosttreeSilvaCOMMAND {
     ghost_tree silva COMMAND \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     args: ""
   }

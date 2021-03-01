@@ -26,6 +26,9 @@ task Pbdagcon {
       ~{if (arg_size_write) then "-w" else ""} \
       ~{if defined(input_flag_optional) then ("--input " +  '"' + input_flag_optional + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     increase_logging_verbosity: "[ --verbose ]               Increase logging verbosity"
     align_sequences_adding: "[ --align ]                 Align sequences before adding to consensus"

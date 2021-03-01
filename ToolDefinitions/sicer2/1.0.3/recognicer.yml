@@ -1,0 +1,206 @@
+!Command
+command:
+- recognicer
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Use
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: more
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: information
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --treatment_file
+  - -t
+  description: "Name of the sample file you wish to run RECOGNICER on.\nThis can either\
+    \ be the relative or the absolute path\nof the file. Must be in BED or BAM format."
+  args: !SimpleFlagArg
+    name: TREATMENT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --control_file
+  - -c
+  description: "Name of the control library in BED or BAM format. This\ncan either\
+    \ be the relative or the absolute path of the\nfile. If you wish to run RECOGNICERS\
+    \ without a control\nlibrary, simply do not enter the file."
+  args: !SimpleFlagArg
+    name: CONTROL_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --species
+  - -s
+  description: 'The species/genome used (ex: hg38)'
+  args: !SimpleFlagArg
+    name: SPECIES
+- !Flag
+  optional: true
+  synonyms:
+  - --redundancy_threshold
+  - -rt
+  description: "The number of copies of indentical reads allowed in a\nlibrary. Default\
+    \ value is 1"
+  args: !SimpleFlagArg
+    name: REDUNDANCY_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --window_size
+  - -w
+  description: Resolution of RECOGNICERS. Default value is 200 (bp)
+  args: !SimpleFlagArg
+    name: WINDOW_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --fragment_size
+  - -f
+  description: "The amount of shift from the beginning of a read to\nthe center of\
+    \ the DNA fragment represented by the\nread. Default value is 150 (bp)."
+  args: !SimpleFlagArg
+    name: FRAGMENT_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --effective_genome_fraction
+  - -egf
+  description: "Effective genome as fraction of the genome size.\nDefault value is\
+    \ 0.74"
+  args: !SimpleFlagArg
+    name: EFFECTIVE_GENOME_FRACTION
+- !Flag
+  optional: true
+  synonyms:
+  - --false_discovery_rate
+  - -fdr
+  description: "Remove all islands with an false_discovery_rate below\ncutoff. Default\
+    \ value is 0.01."
+  args: !SimpleFlagArg
+    name: FALSE_DISCOVERY_RATE
+- !Flag
+  optional: true
+  synonyms:
+  - --output_directory
+  - -o
+  description: "Path of the directory in which results will be stored.\nDefault path\
+    \ is the current path"
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - --step_size
+  - -s_size
+  description: "Step Size: the number of windows in one graining unit.\nUsed for RECOGNICER\
+    \ algorithm"
+  args: !SimpleFlagArg
+    name: STEP_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --step_score
+  - -s_score
+  description: "Step Score: The minimum number of positive elements in\nthe graining\
+    \ unit to call the unit positive. Used for\nRECOGNICER algorithm"
+  args: !SimpleFlagArg
+    name: STEP_SCORE
+- !Flag
+  optional: true
+  synonyms:
+  - --cpu
+  - -cpu
+  description: "CPU Core Count: The number of CPU cores RECOGNICER\nprogram will use\
+    \ when executing multi-processing\ntasks. Optimal core count is the species' number\
+    \ of\nchromosomes. Default value is the maximum number of\ncores avaiable in the\
+    \ system."
+  args: !SimpleFlagArg
+    name: CPU
+- !Flag
+  optional: true
+  synonyms:
+  - --significant_reads
+  description: "Output Significant Reads: Enter \"--significant_reads\"\nto have SICER\
+    \ produce a BED file of treatment reads\nfiltered by significant islands and WIG\
+    \ file of\nfiltered reads binned into windows"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  - -v
+  description: increase console output verbosity
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ''
+  args: !SimpleFlagArg
+    name: for
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: Use --help or -h for more information\n\nProcessing arguments for\
+  \ RECOGNICER\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --treatment_file TREATMENT_FILE, -t TREATMENT_FILE\n             \
+  \           Name of the sample file you wish to run RECOGNICER on.\n           \
+  \             This can either be the relative or the absolute path\n           \
+  \             of the file. Must be in BED or BAM format.\n  --control_file CONTROL_FILE,\
+  \ -c CONTROL_FILE\n                        Name of the control library in BED or\
+  \ BAM format. This\n                        can either be the relative or the absolute\
+  \ path of the\n                        file. If you wish to run RECOGNICERS without\
+  \ a control\n                        library, simply do not enter the file.\n  --species\
+  \ SPECIES, -s SPECIES\n                        The species/genome used (ex: hg38)\n\
+  \  --redundancy_threshold REDUNDANCY_THRESHOLD, -rt REDUNDANCY_THRESHOLD\n     \
+  \                   The number of copies of indentical reads allowed in a\n    \
+  \                    library. Default value is 1\n  --window_size WINDOW_SIZE, -w\
+  \ WINDOW_SIZE\n                        Resolution of RECOGNICERS. Default value\
+  \ is 200 (bp)\n  --fragment_size FRAGMENT_SIZE, -f FRAGMENT_SIZE\n             \
+  \           The amount of shift from the beginning of a read to\n              \
+  \          the center of the DNA fragment represented by the\n                 \
+  \       read. Default value is 150 (bp).\n  --effective_genome_fraction EFFECTIVE_GENOME_FRACTION,\
+  \ -egf EFFECTIVE_GENOME_FRACTION\n                        Effective genome as fraction\
+  \ of the genome size.\n                        Default value is 0.74\n  --false_discovery_rate\
+  \ FALSE_DISCOVERY_RATE, -fdr FALSE_DISCOVERY_RATE\n                        Remove\
+  \ all islands with an false_discovery_rate below\n                        cutoff.\
+  \ Default value is 0.01.\n  --output_directory OUTPUT_DIRECTORY, -o OUTPUT_DIRECTORY\n\
+  \                        Path of the directory in which results will be stored.\n\
+  \                        Default path is the current path\n  --step_size STEP_SIZE,\
+  \ -s_size STEP_SIZE\n                        Step Size: the number of windows in\
+  \ one graining unit.\n                        Used for RECOGNICER algorithm\n  --step_score\
+  \ STEP_SCORE, -s_score STEP_SCORE\n                        Step Score: The minimum\
+  \ number of positive elements in\n                        the graining unit to call\
+  \ the unit positive. Used for\n                        RECOGNICER algorithm\n  --cpu\
+  \ CPU, -cpu CPU   CPU Core Count: The number of CPU cores RECOGNICER\n         \
+  \               program will use when executing multi-processing\n             \
+  \           tasks. Optimal core count is the species' number of\n              \
+  \          chromosomes. Default value is the maximum number of\n               \
+  \         cores avaiable in the system.\n  --significant_reads   Output Significant\
+  \ Reads: Enter \"--significant_reads\"\n                        to have SICER produce\
+  \ a BED file of treatment reads\n                        filtered by significant\
+  \ islands and WIG file of\n                        filtered reads binned into windows\n\
+  \  --verbose, -v         increase console output verbosity\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sicer2:1.0.3--py38hd504320_0

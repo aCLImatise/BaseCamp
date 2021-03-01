@@ -22,6 +22,9 @@ task NucleosomePredictionpl {
       ~{if (tab) then "-tab" else ""} \
       ~{if (gxp) then "-gxp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     raw_binding: ": Output the raw nucleosome binding log-ratio per basepair instead of the default average occupancy probabilities."
     _title: ":    Title."

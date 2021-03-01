@@ -24,20 +24,20 @@ task RunHLA {
     Boolean? sort_by_size
     Boolean? sort_by_extension
     Boolean? sort_by_version
-    Boolean? l_sort_by
+    Boolean? l_sort_atime
     String? assume_terminal_n
     Boolean? color
     Boolean? one_aacxdlhrfplinsehrsxvctu
     String ls
     String touch
-    File? file
+    File? var_file
     File file_dot_dot_dot
   }
   command <<<
     run_HLA \
       ~{ls} \
       ~{touch} \
-      ~{file} \
+      ~{var_file} \
       ~{file_dot_dot_dot} \
       ~{if (do_create_files) then "-c" else ""} \
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
@@ -61,11 +61,14 @@ task RunHLA {
       ~{if (sort_by_size) then "-S" else ""} \
       ~{if (sort_by_extension) then "-X" else ""} \
       ~{if (sort_by_version) then "-v" else ""} \
-      ~{if (l_sort_by) then "-u" else ""} \
+      ~{if (l_sort_atime) then "-u" else ""} \
       ~{if defined(assume_terminal_n) then ("-w " +  '"' + assume_terminal_n + '"') else ""} \
       ~{if (color) then "--color" else ""} \
       ~{if (one_aacxdlhrfplinsehrsxvctu) then "-1AaCxdLHRFplinsehrSXvctu" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     do_create_files: "Don't create files"
     d: "Date/time to use"
@@ -89,13 +92,13 @@ task RunHLA {
     sort_by_size: "Sort by size"
     sort_by_extension: "Sort by extension"
     sort_by_version: "Sort by version"
-    l_sort_by: "With -l: sort by atime"
+    l_sort_atime: "With -l: sort by atime"
     assume_terminal_n: "Assume the terminal is N columns wide"
     color: "[={always,never,auto}]   Control coloring"
     one_aacxdlhrfplinsehrsxvctu: ""
     ls: ""
     touch: ""
-    file: ""
+    var_file: ""
     file_dot_dot_dot: ""
   }
   output {

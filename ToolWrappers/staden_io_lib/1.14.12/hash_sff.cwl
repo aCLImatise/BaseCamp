@@ -3,12 +3,12 @@ id: hash_sff.cwl
 inputs:
 - id: in_t
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_sff_file
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hash_sff

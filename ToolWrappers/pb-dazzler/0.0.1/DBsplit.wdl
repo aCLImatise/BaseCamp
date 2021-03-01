@@ -18,6 +18,9 @@ task DBsplit {
       ~{if (force_split_occur) then "-f" else ""} \
       ~{if (af) then "-af" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target_size_blocks: ": Target size of blocks (in Mbp)."
     trimmed_db_reads: ": Trimmed DB has reads >= this threshold."

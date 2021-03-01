@@ -24,6 +24,9 @@ task Tepidmap {
       ~{if (recursive_optional) then "-r" else ""} \
       ~{if (gzip_fastq_files) then "-z" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_bowtie_index: "path to bowtie2 index"
     path_yaha_index: "path to yaha index"

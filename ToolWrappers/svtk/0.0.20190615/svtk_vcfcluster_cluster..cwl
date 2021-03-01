@@ -3,22 +3,22 @@ id: svtk_vcfcluster_cluster..cwl
 inputs:
 - id: in_x
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -x
 - id: in_f
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_d
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -d
 - id: in_r
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
 - id: in_s_vtk
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - svtk

@@ -33,7 +33,7 @@ task Homer {
     Int? max_neg
     String? speed
     Int? alg
-    String? markov_generate_using
+    String? markov_generate_hmm
     Float? filtering_cutoff_ratio
     Boolean? seq_less
     Boolean? seq_more
@@ -71,11 +71,14 @@ task Homer {
       ~{if defined(max_neg) then ("-maxneg " +  '"' + max_neg + '"') else ""} \
       ~{if defined(speed) then ("-speed " +  '"' + speed + '"') else ""} \
       ~{if defined(alg) then ("-alg " +  '"' + alg + '"') else ""} \
-      ~{if defined(markov_generate_using) then ("-b " +  '"' + markov_generate_using + '"') else ""} \
+      ~{if defined(markov_generate_hmm) then ("-b " +  '"' + markov_generate_hmm + '"') else ""} \
       ~{if defined(filtering_cutoff_ratio) then ("-N " +  '"' + filtering_cutoff_ratio + '"') else ""} \
       ~{if (seq_less) then "-seqless" else ""} \
       ~{if (seq_more) then "-seqmore" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prot: ": Sequence type (-dna)"
     _sequence_file: ": Sequence File"
@@ -108,7 +111,7 @@ task Homer {
     max_neg: "maximum percentage of negative genes that can contain the motif"
     speed: ": Program will heuristically avoid performing exhaustive\\ncalculations (default: FAST)"
     alg: ": scoring algorithm (default: hypergeo)\\nhypergeo - hypergeometric scoring (ZOOPS)\\nbinomial - binomical scoring [for variable length seq] (ZOOPS) (requires exact)\\napproxbinomial - binomical scoring [for variable length seq] (ZOOPS) (requires exact)\\nsitehypergeo - hypergeometric scoring across seq positions (very slow)\\nsitebinomial - binomial scoring across seq positions\\nfisher <#> - fisher exact test (slow, # scales exponentially)\\n<# = largest repetition to consider [default=2]>\\nrank - group file must have sortable numeric value\\nfreqdiff - used by most bayesian/nnet programs\\nlogit - used by most bayesian/nnet programs"
-    markov_generate_using: "[method options...]\\nmarkov <#> - generate hmm from target sequences using a hmm of order #\\nbmarkov <#> - generate hmm from background sequences using a hmm of order #\\nmosaic - generate mosaic hmm from background sequences **coming soon**"
+    markov_generate_hmm: "[method options...]\\nmarkov <#> - generate hmm from target sequences using a hmm of order #\\nbmarkov <#> - generate hmm from background sequences using a hmm of order #\\nmosaic - generate mosaic hmm from background sequences **coming soon**"
     filtering_cutoff_ratio: ": filtering cutoff for ratio of N's in sequence (0.9)"
     seq_less: "<#> : filter sequences shorter than #"
     seq_more: "<#> : filter sequences longer than #"

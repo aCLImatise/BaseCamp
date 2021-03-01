@@ -18,6 +18,9 @@ task Rbmoegrid {
       ~{if defined(grid_border) then ("--grid-border " +  '"' + grid_border + '"') else ""} \
       ~{if defined(tripos_atom_type) then ("--tripos-atom-type " +  '"' + tripos_atom_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_name: "output file name prefix (.grd is suffixed)\\n(default: moegrid)"
     receptor_param: "receptor param file(s) (contain active site\\nparams, can be specified multiple times)"

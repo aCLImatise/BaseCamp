@@ -20,6 +20,9 @@ task Rsemextractreferencetranscripts {
       ~{chromosome_file_one} \
       ~{chromosome_file_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     refname: ""
     quiet: ""

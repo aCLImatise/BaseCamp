@@ -52,6 +52,9 @@ task ScelvisRun {
       ~{if defined(i_rods_encryption_num_hash_rounds) then ("--irods-encryption-num-hash-rounds " +  '"' + i_rods_encryption_num_hash_rounds + '"') else ""} \
       ~{if defined(i_rods_encryption_salt_size) then ("--irods-encryption-salt-size " +  '"' + i_rods_encryption_salt_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Enable debug mode"
     host: "Server host"

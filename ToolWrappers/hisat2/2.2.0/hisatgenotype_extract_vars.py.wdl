@@ -26,6 +26,9 @@ task HisatgenotypeExtractVarspy {
       ~{if (no_partial) then "--no-partial" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base: "base filename for backbone sequence, variants, and\\nlinking info (Default: hla)"
     locus_list: "A comma-separated list of gene names (default: empty,\\nall genes)"

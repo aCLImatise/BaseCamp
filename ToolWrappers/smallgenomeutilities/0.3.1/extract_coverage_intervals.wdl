@@ -2,7 +2,7 @@ version 1.0
 
 task ExtractCoverageIntervals {
   input {
-    Int? region_interested_eghxb
+    Int? region_interested_bed
     File? cf
     Int? minimum_read_depth
     Float? threshold_overlap_read
@@ -18,7 +18,7 @@ task ExtractCoverageIntervals {
   command <<<
     extract_coverage_intervals \
       ~{bam} \
-      ~{if defined(region_interested_eghxb) then ("-r " +  '"' + region_interested_eghxb + '"') else ""} \
+      ~{if defined(region_interested_bed) then ("-r " +  '"' + region_interested_bed + '"') else ""} \
       ~{if defined(cf) then ("-cf " +  '"' + cf + '"') else ""} \
       ~{if defined(minimum_read_depth) then ("-c " +  '"' + minimum_read_depth + '"') else ""} \
       ~{if defined(threshold_overlap_read) then ("-f " +  '"' + threshold_overlap_read + '"') else ""} \
@@ -30,8 +30,11 @@ task ExtractCoverageIntervals {
       ~{if defined(number_threads_default) then ("-t " +  '"' + number_threads_default + '"') else ""} \
       ~{if defined(output_file_name) then ("-o " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    region_interested_eghxb: "Region of interested in BED format, e.g.\\nHXB2:2253-3869. Loci are interpreted using 0-based\\nindexing, and a half-open interval is used, i.e,\\n[start:end) (default: None)"
+    region_interested_bed: "Region of interested in BED format, e.g.\\nHXB2:2253-3869. Loci are interpreted using 0-based\\nindexing, and a half-open interval is used, i.e,\\n[start:end) (default: None)"
     cf: "File containing coverage per locus per sample. Samples\\nare expected as columns and loci as rows. This option\\nis not compatible with the read-window overlap\\nthresholding (default: None)"
     minimum_read_depth: "Minimum read depth per window (default: 100)"
     threshold_overlap_read: "Threshold on the overlap between each read and the\\nwindow (default: 0.85)"

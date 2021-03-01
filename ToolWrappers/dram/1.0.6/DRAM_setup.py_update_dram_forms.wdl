@@ -8,6 +8,9 @@ task DRAMsetuppyUpdateDramForms {
     DRAM_setup_py update_dram_forms \
       ~{if defined(output_dir) then ("--output_dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Directory to store newly downloaded files, may want\\nthis to be the same directory as the rest of your DRAM\\ndatabase files (default: None)\\n"
   }

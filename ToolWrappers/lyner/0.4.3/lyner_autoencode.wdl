@@ -2,14 +2,20 @@ version 1.0
 
 task LynerAutoencode {
   input {
-    Boolean? layer_config
+    Int? validation_split
+    Float? adjust_weights
   }
   command <<<
     lyner autoencode \
-      ~{if defined(layer_config) then ("--layer-config " +  '"' + layer_config + '"') else ""}
+      ~{if defined(validation_split) then ("--validation-split " +  '"' + validation_split + '"') else ""} \
+      ~{if defined(adjust_weights) then ("--adjust-weights " +  '"' + adjust_weights + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    layer_config: "-f, --from-file FILE\\n-s, --store-model PATH\\n--loss [kld|mae|mape|mse|msle|binary_crossentropy|categorical_crossentropy|categorical_hinge|cosine|cosine_proximity|hinge|logcosh|poisson|sparse_categorical_crossentropy|squared_hinge]\\n-o, --optimiser [adadelta|adagrad|adam|adamax|nadam|rmsprop|sgd]\\n-e, --epochs INTEGER\\n-b, --batch-size INTEGER\\n-s, --shuffle BOOLEAN\\n-v, --validation-split FLOAT RANGE\\n-w, --adjust-weights FLOAT\\n-m, --mode [discard|nodes|weights]\\n--help                          Show this message and exit.\\n"
+    validation_split: "RANGE"
+    adjust_weights: "[discard|nodes|weights]"
   }
   output {
     File out_stdout = stdout()

@@ -9,13 +9,13 @@ inputs:
     prefix: --inputFiles
 - id: in_out_filename
   doc: The name of the merged loop file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --outFileName
 - id: in_lowest_resolution
   doc: "The lowest resolution of all loop files, i.e. 5kb,\n10kb and 25kb, please\
     \ use 25000."
-  type: long
+  type: long?
   inputBinding:
     prefix: --lowestResolution
 outputs:
@@ -24,9 +24,10 @@ outputs:
   type: stdout
 - id: out_out_filename
   doc: The name of the merged loop file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicMergeLoops

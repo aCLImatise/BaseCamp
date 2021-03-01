@@ -10,11 +10,11 @@ task Xmlwf {
     Boolean? r
     Boolean? p
     Boolean? n
-    File file
+    File var_file
   }
   command <<<
     xmlwf \
-      ~{file} \
+      ~{var_file} \
       ~{if defined(e) then ("-e " +  '"' + e + '"') else ""} \
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
       ~{if (x) then "-x" else ""} \
@@ -24,6 +24,9 @@ task Xmlwf {
       ~{if (p) then "-p" else ""} \
       ~{if (n) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     e: ""
     d: ""
@@ -33,7 +36,7 @@ task Xmlwf {
     r: ""
     p: ""
     n: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

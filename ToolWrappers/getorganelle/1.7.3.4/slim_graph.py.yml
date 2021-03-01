@@ -1,0 +1,403 @@
+!Command
+command:
+- slim_graph.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: your_fastg_files
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: "followed with mode embplant_pt, other_pt, embplant_mt,\nembplant_nr,\
+    \ animal_mt, fungus_mt, fungus_nr (which\nmeans embryophyta plastome, non-embryophyta\
+    \ plastome,\nplant mitochondrion, plant nuclear ribosomal RNA,\nanimal mitochondrion,\
+    \ fungus mitochondrion, fungus\nnuclear ribosomal RNA separately), or a combination\
+    \ of\nabove split by comma(s) (corresponds to certain\narguments as following\
+    \ listed).\n------------------------------------------------------\nembplant_pt\
+    \      \" --include-priority\n/root/.GetOrganelle/LabelDatabase/embplant_pt.fasta\"\
+    \n------------------------------------------------------\nother_pt         \"\
+    \ --include-priority\n/root/.GetOrganelle/LabelDatabase/other_pt.fasta\"\n------------------------------------------------------\n\
+    embplant_mt      \" --include-priority\n/root/.GetOrganelle/LabelDatabase/embplant_mt.fasta\"\
+    \n------------------------------------------------------\nembplant_nr      \"\
+    \ --include-priority\n/root/.GetOrganelle/LabelDatabase/embplant_nr.fasta\"\n\
+    ------------------------------------------------------\nanimal_mt        \" --include-priority\n\
+    /root/.GetOrganelle/LabelDatabase/animal_mt.fasta\"\n------------------------------------------------------\n\
+    fungus_mt        \" --include-priority\n/root/.GetOrganelle/LabelDatabase/fungus_mt.fasta\"\
+    \n------------------------------------------------------\nfungus_nr        \"\
+    \ --include-priority\n/root/.GetOrganelle/LabelDatabase/fungus_nr.fasta\"\n------------------------------------------------------\n\
+    other_pt,embplant_mt,fungus_mt   \" --include-priority\n/root/.GetOrganelle/LabelDatabase/other_pt.fasta,/root\n\
+    /.GetOrganelle/LabelDatabase/embplant_mt.fasta,/root/.\nGetOrganelle/LabelDatabase/fungus_mt.fasta\"\
+    \n------------------------------------------------------\nFor easy usage and compatibility\
+    \ of old versions,\nfollowing redirection would be automatically fulfilled\nwithout\
+    \ warning:   plant_cp->embplant_pt;\nplant_pt->embplant_pt;  plant_mt->embplant_mt;\n\
+    plant_nr->embplant_nr"
+  args: !SimpleFlagArg
+    name: ORGANELLE_TYPES
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  description: "followed with mode embplant_pt, other_pt, embplant_mt,\nembplant_nr,\
+    \ animal_mt, fungus_mt,fungus_nr (which\nmeans embryophyta plastome, non-embryophyta\
+    \ plastome,\nplant mitochondrion, plant nuclear ribosomal RNA,\nanimal mitochondrion,\
+    \ fungus mitochondrion, fungus\nnuclear ribosomal RNA separately), or a combination\
+    \ of\nabove split by comma(s) (be similar to -F and\ncorresponds to certain arguments\
+    \ as following listed).\n------------------------------------------------------\n\
+    embplant_pt      \" --exclude\n/root/.GetOrganelle/LabelDatabase/embplant_pt.fasta\"\
+    \n------------------------------------------------------\nembplant_mt      \"\
+    \ --exclude\n/root/.GetOrganelle/LabelDatabase/embplant_mt.fasta\"\n------------------------------------------------------\n\
+    embplant_nr      \" --exclude\n/root/.GetOrganelle/LabelDatabase/embplant_nr.fasta\"\
+    \n------------------------------------------------------\nanimal_mt        \"\
+    \ --exclude\n/root/.GetOrganelle/LabelDatabase/animal_mt.fasta\"\n------------------------------------------------------\n\
+    fungus_mt        \" --exclude\n/root/.GetOrganelle/LabelDatabase/fungus_mt.fasta\"\
+    \n------------------------------------------------------\nfungus_nr        \"\
+    \ --exclude\n/root/.GetOrganelle/LabelDatabase/fungus_nr.fasta\"\n------------------------------------------------------\n\
+    embplant_mt,embplant_nr          \" --exclude /root/.Ge\ntOrganelle/LabelDatabase/embplant_mt.fasta,/root/.GetO\n\
+    rganelle/LabelDatabase/embplant_nr.fasta\"\n------------------------------------------------------\n\
+    For easy usage and compatibility of old versions,\nfollowing redirection would\
+    \ be automatically fulfilled\nwithout warning:   plant_cp->embplant_pt;\nplant_pt->embplant_pt;\
+    \  plant_mt->embplant_mt;\nplant_nr->embplant_nr"
+  args: !SimpleFlagArg
+    name: EXCLUDE_ORGANELLE_TYPES
+- !Flag
+  optional: true
+  synonyms:
+  - --no-hits
+  description: "Provide treatment for non-hitting contigs.\n------------------------------------------------------\n\
+    ex_no_con        keep those connect with hitting-\ninclude contigs. (Default)\n\
+    ------------------------------------------------------\nex_no_hit        exclude\
+    \ all.\n------------------------------------------------------\nkeep_all     \
+    \    keep all\n------------------------------------------------------"
+  args: !SimpleFlagArg
+    name: TREAT_NO_HITS
+- !Flag
+  optional: true
+  synonyms:
+  - --max-slim-extending-len
+  description: "This is used to limit the extending length, below\nwhich a \"non-hit\
+    \ contig\" is allowed to be distant from\na \"hit contig\" to be kept. This distance\
+    \ is measured\nby the shortest distance connecting those two contigs,\nweighted\
+    \ by the depth of the \"hit contig\". This is\nused only when \"--no-hits ex_no_con\"\
+    \ was chosen.\nShould be a single INTEGER number or inf (meaning\ninfinite). It\
+    \ is supposed to be half of the maximum\nexpected genome size to be safe, but\
+    \ could be much\nsmaller if the LabelDatabse is closely related.\nDefault: 15000\
+    \ (-F embplant_pt), 50000 (-F\nembplant_mt/fungus_mt/other_pt), 12500 (-F\nembplant_nr/fungus_nr/animal_mt),\n\
+    maximum_of_type1_type2 (-F type1,type2), inf (cases\nwithout using -F)"
+  args: !SimpleFlagArg
+    name: MAX_SLIM_EXTENDING_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - --significant
+  description: "Within a contig, if the query-score of hitting A is\nmore than given\
+    \ times (Default: 3.0) of the query-\nscore of hitting B, this contig would be\
+    \ treated as\nonly A related, rather than both."
+  args: !SimpleFlagArg
+    name: SIGNIFICANT
+- !Flag
+  optional: true
+  synonyms:
+  - --depth-cutoff
+  description: "After detection for target coverage, those beyond\ncertain times (depth\
+    \ cutoff) of the detected coverage\nwould be excluded. Default: 10000.0"
+  args: !SimpleFlagArg
+    name: DEPTH_CUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - --min-depth
+  description: "Input a float or integer number. Filter fastg file by\na minimum depth.\
+    \ Default: 0.0."
+  args: !SimpleFlagArg
+    name: MIN_DEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - --max-depth
+  description: "Input a float or integer number. filter fastg file by\na maximum depth.\
+    \ Default: inf."
+  args: !SimpleFlagArg
+    name: MAX_DEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - --merge
+  description: Merge all possible contigs.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include
+  description: followed by Blastn database(s)
+  args: !SimpleFlagArg
+    name: INCLUDE
+- !Flag
+  optional: true
+  synonyms:
+  - --include-priority
+  description: followed by Blastn database(s).
+  args: !SimpleFlagArg
+    name: INCLUDE_PRIORITY
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude
+  description: followed by Blastn database(s).
+  args: !SimpleFlagArg
+    name: EXCLUDE
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude-priority
+  description: followed by Blastn database(s)
+  args: !SimpleFlagArg
+    name: EXCLUDE_PRIORITY
+- !Flag
+  optional: true
+  synonyms:
+  - --no-hits-labeled-tab
+  description: Choose to disable producing tab file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-temp
+  description: "Choose to disable deleting temp files produced by\nblast and this\
+    \ script"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-dir
+  description: "By default the output would be along with the input\nfastg file. But\
+    \ you could assign a new directory with\nthis option."
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --evalue
+  description: 'blastn evalue threshold. Default: 1e-25'
+  args: !SimpleFlagArg
+    name: EVALUE
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  description: "Add prefix to the output basename. Conflict with \"--\nout-base\"."
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --out-base
+  description: "By default the output basename would be modified based\non the input\
+    \ fastg file. But you could assign a new\nbasename with this option. Conflict\
+    \ with \"--prefix\".\nConflict with multiple input files!"
+  args: !SimpleFlagArg
+    name: OUT_BASE
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: Generate log file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --wrapper
+  description: "Wrapper mode logging when called by get_organelle*.py.\nDefault: False"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: For debug usage.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --continue
+  description: Specified for calling from get_organelle_from_reads.py
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-overwrite
+  description: Overwrite existing output result.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --which-blast
+  description: "Assign the path to BLAST binary files if not added to\nthe path. Default:\
+    \ try \"/GetOrganelleDep/linux/ncbi-\nblast\" first, then $PATH"
+  args: !SimpleFlagArg
+    name: WHICH_BLAST
+- !Flag
+  optional: true
+  synonyms:
+  - --config-dir
+  description: "The directory where the default databases were placed.\nThe default\
+    \ value also can be changed by adding\n'export GETORG_PATH=your_favor' to the\
+    \ shell script\n(e.g. ~/.bash_profile or ~/.bashrc) Default:\n/root/.GetOrganelle"
+  args: !SimpleFlagArg
+    name: GET_ORGANELLE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: "Threads for blastn.\n"
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: python slim_graph.py your_fastg_files -F embplant_pt -E embplant_mt\n\
+  \nOptions:\n  -h, --help            show this help message and exit\n  -F ORGANELLE_TYPES\
+  \    followed with mode embplant_pt, other_pt, embplant_mt,\n                  \
+  \      embplant_nr, animal_mt, fungus_mt, fungus_nr (which\n                   \
+  \     means embryophyta plastome, non-embryophyta plastome,\n                  \
+  \      plant mitochondrion, plant nuclear ribosomal RNA,\n                     \
+  \   animal mitochondrion, fungus mitochondrion, fungus\n                       \
+  \ nuclear ribosomal RNA separately), or a combination of\n                     \
+  \   above split by comma(s) (corresponds to certain\n                        arguments\
+  \ as following listed).\n                        ------------------------------------------------------\n\
+  \                        embplant_pt      \" --include-priority\n              \
+  \          /root/.GetOrganelle/LabelDatabase/embplant_pt.fasta\"\n             \
+  \           ------------------------------------------------------\n           \
+  \             other_pt         \" --include-priority\n                        /root/.GetOrganelle/LabelDatabase/other_pt.fasta\"\
+  \n                        ------------------------------------------------------\n\
+  \                        embplant_mt      \" --include-priority\n              \
+  \          /root/.GetOrganelle/LabelDatabase/embplant_mt.fasta\"\n             \
+  \           ------------------------------------------------------\n           \
+  \             embplant_nr      \" --include-priority\n                        /root/.GetOrganelle/LabelDatabase/embplant_nr.fasta\"\
+  \n                        ------------------------------------------------------\n\
+  \                        animal_mt        \" --include-priority\n              \
+  \          /root/.GetOrganelle/LabelDatabase/animal_mt.fasta\"\n               \
+  \         ------------------------------------------------------\n             \
+  \           fungus_mt        \" --include-priority\n                        /root/.GetOrganelle/LabelDatabase/fungus_mt.fasta\"\
+  \n                        ------------------------------------------------------\n\
+  \                        fungus_nr        \" --include-priority\n              \
+  \          /root/.GetOrganelle/LabelDatabase/fungus_nr.fasta\"\n               \
+  \         ------------------------------------------------------\n             \
+  \           other_pt,embplant_mt,fungus_mt   \" --include-priority \n          \
+  \              /root/.GetOrganelle/LabelDatabase/other_pt.fasta,/root\n        \
+  \                /.GetOrganelle/LabelDatabase/embplant_mt.fasta,/root/.\n      \
+  \                  GetOrganelle/LabelDatabase/fungus_mt.fasta\"\n              \
+  \          ------------------------------------------------------\n            \
+  \            For easy usage and compatibility of old versions,\n               \
+  \         following redirection would be automatically fulfilled\n             \
+  \           without warning:   plant_cp->embplant_pt;\n                        plant_pt->embplant_pt;\
+  \  plant_mt->embplant_mt;\n                        plant_nr->embplant_nr\n  -E EXCLUDE_ORGANELLE_TYPES\n\
+  \                        followed with mode embplant_pt, other_pt, embplant_mt,\n\
+  \                        embplant_nr, animal_mt, fungus_mt,fungus_nr (which\n  \
+  \                      means embryophyta plastome, non-embryophyta plastome,\n \
+  \                       plant mitochondrion, plant nuclear ribosomal RNA,\n    \
+  \                    animal mitochondrion, fungus mitochondrion, fungus\n      \
+  \                  nuclear ribosomal RNA separately), or a combination of\n    \
+  \                    above split by comma(s) (be similar to -F and\n           \
+  \             corresponds to certain arguments as following listed).\n         \
+  \               ------------------------------------------------------\n       \
+  \                 embplant_pt      \" --exclude\n                        /root/.GetOrganelle/LabelDatabase/embplant_pt.fasta\"\
+  \n                        ------------------------------------------------------\n\
+  \                        embplant_mt      \" --exclude\n                       \
+  \ /root/.GetOrganelle/LabelDatabase/embplant_mt.fasta\"\n                      \
+  \  ------------------------------------------------------\n                    \
+  \    embplant_nr      \" --exclude\n                        /root/.GetOrganelle/LabelDatabase/embplant_nr.fasta\"\
+  \n                        ------------------------------------------------------\n\
+  \                        animal_mt        \" --exclude\n                       \
+  \ /root/.GetOrganelle/LabelDatabase/animal_mt.fasta\"\n                        ------------------------------------------------------\n\
+  \                        fungus_mt        \" --exclude\n                       \
+  \ /root/.GetOrganelle/LabelDatabase/fungus_mt.fasta\"\n                        ------------------------------------------------------\n\
+  \                        fungus_nr        \" --exclude\n                       \
+  \ /root/.GetOrganelle/LabelDatabase/fungus_nr.fasta\"\n                        ------------------------------------------------------\n\
+  \                        embplant_mt,embplant_nr          \" --exclude /root/.Ge\n\
+  \                        tOrganelle/LabelDatabase/embplant_mt.fasta,/root/.GetO\n\
+  \                        rganelle/LabelDatabase/embplant_nr.fasta\"\n          \
+  \              ------------------------------------------------------\n        \
+  \                For easy usage and compatibility of old versions,\n           \
+  \             following redirection would be automatically fulfilled\n         \
+  \               without warning:   plant_cp->embplant_pt;\n                    \
+  \    plant_pt->embplant_pt;  plant_mt->embplant_mt;\n                        plant_nr->embplant_nr\n\
+  \  --no-hits=TREAT_NO_HITS\n                        Provide treatment for non-hitting\
+  \ contigs.\n                        ------------------------------------------------------\n\
+  \                        ex_no_con        keep those connect with hitting-\n   \
+  \                     include contigs. (Default)\n                        ------------------------------------------------------\n\
+  \                        ex_no_hit        exclude all.\n                       \
+  \ ------------------------------------------------------\n                     \
+  \   keep_all         keep all\n                        ------------------------------------------------------\n\
+  \  --max-slim-extending-len=MAX_SLIM_EXTENDING_LEN\n                        This\
+  \ is used to limit the extending length, below\n                        which a\
+  \ \"non-hit contig\" is allowed to be distant from\n                        a \"\
+  hit contig\" to be kept. This distance is measured\n                        by the\
+  \ shortest distance connecting those two contigs,\n                        weighted\
+  \ by the depth of the \"hit contig\". This is\n                        used only\
+  \ when \"--no-hits ex_no_con\" was chosen.\n                        Should be a\
+  \ single INTEGER number or inf (meaning\n                        infinite). It is\
+  \ supposed to be half of the maximum\n                        expected genome size\
+  \ to be safe, but could be much\n                        smaller if the LabelDatabse\
+  \ is closely related.\n                        Default: 15000 (-F embplant_pt),\
+  \ 50000 (-F\n                        embplant_mt/fungus_mt/other_pt), 12500 (-F\n\
+  \                        embplant_nr/fungus_nr/animal_mt),\n                   \
+  \     maximum_of_type1_type2 (-F type1,type2), inf (cases\n                    \
+  \    without using -F)\n  --significant=SIGNIFICANT\n                        Within\
+  \ a contig, if the query-score of hitting A is\n                        more than\
+  \ given times (Default: 3.0) of the query-\n                        score of hitting\
+  \ B, this contig would be treated as\n                        only A related, rather\
+  \ than both.\n  --depth-cutoff=DEPTH_CUTOFF\n                        After detection\
+  \ for target coverage, those beyond\n                        certain times (depth\
+  \ cutoff) of the detected coverage\n                        would be excluded. Default:\
+  \ 10000.0\n  --min-depth=MIN_DEPTH\n                        Input a float or integer\
+  \ number. Filter fastg file by\n                        a minimum depth. Default:\
+  \ 0.0.\n  --max-depth=MAX_DEPTH\n                        Input a float or integer\
+  \ number. filter fastg file by\n                        a maximum depth. Default:\
+  \ inf.\n  --merge               Merge all possible contigs.\n  --include=INCLUDE\
+  \     followed by Blastn database(s)\n  --include-priority=INCLUDE_PRIORITY\n  \
+  \                      followed by Blastn database(s).\n  --exclude=EXCLUDE    \
+  \ followed by Blastn database(s).\n  --exclude-priority=EXCLUDE_PRIORITY\n     \
+  \                   followed by Blastn database(s)\n  --no-hits-labeled-tab\n  \
+  \                      Choose to disable producing tab file\n  --keep-temp     \
+  \      Choose to disable deleting temp files produced by\n                     \
+  \   blast and this script\n  -o OUT_DIR, --out-dir=OUT_DIR\n                   \
+  \     By default the output would be along with the input\n                    \
+  \    fastg file. But you could assign a new directory with\n                   \
+  \     this option.\n  -e EVALUE, --evalue=EVALUE\n                        blastn\
+  \ evalue threshold. Default: 1e-25\n  --prefix=PREFIX       Add prefix to the output\
+  \ basename. Conflict with \"--\n                        out-base\".\n  --out-base=OUT_BASE\
+  \   By default the output basename would be modified based\n                   \
+  \     on the input fastg file. But you could assign a new\n                    \
+  \    basename with this option. Conflict with \"--prefix\".\n                  \
+  \      Conflict with multiple input files!\n  --log                 Generate log\
+  \ file.\n  --wrapper             Wrapper mode logging when called by get_organelle*.py.\n\
+  \                        Default: False\n  --verbose             For debug usage.\n\
+  \  --continue            Specified for calling from get_organelle_from_reads.py\n\
+  \  --no-overwrite        Overwrite existing output result.\n  --which-blast=WHICH_BLAST\n\
+  \                        Assign the path to BLAST binary files if not added to\n\
+  \                        the path. Default: try \"/GetOrganelleDep/linux/ncbi-\n\
+  \                        blast\" first, then $PATH\n  --config-dir=GET_ORGANELLE_PATH\n\
+  \                        The directory where the default databases were placed.\n\
+  \                        The default value also can be changed by adding\n     \
+  \                   'export GETORG_PATH=your_favor' to the shell script\n      \
+  \                  (e.g. ~/.bash_profile or ~/.bashrc) Default:\n              \
+  \          /root/.GetOrganelle\n  -t THREADS, --threads=THREADS\n              \
+  \          Threads for blastn.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/getorganelle:1.7.3.4--pyh3252c3a_0

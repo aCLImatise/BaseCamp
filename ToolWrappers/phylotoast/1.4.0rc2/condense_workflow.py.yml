@@ -4,41 +4,55 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -s
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -r
-  args: !SimpleFlagArg
-    name: REP_SET_FN
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -i
+  - --assigned_taxonomy_fn
+  description: "The taxonomy file output by the assign_taxonomy\nscript."
   args: !SimpleFlagArg
     name: ASSIGNED_TAXONOMY_FN
+- !Flag
   optional: true
+  synonyms:
+  - -r
+  - --rep_set_fn
+  description: The set of representative sequences.
+  args: !SimpleFlagArg
+    name: REP_SET_FN
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --seqs_otus_fn
+  description: The list of OTU IDs and their associated sequence IDs.
+  args: !SimpleFlagArg
+    name: SEQS_OTUS_FN
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --phylogenetic_level
+  description: "Set the phylogenetic level at which to define OTUs for\ncondensing\
+    \ and downstream processing. Defaults to\nspecies level."
+  args: !ChoiceFlagArg
+    choices: !!set
+      k:
+      c:
+      o:
+      f:
+      s:
+      p:
+      g:
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-i ASSIGNED_TAXONOMY_FN, --assigned_taxonomy_fn\
-    \ ASSIGNED_TAXONOMY_FN\nThe taxonomy file output by the assign_taxonomy\nscript.\n\
-    -r REP_SET_FN, --rep_set_fn REP_SET_FN\nThe set of representative sequences.\n\
-    -s SEQS_OTUS_FN, --seqs_otus_fn SEQS_OTUS_FN\nThe list of OTU IDs and their associated\
-    \ sequence IDs.\n-L {k,p,c,o,f,g,s}, --phylogenetic_level {k,p,c,o,f,g,s}\nSet\
-    \ the phylogenetic level at which to define OTUs for\ncondensing and downstream\
-    \ processing. Defaults to\nspecies level.\n-v, --verbose\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: condense_workflow.py [-h] -i ASSIGNED_TAXONOMY_FN -r REP_SET_FN\
@@ -56,3 +70,4 @@ help_text: "usage: condense_workflow.py [-h] -i ASSIGNED_TAXONOMY_FN -r REP_SET_
   \ Defaults to\n                        species level.\n  -v, --verbose\n"
 generated_using:
 - --help
+docker_image:

@@ -3,12 +3,12 @@ id: mb_adapter_clipper_prime3_adapter.cwl
 inputs:
 - id: in_min_len
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_len
 - id: in_clip_len
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --clip_len
 - id: in_mb_adapter_clipper
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mb-adapter-clipper

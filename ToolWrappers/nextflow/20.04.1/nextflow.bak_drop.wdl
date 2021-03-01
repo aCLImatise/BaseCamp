@@ -2,7 +2,7 @@ version 1.0
 
 task NextflowbakDrop {
   input {
-    Boolean? delete_repository_taking
+    Boolean? delete_repository_false
     String drop
     String name
     String of
@@ -18,10 +18,13 @@ task NextflowbakDrop {
       ~{the} \
       ~{project} \
       ~{to} \
-      ~{if (delete_repository_taking) then "-f" else ""}
+      ~{if (delete_repository_false) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    delete_repository_taking: "Delete the repository without taking care of local changes\\nDefault: false"
+    delete_repository_false: "Delete the repository without taking care of local changes\\nDefault: false"
     drop: ""
     name: ""
     of: ""

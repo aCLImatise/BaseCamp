@@ -3,10 +3,10 @@ version 1.0
 task Fastqmultx {
   input {
     Int? output_files_one
-    String? determine_barcodes_indexed
+    String? determine_barcodes_seqfil
     String? determine_barcodes_read
-    Int? determine_barcodes_using
-    Int? use_barcodes_codes
+    Int? determine_barcodes_readfq
+    Int? use_barcodes_bcfil
     Boolean? use_barcodes_read
     Boolean? force_beginning_line
     Boolean? force_end_line
@@ -23,10 +23,10 @@ task Fastqmultx {
   command <<<
     fastq_multx \
       ~{if defined(output_files_one) then ("-o " +  '"' + output_files_one + '"') else ""} \
-      ~{if defined(determine_barcodes_indexed) then ("-g " +  '"' + determine_barcodes_indexed + '"') else ""} \
+      ~{if defined(determine_barcodes_seqfil) then ("-g " +  '"' + determine_barcodes_seqfil + '"') else ""} \
       ~{if defined(determine_barcodes_read) then ("-l " +  '"' + determine_barcodes_read + '"') else ""} \
-      ~{if defined(determine_barcodes_using) then ("-L " +  '"' + determine_barcodes_using + '"') else ""} \
-      ~{if defined(use_barcodes_codes) then ("-B " +  '"' + use_barcodes_codes + '"') else ""} \
+      ~{if defined(determine_barcodes_readfq) then ("-L " +  '"' + determine_barcodes_readfq + '"') else ""} \
+      ~{if defined(use_barcodes_bcfil) then ("-B " +  '"' + use_barcodes_bcfil + '"') else ""} \
       ~{if (use_barcodes_read) then "-H" else ""} \
       ~{if (force_beginning_line) then "-b" else ""} \
       ~{if (force_end_line) then "-e" else ""} \
@@ -40,12 +40,15 @@ task Fastqmultx {
       ~{if defined(require_minimum_distance) then ("-d " +  '"' + require_minimum_distance + '"') else ""} \
       ~{if defined(require_minimum_quality) then ("-q " +  '"' + require_minimum_quality + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_files_one: "Output files (one per input, required)"
-    determine_barcodes_indexed: "Determine barcodes from the indexed read SEQFIL"
+    determine_barcodes_seqfil: "Determine barcodes from the indexed read SEQFIL"
     determine_barcodes_read: "Determine barcodes from any read, using BCFIL as a master list"
-    determine_barcodes_using: "Determine barcodes from <read1.fq>, using BCFIL as a master list"
-    use_barcodes_codes: "Use barcodes from BCFIL, no determination step, codes in <read1.fq>"
+    determine_barcodes_readfq: "Determine barcodes from <read1.fq>, using BCFIL as a master list"
+    use_barcodes_bcfil: "Use barcodes from BCFIL, no determination step, codes in <read1.fq>"
     use_barcodes_read: "Use barcodes from illumina's header, instead of a read"
     force_beginning_line: "Force beginning of line (5') for barcode matching"
     force_end_line: "Force end of line (3') for barcode matching"

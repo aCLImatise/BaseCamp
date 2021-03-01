@@ -40,6 +40,9 @@ task MindTheGapFind {
       ~{if (max_memory) then "-max-memory" else ""} \
       ~{if (verbose) then "-verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "(1 arg) :    input read file(s)  [default '']"
     graph: "(1 arg) :    input graph file (likely a hdf5 file)  [default '']"

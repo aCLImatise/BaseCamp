@@ -12,6 +12,9 @@ task PhyluceAssemblyCopyTrinitySymlinks {
       ~{if defined(conf) then ("--conf " +  '"' + conf + '"') else ""} \
       ~{if defined(the_output_folder) then ("--output " +  '"' + the_output_folder + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly_symlinks: "The location of the trinity symlinks (trinity-\\nassemblies/contigs)"
     conf: "The configuration file to use"

@@ -30,6 +30,9 @@ task DigestorMotif {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                 FASTA input file (valid formats: 'fasta')"
     out: "*                Output file (peptides)\\n(valid formats: 'idXML')"

@@ -12,6 +12,9 @@ task NwTopology {
       ~{if (discard_inner_node) then "-I" else ""} \
       ~{if (discard_leaf_labels) then "-L" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep_branch_lengths: ": keep branch lengths"
     discard_inner_node: ": discard inner node labels"

@@ -3,17 +3,17 @@ id: pipits_reformatAssignedTaxonomy.cwl
 inputs:
 - id: in_in
   doc: '[REQUIRED] taxonomy assignment output from RDP-CLASSIFIER'
-  type: string
+  type: string?
   inputBinding:
     prefix: --in
 - id: in_out
   doc: '[REQUIRED] reformatted taxonomy assignment file'
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_minimum_confidence_record
   doc: '[REQUIRED] Minimum confidence to record an assignment'
-  type: string
+  type: string?
   inputBinding:
     prefix: -c
 - id: in_re_format
@@ -50,6 +50,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pipits_reformatAssignedTaxonomy

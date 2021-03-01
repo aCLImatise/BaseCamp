@@ -68,6 +68,9 @@ task GraftMGraft {
       ~{if (force) then "--force" else ""} \
       ~{if defined(max_samples_for_krona) then ("--max_samples_for_krona " +  '"' + max_samples_for_krona + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     forward: "Path to the reads you wish to run through GraftM, either in fasta (.fa) or fastq (.fq), optionally gzip-compressed (.gz). If you would like to run multiple samples at once, provide a space separated list of the file paths"
     reverse: "read [reverse read ...]\\nIf you have paired end data, you may wish to provide the reverse reads. If you are running more than one dataset, please ensure that the order of the files passed to the --forward and --reverse flags is consistent."

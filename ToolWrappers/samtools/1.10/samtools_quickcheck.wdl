@@ -14,6 +14,9 @@ task SamtoolsQuickcheck {
       ~{if (suppress_warning_messages) then "-q" else ""} \
       ~{if (unmapped_input_require) then "-u" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose_output_repeat: "verbose output (repeat for more verbosity)"
     suppress_warning_messages: "suppress warning messages"

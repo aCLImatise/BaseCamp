@@ -104,6 +104,9 @@ task FindPeaks {
       ~{if (rev) then "-rev" else ""} \
       ~{if defined(gtf) then ("-gtf " +  '"' + gtf + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_name_output: "(file name for to output peaks, default: stdout)\\n\\\"-o auto\\\" will send output to \\\"<tag directory>/peaks.txt\\\", \\\".../regions.txt\\\",\\nor \\\".../transcripts.txt\\\" depending on the \\\"-style\\\" option"
     style: "(Specialized options for specific analysis strategies)\\nfactor (transcription factor ChIP-Seq, uses -center, output: peaks.txt,  default)\\nhistone (histone modification ChIP-Seq, region based, uses -region -size 500 -L 0, regions.txt)\\ngroseq (de novo transcript identification from GroSeq data, transcripts.txt)\\ntss (TSS identification from 5' RNA sequencing, tss.txt)\\ndnase (Hypersensitivity [crawford style (nicking)], peaks.txt)\\nsuper (Super Enhancers, superEnhancers.txt)\\nsuperhistone (Super Enhancers from H3K27ac data, superEnhancers.txt)\\nmC (Cytosine methylation (BS-seq/methylC-seq), regions.txt)\\ndamid (DamID enrichment from DpnI digestion, regions.txt)\\nclip (CLIP-Seq enrichment, strand specific, peaks.txt)"
@@ -138,7 +141,7 @@ task FindPeaks {
     typical: "(Output typical enhancers to this file, default: not used)"
     input_peaks: "(initial peaks to use for super enhancer merging/scoring)"
     exclude_peaks: "(regions to exclude from analysis, i.e. TSS regions for H3K27ac)"
-    un_methyl_c: "/ -methylC (find unmethylated/methylated regions, default: -unmethyC)"
+    un_methyl_c: "(find unmethylated/methylated regions, default: -unmethyC)"
     mc_thresh: "<#> (methylation threshold of regions, default: avg methylation/2)"
     minn_umc: "<#> (Minimum number of cytosines per methylation peak, default: 6)"
     tss_size: "<#> (size of region for initiation detection/artifact size, default: 250)"

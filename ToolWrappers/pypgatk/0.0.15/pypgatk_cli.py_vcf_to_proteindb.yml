@@ -1,0 +1,216 @@
+!Command
+command:
+- pypgatk_cli.py
+- vcf-to-proteindb
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: peps
+  description: -o, --output_proteindb TEXT     Output file name, exits if already
+    exists
+- !Positional
+  optional: false
+  position: 1
+  name: variants
+  description: --transcript_index INTEGER      Index of transcript ID in the annotated
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config_file
+  description: "Configuration to perform conversion between\nENSEMBL Files"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --input_fasta
+  description: Path to the transcript sequence
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --vep_annotated_vcf
+  description: Path to the vep annotated VCF file
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gene_annotations_gtf
+  description: Path to the gene annotations file
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --translation_table
+  description: Translation table (Default 1)
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --var_prefix
+  description: String to add before the variant peptides
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --report_ref_seq
+  description: In addition to var peps, also report all ref
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --annotation_field_name
+  description: "Annotation field name found in the INFO\ncolumn, e.g CSQ or vep"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --af_field
+  description: "field name in the VCF INFO column to use for\nfiltering on AF, (Default\
+    \ None)"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --af_threshold
+  description: Minium AF threshold for considering common
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --consequence_index
+  description: "Index of consequence in the annotated\ncolumns (separated by |)"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude_biotypes
+  description: Excluded Biotypes
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude_consequences
+  description: "Excluded Consequences  [default:\ndownstream_gene_variant,\nupstream_gene_variant,\
+    \ intergenic_variant,\nintron_variant, synonymous_variant]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --skip_including_all_cds
+  description: "by default any transcript that has a defined\nCDS will be used, this\
+    \ option disables this\nfeatures instead it only depends on the\nbiotypes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include_biotypes
+  description: Only genes/transcripts (depending on
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --biotype_str
+  description: ) from these biotypes are
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include_consequences
+  description: included_consequences, default all
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore_filters
+  description: "enabling this option causes or variants to\nbe parsed. By default\
+    \ only variants that\nhave not failed any filters will be\nprocessed (FILTER column\
+    \ is PASS, None, .)\nor if the filters are subset of the accepted\nfilters. (default\
+    \ is False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --accepted_filters
+  description: Accepted filters for variant parsing
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: pypgatk_cli.py vcf-to-proteindb [OPTIONS]\n\nOptions:\n  -c, --config_file\
+  \ TEXT          Configuration to perform conversion between\n                  \
+  \                ENSEMBL Files\n\n  -f, --input_fasta TEXT          Path to the\
+  \ transcript sequence\n  -v, --vep_annotated_vcf TEXT    Path to the vep annotated\
+  \ VCF file\n  -g, --gene_annotations_gtf TEXT\n                                \
+  \  Path to the gene annotations file\n  -t, --translation_table INTEGER\n      \
+  \                            Translation table (Default 1)\n  -m, --mito_translation_table\
+  \ INTEGER\n                                  Mito_trans_table (default 2)\n  -p,\
+  \ --var_prefix TEXT           String to add before the variant peptides\n  --report_ref_seq\
+  \                In addition to var peps, also report all ref\n                \
+  \                  peps\n\n  -o, --output_proteindb TEXT     Output file name, exits\
+  \ if already exists\n  --annotation_field_name TEXT    Annotation field name found\
+  \ in the INFO\n                                  column, e.g CSQ or vep\n\n  --af_field\
+  \ TEXT                 field name in the VCF INFO column to use for\n          \
+  \                        filtering on AF, (Default None)\n\n  --af_threshold FLOAT\
+  \            Minium AF threshold for considering common\n                      \
+  \            variants\n\n  --transcript_index INTEGER      Index of transcript ID\
+  \ in the annotated\n                                  columns (separated by |)\n\
+  \n  --consequence_index INTEGER     Index of consequence in the annotated\n    \
+  \                              columns (separated by |)\n\n  --exclude_biotypes\
+  \ TEXT         Excluded Biotypes\n  --exclude_consequences TEXT     Excluded Consequences\
+  \  [default:\n                                  downstream_gene_variant,\n     \
+  \                             upstream_gene_variant, intergenic_variant,\n     \
+  \                             intron_variant, synonymous_variant]\n\n  -s, --skip_including_all_cds\
+  \    by default any transcript that has a defined\n                            \
+  \      CDS will be used, this option disables this\n                           \
+  \       features instead it only depends on the\n                              \
+  \    biotypes\n\n  --include_biotypes TEXT         Only genes/transcripts (depending\
+  \ on\n                                  --biotype_str) from these biotypes are\n\
+  \                                  considered for trasnaltion, in addition CDS\n\
+  \                                  transcripts unless --skip_including_all_cds\n\
+  \                                  is given\n\n  --include_consequences TEXT   \
+  \  included_consequences, default all\n  --biotype_str TEXT              string\
+  \ used to identify gene/transcript\n                                  biotype in\
+  \ the gtf file.\n\n  --ignore_filters                enabling this option causes\
+  \ or variants to\n                                  be parsed. By default only variants\
+  \ that\n                                  have not failed any filters will be\n\
+  \                                  processed (FILTER column is PASS, None, .)\n\
+  \                                  or if the filters are subset of the accepted\n\
+  \                                  filters. (default is False)\n\n  --accepted_filters\
+  \ TEXT         Accepted filters for variant parsing\n  -h, --help              \
+  \        Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pypgatk:0.0.15--py_0

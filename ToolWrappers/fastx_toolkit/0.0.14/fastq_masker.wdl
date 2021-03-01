@@ -18,6 +18,9 @@ task FastqMasker {
       ~{if defined(q) then ("-q " +  '"' + q + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     i: ""

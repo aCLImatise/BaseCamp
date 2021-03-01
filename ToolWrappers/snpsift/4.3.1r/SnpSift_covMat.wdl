@@ -14,6 +14,9 @@ task SnpSiftCovMat {
       ~{allele_dot_matrix_dot_txt} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jar: ""
     java: ""

@@ -12,6 +12,9 @@ task HowdesbtCAAGACCTATGAGTAGAACG {
       ~{var_command} \
       ~{arguments}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     how_des_bt: ""
     var_command: ""

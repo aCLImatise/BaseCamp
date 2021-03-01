@@ -16,6 +16,9 @@ task MafsInRegion {
       ~{if (outdir) then "-outDir" else ""} \
       ~{if (keep_initial_gaps) then "-keepInitialGaps" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "- output separate files named by bed name field to outDir"
     keep_initial_gaps: "- keep alignment columns at the beginning and of a block that are gapped in all species"

@@ -8,6 +8,9 @@ task ReadFileNames {
     read_file_names \
       ~{if (in) then "-in" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "(1 arg) :    bank input"
   }

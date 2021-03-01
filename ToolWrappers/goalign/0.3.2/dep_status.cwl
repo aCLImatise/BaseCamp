@@ -3,53 +3,53 @@ id: dep_status.cwl
 inputs:
 - id: in_detail
   doc: 'include more detail in the chosen format (default: false)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -detail
 - id: in_dot
   doc: 'output the dependency graph in GraphViz format (default: false)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -dot
 - id: in_examples
   doc: 'print detailed usage examples (default: false)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -examples
-- id: in_output_texttemplate_format
+- id: in_output_texttemplate_none
   doc: 'output in text/template format (default: <none>)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_json
   doc: 'output in JSON format (default: false)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -json
 - id: in_lock
   doc: 'output in the lock file format (assumes -detail) (default: false)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -lock
 - id: in_missing
   doc: 'only show missing dependencies (default: false)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -missing
 - id: in_old
   doc: 'only show out-of-date dependencies (default: false)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -old
 - id: in_out
   doc: 'path to a file to which to write the output. Blank value will be ignored (default:
     <none>)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
-- id: in_enable_verbose_logging
+- id: in_enable_verbose_default
   doc: 'enable verbose logging (default: false)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_project
@@ -83,15 +83,16 @@ outputs:
   type: stdout
 - id: out_lock
   doc: 'output in the lock file format (assumes -detail) (default: false)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_lock)
 - id: out_out
   doc: 'path to a file to which to write the output. Blank value will be ignored (default:
     <none>)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dep

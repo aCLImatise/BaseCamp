@@ -14,6 +14,9 @@ task VarscanProcessSomatic {
       ~{if (p_value) then "--p-value" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_normal_freq: "- Maximum variant allele frequency in normal [0.05]"
     p_value: "- P-value for high-confidence calling [0.07]"

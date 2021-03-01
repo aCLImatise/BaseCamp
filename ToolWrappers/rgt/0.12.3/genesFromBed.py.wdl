@@ -18,6 +18,9 @@ task GenesFromBedpy {
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""} \
       ~{if defined(metric) then ("--metric " +  '"' + metric + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: "choose mode"
     distance: "distance from peak to gene"

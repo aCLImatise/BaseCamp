@@ -30,6 +30,9 @@ task MasonSplicing {
       ~{if defined(input_reference) then ("--input-reference " +  '"' + input_reference + '"') else ""} \
       ~{if defined(input_vcf) then ("--input-vcf " +  '"' + input_vcf + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version_check: "Turn this option off to disable version update notifications of the\\napplication. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\\nDefault: 1."
     quiet: "Low verbosity."

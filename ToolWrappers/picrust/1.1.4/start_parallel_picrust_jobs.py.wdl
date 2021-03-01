@@ -16,6 +16,9 @@ task StartParallelPicrustJobspy {
       ~{if defined(delay) then ("--delay " +  '"' + delay + '"') else ""} \
       ~{if defined(num_jobs) then ("--num_jobs " +  '"' + num_jobs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     make_jobs: "make the job files [default: none]"

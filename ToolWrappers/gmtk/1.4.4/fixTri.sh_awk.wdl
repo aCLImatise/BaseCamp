@@ -10,6 +10,9 @@ task FixTrishAwk {
       ~{awk} \
       ~{tri_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     awk: ""
     tri_file: ""

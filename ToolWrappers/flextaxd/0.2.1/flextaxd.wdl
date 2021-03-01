@@ -2,18 +2,18 @@ version 1.0
 
 task Flextaxd {
   input {
-    Directory? _outdir_output
+    Directory? outdir
     Boolean? dump
     Boolean? dump_mini
     Boolean? force
-    Boolean? tf
-    Boolean? tt
+    Boolean? taxonomy_file
+    Boolean? taxonomy_type
     Boolean? taxid_base
-    Boolean? mf
-    Boolean? md
-    Boolean? gt
-    Boolean? gp
-    Boolean? _parent_parent
+    Boolean? mod_file
+    Boolean? mod_database
+    Boolean? genome_id_two_taxid
+    Boolean? genomes_path
+    Boolean? parent
     Boolean? replace
     File? db_program
     Boolean? dump_prefix
@@ -30,18 +30,18 @@ task Flextaxd {
   command <<<
     flextaxd \
       ~{required} \
-      ~{if (_outdir_output) then "-o" else ""} \
+      ~{if (outdir) then "--outdir" else ""} \
       ~{if (dump) then "--dump" else ""} \
       ~{if (dump_mini) then "--dump_mini" else ""} \
       ~{if (force) then "--force" else ""} \
-      ~{if (tf) then "-tf" else ""} \
-      ~{if (tt) then "-tt" else ""} \
+      ~{if (taxonomy_file) then "--taxonomy_file" else ""} \
+      ~{if (taxonomy_type) then "--taxonomy_type" else ""} \
       ~{if (taxid_base) then "--taxid_base" else ""} \
-      ~{if (mf) then "-mf" else ""} \
-      ~{if (md) then "-md" else ""} \
-      ~{if (gt) then "-gt" else ""} \
-      ~{if (gp) then "-gp" else ""} \
-      ~{if (_parent_parent) then "-p" else ""} \
+      ~{if (mod_file) then "--mod_file" else ""} \
+      ~{if (mod_database) then "--mod_database" else ""} \
+      ~{if (genome_id_two_taxid) then "--genomeid2taxid" else ""} \
+      ~{if (genomes_path) then "--genomes_path" else ""} \
+      ~{if (parent) then "--parent" else ""} \
       ~{if (replace) then "--replace" else ""} \
       ~{if (db_program) then "--dbprogram" else ""} \
       ~{if (dump_prefix) then "--dump_prefix" else ""} \
@@ -54,19 +54,22 @@ task Flextaxd {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (db) then "-db" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _outdir_output: ", --outdir         Output directory"
+    outdir: "Output directory"
     dump: "Write database to names.dmp and nodes.dmp"
     dump_mini: "Dump minimal file with tab as separator"
     force: "use when script is implemented in pipeline to avoid\\nsecurity questions on overwrite!"
-    tf: ", --taxonomy_file\\nTaxonomy source file"
-    tt: ", --taxonomy_type\\nSource format of taxonomy input file\\n(QIIME,CanSNPer,NCBI)"
+    taxonomy_file: "Taxonomy source file"
+    taxonomy_type: "Source format of taxonomy input file\\n(QIIME,CanSNPer,NCBI)"
     taxid_base: "The base for internal taxonomy ID numbers, when using\\nNCBI as base select base at minimum 3000000 (default =\\n1)"
-    mf: ", --mod_file      File contaning modifications parent,child,(taxonomy\\nlevel)"
-    md: ", --mod_database\\nDatabase file containing modifications"
-    gt: ", --genomeid2taxid\\nFile that lists which node a genome should be assigned\\nto"
-    gp: ", --genomes_path\\nPath to genome folder is required when using\\nNCBI_taxonomy as source"
-    _parent_parent: ", --parent         Parent from which to add (replace see below) branch"
+    mod_file: "File contaning modifications parent,child,(taxonomy\\nlevel)"
+    mod_database: "Database file containing modifications"
+    genome_id_two_taxid: "File that lists which node a genome should be assigned\\nto"
+    genomes_path: "Path to genome folder is required when using\\nNCBI_taxonomy as source"
+    parent: "Parent from which to add (replace see below) branch"
     replace: "Add if existing children of parents should be removed!"
     db_program: "Adjust output file to certain output specifications\\n[kraken2, krakenuniq, ganon, centrifuge]"
     dump_prefix: "change dump prefix reqires two names\\ndefault(names,nodes)"
@@ -82,7 +85,7 @@ task Flextaxd {
   }
   output {
     File out_stdout = stdout()
-    Directory out__outdir_output = "${in__outdir_output}"
+    Directory out_outdir = "${in_outdir}"
     File out_db_program = "${in_db_program}"
   }
 }

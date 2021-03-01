@@ -8,6 +8,9 @@ task Dtd2rng {
     dtd2rng \
       ~{if (compact) then "--compact" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compact: ": output compact syntax."
   }

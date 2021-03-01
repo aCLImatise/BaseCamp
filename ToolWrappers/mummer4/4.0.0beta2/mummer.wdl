@@ -8,10 +8,10 @@ task Mummer {
     Boolean? max_match
     Boolean? set_minimum_length
     Boolean? compute_forward_reverse
-    Boolean? force_output_format
+    Boolean? force_column_output
     Boolean? match_only_characters
     Boolean? print_length_query
-    Boolean? compute_only_matches
+    Boolean? compute_only_reverse
     Boolean? print_first_characters
     Boolean? report_query_position
     Boolean? sampled_suffix_positions
@@ -38,10 +38,10 @@ task Mummer {
       ~{if (max_match) then "-maxmatch" else ""} \
       ~{if (set_minimum_length) then "-l" else ""} \
       ~{if (compute_forward_reverse) then "-b" else ""} \
-      ~{if (force_output_format) then "-F" else ""} \
+      ~{if (force_column_output) then "-F" else ""} \
       ~{if (match_only_characters) then "-n" else ""} \
       ~{if (print_length_query) then "-L" else ""} \
-      ~{if (compute_only_matches) then "-r" else ""} \
+      ~{if (compute_only_reverse) then "-r" else ""} \
       ~{if (print_first_characters) then "-s" else ""} \
       ~{if (report_query_position) then "-c" else ""} \
       ~{if (sampled_suffix_positions) then "-k" else ""} \
@@ -54,6 +54,9 @@ task Mummer {
       ~{if (save) then "-save" else ""} \
       ~{if (load) then "-load" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mum: "compute maximal matches that are unique in both sequences"
     mum_reference: "compute maximal matches that are unique in the reference-\\nsequence but not necessarily in the query-sequence (default)"
@@ -61,10 +64,10 @@ task Mummer {
     max_match: "compute all maximal matches regardless of their uniqueness"
     set_minimum_length: "set the minimum length of a match\\nif not set, the default value is 20"
     compute_forward_reverse: "compute forward and reverse complement matches"
-    force_output_format: "force 4 column output format regardless of the number of\\nreference sequence inputs"
+    force_column_output: "force 4 column output format regardless of the number of\\nreference sequence inputs"
     match_only_characters: "match only the characters a, c, g, or t"
     print_length_query: "print length of query sequence in header of matches"
-    compute_only_matches: "compute only reverse complement matches"
+    compute_only_reverse: "compute only reverse complement matches"
     print_first_characters: "print first 53 characters of the matching substring"
     report_query_position: "Report the query position of a reverse complement match relative to the forward strand of the query sequence"
     sampled_suffix_positions: "sampled suffix positions (one by default)"

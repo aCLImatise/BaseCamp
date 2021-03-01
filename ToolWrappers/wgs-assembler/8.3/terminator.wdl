@@ -20,6 +20,9 @@ task Terminator {
       ~{if defined(use_uid_namespace) then ("-n " +  '"' + use_uid_namespace + '"') else ""} \
       ~{if defined(use_uid_server) then ("-E " +  '"' + use_uid_server + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mandatory_path_gkpstore: "mandatory path to the gkpStore"
     version_mandatory_path: "version     mandatory path to the tigStore and version"

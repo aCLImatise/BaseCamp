@@ -28,6 +28,9 @@ task Basenc {
       ~{if defined(wrap) then ("--wrap " +  '"' + wrap + '"') else ""} \
       ~{if (z_eight_five) then "--z85" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base_six_four: "same as 'base64' program (RFC4648 section 4)"
     base_six_four_url: "file- and url-safe base64 (RFC4648 section 5)"

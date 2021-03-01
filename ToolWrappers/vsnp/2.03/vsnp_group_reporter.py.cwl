@@ -3,17 +3,17 @@ id: vsnp_group_reporter.py.cwl
 inputs:
 - id: in_vcf
   doc: 'Required: vcf file'
-  type: File
+  type: File?
   inputBinding:
     prefix: --vcf
 - id: in_ref_option
   doc: 'Required: reference option'
-  type: string
+  type: string?
   inputBinding:
     prefix: --ref_option
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_prog
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vsnp_group_reporter.py

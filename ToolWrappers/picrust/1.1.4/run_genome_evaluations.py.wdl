@@ -34,6 +34,9 @@ task RunGenomeEvaluationspy {
       ~{if defined(input_dir) then ("--input_dir " +  '"' + input_dir + '"') else ""} \
       ~{if defined(ref_tree) then ("--ref_tree " +  '"' + ref_tree + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     output_dir: "the output directory [default: <input_dir>]"

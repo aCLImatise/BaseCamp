@@ -2,7 +2,6 @@ version 1.0
 
 task CompoundIdentificationpy {
   input {
-    String? lm_zi
     File? an_no
     File? uniqid
     File? mz_id
@@ -15,7 +14,6 @@ task CompoundIdentificationpy {
   }
   command <<<
     compound_identification_py \
-      ~{if defined(lm_zi) then ("-lmzi " +  '"' + lm_zi + '"') else ""} \
       ~{if defined(an_no) then ("--anno " +  '"' + an_no + '"') else ""} \
       ~{if defined(uniqid) then ("--uniqID " +  '"' + uniqid + '"') else ""} \
       ~{if defined(mz_id) then ("--mzID " +  '"' + mz_id + '"') else ""} \
@@ -26,8 +24,10 @@ task CompoundIdentificationpy {
       ~{if defined(libr_tid) then ("--librtID " +  '"' + libr_tid + '"') else ""} \
       ~{if defined(output_path_identifiedcompounds) then ("--output " +  '"' + output_path_identifiedcompounds + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    lm_zi: "LIBRT -o OUTPUT"
     an_no: "Out path for first file"
     uniqid: "Name of thecolumn in file that contains the uniqID"
     mz_id: "Name of the column in file that contains MZ"

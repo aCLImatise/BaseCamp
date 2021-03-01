@@ -22,6 +22,9 @@ task Cfmtrain {
       ~{no_train} \
       ~{start_energy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_filename: ""
     feature_filename: ""

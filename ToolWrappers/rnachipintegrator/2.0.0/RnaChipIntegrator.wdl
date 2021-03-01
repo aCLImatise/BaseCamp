@@ -13,8 +13,8 @@ task RnaChipIntegrator {
     Boolean? pad
     Boolean? xls_x
     Int? cutoffs
-    Array[File] specify_multiple_genes
-    Array[File] specify_multiple_files
+    Array[File] specify_genes_files
+    Array[File] specify_peaks_files
     Int? n_processors
     Boolean? split_outputs
     String? analyses
@@ -39,8 +39,8 @@ task RnaChipIntegrator {
       ~{if (pad) then "--pad" else ""} \
       ~{if (xls_x) then "--xlsx" else ""} \
       ~{if defined(cutoffs) then ("--cutoffs " +  '"' + cutoffs + '"') else ""} \
-      ~{if defined(specify_multiple_genes) then ("--genes " +  '"' + specify_multiple_genes + '"') else ""} \
-      ~{if defined(specify_multiple_files) then ("--peaks " +  '"' + specify_multiple_files + '"') else ""} \
+      ~{if defined(specify_genes_files) then ("--genes " +  '"' + specify_genes_files + '"') else ""} \
+      ~{if defined(specify_peaks_files) then ("--peaks " +  '"' + specify_peaks_files + '"') else ""} \
       ~{if defined(n_processors) then ("--nprocessors " +  '"' + n_processors + '"') else ""} \
       ~{if (split_outputs) then "--split-outputs" else ""} \
       ~{if defined(analyses) then ("--analyses " +  '"' + analyses + '"') else ""} \
@@ -48,6 +48,9 @@ task RnaChipIntegrator {
       ~{if defined(peak_cols) then ("--peak_cols " +  '"' + peak_cols + '"') else ""} \
       ~{if defined(peak_id) then ("--peak_id " +  '"' + peak_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cut_off: "Maximum distance allowed between peaks and genes\\nbefore being omitted from the analyses (default\\n1000000bp; set to zero for no cutoff, use --cutoffs\\ninstead to specify multiple distances)"
     edge: "Gene edges to consider when calculating distances\\nbetween genes and peaks, either: 'tss' (default: only\\nuse gene TSS) or 'both' (use whichever of TSS or TES\\ngives shortest distance)"
@@ -60,8 +63,8 @@ task RnaChipIntegrator {
     pad: "Where less than MAX_CLOSEST hits are found, pad output\\nwith blanks to ensure that MAX_CLOSEST hits are still\\nreported (nb --pad is implied for --compact)"
     xls_x: "Output XLSX spreadsheet with results"
     cutoffs: "Comma-separated list of one or more maximum distances\\nallowed between peaks and genes (bp). An analysis will\\nbe performed for each GENES-PEAKS pair at each cutoff\\ndistance (default 1000000bp; set to zero for no cutoff\\nNB cannot be used in conjunction with the --cutoff\\noption)"
-    specify_multiple_genes: "Specify multiple genes files (if used then peaks\\nfile(s) must be specified using --peaks option)"
-    specify_multiple_files: "Specify multiple peaks files (if used then genes\\nfile(s) must be specified using --genes option)"
+    specify_genes_files: "Specify multiple genes files (if used then peaks\\nfile(s) must be specified using --peaks option)"
+    specify_peaks_files: "Specify multiple peaks files (if used then genes\\nfile(s) must be specified using --genes option)"
     n_processors: "Number of processors/cores to run the program using\\n(default: 1)"
     split_outputs: "In batch mode write results of each analysis to\\nseparate file (default is to write all results to\\nsingle file)"
     analyses: "Select which analyses to run: can be one of 'all'\\n(default, runs all available analyses), 'peak_centric'\\nor 'gene_centric'"

@@ -2,7 +2,7 @@ version 1.0
 
 task PreseqLcExtrap {
   input {
-    File? yield_output_file
+    File? yield_default_stdout
     Boolean? extra_p
     Boolean? step
     Boolean? bootstraps
@@ -25,7 +25,7 @@ task PreseqLcExtrap {
     preseq lc_extrap \
       ~{lc_extra_p} \
       ~{sorted_bed_file} \
-      ~{if (yield_output_file) then "-output" else ""} \
+      ~{if (yield_default_stdout) then "-output" else ""} \
       ~{if (extra_p) then "-extrap" else ""} \
       ~{if (step) then "-step" else ""} \
       ~{if (bootstraps) then "-bootstraps" else ""} \
@@ -42,8 +42,11 @@ task PreseqLcExtrap {
       ~{if (seed) then "-seed" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    yield_output_file: "yield output file (default: stdout)"
+    yield_default_stdout: "yield output file (default: stdout)"
     extra_p: "maximum extrapolation (default: 1e+10)"
     step: "step size in extrapolations (default: 1e+06)"
     bootstraps: "number of bootstraps (default: 100),"
@@ -64,6 +67,6 @@ task PreseqLcExtrap {
   }
   output {
     File out_stdout = stdout()
-    File out_yield_output_file = "${in_yield_output_file}"
+    File out_yield_default_stdout = "${in_yield_default_stdout}"
   }
 }

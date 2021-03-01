@@ -20,6 +20,9 @@ task Repair {
       ~{if (add_dummy_reads) then "-d" else ""} \
       ~{if (include_sequences_scores) then "-t" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_input_file: "Name of input file. BAM format by default."
     name_output_file: "Name of output file. The output file is in BAM format."

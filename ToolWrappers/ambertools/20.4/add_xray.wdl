@@ -14,6 +14,9 @@ task AddXray {
       ~{atoms_f} \
       ~{sg_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prm_top: ": amber topology, input and output files"
     sym_lib: ": symmetry operator file, CCP4 format (symop.lib)"

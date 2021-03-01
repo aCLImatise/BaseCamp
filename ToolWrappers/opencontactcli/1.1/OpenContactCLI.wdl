@@ -16,6 +16,9 @@ task OpenContactCLI {
       ~{if defined(prot_b_chain) then ("--protB_chain " +  '"' + prot_b_chain + '"') else ""} \
       ~{if (tabular) then "--tabular" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prot_a: "Path to proteinA.pdb"
     prot_b: "Path to proteinB.pdb"

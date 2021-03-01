@@ -20,6 +20,9 @@ task KMatch {
       ~{jump} \
       ~{max_freq}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query_dot_fa: ""
     target_dot_fa: ""

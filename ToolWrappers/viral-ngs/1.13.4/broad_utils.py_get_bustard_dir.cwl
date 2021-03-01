@@ -3,7 +3,7 @@ id: broad_utils.py_get_bustard_dir.cwl
 inputs:
 - id: in_loglevel
   doc: "Verboseness of output. [default: ERROR]\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --loglevel
 - id: in_broad_utils_do_tpy
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - broad_utils.py

@@ -46,6 +46,9 @@ task Prettyplot {
       ~{if (show_score) then "-showscore" else ""} \
       ~{if (portrait) then "-portrait" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graph: "graph      [$EMBOSS_GRAPHICS value, or png] Graph type\\n(ps, hpgl, hp7470, hp7580, meta, cps, tek,\\ntekt, none, data, png, gif, svg)"
     matrix_file: "matrix     [EBLOSUM62 for protein, EDNAFULL for DNA]\\nThis is the scoring matrix file used when\\ncomparing sequences. By default it is the\\nfile 'EBLOSUM62' (for proteins) or the file\\n'EDNAFULL' (for nucleic sequences). These\\nfiles are found in the 'data' directory of\\nthe EMBOSS installation."

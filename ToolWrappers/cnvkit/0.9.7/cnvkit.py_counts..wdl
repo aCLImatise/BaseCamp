@@ -8,6 +8,9 @@ task CnvkitpyCounts {
     cnvkit_py counts_ \
       ~{cnv_kit_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cnv_kit_do_tpy: ""
   }

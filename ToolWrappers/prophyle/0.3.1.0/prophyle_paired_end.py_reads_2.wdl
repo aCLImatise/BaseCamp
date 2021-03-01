@@ -14,6 +14,9 @@ task ProphylePairedEndpyReads2 {
       ~{reads_two} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     prophy_le_paired_enddo_tpy: ""

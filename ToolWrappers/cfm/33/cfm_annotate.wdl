@@ -22,6 +22,9 @@ task Cfmannotate {
       ~{config_filename} \
       ~{output_filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     smiles_or_inch_i: ""
     spectrum_file: ""

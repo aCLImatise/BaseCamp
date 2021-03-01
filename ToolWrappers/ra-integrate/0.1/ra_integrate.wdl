@@ -12,6 +12,9 @@ task Raintegrate {
       ~{if defined(directory) then ("--directory " +  '"' + directory + '"') else ""} \
       ~{if defined(overlaps) then ("--overlaps " +  '"' + overlaps + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     spec: "Set given spec file"
     directory: "Set given dirpath as working directory"

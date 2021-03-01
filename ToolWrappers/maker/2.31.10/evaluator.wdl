@@ -26,6 +26,9 @@ task Evaluator {
       ~{if (again) then "-again" else ""} \
       ~{if (ctl) then "-CTL" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_gff: "Specify the maker gff file to evaluate."
     model_gff: "<file>  Specify the external gff file to evaluate."

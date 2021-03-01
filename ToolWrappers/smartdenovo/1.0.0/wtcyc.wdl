@@ -4,7 +4,7 @@ task Wtcyc {
   input {
     Int? number_of_threads
     Int? total_parallel_jobs
-    Int? index_run_it
+    Int? index_current_p
     String? output_reads_regions
     String? output_of_alignments
     File? force_overwrite_output
@@ -22,7 +22,7 @@ task Wtcyc {
       ~{long_read_file} \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
       ~{if defined(total_parallel_jobs) then ("-P " +  '"' + total_parallel_jobs + '"') else ""} \
-      ~{if defined(index_run_it) then ("-p " +  '"' + index_run_it + '"') else ""} \
+      ~{if defined(index_current_p) then ("-p " +  '"' + index_current_p + '"') else ""} \
       ~{if defined(output_reads_regions) then ("-o " +  '"' + output_reads_regions + '"') else ""} \
       ~{if defined(output_of_alignments) then ("-a " +  '"' + output_of_alignments + '"') else ""} \
       ~{if (force_overwrite_output) then "-f" else ""} \
@@ -34,10 +34,13 @@ task Wtcyc {
       ~{if defined(alignment_penalty_gap_extension) then ("-E " +  '"' + alignment_penalty_gap_extension + '"') else ""} \
       ~{if defined(alignment_penalty_read) then ("-T " +  '"' + alignment_penalty_read + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_threads: "Number of threads, [1]"
     total_parallel_jobs: "Total parallel jobs, [1]"
-    index_run_it: "Index of current job (0-based), [0]\\nSuppose to run it parallelly in 60 nodes. For node1, -P 60 -p 0; node2, -P 60 -p 1, ..."
+    index_current_p: "Index of current job (0-based), [0]\\nSuppose to run it parallelly in 60 nodes. For node1, -P 60 -p 0; node2, -P 60 -p 1, ..."
     output_reads_regions: "Output of reads' regions after trimming, [-]"
     output_of_alignments: "Output of alignments, [NULL]"
     force_overwrite_output: "Force overwrite output file"

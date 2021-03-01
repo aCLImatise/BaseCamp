@@ -14,6 +14,9 @@ task DeepacGetmodels {
       ~{if (debug_no_eager) then "--debug-no-eager" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug_tf: ""
     debug_no_eager: ""

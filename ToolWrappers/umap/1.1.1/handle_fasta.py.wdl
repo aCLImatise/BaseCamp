@@ -20,6 +20,9 @@ task HandleFastapy {
       ~{if (complement) then "--Complement" else ""} \
       ~{if defined(conversion) then ("-Conversion " +  '"' + conversion + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     complement: "Create a double genome with both + and - strand"
     conversion: ""

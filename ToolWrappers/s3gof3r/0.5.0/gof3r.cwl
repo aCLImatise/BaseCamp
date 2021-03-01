@@ -3,12 +3,12 @@ id: gof3r.cwl
 inputs:
 - id: in_man_page
   doc: Create gof3r.man man page in current directory
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --manpage
 - id: in_write_ini
   doc: Write .gof3r.ini in current user's home directory
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --writeini
 - id: in_cp
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gof3r

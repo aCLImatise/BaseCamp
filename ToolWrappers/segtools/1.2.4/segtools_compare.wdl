@@ -14,6 +14,9 @@ task Segtoolscompare {
       ~{if (quick) then "--quick" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     edit_distance: "Measure the base-wise edit distance between the two\\nspecified segmentations"
     quick: "Compute values only for one chromosome."

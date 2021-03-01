@@ -10,6 +10,9 @@ task ScreePlotPyseer {
       ~{if defined(max_dimensions) then ("--max-dimensions " +  '"' + max_dimensions + '"') else ""} \
       ~{if defined(plot_filename) then ("--output " +  '"' + plot_filename + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_dimensions: "Maximum dimensions to plot [Default: 30]"
     plot_filename: "Plot filename [Default: scree_plot.png]"

@@ -8,6 +8,9 @@ task NovoutilIndex {
     novoutil index \
       ~{genome_dot_nix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_dot_nix: ""
   }

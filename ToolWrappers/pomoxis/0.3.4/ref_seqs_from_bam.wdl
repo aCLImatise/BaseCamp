@@ -8,6 +8,9 @@ task RefSeqsFromBam {
     ref_seqs_from_bam \
       ~{bam}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "input bam file, MD tag must be set (mini_align -m)."
   }

@@ -10,6 +10,9 @@ task Recosimulate {
       ~{reco_sim} \
       ~{parameter_file_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reco_sim: ""
     parameter_file_name: ""

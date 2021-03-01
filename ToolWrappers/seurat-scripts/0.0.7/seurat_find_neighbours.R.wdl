@@ -44,6 +44,9 @@ task SeuratfindneighboursR {
       ~{if defined(assay) then ("--assay " +  '"' + assay + '"') else ""} \
       ~{if (do_plot) then "--do-plot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name in which a serialized R matrix object may be found."
     input_format: "Either loom, seurat, anndata or singlecellexperiment for the input format to read."

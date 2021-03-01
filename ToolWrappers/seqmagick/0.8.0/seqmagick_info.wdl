@@ -16,6 +16,9 @@ task SeqmagickInfo {
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_format: "Input format. Overrides extension for all input files"
     out_file: "Output destination. Default: STDOUT"

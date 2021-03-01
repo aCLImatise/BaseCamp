@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Boolean, String
+
+Hal4Dextract_V0_1_0 = CommandToolBuilder(tool="hal4dExtract", base_command=["hal4dExtract"], inputs=[ToolInput(tag="in_append", input_type=File(optional=True), prefix="--append", doc=InputDocumentation(doc=":               append to instead of overwrite output file. [default = 0]")), ToolInput(tag="in_bed_version", input_type=File(optional=True), prefix="--bedVersion", doc=InputDocumentation(doc=":   version of input bed file.  will be automatically detected if\nnot specified [default = -1]")), ToolInput(tag="in_cache_bytes", input_type=Int(optional=True), prefix="--cacheBytes", doc=InputDocumentation(doc=":   maximum size in bytes of regular hdf5 cache [default =\n15728640]")), ToolInput(tag="in_cache_mdc", input_type=Int(optional=True), prefix="--cacheMDC", doc=InputDocumentation(doc=":     number of metadata slots in hdf5 cache [default = 113]")), ToolInput(tag="in_cacher_dc", input_type=Int(optional=True), prefix="--cacheRDC", doc=InputDocumentation(doc=":     number of regular slots in hdf5 cache.  should be a prime\nnumber ~= 10 * DefaultCacheRDCBytes / chunk [default =\n599999]")), ToolInput(tag="in_cache_w_zero", input_type=Int(optional=True), prefix="--cacheW0", doc=InputDocumentation(doc=":      w0 parameter fro hdf5 cache [default = 0.75]")), ToolInput(tag="in_conserved", input_type=Boolean(optional=True), prefix="--conserved", doc=InputDocumentation(doc=":            ensure 4d sites are 4d sites in all leaf genomes [default =\n0]")), ToolInput(tag="in_in_memory", input_type=Boolean(optional=True), prefix="--inMemory", doc=InputDocumentation(doc=":             load all data in memory (and disable hdf5 cache) [default =\n0]\n")), ToolInput(tag="in_hal_path", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_ref_genome", input_type=String(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_in_bed", input_type=String(), position=2, doc=InputDocumentation(doc="")), ToolInput(tag="in_out_bed", input_type=String(), position=3, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_append", output_type=File(optional=True), selector=InputSelector(input_to_select="in_append", type_hint=File()), doc=OutputDocumentation(doc=":               append to instead of overwrite output file. [default = 0]"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Hal4Dextract_V0_1_0().translate("wdl", allow_empty_container=True)
+

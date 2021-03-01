@@ -3,160 +3,163 @@ command:
 - IntaRNA2
 positional:
 - !Positional
-  description: "--outMode arg (=N)            output mode :\n'N' normal output (ASCII\
-    \ char + energy),\n'D' detailed output (ASCII char +"
+  optional: false
   position: 0
   name: output
-  optional: false
+  description: "--outMode arg (=N)            output mode :\n'N' normal output (ASCII\
+    \ char + energy),\n'D' detailed output (ASCII char +"
 - !Positional
-  description: -h [ --help ]                 show the help page for basic parameters
+  optional: false
   position: 0
   name: arguments
-  optional: false
+  description: -h [ --help ]                 show the help page for basic parameters
 - !Positional
-  description: Run --fullhelp for the extended list of parameters
+  optional: false
   position: 1
   name: parameters
-  optional: false
+  description: Run --fullhelp for the extended list of parameters
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -q
   description: "[ --query ] arg            either an RNA sequence or the stream/file\
     \ name\nfrom where to read the query sequences (should\nbe the shorter sequences\
     \ to increase\nefficiency); use 'STDIN' to read from standard\ninput stream; sequences\
     \ have to use IUPAC\nnucleotide encoding; output alias is [seq2]"
-  synonyms:
-  - -q
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
   description: "[ --target ] arg           either an RNA sequence or the stream/file\
     \ name\nfrom where to read the target sequences (should\nbe the longer sequences\
     \ to increase\nefficiency); use 'STDIN' to read from standard\ninput stream; sequences\
     \ have to use IUPAC\nnucleotide encoding; output alias is [seq1]"
-  synonyms:
-  - -t
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=2)         minimal number of base pairs inside a helix\n(arg in\
-    \ range [2,4])"
+  optional: true
   synonyms:
   - --helixMinBP
+  description: "(=2)         minimal number of base pairs inside a helix\n(arg in\
+    \ range [2,4])"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=10)        maximal number of base pairs inside a helix\n(arg in\
-    \ range [2,20])"
+  optional: true
   synonyms:
   - --helixMaxBP
+  description: "(=10)        maximal number of base pairs inside a helix\n(arg in\
+    \ range [2,20])"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=0)         maximal size for each internal loop size in a\nhelix\
-    \ (arg in range [0,2])."
+  optional: true
   synonyms:
   - --helixMaxIL
+  description: "(=0)         maximal size for each internal loop size in a\nhelix\
+    \ (arg in range [0,2])."
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=0)         minimal unpaired probability (per sequence) of\nconsidered\
-    \ helices (arg in range [0,1])."
+  optional: true
   synonyms:
   - --helixMinPu
+  description: "(=0)         minimal unpaired probability (per sequence) of\nconsidered\
+    \ helices (arg in range [0,1])."
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=0)          maximal energy (excluding) a helix may have\n(arg in\
-    \ range [-999,999])."
+  optional: true
   synonyms:
   - --helixMaxE
+  description: "(=0)          maximal energy (excluding) a helix may have\n(arg in\
+    \ range [-999,999])."
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --helixFullE
   description: "[=arg(=1)] (=0)  if given (or true), the overall energy of a\nhelix\
     \ (including E_init, ED, dangling ends, ..)\nwill be used for helixMaxE checks;\
     \ otherwise\nonly loop-terms are considered."
-  synonyms:
-  - --helixFullE
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[=arg(=1)] (=0)      if given (or true), no seed is enforced within\n\
-    the predicted interactions"
+  optional: true
   synonyms:
   - --noSeed
+  description: "[=arg(=1)] (=0)      if given (or true), no seed is enforced within\n\
+    the predicted interactions"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --seedTQ
   description: "comma separated list of explicit seed base pair\nencoding(s) in the\
     \ format\nstartTbpsT&startQbpsQ, e.g. '3|||.|&7||.||',\nwhere 'startT/Q' are the\
     \ indices of the 5' seed\nends in target/query sequence and 'bpsT/Q' the\nrespective\
     \ dot-bar base pair encodings. This\ndisables all other seed constraints and seed\n\
     identification."
-  synonyms:
-  - --seedTQ
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=7)             number of inter-molecular base pairs within the\n\
-    seed region (arg in range [2,20])"
+  optional: true
   synonyms:
   - --seedBP
+  description: "(=7)             number of inter-molecular base pairs within the\n\
+    seed region (arg in range [2,20])"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "[ --mode ] arg (=H)        prediction mode :\n'H' = heuristic (fast\
-    \ and low memory),\n'M' = exact (slow),\n'S' = seed-only"
+  optional: true
   synonyms:
   - -m
+  description: "[ --mode ] arg (=H)        prediction mode :\n'H' = heuristic (fast\
+    \ and low memory),\n'M' = exact (slow),\n'S' = seed-only"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --model
   description: "(=S)              interaction model :\n'S' = single-site, minimum-free-energy\n\
     interaction (interior loops only),\n'X' = single-site, minimum-free-energy\ninteraction\
     \ via seed-extension (interior loops\nonly),\n'B' = single-site, helix-block-based,\n\
     minimum-free-energy interaction (blocks of\nstable helices and interior loops\
     \ only),\n'P' = single-site interaction with minimal\nfree ensemble energy per\
     \ site (interior loops\nonly)"
-  synonyms:
-  - --model
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=C)                accessibility computation :\n'N' no accessibility\
-    \ contributions\n'C' computation of accessibilities (see --accW\nand --accL)"
+  optional: true
   synonyms:
   - --acc
+  description: "(=C)                accessibility computation :\n'N' no accessibility\
+    \ contributions\n'C' computation of accessibilities (see --accW\nand --accL)"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --intLenMax
   description: "(=0)          interaction site : maximal window size to be\nconsidered\
     \ for interaction (arg in range\n[0,99999]; 0 refers to the full sequence\nlength).\
     \ If --accW is provided, the smaller\nwindow size of both is used."
-  synonyms:
-  - --intLenMax
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --intLoopMax
   description: "(=16)        interaction site : maximal number of unpaired\nbases\
     \ between neighbored interacting bases to\nbe considered in interactions (arg\
     \ in range\n[0,30]; 0 enforces stackings only)"
-  synonyms:
-  - --intLoopMax
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --out
   description: "(=STDOUT)           output (multi-arg) : provide a file name for\n\
     output (will be overwritten) or 'STDOUT/STDERR'\nto write to the according stream\
     \ (according to\n--outMode).\nUse one of the following PREFIXES\n(colon-separated)\
@@ -180,76 +183,73 @@ named:
     \ output stream/file name,\neg. '--out=\"spotProb:3&76,59&2:STDERR\"'. NOTE:\n\
     value has to be quoted due to '&' symbol!\nFor each, provide a file name or STDOUT/STDERR\n\
     to write to the respective output stream."
-  synonyms:
-  - --out
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=;)             column separator to be used in tabular CSV
+  optional: true
   synonyms:
   - --outSep
+  description: (=;)             column separator to be used in tabular CSV
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "[ --outNumber ] arg (=1)   number of (sub)optimal interactions to\
-    \ report\n(arg in range [0,1000])"
+  optional: true
   synonyms:
   - -n
+  description: "[ --outNumber ] arg (=1)   number of (sub)optimal interactions to\
+    \ report\n(arg in range [0,1000])"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outOverlap
   description: "(=Q)         suboptimal output : interactions can overlap\n'N' in\
     \ none of the sequences,\n'T' in the target only,\n'Q' in the query only,\n'B'\
     \ in both sequences"
-  synonyms:
-  - --outOverlap
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --threads
   description: "(=1)            maximal number of threads to be used for\nparallel\
     \ computation of query-target\ncombinations. A value of 0 requests all\navailable\
     \ CPUs. Note, the number of threads\nmultiplies the required memory used for\n\
     computation! (arg in range [0,8])"
-  synonyms:
-  - --threads
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "IntaRNA personality to be used, which defines\ndefault values, available\
-    \ program arguments and\ntool behavior"
+  optional: true
   synonyms:
   - --personality
+  description: "IntaRNA personality to be used, which defines\ndefault values, available\
+    \ program arguments and\ntool behavior"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: file from where to read additional command line
+  optional: true
   synonyms:
   - --parameterFile
+  description: file from where to read additional command line
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: show the extended help page for all available
+  optional: true
   synonyms:
   - --fullhelp
+  description: show the extended help page for all available
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag
-  description: print version
+  optional: true
   synonyms:
   - --version
+  description: print version
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "\nIntaRNA predicts RNA-RNA interactions.\n\nThe following basic program\
   \ arguments are supported:\n\nQuery:\n  -q [ --query ] arg            either an\
   \ RNA sequence or the stream/file name \n                                from where\
@@ -385,3 +385,4 @@ help_text: "\nIntaRNA predicts RNA-RNA interactions.\n\nThe following basic prog
   \n"
 generated_using:
 - --help
+docker_image:

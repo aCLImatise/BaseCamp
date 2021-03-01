@@ -18,6 +18,9 @@ task AgatSpStatisticspl {
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""} \
       ~{if defined(file_where_written) then ("--output " +  '"' + file_where_written + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GTF/GFF file."
     gs: "This option inform about the genome size in oder to compute more\\nstatistics. You can give the size in Nucleotide or directly the\\nfasta file."

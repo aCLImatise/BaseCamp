@@ -34,6 +34,9 @@ task IntersectFilespy {
       ~{if defined(colname) then ("--colname " +  '"' + colname + '"') else ""} \
       ~{if defined(a_regex) then ("--aregex " +  '"' + a_regex + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads_to_run: "Threads to run"
     file_lookup_from: "This is the file to lookup values from."

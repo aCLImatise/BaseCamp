@@ -3,63 +3,63 @@ command:
 - filterGenemark.pl
 positional:
 - !Positional
-  description: file in gtf format
+  optional: false
   position: 0
   name: genemark.gtf
-  optional: false
+  description: file in gtf format
 - !Positional
-  description: corresponding introns file in gff format
+  optional: false
   position: 1
   name: introns.gff
-  optional: false
+  description: corresponding introns file in gff format
 named:
 - !Flag
-  description: Corresponding intron file in gff format
+  optional: true
   synonyms:
   - --introns
+  description: Corresponding intron file in gff format
   args: !SimpleFlagArg
     name: introns.gff
-  optional: true
 - !Flag
-  description: File in gtf format
+  optional: true
   synonyms:
   - --genemark
+  description: File in gtf format
   args: !SimpleFlagArg
     name: genemark.gtf
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --output
   description: "Specifies output file name. Default is 'genemark-input_file_name.c.gtf'\n\
     and 'genemark-input_file_name.f.good.gtf'\nand 'genemark-input_file_name.f.bad.gtf'\
     \ for filtered genes included and not included\nin intron file respectively"
-  synonyms:
-  - --output
   args: !SimpleFlagArg
     name: newfile.gtf
-  optional: true
 - !Flag
-  description: Suppress file output
+  optional: true
   synonyms:
   - --suppress
+  description: Suppress file output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filterOutShort
   description: "Filters intron containing genes as \"bad\" that have an RNA-Seq supported\
     \ intron\nwithin 2*maximal CDS length of the gene with at least 20% of average\
     \ intron\nmultiplicity for that gene (screens also downstream of stop, which either\
     \ indicates\nwrong reading frame, or a downstream UTR)"
-  synonyms:
-  - --filterOutShort
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message
+  optional: true
   synonyms:
   - --help
+  description: Print this help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nfilterGenemark.pl     filter GeneMark-ET files and search for \"good\"\
@@ -84,3 +84,4 @@ help_text: "\nfilterGenemark.pl     filter GeneMark-ET files and search for \"go
   \ --genemark=genemark.gtf --introns=introns.gff\n\n"
 generated_using:
 - --help
+docker_image:

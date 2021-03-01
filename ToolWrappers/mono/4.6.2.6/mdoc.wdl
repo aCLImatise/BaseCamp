@@ -4,6 +4,9 @@ task Mdoc {
   command <<<
     mdoc
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

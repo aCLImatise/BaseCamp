@@ -26,6 +26,9 @@ task WhatsGNUDatabaseCustomizerpy {
       ~{if (individual_files) then "--individual_files" else ""} \
       ~{if (concatenated_file) then "--concatenated_file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genbank_refseq: "faa files from GenBank or RefSeq"
     pro_kk_a: "faa files from Prokka"

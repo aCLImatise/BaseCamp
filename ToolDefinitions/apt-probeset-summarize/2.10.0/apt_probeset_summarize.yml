@@ -3,88 +3,91 @@ command:
 - apt-probeset-summarize
 positional:
 - !Positional
-  description: "Performs an RMA style background adjustment \nas described in Irizarry\
-    \ et al 2003."
+  optional: false
   position: 0
   name: rma-bg
-  optional: false
+  description: "Performs an RMA style background adjustment \nas described in Irizarry\
+    \ et al 2003."
 - !Positional
-  description: "Class for doing quantile normalization. Can \ndo sketch and full quantile\
-    \ (just set sketch\nto chip size or zero) and supports\nbioconductor compatibility."
+  optional: false
   position: 1
   name: quant-norm
-  optional: false
+  description: "Class for doing quantile normalization. Can \ndo sketch and full quantile\
+    \ (just set sketch\nto chip size or zero) and supports\nbioconductor compatibility."
 - !Positional
-  description: 'Class for artifact reduction. '
+  optional: false
   position: 2
   name: artifact-reduction
-  optional: false
+  description: 'Class for artifact reduction. '
 - !Positional
-  description: "Class for doing median normalization. Adjust\nintensities such that\
-    \ all chips have the same\nmedian (or average)."
+  optional: false
   position: 3
   name: med-norm
-  optional: false
+  description: "Class for doing median normalization. Adjust\nintensities such that\
+    \ all chips have the same\nmedian (or average)."
 - !Positional
-  description: "Class for doing adapter type normalization.\nAdjust intensities by\
-    \ adapter type."
+  optional: false
   position: 4
   name: adapter-type-norm
-  optional: false
+  description: "Class for doing adapter type normalization.\nAdjust intensities by\
+    \ adapter type."
 - !Positional
-  description: "Subtract bacground based on median intensity\nof probes with similar\
-    \ GC content."
+  optional: false
   position: 5
   name: gc-bg
-  optional: false
+  description: "Subtract bacground based on median intensity\nof probes with similar\
+    \ GC content."
 - !Positional
-  description: Correct feature intensity for variations in
+  optional: false
   position: 6
   name: gc-correction
-  optional: false
+  description: Correct feature intensity for variations in
 - !Positional
-  description: 'scale-intensities    Scale cel intensities. '
+  optional: false
   position: 7
   name: gc_count.
-  optional: false
+  description: 'scale-intensities    Scale cel intensities. '
 - !Positional
-  description: 'Class for dumping intensity values to a file. '
+  optional: false
   position: 8
   name: intensity-reporter
-  optional: false
+  description: 'Class for dumping intensity values to a file. '
 - !Positional
-  description: Placeholder chipstream that does no
+  optional: false
   position: 9
   name: no-trans
-  optional: false
+  description: Placeholder chipstream that does no
 - !Positional
-  description: 'Pm Intensity Adjustments:'
+  optional: false
   position: 10
   name: transformation
-  optional: false
+  description: 'Pm Intensity Adjustments:'
 - !Positional
-  description: 'No adjustment. Just uses unmodified PM intensity values. '
+  optional: false
   position: 11
   name: pm-only
-  optional: false
+  description: 'No adjustment. Just uses unmodified PM intensity values. '
 - !Positional
-  description: "Use mismatch probe as adjustment for perfect match. Has\nstrength\
-    \ of being unbiased, but often the mismatch probe\nbinds the match target."
+  optional: false
   position: 12
   name: pm-mm
-  optional: false
+  description: "Use mismatch probe as adjustment for perfect match. Has\nstrength\
+    \ of being unbiased, but often the mismatch probe\nbinds the match target."
 - !Positional
-  description: "Do an adjustment based on the median intensity of probes\nwith similar\
-    \ GC content."
+  optional: false
   position: 13
   name: pm-gcbg
-  optional: false
+  description: "Do an adjustment based on the median intensity of probes\nwith similar\
+    \ GC content."
 - !Positional
-  description: 'Add itensity of PM probe for other allele to PM probes. '
+  optional: false
   position: 14
   name: pm-sum
-  optional: false
+  description: 'Add itensity of PM probe for other allele to PM probes. '
 - !Positional
+  optional: false
+  position: 0
+  name: plier
   description: "The PLIER (Probe Logarithmic Error Intensity \nEstimate) method produces\
     \ an improved signal by\naccounting for experimentally observed patterns in\n\
     feature behavior and handling error at the\nappropriately at low and high signal\
@@ -93,10 +96,10 @@ positional:
     \ intended to improve\nthe stability of PLIER results when using precomputed\n\
     feature reponse values. To get the older PLIER\nbehavior set SafetyZero to 0.0,\
     \ NumericalTolerance to\n0.0, and FixPrecomputed to false."
-  position: 0
-  name: plier
-  optional: false
 - !Positional
+  optional: false
+  position: 1
+  name: sea
   description: "The SEA (Simplified Expression Analysis) method\nprovides a simple\
     \ signal estimate, using the\ninitialization algorithm from the PLIER (Probe\n\
     Logarithmic Error Intensity Estimate) method and\nomitting the PLIER parameter\
@@ -106,10 +109,10 @@ positional:
     \ the stability of PLIER results when using\nprecomputed feature reponse values.\
     \ To get the older\nPLIER behavior set SafetyZero to 0.0,\nNumericalTolerance\
     \ to 0.0, and FixPrecomputed to\nfalse."
-  position: 1
-  name: sea
-  optional: false
 - !Positional
+  optional: false
+  position: 2
+  name: iter-plier
   description: "Do probe set quantification estimate by iteratively\ncalling PLIER\
     \ with the probes that best correlate\nwith signal estimate. The version of PLIER\
     \ used by\nIterPLIER differs from the previous version by the\naddition of a SafteyZero,\
@@ -117,730 +120,727 @@ positional:
     the stability of PLIER results when using precomputed\nfeature reponse values.\
     \ To get the older PLIER\nbehavior set SafetyZero to 0.0, NumericalTolerance to\n\
     0.0, and FixPrecomputed to false."
-  position: 2
-  name: iter-plier
-  optional: false
 - !Positional
+  optional: false
+  position: 3
+  name: med-polish
   description: "Performs a median polish to estimate target and probe\neffects. Resulting\
     \ summaries are in log2 space by\ndefault. Used in summary step of RMA as described\
     \ in\nIrizarry et al 2003."
-  position: 3
-  name: med-polish
-  optional: false
 - !Positional
+  optional: false
+  position: 4
+  name: dabg
   description: "Calculates the p-value that the intensities in a\nprobeset could have\
     \ been observed by chance in a\nbackground distribution. Used as a substitute\
     \ for\nstandard absent/present calls when mismatch probes\nare not available."
-  position: 4
-  name: dabg
-  optional: false
 - !Positional
+  optional: false
+  position: 5
+  name: avgdiff
   description: "Calculates the average measurement for a probeset\nusing the MAS 4\
     \ average difference algorithm, namely\nthe average difference between the pm\
     \ and mm probe\nsignal."
-  position: 5
-  name: avgdiff
-  optional: false
 - !Positional
-  description: Use the median of probes for a particular chip as the
+  optional: false
   position: 6
   name: median
-  optional: false
+  description: Use the median of probes for a particular chip as the
 - !Positional
-  description: 'Analysis Streams:'
+  optional: false
   position: 7
   name: summary.
-  optional: false
+  description: 'Analysis Streams:'
 - !Positional
-  description: 'Does expression summarization on probesets. '
+  optional: false
   position: 8
   name: expr
-  optional: false
+  description: 'Does expression summarization on probesets. '
 - !Positional
-  description: "Determines PCA for probes and picks probes that are\nnear the principal\
-    \ component as the probes to use\nfor downstream analysis."
+  optional: false
   position: 9
   name: pca-select
-  optional: false
+  description: "Determines PCA for probes and picks probes that are\nnear the principal\
+    \ component as the probes to use\nfor downstream analysis."
 - !Positional
-  description: "Picks probes that are similar to each other based \non spectral cluster\
-    \ and normalized cut."
+  optional: false
   position: 10
   name: spect-select
-  optional: false
+  description: "Picks probes that are similar to each other based \non spectral cluster\
+    \ and normalized cut."
 named:
 - !Flag
-  description: "verbose to be with status messages 0 -\nquiet, 1 - usual messages,\
-    \ 2 - more\nmessages. [default '1']"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: "verbose to be with status messages 0 -\nquiet, 1 - usual messages,\
+    \ 2 - more\nmessages. [default '1']"
   args: !SimpleFlagArg
     name: How
-  optional: true
 - !Flag
-  description: "off the default messages to the\nconsole but not logging or sockets.\n\
-    [default 'false']"
+  optional: true
   synonyms:
   - --console-off
+  description: "off the default messages to the\nconsole but not logging or sockets.\n\
+    [default 'false']"
   args: !SimpleFlagArg
     name: Turn
-  optional: true
 - !Flag
-  description: "and port to print messages over in\nlocalhost:port format [default\
-    \ '']"
+  optional: true
   synonyms:
   - --use-socket
+  description: "and port to print messages over in\nlocalhost:port format [default\
+    \ '']"
   args: !SimpleFlagArg
     name: Host
-  optional: true
 - !Flag
-  description: "various checks including chip\ntypes. Consider using --chip-type option\n\
-    rather than --force. [default 'false']"
+  optional: true
   synonyms:
   - -f
   - --force
+  description: "various checks including chip\ntypes. Consider using --chip-type option\n\
+    rather than --force. [default 'false']"
   args: !SimpleFlagArg
     name: Disable
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --throw-exception
   description: "an exception rather than calling\nexit() on error. Useful for debugging.\
     \ This\noption is intended for command line use\nonly. If you are wrapping an\
     \ Engine and\nwant exceptions thrown, then you should\ncall Err::setThrowStatus(true)\
     \ to ensure\nthat all Err::errAbort() calls result in an\nexception. [default\
     \ 'false']"
-  synonyms:
-  - --throw-exception
   args: !SimpleFlagArg
     name: Throw
-  optional: true
 - !Flag
-  description: "path for analysis library files.\nWill override AFFX_ANALYSIS_FILES_PATH\n\
-    environment variable. [default '']"
+  optional: true
   synonyms:
   - --analysis-files-path
+  description: "path for analysis library files.\nWill override AFFX_ANALYSIS_FILES_PATH\n\
+    environment variable. [default '']"
   args: !SimpleFlagArg
     name: Search
-  optional: true
 - !Flag
-  description: "parameters in XML format (Will\noverride command line settings). [default\n\
-    '']"
+  optional: true
   synonyms:
   - --xml-file
+  description: "parameters in XML format (Will\noverride command line settings). [default\n\
+    '']"
   args: !SimpleFlagArg
     name: Input
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --temp-dir
   description: "for temporary files when working\noff disk. Using network mounted\
     \ drives is\nnot advised. When not set, the output\nfolder will be used. The defaut\
     \ is\ntypically the output directory or the\ncurrent working directory. [default\
     \ '']"
-  synonyms:
-  - --temp-dir
   args: !SimpleFlagArg
     name: Directory
-  optional: true
 - !Flag
-  description: "for output files. Defaults to\ncurrent working directory. [default\
-    \ '.']"
+  optional: true
   synonyms:
   - -o
   - --out-dir
+  description: "for output files. Defaults to\ncurrent working directory. [default\
+    \ '.']"
   args: !SimpleFlagArg
     name: Directory
-  optional: true
 - !Flag
-  description: "name of the log file. Generally\ndefaults to the program name in the\
-    \ out-dir\nfolder. [default '']"
+  optional: true
   synonyms:
   - --log-file
+  description: "name of the log file. Generally\ndefaults to the program name in the\
+    \ out-dir\nfolder. [default '']"
   args: !SimpleFlagArg
     name: The
-  optional: true
 - !Flag
-  description: command line executed. [default '']
+  optional: true
   synonyms:
   - --command-line
+  description: command line executed. [default '']
   args: !SimpleFlagArg
     name: The
-  optional: true
 - !Flag
-  description: GUID for the process. [default '']
+  optional: true
   synonyms:
   - --exec-guid
+  description: GUID for the process. [default '']
   args: !SimpleFlagArg
     name: The
-  optional: true
 - !Flag
-  description: name of the program [default '']
+  optional: true
   synonyms:
   - --program-name
+  description: name of the program [default '']
   args: !SimpleFlagArg
     name: The
-  optional: true
 - !Flag
-  description: "company providing the program [default\n'']"
+  optional: true
   synonyms:
   - --program-company
+  description: "company providing the program [default\n'']"
   args: !SimpleFlagArg
     name: The
-  optional: true
 - !Flag
-  description: version of the program [default '']
+  optional: true
   synonyms:
   - --program-version
+  description: version of the program [default '']
   args: !SimpleFlagArg
     name: The
-  optional: true
 - !Flag
-  description: CVS version of the program [default '']
+  optional: true
   synonyms:
   - --program-cvs-id
+  description: CVS version of the program [default '']
   args: !SimpleFlagArg
     name: The
-  optional: true
 - !Flag
-  description: "version to report in the output files.\n[default '']"
+  optional: true
   synonyms:
   - --version-to-report
+  description: "version to report in the output files.\n[default '']"
   args: !SimpleFlagArg
     name: The
-  optional: true
 - !Flag
-  description: "much physical memory was available when\nthe engine run started. [default\
-    \ '0']"
+  optional: true
   synonyms:
   - --free-mem-at-start
+  description: "much physical memory was available when\nthe engine run started. [default\
+    \ '0']"
   args: !SimpleFlagArg
     name: How
-  optional: true
 - !Flag
-  description: "data in key=value pair that will be\noutput in headers. [default '']"
+  optional: true
   synonyms:
   - --meta-data-info
+  description: "data in key=value pair that will be\noutput in headers. [default '']"
   args: !SimpleFlagArg
     name: Meta
-  optional: true
 - !Flag
-  description: "file specifying cel files to process,\none per line with the first\
-    \ line being\n'cel_files'. [default '']"
+  optional: true
   synonyms:
   - --cel-files
+  description: "file specifying cel files to process,\none per line with the first\
+    \ line being\n'cel_files'. [default '']"
   args: !SimpleFlagArg
     name: Text
-  optional: true
 - !Flag
-  description: sets --names.
+  optional: true
   synonyms:
   - --clf-file.
+  description: sets --names.
   args: !SimpleFlagArg
     name: Automatically
-  optional: true
 - !Flag
-  description: "defining probe sets in spf (simple\nprobe format) which is like a\
-    \ text cdf\nfile. [default '']"
+  optional: true
   synonyms:
   - --spf-file
+  description: "defining probe sets in spf (simple\nprobe format) which is like a\
+    \ text cdf\nfile. [default '']"
   args: !SimpleFlagArg
     name: File
-  optional: true
 - !Flag
-  description: defining probe sets. [default '']
+  optional: true
   synonyms:
   - -p
   - --pgf-file
+  description: defining probe sets. [default '']
   args: !SimpleFlagArg
     name: File
-  optional: true
 - !Flag
-  description: "defining x,y <-> probe id conversion.\nRequired when using PGF file.\
-    \ [default '']"
+  optional: true
   synonyms:
   - -c
   - --clf-file
+  description: "defining x,y <-> probe id conversion.\nRequired when using PGF file.\
+    \ [default '']"
   args: !SimpleFlagArg
     name: File
-  optional: true
 - !Flag
-  description: "defining probes to be used for GC\nbackground. [default '']"
+  optional: true
   synonyms:
   - -b
   - --bgp-file
+  description: "defining probes to be used for GC\nbackground. [default '']"
   args: !SimpleFlagArg
     name: File
-  optional: true
 - !Flag
-  description: "specifying probe sets to summarize.\n[default '']"
+  optional: true
   synonyms:
   - -s
   - --probeset-ids
+  description: "specifying probe sets to summarize.\n[default '']"
   args: !SimpleFlagArg
     name: File
-  optional: true
 - !Flag
-  description: "containing meta probeset definitions.\nFile must contain a probeset_id\
-    \ column and\na probeset_list column. [default '']"
+  optional: true
   synonyms:
   - -m
   - --meta-probesets
+  description: "containing meta probeset definitions.\nFile must contain a probeset_id\
+    \ column and\na probeset_list column. [default '']"
   args: !SimpleFlagArg
     name: File
-  optional: true
 - !Flag
-  description: "containing probe_id (1-based) of\nprobes and a 'class' designation.\
-    \ Used to\ncompute mean probe intensity by class for\nreport file. [default '']"
+  optional: true
   synonyms:
   - --probe-class-file
+  description: "containing probe_id (1-based) of\nprobes and a 'class' designation.\
+    \ Used to\ncompute mean probe intensity by class for\nreport file. [default '']"
   args: !SimpleFlagArg
     name: File
-  optional: true
 - !Flag
-  description: "with probeset_id(name) and group_name\ncolumns specifying subsets\
-    \ of probesets to\ncompute qc stats for. [default '']"
+  optional: true
   synonyms:
   - --qc-probesets
+  description: "with probeset_id(name) and group_name\ncolumns specifying subsets\
+    \ of probesets to\ncompute qc stats for. [default '']"
   args: !SimpleFlagArg
     name: File
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --chip-type
   description: "types to check library and CEL files\nagainst. Can be specified multiple\
     \ times.\nThe first one is propigated as the chip\ntype in the output files. Warning,\
     \ use of\nthis option will override the usual check\nbetween chip types found\
     \ in the library\nfiles and cel files. You should use this\noption instead of\
     \ --force when possible.\n[default '']"
-  synonyms:
-  - --chip-type
   args: !SimpleFlagArg
     name: Chip
-  optional: true
 - !Flag
-  description: "the probeset_names instead of\nprobeset_id column in the PGF file\
-    \ for\noutput. [default 'false']"
+  optional: true
   synonyms:
   - --use-pgf-names
+  description: "the probeset_names instead of\nprobeset_id column in the PGF file\
+    \ for\noutput. [default 'false']"
   args: !SimpleFlagArg
     name: Use
-  optional: true
 - !Flag
-  description: "results in directory called 'cc-chp'\nunder out-dir. This makes one\
-    \ AGCC\nExpression CHP file per cel file analyzed.\n[default 'false']"
+  optional: true
   synonyms:
   - --cc-chp-output
+  description: "results in directory called 'cc-chp'\nunder out-dir. This makes one\
+    \ AGCC\nExpression CHP file per cel file analyzed.\n[default 'false']"
   args: !SimpleFlagArg
     name: Output
-  optional: true
 - !Flag
-  description: "resulting calls in directory called\n'chp' under out-dir. This makes\
-    \ one GCOS\nXDA CHP file per cel file analyzed.\n[default 'false']"
+  optional: true
   synonyms:
   - --xda-chp-output
+  description: "resulting calls in directory called\n'chp' under out-dir. This makes\
+    \ one GCOS\nXDA CHP file per cel file analyzed.\n[default 'false']"
   args: !SimpleFlagArg
     name: Output
-  optional: true
 - !Flag
-  description: "resulting calls in directory called\n'cc-md-chp' under out-dir. This\
-    \ makes one\nAGCC Multi Data CHP file per cel file\nanalyzed. [default 'false']"
+  optional: true
   synonyms:
   - --cc-md-chp-output
+  description: "resulting calls in directory called\n'cc-md-chp' under out-dir. This\
+    \ makes one\nAGCC Multi Data CHP file per cel file\nanalyzed. [default 'false']"
   args: !SimpleFlagArg
     name: Output
-  optional: true
 - !Flag
-  description: "the default location for chp\noutput. [default '']"
+  optional: true
   synonyms:
   - --cc-chp-out-dir
+  description: "the default location for chp\noutput. [default '']"
   args: !SimpleFlagArg
     name: Over-ride
-  optional: true
 - !Flag
-  description: "the default location for chp\noutput. [default '']"
+  optional: true
   synonyms:
   - --xda-chp-out-dir
+  description: "the default location for chp\noutput. [default '']"
   args: !SimpleFlagArg
     name: Over-ride
-  optional: true
 - !Flag
-  description: "the default location for chp\noutput. [default '']"
+  optional: true
   synonyms:
   - --cc-md-chp-out-dir
+  description: "the default location for chp\noutput. [default '']"
   args: !SimpleFlagArg
     name: Over-ride
-  optional: true
 - !Flag
-  description: "subsamples of the data intensities,\nsummaries and residuals for error\
-    \ checking\ndownstream. [default 'false']"
+  optional: true
   synonyms:
   - --subsample-report
+  description: "subsamples of the data intensities,\nsummaries and residuals for error\
+    \ checking\ndownstream. [default 'false']"
   args: !SimpleFlagArg
     name: Output
-  optional: true
 - !Flag
-  description: "the default report file name.\n[default '']"
+  optional: true
   synonyms:
   - --report-file
+  description: "the default report file name.\n[default '']"
   args: !SimpleFlagArg
     name: Over-ride
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --analysis
   description: "representing analysis pathway\ndesired. For example:\n'quant-norm,pm-gcbg,plier'.\
     \ Prepackaged\nanalysis such as 'plier-gcbg-sketch',\n'plier-gcbg', 'plier-mm-sketch',\n\
     'plier-mm', 'rma-sketch', and 'rma' can be\nspecified. Multiple analysis allowed\
     \ at\nsame time. When using quantile\nnormalization, you may need to use the\n\
     sketch option to avoid running out of\nmemory. [default '']"
-  synonyms:
-  - -a
-  - --analysis
   args: !SimpleFlagArg
     name: String
-  optional: true
 - !Flag
-  description: "expression summaries in text table\nformat. [default 'true']"
+  optional: true
   synonyms:
   - --summaries
+  description: "expression summaries in text table\nformat. [default 'true']"
   args: !SimpleFlagArg
     name: Output
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --feat-effects
   description: "feature effects when available. By\nconvention med-polish feature\
     \ effects have\ntotal probeset median added to them, see\nRMA module for details\
     \ [default 'false']"
-  synonyms:
-  - --feat-effects
   args: !SimpleFlagArg
     name: Output
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --use-feat-eff
   description: "defining a plier feature effect for\neach probe. Note that precomputed\
     \ effects\nshould only be used for an appropriately\nsimilar analysis (i.e. feature\
     \ effects for\npm-only may be different than for pm-mm).\nCurrently a probe is\
     \ expected to be in only\na single probeset. This option does not\nwork for IterPlier\
     \ or SEA. [default '']"
-  synonyms:
-  - --use-feat-eff
   args: !SimpleFlagArg
     name: File
-  optional: true
 - !Flag
-  description: "probe by chip specific details\n(often residuals) when available.\
-    \ [default\n'false']"
+  optional: true
   synonyms:
   - --feat-details
+  description: "probe by chip specific details\n(often residuals) when available.\
+    \ [default\n'false']"
   args: !SimpleFlagArg
     name: Output
-  optional: true
 - !Flag
-  description: "specifying a target distribution to\nuse for quantile normalization.\
-    \ [default\n'']"
+  optional: true
   synonyms:
   - --target-sketch
+  description: "specifying a target distribution to\nuse for quantile normalization.\
+    \ [default\n'']"
   args: !SimpleFlagArg
     name: File
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --write-sketch
   description: "the quantile normalization\ndistribution (or sketch) to a file for\n\
     reuse with target-sketch option. WARNING:\nIf more than one -a option generates\
     \ a\ntarget sketch file, it is not deterministic\nwhich file will be retained\
     \ by the OS if\nthe target sketch files have the same name.\n[default 'false']"
-  synonyms:
-  - --write-sketch
   args: !SimpleFlagArg
     name: Write
-  optional: true
 - !Flag
-  description: profile [default '']
+  optional: true
   synonyms:
   - --reference-profile
+  description: profile [default '']
   args: !SimpleFlagArg
     name: Reference
-  optional: true
 - !Flag
-  description: reference profile. [default 'false']
+  optional: true
   synonyms:
   - --write-profile
+  description: reference profile. [default 'false']
   args: !SimpleFlagArg
     name: write
-  optional: true
 - !Flag
-  description: "set the analysis name. This\naffects output file names (ie prefix)\
-    \ and\nvarious meta info. [default '']"
+  optional: true
   synonyms:
   - --set-analysis-name
+  description: "set the analysis name. This\naffects output file names (ie prefix)\
+    \ and\nvarious meta info. [default '']"
   args: !SimpleFlagArg
     name: Explicitly
-  optional: true
 - !Flag
-  description: "many digits of precision to use after\ndecimal. [default '5']"
+  optional: true
   synonyms:
   - -x
   - --precision
+  description: "many digits of precision to use after\ndecimal. [default '5']"
   args: !SimpleFlagArg
     name: How
-  optional: true
 - !Flag
-  description: a particular operation (i.e.
+  optional: true
   synonyms:
   - --explain
+  description: a particular operation (i.e.
   args: !SimpleFlagArg
     name: Explain
-  optional: true
 - !Flag
-  description: "not use the PM probes specified in file\nfor computing results. [experimental]\n\
-    [default '']"
+  optional: true
   synonyms:
   - --kill-list
+  description: "not use the PM probes specified in file\nfor computing results. [experimental]\n\
+    [default '']"
   args: !SimpleFlagArg
     name: Do
-  optional: true
 - !Flag
-  description: "CEL intensities to be analyzed on\ndisk. [default 'true']"
+  optional: true
   synonyms:
   - --use-disk
+  description: "CEL intensities to be analyzed on\ndisk. [default 'true']"
   args: !SimpleFlagArg
     name: Store
-  optional: true
 - !Flag
-  description: "of intensity memory cache in millions\nof intensities (when --use-disk=true).\n\
-    [default '50']"
+  optional: true
   synonyms:
   - --disk-cache
+  description: "of intensity memory cache in millions\nof intensities (when --use-disk=true).\n\
+    [default '50']"
   args: !SimpleFlagArg
     name: Size
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --store-duplicate-probes
   description: "intensities for probes appearing in\nmultiple probesets in memory\
     \ (Prevents page\nthrashing. Is a bad idea for Axiom. Turned\non automatically\
     \ when using meta-probesets)\n[default 'false']"
-  synonyms:
-  - --store-duplicate-probes
   args: !SimpleFlagArg
     name: Store
-  optional: true
 - !Flag
-  description: "for the A5 global output file.\n[Experimental] [default '']"
+  optional: true
   synonyms:
   - --a5-global-file
+  description: "for the A5 global output file.\n[Experimental] [default '']"
   args: !SimpleFlagArg
     name: Filename
-  optional: true
 - !Flag
-  description: "or create rather than replace.\n[Experimental] [default 'false']"
+  optional: true
   synonyms:
   - --a5-global-file-no-replace
+  description: "or create rather than replace.\n[Experimental] [default 'false']"
   args: !SimpleFlagArg
     name: Append
-  optional: true
 - !Flag
-  description: "name where to put results in the A5\noutput files. Defaults to '/'.\n\
-    [Experimental] [default '']"
+  optional: true
   synonyms:
   - --a5-group
+  description: "name where to put results in the A5\noutput files. Defaults to '/'.\n\
+    [Experimental] [default '']"
   args: !SimpleFlagArg
     name: Group
-  optional: true
 - !Flag
-  description: "the summary values from the\nquantifcation method for each allele\
-    \ in A5\nformat. [Experimental] [default 'false']"
+  optional: true
   synonyms:
   - --a5-summaries
+  description: "the summary values from the\nquantifcation method for each allele\
+    \ in A5\nformat. [Experimental] [default 'false']"
   args: !SimpleFlagArg
     name: Output
-  optional: true
 - !Flag
-  description: "the global A5 file for summaries.\n[Experimental] [default 'false']"
+  optional: true
   synonyms:
   - --a5-summaries-use-global
+  description: "the global A5 file for summaries.\n[Experimental] [default 'false']"
   args: !SimpleFlagArg
     name: Use
-  optional: true
 - !Flag
-  description: "feature effects in A5 format.\n[Experimental] [default 'false']"
+  optional: true
   synonyms:
   - --a5-feature-effects
+  description: "feature effects in A5 format.\n[Experimental] [default 'false']"
   args: !SimpleFlagArg
     name: Output
-  optional: true
 - !Flag
-  description: "the global A5 file for feature\neffects.[Experimental] [default 'false']"
+  optional: true
   synonyms:
   - --a5-feature-effects-use-global
+  description: "the global A5 file for feature\neffects.[Experimental] [default 'false']"
   args: !SimpleFlagArg
     name: Use
-  optional: true
 - !Flag
-  description: "feature level residuals in A5\nformat. [Experimental] [default 'false']"
+  optional: true
   synonyms:
   - --a5-feature-details
+  description: "feature level residuals in A5\nformat. [Experimental] [default 'false']"
   args: !SimpleFlagArg
     name: Output
-  optional: true
 - !Flag
-  description: "the global A5 file for residuals.\n[Experimental] [default 'false']"
+  optional: true
   synonyms:
   - --a5-feature-details-use-global
+  description: "the global A5 file for residuals.\n[Experimental] [default 'false']"
   args: !SimpleFlagArg
     name: Use
-  optional: true
 - !Flag
-  description: normalization sketch in A5 format.
+  optional: true
   synonyms:
   - --a5-sketch
+  description: normalization sketch in A5 format.
   args: !SimpleFlagArg
     name: Output
-  optional: true
 - !Flag
-  description: "the sketch in the global A5 output\nfile. [Experimental] [default\
-    \ 'false']"
+  optional: true
   synonyms:
   - --a5-sketch-use-global
+  description: "the sketch in the global A5 output\nfile. [Experimental] [default\
+    \ 'false']"
   args: !SimpleFlagArg
     name: Put
-  optional: true
 - !Flag
-  description: "for the group in the global input\nfile.[Experimental] [default '']"
+  optional: true
   synonyms:
   - --a5-global-input-file
+  description: "for the group in the global input\nfile.[Experimental] [default '']"
   args: !SimpleFlagArg
     name: Filename
-  optional: true
 - !Flag
-  description: name for input. Defaults to
+  optional: true
   synonyms:
   - --a5-input-group
+  description: name for input. Defaults to
   args: !SimpleFlagArg
     name: Group
-  optional: true
 - !Flag
-  description: "the sketch from the global A5 input\nfile. [Experimental] [default\
-    \ 'false']"
+  optional: true
   synonyms:
   - --a5-sketch-input-global
+  description: "the sketch from the global A5 input\nfile. [Experimental] [default\
+    \ 'false']"
   args: !SimpleFlagArg
     name: Read
-  optional: true
 - !Flag
-  description: "the sketch from the an A5 input file.\n[Experimental] [default '']"
+  optional: true
   synonyms:
   - --a5-sketch-input-file
+  description: "the sketch from the an A5 input file.\n[Experimental] [default '']"
   args: !SimpleFlagArg
     name: Read
-  optional: true
 - !Flag
-  description: "name to read the sketch from.\nDefaults to --a5-input-group.\n[Experimental]\
-    \ [default '']"
+  optional: true
   synonyms:
   - --a5-sketch-input-group
+  description: "name to read the sketch from.\nDefaults to --a5-input-group.\n[Experimental]\
+    \ [default '']"
   args: !SimpleFlagArg
     name: Group
-  optional: true
 - !Flag
-  description: "name of the data section. Defaults to\n'target-sketch'. [Experimental]\
-    \ [default\n'']"
+  optional: true
   synonyms:
   - --a5-sketch-input-name
+  description: "name of the data section. Defaults to\n'target-sketch'. [Experimental]\
+    \ [default\n'']"
   args: !SimpleFlagArg
     name: The
-  optional: true
 - !Flag
-  description: "the feature effects global A5 input\nfile. [Experimental] [default\
-    \ 'false']"
+  optional: true
   synonyms:
   - --a5-feature-effects-input-global
+  description: "the feature effects global A5 input\nfile. [Experimental] [default\
+    \ 'false']"
   args: !SimpleFlagArg
     name: Read
-  optional: true
 - !Flag
-  description: "the feature effects from the an A5\ninput file. [Experimental] [default\
-    \ '']"
+  optional: true
   synonyms:
   - --a5-feature-effects-input-file
+  description: "the feature effects from the an A5\ninput file. [Experimental] [default\
+    \ '']"
   args: !SimpleFlagArg
     name: Read
-  optional: true
 - !Flag
-  description: "name to read the feature effects\nfrom. Defaults to --a5-input-group.\n\
-    [Experimental] [default '']"
+  optional: true
   synonyms:
   - --a5-feature-effects-input-group
+  description: "name to read the feature effects\nfrom. Defaults to --a5-input-group.\n\
+    [Experimental] [default '']"
   args: !SimpleFlagArg
     name: Group
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --a5-feature-effects-input-name
   description: "name of the data section. Defaults to\nXXX.feature-response where\
     \ XXX is the\nanalysis name and quant method. IE\n'brlmm-p.plier'. [Experimental]\
     \ [default\n'']"
-  synonyms:
-  - --a5-feature-effects-input-name
   args: !SimpleFlagArg
     name: The
-  optional: true
 - !Flag
-  description: files to process. [default '']
+  optional: true
   synonyms:
   - --cels
+  description: files to process. [default '']
   args: !SimpleFlagArg
     name: Cel
-  optional: true
 - !Flag
-  description: "file names to output. Must be paired\nwith cels. [default '']"
+  optional: true
   synonyms:
   - --result-files
+  description: "file names to output. Must be paired\nwith cels. [default '']"
   args: !SimpleFlagArg
     name: CHP
-  optional: true
 - !Flag
-  description: "Annotation database file. [default\n'']"
+  optional: true
   synonyms:
   - --annotation-file
+  description: "Annotation database file. [default\n'']"
   args: !SimpleFlagArg
     name: NetAffx
-  optional: true
 - !Flag
-  description: "time the engine run was started\n[default '']"
+  optional: true
   synonyms:
   - --time-start
+  description: "time the engine run was started\n[default '']"
   args: !SimpleFlagArg
     name: The
-  optional: true
 - !Flag
-  description: time the engine run ended [default '']
+  optional: true
   synonyms:
   - --time-end
+  description: time the engine run ended [default '']
   args: !SimpleFlagArg
     name: The
-  optional: true
 - !Flag
-  description: run time in minutes. [default '']
+  optional: true
   synonyms:
   - --time-run-minutes
+  description: run time in minutes. [default '']
   args: !SimpleFlagArg
     name: The
-  optional: true
 - !Flag
-  description: GUID for the analysis run. [default '']
+  optional: true
   synonyms:
   - --analysis-guid
+  description: GUID for the analysis run. [default '']
   args: !SimpleFlagArg
     name: The
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "Display program options and extra\ndocumentation about possible analyses.\
-    \ See\n-explain for information about a specific\noperation. [default 'false']"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: "Display program options and extra\ndocumentation about possible analyses.\
+    \ See\n-explain for information about a specific\noperation. [default 'false']"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: "version information. [default\n'false']"
+  optional: true
   synonyms:
   - --version
+  description: "version information. [default\n'false']"
   args: !SimpleFlagArg
     name: Display
-  optional: true
 help_text: "apt-probeset-summarize - A program for summarizing expression probe \n\
   data from cel files. Can use either a cdf file or pgf/clf files for defining\nprobesets.\
   \ Use the '--explain' flag for further docuemntation on a \nparticular data transformation\
@@ -1111,3 +1111,4 @@ help_text: "apt-probeset-summarize - A program for summarizing expression probe 
   \ \nversion: 1.20.0 svn://svn.affymetrix.com/apt/projects/apt/branches/APT_1_20_0_BRANCH/sdk/release@58265\n"
 generated_using:
 - --help
+docker_image:

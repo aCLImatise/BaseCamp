@@ -3,189 +3,189 @@ command:
 - RnaChipIntegrator
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: GENES
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: PEAKS
-  optional: true
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --cutoff
   description: "Maximum distance allowed between peaks and genes\nbefore being omitted\
     \ from the analyses (default\n1000000bp; set to zero for no cutoff, use --cutoffs\n\
     instead to specify multiple distances)"
-  synonyms:
-  - --cutoff
   args: !SimpleFlagArg
     name: MAX_DISTANCE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --edge
   description: "Gene edges to consider when calculating distances\nbetween genes and\
     \ peaks, either: 'tss' (default: only\nuse gene TSS) or 'both' (use whichever\
     \ of TSS or TES\ngives shortest distance)"
-  synonyms:
-  - --edge
   args: !ChoiceFlagArg
     choices: !!set
       both:
       tss:
-  optional: true
 - !Flag
-  description: "Only use genes flagged as differentially expressed in\nanalyses (input\
-    \ gene data must include DE flags)"
+  optional: true
   synonyms:
   - --only-DE
+  description: "Only use genes flagged as differentially expressed in\nanalyses (input\
+    \ gene data must include DE flags)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --number
   description: "Filter results after applying --cutoff[s] to report\nonly the nearest\
     \ MAX_CLOSEST number of pairs for each\ngene/peak from the analyses (default is\
     \ to report all\nresults)"
-  synonyms:
-  - --number
   args: !SimpleFlagArg
     name: MAX_CLOSEST
-  optional: true
 - !Flag
-  description: "Define promoter region with respect to gene TSS in the\nform UPSTREAM,DOWNSTREAM\
-    \ (default -1000 to 100bp of\nTSS)"
+  optional: true
   synonyms:
   - --promoter_region
+  description: "Define promoter region with respect to gene TSS in the\nform UPSTREAM,DOWNSTREAM\
+    \ (default -1000 to 100bp of\nTSS)"
   args: !SimpleFlagArg
     name: PROMOTER_REGION
-  optional: true
 - !Flag
-  description: Set basename for output files
+  optional: true
   synonyms:
   - --name
+  description: Set basename for output files
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: "Output all hits for each peak or gene on a single line\n(cannot be\
-    \ used with --summary)"
+  optional: true
   synonyms:
   - --compact
+  description: "Output all hits for each peak or gene on a single line\n(cannot be\
+    \ used with --summary)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output 'summary' for each analysis, consisting of only\nthe top hit\
-    \ for each peak or gene (cannot be used with\n--compact)"
+  optional: true
   synonyms:
   - --summary
+  description: "Output 'summary' for each analysis, consisting of only\nthe top hit\
+    \ for each peak or gene (cannot be used with\n--compact)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pad
   description: "Where less than MAX_CLOSEST hits are found, pad output\nwith blanks\
     \ to ensure that MAX_CLOSEST hits are still\nreported (nb --pad is implied for\
     \ --compact)"
-  synonyms:
-  - --pad
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Output XLSX spreadsheet with results
+  optional: true
   synonyms:
   - --xlsx
+  description: Output XLSX spreadsheet with results
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cutoffs
   description: "Comma-separated list of one or more maximum distances\nallowed between\
     \ peaks and genes (bp). An analysis will\nbe performed for each GENES-PEAKS pair\
     \ at each cutoff\ndistance (default 1000000bp; set to zero for no cutoff\nNB cannot\
     \ be used in conjunction with the --cutoff\noption)"
-  synonyms:
-  - --cutoffs
   args: !SimpleFlagArg
     name: CUTOFFS
-  optional: true
 - !Flag
-  description: "Specify multiple genes files (if used then peaks\nfile(s) must be\
-    \ specified using --peaks option)"
+  optional: true
   synonyms:
   - --genes
+  description: "Specify multiple genes files (if used then peaks\nfile(s) must be\
+    \ specified using --peaks option)"
   args: !RepeatFlagArg
     name: GENES_FILE
-  optional: true
 - !Flag
-  description: "Specify multiple peaks files (if used then genes\nfile(s) must be\
-    \ specified using --genes option)"
+  optional: true
   synonyms:
   - --peaks
+  description: "Specify multiple peaks files (if used then genes\nfile(s) must be\
+    \ specified using --genes option)"
   args: !RepeatFlagArg
     name: PEAKS_FILE
-  optional: true
 - !Flag
-  description: "Number of processors/cores to run the program using\n(default: 1)"
+  optional: true
   synonyms:
   - -n
   - --nprocessors
+  description: "Number of processors/cores to run the program using\n(default: 1)"
   args: !SimpleFlagArg
     name: NPROCS
-  optional: true
 - !Flag
-  description: "In batch mode write results of each analysis to\nseparate file (default\
-    \ is to write all results to\nsingle file)"
+  optional: true
   synonyms:
   - --split-outputs
+  description: "In batch mode write results of each analysis to\nseparate file (default\
+    \ is to write all results to\nsingle file)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Select which analyses to run: can be one of 'all'\n(default, runs\
-    \ all available analyses), 'peak_centric'\nor 'gene_centric'"
+  optional: true
   synonyms:
   - --analyses
+  description: "Select which analyses to run: can be one of 'all'\n(default, runs\
+    \ all available analyses), 'peak_centric'\nor 'gene_centric'"
   args: !ChoiceFlagArg
     choices: !!set
-      gene_centric:
-      all:
       peak_centric:
-  optional: true
+      all:
+      gene_centric:
 - !Flag
-  description: "Rename 'gene' to FEATURE_TYPE in output (e.g.\n'transcript' etc)"
+  optional: true
   synonyms:
   - --feature
+  description: "Rename 'gene' to FEATURE_TYPE in output (e.g.\n'transcript' etc)"
   args: !SimpleFlagArg
     name: FEATURE_TYPE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --peak_cols
   description: "List of 3 column indices (e.g. '1,4,5') indicating\ncolumns to use\
     \ for chromosome, start and end from the\ninput peak file (if not first three\
     \ columns)"
-  synonyms:
-  - --peak_cols
   args: !SimpleFlagArg
     name: PEAK_COLS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --peak_id
   description: "Column to use as an ID for each peak from the input\npeak file (first\
     \ column is column 1). If specified\nthen IDs will be transferred to the output\
     \ files when\npeaks are reported\n"
-  synonyms:
-  - --peak_id
   args: !SimpleFlagArg
     name: PEAK_ID
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: RnaChipIntegrator [options] [GENES PEAKS]\n\nAnalyse GENES (any\
   \ set of genes or genomic features) against PEAKS (a set of\nregions) and report\
   \ nearest genes to each peak (and vice versa)\n\noptional arguments:\n  -h, --help\
@@ -243,3 +243,4 @@ help_text: "usage: RnaChipIntegrator [options] [GENES PEAKS]\n\nAnalyse GENES (a
   \ to the output files when\n                        peaks are reported\n"
 generated_using:
 - --help
+docker_image:

@@ -8,6 +8,9 @@ task MedpyGraphcutVoxelpyMarkers {
     medpy_graphcut_voxel_py markers \
       ~{me_dpy_graph_cut_voxel_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     me_dpy_graph_cut_voxel_do_tpy: ""
   }

@@ -3,27 +3,27 @@ id: meryl_lookup.cwl
 inputs:
 - id: in_sequence_two
   doc: only required for -include and -exclude
-  type: long
+  type: long?
   inputBinding:
     prefix: -sequence2
 - id: in_min
   doc: m    Ignore kmers with value below m
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -min
 - id: in_max
   doc: m    Ignore kmers with value above m
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -max
 - id: in_threads
   doc: Number of threads to use when constructing lookup table.
-  type: long
+  type: long?
   inputBinding:
     prefix: -threads
 - id: in_memory
   doc: Don't use more than m GB memory
-  type: string
+  type: string?
   inputBinding:
     prefix: -memory
 - id: in_existence
@@ -33,7 +33,7 @@ inputs:
     \  - number of mers in the sequence\nmersInDB   - number of mers in the meryl\
     \ database\nmersInBoth - number of mers in the sequence that are\nalso in the\
     \ database"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -existence
 - id: in_dump
@@ -47,7 +47,7 @@ inputs:
     \ the database, 'F' if it does not\nfwd-mer    - forward mer sequence\nfwd-val\
     \    - value of the forward mer in the database\nrev-mer    - reverse mer sequence\n\
     rev-val    - value of the reverse mer in the database"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -dump
 - id: in_include
@@ -57,7 +57,7 @@ inputs:
     <output.r2> will be automatically compressed if ends with .gz, .bz2, or xs\nseqName\
     \    - name of the sequence this kmer is from\nmersInBoth - number of mers in\
     \ both sequence and in the database"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -include
 - id: in_exclude
@@ -66,17 +66,17 @@ inputs:
     \ are given, R1 will be stdout and R2 be named as <output.r2>\n<output.r2> will\
     \ be automatically compressed if ends with .gz, .bz2, or xs\nseqName    - name\
     \ of the sequence this kmer is from"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -exclude
 - id: in_mers
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -mers
 - id: in_sequence
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -sequence
 - id: in_speed_dot
@@ -88,6 +88,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - meryl-lookup

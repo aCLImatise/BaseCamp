@@ -22,6 +22,9 @@ task GcloudMlengineModels {
       ~{remove_i_am_policy_binding} \
       ~{set_i_am_policy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_i_am_policy_binding: "Add IAM policy binding to a model."
     create: "Create a new Cloud ML Engine model."

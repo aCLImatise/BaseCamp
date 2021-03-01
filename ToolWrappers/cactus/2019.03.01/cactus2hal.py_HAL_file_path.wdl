@@ -12,6 +12,9 @@ task Cactus2halpyHALFilePath {
       ~{if defined(cache_bytes) then ("--cacheBytes " +  '"' + cache_bytes + '"') else ""} \
       ~{if defined(event) then ("--event " +  '"' + event + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cache_bytes: ""
     event: ""

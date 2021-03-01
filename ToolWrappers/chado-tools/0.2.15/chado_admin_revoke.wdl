@@ -16,6 +16,9 @@ task ChadoAdminRevoke {
       ~{if defined(role) then ("--role " +  '"' + role + '"') else ""} \
       ~{if defined(schema) then ("--schema " +  '"' + schema + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "verbose mode"
     config: "YAML file containing connection details"

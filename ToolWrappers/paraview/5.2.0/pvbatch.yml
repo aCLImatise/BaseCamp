@@ -4,36 +4,97 @@ command:
 positional: []
 named:
 - !Flag
-  description: "ClientServerStream log file.\n--disable-registry\n-dr            \
-    \            Do not use registry when running ParaView (for testing).\n--disable-xdisplay-test\
-    \    When specified, all X-display tests and OpenGL version checks are skipped.\
-    \ Use this option if you are getting remote-rendering disabled errors and you\
-    \ are positive that the X environment is setup properly and your OpenGL support\
-    \ is adequate (experimental).\n--enable-bt                Enable stack trace signal\
-    \ handler.\n--enable-streaming         EXPERIMENTAL: When specified, view-based\
-    \ streaming is enabled for certain views and representation types.\n--help\n/?\
-    \                         Displays available command line arguments.\n--hostname=opt\
-    \             Override the hostname to be used to connect to this process. By\
-    \ default, the hostname is determined using appropriate system calls.\n--print-monitors\
-    \           Print detected monitors and exit (Windows only).\n--symmetric\n-sym\
-    \                       When specified, the python script is processed symmetrically\
-    \ on all processes.\n--test-plugin=opt          Specify the name of the plugin\
-    \ to load for testing\n--test-plugin-path=opt     Specify the path where more\
-    \ plugins can be found.This is typically used when testing plugins.\n--use-offscreen-rendering\
-    \  Render offscreen on the satellite processes. This option only works with software\
-    \ rendering or mangled mesa on Unix.\n--version\n-V                         Give\
-    \ the version number and exit.\n"
+  optional: true
   synonyms:
   - --cslog
+  description: ClientServerStream log file.
   args: !SimpleFlagArg
     name: opt
+- !Flag
   optional: true
+  synonyms:
+  - --disable-registry
+  - -dr
+  description: Do not use registry when running ParaView (for testing).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disable-xdisplay-test
+  description: When specified, all X-display tests and OpenGL version checks are skipped.
+    Use this option if you are getting remote-rendering disabled errors and you are
+    positive that the X environment is setup properly and your OpenGL support is adequate
+    (experimental).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --enable-bt
+  description: Enable stack trace signal handler.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --enable-streaming
+  description: 'EXPERIMENTAL: When specified, view-based streaming is enabled for
+    certain views and representation types.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hostname
+  description: Override the hostname to be used to connect to this process. By default,
+    the hostname is determined using appropriate system calls.
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --print-monitors
+  description: Print detected monitors and exit (Windows only).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --symmetric
+  - -sym
+  description: When specified, the python script is processed symmetrically on all
+    processes.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --test-plugin
+  description: Specify the name of the plugin to load for testing
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --test-plugin-path
+  description: Specify the path where more plugins can be found.This is typically
+    used when testing plugins.
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --use-offscreen-rendering
+  description: Render offscreen on the satellite processes. This option only works
+    with software rendering or mangled mesa on Unix.
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag:
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -V
+  description: Give the version number and exit.
+  args: !EmptyFlagArg {}
 help_text: "\n  --cslog=opt                ClientServerStream log file.\n\n  --disable-registry\
   \         \n  -dr                        Do not use registry when running ParaView\
   \ (for testing).\n\n  --disable-xdisplay-test    When specified, all X-display tests\
@@ -56,3 +117,4 @@ help_text: "\n  --cslog=opt                ClientServerStream log file.\n\n  --d
   \                     Give the version number and exit.\n\n"
 generated_using:
 - --help
+docker_image:

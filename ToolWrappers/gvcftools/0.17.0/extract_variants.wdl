@@ -12,6 +12,9 @@ task ExtractVariants {
       ~{if (skip_header) then "--skip-header" else ""} \
       ~{if (invert) then "--invert" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     skip_header: "Write gVCF output without header"
     invert: "Invert the filter so that only non-variant records are"

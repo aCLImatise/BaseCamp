@@ -34,6 +34,9 @@ task Svtypersso {
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if defined(batch_size) then ("--batch_size " +  '"' + batch_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_vcf: "VCF input (default: stdin)"
     output_vcf: "output VCF to write (default: stdout)"

@@ -16,6 +16,9 @@ task PhyluceSnpGetDbsnpFreqStats {
       ~{if defined(output_two) then ("--output2 " +  '"' + output_two + '"') else ""} \
       ~{if defined(dupe_file) then ("--dupefile " +  '"' + dupe_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dbsnp: "CSV input from dbSNP giving SNP positions within UCE"
     xml: "The XML file holiding locus data from dbSNP"

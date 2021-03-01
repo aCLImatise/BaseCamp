@@ -28,7 +28,7 @@ inputs:
     position: 4
 - id: in_y_vertical_linen
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 5
 - id: in_seq_file
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ReadSeq

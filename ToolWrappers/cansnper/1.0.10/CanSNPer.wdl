@@ -46,6 +46,9 @@ task CanSNPer {
       ~{if (dev) then "--dev" else ""} \
       ~{if (galaxy) then "--galaxy" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "the name of the organism"
     query: "fasta sequence file name that is to be analysed"

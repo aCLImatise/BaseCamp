@@ -4,142 +4,142 @@ command:
 - prepareref
 positional:
 - !Positional
-  description: Output directory (must not already exist)
+  optional: false
   position: 0
   name: outdir
-  optional: false
+  description: Output directory (must not already exist)
 named:
 - !Flag
-  description: "REQUIRED. Name of fasta file. Can be used more than\nonce if your\
-    \ sequences are spread over more than on\nfile"
+  optional: true
   synonyms:
   - -f
   - --fasta
+  description: "REQUIRED. Name of fasta file. Can be used more than\nonce if your\
+    \ sequences are spread over more than on\nfile"
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
-  description: "Name of tsv file of metadata about the input\nsequences. Can be used\
-    \ more than once if your metadata\nis spread over more than one file. Incompatible\
-    \ with\n--all_coding"
+  optional: true
   synonyms:
   - -m
   - --metadata
+  description: "Name of tsv file of metadata about the input\nsequences. Can be used\
+    \ more than once if your metadata\nis spread over more than one file. Incompatible\
+    \ with\n--all_coding"
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --all_coding
   description: "Use this if you only have a fasta of presence absence\nsequences as\
     \ input, and no metadata. Use \"yes\" if all\nsequences are coding, or \"no\"\
     \ if they are all non-\ncoding. Incompatible with -m/--metadata"
-  synonyms:
-  - --all_coding
   args: !ChoiceFlagArg
     choices: !!set
-      yes:
       no:
-  optional: true
+      yes:
 - !Flag
-  description: "Do not run cd-hit. Each input sequence is put into its\nown \"cluster\"\
-    . Incompatible with --cdhit_clusters."
+  optional: true
   synonyms:
   - --no_cdhit
+  description: "Do not run cd-hit. Each input sequence is put into its\nown \"cluster\"\
+    . Incompatible with --cdhit_clusters."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cdhit_clusters
   description: "File specifying how the sequences should be clustered.\nWill be used\
     \ instead of running cdhit. Format is one\ncluster per line. Sequence names separated\
     \ by\nwhitespace. Incompatible with --no_cdhit"
-  synonyms:
-  - --cdhit_clusters
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
-  description: Sequence identity threshold (cd-hit option -c) [0.9]
+  optional: true
   synonyms:
   - --cdhit_min_id
+  description: Sequence identity threshold (cd-hit option -c) [0.9]
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: Length difference cutoff (cd-hit option -s) [0.0]
+  optional: true
   synonyms:
   - --cdhit_min_length
+  description: Length difference cutoff (cd-hit option -s) [0.0]
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Memory limit in MB (cd-hit option -M) [None]. Use 0\nfor unlimited."
+  optional: true
   synonyms:
   - --cdhit_max_memory
+  description: "Memory limit in MB (cd-hit option -M) [None]. Use 0\nfor unlimited."
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Minimum allowed length in nucleotides of reference\ngenes [6]"
+  optional: true
   synonyms:
   - --min_gene_length
+  description: "Minimum allowed length in nucleotides of reference\ngenes [6]"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Maximum allowed length in nucleotides of reference\ngenes [10000]"
+  optional: true
   synonyms:
   - --max_gene_length
+  description: "Maximum allowed length in nucleotides of reference\ngenes [10000]"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Minimum allowed length in nucleotides of non-coding\nsequences [6]"
+  optional: true
   synonyms:
   - --min_noncoding_length
+  description: "Minimum allowed length in nucleotides of non-coding\nsequences [6]"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Maximum allowed length in nucleotides of non-coding\nsequences [20000]"
+  optional: true
   synonyms:
   - --max_noncoding_length
+  description: "Maximum allowed length in nucleotides of non-coding\nsequences [20000]"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Number of genetic code to use. Currently supported\n1,4,11 [11]"
+  optional: true
   synonyms:
   - --genetic_code
+  description: "Number of genetic code to use. Currently supported\n1,4,11 [11]"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: Overwrite output directory, if it already exists
+  optional: true
   synonyms:
   - --force
+  description: Overwrite output directory, if it already exists
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Number of threads (currently only applies to cdhit)\n[1]"
+  optional: true
   synonyms:
   - --threads
+  description: "Number of threads (currently only applies to cdhit)\n[1]"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: Be verbose
+  optional: true
   synonyms:
   - --verbose
+  description: Be verbose
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: ariba prepareref [options] <outdir>\n\nPrepare reference data for\
@@ -182,3 +182,4 @@ help_text: "usage: ariba prepareref [options] <outdir>\n\nPrepare reference data
   used\n"
 generated_using:
 - --help
+docker_image:

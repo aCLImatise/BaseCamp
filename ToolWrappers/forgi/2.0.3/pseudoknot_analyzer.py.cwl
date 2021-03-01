@@ -6,29 +6,29 @@ inputs:
     \ of length one are dissolved to\nunpaired regions (default) or kept (if this\
     \ option is\npresent). In the case of input in forgi-format, the\nRNA from the\
     \ file is not modified."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep-length-one-stems
 - id: in_outfile_mode
   doc: Overwrite ('w') or append ('a') to output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --outfile-mode
 - id: in_minlength
   doc: "Minimum length of each stem. Stems with fewer base-\npairs are treated as\
     \ unpaired."
-  type: long
+  type: long?
   inputBinding:
     prefix: --minlength
 - id: in_chains
   doc: "When reading pdb-files: Only extract the given\nchain(s). Comma-seperated"
-  type: string
+  type: string?
   inputBinding:
     prefix: --chains
 - id: in_pdb_secondary_structure
   doc: "When reading a single chain from a pdb-files: Enforce\nthe secondary structure\
     \ given as dotbracket string.\n(This only works, if --chain is given!)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --pdb-secondary-structure
 - id: in_pdb_annotation_tool
@@ -36,7 +36,7 @@ inputs:
     \ commandline option overrides\nthe value in the config file (if present).If this\
     \ is\nnot present and no config-file is given, we try to\ndetect the installed\
     \ programs."
-  type: File
+  type: File?
   inputBinding:
     prefix: --pdb-annotation-tool
 - id: in_pdb_allow_www_query
@@ -45,26 +45,26 @@ inputs:
     INFO is issued. With this option, we first try to\nquery the PDBeChem database\
     \ for the 3-letter code, to\nsee whether or not it is a modified residue that\
     \ can\nbe converted to its standard parent and should be part\nof the chain."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pdb-allow-www-query
 - id: in_verbose
   doc: "Show verbose output (Output logged at level\nlogging.INFO)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_debug
   doc: "[DEBUG]       A comma-seperated list of logger names for which debug\noutput\
     \ will be activated.WARNING: If you misspell the\nlogger name, this argument will\
     \ be ignored"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
-- id: in_commaseperated_list_logger_names_logged
+- id: in_commaseperated_list_logger
   doc: "[QUIET], --quiet [QUIET]\nA comma-seperated list of logger names for which\
     \ only\nmessages logged at the level 'CRITICAL' will be\nshown.Use this without\
     \ arguments if everything should\nbe quiet.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
 - id: in_rna
@@ -81,9 +81,10 @@ outputs:
   type: stdout
 - id: out_outfile_mode
   doc: Overwrite ('w') or append ('a') to output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile_mode)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pseudoknot_analyzer.py

@@ -12,6 +12,9 @@ task ScfUpdate {
       ~{destination} \
       ~{if defined(v) then ("-v " +  '"' + v + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
     source: ""

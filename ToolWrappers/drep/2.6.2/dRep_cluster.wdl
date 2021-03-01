@@ -14,7 +14,7 @@ task DRepCluster {
     Float? cov_thresh
     String? coverage_method
     String? cluster_alg
-    Boolean? genomes_cluster_sequences
+    Boolean? genomes_cluster_format
   }
   command <<<
     dRep cluster \
@@ -30,8 +30,11 @@ task DRepCluster {
       ~{if defined(cov_thresh) then ("--cov_thresh " +  '"' + cov_thresh + '"') else ""} \
       ~{if defined(coverage_method) then ("--coverage_method " +  '"' + coverage_method + '"') else ""} \
       ~{if defined(cluster_alg) then ("--clusterAlg " +  '"' + cluster_alg + '"') else ""} \
-      ~{if (genomes_cluster_sequences) then "-g" else ""}
+      ~{if (genomes_cluster_format) then "-g" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     processors: "threads (default: 6)"
     debug: "make extra debugging output (default: False)"
@@ -45,7 +48,7 @@ task DRepCluster {
     cov_thresh: "Minmum level of overlap between genomes when doing\\nsecondary comparisons (default: 0.1)"
     coverage_method: "Method to calculate coverage of an alignment\\n(for ANIn/ANImf only; gANI and fastANI can only do larger method)\\ntotal   = 2*(aligned length) / (sum of total genome lengths)\\nlarger  = max((aligned length / genome 1), (aligned_length / genome2))\\n(default: larger)"
     cluster_alg: "Algorithm used to cluster genomes (passed to\\nscipy.cluster.hierarchy.linkage (default: average)"
-    genomes_cluster_sequences: "[GENOMES [GENOMES ...]], --genomes [GENOMES [GENOMES ...]]\\ngenomes to cluster in .fasta format. Not necessary if\\nalready loaded sequences with the \\\"filter\\\" operation\\n(default: None)\\n"
+    genomes_cluster_format: "[GENOMES [GENOMES ...]], --genomes [GENOMES [GENOMES ...]]\\ngenomes to cluster in .fasta format. Not necessary if\\nalready loaded sequences with the \\\"filter\\\" operation\\n(default: None)\\n"
   }
   output {
     File out_stdout = stdout()

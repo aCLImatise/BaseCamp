@@ -2,8 +2,8 @@ version 1.0
 
 task Hypropy {
   input {
-    Boolean? modus_decide_restricted
-    File? specify_path_gff
+    Boolean? modus_hypro_decide
+    File? specify_path_extended
     File? specify_path_directory
     Int? database
     File? mm_seqs_two
@@ -15,8 +15,8 @@ task Hypropy {
   }
   command <<<
     hypro_py \
-      ~{if (modus_decide_restricted) then "-m" else ""} \
-      ~{if defined(specify_path_gff) then ("--input " +  '"' + specify_path_gff + '"') else ""} \
+      ~{if (modus_hypro_decide) then "-m" else ""} \
+      ~{if defined(specify_path_extended) then ("--input " +  '"' + specify_path_extended + '"') else ""} \
       ~{if defined(specify_path_directory) then ("--output " +  '"' + specify_path_directory + '"') else ""} \
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if defined(mm_seqs_two) then ("--mmseqs2 " +  '"' + mm_seqs_two + '"') else ""} \
@@ -26,9 +26,12 @@ task Hypropy {
       ~{if defined(p_ident) then ("--pident " +  '"' + p_ident + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    modus_decide_restricted: "['restricted', 'full'], --modus ['restricted', 'full']\\nModus of HyPro to decide either for an all\\nhypothetical protein annotation or restricted (only\\nfull blanks with no partial annotation). Valid\\narguments: 'full' and 'restricted'"
-    specify_path_gff: "Specify PATH to the gff file, that shall be extended."
+    modus_hypro_decide: "['restricted', 'full'], --modus ['restricted', 'full']\\nModus of HyPro to decide either for an all\\nhypothetical protein annotation or restricted (only\\nfull blanks with no partial annotation). Valid\\narguments: 'full' and 'restricted'"
+    specify_path_extended: "Specify PATH to the gff file, that shall be extended."
     specify_path_directory: "Specify PATH to a directory. HyPro will generate all\\noutput to this."
     database: "Specify the target db to search in for annotation\\nextension. Available options: 'uniprotkb',\\n'uniref100', 'uniref90', 'uniref50', 'pdb' [uniprotkb]"
     mm_seqs_two: "Specify the path to the mmseqs2.sh. If using the conda\\npackage, 'mmseqs2.sh' is enough. Default path is\\n'./scripts/msmeqs2.sh'"

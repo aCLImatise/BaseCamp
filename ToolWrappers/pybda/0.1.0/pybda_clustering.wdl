@@ -10,6 +10,9 @@ task PybdaClustering {
       ~{config} \
       ~{spark}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: ""
     spark: ""

@@ -16,6 +16,9 @@ task Monoapiinfo {
       ~{if defined(read_register_assembly) then ("-r " +  '"' + read_register_assembly + '"') else ""} \
       ~{if defined(output_file_specified) then ("-o " +  '"' + output_file_specified + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     abi: "Generate ABI, not API; contains only classes with\\ninstance fields which are not [NonSerialized]."
     follow_forwarders: "Follow type forwarders."

@@ -16,6 +16,9 @@ task Thermo {
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_name: "output file name (default: stdout)"
     chrom: "directory with chrom files (FASTA format)"

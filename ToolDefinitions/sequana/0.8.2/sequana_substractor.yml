@@ -3,29 +3,67 @@ command:
 - sequana_substractor
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: reads
-  optional: false
-named: []
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --input
+  description: 'input FastQ file (default: None)'
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: 'output FastQ filename (default: reads.fastq)'
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  - --references
+  - --output-directory
+  description: "input fastq gzipped or not (default:\nsequana_substractor)"
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --mapper
+  description: 'mapper minimap2 or bwa (default: minimap2)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      bwa:
+      minimap2:
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: 'threading (default: 4)'
+  args: !SimpleFlagArg
+    name: THREADS
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--input INPUT         input FastQ\
-    \ file (default: None)\n--output OUTFILE      output FastQ filename (default:\
-    \ reads.fastq)\n--reference REFERENCE\n--references REFERENCES [REFERENCES ...]\n\
-    --output-directory OUTDIR\ninput fastq gzipped or not (default:\nsequana_substractor)\n\
-    --mapper {bwa,minimap2}\nmapper minimap2 or bwa (default: minimap2)\n--threads\
-    \ THREADS     threading (default: 4)\n--version             print version (default:\
-    \ False)\n--level {DEBUG,INFO,WARNING,ERROR,CRITICAL}"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: 'print version (default: False)'
+  args: !EmptyFlagArg {}
 help_text: "Welcome to sequana_substractor\nWARNING. TESTED ON LONG READS ONLY. EXPERIMENTAL\n\
   usage: sequana_substractor reads (flag 256+4) saving the mapped reads in a file,\
   \ and the unmapped in\nanother file\nusage2: sequana_substractor --input test.fastq\
@@ -42,3 +80,4 @@ help_text: "Welcome to sequana_substractor\nWARNING. TESTED ON LONG READS ONLY. 
   \        \n"
 generated_using:
 - --help
+docker_image:

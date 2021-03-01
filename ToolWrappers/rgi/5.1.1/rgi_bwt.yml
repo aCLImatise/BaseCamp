@@ -2,52 +2,108 @@
 command:
 - rgi
 - bwt
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: aligner
+  description: -n THREADS, --threads THREADS
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -a
-  args: !ChoiceFlagArg
-    choices: !!set
-      bowtie2:
-      kma:
-      bwa:
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - '-2'
-  args: !SimpleFlagArg
-    name: READ_TWO
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - '-1'
+  - --read_one
+  description: raw read one (qc and trimmied)
   args: !SimpleFlagArg
     name: READ_ONE
+- !Flag
   optional: true
+  synonyms:
+  - '-2'
+  - --read_two
+  description: raw read two (qc and trimmied)
+  args: !SimpleFlagArg
+    name: READ_TWO
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_file
+  description: name of output filename(s)
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: debug mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --clean
+  description: removes temporary files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --local
+  description: "use local database (default: uses database in\nexecutable directory)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include_wildcard
+  description: include wildcard
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include_baits
+  description: include baits
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mapq
+  description: filter reads based on MAPQ score
+  args: !SimpleFlagArg
+    name: MAPQ
+- !Flag
+  optional: true
+  synonyms:
+  - --mapped
+  description: filter reads based on mapped reads
+  args: !SimpleFlagArg
+    name: MAPPED
+- !Flag
+  optional: true
+  synonyms:
+  - --coverage
+  description: filter reads based on coverage of reference sequence
+  args: !SimpleFlagArg
+    name: COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: ''
+  args: !ChoiceFlagArg
+    choices: !!set
+      bwa:
+      bowtie2:
+      kma:
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-1 READ_ONE, --read_one READ_ONE\n\
-    raw read one (qc and trimmied)\n-2 READ_TWO, --read_two READ_TWO\nraw read two\
-    \ (qc and trimmied)\n-a {bowtie2,bwa,kma}, --aligner {bowtie2,bwa,kma}\naligner\n\
-    -n THREADS, --threads THREADS\nnumber of threads (CPUs) to use (default=8)\n-o\
-    \ OUTPUT_FILE, --output_file OUTPUT_FILE\nname of output filename(s)\n--debug\
-    \               debug mode\n--clean               removes temporary files\n--local\
-    \               use local database (default: uses database in\nexecutable directory)\n\
-    --include_wildcard    include wildcard\n--include_baits       include baits\n\
-    --mapq MAPQ           filter reads based on MAPQ score\n--mapped MAPPED      \
-    \ filter reads based on mapped reads\n--coverage COVERAGE   filter reads based\
-    \ on coverage of reference sequence\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: rgi bwt [-h] -1 READ_ONE [-2 READ_TWO] [-a {bowtie2,bwa,kma}]\n\
@@ -70,3 +126,4 @@ help_text: "usage: rgi bwt [-h] -1 READ_ONE [-2 READ_TWO] [-a {bowtie2,bwa,kma}]
   \ sequence\n"
 generated_using:
 - --help
+docker_image:

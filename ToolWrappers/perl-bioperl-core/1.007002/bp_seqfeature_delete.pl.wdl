@@ -28,6 +28,9 @@ task BpSeqfeatureDeletepl {
       ~{if (password) then "--password" else ""} \
       ~{if (fast) then "--fast" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dsn: "The database name (dbi:mysql:test)"
     adaptor: "The storage adaptor to use (DBI::mysql)"

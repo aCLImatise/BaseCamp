@@ -14,6 +14,9 @@ task DxdockerCreateasset {
       ~{if defined(ubuntu_version) then ("--ubuntu_version " +  '"' + ubuntu_version + '"') else ""} \
       ~{if defined(asset_version) then ("--asset_version " +  '"' + asset_version + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_path: "Project ID and path in project to upload image to\\n(defaults to project root)"
     alternative_export: "EXPERT ONLY: Use alternative method to export Docker\\nimage since Docker CLI export sometimes doesn't create\\nthe root filesystem properly."

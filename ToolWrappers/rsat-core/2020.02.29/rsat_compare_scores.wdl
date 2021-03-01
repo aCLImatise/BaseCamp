@@ -38,6 +38,9 @@ task RsatComparescores {
       ~{if (suppress) then "-suppress" else ""} \
       ~{if (subst) then "-subst" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "(must be first argument) display options"
     verbose: "verbose"

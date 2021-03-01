@@ -4,72 +4,73 @@ inputs:
 - id: in_minmal_size_epm
   doc: "#   : # minmal size of an EPM (gamma)\n2 is default and returns all EPMs with\
     \ at least 2 nucleotides"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_determines_maximal_number
   doc: "#   : # determines the maximal number of returned EPMs\n0 is default an returns\
     \ all EPMs\n1 is the largest EPM and so on..."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_initial_epm_score
   doc: "#   : 1: initial EPM score = EPM size (default)\n: 2: initial EPM score =\
     \ (EPM size)^2 (prefers larger patterns in LCS-EPM)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
-- id: in_not_ignore_gaps
+- id: in_ignore_gaps_input
   doc: ': Do NOT ignore gaps in input sequences'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
 - id: in_write_output_dir
   doc: '#   : write all output to dir <#>'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
-- id: in_write_lcsepm_alignment
+- id: in_write_file_alignment
   doc: ": write LCS-EPM into file 'LCSEPM_align.aln' as alignment"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -o
-- id: in_write_lcsepm_constraint
+- id: in_write_file_constraint
   doc: ": write LCS-EPM into file 'LCSEPM_LocARNA_input.fa' as constraint input for\
     \ LocARNA"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
-- id: in_write_lcsepm_single
+- id: in_write_file_single
   doc: ": write LCS-EPM into file 'LCSEPM.epm' as single EPMs"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -e
 - id: in_write_epms_file
   doc: ": write all EPMs into file 'allEPM.epm' (depends on -s/ -n)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
-- id: in_do_not_save
+- id: in_save_colored_postscript
   doc: ': DO NOT save LCS-EPM as colored postscript file'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
-- id: in_determine_similaritydifferences_alignmentvia
+- id: in_determine_similaritydifferences_reference
   doc: ": determine similarity/differences of LCS-EPM with reference alignment\nvia\
     \ two colored postscript files"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -A
 - id: in__verbose_output
   doc: ': verbose output'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ExpaRNA

@@ -18,6 +18,9 @@ task SnpSiftCcs {
       ~{if (_be_verbose) then "-v" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _be_quiet: ": Be quiet"
     _be_verbose: ": Be verbose"

@@ -10,6 +10,9 @@ task Fastqanonymous {
       ~{if (mask) then "--mask" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mask: "Mask all nucleotides using N"
     v: ""

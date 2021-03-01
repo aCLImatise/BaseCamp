@@ -18,6 +18,9 @@ task Gca {
       ~{if defined(gn_group) then ("--gn-group " +  '"' + gn_group + '"') else ""} \
       ~{if defined(g_name_two) then ("--gname2 " +  '"' + g_name_two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "BED file of ChIP regions."
     gt: "Gene annotation table. This can be a sqlite3 local db\\nfile, BED file or genome version of UCSC. The BED file\\nmust have an extension of '.bed'"

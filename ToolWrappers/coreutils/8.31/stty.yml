@@ -3,149 +3,185 @@ command:
 - stty
 positional:
 - !Positional
-  description: print the terminal speed
+  optional: false
   position: 0
   name: speed
-  optional: false
+  description: print the terminal speed
 - !Positional
-  description: set character size to N bits, N in [5..8]
+  optional: false
   position: 0
   name: csN
-  optional: false
+  description: set character size to N bits, N in [5..8]
 - !Positional
-  description: same as -icanon
+  optional: false
   position: 0
   name: cbreak
-  optional: false
+  description: same as -icanon
 - !Positional
-  description: "same as brkint ignpar istrip icrnl ixon opost isig\nicanon, eof and\
-    \ eol characters to their default values"
+  optional: false
   position: 1
   name: cooked
-  optional: false
+  description: "same as brkint ignpar istrip icrnl ixon opost isig\nicanon, eof and\
+    \ eol characters to their default values"
 - !Positional
-  description: same as echoe echoctl echoke
+  optional: false
   position: 2
   name: crt
-  optional: false
+  description: same as echoe echoctl echoke
 - !Positional
-  description: "same as echoe echoctl echoke -ixany intr ^c erase 0177\nkill ^u"
+  optional: false
   position: 3
   name: dec
-  optional: false
+  description: "same as echoe echoctl echoke -ixany intr ^c erase 0177\nkill ^u"
 - !Positional
-  description: erase and kill characters to their default values
+  optional: false
   position: 0
   name: ek
-  optional: false
+  description: erase and kill characters to their default values
 - !Positional
-  description: same as parenb -parodd cs7
+  optional: false
   position: 1
   name: evenp
-  optional: false
+  description: same as parenb -parodd cs7
 - !Positional
-  description: same as -parenb -istrip -opost cs8
+  optional: false
   position: 0
   name: litout
-  optional: false
+  description: same as -parenb -istrip -opost cs8
 - !Positional
-  description: same as -icrnl -onlcr
+  optional: false
   position: 1
   name: nl
-  optional: false
+  description: same as -icrnl -onlcr
 - !Positional
-  description: same as parenb parodd cs7
+  optional: false
   position: 2
   name: oddp
+  description: same as parenb parodd cs7
+- !Positional
   optional: false
-named:
-- !Flag
-  description: print all current settings in human-readable form
-  synonyms:
-  - -a
-  - --all
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: print all current settings in a stty-readable form
-  synonyms:
-  - -g
-  - --save
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: open and use the specified DEVICE instead of stdin
-  synonyms:
-  - -F
-  - --file
-  args: !SimpleFlagArg
-    name: DEVICE
-  optional: true
-- !Flag
-  description: same as icanon
-  synonyms:
-  - -cbreak
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: same as raw
-  synonyms:
-  - -cooked
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: same as -parenb cs8
-  synonyms:
-  - -evenp
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: same as parenb istrip opost cs7
-  synonyms:
-  - -litout
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: same as icrnl -inlcr -igncr onlcr -ocrnl -onlret
-  synonyms:
-  - -nl
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: same as -parenb cs8
-  synonyms:
-  - -oddp
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "same as parenb istrip cs7\nraw           same as -ignbrk -brkint -ignpar\
-    \ -parmrk -inpck -istrip\n-inlcr -igncr -icrnl -ixon -ixoff -icanon -opost\n-isig\
-    \ -iuclc -ixany -imaxbel -xcase min 1 time 0\n-raw          same as cooked\nsane\
-    \          same as cread -ignbrk brkint -inlcr -igncr icrnl\nicanon iexten echo\
+  position: 0
+  name: pass8
+  description: same as -parenb -istrip cs8
+- !Positional
+  optional: false
+  position: 1
+  name: raw
+  description: same as -ignbrk -brkint -ignpar -parmrk -inpck -istrip
+- !Positional
+  optional: false
+  position: 2
+  name: sane
+  description: "same as cread -ignbrk brkint -inlcr -igncr icrnl\nicanon iexten echo\
     \ echoe echok -echonl -noflsh\n-ixoff -iutf8 -iuclc -ixany imaxbel -xcase -olcuc\
     \ -ocrnl\nopost -ofill onlcr -onocr -onlret nl0 cr0 tab0 bs0 vt0 ff0\nisig -tostop\
     \ -ofdel -echoprt echoctl echoke -flusho,\nall special characters to their default\
     \ values"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --all
+  description: print all current settings in human-readable form
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --save
+  description: print all current settings in a stty-readable form
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --file
+  description: open and use the specified DEVICE instead of stdin
+  args: !SimpleFlagArg
+    name: DEVICE
+- !Flag
+  optional: true
+  synonyms:
+  - -cbreak
+  description: same as icanon
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cooked
+  description: same as raw
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -evenp
+  description: same as -parenb cs8
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -litout
+  description: same as parenb istrip opost cs7
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nl
+  description: same as icrnl -inlcr -igncr onlcr -ocrnl -onlret
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -oddp
+  description: same as -parenb cs8
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -pass8
+  description: same as parenb istrip cs7
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -inlcr
+  - -igncr
+  - -icrnl
+  - -ixon
+  - -ixoff
+  - -icanon
+  - -opost
+  - -isig
+  - -iuclc
+  - -ixany
+  - -imaxbel
+  - -xcase
+  description: 1 time 0
+  args: !SimpleFlagArg
+    name: min
+- !Flag
+  optional: true
+  synonyms:
+  - -raw
+  description: same as cooked
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: display this help and exit
+  optional: true
   synonyms:
   - --help
+  description: display this help and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: output version information and exit
+  optional: true
   synonyms:
   - --version
+  description: output version information and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: stty [-F DEVICE | --file=DEVICE] [SETTING]...\n  or:  stty [-F\
   \ DEVICE | --file=DEVICE] [-a|--all]\n  or:  stty [-F DEVICE | --file=DEVICE] [-g|--save]\n\
   Print or change terminal characteristics.\n\nMandatory arguments to long options\
@@ -249,3 +285,4 @@ help_text: "Usage: stty [-F DEVICE | --file=DEVICE] [SETTING]...\n  or:  stty [-
   \ '(coreutils) stty invocation'\n"
 generated_using:
 - --help
+docker_image:

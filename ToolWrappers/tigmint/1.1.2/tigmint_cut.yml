@@ -3,82 +3,82 @@ command:
 - tigmint-cut
 positional:
 - !Positional
-  description: "Reference genome fasta file (must have FAI index\ngenerated)"
+  optional: false
   position: 0
   name: fasta
-  optional: false
+  description: "Reference genome fasta file (must have FAI index\ngenerated)"
 - !Positional
-  description: Sorted bed file of molecule extents
+  optional: false
   position: 1
   name: bed
-  optional: false
+  description: Sorted bed file of molecule extents
 named:
 - !Flag
-  description: The output FASTA file.
+  optional: true
   synonyms:
   - -o
   - --fastaout
+  description: The output FASTA file.
   args: !SimpleFlagArg
     name: FASTAOUT
-  optional: true
 - !Flag
-  description: "The output BED file. Default is the output FASTA\nfilename plus .bed"
+  optional: true
   synonyms:
   - -b
   - --bedout
+  description: "The output BED file. Default is the output FASTA\nfilename plus .bed"
   args: !SimpleFlagArg
     name: BEDOUT
-  optional: true
 - !Flag
-  description: Number of parallel processes to launch [8]
+  optional: true
   synonyms:
   - -p
   - --processes
+  description: Number of parallel processes to launch [8]
   args: !SimpleFlagArg
     name: PROCESSES
-  optional: true
 - !Flag
-  description: "Window size used to check for spanning molecules (bp)\n[1000]"
+  optional: true
   synonyms:
   - -w
   - --window
+  description: "Window size used to check for spanning molecules (bp)\n[1000]"
   args: !SimpleFlagArg
     name: WINDOW
-  optional: true
 - !Flag
-  description: "Spanning molecules threshold (no misassembly in window\nif num. spanning\
-    \ molecules >= n [2])"
+  optional: true
   synonyms:
   - -n
   - --spanning
+  description: "Spanning molecules threshold (no misassembly in window\nif num. spanning\
+    \ molecules >= n [2])"
   args: !SimpleFlagArg
     name: SPANNING
-  optional: true
 - !Flag
-  description: Number of base pairs to trim at contig cuts (bp) [0]
+  optional: true
   synonyms:
   - -t
   - --trim
+  description: Number of base pairs to trim at contig cuts (bp) [0]
   args: !SimpleFlagArg
     name: TRIM
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: tigmint-cut [-h] [--version] -o FASTAOUT [-b BEDOUT] [-p PROCESSES]\n\
   \                   [-w WINDOW] [-n SPANNING] [-t TRIM]\n                   fasta\
   \ bed\n\nFind misassembled regions in assembly using Chromium molecule extents\n\
@@ -98,3 +98,4 @@ help_text: "usage: tigmint-cut [-h] [--version] -o FASTAOUT [-b BEDOUT] [-p PROC
   \ trim at contig cuts (bp) [0]\n"
 generated_using:
 - --help
+docker_image:

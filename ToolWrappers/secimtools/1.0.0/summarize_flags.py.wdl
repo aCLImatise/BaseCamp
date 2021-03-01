@@ -12,6 +12,9 @@ task SummarizeFlagspy {
       ~{if defined(id) then ("--ID " +  '"' + id + '"') else ""} \
       ~{if defined(out_summary) then ("--outSummary " +  '"' + out_summary + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     flags: "Flag file."
     id: "Name of the column with unique identifiers."

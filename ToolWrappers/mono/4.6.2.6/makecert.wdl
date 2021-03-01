@@ -20,6 +20,9 @@ task Makecert {
       ~{if defined(iv) then ("-iv " +  '"' + iv + '"') else ""} \
       ~{if defined(ic) then ("-ic " +  '"' + ic + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     subject_distinguished_name: "Subject Distinguished Name"
     in: "Issuer Distinguished Name"

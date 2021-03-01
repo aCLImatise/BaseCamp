@@ -18,6 +18,9 @@ task TsvToBiompy {
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_tsv: "This input file contain the abundance and metadata\\n(format: TSV)."
     input_multi_affi: "This input file will contain information about\\nmultiple alignements (format: TSV). Use this option\\nonly if your affiliation has been produced by FROGS."

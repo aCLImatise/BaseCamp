@@ -8,6 +8,9 @@ task LynerRead {
     lyner read \
       ~{matrix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: ""
   }

@@ -6,20 +6,16 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_jacques_dot_van_helden_backslash_at_univ_am_udot_fr
-  doc: "\e[1mCATEGORY\e[0m"
-  type: string
-  inputBinding:
-    position: 0
 - id: in_genome
   doc: "\e[1mUSAGE\e[0m"
   type: string
   inputBinding:
-    position: 1
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

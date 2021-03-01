@@ -28,6 +28,9 @@ task CollapseIsoformsBySampy {
       ~{if defined(fl_nc_coverage) then ("--flnc_coverage " +  '"' + fl_nc_coverage + '"') else ""} \
       ~{if (dun_merge_five_shorter) then "--dun-merge-5-shorter" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fafq_filename: "Input FA/FQ filename"
     fq: "Input is a fastq file (default is fasta)"

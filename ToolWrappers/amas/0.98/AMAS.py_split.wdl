@@ -2,7 +2,6 @@ version 1.0
 
 task AMASpySplit {
   input {
-    Array[String] i
     File? split_by
     Boolean? remove_empty
     File? out_format
@@ -15,7 +14,6 @@ task AMASpySplit {
   command <<<
     AMAS_py split \
       ~{check} \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(split_by) then ("--split-by " +  '"' + split_by + '"') else ""} \
       ~{if (remove_empty) then "--remove-empty" else ""} \
       ~{if defined(out_format) then ("--out-format " +  '"' + out_format + '"') else ""} \
@@ -24,8 +22,10 @@ task AMASpySplit {
       ~{if defined(in_format) then ("--in-format " +  '"' + in_format + '"') else ""} \
       ~{if defined(data_type) then ("--data-type " +  '"' + data_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    i: "{fasta,phylip,nexus,phylip-int,nexus-int} -d {aa,dna}"
     split_by: "File name for partitions to be used for alignment\\nsplitting."
     remove_empty: "Remove taxa with sequences composed of only\\nundetermined characters? Default: Don't remove"
     out_format: "File format for the output alignment. Default: fasta"

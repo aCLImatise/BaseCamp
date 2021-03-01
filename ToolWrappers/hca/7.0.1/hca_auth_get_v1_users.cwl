@@ -1,15 +1,16 @@
 class: CommandLineTool
 id: hca_auth_get_v1_users.cwl
 inputs:
-- id: in_next_token
-  doc: ''
-  type: string
+- id: in_no_paginate
+  doc: Do not automatically page the responses
+  type: string?
   inputBinding:
-    prefix: --next-token
+    prefix: --no-paginate
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hca

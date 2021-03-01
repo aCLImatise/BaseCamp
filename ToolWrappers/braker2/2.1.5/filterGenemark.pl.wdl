@@ -20,6 +20,9 @@ task FilterGenemarkpl {
       ~{if defined(single_cds_file) then ("--singleCDSfile " +  '"' + single_cds_file + '"') else ""} \
       ~{if defined(cds_part_cut_off) then ("--cdspart_cutoff " +  '"' + cds_part_cut_off + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hints: "Corresponding hints file in gff format;\\nit is vital that this file contains intron\\nhints; start/stop hints are optional;\\ndo not mix start/stop hints with --singleCDSfile\\n(this might double the number of evidence supported\\nsingle exon genes)"
     genemark: "File in gtf format"

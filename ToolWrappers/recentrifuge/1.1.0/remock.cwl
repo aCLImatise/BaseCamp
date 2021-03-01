@@ -3,33 +3,33 @@ id: remock.cwl
 inputs:
 - id: in_file
   doc: 'Explicit source: Centrifuge output file as source'
-  type: File
+  type: File?
   inputBinding:
     prefix: --file
 - id: in_random
   doc: "Random score generated. Please provide the minimum hit\nlength (mhl) of the\
     \ classification; 15 by default"
-  type: long
+  type: long?
   inputBinding:
     prefix: --random
 - id: in_debug
   doc: increase output verbosity and perform additional
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_xcel
   doc: Excel file with the mock layout.
-  type: File
+  type: File?
   inputBinding:
     prefix: --xcel
 - id: in_test
   doc: generate mock data ready for testing Recentrifuge
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --test
 - id: in_nodes_path
   doc: "path for the nodes information files (nodes.dmp and\nnames.dmp from NCBI)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --nodespath
 - id: in_checks
@@ -43,9 +43,10 @@ outputs:
   type: stdout
 - id: out_file
   doc: 'Explicit source: Centrifuge output file as source'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - remock

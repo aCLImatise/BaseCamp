@@ -8,6 +8,9 @@ task EslalimapMsafile1 {
     esl_alimap msafile1 \
       ~{msa_file_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     msa_file_two: ""
   }

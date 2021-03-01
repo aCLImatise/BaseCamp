@@ -12,6 +12,9 @@ task Rmiregistry {
       ~{port} \
       ~{if (runtime_flag_pass) then "-J" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     runtime_flag_pass: "<runtime flag> Pass argument to the java interpreter"
     options: ""

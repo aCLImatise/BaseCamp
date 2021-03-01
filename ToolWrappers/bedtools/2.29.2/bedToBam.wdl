@@ -16,6 +16,9 @@ task BedToBam {
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mapq: "Set the mappinq quality for the BAM records.\\n(INT) Default: 255"
     be_done_two: "The BED file is in BED12 format.  The BAM CIGAR\\nstring will reflect BED \\\"blocks\\\"."

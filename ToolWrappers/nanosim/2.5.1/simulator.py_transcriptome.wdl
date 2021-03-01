@@ -40,6 +40,9 @@ task SimulatorpyTranscriptome {
       ~{if defined(num_threads) then ("--num_threads " +  '"' + num_threads + '"') else ""} \
       ~{if (uracil) then "--uracil" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_t: "Input reference transcriptome"
     ref_g: "Input reference genome, required if intron retention\\nsimulatin is on"

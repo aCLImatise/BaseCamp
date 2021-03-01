@@ -28,6 +28,9 @@ task GNPSExport {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_cm: "*                        Input file containing consensus elements with 'peptide' annotations (valid formats: 'consensusXML')"
     in_mzm_l: "*                     Original mzml files containing ms/ms spectrum information (valid formats: 'mzML')"

@@ -32,6 +32,9 @@ task ComputeOrderedMatrix {
       ~{if defined(plot_output) then ("--plotOutput " +  '"' + plot_output + '"') else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     score_filename: "bigwig files, the ordered matrix is computedfrom.\\n(default: None)"
     regions_filename: "BED files definig the genomic regions of the\\nmatrix.Multiple files can be provided, but the per\\ngroup information will be lost due to the clustering\\n(default: None)"

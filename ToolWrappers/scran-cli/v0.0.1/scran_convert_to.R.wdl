@@ -16,6 +16,9 @@ task ScranconverttoR {
       ~{if defined(get_spikes) then ("--get-spikes " +  '"' + get_spikes + '"') else ""} \
       ~{if defined(output_converted) then ("--output-converted " +  '"' + output_converted + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sce_object: "Path to the input SCE object in rds format."
     type: "A string specifying the analysis for which the object should be prepared. Any of: \\\"edgeR\\\", \\\"DESeq2\\\", \\\"monocle\\\"."

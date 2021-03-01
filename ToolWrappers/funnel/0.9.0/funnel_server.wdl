@@ -126,6 +126,9 @@ task FunnelServer {
       ~{if defined(worker_dot_workdir) then ("--Worker.WorkDir " +  '"' + worker_dot_workdir + '"') else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aws_batch_dot_job_definition: "AWS Batch job definition name or ARN"
     aws_batch_dot_job_queue: "AWS Batch job queue name or ARN"

@@ -16,6 +16,9 @@ task RsatMergematrices {
       ~{formats_dot} \
       ~{rescan_matrix_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     merge_matrices: "[1mVERSION[0m"
     pssm: "[1mUSAGE[0m"

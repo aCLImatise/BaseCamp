@@ -5,44 +5,47 @@ command:
 positional: []
 named:
 - !Flag
-  description: Path to input BIOM table.  [required]
+  optional: true
   synonyms:
   - -i
   - --table_fp
+  description: Path to input BIOM table.  [required]
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Path to sample metadata mapping file.\n[required]"
+  optional: true
   synonyms:
   - -m
   - --mapping_fp
+  description: "Path to sample metadata mapping file.\n[required]"
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Path to the output directory to be created.\n[required]"
+  optional: true
   synonyms:
   - -o
   - --output_dir
+  description: "Path to the output directory to be created.\n[required]"
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Classify each sample in `sources` using a\nleave-one-out strategy.\
-    \ Replicates -s option\nin Knights et al. sourcetracker.  [default:\nFalse]"
+  optional: true
   synonyms:
   - --loo
+  description: "Classify each sample in `sources` using a\nleave-one-out strategy.\
+    \ Replicates -s option\nin Knights et al. sourcetracker.  [default:\nFalse]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Number of processes to launch.  [default: 1]'
+  optional: true
   synonyms:
   - --jobs
+  description: 'Number of processes to launch.  [default: 1]'
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --alpha1
   description: "Prior counts of each species in the training\nenvironments. Higher\
     \ values decrease the\ntrust in the training environments, and make\nthe source\
     \ environment distrubitons over\ntaxa smoother. By default, this is set to\n0.001,\
@@ -50,132 +53,129 @@ named:
     \ with\nfew training sequences. This is useful when\nonly a small number of biological\
     \ samples\nare available from a source environment. A\nmore conservative value\
     \ would be 0.01.\n[default: 0.001]"
-  synonyms:
-  - --alpha1
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --alpha2
   description: "Prior counts of each species in Unknown\nenvironment. Higher values\
     \ make the Unknown\nenvironment smoother and less prone to\noverfitting given\
     \ a training sample.\n[default: 0.001]"
-  synonyms:
-  - --alpha2
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Count to be added to each species in each\nenvironment, including\
-    \ `unknown`.  [default:\n10]"
+  optional: true
   synonyms:
   - --beta
+  description: "Count to be added to each species in each\nenvironment, including\
+    \ `unknown`.  [default:\n10]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Depth at which to rarify sources. If 0, no\nrarefaction performed.\
-    \  [default: 1000]"
+  optional: true
   synonyms:
   - --source_rarefaction_depth
+  description: "Depth at which to rarify sources. If 0, no\nrarefaction performed.\
+    \  [default: 1000]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Depth at which to rarify sinks. If 0, no\nrarefaction performed. \
-    \ [default: 1000]"
+  optional: true
   synonyms:
   - --sink_rarefaction_depth
+  description: "Depth at which to rarify sinks. If 0, no\nrarefaction performed. \
+    \ [default: 1000]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --restarts
   description: "Number of independent Markov chains to grow.\n`draws_per_restart`\
     \ * `restarts` gives the\nnumber of samplings of the mixing\nproportions that\
     \ will be generated.\n[default: 10]"
-  synonyms:
-  - --restarts
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Number of times to sample the state of the\nMarkov chain for each\
-    \ independent chain\ngrown.  [default: 1]"
+  optional: true
   synonyms:
   - --draws_per_restart
+  description: "Number of times to sample the state of the\nMarkov chain for each\
+    \ independent chain\ngrown.  [default: 1]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --burnin
   description: "Number of passes (withdarawal and\nreassignment of every sequence\
     \ in the sink)\nthat will be made before a sample (draw)\nwill be taken. Higher\
     \ values allow more\nconvergence towards the true distribtion\nbefore draws are\
     \ taken.  [default: 100]"
-  synonyms:
-  - --burnin
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --delay
   description: "Number passes between each sampling (draw)\nof the Markov chain. Once\
     \ the burnin passes\nhave been made, a sample will be taken every\n`delay` number\
     \ of passes. This is also known\nas `thinning`. Thinning helps reduce the\nimpact\
     \ of correlation between adjacent\nstates of the Markov chain.  [default: 10]"
-  synonyms:
-  - --delay
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cluster_start_delay
   description: "When using multiple jobs, the script has to\nstart an `ipcluster`.\
     \ If ipcluster does not\nrecognize that it has been successfully\nstarted, the\
     \ jobs will not be successfully\nlaunched. If this is happening, increase\nthis\
     \ parameter.  [default: 25]"
-  synonyms:
-  - --cluster_start_delay
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Sample metadata column indicating which\nsamples should be treated\
-    \ as sources and\nwhich as sinks.  [default: SourceSink]"
+  optional: true
   synonyms:
   - --source_sink_column
+  description: "Sample metadata column indicating which\nsamples should be treated\
+    \ as sources and\nwhich as sinks.  [default: SourceSink]"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Value in source_sink_column indicating which\nsamples should be treated\
-    \ as sources.\n[default: source]"
+  optional: true
   synonyms:
   - --source_column_value
+  description: "Value in source_sink_column indicating which\nsamples should be treated\
+    \ as sources.\n[default: source]"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Value in source_sink_column indicating which\nsamples should be treated\
-    \ as sinks.\n[default: sink]"
+  optional: true
   synonyms:
   - --sink_column_value
+  description: "Value in source_sink_column indicating which\nsamples should be treated\
+    \ as sinks.\n[default: sink]"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Sample metadata column indicating the type\nof each source sample.\
-    \  [default: Env]"
+  optional: true
   synonyms:
   - --source_category_column
+  description: "Sample metadata column indicating the type\nof each source sample.\
+    \  [default: Env]"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: sourcetracker2 gibbs [OPTIONS]\n\n  Gibb's sampler for Bayesian\
@@ -250,3 +250,4 @@ help_text: "Usage: sourcetracker2 gibbs [OPTIONS]\n\n  Gibb's sampler for Bayesi
   \  [default: Env]\n  --help                          Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

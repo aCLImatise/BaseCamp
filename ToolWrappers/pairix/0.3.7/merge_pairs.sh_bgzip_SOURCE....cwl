@@ -3,22 +3,22 @@ id: merge_pairs.sh_bgzip_SOURCE....cwl
 inputs:
 - id: in_write_to_stdout
   doc: Write to stdout
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_force
   doc: Force
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_test_file_integrity
   doc: Test file integrity
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
 - id: in_cft
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -cft
 - id: in_gunzip
@@ -28,13 +28,14 @@ inputs:
     position: 0
 - id: in_file
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - merge-pairs.sh

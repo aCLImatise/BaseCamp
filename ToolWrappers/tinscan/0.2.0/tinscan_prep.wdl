@@ -16,6 +16,9 @@ task Tinscanprep {
       ~{if defined(b_dir) then ("--bdir " +  '"' + b_dir + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target: "Multifasta containing A genome."
     query: "Multifasta containing B genome."

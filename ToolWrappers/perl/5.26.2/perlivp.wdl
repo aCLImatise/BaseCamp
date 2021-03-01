@@ -12,6 +12,9 @@ task Perlivp {
       ~{if defined(mode_information_print) then ("-v " +  '"' + mode_information_print + '"') else ""} \
       ~{if defined(this_help_message) then ("-h " +  '"' + this_help_message + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     preface_test_telling: "a preface before each test telling what it will test."
     mode_information_print: "mode in which extra information about test results\\nis printed.  Test failures always print out some extra information\\nregardless of whether or not this switch is set."

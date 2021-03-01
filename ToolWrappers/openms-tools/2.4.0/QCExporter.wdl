@@ -22,6 +22,9 @@ task QCExporter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*        Input qcml file (valid formats: 'qcML')"
     names: "The name of the target runs or sets to be exported from. If empty, from all will be exported."

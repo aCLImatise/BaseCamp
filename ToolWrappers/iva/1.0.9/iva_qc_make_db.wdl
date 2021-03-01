@@ -20,6 +20,9 @@ task IvaQcMakeDb {
       ~{if defined(max_db_size) then ("--max_db_size " +  '"' + max_db_size + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_to_ref: "Filename of Genbank IDs or GI numbers to be added to\\ndatabase. Format is: whitespace separated list of GI\\nnumbers on each line. One line defines one genome\\n(e.g. flu is 8 segments, so put 8 GI numbers on one\\nline for one flu reference)"
     skip_viruses: "Do not run kraken-build --download-library viruses\\nwhen building the database. If this option used, then\\n--add_to_ref must also be used"

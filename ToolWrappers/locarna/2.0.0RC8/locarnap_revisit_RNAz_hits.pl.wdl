@@ -4,6 +4,9 @@ task LocarnaprevisitRNAzhitspl {
   command <<<
     locarnap_revisit_RNAz_hits_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

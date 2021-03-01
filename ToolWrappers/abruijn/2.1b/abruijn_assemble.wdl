@@ -8,7 +8,7 @@ task Abruijnassemble {
     Int? minimum_overlap_reads
     Boolean? enable_debug_output
     File? output_log_file
-    File? storeload_overlaps_file
+    File? storeload_overlaps_tofrom
     Int? number_parallel_threads
     String out_assembly
     String coverage
@@ -23,9 +23,12 @@ task Abruijnassemble {
       ~{if defined(minimum_overlap_reads) then ("-v " +  '"' + minimum_overlap_reads + '"') else ""} \
       ~{if (enable_debug_output) then "-d" else ""} \
       ~{if defined(output_log_file) then ("-l " +  '"' + output_log_file + '"') else ""} \
-      ~{if defined(storeload_overlaps_file) then ("-o " +  '"' + storeload_overlaps_file + '"') else ""} \
+      ~{if defined(storeload_overlaps_tofrom) then ("-o " +  '"' + storeload_overlaps_tofrom + '"') else ""} \
       ~{if defined(number_parallel_threads) then ("-t " +  '"' + number_parallel_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_size: "k-mer size [default = 15]"
     minimum_kmer_coverage: "minimum k-mer coverage [default = auto]"
@@ -33,7 +36,7 @@ task Abruijnassemble {
     minimum_overlap_reads: "minimum overlap between reads [default = 5000]"
     enable_debug_output: "enable debug output [default = false]"
     output_log_file: "output log to file [default = not set]"
-    storeload_overlaps_file: "store/load overlaps to/from file [default = not set]"
+    storeload_overlaps_tofrom: "store/load overlaps to/from file [default = not set]"
     number_parallel_threads: "number of parallel threads [default = 1]"
     out_assembly: "path to output file"
     coverage: "estimated assembly coverage"

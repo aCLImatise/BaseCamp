@@ -3,12 +3,12 @@ id: get_seqs_from_list.py.cwl
 inputs:
 - id: in_partial
   doc: OK if seq IDs only match the beginning
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --partial
 - id: in_exclude
   doc: Output sequences NOT in the list, default OFF
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --exclude
 - id: in_list_filename
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - get_seqs_from_list.py

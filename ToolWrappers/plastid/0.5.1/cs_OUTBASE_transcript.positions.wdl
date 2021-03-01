@@ -8,6 +8,9 @@ task CsOUTBASETranscriptpositions {
     cs OUTBASE_transcript_positions \
       ~{cs}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cs: ""
   }

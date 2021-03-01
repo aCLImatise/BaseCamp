@@ -20,6 +20,9 @@ task Graphtofasta {
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""} \
       ~{if defined(log_async) then ("--log-async " +  '"' + log_async + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_json_files: "[ --graph-spec ] arg    JSON file(s) describing the graph"
     arg_output_file: "[ --output-file ] arg   Output file name. Will output to stdout if '-' or\\nneither of output-file or output-folder provided."

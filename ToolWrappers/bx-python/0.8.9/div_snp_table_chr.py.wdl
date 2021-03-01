@@ -20,6 +20,9 @@ task DivSnpTableChrpy {
       ~{if defined(suffix) then ("--suffix " +  '"' + suffix + '"') else ""} \
       ~{if defined(lens) then ("--lens " +  '"' + lens + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mask: "Mask AR and features with this file"
     suffix: "append suffix to chromosomes to get filenames from\\ndiv_directory"

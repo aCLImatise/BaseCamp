@@ -16,6 +16,9 @@ task KtClassifyHits {
       ~{score} \
       ~{count}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hits: "Tabular file whose fields are [query, subject, score]. Subject must\\nbe an accession or contain one in the fourth field of pipe notation\\n(e.g. \\\"gi|12345|xx|ABC123.1|\\\". The subject and score can be omitted to\\ninclude a query that has no hits, which will be assigned a taxonomy ID\\nof -1.\\n_________"
     query_id: "The query ID as it appears in the input."

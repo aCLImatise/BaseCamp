@@ -26,6 +26,9 @@ task Triqler {
       ~{if defined(write_group_posteriors) then ("--write_group_posteriors " +  '"' + write_group_posteriors + '"') else ""} \
       ~{if defined(write_fold_change_posteriors) then ("--write_fold_change_posteriors " +  '"' + write_fold_change_posteriors + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_file: "Path to output file (writing in TSV format). N.B. if\\nmore than 2 treatment groups are present, suffixes\\nwill be added before the file extension. (default:\\nproteins.tsv)"
     fold_change_eval: "log2 fold change evaluation threshold. (default: 1.0)"

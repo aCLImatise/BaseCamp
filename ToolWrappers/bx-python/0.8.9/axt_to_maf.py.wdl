@@ -8,6 +8,9 @@ task AxtToMafpy {
     axt_to_maf_py \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     silent: ": prevents stats report"
   }

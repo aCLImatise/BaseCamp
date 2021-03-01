@@ -20,6 +20,9 @@ task PauvreStats {
       ~{if defined(filt_min_len) then ("--filt_minlen " +  '"' + filt_min_len + '"') else ""} \
       ~{if defined(filt_min_qual) then ("--filt_minqual " +  '"' + filt_min_qual + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     fast_q: "The input FASTQ file."

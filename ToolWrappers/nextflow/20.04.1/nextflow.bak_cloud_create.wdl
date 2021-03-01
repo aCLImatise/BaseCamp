@@ -22,6 +22,9 @@ task NextflowbakCloudCreate {
       ~{if (profile) then "-profile" else ""} \
       ~{if (skip_launch_confirmation) then "-y" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     instance_count: "Instances count"
     image_id: "Image ID"

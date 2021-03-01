@@ -28,6 +28,9 @@ task TripailleAnalysisLoadInterpro {
       ~{if defined(description) then ("--description " +  '"' + description + '"') else ""} \
       ~{if defined(date_executed) then ("--date_executed " +  '"' + date_executed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     interpro_parameters: "InterProScan parameters used to produce these"
     query_type: "The feature type (e.g. 'gene', 'mRNA', 'contig')\\nof the query. It must be a valid Sequence\\nOntology term."

@@ -40,6 +40,9 @@ task IpaDist {
       ~{if (only_print) then "--only-print" else ""} \
       ~{if defined(cluster_args) then ("--cluster-args " +  '"' + cluster_args + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fn: "(Required.) Input reads in FASTA, FASTQ, BAM, XML or FOFN formats. Repeat \\\"-i fn1 -i fn2\\\" for multiple inputs, or use a \\\"file-of-filenames\\\", e.g. \\\"-i foo.fofn\\\". (default: [])"
     no_polish: "Skip polishing. (default: False)"

@@ -24,6 +24,9 @@ task GcloudSpannerInstances {
       ~{set_i_am_policy} \
       ~{update}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_i_am_policy_binding: "Add an IAM policy binding to a Cloud Spanner instance."
     create: "Create a Cloud Spanner instance."

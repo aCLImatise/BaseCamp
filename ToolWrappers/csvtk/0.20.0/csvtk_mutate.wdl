@@ -44,6 +44,9 @@ task CsvtkMutate {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fields: "select only these fields. e.g -f 1,2 or -f columnA,columnB (default \\\"1\\\")"
     ignore_case: "ignore case"

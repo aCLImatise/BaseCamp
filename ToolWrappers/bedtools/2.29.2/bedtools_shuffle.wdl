@@ -30,6 +30,9 @@ task BedtoolsShuffle {
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     excl: "A BED/GFF/VCF file of coordinates in which features in -i\\nshould not be placed (e.g. gaps.bed)."
     incl: "Instead of randomly placing features in a genome, the -incl\\noptions defines a BED/GFF/VCF file of coordinates in which\\nfeatures in -i should be randomly placed (e.g. genes.bed).\\nLarger -incl intervals will contain more shuffled regions.\\nThis method DISABLES -chromFirst."

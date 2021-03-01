@@ -8,6 +8,9 @@ task MakeDbpyDbfail {
     MakeDb_py db_fail \
       ~{make_db_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     make_db_do_tpy: ""
   }

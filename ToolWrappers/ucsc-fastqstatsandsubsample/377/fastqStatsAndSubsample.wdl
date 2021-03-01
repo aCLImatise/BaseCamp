@@ -18,6 +18,9 @@ task FastqStatsAndSubsample {
       ~{if (small_ok) then "-smallOk" else ""} \
       ~{if (json) then "-json" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample_size: "- default 100000"
     seed: "- Use given seed for random number generator.  Default 0."

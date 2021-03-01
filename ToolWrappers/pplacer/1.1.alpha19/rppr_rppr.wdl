@@ -32,6 +32,9 @@ task RpprRppr {
       ~{ref_tree} \
       ~{re_root}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rp_pr: "check          checks a reference package"
     convex_tax_ids: "determines convex tax_ids per-rank in a refpkg"

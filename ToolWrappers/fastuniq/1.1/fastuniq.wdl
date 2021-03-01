@@ -16,6 +16,9 @@ task Fastuniq {
       ~{if (second_output_file) then "-p" else ""} \
       ~{if (types_sequence_descriptions) then "-c" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_list: ": The input file list of paired FSATQ sequence files [FILE IN]\\nMaximum 1000 pairs"
     output_sequence_format: ": Output sequence format [q/f/p]\\nq : FASTQ format into TWO output files\\nf : FASTA format into TWO output files\\np : FASTA format into ONE output file\\ndefault = q"

@@ -3,17 +3,17 @@ id: capC_MAP_genomedigest.cwl
 inputs:
 - id: in_input_fasta_file
   doc: input fasta file of geneome
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
-- id: in_name_cutting_sequence
+- id: in_name_supported_enzyme
   doc: name of supported enzyme, or cutting sequence
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
 - id: in_output_bed_file
   doc: output bed file of restriction fragments
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_bed_file
   doc: output bed file of restriction fragments
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_bed_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - capC-MAP

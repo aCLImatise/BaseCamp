@@ -4,18 +4,18 @@ inputs:
 - id: in_limit
   doc: "Feature type (string), or level (integer). No children\nbelow this level will\
     \ be returned (default: -)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --limit
 - id: in_exclude
   doc: "Comma-separated list of featuretypes to filter out (like\ngrep -v) (default:\
     \ -)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --exclude
 - id: in_exclude_self
   doc: "Use this to suppress reporting the IDs you've provided.\n(default: False)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --exclude-self
 - id: in_db
@@ -36,6 +36,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gffutils-cli

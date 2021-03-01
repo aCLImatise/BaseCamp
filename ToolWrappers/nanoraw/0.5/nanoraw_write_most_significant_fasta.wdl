@@ -2,10 +2,10 @@ version 1.0
 
 task NanorawWriteMostSignificantFasta {
   input {
-    Array[Int] fast_five_based_irs_two
     Array[String] base_call_subgroups
     Boolean? two_d
     Array[Int] fast_five_based_irs
+    Array[Int] fast_five_based_irs_two
     Int? corrected_group
     Array[String] obs_per_base_filter
     String? test_type
@@ -21,10 +21,10 @@ task NanorawWriteMostSignificantFasta {
   }
   command <<<
     nanoraw write_most_significant_fasta \
-      ~{if defined(fast_five_based_irs_two) then ("--fast5-basedirs2 " +  '"' + fast_five_based_irs_two + '"') else ""} \
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (two_d) then "--2d" else ""} \
       ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
+      ~{if defined(fast_five_based_irs_two) then ("--fast5-basedirs2 " +  '"' + fast_five_based_irs_two + '"') else ""} \
       ~{if defined(corrected_group) then ("--corrected-group " +  '"' + corrected_group + '"') else ""} \
       ~{if defined(obs_per_base_filter) then ("--obs-per-base-filter " +  '"' + obs_per_base_filter + '"') else ""} \
       ~{if defined(test_type) then ("--test-type " +  '"' + test_type + '"') else ""} \
@@ -38,11 +38,14 @@ task NanorawWriteMostSignificantFasta {
       ~{if defined(num_bases) then ("--num-bases " +  '"' + num_bases + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    fast_five_based_irs_two: "[--corrected-group CORRECTED_GROUP]\\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]\\n| --2d]\\n[--obs-per-base-filter OBS_PER_BASE_FILTER [OBS_PER_BASE_FILTER ...]]\\n[--test-type {mw_utest,ttest}]\\n[--fishers-method-offset FISHERS_METHOD_OFFSET]\\n[--minimum-test-reads MINIMUM_TEST_READS]\\n[--genome-fasta GENOME_FASTA]\\n[--sequences-filename SEQUENCES_FILENAME]\\n[--statistics-filename STATISTICS_FILENAME]\\n[--num-regions NUM_REGIONS]\\n[--q-value-threshold Q_VALUE_THRESHOLD]\\n[--num-bases NUM_BASES] [--quiet]\\n[--help]"
     base_call_subgroups: "FAST5 subgroup (under Analyses/[corrected-group])\\nwhere individual template and/or complement reads are\\nstored. Default: ['BaseCalled_template']"
     two_d: "Input contains 2D reads. Equivalent to `--basecall-\\nsubgroups BaseCalled_template BaseCalled_complement`"
     fast_five_based_irs: "Directories containing fast5 files."
+    fast_five_based_irs_two: "Second set of directories containing fast5 files to\\ncompare."
     corrected_group: "FAST5 group to access/plot created by\\ngenome_resquiggle script. Default:\\nRawGenomeCorrected_000"
     obs_per_base_filter: "Filter reads for plotting baseed on threshold of\\npercentiles of the number of observations assigned to\\na base (default no filter). Format thresholds as\\n\\\"percentile:thresh [pctl2:thresh2 ...]\\\" E.g. reads\\nwith 99th pctl <200 obs and max <5k obs would be\\n\\\"99:200 100:5000\\\"."
     test_type: "Type of significance test to apply. Choices are:\\nmw_utest (default; mann-whitney u-test), ttest."

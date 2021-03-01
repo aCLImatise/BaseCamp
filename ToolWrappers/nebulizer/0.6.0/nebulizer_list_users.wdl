@@ -14,6 +14,9 @@ task NebulizerListUsers {
       ~{if (long) then "--long" else ""} \
       ~{if (show_id) then "--show_id" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "list only users with matching email or user name. Can include\\nglob-style wild-cards."
     long: "use a long listing format that includes ids, disk usage and\\nadmin status."

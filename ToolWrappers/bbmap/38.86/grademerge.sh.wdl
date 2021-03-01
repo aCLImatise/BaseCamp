@@ -8,6 +8,9 @@ task Grademergesh {
     grademerge_sh \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
   }

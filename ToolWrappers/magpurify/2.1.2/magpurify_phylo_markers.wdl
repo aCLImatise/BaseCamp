@@ -34,6 +34,9 @@ task MagpurifyPhylomarkers {
       ~{if (allow_no_class) then "--allow_noclass" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Path to reference database. By default, the\\nMAGPURIFYDB environmental variable is used (default:\\nNone)"
     continue: "Go straight to quality estimation and skip all\\nprevious steps (default: False)"

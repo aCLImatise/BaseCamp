@@ -12,6 +12,9 @@ task DeepacEval {
       ~{if defined(reads) then ("--reads " +  '"' + reads + '"') else ""} \
       ~{if defined(ensemble) then ("--ensemble " +  '"' + ensemble + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     species: "Species-wise evaluation."
     reads: "Read-wise evaluation."

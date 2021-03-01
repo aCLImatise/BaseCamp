@@ -30,6 +30,9 @@ task Eoulsansh {
       ~{if (version) then "-version" else ""} \
       ~{if defined(jvm_working_directory) then ("-w " +  '"' + jvm_working_directory + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display information about this software"
     conf: "configuration file to use"

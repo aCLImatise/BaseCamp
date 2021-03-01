@@ -72,6 +72,9 @@ task Reaper {
       ~{if defined(polya) then ("-polya " +  '"' + polya + '"') else ""} \
       ~{if defined(sc_max) then ("-sc-max " +  '"' + sc_max + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     geom: "mode in {no-bc, 3p-bc, 5p-bc}"
     file_geometrydependent_format: "file with geometry-dependent format. Required columns:\\nGeometry    Columns:\\nno-bc          3p-ad     -       -      -    tabu\\n3p-bc          3p-ad  barcode  3p-si    -    tabu\\n5p-bc          3p-ad  barcode    -    5p-si  tabu"
@@ -84,11 +87,11 @@ task Reaper {
     nnn_check: "/<outof> (default 0/0)\\ndisregard read onwards from seeing <count> N's in <outof> bases"
     three_p_global: "l/e[/g[/o]]  (default 14/2/1/0)"
     three_p_prefix: "l/e[/g[/o]]  (default 8/2/0/2)"
-    three_p_barcode: "[/g[/o]]  (default 0/6/1/0)"
-    five_p_barcode: "[/g[/o]]  (default 0/0/0/2)"
+    three_p_barcode: "/e[/g[/o]]  (default 0/6/1/0)"
+    five_p_barcode: "/e[/g[/o]]  (default 0/0/0/2)"
     mr_tabu: "l/e[/g[/o]]  (default 16/2/1/0)"
     three_p_head_to_tail: "minimal trailing perfect match length (default 0)\\nsyntax used in the above:\\nl  <int> minimum length required to count sub-alignment as match\\ne  <int> maximum allowed edit distance\\ng  <int> [optional, not active when set to 0] maximum allowed number of gaps\\no  <int> [optional, not active when set to 0] offset:\\no= 5  requires alignment to start in the first five bases of adaptor\\no=-5  requires alignment to end in the last five bases of adaptor"
-    swp: "match/substitution/gap gain/cost/cost (default 4/1/3)"
+    swp: "/S/G match/substitution/gap gain/cost/cost (default 4/1/3)"
     fast_a_in: "read FASTA input"
     record_format: "(record description, default @%I%A%n%R%n+%#%Q%n)\\n[ -record-format syntax is output when supplying --record-format ]"
     record_format_two: "(simple line formats, one field per line):\\nR  read\\nI  read identifier\\nQ  quality scores\\nD  discard field"
@@ -96,7 +99,7 @@ task Reaper {
     format_clean: "(output for clean reads)"
     format_lint: "(output for filtered reads)\\n-format-clean/lint specification syntax:\\n%R  read\\n%C  clean read\\n%Z  clean read padded with Ns if necessary\\n%V  reverse complement of clean read\\n%I  read identifier\\n%Q  clean or input read quality (for clean / lint file respectively)\\n%X  read count (only applicable if -record-format is used)\\n%Y  input read quality\\n%q<c>  clean input read quality padded with character <c>\\n%A  annotation field\\n%L  clean read length\\n%M  message describing cause for filtering (lint file)\\n%T  trinucleotide complexity score (clean/lint file)\\n%U  dUst sUffix complexity information\\n%3  best read/3p-adaptor alignment\\n%=  alignment characteristics\\nmt=matchtype\\nsc=suffix-complexity\\nht=head-tail-match\\nnn=N-match-offset\\nbb=B-match-offset\\naa=Polya-offset\\nqq=Quality-trim-offset\\n%n  newline\\n%J  record offset, unique for each read. Use to match paired-end reads\\n%f  fastq line number based on standard fastq format\\n%t  tab\\n%%  percent sign\\nAnything else is copied verbatim"
     debug: "[acl]+     a=alignments c=clean l=lint"
-    sample: "if debug, sample every c/l clean/lint read"
+    sample: "/l       if debug, sample every c/l clean/lint read"
     no_zip: "do not output gzipped files"
     no_qc: "do not output quality report files"
     bcq_early: "perform early 'B' quality filtering (when reading sequences)"

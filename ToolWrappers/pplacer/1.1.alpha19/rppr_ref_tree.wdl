@@ -24,6 +24,9 @@ task RpprRefTree {
       ~{if (rank_colored) then "--rank-colored" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_package_path: "Reference package path. Required."
     specify_filename_write: "Specify the filename to write to."

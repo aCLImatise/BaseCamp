@@ -4,6 +4,9 @@ task Fastafetch {
   command <<<
     fasta_fetch
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

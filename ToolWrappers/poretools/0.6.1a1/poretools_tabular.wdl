@@ -12,6 +12,9 @@ task PoretoolsTabular {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     type: "Which type of FASTA entries should be reported? Def.=all"

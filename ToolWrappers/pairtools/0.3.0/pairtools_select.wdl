@@ -2,7 +2,7 @@ version 1.0
 
 task PairtoolsSelect {
   input {
-    File? output_file_path
+    File? output_file_ends
     File? output_rest
     Boolean? send_comments_to
     File? chrom_subset
@@ -17,7 +17,7 @@ task PairtoolsSelect {
   command <<<
     pairtools select \
       ~{quote} \
-      ~{if defined(output_file_path) then ("--output " +  '"' + output_file_path + '"') else ""} \
+      ~{if defined(output_file_ends) then ("--output " +  '"' + output_file_ends + '"') else ""} \
       ~{if defined(output_rest) then ("--output-rest " +  '"' + output_rest + '"') else ""} \
       ~{if (send_comments_to) then "--send-comments-to" else ""} \
       ~{if defined(chrom_subset) then ("--chrom-subset " +  '"' + chrom_subset + '"') else ""} \
@@ -28,8 +28,11 @@ task PairtoolsSelect {
       ~{if defined(cmd_in) then ("--cmd-in " +  '"' + cmd_in + '"') else ""} \
       ~{if defined(cmd_out) then ("--cmd-out " +  '"' + cmd_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    output_file_path: "output file. If the path ends with .gz or\\n.lz4, the output is pbgzip-/lz4c-compressed.\\nBy default, the output is printed into\\nstdout."
+    output_file_ends: "output file. If the path ends with .gz or\\n.lz4, the output is pbgzip-/lz4c-compressed.\\nBy default, the output is printed into\\nstdout."
     output_rest: "output file for pairs of other types.  If\\nthe path ends with .gz or .lz4, the output\\nis pbgzip-/lz4c-compressed. By default, such\\npairs are dropped."
     send_comments_to: "[selected|rest|both|none]\\nWhich of the outputs should receive header\\nand comment lines  [default: both]"
     chrom_subset: "A path to a chromosomes file (tab-separated,\\n1st column contains chromosome names)\\ncontaining a chromosome subset of interest.\\nIf provided, additionally filter pairs with\\nboth sides originating from the provided\\nsubset of chromosomes. This operation\\nmodifies the #chromosomes: and #chromsize:\\nheader fields accordingly."
@@ -43,7 +46,7 @@ task PairtoolsSelect {
   }
   output {
     File out_stdout = stdout()
-    File out_output_file_path = "${in_output_file_path}"
+    File out_output_file_ends = "${in_output_file_ends}"
     File out_output_rest = "${in_output_rest}"
   }
 }

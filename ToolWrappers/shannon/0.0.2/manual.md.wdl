@@ -4,6 +4,9 @@ task Manualmd {
   command <<<
     manual_md
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

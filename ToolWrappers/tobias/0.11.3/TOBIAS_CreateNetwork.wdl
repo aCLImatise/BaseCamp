@@ -18,6 +18,9 @@ task TOBIASCreateNetwork {
       ~{if (outdir) then "--outdir" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tfbs: "[ [ ...]]   File(s) containing TFBS (with annotation) to create network from"
     origin: "File containing mapping of TF <-> origin gene"

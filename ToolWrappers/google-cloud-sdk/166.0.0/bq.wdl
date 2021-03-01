@@ -72,6 +72,9 @@ task Bq {
       ~{if (command_flags) then "--command_flags" else ""} \
       ~{if (global_flags) then "--global_flags" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     api: ": API endpoint to talk to.\\n(default: 'https://www.googleapis.com')"
     api_version: ": API version to use.\\n(default: 'v2')"

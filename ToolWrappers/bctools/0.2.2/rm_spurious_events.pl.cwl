@@ -4,17 +4,17 @@ inputs:
 - id: in_filter_alignments_supported
   doc: filter out alignments supported by less reads than this fraction of the maximum
     number of reads per position
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --frac_max
 - id: in_enable_debug_output
   doc: enable debug output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_man
   doc: full documentation
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --man
 - id: in_bed
@@ -261,6 +261,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rm_spurious_events.pl

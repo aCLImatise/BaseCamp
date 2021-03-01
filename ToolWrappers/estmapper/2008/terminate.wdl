@@ -4,6 +4,9 @@ task Terminate {
   command <<<
     terminate
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

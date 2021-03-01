@@ -2,8 +2,8 @@ version 1.0
 
 task TomboDetectModificationsDeNovo {
   input {
-    Boolean? statistics_file_basename
     Array[Int] fast_five_based_irs
+    File? statistics_file_basename
     Boolean? dna
     Boolean? rna
     Int? fishers_method_context
@@ -20,8 +20,8 @@ task TomboDetectModificationsDeNovo {
   }
   command <<<
     tombo detect_modifications de_novo \
-      ~{if (statistics_file_basename) then "--statistics-file-basename" else ""} \
       ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
+      ~{if defined(statistics_file_basename) then ("--statistics-file-basename " +  '"' + statistics_file_basename + '"') else ""} \
       ~{if (dna) then "--dna" else ""} \
       ~{if (rna) then "--rna" else ""} \
       ~{if defined(fishers_method_context) then ("--fishers-method-context " +  '"' + fishers_method_context + '"') else ""} \
@@ -36,9 +36,12 @@ task TomboDetectModificationsDeNovo {
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    statistics_file_basename: "STATISTICS_FILE_BASENAME [--dna]\\n[--rna]\\n[--fishers-method-context FISHERS_METHOD_CONTEXT]\\n[--minimum-test-reads MINIMUM_TEST_READS]\\n[--single-read-threshold SINGLE_READ_THRESHOLD [SINGLE_READ_THRESHOLD ...]]\\n[--coverage-dampen-counts COVERAGE_DAMPEN_COUNTS COVERAGE_DAMPEN_COUNTS]\\n[--per-read-statistics-basename PER_READ_STATISTICS_BASENAME]\\n[--num-most-significant-stored NUM_MOST_SIGNIFICANT_STORED]\\n[--multiprocess-region-size MULTIPROCESS_REGION_SIZE]\\n[--processes PROCESSES]\\n[--corrected-group CORRECTED_GROUP]\\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\\n[--quiet] [--help]"
     fast_five_based_irs: "Directories containing fast5 files."
+    statistics_file_basename: "File base name to save base by base statistics from\\ntesting. Filenames will be [--statistics-file-\\nbasename].[--alternate-bases]?.tombo.stats"
     dna: "Explicitly select canonical DNA model. Default:\\nAutomatically determine from FAST5s"
     rna: "Explicitly select canonical RNA model. Default:\\nAutomatically determine from FAST5s"
     fishers_method_context: "Number of context bases up and downstream over which\\nto compute Fisher's method combined p-values. Note:\\nNot applicable for alternative model likelihood ratio\\ntests. Default: 1."

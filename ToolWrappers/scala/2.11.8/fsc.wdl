@@ -84,6 +84,9 @@ task Fsc {
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ipv_four: "Use IPv4 rather than IPv6 for the server socket"
     max_idle: "Set idle timeout in minutes for fsc (use 0 for no timeout)"

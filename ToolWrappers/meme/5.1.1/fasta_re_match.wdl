@@ -12,6 +12,9 @@ task Fastarematch {
       ~{if (norc) then "-norc" else ""} \
       ~{if defined(erase) then ("-erase " +  '"' + erase + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     norc: "Only find matches to motifs in the given strand"
     erase: "erases this motif before finding matches;\\nrepeatable; order matters!"

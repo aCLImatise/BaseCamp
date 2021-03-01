@@ -20,6 +20,9 @@ task InstallToolDeps {
       ~{if defined(password) then ("--password " +  '"' + password + '"') else ""} \
       ~{if defined(api_key) then ("--api_key " +  '"' + api_key + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_tool_file: "[TOOL [TOOL ...]], --tool [TOOL [TOOL ...]]\\nPath to a tool file, tool_conf file, or yaml file\\ncontaining a sequence of tool ids"
     spaceseparated_list_tool: "[ID [ID ...]], --id [ID [ID ...]]\\nSpace-separated list of tool ids"

@@ -62,6 +62,9 @@ task RgtTHOR {
       ~{if defined(a_threshold) then ("--a_threshold " +  '"' + a_threshold + '"') else ""} \
       ~{if (rmd_up) then "--rmdup" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "Experiment's name and prefix for all files that are"
     no_merge_bin: "Merge the overlapping bin before filtering by\\np-value.[default: Merging bins]"

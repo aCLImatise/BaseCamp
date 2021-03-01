@@ -14,8 +14,11 @@ task FastqutilsDi {
       ~{mate_two_file} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    verbose: "-s, --strip    Strip additional info\\n--help         Show this message and exit.\\n"
+    verbose: "Strip additional info"
     fast_q_file: ""
     mate_one_file: ""
     mate_two_file: ""

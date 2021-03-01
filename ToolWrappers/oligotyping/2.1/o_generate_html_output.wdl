@@ -12,6 +12,9 @@ task Ogeneratehtmloutput {
       ~{if defined(output_directory) then ("--output-directory " +  '"' + output_directory + '"') else ""} \
       ~{if defined(entropy_figure) then ("--entropy-figure " +  '"' + entropy_figure + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_directory: "Output directory for HTML output to be stored"
     entropy_figure: "Path for entropy figure *without* the file extension\\n(e.g. only \\\"/path/to/entropy\\\" for\\n\\\"/path/to/entropy.png\\\")\\n"

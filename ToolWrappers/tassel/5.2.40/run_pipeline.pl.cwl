@@ -8,12 +8,12 @@ inputs:
     Filter, NumericGenotype, TaxaList, PositionList, SqrMatrixRaw, SqrMatrixBin, GOBII,
     Depth, ReferenceProbability, Report, PlinkPhenotype, SqrMatrixDARwinDIS, Avro]
     (Default: Make Best Guess)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -format
 - id: in_sort_positions
   doc: ": Whether to sort genotype positions if that's possible. (Default: false)"
-  type: string
+  type: string?
   inputBinding:
     prefix: -sortPositions
 - id: in_file_load_plugin
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - run_pipeline.pl

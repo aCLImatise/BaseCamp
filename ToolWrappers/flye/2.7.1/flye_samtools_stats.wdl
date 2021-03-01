@@ -54,6 +54,9 @@ task FlyesamtoolsStats {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     coverage: ",<int>,<int>    Coverage distribution min,max,step [1,1000,1]"
     remove_dups: "Exclude from statistics reads marked as duplicates"

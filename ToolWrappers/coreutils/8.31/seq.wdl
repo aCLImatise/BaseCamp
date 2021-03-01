@@ -12,6 +12,9 @@ task Seq {
       ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""} \
       ~{if (equal_width) then "--equal-width" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "use printf style floating-point FORMAT"
     separator: "use STRING to separate numbers (default: \\n)"

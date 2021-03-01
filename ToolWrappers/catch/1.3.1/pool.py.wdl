@@ -26,6 +26,9 @@ task Poolpy {
       ~{if (debug) then "--debug" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     round_params: "ROUND_PARAMS\\n<m> <e>; round mismatches parameter to the nearest\\nmultiple of m and cover_extension parameter to the\\nnearest multiple of e"
     use_nd: "Use the higher dimensional (n > 2) interpolation and\\nsearch functions for optimizing parameters. This is\\nrequired if the input table of probe counts contains\\nmore than 2 parameters. This does not round parameters\\nto integers or to be placed on a grid -- i.e., they\\nwill be output as fractional values (from which probe\\ncounts were interpolated). When using this, --loss-\\ncoeffs should also be set (default is 1 for all\\nparameters)."

@@ -14,6 +14,9 @@ task VsnpGroupReporterpy {
       ~{if defined(ref_option) then ("--ref_option " +  '"' + ref_option + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf: "Required: vcf file"
     ref_option: "Required: reference option"

@@ -10,6 +10,9 @@ task Reference2targetspy {
       ~{reference} \
       ~{if defined(output_base_name) then ("--output " +  '"' + output_base_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_base_name: "Output base name (extensions added automatically).\\n"
     reference: "Reference file."

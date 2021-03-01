@@ -10,6 +10,9 @@ task HcaAuthGetjwksjson {
       ~{hca} \
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_level: ""
     hca: ""

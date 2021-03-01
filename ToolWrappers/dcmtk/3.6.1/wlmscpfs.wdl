@@ -3,12 +3,12 @@ version 1.0
 task Wlmscpfs {
   input {
     Boolean? arguments
-    Boolean? _quiet_quiet
-    Boolean? _verbose_details
-    Boolean? _debug_information
-    Boolean? ll
-    Boolean? lc
-    Boolean? _singleprocess_single
+    Boolean? quiet
+    Boolean? verbose
+    Boolean? debug
+    Boolean? log_level
+    Boolean? log_config
+    Boolean? single_process
     Boolean? fork
     Boolean? data_files_path
     Boolean? enable_file_reject
@@ -17,9 +17,9 @@ task Wlmscpfs {
     Boolean? return_iso_ir_one_zero_zero
     Boolean? keep_char_set
     Boolean? no_sq_expansion
-    Boolean? _disablenewvr_disable
-    Boolean? ta
-    Boolean? td
+    Boolean? disable_new_vr
+    Boolean? acse_timeout
+    Boolean? dim_se_timeout
     Boolean? max_associations
     Boolean? refuse
     Boolean? reject
@@ -34,12 +34,12 @@ task Wlmscpfs {
     wlmscpfs \
       ~{port} \
       ~{if (arguments) then "--arguments" else ""} \
-      ~{if (_quiet_quiet) then "-q" else ""} \
-      ~{if (_verbose_details) then "-v" else ""} \
-      ~{if (_debug_information) then "-d" else ""} \
-      ~{if (ll) then "-ll" else ""} \
-      ~{if (lc) then "-lc" else ""} \
-      ~{if (_singleprocess_single) then "-s" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (log_level) then "--log-level" else ""} \
+      ~{if (log_config) then "--log-config" else ""} \
+      ~{if (single_process) then "--single-process" else ""} \
       ~{if (fork) then "--fork" else ""} \
       ~{if (data_files_path) then "--data-files-path" else ""} \
       ~{if (enable_file_reject) then "--enable-file-reject" else ""} \
@@ -48,9 +48,9 @@ task Wlmscpfs {
       ~{if (return_iso_ir_one_zero_zero) then "--return-iso-ir-100" else ""} \
       ~{if (keep_char_set) then "--keep-char-set" else ""} \
       ~{if (no_sq_expansion) then "--no-sq-expansion" else ""} \
-      ~{if (_disablenewvr_disable) then "-u" else ""} \
-      ~{if (ta) then "-ta" else ""} \
-      ~{if (td) then "-td" else ""} \
+      ~{if (disable_new_vr) then "--disable-new-vr" else ""} \
+      ~{if (acse_timeout) then "--acse-timeout" else ""} \
+      ~{if (dim_se_timeout) then "--dimse-timeout" else ""} \
       ~{if (max_associations) then "--max-associations" else ""} \
       ~{if (refuse) then "--refuse" else ""} \
       ~{if (reject) then "--reject" else ""} \
@@ -60,14 +60,17 @@ task Wlmscpfs {
       ~{if (max_pdu) then "--max-pdu" else ""} \
       ~{if (disable_host_lookup) then "--disable-host-lookup" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arguments: "print expanded command line arguments"
-    _quiet_quiet: "--quiet                quiet mode, print no warnings and errors"
-    _verbose_details: "--verbose              verbose mode, print processing details"
-    _debug_information: "--debug                debug mode, print debug information"
-    ll: "--log-level            [l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
-    lc: "--log-config           [f]ilename: string\\nuse config file f for the logger"
-    _singleprocess_single: "--single-process       single process mode"
+    quiet: "quiet mode, print no warnings and errors"
+    verbose: "verbose mode, print processing details"
+    debug: "debug mode, print debug information"
+    log_level: "[l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
+    log_config: "[f]ilename: string\\nuse config file f for the logger"
+    single_process: "single process mode"
     fork: "fork child process for each association (def.)"
     data_files_path: "[p]ath: string (default: /home/www/wlist)\\npath to worklist data files"
     enable_file_reject: "enable rejection of incomplete worklist files\\n(default)"
@@ -76,9 +79,9 @@ task Wlmscpfs {
     return_iso_ir_one_zero_zero: "return specific character set ISO IR 100"
     keep_char_set: "return character set provided in file"
     no_sq_expansion: "disable expansion of empty sequences in C-FIND\\nrequest messages"
-    _disablenewvr_disable: "--disable-new-vr       disable support for new VRs, convert to OB"
-    ta: "--acse-timeout         [s]econds: integer (default: 30)\\ntimeout for ACSE messages"
-    td: "--dimse-timeout        [s]econds: integer (default: unlimited)\\ntimeout for DIMSE messages"
+    disable_new_vr: "disable support for new VRs, convert to OB"
+    acse_timeout: "[s]econds: integer (default: 30)\\ntimeout for ACSE messages"
+    dim_se_timeout: "[s]econds: integer (default: unlimited)\\ntimeout for DIMSE messages"
     max_associations: "[a]ssocs: integer (default: 50)\\nlimit maximum number of parallel associations"
     refuse: "refuse association"
     reject: "reject association if no implement. class UID"

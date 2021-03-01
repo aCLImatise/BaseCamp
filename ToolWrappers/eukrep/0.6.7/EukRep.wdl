@@ -26,6 +26,9 @@ task EukRep {
       ~{if defined(compatable__modelhow) then ("-m " +  '"' + compatable__modelhow + '"') else ""} \
       ~{if defined(tie) then ("--tie " +  '"' + tie + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_file: "input fasta file"
     output_file_name: "output file name"

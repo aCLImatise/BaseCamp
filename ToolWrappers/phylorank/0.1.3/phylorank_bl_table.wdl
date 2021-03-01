@@ -14,6 +14,9 @@ task PhylorankBlTable {
       ~{output_table} \
       ~{if defined(step_size) then ("--step_size " +  '"' + step_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     step_size: "step size for mean branch length criterion (default:\\n0.01)\\n"
     input_tree: "input tree to calculate branch length distributions"

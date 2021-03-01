@@ -2,7 +2,7 @@ version 1.0
 
 task BedtoolsSample {
   input {
-    Boolean? number_generate_default
+    Boolean? number_records_generate
     Boolean? seed
     Boolean? ub_am
     Boolean? require_same_strandedness
@@ -14,7 +14,7 @@ task BedtoolsSample {
   }
   command <<<
     bedtools sample \
-      ~{if (number_generate_default) then "-n" else ""} \
+      ~{if (number_records_generate) then "-n" else ""} \
       ~{if (seed) then "-seed" else ""} \
       ~{if (ub_am) then "-ubam" else ""} \
       ~{if (require_same_strandedness) then "-s" else ""} \
@@ -24,8 +24,11 @@ task BedtoolsSample {
       ~{if (i_obuf) then "-iobuf" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    number_generate_default: "The number of records to generate.\\n- Default = 1,000,000.\\n- (INTEGER)"
+    number_records_generate: "The number of records to generate.\\n- Default = 1,000,000.\\n- (INTEGER)"
     seed: "Supply an integer seed for the shuffling.\\n- By default, the seed is chosen automatically.\\n- (INTEGER)"
     ub_am: "Write uncompressed BAM output. Default writes compressed BAM."
     require_same_strandedness: "Require same strandedness.  That is, only give records\\nthat have the same strand. Use '-s forward' or '-s reverse'\\nfor forward or reverse strand records, respectively.\\n- By default, records are reported without respect to strand."

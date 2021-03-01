@@ -10,6 +10,9 @@ task FaFilterN {
       ~{in_dot_fa} \
       ~{out_dot_fa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_fa: ""
     out_dot_fa: ""

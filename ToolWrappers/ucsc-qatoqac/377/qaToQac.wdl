@@ -8,6 +8,9 @@ task QaToQac {
     qaToQac \
       ~{in_dot_qa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_qa: ""
   }

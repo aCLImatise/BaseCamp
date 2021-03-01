@@ -10,6 +10,9 @@ task ExpMatrixToBarchartBedBedFile {
       ~{exp_matrix_to_barchart_bed} \
       ~{if defined(auto_sql) then ("--autoSql " +  '"' + auto_sql + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     auto_sql: ""
     exp_matrix_to_barchart_bed: ""

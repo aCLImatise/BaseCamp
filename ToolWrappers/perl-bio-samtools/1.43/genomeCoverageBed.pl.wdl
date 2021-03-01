@@ -8,6 +8,9 @@ task GenomeCoverageBedpl {
     genomeCoverageBed_pl \
       ~{if defined(exist_usrlocalbingenomecoveragebedpl_line) then ("-h " +  '"' + exist_usrlocalbingenomecoveragebedpl_line + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exist_usrlocalbingenomecoveragebedpl_line: "not exist at /usr/local/bin/genomeCoverageBed.pl line 10."
   }

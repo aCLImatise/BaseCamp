@@ -12,6 +12,9 @@ task SketchyFeatureDrop {
       ~{if defined(path_dropped_file) then ("--output " +  '"' + path_dropped_file + '"') else ""} \
       ~{if defined(columns) then ("--columns " +  '"' + columns + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index: "Path to feature index input file.  [required]"
     path_dropped_file: "Path to dropped feature index output file\\n[index.dropped.tsv]"

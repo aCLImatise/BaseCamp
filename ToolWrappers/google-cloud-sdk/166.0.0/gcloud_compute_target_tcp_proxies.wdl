@@ -18,6 +18,9 @@ task GcloudComputeTargettcpproxies {
       ~{list} \
       ~{update}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     proxies: "SYNOPSIS"
     create: "Create a target TCP proxy."

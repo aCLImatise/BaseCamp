@@ -8,6 +8,9 @@ task MegalodonExtrasPerReadTextVariants {
     megalodon_extras per_read_text variants \
       ~{if defined(out_filename) then ("--out-filename " +  '"' + out_filename + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_filename: "Output filename for text summary. Default: output into\\nmegalodon results directory\\n"
   }

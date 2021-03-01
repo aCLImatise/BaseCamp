@@ -1,56 +1,56 @@
 class: CommandLineTool
 id: ngm_utils_interleave.cwl
 inputs:
-- id: in__m_upstream
-  doc: ",  --m1 <file>\n(required)  Upstream mates (FASTA/Q)"
-  type: File
+- id: in_m_one
+  doc: (required)  Upstream mates (FASTA/Q)
+  type: File?
   inputBinding:
-    prefix: '-1'
-- id: in__filerequired_downstream
-  doc: ",  --m2 <file>\n(required)  Downstream mates (FASTA/Q)"
-  type: File
+    prefix: --m1
+- id: in_m_two
+  doc: (required)  Downstream mates (FASTA/Q)
+  type: File?
   inputBinding:
-    prefix: '-2'
-- id: in__output_filerequired
-  doc: ",  --output <file>\n(required)  Output file"
-  type: File
+    prefix: --m2
+- id: in_output
+  doc: (required)  Output file
+  type: File?
   inputBinding:
-    prefix: -o
-- id: in__unpaired_filewrite
-  doc: ",  --unpaired <file>\nWrite reads without mate to this file."
-  type: File
+    prefix: --output
+- id: in_unpaired
+  doc: Write reads without mate to this file.
+  type: File?
   inputBinding:
-    prefix: -u
-- id: in__delimiter_charthe
-  doc: ",  --delimiter <char>\nThe character that precedes the 1 and 2 in the input\
-    \ files."
-  type: long
+    prefix: --unpaired
+- id: in_delimiter
+  doc: The character that precedes the 1 and 2 in the input files.
+  type: long?
   inputBinding:
-    prefix: -d
-- id: in__forceforce_finishing
-  doc: ",  --force\nForce finishing even if no pairs are found."
-  type: boolean
+    prefix: --delimiter
+- id: in_force
+  doc: Force finishing even if no pairs are found.
+  type: boolean?
   inputBinding:
-    prefix: -f
+    prefix: --force
 - id: in_no_progress
   doc: Suppress progress output.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noprogress
 - id: in_char
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out__output_filerequired
-  doc: ",  --output <file>\n(required)  Output file"
-  type: File
+- id: out_output
+  doc: (required)  Output file
+  type: File?
   outputBinding:
-    glob: $(inputs.in__output_filerequired)
+    glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ngm-utils

@@ -4,6 +4,9 @@ task Bioruby {
   command <<<
     bioruby
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

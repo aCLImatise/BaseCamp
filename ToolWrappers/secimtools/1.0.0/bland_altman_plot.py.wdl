@@ -32,6 +32,9 @@ task BlandAltmanPlotpy {
       ~{if defined(feature_flag_cut_off) then ("--feature_flag_cutoff " +  '"' + feature_flag_cut_off + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dataset_wide: "Input dataset in wide format."
     design: "Design file."

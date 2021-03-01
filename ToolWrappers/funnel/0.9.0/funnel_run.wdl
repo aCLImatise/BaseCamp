@@ -60,6 +60,9 @@ task FunnelRun {
       ~{if (workdir) then "--workdir" else ""} \
       ~{if (vol) then "--vol" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     server: "Address of Funnel server. Default: http://localhost:8000"
     container: "Containter the command runs in. Default: alpine"

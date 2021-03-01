@@ -72,6 +72,9 @@ task Ernebs5 {
       ~{if (ignore_quality) then "--ignore-quality" else ""} \
       ~{if defined(cl) then ("--cl " +  '"' + cl + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "reference file to use (in our format and with\\n.ebm extension). [REQUIRED]"
     query_one: "query1 file (can be compressed with gzip or\\nbzip2, or a pipe) [REQUIRED]"

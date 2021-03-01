@@ -14,9 +14,9 @@ task PlanemoTest {
     Boolean? skip_v_env
     Boolean? no_cache_galaxy
     Boolean? no_cleanup
-    Boolean? docker
+    Boolean? no_docker
     String? docker_cmd
-    Boolean? docker_sudo
+    Boolean? no_docker_sudo
     String? docker_host
     String? docker_sudo_cmd
     Boolean? mulled_containers
@@ -33,8 +33,8 @@ task PlanemoTest {
     Boolean? cond_a_use_local
     Boolean? cond_a_dependency_resolution
     Boolean? cond_a_copy_dependencies
-    Boolean? cond_a_auto_install
-    Boolean? cond_a_auto_in_it
+    Boolean? no_cond_a_auto_install
+    Boolean? no_cond_a_auto_in_it
     String? profile
     Boolean? postgres
     Boolean? database_type
@@ -42,9 +42,9 @@ task PlanemoTest {
     String? postgres_database_user
     String? database_connection
     Directory? shed_tool_path
-    Boolean? galaxy_single_user
+    Boolean? no_galaxy_single_user
     Boolean? update_test_data
-    Boolean? paste_test_data_paths
+    Boolean? no_paste_test_data_paths
     File? test_output
     File? test_output_text
     File? test_output_markdown
@@ -57,10 +57,10 @@ task PlanemoTest {
     String? docker_galaxy_image
     File? docker_extra_volume
     Boolean? ignore_dependency_problems
-    Boolean? shed_install
+    Boolean? no_shed_install
     String? galaxy_url
     String? galaxy_admin_key
-    String _galaxyemail_text
+    String text_email_address
     String resolvers_dot
     String commands_dot
     String _shedtoolconf_text
@@ -68,7 +68,7 @@ task PlanemoTest {
   }
   command <<<
     planemo test \
-      ~{_galaxyemail_text} \
+      ~{text_email_address} \
       ~{resolvers_dot} \
       ~{commands_dot} \
       ~{_shedtoolconf_text} \
@@ -85,9 +85,9 @@ task PlanemoTest {
       ~{if (skip_v_env) then "--skip_venv" else ""} \
       ~{if (no_cache_galaxy) then "--no_cache_galaxy" else ""} \
       ~{if (no_cleanup) then "--no_cleanup" else ""} \
-      ~{if (docker) then "--docker" else ""} \
+      ~{if (no_docker) then "--no_docker" else ""} \
       ~{if defined(docker_cmd) then ("--docker_cmd " +  '"' + docker_cmd + '"') else ""} \
-      ~{if (docker_sudo) then "--docker_sudo" else ""} \
+      ~{if (no_docker_sudo) then "--no_docker_sudo" else ""} \
       ~{if defined(docker_host) then ("--docker_host " +  '"' + docker_host + '"') else ""} \
       ~{if defined(docker_sudo_cmd) then ("--docker_sudo_cmd " +  '"' + docker_sudo_cmd + '"') else ""} \
       ~{if (mulled_containers) then "--mulled_containers" else ""} \
@@ -104,8 +104,8 @@ task PlanemoTest {
       ~{if (cond_a_use_local) then "--conda_use_local" else ""} \
       ~{if (cond_a_dependency_resolution) then "--conda_dependency_resolution" else ""} \
       ~{if (cond_a_copy_dependencies) then "--conda_copy_dependencies" else ""} \
-      ~{if (cond_a_auto_install) then "--conda_auto_install" else ""} \
-      ~{if (cond_a_auto_in_it) then "--conda_auto_init" else ""} \
+      ~{if (no_cond_a_auto_install) then "--no_conda_auto_install" else ""} \
+      ~{if (no_cond_a_auto_in_it) then "--no_conda_auto_init" else ""} \
       ~{if defined(profile) then ("--profile " +  '"' + profile + '"') else ""} \
       ~{if (postgres) then "--postgres" else ""} \
       ~{if (database_type) then "--database_type" else ""} \
@@ -113,9 +113,9 @@ task PlanemoTest {
       ~{if defined(postgres_database_user) then ("--postgres_database_user " +  '"' + postgres_database_user + '"') else ""} \
       ~{if defined(database_connection) then ("--database_connection " +  '"' + database_connection + '"') else ""} \
       ~{if defined(shed_tool_path) then ("--shed_tool_path " +  '"' + shed_tool_path + '"') else ""} \
-      ~{if (galaxy_single_user) then "--galaxy_single_user" else ""} \
+      ~{if (no_galaxy_single_user) then "--no_galaxy_single_user" else ""} \
       ~{if (update_test_data) then "--update_test_data" else ""} \
-      ~{if (paste_test_data_paths) then "--paste_test_data_paths" else ""} \
+      ~{if (no_paste_test_data_paths) then "--no_paste_test_data_paths" else ""} \
       ~{if defined(test_output) then ("--test_output " +  '"' + test_output + '"') else ""} \
       ~{if defined(test_output_text) then ("--test_output_text " +  '"' + test_output_text + '"') else ""} \
       ~{if defined(test_output_markdown) then ("--test_output_markdown " +  '"' + test_output_markdown + '"') else ""} \
@@ -128,10 +128,13 @@ task PlanemoTest {
       ~{if defined(docker_galaxy_image) then ("--docker_galaxy_image " +  '"' + docker_galaxy_image + '"') else ""} \
       ~{if defined(docker_extra_volume) then ("--docker_extra_volume " +  '"' + docker_extra_volume + '"') else ""} \
       ~{if (ignore_dependency_problems) then "--ignore_dependency_problems" else ""} \
-      ~{if (shed_install) then "--shed_install" else ""} \
+      ~{if (no_shed_install) then "--no_shed_install" else ""} \
       ~{if defined(galaxy_url) then ("--galaxy_url " +  '"' + galaxy_url + '"') else ""} \
       ~{if defined(galaxy_admin_key) then ("--galaxy_admin_key " +  '"' + galaxy_admin_key + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     failed: "Re-run only failed tests. This command will\\nread tool_test_output.json to determine\\nwhich tests failed so this file must have\\nbeen produced with the same set of tool ids\\npreviously."
     polling_back_off: "Poll resources with an increasing interval\\nbetween requests. Useful when testing\\nagainst remote and/or production instances\\nto limit generated traffic."
@@ -145,9 +148,9 @@ task PlanemoTest {
     skip_v_env: "Do not create or source a virtualenv\\nenvironment for Galaxy, this should be used\\nor instance to preserve an externally\\nconfigured virtual environment or conda\\nenvironment."
     no_cache_galaxy: "Skip caching of Galaxy source and\\ndependencies obtained with --install_galaxy.\\nNot caching this results in faster downloads\\n(no git) - so is better on throw away\\ninstances such with TravisCI."
     no_cleanup: "Do not cleanup temp files created for and by"
-    docker: "/ --no_docker          Run Galaxy tools in Docker if enabled."
+    no_docker: "Run Galaxy tools in Docker if enabled."
     docker_cmd: "Command used to launch docker (defaults to\\ndocker)."
-    docker_sudo: "/ --no_docker_sudo\\nFlag to use sudo when running docker."
+    no_docker_sudo: "Flag to use sudo when running docker."
     docker_host: "Docker host to target when executing docker\\ncommands (defaults to localhost)."
     docker_sudo_cmd: "sudo command to use when --docker_sudo is\\nenabled (defaults to sudo)."
     mulled_containers: "Test tools against mulled containers (forces\\n--docker)."
@@ -164,8 +167,8 @@ task PlanemoTest {
     cond_a_use_local: "Use locally built packages while building\\nConda environments."
     cond_a_dependency_resolution: "Configure Galaxy to use only conda for\\ndependency resolution."
     cond_a_copy_dependencies: "Conda dependency resolution for Galaxy will\\ncopy dependencies instead of attempting to\\nlink them."
-    cond_a_auto_install: "/ --no_conda_auto_install\\nConda dependency resolution for Galaxy will\\nattempt to install requested but missing\\npackages."
-    cond_a_auto_in_it: "/ --no_conda_auto_init\\nConda dependency resolution for Galaxy will\\nauto install conda itself using miniconda if\\nnot availabe on conda_prefix."
+    no_cond_a_auto_install: "Conda dependency resolution for Galaxy will\\nattempt to install requested but missing\\npackages."
+    no_cond_a_auto_in_it: "Conda dependency resolution for Galaxy will\\nauto install conda itself using miniconda if\\nnot availabe on conda_prefix."
     profile: "Name of profile (created with the\\nprofile_create command) to use with this\\ncommand."
     postgres: "Use postgres database type."
     database_type: "[postgres|postgres_docker|sqlite|auto]\\nType of database to use for profile -\\n'auto', 'sqlite', 'postgres', and\\n'postgres_docker' are available options. Use\\npostgres to use an existing postgres server\\nyou user can access without a password via\\nthe psql command. Use postgres_docker to\\nhave Planemo manage a docker container\\nrunning postgres. Data with postgres_docker\\nis not yet persisted past when you restart\\nthe docker container launched by Planemo so\\nbe careful with this option."
@@ -173,9 +176,9 @@ task PlanemoTest {
     postgres_database_user: "Postgres username for managed development"
     database_connection: "Database connection string to use for"
     shed_tool_path: "Location of shed tools directory for Galaxy."
-    galaxy_single_user: "/ --no_galaxy_single_user\\nBy default Planemo will configure Galaxy to\\nrun in single-user mode where there is just\\none user and this user is automatically\\nlogged it. Use --no_galaxy_single_user to\\nprevent Galaxy from running this way."
+    no_galaxy_single_user: "By default Planemo will configure Galaxy to\\nrun in single-user mode where there is just\\none user and this user is automatically\\nlogged it. Use --no_galaxy_single_user to\\nprevent Galaxy from running this way."
     update_test_data: "Update test-data directory with job outputs\\n(normally written to directory\\n--job_output_files if specified.)"
-    paste_test_data_paths: "/ --no_paste_test_data_paths\\nBy default Planemo will use or not use\\nGalaxy's path paste option to load test data\\ninto a history based on the engine type it\\nis targeting. This can override the logic to\\nexplicitly enable or disable path pasting."
+    no_paste_test_data_paths: "By default Planemo will use or not use\\nGalaxy's path paste option to load test data\\ninto a history based on the engine type it\\nis targeting. This can override the logic to\\nexplicitly enable or disable path pasting."
     test_output: "Output test report (HTML - for humans)\\ndefaults to tool_test_output.html."
     test_output_text: "Output test report (Basic text - for display\\nin CI)"
     test_output_markdown: "Output test report (Markdown style - for\\nhumans & computers)"
@@ -188,10 +191,10 @@ task PlanemoTest {
     docker_galaxy_image: "Docker image identifier for docker-galaxy-\\nflavor used if engine type is specified as\\n``docker-galaxy``. Defaults to\\nquay.io/bgruening/galaxy."
     docker_extra_volume: "Extra path to mount if --engine docker."
     ignore_dependency_problems: "When installing shed repositories for\\nworkflows, ignore dependency issues. These\\nlikely indicate a problem but in some cases\\nmay not prevent a workflow from successfully\\nexecuting."
-    shed_install: "/ --no_shed_install\\nBy default Planemo will attempt to install\\nrepositories needed for workflow testing.\\nThis may not be appropriate for production\\nservers and so this can disabled by calling\\nplanemo with --no_shed_install."
+    no_shed_install: "By default Planemo will attempt to install\\nrepositories needed for workflow testing.\\nThis may not be appropriate for production\\nservers and so this can disabled by calling\\nplanemo with --no_shed_install."
     galaxy_url: "Remote Galaxy URL to use with external\\nGalaxy engine."
     galaxy_admin_key: "Admin key to use with external Galaxy"
-    _galaxyemail_text: "--galaxy_email TEXT             E-mail address to use when launching single-"
+    text_email_address: "--galaxy_email TEXT             E-mail address to use when launching single-"
     resolvers_dot: "--conda_prefix DIRECTORY        Conda prefix to use for conda dependency"
     commands_dot: "--conda_exec FILE               Location of conda executable."
     _shedtoolconf_text: "--shed_tool_conf TEXT           Location of shed tools conf file for Galaxy."

@@ -36,6 +36,9 @@ task NighthawkPhase {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_names_column: "The read names (column 1&2) in the M4 file are\\nzero based numerical indices, not read names."
     bubble_path_filter: "FLOAT  Read membership in a bubble path, D =\\n(N_readKmers / N_pathKmers ). Reads greater than\\nD will be kept [0.9]"

@@ -3,7 +3,7 @@ id: removeDuplicate.cwl
 inputs:
 - id: in_gff_three
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -gff3
 - id: in_var_1
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - removeDuplicate

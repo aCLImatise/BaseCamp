@@ -8,6 +8,9 @@ task Versionspy {
     versions_py \
       ~{target}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target: "Target output file for version numbers"
   }

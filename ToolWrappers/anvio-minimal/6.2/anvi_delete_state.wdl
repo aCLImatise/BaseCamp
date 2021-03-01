@@ -12,6 +12,9 @@ task Anvideletestate {
       ~{if (list_states) then "--list-states" else ""} \
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_or_profile_db: "Anvi'o pan or profile database (and even genes\\ndatabase in appropriate contexts)."
     list_states: "Show available states and exit."

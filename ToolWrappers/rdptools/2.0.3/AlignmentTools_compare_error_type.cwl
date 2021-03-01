@@ -3,7 +3,7 @@ id: AlignmentTools_compare_error_type.cwl
 inputs:
 - id: in_stem
   doc: Output stem (default <query_nucl.fasta>)
-  type: string
+  type: string?
   inputBinding:
     prefix: --stem
 - id: in_compare_error_type
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - AlignmentTools

@@ -12,6 +12,9 @@ task GcloudSqlConnect {
       ~{optional} \
       ~{flags}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     instance: ""
     optional: ""

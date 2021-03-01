@@ -1,0 +1,158 @@
+&id001 !Command
+command:
+- bam_count_reads.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: Minimum mapping quality (0).
+  args: !SimpleFlagArg
+    name: min_aqual
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: Input format (BAM).
+  args: !SimpleFlagArg
+    name: in_format
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: "Reference fasta. GC content and length columns are added\nif present\
+    \ (None)."
+  args: !SimpleFlagArg
+    name: ref_fasta
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: "Include word frequencies of specifed length in output\n(None)."
+  args: !SimpleFlagArg
+    name: words
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: "Include mean GC content of reads mapped to each reference\n(False)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: Save pickled results in this file (None).
+  args: !SimpleFlagArg
+    name: results_pickle
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "Save results in tsv format in this file\n(bam_count_reads.tsv)."
+  args: !SimpleFlagArg
+    name: tsv_file
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  description: Be quiet and do not print progress bar (False).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: "Count reads from SAM stream in stdin. Only read count\nfields are\
+    \ written. Header required! (False)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: "Yield counts after every -Fth mapped record when doing\nonline counting\
+    \ (100).\n"
+  args: !SimpleFlagArg
+    name: yield_freq
+parent:
+subcommands:
+- !Command
+  command:
+  - bam_count_reads.py
+  - bam
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bam_count_reads.py
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -z
+    description: ''
+    args: !SimpleFlagArg
+      name: ref_fasta
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: ''
+    args: !SimpleFlagArg
+      name: in_format
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: ''
+    args: !SimpleFlagArg
+      name: min_aqual
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: bam_count_reads.py [-h] [-a min_aqual] [-f in_format] [-z ref_fasta]\n\
+    \                          [-k words] [-g] [-p results_pickle] [-t tsv_file]\n\
+    \                          [-Q] [-R] [-F yield_freq]\n                       \
+    \   [bam]\nbam_count_reads.py: error: argument bam: can't open 'bam': [Errno 2]\
+    \ No such file or directory: 'bam'\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/wub:0.5.1--pyh3252c3a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: bam_count_reads.py [-h] [-a min_aqual] [-f in_format] [-z ref_fasta]\n\
+  \                          [-k words] [-g] [-p results_pickle] [-t tsv_file]\n \
+  \                         [-Q] [-R] [-F yield_freq]\n                          [bam]\n\
+  \nCount reads mapping to each reference in a BAM file.\n\npositional arguments:\n\
+  \  bam                Input file (default: stdin).\n\noptional arguments:\n  -h,\
+  \ --help         show this help message and exit\n  -a min_aqual       Minimum mapping\
+  \ quality (0).\n  -f in_format       Input format (BAM).\n  -z ref_fasta       Reference\
+  \ fasta. GC content and length columns are added\n                     if present\
+  \ (None).\n  -k words           Include word frequencies of specifed length in output\n\
+  \                     (None).\n  -g                 Include mean GC content of reads\
+  \ mapped to each reference\n                     (False).\n  -p results_pickle \
+  \ Save pickled results in this file (None).\n  -t tsv_file        Save results in\
+  \ tsv format in this file\n                     (bam_count_reads.tsv).\n  -Q   \
+  \              Be quiet and do not print progress bar (False).\n  -R           \
+  \      Count reads from SAM stream in stdin. Only read count\n                 \
+  \    fields are written. Header required! (False).\n  -F yield_freq      Yield counts\
+  \ after every -Fth mapped record when doing\n                     online counting\
+  \ (100).\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/wub:0.5.1--pyh3252c3a_0

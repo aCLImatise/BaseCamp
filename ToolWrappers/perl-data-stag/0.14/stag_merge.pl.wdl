@@ -8,6 +8,9 @@ task Stagmergepl {
     stag_merge_pl \
       ~{stag_merge_do_tpl}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stag_merge_do_tpl: "-xml file1.xml file2.xml"
   }

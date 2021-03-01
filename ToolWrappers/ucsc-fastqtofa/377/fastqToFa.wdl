@@ -20,6 +20,9 @@ task FastqToFa {
       ~{if (solexa) then "-solexa" else ""} \
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_verify: "='string' - for multi-line fastq files, 'string' must\\nmatch somewhere in the sequence names in order to correctly\\nidentify the next sequence block (e.g.: -nameVerify='Supercontig_')"
     qual: "- output quality scores to specifed file\\n(default: quality scores are ignored)"

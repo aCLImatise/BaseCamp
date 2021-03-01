@@ -4,103 +4,95 @@ command:
 positional: []
 named:
 - !Flag
-  description: "[-s {fly,human,mouse,worm,yeast,zebrafish}]\n[-c CHROMOSOME_PATTERN]\n\
-    [-f FIELD_NAME]\n[-l <file>] [-q]\n[-v]"
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: OUTPUT_FILE
   optional: true
-- !Flag
-  description: "Path of Ensembl gene annotation file (in GTF format). The file\nmay\
-    \ be gzip'ed. If set to ``-``, read from ``stdin``."
   synonyms:
   - -a
   - --annotation-file
+  description: "Path of Ensembl gene annotation file (in GTF format). The file\nmay\
+    \ be gzip'ed. If set to ``-``, read from ``stdin``."
   args: !SimpleFlagArg
     name: ANNOTATION_FILE
-  optional: true
 - !Flag
-  description: "Path of output file. If set to ``-``, print to ``stdout``,\nand redirect\
-    \ logging messages to ``stderr``."
+  optional: true
   synonyms:
   - -o
   - --output-file
+  description: "Path of output file. If set to ``-``, print to ``stdout``,\nand redirect\
+    \ logging messages to ``stderr``."
   args: !SimpleFlagArg
     name: OUTPUT_FILE
-  optional: true
 - !Flag
-  description: "Species for which to extract genes. (This parameter is ignored\nif\
-    \ ``--chromosome-pattern`` is specified.)"
+  optional: true
   synonyms:
   - -s
   - --species
+  description: "Species for which to extract genes. (This parameter is ignored\nif\
+    \ ``--chromosome-pattern`` is specified.)"
   args: !ChoiceFlagArg
     choices: !!set
-      worm:
-      zebrafish:
-      fly:
-      mouse:
-      human:
       yeast:
-  optional: true
+      zebrafish:
+      worm:
+      human:
+      mouse:
+      fly:
 - !Flag
-  description: "Regular expression that chromosome names have to match.\nIf not specified,\
-    \ determine pattern based on\n``--species``."
+  optional: true
   synonyms:
   - -c
   - --chromosome-pattern
+  description: "Regular expression that chromosome names have to match.\nIf not specified,\
+    \ determine pattern based on\n``--species``."
   args: !SimpleFlagArg
     name: CHROMOSOME_PATTERN
-  optional: true
 - !Flag
-  description: "Rows in the GTF file that do not contain this value\nin the third\
-    \ column are ignored."
+  optional: true
   synonyms:
   - -f
   - --field-name
+  description: "Rows in the GTF file that do not contain this value\nin the third\
+    \ column are ignored."
   args: !SimpleFlagArg
     name: FIELD_NAME
-  optional: true
 - !Flag
-  description: Path of log file (if specified, report to stdout AND file.
+  optional: true
   synonyms:
   - -l
   - --log-file
+  description: Path of log file (if specified, report to stdout AND file.
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: Only output errors and warnings.
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: Only output errors and warnings.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Enable verbose output. Ignored if --quiet is specified.
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: Enable verbose output. Ignored if --quiet is specified.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this help message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this help message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Output the GenomeTools version and exit.
+  optional: true
   synonyms:
   - --version
+  description: Output the GenomeTools version and exit.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: ensembl_extract_protein_coding_exon_annotations.py [-h] [--version]\n\
   \                                                          [-a ANNOTATION_FILE]\n\
   \                                                          -o OUTPUT_FILE\n    \
@@ -130,3 +122,4 @@ help_text: "usage: ensembl_extract_protein_coding_exon_annotations.py [-h] [--ve
   \         Enable verbose output. Ignored if --quiet is specified.\n"
 generated_using:
 - --help
+docker_image:

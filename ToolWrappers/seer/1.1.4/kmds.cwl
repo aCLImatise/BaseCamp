@@ -3,62 +3,62 @@ id: kmds.cwl
 inputs:
 - id: in_arg_dsm_kmer
   doc: '[ --kmers ] arg       dsm kmer output file (not needed if using'
-  type: File
+  type: File?
   inputBinding:
     prefix: -k
-- id: in_arg_pheno_metadata
+- id: in__arg_metadata
   doc: '[ --pheno ] arg       .pheno metadata'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_arg_output_prefix
   doc: '[ --output ] arg      output prefix for new dsm file'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_no_mds
   doc: do not perform MDS; output subsampled matrix instead
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_mds
 - id: in_write_distances
   doc: write csv of distance matrix
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --write_distances
 - id: in_mds_concat
   doc: "list of subsampled matrices to use in MDS. Performs\nonly MDS; implies --no_filtering"
-  type: string
+  type: string?
   inputBinding:
     prefix: --mds_concat
 - id: in_pc
   doc: (=10)           number of principal coordinates to output
-  type: long
+  type: long?
   inputBinding:
     prefix: --pc
 - id: in_size
   doc: (=1000000)    number of kmers to use in MDS
-  type: long
+  type: long?
   inputBinding:
     prefix: --size
 - id: in_threads
   doc: '(=1)       number of threads. Suggested: 8'
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_no_filtering
   doc: turn off all filtering and do not output new kmer
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_filtering
 - id: in_maf
   doc: (=0.01)        minimum kmer frequency
-  type: double
+  type: double?
   inputBinding:
     prefix: --maf
 - id: in_min_words
   doc: minimum kmer occurences. Overrides --maf
-  type: string
+  type: string?
   inputBinding:
     prefix: --min_words
 - id: in_file
@@ -72,14 +72,15 @@ outputs:
   type: stdout
 - id: out_arg_dsm_kmer
   doc: '[ --kmers ] arg       dsm kmer output file (not needed if using'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_arg_dsm_kmer)
 - id: out_arg_output_prefix
   doc: '[ --output ] arg      output prefix for new dsm file'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_arg_output_prefix)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kmds

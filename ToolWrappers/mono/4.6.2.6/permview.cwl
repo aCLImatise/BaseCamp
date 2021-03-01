@@ -3,17 +3,17 @@ id: permview.cwl
 inputs:
 - id: in_output
   doc: Output information into specified file.
-  type: File
+  type: File?
   inputBinding:
     prefix: -output
 - id: in_decl
   doc: Show declarative security attributes on classes and methods.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -decl
 - id: in_xml
   doc: Output in XML format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -xml
 - id: in_assembly
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output information into specified file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - permview

@@ -3,12 +3,12 @@ id: nebulizer_create_library.cwl
 inputs:
 - id: in_description
   doc: description of the new library
-  type: string
+  type: string?
   inputBinding:
     prefix: --description
 - id: in_synopsis
   doc: synopsis text for the new library
-  type: string
+  type: string?
   inputBinding:
     prefix: --synopsis
 - id: in_galaxy
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nebulizer

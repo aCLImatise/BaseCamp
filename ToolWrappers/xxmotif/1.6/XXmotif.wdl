@@ -138,6 +138,9 @@ task XXmotif {
       ~{if (save_expectation_maximization_models) then "--saveExpectationMaximizationModels" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     neg_set: "sequence set which has to be used as a reference set"
     z_oops: "use zero-or-one occurrence per sequence model (DEFAULT)"

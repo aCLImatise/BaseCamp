@@ -2,7 +2,6 @@ version 1.0
 
 task PlanemoShedDiff {
   input {
-    File? shed_target_source
     Boolean? recursive
     String? owner
     Directory? name
@@ -12,6 +11,7 @@ task PlanemoShedDiff {
     String? shed_password
     Int? shed_target
     File? send_diff_output
+    String? shed_target_source
     Boolean? raw
     File? report_x_unit
     String directories_dot
@@ -19,7 +19,6 @@ task PlanemoShedDiff {
   command <<<
     planemo shed_diff \
       ~{directories_dot} \
-      ~{if defined(shed_target_source) then ("--shed_target_source " +  '"' + shed_target_source + '"') else ""} \
       ~{if (recursive) then "--recursive" else ""} \
       ~{if defined(owner) then ("--owner " +  '"' + owner + '"') else ""} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
@@ -29,11 +28,14 @@ task PlanemoShedDiff {
       ~{if defined(shed_password) then ("--shed_password " +  '"' + shed_password + '"') else ""} \
       ~{if defined(shed_target) then ("--shed_target " +  '"' + shed_target + '"') else ""} \
       ~{if defined(send_diff_output) then ("--output " +  '"' + send_diff_output + '"') else ""} \
+      ~{if defined(shed_target_source) then ("--shed_target_source " +  '"' + shed_target_source + '"') else ""} \
       ~{if (raw) then "--raw" else ""} \
       ~{if defined(report_x_unit) then ("--report_xunit " +  '"' + report_x_unit + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    shed_target_source: "This command will return an exit code of:\\n- 0 if there are no detected differences. - 1 if there are differences. -\\n2 if the target repository doesn't exist. - >200 if there are errors\\nattempting to perform a diff.\\n**Warning:** ``shed_diff`` doesn't inspect repository metadata, this\\ndifference applies only to the file contents of files that would actually\\nbe uploaded to the repository."
     recursive: "Recursively perform command for nested repository"
     owner: "Tool Shed repository owner (username)."
     name: "Tool Shed repository name (defaults to the\\ninferred tool directory name)."
@@ -43,6 +45,7 @@ task PlanemoShedDiff {
     shed_password: "Password for Tool Shed auth (required unless\\nshed_key is specified)."
     shed_target: "Tool Shed to target (this can be 'toolshed',\\n'testtoolshed', 'local' (alias for\\nhttp://localhost:9009/), an arbitrary url or\\nmappings defined ~/.planemo.yml."
     send_diff_output: "Send diff output to specified file."
+    shed_target_source: "Source Tool Shed to diff against (will ignore\\nlocal project info specified). To compare the\\nmain Tool Shed against the test, set this to\\ntesttoolshed."
     raw: "Do not attempt smart diff of XML to filter out\\nattributes populated by the Tool Shed."
     report_x_unit: "Output an XUnit report, useful for CI testing"
     directories_dot: "--fail_fast                If multiple repositories are specified and an"

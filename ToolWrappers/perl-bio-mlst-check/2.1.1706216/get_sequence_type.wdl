@@ -20,6 +20,9 @@ task GetSequenceType {
       ~{if (print_available_schemes) then "-a" else ""} \
       ~{if (print_version_number) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     species_mlst_scheme: "Species of MLST scheme (0 or more comma separated)"
     number_of_threads: "Number of threads [1]"

@@ -26,6 +26,9 @@ task SixgillFilter {
       ~{if (no_gzip_out) then "--nogzipout" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "output metapeptide database file"
     minor_f_length: "minimum ORF length"

@@ -12,6 +12,9 @@ task Yaha {
       ~{if (osh) then "-osh" else ""} \
       ~{if (oss) then "-oss" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o_eight: "produces alignment output in modified Blast8 format."
     osh: "produces alignment output in SAM format with hard clipping."

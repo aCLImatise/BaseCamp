@@ -14,6 +14,9 @@ task HmmgsFindcuts {
       ~{bloom_filter} \
       ~{query_files}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cut_finder: ""
     km_er_size: ""

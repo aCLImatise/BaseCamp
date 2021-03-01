@@ -8,6 +8,9 @@ task TripailleEntityGetFields {
     tripaille entity get_fields \
       ~{entity}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     entity: ""
   }

@@ -3,12 +3,12 @@ id: ragout_overlap.cwl
 inputs:
 - id: in_hist
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --hist
 - id: in_detect_km_er
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --detect-kmer
 - id: in_overlap
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ragout-overlap

@@ -4,7 +4,7 @@ inputs:
 - id: in_input_file
   doc: "Input file containing accession IDs to map. Multi-\ncolumn files accepted.\
     \ Only accessions in the first\ncolumn will be mapped."
-  type: File
+  type: File?
   inputBinding:
     prefix: --input_file
 - id: in_accession_two_taxid
@@ -16,12 +16,12 @@ inputs:
     prefix: --accession2taxid
 - id: in_output_file
   doc: "Output file with 2 tab-delimited columns for\naccessions and taxids"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_file
 - id: in_remaining
   doc: "Name of text file containing non-found accessions from\ninput file\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --remaining
 outputs:
@@ -30,9 +30,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: "Output file with 2 tab-delimited columns for\naccessions and taxids"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fix_unmapped.py

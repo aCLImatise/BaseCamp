@@ -25,13 +25,11 @@ task Mhcflurrypredictscan {
     Boolean? no_flanking
     Int help
     String input_csv_fasta
-    Float t_slashdot_local_slash_share_slash_mhc_flurry_slash_four_slash_two_dot_zero_dot_zero_slash_models_class_one_present
   }
   command <<<
     mhcflurry_predict_scan \
       ~{help} \
       ~{input_csv_fasta} \
-      ~{t_slashdot_local_slash_share_slash_mhc_flurry_slash_four_slash_two_dot_zero_dot_zero_slash_models_class_one_present} \
       ~{if (list_supported_alleles) then "--list-supported-alleles" else ""} \
       ~{if (list_supported_peptide_lengths) then "--list-supported-peptide-lengths" else ""} \
       ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
@@ -54,6 +52,9 @@ task Mhcflurrypredictscan {
       ~{if defined(models) then ("--models " +  '"' + models + '"') else ""} \
       ~{if (no_flanking) then "--no-flanking" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_supported_alleles: "Print the list of supported alleles and exits"
     list_supported_peptide_lengths: "Print the list of supported peptide lengths and exits"
@@ -74,11 +75,10 @@ task Mhcflurrypredictscan {
     out: "Output CSV"
     output_delimiter: "Delimiter character for results. Default: ','"
     no_affinity_percentile: "Do not include affinity percentile rank"
-    models: "Directory containing presentation models.Default: /roo"
+    models: "Directory containing presentation models.Default: /roo\\nt/.local/share/mhcflurry/4/2.0.0/models_class1_present\\nation/models"
     no_flanking: "Do not use flanking sequence information in\\npredictions\\n"
     help: "Help:"
     input_csv_fasta: "Input CSV or FASTA"
-    t_slashdot_local_slash_share_slash_mhc_flurry_slash_four_slash_two_dot_zero_dot_zero_slash_models_class_one_present: "ation/models"
   }
   output {
     File out_stdout = stdout()

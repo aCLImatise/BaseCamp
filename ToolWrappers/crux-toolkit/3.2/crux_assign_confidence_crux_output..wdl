@@ -12,6 +12,9 @@ task CruxAssignconfidenceCruxoutput {
       ~{assign_confidence} \
       ~{target_input}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     assign_confidence: ""

@@ -20,6 +20,9 @@ task CategorizeByFunctionpy {
       ~{if defined(metadata_category) then ("--metadata_category " +  '"' + metadata_category + '"') else ""} \
       ~{if defined(level) then ("--level " +  '"' + level + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     ignore: "Ignore the comma separated list of names. For\\ninstance, specifying\\n--ignore_unknown=unknown,unclassified will ignore\\nthose labels while collapsing. The default is to not\\nignore anything. [default: none]"

@@ -12,6 +12,9 @@ task Dshgfa1togfa2 {
       ~{if (input_gfa_one_file) then "--input-gfa1-file" else ""} \
       ~{if (output_gfa_two_file) then "--output-gfa2-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     input_gfa_one_file: "[class java.io.File]  input GFA 1.0 file, default stdin [optional]"

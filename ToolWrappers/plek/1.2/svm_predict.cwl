@@ -4,12 +4,12 @@ inputs:
 - id: in_predict_probability_estimates
   doc: ': whether to predict probability estimates, 0 or 1 (default 0); for one-class
     SVM only 0 is supported'
-  type: long
+  type: long?
   inputBinding:
     prefix: -b
 - id: in_quiet_mode_outputs
   doc: ': quiet mode (no outputs)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
 - id: in_test_file
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - svm-predict

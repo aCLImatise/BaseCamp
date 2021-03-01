@@ -2,28 +2,31 @@ version 1.0
 
 task ICountExamples {
   input {
-    Boolean? od
-    Boolean? _stdoutlog_threshold
-    Boolean? _filelog_threshold
-    Boolean? _filelogpath_path
-    Boolean? _file_store
+    Boolean? out_dir
+    Boolean? stdout_log
+    Boolean? file_log
+    Boolean? file_log_path
+    Boolean? results_file
     String i_count_dot_examples_dot_run
   }
   command <<<
     iCount examples \
       ~{i_count_dot_examples_dot_run} \
-      ~{if (od) then "-od" else ""} \
-      ~{if (_stdoutlog_threshold) then "-S" else ""} \
-      ~{if (_filelog_threshold) then "-F" else ""} \
-      ~{if (_filelogpath_path) then "-P" else ""} \
-      ~{if (_file_store) then "-M" else ""}
+      ~{if (out_dir) then "--out_dir" else ""} \
+      ~{if (stdout_log) then "--stdout_log" else ""} \
+      ~{if (file_log) then "--file_log" else ""} \
+      ~{if (file_log_path) then "--file_logpath" else ""} \
+      ~{if (results_file) then "--results_file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    od: ", --out_dir       Directory to which example scripts should be copied (default: .)"
-    _stdoutlog_threshold: ", --stdout_log     Threshold value (0-50) for logging to stdout. If 0, logging to stdout if turned OFF."
-    _filelog_threshold: ", --file_log       Threshold value (0-50) for logging to file. If 0, logging to file if turned OFF."
-    _filelogpath_path: ", --file_logpath   Path to log file."
-    _file_store: ", --results_file   File into which to store Metrics."
+    out_dir: "Directory to which example scripts should be copied (default: .)"
+    stdout_log: "Threshold value (0-50) for logging to stdout. If 0, logging to stdout if turned OFF."
+    file_log: "Threshold value (0-50) for logging to file. If 0, logging to file if turned OFF."
+    file_log_path: "Path to log file."
+    results_file: "File into which to store Metrics."
     i_count_dot_examples_dot_run: "optional arguments:"
   }
   output {

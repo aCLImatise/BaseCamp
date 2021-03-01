@@ -16,6 +16,9 @@ task NGSDImportQC {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     obo: "HPO ontology file from 'https://github.com/imgag/megSAP/raw/master/data/misc/qc-cv.obo'."
     test: "Uses the test database instead of on the production database.\\nDefault value: 'false'"

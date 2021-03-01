@@ -4,6 +4,9 @@ task ContigsMerger {
   command <<<
     ContigsMerger
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

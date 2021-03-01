@@ -14,6 +14,9 @@ task BedAdd {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input BED files."
     out: "Output BED file. If unset, writes to STDOUT.\\nDefault value: ''"

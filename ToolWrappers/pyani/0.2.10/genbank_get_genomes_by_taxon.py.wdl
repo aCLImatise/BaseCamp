@@ -28,6 +28,9 @@ task GenbankGetGenomesByTaxonpy {
       ~{if defined(batch_size) then ("--batchsize " +  '"' + batch_size + '"') else ""} \
       ~{if defined(timeout) then ("--timeout " +  '"' + timeout + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "Output directory (required)"
     tax_on: "NCBI taxonomy ID"

@@ -44,6 +44,9 @@ task Filterspy {
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nb_cpus: "The maximum number of CPUs used. [Default: 1]"
     nb_biggest_otu: "Number of most abundant OTUs you want to keep."

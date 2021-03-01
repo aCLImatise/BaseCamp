@@ -36,6 +36,9 @@ task NAPSS {
       ~{if (shape_slope) then "--SHAPEslope" else ""} \
       ~{if (window) then "--window" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pseudoknot_free: "Specify pseudoknot-free prediction mode.\\nDefault is to predict pseudoknots."
     constraint: "Specify a constraints file to be applied.\\nDefault is to have no constraints applied."

@@ -3,21 +3,21 @@ id: rsem_eval_calculate_score.cwl
 inputs:
 - id: in_overlap_size
   doc: "The minimum overlap size required to join two reads together.\n(Default: 0)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --overlap-size
 - id: in_transcript_length_parameters
   doc: "Read the true transcript length distribution's mean and standard\ndeviation\
     \ from <file>. This option is mutually exclusive with\n'--transcript-length-mean'\
     \ and '--transcript-length-sd'. (Default:\noff)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --transcript-length-parameters
 - id: in_transcript_length_mean
   doc: "The mean of true transcript length distribution. This option is used\ntogether\
     \ with '--transcript-length-sd' and mutually exclusive with\n'--estimate-transcript-length-distribution'.\
     \ (Default: learned from\nhuman Ensembl annotation and hg20 genome)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --transcript-length-mean
 - id: in_transcript_length_sd
@@ -25,17 +25,17 @@ inputs:
     \ is used together with '--transcript-length-mean' and mutually\nexclusive with\
     \ '--estimate-transcript-length-distribution'.\n(Default: learned from human Ensembl\
     \ annotation and hg20 genome)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --transcript-length-sd
 - id: in_paired_end
   doc: 'Input reads are paired-end reads. (Default: off)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --paired-end
 - id: in_no_qualities
   doc: 'Input reads do not contain quality scores. (Default: off)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-qualities
 - id: in_strand_specific
@@ -44,7 +44,7 @@ inputs:
     \ to --forward-prob=1.0. With this option set, if\nRSEM-EVAL runs the Bowtie/Bowtie\
     \ 2 aligner, the '--norc'\nBowtie/Bowtie 2 option will be used, which disables\
     \ alignment to the\nreverse strand of transcripts. (Default: off)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --strand-specific
 - id: in_bowtie_two
@@ -56,28 +56,28 @@ inputs:
     \ maximum\nmismatch rate allowed. This rate can be set by option\n'--bowtie2-mismatch-rate'.\
     \ If reads are paired-end, we additionally\nuse options '--no-mixed' and '--no-discordant'.\
     \ (Default: off)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bowtie2
 - id: in_sam
   doc: 'Input file is in SAM format. (Default: off)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sam
 - id: in_bam
   doc: 'Input file is in BAM format. (Default: off)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bam
-- id: in_p_slash_num_threads
+- id: in_num_threads
   doc: "Number of threads to use. Both Bowtie/Bowtie2, expression estimation\nand\
     \ 'samtools sort' will use this many threads. (Default: 1)"
-  type: long
+  type: long?
   inputBinding:
-    prefix: -p/--num-threads
+    prefix: --num-threads
 - id: in_output_bam
   doc: 'Generate BAM outputs. (Default: off)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --output-bam
 - id: in_sampling_for_bam
@@ -88,31 +88,26 @@ inputs:
     \ sampled alignment\nhas a weight of 1. All other alignments have weight 0. If\
     \ the\n\"noise\" transcript is sampled, all alignments appeared in the BAM\nfile\
     \ should have weight 0. (Default: off)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sampling-for-bam
 - id: in_seed
   doc: "Set the seed for the random number generators used in calculating\nposterior\
     \ mean estimates and credibility intervals. The seed must be\na non-negative 32\
     \ bit interger. (Default: off)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --seed
-- id: in_q_slash_quiet
+- id: in_quiet
   doc: 'Suppress the output of logging information. (Default: off)'
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -q/--quiet
-- id: in_h_slash_help
-  doc: Show help information.
-  type: boolean
-  inputBinding:
-    prefix: -h/--help
+    prefix: --quiet
 - id: in_sam_header_info
   doc: "RSEM-EVAL reads header information from input by default. If this\noption\
     \ is on, header information is read from the specified file.\nFor the format of\
     \ the file, please see SAM official website.\n(Default: \"\")"
-  type: File
+  type: File?
   inputBinding:
     prefix: --sam-header-info
 - id: in_seed_length
@@ -123,7 +118,7 @@ inputs:
     \ added poly(A)\ntails, the minimum allowed value is 5, otherwise, the minimum\n\
     allowed value is 25. Note that this script will only check if the\nvalue >= 5\
     \ and give a warning message if the value < 25 but >= 5.\n(Default: 25)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --seed-length
 - id: in_tag
@@ -131,71 +126,71 @@ inputs:
     \ with too many valid alignments. The field should have the\nformat <tagName>:i:<value>,\
     \ where a <value> bigger than 0 indicates\na read with too many alignments. (Default:\
     \ \"\")"
-  type: long
+  type: long?
   inputBinding:
     prefix: --tag
 - id: in_bowtie_path
   doc: "The path to the Bowtie executables. (Default: the path to the Bowtie\nexecutables\
     \ is assumed to be in the user's PATH environment\nvariable)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --bowtie-path
 - id: in_bowtie_n
   doc: "(Bowtie parameter) max # of mismatches in the seed. (Range: 0-3,\nDefault:\
     \ 2)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --bowtie-n
 - id: in_bowtie_e
   doc: "(Bowtie parameter) max sum of mismatch quality scores across the\nalignment.\
     \ (Default: 99999999)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --bowtie-e
 - id: in_bowtie_m
   doc: "(Bowtie parameter) suppress all alignments for a read if > <int>\nvalid alignments\
     \ exist. (Default: 200)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --bowtie-m
 - id: in_bowtie_chunk_mbs
   doc: "(Bowtie parameter) memory allocated for best first alignment\ncalculation\
     \ (Default: 0 - use Bowtie's default)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --bowtie-chunkmbs
 - id: in_phred_three_three_quals
   doc: 'Input quality scores are encoded as Phred+33. (Default: on)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --phred33-quals
 - id: in_phred_six_four_quals
   doc: "Input quality scores are encoded as Phred+64 (default for GA\nPipeline ver.\
     \ >= 1.3). (Default: off)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --phred64-quals
 - id: in_solexa_quals
   doc: "Input quality scores are solexa encoded (from GA Pipeline ver. <\n1.3). (Default:\
     \ off)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --solexa-quals
 - id: in_bowtie_two_path
   doc: "(Bowtie 2 parameter) The path to the Bowtie 2 executables. (Default:\nthe\
     \ path to the Bowtie 2 executables is assumed to be in the user's\nPATH environment\
     \ variable)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --bowtie2-path
 - id: in_bowtie_two_mismatch_rate
   doc: "(Bowtie 2 parameter) The maximum mismatch rate allowed. (Default:\n0.1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --bowtie2-mismatch-rate
 - id: in_bowtie_two_k
   doc: "(Bowtie 2 parameter) Find up to <int> alignments per read. (Default:\n200)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --bowtie2-k
 - id: in_bowtie_two_sensitivity_level
@@ -205,7 +200,7 @@ inputs:
     \ four candidates correspond to Bowtie 2's\n\"--very-fast\", \"--fast\", \"--sensitive\"\
     \ and \"--very-sensitive\"\noptions. (Default: \"sensitive\" - use Bowtie 2's\
     \ default)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --bowtie2-sensitivity-level
 - id: in_forward_prob
@@ -214,31 +209,31 @@ inputs:
     \ from the forward strand, 0 for a\nstrand-specific protocol where all (upstream)\
     \ read are derived from\nthe reverse strand, or 0.5 for a non-strand-specific\
     \ protocol.\n(Default: 0.5)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --forward-prob
 - id: in_fragment_length_min
   doc: "Minimum read(SE)/fragment(PE) length allowed. This is also the value\nfor\
     \ the Bowtie/Bowtie2 -I option. (Default: 1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --fragment-length-min
 - id: in_fragment_length_max
   doc: "Maximum read(SE)/fragment(PE) length allowed. This is also the value\nfor\
     \ the Bowtie/Bowtie 2 -X option. (Default: 1000)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --fragment-length-max
 - id: in_estimate_r_spd
   doc: "Set this option if you want to estimate the read start position\ndistribution\
     \ (RSPD) from data. Otherwise, RSEM-EVAL will use a\nuniform RSPD. (Default: off)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --estimate-rspd
 - id: in_num_r_spd_bins
   doc: "Number of bins in the RSPD. Only relevant when '--estimate-rspd' is\nspecified.\
     \ Use of the default setting is recommended. (Default: 20)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-rspd-bins
 - id: in_sam_tools_sort_mem
@@ -246,7 +241,7 @@ inputs:
     \ represents the memory and accepts suffices 'K/M/G'.\nRSEM-EVAL will pass <string>\
     \ to the '-m' option of 'samtools sort'.\nPlease note that the default used here\
     \ is different from the default\nused by samtools. (Default: 1G)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --samtools-sort-mem
 - id: in_keep_intermediate_files
@@ -256,19 +251,19 @@ inputs:
     \ by previous RSEM-EVAL runs\ninside of it. By default, after RSEM-EVAL finishes,\
     \ the temporary\ndirectory is deleted. Set this option to prevent the deletion\
     \ of\nthis directory and the intermediate files inside of it. (Default:\noff)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --keep-intermediate-files
 - id: in_temporary_folder
   doc: "Set where to put the temporary files generated by RSEM-EVAL. If the\nfolder\
     \ specified does not exist, RSEM-EVAL will try to create it.\n(Default: sample_name.temp)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --temporary-folder
 - id: in_time
   doc: "Output time consumed by each step of RSEM-EVAL to\n'sample_name.time'. (Default:\
     \ off)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --time
 - id: in_r_sem_eval_calculate_score
@@ -426,7 +421,7 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_rsemeval_score_can
+- id: in_rsemeval_score_found
   doc: The RSEM-EVAL score can be found in 'assembly1_rsem_eval.score' and the
   type: long
   inputBinding:
@@ -442,9 +437,10 @@ outputs:
     \ by previous RSEM-EVAL runs\ninside of it. By default, after RSEM-EVAL finishes,\
     \ the temporary\ndirectory is deleted. Set this option to prevent the deletion\
     \ of\nthis directory and the intermediate files inside of it. (Default:\noff)"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_keep_intermediate_files)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsem-eval-calculate-score

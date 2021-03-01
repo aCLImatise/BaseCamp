@@ -4,98 +4,346 @@ command:
 - test
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: exec
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: options...
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "a comma separated capability list to add\n--allow-setuid         \
-    \  allow setuid binaries in container (root only)\n--app string             set\
-    \ an application to run inside a container\n--apply-cgroups string   apply cgroups\
-    \ from file for container\nprocesses (root only)"
+  optional: true
   synonyms:
   - --add-caps
+  description: a comma separated capability list to add
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --allow-setuid
+  description: allow setuid binaries in container (root only)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --app
+  description: set an application to run inside a container
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --apply-cgroups
+  description: "apply cgroups from file for container\nprocesses (root only)"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --bind
   description: "a user-bind path specification.  spec has\nthe format src[:dest[:opts]],\
     \ where src and\ndest are outside and inside paths.  If dest\nis not given, it\
     \ is set equal to src.\nMount options ('opts') may be specified as\n'ro' (read-only)\
     \ or 'rw' (read/write, which\nis the default). Multiple bind paths can be\ngiven\
     \ by a comma separated list."
-  synonyms:
-  - -B
-  - --bind
   args: !SimpleFlagArg
     name: strings
-  optional: true
 - !Flag
-  description: "clean environment before running container\n-c, --contain        \
-    \        use minimal /dev and empty other\ndirectories (e.g. /tmp and $HOME) instead\n\
-    of sharing filesystems from your host\n-C, --containall             contain not\
-    \ only file systems, but also\nPID, IPC, and environment\n--disable-cache    \
-    \      dont use cache, and dont create cache\n--dns string             list of\
-    \ DNS server separated by commas to\nadd in resolv.conf\n--docker-login      \
-    \     login to a Docker Repository interactively\n--drop-caps string       a comma\
-    \ separated capability list to drop\n-f, --fakeroot               run container\
-    \ in new user namespace as uid 0\n-h, --help                   help for test\n\
-    -H, --home string            a home directory specification.  spec can\neither\
-    \ be a src path or src:dest pair.  src\nis the source path of the home directory\n\
-    outside the container and dest overrides\nthe home directory within the container.\n\
-    (default \"/root\")\n--hostname string        set container hostname\n-i, --ipc\
-    \                    run container in a new IPC namespace\n--keep-privs      \
-    \       let root user keep privileges in container\n(root only)\n-n, --net   \
-    \                 run container in a new network namespace\n(sets up a bridge\
-    \ network interface by default)\n--network string         specify desired network\
-    \ type separated by\ncommas, each network will bring up a\ndedicated interface\
-    \ inside container\n(default \"bridge\")\n--network-args strings   specify network\
-    \ arguments to pass to CNI plugins\n--no-home                do NOT mount users\
-    \ home directory if home\nis not the current working directory\n--no-init    \
-    \            do NOT start shim process with --pid\n--no-nv\n--no-privs       \
-    \        drop all privileges from root user in container)\n--nohttps         \
-    \       do NOT use HTTPS with the docker://\ntransport (useful for local docker\n\
-    registries without a certificate)\n--nonet                  disable VM network\
-    \ handling\n--nv                     enable experimental Nvidia support\n-o, --overlay\
-    \ strings        use an overlayFS image for persistent data\nstorage or as read-only\
-    \ layer of container\n--passphrase             prompt for an encryption passphrase\n\
-    --pem-path string        enter an path to a PEM formated RSA key for\nan encrypted\
-    \ container\n-p, --pid                    run container in a new PID namespace\n\
-    --pwd string             initial working directory for payload\nprocess inside\
-    \ the container\n--rocm                   enable experimental Rocm support\n-S,\
-    \ --scratch strings        include a scratch directory within the\ncontainer that\
-    \ is linked to a temporary dir\n(use -W to force location)\n--security strings\
-    \       enable security features (SELinux,\nApparmor, Seccomp)\n-u, --userns \
-    \                run container in a new user namespace,\nallowing Singularity\
-    \ to run completely\nunprivileged on recent kernels. This\ndisables some features\
-    \ of Singularity, for\nexample it only works with sandbox images.\n--uts     \
-    \               run container in a new UTS namespace\n--vm                   \
-    \  enable VM support\n--vm-cpu string          number of CPU cores to allocate\
-    \ to Virtual\nMachine (implies --vm) (default \"1\")\n--vm-err               \
-    \  enable attaching stderr from VM\n--vm-ip string           IP Address to assign\
-    \ for container usage.\nDefaults to DHCP within bridge network.\n(default \"dhcp\"\
-    )\n--vm-ram string          amount of RAM in MiB to allocate to Virtual\nMachine\
-    \ (implies --vm) (default \"1024\")\n-W, --workdir string         working directory\
-    \ to be used for /tmp,\n/var/tmp and $HOME (if -c/--contain was\nalso used)\n\
-    -w, --writable               by default all Singularity containers are\navailable\
-    \ as read only. This option makes\nthe file system accessible as read/write.\n\
-    --writable-tmpfs         makes the file system accessible as\nread-write with\
-    \ non persistent data (with\noverlay support only)"
+  optional: true
   synonyms:
   - -e
   - --cleanenv
+  description: clean environment before running container
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -c
+  - --contain
+  description: "use minimal /dev and empty other\ndirectories (e.g. /tmp and $HOME)\
+    \ instead\nof sharing filesystems from your host"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --containall
+  description: "contain not only file systems, but also\nPID, IPC, and environment"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disable-cache
+  description: dont use cache, and dont create cache
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dns
+  description: "list of DNS server separated by commas to\nadd in resolv.conf"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --docker-login
+  description: login to a Docker Repository interactively
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --drop-caps
+  description: a comma separated capability list to drop
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fakeroot
+  description: run container in new user namespace as uid 0
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --home
+  description: "a home directory specification.  spec can\neither be a src path or\
+    \ src:dest pair.  src\nis the source path of the home directory\noutside the container\
+    \ and dest overrides\nthe home directory within the container.\n(default \"/root\"\
+    )"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --hostname
+  description: set container hostname
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --ipc
+  description: run container in a new IPC namespace
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-privs
+  description: "let root user keep privileges in container\n(root only)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --net
+  description: "run container in a new network namespace\n(sets up a bridge network\
+    \ interface by default)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --network
+  description: "specify desired network type separated by\ncommas, each network will\
+    \ bring up a\ndedicated interface inside container\n(default \"bridge\")"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --network-args
+  description: specify network arguments to pass to CNI plugins
+  args: !SimpleFlagArg
+    name: strings
+- !Flag
+  optional: true
+  synonyms:
+  - --no-home
+  description: "do NOT mount users home directory if home\nis not the current working\
+    \ directory"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-init
+  description: do NOT start shim process with --pid
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-nv
+  - --no-privs
+  description: drop all privileges from root user in container)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nohttps
+  description: "do NOT use HTTPS with the docker://\ntransport (useful for local docker\n\
+    registries without a certificate)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nonet
+  description: disable VM network handling
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nv
+  description: enable experimental Nvidia support
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --overlay
+  description: "use an overlayFS image for persistent data\nstorage or as read-only\
+    \ layer of container"
+  args: !SimpleFlagArg
+    name: strings
+- !Flag
+  optional: true
+  synonyms:
+  - --passphrase
+  description: prompt for an encryption passphrase
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pem-path
+  description: "enter an path to a PEM formated RSA key for\nan encrypted container"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pid
+  description: run container in a new PID namespace
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pwd
+  description: "initial working directory for payload\nprocess inside the container"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --rocm
+  description: enable experimental Rocm support
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --scratch
+  description: "include a scratch directory within the\ncontainer that is linked to\
+    \ a temporary dir\n(use -W to force location)"
+  args: !SimpleFlagArg
+    name: strings
+- !Flag
+  optional: true
+  synonyms:
+  - --security
+  description: "enable security features (SELinux,\nApparmor, Seccomp)"
+  args: !SimpleFlagArg
+    name: strings
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --userns
+  description: "run container in a new user namespace,\nallowing Singularity to run\
+    \ completely\nunprivileged on recent kernels. This\ndisables some features of\
+    \ Singularity, for\nexample it only works with sandbox images."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --uts
+  description: run container in a new UTS namespace
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vm
+  description: enable VM support
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vm-cpu
+  description: "number of CPU cores to allocate to Virtual\nMachine (implies --vm)\
+    \ (default \"1\")"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --vm-err
+  description: enable attaching stderr from VM
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vm-ip
+  description: "IP Address to assign for container usage.\nDefaults to DHCP within\
+    \ bridge network.\n(default \"dhcp\")"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --vm-ram
+  description: "amount of RAM in MiB to allocate to Virtual\nMachine (implies --vm)\
+    \ (default \"1024\")"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --workdir
+  description: "working directory to be used for /tmp,\n/var/tmp and $HOME (if -c/--contain\
+    \ was\nalso used)"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --writable
+  description: "by default all Singularity containers are\navailable as read only.\
+    \ This option makes\nthe file system accessible as read/write."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --writable-tmpfs
+  description: "makes the file system accessible as\nread-write with non persistent\
+    \ data (with\noverlay support only)"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for test
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Run the user-defined tests within a container\n\nUsage:\n  singularity\
@@ -190,3 +438,4 @@ help_text: "Run the user-defined tests within a container\n\nUsage:\n  singulari
   \n\nFor additional help or support, please visit https://www.sylabs.io/docs/\n"
 generated_using:
 - --help
+docker_image:

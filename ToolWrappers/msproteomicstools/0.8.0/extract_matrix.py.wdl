@@ -12,6 +12,9 @@ task ExtractMatrixpy {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(columns) then ("--columns " +  '"' + columns + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "feature aligner file"
     out: "output matrix"

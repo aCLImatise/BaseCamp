@@ -16,6 +16,9 @@ task Perror {
       ~{if (silent) then "--silent" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     info: "Synonym for --help."
     silent: "Only print the error message."

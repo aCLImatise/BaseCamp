@@ -48,6 +48,9 @@ task FunannotateAnnotate {
       ~{if (force) then "--force" else ""} \
       ~{if (cpus) then "--cpus" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     folder_funannotate_predict: "Folder from funannotate predict"
     out: "Output folder for results"

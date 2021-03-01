@@ -8,7 +8,7 @@ task PhylophlanDrawMetagenomic {
     String? prefix_output_files
     File? separator
     Int? dpi
-    String? images_default_svg
+    String? images_output_format
     Boolean? verbose
   }
   command <<<
@@ -19,9 +19,12 @@ task PhylophlanDrawMetagenomic {
       ~{if defined(prefix_output_files) then ("--output " +  '"' + prefix_output_files + '"') else ""} \
       ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""} \
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
-      ~{if defined(images_default_svg) then ("-f " +  '"' + images_default_svg + '"') else ""} \
+      ~{if defined(images_output_format) then ("-f " +  '"' + images_output_format + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_generated: "The input file generated from\\nphylophlan_metagenomic.py (default: None)"
     mapping_file_maps: "A mapping file that maps each bin to its metagenome\\n(default: None)"
@@ -29,7 +32,7 @@ task PhylophlanDrawMetagenomic {
     prefix_output_files: "Prefix output files (default: output_heatmap)"
     separator: "The separator used in the mapping file (default: )"
     dpi: "Dpi resolution of the images (default: 200)"
-    images_default_svg: "Images output format (default: svg)"
+    images_output_format: "Images output format (default: svg)"
     verbose: "Prints more stuff (default: False)"
   }
   output {

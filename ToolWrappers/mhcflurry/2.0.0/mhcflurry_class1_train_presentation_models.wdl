@@ -32,6 +32,9 @@ task Mhcflurryclass1trainpresentationmodels {
       ~{if defined(hla_column) then ("--hla-column " +  '"' + hla_column + '"') else ""} \
       ~{if defined(target_column) then ("--target-column " +  '"' + target_column + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data: "Training data CSV. Expected columns: peptide, n_flank,\\nc_flank, hit"
     out_models_dir: "Directory to write models and manifest"

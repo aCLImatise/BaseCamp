@@ -1,0 +1,441 @@
+&id001 !Command
+command:
+- ipa
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - ipa
+  - local
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fn
+    - -i
+    description: '(Required.) Input reads in FASTA, FASTQ, BAM, XML or FOFN formats.
+      Repeat "-i fn1 -i fn2" for multiple inputs, or use a "file-of-filenames", e.g.
+      "-i foo.fofn". (default: [])'
+    args: !SimpleFlagArg
+      name: INPUT_FN
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-polish
+    description: 'Skip polishing. (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-phase
+    description: 'Skip phasing. (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-purge-dups
+    description: 'Skip purge_dups. (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --genome-size
+    description: 'Genome size, required only for downsampling. (default: 0)'
+    args: !SimpleFlagArg
+      name: GENOME_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --coverage
+    description: 'Downsampled coverage, only if genome_size * coverage > 0. (default:
+      0)'
+    args: !SimpleFlagArg
+      name: COVERAGE
+  - !Flag
+    optional: true
+    synonyms:
+    - --advanced-opt
+    description: 'Advanced options (quoted). (default: )'
+    args: !SimpleFlagArg
+      name: ADVANCED_OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --nthreads
+    description: '(Required) Maximum number of threads to use per job. (Applies to
+      both remote and local tasks.) (default: 0)'
+    args: !SimpleFlagArg
+      name: NTHREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - --nshards
+    description: 'Maximum number of parallel tasks to split work into (though the
+      number of simultaneous jobs could be much lower). (default: 40)'
+    args: !SimpleFlagArg
+      name: NSHARDS
+  - !Flag
+    optional: true
+    synonyms:
+    - --tmp-dir
+    description: 'Temporary directory for some disk based operations like sorting.
+      (default: /tmp)'
+    args: !SimpleFlagArg
+      name: TMP_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: 'Extra logging for each task. (Show full env, e.g.) (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --njobs
+    description: '(Required) Maximum number of simultaneous jobs, each running up
+      to nthreads. (default: 0)'
+    args: !SimpleFlagArg
+      name: NJOBS
+  - !Flag
+    optional: true
+    synonyms:
+    - --run-dir
+    description: 'Directory in which to run snakemake. (default: ./RUN)'
+    args: !SimpleFlagArg
+      name: RUN_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --target
+    description: '"finish" is implied, but you can use this to short-circuit. (default:
+      )'
+    args: !SimpleFlagArg
+      name: TARGET
+  - !Flag
+    optional: true
+    synonyms:
+    - --unlock
+    description: 'Pass "--unlock" to snakemake, in case snakemake crashed earlier.
+      (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --dry-run
+    - -n
+    description: 'Print the snakemake command and do a "dry run" quickly. Very useful!
+      (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --only-print
+    description: 'Do not actually run snakemake. Simply print the snakemake command
+      and exit. (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --resume
+    description: 'Restart snakemake, but after regenerating the config file. In this
+      case, run-dir may already exist. (Without --resume, run-dir must not already
+      exist.) (default: False)'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: ipa local [-h] [--input-fn INPUT_FN] [--no-polish] [--no-phase]\n\
+    \                 [--no-purge-dups] [--genome-size GENOME_SIZE]\n            \
+    \     [--coverage COVERAGE] [--advanced-opt ADVANCED_OPT]\n                 [--nthreads\
+    \ NTHREADS] [--nshards NSHARDS] [--tmp-dir TMP_DIR]\n                 [--verbose]\
+    \ [--njobs NJOBS] [--run-dir RUN_DIR]\n                 [--target TARGET] [--unlock]\
+    \ [--dry-run] [--only-print]\n                 [--resume]\n\nThis sub-command\
+    \ runs snakemake in local-mode.\n\noptional arguments:\n  -h, --help         \
+    \   show this help message and exit\n  --input-fn INPUT_FN, -i INPUT_FN\n    \
+    \                    (Required.) Input reads in FASTA, FASTQ, BAM, XML or FOFN\
+    \ formats. Repeat \"-i fn1 -i fn2\" for multiple inputs, or use a \"file-of-filenames\"\
+    , e.g. \"-i foo.fofn\". (default: [])\n\nAlgorithmic options:\n  --no-polish \
+    \          Skip polishing. (default: False)\n  --no-phase            Skip phasing.\
+    \ (default: False)\n  --no-purge-dups       Skip purge_dups. (default: False)\n\
+    \  --genome-size GENOME_SIZE\n                        Genome size, required only\
+    \ for downsampling. (default: 0)\n  --coverage COVERAGE   Downsampled coverage,\
+    \ only if genome_size * coverage > 0. (default: 0)\n  --advanced-opt ADVANCED_OPT\n\
+    \                        Advanced options (quoted). (default: )\n\nWorkflow options:\n\
+    \  --nthreads NTHREADS   (Required) Maximum number of threads to use per job.\
+    \ (Applies to both remote and local tasks.) (default: 0)\n  --nshards NSHARDS\
+    \     Maximum number of parallel tasks to split work into (though the number of\
+    \ simultaneous jobs could be much lower). (default: 40)\n  --tmp-dir TMP_DIR \
+    \    Temporary directory for some disk based operations like sorting. (default:\
+    \ /tmp)\n  --verbose             Extra logging for each task. (Show full env,\
+    \ e.g.) (default: False)\n\nSnakemake options:\n  --njobs NJOBS         (Required)\
+    \ Maximum number of simultaneous jobs, each running up to nthreads. (default:\
+    \ 0)\n  --run-dir RUN_DIR     Directory in which to run snakemake. (default: ./RUN)\n\
+    \  --target TARGET       \"finish\" is implied, but you can use this to short-circuit.\
+    \ (default: )\n  --unlock              Pass \"--unlock\" to snakemake, in case\
+    \ snakemake crashed earlier. (default: False)\n  --dry-run, -n         Print the\
+    \ snakemake command and do a \"dry run\" quickly. Very useful! (default: False)\n\
+    \  --only-print          Do not actually run snakemake. Simply print the snakemake\
+    \ command and exit. (default: False)\n  --resume              Restart snakemake,\
+    \ but after regenerating the config file. In this case, run-dir may already exist.\
+    \ (Without --resume, run-dir must not already exist.) (default: False)\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0
+- !Command
+  command:
+  - ipa
+  - dist
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fn
+    - -i
+    description: '(Required.) Input reads in FASTA, FASTQ, BAM, XML or FOFN formats.
+      Repeat "-i fn1 -i fn2" for multiple inputs, or use a "file-of-filenames", e.g.
+      "-i foo.fofn". (default: [])'
+    args: !SimpleFlagArg
+      name: INPUT_FN
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-polish
+    description: 'Skip polishing. (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-phase
+    description: 'Skip phasing. (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-purge-dups
+    description: 'Skip purge_dups. (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --genome-size
+    description: 'Genome size, required only for downsampling. (default: 0)'
+    args: !SimpleFlagArg
+      name: GENOME_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --coverage
+    description: 'Downsampled coverage, only if genome_size * coverage > 0. (default:
+      0)'
+    args: !SimpleFlagArg
+      name: COVERAGE
+  - !Flag
+    optional: true
+    synonyms:
+    - --advanced-opt
+    description: 'Advanced options (quoted). (default: )'
+    args: !SimpleFlagArg
+      name: ADVANCED_OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --nthreads
+    description: '(Required) Maximum number of threads to use per job. (Applies to
+      both remote and local tasks.) (default: 0)'
+    args: !SimpleFlagArg
+      name: NTHREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - --nshards
+    description: 'Maximum number of parallel tasks to split work into (though the
+      number of simultaneous jobs could be much lower). (default: 40)'
+    args: !SimpleFlagArg
+      name: NSHARDS
+  - !Flag
+    optional: true
+    synonyms:
+    - --tmp-dir
+    description: 'Temporary directory for some disk based operations like sorting.
+      (default: /tmp)'
+    args: !SimpleFlagArg
+      name: TMP_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: 'Extra logging for each task. (Show full env, e.g.) (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --njobs
+    description: '(Required) Maximum number of simultaneous jobs, each running up
+      to nthreads. (default: 0)'
+    args: !SimpleFlagArg
+      name: NJOBS
+  - !Flag
+    optional: true
+    synonyms:
+    - --run-dir
+    description: 'Directory in which to run snakemake. (default: ./RUN)'
+    args: !SimpleFlagArg
+      name: RUN_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --target
+    description: '"finish" is implied, but you can use this to short-circuit. (default:
+      )'
+    args: !SimpleFlagArg
+      name: TARGET
+  - !Flag
+    optional: true
+    synonyms:
+    - --unlock
+    description: 'Pass "--unlock" to snakemake, in case snakemake crashed earlier.
+      (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --dry-run
+    - -n
+    description: 'Print the snakemake command and do a "dry run" quickly. Very useful!
+      (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --only-print
+    description: 'Do not actually run snakemake. Simply print the snakemake command
+      and exit. (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cluster-args
+    description: "(Required) Pass this along to snakemake, for conveniently running\
+      \ in a compute cluster. (default: )\n"
+    args: !SimpleFlagArg
+      name: CLUSTER_ARGS
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: ipa dist [-h] [--input-fn INPUT_FN] [--no-polish] [--no-phase]\n\
+    \                [--no-purge-dups] [--genome-size GENOME_SIZE]\n             \
+    \   [--coverage COVERAGE] [--advanced-opt ADVANCED_OPT]\n                [--nthreads\
+    \ NTHREADS] [--nshards NSHARDS] [--tmp-dir TMP_DIR]\n                [--verbose]\
+    \ [--njobs NJOBS] [--run-dir RUN_DIR]\n                [--target TARGET] [--unlock]\
+    \ [--dry-run] [--only-print]\n                [--cluster-args CLUSTER_ARGS]\n\n\
+    This sub-command runs snakemake in cluster-mode, i.e. with job-distribution.\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --input-fn INPUT_FN, -i INPUT_FN\n                        (Required.) Input\
+    \ reads in FASTA, FASTQ, BAM, XML or FOFN formats. Repeat \"-i fn1 -i fn2\" for\
+    \ multiple inputs, or use a \"file-of-filenames\", e.g. \"-i foo.fofn\". (default:\
+    \ [])\n\nAlgorithmic options:\n  --no-polish           Skip polishing. (default:\
+    \ False)\n  --no-phase            Skip phasing. (default: False)\n  --no-purge-dups\
+    \       Skip purge_dups. (default: False)\n  --genome-size GENOME_SIZE\n     \
+    \                   Genome size, required only for downsampling. (default: 0)\n\
+    \  --coverage COVERAGE   Downsampled coverage, only if genome_size * coverage\
+    \ > 0. (default: 0)\n  --advanced-opt ADVANCED_OPT\n                        Advanced\
+    \ options (quoted). (default: )\n\nWorkflow options:\n  --nthreads NTHREADS  \
+    \ (Required) Maximum number of threads to use per job. (Applies to both remote\
+    \ and local tasks.) (default: 0)\n  --nshards NSHARDS     Maximum number of parallel\
+    \ tasks to split work into (though the number of simultaneous jobs could be much\
+    \ lower). (default: 40)\n  --tmp-dir TMP_DIR     Temporary directory for some\
+    \ disk based operations like sorting. (default: /tmp)\n  --verbose           \
+    \  Extra logging for each task. (Show full env, e.g.) (default: False)\n\nSnakemake\
+    \ options:\n  --njobs NJOBS         (Required) Maximum number of simultaneous\
+    \ jobs, each running up to nthreads. (default: 0)\n  --run-dir RUN_DIR     Directory\
+    \ in which to run snakemake. (default: ./RUN)\n  --target TARGET       \"finish\"\
+    \ is implied, but you can use this to short-circuit. (default: )\n  --unlock \
+    \             Pass \"--unlock\" to snakemake, in case snakemake crashed earlier.\
+    \ (default: False)\n  --dry-run, -n         Print the snakemake command and do\
+    \ a \"dry run\" quickly. Very useful! (default: False)\n  --only-print       \
+    \   Do not actually run snakemake. Simply print the snakemake command and exit.\
+    \ (default: False)\n  --cluster-args CLUSTER_ARGS\n                        (Required)\
+    \ Pass this along to snakemake, for conveniently running in a compute cluster.\
+    \ (default: )\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0
+- !Command
+  command:
+  - ipa
+  - validate
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: ipa
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: ''
+    args: !EmptyFlagArg {}
+  help_text: "usage: ipa [-h] [--version] {local,dist,validate} ...\nipa: error: unrecognized\
+    \ arguments: --usage\n"
+  generated_using:
+  - --usage
+  docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: ipa [-h] [--version] {local,dist,validate} ...\n\nImproved Phased\
+  \ Assembly tool for HiFi reads.\n\noptional arguments:\n  -h, --help           \
+  \ show this help message and exit\n  --version             show program's version\
+  \ number and exit\n\nsubcommands:\n  One of these must follow the options listed\
+  \ above and may be followed by sub-command specific options.\n\n  {local,dist,validate}\n\
+  \                        sub-command help\n    local               Run IPA on your\
+  \ local machine.\n    dist                Distribute IPA jobs to your cluster.\n\
+  \    validate            Check dependencies.\n\nTry \"ipa local --help\".\nOr \"\
+  ipa validate\" to validate dependencies.\nhttps://github.com/PacificBiosciences/pbbioconda/wiki/Improved-Phased-Assember\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0

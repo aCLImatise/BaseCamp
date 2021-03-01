@@ -18,6 +18,9 @@ task SvtoolsPrune {
       ~{if defined(output_bedpe_write) then ("--output " +  '"' + output_bedpe_write + '"') else ""} \
       ~{if defined(tempdir) then ("--tempdir " +  '"' + tempdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     distance: "max separation distance (bp) of adjacent loci in\\ncluster [50]"
     eval_param: "evaluating parameter for choosing best bedpe in a\\ncluster(e.g. af=AlleleFrequency default:af)"

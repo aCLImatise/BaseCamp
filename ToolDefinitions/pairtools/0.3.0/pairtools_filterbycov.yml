@@ -4,201 +4,201 @@ command:
 - filterbycov
 positional:
 - !Positional
-  description: 'PAIRS_PATH : input triu-flipped sorted .pairs or .pairsam file.  If
-    the'
+  optional: false
   position: 0
   name: number.
-  optional: false
+  description: 'PAIRS_PATH : input triu-flipped sorted .pairs or .pairsam file.  If
+    the'
 - !Positional
-  description: If file exists, it will be
+  optional: false
   position: 0
   name: interactors.
-  optional: false
+  description: If file exists, it will be
 named:
 - !Flag
-  description: "output file for pairs from low coverage\nregions. If the path ends\
-    \ with .gz or .lz4,\nthe output is pbgzip-/lz4c-compressed. By\ndefault, the output\
-    \ is printed into stdout."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "output file for pairs from low coverage\nregions. If the path ends\
+    \ with .gz or .lz4,\nthe output is pbgzip-/lz4c-compressed. By\ndefault, the output\
+    \ is printed into stdout."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --output-highcov
   description: "output file for pairs from high coverage\nregions. If the path ends\
     \ with .gz or .lz4,\nthe output is pbgzip-/lz4c-compressed. If\nthe path is the\
     \ same as in --output or -,\noutput duplicates together  with deduped\npairs.\
     \ By default, duplicates are dropped."
-  synonyms:
-  - --output-highcov
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --output-unmapped
   description: "output file for unmapped pairs. If the path\nends with .gz or .lz4,\
     \ the output is\npbgzip-/lz4c-compressed. If the path is the\nsame as in --output\
     \ or -, output unmapped\npairs together with deduped pairs. If the\npath is the\
     \ same as --output-highcov, output\nunmapped reads together. By default,\nunmapped\
     \ pairs are dropped."
-  synonyms:
-  - --output-unmapped
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: output file for statistics of multiple
+  optional: true
   synonyms:
   - --output-stats
+  description: output file for statistics of multiple
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: The maximum allowed coverage per region.
+  optional: true
   synonyms:
   - --max-cov
+  description: The maximum allowed coverage per region.
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-dist
   description: "The resolution for calculating coverage. For\neach pair, the local\
     \ coverage around each\nend is calculated as (1 + the number of\nneighbouring\
     \ pairs within +/- max_dist bp)"
-  synonyms:
-  - --max-dist
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --method
   description: "[max|sum]              calculate the number of neighbouring pairs\n\
     as either the sum or the max of the number\nof neighbours on the two sides  [default:\n\
     max]"
-  synonyms:
-  - --method
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Separator (\\t, \\v, etc. characters are\nsupported, pass them in\
-    \ quotes)"
+  optional: true
   synonyms:
   - --sep
+  description: "Separator (\\t, \\v, etc. characters are\nsupported, pass them in\
+    \ quotes)"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: The first character of comment lines
+  optional: true
   synonyms:
   - --comment-char
+  description: The first character of comment lines
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "[lowcov|highcov|both|none]\nWhich of the outputs should receive header\n\
-    and comment lines"
+  optional: true
   synonyms:
   - --send-header-to
+  description: "[lowcov|highcov|both|none]\nWhich of the outputs should receive header\n\
+    and comment lines"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Chrom 1 column; default 1
+  optional: true
   synonyms:
   - --c1
+  description: Chrom 1 column; default 1
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Chrom 2 column; default 3
+  optional: true
   synonyms:
   - --c2
+  description: Chrom 2 column; default 3
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Position 1 column; default 2
+  optional: true
   synonyms:
   - --p1
+  description: Position 1 column; default 2
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Position 2 column; default 4
+  optional: true
   synonyms:
   - --p2
+  description: Position 2 column; default 4
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Strand 1 column; default 5
+  optional: true
   synonyms:
   - --s1
+  description: Strand 1 column; default 5
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Strand 2 column; default 6
+  optional: true
   synonyms:
   - --s2
+  description: Strand 2 column; default 6
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Placeholder for a chromosome on an unmapped\nside; default !"
+  optional: true
   synonyms:
   - --unmapped-chrom
+  description: "Placeholder for a chromosome on an unmapped\nside; default !"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "If specified, duplicate pairs are marked as\nFF in \"pair_type\" and\
-    \ as a duplicate in the\nsam entries."
+  optional: true
   synonyms:
   - --mark-multi
+  description: "If specified, duplicate pairs are marked as\nFF in \"pair_type\" and\
+    \ as a duplicate in the\nsam entries."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Number of processes used by the auto-guessed\ninput decompressing\
-    \ command.  [default: 3]"
+  optional: true
   synonyms:
   - --nproc-in
+  description: "Number of processes used by the auto-guessed\ninput decompressing\
+    \ command.  [default: 3]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Number of processes used by the auto-guessed\noutput compressing command.\
-    \  [default: 8]"
+  optional: true
   synonyms:
   - --nproc-out
+  description: "Number of processes used by the auto-guessed\noutput compressing command.\
+    \  [default: 8]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cmd-in
   description: "A command to decompress the input file. If\nprovided, fully overrides\
     \ the auto-guessed\ncommand. Does not work with stdin. Must read\ninput from stdin\
     \ and print output into\nstdout. EXAMPLE: pbgzip -dc -n 3"
-  synonyms:
-  - --cmd-in
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cmd-out
   description: "A command to compress the output file. If\nprovided, fully overrides\
     \ the auto-guessed\ncommand. Does not work with stdout. Must\nread input from\
     \ stdin and print output into\nstdout. EXAMPLE: pbgzip -c -n 8"
-  synonyms:
-  - --cmd-out
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: pairtools filterbycov [OPTIONS] [PAIRS_PATH]\n\n  Remove pairs\
@@ -269,3 +269,4 @@ help_text: "Usage: pairtools filterbycov [OPTIONS] [PAIRS_PATH]\n\n  Remove pair
   \                      Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

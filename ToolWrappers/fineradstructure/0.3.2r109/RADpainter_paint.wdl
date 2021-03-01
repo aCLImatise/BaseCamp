@@ -16,6 +16,9 @@ task RADpainterPaint {
       ~{if (run_name) then "--run-name" else ""} \
       ~{if (missing_two) then "--missing2" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ploidy: "ploidy of the species being analysed (default is 2N, i.e. diploid)"
     chr: "output per-chromosome coancestry matrices"

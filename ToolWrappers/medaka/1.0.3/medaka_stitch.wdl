@@ -18,6 +18,9 @@ task MedakaStitch {
       ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
       ~{if defined(jobs) then ("--jobs " +  '"' + jobs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Verbose logging of debug information. (default: 20)"
     quiet: "Minimal logging; warnings only). (default: 20)"

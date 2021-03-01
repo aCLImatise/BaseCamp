@@ -1,0 +1,186 @@
+!Command
+command:
+- pick_test_targets.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: design_tsv
+  description: "Path to TSV with design options, as output by\ndesign.py. Alternatively,\
+    \ it can be a custom-made TSV,\nwith one row per design option, containing the\n\
+    following columns: 'target-start' (5' end of a\ntargeted genomic region, e.g.,\
+    \ an amplicon); 'target-\nend' (3' end); 'guide-target-sequences' (space-\nseparated\
+    \ list of guide sequences); 'left-primer-\ntarget-sequences' (space-separated\
+    \ list of forward\nprimer sequences); 'right-primer-target-sequences'\n(space-separated\
+    \ list of reverse primer sequences)"
+- !Positional
+  optional: false
+  position: 1
+  name: alignment_fasta
+  description: "Path to alignment (FASTA) from which to extract\ntargets. Target positions\
+    \ in DESIGN_TSV must\ncorrespond to positions in this alignment. If\nDESIGN_TSV\
+    \ is the output of design.py, then this can\nbe the output of `design.py --write-input-aln`."
+- !Positional
+  optional: false
+  position: 2
+  name: out_tsv
+  description: Path to output TSV with recommended targets for
+- !Positional
+  optional: false
+  position: 3
+  name: testing
+  description: 'optional arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -pm
+  description: "Number of mismatches to tolerate when determining\nwhether primer\
+    \ binds to a region of target sequence"
+  args: !SimpleFlagArg
+    name: PM
+- !Flag
+  optional: true
+  synonyms:
+  - -gm
+  description: "Number of mismatches to tolerate when determining\nwhether guide binds\
+    \ to a region of target sequence"
+  args: !SimpleFlagArg
+    name: GM
+- !Flag
+  optional: true
+  synonyms:
+  - --do-not-allow-gu-pairing
+  description: "When determining whether a guide binds to a region of\ntarget sequence,\
+    \ do not count G-U (wobble) base pairs\nas matching."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-seq-len-to-consider
+  description: "Do not consider, when identifying representative\nsequences, target\
+    \ sequences that are shorter than this\nlength. These can occur due to gaps in\
+    \ the alignment\n(e.g., a target sequence can have length 0 if it is\nall '-'\
+    \ in the amplicon."
+  args: !SimpleFlagArg
+    name: MIN_SEQ_LEN_TO_CONSIDER
+- !Flag
+  optional: true
+  synonyms:
+  - --min-target-len
+  description: "Minimum length of a target region; if the region in a\ndesign bound\
+    \ by primers is less than this, sequence\nwill be added on both sides of the primer\
+    \ to reach\nthis length. Note that this is in the alignment; the\nactual sequence\
+    \ could be shorter if there are gaps in\nthe alignment"
+  args: !SimpleFlagArg
+    name: MIN_TARGET_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - --min-frac-to-cover-with-rep-seqs
+  description: "For representative sequences, use medoids of clusters\nsuch that the\
+    \ clusters account for at least this\nfraction of all sequences. This allows ignoring\n\
+    outlier clusters (whose sequence(s) may have not been\ncovered by the design."
+  args: !SimpleFlagArg
+    name: MIN_FRAC_TO_COVER_WITH_REP_SEQS
+- !Flag
+  optional: true
+  synonyms:
+  - --max-cluster-distance
+  description: "Maximum inter-cluster distance to merge clusters\n(measured as 1-ANI).\
+    \ Higher values result in fewer\nrepresentative targets."
+  args: !SimpleFlagArg
+    name: MAX_CLUSTER_DISTANCE
+- !Flag
+  optional: true
+  synonyms:
+  - --num-representative-targets
+  description: "Maximum number of clusters (equivalent to maximum\nnumber of representative\
+    \ targets). If set, then --max-\ncluster-distance is ignored. Note that fewer\
+    \ may be\nreported if --min-frac-to-cover-with-rep-seqs is <1.0;\nset it to 1.0\
+    \ to report all."
+  args: !SimpleFlagArg
+    name: NUM_REPRESENTATIVE_TARGETS
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Debug output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Verbose output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: pick_test_targets.py [-h] [-pm PM] [-gm GM] [--do-not-allow-gu-pairing]\n\
+  \                            [--min-seq-len-to-consider MIN_SEQ_LEN_TO_CONSIDER]\n\
+  \                            [--min-target-len MIN_TARGET_LEN]\n               \
+  \             [--min-frac-to-cover-with-rep-seqs MIN_FRAC_TO_COVER_WITH_REP_SEQS]\n\
+  \                            [--max-cluster-distance MAX_CLUSTER_DISTANCE]\n   \
+  \                         [--num-representative-targets NUM_REPRESENTATIVE_TARGETS]\n\
+  \                            [--debug] [--verbose]\n                           \
+  \ design_tsv alignment_fasta out_tsv\n\npositional arguments:\n  design_tsv    \
+  \        Path to TSV with design options, as output by\n                       \
+  \ design.py. Alternatively, it can be a custom-made TSV,\n                     \
+  \   with one row per design option, containing the\n                        following\
+  \ columns: 'target-start' (5' end of a\n                        targeted genomic\
+  \ region, e.g., an amplicon); 'target-\n                        end' (3' end); 'guide-target-sequences'\
+  \ (space-\n                        separated list of guide sequences); 'left-primer-\n\
+  \                        target-sequences' (space-separated list of forward\n  \
+  \                      primer sequences); 'right-primer-target-sequences'\n    \
+  \                    (space-separated list of reverse primer sequences)\n  alignment_fasta\
+  \       Path to alignment (FASTA) from which to extract\n                      \
+  \  targets. Target positions in DESIGN_TSV must\n                        correspond\
+  \ to positions in this alignment. If\n                        DESIGN_TSV is the\
+  \ output of design.py, then this can\n                        be the output of `design.py\
+  \ --write-input-aln`.\n  out_tsv               Path to output TSV with recommended\
+  \ targets for\n                        testing\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -pm PM                Number of\
+  \ mismatches to tolerate when determining\n                        whether primer\
+  \ binds to a region of target sequence\n  -gm GM                Number of mismatches\
+  \ to tolerate when determining\n                        whether guide binds to a\
+  \ region of target sequence\n  --do-not-allow-gu-pairing\n                     \
+  \   When determining whether a guide binds to a region of\n                    \
+  \    target sequence, do not count G-U (wobble) base pairs\n                   \
+  \     as matching.\n  --min-seq-len-to-consider MIN_SEQ_LEN_TO_CONSIDER\n      \
+  \                  Do not consider, when identifying representative\n          \
+  \              sequences, target sequences that are shorter than this\n        \
+  \                length. These can occur due to gaps in the alignment\n        \
+  \                (e.g., a target sequence can have length 0 if it is\n         \
+  \               all '-' in the amplicon.\n  --min-target-len MIN_TARGET_LEN\n  \
+  \                      Minimum length of a target region; if the region in a\n \
+  \                       design bound by primers is less than this, sequence\n  \
+  \                      will be added on both sides of the primer to reach\n    \
+  \                    this length. Note that this is in the alignment; the\n    \
+  \                    actual sequence could be shorter if there are gaps in\n   \
+  \                     the alignment\n  --min-frac-to-cover-with-rep-seqs MIN_FRAC_TO_COVER_WITH_REP_SEQS\n\
+  \                        For representative sequences, use medoids of clusters\n\
+  \                        such that the clusters account for at least this\n    \
+  \                    fraction of all sequences. This allows ignoring\n         \
+  \               outlier clusters (whose sequence(s) may have not been\n        \
+  \                covered by the design.\n  --max-cluster-distance MAX_CLUSTER_DISTANCE\n\
+  \                        Maximum inter-cluster distance to merge clusters\n    \
+  \                    (measured as 1-ANI). Higher values result in fewer\n      \
+  \                  representative targets.\n  --num-representative-targets NUM_REPRESENTATIVE_TARGETS\n\
+  \                        Maximum number of clusters (equivalent to maximum\n   \
+  \                     number of representative targets). If set, then --max-\n \
+  \                       cluster-distance is ignored. Note that fewer may be\n  \
+  \                      reported if --min-frac-to-cover-with-rep-seqs is <1.0;\n\
+  \                        set it to 1.0 to report all.\n  --debug               Debug\
+  \ output\n  --verbose             Verbose output\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/adapt:1.2.0--py_0

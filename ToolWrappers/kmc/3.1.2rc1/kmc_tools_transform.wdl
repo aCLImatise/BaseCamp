@@ -24,6 +24,9 @@ task KmcToolsTransform {
       ~{if (cs) then "-cs" else ""} \
       ~{if (_sorted_output) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ci: "<value> - exclude k-mers occurring less than <value> times"
     cx: "<value> - exclude k-mers occurring more of than <value> times"

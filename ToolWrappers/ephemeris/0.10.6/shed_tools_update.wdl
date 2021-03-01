@@ -48,6 +48,9 @@ task ShedtoolsUpdate {
       ~{if defined(password) then ("--password " +  '"' + password + '"') else ""} \
       ~{if defined(api_key) then ("--api_key " +  '"' + api_key + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tools_file: "Tools file to use (see tool_list.yaml.sample)"
     yaml_tool: "Install tool represented by yaml string"

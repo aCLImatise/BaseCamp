@@ -12,6 +12,9 @@ task RnftoolsValidate {
       ~{if (warnings_as_errors) then "--warnings-as-errors" else ""} \
       ~{if (all_occurrences) then "--all-occurrences" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "FASTQ file to be validated."
     warnings_as_errors: "Treat warnings as errors."

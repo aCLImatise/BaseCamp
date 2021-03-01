@@ -24,6 +24,9 @@ task Designthermoswitchpy {
       ~{if (progress) then "--progress" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     package: "Chose the calculation package: hotknots, pkiss,\\nnupack, or vrna/ViennaRNA (default: vrna)"
     number: "Number of designs to generate"

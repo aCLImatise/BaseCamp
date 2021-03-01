@@ -3,23 +3,24 @@ id: tleap.cwl
 inputs:
 - id: in_ignore_leaprc_startup
   doc: Ignore leaprc startup file.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_add_search_path
   doc: Add {dir} to search path.
-  type: string
+  type: string?
   inputBinding:
     prefix: -I
 - id: in_source_
   doc: Source {file}.
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tleap

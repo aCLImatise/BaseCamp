@@ -52,6 +52,9 @@ task Digestiflowdemux {
       ~{if defined(lane) then ("--lane " +  '"' + lane + '"') else ""} \
       ~{if defined(tiles) then ("--tiles " +  '"' + tiles + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Path to configuration TOML file to load."
     demux_tool: "Demultiplexing tool to use. Choices are Illumina's\\nbcl2fastq(2) and Picard"

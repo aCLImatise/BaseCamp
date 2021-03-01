@@ -20,6 +20,9 @@ task DgeniesRun {
       ~{if (no_cron_s) then "--no-crons" else ""} \
       ~{if (no_browser) then "--no-browser" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: "Mode into run the application"
     run_debug_mode: "[DEBUG], --debug [DEBUG]\\nRun in debug mode"

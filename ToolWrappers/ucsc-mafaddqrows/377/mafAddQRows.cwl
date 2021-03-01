@@ -3,7 +3,7 @@ id: mafAddQRows.cwl
 inputs:
 - id: in_divisor
   doc: is value to divide Q value by.  Default is 5.
-  type: long
+  type: long?
   inputBinding:
     prefix: -divisor
 - id: in_species_dot_lst
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mafAddQRows

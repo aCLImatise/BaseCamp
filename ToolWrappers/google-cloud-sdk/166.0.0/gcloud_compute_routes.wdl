@@ -14,6 +14,9 @@ task GcloudComputeRoutes {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create a new route."
     delete: "Delete routes."

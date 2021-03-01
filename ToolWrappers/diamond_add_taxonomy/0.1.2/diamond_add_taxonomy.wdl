@@ -18,6 +18,9 @@ task DiamondAddTaxonomy {
       ~{if defined(diamond_output_format) then ("--diamond_output_format " +  '"' + diamond_output_format + '"') else ""} \
       ~{if defined(output_file) then ("--output_file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tax_dump_filename: "Path to local copy of NCBI taxdump.tar.gz file"
     tax_db_filename: "Name for the processed database, will be\\nloaded if it exists"

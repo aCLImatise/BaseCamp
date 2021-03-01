@@ -16,6 +16,9 @@ task SplitchrpySize {
       ~{if (reformat) then "--reformat" else ""} \
       ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reformat: ""
     bed: ""

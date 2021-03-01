@@ -3,19 +3,19 @@ id: segmentation_fold_utils_find_boxes.cwl
 inputs:
 - id: in_box_one
   doc: "Sequence of box1 (default = C-box: 'NRUGAUG')"
-  type: long
+  type: long?
   inputBinding:
     prefix: --box1
 - id: in_box_two
   doc: "Sequence of box2 (default = D-box: 'CUGA')"
-  type: long
+  type: long?
   inputBinding:
     prefix: --box2
-- id: in_forward
-  doc: / --no-forward  Search in the forward direction of the reference
-  type: boolean
+- id: in_no_forward
+  doc: Search in the forward direction of the reference
+  type: boolean?
   inputBinding:
-    prefix: --forward
+    prefix: --no-forward
 - id: in_bed_output_file
   doc: 'Options:'
   type: string
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - segmentation-fold-utils

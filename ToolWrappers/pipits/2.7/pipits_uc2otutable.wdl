@@ -30,6 +30,9 @@ task PipitsUc2otutable {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: "[REQUIRED]"
     o: "[REQUIRED]"

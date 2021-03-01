@@ -4,23 +4,23 @@ inputs:
 - id: in_reference_database_path
   doc: "Reference database path. By default the CHECKVDB environment\nvariable is\
     \ used"
-  type: File
+  type: File?
   inputBinding:
     prefix: -d
 - id: in_number_threads_use
   doc: Number of threads to use for Prodigal and hmmsearch
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_restart
   doc: "Overwrite existing intermediate files. By default CheckV\ncontinues where\
     \ program left off"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --restart
 - id: in_quiet
   doc: Suppress logging messages
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_input
@@ -37,6 +37,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - checkv

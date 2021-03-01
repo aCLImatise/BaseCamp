@@ -3,18 +3,18 @@ id: load_overlaps.cwl
 inputs:
 - id: in_set_path_populate
   doc: Set path of the AMOS bank to populate
-  type: File
+  type: File?
   inputBinding:
     prefix: -b
-- id: in_set_minimum_default
+- id: in_set_identity_default
   doc: Set the minimum alignment identity, default 90
-  type: double
+  type: double?
   inputBinding:
     prefix: -i
-- id: in_set_maximum_populate
+- id: in_set_maximum_ignorable
   doc: "Set maximum ignorable trim length, default 20\nPopulate overlap store based\
     \ on the all vs. all alignment"
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_delta_file
@@ -26,6 +26,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - load-overlaps

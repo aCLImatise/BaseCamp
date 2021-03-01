@@ -16,6 +16,9 @@ task Iuremoveidsfromfastq {
       ~{if (generate_output_for_survived_only) then "--generate-output-for-survived-only" else ""} \
       ~{if (keep_ids) then "--keep-ids" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fast_q: "Sequences file from which reads will be removed in\\nFASTQ format"
     ids_file_path: "Input file that contains the list of ids for removal"

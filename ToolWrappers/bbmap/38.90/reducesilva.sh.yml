@@ -1,0 +1,57 @@
+!Command
+command:
+- reducesilva.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eoom
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: Disable assertions.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified July 31, 2015\n\nDescription:\
+  \  Reduces Silva entries down to one entry per taxa (the first).\nThis is accomplished\
+  \ by splitting the semicolon-delimited name on semicolons,\nand assuming everything\
+  \ is in the form of:\nkingdom;phylum;class;order;family;genus;species\n...so it's\
+  \ not very reliable.\n\nUsage:  reducesilva.sh in=<file> out=<file> column=<1>\n\
+  \nParameters:\ncolumn          The taxonomic level.  0=species, 1=genus, etc.\n\
+  ow=f            (overwrite) Overwrites files that already exist.\nzl=4         \
+  \   (ziplevel) Set compression level, 1 (low) to 9 (max).\nfastawrap=70    Length\
+  \ of lines in fasta output.\n\nSampling parameters:\nreads=-1        Set to a positive\
+  \ number to only process this many INPUT sequences, then quit.\n\nJava Parameters:\n\
+  -Xmx            This will set Java's memory usage, overriding autodetection.\n \
+  \               -Xmx20g will specify 20 gigs of RAM, and -Xmx200m will specify 200\
+  \ megs.\n                    The max is typically 85% of physical memory.\n-eoom\
+  \           This flag will cause the process to exit if an out-of-memory\n     \
+  \           exception occurs.  Requires Java 8u92+.\n-da             Disable assertions.\n\
+  \nPlease contact Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

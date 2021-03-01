@@ -3,17 +3,17 @@ id: surpyvor_lengthplot.cwl
 inputs:
 - id: in_verbose
   doc: Print out more information while running.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_plot_out
   doc: output file to write figure to
-  type: File
+  type: File?
   inputBinding:
     prefix: --plotout
 - id: in_counts
   doc: "output file to write counts to\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --counts
 outputs:
@@ -22,14 +22,15 @@ outputs:
   type: stdout
 - id: out_plot_out
   doc: output file to write figure to
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_plot_out)
 - id: out_counts
   doc: "output file to write counts to\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_counts)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - surpyvor

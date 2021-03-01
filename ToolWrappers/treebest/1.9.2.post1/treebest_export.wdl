@@ -32,6 +32,9 @@ task TreebestExport {
       ~{if (speciationduplication_inference) then "-d" else ""} \
       ~{if (pseudolength) then "-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     width: "width [640]"
     height: "height [480]"

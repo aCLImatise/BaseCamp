@@ -28,6 +28,9 @@ task QualimapRnaseq {
       ~{if (paired) then "--paired" else ""} \
       ~{if (sorted) then "--sorted" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     algorithm: "Counting algorithm:\\nuniquely-mapped-reads(default) or\\nproportional."
     bam: "Input mapping file in BAM format."

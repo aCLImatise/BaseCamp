@@ -82,6 +82,9 @@ task GetCountVectors {
       ~{if (mask_tab_ix) then "--mask_tabix" else ""} \
       ~{if (mask_sorted) then "--mask_sorted" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_prefix: "Prefix to prepend to output files (default: no prefix)"
     format: "printf-style format string for output (default:\\n'%.8f')"

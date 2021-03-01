@@ -8,17 +8,17 @@ inputs:
     position: 0
 - id: in_global
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 1
 - id: in_options_dot_dot_dot
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 2
 - id: in_plugin
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 3
 - id: in_disable
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - singularity

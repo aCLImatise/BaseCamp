@@ -12,6 +12,9 @@ task Anvideletecollection {
       ~{if defined(collection_name) then ("--collection-name " +  '"' + collection_name + '"') else ""} \
       ~{if (list_collections) then "--list-collections" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     profile_db: "Anvi'o profile database"
     collection_name: "Collection name."

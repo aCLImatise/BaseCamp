@@ -18,6 +18,9 @@ task BioformatsBedautosql {
       ~{if defined(lines) then ("--lines " +  '"' + lines + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "a table name (default: Table)"
     description: "a table description (default: Description)"

@@ -7,62 +7,62 @@ inputs:
     \ and the unique key id\n<person_set>\n<person>\n<id>...</id>\n</person>\n<person>\n\
     <id>...</id>\n</person>\n...\n</person_set>\nThis flag should only be used when\
     \ you want to store data"
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
-- id: in_node_will_used
+- id: in_node_used_nested
   doc: "This node will be used as the unique/primary key for the data\nThis node should\
     \ be nested directly below the node that is being stored\nin the index - if it\
     \ is more that one below, specify a path\nThis flag should only be used when you\
     \ want to store data"
-  type: File
+  type: File?
   inputBinding:
     prefix: -k
 - id: in_synonym_for_k
   doc: Synonym for -k
-  type: string
+  type: string?
   inputBinding:
     prefix: -u
-- id: in_can_name_stag
+- id: in_be_name_sxpr
   doc: "This can be the name of a stag supported format (xml, sxpr, itext) - XML\n\
     is assumed by default\nIt can also be a module name - this module is used to parse\
     \ the input\nfile into a stag stream; see Data::Stag::BaseGenerator for details\
     \ on\nwriting your own parsers/event generators\nThis flag should only be used\
     \ when you want to store data"
-  type: File
+  type: File?
   inputBinding:
     prefix: -p
 - id: in_fetches_relationnode_unique
   doc: "Fetches the relation/node with unique key value equal to query-id\nMultiple\
     \ arguments can be passed by specifying -q multple times\nThis flag should only\
     \ be used when you want to query data"
-  type: string
+  type: string?
   inputBinding:
     prefix: -q
 - id: in_top
   doc: "If this is specified in conjunction with -q or -qf then all the query\nresult\
     \ nodes will be nested inside a node with this name (ie this\nprovides a root\
     \ for the resulting document tree)"
-  type: string
+  type: string?
   inputBinding:
     prefix: -top
 - id: in_qf
   doc: "This is a file of newline-seperated IDs; this is useful for querying the\n\
     index in batch"
-  type: File
+  type: File?
   inputBinding:
     prefix: -qf
 - id: in_keys
   doc: This will write a list of all primary keys in the index
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -keys
-- id: in_format_will_used
+- id: in_format_transforms_events
   doc: "This format will be used to write the data; can be any stag format (xml,\n\
     sxpr, itext) - default XML.\nCan also be a module that catches the incoming stag\
     \ event stream and\ndoes something with it (for example, this could be a module\
     \ you write\nyourself that transforms the stag events into HTML)"
-  type: string
+  type: string?
   inputBinding:
     prefix: -w
 - id: in_arguments
@@ -84,6 +84,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - stag-db.pl

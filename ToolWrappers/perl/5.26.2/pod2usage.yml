@@ -3,82 +3,76 @@ command:
 - pod2usage
 positional:
 - !Positional
-  description: "[-help] [-man] [-exit exitval] [-output outfile] [-verbose\nlevel]\
-    \ [-pathlist dirlist] [-formatter module] [-utf8] file"
-  position: 0
-  name: pod2usage
   optional: false
-- !Positional
-  description: "The pathname of a file containing pod documentation to be output\n\
-    in usage message format (defaults to standard input).\n"
   position: 0
   name: file
-  optional: false
+  description: "The pathname of a file containing pod documentation to be output\n\
+    in usage message format (defaults to standard input).\n"
 named:
 - !Flag
-  description: Print this command's manual page and exit.
+  optional: true
   synonyms:
   - -man
+  description: Print this command's manual page and exit.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The exit status value to return.
+  optional: true
   synonyms:
   - -exit
+  description: The exit status value to return.
   args: !SimpleFlagArg
     name: exitval
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -output
   description: "The output file to print to. If the special names \"-\" or \">&1\"\
     \nor \">&STDOUT\" are used then standard output is used. If \">&2\" or\n\">&STDERR\"\
     \ is used then standard error is used."
-  synonyms:
-  - -output
   args: !SimpleFlagArg
     name: outfile
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -verbose
   description: "The desired level of verbosity to use:\n1 : print SYNOPSIS only\n\
     2 : print SYNOPSIS sections and any OPTIONS/ARGUMENTS sections\n3 : print the\
     \ entire manpage (similar to running pod2text)"
-  synonyms:
-  - -verbose
   args: !SimpleFlagArg
     name: level
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -pathlist
   description: "Specifies one or more directories to search for the input file\nif\
     \ it was not supplied with an absolute path. Each directory\npath in the given\
     \ list should be separated by a ':' on Unix (';'\non MSWin32 and DOS)."
-  synonyms:
-  - -pathlist
   args: !SimpleFlagArg
     name: dirlist
-  optional: true
 - !Flag
-  description: "Which text formatter to use. Default is Pod::Text, or for very\nold\
-    \ Perl versions Pod::PlainText. An alternative would be e.g.\nPod::Text::Termcap."
+  optional: true
   synonyms:
   - -formatter
+  description: "Which text formatter to use. Default is Pod::Text, or for very\nold\
+    \ Perl versions Pod::PlainText. An alternative would be e.g.\nPod::Text::Termcap."
   args: !SimpleFlagArg
     name: module
-  optional: true
 - !Flag
-  description: "This option assumes that the formatter (see above) understands\nthe\
-    \ option \"utf8\". It turns on generation of utf8 output."
+  optional: true
   synonyms:
   - -utf8
+  description: "This option assumes that the formatter (see above) understands\nthe\
+    \ option \"utf8\". It turns on generation of utf8 output."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print a brief help message and exit.
+  optional: true
   synonyms:
   - -help
+  description: Print a brief help message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage:\n    pod2usage   [-help] [-man] [-exit exitval] [-output outfile]\
@@ -105,3 +99,4 @@ help_text: "Usage:\n    pod2usage   [-help] [-man] [-exit exitval] [-output outf
   \n"
 generated_using:
 - --help
+docker_image:

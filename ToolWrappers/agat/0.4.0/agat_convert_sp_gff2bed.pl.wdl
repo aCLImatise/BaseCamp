@@ -16,6 +16,9 @@ task AgatConvertSpGff2bedpl {
       ~{if (sub) then "--sub" else ""} \
       ~{if (outfile) then "--outfile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GFF3 file that will be read"
     sub: "Define the subfeature (level3, e.g exon,cds,utr,etc...) to\\nreport as blocks in the bed output. Defaut: exon."

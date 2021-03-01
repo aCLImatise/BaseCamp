@@ -32,6 +32,9 @@ task SequanaCompressor {
       ~{if defined(snake_make_options) then ("--snakemake-options " +  '"' + snake_make_options + '"') else ""} \
       ~{if defined(snake_make_cluster) then ("--snakemake-cluster " +  '"' + snake_make_cluster + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     source: "be provided but no analysis will be performed"
     quiet: "set verbosity off"

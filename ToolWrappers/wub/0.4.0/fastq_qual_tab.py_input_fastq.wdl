@@ -8,6 +8,9 @@ task FastqQualTabpyInputFastq {
     fastq_qual_tab_py input_fastq \
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
   }

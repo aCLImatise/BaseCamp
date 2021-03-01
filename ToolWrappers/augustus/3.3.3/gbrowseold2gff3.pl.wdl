@@ -10,6 +10,9 @@ task Gbrowseold2gff3pl {
       ~{hints} \
       ~{source}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hints: "convert gff format for intron hints to gff3"
     source: "fill this into the second column"

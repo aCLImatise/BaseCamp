@@ -1,0 +1,265 @@
+!Command
+command:
+- orfipy
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: infile
+  description: "The input file, in plain Fasta/Fastq or gzipped\nformat, containing\
+    \ Nucletide sequences"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --procs
+  description: Num processor cores to use Default:mp.cpu_count()
+  args: !SimpleFlagArg
+    name: PROCS
+- !Flag
+  optional: true
+  synonyms:
+  - --single-mode
+  description: "Run in single mode i.e. no parallel processing\n(SLOWER). If supplied\
+    \ with procs, this is ignored.\nDefault: False"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --table
+  description: "The codon table number to use or path to .json file\nwith codon table.\
+    \ Use --show-tables to see available\ntables compiled from: https://www.ncbi.nlm.nih.gov/Tax\n\
+    onomy/Utils/wprintgc.cgi?chapter=cgencodes Default: 1"
+  args: !SimpleFlagArg
+    name: TABLE
+- !Flag
+  optional: true
+  synonyms:
+  - --start
+  description: "Comma-separated list of start-codons. This will\noverride start codons\
+    \ described in translation table.\nE.g. \"--start ATG,ATT\" Default: Derived from\
+    \ the\ntranslation table selected"
+  args: !SimpleFlagArg
+    name: START
+- !Flag
+  optional: true
+  synonyms:
+  - --stop
+  description: "Comma-separated list of stop codons. This will\noverride stop codons\
+    \ described in translation table.\nE.g. \"--start TAG,TTT\" Default: Derived from\
+    \ the\ntranslation table selected"
+  args: !SimpleFlagArg
+    name: STOP
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: 'Path to outdir default: orfipy_<infasta>_out'
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --bed12
+  description: 'bed12 out file Default: None'
+  args: !SimpleFlagArg
+    name: BED12
+- !Flag
+  optional: true
+  synonyms:
+  - --bed
+  description: 'bed out file Default: None'
+  args: !SimpleFlagArg
+    name: BED
+- !Flag
+  optional: true
+  synonyms:
+  - --dna
+  description: 'fasta (DNA) out file Default: None'
+  args: !SimpleFlagArg
+    name: DNA
+- !Flag
+  optional: true
+  synonyms:
+  - --rna
+  description: 'fasta (RNA) out file Default: None'
+  args: !SimpleFlagArg
+    name: RNA
+- !Flag
+  optional: true
+  synonyms:
+  - --pep
+  description: 'fasta (peptide) out file Default: None'
+  args: !SimpleFlagArg
+    name: PEP
+- !Flag
+  optional: true
+  synonyms:
+  - --min
+  description: "Minimum length of ORF, excluding stop codon\n(nucleotide) Default:\
+    \ 30"
+  args: !SimpleFlagArg
+    name: MIN
+- !Flag
+  optional: true
+  synonyms:
+  - --max
+  description: "Maximum length of ORF, excluding stop codon\n(nucleotide) Default:\
+    \ 1,000,000,000"
+  args: !SimpleFlagArg
+    name: MAX
+- !Flag
+  optional: true
+  synonyms:
+  - --strand
+  description: "Strands to find ORFs [(f)orward,(r)everse,(b)oth]\nDefault: b"
+  args: !ChoiceFlagArg
+    choices: !!set
+      r:
+      b:
+      f:
+- !Flag
+  optional: true
+  synonyms:
+  - --partial-3
+  description: "Output ORFs with a start codon but lacking an inframe\nstop codon.\
+    \ E.g. \"ATG TTT AAA\" Default: False"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --partial-5
+  description: "Output ORFs with an inframe stop codon lacking an\ninframe start codon.\
+    \ E.g. \"TTT AAA TAG\" Default: False"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --between-stops
+  description: "Output ORFs defined as regions between stop codons\n(regions free\
+    \ of stop codon). This will set\n--partial-3 and --partial-5 true. Default: False"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include-stop
+  description: "Include stop codon in the results, if a stop codon\nexists. This output\
+    \ format is compatible with\nTransDecoder's which includes stop codon coordinates\n\
+    Default: False"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --longest
+  description: "Output a separate BED file for longest ORFs per\nsequence. Requires\
+    \ bed option. Default: False"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --by-frame
+  description: "Output separate BED files for ORFs by frame. Can be\ncombined with\
+    \ \"--longest\" to output longest ORFs in\neach frame. Requires bed option. Default:\
+    \ False"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chunk-size
+  description: "Max chunk size in MB. This is useful for limiting\nmemory usage when\
+    \ processing large fasta files using\nmultiple processes The files are processed\
+    \ in chunks\nif file size is greater than chunk-size. By default\norfipy computes\
+    \ the chunk size based on available\nmemory and cpu cores. Providing a smaller\
+    \ chunk-size\nwill lower the memory usage but, actual memory used by\norfipy can\
+    \ be more than the chunk-size. Providing a\nvery high chunk-size can lead to memory\
+    \ issues for\nlarger sequences such as large chromosomes. It is best\nto let orfipy\
+    \ decide on the chunk-size. Default:\nestimated by orfipy based on system memory\
+    \ and cpu"
+  args: !SimpleFlagArg
+    name: CHUNK_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --show-tables
+  description: 'Print translation tables and exit. Default: False'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version information and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: \n    orfipy [<options>] <infile>\n    By default orfipy reports\
+  \ ORFs as sequences between start and stop codons. See ORF searching options to\
+  \ change this behaviour.\n    If no output type, i.e. dna, rna, pep, bed or bed12,\
+  \ is specified, default output is bed format to stdout.\n    \n\norfipy: extract\
+  \ Open Reading Frames (version 0.0.3)\n\npositional arguments:\n  infile       \
+  \         The input file, in plain Fasta/Fastq or gzipped\n                    \
+  \    format, containing Nucletide sequences\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --procs PROCS         Num processor\
+  \ cores to use Default:mp.cpu_count()\n  --single-mode         Run in single mode\
+  \ i.e. no parallel processing\n                        (SLOWER). If supplied with\
+  \ procs, this is ignored.\n                        Default: False\n  --table TABLE\
+  \         The codon table number to use or path to .json file\n                \
+  \        with codon table. Use --show-tables to see available\n                \
+  \        tables compiled from: https://www.ncbi.nlm.nih.gov/Tax\n              \
+  \          onomy/Utils/wprintgc.cgi?chapter=cgencodes Default: 1\n  --start START\
+  \         Comma-separated list of start-codons. This will\n                    \
+  \    override start codons described in translation table.\n                   \
+  \     E.g. \"--start ATG,ATT\" Default: Derived from the\n                     \
+  \   translation table selected\n  --stop STOP           Comma-separated list of\
+  \ stop codons. This will\n                        override stop codons described\
+  \ in translation table.\n                        E.g. \"--start TAG,TTT\" Default:\
+  \ Derived from the\n                        translation table selected\n  --outdir\
+  \ OUTDIR       Path to outdir default: orfipy_<infasta>_out\n  --bed12 BED12   \
+  \      bed12 out file Default: None\n  --bed BED             bed out file Default:\
+  \ None\n  --dna DNA             fasta (DNA) out file Default: None\n  --rna RNA\
+  \             fasta (RNA) out file Default: None\n  --pep PEP             fasta\
+  \ (peptide) out file Default: None\n  --min MIN             Minimum length of ORF,\
+  \ excluding stop codon\n                        (nucleotide) Default: 30\n  --max\
+  \ MAX             Maximum length of ORF, excluding stop codon\n                \
+  \        (nucleotide) Default: 1,000,000,000\n  --strand {f,r,b}      Strands to\
+  \ find ORFs [(f)orward,(r)everse,(b)oth]\n                        Default: b\n \
+  \ --partial-3           Output ORFs with a start codon but lacking an inframe\n\
+  \                        stop codon. E.g. \"ATG TTT AAA\" Default: False\n  --partial-5\
+  \           Output ORFs with an inframe stop codon lacking an\n                \
+  \        inframe start codon. E.g. \"TTT AAA TAG\" Default: False\n  --between-stops\
+  \       Output ORFs defined as regions between stop codons\n                   \
+  \     (regions free of stop codon). This will set\n                        --partial-3\
+  \ and --partial-5 true. Default: False\n  --include-stop        Include stop codon\
+  \ in the results, if a stop codon\n                        exists. This output format\
+  \ is compatible with\n                        TransDecoder's which includes stop\
+  \ codon coordinates\n                        Default: False\n  --longest       \
+  \      Output a separate BED file for longest ORFs per\n                       \
+  \ sequence. Requires bed option. Default: False\n  --by-frame            Output\
+  \ separate BED files for ORFs by frame. Can be\n                        combined\
+  \ with \"--longest\" to output longest ORFs in\n                        each frame.\
+  \ Requires bed option. Default: False\n  --chunk-size CHUNK_SIZE\n             \
+  \           Max chunk size in MB. This is useful for limiting\n                \
+  \        memory usage when processing large fasta files using\n                \
+  \        multiple processes The files are processed in chunks\n                \
+  \        if file size is greater than chunk-size. By default\n                 \
+  \       orfipy computes the chunk size based on available\n                    \
+  \    memory and cpu cores. Providing a smaller chunk-size\n                    \
+  \    will lower the memory usage but, actual memory used by\n                  \
+  \      orfipy can be more than the chunk-size. Providing a\n                   \
+  \     very high chunk-size can lead to memory issues for\n                     \
+  \   larger sequences such as large chromosomes. It is best\n                   \
+  \     to let orfipy decide on the chunk-size. Default:\n                       \
+  \ estimated by orfipy based on system memory and cpu\n  --show-tables         Print\
+  \ translation tables and exit. Default: False\n  --version             Print version\
+  \ information and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/orfipy:0.0.3--py37h9a982cc_0

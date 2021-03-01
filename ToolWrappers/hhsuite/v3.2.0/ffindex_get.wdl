@@ -16,6 +16,9 @@ task FfindexGet {
       ~{name} \
       ~{if (use_index_name) then "-n" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     use_index_name: "use index of entry instead of entry name"
     data_filename: ""

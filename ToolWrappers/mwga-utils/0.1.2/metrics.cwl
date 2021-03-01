@@ -3,23 +3,23 @@ id: metrics.cwl
 inputs:
 - id: in_prefix_output_wig
   doc: 'Prefix for output wig files [default: metrics]'
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_manually_specify_number
   doc: 'Manually specify the number of assemblies in the alignment; if not, it is
     computed from the MAF [default: 0]'
-  type: long
+  type: long?
   inputBinding:
     prefix: -n
 - id: in_number_threads_use
   doc: 'Number of threads to use [default: 1].'
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_h
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -h
 - id: in_manually
@@ -141,6 +141,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - metrics

@@ -17,15 +17,11 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_version
-  doc: ':   V1.1.4'
-  type: string
-  inputBinding:
-    position: 3
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gfold

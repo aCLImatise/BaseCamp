@@ -24,6 +24,9 @@ task MsstitchStoreseq {
       ~{if (no_trypsin) then "--notrypsin" else ""} \
       ~{if defined(misc_leav) then ("--miscleav " +  '"' + misc_leav + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dbfile: "Database lookup file"
     input_file_format: "Input file of {} format"

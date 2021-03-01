@@ -3,42 +3,42 @@ id: csb_precision.cwl
 inputs:
 - id: in_pdb
   doc: "the PDB database (a directory containing all PDB\nfiles)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --pdb
 - id: in_native
   doc: native structure of the target (PDB file)
-  type: File
+  type: File?
   inputBinding:
     prefix: --native
 - id: in_chain
   doc: chain identifier (if not specified, the first chain)
-  type: string
+  type: string?
   inputBinding:
     prefix: --chain
 - id: in_top
   doc: read top N fragments per position (default=25)
-  type: long
+  type: long?
   inputBinding:
     prefix: --top
 - id: in_cpu
   doc: maximum degree of parallelism (default=8)
-  type: long
+  type: long?
   inputBinding:
     prefix: --cpu
 - id: in_rmsd
   doc: RMSD cutoff for precision and coverage (default=1.5)
-  type: double
+  type: double?
   inputBinding:
     prefix: --rmsd
 - id: in_output
   doc: output directory (default=.)
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 - id: in_save_structures
   doc: "create a PDB file for each fragment, superimposed over\nthe native (default=False)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --save-structures
 outputs:
@@ -47,9 +47,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: output directory (default=.)
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - csb-precision

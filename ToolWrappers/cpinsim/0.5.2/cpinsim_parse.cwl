@@ -18,7 +18,7 @@ inputs:
     prefix: --allosteric_effects
 - id: in_output
   doc: "Output file containing the parsed proteins.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file containing the parsed proteins.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cpinsim

@@ -1,17 +1,11 @@
 class: CommandLineTool
 id: gcloud_config_set.cwl
 inputs:
-- id: in_section_slash_property
-  doc: "The property to be set. Note that SECTION/ is optional while referring\nto\
-    \ properties in the core section."
-  type: string
-  inputBinding:
-    position: 0
 - id: in_value
   doc: The value to be set.
   type: string
   inputBinding:
-    position: 1
+    position: 0
 - id: in_core
   doc: "account\nThe account gcloud should use for authentication. You can run\ngcloud\
     \ auth list to see the accounts you currently have available."
@@ -244,6 +238,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

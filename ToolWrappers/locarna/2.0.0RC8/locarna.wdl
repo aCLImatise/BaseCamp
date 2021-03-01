@@ -140,6 +140,9 @@ task Locarna {
       ~{if defined(max_bp_span) then ("--maxBPspan " +  '"' + max_bp_span + '"') else ""} \
       ~{if (relaxed_anchors) then "--relaxed-anchors" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     galaxy_xml: "Print galaxy xml wrapper."
     verbose: "Be verbose. Prints input parameters, sequences and size information."

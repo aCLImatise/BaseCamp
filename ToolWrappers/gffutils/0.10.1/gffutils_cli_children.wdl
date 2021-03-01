@@ -16,6 +16,9 @@ task GffutilscliChildren {
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
       ~{if (exclude_self) then "--exclude-self" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     limit: "Feature type (string), or level (integer). No children\\nbelow this level will be returned (default: -)"
     exclude: "Comma-separated list of featuretypes to filter out (like\\ngrep -v) (default: -)"

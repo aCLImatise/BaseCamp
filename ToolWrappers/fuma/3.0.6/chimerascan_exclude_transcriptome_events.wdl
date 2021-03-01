@@ -8,7 +8,7 @@ task Chimerascanexcludetranscriptomeevents {
     Boolean? show_names_do
     Boolean? show_only_count
     Boolean? show_only_part
-    Boolean? quiet_return_found
+    Boolean? quiet_return_pattern
     Boolean? select_nonmatching_lines
     Boolean? suppress_open_read
     Boolean? recurse
@@ -23,26 +23,19 @@ task Chimerascanexcludetranscriptomeevents {
     String? same_as
     String? pattern_to_match
     File? read_pattern_file
-    String? a_slash_b_slash_c
     Boolean? hhnlloqvsriwfe
     String grep
-    String pattern_slash_e
-    String pattern_dot_dot_dot_slash_f
-    File? file
   }
   command <<<
     chimerascan_exclude_transcriptome_events \
       ~{grep} \
-      ~{pattern_slash_e} \
-      ~{pattern_dot_dot_dot_slash_f} \
-      ~{file} \
       ~{if (h) then "-H" else ""} \
       ~{if (n) then "-n" else ""} \
       ~{if (show_names_match) then "-l" else ""} \
       ~{if (show_names_do) then "-L" else ""} \
       ~{if (show_only_count) then "-c" else ""} \
       ~{if (show_only_part) then "-o" else ""} \
-      ~{if (quiet_return_found) then "-q" else ""} \
+      ~{if (quiet_return_pattern) then "-q" else ""} \
       ~{if (select_nonmatching_lines) then "-v" else ""} \
       ~{if (suppress_open_read) then "-s" else ""} \
       ~{if (recurse) then "-r" else ""} \
@@ -57,9 +50,11 @@ task Chimerascanexcludetranscriptomeevents {
       ~{if defined(same_as) then ("-C " +  '"' + same_as + '"') else ""} \
       ~{if defined(pattern_to_match) then ("-e " +  '"' + pattern_to_match + '"') else ""} \
       ~{if defined(read_pattern_file) then ("-f " +  '"' + read_pattern_file + '"') else ""} \
-      ~{if defined(a_slash_b_slash_c) then ("-A/B/C " +  '"' + a_slash_b_slash_c + '"') else ""} \
       ~{if (hhnlloqvsriwfe) then "-HhnlLoqvsriwFE" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     h: "Add 'filename:' prefix"
     n: "Add 'line_no:' prefix"
@@ -67,7 +62,7 @@ task Chimerascanexcludetranscriptomeevents {
     show_names_do: "Show only names of files that don't match"
     show_only_count: "Show only count of matching lines"
     show_only_part: "Show only the matching part of line"
-    quiet_return_found: "Quiet. Return 0 if PATTERN is found, 1 otherwise"
+    quiet_return_pattern: "Quiet. Return 0 if PATTERN is found, 1 otherwise"
     select_nonmatching_lines: "Select non-matching lines"
     suppress_open_read: "Suppress open and read errors"
     recurse: "Recurse"
@@ -82,12 +77,8 @@ task Chimerascanexcludetranscriptomeevents {
     same_as: "Same as '-A N -B N'"
     pattern_to_match: "Pattern to match"
     read_pattern_file: "Read pattern from file"
-    a_slash_b_slash_c: ""
     hhnlloqvsriwfe: ""
     grep: ""
-    pattern_slash_e: ""
-    pattern_dot_dot_dot_slash_f: ""
-    file: ""
   }
   output {
     File out_stdout = stdout()

@@ -1,12 +1,12 @@
 class: CommandLineTool
 id: je_retag.cwl
 inputs:
-- id: in_displays_options_specific
+- id: in_std_help
   doc: "Displays options specific to this tool AND options common to all Picard command\
     \ line\ntools."
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -H
+    prefix: --stdhelp
 - id: in_header_dot
   doc: 'Counting starts at 1 and negative numbers can be used to start counting from
     the end '
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - je

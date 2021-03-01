@@ -3,7 +3,7 @@ id: vcfsamplediff.cwl
 inputs:
 - id: in_strict
   doc: Require that no observations in the germline support the somatic alternate.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --strict
 - id: in_tag
@@ -13,7 +13,7 @@ inputs:
     position: 0
 - id: in_sample
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 1
 - id: in_vcf_file
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vcfsamplediff

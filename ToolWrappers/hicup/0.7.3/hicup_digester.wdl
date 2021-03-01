@@ -22,6 +22,9 @@ task HicupDigester {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (zip) then "--zip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arima: "Set the --re1 option to that used by the Arima protocol:\\n^GATC,DpnII:G^ANTC,Arima"
     re_one: "Restriction enzyme used to digest the genome (the enzyme\\nthat forms the ligation junction) e.g. A^GATCT,BglII.\\nSome Hi-C protocols may use several enzymes.\\nTo specify several enzymes, use the \\\":\\\" to separate them\\ne.g. A^GATCT,BglII:A^AGCTT,HindIII:^GATC,DpnII.\\nHiCUP accomodates N in restriction enzyme: e.g. :A^ANCTT"

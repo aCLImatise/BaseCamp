@@ -4,6 +4,9 @@ task Dnamove {
   command <<<
     dnamove
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

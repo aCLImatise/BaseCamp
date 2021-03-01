@@ -1,0 +1,234 @@
+!Command
+command:
+- analyze_probe_coverage.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dataset
+  description: "Labels for one or more target datasets; each can be a\nFASTA file,\
+    \ taxonomy ID to download, or dataset. The\nformat is as specified for --dataset\
+    \ in design.py."
+  args: !RepeatFlagArg
+    name: DATASET
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --probes-fasta
+  description: "Path to a FASTA file that provides the probes (one per\nsequence)\
+    \ whose coverage should be analyzed against\nthe genomes in the given datasets"
+  args: !SimpleFlagArg
+    name: PROBES_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mismatches
+  description: "Allow for this number of mismatches when determining\nwhether a probe\
+    \ covers a sequence"
+  args: !SimpleFlagArg
+    name: MISMATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --lcf-thres
+  description: "Say that a portion of a probe covers a portion of a\nsequence if the\
+    \ two share a substring with at most\nMISMATCHES mismatches that has length >=\
+    \ LCF_THRES bp"
+  args: !SimpleFlagArg
+    name: LCF_THRES
+- !Flag
+  optional: true
+  synonyms:
+  - --island-of-exact-match
+  description: "(Optional) When determining whether a probe covers a\nsequence, require\
+    \ that there be an exact match (i.e.,\nno mismatches) of length at least\nISLAND_OF_EXACT_MATCH\
+    \ bp between a portion of the\nprobe and a portion of the sequence"
+  args: !SimpleFlagArg
+    name: ISLAND_OF_EXACT_MATCH
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --cover-extension
+  description: "Extend the coverage of each side of a probe by this\nnumber of bp.\
+    \ That is, a probe covers a region that\nconsists of the portion of a sequence\
+    \ it hybridizes\nto, as well as this number of bp on each side of that\nportion.\
+    \ This is useful in modeling hybrid selection,\nwhere a probe hybridizes toa fragment\
+    \ that includes\nthe region targeted by the probe, along with\nsurrounding portions\
+    \ of the sequence. Increasing its\nvalue should reduce the number of probes required\
+    \ to\nachieve the desired coverage."
+  args: !SimpleFlagArg
+    name: COVER_EXTENSION
+- !Flag
+  optional: true
+  synonyms:
+  - --limit-target-genomes
+  description: "(Optional) Use only the first N target genomes in the\ndataset"
+  args: !SimpleFlagArg
+    name: LIMIT_TARGET_GENOMES
+- !Flag
+  optional: true
+  synonyms:
+  - --print-analysis
+  description: Print analysis of the probe set's coverage
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-analysis-to-tsv
+  description: "The file to which to write a TSV-formatted matrix of\nthe probe set's\
+    \ coverage analysis"
+  args: !SimpleFlagArg
+    name: WRITE_ANALYSIS_TO_TSV
+- !Flag
+  optional: true
+  synonyms:
+  - --write-sliding-window-coverage
+  description: "The file to which to write the average coverage\nachieved by the probe\
+    \ set within sliding windows of\neach target genome"
+  args: !SimpleFlagArg
+    name: WRITE_SLIDING_WINDOW_COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --write-probe-map-counts-to-tsv
+  description: "The file to which to write a TSV-formatted list of the\nnumber of\
+    \ sequences each probe maps to. This\nexplicitly does not count reverse complements."
+  args: !SimpleFlagArg
+    name: WRITE_PROBE_MAP_COUNTS_TO_TSV
+- !Flag
+  optional: true
+  synonyms:
+  - --max-num-processes
+  description: "(Optional) An int >= 1 that gives the maximum number\nof processes\
+    \ to use in multiprocessing pools; uses\nmin(number of CPUs in the system, MAX_NUM_PROCESSES)\n\
+    processes"
+  args: !SimpleFlagArg
+    name: MAX_NUM_PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer-probe-map-k
+  description: "(Optional) Use this value (KMER_PROBE_LENGTH_K) as the\nk-mer length\
+    \ when constructing a map of k-mers to the\nprobes that contain these k-mers.\
+    \ This map is used\nwhen mapping the given probes to target sequences and\nthe\
+    \ k-mers serve as seeds for calculating whether a\nprobe 'covers' a subsequence.\
+    \ The value should be\nsufficiently less than the probe length (PROBE_LENGTH)\n\
+    so that it can find mappings even when the candidate\nprobe and target sequence\
+    \ are divergent. In\nparticular, CATCH will try to find a value k >=\nKMER_PROBE_LENGTH_K\
+    \ (by default, >=10) such that k\ndivides PROBE_LENGTH and k < PROBE_LENGTH /\
+    \ MISMATCHES\n(if MISMATCHES=0, then k=PROBE_LENGTH). It will then\nuse this k\
+    \ as the k-mer length in mappings; if no such\nk exists, it will use a randomized\
+    \ approach with\nKMER_PROBE_LENGTH_K as the k-mer length."
+  args: !SimpleFlagArg
+    name: KMER_PROBE_MAP_K
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Debug output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Verbose output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: analyze_probe_coverage.py [-h] -d DATASET [DATASET ...] -f PROBES_FASTA\n\
+  \                                 -m MISMATCHES -l LCF_THRES\n                 \
+  \                [--island-of-exact-match ISLAND_OF_EXACT_MATCH]\n             \
+  \                    [-e COVER_EXTENSION]\n                                 [--limit-target-genomes\
+  \ LIMIT_TARGET_GENOMES]\n                                 [--print-analysis]\n \
+  \                                [--write-analysis-to-tsv WRITE_ANALYSIS_TO_TSV]\n\
+  \                                 [--write-sliding-window-coverage WRITE_SLIDING_WINDOW_COVERAGE]\n\
+  \                                 [--write-probe-map-counts-to-tsv WRITE_PROBE_MAP_COUNTS_TO_TSV]\n\
+  \                                 [--max-num-processes MAX_NUM_PROCESSES]\n    \
+  \                             [--kmer-probe-map-k KMER_PROBE_MAP_K]\n          \
+  \                       [--debug] [--verbose] [-V]\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -d DATASET [DATASET ...],\
+  \ --dataset DATASET [DATASET ...]\n                        Labels for one or more\
+  \ target datasets; each can be a\n                        FASTA file, taxonomy ID\
+  \ to download, or dataset. The\n                        format is as specified for\
+  \ --dataset in design.py.\n  -f PROBES_FASTA, --probes-fasta PROBES_FASTA\n    \
+  \                    Path to a FASTA file that provides the probes (one per\n  \
+  \                      sequence) whose coverage should be analyzed against\n   \
+  \                     the genomes in the given datasets\n  -m MISMATCHES, --mismatches\
+  \ MISMATCHES\n                        Allow for this number of mismatches when determining\n\
+  \                        whether a probe covers a sequence\n  -l LCF_THRES, --lcf-thres\
+  \ LCF_THRES\n                        Say that a portion of a probe covers a portion\
+  \ of a\n                        sequence if the two share a substring with at most\n\
+  \                        MISMATCHES mismatches that has length >= LCF_THRES bp\n\
+  \  --island-of-exact-match ISLAND_OF_EXACT_MATCH\n                        (Optional)\
+  \ When determining whether a probe covers a\n                        sequence, require\
+  \ that there be an exact match (i.e.,\n                        no mismatches) of\
+  \ length at least\n                        ISLAND_OF_EXACT_MATCH bp between a portion\
+  \ of the\n                        probe and a portion of the sequence\n  -e COVER_EXTENSION,\
+  \ --cover-extension COVER_EXTENSION\n                        Extend the coverage\
+  \ of each side of a probe by this\n                        number of bp. That is,\
+  \ a probe covers a region that\n                        consists of the portion\
+  \ of a sequence it hybridizes\n                        to, as well as this number\
+  \ of bp on each side of that\n                        portion. This is useful in\
+  \ modeling hybrid selection,\n                        where a probe hybridizes toa\
+  \ fragment that includes\n                        the region targeted by the probe,\
+  \ along with\n                        surrounding portions of the sequence. Increasing\
+  \ its\n                        value should reduce the number of probes required\
+  \ to\n                        achieve the desired coverage.\n  --limit-target-genomes\
+  \ LIMIT_TARGET_GENOMES\n                        (Optional) Use only the first N\
+  \ target genomes in the\n                        dataset\n  --print-analysis   \
+  \   Print analysis of the probe set's coverage\n  --write-analysis-to-tsv WRITE_ANALYSIS_TO_TSV\n\
+  \                        The file to which to write a TSV-formatted matrix of\n\
+  \                        the probe set's coverage analysis\n  --write-sliding-window-coverage\
+  \ WRITE_SLIDING_WINDOW_COVERAGE\n                        The file to which to write\
+  \ the average coverage\n                        achieved by the probe set within\
+  \ sliding windows of\n                        each target genome\n  --write-probe-map-counts-to-tsv\
+  \ WRITE_PROBE_MAP_COUNTS_TO_TSV\n                        The file to which to write\
+  \ a TSV-formatted list of the\n                        number of sequences each\
+  \ probe maps to. This\n                        explicitly does not count reverse\
+  \ complements.\n  --max-num-processes MAX_NUM_PROCESSES\n                      \
+  \  (Optional) An int >= 1 that gives the maximum number\n                      \
+  \  of processes to use in multiprocessing pools; uses\n                        min(number\
+  \ of CPUs in the system, MAX_NUM_PROCESSES)\n                        processes\n\
+  \  --kmer-probe-map-k KMER_PROBE_MAP_K\n                        (Optional) Use this\
+  \ value (KMER_PROBE_LENGTH_K) as the\n                        k-mer length when\
+  \ constructing a map of k-mers to the\n                        probes that contain\
+  \ these k-mers. This map is used\n                        when mapping the given\
+  \ probes to target sequences and\n                        the k-mers serve as seeds\
+  \ for calculating whether a\n                        probe 'covers' a subsequence.\
+  \ The value should be\n                        sufficiently less than the probe\
+  \ length (PROBE_LENGTH)\n                        so that it can find mappings even\
+  \ when the candidate\n                        probe and target sequence are divergent.\
+  \ In\n                        particular, CATCH will try to find a value k >=\n\
+  \                        KMER_PROBE_LENGTH_K (by default, >=10) such that k\n  \
+  \                      divides PROBE_LENGTH and k < PROBE_LENGTH / MISMATCHES\n\
+  \                        (if MISMATCHES=0, then k=PROBE_LENGTH). It will then\n\
+  \                        use this k as the k-mer length in mappings; if no such\n\
+  \                        k exists, it will use a randomized approach with\n    \
+  \                    KMER_PROBE_LENGTH_K as the k-mer length.\n  --debug       \
+  \        Debug output\n  --verbose             Verbose output\n  -V, --version \
+  \        show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/catch:1.4.0--py_0

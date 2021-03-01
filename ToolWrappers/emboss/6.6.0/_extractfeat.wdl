@@ -30,6 +30,9 @@ task Extractfeat {
       ~{if (feat_in_name) then "-featinname" else ""} \
       ~{if (describe) then "-describe" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     before: "integer    [0] If this value is greater than 0 then\\nthat number of bases or residues before the\\nfeature are included in the extracted\\nsequence. This allows you to get the context\\nof the feature. If this value is negative\\nthen the start of the extracted sequence\\nwill be this number of bases/residues before\\nthe end of the feature. So a value of '10'\\nwill start the extraction 10 bases/residues\\nbefore the start of the sequence, and a\\nvalue of '-10' will start the extraction 10\\nbases/residues before the end of the\\nfeature. The output sequence will be padded\\nwith 'N' or 'X' characters if the sequence\\nstarts after the required start of the\\nextraction. (Any integer value)"
     after: "integer    [0] If this value is greater than 0 then\\nthat number of bases or residues after the\\nfeature are included in the extracted\\nsequence. This allows you to get the context\\nof the feature. If this value is negative\\nthen the end of the extracted sequence will\\nbe this number of bases/residues after the\\nstart of the feature. So a value of '10'\\nwill end the extraction 10 bases/residues\\nafter the end of the sequence, and a value\\nof '-10' will end the extraction 10\\nbases/residues after the start of the\\nfeature. The output sequence will be padded\\nwith 'N' or 'X' characters if the sequence\\nends before the required end of the\\nextraction. (Any integer value)"

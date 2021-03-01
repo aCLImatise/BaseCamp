@@ -16,6 +16,9 @@ task MakeTracksFile {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     track_files: "Files to use in for the tracks. The ending of the file\\nis used to define the type of track. E.g. `.bw` for\\nbigwig, `.bed` for bed etc. For a arcs or links file,\\nthe file ending recognized is `.arcs` or `.links`\\n(default: None)"
     out: "file, -o output file\\nFile to save the tracks (default: None)"

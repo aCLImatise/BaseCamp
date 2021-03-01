@@ -22,6 +22,9 @@ task GetDistalPeakspl {
       ~{if (gid) then "-gid" else ""} \
       ~{if (targets) then "-targets" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     absolute_distance_keep: "<#> (Absolute Distance from TSS to keep, default: 3000)"
     prox: "(keep proximal peaks intead of distal peaks)"

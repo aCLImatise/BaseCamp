@@ -10,7 +10,7 @@ task MakeFileForSubsamplingFromCollapsedpy {
     Boolean? include_single_exons
     String make
     String subsample_ready
-    File file
+    File var_file
     String from
     String iso_seq
     String collapsed
@@ -20,7 +20,7 @@ task MakeFileForSubsamplingFromCollapsedpy {
     make_file_for_subsampling_from_collapsed_py \
       ~{make} \
       ~{subsample_ready} \
-      ~{file} \
+      ~{var_file} \
       ~{from} \
       ~{iso_seq} \
       ~{collapsed} \
@@ -32,6 +32,9 @@ task MakeFileForSubsamplingFromCollapsedpy {
       ~{if defined(demux) then ("--demux " +  '"' + demux + '"') else ""} \
       ~{if (include_single_exons) then "--include_single_exons" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_prefix: "Collapsed prefix (default: hq_isoforms.fastq.no5merge.\\ncollapsed.min_fl_2.filtered)"
     output_prefix: "Output prefix (default: output.for_subsampling"
@@ -41,7 +44,7 @@ task MakeFileForSubsamplingFromCollapsedpy {
     include_single_exons: "Include single exons (default: OFF)\\n"
     make: ""
     subsample_ready: ""
-    file: ""
+    var_file: ""
     from: ""
     iso_seq: ""
     collapsed: ""

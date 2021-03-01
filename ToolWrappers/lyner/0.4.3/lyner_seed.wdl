@@ -8,6 +8,9 @@ task LynerSeed {
     lyner seed \
       ~{seed}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seed: ""
   }

@@ -1,0 +1,184 @@
+!Command
+command:
+- mtglink.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -gfa
+  description: 'Input GFA file (format: xxx.gfa)'
+  args: !SimpleFlagArg
+    name: INPUT_GFA
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: Chunk size (bp)
+  args: !SimpleFlagArg
+    name: CHUNK
+- !Flag
+  optional: true
+  synonyms:
+  - -bam
+  description: "BAM file: linked reads mapped on current genome\nassembly (format:\
+    \ xxx.bam)"
+  args: !SimpleFlagArg
+    name: BAM
+- !Flag
+  optional: true
+  synonyms:
+  - -fastq
+  description: 'File of indexed reads (format: xxx.fastq | xxx.fq)'
+  args: !SimpleFlagArg
+    name: READS
+- !Flag
+  optional: true
+  synonyms:
+  - -index
+  description: 'Prefix of barcodes index file (format: xxx.shelve)'
+  args: !SimpleFlagArg
+    name: INDEX
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "Minimal frequence of barcodes extracted in the chunk\nof size '-c'\
+    \ [default: 2]"
+  args: !SimpleFlagArg
+    name: FREQ
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: Output directory [default './mtglink_results']
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -refDir
+  description: Directory containing the reference sequences if any
+  args: !SimpleFlagArg
+    name: REFDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -line
+  description: "Line of GFA file input from which to start analysis\n(if not provided,\
+    \ start analysis from first line of\nGFA file input) [optional]"
+  args: !SimpleFlagArg
+    name: LINE
+- !Flag
+  optional: true
+  synonyms:
+  - -rbxu
+  description: "File containing the reads of the union (if already\nextracted) [optional]"
+  args: !SimpleFlagArg
+    name: RBXU
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: "[KMER [KMER ...]]  k-mer size(s) used for gap-filling [default: [51,\
+    \ 41,\n31, 21]]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: To force search on all '-k' values provided
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: "[ABUNDANCE_THRESHOLD [ABUNDANCE_THRESHOLD ...]]\nMinimal abundance\
+    \ threshold for solid k-mers [default:\n[3, 2]]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ext
+  description: "Extension size of the gap on both sides (bp);\ndetermine start/end\
+    \ of gapfilling [default: '500']"
+  args: !SimpleFlagArg
+    name: EXTENSION
+- !Flag
+  optional: true
+  synonyms:
+  - -max-nodes
+  description: "Maximum number of nodes in contig graph [default:\n1000]"
+  args: !SimpleFlagArg
+    name: MAX_NODES
+- !Flag
+  optional: true
+  synonyms:
+  - -max-length
+  description: 'Maximum length of gapfilling (bp) [default: 10000]'
+  args: !SimpleFlagArg
+    name: MAX_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -nb-cores
+  description: 'Number of cores [default: 1]'
+  args: !SimpleFlagArg
+    name: NB_CORES
+- !Flag
+  optional: true
+  synonyms:
+  - -max-memory
+  description: 'Max memory for graph building (in MBytes) [default: 0]'
+  args: !SimpleFlagArg
+    name: MAX_MEMORY
+- !Flag
+  optional: true
+  synonyms:
+  - -verbose
+  description: 'Verbosity level [default: 0]'
+  args: !SimpleFlagArg
+    name: VERBOSITY
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: mtglink.py -gfa <input.gfa> -c <chunk_size> -bam <mapped.bam> -fastq\
+  \ <reads.fastq> -index <barcoded.shelve> [options]\n\nGapfilling with linked read\
+  \ data, using MindTheGap in 'breakpoint' mode\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n\n[Main options]:\n  -gfa INPUT_GFA\
+  \        Input GFA file (format: xxx.gfa)\n  -c CHUNK              Chunk size (bp)\n\
+  \  -bam BAM              BAM file: linked reads mapped on current genome\n     \
+  \                   assembly (format: xxx.bam)\n  -fastq READS          File of\
+  \ indexed reads (format: xxx.fastq | xxx.fq)\n  -index INDEX          Prefix of\
+  \ barcodes index file (format: xxx.shelve)\n  -f FREQ               Minimal frequence\
+  \ of barcodes extracted in the chunk\n                        of size '-c' [default:\
+  \ 2]\n  -out OUTDIR           Output directory [default './mtglink_results']\n \
+  \ -refDir REFDIR        Directory containing the reference sequences if any\n  -line\
+  \ LINE            Line of GFA file input from which to start analysis\n        \
+  \                (if not provided, start analysis from first line of\n         \
+  \               GFA file input) [optional]\n  -rbxu RBXU            File containing\
+  \ the reads of the union (if already\n                        extracted) [optional]\n\
+  \n[MindTheGap option]:\n  -k [KMER [KMER ...]]  k-mer size(s) used for gap-filling\
+  \ [default: [51, 41,\n                        31, 21]]\n  --force              \
+  \ To force search on all '-k' values provided\n  -a [ABUNDANCE_THRESHOLD [ABUNDANCE_THRESHOLD\
+  \ ...]]\n                        Minimal abundance threshold for solid k-mers [default:\n\
+  \                        [3, 2]]\n  -ext EXTENSION        Extension size of the\
+  \ gap on both sides (bp);\n                        determine start/end of gapfilling\
+  \ [default: '500']\n  -max-nodes MAX_NODES  Maximum number of nodes in contig graph\
+  \ [default:\n                        1000]\n  -max-length MAX_LENGTH\n         \
+  \               Maximum length of gapfilling (bp) [default: 10000]\n  -nb-cores\
+  \ NB_CORES    Number of cores [default: 1]\n  -max-memory MAX_MEMORY\n         \
+  \               Max memory for graph building (in MBytes) [default: 0]\n  -verbose\
+  \ VERBOSITY    Verbosity level [default: 0]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mtglink:1.0.2--0

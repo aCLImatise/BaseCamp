@@ -12,6 +12,9 @@ task Gff2tdfpl {
       ~{if (genome) then "--genome" else ""} \
       ~{if (igv_path) then "--igvpath" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "input format to use (gff or bedgraph)\\n[Current value: gff]"
     genome: "IGVTools genome file to use\\n[Current value: dmel_r5.33]"

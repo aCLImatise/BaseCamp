@@ -3,18 +3,18 @@ id: igraph_extract_clusters.R.cwl
 inputs:
 - id: in_input_i_graph_object
   doc: Path to the input igraph object in rds format.
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-igraph-object
 - id: in_input_sce_object
   doc: Path to the input SCE object where to add the cluster annotation extracted
     from the igraph objecti.
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-sce-object
 - id: in_output_sce_object
   doc: Path to the output SCE object in rds format with cluster annotation in $cluster.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-sce-object
 outputs:
@@ -23,9 +23,10 @@ outputs:
   type: stdout
 - id: out_output_sce_object
   doc: Path to the output SCE object in rds format with cluster annotation in $cluster.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_sce_object)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - igraph_extract_clusters.R

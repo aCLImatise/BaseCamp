@@ -34,7 +34,7 @@ task VarscanFpfilter {
     String java
     String fp_filter
     String? variant
-    File? file
+    File? var_file
     String? read_count
   }
   command <<<
@@ -42,7 +42,7 @@ task VarscanFpfilter {
       ~{java} \
       ~{fp_filter} \
       ~{variant} \
-      ~{file} \
+      ~{var_file} \
       ~{read_count} \
       ~{if (output_file) then "--output-file" else ""} \
       ~{if (filtered_file) then "--filtered-file" else ""} \
@@ -74,6 +74,9 @@ task VarscanFpfilter {
       ~{if (max_map_qual_diff) then "--max-mapqual-diff" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "Optional output file for filter-pass variants"
     filtered_file: "Optional output file for filter-fail variants"
@@ -107,7 +110,7 @@ task VarscanFpfilter {
     java: ""
     fp_filter: ""
     variant: ""
-    file: ""
+    var_file: ""
     read_count: ""
   }
   output {

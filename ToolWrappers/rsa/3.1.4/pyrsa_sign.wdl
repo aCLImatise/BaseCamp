@@ -16,6 +16,9 @@ task Pyrsasign {
       ~{if defined(name_write_signature) then ("--output " +  '"' + name_write_signature + '"') else ""} \
       ~{if defined(key_form) then ("--keyform " +  '"' + key_form + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_sign_reads: "Name of the file to sign. Reads from stdin if not\\nspecified."
     name_write_signature: "Name of the file to write the signature to. Written to\\nstdout if this option is not present."

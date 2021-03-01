@@ -86,6 +86,9 @@ task MendelscanScore {
       ~{if defined(an_no_score_one_seven) then ("--anno-score-17 " +  '"' + an_no_score_one_seven + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vep_file: "Variant annotation in VEP format"
     ped_file: "Pedigree file in 6-column tab-delimited format"

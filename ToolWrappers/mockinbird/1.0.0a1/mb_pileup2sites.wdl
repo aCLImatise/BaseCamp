@@ -8,6 +8,9 @@ task Mbpileup2sites {
     mb_pileup2sites \
       ~{pile_up_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pile_up_file: "optional arguments:"
   }

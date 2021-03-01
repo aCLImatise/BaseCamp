@@ -22,6 +22,9 @@ task Fastacenter {
       ~{if defined(flank) then ("-flank " +  '"' + flank + '"') else ""} \
       ~{if defined(reject) then ("-reject " +  '"' + reject + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "the sequences use the DNA alphabet"
     protein: "the sequences use the protein alphabet"

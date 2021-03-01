@@ -34,6 +34,9 @@ task FcConsensus {
       ~{if defined(edge_tolerance) then ("--edge_tolerance " +  '"' + edge_tolerance + '"') else ""} \
       ~{if defined(trim_size) then ("--trim_size " +  '"' + trim_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_core: "number of processes used for generating consensus; 0\\nfor main process only (default=24)"
     local_match_count_window: "local match window size (obsoleted, no effect)"

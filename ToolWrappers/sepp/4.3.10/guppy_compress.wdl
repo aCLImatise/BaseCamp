@@ -26,6 +26,9 @@ task GuppyCompress {
       ~{if (discard_below) then "--discard-below" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     point_mass: "Treat every pquery as a point mass concentrated on the highest-weight placement."
     pp: "Use posterior probability for the weight."

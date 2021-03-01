@@ -4,6 +4,9 @@ task MaxQuantServerexe {
   command <<<
     MaxQuantServer_exe
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

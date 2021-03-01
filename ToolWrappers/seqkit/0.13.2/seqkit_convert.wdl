@@ -38,6 +38,9 @@ task SeqkitConvert {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dry_run: "dry run"
     force: "for Illumina-1.8+ -> Sanger, truncate scores > 40 to 40"

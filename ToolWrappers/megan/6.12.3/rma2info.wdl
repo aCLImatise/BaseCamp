@@ -36,6 +36,9 @@ task Rma2info {
       ~{if (extract_summary_file) then "--extractSummaryFile" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "[string]                    Input RMA file. Mandatory option."
     out: "[string]                   Output file or '-' for stdout. Default value: -."

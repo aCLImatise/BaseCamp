@@ -8,6 +8,9 @@ task RsatCalctaxfreq {
     rsat calc_taxfreq \
       ~{calc_tax_freq}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     calc_tax_freq: "[1mDESCRIPTION[0m"
   }

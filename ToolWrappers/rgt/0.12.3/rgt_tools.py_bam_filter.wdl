@@ -12,6 +12,9 @@ task RgttoolspyBamFilter {
       ~{if (bed) then "-bed" else ""} \
       ~{if defined(output_prefix_bam) then ("-o " +  '"' + output_prefix_bam + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bam_file: "Input BAM file"
     bed: "Input BED file for the regions for filtering"

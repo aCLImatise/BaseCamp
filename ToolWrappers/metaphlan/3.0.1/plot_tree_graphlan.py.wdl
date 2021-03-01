@@ -28,6 +28,9 @@ task PlotTreeGraphlanpy {
       ~{if defined(figure_extension) then ("--figure_extension " +  '"' + figure_extension + '"') else ""} \
       ~{if defined(of_n_prefix) then ("--ofn_prefix " +  '"' + of_n_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ifn_tree: "The input tree in newick format."
     colorized_metadata: "The metadata field to colorize. Default \\\"unset\\\"."

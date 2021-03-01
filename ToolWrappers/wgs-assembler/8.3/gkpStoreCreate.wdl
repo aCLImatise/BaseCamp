@@ -8,6 +8,9 @@ task GkpStoreCreate {
     gkpStoreCreate \
       ~{if defined(create_this_gkpstore) then ("-o " +  '"' + create_this_gkpstore + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create_this_gkpstore: "create this gkpStore"
   }

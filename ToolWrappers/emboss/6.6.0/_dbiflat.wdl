@@ -28,6 +28,9 @@ task Dbiflat {
       ~{if (sort_options) then "-sortoptions" else ""} \
       ~{if (index_outdir) then "-indexoutdir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id_format: "menu       [SWISS] Entry format (Values: EMBL (EMBL);\\nSWISS (Swiss-Prot, SpTrEMBL, TrEMBLnew); GB\\n(Genbank, DDBJ); REFSEQ (Refseq))"
     directory: "directory  [.] Database directory"

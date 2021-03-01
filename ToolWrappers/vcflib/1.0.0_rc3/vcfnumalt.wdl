@@ -8,6 +8,9 @@ task Vcfnumalt {
     vcfnumalt \
       ~{vcf_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file: ""
   }

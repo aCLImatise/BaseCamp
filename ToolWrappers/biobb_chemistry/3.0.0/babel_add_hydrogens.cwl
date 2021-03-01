@@ -3,7 +3,7 @@ id: babel_add_hydrogens.cwl
 inputs:
 - id: in_config
   doc: Configuration file
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_input_path
@@ -19,7 +19,7 @@ inputs:
     POSFF, pqr, pqs, prep, pwscf, qcout, res, rsmi, rxn, sd, sdf, siesta, smi, smiles,
     smy, sy2, t41, tdd, text, therm, tmol, txt, txyz, unixyz, VASP, vmol, xml, xsf,
     xtc, xyz, yob.'
-  type: File
+  type: File?
   inputBinding:
     prefix: --input_path
 - id: in_output_path
@@ -34,7 +34,7 @@ inputs:
     \ paint, pcjson, pcm, pdb, pdbqt, png, pointcloud, POSCAR, POSFF, pov, pqr, pqs,\
     \ qcin, report, rsmi, rxn, sd, sdf, smi, smiles, stl, svg, sy2, tdd, text, therm,\
     \ tmol, txt, txyz, unixyz, VASP, vmol, xed, xyz, yob, zin.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output_path
 outputs:
@@ -53,9 +53,10 @@ outputs:
     \ paint, pcjson, pcm, pdb, pdbqt, png, pointcloud, POSCAR, POSFF, pov, pqr, pqs,\
     \ qcin, report, rsmi, rxn, sd, sdf, smi, smiles, stl, svg, sy2, tdd, text, therm,\
     \ tmol, txt, txyz, unixyz, VASP, vmol, xed, xyz, yob, zin.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_path)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - babel_add_hydrogens

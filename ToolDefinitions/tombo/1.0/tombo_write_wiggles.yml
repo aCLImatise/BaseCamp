@@ -5,85 +5,85 @@ command:
 positional: []
 named:
 - !Flag
-  description: Directories containing fast5 files.
+  optional: true
   synonyms:
   - --fast5-basedirs
+  description: Directories containing fast5 files.
   args: !RepeatFlagArg
     name: FAST5_BASEDIRS
-  optional: true
 - !Flag
-  description: "Control set of directories containing fast5 files.\nThese reads should\
-    \ contain only standard nucleotides."
+  optional: true
   synonyms:
   - --control-fast5-basedirs
+  description: "Control set of directories containing fast5 files.\nThese reads should\
+    \ contain only standard nucleotides."
   args: !RepeatFlagArg
     name: CONTROL_FAST5_BASEDIRS
-  optional: true
 - !Flag
-  description: File to save/load base by base statistics.
+  optional: true
   synonyms:
   - --statistics-filename
+  description: File to save/load base by base statistics.
   args: !SimpleFlagArg
     name: STATISTICS_FILENAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --wiggle-basename
   description: "Basename for output wiggle files. Two files (plus and\nminus strand)\
     \ will be produced for each --wiggle-types\nsupplied. Filenames formatted as \"\
     [wiggle-basename\n].[wiggle-type].[sample|control]?.[plus|minus].wig\".\nDefault:\
     \ tombo_results"
-  synonyms:
-  - --wiggle-basename
   args: !SimpleFlagArg
     name: WIGGLE_BASENAME
-  optional: true
 - !Flag
-  description: "[{coverage,fraction,signal,signal_sd,length,stat,mt_stat,difference}\
-    \ ...]\nData types of wiggles to produce. Default: \"coverage\nfraction\""
+  optional: true
   synonyms:
   - --wiggle-types
+  description: "[{coverage,fraction,signal,signal_sd,length,stat,mt_stat,difference}\
+    \ ...]\nData types of wiggles to produce. Default: \"coverage\nfraction\""
   args: !ChoiceFlagArg
     choices: !!set
-      coverage:
-      signal_sd:
-      difference:
-      fraction:
-      stat:
       length:
+      signal_sd:
       signal:
+      difference:
       mt_stat:
-  optional: true
+      coverage:
+      stat:
+      fraction:
 - !Flag
-  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
+  optional: true
   synonyms:
   - --corrected-group
+  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
   args: !SimpleFlagArg
     name: CORRECTED_GROUP
-  optional: true
 - !Flag
-  description: "FAST5 subgroup(s) (under Analyses/[corrected-group])\ncontaining basecalls.\
-    \ Default: ['BaseCalled_template']"
+  optional: true
   synonyms:
   - --basecall-subgroups
+  description: "FAST5 subgroup(s) (under Analyses/[corrected-group])\ncontaining basecalls.\
+    \ Default: ['BaseCalled_template']"
   args: !RepeatFlagArg
     name: BASECALL_SUBGROUPS
-  optional: true
 - !Flag
-  description: Don't print status information.
+  optional: true
   synonyms:
   - --quiet
   - -q
+  description: Don't print status information.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: Print this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: tombo write_wiggles --fast5-basedirs FAST5_BASEDIRS\n         \
@@ -118,3 +118,4 @@ help_text: "usage: tombo write_wiggles --fast5-basedirs FAST5_BASEDIRS\n        
   \ message and exit\n"
 generated_using:
 - --help
+docker_image:

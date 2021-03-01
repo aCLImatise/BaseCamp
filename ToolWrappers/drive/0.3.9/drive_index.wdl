@@ -5,6 +5,8 @@ task DriveIndex {
     Boolean? all_ops
     String? exclude_ops
     Boolean? force
+    Boolean? id
+    Boolean? ignore_checksum
     Boolean? ignore_conflict
     Boolean? ignore_name_clashes
     Boolean? matches
@@ -20,6 +22,8 @@ task DriveIndex {
       ~{if (all_ops) then "-all-ops" else ""} \
       ~{if defined(exclude_ops) then ("-exclude-ops " +  '"' + exclude_ops + '"') else ""} \
       ~{if (force) then "-force" else ""} \
+      ~{if (id) then "-id" else ""} \
+      ~{if (ignore_checksum) then "-ignore-checksum" else ""} \
       ~{if (ignore_conflict) then "-ignore-conflict" else ""} \
       ~{if (ignore_name_clashes) then "-ignore-name-clashes" else ""} \
       ~{if (matches) then "-matches" else ""} \
@@ -30,10 +34,15 @@ task DriveIndex {
       ~{if (recursive) then "-recursive" else ""} \
       ~{if defined(skip_mime) then ("-skip-mime " +  '"' + skip_mime + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all_ops: "perform all the index related operations"
     exclude_ops: "exclude operations"
     force: "forces a fetch even if no changes present"
+    id: "fetch by id instead of path"
+    ignore_checksum: "avoids computation of checksums as a final check."
     ignore_conflict: "turns off the conflict resolution safety (default true)"
     ignore_name_clashes: "ignore name clashes (default true)"
     matches: "search by prefix"

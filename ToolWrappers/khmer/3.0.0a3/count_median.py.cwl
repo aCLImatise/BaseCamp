@@ -3,12 +3,12 @@ id: count_median.py.cwl
 inputs:
 - id: in_info
   doc: print citation information
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --info
 - id: in_force
   doc: 'Overwrite output file if it exists (default: False)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --force
 - id: in_count_kmers_summary
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_force
   doc: 'Overwrite output file if it exists (default: False)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_force)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - count-median.py

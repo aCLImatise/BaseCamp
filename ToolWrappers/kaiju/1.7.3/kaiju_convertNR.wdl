@@ -8,7 +8,7 @@ task KaijuconvertNR {
     Boolean? prefix_taxon_id
     File? name_nr_file
     File? name_file_taxon
-    File? name_file_accession
+    File? name_file_excluded
   }
   command <<<
     kaiju_convertNR \
@@ -18,8 +18,11 @@ task KaijuconvertNR {
       ~{if (prefix_taxon_id) then "-a" else ""} \
       ~{if defined(name_nr_file) then ("-i " +  '"' + name_nr_file + '"') else ""} \
       ~{if defined(name_file_taxon) then ("-l " +  '"' + name_file_taxon + '"') else ""} \
-      ~{if defined(name_file_accession) then ("-e " +  '"' + name_file_accession + '"') else ""}
+      ~{if defined(name_file_excluded) then ("-e " +  '"' + name_file_excluded + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_nodesdmp_file: "Name of nodes.dmp file."
     name_protaccessiontaxid_file: "Name of prot.accession2taxid file."
@@ -27,7 +30,7 @@ task KaijuconvertNR {
     prefix_taxon_id: "Prefix taxon ID in database names with the first accession number per record."
     name_nr_file: "Name of NR file. If this option is not used, then the program will read from STDIN."
     name_file_taxon: "Name of file with taxon IDs. Only records having one of these IDs as ancestor in the taxonomy will be used."
-    name_file_accession: "Name of file with accession numbers that will be excluded."
+    name_file_excluded: "Name of file with accession numbers that will be excluded."
   }
   output {
     File out_stdout = stdout()

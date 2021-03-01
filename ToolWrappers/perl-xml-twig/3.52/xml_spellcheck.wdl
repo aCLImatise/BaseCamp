@@ -22,6 +22,9 @@ task XmlSpellcheck {
       ~{if defined(pretty_print) then ("--pretty_print " +  '"' + pretty_print + '"') else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     conf: "Gets the options from a configuration file. NOT IMPLEMENTED YET."
     spell_checker: "The command to use for spell checking, including any option\\nBy default \\\"aspell -c\\\" is used"

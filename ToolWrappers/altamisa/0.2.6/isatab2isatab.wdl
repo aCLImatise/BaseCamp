@@ -14,6 +14,9 @@ task Isatab2isatab {
       ~{if defined(quotes) then ("--quotes " +  '"' + quotes + '"') else ""} \
       ~{if (no_warnings) then "--no-warnings" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_investigation_file: "Path to input investigation file"
     output_investigation_file: "Path to output investigation file, stdout (\\\"-\\\") by\\ndefault. Needs to be in a different directory!"

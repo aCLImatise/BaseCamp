@@ -36,6 +36,9 @@ task LongestPath {
       ~{if defined(tiling) then ("--tiling " +  '"' + tiling + '"') else ""} \
       ~{if defined(trim) then ("--trim " +  '"' + trim + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads (1)"
     output_file: "Output file"

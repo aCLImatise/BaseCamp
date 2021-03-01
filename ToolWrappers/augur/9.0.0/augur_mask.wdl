@@ -20,6 +20,9 @@ task AugurMask {
       ~{if defined(output_file_default) then ("--output " +  '"' + output_file_default + '"') else ""} \
       ~{if (no_cleanup) then "--no-cleanup" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequences: "sequences in VCF or FASTA format (default: None)"
     mask: "locations to be masked in either BED file format, DRM\\nformat, or one 1-indexed site per line. (default:\\nNone)"

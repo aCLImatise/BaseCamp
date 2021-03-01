@@ -12,6 +12,9 @@ task Charmmlipid2amberpy {
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     i: ""

@@ -36,6 +36,9 @@ task BcftoolsQuery {
       ~{if (allow_undef_tags) then "--allow-undef-tags" else ""} \
       ~{if defined(vcf_list) then ("--vcf-list " +  '"' + vcf_list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exclude: "exclude sites for which the expression is true (see man page for details)"
     format: "see man page for details"

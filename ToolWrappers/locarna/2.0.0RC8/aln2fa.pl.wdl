@@ -18,6 +18,9 @@ task Aln2fapl {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (de_gap) then "--degap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "Full documentation"
     verbose: "Verbose"

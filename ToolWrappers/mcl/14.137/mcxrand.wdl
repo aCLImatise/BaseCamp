@@ -26,6 +26,9 @@ task Mcxrand {
       ~{if defined(pa) then ("-pa " +  '"' + pa + '"') else ""} \
       ~{if defined(remove) then ("-remove " +  '"' + remove + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_this_help: "print this help"
     output_matrix_fname: "output matrix to <fname>"

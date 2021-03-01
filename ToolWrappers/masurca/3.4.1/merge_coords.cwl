@@ -3,7 +3,7 @@ id: merge_coords.cwl
 inputs:
 - id: in_output
   doc: Output file (stdout)
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_merge_coords_cmdline
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output file (stdout)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - merge_coords

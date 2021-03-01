@@ -18,6 +18,9 @@ task ChemblSub {
       ~{if defined(destination_format) then ("--destination-format " +  '"' + destination_format + '"') else ""} \
       ~{if (human) then "--Human" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_chembl: "input file with ChEMBL IDs"
     output_file_chembl: "output file with ChEMBL IDs of similar molecules"

@@ -10,6 +10,9 @@ task AnnotateRefSeqSequencesWithUniqueTaxonIDspl {
       ~{if defined(taxonomy_in_directory) then ("--taxonomyInDirectory " +  '"' + taxonomy_in_directory + '"') else ""} \
       ~{if defined(refseq_directory) then ("--refSeqDirectory " +  '"' + refseq_directory + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     taxonomy_in_directory: ""
     refseq_directory: ""

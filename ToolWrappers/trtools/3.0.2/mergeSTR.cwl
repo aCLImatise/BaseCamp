@@ -4,32 +4,32 @@ inputs:
 - id: in_v_cfs
   doc: "Comma-separated list of VCF files to merge (must be\nsorted, bgzipped and\
     \ indexed)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --vcfs
 - id: in_out
   doc: Prefix to name output files
-  type: string
+  type: string?
   inputBinding:
     prefix: --out
 - id: in_vcf_type
   doc: "Options=['gangstr', 'advntr', 'hipstr', 'eh',\n'popstr'] (default: auto)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --vcftype
 - id: in_update_sample_from_file
   doc: "Use file names, rather than sample header names, when\nmerging (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --update-sample-from-file
 - id: in_verbose
   doc: 'Print out extra info (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_quiet
   doc: "Don't print out anything (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_tool
@@ -76,6 +76,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mergeSTR

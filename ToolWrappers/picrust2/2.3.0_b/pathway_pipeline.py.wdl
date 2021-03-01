@@ -4,7 +4,7 @@ task PathwayPipelinepy {
   input {
     String? input_tsv_table
     Directory? out_dir
-    Float? mapping_reactions_mapfilemaps
+    Float? mapping_pathways_reactions
     Boolean? skip_min_path
     Boolean? no_gap_fill
     Directory? intermediate
@@ -22,7 +22,7 @@ task PathwayPipelinepy {
     pathway_pipeline_py \
       ~{if defined(input_tsv_table) then ("--input " +  '"' + input_tsv_table + '"') else ""} \
       ~{if defined(out_dir) then ("--out_dir " +  '"' + out_dir + '"') else ""} \
-      ~{if defined(mapping_reactions_mapfilemaps) then ("--map " +  '"' + mapping_reactions_mapfilemaps + '"') else ""} \
+      ~{if defined(mapping_pathways_reactions) then ("--map " +  '"' + mapping_pathways_reactions + '"') else ""} \
       ~{if (skip_min_path) then "--skip_minpath" else ""} \
       ~{if (no_gap_fill) then "--no_gap_fill" else ""} \
       ~{if defined(intermediate) then ("--intermediate " +  '"' + intermediate + '"') else ""} \
@@ -36,10 +36,13 @@ task PathwayPipelinepy {
       ~{if (wide_table) then "--wide_table" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_tsv_table: "Input TSV table of gene family abundances (either the\\nunstratified or stratified output of\\nmetagenome_pipeline.py)."
     out_dir: "Output folder for pathway abundance output."
-    mapping_reactions_mapfilemaps: "Mapping of pathways to reactions. The default mapfile\\nmaps MetaCyc reactions to prokaryotic MetaCyc pathways\\n(default: /usr/local/lib/python3.6/site-packages/picru\\nst2/default_files/pathway_mapfiles/metacyc_path2rxn_st\\nruc_filt_pro.txt)."
+    mapping_pathways_reactions: "Mapping of pathways to reactions. The default mapfile\\nmaps MetaCyc reactions to prokaryotic MetaCyc pathways\\n(default: /usr/local/lib/python3.6/site-packages/picru\\nst2/default_files/pathway_mapfiles/metacyc_path2rxn_st\\nruc_filt_pro.txt)."
     skip_min_path: "Do not run MinPath to identify which pathways are\\npresent as a first pass (on by default)."
     no_gap_fill: "Do not perform gap filling before predicting pathway\\nabundances (Gap filling is on otherwise by default."
     intermediate: "Output folder for intermediate files (will be deleted\\notherwise)."

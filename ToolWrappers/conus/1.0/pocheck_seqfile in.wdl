@@ -8,6 +8,9 @@ task PocheckSeqfilein {
     pocheck seqfile_in \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
   }

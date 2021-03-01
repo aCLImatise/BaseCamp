@@ -70,6 +70,9 @@ task CsvtkPlotHist {
       ~{if defined(y_min) then ("--y-min " +  '"' + y_min + '"') else ""} \
       ~{if defined(ylab) then ("--ylab " +  '"' + ylab + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bins: "number of bins (default 50)"
     color_index: "color index, 1-7 (default 1)"

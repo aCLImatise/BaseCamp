@@ -82,6 +82,9 @@ task Konnector {
       ~{if defined(path_identity) then ("--path-identity " +  '"' + path_identity + '"') else ""} \
       ~{if defined(max_branches) then ("--max-branches " +  '"' + max_branches + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "use N parallel threads [1]"
     km_er: "the size of a k-mer"

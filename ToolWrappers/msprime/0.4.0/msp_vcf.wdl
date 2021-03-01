@@ -10,6 +10,9 @@ task MspVcf {
       ~{history_file} \
       ~{if defined(ploidy) then ("--ploidy " +  '"' + ploidy + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ploidy: "The ploidy level of samples\\n"
     history_file: "The msprime history file in HDF5 format"

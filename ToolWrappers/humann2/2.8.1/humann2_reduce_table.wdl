@@ -16,6 +16,9 @@ task Humann2ReduceTable {
       ~{if defined(function) then ("--function " +  '"' + function + '"') else ""} \
       ~{if defined(sort_by) then ("--sort-by " +  '"' + sort_by + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "additional output is printed"
     the_input_table: "the input table"

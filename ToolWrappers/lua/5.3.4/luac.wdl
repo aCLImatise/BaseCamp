@@ -18,6 +18,9 @@ task Luac {
       ~{if (strip_debug_information) then "-s" else ""} \
       ~{if (show_version_information) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_use_l: "list (use -l -l for full listing)"
     output_file_default: "output to file 'name' (default is \\\"luac.out\\\")"

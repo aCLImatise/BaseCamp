@@ -7,7 +7,7 @@ task SalmonAlevin {
     Boolean? one
     Boolean? two
     Boolean? print_version_string
-    Directory? arg_output_directory
+    Directory? arg_output_quantification
     Boolean? arg_number_use
     File? hash
     Boolean? drop_seq
@@ -58,7 +58,7 @@ task SalmonAlevin {
       ~{if (one) then "-1" else ""} \
       ~{if (two) then "-2" else ""} \
       ~{if (print_version_string) then "-v" else ""} \
-      ~{if (arg_output_directory) then "-o" else ""} \
+      ~{if (arg_output_quantification) then "-o" else ""} \
       ~{if (arg_number_use) then "-p" else ""} \
       ~{if defined(hash) then ("--hash " +  '"' + hash + '"') else ""} \
       ~{if (drop_seq) then "--dropseq" else ""} \
@@ -94,13 +94,16 @@ task SalmonAlevin {
       ~{if defined(low_region_min_num_barcodes) then ("--lowRegionMinNumBarcodes " +  '"' + low_region_min_num_barcodes + '"') else ""} \
       ~{if defined(max_num_barcodes) then ("--maxNumBarcodes " +  '"' + max_num_barcodes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_format_string: "[ --libType ] arg                  Format string describing the library"
     arg_list_files: "[ --unmatedReads ] arg             List of files containing unmated reads\\nof (e.g. single-end reads)"
     one: "[ --mates1 ] arg                   File containing the #1 mates"
     two: "[ --mates2 ] arg                   File containing the #2 mates"
     print_version_string: "[ --version ]                      print version string"
-    arg_output_directory: "[ --output ] arg                   Output quantification directory."
+    arg_output_quantification: "[ --output ] arg                   Output quantification directory."
     arg_number_use: "[ --threads ] arg (=2)             The number of threads to use"
     hash: "Secondary input point for Alevin using\\nBig freaking Hash (bfh.txt) file. Works\\nOnly with --chromium"
     drop_seq: "Use DropSeq Single Cell protocol for\\nthe library"
@@ -142,6 +145,6 @@ task SalmonAlevin {
   }
   output {
     File out_stdout = stdout()
-    Directory out_arg_output_directory = "${in_arg_output_directory}"
+    Directory out_arg_output_quantification = "${in_arg_output_quantification}"
   }
 }

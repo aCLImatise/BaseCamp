@@ -36,6 +36,9 @@ task KodojaSearchpy {
       ~{if defined(kaiju_min_len) then ("--kaiju_minlen " +  '"' + kaiju_min_len + '"') else ""} \
       ~{if defined(kaiju_mismatch) then ("--kaiju_mismatch " +  '"' + kaiju_mismatch + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Output directory path, required"
     kraken_db: "Kraken database path, required"

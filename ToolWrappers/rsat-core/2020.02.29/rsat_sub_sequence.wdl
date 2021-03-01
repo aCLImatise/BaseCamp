@@ -38,6 +38,9 @@ task RsatSubsequence {
       ~{if (rc) then "-rc" else ""} \
       ~{if (limits) then "-limits" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help: "(must be first argument) display options"
     verbose: "verbose"

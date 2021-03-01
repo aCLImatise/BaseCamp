@@ -3,7 +3,7 @@ version 1.0
 task Hmmsearch2 {
   input {
     String? sets_alignment_limit
-    String? sets_cutoff_globe
+    String? sets_value_globe
     String? sets_bit_threshold
     String? sets_z_seqs
     Boolean? compat
@@ -29,7 +29,7 @@ task Hmmsearch2 {
       ~{hmm_file} \
       ~{sequence_file_or_database} \
       ~{if defined(sets_alignment_limit) then ("-A " +  '"' + sets_alignment_limit + '"') else ""} \
-      ~{if defined(sets_cutoff_globe) then ("-E " +  '"' + sets_cutoff_globe + '"') else ""} \
+      ~{if defined(sets_value_globe) then ("-E " +  '"' + sets_value_globe + '"') else ""} \
       ~{if defined(sets_bit_threshold) then ("-T " +  '"' + sets_bit_threshold + '"') else ""} \
       ~{if defined(sets_z_seqs) then ("-Z " +  '"' + sets_z_seqs + '"') else ""} \
       ~{if (compat) then "--compat" else ""} \
@@ -46,9 +46,12 @@ task Hmmsearch2 {
       ~{if (xnu) then "--xnu" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sets_alignment_limit: ": sets alignment output limit to <n> best domain alignments"
-    sets_cutoff_globe: ": sets E value cutoff (globE) to <= x"
+    sets_value_globe: ": sets E value cutoff (globE) to <= x"
     sets_bit_threshold: ": sets T bit threshold (globT) to >= x"
     sets_z_seqs: ": sets Z (# seqs) for E-value calculation"
     compat: ": make best effort to use last version's output style"

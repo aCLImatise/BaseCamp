@@ -18,6 +18,9 @@ task GhosttreeScaffoldHybridtreefoundationalignment {
       ~{if (save_foundation_tree) then "--save-foundation-tree" else ""} \
       ~{if (exclude_id_list) then "--exclude-id-list" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graft_level: "[p|c|o|f|g]    Taxonomic level to graft extensions to\\nfoundation. Default is g (genus). p=phylum,\\nc=class, o=order, f=family."
     stderr: "Saves error log file (optional)"

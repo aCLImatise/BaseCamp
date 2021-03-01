@@ -3,226 +3,226 @@ command:
 - pre.py
 positional:
 - !Positional
-  description: VCF file to process.
+  optional: false
   position: 0
   name: input
-  optional: false
+  description: VCF file to process.
 - !Positional
-  description: Output filename.
+  optional: false
   position: 1
   name: output
-  optional: false
+  description: Output filename.
 - !Positional
-  description: --verbose             Raise logging level from warning to info.
+  optional: false
   position: 0
   name: stderr
-  optional: false
+  description: --verbose             Raise logging level from warning to info.
 named:
 - !Flag
-  description: "Comma-separated list of locations [use naming after\npreprocessing],\
-    \ when not specified will use whole VCF."
+  optional: true
   synonyms:
   - --location
   - -l
+  description: "Comma-separated list of locations [use naming after\npreprocessing],\
+    \ when not specified will use whole VCF."
   args: !SimpleFlagArg
     name: LOCATIONS
-  optional: true
 - !Flag
-  description: Keep only PASS variants.
+  optional: true
   synonyms:
   - --pass-only
+  description: Keep only PASS variants.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify a comma-separated list of filters to apply (by\ndefault all\
-    \ filters are ignored / passed on."
+  optional: true
   synonyms:
   - --filters-only
+  description: "Specify a comma-separated list of filters to apply (by\ndefault all\
+    \ filters are ignored / passed on."
   args: !SimpleFlagArg
     name: FILTERS_ONLY
-  optional: true
 - !Flag
-  description: "Restrict analysis to given (sparse) regions (using -R\nin bcftools)."
+  optional: true
   synonyms:
   - -R
   - --restrict-regions
+  description: "Restrict analysis to given (sparse) regions (using -R\nin bcftools)."
   args: !SimpleFlagArg
     name: REGIONS_BEDFILE
-  optional: true
 - !Flag
-  description: "Restrict analysis to given (dense) regions (using -T\nin bcftools)."
+  optional: true
   synonyms:
   - -T
   - --target-regions
+  description: "Restrict analysis to given (dense) regions (using -T\nin bcftools)."
   args: !SimpleFlagArg
     name: TARGETS_BEDFILE
-  optional: true
 - !Flag
-  description: Left-shift variants safely.
+  optional: true
   synonyms:
   - -L
   - --leftshift
+  description: Left-shift variants safely.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not left-shift variants safely.
+  optional: true
   synonyms:
   - --no-leftshift
+  description: Do not left-shift variants safely.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Decompose variants into primitives. This results in\nmore granular\
-    \ counts."
+  optional: true
   synonyms:
   - --decompose
+  description: "Decompose variants into primitives. This results in\nmore granular\
+    \ counts."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not decompose variants into primitives.
+  optional: true
   synonyms:
   - -D
   - --no-decompose
+  description: Do not decompose variants into primitives.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Enable preprocessing through bcftools norm -c x -D\n(requires external\
-    \ preprocessing to be switched on)."
+  optional: true
   synonyms:
   - --bcftools-norm
+  description: "Enable preprocessing through bcftools norm -c x -D\n(requires external\
+    \ preprocessing to be switched on)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Add chr prefix to VCF records where necessary\n(default: auto, attempt\
-    \ to match reference)."
+  optional: true
   synonyms:
   - --fixchr
+  description: "Add chr prefix to VCF records where necessary\n(default: auto, attempt\
+    \ to match reference)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not add chr prefix to VCF records (default: auto,\nattempt to match\
-    \ reference)."
+  optional: true
   synonyms:
   - --no-fixchr
+  description: "Do not add chr prefix to VCF records (default: auto,\nattempt to match\
+    \ reference)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bcf
   description: "Use BCF internally. This is the default when the input\nfile is in\
     \ BCF format already. Using BCF can speed up\ntemp file access, but may fail for\
     \ VCF files that have\nbroken headers or records that don't comply with the\n\
     header."
-  synonyms:
-  - --bcf
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --somatic
   description: "Assume the input file is a somatic call file and\nsquash all columns\
     \ into one, putting all FORMATs into\nINFO + use half genotypes (see also --set-gt).\
     \ This\nwill replace all sample columns and replace them with\na single one."
-  synonyms:
-  - --somatic
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --set-gt
   description: "This is used to treat Strelka somatic files Possible\nvalues for this\
     \ parameter: half / hemi / het / hom /\nhalf to assign one of the following genotypes\
     \ to the\nresulting sample: 1 | 0/1 | 1/1 | ./1. This will\nreplace all sample\
     \ columns and replace them with a\nsingle one."
-  synonyms:
-  - --set-gt
   args: !ChoiceFlagArg
     choices: !!set
-      first:
-      half:
-      hemi:
       hom:
       het:
-  optional: true
+      half:
+      first:
+      hemi:
 - !Flag
-  description: Remove any variants genotyped as <NON_REF>.
+  optional: true
   synonyms:
   - --filter-nonref
+  description: Remove any variants genotyped as <NON_REF>.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Convert the truth set from genome VCF format to a VCF\nbefore processing."
+  optional: true
   synonyms:
   - --convert-gvcf-truth
+  description: "Convert the truth set from genome VCF format to a VCF\nbefore processing."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Convert the query set from genome VCF format to a VCF\nbefore processing."
+  optional: true
   synonyms:
   - --convert-gvcf-query
+  description: "Convert the query set from genome VCF format to a VCF\nbefore processing."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gender
   description: "Specify sex. This determines how haploid calls on chrX\nget treated:\
     \ for male samples, all non-ref calls (in\nthe truthset only when running through\
     \ hap.py) are\ngiven a 1/1 genotype."
-  synonyms:
-  - --gender
   args: !ChoiceFlagArg
     choices: !!set
+      female:
+      auto:
       none:
       male:
-      auto:
-      female:
-  optional: true
 - !Flag
-  description: Specify a reference file.
+  optional: true
   synonyms:
   - -r
   - --reference
+  description: Specify a reference file.
   args: !SimpleFlagArg
     name: REF
-  optional: true
 - !Flag
-  description: "Preprocessing window size (variants further apart than\nthat size\
-    \ are not expected to interfere)."
+  optional: true
   synonyms:
   - -w
   - --window-size
+  description: "Preprocessing window size (variants further apart than\nthat size\
+    \ are not expected to interfere)."
   args: !SimpleFlagArg
     name: WINDOW
-  optional: true
 - !Flag
-  description: Number of threads to use.
+  optional: true
   synonyms:
   - --threads
+  description: Number of threads to use.
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: Write logging information into file rather than to
+  optional: true
   synonyms:
   - --logfile
+  description: Write logging information into file rather than to
   args: !SimpleFlagArg
     name: LOGFILE
-  optional: true
 - !Flag
-  description: Set logging level to output errors only.
+  optional: true
   synonyms:
   - --quiet
+  description: Set logging level to output errors only.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Show version number and exit.
+  optional: true
   synonyms:
   - -v
   - --version
+  description: Show version number and exit.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: VCF preprocessor [-h] [--location LOCATIONS] [--pass-only]\n  \
   \                      [--filters-only FILTERS_ONLY] [-R REGIONS_BEDFILE]\n    \
   \                    [-T TARGETS_BEDFILE] [-L] [--no-leftshift]\n              \
@@ -285,3 +285,4 @@ help_text: "usage: VCF preprocessor [-h] [--location LOCATIONS] [--pass-only]\n 
   \ info.\n  --quiet               Set logging level to output errors only.\n"
 generated_using:
 - --help
+docker_image:

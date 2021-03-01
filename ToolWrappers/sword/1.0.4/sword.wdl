@@ -36,6 +36,9 @@ task Sword {
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query: "(required)\\ninput fasta database query file"
     target: "(required)\\ninput fasta database target file"

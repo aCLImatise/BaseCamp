@@ -8,6 +8,9 @@ task Cert2spc {
     cert2spc \
       ~{certificate_vertical_line_crl}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     certificate_vertical_line_crl: ""
   }

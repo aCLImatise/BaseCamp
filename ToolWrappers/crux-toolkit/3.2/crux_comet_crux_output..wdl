@@ -12,6 +12,9 @@ task CruxCometCruxoutput {
       ~{comet} \
       ~{input_spectra}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     comet: ""

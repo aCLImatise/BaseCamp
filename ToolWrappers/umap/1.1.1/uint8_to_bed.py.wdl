@@ -32,6 +32,9 @@ task Uint8ToBedpy {
       ~{if defined(job_id) then ("-job_id " +  '"' + job_id + '"') else ""} \
       ~{if defined(var_id) then ("-var_id " +  '"' + var_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     c_two_t: "If using converted genomes specify -C2T or -G2A"
     g_two_a: "If using converted genomes specify -C2T or -G2A"

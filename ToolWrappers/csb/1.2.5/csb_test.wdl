@@ -16,6 +16,9 @@ task Csbtest {
       ~{if (update_files) then "--update-files" else ""} \
       ~{if defined(generated_resources) then ("--generated-resources " +  '"' + generated_resources + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type: "Type of tests to load from each namespace\\n(default=any)"
     verbosity: "Verbosity level passed to unittest.TextTestRunner\\n(default=1)."

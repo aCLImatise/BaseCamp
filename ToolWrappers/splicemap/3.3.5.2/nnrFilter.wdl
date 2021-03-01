@@ -4,6 +4,9 @@ task NnrFilter {
   command <<<
     nnrFilter
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

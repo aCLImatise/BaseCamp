@@ -10,6 +10,9 @@ task PyfastxIndex {
       ~{fast_x} \
       ~{if (full) then "--full" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     full: "build full index, base composition will be calculated"
     fast_x: "fasta or fastq file, gzip support"

@@ -4,6 +4,9 @@ task Dolmove {
   command <<<
     dolmove
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

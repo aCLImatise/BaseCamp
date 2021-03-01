@@ -16,6 +16,9 @@ task Cutgextract {
       ~{if (all_records) then "-allrecords" else ""} \
       ~{if (filename) then "-filename" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     release: "string     CUTG release (Any string)"
     wild_spec: "string     [*.codon] Type of codon file (Any string)"

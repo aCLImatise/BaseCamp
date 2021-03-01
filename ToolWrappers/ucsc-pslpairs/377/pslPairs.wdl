@@ -44,6 +44,9 @@ task PslPairs {
       ~{if (mismatch) then "-mismatch" else ""} \
       ~{if (orphan) then "-orphan" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max: "- maximum length of clone sequence (default=47000)"
     min: "- minimum length of clone sequence (default=32000)"

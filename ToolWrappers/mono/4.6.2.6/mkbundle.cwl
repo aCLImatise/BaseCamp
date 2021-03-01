@@ -3,42 +3,42 @@ id: mkbundle.cwl
 inputs:
 - id: in_config
   doc: Bundle system config file `F'
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_config_dir
   doc: Set MONO_CFG_DIR to `D'
-  type: string
+  type: string?
   inputBinding:
     prefix: --config-dir
 - id: in_deps
   doc: Turns on automatic dependency embedding (default on simple)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --deps
 - id: in_adds_path_search
   doc: Adds `path' to the search path for assemblies
-  type: File
+  type: File?
   inputBinding:
     prefix: -L
 - id: in_machine_config
   doc: Use the given file as the machine.config for the application.
-  type: File
+  type: File?
   inputBinding:
     prefix: --machine-config
 - id: in_specifies_output_filename
   doc: Specifies output filename
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_nodeps
   doc: Turns off automatic dependency embedding (default on custom)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nodeps
 - id: in_skip_scan
   doc: Skip scanning assemblies that could not be loaded (but still embed them).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip-scan
 - id: in_simple
@@ -48,7 +48,7 @@ inputs:
     \ remote server\n--options OPTIONS   Embed the specified Mono command line options\
     \ on target\n--runtime RUNTIME   Manually specifies the Mono runtime to use\n\
     --target-server URL Specified a server to download targets from, default is https://download.mono-project.com/runtimes/raw/"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --simple
 - id: in_custom
@@ -63,7 +63,7 @@ inputs:
     -z                  Compress the assemblies before embedding.\n--static-ctor ctor\
     \  Add a constructor call to the supplied function.\nYou need zlib development\
     \ headers and libraries.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --custom
 outputs:
@@ -72,7 +72,7 @@ outputs:
   type: stdout
 - id: out_specifies_output_filename
   doc: Specifies output filename
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_specifies_output_filename)
 - id: out_custom
@@ -87,9 +87,10 @@ outputs:
     -z                  Compress the assemblies before embedding.\n--static-ctor ctor\
     \  Add a constructor call to the supplied function.\nYou need zlib development\
     \ headers and libraries.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_custom)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mkbundle

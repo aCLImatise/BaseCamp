@@ -3,12 +3,12 @@ id: referenceseeker_db_init.cwl
 inputs:
 - id: in_output
   doc: output directory (default = current working directory)
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 - id: in_db
   doc: Name of the new ReferenceSeeker database
-  type: string
+  type: string?
   inputBinding:
     prefix: --db
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: output directory (default = current working directory)
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - referenceseeker_db

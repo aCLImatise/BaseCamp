@@ -58,6 +58,9 @@ task DRAMsetuppyPrepareDatabases {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "output directory (default: .)"
     kegg_loc: "KEGG protein file, should be a single .pep, please\\nmerge all KEGG pep files (default: None)"

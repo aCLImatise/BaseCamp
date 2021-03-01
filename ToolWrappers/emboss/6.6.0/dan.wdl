@@ -22,6 +22,9 @@ task Dan {
       ~{if (rna) then "-rna" else ""} \
       ~{if (plot) then "-plot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window_size: "integer    [20] The values of melting point and other\\nthermodynamic properties of the sequence are\\ndetermined by taking a short length of\\nsequence known as a window and determining\\nthe properties of the sequence in that\\nwindow. The window is incrementally moved\\nalong the sequence with the properties being\\ncalculated at each new position. (Integer\\nfrom 1 to 100)"
     shift_increment: "integer    [1] This is the amount by which the window\\nis moved at each increment in order to find\\nthe melting point and other properties along\\nthe sequence. (Integer 1 or more)"

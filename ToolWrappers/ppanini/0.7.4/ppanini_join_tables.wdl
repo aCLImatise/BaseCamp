@@ -24,6 +24,9 @@ task PpaniniJoinTables {
       ~{if (resume) then "--resume" else ""} \
       ~{if defined(scale) then ("--scale " +  '"' + scale + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "additional output is printed"
     the_directory_tables: "the directory of tables"

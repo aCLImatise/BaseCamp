@@ -12,6 +12,9 @@ task PvacseqCoverageFilterInputFile {
       ~{coverage_filter} \
       ~{if defined(normal_cov) then ("--normal-cov " +  '"' + normal_cov + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     normal_cov: ""
     pvac_seq: ""

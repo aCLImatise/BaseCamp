@@ -12,6 +12,9 @@ task PoretoolsMetadata {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (read) then "--read" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     read: "Report read level metadata"

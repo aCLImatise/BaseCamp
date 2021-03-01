@@ -26,6 +26,9 @@ task AmptkUnoise3 {
       ~{if (cpus) then "--cpus" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "Input FASTQ file (Required)"
     out: "Output base name. Default: out"

@@ -6,7 +6,7 @@ inputs:
     If --UMI & --uniqueTags are both used then UMI tags takes precedence if it exists\n\
     on the header. If not found we look for the unique tags. This allows some degree\
     \ of\nmixing source of UMI."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --UMI
 - id: in_sorted_dot
@@ -19,6 +19,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - novosort

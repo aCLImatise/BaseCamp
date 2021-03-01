@@ -3,12 +3,12 @@ id: ktGetTaxIDFromAcc.cwl
 inputs:
 - id: in_prepend_tax_ids
   doc: Prepend tax IDs to the original lines (separated by tabs).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_append_tax_ids
   doc: Append tax IDs to the original lines (separated by tabs).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_a_zero_zero_zero_zero_one_dot_one
@@ -28,7 +28,7 @@ inputs:
     position: 0
 - id: in_acc_two
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     position: 0
 - id: in_grep
@@ -55,6 +55,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ktGetTaxIDFromAcc

@@ -4,6 +4,9 @@ task Bamfiltermc {
   command <<<
     bamfiltermc
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

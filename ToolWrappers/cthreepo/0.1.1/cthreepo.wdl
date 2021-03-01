@@ -26,6 +26,9 @@ task Cthreepo {
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(column) then ("--column " +  '"' + column + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "input file"
     outfile: "output file"

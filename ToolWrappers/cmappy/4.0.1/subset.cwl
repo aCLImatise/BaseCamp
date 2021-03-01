@@ -3,7 +3,7 @@ id: subset.cwl
 inputs:
 - id: in_in_path
   doc: 'file path to input GCT(x) file (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --in_path
 - id: in_rid
@@ -28,17 +28,17 @@ inputs:
     prefix: --exclude_cid
 - id: in_out_name
   doc: "what to name the output file (default:\nds_subsetted.gct)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --out_name
 - id: in_out_type
   doc: 'whether to write output as GCT or GCTx (default: gct)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --out_type
 - id: in_verbose
   doc: "whether to increase the # of messages reported\n(default: False)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 outputs:
@@ -47,9 +47,10 @@ outputs:
   type: stdout
 - id: out_out_name
   doc: "what to name the output file (default:\nds_subsetted.gct)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_name)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - subset

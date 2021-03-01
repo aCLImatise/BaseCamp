@@ -26,6 +26,9 @@ task FetchOrfspy {
       ~{if (from_met) then "--from-met" else ""} \
       ~{if (from_met_keep) then "--from-met-keep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads_run_default: "Threads to run (default: 1)"
     fasta_file_operate: "[FASTA], --fasta [FASTA]\\nThe fasta file to operate on. (default: None)"

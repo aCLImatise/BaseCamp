@@ -14,6 +14,9 @@ task TaxonomyUtilCommonAncestorDistance {
       ~{if (only_canonical) then "--only_canonical" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     only_canonical: "Only consider canonical taxonomic ranks"
     db: ""

@@ -10,8 +10,11 @@ task HcaAuthPutv1groupuser {
       ~{if defined(group_id) then ("--group-id " +  '"' + group_id + '"') else ""} \
       ~{if defined(users) then ("--users " +  '"' + users + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    group_id: "The name of the group.\\n--action ACTION\\n"
+    group_id: "The name of the group."
     users: ""
   }
   output {

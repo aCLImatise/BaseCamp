@@ -3,32 +3,32 @@ id: nibFrag.cwl
 inputs:
 - id: in_masked
   doc: Use lower-case characters for bases meant to be masked out.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -masked
 - id: in_hard_masked
   doc: Use upper-case for not masked-out, and 'N' characters for masked-out bases.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -hardMasked
 - id: in_upper
   doc: Use upper-case characters for all bases.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -upper
 - id: in_name
   doc: Use given name after '>' in output sequence.
-  type: string
+  type: string?
   inputBinding:
     prefix: -name
 - id: in_db_header
   doc: Add full database info to the header, with or without -name option.
-  type: string
+  type: string?
   inputBinding:
     prefix: -dbHeader
 - id: in_tba_header
   doc: Format header for compatibility with tba, takes database name as argument.
-  type: string
+  type: string?
   inputBinding:
     prefix: -tbaHeader
 - id: in_file_dot_nib
@@ -55,6 +55,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nibFrag

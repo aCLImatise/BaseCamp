@@ -12,6 +12,9 @@ task Varda2clientSample {
       ~{if defined(disease_code) then ("--disease-code " +  '"' + disease_code + '"') else ""} \
       ~{if defined(lab_sample_id) then ("--lab-sample-id " +  '"' + lab_sample_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     uuid: "Sample UUID"
     disease_code: "Disease indication code"

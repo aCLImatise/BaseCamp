@@ -114,6 +114,9 @@ task Trimal {
       ~{if (sft) then "-sft" else ""} \
       ~{if (sident) then "-sident" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input file in several formats (clustal, fasta, NBRF/PIR, nexus, phylip3.2, phylip)."
     compare_set: "Input list of paths for the files containing the alignments to compare."

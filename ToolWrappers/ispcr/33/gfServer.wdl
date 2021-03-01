@@ -38,6 +38,9 @@ task GfServer {
       ~{if defined(max_as_size) then ("-maxAsSize " +  '"' + max_as_size + '"') else ""} \
       ~{if defined(can_stop) then ("-canStop " +  '"' + can_stop + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tile_size: "size of n-mers to index.  Default is 11 for nucleotides, 4 for\\nproteins (or translated nucleotides)."
     step_size: "spacing between tiles. Default is tileSize."

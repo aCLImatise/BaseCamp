@@ -3,48 +3,48 @@ id: hmmalign2.cwl
 inputs:
 - id: in_only_print_symbols
   doc: ': only print symbols aligned to match states'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
 - id: in_save_alignment_file
   doc: ': save alignment in file <f>'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_quiet_suppress_verbose
   doc: ': quiet - suppress verbose banner'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
 - id: in_in_format
   doc: ': sequence file is in format <s>'
-  type: File
+  type: File?
   inputBinding:
     prefix: --informat
 - id: in_map_ali
   doc: ': include alignment in file <f> using map in HMM'
-  type: File
+  type: File?
   inputBinding:
     prefix: --mapali
 - id: in_one_line
   doc: ': output Stockholm fmt with 1 line/seq, not interleaved'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --oneline
 - id: in_out_format
   doc: ": output alignment in format <s> [default: Stockholm]\nformats include: MSF,\
     \ Clustal, Phylip, SELEX"
-  type: string
+  type: string?
   inputBinding:
     prefix: --outformat
 - id: in_with_ali
   doc: ': include alignment to (fixed) alignment in file <f>'
-  type: File
+  type: File?
   inputBinding:
     prefix: --withali
 - id: in_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -options
 - id: in_hmm_align
@@ -66,6 +66,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hmmalign2

@@ -22,6 +22,9 @@ task GreppyOut {
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     q: ""
     f: ""

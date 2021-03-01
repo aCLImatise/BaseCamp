@@ -44,6 +44,9 @@ task CsvtkSplitxlsx {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fields: "comma separated key fields, column name or index. e.g. -f 1-3 or -f id,id2 or -F -f \\\"group*\\\" (default \\\"1\\\")"
     fuzzy_fields: "using fuzzy fields, e.g., -F -f \\\"*name\\\" or -F -f \\\"id123*\\\""

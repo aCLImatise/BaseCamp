@@ -30,6 +30,9 @@ task IgdiscoverDiscoverjd {
       ~{if defined(d_core) then ("--d-core " +  '"' + d_core + '"') else ""} \
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: "FASTA file with reference gene sequences"
     merge: "Merge overlapping genes. Default: Enabled for D,\\ndisabled for J and V."

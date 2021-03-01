@@ -22,6 +22,9 @@ task VsnpMergeVcfIntoFastapy {
       ~{if (ambiguity_not) then "--ambiguity_NOT" else ""} \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_file: "REQUIRED: In file to be processed"
     vcf_file: "REQUIRED: In file to be processed"

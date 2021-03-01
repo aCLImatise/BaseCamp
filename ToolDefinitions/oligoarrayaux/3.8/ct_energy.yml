@@ -3,21 +3,55 @@ command:
 - ct-energy
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "--simple\n--Vienna\n--coaxial"
-  synonyms:
-  - --nodangle
-  args: !EmptyFlagArg {}
   optional: true
+  synonyms:
+  - -t
+  - --temperature
+  description: (defaults to 37)
+  args: !SimpleFlagArg
+    name: temperature
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --suffix
+  description: (overrides temperature)
+  args: !SimpleFlagArg
+    name: energy suffix
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --sodium
+  description: =<[Na+] in M> (defaults to 1)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --magnesium
+  description: =<[Mg++] in M> (defaults to 0)
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  - -h
+  - --help
+  - -n
+  - --NA
+  description: =(RNA | DNA) (defaults to RNA)
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: ct-energy [OPTION] [FILE]...\n\nOptions:\n-V, --version\n-h, --help\n\
@@ -28,3 +62,4 @@ help_text: "Usage: ct-energy [OPTION] [FILE]...\n\nOptions:\n-V, --version\n-h, 
   \    --Vienna\n    --coaxial\n\nReport bugs to markhn@rpi.edu\n"
 generated_using:
 - --help
+docker_image:

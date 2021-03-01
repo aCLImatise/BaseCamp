@@ -16,6 +16,9 @@ task TripailleExpressionSyncBiomaterials {
       ~{if defined(job_name) then ("--job_name " +  '"' + job_name + '"') else ""} \
       ~{if (no_wait) then "--no_wait" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ids: "JSON list of ids of biomaterials to be synced (default:\\nall)  [default: []]"
     max_sync: "Maximum number of features to sync (default: all)"

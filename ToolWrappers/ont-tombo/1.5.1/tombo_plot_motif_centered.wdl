@@ -2,9 +2,9 @@ version 1.0
 
 task TomboPlotMotifCentered {
   input {
-    Int? genome_fast_a
     Array[Int] fast_five_based_irs
     String? motif
+    File? genome_fast_a
     Array[Int] control_fast_five_based_irs
     Boolean? plot_standard_model
     String? plot_alternate_model
@@ -20,9 +20,9 @@ task TomboPlotMotifCentered {
   }
   command <<<
     tombo plot motif_centered \
-      ~{if defined(genome_fast_a) then ("--genome-fasta " +  '"' + genome_fast_a + '"') else ""} \
       ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
       ~{if defined(motif) then ("--motif " +  '"' + motif + '"') else ""} \
+      ~{if defined(genome_fast_a) then ("--genome-fasta " +  '"' + genome_fast_a + '"') else ""} \
       ~{if defined(control_fast_five_based_irs) then ("--control-fast5-basedirs " +  '"' + control_fast_five_based_irs + '"') else ""} \
       ~{if (plot_standard_model) then "--plot-standard-model" else ""} \
       ~{if defined(plot_alternate_model) then ("--plot-alternate-model " +  '"' + plot_alternate_model + '"') else ""} \
@@ -36,10 +36,13 @@ task TomboPlotMotifCentered {
       ~{if defined(base_call_subgroups) then ("--basecall-subgroups " +  '"' + base_call_subgroups + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    genome_fast_a: "[--control-fast5-basedirs CONTROL_FAST5_BASEDIRS [CONTROL_FAST5_BASEDIRS ...]]\\n[--plot-standard-model]\\n[--plot-alternate-model {dam,CpG,5mC,dcm,6mA}]\\n[--overplot-threshold OVERPLOT_THRESHOLD]\\n[--overplot-type {Downsample,Boxplot,Quantile,Density}]\\n[--num-regions NUM_REGIONS]\\n[--num-bases NUM_BASES] [--deepest-coverage]\\n[--pdf-filename PDF_FILENAME]\\n[--corrected-group CORRECTED_GROUP]\\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\\n[--quiet] [--help]"
     fast_five_based_irs: "Directories containing fast5 files."
     motif: "Motif of interest at which to plot signal and\\nstatsitics. Supports IUPAC single letter codes (use T\\nfor RNA)."
+    genome_fast_a: "FASTA file used to re-squiggle. For faster sequence\\naccess."
     control_fast_five_based_irs: "Set of directories containing fast5 files for control\\nreads, containing only canonical nucleotides."
     plot_standard_model: "Add default standard model distribution to the plot."
     plot_alternate_model: "Add alternative model distribution to the plot."

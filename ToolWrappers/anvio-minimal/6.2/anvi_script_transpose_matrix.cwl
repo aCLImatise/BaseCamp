@@ -3,7 +3,7 @@ id: anvi_script_transpose_matrix.cwl
 inputs:
 - id: in_output_file
   doc: "File path to store results.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file
 - id: in_matrix_file
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: "File path to store results.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-script-transpose-matrix

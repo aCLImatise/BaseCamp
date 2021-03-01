@@ -12,6 +12,9 @@ task RiboConfig {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "output directory; default: /"
     name: "name of config file; default: timestamped"

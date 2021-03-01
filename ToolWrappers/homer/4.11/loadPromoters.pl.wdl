@@ -36,6 +36,9 @@ task LoadPromoterspl {
       ~{if defined(fast_a) then ("-fasta " +  '"' + fast_a + '"') else ""} \
       ~{if (offset) then "-offset" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "(used to refer to it later with findMotifs.pl)"
     org: "(Name of organism, ok to set to 'null' if not in HOMER)"

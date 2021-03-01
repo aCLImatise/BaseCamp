@@ -11,7 +11,7 @@ task VisualizePdbpy {
     Boolean? loops
     String? chain
     String? distance
-    String? create_picture_scene
+    String? create_picture_exit
     String? only_elements
     Boolean? virtual_atoms
   }
@@ -26,10 +26,13 @@ task VisualizePdbpy {
       ~{if (loops) then "--loops" else ""} \
       ~{if defined(chain) then ("--chain " +  '"' + chain + '"') else ""} \
       ~{if defined(distance) then ("--distance " +  '"' + distance + '"') else ""} \
-      ~{if defined(create_picture_scene) then ("--output " +  '"' + create_picture_scene + '"') else ""} \
+      ~{if defined(create_picture_exit) then ("--output " +  '"' + create_picture_exit + '"') else ""} \
       ~{if defined(only_elements) then ("--only-elements " +  '"' + only_elements + '"') else ""} \
       ~{if (virtual_atoms) then "--virtual-atoms" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     secondary_structure: "Enter a dot-bracket string for the\\nsecondary structure of this model"
     text: "Add labels to the figure."
@@ -40,7 +43,7 @@ task VisualizePdbpy {
     loops: "Don't display the coarse-grain hairpin loops"
     chain: "DWhat chain you like to display."
     distance: "Draw the lines between specified virtual residues"
-    create_picture_scene: "Create a picture of the scene and exit"
+    create_picture_exit: "Create a picture of the scene and exit"
     only_elements: "Display only these elements element names should be\\nseparated by commas"
     virtual_atoms: "Display the virtual atoms"
   }

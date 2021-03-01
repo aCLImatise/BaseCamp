@@ -4,6 +4,9 @@ task Libtimsdataso {
   command <<<
     libtimsdata_so
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

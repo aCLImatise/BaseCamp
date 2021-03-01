@@ -12,6 +12,9 @@ task ScgDistributions {
       ~{cell} \
       ~{genotype_r}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     single: ""
     cell: ""

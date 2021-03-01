@@ -1,0 +1,942 @@
+&id001 !Command
+command:
+- pore_c
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbosity
+  description: Increase level of logging information, eg.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -vvv
+  - --quiet
+  description: 'Turn off all logging  [default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dask-num-workers
+  description: Number of dask workers
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --dask-use-threads
+  description: Use threads instead of processes
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dask-threads-per-worker
+  description: Number of threads per worker
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --dask-scheduler-port
+  description: "The port to use for the dask scheduler, set\nto 0 to use a random\
+    \ port"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --dask-dashboard-port
+  description: "The port to use for the dask dashboard, set\nto 0 to use a random\
+    \ port"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --dask-disable-dashboard
+  description: Disable the dask dashboard
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- &id002 !Command
+  command:
+  - pore_c
+  - utils
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - pore_c
+    - utils
+    - COMMAND
+    positional:
+    - !Positional
+      optional: true
+      position: 0
+      name: ARGS
+      description: ''
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c utils [OPTIONS] COMMAND [ARGS]...\nTry \"pore_c utils\
+      \ --help\" for help.\n\nError: No such command \"COMMAND\".\n"
+    generated_using: &id003
+    - --help
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  - !Command
+    command:
+    - pore_c
+    - utils
+    - ARGS
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: pore_c
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: utils
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: COMMAND
+      description: ''
+    - !Positional
+      optional: true
+      position: 3
+      name: ARGS
+      description: ''
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c utils [OPTIONS] COMMAND [ARGS]...\nTry \"pore_c utils\
+      \ --help\" for help.\n\nError: No such command \"ARGS\".\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pore_c utils [OPTIONS] COMMAND [ARGS]...\nTry \"pore_c utils\
+    \ --help\" for help.\n\nError: no such option: -h\n"
+  generated_using: &id008
+  - -h
+  docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+- &id004 !Command
+  command:
+  - pore_c
+  - contacts
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - pore_c
+    - contacts
+    - summarize
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: CONTACT_TABLE
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: READ_SUMMARY_TABLE
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --user-metadata
+      description: "Add additional user metadata to the summary table,\nmust be a\
+        \ dictionary in json format"
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c contacts summarize [OPTIONS] CONTACT_TABLE READ_SUMMARY_TABLE\n\
+      \                                 CONCATEMER_TABLE CONCATEMER_SUMMARY_CSV\n\n\
+      Options:\n  --user-metadata TEXT  Add additional user metadata to the summary\
+      \ table,\n                        must be a dictionary in json format\n  --help\
+      \                Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  - !Command
+    command:
+    - pore_c
+    - contacts
+    - downsample
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: DEST_CONTACT_TABLE_PREFIX
+      description: '[DOWNSAMPLE_INCREMENTS]...'
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --random-seed
+      - --tol
+      description: "Check if the difference between the sampled\namout and the target\
+        \ amount is greater than\nthis proportion"
+      args: !SimpleFlagArg
+        name: INTEGER
+    - !Flag
+      optional: true
+      synonyms:
+      - --warn
+      description: "If the a sample fails the --tol check print a\nwarning rather\
+        \ than exiting"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --max-attempts
+      description: "The number of times to try and find a set of\nsubsamples all within\
+        \ --tol"
+      args: !SimpleFlagArg
+        name: INTEGER
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c contacts downsample [OPTIONS] SRC_CONTACT_TABLE\n  \
+      \                                DEST_CONTACT_TABLE_PREFIX\n               \
+      \                   [DOWNSAMPLE_INCREMENTS]...\n\nOptions:\n  --downsample-unit\
+      \ [Gb|Mb|Kb]\n  --random-seed INTEGER\n  --tol FLOAT                   Check\
+      \ if the difference between the sampled\n                                amout\
+      \ and the target amount is greater than\n                                this\
+      \ proportion\n  --warn                        If the a sample fails the --tol\
+      \ check print a\n                                warning rather than exiting\n\
+      \  --max-attempts INTEGER        The number of times to try and find a set of\n\
+      \                                subsamples all within --tol\n  --help     \
+      \                   Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  - !Command
+    command:
+    - pore_c
+    - contacts
+    - merge
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: DEST_CONTACT_TABLE
+      description: 'Options:'
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --fofn
+      description: "If this flag is set then the SRC_CONTACT_TABLES is a file of\n\
+        filenames corresponding to the contact tables you want to merge.\nThis is\
+        \ workaround for when the command line gets too long."
+      args: !EmptyFlagArg {}
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c contacts merge [OPTIONS] [SRC_CONTACT_TABLES]...\n \
+      \                            DEST_CONTACT_TABLE\n\nOptions:\n  --fofn  If this\
+      \ flag is set then the SRC_CONTACT_TABLES is a file of\n          filenames\
+      \ corresponding to the contact tables you want to merge.\n          This is\
+      \ workaround for when the command line gets too long.\n  --help  Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  - !Command
+    command:
+    - pore_c
+    - contacts
+    - export
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: CONTACT_TABLE
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --min-mapping-quality
+      description: "Both alignments have mapping qualities\ngreater than this  [default:\
+        \ 0]"
+      args: !SimpleFlagArg
+        name: INTEGER
+    - !Flag
+      optional: true
+      synonyms:
+      - --min-align-base-qscore
+      description: "Both alignments have mean base qualities\ngreater than this  [default:\
+        \ 0]"
+      args: !SimpleFlagArg
+        name: INTEGER
+    - !Flag
+      optional: true
+      synonyms:
+      - --cooler-resolution
+      description: "The bin width of the resulting matrix\n[default: 1000]"
+      args: !SimpleFlagArg
+        name: INTEGER
+    - !Flag
+      optional: true
+      synonyms:
+      - --fragment-table
+      description: "The fragment table for the corresponding\nvirtual digest(required\
+        \ if export format is\nin cooler)"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --by-haplotype
+      description: "Create a cooler for each pair of haplotypes\n(eg 1-1, 1-2, 2-2,...).\
+        \ Only valid with\n'cooler'"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --chromsizes
+      description: "The chromsizes file for the corresponding\ngenome(required if\
+        \ export format is in\ncooler,pairs)"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --reference-fasta
+      description: "The reference genome used to generate the\ncontact table(required\
+        \ if export format is\nin paired_end_fastq,merged_no_dups)"
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c contacts export [OPTIONS] CONTACT_TABLE [cooler|salsa_bed|paired\n\
+      \                              _end_fastq|pairs|merged_no_dups] OUTPUT_PREFIX\n\
+      \n  Export contacts to the following formats:\n\n   - cooler: a sparse representation\
+      \ of a contact matrix  -\n   paired_end_fastq: for each contact create a pseudo\
+      \ pair-end read using\n   the reference genome sequence\n\nOptions:\n  --min-mapping-quality\
+      \ INTEGER   Both alignments have mapping qualities\n                       \
+      \           greater than this  [default: 0]\n  --min-align-base-qscore INTEGER\n\
+      \                                  Both alignments have mean base qualities\n\
+      \                                  greater than this  [default: 0]\n  --cooler-resolution\
+      \ INTEGER     The bin width of the resulting matrix\n                      \
+      \            [default: 1000]\n  --fragment-table TEXT           The fragment\
+      \ table for the corresponding\n                                  virtual digest(required\
+      \ if export format is\n                                  in cooler)\n  --by-haplotype\
+      \                  Create a cooler for each pair of haplotypes\n           \
+      \                       (eg 1-1, 1-2, 2-2,...). Only valid with\n          \
+      \                        'cooler'\n  --chromsizes TEXT               The chromsizes\
+      \ file for the corresponding\n                                  genome(required\
+      \ if export format is in\n                                  cooler,pairs)\n\
+      \  --reference-fasta TEXT          The reference genome used to generate the\n\
+      \                                  contact table(required if export format is\n\
+      \                                  in paired_end_fastq,merged_no_dups)\n  --help\
+      \                          Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pore_c contacts [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --help\
+    \  Show this message and exit.\n\nCommands:\n  merge       Summarise a contact\
+    \ table\n  downsample  Downsample a contact table\n  summarize   Summarise a contact\
+    \ table\n  export      Export contacts to various formats\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+- &id005 !Command
+  command:
+  - pore_c
+  - alignments
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - pore_c
+    - alignments
+    - assign-consensus-haplotype
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: OUTPUT_PORE_C_TABLE
+      description: Calculate a per-read consensus haplotype for each phase_set in
+        ALIGN_TABLE
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --threshold
+      description: "major:minor haplotype fraction must be greater than this\nvalue\
+        \ to assign a consensus  [default: 0.8]"
+      args: !SimpleFlagArg
+        name: FLOAT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c alignments assign-consensus-haplotype [OPTIONS] PORE_C_TABLE\n\
+      \                                                    OUTPUT_PORE_C_TABLE\n\n\
+      \  Calculate a per-read consensus haplotype for each phase_set in ALIGN_TABLE\n\
+      \  and write the results back to OUTPUT_ALIGN_TABLE\n\nOptions:\n  --threshold\
+      \ FLOAT  major:minor haplotype fraction must be greater than this\n        \
+      \             value to assign a consensus  [default: 0.8]\n  --help        \
+      \     Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  - !Command
+    command:
+    - pore_c
+    - alignments
+    - create-table
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: analysis
+      description: 'Options:'
+    - !Positional
+      optional: false
+      position: 1
+      name: whatshap
+      description: --help                       Show this message and exit.
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --alignment-haplotypes
+      description: The alignment to haplotype mapping from
+      args: !SimpleFlagArg
+        name: PATH
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c alignments create-table [OPTIONS] INPUT_BAM OUTPUT_TABLE\n\
+      \n  Convert a BAM file to a tabular format sorted by read for downstream\n \
+      \ analysis\n\nOptions:\n  --alignment-haplotypes PATH  The alignment to haplotype\
+      \ mapping from\n                               whatshap\n  --help          \
+      \             Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  - !Command
+    command:
+    - pore_c
+    - alignments
+    - to-contacts
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: PORE_C_TABLE
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: CONTACT_TABLE
+      description: ''
+    named: []
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c alignments to-contacts [OPTIONS] PORE_C_TABLE CONTACT_TABLE\n\
+      \n  Covert the alignment table to a pairwise contact table and associated\n\
+      \  concatemer table\n\nOptions:\n  --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  - !Command
+    command:
+    - pore_c
+    - alignments
+    - assign-fragments
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: ALIGN_TABLE
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --mapping_quality_cutoff
+      description: "Minimum mapping quality for an alignment to\nbe considered  [default:\
+        \ 1]"
+      args: !SimpleFlagArg
+        name: INTEGER
+    - !Flag
+      optional: true
+      synonyms:
+      - --min_overlap_length
+      description: "Minimum overlap in base pairs between an\nalignment and restriction\
+        \ fragment\n[default: 10]"
+      args: !SimpleFlagArg
+        name: INTEGER
+    - !Flag
+      optional: true
+      synonyms:
+      - --containment_cutoff
+      description: "Minimum percentage of a fragment included in\nan overlap for that\
+        \ fragment to be\nconsidered 'contained' within an alignment\n[default: 99.0]"
+      args: !SimpleFlagArg
+        name: FLOAT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c alignments assign-fragments [OPTIONS] ALIGN_TABLE\n\
+      \                                          FRAGMENTS_TABLE PORE_C_TABLE\n\n\
+      \  For each alignment in ALIGN_TABLE either filter out or assign a fragment\n\
+      \  from FRAGMENT_TABLE\n\nOptions:\n  --mapping_quality_cutoff INTEGER\n   \
+      \                               Minimum mapping quality for an alignment to\n\
+      \                                  be considered  [default: 1]\n  --min_overlap_length\
+      \ INTEGER    Minimum overlap in base pairs between an\n                    \
+      \              alignment and restriction fragment\n                        \
+      \          [default: 10]\n  --containment_cutoff FLOAT      Minimum percentage\
+      \ of a fragment included in\n                                  an overlap for\
+      \ that fragment to be\n                                  considered 'contained'\
+      \ within an alignment\n                                  [default: 99.0]\n \
+      \ --help                          Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  - !Command
+    command:
+    - pore_c
+    - alignments
+    - reformat-bam
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: INPUT_SAM
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: OUTPUT_SAM
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --input-is-bam
+      description: "If piping a BAM from stdin (rather than sam)  [default:\nFalse]"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --output-is-bam
+      description: "If piping a BAM to stdout (rather than sam)  [default:\nFalse]"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --set-bx-flag
+      description: 'Set the BX tag to the read name  [default: False]'
+      args: !EmptyFlagArg {}
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c alignments reformat-bam [OPTIONS] INPUT_SAM OUTPUT_SAM\n\
+      \n  Reformat query_name in INPUT_SAM  and write to OUTPUT_SAM\n\n  This tool\
+      \ reformats an alignment file so that it works with downstream\n  steps in the\
+      \ Pore-C pipeline. For both files you can supply '-' if you\n  want to read/write\
+      \ from/to stdin/stdout. The 'query_name' field of the\n  alignment file will\
+      \ be reformatted so that each alignment in the SAM file\n  has a unique query\
+      \ name:\n\n      <read_id> -> <read_id>:<read_idx>:<align_idx>\n\n  Where 'read_idx'\
+      \ is a unique integer id for each read within the file and\n  'align_idx' is\
+      \ a unique integer id for each alignment within the file. The\n  tool also adds\
+      \ a 'BX' tag consisting of the 'read_id' to each record.\n\nOptions:\n  --input-is-bam\
+      \   If piping a BAM from stdin (rather than sam)  [default:\n              \
+      \     False]\n  --output-is-bam  If piping a BAM to stdout (rather than sam)\
+      \  [default:\n                   False]\n  --set-bx-flag    Set the BX tag to\
+      \ the read name  [default: False]\n  --help           Show this message and\
+      \ exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pore_c alignments [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n \
+    \ --help  Show this message and exit.\n\nCommands:\n  reformat-bam           \
+    \     Reformat a BAM file to have a unique read name\n                       \
+    \       per alignment\n  create-table                Parse a namesortd bam to\
+    \ pore-C alignment format\n  assign-fragments            Parse a namesortd bam\
+    \ to pore-C alignment format\n  assign-consensus-haplotype  Parse a namesortd\
+    \ bam to pore-C alignment format\n  to-contacts                 Parses the alignment\
+    \ table and converts to\n                              pairwise contacts\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+- &id006 !Command
+  command:
+  - pore_c
+  - refgenome
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - pore_c
+    - refgenome
+    - prepare
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: REFERENCE_FASTA
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: OUTPUT_PREFIX
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --genome-id
+      description: An ID for this genome assembly
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c refgenome prepare [OPTIONS] REFERENCE_FASTA OUTPUT_PREFIX\n\
+      \n  Pre-process a reference genome for use by pore-C tools.\n\n  Prepare a reference\
+      \ genome or draft assembly use by pore-c tools. This\n  tool creates the following\
+      \ files: \b     <output_prefix>.fa - A\n  decompressed fasta file     <output_prefix>.chromsizes\
+      \ - A tab-separated\n  list of chromosome lengths     <output_prefix>.metadata.csv\
+      \ - A csv with\n  metadata about each of     <output_prefix>.catalog.yaml -\
+      \ An intake\n  catalog of these files\n\nOptions:\n  --genome-id TEXT  An ID\
+      \ for this genome assembly\n  --help            Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  - !Command
+    command:
+    - pore_c
+    - refgenome
+    - fragments-to-hicref
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: FRAGMENTS_PARQUET
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: HICREF
+      description: ''
+    named: []
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c refgenome fragments-to-hicref [OPTIONS] FRAGMENTS_PARQUET\
+      \ HICREF\n\n  Convert a  *.fragments.parquet file to hicRef format\n\nOptions:\n\
+      \  --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  - !Command
+    command:
+    - pore_c
+    - refgenome
+    - virtual-digest
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: FASTA
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: CUT_ON
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: OUTPUT_PREFIX
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --digest-type
+      description: "[enzyme|regex|bin]\nThe type of digest you want to do"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -n
+      - --n_workers
+      description: "The number of dask_workers to use  [default:\n1]"
+      args: !SimpleFlagArg
+        name: INTEGER
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c refgenome virtual-digest [OPTIONS] FASTA CUT_ON OUTPUT_PREFIX\n\
+      \n  Carry out a virtual digestion of the genome/assembly FASTA.\n\n  The DIGEST_TYPE\
+      \ sets what type of value you can use for CUT_ON.\n\n      ---------------------------------------------------------------------\n\
+      \      | digest_type |  cut_on           | notes                           |\n\
+      \      ---------------------------------------------------------------------\n\
+      \      | enzyme      | NlaIII            | Enzyme name is case sensitive   |\n\
+      \      | enzyme      | HindIII           |                                 |\n\
+      \      | regex       | (GAATTC|GCGGCCGC) | Two site EcoRI and NotI         |\n\
+      \      | regex       | RAATY             | Degenerate site ApoI            |\n\
+      \      | bin         | 50000             | Create equal-width bins of 50k  |\n\
+      \      | bin         | 50k               | Create equal-width bins of 50k  |\n\
+      \      =====================================================================\n\
+      \n  This tool will create the following output files:\n\n      <output_prefix>.fragments.parquet\n\
+      \n        A table containing the coordinates and some metadata on each\n   \
+      \     fragment\n\n      <output_prefix>.digest_stats.csv\n\n        Per chromosome/contig\
+      \ summary statistics\n\n      <output_prefix>.catalog.yaml\n\n        An intake\
+      \ catalog of the digest files\n\nOptions:\n  --digest-type [enzyme|regex|bin]\n\
+      \                                  The type of digest you want to do\n  -n,\
+      \ --n_workers INTEGER         The number of dask_workers to use  [default:\n\
+      \                                  1]\n  --help                          Show\
+      \ this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pore_c refgenome [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --help\
+    \  Show this message and exit.\n\nCommands:\n  prepare              Pre-process\
+    \ a reference genome\n  virtual-digest       Virtual digest of a reference genome.\n\
+    \  fragments-to-hicref  Create a hicRef file for a virtual digest.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+- &id007 !Command
+  command:
+  - pore_c
+  - reads
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - pore_c
+    - reads
+    - COMMAND
+    positional:
+    - !Positional
+      optional: true
+      position: 0
+      name: ARGS
+      description: ''
+    named: []
+    parent: *id007
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c reads [OPTIONS] COMMAND [ARGS]...\nTry \"pore_c reads\
+      \ --help\" for help.\n\nError: No such command \"COMMAND\".\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  - !Command
+    command:
+    - pore_c
+    - reads
+    - ARGS
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: pore_c
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: reads
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: COMMAND
+      description: ''
+    - !Positional
+      optional: true
+      position: 3
+      name: ARGS
+      description: ''
+    named: []
+    parent: *id007
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pore_c reads [OPTIONS] COMMAND [ARGS]...\nTry \"pore_c reads\
+      \ --help\" for help.\n\nError: No such command \"ARGS\".\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pore_c reads [OPTIONS] COMMAND [ARGS]...\nTry \"pore_c reads\
+    \ --help\" for help.\n\nError: no such option: -h\n"
+  generated_using: *id008
+  docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: pore_c [OPTIONS] COMMAND [ARGS]...\n\n  Pore-C tools\n\n  A suite\
+  \ of tools designed to analyse Oxford Nanopore reads with multiway\n  chromatin\
+  \ contacts.\n\nOptions:\n  -v, --verbosity                 Increase level of logging\
+  \ information, eg.\n                                  -vvv\n  --quiet          \
+  \               Turn off all logging  [default: False]\n  --dask-num-workers INTEGER\
+  \      Number of dask workers\n  --dask-use-threads              Use threads instead\
+  \ of processes\n  --dask-threads-per-worker INTEGER\n                          \
+  \        Number of threads per worker\n  --dask-scheduler-port INTEGER   The port\
+  \ to use for the dask scheduler, set\n                                  to 0 to\
+  \ use a random port\n  --dask-dashboard-port INTEGER   The port to use for the dask\
+  \ dashboard, set\n                                  to 0 to use a random port\n\
+  \  --dask-disable-dashboard        Disable the dask dashboard\n  --help        \
+  \                  Show this message and exit.\n\nCommands:\n  refgenome   Pre-process\
+  \ reference genome files.\n  reads       Analyse raw reads\n  alignments  Analyse\
+  \ aligned pore_c reads\n  contacts    Work the the contacts table\n  utils     \
+  \  Misc tools\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0

@@ -1,0 +1,170 @@
+!Command
+command:
+- pypgatk_cli.py
+- generate-decoy
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config_file
+  description: "Configuration file for the protein database\ndecoy generation"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_database
+  description: Output file for decoy database
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input_database
+  description: "FASTA file of target proteins sequences for\nwhich to create decoys\
+    \ (*.fasta|*.fa)"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --cleavage_sites
+  description: "A list of amino acids at which to cleave\nduring digestion. Default\
+    \ = KR"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --anti_cleavage_sites
+  description: "A list of amino acids at which not to cleave\nif following cleavage\
+    \ site ie. Proline.\nDefault = none"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --cleavage_position
+  description: "Set cleavage to be c or n terminal of\nspecified cleavage sites. Options\
+    \ [c, n],\nDefault = c"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --min_peptide_length
+  description: "Set minimum length of peptides to compare\nbetween target and decoy.\
+    \ Default = 5"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --max_iterations
+  description: "Set maximum number of times to shuffle a\npeptide to make it non-target\
+    \ before\nfailing. Default=100"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --do_not_shuffle
+  description: "Turn OFF shuffling of decoy peptides that\nare in the target database.\
+    \ Default=false"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --do_not_switch
+  description: "Turn OFF switching of cleavage site with\npreceding amino acid. Default=false"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --decoy_prefix
+  description: "Set accession prefix for decoy proteins in\noutput. Default=DECOY_"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --temp_file
+  description: "Set temporary file to write decoys prior to\nshuffling. Default=protein-decoy.fa"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --no_isobaric
+  description: "Do not make decoy peptides isobaric.\nDefault=false"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --memory_save
+  description: "Slower but uses less memory (does not store\ndecoy peptide list).\
+    \ Default=false"
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: pypgatk_cli.py generate-decoy [OPTIONS]\n\nOptions:\n  -c, --config_file\
+  \ TEXT          Configuration file for the protein database\n                  \
+  \                decoy generation\n\n  -o, --output_database TEXT      Output file\
+  \ for decoy database\n  -i, --input_database TEXT       FASTA file of target proteins\
+  \ sequences for\n                                  which to create decoys (*.fasta|*.fa)\n\
+  \n  -s, --cleavage_sites TEXT       A list of amino acids at which to cleave\n \
+  \                                 during digestion. Default = KR\n\n  -a, --anti_cleavage_sites\
+  \ TEXT  A list of amino acids at which not to cleave\n                         \
+  \         if following cleavage site ie. Proline.\n                            \
+  \      Default = none\n\n  -p, --cleavage_position TEXT    Set cleavage to be c\
+  \ or n terminal of\n                                  specified cleavage sites.\
+  \ Options [c, n],\n                                  Default = c\n\n  -l, --min_peptide_length\
+  \ INTEGER\n                                  Set minimum length of peptides to compare\n\
+  \                                  between target and decoy. Default = 5\n\n  -n,\
+  \ --max_iterations INTEGER    Set maximum number of times to shuffle a\n       \
+  \                           peptide to make it non-target before\n             \
+  \                     failing. Default=100\n\n  -x, --do_not_shuffle TEXT      \
+  \ Turn OFF shuffling of decoy peptides that\n                                  are\
+  \ in the target database. Default=false\n\n  -w, --do_not_switch TEXT        Turn\
+  \ OFF switching of cleavage site with\n                                  preceding\
+  \ amino acid. Default=false\n\n  -d, --decoy_prefix TEXT         Set accession prefix\
+  \ for decoy proteins in\n                                  output. Default=DECOY_\n\
+  \n  -t, --temp_file TEXT            Set temporary file to write decoys prior to\n\
+  \                                  shuffling. Default=protein-decoy.fa\n\n  -b,\
+  \ --no_isobaric TEXT          Do not make decoy peptides isobaric.\n           \
+  \                       Default=false\n\n  -m, --memory_save TEXT          Slower\
+  \ but uses less memory (does not store\n                                  decoy\
+  \ peptide list). Default=false\n\n  -h, --help                      Show this message\
+  \ and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pypgatk:0.0.15--py_0

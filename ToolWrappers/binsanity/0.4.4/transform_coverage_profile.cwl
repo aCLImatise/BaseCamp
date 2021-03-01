@@ -3,7 +3,7 @@ id: transform_coverage_profile.cwl
 inputs:
 - id: in_specify_the_cov
   doc: Specify the cov
-  type: string
+  type: string?
   inputBinding:
     prefix: -c
 - id: in_indicate_type_want
@@ -13,13 +13,14 @@ inputs:
     We recommend using a log transformation for initial testing. Other transformations\
     \ can be useful in cases where there is an extremely low range distribution of\
     \ coverages and when coverage values are low\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: -t
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - transform-coverage-profile

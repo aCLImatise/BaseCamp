@@ -16,6 +16,9 @@ task GetOrthologList {
       ~{cds_ortholog_filename} \
       ~{cds_alignment_base_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_x_mfa: ""
     backbone_seq_file: ""

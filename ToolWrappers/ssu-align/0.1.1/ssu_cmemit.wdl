@@ -2,7 +2,7 @@ version 1.0
 
 task Ssucmemit {
   input {
-    Int? generate_n_sequences
+    Int? _generate_sequences
     Boolean? write_generated_sequences_unaligned
     Boolean? write_generated_sequences_stockholm
     Boolean? generate_single_sequence
@@ -25,7 +25,7 @@ task Ssucmemit {
     ssu_cmemit \
       ~{cm_file} \
       ~{sequence_output_file} \
-      ~{if defined(generate_n_sequences) then ("-n " +  '"' + generate_n_sequences + '"') else ""} \
+      ~{if defined(_generate_sequences) then ("-n " +  '"' + _generate_sequences + '"') else ""} \
       ~{if (write_generated_sequences_unaligned) then "-u" else ""} \
       ~{if (write_generated_sequences_stockholm) then "-a" else ""} \
       ~{if (generate_single_sequence) then "-c" else ""} \
@@ -42,8 +42,11 @@ task Ssucmemit {
       ~{if defined(end) then ("--end " +  '"' + end + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    generate_n_sequences: ": generate <n> sequences  [10]  (n>0)"
+    _generate_sequences: ": generate <n> sequences  [10]  (n>0)"
     write_generated_sequences_unaligned: ": write generated sequences as unaligned FASTA  [default]"
     write_generated_sequences_stockholm: ": write generated sequences as a STOCKHOLM alignment"
     generate_single_sequence: ": generate a single \\\"consensus\\\" sequence only"

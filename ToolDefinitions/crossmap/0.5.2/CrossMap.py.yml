@@ -1,0 +1,238 @@
+&id001 !Command
+command:
+- CrossMap.py
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - CrossMap.py
+  - gvcf
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: chain_file
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: input.gvcf
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: refGenome.fa
+    description: ''
+  - !Positional
+    optional: false
+    position: 3
+    name: output_file
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-comp-alleles
+    description: "If set, CrossMap does NOT check if the reference allele\nis different\
+      \ from the alternate allele."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --compress
+    description: "If set, compress the output gVCF file by calling the\nsystem \"\
+      gzip\".\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: \nCrossMap.py gvcf <chain_file>  <input.gvcf>  <refGenome.fa>\
+    \  <output_file> [options]\n\nExamples:\nCrossMap.py gvcf hg19ToHg18.over.chain.gz\
+    \ test.hg19.gvcf hg18.fa test.hg18.gvcf                     #comparing ref_allele\
+    \ to alt_allele to make sure they are different.\nCrossMap.py gvcf hg19ToHg18.over.chain.gz\
+    \ test.hg19.gvcf hg18.fa test.hg18.gvcf  --no-comp-alleles  #do NOT compare ref_allele\
+    \ to alt_allele.\n\nOptions:\n  --no-comp-alleles  If set, CrossMap does NOT check\
+    \ if the reference allele\n                     is different from the alternate\
+    \ allele.\n  --compress         If set, compress the output gVCF file by calling\
+    \ the\n                     system \"gzip\".\n"
+  generated_using: &id002 []
+  docker_image: quay.io/biocontainers/crossmap:0.5.2--pyh7b7c402_0
+- !Command
+  command:
+  - CrossMap.py
+  - bam
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: chain_file
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: input.bam
+    description: ''
+  - !Positional
+    optional: true
+    position: 2
+    name: output_file
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --mean
+    description: "Average insert size of pair-end sequencing (bp).\n{default=200.0}"
+    args: !SimpleFlagArg
+      name: INSERT_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --stdev
+    description: Stanadard deviation of insert size. {default=30.0}
+    args: !SimpleFlagArg
+      name: INSERT_SIZE_STDEV
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --times
+    description: "A mapped pair is considered as \"proper pair\" if both\nends mapped\
+      \ to different strand and\nthe distance between them is less then '-t' * stdev\n\
+      from the mean. {default=3.0}"
+    args: !SimpleFlagArg
+      name: INSERT_SIZE_FOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --append-tags
+    description: Add tag to each alignment.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: \nCrossMap.py bam  <chain_file>  <input.bam> [output_file] [options]\n\
+    \nNote:\nIf output_file is 'STDOUT','-' or missing, CrossMap will write BAM file\
+    \ to the screen\n\nOptions:\n  -m INSERT_SIZE, --mean=INSERT_SIZE\n          \
+    \              Average insert size of pair-end sequencing (bp).\n            \
+    \            {default=200.0}\n  -s INSERT_SIZE_STDEV, --stdev=INSERT_SIZE_STDEV\n\
+    \                        Stanadard deviation of insert size. {default=30.0}\n\
+    \  -t INSERT_SIZE_FOLD, --times=INSERT_SIZE_FOLD\n                        A mapped\
+    \ pair is considered as \"proper pair\" if both\n                        ends\
+    \ mapped to different strand and\n                        the distance between\
+    \ them is less then '-t' * stdev\n                        from the mean. {default=3.0}\n\
+    \  -a, --append-tags     Add tag to each alignment.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/crossmap:0.5.2--pyh7b7c402_0
+- !Command
+  command:
+  - CrossMap.py
+  - vcf
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: chain_file
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: input.vcf
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: refGenome.fa
+    description: ''
+  - !Positional
+    optional: false
+    position: 3
+    name: output_file
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-comp-alleles
+    description: "If set, CrossMap does NOT check if the reference allele\nis different\
+      \ from the alternate allele."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --compress
+    description: "If set, compress the output VCF file by calling the\nsystem \"gzip\"\
+      .\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: \nCrossMap.py vcf <chain_file>  <input.vcf>  <refGenome.fa> \
+    \ <output_file> [options]\n\nExamples:\nCrossMap.py vcf hg19ToHg18.over.chain.gz\
+    \ test.hg19.vcf hg18.fa test.hg18.vcf                     #comparing ref_allele\
+    \ to alt_allele to make sure they are different.\nCrossMap.py vcf hg19ToHg18.over.chain.gz\
+    \ test.hg19.vcf hg18.fa test.hg18.vcf  --no-comp-alleles  #do NOT compare ref_allele\
+    \ to alt_allele.\n\nOptions:\n  --no-comp-alleles  If set, CrossMap does NOT check\
+    \ if the reference allele\n                     is different from the alternate\
+    \ allele.\n  --compress         If set, compress the output VCF file by calling\
+    \ the\n                     system \"gzip\".\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/crossmap:0.5.2--pyh7b7c402_0
+- !Command
+  command:
+  - CrossMap.py
+  - maf
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: CrossMap.py
+    description: maf       hg19ToHg38.over.chain.gz  test.hg19.maf  hg38.fa  GRCh38
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nusage\n-----\n  CrossMap.py maf  <chain_file>  <input.maf>  <refGenome.fa>\
+    \  <build_name>\n  <output_file>\n\nDescription\n-----------\n  Convert MAF format\
+    \ file. The \"chain_file\" and \"input.maf\" can be regular or\n  compressed (*.gz,\
+    \ *.Z, *.z, *.bz, *.bz2, *.bzip2) file, local file or URL\n  (http://, https://,\
+    \ ftp://) pointing to remote file. \"refGenome.fa\" is genome\n  sequence file\
+    \ of *target assembly*. \"build_name\" is the name of the\n  *target_assembly*\
+    \ (eg \"GRCh38\")\n\nExample\n-------\n   CrossMap.py  maf       hg19ToHg38.over.chain.gz\
+    \  test.hg19.maf  hg38.fa  GRCh38\n  test.hg38.maf\n"
+  generated_using: &id003
+  - --help
+  docker_image: quay.io/biocontainers/crossmap:0.5.2--pyh7b7c402_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Program: CrossMap (v0.5.2)\n\nDescription: \n  CrossMap is a program to\
+  \ convert genome coordinates between different reference\n  assemblies(e.g. from\
+  \ human hg19 to hg38 or vice versa). The supported file\n  formats include BAM,\
+  \ BED, BigWig, CRAM, GFF, GTF, GVCF, MAF (mutation annotation\n  format), SAM, Wiggle,\
+  \ and VCF.\n\nUsage: CrossMap.py <command> [options]\n\n\t bam\tconvert BAM, CRAM\
+  \ or SAM format file.\n\t bed\tconvert BED, bedGraph or other BED-like files.\n\t\
+  \ bigwig\tconvert BigWig file.\n\t gff\tconvert GFF or GTF format file.\n\t gvcf\t\
+  convert GVCF file.\n\t maf\tconvert MAF (mutation annotation format) file.\n\t region\t\
+  convert big genomic regions (in BED format) such as CNV blocks.\n\t vcf\tconvert\
+  \ VCF file.\n\t wig\tconvert Wiggle or bedGraph format file.\n\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/crossmap:0.5.2--pyh7b7c402_0

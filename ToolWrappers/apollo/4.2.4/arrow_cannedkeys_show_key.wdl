@@ -8,6 +8,9 @@ task ArrowCannedkeysShowKey {
     arrow cannedkeys show_key \
       ~{value}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     value: ""
   }

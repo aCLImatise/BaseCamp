@@ -3,79 +3,79 @@ command:
 - xml_pp
 positional:
 - !Positional
-  description: OPTIONS
+  optional: false
   position: 0
   name: Twig
-  optional: false
+  description: OPTIONS
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -i
   description: "[<extension>]\nedits the file(s) in place, if an extension is provided\
     \ (no space\nbetween \"-i\" and the extension) then the original file is backed-up\n\
     with that extension\nThe rules for the extension are the same as Perl's (see perldoc\n\
     perlrun): if the extension includes no \"*\" then it is appended to\nthe original\
     \ file name, If the extension does contain one or more\n\"*\" characters, then\
     \ each \"*\" is replaced with the current filename."
-  synonyms:
-  - -i
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
   description: "the style to use for pretty printing: none, nsgmls, nice, indented,\n\
     record, or record_c (see XML::Twig docs for the exact description of\nthose styles),\
     \ 'indented' by default"
-  synonyms:
-  - -s
   args: !SimpleFlagArg
     name: style
-  optional: true
 - !Flag
-  description: "<tag(s)>\npreserves white spaces in tags. You can use several \"-p\"\
-    \ options or\nquote the tags if you need more than one"
+  optional: true
   synonyms:
   - -p
+  description: "<tag(s)>\npreserves white spaces in tags. You can use several \"-p\"\
+    \ options or\nquote the tags if you need more than one"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
   description: "use XML::Twig output_encoding (based on Text::Iconv or Unicode::Map8\n\
     and Unicode::String) to set the output encoding. By default the\noriginal encoding\
     \ is preserved.\nIf this option is used the XML declaration is updated (and created\n\
     if there was none).\nMake sure that the encoding is supported by the parser you\
     \ use if\nyou want to be able to process the pretty_printed file (XML::Parser\n\
     does not support 'latin1' for example, you have to use 'iso-8859-1')"
-  synonyms:
-  - -e
   args: !SimpleFlagArg
     name: encoding
-  optional: true
 - !Flag
-  description: "loads the documents in memory instead of outputting them as they are\n\
-    being parsed.\nThis prevents a bug (see BUGS) but uses more memory"
+  optional: true
   synonyms:
   - -l
+  description: "loads the documents in memory instead of outputting them as they are\n\
+    being parsed.\nThis prevents a bug (see BUGS) but uses more memory"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: read the list of files to process from <file>, one per line
+  optional: true
   synonyms:
   - -f
+  description: read the list of files to process from <file>, one per line
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: verbose (list the current file being processed)
+  optional: true
   synonyms:
   - -v
+  description: verbose (list the current file being processed)
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: display help
+  optional: true
   synonyms:
   - -h
+  description: display help
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "NAME\n    xml_pp - xml pretty-printer\n\nSYNOPSYS\n    xml_pp [options]\
@@ -125,3 +125,4 @@ help_text: "NAME\n    xml_pp - xml pretty-printer\n\nSYNOPSYS\n    xml_pp [optio
   \ <mirod@xmltwig.com>\n\n"
 generated_using:
 - --help
+docker_image:

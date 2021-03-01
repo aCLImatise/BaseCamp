@@ -14,6 +14,9 @@ task Sample {
       ~{if defined(sequences) then ("--sequences " +  '"' + sequences + '"') else ""} \
       ~{if defined(random_seed) then ("--random-seed " +  '"' + random_seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "The format ('fasta' or 'fastq' or 'lines') of the\\nsequences (default=fastq)"
     sequences: "The number of sequences to be sampled (default=1)"

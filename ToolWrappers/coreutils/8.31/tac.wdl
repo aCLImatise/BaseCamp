@@ -12,6 +12,9 @@ task Tac {
       ~{if (regex) then "--regex" else ""} \
       ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     before: "attach the separator before instead of after"
     regex: "interpret the separator as a regular expression"

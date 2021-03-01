@@ -3,23 +3,24 @@ id: NanoLyse.cwl
 inputs:
 - id: in_reference
   doc: Specify a reference fasta file against which to filter.
-  type: File
+  type: File?
   inputBinding:
     prefix: --reference
 - id: in_log_file
   doc: Specify the path and filename for the log file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --logfile
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - NanoLyse

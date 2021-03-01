@@ -34,6 +34,9 @@ task BpLoadGffpl {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (summary) then "--summary" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dsn: "'dbi:mysql:database=dmel_r5_1;host=myhost;port=myport'\\ndna1.fa dna2.fa features1.gff features2.gff ..."
     of__database: "of --database."

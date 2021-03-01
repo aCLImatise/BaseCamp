@@ -46,6 +46,9 @@ task Falco {
       ~{if (reverse_complement) then "--reverse-complement" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "Create all output files in the specified\\noutput directory. If notprovided, files\\nwill be created in the same directory as\\nthe input file."
     casa_va: "Files come from raw casava output\\n(currently ignored)"

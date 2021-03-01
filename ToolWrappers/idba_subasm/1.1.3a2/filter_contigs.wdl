@@ -14,6 +14,9 @@ task FilterContigs {
       ~{tmp_dot_fa} \
       ~{if defined(min_contig) then ("--min_contig " +  '"' + min_contig + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_contig: "(=100)            filter out reads containing 'N'"
     fq_two_fa: ""

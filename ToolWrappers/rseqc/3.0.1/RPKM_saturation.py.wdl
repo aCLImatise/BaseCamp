@@ -24,6 +24,9 @@ task RPKMSaturationpy {
       ~{if defined(rp_km_cut_off) then ("--rpkm-cutoff " +  '"' + rp_km_cut_off + '"') else ""} \
       ~{if defined(mapq) then ("--mapq " +  '"' + mapq + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Alignment file in BAM or SAM format. [required]"
     out_prefix: "Prefix of output files(s). [required]"

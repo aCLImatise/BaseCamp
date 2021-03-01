@@ -4,6 +4,9 @@ task Feattext {
   command <<<
     feattext
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

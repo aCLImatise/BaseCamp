@@ -14,6 +14,9 @@ task Bedextracttypical {
       ~{two} \
       ~{three}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     zero: ""
     one: ""

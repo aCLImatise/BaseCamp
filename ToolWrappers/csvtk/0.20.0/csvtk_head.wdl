@@ -34,6 +34,9 @@ task CsvtkHead {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number: "print first N records (default 10)"
     chunk_size: "chunk size of CSV reader (default 50)"

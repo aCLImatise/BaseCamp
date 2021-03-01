@@ -4,59 +4,59 @@ command:
 - install
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: name
   description: "The data package name to install. Can use more than\nonce (e.g. ggd\
     \ install <pkg 1> <pkg 2> <pkg 3> ).\n(NOTE: No need to designate version as it\
     \ is\nimplicated in the package name)"
-  position: 0
-  name: name
-  optional: false
 named:
 - !Flag
-  description: "The ggd channel the desired recipe is stored in.\n(Default = genomics)"
+  optional: true
   synonyms:
   - -c
   - --channel
+  description: "The ggd channel the desired recipe is stored in.\n(Default = genomics)"
   args: !ChoiceFlagArg
     choices: !!set
       genomics:
-  optional: true
 - !Flag
-  description: "(Optional) When the -d flag is set debug output will\nbe printed to\
-    \ stdout."
+  optional: true
   synonyms:
   - -d
   - --debug
+  description: "(Optional) When the -d flag is set debug output will\nbe printed to\
+    \ stdout."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --file
   description: "A file with a list of ggd data packages to install.\nOne package per\
     \ line. Can use more than one (e.g. ggd\ninstall --file <file_1> --file <file_2>\
     \ )"
-  synonyms:
-  - --file
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --prefix
   description: "(Optional) The name or the full directory path to an\nexisting conda\
     \ environment where you want to install a\nggd data pacakge. (Only needed if you\
     \ want to install\nthe data package into a different conda environment\nthen the\
     \ one you are currently in)\n"
-  synonyms:
-  - --prefix
   args: !SimpleFlagArg
     name: PREFIX
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: ggd install [-h] [-c {genomics}] [-d] [--file FILE] [--prefix PREFIX]\n\
@@ -79,3 +79,4 @@ help_text: "usage: ggd install [-h] [-c {genomics}] [-d] [--file FILE] [--prefix
   \ conda environment\n                        then the one you are currently in)\n"
 generated_using:
 - --help
+docker_image:

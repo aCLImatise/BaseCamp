@@ -48,6 +48,9 @@ task Hal2mafMPpy {
       ~{if (no_ancestors) then "--noAncestors" else ""} \
       ~{if (only_sequence_names) then "--onlySequenceNames" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_proc: "Maximum number of processes to create. If neither"
     split_by_sequence: "specified, then"

@@ -12,12 +12,12 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: not a valid option
+    optional: true
     synonyms:
     - -h
+    description: not a valid option
     args: !SimpleFlagArg
       name: is
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -29,12 +29,12 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: not a valid option
+        optional: true
         synonyms:
         - -h
+        description: not a valid option
         args: !SimpleFlagArg
           name: is
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -46,12 +46,12 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: not a valid option
+            optional: true
             synonyms:
             - -h
+            description: not a valid option
             args: !SimpleFlagArg
               name: is
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -63,102 +63,16 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: not a valid option
+                optional: true
                 synonyms:
                 - -h
+                description: not a valid option
                 args: !SimpleFlagArg
                   name: is
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: '- Just ignore bad input rather than aborting.'
-                  synonyms:
-                  - -tolerate
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: '- Filter out blocks with fewer than N columns (default
-                    1)'
-                  synonyms:
-                  - -minCol
-                  args: !SimpleFlagArg
-                    name: N
-                  optional: true
-                - !Flag
-                  description: '- Filter out blocks with fewer than N rows (default
-                    2)'
-                  synonyms:
-                  - -minRow
-                  args: !SimpleFlagArg
-                    name: N
-                  optional: true
-                - !Flag
-                  description: '- Filter out blocks with >= N rows (default 100)'
-                  synonyms:
-                  - -maxRow
-                  args: !SimpleFlagArg
-                    name: N
-                  optional: true
-                - !Flag
-                  description: '- Filter out scores below -minFactor * (ncol**2) *
-                    nrow'
-                  synonyms:
-                  - -factor
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: '- Factor to use with -minFactor (default 5)'
-                  synonyms:
-                  - -minFactor
-                  args: !SimpleFlagArg
-                    name: N
-                  optional: true
-                - !Flag
-                  description: '- Minimum allowed score (alternative to -minFactor)'
-                  synonyms:
-                  - -minScore
-                  args: !SimpleFlagArg
-                    name: N
-                  optional: true
-                - !Flag
-                  description: '- Save rejected blocks in filename'
-                  synonyms:
-                  - -reject
-                  args: !SimpleFlagArg
-                    name: filename
-                  optional: true
-                - !Flag
-                  description: '- all alignments must have species as one of the component'
-                  synonyms:
-                  - -needComp
-                  args: !SimpleFlagArg
-                    name: species
-                  optional: true
-                - !Flag
-                  description: '- Reject overlapping blocks in reference (assumes
-                    ordered blocks)'
-                  synonyms:
-                  - -overlap
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: '- Filter out blocks without a component listed in
-                    filename'
-                  synonyms:
-                  - -componentFilter
-                  args: !SimpleFlagArg
-                    name: filename
-                  optional: true
-                - !Flag
-                  description: '- Filter out blocks without a species listed in filename'
-                  synonyms:
-                  - -speciesFilter
-                  args: !SimpleFlagArg
-                    name: filename
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
@@ -166,21 +80,157 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: not a valid option
+                    optional: true
                     synonyms:
                     - -h
+                    description: not a valid option
                     args: !SimpleFlagArg
                       name: is
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -tolerate
+                      description: '- Just ignore bad input rather than aborting.'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -minCol
+                      description: '- Filter out blocks with fewer than N columns
+                        (default 1)'
+                      args: !SimpleFlagArg
+                        name: N
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -minRow
+                      description: '- Filter out blocks with fewer than N rows (default
+                        2)'
+                      args: !SimpleFlagArg
+                        name: N
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -maxRow
+                      description: '- Filter out blocks with >= N rows (default 100)'
+                      args: !SimpleFlagArg
+                        name: N
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -factor
+                      description: '- Filter out scores below -minFactor * (ncol**2)
+                        * nrow'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -minFactor
+                      description: '- Factor to use with -minFactor (default 5)'
+                      args: !SimpleFlagArg
+                        name: N
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -minScore
+                      description: '- Minimum allowed score (alternative to -minFactor)'
+                      args: !SimpleFlagArg
+                        name: N
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -reject
+                      description: '- Save rejected blocks in filename'
+                      args: !SimpleFlagArg
+                        name: filename
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -needComp
+                      description: '- all alignments must have species as one of the
+                        component'
+                      args: !SimpleFlagArg
+                        name: species
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -overlap
+                      description: '- Reject overlapping blocks in reference (assumes
+                        ordered blocks)'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -componentFilter
+                      description: '- Filter out blocks without a component listed
+                        in filename'
+                      args: !SimpleFlagArg
+                        name: filename
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -speciesFilter
+                      description: '- Filter out blocks without a species listed in
+                        filename'
+                      args: !SimpleFlagArg
+                        name: filename
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: not a valid option
+                        args: !SimpleFlagArg
+                          name: is
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "-h is not a valid option\n"
+                      generated_using: &id004
+                      - -h
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "mafFilter - Filter out maf files. Output goes to standard\
+                      \ out\nusage:\n   mafFilter file(s).maf\noptions:\n   -tolerate\
+                      \ - Just ignore bad input rather than aborting.\n   -minCol=N\
+                      \ - Filter out blocks with fewer than N columns (default 1)\n\
+                      \   -minRow=N - Filter out blocks with fewer than N rows (default\
+                      \ 2)\n   -maxRow=N - Filter out blocks with >= N rows (default\
+                      \ 100)\n   -factor - Filter out scores below -minFactor * (ncol**2)\
+                      \ * nrow\n   -minFactor=N - Factor to use with -minFactor (default\
+                      \ 5)\n   -minScore=N - Minimum allowed score (alternative to\
+                      \ -minFactor)\n   -reject=filename - Save rejected blocks in\
+                      \ filename\n   -needComp=species - all alignments must have\
+                      \ species as one of the component\n   -overlap - Reject overlapping\
+                      \ blocks in reference (assumes ordered blocks)\n   -componentFilter=filename\
+                      \ - Filter out blocks without a component listed in filename\
+                      \ \n   -speciesFilter=filename - Filter out blocks without a\
+                      \ species listed in filename \n\n"
+                    generated_using: &id005 []
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "-h is not a valid option\n"
-                  generated_using: &id004
-                  - -h
+                  generated_using: *id004
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -200,7 +250,8 @@ subcommands:
                   \   -componentFilter=filename - Filter out blocks without a component\
                   \ listed in filename \n   -speciesFilter=filename - Filter out blocks\
                   \ without a species listed in filename \n\n"
-                generated_using: &id005 []
+                generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -208,6 +259,7 @@ subcommands:
               version_flag:
               help_text: "-h is not a valid option\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -227,6 +279,7 @@ subcommands:
               \ Filter out blocks without a component listed in filename \n   -speciesFilter=filename\
               \ - Filter out blocks without a species listed in filename \n\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -234,6 +287,7 @@ subcommands:
           version_flag:
           help_text: "-h is not a valid option\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -253,6 +307,7 @@ subcommands:
           \ in filename \n   -speciesFilter=filename - Filter out blocks without a\
           \ species listed in filename \n\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -260,6 +315,7 @@ subcommands:
       version_flag:
       help_text: "-h is not a valid option\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -278,6 +334,7 @@ subcommands:
       \ a component listed in filename \n   -speciesFilter=filename - Filter out blocks\
       \ without a species listed in filename \n\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -285,6 +342,7 @@ subcommands:
   version_flag:
   help_text: "-h is not a valid option\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -302,3 +360,4 @@ help_text: "mafFilter - Filter out maf files. Output goes to standard out\nusage
   \ - Filter out blocks without a component listed in filename \n   -speciesFilter=filename\
   \ - Filter out blocks without a species listed in filename \n\n"
 generated_using: *id005
+docker_image:

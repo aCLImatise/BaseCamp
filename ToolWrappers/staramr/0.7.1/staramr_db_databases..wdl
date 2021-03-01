@@ -10,6 +10,9 @@ task StaramrDbDatabases {
       ~{star_amr} \
       ~{db}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     star_amr: ""
     db: ""

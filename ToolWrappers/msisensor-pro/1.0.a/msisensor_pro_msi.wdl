@@ -4,7 +4,7 @@ task MsisensorproMsi {
   input {
     Boolean? string_homopolymers_microsatellites
     Boolean? string_normal_file
-    Boolean? string_tumor_bam
+    Boolean? string_bam_file
     Boolean? string_output_prefix
     Boolean? string_file_optional
     Boolean? double_fdr_threshold
@@ -14,7 +14,7 @@ task MsisensorproMsi {
     Boolean? int_minimal_homopolymer
     Boolean? int_maximal_homopolymer
     Boolean? int_minimal_microsatellite
-    Boolean? int_maximal_microsatellite
+    Boolean? int_maximal_size
     Boolean? int_span_size
     Boolean? int_threads_number
     Boolean? int_output_homopolymer
@@ -25,7 +25,7 @@ task MsisensorproMsi {
     msisensor_pro msi \
       ~{if (string_homopolymers_microsatellites) then "-d" else ""} \
       ~{if (string_normal_file) then "-n" else ""} \
-      ~{if (string_tumor_bam) then "-t" else ""} \
+      ~{if (string_bam_file) then "-t" else ""} \
       ~{if (string_output_prefix) then "-o" else ""} \
       ~{if (string_file_optional) then "-e" else ""} \
       ~{if (double_fdr_threshold) then "-f" else ""} \
@@ -35,17 +35,20 @@ task MsisensorproMsi {
       ~{if (int_minimal_homopolymer) then "-p" else ""} \
       ~{if (int_maximal_homopolymer) then "-m" else ""} \
       ~{if (int_minimal_microsatellite) then "-s" else ""} \
-      ~{if (int_maximal_microsatellite) then "-w" else ""} \
+      ~{if (int_maximal_size) then "-w" else ""} \
       ~{if (int_span_size) then "-u" else ""} \
       ~{if (int_threads_number) then "-b" else ""} \
       ~{if (int_output_homopolymer) then "-x" else ""} \
       ~{if (int_output_microsatellites) then "-y" else ""} \
       ~{if (int_output_site) then "-0" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_homopolymers_microsatellites: "<string>   homopolymers and microsatellites file"
     string_normal_file: "<string>   normal bam file with index"
-    string_tumor_bam: "<string>   tumor  bam file with index"
+    string_bam_file: "<string>   tumor  bam file with index"
     string_output_prefix: "<string>   output prefix"
     string_file_optional: "<string>   bed file, optional"
     double_fdr_threshold: "<double>   FDR threshold for somatic sites detection, default=0.05"
@@ -55,7 +58,7 @@ task MsisensorproMsi {
     int_minimal_homopolymer: "<int>      minimal homopolymer size for distribution analysis, default=10"
     int_maximal_homopolymer: "<int>      maximal homopolymer size for distribution analysis, default=50"
     int_minimal_microsatellite: "<int>      minimal microsatellite size for distribution analysis, default=5"
-    int_maximal_microsatellite: "<int>      maximal microsatellite size for distribution analysis, default=40"
+    int_maximal_size: "<int>      maximal microsatellite size for distribution analysis, default=40"
     int_span_size: "<int>      span size around window for extracting reads, default=500"
     int_threads_number: "<int>      threads number for parallel computing, default=1"
     int_output_homopolymer: "<int>      output homopolymer only, 0: no; 1: yes, default=0"

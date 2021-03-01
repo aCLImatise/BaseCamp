@@ -22,6 +22,9 @@ task Seqdiff {
       ~{if (summary) then "--summary" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     first: ",      First sequence file (required)"
     second: ",     Second sequence file (required)"

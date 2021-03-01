@@ -9,11 +9,11 @@ task Fdollop {
     Boolean? print_data
     Boolean? an_cseq
     Boolean? step_box
-    File file
+    File additional_optional_qualifiers
   }
   command <<<
     fdollop \
-      ~{file} \
+      ~{additional_optional_qualifiers} \
       ~{if (weights) then "-weights" else ""} \
       ~{if (anc_file) then "-ancfile" else ""} \
       ~{if (method) then "-method" else ""} \
@@ -22,6 +22,9 @@ task Fdollop {
       ~{if (an_cseq) then "-ancseq" else ""} \
       ~{if (step_box) then "-stepbox" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     weights: "properties Phylip weights file (optional)"
     anc_file: "properties Ancestral states file"
@@ -30,7 +33,7 @@ task Fdollop {
     print_data: "boolean    [N] Print data at start of run"
     an_cseq: "boolean    [N] Print states at all nodes of tree"
     step_box: "boolean    [N] Print out steps in each character"
-    file: "Additional (Optional) qualifiers (* if not always prompted):"
+    additional_optional_qualifiers: "Additional (Optional) qualifiers (* if not always prompted):"
   }
   output {
     File out_stdout = stdout()

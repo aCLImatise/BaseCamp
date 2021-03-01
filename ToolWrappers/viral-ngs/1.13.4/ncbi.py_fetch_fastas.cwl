@@ -3,23 +3,23 @@ id: ncbi.py_fetch_fastas.cwl
 inputs:
 - id: in_force_overwrite
   doc: Overwrite existing files, if present.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --forceOverwrite
 - id: in_combined_file_prefix
   doc: "The prefix of the file containing the combined\nconcatenated results returned\
     \ by the list of accession\nIDs, in the order provided."
-  type: File
+  type: File?
   inputBinding:
     prefix: --combinedFilePrefix
 - id: in_file_ext
   doc: The extension to use for the downloaded files
-  type: File
+  type: File?
   inputBinding:
     prefix: --fileExt
 - id: in_remove_separate_files
   doc: "If specified, remove the individual files and leave\nonly the combined file."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --removeSeparateFiles
 - id: in_chunksize
@@ -28,23 +28,23 @@ inputs:
     \ via\n--combinedFilePrefix (default: 1). If chunkSize is\nunspecified and >500\
     \ accessions are provided,\nchunkSize will be set to 500 to adhere to the NCBI\n\
     guidelines on information retreival."
-  type: File
+  type: File?
   inputBinding:
     prefix: --chunkSize
 - id: in_tmp_dir
   doc: 'Base directory for temp files. [default: /tmp]'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --tmp_dir
 - id: in_tmp_dir_keep
   doc: "Keep the tmp_dir if an exception occurs while running.\nDefault is to delete\
     \ all temp files at the end, even\nif there's a failure."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tmp_dirKeep
 - id: in_loglevel
   doc: 'Verboseness of output. [default: DEBUG]'
-  type: string
+  type: string?
   inputBinding:
     prefix: --loglevel
 - id: in_email_address
@@ -71,6 +71,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ncbi.py

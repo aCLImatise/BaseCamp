@@ -4,6 +4,9 @@ task Niceload {
   command <<<
     niceload
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

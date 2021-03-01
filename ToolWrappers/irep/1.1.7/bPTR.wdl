@@ -34,6 +34,9 @@ task BPTR {
       ~{if defined(threads_default) then ("-t " +  '"' + threads_default + '"') else ""} \
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _fastas: "[F [F ...]]  fasta(s)"
     sorted_sam_files: "[S [S ...]]  sorted sam file(s) for each sample (e.g.: bowtie2 --reorder)"

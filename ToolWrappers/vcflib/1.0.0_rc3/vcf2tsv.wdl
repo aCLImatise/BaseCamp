@@ -5,20 +5,23 @@ task Vcf2tsv {
     Boolean? g
     String? n
     String? vcf
-    File? file
+    File? var_file
   }
   command <<<
     vcf2tsv \
       ~{vcf} \
-      ~{file} \
+      ~{var_file} \
       ~{if (g) then "-g" else ""} \
       ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     g: ""
     n: ""
     vcf: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

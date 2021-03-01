@@ -8,6 +8,9 @@ task ArrowStatusDeleteStatus {
     arrow status deleteStatus \
       ~{id_number}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id_number: ""
   }

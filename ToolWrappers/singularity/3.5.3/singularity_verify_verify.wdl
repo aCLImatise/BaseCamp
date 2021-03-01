@@ -14,6 +14,9 @@ task SingularityVerifyVerify {
       ~{options_dot_dot_dot} \
       ~{verify}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

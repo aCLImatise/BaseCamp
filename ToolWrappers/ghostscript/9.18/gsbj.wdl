@@ -4,6 +4,9 @@ task Gsbj {
   command <<<
     gsbj
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

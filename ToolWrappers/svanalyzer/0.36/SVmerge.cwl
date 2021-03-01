@@ -5,43 +5,43 @@ inputs:
   doc: "Specify a prefix to be used to create output file names: files of\ndistance\
     \ metric values will be named \"prefix.distances\" and the\noutput, clustered\
     \ VCF file will be named \"prefix.clustered.vcf\"."
-  type: File
+  type: File?
   inputBinding:
     prefix: --prefix
 - id: in_variants
   doc: "Specify the path to a VCF file of variants to merge. These variants\nwill\
     \ be considered in combination with any specified using the --fof\noption."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --variants
 - id: in_f_of
   doc: "Specify the path to a file of files with paths to VCF files of\nvariants to\
     \ merge. These variants will be considered in combination\nwith any specified\
     \ using the --variants option."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fof
 - id: in_max_dist
   doc: "Specify the maximum distance in bases between the positions of SVs\nthat can\
     \ be merged."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --maxdist
 - id: in_variant_delimiter
   doc: "Specify the ASCII character to be used as a delimiter when forming\nclusters.\
     \ This must be a character that is not contained in any of\nthe cluster IDs in\
     \ order for SVmerge to give reliable results.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --variantdelimiter
 - id: in_distance_file
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: --distance_file
 - id: in_ref
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: --ref
 outputs:
@@ -52,9 +52,10 @@ outputs:
   doc: "Specify a prefix to be used to create output file names: files of\ndistance\
     \ metric values will be named \"prefix.distances\" and the\noutput, clustered\
     \ VCF file will be named \"prefix.clustered.vcf\"."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_prefix)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - SVmerge

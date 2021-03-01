@@ -10,6 +10,9 @@ task KneaddataDatabase {
       ~{if (available) then "--available" else ""} \
       ~{if defined(download) then ("--download " +  '"' + download + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     available: "print the available databases"
     download: "<build> <install_location>\\ndownload the selected database to the install location\\n"

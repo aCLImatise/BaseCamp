@@ -22,6 +22,9 @@ task MedpyMorphologypy {
       ~{if (display_debug_information) then "-d" else ""} \
       ~{if (silently_override_images) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type: "The type of the morphological operation."
     iterations: "The number of iteration to execute. Supply a value of\\n1 or higher to restrict the effect of the\\nmorphological operation. Otherwise it is applied until\\nsaturation."

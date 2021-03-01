@@ -48,6 +48,9 @@ task AgfusionAnnotate {
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(scale) then ("--scale " +  '"' + scale + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene_five_prime: "5' gene partner"
     gene_three_prime: "3' gene partner"

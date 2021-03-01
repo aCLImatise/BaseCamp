@@ -12,6 +12,9 @@ task StrlingPullRegion {
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
       ~{if defined(output_bam) then ("--output-bam " +  '"' + output_bam + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "path to fasta file, only required for cram"
     output_bam: "path to output bam (default: extracted.bam)"

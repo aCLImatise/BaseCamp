@@ -12,6 +12,9 @@ task CruxPipelineFalse {
       ~{pipeline} \
       ~{mass_spectra}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     pipeline: ""

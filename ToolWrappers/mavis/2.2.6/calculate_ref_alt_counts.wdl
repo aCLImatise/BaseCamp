@@ -18,6 +18,9 @@ task CalculateRefAltCounts {
       ~{if defined(event_size) then ("--event_size " +  '"' + event_size + '"') else ""} \
       ~{if defined(buffer) then ("--buffer " +  '"' + buffer + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_output_file: "Path to the output file"
     path_input_mavis: "Path to the Input mavis summary file"

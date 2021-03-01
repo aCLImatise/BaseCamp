@@ -28,6 +28,9 @@ task Cyvcf2 {
       ~{if (loglevel) then "--loglevel" else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chrom: "Specify what chromosome to include."
     start: "Specify the start of region."

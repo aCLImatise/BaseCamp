@@ -32,6 +32,9 @@ task Join {
       ~{if (header) then "--header" else ""} \
       ~{if (zero_terminated) then "--zero-terminated" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     also_print_lines: "also print unpairable lines from file FILENUM, where\\nFILENUM is 1 or 2, corresponding to FILE1 or FILE2"
     replace_missing_fields: "replace missing input fields with EMPTY"

@@ -8,6 +8,9 @@ task BETAPrediction {
     BETA prediction_ \
       ~{beta}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     beta: ""
   }

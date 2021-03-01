@@ -4,244 +4,244 @@ command:
 - micplot
 positional:
 - !Positional
-  description: Name of output directory when "ariba prepareref" was
+  optional: false
   position: 0
   name: prepareref_dir
-  optional: false
+  description: Name of output directory when "ariba prepareref" was
 - !Positional
-  description: antibiotic            Antibiotic name. Must exactly match a column
-    from the
+  optional: false
   position: 1
   name: run
-  optional: false
+  description: antibiotic            Antibiotic name. Must exactly match a column
+    from the
 - !Positional
-  description: "File containing MIC data for each sample and one or\nmore antibiotics"
+  optional: false
   position: 0
   name: mic_file
-  optional: false
+  description: "File containing MIC data for each sample and one or\nmore antibiotics"
 - !Positional
-  description: File made by running "ariba summary"
+  optional: false
   position: 1
   name: summary_file
-  optional: false
+  description: File made by running "ariba summary"
 - !Positional
-  description: Prefix of output files
+  optional: false
   position: 2
   name: outprefix
-  optional: false
+  description: Prefix of output files
 named:
 - !Flag
-  description: "Output format of image file. Use anything that\nmatplotlib can save\
-    \ to, eg pdf or png [pdf]"
+  optional: true
   synonyms:
   - --out_format
+  description: "Output format of image file. Use anything that\nmatplotlib can save\
+    \ to, eg pdf or png [pdf]"
   args: !SimpleFlagArg
     name: OUT_FORMAT
-  optional: true
 - !Flag
-  description: "\"title in quotes\"\nMain title of plot. Default is to use the antibiotic\n\
-    name"
+  optional: true
   synonyms:
   - --main_title
+  description: "\"title in quotes\"\nMain title of plot. Default is to use the antibiotic\n\
+    name"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Height of plot in inches [7]
+  optional: true
   synonyms:
   - --plot_height
+  description: Height of plot in inches [7]
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: Width of plot in inches [7]
+  optional: true
   synonyms:
   - --plot_width
+  description: Width of plot in inches [7]
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --use_hets
   description: "How to deal with HET snps. Choose from yes,no,exclude.\nyes: count\
     \ a het SNP as present. no: do not count a\nhet SNP as present. exclude: completely\
     \ remove any\nsample with any het SNP [yes]"
-  synonyms:
-  - --use_hets
   args: !ChoiceFlagArg
     choices: !!set
-      yes:
-      exclude:
       no:
-  optional: true
+      exclude:
+      yes:
 - !Flag
-  description: "Include interrupted genes (as in the assembled column\nof the ariba\
-    \ summary files)"
+  optional: true
   synonyms:
   - --interrupted
+  description: "Include interrupted genes (as in the assembled column\nof the ariba\
+    \ summary files)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum number of samples in each column required to\ninclude in plot\
-    \ [1]"
+  optional: true
   synonyms:
   - --min_samples
+  description: "Minimum number of samples in each column required to\ninclude in plot\
+    \ [1]"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Do not show combinations of variants. Instead separate\nout into one\
-    \ box/violin plot per variant."
+  optional: true
   synonyms:
   - --no_combinations
+  description: "Do not show combinations of variants. Instead separate\nout into one\
+    \ box/violin plot per variant."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --panel_heights
   description: ",height2\nTwo integers that determine relative height of top and\n\
     bottom plots. eg 5,1 means ratio of 5:1 between top\nand bottom panel heights\
     \ [9,2]"
-  synonyms:
-  - --panel_heights
   args: !SimpleFlagArg
     name: height1
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --panel_widths
   description: ",width2\nTwo integers that determine relative width of plots\nand\
     \ space used by counts legend. eg 5,1 means ratio of\n5:1 between top and bottom\
     \ panel widths. Only applies\nwhen plotting points and --point_size 0 [5,1]"
-  synonyms:
-  - --panel_widths
   args: !SimpleFlagArg
     name: width1
-  optional: true
 - !Flag
-  description: "Control x position of counts legend when plotting\npoints and --point_size\
-    \ 0 [-2]"
+  optional: true
   synonyms:
   - --count_legend_x
+  description: "Control x position of counts legend when plotting\npoints and --point_size\
+    \ 0 [-2]"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: p-value cutoff for Mann-Whitney tests [0.05]
+  optional: true
   synonyms:
   - --p_cutoff
+  description: p-value cutoff for Mann-Whitney tests [0.05]
   args: !SimpleFlagArg
     name: P_CUTOFF
-  optional: true
 - !Flag
-  description: Best used with xkcd font installed ;)
+  optional: true
   synonyms:
   - --xkcd
+  description: Best used with xkcd font installed ;)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "name\nColours to use. See\nhttp://matplotlib.org/users/colormaps.html\
-    \ [Accent]"
+  optional: true
   synonyms:
   - --colourmap
+  description: "name\nColours to use. See\nhttp://matplotlib.org/users/colormaps.html\
+    \ [Accent]"
   args: !SimpleFlagArg
     name: colourmap
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --number_of_colours
   description: "Number of colours in plot. 0:same number as columns in\nthe plot.\
     \ 1:all black. >1: take the first N colours\nfrom the colourmap specified by --colourmap\
     \ and cycle\nthem [0]"
-  synonyms:
-  - --number_of_colours
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --colour_skip
   description: ",FLOAT2\nIf using a continuous colourmap, --colour_skip a,b\n(where\
     \ 0 <= a < b <= 1) will skip the range between a\nand b. Useful for excluding\
     \ near-white colours"
-  synonyms:
-  - --colour_skip
   args: !SimpleFlagArg
     name: FLOAT1
-  optional: true
 - !Flag
-  description: ",type2,...\nTypes of plots to make, separated by commas. Choose\n\
-    from violin,point [violin,point]"
+  optional: true
   synonyms:
   - --plot_types
+  description: ",type2,...\nTypes of plots to make, separated by commas. Choose\n\
+    from violin,point [violin,point]"
   args: !SimpleFlagArg
     name: type1
-  optional: true
 - !Flag
-  description: ",float2,...\nComma-separated list of positions at which to draw\n\
-    horizontal lines. Default is to draw no lines."
+  optional: true
   synonyms:
   - --hlines
+  description: ",float2,...\nComma-separated list of positions at which to draw\n\
+    horizontal lines. Default is to draw no lines."
   args: !SimpleFlagArg
     name: float1
-  optional: true
 - !Flag
-  description: Jitter width option when plotting points [0.1]
+  optional: true
   synonyms:
   - --jitter_width
+  description: Jitter width option when plotting points [0.1]
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Base of log applied to y values. Set to zero to not\nlog [2]"
+  optional: true
   synonyms:
   - --log_y
+  description: "Base of log applied to y values. Set to zero to not\nlog [2]"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Size of points when --plot_types includes point. If\nzero, will group\
-    \ points and size them proportional to\nthe group size [4]"
+  optional: true
   synonyms:
   - --point_size
+  description: "Size of points when --plot_types includes point. If\nzero, will group\
+    \ points and size them proportional to\nthe group size [4]"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Scale point sizes when --point_size 0. All point sizes\nare multiplied\
-    \ by this number. Useful if you have\nlarge data set [1]"
+  optional: true
   synonyms:
   - --point_scale
+  description: "Scale point sizes when --point_size 0. All point sizes\nare multiplied\
+    \ by this number. Useful if you have\nlarge data set [1]"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: Width of violins [0.75]
+  optional: true
   synonyms:
   - --violin_width
+  description: Width of violins [0.75]
   args: !SimpleFlagArg
     name: VIOLIN_WIDTH
-  optional: true
 - !Flag
-  description: Size of dots in lower part of plot [100]
+  optional: true
   synonyms:
   - --dot_size
+  description: Size of dots in lower part of plot [100]
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Black outline around all dots (whether coloured or\nnot) in lower\
-    \ part of plots"
+  optional: true
   synonyms:
   - --dot_outline
+  description: "Black outline around all dots (whether coloured or\nnot) in lower\
+    \ part of plots"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Text size of labels [7]\n"
+  optional: true
   synonyms:
   - --dot_y_text_size
+  description: "Text size of labels [7]\n"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: ariba prepareref [options] <prepareref_dir> <antibiotic> <MIC file>\
@@ -306,3 +306,4 @@ help_text: "usage: ariba prepareref [options] <prepareref_dir> <antibiotic> <MIC
   \ of labels [7]\n"
 generated_using:
 - --help
+docker_image:

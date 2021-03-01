@@ -5,259 +5,259 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --forward
   description: Path to the reads you wish to run through GraftM, either in fasta (.fa)
     or fastq (.fq), optionally gzip-compressed (.gz). If you would like to run multiple
     samples at once, provide a space separated list of the file paths
-  synonyms:
-  - --forward
   args: !RepeatFlagArg
     name: forward_read
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --reverse
   description: "read [reverse read ...]\nIf you have paired end data, you may wish\
     \ to provide the reverse reads. If you are running more than one dataset, please\
     \ ensure that the order of the files passed to the --forward and --reverse flags\
     \ is consistent."
-  synonyms:
-  - --reverse
   args: !SimpleFlagArg
     name: reverse
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --interleaved
   description: Path to the reads you wish to run through GraftM, either in fasta (.fa)
     or fastq (.fq), optionally gzip-compressed (.gz). If you would like to run multiple
     samples at once, provide a space separated list of the file paths
-  synonyms:
-  - --interleaved
   args: !RepeatFlagArg
     name: interleaved_read
-  optional: true
 - !Flag
-  description: Path to the gene specific GraftM package (gpkg).
+  optional: true
   synonyms:
   - --graftm_package
+  description: Path to the gene specific GraftM package (gpkg).
   args: !SimpleFlagArg
     name: reference_package
-  optional: true
 - !Flag
-  description: 'The number of threads to be used when running hmmsearch and pplacer
-    (default: 5)'
+  optional: true
   synonyms:
   - --threads
+  description: 'The number of threads to be used when running hmmsearch and pplacer
+    (default: 5)'
   args: !SimpleFlagArg
     name: threads
-  optional: true
 - !Flag
-  description: 'Specify whether the input sequence is "nucleotide" or "aminoacid"
-    sequence data (default: guess)'
+  optional: true
   synonyms:
   - --input_sequence_type
+  description: 'Specify whether the input sequence is "nucleotide" or "aminoacid"
+    sequence data (default: guess)'
   args: !ChoiceFlagArg
     choices: !!set
       aminoacid:
       nucleotide:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filter_minimum
   description: 'Minimum number of positions that must be aligned for a sequence to
     be placed in the phylogenetic tree (default: 95bp for nucleotide packages, 30
     aa for protein packages)'
-  synonyms:
-  - --filter_minimum
   args: !SimpleFlagArg
     name: filter_minimum
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --evalue
   description: 'Specify the evalue cutoff for the hmmsearch, if you would like to
     use a cutoff different to the default or the trusted cutoff (TC) within the HMM.
     (default: 1e-5)'
-  synonyms:
-  - --evalue
   args: !SimpleFlagArg
     name: evalue
-  optional: true
 - !Flag
-  description: Stop GraftM running after reads have been identified and aligned (i.e.
-    no placement step)
+  optional: true
   synonyms:
   - --search_and_align_only
+  description: Stop GraftM running after reads have been identified and aligned (i.e.
+    no placement step)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Stop GraftM running after reads have been identified (i.e. no alignment
-    or placement steps)
+  optional: true
   synonyms:
   - --search_only
+  description: Stop GraftM running after reads have been identified (i.e. no alignment
+    or placement steps)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Cross check identified reads using an 18S specific HMM to help filter
-    out eukaryotic ribosomal reads
+  optional: true
   synonyms:
   - --euk_check
+  description: Cross check identified reads using an 18S specific HMM to help filter
+    out eukaryotic ribosomal reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "{hmmsearch,diamond,hmmsearch+diamond}\nSearch method (default: hmmsearch)"
+  optional: true
   synonyms:
   - --search_method
+  description: "{hmmsearch,diamond,hmmsearch+diamond}\nSearch method (default: hmmsearch)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Path to a diamond database. Sequences with better hits to these proteins
-    will be excluded.
+  optional: true
   synonyms:
   - --decoy_database
+  description: Path to a diamond database. Sequences with better hits to these proteins
+    will be excluded.
   args: !SimpleFlagArg
     name: DECOY_DATABASE
-  optional: true
 - !Flag
-  description: Maximum range to use when searching for potentially linked reads (when
-    searching contigs)
+  optional: true
   synonyms:
   - --maximum_range
+  description: Maximum range to use when searching for potentially linked reads (when
+    searching contigs)
   args: !SimpleFlagArg
     name: MAXIMUM_RANGE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --expand_search_contigs
   description: Provide an assembly of the sample being searched. This assembly will
     initially be searched for full length genes, from which a sample specific HMM
     model will be created and used in the search step of graftM.
-  synonyms:
-  - --expand_search_contigs
   args: !RepeatFlagArg
     name: EXPAND_SEARCH_CONTIGS
-  optional: true
 - !Flag
-  description: Specify a list of paths to custom HMM(s) to search the data with.
+  optional: true
   synonyms:
   - --search_hmm_files
+  description: Specify a list of paths to custom HMM(s) to search the data with.
   args: !RepeatFlagArg
     name: SEARCH_HMM_FILES
-  optional: true
 - !Flag
-  description: a file containing a list of paths to custom HMM(s) to search the data
-    with (one per line).
+  optional: true
   synonyms:
   - --search_hmm_list_file
+  description: a file containing a list of paths to custom HMM(s) to search the data
+    with (one per line).
   args: !SimpleFlagArg
     name: Specify
-  optional: true
 - !Flag
-  description: Specify a DIAMOND database with which to search/classify the reads.
+  optional: true
   synonyms:
   - --search_diamond_file
+  description: Specify a DIAMOND database with which to search/classify the reads.
   args: !SimpleFlagArg
     name: SEARCH_DIAMOND_FILE
-  optional: true
 - !Flag
-  description: Reads will be aligned to this HMM after identification. N.B. This option
-    can only be used if no placement is required.
+  optional: true
   synonyms:
   - --aln_hmm_file
+  description: Reads will be aligned to this HMM after identification. N.B. This option
+    can only be used if no placement is required.
   args: !SimpleFlagArg
     name: ALN_HMM_FILE
-  optional: true
 - !Flag
-  description: 'Taxonomic assignment method, either pplacer (phylogenetic) or DIAMOND
-    (pairwise). default = pplacer (default: pplacer)'
+  optional: true
   synonyms:
   - --assignment_method
+  description: 'Taxonomic assignment method, either pplacer (phylogenetic) or DIAMOND
+    (pairwise). default = pplacer (default: pplacer)'
   args: !ChoiceFlagArg
     choices: !!set
-      pplacer:
       diamond:
-  optional: true
+      pplacer:
 - !Flag
-  description: 'This flag allows you to change the likelihood cutoff for phylogenetic
-    placement of reads. (default: 0.75)'
+  optional: true
   synonyms:
   - --placements_cutoff
+  description: 'This flag allows you to change the likelihood cutoff for phylogenetic
+    placement of reads. (default: 0.75)'
   args: !SimpleFlagArg
     name: confidence
-  optional: true
 - !Flag
-  description: Ignore the placements cutoff and simply use the best placement assigned
-    to the read.
+  optional: true
   synonyms:
   - --resolve_placements
+  description: Ignore the placements cutoff and simply use the best placement assigned
+    to the read.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no_merge_reads
   description: When this flag is specified, the alignment of the forward and reverse
     reads will not be merged before placement. If paired reads are provided, pair
     with the most confident placement will be used for classification.
-  synonyms:
-  - --no_merge_reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Use this flag to specify the HMM that is used in the Eukaryotic contamination
-    screen
+  optional: true
   synonyms:
   - --euk_hmm_file
+  description: Use this flag to specify the HMM that is used in the Eukaryotic contamination
+    screen
   args: !SimpleFlagArg
     name: EUK_HMM_FILE
-  optional: true
 - !Flag
-  description: 'Minimum number of nucleotides in an open reading frame (default: 96)'
+  optional: true
   synonyms:
   - --min_orf_length
+  description: 'Minimum number of nucleotides in an open reading frame (default: 96)'
   args: !SimpleFlagArg
     name: length
-  optional: true
 - !Flag
-  description: Only use this many base pairs at the start of each sequence searched
+  optional: true
   synonyms:
   - --restrict_read_length
+  description: Only use this many base pairs at the start of each sequence searched
   args: !SimpleFlagArg
     name: length
-  optional: true
 - !Flag
-  description: '1 - 5, 1 being silent, 5 being noisy indeed. (default: 4)'
+  optional: true
   synonyms:
   - --verbosity
+  description: '1 - 5, 1 being silent, 5 being noisy indeed. (default: 4)'
   args: !SimpleFlagArg
     name: verbosity
-  optional: true
 - !Flag
-  description: Output logging information to this file
+  optional: true
   synonyms:
   - --log
+  description: Output logging information to this file
   args: !SimpleFlagArg
     name: logfile
-  optional: true
 - !Flag
-  description: 'Output directory name (default: GraftM_output)'
+  optional: true
   synonyms:
   - --output_directory
+  description: 'Output directory name (default: GraftM_output)'
   args: !SimpleFlagArg
     name: reference_package
-  optional: true
 - !Flag
-  description: Force overwrite the output directory if one already exists with the
-    same name
+  optional: true
   synonyms:
   - --force
+  description: Force overwrite the output directory if one already exists with the
+    same name
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'If the number of samples is greater than this, do not output KRONA
-    diagram (default: 100)'
+  optional: true
   synonyms:
   - --max_samples_for_krona
+  description: 'If the number of samples is greater than this, do not output KRONA
+    diagram (default: 100)'
   args: !SimpleFlagArg
     name: MAX_SAMPLES_FOR_KRONA
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: graftM graft [-h] [--forward forward_read [forward_read ...]]\n\
@@ -358,3 +358,4 @@ help_text: "usage: graftM graft [-h] [--forward forward_read [forward_read ...]]
   \                --expand_search_contigs my_assembly_of_my_reads.fa\n"
 generated_using:
 - --help
+docker_image:

@@ -26,6 +26,9 @@ task Anviscriptsnvstointeractive {
       ~{if (only_in_genes) then "--only-in-genes" else ""} \
       ~{if (just_do_it) then "--just-do-it" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_departure_from_consensus: "Minimum departure from consensus at a given variable\\nnucleotide position. The default is 0.00."
     max_departure_from_consensus: "Maximum departure from consensus at a given variable\\nnucleotide position. The default is 1.00."

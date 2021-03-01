@@ -28,6 +28,9 @@ task Sam2bedmegarow {
       ~{if (starch_gzip) then "--starch-gzip" else ""} \
       ~{if (starch_note) then "--starch-note" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep_header: "to preserve the header data from the SAM input as"
     all_reads: "(-a)\\nInclude both unmapped and mapped reads in output"

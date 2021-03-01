@@ -18,6 +18,9 @@ task BedReadCount {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Input BAM file."
     min_mapq: "Minimum mapping quality.\\nDefault value: '1'"

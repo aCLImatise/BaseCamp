@@ -42,6 +42,9 @@ task PauvreCustommargin {
       ~{if defined(x_bin) then ("--xbin " +  '"' + x_bin + '"') else ""} \
       ~{if (add_y_axes) then "--add-yaxes" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     dpi: "Change the dpi from the default 600 if you need it"

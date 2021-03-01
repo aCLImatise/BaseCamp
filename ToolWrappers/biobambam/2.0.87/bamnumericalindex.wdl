@@ -4,6 +4,9 @@ task Bamnumericalindex {
   command <<<
     bamnumericalindex
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

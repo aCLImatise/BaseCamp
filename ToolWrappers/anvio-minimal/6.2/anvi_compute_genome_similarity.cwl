@@ -6,7 +6,7 @@ inputs:
     \ these columns: 'name', 'bin_id',\n'collection_id', 'profile_db_path', 'contigs_db_path'.\n\
     Each line should list a single entry, where 'name' can\nbe any name to describe\
     \ the anvi'o bin identified as\n'bin_id' that is stored in a collection."
-  type: File
+  type: File?
   inputBinding:
     prefix: --internal-genomes
 - id: in_external_genomes
@@ -15,7 +15,7 @@ inputs:
     \ read\n'contigs_db_path'. Each line in the file should\ndescribe a single entry,\
     \ where the first column is the\nname of the genome (or MAG), and the second column\
     \ is\nthe anvi'o contigs database generated for this genome."
-  type: File
+  type: File?
   inputBinding:
     prefix: --external-genomes
 - id: in_fast_a_text_file
@@ -26,12 +26,12 @@ inputs:
     \ should\ndescribe a single entry, where the first column is the\nname of the\
     \ FASTA file or corresponding sequence, and\nthe second column is the path to\
     \ the FASTA file\nitself."
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta-text-file
 - id: in_output_dir
   doc: Directory path for output files
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-dir
 - id: in_pan_db
@@ -40,7 +40,7 @@ inputs:
     can show where the pan database is and anvi'o would\nautomatically add the results\
     \ into the misc data\ntables of your pangenome. Those data can then be shown\n\
     as heatmaps on the pan interactive interface through\nthe 'layers' tab."
-  type: string
+  type: string?
   inputBinding:
     prefix: --pan-db
 - id: in_program
@@ -52,23 +52,23 @@ inputs:
     \ but its really not\nintended for genome comparisons. If you don't choose\nanything\
     \ here, anvi'o will reluctantly set the program\nto pyANI, but you really should\
     \ be the one who is on\ntop of these things."
-  type: string
+  type: string?
   inputBinding:
     prefix: --program
 - id: in_fast_ani_km_er_size
   doc: Choose a kmer. The default is 16.
-  type: long
+  type: long?
   inputBinding:
     prefix: --fastani-kmer-size
 - id: in_fragment_length
   doc: Choose a fragment length. The default is 3000.
-  type: long
+  type: long?
   inputBinding:
     prefix: --fragment-length
 - id: in_min_num_fragments
   doc: "Choose the minimum number of fragment lengths to that\ncan can be trusted.\
     \ The default is 50."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-num-fragments
 - id: in_method
@@ -79,7 +79,7 @@ inputs:
     \ of the input sequences. 'ANIblastall': uses\nthe legacy BLASTN to align 1020nt\
     \ fragments Finally,\n'TETRA': calculates tetranucleotide frequencies of\neach\
     \ input sequence"
-  type: string
+  type: string?
   inputBinding:
     prefix: --method
 - id: in_min_alignment_fraction
@@ -91,7 +91,7 @@ inputs:
     \ and set percent identity\nscores between two genomes to 0 if the alignment\n\
     fraction *between either of them* is less than the\nparameter described here.\
     \ The default is 0."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-alignment-fraction
 - id: in_significant_alignment_length
@@ -106,7 +106,7 @@ inputs:
     \ if\n--min-alignment-fraction is your shield to protect\nyourself from incoming\
     \ garbage, --significant-\nalignment-length is your chopstick to pick out those\n\
     that may be interesting, and you are a true warrior\nhere."
-  type: long
+  type: long?
   inputBinding:
     prefix: --significant-alignment-length
 - id: in_min_full_percent_identity
@@ -123,32 +123,32 @@ inputs:
     \ When you set a value, anvi'o will go\nthrough the ANI results, and set all ANI\
     \ measures\nbetween two genomes to 0 if the *full* percent\nidentity *between\
     \ either of them* is less than the\nparameter described here. The default is 0."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-full-percent-identity
 - id: in_km_er_size
   doc: "Set the k-mer size for mash similarity checks. We\nfound 13 in almost all\
     \ cases correlates best with\nalignment-based ANI."
-  type: long
+  type: long?
   inputBinding:
     prefix: --kmer-size
 - id: in_scale
   doc: "Set the compression ratio for fasta signature file\ncomputations. The default\
     \ is 1000. Smaller ratios\ndecrease sensitivity, while larger ratios will lead\
     \ to\nlarge fasta signatures."
-  type: long
+  type: long?
   inputBinding:
     prefix: --scale
 - id: in_distance
   doc: "The distance metric for the hierarchical clustering.\nThe default is \"euclidean\"\
     ."
-  type: string
+  type: string?
   inputBinding:
     prefix: --distance
 - id: in_linkage
   doc: "The linkage method for the hierarchical clustering.\nThe default is \"ward\"\
     ."
-  type: string
+  type: string?
   inputBinding:
     prefix: --linkage
 - id: in_num_threads
@@ -158,12 +158,12 @@ inputs:
     \ you are running your commands on a SGE\n--if you are clusterizing your runs,\
     \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
     \ fast."
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-threads
 - id: in_just_do_it
   doc: Don't bother me with questions or warnings, just do
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --just-do-it
 - id: in_it_dot
@@ -177,9 +177,10 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: Directory path for output files
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-compute-genome-similarity

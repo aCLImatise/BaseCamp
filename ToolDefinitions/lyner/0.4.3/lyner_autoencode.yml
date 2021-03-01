@@ -5,21 +5,38 @@ command:
 positional: []
 named:
 - !Flag
-  description: "-f, --from-file FILE\n-s, --store-model PATH\n--loss [kld|mae|mape|mse|msle|binary_crossentropy|categorical_crossentropy|categorical_hinge|cosine|cosine_proximity|hinge|logcosh|poisson|sparse_categorical_crossentropy|squared_hinge]\n\
-    -o, --optimiser [adadelta|adagrad|adam|adamax|nadam|rmsprop|sgd]\n-e, --epochs\
-    \ INTEGER\n-b, --batch-size INTEGER\n-s, --shuffle BOOLEAN\n-v, --validation-split\
-    \ FLOAT RANGE\n-w, --adjust-weights FLOAT\n-m, --mode [discard|nodes|weights]\n\
-    --help                          Show this message and exit.\n"
-  synonyms:
-  - -l
-  - --layer-config
-  args: !SimpleFlagArg
-    name: DICT
   optional: true
+  synonyms:
+  - -e
+  - --epochs
+  - -b
+  - --batch-size
+  - -s
+  - --shuffle
+  - -v
+  - --validation-split
+  description: RANGE
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --adjust-weights
+  - -m
+  - --mode
+  description: '[discard|nodes|weights]'
+  args: !SimpleFlagArg
+    name: FLOAT
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: lyner autoencode [OPTIONS]\n\n  Build and train an autoencoder.\n\
@@ -31,3 +48,4 @@ help_text: "Usage: lyner autoencode [OPTIONS]\n\n  Build and train an autoencode
   \  --help                          Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

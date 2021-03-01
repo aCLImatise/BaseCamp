@@ -3,7 +3,7 @@ id: rmiregistry.cwl
 inputs:
 - id: in_runtime_flag_pass
   doc: <runtime flag> Pass argument to the java interpreter
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -J
 - id: in_options
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rmiregistry

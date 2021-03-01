@@ -1,0 +1,57 @@
+!Command
+command:
+- CrossMap.py
+- gvcf
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: chain_file
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: input.gvcf
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: refGenome.fa
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: output_file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --no-comp-alleles
+  description: "If set, CrossMap does NOT check if the reference allele\nis different\
+    \ from the alternate allele."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --compress
+  description: "If set, compress the output gVCF file by calling the\nsystem \"gzip\"\
+    .\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: \nCrossMap.py gvcf <chain_file>  <input.gvcf>  <refGenome.fa> \
+  \ <output_file> [options]\n\nExamples:\nCrossMap.py gvcf hg19ToHg18.over.chain.gz\
+  \ test.hg19.gvcf hg18.fa test.hg18.gvcf                     #comparing ref_allele\
+  \ to alt_allele to make sure they are different.\nCrossMap.py gvcf hg19ToHg18.over.chain.gz\
+  \ test.hg19.gvcf hg18.fa test.hg18.gvcf  --no-comp-alleles  #do NOT compare ref_allele\
+  \ to alt_allele.\n\nOptions:\n  --no-comp-alleles  If set, CrossMap does NOT check\
+  \ if the reference allele\n                     is different from the alternate\
+  \ allele.\n  --compress         If set, compress the output gVCF file by calling\
+  \ the\n                     system \"gzip\".\n"
+generated_using: []
+docker_image: quay.io/biocontainers/crossmap:0.5.2--pyh7b7c402_0

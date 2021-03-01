@@ -4,41 +4,128 @@ command:
 positional: []
 named:
 - !Flag
-  description: "-ch=opt                 Tell the data|render server the host name\
-    \ of the client, use with -rc.\n--connect-id=opt        Set the ID of the server\
-    \ and client to make sure they match. 0 is reserved to imply none specified.\n\
-    --cslog=opt             ClientServerStream log file.\n--data-server-port=opt\n\
-    -dsp=opt                What port data server use to connect to the client. (default\
-    \ 11111).\n--disable-registry\n-dr                     Do not use registry when\
-    \ running ParaView (for testing).\n--enable-bt             Enable stack trace\
-    \ signal handler.\n--enable-streaming      EXPERIMENTAL: When specified, view-based\
-    \ streaming is enabled for certain views and representation types.\n--help\n/?\
-    \                      Displays available command line arguments.\n--hostname=opt\
-    \          Override the hostname to be used to connect to this process. By default,\
-    \ the hostname is determined using appropriate system calls.\n--multi-clients\
-    \         Allow server to keep listening for serveral client toconnect to it and\
-    \ share the same visualization session.\n--multi-clients-debug   Allow server\
-    \ to keep listening for serveral client toconnect to it and share the same visualization\
-    \ session.While keeping the error macro on the server session for debug.\n--print-monitors\
-    \        Print detected monitors and exit (Windows only).\n--reverse-connection\n\
-    -rc                     Have the server connect to the client.\n--test-plugin=opt\
-    \       Specify the name of the plugin to load for testing\n--test-plugin-path=opt\
-    \  Specify the path where more plugins can be found.This is typically used when\
-    \ testing plugins.\n--timeout=opt           Time (in minutes) since connecting\
-    \ with a client after which the server may timeout. The client typically shows\
-    \ warning messages before the server times out.\n--version\n-V               \
-    \       Give the version number and exit.\n"
+  optional: true
   synonyms:
   - --client-host
+  - -ch
+  description: Tell the data|render server the host name of the client, use with -rc.
   args: !SimpleFlagArg
     name: opt
+- !Flag
   optional: true
+  synonyms:
+  - --connect-id
+  description: Set the ID of the server and client to make sure they match. 0 is reserved
+    to imply none specified.
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --cslog
+  description: ClientServerStream log file.
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --data-server-port
+  - -dsp
+  description: What port data server use to connect to the client. (default 11111).
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --disable-registry
+  - -dr
+  description: Do not use registry when running ParaView (for testing).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --enable-bt
+  description: Enable stack trace signal handler.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --enable-streaming
+  description: 'EXPERIMENTAL: When specified, view-based streaming is enabled for
+    certain views and representation types.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hostname
+  description: Override the hostname to be used to connect to this process. By default,
+    the hostname is determined using appropriate system calls.
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --multi-clients
+  description: Allow server to keep listening for serveral client toconnect to it
+    and share the same visualization session.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --multi-clients-debug
+  description: Allow server to keep listening for serveral client toconnect to it
+    and share the same visualization session.While keeping the error macro on the
+    server session for debug.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print-monitors
+  description: Print detected monitors and exit (Windows only).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reverse-connection
+  - -rc
+  description: Have the server connect to the client.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --test-plugin
+  description: Specify the name of the plugin to load for testing
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --test-plugin-path
+  description: Specify the path where more plugins can be found.This is typically
+    used when testing plugins.
+  args: !SimpleFlagArg
+    name: opt
+- !Flag
+  optional: true
+  synonyms:
+  - --timeout
+  description: Time (in minutes) since connecting with a client after which the server
+    may timeout. The client typically shows warning messages before the server times
+    out.
+  args: !SimpleFlagArg
+    name: opt
 parent:
 subcommands: []
 usage: []
 help_flag:
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -V
+  description: Give the version number and exit.
+  args: !EmptyFlagArg {}
 help_text: "\n  --client-host=opt       \n  -ch=opt                 Tell the data|render\
   \ server the host name of the client, use with -rc.\n\n  --connect-id=opt      \
   \  Set the ID of the server and client to make sure they match. 0 is reserved to\
@@ -66,3 +153,4 @@ help_text: "\n  --client-host=opt       \n  -ch=opt                 Tell the dat
   \                  Give the version number and exit.\n\n"
 generated_using:
 - --help
+docker_image:

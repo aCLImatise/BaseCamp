@@ -30,6 +30,9 @@ task Maf2vcfpl {
       ~{if (nrm_vad_col) then "--nrm-vad-col" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_maf: "Path to input file in MAF format"
     output_dir: "Path to output directory where VCFs will be stored, one per TN-pair"

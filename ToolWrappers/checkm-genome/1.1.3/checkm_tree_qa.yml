@@ -1,0 +1,81 @@
+!Command
+command:
+- checkm
+- tree_qa
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out_format
+  description: "desired output: (default: 1)\n1. brief summary of genome tree placement\n\
+    2. detailed summary of genome tree placement including lineage-specific statistics\n\
+    3. genome tree in Newick format decorated with IMG genome ids\n4. genome tree\
+    \ in Newick format decorated with taxonomy strings\n5. multiple sequence alignment\
+    \ of reference genomes and bins"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '3':
+      '4':
+      '5':
+      '2':
+      '1':
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --file
+  description: 'print results to file (default: stdout)'
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --tab_table
+  description: print tab-separated values table
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: suppress console output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: specify an alternative directory for temporary files
+  args: !SimpleFlagArg
+    name: TMPDIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: checkm tree_qa [-h] [-o {1,2,3,4,5}] [-f FILE] [--tab_table] [-q]\n\
+  \                      [--tmpdir TMPDIR]\n                      tree_dir\n\nAssess\
+  \ phylogenetic markers found in each bin.\n\npositional arguments:\n  tree_dir \
+  \             directory specified during tree command\n\noptional arguments:\n \
+  \ -h, --help            show this help message and exit\n  -o, --out_format {1,2,3,4,5}\n\
+  \                        desired output: (default: 1)\n                        \
+  \  1. brief summary of genome tree placement\n                          2. detailed\
+  \ summary of genome tree placement including lineage-specific statistics\n     \
+  \                     3. genome tree in Newick format decorated with IMG genome\
+  \ ids\n                          4. genome tree in Newick format decorated with\
+  \ taxonomy strings\n                          5. multiple sequence alignment of\
+  \ reference genomes and bins\n  -f, --file FILE       print results to file (default:\
+  \ stdout)\n  --tab_table           print tab-separated values table\n  -q, --quiet\
+  \           suppress console output\n  --tmpdir TMPDIR       specify an alternative\
+  \ directory for temporary files\n\nExample: checkm tree_qa ./output\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/checkm-genome:1.1.3--py_1

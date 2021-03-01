@@ -36,6 +36,9 @@ task Inchworm {
       ~{if defined(monitor) then ("--monitor " +  '"' + monitor + '"') else ""} \
       ~{if (show_advanced) then "--show_advanced" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reads: "<str>             :fasta file containing reads"
     km_ers: "<str>             :fasta file containing kmers"

@@ -12,6 +12,9 @@ task GcloudComponentsRepositories {
       ~{list} \
       ~{remove}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add: "Add a new Trusted Tester component repository."
     list: "List any Trusted Tester component repositories you have registered."

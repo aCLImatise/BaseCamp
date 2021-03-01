@@ -14,6 +14,9 @@ task LynerClusteragglomerative {
       ~{if defined(max_n_clusters) then ("--max-nclusters " +  '"' + max_n_clusters + '"') else ""} \
       ~{if defined(n_clusters) then ("--nclusters " +  '"' + n_clusters + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     by: "Any comma separated combination of: 'trend',\\n'mean', 'median', 'mad', 'var', 'ontology'.\\nOrder is relevant."
     min_n_clusters: "The minimum number of clusters to build. NOTE:\\nThis option is mutually exclusive with:\\n[nclusters]."

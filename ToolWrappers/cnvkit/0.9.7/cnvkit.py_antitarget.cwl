@@ -3,23 +3,23 @@ id: cnvkit.py_antitarget.cwl
 inputs:
 - id: in_access
   doc: "Regions of accessible sequence on chromosomes (.bed),\nas output by genome2access.py."
-  type: File
+  type: File?
   inputBinding:
     prefix: --access
 - id: in_avg_size
   doc: "Average size of antitarget bins (results are\napproximate). [Default: 150000]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --avg-size
 - id: in_min_size
   doc: "Minimum size of antitarget bins (smaller regions are\ndropped). [Default:\
     \ 1/16 avg size, calculated]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-size
 - id: in_output
   doc: "Output file name.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -28,9 +28,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file name.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cnvkit.py

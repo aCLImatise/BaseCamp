@@ -52,6 +52,9 @@ task CreateNewcase {
       ~{if defined(handle_preexisting_dirs) then ("--handle-preexisting-dirs " +  '"' + handle_preexisting_dirs + '"') else ""} \
       ~{if defined(input_dir) then ("--input-dir " +  '"' + input_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     res: "[--machine MACHINE] [--compiler COMPILER]"
     debug: "Print debug information (very verbose) to file /create_newcase.log"

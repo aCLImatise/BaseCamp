@@ -30,6 +30,9 @@ task TransMap2hintspl {
       ~{if defined(tss_tts_radius) then ("--tss_tts_radius " +  '"' + tss_tts_radius + '"') else ""} \
       ~{if defined(source) then ("--source " +  '"' + source + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep_ids: "If idfile is given, then only those genes are used."
     priority: "larger number = higher priority (default 4)"

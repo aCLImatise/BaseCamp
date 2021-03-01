@@ -44,6 +44,9 @@ task Livekrakenbuild {
       ~{if defined(shrink_block_offset) then ("--shrink-block-offset " +  '"' + shrink_block_offset + '"') else ""} \
       ~{if (work_on_disk) then "--work-on-disk" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     download_taxonomy: "Download NCBI taxonomic information"
     download_library: "Download partial library\\n(TYPE = one of \\\"bacteria\\\", \\\"plasmids\\\",\\n\\\"viruses\\\", \\\"human\\\")"

@@ -8,6 +8,9 @@ task Meme {
     meme \
       ~{alignment}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignment: "[-wg <wg>]              gap opening cost for multiple alignments"
   }

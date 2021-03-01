@@ -10,6 +10,9 @@ task ConvertMetaMapsToMashpl {
       ~{perl} \
       ~{convert_meta_map_to_mash_do_tpl}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     perl: ""
     convert_meta_map_to_mash_do_tpl: ""

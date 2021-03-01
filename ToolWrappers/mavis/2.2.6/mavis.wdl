@@ -8,6 +8,9 @@ task Mavis {
     mavis \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
   }

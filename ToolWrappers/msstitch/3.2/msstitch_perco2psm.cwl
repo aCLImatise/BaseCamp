@@ -3,12 +3,12 @@ id: msstitch_perco2psm.cwl
 inputs:
 - id: in_directory_to_output
   doc: Directory to output in
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -d
 - id: in_output_file
   doc: Output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_multiple_input_files
@@ -24,12 +24,12 @@ inputs:
     prefix: --mzids
 - id: in_per_co
   doc: Percolator XML output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --perco
 - id: in_filt_pep
   doc: Peptide q-value cutoff level as a floating point
-  type: string
+  type: string?
   inputBinding:
     prefix: --filtpep
 - id: in_number
@@ -43,19 +43,20 @@ outputs:
   type: stdout
 - id: out_directory_to_output
   doc: Directory to output in
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_directory_to_output)
 - id: out_output_file
   doc: Output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
 - id: out_per_co
   doc: Percolator XML output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_per_co)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - msstitch

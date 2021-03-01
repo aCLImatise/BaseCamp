@@ -10,6 +10,9 @@ task TurboFoldsmp {
       ~{sequence_dot} \
       ~{to_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequence_dot: "Default is no limit."
     to_dot: "SHAPEintercept"

@@ -3,17 +3,17 @@ id: agg_ingest2.cwl
 inputs:
 - id: in_output
   doc: agg will output output_prefix.bcf and output_prefix.dpt
-  type: string
+  type: string?
   inputBinding:
     prefix: --output
 - id: in_thread
   doc: number of compression threads [0]
-  type: long
+  type: long?
   inputBinding:
     prefix: --thread
 - id: in_list
   doc: files.txt             plain text file listing agg chunks to merge]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --list
 - id: in_input_one
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agg

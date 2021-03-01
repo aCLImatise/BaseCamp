@@ -4,6 +4,9 @@ task Acdc {
   command <<<
     acdc
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

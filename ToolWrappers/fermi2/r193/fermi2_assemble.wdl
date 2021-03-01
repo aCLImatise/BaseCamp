@@ -14,6 +14,9 @@ task Fermi2Assemble {
       ~{if defined(min_merge_length) then ("-m " +  '"' + min_merge_length + '"') else ""} \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_match: "min match [0]"
     min_merge_length: "min merge length [0]"

@@ -50,6 +50,9 @@ task Dkfzbiasfilterpy {
       ~{if (write_qc) then "--writeQC" else ""} \
       ~{if (pass_only) then "--passOnly" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     temp_folder: "Path to the folder where temporary files are stored\\n[default: /tmp]"
     mapq: "Minimal mapping quality of a read to be considered for\\nerror count calculation [default: 30]"

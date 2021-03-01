@@ -28,6 +28,9 @@ task StreamAtac {
       ~{if defined(file_format) then ("--file_format " +  '"' + file_format + '"') else ""} \
       ~{if defined(output_folder) then ("--output_folder " +  '"' + output_folder + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_count: "scATAC-seq counts file name (default: None)"
     file_region: "scATAC-seq regions file name in .bed or .bed.gz format\\n(default: None)"

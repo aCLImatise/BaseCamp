@@ -2,14 +2,17 @@ version 1.0
 
 task CondenseBedGraphpl {
   input {
-    File? log_output_log
+    File? log
   }
   command <<<
     condenseBedGraph_pl \
-      ~{if defined(log_output_log) then ("-s " +  '"' + log_output_log + '"') else ""}
+      ~{if defined(log) then ("-log " +  '"' + log + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    log_output_log: "-log (output log2)\\n"
+    log: "(output log2)"
   }
   output {
     File out_stdout = stdout()

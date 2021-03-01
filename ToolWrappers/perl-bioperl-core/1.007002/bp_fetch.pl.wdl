@@ -28,6 +28,9 @@ task BpFetchpl {
       ~{if (dir) then "-dir" else ""} \
       ~{if defined(type) then ("-type " +  '"' + type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fmt: "<format> - Output format\\nFasta (default), EMBL, Raw, swiss or GCG"
     acc: "- string is an accession number, not an"

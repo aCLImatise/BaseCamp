@@ -4,6 +4,9 @@ task AlgorithmSFpy {
   command <<<
     algorithm_SF_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -10,6 +10,9 @@ task Dbxcompress {
       ~{if (outfile) then "-outfile" else ""} \
       ~{if (index_dir) then "-indexdir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "outfile    [*.dbxcompress] Output file name"
     index_dir: "directory  Index directory (optional)"

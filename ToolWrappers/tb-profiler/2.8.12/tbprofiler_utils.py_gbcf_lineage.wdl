@@ -12,6 +12,9 @@ task TbprofilerUtilspyGbcfLineage {
       ~{if defined(out_fmt) then ("--outfmt " +  '"' + out_fmt + '"') else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "Sample prefix (default: tbprofiler)"
     out_fmt: "Output format (default: json)"

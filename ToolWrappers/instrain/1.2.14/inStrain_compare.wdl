@@ -2,8 +2,8 @@ version 1.0
 
 task InStrainCompare {
   input {
-    Boolean? list_instrain_objects
-    String? output_prefix_instraincomparer
+    Boolean? list_instrain_none
+    String? output_prefix_default
     Int? processes
     Boolean? debug
     Int? min_cov
@@ -22,8 +22,8 @@ task InStrainCompare {
   command <<<
     inStrain compare \
       ~{var_input} \
-      ~{if (list_instrain_objects) then "-i" else ""} \
-      ~{if defined(output_prefix_instraincomparer) then ("--output " +  '"' + output_prefix_instraincomparer + '"') else ""} \
+      ~{if (list_instrain_none) then "-i" else ""} \
+      ~{if defined(output_prefix_default) then ("--output " +  '"' + output_prefix_default + '"') else ""} \
       ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""} \
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(min_cov) then ("--min_cov " +  '"' + min_cov + '"') else ""} \
@@ -38,9 +38,12 @@ task InStrainCompare {
       ~{if defined(g_cov) then ("--g_cov " +  '"' + g_cov + '"') else ""} \
       ~{if defined(g_mm) then ("--g_mm " +  '"' + g_mm + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    list_instrain_objects: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\\nA list of inStrain objects, all mapped to the same\\n.fasta file (default: None)"
-    output_prefix_instraincomparer: "Output prefix (default: instrainComparer)"
+    list_instrain_none: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\\nA list of inStrain objects, all mapped to the same\\n.fasta file (default: None)"
+    output_prefix_default: "Output prefix (default: instrainComparer)"
     processes: "Number of processes to use (default: 6)"
     debug: "Make extra debugging output (default: False)"
     min_cov: "Minimum coverage to call an variant (default: 5)"

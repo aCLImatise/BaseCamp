@@ -4,6 +4,9 @@ task Byobuconfig {
   command <<<
     byobu_config
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -18,6 +18,9 @@ task BlibFilter {
       ~{if (arg_file_containing) then "-p" else ""} \
       ~{if (arg_status_control) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_sqlite_memory: "[ --memory-cache ] arg (=250)  SQLite memory cache size in Megs.  Default"
     arg_best_spectrum: "[ --min-score ] arg (=0)       Best spectrum must have at least this\\naverage score to be included.  Default 0."

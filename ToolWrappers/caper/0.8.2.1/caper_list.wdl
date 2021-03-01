@@ -28,6 +28,9 @@ task CaperList {
       ~{if defined(hide_result_before) then ("--hide-result-before " +  '"' + hide_result_before + '"') else ""} \
       ~{if (hide_sub_workflow) then "--hide-subworkflow" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dry_run: "Caper does not take any action."
     debug: "Prints all logs >= DEBUG level"

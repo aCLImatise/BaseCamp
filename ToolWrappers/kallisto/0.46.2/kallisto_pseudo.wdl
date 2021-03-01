@@ -24,6 +24,9 @@ task KallistoPseudo {
       ~{if defined(sd) then ("--sd " +  '"' + sd + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index: "Filename for the kallisto index to be used for\\npseudoalignment"
     output_dir: "Directory to write output to"

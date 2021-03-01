@@ -30,6 +30,9 @@ task Monolinker {
       ~{if (link_list_assemblies) then "-a" else ""} \
       ~{if (link_monoapiinfo_descriptor) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "About the Mono CIL Linker"
     out: "Specify the output directory, default to `output'"

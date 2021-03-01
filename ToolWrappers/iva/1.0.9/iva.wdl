@@ -36,7 +36,6 @@ task Iva {
     Int? max_insert
     Int? threads
     Boolean? kmc_one_thread
-    String? t_slash_threads
     Float? strand_bias
     Directory? test
   }
@@ -76,10 +75,12 @@ task Iva {
       ~{if defined(max_insert) then ("--max_insert " +  '"' + max_insert + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (kmc_one_thread) then "--kmc_onethread" else ""} \
-      ~{if defined(t_slash_threads) then ("-t/--threads " +  '"' + t_slash_threads + '"') else ""} \
       ~{if defined(strand_bias) then ("--strand_bias " +  '"' + strand_bias + '"') else ""} \
       ~{if (test) then "--test" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_forward_reads: "[.gz], --reads_fwd filename[.gz]\\nName of forward reads fasta/q file. Must be used in\\nconjunction with --reads_rev"
     name_reverse_reads: "[.gz], --reads_rev filename[.gz]\\nName of reverse reads fasta/q file. Must be used in\\nconjunction with --reads_fwd"
@@ -115,7 +116,6 @@ task Iva {
     max_insert: "Maximum insert size (includes read length). Reads with\\ninferred insert size more than the maximum will not be\\nused to extend contigs [800]"
     threads: "Number of threads to use [1]"
     kmc_one_thread: "Force kmc to use one thread. By default the value of"
-    t_slash_threads: "used when running kmc"
     strand_bias: "in [0,0.5]\\nSet strand bias cutoff of mapped reads when trimming\\ncontig ends, in the interval [0,0.5]. A value of x\\nmeans that a base needs min(fwd_depth, rev_depth) /\\ntotal_depth <= x. The only time this should be used is\\nwith libraries with overlapping reads (ie fragment\\nlength < 2*read length), and even then, it can make\\nresults worse. If used, try a low value like 0.1 first\\n[0]"
     test: "Run using built in test data. All other options will\\nbe ignored, except the mandatory output directory, and\\n--trimmomatic and --threads can be also be used"
   }

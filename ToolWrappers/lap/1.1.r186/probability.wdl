@@ -26,6 +26,9 @@ task Probability {
       ~{if defined(separation_std_dev) then ("--separation-std-dev " +  '"' + separation_std_dev + '"') else ""} \
       ~{if (use_mates) then "--use-mates" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly: "The reference sequence from which the reads are\\nsupposed to have been generated"
     accuracy: "The probability that a base is read accurately\\n(default=0.98)"

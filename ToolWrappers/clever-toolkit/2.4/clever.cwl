@@ -4,72 +4,72 @@ inputs:
 - id: in_sorted
   doc: "Input BAM file is sorted by position. Note that this\nrequires alternative\
     \ alignments to be given as XA tags\n(like produced by BWA, stampy, etc.)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sorted
 - id: in_use_x_a
   doc: "Interprete XA tags in input BAM file. This option\nSHOULD be given for mappers\
     \ writing XA tags like BWA\nand stampy."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use_xa
 - id: in_use_mapq
   doc: Use MAPQ value instead re-computing posteriors.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use_mapq
-- id: in_number_use_default
+- id: in_number_threads_use
   doc: Number of threads to use (default=1).
-  type: long
+  type: long?
   inputBinding:
     prefix: -T
 - id: in_delete_old_result
   doc: "Delete old result and working directory first (if\npresent)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_working_directory_default
   doc: 'Working directory (default: <result-directory>/work).'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -w
-- id: in_recompute_as_tags
+- id: in_recompute_tags_ignored
   doc: "Do not (re-)compute AS tags. If given, the argument\n<ref.fasta(.gz)> is ignored."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
-- id: in_keep_directory_whenfinished
+- id: in_keep_working_directory
   doc: "Keep working directory (default: delete directory when\nfinished)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -k
-- id: in_take_read_groups
+- id: in_read_groups_account
   doc: Take read groups into account (multi sample mode).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_additional_parameters_passed
   doc: "Additional parameters to be passed to the CLEVER core\nalgorithm. Call \"\
     clever-core\" without parameters for a\nlist of options."
-  type: string
+  type: string?
   inputBinding:
     prefix: -C
 - id: in_additional_parameters_postprocessing
   doc: "Additional parameters for postprocessing results. Call\n\"postprocess-predictions\"\
     \ without parameters for a\nlist of options."
-  type: string
+  type: string?
   inputBinding:
     prefix: -P
-- id: in_create_plot_read
+- id: in_create_plot_length
   doc: "Create a plot of internal segment size distribution\n(=fragment size - 2x\
     \ read length). Also displays the\nestimated normal distribution (requires NumPy\
     \ and\nmatplotlib)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -I
 - id: in_chromosome
   doc: "Only process given chromosome (default: all).\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --chromosome
 - id: in_bam_file
@@ -81,6 +81,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - clever

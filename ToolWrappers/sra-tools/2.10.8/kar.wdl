@@ -32,6 +32,9 @@ task Kar {
       ~{if (md_five) then "--md5" else ""} \
       ~{if (t) then "-t" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create new archive."
     extract: "Extract the contents of an archive into"

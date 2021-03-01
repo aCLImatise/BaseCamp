@@ -34,6 +34,9 @@ task Tn93FASTA {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     q: ""
     zero: ""

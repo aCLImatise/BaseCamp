@@ -18,6 +18,9 @@ task PypgatkClipyCosmictoproteindb {
       ~{if defined(tissue_type) then ("--tissue_type " +  '"' + tissue_type + '"') else ""} \
       ~{if (split_by_tissue_type) then "--split_by_tissue_type" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: "Configuration file for the cosmic data pipelines"
     input_mutation: "Cosmic Mutation data file"

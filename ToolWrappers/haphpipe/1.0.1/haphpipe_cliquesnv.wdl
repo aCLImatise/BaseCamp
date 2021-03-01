@@ -42,6 +42,9 @@ task HaphpipeCliquesnv {
       ~{if defined(n_cpu) then ("--ncpu " +  '"' + n_cpu + '"') else ""} \
       ~{if (keep_tmp) then "--keep_tmp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fq_one: "Fastq file with read 1"
     fq_two: "Fastq file with read 2"

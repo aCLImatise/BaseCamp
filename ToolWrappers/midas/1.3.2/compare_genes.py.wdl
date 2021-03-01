@@ -20,6 +20,9 @@ task CompareGenespy {
       ~{if defined(d_type) then ("--dtype " +  '"' + d_type + '"') else ""} \
       ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "Path to output file"
     max_genes: "Maximum number of genes to use. Useful for quick tests (use all)"

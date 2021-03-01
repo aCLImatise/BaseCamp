@@ -32,6 +32,9 @@ task Kobasidentify {
       ~{if defined(blastp) then ("--blastp " +  '"' + blastp + '"') else ""} \
       ~{if defined(blastx) then ("--blastx " +  '"' + blastx + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fg_file: "foreground file, the output of annotate"
     bg_file: "background file, the output of annotate (3 or 4-letter\\nfile name is not allowed), or species abbreviation\\n(for example: hsa for Homo sapiens, mmu for Mus\\nmusculus, dme for Drosophila melanogaster, ath for\\nArabidopsis thaliana, sce for Saccharomyces cerevisiae\\nand eco for Escherichia coli K-12 MG1655), default\\nsame species as annotate"

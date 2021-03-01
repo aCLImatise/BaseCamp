@@ -32,6 +32,9 @@ task OvStoreConfig {
       ~{if (sort_memory) then "-sortmemory" else ""} \
       ~{if defined(list_inputs) then ("-listinputs " +  '"' + list_inputs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_seqstore_assembly: "path to seqStore for this assembly"
     list_ovb_files: "a list of ovb files in 'fileList'"

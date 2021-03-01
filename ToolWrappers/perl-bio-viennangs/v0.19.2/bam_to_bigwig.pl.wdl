@@ -18,6 +18,9 @@ task BamToBigwigpl {
       ~{if (log) then "--log" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Input file in BAM format"
     cs: "Chromosome sizes file"

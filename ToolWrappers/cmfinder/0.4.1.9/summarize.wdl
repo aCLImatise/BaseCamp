@@ -14,6 +14,9 @@ task Summarize {
       ~{if (_gsc_weighting) then "-w" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     background_gc_content: ": Background GC content"
     _gsc_weighting: ": Do GSC weighting"

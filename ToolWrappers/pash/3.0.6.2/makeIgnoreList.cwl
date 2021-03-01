@@ -3,22 +3,22 @@ id: makeIgnoreList.cwl
 inputs:
 - id: in_m
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -m
 - id: in_c
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -c
 - id: in_o
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_i
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_o
   doc: ''
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_o)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - makeIgnoreList

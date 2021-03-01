@@ -11,12 +11,12 @@ subcommands:
   - compounds.
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: enrichm
-    optional: false
+    description: ''
   named: []
-  parent: &id013 !Command
+  parent: &id014 !Command
     command: *id001
     positional: []
     named: []
@@ -26,12 +26,12 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: enrichm
-        optional: false
+        description: ''
       named: []
-      parent: &id012 !Command
+      parent: &id013 !Command
         command: *id001
         positional: []
         named: []
@@ -41,12 +41,12 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: enrichm
-            optional: false
+            description: ''
           named: []
-          parent: &id011 !Command
+          parent: &id012 !Command
             command: *id001
             positional: []
             named: []
@@ -56,12 +56,12 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: enrichm
-                optional: false
+                description: ''
               named: []
-              parent: &id003 !Command
+              parent: &id011 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -71,125 +71,954 @@ subcommands:
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: enrichm
-                    optional: false
+                    description: ''
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: enrichm
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --version
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      help_text: "usage: enrichm [-h] [--version]\n              \
+                        \ {data,annotate,classify,enrichment,uses,pathway,explore,generate,predict}\n\
+                        \               ...\nenrichm: error: argument subparser_name:\
+                        \ invalid choice: 'compounds.' (choose from 'data', 'annotate',\
+                        \ 'classify', 'enrichment', 'uses', 'pathway', 'explore',\
+                        \ 'generate', 'predict')\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - enrichm
+                      - Annotation
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: enrichm
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --version
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      help_text: "usage: enrichm [-h] [--version]\n              \
+                        \ {data,annotate,classify,enrichment,uses,pathway,explore,generate,predict}\n\
+                        \               ...\nenrichm: error: argument subparser_name:\
+                        \ invalid choice: 'Annotation' (choose from 'data', 'annotate',\
+                        \ 'classify', 'enrichment', 'uses', 'pathway', 'explore',\
+                        \ 'generate', 'predict')\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - enrichm
+                      - predict
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --log
+                        description: Output logging information to this file.
+                        args: !SimpleFlagArg
+                          name: LOG
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --verbosity
+                        description: Level of verbosity (1 - 5 - default = 4) 5 =
+                          Very verbose, 1 = Silent
+                        args: !SimpleFlagArg
+                          name: VERBOSITY
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --output
+                        description: Output directory
+                        args: !SimpleFlagArg
+                          name: OUTPUT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --force
+                        description: Overwrite previous run
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --forester_model_directory
+                        description: Pickled model to use
+                        args: !SimpleFlagArg
+                          name: FORESTER_MODEL_DIRECTORY
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --input_matrix
+                        description: "matrix of data to predict\n"
+                        args: !SimpleFlagArg
+                          name: INPUT_MATRIX
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: enrichm predict [-h] [--log LOG] [--verbosity\
+                        \ VERBOSITY]\n                       [--output OUTPUT] [--force]\
+                        \ --forester_model_directory\n                       FORESTER_MODEL_DIRECTORY\
+                        \ --input_matrix INPUT_MATRIX\n\noptional arguments:\n  -h,\
+                        \ --help            show this help message and exit\n\nLogging\
+                        \ options:\n  --log LOG             Output logging information\
+                        \ to this file.\n  --verbosity VERBOSITY\n               \
+                        \         Level of verbosity (1 - 5 - default = 4) 5 = Very\
+                        \ verbose, 1 = Silent\n\nOutput options:\n  --output OUTPUT\
+                        \       Output directory\n  --force               Overwrite\
+                        \ previous run\n\nPredict options:\n  --forester_model_directory\
+                        \ FORESTER_MODEL_DIRECTORY\n                        Pickled\
+                        \ model to use\n  --input_matrix INPUT_MATRIX\n          \
+                        \              matrix of data to predict\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - enrichm
+                      - generate
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --log
+                        description: Output logging information to this file.
+                        args: !SimpleFlagArg
+                          name: LOG
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --verbosity
+                        description: Level of verbosity (1 - 5 - default = 4) 5 =
+                          Very verbose, 1 = Silent
+                        args: !SimpleFlagArg
+                          name: VERBOSITY
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --output
+                        description: Output directory
+                        args: !SimpleFlagArg
+                          name: OUTPUT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --force
+                        description: Overwrite previous run
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --input_matrix
+                        description: input matrix of results
+                        args: !SimpleFlagArg
+                          name: INPUT_MATRIX
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --groups
+                        description: defined outcomes to train the data to
+                        args: !SimpleFlagArg
+                          name: GROUPS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --model_type
+                        description: regressor or classifier
+                        args: !ChoiceFlagArg
+                          choices: !!set
+                            ? classifier
+                            ? regressor
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --testing_portion
+                        description: portion of the input data to use for testing
+                          (default = 0.2)
+                        args: !SimpleFlagArg
+                          name: TESTING_PORTION
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --grid_search
+                        description: grid search
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --threads
+                        description: number of threads to use for hyperparameterization
+                          (default = all available)
+                        args: !SimpleFlagArg
+                          name: THREADS
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: enrichm generate [-h] [--log LOG] [--verbosity\
+                        \ VERBOSITY]\n                        [--output OUTPUT] [--force]\
+                        \ --input_matrix\n                        INPUT_MATRIX --groups\
+                        \ GROUPS --model_type\n                        {regressor,classifier}\n\
+                        \                        [--testing_portion TESTING_PORTION]\
+                        \ [--grid_search]\n                        [--threads THREADS]\n\
+                        \noptional arguments:\n  -h, --help            show this help\
+                        \ message and exit\n\nLogging options:\n  --log LOG      \
+                        \       Output logging information to this file.\n  --verbosity\
+                        \ VERBOSITY\n                        Level of verbosity (1\
+                        \ - 5 - default = 4) 5 = Very verbose, 1 = Silent\n\nOutput\
+                        \ options:\n  --output OUTPUT       Output directory\n  --force\
+                        \               Overwrite previous run\n\nGenerate options:\n\
+                        \  --input_matrix INPUT_MATRIX\n                        input\
+                        \ matrix of results\n  --groups GROUPS       defined outcomes\
+                        \ to train the data to\n  --model_type {regressor,classifier}\n\
+                        \                        regressor or classifier\n  --testing_portion\
+                        \ TESTING_PORTION\n                        portion of the\
+                        \ input data to use for testing (default = 0.2)\n\nTuning\
+                        \ options:\n  --grid_search         grid search\n  --threads\
+                        \ THREADS     number of threads to use for hyperparameterization\
+                        \ (default = all available)\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id008
+                      - enrichm
+                      - classify
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --log
+                        description: Output logging information to this file.
+                        args: !SimpleFlagArg
+                          name: LOG
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --verbosity
+                        description: Level of verbosity (1 - 5 - default = 4) 5 =
+                          Very verbose, 1 = Silent
+                        args: !SimpleFlagArg
+                          name: VERBOSITY
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --output
+                        description: Output directory
+                        args: !SimpleFlagArg
+                          name: OUTPUT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --force
+                        description: Overwrite previous run
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --genome_and_annotation_file
+                        description: Path to file containing a genome<tab>annotation
+                          list
+                        args: !SimpleFlagArg
+                          name: GENOME_AND_ANNOTATION_FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --genome_and_annotation_matrix
+                        description: Path to file containing a genome annotation matrix
+                        args: !SimpleFlagArg
+                          name: GENOME_AND_ANNOTATION_MATRIX
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --custom_modules
+                        description: Tab separated file containing module name, definition
+                          as the columns
+                        args: !SimpleFlagArg
+                          name: CUSTOM_MODULES
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --cutoff
+                        description: Output only modules with greater than this percent
+                          of the requied KO groups (default = print all modules)
+                        args: !SimpleFlagArg
+                          name: CUTOFF
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --aggregate
+                        description: Calculate the abundance of each pathway within
+                          each genome/sample (column)
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: enrichm classify [-h] [--log LOG] [--verbosity\
+                        \ VERBOSITY]\n                        [--output OUTPUT] [--force]\n\
+                        \                        [--genome_and_annotation_file GENOME_AND_ANNOTATION_FILE]\n\
+                        \                        [--genome_and_annotation_matrix GENOME_AND_ANNOTATION_MATRIX]\n\
+                        \                        [--custom_modules CUSTOM_MODULES]\
+                        \ [--cutoff CUTOFF]\n                        [--aggregate]\n\
+                        \noptional arguments:\n  -h, --help            show this help\
+                        \ message and exit\n\nLogging options:\n  --log LOG      \
+                        \       Output logging information to this file.\n  --verbosity\
+                        \ VERBOSITY\n                        Level of verbosity (1\
+                        \ - 5 - default = 4) 5 = Very verbose, 1 = Silent\n\nOutput\
+                        \ options:\n  --output OUTPUT       Output directory\n  --force\
+                        \               Overwrite previous run\n\nInput options:\n\
+                        \  --genome_and_annotation_file GENOME_AND_ANNOTATION_FILE\n\
+                        \                        Path to file containing a genome<tab>annotation\
+                        \ list\n  --genome_and_annotation_matrix GENOME_AND_ANNOTATION_MATRIX\n\
+                        \                        Path to file containing a genome\
+                        \ annotation matrix\n  --custom_modules CUSTOM_MODULES\n \
+                        \                       Tab separated file containing module\
+                        \ name, definition as the columns\n\nCutoff options:\n  --cutoff\
+                        \ CUTOFF       Output only modules with greater than this\
+                        \ percent of the requied KO groups (default = print all modules)\n\
+                        \nRuntime options:\n  --aggregate           Calculate the\
+                        \ abundance of each pathway within each genome/sample (column)\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id009
+                      - enrichm
+                      - enrichment
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --log
+                        description: Output logging information to this file.
+                        args: !SimpleFlagArg
+                          name: LOG
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --verbosity
+                        description: Level of verbosity (1 - 5 - default = 4) 5 =
+                          Very verbose, 1 = Silent
+                        args: !SimpleFlagArg
+                          name: VERBOSITY
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --output
+                        description: Output directory
+                        args: !SimpleFlagArg
+                          name: OUTPUT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --force
+                        description: Overwrite previous run
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --annotate_output
+                        description: Output directory provided by enrichm annotate
+                        args: !SimpleFlagArg
+                          name: ANNOTATE_OUTPUT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --metadata
+                        description: Metadata file with two columns, the first with
+                          the genome name, the second with the groupings to compare.
+                        args: !SimpleFlagArg
+                          name: METADATA
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --annotation_matrix
+                        description: Annotation matrix to compare.
+                        args: !SimpleFlagArg
+                          name: ANNOTATION_MATRIX
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --abundance
+                        description: Genome abundance matrix.
+                        args: !SimpleFlagArg
+                          name: ABUNDANCE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --abundance_metadata
+                        description: Metadata grouping abundance samples.
+                        args: !SimpleFlagArg
+                          name: ABUNDANCE_METADATA
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --transcriptome
+                        description: Genome abundance matrix.
+                        args: !SimpleFlagArg
+                          name: TRANSCRIPTOME
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --transcriptome_metadata
+                        description: Metadata grouping abundance samples.
+                        args: !SimpleFlagArg
+                          name: TRANSCRIPTOME_METADATA
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --batchfile
+                        description: metadata file to compare with.
+                        args: !SimpleFlagArg
+                          name: BATCHFILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --pval_cutoff
+                        description: Only output results with a p-value below a this
+                          cutoff (default=0.05).
+                        args: !SimpleFlagArg
+                          name: PVAL_CUTOFF
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --proportions_cutoff
+                        description: Proportion enrichment cutoff.
+                        args: !SimpleFlagArg
+                          name: PROPORTIONS_CUTOFF
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --threshold
+                        description: The threshold to control for in false discovery
+                          rate of familywise error rate.
+                        args: !SimpleFlagArg
+                          name: THRESHOLD
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --multi_test_correction
+                        description: "The form of mutiple test correction to use.\
+                          \ Uses the statsmodel module and consequently has all of\
+                          \ its options.\nDefault: Benjamini-Hochberg FDR (fdr_bh)\n\
+                          Options: Bonferroni (b)\nSidak (s)\nHolm (h)\nHolm-Sidak\
+                          \ (hs)\nSimes-Hochberg (sh)\nHommel (ho)\nFDR Benjamini-Yekutieli\
+                          \ (fdr_by)\nFDR 2-stage Benjamini-Hochberg (fdr_tsbh)\n\
+                          FDR 2-stage Benjamini-Krieger-Yekutieli (fdr_tsbky)\nFDR\
+                          \ adaptive Gavrilov-Benjamini-Sarkar (fdr_gbs))"
+                        args: !SimpleFlagArg
+                          name: MULTI_TEST_CORRECTION
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --processes
+                        description: Number of processes to use for enrichment.
+                        args: !SimpleFlagArg
+                          name: PROCESSES
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --allow_negative_values
+                        description: Allow negative values in input matrix.
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --ko
+                        description: Compare KO ids (annotated with DIAMOND)
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --ko_hmm
+                        description: Compare KO ids (annotated with HMMs)
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --pfam
+                        description: Compare Pfam ids
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --tigrfam
+                        description: Compare TIGRFAM ids
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --cluster
+                        description: Compare cluster ids
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --ortholog
+                        description: Compare ortholog ids
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --cazy
+                        description: Compare dbCAN ids
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --ec
+                        description: Compare EC ids
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: enrichm enrichment [-h] [--log LOG] [--verbosity\
+                        \ VERBOSITY]\n                          [--output OUTPUT]\
+                        \ [--force]\n                          [--annotate_output\
+                        \ ANNOTATE_OUTPUT]\n                          [--metadata\
+                        \ METADATA]\n                          [--annotation_matrix\
+                        \ ANNOTATION_MATRIX]\n                          [--abundance\
+                        \ ABUNDANCE]\n                          [--abundance_metadata\
+                        \ ABUNDANCE_METADATA]\n                          [--transcriptome\
+                        \ TRANSCRIPTOME]\n                          [--transcriptome_metadata\
+                        \ TRANSCRIPTOME_METADATA]\n                          [--batchfile\
+                        \ BATCHFILE] [--pval_cutoff PVAL_CUTOFF]\n               \
+                        \           [--proportions_cutoff PROPORTIONS_CUTOFF]\n  \
+                        \                        [--threshold THRESHOLD]\n       \
+                        \                   [--multi_test_correction MULTI_TEST_CORRECTION]\n\
+                        \                          [--processes PROCESSES] [--allow_negative_values]\n\
+                        \                          [--ko] [--ko_hmm] [--pfam] [--tigrfam]\
+                        \ [--cluster]\n                          [--ortholog] [--cazy]\
+                        \ [--ec]\n\noptional arguments:\n  -h, --help            show\
+                        \ this help message and exit\n\nLogging options:\n  --log\
+                        \ LOG             Output logging information to this file.\n\
+                        \  --verbosity VERBOSITY\n                        Level of\
+                        \ verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent\n\
+                        \nOutput options:\n  --output OUTPUT       Output directory\n\
+                        \  --force               Overwrite previous run\n\nInput options:\n\
+                        \  --annotate_output ANNOTATE_OUTPUT\n                   \
+                        \     Output directory provided by enrichm annotate\n  --metadata\
+                        \ METADATA   Metadata file with two columns, the first with\
+                        \ the genome name, the second with the groupings to compare.\n\
+                        \  --annotation_matrix ANNOTATION_MATRIX\n               \
+                        \         Annotation matrix to compare.\n  --abundance ABUNDANCE\n\
+                        \                        Genome abundance matrix.\n  --abundance_metadata\
+                        \ ABUNDANCE_METADATA\n                        Metadata grouping\
+                        \ abundance samples.\n  --transcriptome TRANSCRIPTOME\n  \
+                        \                      Genome abundance matrix.\n  --transcriptome_metadata\
+                        \ TRANSCRIPTOME_METADATA\n                        Metadata\
+                        \ grouping abundance samples.\n\nGenome Taxonomy DataBase\
+                        \ (GTDB) options:\n  --batchfile BATCHFILE\n             \
+                        \           metadata file to compare with.\n\nRuntime options:\n\
+                        \  --pval_cutoff PVAL_CUTOFF\n                        Only\
+                        \ output results with a p-value below a this cutoff (default=0.05).\n\
+                        \  --proportions_cutoff PROPORTIONS_CUTOFF\n             \
+                        \           Proportion enrichment cutoff.\n  --threshold THRESHOLD\n\
+                        \                        The threshold to control for in false\
+                        \ discovery rate of familywise error rate.\n  --multi_test_correction\
+                        \ MULTI_TEST_CORRECTION\n                        The form\
+                        \ of mutiple test correction to use. Uses the statsmodel module\
+                        \ and consequently has all of its options.\n             \
+                        \           Default: Benjamini-Hochberg FDR (fdr_bh) \n  \
+                        \                      Options: Bonferroni (b) \n        \
+                        \                \t Sidak (s) \n                        \t\
+                        \ Holm (h) \n                        \t Holm-Sidak (hs) \n\
+                        \                        \t Simes-Hochberg (sh) \n       \
+                        \                 \t Hommel (ho) \n                      \
+                        \  \t FDR Benjamini-Yekutieli (fdr_by) \n                \
+                        \        \t FDR 2-stage Benjamini-Hochberg (fdr_tsbh) \n \
+                        \                       \t FDR 2-stage Benjamini-Krieger-Yekutieli\
+                        \ (fdr_tsbky) \n                        \t FDR adaptive Gavrilov-Benjamini-Sarkar\
+                        \ (fdr_gbs))\n  --processes PROCESSES\n                  \
+                        \      Number of processes to use for enrichment.\n  --allow_negative_values\n\
+                        \                        Allow negative values in input matrix.\n\
+                        \  --ko                  Compare KO ids (annotated with DIAMOND)\n\
+                        \  --ko_hmm              Compare KO ids (annotated with HMMs)\n\
+                        \  --pfam                Compare Pfam ids\n  --tigrfam   \
+                        \          Compare TIGRFAM ids\n  --cluster             Compare\
+                        \ cluster ids\n  --ortholog            Compare ortholog ids\n\
+                        \  --cazy                Compare dbCAN ids\n  --ec       \
+                        \           Compare EC ids\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id010
+                      - enrichm
+                      - pathway
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --matrix
+                        description: KO matrix. REQUIRED.
+                        args: !SimpleFlagArg
+                          name: MATRIX
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --genome_metadata
+                        description: Metadata file with two columns, the first with
+                          the genome name, the second with the groupings to compare.
+                        args: !SimpleFlagArg
+                          name: GENOME_METADATA
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --abundance
+                        description: Abundance matrix.
+                        args: !SimpleFlagArg
+                          name: ABUNDANCE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --abundance_metadata
+                        description: Metadata file with two columns, the first with
+                          the genome name, the second with the groupings to compare.
+                        args: !SimpleFlagArg
+                          name: ABUNDANCE_METADATA
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --tpm_values
+                        description: TPM values produced by DetectM.
+                        args: !SimpleFlagArg
+                          name: TPM_VALUES
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --tpm_metadata
+                        description: Metadata file with two columns, the first with
+                          the genome name, the second with the groupings to compare.
+                        args: !SimpleFlagArg
+                          name: TPM_METADATA
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --metabolome
+                        description: Metabolome CID matrix.
+                        args: !SimpleFlagArg
+                          name: METABOLOME
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --log
+                        description: Output logging information to this file.
+                        args: !SimpleFlagArg
+                          name: LOG
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --verbosity
+                        description: Level of verbosity (1 - 5 - default = 4) 5 =
+                          Very verbose, 1 = Silent
+                        args: !SimpleFlagArg
+                          name: VERBOSITY
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --output
+                        description: Output directory
+                        args: !SimpleFlagArg
+                          name: OUTPUT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --force
+                        description: Overwrite previous run
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --limit
+                        description: USE ONLY these reactions, or reactions within
+                          this pathway or module (space separated list).
+                        args: !RepeatFlagArg
+                          name: LIMIT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --filter
+                        description: Do not use these reactions, or reactions within
+                          this pathway or module (space separated list).
+                        args: !RepeatFlagArg
+                          name: FILTER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --enrichment_output
+                        description: "Supply an enrichment output to integrate the\
+                          \ results into the output network.\n"
+                        args: !SimpleFlagArg
+                          name: ENRICHMENT_OUTPUT
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: enrichm pathway [-h] --matrix MATRIX\n  \
+                        \                     [--genome_metadata GENOME_METADATA]\n\
+                        \                       [--abundance ABUNDANCE]\n        \
+                        \               [--abundance_metadata ABUNDANCE_METADATA]\n\
+                        \                       [--tpm_values TPM_VALUES] [--tpm_metadata\
+                        \ TPM_METADATA]\n                       [--metabolome METABOLOME]\
+                        \ [--log LOG]\n                       [--verbosity VERBOSITY]\
+                        \ [--output OUTPUT] [--force]\n                       [--limit\
+                        \ LIMIT [LIMIT ...]]\n                       [--filter FILTER\
+                        \ [FILTER ...]]\n                       [--enrichment_output\
+                        \ ENRICHMENT_OUTPUT]\n\noptional arguments:\n  -h, --help\
+                        \            show this help message and exit\n\nInput options:\n\
+                        \  --matrix MATRIX       KO matrix. REQUIRED.\n  --genome_metadata\
+                        \ GENOME_METADATA\n                        Metadata file with\
+                        \ two columns, the first with the genome name, the second\
+                        \ with the groupings to compare.\n  --abundance ABUNDANCE\n\
+                        \                        Abundance matrix.\n  --abundance_metadata\
+                        \ ABUNDANCE_METADATA\n                        Metadata file\
+                        \ with two columns, the first with the genome name, the second\
+                        \ with the groupings to compare.\n  --tpm_values TPM_VALUES\n\
+                        \                        TPM values produced by DetectM.\n\
+                        \  --tpm_metadata TPM_METADATA\n                        Metadata\
+                        \ file with two columns, the first with the genome name, the\
+                        \ second with the groupings to compare.\n  --metabolome METABOLOME\n\
+                        \                        Metabolome CID matrix.\n\nLogging\
+                        \ options:\n  --log LOG             Output logging information\
+                        \ to this file.\n  --verbosity VERBOSITY\n               \
+                        \         Level of verbosity (1 - 5 - default = 4) 5 = Very\
+                        \ verbose, 1 = Silent\n\nOutput options:\n  --output OUTPUT\
+                        \       Output directory\n  --force               Overwrite\
+                        \ previous run\n\nPathway options:\n  --limit LIMIT [LIMIT\
+                        \ ...]\n                        USE ONLY these reactions,\
+                        \ or reactions within this pathway or module (space separated\
+                        \ list).\n  --filter FILTER [FILTER ...]\n               \
+                        \         Do not use these reactions, or reactions within\
+                        \ this pathway or module (space separated list).\n  --enrichment_output\
+                        \ ENRICHMENT_OUTPUT\n                        Supply an enrichment\
+                        \ output to integrate the results into the output network.\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "                         _____            _      _\
+                      \     __  __ \n                        | ____|_ __  _ __(_)\
+                      \ ___| |__ |  \\/  |\n                        |  _| | '_ \\\
+                      | '__| |/ __| '_ \\| |\\/| |\n                        | |___|\
+                      \ | | | |  | | (__| | | | |  | |\n                        |_____|_|\
+                      \ |_|_|  |_|\\___|_| |_|_|  |_|\n  ------------------------------------------------------------------------------------\n\
+                      \n  Annotation\n    annotate        -> Genome annotation pipeline.\n\
+                      \n  Enrichment analysis\n    classify        -> Determine what\
+                      \ pathways a genome encodes.\n    enrichment      -> Calculate\
+                      \ enrichment of functional genes between groups.\n\n  Network\
+                      \ analysis\n    pathway         -> Generate a metabolic network\
+                      \ from specific KEGG module or\n                       compounds.\n\
+                      \    explore         -> Take steps into metabolism using a KEGG\
+                      \ compound ID as a \n                       starting point.\
+                      \ Useful to see which pathways use a compound\n            \
+                      \           of interest.\n\n  Machine learning\n    generate\
+                      \        -> Generate a random forest model.\n    predict   \
+                      \      -> Run random forest model on new data.\n\n  Authors:\
+                      \ Joel Boyd, Ben Woodcroft, Alex Baker\n  Version: 0.5.0\n\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --version
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   help_text: "usage: enrichm [-h] [--version]\n               {data,annotate,classify,enrichment,uses,pathway,explore,generate,predict}\n\
                     \               ...\nenrichm: error: argument subparser_name:\
                     \ invalid choice: 'compounds.' (choose from 'data', 'annotate',\
                     \ 'classify', 'enrichment', 'uses', 'pathway', 'explore', 'generate',\
                     \ 'predict')\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - enrichm
-                  - Annotation
+                  command: *id005
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: enrichm
-                    optional: false
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - --version
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   help_text: "usage: enrichm [-h] [--version]\n               {data,annotate,classify,enrichment,uses,pathway,explore,generate,predict}\n\
                     \               ...\nenrichm: error: argument subparser_name:\
                     \ invalid choice: 'Annotation' (choose from 'data', 'annotate',\
                     \ 'classify', 'enrichment', 'uses', 'pathway', 'explore', 'generate',\
                     \ 'predict')\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - enrichm
-                  - predict
+                  command: *id006
                   positional: []
                   named:
                   - !Flag
-                    description: Output logging information to this file.
+                    optional: true
                     synonyms:
                     - --log
+                    description: Output logging information to this file.
                     args: !SimpleFlagArg
                       name: LOG
-                    optional: true
                   - !Flag
-                    description: Level of verbosity (1 - 5 - default = 4) 5 = Very
-                      verbose, 1 = Silent
+                    optional: true
                     synonyms:
                     - --verbosity
+                    description: Level of verbosity (1 - 5 - default = 4) 5 = Very
+                      verbose, 1 = Silent
                     args: !SimpleFlagArg
                       name: VERBOSITY
-                    optional: true
                   - !Flag
-                    description: Output directory
+                    optional: true
                     synonyms:
                     - --output
+                    description: Output directory
                     args: !SimpleFlagArg
                       name: OUTPUT
-                    optional: true
                   - !Flag
-                    description: Overwrite previous run
+                    optional: true
                     synonyms:
                     - --force
+                    description: Overwrite previous run
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Pickled model to use
+                    optional: true
                     synonyms:
                     - --forester_model_directory
+                    description: Pickled model to use
                     args: !SimpleFlagArg
                       name: FORESTER_MODEL_DIRECTORY
-                    optional: true
                   - !Flag
-                    description: "matrix of data to predict\n"
+                    optional: true
                     synonyms:
                     - --input_matrix
+                    description: "matrix of data to predict\n"
                     args: !SimpleFlagArg
                       name: INPUT_MATRIX
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: enrichm predict [-h] [--log LOG] [--verbosity\
@@ -206,95 +1035,94 @@ subcommands:
                     \                  Pickled model to use\n  --input_matrix INPUT_MATRIX\n\
                     \                        matrix of data to predict\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - enrichm
-                  - generate
+                  command: *id007
                   positional: []
                   named:
                   - !Flag
-                    description: Output logging information to this file.
+                    optional: true
                     synonyms:
                     - --log
+                    description: Output logging information to this file.
                     args: !SimpleFlagArg
                       name: LOG
-                    optional: true
                   - !Flag
-                    description: Level of verbosity (1 - 5 - default = 4) 5 = Very
-                      verbose, 1 = Silent
+                    optional: true
                     synonyms:
                     - --verbosity
+                    description: Level of verbosity (1 - 5 - default = 4) 5 = Very
+                      verbose, 1 = Silent
                     args: !SimpleFlagArg
                       name: VERBOSITY
-                    optional: true
                   - !Flag
-                    description: Output directory
+                    optional: true
                     synonyms:
                     - --output
+                    description: Output directory
                     args: !SimpleFlagArg
                       name: OUTPUT
-                    optional: true
                   - !Flag
-                    description: Overwrite previous run
+                    optional: true
                     synonyms:
                     - --force
+                    description: Overwrite previous run
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: input matrix of results
+                    optional: true
                     synonyms:
                     - --input_matrix
+                    description: input matrix of results
                     args: !SimpleFlagArg
                       name: INPUT_MATRIX
-                    optional: true
                   - !Flag
-                    description: defined outcomes to train the data to
+                    optional: true
                     synonyms:
                     - --groups
+                    description: defined outcomes to train the data to
                     args: !SimpleFlagArg
                       name: GROUPS
-                    optional: true
                   - !Flag
-                    description: regressor or classifier
+                    optional: true
                     synonyms:
                     - --model_type
+                    description: regressor or classifier
                     args: !ChoiceFlagArg
                       choices: !!set
                         ? classifier
                         ? regressor
-                    optional: true
                   - !Flag
-                    description: portion of the input data to use for testing (default
-                      = 0.2)
+                    optional: true
                     synonyms:
                     - --testing_portion
+                    description: portion of the input data to use for testing (default
+                      = 0.2)
                     args: !SimpleFlagArg
                       name: TESTING_PORTION
-                    optional: true
                   - !Flag
-                    description: grid search
+                    optional: true
                     synonyms:
                     - --grid_search
+                    description: grid search
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: number of threads to use for hyperparameterization
-                      (default = all available)
+                    optional: true
                     synonyms:
                     - --threads
+                    description: number of threads to use for hyperparameterization
+                      (default = all available)
                     args: !SimpleFlagArg
                       name: THREADS
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: enrichm generate [-h] [--log LOG] [--verbosity\
@@ -319,87 +1147,86 @@ subcommands:
                     \ number of threads to use for hyperparameterization (default\
                     \ = all available)\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id008
-                  - enrichm
-                  - classify
+                  command: *id008
                   positional: []
                   named:
                   - !Flag
-                    description: Output logging information to this file.
+                    optional: true
                     synonyms:
                     - --log
+                    description: Output logging information to this file.
                     args: !SimpleFlagArg
                       name: LOG
-                    optional: true
                   - !Flag
-                    description: Level of verbosity (1 - 5 - default = 4) 5 = Very
-                      verbose, 1 = Silent
+                    optional: true
                     synonyms:
                     - --verbosity
+                    description: Level of verbosity (1 - 5 - default = 4) 5 = Very
+                      verbose, 1 = Silent
                     args: !SimpleFlagArg
                       name: VERBOSITY
-                    optional: true
                   - !Flag
-                    description: Output directory
+                    optional: true
                     synonyms:
                     - --output
+                    description: Output directory
                     args: !SimpleFlagArg
                       name: OUTPUT
-                    optional: true
                   - !Flag
-                    description: Overwrite previous run
+                    optional: true
                     synonyms:
                     - --force
+                    description: Overwrite previous run
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Path to file containing a genome<tab>annotation list
+                    optional: true
                     synonyms:
                     - --genome_and_annotation_file
+                    description: Path to file containing a genome<tab>annotation list
                     args: !SimpleFlagArg
                       name: GENOME_AND_ANNOTATION_FILE
-                    optional: true
                   - !Flag
-                    description: Path to file containing a genome annotation matrix
+                    optional: true
                     synonyms:
                     - --genome_and_annotation_matrix
+                    description: Path to file containing a genome annotation matrix
                     args: !SimpleFlagArg
                       name: GENOME_AND_ANNOTATION_MATRIX
-                    optional: true
                   - !Flag
-                    description: Tab separated file containing module name, definition
-                      as the columns
+                    optional: true
                     synonyms:
                     - --custom_modules
+                    description: Tab separated file containing module name, definition
+                      as the columns
                     args: !SimpleFlagArg
                       name: CUSTOM_MODULES
-                    optional: true
                   - !Flag
-                    description: Output only modules with greater than this percent
-                      of the requied KO groups (default = print all modules)
+                    optional: true
                     synonyms:
                     - --cutoff
+                    description: Output only modules with greater than this percent
+                      of the requied KO groups (default = print all modules)
                     args: !SimpleFlagArg
                       name: CUTOFF
-                    optional: true
                   - !Flag
-                    description: Calculate the abundance of each pathway within each
-                      genome/sample (column)
+                    optional: true
                     synonyms:
                     - --aggregate
+                    description: Calculate the abundance of each pathway within each
+                      genome/sample (column)
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: enrichm classify [-h] [--log LOG] [--verbosity\
@@ -426,121 +1253,123 @@ subcommands:
                     \ --aggregate           Calculate the abundance of each pathway\
                     \ within each genome/sample (column)\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id009
-                  - enrichm
-                  - enrichment
+                  command: *id009
                   positional: []
                   named:
                   - !Flag
-                    description: Output logging information to this file.
+                    optional: true
                     synonyms:
                     - --log
+                    description: Output logging information to this file.
                     args: !SimpleFlagArg
                       name: LOG
-                    optional: true
                   - !Flag
-                    description: Level of verbosity (1 - 5 - default = 4) 5 = Very
-                      verbose, 1 = Silent
+                    optional: true
                     synonyms:
                     - --verbosity
+                    description: Level of verbosity (1 - 5 - default = 4) 5 = Very
+                      verbose, 1 = Silent
                     args: !SimpleFlagArg
                       name: VERBOSITY
-                    optional: true
                   - !Flag
-                    description: Output directory
+                    optional: true
                     synonyms:
                     - --output
+                    description: Output directory
                     args: !SimpleFlagArg
                       name: OUTPUT
-                    optional: true
                   - !Flag
-                    description: Overwrite previous run
+                    optional: true
                     synonyms:
                     - --force
+                    description: Overwrite previous run
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Output directory provided by enrichm annotate
+                    optional: true
                     synonyms:
                     - --annotate_output
+                    description: Output directory provided by enrichm annotate
                     args: !SimpleFlagArg
                       name: ANNOTATE_OUTPUT
-                    optional: true
                   - !Flag
-                    description: Metadata file with two columns, the first with the
-                      genome name, the second with the groupings to compare.
+                    optional: true
                     synonyms:
                     - --metadata
+                    description: Metadata file with two columns, the first with the
+                      genome name, the second with the groupings to compare.
                     args: !SimpleFlagArg
                       name: METADATA
-                    optional: true
                   - !Flag
-                    description: Annotation matrix to compare.
+                    optional: true
                     synonyms:
                     - --annotation_matrix
+                    description: Annotation matrix to compare.
                     args: !SimpleFlagArg
                       name: ANNOTATION_MATRIX
-                    optional: true
                   - !Flag
-                    description: Genome abundance matrix.
+                    optional: true
                     synonyms:
                     - --abundance
+                    description: Genome abundance matrix.
                     args: !SimpleFlagArg
                       name: ABUNDANCE
-                    optional: true
                   - !Flag
-                    description: Metadata grouping abundance samples.
+                    optional: true
                     synonyms:
                     - --abundance_metadata
+                    description: Metadata grouping abundance samples.
                     args: !SimpleFlagArg
                       name: ABUNDANCE_METADATA
-                    optional: true
                   - !Flag
-                    description: Genome abundance matrix.
+                    optional: true
                     synonyms:
                     - --transcriptome
+                    description: Genome abundance matrix.
                     args: !SimpleFlagArg
                       name: TRANSCRIPTOME
-                    optional: true
                   - !Flag
-                    description: Metadata grouping abundance samples.
+                    optional: true
                     synonyms:
                     - --transcriptome_metadata
+                    description: Metadata grouping abundance samples.
                     args: !SimpleFlagArg
                       name: TRANSCRIPTOME_METADATA
-                    optional: true
                   - !Flag
-                    description: metadata file to compare with.
+                    optional: true
                     synonyms:
                     - --batchfile
+                    description: metadata file to compare with.
                     args: !SimpleFlagArg
                       name: BATCHFILE
-                    optional: true
                   - !Flag
-                    description: Only output results with a p-value below a this cutoff
-                      (default=0.05).
+                    optional: true
                     synonyms:
                     - --pval_cutoff
+                    description: Only output results with a p-value below a this cutoff
+                      (default=0.05).
                     args: !SimpleFlagArg
                       name: PVAL_CUTOFF
-                    optional: true
                   - !Flag
-                    description: Proportion enrichment cutoff.
+                    optional: true
                     synonyms:
                     - --proportions_cutoff
+                    description: Proportion enrichment cutoff.
                     args: !SimpleFlagArg
                       name: PROPORTIONS_CUTOFF
-                    optional: true
                   - !Flag
-                    description: The threshold to control for in false discovery rate
-                      of familywise error rate.
+                    optional: true
                     synonyms:
                     - --threshold
+                    description: The threshold to control for in false discovery rate
+                      of familywise error rate.
                     args: !SimpleFlagArg
                       name: THRESHOLD
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --multi_test_correction
                     description: "The form of mutiple test correction to use. Uses\
                       \ the statsmodel module and consequently has all of its options.\n\
                       Default: Benjamini-Hochberg FDR (fdr_bh)\nOptions: Bonferroni\
@@ -548,82 +1377,79 @@ subcommands:
                       \ (sh)\nHommel (ho)\nFDR Benjamini-Yekutieli (fdr_by)\nFDR 2-stage\
                       \ Benjamini-Hochberg (fdr_tsbh)\nFDR 2-stage Benjamini-Krieger-Yekutieli\
                       \ (fdr_tsbky)\nFDR adaptive Gavrilov-Benjamini-Sarkar (fdr_gbs))"
-                    synonyms:
-                    - --multi_test_correction
                     args: !SimpleFlagArg
                       name: MULTI_TEST_CORRECTION
-                    optional: true
                   - !Flag
-                    description: Number of processes to use for enrichment.
+                    optional: true
                     synonyms:
                     - --processes
+                    description: Number of processes to use for enrichment.
                     args: !SimpleFlagArg
                       name: PROCESSES
-                    optional: true
                   - !Flag
-                    description: Allow negative values in input matrix.
+                    optional: true
                     synonyms:
                     - --allow_negative_values
+                    description: Allow negative values in input matrix.
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Compare KO ids (annotated with DIAMOND)
+                    optional: true
                     synonyms:
                     - --ko
+                    description: Compare KO ids (annotated with DIAMOND)
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Compare KO ids (annotated with HMMs)
+                    optional: true
                     synonyms:
                     - --ko_hmm
+                    description: Compare KO ids (annotated with HMMs)
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Compare Pfam ids
+                    optional: true
                     synonyms:
                     - --pfam
+                    description: Compare Pfam ids
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Compare TIGRFAM ids
+                    optional: true
                     synonyms:
                     - --tigrfam
+                    description: Compare TIGRFAM ids
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Compare cluster ids
+                    optional: true
                     synonyms:
                     - --cluster
+                    description: Compare cluster ids
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Compare ortholog ids
+                    optional: true
                     synonyms:
                     - --ortholog
+                    description: Compare ortholog ids
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Compare dbCAN ids
+                    optional: true
                     synonyms:
                     - --cazy
+                    description: Compare dbCAN ids
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Compare EC ids
+                    optional: true
                     synonyms:
                     - --ec
+                    description: Compare EC ids
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: enrichm enrichment [-h] [--log LOG] [--verbosity\
@@ -692,126 +1518,125 @@ subcommands:
                     \                Compare dbCAN ids\n  --ec                  Compare\
                     \ EC ids\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id010
-                  - enrichm
-                  - pathway
+                  command: *id010
                   positional: []
                   named:
                   - !Flag
-                    description: KO matrix. REQUIRED.
+                    optional: true
                     synonyms:
                     - --matrix
+                    description: KO matrix. REQUIRED.
                     args: !SimpleFlagArg
                       name: MATRIX
-                    optional: true
                   - !Flag
-                    description: Metadata file with two columns, the first with the
-                      genome name, the second with the groupings to compare.
+                    optional: true
                     synonyms:
                     - --genome_metadata
+                    description: Metadata file with two columns, the first with the
+                      genome name, the second with the groupings to compare.
                     args: !SimpleFlagArg
                       name: GENOME_METADATA
-                    optional: true
                   - !Flag
-                    description: Abundance matrix.
+                    optional: true
                     synonyms:
                     - --abundance
+                    description: Abundance matrix.
                     args: !SimpleFlagArg
                       name: ABUNDANCE
-                    optional: true
                   - !Flag
-                    description: Metadata file with two columns, the first with the
-                      genome name, the second with the groupings to compare.
+                    optional: true
                     synonyms:
                     - --abundance_metadata
-                    args: !SimpleFlagArg
-                      name: ABUNDANCE_METADATA
-                    optional: true
-                  - !Flag
-                    description: TPM values produced by DetectM.
-                    synonyms:
-                    - --tpm_values
-                    args: !SimpleFlagArg
-                      name: TPM_VALUES
-                    optional: true
-                  - !Flag
                     description: Metadata file with two columns, the first with the
                       genome name, the second with the groupings to compare.
+                    args: !SimpleFlagArg
+                      name: ABUNDANCE_METADATA
+                  - !Flag
+                    optional: true
+                    synonyms:
+                    - --tpm_values
+                    description: TPM values produced by DetectM.
+                    args: !SimpleFlagArg
+                      name: TPM_VALUES
+                  - !Flag
+                    optional: true
                     synonyms:
                     - --tpm_metadata
+                    description: Metadata file with two columns, the first with the
+                      genome name, the second with the groupings to compare.
                     args: !SimpleFlagArg
                       name: TPM_METADATA
-                    optional: true
                   - !Flag
-                    description: Metabolome CID matrix.
+                    optional: true
                     synonyms:
                     - --metabolome
+                    description: Metabolome CID matrix.
                     args: !SimpleFlagArg
                       name: METABOLOME
-                    optional: true
                   - !Flag
-                    description: Output logging information to this file.
+                    optional: true
                     synonyms:
                     - --log
+                    description: Output logging information to this file.
                     args: !SimpleFlagArg
                       name: LOG
-                    optional: true
                   - !Flag
-                    description: Level of verbosity (1 - 5 - default = 4) 5 = Very
-                      verbose, 1 = Silent
+                    optional: true
                     synonyms:
                     - --verbosity
+                    description: Level of verbosity (1 - 5 - default = 4) 5 = Very
+                      verbose, 1 = Silent
                     args: !SimpleFlagArg
                       name: VERBOSITY
-                    optional: true
                   - !Flag
-                    description: Output directory
+                    optional: true
                     synonyms:
                     - --output
+                    description: Output directory
                     args: !SimpleFlagArg
                       name: OUTPUT
-                    optional: true
                   - !Flag
-                    description: Overwrite previous run
+                    optional: true
                     synonyms:
                     - --force
+                    description: Overwrite previous run
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: USE ONLY these reactions, or reactions within this
-                      pathway or module (space separated list).
+                    optional: true
                     synonyms:
                     - --limit
+                    description: USE ONLY these reactions, or reactions within this
+                      pathway or module (space separated list).
                     args: !RepeatFlagArg
                       name: LIMIT
-                    optional: true
                   - !Flag
-                    description: Do not use these reactions, or reactions within this
-                      pathway or module (space separated list).
+                    optional: true
                     synonyms:
                     - --filter
+                    description: Do not use these reactions, or reactions within this
+                      pathway or module (space separated list).
                     args: !RepeatFlagArg
                       name: FILTER
-                    optional: true
                   - !Flag
-                    description: "Supply an enrichment output to integrate the results\
-                      \ into the output network.\n"
+                    optional: true
                     synonyms:
                     - --enrichment_output
+                    description: "Supply an enrichment output to integrate the results\
+                      \ into the output network.\n"
                     args: !SimpleFlagArg
                       name: ENRICHMENT_OUTPUT
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: enrichm pathway [-h] --matrix MATRIX\n      \
@@ -851,6 +1676,7 @@ subcommands:
                     \ ENRICHMENT_OUTPUT\n                        Supply an enrichment\
                     \ output to integrate the results into the output network.\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -875,112 +1701,115 @@ subcommands:
                   \ data.\n\n  Authors: Joel Boyd, Ben Woodcroft, Alex Baker\n  Version:\
                   \ 0.5.0\n\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --version
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               help_text: "usage: enrichm [-h] [--version]\n               {data,annotate,classify,enrichment,uses,pathway,explore,generate,predict}\n\
                 \               ...\nenrichm: error: argument subparser_name: invalid\
                 \ choice: 'compounds.' (choose from 'data', 'annotate', 'classify',\
                 \ 'enrichment', 'uses', 'pathway', 'explore', 'generate', 'predict')\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: enrichm
-                optional: false
+                description: ''
               named: []
-              parent: *id003
+              parent: *id011
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --version
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               help_text: "usage: enrichm [-h] [--version]\n               {data,annotate,classify,enrichment,uses,pathway,explore,generate,predict}\n\
                 \               ...\nenrichm: error: argument subparser_name: invalid\
                 \ choice: 'Annotation' (choose from 'data', 'annotate', 'classify',\
                 \ 'enrichment', 'uses', 'pathway', 'explore', 'generate', 'predict')\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional: []
               named:
               - !Flag
-                description: Output logging information to this file.
+                optional: true
                 synonyms:
                 - --log
+                description: Output logging information to this file.
                 args: !SimpleFlagArg
                   name: LOG
-                optional: true
               - !Flag
-                description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
-                  1 = Silent
+                optional: true
                 synonyms:
                 - --verbosity
+                description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
+                  1 = Silent
                 args: !SimpleFlagArg
                   name: VERBOSITY
-                optional: true
               - !Flag
-                description: Output directory
+                optional: true
                 synonyms:
                 - --output
+                description: Output directory
                 args: !SimpleFlagArg
                   name: OUTPUT
-                optional: true
               - !Flag
-                description: Overwrite previous run
+                optional: true
                 synonyms:
                 - --force
+                description: Overwrite previous run
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Pickled model to use
+                optional: true
                 synonyms:
                 - --forester_model_directory
+                description: Pickled model to use
                 args: !SimpleFlagArg
                   name: FORESTER_MODEL_DIRECTORY
-                optional: true
               - !Flag
-                description: "matrix of data to predict\n"
+                optional: true
                 synonyms:
                 - --input_matrix
+                description: "matrix of data to predict\n"
                 args: !SimpleFlagArg
                   name: INPUT_MATRIX
-                optional: true
-              parent: *id003
+              parent: *id011
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: enrichm predict [-h] [--log LOG] [--verbosity VERBOSITY]\n\
@@ -996,93 +1825,94 @@ subcommands:
                 \               Pickled model to use\n  --input_matrix INPUT_MATRIX\n\
                 \                        matrix of data to predict\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional: []
               named:
               - !Flag
-                description: Output logging information to this file.
+                optional: true
                 synonyms:
                 - --log
+                description: Output logging information to this file.
                 args: !SimpleFlagArg
                   name: LOG
-                optional: true
               - !Flag
-                description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
-                  1 = Silent
+                optional: true
                 synonyms:
                 - --verbosity
+                description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
+                  1 = Silent
                 args: !SimpleFlagArg
                   name: VERBOSITY
-                optional: true
               - !Flag
-                description: Output directory
+                optional: true
                 synonyms:
                 - --output
+                description: Output directory
                 args: !SimpleFlagArg
                   name: OUTPUT
-                optional: true
               - !Flag
-                description: Overwrite previous run
+                optional: true
                 synonyms:
                 - --force
+                description: Overwrite previous run
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: input matrix of results
+                optional: true
                 synonyms:
                 - --input_matrix
+                description: input matrix of results
                 args: !SimpleFlagArg
                   name: INPUT_MATRIX
-                optional: true
               - !Flag
-                description: defined outcomes to train the data to
+                optional: true
                 synonyms:
                 - --groups
+                description: defined outcomes to train the data to
                 args: !SimpleFlagArg
                   name: GROUPS
-                optional: true
               - !Flag
-                description: regressor or classifier
+                optional: true
                 synonyms:
                 - --model_type
+                description: regressor or classifier
                 args: !ChoiceFlagArg
                   choices: !!set
-                    ? classifier
                     ? regressor
-                optional: true
+                    ? classifier
               - !Flag
-                description: portion of the input data to use for testing (default
-                  = 0.2)
+                optional: true
                 synonyms:
                 - --testing_portion
+                description: portion of the input data to use for testing (default
+                  = 0.2)
                 args: !SimpleFlagArg
                   name: TESTING_PORTION
-                optional: true
               - !Flag
-                description: grid search
+                optional: true
                 synonyms:
                 - --grid_search
+                description: grid search
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: number of threads to use for hyperparameterization (default
-                  = all available)
+                optional: true
                 synonyms:
                 - --threads
+                description: number of threads to use for hyperparameterization (default
+                  = all available)
                 args: !SimpleFlagArg
                   name: THREADS
-                optional: true
-              parent: *id003
+              parent: *id011
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: enrichm generate [-h] [--log LOG] [--verbosity VERBOSITY]\n\
@@ -1106,85 +1936,86 @@ subcommands:
                 \  --threads THREADS     number of threads to use for hyperparameterization\
                 \ (default = all available)\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id008
               positional: []
               named:
               - !Flag
-                description: Output logging information to this file.
+                optional: true
                 synonyms:
                 - --log
+                description: Output logging information to this file.
                 args: !SimpleFlagArg
                   name: LOG
-                optional: true
               - !Flag
-                description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
-                  1 = Silent
+                optional: true
                 synonyms:
                 - --verbosity
+                description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
+                  1 = Silent
                 args: !SimpleFlagArg
                   name: VERBOSITY
-                optional: true
               - !Flag
-                description: Output directory
+                optional: true
                 synonyms:
                 - --output
+                description: Output directory
                 args: !SimpleFlagArg
                   name: OUTPUT
-                optional: true
               - !Flag
-                description: Overwrite previous run
+                optional: true
                 synonyms:
                 - --force
+                description: Overwrite previous run
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Path to file containing a genome<tab>annotation list
+                optional: true
                 synonyms:
                 - --genome_and_annotation_file
+                description: Path to file containing a genome<tab>annotation list
                 args: !SimpleFlagArg
                   name: GENOME_AND_ANNOTATION_FILE
-                optional: true
               - !Flag
-                description: Path to file containing a genome annotation matrix
+                optional: true
                 synonyms:
                 - --genome_and_annotation_matrix
+                description: Path to file containing a genome annotation matrix
                 args: !SimpleFlagArg
                   name: GENOME_AND_ANNOTATION_MATRIX
-                optional: true
               - !Flag
-                description: Tab separated file containing module name, definition
-                  as the columns
+                optional: true
                 synonyms:
                 - --custom_modules
+                description: Tab separated file containing module name, definition
+                  as the columns
                 args: !SimpleFlagArg
                   name: CUSTOM_MODULES
-                optional: true
               - !Flag
-                description: Output only modules with greater than this percent of
-                  the requied KO groups (default = print all modules)
+                optional: true
                 synonyms:
                 - --cutoff
+                description: Output only modules with greater than this percent of
+                  the requied KO groups (default = print all modules)
                 args: !SimpleFlagArg
                   name: CUTOFF
-                optional: true
               - !Flag
-                description: Calculate the abundance of each pathway within each genome/sample
-                  (column)
+                optional: true
                 synonyms:
                 - --aggregate
+                description: Calculate the abundance of each pathway within each genome/sample
+                  (column)
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id011
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: enrichm classify [-h] [--log LOG] [--verbosity VERBOSITY]\n\
@@ -1210,119 +2041,123 @@ subcommands:
                 \  --aggregate           Calculate the abundance of each pathway within\
                 \ each genome/sample (column)\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id009
               positional: []
               named:
               - !Flag
-                description: Output logging information to this file.
+                optional: true
                 synonyms:
                 - --log
+                description: Output logging information to this file.
                 args: !SimpleFlagArg
                   name: LOG
-                optional: true
               - !Flag
-                description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
-                  1 = Silent
+                optional: true
                 synonyms:
                 - --verbosity
+                description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
+                  1 = Silent
                 args: !SimpleFlagArg
                   name: VERBOSITY
-                optional: true
               - !Flag
-                description: Output directory
+                optional: true
                 synonyms:
                 - --output
+                description: Output directory
                 args: !SimpleFlagArg
                   name: OUTPUT
-                optional: true
               - !Flag
-                description: Overwrite previous run
+                optional: true
                 synonyms:
                 - --force
+                description: Overwrite previous run
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Output directory provided by enrichm annotate
+                optional: true
                 synonyms:
                 - --annotate_output
+                description: Output directory provided by enrichm annotate
                 args: !SimpleFlagArg
                   name: ANNOTATE_OUTPUT
-                optional: true
               - !Flag
-                description: Metadata file with two columns, the first with the genome
-                  name, the second with the groupings to compare.
+                optional: true
                 synonyms:
                 - --metadata
+                description: Metadata file with two columns, the first with the genome
+                  name, the second with the groupings to compare.
                 args: !SimpleFlagArg
                   name: METADATA
-                optional: true
               - !Flag
-                description: Annotation matrix to compare.
+                optional: true
                 synonyms:
                 - --annotation_matrix
+                description: Annotation matrix to compare.
                 args: !SimpleFlagArg
                   name: ANNOTATION_MATRIX
-                optional: true
               - !Flag
-                description: Genome abundance matrix.
+                optional: true
                 synonyms:
                 - --abundance
+                description: Genome abundance matrix.
                 args: !SimpleFlagArg
                   name: ABUNDANCE
-                optional: true
               - !Flag
-                description: Metadata grouping abundance samples.
+                optional: true
                 synonyms:
                 - --abundance_metadata
+                description: Metadata grouping abundance samples.
                 args: !SimpleFlagArg
                   name: ABUNDANCE_METADATA
-                optional: true
               - !Flag
-                description: Genome abundance matrix.
+                optional: true
                 synonyms:
                 - --transcriptome
+                description: Genome abundance matrix.
                 args: !SimpleFlagArg
                   name: TRANSCRIPTOME
-                optional: true
               - !Flag
-                description: Metadata grouping abundance samples.
+                optional: true
                 synonyms:
                 - --transcriptome_metadata
+                description: Metadata grouping abundance samples.
                 args: !SimpleFlagArg
                   name: TRANSCRIPTOME_METADATA
-                optional: true
               - !Flag
-                description: metadata file to compare with.
+                optional: true
                 synonyms:
                 - --batchfile
+                description: metadata file to compare with.
                 args: !SimpleFlagArg
                   name: BATCHFILE
-                optional: true
               - !Flag
-                description: Only output results with a p-value below a this cutoff
-                  (default=0.05).
+                optional: true
                 synonyms:
                 - --pval_cutoff
+                description: Only output results with a p-value below a this cutoff
+                  (default=0.05).
                 args: !SimpleFlagArg
                   name: PVAL_CUTOFF
-                optional: true
               - !Flag
-                description: Proportion enrichment cutoff.
+                optional: true
                 synonyms:
                 - --proportions_cutoff
+                description: Proportion enrichment cutoff.
                 args: !SimpleFlagArg
                   name: PROPORTIONS_CUTOFF
-                optional: true
               - !Flag
-                description: The threshold to control for in false discovery rate
-                  of familywise error rate.
+                optional: true
                 synonyms:
                 - --threshold
+                description: The threshold to control for in false discovery rate
+                  of familywise error rate.
                 args: !SimpleFlagArg
                   name: THRESHOLD
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --multi_test_correction
                 description: "The form of mutiple test correction to use. Uses the\
                   \ statsmodel module and consequently has all of its options.\nDefault:\
                   \ Benjamini-Hochberg FDR (fdr_bh)\nOptions: Bonferroni (b)\nSidak\
@@ -1330,82 +2165,79 @@ subcommands:
                   FDR Benjamini-Yekutieli (fdr_by)\nFDR 2-stage Benjamini-Hochberg\
                   \ (fdr_tsbh)\nFDR 2-stage Benjamini-Krieger-Yekutieli (fdr_tsbky)\n\
                   FDR adaptive Gavrilov-Benjamini-Sarkar (fdr_gbs))"
-                synonyms:
-                - --multi_test_correction
                 args: !SimpleFlagArg
                   name: MULTI_TEST_CORRECTION
-                optional: true
               - !Flag
-                description: Number of processes to use for enrichment.
+                optional: true
                 synonyms:
                 - --processes
+                description: Number of processes to use for enrichment.
                 args: !SimpleFlagArg
                   name: PROCESSES
-                optional: true
               - !Flag
-                description: Allow negative values in input matrix.
+                optional: true
                 synonyms:
                 - --allow_negative_values
+                description: Allow negative values in input matrix.
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Compare KO ids (annotated with DIAMOND)
+                optional: true
                 synonyms:
                 - --ko
+                description: Compare KO ids (annotated with DIAMOND)
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Compare KO ids (annotated with HMMs)
+                optional: true
                 synonyms:
                 - --ko_hmm
+                description: Compare KO ids (annotated with HMMs)
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Compare Pfam ids
+                optional: true
                 synonyms:
                 - --pfam
+                description: Compare Pfam ids
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Compare TIGRFAM ids
+                optional: true
                 synonyms:
                 - --tigrfam
+                description: Compare TIGRFAM ids
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Compare cluster ids
+                optional: true
                 synonyms:
                 - --cluster
+                description: Compare cluster ids
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Compare ortholog ids
+                optional: true
                 synonyms:
                 - --ortholog
+                description: Compare ortholog ids
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Compare dbCAN ids
+                optional: true
                 synonyms:
                 - --cazy
+                description: Compare dbCAN ids
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Compare EC ids
+                optional: true
                 synonyms:
                 - --ec
+                description: Compare EC ids
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id011
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: enrichm enrichment [-h] [--log LOG] [--verbosity\
@@ -1469,124 +2301,125 @@ subcommands:
                 \            Compare ortholog ids\n  --cazy                Compare\
                 \ dbCAN ids\n  --ec                  Compare EC ids\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id010
               positional: []
               named:
               - !Flag
-                description: KO matrix. REQUIRED.
+                optional: true
                 synonyms:
                 - --matrix
+                description: KO matrix. REQUIRED.
                 args: !SimpleFlagArg
                   name: MATRIX
-                optional: true
               - !Flag
-                description: Metadata file with two columns, the first with the genome
-                  name, the second with the groupings to compare.
+                optional: true
                 synonyms:
                 - --genome_metadata
+                description: Metadata file with two columns, the first with the genome
+                  name, the second with the groupings to compare.
                 args: !SimpleFlagArg
                   name: GENOME_METADATA
-                optional: true
               - !Flag
-                description: Abundance matrix.
+                optional: true
                 synonyms:
                 - --abundance
+                description: Abundance matrix.
                 args: !SimpleFlagArg
                   name: ABUNDANCE
-                optional: true
               - !Flag
-                description: Metadata file with two columns, the first with the genome
-                  name, the second with the groupings to compare.
+                optional: true
                 synonyms:
                 - --abundance_metadata
-                args: !SimpleFlagArg
-                  name: ABUNDANCE_METADATA
-                optional: true
-              - !Flag
-                description: TPM values produced by DetectM.
-                synonyms:
-                - --tpm_values
-                args: !SimpleFlagArg
-                  name: TPM_VALUES
-                optional: true
-              - !Flag
                 description: Metadata file with two columns, the first with the genome
                   name, the second with the groupings to compare.
+                args: !SimpleFlagArg
+                  name: ABUNDANCE_METADATA
+              - !Flag
+                optional: true
+                synonyms:
+                - --tpm_values
+                description: TPM values produced by DetectM.
+                args: !SimpleFlagArg
+                  name: TPM_VALUES
+              - !Flag
+                optional: true
                 synonyms:
                 - --tpm_metadata
+                description: Metadata file with two columns, the first with the genome
+                  name, the second with the groupings to compare.
                 args: !SimpleFlagArg
                   name: TPM_METADATA
-                optional: true
               - !Flag
-                description: Metabolome CID matrix.
+                optional: true
                 synonyms:
                 - --metabolome
+                description: Metabolome CID matrix.
                 args: !SimpleFlagArg
                   name: METABOLOME
-                optional: true
               - !Flag
-                description: Output logging information to this file.
+                optional: true
                 synonyms:
                 - --log
+                description: Output logging information to this file.
                 args: !SimpleFlagArg
                   name: LOG
-                optional: true
               - !Flag
-                description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
-                  1 = Silent
+                optional: true
                 synonyms:
                 - --verbosity
+                description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
+                  1 = Silent
                 args: !SimpleFlagArg
                   name: VERBOSITY
-                optional: true
               - !Flag
-                description: Output directory
+                optional: true
                 synonyms:
                 - --output
+                description: Output directory
                 args: !SimpleFlagArg
                   name: OUTPUT
-                optional: true
               - !Flag
-                description: Overwrite previous run
+                optional: true
                 synonyms:
                 - --force
+                description: Overwrite previous run
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: USE ONLY these reactions, or reactions within this pathway
-                  or module (space separated list).
+                optional: true
                 synonyms:
                 - --limit
+                description: USE ONLY these reactions, or reactions within this pathway
+                  or module (space separated list).
                 args: !RepeatFlagArg
                   name: LIMIT
-                optional: true
               - !Flag
-                description: Do not use these reactions, or reactions within this
-                  pathway or module (space separated list).
+                optional: true
                 synonyms:
                 - --filter
+                description: Do not use these reactions, or reactions within this
+                  pathway or module (space separated list).
                 args: !RepeatFlagArg
                   name: FILTER
-                optional: true
               - !Flag
-                description: "Supply an enrichment output to integrate the results\
-                  \ into the output network.\n"
+                optional: true
                 synonyms:
                 - --enrichment_output
+                description: "Supply an enrichment output to integrate the results\
+                  \ into the output network.\n"
                 args: !SimpleFlagArg
                   name: ENRICHMENT_OUTPUT
-                optional: true
-              parent: *id003
+              parent: *id011
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: enrichm pathway [-h] --matrix MATRIX\n          \
@@ -1624,6 +2457,7 @@ subcommands:
                 \ Supply an enrichment output to integrate the results into the output\
                 \ network.\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -1647,112 +2481,115 @@ subcommands:
               \ Run random forest model on new data.\n\n  Authors: Joel Boyd, Ben\
               \ Woodcroft, Alex Baker\n  Version: 0.5.0\n\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - --version
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           help_text: "usage: enrichm [-h] [--version]\n               {data,annotate,classify,enrichment,uses,pathway,explore,generate,predict}\n\
             \               ...\nenrichm: error: argument subparser_name: invalid\
             \ choice: 'compounds.' (choose from 'data', 'annotate', 'classify', 'enrichment',\
             \ 'uses', 'pathway', 'explore', 'generate', 'predict')\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: enrichm
-            optional: false
+            description: ''
           named: []
-          parent: *id011
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - --version
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           help_text: "usage: enrichm [-h] [--version]\n               {data,annotate,classify,enrichment,uses,pathway,explore,generate,predict}\n\
             \               ...\nenrichm: error: argument subparser_name: invalid\
             \ choice: 'Annotation' (choose from 'data', 'annotate', 'classify', 'enrichment',\
             \ 'uses', 'pathway', 'explore', 'generate', 'predict')\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional: []
           named:
           - !Flag
-            description: Output logging information to this file.
+            optional: true
             synonyms:
             - --log
+            description: Output logging information to this file.
             args: !SimpleFlagArg
               name: LOG
-            optional: true
           - !Flag
-            description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
-              1 = Silent
+            optional: true
             synonyms:
             - --verbosity
+            description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
+              1 = Silent
             args: !SimpleFlagArg
               name: VERBOSITY
-            optional: true
           - !Flag
-            description: Output directory
+            optional: true
             synonyms:
             - --output
+            description: Output directory
             args: !SimpleFlagArg
               name: OUTPUT
-            optional: true
           - !Flag
-            description: Overwrite previous run
+            optional: true
             synonyms:
             - --force
+            description: Overwrite previous run
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Pickled model to use
+            optional: true
             synonyms:
             - --forester_model_directory
+            description: Pickled model to use
             args: !SimpleFlagArg
               name: FORESTER_MODEL_DIRECTORY
-            optional: true
           - !Flag
-            description: "matrix of data to predict\n"
+            optional: true
             synonyms:
             - --input_matrix
+            description: "matrix of data to predict\n"
             args: !SimpleFlagArg
               name: INPUT_MATRIX
-            optional: true
-          parent: *id011
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: enrichm predict [-h] [--log LOG] [--verbosity VERBOSITY]\n\
@@ -1768,92 +2605,93 @@ subcommands:
             \           Pickled model to use\n  --input_matrix INPUT_MATRIX\n    \
             \                    matrix of data to predict\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional: []
           named:
           - !Flag
-            description: Output logging information to this file.
+            optional: true
             synonyms:
             - --log
+            description: Output logging information to this file.
             args: !SimpleFlagArg
               name: LOG
-            optional: true
           - !Flag
-            description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
-              1 = Silent
+            optional: true
             synonyms:
             - --verbosity
+            description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
+              1 = Silent
             args: !SimpleFlagArg
               name: VERBOSITY
-            optional: true
           - !Flag
-            description: Output directory
+            optional: true
             synonyms:
             - --output
+            description: Output directory
             args: !SimpleFlagArg
               name: OUTPUT
-            optional: true
           - !Flag
-            description: Overwrite previous run
+            optional: true
             synonyms:
             - --force
+            description: Overwrite previous run
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: input matrix of results
+            optional: true
             synonyms:
             - --input_matrix
+            description: input matrix of results
             args: !SimpleFlagArg
               name: INPUT_MATRIX
-            optional: true
           - !Flag
-            description: defined outcomes to train the data to
+            optional: true
             synonyms:
             - --groups
+            description: defined outcomes to train the data to
             args: !SimpleFlagArg
               name: GROUPS
-            optional: true
           - !Flag
-            description: regressor or classifier
+            optional: true
             synonyms:
             - --model_type
+            description: regressor or classifier
             args: !ChoiceFlagArg
               choices: !!set
-                ? regressor
                 ? classifier
-            optional: true
+                ? regressor
           - !Flag
-            description: portion of the input data to use for testing (default = 0.2)
+            optional: true
             synonyms:
             - --testing_portion
+            description: portion of the input data to use for testing (default = 0.2)
             args: !SimpleFlagArg
               name: TESTING_PORTION
-            optional: true
           - !Flag
-            description: grid search
+            optional: true
             synonyms:
             - --grid_search
+            description: grid search
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: number of threads to use for hyperparameterization (default
-              = all available)
+            optional: true
             synonyms:
             - --threads
+            description: number of threads to use for hyperparameterization (default
+              = all available)
             args: !SimpleFlagArg
               name: THREADS
-            optional: true
-          parent: *id011
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: enrichm generate [-h] [--log LOG] [--verbosity VERBOSITY]\n\
@@ -1876,85 +2714,86 @@ subcommands:
             \  --threads THREADS     number of threads to use for hyperparameterization\
             \ (default = all available)\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id008
           positional: []
           named:
           - !Flag
-            description: Output logging information to this file.
+            optional: true
             synonyms:
             - --log
+            description: Output logging information to this file.
             args: !SimpleFlagArg
               name: LOG
-            optional: true
           - !Flag
-            description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
-              1 = Silent
+            optional: true
             synonyms:
             - --verbosity
+            description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
+              1 = Silent
             args: !SimpleFlagArg
               name: VERBOSITY
-            optional: true
           - !Flag
-            description: Output directory
+            optional: true
             synonyms:
             - --output
+            description: Output directory
             args: !SimpleFlagArg
               name: OUTPUT
-            optional: true
           - !Flag
-            description: Overwrite previous run
+            optional: true
             synonyms:
             - --force
+            description: Overwrite previous run
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Path to file containing a genome<tab>annotation list
+            optional: true
             synonyms:
             - --genome_and_annotation_file
+            description: Path to file containing a genome<tab>annotation list
             args: !SimpleFlagArg
               name: GENOME_AND_ANNOTATION_FILE
-            optional: true
           - !Flag
-            description: Path to file containing a genome annotation matrix
+            optional: true
             synonyms:
             - --genome_and_annotation_matrix
+            description: Path to file containing a genome annotation matrix
             args: !SimpleFlagArg
               name: GENOME_AND_ANNOTATION_MATRIX
-            optional: true
           - !Flag
-            description: Tab separated file containing module name, definition as
-              the columns
+            optional: true
             synonyms:
             - --custom_modules
+            description: Tab separated file containing module name, definition as
+              the columns
             args: !SimpleFlagArg
               name: CUSTOM_MODULES
-            optional: true
           - !Flag
-            description: Output only modules with greater than this percent of the
-              requied KO groups (default = print all modules)
+            optional: true
             synonyms:
             - --cutoff
+            description: Output only modules with greater than this percent of the
+              requied KO groups (default = print all modules)
             args: !SimpleFlagArg
               name: CUTOFF
-            optional: true
           - !Flag
-            description: Calculate the abundance of each pathway within each genome/sample
-              (column)
+            optional: true
             synonyms:
             - --aggregate
+            description: Calculate the abundance of each pathway within each genome/sample
+              (column)
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id011
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: enrichm classify [-h] [--log LOG] [--verbosity VERBOSITY]\n\
@@ -1979,200 +2818,201 @@ subcommands:
             \  --aggregate           Calculate the abundance of each pathway within\
             \ each genome/sample (column)\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id009
           positional: []
           named:
           - !Flag
-            description: Output logging information to this file.
+            optional: true
             synonyms:
             - --log
+            description: Output logging information to this file.
             args: !SimpleFlagArg
               name: LOG
-            optional: true
           - !Flag
-            description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
-              1 = Silent
+            optional: true
             synonyms:
             - --verbosity
+            description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
+              1 = Silent
             args: !SimpleFlagArg
               name: VERBOSITY
-            optional: true
           - !Flag
-            description: Output directory
+            optional: true
             synonyms:
             - --output
+            description: Output directory
             args: !SimpleFlagArg
               name: OUTPUT
-            optional: true
           - !Flag
-            description: Overwrite previous run
+            optional: true
             synonyms:
             - --force
+            description: Overwrite previous run
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Output directory provided by enrichm annotate
+            optional: true
             synonyms:
             - --annotate_output
+            description: Output directory provided by enrichm annotate
             args: !SimpleFlagArg
               name: ANNOTATE_OUTPUT
-            optional: true
           - !Flag
-            description: Metadata file with two columns, the first with the genome
-              name, the second with the groupings to compare.
+            optional: true
             synonyms:
             - --metadata
+            description: Metadata file with two columns, the first with the genome
+              name, the second with the groupings to compare.
             args: !SimpleFlagArg
               name: METADATA
-            optional: true
           - !Flag
-            description: Annotation matrix to compare.
+            optional: true
             synonyms:
             - --annotation_matrix
+            description: Annotation matrix to compare.
             args: !SimpleFlagArg
               name: ANNOTATION_MATRIX
-            optional: true
           - !Flag
-            description: Genome abundance matrix.
+            optional: true
             synonyms:
             - --abundance
+            description: Genome abundance matrix.
             args: !SimpleFlagArg
               name: ABUNDANCE
-            optional: true
           - !Flag
-            description: Metadata grouping abundance samples.
+            optional: true
             synonyms:
             - --abundance_metadata
+            description: Metadata grouping abundance samples.
             args: !SimpleFlagArg
               name: ABUNDANCE_METADATA
-            optional: true
           - !Flag
-            description: Genome abundance matrix.
+            optional: true
             synonyms:
             - --transcriptome
+            description: Genome abundance matrix.
             args: !SimpleFlagArg
               name: TRANSCRIPTOME
-            optional: true
           - !Flag
-            description: Metadata grouping abundance samples.
+            optional: true
             synonyms:
             - --transcriptome_metadata
+            description: Metadata grouping abundance samples.
             args: !SimpleFlagArg
               name: TRANSCRIPTOME_METADATA
-            optional: true
           - !Flag
-            description: metadata file to compare with.
+            optional: true
             synonyms:
             - --batchfile
+            description: metadata file to compare with.
             args: !SimpleFlagArg
               name: BATCHFILE
-            optional: true
           - !Flag
-            description: Only output results with a p-value below a this cutoff (default=0.05).
+            optional: true
             synonyms:
             - --pval_cutoff
+            description: Only output results with a p-value below a this cutoff (default=0.05).
             args: !SimpleFlagArg
               name: PVAL_CUTOFF
-            optional: true
           - !Flag
-            description: Proportion enrichment cutoff.
+            optional: true
             synonyms:
             - --proportions_cutoff
+            description: Proportion enrichment cutoff.
             args: !SimpleFlagArg
               name: PROPORTIONS_CUTOFF
-            optional: true
           - !Flag
-            description: The threshold to control for in false discovery rate of familywise
-              error rate.
+            optional: true
             synonyms:
             - --threshold
+            description: The threshold to control for in false discovery rate of familywise
+              error rate.
             args: !SimpleFlagArg
               name: THRESHOLD
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --multi_test_correction
             description: "The form of mutiple test correction to use. Uses the statsmodel\
               \ module and consequently has all of its options.\nDefault: Benjamini-Hochberg\
               \ FDR (fdr_bh)\nOptions: Bonferroni (b)\nSidak (s)\nHolm (h)\nHolm-Sidak\
               \ (hs)\nSimes-Hochberg (sh)\nHommel (ho)\nFDR Benjamini-Yekutieli (fdr_by)\n\
               FDR 2-stage Benjamini-Hochberg (fdr_tsbh)\nFDR 2-stage Benjamini-Krieger-Yekutieli\
               \ (fdr_tsbky)\nFDR adaptive Gavrilov-Benjamini-Sarkar (fdr_gbs))"
-            synonyms:
-            - --multi_test_correction
             args: !SimpleFlagArg
               name: MULTI_TEST_CORRECTION
-            optional: true
           - !Flag
-            description: Number of processes to use for enrichment.
+            optional: true
             synonyms:
             - --processes
+            description: Number of processes to use for enrichment.
             args: !SimpleFlagArg
               name: PROCESSES
-            optional: true
           - !Flag
-            description: Allow negative values in input matrix.
+            optional: true
             synonyms:
             - --allow_negative_values
+            description: Allow negative values in input matrix.
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Compare KO ids (annotated with DIAMOND)
+            optional: true
             synonyms:
             - --ko
+            description: Compare KO ids (annotated with DIAMOND)
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Compare KO ids (annotated with HMMs)
+            optional: true
             synonyms:
             - --ko_hmm
+            description: Compare KO ids (annotated with HMMs)
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Compare Pfam ids
+            optional: true
             synonyms:
             - --pfam
+            description: Compare Pfam ids
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Compare TIGRFAM ids
+            optional: true
             synonyms:
             - --tigrfam
+            description: Compare TIGRFAM ids
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Compare cluster ids
+            optional: true
             synonyms:
             - --cluster
+            description: Compare cluster ids
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Compare ortholog ids
+            optional: true
             synonyms:
             - --ortholog
+            description: Compare ortholog ids
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Compare dbCAN ids
+            optional: true
             synonyms:
             - --cazy
+            description: Compare dbCAN ids
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Compare EC ids
+            optional: true
             synonyms:
             - --ec
+            description: Compare EC ids
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id011
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: enrichm enrichment [-h] [--log LOG] [--verbosity VERBOSITY]\n\
@@ -2234,124 +3074,125 @@ subcommands:
             \ ids\n  --cazy                Compare dbCAN ids\n  --ec             \
             \     Compare EC ids\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id010
           positional: []
           named:
           - !Flag
-            description: KO matrix. REQUIRED.
+            optional: true
             synonyms:
             - --matrix
+            description: KO matrix. REQUIRED.
             args: !SimpleFlagArg
               name: MATRIX
-            optional: true
           - !Flag
-            description: Metadata file with two columns, the first with the genome
-              name, the second with the groupings to compare.
+            optional: true
             synonyms:
             - --genome_metadata
+            description: Metadata file with two columns, the first with the genome
+              name, the second with the groupings to compare.
             args: !SimpleFlagArg
               name: GENOME_METADATA
-            optional: true
           - !Flag
-            description: Abundance matrix.
+            optional: true
             synonyms:
             - --abundance
+            description: Abundance matrix.
             args: !SimpleFlagArg
               name: ABUNDANCE
-            optional: true
           - !Flag
-            description: Metadata file with two columns, the first with the genome
-              name, the second with the groupings to compare.
+            optional: true
             synonyms:
             - --abundance_metadata
-            args: !SimpleFlagArg
-              name: ABUNDANCE_METADATA
-            optional: true
-          - !Flag
-            description: TPM values produced by DetectM.
-            synonyms:
-            - --tpm_values
-            args: !SimpleFlagArg
-              name: TPM_VALUES
-            optional: true
-          - !Flag
             description: Metadata file with two columns, the first with the genome
               name, the second with the groupings to compare.
+            args: !SimpleFlagArg
+              name: ABUNDANCE_METADATA
+          - !Flag
+            optional: true
+            synonyms:
+            - --tpm_values
+            description: TPM values produced by DetectM.
+            args: !SimpleFlagArg
+              name: TPM_VALUES
+          - !Flag
+            optional: true
             synonyms:
             - --tpm_metadata
+            description: Metadata file with two columns, the first with the genome
+              name, the second with the groupings to compare.
             args: !SimpleFlagArg
               name: TPM_METADATA
-            optional: true
           - !Flag
-            description: Metabolome CID matrix.
+            optional: true
             synonyms:
             - --metabolome
+            description: Metabolome CID matrix.
             args: !SimpleFlagArg
               name: METABOLOME
-            optional: true
           - !Flag
-            description: Output logging information to this file.
+            optional: true
             synonyms:
             - --log
+            description: Output logging information to this file.
             args: !SimpleFlagArg
               name: LOG
-            optional: true
           - !Flag
-            description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
-              1 = Silent
+            optional: true
             synonyms:
             - --verbosity
+            description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose,
+              1 = Silent
             args: !SimpleFlagArg
               name: VERBOSITY
-            optional: true
           - !Flag
-            description: Output directory
+            optional: true
             synonyms:
             - --output
+            description: Output directory
             args: !SimpleFlagArg
               name: OUTPUT
-            optional: true
           - !Flag
-            description: Overwrite previous run
+            optional: true
             synonyms:
             - --force
+            description: Overwrite previous run
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: USE ONLY these reactions, or reactions within this pathway
-              or module (space separated list).
+            optional: true
             synonyms:
             - --limit
+            description: USE ONLY these reactions, or reactions within this pathway
+              or module (space separated list).
             args: !RepeatFlagArg
               name: LIMIT
-            optional: true
           - !Flag
-            description: Do not use these reactions, or reactions within this pathway
-              or module (space separated list).
+            optional: true
             synonyms:
             - --filter
+            description: Do not use these reactions, or reactions within this pathway
+              or module (space separated list).
             args: !RepeatFlagArg
               name: FILTER
-            optional: true
           - !Flag
-            description: "Supply an enrichment output to integrate the results into\
-              \ the output network.\n"
+            optional: true
             synonyms:
             - --enrichment_output
+            description: "Supply an enrichment output to integrate the results into\
+              \ the output network.\n"
             args: !SimpleFlagArg
               name: ENRICHMENT_OUTPUT
-            optional: true
-          parent: *id011
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: enrichm pathway [-h] --matrix MATRIX\n              \
@@ -2387,6 +3228,7 @@ subcommands:
             \ ENRICHMENT_OUTPUT\n                        Supply an enrichment output\
             \ to integrate the results into the output network.\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -2408,112 +3250,115 @@ subcommands:
           \    predict         -> Run random forest model on new data.\n\n  Authors:\
           \ Joel Boyd, Ben Woodcroft, Alex Baker\n  Version: 0.5.0\n\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - --version
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       help_text: "usage: enrichm [-h] [--version]\n               {data,annotate,classify,enrichment,uses,pathway,explore,generate,predict}\n\
         \               ...\nenrichm: error: argument subparser_name: invalid choice:\
         \ 'compounds.' (choose from 'data', 'annotate', 'classify', 'enrichment',\
         \ 'uses', 'pathway', 'explore', 'generate', 'predict')\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: enrichm
-        optional: false
+        description: ''
       named: []
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - --version
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       help_text: "usage: enrichm [-h] [--version]\n               {data,annotate,classify,enrichment,uses,pathway,explore,generate,predict}\n\
         \               ...\nenrichm: error: argument subparser_name: invalid choice:\
         \ 'Annotation' (choose from 'data', 'annotate', 'classify', 'enrichment',\
         \ 'uses', 'pathway', 'explore', 'generate', 'predict')\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional: []
       named:
       - !Flag
-        description: Output logging information to this file.
+        optional: true
         synonyms:
         - --log
+        description: Output logging information to this file.
         args: !SimpleFlagArg
           name: LOG
-        optional: true
       - !Flag
-        description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1
-          = Silent
+        optional: true
         synonyms:
         - --verbosity
+        description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1
+          = Silent
         args: !SimpleFlagArg
           name: VERBOSITY
-        optional: true
       - !Flag
-        description: Output directory
+        optional: true
         synonyms:
         - --output
+        description: Output directory
         args: !SimpleFlagArg
           name: OUTPUT
-        optional: true
       - !Flag
-        description: Overwrite previous run
+        optional: true
         synonyms:
         - --force
+        description: Overwrite previous run
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Pickled model to use
+        optional: true
         synonyms:
         - --forester_model_directory
+        description: Pickled model to use
         args: !SimpleFlagArg
           name: FORESTER_MODEL_DIRECTORY
-        optional: true
       - !Flag
-        description: "matrix of data to predict\n"
+        optional: true
         synonyms:
         - --input_matrix
+        description: "matrix of data to predict\n"
         args: !SimpleFlagArg
           name: INPUT_MATRIX
-        optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: enrichm predict [-h] [--log LOG] [--verbosity VERBOSITY]\n\
@@ -2528,92 +3373,93 @@ subcommands:
         \                        Pickled model to use\n  --input_matrix INPUT_MATRIX\n\
         \                        matrix of data to predict\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional: []
       named:
       - !Flag
-        description: Output logging information to this file.
+        optional: true
         synonyms:
         - --log
+        description: Output logging information to this file.
         args: !SimpleFlagArg
           name: LOG
-        optional: true
       - !Flag
-        description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1
-          = Silent
+        optional: true
         synonyms:
         - --verbosity
+        description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1
+          = Silent
         args: !SimpleFlagArg
           name: VERBOSITY
-        optional: true
       - !Flag
-        description: Output directory
+        optional: true
         synonyms:
         - --output
+        description: Output directory
         args: !SimpleFlagArg
           name: OUTPUT
-        optional: true
       - !Flag
-        description: Overwrite previous run
+        optional: true
         synonyms:
         - --force
+        description: Overwrite previous run
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: input matrix of results
+        optional: true
         synonyms:
         - --input_matrix
+        description: input matrix of results
         args: !SimpleFlagArg
           name: INPUT_MATRIX
-        optional: true
       - !Flag
-        description: defined outcomes to train the data to
+        optional: true
         synonyms:
         - --groups
+        description: defined outcomes to train the data to
         args: !SimpleFlagArg
           name: GROUPS
-        optional: true
       - !Flag
-        description: regressor or classifier
+        optional: true
         synonyms:
         - --model_type
+        description: regressor or classifier
         args: !ChoiceFlagArg
           choices: !!set
             ? classifier
             ? regressor
-        optional: true
       - !Flag
-        description: portion of the input data to use for testing (default = 0.2)
+        optional: true
         synonyms:
         - --testing_portion
+        description: portion of the input data to use for testing (default = 0.2)
         args: !SimpleFlagArg
           name: TESTING_PORTION
-        optional: true
       - !Flag
-        description: grid search
+        optional: true
         synonyms:
         - --grid_search
+        description: grid search
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: number of threads to use for hyperparameterization (default =
-          all available)
+        optional: true
         synonyms:
         - --threads
+        description: number of threads to use for hyperparameterization (default =
+          all available)
         args: !SimpleFlagArg
           name: THREADS
-        optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: enrichm generate [-h] [--log LOG] [--verbosity VERBOSITY]\n\
@@ -2635,85 +3481,86 @@ subcommands:
         \ THREADS     number of threads to use for hyperparameterization (default\
         \ = all available)\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id008
       positional: []
       named:
       - !Flag
-        description: Output logging information to this file.
+        optional: true
         synonyms:
         - --log
+        description: Output logging information to this file.
         args: !SimpleFlagArg
           name: LOG
-        optional: true
       - !Flag
-        description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1
-          = Silent
+        optional: true
         synonyms:
         - --verbosity
+        description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1
+          = Silent
         args: !SimpleFlagArg
           name: VERBOSITY
-        optional: true
       - !Flag
-        description: Output directory
+        optional: true
         synonyms:
         - --output
+        description: Output directory
         args: !SimpleFlagArg
           name: OUTPUT
-        optional: true
       - !Flag
-        description: Overwrite previous run
+        optional: true
         synonyms:
         - --force
+        description: Overwrite previous run
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Path to file containing a genome<tab>annotation list
+        optional: true
         synonyms:
         - --genome_and_annotation_file
+        description: Path to file containing a genome<tab>annotation list
         args: !SimpleFlagArg
           name: GENOME_AND_ANNOTATION_FILE
-        optional: true
       - !Flag
-        description: Path to file containing a genome annotation matrix
+        optional: true
         synonyms:
         - --genome_and_annotation_matrix
+        description: Path to file containing a genome annotation matrix
         args: !SimpleFlagArg
           name: GENOME_AND_ANNOTATION_MATRIX
-        optional: true
       - !Flag
-        description: Tab separated file containing module name, definition as the
-          columns
+        optional: true
         synonyms:
         - --custom_modules
+        description: Tab separated file containing module name, definition as the
+          columns
         args: !SimpleFlagArg
           name: CUSTOM_MODULES
-        optional: true
       - !Flag
-        description: Output only modules with greater than this percent of the requied
-          KO groups (default = print all modules)
+        optional: true
         synonyms:
         - --cutoff
+        description: Output only modules with greater than this percent of the requied
+          KO groups (default = print all modules)
         args: !SimpleFlagArg
           name: CUTOFF
-        optional: true
       - !Flag
-        description: Calculate the abundance of each pathway within each genome/sample
-          (column)
+        optional: true
         synonyms:
         - --aggregate
+        description: Calculate the abundance of each pathway within each genome/sample
+          (column)
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: enrichm classify [-h] [--log LOG] [--verbosity VERBOSITY]\n\
@@ -2738,200 +3585,201 @@ subcommands:
         \           Calculate the abundance of each pathway within each genome/sample\
         \ (column)\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id009
       positional: []
       named:
       - !Flag
-        description: Output logging information to this file.
+        optional: true
         synonyms:
         - --log
+        description: Output logging information to this file.
         args: !SimpleFlagArg
           name: LOG
-        optional: true
       - !Flag
-        description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1
-          = Silent
+        optional: true
         synonyms:
         - --verbosity
+        description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1
+          = Silent
         args: !SimpleFlagArg
           name: VERBOSITY
-        optional: true
       - !Flag
-        description: Output directory
+        optional: true
         synonyms:
         - --output
+        description: Output directory
         args: !SimpleFlagArg
           name: OUTPUT
-        optional: true
       - !Flag
-        description: Overwrite previous run
+        optional: true
         synonyms:
         - --force
+        description: Overwrite previous run
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Output directory provided by enrichm annotate
+        optional: true
         synonyms:
         - --annotate_output
+        description: Output directory provided by enrichm annotate
         args: !SimpleFlagArg
           name: ANNOTATE_OUTPUT
-        optional: true
       - !Flag
-        description: Metadata file with two columns, the first with the genome name,
-          the second with the groupings to compare.
+        optional: true
         synonyms:
         - --metadata
+        description: Metadata file with two columns, the first with the genome name,
+          the second with the groupings to compare.
         args: !SimpleFlagArg
           name: METADATA
-        optional: true
       - !Flag
-        description: Annotation matrix to compare.
+        optional: true
         synonyms:
         - --annotation_matrix
+        description: Annotation matrix to compare.
         args: !SimpleFlagArg
           name: ANNOTATION_MATRIX
-        optional: true
       - !Flag
-        description: Genome abundance matrix.
+        optional: true
         synonyms:
         - --abundance
+        description: Genome abundance matrix.
         args: !SimpleFlagArg
           name: ABUNDANCE
-        optional: true
       - !Flag
-        description: Metadata grouping abundance samples.
+        optional: true
         synonyms:
         - --abundance_metadata
+        description: Metadata grouping abundance samples.
         args: !SimpleFlagArg
           name: ABUNDANCE_METADATA
-        optional: true
       - !Flag
-        description: Genome abundance matrix.
+        optional: true
         synonyms:
         - --transcriptome
+        description: Genome abundance matrix.
         args: !SimpleFlagArg
           name: TRANSCRIPTOME
-        optional: true
       - !Flag
-        description: Metadata grouping abundance samples.
+        optional: true
         synonyms:
         - --transcriptome_metadata
+        description: Metadata grouping abundance samples.
         args: !SimpleFlagArg
           name: TRANSCRIPTOME_METADATA
-        optional: true
       - !Flag
-        description: metadata file to compare with.
+        optional: true
         synonyms:
         - --batchfile
+        description: metadata file to compare with.
         args: !SimpleFlagArg
           name: BATCHFILE
-        optional: true
       - !Flag
-        description: Only output results with a p-value below a this cutoff (default=0.05).
+        optional: true
         synonyms:
         - --pval_cutoff
+        description: Only output results with a p-value below a this cutoff (default=0.05).
         args: !SimpleFlagArg
           name: PVAL_CUTOFF
-        optional: true
       - !Flag
-        description: Proportion enrichment cutoff.
+        optional: true
         synonyms:
         - --proportions_cutoff
+        description: Proportion enrichment cutoff.
         args: !SimpleFlagArg
           name: PROPORTIONS_CUTOFF
-        optional: true
       - !Flag
-        description: The threshold to control for in false discovery rate of familywise
-          error rate.
+        optional: true
         synonyms:
         - --threshold
+        description: The threshold to control for in false discovery rate of familywise
+          error rate.
         args: !SimpleFlagArg
           name: THRESHOLD
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --multi_test_correction
         description: "The form of mutiple test correction to use. Uses the statsmodel\
           \ module and consequently has all of its options.\nDefault: Benjamini-Hochberg\
           \ FDR (fdr_bh)\nOptions: Bonferroni (b)\nSidak (s)\nHolm (h)\nHolm-Sidak\
           \ (hs)\nSimes-Hochberg (sh)\nHommel (ho)\nFDR Benjamini-Yekutieli (fdr_by)\n\
           FDR 2-stage Benjamini-Hochberg (fdr_tsbh)\nFDR 2-stage Benjamini-Krieger-Yekutieli\
           \ (fdr_tsbky)\nFDR adaptive Gavrilov-Benjamini-Sarkar (fdr_gbs))"
-        synonyms:
-        - --multi_test_correction
         args: !SimpleFlagArg
           name: MULTI_TEST_CORRECTION
-        optional: true
       - !Flag
-        description: Number of processes to use for enrichment.
+        optional: true
         synonyms:
         - --processes
+        description: Number of processes to use for enrichment.
         args: !SimpleFlagArg
           name: PROCESSES
-        optional: true
       - !Flag
-        description: Allow negative values in input matrix.
+        optional: true
         synonyms:
         - --allow_negative_values
+        description: Allow negative values in input matrix.
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Compare KO ids (annotated with DIAMOND)
+        optional: true
         synonyms:
         - --ko
+        description: Compare KO ids (annotated with DIAMOND)
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Compare KO ids (annotated with HMMs)
+        optional: true
         synonyms:
         - --ko_hmm
+        description: Compare KO ids (annotated with HMMs)
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Compare Pfam ids
+        optional: true
         synonyms:
         - --pfam
+        description: Compare Pfam ids
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Compare TIGRFAM ids
+        optional: true
         synonyms:
         - --tigrfam
+        description: Compare TIGRFAM ids
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Compare cluster ids
+        optional: true
         synonyms:
         - --cluster
+        description: Compare cluster ids
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Compare ortholog ids
+        optional: true
         synonyms:
         - --ortholog
+        description: Compare ortholog ids
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Compare dbCAN ids
+        optional: true
         synonyms:
         - --cazy
+        description: Compare dbCAN ids
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Compare EC ids
+        optional: true
         synonyms:
         - --ec
+        description: Compare EC ids
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: enrichm enrichment [-h] [--log LOG] [--verbosity VERBOSITY]\n\
@@ -2989,124 +3837,125 @@ subcommands:
         \  --ortholog            Compare ortholog ids\n  --cazy                Compare\
         \ dbCAN ids\n  --ec                  Compare EC ids\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id010
       positional: []
       named:
       - !Flag
-        description: KO matrix. REQUIRED.
+        optional: true
         synonyms:
         - --matrix
+        description: KO matrix. REQUIRED.
         args: !SimpleFlagArg
           name: MATRIX
-        optional: true
       - !Flag
-        description: Metadata file with two columns, the first with the genome name,
-          the second with the groupings to compare.
+        optional: true
         synonyms:
         - --genome_metadata
+        description: Metadata file with two columns, the first with the genome name,
+          the second with the groupings to compare.
         args: !SimpleFlagArg
           name: GENOME_METADATA
-        optional: true
       - !Flag
-        description: Abundance matrix.
+        optional: true
         synonyms:
         - --abundance
+        description: Abundance matrix.
         args: !SimpleFlagArg
           name: ABUNDANCE
-        optional: true
       - !Flag
-        description: Metadata file with two columns, the first with the genome name,
-          the second with the groupings to compare.
+        optional: true
         synonyms:
         - --abundance_metadata
-        args: !SimpleFlagArg
-          name: ABUNDANCE_METADATA
-        optional: true
-      - !Flag
-        description: TPM values produced by DetectM.
-        synonyms:
-        - --tpm_values
-        args: !SimpleFlagArg
-          name: TPM_VALUES
-        optional: true
-      - !Flag
         description: Metadata file with two columns, the first with the genome name,
           the second with the groupings to compare.
+        args: !SimpleFlagArg
+          name: ABUNDANCE_METADATA
+      - !Flag
+        optional: true
+        synonyms:
+        - --tpm_values
+        description: TPM values produced by DetectM.
+        args: !SimpleFlagArg
+          name: TPM_VALUES
+      - !Flag
+        optional: true
         synonyms:
         - --tpm_metadata
+        description: Metadata file with two columns, the first with the genome name,
+          the second with the groupings to compare.
         args: !SimpleFlagArg
           name: TPM_METADATA
-        optional: true
       - !Flag
-        description: Metabolome CID matrix.
+        optional: true
         synonyms:
         - --metabolome
+        description: Metabolome CID matrix.
         args: !SimpleFlagArg
           name: METABOLOME
-        optional: true
       - !Flag
-        description: Output logging information to this file.
+        optional: true
         synonyms:
         - --log
+        description: Output logging information to this file.
         args: !SimpleFlagArg
           name: LOG
-        optional: true
       - !Flag
-        description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1
-          = Silent
+        optional: true
         synonyms:
         - --verbosity
+        description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1
+          = Silent
         args: !SimpleFlagArg
           name: VERBOSITY
-        optional: true
       - !Flag
-        description: Output directory
+        optional: true
         synonyms:
         - --output
+        description: Output directory
         args: !SimpleFlagArg
           name: OUTPUT
-        optional: true
       - !Flag
-        description: Overwrite previous run
+        optional: true
         synonyms:
         - --force
+        description: Overwrite previous run
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: USE ONLY these reactions, or reactions within this pathway or
-          module (space separated list).
+        optional: true
         synonyms:
         - --limit
+        description: USE ONLY these reactions, or reactions within this pathway or
+          module (space separated list).
         args: !RepeatFlagArg
           name: LIMIT
-        optional: true
       - !Flag
-        description: Do not use these reactions, or reactions within this pathway
-          or module (space separated list).
+        optional: true
         synonyms:
         - --filter
+        description: Do not use these reactions, or reactions within this pathway
+          or module (space separated list).
         args: !RepeatFlagArg
           name: FILTER
-        optional: true
       - !Flag
-        description: "Supply an enrichment output to integrate the results into the\
-          \ output network.\n"
+        optional: true
         synonyms:
         - --enrichment_output
+        description: "Supply an enrichment output to integrate the results into the\
+          \ output network.\n"
         args: !SimpleFlagArg
           name: ENRICHMENT_OUTPUT
-        optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: enrichm pathway [-h] --matrix MATRIX\n                  \
@@ -3141,6 +3990,7 @@ subcommands:
         \                   Supply an enrichment output to integrate the results into\
         \ the output network.\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -3162,111 +4012,114 @@ subcommands:
       \ forest model on new data.\n\n  Authors: Joel Boyd, Ben Woodcroft, Alex Baker\n\
       \  Version: 0.5.0\n\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - --version
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   help_text: "usage: enrichm [-h] [--version]\n               {data,annotate,classify,enrichment,uses,pathway,explore,generate,predict}\n\
     \               ...\nenrichm: error: argument subparser_name: invalid choice:\
     \ 'compounds.' (choose from 'data', 'annotate', 'classify', 'enrichment', 'uses',\
     \ 'pathway', 'explore', 'generate', 'predict')\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: enrichm
-    optional: false
+    description: ''
   named: []
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - --version
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   help_text: "usage: enrichm [-h] [--version]\n               {data,annotate,classify,enrichment,uses,pathway,explore,generate,predict}\n\
     \               ...\nenrichm: error: argument subparser_name: invalid choice:\
     \ 'Annotation' (choose from 'data', 'annotate', 'classify', 'enrichment', 'uses',\
     \ 'pathway', 'explore', 'generate', 'predict')\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional: []
   named:
   - !Flag
-    description: Output logging information to this file.
+    optional: true
     synonyms:
     - --log
+    description: Output logging information to this file.
     args: !SimpleFlagArg
       name: LOG
-    optional: true
   - !Flag
-    description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent
+    optional: true
     synonyms:
     - --verbosity
+    description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent
     args: !SimpleFlagArg
       name: VERBOSITY
-    optional: true
   - !Flag
-    description: Output directory
+    optional: true
     synonyms:
     - --output
+    description: Output directory
     args: !SimpleFlagArg
       name: OUTPUT
-    optional: true
   - !Flag
-    description: Overwrite previous run
+    optional: true
     synonyms:
     - --force
+    description: Overwrite previous run
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Pickled model to use
+    optional: true
     synonyms:
     - --forester_model_directory
+    description: Pickled model to use
     args: !SimpleFlagArg
       name: FORESTER_MODEL_DIRECTORY
-    optional: true
   - !Flag
-    description: "matrix of data to predict\n"
+    optional: true
     synonyms:
     - --input_matrix
+    description: "matrix of data to predict\n"
     args: !SimpleFlagArg
       name: INPUT_MATRIX
-    optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: enrichm predict [-h] [--log LOG] [--verbosity VERBOSITY]\n  \
@@ -3281,91 +4134,92 @@ subcommands:
     \                      Pickled model to use\n  --input_matrix INPUT_MATRIX\n \
     \                       matrix of data to predict\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional: []
   named:
   - !Flag
-    description: Output logging information to this file.
+    optional: true
     synonyms:
     - --log
+    description: Output logging information to this file.
     args: !SimpleFlagArg
       name: LOG
-    optional: true
   - !Flag
-    description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent
+    optional: true
     synonyms:
     - --verbosity
+    description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent
     args: !SimpleFlagArg
       name: VERBOSITY
-    optional: true
   - !Flag
-    description: Output directory
+    optional: true
     synonyms:
     - --output
+    description: Output directory
     args: !SimpleFlagArg
       name: OUTPUT
-    optional: true
   - !Flag
-    description: Overwrite previous run
+    optional: true
     synonyms:
     - --force
+    description: Overwrite previous run
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: input matrix of results
+    optional: true
     synonyms:
     - --input_matrix
+    description: input matrix of results
     args: !SimpleFlagArg
       name: INPUT_MATRIX
-    optional: true
   - !Flag
-    description: defined outcomes to train the data to
+    optional: true
     synonyms:
     - --groups
+    description: defined outcomes to train the data to
     args: !SimpleFlagArg
       name: GROUPS
-    optional: true
   - !Flag
-    description: regressor or classifier
+    optional: true
     synonyms:
     - --model_type
+    description: regressor or classifier
     args: !ChoiceFlagArg
       choices: !!set
-        classifier:
         regressor:
-    optional: true
+        classifier:
   - !Flag
-    description: portion of the input data to use for testing (default = 0.2)
+    optional: true
     synonyms:
     - --testing_portion
+    description: portion of the input data to use for testing (default = 0.2)
     args: !SimpleFlagArg
       name: TESTING_PORTION
-    optional: true
   - !Flag
-    description: grid search
+    optional: true
     synonyms:
     - --grid_search
+    description: grid search
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: number of threads to use for hyperparameterization (default = all
-      available)
+    optional: true
     synonyms:
     - --threads
+    description: number of threads to use for hyperparameterization (default = all
+      available)
     args: !SimpleFlagArg
       name: THREADS
-    optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: enrichm generate [-h] [--log LOG] [--verbosity VERBOSITY]\n \
@@ -3386,83 +4240,84 @@ subcommands:
     \  --threads THREADS     number of threads to use for hyperparameterization (default\
     \ = all available)\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id008
   positional: []
   named:
   - !Flag
-    description: Output logging information to this file.
+    optional: true
     synonyms:
     - --log
+    description: Output logging information to this file.
     args: !SimpleFlagArg
       name: LOG
-    optional: true
   - !Flag
-    description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent
+    optional: true
     synonyms:
     - --verbosity
+    description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent
     args: !SimpleFlagArg
       name: VERBOSITY
-    optional: true
   - !Flag
-    description: Output directory
+    optional: true
     synonyms:
     - --output
+    description: Output directory
     args: !SimpleFlagArg
       name: OUTPUT
-    optional: true
   - !Flag
-    description: Overwrite previous run
+    optional: true
     synonyms:
     - --force
+    description: Overwrite previous run
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Path to file containing a genome<tab>annotation list
+    optional: true
     synonyms:
     - --genome_and_annotation_file
+    description: Path to file containing a genome<tab>annotation list
     args: !SimpleFlagArg
       name: GENOME_AND_ANNOTATION_FILE
-    optional: true
   - !Flag
-    description: Path to file containing a genome annotation matrix
+    optional: true
     synonyms:
     - --genome_and_annotation_matrix
+    description: Path to file containing a genome annotation matrix
     args: !SimpleFlagArg
       name: GENOME_AND_ANNOTATION_MATRIX
-    optional: true
   - !Flag
-    description: Tab separated file containing module name, definition as the columns
+    optional: true
     synonyms:
     - --custom_modules
+    description: Tab separated file containing module name, definition as the columns
     args: !SimpleFlagArg
       name: CUSTOM_MODULES
-    optional: true
   - !Flag
-    description: Output only modules with greater than this percent of the requied
-      KO groups (default = print all modules)
+    optional: true
     synonyms:
     - --cutoff
+    description: Output only modules with greater than this percent of the requied
+      KO groups (default = print all modules)
     args: !SimpleFlagArg
       name: CUTOFF
-    optional: true
   - !Flag
-    description: Calculate the abundance of each pathway within each genome/sample
-      (column)
+    optional: true
     synonyms:
     - --aggregate
+    description: Calculate the abundance of each pathway within each genome/sample
+      (column)
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: enrichm classify [-h] [--log LOG] [--verbosity VERBOSITY]\n \
@@ -3485,199 +4340,200 @@ subcommands:
     \ options:\n  --aggregate           Calculate the abundance of each pathway within\
     \ each genome/sample (column)\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id009
   positional: []
   named:
   - !Flag
-    description: Output logging information to this file.
+    optional: true
     synonyms:
     - --log
+    description: Output logging information to this file.
     args: !SimpleFlagArg
       name: LOG
-    optional: true
   - !Flag
-    description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent
+    optional: true
     synonyms:
     - --verbosity
+    description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent
     args: !SimpleFlagArg
       name: VERBOSITY
-    optional: true
   - !Flag
-    description: Output directory
+    optional: true
     synonyms:
     - --output
+    description: Output directory
     args: !SimpleFlagArg
       name: OUTPUT
-    optional: true
   - !Flag
-    description: Overwrite previous run
+    optional: true
     synonyms:
     - --force
+    description: Overwrite previous run
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Output directory provided by enrichm annotate
+    optional: true
     synonyms:
     - --annotate_output
+    description: Output directory provided by enrichm annotate
     args: !SimpleFlagArg
       name: ANNOTATE_OUTPUT
-    optional: true
   - !Flag
-    description: Metadata file with two columns, the first with the genome name, the
-      second with the groupings to compare.
+    optional: true
     synonyms:
     - --metadata
+    description: Metadata file with two columns, the first with the genome name, the
+      second with the groupings to compare.
     args: !SimpleFlagArg
       name: METADATA
-    optional: true
   - !Flag
-    description: Annotation matrix to compare.
+    optional: true
     synonyms:
     - --annotation_matrix
+    description: Annotation matrix to compare.
     args: !SimpleFlagArg
       name: ANNOTATION_MATRIX
-    optional: true
   - !Flag
-    description: Genome abundance matrix.
+    optional: true
     synonyms:
     - --abundance
+    description: Genome abundance matrix.
     args: !SimpleFlagArg
       name: ABUNDANCE
-    optional: true
   - !Flag
-    description: Metadata grouping abundance samples.
+    optional: true
     synonyms:
     - --abundance_metadata
+    description: Metadata grouping abundance samples.
     args: !SimpleFlagArg
       name: ABUNDANCE_METADATA
-    optional: true
   - !Flag
-    description: Genome abundance matrix.
+    optional: true
     synonyms:
     - --transcriptome
+    description: Genome abundance matrix.
     args: !SimpleFlagArg
       name: TRANSCRIPTOME
-    optional: true
   - !Flag
-    description: Metadata grouping abundance samples.
+    optional: true
     synonyms:
     - --transcriptome_metadata
+    description: Metadata grouping abundance samples.
     args: !SimpleFlagArg
       name: TRANSCRIPTOME_METADATA
-    optional: true
   - !Flag
-    description: metadata file to compare with.
+    optional: true
     synonyms:
     - --batchfile
+    description: metadata file to compare with.
     args: !SimpleFlagArg
       name: BATCHFILE
-    optional: true
   - !Flag
-    description: Only output results with a p-value below a this cutoff (default=0.05).
+    optional: true
     synonyms:
     - --pval_cutoff
+    description: Only output results with a p-value below a this cutoff (default=0.05).
     args: !SimpleFlagArg
       name: PVAL_CUTOFF
-    optional: true
   - !Flag
-    description: Proportion enrichment cutoff.
+    optional: true
     synonyms:
     - --proportions_cutoff
+    description: Proportion enrichment cutoff.
     args: !SimpleFlagArg
       name: PROPORTIONS_CUTOFF
-    optional: true
   - !Flag
-    description: The threshold to control for in false discovery rate of familywise
-      error rate.
+    optional: true
     synonyms:
     - --threshold
+    description: The threshold to control for in false discovery rate of familywise
+      error rate.
     args: !SimpleFlagArg
       name: THRESHOLD
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --multi_test_correction
     description: "The form of mutiple test correction to use. Uses the statsmodel\
       \ module and consequently has all of its options.\nDefault: Benjamini-Hochberg\
       \ FDR (fdr_bh)\nOptions: Bonferroni (b)\nSidak (s)\nHolm (h)\nHolm-Sidak (hs)\n\
       Simes-Hochberg (sh)\nHommel (ho)\nFDR Benjamini-Yekutieli (fdr_by)\nFDR 2-stage\
       \ Benjamini-Hochberg (fdr_tsbh)\nFDR 2-stage Benjamini-Krieger-Yekutieli (fdr_tsbky)\n\
       FDR adaptive Gavrilov-Benjamini-Sarkar (fdr_gbs))"
-    synonyms:
-    - --multi_test_correction
     args: !SimpleFlagArg
       name: MULTI_TEST_CORRECTION
-    optional: true
   - !Flag
-    description: Number of processes to use for enrichment.
+    optional: true
     synonyms:
     - --processes
+    description: Number of processes to use for enrichment.
     args: !SimpleFlagArg
       name: PROCESSES
-    optional: true
   - !Flag
-    description: Allow negative values in input matrix.
+    optional: true
     synonyms:
     - --allow_negative_values
+    description: Allow negative values in input matrix.
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Compare KO ids (annotated with DIAMOND)
+    optional: true
     synonyms:
     - --ko
+    description: Compare KO ids (annotated with DIAMOND)
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Compare KO ids (annotated with HMMs)
+    optional: true
     synonyms:
     - --ko_hmm
+    description: Compare KO ids (annotated with HMMs)
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Compare Pfam ids
+    optional: true
     synonyms:
     - --pfam
+    description: Compare Pfam ids
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Compare TIGRFAM ids
+    optional: true
     synonyms:
     - --tigrfam
+    description: Compare TIGRFAM ids
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Compare cluster ids
+    optional: true
     synonyms:
     - --cluster
+    description: Compare cluster ids
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Compare ortholog ids
+    optional: true
     synonyms:
     - --ortholog
+    description: Compare ortholog ids
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Compare dbCAN ids
+    optional: true
     synonyms:
     - --cazy
+    description: Compare dbCAN ids
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Compare EC ids
+    optional: true
     synonyms:
     - --ec
+    description: Compare EC ids
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: enrichm enrichment [-h] [--log LOG] [--verbosity VERBOSITY]\n\
@@ -3732,123 +4588,124 @@ subcommands:
     \ ortholog ids\n  --cazy                Compare dbCAN ids\n  --ec            \
     \      Compare EC ids\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id010
   positional: []
   named:
   - !Flag
-    description: KO matrix. REQUIRED.
+    optional: true
     synonyms:
     - --matrix
+    description: KO matrix. REQUIRED.
     args: !SimpleFlagArg
       name: MATRIX
-    optional: true
   - !Flag
-    description: Metadata file with two columns, the first with the genome name, the
-      second with the groupings to compare.
+    optional: true
     synonyms:
     - --genome_metadata
+    description: Metadata file with two columns, the first with the genome name, the
+      second with the groupings to compare.
     args: !SimpleFlagArg
       name: GENOME_METADATA
-    optional: true
   - !Flag
-    description: Abundance matrix.
+    optional: true
     synonyms:
     - --abundance
+    description: Abundance matrix.
     args: !SimpleFlagArg
       name: ABUNDANCE
-    optional: true
   - !Flag
-    description: Metadata file with two columns, the first with the genome name, the
-      second with the groupings to compare.
+    optional: true
     synonyms:
     - --abundance_metadata
-    args: !SimpleFlagArg
-      name: ABUNDANCE_METADATA
-    optional: true
-  - !Flag
-    description: TPM values produced by DetectM.
-    synonyms:
-    - --tpm_values
-    args: !SimpleFlagArg
-      name: TPM_VALUES
-    optional: true
-  - !Flag
     description: Metadata file with two columns, the first with the genome name, the
       second with the groupings to compare.
+    args: !SimpleFlagArg
+      name: ABUNDANCE_METADATA
+  - !Flag
+    optional: true
+    synonyms:
+    - --tpm_values
+    description: TPM values produced by DetectM.
+    args: !SimpleFlagArg
+      name: TPM_VALUES
+  - !Flag
+    optional: true
     synonyms:
     - --tpm_metadata
+    description: Metadata file with two columns, the first with the genome name, the
+      second with the groupings to compare.
     args: !SimpleFlagArg
       name: TPM_METADATA
-    optional: true
   - !Flag
-    description: Metabolome CID matrix.
+    optional: true
     synonyms:
     - --metabolome
+    description: Metabolome CID matrix.
     args: !SimpleFlagArg
       name: METABOLOME
-    optional: true
   - !Flag
-    description: Output logging information to this file.
+    optional: true
     synonyms:
     - --log
+    description: Output logging information to this file.
     args: !SimpleFlagArg
       name: LOG
-    optional: true
   - !Flag
-    description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent
+    optional: true
     synonyms:
     - --verbosity
+    description: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent
     args: !SimpleFlagArg
       name: VERBOSITY
-    optional: true
   - !Flag
-    description: Output directory
+    optional: true
     synonyms:
     - --output
+    description: Output directory
     args: !SimpleFlagArg
       name: OUTPUT
-    optional: true
   - !Flag
-    description: Overwrite previous run
+    optional: true
     synonyms:
     - --force
+    description: Overwrite previous run
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: USE ONLY these reactions, or reactions within this pathway or module
-      (space separated list).
+    optional: true
     synonyms:
     - --limit
+    description: USE ONLY these reactions, or reactions within this pathway or module
+      (space separated list).
     args: !RepeatFlagArg
       name: LIMIT
-    optional: true
   - !Flag
-    description: Do not use these reactions, or reactions within this pathway or module
-      (space separated list).
+    optional: true
     synonyms:
     - --filter
+    description: Do not use these reactions, or reactions within this pathway or module
+      (space separated list).
     args: !RepeatFlagArg
       name: FILTER
-    optional: true
   - !Flag
-    description: "Supply an enrichment output to integrate the results into the output\
-      \ network.\n"
+    optional: true
     synonyms:
     - --enrichment_output
+    description: "Supply an enrichment output to integrate the results into the output\
+      \ network.\n"
     args: !SimpleFlagArg
       name: ENRICHMENT_OUTPUT
-    optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: enrichm pathway [-h] --matrix MATRIX\n                      \
@@ -3881,6 +4738,7 @@ subcommands:
     \ ENRICHMENT_OUTPUT\n                        Supply an enrichment output to integrate\
     \ the results into the output network.\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -3901,3 +4759,4 @@ help_text: "                         _____            _      _     __  __ \n    
   \ model.\n    predict         -> Run random forest model on new data.\n\n  Authors:\
   \ Joel Boyd, Ben Woodcroft, Alex Baker\n  Version: 0.5.0\n\n"
 generated_using: *id004
+docker_image:

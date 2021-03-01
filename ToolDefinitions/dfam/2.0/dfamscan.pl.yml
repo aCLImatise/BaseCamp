@@ -3,88 +3,115 @@ command:
 - dfamscan.pl
 positional:
 - !Positional
-  description: --dfam_outfile <s>   Output file, also in dfamtblout format
+  optional: false
   position: 0
   name: Requires
-  optional: false
+  description: --dfam_outfile <s>   Output file, also in dfamtblout format
 - !Positional
-  description: A match is considered non-redundant
+  optional: false
   position: 0
   name: crossmatch.
+  description: A match is considered non-redundant
+- !Positional
   optional: false
+  position: 0
+  name: '0.75'
+  description: All optional
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --dfam_infile
   description: "Use this is you've already run nhmmscan, and\njust want to perfom\
     \ dfamscan filtering/sorting.\nThe file must be the one produced by nhmmscan's\n\
     --dfamtblout flag.\n(Note: must be nhmmscan output, not nhmmer output)"
-  synonyms:
-  - --dfam_infile
   args: !SimpleFlagArg
     name: s
-  optional: true
 - !Flag
-  description: Use these if you want dfamscan to control a
+  optional: true
   synonyms:
   - --fastafile
+  description: Use these if you want dfamscan to control a
   args: !SimpleFlagArg
     name: s
-  optional: true
 - !Flag
-  description: run of nhmmscan, then do filtering/sorting
+  optional: true
   synonyms:
   - --hmmfile
+  description: run of nhmmscan, then do filtering/sorting
   args: !SimpleFlagArg
     name: s
-  optional: true
 - !Flag
-  description: ">0, <=10000\n-T <f>\n--masking_thresh/--cut_ga\n--annotation_thresh/--cut_tc\
-    \  Default\n--species <i>        Currently allowed are \"Other\", \"Homo sapiens\"\
-    ,\n\"Mus Musculus\", \"Danio rerio\", \"Drosophila melanogaster\",\nor \"Caenorhabditis\
-    \ elegans\""
+  optional: true
   synonyms:
-  - -E
+  - -T
+  - --masking_thresh
+  - --cut_ga
+  - --annotation_thresh
+  - --cut_tc
+  description: Default
   args: !SimpleFlagArg
     name: f
-  optional: true
 - !Flag
-  description: "--sortby_model\n--sortby_seq         Default"
+  optional: true
+  synonyms:
+  - --species
+  description: "Currently allowed are \"Other\", \"Homo sapiens\",\n\"Mus Musculus\"\
+    , \"Danio rerio\", \"Drosophila melanogaster\",\nor \"Caenorhabditis elegans\""
+  args: !SimpleFlagArg
+    name: i
+- !Flag
+  optional: true
   synonyms:
   - --sortby_eval
+  - --sortby_model
+  - --sortby_seq
+  description: Default
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: This is similar to the MaskLevel concept in
+  optional: true
   synonyms:
   - --min_cov_frac
+  description: This is similar to the MaskLevel concept in
   args: !SimpleFlagArg
     name: f
-  optional: true
 - !Flag
-  description: "Runs trf, put results in <s>; only with --fastafile\n--cpu <i>   \
-    \         Default 8\n--no_rph_removal     Don't remove redundant profile hits\n\
-    --log_file <s>\n"
+  optional: true
   synonyms:
   - --trf_outfile
+  description: Runs trf, put results in <s>; only with --fastafile
   args: !SimpleFlagArg
     name: s
+- !Flag
   optional: true
+  synonyms:
+  - --cpu
+  description: Default 8
+  args: !SimpleFlagArg
+    name: i
+- !Flag
+  optional: true
+  synonyms:
+  - --no_rph_removal
+  description: Don't remove redundant profile hits
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ': prints this help messeage'
+  optional: true
   synonyms:
   - --help
+  description: ': prints this help messeage'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: ": prints version information for this program and\nboth nhmmscan and\
-    \ trf"
+  optional: true
   synonyms:
   - --version
+  description: ": prints version information for this program and\nboth nhmmscan and\
+    \ trf"
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Command line options for controlling /usr/local/bin/dfamscan.pl\n-------------------------------------------------------------------------------\n\
   \   --help       : prints this help messeage\n   --version    : prints version information\
   \ for this program and\n                  both nhmmscan and trf\n   Requires either\n\
@@ -112,3 +139,4 @@ help_text: "Command line options for controlling /usr/local/bin/dfamscan.pl\n---
   \    --log_file <s>\n"
 generated_using:
 - --help
+docker_image:

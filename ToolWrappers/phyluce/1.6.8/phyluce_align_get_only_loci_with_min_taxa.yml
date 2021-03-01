@@ -4,76 +4,82 @@ command:
 positional: []
 named:
 - !Flag
-  description: "[--percent PERCENT]\n[--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]\n\
-    [--verbosity {INFO,WARN,CRITICAL}]\n[--log-path LOG_PATH]\n[--cores CORES]"
-  synonyms:
-  - --taxa
-  - --output
-  args: !SimpleFlagArg
-    name: TAXA
   optional: true
-- !Flag
-  description: "The directory containing alignments to screen.\n(default: None)"
   synonyms:
   - --alignments
+  description: "The directory containing alignments to screen.\n(default: None)"
   args: !SimpleFlagArg
     name: ALIGNMENTS
-  optional: true
 - !Flag
-  description: 'The percent of taxa to require (default: 0.75)'
+  optional: true
+  synonyms:
+  - --taxa
+  description: "The total number of taxa in all alignments. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: TAXA
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: "The output dir in which to store copies of the\nalignments (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
   synonyms:
   - --percent
+  description: 'The percent of taxa to require (default: 0.75)'
   args: !SimpleFlagArg
     name: PERCENT
-  optional: true
 - !Flag
-  description: 'The input alignment format. (default: nexus)'
+  optional: true
   synonyms:
   - --input-format
+  description: 'The input alignment format. (default: nexus)'
   args: !ChoiceFlagArg
     choices: !!set
-      clustal:
-      stockholm:
-      phylip:
       fasta:
       emboss:
+      stockholm:
+      clustal:
+      phylip:
       nexus:
-  optional: true
 - !Flag
-  description: 'The logging level to use. (default: INFO)'
+  optional: true
   synonyms:
   - --verbosity
+  description: 'The logging level to use. (default: INFO)'
   args: !ChoiceFlagArg
     choices: !!set
+      INFO:
       WARN:
       CRITICAL:
-      INFO:
-  optional: true
 - !Flag
-  description: 'The path to a directory to hold logs. (default: None)'
+  optional: true
   synonyms:
   - --log-path
+  description: 'The path to a directory to hold logs. (default: None)'
   args: !SimpleFlagArg
     name: LOG_PATH
-  optional: true
 - !Flag
-  description: "Process alignments in parallel using --cores for\nalignment. This\
-    \ is the number of PHYSICAL CPUs.\n(default: 1)\n"
+  optional: true
   synonyms:
   - --cores
+  description: "Process alignments in parallel using --cores for\nalignment. This\
+    \ is the number of PHYSICAL CPUs.\n(default: 1)\n"
   args: !SimpleFlagArg
     name: CORES
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: phyluce_align_get_only_loci_with_min_taxa [-h] --alignments ALIGNMENTS\n\
@@ -99,3 +105,4 @@ help_text: "usage: phyluce_align_get_only_loci_with_min_taxa [-h] --alignments A
   \                   (default: 1)\n"
 generated_using:
 - --help
+docker_image:

@@ -14,6 +14,9 @@ task GcloudSqlOperations {
       ~{list} \
       ~{wait}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     instance_dot: "GCLOUD WIDE FLAGS"
     describe: "Retrieves information about a Cloud SQL instance operation."

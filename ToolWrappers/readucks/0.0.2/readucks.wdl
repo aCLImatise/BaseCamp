@@ -2,7 +2,7 @@ version 1.0
 
 task Readucks {
   input {
-    File? fastq_input_reads
+    File? fastq_directory_searched
     Directory? output_dir
     Boolean? bin_barcodes
     Boolean? annotate_files
@@ -27,7 +27,7 @@ task Readucks {
   }
   command <<<
     readucks \
-      ~{if defined(fastq_input_reads) then ("--input " +  '"' + fastq_input_reads + '"') else ""} \
+      ~{if defined(fastq_directory_searched) then ("--input " +  '"' + fastq_directory_searched + '"') else ""} \
       ~{if defined(output_dir) then ("--output_dir " +  '"' + output_dir + '"') else ""} \
       ~{if (bin_barcodes) then "--bin_barcodes" else ""} \
       ~{if (annotate_files) then "--annotate_files" else ""} \
@@ -50,8 +50,11 @@ task Readucks {
       ~{if defined(score_diff) then ("--score_diff " +  '"' + score_diff + '"') else ""} \
       ~{if defined(scoring_scheme) then ("--scoring_scheme " +  '"' + scoring_scheme + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    fastq_input_reads: "FASTQ of input reads or a directory which will be\\nrecursively searched for FASTQ files (required)."
+    fastq_directory_searched: "FASTQ of input reads or a directory which will be\\nrecursively searched for FASTQ files (required)."
     output_dir: "Output directory (default: working directory)"
     bin_barcodes: "Reads will be binned based on their barcode and\\nsaved to separate files. (default: False)"
     annotate_files: "Writes a CSV file for each input file containing\\nbarcode calls for each read. (default: False)"

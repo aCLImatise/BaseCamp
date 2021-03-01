@@ -24,6 +24,9 @@ task RtgGenomesim {
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_sdf: "output SDF"
     comment: "comment to include in the generated SDF"

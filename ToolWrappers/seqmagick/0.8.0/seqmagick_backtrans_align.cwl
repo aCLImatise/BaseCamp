@@ -3,17 +3,17 @@ id: seqmagick_backtrans_align.cwl
 inputs:
 - id: in_out_file
   doc: 'Output destination. Default: STDOUT'
-  type: File
+  type: File?
   inputBinding:
     prefix: --out-file
 - id: in_translation_table
   doc: "Translation table to use. [Default: standard-\nambiguous]"
-  type: string
+  type: string?
   inputBinding:
     prefix: --translation-table
 - id: in_fail_action
   doc: "Action to take on an ambiguous codon [default: fail]\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --fail-action
 - id: in_protein_align
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_out_file
   doc: 'Output destination. Default: STDOUT'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - seqmagick

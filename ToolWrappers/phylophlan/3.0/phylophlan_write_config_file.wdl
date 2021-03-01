@@ -38,6 +38,9 @@ task PhylophlanWriteConfigFile {
       ~{if (overwrite) then "--overwrite" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specify_output_file: "Specify the output file where to write the\\nconfigurations (default: None)"
     db_type: "Specify the type of the database, where \\\"n\\\" stands for\\nnucleotides and \\\"a\\\" for amino acids (default: None)"

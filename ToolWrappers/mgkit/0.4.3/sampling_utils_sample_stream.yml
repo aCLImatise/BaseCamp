@@ -4,29 +4,50 @@ command:
 - sample_stream
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: INPUT_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: OUTPUT_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-r, --prob FLOAT       Probability of picking a sequence\n-x, --max-seq\
-    \ INTEGER  Maximum number of sequences\n-q, --fastq            The input file\
-    \ is a fastq file\n--help                 Show this message and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
-  args: !EmptyFlagArg {}
+  - -r
+  - --prob
+  description: Probability of picking a sequence
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
   optional: true
+  synonyms:
+  - -x
+  - --max-seq
+  description: Maximum number of sequences
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --fastq
+  description: The input file is a fastq file
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: sampling-utils sample_stream [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\
@@ -37,3 +58,4 @@ help_text: "Usage: sampling-utils sample_stream [OPTIONS] [INPUT_FILE] [OUTPUT_F
   \    Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

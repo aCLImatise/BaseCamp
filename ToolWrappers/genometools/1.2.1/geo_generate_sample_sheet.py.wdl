@@ -16,6 +16,9 @@ task GeoGenerateSampleSheetpy {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     series_matrix_file: "The GEO series matrix file."
     output_file: "The output file."

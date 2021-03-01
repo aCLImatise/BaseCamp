@@ -3,82 +3,85 @@ command:
 - kinSimRiboswitch
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: ARGS
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: SEQUENCE.FASTA
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -E
   description: ":    Energy band width (in kcal) in which structures are completely\n\
     enumerated. [15]\nTo achieve reasonable runtimes, use RNAsubopt -e <xx> | wc -l\
     \ to\ncount the structures and keep it below a few millions."
-  synonyms:
-  - -E
   args: !SimpleFlagArg
     name: xx
-  optional: true
 - !Flag
-  description: ":    Minimal barrier height (barriers --minh). [1]\nMinima seperated\
-    \ from their respective father by a lower barrier\nare merged with it."
+  optional: true
   synonyms:
   - -m
+  description: ":    Minimal barrier height (barriers --minh). [1]\nMinima seperated\
+    \ from their respective father by a lower barrier\nare merged with it."
   args: !SimpleFlagArg
     name: xx
-  optional: true
 - !Flag
-  description: ":    Folding temperature in deg Celsius at which the simulation is\n\
-    performed. [37]"
+  optional: true
   synonyms:
   - -T
+  description: ":    Folding temperature in deg Celsius at which the simulation is\n\
+    performed. [37]"
   args: !SimpleFlagArg
     name: xx
-  optional: true
 - !Flag
-  description: ":       Allows lonely pairs. By default, only \"canonical\" structures\n\
-    (i.e. such without any lonely pairs) are generated."
+  optional: true
   synonyms:
   - -l
+  description: ":       Allows lonely pairs. By default, only \"canonical\" structures\n\
+    (i.e. such without any lonely pairs) are generated."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ":       Remove disconnected structures (i.e. not reachable from mfe)\n\
-    instead of trying to connect them with the findpath heuristic."
+  optional: true
   synonyms:
   - -r
+  description: ":       Remove disconnected structures (i.e. not reachable from mfe)\n\
+    instead of trying to connect them with the findpath heuristic."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ":    File containing additional structures to be included into the\n\
-    simulation, e.g. waterfall output."
+  optional: true
   synonyms:
   - -a
+  description: ":    File containing additional structures to be included into the\n\
+    simulation, e.g. waterfall output."
   args: !SimpleFlagArg
     name: ss
-  optional: true
 - !Flag
-  description: "Let barriers output a list of contact / transient states, ie\nthose\
-    \ having a neighbor in a different basin."
+  optional: true
   synonyms:
   - -c
+  description: "Let barriers output a list of contact / transient states, ie\nthose\
+    \ having a neighbor in a different basin."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -M
   description: ":       Skip generation of macro states but use existing files as\
     \ input.\nPass file names of barriers files of monomer and dimer world as\npositional\
     \ parameters. Assumes existence of BARFILE_FULL.sbmap.\nOnly the options below\
     \ and -T will have an effect if -M is\ngiven. Use the same temperature as during\
     \ the generation of the\nmacro states, or the rates will be incorrect."
-  synonyms:
-  - -M
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ": Use the monomer basin containing structure <ss> as start state\n\
+  optional: true
+  synonyms:
+  - -s
+  description: "/ii: Use the monomer basin containing structure <ss> as start state\n\
     for the simulation. By default, the basin containing the open\nchain (i.e. without\
     \ any basepairs) is used.\nWhen passing an integer <ii>, it's used as start state\
     \ directly.\nWhen removing disconnected states (-r), <ii> does NOT\nnecessarily\
@@ -86,63 +89,60 @@ named:
     \ 2, 3 where 2 has been removed, -s 2\nstarts in macrostate 3). To refer directly\
     \ to Barriers'\nmacrostates, use prefixes mon and dim (e.g. -s mon15 or -s dim1)\n\
     for monomer or dimer macrostates, respectively. Phew!"
-  synonyms:
-  - -s
   args: !SimpleFlagArg
-    name: ss/ii
-  optional: true
+    name: ss
 - !Flag
-  description: ":    Ligand concentration in molar =  mol / l = mol / dm^3 in the\n\
-    cell [1e-3]"
+  optional: true
   synonyms:
   - -L
+  description: ":    Ligand concentration in molar =  mol / l = mol / dm^3 in the\n\
+    cell [1e-3]"
   args: !SimpleFlagArg
     name: xx
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -B
   description: ":    Bonus energy for binding the ligand (>=0, in kcal/mol). With\
     \ -M,\nspecifying -B will re-compute the monomer<->dimer transition\nmatrix, else\
     \ the existing one is used. [9.59]"
-  synonyms:
-  - -B
   args: !SimpleFlagArg
     name: xx
-  optional: true
 - !Flag
-  description: ':       Folding rate of RNA in s^-1 (pre-exponential factor). [1e6]'
+  optional: true
   synonyms:
   - -F
+  description: ':       Folding rate of RNA in s^-1 (pre-exponential factor). [1e6]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ':       Dimerization rate in (M s)^-1 (pre-exponential factor). [1.7e5]'
+  optional: true
   synonyms:
   - -D
+  description: ':       Dimerization rate in (M s)^-1 (pre-exponential factor). [1.7e5]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ':    Simulation time. [1e16]'
+  optional: true
   synonyms:
   - -t
+  description: ':    Simulation time. [1e16]'
   args: !SimpleFlagArg
     name: xx
-  optional: true
 - !Flag
-  description: ":       Force run, even if a lock file exists. If a lock file is found\n\
-    and -f is not given, the user is promted to confirm the run."
+  optional: true
   synonyms:
   - -f
+  description: ":       Force run, even if a lock file exists. If a lock file is found\n\
+    and -f is not given, the user is promted to confirm the run."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ':       Display this help.'
+  optional: true
   synonyms:
   - -h
+  description: ':       Display this help.'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "                      * * * kinSimRiboswitch v0.6 * * *\n\nCompute the\
@@ -196,3 +196,4 @@ help_text: "                      * * * kinSimRiboswitch v0.6 * * *\n\nCompute t
   \    -h:       Display this help.\n"
 generated_using:
 - -h
+docker_image:

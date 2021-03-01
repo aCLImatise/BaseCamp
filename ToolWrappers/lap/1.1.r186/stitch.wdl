@@ -14,6 +14,9 @@ task Stitch {
       ~{if defined(file_containing_second_read) then ("-2 " +  '"' + file_containing_second_read + '"') else ""} \
       ~{if (out_ie) then "--outie" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_containing_first_read: "The file containing the first read of each pair"
     file_containing_second_read: "The file containing the second read of each pair"

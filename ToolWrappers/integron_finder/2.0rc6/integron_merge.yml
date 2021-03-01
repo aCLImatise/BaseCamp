@@ -1,0 +1,72 @@
+!Command
+command:
+- integron_merge
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: outdir
+  description: path of directory where the merged result must be stored
+- !Positional
+  optional: false
+  position: 1
+  name: outfile
+  description: "the basename of the result files ('.integrons' and\n'.summary') without\
+    \ extension, eg : data_set_1"
+- !Positional
+  optional: false
+  position: 2
+  name: results
+  description: 'Path to the results dir to merge eg : path/to/'
+- !Positional
+  optional: false
+  position: 3
+  name: Results_Integron_Finder_acba.007.p01.13
+  description: path/to/Results_Integron_Finder_lian.001.c02.10
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: 'Increase verbosity of output (can be cumulative : -vv)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: 'Decrease verbosity of output (can be cumulative : -qq)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: integron_merge [-h] [-v] [-q] outdir outfile results [results ...]\n\
+  \nMerge different integron_finder results in one\n     \n - merge the '.integrons'\
+  \ files\n - merge the '.summary' files\n - copy the *.pdf files if they exist\n\
+  \ - copy the *.gbk file if they exist\n - copy the temporary directory if they exist\n\
+  \nfor instance to merge the results from 3 analysis\n     \n  - Results_Integron_Finder_psa_1\n\
+  \  - Results_Integron_Finder_psa_2\n  - Results_Integron_Finder_psa_3\n     \ninto\
+  \ new directory Results_Integron_Finder_foo_bar\n\nintegron_merge Results_Integron_Finder_foo_bar\
+  \ baz  Results_Integron_Finder_psa*\n    \nwill give :\n\n- one directory: Results_Integron_Finder_foo_bar\n\
+  \ncontaining\n\n    - baz .integrons\n    - baz .summary\n    - psa_1.gbk\n    -\
+  \ psa_2.gbk\n    - psa_3.gbk\n\npositional arguments:\n  outdir         path of\
+  \ directory where the merged result must be stored\n  outfile        the basename\
+  \ of the result files ('.integrons' and\n                 '.summary') without extension,\
+  \ eg : data_set_1\n  results        Path to the results dir to merge eg : path/to/\n\
+  \                 Results_Integron_Finder_acba.007.p01.13\n                 path/to/Results_Integron_Finder_lian.001.c02.10\n\
+  \noptional arguments:\n  -h, --help     show this help message and exit\n\n  -v,\
+  \ --verbose  Increase verbosity of output (can be cumulative : -vv)\n  -q, --quiet\
+  \    Decrease verbosity of output (can be cumulative : -qq)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/integron_finder:2.0rc6--py_0

@@ -10,6 +10,9 @@ task UpdateBankPositions {
       ~{bank_name} \
       ~{pos_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bank_name: ""
     pos_file: ""

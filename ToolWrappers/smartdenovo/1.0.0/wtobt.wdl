@@ -26,6 +26,9 @@ task Wtobt {
       ~{if defined(maximum_margin_alignment) then ("-w " +  '"' + maximum_margin_alignment + '"') else ""} \
       ~{if defined(minimum_depth_overlap) then ("-c " +  '"' + minimum_depth_overlap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     long_reads_file: "Long reads sequences file, + *"
     long_reads_region: "Long reads retained region, often from wtobt/wtcyc, +\\nFormat: read_name\\toffset\\tlength\\toriginal_len"

@@ -12,6 +12,9 @@ task Opadwithgaps {
       ~{if (reverse) then "--reverse" else ""} \
       ~{if defined(path_for_output) then ("--output " +  '"' + path_for_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reverse: "Pad the beginning of reads, instead of the end\\n(default: False)"
     path_for_output: "Path for output.\\n"

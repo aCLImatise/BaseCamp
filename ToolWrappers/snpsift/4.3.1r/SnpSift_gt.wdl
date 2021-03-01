@@ -16,6 +16,9 @@ task SnpSiftGt {
       ~{if (uncompress_restore_fields) then "-u" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     uncompress_restore_fields: ": Uncompress (restore genotype fields)."
     jar: ""

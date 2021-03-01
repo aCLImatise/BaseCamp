@@ -14,6 +14,9 @@ task Bam2nuc {
       ~{if (sam_tools_path) then "--samtools_path" else ""} \
       ~{if (genomic_composition_only) then "--genomic_composition_only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "Output directory. Output is written to the current directory if not specified explicitly."
     genome_folder: "Enter the genome folder you wish to use to extract sequences from (full path only). Accepted\\nformats are FastA files ending with '.fa' or '.fasta', or their gzipped versions (ending in .gz).\\nSpecifying a genome folder path is mandatory."

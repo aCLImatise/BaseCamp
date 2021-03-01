@@ -16,6 +16,9 @@ task NfcoreDownload {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if (compress) then "--compress" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     release: "Pipeline release"
     singularity: "Download singularity containers"

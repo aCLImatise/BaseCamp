@@ -18,6 +18,9 @@ task NextflowInfo {
       ~{if (show_detailed_informationdefault) then "-d" else ""} \
       ~{if (output_format_yaml) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     check_updates: "Check for remote updates\\nDefault: false"
     show_detailed_informationdefault: "Show detailed information\\nDefault: false"

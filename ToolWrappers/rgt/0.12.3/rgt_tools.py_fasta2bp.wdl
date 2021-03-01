@@ -10,6 +10,9 @@ task RgttoolspyFasta2bp {
       ~{if defined(input_fasta_file) then ("-i " +  '"' + input_fasta_file + '"') else ""} \
       ~{if defined(output_file_table) then ("-o " +  '"' + output_file_table + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_file: "Input FASTA file or directory"
     output_file_table: "Output file with a table"

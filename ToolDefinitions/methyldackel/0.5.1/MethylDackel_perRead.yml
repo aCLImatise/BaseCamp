@@ -4,107 +4,107 @@ command:
 - perRead
 positional:
 - !Positional
-  description: "Reference genome in fasta format. This must be indexed with\nsamtools\
-    \ faidx"
+  optional: false
   position: 0
   name: ref.fa
-  optional: false
+  description: "Reference genome in fasta format. This must be indexed with\nsamtools\
+    \ faidx"
 - !Positional
-  description: An input BAM or CRAM file. This MUST be sorted and should be indexed.
+  optional: false
   position: 1
   name: input
-  optional: false
+  description: An input BAM or CRAM file. This MUST be sorted and should be indexed.
 named:
 - !Flag
-  description: Minimum MAPQ threshold to include an alignment (default 10)
+  optional: true
   synonyms:
   - -q
+  description: Minimum MAPQ threshold to include an alignment (default 10)
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: Minimum Phred threshold to include a base (default 5). This must             be
-    >0.
+  optional: true
   synonyms:
   - -p
+  description: Minimum Phred threshold to include a base (default 5). This must             be
+    >0.
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: Region string in which to extract methylation
+  optional: true
   synonyms:
   - -r
+  description: Region string in which to extract methylation
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: A BED file listing regions for inclusion.
+  optional: true
   synonyms:
   - -l
+  description: A BED file listing regions for inclusion.
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --keepStrand
   description: "If a BED file is specified, then this option will cause the\nstrand\
     \ column (column 6) to be utilized, if present. Thus, if\na region has a '+' in\
     \ this column, then only metrics from the\ntop strand will be output. Note that\
     \ the -r option can be used\nto limit the regions of -l."
-  synonyms:
-  - --keepStrand
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Output file name [stdout]
+  optional: true
   synonyms:
   - -o
+  description: Output file name [stdout]
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --ignoreFlags
   description: "By default, all reads are output. If you would like to\nignore certain\
     \ classes of reads then simply give a value for their\nflags here. Note that an\
     \ alignment will be logically anded with this\nflag, so a single bit overlap will\
     \ lead to exclusion. The default\nfor this is 0."
-  synonyms:
-  - -F
-  - --ignoreFlags
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Require each alignment to have all bits in this value\npresent, or\
-    \ else the alignment is ignored. This is equivalent to the\n-f option in samtools.\
-    \ The default is 0, which includes all\nalignments."
+  optional: true
   synonyms:
   - -R
   - --requireFlags
+  description: "Require each alignment to have all bits in this value\npresent, or\
+    \ else the alignment is ignored. This is equivalent to the\n-f option in samtools.\
+    \ The default is 0, which includes all\nalignments."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The number of threads to use, the default 1
+  optional: true
   synonyms:
   - -@
+  description: The number of threads to use, the default 1
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "The size of the genome processed by a single thread at a time.\nThe\
-    \ default is 1000000 bases. This value MUST be at least 1."
+  optional: true
   synonyms:
   - --chunkSize
+  description: "The size of the genome processed by a single thread at a time.\nThe\
+    \ default is 1000000 bases. This value MUST be at least 1."
   args: !SimpleFlagArg
     name: INT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag
-  description: Print version and quit
+  optional: true
   synonyms:
   - --version
+  description: Print version and quit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "\nUsage: MethylDackel perRead [OPTIONS] <ref.fa> <input>\n\nThis program\
   \ will compute the average CpG methylation level of a given read.\nThe output is\
   \ a tab-separated file with the following columns:\n - read name\n - chromosome\n\
@@ -134,3 +134,4 @@ help_text: "\nUsage: MethylDackel perRead [OPTIONS] <ref.fa> <input>\n\nThis pro
   \ spanning\nmore than 10kb.\n"
 generated_using:
 - --help
+docker_image:

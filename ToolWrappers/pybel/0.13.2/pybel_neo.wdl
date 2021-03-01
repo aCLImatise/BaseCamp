@@ -10,8 +10,11 @@ task PybelNeo {
       ~{path} \
       ~{if defined(connection) then ("--connection " +  '"' + connection + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    connection: "Connection string for neo4j upload.\\n--password TEXT\\n--help             Show this message and exit.\\n"
+    connection: "Connection string for neo4j upload."
     path: ""
   }
   output {

@@ -26,6 +26,9 @@ task Epicblacklist {
       ~{if defined(effective_genome_fraction) then ("--effective-genome-fraction " +  '"' + effective_genome_fraction + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_files: "ChIP files to count reads in (bed/bedpe format)."
     number_cores: "Number of cpus to use. Can use at most one per\\nchromosome. Default: 1."

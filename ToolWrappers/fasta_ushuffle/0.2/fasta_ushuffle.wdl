@@ -24,6 +24,9 @@ task FastaUshuffle {
       ~{if defined(input_sequence_print) then ("-n " +  '"' + input_sequence_print + '"') else ""} \
       ~{if defined(retry_n_times) then ("-r " +  '"' + retry_n_times + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_original_unshuffled: "Print original (unshuffled) in output file."
     specifies_let_size: "specifies the let size"

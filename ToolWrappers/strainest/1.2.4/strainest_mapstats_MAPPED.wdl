@@ -8,6 +8,9 @@ task StrainestMapstatsMAPPED {
     strainest mapstats MAPPED \
       ~{examples}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     examples: "strainest mapstats mapped.fna stats"
   }

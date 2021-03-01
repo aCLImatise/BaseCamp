@@ -1,0 +1,67 @@
+!Command
+command:
+- rtg
+- bgzip
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: block
+  description: -c, --stdout                write on standard output, keep original
+    files
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --compression-level
+  description: "the compression level to use, between 1 (least\nbut fast) and 9 (highest\
+    \ but slow) (Default is 5)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --decompress
+  description: decompress
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: force overwrite of existing output file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-terminate
+  description: if set, do not add the block gzip termination
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print help on command-line flag usage
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: rtg bgzip [OPTION]... FILE+\n\nCompress a file with block gzip.\n\
+  \nFile Input/Output\n  -l, --compression-level=INT the compression level to use,\
+  \ between 1 (least\n                              but fast) and 9 (highest but slow)\
+  \ (Default is 5)\n  -d, --decompress            decompress\n  -f, --force      \
+  \           force overwrite of existing output file\n      --no-terminate      \
+  \    if set, do not add the block gzip termination\n                           \
+  \   block\n  -c, --stdout                write on standard output, keep original\
+  \ files\n                              unchanged. Implied when using standard input\n\
+  \      FILE+                   file to (de)compress, use '-' for standard input.\n\
+  \                              Must be specified 1 or more times\n\nUtility\n  -h,\
+  \ --help                  print help on command-line flag usage\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rtg-tools:3.12--0

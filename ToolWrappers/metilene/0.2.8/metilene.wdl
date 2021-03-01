@@ -38,6 +38,9 @@ task Metilene {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(valley) then ("--valley " +  '"' + valley + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_dist: "maximum distance (default:300)"
     max_seg: "maximum segment length in case of memory\\nissues (default:-1)"

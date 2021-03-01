@@ -4,6 +4,9 @@ task Cvbio {
   command <<<
     cvbio
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

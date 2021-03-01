@@ -1,0 +1,233 @@
+!Command
+command:
+- crnsimulator
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: "Print logging output. (-vv increases verbosity.)\n(default: 0)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --logfile
+  description: 'Redirect logging information to a file. (default: )'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: 'Overwrite existing files (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dryrun
+  description: "Do not run the simulation, only write the files.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: 'Name of ODE library files. (default: odesystem)'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --jacobian
+  description: "Symbolic calculation of Jacobi-Matrix. This may\ngenerate a very large\
+    \ simulation file. (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --t0
+  description: 'First time point of the time-course. (default: 0)'
+  args: !SimpleFlagArg
+    name: flt
+- !Flag
+  optional: true
+  synonyms:
+  - --t8
+  description: 'End point of simulation time. (default: 100)'
+  args: !SimpleFlagArg
+    name: flt
+- !Flag
+  optional: true
+  synonyms:
+  - --p0
+  description: "=<flt> [<int/str>=<flt> ...]\nVector of initial species concentrations.\
+    \ E.g. \"--p0\n1=0.5 3=0.7\" stands for 1st species at a concentration\nof 0.5\
+    \ and 3rd species at a concentration of 0.7. You\nmay chose to address species\
+    \ directly by name, e.g.:\n--p0 C=0.5. (default: None)"
+  args: !SimpleFlagArg
+    name: int/str
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --atol
+  description: "Specify absolute tolerance for the solver. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: flt
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rtol
+  description: "Specify relative tolerance for the solver. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: flt
+- !Flag
+  optional: true
+  synonyms:
+  - --mxstep
+  description: "Maximum number of steps allowed for each integration\npoint in t.\
+    \ (default: 0)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --t-lin
+  description: "Returns --t-lin evenly spaced numbers on a linear\nscale from --t0\
+    \ to --t8. (default: 500)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --t-log
+  description: "Returns --t-log evenly spaced numbers on a logarithmic\nscale from\
+    \ --t0 to --t8. (default: None)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --list-labels
+  description: 'Print all species and exit. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --labels
+  description: "+ [<str>+ ...]\nSpecify the (order of) species which should appear\
+    \ in\nthe pyplot legend, as well as the order of species for\nnxy output format.\
+    \ (default: [])"
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --labels-strict
+  description: "When using pyplot, only plot tracjectories\ncorresponding to labels,\
+    \ when using nxy, only print\nthe trajectories corresponding to labels. (default:\n\
+    False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nxy
+  description: "Print time course to STDOUT in nxy format. (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --header
+  description: 'Print header for trajectories. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pyplot
+  description: "Specify a filename to plot the ODE simulation.\n(default: )"
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --pyplot-xlim
+  description: "<flt>\nSpecify the limits of the x-axis. (default: None)"
+  args: !SimpleFlagArg
+    name: flt
+- !Flag
+  optional: true
+  synonyms:
+  - --pyplot-ylim
+  description: "<flt>\nSpecify the limits of the y-axis. (default: None)\n"
+  args: !SimpleFlagArg
+    name: flt
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: crnsimulator [-h] [--version] [-v] [--logfile <str>] [--force]\n\
+  \                    [--dryrun] [-o <str>] [--jacobian] [--t0 <flt>]\n         \
+  \           [--t8 <flt>] [--t-lin <int>] [--t-log <int>]\n                    [--p0\
+  \ <int/str>=<flt> [<int/str>=<flt> ...]] [-a <flt>]\n                    [-r <flt>]\
+  \ [--mxstep <int>] [--list-labels]\n                    [--labels <str>+ [<str>+\
+  \ ...]] [--labels-strict] [--nxy]\n                    [--header] [--pyplot <str>]\
+  \ [--pyplot-xlim <flt> <flt>]\n                    [--pyplot-ylim <flt> <flt>]\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --version             show program's version number and exit\n  -v, --verbose\
+  \         Print logging output. (-vv increases verbosity.)\n                   \
+  \     (default: 0)\n  --logfile <str>       Redirect logging information to a file.\
+  \ (default: )\n  --force               Overwrite existing files (default: False)\n\
+  \  --dryrun              Do not run the simulation, only write the files.\n    \
+  \                    (default: False)\n  -o <str>, --output <str>\n            \
+  \            Name of ODE library files. (default: odesystem)\n  --jacobian     \
+  \       Symbolic calculation of Jacobi-Matrix. This may\n                      \
+  \  generate a very large simulation file. (default:\n                        False)\n\
+  \nodeint parameters:\n  --t0 <flt>            First time point of the time-course.\
+  \ (default: 0)\n  --t8 <flt>            End point of simulation time. (default:\
+  \ 100)\n  --p0 <int/str>=<flt> [<int/str>=<flt> ...]\n                        Vector\
+  \ of initial species concentrations. E.g. \"--p0\n                        1=0.5\
+  \ 3=0.7\" stands for 1st species at a concentration\n                        of\
+  \ 0.5 and 3rd species at a concentration of 0.7. You\n                        may\
+  \ chose to address species directly by name, e.g.:\n                        --p0\
+  \ C=0.5. (default: None)\n  -a <flt>, --atol <flt>\n                        Specify\
+  \ absolute tolerance for the solver. (default:\n                        None)\n\
+  \  -r <flt>, --rtol <flt>\n                        Specify relative tolerance for\
+  \ the solver. (default:\n                        None)\n  --mxstep <int>       \
+  \ Maximum number of steps allowed for each integration\n                       \
+  \ point in t. (default: 0)\n\nplotting parameters:\n  --t-lin <int>         Returns\
+  \ --t-lin evenly spaced numbers on a linear\n                        scale from\
+  \ --t0 to --t8. (default: 500)\n  --t-log <int>         Returns --t-log evenly spaced\
+  \ numbers on a logarithmic\n                        scale from --t0 to --t8. (default:\
+  \ None)\n  --list-labels         Print all species and exit. (default: False)\n\
+  \  --labels <str>+ [<str>+ ...]\n                        Specify the (order of)\
+  \ species which should appear in\n                        the pyplot legend, as\
+  \ well as the order of species for\n                        nxy output format. (default:\
+  \ [])\n  --labels-strict       When using pyplot, only plot tracjectories\n    \
+  \                    corresponding to labels, when using nxy, only print\n     \
+  \                   the trajectories corresponding to labels. (default:\n      \
+  \                  False)\n  --nxy                 Print time course to STDOUT in\
+  \ nxy format. (default:\n                        False)\n  --header            \
+  \  Print header for trajectories. (default: False)\n  --pyplot <str>        Specify\
+  \ a filename to plot the ODE simulation.\n                        (default: )\n\
+  \  --pyplot-xlim <flt> <flt>\n                        Specify the limits of the\
+  \ x-axis. (default: None)\n  --pyplot-ylim <flt> <flt>\n                       \
+  \ Specify the limits of the y-axis. (default: None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/crnsimulator:0.9--pyh5bfb8f1_0

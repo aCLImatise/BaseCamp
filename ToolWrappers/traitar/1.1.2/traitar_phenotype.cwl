@@ -4,46 +4,46 @@ inputs:
 - id: in_gene_gff_type
   doc: "if the input is amino acids the type of gene\nprediction GFF file can be specified\
     \ for mapping the\nphenotype predictions to the genes"
-  type: string
+  type: string?
   inputBinding:
     prefix: --gene_gff_type
 - id: in_cpus
   doc: "number of cpus used for the individual steps; maximum\nis number of samples;\
     \ needs parallel"
-  type: long
+  type: long?
   inputBinding:
     prefix: --cpus
 - id: in_primary_models
   doc: primary phenotype models archive
-  type: string
+  type: string?
   inputBinding:
     prefix: --primary_models
 - id: in_secondary_models
   doc: secondary phenotype models archive
-  type: string
+  type: string?
   inputBinding:
     prefix: --secondary_models
 - id: in_rearrange_heat_map
   doc: "recompute the phenotype heatmaps based on a subset of\npreviously annotated\
     \ and phenotyped samples"
-  type: string
+  type: string?
   inputBinding:
     prefix: --rearrange_heatmap
 - id: in_no_heat_map_sample_clustering
   doc: "if option is set, don't cluster the phenotype heatmaps\nby samples and keep\
     \ input ordering"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_heatmap_sample_clustering
 - id: in_no_heat_map_phenotype_clustering
   doc: "if option is set, don't cluster the heatmaps by\nphenotype and keep input\
     \ ordering"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_heatmap_phenotype_clustering
 - id: in_heat_map_format
   doc: "choose file format for the heatmap\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --heatmap_format
 - id: in_positional_arguments
@@ -62,7 +62,7 @@ inputs:
   type: long
   inputBinding:
     position: 2
-- id: in_directory_output_will
+- id: in_directory_output_created
   doc: "directory for the output; will be created if it\ndoesn't exist yet"
   type: string
   inputBinding:
@@ -71,6 +71,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - traitar

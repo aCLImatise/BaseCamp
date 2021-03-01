@@ -12,6 +12,9 @@ task MerfishtoolsEsterrorratesReadout {
       ~{est_error_rates} \
       ~{tsv_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mer_fish_tools: ""
     est_error_rates: ""

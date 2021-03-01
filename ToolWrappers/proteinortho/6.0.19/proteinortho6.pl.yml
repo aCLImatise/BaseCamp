@@ -3,87 +3,90 @@ command:
 - proteinortho6.pl
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: FASTA1
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: FASTA2
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 2
   name: FASTA...
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: '=    prefix for all result file names [default: myproject]'
+  optional: true
   synonyms:
   - -project
+  description: '=    prefix for all result file names [default: myproject]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '=       number of processors to use [default: auto]'
+  optional: true
   synonyms:
   - -cpus
+  description: '=       number of processors to use [default: auto]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '=        maximal used ram threshold for LAPACK and the input graph
-    in MB [default: 75% of the total memory]'
+  optional: true
   synonyms:
   - -ram
+  description: '=        maximal used ram threshold for LAPACK and the input graph
+    in MB [default: 75% of the total memory]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: sets verbose to 0
+  optional: true
   synonyms:
   - -silent
+  description: sets verbose to 0
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '=       path for temporary files [default: working directory]'
+  optional: true
   synonyms:
   - -temp
+  description: '=       path for temporary files [default: working directory]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: stores temporary blast results for reuse (same -project= name is mandatory)
+  optional: true
   synonyms:
   - -keep
+  description: stores temporary blast results for reuse (same -project= name is mandatory)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: forces the recalculation of the blast results in any case in step=2.
-    Also forces the recreation of the database generation in step=1
+  optional: true
   synonyms:
   - -force
+  description: forces the recalculation of the blast results in any case in step=2.
+    Also forces the recreation of the database generation in step=1
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: remove all unnecessary files after processing
+  optional: true
   synonyms:
   - -clean
+  description: remove all unnecessary files after processing
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=       1 -> generate indices\n2 -> run blast (and ff-adj, if -synteny\
-    \ is set)\n3 -> clustering\n0 -> all (default)"
+  optional: true
   synonyms:
   - -step
+  description: "=       1 -> generate indices\n2 -> run blast (and ff-adj, if -synteny\
+    \ is set)\n3 -> clustering\n0 -> all (default)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -isoform
   description: "Enables the isoform processing:\nncbi -> if the word 'isoform' is\
     \ found\nuniprot -> 'Isoform of XYZ' (You need to add the *_additional.fasta files\
     \ to the analysis)\ntrinity -> using '_iX' suffix"
-  synonyms:
-  - -isoform
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
   description: "=          blast program [default: diamond]\n{blastp|blastn|tblastx|blastp_legacy|blastn_legacy|tblastx_legacy|diamond|usearch|ublast|lastp|lastn|rapsearch|topaz|blatp|blatn|mmseqsp|mmseqsn}\n\
     The program need to be installed first.\nA suffix 'p' or 'n' indicates aminoacid\
     \ fasta files (p) or nucleotide fasta files (n).\nThe '_legacy' suffix indicates\
@@ -100,140 +103,129 @@ named:
     \ : For protein files! blatn : For dna files! blatx : For dna files!\nmmseqs*\
     \ : mmseqs family. mmseqsp : For protein files! mmseqsn : For dna files! blatx\
     \ : For dna files!"
-  synonyms:
-  - -p
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '=          E-value for blast [default: 1e-05]'
+  optional: true
   synonyms:
   - -e
+  description: '=          E-value for blast [default: 1e-05]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: apply selfblast, detects paralogs without orthologs
+  optional: true
   synonyms:
   - -selfblast
+  description: apply selfblast, detects paralogs without orthologs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '=        min. similarity for additional hits (0..1) [default: 0.95]'
+  optional: true
   synonyms:
   - -sim
+  description: '=        min. similarity for additional hits (0..1) [default: 0.95]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '=   min. percent identity of best blast hits [default: 25]'
+  optional: true
   synonyms:
   - -identity
+  description: '=   min. percent identity of best blast hits [default: 25]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '=        min. coverage of best blast alignments in % [default: 50]'
+  optional: true
   synonyms:
   - -cov
+  description: '=        min. coverage of best blast alignments in % [default: 50]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=    additional parameters for the search tool\nexample -subparaBlast='-seg\
-    \ no' or -subparaBlast='--more-sensitive' for diamond"
+  optional: true
   synonyms:
   - -subparaBlast
+  description: "=    additional parameters for the search tool\nexample -subparaBlast='-seg\
+    \ no' or -subparaBlast='--more-sensitive' for diamond"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "activate PoFF extension to separate similar sequences print\nby contextual\
-    \ adjacencies (requires .gff for each .fasta)"
+  optional: true
   synonyms:
   - -synteny
+  description: "activate PoFF extension to separate similar sequences print\nby contextual\
+    \ adjacencies (requires .gff for each .fasta)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=       PoFF: number of reiterations for adjacencies heuristic,\n\
-    to determine duplicated regions (default: 0)"
+  optional: true
   synonyms:
   - -dups
+  description: "=       PoFF: number of reiterations for adjacencies heuristic,\n\
+    to determine duplicated regions (default: 0)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=         PoFF: Size of a maximum common substring (MCS) for\nadjacency\
-    \ matches (default: 3)"
+  optional: true
   synonyms:
   - -cs
+  description: "=         PoFF: Size of a maximum common substring (MCS) for\nadjacency\
+    \ matches (default: 3)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=      PoFF: weight of adjacencies vs. sequence similarity\n(default:\
-    \ 0.5)"
+  optional: true
   synonyms:
   - -alpha
+  description: "=      PoFF: weight of adjacencies vs. sequence similarity\n(default:\
+    \ 0.5)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: report singleton genes without any hit
+  optional: true
   synonyms:
   - -singles
+  description: report singleton genes without any hit
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '=       min. algebraic connectivity [default: 0.1]'
+  optional: true
   synonyms:
   - -conn
+  description: '=       min. algebraic connectivity [default: 0.1]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: produces an OrthoXML formatted file of the *.proteinortho.tsv file.
+  optional: true
   synonyms:
   - -xml
+  description: produces an OrthoXML formatted file of the *.proteinortho.tsv file.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '=     avoid spurious graph assignments, the higher the more uncertain
-    edges are cut [0-1, default: 1e-07]'
+  optional: true
   synonyms:
   - -purity
+  description: '=     avoid spurious graph assignments, the higher the more uncertain
+    edges are cut [0-1, default: 1e-07]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: enables the mcl algorithm for clustering instead of power iteration
-    or lapacks routine. (needs mcl to be installed)
+  optional: true
   synonyms:
   - -mcl
+  description: enables the mcl algorithm for clustering instead of power iteration
+    or lapacks routine. (needs mcl to be installed)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: do not generate .proteinortho-graph file (pairwise orthology relations)
+  optional: true
   synonyms:
   - -nograph
+  description: do not generate .proteinortho-graph file (pairwise orthology relations)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: write description files (for NCBI FASTA input only)
+  optional: true
   synonyms:
   - -desc
+  description: write description files (for NCBI FASTA input only)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: gives detailed information for bug tracking
+  optional: true
   synonyms:
   - -debug
+  description: gives detailed information for bug tracking
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: =    path to your directory of local programs that are not available
-    globally (this should not be needed)
+  optional: true
   synonyms:
   - -binpath
+  description: =    path to your directory of local programs that are not available
+    globally (this should not be needed)
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "N defines the number of defined job groups (e.g. PCs)\nM defines the\
-    \ set of jobs to run in this process"
-  synonyms:
-  - -jobs
-  args: !SimpleFlagArg
-    name: M/N
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -320,3 +312,4 @@ help_text: "*****************************************************************\n\
   \n"
 generated_using:
 - --help
+docker_image:

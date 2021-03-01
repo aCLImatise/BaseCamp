@@ -14,6 +14,9 @@ task BedClip {
       ~{if (truncate) then "-truncate" else ""} \
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     truncate: "- truncate items that span ends of chrom instead of the\\ndefault of dropping the items"
     verbose: "- set to get list of lines clipped and why"

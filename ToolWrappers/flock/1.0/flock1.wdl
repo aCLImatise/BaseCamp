@@ -4,6 +4,9 @@ task Flock1 {
   command <<<
     flock1
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

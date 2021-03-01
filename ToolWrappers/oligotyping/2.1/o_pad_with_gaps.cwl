@@ -3,12 +3,12 @@ id: o_pad_with_gaps.cwl
 inputs:
 - id: in_reverse
   doc: "Pad the beginning of reads, instead of the end\n(default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reverse
 - id: in_output
   doc: "Path for output.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_fast_a_file_path
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Path for output.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - o-pad-with-gaps

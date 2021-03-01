@@ -24,6 +24,9 @@ task PanphlanFindGeneGrppy {
       ~{if defined(empirical) then ("--empirical " +  '"' + empirical + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i_matrix: "Path to presence/absence matrix"
     path_ouput_file: "Path to ouput file with genes groups"

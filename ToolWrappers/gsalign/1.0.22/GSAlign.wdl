@@ -32,6 +32,9 @@ task GSAlign {
       ~{if (set_one_one) then "-one" else ""} \
       ~{if (gp) then "-gp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     int_number_threads: "INT     number of threads [8]"
     str_set_prefix: "STR     Set the prefix of the output files [output]"

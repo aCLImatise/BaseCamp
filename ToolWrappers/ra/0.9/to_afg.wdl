@@ -14,6 +14,9 @@ task ToAfg {
       ~{if (fast_q) then "--fastq" else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reads: "(required)\\ninput fasta/fastq reads file"
     fast_q: "default: fasta format\\nformat of input reads file"

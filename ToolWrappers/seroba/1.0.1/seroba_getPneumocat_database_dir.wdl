@@ -12,6 +12,9 @@ task SerobaGetPneumocatDatabaseDir {
       ~{var_command} \
       ~{options}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     se_rob_a: ""
     var_command: ""

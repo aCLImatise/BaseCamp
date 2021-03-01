@@ -14,6 +14,9 @@ task Anviscriptprocessgenbankmetadata {
       ~{if defined(output_fast_a_txt) then ("--output-fasta-txt " +  '"' + output_fast_a_txt + '"') else ""} \
       ~{if (exclude_gene_calls_from_fast_a_txt) then "--exclude-gene-calls-from-fasta-txt" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metadata: "This is the file you get from the program `ncbi-\\ngenome-download` when you use the parameter\\n`--metadata-table`."
     output_dir: "Directory path for output files"

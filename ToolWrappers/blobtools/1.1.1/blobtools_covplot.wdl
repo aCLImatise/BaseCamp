@@ -64,6 +64,9 @@ task BlobtoolsCovplot {
       ~{if defined(ref_cov) then ("--refcov " +  '"' + ref_cov + '"') else ""} \
       ~{if defined(cat_colour) then ("--catcolour " +  '"' + cat_colour + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "BlobDB file"
     cov: "COV file to be used in y-axis"

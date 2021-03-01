@@ -224,6 +224,9 @@ task Aptprobesetsummarize {
       ~{if defined(time_run_minutes) then ("--time-run-minutes " +  '"' + time_run_minutes + '"') else ""} \
       ~{if defined(analysis_guid) then ("--analysis-guid " +  '"' + analysis_guid + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "verbose to be with status messages 0 -\\nquiet, 1 - usual messages, 2 - more\\nmessages. [default '1']"
     console_off: "off the default messages to the\\nconsole but not logging or sockets.\\n[default 'false']"

@@ -8,6 +8,9 @@ task Versions {
     versions \
       ~{target}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target: "Target output file for version numbers"
   }

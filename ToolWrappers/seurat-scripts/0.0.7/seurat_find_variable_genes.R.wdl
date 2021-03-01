@@ -40,6 +40,9 @@ task SeuratfindvariablegenesR {
       ~{if defined(num_bin) then ("--num-bin " +  '"' + num_bin + '"') else ""} \
       ~{if defined(binning_method) then ("--binning-method " +  '"' + binning_method + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name in which a serialized R matrix object may be found."
     input_format: "Either loom, seurat, anndata or singlecellexperiment for the input format to read."

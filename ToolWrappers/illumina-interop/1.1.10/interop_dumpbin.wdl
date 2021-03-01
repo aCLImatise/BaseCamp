@@ -16,6 +16,9 @@ task InteropDumpbin {
       ~{if defined(option_two) then ("--option2 " +  '"' + option_two + '"') else ""} \
       ~{if defined(option_one) then ("--option1 " +  '"' + option_one + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     subset: "[0]: Display only a subset of records from each file"
     latest_version: "[0]: Display file as latest version of the format"

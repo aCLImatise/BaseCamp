@@ -4,12 +4,12 @@ inputs:
 - id: in_haploid_x_reference
   doc: "Assume inputs were normalized to a male reference\n(i.e. female samples will\
     \ have +1 log-coverage of\nchrX; otherwise male samples would have -1 chrX)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --haploid-x-reference
 - id: in_output
   doc: "Output table file name.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_filenames
@@ -23,9 +23,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output table file name.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cnvkit.py

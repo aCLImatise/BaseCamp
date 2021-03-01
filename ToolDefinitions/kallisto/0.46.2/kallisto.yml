@@ -11,25 +11,25 @@ subcommands:
   - h5dump
   positional:
   - !Positional
-    description: ''
+    optional: true
     position: 0
     name: arguments
-    optional: true
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: abundance.h5
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: Directory to write output to
+    optional: true
     synonyms:
     - -o
     - --output-dir
+    description: Directory to write output to
     args: !SimpleFlagArg
       name: STRING
-    optional: true
-  parent: &id014 !Command
+  parent: &id015 !Command
     command: *id001
     positional: []
     named: []
@@ -39,25 +39,25 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: true
         position: 0
         name: arguments
-        optional: true
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: abundance.h5
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: Directory to write output to
+        optional: true
         synonyms:
         - -o
         - --output-dir
+        description: Directory to write output to
         args: !SimpleFlagArg
           name: STRING
-        optional: true
-      parent: &id013 !Command
+      parent: &id014 !Command
         command: *id001
         positional: []
         named: []
@@ -67,25 +67,25 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: true
             position: 0
             name: arguments
-            optional: true
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: abundance.h5
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: Directory to write output to
+            optional: true
             synonyms:
             - -o
             - --output-dir
+            description: Directory to write output to
             args: !SimpleFlagArg
               name: STRING
-            optional: true
-          parent: &id012 !Command
+          parent: &id013 !Command
             command: *id001
             positional: []
             named: []
@@ -95,25 +95,25 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: true
                 position: 0
                 name: arguments
-                optional: true
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: abundance.h5
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: Directory to write output to
+                optional: true
                 synonyms:
                 - -o
                 - --output-dir
+                description: Directory to write output to
                 args: !SimpleFlagArg
                   name: STRING
-                optional: true
-              parent: &id003 !Command
+              parent: &id012 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -123,25 +123,569 @@ subcommands:
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: true
                     position: 0
                     name: arguments
-                    optional: true
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: abundance.h5
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: Directory to write output to
+                    optional: true
                     synonyms:
                     - -o
                     - --output-dir
+                    description: Directory to write output to
                     args: !SimpleFlagArg
                       name: STRING
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: true
+                        position: 0
+                        name: arguments
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: abundance.h5
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --output-dir
+                        description: Directory to write output to
+                        args: !SimpleFlagArg
+                          name: STRING
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "kallisto 0.46.2\nConverts HDF5-formatted results\
+                        \ to plaintext\n\nUsage:  kallisto h5dump [arguments] abundance.h5\n\
+                        \nRequired argument:\n-o, --output-dir=STRING       Directory\
+                        \ to write output to\n\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - kallisto
+                      - quant
+                      positional:
+                      - !Positional
+                        optional: true
+                        position: 0
+                        name: arguments
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: FASTQ-files
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -i
+                        - --index
+                        description: "Filename for the kallisto index to be used for\n\
+                          quantification"
+                        args: !SimpleFlagArg
+                          name: STRING
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --output-dir
+                        description: Directory to write output to
+                        args: !SimpleFlagArg
+                          name: STRING
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --bias
+                        description: Perform sequence based bias correction
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -b
+                        - --bootstrap-samples
+                        description: "Number of bootstrap samples (default: 0)\n--seed=INT\
+                          \                Seed for the bootstrap sampling (default:\
+                          \ 42)\n--plaintext               Output plaintext instead\
+                          \ of HDF5\n--fusion                  Search for fusions\
+                          \ for Pizzly\n--single                  Quantify single-end\
+                          \ reads\n--single-overhang         Include reads where unobserved\
+                          \ rest of fragment is\npredicted to lie outside a transcript\n\
+                          --fr-stranded             Strand specific reads, first read\
+                          \ forward\n--rf-stranded             Strand specific reads,\
+                          \ first read reverse"
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        - --fragment-length
+                        description: Estimated average fragment length
+                        args: !SimpleFlagArg
+                          name: DOUBLE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        - --sd
+                        description: "Estimated standard deviation of fragment length\n\
+                          (default: -l, -s values are estimated from paired\nend data,\
+                          \ but are required when using --single)"
+                        args: !SimpleFlagArg
+                          name: DOUBLE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        - --threads
+                        description: "Number of threads to use (default: 1)\n--pseudobam\
+                          \               Save pseudoalignments to transcriptome to\
+                          \ BAM file\n--genomebam               Project pseudoalignments\
+                          \ to genome sorted BAM file"
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -g
+                        - --gtf
+                        description: "GTF file for transcriptome information\n(required\
+                          \ for --genomebam)"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        - --chromosomes
+                        description: "Tab separated file with chromosome names and\
+                          \ lengths\n(optional for --genomebam, but recommended)"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --verbose
+                        description: Print out progress information every 1M proccessed
+                          reads
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: kallisto quant [arguments] FASTQ-files\n\n\
+                        Required arguments:\n-i, --index=STRING            Filename\
+                        \ for the kallisto index to be used for\n                \
+                        \              quantification\n-o, --output-dir=STRING   \
+                        \    Directory to write output to\n\nOptional arguments:\n\
+                        \    --bias                    Perform sequence based bias\
+                        \ correction\n-b, --bootstrap-samples=INT   Number of bootstrap\
+                        \ samples (default: 0)\n    --seed=INT                Seed\
+                        \ for the bootstrap sampling (default: 42)\n    --plaintext\
+                        \               Output plaintext instead of HDF5\n    --fusion\
+                        \                  Search for fusions for Pizzly\n    --single\
+                        \                  Quantify single-end reads\n    --single-overhang\
+                        \         Include reads where unobserved rest of fragment\
+                        \ is\n                              predicted to lie outside\
+                        \ a transcript\n    --fr-stranded             Strand specific\
+                        \ reads, first read forward\n    --rf-stranded           \
+                        \  Strand specific reads, first read reverse\n-l, --fragment-length=DOUBLE\
+                        \  Estimated average fragment length\n-s, --sd=DOUBLE    \
+                        \           Estimated standard deviation of fragment length\n\
+                        \                              (default: -l, -s values are\
+                        \ estimated from paired\n                               end\
+                        \ data, but are required when using --single)\n-t, --threads=INT\
+                        \             Number of threads to use (default: 1)\n    --pseudobam\
+                        \               Save pseudoalignments to transcriptome to\
+                        \ BAM file\n    --genomebam               Project pseudoalignments\
+                        \ to genome sorted BAM file\n-g, --gtf                   \
+                        \  GTF file for transcriptome information\n              \
+                        \                (required for --genomebam)\n-c, --chromosomes\
+                        \             Tab separated file with chromosome names and\
+                        \ lengths\n                              (optional for --genomebam,\
+                        \ but recommended)\n    --verbose                 Print out\
+                        \ progress information every 1M proccessed reads\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - kallisto
+                      - index
+                      positional:
+                      - !Positional
+                        optional: true
+                        position: 0
+                        name: arguments
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: FASTA-files
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -i
+                        - --index
+                        description: Filename for the kallisto index to be constructed
+                        args: !SimpleFlagArg
+                          name: STRING
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -k
+                        - --kmer-size
+                        description: "k-mer (odd) length (default: 31, max value:\
+                          \ 31)\n--make-unique           Replace repeated target names\
+                          \ with unique names\n"
+                        args: !SimpleFlagArg
+                          name: INT
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "kallisto 0.46.2\nBuilds a kallisto index\n\nUsage:\
+                        \ kallisto index [arguments] FASTA-files\n\nRequired argument:\n\
+                        -i, --index=STRING          Filename for the kallisto index\
+                        \ to be constructed \n\nOptional argument:\n-k, --kmer-size=INT\
+                        \         k-mer (odd) length (default: 31, max value: 31)\n\
+                        \    --make-unique           Replace repeated target names\
+                        \ with unique names\n\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - kallisto
+                      - pseudo
+                      positional:
+                      - !Positional
+                        optional: true
+                        position: 0
+                        name: arguments
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: FASTQ-files
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -i
+                        - --index
+                        description: "Filename for the kallisto index to be used for\n\
+                          pseudoalignment"
+                        args: !SimpleFlagArg
+                          name: STRING
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --output-dir
+                        description: Directory to write output to
+                        args: !SimpleFlagArg
+                          name: STRING
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -u
+                        - --umi
+                        description: First file in pair is a UMI file
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -b
+                        - --batch
+                        description: "Process files listed in FILE\n--quant      \
+                          \             Quantify using EM algorithm (only in batch\
+                          \ mode)\n--single                  Quantify single-end reads"
+                        args: !SimpleFlagArg
+                          name: FILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        - --fragment-length
+                        description: Estimated average fragment length
+                        args: !SimpleFlagArg
+                          name: DOUBLE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        - --sd
+                        description: "Estimated standard deviation of fragment length\n\
+                          (default: -l, -s values are estimated from paired\nend data,\
+                          \ but are required when using --single)"
+                        args: !SimpleFlagArg
+                          name: DOUBLE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        - --threads
+                        description: 'Number of threads to use (default: 1)'
+                        args: !SimpleFlagArg
+                          name: INT
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: kallisto pseudo [arguments] FASTQ-files\n\
+                        \nRequired arguments:\n-i, --index=STRING            Filename\
+                        \ for the kallisto index to be used for\n                \
+                        \              pseudoalignment\n-o, --output-dir=STRING  \
+                        \     Directory to write output to\n\nOptional arguments:\n\
+                        -u  --umi                     First file in pair is a UMI\
+                        \ file\n-b  --batch=FILE              Process files listed\
+                        \ in FILE\n    --quant                   Quantify using EM\
+                        \ algorithm (only in batch mode)\n    --single           \
+                        \       Quantify single-end reads\n-l, --fragment-length=DOUBLE\
+                        \  Estimated average fragment length\n-s, --sd=DOUBLE    \
+                        \           Estimated standard deviation of fragment length\n\
+                        \                              (default: -l, -s values are\
+                        \ estimated from paired\n                               end\
+                        \ data, but are required when using --single)\n-t, --threads=INT\
+                        \             Number of threads to use (default: 1)\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id008
+                      - kallisto
+                      - merge
+                      positional:
+                      - !Positional
+                        optional: true
+                        position: 0
+                        name: arguments
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: ouput-directories
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -i
+                        - --index
+                        description: "Filename for the kallisto index to be used for\n\
+                          pseudoalignment"
+                        args: !SimpleFlagArg
+                          name: STRING
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --output-dir
+                        description: Directory to write output to
+                        args: !SimpleFlagArg
+                          name: STRING
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "kallisto 0.46.2\nComputes equivalence classes for\
+                        \ reads and quantifies abundances\n\nUsage: kallisto merge\
+                        \ [arguments] ouput-directories\n\nRequired arguments:\n-i,\
+                        \ --index=STRING            Filename for the kallisto index\
+                        \ to be used for\n                              pseudoalignment\n\
+                        -o, --output-dir=STRING       Directory to write output to\n\
+                        \n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id009
+                      - kallisto
+                      - bus
+                      positional:
+                      - !Positional
+                        optional: true
+                        position: 0
+                        name: arguments
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: FASTQ-files
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -i
+                        - --index
+                        description: "Filename for the kallisto index to be used for\n\
+                          pseudoalignment"
+                        args: !SimpleFlagArg
+                          name: STRING
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --output-dir
+                        description: Directory to write output to
+                        args: !SimpleFlagArg
+                          name: STRING
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -x
+                        - --technology
+                        description: Single-cell technology used
+                        args: !SimpleFlagArg
+                          name: STRING
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        - --list
+                        description: List all single-cell technologies supported
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        - --threads
+                        description: 'Number of threads to use (default: 1)'
+                        args: !SimpleFlagArg
+                          name: INT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -b
+                        - --bam
+                        description: Input file is a BAM file
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -n
+                        - --num
+                        description: "Output number of read in flag column (incompatible\
+                          \ with --bam)\n--verbose                 Print out progress\
+                          \ information every 1M proccessed reads\n"
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "kallisto 0.46.2\nGenerates BUS files for single-cell\
+                        \ sequencing\n\nUsage: kallisto bus [arguments] FASTQ-files\n\
+                        \nRequired arguments:\n-i, --index=STRING            Filename\
+                        \ for the kallisto index to be used for\n                \
+                        \              pseudoalignment\n-o, --output-dir=STRING  \
+                        \     Directory to write output to\n-x, --technology=STRING\
+                        \       Single-cell technology used \n\nOptional arguments:\n\
+                        -l, --list                    List all single-cell technologies\
+                        \ supported\n-t, --threads=INT             Number of threads\
+                        \ to use (default: 1)\n-b, --bam                     Input\
+                        \ file is a BAM file\n-n, --num                     Output\
+                        \ number of read in flag column (incompatible with --bam)\n\
+                        \    --verbose                 Print out progress information\
+                        \ every 1M proccessed reads\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id010
+                      - kallisto
+                      - inspect
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: INDEX-file
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -G
+                        - --gfa
+                        description: Filename for GFA output of T-DBG
+                        args: !SimpleFlagArg
+                          name: STRING
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -g
+                        - --gtf
+                        description: Filename for GTF file
+                        args: !SimpleFlagArg
+                          name: STRING
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -b
+                        - --bed
+                        description: 'Filename for BED output (default: index + ".bed")'
+                        args: !SimpleFlagArg
+                          name: STRING
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "kallisto 0.46.2\n\nUsage: kallisto inspect INDEX-file\n\
+                        \nOptional arguments:\n-G, --gfa=STRING        Filename for\
+                        \ GFA output of T-DBG\n-g, --gtf=STRING        Filename for\
+                        \ GTF file\n-b, --bed=STRING        Filename for BED output\
+                        \ (default: index + \".bed\")\n\n"
+                      generated_using: &id011 []
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "kallisto 0.46.2\n\nUsage: kallisto <CMD> [arguments]\
+                      \ ..\n\nWhere <CMD> can be one of:\n\n    index         Builds\
+                      \ a kallisto index \n    quant         Runs the quantification\
+                      \ algorithm \n    bus           Generate BUS files for single-cell\
+                      \ data \n    pseudo        Runs the pseudoalignment step \n\
+                      \    merge         Merges several batch runs \n    h5dump  \
+                      \      Converts HDF5-formatted results to plaintext\n    inspect\
+                      \       Inspects and gives information about an index\n    version\
+                      \       Prints version information\n    cite          Prints\
+                      \ citation information\n\nRunning kallisto <CMD> without arguments\
+                      \ prints usage information for <CMD>\n\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -151,48 +695,50 @@ subcommands:
                     \ plaintext\n\nUsage:  kallisto h5dump [arguments] abundance.h5\n\
                     \nRequired argument:\n-o, --output-dir=STRING       Directory\
                     \ to write output to\n\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - kallisto
-                  - quant
+                  command: *id005
                   positional:
                   - !Positional
-                    description: ''
+                    optional: true
                     position: 0
                     name: arguments
-                    optional: true
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: FASTQ-files
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: "Filename for the kallisto index to be used for\n\
-                      quantification"
+                    optional: true
                     synonyms:
                     - -i
                     - --index
+                    description: "Filename for the kallisto index to be used for\n\
+                      quantification"
                     args: !SimpleFlagArg
                       name: STRING
-                    optional: true
                   - !Flag
-                    description: Directory to write output to
+                    optional: true
                     synonyms:
                     - -o
                     - --output-dir
+                    description: Directory to write output to
                     args: !SimpleFlagArg
                       name: STRING
-                    optional: true
                   - !Flag
-                    description: Perform sequence based bias correction
+                    optional: true
                     synonyms:
                     - --bias
+                    description: Perform sequence based bias correction
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -b
+                    - --bootstrap-samples
                     description: "Number of bootstrap samples (default: 0)\n--seed=INT\
                       \                Seed for the bootstrap sampling (default: 42)\n\
                       --plaintext               Output plaintext instead of HDF5\n\
@@ -202,64 +748,60 @@ subcommands:
                       predicted to lie outside a transcript\n--fr-stranded       \
                       \      Strand specific reads, first read forward\n--rf-stranded\
                       \             Strand specific reads, first read reverse"
-                    synonyms:
-                    - -b
-                    - --bootstrap-samples
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: Estimated average fragment length
+                    optional: true
                     synonyms:
                     - -l
                     - --fragment-length
+                    description: Estimated average fragment length
                     args: !SimpleFlagArg
                       name: DOUBLE
-                    optional: true
                   - !Flag
-                    description: "Estimated standard deviation of fragment length\n\
-                      (default: -l, -s values are estimated from paired\nend data,\
-                      \ but are required when using --single)"
+                    optional: true
                     synonyms:
                     - -s
                     - --sd
+                    description: "Estimated standard deviation of fragment length\n\
+                      (default: -l, -s values are estimated from paired\nend data,\
+                      \ but are required when using --single)"
                     args: !SimpleFlagArg
                       name: DOUBLE
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -t
+                    - --threads
                     description: "Number of threads to use (default: 1)\n--pseudobam\
                       \               Save pseudoalignments to transcriptome to BAM\
                       \ file\n--genomebam               Project pseudoalignments to\
                       \ genome sorted BAM file"
-                    synonyms:
-                    - -t
-                    - --threads
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: "GTF file for transcriptome information\n(required\
-                      \ for --genomebam)"
+                    optional: true
                     synonyms:
                     - -g
                     - --gtf
+                    description: "GTF file for transcriptome information\n(required\
+                      \ for --genomebam)"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "Tab separated file with chromosome names and lengths\n\
-                      (optional for --genomebam, but recommended)"
+                    optional: true
                     synonyms:
                     - -c
                     - --chromosomes
+                    description: "Tab separated file with chromosome names and lengths\n\
+                      (optional for --genomebam, but recommended)"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Print out progress information every 1M proccessed
-                      reads
+                    optional: true
                     synonyms:
                     - --verbose
+                    description: Print out progress information every 1M proccessed
+                      reads
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -297,40 +839,39 @@ subcommands:
                     \ --genomebam, but recommended)\n    --verbose               \
                     \  Print out progress information every 1M proccessed reads\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - kallisto
-                  - index
+                  command: *id006
                   positional:
                   - !Positional
-                    description: ''
+                    optional: true
                     position: 0
                     name: arguments
-                    optional: true
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: FASTA-files
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: Filename for the kallisto index to be constructed
+                    optional: true
                     synonyms:
                     - -i
                     - --index
+                    description: Filename for the kallisto index to be constructed
                     args: !SimpleFlagArg
                       name: STRING
-                    optional: true
                   - !Flag
-                    description: "k-mer (odd) length (default: 31, max value: 31)\n\
-                      --make-unique           Replace repeated target names with unique\
-                      \ names\n"
+                    optional: true
                     synonyms:
                     - -k
                     - --kmer-size
+                    description: "k-mer (odd) length (default: 31, max value: 31)\n\
+                      --make-unique           Replace repeated target names with unique\
+                      \ names\n"
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -344,82 +885,81 @@ subcommands:
                     \ length (default: 31, max value: 31)\n    --make-unique     \
                     \      Replace repeated target names with unique names\n\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - kallisto
-                  - pseudo
+                  command: *id007
                   positional:
                   - !Positional
-                    description: ''
+                    optional: true
                     position: 0
                     name: arguments
-                    optional: true
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: FASTQ-files
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: "Filename for the kallisto index to be used for\n\
-                      pseudoalignment"
+                    optional: true
                     synonyms:
                     - -i
                     - --index
+                    description: "Filename for the kallisto index to be used for\n\
+                      pseudoalignment"
                     args: !SimpleFlagArg
                       name: STRING
-                    optional: true
                   - !Flag
-                    description: Directory to write output to
+                    optional: true
                     synonyms:
                     - -o
                     - --output-dir
+                    description: Directory to write output to
                     args: !SimpleFlagArg
                       name: STRING
-                    optional: true
                   - !Flag
-                    description: First file in pair is a UMI file
+                    optional: true
                     synonyms:
                     - -u
                     - --umi
+                    description: First file in pair is a UMI file
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "Process files listed in FILE\n--quant          \
-                      \         Quantify using EM algorithm (only in batch mode)\n\
-                      --single                  Quantify single-end reads"
+                    optional: true
                     synonyms:
                     - -b
                     - --batch
+                    description: "Process files listed in FILE\n--quant          \
+                      \         Quantify using EM algorithm (only in batch mode)\n\
+                      --single                  Quantify single-end reads"
                     args: !SimpleFlagArg
                       name: FILE
-                    optional: true
                   - !Flag
-                    description: Estimated average fragment length
+                    optional: true
                     synonyms:
                     - -l
                     - --fragment-length
+                    description: Estimated average fragment length
                     args: !SimpleFlagArg
                       name: DOUBLE
-                    optional: true
                   - !Flag
-                    description: "Estimated standard deviation of fragment length\n\
-                      (default: -l, -s values are estimated from paired\nend data,\
-                      \ but are required when using --single)"
+                    optional: true
                     synonyms:
                     - -s
                     - --sd
+                    description: "Estimated standard deviation of fragment length\n\
+                      (default: -l, -s values are estimated from paired\nend data,\
+                      \ but are required when using --single)"
                     args: !SimpleFlagArg
                       name: DOUBLE
-                    optional: true
                   - !Flag
-                    description: 'Number of threads to use (default: 1)'
+                    optional: true
                     synonyms:
                     - -t
                     - --threads
+                    description: 'Number of threads to use (default: 1)'
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -442,39 +982,38 @@ subcommands:
                     \ required when using --single)\n-t, --threads=INT           \
                     \  Number of threads to use (default: 1)\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id008
-                  - kallisto
-                  - merge
+                  command: *id008
                   positional:
                   - !Positional
-                    description: ''
+                    optional: true
                     position: 0
                     name: arguments
-                    optional: true
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: ouput-directories
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: "Filename for the kallisto index to be used for\n\
-                      pseudoalignment"
+                    optional: true
                     synonyms:
                     - -i
                     - --index
+                    description: "Filename for the kallisto index to be used for\n\
+                      pseudoalignment"
                     args: !SimpleFlagArg
                       name: STRING
-                    optional: true
                   - !Flag
-                    description: Directory to write output to
+                    optional: true
                     synonyms:
                     - -o
                     - --output-dir
+                    description: Directory to write output to
                     args: !SimpleFlagArg
                       name: STRING
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -488,78 +1027,77 @@ subcommands:
                     \                              pseudoalignment\n-o, --output-dir=STRING\
                     \       Directory to write output to\n\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id009
-                  - kallisto
-                  - bus
+                  command: *id009
                   positional:
                   - !Positional
-                    description: ''
+                    optional: true
                     position: 0
                     name: arguments
-                    optional: true
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: FASTQ-files
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: "Filename for the kallisto index to be used for\n\
-                      pseudoalignment"
+                    optional: true
                     synonyms:
                     - -i
                     - --index
+                    description: "Filename for the kallisto index to be used for\n\
+                      pseudoalignment"
                     args: !SimpleFlagArg
                       name: STRING
-                    optional: true
                   - !Flag
-                    description: Directory to write output to
+                    optional: true
                     synonyms:
                     - -o
                     - --output-dir
+                    description: Directory to write output to
                     args: !SimpleFlagArg
                       name: STRING
-                    optional: true
                   - !Flag
-                    description: Single-cell technology used
+                    optional: true
                     synonyms:
                     - -x
                     - --technology
+                    description: Single-cell technology used
                     args: !SimpleFlagArg
                       name: STRING
-                    optional: true
                   - !Flag
-                    description: List all single-cell technologies supported
+                    optional: true
                     synonyms:
                     - -l
                     - --list
+                    description: List all single-cell technologies supported
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: 'Number of threads to use (default: 1)'
+                    optional: true
                     synonyms:
                     - -t
                     - --threads
+                    description: 'Number of threads to use (default: 1)'
                     args: !SimpleFlagArg
                       name: INT
-                    optional: true
                   - !Flag
-                    description: Input file is a BAM file
+                    optional: true
                     synonyms:
                     - -b
                     - --bam
+                    description: Input file is a BAM file
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "Output number of read in flag column (incompatible\
-                      \ with --bam)\n--verbose                 Print out progress\
-                      \ information every 1M proccessed reads\n"
+                    optional: true
                     synonyms:
                     - -n
                     - --num
+                    description: "Output number of read in flag column (incompatible\
+                      \ with --bam)\n--verbose                 Print out progress\
+                      \ information every 1M proccessed reads\n"
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -580,41 +1118,40 @@ subcommands:
                     \ (incompatible with --bam)\n    --verbose                 Print\
                     \ out progress information every 1M proccessed reads\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id010
-                  - kallisto
-                  - inspect
+                  command: *id010
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: INDEX-file
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: Filename for GFA output of T-DBG
+                    optional: true
                     synonyms:
                     - -G
                     - --gfa
+                    description: Filename for GFA output of T-DBG
                     args: !SimpleFlagArg
                       name: STRING
-                    optional: true
                   - !Flag
-                    description: Filename for GTF file
+                    optional: true
                     synonyms:
                     - -g
                     - --gtf
+                    description: Filename for GTF file
                     args: !SimpleFlagArg
                       name: STRING
-                    optional: true
                   - !Flag
-                    description: 'Filename for BED output (default: index + ".bed")'
+                    optional: true
                     synonyms:
                     - -b
                     - --bed
+                    description: 'Filename for BED output (default: index + ".bed")'
                     args: !SimpleFlagArg
                       name: STRING
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -626,7 +1163,8 @@ subcommands:
                     \ output of T-DBG\n-g, --gtf=STRING        Filename for GTF file\n\
                     -b, --bed=STRING        Filename for BED output (default: index\
                     \ + \".bed\")\n\n"
-                  generated_using: &id011 []
+                  generated_using: *id011
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -642,6 +1180,7 @@ subcommands:
                   \    cite          Prints citation information\n\nRunning kallisto\
                   \ <CMD> without arguments prints usage information for <CMD>\n\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -651,43 +1190,48 @@ subcommands:
                 \nUsage:  kallisto h5dump [arguments] abundance.h5\n\nRequired argument:\n\
                 -o, --output-dir=STRING       Directory to write output to\n\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
-                description: ''
+                optional: true
                 position: 0
                 name: arguments
-                optional: true
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: FASTQ-files
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: "Filename for the kallisto index to be used for\nquantification"
+                optional: true
                 synonyms:
                 - -i
                 - --index
+                description: "Filename for the kallisto index to be used for\nquantification"
                 args: !SimpleFlagArg
                   name: STRING
-                optional: true
               - !Flag
-                description: Directory to write output to
+                optional: true
                 synonyms:
                 - -o
                 - --output-dir
+                description: Directory to write output to
                 args: !SimpleFlagArg
                   name: STRING
-                optional: true
               - !Flag
-                description: Perform sequence based bias correction
+                optional: true
                 synonyms:
                 - --bias
+                description: Perform sequence based bias correction
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - -b
+                - --bootstrap-samples
                 description: "Number of bootstrap samples (default: 0)\n--seed=INT\
                   \                Seed for the bootstrap sampling (default: 42)\n\
                   --plaintext               Output plaintext instead of HDF5\n--fusion\
@@ -697,64 +1241,60 @@ subcommands:
                   \ to lie outside a transcript\n--fr-stranded             Strand\
                   \ specific reads, first read forward\n--rf-stranded            \
                   \ Strand specific reads, first read reverse"
-                synonyms:
-                - -b
-                - --bootstrap-samples
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: Estimated average fragment length
+                optional: true
                 synonyms:
                 - -l
                 - --fragment-length
+                description: Estimated average fragment length
                 args: !SimpleFlagArg
                   name: DOUBLE
-                optional: true
               - !Flag
-                description: "Estimated standard deviation of fragment length\n(default:\
-                  \ -l, -s values are estimated from paired\nend data, but are required\
-                  \ when using --single)"
+                optional: true
                 synonyms:
                 - -s
                 - --sd
+                description: "Estimated standard deviation of fragment length\n(default:\
+                  \ -l, -s values are estimated from paired\nend data, but are required\
+                  \ when using --single)"
                 args: !SimpleFlagArg
                   name: DOUBLE
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - -t
+                - --threads
                 description: "Number of threads to use (default: 1)\n--pseudobam \
                   \              Save pseudoalignments to transcriptome to BAM file\n\
                   --genomebam               Project pseudoalignments to genome sorted\
                   \ BAM file"
-                synonyms:
-                - -t
-                - --threads
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: "GTF file for transcriptome information\n(required for\
-                  \ --genomebam)"
+                optional: true
                 synonyms:
                 - -g
                 - --gtf
+                description: "GTF file for transcriptome information\n(required for\
+                  \ --genomebam)"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "Tab separated file with chromosome names and lengths\n\
-                  (optional for --genomebam, but recommended)"
+                optional: true
                 synonyms:
                 - -c
                 - --chromosomes
+                description: "Tab separated file with chromosome names and lengths\n\
+                  (optional for --genomebam, but recommended)"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: Print out progress information every 1M proccessed reads
+                optional: true
                 synonyms:
                 - --verbose
+                description: Print out progress information every 1M proccessed reads
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id012
               subcommands: []
               usage: []
               help_flag:
@@ -790,38 +1330,39 @@ subcommands:
                 \    --verbose                 Print out progress information every\
                 \ 1M proccessed reads\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: ''
+                optional: true
                 position: 0
                 name: arguments
-                optional: true
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: FASTA-files
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: Filename for the kallisto index to be constructed
+                optional: true
                 synonyms:
                 - -i
                 - --index
+                description: Filename for the kallisto index to be constructed
                 args: !SimpleFlagArg
                   name: STRING
-                optional: true
               - !Flag
-                description: "k-mer (odd) length (default: 31, max value: 31)\n--make-unique\
-                  \           Replace repeated target names with unique names\n"
+                optional: true
                 synonyms:
                 - -k
                 - --kmer-size
+                description: "k-mer (odd) length (default: 31, max value: 31)\n--make-unique\
+                  \           Replace repeated target names with unique names\n"
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
-              parent: *id003
+              parent: *id012
               subcommands: []
               usage: []
               help_flag:
@@ -834,80 +1375,81 @@ subcommands:
                 \ (default: 31, max value: 31)\n    --make-unique           Replace\
                 \ repeated target names with unique names\n\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional:
               - !Positional
-                description: ''
+                optional: true
                 position: 0
                 name: arguments
-                optional: true
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: FASTQ-files
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: "Filename for the kallisto index to be used for\npseudoalignment"
+                optional: true
                 synonyms:
                 - -i
                 - --index
+                description: "Filename for the kallisto index to be used for\npseudoalignment"
                 args: !SimpleFlagArg
                   name: STRING
-                optional: true
               - !Flag
-                description: Directory to write output to
+                optional: true
                 synonyms:
                 - -o
                 - --output-dir
+                description: Directory to write output to
                 args: !SimpleFlagArg
                   name: STRING
-                optional: true
               - !Flag
-                description: First file in pair is a UMI file
+                optional: true
                 synonyms:
                 - -u
                 - --umi
+                description: First file in pair is a UMI file
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "Process files listed in FILE\n--quant              \
-                  \     Quantify using EM algorithm (only in batch mode)\n--single\
-                  \                  Quantify single-end reads"
+                optional: true
                 synonyms:
                 - -b
                 - --batch
+                description: "Process files listed in FILE\n--quant              \
+                  \     Quantify using EM algorithm (only in batch mode)\n--single\
+                  \                  Quantify single-end reads"
                 args: !SimpleFlagArg
                   name: FILE
-                optional: true
               - !Flag
-                description: Estimated average fragment length
+                optional: true
                 synonyms:
                 - -l
                 - --fragment-length
+                description: Estimated average fragment length
                 args: !SimpleFlagArg
                   name: DOUBLE
-                optional: true
               - !Flag
-                description: "Estimated standard deviation of fragment length\n(default:\
-                  \ -l, -s values are estimated from paired\nend data, but are required\
-                  \ when using --single)"
+                optional: true
                 synonyms:
                 - -s
                 - --sd
+                description: "Estimated standard deviation of fragment length\n(default:\
+                  \ -l, -s values are estimated from paired\nend data, but are required\
+                  \ when using --single)"
                 args: !SimpleFlagArg
                   name: DOUBLE
-                optional: true
               - !Flag
-                description: 'Number of threads to use (default: 1)'
+                optional: true
                 synonyms:
                 - -t
                 - --threads
+                description: 'Number of threads to use (default: 1)'
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
-              parent: *id003
+              parent: *id012
               subcommands: []
               usage: []
               help_flag:
@@ -928,37 +1470,38 @@ subcommands:
                 \     end data, but are required when using --single)\n-t, --threads=INT\
                 \             Number of threads to use (default: 1)\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id008
               positional:
               - !Positional
-                description: ''
+                optional: true
                 position: 0
                 name: arguments
-                optional: true
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: ouput-directories
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: "Filename for the kallisto index to be used for\npseudoalignment"
+                optional: true
                 synonyms:
                 - -i
                 - --index
+                description: "Filename for the kallisto index to be used for\npseudoalignment"
                 args: !SimpleFlagArg
                   name: STRING
-                optional: true
               - !Flag
-                description: Directory to write output to
+                optional: true
                 synonyms:
                 - -o
                 - --output-dir
+                description: Directory to write output to
                 args: !SimpleFlagArg
                   name: STRING
-                optional: true
-              parent: *id003
+              parent: *id012
               subcommands: []
               usage: []
               help_flag:
@@ -971,76 +1514,77 @@ subcommands:
                 \  pseudoalignment\n-o, --output-dir=STRING       Directory to write\
                 \ output to\n\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id009
               positional:
               - !Positional
-                description: ''
+                optional: true
                 position: 0
                 name: arguments
-                optional: true
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: FASTQ-files
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: "Filename for the kallisto index to be used for\npseudoalignment"
+                optional: true
                 synonyms:
                 - -i
                 - --index
+                description: "Filename for the kallisto index to be used for\npseudoalignment"
                 args: !SimpleFlagArg
                   name: STRING
-                optional: true
               - !Flag
-                description: Directory to write output to
+                optional: true
                 synonyms:
                 - -o
                 - --output-dir
+                description: Directory to write output to
                 args: !SimpleFlagArg
                   name: STRING
-                optional: true
               - !Flag
-                description: Single-cell technology used
+                optional: true
                 synonyms:
                 - -x
                 - --technology
+                description: Single-cell technology used
                 args: !SimpleFlagArg
                   name: STRING
-                optional: true
               - !Flag
-                description: List all single-cell technologies supported
+                optional: true
                 synonyms:
                 - -l
                 - --list
+                description: List all single-cell technologies supported
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: 'Number of threads to use (default: 1)'
+                optional: true
                 synonyms:
                 - -t
                 - --threads
+                description: 'Number of threads to use (default: 1)'
                 args: !SimpleFlagArg
                   name: INT
-                optional: true
               - !Flag
-                description: Input file is a BAM file
+                optional: true
                 synonyms:
                 - -b
                 - --bam
+                description: Input file is a BAM file
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "Output number of read in flag column (incompatible with\
-                  \ --bam)\n--verbose                 Print out progress information\
-                  \ every 1M proccessed reads\n"
+                optional: true
                 synonyms:
                 - -n
                 - --num
+                description: "Output number of read in flag column (incompatible with\
+                  \ --bam)\n--verbose                 Print out progress information\
+                  \ every 1M proccessed reads\n"
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id012
               subcommands: []
               usage: []
               help_flag:
@@ -1059,40 +1603,41 @@ subcommands:
                 \ with --bam)\n    --verbose                 Print out progress information\
                 \ every 1M proccessed reads\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id010
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: INDEX-file
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: Filename for GFA output of T-DBG
+                optional: true
                 synonyms:
                 - -G
                 - --gfa
+                description: Filename for GFA output of T-DBG
                 args: !SimpleFlagArg
                   name: STRING
-                optional: true
               - !Flag
-                description: Filename for GTF file
+                optional: true
                 synonyms:
                 - -g
                 - --gtf
+                description: Filename for GTF file
                 args: !SimpleFlagArg
                   name: STRING
-                optional: true
               - !Flag
-                description: 'Filename for BED output (default: index + ".bed")'
+                optional: true
                 synonyms:
                 - -b
                 - --bed
+                description: 'Filename for BED output (default: index + ".bed")'
                 args: !SimpleFlagArg
                   name: STRING
-                optional: true
-              parent: *id003
+              parent: *id012
               subcommands: []
               usage: []
               help_flag:
@@ -1103,6 +1648,7 @@ subcommands:
                 \ of T-DBG\n-g, --gtf=STRING        Filename for GTF file\n-b, --bed=STRING\
                 \        Filename for BED output (default: index + \".bed\")\n\n"
               generated_using: *id011
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -1118,6 +1664,7 @@ subcommands:
               \         Prints citation information\n\nRunning kallisto <CMD> without\
               \ arguments prints usage information for <CMD>\n\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -1127,43 +1674,48 @@ subcommands:
             \nUsage:  kallisto h5dump [arguments] abundance.h5\n\nRequired argument:\n\
             -o, --output-dir=STRING       Directory to write output to\n\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: ''
+            optional: true
             position: 0
             name: arguments
-            optional: true
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: FASTQ-files
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: "Filename for the kallisto index to be used for\nquantification"
+            optional: true
             synonyms:
             - -i
             - --index
+            description: "Filename for the kallisto index to be used for\nquantification"
             args: !SimpleFlagArg
               name: STRING
-            optional: true
           - !Flag
-            description: Directory to write output to
+            optional: true
             synonyms:
             - -o
             - --output-dir
+            description: Directory to write output to
             args: !SimpleFlagArg
               name: STRING
-            optional: true
           - !Flag
-            description: Perform sequence based bias correction
+            optional: true
             synonyms:
             - --bias
+            description: Perform sequence based bias correction
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - -b
+            - --bootstrap-samples
             description: "Number of bootstrap samples (default: 0)\n--seed=INT   \
               \             Seed for the bootstrap sampling (default: 42)\n--plaintext\
               \               Output plaintext instead of HDF5\n--fusion         \
@@ -1172,62 +1724,58 @@ subcommands:
               \ rest of fragment is\npredicted to lie outside a transcript\n--fr-stranded\
               \             Strand specific reads, first read forward\n--rf-stranded\
               \             Strand specific reads, first read reverse"
-            synonyms:
-            - -b
-            - --bootstrap-samples
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: Estimated average fragment length
+            optional: true
             synonyms:
             - -l
             - --fragment-length
+            description: Estimated average fragment length
             args: !SimpleFlagArg
               name: DOUBLE
-            optional: true
           - !Flag
-            description: "Estimated standard deviation of fragment length\n(default:\
-              \ -l, -s values are estimated from paired\nend data, but are required\
-              \ when using --single)"
+            optional: true
             synonyms:
             - -s
             - --sd
+            description: "Estimated standard deviation of fragment length\n(default:\
+              \ -l, -s values are estimated from paired\nend data, but are required\
+              \ when using --single)"
             args: !SimpleFlagArg
               name: DOUBLE
-            optional: true
           - !Flag
-            description: "Number of threads to use (default: 1)\n--pseudobam     \
-              \          Save pseudoalignments to transcriptome to BAM file\n--genomebam\
-              \               Project pseudoalignments to genome sorted BAM file"
+            optional: true
             synonyms:
             - -t
             - --threads
+            description: "Number of threads to use (default: 1)\n--pseudobam     \
+              \          Save pseudoalignments to transcriptome to BAM file\n--genomebam\
+              \               Project pseudoalignments to genome sorted BAM file"
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: "GTF file for transcriptome information\n(required for --genomebam)"
+            optional: true
             synonyms:
             - -g
             - --gtf
+            description: "GTF file for transcriptome information\n(required for --genomebam)"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "Tab separated file with chromosome names and lengths\n(optional\
-              \ for --genomebam, but recommended)"
+            optional: true
             synonyms:
             - -c
             - --chromosomes
+            description: "Tab separated file with chromosome names and lengths\n(optional\
+              \ for --genomebam, but recommended)"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: Print out progress information every 1M proccessed reads
+            optional: true
             synonyms:
             - --verbose
+            description: Print out progress information every 1M proccessed reads
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id012
+          parent: *id013
           subcommands: []
           usage: []
           help_flag:
@@ -1261,38 +1809,39 @@ subcommands:
             \ but recommended)\n    --verbose                 Print out progress information\
             \ every 1M proccessed reads\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: ''
+            optional: true
             position: 0
             name: arguments
-            optional: true
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: FASTA-files
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: Filename for the kallisto index to be constructed
+            optional: true
             synonyms:
             - -i
             - --index
+            description: Filename for the kallisto index to be constructed
             args: !SimpleFlagArg
               name: STRING
-            optional: true
           - !Flag
-            description: "k-mer (odd) length (default: 31, max value: 31)\n--make-unique\
-              \           Replace repeated target names with unique names\n"
+            optional: true
             synonyms:
             - -k
             - --kmer-size
+            description: "k-mer (odd) length (default: 31, max value: 31)\n--make-unique\
+              \           Replace repeated target names with unique names\n"
             args: !SimpleFlagArg
               name: INT
-            optional: true
-          parent: *id012
+          parent: *id013
           subcommands: []
           usage: []
           help_flag:
@@ -1305,80 +1854,81 @@ subcommands:
             \ 31, max value: 31)\n    --make-unique           Replace repeated target\
             \ names with unique names\n\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional:
           - !Positional
-            description: ''
+            optional: true
             position: 0
             name: arguments
-            optional: true
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: FASTQ-files
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: "Filename for the kallisto index to be used for\npseudoalignment"
+            optional: true
             synonyms:
             - -i
             - --index
+            description: "Filename for the kallisto index to be used for\npseudoalignment"
             args: !SimpleFlagArg
               name: STRING
-            optional: true
           - !Flag
-            description: Directory to write output to
+            optional: true
             synonyms:
             - -o
             - --output-dir
+            description: Directory to write output to
             args: !SimpleFlagArg
               name: STRING
-            optional: true
           - !Flag
-            description: First file in pair is a UMI file
+            optional: true
             synonyms:
             - -u
             - --umi
+            description: First file in pair is a UMI file
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "Process files listed in FILE\n--quant                  \
-              \ Quantify using EM algorithm (only in batch mode)\n--single       \
-              \           Quantify single-end reads"
+            optional: true
             synonyms:
             - -b
             - --batch
+            description: "Process files listed in FILE\n--quant                  \
+              \ Quantify using EM algorithm (only in batch mode)\n--single       \
+              \           Quantify single-end reads"
             args: !SimpleFlagArg
               name: FILE
-            optional: true
           - !Flag
-            description: Estimated average fragment length
+            optional: true
             synonyms:
             - -l
             - --fragment-length
+            description: Estimated average fragment length
             args: !SimpleFlagArg
               name: DOUBLE
-            optional: true
           - !Flag
-            description: "Estimated standard deviation of fragment length\n(default:\
-              \ -l, -s values are estimated from paired\nend data, but are required\
-              \ when using --single)"
+            optional: true
             synonyms:
             - -s
             - --sd
+            description: "Estimated standard deviation of fragment length\n(default:\
+              \ -l, -s values are estimated from paired\nend data, but are required\
+              \ when using --single)"
             args: !SimpleFlagArg
               name: DOUBLE
-            optional: true
           - !Flag
-            description: 'Number of threads to use (default: 1)'
+            optional: true
             synonyms:
             - -t
             - --threads
+            description: 'Number of threads to use (default: 1)'
             args: !SimpleFlagArg
               name: INT
-            optional: true
-          parent: *id012
+          parent: *id013
           subcommands: []
           usage: []
           help_flag:
@@ -1398,37 +1948,38 @@ subcommands:
             \                end data, but are required when using --single)\n-t,\
             \ --threads=INT             Number of threads to use (default: 1)\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id008
           positional:
           - !Positional
-            description: ''
+            optional: true
             position: 0
             name: arguments
-            optional: true
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: ouput-directories
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: "Filename for the kallisto index to be used for\npseudoalignment"
+            optional: true
             synonyms:
             - -i
             - --index
+            description: "Filename for the kallisto index to be used for\npseudoalignment"
             args: !SimpleFlagArg
               name: STRING
-            optional: true
           - !Flag
-            description: Directory to write output to
+            optional: true
             synonyms:
             - -o
             - --output-dir
+            description: Directory to write output to
             args: !SimpleFlagArg
               name: STRING
-            optional: true
-          parent: *id012
+          parent: *id013
           subcommands: []
           usage: []
           help_flag:
@@ -1440,76 +1991,77 @@ subcommands:
             \ kallisto index to be used for\n                              pseudoalignment\n\
             -o, --output-dir=STRING       Directory to write output to\n\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id009
           positional:
           - !Positional
-            description: ''
+            optional: true
             position: 0
             name: arguments
-            optional: true
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: FASTQ-files
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: "Filename for the kallisto index to be used for\npseudoalignment"
+            optional: true
             synonyms:
             - -i
             - --index
+            description: "Filename for the kallisto index to be used for\npseudoalignment"
             args: !SimpleFlagArg
               name: STRING
-            optional: true
           - !Flag
-            description: Directory to write output to
+            optional: true
             synonyms:
             - -o
             - --output-dir
+            description: Directory to write output to
             args: !SimpleFlagArg
               name: STRING
-            optional: true
           - !Flag
-            description: Single-cell technology used
+            optional: true
             synonyms:
             - -x
             - --technology
+            description: Single-cell technology used
             args: !SimpleFlagArg
               name: STRING
-            optional: true
           - !Flag
-            description: List all single-cell technologies supported
+            optional: true
             synonyms:
             - -l
             - --list
+            description: List all single-cell technologies supported
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: 'Number of threads to use (default: 1)'
+            optional: true
             synonyms:
             - -t
             - --threads
+            description: 'Number of threads to use (default: 1)'
             args: !SimpleFlagArg
               name: INT
-            optional: true
           - !Flag
-            description: Input file is a BAM file
+            optional: true
             synonyms:
             - -b
             - --bam
+            description: Input file is a BAM file
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "Output number of read in flag column (incompatible with\
-              \ --bam)\n--verbose                 Print out progress information every\
-              \ 1M proccessed reads\n"
+            optional: true
             synonyms:
             - -n
             - --num
+            description: "Output number of read in flag column (incompatible with\
+              \ --bam)\n--verbose                 Print out progress information every\
+              \ 1M proccessed reads\n"
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id012
+          parent: *id013
           subcommands: []
           usage: []
           help_flag:
@@ -1527,40 +2079,41 @@ subcommands:
             \ number of read in flag column (incompatible with --bam)\n    --verbose\
             \                 Print out progress information every 1M proccessed reads\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id010
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: INDEX-file
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: Filename for GFA output of T-DBG
+            optional: true
             synonyms:
             - -G
             - --gfa
+            description: Filename for GFA output of T-DBG
             args: !SimpleFlagArg
               name: STRING
-            optional: true
           - !Flag
-            description: Filename for GTF file
+            optional: true
             synonyms:
             - -g
             - --gtf
+            description: Filename for GTF file
             args: !SimpleFlagArg
               name: STRING
-            optional: true
           - !Flag
-            description: 'Filename for BED output (default: index + ".bed")'
+            optional: true
             synonyms:
             - -b
             - --bed
+            description: 'Filename for BED output (default: index + ".bed")'
             args: !SimpleFlagArg
               name: STRING
-            optional: true
-          parent: *id012
+          parent: *id013
           subcommands: []
           usage: []
           help_flag:
@@ -1571,6 +2124,7 @@ subcommands:
             -g, --gtf=STRING        Filename for GTF file\n-b, --bed=STRING      \
             \  Filename for BED output (default: index + \".bed\")\n\n"
           generated_using: *id011
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -1585,6 +2139,7 @@ subcommands:
           \ information\n    cite          Prints citation information\n\nRunning\
           \ kallisto <CMD> without arguments prints usage information for <CMD>\n\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -1594,43 +2149,48 @@ subcommands:
         Usage:  kallisto h5dump [arguments] abundance.h5\n\nRequired argument:\n-o,\
         \ --output-dir=STRING       Directory to write output to\n\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: ''
+        optional: true
         position: 0
         name: arguments
-        optional: true
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: FASTQ-files
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: "Filename for the kallisto index to be used for\nquantification"
+        optional: true
         synonyms:
         - -i
         - --index
+        description: "Filename for the kallisto index to be used for\nquantification"
         args: !SimpleFlagArg
           name: STRING
-        optional: true
       - !Flag
-        description: Directory to write output to
+        optional: true
         synonyms:
         - -o
         - --output-dir
+        description: Directory to write output to
         args: !SimpleFlagArg
           name: STRING
-        optional: true
       - !Flag
-        description: Perform sequence based bias correction
+        optional: true
         synonyms:
         - --bias
+        description: Perform sequence based bias correction
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - -b
+        - --bootstrap-samples
         description: "Number of bootstrap samples (default: 0)\n--seed=INT       \
           \         Seed for the bootstrap sampling (default: 42)\n--plaintext   \
           \            Output plaintext instead of HDF5\n--fusion                \
@@ -1639,62 +2199,58 @@ subcommands:
           \ fragment is\npredicted to lie outside a transcript\n--fr-stranded    \
           \         Strand specific reads, first read forward\n--rf-stranded     \
           \        Strand specific reads, first read reverse"
-        synonyms:
-        - -b
-        - --bootstrap-samples
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: Estimated average fragment length
+        optional: true
         synonyms:
         - -l
         - --fragment-length
+        description: Estimated average fragment length
         args: !SimpleFlagArg
           name: DOUBLE
-        optional: true
       - !Flag
-        description: "Estimated standard deviation of fragment length\n(default: -l,\
-          \ -s values are estimated from paired\nend data, but are required when using\
-          \ --single)"
+        optional: true
         synonyms:
         - -s
         - --sd
+        description: "Estimated standard deviation of fragment length\n(default: -l,\
+          \ -s values are estimated from paired\nend data, but are required when using\
+          \ --single)"
         args: !SimpleFlagArg
           name: DOUBLE
-        optional: true
       - !Flag
-        description: "Number of threads to use (default: 1)\n--pseudobam         \
-          \      Save pseudoalignments to transcriptome to BAM file\n--genomebam \
-          \              Project pseudoalignments to genome sorted BAM file"
+        optional: true
         synonyms:
         - -t
         - --threads
+        description: "Number of threads to use (default: 1)\n--pseudobam         \
+          \      Save pseudoalignments to transcriptome to BAM file\n--genomebam \
+          \              Project pseudoalignments to genome sorted BAM file"
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: "GTF file for transcriptome information\n(required for --genomebam)"
+        optional: true
         synonyms:
         - -g
         - --gtf
+        description: "GTF file for transcriptome information\n(required for --genomebam)"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "Tab separated file with chromosome names and lengths\n(optional\
-          \ for --genomebam, but recommended)"
+        optional: true
         synonyms:
         - -c
         - --chromosomes
+        description: "Tab separated file with chromosome names and lengths\n(optional\
+          \ for --genomebam, but recommended)"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: Print out progress information every 1M proccessed reads
+        optional: true
         synonyms:
         - --verbose
+        description: Print out progress information every 1M proccessed reads
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id013
+      parent: *id014
       subcommands: []
       usage: []
       help_flag:
@@ -1727,38 +2283,39 @@ subcommands:
         \    --verbose                 Print out progress information every 1M proccessed\
         \ reads\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: ''
+        optional: true
         position: 0
         name: arguments
-        optional: true
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: FASTA-files
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: Filename for the kallisto index to be constructed
+        optional: true
         synonyms:
         - -i
         - --index
+        description: Filename for the kallisto index to be constructed
         args: !SimpleFlagArg
           name: STRING
-        optional: true
       - !Flag
-        description: "k-mer (odd) length (default: 31, max value: 31)\n--make-unique\
-          \           Replace repeated target names with unique names\n"
+        optional: true
         synonyms:
         - -k
         - --kmer-size
+        description: "k-mer (odd) length (default: 31, max value: 31)\n--make-unique\
+          \           Replace repeated target names with unique names\n"
         args: !SimpleFlagArg
           name: INT
-        optional: true
-      parent: *id013
+      parent: *id014
       subcommands: []
       usage: []
       help_flag:
@@ -1771,80 +2328,81 @@ subcommands:
         \    --make-unique           Replace repeated target names with unique names\n\
         \n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional:
       - !Positional
-        description: ''
+        optional: true
         position: 0
         name: arguments
-        optional: true
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: FASTQ-files
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: "Filename for the kallisto index to be used for\npseudoalignment"
+        optional: true
         synonyms:
         - -i
         - --index
+        description: "Filename for the kallisto index to be used for\npseudoalignment"
         args: !SimpleFlagArg
           name: STRING
-        optional: true
       - !Flag
-        description: Directory to write output to
+        optional: true
         synonyms:
         - -o
         - --output-dir
+        description: Directory to write output to
         args: !SimpleFlagArg
           name: STRING
-        optional: true
       - !Flag
-        description: First file in pair is a UMI file
+        optional: true
         synonyms:
         - -u
         - --umi
+        description: First file in pair is a UMI file
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "Process files listed in FILE\n--quant                   Quantify\
-          \ using EM algorithm (only in batch mode)\n--single                  Quantify\
-          \ single-end reads"
+        optional: true
         synonyms:
         - -b
         - --batch
+        description: "Process files listed in FILE\n--quant                   Quantify\
+          \ using EM algorithm (only in batch mode)\n--single                  Quantify\
+          \ single-end reads"
         args: !SimpleFlagArg
           name: FILE
-        optional: true
       - !Flag
-        description: Estimated average fragment length
+        optional: true
         synonyms:
         - -l
         - --fragment-length
+        description: Estimated average fragment length
         args: !SimpleFlagArg
           name: DOUBLE
-        optional: true
       - !Flag
-        description: "Estimated standard deviation of fragment length\n(default: -l,\
-          \ -s values are estimated from paired\nend data, but are required when using\
-          \ --single)"
+        optional: true
         synonyms:
         - -s
         - --sd
+        description: "Estimated standard deviation of fragment length\n(default: -l,\
+          \ -s values are estimated from paired\nend data, but are required when using\
+          \ --single)"
         args: !SimpleFlagArg
           name: DOUBLE
-        optional: true
       - !Flag
-        description: 'Number of threads to use (default: 1)'
+        optional: true
         synonyms:
         - -t
         - --threads
+        description: 'Number of threads to use (default: 1)'
         args: !SimpleFlagArg
           name: INT
-        optional: true
-      parent: *id013
+      parent: *id014
       subcommands: []
       usage: []
       help_flag:
@@ -1864,37 +2422,38 @@ subcommands:
         \ using --single)\n-t, --threads=INT             Number of threads to use\
         \ (default: 1)\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id008
       positional:
       - !Positional
-        description: ''
+        optional: true
         position: 0
         name: arguments
-        optional: true
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: ouput-directories
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: "Filename for the kallisto index to be used for\npseudoalignment"
+        optional: true
         synonyms:
         - -i
         - --index
+        description: "Filename for the kallisto index to be used for\npseudoalignment"
         args: !SimpleFlagArg
           name: STRING
-        optional: true
       - !Flag
-        description: Directory to write output to
+        optional: true
         synonyms:
         - -o
         - --output-dir
+        description: Directory to write output to
         args: !SimpleFlagArg
           name: STRING
-        optional: true
-      parent: *id013
+      parent: *id014
       subcommands: []
       usage: []
       help_flag:
@@ -1906,76 +2465,77 @@ subcommands:
         \ to be used for\n                              pseudoalignment\n-o, --output-dir=STRING\
         \       Directory to write output to\n\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id009
       positional:
       - !Positional
-        description: ''
+        optional: true
         position: 0
         name: arguments
-        optional: true
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: FASTQ-files
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: "Filename for the kallisto index to be used for\npseudoalignment"
+        optional: true
         synonyms:
         - -i
         - --index
+        description: "Filename for the kallisto index to be used for\npseudoalignment"
         args: !SimpleFlagArg
           name: STRING
-        optional: true
       - !Flag
-        description: Directory to write output to
+        optional: true
         synonyms:
         - -o
         - --output-dir
+        description: Directory to write output to
         args: !SimpleFlagArg
           name: STRING
-        optional: true
       - !Flag
-        description: Single-cell technology used
+        optional: true
         synonyms:
         - -x
         - --technology
+        description: Single-cell technology used
         args: !SimpleFlagArg
           name: STRING
-        optional: true
       - !Flag
-        description: List all single-cell technologies supported
+        optional: true
         synonyms:
         - -l
         - --list
+        description: List all single-cell technologies supported
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: 'Number of threads to use (default: 1)'
+        optional: true
         synonyms:
         - -t
         - --threads
+        description: 'Number of threads to use (default: 1)'
         args: !SimpleFlagArg
           name: INT
-        optional: true
       - !Flag
-        description: Input file is a BAM file
+        optional: true
         synonyms:
         - -b
         - --bam
+        description: Input file is a BAM file
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "Output number of read in flag column (incompatible with --bam)\n\
-          --verbose                 Print out progress information every 1M proccessed\
-          \ reads\n"
+        optional: true
         synonyms:
         - -n
         - --num
+        description: "Output number of read in flag column (incompatible with --bam)\n\
+          --verbose                 Print out progress information every 1M proccessed\
+          \ reads\n"
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id013
+      parent: *id014
       subcommands: []
       usage: []
       help_flag:
@@ -1993,40 +2553,41 @@ subcommands:
         \ column (incompatible with --bam)\n    --verbose                 Print out\
         \ progress information every 1M proccessed reads\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id010
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: INDEX-file
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: Filename for GFA output of T-DBG
+        optional: true
         synonyms:
         - -G
         - --gfa
+        description: Filename for GFA output of T-DBG
         args: !SimpleFlagArg
           name: STRING
-        optional: true
       - !Flag
-        description: Filename for GTF file
+        optional: true
         synonyms:
         - -g
         - --gtf
+        description: Filename for GTF file
         args: !SimpleFlagArg
           name: STRING
-        optional: true
       - !Flag
-        description: 'Filename for BED output (default: index + ".bed")'
+        optional: true
         synonyms:
         - -b
         - --bed
+        description: 'Filename for BED output (default: index + ".bed")'
         args: !SimpleFlagArg
           name: STRING
-        optional: true
-      parent: *id013
+      parent: *id014
       subcommands: []
       usage: []
       help_flag:
@@ -2037,6 +2598,7 @@ subcommands:
         \ --gtf=STRING        Filename for GTF file\n-b, --bed=STRING        Filename\
         \ for BED output (default: index + \".bed\")\n\n"
       generated_using: *id011
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -2051,6 +2613,7 @@ subcommands:
       \ Prints citation information\n\nRunning kallisto <CMD> without arguments prints\
       \ usage information for <CMD>\n\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -2060,43 +2623,48 @@ subcommands:
     \  kallisto h5dump [arguments] abundance.h5\n\nRequired argument:\n-o, --output-dir=STRING\
     \       Directory to write output to\n\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: ''
+    optional: true
     position: 0
     name: arguments
-    optional: true
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: FASTQ-files
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: "Filename for the kallisto index to be used for\nquantification"
+    optional: true
     synonyms:
     - -i
     - --index
+    description: "Filename for the kallisto index to be used for\nquantification"
     args: !SimpleFlagArg
       name: STRING
-    optional: true
   - !Flag
-    description: Directory to write output to
+    optional: true
     synonyms:
     - -o
     - --output-dir
+    description: Directory to write output to
     args: !SimpleFlagArg
       name: STRING
-    optional: true
   - !Flag
-    description: Perform sequence based bias correction
+    optional: true
     synonyms:
     - --bias
+    description: Perform sequence based bias correction
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --bootstrap-samples
     description: "Number of bootstrap samples (default: 0)\n--seed=INT           \
       \     Seed for the bootstrap sampling (default: 42)\n--plaintext           \
       \    Output plaintext instead of HDF5\n--fusion                  Search for\
@@ -2105,61 +2673,57 @@ subcommands:
       predicted to lie outside a transcript\n--fr-stranded             Strand specific\
       \ reads, first read forward\n--rf-stranded             Strand specific reads,\
       \ first read reverse"
-    synonyms:
-    - -b
-    - --bootstrap-samples
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: Estimated average fragment length
+    optional: true
     synonyms:
     - -l
     - --fragment-length
+    description: Estimated average fragment length
     args: !SimpleFlagArg
       name: DOUBLE
-    optional: true
   - !Flag
-    description: "Estimated standard deviation of fragment length\n(default: -l, -s\
-      \ values are estimated from paired\nend data, but are required when using --single)"
+    optional: true
     synonyms:
     - -s
     - --sd
+    description: "Estimated standard deviation of fragment length\n(default: -l, -s\
+      \ values are estimated from paired\nend data, but are required when using --single)"
     args: !SimpleFlagArg
       name: DOUBLE
-    optional: true
   - !Flag
-    description: "Number of threads to use (default: 1)\n--pseudobam             \
-      \  Save pseudoalignments to transcriptome to BAM file\n--genomebam         \
-      \      Project pseudoalignments to genome sorted BAM file"
+    optional: true
     synonyms:
     - -t
     - --threads
+    description: "Number of threads to use (default: 1)\n--pseudobam             \
+      \  Save pseudoalignments to transcriptome to BAM file\n--genomebam         \
+      \      Project pseudoalignments to genome sorted BAM file"
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: "GTF file for transcriptome information\n(required for --genomebam)"
+    optional: true
     synonyms:
     - -g
     - --gtf
+    description: "GTF file for transcriptome information\n(required for --genomebam)"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "Tab separated file with chromosome names and lengths\n(optional\
-      \ for --genomebam, but recommended)"
+    optional: true
     synonyms:
     - -c
     - --chromosomes
+    description: "Tab separated file with chromosome names and lengths\n(optional\
+      \ for --genomebam, but recommended)"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: Print out progress information every 1M proccessed reads
+    optional: true
     synonyms:
     - --verbose
+    description: Print out progress information every 1M proccessed reads
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag:
@@ -2190,38 +2754,39 @@ subcommands:
     \     (optional for --genomebam, but recommended)\n    --verbose             \
     \    Print out progress information every 1M proccessed reads\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: ''
+    optional: true
     position: 0
     name: arguments
-    optional: true
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: FASTA-files
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: Filename for the kallisto index to be constructed
+    optional: true
     synonyms:
     - -i
     - --index
+    description: Filename for the kallisto index to be constructed
     args: !SimpleFlagArg
       name: STRING
-    optional: true
   - !Flag
-    description: "k-mer (odd) length (default: 31, max value: 31)\n--make-unique \
-      \          Replace repeated target names with unique names\n"
+    optional: true
     synonyms:
     - -k
     - --kmer-size
+    description: "k-mer (odd) length (default: 31, max value: 31)\n--make-unique \
+      \          Replace repeated target names with unique names\n"
     args: !SimpleFlagArg
       name: INT
-    optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag:
@@ -2233,79 +2798,80 @@ subcommands:
     \         k-mer (odd) length (default: 31, max value: 31)\n    --make-unique \
     \          Replace repeated target names with unique names\n\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional:
   - !Positional
-    description: ''
+    optional: true
     position: 0
     name: arguments
-    optional: true
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: FASTQ-files
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: "Filename for the kallisto index to be used for\npseudoalignment"
+    optional: true
     synonyms:
     - -i
     - --index
+    description: "Filename for the kallisto index to be used for\npseudoalignment"
     args: !SimpleFlagArg
       name: STRING
-    optional: true
   - !Flag
-    description: Directory to write output to
+    optional: true
     synonyms:
     - -o
     - --output-dir
+    description: Directory to write output to
     args: !SimpleFlagArg
       name: STRING
-    optional: true
   - !Flag
-    description: First file in pair is a UMI file
+    optional: true
     synonyms:
     - -u
     - --umi
+    description: First file in pair is a UMI file
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "Process files listed in FILE\n--quant                   Quantify\
-      \ using EM algorithm (only in batch mode)\n--single                  Quantify\
-      \ single-end reads"
+    optional: true
     synonyms:
     - -b
     - --batch
+    description: "Process files listed in FILE\n--quant                   Quantify\
+      \ using EM algorithm (only in batch mode)\n--single                  Quantify\
+      \ single-end reads"
     args: !SimpleFlagArg
       name: FILE
-    optional: true
   - !Flag
-    description: Estimated average fragment length
+    optional: true
     synonyms:
     - -l
     - --fragment-length
+    description: Estimated average fragment length
     args: !SimpleFlagArg
       name: DOUBLE
-    optional: true
   - !Flag
-    description: "Estimated standard deviation of fragment length\n(default: -l, -s\
-      \ values are estimated from paired\nend data, but are required when using --single)"
+    optional: true
     synonyms:
     - -s
     - --sd
+    description: "Estimated standard deviation of fragment length\n(default: -l, -s\
+      \ values are estimated from paired\nend data, but are required when using --single)"
     args: !SimpleFlagArg
       name: DOUBLE
-    optional: true
   - !Flag
-    description: 'Number of threads to use (default: 1)'
+    optional: true
     synonyms:
     - -t
     - --threads
+    description: 'Number of threads to use (default: 1)'
     args: !SimpleFlagArg
       name: INT
-    optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag:
@@ -2324,37 +2890,38 @@ subcommands:
     \                        end data, but are required when using --single)\n-t,\
     \ --threads=INT             Number of threads to use (default: 1)\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id008
   positional:
   - !Positional
-    description: ''
+    optional: true
     position: 0
     name: arguments
-    optional: true
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: ouput-directories
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: "Filename for the kallisto index to be used for\npseudoalignment"
+    optional: true
     synonyms:
     - -i
     - --index
+    description: "Filename for the kallisto index to be used for\npseudoalignment"
     args: !SimpleFlagArg
       name: STRING
-    optional: true
   - !Flag
-    description: Directory to write output to
+    optional: true
     synonyms:
     - -o
     - --output-dir
+    description: Directory to write output to
     args: !SimpleFlagArg
       name: STRING
-    optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag:
@@ -2366,76 +2933,77 @@ subcommands:
     \ be used for\n                              pseudoalignment\n-o, --output-dir=STRING\
     \       Directory to write output to\n\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id009
   positional:
   - !Positional
-    description: ''
+    optional: true
     position: 0
     name: arguments
-    optional: true
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: FASTQ-files
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: "Filename for the kallisto index to be used for\npseudoalignment"
+    optional: true
     synonyms:
     - -i
     - --index
+    description: "Filename for the kallisto index to be used for\npseudoalignment"
     args: !SimpleFlagArg
       name: STRING
-    optional: true
   - !Flag
-    description: Directory to write output to
+    optional: true
     synonyms:
     - -o
     - --output-dir
+    description: Directory to write output to
     args: !SimpleFlagArg
       name: STRING
-    optional: true
   - !Flag
-    description: Single-cell technology used
+    optional: true
     synonyms:
     - -x
     - --technology
+    description: Single-cell technology used
     args: !SimpleFlagArg
       name: STRING
-    optional: true
   - !Flag
-    description: List all single-cell technologies supported
+    optional: true
     synonyms:
     - -l
     - --list
+    description: List all single-cell technologies supported
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: 'Number of threads to use (default: 1)'
+    optional: true
     synonyms:
     - -t
     - --threads
+    description: 'Number of threads to use (default: 1)'
     args: !SimpleFlagArg
       name: INT
-    optional: true
   - !Flag
-    description: Input file is a BAM file
+    optional: true
     synonyms:
     - -b
     - --bam
+    description: Input file is a BAM file
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "Output number of read in flag column (incompatible with --bam)\n\
-      --verbose                 Print out progress information every 1M proccessed\
-      \ reads\n"
+    optional: true
     synonyms:
     - -n
     - --num
+    description: "Output number of read in flag column (incompatible with --bam)\n\
+      --verbose                 Print out progress information every 1M proccessed\
+      \ reads\n"
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag:
@@ -2453,40 +3021,41 @@ subcommands:
     \    --verbose                 Print out progress information every 1M proccessed\
     \ reads\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id010
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: INDEX-file
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: Filename for GFA output of T-DBG
+    optional: true
     synonyms:
     - -G
     - --gfa
+    description: Filename for GFA output of T-DBG
     args: !SimpleFlagArg
       name: STRING
-    optional: true
   - !Flag
-    description: Filename for GTF file
+    optional: true
     synonyms:
     - -g
     - --gtf
+    description: Filename for GTF file
     args: !SimpleFlagArg
       name: STRING
-    optional: true
   - !Flag
-    description: 'Filename for BED output (default: index + ".bed")'
+    optional: true
     synonyms:
     - -b
     - --bed
+    description: 'Filename for BED output (default: index + ".bed")'
     args: !SimpleFlagArg
       name: STRING
-    optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag:
@@ -2497,6 +3066,7 @@ subcommands:
     \     Filename for GTF file\n-b, --bed=STRING        Filename for BED output (default:\
     \ index + \".bed\")\n\n"
   generated_using: *id011
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -2511,3 +3081,4 @@ help_text: "kallisto 0.46.2\n\nUsage: kallisto <CMD> [arguments] ..\n\nWhere <CM
   \ citation information\n\nRunning kallisto <CMD> without arguments prints usage\
   \ information for <CMD>\n\n"
 generated_using: *id004
+docker_image:

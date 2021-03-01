@@ -8,6 +8,9 @@ task Entret {
     entret \
       ~{if (first_only) then "-firstonly" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     first_only: "boolean    Read one sequence and stop"
   }

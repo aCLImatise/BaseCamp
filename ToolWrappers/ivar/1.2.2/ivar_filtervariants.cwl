@@ -4,28 +4,29 @@ inputs:
 - id: in_minimum_fration_files
   doc: 'Minimum fration of files required to contain the same variant. Specify value
     within [0,1]. (Default: 1)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
 - id: in_text_file_one
   doc: A text file with one variant file per line.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
-- id: in_required_prefix_output
+- id: in_required_prefix_file
   doc: (Required) Prefix for the output filtered tsv file
-  type: File
+  type: File?
   inputBinding:
     prefix: -p
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_required_prefix_output
+- id: out_required_prefix_file
   doc: (Required) Prefix for the output filtered tsv file
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_required_prefix_output)
+    glob: $(inputs.in_required_prefix_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ivar

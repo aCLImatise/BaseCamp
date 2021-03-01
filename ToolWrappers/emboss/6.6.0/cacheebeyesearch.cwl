@@ -3,7 +3,7 @@ id: cacheebeyesearch.cwl
 inputs:
 - id: in_outfile
   doc: outfile    [stdout] Output file name
-  type: File
+  type: File?
   inputBinding:
     prefix: -outfile
 - id: in_file
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: outfile    [stdout] Output file name
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cacheebeyesearch

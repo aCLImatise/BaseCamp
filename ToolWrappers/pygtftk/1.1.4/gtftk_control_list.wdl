@@ -50,6 +50,9 @@ task GtftkControlList {
       ~{if (logger_file) then "--logger-file" else ""} \
       ~{if (write_message_to_file) then "--write-message-to-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "A two columns tab-file. See notes. (default: None)"
     reference_gene_file: "The file containing the reference gene list (1 column, transcript ids). No header. (default: None)"

@@ -2,15 +2,15 @@ version 1.0
 
 task Idfetch {
   input {
-    File? filename_output_default
+    File? filename_default_stdout
     Boolean? output_type_text
     Boolean? database_use_meaning
     Boolean? entity_number_retrieval
-    Boolean? type_lookup_get
-    Boolean? gi_i_d
+    Boolean? type_get_get
+    Boolean? gi_d_dump
     Boolean? file_dump_optional
-    Boolean? max_complexity_whole
-    Boolean? flattened_formatas_ortypenumber
+    Boolean? max_complexity_get
+    Boolean? flattened_seqid_ortypenumber
     Boolean? fasta_style_seqid
     File? log_file_optional
     Boolean? var_11
@@ -20,15 +20,15 @@ task Idfetch {
   }
   command <<<
     idfetch \
-      ~{if (filename_output_default) then "-o" else ""} \
+      ~{if (filename_default_stdout) then "-o" else ""} \
       ~{if (output_type_text) then "-t" else ""} \
       ~{if (database_use_meaning) then "-d" else ""} \
       ~{if (entity_number_retrieval) then "-e" else ""} \
-      ~{if (type_lookup_get) then "-i" else ""} \
-      ~{if (gi_i_d) then "-g" else ""} \
+      ~{if (type_get_get) then "-i" else ""} \
+      ~{if (gi_d_dump) then "-g" else ""} \
       ~{if (file_dump_optional) then "-G" else ""} \
-      ~{if (max_complexity_whole) then "-c" else ""} \
-      ~{if (flattened_formatas_ortypenumber) then "-f" else ""} \
+      ~{if (max_complexity_get) then "-c" else ""} \
+      ~{if (flattened_seqid_ortypenumber) then "-f" else ""} \
       ~{if (fasta_style_seqid) then "-s" else ""} \
       ~{if (log_file_optional) then "-l" else ""} \
       ~{if (var_11) then "-q" else ""} \
@@ -36,16 +36,19 @@ task Idfetch {
       ~{if (output_only_list) then "-n" else ""} \
       ~{if (add_features_delimited) then "-F" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    filename_output_default: "Filename for output  [File Out]\\ndefault = stdout"
+    filename_default_stdout: "Filename for output  [File Out]\\ndefault = stdout"
     output_type_text: "Output type:      1=text asn.1\\n2=Binary asn.1\\n3=Genbank (Seq-entry only)\\n4=genpept (Seq-entry only)\\n5=fasta (table for history)\\n6=quality scores (Seq-entry only)\\n7=Entrez DocSums\\n8=fasta reverse complement"
     database_use_meaning: "Database to use (special meaning for -q flag: n - nucleotide, p - protein) [String]  Optional"
     entity_number_retrieval: "Entity number (retrieval number) to dump [Integer]  Optional\\ndefault = 0"
-    type_lookup_get: "Type of lookup:   0 - get Seq-entry\\n1 - get gi state (output to stderr)\\n2 - get SeqIds\\n3 - get gi historyn (sequence change only)\\n4 - get gi revision history (any change to asn.1)"
-    gi_i_d: "GI id for single Entity to dump [Integer]  Optional\\ndefault = 0"
+    type_get_get: "Type of lookup:   0 - get Seq-entry\\n1 - get gi state (output to stderr)\\n2 - get SeqIds\\n3 - get gi historyn (sequence change only)\\n4 - get gi revision history (any change to asn.1)"
+    gi_d_dump: "GI id for single Entity to dump [Integer]  Optional\\ndefault = 0"
     file_dump_optional: "File with list of gi's, accessions, accession.version's, fasta seqid's to dump [File In]  Optional"
-    max_complexity_whole: "Max complexity:   0 - get the whole blob\\n1 - get the bioseq of interest\\n2 - get the minimal bioseq-set containing the bioseq of interest\\n3 - get the minimal nuc-prot containing the bioseq of interest\\n4 - get the minimal pub-set containing the bioseq of interest"
-    flattened_formatas_ortypenumber: "flaTtened SeqId, format:\\n'type(name,accession,release,version)'\\nas '5(HUMHBB)' or\\ntype=accession, or\\ntype:number  [String]  Optional"
+    max_complexity_get: "Max complexity:   0 - get the whole blob\\n1 - get the bioseq of interest\\n2 - get the minimal bioseq-set containing the bioseq of interest\\n3 - get the minimal nuc-prot containing the bioseq of interest\\n4 - get the minimal pub-set containing the bioseq of interest"
+    flattened_seqid_ortypenumber: "flaTtened SeqId, format:\\n'type(name,accession,release,version)'\\nas '5(HUMHBB)' or\\ntype=accession, or\\ntype:number  [String]  Optional"
     fasta_style_seqid: "Fasta style SeqId ENCLOSED IN QUOTES:\\nlcl|int or str bbs|int bbm|int gb|acc|loc\\nemb|acc|loc pir|acc|name sp|acc|name\\npat|country|patent|seq gi|int dbj|acc|loc\\nprf|acc|name pdb|entry|chain [String]  Optional"
     log_file_optional: "Log file [File Out]  Optional"
     var_11: "Generate gi list by entrez query [String]  Optional"
@@ -55,7 +58,7 @@ task Idfetch {
   }
   output {
     File out_stdout = stdout()
-    File out_filename_output_default = "${in_filename_output_default}"
+    File out_filename_default_stdout = "${in_filename_default_stdout}"
     File out_log_file_optional = "${in_log_file_optional}"
   }
 }

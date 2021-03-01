@@ -3,25 +3,186 @@ command:
 - glimmer3
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: sequence-file
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: icm-file
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: tag
-  optional: false
-named: []
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --start_codons
+  description: "Use comma-separated list of codons as start codons\nSample format:\
+    \  -A atg,gtg\nUse -P option to specify relative proportions of use.\nIf -P not\
+    \ used, then proportions will be equal"
+  args: !SimpleFlagArg
+    name: codon-list
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --rbs_pwm
+  description: "Read a position weight matrix (PWM) from <filename> to identify\n\
+    the ribosome binding site to help choose start sites"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --gc_percent
+  description: "Use <p> as GC percentage of independent model\nNote:  <p> should be\
+    \ a percentage, e.g., -C 45.2"
+  args: !SimpleFlagArg
+    name: p
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  - --entropy
+  description: "Read entropy profiles from <filename>.  Format is one header\nline,\
+    \ then 20 lines of 3 columns each.  Columns are amino acid,\npositive entropy,\
+    \ negative entropy.  Rows must be in order\nby amino acid code letter"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --first_codon
+  description: Use first codon in orf as start codon
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gene_len
+  description: Set minimum gene length to <n>
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --ignore
+  description: "<filename> specifies regions of bases that are off\nlimits, so that\
+    \ no bases within that area will be examined"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --linear
+  description: Assume linear rather than circular genome, i.e., no wraparound
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --orf_coords
+  description: "Use <filename> to specify a list of orfs that should\nbe scored separately,\
+    \ with no overlap rules"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --separate_genes
+  description: "<sequence-file> is a multifasta file of separate genes to\nbe scored\
+    \ separately, with no overlap rules"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --max_olap
+  description: "Set maximum overlap length to <n>.  Overlaps this short or shorter\n\
+    are ignored."
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --start_probs
+  description: "Specify probability of different start codons (same number & order\n\
+    as in -A option).  If no -A option, then 3 values for atg, gtg and ttg\nin that\
+    \ order.  Sample format:  -P 0.6,0.35,0.05\nIf -A is specified without -P, then\
+    \ starts are equally likely."
+  args: !SimpleFlagArg
+    name: number-list
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --ignore_score_len
+  description: "Do not use the initial score filter on any gene <n> or more\nbase\
+    \ long"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --no_indep
+  description: Don't use independent probability score column
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threshold
+  description: "Set threshold score for calling as gene to n.  If the in-frame\nscore\
+    \ >= <n>, then the region is given a number and considered\na potential gene."
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --extend
+  description: Allow orfs extending off ends of sequence to be scored
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --trans_table
+  description: Use Genbank translation table number <n> for stop codons
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -Z
+  - --stop_codons
+  description: "Use comma-separated list of codons as stop codons\nSample format:\
+    \  -Z tag,tga,taa\n"
+  args: !SimpleFlagArg
+    name: codon-list
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print this message
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Starting at Wed Sep  9 19:04:32 2020\n\nUSAGE:  glimmer3 [options] <sequence-file>\
@@ -62,3 +223,4 @@ help_text: "Starting at Wed Sep  9 19:04:32 2020\n\nUSAGE:  glimmer3 [options] <
   \ list of codons as stop codons\n    Sample format:  -Z tag,tga,taa\n\n"
 generated_using:
 - --help
+docker_image:

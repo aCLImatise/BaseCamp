@@ -2,7 +2,6 @@ version 1.0
 
 task SeqkitAmplicon {
   input {
-    Boolean? xy
     Boolean? y_invalid
     Boolean? xy_xyf_r
     Boolean? bed
@@ -26,7 +25,6 @@ task SeqkitAmplicon {
   }
   command <<<
     seqkit amplicon \
-      ~{if (xy) then "-5-3-1" else ""} \
       ~{if (y_invalid) then "-x" else ""} \
       ~{if (xy_xyf_r) then "-3-1" else ""} \
       ~{if (bed) then "--bed" else ""} \
@@ -48,8 +46,10 @@ task SeqkitAmplicon {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    xy: "x/y"
     y_invalid: ":y (invalid)"
     xy_xyf_r: "x/y\\n1 3 5    x/y\\nF             R"
     bed: "output in BED6+1 format with amplicon as 7th columns"

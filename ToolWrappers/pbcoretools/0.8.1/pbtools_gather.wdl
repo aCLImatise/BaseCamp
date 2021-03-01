@@ -22,6 +22,9 @@ task Pbtoolsgather {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (join_contigs) then "--join-contigs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_file: "Write the log to file. Default(None) will write to\\nstdout. (default: None)"
     log_level: "Set log level (default: INFO)"

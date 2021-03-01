@@ -3,42 +3,42 @@ id: rsat_sequence_lengths.cwl
 inputs:
 - id: in_help
   doc: (must be first argument) display options
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -help
 - id: in_verbose
   doc: verbose
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_specified_standard_input
   doc: "if not specified, the standard input is used.\nThis allows to place the command\
     \ within a pipe."
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_unit
   doc: "|kb|mb|gb\nUnits for sequence lengths.\nSupported units:\nbp        base pairs\n\
     kb        kilobases\nmb        megabases\ngb        gigabases"
-  type: string
+  type: string?
   inputBinding:
     prefix: -unit
 - id: in_in_format
   doc: "input format\nThe input file can contain either sequences or genomic\ncoordinates\
     \ (-in_format bed).\nFor a list of supported input sequences, type\nconvert-seq\
     \ -help"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -in_format
 - id: in_specified_standard_output
   doc: "If not specified, the standard output is used.\nThis allows to place the command\
     \ within a pipe."
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_sum
   doc: only return sum of sequene lengths
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -sum
 - id: in_sequence_lengths
@@ -58,9 +58,10 @@ outputs:
 - id: out_specified_standard_output
   doc: "If not specified, the standard output is used.\nThis allows to place the command\
     \ within a pipe."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_specified_standard_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

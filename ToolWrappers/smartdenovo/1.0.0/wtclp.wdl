@@ -12,7 +12,7 @@ task Wtclp {
     Boolean? trun_specical_reservation
     Int? bin_size
     Int? window_size_used
-    Int? min_number_reject
+    Int? min_number_solid
     Int? max_turns_iterations
     Boolean? treat_read_path
     Int? debug_chimera_checking
@@ -31,13 +31,16 @@ task Wtclp {
       ~{if (trun_specical_reservation) then "-C" else ""} \
       ~{if defined(bin_size) then ("-k " +  '"' + bin_size + '"') else ""} \
       ~{if defined(window_size_used) then ("-w " +  '"' + window_size_used + '"') else ""} \
-      ~{if defined(min_number_reject) then ("-d " +  '"' + min_number_reject + '"') else ""} \
+      ~{if defined(min_number_solid) then ("-d " +  '"' + min_number_solid + '"') else ""} \
       ~{if defined(max_turns_iterations) then ("-n " +  '"' + max_turns_iterations + '"') else ""} \
       ~{if (treat_read_path) then "-T" else ""} \
       ~{if defined(debug_chimera_checking) then ("-x " +  '"' + debug_chimera_checking + '"') else ""} \
       ~{if (verbose) then "-v" else ""} \
       ~{if defined(print_message_special) then ("-8 " +  '"' + print_message_special + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     overlap_file_readsttlentbegtendtreadsttlentbegtendtscoretidentityfloattmattmistinstdeltcigar: "Overlap file from wtzmo, +, *\\nFormat: reads1\\t+/-\\tlen1\\tbeg1\\tend1\\treads2\\t+/-\\tlen2\\tbeg2\\tend2\\tscore\\tidentity<float>\\tmat\\tmis\\tins\\tdel\\tcigar"
     long_reads_region: "Long reads retained region, often from wtobt/wtcyc, +\\nFormat: read_name\\toffset\\tlength\\toriginal_len"
@@ -49,7 +52,7 @@ task Wtclp {
     trun_specical_reservation: "Trun off specical reservation for reads contained by others\\nDefault: one read (A) will not be trimmed when it is contained by another read (B)."
     bin_size: "Bin size, [50]"
     window_size_used: "Window size used in chimera detection, [1000]"
-    min_number_reject: "Min number of solid overlaps in a suspecting region to reject chimeric, [3]"
+    min_number_solid: "Min number of solid overlaps in a suspecting region to reject chimeric, [3]"
     max_turns_iterations: "Max turns of iterations, [5]"
     treat_read_path: "Treat read as a path of many blocks broken by possible chimeric sites, and test whether the path is valid\\nwill disable iteration, connection checking"
     debug_chimera_checking: "For debug. 1: chimera checking; 2: conntection checking; 4: clip high error ending [7]"

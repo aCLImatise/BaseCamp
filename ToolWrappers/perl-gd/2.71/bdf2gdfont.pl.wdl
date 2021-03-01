@@ -16,6 +16,9 @@ task Bdf2gdfontpl {
       ~{gd} \
       ~{if (hlucidatypewriterboldrnormalsansmiso_) then "-B" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hlucidatypewriterboldrnormalsansmiso_: "&H-LucidaTypewriter-Bold-R-Normal-Sans-18-180-75-75-M-110-ISO8859-"
     gd_dot: "SYNOPSIS\\n% bdf2gdfont.pl courR12.bdf > courR12.fnt"

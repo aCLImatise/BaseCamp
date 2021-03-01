@@ -12,6 +12,9 @@ task AugustusToProteindbrb {
       ~{if defined(explicitly_named_output) then ("--output " +  '"' + explicitly_named_output + '"') else ""} \
       ~{if (info) then "--info" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicitly_named_output: "An explicitly named output file. \\"
     info: "Include CDS Coordinates [false]"

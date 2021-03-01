@@ -10,6 +10,9 @@ task AnviscriptgenStatsForSingleCopyGenespy {
       ~{if (list_sources) then "--list-sources" else ""} \
       ~{if defined(source) then ("--source " +  '"' + source + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_sources: "Show available single-copy gene search results and exit."
     source: "Source to focus on. If none declared, all single-copy gene\\nsources are going to be listed.\\n"

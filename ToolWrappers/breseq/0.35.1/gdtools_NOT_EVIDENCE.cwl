@@ -3,17 +3,17 @@ id: gdtools_NOT_EVIDENCE.cwl
 inputs:
 - id: in_output
   doc: output GD file (DEFAULT=output.gd)
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_id
   doc: Reorder IDs (Flag)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --id
 - id: in_verbose
   doc: Verbose Mode (Flag)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: output GD file (DEFAULT=output.gd)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gdtools

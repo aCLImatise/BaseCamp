@@ -12,6 +12,9 @@ task AssemblyticsDeltaOutputPrefix {
       ~{min_size} \
       ~{max_size}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     unique_length_required: ""
     min_size: ""

@@ -3,17 +3,17 @@ id: pipits_uc2otutable.cwl
 inputs:
 - id: in_i
   doc: '[REQUIRED]'
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_o
   doc: '[REQUIRED]'
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_l
   doc: '[REQUIRED]'
-  type: string
+  type: string?
   inputBinding:
     prefix: -l
 - id: in_reads
@@ -65,6 +65,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pipits_uc2otutable

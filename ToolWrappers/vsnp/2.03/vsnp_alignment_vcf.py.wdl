@@ -20,6 +20,9 @@ task VsnpAlignmentVcfpy {
       ~{if defined(gbk) then ("--gbk " +  '"' + gbk + '"') else ""} \
       ~{if (skip_assembly) then "--skip_assembly" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_one: "Required: single read, R1 when Illumina read"
     read_two: "Optional: R2 Illumina read"

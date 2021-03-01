@@ -3,27 +3,27 @@ id: PePr_postprocess.cwl
 inputs:
 - id: in_peak
   doc: peak file
-  type: File
+  type: File?
   inputBinding:
     prefix: --peak
 - id: in_chip
   doc: chip files separated by comma
-  type: string
+  type: string?
   inputBinding:
     prefix: --chip
 - id: in_input
   doc: input files separated by comma
-  type: string
+  type: string?
   inputBinding:
     prefix: --input
 - id: in_file_type
   doc: read file types. bed, sam, bam
-  type: File
+  type: File?
   inputBinding:
     prefix: --file-type
 - id: in_remove_artefacts
   doc: remove peaks that may be caused by excess PCR
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --remove-artefacts
 - id: in_duplicates
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - PePr-postprocess

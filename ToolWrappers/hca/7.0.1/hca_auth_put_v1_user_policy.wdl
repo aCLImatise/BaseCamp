@@ -10,6 +10,9 @@ task HcaAuthPutv1userpolicy {
       ~{if defined(user_id) then ("--user-id " +  '"' + user_id + '"') else ""} \
       ~{if defined(policy) then ("--policy " +  '"' + policy + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     user_id: "User ID (email)."
     policy: ""

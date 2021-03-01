@@ -18,6 +18,9 @@ task Abbababa {
       ~{if (support) then "-Support" else ""} \
       ~{if (contribution) then "-Contribution" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree: ",B,C,D"
     version: ": v1.0.0-rc0-349-g45c6-dirty"

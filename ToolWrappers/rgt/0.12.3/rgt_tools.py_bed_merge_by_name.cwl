@@ -3,17 +3,17 @@ id: rgt_tools.py_bed_merge_by_name.cwl
 inputs:
 - id: in_input_bed_file
   doc: Input BED file
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_output_bed_file
   doc: Output BED file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_bed_format
   doc: BED12 format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_bed_file
   doc: Output BED file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_bed_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rgt-tools.py

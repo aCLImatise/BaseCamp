@@ -1,11 +1,6 @@
 class: CommandLineTool
 id: gcloud_auth_application_default.cwl
 inputs:
-- id: in_i_am_account
-  doc: "$ export GOOGLE_APPLICATION_CREDENTIALS=key.json\n$ ./my_application.sh"
-  type: string
-  inputBinding:
-    prefix: --iam-account
 - id: in_credentials
   doc: SYNOPSIS
   type: string
@@ -25,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

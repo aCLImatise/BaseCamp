@@ -1,0 +1,72 @@
+!Command
+command:
+- read_duplication.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-file
+  description: Alignment file in BAM or SAM format.
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-prefix
+  description: Prefix of output files(s).
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --up-limit
+  description: "Upper limit of reads' occurrence. Only used for\nplotting, default=500\
+    \ (times)"
+  args: !SimpleFlagArg
+    name: UPPER_LIMIT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --mapq
+  description: "Minimum mapping quality (phred scaled) for an\nalignment to be considered\
+    \ as \"uniquely mapped\".\ndefault=30\n"
+  args: !SimpleFlagArg
+    name: MAP_QUAL
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: read_duplication.py [options]\n\nCalculte reads' duplication rate.\
+  \ \nSequence-based: Reads with identical sequence are considered as \"duplicate\
+  \ reads\".\nMapping-based: Reads mapped to the exact same location are considered\
+  \ as \"duplicate reads\".\n\n\n\nOptions:\n  --version             show program's\
+  \ version number and exit\n  -h, --help            show this help message and exit\n\
+  \  -i INPUT_FILE, --input-file=INPUT_FILE\n                        Alignment file\
+  \ in BAM or SAM format.\n  -o OUTPUT_PREFIX, --out-prefix=OUTPUT_PREFIX\n      \
+  \                  Prefix of output files(s).\n  -u UPPER_LIMIT, --up-limit=UPPER_LIMIT\n\
+  \                        Upper limit of reads' occurrence. Only used for\n     \
+  \                   plotting, default=500 (times)\n  -q MAP_QUAL, --mapq=MAP_QUAL\n\
+  \                        Minimum mapping quality (phred scaled) for an\n       \
+  \                 alignment to be considered as \"uniquely mapped\".\n         \
+  \               default=30\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rseqc:4.0.0--py38h0213d0e_0

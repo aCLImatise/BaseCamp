@@ -1,0 +1,77 @@
+!Command
+command:
+- megalodon_extras
+- modified_bases
+- create_ground_truth
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ground_truth_modifications.csv
+  description: --strand-offset STRAND_OFFSET
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --bed-methyl-files
+  description: Bed methyl files.
+  args: !RepeatFlagArg
+    name: BED_METHYL_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --coverage-threshold
+  description: "Only include sites with sufficient coverage. Default:\n1 (= All sites)"
+  args: !SimpleFlagArg
+    name: COVERAGE_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --pct-mod-thresholds
+  description: "PCT_MOD_THRESHOLDS\nLower and upper percent modified thresholds for\
+    \ ground\ntruth modified positions. Default: [10.0, 90.0]"
+  args: !SimpleFlagArg
+    name: PCT_MOD_THRESHOLDS
+- !Flag
+  optional: true
+  synonyms:
+  - --out-csv
+  description: 'Output filename for ground truth calls. Default:'
+  args: !SimpleFlagArg
+    name: OUT_CSV
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: megalodon_extras modified_bases create_ground_truth [-h]\n    \
+  \                                                       --bed-methyl-files\n   \
+  \                                                        BED_METHYL_FILES\n    \
+  \                                                       [BED_METHYL_FILES ...]\n\
+  \                                                           [--coverage-threshold\
+  \ COVERAGE_THRESHOLD]\n                                                        \
+  \   [--pct-mod-thresholds PCT_MOD_THRESHOLDS PCT_MOD_THRESHOLDS]\n             \
+  \                                              [--out-csv OUT_CSV]\n           \
+  \                                                [--strand-offset STRAND_OFFSET]\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --bed-methyl-files BED_METHYL_FILES [BED_METHYL_FILES ...]\n                \
+  \        Bed methyl files.\n  --coverage-threshold COVERAGE_THRESHOLD\n        \
+  \                Only include sites with sufficient coverage. Default:\n       \
+  \                 1 (= All sites)\n  --pct-mod-thresholds PCT_MOD_THRESHOLDS PCT_MOD_THRESHOLDS\n\
+  \                        Lower and upper percent modified thresholds for ground\n\
+  \                        truth modified positions. Default: [10.0, 90.0]\n  --out-csv\
+  \ OUT_CSV     Output filename for ground truth calls. Default:\n               \
+  \         ground_truth_modifications.csv\n  --strand-offset STRAND_OFFSET\n    \
+  \                    Offset to combine stranded results. Positive value\n      \
+  \                  indicates reverse strand sites have higher position\n       \
+  \                 values. Default treat strands independently.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/megalodon:2.2.10--py38h0213d0e_0

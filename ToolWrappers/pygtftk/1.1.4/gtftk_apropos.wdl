@@ -26,6 +26,9 @@ task GtftkApropos {
       ~{if (logger_file) then "--logger-file" else ""} \
       ~{if (write_message_to_file) then "--write-message-to-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keyword: "The keyword (default: None)"
     notes: "Look also for the keywords in notes associated to each command. (default: False)"

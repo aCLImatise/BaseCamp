@@ -28,6 +28,9 @@ task ParaNode {
       ~{if defined(random_delay) then ("-randomDelay " +  '"' + random_delay + '"') else ""} \
       ~{if defined(cpu) then ("-cpu " +  '"' + cpu + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_facility: "Log to the specified syslog facility - default local0."
     log_min_priority: "minimum syslog priority to log, also filters file logging.\\ndefaults to \\\"warn\\\""

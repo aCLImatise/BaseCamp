@@ -5,7 +5,7 @@ task Hhmake {
     File? query_alignment_am
     File? hmm_file_written
     File? hmm_file_appended
-    Int? verbose_mode_output
+    Int? verbose_mode_screen
     Int? seq
     Boolean? add_cons
     String? name
@@ -33,7 +33,7 @@ task Hhmake {
       ~{if defined(query_alignment_am) then ("-i " +  '"' + query_alignment_am + '"') else ""} \
       ~{if defined(hmm_file_written) then ("-o " +  '"' + hmm_file_written + '"') else ""} \
       ~{if defined(hmm_file_appended) then ("-a " +  '"' + hmm_file_appended + '"') else ""} \
-      ~{if defined(verbose_mode_output) then ("-v " +  '"' + verbose_mode_output + '"') else ""} \
+      ~{if defined(verbose_mode_screen) then ("-v " +  '"' + verbose_mode_screen + '"') else ""} \
       ~{if defined(seq) then ("-seq " +  '"' + seq + '"') else ""} \
       ~{if (add_cons) then "-add_cons" else ""} \
       ~{if defined(name) then ("-name " +  '"' + name + '"') else ""} \
@@ -56,11 +56,14 @@ task Hhmake {
       ~{if defined(max_seq) then ("-maxseq " +  '"' + max_seq + '"') else ""} \
       ~{if defined(max_res) then ("-maxres " +  '"' + max_res + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query_alignment_am: "query alignment (A2M, A3M, or FASTA), or query HMM"
     hmm_file_written: "HMM file to be written to  (default=<infile.hhm>)"
     hmm_file_appended: "HMM file to be appended to"
-    verbose_mode_output: "verbose mode: 0:no screen output  1:only warings  2: verbose"
+    verbose_mode_screen: "verbose mode: 0:no screen output  1:only warings  2: verbose"
     seq: "max. number of query/template sequences displayed (def=10)\\nBeware of overflows! All these sequences are stored in memory."
     add_cons: "make consensus sequence master sequence of query MSA"
     name: "use this name for HMM (default: use name of first sequence)"

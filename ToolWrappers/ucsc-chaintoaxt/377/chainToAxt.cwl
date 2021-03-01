@@ -3,27 +3,27 @@ id: chainToAxt.cwl
 inputs:
 - id: in_max_gap
   doc: gap sized allowed without breaking, default 100
-  type: long
+  type: long?
   inputBinding:
     prefix: -maxGap
 - id: in_max_chain
   doc: chain size allowed without breaking, default 1073741823
-  type: long
+  type: long?
   inputBinding:
     prefix: -maxChain
 - id: in_min_score
   doc: score of chain
-  type: string
+  type: string?
   inputBinding:
     prefix: -minScore
 - id: in_mini_d
   doc: percentage ID within blocks
-  type: string
+  type: string?
   inputBinding:
     prefix: -minId
 - id: in_bed
   doc: Output bed instead of axt
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bed
 - id: in_in_dot_chain
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - chainToAxt

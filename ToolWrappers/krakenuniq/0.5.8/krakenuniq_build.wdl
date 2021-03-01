@@ -60,6 +60,9 @@ task Krakenuniqbuild {
       ~{if (lca_database) then "--lca-database" else ""} \
       ~{if (no_lca_database) then "--no-lca-database" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     download_taxonomy: "Download NCBI taxonomic information"
     download_library: "Download partial library (TYPE = one of \\\"refseq/bacteria\\\", \\\"refseq/archaea\\\", \\\"refseq/viral\\\").\\nUse krakenuniq-download for more options."

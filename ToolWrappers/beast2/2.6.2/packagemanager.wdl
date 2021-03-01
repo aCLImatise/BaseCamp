@@ -22,13 +22,16 @@ task Packagemanager {
       ~{if defined(update) then ("-update " +  '"' + update + '"') else ""} \
       ~{if defined(update_now) then ("-updatenow " +  '"' + update_now + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list: "available packages"
     add: "the <NAME> package"
     del: "the <NAME> package"
     version: "package version"
     use_app_dir: "application (system wide) installation directory. Note this requires writing rights to the application directory. If not specified, the user's BEAST directory will be used."
-    dir: "package in directory <DIR>. This overrides the useAppDir option"
+    dir: "/uninstall package in directory <DIR>. This overrides the useAppDir option"
     update: "for updates, and ask to install if available"
     update_now: "for updates and install without asking"
   }

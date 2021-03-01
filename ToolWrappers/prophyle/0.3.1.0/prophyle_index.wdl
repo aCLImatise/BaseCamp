@@ -8,7 +8,7 @@ task ProphyleIndex {
     File? log_file
     Float? rate_sampling_tree
     Boolean? rewrite_index_files
-    Boolean? mask_repeatslow_complexity
+    Boolean? mask_repeatslow_regions
     Boolean? add_prefixes_node
     Boolean? skip_klcp_construction
     Boolean? keep_temporary_files
@@ -23,13 +23,16 @@ task ProphyleIndex {
       ~{if defined(log_file) then ("-l " +  '"' + log_file + '"') else ""} \
       ~{if defined(rate_sampling_tree) then ("-s " +  '"' + rate_sampling_tree + '"') else ""} \
       ~{if (rewrite_index_files) then "-F" else ""} \
-      ~{if (mask_repeatslow_complexity) then "-M" else ""} \
+      ~{if (mask_repeatslow_regions) then "-M" else ""} \
       ~{if (add_prefixes_node) then "-P" else ""} \
       ~{if (skip_klcp_construction) then "-K" else ""} \
       ~{if (keep_temporary_files) then "-T" else ""} \
       ~{if (autocomplete_tree_names) then "-A" else ""} \
       ~{if (advanced_configuration_json) then "-c" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_library_sequences: "directory with the library sequences [dir. of the first\\ntree]"
     number_of_threads: "number of threads [auto (8)]"
@@ -37,7 +40,7 @@ task ProphyleIndex {
     log_file: "log file [<index.dir>/log.txt]"
     rate_sampling_tree: "rate of sampling of the tree [no sampling]"
     rewrite_index_files: "rewrite index files if they already exist"
-    mask_repeatslow_complexity: "mask repeats/low complexity regions (using DustMasker)"
+    mask_repeatslow_regions: "mask repeats/low complexity regions (using DustMasker)"
     add_prefixes_node: "do not add prefixes to node names when multiple trees\\nare used"
     skip_klcp_construction: "skip k-LCP construction (then restarted search only)"
     keep_temporary_files: "keep temporary files from k-mer propagation"

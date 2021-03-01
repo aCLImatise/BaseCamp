@@ -3,30 +3,30 @@ id: ribo_sim.cwl
 inputs:
 - id: in_output
   doc: 'output directory; default: /'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 - id: in_verbosity
   doc: "Logger writes debug to file in output dir; this sets\nverbosity level sent\
     \ to stderr. 1 = debug(), 2 =\ninfo(), 3 = warning(), 4 = error() and 5 = critical();\n\
     default: 2"
-  type: File
+  type: File?
   inputBinding:
     prefix: --verbosity
 - id: in_frequency
   doc: 'Probability of mutated basesdefault: 0.01'
-  type: double
+  type: double?
   inputBinding:
     prefix: --frequency
 - id: in_end_length
   doc: "if value given, only mutated the ends of the sequences\nand ignore the middledefault:\
     \ None"
-  type: long
+  type: long?
   inputBinding:
     prefix: --end_length
 - id: in_seed
   doc: 'cause reproduciblity; default: None'
-  type: string
+  type: string?
   inputBinding:
     prefix: --seed
 - id: in_mutated
@@ -40,16 +40,17 @@ outputs:
   type: stdout
 - id: out_output
   doc: 'output directory; default: /'
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output)
 - id: out_verbosity
   doc: "Logger writes debug to file in output dir; this sets\nverbosity level sent\
     \ to stderr. 1 = debug(), 2 =\ninfo(), 3 = warning(), 4 = error() and 5 = critical();\n\
     default: 2"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_verbosity)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ribo

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Boolean
+
+Chakin_Feature_Load_Gff_V0_1_0 = CommandToolBuilder(tool="chakin_feature_load_gff", base_command=["chakin", "feature", "load_gff"], inputs=[ToolInput(tag="in_landmark_type", input_type=String(optional=True), prefix="--landmark_type", doc=InputDocumentation(doc="Type of the landmarks (will speed up loading if\nprovided, e.g. contig, should be a term of the\nSequence ontology)")), ToolInput(tag="in_re_protein", input_type=String(optional=True), prefix="--re_protein", doc=InputDocumentation(doc="Replacement string for the protein name using\ncapturing groups defined by --re_protein_capture")), ToolInput(tag="in_re_protein_capture", input_type=String(optional=True), prefix="--re_protein_capture", doc=InputDocumentation(doc="Regular expression to capture groups in mRNA name\nto use in --re_protein (e.g. '^(.*?)-R([A-Z]+)$',\ndefault='^(.*?)$')  [default: ^(.*?)$]")), ToolInput(tag="in_fast_a", input_type=File(optional=True), prefix="--fasta", doc=InputDocumentation(doc="Path to a Fasta containing sequences for some\nfeatures. When creating a feature, if its\nsequence is in this fasta file it will be loaded.\nOtherwise for mRNA and polypeptides it will be\ncomputed from the genome sequence (if available),\notherwise it will be left empty.")), ToolInput(tag="in_no_seq_compute", input_type=Boolean(optional=True), prefix="--no_seq_compute", doc=InputDocumentation(doc="Disable the computation of mRNA and polypeptides\nsequences based on genome sequence and positions.")), ToolInput(tag="in_quiet", input_type=Boolean(optional=True), prefix="--quiet", doc=InputDocumentation(doc="Hide progress information")), ToolInput(tag="in_add_only", input_type=Boolean(optional=True), prefix="--add_only", doc=InputDocumentation(doc="Use this flag if you're not updating existing\nfeatures, but just adding new features to the\nselected analysis and organism. It will speedup\nloading, and reduce memory usage, but might\nproduce errors in case of already existing\nfeature.")), ToolInput(tag="in_protein_id_attr", input_type=String(optional=True), prefix="--protein_id_attr", doc=InputDocumentation(doc="Attribute containing the protein uniquename. It\nis searched at the mRNA level, and if not found\nat CDS level.")), ToolInput(tag="in_none", input_type=String(), position=0, doc=InputDocumentation(doc="Options:"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Chakin_Feature_Load_Gff_V0_1_0().translate("wdl", allow_empty_container=True)
+

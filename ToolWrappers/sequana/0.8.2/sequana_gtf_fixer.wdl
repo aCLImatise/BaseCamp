@@ -18,6 +18,9 @@ task SequanaGtfFixer {
       ~{if defined(input_gtf_file) then ("--input " +  '"' + input_gtf_file + '"') else ""} \
       ~{if defined(output_gtf_file) then ("--output " +  '"' + output_gtf_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_gtf_file: "input GTF file"
     output_gtf_file: "output GTF file"

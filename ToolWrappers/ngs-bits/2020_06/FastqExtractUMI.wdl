@@ -22,6 +22,9 @@ task FastqExtractUMI {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_one: "Input FASTQ file 1."
     in_two: "Input FASTQ file 2."

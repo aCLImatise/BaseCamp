@@ -12,6 +12,9 @@ task MBICseq {
       ~{if defined(penalty_lambda_mbicseq) then ("-l " +  '"' + penalty_lambda_mbicseq + '"') else ""} \
       ~{if (rm) then "--rm" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_name: ": the input file name; default stdin"
     penalty_lambda_mbicseq: ": the penalty lambda of MBIC-seq; default 1.2"

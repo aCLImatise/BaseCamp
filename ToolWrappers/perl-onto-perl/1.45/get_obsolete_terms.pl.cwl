@@ -3,7 +3,7 @@ id: get_obsolete_terms.pl.cwl
 inputs:
 - id: in_obo_input_file
   doc: OBO input file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_usage
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - get_obsolete_terms.pl

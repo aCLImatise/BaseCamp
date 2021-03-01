@@ -3,32 +3,32 @@ id: isoseq3_polish.cwl
 inputs:
 - id: in_rq_cut_off
   doc: FLOAT  RQ cutoff for fastx output. [0.99]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rq-cutoff
 - id: in_coverage
   doc: INT    Maximum number of subreads used for polishing. [60]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --coverage
 - id: in_num_threads
   doc: INT    Number of threads to use, 0 means autodetection. [0]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --num-threads
 - id: in_log_level
   doc: 'STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --log-level
 - id: in_log_file
   doc: FILE   Log to a file, instead of stderr.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --log-file
 - id: in_verbose
   doc: Use verbose output.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_iso_seq
@@ -110,6 +110,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - isoseq3

@@ -8,6 +8,9 @@ task Mafcut {
     maf_cut \
       ~{chr_n}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chr_n: ""
   }

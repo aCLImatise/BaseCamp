@@ -30,6 +30,9 @@ task RiboSpec {
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if (make_adjacency_matrix) then "--MAKE_ADJACENCY_MATRIX" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_directory_default: "output directory; default: None"
     assembly_graph: "fastg assembly graph from SPAdes or a SPAdes output\\ndirectory. If the latter, riboSpec will be run on both\\nthe final assembly graph, and all the intermediate\\ngraphs for each k-mer."

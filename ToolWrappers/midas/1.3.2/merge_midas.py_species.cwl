@@ -1,32 +1,32 @@
 class: CommandLineTool
 id: merge_midas.py_species.cwl
 inputs:
-- id: in_input_sample_output
+- id: in_input_sample_directories
   doc: Input to sample directories output by run_midas.py; see '-t' for details
-  type: string
+  type: string?
   inputBinding:
     prefix: -i
-- id: in_specify_one_followinglist
+- id: in_specify_one_ex
   doc: "Specify one of the following:\nlist: -i is a comma-separated list (ex: /samples/sample_1,/samples/sample_2)\n\
     dir: -i is a directory containing all samples (ex: /samples)\nfile: -i is a file\
     \ of paths to samples (ex: /sample_paths.txt)"
-  type: File
+  type: File?
   inputBinding:
     prefix: -t
-- id: in_path_reference_default
+- id: in_path_reference_databaseby
   doc: "Path to reference database\nBy default the MIDAS_DB environmental variable\
     \ is used"
-  type: File
+  type: File?
   inputBinding:
     prefix: -d
 - id: in_sample_depth
   doc: Minimum per-sample marker-gene-depth for estimating species prevalence (1.0)
-  type: double
+  type: double?
   inputBinding:
     prefix: --sample_depth
 - id: in_max_samples
   doc: "Maximum number of samples to process.\nUseful for testing (use all)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_samples
 - id: in_outdir
@@ -38,6 +38,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - merge_midas.py

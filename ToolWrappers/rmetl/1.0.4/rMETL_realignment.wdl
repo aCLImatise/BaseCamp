@@ -22,6 +22,9 @@ task RMETLRealignment {
       ~{if defined(sub_read_length) then ("--subread_length " +  '"' + sub_read_length + '"') else ""} \
       ~{if defined(sub_read_corridor) then ("--subread_corridor " +  '"' + sub_read_corridor + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads to use.[8]"
     presets: "The sequencing platform <pacbio,ont> of the\\nreads.[pacbio]"

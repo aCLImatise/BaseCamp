@@ -20,6 +20,9 @@ task OboxplotsR {
       ~{if defined(remove_outliers) then ("--remove_outliers " +  '"' + remove_outliers + '"') else ""} \
       ~{if defined(pdf_height) then ("--pdf_height " +  '"' + pdf_height + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mapping_var: "Mapping variable to use from the sample mapping file. If none specified, the first column is used."
     output_directory: "Output directory to store images [default \\\".\\\"]"

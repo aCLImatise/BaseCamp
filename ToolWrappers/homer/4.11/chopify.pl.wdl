@@ -8,6 +8,9 @@ task Chopifypl {
     chopify_pl \
       ~{peak_slash_bed_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     peak_slash_bed_file: ""
   }

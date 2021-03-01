@@ -10,6 +10,9 @@ task Rampler {
       ~{sequences} \
       ~{if (out_directory) then "--out-directory" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_directory: "default: current directory\\npath in which sampled files will be created"
     sequences: "split <sequences> <chunk size>"

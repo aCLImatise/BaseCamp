@@ -10,6 +10,9 @@ task RnftoolsEs2et {
       ~{if defined(es) then ("--es " +  '"' + es + '"') else ""} \
       ~{if defined(et) then ("--et " +  '"' + et + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     es: "Input ES file (evaluated segments, - for standard\\ninput)."
     et: "Output ET file (evaluated read tuples, - for standard\\noutput).\\n"

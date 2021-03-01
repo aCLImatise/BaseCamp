@@ -5,98 +5,98 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Path to directory containing *.fasta files for\ninput to the core\
-    \ pipeline  [required]"
+  optional: true
   synonyms:
   - -f
   - --fasta-dir
+  description: "Path to directory containing *.fasta files for\ninput to the core\
+    \ pipeline  [required]"
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outdir
   description: "Root directory to store all output files. If\nthis directory already\
     \ exists, the pipeline\nwill attempt to skip the Prokka step by reading\nin the\
     \ existing Prokka output directory, but\nwill overwrite all other existing result\
     \ files.\n[required]"
-  synonyms:
-  - -o
-  - --outdir
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "Number of CPUs to dedicate to parallelizable\nsteps of the pipeline.\
-    \ Will take all available\nCPUs - 1 by default."
+  optional: true
   synonyms:
   - -n
   - --n-cpu
+  description: "Number of CPUs to dedicate to parallelizable\nsteps of the pipeline.\
+    \ Will take all available\nCPUs - 1 by default."
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Number of CPUs for the representative medoid\npicking step (if enabled).\
-    \ You will need\nsubstantial RAM per CPU."
+  optional: true
   synonyms:
   - --n-cpu-medoid
+  description: "Number of CPUs for the representative medoid\npicking step (if enabled).\
+    \ You will need\nsubstantial RAM per CPU."
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "Sets the mmseqs cluster parameter \"--min-seq-\nid\". Defaults to\
-    \ 0.95."
+  optional: true
   synonyms:
   - -m
   - --min-seq-id
+  description: "Sets the mmseqs cluster parameter \"--min-seq-\nid\". Defaults to\
+    \ 0.95."
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Sets the mmseqs cluster coverage parameter \"-c\"\ndirectly. Defaults\
-    \ to 0.95, which is the\nrecommended setting."
+  optional: true
   synonyms:
   - -c
   - --coverage-length
+  description: "Sets the mmseqs cluster coverage parameter \"-c\"\ndirectly. Defaults\
+    \ to 0.95, which is the\nrecommended setting."
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --medoid-repseqs
   description: "This setting will identify the representative\nmedoid nucleotide sequence\
     \ for each core\ncluster. Enabling this will increase\ncomputation time considerably.\
     \ Note that this\nparameter has no effect on the number of core\nclusters detected."
-  synonyms:
-  - --medoid-repseqs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Generate pairwise comparisons of all core\ngenomes. This setting allows\
-    \ for viewing an\ninteractive network chart which visualizes core\ngenome relatedness."
+  optional: true
   synonyms:
   - --pairwise
+  description: "Generate pairwise comparisons of all core\ngenomes. This setting allows\
+    \ for viewing an\ninteractive network chart which visualizes core\ngenome relatedness."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Set this flag to enable more verbose logging.
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: Set this flag to enable more verbose logging.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Use this flag to print the version and exit.
+  optional: true
   synonyms:
   - --version
+  description: Use this flag to print the version and exit.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: centreseq core [OPTIONS]\n\n  Given an input directory containing\
   \ any number of assemblies (.fasta),\n  centreseq core will 1) annotate the genomes\
   \ with Prokka, 2) perform self-\n  clustering on each genome with MMSeqs2 linclust,\
@@ -135,3 +135,4 @@ help_text: "Usage: centreseq core [OPTIONS]\n\n  Given an input directory contai
   \ --help                       Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

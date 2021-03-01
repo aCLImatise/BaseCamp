@@ -4,6 +4,9 @@ task ExtractCoding {
   command <<<
     extractCoding
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -3,47 +3,50 @@ command:
 - hicBuildMatrix
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: sam
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: files
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: two
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "sam files two sam files, -s two sam files two sam files\nThe two PE\
-    \ alignment sam files to process (default:\nNone)"
+  optional: true
   synonyms:
   - --samFiles
+  description: "sam files two sam files, -s two sam files two sam files\nThe two PE\
+    \ alignment sam files to process (default:\nNone)"
   args: !SimpleFlagArg
     name: two
-  optional: true
 - !Flag
-  description: 'Output file name for the Hi-C matrix. (default: None)'
+  optional: true
   synonyms:
   - --outFileName
   - -o
+  description: 'Output file name for the Hi-C matrix. (default: None)'
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --QCfolder
   description: "Path of folder to save the quality control data for\nthe matrix. The\
     \ log files produced this way can be\nloaded into `hicQC` in order to compare\
     \ the quality of\nmultiple Hi-C libraries. (default: None)"
-  synonyms:
-  - --QCfolder
   args: !SimpleFlagArg
     name: FOLDER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --restrictionCutFile
   description: "file [BED file ...], -rs BED file [BED file ...]\nBED file(s) with\
     \ all restriction cut places (output of\n\"findRestSite\" command). Should contain\
     \ only mappable\nrestriction sites. If given, the bins are set to match\nthe restriction\
@@ -51,22 +54,22 @@ named:
     \ a fixed\nbinSize can be defined instead. However, either\nbinSize or restrictionCutFile\
     \ must be defined. To use\nmore than one restriction enzyme, generate for each\n\
     one a restrictionCutFile and list them space\nseperated. (default: None)"
-  synonyms:
-  - --restrictionCutFile
   args: !SimpleFlagArg
     name: BED
-  optional: true
 - !Flag
-  description: "Sequence of the restriction site, if multiple are\nused, please list\
-    \ them space seperated. If a dangling\nsequence is listed at the same time, please\
-    \ preserve\nthe same order. (default: None)"
+  optional: true
   synonyms:
   - --restrictionSequence
   - -seq
+  description: "Sequence of the restriction site, if multiple are\nused, please list\
+    \ them space seperated. If a dangling\nsequence is listed at the same time, please\
+    \ preserve\nthe same order. (default: None)"
   args: !RepeatFlagArg
     name: RESTRICTIONSEQUENCE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --danglingSequence
   description: "Sequence left by the restriction enzyme after cutting,\nif multiple\
     \ are used, please list them space seperated\nand preserve the order. Each restriction\
     \ enzyme\nrecognizes a different DNA sequence and, after\ncutting, they leave\
@@ -78,24 +81,25 @@ named:
     \ sequence as\ndangling-end reads. A significant portion of dangling-\nend reads\
     \ in a sample are indicative of a problem with\nthe re-ligation step of the protocol.\
     \ (default: None)"
-  synonyms:
-  - --danglingSequence
   args: !RepeatFlagArg
     name: DANGLINGSEQUENCE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outBam
   description: "file, -b bam file\nOutput bam file to process. Optional parameter.\
     \ A bam\nfile containing all valid Hi-C reads can be created\nusing this option.\
     \ This bam file could be useful to\ninspect the distribution of valid Hi-C reads\
     \ pairs or\nfor other downstream analyses, but is not used by any\nHiCExplorer\
     \ tool. Computation will be significantly\nlonger if this option is set. (default:\
     \ None)"
-  synonyms:
-  - --outBam
   args: !SimpleFlagArg
     name: bam
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --binSize
+  - -bs
   description: "Size in bp for the bins. The bin size depends on the\ndepth of sequencing.\
     \ Use a larger bin size for\nlibraries sequenced with lower depth. Alternatively,\n\
     the location of the restriction sites can be given\n(see --restrictionCutFile).\
@@ -103,30 +107,29 @@ named:
     \ mcool\nfile format: Define multiple resolutions which are all\na multiple of\
     \ the first value. Example: --binSize\n10000 20000 50000 will create a mcool file\
     \ formate\ncontaining the three defined resolutions. (default:\nNone)"
-  synonyms:
-  - --binSize
-  - -bs
   args: !RepeatFlagArg
     name: BINSIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --minDistance
   description: "Minimum distance between restriction sites.\nRestriction sites that\
     \ are closer than this distance\nare merged into one. This option only applies\
     \ if\n--restrictionCutFile is given. (default: 300)"
-  synonyms:
-  - --minDistance
   args: !SimpleFlagArg
     name: MINDISTANCE
-  optional: true
 - !Flag
-  description: "This parameter is now obsolete. Use\n--maxLibraryInsertSize instead\
-    \ (default: None)"
+  optional: true
   synonyms:
   - --maxDistance
+  description: "This parameter is now obsolete. Use\n--maxLibraryInsertSize instead\
+    \ (default: None)"
   args: !SimpleFlagArg
     name: MAXDISTANCE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxLibraryInsertSize
   description: "The maximum library insert size defines different cut\noffs based\
     \ on the maximum expected library size. *This\nis not the average fragment size*\
     \ but the higher end\nof the the fragment size distribution (obtained using\n\
@@ -135,48 +138,48 @@ named:
     \ value\nis used to decide if two mates belong to the same\nfragment (by checking\
     \ if they are within this max\ninsert size) and to decide if a mate is too far\
     \ away\nfrom the nearest restriction site. (default: 1000)"
-  synonyms:
-  - --maxLibraryInsertSize
   args: !SimpleFlagArg
     name: MAXLIBRARYINSERTSIZE
-  optional: true
 - !Flag
-  description: "The genome the reads were mapped to. Used for metadata\nof cool file.\
-    \ (default: None)"
+  optional: true
   synonyms:
   - --genomeAssembly
   - -ga
+  description: "The genome the reads were mapped to. Used for metadata\nof cool file.\
+    \ (default: None)"
   args: !SimpleFlagArg
     name: GENOMEASSEMBLY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --region
   description: ":START-END, -r CHR:START-END\nRegion of the genome to limit the operation\
     \ to. The\nformat is chr:start-end. It is also possible to just\nspecify a chromosome,\
     \ for example --region chr10\n(default: None)"
-  synonyms:
-  - --region
   args: !SimpleFlagArg
     name: CHR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --removeSelfLigation
   description: "If set, inward facing reads less than 1000 bp apart\nand having a\
     \ restrictionsite in between are removed.\nAlthough this reads do not contribute\
     \ to any distant\ncontact, they are useful to account for bias in the\ndata. (default:\
     \ True)"
-  synonyms:
-  - --removeSelfLigation
   args: !SimpleFlagArg
     name: REMOVESELFLIGATION
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --keepSelfCircles
   description: "If set, outward facing reads without any restriction\nfragment (self\
     \ circles) are kept. They will be counted\nand shown in the QC plots. (default:\
     \ False)"
-  synonyms:
-  - --keepSelfCircles
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --minMappingQuality
   description: "minimum mapping quality for reads to be accepted.\nBecause the restriction\
     \ enzyme site could be located\non top of the read, this may reduce the reported\n\
     quality of the read. Thus, this parameter may be\nadjusted if too many low quality\
@@ -185,12 +188,12 @@ named:
     \ too many low quality\nreads are present and then using the bam file\ngenerated\
     \ to check if those low quality reads are\ncaused by the read not being mapped\
     \ entirely.\n(default: 15)"
-  synonyms:
-  - --minMappingQuality
   args: !SimpleFlagArg
     name: MINMAPPINGQUALITY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --threads
   description: "Number of threads. Using the python multiprocessing\nmodule. One master\
     \ process which is used to read the\ninput file into the buffer and one process\
     \ which is\nmerging the output bam files of the processes into one\noutput bam\
@@ -202,46 +205,46 @@ named:
     \ with\na higher thread number is not negative influenced but\nnot positive too.\
     \ With a slow HDD and a high number of\nthreads many threads will do nothing most\
     \ of the time.\n(default: 4)"
-  synonyms:
-  - --threads
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --inputBufferSize
   description: "Size of the input buffer of each thread. 400,000 read\npairs per input\
     \ file per thread is the default value.\nReduce this value to decrease memory\
     \ usage. (default:\n400000)"
-  synonyms:
-  - --inputBufferSize
   args: !SimpleFlagArg
     name: INPUTBUFFERSIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --doTestRun
   description: "A test run is useful to test the quality of a Hi-C\nexperiment quickly.\
     \ It works by testing only 1,000,000\nreads. This option is useful to get an idea\
     \ of quality\ncontrol values like inter-chromosomal interactions,\nduplication\
     \ rates etc. (default: False)"
-  synonyms:
-  - --doTestRun
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Number of lines to consider for the qc test run.\n(default: 1000000)"
+  optional: true
   synonyms:
   - --doTestRunLines
+  description: "Number of lines to consider for the qc test run.\n(default: 1000000)"
   args: !SimpleFlagArg
     name: DOTESTRUNLINES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --skipDuplicationCheck
   description: "Identification of duplicated read pairs is memory\nconsuming. Thus,\
     \ in case of memory errors this check\ncan be skipped. However, consider running\
     \ a\n`--doTestRun` first to get an estimation of the\nduplicated reads. (default:\
     \ False)"
-  synonyms:
-  - --skipDuplicationCheck
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --chromosomeSizes
   description: "file, -cs txt file\nFile with the chromosome sizes for your genome.\
     \ A tab-\ndelimited two column layout \"chr_name size\" is\nexpectedUsually the\
     \ sizes can be determined from the\nSAM/BAM input files, however, for cHi-C or\
@@ -250,28 +253,25 @@ named:
     chromosomes.Use this option to guarantee fixed sizes.\nAn example file is available\
     \ via UCSC: http://hgdownlo\nad.soe.ucsc.edu/goldenPath/dm3/bigZips/dm3.chrom.sizes\n\
     (default: None)"
-  synonyms:
-  - --chromosomeSizes
   args: !SimpleFlagArg
     name: txt
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: hicBuildMatrix --samFiles two sam files two sam files --outFileName\n\
   \                      FILENAME --QCfolder FOLDER --restrictionCutFile BED file\n\
   \                      [BED file ...] --restrictionSequence RESTRICTIONSEQUENCE\n\
@@ -433,3 +433,4 @@ help_text: "usage: hicBuildMatrix --samFiles two sam files two sam files --outFi
   \ and exit\n  --version             show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

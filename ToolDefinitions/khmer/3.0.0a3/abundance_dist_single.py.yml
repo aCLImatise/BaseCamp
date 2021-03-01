@@ -3,60 +3,118 @@ command:
 - abundance-dist-single.py
 positional:
 - !Positional
-  description: The name of the input FAST[AQ] sequence file.
-  position: 0
-  name: input_sequence_filename
   optional: false
-- !Positional
+  position: 1
+  name: output_histogram_filename
   description: "The name of the output histogram file. The columns\nare: (1) k-mer\
     \ abundance, (2) k-mer count, (3)\ncumulative count, (4) fraction of total distinct\n\
     k-mers."
-  position: 1
-  name: output_histogram_filename
-  optional: false
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -k
-  args: !SimpleFlagArg
-    name: KSIZE
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - --info
+  description: print citation information
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -k
+  - --ksize
+  description: 'k-mer size to use (default: 32)'
+  args: !SimpleFlagArg
+    name: KSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  - --unique-kmers
+  description: "approximate number of unique kmers in the input set\n(default: 0)"
+  args: !SimpleFlagArg
+    name: UNIQUE_KMERS
+- !Flag
+  optional: true
+  synonyms:
+  - --fp-rate
+  description: "Override the automatic FP rate setting for the current\nscript (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: FP_RATE
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --max-memory-usage
+  description: "maximum amount of memory to use for data structure\n(default: None)"
+  args: !SimpleFlagArg
+    name: MAX_MEMORY_USAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --small-count
+  description: "Reduce memory usage by using a smaller counter for\nindividual kmers.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --threads
+  description: 'Number of simultaneous threads to execute (default: 1)'
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --no-zero
+  description: 'Do not output zero-count bins (default: True)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --no-bigcount
+  description: 'Do not count k-mers past 255 (default: True)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --squash
+  description: 'Overwrite output file if it exists (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --savegraph
+  description: "Save the k-mer countgraph to the specified filename.\n(default: None)"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: 'Override sanity checks (default: False)'
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: "show program's version number and exit\n--info                print\
-    \ citation information\n-h, --help            show this help message and exit\n\
-    -k KSIZE, --ksize KSIZE\nk-mer size to use (default: 32)\n-U UNIQUE_KMERS, --unique-kmers\
-    \ UNIQUE_KMERS\napproximate number of unique kmers in the input set\n(default:\
-    \ 0)\n--fp-rate FP_RATE     Override the automatic FP rate setting for the current\n\
-    script (default: None)\n-M MAX_MEMORY_USAGE, --max-memory-usage MAX_MEMORY_USAGE\n\
-    maximum amount of memory to use for data structure\n(default: None)\n--small-count\
-    \         Reduce memory usage by using a smaller counter for\nindividual kmers.\
-    \ (default: False)\n-T THREADS, --threads THREADS\nNumber of simultaneous threads\
-    \ to execute (default: 1)\n-z, --no-zero         Do not output zero-count bins\
-    \ (default: True)\n-b, --no-bigcount     Do not count k-mers past 255 (default:\
-    \ True)\n-s, --squash          Overwrite output file if it exists (default: False)\n\
-    --savegraph filename  Save the k-mer countgraph to the specified filename.\n(default:\
-    \ None)\n-f, --force           Override sanity checks (default: False)\n-q, --quiet"
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: abundance-dist-single.py [--version] [--info] [-h] [-k KSIZE]\n\
   \                                [-U UNIQUE_KMERS] [--fp-rate FP_RATE]\n       \
   \                         [-M MAX_MEMORY_USAGE] [--small-count]\n              \
@@ -94,3 +152,4 @@ help_text: "usage: abundance-dist-single.py [--version] [--info] [-h] [-k KSIZE]
   \ test-dist\n"
 generated_using:
 - --help
+docker_image:

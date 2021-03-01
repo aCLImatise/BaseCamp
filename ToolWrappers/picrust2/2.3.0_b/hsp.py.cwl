@@ -4,25 +4,25 @@ inputs:
 - id: in_tree
   doc: "The full reference tree in newick format containing\nboth study sequences\
     \ (i.e. ASVs or OTUs) and reference\nsequences."
-  type: File
+  type: File?
   inputBinding:
     prefix: --tree
 - id: in_output
   doc: "Output table with predicted abundances per study\nsequence in input tree.\
     \ If the extension \".gz\" is\nadded the table will automatically be gzipped."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_in_trait
   doc: "Specifies which default trait table should be used.\nUse the --observed_trait_table\
     \ option to input a non-\ndefault trait table."
-  type: string
+  type: string?
   inputBinding:
     prefix: --in_trait
 - id: in_observed_trait_table
   doc: "The input trait table describing directly observed\ntraits (e.g. sequenced\
     \ genomes) in tab-delimited\nformat. Necessary if you want to use a custom table."
-  type: File
+  type: File?
   inputBinding:
     prefix: --observed_trait_table
 - id: in_chunk_size
@@ -31,7 +31,7 @@ inputs:
     \ E.g. if\nyou specify the chunk_size to be the total number of\nfunctions, 1\
     \ processor will be used even if you\nspecified more so the job will be substantially\
     \ slower\n(default: 500)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --chunk_size
 - id: in_hsp_method
@@ -41,33 +41,33 @@ inputs:
     \ \"pic\": predict continuous traits\nwith phylogentic independent contrast. \"\
     scp\":\nreconstruct continuous traits using squared-change\nparsimony (default:\
     \ mp)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --hsp_method
 - id: in_calculate_nsti
   doc: Calculate NSTI and add to output file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --calculate_NSTI
 - id: in_check
   doc: Check input trait table before HSP.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --check
 - id: in_processes
   doc: 'Number of processes to run in parallel (default: 1).'
-  type: long
+  type: long?
   inputBinding:
     prefix: --processes
 - id: in_seed
   doc: "Seed to make output reproducible, which is necessary\nfor the emp_prob method\
     \ (default: 100)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --seed
 - id: in_verbose
   doc: "If specified, print out wrapped commands and other\ndetails to screen."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 outputs:
@@ -76,9 +76,10 @@ outputs:
   type: stdout
 - id: out_calculate_nsti
   doc: Calculate NSTI and add to output file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_calculate_nsti)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hsp.py

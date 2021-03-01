@@ -18,6 +18,9 @@ task Samtools0118Depth {
       ~{if defined(var_2) then ("-q " +  '"' + var_2 + '"') else ""} \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     b: ""
     var_1: ""

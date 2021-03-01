@@ -16,6 +16,9 @@ task Ecitmatch {
       ~{if (page) then "-page" else ""} \
       ~{if (author) then "-author" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     journal: "Journal Title"
     year: "Year"

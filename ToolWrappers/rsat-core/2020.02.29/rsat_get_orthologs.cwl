@@ -3,12 +3,12 @@ id: rsat_get_orthologs.cwl
 inputs:
 - id: in_unique_species
   doc: ', but at the level of the genus. At this level we'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -unique_species
 - id: in_return
-  doc: -return query_id,e_value,rank
-  type: string
+  doc: ',e_value,rank'
+  type: string?
   inputBinding:
     prefix: -return
 - id: in_get_orthologs
@@ -92,6 +92,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

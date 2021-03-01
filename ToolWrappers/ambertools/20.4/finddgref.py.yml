@@ -3,251 +3,251 @@ command:
 - finddgref.py
 positional:
 - !Positional
-  description: -ng INT               Number of groups/replicas (REQUIRED)
+  optional: false
   position: 0
   name: mdexec.
-  optional: false
+  description: -ng INT               Number of groups/replicas (REQUIRED)
 named:
 - !Flag
-  description: show the program's author information and exit
+  optional: true
   synonyms:
   - --author
+  description: show the program's author information and exit
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Path to the AMBER executable file. Example:\n$AMBERHOME/bin/pmemd"
+  optional: true
   synonyms:
   - -mdexec
+  description: "Path to the AMBER executable file. Example:\n$AMBERHOME/bin/pmemd"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -target
   description: "Value of pH or Redox Potential (in Volts) that we\nexpect to obtain\
     \ a converged fraction of protonated or\nreduced species close to 50%. This is\
     \ the target value\nof the pKa or Standard Redox Potential (Eo) of the\nsystem\
     \ at the end of the execution. Default: None"
-  synonyms:
-  - -target
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "Command preciding mdexec for parallel execution. Used\nonly with Replica\
-    \ Exchange. Default: mpirun -np [-ng]"
+  optional: true
   synonyms:
   - -do_parallel
+  description: "Command preciding mdexec for parallel execution. Used\nonly with Replica\
+    \ Exchange. Default: mpirun -np [-ng]"
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: "When set, prints the log of the program execution to\nan external\
-    \ file (-log FILENAME). If not set, print it\nat the screen. Default: None"
+  optional: true
   synonyms:
   - -log
+  description: "When set, prints the log of the program execution to\nan external\
+    \ file (-log FILENAME). If not set, print it\nat the screen. Default: None"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -resnum
   description: "Number of the residue in which the fraction of\nprotonated or reduced\
     \ species will be monitored.\n(REQUIRED if the number of pH or Redox titratable\n\
     residues is larger than 1)"
-  synonyms:
-  - -resnum
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -dgrefest
   description: "Estimated value of Delta G reference. When this flag\nis given, the\
     \ program starts in the last phase of\nexecution, that is, on the phase of making\
     \ more\naccurate estimatives of Delta G reference. Note: if\nthe value of -dgrefest\
     \ is not close enough to the true\nvalue of Delta G reference, the execution will\
     \ fail.\nDefault: None"
-  synonyms:
-  - -dgrefest
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -dgrefrange
   description: "FLOAT\nRange of values for Delta G reference. The desired\nDelta G\
     \ reference value has to be inside this range.\nIf -dgrefest and -dgrefrange are\
     \ not given, the\nprogram will try to find a range automatically.\nSuggestion:\
     \ choose one value in which the fraction of\nprotonated or reduced species is\
     \ ~ 0 and the other\nvalue in which it is ~ 1. Default: None"
-  synonyms:
-  - -dgrefrange
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: "When the values of the argument -dgrefrange are to be\nfound automatically,\
-    \ dginterval is the interval of\ntrial values. Default: 100.0 kcal/mol"
+  optional: true
   synonyms:
   - -dginterval
+  description: "When the values of the argument -dgrefrange are to be\nfound automatically,\
+    \ dginterval is the interval of\ntrial values. Default: 100.0 kcal/mol"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
-  description: 'Maximum number of AMBER executions. Default: 100'
+  optional: true
   synonyms:
   - -maxsteps
+  description: 'Maximum number of AMBER executions. Default: 100'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Fraction threshold. The fraction convergence criterium\nis: 0.5-fracthreshold/2\
-    \ >= frac >=\n0.5+fracthreshold/2. Default: 0.03"
+  optional: true
   synonyms:
   - -fracthreshold
+  description: "Fraction threshold. The fraction convergence criterium\nis: 0.5-fracthreshold/2\
+    \ >= frac >=\n0.5+fracthreshold/2. Default: 0.03"
   args: !SimpleFlagArg
     name: FLOAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -noequi
   description: "If stated, the equilibration simulation for a new\nDELTAGREF value\
     \ will not be performed. Equilibration\nruns for 10% the number of steps of the\
     \ production\nsimulation. Default: False"
-  synonyms:
-  - -noequi
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -rmouts
   description: "If stated, at the end of the execution of the program,\nerases all\
     \ output files generated by AMBER (all files\nnot stated as REQUIRED at \"AMBER\
     \ Arguments\" below).\nDefault: False"
-  synonyms:
-  - -rmouts
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Path to the AMBER bin directory. Used to locate\ncphstats, cestats\
-    \ or fitpkaeo.py (Example:\n$AMBERHOME/bin ; Default: not set)."
+  optional: true
   synonyms:
   - -bin-path
+  description: "Path to the AMBER bin directory. Used to locate\ncphstats, cestats\
+    \ or fitpkaeo.py (Example:\n$AMBERHOME/bin ; Default: not set)."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: AMBER mdin file (REQUIRED)
+  optional: true
   synonyms:
   - -i
+  description: AMBER mdin file (REQUIRED)
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: AMBER parmtop file (REQUIRED)
+  optional: true
   synonyms:
   - -p
+  description: AMBER parmtop file (REQUIRED)
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: AMBER inpcrd (input coordinates) file (REQUIRED)
+  optional: true
   synonyms:
   - -c
+  description: AMBER inpcrd (input coordinates) file (REQUIRED)
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: AMBER mdcrd (output coordinates) file
+  optional: true
   synonyms:
   - -x
+  description: AMBER mdcrd (output coordinates) file
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: AMBER mdinfo file
+  optional: true
   synonyms:
   - -inf
+  description: AMBER mdinfo file
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: AMBER mdout (log) file
+  optional: true
   synonyms:
   - -o
+  description: AMBER mdout (log) file
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: AMBER mdout file
+  optional: true
   synonyms:
   - -r
+  description: AMBER mdout file
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: AMBER cpin file (REQUIRED if cein file is not given)
+  optional: true
   synonyms:
   - -cpin
+  description: AMBER cpin file (REQUIRED if cein file is not given)
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: AMBER cpout file
+  optional: true
   synonyms:
   - -cpout
+  description: AMBER cpout file
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: AMBER cprestrt file
+  optional: true
   synonyms:
   - -cprestrt
+  description: AMBER cprestrt file
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: AMBER cein file (REQUIRED if cpin file is not given)
+  optional: true
   synonyms:
   - -cein
+  description: AMBER cein file (REQUIRED if cpin file is not given)
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: AMBER ceout file
+  optional: true
   synonyms:
   - -ceout
+  description: AMBER ceout file
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: AMBER cerestrt file
+  optional: true
   synonyms:
   - -cerestrt
+  description: AMBER cerestrt file
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: AMBER ref file
+  optional: true
   synonyms:
   - -ref
+  description: AMBER ref file
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: AMBER groupfile file (REQUIRED)
+  optional: true
   synonyms:
   - -groupfile
+  description: AMBER groupfile file (REQUIRED)
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show the program's version and exit
+  optional: true
   synonyms:
   - -v
   - --version
+  description: show the program's version and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: finddgref.py [Options]\n\noptional arguments:\n  -h, --help   \
   \         show this help message and exit\n  -v, --version         show the program's\
   \ version and exit\n  --author              show the program's author information\
@@ -316,3 +316,4 @@ help_text: "usage: finddgref.py [Options]\n\noptional arguments:\n  -h, --help  
   \ the STATENE flag by DELTAGREF on your cpin or\ncein file.\n"
 generated_using:
 - --help
+docker_image:

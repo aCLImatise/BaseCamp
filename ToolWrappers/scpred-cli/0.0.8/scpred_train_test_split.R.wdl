@@ -24,6 +24,9 @@ task ScpredTrainTestSplitR {
       ~{if defined(random_seed) then ("--random-seed " +  '"' + random_seed + '"') else ""} \
       ~{if defined(training_ratio) then ("--training-ratio " +  '"' + training_ratio + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sce_object: "Path to the input SCE object in .rds format"
     normalised_counts_slot: "Name of the slot with normalised counts matrix in SCE object. Default: normcounts"

@@ -28,6 +28,9 @@ task Ca2ta {
       ~{if (no_qual) then "-noqual" else ""} \
       ~{if (mates) then "-mates" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     select: "Only performs this operation for contigs and unitigs\\nspecified in fname"
     contigs: "Does not report unitigs in .tasm"

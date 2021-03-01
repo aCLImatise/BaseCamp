@@ -18,6 +18,9 @@ task FqtoolsCOMMAND {
       ~{if defined(var_4) then ("-b " +  '"' + var_4 + '"') else ""} \
       ~{if (hv_dram_uli) then "-hvdramuli" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_0: ""
     var_1: ""

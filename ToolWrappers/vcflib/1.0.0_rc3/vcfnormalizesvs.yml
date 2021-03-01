@@ -3,25 +3,28 @@ command:
 - vcfnormalizesvs
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: var.vcf
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: / --reference <ref.fa>   FASTA-format reference genome from which to
-    pull SV sequences.
+  optional: true
   synonyms:
   - -r
-  args: !EmptyFlagArg {}
-  optional: true
+  - --reference
+  description: FASTA-format reference genome from which to pull SV sequences.
+  args: !SimpleFlagArg
+    name: ref.fa
 - !Flag
-  description: / --insertions <ins.fa>   FASTA-format insertion sequences, with IDs
-    matching the ALT allele tags in the vcf
+  optional: true
   synonyms:
   - -i
-  args: !EmptyFlagArg {}
-  optional: true
+  - --insertions
+  description: FASTA-format insertion sequences, with IDs matching the ALT allele
+    tags in the vcf
+  args: !SimpleFlagArg
+    name: ins.fa
 parent:
 subcommands: []
 usage: []
@@ -35,3 +38,4 @@ help_text: "vcfnormalizesvs: Convert a VCF with representative alleles to one wi
   \ sequences, with IDs matching the ALT allele tags in the vcf\n\n"
 generated_using:
 - --help
+docker_image:

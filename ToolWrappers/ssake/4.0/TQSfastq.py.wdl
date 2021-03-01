@@ -16,6 +16,9 @@ task TQSfastqpy {
       ~{if defined(ascii) then ("--ASCII " +  '"' + ascii + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "=FASTQFILE\\nfastq (fq) file - standard (ASCII+33) encoded PHRED\\nquality scores / illumina (ASCII+64) encoded PHRED\\nquality scores"
     phred: "threshold=THRESHOLD\\nBase intensity threshold value (Phred quality scores,\\ndefault=10)"

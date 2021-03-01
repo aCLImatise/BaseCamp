@@ -20,6 +20,9 @@ task PhyluceAlignGetAlignSummaryData {
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if defined(output_stats) then ("--output-stats " +  '"' + output_stats + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignments: "The directory containing alignments to be summarized.\\n(default: None)"
     input_format: "The input alignment format. (default: nexus)"

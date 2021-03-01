@@ -3,7 +3,7 @@ id: class_run.py.cwl
 inputs:
 - id: in_clean
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --clean
 - id: in_quick
@@ -50,6 +50,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - class_run.py

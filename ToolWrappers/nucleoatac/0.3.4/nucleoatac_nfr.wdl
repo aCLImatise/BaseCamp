@@ -28,6 +28,9 @@ task NucleoatacNfr {
       ~{if defined(max_occ) then ("--max_occ " +  '"' + max_occ + '"') else ""} \
       ~{if defined(max_occ_upper) then ("--max_occ_upper " +  '"' + max_occ_upper + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "Peaks in bed format"
     occ_track: "bgzip compressed, tabix-indexed bedgraph file with\\nocccupancy track."

@@ -16,6 +16,9 @@ task Kocospl {
       ~{if defined(order) then ("--order " +  '"' + order + '"') else ""} \
       ~{if defined(trace) then ("--trace " +  '"' + trace + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     literal: "Specify the target word directly on command line as a literal."
     regex: "Specify a file containing Perl regular expression/s that define\\nthe target word."

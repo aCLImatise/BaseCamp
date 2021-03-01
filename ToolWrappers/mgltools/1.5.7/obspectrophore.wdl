@@ -4,6 +4,9 @@ task Obspectrophore {
   command <<<
     obspectrophore
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

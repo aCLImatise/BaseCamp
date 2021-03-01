@@ -10,6 +10,9 @@ task TaxonFilterpyFile {
       ~{tax_on_filter_do_tpy} \
       ~{subcommand}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tax_on_filter_do_tpy: ""
     subcommand: ""

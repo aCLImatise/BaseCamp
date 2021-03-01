@@ -3,17 +3,17 @@ id: checkm_unbinned.cwl
 inputs:
 - id: in_extension
   doc: 'extension of bins (other files in directory are ignored) (default: fna)'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --extension
 - id: in_min_seq_len
   doc: required length of sequence
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_seq_len
 - id: in_quiet
   doc: suppress console output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_bin_dir
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - checkm

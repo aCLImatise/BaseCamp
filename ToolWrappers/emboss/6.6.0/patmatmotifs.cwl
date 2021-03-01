@@ -3,7 +3,7 @@ id: patmatmotifs.cwl
 inputs:
 - id: in_full
   doc: boolean    [N] Provide full documentation for matching
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -full
 - id: in_patterns
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - patmatmotifs

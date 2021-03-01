@@ -16,9 +16,9 @@ task Appcov {
     Float? app_gu
     Float? app_not_s
     Int? min_helix
-    Float? filter_seqs_xseqcons
-    Float? var_15
-    Float? var_16
+    Float? filter_xseqcons_residues
+    Float? require_d_
+    Float? require_seqs_
     Int? t_start
     Int? tend
     Boolean? consensus
@@ -57,9 +57,9 @@ task Appcov {
       ~{if defined(app_gu) then ("--appgu " +  '"' + app_gu + '"') else ""} \
       ~{if defined(app_not_s) then ("--appnots " +  '"' + app_not_s + '"') else ""} \
       ~{if defined(min_helix) then ("--minhelix " +  '"' + min_helix + '"') else ""} \
-      ~{if defined(filter_seqs_xseqcons) then ("-F " +  '"' + filter_seqs_xseqcons + '"') else ""} \
-      ~{if defined(var_15) then ("-I " +  '"' + var_15 + '"') else ""} \
-      ~{if defined(var_16) then ("-i " +  '"' + var_16 + '"') else ""} \
+      ~{if defined(filter_xseqcons_residues) then ("-F " +  '"' + filter_xseqcons_residues + '"') else ""} \
+      ~{if defined(require_d_) then ("-I " +  '"' + require_d_ + '"') else ""} \
+      ~{if defined(require_seqs_) then ("-i " +  '"' + require_seqs_ + '"') else ""} \
       ~{if defined(t_start) then ("--tstart " +  '"' + t_start + '"') else ""} \
       ~{if defined(tend) then ("--tend " +  '"' + tend + '"') else ""} \
       ~{if (consensus) then "--consensus" else ""} \
@@ -76,6 +76,9 @@ task Appcov {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: ": specify a directory for all output files"
     _be_verbose: ": be verbose"
@@ -91,9 +94,9 @@ task Appcov {
     app_gu: ": fraction of GU's allowed [default: allows all]  [1.0]  (0<=x<=1)"
     app_not_s: ": fraction of not transitions to still call a pair ts [default: allows non]  [0.0]  (0<=x<=1)"
     min_helix: ": min lenght of a helix [default: 4]  [3]  (n>0)"
-    filter_seqs_xseqcons: ": filter out seqs <x*seq_cons residues  (0<x<=1.0)"
-    var_15: ": require seqs to have < <x> id  [1.0]  (0<x<=1.0)"
-    var_16: ": require seqs to have >= <x> id  (0<=x<1.0)"
+    filter_xseqcons_residues: ": filter out seqs <x*seq_cons residues  (0<x<=1.0)"
+    require_d_: ": require seqs to have < <x> id  [1.0]  (0<x<=1.0)"
+    require_seqs_: ": require seqs to have >= <x> id  (0<=x<1.0)"
     t_start: ": min alignment position to analyze [1..alen]  (n>0)"
     tend: ": max alignment position to analyze [1..alen]  (n>0)"
     consensus: ": analyze only consensus (seq_cons) positions"

@@ -28,6 +28,9 @@ task ScaterrunpcaR {
       ~{if defined(detect_outliers) then ("--detect-outliers " +  '"' + detect_outliers + '"') else ""} \
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "singleCellExperiment object containing expression values and experimental information. Must have been appropriately prepared."
     n_components: "Numeric scalar indicating the number of principal components to obtain."

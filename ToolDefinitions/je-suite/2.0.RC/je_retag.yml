@@ -4,53 +4,60 @@ command:
 - retag
 positional:
 - !Positional
-  description: 'Counting starts at 1 and negative numbers can be used to start counting
-    from the end '
+  optional: false
   position: 0
   name: header.
-  optional: false
+  description: 'Counting starts at 1 and negative numbers can be used to start counting
+    from the end '
 - !Positional
-  description: "a hyphen ('-'). The order of concatenation follows the order of UMI_SLOT\
-    \ in the command "
+  optional: false
   position: 0
   name: using
-  optional: false
+  description: "a hyphen ('-'). The order of concatenation follows the order of UMI_SLOT\
+    \ in the command "
 - !Positional
-  description: 'For example, consider the following read name that lists 3 different
-    sequence codes in '
+  optional: false
   position: 1
   name: line.
-  optional: false
+  description: 'For example, consider the following read name that lists 3 different
+    sequence codes in '
 - !Positional
-  description: 'ACTCTAC,TCTGTAC,ACTGTAG  '
+  optional: false
   position: 0
   name: ACTGTAC
-  optional: false
+  description: 'ACTCTAC,TCTGTAC,ACTGTAG  '
 - !Positional
-  description: 'RGPG=String                   Read Group program group; only considered
-    when RG=true  Default value: null. '
+  optional: false
   position: 0
   name: null.
-  optional: false
+  description: 'RGPG=String                   Read Group program group; only considered
+    when RG=true  Default value: null. '
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
   description: "Displays options specific to this tool AND options common to all Picard\
     \ command line\ntools."
-  synonyms:
-  - -H
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag: !Flag
-  description: Displays program version.
+  optional: true
   synonyms:
   - --version
+  description: Displays program version.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Picked up _JAVA_OPTIONS: -Xmx4G -Xms256m\nUSAGE: TagFromReadName [options]\n\
   \nExtracts barcode and UMI sequence(s) embedded in read names and tag reads with\
   \ proper BAM tag.\nVersion: 2.0.RC\n\n\nOptions:\n\n--help\n-h                 \
@@ -201,3 +208,4 @@ help_text: "Picked up _JAVA_OPTIONS: -Xmx4G -Xms256m\nUSAGE: TagFromReadName [op
   \               be specified 0 or more times. \n\n"
 generated_using:
 - --help
+docker_image:

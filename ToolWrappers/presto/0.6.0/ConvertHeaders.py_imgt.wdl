@@ -10,11 +10,9 @@ task ConvertHeaderspyImgt {
     Boolean? fast_a
     String? delim
     Boolean? simple
-    String imgt_slash_gene_db_dot
   }
   command <<<
     ConvertHeaders_py imgt \
-      ~{imgt_slash_gene_db_dot} \
       ~{if defined(list_fastafastq_files) then ("-s " +  '"' + list_fastafastq_files + '"') else ""} \
       ~{if defined(explicit_output_file) then ("-o " +  '"' + explicit_output_file + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
@@ -24,6 +22,9 @@ task ConvertHeaderspyImgt {
       ~{if defined(delim) then ("--delim " +  '"' + delim + '"') else ""} \
       ~{if (simple) then "--simple" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_fastafastq_files: "A list of FASTA/FASTQ files containing sequences to\\nprocess. (default: None)"
     explicit_output_file: "Explicit output file name(s). Note, this argument\\ncannot be used with the --failed, --outdir, or\\n--outname arguments. If unspecified, then the output\\nfilename will be based on the input filename(s).\\n(default: None)"
@@ -33,7 +34,6 @@ task ConvertHeaderspyImgt {
     fast_a: "Specify to force output as FASTA rather than FASTQ.\\n(default: None)"
     delim: "DELIMITER DELIMITER\\nA list of the three delimiters that separate\\nannotation blocks, field names and values, and values\\nwithin a field, respectively. (default: ('|', '=',\\n','))"
     simple: "If specified, only the allele name, and no other\\nannotations, will appear in the converted sequence\\nheader. (default: False)\\n"
-    imgt_slash_gene_db_dot: "help:"
   }
   output {
     File out_stdout = stdout()

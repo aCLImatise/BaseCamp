@@ -12,6 +12,9 @@ task MatchGraphpy {
       ~{if defined(is_output_filename) then ("-w " +  '"' + is_output_filename + '"') else ""} \
       ~{if defined(max_cardinality_matching) then ("-c " +  '"' + max_cardinality_matching + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     is_input_filename: "is the input filename"
     is_output_filename: "is the output filename"

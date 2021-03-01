@@ -36,6 +36,9 @@ task CsvtkFilter2 {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filter: "awk-like filter condition. e.g. '$age>12' or '$1 > $3' or '$name==\\\"abc\\\"' or '$1 % 2 == 0'"
     line_number: "print line number as the first column (\\\"n\\\")"

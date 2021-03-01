@@ -20,6 +20,9 @@ task OutriggerValidate {
       ~{if (debug) then "--debug" else ""} \
       ~{if (low_memory) then "--low-memory" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "Location of the genome fasta file for which to get the\\nsplice site sequences from"
     genome: "Either the genome name (e.g. \\\"mm10\\\" or \\\"hg19\\\") or\\nlocation of the genome chromosome sizes file for\\n\\\"bedtools flank\\\" to make sure we do not accidentally\\nask for genome positions that are outside of the\\ndefined range"

@@ -20,6 +20,9 @@ task RiboSketch {
       ~{if defined(mauve_jar) then ("--mauve_jar " +  '"' + mauve_jar + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "output directory; default: None"
     assembly_ext: "extension of assemblies, usually fasta"

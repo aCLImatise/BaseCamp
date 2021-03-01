@@ -22,6 +22,9 @@ task DISCASM {
       ~{if defined(add_trinity_params) then ("--add_trinity_params " +  '"' + add_trinity_params + '"') else ""} \
       ~{if (normalize_reads) then "--normalize_reads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chimeric_junctions: "STAR Chimeric.out.junction file"
     aligned_bam: "aligned bam file from your favorite rna-seq alignment\\ntool"

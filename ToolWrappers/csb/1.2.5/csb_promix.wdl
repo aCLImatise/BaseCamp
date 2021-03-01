@@ -14,6 +14,9 @@ task Csbpromix {
       ~{if defined(components) then ("--components " +  '"' + components + '"') else ""} \
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     components: "Number of components (default=-1)"
     type: "Type of mixture (default=segments)\\n"

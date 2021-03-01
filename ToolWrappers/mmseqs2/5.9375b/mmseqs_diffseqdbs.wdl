@@ -12,6 +12,9 @@ task MmseqsDiffseqdbs {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     use_seq_id: "false           Sequence ID (Uniprot, GenBank, ...) is used for identifying matches between the old and the new DB."
     threads: "8               number of cores used for the computation (uses all cores by default)"

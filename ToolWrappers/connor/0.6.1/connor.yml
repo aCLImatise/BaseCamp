@@ -3,107 +3,107 @@ command:
 - connor
 positional:
 - !Positional
-  description: path to input BAM
+  optional: false
   position: 0
   name: input_bam
-  optional: false
+  description: path to input BAM
 - !Positional
-  description: path to deduplicated output BAM
+  optional: false
   position: 1
   name: output_bam
-  optional: false
+  description: path to deduplicated output BAM
 named:
 - !Flag
-  description: print all log messages to console
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: print all log messages to console
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: =False. Override validation warnings
+  optional: true
   synonyms:
   - --force
+  description: =False. Override validation warnings
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ={output_filename}.log. Path to verbose log file
+  optional: true
   synonyms:
   - --log_file
+  description: ={output_filename}.log. Path to verbose log file
   args: !SimpleFlagArg
     name: LOG_FILE
-  optional: true
 - !Flag
-  description: path to output BAM containing all original aligns annotated with BAM
-    tags
+  optional: true
   synonyms:
   - --annotated_output_bam
+  description: path to output BAM containing all original aligns annotated with BAM
+    tags
   args: !SimpleFlagArg
     name: ANNOTATED_OUTPUT_BAM
-  optional: true
 - !Flag
-  description: "=0.6 (0..1.0): Ambiguous base calls at a specific position in a family\
-    \ are\ntransformed to either majority base call, or N if the majority percentage\n\
-    is below this threshold. (Higher threshold results in more Ns in\nconsensus.)"
+  optional: true
   synonyms:
   - -f
   - --consensus_freq_threshold
+  description: "=0.6 (0..1.0): Ambiguous base calls at a specific position in a family\
+    \ are\ntransformed to either majority base call, or N if the majority percentage\n\
+    is below this threshold. (Higher threshold results in more Ns in\nconsensus.)"
   args: !SimpleFlagArg
     name: CONSENSUS_FREQ_THRESHOLD
-  optional: true
 - !Flag
-  description: "=3 (>=0): families with count of original reads < threshold are excluded\n\
-    from the deduplicated output. (Higher threshold is more\nstringent.)"
+  optional: true
   synonyms:
   - -s
   - --min_family_size_threshold
+  description: "=3 (>=0): families with count of original reads < threshold are excluded\n\
+    from the deduplicated output. (Higher threshold is more\nstringent.)"
   args: !SimpleFlagArg
     name: MIN_FAMILY_SIZE_THRESHOLD
-  optional: true
 - !Flag
-  description: "=1 (>=0); UMTs equal to or closer than this Hamming distance will\
-    \ be\ncombined into a single family. Lower threshold make more families with more\n\
-    consistent UMTs; 0 implies UMI must match\nexactly."
+  optional: true
   synonyms:
   - -d
   - --umt_distance_threshold
+  description: "=1 (>=0); UMTs equal to or closer than this Hamming distance will\
+    \ be\ncombined into a single family. Lower threshold make more families with more\n\
+    consistent UMTs; 0 implies UMI must match\nexactly."
   args: !SimpleFlagArg
     name: UMT_DISTANCE_THRESHOLD
-  optional: true
 - !Flag
-  description: "=count; determines how filters will be ordered in the log\nresults"
+  optional: true
   synonyms:
   - --filter_order
+  description: "=count; determines how filters will be ordered in the log\nresults"
   args: !ChoiceFlagArg
     choices: !!set
-      count:
       name:
-  optional: true
+      count:
 - !Flag
-  description: =6 (>=1); length of UMT
+  optional: true
   synonyms:
   - --umt_length
+  description: =6 (>=1); length of UMT
   args: !SimpleFlagArg
     name: UMT_LENGTH
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -V
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: connor input_bam output_bam\n\nDeduplicates BAM file based on custom\
   \ inline DNA barcodes.\nEmits a new BAM file reduced to a single consensus read\
   \ for each family of\noriginal reads.\n\npositional arguments:\n  input_bam    \
@@ -132,3 +132,4 @@ help_text: "usage: connor input_bam output_bam\n\nDeduplicates BAM file based on
   \                        =6 (>=1); length of UMT\n\nv0.6.1\n"
 generated_using:
 - --help
+docker_image:

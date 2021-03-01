@@ -3,7 +3,7 @@ id: expressionFromGenomicSet.py.cwl
 inputs:
 - id: in_dist
   doc: "threshDist of GenomicReginSet.filter_by_gene_association_old.\n[default: 50000]\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --dist
 - id: in_experimental_matrix_file
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - expressionFromGenomicSet.py

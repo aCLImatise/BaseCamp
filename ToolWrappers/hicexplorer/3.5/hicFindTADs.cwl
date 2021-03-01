@@ -1,17 +1,9 @@
 class: CommandLineTool
 id: hicFindTADs.cwl
 inputs:
-- id: in_correct_for_multiple_testing
-  doc: "[--minDepth INT bp] [--maxDepth INT bp] [--step INT bp]\n[--TAD_sep_score_prefix\
-    \ TAD_SEP_SCORE_PREFIX]\n[--thresholdComparisons THRESHOLDCOMPARISONS]\n[--delta\
-    \ DELTA] [--minBoundaryDistance MINBOUNDARYDISTANCE]\n[--chromosomes CHROMOSOMES\
-    \ [CHROMOSOMES ...]]\n[--numberOfProcessors NUMBEROFPROCESSORS] [--help]\n[--version]"
-  type: string
-  inputBinding:
-    prefix: --correctForMultipleTesting
 - id: in_matrix
   doc: Corrected Hi-C matrix to use for the computations.
-  type: string
+  type: string?
   inputBinding:
     prefix: --matrix
 - id: in_out_prefix
@@ -31,21 +23,30 @@ inputs:
     \ 6.\n<prefix>_score.bedgraph file contains the TAD-\nseparation score measured\
     \ at each Hi-C bin coordinate.\nIs useful to visualize in a genome browser. The\
     \ delta\nand p-value settings are saved as part of the name."
-  type: long
+  type: long?
   inputBinding:
     prefix: --outPrefix
+- id: in_correct_for_multiple_testing
+  doc: "Select the bonferroni or false discovery rate for a\nmultiple comparison.\
+    \ Bonferroni controls the family-\nwise error rate (FWER) and needs a p-value.\
+    \ The false\ndiscovery rate (FDR) controls the likelyhood of type I\nerrors and\
+    \ needs a q-value. As a third option it is\npossible to not use a multiple comparison\
+    \ method at\nall."
+  type: string?
+  inputBinding:
+    prefix: --correctForMultipleTesting
 - id: in_min_depth
   doc: "bp     Minimum window length (in bp) to be considered to the\nleft and to\
     \ the right of each Hi-C bin. This number\nshould be at least 3 times as large\
     \ as the bin size of\nthe Hi-C matrix."
-  type: long
+  type: long?
   inputBinding:
     prefix: --minDepth
 - id: in_maxdepth
   doc: "bp     Maximum window length to be considered to the left and\nto the right\
     \ of the cut point in bp. This number\nshould around 6-10 times as large as the\
     \ bin size of\nthe Hi-C matrix."
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxDepth
 - id: in_step
@@ -54,7 +55,7 @@ inputs:
     \ 1, ...]` until it\nreaches `maxDepth`. For example, selecting\nstep=10,000,\
     \ minDepth=20,000 and maxDepth=150,000 will\ncompute TAD-scores for window sizes:\
     \ 20,000, 30,000,\n40,000, 70,000 and 100,000"
-  type: long
+  type: long?
   inputBinding:
     prefix: --step
 - id: in_tad_sep_score_prefix
@@ -63,7 +64,7 @@ inputs:
     containing the TAD separation score and the z-score\nmatrix can be given. If this\
     \ option is given, new\nboundaries will be computed but the values of\n--minDepth,\
     \ --maxDepth and --step will not be used."
-  type: string
+  type: string?
   inputBinding:
     prefix: --TAD_sep_score_prefix
 - id: in_threshold_comparisons
@@ -74,7 +75,7 @@ inputs:
     \ to the left and a diamond --minDepth to\nthe right. If --correctForMultipleTesting\
     \ is 'None'\nthe threshold is applied on the raw p-values without\nany multiple\
     \ testing correction. Set it to '1' if no\nthreshold should be used."
-  type: long
+  type: long?
   inputBinding:
     prefix: --thresholdComparisons
 - id: in_delta
@@ -84,13 +85,13 @@ inputs:
     \ occur at the center of large TADs when\nthe TAD-sep. score is flat. Higher delta\
     \ threshold\nvalues produce more conservative boundary estimations.\nBy default\
     \ a value of 0.01 is used."
-  type: double
+  type: double?
   inputBinding:
     prefix: --delta
 - id: in_min_boundary_distance
   doc: "Minimum distance between boundaries (in bp). This\nparameter can be used to\
     \ reduce spurious boundaries\ncaused by noise."
-  type: long
+  type: long?
   inputBinding:
     prefix: --minBoundaryDistance
 - id: in_chromosomes
@@ -101,13 +102,14 @@ inputs:
     prefix: --chromosomes
 - id: in_number_of_processors
   doc: Number of processors to use
-  type: long
+  type: long?
   inputBinding:
     prefix: --numberOfProcessors
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicFindTADs

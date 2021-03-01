@@ -40,6 +40,9 @@ task Metaxa2Ttt {
       ~{if (bugs) then "--bugs" else ""} \
       ~{if (license) then "--license" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metaxa_taxonomy_output: ": Metaxa taxonomy output file to process (*.taxonomy.txt)"
     base_name_output: ": Base for the name of output file(s)"

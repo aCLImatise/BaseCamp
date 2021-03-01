@@ -10,6 +10,9 @@ task PaladinPac2bwt {
       ~{in_dot_pac} \
       ~{out_dot_bwt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_pac: ""
     out_dot_bwt: ""

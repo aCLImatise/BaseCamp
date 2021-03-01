@@ -12,7 +12,7 @@ task RibotishQuality {
     File? output_pdf_figure
     File? output_offset_defaultribobampath
     Int? range_tag_length
-    Int? position_range_stop
+    Int? position_range_start
     Int? bins
     Boolean? nom_zero
     Float? th
@@ -37,7 +37,7 @@ task RibotishQuality {
       ~{if defined(output_pdf_figure) then ("-f " +  '"' + output_pdf_figure + '"') else ""} \
       ~{if defined(output_offset_defaultribobampath) then ("-r " +  '"' + output_offset_defaultribobampath + '"') else ""} \
       ~{if defined(range_tag_length) then ("-l " +  '"' + range_tag_length + '"') else ""} \
-      ~{if defined(position_range_stop) then ("-d " +  '"' + position_range_stop + '"') else ""} \
+      ~{if defined(position_range_start) then ("-d " +  '"' + position_range_start + '"') else ""} \
       ~{if defined(bins) then ("--bins " +  '"' + bins + '"') else ""} \
       ~{if (nom_zero) then "--nom0" else ""} \
       ~{if defined(th) then ("--th " +  '"' + th + '"') else ""} \
@@ -50,6 +50,9 @@ task RibotishQuality {
       ~{if defined(number_processes_default) then ("-p " +  '"' + number_processes_default + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     riboseq_bam_file: "Riboseq bam file"
     gene_annotation_file: "Gene annotation file"
@@ -61,7 +64,7 @@ task RibotishQuality {
     output_pdf_figure: "Output pdf figure file (default: ribobampath[:-4]+\\n'_qual.pdf')"
     output_offset_defaultribobampath: "Output offset parameter file (default:\\nribobampath[:-4]+ '.para.py')"
     range_tag_length: "Range of tag length (default: 25,35)"
-    position_range_stop: "Position range near start codon or stop codon\\n(default: -40,20)"
+    position_range_start: "Position range near start codon or stop codon\\n(default: -40,20)"
     bins: "Bins for cds profile (default: 20)"
     nom_zero: "Do not consider reads with mismatch at position 0 as a\\nnew group"
     th: "Threshold for quality (default: 0.5)"

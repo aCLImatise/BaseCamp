@@ -4,6 +4,9 @@ task RunStrelkaSomaticWorkflowDemobash {
   command <<<
     runStrelkaSomaticWorkflowDemo_bash
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

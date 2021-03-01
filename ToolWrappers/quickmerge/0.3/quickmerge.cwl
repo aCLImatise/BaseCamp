@@ -3,22 +3,22 @@ id: quickmerge.cwl
 inputs:
 - id: in_hco
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -hco
 - id: in_r
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
 - id: in_q
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -q
 - id: in_d
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -d
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_d
   doc: ''
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_d)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - quickmerge

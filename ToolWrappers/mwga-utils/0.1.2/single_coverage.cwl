@@ -3,7 +3,7 @@ id: single_coverage.cwl
 inputs:
 - id: in_h
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -h
 - id: in_show
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - single_coverage

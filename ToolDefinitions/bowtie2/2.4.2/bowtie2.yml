@@ -1,0 +1,754 @@
+!Command
+command:
+- bowtie2
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Could
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: NOTE
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: bam
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: bt2-idx
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: i
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: m1
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: m2
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: r
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: sam
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: specified
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: File
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: Files
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: Index
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: be
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: many
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: are
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: filename
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: for
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: gzip
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: times.
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: with
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: E.g.
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: SAM
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: interleaved
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: prefix
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: unaligned
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: unpaired
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: BAM
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: output
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: paired-end
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: reads.
+  description: ''
+- !Positional
+  optional: false
+  position: 5
+  name: FASTQ
+  description: ''
+- !Positional
+  optional: false
+  position: 5
+  name: sorted
+  description: ''
+- !Positional
+  optional: false
+  position: 6
+  name: by
+  description: ''
+- !Positional
+  optional: false
+  position: 7
+  name: read
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: query input files are FASTQ .fq/.fastq (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tab5
+  description: query input files are TAB5 .tab5
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tab6
+  description: query input files are TAB6 .tab6
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --qseq
+  description: query input files are in Illumina's qseq format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: query input files are (multi-)FASTA .fa/.mfa
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: query input files are raw one-sequence-per-line
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: ":<int>,i:<int> query input files are continuous FASTA where reads\n\
+    are substrings (k-mers) extracted from a FASTA file <s>\nand aligned at offsets\
+    \ 1, 1+i, 1+2i ... end of reference"
+  args: !SimpleFlagArg
+    name: k
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: <m1>, <m2>, <r> are sequences themselves, not files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --skip
+  description: skip the first <int> reads/pairs in the input (none)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --upto
+  description: stop after first <int> reads/pairs (no limit)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - '-5'
+  - --trim5
+  description: trim <int> bases from 5'/left end of reads (0)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - '-3'
+  - --trim3
+  description: trim <int> bases from 3'/right end of reads (0)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --trim-to
+  description: "[3:|5:]<int> trim reads exceeding <int> bases from either 3' or 5'\
+    \ end\nIf the read end is not specified then it defaults to 3 (0)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --phred33
+  description: qualities are Phred+33 (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --phred64
+  description: qualities are Phred+64
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --int-quals
+  description: qualities encoded as space-delimited integers
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sensitive
+  - -D
+  - -R
+  - -N
+  - -L
+  - -i
+  description: ',1,1.15 (default)'
+  args: !SimpleFlagArg
+    name: '15'
+- !Flag
+  optional: true
+  synonyms:
+  - --n-ceil
+  description: 'func for max # non-A/C/G/Ts permitted in aln (L,0,0.15)'
+  args: !SimpleFlagArg
+    name: func
+- !Flag
+  optional: true
+  synonyms:
+  - --dpad
+  description: include <int> extra ref chars on sides of DP table (15)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --gbar
+  description: disallow gaps within <int> nucs of read extremes (4)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-quals
+  description: treat all quality values as 30 on Phred scale (off)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nofw
+  description: do not align forward (original) version of read (off)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --norc
+  description: do not align reverse-complement version of read (off)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-1mm-upfront
+  description: "do not allow 1 mismatch alignments before attempting to\nscan for\
+    \ the optimal seeded alignments"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --end-to-end
+  description: entire read must align; no clipping (on)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ma
+  description: match bonus (0 for --end-to-end, 2 for --local)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --mp
+  description: max penalty for mismatch; lower qual = lower penalty (6)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --np
+  description: penalty for non-A/C/G/Ts in read/ref (1)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --rdg
+  description: ',<int>  read gap open, extend penalties (5,3)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --rfg
+  description: ',<int>  reference gap open, extend penalties (5,3)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --score-min
+  description: "min acceptable alignment score w/r/t read length\n(G,20,8 for local,\
+    \ L,-0.6,-0.6 for end-to-end)"
+  args: !SimpleFlagArg
+    name: func
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --minins
+  description: minimum fragment length (0)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --maxins
+  description: maximum fragment length (500)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --fr
+  - --rf
+  - --ff
+  - '-1'
+  - '-2'
+  description: align fw/rev, rev/fw, fw/fw (--fr)
+  args: !SimpleFlagArg
+    name: mates
+- !Flag
+  optional: true
+  synonyms:
+  - --no-mixed
+  description: suppress unpaired alignments for paired reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-discordant
+  description: suppress discordant alignments for paired reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dovetail
+  description: concordant when mates extend past each other
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-contain
+  description: not concordant when one mate alignment contains other
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-overlap
+  description: not concordant when mates overlap at all
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --align-paired-reads
+  description: "Bowtie2 will, by default, attempt to align unpaired BAM reads.\nUse\
+    \ this option to align paired-end reads instead."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --preserve-tags
+  description: "Preserve tags from the original BAM record by\nappending them to the\
+    \ end of the corresponding SAM output."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --time
+  description: print wall-clock time taken by search phases
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --un
+  description: write unpaired reads that didn't align to <path>
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --al
+  description: write unpaired reads that aligned at least once to <path>
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --un-conc
+  description: write pairs that didn't align concordantly to <path>
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --al-conc
+  description: "write pairs that aligned concordantly at least once to <path>\n(Note:\
+    \ for --un, --al, --un-conc, or --al-conc, add '-gz' to the option name, e.g.\n\
+    --un-gz <path>, to gzip compress output, or add '-bz2' to bzip2 compress output.)"
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: print nothing to stderr except serious errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --met-file
+  description: send metrics to file at <path> (off)
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --met-stderr
+  description: send metrics to stderr (off)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --met
+  description: report internal counters & metrics every <int> secs (1)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --no-unal
+  description: suppress SAM records for unaligned reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-head
+  description: suppress header lines, i.e. lines starting with @
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-sq
+  description: suppress @SQ header lines
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rg-id
+  description: 'set read group id, reflected in @RG line and RG:Z: opt field'
+  args: !SimpleFlagArg
+    name: text
+- !Flag
+  optional: true
+  synonyms:
+  - --rg
+  description: "add <text> (\"lab:value\") to @RG line of SAM header.\nNote: @RG line\
+    \ only printed when --rg-id is set."
+  args: !SimpleFlagArg
+    name: text
+- !Flag
+  optional: true
+  synonyms:
+  - --omit-sec-seq
+  description: put '*' in SEQ and QUAL fields for secondary alignments.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sam-no-qname-trunc
+  description: "Suppress standard behavior of truncating readname at first whitespace\n\
+    at the expense of generating non-standard SAM."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --xeq
+  description: Use '='/'X', instead of 'M,' to specify matches/mismatches in SAM record.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --soft-clipped-unmapped-tlen
+  description: Exclude soft-clipped bases when reporting TLEN
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sam-append-comment
+  description: Append FASTA/FASTQ comment to SAM record
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --threads
+  description: number of alignment threads to launch (1)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --reorder
+  description: force SAM output order to match order of input reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mm
+  description: use memory-mapped I/O for index; many 'bowtie's can share
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --qc-filter
+  description: filter out reads that are bad according to QSEQ filter
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: seed for random number generator (0)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --non-deterministic
+  description: seed rand. gen. arbitrarily instead of using read attributes
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this usage message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version information and quit
+  args: !EmptyFlagArg {}
+help_text: "Bowtie 2 version 2.4.2 by Ben Langmead (langmea@cs.jhu.edu, www.cs.jhu.edu/~langmea)\n\
+  Usage: \n  bowtie2 [options]* -x <bt2-idx> {-1 <m1> -2 <m2> | -U <r> | --interleaved\
+  \ <i> | -b <bam>} [-S <sam>]\n\n  <bt2-idx>  Index filename prefix (minus trailing\
+  \ .X.bt2).\n             NOTE: Bowtie 1 and Bowtie 2 indexes are not compatible.\n\
+  \  <m1>       Files with #1 mates, paired with files in <m2>.\n             Could\
+  \ be gzip'ed (extension: .gz) or bzip2'ed (extension: .bz2).\n  <m2>       Files\
+  \ with #2 mates, paired with files in <m1>.\n             Could be gzip'ed (extension:\
+  \ .gz) or bzip2'ed (extension: .bz2).\n  <r>        Files with unpaired reads.\n\
+  \             Could be gzip'ed (extension: .gz) or bzip2'ed (extension: .bz2).\n\
+  \  <i>        Files with interleaved paired-end FASTQ/FASTA reads\n            \
+  \ Could be gzip'ed (extension: .gz) or bzip2'ed (extension: .bz2).\n  <bam>    \
+  \  Files are unaligned BAM sorted by read name.\n  <sam>      File for SAM output\
+  \ (default: stdout)\n\n  <m1>, <m2>, <r> can be comma-separated lists (no whitespace)\
+  \ and can be\n  specified many times.  E.g. '-U file1.fq,file2.fq -U file3.fq'.\n\
+  \nOptions (defaults in parentheses):\n\n Input:\n  -q                 query input\
+  \ files are FASTQ .fq/.fastq (default)\n  --tab5             query input files are\
+  \ TAB5 .tab5\n  --tab6             query input files are TAB6 .tab6\n  --qseq  \
+  \           query input files are in Illumina's qseq format\n  -f              \
+  \   query input files are (multi-)FASTA .fa/.mfa\n  -r                 query input\
+  \ files are raw one-sequence-per-line\n  -F k:<int>,i:<int> query input files are\
+  \ continuous FASTA where reads\n                     are substrings (k-mers) extracted\
+  \ from a FASTA file <s>\n                     and aligned at offsets 1, 1+i, 1+2i\
+  \ ... end of reference\n  -c                 <m1>, <m2>, <r> are sequences themselves,\
+  \ not files\n  -s/--skip <int>    skip the first <int> reads/pairs in the input\
+  \ (none)\n  -u/--upto <int>    stop after first <int> reads/pairs (no limit)\n \
+  \ -5/--trim5 <int>   trim <int> bases from 5'/left end of reads (0)\n  -3/--trim3\
+  \ <int>   trim <int> bases from 3'/right end of reads (0)\n  --trim-to [3:|5:]<int>\
+  \ trim reads exceeding <int> bases from either 3' or 5' end\n                  \
+  \   If the read end is not specified then it defaults to 3 (0)\n  --phred33    \
+  \      qualities are Phred+33 (default)\n  --phred64          qualities are Phred+64\n\
+  \  --int-quals        qualities encoded as space-delimited integers\n\n Presets:\
+  \                 Same as:\n  For --end-to-end:\n   --very-fast            -D 5\
+  \ -R 1 -N 0 -L 22 -i S,0,2.50\n   --fast                 -D 10 -R 2 -N 0 -L 22 -i\
+  \ S,0,2.50\n   --sensitive            -D 15 -R 2 -N 0 -L 22 -i S,1,1.15 (default)\n\
+  \   --very-sensitive       -D 20 -R 3 -N 0 -L 20 -i S,1,0.50\n\n  For --local:\n\
+  \   --very-fast-local      -D 5 -R 1 -N 0 -L 25 -i S,1,2.00\n   --fast-local   \
+  \        -D 10 -R 2 -N 0 -L 22 -i S,1,1.75\n   --sensitive-local      -D 15 -R 2\
+  \ -N 0 -L 20 -i S,1,0.75 (default)\n   --very-sensitive-local -D 20 -R 3 -N 0 -L\
+  \ 20 -i S,1,0.50\n\n Alignment:\n  -N <int>           max # mismatches in seed alignment;\
+  \ can be 0 or 1 (0)\n  -L <int>           length of seed substrings; must be >3,\
+  \ <32 (22)\n  -i <func>          interval between seed substrings w/r/t read len\
+  \ (S,1,1.15)\n  --n-ceil <func>    func for max # non-A/C/G/Ts permitted in aln\
+  \ (L,0,0.15)\n  --dpad <int>       include <int> extra ref chars on sides of DP\
+  \ table (15)\n  --gbar <int>       disallow gaps within <int> nucs of read extremes\
+  \ (4)\n  --ignore-quals     treat all quality values as 30 on Phred scale (off)\n\
+  \  --nofw             do not align forward (original) version of read (off)\n  --norc\
+  \             do not align reverse-complement version of read (off)\n  --no-1mm-upfront\
+  \   do not allow 1 mismatch alignments before attempting to\n                  \
+  \   scan for the optimal seeded alignments\n  --end-to-end       entire read must\
+  \ align; no clipping (on)\n   OR\n  --local            local alignment; ends might\
+  \ be soft clipped (off)\n\n Scoring:\n  --ma <int>         match bonus (0 for --end-to-end,\
+  \ 2 for --local) \n  --mp <int>         max penalty for mismatch; lower qual = lower\
+  \ penalty (6)\n  --np <int>         penalty for non-A/C/G/Ts in read/ref (1)\n \
+  \ --rdg <int>,<int>  read gap open, extend penalties (5,3)\n  --rfg <int>,<int>\
+  \  reference gap open, extend penalties (5,3)\n  --score-min <func> min acceptable\
+  \ alignment score w/r/t read length\n                     (G,20,8 for local, L,-0.6,-0.6\
+  \ for end-to-end)\n\n Reporting:\n  (default)          look for multiple alignments,\
+  \ report best, with MAPQ\n   OR\n  -k <int>           report up to <int> alns per\
+  \ read; MAPQ not meaningful\n   OR\n  -a/--all           report all alignments;\
+  \ very slow, MAPQ not meaningful\n\n Effort:\n  -D <int>           give up extending\
+  \ after <int> failed extends in a row (15)\n  -R <int>           for reads w/ repetitive\
+  \ seeds, try <int> sets of seeds (2)\n\n Paired-end:\n  -I/--minins <int>  minimum\
+  \ fragment length (0)\n  -X/--maxins <int>  maximum fragment length (500)\n  --fr/--rf/--ff\
+  \     -1, -2 mates align fw/rev, rev/fw, fw/fw (--fr)\n  --no-mixed         suppress\
+  \ unpaired alignments for paired reads\n  --no-discordant    suppress discordant\
+  \ alignments for paired reads\n  --dovetail         concordant when mates extend\
+  \ past each other\n  --no-contain       not concordant when one mate alignment contains\
+  \ other\n  --no-overlap       not concordant when mates overlap at all\n\n BAM:\n\
+  \  --align-paired-reads\n                     Bowtie2 will, by default, attempt\
+  \ to align unpaired BAM reads.\n                     Use this option to align paired-end\
+  \ reads instead.\n  --preserve-tags    Preserve tags from the original BAM record\
+  \ by\n                     appending them to the end of the corresponding SAM output.\n\
+  \n Output:\n  -t/--time          print wall-clock time taken by search phases\n\
+  \  --un <path>        write unpaired reads that didn't align to <path>\n  --al <path>\
+  \        write unpaired reads that aligned at least once to <path>\n  --un-conc\
+  \ <path>   write pairs that didn't align concordantly to <path>\n  --al-conc <path>\
+  \   write pairs that aligned concordantly at least once to <path>\n    (Note: for\
+  \ --un, --al, --un-conc, or --al-conc, add '-gz' to the option name, e.g.\n    --un-gz\
+  \ <path>, to gzip compress output, or add '-bz2' to bzip2 compress output.)\n  --quiet\
+  \            print nothing to stderr except serious errors\n  --met-file <path>\
+  \  send metrics to file at <path> (off)\n  --met-stderr       send metrics to stderr\
+  \ (off)\n  --met <int>        report internal counters & metrics every <int> secs\
+  \ (1)\n  --no-unal          suppress SAM records for unaligned reads\n  --no-head\
+  \          suppress header lines, i.e. lines starting with @\n  --no-sq        \
+  \    suppress @SQ header lines\n  --rg-id <text>     set read group id, reflected\
+  \ in @RG line and RG:Z: opt field\n  --rg <text>        add <text> (\"lab:value\"\
+  ) to @RG line of SAM header.\n                     Note: @RG line only printed when\
+  \ --rg-id is set.\n  --omit-sec-seq     put '*' in SEQ and QUAL fields for secondary\
+  \ alignments.\n  --sam-no-qname-trunc\n                     Suppress standard behavior\
+  \ of truncating readname at first whitespace \n                     at the expense\
+  \ of generating non-standard SAM.\n  --xeq              Use '='/'X', instead of\
+  \ 'M,' to specify matches/mismatches in SAM record.\n  --soft-clipped-unmapped-tlen\n\
+  \                     Exclude soft-clipped bases when reporting TLEN\n  --sam-append-comment\n\
+  \                     Append FASTA/FASTQ comment to SAM record\n\n Performance:\n\
+  \  -p/--threads <int> number of alignment threads to launch (1)\n  --reorder   \
+  \       force SAM output order to match order of input reads\n  --mm           \
+  \    use memory-mapped I/O for index; many 'bowtie's can share\n\n Other:\n  --qc-filter\
+  \        filter out reads that are bad according to QSEQ filter\n  --seed <int>\
+  \       seed for random number generator (0)\n  --non-deterministic\n          \
+  \           seed rand. gen. arbitrarily instead of using read attributes\n  --version\
+  \          print version information and quit\n  -h/--help          print this usage\
+  \ message\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bowtie2:2.4.2--py38h1c8e9b9_1

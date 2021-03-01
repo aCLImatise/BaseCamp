@@ -3,16 +3,19 @@ version 1.0
 task Abyssgc {
   input {
     Boolean? verbose
-    File? file
+    File? var_file
   }
   command <<<
     abyss_gc \
-      ~{file} \
+      ~{var_file} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

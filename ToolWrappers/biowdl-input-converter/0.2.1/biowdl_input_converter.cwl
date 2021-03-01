@@ -3,22 +3,22 @@ id: biowdl_input_converter.cwl
 inputs:
 - id: in_output
   doc: "The output file to which the json is written. Default:\nstdout"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_validate
   doc: Do not generate output but only validate the
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --validate
 - id: in_skip_file_check
   doc: Skip the checking if files in the samplesheet are
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skip-file-check
 - id: in_old
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --old
 - id: in_detected_dot
@@ -42,9 +42,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "The output file to which the json is written. Default:\nstdout"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - biowdl-input-converter

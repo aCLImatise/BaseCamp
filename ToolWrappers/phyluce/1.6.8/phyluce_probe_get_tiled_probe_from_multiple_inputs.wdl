@@ -2,10 +2,10 @@ version 1.0
 
 task PhyluceProbeGetTiledProbeFromMultipleInputs {
   input {
-    Boolean? multi_fast_a_output
     Directory? fast_as
+    File? output_config_file
     File? file_store_output
-    String? probe_prefix
+    String? prefix_eg_add
     String? designer
     String? design
     Int? probe_length
@@ -18,13 +18,17 @@ task PhyluceProbeGetTiledProbeFromMultipleInputs {
     Boolean? remove_gc
     Int? start_index
     Boolean? two_probes
+    String _output_output
+    String _designer_designer
   }
   command <<<
     phyluce_probe_get_tiled_probe_from_multiple_inputs \
-      ~{if (multi_fast_a_output) then "--multi-fasta-output" else ""} \
+      ~{_output_output} \
+      ~{_designer_designer} \
       ~{if defined(fast_as) then ("--fastas " +  '"' + fast_as + '"') else ""} \
+      ~{if defined(output_config_file) then ("--multi-fasta-output " +  '"' + output_config_file + '"') else ""} \
       ~{if defined(file_store_output) then ("--output " +  '"' + file_store_output + '"') else ""} \
-      ~{if defined(probe_prefix) then ("--probe-prefix " +  '"' + probe_prefix + '"') else ""} \
+      ~{if defined(prefix_eg_add) then ("--probe-prefix " +  '"' + prefix_eg_add + '"') else ""} \
       ~{if defined(designer) then ("--designer " +  '"' + designer + '"') else ""} \
       ~{if defined(design) then ("--design " +  '"' + design + '"') else ""} \
       ~{if defined(probe_length) then ("--probe-length " +  '"' + probe_length + '"') else ""} \
@@ -38,11 +42,14 @@ task PhyluceProbeGetTiledProbeFromMultipleInputs {
       ~{if defined(start_index) then ("--start-index " +  '"' + start_index + '"') else ""} \
       ~{if (two_probes) then "--two-probes" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    multi_fast_a_output: "MULTI_FASTA_OUTPUT\\n--output OUTPUT\\n--probe-prefix\\nPROBE_PREFIX\\n--designer DESIGNER\\n--design DESIGN\\n[--probe-length LENGTH]\\n[--tiling-density DENSITY]\\n[--overlap {middle,flush-left}]\\n[--probe-bed PROBE_BED]\\n[--locus-bed LOCUS_BED]\\n[--masking MASK]\\n[--do-not-remove-ambiguous]\\n[--remove-gc]\\n[--start-index START_INDEX]\\n[--two-probes]"
     fast_as: "The folder of fasta files from which to design probes"
+    output_config_file: "The output config file from query_multi_fasta_table.py"
     file_store_output: "The file in which to store the output"
-    probe_prefix: "The prefix (e.g. \\\"uce-\\\") to add to all probes designed"
+    prefix_eg_add: "The prefix (e.g. \\\"uce-\\\") to add to all probes designed"
     designer: "Your last name (to indicate who designed the probes)"
     design: "The design name."
     probe_length: "The length of the probes sequence to design"
@@ -55,9 +62,12 @@ task PhyluceProbeGetTiledProbeFromMultipleInputs {
     remove_gc: "Remove loci with GC content outside 30 <= GC <= 70"
     start_index: "The starting UCE index number to use."
     two_probes: "Design only two probes for a given locus."
+    _output_output: "--output OUTPUT"
+    _designer_designer: "--designer DESIGNER"
   }
   output {
     File out_stdout = stdout()
+    File out_output_config_file = "${in_output_config_file}"
     File out_file_store_output = "${in_file_store_output}"
     File out_probe_bed = "${in_probe_bed}"
     File out_locus_bed = "${in_locus_bed}"

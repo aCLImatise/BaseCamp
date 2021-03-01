@@ -5,7 +5,7 @@ task WisestorkZscore {
     Int? binsize
     File? reference
     File? bin_file
-    File? path_input_file
+    File? path_input_bed
     File? path_output_bed
     File? dictionary_file
   }
@@ -14,15 +14,18 @@ task WisestorkZscore {
       ~{if defined(binsize) then ("--binsize " +  '"' + binsize + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(bin_file) then ("--bin-file " +  '"' + bin_file + '"') else ""} \
-      ~{if defined(path_input_file) then ("--input " +  '"' + path_input_file + '"') else ""} \
+      ~{if defined(path_input_bed) then ("--input " +  '"' + path_input_bed + '"') else ""} \
       ~{if defined(path_output_bed) then ("--output " +  '"' + path_output_bed + '"') else ""} \
       ~{if defined(dictionary_file) then ("--dictionary-file " +  '"' + dictionary_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     binsize: "RANGE  Bin size to use. Default = 50000"
     reference: "Path to reference fasta  [required]"
     bin_file: "Optional path to region BED file"
-    path_input_file: "Path to input BED file  [required]"
+    path_input_bed: "Path to input BED file  [required]"
     path_output_bed: "Path to output BED file  [required]"
     dictionary_file: "Path to dictionary BED file  [required]"
   }

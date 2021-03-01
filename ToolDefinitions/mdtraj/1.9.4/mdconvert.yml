@@ -1,0 +1,131 @@
+!Command
+command:
+- mdconvert
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input
+  description: "path to one or more trajectory files. Multiple\ntrajectories, if supplied,\
+    \ will be concatenated\ntogether in the output file in the order supplied. all\n\
+    of the trajectories should be in the same format. the\nformat will be detected\
+    \ based on the file extension"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "path to the save the output. the output format will\nchosen based\
+    \ on the file extension (.dcd, .xtc, .trr,\n.binpos, .nc, .netcdf, .h5, .lh5,\
+    \ .pdb)"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chunk
+  description: "number of frames to read in at once. this determines\nthe memory requirements\
+    \ of this code. default=1000"
+  args: !SimpleFlagArg
+    name: CHUNK
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: force overwrite if output already exsits
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --stride
+  description: "load only every stride-th frame from the input\nfile(s), to subsample."
+  args: !SimpleFlagArg
+    name: STRIDE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --index
+  description: "load a *specific* set of frames. flexible, but\ninefficient for a\
+    \ large trajectory. specify your\nselection using (pythonic) \"slice notation\"\
+    \ e.g. '-i\nN' to load the the Nth frame, '-i -1' will load the\nlast frame, '-i\
+    \ N:M to load frames N to M, etc. see\nhttp://bit.ly/143kloq for details on the\
+    \ notation"
+  args: !SimpleFlagArg
+    name: INDEX
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --atom_indices
+  description: "load only specific atoms from the input file(s).\nprovide a path to\
+    \ file containing a space, tab or\nnewline separated list of the (zero-based)\
+    \ integer\nindices corresponding to the atoms you wish to keep."
+  args: !SimpleFlagArg
+    name: ATOM_INDICES
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --topology
+  description: "path to a PDB/prmtop file. this will be used to parse\nthe topology\
+    \ of the system. it's optional, but useful.\nif specified, it enables you to output\
+    \ the coordinates\nof your dcd/xtc/trr/netcdf/binpos as a PDB file. If\nyou're\
+    \ converting *to* .h5, the topology will be\nstored inside the h5 file.\n"
+  args: !SimpleFlagArg
+    name: TOPOLOGY
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: mdconvert [-h] -o OUTPUT [-c CHUNK] [-f] [-s STRIDE] [-i INDEX]\n\
+  \                 [-a ATOM_INDICES] [-t TOPOLOGY]\n                 input [input\
+  \ ...]\n\nConvert molecular dynamics trajectories between formats. The DCD, XTC,\
+  \ TRR,\nPDB, binpos, NetCDF, binpos, LH5, and HDF5 formats are supported (.dcd,\
+  \ .xtc,\n.trr, .binpos, .nc, .netcdf, .h5, .lh5, .pdb)\n\npositional arguments:\n\
+  \  input                 path to one or more trajectory files. Multiple\n      \
+  \                  trajectories, if supplied, will be concatenated\n           \
+  \             together in the output file in the order supplied. all\n         \
+  \               of the trajectories should be in the same format. the\n        \
+  \                format will be detected based on the file extension\n\nrequired\
+  \ arguments:\n  -o OUTPUT, --output OUTPUT\n                        path to the\
+  \ save the output. the output format will\n                        chosen based\
+  \ on the file extension (.dcd, .xtc, .trr,\n                        .binpos, .nc,\
+  \ .netcdf, .h5, .lh5, .pdb)\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -c CHUNK, --chunk CHUNK\n                      \
+  \  number of frames to read in at once. this determines\n                      \
+  \  the memory requirements of this code. default=1000\n  -f, --force           force\
+  \ overwrite if output already exsits\n  -s STRIDE, --stride STRIDE\n           \
+  \             load only every stride-th frame from the input\n                 \
+  \       file(s), to subsample.\n  -i INDEX, --index INDEX\n                    \
+  \    load a *specific* set of frames. flexible, but\n                        inefficient\
+  \ for a large trajectory. specify your\n                        selection using\
+  \ (pythonic) \"slice notation\" e.g. '-i\n                        N' to load the\
+  \ the Nth frame, '-i -1' will load the\n                        last frame, '-i\
+  \ N:M to load frames N to M, etc. see\n                        http://bit.ly/143kloq\
+  \ for details on the notation\n  -a ATOM_INDICES, --atom_indices ATOM_INDICES\n\
+  \                        load only specific atoms from the input file(s).\n    \
+  \                    provide a path to file containing a space, tab or\n       \
+  \                 newline separated list of the (zero-based) integer\n         \
+  \               indices corresponding to the atoms you wish to keep.\n  -t TOPOLOGY,\
+  \ --topology TOPOLOGY\n                        path to a PDB/prmtop file. this will\
+  \ be used to parse\n                        the topology of the system. it's optional,\
+  \ but useful.\n                        if specified, it enables you to output the\
+  \ coordinates\n                        of your dcd/xtc/trr/netcdf/binpos as a PDB\
+  \ file. If\n                        you're converting *to* .h5, the topology will\
+  \ be\n                        stored inside the h5 file.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mdtraj:1.9.4

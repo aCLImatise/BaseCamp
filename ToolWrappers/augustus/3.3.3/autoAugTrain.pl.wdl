@@ -30,6 +30,9 @@ task AutoAugTrainpl {
       ~{if defined(aug) then ("--aug " +  '"' + aug + '"') else ""} \
       ~{if defined(training_set) then ("--trainingset " +  '"' + training_set + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "FASTA file with DNA sequences for training\\ngenome.fa should include the corresponding sequences in this case"
     species: "species name as used by AUGUSTUS"

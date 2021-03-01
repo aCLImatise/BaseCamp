@@ -14,6 +14,9 @@ task ProphylePropagationPreprocessingpy {
       ~{if (verbose) then "-V" else ""} \
       ~{if (add_prefixes_node) then "-P" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rate_sampling_tree: "rate of sampling the tree [no sampling]"
     autocomplete_tree_names: "autocomplete tree (names of internal nodes and FASTA paths)"

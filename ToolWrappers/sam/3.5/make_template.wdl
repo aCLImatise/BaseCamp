@@ -12,6 +12,9 @@ task MakeTemplate {
       ~{if defined(align_file) then ("-alignfile " +  '"' + align_file + '"') else ""} \
       ~{if defined(option) then ("-option " +  '"' + option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     align_file: ": Aligned sequences to read."
     option: ""

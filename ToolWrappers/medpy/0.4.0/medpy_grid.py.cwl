@@ -4,46 +4,46 @@ inputs:
 - id: in_example
   doc: "Option 1/2: Supply an image to create the grid volume\nby example (i.e. with\
     \ same shape, voxel spacing and\noffset)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --example
 - id: in_shape
   doc: "Option 2/2: Supply a colon-separated list of integers\nthat constitute the\
     \ target volumes shape."
-  type: long
+  type: long?
   inputBinding:
     prefix: --shape
 - id: in_pixel_spacing
   doc: "Set the pixel spacing of the target volume by\nsupplying a colon-separated\
     \ list of N numbers, where N\nis the number of dimension in the generated volume."
-  type: long
+  type: long?
   inputBinding:
     prefix: --pixel-spacing
 - id: in_offset
   doc: "Set offset of the target volume by supplying a colon-\nseparated list of N\
     \ numbers, where N is the number of\ndimension in the generated volume."
-  type: long
+  type: long?
   inputBinding:
     prefix: --offset
 - id: in_real
   doc: "Spacing is given in real world coordinates, rather\nthan voxels. For this\
     \ to make a difference, either the\n-e switch or the -p switch must be set."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --real
 - id: in_display_more_information
   doc: Display more information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_display_debug_information
   doc: Display debug information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_force
   doc: Silently override existing output images.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_output
@@ -63,6 +63,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - medpy_grid.py

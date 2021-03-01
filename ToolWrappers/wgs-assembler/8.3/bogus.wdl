@@ -4,6 +4,9 @@ task Bogus {
   command <<<
     bogus
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

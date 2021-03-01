@@ -10,6 +10,9 @@ task CapCMAPGetchromsizes {
       ~{if defined(bed_file_continaing) then ("-f " +  '"' + bed_file_continaing + '"') else ""} \
       ~{if defined(output_file_name) then ("-o " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_file_continaing: "bed file continaing list of restriction enzyme fragments\\nfor genome"
     output_file_name: "output file name (Default: chrom.sizes)"

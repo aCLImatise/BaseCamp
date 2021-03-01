@@ -3,7 +3,7 @@ version 1.0
 task CbScanpy {
   input {
     File? expr_matrix
-    String? name_cell_meta
+    String? name_cell_table
     Directory? outdir
     Directory? name
     Boolean? in_it
@@ -19,7 +19,7 @@ task CbScanpy {
   command <<<
     cbScanpy \
       ~{if defined(expr_matrix) then ("--exprMatrix " +  '"' + expr_matrix + '"') else ""} \
-      ~{if defined(name_cell_meta) then ("--meta " +  '"' + name_cell_meta + '"') else ""} \
+      ~{if defined(name_cell_table) then ("--meta " +  '"' + name_cell_table + '"') else ""} \
       ~{if defined(outdir) then ("--outDir " +  '"' + outdir + '"') else ""} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if (in_it) then "--init" else ""} \
@@ -32,9 +32,12 @@ task CbScanpy {
       ~{if (test) then "--test" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     expr_matrix: "gene-cell expression matrix file, possible formats:\\n.csv, .h5, .mtx, .txt, .tab, .loom, .h5ad. Existing\\nmeta data from .loom and .h5ad will be kept and\\nexported."
-    name_cell_meta: "name of cell meta data table. A table like tsv or csv\\nformat, first row has cellId and the cellId must match\\na sample name in the expression matrix. Optional but\\nrequired if you use --inCluster. 'inMeta' in\\nscanpy.conf"
+    name_cell_table: "name of cell meta data table. A table like tsv or csv\\nformat, first row has cellId and the cellId must match\\na sample name in the expression matrix. Optional but\\nrequired if you use --inCluster. 'inMeta' in\\nscanpy.conf"
     outdir: "output directory"
     name: "internal name of dataset in cell browser. No spaces or\\nspecial characters. default: name of output directory\\n(-o)"
     in_it: "copy sample scanpy.conf to current directory"

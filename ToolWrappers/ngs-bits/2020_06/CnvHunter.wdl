@@ -4,7 +4,7 @@ task CnvHunter {
   input {
     File? in
     File? out
-    Int? number_most_similar
+    Int? number_most_use
     Float? min_z
     Float? ext_min_z
     Float? ext_gap_span
@@ -29,7 +29,7 @@ task CnvHunter {
     CnvHunter \
       ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
-      ~{if defined(number_most_similar) then ("-n " +  '"' + number_most_similar + '"') else ""} \
+      ~{if defined(number_most_use) then ("-n " +  '"' + number_most_use + '"') else ""} \
       ~{if defined(min_z) then ("-min_z " +  '"' + min_z + '"') else ""} \
       ~{if defined(ext_min_z) then ("-ext_min_z " +  '"' + ext_min_z + '"') else ""} \
       ~{if defined(ext_gap_span) then ("-ext_gap_span " +  '"' + ext_gap_span + '"') else ""} \
@@ -50,10 +50,13 @@ task CnvHunter {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input TSV files (one per sample) containing coverage data (chr, start, end, avg_depth). If only one file is given, each line in this file is interpreted as an input file path."
     out: "Output TSV file containing the detected CNVs."
-    number_most_similar: "The number of most similar samples to use for reference construction.\\nDefault value: '30'"
+    number_most_use: "The number of most similar samples to use for reference construction.\\nDefault value: '30'"
     min_z: "Minimum z-score for CNV seed detection.\\nDefault value: '4'"
     ext_min_z: "Minimum z-score for CNV extension around seeds.\\nDefault value: '2'"
     ext_gap_span: "Percentage of orignal region size that can be spanned while merging nearby regions (0 disables it).\\nDefault value: '20'"

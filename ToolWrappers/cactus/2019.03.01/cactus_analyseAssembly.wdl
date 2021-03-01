@@ -4,6 +4,9 @@ task CactusAnalyseAssembly {
   command <<<
     cactus_analyseAssembly
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

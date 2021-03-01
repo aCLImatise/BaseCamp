@@ -4,44 +4,44 @@ inputs:
 - id: in_volume
   doc: "Directory to mount inside the container. Can be\nsupplied multiple times (e.g.\
     \ -v /mnt/data:/mnt/data\n-v /host:/guest"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --volume
 - id: in_env
   doc: "Environment variables to set within container. Can be\nsupplied multiple times\
     \ (e.g. -e foo=bar -e pizza=pie"
-  type: string
+  type: string?
   inputBinding:
     prefix: --env
 - id: in_entry_point
   doc: Overwrite default entry point for image
-  type: string
+  type: string?
   inputBinding:
     prefix: --entrypoint
 - id: in_workdir
   doc: Working directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --workdir
 - id: in_quiet
   doc: Suppress printing of image metadata
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_rootfs
   doc: "Use directory pointed to here for rootfs instead of\nextracting the image\
     \ (for expert use/development\npurposes)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --rootfs
 - id: in_rm
   doc: Automatically remove the container when it exits
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rm
 - id: in_user
   doc: 'User to execute command as: *currently ignored*'
-  type: string
+  type: string?
   inputBinding:
     prefix: --user
 - id: in_image
@@ -58,6 +58,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dx-docker

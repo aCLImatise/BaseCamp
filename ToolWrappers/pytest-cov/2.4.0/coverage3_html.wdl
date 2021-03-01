@@ -26,6 +26,9 @@ task Coverage3Html {
       ~{if defined(debug) then ("--debug " +  '"' + debug + '"') else ""} \
       ~{if defined(rcfile) then ("--rcfile " +  '"' + rcfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory: "Write the output files to DIR."
     fail_under: "Exit with a status of 2 if the total coverage is less\\nthan MIN."

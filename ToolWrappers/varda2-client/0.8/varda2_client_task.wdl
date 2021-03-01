@@ -8,6 +8,9 @@ task Varda2clientTask {
     varda2_client task \
       ~{if defined(uuid) then ("--uuid " +  '"' + uuid + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     uuid: "Task UUID"
   }

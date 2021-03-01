@@ -14,6 +14,9 @@ task Kalign {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: ": Output format. [Fasta]"
     reformat: ": Reformat existing alignment. [NA]"

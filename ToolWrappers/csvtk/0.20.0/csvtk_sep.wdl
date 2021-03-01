@@ -52,6 +52,9 @@ task CsvtkSep {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     drop: "drop extra data, exclusive with --merge"
     fields: "select only these fields. e.g -f 1,2 or -f columnA,columnB (default \\\"1\\\")"

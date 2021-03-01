@@ -16,6 +16,9 @@ task PlanemoCondaInit {
       ~{if defined(cond_a_ensure_channels) then ("--conda_ensure_channels " +  '"' + cond_a_ensure_channels + '"') else ""} \
       ~{if (cond_a_use_local) then "--conda_use_local" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cond_a_prefix: "Conda prefix to use for conda dependency"
     cond_a_debug: "Enable more verbose conda logging."

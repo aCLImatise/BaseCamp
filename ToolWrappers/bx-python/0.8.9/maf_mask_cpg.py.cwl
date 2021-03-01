@@ -3,12 +3,12 @@ id: maf_mask_cpg.py.cwl
 inputs:
 - id: in_mask
   doc: Character to use as mask ('?' is default)
-  type: string
+  type: string?
   inputBinding:
     prefix: --mask
 - id: in_restricted
   doc: Use restricted definition of CpGs
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --restricted
 - id: in_input
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - maf_mask_cpg.py

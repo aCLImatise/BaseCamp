@@ -18,6 +18,9 @@ task ChromosomerAssembleFragmentFasta {
       ~{output_fast_a} \
       ~{if (s) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s: ""
     chromosome_r: ""

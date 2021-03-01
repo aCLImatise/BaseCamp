@@ -18,6 +18,9 @@ task DsComputeBEDDensity {
       ~{if defined(window_size) then ("--windowSize " +  '"' + window_size + '"') else ""} \
       ~{if defined(bedgraph_files_output) then ("--output " +  '"' + bedgraph_files_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_files_features: "BED files from which features density will be\\ncalculated."
     chrom_size: "A 2 columns tab-delimited file containing chromosome\\nsizes, with one chromosome per line."

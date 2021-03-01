@@ -12,6 +12,9 @@ task Ct2db {
       ~{if (convert_to_rna) then "--convertToRNA" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     remove_pk: "Remove pseudoknots from structure\\n(default=off)"
     convert_to_rna: "Substitute all nucleotides with their RNA alphabet\\ncounter parts, i.e. convert to characters A, C, G, U or\\nN for unknown bases.\\n(default=off)"

@@ -38,6 +38,9 @@ task Partition {
       ~{if (xo) then "-xo" else ""} \
       ~{if (xs) then "-xs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "Specify that the sequence is DNA, and DNA parameters are to be used.\\nDefault is to use RNA parameters."
     disable_coax: "Specify that coaxial stacking recusions should not be used. This option\\nuses a less realistic energy function in exchange for a faster\\ncalculation."

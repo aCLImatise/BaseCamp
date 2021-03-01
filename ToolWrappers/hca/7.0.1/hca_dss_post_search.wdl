@@ -18,6 +18,9 @@ task HcaDssPostsearch {
       ~{if defined(search_after) then ("--search-after " +  '"' + search_after + '"') else ""} \
       ~{if (no_paginate) then "--no-paginate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     es_query: "Elasticsearch query"
     output_format: "Specifies the output format. The default format, `summary`, is a list of UUIDs for bundles that match the query. Set this parameter to `raw` to get the verbatim JSON metadata for bundles that match the query. When using `output_format raw` the `per_page` size is limit to no more than 10 to avoid excessively large response sizes."

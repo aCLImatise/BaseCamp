@@ -4,6 +4,9 @@ task PhyluceSnpGetFromUceAlignments {
   command <<<
     phyluce_snp_get_from_uce_alignments
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -8,6 +8,9 @@ task Summarizesketchsh {
     summarizesketch_sh \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
   }

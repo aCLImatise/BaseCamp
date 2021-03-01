@@ -16,6 +16,9 @@ task Fasta2gfapy {
       ~{if defined(contigs) then ("-contigs " +  '"' + contigs + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "FASTA file containing the sequences of the scaffolds obtained from the assembly (format: 'xxx.fasta')"
     min: "Minimum size of the 'Ns' region to treat/process as a gap"

@@ -14,6 +14,9 @@ task Rsemtbam2gbam {
       ~{genome_bam_output} \
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     p: ""
     reference_name: ""

@@ -8,6 +8,9 @@ task Combigpl {
     combig_pl \
       ~{bigram}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bigram: ""
   }

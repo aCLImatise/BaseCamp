@@ -1,0 +1,189 @@
+!Command
+command:
+- mkarv
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: directory
+  description: The path to the directory where the web app will be
+- !Positional
+  optional: false
+  position: 1
+  name: created.
+  description: metrics               One or more ataqv metrics files in JSON format.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --concurrency
+  description: "The number of concurrent processes to use (default:\n1). (default:\
+    \ 1)"
+  args: !SimpleFlagArg
+    name: CONCURRENCY
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --description
+  description: 'A description for the viewer instance. (default: None)'
+  args: !SimpleFlagArg
+    name: DESCRIPTION
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: "Overwrite the output directory if it exists. (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --indent
+  description: "If indent is given, JSON output will be pretty-printed\nand indented.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --less-redundant
+  description: "Produce a viewer with fewer metrics (metrics that are\nexpected to\
+    \ be largely redundant will not be\ndisplayed. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --maximum-fragment-length
+  description: "The maximum fragment length for which the distance to\nthe reference\
+    \ fragment length count distribution will\nbe measured. (default: 1000)"
+  args: !SimpleFlagArg
+    name: MAXIMUM_FRAGMENT_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --peak-reference
+  description: "A reference set of peak metrics to plot. The default\nvalue is \"\
+    SRR891268\", the peak metrics of that sample\nin the ATAC-seq paper, as generated\
+    \ with MACS2 in our\npipeline. It can be specified as \"calculate\", in which\n\
+    case these metrics will be averaged from the given\nmetrics. It can also be the\
+    \ name of a JSON file, which\nmust contain an object with two keys,\n\"cumulative_fraction_of_hqaa\"\
+    \ and\n\"cumulative_fraction_of_territory\", the value of each\nbeing an array\
+    \ of fractions of high-quality autosomal\nalignments (HQAA) or total peak territory,\n\
+    respectively. A tab- or comma-separated value file may\nalso be given, in which\
+    \ each line contains two\nfractions, of HQAA and peak territory. All of these\n\
+    arrays should represent values at percentiles from\n1-100. (default: SRR891268)"
+  args: !SimpleFlagArg
+    name: PEAK_REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: "How to make the reference fragment length count\ndistribution. The\
+    \ default value is \"SRR891268\", the\nfragment length distribution of that sample\
+    \ in the\nATAC-seq paper. It can be specified as \"calculate\", in\nwhich case\
+    \ a distance will be calculated for each set\nof metrics from a reference distribution\
+    \ constructed\nfrom the rest of the given metrics. It can also be the\nname of\
+    \ a file containing a reference distribution.\nThis file may be in JSON format,\
+    \ containing an object\nmapping fragment lengths to counts (e.g. \"{0: 0, 1:\n\
+    10, 2: 17}\", or it may be a tab- or comma-separated\nvalue file in which each\
+    \ line contains a fragment\nlength and count. It may (default: SRR891268)"
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --template-directory
+  description: "The location of the web app directory template.\n(default: auto)"
+  args: !SimpleFlagArg
+    name: TEMPLATE_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: 'Talk more. (default: False)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: mkarv [-h] [-c CONCURRENCY] [-d DESCRIPTION] [-f] [-i] [-l]\n \
+  \            [-m MAXIMUM_FRAGMENT_LENGTH] [-p PEAK_REFERENCE] [-r REFERENCE]\n \
+  \            [-t TEMPLATE_DIRECTORY] [-v] [--version]\n             directory [metrics\
+  \ [metrics ...]]\n\nGiven one or more ataqv metrics files in JSON format, creates\
+  \ an instance of\nthe ataqv result visualization tool. The web application is copied\
+  \ into the\nnamed directory, and the JSON results are translated for it. The resulting\n\
+  directory can be loaded into a web browser locally by opening the index.html\nfile,\
+  \ or published with a web server like Apache or nginx.\n\npositional arguments:\n\
+  \  directory             The path to the directory where the web app will be\n \
+  \                       created.\n  metrics               One or more ataqv metrics\
+  \ files in JSON format.\n                        (default: None)\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -c CONCURRENCY, --concurrency\
+  \ CONCURRENCY\n                        The number of concurrent processes to use\
+  \ (default:\n                        1). (default: 1)\n  -d DESCRIPTION, --description\
+  \ DESCRIPTION\n                        A description for the viewer instance. (default:\
+  \ None)\n  -f, --force           Overwrite the output directory if it exists. (default:\n\
+  \                        False)\n  -i, --indent          If indent is given, JSON\
+  \ output will be pretty-printed\n                        and indented. (default:\
+  \ False)\n  -l, --less-redundant  Produce a viewer with fewer metrics (metrics that\
+  \ are\n                        expected to be largely redundant will not be\n  \
+  \                      displayed. (default: False)\n  -m MAXIMUM_FRAGMENT_LENGTH,\
+  \ --maximum-fragment-length MAXIMUM_FRAGMENT_LENGTH\n                        The\
+  \ maximum fragment length for which the distance to\n                        the\
+  \ reference fragment length count distribution will\n                        be\
+  \ measured. (default: 1000)\n  -p PEAK_REFERENCE, --peak-reference PEAK_REFERENCE\n\
+  \                        A reference set of peak metrics to plot. The default\n\
+  \                        value is \"SRR891268\", the peak metrics of that sample\n\
+  \                        in the ATAC-seq paper, as generated with MACS2 in our\n\
+  \                        pipeline. It can be specified as \"calculate\", in which\n\
+  \                        case these metrics will be averaged from the given\n  \
+  \                      metrics. It can also be the name of a JSON file, which\n\
+  \                        must contain an object with two keys,\n               \
+  \         \"cumulative_fraction_of_hqaa\" and\n                        \"cumulative_fraction_of_territory\"\
+  , the value of each\n                        being an array of fractions of high-quality\
+  \ autosomal\n                        alignments (HQAA) or total peak territory,\n\
+  \                        respectively. A tab- or comma-separated value file may\n\
+  \                        also be given, in which each line contains two\n      \
+  \                  fractions, of HQAA and peak territory. All of these\n       \
+  \                 arrays should represent values at percentiles from\n         \
+  \               1-100. (default: SRR891268)\n  -r REFERENCE, --reference REFERENCE\n\
+  \                        How to make the reference fragment length count\n     \
+  \                   distribution. The default value is \"SRR891268\", the\n    \
+  \                    fragment length distribution of that sample in the\n      \
+  \                  ATAC-seq paper. It can be specified as \"calculate\", in\n  \
+  \                      which case a distance will be calculated for each set\n \
+  \                       of metrics from a reference distribution constructed\n \
+  \                       from the rest of the given metrics. It can also be the\n\
+  \                        name of a file containing a reference distribution.\n \
+  \                       This file may be in JSON format, containing an object\n\
+  \                        mapping fragment lengths to counts (e.g. \"{0: 0, 1:\n\
+  \                        10, 2: 17}\", or it may be a tab- or comma-separated\n\
+  \                        value file in which each line contains a fragment\n   \
+  \                     length and count. It may (default: SRR891268)\n  -t TEMPLATE_DIRECTORY,\
+  \ --template-directory TEMPLATE_DIRECTORY\n                        The location\
+  \ of the web app directory template.\n                        (default: auto)\n\
+  \  -v, --verbose         Talk more. (default: False)\n  --version             show\
+  \ program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ataqv:1.2.1--py36h00065c3_1

@@ -30,6 +30,9 @@ task Cstranslate {
       ~{if (weight) then "--weight" else ""} \
       ~{if (ff_index) then "--ffindex" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "Input file with alignment or sequence"
     outfile: "Output file for generated abstract state sequence (def: <infile>.as)"

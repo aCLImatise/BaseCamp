@@ -12,6 +12,9 @@ task MakeNBaitsPerBinFilepy {
       ~{if defined(binsize) then ("--binsize " +  '"' + binsize + '"') else ""} \
       ~{if defined(max_l_brown_est) then ("--maxLBrownEst " +  '"' + max_l_brown_est + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     remove_adjacent: ""
     binsize: ""

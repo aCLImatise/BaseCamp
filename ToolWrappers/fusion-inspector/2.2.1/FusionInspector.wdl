@@ -68,6 +68,9 @@ task FusionInspector {
       ~{if defined(star_max_mate_dist) then ("--STAR_max_mate_dist " +  '"' + star_max_mate_dist + '"') else ""} \
       ~{if (no_ff_pm) then "--no_FFPM" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fusions: "fusions summary files (list, comma-delimited and no spaces)"
     left_fq: "left (or single) fastq file"

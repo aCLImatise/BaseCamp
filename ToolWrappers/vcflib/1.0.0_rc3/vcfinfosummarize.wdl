@@ -20,6 +20,9 @@ task Vcfinfosummarize {
       ~{if (min) then "--min" else ""} \
       ~{if (max) then "--max" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     field: "Summarize this field in the INFO column"
     info: "Store the computed statistic in this info field"

@@ -12,6 +12,9 @@ task SequenceMatch {
       ~{train_vertical_line_seq_match} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_match_main: ""
     train_vertical_line_seq_match: ""

@@ -2,21 +2,21 @@ version 1.0
 
 task HMMRATAC {
   input {
-    Boolean? _bam_bam
-    Boolean? _index_bai
-    Boolean? _genome_genomefile
-    Boolean? _means_list
-    Boolean? _stddev_list
-    Boolean? _fragem_true
-    Boolean? _minmapq_int
-    Boolean? _upper_upper
-    Boolean? _lower_lower
-    Boolean? _zscore_int
-    Boolean? _output_string
-    Boolean? _blacklist_bedfile
-    Boolean? _peaks_true
-    Boolean? _kmeans_int
-    Boolean? _training_file
+    File? bam
+    File? index
+    File? genome
+    Int? means
+    Int? stddev
+    String? frage_m
+    Int? min_mapq
+    Int? upper
+    Int? lower
+    Int? zscore
+    String? name_output_files
+    File? blacklist
+    String? peaks
+    Int? k_means
+    File? training
     String? bed_graph
     Int? min_len
     Int? score
@@ -37,21 +37,21 @@ task HMMRATAC {
   command <<<
     HMMRATAC \
       ~{java} \
-      ~{if (_bam_bam) then "-b" else ""} \
-      ~{if (_index_bai) then "-i" else ""} \
-      ~{if (_genome_genomefile) then "-g" else ""} \
-      ~{if (_means_list) then "-m" else ""} \
-      ~{if (_stddev_list) then "-s" else ""} \
-      ~{if (_fragem_true) then "-f" else ""} \
-      ~{if (_minmapq_int) then "-q" else ""} \
-      ~{if (_upper_upper) then "-u" else ""} \
-      ~{if (_lower_lower) then "-l" else ""} \
-      ~{if (_zscore_int) then "-z" else ""} \
-      ~{if (_output_string) then "-o" else ""} \
-      ~{if (_blacklist_bedfile) then "-e" else ""} \
-      ~{if (_peaks_true) then "-p" else ""} \
-      ~{if (_kmeans_int) then "-k" else ""} \
-      ~{if (_training_file) then "-t" else ""} \
+      ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
+      ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
+      ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
+      ~{if defined(means) then ("--means " +  '"' + means + '"') else ""} \
+      ~{if defined(stddev) then ("--stddev " +  '"' + stddev + '"') else ""} \
+      ~{if defined(frage_m) then ("--fragem " +  '"' + frage_m + '"') else ""} \
+      ~{if defined(min_mapq) then ("--minmapq " +  '"' + min_mapq + '"') else ""} \
+      ~{if defined(upper) then ("--upper " +  '"' + upper + '"') else ""} \
+      ~{if defined(lower) then ("--lower " +  '"' + lower + '"') else ""} \
+      ~{if defined(zscore) then ("--zscore " +  '"' + zscore + '"') else ""} \
+      ~{if defined(name_output_files) then ("--output " +  '"' + name_output_files + '"') else ""} \
+      ~{if defined(blacklist) then ("--blacklist " +  '"' + blacklist + '"') else ""} \
+      ~{if defined(peaks) then ("--peaks " +  '"' + peaks + '"') else ""} \
+      ~{if defined(k_means) then ("--kmeans " +  '"' + k_means + '"') else ""} \
+      ~{if defined(training) then ("--training " +  '"' + training + '"') else ""} \
       ~{if defined(bed_graph) then ("--bedgraph " +  '"' + bed_graph + '"') else ""} \
       ~{if defined(min_len) then ("--minlen " +  '"' + min_len + '"') else ""} \
       ~{if defined(score) then ("--score " +  '"' + score + '"') else ""} \
@@ -68,22 +68,25 @@ task HMMRATAC {
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _bam_bam: ", --bam <BAM> Sorted BAM file containing the ATAC-seq reads"
-    _index_bai: ", --index <BAI> Index file for the sorted BAM File"
-    _genome_genomefile: ", --genome <GenomeFile> Two column, tab delimited file containing genome size stats"
-    _means_list: ", --means <double> Comma separated list of initial mean values for the fragment distribution. Default = 50,200,400,600"
-    _stddev_list: ", --stddev <double> Comma separated list of initial standard deviation values for fragment distribution. Default = 20,20,20,20"
-    _fragem_true: ", --fragem <true || false> Whether to perform EM training on the fragment distribution. Default = True"
-    _minmapq_int: ", --minmapq <int> Minimum mapping quality of reads to keep. Default = 30"
-    _upper_upper: ", --upper <int> Upper limit on fold change range for choosing training sites. Default = 20"
-    _lower_lower: ", --lower <int> Lower limit on fold change range for choosing training sites. Default = 10"
-    _zscore_int: ", --zscore <int> Zscored read depth to mask during Viterbi decoding. Default = 100"
-    _output_string: ", --output <String> Name for output files. Default = NA"
-    _blacklist_bedfile: ", --blacklist <BED_File> bed file of blacklisted regions to exclude"
-    _peaks_true: ", --peaks <true || false> Whether to report peaks in bed format. Default = true"
-    _kmeans_int: ", --kmeans <int> Number of States in the model. Default = 3. If not k=3, recommend NOT calling peaks, use bedgraph"
-    _training_file: ", --training <BED_File> BED file of training regions to use for training model, instead of foldchange settings"
+    bam: "Sorted BAM file containing the ATAC-seq reads"
+    index: "Index file for the sorted BAM File"
+    genome: "Two column, tab delimited file containing genome size stats"
+    means: "Comma separated list of initial mean values for the fragment distribution. Default = 50,200,400,600"
+    stddev: "Comma separated list of initial standard deviation values for fragment distribution. Default = 20,20,20,20"
+    frage_m: "Whether to perform EM training on the fragment distribution. Default = True"
+    min_mapq: "Minimum mapping quality of reads to keep. Default = 30"
+    upper: "Upper limit on fold change range for choosing training sites. Default = 20"
+    lower: "Lower limit on fold change range for choosing training sites. Default = 10"
+    zscore: "Zscored read depth to mask during Viterbi decoding. Default = 100"
+    name_output_files: "Name for output files. Default = NA"
+    blacklist: "bed file of blacklisted regions to exclude"
+    peaks: "Whether to report peaks in bed format. Default = true"
+    k_means: "Number of States in the model. Default = 3. If not k=3, recommend NOT calling peaks, use bedgraph"
+    training: "BED file of training regions to use for training model, instead of foldchange settings"
     bed_graph: "Whether to report whole genome bedgraph of all state anntations. Default = false"
     min_len: "Minimum length of open region to call peak. Note: -p , --peaks must be set. Default = 200"
     score: "What type of score system to use for peaks. Can be used for ranking peaks. Default = max"

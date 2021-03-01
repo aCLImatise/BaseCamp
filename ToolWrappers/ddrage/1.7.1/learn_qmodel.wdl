@@ -20,6 +20,9 @@ task LearnQmodel {
       ~{if defined(show) then ("--show " +  '"' + show + '"') else ""} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     p_five: "Path to a forward (p5) read file."
     p_seven: "Path to a reverse (p7) read file."

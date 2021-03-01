@@ -12,6 +12,9 @@ task MsgfPlus {
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""} \
       ~{if (x_mx_three_five_zero_zero_m) then "-Xmx3500M" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jar: ""
     x_mx_three_five_zero_zero_m: ""

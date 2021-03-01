@@ -4,6 +4,9 @@ task Scanpy {
   command <<<
     scanpy
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

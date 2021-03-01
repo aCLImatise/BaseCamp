@@ -10,6 +10,9 @@ task MafThreadForSpeciespy {
       ~{species_two} \
       ~{if (no_fuse) then "--nofuse" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_fuse: "Don't attempt to join blocks, just remove rows."
     species_two: ""

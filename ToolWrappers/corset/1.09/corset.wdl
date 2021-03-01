@@ -4,9 +4,9 @@ task Corset {
   input {
     Float? comma_separated_list
     Int? value_used_thresholding
-    Boolean? switches_log_test
+    Boolean? switches_log_be
     Int? filter_transcripts_fewer
-    File? specifies_grouping_ie
+    File? specifies_grouping_belong
     String? prefix_output_filenames
     String? specifies_files_overwritten
     File? specifies_sample_names
@@ -21,9 +21,9 @@ task Corset {
       ~{input_bam_files} \
       ~{if defined(comma_separated_list) then ("-d " +  '"' + comma_separated_list + '"') else ""} \
       ~{if defined(value_used_thresholding) then ("-D " +  '"' + value_used_thresholding + '"') else ""} \
-      ~{if (switches_log_test) then "-I" else ""} \
+      ~{if (switches_log_be) then "-I" else ""} \
       ~{if defined(filter_transcripts_fewer) then ("-m " +  '"' + filter_transcripts_fewer + '"') else ""} \
-      ~{if defined(specifies_grouping_ie) then ("-g " +  '"' + specifies_grouping_ie + '"') else ""} \
+      ~{if defined(specifies_grouping_belong) then ("-g " +  '"' + specifies_grouping_belong + '"') else ""} \
       ~{if defined(prefix_output_filenames) then ("-p " +  '"' + prefix_output_filenames + '"') else ""} \
       ~{if defined(specifies_files_overwritten) then ("-f " +  '"' + specifies_files_overwritten + '"') else ""} \
       ~{if defined(specifies_sample_names) then ("-n " +  '"' + specifies_sample_names + '"') else ""} \
@@ -32,12 +32,15 @@ task Corset {
       ~{if defined(running_i_will) then ("-l " +  '"' + running_i_will + '"') else ""} \
       ~{if defined(running_i_option) then ("-x " +  '"' + running_i_option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     comma_separated_list: "A comma separated list of distance thresholds. The range must be\\nbetween 0 and 1. e.g -d 0.4,0.5. If more than one distance threshold\\nis supplied, the output filenames will be of the form:\\ncounts-<threshold>.txt and clusters-<threshold>.txt\\nDefault: 0.3"
     value_used_thresholding: "The value used for thresholding the log likelihood ratio. The default\\nvalue will depend on the number of degrees of freedom (which is the\\nnumber of groups -1). By default D = 17.5 + 2.5 * ndf, which corresponds\\napproximately to a p-value threshold of 10^-5, when there are fewer than\\n10 groups."
-    switches_log_test: "Switches off the log likelihood ratio test and should be used\\nfor downstream differential transcript usage analysis. It will prevent\\ndifferentially expressed transcript being split into different clusters.\\nThis option is the equivalent of setting -D to a very large number.\\nDefault: log likelihood ratio test on"
+    switches_log_be: "Switches off the log likelihood ratio test and should be used\\nfor downstream differential transcript usage analysis. It will prevent\\ndifferentially expressed transcript being split into different clusters.\\nThis option is the equivalent of setting -D to a very large number.\\nDefault: log likelihood ratio test on"
     filter_transcripts_fewer: "Filter out any transcripts with fewer than this many reads aligning.\\nDefault: 10"
-    specifies_grouping_ie: "Specifies the grouping. i.e. which samples belong to which experimental\\ngroups. The parameter must be a comma separated list (no spaces), with the\\ngroupings given in the same order as the bam filename. For example:\\n-g Group1,Group1,Group2,Group2 etc. If this option is not used, each sample\\nis treated as an independent experimental group."
+    specifies_grouping_belong: "Specifies the grouping. i.e. which samples belong to which experimental\\ngroups. The parameter must be a comma separated list (no spaces), with the\\ngroupings given in the same order as the bam filename. For example:\\n-g Group1,Group1,Group2,Group2 etc. If this option is not used, each sample\\nis treated as an independent experimental group."
     prefix_output_filenames: "Prefix for the output filenames. The output files will be of the form\\n<prefix>-counts.txt and <prefix>-clusters.txt. Default filenames are:\\ncounts.txt and clusters.txt"
     specifies_files_overwritten: "Specifies whether the output files should be overwritten if they already exist.\\nDefault: false"
     specifies_sample_names: "Specifies the sample names to be used in the header of the output count file.\\nThis should be a comma separated list without spaces.\\ne.g. -n Group1-ReplicateA,Group1-ReplicateB,Group2-ReplicateA etc.\\nDefault: the input filenames will be used."

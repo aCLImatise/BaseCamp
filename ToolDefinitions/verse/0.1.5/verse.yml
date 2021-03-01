@@ -3,113 +3,116 @@ command:
 - verse
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: input_file
   description: "Give the name of input read file that contains the read mapping\n\
     results. Format of input file is automatically determined (SAM/BAM)\nIf it is\
     \ paired-end data, the file MUST be name-sorted, otherwise\nthe user MUST specify\
     \ -S, or use samtools to sort it by name."
-  position: 0
-  name: input_file
-  optional: false
 named:
 - !Flag
-  description: "Give the name of the annotation file. The program currently only\n\
-    supports GTF format."
+  optional: true
   synonyms:
   - -a
+  description: "Give the name of the annotation file. The program currently only\n\
+    supports GTF format."
   args: !SimpleFlagArg
     name: input
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
   description: "Give the general name of the output file, e.g., 'Sample_A'.\nThe summary\
     \ file will be named 'Sample_A.summary.txt.'\nThe file containing gene counts\
     \ will be named 'Sample_A.exon.txt',\n'Sample_A.intron.txt', etc."
-  synonyms:
-  - -o
   args: !SimpleFlagArg
     name: input
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -z
   description: "The Running Mode: 0 by default (featureCounts), 1 (HTSeq-Union),\n\
     2 (HTSeq-Intersection_strict), 3 (HTSeq-Intersection_nonempty),\n4 (Union_strict),\
     \ 5 (Cover_length).\nPlease refer to the manual or use '-Z' to check the details\
     \ of\neach mode."
-  synonyms:
-  - -z
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
   description: "Specify the feature type. Only rows which have the matched\nfeature\
     \ type in the provided GTF annotation file will be included\nfor read counting.\
     \ 'exon' by default.\nProviding a list of feature types (e.g., -t 'exon;intron;mito')\n\
     will automatically enter hierarchical_assign mode. If the user\nwants to assign\
     \ independently for each feature type, please\nspecify '--assignIndependently'.\
     \ Use -Z to check the details."
-  synonyms:
-  - -t
   args: !SimpleFlagArg
     name: input
-  optional: true
 - !Flag
-  description: "Specify the gene_identifier attribute, which is normally 'gene_id'\n\
-    or 'gene_name'. 'gene_id' by default."
+  optional: true
   synonyms:
   - -g
+  description: "Specify the gene_identifier attribute, which is normally 'gene_id'\n\
+    or 'gene_name'. 'gene_id' by default."
   args: !SimpleFlagArg
     name: input
-  optional: true
 - !Flag
-  description: "If the input file is paired-end data but not sorted by read name,\n\
-    this option MUST be specified."
+  optional: true
   synonyms:
   - -S
+  description: "If the input file is paired-end data but not sorted by read name,\n\
+    this option MUST be specified."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
   description: "Indicate if strand-specific read counting should be performed.\nIt\
     \ has three possible values:  0 (unstranded), 1 (stranded) and\n2 (reversely stranded).\
     \ 0 by default."
-  synonyms:
-  - -s
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -Q
   description: "The minimum mapping quality score a read must satisfy in order\nto\
     \ be counted. For paired-end reads, at least one end should\nsatisfy this criteria.\
     \ 0 by default."
-  synonyms:
-  - -Q
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -l
   description: "Output the gene length. This length is feature_type specific,\nwhich\
     \ means the length in an exon_count file will be the total\nexon length of each\
     \ gene, the length in an intron_count file will\nbe the total intron length, etc."
-  synonyms:
-  - -l
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -R
   description: "Output read assignment details for each read/read pairs. The\ndetails\
     \ will be saved to a tab-delimited file that contains five\ncolumns including\
     \ read name, status(assigned or the reason if not\nassigned), feature type and\
     \ assigned gene name."
-  synonyms:
-  - -R
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -T
   description: "Number of threads used for read assignment. 1 by default.\nNote that\
     \ when running, VERSE will initiate one main thread and\nat least one helper thread\
     \ for read assignment. This option\nspecifies the number of helper threads."
-  synonyms:
-  - -T
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --singleEnd
   description: "If specified, VERSE will assume the input is\nsingle-end data, and\
     \ assign every reads individually. If this is\nnot specified(default), the input\
     \ will be treated as paired-end\ndata. The 'missing mate' count will show how\
@@ -117,153 +120,150 @@ named:
     \ paired-\nend mode, but it will take longer and the reads will all be\ncounted\
     \ as missing mates. So it is recommended to specify this\nif the user knows it\
     \ is single-end."
-  synonyms:
-  - --singleEnd
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --assignIndependently
   description: "If specified, VERSE will assign reads to listed\nfeature types independently.\
     \ This has the same effect as running\nVERSE separately for each feature type,\
     \ except that it only\nrequires one run, thus is more efficient."
-  synonyms:
-  - --assignIndependently
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Reads are extended upstream by <int> bases from\ntheir 5' end."
+  optional: true
   synonyms:
   - --readExtension5
+  description: "Reads are extended upstream by <int> bases from\ntheir 5' end."
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Reads are extended upstream by <int> bases from\ntheir 3' end."
+  optional: true
   synonyms:
   - --readExtension3
+  description: "Reads are extended upstream by <int> bases from\ntheir 3' end."
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "Specify the minimum number of overlapped bases\nrequired to assign\
-    \ a read to a feature. 1 by default."
+  optional: true
   synonyms:
   - --minReadOverlap
+  description: "Specify the minimum number of overlapped bases\nrequired to assign\
+    \ a read to a feature. 1 by default."
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxReadNonoverlap
   description: "Specify the maximum number of non-overlapped bases\na read can have.\
     \ A read is considered no_feature if its number of\nnon-overlapped bases exceeds\
     \ this threshold. This option is not\nuseful in strict mode since it requires\
     \ the assigned feature to\noverlap every base of the read."
-  synonyms:
-  - --maxReadNonoverlap
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --countSplitAlignmentsOnly
   description: "If specified, only split alignments (CIGAR\nstrings containing letter\
     \ `N') will be counted. All the other\nalignments will be ignored. An example\
     \ of split alignments is\nthe exon-spanning reads in RNA-seq data."
-  synonyms:
-  - --countSplitAlignmentsOnly
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --read2pos
   description: "<5:3>            The read is reduced to its 5' most base or 3'\nmost\
     \ base. Read summarization is then performed based on the\nsingle base which the\
     \ read is reduced to."
-  synonyms:
-  - --read2pos
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ignoreDup
   description: "If specified, reads that were marked as\nduplicates will be ignored.\
     \ Bit Ox400 in FLAG field of SAM/BAM\nfile is used for identifying duplicate reads.\
     \ In paired end\ndata, the entire read pair will be ignored if at least one end\n\
     is found to be a duplicate read."
-  synonyms:
-  - --ignoreDup
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --minDifAmbiguous
   description: "This option can only be used in VERSE-cover_length\nmode. When the\
     \ read or the read pair hits more than one genes,\nthe number of bases overlapped\
     \ by each gene will be calculated.\nIf the covered_length difference between the\
     \ most covered gene\nand the second most covered gene is smaller than this specified\n\
     value, the read will be set ambiguous. 1 base difference by default."
-  synonyms:
-  - --minDifAmbiguous
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nonemptyModified
   description: "This option can only be used in intersection_\nnonempty mode. In cases\
     \ where HTSeq would assign multi-hit reads\nto no_feature, VERSE will assign those\
     \ to ambiguous."
-  synonyms:
-  - --nonemptyModified
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --multithreadDecompress
   description: "BAM files generated with SAMTools or STAR after\nyear 2013 has a slight\
     \ format change which allows multithreaded\ndecompression. BAM processing will\
     \ be faster if this option is\nspecifed and multiple core is used."
-  synonyms:
-  - --multithreadDecompress
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -P
   description: "If specified, template length (TLEN in SAM specification) will be\n\
     checked when assigning read pairs (templates) to genes. This option\nis only applicable\
     \ in paired-end mode. The distance thresholds\nshould be specified using -d and\
     \ -D options."
-  synonyms:
-  - -P
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Minimum template(read pair) length, 50 by default.
+  optional: true
   synonyms:
   - -d
+  description: Minimum template(read pair) length, 50 by default.
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Maximum template(read pair) length, 600 by default.
+  optional: true
   synonyms:
   - -D
+  description: Maximum template(read pair) length, 600 by default.
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -B
   description: "If specified, only read pairs that have both ends successfully\naligned\
     \ will be considered for summarization. This option is only\napplicable for paired-end\
     \ reads."
-  synonyms:
-  - -B
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -C
   description: "If specified, the chimeric read pairs (those that have their two\n\
     ends aligned to different chromosomes) will NOT be included for\nsummarization.\
     \ This option is only applicable for paired-end data."
-  synonyms:
-  - -C
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Output version of the program.
+  optional: true
   synonyms:
   - -v
+  description: Output version of the program.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Show details about the running mode or scheme.
+  optional: true
   synonyms:
   - -Z
+  description: Show details about the running mode or scheme.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -373,3 +373,4 @@ help_text: "\nVersion 0.1.5\n\n\nUsage: verse [options] -a <annotation_file> -o 
   \ -Z        \tShow details about the running mode or scheme.\n    \n"
 generated_using:
 - --help
+docker_image:

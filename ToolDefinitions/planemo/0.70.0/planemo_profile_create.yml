@@ -4,19 +4,22 @@ command:
 - profile_create
 positional:
 - !Positional
-  description: --docker_cmd TEXT               Command used to launch docker (defaults
-    to
+  optional: false
   position: 0
   name: container.
-  optional: false
+  description: --docker_cmd TEXT               Command used to launch docker (defaults
+    to
 named:
 - !Flag
-  description: Use postgres database type.
+  optional: true
   synonyms:
   - --postgres
+  description: Use postgres database type.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --database_type
   description: "[postgres|postgres_docker|sqlite|auto]\nType of database to use for\
     \ profile -\n'auto', 'sqlite', 'postgres', and\n'postgres_docker' are available\
     \ options. Use\npostgres to use an existing postgres server\nyou user can access\
@@ -24,54 +27,52 @@ named:
     \ manage a docker container\nrunning postgres. Data with postgres_docker\nis not\
     \ yet persisted past when you restart\nthe docker container launched by Planemo\
     \ so\nbe careful with this option."
-  synonyms:
-  - --database_type
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Name or or path to postgres client binary\n(psql)."
+  optional: true
   synonyms:
   - --postgres_psql_path
+  description: "Name or or path to postgres client binary\n(psql)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Postgres username for managed development
+  optional: true
   synonyms:
   - --postgres_database_user
+  description: Postgres username for managed development
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "/ --no_docker_sudo\nFlag to use sudo when running docker."
+  optional: true
   synonyms:
   - --docker_sudo
+  - --no_docker_sudo
+  description: Flag to use sudo when running docker.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Docker host to target when executing docker\ncommands (defaults to\
-    \ localhost)."
+  optional: true
   synonyms:
   - --docker_host
+  description: "Docker host to target when executing docker\ncommands (defaults to\
+    \ localhost)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "sudo command to use when --docker_sudo is\nenabled (defaults to sudo)."
+  optional: true
   synonyms:
   - --docker_sudo_cmd
+  description: "sudo command to use when --docker_sudo is\nenabled (defaults to sudo)."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: planemo profile_create [OPTIONS] PROFILE_NAME\n\n  Create a profile.\n\
@@ -106,3 +107,4 @@ help_text: "Usage: planemo profile_create [OPTIONS] PROFILE_NAME\n\n  Create a p
   \                        Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

@@ -16,6 +16,9 @@ task TwoBitInfo {
       ~{if (non_s) then "-noNs" else ""} \
       ~{if (udc_dir) then "-udcDir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mask_bed: "of seq sizes, output BED records that define\\nareas with masked sequence"
     n_bed: "instead of seq sizes, output BED records that define\\nareas with N's in sequence"

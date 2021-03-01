@@ -14,6 +14,9 @@ task Bankmapping {
       ~{if (disregard_bank_locks) then "-s" else ""} \
       ~{if (display_compatible_version) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_path_report: "The directory path of the bank to report"
     disregard_bank_locks: "Disregard bank locks and write permissions (spy mode)"

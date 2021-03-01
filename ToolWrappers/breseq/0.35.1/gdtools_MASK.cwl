@@ -8,17 +8,17 @@ inputs:
     \ the same unit of one to several bp and a total length of 5 bp in the reference\
     \ genome. If these mutations are marked as 'mediated' or 'between' repeats, then\
     \ they are NOT removed."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --small
 - id: in_output
   doc: Output Genome Diff file. (DEFAULT=output.gd)
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_verbose
   doc: Verbose mode
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output Genome Diff file. (DEFAULT=output.gd)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gdtools

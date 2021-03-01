@@ -4,6 +4,9 @@ task Compare {
   command <<<
     compare
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -60,6 +60,9 @@ task IdbaSubasm {
       ~{if (pre_correction) then "--pre_correction" else ""} \
       ~{if defined(seed_contig) then ("--seed_contig " +  '"' + seed_contig + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "(=out)                   output directory"
     read: "fasta read file (<=512)"

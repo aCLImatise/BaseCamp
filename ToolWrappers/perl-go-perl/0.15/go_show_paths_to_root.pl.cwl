@@ -1,16 +1,16 @@
 class: CommandLineTool
 id: go_show_paths_to_root.pl.cwl
 inputs:
-- id: in_writes_errors_defaults
+- id: in_writes_parse_errors
   doc: "writes parse errors in XML - defaults to STDERR (there should be no\nparse\
     \ errors in well formed files)"
-  type: string
+  type: string?
   inputBinding:
     prefix: -e
 - id: in_determines_parser_use
   doc: "determines which parser to use; if left unspecified, will make a guess\nbased\
     \ on file suffix. See below for formats"
-  type: File
+  type: File?
   inputBinding:
     prefix: -p
 - id: in_use_cache
@@ -21,7 +21,7 @@ inputs:
     \ time you parse the file, this program will automatically check\nfor the existence\
     \ of the \".cache\" file. If it exists, and is more recent\nthan the file you\
     \ specified, this is parsed instead. If it does not\nexist, it is rebuilt."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -use_cache
 - id: in_top
@@ -35,15 +35,11 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_documentation
-  doc: <http://www.godatabase.org/dev>
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - go-show-paths-to-root.pl

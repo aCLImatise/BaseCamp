@@ -64,6 +64,9 @@ task SeqkitSeq {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     color: "colorize sequences - to be piped into \\\"less -R\\\""
     complement: "complement sequence, flag '-v' is recommended to switch on"

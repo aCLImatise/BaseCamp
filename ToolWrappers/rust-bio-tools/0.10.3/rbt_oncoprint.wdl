@@ -10,6 +10,9 @@ task RbtOncoprint {
       ~{flags} \
       ~{if (vep_annotation) then "--vep-annotation" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vep_annotation: "Annotation field gets parsed as definded by VEP."
     flags: ""

@@ -20,6 +20,9 @@ task MixcrExportReads {
       ~{if (force_overwrite) then "--force-overwrite" else ""} \
       ~{if (no_warnings) then "--no-warnings" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Verbose warning messages."
     force_overwrite: "Force overwrite of output file(s)."

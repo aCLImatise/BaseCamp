@@ -24,6 +24,9 @@ task Fmix {
       ~{if (an_cseq) then "-ancseq" else ""} \
       ~{if (step_box) then "-stepbox" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     weights: "properties Weights file"
     anc_file: "properties Ancestral states file"

@@ -16,6 +16,9 @@ task Modelfromalign {
       ~{if defined(alignment_weights) then ("-alignment_weights " +  '"' + alignment_weights + '"') else ""} \
       ~{if defined(option) then ("-option " +  '"' + option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     align_file: ": Aligned sequences to read. Required."
     prior_library: ": Dirichlet mixture to use."

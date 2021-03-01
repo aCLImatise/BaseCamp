@@ -4,35 +4,35 @@ inputs:
 - id: in_out_fmt
   doc: "STR   Output format. If an input file is FASTA and out format is FASTQ, dummy\
     \ QVs\nwill be added. Valid choices: (fasta, fastq). [fasta]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --out-fmt
 - id: in_dummy_qv
   doc: "STR   Dummy QV to be added to sequences when input format is FASTA and output\n\
     FASTQ. [!]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dummy-qv
 - id: in_alias
   doc: "STR   SeqDB file path. If provided, the SeqDB will be used to look-up the\n\
     provided sequences by their IDs."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --alias
 - id: in_fail
   doc: Exit non-zero if not all seqs are found.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fail
 - id: in_write_ids
   doc: "The output sequence names will be replaced by their IDs in the SeqDB, if\n\
     the SeqDB was provided as input."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --write-ids
 - id: in_use_hpc
   doc: Fetch homopolymer compressed sequences.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use-hpc
 - id: in_use_rle
@@ -40,17 +40,17 @@ inputs:
     contains conversion coordinates from the HPC space to the original space\ninstead\
     \ of the run-length-encoding. This option does not write the HPC\nsequence, for\
     \ that please specify '--user-hpc'."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use-rle
 - id: in_log_level
   doc: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --log-level
 - id: in_log_file
   doc: FILE  Log to a file, instead of stderr.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --log-file
 - id: in_out_fn
@@ -72,6 +72,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pancake

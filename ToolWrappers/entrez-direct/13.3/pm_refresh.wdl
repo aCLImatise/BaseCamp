@@ -3,16 +3,19 @@ version 1.0
 task Pmrefresh {
   input {
     String cat
-    File? file
+    File? var_file
   }
   command <<<
     pm_refresh \
       ~{cat} \
-      ~{file}
+      ~{var_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cat: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

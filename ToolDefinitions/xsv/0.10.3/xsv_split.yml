@@ -4,65 +4,65 @@ command:
 - split
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: outdir
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "The number of records to write into each chunk.\n[default: 500]"
+  optional: true
   synonyms:
   - -s
   - --size
+  description: "The number of records to write into each chunk.\n[default: 500]"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
   description: "The number of spliting jobs to run in parallel.\nThis only works when\
     \ the given CSV data has\nan index already created. Note that a file handle\n\
     is opened for each job.\nWhen set to '0', the number of jobs is set to the\nnumber\
     \ of CPUs detected.\n[default: 0]"
-  synonyms:
-  - -j
-  - --jobs
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Write output to <file> instead of stdout.
+  optional: true
   synonyms:
   - -o
   - --output
+  description: Write output to <file> instead of stdout.
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: "When set, the first row will NOT be interpreted\nas column names.\
-    \ Otherwise, the first row will\nappear in all chunks as the header row."
+  optional: true
   synonyms:
   - -n
   - --no-headers
+  description: "When set, the first row will NOT be interpreted\nas column names.\
+    \ Otherwise, the first row will\nappear in all chunks as the header row."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The field delimiter for reading CSV data.\nMust be a single character.\
-    \ (default: ,)\n"
+  optional: true
   synonyms:
   - -d
   - --delimiter
+  description: "The field delimiter for reading CSV data.\nMust be a single character.\
+    \ (default: ,)\n"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Display this message
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Display this message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Splits the given CSV data into chunks.\n\nThe files are written to the\
@@ -85,3 +85,4 @@ help_text: "Splits the given CSV data into chunks.\n\nThe files are written to t
   \ (default: ,)\n"
 generated_using:
 - --help
+docker_image:

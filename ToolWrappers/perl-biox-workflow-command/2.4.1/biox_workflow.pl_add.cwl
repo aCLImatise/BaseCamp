@@ -3,54 +3,54 @@ id: biox_workflow.pl_add.cwl
 inputs:
 - id: in_plugins_opts
   doc: Options for application plugins [Key-Value]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --plugins_opts
 - id: in_plugins
   doc: Load aplication plugins [Multiple; Split by ","]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --plugins
 - id: in_config
   doc: Override the search paths and supply your own
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --config
 - id: in_search_path
   doc: "Enable a search path for configs. Default is the\nhome dir and your cwd. [Multiple]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --search_path
 - id: in_no_configs
-  doc: "--no_configs tells HPC::Runner not to load any\nconfigs [Flag]"
-  type: boolean
+  doc: "HPC::Runner not to load any\nconfigs [Flag]"
+  type: string?
   inputBinding:
     prefix: --no_configs
 - id: in_search
   doc: "Search for config files in ~/.config.(ext) and in\nyour current working directory.\
     \ [Flag]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --search
 - id: in_rules
   doc: Add rules [Multiple; Split by ","]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rules
 - id: in_workflow
   doc: Supply a workflow [Required]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --workflow
 - id: in_stdout
   doc: Write workflows to STDOUT [Flag]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --stdout
 - id: in_outfile
   doc: "Write your workflow to a file. The default will\nwrite it out to the same\
     \ workflow."
-  type: File
+  type: File?
   inputBinding:
     prefix: --outfile
 - id: in_config_dot
@@ -70,9 +70,10 @@ outputs:
 - id: out_outfile
   doc: "Write your workflow to a file. The default will\nwrite it out to the same\
     \ workflow."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - biox-workflow.pl

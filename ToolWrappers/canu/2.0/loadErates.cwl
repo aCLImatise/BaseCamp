@@ -3,28 +3,29 @@ id: loadErates.cwl
 inputs:
 - id: in_path_overlap_store
   doc: path to the overlap store to create
-  type: File
+  type: File?
   inputBinding:
     prefix: -O
 - id: in_path_sequence_store
   doc: path to a sequence store
-  type: File
+  type: File?
   inputBinding:
     prefix: -S
 - id: in_list_evalue_files
   doc: a list of evalue files in 'fileList'
-  type: File
+  type: File?
   inputBinding:
     prefix: -L
 - id: in_evalue_file
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - loadErates

@@ -5,7 +5,7 @@ task Cdhitlap {
     Boolean? input_file
     File? output_file
     Boolean? minimum_length_overlapping
-    Boolean? minimum_percentage_overlapping
+    Boolean? minimum_percentage_percentage
     Boolean? description_length_default
     Boolean? random_number_seed
     Boolean? stdout
@@ -15,16 +15,19 @@ task Cdhitlap {
       ~{if (input_file) then "-i" else ""} \
       ~{if (output_file) then "-o" else ""} \
       ~{if (minimum_length_overlapping) then "-m" else ""} \
-      ~{if (minimum_percentage_overlapping) then "-p" else ""} \
+      ~{if (minimum_percentage_percentage) then "-p" else ""} \
       ~{if (description_length_default) then "-d" else ""} \
       ~{if (random_number_seed) then "-s" else ""} \
       ~{if (stdout) then "-stdout" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Input file;"
     output_file: "Output file;"
     minimum_length_overlapping: "Minimum length of overlapping part (default 20);"
-    minimum_percentage_overlapping: "Minimum percentage of overlapping part (default 0, any percentage);"
+    minimum_percentage_percentage: "Minimum percentage of overlapping part (default 0, any percentage);"
     description_length_default: "Description length (default 0, truncate at the first whitespace character)"
     random_number_seed: "Random number seed for shuffling (default 0, no shuffling; shuffled before sorting by length);"
     stdout: "Standard output type (default \\\"log\\\", other options \\\"rep\\\", \\\"clstr\\\");"

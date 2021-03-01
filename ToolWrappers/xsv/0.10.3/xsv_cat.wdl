@@ -18,6 +18,9 @@ task XsvCat {
       ~{if (no_headers) then "--no-headers" else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pad: "When concatenating columns, this flag will cause\\nall records to appear. It will pad each row if\\nother CSV data isn't long enough."
     write_output_file: "Write output to <file> instead of stdout."

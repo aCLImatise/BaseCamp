@@ -12,6 +12,9 @@ task HashExtract {
       ~{name} \
       ~{if defined(i) then ("-I " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: ""
     hash_file: ""

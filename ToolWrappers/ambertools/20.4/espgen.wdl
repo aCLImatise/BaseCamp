@@ -4,6 +4,9 @@ task Espgen {
   command <<<
     espgen
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

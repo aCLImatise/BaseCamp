@@ -8,6 +8,9 @@ task EagleFiles {
     eagle files \
       ~{eagle}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     eagle: ""
   }

@@ -14,6 +14,9 @@ task Seqmap {
       ~{transcript_fast_a_file_name} \
       ~{output_file_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_mismatches: ""
     probe_fast_a_file_name: ""

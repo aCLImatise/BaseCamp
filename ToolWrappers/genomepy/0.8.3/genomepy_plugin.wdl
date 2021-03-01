@@ -10,6 +10,9 @@ task GenomepyPlugin {
       ~{var_command} \
       ~{name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_command: ""
     name: ""

@@ -8,6 +8,9 @@ task Bamsortsh {
     bamsort_sh \
       ~{if defined(not_exist) then ("-h " +  '"' + not_exist + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     not_exist: "not exist."
   }

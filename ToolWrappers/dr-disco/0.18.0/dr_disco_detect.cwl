@@ -4,7 +4,7 @@ inputs:
 - id: in_min_e_score
   doc: "Minimal score to initiate pulling sub-graphs\n(larger numbers boost performance\
     \ but result in\nsuboptimal results) [default=8]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-e-score
 - id: in_bam_input_file
@@ -21,6 +21,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dr-disco

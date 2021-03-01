@@ -10,6 +10,9 @@ task TbprofilerGetDrFreqpy {
       ~{json} \
       ~{if defined(var_meta) then ("--meta " +  '"' + var_meta + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_meta: ""
     json: "NGS Platform"

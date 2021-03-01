@@ -3,63 +3,63 @@ command:
 - segtools-flatten
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: SEGMENTATION...
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: Do not print diagnostic messages.
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: Do not print diagnostic messages.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Save mapping information to FILE instead of\nflat.mnemonics (default).\
-    \ This file complies with the\nmnemonic file format."
+  optional: true
   synonyms:
   - -m
   - --mnemonic-file
+  description: "Save mapping information to FILE instead of\nflat.mnemonics (default).\
+    \ This file complies with the\nmnemonic file format."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Save flattened bed file to FILE instead of printing to\nstdout (default)"
+  optional: true
   synonyms:
   - -o
   - --outfile
+  description: "Save flattened bed file to FILE instead of printing to\nstdout (default)"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --filter
   description: "Don't output new segment labels (and corresponding\nsegments) that\
     \ span less than F*N bases, where N is\nthe number of bases covered by the new\
     \ segmentation.\nThis can be used to remove extremely uncommon labels\n(e.g. F\
     \ = 0.01) that are the more likely to be\nspurious. Filtering is off by default.\n"
-  synonyms:
-  - -f
-  - --filter
   args: !SimpleFlagArg
     name: F
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: segtools-flatten [OPTIONS] SEGMENTATION...\n\nCombine segments\
   \ from all SEGMENTATION files, labeling with unique labels for\neach combination\
   \ of overlapping that occurs. Outputs a bed file on stdout (-o\nto change), and\
@@ -79,3 +79,4 @@ help_text: "Usage: segtools-flatten [OPTIONS] SEGMENTATION...\n\nCombine segment
   \ to be\n                        spurious. Filtering is off by default.\n"
 generated_using:
 - --help
+docker_image:

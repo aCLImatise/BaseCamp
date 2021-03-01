@@ -10,6 +10,9 @@ task Jarsigner {
       ~{jar_file} \
       ~{var_alias}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jar_file: ""
     var_alias: ""

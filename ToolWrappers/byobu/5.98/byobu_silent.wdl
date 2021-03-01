@@ -16,6 +16,9 @@ task Byobusilent {
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
       ~{if (two_clu_vv) then "-2CluvV" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     l: ""
     f: ""

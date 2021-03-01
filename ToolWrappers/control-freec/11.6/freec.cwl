@@ -3,12 +3,12 @@ id: freec.cwl
 inputs:
 - id: in_sample
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -sample
 - id: in_conf
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -conf
 - id: in_or
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - freec

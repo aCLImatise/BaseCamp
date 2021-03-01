@@ -4,128 +4,128 @@ command:
 - peptides
 positional:
 - !Positional
-  description: '[--isobquantcolpattern QUANTCOLPATTERN]'
+  optional: false
   position: 0
   name: SCORECOLPATTERN
-  optional: false
+  description: '[--isobquantcolpattern QUANTCOLPATTERN]'
 named:
 - !Flag
-  description: Input file of {} format
+  optional: true
   synonyms:
   - -i
+  description: Input file of {} format
   args: !SimpleFlagArg
     name: FN
-  optional: true
 - !Flag
-  description: Directory to output in
+  optional: true
   synonyms:
   - -d
+  description: Directory to output in
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
-  description: Output file
+  optional: true
   synonyms:
   - -o
+  description: Output file
   args: !SimpleFlagArg
     name: OUTFILE
-  optional: true
 - !Flag
-  description: "Specify this column number (first col. is 1)\ncontaining PSM table\
-    \ spectrafiles (e.g. mzML) if you\nwant to track PSMs when creating peptide tables"
+  optional: true
   synonyms:
   - --spectracol
+  description: "Specify this column number (first col. is 1)\ncontaining PSM table\
+    \ spectrafiles (e.g. mzML) if you\nwant to track PSMs when creating peptide tables"
   args: !SimpleFlagArg
     name: SPECTRACOL
-  optional: true
 - !Flag
-  description: "Regular expression pattern to find column where score\nto use (e.g.\
-    \ percolator svm-score) is written."
+  optional: true
   synonyms:
   - --scorecolpattern
+  description: "Regular expression pattern to find column where score\nto use (e.g.\
+    \ percolator svm-score) is written."
   args: !SimpleFlagArg
     name: SCORECOLPATTERN
-  optional: true
 - !Flag
-  description: "Unique text pattern to identify isobaric quant columns\nin input table."
+  optional: true
   synonyms:
   - --isobquantcolpattern
+  description: "Unique text pattern to identify isobaric quant columns\nin input table."
   args: !SimpleFlagArg
     name: QUANTCOLPATTERN
-  optional: true
 - !Flag
-  description: "Unique text pattern to identify precursor quant column\nin input table."
+  optional: true
   synonyms:
   - --ms1quantcolpattern
+  description: "Unique text pattern to identify precursor quant column\nin input table."
   args: !SimpleFlagArg
     name: PRECURSORQUANTCOLPATTERN
-  optional: true
 - !Flag
-  description: "Intensity threshold of PSMs when calculating isobaric\nratios. Values\
-    \ below threshold will be set to NA."
+  optional: true
   synonyms:
   - --minint
+  description: "Intensity threshold of PSMs when calculating isobaric\nratios. Values\
+    \ below threshold will be set to NA."
   args: !SimpleFlagArg
     name: MININT
-  optional: true
 - !Flag
-  description: "Column numbers of denominator channels when creating a\nsummarized\
-    \ feature table with isobaric ratios from\nPSMs"
+  optional: true
   synonyms:
   - --denomcols
+  description: "Column numbers of denominator channels when creating a\nsummarized\
+    \ feature table with isobaric ratios from\nPSMs"
   args: !RepeatFlagArg
     name: DENOMCOLS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --denompatterns
   description: "Regex patterns to detect denominator channels in a PSM\ntable, when\
     \ creating a table with summarized feature\nisobaric ratios. If both --denompatterns\
     \ and\n--denomcol are given then column numbers are used.\nUsage e.g. --denompattern\
     \ _126 _131. Also possible:\n--denompattern _12[6-7] to detect multiple columns."
-  synonyms:
-  - --denompatterns
   args: !RepeatFlagArg
     name: DENOMPATTERNS
-  optional: true
 - !Flag
-  description: "Create linear-modeled q-vals for peptides, to avoid\noverlapping stepped\
-    \ low-qvalue data of peptides with\ndifferent scores"
+  optional: true
   synonyms:
   - --modelqvals
+  description: "Create linear-modeled q-vals for peptides, to avoid\noverlapping stepped\
+    \ low-qvalue data of peptides with\ndifferent scores"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specifies the inclusion threshold for q-values to fit\na linear model\
-    \ to. Any scores/q-values below this\nthreshold will not be used."
+  optional: true
   synonyms:
   - --qvalthreshold
+  description: "Specifies the inclusion threshold for q-values to fit\na linear model\
+    \ to. Any scores/q-values below this\nthreshold will not be used."
   args: !SimpleFlagArg
     name: QVALTHRESHOLD
-  optional: true
 - !Flag
-  description: "Specifies the minimal amount of peptides (passing the\n--qvalthreshold)\
-    \ needed to fit a linear model, default\nis 10.\n"
+  optional: true
   synonyms:
   - --minpepnr
+  description: "Specifies the minimal amount of peptides (passing the\n--qvalthreshold)\
+    \ needed to fit a linear model, default\nis 10.\n"
   args: !SimpleFlagArg
     name: MINPEPTIDENR
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: msstitch peptides [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
   \                         [--spectracol SPECTRACOL] --scorecolpattern\n        \
   \                 SCORECOLPATTERN\n                         [--isobquantcolpattern\
@@ -169,3 +169,4 @@ help_text: "usage: msstitch peptides [-h] [--version] -i FN [-d OUTDIR] [-o OUTF
   \         is 10.\n"
 generated_using:
 - --help
+docker_image:

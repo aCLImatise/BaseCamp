@@ -28,6 +28,9 @@ task PypgatkClipyEnsembldownloader {
       ~{if (skip_ncrna) then "--skip_ncrna" else ""} \
       ~{if (skip_vcf) then "--skip_vcf" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: "Configuration file for the ensembl data\\ndownloader pipeline"
     output_directory: "Output directory for the peptide databases"

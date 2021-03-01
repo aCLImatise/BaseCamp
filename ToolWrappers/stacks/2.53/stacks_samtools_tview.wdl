@@ -12,6 +12,9 @@ task Stackssamtoolstview {
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
       ~{if defined(p) then ("-P " +  '"' + p + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     write_alignments: "(This is a convenience wrapper around samtools-tview.)"
     c: ""

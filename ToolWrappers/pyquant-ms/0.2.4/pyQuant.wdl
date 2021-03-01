@@ -75,7 +75,7 @@ task PyQuant {
     Float? sample
     Boolean? disable_stats
     Boolean? no_ratios
-    File? prefix_file_output
+    File? prefix_file_none
     Boolean? export_mzm_l
     File? export_mode
     Boolean? neu_code
@@ -163,7 +163,7 @@ task PyQuant {
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
       ~{if (disable_stats) then "--disable-stats" else ""} \
       ~{if (no_ratios) then "--no-ratios" else ""} \
-      ~{if (prefix_file_output) then "-o" else ""} \
+      ~{if (prefix_file_none) then "-o" else ""} \
       ~{if (export_mzm_l) then "--export-mzml" else ""} \
       ~{if defined(export_mode) then ("--export-mode " +  '"' + export_mode + '"') else ""} \
       ~{if (neu_code) then "--neucode" else ""} \
@@ -172,6 +172,9 @@ task PyQuant {
       ~{if (max_quant) then "--maxquant" else ""} \
       ~{if (gcms) then "--gcms" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads_run_default: "Threads to run (default: 1)"
     scan_files_providedassumed: "[SCAN_FILE [SCAN_FILE ...]]\\nThe scan file(s) for the raw data. If not provided,\\nassumed to be in the directory of the\\nprocessed/tabbed/peaklist file. (default: None)"
@@ -246,7 +249,7 @@ task PyQuant {
     sample: "How much of the data to sample. Enter as a decimal (ie\\n1.0 for everything, 0.1 for 10%) (default: 1.0)"
     disable_stats: "Disable confidence statistics on data. (default:\\nFalse)"
     no_ratios: "Disable reporting of ratios in output. (default:\\nFalse)"
-    prefix_file_output: "[OUT], --out [OUT]\\nThe prefix for the file output (default: None)"
+    prefix_file_none: "[OUT], --out [OUT]\\nThe prefix for the file output (default: None)"
     export_mzm_l: "Create an mzml file of spectra contained within each\\npeak. (default: False)"
     export_mode: "How to export the scans. per-peak: A mzML per peak\\nidentified. per-id: A mzML per ion identified (each\\nrow of the output gets an mzML). per-file: All scans\\nmatched per raw file. (default: per-peak)"
     neu_code: "This will select parameters specific for neucode.\\nNote: You still must define a labeling scheme.\\n(default: False)"
@@ -260,7 +263,7 @@ task PyQuant {
   output {
     File out_stdout = stdout()
     File out_search_file = "${in_search_file}"
-    File out_prefix_file_output = "${in_prefix_file_output}"
+    File out_prefix_file_none = "${in_prefix_file_none}"
     File out_export_mode = "${in_export_mode}"
   }
 }

@@ -28,6 +28,9 @@ task SvtkBincov {
       ~{if defined(overlap) then ("--overlap " +  '"' + overlap + '"') else ""} \
       ~{if (old_bt) then "--oldBT" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     norm_out: "Output bed file of normalized coverage"
     binsize: "Bin size (bp) [1000]"

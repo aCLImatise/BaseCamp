@@ -20,6 +20,9 @@ task FermiScaf {
       ~{if defined(minimum_number_supporting) then ("-m " +  '"' + minimum_number_supporting + '"') else ""} \
       ~{if (print_links_unitigs) then "-P" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_threads: "number of threads [1]"
     minimum_number_supporting: "minimum number of supporting reads [5]"

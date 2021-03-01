@@ -4,18 +4,16 @@ command:
 - notification
 positional:
 - !Positional
-  description: OPTIONS
-  position: 0
-  name: projects/_/buckets/example-bucket/notificationConfigs/1
   optional: false
-- !Positional
-  description: The optional token parameter can be used to validate notifications
-    events.
   position: 0
   name: generated.
-  optional: false
+  description: The optional token parameter can be used to validate notifications
+    events.
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -e
   description: "Specify an event type filter for this notification config. Cloud\n\
     Storage will only send notifications of this type. You may specify\nthis parameter\
     \ multiple times to allow multiple event types. If not\nspecified, Cloud Storage\
@@ -23,52 +21,49 @@ named:
     \ - An object has been created.\nOBJECT_METADATA_UPDATE - The metadata of an object\
     \ has changed.\nOBJECT_DELETE - An object has been permanently deleted.\nOBJECT_ARCHIVE\
     \ - A live Cloud Storage object has been archived."
-  synonyms:
-  - -e
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
   description: "Specifies the payload format of notification messages. Must be\neither\
     \ \"json\" for a payload matches the object metadata for the\nJSON API, or \"\
     none\" to specify no payload at all. In either case,\nnotification details are\
     \ available in the message attributes."
-  synonyms:
-  - -f
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
   description: "Specifies a key:value attribute that will be appended to the set\n\
     of attributes sent to Cloud Pub/Sub for all events associated with\nthis notification\
     \ config. You may specify this parameter multiple\ntimes to set multiple attributes."
-  synonyms:
-  - -m
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
   description: "Specifies a prefix path filter for this notification config. Cloud\n\
     Storage will only send notifications for objects in this bucket\nwhose names begin\
     \ with the specified prefix."
-  synonyms:
-  - -p
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
   description: "Skips creation and permission assignment of the Cloud Pub/Sub topic.\n\
     This is useful if the caller does not have permission to access\nthe topic in\
     \ question, or if the topic already exists and has the\nappropriate publish permission\
     \ assigned."
-  synonyms:
-  - -s
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
   description: "The Cloud Pub/Sub topic to which notifications should be sent. If\n\
     not specified, this command will choose a topic whose project is\nyour default\
     \ project and whose ID is the same as the Cloud Storage\nbucket name."
-  synonyms:
-  - -t
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -202,3 +197,4 @@ help_text: "NAME\n  notification - Configure object change notification\n\n\nSYN
   \ 0\" in your\n  boto config file.\n"
 generated_using:
 - --help
+docker_image:

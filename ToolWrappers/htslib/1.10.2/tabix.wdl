@@ -18,11 +18,11 @@ task Tabix {
     File? regions
     File? targets
     Boolean? download_index_file
-    File? file
+    File? var_file
   }
   command <<<
     tabix \
-      ~{file} \
+      ~{var_file} \
       ~{if (zero_based) then "--zero-based" else ""} \
       ~{if defined(begin) then ("--begin " +  '"' + begin + '"') else ""} \
       ~{if defined(comment) then ("--comment " +  '"' + comment + '"') else ""} \
@@ -40,6 +40,9 @@ task Tabix {
       ~{if defined(targets) then ("--targets " +  '"' + targets + '"') else ""} \
       ~{if (download_index_file) then "-D" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     zero_based: "coordinates are zero-based"
     begin: "column number for region start [4]"
@@ -57,7 +60,7 @@ task Tabix {
     regions: "restrict to regions listed in the file"
     targets: "similar to -R but streams rather than index-jumps"
     download_index_file: "do not download the index file"
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

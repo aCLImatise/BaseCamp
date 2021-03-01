@@ -9,7 +9,7 @@ task CloseGapsLocallyperl {
     Boolean? min_km_er_len
     Boolean? max_km_er_len
     Boolean? num_threads
-    Boolean? _same_
+    Boolean? same__numthreads
     Boolean? contig_length_for_joining
     Boolean? contig_length_for_fishing
     Boolean? max_nodes
@@ -29,7 +29,7 @@ task CloseGapsLocallyperl {
       ~{if (min_km_er_len) then "--min-kmer-len" else ""} \
       ~{if (max_km_er_len) then "--max-kmer-len" else ""} \
       ~{if (num_threads) then "--num-threads" else ""} \
-      ~{if (_same_) then "-t" else ""} \
+      ~{if (same__numthreads) then "-t" else ""} \
       ~{if (contig_length_for_joining) then "--contig-length-for-joining" else ""} \
       ~{if (contig_length_for_fishing) then "--contig-length-for-fishing" else ""} \
       ~{if (max_nodes) then "--maxnodes" else ""} \
@@ -40,6 +40,9 @@ task CloseGapsLocallyperl {
       ~{if (faux_insert_stdev) then "--faux-insert-stdev" else ""} \
       ~{if (num_stdev_s_allowed) then "--num-stdevs-allowed" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     celera_terminator_directory: ": specify the Celera terminator directory\\nwhere the assembly whose gaps must be closed exists"
     reads_file: ": specify a read file to use (multiple files allowed,\\nso long as the flag is repeated)"
@@ -48,7 +51,7 @@ task CloseGapsLocallyperl {
     min_km_er_len: "# : specify the min kmer len used (default: 17)"
     max_km_er_len: "# : specify the max kmer len used (default: 65)"
     num_threads: "# : specify the number of threads (default: 1)"
-    _same_: "# : same as --num-threads #"
+    same__numthreads: "# : same as --num-threads #"
     contig_length_for_joining: "# : The length of sequence at the ends of the contigs\\nwhich create the faux mate pairs which are joined (default: 100)"
     contig_length_for_fishing: "# : The length of sequence at the ends of the contigs\\nto be used to find reads which might fit in the gaps (default: 100)"
     max_nodes: "# : The maximum number of nodes allowed when trying to join the\\nfaux reads (default: 200000)"

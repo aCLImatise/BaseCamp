@@ -4,22 +4,22 @@ inputs:
 - id: in_compression_level
   doc: "the compression level to use, between 1 (least\nbut fast) and 9 (highest but\
     \ slow) (Default is 5)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --compression-level
 - id: in_decompress
   doc: decompress
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --decompress
 - id: in_force
   doc: force overwrite of existing output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --force
 - id: in_no_terminate
   doc: if set, do not add the block gzip termination
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-terminate
 - id: in_block
@@ -33,9 +33,10 @@ outputs:
   type: stdout
 - id: out_force
   doc: force overwrite of existing output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_force)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rtg

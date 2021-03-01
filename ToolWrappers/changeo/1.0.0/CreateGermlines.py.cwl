@@ -16,30 +16,30 @@ inputs:
 - id: in_outdir
   doc: "Specify to changes the output directory to the\nlocation specified. The input\
     \ file directory is used\nif this is not specified. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_out_name
   doc: "Changes the prefix of the successfully processed\noutput file to the string\
     \ specified. May not be\nspecified with multiple input files. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outname
 - id: in_log
   doc: "Specify to write verbose logging to a file. May not be\nspecified with multiple\
     \ input files. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --log
 - id: in_failed
   doc: "If specified create files containing records that fail\nprocessing. (default:\
     \ False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --failed
 - id: in_format
   doc: 'Specify input and output format. (default: airr)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
 - id: in_list_folders_andor
@@ -56,7 +56,7 @@ inputs:
   doc: "[{full,dmask,vonly,regions} ...]\nSpecify type(s) of germlines to include\
     \ full germline,\ngermline with D segment masked, or germline for V\nsegment only.\
     \ (default: ['dmask'])"
-  type: string
+  type: string?
   inputBinding:
     prefix: -g
 - id: in_cloned
@@ -64,36 +64,36 @@ inputs:
     \ ambiguous within a clonal group,\nthis will place the germline call used for\
     \ the entire\nclone within the germline_v_call, germline_d_call and\ngermline_j_call\
     \ fields. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cloned
 - id: in_sf
   doc: "Field containing the aligned sequence. Defaults to\nsequence_alignment (airr)\
     \ or SEQUENCE_IMGT (changeo).\n(default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --sf
 - id: in_vf
   doc: "Field containing the germline V segment call. Defaults\nto v_call (airr) or\
     \ V_CALL (changeo). (default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --vf
 - id: in_df
   doc: "Field containing the germline D segment call. Defaults\nto d_call (airr) or\
     \ D_CALL (changeo). (default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --df
 - id: in_jf
   doc: "Field containing the germline J segment call. Defaults\nto j_call (airr) or\
     \ J_CALL (changeo). (default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --jf
 - id: in_cf
   doc: Field containing clone identifiers. Ignored if
-  type: string
+  type: string?
   inputBinding:
     prefix: --cf
 - id: in_germ_pass
@@ -115,6 +115,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - CreateGermlines.py

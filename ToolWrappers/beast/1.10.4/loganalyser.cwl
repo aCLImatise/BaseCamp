@@ -3,32 +3,32 @@ id: loganalyser.cwl
 inputs:
 - id: in_burnin
   doc: number of states to be considered as 'burn-in'
-  type: long
+  type: long?
   inputBinding:
     prefix: -burnin
 - id: in_short
   doc: this option to produce a short report
-  type: string
+  type: string?
   inputBinding:
     prefix: -short
 - id: in_hpd
   doc: this option to produce hpds for each trace
-  type: string
+  type: string?
   inputBinding:
     prefix: -hpd
 - id: in_ess
   doc: this option to produce ESSs for each trace
-  type: string
+  type: string?
   inputBinding:
     prefix: -ess
 - id: in_stderr
   doc: this option to produce standard Error
-  type: string
+  type: string?
   inputBinding:
     prefix: -stdErr
 - id: in_marginal
   doc: the trace to use to calculate the marginal likelihood
-  type: string
+  type: string?
   inputBinding:
     prefix: -marginal
 - id: in_by
@@ -50,6 +50,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - loganalyser

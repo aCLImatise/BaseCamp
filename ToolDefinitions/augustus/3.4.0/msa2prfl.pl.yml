@@ -1,0 +1,288 @@
+!Command
+command:
+- msa2prfl.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Converts
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: Uses
+  description: ''
+- !Positional
+  optional: true
+  position: 0
+  name: options
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: variable
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: AUGUSTUS_CONFIG_PATH
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: a
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: protein
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: BLOSUM
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: Multiple
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: block
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: subdirectory
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: Sequence
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: of
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: profile
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: q_ij
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: Alignment
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: matrix
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: that
+  description: ''
+- !Positional
+  optional: false
+  position: 5
+  name: can
+  description: ''
+- !Positional
+  optional: false
+  position: 5
+  name: in
+  description: ''
+- !Positional
+  optional: false
+  position: 5
+  name: to
+  description: ''
+- !Positional
+  optional: false
+  position: 6
+  name: FASTA
+  description: ''
+- !Positional
+  optional: false
+  position: 6
+  name: be
+  description: ''
+- !Positional
+  optional: false
+  position: 6
+  name: calculate
+  description: ''
+- !Positional
+  optional: false
+  position: 7
+  name: or
+  description: ''
+- !Positional
+  optional: false
+  position: 7
+  name: pseudocounts
+  description: ''
+- !Positional
+  optional: false
+  position: 7
+  name: used
+  description: ''
+- !Positional
+  optional: false
+  position: 8
+  name: CLUSTAL
+  description: ''
+- !Positional
+  optional: false
+  position: 8
+  name: as
+  description: ''
+- !Positional
+  optional: false
+  position: 8
+  name: which
+  description: ''
+- !Positional
+  optional: false
+  position: 9
+  name: format
+  description: ''
+- !Positional
+  optional: false
+  position: 9
+  name: input
+  description: ''
+- !Positional
+  optional: false
+  position: 9
+  name: is
+  description: ''
+- !Positional
+  optional: false
+  position: 10
+  name: for
+  description: ''
+- !Positional
+  optional: false
+  position: 10
+  name: searched
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --width
+  description: 'minimal block width (default: 6)'
+  args: !SimpleFlagArg
+    name: i
+- !Flag
+  optional: true
+  synonyms:
+  - --qij
+  description: alternative file containing BLOSUM q_ij matrix
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --max_entropy
+  description: 'maximal entropy of a block column (default: disabled)'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --keep_empty
+  description: do not remove empty columns from alignment
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix_from_seqnames
+  description: "MSA contains partial sequences, determine\nsequence offset from sequence\
+    \ name as in XXXX/<from>-<to>"
+  args: !SimpleFlagArg
+    name: if
+- !Flag
+  optional: true
+  synonyms:
+  - --relax
+  description: "consider MSA as partial (allow arbitrary distance at\nbeginning and\
+    \ end)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --blockscorefile
+  description: create a log file with blocks from the MSA and their scores
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --setname
+  description: set a name for the profile
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --setdesc
+  description: set a description for the profile
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --setacc
+  description: set an accession id for the profile
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --info
+  description: provide a text file containing the meta information
+  args: !SimpleFlagArg
+    name: s
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: show this message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nUsage:\n\n   msa2prfl.pl [<options>] <MSA> \n\n   Converts a Multiple\
+  \ Sequence Alignment in FASTA or CLUSTAL format into\n   a protein block profile\
+  \ that can be used as input for AUGUSTUS-PPX.\n\n   Uses a BLOSUM q_ij matrix to\
+  \ calculate pseudocounts which is searched for\n   in a subdirectory of $AUGUSTUS_CONFIG_PATH.\
+  \ Ensure that the environment \n   variable AUGUSTUS_CONFIG_PATH is set.\n\nOptions:\n\
+  \   --width=i              minimal block width (default: 6)\n   --qij=s        \
+  \        alternative file containing BLOSUM q_ij matrix\n   --max_entropy=f    \
+  \    maximal entropy of a block column (default: disabled)\n   --keep_empty    \
+  \       do not remove empty columns from alignment\n   --prefix_from_seqnames if\
+  \ MSA contains partial sequences, determine\n                          sequence\
+  \ offset from sequence name as in XXXX/<from>-<to>\n   --relax                consider\
+  \ MSA as partial (allow arbitrary distance at \n                          beginning\
+  \ and end)\n   --blockscorefile=s     create a log file with blocks from the MSA\
+  \ and their scores\n   --setname=s            set a name for the profile\n   --setdesc=s\
+  \            set a description for the profile\n   --setacc=s             set an\
+  \ accession id for the profile\n   --info=s               provide a text file containing\
+  \ the meta information\n   --help                 show this message\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/augustus:3.4.0--pl526h0faeac2_0

@@ -24,6 +24,9 @@ task Jrunscript {
       ~{if defined(encoding) then ("-encoding " +  '"' + encoding + '"') else ""} \
       ~{if (list_scripting_engines) then "-q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     classpath: "Specify where to find user class files"
     cp: "Specify where to find user class files"

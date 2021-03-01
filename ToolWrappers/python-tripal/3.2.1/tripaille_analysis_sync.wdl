@@ -16,6 +16,9 @@ task TripailleAnalysisSync {
       ~{if defined(job_name) then ("--job_name " +  '"' + job_name + '"') else ""} \
       ~{if (no_wait) then "--no_wait" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     analysis: "Analysis name"
     analysis_id: "ID of the analysis to sync"

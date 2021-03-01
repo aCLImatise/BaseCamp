@@ -3,44 +3,143 @@ command:
 - crt
 positional:
 - !Positional
-  description: "java [-options] -jar jarfile [args...]\n(to execute a jar file)"
+  optional: false
   position: 0
   name: or
-  optional: false
+  description: "java [-options] -jar jarfile [args...]\n(to execute a jar file)"
 named:
 - !Flag
-  description: "use a 32-bit data model if available\n-d64          use a 64-bit data\
-    \ model if available\n-server       to select the \"server\" VM\nThe default VM\
-    \ is server,\nbecause you are running on a server-class machine.\n-cp <class search\
-    \ path of directories and zip/jar files>\n-classpath <class search path of directories\
-    \ and zip/jar files>\nA : separated list of directories, JAR archives,\nand ZIP\
-    \ archives to search for class files.\n-D<name>=<value>\nset a system property\n\
-    -verbose:[class|gc|jni]\nenable verbose output\n-version      print product version\
-    \ and exit\n-version:<value>\nWarning: this feature is deprecated and will be\
-    \ removed\nin a future release.\nrequire the specified version to run\n-showversion\
-    \  print product version and continue\n-jre-restrict-search | -no-jre-restrict-search\n\
-    Warning: this feature is deprecated and will be removed\nin a future release.\n\
-    include/exclude user private JREs in the version search\n-? -help      print this\
-    \ help message\n-X            print help on non-standard options\n-ea[:<packagename>...|:<classname>]\n\
-    -enableassertions[:<packagename>...|:<classname>]\nenable assertions with specified\
-    \ granularity\n-da[:<packagename>...|:<classname>]\n-disableassertions[:<packagename>...|:<classname>]\n\
-    disable assertions with specified granularity\n-esa | -enablesystemassertions\n\
-    enable system assertions\n-dsa | -disablesystemassertions\ndisable system assertions\n\
-    -agentlib:<libname>[=<options>]\nload native agent library <libname>, e.g. -agentlib:hprof\n\
-    see also, -agentlib:jdwp=help and -agentlib:hprof=help\n-agentpath:<pathname>[=<options>]\n\
-    load native agent library by full pathname\n-javaagent:<jarpath>[=<options>]\n\
-    load Java programming language agent, see java.lang.instrument\n-splash:<imagepath>\n\
-    show splash screen with specified image"
+  optional: true
   synonyms:
   - -d32
+  description: use a 32-bit data model if available
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
+  synonyms:
+  - -d64
+  description: use a 64-bit data model if available
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -server
+  description: "to select the \"server\" VM\nThe default VM is server,\nbecause you\
+    \ are running on a server-class machine."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cp
+  - -classpath
+  description: "A : separated list of directories, JAR archives,\nand ZIP archives\
+    \ to search for class files."
+  args: !SimpleFlagArg
+    name: class search path of directories and zip/jar files
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  description: "<name>=<value>\nset a system property"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -verbose
+  description: ":[class|gc|jni]\nenable verbose output"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -showversion
+  description: print product version and continue
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -jre-restrict-search
+  - -no-jre-restrict-search
+  description: "Warning: this feature is deprecated and will be removed\nin a future\
+    \ release.\ninclude/exclude user private JREs in the version search"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  description: print help on non-standard options
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ea
+  description: '[:<packagename>...|:<classname>]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -enableassertions
+  description: "[:<packagename>...|:<classname>]\nenable assertions with specified\
+    \ granularity"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: '[:<packagename>...|:<classname>]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -disableassertions
+  description: "[:<packagename>...|:<classname>]\ndisable assertions with specified\
+    \ granularity"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -esa
+  - -enablesystemassertions
+  description: enable system assertions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dsa
+  - -disablesystemassertions
+  description: disable system assertions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -agentlib
+  description: ":<libname>[=<options>]\nload native agent library <libname>, e.g.\
+    \ -agentlib:hprof\nsee also, -agentlib:jdwp=help and -agentlib:hprof=help"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -agentpath
+  description: ":<pathname>[=<options>]\nload native agent library by full pathname"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -javaagent
+  description: ":<jarpath>[=<options>]\nload Java programming language agent, see\
+    \ java.lang.instrument"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -splash
+  description: ":<imagepath>\nshow splash screen with specified image"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -options
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -80,3 +179,4 @@ help_text: "Usage: java [-options] class [args...]\n           (to execute a cla
   \ details.\n"
 generated_using:
 - -h
+docker_image:

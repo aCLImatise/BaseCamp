@@ -8,6 +8,9 @@ task Phylip {
     phylip \
       ~{if defined(not_exist_phylip) then ("-h " +  '"' + not_exist_phylip + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     not_exist_phylip: "not exist in Phylip"
   }

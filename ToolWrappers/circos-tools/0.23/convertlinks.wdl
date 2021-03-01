@@ -14,6 +14,9 @@ task Convertlinks {
       ~{if (no_options) then "-nooptions" else ""} \
       ~{if defined(links) then ("-links " +  '"' + links + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_options: ""
     links: ""

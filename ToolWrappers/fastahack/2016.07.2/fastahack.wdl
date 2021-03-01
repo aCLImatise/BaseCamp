@@ -18,6 +18,9 @@ task Fastahack {
       ~{if (entropy) then "--entropy" else ""} \
       ~{if (dump) then "--dump" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index: "generate fasta index <fasta reference>.fai"
     region: "print the specified region"

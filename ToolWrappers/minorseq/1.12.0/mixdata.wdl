@@ -14,16 +14,16 @@ task Mixdata {
     File? only_include_reads_overlapping
     String? only_include_reads_read_str
     File? only_include_reads_read
-    Int? only_include_reads_mapping
+    Int? only_include_reads_mapping_int
     String? only_include_reads_library_str
-    Int? only_include_reads_sequence
-    Int? only_include_reads_flags
-    Int? only_include_reads_none
+    Int? only_include_reads_number_int
+    Int? only_include_reads_flags_present
+    Int? only_include_reads_none_present
     Int? only_exclude_reads
     Float? subsample_reads_given
     Boolean? use_multiregion_iterator
     String? read_tag_strip
-    Boolean? collapse_backward_operation
+    Boolean? collapse_cigar_operation
     Boolean? ignored_input_format
     File? input_fmt_option
     String? output_fmt
@@ -51,16 +51,16 @@ task Mixdata {
       ~{if defined(only_include_reads_overlapping) then ("-L " +  '"' + only_include_reads_overlapping + '"') else ""} \
       ~{if defined(only_include_reads_read_str) then ("-r " +  '"' + only_include_reads_read_str + '"') else ""} \
       ~{if defined(only_include_reads_read) then ("-R " +  '"' + only_include_reads_read + '"') else ""} \
-      ~{if defined(only_include_reads_mapping) then ("-q " +  '"' + only_include_reads_mapping + '"') else ""} \
+      ~{if defined(only_include_reads_mapping_int) then ("-q " +  '"' + only_include_reads_mapping_int + '"') else ""} \
       ~{if defined(only_include_reads_library_str) then ("-l " +  '"' + only_include_reads_library_str + '"') else ""} \
-      ~{if defined(only_include_reads_sequence) then ("-m " +  '"' + only_include_reads_sequence + '"') else ""} \
-      ~{if defined(only_include_reads_flags) then ("-f " +  '"' + only_include_reads_flags + '"') else ""} \
-      ~{if defined(only_include_reads_none) then ("-F " +  '"' + only_include_reads_none + '"') else ""} \
+      ~{if defined(only_include_reads_number_int) then ("-m " +  '"' + only_include_reads_number_int + '"') else ""} \
+      ~{if defined(only_include_reads_flags_present) then ("-f " +  '"' + only_include_reads_flags_present + '"') else ""} \
+      ~{if defined(only_include_reads_none_present) then ("-F " +  '"' + only_include_reads_none_present + '"') else ""} \
       ~{if defined(only_exclude_reads) then ("-G " +  '"' + only_exclude_reads + '"') else ""} \
       ~{if defined(subsample_reads_given) then ("-s " +  '"' + subsample_reads_given + '"') else ""} \
       ~{if (use_multiregion_iterator) then "-M" else ""} \
       ~{if defined(read_tag_strip) then ("-x " +  '"' + read_tag_strip + '"') else ""} \
-      ~{if (collapse_backward_operation) then "-B" else ""} \
+      ~{if (collapse_cigar_operation) then "-B" else ""} \
       ~{if (ignored_input_format) then "-S" else ""} \
       ~{if defined(input_fmt_option) then ("--input-fmt-option " +  '"' + input_fmt_option + '"') else ""} \
       ~{if defined(output_fmt) then ("--output-fmt " +  '"' + output_fmt + '"') else ""} \
@@ -68,6 +68,9 @@ task Mixdata {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_bam: "output BAM"
     output_cram_requires: "output CRAM (requires -T)"
@@ -81,16 +84,16 @@ task Mixdata {
     only_include_reads_overlapping: "only include reads overlapping this BED FILE [null]"
     only_include_reads_read_str: "only include reads in read group STR [null]"
     only_include_reads_read: "only include reads with read group listed in FILE [null]"
-    only_include_reads_mapping: "only include reads with mapping quality >= INT [0]"
+    only_include_reads_mapping_int: "only include reads with mapping quality >= INT [0]"
     only_include_reads_library_str: "only include reads in library STR [null]"
-    only_include_reads_sequence: "only include reads with number of CIGAR operations consuming\\nquery sequence >= INT [0]"
-    only_include_reads_flags: "only include reads with all  of the FLAGs in INT present [0]"
-    only_include_reads_none: "only include reads with none of the FLAGS in INT present [0]"
+    only_include_reads_number_int: "only include reads with number of CIGAR operations consuming\\nquery sequence >= INT [0]"
+    only_include_reads_flags_present: "only include reads with all  of the FLAGs in INT present [0]"
+    only_include_reads_none_present: "only include reads with none of the FLAGS in INT present [0]"
     only_exclude_reads: "only EXCLUDE reads with all  of the FLAGs in INT present [0]"
     subsample_reads_given: "subsample reads (given INT.FRAC option value, 0.FRAC is the\\nfraction of templates/read pairs to keep; INT part sets seed)"
     use_multiregion_iterator: "use the multi-region iterator (increases the speed, removes\\nduplicates and outputs the reads as they are ordered in the file)"
     read_tag_strip: "read tag to strip (repeatable) [null]"
-    collapse_backward_operation: "collapse the backward CIGAR operation"
+    collapse_cigar_operation: "collapse the backward CIGAR operation"
     ignored_input_format: "ignored (input format is auto-detected)"
     input_fmt_option: "[=VAL]\\nSpecify a single input file format option in the form\\nof OPTION or OPTION=VALUE"
     output_fmt: "[,OPT[=VAL]]...\\nSpecify output format (SAM, BAM, CRAM)"

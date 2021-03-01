@@ -3,47 +3,47 @@ id: kcgrasstest.cwl
 inputs:
 - id: in_pc_cap
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -pccap
 - id: in_psi_z
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -psiz
 - id: in_b_num
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -bnum
 - id: in_tc
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -tc
 - id: in_it
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -it
 - id: in_th
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -th
 - id: in_rnd
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -rnd
 - id: in_var_7
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -tran
 - id: in_etc
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -etc
 - id: in_order
@@ -70,6 +70,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kcgrasstest

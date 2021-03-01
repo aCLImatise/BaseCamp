@@ -14,6 +14,9 @@ task AdVNTRFiltering {
       ~{output_dot_txt} \
       ~{if defined(min_matches) then ("--min_matches " +  '"' + min_matches + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_matches: "Minimum number of matches to accept a read"
     sequences_dot_fa: ""

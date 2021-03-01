@@ -2,32 +2,35 @@ version 1.0
 
 task LofreqViterbi {
   input {
-    Boolean? _ref_file
-    Boolean? _keepflags_delete
-    Boolean? _defqual_int
-    File? _file_output
+    File? ref
+    Boolean? keep_flags
+    Int? def_qual
+    File? out
     Boolean? verbose
     String in_dot_bam
   }
   command <<<
     lofreq viterbi \
       ~{in_dot_bam} \
-      ~{if (_ref_file) then "-f" else ""} \
-      ~{if (_keepflags_delete) then "-k" else ""} \
-      ~{if (_defqual_int) then "-q" else ""} \
-      ~{if (_file_output) then "-o" else ""} \
+      ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
+      ~{if (keep_flags) then "--keepflags" else ""} \
+      ~{if defined(def_qual) then ("--defqual " +  '"' + def_qual + '"') else ""} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _ref_file: "| --ref FILE     Indexed reference fasta file [null]"
-    _keepflags_delete: "| --keepflags    Don't delete flags MC, MD, NM and A, which are all prone to change during realignment."
-    _defqual_int: "| --defqual INT  Assume INT as quality for all bases with BQ2. Default (=-1) is to use median quality of bases in read."
-    _file_output: "| --out FILE     Output BAM file [- = stdout = default]"
+    ref: "Indexed reference fasta file [null]"
+    keep_flags: "Don't delete flags MC, MD, NM and A, which are all prone to change during realignment."
+    def_qual: "Assume INT as quality for all bases with BQ2. Default (=-1) is to use median quality of bases in read."
+    out: "Output BAM file [- = stdout = default]"
     verbose: "Be verbose"
     in_dot_bam: ""
   }
   output {
     File out_stdout = stdout()
-    File out__file_output = "${in__file_output}"
+    File out_out = "${in_out}"
   }
 }

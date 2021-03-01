@@ -10,6 +10,9 @@ task FermiBitand {
       ~{in_one_dot_bit} \
       ~{in_two_dot_bit}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_one_dot_bit: ""
     in_two_dot_bit: ""

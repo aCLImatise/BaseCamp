@@ -30,6 +30,9 @@ task AffiliationPostprocesspy {
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     b: "[-r REFERENCE]"
     identity: "Min percentage identity to agggregate OTU. [Default:\\n99.0]"

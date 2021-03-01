@@ -28,6 +28,9 @@ task Mashtree {
       ~{if (seed) then "--seed" else ""} \
       ~{if (save_sketches) then "--save-sketches" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tempdir: "''   If specified, this directory will not be\\nremoved at the end of the script and can\\nbe used to cache results for future\\nanalyses.\\nIf not specified, a dir will be made for you\\nand then deleted at the end of this script."
     num_cpus: "1    This script uses Perl threads."

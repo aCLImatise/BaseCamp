@@ -8,6 +8,9 @@ task FastaToFastq {
     fasta_to_fastq \
       ~{if defined(qv) then ("-qv " +  '"' + qv + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     qv: ": Assign this as the fake quality values (default: '^')"
   }

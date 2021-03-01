@@ -1,0 +1,227 @@
+!Command
+command:
+- scHicCorrelate
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  - -m
+  description: "Cells to correlate stored in scool hicCorrelate is\nbetter used on\
+    \ un-corrected matrices in order to\nexclude any changes introduced by the correction.\n\
+    (default: None)"
+  args: !SimpleFlagArg
+    name: MATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --zMin
+  - -min
+  description: "Minimum value for the heatmap intensities. If not\nspecified the value\
+    \ is set automatically. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: ZMIN
+- !Flag
+  optional: true
+  synonyms:
+  - --zMax
+  - -max
+  description: "Maximum value for the heatmap intensities.If not\nspecified the value\
+    \ is set automatically. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: ZMAX
+- !Flag
+  optional: true
+  synonyms:
+  - --colorMap
+  description: "Color map to use for the heatmap. Available values can\nbe seen here:\
+    \ http://matplotlib.org/examples/color/col\normaps_reference.html (default: jet)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --plotFileFormat
+  description: "Image format type. If given, this option overrides the\nimage format\
+    \ based on the plotFile ending. The\navailable options are: png, emf, eps, pdf\
+    \ and svg.\n(default: None)"
+  args: !SimpleFlagArg
+    name: FILETYPE
+- !Flag
+  optional: true
+  synonyms:
+  - --plotNumbers
+  description: "If set, then the correlation number is plotted on top\nof the heatmap.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --method
+  description: 'Correlation method to use. (default: pearson)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      pearson:
+      spearman:
+- !Flag
+  optional: true
+  synonyms:
+  - --log1p
+  description: "If set, then the log1p of the matrix values is used.\nThis parameter\
+    \ has no effect for Spearman correlations\nbut changes the output of Pearson correlation\
+    \ and, for\nthe scatter plot, if set, the visualization of the\nvalues is easier.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --labels
+  description: "sample2, -l sample1 sample2\nUser defined labels instead of default\
+    \ labels from\nfile names. Multiple labels have to be separated by\nspace, e.g.\
+    \ --labels sample1 sample2 sample3 (default:\nNone)"
+  args: !SimpleFlagArg
+    name: sample1
+- !Flag
+  optional: true
+  synonyms:
+  - --range
+  description: "In bp with the format low_range:high_range, for\nexample 1000000:2000000.\
+    \ If --range is given only\ncounts within this range are considered. The range\n\
+    should be adjusted to the size of interacting domains\nin the genome you are working\
+    \ with. (default: None)"
+  args: !SimpleFlagArg
+    name: RANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileNameHeatmap
+  - -oh
+  description: "File name to save the resulting heatmap plot.\n(default: None)"
+  args: !SimpleFlagArg
+    name: OUTFILENAMEHEATMAP
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileNameScatter
+  - -os
+  description: "File name to save the resulting scatter plot.\n(default: None)"
+  args: !SimpleFlagArg
+    name: OUTFILENAMESCATTER
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosomes
+  description: "List of chromosomes to be included in the correlation.\n(default:\
+    \ None)"
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+- !Flag
+  optional: true
+  synonyms:
+  - --fontsize
+  description: 'Fontsize in the plot for x and y axis. (default: 30)'
+  args: !SimpleFlagArg
+    name: FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --figuresize
+  description: "y-size\nFontsize in the plot for x and y axis. (default: (25,\n20))"
+  args: !SimpleFlagArg
+    name: x-size
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Number of threads. Using the python multiprocessing\nmodule. Is only\
+    \ used with 'cool' matrix format. One\nmaster process which is used to read the\
+    \ input file\ninto the buffer and one process which is merging the\noutput bam\
+    \ files of the processes into one output bam\nfile. All other threads do the actual\
+    \ computation.\n(default: 4)"
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: scHicCorrelate --matrix MATRIX [--zMin ZMIN] [--zMax ZMAX] [--colorMap]\n\
+  \                      [--plotFileFormat FILETYPE] [--plotNumbers]\n           \
+  \           [--method {pearson,spearman}] [--log1p]\n                      [--labels\
+  \ sample1 sample2] [--range RANGE]\n                      --outFileNameHeatmap OUTFILENAMEHEATMAP\n\
+  \                      --outFileNameScatter OUTFILENAMESCATTER\n               \
+  \       [--chromosomes CHROMOSOMES [CHROMOSOMES ...]]\n                      [--fontsize\
+  \ FONTSIZE] [--figuresize x-size y-size]\n                      [--threads THREADS]\
+  \ [--help] [--version]\n\nComputes pairwise correlations between Hi-C matrices data.\
+  \ The correlation is\ncomputed taking the values from each pair of matrices and\
+  \ discarding values\nthat are zero in both matrices.Parameters that strongly affect\
+  \ correlations\nare bin size of the Hi-C matrices and the considered range. The\
+  \ smaller the\nbin size of the matrices, the finer differences you score. The --range\n\
+  parameter should be selected at a meaningful genomic scale according to, for\nexample,\
+  \ the mean size of the TADs in the organism you work with.\n\nRequired arguments:\n\
+  \  --matrix MATRIX, -m MATRIX\n                        Cells to correlate stored\
+  \ in scool hicCorrelate is\n                        better used on un-corrected\
+  \ matrices in order to\n                        exclude any changes introduced by\
+  \ the correction.\n                        (default: None)\n\nHeatmap arguments:\n\
+  \  Options for generating the correlation heatmap\n\n  --zMin ZMIN, -min ZMIN\n\
+  \                        Minimum value for the heatmap intensities. If not\n   \
+  \                     specified the value is set automatically. (default:\n    \
+  \                    None)\n  --zMax ZMAX, -max ZMAX\n                        Maximum\
+  \ value for the heatmap intensities.If not\n                        specified the\
+  \ value is set automatically. (default:\n                        None)\n  --colorMap\
+  \            Color map to use for the heatmap. Available values can\n          \
+  \              be seen here: http://matplotlib.org/examples/color/col\n        \
+  \                ormaps_reference.html (default: jet)\n  --plotFileFormat FILETYPE\n\
+  \                        Image format type. If given, this option overrides the\n\
+  \                        image format based on the plotFile ending. The\n      \
+  \                  available options are: png, emf, eps, pdf and svg.\n        \
+  \                (default: None)\n  --plotNumbers         If set, then the correlation\
+  \ number is plotted on top\n                        of the heatmap. (default: False)\n\
+  \nOptional arguments:\n  --method {pearson,spearman}\n                        Correlation\
+  \ method to use. (default: pearson)\n  --log1p               If set, then the log1p\
+  \ of the matrix values is used.\n                        This parameter has no effect\
+  \ for Spearman correlations\n                        but changes the output of Pearson\
+  \ correlation and, for\n                        the scatter plot, if set, the visualization\
+  \ of the\n                        values is easier. (default: False)\n  --labels\
+  \ sample1 sample2, -l sample1 sample2\n                        User defined labels\
+  \ instead of default labels from\n                        file names. Multiple labels\
+  \ have to be separated by\n                        space, e.g. --labels sample1\
+  \ sample2 sample3 (default:\n                        None)\n  --range RANGE    \
+  \     In bp with the format low_range:high_range, for\n                        example\
+  \ 1000000:2000000. If --range is given only\n                        counts within\
+  \ this range are considered. The range\n                        should be adjusted\
+  \ to the size of interacting domains\n                        in the genome you\
+  \ are working with. (default: None)\n  --outFileNameHeatmap OUTFILENAMEHEATMAP,\
+  \ -oh OUTFILENAMEHEATMAP\n                        File name to save the resulting\
+  \ heatmap plot.\n                        (default: None)\n  --outFileNameScatter\
+  \ OUTFILENAMESCATTER, -os OUTFILENAMESCATTER\n                        File name\
+  \ to save the resulting scatter plot.\n                        (default: None)\n\
+  \  --chromosomes CHROMOSOMES [CHROMOSOMES ...]\n                        List of\
+  \ chromosomes to be included in the correlation.\n                        (default:\
+  \ None)\n  --fontsize FONTSIZE   Fontsize in the plot for x and y axis. (default:\
+  \ 30)\n  --figuresize x-size y-size\n                        Fontsize in the plot\
+  \ for x and y axis. (default: (25,\n                        20))\n  --threads THREADS,\
+  \ -t THREADS\n                        Number of threads. Using the python multiprocessing\n\
+  \                        module. Is only used with 'cool' matrix format. One\n \
+  \                       master process which is used to read the input file\n  \
+  \                      into the buffer and one process which is merging the\n  \
+  \                      output bam files of the processes into one output bam\n \
+  \                       file. All other threads do the actual computation.\n   \
+  \                     (default: 4)\n  --help, -h            show this help message\
+  \ and exit\n  --version             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/schicexplorer:7--py_0

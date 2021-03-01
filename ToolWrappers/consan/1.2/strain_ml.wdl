@@ -10,7 +10,7 @@ task StrainMl {
     Boolean? _debugging_output
     Boolean? _verbose_output
     Boolean? turn_weighting_scheme
-    Boolean? force_recalculate_defaults
+    Boolean? force_recalculate_weights
     Boolean? use_voronoi_weights
     Int? setup_tying_typeno
     Boolean? options
@@ -29,11 +29,14 @@ task StrainMl {
       ~{if (_debugging_output) then "-d" else ""} \
       ~{if (_verbose_output) then "-v" else ""} \
       ~{if (turn_weighting_scheme) then "-n" else ""} \
-      ~{if (force_recalculate_defaults) then "-c" else ""} \
+      ~{if (force_recalculate_weights) then "-c" else ""} \
       ~{if (use_voronoi_weights) then "-V" else ""} \
       ~{if defined(setup_tying_typeno) then ("-T " +  '"' + setup_tying_typeno + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     use_string_defaults: ": Use grammar <string>, defaults to STA"
     save_model_file: ": save model file to <file>"
@@ -43,7 +46,7 @@ task StrainMl {
     _debugging_output: ": debugging output"
     _verbose_output: ": verbose output"
     turn_weighting_scheme: ": Turn off weighting scheme"
-    force_recalculate_defaults: ": Force recalculate weights (defaults to given when available)"
+    force_recalculate_weights: ": Force recalculate weights (defaults to given when available)"
     use_voronoi_weights: ": Use Voronoi weights instead of GSC"
     setup_tying_typeno: ": Setup Tying Type\\n[No tying = 0; NT counts = 1; Gap Open/Extend counts = 2;\\nGap Open/Extend probs = 3; LR Symmetry 4 (default)]"
     options: ""

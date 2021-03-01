@@ -3,22 +3,22 @@ id: rgi_remove_duplicates.cwl
 inputs:
 - id: in_input
   doc: input fasta file
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_card_annotation
   doc: card_annotation input fasta file
-  type: File
+  type: File?
   inputBinding:
     prefix: --card_annotation
 - id: in_output
   doc: output fasta file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_debug
   doc: debug mode
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: output fasta file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rgi

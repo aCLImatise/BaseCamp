@@ -2,7 +2,7 @@ version 1.0
 
 task Alistat {
   input {
-    Boolean? report_info_just
+    Boolean? report_persequence_info
     Boolean? fast_estimate_average
     Boolean? quiet_suppress_verbose
     File? consensus
@@ -14,7 +14,7 @@ task Alistat {
   command <<<
     alistat \
       ~{alignment_file} \
-      ~{if (report_info_just) then "-a" else ""} \
+      ~{if (report_persequence_info) then "-a" else ""} \
       ~{if (fast_estimate_average) then "-f" else ""} \
       ~{if (quiet_suppress_verbose) then "-q" else ""} \
       ~{if defined(consensus) then ("--consensus " +  '"' + consensus + '"') else ""} \
@@ -22,8 +22,11 @@ task Alistat {
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    report_info_just: ": report per-sequence info, not just a summary"
+    report_persequence_info: ": report per-sequence info, not just a summary"
     fast_estimate_average: ": fast: estimate average %id by sampling (not compatible with -a)"
     quiet_suppress_verbose: ": quiet: suppress verbose header"
     consensus: ": write majority rule consensus sequence(s) in FASTA\\nformat to file <f>"

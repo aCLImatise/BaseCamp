@@ -1,0 +1,77 @@
+!Command
+command:
+- or02_find_orthologs.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: rblast_file
+  description: "Input BLAST file with the following columns: qseqid sseqid\npident\
+    \ length mismatch gapopen qstart qend sstart send\nevalue bitscore gaps"
+- !Positional
+  optional: false
+  position: 1
+  name: fblast_file
+  description: "Filtered First BLAST file with the following columns:\nqseqid sseqid\
+    \ pident length mismatch gapopen qstart qend\nsstart send evalue bitscore gaps\
+    \ document"
+- !Positional
+  optional: false
+  position: 2
+  name: outfile
+  description: Name of output
+- !Positional
+  optional: false
+  position: 3
+  name: hit_num
+  description: Integer, Number of hits to include
+- !Positional
+  optional: false
+  position: 4
+  name: coverage
+  description: Integer, Coverage of alignment (percentage)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -sqldb
+  description: name of SQLite3 database
+  args: !SimpleFlagArg
+    name: SQLDB
+- !Flag
+  optional: true
+  synonyms:
+  - -blastdb
+  description: name of first BLAST database if alias database was used
+  args: !SimpleFlagArg
+    name: BLASTDB
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: or02_find_orthologs.py [-h] [-sqldb SQLDB] [-blastdb BLASTDB]\n\
+  \                              rblast_file fblast_file outfile hit_num coverage\n\
+  \nThis script filters reverse BLAST results to extract results which are within\n\
+  the top x number of hits for an organism and have an alignment length >= user\n\
+  set percentage of query.\n\npositional arguments:\n  rblast_file       Input BLAST\
+  \ file with the following columns: qseqid sseqid\n                    pident length\
+  \ mismatch gapopen qstart qend sstart send\n                    evalue bitscore\
+  \ gaps\n  fblast_file       Filtered First BLAST file with the following columns:\n\
+  \                    qseqid sseqid pident length mismatch gapopen qstart qend\n\
+  \                    sstart send evalue bitscore gaps document\n  outfile      \
+  \     Name of output\n  hit_num           Integer, Number of hits to include\n \
+  \ coverage          Integer, Coverage of alignment (percentage)\n\noptional arguments:\n\
+  \  -h, --help        show this help message and exit\n  -sqldb SQLDB      name of\
+  \ SQLite3 database\n  -blastdb BLASTDB  name of first BLAST database if alias database\
+  \ was used\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/batch_brb:1.0.1--0

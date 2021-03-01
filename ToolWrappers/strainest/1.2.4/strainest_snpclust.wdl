@@ -14,6 +14,9 @@ task StrainestSnpclust {
       ~{snp_out} \
       ~{clust}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     snp: ""
     dist: ""

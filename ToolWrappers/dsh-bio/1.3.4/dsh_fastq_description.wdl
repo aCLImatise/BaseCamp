@@ -14,6 +14,9 @@ task Dshfastqdescription {
       ~{if (fast_q_file) then "--fastq-file" else ""} \
       ~{if (description_file) then "--description-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     fast_q_file: "[class java.io.File]  input FASTQ file, default stdin [optional]"

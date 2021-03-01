@@ -8,6 +8,9 @@ task NeokitVersions {
     neokit versions \
       ~{versions}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     versions: ""
   }

@@ -12,6 +12,9 @@ task SeqmagickExtractids {
       ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
       ~{if (include_description) then "--include-description" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "Destination file"
     input_format: "Input format for sequence file"

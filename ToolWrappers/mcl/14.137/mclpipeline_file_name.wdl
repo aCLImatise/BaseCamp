@@ -10,6 +10,9 @@ task MclpipelineFilename {
       ~{if defined(parser) then ("--parser " +  '"' + parser + '"') else ""} \
       ~{if defined(succeed_error_initialization) then ("-1 " +  '"' + succeed_error_initialization + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     parser: "option is required"
     succeed_error_initialization: "did not succeed, error in initialization part"

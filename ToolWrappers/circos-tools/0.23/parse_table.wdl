@@ -10,6 +10,9 @@ task Parsetable {
       ~{cat} \
       ~{table_dot_txt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cat: ""
     table_dot_txt: ""

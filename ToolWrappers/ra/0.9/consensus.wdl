@@ -10,6 +10,9 @@ task Consensus {
       ~{if (reads) then "--reads" else ""} \
       ~{if (contigs) then "--contigs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reads: "reads file (string)"
     contigs: "contigs file (string)"

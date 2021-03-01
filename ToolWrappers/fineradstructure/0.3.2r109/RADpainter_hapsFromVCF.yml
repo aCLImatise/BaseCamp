@@ -4,35 +4,37 @@ command:
 - hapsFromVCF
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: INPUT.vcf
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: ',   --het-treatment <r|p>             r: assign het bases randomly
-    (default); p: use the phase information in the VCF'
+  optional: true
   synonyms:
   - -H
-  args: !EmptyFlagArg {}
-  optional: true
+  - --het-treatment
+  description: 'r: assign het bases randomly (default); p: use the phase information
+    in the VCF'
+  args: !SimpleFlagArg
+    name: r|p
 - !Flag
-  description: 'minimum acceptable inbreeding coefficient (default: F >= -0.3)'
+  optional: true
   synonyms:
   - -F
+  description: 'minimum acceptable inbreeding coefficient (default: F >= -0.3)'
   args: !SimpleFlagArg
     name: MIN_F
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: display this help and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: display this help and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nUsage: RADpainter hapsFromVCF [OPTIONS] INPUT.vcf\nGenerate a co-ancestry\
@@ -43,3 +45,4 @@ help_text: "\nUsage: RADpainter hapsFromVCF [OPTIONS] INPUT.vcf\nGenerate a co-a
   \ F >= -0.3)\n\n\n\nReport bugs to milan.malinsky@unibas.ch\n\n"
 generated_using:
 - --help
+docker_image:

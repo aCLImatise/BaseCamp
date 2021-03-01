@@ -4,90 +4,90 @@ command:
 - scan
 positional:
 - !Positional
-  description: -c CORES, --cores CORES
+  optional: false
   position: 0
   name: file
-  optional: false
+  description: -c CORES, --cores CORES
 named:
 - !Flag
-  description: 'output directory; default: /'
+  optional: true
   synonyms:
   - -o
   - --output
+  description: 'output directory; default: /'
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: "whether to look for eukaryotic, archaeal, or bacterial\nrDNA; default:\
-    \ bac"
+  optional: true
   synonyms:
   - -k
   - --kingdom
+  description: "whether to look for eukaryotic, archaeal, or bacterial\nrDNA; default:\
+    \ bac"
   args: !ChoiceFlagArg
     choices: !!set
-      euk:
+      mito:
       arc:
       bac:
-      mito:
-  optional: true
+      euk:
 - !Flag
-  description: "partial rRNA hits below this threshold will be\nignored. default:\
-    \ 0.5"
+  optional: true
   synonyms:
   - -t
   - --id_thresh
+  description: "partial rRNA hits below this threshold will be\nignored. default:\
+    \ 0.5"
   args: !SimpleFlagArg
     name: ID_THRESH
-  optional: true
 - !Flag
-  description: 'path to barrnap executable; default: barrnap'
+  optional: true
   synonyms:
   - -b
   - --barrnap_exe
+  description: 'path to barrnap executable; default: barrnap'
   args: !SimpleFlagArg
     name: BARRNAP_EXE
-  optional: true
 - !Flag
-  description: 'name to give the contig files; default: infered from'
+  optional: true
   synonyms:
   - -n
   - --name
+  description: 'name to give the contig files; default: infered from'
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: 'skip the scaffold if its shorter than this default: 0'
+  optional: true
   synonyms:
   - -m
   - --min_length
+  description: 'skip the scaffold if its shorter than this default: 0'
   args: !SimpleFlagArg
     name: MIN_LENGTH
-  optional: true
 - !Flag
-  description: "Logger writes debug to file in output dir; this sets\nverbosity level\
-    \ sent to stderr. 1 = debug(), 2 =\ninfo(), 3 = warning(), 4 = error() and 5 =\
-    \ critical();\ndefault: 2"
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Logger writes debug to file in output dir; this sets\nverbosity level\
+    \ sent to stderr. 1 = debug(), 2 =\ninfo(), 3 = warning(), 4 = error() and 5 =\
+    \ critical();\ndefault: 2"
   args: !ChoiceFlagArg
     choices: !!set
       '2':
+      '5':
+      '3':
       '1':
       '4':
-      '3':
-      '5':
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Displays this help message
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Displays this help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: ribo scan -o OUTPUT [-k {bac,euk,arc,mito}] [-t ID_THRESH]\n  \
@@ -115,3 +115,4 @@ help_text: "usage: ribo scan -o OUTPUT [-k {bac,euk,arc,mito}] [-t ID_THRESH]\n 
   \                      default: 2\n  -h, --help            Displays this help message\n"
 generated_using:
 - --help
+docker_image:

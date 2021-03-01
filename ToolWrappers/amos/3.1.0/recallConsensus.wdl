@@ -12,6 +12,9 @@ task RecallConsensus {
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (ambiguity) then "-ambiguity" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bank: "Bank where assembly is stored"
     verbose: "Be verbose"

@@ -22,6 +22,9 @@ task PoretoolsFastq {
       ~{if defined(max_length) then ("--max-length " +  '"' + max_length + '"') else ""} \
       ~{if (high_quality) then "--high-quality" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     type: "Which type of FASTQ entries should be reported?\\nDef.=all"

@@ -10,6 +10,9 @@ task PyprophetBackpropagateFile {
       ~{py_prophet} \
       ~{back_propagate}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     py_prophet: ""
     back_propagate: ""

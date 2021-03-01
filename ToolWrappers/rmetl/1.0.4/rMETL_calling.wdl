@@ -26,6 +26,9 @@ task RMETLCalling {
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
       ~{if defined(mei) then ("--MEI " +  '"' + mei + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     homozygous: "The mininum score of a genotyping reported as a\\nhomozygous.[0.8]"
     heterozygous: "The mininum score of a genotyping reported as a\\nheterozygous.[0.3]"

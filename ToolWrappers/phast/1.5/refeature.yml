@@ -3,143 +3,143 @@ command:
 - refeature
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: infile
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "Include only features of the specified types (comma-delimited list);\n\
-    filter out everything else."
+  optional: true
   synonyms:
   - --include-only
   - -i
+  description: "Include only features of the specified types (comma-delimited list);\n\
+    filter out everything else."
   args: !SimpleFlagArg
     name: types
-  optional: true
 - !Flag
-  description: "Include only groups whose names are listed in the specified file.\n\
-    Group names in file must be delimited by white-space (can be on\nany number of\
-    \ lines)."
+  optional: true
   synonyms:
   - --include-groups
   - -l
+  description: "Include only groups whose names are listed in the specified file.\n\
+    Group names in file must be delimited by white-space (can be on\nany number of\
+    \ lines)."
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sort
+  - -s
   description: "Sort features primarily by start position and secondarily\nby end\
     \ position (usually has desired effect in case of short\noverlapping features,\
     \ e.g., start & stop codons).  Features\nwill be sorted both across groups and\
     \ within groups, but members\nof a group will be kept together."
-  synonyms:
-  - --sort
-  - -s
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --unique
+  - -u
   description: "Ensures that output contains no overlapping groups (or\nsubgroups,\
     \ if -e).  If groups overlap, the one with the highest\nscore (if available) or\
     \ longest length (if no score) is kept and\nothers are discarded.  Warning: long\
     \ UTRs can have undesirable\nresults; filter out UTR exons to avoid."
-  synonyms:
-  - --unique
-  - -u
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Group features according to specified tag (default "transcript_id")
+  optional: true
   synonyms:
   - --groupby
   - -g
+  description: Group features according to specified tag (default "transcript_id")
   args: !SimpleFlagArg
     name: tag
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --exongroup
+  - -e
   description: "Sub-group features into contiguous sets, and define\nsub-groups using\
     \ specified tag (e.g., \"exon_id\").  Can be\nused to group the features describing\
     \ individual exons, e.g.,\neach CDS and its flanking splice sites.  Only features\
     \ in the\nsame major group will be included in the same minor group\n(e.g., exons\
     \ of the same transcript)."
-  synonyms:
-  - --exongroup
-  - -e
   args: !SimpleFlagArg
     name: tag
-  optional: true
 - !Flag
-  description: "Ensure that CDS features include start codons and exclude stop\ncodons,\
-    \ as required by the GTF2 standard.  Assumes at most one\nstart_codon and at most\
-    \ one stop_codon per group."
+  optional: true
   synonyms:
   - --fix-start-stop
   - -f
+  description: "Ensure that CDS features include start codons and exclude stop\ncodons,\
+    \ as required by the GTF2 standard.  Assumes at most one\nstart_codon and at most\
+    \ one stop_codon per group."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Create UTR features for portions of exons outside CDS (only\nuseful\
-    \ with GFF output; features must be grouped at level\nof transcript)."
+  optional: true
   synonyms:
   - --add-utrs
   - -U
+  description: "Create UTR features for portions of exons outside CDS (only\nuseful\
+    \ with GFF output; features must be grouped at level\nof transcript)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Create intron features between exons (only useful with GFF output;\n\
-    features must be grouped at level of transcript)."
+  optional: true
   synonyms:
   - --add-introns
   - -I
+  description: "Create intron features between exons (only useful with GFF output;\n\
+    features must be grouped at level of transcript)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --add-signals
+  - -S
   description: "Adds features for start and stop codons and 3' and 5' splice\nsites\
     \ (only useful with GFF output; features must be grouped\nat level of transcript).\
     \  Start and stop codons will be added\nas required by the GTF2 standard (--fix-start-stop\
     \ is not\nnecessary).  Warning: does not correctly handle case of splice\nsite\
     \ in middle of start or stop codon."
-  synonyms:
-  - --add-signals
-  - -S
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "|bed|genepred|wig\nOutput format (default gff).  Note that wig output\
-    \ is fixedStep\ncan only be used if all elements have a score and are of equal\n\
-    length."
+  optional: true
   synonyms:
   - --output
   - -o
+  description: "|bed|genepred|wig\nOutput format (default gff).  Note that wig output\
+    \ is fixedStep\ncan only be used if all elements have a score and are of equal\n\
+    length."
   args: !SimpleFlagArg
     name: gff
-  optional: true
 - !Flag
-  description: "(for use with --output bed) Create a separate line for each\nfeature\
-    \ in bed output (by default, all features of a group are\ndescribed by a single\
-    \ line)."
+  optional: true
   synonyms:
   - --simplebed
   - -b
+  description: "(for use with --output bed) Create a separate line for each\nfeature\
+    \ in bed output (by default, all features of a group are\ndescribed by a single\
+    \ line)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Write any discarded features to specified file.
+  optional: true
   synonyms:
   - --discards
   - -d
+  description: Write any discarded features to specified file.
   args: !SimpleFlagArg
     name: fname
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "Print this help message.\n"
+  optional: true
   synonyms:
   - --help
   - -h
+  description: "Print this help message.\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nPROGRAM:        refeature\n\nDESCRIPTION:    Read a file representing\
@@ -191,3 +191,4 @@ help_text: "\nPROGRAM:        refeature\n\nDESCRIPTION:    Read a file represent
   \n"
 generated_using:
 - --help
+docker_image:

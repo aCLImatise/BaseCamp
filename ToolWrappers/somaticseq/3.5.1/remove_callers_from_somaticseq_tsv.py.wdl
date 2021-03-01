@@ -12,6 +12,9 @@ task RemoveCallersFromSomaticseqTsvpy {
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(subtract) then ("-subtract " +  '"' + subtract + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "input file (default: None)"
     outfile: "input file (default: None)"

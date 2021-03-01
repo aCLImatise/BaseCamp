@@ -16,6 +16,9 @@ task ComplementBed {
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     limit_output_solely: "Limit output to solely the chromosomes with records in the input file."
     g: ""

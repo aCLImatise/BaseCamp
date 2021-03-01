@@ -48,6 +48,9 @@ task Truvari {
       ~{if defined(include_bed) then ("--includebed " +  '"' + include_bed + '"') else ""} \
       ~{if (multi_match) then "--multimatch" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base: "Baseline truth-set calls"
     comp: "Comparison set of calls"

@@ -68,6 +68,9 @@ task IlluminapyIlluminaDemux {
       ~{if defined(tmp_dir) then ("--tmp_dir " +  '"' + tmp_dir + '"') else ""} \
       ~{if (tmp_dir_keep) then "--tmp_dirKeep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_metrics: "Output ExtractIlluminaBarcodes metrics file. Default\\nis to dump to a temp file."
     common_barcodes: "Write a TSV report of all barcode counts, in\\ndescending order."

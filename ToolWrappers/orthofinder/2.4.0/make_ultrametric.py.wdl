@@ -10,6 +10,9 @@ task MakeUltrametricpy {
       ~{tree_fn} \
       ~{if defined(root_age) then ("--root_age " +  '"' + root_age + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     root_age: "Rescale branch lengths by a multiplicative factor to\\nachieve requested root age\\n"
     tree_fn: "File containing a rooted tree in newick format"

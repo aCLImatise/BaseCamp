@@ -16,6 +16,9 @@ task GcloudComputeVpntunnels {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tunnels: "SYNOPSIS"
     create: "Create a VPN tunnel."

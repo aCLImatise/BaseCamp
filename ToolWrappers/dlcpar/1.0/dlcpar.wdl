@@ -68,6 +68,9 @@ task Dlcpar {
       ~{if (output_format) then "--output_format" else ""} \
       ~{if (log) then "--log" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stree: "species tree file in newick format"
     s_map: "gene to species map"

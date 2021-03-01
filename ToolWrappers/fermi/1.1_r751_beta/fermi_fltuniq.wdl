@@ -8,6 +8,9 @@ task FermiFltuniq {
     fermi fltuniq \
       ~{in_dot_fa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_fa: ""
   }

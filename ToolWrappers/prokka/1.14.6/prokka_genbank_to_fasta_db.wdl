@@ -24,6 +24,9 @@ task ProkkagenbankToFastaDb {
       ~{if defined(g_code) then ("--gcode " +  '"' + g_code + '"') else ""} \
       ~{if defined(min_len) then ("--minlen " +  '"' + min_len + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "!      Verbose progress (default '0')."
     format: "Input format (default 'genbank')."

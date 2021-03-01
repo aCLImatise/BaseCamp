@@ -8,6 +8,9 @@ task GTFupdate {
     GTFupdate \
       ~{gtf_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gtf_file: "optional arguments:"
   }

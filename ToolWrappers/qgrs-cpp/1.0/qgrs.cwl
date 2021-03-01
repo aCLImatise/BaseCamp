@@ -3,49 +3,49 @@ id: qgrs.cwl
 inputs:
 - id: in_csv
   doc: output in csv mode
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -csv
 - id: in_json
   doc: output in JSON mode
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -json
-- id: in_read_input_file
+- id: in_read_input_specified
   doc: '[input filename]   read input from a file as specified (defaults to stdin)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_write_output_file
   doc: '[output filename]  write output to file as specified (defaults to stdout)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_filter_output_number
   doc: '[n]                filter output to QGRS with number tetrads equal to or greater
     than n (defaults to 2)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
-- id: in_gscore_equal_greater
+- id: in_filter_gscore_equal
   doc: '[n]                filter output to QGRS with g-score equal to or greater
     than n (defaults to 17)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_replace_g_characters
   doc: '[c]                replace all G characters within tetrads with given character.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
-- id: in_include_qgrs_generated
+- id: in_include_overlapping_qgrs
   doc: include overlapping QGRS in output (very large outputs may be generated)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_no_title
   doc: omit column titles in output (does not apply to JSON)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -notitle
 outputs:
@@ -54,9 +54,10 @@ outputs:
   type: stdout
 - id: out_write_output_file
   doc: '[output filename]  write output to file as specified (defaults to stdout)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_write_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - qgrs

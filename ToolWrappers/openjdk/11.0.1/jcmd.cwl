@@ -3,12 +3,12 @@ id: jcmd.cwl
 inputs:
 - id: in_read_execute_commands
   doc: read and execute commands from the file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_list_jvm_processes
   doc: list JVM processes on the local machine
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_pid_vertical_line_main_class
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - jcmd

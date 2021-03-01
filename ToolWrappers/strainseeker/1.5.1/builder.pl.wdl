@@ -24,6 +24,9 @@ task Builderpl {
       ~{if (threads) then "--threads" else ""} \
       ~{if (max) then "-max" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     newick: "- Guide tree in newick format (same names as fasta files without suffix .fna)"
     dir: "- Directory of fasta files (.fna)"

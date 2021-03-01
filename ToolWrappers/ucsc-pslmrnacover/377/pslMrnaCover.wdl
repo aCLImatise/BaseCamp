@@ -12,6 +12,9 @@ task PslMrnaCover {
       ~{if defined(minsize) then ("-minSize " +  '"' + minsize + '"') else ""} \
       ~{if defined(list_zero) then ("-listZero " +  '"' + list_zero + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minsize: "- default 100.  Minimum size of mRNA considered"
     list_zero: "- List accessions that don't align in zero.tab"

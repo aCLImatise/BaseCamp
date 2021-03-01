@@ -12,6 +12,9 @@ task CruxPredictpeptideionsMono {
       ~{predict_peptide_ions} \
       ~{peptide_sequence}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     predict_peptide_ions: ""

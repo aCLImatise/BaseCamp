@@ -20,6 +20,9 @@ task Gvcfgenotyper {
       ~{if (region) then "--region" else ""} \
       ~{if (max_alleles) then "--max-alleles" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list: "<file>          plain text list of gvcfs to merge"
     fast_a_ref: "<file>          reference sequence"

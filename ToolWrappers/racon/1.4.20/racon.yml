@@ -1,0 +1,125 @@
+!Command
+command:
+- racon
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --include-unpolished
+  description: output unpolished target sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fragment-correction
+  description: "perform fragment correction instead of contig polishing\n(overlaps\
+    \ file should contain dual/self overlaps!)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window-length
+  description: "default: 500\nsize of window on which POA is performed"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quality-threshold
+  description: "default: 10.0\nthreshold for average base quality of windows used\
+    \ in POA"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --error-threshold
+  description: "default: 0.3\nmaximum allowed error rate used for filtering overlaps"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --no-trimming
+  description: disables consensus trimming at window ends
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --match
+  description: "default: 3\nscore for matching bases"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --mismatch
+  description: "default: -5\nscore for mismatching bases"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gap
+  description: "default: -4\ngap penalty (must be negative)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: "default: 1\nnumber of threads"
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: "prints the usage\n"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: prints the version number
+  args: !EmptyFlagArg {}
+help_text: "usage: racon [options ...] <sequences> <overlaps> <target sequences>\n\
+  \n    #default output is stdout\n    <sequences>\n        input file in FASTA/FASTQ\
+  \ format (can be compressed with gzip)\n        containing sequences used for correction\n\
+  \    <overlaps>\n        input file in MHAP/PAF/SAM format (can be compressed with\
+  \ gzip)\n        containing overlaps between sequences and target sequences\n  \
+  \  <target sequences>\n        input file in FASTA/FASTQ format (can be compressed\
+  \ with gzip)\n        containing sequences which will be corrected\n\n    options:\n\
+  \        -u, --include-unpolished\n            output unpolished target sequences\n\
+  \        -f, --fragment-correction\n            perform fragment correction instead\
+  \ of contig polishing\n            (overlaps file should contain dual/self overlaps!)\n\
+  \        -w, --window-length <int>\n            default: 500\n            size of\
+  \ window on which POA is performed\n        -q, --quality-threshold <float>\n  \
+  \          default: 10.0\n            threshold for average base quality of windows\
+  \ used in POA\n        -e, --error-threshold <float>\n            default: 0.3\n\
+  \            maximum allowed error rate used for filtering overlaps\n        --no-trimming\n\
+  \            disables consensus trimming at window ends\n        -m, --match <int>\n\
+  \            default: 3\n            score for matching bases\n        -x, --mismatch\
+  \ <int>\n            default: -5\n            score for mismatching bases\n    \
+  \    -g, --gap <int>\n            default: -4\n            gap penalty (must be\
+  \ negative)\n        -t, --threads <int>\n            default: 1\n            number\
+  \ of threads\n        --version\n            prints the version number\n       \
+  \ -h, --help\n            prints the usage\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/racon:1.4.20--he513fc3_0

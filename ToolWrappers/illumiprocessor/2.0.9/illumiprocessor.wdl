@@ -32,6 +32,9 @@ task Illumiprocessor {
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_directory_trim: "The input directory of raw reads to trim. (default:\\nNone)"
     output_directory_createdefault: "The output directory of clean reads to create.\\n(default: None)"

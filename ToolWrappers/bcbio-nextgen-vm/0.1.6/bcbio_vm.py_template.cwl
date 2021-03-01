@@ -3,33 +3,33 @@ id: bcbio_vm.py_template.cwl
 inputs:
 - id: in_only_metadata
   doc: Ignore samples not present in metadata CSV file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --only-metadata
 - id: in_force_single
   doc: Treat all files as single reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force-single
 - id: in_separators
   doc: "semicolon separated list of separators that indicates\npaired files."
-  type: string
+  type: string?
   inputBinding:
     prefix: --separators
 - id: in_system_config
   doc: "Global YAML configuration file specifying system\ndetails. Defaults to installed\
     \ bcbio_system.yaml."
-  type: File
+  type: File?
   inputBinding:
     prefix: --systemconfig
 - id: in_num_cores
   doc: Total cores to use for processing
-  type: long
+  type: long?
   inputBinding:
     prefix: --numcores
 - id: in_rel_paths
   doc: "Convert inputs into relative paths to the work\ndirectory\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --relpaths
 - id: in_template
@@ -53,6 +53,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bcbio_vm.py

@@ -3,28 +3,28 @@ id: mendelscan_rhro.cwl
 inputs:
 - id: in_ped_file
   doc: Pedigree file in 6-column tab-delimited format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ped-file
 - id: in_centromere_file
   doc: A tab-delimited, BED-like file indicating centromere locations by chromosome    --output-file   Output
     file to contain informative variants
-  type: File
+  type: File?
   inputBinding:
     prefix: --centromere-file
 - id: in_output_windows
   doc: Output file to contain RHRO windows. Otherwise they print to STDOUT
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-windows
 - id: in_inheritance
   doc: 'Presumed model of inheritance: dominant, recessive, x-linked [dominant]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --inheritance
 - id: in_jar
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -jar
 - id: in_java
@@ -39,7 +39,7 @@ inputs:
     position: 1
 - id: in_vcf
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 2
 outputs:
@@ -49,14 +49,15 @@ outputs:
 - id: out_centromere_file
   doc: A tab-delimited, BED-like file indicating centromere locations by chromosome    --output-file   Output
     file to contain informative variants
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_centromere_file)
 - id: out_output_windows
   doc: Output file to contain RHRO windows. Otherwise they print to STDOUT
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_windows)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mendelscan

@@ -52,6 +52,9 @@ task Locarnate {
       ~{if (scaling_factor) then "--scaling_factor" else ""} \
       ~{if defined(pp_calculater_params) then ("--pp_calculater_params " +  '"' + pp_calculater_params + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pairwise_parameters: "parameters for the pairwise alignment step"
     t_coffee_params: "parameters for tcoffee"

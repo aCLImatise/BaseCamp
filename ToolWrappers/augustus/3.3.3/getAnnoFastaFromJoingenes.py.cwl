@@ -3,38 +3,38 @@ id: getAnnoFastaFromJoingenes.py.cwl
 inputs:
 - id: in_genome
   doc: genome sequence file (FASTA-format)
-  type: File
+  type: File?
   inputBinding:
     prefix: --genome
 - id: in_out
   doc: "name stem pf output file with coding sequences and\nprotein sequences (FASTA-format);\
     \ will be extended by\n.codingseq/.aa"
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_table
   doc: Translational code table number (INT)
-  type: long
+  type: long?
   inputBinding:
     prefix: --table
 - id: in_filter_out_invalid_stops
   doc: "Suppress output of protein sequences that contain\ninternal stop codons."
-  type: string
+  type: string?
   inputBinding:
     prefix: --filter_out_invalid_stops
 - id: in_print_format_examples
   doc: "Print gtf/gff3 input format examples, do not perform\nanalysis"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --print_format_examples
 - id: in_gtf
   doc: file with CDS coordinates (GTF-format)
-  type: File
+  type: File?
   inputBinding:
     prefix: --gtf
 - id: in_gff_three
   doc: file with CDS coordinates (GFF3 format)
-  type: long
+  type: long?
   inputBinding:
     prefix: --gff3
 outputs:
@@ -44,9 +44,10 @@ outputs:
 - id: out_out
   doc: "name stem pf output file with coding sequences and\nprotein sequences (FASTA-format);\
     \ will be extended by\n.codingseq/.aa"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - getAnnoFastaFromJoingenes.py

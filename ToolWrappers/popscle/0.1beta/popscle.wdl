@@ -4,6 +4,9 @@ task Popscle {
   command <<<
     popscle
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

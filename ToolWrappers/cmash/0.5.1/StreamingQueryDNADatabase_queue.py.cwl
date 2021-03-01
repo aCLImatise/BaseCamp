@@ -3,32 +3,32 @@ id: StreamingQueryDNADatabase_queue.py.cwl
 inputs:
 - id: in_threads
   doc: 'Number of threads to use (default: 8)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_containment_threshold
   doc: "Only return results with containment index above this\nthreshold at the maximum\
     \ k-mer size. (default: 0.1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --containment_threshold
 - id: in_plot_file
   doc: "Optional flag to specify that a plot of the k-mer\ncurves should also be saved\
     \ (same basenameas the\nout_file). (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --plot_file
 - id: in_filter_file
   doc: "Location of pre-filter bloom filter. Use only if you\nabsolutely know what\
     \ you're doing (hard to error check\nbloom filters). (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --filter_file
 - id: in_location_of_thresh
   doc: "Location in range to apply the threshold passed by the\n-c flag. -l 2 -c 5-50-10\
     \ means the threshold will be\napplied at k-size 25. Default is largest size.\n\
     (default: -1)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --location_of_thresh
 - id: in_script_calculates_indicies
@@ -62,6 +62,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - StreamingQueryDNADatabase_queue.py

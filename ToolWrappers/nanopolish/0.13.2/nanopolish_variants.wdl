@@ -58,6 +58,9 @@ task NanopolishVariants {
       ~{if (calculate_all_support) then "--calculate-all-support" else ""} \
       ~{if defined(models_fof_n) then ("--models-fofn " +  '"' + models_fof_n + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     snps: "only call SNPs"

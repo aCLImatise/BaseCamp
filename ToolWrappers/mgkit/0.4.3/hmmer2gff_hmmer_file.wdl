@@ -20,6 +20,9 @@ task Hmmer2gffHmmerFile {
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
       ~{if (o) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: ""
     c: ""

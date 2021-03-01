@@ -28,6 +28,9 @@ task RunRcorrectorpl {
       ~{if (verbose) then "-verbose" else ""} \
       ~{if defined(stage) then ("-stage " +  '"' + stage + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     comma_separated_files: ": comma separated files for single-end data sets"
     comma_separated_first: ": comma separated files for the first mate in the paried-end data sets"

@@ -21,12 +21,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_graphviz_dot
-  doc: '[prefix_alignments_pairwise.tab]'
-  type: string
-  inputBinding:
-    position: 0
-- id: in_wr_w_wwr
+- id: in_wr__w
   doc: "wr1 = w / w1\nwr2 = w / w2"
   type: string
   inputBinding:
@@ -85,7 +80,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_graph_exported_yet
+- id: in_graph_exported_open
   doc: The graph is exported in GML (open with CytoScape or yet) and
   type: string
   inputBinding:
@@ -99,6 +94,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

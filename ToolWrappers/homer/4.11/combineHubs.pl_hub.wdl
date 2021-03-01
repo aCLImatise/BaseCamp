@@ -30,6 +30,9 @@ task CombineHubsplHub {
       ~{if (prompt_before_overwrite) then "-i" else ""} \
       ~{if (create_symlinks) then "-l" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     same_as_dpr: "Same as -dpR"
     recurse: "Recurse"

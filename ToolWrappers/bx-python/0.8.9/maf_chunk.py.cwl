@@ -3,7 +3,7 @@ id: maf_chunk.py.cwl
 inputs:
 - id: in_prob
   doc: Probability of writing a given chunk
-  type: string
+  type: string?
   inputBinding:
     prefix: --prob
 - id: in_chunk_size
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - maf_chunk.py

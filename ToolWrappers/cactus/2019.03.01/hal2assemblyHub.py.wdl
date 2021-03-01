@@ -146,6 +146,9 @@ task Hal2assemblyHubpy {
       ~{if defined(max_log_file_size) then ("--maxLogFileSize " +  '"' + max_log_file_size + '"') else ""} \
       ~{if defined(command_run_generate) then ("--command " +  '"' + command_run_generate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cp_hal_file_to_out: "If specified, copy the input halfile to the output\\ndirectory (instead of just make a softlink).\\nDefault=False"
     ucsc_names: "Assume that sequence headers use the UCSC naming\\nconvention, (i.e. \\\"genome.chr\\\"), and  attempt to\\nrename the sequences so that their names will end up\\nas \\\"chr\\\""

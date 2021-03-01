@@ -26,6 +26,9 @@ task CargoClean {
       ~{if (frozen) then "--frozen" else ""} \
       ~{if (locked) then "--locked" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     package: "to clean artifacts for"
     manifest_path: "Path to the manifest to the package to clean"

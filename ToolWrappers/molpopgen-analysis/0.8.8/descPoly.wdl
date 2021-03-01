@@ -10,6 +10,9 @@ task DescPoly {
       ~{if (infile_sequence_data) then "-i" else ""} \
       ~{if (specify_sequence_count) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     infile_sequence_data: "infile (for sequence data in FASTA format)"
     specify_sequence_count: "[integer]    specify the sequence (i.e. count from one) of the outgroup, if present in data"

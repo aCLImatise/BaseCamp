@@ -4,130 +4,130 @@ command:
 positional: []
 named:
 - !Flag
-  description: 'HiCExplorer matrix in h5 format. (default: None)'
+  optional: true
   synonyms:
   - --matrix
   - -m
+  description: 'HiCExplorer matrix in h5 format. (default: None)'
   args: !SimpleFlagArg
     name: MATRIX
-  optional: true
 - !Flag
-  description: "File names for the result of the pca.Number of output\nfiles must\
-    \ match the number of computed eigenvectors.\n(default: ['pca1', 'pca2'])"
+  optional: true
   synonyms:
   - --outputFileName
   - -o
+  description: "File names for the result of the pca.Number of output\nfiles must\
+    \ match the number of computed eigenvectors.\n(default: ['pca1', 'pca2'])"
   args: !RepeatFlagArg
     name: OUTPUTFILENAME
-  optional: true
 - !Flag
-  description: "The number of eigenvectors that the PCA should\ncompute. (default:\
-    \ 2)"
+  optional: true
   synonyms:
   - --numberOfEigenvectors
   - -noe
+  description: "The number of eigenvectors that the PCA should\ncompute. (default:\
+    \ 2)"
   args: !SimpleFlagArg
     name: NUMBEROFEIGENVECTORS
-  optional: true
 - !Flag
-  description: "Output format. Either bedgraph or bigwig. (default:\nbigwig)"
+  optional: true
   synonyms:
   - --format
   - -f
+  description: "Output format. Either bedgraph or bigwig. (default:\nbigwig)"
   args: !ChoiceFlagArg
     choices: !!set
-      bedgraph:
       bigwig:
-  optional: true
+      bedgraph:
 - !Flag
-  description: "List of chromosomes to be included in the correlation.\n(default:\
-    \ None)"
+  optional: true
   synonyms:
   - --chromosomes
+  description: "List of chromosomes to be included in the correlation.\n(default:\
+    \ None)"
   args: !RepeatFlagArg
     name: CHROMOSOMES
-  optional: true
 - !Flag
-  description: "possible methods which can be used to build the obs-\nexp matrix.\
-    \ (default: dist_norm)"
+  optional: true
   synonyms:
   - --method
+  description: "possible methods which can be used to build the obs-\nexp matrix.\
+    \ (default: dist_norm)"
   args: !ChoiceFlagArg
     choices: !!set
       dist_norm:
       lieberman:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ligation_factor
   description: "Setting this flag multiplies a scaling factor to each\nentry of the\
     \ expected matrix to take care of the\nproximity ligation as has been explained\
     \ in Homer\nsoftware. This flag is only affective with dist_norm\nmethod and will\
     \ be ignored if lieberman method is\nchosen. (default: False)"
-  synonyms:
-  - --ligation_factor
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extraTrack
   description: "Either a gene track or a histon mark coverage file\n(preferably a\
     \ broad mark) is needed to decide if the\nvalues of the eigenvector need a sign\
     \ flip or not.\n(default: None)"
-  synonyms:
-  - --extraTrack
   args: !SimpleFlagArg
     name: EXTRATRACK
-  optional: true
 - !Flag
-  description: "Set it to active or inactive. This is only necessary\nif a histon\
-    \ mark coverage file is given as an\nextraTrack. (default: active)"
+  optional: true
   synonyms:
   - --histonMarkType
+  description: "Set it to active or inactive. This is only necessary\nif a histon\
+    \ mark coverage file is given as an\nextraTrack. (default: active)"
   args: !SimpleFlagArg
     name: HISTONMARKTYPE
-  optional: true
 - !Flag
-  description: "Internally the input matrix is converted per\nchromosome to obs_exp\
-    \ matrix and consecutively to a\nPearson matrix. Set this parameter to write the\n\
-    pearson matrix to a file. (default: None)"
+  optional: true
   synonyms:
   - --pearsonMatrix
   - -pm
-  args: !SimpleFlagArg
-    name: PEARSONMATRIX
-  optional: true
-- !Flag
   description: "Internally the input matrix is converted per\nchromosome to obs_exp\
     \ matrix and consecutively to a\nPearson matrix. Set this parameter to write the\n\
-    observe/expected matrix to a file. (default: None)"
+    pearson matrix to a file. (default: None)"
+  args: !SimpleFlagArg
+    name: PEARSONMATRIX
+- !Flag
+  optional: true
   synonyms:
   - --obsexpMatrix
   - -oem
+  description: "Internally the input matrix is converted per\nchromosome to obs_exp\
+    \ matrix and consecutively to a\nPearson matrix. Set this parameter to write the\n\
+    observe/expected matrix to a file. (default: None)"
   args: !SimpleFlagArg
     name: OBSEXPMATRIX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ignoreMaskedBins
   description: "Mask bins are usually set to 0. This option removes\nthe masked bins\
     \ before the PCA is computed. Attention:\nthis will lead to empty PCA regions.\
     \ (default: False)"
-  synonyms:
-  - --ignoreMaskedBins
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show the help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: show the help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: hicPCA --matrix MATRIX --outputFileName OUTPUTFILENAME\n      \
   \        [OUTPUTFILENAME ...]\n              [--numberOfEigenvectors NUMBEROFEIGENVECTORS]\n\
   \              [--format {bedgraph,bigwig}]\n              [--chromosomes CHROMOSOMES\
@@ -178,3 +178,4 @@ help_text: "usage: hicPCA --matrix MATRIX --outputFileName OUTPUTFILENAME\n     
   \ number and exit\n"
 generated_using:
 - --help
+docker_image:

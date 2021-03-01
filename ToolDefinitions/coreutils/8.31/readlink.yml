@@ -4,46 +4,75 @@ command:
 positional: []
 named:
 - !Flag
-  description: "canonicalize by following every symlink in\nevery component of the\
-    \ given name recursively;\nall but the last component must exist"
+  optional: true
   synonyms:
   - -f
   - --canonicalize
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: "canonicalize by following every symlink in\nevery component of the\
-    \ given name recursively,\nall components must exist"
+    \ given name recursively;\nall but the last component must exist"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -e
   - --canonicalize-existing
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: "canonicalize by following every symlink in\nevery component of the\
-    \ given name recursively,\nwithout requirements on components existence"
+    \ given name recursively,\nall components must exist"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -m
   - --canonicalize-missing
+  description: "canonicalize by following every symlink in\nevery component of the\
+    \ given name recursively,\nwithout requirements on components existence"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "do not output the trailing delimiter\n-q, --quiet\n-s, --silent  \
-    \                suppress most error messages (on by default)\n-v, --verbose \
-    \                report error messages\n-z, --zero                    end each\
-    \ output line with NUL, not newline\n--help     display this help and exit\n--version\
-    \  output version information and exit"
+  optional: true
   synonyms:
   - -n
   - --no-newline
+  description: do not output the trailing delimiter
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -q
+  - --quiet
+  - -s
+  - --silent
+  description: suppress most error messages (on by default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: report error messages
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --zero
+  description: end each output line with NUL, not newline
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: display this help and exit
+  args: !EmptyFlagArg {}
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: output version information and exit
+  args: !EmptyFlagArg {}
 help_text: "Usage: readlink [OPTION]... FILE...\nPrint value of a symbolic link or\
   \ canonical file name\n\n  -f, --canonicalize            canonicalize by following\
   \ every symlink in\n                                every component of the given\
@@ -64,3 +93,4 @@ help_text: "Usage: readlink [OPTION]... FILE...\nPrint value of a symbolic link 
   \ locally via: info '(coreutils) readlink invocation'\n"
 generated_using:
 - --help
+docker_image:

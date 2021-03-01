@@ -1,0 +1,117 @@
+!Command
+command:
+- IDMerger
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: "*               Input files separated by blanks (valid formats: 'idXML')"
+  args: !SimpleFlagArg
+    name: files
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: "*               Output file (valid formats: 'idXML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -add_to
+  description: "Optional input file. IDs from 'in' are added to this file, but only\
+    \ if the (modified) peptide sequences are not present yet (considering only best\
+    \ hits per spectrum). (valid formats: 'idXML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -annotate_file_origin
+  description: 'Store the original filename in each protein/peptide identification
+    (meta value: file_origin).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pepxml_protxml
+  description: "Merge idXML files derived from a pepXML and corresponding protXML\
+    \ file.\nExactly two input files are expected in this case. Not compatible with\
+    \ 'add_to'."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -merge_proteins_add_PSMs
+  description: Merge all identified proteins by accession into one protein identification
+    run but keep all the PSMs with updated links to potential new protein ID#s. Not
+    compatible with 'add_to'.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ini
+  description: Use the given TOPP INI file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -threads
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -write_ini
+  description: Writes the default configuration file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --helphelp
+  description: Shows all options (including advanced)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows options
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nIDMerger -- Merges\
+  \ several protein/peptide identification files into one file.\nFull documentation:\
+  \ http://www.openms.de/documentation/TOPP_IDMerger.html\nVersion: 2.6.0-pre-exported-20201001\
+  \ Oct  1 2020, 01:37:06\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
+  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
+  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n\
+  \  IDMerger <options>\n\nOptions (mandatory options marked with '*'):\n  -in <files>*\
+  \               Input files separated by blanks (valid formats: 'idXML')\n  -out\
+  \ <file>*               Output file (valid formats: 'idXML')\n  -add_to <file> \
+  \            Optional input file. IDs from 'in' are added to this file, but only\
+  \ if the (modified) peptide sequences are not present yet (considering only best\
+  \ hits per spectrum). (valid formats: 'idXML')\n  -annotate_file_origin      Store\
+  \ the original filename in each protein/peptide identification (meta value: file_origin).\n\
+  \  -pepxml_protxml            Merge idXML files derived from a pepXML and corresponding\
+  \ protXML file.\n                             Exactly two input files are expected\
+  \ in this case. Not compatible with 'add_to'.\n  -merge_proteins_add_PSMs   Merge\
+  \ all identified proteins by accession into one protein identification run but keep\
+  \ all the PSMs with updated links to potential new protein ID#s. Not compatible\
+  \ with 'add_to'.\n                             \nCommon TOPP options:\n  -ini <file>\
+  \                Use the given TOPP INI file\n  -threads <n>               Sets\
+  \ the number of threads allowed to be used by the TOPP tool (default: '1')\n  -write_ini\
+  \ <file>          Writes the default configuration file\n  --help              \
+  \       Shows options\n  --helphelp                 Shows all options (including\
+  \ advanced)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/openms:2.6.0--h4afb90d_0

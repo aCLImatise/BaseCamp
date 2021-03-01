@@ -42,6 +42,9 @@ task Arvkeepdocker {
       ~{if defined(retries) then ("--retries " +  '"' + retries + '"') else ""} \
       ~{if (force_image_format) then "--force-image-format" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "Re-upload the image even if it already exists on the"
     pull: "Try to pull the latest image from Docker registry"

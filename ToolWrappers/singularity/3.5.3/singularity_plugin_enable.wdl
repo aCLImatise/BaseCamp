@@ -16,6 +16,9 @@ task SingularityPluginEnable {
       ~{plugin} \
       ~{enable}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

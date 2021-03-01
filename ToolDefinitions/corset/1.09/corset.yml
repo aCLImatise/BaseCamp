@@ -3,127 +3,127 @@ command:
 - corset
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: input bam files
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -d
   description: "A comma separated list of distance thresholds. The range must be\n\
     between 0 and 1. e.g -d 0.4,0.5. If more than one distance threshold\nis supplied,\
     \ the output filenames will be of the form:\ncounts-<threshold>.txt and clusters-<threshold>.txt\n\
     Default: 0.3"
-  synonyms:
-  - -d
   args: !SimpleFlagArg
     name: double list
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -D
   description: "The value used for thresholding the log likelihood ratio. The default\n\
     value will depend on the number of degrees of freedom (which is the\nnumber of\
     \ groups -1). By default D = 17.5 + 2.5 * ndf, which corresponds\napproximately\
     \ to a p-value threshold of 10^-5, when there are fewer than\n10 groups."
-  synonyms:
-  - -D
   args: !SimpleFlagArg
     name: double
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -I
   description: "Switches off the log likelihood ratio test and should be used\nfor\
     \ downstream differential transcript usage analysis. It will prevent\ndifferentially\
     \ expressed transcript being split into different clusters.\nThis option is the\
     \ equivalent of setting -D to a very large number.\nDefault: log likelihood ratio\
     \ test on"
-  synonyms:
-  - -I
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Filter out any transcripts with fewer than this many reads aligning.\n\
-    Default: 10"
+  optional: true
   synonyms:
   - -m
+  description: "Filter out any transcripts with fewer than this many reads aligning.\n\
+    Default: 10"
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -g
   description: "Specifies the grouping. i.e. which samples belong to which experimental\n\
     groups. The parameter must be a comma separated list (no spaces), with the\ngroupings\
     \ given in the same order as the bam filename. For example:\n-g Group1,Group1,Group2,Group2\
     \ etc. If this option is not used, each sample\nis treated as an independent experimental\
     \ group."
-  synonyms:
-  - -g
   args: !SimpleFlagArg
     name: list
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
   description: "Prefix for the output filenames. The output files will be of the form\n\
     <prefix>-counts.txt and <prefix>-clusters.txt. Default filenames are:\ncounts.txt\
     \ and clusters.txt"
-  synonyms:
-  - -p
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: "Specifies whether the output files should be overwritten if they already\
-    \ exist.\nDefault: false"
+  optional: true
   synonyms:
   - -f
+  description: "Specifies whether the output files should be overwritten if they already\
+    \ exist.\nDefault: false"
   args: !SimpleFlagArg
     name: true/false
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -n
   description: "Specifies the sample names to be used in the header of the output\
     \ count file.\nThis should be a comma separated list without spaces.\ne.g. -n\
     \ Group1-ReplicateA,Group1-ReplicateB,Group2-ReplicateA etc.\nDefault: the input\
     \ filenames will be used."
-  synonyms:
-  - -n
   args: !SimpleFlagArg
     name: string list
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
   description: "Output a file summarising the read alignments. This may be used if\
     \ you\nwould like to read the bam files and run the clustering in seperate runs\n\
     of corset. e.g. to read input bam files in parallel. The output will be the\n\
     bam filename appended with .corset-reads.\nDefault: false"
-  synonyms:
-  - -r
   args: !SimpleFlagArg
     name: true/true-stop/false
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -i
   description: "The input file type. Use -i corset, if you previously ran\ncorset\
     \ with the -r option and would like to restart using those\nread summary files.\
     \ Use salmon_eq_classes, if you aligned with salmon with\nthe flag --dumpEq and\
     \ are passing corset the equivalent class files.\nRunning with either -i corset\
     \ or salmon_eq_classes will switch off the -r option.\nDefault: bam"
-  synonyms:
-  - -i
   args: !SimpleFlagArg
     name: bam/corset/salmon_eq_classes
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -l
   description: "If running with -i corset or salmon_eq_classes, this will filter out\
     \ a link between contigs\nif the link is supported by less than this many reads\
     \ (performed sample-wise). Reads will\nbe reassigned uniformly to the contigs\
     \ in the equivalence class. This option will\nimprove runtime and memory usage,\
     \ but will increase the number of clusters reported.\nDefault: 1 (no filtering)"
-  synonyms:
-  - -l
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: "If running with -i corset or salmon_eq_classes, this option will filter\
-    \ out reads that\nalign to more than x contigs. Default: no filtering"
+  optional: true
   synonyms:
   - -x
+  description: "If running with -i corset or salmon_eq_classes, this option will filter\
+    \ out reads that\nalign to more than x contigs. Default: no filtering"
   args: !SimpleFlagArg
     name: int
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -194,3 +194,4 @@ help_text: "\nRunning Corset Version 1.09\n\nCorset clusters contigs and counts 
   \ for more information\n\n"
 generated_using:
 - --help
+docker_image:

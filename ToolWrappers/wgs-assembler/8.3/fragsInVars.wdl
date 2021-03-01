@@ -10,6 +10,9 @@ task FragsInVars {
       ~{if defined(var_scf) then ("-varscf " +  '"' + var_scf + '"') else ""} \
       ~{if defined(frg_scf) then ("-frgscf " +  '"' + frg_scf + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_scf: ""
     frg_scf: ""

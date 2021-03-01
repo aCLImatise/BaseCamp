@@ -4,6 +4,9 @@ task Popt {
   command <<<
     popt
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

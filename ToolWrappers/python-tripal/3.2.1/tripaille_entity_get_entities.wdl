@@ -10,6 +10,9 @@ task TripailleEntityGetEntities {
       ~{if defined(entity) then ("--entity " +  '"' + entity + '"') else ""} \
       ~{if defined(entity_id) then ("--entity_id " +  '"' + entity_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     entity: "Name of the entity type (e.g. Organism)"
     entity_id: "ID of an entity"

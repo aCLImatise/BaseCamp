@@ -4,25 +4,25 @@ inputs:
 - id: in_in
   doc: "*                       Input file (valid formats: 'idXML', 'featureXML',\
     \ 'consensusXML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -in
 - id: in_out
   doc: "*                      Output file (valid formats: 'idXML', 'featureXML',\
     \ 'consensusXML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
 - id: in_rt_delta
   doc: "[idXML input only] Maximum allowed retention time deviation between identifications\
     \ belonging to the same spectrum. (default: '0.1' min: '0.0')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -rt_delta
 - id: in_mz_delta
   doc: "[idXML input only] Maximum allowed precursor m/z deviation between identifications\
     \ belonging to the same spectrum. (default: '0.1' min: '0.0')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -mz_delta
 - id: in_algorithm
@@ -40,27 +40,27 @@ inputs:
     \ The final score is in the range (0, 1], with 1 being the best score. No requirements\
     \ about score types. (default: 'PEPMatrix' valid: 'PEPMatrix', 'PEPIons', 'best',\
     \ 'worst', 'average', 'ranks')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -algorithm
 - id: in_ini
   doc: Use the given TOPP INI file
-  type: File
+  type: File?
   inputBinding:
     prefix: -ini
 - id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -threads
 - id: in_write_ini
   doc: Writes the default configuration file
-  type: File
+  type: File?
   inputBinding:
     prefix: -write_ini
 - id: in_helphelp
   doc: Shows all options (including advanced)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --helphelp
 outputs:
@@ -70,9 +70,10 @@ outputs:
 - id: out_out
   doc: "*                      Output file (valid formats: 'idXML', 'featureXML',\
     \ 'consensusXML')"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ConsensusID

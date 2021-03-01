@@ -16,6 +16,9 @@ task InteropSummary {
       ~{if defined(option_two) then ("--option2 " +  '"' + option_two + '"') else ""} \
       ~{if defined(option_one) then ("--option1 " +  '"' + option_one + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     level: "[5]: Level of summary information: 0: total, 1: non-index, 2: Read, 3: Lane, 4: Surface"
     csv: "[0]: Format output as CSV only"

@@ -10,6 +10,9 @@ task Dust {
       ~{fast_a_file} \
       ~{cut_off}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_file: ""
     cut_off: ""

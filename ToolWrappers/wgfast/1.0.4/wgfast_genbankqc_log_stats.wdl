@@ -8,6 +8,9 @@ task WgfastGenbankqcLogstats {
     wgfast_genbankqc log_stats \
       ~{path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path: ""
   }

@@ -5,7 +5,7 @@ task Promoterwise {
     Boolean? align
     Boolean? query_start_restriction
     Boolean? query_end_position
-    Boolean? target_start_position
+    Boolean? target_start_restriction
     Boolean? target_end_position
     Boolean? lh_window
     Boolean? lh_seed
@@ -47,7 +47,7 @@ task Promoterwise {
       ~{if (align) then "-align" else ""} \
       ~{if (query_start_restriction) then "-s" else ""} \
       ~{if (query_end_position) then "-t" else ""} \
-      ~{if (target_start_position) then "-u" else ""} \
+      ~{if (target_start_restriction) then "-u" else ""} \
       ~{if (target_end_position) then "-v" else ""} \
       ~{if (lh_window) then "-lhwindow" else ""} \
       ~{if (lh_seed) then "-lhseed" else ""} \
@@ -84,11 +84,14 @@ task Promoterwise {
       ~{if (error_log) then "-errorlog" else ""} \
       ~{if (error_style) then "-errorstyle" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     align: "[normal/motif] use normal DBA or motif alignment [normal]"
     query_start_restriction: "query start position restriction"
     query_end_position: "query end position restriction"
-    target_start_position: "target start position restriction"
+    target_start_restriction: "target start position restriction"
     target_end_position: "target end position restriction"
     lh_window: "- sequence window given to alignment [50]"
     lh_seed: "- seed score cutoff [10.0 bits]"

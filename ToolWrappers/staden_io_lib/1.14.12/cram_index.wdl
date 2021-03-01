@@ -10,6 +10,9 @@ task CramIndex {
       ~{filename_dot_cram} \
       ~{filename_dot_cram_dot_cra_i}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename_dot_cram: ""
     filename_dot_cram_dot_cra_i: ""

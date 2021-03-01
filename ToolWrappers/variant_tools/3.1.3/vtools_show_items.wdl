@@ -14,6 +14,9 @@ task VtoolsShowItems {
       ~{if defined(v) then ("-v " +  '"' + v + '"') else ""} \
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
     l: ""

@@ -16,6 +16,9 @@ task Mashclustpy {
       ~{if defined(distance) then ("--distance " +  '"' + distance + '"') else ""} \
       ~{if (output_grouped) then "--output_grouped" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     requiredinput_fasta_file: "REQUIRED.Input FASTA file"
     output_directory_extract: "Output directory to extract clusteres FASTA"

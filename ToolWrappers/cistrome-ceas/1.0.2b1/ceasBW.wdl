@@ -40,6 +40,9 @@ task CeasBW {
       ~{if (dump) then "--dump" else ""} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "BED file of ChIP regions."
     bigwig: "BIGWIG file for either wig profiling or genome\\nbackground annotation. WARNING: --bg flag must be set\\nfor genome background re-annotation."

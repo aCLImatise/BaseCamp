@@ -6,7 +6,7 @@ task MetaWRAPBinRefinement {
     Int? number_threads_default
     Int? memory_available_default
     Int? minimum_completion_default
-    Int? maximum_contamination_bins
+    Int? maximum_contamination_is
     Directory? folder_metagenomic_bins_files
     Directory? b
     Directory? var_7
@@ -23,7 +23,7 @@ task MetaWRAPBinRefinement {
       ~{if defined(number_threads_default) then ("-t " +  '"' + number_threads_default + '"') else ""} \
       ~{if defined(memory_available_default) then ("-m " +  '"' + memory_available_default + '"') else ""} \
       ~{if defined(minimum_completion_default) then ("-c " +  '"' + minimum_completion_default + '"') else ""} \
-      ~{if defined(maximum_contamination_bins) then ("-x " +  '"' + maximum_contamination_bins + '"') else ""} \
+      ~{if defined(maximum_contamination_is) then ("-x " +  '"' + maximum_contamination_is + '"') else ""} \
       ~{if defined(folder_metagenomic_bins_files) then ("-A " +  '"' + folder_metagenomic_bins_files + '"') else ""} \
       ~{if defined(b) then ("-B " +  '"' + b + '"') else ""} \
       ~{if defined(var_7) then ("-C " +  '"' + var_7 + '"') else ""} \
@@ -34,12 +34,15 @@ task MetaWRAPBinRefinement {
       ~{if (remove_ambiguous) then "--remove-ambiguous" else ""} \
       ~{if (quick) then "--quick" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_directory: "output directory"
     number_threads_default: "number of threads (default=1)"
     memory_available_default: "memory available (default=40)"
     minimum_completion_default: "minimum % completion of bins [should be >50%] (default=70)"
-    maximum_contamination_bins: "maximum % contamination of bins that is acceptable (default=10)"
+    maximum_contamination_is: "maximum % contamination of bins that is acceptable (default=10)"
     folder_metagenomic_bins_files: "folder with metagenomic bins (files must have .fa or .fasta extension)"
     b: "another folder with metagenomic bins"
     var_7: "another folder with metagenomic bins"

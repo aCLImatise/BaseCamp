@@ -2,8 +2,9 @@ version 1.0
 
 task PhyluceAlignGetOnlyLociWithMinTaxa {
   input {
-    File? var_output
     Directory? alignments
+    Int? tax_a
+    String? output_dir_store
     Float? percent
     String? input_format
     String? verbosity
@@ -12,17 +13,22 @@ task PhyluceAlignGetOnlyLociWithMinTaxa {
   }
   command <<<
     phyluce_align_get_only_loci_with_min_taxa \
-      ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""} \
       ~{if defined(alignments) then ("--alignments " +  '"' + alignments + '"') else ""} \
+      ~{if defined(tax_a) then ("--taxa " +  '"' + tax_a + '"') else ""} \
+      ~{if defined(output_dir_store) then ("--output " +  '"' + output_dir_store + '"') else ""} \
       ~{if defined(percent) then ("--percent " +  '"' + percent + '"') else ""} \
       ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    var_output: "[--percent PERCENT]\\n[--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]\\n[--verbosity {INFO,WARN,CRITICAL}]\\n[--log-path LOG_PATH]\\n[--cores CORES]"
     alignments: "The directory containing alignments to screen.\\n(default: None)"
+    tax_a: "The total number of taxa in all alignments. (default:\\nNone)"
+    output_dir_store: "The output dir in which to store copies of the\\nalignments (default: None)"
     percent: "The percent of taxa to require (default: 0.75)"
     input_format: "The input alignment format. (default: nexus)"
     verbosity: "The logging level to use. (default: INFO)"

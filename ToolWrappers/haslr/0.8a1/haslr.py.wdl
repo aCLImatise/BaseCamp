@@ -32,6 +32,9 @@ task Haslrpy {
       ~{if defined(mini_a_solid) then ("--minia-solid " +  '"' + mini_a_solid + '"') else ""} \
       ~{if defined(mini_a_asm) then ("--minia-asm " +  '"' + mini_a_asm + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "output directory"
     genome: "estimated genome size; accepted suffixes are k,m,g"

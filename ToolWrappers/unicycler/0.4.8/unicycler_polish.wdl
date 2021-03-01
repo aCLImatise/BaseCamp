@@ -70,6 +70,9 @@ task UnicyclerPolish {
       ~{if defined(nuc_mer) then ("--nucmer " +  '"' + nuc_mer + '"') else ""} \
       ~{if defined(shows_nps) then ("--showsnps " +  '"' + shows_nps + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly: "Input assembly to be polished"
     short_one: "FASTQ file of short reads (first reads in each pair)"

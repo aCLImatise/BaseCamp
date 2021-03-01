@@ -28,6 +28,9 @@ task Hmmcalibrate2 {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cpu: ": run <n> threads in parallel (if threaded)"
     fixed: ": fix random sequence length at <n>"

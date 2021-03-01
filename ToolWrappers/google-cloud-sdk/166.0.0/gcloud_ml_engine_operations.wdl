@@ -16,6 +16,9 @@ task GcloudMlengineOperations {
       ~{list} \
       ~{wait}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cancel: "Cancel a Cloud ML Engine operation."
     delete: "Delete a Cloud ML Engine operation."

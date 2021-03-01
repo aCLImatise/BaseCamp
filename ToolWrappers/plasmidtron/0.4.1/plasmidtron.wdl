@@ -46,6 +46,9 @@ task Plasmidtron {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     action: "Control how the traits kmers are filtered for assembly\\n[union]"
     keep_files: "Keep intermediate files [False]"

@@ -18,7 +18,7 @@ task Numfmt {
     Int? to_unit
     Boolean? zero_terminated
     Boolean? first_mth_field
-    String autoscaling_done_trigger
+    String autoscaling_done_suffixes
     String auto
     String si
     String iec
@@ -28,7 +28,7 @@ task Numfmt {
   }
   command <<<
     numfmt \
-      ~{autoscaling_done_trigger} \
+      ~{autoscaling_done_suffixes} \
       ~{auto} \
       ~{si} \
       ~{iec} \
@@ -52,6 +52,9 @@ task Numfmt {
       ~{if (zero_terminated) then "--zero-terminated" else ""} \
       ~{if (first_mth_field) then "-M" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "print warnings about invalid input"
     delimiter: "use X instead of whitespace for field delimiter"
@@ -69,7 +72,7 @@ task Numfmt {
     to_unit: "the output unit size (instead of the default 1)"
     zero_terminated: "line delimiter is NUL, not newline"
     first_mth_field: "from first to M'th field (inclusive)"
-    autoscaling_done_trigger: "no auto-scaling is done; suffixes will trigger an error"
+    autoscaling_done_suffixes: "no auto-scaling is done; suffixes will trigger an error"
     auto: "accept optional single/two letter suffix:\\n1K = 1000,\\n1Ki = 1024,\\n1M = 1000000,\\n1Mi = 1048576,"
     si: "accept optional single letter suffix:\\n1K = 1000,\\n1M = 1000000,\\n..."
     iec: "accept optional single letter suffix:\\n1K = 1024,\\n1M = 1048576,\\n..."

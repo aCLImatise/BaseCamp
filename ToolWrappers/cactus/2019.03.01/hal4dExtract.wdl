@@ -30,6 +30,9 @@ task Hal4dExtract {
       ~{if (conserved) then "--conserved" else ""} \
       ~{if (in_memory) then "--inMemory" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     append: ":               append to instead of overwrite output file. [default = 0]"
     bed_version: ":   version of input bed file.  will be automatically detected if\\nnot specified [default = -1]"

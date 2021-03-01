@@ -4,86 +4,90 @@ command:
 - scaffold2fasta
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: scaffold2fasta
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: display verbose output
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: display verbose output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: read the contig sequences from FILE
+  optional: true
   synonyms:
   - -f
   - --contig-file
+  description: read the contig sequences from FILE
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "read the contig string graph from FILE. This supercedes --contig-file\n\
-    this is usually the output from the sga-assemble step"
+  optional: true
   synonyms:
   - -a
   - --asqg-file
+  description: "read the contig string graph from FILE. This supercedes --contig-file\n\
+    this is usually the output from the sga-assemble step"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: do not output scaffolds that consist of a single contig
+  optional: true
   synonyms:
   - --no-singletons
+  description: do not output scaffolds that consist of a single contig
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'write the scaffolds to FILE (default: scaffolds.fa)'
+  optional: true
   synonyms:
   - -o
   - --outfile
+  description: 'write the scaffolds to FILE (default: scaffolds.fa)'
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: only output scaffolds longer than N bases
+  optional: true
   synonyms:
   - -m
   - --min-length
+  description: only output scaffolds longer than N bases
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: output unplaced contigs that are larger than minLength
+  optional: true
   synonyms:
   - --write-unplaced
+  description: output unplaced contigs that are larger than minLength
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: write the name of contigs contained in the scaffold in the FASTA header
+  optional: true
   synonyms:
   - --write-names
+  description: write the name of contigs contained in the scaffold in the FASTA header
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "separate contigs by at least N bases. All predicted gaps less\nthan\
-    \ N will be extended to N (default: 25)"
+  optional: true
   synonyms:
   - --min-gap-length
+  description: "separate contigs by at least N bases. All predicted gaps less\nthan\
+    \ N will be extended to N (default: 25)"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --use-overlap
   description: "attempt to merge contigs using predicted overlaps.\nThis can help\
     \ close gaps in the scaffolds but comes\nwith a small risk of collapsing tandem\
     \ repeats."
-  synonyms:
-  - --use-overlap
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --graph-resolve
   description: "if an ASQG file is present, attempt to resolve the links\nbetween\
     \ contigs using walks through the graph. The MODE parameter\nis a string describing\
     \ the algorithm to use.\nThe MODE parameter must be one of best-any|best-unique|unique|none.\n\
@@ -94,30 +98,26 @@ named:
     \ between the contigs\nnone: do not resolve gaps using the graph\nThe most conservative\
     \ most is unique, then best-unique with best-any being the most\naggressive. The\
     \ default is unique"
-  synonyms:
-  - -g
-  - --graph-resolve
   args: !SimpleFlagArg
     name: MODE
-  optional: true
 - !Flag
-  description: "Accept a walk as correctly resolving a gap if the walk length is within\
-    \ T standard\ndeviations from the estimated distance (default: 3.0f)"
+  optional: true
   synonyms:
   - -d
   - --distanceFactor
+  description: "Accept a walk as correctly resolving a gap if the walk length is within\
+    \ T standard\ndeviations from the estimated distance (default: 3.0f)"
   args: !SimpleFlagArg
     name: T
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: display this help and exit
+  optional: true
   synonyms:
   - --help
+  description: display this help and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: scaffold2fasta [OPTION] ... [-f CONTIGSFILE | -a ASQGFILE] SCAFFOLDFILE\n\
@@ -161,3 +161,4 @@ help_text: "Usage: scaffold2fasta [OPTION] ... [-f CONTIGSFILE | -a ASQGFILE] SC
   \ distance (default: 3.0f)\n\nReport bugs to js18@sanger.ac.uk\n\n"
 generated_using:
 - --help
+docker_image:

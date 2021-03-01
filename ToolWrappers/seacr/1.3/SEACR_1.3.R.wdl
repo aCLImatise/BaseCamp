@@ -14,6 +14,9 @@ task SEACR13R {
       ~{if (norm) then "--norm" else ""} \
       ~{if defined(_output_prefix) then ("--output " +  '"' + _output_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exp: "- Input AUC values from experiment CUT&RUN"
     ctrl: "- Input AUC values from control CUT&RUN"

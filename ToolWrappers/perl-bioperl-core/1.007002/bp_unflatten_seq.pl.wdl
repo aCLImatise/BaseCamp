@@ -34,6 +34,9 @@ task BpUnflattenSeqpl {
       ~{if (no_magic) then "-nomagic" else ""} \
       ~{if (no_typemap) then "-notypemap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fileinput_file: "|input FILE\\ninput file (can also be specified as last argument)"
     from: "input format (defaults to genbank)\\nprobably doesn't make so much sense to use this for non-flat\\nformats; ie other than embl/genbank"

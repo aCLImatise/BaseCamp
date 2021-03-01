@@ -38,6 +38,9 @@ task Kcdirmgr {
       ~{set_bulk} \
       ~{if (otr) then "-otr" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     otr: ""
     check: ""

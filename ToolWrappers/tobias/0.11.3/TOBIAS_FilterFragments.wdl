@@ -18,6 +18,9 @@ task TOBIASFilterFragments {
       ~{if (threads) then "--threads" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: ".bam-file to filter"
     regions: ".bed-file containing regions to filter fragments from"

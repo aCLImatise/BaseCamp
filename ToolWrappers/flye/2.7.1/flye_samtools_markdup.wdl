@@ -3,7 +3,7 @@ version 1.0
 task FlyesamtoolsMarkdup {
   input {
     Boolean? remove_duplicate_reads
-    Int? max_read_default
+    Int? max_read_bases
     Boolean? mark_supplemenary_alignments
     Boolean? report_stats
     String? write_temporary_files
@@ -25,7 +25,7 @@ task FlyesamtoolsMarkdup {
       ~{input_dot_bam} \
       ~{output_dot_bam} \
       ~{if (remove_duplicate_reads) then "-r" else ""} \
-      ~{if defined(max_read_default) then ("-l " +  '"' + max_read_default + '"') else ""} \
+      ~{if defined(max_read_bases) then ("-l " +  '"' + max_read_bases + '"') else ""} \
       ~{if (mark_supplemenary_alignments) then "-S" else ""} \
       ~{if (report_stats) then "-s" else ""} \
       ~{if defined(write_temporary_files) then ("-T " +  '"' + write_temporary_files + '"') else ""} \
@@ -36,9 +36,12 @@ task FlyesamtoolsMarkdup {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     remove_duplicate_reads: "Remove duplicate reads"
-    max_read_default: "Max read length (default 300 bases)"
+    max_read_bases: "Max read length (default 300 bases)"
     mark_supplemenary_alignments: "Mark supplemenary alignments of duplicates as duplicates (slower)."
     report_stats: "Report stats."
     write_temporary_files: "Write temporary files to PREFIX.samtools.nnnn.nnnn.tmp."

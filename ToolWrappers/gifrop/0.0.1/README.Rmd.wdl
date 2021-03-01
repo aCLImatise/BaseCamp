@@ -4,6 +4,9 @@ task READMERmd {
   command <<<
     README_Rmd
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

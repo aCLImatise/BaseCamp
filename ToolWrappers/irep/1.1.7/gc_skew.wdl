@@ -20,6 +20,9 @@ task GcSkew {
       ~{if (single) then "--single" else ""} \
       ~{if (no_plot) then "--no-plot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _fastas: "[F [F ...]]  fasta(s)"
     minimum_contig_length: "minimum contig length (default = 10 x window)"

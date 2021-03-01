@@ -1,0 +1,182 @@
+!Command
+command:
+- mutplot
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --vcf
+  description: "VCF file which contains cultivar and mutant bulk.\nin this order.\
+    \ This VCF file must have AD field."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: Output directory. Specified name can exist.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --N-bulk
+  description: Number of individuals in mutant bulk.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window
+  description: Window size (kb). [2000]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --step
+  description: Step size (kb). [100]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --max-depth
+  description: "Maximum depth of variants which will be used.\nThis cutoff will be\
+    \ applied in both of cultivar\nand bulk. [250]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --min-depth
+  description: "Minimum depth of variants which will be used.\nThis cutoff will be\
+    \ applied in both of cultivar\nand bulk. [8]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --N-rep
+  description: "Number of replicates for simulation to make\nnull distribution. [5000]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-SNPindex
+  description: Cutoff of minimum SNP-index for clear results. [0.3]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --strand-bias
+  description: "Filter spurious homo genotypes in cultivar using\nstrand bias. If\
+    \ ADF (or ADR) is higher than this\ncutoff when ADR (or ADF) is 0, that SNP will\
+    \ be\nfiltered out. If you want to supress this filtering,\nplease set this cutoff\
+    \ to 0. [7]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --snpEff
+  description: "Predict causal variant using SnpEff. Please\ncheck available databases\
+    \ in SnpEff."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --igv
+  description: Output IGV format file to check results on IGV.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --species
+  description: "Consider multiple test correction derived by\nHuang et al. (2019).\
+    \ Please spesify a species name.\nWith this option. QTL-seq produces a theoretical\
+    \ threshold.\nCurrently, Arabidopsis, Cucumber, Maize, Rapeseed,\nRice, Tobacco,\
+    \ Tomato, Wheat, and Yeast are supported."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --indel
+  description: Plot SNP-index with INDEL.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fig-width
+  description: Width allocated in chromosome figure. [7.5]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fig-height
+  description: Height allocated in chromosome figure. [4.0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --white-space
+  description: "White space between figures. (This option\nonly affect vertical direction.)\
+    \ [0.6]"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: mutplot -v <VCF> -o <OUT_DIR> -n <INT> [-w <INT>] [-s <INT>]\n\
+  \               [-D <INT>] [-d <INT>] [-N <INT>] [-m <FLOAT>]\n               [-S\
+  \ <INT>] [-e <DATABASE>] [--igv] [--indel]\n\nMutPlot version 2.2.0\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -v , --vcf\
+  \            VCF file which contains cultivar and mutant bulk.\n               \
+  \         in this order. This VCF file must have AD field.\n  -o , --out       \
+  \     Output directory. Specified name can exist.\n  -n , --N-bulk         Number\
+  \ of individuals in mutant bulk.\n  -w , --window         Window size (kb). [2000]\n\
+  \  -s , --step           Step size (kb). [100]\n  -D , --max-depth      Maximum\
+  \ depth of variants which will be used.\n                        This cutoff will\
+  \ be applied in both of cultivar\n                        and bulk. [250]\n  -d\
+  \ , --min-depth      Minimum depth of variants which will be used.\n           \
+  \             This cutoff will be applied in both of cultivar\n                \
+  \        and bulk. [8]\n  -N , --N-rep          Number of replicates for simulation\
+  \ to make \n                        null distribution. [5000]\n  -m , --min-SNPindex\
+  \   Cutoff of minimum SNP-index for clear results. [0.3]\n  -S , --strand-bias \
+  \   Filter spurious homo genotypes in cultivar using\n                        strand\
+  \ bias. If ADF (or ADR) is higher than this\n                        cutoff when\
+  \ ADR (or ADF) is 0, that SNP will be\n                        filtered out. If\
+  \ you want to supress this filtering,\n                        please set this cutoff\
+  \ to 0. [7]\n  -e , --snpEff         Predict causal variant using SnpEff. Please\n\
+  \                        check available databases in SnpEff.\n  --igv         \
+  \        Output IGV format file to check results on IGV.\n  --species          \
+  \   Consider multiple test correction derived by\n                        Huang\
+  \ et al. (2019). Please spesify a species name.\n                        With this\
+  \ option. QTL-seq produces a theoretical threshold.\n                        Currently,\
+  \ Arabidopsis, Cucumber, Maize, Rapeseed,\n                        Rice, Tobacco,\
+  \ Tomato, Wheat, and Yeast are supported.\n  --indel               Plot SNP-index\
+  \ with INDEL.\n  --fig-width           Width allocated in chromosome figure. [7.5]\n\
+  \  --fig-height          Height allocated in chromosome figure. [4.0]\n  --white-space\
+  \         White space between figures. (This option\n                        only\
+  \ affect vertical direction.) [0.6]\n  --version             show program's version\
+  \ number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mutmap:2.2.0--py_0

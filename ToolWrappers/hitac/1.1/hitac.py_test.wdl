@@ -18,6 +18,9 @@ task HitacpyTest {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: ""
     km_er: ""

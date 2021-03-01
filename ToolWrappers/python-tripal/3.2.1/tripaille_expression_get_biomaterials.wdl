@@ -16,6 +16,9 @@ task TripailleExpressionGetBiomaterials {
       ~{if defined(organism_id) then ("--organism_id " +  '"' + organism_id + '"') else ""} \
       ~{if defined(dbxref_id) then ("--dbxref_id " +  '"' + dbxref_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     biomaterial_name: "Limit query to the selected biomaterial"
     provider_id: "Limit query to the selected provider"

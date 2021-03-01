@@ -24,6 +24,9 @@ task Fastqclipper {
       ~{if (endofline_default) then "-e" else ""} \
       ~{if (beginningofline_supported_yet) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_stats: "Output file (stats to stdout)"
     maximum_difference_percentage: "Maximum difference percentage (10)"

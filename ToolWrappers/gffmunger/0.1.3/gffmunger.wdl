@@ -30,6 +30,9 @@ task Gffmunger {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if defined(genome_tools) then ("--genometools " +  '"' + genome_tools + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Turn on debugging [False]"
     quiet: "Suppress messages & warnings [False]"

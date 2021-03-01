@@ -28,6 +28,9 @@ task GridssSomaticFilter {
       ~{if (tumour_ordinal) then "--tumourordinal" else ""} \
       ~{if (script_dir) then "--scriptdir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gc: "Perform garbage collection after freeing of\\nlarge objects."
     opts: "RDS file containing argument values"

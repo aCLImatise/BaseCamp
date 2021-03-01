@@ -3,22 +3,22 @@ id: arrow_groups_update_organism_permissions.cwl
 inputs:
 - id: in_administrate
   doc: Should the group have administrate privileges
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --administrate
 - id: in_write
   doc: Should the group have write privileges
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --write
 - id: in_read
   doc: Should the group have read privileges
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --read
 - id: in_export
   doc: Should the group have export privileges
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --export
 - id: in_group
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - arrow

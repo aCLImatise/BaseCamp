@@ -46,6 +46,9 @@ task CallConsensuspy {
       ~{if defined(only) then ("-only " +  '"' + only + '"') else ""} \
       ~{if defined(exclude) then ("-exclude " +  '"' + exclude + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "path to output file"
     sample_depth: "minimum average read depth per sample (0.0)"

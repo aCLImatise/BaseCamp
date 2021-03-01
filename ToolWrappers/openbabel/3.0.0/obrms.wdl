@@ -20,6 +20,9 @@ task Obrms {
       ~{if (cross) then "--cross" else ""} \
       ~{if (separate) then "--separate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "re-oriented test structure output"
     first_only: "use only the first structure in the reference file"

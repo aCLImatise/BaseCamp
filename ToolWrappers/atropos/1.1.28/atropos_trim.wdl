@@ -206,6 +206,9 @@ task AtroposTrim {
       ~{if defined(result_queue_size) then ("--result-queue-size " +  '"' + result_queue_size + '"') else ""} \
       ~{if defined(compression) then ("--compression " +  '"' + compression + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Print debugging information. (no)"
     progress: "Show progress. bar = show progress bar; msg = show a\\nstatus message. (no)"

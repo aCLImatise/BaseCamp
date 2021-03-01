@@ -14,6 +14,9 @@ task False {
       ~{line} \
       ~{arguments}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignored: ""
     var_command: ""

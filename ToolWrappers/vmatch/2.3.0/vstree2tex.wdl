@@ -8,6 +8,9 @@ task Vstree2tex {
     vstree2tex \
       ~{index_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index_name: ""
   }

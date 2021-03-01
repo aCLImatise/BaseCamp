@@ -32,6 +32,9 @@ task TsplitTIR {
       ~{if defined(diag_factor) then ("--diagfactor " +  '"' + diag_factor + '"') else ""} \
       ~{if defined(method) then ("--method " +  '"' + method + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "Multifasta containing complete elements."
     prefix: "All output files begin with this string. (Default:\\n[infile name])"

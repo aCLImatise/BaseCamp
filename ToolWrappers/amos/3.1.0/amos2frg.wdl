@@ -8,6 +8,9 @@ task Amos2frg {
     amos2frg \
       ~{extension}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     extension: "otherwise -i and -o are those specified in the command line"
   }

@@ -4,23 +4,30 @@ command:
 - dbm
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: GFF_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-d, --output-dir TEXT  Directory for the database  [default: gff-dbm]\n\
-    --help                 Show this message and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
+  - -d
+  - --output-dir
+  description: 'Directory for the database  [default: gff-dbm]'
+  args: !SimpleFlagArg
+    name: TEXT
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: get-gff-info dbm [OPTIONS] [GFF_FILE]\n\n  Creates a dbm database\
@@ -29,3 +36,4 @@ help_text: "Usage: get-gff-info dbm [OPTIONS] [GFF_FILE]\n\n  Creates a dbm data
   \  --help                 Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

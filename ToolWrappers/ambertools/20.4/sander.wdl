@@ -8,6 +8,9 @@ task Sander {
     sander \
       ~{if defined(scaled_md) then ("-scaledMD " +  '"' + scaled_md + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     scaled_md: "] -cph-data -ce-data <file>"
   }

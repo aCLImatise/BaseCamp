@@ -3,218 +3,218 @@ command:
 - htseq-count-barcodes
 positional:
 - !Positional
-  description: "Path to the SAM/BAM file containing the barcoded,\nmapped reads. If\
-    \ '-' is selected, read from standard\ninput"
+  optional: false
   position: 0
   name: samfilename
-  optional: false
+  description: "Path to the SAM/BAM file containing the barcoded,\nmapped reads. If\
+    \ '-' is selected, read from standard\ninput"
 - !Positional
-  description: Path to the GTF file containing the features
+  optional: false
   position: 1
   name: featuresfilename
-  optional: false
+  description: Path to the GTF file containing the features
 named:
 - !Flag
-  description: "Type of <alignment_file> data. DEPRECATED: file format\nis detected\
-    \ automatically. This option is ignored."
+  optional: true
   synonyms:
   - -f
   - --format
+  description: "Type of <alignment_file> data. DEPRECATED: file format\nis detected\
+    \ automatically. This option is ignored."
   args: !ChoiceFlagArg
     choices: !!set
-      bam:
       sam:
+      bam:
       auto:
-  optional: true
 - !Flag
-  description: "'pos' or 'name'. Sorting order of <alignment_file>\n(default: name).\
-    \ Paired-end sequencing data must be\nsorted either by position or by read name,\
-    \ and the\nsorting order must be specified. Ignored for single-\nend data."
+  optional: true
   synonyms:
   - -r
   - --order
+  description: "'pos' or 'name'. Sorting order of <alignment_file>\n(default: name).\
+    \ Paired-end sequencing data must be\nsorted either by position or by read name,\
+    \ and the\nsorting order must be specified. Ignored for single-\nend data."
   args: !ChoiceFlagArg
     choices: !!set
       name:
       pos:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-reads-in-buffer
   description: "When <alignment_file> is paired end sorted by\nposition, allow only\
     \ so many reads to stay in memory\nuntil the mates are found (raising this number\
     \ will\nuse more memory). Has no effect for single end or\npaired end sorted by\
     \ name"
-  synonyms:
-  - --max-reads-in-buffer
   args: !SimpleFlagArg
     name: MAX_BUFFER_SIZE
-  optional: true
 - !Flag
-  description: "Whether the data is from a strand-specific assay.\nSpecify 'yes',\
-    \ 'no', or 'reverse' (default: yes).\n'reverse' means 'yes' with reversed strand\n\
-    interpretation"
+  optional: true
   synonyms:
   - -s
   - --stranded
+  description: "Whether the data is from a strand-specific assay.\nSpecify 'yes',\
+    \ 'no', or 'reverse' (default: yes).\n'reverse' means 'yes' with reversed strand\n\
+    interpretation"
   args: !ChoiceFlagArg
     choices: !!set
-      yes:
       reverse:
       no:
-  optional: true
+      yes:
 - !Flag
-  description: "Skip all reads with MAPQ alignment quality lower than\nthe given minimum\
-    \ value (default: 10). MAPQ is the 5th\ncolumn of a SAM/BAM file and its usage\
-    \ depends on the\nsoftware used to map the reads."
+  optional: true
   synonyms:
   - -a
   - --minaqual
+  description: "Skip all reads with MAPQ alignment quality lower than\nthe given minimum\
+    \ value (default: 10). MAPQ is the 5th\ncolumn of a SAM/BAM file and its usage\
+    \ depends on the\nsoftware used to map the reads."
   args: !SimpleFlagArg
     name: MINAQUAL
-  optional: true
 - !Flag
-  description: "Feature type (3rd column in GTF file) to be used, all\nfeatures of\
-    \ other type are ignored (default, suitable\nfor Ensembl GTF files: exon)"
+  optional: true
   synonyms:
   - -t
   - --type
+  description: "Feature type (3rd column in GTF file) to be used, all\nfeatures of\
+    \ other type are ignored (default, suitable\nfor Ensembl GTF files: exon)"
   args: !SimpleFlagArg
     name: FEATURETYPE
-  optional: true
 - !Flag
-  description: "GTF attribute to be used as feature ID (default,\nsuitable for Ensembl\
-    \ GTF files: gene_id)"
+  optional: true
   synonyms:
   - -i
   - --idattr
+  description: "GTF attribute to be used as feature ID (default,\nsuitable for Ensembl\
+    \ GTF files: gene_id)"
   args: !SimpleFlagArg
     name: IDATTR
-  optional: true
 - !Flag
-  description: "Additional feature attributes (default: none, suitable\nfor Ensembl\
-    \ GTF files: gene_name). Use multiple times\nfor each different attribute"
+  optional: true
   synonyms:
   - --additional-attr
+  description: "Additional feature attributes (default: none, suitable\nfor Ensembl\
+    \ GTF files: gene_name). Use multiple times\nfor each different attribute"
   args: !SimpleFlagArg
     name: ADDITIONAL_ATTR
-  optional: true
 - !Flag
-  description: "Mode to handle reads overlapping more than one feature\n(choices:\
-    \ union, intersection-strict, intersection-\nnonempty; default: union)"
+  optional: true
   synonyms:
   - -m
   - --mode
+  description: "Mode to handle reads overlapping more than one feature\n(choices:\
+    \ union, intersection-strict, intersection-\nnonempty; default: union)"
   args: !ChoiceFlagArg
     choices: !!set
-      union:
       intersection-strict:
+      union:
       intersection-nonempty:
-  optional: true
 - !Flag
-  description: "Whether to score reads that are not uniquely aligned\nor ambiguously\
-    \ assigned to features"
+  optional: true
   synonyms:
   - --nonunique
+  description: "Whether to score reads that are not uniquely aligned\nor ambiguously\
+    \ assigned to features"
   args: !ChoiceFlagArg
     choices: !!set
-      none:
       all:
-  optional: true
+      none:
 - !Flag
-  description: Whether to score secondary alignments (0x100 flag)
+  optional: true
   synonyms:
   - --secondary-alignments
+  description: Whether to score secondary alignments (0x100 flag)
   args: !ChoiceFlagArg
     choices: !!set
-      score:
       ignore:
-  optional: true
+      score:
 - !Flag
-  description: Whether to score supplementary alignments (0x800 flag)
+  optional: true
   synonyms:
   - --supplementary-alignments
+  description: Whether to score supplementary alignments (0x800 flag)
   args: !ChoiceFlagArg
     choices: !!set
-      score:
       ignore:
-  optional: true
+      score:
 - !Flag
-  description: "Write out all SAM alignment records into aSAM/BAM\nfile, annotating\
-    \ each line with its feature assignment\n(as an optional field with tag 'XF').\
-    \ See the -p\noption to use BAM instead of SAM."
+  optional: true
   synonyms:
   - -o
   - --samout
+  description: "Write out all SAM alignment records into aSAM/BAM\nfile, annotating\
+    \ each line with its feature assignment\n(as an optional field with tag 'XF').\
+    \ See the -p\noption to use BAM instead of SAM."
   args: !SimpleFlagArg
     name: SAMOUT
-  optional: true
 - !Flag
-  description: Format to use with the --samout option.
+  optional: true
   synonyms:
   - -p
   - --samout-format
+  description: Format to use with the --samout option.
   args: !ChoiceFlagArg
     choices: !!set
-      SAM:
       BAM:
       bam:
+      SAM:
       sam:
-  optional: true
 - !Flag
-  description: 'Column delimiter in output (default: TAB).'
+  optional: true
   synonyms:
   - -d
   - --delimiter
+  description: 'Column delimiter in output (default: TAB).'
   args: !SimpleFlagArg
     name: OUTPUT_DELIMITER
-  optional: true
 - !Flag
-  description: "TSV/CSV filename to output the counts to instead of\nstdout."
+  optional: true
   synonyms:
   - -c
   - --counts_output
+  description: "TSV/CSV filename to output the counts to instead of\nstdout."
   args: !SimpleFlagArg
     name: OUTPUT_FILENAME
-  optional: true
 - !Flag
-  description: "BAM tag used for the cell barcode (default compatible\nwith 10X Genomics\
-    \ Chromium is CB)."
+  optional: true
   synonyms:
   - --cell-barcode
+  description: "BAM tag used for the cell barcode (default compatible\nwith 10X Genomics\
+    \ Chromium is CB)."
   args: !SimpleFlagArg
     name: CB_TAG
-  optional: true
 - !Flag
-  description: "BAM tag used for the unique molecular identifier, also\nknown as molecular\
-    \ barcode (default compatible with\n10X Genomics Chromium is UB)."
+  optional: true
   synonyms:
   - --UMI
+  description: "BAM tag used for the unique molecular identifier, also\nknown as molecular\
+    \ barcode (default compatible with\n10X Genomics Chromium is UB)."
   args: !SimpleFlagArg
     name: UB_TAG
-  optional: true
 - !Flag
-  description: Suppress progress report
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: Suppress progress report
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Show software version and exit
+  optional: true
   synonyms:
   - --version
+  description: Show software version and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: htseq-count-barcodes [options] alignment_file gff_file\n\nThis\
   \ script takes one alignment file in SAM/BAM format and a feature file in\nGFF format\
   \ and calculates for each feature the number of reads mapping to it,\naccounting\
@@ -281,3 +281,4 @@ help_text: "usage: htseq-count-barcodes [options] alignment_file gff_file\n\nThi
   \ License v3.\nPart of the 'HTSeq' framework, version 0.12.4.\n"
 generated_using:
 - --help
+docker_image:

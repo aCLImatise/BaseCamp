@@ -5,23 +5,23 @@ inputs:
   doc: "The documentation FORMAT used in DIRECTORIES.\nValid formats include:\necma\n\
     ecmaspec\nerror\nhb\nman\nsimple\nxhtml\nIf not specified, the default format\
     \ is `ecma'."
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
 - id: in_out
   doc: "Provides the output file prefix; the files PREFIX.\nzip and PREFIX.tree will\
     \ be created.\nIf not specified, `tree' is the default PREFIX."
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_drop_ns
   doc: "The namespace that has been dropped from this\nversion of the assembly."
-  type: string
+  type: string?
   inputBinding:
     prefix: --dropns
 - id: in_n_types
   doc: "Replace references to native types with their\noriginal types."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ntypes
 - id: in_mdoc
@@ -41,9 +41,10 @@ outputs:
 - id: out_out
   doc: "Provides the output file prefix; the files PREFIX.\nzip and PREFIX.tree will\
     \ be created.\nIf not specified, `tree' is the default PREFIX."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mdoc-assemble

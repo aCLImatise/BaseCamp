@@ -16,6 +16,9 @@ task CoverageMergepl {
       ~{include_list} \
       ~{at}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_dot_fa_dot_fai: ""
     sample_name: ""

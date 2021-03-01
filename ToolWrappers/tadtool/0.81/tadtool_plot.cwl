@@ -14,25 +14,25 @@ inputs:
 - id: in_algorithm
   doc: "TAD-calling algorithm. Options: insulation,\nninsulation, directionality.\
     \ Default: insulation."
-  type: string
+  type: string?
   inputBinding:
     prefix: --algorithm
 - id: in_max_distance
   doc: "Maximum distance in base-pairs away from the diagonal\nto be shown in Hi-C\
     \ plot. Defaults to half the\nplotting window."
-  type: long
+  type: long?
   inputBinding:
     prefix: --max-distance
 - id: in_normalisation_window
   doc: "Normalisation window in number of regions. Only\naffects ninsulation algorithm.\
     \ If not specified,\nwindow will be the whole chromosome."
-  type: long
+  type: long?
   inputBinding:
     prefix: --normalisation-window
 - id: in_data
   doc: "Matrix with index data. Rows correspond to window\nsizes, columns to Hi-C\
     \ matrix bins. If provided,\nsuppresses inbuilt index calculation.\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --data
 - id: in_matrix
@@ -59,6 +59,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tadtool

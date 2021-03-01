@@ -20,6 +20,9 @@ task ChiselCloning {
       ~{if defined(upper_k) then ("--upperk " +  '"' + upper_k + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run_dir: "Running directory (default: current directory)"
     max_diff: "Maximum haplotype-specific distance between the genome\\nof cells in the same clone (default: 0.06, when -1 is\\nchosen the maximum cluster method of SciPy is used)"

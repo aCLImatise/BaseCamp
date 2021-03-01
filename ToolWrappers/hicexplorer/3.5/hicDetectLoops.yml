@@ -4,146 +4,146 @@ command:
 positional: []
 named:
 - !Flag
-  description: The matrix to compute the loop detection on.
+  optional: true
   synonyms:
   - --matrix
   - -m
+  description: The matrix to compute the loop detection on.
   args: !SimpleFlagArg
     name: MATRIX
-  optional: true
 - !Flag
-  description: "Outfile name to store the detected loops. The file\nwill in bedgraph\
-    \ format."
+  optional: true
   synonyms:
   - --outFileName
   - -o
+  description: "Outfile name to store the detected loops. The file\nwill in bedgraph\
+    \ format."
   args: !SimpleFlagArg
     name: OUTFILENAME
-  optional: true
 - !Flag
-  description: "The width of the peak region in bins. Default is 2.\nThe square around\
-    \ the peak will include (2 *\npeakWidth)^2 bins."
+  optional: true
   synonyms:
   - --peakWidth
   - -pw
+  description: "The width of the peak region in bins. Default is 2.\nThe square around\
+    \ the peak will include (2 *\npeakWidth)^2 bins."
   args: !SimpleFlagArg
     name: PEAKWIDTH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --windowSize
+  - -w
   description: "The window size for the neighborhood region the peak\nis located in.\
     \ Default is 5. All values from this\nregion (exclude the values from the peak\
     \ region) are\ntested against the peak region for significant\ndifference. The\
     \ square will have the size of (2 *\nwindowSize)^2 bins"
-  synonyms:
-  - --windowSize
-  - -w
   args: !SimpleFlagArg
     name: WINDOWSIZE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --pValuePreselection
+  - -pp
   description: "Only candidates with p-values less the given threshold\nwill be considered\
     \ as candidates. For each genomic\ndistance a negative binomial distribution is\
     \ fitted\nand for each pixel a p-value given by the cumulative\ndensity function\
     \ is given. This does NOT influence the\np-value for the neighborhood testing.\
     \ Can a single\nvalue or a threshold file created by\nhicCreateThresholdFile."
-  synonyms:
-  - --pValuePreselection
-  - -pp
   args: !SimpleFlagArg
     name: PVALUEPRESELECTION
-  optional: true
 - !Flag
-  description: "The minimum number of interactions a detected peaks\nneeds to have\
-    \ to be considered."
+  optional: true
   synonyms:
   - --peakInteractionsThreshold
   - -pit
+  description: "The minimum number of interactions a detected peaks\nneeds to have\
+    \ to be considered."
   args: !SimpleFlagArg
     name: PEAKINTERACTIONSTHRESHOLD
-  optional: true
 - !Flag
-  description: "The minimum number of obs/exp interactions a detected\npeaks needs\
-    \ to have to be considered."
+  optional: true
   synonyms:
   - --obsExpThreshold
   - -oet
+  description: "The minimum number of obs/exp interactions a detected\npeaks needs\
+    \ to have to be considered."
   args: !SimpleFlagArg
     name: OBSEXPTHRESHOLD
-  optional: true
 - !Flag
-  description: "Rejection level for Anderson-Darling or Wilcoxon-rank\nsum test for\
-    \ H0. H0 is peak region and background have\nthe same distribution."
+  optional: true
   synonyms:
   - --pValue
   - -p
+  description: "Rejection level for Anderson-Darling or Wilcoxon-rank\nsum test for\
+    \ H0. H0 is peak region and background have\nthe same distribution."
   args: !SimpleFlagArg
     name: PVALUE
-  optional: true
 - !Flag
-  description: "Maximum genomic distance of a loop, usually loops are\nwithin a distance\
-    \ of ~2MB."
+  optional: true
   synonyms:
   - --maxLoopDistance
+  description: "Maximum genomic distance of a loop, usually loops are\nwithin a distance\
+    \ of ~2MB."
   args: !SimpleFlagArg
     name: MAXLOOPDISTANCE
-  optional: true
 - !Flag
-  description: "Chromosomes to include in the analysis. If not set,\nall chromosomes\
-    \ are included."
+  optional: true
   synonyms:
   - --chromosomes
+  description: "Chromosomes to include in the analysis. If not set,\nall chromosomes\
+    \ are included."
   args: !RepeatFlagArg
     name: CHROMOSOMES
-  optional: true
 - !Flag
-  description: "Number of threads to use, the parallelization is\nimplemented per\
-    \ chromosome."
+  optional: true
   synonyms:
   - --threads
   - -t
+  description: "Number of threads to use, the parallelization is\nimplemented per\
+    \ chromosome."
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: "Number of threads to use per parallel thread\nprocessing a chromosome.\
-    \ E.g. --threads = 4 and\n--threadsPerChromosome = 4 makes 4 * 4 = 16 threads\
-    \ in\ntotal."
+  optional: true
   synonyms:
   - --threadsPerChromosome
   - -tpc
+  description: "Number of threads to use per parallel thread\nprocessing a chromosome.\
+    \ E.g. --threads = 4 and\n--threadsPerChromosome = 4 makes 4 * 4 = 16 threads\
+    \ in\ntotal."
   args: !SimpleFlagArg
     name: THREADSPERCHROMOSOME
-  optional: true
 - !Flag
-  description: "Method to compute the expected value per distance:\nEither the mean,\
-    \ the mean of non-zero values or the\nmean of non-zero values with ligation factor\n\
-    correction."
+  optional: true
   synonyms:
   - --expected
   - -exp
+  description: "Method to compute the expected value per distance:\nEither the mean,\
+    \ the mean of non-zero values or the\nmean of non-zero values with ligation factor\n\
+    correction."
   args: !ChoiceFlagArg
     choices: !!set
-      mean_nonzero:
       mean:
+      mean_nonzero:
       mean_nonzero_ligation:
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: hicDetectLoops --matrix MATRIX --outFileName OUTFILENAME\n    \
   \                  [--peakWidth PEAKWIDTH] [--windowSize WINDOWSIZE]\n         \
   \             [--pValuePreselection PVALUEPRESELECTION]\n                      [--peakInteractionsThreshold\
@@ -201,3 +201,4 @@ help_text: "usage: hicDetectLoops --matrix MATRIX --outFileName OUTFILENAME\n   
   \ version number and exit\n"
 generated_using:
 - --help
+docker_image:

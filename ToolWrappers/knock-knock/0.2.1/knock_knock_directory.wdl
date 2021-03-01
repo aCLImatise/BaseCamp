@@ -8,6 +8,9 @@ task KnockknockDirectory {
     knock_knock directory \
       ~{knock_knock}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     knock_knock: ""
   }

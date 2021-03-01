@@ -24,6 +24,9 @@ task Abysssamtoafg {
       ~{if (sd) then "--sd" else ""} \
       ~{if defined(cb) then ("-cb " +  '"' + cb + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     eid: "the EID of the library"
     iid: "the IID of the library"

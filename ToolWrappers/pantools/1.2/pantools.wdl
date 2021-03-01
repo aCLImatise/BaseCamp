@@ -4,6 +4,9 @@ task Pantools {
   command <<<
     pantools
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

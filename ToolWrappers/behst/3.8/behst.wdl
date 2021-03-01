@@ -20,6 +20,9 @@ task Behst {
       ~{if defined(interaction_file) then ("--interaction-file " +  '"' + interaction_file + '"') else ""} \
       ~{if (no_g_profiler) then "--no-gprofiler" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target_extension: "extend target regions by BP base pairs (default 9400)"
     query_extension: "extend query regions by BP base pairs (default 24100)"

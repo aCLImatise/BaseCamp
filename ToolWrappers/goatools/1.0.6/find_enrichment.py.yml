@@ -3,223 +3,223 @@ command:
 - find_enrichment.py
 positional:
 - !Positional
-  description: data/study data/population data/association
+  optional: false
   position: 0
   name: filenames
-  optional: false
+  description: data/study data/population data/association
 named:
 - !Flag
-  description: ": test-wise alpha; for each GO term, what significance level to apply\n\
-    (most often you don't need to change this other than 0.05 or 0.01)"
+  optional: true
   synonyms:
   - --alpha
+  description: ": test-wise alpha; for each GO term, what significance level to apply\n\
+    (most often you don't need to change this other than 0.05 or 0.01)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ": experiment-wise alpha; for the entire experiment, what significance\n\
-    level to apply after Bonferroni correction"
+  optional: true
   synonyms:
   - --pval
+  description: ": experiment-wise alpha; for the entire experiment, what significance\n\
+    level to apply after Bonferroni correction"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Annotation file format. Not needed if type can be\ndetermined using\
-    \ filename (default: None)"
+  optional: true
   synonyms:
   - --annofmt
+  description: "Annotation file format. Not needed if type can be\ndetermined using\
+    \ filename (default: None)"
   args: !ChoiceFlagArg
     choices: !!set
-      gpad:
-      gene2go:
       gaf:
+      gene2go:
+      gpad:
       id2gos:
-  optional: true
 - !Flag
-  description: "When using NCBI's gene2go annotation file, specify\ndesired taxid\
-    \ (default: 9606)"
+  optional: true
   synonyms:
   - --taxid
+  description: "When using NCBI's gene2go annotation file, specify\ndesired taxid\
+    \ (default: 9606)"
   args: !SimpleFlagArg
     name: TAXID
-  optional: true
 - !Flag
-  description: "Only print results when PVAL_FIELD < PVAL. (default:\nNone)"
+  optional: true
   synonyms:
   - --pval_field
+  description: "Only print results when PVAL_FIELD < PVAL. (default:\nNone)"
   args: !SimpleFlagArg
     name: PVAL_FIELD
-  optional: true
 - !Flag
-  description: "Write enrichment results into xlsx or tsv file\n(default: None)"
+  optional: true
   synonyms:
   - --outfile
+  description: "Write enrichment results into xlsx or tsv file\n(default: None)"
   args: !SimpleFlagArg
     name: OUTFILE
-  optional: true
 - !Flag
-  description: "Limit GOEA to specified branch categories.\nBP=Biological Process;\
-    \ MF=Molecular Function;\nCC=Cellular Component (default: BP,MF,CC)"
+  optional: true
   synonyms:
   - --ns
+  description: "Limit GOEA to specified branch categories.\nBP=Biological Process;\
+    \ MF=Molecular Function;\nCC=Cellular Component (default: BP,MF,CC)"
   args: !SimpleFlagArg
     name: NS
-  optional: true
 - !Flag
-  description: "ASCII file containing one geneid and its symbol per\nline (default:\
-    \ None)"
+  optional: true
   synonyms:
   - --id2sym
+  description: "ASCII file containing one geneid and its symbol per\nline (default:\
+    \ None)"
   args: !SimpleFlagArg
     name: ID2SYM
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sections
   description: "Use sections file for printing grouped GOEA results.\nExample SECTIONS\
     \ values:\ngoatools.test_data.sections.gjoneska_pfenning\ngoatools/test_data/sections/gjoneska_pfenning.py\n\
     data/gjoneska_pfenning/sections_in.txt (default: None)"
-  synonyms:
-  - --sections
   args: !SimpleFlagArg
     name: SECTIONS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outfile_detail
   description: "Write enrichment results into a text file containing\nthe following\
     \ information: 1) GOEA GO terms, grouped\ninto sections 2) List of genes and ASCII\
     \ art showing\nsection membership 3) Detailed list of each gene and\nGO terms\
     \ w/their P-values (default: None)"
-  synonyms:
-  - --outfile_detail
   args: !SimpleFlagArg
     name: OUTFILE_DETAIL
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --compare
   description: "the population file as a comparison group. if this\nflag is specified,\
     \ the population is used as the study\nplus the `population/comparison` (default:\
     \ False)"
-  synonyms:
-  - --compare
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ratio
   description: "only show values where the difference between study\nand population\
     \ ratios is greater than this. useful for\nexcluding GO categories with small\
     \ differences, but\ncontaining large numbers of genes. should be a value\nbetween\
     \ 1 and 2. (default: None)"
-  synonyms:
-  - --ratio
   args: !SimpleFlagArg
     name: RATIO
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --prt_study_gos_only
   description: "Print GO terms only if they are associated with study\ngenes. This\
     \ is useful if printng all GO results\nregardless of their significance (--pval=1.0).\n\
     (default: False)"
-  synonyms:
-  - --prt_study_gos_only
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'indent GO terms (default: False)'
+  optional: true
   synonyms:
   - --indent
+  description: 'indent GO terms (default: False)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specifies location and name of the obo file (default:\ngo-basic.obo)"
+  optional: true
   synonyms:
   - --obo
+  description: "Specifies location and name of the obo file (default:\ngo-basic.obo)"
   args: !SimpleFlagArg
     name: OBO
-  optional: true
 - !Flag
-  description: "Do not propagate counts to parent terms (default:\nFalse)"
+  optional: true
   synonyms:
   - --no_propagate_counts
+  description: "Do not propagate counts to parent terms (default:\nFalse)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Propagate counts up all relationships, (default:\nFalse)"
+  optional: true
   synonyms:
   - -r
   - --relationship
+  description: "Propagate counts up all relationships, (default:\nFalse)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --relationships
   description: "[RELATIONSHIPS [RELATIONSHIPS ...]]\nPropagate counts up user-specified\
     \ relationships,\nwhich include: part_of regulates negatively_regulates\npositively_regulates\
     \ (default: None)"
-  synonyms:
-  - --relationships
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --method
   description: "Available methods: local( bonferroni sidak holm fdr )\nstatsmodels(\
     \ sm_bonferroni sm_sidak holm_sidak sm_holm\nsimes_hochberg hommel fdr_bh fdr_by\
     \ fdr_tsbh fdr_tsbky\nfdr_gbs ) (default: bonferroni,sidak,holm,fdr_bh)"
-  synonyms:
-  - --method
   args: !SimpleFlagArg
     name: METHOD
-  optional: true
 - !Flag
-  description: 'fisher fisher_scipy_stats (default: fisher)'
+  optional: true
   synonyms:
   - --pvalcalc
+  description: 'fisher fisher_scipy_stats (default: fisher)'
   args: !SimpleFlagArg
     name: PVALCALC
-  optional: true
 - !Flag
-  description: "Check that a minimum amount of study genes are in the\npopulation\
-    \ (default: 0.7)"
+  optional: true
   synonyms:
   - --min_overlap
+  description: "Check that a minimum amount of study genes are in the\npopulation\
+    \ (default: 0.7)"
   args: !SimpleFlagArg
     name: MIN_OVERLAP
-  optional: true
 - !Flag
-  description: "The GO slim file is used when grouping GO terms.\n(default: goslim_generic.obo)"
+  optional: true
   synonyms:
   - --goslim
+  description: "The GO slim file is used when grouping GO terms.\n(default: goslim_generic.obo)"
   args: !SimpleFlagArg
     name: GOSLIM
-  optional: true
 - !Flag
-  description: "Include specified evidence codes and groups separated\nby commas (default:\
-    \ None)"
+  optional: true
   synonyms:
   - --ev_inc
+  description: "Include specified evidence codes and groups separated\nby commas (default:\
+    \ None)"
   args: !SimpleFlagArg
     name: EV_INC
-  optional: true
 - !Flag
-  description: "Exclude specified evidence codes and groups separated\nby commas (default:\
-    \ None)"
+  optional: true
   synonyms:
   - --ev_exc
+  description: "Exclude specified evidence codes and groups separated\nby commas (default:\
+    \ None)"
   args: !SimpleFlagArg
     name: EV_EXC
-  optional: true
 - !Flag
-  description: "Print all Evidence codes, with descriptions (default:\nTrue)"
+  optional: true
   synonyms:
   - --ev_help
+  description: "Print all Evidence codes, with descriptions (default:\nTrue)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Print all Evidence codes (default: True)'
+  optional: true
   synonyms:
   - --ev_help_short
+  description: 'Print all Evidence codes (default: True)'
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "fisher module not installed.  Falling back on scipy.stats.fisher_exact\n\
@@ -299,3 +299,4 @@ help_text: "fisher module not installed.  Falling back on scipy.stats.fisher_exa
   \  --ev_help_short       Print all Evidence codes (default: True)\n"
 generated_using:
 - --help
+docker_image:

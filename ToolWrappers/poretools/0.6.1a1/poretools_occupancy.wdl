@@ -16,6 +16,9 @@ task PoretoolsOccupancy {
       ~{if defined(save_as) then ("--saveas " +  '"' + save_as + '"') else ""} \
       ~{if defined(plot_type) then ("--plot-type " +  '"' + plot_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     save_as: "Save the plot to a file. Extension (.pdf or .png) drives"

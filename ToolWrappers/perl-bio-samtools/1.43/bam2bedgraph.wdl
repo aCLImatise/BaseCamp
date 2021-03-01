@@ -10,6 +10,9 @@ task Bam2bedgraph {
       ~{in_dot_bam} \
       ~{region}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_bam: ""
     region: ""

@@ -12,6 +12,9 @@ task SketchyOnlineWatch {
       ~{if defined(regex) then ("--regex " +  '"' + regex + '"') else ""} \
       ~{if (now) then "--now" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory: "Path to directory to watch [required]  [required]"
     regex: "Regex to identify read files [.*\\.fastq$]"

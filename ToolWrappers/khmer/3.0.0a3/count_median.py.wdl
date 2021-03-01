@@ -18,6 +18,9 @@ task Countmedianpy {
       ~{if (info) then "--info" else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     info: "print citation information"
     force: "Overwrite output file if it exists (default: False)"

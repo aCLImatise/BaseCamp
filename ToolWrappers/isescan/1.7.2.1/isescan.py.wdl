@@ -18,6 +18,9 @@ task Isescanpy {
       ~{if (no_frag_genes_can) then "--no-FragGeneScan" else ""} \
       ~{if defined(n_thread) then ("--nthread " +  '"' + n_thread + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     remove_short_is: "remove incomplete (partial) IS elements which include IS\\nelement with length < 400 or single copy IS element\\nwithout perfect TIR."
     no_frag_genes_can: "use the annotated protein sequences in NCBI GenBank file\\n(.gbk which must be in the same folder with genome\\nsequence file), instead of the protein sequences\\npredicted/translated by FragGeneScan. (Experimental\\nfeature!)"

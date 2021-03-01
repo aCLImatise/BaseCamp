@@ -26,6 +26,9 @@ task GcloudComputeImages {
       ~{remove_labels} \
       ~{update}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     images: "SYNOPSIS"
     add_labels: "Add labels to Google Compute Engine images."

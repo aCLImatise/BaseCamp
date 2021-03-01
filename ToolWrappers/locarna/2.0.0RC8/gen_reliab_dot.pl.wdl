@@ -2,12 +2,10 @@ version 1.0
 
 task Genreliabdotpl {
   input {
-    String? s
-    File? a
-    File? f
-    Boolean? q
-    Boolean? v
     String? man
+    File? verbose
+    File? alignment_file
+    String? probabilities
     String alignment
     String help
     String reliability
@@ -17,20 +15,19 @@ task Genreliabdotpl {
       ~{alignment} \
       ~{help} \
       ~{reliability} \
-      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
-      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
-      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
-      ~{if (q) then "-q" else ""} \
-      ~{if (v) then "-v" else ""} \
-      ~{if defined(man) then ("--man " +  '"' + man + '"') else ""}
+      ~{if defined(man) then ("--man " +  '"' + man + '"') else ""} \
+      ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""} \
+      ~{if defined(alignment_file) then ("-a " +  '"' + alignment_file + '"') else ""} \
+      ~{if defined(probabilities) then ("-s " +  '"' + probabilities + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    s: ""
-    a: ""
-    f: ""
-    q: ""
-    v: ""
-    man: ""
+    man: "documentation"
+    verbose: "reliability file"
+    alignment_file: "alignment file"
+    probabilities: "probabilities"
     alignment: ""
     help: ""
     reliability: ""

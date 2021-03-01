@@ -3,7 +3,7 @@ id: pool_test_datasets.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_field_order
@@ -14,7 +14,7 @@ inputs:
     \ be in the form:\npredict_traits--distance_exclusion--wagner.  Any\nunspecified\
     \ values are set to \"not_specified\".\n[default: file_type,prediction_method,weighting_method\n\
     ,holdout_method,distance,organism]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --field_order
 - id: in_pool_by
@@ -22,22 +22,22 @@ inputs:
     \ Valid categories are:\nholdout_method,\nprediction_method,weighting_method,distance\
     \ and\norganism. For example, pass \"distance\" to output\nresults pooled by holdout\
     \ distance in addition to\nholdout method and prediction method  [default: False]"
-  type: string
+  type: string?
   inputBinding:
     prefix: --pool_by
 - id: in_trait_table_dir
   doc: "the input trait table directory (files in biom format)\n[REQUIRED]"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --trait_table_dir
 - id: in_exp_trait_table_dir
   doc: "the input expected trait table directory (files in\nbiom format) [REQUIRED]"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --exp_trait_table_dir
 - id: in_output_dir
   doc: "the output directory [REQUIRED]\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output_dir
 outputs:
@@ -46,9 +46,10 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: "the output directory [REQUIRED]\n"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pool_test_datasets.py

@@ -14,6 +14,9 @@ task Csbhhsearch {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     binary: "full path to the HHsearch binary (default=hhsearch)"
     cpu: "maximum degree of parallelism (default=8)"

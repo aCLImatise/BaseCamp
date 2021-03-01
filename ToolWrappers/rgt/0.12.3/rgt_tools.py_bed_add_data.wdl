@@ -14,6 +14,9 @@ task RgttoolspyBedAddData {
       ~{if defined(target_bed_file) then ("-t " +  '"' + target_bed_file + '"') else ""} \
       ~{if defined(same_or_opposite) then ("-s " +  '"' + same_or_opposite + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bed_file: "Input BED file"
     output_bed_file: "Output BED file"

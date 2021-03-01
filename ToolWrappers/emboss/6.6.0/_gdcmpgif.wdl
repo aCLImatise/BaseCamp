@@ -10,6 +10,9 @@ task Gdcmpgif {
       ~{gdc_mpg_if} \
       ~{filename_do_tgif}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gdc_mpg_if: ""
     filename_do_tgif: ""

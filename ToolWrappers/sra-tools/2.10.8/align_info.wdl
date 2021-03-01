@@ -30,6 +30,9 @@ task Aligninfo {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "print all information"
     ref: "print refseq information [default]"

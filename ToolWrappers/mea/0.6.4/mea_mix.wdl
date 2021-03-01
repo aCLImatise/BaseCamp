@@ -24,6 +24,9 @@ task MeaMix {
       ~{if (no_conflict_rule) then "--no-conflict-rule" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gamma_one: "base pair weight factor, first pair probabilities\\n(default=`1.0')"
     gamma_two: "base pair weight factor, second pair probabilities\\n(default=`1.0')"

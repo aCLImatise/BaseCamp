@@ -18,6 +18,9 @@ task FcGraphToContig {
       ~{if defined(utg_data_fn) then ("--utg-data-fn " +  '"' + utg_data_fn + '"') else ""} \
       ~{if defined(ctg_paths_fn) then ("--ctg-paths-fn " +  '"' + ctg_paths_fn + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     improper_p_ctg: "Skip the initial read in each p_ctg path. (default:\\nFalse)"
     proper_a_ctg: "Skip the initial read in each a_ctg path. (default:\\nFalse)"

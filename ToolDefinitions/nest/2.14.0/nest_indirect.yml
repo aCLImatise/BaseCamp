@@ -11,15 +11,15 @@ subcommands:
   - nest
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: nest_indirect
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: script
-    optional: false
+    description: ''
   named: []
   parent: !Command
     command: *id001
@@ -31,15 +31,15 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: nest_indirect
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: script
-        optional: false
+        description: ''
       named: []
       parent: !Command
         command: *id001
@@ -51,15 +51,15 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: nest_indirect
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: script
-            optional: false
+            description: ''
           named: []
           parent: !Command
             command: *id001
@@ -71,82 +71,132 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: nest_indirect
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: script
-                optional: false
+                description: ''
               named: []
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: Execute cmd and exit
-                  synonyms:
-                  - -c
-                  args: !SimpleFlagArg
-                    name: cmd
-                  optional: true
-                - !Flag
-                  description: :...   put user defined arguments in statusdict::userargs
-                  synonyms:
-                  - --userargs
-                  args: !SimpleFlagArg
-                    name: arg1
-                  optional: true
-                - !Flag
-                  description: start in debug mode (implies --verbosity=ALL)
-                  synonyms:
-                  - -d
-                  - --debug
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: nest_indirect
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: script
-                    optional: false
+                    description: ''
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -c
+                      description: Execute cmd and exit
+                      args: !SimpleFlagArg
+                        name: cmd
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --userargs
+                      description: :...   put user defined arguments in statusdict::userargs
+                      args: !SimpleFlagArg
+                        name: arg1
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -d
+                      - --debug
+                      description: start in debug mode (implies --verbosity=ALL)
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: nest_indirect
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: script
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: nest_indirect <script>\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: print usage and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -v
+                      - --version
+                      description: print version information and exit
+                      args: !EmptyFlagArg {}
+                    help_text: "Running  /usr/local/bin/sli --help\nusage: nest [options]\
+                      \ [ - | file [file ...] ]\n  file1 file2 ... filen     read\
+                      \ SLI code from file1 to filen in ascending order\n        \
+                      \                    Quits with exit code 126 on error.\n  -\
+                      \   --batch               read SLI code from stdin/pipe.\n \
+                      \                           Quits with exit code 126 on error.\n\
+                      \  -c cmd                    Execute cmd and exit\n  -h  --help\
+                      \                print usage and exit\n  -v  --version     \
+                      \        print version information and exit\n      --userargs=arg1:...\
+                      \   put user defined arguments in statusdict::userargs\n  -d\
+                      \  --debug               start in debug mode (implies --verbosity=ALL)\
+                      \ \n      --verbosity=ALL       turn on all messages.\n    \
+                      \  --verbosity=DEBUG|STATUS|INFO|WARNING|ERROR|FATAL\n     \
+                      \                       show messages of this priority and above.\n\
+                      \      --verbosity=QUIET     turn off all messages.\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: nest_indirect <script>\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: print usage and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: print version information and exit
-                  synonyms:
-                  - -v
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "Running  /usr/local/bin/sli --help\nusage: nest [options]\
                   \ [ - | file [file ...] ]\n  file1 file2 ... filen     read SLI\
                   \ code from file1 to filen in ascending order\n                \
@@ -162,6 +212,7 @@ subcommands:
                   \                            show messages of this priority and\
                   \ above.\n      --verbosity=QUIET     turn off all messages.\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -169,6 +220,7 @@ subcommands:
               version_flag:
               help_text: "Usage: nest_indirect <script>\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -187,6 +239,7 @@ subcommands:
               \                            show messages of this priority and above.\n\
               \      --verbosity=QUIET     turn off all messages.\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -194,6 +247,7 @@ subcommands:
           version_flag:
           help_text: "Usage: nest_indirect <script>\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -211,6 +265,7 @@ subcommands:
           \                            show messages of this priority and above.\n\
           \      --verbosity=QUIET     turn off all messages.\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -218,6 +273,7 @@ subcommands:
       version_flag:
       help_text: "Usage: nest_indirect <script>\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -235,6 +291,7 @@ subcommands:
       \                            show messages of this priority and above.\n   \
       \   --verbosity=QUIET     turn off all messages.\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -242,6 +299,7 @@ subcommands:
   version_flag:
   help_text: "Usage: nest_indirect <script>\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -258,3 +316,4 @@ help_text: "Running  /usr/local/bin/sli --help\nusage: nest [options] [ - | file
   \                            show messages of this priority and above.\n      --verbosity=QUIET\
   \     turn off all messages.\n"
 generated_using: *id004
+docker_image:

@@ -3,66 +3,94 @@ command:
 - GeneAssign.py
 positional:
 - !Positional
-  description: input core gene coverages
+  optional: false
   position: 0
   name: scg_cov_file
-  optional: false
+  description: input core gene coverages
 - !Positional
-  description: input MAP estimate frequencies
+  optional: false
   position: 1
   name: gamma_star_file
-  optional: false
+  description: input MAP estimate frequencies
 - !Positional
-  description: mean contig/genes coverages
+  optional: false
   position: 2
   name: cov_file
-  optional: false
+  description: mean contig/genes coverages
 - !Positional
-  description: predicted transition matrix
+  optional: false
   position: 3
   name: epsilon_file
-  optional: false
+  description: predicted transition matrix
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -i
-  args: !SimpleFlagArg
-    name: ITER_MAX
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -e
-  args: !SimpleFlagArg
-    name: ETA_MAX
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -s
+  - --random_seed
+  description: "specifies seed for numpy random number generator\ndefaults to 23724839\
+    \ applied after random filtering"
   args: !SimpleFlagArg
     name: RANDOM_SEED
+- !Flag
   optional: true
+  synonyms:
+  - -e
+  - --eta_max
+  description: maximum contig contig count for sampler defaults to 2
+  args: !SimpleFlagArg
+    name: ETA_MAX
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --iter_max
+  description: number of Gibbs sampling iterations
+  args: !SimpleFlagArg
+    name: ITER_MAX
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --var_max
+  description: "maximum number of variants to user per contig defaults\nto all (1e10)\
+    \ if unset"
+  args: !SimpleFlagArg
+    name: VAR_MAX
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_stub
+  description: string specifying output file stubs
+  args: !SimpleFlagArg
+    name: OUTPUT_STUB
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genomes
+  description: specify validation file of known genome composition
+  args: !SimpleFlagArg
+    name: GENOMES
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --variant_file
+  description: specify file of called variants on genes if available
+  args: !SimpleFlagArg
+    name: VARIANT_FILE
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-s RANDOM_SEED, --random_seed RANDOM_SEED\n\
-    specifies seed for numpy random number generator\ndefaults to 23724839 applied\
-    \ after random filtering\n-e ETA_MAX, --eta_max ETA_MAX\nmaximum contig contig\
-    \ count for sampler defaults to 2\n-i ITER_MAX, --iter_max ITER_MAX\nnumber of\
-    \ Gibbs sampling iterations\n-m VAR_MAX, --var_max VAR_MAX\nmaximum number of\
-    \ variants to user per contig defaults\nto all (1e10) if unset\n-o OUTPUT_STUB,\
-    \ --output_stub OUTPUT_STUB\nstring specifying output file stubs\n-g GENOMES,\
-    \ --genomes GENOMES\nspecify validation file of known genome composition\n-v VARIANT_FILE,\
-    \ --variant_file VARIANT_FILE\nspecify file of called variants on genes if available\n\
-    --assign_tau\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: GeneAssign.py [-h] [-s RANDOM_SEED] [-e ETA_MAX] [-i ITER_MAX]\n\
@@ -86,3 +114,4 @@ help_text: "usage: GeneAssign.py [-h] [-s RANDOM_SEED] [-e ETA_MAX] [-i ITER_MAX
   \ file of called variants on genes if available\n  --assign_tau\n"
 generated_using:
 - --help
+docker_image:

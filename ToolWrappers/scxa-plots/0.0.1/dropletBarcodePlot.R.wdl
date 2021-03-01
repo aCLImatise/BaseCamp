@@ -22,6 +22,9 @@ task DropletBarcodePlotR {
       ~{if defined(output_plot) then ("--output-plot " +  '"' + output_plot + '"') else ""} \
       ~{if defined(output_thresholds) then ("--output-thresholds " +  '"' + output_thresholds + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     barcode_frequencies: "Path to a two-column tab-delimited file, with barcodes in the first column and frequencies in the second (ignored if --mtx-matrix supplied)"
     mtx_matrix: "Matrix-market format matrix file, with cells by column (overrides --barcode-frequencies if supplied)"

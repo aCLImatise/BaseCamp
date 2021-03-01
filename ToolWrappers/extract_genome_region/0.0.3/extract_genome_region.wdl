@@ -26,6 +26,9 @@ task ExtractGenomeRegion {
       ~{csv_seq_range} \
       ~{if (naming) then "--naming" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     naming: "[csv|seq_range|csv_seq_range]\\nOptions regarding how each new fasta record\\nwill be named. See main help-text for\\nexplainations of options. [default='csv']"
     record_name: "The name you want the seq to have in the new fasta."

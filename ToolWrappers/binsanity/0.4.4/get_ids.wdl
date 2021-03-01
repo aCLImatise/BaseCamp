@@ -14,6 +14,9 @@ task Getids {
       ~{if (specify_fasta_file) then "-l" else ""} \
       ~{if (specify_minimum_length) then "-x" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specify_directory_containing: "Specify the directory containing fasta file"
     specify_output_file: "Specify the output file"

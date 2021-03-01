@@ -48,6 +48,9 @@ task RNAplot {
       ~{if (auto_id) then "--auto-id" else ""} \
       ~{if defined(id_prefix) then ("--id-prefix " +  '"' + id_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     full_help: "Print help, including hidden options, and exit"

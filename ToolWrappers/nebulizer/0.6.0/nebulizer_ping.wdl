@@ -14,6 +14,9 @@ task NebulizerPing {
       ~{if defined(interval) then ("--interval " +  '"' + interval + '"') else ""} \
       ~{if defined(timeout) then ("--timeout " +  '"' + timeout + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count: "if set then stop after sending COUNT requests\\n(default is to send requests forever)."
     interval: "set the interval between sending requests in\\nseconds (default is 5 seconds)."

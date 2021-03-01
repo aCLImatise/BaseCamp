@@ -78,6 +78,9 @@ task Tedna {
       ~{if (bytes_per_thread) then "--bytes-per-thread" else ""} \
       ~{if (max_reads) then "--max-reads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_one: "First FASTQ file."
     file_two: "Second FASTQ file."

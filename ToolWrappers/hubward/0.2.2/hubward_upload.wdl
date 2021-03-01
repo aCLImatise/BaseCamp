@@ -16,6 +16,9 @@ task HubwardUpload {
       ~{if defined(user) then ("--user " +  '"' + user + '"') else ""} \
       ~{if defined(hub_remote) then ("--hub_remote " +  '"' + hub_remote + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hub_only: "been specified, only these files will be uploaded to the"
     rsync_options: "Options for rsync. Default is \\\"'-avrL --progress'\\\""

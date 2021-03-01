@@ -10,6 +10,9 @@ task MegalodonExtrasPhaseVariantsExtractHaplotypeReads {
       ~{alignment_filename} \
       ~{out_basename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignment_filename: "Alignment filename."
     out_basename: "Basename for read ids output."

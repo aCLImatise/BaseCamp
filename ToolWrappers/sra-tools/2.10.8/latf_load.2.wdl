@@ -38,6 +38,9 @@ task Latfload2 {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_name_output: "Path and Name of the output database."
     quality: "Quality encoding (PHRED_33, PHRED_64,\\nLOGODDS)"

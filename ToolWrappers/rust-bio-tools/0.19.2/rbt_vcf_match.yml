@@ -1,0 +1,56 @@
+!Command
+command:
+- rbt
+- vcf-match
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --max-dist
+  description: 'Maximum distance between centres of two indels considered to match
+    [default: 20]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --max-len-diff
+  description: 'Maximum difference between lengths of two indels [default: 10]'
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "rbt-vcf-match 0.19.2\nJohannes Köster <johannes.koester@tu-dortmund.de>\n\
+  Annotate for each variant in a VCF/BCF at STDIN whether it is contained in a given\
+  \ second VCF/BCF. The matching is fuzzy\nfor indels and exact for SNVs. Results\
+  \ are printed as BCF to STDOUT, with an additional INFO tag MATCHING. The two vcfs\n\
+  do not have to be sorted.\n\nExample: rbt vcf-match dbsnp.vcf < calls.vcf | bcftools\
+  \ view\n\nUSAGE:\n    rbt vcf-match [OPTIONS] <vcf>\n\nFLAGS:\n    -h, --help  \
+  \     \n            Prints help information\n\n    -V, --version    \n         \
+  \   Prints version information\n\n\nOPTIONS:\n    -d, --max-dist <INT>        \n\
+  \            Maximum distance between centres of two indels considered to match\
+  \ [default: 20]\n\n    -l, --max-len-diff <INT>    \n            Maximum difference\
+  \ between lengths of two indels [default: 10]\n\n\nARGS:\n    <vcf>    \n      \
+  \      VCF/BCF file to match against\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rust-bio-tools:0.19.2--heda7bfa_0

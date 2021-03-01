@@ -4,6 +4,9 @@ task Bcbioprioritize {
   command <<<
     bcbio_prioritize
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

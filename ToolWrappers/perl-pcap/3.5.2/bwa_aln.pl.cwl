@@ -2,84 +2,54 @@ class: CommandLineTool
 id: bwa_aln.pl.cwl
 inputs:
 - id: in_outdir
-  doc: -o   Folder to output result to.
-  type: Directory
+  doc: Folder to output result to.
+  type: Directory?
   inputBinding:
     prefix: -outdir
 - id: in_path_reference_file
   doc: Path to reference genome file *.fa[.gz]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -reference
 - id: in_sample_name_applied
-  doc: -s   Sample name to be applied to output file.
-  type: File
+  doc: Sample name to be applied to output file.
+  type: File?
   inputBinding:
     prefix: -sample
 - id: in_number_threads_use
-  doc: -t   Number of threads to use. [1]
-  type: boolean
+  doc: Number of threads to use. [1]
+  type: boolean?
   inputBinding:
     prefix: -threads
 - id: in_only_process_step
-  doc: "-p   Only process this step then exit, optionally set -index\nbam2fq - only\
-    \ applicable if input is bam\naln - Run 'bwa aln'\nsampe - Run 'bwa sampe' and\
-    \ sorting to BAM\nmark - Run duplicate marking (-index N/A)"
-  type: boolean
+  doc: "Only process this step then exit, optionally set -index\nbam2fq - only applicable\
+    \ if input is bam\naln - Run 'bwa aln'\nsampe - Run 'bwa sampe' and sorting to\
+    \ BAM\nmark - Run duplicate marking (-index N/A)"
+  type: boolean?
   inputBinding:
     prefix: -process
 - id: in_index
-  doc: "-i   Optionally restrict '-p' to single job\nbam2fq - 1..<lane_count>\naln\
-    \ - 1..<lane_count*2>\nsampe - 1..<lane_count>"
-  type: boolean
+  doc: "Optionally restrict '-p' to single job\nbam2fq - 1..<lane_count>\naln - 1..<lane_count*2>\n\
+    sampe - 1..<lane_count>"
+  type: boolean?
   inputBinding:
     prefix: -index
 - id: in_man
-  doc: -m   Full documentation.
-  type: boolean
+  doc: Full documentation.
+  type: boolean?
   inputBinding:
     prefix: -man
-- id: in_s
+- id: in_var_7
   doc: ''
-  type: string
-  inputBinding:
-    prefix: -s
-- id: in_o
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -o
-- id: in_t
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -t
-- id: in_m
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: in_var_11
-  doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -help
-- id: in_i
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -i
-- id: in_p
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -p
 - id: in_brief
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_var_15
+- id: in_var_9
   doc: ''
   type: File
   inputBinding:
@@ -89,7 +59,7 @@ inputs:
   type: Directory
   inputBinding:
     position: 0
-- id: in_var_17
+- id: in_var_11
   doc: ''
   type: string
   inputBinding:
@@ -129,7 +99,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_var_25
+- id: in_var_19
   doc: ''
   type: string
   inputBinding:
@@ -149,11 +119,6 @@ inputs:
   type: long
   inputBinding:
     position: 0
-- id: in_input_slash
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: in_mark
   doc: ''
   type: string
@@ -164,7 +129,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_var_32
+- id: in_var_25
   doc: ''
   type: string
   inputBinding:
@@ -189,7 +154,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_var_37
+- id: in_var_30
   doc: ''
   type: string
   inputBinding:
@@ -224,7 +189,7 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_var_44
+- id: in_var_37
   doc: ''
   type: string
   inputBinding:
@@ -234,7 +199,7 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_var_46
+- id: in_var_39
   doc: ''
   type: string
   inputBinding:
@@ -264,12 +229,12 @@ inputs:
   type: string
   inputBinding:
     position: 4
-- id: in_var_52
+- id: in_var_45
   doc: ''
   type: File
   inputBinding:
     position: 4
-- id: in_var_53
+- id: in_var_46
   doc: ''
   type: string
   inputBinding:
@@ -309,15 +274,16 @@ outputs:
   doc: Standard output stream
   type: stdout
 - id: out_outdir
-  doc: -o   Folder to output result to.
-  type: Directory
+  doc: Folder to output result to.
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
 - id: out_sample_name_applied
-  doc: -s   Sample name to be applied to output file.
-  type: File
+  doc: Sample name to be applied to output file.
+  type: File?
   outputBinding:
     glob: $(inputs.in_sample_name_applied)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bwa_aln.pl

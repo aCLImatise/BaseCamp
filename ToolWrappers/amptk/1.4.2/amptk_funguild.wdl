@@ -18,6 +18,9 @@ task AmptkFunguild {
       ~{if (m) then "-m" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     d: ""

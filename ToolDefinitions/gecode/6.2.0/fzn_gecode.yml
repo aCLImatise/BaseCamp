@@ -1,0 +1,213 @@
+&id001 !Command
+command:
+- fzn-gecode
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "(int) default: -1\nnumber of solutions (0 = all, -1 = one/best)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "(double) default: 1\nnumber of threads (0 = #processing units)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c-d
+  description: "(unsigned int) default: 8\nrecomputation commit distance"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a-d
+  description: "(unsigned int) default: 2\nrecomputation adaption distance"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: "(optional: false, 0, true, 1) default: false\nreturn all solutions\
+    \ (equal to -n 0)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "(optional: false, 0, true, 1) default: false\nfree search, no need\
+    \ to follow search-specification"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -decay
+  description: "(double) default: 0.99\ndecay factor"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -node
+  description: "(unsigned int) default: 0\nnode cutoff (0 = none, solution mode)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fail
+  description: "(unsigned int) default: 0\nfailure cutoff (0 = none, solution mode)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -time
+  description: "(unsigned int) default: 0\ntime (in ms) cutoff (0 = none, solution\
+    \ mode)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "(unsigned int) default: 0\ntime (in ms) cutoff (0 = none, solution\
+    \ mode)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -interrupt
+  description: "(optional: false, 0, true, 1) default: true\nwhether to catch Ctrl-C\
+    \ (true) or not (false)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "(int) default: 0\nrandom seed"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -step
+  description: "(double) default: 0\nstep distance for float optimization"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -restart
+  description: "(none, constant, linear, luby, geometric) default: none\nrestart sequence\
+    \ type"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -restart-base
+  description: "(double) default: 1.5\nbase for geometric restart sequence"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -restart-scale
+  description: "(unsigned int) default: 250\nscale factor for restart sequence"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nogoods
+  description: "(optional: false, 0, true, 1) default: false\nwhether to use no-goods\
+    \ from restarts"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nogoods-limit
+  description: "(unsigned int) default: 128\ndepth limit for no-good extraction"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mode
+  description: "(solution, stat, gist, cpprofiler) default: solution\nhow to execute\
+    \ script"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "(optional: false, 0, true, 1) default: false\nemit statistics"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "(string) default: NONE\nfile to send output to\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - fzn-gecode
+  - disabled
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: fzn-gecode
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: file
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fzn-gecode [options] <file>\n       fzn-gecode -help for more\
+    \ information\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/gecode:6.2.0--hb70a6f5_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -help
+  - --help
+  description: ", -?\nprint this help message"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Gecode FlatZinc interpreter\n - Supported FlatZinc version: 1.6\n\nGecode\
+  \ configuration information:\n - Version: 6.2.0\n - Variable types: BoolVar IntVar\
+  \ SetVar FloatVar \n - Trigonometric and transcendental float constraints: disabled\n\
+  \ - Thread support: enabled (8 processing units)\n - Gist support: disabled\n -\
+  \ CPProfiler support: disabled\n\nOptions for Gecode/FlatZinc:\n\t-help, --help,\
+  \ -?\n\t\tprint this help message\n\t-n (int) default: -1\n\t\tnumber of solutions\
+  \ (0 = all, -1 = one/best)\n\t-p (double) default: 1\n\t\tnumber of threads (0 =\
+  \ #processing units)\n\t-c-d (unsigned int) default: 8\n\t\trecomputation commit\
+  \ distance\n\t-a-d (unsigned int) default: 2\n\t\trecomputation adaption distance\n\
+  \t-a (optional: false, 0, true, 1) default: false\n\t\treturn all solutions (equal\
+  \ to -n 0)\n\t-f (optional: false, 0, true, 1) default: false\n\t\tfree search,\
+  \ no need to follow search-specification\n\t-decay (double) default: 0.99\n\t\t\
+  decay factor\n\t-node (unsigned int) default: 0\n\t\tnode cutoff (0 = none, solution\
+  \ mode)\n\t-fail (unsigned int) default: 0\n\t\tfailure cutoff (0 = none, solution\
+  \ mode)\n\t-time (unsigned int) default: 0\n\t\ttime (in ms) cutoff (0 = none, solution\
+  \ mode)\n\t-t (unsigned int) default: 0\n\t\ttime (in ms) cutoff (0 = none, solution\
+  \ mode)\n\t-interrupt (optional: false, 0, true, 1) default: true\n\t\twhether to\
+  \ catch Ctrl-C (true) or not (false)\n\t-r (int) default: 0\n\t\trandom seed\n\t\
+  -step (double) default: 0\n\t\tstep distance for float optimization\n\t-restart\
+  \ (none, constant, linear, luby, geometric) default: none\n\t\trestart sequence\
+  \ type\n\t-restart-base (double) default: 1.5\n\t\tbase for geometric restart sequence\n\
+  \t-restart-scale (unsigned int) default: 250\n\t\tscale factor for restart sequence\n\
+  \t-nogoods (optional: false, 0, true, 1) default: false\n\t\twhether to use no-goods\
+  \ from restarts\n\t-nogoods-limit (unsigned int) default: 128\n\t\tdepth limit for\
+  \ no-good extraction\n\t-mode (solution, stat, gist, cpprofiler) default: solution\n\
+  \t\thow to execute script\n\t-s (optional: false, 0, true, 1) default: false\n\t\
+  \temit statistics\n\t-o (string) default: NONE\n\t\tfile to send output to\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/gecode:6.2.0--hb70a6f5_0

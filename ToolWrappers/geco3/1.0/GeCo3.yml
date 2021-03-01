@@ -1,0 +1,279 @@
+!Command
+command:
+- GeCo3
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --force
+  description: force mode. Overwrites old files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: verbose mode (more information).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --examples
+  description: show several running examples (parameter examples).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --show-levels
+  description: show pre-computed compression levels (configured parameters).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --estimate
+  description: "it creates a file with the extension \".iae\" with the\nrespective\
+    \ information content. If the file is FASTA or\nFASTQ it will only use the \"\
+    ACGT\" (genomic) sequence."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: "[NUMBER],  --level [NUMBER]\nCompression level (integer [1;16]).\n\
+    Default level: 5.\nIt defines compressibility in balance with computational\n\
+    resources (RAM & time). Use -s for levels perception."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lr
+  description: "[NUMBER],  --learning-rate [NUMBER]\nLearning rate (real).\nDefault\
+    \ rate: 0.03.\nIt defines learning rate the neural network uses."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -hs
+  description: "[NUMBER],  --hidden-size [NUMBER]\nHidden layer size (integer).\n\
+    Default size: 40.\nIt defines number of hidden nodes for the neural network."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tm
+  description: "[NB_C]:[NB_D]:[NB_I]:[NB_H]:[NB_G]/[NB_S]:[NB_E]:[NB_A]\nTemplate\
+    \ of a target context model.\nParameters:\n[NB_C]: (integer [1;20]) order size\
+    \ of the regular context\nmodel. Higher values use more RAM but, usually, are\n\
+    related to a better compression score.\n[NB_D]: (integer [1;5000]) denominator\
+    \ to build alpha, which\nis a parameter estimator. Alpha is given by 1/[NB_D].\n\
+    Higher values are usually used with higher [NB_C],\nand related to confiant bets.\
+    \ When [NB_D] is one,\nthe probabilities assume a Laplacian distribution.\n[NB_I]:\
+    \ (integer {0,1,2}) number to define if a sub-program\nwhich addresses the specific\
+    \ properties of DNA\nsequences (Inverted repeats) is used or not. The\nnumber\
+    \ 2 turns ON this sub-program without the\nregular context model (only inverted\
+    \ repeats). The\nnumber 1 turns ON the sub-program using at the same\ntime the\
+    \ regular context model. The number 0 does\nnot contemple its use (Inverted repeats\
+    \ OFF). The\nuse of this sub-program increases the necessary time\nto compress\
+    \ but it does not affect the RAM.\n[NB_H]: (integer [1;254]) size of the cache-hash\
+    \ for deeper\ncontext models, namely for [NB_C] > 14. When the\n[NB_C] <= 14 use,\
+    \ for example, 1 as a default. The\nRAM is highly dependent of this value (higher\
+    \ value\nstand for higher RAM).\n[NB_G]: (real [0;1)) real number to define gamma.\
+    \ This value\nrepresents the decayment forgetting factor of the\nregular context\
+    \ model in definition.\n[NB_S]: (integer [0;20]) maximum number of editions allowed\n\
+    to use a substitutional tolerant model with the same\nmemory model of the regular\
+    \ context model with\norder size equal to [NB_C]. The value 0 stands for\nturning\
+    \ the tolerant context model off. When the\nmodel is on, it pauses when the number\
+    \ of editions\nis higher that [NB_C], while it is turned on when\na complete match\
+    \ of size [NB_C] is seen again. This\nis probabilistic-algorithmic model very\
+    \ usefull to\nhandle the high substitutional nature of genomic\nsequences. When\
+    \ [NB_S] > 0, the compressor used more\nprocessing time, but uses the same RAM\
+    \ and, usually,\nachieves a substantial higher compression ratio. The\nimpact\
+    \ of this model is usually only noticed for\n[NB_C] >= 14.\n[NB_E]: (integer [1;5000])\
+    \ denominator to build alpha for\nsubstitutional tolerant context model. It is\n\
+    analogous to [NB_D], however to be only used in the\nprobabilistic model for computing\
+    \ the statistics of\nthe substitutional tolerant context model.\n[NB_A]: (real\
+    \ [0;1)) real number to define gamma. This value\nrepresents the decayment forgetting\
+    \ factor of the\nsubstitutional tolerant context model in definition.\nIts definition\
+    \ and use is analogus to [NB_G]."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rm
+  description: "[NB_C]:[NB_D]:[NB_I]:[NB_H]:[NB_G]/[NB_S]:[NB_E]:[NB_A]\nTemplate\
+    \ of a reference context model.\nUse only when -r [FILE] is set (referential compression).\n\
+    Parameters: the same as in -tm."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "[FILE], --reference [FILE]\nReference sequence filename (\"-rm\" are\
+    \ trainned here).\nExample: -r file1.txt."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: usage guide (help menu).
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Display program and version information.
+  args: !EmptyFlagArg {}
+help_text: "                                                                     \
+  \   \n                                                                        \n\
+  \            ██████╗ ███████╗ ██████╗ ██████╗ ██████╗                    \n    \
+  \       ██╔════╝ ██╔════╝██╔════╝██╔═══██╗╚════██╗                   \n        \
+  \   ██║  ███╗█████╗  ██║     ██║   ██║ █████╔╝                   \n           ██║\
+  \   ██║██╔══╝  ██║     ██║   ██║ ╚═══██╗                   \n           ╚██████╔╝███████╗╚██████╗╚██████╔╝██████╔╝\
+  \                   \n            ╚═════╝ ╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝     \
+  \               \n                                                             \
+  \           \nNAME                                                             \
+  \       \n      GeCo3 v1.0,                                                    \
+  \ \n      efficient compression and analysis of genomic sequences.          \n \
+  \                                                                       \nAUTHORS\
+  \                                                                 \n      Diogo\
+  \ Pratas        pratas@ua.pt                                  \n      Milton Silva\
+  \        teixeirasilva@ua.pt                           \n      Morteza Hosseini\
+  \    seyedmorteza@ua.pt                            \n      Armando J. Pinho    ap@ua.pt\
+  \                                      \n                                      \
+  \                                  \nSYNOPSIS                                  \
+  \                              \n      ./GeCo3 [OPTION]... -r [FILE] [FILE]:[FILE]:[FILE]:[...]\
+  \          \n                                                                  \
+  \      \nSAMPLE                                                                \
+  \  \n      Run Compression         :  ./GeCo3 -v -l 3 sequence.txt           \n\
+  \      Run Decompression       :  ./GeDe3 -v sequence.txt.co             \n    \
+  \  Run Information Profile :  ./GeCo3 -v -l 3 -e sequence.txt        \n        \
+  \                                                                \nDESCRIPTION \
+  \                                                            \n      Compress and\
+  \ decompress genomic sequences for storage purposes.   \n      Measure an upper\
+  \ bound of the sequences entropy.                  \n      Compute information profiles\
+  \ of genomic sequences.                \n                                      \
+  \                                  \n      -h,  --help                         \
+  \                              \n           usage guide (help menu).           \
+  \                          \n                                                  \
+  \                      \n      -V,  --version                                  \
+  \                  \n           Display program and version information.       \
+  \              \n                                                              \
+  \          \n      -F,  --force                                                \
+  \      \n           force mode. Overwrites old files.                          \
+  \  \n                                                                        \n\
+  \      -v,  --verbose                                                    \n    \
+  \       verbose mode (more information).                             \n        \
+  \                                                                \n      -x,  --examples\
+  \                                                   \n           show several running\
+  \ examples (parameter examples).          \n                                   \
+  \                                     \n      -s,  --show-levels               \
+  \                                 \n           show pre-computed compression levels\
+  \ (configured parameters).\n                                                   \
+  \                     \n      -e,  --estimate                                  \
+  \                 \n           it creates a file with the extension \".iae\" with\
+  \ the       \n           respective information content. If the file is FASTA or\
+  \      \n           FASTQ it will only use the \"ACGT\" (genomic) sequence.    \
+  \  \n                                                                        \n\
+  \      -l [NUMBER],  --level [NUMBER]                                    \n    \
+  \       Compression level (integer [1;16]).                          \n        \
+  \   Default level: 5.                                           \n           It\
+  \ defines compressibility in balance with computational     \n           resources\
+  \ (RAM & time). Use -s for levels perception.        \n                        \
+  \                                                \n      -lr [NUMBER],  --learning-rate\
+  \ [NUMBER]                           \n           Learning rate (real).        \
+  \                                \n           Default rate: 0.03.              \
+  \                              \n           It defines learning rate the neural\
+  \ network uses.            \n                                                  \
+  \                      \n      -hs [NUMBER],  --hidden-size [NUMBER]           \
+  \                  \n           Hidden layer size (integer).                   \
+  \              \n           Default size: 40.                                  \
+  \          \n           It defines number of hidden nodes for the neural network.\
+  \    \n                                                                        \n\
+  \      -tm [NB_C]:[NB_D]:[NB_I]:[NB_H]:[NB_G]/[NB_S]:[NB_E]:[NB_A]       \n    \
+  \       Template of a target context model.                          \n        \
+  \   Parameters:                                                  \n           [NB_C]:\
+  \ (integer [1;20]) order size of the regular context   \n                   model.\
+  \ Higher values use more RAM but, usually, are  \n                   related to\
+  \ a better compression score.               \n           [NB_D]: (integer [1;5000])\
+  \ denominator to build alpha, which \n                   is a parameter estimator.\
+  \ Alpha is given by 1/[NB_D].\n                   Higher values are usually used\
+  \ with higher [NB_C],   \n                   and related to confiant bets. When\
+  \ [NB_D] is one,    \n                   the probabilities assume a Laplacian distribution.\
+  \   \n           [NB_I]: (integer {0,1,2}) number to define if a sub-program  \n\
+  \                   which addresses the specific properties of DNA       \n    \
+  \               sequences (Inverted repeats) is used or not. The     \n        \
+  \           number 2 turns ON this sub-program without the       \n            \
+  \       regular context model (only inverted repeats). The   \n                \
+  \   number 1 turns ON the sub-program using at the same  \n                   time\
+  \ the regular context model. The number 0 does    \n                   not contemple\
+  \ its use (Inverted repeats OFF). The    \n                   use of this sub-program\
+  \ increases the necessary time \n                   to compress but it does not\
+  \ affect the RAM.          \n           [NB_H]: (integer [1;254]) size of the cache-hash\
+  \ for deeper  \n                   context models, namely for [NB_C] > 14. When\
+  \ the     \n                   [NB_C] <= 14 use, for example, 1 as a default. The\
+  \   \n                   RAM is highly dependent of this value (higher value  \n\
+  \                   stand for higher RAM).                               \n    \
+  \       [NB_G]: (real [0;1)) real number to define gamma. This value \n        \
+  \           represents the decayment forgetting factor of the    \n            \
+  \       regular context model in definition.                 \n           [NB_S]:\
+  \ (integer [0;20]) maximum number of editions allowed  \n                   to use\
+  \ a substitutional tolerant model with the same \n                   memory model\
+  \ of the regular context model with       \n                   order size equal\
+  \ to [NB_C]. The value 0 stands for   \n                   turning the tolerant\
+  \ context model off. When the     \n                   model is on, it pauses when\
+  \ the number of editions   \n                   is higher that [NB_C], while it\
+  \ is turned on when    \n                   a complete match of size [NB_C] is seen\
+  \ again. This  \n                   is probabilistic-algorithmic model very usefull\
+  \ to   \n                   handle the high substitutional nature of genomic   \
+  \  \n                   sequences. When [NB_S] > 0, the compressor used more \n\
+  \                   processing time, but uses the same RAM and, usually, \n    \
+  \               achieves a substantial higher compression ratio. The \n        \
+  \           impact of this model is usually only noticed for     \n            \
+  \       [NB_C] >= 14.                                        \n           [NB_E]:\
+  \ (integer [1;5000]) denominator to build alpha for    \n                   substitutional\
+  \ tolerant context model. It is         \n                   analogous to [NB_D],\
+  \ however to be only used in the  \n                   probabilistic model for computing\
+  \ the statistics of  \n                   the substitutional tolerant context model.\
+  \           \n           [NB_A]: (real [0;1)) real number to define gamma. This\
+  \ value \n                   represents the decayment forgetting factor of the \
+  \   \n                   substitutional tolerant context model in definition. \n\
+  \                   Its definition and use is analogus to [NB_G].        \n    \
+  \                                                                    \n      ...\
+  \ (you may use several target models with custom parameters)    \n             \
+  \                                                           \n      -rm [NB_C]:[NB_D]:[NB_I]:[NB_H]:[NB_G]/[NB_S]:[NB_E]:[NB_A]\
+  \       \n           Template of a reference context model.                    \
+  \   \n           Use only when -r [FILE] is set (referential compression).    \n\
+  \           Parameters: the same as in -tm.                              \n    \
+  \                                                                    \n      ...\
+  \ (you may use several reference models with custom parameters) \n             \
+  \                                                           \n      -r [FILE], --reference\
+  \ [FILE]                                     \n           Reference sequence filename\
+  \ (\"-rm\" are trainned here).     \n           Example: -r file1.txt.         \
+  \                              \n                                              \
+  \                          \n      [FILE]                                      \
+  \                      \n           Input sequence filename (to compress) -- MANDATORY.\
+  \          \n           File(s) to compress (last argument).                   \
+  \      \n           For more files use splitting \":\" characters.             \
+  \  \n           Example: file1.txt:file2.txt:file3.txt.                      \n\
+  \                                                                        \nCOPYRIGHT\
+  \                                                               \n      Copyright\
+  \ (C) 2014-2020, IEETA, University of Aveiro.             \n      This is a Free\
+  \ software, under GPLv3. You may redistribute        \n      copies of it under\
+  \ the terms of the GNU - General Public          \n      License v3 <http://www.gnu.org/licenses/gpl.html>.\
+  \ There          \n      is NOT ANY WARRANTY, to the extent permitted by law.  \
+  \            \n                                                                \
+  \        \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/geco3:1.0--h516909a_0

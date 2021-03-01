@@ -22,6 +22,9 @@ task VtoolsCompare {
       ~{if (samples) then "--samples" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     union: "[TABLE [DESC ...]]\\nPrint the number (default) or save variants with TYPE\\nin the TYPE of any of the tables (T1 | T2 | T3 ...) to\\nTABLE if a name is specified. An optional message can\\nbe added to describe the table."
     intersection: "[TABLE [DESC ...]]\\nPrint the number (default) or save variants with TYPE\\nin the TYPE of all the tables (T1 & T2 & T3 ...) to\\nTABLE if a name is specified. An optional message can\\nbe added to describe the table."

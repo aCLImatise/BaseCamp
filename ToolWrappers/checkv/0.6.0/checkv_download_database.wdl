@@ -10,6 +10,9 @@ task CheckvDownloadDatabase {
       ~{destination} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Suppress logging messages"
     destination: "Directory where the database will be downloaded to."

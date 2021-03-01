@@ -6,8 +6,8 @@ task Sreformat {
     Boolean? force_rna_alphabet
     Boolean? force_lower_case
     Boolean? force_upper_case
-    Boolean? convert_chars_xs
-    Boolean? remove_iupac_codes
+    Boolean? convert_noniupac_chars
+    Boolean? remove_codes_convert
     File? in_format
     Boolean? min_gap
     Boolean? no_gap
@@ -24,6 +24,7 @@ task Sreformat {
     String gcg
     String gcg_data
     String pir
+    String raw
   }
   command <<<
     sreformat \
@@ -33,12 +34,13 @@ task Sreformat {
       ~{gcg} \
       ~{gcg_data} \
       ~{pir} \
+      ~{raw} \
       ~{if (force_dna_alphabet) then "-d" else ""} \
       ~{if (force_rna_alphabet) then "-r" else ""} \
       ~{if (force_lower_case) then "-l" else ""} \
       ~{if (force_upper_case) then "-u" else ""} \
-      ~{if (convert_chars_xs) then "-x" else ""} \
-      ~{if (remove_iupac_codes) then "-n" else ""} \
+      ~{if (convert_noniupac_chars) then "-x" else ""} \
+      ~{if (remove_codes_convert) then "-n" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if (min_gap) then "--mingap" else ""} \
       ~{if (no_gap) then "--nogap" else ""} \
@@ -50,13 +52,16 @@ task Sreformat {
       ~{if (de_wuss) then "--dewuss" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force_dna_alphabet: ": force DNA alphabet for nucleic acid sequence"
     force_rna_alphabet: ": force RNA alphabet for nucleic acid sequence"
     force_lower_case: ": force lower case"
     force_upper_case: ": force upper case"
-    convert_chars_xs: ": convert non-IUPAC chars (i.e. X's) in DNA to N's for IUPAC/BLAST compatibility"
-    remove_iupac_codes: ": remove IUPAC codes; convert all ambiguous chars in DNA/RNA to N's"
+    convert_noniupac_chars: ": convert non-IUPAC chars (i.e. X's) in DNA to N's for IUPAC/BLAST compatibility"
+    remove_codes_convert: ": remove IUPAC codes; convert all ambiguous chars in DNA/RNA to N's"
     in_format: ": input sequence file is in format <s>"
     min_gap: ": remove columns containing all gaps (seqfile=alignment)"
     no_gap: ": remove columns containing any gaps (seqfile=alignment)"
@@ -73,6 +78,7 @@ task Sreformat {
     gcg: "phylip"
     gcg_data: "clustal"
     pir: "selex"
+    raw: "eps"
   }
   output {
     File out_stdout = stdout()

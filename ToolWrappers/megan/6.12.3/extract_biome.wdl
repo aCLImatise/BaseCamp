@@ -20,6 +20,9 @@ task Extractbiome {
       ~{if (class_threshold_percent) then "--classThresholdPercent" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "[string]                    Input MEGAN comparison file (.megan file). Mandatory option."
     out: "[string]                   Output file. Default value: biome.megan."

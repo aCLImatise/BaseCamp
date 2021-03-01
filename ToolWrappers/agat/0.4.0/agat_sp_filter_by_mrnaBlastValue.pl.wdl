@@ -14,6 +14,9 @@ task AgatSpFilterByMrnaBlastValuepl {
       ~{if defined(blast) then ("--blast " +  '"' + blast + '"') else ""} \
       ~{if (outfile) then "--outfile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GTF/GFF file."
     blast: "list of the all-vs-all blast file (outfmt 6, blastp)"

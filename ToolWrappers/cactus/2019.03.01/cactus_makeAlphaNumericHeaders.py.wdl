@@ -10,6 +10,9 @@ task CactusMakeAlphaNumericHeaderspy {
       ~{fast_a_input_file} \
       ~{fast_a_output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_input_file: ""
     fast_a_output_file: ""

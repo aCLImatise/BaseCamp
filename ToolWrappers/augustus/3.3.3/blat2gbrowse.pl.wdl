@@ -12,6 +12,9 @@ task Blat2gbrowsepl {
       ~{if defined(est_names) then ("--estnames " +  '"' + est_names + '"') else ""} \
       ~{if defined(source) then ("--source " +  '"' + source + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     old_format: "output format for old GBrowse (before 2.0)"
     est_names: "output file with the names of the ESTs"

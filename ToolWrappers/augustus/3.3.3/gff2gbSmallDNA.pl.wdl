@@ -18,6 +18,9 @@ task Gff2gbSmallDNApl {
       ~{if (soft_masked) then "--softmasked" else ""} \
       ~{if (hard_mask) then "--hardmask" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bad: "Specify a file with gene names. All except these are included in the output."
     good: "Specify a file with gene names. Only these genes are considered\\nfrom the input, also for overlap detection."

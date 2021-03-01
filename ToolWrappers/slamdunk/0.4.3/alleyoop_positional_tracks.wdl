@@ -26,6 +26,9 @@ task AlleyoopPositionaltracks {
       ~{if defined(min_base_qual) then ("--min-base-qual " +  '"' + min_base_qual + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: "[-c CONVERSIONTHRESHOLD]"
     output_dir: "Output directory for bedGraph files."

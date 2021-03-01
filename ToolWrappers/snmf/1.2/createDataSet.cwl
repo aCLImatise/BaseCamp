@@ -1,35 +1,36 @@
 class: CommandLineTool
 id: createDataSet.cwl
 inputs:
-- id: in__genotype_file
+- id: in_genotype_file_format
   doc: -- genotype file (in .geno format)
-  type: File
+  type: File?
   inputBinding:
     prefix: -x
-- id: in__seed_random
+- id: in__seed_init
   doc: '-- seed random init             (default: random)'
-  type: string
+  type: string?
   inputBinding:
     prefix: -s
-- id: in__percentage_masked
+- id: in_percentage_masked_data
   doc: '-- percentage of masked data    (default: 0.05)'
-  type: double
+  type: double?
   inputBinding:
     prefix: -r
-- id: in__output_file
+- id: in_output_file_formatdefault
   doc: '-- output file (in .geno format)(default: input_file_I.geno)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out__output_file
+- id: out_output_file_formatdefault
   doc: '-- output file (in .geno format)(default: input_file_I.geno)'
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in__output_file)
+    glob: $(inputs.in_output_file_formatdefault)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - createDataSet

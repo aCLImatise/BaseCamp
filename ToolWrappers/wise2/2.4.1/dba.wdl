@@ -68,6 +68,9 @@ task Dba {
       ~{if (error_log) then "-errorlog" else ""} \
       ~{if (error_style) then "-errorstyle" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     match_a: "[0.65]     match level A"
     match_b: "[0.75]     match level B"

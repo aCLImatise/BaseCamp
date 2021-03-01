@@ -34,6 +34,9 @@ task MixcrExtend {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (f) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     j_anchor: "J extension anchor point."
     min_j_score: "Minimal J hit score alignment to perform right extension."

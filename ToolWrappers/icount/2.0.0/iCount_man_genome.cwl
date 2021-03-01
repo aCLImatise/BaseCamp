@@ -3,7 +3,7 @@ id: iCount_man_genome.cwl
 inputs:
 - id: in_mode
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mode
 - id: in_i_count
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - iCount

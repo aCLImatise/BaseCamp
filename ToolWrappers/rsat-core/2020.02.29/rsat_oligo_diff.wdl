@@ -18,6 +18,9 @@ task RsatOligodiff {
       ~{occurrences_dot} \
       ~{respectively_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     oligo_diff: "[1mVERSION[0m"
     jacques_do_tv_and_otheldenatulbdotacdotbe: "[1mCATEGORY[0m"

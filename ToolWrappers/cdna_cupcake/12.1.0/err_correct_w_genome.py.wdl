@@ -10,7 +10,7 @@ task ErrCorrectWGenomepy {
     String and
     String sam
     String alignment
-    File file
+    File var_file
   }
   command <<<
     err_correct_w_genome_py \
@@ -22,8 +22,11 @@ task ErrCorrectWGenomepy {
       ~{and} \
       ~{sam} \
       ~{alignment} \
-      ~{file}
+      ~{var_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     generate: ""
     sequences: ""
@@ -33,7 +36,7 @@ task ErrCorrectWGenomepy {
     and: ""
     sam: ""
     alignment: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

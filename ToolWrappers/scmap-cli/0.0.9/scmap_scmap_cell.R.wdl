@@ -22,6 +22,9 @@ task ScmapscmapcellR {
       ~{if defined(closest_cells_text_file) then ("--closest-cells-text-file " +  '"' + closest_cells_text_file + '"') else ""} \
       ~{if defined(closest_cells_similarities_text_file) then ("--closest-cells-similarities-text-file " +  '"' + closest_cells_similarities_text_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index_object_file: "'SingleCellExperiment' object previously prepared with the scmap-index-cluster.R script."
     projection_object_file: "'SingleCellExperiment' object to project."

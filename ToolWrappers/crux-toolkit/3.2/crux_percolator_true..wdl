@@ -12,6 +12,9 @@ task CruxPercolatorTrue {
       ~{percolator} \
       ~{peptide_spectrum_matches}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crux: ""
     percolator: ""

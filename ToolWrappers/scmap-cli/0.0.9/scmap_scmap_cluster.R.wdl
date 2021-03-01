@@ -16,6 +16,9 @@ task ScmapscmapclusterR {
       ~{if defined(output_text_file) then ("--output-text-file " +  '"' + output_text_file + '"') else ""} \
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index_object_file: "'SingleCellExperiment' object previously prepared with the scmap-index-cluster.R script."
     projection_object_file: "'SingleCellExperiment' object to project."

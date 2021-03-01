@@ -3,22 +3,22 @@ id: msa2vcf.py.cwl
 inputs:
 - id: in_reference_sequence
   doc: '[--bcftools BCFTOOLS]'
-  type: string
+  type: string?
   inputBinding:
     prefix: --reference-sequence
 - id: in_reference_chr
   doc: Reference chromosome
-  type: string
+  type: string?
   inputBinding:
     prefix: --reference-chr
 - id: in_reference_start
   doc: Reference start pos
-  type: string
+  type: string?
   inputBinding:
     prefix: --reference-start
 - id: in_bcf_tools
   doc: Path to bcftools
-  type: File
+  type: File?
   inputBinding:
     prefix: --bcftools
 - id: in_input
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - msa2vcf.py

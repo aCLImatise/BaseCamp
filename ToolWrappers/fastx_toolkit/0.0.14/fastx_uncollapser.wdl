@@ -16,6 +16,9 @@ task FastxUncollapser {
       ~{if (v) then "-v" else ""} \
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     i: ""

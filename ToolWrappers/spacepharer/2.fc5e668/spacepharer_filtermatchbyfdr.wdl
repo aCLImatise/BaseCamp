@@ -14,6 +14,9 @@ task SpacepharerFiltermatchbyfdr {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(verbosity_level_errors) then ("-v " +  '"' + verbosity_level_errors + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fdr: "FDR cutoff for filtering matches[0.0, 1.0] [0.050]"
     compressed: "Write compressed output [0]"

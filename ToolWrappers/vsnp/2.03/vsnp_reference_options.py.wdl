@@ -12,6 +12,9 @@ task VsnpReferenceOptionspy {
       ~{if defined(select_ref) then ("--select_ref " +  '"' + select_ref + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     select_ref: "Required: single read, R1 when Illumina read"
     v: ""

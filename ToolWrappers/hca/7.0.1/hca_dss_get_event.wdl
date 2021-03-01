@@ -10,6 +10,9 @@ task HcaDssGetevent {
       ~{if defined(uuid) then ("--uuid " +  '"' + uuid + '"') else ""} \
       ~{if defined(replica) then ("--replica " +  '"' + replica + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     uuid: "Bundle unique ID."
     replica: "Replica to fetch from."

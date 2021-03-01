@@ -3,7 +3,7 @@ id: gffutils_cli_rmdups.cwl
 inputs:
 - id: in_in_place
   doc: "Remove duplicates in place (overwrite current file.) (default:\nFalse)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --in-place
 - id: in_filename
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gffutils-cli

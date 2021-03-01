@@ -16,6 +16,9 @@ task Linearize {
       ~{if defined(version) then ("-version " +  '"' + version + '"') else ""} \
       ~{if (b) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version: ""
     b: ""

@@ -5,7 +5,7 @@ task Halla {
     Int? first_file_tabdelimited
     Int? second_file_tabdelimited
     Directory? directory_write_files
-    Boolean? _qvalue_overall
+    Boolean? qvalue_overall_significance
     Boolean? fnt
     String? permutation
     String? descending
@@ -36,7 +36,7 @@ task Halla {
       ~{if defined(first_file_tabdelimited) then ("-X " +  '"' + first_file_tabdelimited + '"') else ""} \
       ~{if defined(second_file_tabdelimited) then ("-Y " +  '"' + second_file_tabdelimited + '"') else ""} \
       ~{if defined(directory_write_files) then ("--output " +  '"' + directory_write_files + '"') else ""} \
-      ~{if (_qvalue_overall) then "-q" else ""} \
+      ~{if (qvalue_overall_significance) then "-q" else ""} \
       ~{if (fnt) then "--fnt" else ""} \
       ~{if defined(permutation) then ("--permutation " +  '"' + permutation + '"') else ""} \
       ~{if defined(descending) then ("--descending " +  '"' + descending + '"') else ""} \
@@ -62,11 +62,14 @@ task Halla {
       ~{if (write_hypothesis_tree) then "--write-hypothesis-tree" else ""} \
       ~{if (data_transformation_method) then "-t" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     first_file_tabdelimited: "first file: Tab-delimited text input file, one row per feature, one column per measurement\\n[REQUIRED]"
     second_file_tabdelimited: "second file: Tab-delimited text input file, one row per feature, one column per measurement\\n[default = the first file (-X)]"
     directory_write_files: "directory to write output files\\n[REQUIRED]"
-    _qvalue_overall: "<.1>, --q-value <.1>\\nq-value for overall significance tests (cut-off for false discovery rate)\\n[default = 0.1]"
+    qvalue_overall_significance: "<.1>, --q-value <.1>\\nq-value for overall significance tests (cut-off for false discovery rate)\\n[default = 0.1]"
     fnt: "<.25>           Estimated False Negative Tolerance in block association\\n[default = 0.25]"
     permutation: "permutation function\\n[default = none for Spearman and Pearson and gpd for other]"
     descending: "descending approach\\n[default = HAllA for hierarchical all-against-all]"

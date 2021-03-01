@@ -12,136 +12,136 @@ subcommands:
   positional: []
   named:
   - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --index
     description: "Name of the folder where you saved the output from\n\"outrigger\
       \ index\" (default is\n./outrigger_output/index, which is relative to the\n\
       directory where you called this program, assuming you\nhave called \"outrigger\
       \ psi\" in the same folder as you\ncalled \"outrigger index\")"
-    synonyms:
-    - -i
-    - --index
     args: !SimpleFlagArg
       name: INDEX
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
     description: "Name of the folder where you saved the output from\n\"outrigger\
       \ index\" (default is ./outrigger_output,\nwhich is relative to the directory\
       \ where you called\nthe program). Cannot specify both an --index and\n--output\
       \ with \"psi\""
-    synonyms:
-    - -o
-    - --output
     args: !SimpleFlagArg
       name: OUTPUT
-    optional: true
   - !Flag
-    description: "Name of the compiled splice junction file to calculate\npsi scores\
-      \ on. Default is the '--output' folder's\njunctions/reads.csv file. Not required\
-      \ if you specify\nSJ.out.tab files with '--sj-out-tab'"
+    optional: true
     synonyms:
     - -c
     - --junction-reads-csv
+    description: "Name of the compiled splice junction file to calculate\npsi scores\
+      \ on. Default is the '--output' folder's\njunctions/reads.csv file. Not required\
+      \ if you specify\nSJ.out.tab files with '--sj-out-tab'"
     args: !SimpleFlagArg
       name: JUNCTION_READS_CSV
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - -j
     description: "[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab [SJ_OUT_TAB [SJ_OUT_TAB\
       \ ...]]\nSJ.out.tab files from STAR aligner output. Not\nrequired if you specify\
       \ a file with \"--compiled-\njunction-reads\""
-    synonyms:
-    - -j
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nBam files to use to calculate\
-      \ psi on"
+    optional: true
     synonyms:
     - -b
+    description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nBam files to use to calculate\
+      \ psi on"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "Minimum number of reads per junction for calculating\nPsi (default=10)"
+    optional: true
     synonyms:
     - -m
     - --min-reads
+    description: "Minimum number of reads per junction for calculating\nPsi (default=10)"
     args: !SimpleFlagArg
       name: MIN_READS
-    optional: true
   - !Flag
-    description: "How to deal with multiple junctions on an event - take\nthe mean\
-      \ (default) or the min? (the other option)"
+    optional: true
     synonyms:
     - -e
     - --method
+    description: "How to deal with multiple junctions on an event - take\nthe mean\
+      \ (default) or the min? (the other option)"
     args: !SimpleFlagArg
       name: METHOD
-    optional: true
   - !Flag
-    description: "If a junction one one side of an exon is bigger than\nthe other\
-      \ side of the exon by this amount, (default is\n10, so 10x bigger), then do\
-      \ not use this event"
+    optional: true
     synonyms:
     - -u
     - --uneven-coverage-multiplier
+    description: "If a junction one one side of an exon is bigger than\nthe other\
+      \ side of the exon by this amount, (default is\n10, so 10x bigger), then do\
+      \ not use this event"
     args: !SimpleFlagArg
       name: UNEVEN_COVERAGE_MULTIPLIER
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --ignore-multimapping
     description: "Applies to STAR SJ.out.tab files only. If this flag is\nused, then\
       \ do not include reads that mapped to\nmultiple locations in the genome, not\
       \ uniquely to a\nlocus, in the read count for a junction. If inputting\n\"bam\"\
       \ files, then this means that reads with a mapping\nquality (MAPQ) of less than\
       \ 255 are considered\n\"multimapped.\" This is the same thing as what the STAR\n\
       aligner does. By default, this is off, and all reads\nare used."
-    synonyms:
-    - --ignore-multimapping
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "Name of column in --splice-junction-csv containing\nreads to use.\
-      \ (default='reads')"
+    optional: true
     synonyms:
     - --reads-col
+    description: "Name of column in --splice-junction-csv containing\nreads to use.\
+      \ (default='reads')"
     args: !SimpleFlagArg
       name: READS_COL
-    optional: true
   - !Flag
-    description: "Name of column in --splice-junction-csv containing\nsample ids to\
-      \ use. (default='sample_id')"
+    optional: true
     synonyms:
     - --sample-id-col
+    description: "Name of column in --splice-junction-csv containing\nsample ids to\
+      \ use. (default='sample_id')"
     args: !SimpleFlagArg
       name: SAMPLE_ID_COL
-    optional: true
   - !Flag
-    description: "Name of column in --splice-junction-csv containing the\nID of the\
-      \ junction to use. Must match exactly with the\njunctions in the index.(default='junction_id')"
+    optional: true
     synonyms:
     - --junction-id-col
+    description: "Name of column in --splice-junction-csv containing the\nID of the\
+      \ junction to use. Must match exactly with the\njunctions in the index.(default='junction_id')"
     args: !SimpleFlagArg
       name: JUNCTION_ID_COL
-    optional: true
   - !Flag
-    description: "If given, print debugging logging information to\nstandard out"
+    optional: true
     synonyms:
     - --debug
+    description: "If given, print debugging logging information to\nstandard out"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "Number of threads to use when parallelizing psi\ncalculation and\
-      \ file reading. Default is -1, which\nmeans to use as many threads as are available."
+    optional: true
     synonyms:
     - --n-jobs
+    description: "Number of threads to use when parallelizing psi\ncalculation and\
+      \ file reading. Default is -1, which\nmeans to use as many threads as are available."
     args: !SimpleFlagArg
       name: N_JOBS
-    optional: true
   - !Flag
-    description: "If set, then use a smaller memory footprint. By\ndefault, this is\
-      \ off.\n"
+    optional: true
     synonyms:
     - --low-memory
+    description: "If set, then use a smaller memory footprint. By\ndefault, this is\
+      \ off.\n"
     args: !EmptyFlagArg {}
-    optional: true
-  parent: &id009 !Command
+  parent: &id010 !Command
     command: *id001
     positional: []
     named: []
@@ -152,80 +152,83 @@ subcommands:
       positional: []
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - -i
+        - --index
         description: "Name of the folder where you saved the output from\n\"outrigger\
           \ index\" (default is\n./outrigger_output/index, which is relative to the\n\
           directory where you called this program, assuming you\nhave called \"outrigger\
           \ psi\" in the same folder as you\ncalled \"outrigger index\")"
-        synonyms:
-        - -i
-        - --index
         args: !SimpleFlagArg
           name: INDEX
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - -o
+        - --output
         description: "Name of the folder where you saved the output from\n\"outrigger\
           \ index\" (default is ./outrigger_output,\nwhich is relative to the directory\
           \ where you called\nthe program). Cannot specify both an --index and\n--output\
           \ with \"psi\""
-        synonyms:
-        - -o
-        - --output
         args: !SimpleFlagArg
           name: OUTPUT
-        optional: true
       - !Flag
-        description: "Name of the compiled splice junction file to calculate\npsi\
-          \ scores on. Default is the '--output' folder's\njunctions/reads.csv file.\
-          \ Not required if you specify\nSJ.out.tab files with '--sj-out-tab'"
+        optional: true
         synonyms:
         - -c
         - --junction-reads-csv
+        description: "Name of the compiled splice junction file to calculate\npsi\
+          \ scores on. Default is the '--output' folder's\njunctions/reads.csv file.\
+          \ Not required if you specify\nSJ.out.tab files with '--sj-out-tab'"
         args: !SimpleFlagArg
           name: JUNCTION_READS_CSV
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - -j
         description: "[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab [SJ_OUT_TAB [SJ_OUT_TAB\
           \ ...]]\nSJ.out.tab files from STAR aligner output. Not\nrequired if you\
           \ specify a file with \"--compiled-\njunction-reads\""
-        synonyms:
-        - -j
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nBam files to use to\
-          \ calculate psi on"
+        optional: true
         synonyms:
         - -b
+        description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nBam files to use to\
+          \ calculate psi on"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "Minimum number of reads per junction for calculating\nPsi (default=10)"
+        optional: true
         synonyms:
         - -m
         - --min-reads
+        description: "Minimum number of reads per junction for calculating\nPsi (default=10)"
         args: !SimpleFlagArg
           name: MIN_READS
-        optional: true
       - !Flag
-        description: "How to deal with multiple junctions on an event - take\nthe\
-          \ mean (default) or the min? (the other option)"
+        optional: true
         synonyms:
         - -e
         - --method
+        description: "How to deal with multiple junctions on an event - take\nthe\
+          \ mean (default) or the min? (the other option)"
         args: !SimpleFlagArg
           name: METHOD
-        optional: true
       - !Flag
-        description: "If a junction one one side of an exon is bigger than\nthe other\
-          \ side of the exon by this amount, (default is\n10, so 10x bigger), then\
-          \ do not use this event"
+        optional: true
         synonyms:
         - -u
         - --uneven-coverage-multiplier
+        description: "If a junction one one side of an exon is bigger than\nthe other\
+          \ side of the exon by this amount, (default is\n10, so 10x bigger), then\
+          \ do not use this event"
         args: !SimpleFlagArg
           name: UNEVEN_COVERAGE_MULTIPLIER
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --ignore-multimapping
         description: "Applies to STAR SJ.out.tab files only. If this flag is\nused,\
           \ then do not include reads that mapped to\nmultiple locations in the genome,\
           \ not uniquely to a\nlocus, in the read count for a junction. If inputting\n\
@@ -233,57 +236,54 @@ subcommands:
           \ of less than 255 are considered\n\"multimapped.\" This is the same thing\
           \ as what the STAR\naligner does. By default, this is off, and all reads\n\
           are used."
-        synonyms:
-        - --ignore-multimapping
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "Name of column in --splice-junction-csv containing\nreads to\
-          \ use. (default='reads')"
+        optional: true
         synonyms:
         - --reads-col
+        description: "Name of column in --splice-junction-csv containing\nreads to\
+          \ use. (default='reads')"
         args: !SimpleFlagArg
           name: READS_COL
-        optional: true
       - !Flag
-        description: "Name of column in --splice-junction-csv containing\nsample ids\
-          \ to use. (default='sample_id')"
+        optional: true
         synonyms:
         - --sample-id-col
+        description: "Name of column in --splice-junction-csv containing\nsample ids\
+          \ to use. (default='sample_id')"
         args: !SimpleFlagArg
           name: SAMPLE_ID_COL
-        optional: true
       - !Flag
-        description: "Name of column in --splice-junction-csv containing the\nID of\
-          \ the junction to use. Must match exactly with the\njunctions in the index.(default='junction_id')"
+        optional: true
         synonyms:
         - --junction-id-col
+        description: "Name of column in --splice-junction-csv containing the\nID of\
+          \ the junction to use. Must match exactly with the\njunctions in the index.(default='junction_id')"
         args: !SimpleFlagArg
           name: JUNCTION_ID_COL
-        optional: true
       - !Flag
-        description: "If given, print debugging logging information to\nstandard out"
+        optional: true
         synonyms:
         - --debug
+        description: "If given, print debugging logging information to\nstandard out"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --n-jobs
         description: "Number of threads to use when parallelizing psi\ncalculation\
           \ and file reading. Default is -1, which\nmeans to use as many threads as\
           \ are available."
-        synonyms:
-        - --n-jobs
         args: !SimpleFlagArg
           name: N_JOBS
-        optional: true
       - !Flag
-        description: "If set, then use a smaller memory footprint. By\ndefault, this\
-          \ is off.\n"
+        optional: true
         synonyms:
         - --low-memory
+        description: "If set, then use a smaller memory footprint. By\ndefault, this\
+          \ is off.\n"
         args: !EmptyFlagArg {}
-        optional: true
-      parent: &id008 !Command
+      parent: &id009 !Command
         command: *id001
         positional: []
         named: []
@@ -294,82 +294,85 @@ subcommands:
           positional: []
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - -i
+            - --index
             description: "Name of the folder where you saved the output from\n\"outrigger\
               \ index\" (default is\n./outrigger_output/index, which is relative to\
               \ the\ndirectory where you called this program, assuming you\nhave called\
               \ \"outrigger psi\" in the same folder as you\ncalled \"outrigger index\"\
               )"
-            synonyms:
-            - -i
-            - --index
             args: !SimpleFlagArg
               name: INDEX
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - -o
+            - --output
             description: "Name of the folder where you saved the output from\n\"outrigger\
               \ index\" (default is ./outrigger_output,\nwhich is relative to the\
               \ directory where you called\nthe program). Cannot specify both an --index\
               \ and\n--output with \"psi\""
-            synonyms:
-            - -o
-            - --output
             args: !SimpleFlagArg
               name: OUTPUT
-            optional: true
           - !Flag
-            description: "Name of the compiled splice junction file to calculate\n\
-              psi scores on. Default is the '--output' folder's\njunctions/reads.csv\
-              \ file. Not required if you specify\nSJ.out.tab files with '--sj-out-tab'"
+            optional: true
             synonyms:
             - -c
             - --junction-reads-csv
+            description: "Name of the compiled splice junction file to calculate\n\
+              psi scores on. Default is the '--output' folder's\njunctions/reads.csv\
+              \ file. Not required if you specify\nSJ.out.tab files with '--sj-out-tab'"
             args: !SimpleFlagArg
               name: JUNCTION_READS_CSV
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - -j
             description: "[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab [SJ_OUT_TAB\
               \ [SJ_OUT_TAB ...]]\nSJ.out.tab files from STAR aligner output. Not\n\
               required if you specify a file with \"--compiled-\njunction-reads\""
-            synonyms:
-            - -j
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nBam files to use\
-              \ to calculate psi on"
+            optional: true
             synonyms:
             - -b
+            description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nBam files to use\
+              \ to calculate psi on"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "Minimum number of reads per junction for calculating\nPsi\
-              \ (default=10)"
+            optional: true
             synonyms:
             - -m
             - --min-reads
+            description: "Minimum number of reads per junction for calculating\nPsi\
+              \ (default=10)"
             args: !SimpleFlagArg
               name: MIN_READS
-            optional: true
           - !Flag
-            description: "How to deal with multiple junctions on an event - take\n\
-              the mean (default) or the min? (the other option)"
+            optional: true
             synonyms:
             - -e
             - --method
+            description: "How to deal with multiple junctions on an event - take\n\
+              the mean (default) or the min? (the other option)"
             args: !SimpleFlagArg
               name: METHOD
-            optional: true
           - !Flag
-            description: "If a junction one one side of an exon is bigger than\nthe\
-              \ other side of the exon by this amount, (default is\n10, so 10x bigger),\
-              \ then do not use this event"
+            optional: true
             synonyms:
             - -u
             - --uneven-coverage-multiplier
+            description: "If a junction one one side of an exon is bigger than\nthe\
+              \ other side of the exon by this amount, (default is\n10, so 10x bigger),\
+              \ then do not use this event"
             args: !SimpleFlagArg
               name: UNEVEN_COVERAGE_MULTIPLIER
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --ignore-multimapping
             description: "Applies to STAR SJ.out.tab files only. If this flag is\n\
               used, then do not include reads that mapped to\nmultiple locations in\
               \ the genome, not uniquely to a\nlocus, in the read count for a junction.\
@@ -377,59 +380,56 @@ subcommands:
               quality (MAPQ) of less than 255 are considered\n\"multimapped.\" This\
               \ is the same thing as what the STAR\naligner does. By default, this\
               \ is off, and all reads\nare used."
-            synonyms:
-            - --ignore-multimapping
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "Name of column in --splice-junction-csv containing\nreads\
-              \ to use. (default='reads')"
+            optional: true
             synonyms:
             - --reads-col
+            description: "Name of column in --splice-junction-csv containing\nreads\
+              \ to use. (default='reads')"
             args: !SimpleFlagArg
               name: READS_COL
-            optional: true
           - !Flag
-            description: "Name of column in --splice-junction-csv containing\nsample\
-              \ ids to use. (default='sample_id')"
+            optional: true
             synonyms:
             - --sample-id-col
+            description: "Name of column in --splice-junction-csv containing\nsample\
+              \ ids to use. (default='sample_id')"
             args: !SimpleFlagArg
               name: SAMPLE_ID_COL
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --junction-id-col
             description: "Name of column in --splice-junction-csv containing the\n\
               ID of the junction to use. Must match exactly with the\njunctions in\
               \ the index.(default='junction_id')"
-            synonyms:
-            - --junction-id-col
             args: !SimpleFlagArg
               name: JUNCTION_ID_COL
-            optional: true
           - !Flag
-            description: "If given, print debugging logging information to\nstandard\
-              \ out"
+            optional: true
             synonyms:
             - --debug
+            description: "If given, print debugging logging information to\nstandard\
+              \ out"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --n-jobs
             description: "Number of threads to use when parallelizing psi\ncalculation\
               \ and file reading. Default is -1, which\nmeans to use as many threads\
               \ as are available."
-            synonyms:
-            - --n-jobs
             args: !SimpleFlagArg
               name: N_JOBS
-            optional: true
           - !Flag
-            description: "If set, then use a smaller memory footprint. By\ndefault,\
-              \ this is off.\n"
+            optional: true
             synonyms:
             - --low-memory
+            description: "If set, then use a smaller memory footprint. By\ndefault,\
+              \ this is off.\n"
             args: !EmptyFlagArg {}
-            optional: true
-          parent: &id007 !Command
+          parent: &id008 !Command
             command: *id001
             positional: []
             named: []
@@ -440,82 +440,85 @@ subcommands:
               positional: []
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - -i
+                - --index
                 description: "Name of the folder where you saved the output from\n\
                   \"outrigger index\" (default is\n./outrigger_output/index, which\
                   \ is relative to the\ndirectory where you called this program, assuming\
                   \ you\nhave called \"outrigger psi\" in the same folder as you\n\
                   called \"outrigger index\")"
-                synonyms:
-                - -i
-                - --index
                 args: !SimpleFlagArg
                   name: INDEX
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - -o
+                - --output
                 description: "Name of the folder where you saved the output from\n\
                   \"outrigger index\" (default is ./outrigger_output,\nwhich is relative\
                   \ to the directory where you called\nthe program). Cannot specify\
                   \ both an --index and\n--output with \"psi\""
-                synonyms:
-                - -o
-                - --output
                 args: !SimpleFlagArg
                   name: OUTPUT
-                optional: true
               - !Flag
-                description: "Name of the compiled splice junction file to calculate\n\
-                  psi scores on. Default is the '--output' folder's\njunctions/reads.csv\
-                  \ file. Not required if you specify\nSJ.out.tab files with '--sj-out-tab'"
+                optional: true
                 synonyms:
                 - -c
                 - --junction-reads-csv
+                description: "Name of the compiled splice junction file to calculate\n\
+                  psi scores on. Default is the '--output' folder's\njunctions/reads.csv\
+                  \ file. Not required if you specify\nSJ.out.tab files with '--sj-out-tab'"
                 args: !SimpleFlagArg
                   name: JUNCTION_READS_CSV
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - -j
                 description: "[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab [SJ_OUT_TAB\
                   \ [SJ_OUT_TAB ...]]\nSJ.out.tab files from STAR aligner output.\
                   \ Not\nrequired if you specify a file with \"--compiled-\njunction-reads\""
-                synonyms:
-                - -j
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nBam files to\
-                  \ use to calculate psi on"
+                optional: true
                 synonyms:
                 - -b
+                description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nBam files to\
+                  \ use to calculate psi on"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "Minimum number of reads per junction for calculating\n\
-                  Psi (default=10)"
+                optional: true
                 synonyms:
                 - -m
                 - --min-reads
+                description: "Minimum number of reads per junction for calculating\n\
+                  Psi (default=10)"
                 args: !SimpleFlagArg
                   name: MIN_READS
-                optional: true
               - !Flag
-                description: "How to deal with multiple junctions on an event - take\n\
-                  the mean (default) or the min? (the other option)"
+                optional: true
                 synonyms:
                 - -e
                 - --method
+                description: "How to deal with multiple junctions on an event - take\n\
+                  the mean (default) or the min? (the other option)"
                 args: !SimpleFlagArg
                   name: METHOD
-                optional: true
               - !Flag
-                description: "If a junction one one side of an exon is bigger than\n\
-                  the other side of the exon by this amount, (default is\n10, so 10x\
-                  \ bigger), then do not use this event"
+                optional: true
                 synonyms:
                 - -u
                 - --uneven-coverage-multiplier
+                description: "If a junction one one side of an exon is bigger than\n\
+                  the other side of the exon by this amount, (default is\n10, so 10x\
+                  \ bigger), then do not use this event"
                 args: !SimpleFlagArg
                   name: UNEVEN_COVERAGE_MULTIPLIER
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --ignore-multimapping
                 description: "Applies to STAR SJ.out.tab files only. If this flag\
                   \ is\nused, then do not include reads that mapped to\nmultiple locations\
                   \ in the genome, not uniquely to a\nlocus, in the read count for\
@@ -523,59 +526,56 @@ subcommands:
                   \ reads with a mapping\nquality (MAPQ) of less than 255 are considered\n\
                   \"multimapped.\" This is the same thing as what the STAR\naligner\
                   \ does. By default, this is off, and all reads\nare used."
-                synonyms:
-                - --ignore-multimapping
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "Name of column in --splice-junction-csv containing\n\
-                  reads to use. (default='reads')"
+                optional: true
                 synonyms:
                 - --reads-col
+                description: "Name of column in --splice-junction-csv containing\n\
+                  reads to use. (default='reads')"
                 args: !SimpleFlagArg
                   name: READS_COL
-                optional: true
               - !Flag
-                description: "Name of column in --splice-junction-csv containing\n\
-                  sample ids to use. (default='sample_id')"
+                optional: true
                 synonyms:
                 - --sample-id-col
+                description: "Name of column in --splice-junction-csv containing\n\
+                  sample ids to use. (default='sample_id')"
                 args: !SimpleFlagArg
                   name: SAMPLE_ID_COL
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --junction-id-col
                 description: "Name of column in --splice-junction-csv containing the\n\
                   ID of the junction to use. Must match exactly with the\njunctions\
                   \ in the index.(default='junction_id')"
-                synonyms:
-                - --junction-id-col
                 args: !SimpleFlagArg
                   name: JUNCTION_ID_COL
-                optional: true
               - !Flag
-                description: "If given, print debugging logging information to\nstandard\
-                  \ out"
+                optional: true
                 synonyms:
                 - --debug
+                description: "If given, print debugging logging information to\nstandard\
+                  \ out"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --n-jobs
                 description: "Number of threads to use when parallelizing psi\ncalculation\
                   \ and file reading. Default is -1, which\nmeans to use as many threads\
                   \ as are available."
-                synonyms:
-                - --n-jobs
                 args: !SimpleFlagArg
                   name: N_JOBS
-                optional: true
               - !Flag
-                description: "If set, then use a smaller memory footprint. By\ndefault,\
-                  \ this is off.\n"
+                optional: true
                 synonyms:
                 - --low-memory
+                description: "If set, then use a smaller memory footprint. By\ndefault,\
+                  \ this is off.\n"
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: &id007 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -586,82 +586,85 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -i
+                    - --index
                     description: "Name of the folder where you saved the output from\n\
                       \"outrigger index\" (default is\n./outrigger_output/index, which\
                       \ is relative to the\ndirectory where you called this program,\
                       \ assuming you\nhave called \"outrigger psi\" in the same folder\
                       \ as you\ncalled \"outrigger index\")"
-                    synonyms:
-                    - -i
-                    - --index
                     args: !SimpleFlagArg
                       name: INDEX
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -o
+                    - --output
                     description: "Name of the folder where you saved the output from\n\
                       \"outrigger index\" (default is ./outrigger_output,\nwhich is\
                       \ relative to the directory where you called\nthe program).\
                       \ Cannot specify both an --index and\n--output with \"psi\""
-                    synonyms:
-                    - -o
-                    - --output
                     args: !SimpleFlagArg
                       name: OUTPUT
-                    optional: true
                   - !Flag
-                    description: "Name of the compiled splice junction file to calculate\n\
-                      psi scores on. Default is the '--output' folder's\njunctions/reads.csv\
-                      \ file. Not required if you specify\nSJ.out.tab files with '--sj-out-tab'"
+                    optional: true
                     synonyms:
                     - -c
                     - --junction-reads-csv
+                    description: "Name of the compiled splice junction file to calculate\n\
+                      psi scores on. Default is the '--output' folder's\njunctions/reads.csv\
+                      \ file. Not required if you specify\nSJ.out.tab files with '--sj-out-tab'"
                     args: !SimpleFlagArg
                       name: JUNCTION_READS_CSV
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -j
                     description: "[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab [SJ_OUT_TAB\
                       \ [SJ_OUT_TAB ...]]\nSJ.out.tab files from STAR aligner output.\
                       \ Not\nrequired if you specify a file with \"--compiled-\njunction-reads\""
-                    synonyms:
-                    - -j
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nBam files\
-                      \ to use to calculate psi on"
+                    optional: true
                     synonyms:
                     - -b
+                    description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nBam files\
+                      \ to use to calculate psi on"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "Minimum number of reads per junction for calculating\n\
-                      Psi (default=10)"
+                    optional: true
                     synonyms:
                     - -m
                     - --min-reads
+                    description: "Minimum number of reads per junction for calculating\n\
+                      Psi (default=10)"
                     args: !SimpleFlagArg
                       name: MIN_READS
-                    optional: true
                   - !Flag
-                    description: "How to deal with multiple junctions on an event\
-                      \ - take\nthe mean (default) or the min? (the other option)"
+                    optional: true
                     synonyms:
                     - -e
                     - --method
+                    description: "How to deal with multiple junctions on an event\
+                      \ - take\nthe mean (default) or the min? (the other option)"
                     args: !SimpleFlagArg
                       name: METHOD
-                    optional: true
                   - !Flag
-                    description: "If a junction one one side of an exon is bigger\
-                      \ than\nthe other side of the exon by this amount, (default\
-                      \ is\n10, so 10x bigger), then do not use this event"
+                    optional: true
                     synonyms:
                     - -u
                     - --uneven-coverage-multiplier
+                    description: "If a junction one one side of an exon is bigger\
+                      \ than\nthe other side of the exon by this amount, (default\
+                      \ is\n10, so 10x bigger), then do not use this event"
                     args: !SimpleFlagArg
                       name: UNEVEN_COVERAGE_MULTIPLIER
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --ignore-multimapping
                     description: "Applies to STAR SJ.out.tab files only. If this flag\
                       \ is\nused, then do not include reads that mapped to\nmultiple\
                       \ locations in the genome, not uniquely to a\nlocus, in the\
@@ -670,68 +673,729 @@ subcommands:
                       \ than 255 are considered\n\"multimapped.\" This is the same\
                       \ thing as what the STAR\naligner does. By default, this is\
                       \ off, and all reads\nare used."
-                    synonyms:
-                    - --ignore-multimapping
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "Name of column in --splice-junction-csv containing\n\
-                      reads to use. (default='reads')"
+                    optional: true
                     synonyms:
                     - --reads-col
+                    description: "Name of column in --splice-junction-csv containing\n\
+                      reads to use. (default='reads')"
                     args: !SimpleFlagArg
                       name: READS_COL
-                    optional: true
                   - !Flag
-                    description: "Name of column in --splice-junction-csv containing\n\
-                      sample ids to use. (default='sample_id')"
+                    optional: true
                     synonyms:
                     - --sample-id-col
+                    description: "Name of column in --splice-junction-csv containing\n\
+                      sample ids to use. (default='sample_id')"
                     args: !SimpleFlagArg
                       name: SAMPLE_ID_COL
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --junction-id-col
                     description: "Name of column in --splice-junction-csv containing\
                       \ the\nID of the junction to use. Must match exactly with the\n\
                       junctions in the index.(default='junction_id')"
-                    synonyms:
-                    - --junction-id-col
                     args: !SimpleFlagArg
                       name: JUNCTION_ID_COL
-                    optional: true
                   - !Flag
-                    description: "If given, print debugging logging information to\n\
-                      standard out"
+                    optional: true
                     synonyms:
                     - --debug
+                    description: "If given, print debugging logging information to\n\
+                      standard out"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --n-jobs
                     description: "Number of threads to use when parallelizing psi\n\
                       calculation and file reading. Default is -1, which\nmeans to\
                       \ use as many threads as are available."
-                    synonyms:
-                    - --n-jobs
                     args: !SimpleFlagArg
                       name: N_JOBS
-                    optional: true
                   - !Flag
-                    description: "If set, then use a smaller memory footprint. By\n\
-                      default, this is off.\n"
+                    optional: true
                     synonyms:
                     - --low-memory
+                    description: "If set, then use a smaller memory footprint. By\n\
+                      default, this is off.\n"
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -i
+                        - --index
+                        description: "Name of the folder where you saved the output\
+                          \ from\n\"outrigger index\" (default is\n./outrigger_output/index,\
+                          \ which is relative to the\ndirectory where you called this\
+                          \ program, assuming you\nhave called \"outrigger psi\" in\
+                          \ the same folder as you\ncalled \"outrigger index\")"
+                        args: !SimpleFlagArg
+                          name: INDEX
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --output
+                        description: "Name of the folder where you saved the output\
+                          \ from\n\"outrigger index\" (default is ./outrigger_output,\n\
+                          which is relative to the directory where you called\nthe\
+                          \ program). Cannot specify both an --index and\n--output\
+                          \ with \"psi\""
+                        args: !SimpleFlagArg
+                          name: OUTPUT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        - --junction-reads-csv
+                        description: "Name of the compiled splice junction file to\
+                          \ calculate\npsi scores on. Default is the '--output' folder's\n\
+                          junctions/reads.csv file. Not required if you specify\n\
+                          SJ.out.tab files with '--sj-out-tab'"
+                        args: !SimpleFlagArg
+                          name: JUNCTION_READS_CSV
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -j
+                        description: "[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab\
+                          \ [SJ_OUT_TAB [SJ_OUT_TAB ...]]\nSJ.out.tab files from STAR\
+                          \ aligner output. Not\nrequired if you specify a file with\
+                          \ \"--compiled-\njunction-reads\""
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -b
+                        description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nBam\
+                          \ files to use to calculate psi on"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -m
+                        - --min-reads
+                        description: "Minimum number of reads per junction for calculating\n\
+                          Psi (default=10)"
+                        args: !SimpleFlagArg
+                          name: MIN_READS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -e
+                        - --method
+                        description: "How to deal with multiple junctions on an event\
+                          \ - take\nthe mean (default) or the min? (the other option)"
+                        args: !SimpleFlagArg
+                          name: METHOD
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -u
+                        - --uneven-coverage-multiplier
+                        description: "If a junction one one side of an exon is bigger\
+                          \ than\nthe other side of the exon by this amount, (default\
+                          \ is\n10, so 10x bigger), then do not use this event"
+                        args: !SimpleFlagArg
+                          name: UNEVEN_COVERAGE_MULTIPLIER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --ignore-multimapping
+                        description: "Applies to STAR SJ.out.tab files only. If this\
+                          \ flag is\nused, then do not include reads that mapped to\n\
+                          multiple locations in the genome, not uniquely to a\nlocus,\
+                          \ in the read count for a junction. If inputting\n\"bam\"\
+                          \ files, then this means that reads with a mapping\nquality\
+                          \ (MAPQ) of less than 255 are considered\n\"multimapped.\"\
+                          \ This is the same thing as what the STAR\naligner does.\
+                          \ By default, this is off, and all reads\nare used."
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --reads-col
+                        description: "Name of column in --splice-junction-csv containing\n\
+                          reads to use. (default='reads')"
+                        args: !SimpleFlagArg
+                          name: READS_COL
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --sample-id-col
+                        description: "Name of column in --splice-junction-csv containing\n\
+                          sample ids to use. (default='sample_id')"
+                        args: !SimpleFlagArg
+                          name: SAMPLE_ID_COL
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --junction-id-col
+                        description: "Name of column in --splice-junction-csv containing\
+                          \ the\nID of the junction to use. Must match exactly with\
+                          \ the\njunctions in the index.(default='junction_id')"
+                        args: !SimpleFlagArg
+                          name: JUNCTION_ID_COL
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --debug
+                        description: "If given, print debugging logging information\
+                          \ to\nstandard out"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --n-jobs
+                        description: "Number of threads to use when parallelizing\
+                          \ psi\ncalculation and file reading. Default is -1, which\n\
+                          means to use as many threads as are available."
+                        args: !SimpleFlagArg
+                          name: N_JOBS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --low-memory
+                        description: "If set, then use a smaller memory footprint.\
+                          \ By\ndefault, this is off.\n"
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: outrigger psi [-h] [-i INDEX] [-o OUTPUT]\n\
+                        \                     [-c JUNCTION_READS_CSV | -j [SJ_OUT_TAB\
+                        \ [SJ_OUT_TAB ...]]\n                     | -b [BAM [BAM ...]]]\
+                        \ [-m MIN_READS] [-e METHOD]\n                     [-u UNEVEN_COVERAGE_MULTIPLIER]\
+                        \ [--ignore-multimapping]\n                     [--reads-col\
+                        \ READS_COL] [--sample-id-col SAMPLE_ID_COL]\n           \
+                        \          [--junction-id-col JUNCTION_ID_COL] [--debug]\n\
+                        \                     [--n-jobs N_JOBS] [--low-memory]\n\n\
+                        optional arguments:\n  -h, --help            show this help\
+                        \ message and exit\n  -i INDEX, --index INDEX\n          \
+                        \              Name of the folder where you saved the output\
+                        \ from\n                        \"outrigger index\" (default\
+                        \ is\n                        ./outrigger_output/index, which\
+                        \ is relative to the\n                        directory where\
+                        \ you called this program, assuming you\n                \
+                        \        have called \"outrigger psi\" in the same folder\
+                        \ as you\n                        called \"outrigger index\"\
+                        )\n  -o OUTPUT, --output OUTPUT\n                        Name\
+                        \ of the folder where you saved the output from\n        \
+                        \                \"outrigger index\" (default is ./outrigger_output,\n\
+                        \                        which is relative to the directory\
+                        \ where you called\n                        the program).\
+                        \ Cannot specify both an --index and\n                   \
+                        \     --output with \"psi\"\n  -c JUNCTION_READS_CSV, --junction-reads-csv\
+                        \ JUNCTION_READS_CSV\n                        Name of the\
+                        \ compiled splice junction file to calculate\n           \
+                        \             psi scores on. Default is the '--output' folder's\n\
+                        \                        junctions/reads.csv file. Not required\
+                        \ if you specify\n                        SJ.out.tab files\
+                        \ with '--sj-out-tab'\n  -j [SJ_OUT_TAB [SJ_OUT_TAB ...]],\
+                        \ --sj-out-tab [SJ_OUT_TAB [SJ_OUT_TAB ...]]\n           \
+                        \             SJ.out.tab files from STAR aligner output. Not\n\
+                        \                        required if you specify a file with\
+                        \ \"--compiled-\n                        junction-reads\"\n\
+                        \  -b [BAM [BAM ...]], --bam [BAM [BAM ...]]\n           \
+                        \             Bam files to use to calculate psi on\n  -m MIN_READS,\
+                        \ --min-reads MIN_READS\n                        Minimum number\
+                        \ of reads per junction for calculating\n                \
+                        \        Psi (default=10)\n  -e METHOD, --method METHOD\n\
+                        \                        How to deal with multiple junctions\
+                        \ on an event - take\n                        the mean (default)\
+                        \ or the min? (the other option)\n  -u UNEVEN_COVERAGE_MULTIPLIER,\
+                        \ --uneven-coverage-multiplier UNEVEN_COVERAGE_MULTIPLIER\n\
+                        \                        If a junction one one side of an\
+                        \ exon is bigger than\n                        the other side\
+                        \ of the exon by this amount, (default is\n              \
+                        \          10, so 10x bigger), then do not use this event\n\
+                        \  --ignore-multimapping\n                        Applies\
+                        \ to STAR SJ.out.tab files only. If this flag is\n       \
+                        \                 used, then do not include reads that mapped\
+                        \ to\n                        multiple locations in the genome,\
+                        \ not uniquely to a\n                        locus, in the\
+                        \ read count for a junction. If inputting\n              \
+                        \          \"bam\" files, then this means that reads with\
+                        \ a mapping\n                        quality (MAPQ) of less\
+                        \ than 255 are considered\n                        \"multimapped.\"\
+                        \ This is the same thing as what the STAR\n              \
+                        \          aligner does. By default, this is off, and all\
+                        \ reads\n                        are used.\n  --reads-col\
+                        \ READS_COL\n                        Name of column in --splice-junction-csv\
+                        \ containing\n                        reads to use. (default='reads')\n\
+                        \  --sample-id-col SAMPLE_ID_COL\n                       \
+                        \ Name of column in --splice-junction-csv containing\n   \
+                        \                     sample ids to use. (default='sample_id')\n\
+                        \  --junction-id-col JUNCTION_ID_COL\n                   \
+                        \     Name of column in --splice-junction-csv containing the\n\
+                        \                        ID of the junction to use. Must match\
+                        \ exactly with the\n                        junctions in the\
+                        \ index.(default='junction_id')\n  --debug               If\
+                        \ given, print debugging logging information to\n        \
+                        \                standard out\n  --n-jobs N_JOBS       Number\
+                        \ of threads to use when parallelizing psi\n             \
+                        \           calculation and file reading. Default is -1, which\n\
+                        \                        means to use as many threads as are\
+                        \ available.\n  --low-memory          If set, then use a smaller\
+                        \ memory footprint. By\n                        default, this\
+                        \ is off.\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - outrigger
+                      - validate
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        - --fasta
+                        description: "Location of the genome fasta file for which\
+                          \ to get the\nsplice site sequences from"
+                        args: !SimpleFlagArg
+                          name: FASTA
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -g
+                        - --genome
+                        description: "Either the genome name (e.g. \"mm10\" or \"\
+                          hg19\") or\nlocation of the genome chromosome sizes file\
+                          \ for\n\"bedtools flank\" to make sure we do not accidentally\n\
+                          ask for genome positions that are outside of the\ndefined\
+                          \ range"
+                        args: !SimpleFlagArg
+                          name: GENOME
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -i
+                        - --index
+                        description: "Name of the folder where you saved the output\
+                          \ from\n\"outrigger index\" (default is\n./outrigger_output/index,\
+                          \ which is relative to the\ndirectory where you called this\
+                          \ program, assuming you\nhave called \"outrigger psi\" in\
+                          \ the same folder as you\ncalled \"outrigger index\")."
+                        args: !SimpleFlagArg
+                          name: INDEX
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --output
+                        description: "Name of the folder where you saved the output\
+                          \ from\n\"outrigger index\" (default is ./outrigger_output,\n\
+                          which is relative to the directory where you called\nthe\
+                          \ program)."
+                        args: !SimpleFlagArg
+                          name: OUTPUT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        - --valid-splice-sites
+                        description: "The intron-definition based splice sites that\
+                          \ are\nallowed in the data, which is in the format 5'/3'\
+                          \ of\nthe intron, and separated by commas for different\n\
+                          types. Default is GT/AG,GC/AG,AT/AC, which are the\nmajor\
+                          \ and minor spliceosome splice sites in mammalian\nsystems."
+                        args: !SimpleFlagArg
+                          name: VALID_SPLICE_SITES
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --debug
+                        description: "If given, print debugging logging information\
+                          \ to\nstandard out"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --low-memory
+                        description: "If set, then use a smaller memory footprint.\
+                          \ By\ndefault, this is off.\n"
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: outrigger validate [-h] -f FASTA -g GENOME\
+                        \ [-i INDEX] [-o OUTPUT]\n                          [-s VALID_SPLICE_SITES]\
+                        \ [--debug] [--low-memory]\n\noptional arguments:\n  -h, --help\
+                        \            show this help message and exit\n  -f FASTA,\
+                        \ --fasta FASTA\n                        Location of the genome\
+                        \ fasta file for which to get the\n                      \
+                        \  splice site sequences from\n  -g GENOME, --genome GENOME\n\
+                        \                        Either the genome name (e.g. \"mm10\"\
+                        \ or \"hg19\") or\n                        location of the\
+                        \ genome chromosome sizes file for\n                     \
+                        \   \"bedtools flank\" to make sure we do not accidentally\n\
+                        \                        ask for genome positions that are\
+                        \ outside of the\n                        defined range\n\
+                        \  -i INDEX, --index INDEX\n                        Name of\
+                        \ the folder where you saved the output from\n           \
+                        \             \"outrigger index\" (default is\n          \
+                        \              ./outrigger_output/index, which is relative\
+                        \ to the\n                        directory where you called\
+                        \ this program, assuming you\n                        have\
+                        \ called \"outrigger psi\" in the same folder as you\n   \
+                        \                     called \"outrigger index\").\n  -o OUTPUT,\
+                        \ --output OUTPUT\n                        Name of the folder\
+                        \ where you saved the output from\n                      \
+                        \  \"outrigger index\" (default is ./outrigger_output,\n \
+                        \                       which is relative to the directory\
+                        \ where you called\n                        the program).\n\
+                        \  -s VALID_SPLICE_SITES, --valid-splice-sites VALID_SPLICE_SITES\n\
+                        \                        The intron-definition based splice\
+                        \ sites that are\n                        allowed in the data,\
+                        \ which is in the format 5'/3' of\n                      \
+                        \  the intron, and separated by commas for different\n   \
+                        \                     types. Default is GT/AG,GC/AG,AT/AC,\
+                        \ which are the\n                        major and minor spliceosome\
+                        \ splice sites in mammalian\n                        systems.\n\
+                        \  --debug               If given, print debugging logging\
+                        \ information to\n                        standard out\n \
+                        \ --low-memory          If set, then use a smaller memory\
+                        \ footprint. By\n                        default, this is\
+                        \ off.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - outrigger
+                      - index
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --output
+                        description: "Name of the folder where you saved the output\
+                          \ from\n\"outrigger index\" (default is ./outrigger_output,\n\
+                          which is relative to the directory where you called\nthe\
+                          \ program)\". You will need this file for the next\nstep,\
+                          \ \"outrigger psi\""
+                        args: !SimpleFlagArg
+                          name: OUTPUT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -j
+                        description: "[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab\
+                          \ [SJ_OUT_TAB [SJ_OUT_TAB ...]]\nSJ.out.tab files from STAR\
+                          \ aligner output. Not\nrequired if you specify \"--compiled-junction-reads\""
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        - --junction-reads-csv
+                        description: "Name of the splice junction files to detect\
+                          \ novel\nexons and build an index of alternative splicing\n\
+                          events from. Not required if you specify SJ.out.tab\nfile\
+                          \ with '--sj-out-tab'"
+                        args: !SimpleFlagArg
+                          name: JUNCTION_READS_CSV
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -b
+                        description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nLocation\
+                          \ of bam files to use for finding events."
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -m
+                        - --min-reads
+                        description: "Minimum number of reads per junction for that\
+                          \ junction\nto count in creating the index of splicing events\n\
+                          (default=10)"
+                        args: !SimpleFlagArg
+                          name: MIN_READS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --ignore-multimapping
+                        description: "Applies to STAR SJ.out.tab files only. If this\
+                          \ flag is\nused, then do not include reads that mapped to\n\
+                          multiple locations in the genome, not uniquely to a\nlocus,\
+                          \ in the read count for a junction. If inputting\n\"bam\"\
+                          \ files, then this means that reads with a mapping\nquality\
+                          \ (MAPQ) of less than 255 are considered\n\"multimapped.\"\
+                          \ This is the same thing as what the STAR\naligner does.\
+                          \ By default, this is off, and all reads\nare used."
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        - --max-de-novo-exon-length
+                        description: "Maximum length of an exon detected *de novo*\
+                          \ from the\ndataset. This is to prevent multiple kilobase\
+                          \ long\nexons from being accidentally created. (default=100)"
+                        args: !SimpleFlagArg
+                          name: MAX_DE_NOVO_EXON_LENGTH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -g
+                        - --gtf-filename
+                        description: "Name of the gtf file you want to use. If a gffutils\n\
+                          feature database doesn't already exist at this\nlocation\
+                          \ plus '.db' (e.g. if your gtf is\ngencode.v19.annotation.gtf,\
+                          \ then the database is\ninferred to be gencode.v19.annotation.gtf.db),\
+                          \ then a\ndatabase will be auto-created. Not required if\
+                          \ you\nprovide a pre-built database with '--gffutils-db'"
+                        args: !SimpleFlagArg
+                          name: GTF_FILENAME
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -d
+                        - --gffutils-db
+                        description: "Name of the gffutils database file you want\
+                          \ to use.\nThe exon IDs defined here will be used in the\
+                          \ function\nwhen creating splicing event names. Not required\
+                          \ if\nyou provide a gtf file with '--gtf-filename'"
+                        args: !SimpleFlagArg
+                          name: GFFUTILS_DB
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --debug
+                        description: "If given, print debugging logging information\
+                          \ to\nstandard out (Warning: LOTS of output. Not recommended\n\
+                          unless you think something is going wrong)"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --n-jobs
+                        description: "Number of threads to use when parallelizing\
+                          \ exon\nfinding and file reading. Default is -1, which means\n\
+                          to use as many threads as are available."
+                        args: !SimpleFlagArg
+                          name: N_JOBS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --low-memory
+                        description: "If set, then use a smaller memory footprint.\
+                          \ By\ndefault, this is off."
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --splice-types
+                        description: "Which splice types to find. By default, \"all\"\
+                          \ are used\nwhich at this point is skipped exon (SE) and\
+                          \ mutually\nexclusive exon (MXE) events. Can also specify\
+                          \ only\none, e.g. \"se\" or both \"se,mxe\""
+                        args: !SimpleFlagArg
+                          name: SPLICE_TYPES
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --force
+                        description: "If the 'outrigger index' command was interrupted,\n\
+                          there will be intermediate files remaining. If you\nwish\
+                          \ to restart outrigger and overwrite them all, use\nthis\
+                          \ flag. If you want to continue from where you left\noff,\
+                          \ use the '--resume' flag. If neither is specified,\nthe\
+                          \ program exits and complains to the user."
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --resume
+                        description: "If the 'outrigger index' command was interrupted,\n\
+                          there will be intermediate files remaining. If you\nwant\
+                          \ to continue from where you left off, use this\nflag. The\
+                          \ default action is to do nothing and ask the\nuser for\
+                          \ input.\n"
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: outrigger index [-h] [-o OUTPUT]\n      \
+                        \                 (-j [SJ_OUT_TAB [SJ_OUT_TAB ...]] | -c JUNCTION_READS_CSV\
+                        \ | -b [BAM [BAM ...]])\n                       [-m MIN_READS]\
+                        \ [--ignore-multimapping]\n                       [-l MAX_DE_NOVO_EXON_LENGTH]\n\
+                        \                       (-g GTF_FILENAME | -d GFFUTILS_DB)\
+                        \ [--debug]\n                       [--n-jobs N_JOBS] [--low-memory]\n\
+                        \                       [--splice-types SPLICE_TYPES] [--force\
+                        \ | --resume]\n\noptional arguments:\n  -h, --help       \
+                        \     show this help message and exit\n  -o OUTPUT, --output\
+                        \ OUTPUT\n                        Name of the folder where\
+                        \ you saved the output from\n                        \"outrigger\
+                        \ index\" (default is ./outrigger_output,\n              \
+                        \          which is relative to the directory where you called\n\
+                        \                        the program)\". You will need this\
+                        \ file for the next\n                        step, \"outrigger\
+                        \ psi\"\n  -j [SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab\
+                        \ [SJ_OUT_TAB [SJ_OUT_TAB ...]]\n                        SJ.out.tab\
+                        \ files from STAR aligner output. Not\n                  \
+                        \      required if you specify \"--compiled-junction-reads\"\
+                        \n  -c JUNCTION_READS_CSV, --junction-reads-csv JUNCTION_READS_CSV\n\
+                        \                        Name of the splice junction files\
+                        \ to detect novel\n                        exons and build\
+                        \ an index of alternative splicing\n                     \
+                        \   events from. Not required if you specify SJ.out.tab\n\
+                        \                        file with '--sj-out-tab'\n  -b [BAM\
+                        \ [BAM ...]], --bam [BAM [BAM ...]]\n                    \
+                        \    Location of bam files to use for finding events.\n  -m\
+                        \ MIN_READS, --min-reads MIN_READS\n                     \
+                        \   Minimum number of reads per junction for that junction\n\
+                        \                        to count in creating the index of\
+                        \ splicing events\n                        (default=10)\n\
+                        \  --ignore-multimapping\n                        Applies\
+                        \ to STAR SJ.out.tab files only. If this flag is\n       \
+                        \                 used, then do not include reads that mapped\
+                        \ to\n                        multiple locations in the genome,\
+                        \ not uniquely to a\n                        locus, in the\
+                        \ read count for a junction. If inputting\n              \
+                        \          \"bam\" files, then this means that reads with\
+                        \ a mapping\n                        quality (MAPQ) of less\
+                        \ than 255 are considered\n                        \"multimapped.\"\
+                        \ This is the same thing as what the STAR\n              \
+                        \          aligner does. By default, this is off, and all\
+                        \ reads\n                        are used.\n  -l MAX_DE_NOVO_EXON_LENGTH,\
+                        \ --max-de-novo-exon-length MAX_DE_NOVO_EXON_LENGTH\n    \
+                        \                    Maximum length of an exon detected *de\
+                        \ novo* from the\n                        dataset. This is\
+                        \ to prevent multiple kilobase long\n                    \
+                        \    exons from being accidentally created. (default=100)\n\
+                        \  -g GTF_FILENAME, --gtf-filename GTF_FILENAME\n        \
+                        \                Name of the gtf file you want to use. If\
+                        \ a gffutils\n                        feature database doesn't\
+                        \ already exist at this\n                        location\
+                        \ plus '.db' (e.g. if your gtf is\n                      \
+                        \  gencode.v19.annotation.gtf, then the database is\n    \
+                        \                    inferred to be gencode.v19.annotation.gtf.db),\
+                        \ then a\n                        database will be auto-created.\
+                        \ Not required if you\n                        provide a pre-built\
+                        \ database with '--gffutils-db'\n  -d GFFUTILS_DB, --gffutils-db\
+                        \ GFFUTILS_DB\n                        Name of the gffutils\
+                        \ database file you want to use.\n                       \
+                        \ The exon IDs defined here will be used in the function\n\
+                        \                        when creating splicing event names.\
+                        \ Not required if\n                        you provide a gtf\
+                        \ file with '--gtf-filename'\n  --debug               If given,\
+                        \ print debugging logging information to\n               \
+                        \         standard out (Warning: LOTS of output. Not recommended\n\
+                        \                        unless you think something is going\
+                        \ wrong)\n  --n-jobs N_JOBS       Number of threads to use\
+                        \ when parallelizing exon\n                        finding\
+                        \ and file reading. Default is -1, which means\n         \
+                        \               to use as many threads as are available.\n\
+                        \  --low-memory          If set, then use a smaller memory\
+                        \ footprint. By\n                        default, this is\
+                        \ off.\n  --splice-types SPLICE_TYPES\n                  \
+                        \      Which splice types to find. By default, \"all\" are\
+                        \ used\n                        which at this point is skipped\
+                        \ exon (SE) and mutually\n                        exclusive\
+                        \ exon (MXE) events. Can also specify only\n             \
+                        \           one, e.g. \"se\" or both \"se,mxe\"\n  --force\
+                        \               If the 'outrigger index' command was interrupted,\n\
+                        \                        there will be intermediate files\
+                        \ remaining. If you\n                        wish to restart\
+                        \ outrigger and overwrite them all, use\n                \
+                        \        this flag. If you want to continue from where you\
+                        \ left\n                        off, use the '--resume' flag.\
+                        \ If neither is specified,\n                        the program\
+                        \ exits and complains to the user.\n  --resume           \
+                        \   If the 'outrigger index' command was interrupted,\n  \
+                        \                      there will be intermediate files remaining.\
+                        \ If you\n                        want to continue from where\
+                        \ you left off, use this\n                        flag. The\
+                        \ default action is to do nothing and ask the\n          \
+                        \              user for input.\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --version
+                      description: show program's version number and exit
+                      args: !EmptyFlagArg {}
+                    help_text: "usage: outrigger [-h] [--version] {index,validate,psi}\
+                      \ ...\n\noutrigger (1.1.1). Calculate \"percent-spliced in\"\
+                      \ (Psi) scores of alternative\nsplicing on a *de novo*, custom-built\
+                      \ splicing index -- just for you!\n\npositional arguments:\n\
+                      \  {index,validate,psi}  Sub-commands\n    index           \
+                      \    Build an index of splicing events using a graph\n     \
+                      \                   database on your junction reads and an annotation\n\
+                      \    validate            Ensure that the splicing events found\
+                      \ all have the\n                        correct splice sites\n\
+                      \    psi                 Calculate \"percent spliced-in\" (Psi)\
+                      \ values using the\n                        splicing event index\
+                      \ built with \"outrigger index\"\n\noptional arguments:\n  -h,\
+                      \ --help            show this help message and exit\n  --version\
+                      \             show program's version number and exit\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: outrigger psi [-h] [-i INDEX] [-o OUTPUT]\n \
@@ -806,92 +1470,90 @@ subcommands:
                     \ as are available.\n  --low-memory          If set, then use\
                     \ a smaller memory footprint. By\n                        default,\
                     \ this is off.\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - outrigger
-                  - validate
+                  command: *id005
                   positional: []
                   named:
                   - !Flag
-                    description: "Location of the genome fasta file for which to get\
-                      \ the\nsplice site sequences from"
+                    optional: true
                     synonyms:
                     - -f
                     - --fasta
+                    description: "Location of the genome fasta file for which to get\
+                      \ the\nsplice site sequences from"
                     args: !SimpleFlagArg
                       name: FASTA
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -g
+                    - --genome
                     description: "Either the genome name (e.g. \"mm10\" or \"hg19\"\
                       ) or\nlocation of the genome chromosome sizes file for\n\"bedtools\
                       \ flank\" to make sure we do not accidentally\nask for genome\
                       \ positions that are outside of the\ndefined range"
-                    synonyms:
-                    - -g
-                    - --genome
                     args: !SimpleFlagArg
                       name: GENOME
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -i
+                    - --index
                     description: "Name of the folder where you saved the output from\n\
                       \"outrigger index\" (default is\n./outrigger_output/index, which\
                       \ is relative to the\ndirectory where you called this program,\
                       \ assuming you\nhave called \"outrigger psi\" in the same folder\
                       \ as you\ncalled \"outrigger index\")."
-                    synonyms:
-                    - -i
-                    - --index
                     args: !SimpleFlagArg
                       name: INDEX
-                    optional: true
                   - !Flag
-                    description: "Name of the folder where you saved the output from\n\
-                      \"outrigger index\" (default is ./outrigger_output,\nwhich is\
-                      \ relative to the directory where you called\nthe program)."
+                    optional: true
                     synonyms:
                     - -o
                     - --output
+                    description: "Name of the folder where you saved the output from\n\
+                      \"outrigger index\" (default is ./outrigger_output,\nwhich is\
+                      \ relative to the directory where you called\nthe program)."
                     args: !SimpleFlagArg
                       name: OUTPUT
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -s
+                    - --valid-splice-sites
                     description: "The intron-definition based splice sites that are\n\
                       allowed in the data, which is in the format 5'/3' of\nthe intron,\
                       \ and separated by commas for different\ntypes. Default is GT/AG,GC/AG,AT/AC,\
                       \ which are the\nmajor and minor spliceosome splice sites in\
                       \ mammalian\nsystems."
-                    synonyms:
-                    - -s
-                    - --valid-splice-sites
                     args: !SimpleFlagArg
                       name: VALID_SPLICE_SITES
-                    optional: true
                   - !Flag
-                    description: "If given, print debugging logging information to\n\
-                      standard out"
+                    optional: true
                     synonyms:
                     - --debug
+                    description: "If given, print debugging logging information to\n\
+                      standard out"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "If set, then use a smaller memory footprint. By\n\
-                      default, this is off.\n"
+                    optional: true
                     synonyms:
                     - --low-memory
+                    description: "If set, then use a smaller memory footprint. By\n\
+                      default, this is off.\n"
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: outrigger validate [-h] -f FASTA -g GENOME [-i\
@@ -931,58 +1593,60 @@ subcommands:
                     \  If set, then use a smaller memory footprint. By\n         \
                     \               default, this is off.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - outrigger
-                  - index
+                  command: *id006
                   positional: []
                   named:
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -o
+                    - --output
                     description: "Name of the folder where you saved the output from\n\
                       \"outrigger index\" (default is ./outrigger_output,\nwhich is\
                       \ relative to the directory where you called\nthe program)\"\
                       . You will need this file for the next\nstep, \"outrigger psi\""
-                    synonyms:
-                    - -o
-                    - --output
                     args: !SimpleFlagArg
                       name: OUTPUT
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -j
                     description: "[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab [SJ_OUT_TAB\
                       \ [SJ_OUT_TAB ...]]\nSJ.out.tab files from STAR aligner output.\
                       \ Not\nrequired if you specify \"--compiled-junction-reads\""
-                    synonyms:
-                    - -j
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "Name of the splice junction files to detect novel\n\
-                      exons and build an index of alternative splicing\nevents from.\
-                      \ Not required if you specify SJ.out.tab\nfile with '--sj-out-tab'"
+                    optional: true
                     synonyms:
                     - -c
                     - --junction-reads-csv
+                    description: "Name of the splice junction files to detect novel\n\
+                      exons and build an index of alternative splicing\nevents from.\
+                      \ Not required if you specify SJ.out.tab\nfile with '--sj-out-tab'"
                     args: !SimpleFlagArg
                       name: JUNCTION_READS_CSV
-                    optional: true
                   - !Flag
-                    description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nLocation\
-                      \ of bam files to use for finding events."
+                    optional: true
                     synonyms:
                     - -b
+                    description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nLocation\
+                      \ of bam files to use for finding events."
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "Minimum number of reads per junction for that junction\n\
-                      to count in creating the index of splicing events\n(default=10)"
+                    optional: true
                     synonyms:
                     - -m
                     - --min-reads
+                    description: "Minimum number of reads per junction for that junction\n\
+                      to count in creating the index of splicing events\n(default=10)"
                     args: !SimpleFlagArg
                       name: MIN_READS
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --ignore-multimapping
                     description: "Applies to STAR SJ.out.tab files only. If this flag\
                       \ is\nused, then do not include reads that mapped to\nmultiple\
                       \ locations in the genome, not uniquely to a\nlocus, in the\
@@ -991,108 +1655,105 @@ subcommands:
                       \ than 255 are considered\n\"multimapped.\" This is the same\
                       \ thing as what the STAR\naligner does. By default, this is\
                       \ off, and all reads\nare used."
-                    synonyms:
-                    - --ignore-multimapping
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "Maximum length of an exon detected *de novo* from\
-                      \ the\ndataset. This is to prevent multiple kilobase long\n\
-                      exons from being accidentally created. (default=100)"
+                    optional: true
                     synonyms:
                     - -l
                     - --max-de-novo-exon-length
+                    description: "Maximum length of an exon detected *de novo* from\
+                      \ the\ndataset. This is to prevent multiple kilobase long\n\
+                      exons from being accidentally created. (default=100)"
                     args: !SimpleFlagArg
                       name: MAX_DE_NOVO_EXON_LENGTH
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -g
+                    - --gtf-filename
                     description: "Name of the gtf file you want to use. If a gffutils\n\
                       feature database doesn't already exist at this\nlocation plus\
                       \ '.db' (e.g. if your gtf is\ngencode.v19.annotation.gtf, then\
                       \ the database is\ninferred to be gencode.v19.annotation.gtf.db),\
                       \ then a\ndatabase will be auto-created. Not required if you\n\
                       provide a pre-built database with '--gffutils-db'"
-                    synonyms:
-                    - -g
-                    - --gtf-filename
                     args: !SimpleFlagArg
                       name: GTF_FILENAME
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -d
+                    - --gffutils-db
                     description: "Name of the gffutils database file you want to use.\n\
                       The exon IDs defined here will be used in the function\nwhen\
                       \ creating splicing event names. Not required if\nyou provide\
                       \ a gtf file with '--gtf-filename'"
-                    synonyms:
-                    - -d
-                    - --gffutils-db
                     args: !SimpleFlagArg
                       name: GFFUTILS_DB
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --debug
                     description: "If given, print debugging logging information to\n\
                       standard out (Warning: LOTS of output. Not recommended\nunless\
                       \ you think something is going wrong)"
-                    synonyms:
-                    - --debug
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --n-jobs
                     description: "Number of threads to use when parallelizing exon\n\
                       finding and file reading. Default is -1, which means\nto use\
                       \ as many threads as are available."
-                    synonyms:
-                    - --n-jobs
                     args: !SimpleFlagArg
                       name: N_JOBS
-                    optional: true
                   - !Flag
-                    description: "If set, then use a smaller memory footprint. By\n\
-                      default, this is off."
+                    optional: true
                     synonyms:
                     - --low-memory
+                    description: "If set, then use a smaller memory footprint. By\n\
+                      default, this is off."
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --splice-types
                     description: "Which splice types to find. By default, \"all\"\
                       \ are used\nwhich at this point is skipped exon (SE) and mutually\n\
                       exclusive exon (MXE) events. Can also specify only\none, e.g.\
                       \ \"se\" or both \"se,mxe\""
-                    synonyms:
-                    - --splice-types
                     args: !SimpleFlagArg
                       name: SPLICE_TYPES
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --force
                     description: "If the 'outrigger index' command was interrupted,\n\
                       there will be intermediate files remaining. If you\nwish to\
                       \ restart outrigger and overwrite them all, use\nthis flag.\
                       \ If you want to continue from where you left\noff, use the\
                       \ '--resume' flag. If neither is specified,\nthe program exits\
                       \ and complains to the user."
-                    synonyms:
-                    - --force
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --resume
                     description: "If the 'outrigger index' command was interrupted,\n\
                       there will be intermediate files remaining. If you\nwant to\
                       \ continue from where you left off, use this\nflag. The default\
                       \ action is to do nothing and ask the\nuser for input.\n"
-                    synonyms:
-                    - --resume
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: outrigger index [-h] [-o OUTPUT]\n          \
@@ -1182,21 +1843,11 @@ subcommands:
                     \                        flag. The default action is to do nothing\
                     \ and ask the\n                        user for input.\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: show program's version number and exit
-                  synonyms:
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "usage: outrigger [-h] [--version] {index,validate,psi}\
                   \ ...\n\noutrigger (1.1.1). Calculate \"percent-spliced in\" (Psi)\
                   \ scores of alternative\nsplicing on a *de novo*, custom-built splicing\
@@ -1212,15 +1863,16 @@ subcommands:
                   \ and exit\n  --version             show program's version number\
                   \ and exit\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: outrigger psi [-h] [-i INDEX] [-o OUTPUT]\n     \
@@ -1292,88 +1944,89 @@ subcommands:
                 \  --low-memory          If set, then use a smaller memory footprint.\
                 \ By\n                        default, this is off.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional: []
               named:
               - !Flag
-                description: "Location of the genome fasta file for which to get the\n\
-                  splice site sequences from"
+                optional: true
                 synonyms:
                 - -f
                 - --fasta
+                description: "Location of the genome fasta file for which to get the\n\
+                  splice site sequences from"
                 args: !SimpleFlagArg
                   name: FASTA
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - -g
+                - --genome
                 description: "Either the genome name (e.g. \"mm10\" or \"hg19\") or\n\
                   location of the genome chromosome sizes file for\n\"bedtools flank\"\
                   \ to make sure we do not accidentally\nask for genome positions\
                   \ that are outside of the\ndefined range"
-                synonyms:
-                - -g
-                - --genome
                 args: !SimpleFlagArg
                   name: GENOME
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - -i
+                - --index
                 description: "Name of the folder where you saved the output from\n\
                   \"outrigger index\" (default is\n./outrigger_output/index, which\
                   \ is relative to the\ndirectory where you called this program, assuming\
                   \ you\nhave called \"outrigger psi\" in the same folder as you\n\
                   called \"outrigger index\")."
-                synonyms:
-                - -i
-                - --index
                 args: !SimpleFlagArg
                   name: INDEX
-                optional: true
               - !Flag
-                description: "Name of the folder where you saved the output from\n\
-                  \"outrigger index\" (default is ./outrigger_output,\nwhich is relative\
-                  \ to the directory where you called\nthe program)."
+                optional: true
                 synonyms:
                 - -o
                 - --output
+                description: "Name of the folder where you saved the output from\n\
+                  \"outrigger index\" (default is ./outrigger_output,\nwhich is relative\
+                  \ to the directory where you called\nthe program)."
                 args: !SimpleFlagArg
                   name: OUTPUT
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - -s
+                - --valid-splice-sites
                 description: "The intron-definition based splice sites that are\n\
                   allowed in the data, which is in the format 5'/3' of\nthe intron,\
                   \ and separated by commas for different\ntypes. Default is GT/AG,GC/AG,AT/AC,\
                   \ which are the\nmajor and minor spliceosome splice sites in mammalian\n\
                   systems."
-                synonyms:
-                - -s
-                - --valid-splice-sites
                 args: !SimpleFlagArg
                   name: VALID_SPLICE_SITES
-                optional: true
               - !Flag
-                description: "If given, print debugging logging information to\nstandard\
-                  \ out"
+                optional: true
                 synonyms:
                 - --debug
+                description: "If given, print debugging logging information to\nstandard\
+                  \ out"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "If set, then use a smaller memory footprint. By\ndefault,\
-                  \ this is off.\n"
+                optional: true
                 synonyms:
                 - --low-memory
+                description: "If set, then use a smaller memory footprint. By\ndefault,\
+                  \ this is off.\n"
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id007
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: outrigger validate [-h] -f FASTA -g GENOME [-i INDEX]\
@@ -1411,56 +2064,60 @@ subcommands:
                 \ set, then use a smaller memory footprint. By\n                 \
                 \       default, this is off.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional: []
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - -o
+                - --output
                 description: "Name of the folder where you saved the output from\n\
                   \"outrigger index\" (default is ./outrigger_output,\nwhich is relative\
                   \ to the directory where you called\nthe program)\". You will need\
                   \ this file for the next\nstep, \"outrigger psi\""
-                synonyms:
-                - -o
-                - --output
                 args: !SimpleFlagArg
                   name: OUTPUT
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - -j
                 description: "[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab [SJ_OUT_TAB\
                   \ [SJ_OUT_TAB ...]]\nSJ.out.tab files from STAR aligner output.\
                   \ Not\nrequired if you specify \"--compiled-junction-reads\""
-                synonyms:
-                - -j
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "Name of the splice junction files to detect novel\n\
-                  exons and build an index of alternative splicing\nevents from. Not\
-                  \ required if you specify SJ.out.tab\nfile with '--sj-out-tab'"
+                optional: true
                 synonyms:
                 - -c
                 - --junction-reads-csv
+                description: "Name of the splice junction files to detect novel\n\
+                  exons and build an index of alternative splicing\nevents from. Not\
+                  \ required if you specify SJ.out.tab\nfile with '--sj-out-tab'"
                 args: !SimpleFlagArg
                   name: JUNCTION_READS_CSV
-                optional: true
               - !Flag
-                description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nLocation of\
-                  \ bam files to use for finding events."
+                optional: true
                 synonyms:
                 - -b
+                description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nLocation of\
+                  \ bam files to use for finding events."
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "Minimum number of reads per junction for that junction\n\
-                  to count in creating the index of splicing events\n(default=10)"
+                optional: true
                 synonyms:
                 - -m
                 - --min-reads
+                description: "Minimum number of reads per junction for that junction\n\
+                  to count in creating the index of splicing events\n(default=10)"
                 args: !SimpleFlagArg
                   name: MIN_READS
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --ignore-multimapping
                 description: "Applies to STAR SJ.out.tab files only. If this flag\
                   \ is\nused, then do not include reads that mapped to\nmultiple locations\
                   \ in the genome, not uniquely to a\nlocus, in the read count for\
@@ -1468,108 +2125,105 @@ subcommands:
                   \ reads with a mapping\nquality (MAPQ) of less than 255 are considered\n\
                   \"multimapped.\" This is the same thing as what the STAR\naligner\
                   \ does. By default, this is off, and all reads\nare used."
-                synonyms:
-                - --ignore-multimapping
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "Maximum length of an exon detected *de novo* from the\n\
-                  dataset. This is to prevent multiple kilobase long\nexons from being\
-                  \ accidentally created. (default=100)"
+                optional: true
                 synonyms:
                 - -l
                 - --max-de-novo-exon-length
+                description: "Maximum length of an exon detected *de novo* from the\n\
+                  dataset. This is to prevent multiple kilobase long\nexons from being\
+                  \ accidentally created. (default=100)"
                 args: !SimpleFlagArg
                   name: MAX_DE_NOVO_EXON_LENGTH
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - -g
+                - --gtf-filename
                 description: "Name of the gtf file you want to use. If a gffutils\n\
                   feature database doesn't already exist at this\nlocation plus '.db'\
                   \ (e.g. if your gtf is\ngencode.v19.annotation.gtf, then the database\
                   \ is\ninferred to be gencode.v19.annotation.gtf.db), then a\ndatabase\
                   \ will be auto-created. Not required if you\nprovide a pre-built\
                   \ database with '--gffutils-db'"
-                synonyms:
-                - -g
-                - --gtf-filename
                 args: !SimpleFlagArg
                   name: GTF_FILENAME
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - -d
+                - --gffutils-db
                 description: "Name of the gffutils database file you want to use.\n\
                   The exon IDs defined here will be used in the function\nwhen creating\
                   \ splicing event names. Not required if\nyou provide a gtf file\
                   \ with '--gtf-filename'"
-                synonyms:
-                - -d
-                - --gffutils-db
                 args: !SimpleFlagArg
                   name: GFFUTILS_DB
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --debug
                 description: "If given, print debugging logging information to\nstandard\
                   \ out (Warning: LOTS of output. Not recommended\nunless you think\
                   \ something is going wrong)"
-                synonyms:
-                - --debug
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --n-jobs
                 description: "Number of threads to use when parallelizing exon\nfinding\
                   \ and file reading. Default is -1, which means\nto use as many threads\
                   \ as are available."
-                synonyms:
-                - --n-jobs
                 args: !SimpleFlagArg
                   name: N_JOBS
-                optional: true
               - !Flag
-                description: "If set, then use a smaller memory footprint. By\ndefault,\
-                  \ this is off."
+                optional: true
                 synonyms:
                 - --low-memory
+                description: "If set, then use a smaller memory footprint. By\ndefault,\
+                  \ this is off."
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --splice-types
                 description: "Which splice types to find. By default, \"all\" are\
                   \ used\nwhich at this point is skipped exon (SE) and mutually\n\
                   exclusive exon (MXE) events. Can also specify only\none, e.g. \"\
                   se\" or both \"se,mxe\""
-                synonyms:
-                - --splice-types
                 args: !SimpleFlagArg
                   name: SPLICE_TYPES
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --force
                 description: "If the 'outrigger index' command was interrupted,\n\
                   there will be intermediate files remaining. If you\nwish to restart\
                   \ outrigger and overwrite them all, use\nthis flag. If you want\
                   \ to continue from where you left\noff, use the '--resume' flag.\
                   \ If neither is specified,\nthe program exits and complains to the\
                   \ user."
-                synonyms:
-                - --force
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --resume
                 description: "If the 'outrigger index' command was interrupted,\n\
                   there will be intermediate files remaining. If you\nwant to continue\
                   \ from where you left off, use this\nflag. The default action is\
                   \ to do nothing and ask the\nuser for input.\n"
-                synonyms:
-                - --resume
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id007
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: outrigger index [-h] [-o OUTPUT]\n              \
@@ -1655,6 +2309,7 @@ subcommands:
                 \ left off, use this\n                        flag. The default action\
                 \ is to do nothing and ask the\n                        user for input.\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -1673,15 +2328,16 @@ subcommands:
               \        show this help message and exit\n  --version             show\
               \ program's version number and exit\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: outrigger psi [-h] [-i INDEX] [-o OUTPUT]\n         \
@@ -1749,87 +2405,88 @@ subcommands:
             \ set, then use a smaller memory footprint. By\n                     \
             \   default, this is off.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional: []
           named:
           - !Flag
-            description: "Location of the genome fasta file for which to get the\n\
-              splice site sequences from"
+            optional: true
             synonyms:
             - -f
             - --fasta
+            description: "Location of the genome fasta file for which to get the\n\
+              splice site sequences from"
             args: !SimpleFlagArg
               name: FASTA
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - -g
+            - --genome
             description: "Either the genome name (e.g. \"mm10\" or \"hg19\") or\n\
               location of the genome chromosome sizes file for\n\"bedtools flank\"\
               \ to make sure we do not accidentally\nask for genome positions that\
               \ are outside of the\ndefined range"
-            synonyms:
-            - -g
-            - --genome
             args: !SimpleFlagArg
               name: GENOME
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - -i
+            - --index
             description: "Name of the folder where you saved the output from\n\"outrigger\
               \ index\" (default is\n./outrigger_output/index, which is relative to\
               \ the\ndirectory where you called this program, assuming you\nhave called\
               \ \"outrigger psi\" in the same folder as you\ncalled \"outrigger index\"\
               )."
-            synonyms:
-            - -i
-            - --index
             args: !SimpleFlagArg
               name: INDEX
-            optional: true
           - !Flag
-            description: "Name of the folder where you saved the output from\n\"outrigger\
-              \ index\" (default is ./outrigger_output,\nwhich is relative to the\
-              \ directory where you called\nthe program)."
+            optional: true
             synonyms:
             - -o
             - --output
+            description: "Name of the folder where you saved the output from\n\"outrigger\
+              \ index\" (default is ./outrigger_output,\nwhich is relative to the\
+              \ directory where you called\nthe program)."
             args: !SimpleFlagArg
               name: OUTPUT
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - -s
+            - --valid-splice-sites
             description: "The intron-definition based splice sites that are\nallowed\
               \ in the data, which is in the format 5'/3' of\nthe intron, and separated\
               \ by commas for different\ntypes. Default is GT/AG,GC/AG,AT/AC, which\
               \ are the\nmajor and minor spliceosome splice sites in mammalian\nsystems."
-            synonyms:
-            - -s
-            - --valid-splice-sites
             args: !SimpleFlagArg
               name: VALID_SPLICE_SITES
-            optional: true
           - !Flag
-            description: "If given, print debugging logging information to\nstandard\
-              \ out"
+            optional: true
             synonyms:
             - --debug
+            description: "If given, print debugging logging information to\nstandard\
+              \ out"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "If set, then use a smaller memory footprint. By\ndefault,\
-              \ this is off.\n"
+            optional: true
             synonyms:
             - --low-memory
+            description: "If set, then use a smaller memory footprint. By\ndefault,\
+              \ this is off.\n"
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id007
+          parent: *id008
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: outrigger validate [-h] -f FASTA -g GENOME [-i INDEX]\
@@ -1865,56 +2522,60 @@ subcommands:
             \          If set, then use a smaller memory footprint. By\n         \
             \               default, this is off.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional: []
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - -o
+            - --output
             description: "Name of the folder where you saved the output from\n\"outrigger\
               \ index\" (default is ./outrigger_output,\nwhich is relative to the\
               \ directory where you called\nthe program)\". You will need this file\
               \ for the next\nstep, \"outrigger psi\""
-            synonyms:
-            - -o
-            - --output
             args: !SimpleFlagArg
               name: OUTPUT
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - -j
             description: "[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab [SJ_OUT_TAB\
               \ [SJ_OUT_TAB ...]]\nSJ.out.tab files from STAR aligner output. Not\n\
               required if you specify \"--compiled-junction-reads\""
-            synonyms:
-            - -j
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "Name of the splice junction files to detect novel\nexons\
-              \ and build an index of alternative splicing\nevents from. Not required\
-              \ if you specify SJ.out.tab\nfile with '--sj-out-tab'"
+            optional: true
             synonyms:
             - -c
             - --junction-reads-csv
+            description: "Name of the splice junction files to detect novel\nexons\
+              \ and build an index of alternative splicing\nevents from. Not required\
+              \ if you specify SJ.out.tab\nfile with '--sj-out-tab'"
             args: !SimpleFlagArg
               name: JUNCTION_READS_CSV
-            optional: true
           - !Flag
-            description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nLocation of bam\
-              \ files to use for finding events."
+            optional: true
             synonyms:
             - -b
+            description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nLocation of bam\
+              \ files to use for finding events."
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "Minimum number of reads per junction for that junction\n\
-              to count in creating the index of splicing events\n(default=10)"
+            optional: true
             synonyms:
             - -m
             - --min-reads
+            description: "Minimum number of reads per junction for that junction\n\
+              to count in creating the index of splicing events\n(default=10)"
             args: !SimpleFlagArg
               name: MIN_READS
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --ignore-multimapping
             description: "Applies to STAR SJ.out.tab files only. If this flag is\n\
               used, then do not include reads that mapped to\nmultiple locations in\
               \ the genome, not uniquely to a\nlocus, in the read count for a junction.\
@@ -1922,106 +2583,103 @@ subcommands:
               quality (MAPQ) of less than 255 are considered\n\"multimapped.\" This\
               \ is the same thing as what the STAR\naligner does. By default, this\
               \ is off, and all reads\nare used."
-            synonyms:
-            - --ignore-multimapping
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "Maximum length of an exon detected *de novo* from the\n\
-              dataset. This is to prevent multiple kilobase long\nexons from being\
-              \ accidentally created. (default=100)"
+            optional: true
             synonyms:
             - -l
             - --max-de-novo-exon-length
+            description: "Maximum length of an exon detected *de novo* from the\n\
+              dataset. This is to prevent multiple kilobase long\nexons from being\
+              \ accidentally created. (default=100)"
             args: !SimpleFlagArg
               name: MAX_DE_NOVO_EXON_LENGTH
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - -g
+            - --gtf-filename
             description: "Name of the gtf file you want to use. If a gffutils\nfeature\
               \ database doesn't already exist at this\nlocation plus '.db' (e.g.\
               \ if your gtf is\ngencode.v19.annotation.gtf, then the database is\n\
               inferred to be gencode.v19.annotation.gtf.db), then a\ndatabase will\
               \ be auto-created. Not required if you\nprovide a pre-built database\
               \ with '--gffutils-db'"
-            synonyms:
-            - -g
-            - --gtf-filename
             args: !SimpleFlagArg
               name: GTF_FILENAME
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - -d
+            - --gffutils-db
             description: "Name of the gffutils database file you want to use.\nThe\
               \ exon IDs defined here will be used in the function\nwhen creating\
               \ splicing event names. Not required if\nyou provide a gtf file with\
               \ '--gtf-filename'"
-            synonyms:
-            - -d
-            - --gffutils-db
             args: !SimpleFlagArg
               name: GFFUTILS_DB
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --debug
             description: "If given, print debugging logging information to\nstandard\
               \ out (Warning: LOTS of output. Not recommended\nunless you think something\
               \ is going wrong)"
-            synonyms:
-            - --debug
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --n-jobs
             description: "Number of threads to use when parallelizing exon\nfinding\
               \ and file reading. Default is -1, which means\nto use as many threads\
               \ as are available."
-            synonyms:
-            - --n-jobs
             args: !SimpleFlagArg
               name: N_JOBS
-            optional: true
           - !Flag
-            description: "If set, then use a smaller memory footprint. By\ndefault,\
-              \ this is off."
+            optional: true
             synonyms:
             - --low-memory
+            description: "If set, then use a smaller memory footprint. By\ndefault,\
+              \ this is off."
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --splice-types
             description: "Which splice types to find. By default, \"all\" are used\n\
               which at this point is skipped exon (SE) and mutually\nexclusive exon\
               \ (MXE) events. Can also specify only\none, e.g. \"se\" or both \"se,mxe\""
-            synonyms:
-            - --splice-types
             args: !SimpleFlagArg
               name: SPLICE_TYPES
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --force
             description: "If the 'outrigger index' command was interrupted,\nthere\
               \ will be intermediate files remaining. If you\nwish to restart outrigger\
               \ and overwrite them all, use\nthis flag. If you want to continue from\
               \ where you left\noff, use the '--resume' flag. If neither is specified,\n\
               the program exits and complains to the user."
-            synonyms:
-            - --force
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --resume
             description: "If the 'outrigger index' command was interrupted,\nthere\
               \ will be intermediate files remaining. If you\nwant to continue from\
               \ where you left off, use this\nflag. The default action is to do nothing\
               \ and ask the\nuser for input.\n"
-            synonyms:
-            - --resume
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id007
+          parent: *id008
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: outrigger index [-h] [-o OUTPUT]\n                  \
@@ -2101,6 +2759,7 @@ subcommands:
             \ use this\n                        flag. The default action is to do\
             \ nothing and ask the\n                        user for input.\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -2118,15 +2777,16 @@ subcommands:
           \  -h, --help            show this help message and exit\n  --version  \
           \           show program's version number and exit\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: outrigger psi [-h] [-i INDEX] [-o OUTPUT]\n             \
@@ -2191,85 +2851,86 @@ subcommands:
         \  --low-memory          If set, then use a smaller memory footprint. By\n\
         \                        default, this is off.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional: []
       named:
       - !Flag
-        description: "Location of the genome fasta file for which to get the\nsplice\
-          \ site sequences from"
+        optional: true
         synonyms:
         - -f
         - --fasta
+        description: "Location of the genome fasta file for which to get the\nsplice\
+          \ site sequences from"
         args: !SimpleFlagArg
           name: FASTA
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - -g
+        - --genome
         description: "Either the genome name (e.g. \"mm10\" or \"hg19\") or\nlocation\
           \ of the genome chromosome sizes file for\n\"bedtools flank\" to make sure\
           \ we do not accidentally\nask for genome positions that are outside of the\n\
           defined range"
-        synonyms:
-        - -g
-        - --genome
         args: !SimpleFlagArg
           name: GENOME
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - -i
+        - --index
         description: "Name of the folder where you saved the output from\n\"outrigger\
           \ index\" (default is\n./outrigger_output/index, which is relative to the\n\
           directory where you called this program, assuming you\nhave called \"outrigger\
           \ psi\" in the same folder as you\ncalled \"outrigger index\")."
-        synonyms:
-        - -i
-        - --index
         args: !SimpleFlagArg
           name: INDEX
-        optional: true
       - !Flag
-        description: "Name of the folder where you saved the output from\n\"outrigger\
-          \ index\" (default is ./outrigger_output,\nwhich is relative to the directory\
-          \ where you called\nthe program)."
+        optional: true
         synonyms:
         - -o
         - --output
+        description: "Name of the folder where you saved the output from\n\"outrigger\
+          \ index\" (default is ./outrigger_output,\nwhich is relative to the directory\
+          \ where you called\nthe program)."
         args: !SimpleFlagArg
           name: OUTPUT
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - -s
+        - --valid-splice-sites
         description: "The intron-definition based splice sites that are\nallowed in\
           \ the data, which is in the format 5'/3' of\nthe intron, and separated by\
           \ commas for different\ntypes. Default is GT/AG,GC/AG,AT/AC, which are the\n\
           major and minor spliceosome splice sites in mammalian\nsystems."
-        synonyms:
-        - -s
-        - --valid-splice-sites
         args: !SimpleFlagArg
           name: VALID_SPLICE_SITES
-        optional: true
       - !Flag
-        description: "If given, print debugging logging information to\nstandard out"
+        optional: true
         synonyms:
         - --debug
+        description: "If given, print debugging logging information to\nstandard out"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "If set, then use a smaller memory footprint. By\ndefault, this\
-          \ is off.\n"
+        optional: true
         synonyms:
         - --low-memory
+        description: "If set, then use a smaller memory footprint. By\ndefault, this\
+          \ is off.\n"
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: outrigger validate [-h] -f FASTA -g GENOME [-i INDEX] [-o\
@@ -2303,56 +2964,60 @@ subcommands:
         \  --low-memory          If set, then use a smaller memory footprint. By\n\
         \                        default, this is off.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional: []
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - -o
+        - --output
         description: "Name of the folder where you saved the output from\n\"outrigger\
           \ index\" (default is ./outrigger_output,\nwhich is relative to the directory\
           \ where you called\nthe program)\". You will need this file for the next\n\
           step, \"outrigger psi\""
-        synonyms:
-        - -o
-        - --output
         args: !SimpleFlagArg
           name: OUTPUT
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - -j
         description: "[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab [SJ_OUT_TAB [SJ_OUT_TAB\
           \ ...]]\nSJ.out.tab files from STAR aligner output. Not\nrequired if you\
           \ specify \"--compiled-junction-reads\""
-        synonyms:
-        - -j
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "Name of the splice junction files to detect novel\nexons and\
-          \ build an index of alternative splicing\nevents from. Not required if you\
-          \ specify SJ.out.tab\nfile with '--sj-out-tab'"
+        optional: true
         synonyms:
         - -c
         - --junction-reads-csv
+        description: "Name of the splice junction files to detect novel\nexons and\
+          \ build an index of alternative splicing\nevents from. Not required if you\
+          \ specify SJ.out.tab\nfile with '--sj-out-tab'"
         args: !SimpleFlagArg
           name: JUNCTION_READS_CSV
-        optional: true
       - !Flag
-        description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nLocation of bam files\
-          \ to use for finding events."
+        optional: true
         synonyms:
         - -b
+        description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nLocation of bam files\
+          \ to use for finding events."
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "Minimum number of reads per junction for that junction\nto count\
-          \ in creating the index of splicing events\n(default=10)"
+        optional: true
         synonyms:
         - -m
         - --min-reads
+        description: "Minimum number of reads per junction for that junction\nto count\
+          \ in creating the index of splicing events\n(default=10)"
         args: !SimpleFlagArg
           name: MIN_READS
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --ignore-multimapping
         description: "Applies to STAR SJ.out.tab files only. If this flag is\nused,\
           \ then do not include reads that mapped to\nmultiple locations in the genome,\
           \ not uniquely to a\nlocus, in the read count for a junction. If inputting\n\
@@ -2360,104 +3025,101 @@ subcommands:
           \ of less than 255 are considered\n\"multimapped.\" This is the same thing\
           \ as what the STAR\naligner does. By default, this is off, and all reads\n\
           are used."
-        synonyms:
-        - --ignore-multimapping
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "Maximum length of an exon detected *de novo* from the\ndataset.\
-          \ This is to prevent multiple kilobase long\nexons from being accidentally\
-          \ created. (default=100)"
+        optional: true
         synonyms:
         - -l
         - --max-de-novo-exon-length
+        description: "Maximum length of an exon detected *de novo* from the\ndataset.\
+          \ This is to prevent multiple kilobase long\nexons from being accidentally\
+          \ created. (default=100)"
         args: !SimpleFlagArg
           name: MAX_DE_NOVO_EXON_LENGTH
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - -g
+        - --gtf-filename
         description: "Name of the gtf file you want to use. If a gffutils\nfeature\
           \ database doesn't already exist at this\nlocation plus '.db' (e.g. if your\
           \ gtf is\ngencode.v19.annotation.gtf, then the database is\ninferred to\
           \ be gencode.v19.annotation.gtf.db), then a\ndatabase will be auto-created.\
           \ Not required if you\nprovide a pre-built database with '--gffutils-db'"
-        synonyms:
-        - -g
-        - --gtf-filename
         args: !SimpleFlagArg
           name: GTF_FILENAME
-        optional: true
       - !Flag
-        description: "Name of the gffutils database file you want to use.\nThe exon\
-          \ IDs defined here will be used in the function\nwhen creating splicing\
-          \ event names. Not required if\nyou provide a gtf file with '--gtf-filename'"
+        optional: true
         synonyms:
         - -d
         - --gffutils-db
+        description: "Name of the gffutils database file you want to use.\nThe exon\
+          \ IDs defined here will be used in the function\nwhen creating splicing\
+          \ event names. Not required if\nyou provide a gtf file with '--gtf-filename'"
         args: !SimpleFlagArg
           name: GFFUTILS_DB
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --debug
         description: "If given, print debugging logging information to\nstandard out\
           \ (Warning: LOTS of output. Not recommended\nunless you think something\
           \ is going wrong)"
-        synonyms:
-        - --debug
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --n-jobs
         description: "Number of threads to use when parallelizing exon\nfinding and\
           \ file reading. Default is -1, which means\nto use as many threads as are\
           \ available."
-        synonyms:
-        - --n-jobs
         args: !SimpleFlagArg
           name: N_JOBS
-        optional: true
       - !Flag
-        description: "If set, then use a smaller memory footprint. By\ndefault, this\
-          \ is off."
+        optional: true
         synonyms:
         - --low-memory
+        description: "If set, then use a smaller memory footprint. By\ndefault, this\
+          \ is off."
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --splice-types
         description: "Which splice types to find. By default, \"all\" are used\nwhich\
           \ at this point is skipped exon (SE) and mutually\nexclusive exon (MXE)\
           \ events. Can also specify only\none, e.g. \"se\" or both \"se,mxe\""
-        synonyms:
-        - --splice-types
         args: !SimpleFlagArg
           name: SPLICE_TYPES
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --force
         description: "If the 'outrigger index' command was interrupted,\nthere will\
           \ be intermediate files remaining. If you\nwish to restart outrigger and\
           \ overwrite them all, use\nthis flag. If you want to continue from where\
           \ you left\noff, use the '--resume' flag. If neither is specified,\nthe\
           \ program exits and complains to the user."
-        synonyms:
-        - --force
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --resume
         description: "If the 'outrigger index' command was interrupted,\nthere will\
           \ be intermediate files remaining. If you\nwant to continue from where you\
           \ left off, use this\nflag. The default action is to do nothing and ask\
           \ the\nuser for input.\n"
-        synonyms:
-        - --resume
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: outrigger index [-h] [-o OUTPUT]\n                      \
@@ -2534,6 +3196,7 @@ subcommands:
         \                        flag. The default action is to do nothing and ask\
         \ the\n                        user for input.\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -2550,15 +3213,16 @@ subcommands:
       \ index\"\n\noptional arguments:\n  -h, --help            show this help message\
       \ and exit\n  --version             show program's version number and exit\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: outrigger psi [-h] [-i INDEX] [-o OUTPUT]\n                 \
@@ -2620,85 +3284,86 @@ subcommands:
     \ threads as are available.\n  --low-memory          If set, then use a smaller\
     \ memory footprint. By\n                        default, this is off.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional: []
   named:
   - !Flag
-    description: "Location of the genome fasta file for which to get the\nsplice site\
-      \ sequences from"
+    optional: true
     synonyms:
     - -f
     - --fasta
+    description: "Location of the genome fasta file for which to get the\nsplice site\
+      \ sequences from"
     args: !SimpleFlagArg
       name: FASTA
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --genome
     description: "Either the genome name (e.g. \"mm10\" or \"hg19\") or\nlocation\
       \ of the genome chromosome sizes file for\n\"bedtools flank\" to make sure we\
       \ do not accidentally\nask for genome positions that are outside of the\ndefined\
       \ range"
-    synonyms:
-    - -g
-    - --genome
     args: !SimpleFlagArg
       name: GENOME
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --index
     description: "Name of the folder where you saved the output from\n\"outrigger\
       \ index\" (default is\n./outrigger_output/index, which is relative to the\n\
       directory where you called this program, assuming you\nhave called \"outrigger\
       \ psi\" in the same folder as you\ncalled \"outrigger index\")."
-    synonyms:
-    - -i
-    - --index
     args: !SimpleFlagArg
       name: INDEX
-    optional: true
   - !Flag
-    description: "Name of the folder where you saved the output from\n\"outrigger\
-      \ index\" (default is ./outrigger_output,\nwhich is relative to the directory\
-      \ where you called\nthe program)."
+    optional: true
     synonyms:
     - -o
     - --output
+    description: "Name of the folder where you saved the output from\n\"outrigger\
+      \ index\" (default is ./outrigger_output,\nwhich is relative to the directory\
+      \ where you called\nthe program)."
     args: !SimpleFlagArg
       name: OUTPUT
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --valid-splice-sites
     description: "The intron-definition based splice sites that are\nallowed in the\
       \ data, which is in the format 5'/3' of\nthe intron, and separated by commas\
       \ for different\ntypes. Default is GT/AG,GC/AG,AT/AC, which are the\nmajor and\
       \ minor spliceosome splice sites in mammalian\nsystems."
-    synonyms:
-    - -s
-    - --valid-splice-sites
     args: !SimpleFlagArg
       name: VALID_SPLICE_SITES
-    optional: true
   - !Flag
-    description: "If given, print debugging logging information to\nstandard out"
+    optional: true
     synonyms:
     - --debug
+    description: "If given, print debugging logging information to\nstandard out"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "If set, then use a smaller memory footprint. By\ndefault, this is\
-      \ off.\n"
+    optional: true
     synonyms:
     - --low-memory
+    description: "If set, then use a smaller memory footprint. By\ndefault, this is\
+      \ off.\n"
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: outrigger validate [-h] -f FASTA -g GENOME [-i INDEX] [-o OUTPUT]\n\
@@ -2731,158 +3396,159 @@ subcommands:
     \  --low-memory          If set, then use a smaller memory footprint. By\n   \
     \                     default, this is off.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional: []
   named:
   - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
     description: "Name of the folder where you saved the output from\n\"outrigger\
       \ index\" (default is ./outrigger_output,\nwhich is relative to the directory\
       \ where you called\nthe program)\". You will need this file for the next\nstep,\
       \ \"outrigger psi\""
-    synonyms:
-    - -o
-    - --output
     args: !SimpleFlagArg
       name: OUTPUT
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - -j
     description: "[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab [SJ_OUT_TAB [SJ_OUT_TAB\
       \ ...]]\nSJ.out.tab files from STAR aligner output. Not\nrequired if you specify\
       \ \"--compiled-junction-reads\""
-    synonyms:
-    - -j
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "Name of the splice junction files to detect novel\nexons and build\
-      \ an index of alternative splicing\nevents from. Not required if you specify\
-      \ SJ.out.tab\nfile with '--sj-out-tab'"
+    optional: true
     synonyms:
     - -c
     - --junction-reads-csv
+    description: "Name of the splice junction files to detect novel\nexons and build\
+      \ an index of alternative splicing\nevents from. Not required if you specify\
+      \ SJ.out.tab\nfile with '--sj-out-tab'"
     args: !SimpleFlagArg
       name: JUNCTION_READS_CSV
-    optional: true
   - !Flag
-    description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nLocation of bam files to\
-      \ use for finding events."
+    optional: true
     synonyms:
     - -b
+    description: "[BAM [BAM ...]], --bam [BAM [BAM ...]]\nLocation of bam files to\
+      \ use for finding events."
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "Minimum number of reads per junction for that junction\nto count\
-      \ in creating the index of splicing events\n(default=10)"
+    optional: true
     synonyms:
     - -m
     - --min-reads
+    description: "Minimum number of reads per junction for that junction\nto count\
+      \ in creating the index of splicing events\n(default=10)"
     args: !SimpleFlagArg
       name: MIN_READS
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --ignore-multimapping
     description: "Applies to STAR SJ.out.tab files only. If this flag is\nused, then\
       \ do not include reads that mapped to\nmultiple locations in the genome, not\
       \ uniquely to a\nlocus, in the read count for a junction. If inputting\n\"bam\"\
       \ files, then this means that reads with a mapping\nquality (MAPQ) of less than\
       \ 255 are considered\n\"multimapped.\" This is the same thing as what the STAR\n\
       aligner does. By default, this is off, and all reads\nare used."
-    synonyms:
-    - --ignore-multimapping
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "Maximum length of an exon detected *de novo* from the\ndataset.\
-      \ This is to prevent multiple kilobase long\nexons from being accidentally created.\
-      \ (default=100)"
+    optional: true
     synonyms:
     - -l
     - --max-de-novo-exon-length
+    description: "Maximum length of an exon detected *de novo* from the\ndataset.\
+      \ This is to prevent multiple kilobase long\nexons from being accidentally created.\
+      \ (default=100)"
     args: !SimpleFlagArg
       name: MAX_DE_NOVO_EXON_LENGTH
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gtf-filename
     description: "Name of the gtf file you want to use. If a gffutils\nfeature database\
       \ doesn't already exist at this\nlocation plus '.db' (e.g. if your gtf is\n\
       gencode.v19.annotation.gtf, then the database is\ninferred to be gencode.v19.annotation.gtf.db),\
       \ then a\ndatabase will be auto-created. Not required if you\nprovide a pre-built\
       \ database with '--gffutils-db'"
-    synonyms:
-    - -g
-    - --gtf-filename
     args: !SimpleFlagArg
       name: GTF_FILENAME
-    optional: true
   - !Flag
-    description: "Name of the gffutils database file you want to use.\nThe exon IDs\
-      \ defined here will be used in the function\nwhen creating splicing event names.\
-      \ Not required if\nyou provide a gtf file with '--gtf-filename'"
+    optional: true
     synonyms:
     - -d
     - --gffutils-db
+    description: "Name of the gffutils database file you want to use.\nThe exon IDs\
+      \ defined here will be used in the function\nwhen creating splicing event names.\
+      \ Not required if\nyou provide a gtf file with '--gtf-filename'"
     args: !SimpleFlagArg
       name: GFFUTILS_DB
-    optional: true
   - !Flag
-    description: "If given, print debugging logging information to\nstandard out (Warning:\
-      \ LOTS of output. Not recommended\nunless you think something is going wrong)"
+    optional: true
     synonyms:
     - --debug
+    description: "If given, print debugging logging information to\nstandard out (Warning:\
+      \ LOTS of output. Not recommended\nunless you think something is going wrong)"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "Number of threads to use when parallelizing exon\nfinding and file\
-      \ reading. Default is -1, which means\nto use as many threads as are available."
+    optional: true
     synonyms:
     - --n-jobs
+    description: "Number of threads to use when parallelizing exon\nfinding and file\
+      \ reading. Default is -1, which means\nto use as many threads as are available."
     args: !SimpleFlagArg
       name: N_JOBS
-    optional: true
   - !Flag
-    description: "If set, then use a smaller memory footprint. By\ndefault, this is\
-      \ off."
+    optional: true
     synonyms:
     - --low-memory
+    description: "If set, then use a smaller memory footprint. By\ndefault, this is\
+      \ off."
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --splice-types
     description: "Which splice types to find. By default, \"all\" are used\nwhich\
       \ at this point is skipped exon (SE) and mutually\nexclusive exon (MXE) events.\
       \ Can also specify only\none, e.g. \"se\" or both \"se,mxe\""
-    synonyms:
-    - --splice-types
     args: !SimpleFlagArg
       name: SPLICE_TYPES
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --force
     description: "If the 'outrigger index' command was interrupted,\nthere will be\
       \ intermediate files remaining. If you\nwish to restart outrigger and overwrite\
       \ them all, use\nthis flag. If you want to continue from where you left\noff,\
       \ use the '--resume' flag. If neither is specified,\nthe program exits and complains\
       \ to the user."
-    synonyms:
-    - --force
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --resume
     description: "If the 'outrigger index' command was interrupted,\nthere will be\
       \ intermediate files remaining. If you\nwant to continue from where you left\
       \ off, use this\nflag. The default action is to do nothing and ask the\nuser\
       \ for input.\n"
-    synonyms:
-    - --resume
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: outrigger index [-h] [-o OUTPUT]\n                       (-j\
@@ -2956,6 +3622,7 @@ subcommands:
     \            flag. The default action is to do nothing and ask the\n         \
     \               user for input.\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -2972,3 +3639,4 @@ help_text: "usage: outrigger [-h] [--version] {index,validate,psi} ...\n\noutrig
   \ arguments:\n  -h, --help            show this help message and exit\n  --version\
   \             show program's version number and exit\n"
 generated_using: *id004
+docker_image:

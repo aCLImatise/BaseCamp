@@ -12,6 +12,9 @@ task Glam2format {
       ~{if (make_compact_alignment) then "-c" else ""} \
       ~{if (sequence_file_flanking) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_stdout: ": output file (stdout)"
     make_compact_alignment: ": make a compact alignment"

@@ -8,19 +8,20 @@ inputs:
     prefix: --allc-files
 - id: in_num_procs
   doc: 'Number of processors to use (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-procs
 - id: in_re_index
   doc: "Boolean indicating whether to index allc files whose\nindex files already\
     \ exist. (default: True)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reindex
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - methylpy

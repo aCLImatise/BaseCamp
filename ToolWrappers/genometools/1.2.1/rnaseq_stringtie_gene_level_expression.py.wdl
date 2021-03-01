@@ -34,6 +34,9 @@ task RnaseqStringtieGeneLevelExpressionpy {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_tie_file: "Path of the StringTie output file ."
     gene_file: "File containing a list of protein-coding genes."

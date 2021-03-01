@@ -3,184 +3,187 @@ command:
 - BuildConsensus.py
 positional:
 - !Positional
-  description: consensus reads.
+  optional: false
   position: 0
   name: consensus-pass
-  optional: false
+  description: consensus reads.
 - !Positional
-  description: raw reads failing consensus filtering criteria.
+  optional: false
   position: 1
   name: consensus-fail
-  optional: false
+  description: raw reads failing consensus filtering criteria.
 - !Positional
-  description: "a comma delimited list of unique primer annotations found within the\n\
-    barcode read group."
+  optional: false
   position: 0
   name: PRIMER
-  optional: false
+  description: "a comma delimited list of unique primer annotations found within the\n\
+    barcode read group."
 - !Positional
-  description: a comma delimited list of the corresponding counts of unique primer
+  optional: false
   position: 1
   name: PRCOUNT
-  optional: false
+  description: a comma delimited list of the corresponding counts of unique primer
 - !Positional
-  description: PRCONS
+  optional: false
   position: 2
   name: annotations.
-  optional: false
+  description: PRCONS
 - !Positional
-  description: the frequency of the majority primer.
+  optional: false
   position: 0
   name: PRFREQ
-  optional: false
+  description: the frequency of the majority primer.
 - !Positional
+  optional: false
+  position: 1
+  name: CONSCOUNT
   description: "the count of reads within the barcode read group which contributed\
     \ to\nthe consensus sequence. This is the total size of the read group,\nminus\
     \ sequence excluded due to user defined filtering criteria.\n"
-  position: 1
-  name: CONSCOUNT
-  optional: false
 named:
 - !Flag
-  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
-    \ None)"
+  optional: true
   synonyms:
   - -s
+  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
+    \ None)"
   args: !RepeatFlagArg
     name: SEQ_FILES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
   description: "Explicit output file name(s). Note, this argument\ncannot be used\
     \ with the --failed, --outdir, or\n--outname arguments. If unspecified, then the\
     \ output\nfilename will be based on the input filename(s).\n(default: None)"
-  synonyms:
-  - -o
   args: !RepeatFlagArg
     name: OUT_FILES
-  optional: true
 - !Flag
-  description: "Specify to changes the output directory to the\nlocation specified.\
-    \ The input file directory is used\nif this is not specified. (default: None)"
+  optional: true
   synonyms:
   - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
   args: !SimpleFlagArg
     name: OUT_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outname
   description: "Changes the prefix of the successfully processed\noutput file to the\
     \ string specified. May not be\nspecified with multiple input files. (default:\
     \ None)"
-  synonyms:
-  - --outname
   args: !SimpleFlagArg
     name: OUT_NAME
-  optional: true
 - !Flag
-  description: "Specify to write verbose logging to a file. May not be\nspecified\
-    \ with multiple input files. (default: None)"
+  optional: true
   synonyms:
   - --log
+  description: "Specify to write verbose logging to a file. May not be\nspecified\
+    \ with multiple input files. (default: None)"
   args: !SimpleFlagArg
     name: LOG_FILE
-  optional: true
 - !Flag
-  description: "If specified create files containing records that fail\nprocessing.\
-    \ (default: False)"
+  optional: true
   synonyms:
   - --failed
+  description: "If specified create files containing records that fail\nprocessing.\
+    \ (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
+  optional: true
   synonyms:
   - --fasta
+  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --delim
   description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
     annotation blocks, field names and values, and values\nwithin a field, respectively.\
     \ (default: ('|', '=',\n','))"
-  synonyms:
-  - --delim
   args: !SimpleFlagArg
     name: DELIMITER
-  optional: true
 - !Flag
-  description: "The number of simultaneous computational processes to\nexecute (CPU\
-    \ cores to utilized). (default: 8)"
+  optional: true
   synonyms:
   - --nproc
+  description: "The number of simultaneous computational processes to\nexecute (CPU\
+    \ cores to utilized). (default: 8)"
   args: !SimpleFlagArg
     name: NPROC
-  optional: true
 - !Flag
-  description: "The minimum number of sequences needed to define a\nvalid consensus.\
-    \ (default: 1)"
+  optional: true
   synonyms:
   - -n
+  description: "The minimum number of sequences needed to define a\nvalid consensus.\
+    \ (default: 1)"
   args: !SimpleFlagArg
     name: MIN_COUNT
-  optional: true
 - !Flag
-  description: "Position of description barcode field to group\nsequences by. (default:\
-    \ BARCODE)"
+  optional: true
   synonyms:
   - --bf
+  description: "Position of description barcode field to group\nsequences by. (default:\
+    \ BARCODE)"
   args: !SimpleFlagArg
     name: BARCODE_FIELD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -q
   description: "Consensus quality score cut-off under which an\nambiguous character\
     \ is assigned; does not apply when\nquality scores are unavailable. (default:\
     \ 0)"
-  synonyms:
-  - -q
   args: !SimpleFlagArg
     name: MIN_QUAL
-  optional: true
 - !Flag
-  description: "Fraction of character occurrences under which an\nambiguous character\
-    \ is assigned. (default: 0.6)"
+  optional: true
   synonyms:
   - --freq
+  description: "Fraction of character occurrences under which an\nambiguous character\
+    \ is assigned. (default: 0.6)"
   args: !SimpleFlagArg
     name: MIN_FREQ
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxgap
   description: "If specified, this defines a cut-off for the frequency\nof allowed\
     \ gap values for each position. Positions\nexceeding the threshold are deleted\
     \ from the\nconsensus. If not defined, positions are always\nretained. (default:\
     \ None)"
-  synonyms:
-  - --maxgap
   args: !SimpleFlagArg
     name: MAX_GAP
-  optional: true
 - !Flag
-  description: "Specifies the field name of the primer annotations\n(default: None)"
+  optional: true
   synonyms:
   - --pf
+  description: "Specifies the field name of the primer annotations\n(default: None)"
   args: !SimpleFlagArg
     name: PRIMER_FIELD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --prcons
   description: "Specify to define a minimum primer frequency required\nto assign a\
     \ consensus primer, and filter out sequences\nwith minority primers from the consensus\
     \ building\nstep. (default: None)"
-  synonyms:
-  - --prcons
   args: !SimpleFlagArg
     name: PRIMER_FREQ
-  optional: true
 - !Flag
-  description: "Specifies a set of additional annotation fields to\ncopy into the\
-    \ consensus sequence annotations.\n(default: None)"
+  optional: true
   synonyms:
   - --cf
+  description: "Specifies a set of additional annotation fields to\ncopy into the\
+    \ consensus sequence annotations.\n(default: None)"
   args: !RepeatFlagArg
     name: COPY_FIELDS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --act
   description: "[{min,max,sum,set,majority} ...]\nList of actions to take for each\
     \ copy field which\ndefines how each annotation will be combined into a\nsingle\
     \ value. The actions \"min\", \"max\", \"sum\" perform\nthe corresponding mathematical\
@@ -190,63 +193,60 @@ named:
     the most frequent annotation to the consensus\nannotation and adds an annotation\
     \ named <FIELD>_FREQ\nspecifying the frequency of the majority value.\n(default:\
     \ None)"
-  synonyms:
-  - --act
   args: !ChoiceFlagArg
     choices: !!set
-      min:
       set:
-      sum:
-      max:
       majority:
-  optional: true
+      sum:
+      min:
+      max:
 - !Flag
-  description: "Specify to calculate consensus quality with a non-\nindependence assumption\
-    \ (default: False)"
+  optional: true
   synonyms:
   - --dep
+  description: "Specify to calculate consensus quality with a non-\nindependence assumption\
+    \ (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxdiv
   description: "Specify to calculate the nucleotide diversity of each\nread group\
     \ (average pairwise error rate) and remove\ngroups exceeding the given diversity\
     \ threshold.\nDiversity is calculate for all positions within the\nread group,\
     \ ignoring any character filtering imposed\nby the -q, --freq and --maxgap arguments.\
     \ Mutually\nexclusive with --maxerror. (default: None)"
-  synonyms:
-  - --maxdiv
   args: !SimpleFlagArg
     name: MAX_DIVERSITY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxerror
   description: "Specify to calculate the error rate of each read group\n(rate of mismatches\
     \ from consensus) and remove groups\nexceeding the given error threshold. The\
     \ error rate is\ncalculated against the final consensus sequence, which\nmay include\
     \ masked positions due to the -q and --freq\narguments and may have deleted positions\
     \ due to the\n--maxgap argument. Mutually exclusive with --maxdiv.\n(default:\
     \ None)"
-  synonyms:
-  - --maxerror
   args: !SimpleFlagArg
     name: MAX_ERROR
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: BuildConsensus.py [--version] [-h] -s SEQ_FILES [SEQ_FILES ...]\n\
   \                         [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n  \
   \                       [--outname OUT_NAME] [--log LOG_FILE] [--failed]\n     \
@@ -343,3 +343,4 @@ help_text: "usage: BuildConsensus.py [--version] [-h] -s SEQ_FILES [SEQ_FILES ..
   \ criteria.\n"
 generated_using:
 - --help
+docker_image:

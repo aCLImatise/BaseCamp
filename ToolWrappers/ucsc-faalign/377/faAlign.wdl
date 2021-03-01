@@ -12,6 +12,9 @@ task FaAlign {
       ~{query_dot_fa} \
       ~{if (dna) then "-dna" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "- use DNA scoring scheme"
     target_dot_fa: ""

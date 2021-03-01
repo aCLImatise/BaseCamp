@@ -18,6 +18,9 @@ task HmmgsMerge {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(short_sample_name) then ("--short_samplename " +  '"' + short_sample_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "Generate all combinations for multiple\\npaths, instead of just the best"
     min_bits: "Minimum bits score"

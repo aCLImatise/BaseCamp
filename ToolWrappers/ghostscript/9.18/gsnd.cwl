@@ -3,23 +3,23 @@ id: gsnd.cwl
 inputs:
 - id: in_d_no_pause
   doc: no pause after page   | -q       `quiet', fewer messages
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -dNOPAUSE
 - id: in_widthxheight_page_size
   doc: <width>x<height>  page size in pixels   | -r<res>  pixels/inch resolution
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
 - id: in_s_device
   doc: select device         | -dBATCH  exit after last file
-  type: File
+  type: File?
   inputBinding:
     prefix: -sDEVICE
 - id: in_soutputfile
   doc: "select output file: - for stdout, |command for pipe,\nembed %d or %ld for\
     \ page #"
-  type: File
+  type: File?
   inputBinding:
     prefix: -sOutputFile
 - id: in_gs
@@ -29,12 +29,12 @@ inputs:
     position: 0
 - id: in_switches
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 1
 - id: in_file_two_do_tps
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     position: 2
 outputs:
@@ -44,9 +44,10 @@ outputs:
 - id: out_soutputfile
   doc: "select output file: - for stdout, |command for pipe,\nembed %d or %ld for\
     \ page #"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_soutputfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gsnd

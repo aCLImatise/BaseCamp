@@ -2,7 +2,7 @@ version 1.0
 
 task Obabel {
   input {
-    Boolean? start_import_molecule
+    Boolean? start_import_specified
     Boolean? end_import_molecule
     String? next_object_error
     String? the_output_gzip
@@ -28,7 +28,7 @@ task Obabel {
       ~{in_filename} \
       ~{output_type} \
       ~{out_filename} \
-      ~{if (start_import_molecule) then "-f" else ""} \
+      ~{if (start_import_specified) then "-f" else ""} \
       ~{if (end_import_molecule) then "-l" else ""} \
       ~{if defined(next_object_error) then ("-e " +  '"' + next_object_error + '"') else ""} \
       ~{if defined(the_output_gzip) then ("-z " +  '"' + the_output_gzip + '"') else ""} \
@@ -44,8 +44,11 @@ task Obabel {
       ~{if (var_13) then "-o" else ""} \
       ~{if (i) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    start_import_molecule: "<#> Start import at molecule # specified"
+    start_import_specified: "<#> Start import at molecule # specified"
     end_import_molecule: "<#> End import at molecule # specified"
     next_object_error: "with next object after error, if possible"
     the_output_gzip: "the output with gzip"

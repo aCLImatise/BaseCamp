@@ -3,20 +3,77 @@ command:
 - entropy-score
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: sequence-file
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: coords
-  optional: false
-named: []
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dir
+  description: "Use the 4th column of each input line to specify the direction\nof\
+    \ the sequence.  Positive is forward, negative is reverse\nThe input sequence\
+    \ is assumed to be circular"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  - --entropy
+  description: "Read entropy profiles from <filename>.  Format is one header\nline,\
+    \ then 20 lines of 3 columns each.  Columns are amino acid,\npositive entropy,\
+    \ negative entropy.  Rows must be in order\nby amino acid code letter"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --minlen
+  description: Don't output any sequence shorter than <n> characters
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --nostart
+  description: Omit the first 3 characters of each specified string
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --nostop
+  description: Omit the last 3 characters of each specified string
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --nowrap
+  description: "Use the actual input coordinates without any wraparound\nthat would\
+    \ be needed by a circular genome.  Without this\noption, the output sequence is\
+    \ the shorter of the two ways\naround the circle.  Use the -d option to specify\
+    \ direction\nexplicitly.\n"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print this message
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "USAGE:  entropy-score [options] <sequence-file> <coords>\n\nRead fasta-format\
@@ -41,3 +98,4 @@ help_text: "USAGE:  entropy-score [options] <sequence-file> <coords>\n\nRead fas
   \n"
 generated_using:
 - --help
+docker_image:

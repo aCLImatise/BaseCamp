@@ -8,6 +8,9 @@ task RapClust {
     RapClust \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Config file describing the experimental setup  [required]"
   }

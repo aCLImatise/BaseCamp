@@ -28,6 +28,9 @@ task Mugsy {
       ~{if defined(refine) then ("-refine " +  '"' + refine + '"') else ""} \
       ~{if (debug) then "-debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix_prefix_output: "|prefix       prefix for output files"
     directory: "used to store output and temporary\\nfiles. Must be a absolute path"

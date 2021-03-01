@@ -1,0 +1,125 @@
+!Command
+command:
+- pblayout
+- subgraph
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in_sg
+  description: STR   Input string graph in the sg_edges_list format.
+- !Positional
+  optional: false
+  position: 1
+  name: out_prefix
+  description: STR   Output prefix.
+- !Positional
+  optional: false
+  position: 0
+  name: provided.
+  description: '--csv-nodes              STR   CSV file with a list of nodes to extract.
+    Each line contains 2 columns: <node_name>'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --directed
+  description: Apply the directed ego-graph algorithm to extract the subgraph.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --radius
+  description: INT   Radius (in the number of nodes) to extract in each direction.
+    [100]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tp
+  description: STR   Path to a tiling path file. If specified, it will be used to
+    create the Bandage CSV.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seqdb
+  description: STR   Path to a SeqDB file. If specified, it will be used to retrieve
+    lengths of sequences.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-seq-ids
+  description: Indicates that the sequences in the input graph are actually IDs instead
+    of headers.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-seqs
+  description: Write the sequences to the generated GFA file. This requires the '--seqdb'
+    to be
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --num-threads
+  description: INT   Number of threads to use, 0 means autodetection. [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [WARN]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE  Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "subgraph - Extract a subgraph from a given assembly graph.\n\nUsage:\n\
+  \  subgraph [options] <in_sg> <out_prefix> <node1 [node2 node3 ...]>\n\n  in_sg\
+  \                    STR   Input string graph in the sg_edges_list format.\n  out_prefix\
+  \               STR   Output prefix.\n  node1 [node2 node3 ...]  STR   One or more\
+  \ nodes to extract the subgraph for.\n\nAlgorithm Options:\n  --directed       \
+  \              Apply the directed ego-graph algorithm to extract the subgraph.\n\
+  \  --radius                 INT   Radius (in the number of nodes) to extract in\
+  \ each direction. [100]\n  --tp                     STR   Path to a tiling path\
+  \ file. If specified, it will be used to create the Bandage CSV.\n  --seqdb    \
+  \              STR   Path to a SeqDB file. If specified, it will be used to retrieve\
+  \ lengths of sequences.\n  --use-seq-ids                  Indicates that the sequences\
+  \ in the input graph are actually IDs instead of headers.\n  --write-seqs      \
+  \             Write the sequences to the generated GFA file. This requires the '--seqdb'\
+  \ to be\n                                 provided.\n  --csv-nodes             \
+  \ STR   CSV file with a list of nodes to extract. Each line contains 2 columns:\
+  \ <node_name>\n                                 <label>. The label will be used\
+  \ to name the output files.\n\n  -h,--help                      Show this help and\
+  \ exit.\n  --version                      Show application version and exit.\n \
+  \ -j,--num-threads         INT   Number of threads to use, 0 means autodetection.\
+  \ [0]\n  --log-level              STR   Set log level. Valid choices: (TRACE, DEBUG,\
+  \ INFO, WARN, FATAL). [WARN]\n  --log-file               FILE  Log to a file, instead\
+  \ of stderr.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0

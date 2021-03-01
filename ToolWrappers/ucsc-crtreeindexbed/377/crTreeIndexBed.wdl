@@ -14,6 +14,9 @@ task CrTreeIndexBed {
       ~{if defined(items_per_slot) then ("-itemsPerSlot " +  '"' + items_per_slot + '"') else ""} \
       ~{if (no_check_sort) then "-noCheckSort" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     block_size: "- number of children per node in index tree. Default 1024"
     items_per_slot: "- number of items per index slot. Default is half block size"

@@ -10,6 +10,9 @@ task Removeredundantvariations {
       ~{reference_dot_fast_a} \
       ~{variants_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_dot_fast_a: ""
     variants_file: ""

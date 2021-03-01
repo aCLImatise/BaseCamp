@@ -18,6 +18,9 @@ task DnaseBiasEstimatorpy {
       ~{sequence} \
       ~{output_file_prefix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     calculates_mer_bias: "Calculates the 6-mer 5' insertion bias for a NGS dataset"
     regions: "BED file of the regions you want to exclude from\\ncalculating the bias. This is usually the DHSs."

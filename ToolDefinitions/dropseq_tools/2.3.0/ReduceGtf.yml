@@ -3,49 +3,56 @@ command:
 - ReduceGtf
 positional:
 - !Positional
-  description: This is the 3rd field of the GTF file, some examples of standard feature
-    types
+  optional: false
   position: 0
   name: extracted.
-  optional: false
+  description: This is the 3rd field of the GTF file, some examples of standard feature
+    types
 - !Positional
-  description: 'Default value: [pseudogene, polymorphic_pseudogene, TR_J_pseudogene,'
+  optional: false
   position: 0
   name: file.
-  optional: false
+  description: 'Default value: [pseudogene, polymorphic_pseudogene, TR_J_pseudogene,'
 named:
 - !Flag
-  description: (default 4g)
+  optional: true
   synonyms:
   - -m
+  description: (default 4g)
   args: !SimpleFlagArg
     name: jvm_heap_size
-  optional: true
 - !Flag
-  description: final command line before executing
+  optional: true
   synonyms:
   - -v
+  description: final command line before executing
   args: !SimpleFlagArg
     name: echo
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
   description: "Displays options specific to this tool AND options common to all Picard\
     \ command line\ntools."
-  synonyms:
-  - -H
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag: !Flag
-  description: Displays program version.
+  optional: true
   synonyms:
   - --version
+  description: Displays program version.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "USAGE: /usr/local/bin/ReduceGtf [-m <jvm_heap_size>] [-v] program args...\n\
   \       -m <jvm_heap_size> (default 4g)\n       -v echo final command line before\
   \ executing\n\nProgram options:\nUSAGE: ReduceGtf [options]\n\nGTF files are annoyingly\
@@ -83,3 +90,4 @@ help_text: "USAGE: /usr/local/bin/ReduceGtf [-m <jvm_heap_size>] [-v] program ar
   \ values: {true, false} \n\n"
 generated_using:
 - --help
+docker_image:

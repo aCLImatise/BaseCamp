@@ -18,6 +18,9 @@ task RefinemFilterBins {
       ~{if (modified_only) then "--modified_only" else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_ext: "extension of genomes (other files in directory are\\nignored) (default: fna)"
     modified_only: "only copy modified bins to the output folder"

@@ -12,6 +12,9 @@ task PATHOGISTVisualizeFormat {
       ~{visualize} \
       ~{var_input}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pathog_ist: ""
     visualize: ""

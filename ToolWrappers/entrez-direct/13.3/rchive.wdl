@@ -4,6 +4,9 @@ task Rchive {
   command <<<
     rchive
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

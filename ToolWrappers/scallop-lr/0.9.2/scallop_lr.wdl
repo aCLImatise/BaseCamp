@@ -32,6 +32,9 @@ task Scalloplr {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "<0, 1, 2>                         0: quiet; 1: one line for each graph; 2: with details, default: 1"
     library_type: "<first, second, unstranded>  library type of the sample, default: unstranded"

@@ -4,7 +4,7 @@ task MergePeaks {
   input {
     Boolean? strand
     Boolean? given_maximum_distance
-    File? file
+    File? file_listing_files
     Boolean? g_size
     File? prefix
     File? matrix
@@ -14,19 +14,13 @@ task MergePeaks {
     String? filter
     File? coverage
     File primary_peak_file
-    String? additional
-    String? peak_slash_annotation
-    String? files_dot_dot_dot
   }
   command <<<
     mergePeaks \
       ~{primary_peak_file} \
-      ~{additional} \
-      ~{peak_slash_annotation} \
-      ~{files_dot_dot_dot} \
       ~{if (strand) then "-strand" else ""} \
       ~{if (given_maximum_distance) then "-d" else ""} \
-      ~{if defined(file) then ("-file " +  '"' + file + '"') else ""} \
+      ~{if defined(file_listing_files) then ("-file " +  '"' + file_listing_files + '"') else ""} \
       ~{if (g_size) then "-gsize" else ""} \
       ~{if defined(prefix) then ("-prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(matrix) then ("-matrix " +  '"' + matrix + '"') else ""} \
@@ -36,10 +30,13 @@ task MergePeaks {
       ~{if defined(filter) then ("-filter " +  '"' + filter + '"') else ""} \
       ~{if defined(coverage) then ("-coverage " +  '"' + coverage + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     strand: "(Only merge/consider peaks on the same strand, default: either strand)"
     given_maximum_distance: "<#|given> (Maximum distance between peak centers to merge, default: given)\\nUsing \\\"-d given\\\" looks for literal overlaps in peak regions - DEFAULT since v4.4\\nUse \\\"-d given\\\" when features have vastly different sizes (i.e. peaks vs. introns)"
-    file: "(file listing peak files to compare - for lots of peak files)"
+    file_listing_files: "(file listing peak files to compare - for lots of peak files)"
     g_size: "<#> (Genome size for significance calculations, default: 2e9)"
     prefix: "(Generates separate files for overlapping and unique peaks)\\nBy default all peaks are sent to stdout"
     matrix: "(Generates files with pairwise comparison statistics)\\nfilename.logPvalue.matrix.txt - ln p-values for overlap, +values for divergence\\nfilename.logRatio.matrix.txt - ln ratio of observed/expected overlaps\\nfilename.count.matrix.txt - peak overlap counts"
@@ -49,9 +46,6 @@ task MergePeaks {
     filter: ":XXX-YYY (only analyze peaks within range)"
     coverage: "(returns the total bp covered by each peak file - use \\\"-d given\\\""
     primary_peak_file: ""
-    additional: ""
-    peak_slash_annotation: ""
-    files_dot_dot_dot: ""
   }
   output {
     File out_stdout = stdout()

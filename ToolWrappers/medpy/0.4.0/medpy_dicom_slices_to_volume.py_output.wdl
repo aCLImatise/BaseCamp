@@ -20,6 +20,9 @@ task MedpyDicomSlicesToVolumepyOutput {
       ~{if (v) then "-v" else ""} \
       ~{if (s) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
     d: ""

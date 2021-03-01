@@ -24,6 +24,9 @@ task BarChartpy {
       ~{if (numeric_sort) then "--numeric-sort" else ""} \
       ~{if (percentage) then "--percentage" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     agg: "Two column input format, space seperated with\\nvalue<space>key"
     agg_key_value: "Two column input format, space seperated with\\nkey<space>value"

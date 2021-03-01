@@ -3,12 +3,12 @@ id: bam_fill_unaligned.py_output_file.cwl
 inputs:
 - id: in_q
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -q
 - id: in_f
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_bam_fill_unaligned_do_tpy
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bam_fill_unaligned.py

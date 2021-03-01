@@ -1,0 +1,94 @@
+!Command
+command:
+- gatk
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --gatk-config-file
+  description: PATH/TO/GATK/PROPERTIES/FILE
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --spark-runner
+  description: "controls how spark tools are run\nvalid targets are:\nLOCAL:     \
+    \ run using the in-memory spark runner\nSPARK:      run using spark-submit on\
+    \ an existing cluster\n--spark-master must be specified\n--spark-submit-command\
+    \ may be specified to control the Spark submit command\narguments to spark-submit\
+    \ may optionally be specified after --\nGCS:        run using Google cloud dataproc\n\
+    commands after the -- will be passed to dataproc\n--cluster <your-cluster> must\
+    \ be specified after the --\nspark properties and some common spark-submit parameters\
+    \ will be translated\nto dataproc equivalents"
+  args: !SimpleFlagArg
+    name: target
+- !Flag
+  optional: true
+  synonyms:
+  - --dry-run
+  description: may be specified to output the generated command line without running
+    it
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --java-options
+  description: "'OPTION1[ OPTION2=Y ... ]'   optional - pass the given string of options\
+    \ to the\njava JVM at runtime.\nJava options MUST be passed inside a single string\
+    \ with space-separated values."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug-port
+  description: "sets up a Java VM debug agent to listen to debugger connections on\
+    \ a\nparticular port number. This in turn will add the necessary java VM arguments\n\
+    so that you don't need to explicitly indicate these using --java-options."
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --debug-suspend
+  description: "sets the Java VM debug agent up so that the run get immediatelly suspended\n\
+    waiting for a debugger to connect. By default the port number is 5005 but\ncan\
+    \ be customized using --debug-port\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n Usage template for all tools (uses --spark-runner LOCAL when used with\
+  \ a Spark tool)\n    gatk AnyTool toolArgs\n\n Usage template for Spark tools (will\
+  \ NOT work on non-Spark tools)\n    gatk SparkTool toolArgs  [ -- --spark-runner\
+  \ <LOCAL | SPARK | GCS> sparkArgs ]\n\n Getting help\n    gatk --list       Print\
+  \ the list of available tools\n\n    gatk Tool --help  Print help on a particular\
+  \ tool\n\n Configuration File Specification\n     --gatk-config-file           \
+  \     PATH/TO/GATK/PROPERTIES/FILE\n\n gatk forwards commands to GATK and adds some\
+  \ sugar for submitting spark jobs\n\n   --spark-runner <target>    controls how\
+  \ spark tools are run\n     valid targets are:\n     LOCAL:      run using the in-memory\
+  \ spark runner\n     SPARK:      run using spark-submit on an existing cluster \n\
+  \                 --spark-master must be specified\n                 --spark-submit-command\
+  \ may be specified to control the Spark submit command\n                 arguments\
+  \ to spark-submit may optionally be specified after -- \n     GCS:        run using\
+  \ Google cloud dataproc\n                 commands after the -- will be passed to\
+  \ dataproc\n                 --cluster <your-cluster> must be specified after the\
+  \ --\n                 spark properties and some common spark-submit parameters\
+  \ will be translated \n                 to dataproc equivalents\n\n   --dry-run\
+  \      may be specified to output the generated command line without running it\n\
+  \   --java-options 'OPTION1[ OPTION2=Y ... ]'   optional - pass the given string\
+  \ of options to the \n                 java JVM at runtime.  \n                \
+  \ Java options MUST be passed inside a single string with space-separated values.\n\
+  \n   --debug-port <number> sets up a Java VM debug agent to listen to debugger connections\
+  \ on a\n                         particular port number. This in turn will add the\
+  \ necessary java VM arguments\n                         so that you don't need to\
+  \ explicitly indicate these using --java-options.\n   --debug-suspend       sets\
+  \ the Java VM debug agent up so that the run get immediatelly suspended\n      \
+  \                   waiting for a debugger to connect. By default the port number\
+  \ is 5005 but\n                         can be customized using --debug-port\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gatk4:4.2.0.0--0

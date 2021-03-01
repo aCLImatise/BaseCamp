@@ -5,72 +5,72 @@ command:
 - connect-to-serial-port
 positional:
 - !Positional
-  description: SYNOPSIS
+  optional: false
   position: 0
   name: instance
-  optional: false
+  description: SYNOPSIS
 named:
 - !Flag
-  description: "If provided, the ssh command is printed to standard out rather than\n\
-    being executed."
+  optional: true
   synonyms:
   - --dry-run
+  description: "If provided, the ssh command is printed to standard out rather than\n\
+    being executed."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extra-args
   description: "=VALUE,[KEY=VALUE,...]\nOptional arguments can be passed to the serial\
     \ port connection by\npassing key-value pairs to this flag, such as max-connections=N\
     \ or\nreplay-lines=N. See\nhttps://cloud.google.com/compute/docs/instances/interacting-with-serial-console\n\
     for additional options."
-  synonyms:
-  - --extra-args
   args: !SimpleFlagArg
     name: KEY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --force-key-file-overwrite
   description: "If enabled gcloud will regenerate and overwrite the files associated\n\
     with a broken SSH key without asking for confirmation in both\ninteractive and\
     \ non-interactive environment.\nIf disabled gcloud will not attempt to regenerate\
     \ the files associated\nwith a broken SSH key and fail in both interactive and\
     \ non-interactive\nenvironment."
-  synonyms:
-  - --force-key-file-overwrite
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --port
   description: "; default=\"1\"\nThe number of the requested serial port. Can be 1-4,\
     \ default is 1.\nInstances can support up to four serial ports. By default, this\
     \ command\nwill connect to the first serial port. Setting this flag will connect\n\
     to the requested serial port."
-  synonyms:
-  - --port
   args: !SimpleFlagArg
     name: PORT
-  optional: true
 - !Flag
-  description: "The path to the SSH key file. By default, this is\n~/.ssh/google_compute_engine."
+  optional: true
   synonyms:
   - --ssh-key-file
+  description: "The path to the SSH key file. By default, this is\n~/.ssh/google_compute_engine."
   args: !SimpleFlagArg
     name: SSH_KEY_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --zone
   description: "The zone of the instance to connect to. If not specified, you may\
     \ be\nprompted to select a zone.\nTo avoid prompting when this flag is omitted,\
     \ you can set the\ncompute/zone property:\n$ gcloud config set compute/zone ZONE\n\
     A list of zones can be fetched by running:\n$ gcloud compute zones list\nTo unset\
     \ the property, run:\n$ gcloud config unset compute/zone\nAlternatively, the zone\
     \ can be stored in the environment variable\nCLOUDSDK_COMPUTE_ZONE."
-  synonyms:
-  - --zone
   args: !SimpleFlagArg
     name: ZONE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: $ gcloud help for details.
+  optional: true
   synonyms:
   - --flatten
   - --format
@@ -81,9 +81,9 @@ help_flag: !Flag
   - --trace-token
   - --user-output-enabled
   - --verbosity.
+  description: $ gcloud help for details.
   args: !SimpleFlagArg
     name: Run
-  optional: true
 usage_flag:
 version_flag:
 help_text: "NAME\n    gcloud compute connect-to-serial-port - connect to the serial\
@@ -130,3 +130,4 @@ help_text: "NAME\n    gcloud compute connect-to-serial-port - connect to the ser
   \    --user-output-enabled, --verbosity. Run $ gcloud help for details.\n"
 generated_using:
 - --help
+docker_image:

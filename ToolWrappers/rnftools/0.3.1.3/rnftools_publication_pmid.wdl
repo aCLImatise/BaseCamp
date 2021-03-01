@@ -10,6 +10,9 @@ task RnftoolsPublicationPmid {
       ~{rnf_tools} \
       ~{publication}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rnf_tools: ""
     publication: ""

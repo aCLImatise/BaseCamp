@@ -14,6 +14,9 @@ task CnvExpressionCorrelatepyRNAFILE {
       ~{rna_file} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     cnv_expression_correlated_otp_y: ""

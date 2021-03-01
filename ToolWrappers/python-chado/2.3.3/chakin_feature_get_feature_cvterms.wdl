@@ -8,6 +8,9 @@ task ChakinFeatureGetFeatureCvterms {
     chakin feature get_feature_cvterms \
       ~{feature_id}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     feature_id: ""
   }

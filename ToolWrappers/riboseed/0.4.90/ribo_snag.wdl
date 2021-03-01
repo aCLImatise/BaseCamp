@@ -50,6 +50,9 @@ task RiboSnag {
       ~{if defined(kingdom) then ("--kingdom " +  '"' + kingdom + '"') else ""} \
       ~{if defined(seq_name) then ("--seq_name " +  '"' + seq_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_directory_default: "output directory; default: /"
     name: "rename the contigs with this prefix; default: date\\n(YYYYMMDD)"

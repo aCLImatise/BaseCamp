@@ -10,6 +10,9 @@ task SVcomp {
       ~{if defined(first) then ("--first " +  '"' + first + '"') else ""} \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     first: ""
     ref: ""

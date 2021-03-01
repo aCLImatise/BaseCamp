@@ -22,6 +22,9 @@ task AfplotRegionsDistance {
       ~{if defined(vcf) then ("--vcf " +  '"' + vcf + '"') else ""} \
       ~{if defined(color_palette) then ("--color-palette " +  '"' + color_palette + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     margin: "Margin around regions to plot"
     region: "Region string. Must be of format <contig:start-end>"

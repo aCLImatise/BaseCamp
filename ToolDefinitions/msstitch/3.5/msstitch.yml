@@ -1,0 +1,2639 @@
+&id001 !Command
+command:
+- msstitch
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - msstitch
+  - storeseq
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --dbfile
+    description: Database lookup file
+    args: !SimpleFlagArg
+      name: LOOKUPFN
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Input file of {} format
+    args: !SimpleFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --fullprotein
+    description: "Store full protein sequences (at a minimum-match\nlength) in the\
+      \ SQLite file rather than tryptic\nsequences"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --insourcefrag
+    description: "Apply filter against both intact peptides and those\nthat match\
+      \ to the C-terminal part of a tryptic peptide\nfrom the database, resulting\
+      \ from in-source\nfragmentation, where some amino acids will be missing\nfrom\
+      \ the N-terminus. Specify the max number of amino\nacids that may be missing.\
+      \ Database should be built\nwith this flag in order for the lookup to work,\
+      \ since\nsequences will be stored and looked up reversed"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cutproline
+    description: "Flag to make trypsin before a proline residue. Then\nfiltering will\
+      \ be done against both cut and non-cut\npeptides."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minlen
+    description: Minimum length of peptide to be included
+    args: !SimpleFlagArg
+      name: MINLENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - --notrypsin
+    description: "Do not trypsinize. User is expected to deliver\napretrypsinized\
+      \ FASTA file"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --miscleav
+    description: "Amount of missed cleavages to allow when trypsinizing,\ndefault\
+      \ is 0\n"
+    args: !SimpleFlagArg
+      name: MISS_CLEAVAGE
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch storeseq [-h] [--version] [--dbfile LOOKUPFN] -i FN\n\
+    \                         [-o OUTFILE] [--fullprotein] [--insourcefrag]\n    \
+    \                     [--cutproline] [--minlen MINLENGTH] [--notrypsin]\n    \
+    \                     [--miscleav MISS_CLEAVAGE]\n\noptional arguments:\n  -h,\
+    \ --help            show this help message and exit\n  --version             show\
+    \ program's version number and exit\n  --dbfile LOOKUPFN     Database lookup file\n\
+    \  -i FN                 Input file of {} format\n  -o OUTFILE            Output\
+    \ file\n  --fullprotein         Store full protein sequences (at a minimum-match\n\
+    \                        length) in the SQLite file rather than tryptic\n    \
+    \                    sequences\n  --insourcefrag        Apply filter against both\
+    \ intact peptides and those\n                        that match to the C-terminal\
+    \ part of a tryptic peptide\n                        from the database, resulting\
+    \ from in-source\n                        fragmentation, where some amino acids\
+    \ will be missing\n                        from the N-terminus. Specify the max\
+    \ number of amino\n                        acids that may be missing. Database\
+    \ should be built\n                        with this flag in order for the lookup\
+    \ to work, since\n                        sequences will be stored and looked\
+    \ up reversed\n  --cutproline          Flag to make trypsin before a proline residue.\
+    \ Then\n                        filtering will be done against both cut and non-cut\n\
+    \                        peptides.\n  --minlen MINLENGTH    Minimum length of\
+    \ peptide to be included\n  --notrypsin           Do not trypsinize. User is expected\
+    \ to deliver\n                        apretrypsinized FASTA file\n  --miscleav\
+    \ MISS_CLEAVAGE\n                        Amount of missed cleavages to allow when\
+    \ trypsinizing,\n                        default is 0\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - ensg
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: values.
+    description: --isobquantcolpattern QUANTCOLPATTERN
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Input file of {} format
+    args: !SimpleFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --decoyfn
+    description: Decoy peptide table input file
+    args: !SimpleFlagArg
+      name: DECOYFN
+  - !Flag
+    optional: true
+    synonyms:
+    - --scorecolpattern
+    description: "Regular expression pattern to find column where score\nto use (e.g.\
+      \ percolator svm-score) is written."
+    args: !SimpleFlagArg
+      name: SCORECOLPATTERN
+  - !Flag
+    optional: true
+    synonyms:
+    - --logscore
+    description: Score, e.g. q-values will be converted to -log10
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minint
+    description: "Intensity threshold of PSMs when calculating isobaric\nratios. Values\
+      \ below threshold will be set to NA.\nDefaults to no threshold."
+    args: !SimpleFlagArg
+      name: MININT
+  - !Flag
+    optional: true
+    synonyms:
+    - --denomcols
+    description: "Column numbers of denominator channels when creating a\nsummarized\
+      \ feature table with isobaric ratios from\nPSMs"
+    args: !RepeatFlagArg
+      name: DENOMCOLS
+  - !Flag
+    optional: true
+    synonyms:
+    - --denompatterns
+    description: "Regex patterns to detect denominator channels in a PSM\ntable, when\
+      \ creating a table with summarized feature\nisobaric ratios. If both --denompatterns\
+      \ and\n--denomcol are given then column numbers are used.\nUsage e.g. --denompattern\
+      \ _126 _131. Also possible:\n--denompattern _12[6-7] to detect multiple columns."
+    args: !RepeatFlagArg
+      name: DENOMPATTERNS
+  - !Flag
+    optional: true
+    synonyms:
+    - --mediansweep
+    description: "Instead of choosing a denominator channel, use the\nmedian intensity\
+      \ of each PSM as its denominator."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --medianintensity
+    description: "Instead of choosing a denominator channel or median-\nsweeping,\
+      \ report the the median intensity of each\nsummarized feat per channel. This\
+      \ results in reported\nintensities rather than ratios."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --summarize-average
+    description: "Use average isobaric quantification values for\nsummarizing quant\
+      \ from PSMs, instead of default PSM\nmedian values"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --logisoquant
+    description: "Output log2 values for isoquant ratios. This\nlog2-transforms input\
+      \ PSM data prior to summarizing\nand optional normalization. Ratios will be\
+      \ calculated\nsubtracted rather than divided, obviously."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --median-normalize
+    description: "Median-centering normalization for isobaric quant data\non protein\
+      \ or peptide level. This median-centers the\ndata for each channel by dividing\
+      \ with the median\nchannel value (or subtracting in case of log data),\nfor\
+      \ each channel in output features, e.g. proteins."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-psms-na-quant
+    description: "When summarizing isobaric quantification data, also\nuse the PSMs\
+      \ that have an NA in any channel, even if\nthese may contain overly noisy quant\
+      \ data in the other\nchannels. Normally these PSMs would be skipped in\nquantification"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ms1quant
+    description: "Specifies to add precursor quant data from lookup DB\nto output\
+      \ table"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --psmtable
+    description: "PSM table file containing isobaric quant data to add\nto table."
+    args: !SimpleFlagArg
+      name: PSMFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --fastadelim
+    description: "Delimiter in FASTA header, used to parse gene names in\ncase of\
+      \ non-ENSEMBL/Uniprot"
+    args: !ChoiceFlagArg
+      choices: !!set
+        tab:
+        semicolon:
+        pipe:
+  - !Flag
+    optional: true
+    synonyms:
+    - --genefield
+    description: "Field nr (first=1) in FASTA that contains gene name\nwhen using\
+      \ --fastadelim to parse the gene names"
+    args: !SimpleFlagArg
+      name: GENEFIELD
+  - !Flag
+    optional: true
+    synonyms:
+    - --targetfasta
+    description: "FASTA file with target proteins to determine best\nscoring proteins\
+      \ of target/decoy pairs for picked FDR.\nIn case using --picktype ensg/genename"
+    args: !SimpleFlagArg
+      name: T_FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - --decoyfasta
+    description: "FASTA file with decoy proteins to determine best\nscoring proteins\
+      \ of target/decoy pairs for picked FDR.\nIn case using --picktype ensg/genename\n"
+    args: !SimpleFlagArg
+      name: D_FASTA
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch ensg [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\
+    \ --decoyfn\n                     DECOYFN --scorecolpattern SCORECOLPATTERN [--logscore]\n\
+    \                     [--isobquantcolpattern QUANTCOLPATTERN] [--minint MININT]\n\
+    \                     [--denomcols DENOMCOLS [DENOMCOLS ...]]\n              \
+    \       [--denompatterns DENOMPATTERNS [DENOMPATTERNS ...]]\n                \
+    \     [--mediansweep] [--medianintensity] [--summarize-average]\n            \
+    \         [--logisoquant] [--median-normalize]\n                     [--keep-psms-na-quant]\
+    \ [--ms1quant] [--psmtable PSMFILE]\n                     [--fastadelim {tab,pipe,semicolon}]\n\
+    \                     [--genefield GENEFIELD] --targetfasta T_FASTA\n        \
+    \             --decoyfasta D_FASTA\n\noptional arguments:\n  -h, --help      \
+    \      show this help message and exit\n  --version             show program's\
+    \ version number and exit\n  -i FN                 Input file of {} format\n \
+    \ -d OUTDIR             Directory to output in\n  -o OUTFILE            Output\
+    \ file\n  --decoyfn DECOYFN     Decoy peptide table input file\n  --scorecolpattern\
+    \ SCORECOLPATTERN\n                        Regular expression pattern to find\
+    \ column where score\n                        to use (e.g. percolator svm-score)\
+    \ is written.\n  --logscore            Score, e.g. q-values will be converted\
+    \ to -log10\n                        values.\n  --isobquantcolpattern QUANTCOLPATTERN\n\
+    \                        Unique text pattern to identify isobaric quant columns\n\
+    \                        in input table.\n  --minint MININT       Intensity threshold\
+    \ of PSMs when calculating isobaric\n                        ratios. Values below\
+    \ threshold will be set to NA.\n                        Defaults to no threshold.\n\
+    \  --denomcols DENOMCOLS [DENOMCOLS ...]\n                        Column numbers\
+    \ of denominator channels when creating a\n                        summarized\
+    \ feature table with isobaric ratios from\n                        PSMs\n  --denompatterns\
+    \ DENOMPATTERNS [DENOMPATTERNS ...]\n                        Regex patterns to\
+    \ detect denominator channels in a PSM\n                        table, when creating\
+    \ a table with summarized feature\n                        isobaric ratios. If\
+    \ both --denompatterns and\n                        --denomcol are given then\
+    \ column numbers are used.\n                        Usage e.g. --denompattern\
+    \ _126 _131. Also possible:\n                        --denompattern _12[6-7] to\
+    \ detect multiple columns.\n  --mediansweep         Instead of choosing a denominator\
+    \ channel, use the\n                        median intensity of each PSM as its\
+    \ denominator.\n  --medianintensity     Instead of choosing a denominator channel\
+    \ or median-\n                        sweeping, report the the median intensity\
+    \ of each\n                        summarized feat per channel. This results in\
+    \ reported\n                        intensities rather than ratios.\n  --summarize-average\
+    \   Use average isobaric quantification values for\n                        summarizing\
+    \ quant from PSMs, instead of default PSM\n                        median values\n\
+    \  --logisoquant         Output log2 values for isoquant ratios. This\n      \
+    \                  log2-transforms input PSM data prior to summarizing\n     \
+    \                   and optional normalization. Ratios will be calculated\n  \
+    \                      subtracted rather than divided, obviously.\n  --median-normalize\
+    \    Median-centering normalization for isobaric quant data\n                \
+    \        on protein or peptide level. This median-centers the\n              \
+    \          data for each channel by dividing with the median\n               \
+    \         channel value (or subtracting in case of log data),\n              \
+    \          for each channel in output features, e.g. proteins.\n  --keep-psms-na-quant\
+    \  When summarizing isobaric quantification data, also\n                     \
+    \   use the PSMs that have an NA in any channel, even if\n                   \
+    \     these may contain overly noisy quant data in the other\n               \
+    \         channels. Normally these PSMs would be skipped in\n                \
+    \        quantification\n  --ms1quant            Specifies to add precursor quant\
+    \ data from lookup DB\n                        to output table\n  --psmtable PSMFILE\
+    \    PSM table file containing isobaric quant data to add\n                  \
+    \      to table.\n  --fastadelim {tab,pipe,semicolon}\n                      \
+    \  Delimiter in FASTA header, used to parse gene names in\n                  \
+    \      case of non-ENSEMBL/Uniprot\n  --genefield GENEFIELD\n                \
+    \        Field nr (first=1) in FASTA that contains gene name\n               \
+    \         when using --fastadelim to parse the gene names\n  --targetfasta T_FASTA\n\
+    \                        FASTA file with target proteins to determine best\n \
+    \                       scoring proteins of target/decoy pairs for picked FDR.\n\
+    \                        In case using --picktype ensg/genename\n  --decoyfasta\
+    \ D_FASTA  FASTA file with decoy proteins to determine best\n                \
+    \        scoring proteins of target/decoy pairs for picked FDR.\n            \
+    \            In case using --picktype ensg/genename\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - isosummarize
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Input file of {} format
+    args: !SimpleFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --isobquantcolpattern
+    description: "Unique text pattern to identify isobaric quant columns\nin input\
+      \ table."
+    args: !SimpleFlagArg
+      name: QUANTCOLPATTERN
+  - !Flag
+    optional: true
+    synonyms:
+    - --denompatterns
+    description: "Regex patterns to detect denominator channels in a PSM\ntable, when\
+      \ creating a table with summarized feature\nisobaric ratios. If both --denompatterns\
+      \ and\n--denomcol are given then column numbers are used.\nUsage e.g. --denompattern\
+      \ _126 _131. Also possible:\n--denompattern _12[6-7] to detect multiple columns."
+    args: !RepeatFlagArg
+      name: DENOMPATTERNS
+  - !Flag
+    optional: true
+    synonyms:
+    - --denomcols
+    description: "Column numbers of denominator channels when creating a\nsummarized\
+      \ feature table with isobaric ratios from\nPSMs"
+    args: !RepeatFlagArg
+      name: DENOMCOLS
+  - !Flag
+    optional: true
+    synonyms:
+    - --mediansweep
+    description: "Instead of choosing a denominator channel, use the\nmedian intensity\
+      \ of each PSM as its denominator."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --medianintensity
+    description: "Instead of choosing a denominator channel or median-\nsweeping,\
+      \ report the the median intensity of each\nsummarized feat per channel. This\
+      \ results in reported\nintensities rather than ratios."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --summarize-average
+    description: "Use average isobaric quantification values for\nsummarizing quant\
+      \ from PSMs, instead of default PSM\nmedian values"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-psms-na-quant
+    description: "When summarizing isobaric quantification data, also\nuse the PSMs\
+      \ that have an NA in any channel, even if\nthese may contain overly noisy quant\
+      \ data in the other\nchannels. Normally these PSMs would be skipped in\nquantification"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minint
+    description: "Intensity threshold of PSMs when calculating isobaric\nratios. Values\
+      \ below threshold will be set to NA.\nDefaults to no threshold."
+    args: !SimpleFlagArg
+      name: MININT
+  - !Flag
+    optional: true
+    synonyms:
+    - --featcol
+    description: "Column number in table in which desired accessions to\nsummarize\
+      \ are stored. First column number is 1. If not\nspecified this will summarize\
+      \ to PSMs themselves, i.e.\nonly calculate the ratios and add those to the PSM\n\
+      table."
+    args: !SimpleFlagArg
+      name: FEATCOL
+  - !Flag
+    optional: true
+    synonyms:
+    - --logisoquant
+    description: "Output log2 values for isoquant ratios. This\nlog2-transforms input\
+      \ PSM data prior to summarizing\nand optional normalization. Ratios will be\
+      \ calculated\nsubtracted rather than divided, obviously."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --median-normalize
+    description: "Median-centering normalization for isobaric quant data\non protein\
+      \ or peptide level. This median-centers the\ndata for each channel by dividing\
+      \ with the median\nchannel value (or subtracting in case of log data),\nfor\
+      \ each channel in output features, e.g. proteins.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch isosummarize [-h] [--version] -i FN [-d OUTDIR] [-o\
+    \ OUTFILE]\n                             --isobquantcolpattern QUANTCOLPATTERN\n\
+    \                             [--denompatterns DENOMPATTERNS [DENOMPATTERNS ...]]\n\
+    \                             [--denomcols DENOMCOLS [DENOMCOLS ...]]\n      \
+    \                       [--mediansweep] [--medianintensity]\n                \
+    \             [--summarize-average] [--keep-psms-na-quant]\n                 \
+    \            [--minint MININT] [--featcol FEATCOL]\n                         \
+    \    [--logisoquant] [--median-normalize]\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  --version             show program's\
+    \ version number and exit\n  -i FN                 Input file of {} format\n \
+    \ -d OUTDIR             Directory to output in\n  -o OUTFILE            Output\
+    \ file\n  --isobquantcolpattern QUANTCOLPATTERN\n                        Unique\
+    \ text pattern to identify isobaric quant columns\n                        in\
+    \ input table.\n  --denompatterns DENOMPATTERNS [DENOMPATTERNS ...]\n        \
+    \                Regex patterns to detect denominator channels in a PSM\n    \
+    \                    table, when creating a table with summarized feature\n  \
+    \                      isobaric ratios. If both --denompatterns and\n        \
+    \                --denomcol are given then column numbers are used.\n        \
+    \                Usage e.g. --denompattern _126 _131. Also possible:\n       \
+    \                 --denompattern _12[6-7] to detect multiple columns.\n  --denomcols\
+    \ DENOMCOLS [DENOMCOLS ...]\n                        Column numbers of denominator\
+    \ channels when creating a\n                        summarized feature table with\
+    \ isobaric ratios from\n                        PSMs\n  --mediansweep        \
+    \ Instead of choosing a denominator channel, use the\n                       \
+    \ median intensity of each PSM as its denominator.\n  --medianintensity     Instead\
+    \ of choosing a denominator channel or median-\n                        sweeping,\
+    \ report the the median intensity of each\n                        summarized\
+    \ feat per channel. This results in reported\n                        intensities\
+    \ rather than ratios.\n  --summarize-average   Use average isobaric quantification\
+    \ values for\n                        summarizing quant from PSMs, instead of\
+    \ default PSM\n                        median values\n  --keep-psms-na-quant \
+    \ When summarizing isobaric quantification data, also\n                      \
+    \  use the PSMs that have an NA in any channel, even if\n                    \
+    \    these may contain overly noisy quant data in the other\n                \
+    \        channels. Normally these PSMs would be skipped in\n                 \
+    \       quantification\n  --minint MININT       Intensity threshold of PSMs when\
+    \ calculating isobaric\n                        ratios. Values below threshold\
+    \ will be set to NA.\n                        Defaults to no threshold.\n  --featcol\
+    \ FEATCOL     Column number in table in which desired accessions to\n        \
+    \                summarize are stored. First column number is 1. If not\n    \
+    \                    specified this will summarize to PSMs themselves, i.e.\n\
+    \                        only calculate the ratios and add those to the PSM\n\
+    \                        table.\n  --logisoquant         Output log2 values for\
+    \ isoquant ratios. This\n                        log2-transforms input PSM data\
+    \ prior to summarizing\n                        and optional normalization. Ratios\
+    \ will be calculated\n                        subtracted rather than divided,\
+    \ obviously.\n  --median-normalize    Median-centering normalization for isobaric\
+    \ quant data\n                        on protein or peptide level. This median-centers\
+    \ the\n                        data for each channel by dividing with the median\n\
+    \                        channel value (or subtracting in case of log data),\n\
+    \                        for each channel in output features, e.g. proteins.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - genes
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: values.
+    description: --isobquantcolpattern QUANTCOLPATTERN
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Input file of {} format
+    args: !SimpleFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --decoyfn
+    description: Decoy peptide table input file
+    args: !SimpleFlagArg
+      name: DECOYFN
+  - !Flag
+    optional: true
+    synonyms:
+    - --scorecolpattern
+    description: "Regular expression pattern to find column where score\nto use (e.g.\
+      \ percolator svm-score) is written."
+    args: !SimpleFlagArg
+      name: SCORECOLPATTERN
+  - !Flag
+    optional: true
+    synonyms:
+    - --logscore
+    description: Score, e.g. q-values will be converted to -log10
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minint
+    description: "Intensity threshold of PSMs when calculating isobaric\nratios. Values\
+      \ below threshold will be set to NA.\nDefaults to no threshold."
+    args: !SimpleFlagArg
+      name: MININT
+  - !Flag
+    optional: true
+    synonyms:
+    - --denomcols
+    description: "Column numbers of denominator channels when creating a\nsummarized\
+      \ feature table with isobaric ratios from\nPSMs"
+    args: !RepeatFlagArg
+      name: DENOMCOLS
+  - !Flag
+    optional: true
+    synonyms:
+    - --denompatterns
+    description: "Regex patterns to detect denominator channels in a PSM\ntable, when\
+      \ creating a table with summarized feature\nisobaric ratios. If both --denompatterns\
+      \ and\n--denomcol are given then column numbers are used.\nUsage e.g. --denompattern\
+      \ _126 _131. Also possible:\n--denompattern _12[6-7] to detect multiple columns."
+    args: !RepeatFlagArg
+      name: DENOMPATTERNS
+  - !Flag
+    optional: true
+    synonyms:
+    - --mediansweep
+    description: "Instead of choosing a denominator channel, use the\nmedian intensity\
+      \ of each PSM as its denominator."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --medianintensity
+    description: "Instead of choosing a denominator channel or median-\nsweeping,\
+      \ report the the median intensity of each\nsummarized feat per channel. This\
+      \ results in reported\nintensities rather than ratios."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --summarize-average
+    description: "Use average isobaric quantification values for\nsummarizing quant\
+      \ from PSMs, instead of default PSM\nmedian values"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --logisoquant
+    description: "Output log2 values for isoquant ratios. This\nlog2-transforms input\
+      \ PSM data prior to summarizing\nand optional normalization. Ratios will be\
+      \ calculated\nsubtracted rather than divided, obviously."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --median-normalize
+    description: "Median-centering normalization for isobaric quant data\non protein\
+      \ or peptide level. This median-centers the\ndata for each channel by dividing\
+      \ with the median\nchannel value (or subtracting in case of log data),\nfor\
+      \ each channel in output features, e.g. proteins."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-psms-na-quant
+    description: "When summarizing isobaric quantification data, also\nuse the PSMs\
+      \ that have an NA in any channel, even if\nthese may contain overly noisy quant\
+      \ data in the other\nchannels. Normally these PSMs would be skipped in\nquantification"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ms1quant
+    description: "Specifies to add precursor quant data from lookup DB\nto output\
+      \ table"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --psmtable
+    description: "PSM table file containing isobaric quant data to add\nto table."
+    args: !SimpleFlagArg
+      name: PSMFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --fastadelim
+    description: "Delimiter in FASTA header, used to parse gene names in\ncase of\
+      \ non-ENSEMBL/Uniprot"
+    args: !ChoiceFlagArg
+      choices: !!set
+        tab:
+        semicolon:
+        pipe:
+  - !Flag
+    optional: true
+    synonyms:
+    - --genefield
+    description: "Field nr (first=1) in FASTA that contains gene name\nwhen using\
+      \ --fastadelim to parse the gene names"
+    args: !SimpleFlagArg
+      name: GENEFIELD
+  - !Flag
+    optional: true
+    synonyms:
+    - --targetfasta
+    description: "FASTA file with target proteins to determine best\nscoring proteins\
+      \ of target/decoy pairs for picked FDR.\nIn case using --picktype ensg/genename"
+    args: !SimpleFlagArg
+      name: T_FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - --decoyfasta
+    description: "FASTA file with decoy proteins to determine best\nscoring proteins\
+      \ of target/decoy pairs for picked FDR.\nIn case using --picktype ensg/genename\n"
+    args: !SimpleFlagArg
+      name: D_FASTA
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch genes [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+    \                      --decoyfn DECOYFN --scorecolpattern SCORECOLPATTERN\n \
+    \                     [--logscore] [--isobquantcolpattern QUANTCOLPATTERN]\n \
+    \                     [--minint MININT]\n                      [--denomcols DENOMCOLS\
+    \ [DENOMCOLS ...]]\n                      [--denompatterns DENOMPATTERNS [DENOMPATTERNS\
+    \ ...]]\n                      [--mediansweep] [--medianintensity]\n         \
+    \             [--summarize-average] [--logisoquant]\n                      [--median-normalize]\
+    \ [--keep-psms-na-quant] [--ms1quant]\n                      [--psmtable PSMFILE]\
+    \ [--fastadelim {tab,pipe,semicolon}]\n                      [--genefield GENEFIELD]\
+    \ --targetfasta T_FASTA\n                      --decoyfasta D_FASTA\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  --version\
+    \             show program's version number and exit\n  -i FN                \
+    \ Input file of {} format\n  -d OUTDIR             Directory to output in\n  -o\
+    \ OUTFILE            Output file\n  --decoyfn DECOYFN     Decoy peptide table\
+    \ input file\n  --scorecolpattern SCORECOLPATTERN\n                        Regular\
+    \ expression pattern to find column where score\n                        to use\
+    \ (e.g. percolator svm-score) is written.\n  --logscore            Score, e.g.\
+    \ q-values will be converted to -log10\n                        values.\n  --isobquantcolpattern\
+    \ QUANTCOLPATTERN\n                        Unique text pattern to identify isobaric\
+    \ quant columns\n                        in input table.\n  --minint MININT  \
+    \     Intensity threshold of PSMs when calculating isobaric\n                \
+    \        ratios. Values below threshold will be set to NA.\n                 \
+    \       Defaults to no threshold.\n  --denomcols DENOMCOLS [DENOMCOLS ...]\n \
+    \                       Column numbers of denominator channels when creating a\n\
+    \                        summarized feature table with isobaric ratios from\n\
+    \                        PSMs\n  --denompatterns DENOMPATTERNS [DENOMPATTERNS\
+    \ ...]\n                        Regex patterns to detect denominator channels\
+    \ in a PSM\n                        table, when creating a table with summarized\
+    \ feature\n                        isobaric ratios. If both --denompatterns and\n\
+    \                        --denomcol are given then column numbers are used.\n\
+    \                        Usage e.g. --denompattern _126 _131. Also possible:\n\
+    \                        --denompattern _12[6-7] to detect multiple columns.\n\
+    \  --mediansweep         Instead of choosing a denominator channel, use the\n\
+    \                        median intensity of each PSM as its denominator.\n  --medianintensity\
+    \     Instead of choosing a denominator channel or median-\n                 \
+    \       sweeping, report the the median intensity of each\n                  \
+    \      summarized feat per channel. This results in reported\n               \
+    \         intensities rather than ratios.\n  --summarize-average   Use average\
+    \ isobaric quantification values for\n                        summarizing quant\
+    \ from PSMs, instead of default PSM\n                        median values\n \
+    \ --logisoquant         Output log2 values for isoquant ratios. This\n       \
+    \                 log2-transforms input PSM data prior to summarizing\n      \
+    \                  and optional normalization. Ratios will be calculated\n   \
+    \                     subtracted rather than divided, obviously.\n  --median-normalize\
+    \    Median-centering normalization for isobaric quant data\n                \
+    \        on protein or peptide level. This median-centers the\n              \
+    \          data for each channel by dividing with the median\n               \
+    \         channel value (or subtracting in case of log data),\n              \
+    \          for each channel in output features, e.g. proteins.\n  --keep-psms-na-quant\
+    \  When summarizing isobaric quantification data, also\n                     \
+    \   use the PSMs that have an NA in any channel, even if\n                   \
+    \     these may contain overly noisy quant data in the other\n               \
+    \         channels. Normally these PSMs would be skipped in\n                \
+    \        quantification\n  --ms1quant            Specifies to add precursor quant\
+    \ data from lookup DB\n                        to output table\n  --psmtable PSMFILE\
+    \    PSM table file containing isobaric quant data to add\n                  \
+    \      to table.\n  --fastadelim {tab,pipe,semicolon}\n                      \
+    \  Delimiter in FASTA header, used to parse gene names in\n                  \
+    \      case of non-ENSEMBL/Uniprot\n  --genefield GENEFIELD\n                \
+    \        Field nr (first=1) in FASTA that contains gene name\n               \
+    \         when using --fastadelim to parse the gene names\n  --targetfasta T_FASTA\n\
+    \                        FASTA file with target proteins to determine best\n \
+    \                       scoring proteins of target/decoy pairs for picked FDR.\n\
+    \                        In case using --picktype ensg/genename\n  --decoyfasta\
+    \ D_FASTA  FASTA file with decoy proteins to determine best\n                \
+    \        scoring proteins of target/decoy pairs for picked FDR.\n            \
+    \            In case using --picktype ensg/genename\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - concat
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Multiple input files of {} format
+    args: !RepeatFlagArg
+      name: FN
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch concat [-h] [--version] [-d OUTDIR] [-o OUTFILE] -i\
+    \ FN\n                       [FN ...]\n\noptional arguments:\n  -h, --help   \
+    \   show this help message and exit\n  --version       show program's version\
+    \ number and exit\n  -d OUTDIR       Directory to output in\n  -o OUTFILE    \
+    \  Output file\n  -i FN [FN ...]  Multiple input files of {} format\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - trypsinize
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Input file of {} format
+    args: !SimpleFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --miscleav
+    description: "Amount of missed cleavages to allow when trypsinizing,\ndefault\
+      \ is 0"
+    args: !SimpleFlagArg
+      name: MISS_CLEAVAGE
+  - !Flag
+    optional: true
+    synonyms:
+    - --minlen
+    description: Minimum length of peptide to be included
+    args: !SimpleFlagArg
+      name: MINLENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - --cutproline
+    description: "Flag to make trypsin before a proline residue. Then\nfiltering will\
+      \ be done against both cut and non-cut\npeptides.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch trypsinize [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+    \                           [--miscleav MISS_CLEAVAGE] [--minlen MINLENGTH]\n\
+    \                           [--cutproline]\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  --version             show program's\
+    \ version number and exit\n  -i FN                 Input file of {} format\n \
+    \ -d OUTDIR             Directory to output in\n  -o OUTFILE            Output\
+    \ file\n  --miscleav MISS_CLEAVAGE\n                        Amount of missed cleavages\
+    \ to allow when trypsinizing,\n                        default is 0\n  --minlen\
+    \ MINLENGTH    Minimum length of peptide to be included\n  --cutproline      \
+    \    Flag to make trypsin before a proline residue. Then\n                   \
+    \     filtering will be done against both cut and non-cut\n                  \
+    \      peptides.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - storequant
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --dbfile
+    description: Database lookup file
+    args: !SimpleFlagArg
+      name: LOOKUPFN
+  - !Flag
+    optional: true
+    synonyms:
+    - --spectra
+    description: "Spectra files in mzML format. Multiple files can be\nspecified,\
+      \ if order is important, e.g. when matching\nthem with quant data, the order\
+      \ will be their input\norder at the command line."
+    args: !RepeatFlagArg
+      name: SPECTRAFNS
+  - !Flag
+    optional: true
+    synonyms:
+    - --kronik
+    description: "MS1 quant output files from Kronik in text\nformat.Multiple files\
+      \ can be specified, and matching\norder with spectra files is important."
+    args: !RepeatFlagArg
+      name: KRONIKFNS
+  - !Flag
+    optional: true
+    synonyms:
+    - --dinosaur
+    description: "MS1 quant output files from Kronik in text\nformat.Multiple files\
+      \ can be specified, and matching\norder with spectra files is important."
+    args: !RepeatFlagArg
+      name: DINOSAURFNS
+  - !Flag
+    optional: true
+    synonyms:
+    - --isobaric
+    description: "Isobaric quant output files from OpenMS in\nconsensusXML format.\
+      \ Multiple files can be specified,\nand matching order with spectra files is\
+      \ important."
+    args: !RepeatFlagArg
+      name: ISOBARICFNS
+  - !Flag
+    optional: true
+    synonyms:
+    - --apex
+    description: "Use MS1 peak envelope apex instead of peak sum when\nstoring quant\
+      \ data."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --rttol
+    description: "Specifies tolerance in seconds for retention time when\nmapping\
+      \ MS1 feature quant info to identifications in\nthe PSM table."
+    args: !SimpleFlagArg
+      name: RT_TOL
+  - !Flag
+    optional: true
+    synonyms:
+    - --mztol
+    description: "Specifies tolerance in mass-to-charge when mapping MS1\nfeature\
+      \ quant info to identifications in the PSM\ntable."
+    args: !SimpleFlagArg
+      name: MZ_TOL
+  - !Flag
+    optional: true
+    synonyms:
+    - --mztoltype
+    description: "Type of tolerance in mass-to-charge when mapping MS1\nfeature quant\
+      \ info to identifications in the PSM\ntable. One of ppm, Da.\n"
+    args: !ChoiceFlagArg
+      choices: !!set
+        ppm:
+        Da:
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch storequant [-h] [--version] --dbfile LOOKUPFN --spectra\n\
+    \                           SPECTRAFNS [SPECTRAFNS ...]\n                    \
+    \       [--kronik KRONIKFNS [KRONIKFNS ...]]\n                           [--dinosaur\
+    \ DINOSAURFNS [DINOSAURFNS ...]]\n                           [--isobaric ISOBARICFNS\
+    \ [ISOBARICFNS ...]] [--apex]\n                           [--rttol RT_TOL] [--mztol\
+    \ MZ_TOL]\n                           [--mztoltype {ppm,Da}]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  --version        \
+    \     show program's version number and exit\n  --dbfile LOOKUPFN     Database\
+    \ lookup file\n  --spectra SPECTRAFNS [SPECTRAFNS ...]\n                     \
+    \   Spectra files in mzML format. Multiple files can be\n                    \
+    \    specified, if order is important, e.g. when matching\n                  \
+    \      them with quant data, the order will be their input\n                 \
+    \       order at the command line.\n  --kronik KRONIKFNS [KRONIKFNS ...]\n   \
+    \                     MS1 quant output files from Kronik in text\n           \
+    \             format.Multiple files can be specified, and matching\n         \
+    \               order with spectra files is important.\n  --dinosaur DINOSAURFNS\
+    \ [DINOSAURFNS ...]\n                        MS1 quant output files from Kronik\
+    \ in text\n                        format.Multiple files can be specified, and\
+    \ matching\n                        order with spectra files is important.\n \
+    \ --isobaric ISOBARICFNS [ISOBARICFNS ...]\n                        Isobaric quant\
+    \ output files from OpenMS in\n                        consensusXML format. Multiple\
+    \ files can be specified,\n                        and matching order with spectra\
+    \ files is important.\n  --apex                Use MS1 peak envelope apex instead\
+    \ of peak sum when\n                        storing quant data.\n  --rttol RT_TOL\
+    \        Specifies tolerance in seconds for retention time when\n            \
+    \            mapping MS1 feature quant info to identifications in\n          \
+    \              the PSM table.\n  --mztol MZ_TOL        Specifies tolerance in\
+    \ mass-to-charge when mapping MS1\n                        feature quant info\
+    \ to identifications in the PSM\n                        table.\n  --mztoltype\
+    \ {ppm,Da}  Type of tolerance in mass-to-charge when mapping MS1\n           \
+    \             feature quant info to identifications in the PSM\n             \
+    \           table. One of ppm, Da.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - deletesets
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Input file of {} format
+    args: !SimpleFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --dbfile
+    description: Database lookup file
+    args: !SimpleFlagArg
+      name: LOOKUPFN
+  - !Flag
+    optional: true
+    synonyms:
+    - --setnames
+    description: "Names of biological sets. Can be specified with\nquotation marks\
+      \ if spaces are used\n"
+    args: !RepeatFlagArg
+      name: SETNAMES
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch deletesets [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+    \                           [--dbfile LOOKUPFN] --setnames SETNAMES\n        \
+    \                   [SETNAMES ...]\n\noptional arguments:\n  -h, --help      \
+    \      show this help message and exit\n  --version             show program's\
+    \ version number and exit\n  -i FN                 Input file of {} format\n \
+    \ -d OUTDIR             Directory to output in\n  -o OUTFILE            Output\
+    \ file\n  --dbfile LOOKUPFN     Database lookup file\n  --setnames SETNAMES [SETNAMES\
+    \ ...]\n                        Names of biological sets. Can be specified with\n\
+    \                        quotation marks if spaces are used\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - merge
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --setnames
+    description: "Names of biological sets. Can be specified with\nquotation marks\
+      \ if spaces are used"
+    args: !RepeatFlagArg
+      name: SETNAMES
+  - !Flag
+    optional: true
+    synonyms:
+    - --isobquantcolpattern
+    description: "Unique text pattern to identify isobaric quant columns\nin input\
+      \ table."
+    args: !SimpleFlagArg
+      name: QUANTCOLPATTERN
+  - !Flag
+    optional: true
+    synonyms:
+    - --ms1quantcolpattern
+    description: "Unique text pattern to identify precursor quant column\nin input\
+      \ table."
+    args: !SimpleFlagArg
+      name: PRECURSORQUANTCOLPATTERN
+  - !Flag
+    optional: true
+    synonyms:
+    - --fdrcolpattern
+    description: "Unique text pattern to identify FDR column in input\ntable."
+    args: !SimpleFlagArg
+      name: FDRCOLPATTERN
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Multiple input files of {} format
+    args: !RepeatFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - --featcol
+    description: "Column number in table in which desired accessions\nare. stored.\
+      \ First column number is 1. Use in case of\nnot using default column 1"
+    args: !SimpleFlagArg
+      name: FEATCOL
+  - !Flag
+    optional: true
+    synonyms:
+    - --dbfile
+    description: Database lookup file
+    args: !SimpleFlagArg
+      name: LOOKUPFN
+  - !Flag
+    optional: true
+    synonyms:
+    - --mergecutoff
+    description: "FDR cutoff when building merged protein table, to use\nwhen a cutoff\
+      \ has been used before storing the table\nto lookup. FDR values need to be stored\
+      \ in the lookup"
+    args: !SimpleFlagArg
+      name: MERGECUTOFF
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-group-annotation
+    description: "For peptide table merging. Do not include protein\ngroup or gene\
+      \ data in output, just use accessions."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --genecentric
+    description: "For peptide table merging. Do not include protein\ngroup data in\
+      \ output, but use gene names instead to\ncount peptides per feature, determine\
+      \ peptide-\nuniqueness.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch merge [-h] [--version] [-d OUTDIR] [-o OUTFILE] --setnames\n\
+    \                      SETNAMES [SETNAMES ...]\n                      [--isobquantcolpattern\
+    \ QUANTCOLPATTERN]\n                      [--ms1quantcolpattern PRECURSORQUANTCOLPATTERN]\n\
+    \                      --fdrcolpattern FDRCOLPATTERN -i FN [FN ...]\n        \
+    \              [--featcol FEATCOL] --dbfile LOOKUPFN\n                      [--mergecutoff\
+    \ MERGECUTOFF] [--no-group-annotation]\n                      [--genecentric]\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --version             show program's version number and exit\n  -d OUTDIR \
+    \            Directory to output in\n  -o OUTFILE            Output file\n  --setnames\
+    \ SETNAMES [SETNAMES ...]\n                        Names of biological sets. Can\
+    \ be specified with\n                        quotation marks if spaces are used\n\
+    \  --isobquantcolpattern QUANTCOLPATTERN\n                        Unique text\
+    \ pattern to identify isobaric quant columns\n                        in input\
+    \ table.\n  --ms1quantcolpattern PRECURSORQUANTCOLPATTERN\n                  \
+    \      Unique text pattern to identify precursor quant column\n              \
+    \          in input table.\n  --fdrcolpattern FDRCOLPATTERN\n                \
+    \        Unique text pattern to identify FDR column in input\n               \
+    \         table.\n  -i FN [FN ...]        Multiple input files of {} format\n\
+    \  --featcol FEATCOL     Column number in table in which desired accessions\n\
+    \                        are. stored. First column number is 1. Use in case of\n\
+    \                        not using default column 1\n  --dbfile LOOKUPFN     Database\
+    \ lookup file\n  --mergecutoff MERGECUTOFF\n                        FDR cutoff\
+    \ when building merged protein table, to use\n                        when a cutoff\
+    \ has been used before storing the table\n                        to lookup. FDR\
+    \ values need to be stored in the lookup\n  --no-group-annotation\n          \
+    \              For peptide table merging. Do not include protein\n           \
+    \             group or gene data in output, just use accessions.\n  --genecentric\
+    \         For peptide table merging. Do not include protein\n                \
+    \        group data in output, but use gene names instead to\n               \
+    \         count peptides per feature, determine peptide-\n                   \
+    \     uniqueness.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - filterperco
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Input file of {} format
+    args: !SimpleFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --fullprotein
+    description: "Store full protein sequences (at a minimum-match\nlength) in the\
+      \ SQLite file rather than tryptic\nsequences"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --deamidate
+    description: "Filter against both normal peptides and deamidated\npeptides where\
+      \ a D->N transition has occurred."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fasta
+    description: FASTA sequence database
+    args: !SimpleFlagArg
+      name: FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - --minlen
+    description: Minimum length of peptide to be included
+    args: !SimpleFlagArg
+      name: MINLENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - --dbfile
+    description: Database lookup file
+    args: !SimpleFlagArg
+      name: LOOKUPFN
+  - !Flag
+    optional: true
+    synonyms:
+    - --enforce-tryptic
+    description: "When filtering peptides against whole proteins, filter\nout peptides\
+      \ that match a whole protein but only if\nthey are fully tryptic, i.e. the protein\
+      \ needs K,R 1\nposition upstream of the peptide, and the peptide\nC-terminal\
+      \ should also be K,R. Useful when discerning\nfrom pseudogenes"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --insourcefrag
+    description: "Apply filter against both intact peptides and those\nthat match\
+      \ to the C-terminal part of a tryptic peptide\nfrom the database, resulting\
+      \ from in-source\nfragmentation, where some amino acids will be missing\nfrom\
+      \ the N-terminus. Specify the max number of amino\nacids that may be missing.\
+      \ Database should be built\nwith this flag in order for the lookup to work,\
+      \ since\nsequences will be stored and looked up reversed\n"
+    args: !SimpleFlagArg
+      name: FALLOFF
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch filterperco [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+    \                            [--fullprotein] [--deamidate] [--fasta FASTA]\n \
+    \                           [--minlen MINLENGTH] --dbfile LOOKUPFN\n         \
+    \                   [--enforce-tryptic] [--insourcefrag FALLOFF]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  --version        \
+    \     show program's version number and exit\n  -i FN                 Input file\
+    \ of {} format\n  -d OUTDIR             Directory to output in\n  -o OUTFILE \
+    \           Output file\n  --fullprotein         Store full protein sequences\
+    \ (at a minimum-match\n                        length) in the SQLite file rather\
+    \ than tryptic\n                        sequences\n  --deamidate           Filter\
+    \ against both normal peptides and deamidated\n                        peptides\
+    \ where a D->N transition has occurred.\n  --fasta FASTA         FASTA sequence\
+    \ database\n  --minlen MINLENGTH    Minimum length of peptide to be included\n\
+    \  --dbfile LOOKUPFN     Database lookup file\n  --enforce-tryptic     When filtering\
+    \ peptides against whole proteins, filter\n                        out peptides\
+    \ that match a whole protein but only if\n                        they are fully\
+    \ tryptic, i.e. the protein needs K,R 1\n                        position upstream\
+    \ of the peptide, and the peptide\n                        C-terminal should also\
+    \ be K,R. Useful when discerning\n                        from pseudogenes\n \
+    \ --insourcefrag FALLOFF\n                        Apply filter against both intact\
+    \ peptides and those\n                        that match to the C-terminal part\
+    \ of a tryptic peptide\n                        from the database, resulting from\
+    \ in-source\n                        fragmentation, where some amino acids will\
+    \ be missing\n                        from the N-terminus. Specify the max number\
+    \ of amino\n                        acids that may be missing. Database should\
+    \ be built\n                        with this flag in order for the lookup to\
+    \ work, since\n                        sequences will be stored and looked up\
+    \ reversed\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - peptides
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: SCORECOLPATTERN
+    description: '[--isobquantcolpattern QUANTCOLPATTERN]'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Input file of {} format
+    args: !SimpleFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --spectracol
+    description: "Specify this column number (first col. is 1)\ncontaining PSM table\
+      \ spectrafiles (e.g. mzML) if you\nwant to track PSMs when creating peptide\
+      \ tables"
+    args: !SimpleFlagArg
+      name: SPECTRACOL
+  - !Flag
+    optional: true
+    synonyms:
+    - --scorecolpattern
+    description: "Regular expression pattern to find column where score\nto use (e.g.\
+      \ percolator svm-score) is written."
+    args: !SimpleFlagArg
+      name: SCORECOLPATTERN
+  - !Flag
+    optional: true
+    synonyms:
+    - --isobquantcolpattern
+    description: "Unique text pattern to identify isobaric quant columns\nin input\
+      \ table."
+    args: !SimpleFlagArg
+      name: QUANTCOLPATTERN
+  - !Flag
+    optional: true
+    synonyms:
+    - --ms1quantcolpattern
+    description: "Unique text pattern to identify precursor quant column\nin input\
+      \ table."
+    args: !SimpleFlagArg
+      name: PRECURSORQUANTCOLPATTERN
+  - !Flag
+    optional: true
+    synonyms:
+    - --minint
+    description: "Intensity threshold of PSMs when calculating isobaric\nratios. Values\
+      \ below threshold will be set to NA.\nDefaults to no threshold."
+    args: !SimpleFlagArg
+      name: MININT
+  - !Flag
+    optional: true
+    synonyms:
+    - --denomcols
+    description: "Column numbers of denominator channels when creating a\nsummarized\
+      \ feature table with isobaric ratios from\nPSMs"
+    args: !RepeatFlagArg
+      name: DENOMCOLS
+  - !Flag
+    optional: true
+    synonyms:
+    - --denompatterns
+    description: "Regex patterns to detect denominator channels in a PSM\ntable, when\
+      \ creating a table with summarized feature\nisobaric ratios. If both --denompatterns\
+      \ and\n--denomcol are given then column numbers are used.\nUsage e.g. --denompattern\
+      \ _126 _131. Also possible:\n--denompattern _12[6-7] to detect multiple columns."
+    args: !RepeatFlagArg
+      name: DENOMPATTERNS
+  - !Flag
+    optional: true
+    synonyms:
+    - --mediansweep
+    description: "Instead of choosing a denominator channel, use the\nmedian intensity\
+      \ of each PSM as its denominator."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --medianintensity
+    description: "Instead of choosing a denominator channel or median-\nsweeping,\
+      \ report the the median intensity of each\nsummarized feat per channel. This\
+      \ results in reported\nintensities rather than ratios."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --summarize-average
+    description: "Use average isobaric quantification values for\nsummarizing quant\
+      \ from PSMs, instead of default PSM\nmedian values"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --logisoquant
+    description: "Output log2 values for isoquant ratios. This\nlog2-transforms input\
+      \ PSM data prior to summarizing\nand optional normalization. Ratios will be\
+      \ calculated\nsubtracted rather than divided, obviously."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --median-normalize
+    description: "Median-centering normalization for isobaric quant data\non protein\
+      \ or peptide level. This median-centers the\ndata for each channel by dividing\
+      \ with the median\nchannel value (or subtracting in case of log data),\nfor\
+      \ each channel in output features, e.g. proteins."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --modelqvals
+    description: "Create linear-modeled q-vals for peptides, to avoid\noverlapping\
+      \ stepped low-qvalue data of peptides with\ndifferent scores"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --qvalthreshold
+    description: "Specifies the inclusion threshold for q-values to fit\na linear\
+      \ model to. Any scores/q-values below this\nthreshold will not be used."
+    args: !SimpleFlagArg
+      name: QVALTHRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-psms-na-quant
+    description: "When summarizing isobaric quantification data, also\nuse the PSMs\
+      \ that have an NA in any channel, even if\nthese may contain overly noisy quant\
+      \ data in the other\nchannels. Normally these PSMs would be skipped in\nquantification"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minpepnr
+    description: "Specifies the minimal amount of peptides (passing the\n--qvalthreshold)\
+      \ needed to fit a linear model, default\nis 10.\n"
+    args: !SimpleFlagArg
+      name: MINPEPTIDENR
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch peptides [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+    \                         [--spectracol SPECTRACOL] --scorecolpattern\n      \
+    \                   SCORECOLPATTERN\n                         [--isobquantcolpattern\
+    \ QUANTCOLPATTERN]\n                         [--ms1quantcolpattern PRECURSORQUANTCOLPATTERN]\n\
+    \                         [--minint MININT]\n                         [--denomcols\
+    \ DENOMCOLS [DENOMCOLS ...]]\n                         [--denompatterns DENOMPATTERNS\
+    \ [DENOMPATTERNS ...]]\n                         [--mediansweep] [--medianintensity]\n\
+    \                         [--summarize-average] [--logisoquant]\n            \
+    \             [--median-normalize] [--modelqvals]\n                         [--qvalthreshold\
+    \ QVALTHRESHOLD]\n                         [--keep-psms-na-quant] [--minpepnr\
+    \ MINPEPTIDENR]\n\noptional arguments:\n  -h, --help            show this help\
+    \ message and exit\n  --version             show program's version number and\
+    \ exit\n  -i FN                 Input file of {} format\n  -d OUTDIR         \
+    \    Directory to output in\n  -o OUTFILE            Output file\n  --spectracol\
+    \ SPECTRACOL\n                        Specify this column number (first col. is\
+    \ 1)\n                        containing PSM table spectrafiles (e.g. mzML) if\
+    \ you\n                        want to track PSMs when creating peptide tables\n\
+    \  --scorecolpattern SCORECOLPATTERN\n                        Regular expression\
+    \ pattern to find column where score\n                        to use (e.g. percolator\
+    \ svm-score) is written.\n  --isobquantcolpattern QUANTCOLPATTERN\n          \
+    \              Unique text pattern to identify isobaric quant columns\n      \
+    \                  in input table.\n  --ms1quantcolpattern PRECURSORQUANTCOLPATTERN\n\
+    \                        Unique text pattern to identify precursor quant column\n\
+    \                        in input table.\n  --minint MININT       Intensity threshold\
+    \ of PSMs when calculating isobaric\n                        ratios. Values below\
+    \ threshold will be set to NA.\n                        Defaults to no threshold.\n\
+    \  --denomcols DENOMCOLS [DENOMCOLS ...]\n                        Column numbers\
+    \ of denominator channels when creating a\n                        summarized\
+    \ feature table with isobaric ratios from\n                        PSMs\n  --denompatterns\
+    \ DENOMPATTERNS [DENOMPATTERNS ...]\n                        Regex patterns to\
+    \ detect denominator channels in a PSM\n                        table, when creating\
+    \ a table with summarized feature\n                        isobaric ratios. If\
+    \ both --denompatterns and\n                        --denomcol are given then\
+    \ column numbers are used.\n                        Usage e.g. --denompattern\
+    \ _126 _131. Also possible:\n                        --denompattern _12[6-7] to\
+    \ detect multiple columns.\n  --mediansweep         Instead of choosing a denominator\
+    \ channel, use the\n                        median intensity of each PSM as its\
+    \ denominator.\n  --medianintensity     Instead of choosing a denominator channel\
+    \ or median-\n                        sweeping, report the the median intensity\
+    \ of each\n                        summarized feat per channel. This results in\
+    \ reported\n                        intensities rather than ratios.\n  --summarize-average\
+    \   Use average isobaric quantification values for\n                        summarizing\
+    \ quant from PSMs, instead of default PSM\n                        median values\n\
+    \  --logisoquant         Output log2 values for isoquant ratios. This\n      \
+    \                  log2-transforms input PSM data prior to summarizing\n     \
+    \                   and optional normalization. Ratios will be calculated\n  \
+    \                      subtracted rather than divided, obviously.\n  --median-normalize\
+    \    Median-centering normalization for isobaric quant data\n                \
+    \        on protein or peptide level. This median-centers the\n              \
+    \          data for each channel by dividing with the median\n               \
+    \         channel value (or subtracting in case of log data),\n              \
+    \          for each channel in output features, e.g. proteins.\n  --modelqvals\
+    \          Create linear-modeled q-vals for peptides, to avoid\n             \
+    \           overlapping stepped low-qvalue data of peptides with\n           \
+    \             different scores\n  --qvalthreshold QVALTHRESHOLD\n            \
+    \            Specifies the inclusion threshold for q-values to fit\n         \
+    \               a linear model to. Any scores/q-values below this\n          \
+    \              threshold will not be used.\n  --keep-psms-na-quant  When summarizing\
+    \ isobaric quantification data, also\n                        use the PSMs that\
+    \ have an NA in any channel, even if\n                        these may contain\
+    \ overly noisy quant data in the other\n                        channels. Normally\
+    \ these PSMs would be skipped in\n                        quantification\n  --minpepnr\
+    \ MINPEPTIDENR\n                        Specifies the minimal amount of peptides\
+    \ (passing the\n                        --qvalthreshold) needed to fit a linear\
+    \ model, default\n                        is 10.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - storespectra
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --dbfile
+    description: Database lookup file
+    args: !SimpleFlagArg
+      name: LOOKUPFN
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --spectra
+    description: "Spectra files in mzML format. Multiple files can be\nspecified,\
+      \ if order is important, e.g. when matching\nthem with quant data, the order\
+      \ will be their input\norder at the command line."
+    args: !RepeatFlagArg
+      name: SPECTRAFNS
+  - !Flag
+    optional: true
+    synonyms:
+    - --setnames
+    description: "Names of biological sets. Can be specified with\nquotation marks\
+      \ if spaces are used\n"
+    args: !RepeatFlagArg
+      name: SETNAMES
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch storespectra [-h] [--version] [--dbfile LOOKUPFN] [-o\
+    \ OUTFILE]\n                             --spectra SPECTRAFNS [SPECTRAFNS ...]\
+    \ --setnames\n                             SETNAMES [SETNAMES ...]\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  --version\
+    \             show program's version number and exit\n  --dbfile LOOKUPFN    \
+    \ Database lookup file\n  -o OUTFILE            Output file\n  --spectra SPECTRAFNS\
+    \ [SPECTRAFNS ...]\n                        Spectra files in mzML format. Multiple\
+    \ files can be\n                        specified, if order is important, e.g.\
+    \ when matching\n                        them with quant data, the order will\
+    \ be their input\n                        order at the command line.\n  --setnames\
+    \ SETNAMES [SETNAMES ...]\n                        Names of biological sets. Can\
+    \ be specified with\n                        quotation marks if spaces are used\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - conffilt
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Input file of {} format
+    args: !SimpleFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --confidence-col
+    description: "Confidence column number or name in the tsv file.\nFirst column\
+      \ has number 1."
+    args: !SimpleFlagArg
+      name: CONFCOL
+  - !Flag
+    optional: true
+    synonyms:
+    - --confcolpattern
+    description: "Text pattern to identify column in table on which\nconfidence filtering\
+      \ should be done. Use in case of\nnot using standard {} column"
+    args: !SimpleFlagArg
+      name: CONFPATTERN
+  - !Flag
+    optional: true
+    synonyms:
+    - --confidence-lvl
+    description: Confidence cutoff level as a floating point number
+    args: !SimpleFlagArg
+      name: CONFLVL
+  - !Flag
+    optional: true
+    synonyms:
+    - --confidence-better
+    description: "Confidence type to define if higher or lower score is\nbetter. One\
+      \ of [higher, lower]"
+    args: !ChoiceFlagArg
+      choices: !!set
+        higher:
+        lower:
+  - !Flag
+    optional: true
+    synonyms:
+    - --unroll
+    description: "PSM table from Mzid2TSV contains either one PSM per\nline with all\
+      \ the proteins of that shared peptide on\nthe same line (not unrolled, default),\
+      \ or one\nPSM/protein match per line where each protein from\nthat shared peptide\
+      \ gets its own line (unrolled).\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch conffilt [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+    \                         [--confidence-col CONFCOL]\n                       \
+    \  [--confcolpattern CONFPATTERN] --confidence-lvl\n                         CONFLVL\
+    \ --confidence-better {higher,lower} [--unroll]\n\noptional arguments:\n  -h,\
+    \ --help            show this help message and exit\n  --version             show\
+    \ program's version number and exit\n  -i FN                 Input file of {}\
+    \ format\n  -d OUTDIR             Directory to output in\n  -o OUTFILE       \
+    \     Output file\n  --confidence-col CONFCOL\n                        Confidence\
+    \ column number or name in the tsv file.\n                        First column\
+    \ has number 1.\n  --confcolpattern CONFPATTERN\n                        Text\
+    \ pattern to identify column in table on which\n                        confidence\
+    \ filtering should be done. Use in case of\n                        not using\
+    \ standard {} column\n  --confidence-lvl CONFLVL\n                        Confidence\
+    \ cutoff level as a floating point number\n  --confidence-better {higher,lower}\n\
+    \                        Confidence type to define if higher or lower score is\n\
+    \                        better. One of [higher, lower]\n  --unroll          \
+    \    PSM table from Mzid2TSV contains either one PSM per\n                   \
+    \     line with all the proteins of that shared peptide on\n                 \
+    \       the same line (not unrolled, default), or one\n                      \
+    \  PSM/protein match per line where each protein from\n                      \
+    \  that shared peptide gets its own line (unrolled).\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - split
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Input file of {} format
+    args: !SimpleFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --splitcol
+    description: "Either a column number to split a PSM table on, or\n\"TD\", \"bioset\"\
+      \ for splitting on target/decoy or\nbiological sample set columns (resulting\
+      \ from msstitch\nperco2psm or msstitch psmtable. First column is number\n1.\n"
+    args: !SimpleFlagArg
+      name: SPLITCOL
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch split [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+    \                      --splitcol SPLITCOL\n\noptional arguments:\n  -h, --help\
+    \           show this help message and exit\n  --version            show program's\
+    \ version number and exit\n  -i FN                Input file of {} format\n  -d\
+    \ OUTDIR            Directory to output in\n  -o OUTFILE           Output file\n\
+    \  --splitcol SPLITCOL  Either a column number to split a PSM table on, or\n \
+    \                      \"TD\", \"bioset\" for splitting on target/decoy or\n \
+    \                      biological sample set columns (resulting from msstitch\n\
+    \                       perco2psm or msstitch psmtable. First column is number\n\
+    \                       1.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - makedecoy
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Input file of {} format
+    args: !SimpleFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --dbfile
+    description: Database lookup file
+    args: !SimpleFlagArg
+      name: LOOKUPFN
+  - !Flag
+    optional: true
+    synonyms:
+    - --scramble
+    description: "Decoy scrambling method, use: \"tryp_rev\": tryptic\nreverse, or\
+      \ \"prot_rev\": full (protein) reverse."
+    args: !SimpleFlagArg
+      name: SCRAMBLE
+  - !Flag
+    optional: true
+    synonyms:
+    - --ignore-target-hits
+    description: "Do not remove tryptic peptides from sequence where\nthey match target\
+      \ DB"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --notrypsin
+    description: "Do not trypsinize. User is expected to deliver\napretrypsinized\
+      \ FASTA file"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --miscleav
+    description: "Amount of missed cleavages to allow when trypsinizing,\ndefault\
+      \ is 0"
+    args: !SimpleFlagArg
+      name: MISS_CLEAVAGE
+  - !Flag
+    optional: true
+    synonyms:
+    - --minlen
+    description: Minimum length of peptide to be included
+    args: !SimpleFlagArg
+      name: MINLENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - --maxshuffle
+    description: "Amount of times to attempt to shuffle a decoy reversed\npeptide\
+      \ to make it not match target peptides, before\ndiscarding it. Used when using\
+      \ tryptic peptide\nreversal (not protein reversal)\n"
+    args: !SimpleFlagArg
+      name: MAX_SHUFFLE
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch makedecoy [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+    \                          [--dbfile LOOKUPFN] [--scramble SCRAMBLE]\n       \
+    \                   [--ignore-target-hits] [--notrypsin]\n                   \
+    \       [--miscleav MISS_CLEAVAGE] [--minlen MINLENGTH]\n                    \
+    \      [--maxshuffle MAX_SHUFFLE]\n\noptional arguments:\n  -h, --help       \
+    \     show this help message and exit\n  --version             show program's\
+    \ version number and exit\n  -i FN                 Input file of {} format\n \
+    \ -d OUTDIR             Directory to output in\n  -o OUTFILE            Output\
+    \ file\n  --dbfile LOOKUPFN     Database lookup file\n  --scramble SCRAMBLE  \
+    \ Decoy scrambling method, use: \"tryp_rev\": tryptic\n                      \
+    \  reverse, or \"prot_rev\": full (protein) reverse.\n  --ignore-target-hits \
+    \ Do not remove tryptic peptides from sequence where\n                       \
+    \ they match target DB\n  --notrypsin           Do not trypsinize. User is expected\
+    \ to deliver\n                        apretrypsinized FASTA file\n  --miscleav\
+    \ MISS_CLEAVAGE\n                        Amount of missed cleavages to allow when\
+    \ trypsinizing,\n                        default is 0\n  --minlen MINLENGTH  \
+    \  Minimum length of peptide to be included\n  --maxshuffle MAX_SHUFFLE\n    \
+    \                    Amount of times to attempt to shuffle a decoy reversed\n\
+    \                        peptide to make it not match target peptides, before\n\
+    \                        discarding it. Used when using tryptic peptide\n    \
+    \                    reversal (not protein reversal)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - psmtable
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Input file of {} format
+    args: !SimpleFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --oldpsms
+    description: "PSM table file containing previously analysed PSMs to\nappend new\
+      \ PSM table to."
+    args: !SimpleFlagArg
+      name: OLDPSMFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --dbfile
+    description: Database lookup file
+    args: !SimpleFlagArg
+      name: LOOKUPFN
+  - !Flag
+    optional: true
+    synonyms:
+    - --ms1quant
+    description: "Specifies to add precursor quant data from lookup DB\nto output\
+      \ table"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --isobaric
+    description: "Specifies to add isobaric quant data from lookup DB to\noutput table"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --unroll
+    description: "PSM table from Mzid2TSV contains either one PSM per\nline with all\
+      \ the proteins of that shared peptide on\nthe same line (not unrolled, default),\
+      \ or one\nPSM/protein match per line where each protein from\nthat shared peptide\
+      \ gets its own line (unrolled)."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --spectracol
+    description: "Column number in which spectra file names are, in case\nsome framework\
+      \ has changed the file names. First\ncolumn number is 1."
+    args: !SimpleFlagArg
+      name: SPECTRACOL
+  - !Flag
+    optional: true
+    synonyms:
+    - --addbioset
+    description: Add biological setname from DB lookup to PSM table
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --addmiscleav
+    description: Add missed cleavages to PSM table
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --genes
+    description: Specifies to add genes to PSM table
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --proteingroup
+    description: Specifies to add protein groups to PSM table
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fasta
+    description: FASTA sequence database
+    args: !SimpleFlagArg
+      name: FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - --genefield
+    description: "Field nr (first=1) in FASTA that contains gene name\nwhen using\
+      \ --fastadelim to parse the gene names"
+    args: !SimpleFlagArg
+      name: GENEFIELD
+  - !Flag
+    optional: true
+    synonyms:
+    - --fastadelim
+    description: "Delimiter in FASTA header, used to parse gene names in\ncase of\
+      \ non-ENSEMBL/Uniprot\n"
+    args: !ChoiceFlagArg
+      choices: !!set
+        tab:
+        semicolon:
+        pipe:
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch psmtable [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+    \                         [--oldpsms OLDPSMFILE] --dbfile LOOKUPFN [--ms1quant]\n\
+    \                         [--isobaric] [--unroll] [--spectracol SPECTRACOL]\n\
+    \                         [--addbioset] [--addmiscleav] [--genes]\n          \
+    \               [--proteingroup] [--fasta FASTA]\n                         [--genefield\
+    \ GENEFIELD]\n                         [--fastadelim {tab,pipe,semicolon}]\n\n\
+    optional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --version             show program's version number and exit\n  -i FN     \
+    \            Input file of {} format\n  -d OUTDIR             Directory to output\
+    \ in\n  -o OUTFILE            Output file\n  --oldpsms OLDPSMFILE  PSM table file\
+    \ containing previously analysed PSMs to\n                        append new PSM\
+    \ table to.\n  --dbfile LOOKUPFN     Database lookup file\n  --ms1quant      \
+    \      Specifies to add precursor quant data from lookup DB\n                \
+    \        to output table\n  --isobaric            Specifies to add isobaric quant\
+    \ data from lookup DB to\n                        output table\n  --unroll   \
+    \           PSM table from Mzid2TSV contains either one PSM per\n            \
+    \            line with all the proteins of that shared peptide on\n          \
+    \              the same line (not unrolled, default), or one\n               \
+    \         PSM/protein match per line where each protein from\n               \
+    \         that shared peptide gets its own line (unrolled).\n  --spectracol SPECTRACOL\n\
+    \                        Column number in which spectra file names are, in case\n\
+    \                        some framework has changed the file names. First\n  \
+    \                      column number is 1.\n  --addbioset           Add biological\
+    \ setname from DB lookup to PSM table\n  --addmiscleav         Add missed cleavages\
+    \ to PSM table\n  --genes               Specifies to add genes to PSM table\n\
+    \  --proteingroup        Specifies to add protein groups to PSM table\n  --fasta\
+    \ FASTA         FASTA sequence database\n  --genefield GENEFIELD\n           \
+    \             Field nr (first=1) in FASTA that contains gene name\n          \
+    \              when using --fastadelim to parse the gene names\n  --fastadelim\
+    \ {tab,pipe,semicolon}\n                        Delimiter in FASTA header, used\
+    \ to parse gene names in\n                        case of non-ENSEMBL/Uniprot\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - proteins
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: values.
+    description: --isobquantcolpattern QUANTCOLPATTERN
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Input file of {} format
+    args: !SimpleFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --decoyfn
+    description: Decoy peptide table input file
+    args: !SimpleFlagArg
+      name: DECOYFN
+  - !Flag
+    optional: true
+    synonyms:
+    - --scorecolpattern
+    description: "Regular expression pattern to find column where score\nto use (e.g.\
+      \ percolator svm-score) is written."
+    args: !SimpleFlagArg
+      name: SCORECOLPATTERN
+  - !Flag
+    optional: true
+    synonyms:
+    - --logscore
+    description: Score, e.g. q-values will be converted to -log10
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minint
+    description: "Intensity threshold of PSMs when calculating isobaric\nratios. Values\
+      \ below threshold will be set to NA.\nDefaults to no threshold."
+    args: !SimpleFlagArg
+      name: MININT
+  - !Flag
+    optional: true
+    synonyms:
+    - --denomcols
+    description: "Column numbers of denominator channels when creating a\nsummarized\
+      \ feature table with isobaric ratios from\nPSMs"
+    args: !RepeatFlagArg
+      name: DENOMCOLS
+  - !Flag
+    optional: true
+    synonyms:
+    - --denompatterns
+    description: "Regex patterns to detect denominator channels in a PSM\ntable, when\
+      \ creating a table with summarized feature\nisobaric ratios. If both --denompatterns\
+      \ and\n--denomcol are given then column numbers are used.\nUsage e.g. --denompattern\
+      \ _126 _131. Also possible:\n--denompattern _12[6-7] to detect multiple columns."
+    args: !RepeatFlagArg
+      name: DENOMPATTERNS
+  - !Flag
+    optional: true
+    synonyms:
+    - --mediansweep
+    description: "Instead of choosing a denominator channel, use the\nmedian intensity\
+      \ of each PSM as its denominator."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --medianintensity
+    description: "Instead of choosing a denominator channel or median-\nsweeping,\
+      \ report the the median intensity of each\nsummarized feat per channel. This\
+      \ results in reported\nintensities rather than ratios."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --summarize-average
+    description: "Use average isobaric quantification values for\nsummarizing quant\
+      \ from PSMs, instead of default PSM\nmedian values"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --logisoquant
+    description: "Output log2 values for isoquant ratios. This\nlog2-transforms input\
+      \ PSM data prior to summarizing\nand optional normalization. Ratios will be\
+      \ calculated\nsubtracted rather than divided, obviously."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --median-normalize
+    description: "Median-centering normalization for isobaric quant data\non protein\
+      \ or peptide level. This median-centers the\ndata for each channel by dividing\
+      \ with the median\nchannel value (or subtracting in case of log data),\nfor\
+      \ each channel in output features, e.g. proteins."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-psms-na-quant
+    description: "When summarizing isobaric quantification data, also\nuse the PSMs\
+      \ that have an NA in any channel, even if\nthese may contain overly noisy quant\
+      \ data in the other\nchannels. Normally these PSMs would be skipped in\nquantification"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ms1quant
+    description: "Specifies to add precursor quant data from lookup DB\nto output\
+      \ table"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --psmtable
+    description: "PSM table file containing isobaric quant data to add\nto table.\n"
+    args: !SimpleFlagArg
+      name: PSMFILE
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch proteins [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+    \                         --decoyfn DECOYFN --scorecolpattern SCORECOLPATTERN\n\
+    \                         [--logscore] [--isobquantcolpattern QUANTCOLPATTERN]\n\
+    \                         [--minint MININT]\n                         [--denomcols\
+    \ DENOMCOLS [DENOMCOLS ...]]\n                         [--denompatterns DENOMPATTERNS\
+    \ [DENOMPATTERNS ...]]\n                         [--mediansweep] [--medianintensity]\n\
+    \                         [--summarize-average] [--logisoquant]\n            \
+    \             [--median-normalize] [--keep-psms-na-quant]\n                  \
+    \       [--ms1quant] [--psmtable PSMFILE]\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  --version             show program's\
+    \ version number and exit\n  -i FN                 Input file of {} format\n \
+    \ -d OUTDIR             Directory to output in\n  -o OUTFILE            Output\
+    \ file\n  --decoyfn DECOYFN     Decoy peptide table input file\n  --scorecolpattern\
+    \ SCORECOLPATTERN\n                        Regular expression pattern to find\
+    \ column where score\n                        to use (e.g. percolator svm-score)\
+    \ is written.\n  --logscore            Score, e.g. q-values will be converted\
+    \ to -log10\n                        values.\n  --isobquantcolpattern QUANTCOLPATTERN\n\
+    \                        Unique text pattern to identify isobaric quant columns\n\
+    \                        in input table.\n  --minint MININT       Intensity threshold\
+    \ of PSMs when calculating isobaric\n                        ratios. Values below\
+    \ threshold will be set to NA.\n                        Defaults to no threshold.\n\
+    \  --denomcols DENOMCOLS [DENOMCOLS ...]\n                        Column numbers\
+    \ of denominator channels when creating a\n                        summarized\
+    \ feature table with isobaric ratios from\n                        PSMs\n  --denompatterns\
+    \ DENOMPATTERNS [DENOMPATTERNS ...]\n                        Regex patterns to\
+    \ detect denominator channels in a PSM\n                        table, when creating\
+    \ a table with summarized feature\n                        isobaric ratios. If\
+    \ both --denompatterns and\n                        --denomcol are given then\
+    \ column numbers are used.\n                        Usage e.g. --denompattern\
+    \ _126 _131. Also possible:\n                        --denompattern _12[6-7] to\
+    \ detect multiple columns.\n  --mediansweep         Instead of choosing a denominator\
+    \ channel, use the\n                        median intensity of each PSM as its\
+    \ denominator.\n  --medianintensity     Instead of choosing a denominator channel\
+    \ or median-\n                        sweeping, report the the median intensity\
+    \ of each\n                        summarized feat per channel. This results in\
+    \ reported\n                        intensities rather than ratios.\n  --summarize-average\
+    \   Use average isobaric quantification values for\n                        summarizing\
+    \ quant from PSMs, instead of default PSM\n                        median values\n\
+    \  --logisoquant         Output log2 values for isoquant ratios. This\n      \
+    \                  log2-transforms input PSM data prior to summarizing\n     \
+    \                   and optional normalization. Ratios will be calculated\n  \
+    \                      subtracted rather than divided, obviously.\n  --median-normalize\
+    \    Median-centering normalization for isobaric quant data\n                \
+    \        on protein or peptide level. This median-centers the\n              \
+    \          data for each channel by dividing with the median\n               \
+    \         channel value (or subtracting in case of log data),\n              \
+    \          for each channel in output features, e.g. proteins.\n  --keep-psms-na-quant\
+    \  When summarizing isobaric quantification data, also\n                     \
+    \   use the PSMs that have an NA in any channel, even if\n                   \
+    \     these may contain overly noisy quant data in the other\n               \
+    \         channels. Normally these PSMs would be skipped in\n                \
+    \        quantification\n  --ms1quant            Specifies to add precursor quant\
+    \ data from lookup DB\n                        to output table\n  --psmtable PSMFILE\
+    \    PSM table file containing isobaric quant data to add\n                  \
+    \      to table.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - perco2psm
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: number
+    description: --filtpsm FILTPSM     PSM q-value cutoff level as a floating point
+      number
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file
+    args: !SimpleFlagArg
+      name: OUTFILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Multiple input files of {} format
+    args: !RepeatFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - --mzids
+    description: "MzIdentML output files belonging to PSM table TSV\nfiles, use same\
+      \ order as for TSVs"
+    args: !RepeatFlagArg
+      name: MZIDFNS
+  - !Flag
+    optional: true
+    synonyms:
+    - --perco
+    description: Percolator XML output file
+    args: !SimpleFlagArg
+      name: PERCOFN
+  - !Flag
+    optional: true
+    synonyms:
+    - --filtpep
+    description: Peptide q-value cutoff level as a floating point
+    args: !SimpleFlagArg
+      name: FILTPEP
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch perco2psm [-h] [--version] [-d OUTDIR] [-o OUTFILE]\
+    \ -i FN\n                          [FN ...] --mzids MZIDFNS [MZIDFNS ...] --perco\n\
+    \                          PERCOFN [--filtpep FILTPEP] [--filtpsm FILTPSM]\n\n\
+    optional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --version             show program's version number and exit\n  -d OUTDIR \
+    \            Directory to output in\n  -o OUTFILE            Output file\n  -i\
+    \ FN [FN ...]        Multiple input files of {} format\n  --mzids MZIDFNS [MZIDFNS\
+    \ ...]\n                        MzIdentML output files belonging to PSM table\
+    \ TSV\n                        files, use same order as for TSVs\n  --perco PERCOFN\
+    \       Percolator XML output file\n  --filtpep FILTPEP     Peptide q-value cutoff\
+    \ level as a floating point\n                        number\n  --filtpsm FILTPSM\
+    \     PSM q-value cutoff level as a floating point number\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+- !Command
+  command:
+  - msstitch
+  - splitperco
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Input file of {} format
+    args: !SimpleFlagArg
+      name: FN
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Directory to output in
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --protheaders
+    description: "Specify protein FASTA headers to split on. Multiple\nheaders of\
+      \ the same split-type can be grouped with\nsemicolons. E.g. --protheaders 'ENSP;sp\n\
+      PSEUDOGEN;ncRNA' would split into ENSP/swissprot\npeptides and pseudogenes/non-coding\
+      \ RNA peptides.\n"
+    args: !RepeatFlagArg
+      name: PROTHEADERS
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: show program's version number and exit
+    args: !EmptyFlagArg {}
+  help_text: "usage: msstitch splitperco [-h] [--version] -i FN [-d OUTDIR] --protheaders\n\
+    \                           PROTHEADERS [PROTHEADERS ...]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  --version        \
+    \     show program's version number and exit\n  -i FN                 Input file\
+    \ of {} format\n  -d OUTDIR             Directory to output in\n  --protheaders\
+    \ PROTHEADERS [PROTHEADERS ...]\n                        Specify protein FASTA\
+    \ headers to split on. Multiple\n                        headers of the same split-type\
+    \ can be grouped with\n                        semicolons. E.g. --protheaders\
+    \ 'ENSP;sp\n                        PSEUDOGEN;ncRNA' would split into ENSP/swissprot\n\
+    \                        peptides and pseudogenes/non-coding RNA peptides.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/msstitch:3.5--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: msstitch [-h] [--version]\n                {storespectra,storequant,storeseq,makedecoy,trypsinize,concat,split,perco2psm,conffilt,psmtable,isosummarize,deletesets,filterperco,splitperco,peptides,proteins,genes,ensg,merge}\n\
+  \                ...\n\npositional arguments:\n  {storespectra,storequant,storeseq,makedecoy,trypsinize,concat,split,perco2psm,conffilt,psmtable,isosummarize,deletesets,filterperco,splitperco,peptides,proteins,genes,ensg,merge}\n\
+  \    storespectra        Create lookup of spectra in mzML format. Requires passing\
+  \ mzML files to --spectra. Biological set names for each file should be specified\
+  \ using --setnames\n    storequant          Create lookup of isobaric quant data\
+  \ in OpenMS consensusXML format. Use requires matched files passed to --spectra,\
+  \ --ms1, --isobaric parameters, and --dbfile with an sqlite lookup of already stored\
+  \ spectra.Creates lookup of precursor quant data in OpenMS featureXML, or Kronik\
+  \ output formats. Use requires --spectra, --dbfile with an sqlite lookup of spectra,\
+  \ --quanttype to determine quant output, --mztol, --rttol, --mztoltype for tolerance\
+  \ specification, and passing a featureXML or kronik file to -i.\n    storeseq  \
+  \          Create a lookup DB from a FASTA file. Sequences are\n               \
+  \             either stored as 1-aa-shifted overlapping peptides for full-length-protein\
+  \ \n                            matching, or as trypsinized peptides.\n    makedecoy\
+  \           Create a decoy database from a FASTA file.\n                       \
+  \     tryp_rev reverses tryptic peptides\n                            prot_rev reverses\
+  \ full protein\n                            Both make sure no decoys are accidentally\
+  \ identical to a target sequence,\n                            unless --ignore-target-hits\
+  \ is passed\n    trypsinize          Trypsinize a FASTA file\n    concat       \
+  \       Merges multiple TSV tables of MSGF+ output.Make sure headers are same in\
+  \ all files.\n    split               Splits an MSGF TSV PSM table into multiple\
+  \ new tables\n    perco2psm           Calculates FDR from percolator output and\
+  \ adds FDR and percolator  to the corresponding TSV PSM tables. FDR calculation\
+  \ method is TD-competition.\n    conffilt            Filters PSMs by their confidence\
+  \ level. \n    psmtable            Add columns to mzidtsv with genes, quantification,\
+  \ protein groups, etc. which are stored in a lookup specified with --dbfile\n  \
+  \  isosummarize        Produce isobaric summarized data from a PSM table containing\
+  \ raw intensities.\n    deletesets          Remove sample sets from an existing\
+  \ PSM table and its lookup file\n    filterperco         Filters out peptides that\
+  \ match to a protein in a FASTA file. Needs a lookup to match peptides to quickly.\n\
+  \    splitperco          Splits input XML into multiple files depending based on\
+  \ the protein headers specified. Each header class gets its own output file\n  \
+  \  peptides            Create peptide table from PSM TSV input, uses best scoring\
+  \ PSM for each peptide and strips PSM isobaric quant information. Retains MS1 quant\
+  \ info if specified, by taking the highest precursor quant value for a peptide.\
+  \ Optionally add isobaric quant and  modeled q-values\n    proteins            Create\
+  \ a protein table from peptides\n    genes               Create a gene table from\
+  \ peptides\n    ensg                Create an ENSG table from peptides\n    merge\
+  \               Create merged gene/protein/peptide tables from multiple sample set\
+  \ tables\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --version             show program's version number and exit\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/msstitch:3.5--py_0

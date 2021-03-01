@@ -42,6 +42,9 @@ task RefinemSsuErroneous {
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_ext: "extension of genomes (other files in directory are\\nignored) (default: fna)"
     evalue: "e-value threshold for identifying and classifying 16S\\nrRNA genes (default: 1e-05)"

@@ -5,14 +5,14 @@ inputs:
   doc: "[TABLE [DESC ...]]\nPrint the number (default) or save variants with TYPE\n\
     in the TYPE of any of the tables (T1 | T2 | T3 ...) to\nTABLE if a name is specified.\
     \ An optional message can\nbe added to describe the table."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --union
 - id: in_intersection
   doc: "[TABLE [DESC ...]]\nPrint the number (default) or save variants with TYPE\n\
     in the TYPE of all the tables (T1 & T2 & T3 ...) to\nTABLE if a name is specified.\
     \ An optional message can\nbe added to describe the table."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --intersection
 - id: in_difference
@@ -20,7 +20,7 @@ inputs:
     in the TYPE of the first, but not in the TYPE of\nothers (T1 - T2 - T3...) to\
     \ TABLE if a name is\nspecified. An optional message can be added to\ndescribe\
     \ the table."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --difference
 - id: in_expression
@@ -47,20 +47,20 @@ inputs:
     \ (chr, pos, ref, alt, NULL) are excluded if\ntreat_missing_as_wildtype is false\
     \ (default), and are\ntreated as (chr, pos, ref, alt, 0) otherwise. The\ndefault\
     \ comparison type is variant, or genotype if\noption --samples is specified."
-  type: string
+  type: string?
   inputBinding:
     prefix: --mode
 - id: in_samples
   doc: "[SAMPLES [SAMPLES ...]]\nA list of sample names corresponding to the variant\n\
     tables to compare. An error will be raised if a sample\nname matches no or multiple\
     \ samples or if a sample\ndoes not have any genotype."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --samples
 - id: in_verbosity
   doc: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
     \ to standard output (default to\n1).\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbosity
 - id: in_tables
@@ -74,6 +74,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vtools

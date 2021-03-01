@@ -18,6 +18,9 @@ task FastqToFasta {
       ~{if (n) then "-n" else ""} \
       ~{if (r) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     i: ""

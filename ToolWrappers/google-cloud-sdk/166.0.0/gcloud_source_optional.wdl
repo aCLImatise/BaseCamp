@@ -10,6 +10,9 @@ task GcloudSourceOptional {
       ~{flags} \
       ~{group}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     flags: ""
     group: ""

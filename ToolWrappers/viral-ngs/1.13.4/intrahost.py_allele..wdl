@@ -10,6 +10,9 @@ task IntrahostpyAllele {
       ~{intra_host_do_tpy} \
       ~{subcommand}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     intra_host_do_tpy: ""
     subcommand: ""

@@ -14,6 +14,9 @@ task MafMaskCpgpy {
       ~{if defined(mask) then ("--mask " +  '"' + mask + '"') else ""} \
       ~{if (restricted) then "--restricted" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mask: "Character to use as mask ('?' is default)"
     restricted: "Use restricted definition of CpGs"

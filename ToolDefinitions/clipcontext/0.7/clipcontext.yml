@@ -1,0 +1,784 @@
+&id001 !Command
+command:
+- clipcontext
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - clipcontext
+  - int
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: regions
+    description: --gtf str             Genomic annotations (hg38) GTF file (.gtf or
+      .gtf.gz)
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-intron-ol
+    description: "Minimum intron overlap of a site to be reported as\nintron overlapping\
+      \ (intersectBed -f parameter)\n(default: 0.9)"
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-len
+    description: "Minimum input site length for filtering --in BED file\n(default:\
+      \ False)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-len
+    description: "Maximum input site length for filtering --in BED file\n(default:\
+      \ False)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --thr
+    description: "Filter out --in BED regions < --thr column 5 score\n(default: no\
+      \ filtering)"
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - --rev-filter
+    description: "Reverse filtering (keep values <= --thr and prefer\nsites with smaller\
+      \ values) (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --in
+    description: CLIP peak regions input BED file (6-column format)
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --tr
+    description: Transcript sequence IDs list file to define intron
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --out
+    description: "CLIP peak regions overlapping with introns output BED\nfile\n"
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --gtf
+    description: ''
+    args: !SimpleFlagArg
+      name: str
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: clipcontext int [-h] --in str --tr str --gtf str --out str\n\
+    \                       [--min-intron-ol float] [--min-len int] [--max-len int]\n\
+    \                       [--thr float] [--rev-filter]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  --min-intron-ol float\n\
+    \                        Minimum intron overlap of a site to be reported as\n\
+    \                        intron overlapping (intersectBed -f parameter)\n    \
+    \                    (default: 0.9)\n  --min-len int         Minimum input site\
+    \ length for filtering --in BED file\n                        (default: False)\n\
+    \  --max-len int         Maximum input site length for filtering --in BED file\n\
+    \                        (default: False)\n  --thr float           Filter out\
+    \ --in BED regions < --thr column 5 score\n                        (default: no\
+    \ filtering)\n  --rev-filter          Reverse filtering (keep values <= --thr\
+    \ and prefer\n                        sites with smaller values) (default: False)\n\
+    \nrequired arguments:\n  --in str              CLIP peak regions input BED file\
+    \ (6-column format)\n  --tr str              Transcript sequence IDs list file\
+    \ to define intron\n                        regions\n  --gtf str             Genomic\
+    \ annotations (hg38) GTF file (.gtf or .gtf.gz)\n  --out str             CLIP\
+    \ peak regions overlapping with introns output BED\n                        file\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/clipcontext:0.7--py_0
+- !Command
+  command:
+  - clipcontext
+  - g2t
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --thr
+    description: "Site score threshold for filtering --in BED file\n(default: None)"
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - --rev-filter
+    description: "Reverse filtering (keep values <= threshold and prefer\nsites with\
+      \ smaller values) (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-len
+    description: "Minimum input site length for filtering --in BED file\n(default:\
+      \ False)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-len
+    description: "Maximum input site length for filtering --in BED file\n(default:\
+      \ False)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-exon-ol
+    description: "Minimum exon overlap of a site to be reported as\ntranscript hit\
+      \ (intersectBed -f parameter) (default:\n0.9)"
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - --merge-mode
+    description: "Defines how to merge overlapping transcript sites\n(overlap controlled\
+      \ by --merge-ext). (1) only merge\nsites overlapping at exon borders, (2) merge\
+      \ all\noverlapping sites, (3) do NOT merge overlapping sites\n(default: 1)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        '3':
+        '2':
+        '1':
+  - !Flag
+    optional: true
+    synonyms:
+    - --merge-ext
+    description: "Extend regions mapped to transcripts by --merge-ext\nbefore running\
+      \ mergeBed to merge overlapping regions\n(default: 10)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --add-out
+    description: "Output centered and extended sites and sequences for\nall transcript\
+      \ matches (unique + non-unique) (default:\nFalse)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --seq-ext
+    description: "Up- and downstream extension of centered sites for\ncontext sequence\
+      \ extraction (default: 30)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --all-gen-out
+    description: "Output all centered and extended genomic regions,\ninstead of only\
+      \ the ones with unique transcript\nmatches (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --gen-uniq-ids
+    description: "Generate unique column 4 IDs for --in BED file entries\n(default:\
+      \ False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --report
+    description: "Output an .html report with statistics and plots\ncomparing transcript\
+      \ and genomic sequences (default:\nFalse)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --in
+    description: Genomic regions (hg38) BED file (6-column format)
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --out
+    description: Output results folder
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --tr
+    description: "Transcript sequence IDs list file to define\ntranscripts to map\
+      \ on"
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --gtf
+    description: Genomic annotations (hg38) GTF file (.gtf or .gtf.gz)
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --gen
+    description: Genomic sequences (hg38) .2bit file
+    args: !SimpleFlagArg
+      name: str
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: clipcontext g2t [-h] --in str --out str --tr str --gtf str --gen\
+    \ str\n                       [--thr float] [--rev-filter] [--min-len int]\n \
+    \                      [--max-len int] [--min-exon-ol float]\n               \
+    \        [--merge-mode {1,2,3}] [--merge-ext int] [--add-out]\n              \
+    \         [--seq-ext int] [--all-gen-out] [--gen-uniq-ids]\n                 \
+    \      [--report]\n\noptional arguments:\n  -h, --help            show this help\
+    \ message and exit\n  --thr float           Site score threshold for filtering\
+    \ --in BED file\n                        (default: None)\n  --rev-filter     \
+    \     Reverse filtering (keep values <= threshold and prefer\n               \
+    \         sites with smaller values) (default: False)\n  --min-len int       \
+    \  Minimum input site length for filtering --in BED file\n                   \
+    \     (default: False)\n  --max-len int         Maximum input site length for\
+    \ filtering --in BED file\n                        (default: False)\n  --min-exon-ol\
+    \ float   Minimum exon overlap of a site to be reported as\n                 \
+    \       transcript hit (intersectBed -f parameter) (default:\n               \
+    \         0.9)\n  --merge-mode {1,2,3}  Defines how to merge overlapping transcript\
+    \ sites\n                        (overlap controlled by --merge-ext). (1) only\
+    \ merge\n                        sites overlapping at exon borders, (2) merge\
+    \ all\n                        overlapping sites, (3) do NOT merge overlapping\
+    \ sites\n                        (default: 1)\n  --merge-ext int       Extend\
+    \ regions mapped to transcripts by --merge-ext\n                        before\
+    \ running mergeBed to merge overlapping regions\n                        (default:\
+    \ 10)\n  --add-out             Output centered and extended sites and sequences\
+    \ for\n                        all transcript matches (unique + non-unique) (default:\n\
+    \                        False)\n  --seq-ext int         Up- and downstream extension\
+    \ of centered sites for\n                        context sequence extraction (default:\
+    \ 30)\n  --all-gen-out         Output all centered and extended genomic regions,\n\
+    \                        instead of only the ones with unique transcript\n   \
+    \                     matches (default: False)\n  --gen-uniq-ids        Generate\
+    \ unique column 4 IDs for --in BED file entries\n                        (default:\
+    \ False)\n  --report              Output an .html report with statistics and plots\n\
+    \                        comparing transcript and genomic sequences (default:\n\
+    \                        False)\n\nrequired arguments:\n  --in str           \
+    \   Genomic regions (hg38) BED file (6-column format)\n  --out str           \
+    \  Output results folder\n  --tr str              Transcript sequence IDs list\
+    \ file to define\n                        transcripts to map on\n  --gtf str \
+    \            Genomic annotations (hg38) GTF file (.gtf or .gtf.gz)\n  --gen str\
+    \             Genomic sequences (hg38) .2bit file\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/clipcontext:0.7--py_0
+- !Command
+  command:
+  - clipcontext
+  - mtf
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: files
+    description: --stats-out str  Output table to store motif search results in (for
+      --in
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --gtf
+    description: "Genomic annotations (hg38) GTF file (.gtf or .gtf.gz).\nRequired\
+      \ for --in type (2) or (3)"
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --gen
+    description: "Genomic sequences (hg38) .2bit file. Required for --in type\n(2)\
+      \ or (3)"
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --out
+    description: Output results folder, to store motif hit regions in BED
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --data-id
+    description: "Data ID (column 1) for --stats-out output table to store\nmotif\
+      \ search results (requires --stats-out to be set)"
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --in
+    description: "Three different inputs possible: (1) output folder of\nclipcontext\
+      \ g2t or clipcontext t2g with genomic and\ntranscript context sequence sets\
+      \ in which to look for given\n--motif. (2) BED file (genomic or transcript regions)\
+      \ in\nwhich to look for given --motif. (3) Transcript list file,\nto search\
+      \ for --motif in the respective transcript\nsequences. Note that (2)+(3) need\
+      \ --gtf and --gen"
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --motif
+    description: Motif or regular expression (RNA letters!) to search for in
+    args: !SimpleFlagArg
+      name: str
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: clipcontext mtf [-h] --in str --motif str [--gtf str] [--gen\
+    \ str]\n                       [--out str] [--stats-out str] [--data-id str]\n\
+    \noptional arguments:\n  -h, --help       show this help message and exit\n  --gtf\
+    \ str        Genomic annotations (hg38) GTF file (.gtf or .gtf.gz).\n        \
+    \           Required for --in type (2) or (3)\n  --gen str        Genomic sequences\
+    \ (hg38) .2bit file. Required for --in type\n                   (2) or (3)\n \
+    \ --out str        Output results folder, to store motif hit regions in BED\n\
+    \                   files\n  --stats-out str  Output table to store motif search\
+    \ results in (for --in\n                   type (1) (requires --data-id to be\
+    \ set). If table exists,\n                   append results row to table\n  --data-id\
+    \ str    Data ID (column 1) for --stats-out output table to store\n          \
+    \         motif search results (requires --stats-out to be set)\n\nrequired arguments:\n\
+    \  --in str         Three different inputs possible: (1) output folder of\n  \
+    \                 clipcontext g2t or clipcontext t2g with genomic and\n      \
+    \             transcript context sequence sets in which to look for given\n  \
+    \                 --motif. (2) BED file (genomic or transcript regions) in\n \
+    \                  which to look for given --motif. (3) Transcript list file,\n\
+    \                   to search for --motif in the respective transcript\n     \
+    \              sequences. Note that (2)+(3) need --gtf and --gen\n  --motif str\
+    \      Motif or regular expression (RNA letters!) to search for in\n         \
+    \          --in folder context sequences (e.g. --motif '[AC]UGCUAA')\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/clipcontext:0.7--py_0
+- !Command
+  command:
+  - clipcontext
+  - t2g
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --thr
+    description: "Site score threshold for filtering --in BED file (default:\nNone)"
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - --rev-filter
+    description: "Reverse filtering (keep values <= threshold and prefer sites\nwith\
+      \ smaller values) (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-len
+    description: "Minimum input site length for filtering --in BED file\n(default:\
+      \ False)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-len
+    description: "Maximum input site length for filtering --in BED file\n(default:\
+      \ False)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --seq-ext
+    description: "Up- and downstream extension of centered sites for context\nsequence\
+      \ extraction (default: 30)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --gen-uniq-ids
+    description: "Generate unique column 4 IDs for --in BED file entries\n(default:\
+      \ False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --report
+    description: "Output an .html report with statistics and plots comparing\ntranscript\
+      \ and genomic sequences (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --in
+    description: "Transcript regions BED file (6-column format) (transcript\nIDs need\
+      \ to be in --gtf)"
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --out
+    description: Output results folder
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --gtf
+    description: Genomic annotations (hg38) GTF file (.gtf or .gtf.gz)
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --gen
+    description: Genomic sequences (hg38) .2bit file
+    args: !SimpleFlagArg
+      name: str
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: clipcontext t2g [-h] --in str --out str --gtf str --gen str\n\
+    \                       [--thr float] [--rev-filter] [--min-len int]\n       \
+    \                [--max-len int] [--seq-ext int] [--gen-uniq-ids]\n          \
+    \             [--report]\n\noptional arguments:\n  -h, --help      show this help\
+    \ message and exit\n  --thr float     Site score threshold for filtering --in\
+    \ BED file (default:\n                  None)\n  --rev-filter    Reverse filtering\
+    \ (keep values <= threshold and prefer sites\n                  with smaller values)\
+    \ (default: False)\n  --min-len int   Minimum input site length for filtering\
+    \ --in BED file\n                  (default: False)\n  --max-len int   Maximum\
+    \ input site length for filtering --in BED file\n                  (default: False)\n\
+    \  --seq-ext int   Up- and downstream extension of centered sites for context\n\
+    \                  sequence extraction (default: 30)\n  --gen-uniq-ids  Generate\
+    \ unique column 4 IDs for --in BED file entries\n                  (default: False)\n\
+    \  --report        Output an .html report with statistics and plots comparing\n\
+    \                  transcript and genomic sequences (default: False)\n\nrequired\
+    \ arguments:\n  --in str        Transcript regions BED file (6-column format)\
+    \ (transcript\n                  IDs need to be in --gtf)\n  --out str       Output\
+    \ results folder\n  --gtf str       Genomic annotations (hg38) GTF file (.gtf\
+    \ or .gtf.gz)\n  --gen str       Genomic sequences (hg38) .2bit file\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/clipcontext:0.7--py_0
+- !Command
+  command:
+  - clipcontext
+  - eir
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --tr
+    description: "Transcript sequence IDs list file for which to extract\nexon + intron\
+      \ regions"
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --gtf
+    description: Genomic annotations (hg38) GTF file (.gtf or .gtf.gz)
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --exon-out
+    description: Exon regions BED output file
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --intron-out
+    description: Intron regions BED output file
+    args: !SimpleFlagArg
+      name: str
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: clipcontext eir [-h] --tr str --gtf str --exon-out str --intron-out\
+    \ str\n\noptional arguments:\n  -h, --help        show this help message and exit\n\
+    \nrequired arguments:\n  --tr str          Transcript sequence IDs list file for\
+    \ which to extract\n                    exon + intron regions\n  --gtf str   \
+    \      Genomic annotations (hg38) GTF file (.gtf or .gtf.gz)\n  --exon-out str\
+    \    Exon regions BED output file\n  --intron-out str  Intron regions BED output\
+    \ file\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/clipcontext:0.7--py_0
+- !Command
+  command:
+  - clipcontext
+  - exb
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-dist
+    description: "Maximum distance of CLIP peak region end to nearest exon end\nfor\
+      \ CLIP region to still be output (default: 50)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-len
+    description: "Minimum input site length for filtering --in BED file\n(default:\
+      \ False)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-len
+    description: "Maximum input site length for filtering --in BED file\n(default:\
+      \ False)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --thr
+    description: "Filter out --in BED regions < --thr column 5 score (default:\nno\
+      \ filtering)"
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - --rev-filter
+    description: "Reverse filtering (keep values <= --thr and prefer sites\nwith smaller\
+      \ values) (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --in
+    description: CLIP peak regions input BED file (6-column format)
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --tr
+    description: Transcript sequence IDs list file to define exon regions
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --gtf
+    description: Genomic annotations (hg38) GTF file (.gtf or .gtf.gz)
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --out
+    description: CLIP peak regions near exon borders output BED file
+    args: !SimpleFlagArg
+      name: str
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: clipcontext exb [-h] --in str --tr str --gtf str --out str\n\
+    \                       [--max-dist int] [--min-len int] [--max-len int]\n   \
+    \                    [--thr float] [--rev-filter]\n\noptional arguments:\n  -h,\
+    \ --help      show this help message and exit\n  --max-dist int  Maximum distance\
+    \ of CLIP peak region end to nearest exon end\n                  for CLIP region\
+    \ to still be output (default: 50)\n  --min-len int   Minimum input site length\
+    \ for filtering --in BED file\n                  (default: False)\n  --max-len\
+    \ int   Maximum input site length for filtering --in BED file\n              \
+    \    (default: False)\n  --thr float     Filter out --in BED regions < --thr column\
+    \ 5 score (default:\n                  no filtering)\n  --rev-filter    Reverse\
+    \ filtering (keep values <= --thr and prefer sites\n                  with smaller\
+    \ values) (default: False)\n\nrequired arguments:\n  --in str        CLIP peak\
+    \ regions input BED file (6-column format)\n  --tr str        Transcript sequence\
+    \ IDs list file to define exon regions\n  --gtf str       Genomic annotations\
+    \ (hg38) GTF file (.gtf or .gtf.gz)\n  --out str       CLIP peak regions near\
+    \ exon borders output BED file\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/clipcontext:0.7--py_0
+- !Command
+  command:
+  - clipcontext
+  - lst
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-len
+    description: "Accept only transcripts with length >= --min-len (default:\nFalse)"
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --strict
+    description: "Accept only transcripts with transcript support level (TSL)\n1-5\
+      \ (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --add-infos
+    description: "Add additional information columns (gene ID, TSL, length) to\noutput\
+      \ file (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --gtf
+    description: "Genomic annotations (hg38) GTF file (.gtf or .gtf.gz) (NOTE:\ntested\
+      \ with Ensembl GTF files, expects transcript support\nlevel (TSL) information)"
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - --out
+    description: Output transcript IDs list file
+    args: !SimpleFlagArg
+      name: str
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: clipcontext lst [-h] --gtf str --out str [--min-len int] [--strict]\n\
+    \                       [--add-infos]\n\noptional arguments:\n  -h, --help   \
+    \  show this help message and exit\n  --min-len int  Accept only transcripts with\
+    \ length >= --min-len (default:\n                 False)\n  --strict       Accept\
+    \ only transcripts with transcript support level (TSL)\n                 1-5 (default:\
+    \ False)\n  --add-infos    Add additional information columns (gene ID, TSL, length)\
+    \ to\n                 output file (default: False)\n\nrequired arguments:\n \
+    \ --gtf str      Genomic annotations (hg38) GTF file (.gtf or .gtf.gz) (NOTE:\n\
+    \                 tested with Ensembl GTF files, expects transcript support\n\
+    \                 level (TSL) information)\n  --out str      Output transcript\
+    \ IDs list file\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/clipcontext:0.7--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: clipcontext [-h] [-v] {g2t,t2g,lst,int,exb,eir,mtf} ...\n\nTool\
+  \ suite for mapping RBP binding regions to transcriptome or genome.\n\npositional\
+  \ arguments:\n  {g2t,t2g,lst,int,exb,eir,mtf}\n                        Program modes\n\
+  \    g2t                 Map genomic sites to transcript sites\n    t2g        \
+  \         Map transcript sites to genomic sites\n    lst                 Get list\
+  \ of most prominent transcripts\n    int                 Get sites overlapping with\
+  \ introns\n    exb                 Get sites near exon borders\n    eir        \
+  \         Get exon and intron regions\n    mtf                 Search for motif\
+  \ in g2t or t2g sets\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -v, --version         show program's version number and exit\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/clipcontext:0.7--py_0

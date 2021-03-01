@@ -14,6 +14,9 @@ task Jcmd {
       ~{if (read_execute_commands) then "-f" else ""} \
       ~{if (list_jvm_processes) then "-l" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_execute_commands: "read and execute commands from the file"
     list_jvm_processes: "list JVM processes on the local machine"

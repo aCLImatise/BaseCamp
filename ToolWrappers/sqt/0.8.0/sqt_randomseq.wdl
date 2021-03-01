@@ -8,6 +8,9 @@ task SqtRandomseq {
     sqt randomseq \
       ~{if defined(minimum_length) then ("--minimum-length " +  '"' + minimum_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minimum_length: ""
   }

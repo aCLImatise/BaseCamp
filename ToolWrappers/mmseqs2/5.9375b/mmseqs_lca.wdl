@@ -14,6 +14,9 @@ task MmseqsLca {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     lca_ranks: "Ranks to return in LCA computation"
     blacklist: "12908,28384     Comma separted list of ignored taxa in LCA computation"

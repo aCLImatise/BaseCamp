@@ -26,6 +26,9 @@ task SketchyPlot {
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index: "Path to genotype feature index used in: sketchy"
     key: "Path to genotype feature index key for translation\\nfrom numeric.  [required]"

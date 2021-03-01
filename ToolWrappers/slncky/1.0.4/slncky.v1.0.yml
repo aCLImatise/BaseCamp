@@ -3,92 +3,191 @@ command:
 - slncky.v1.0
 positional:
 - !Positional
-  description: bed12 file of transcripts
+  optional: false
   position: 0
   name: bedfile
-  optional: false
+  description: bed12 file of transcripts
 - !Positional
-  description: assembly
+  optional: false
   position: 1
   name: assembly
+  description: assembly
+- !Positional
   optional: false
+  position: 2
+  name: out_prefix
+  description: out_prefix
 named:
 - !Flag
-  description: flag if you only want to filter lncs but don't want to
+  optional: true
+  synonyms:
+  - --config
+  - -c
+  description: "path to assembly.config file. default uses config file\nin same directory\
+    \ as slncky"
+  args: !SimpleFlagArg
+    name: CONFIG
+- !Flag
+  optional: true
   synonyms:
   - --no_orth_search
   - '-1'
+  description: "flag if you only want to filter lncs but don't want to\nsearch for\
+    \ orthologs"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: flag if you don't want lncs to be filtered before
+  optional: true
   synonyms:
   - --no_filter
   - '-2'
+  description: "flag if you don't want lncs to be filtered before\nsearching for ortholog"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: flag if you don't want to compare lnc-to-ortholog
+  optional: true
+  synonyms:
+  - --overwrite
+  - -o
+  description: forces overwrite of out_prefix.bed
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -n
+  description: number of threads. default = 5
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --min_overlap
+  description: "remove any transcript that overlap annotated coding\ngene > min_overlap%.\
+    \ default = 0%"
+  args: !SimpleFlagArg
+    name: MIN_OVERLAP
+- !Flag
+  optional: true
+  synonyms:
+  - --min_cluster
+  description: min size of duplication clusters to remove. default=2
+  args: !SimpleFlagArg
+    name: MIN_CLUSTER
+- !Flag
+  optional: true
+  synonyms:
+  - --min_coding
+  description: "min exonic identity to filter out transcript that\naligns to orthologous\
+    \ coding gene. default is set by\nlearning coding alignment distribution from\
+    \ data"
+  args: !SimpleFlagArg
+    name: MIN_CODING
+- !Flag
+  optional: true
+  synonyms:
+  - --no_overlap
+  description: flag if you don't want to overlap with coding
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_collapse
+  description: flag if you don't want to collapse isoforms
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_dup
+  description: flag if don't want to align to duplicates
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_self
+  description: flag if you don't want to self-align for duplicates
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_coding
+  description: flag if you don't want to align to orthologous coding
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_noncoding
+  description: "min exonic identity to filter out transcript that\naligns to orthologous\
+    \ noncoding gene. default=0"
+  args: !SimpleFlagArg
+    name: MIN_NONCODING
+- !Flag
+  optional: true
   synonyms:
   - --no_bg
+  description: "flag if you don't want to compare lnc-to-ortholog\nalignments to a\
+    \ background. This flag may be useful if\nyou want to do a 'quick-and-dirty' run\
+    \ of the ortholog\nsearch."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: flag if you don't want to search for orfs
+  optional: true
   synonyms:
   - --no_orf
+  description: flag if you don't want to search for orfs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: path to bedtools
+  optional: true
   synonyms:
   - --bedtools
+  description: path to bedtools
   args: !SimpleFlagArg
     name: BEDTOOLS
-  optional: true
 - !Flag
-  description: path to liftOver
+  optional: true
   synonyms:
   - --liftover
+  description: path to liftOver
   args: !SimpleFlagArg
     name: LIFTOVER
-  optional: true
 - !Flag
-  description: minMatch parameter for liftover. default=0.1
+  optional: true
   synonyms:
   - --minMatch
+  description: minMatch parameter for liftover. default=0.1
   args: !SimpleFlagArg
     name: MINMATCH
-  optional: true
 - !Flag
-  description: '# of basepairs to search up- and down-stream when'
+  optional: true
   synonyms:
   - --pad
+  description: "# of basepairs to search up- and down-stream when\nlifting over lnc\
+    \ to ortholog"
   args: !SimpleFlagArg
     name: PAD
-  optional: true
 - !Flag
-  description: flag for if you want slncky to create a website
-  synonyms:
-  - --web
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
   synonyms:
-  - --config
+  - --lastz
+  description: path to lastz
   args: !SimpleFlagArg
-    name: CONFIG
+    name: LASTZ
+- !Flag
   optional: true
+  synonyms:
+  - --gap_open
+  - --gap_extend
+  - --web
+  description: "flag for if you want slncky to create a website\nvisualizing results\n"
+  args: !SimpleFlagArg
+    name: GAP_OPEN
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: slncky.v1.0 [-h] [--config CONFIG] [--no_orth_search] [--no_filter]\n\
@@ -136,3 +235,4 @@ help_text: "usage: slncky.v1.0 [-h] [--config CONFIG] [--no_orth_search] [--no_f
   \  visualizing results\n"
 generated_using:
 - --help
+docker_image:

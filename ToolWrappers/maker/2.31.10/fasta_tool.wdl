@@ -4,6 +4,9 @@ task FastaTool {
   command <<<
     fasta_tool
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

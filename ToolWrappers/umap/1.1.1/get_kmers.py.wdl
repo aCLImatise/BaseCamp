@@ -20,6 +20,9 @@ task GetKmerspy {
       ~{if defined(job_id) then ("--job_id " +  '"' + job_id + '"') else ""} \
       ~{if defined(var_id) then ("--var_id " +  '"' + var_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: "The software would infer it based on the name of the\\n'out_dir'. If it is set and contradicts the 'out_dir', a\\nsubfolder under out_dir will be created named 'kmer' and\\nout_dir will be changed to that."
     job_id: "If not submitted in job array, would require this parameter\\nto be set. (1-based index)"

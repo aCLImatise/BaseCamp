@@ -1,0 +1,103 @@
+!Command
+command:
+- oncogemini
+- annotate
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: The TABIX'ed BED file containing the annotations
+  args: !SimpleFlagArg
+    name: ANNO_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "The name(s) of the BED column(s) to be added to the\nvariant table.If\
+    \ the input file is a VCF, then this is\nthe name of the info field to pull."
+  args: !SimpleFlagArg
+    name: COL_NAMES
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: How should the annotation file be used? (def. extract)
+  args: !ChoiceFlagArg
+    choices: !!set
+      extract:
+      boolean:
+      count:
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: "Column(s) to extract information from for list\nannotations.If the\
+    \ input is VCF, then this defaults to\nthe fields specified in `-c`."
+  args: !SimpleFlagArg
+    name: COL_EXTRACTS
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "What data type(s) should be used to represent the new\nvalues in the\
+    \ database? Any of {integer, float, text}"
+  args: !SimpleFlagArg
+    name: COL_TYPES
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Operation(s) to apply to the extract column values in\nthe event that\
+    \ a variant overlaps multiple annotations\nin your annotation file (-f).Any of\
+    \ {sum, mean,\nmedian, min, max, mode, list, uniq_list, first, last}"
+  args: !SimpleFlagArg
+    name: COL_OPERATIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --region-only
+  description: "If set, only region coordinates will be considered\nwhen annotating\
+    \ variants.The default is to annotate\nusing region coordinates as well as REF\
+    \ and ALT\nvariant valuesThis option is only valid if annotation\nis a VCF file\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: oncogemini annotate [-h] -f ANNO_FILE [-c COL_NAMES]\n        \
+  \                   [-a {boolean,count,extract}] [-e COL_EXTRACTS]\n           \
+  \                [-t COL_TYPES] [-o COL_OPERATIONS] [--region-only]\n          \
+  \                 db\n\npositional arguments:\n  db                    The name\
+  \ of the database to be updated.\n\noptional arguments:\n  -h, --help          \
+  \  show this help message and exit\n  -f ANNO_FILE          The TABIX'ed BED file\
+  \ containing the annotations\n  -c COL_NAMES          The name(s) of the BED column(s)\
+  \ to be added to the\n                        variant table.If the input file is\
+  \ a VCF, then this is\n                        the name of the info field to pull.\n\
+  \  -a {boolean,count,extract}\n                        How should the annotation\
+  \ file be used? (def. extract)\n  -e COL_EXTRACTS       Column(s) to extract information\
+  \ from for list\n                        annotations.If the input is VCF, then this\
+  \ defaults to\n                        the fields specified in `-c`.\n  -t COL_TYPES\
+  \          What data type(s) should be used to represent the new\n             \
+  \           values in the database? Any of {integer, float, text}\n  -o COL_OPERATIONS\
+  \     Operation(s) to apply to the extract column values in\n                  \
+  \      the event that a variant overlaps multiple annotations\n                \
+  \        in your annotation file (-f).Any of {sum, mean,\n                     \
+  \   median, min, max, mode, list, uniq_list, first, last}\n  --region-only     \
+  \    If set, only region coordinates will be considered\n                      \
+  \  when annotating variants.The default is to annotate\n                       \
+  \ using region coordinates as well as REF and ALT\n                        variant\
+  \ valuesThis option is only valid if annotation\n                        is a VCF\
+  \ file\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/oncogemini:1.0.0--pyh3252c3a_0

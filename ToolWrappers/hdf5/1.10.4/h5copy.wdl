@@ -42,6 +42,9 @@ task H5copy {
       ~{if (enable_error_stack) then "--enable-error-stack" else ""} \
       ~{if (flag) then "--flag" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_name: "output file name"
     source: "source object name"

@@ -80,6 +80,9 @@ task CsvtkPlotLine {
       ~{if defined(y_min) then ("--y-min " +  '"' + y_min + '"') else ""} \
       ~{if defined(ylab) then ("--ylab " +  '"' + ylab + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     color_index: "color index, 1-7 (default 1)"
     data_field_x: "column index or column name of X for command line"

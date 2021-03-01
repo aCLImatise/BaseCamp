@@ -3,23 +3,24 @@ id: pathchk.cwl
 inputs:
 - id: in_check_most_posix
   doc: check for most POSIX systems
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
-- id: in_check_empty_names
+- id: in_check_empty_leading
   doc: check for empty names and leading "-"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -P
 - id: in_portability
   doc: check for all POSIX systems (equivalent to -p -P)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --portability
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pathchk

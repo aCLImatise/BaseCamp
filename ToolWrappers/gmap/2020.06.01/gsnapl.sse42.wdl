@@ -46,7 +46,7 @@ task Gsnaplsse42 {
     String? use_snps
     Directory? c_met_dir
     Directory? atoi_dir
-    String? alignment_mode_default
+    String? alignment_mode_standard
     Int? n_threads
     Int? max_anchors
     Int? find_dna_chimeras
@@ -104,12 +104,12 @@ task Gsnaplsse42 {
     String? read_group_library
     String? read_group_platform
     Boolean? check
-    String hash_offsets_positions
+    String hash_offsets_hash
     String parameter_dot
   }
   command <<<
     gsnapl_sse42 \
-      ~{hash_offsets_positions} \
+      ~{hash_offsets_hash} \
       ~{parameter_dot} \
       ~{if defined(dir) then ("--dir " +  '"' + dir + '"') else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
@@ -155,7 +155,7 @@ task Gsnaplsse42 {
       ~{if defined(use_snps) then ("--use-snps " +  '"' + use_snps + '"') else ""} \
       ~{if defined(c_met_dir) then ("--cmetdir " +  '"' + c_met_dir + '"') else ""} \
       ~{if defined(atoi_dir) then ("--atoidir " +  '"' + atoi_dir + '"') else ""} \
-      ~{if defined(alignment_mode_default) then ("--mode " +  '"' + alignment_mode_default + '"') else ""} \
+      ~{if defined(alignment_mode_standard) then ("--mode " +  '"' + alignment_mode_standard + '"') else ""} \
       ~{if defined(n_threads) then ("--nthreads " +  '"' + n_threads + '"') else ""} \
       ~{if defined(max_anchors) then ("--max-anchors " +  '"' + max_anchors + '"') else ""} \
       ~{if defined(find_dna_chimeras) then ("--find-dna-chimeras " +  '"' + find_dna_chimeras + '"') else ""} \
@@ -214,6 +214,9 @@ task Gsnaplsse42 {
       ~{if defined(read_group_platform) then ("--read-group-platform " +  '"' + read_group_platform + '"') else ""} \
       ~{if (check) then "--check" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "Genome directory.  Default (as specified by --with-gmapdb to the configure program) is\\n/usr/local/share"
     db: "Genome database"
@@ -223,7 +226,7 @@ task Gsnaplsse42 {
     use_transcriptome_only: "Use only the transcriptome index and not the genome index"
     km_er: "kmer size to use in genome database (allowed values: 16 or less)\\nIf not specified, the program will find the highest available\\nkmer size in the genome database"
     sampling: "Sampling to use in genome database.  If not specified, the program\\nwill find the smallest available sampling value in the genome database\\nwithin selected k-mer size"
-    part: "Process only the i-th out of every n sequences\\ne.g., 0/100 or 99/100 (useful for distributing jobs\\nto a computer farm)."
+    part: "/INT             Process only the i-th out of every n sequences\\ne.g., 0/100 or 99/100 (useful for distributing jobs\\nto a computer farm)."
     input_buffer_size: "Size of input buffer (program reads this many sequences\\nat a time for efficiency) (default 1000)"
     barcode_length: "Amount of barcode to remove from start of every read before alignment\\n(default 0)"
     end_trim_length: "Amount of trim to remove from the end of every read before alignment\\n(default 0)"
@@ -259,7 +262,7 @@ task Gsnaplsse42 {
     use_snps: "Use database containing known SNPs (in <STRING>.iit, built\\npreviously using snpindex) for tolerance to SNPs"
     c_met_dir: "Directory for methylcytosine index files (created using cmetindex)\\n(default is location of genome index files specified using -D, -V, and -d)"
     atoi_dir: "Directory for A-to-I RNA editing index files (created using atoiindex)\\n(default is location of genome index files specified using -D, -V, and -d)"
-    alignment_mode_default: "Alignment mode: standard (default), cmet-stranded, cmet-nonstranded,\\natoi-stranded, atoi-nonstranded, ttoc-stranded, or ttoc-nonstranded.\\nNon-standard modes requires you to have previously run the cmetindex\\nor atoiindex programs (which also cover the ttoc modes) on the genome"
+    alignment_mode_standard: "Alignment mode: standard (default), cmet-stranded, cmet-nonstranded,\\natoi-stranded, atoi-nonstranded, ttoc-stranded, or ttoc-nonstranded.\\nNon-standard modes requires you to have previously run the cmetindex\\nor atoiindex programs (which also cover the ttoc modes) on the genome"
     n_threads: "Number of worker threads"
     max_anchors: "Controls number of candidate segments returned by the complete set algorithm\\nDefault is 10.  Can be increased to higher values to solve alignments with\\nevenly spaced mismatches at close distances.  However, higher values will\\ncause GSNAP to run more slowly.  A value of 1000, for example, slows down\\nthe program by a factor of 10 or so.  Therefore, change this value only if\\nabsolutely necessary."
     find_dna_chimeras: "Look for distant splicing involving poor splice sites (0=no, 1=yes (default))\\nCurrent implementation improves even RNA-Seq alignments at poor splice sites\\nso it is now on by default."
@@ -317,7 +320,7 @@ task Gsnaplsse42 {
     read_group_library: "Value to put into read-group library (RG-LB) field"
     read_group_platform: "Value to put into read-group library (RG-PL) field"
     check: "Check compiler assumptions"
-    hash_offsets_positions: "Hash offsets  Hash positions  Genome          Local hash offsets  Local hash positions\\n0      allocate      mmap            mmap            allocate            mmap\\n1      allocate      mmap & preload  mmap            allocate            mmap & preload\\n2      allocate      mmap & preload  mmap & preload  allocate            mmap & preload\\n3      allocate      allocate        mmap & preload  allocate            allocate"
+    hash_offsets_hash: "Hash offsets  Hash positions  Genome          Local hash offsets  Local hash positions\\n0      allocate      mmap            mmap            allocate            mmap\\n1      allocate      mmap & preload  mmap            allocate            mmap & preload\\n2      allocate      mmap & preload  mmap & preload  allocate            mmap & preload\\n3      allocate      allocate        mmap & preload  allocate            allocate"
     parameter_dot: "Default for RNA-Seq is 1 (yes), so we can allow for"
   }
   output {

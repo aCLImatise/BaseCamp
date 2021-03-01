@@ -8,7 +8,8 @@ task VIBRANTAnnotationpy {
     Int? number_limit_sequences
     Boolean? vi_rome
     File? path_directory_hmm
-    File? path_directory_tsv
+    File? path_tsv_moved
+    String? outfolder
     String? base
   }
   command <<<
@@ -19,9 +20,13 @@ task VIBRANTAnnotationpy {
       ~{if defined(number_limit_sequences) then ("-o " +  '"' + number_limit_sequences + '"') else ""} \
       ~{if (vi_rome) then "-virome" else ""} \
       ~{if defined(path_directory_hmm) then ("-d " +  '"' + path_directory_hmm + '"') else ""} \
-      ~{if defined(path_directory_tsv) then ("-m " +  '"' + path_directory_tsv + '"') else ""} \
+      ~{if defined(path_tsv_moved) then ("-m " +  '"' + path_tsv_moved + '"') else ""} \
+      ~{if defined(outfolder) then ("-x " +  '"' + outfolder + '"') else ""} \
       ~{if defined(base) then ("-y " +  '"' + base + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_file: "input fasta file"
     format_of_input: "format of input [default=\\\"nucl\\\"]"
@@ -29,7 +34,8 @@ task VIBRANTAnnotationpy {
     number_limit_sequences: "number of ORFs per scaffold to limit input sequences\\n[default=4, can increase but not decrease]"
     vi_rome: "use this setting if dataset is known to be comprised mainly\\nof viruses. More sensitive to viruses, less sensitive to\\nfalse identifications [default=off]"
     path_directory_hmm: "path to \\\"databases\\\" directory that contains .HMM files (if\\nmoved from default location)"
-    path_directory_tsv: "path to \\\"files\\\" directory that contains .tsv and model files\\n(if moved from default location)"
+    path_tsv_moved: "path to \\\"files\\\" directory that contains .tsv and model files\\n(if moved from default location)"
+    outfolder: "out_folder"
     base: "base"
   }
   output {

@@ -22,6 +22,9 @@ task HicupFilter {
       ~{if (threads) then "--threads" else ""} \
       ~{if (zip) then "--zip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Specify the optional configuration file"
     digest: "Specify the genome digest file (created by hicup_digester)"

@@ -14,6 +14,9 @@ task Segwaylayer {
       ~{if (no_re_color) then "--no-recolor" else ""} \
       ~{if defined(value__tracklinesetattr) then ("-s " +  '"' + value__tracklinesetattr + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     big_bed: "specify bigBed output file"
     mnemonic_file: "specify tab-delimited input file with mnemonic\\nreplacement identifiers for segment labels"

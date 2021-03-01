@@ -20,6 +20,9 @@ task FcGetReadHctgMappy {
       ~{if defined(h_ctg_ids_fn) then ("--h-ctg-ids-fn " +  '"' + h_ctg_ids_fn + '"') else ""} \
       ~{if defined(output_fn) then ("--output-fn " +  '"' + output_fn + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base_dir: "Substituted as {base_dir} into default inputs.\\n(default: .)"
     raw_read_ids_fn: "rawread_ids filename (default:\\n{base_dir}/3-unzip/reads/dump_rawread_ids/rawread_ids)"

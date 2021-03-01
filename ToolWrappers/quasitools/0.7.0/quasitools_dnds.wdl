@@ -2,7 +2,6 @@ version 1.0
 
 task QuasitoolsDnds {
   input {
-    File? _help_show
     String csv
     String reference
     String offset
@@ -11,11 +10,12 @@ task QuasitoolsDnds {
     quasitools dnds \
       ~{csv} \
       ~{reference} \
-      ~{offset} \
-      ~{if defined(_help_show) then ("--output " +  '"' + _help_show + '"') else ""}
+      ~{offset}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _help_show: "--help                 Show this message and exit.\\n"
     csv: ""
     reference: ""
     offset: ""

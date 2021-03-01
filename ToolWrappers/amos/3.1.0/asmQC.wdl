@@ -46,6 +46,9 @@ task AsmQC {
       ~{if defined(ce_plot) then ("-ceplot " +  '"' + ce_plot + '"') else ""} \
       ~{if (debug) then "-debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bank: "bank where assembly is stored"
     sc_aff: "take into account scaffolds when reporting results"

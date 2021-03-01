@@ -8,6 +8,9 @@ task FastgToGfapy {
     fastg_to_gfa_py \
       ~{fastgtwogfadotpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fastgtwogfadotpy: ""
   }

@@ -3,22 +3,22 @@ id: sketchy_survey_construct.cwl
 inputs:
 - id: in_directory
   doc: Input directory with collected output from Pathfinder
-  type: File
+  type: File?
   inputBinding:
     prefix: --directory
 - id: in_output
   doc: Tab-delimited genotype feature index for Sketchy
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_template
   doc: 'Use a configuration template: saureus, kpneumoniae,'
-  type: string
+  type: string?
   inputBinding:
     prefix: --template
 - id: in_intersect
   doc: Take minimum intersection of all specified column
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --intersect
 - id: in_survey
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sketchy

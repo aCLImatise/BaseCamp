@@ -12,6 +12,9 @@ task AribaExpandflagOutfile {
       ~{expand_flag} \
       ~{in_dot_report_dot_tsv}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ariba: ""
     expand_flag: ""

@@ -3,7 +3,7 @@ id: megalodon_extras_calibrate_generate_modified_base_stats.cwl
 inputs:
 - id: in_control_megalodon_results_dir
   doc: "Megalodon output directory with modified base control\nsample."
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --control-megalodon-results-dir
 - id: in_exclude_modified_bases
@@ -18,22 +18,22 @@ inputs:
     prefix: --modified-bases-set
 - id: in_ground_truth_data
   doc: "Ground truth csv with (chrm, strand, pos, is_mod)\nvalues."
-  type: string
+  type: string?
   inputBinding:
     prefix: --ground-truth-data
 - id: in_strand_specific_sites
   doc: "Sites in --ground-truth-data are strand-specific. If\nnot set, strand is ignored."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --strand-specific-sites
 - id: in_out_filename
   doc: "Output filename for text summary. Default:\nmod_calibration_statistics.npz"
-  type: File
+  type: File?
   inputBinding:
     prefix: --out-filename
 - id: in_quiet
   doc: Suppress progress information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 outputs:
@@ -42,14 +42,15 @@ outputs:
   type: stdout
 - id: out_control_megalodon_results_dir
   doc: "Megalodon output directory with modified base control\nsample."
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_control_megalodon_results_dir)
 - id: out_out_filename
   doc: "Output filename for text summary. Default:\nmod_calibration_statistics.npz"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - megalodon_extras

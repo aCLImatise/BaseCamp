@@ -18,6 +18,9 @@ task SegmentJuncs {
       ~{left_reads_dot_fq} \
       ~{left_reads_dot_bwt_out}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_dot_fa: ""
     segment_dot_jun_cs: ""

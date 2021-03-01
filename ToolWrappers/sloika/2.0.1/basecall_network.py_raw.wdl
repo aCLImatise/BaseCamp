@@ -36,6 +36,9 @@ task BasecallNetworkpyRaw {
       ~{if defined(open_pore_fraction) then ("--open_pore_fraction " +  '"' + open_pore_fraction + '"') else ""} \
       ~{if defined(trim) then ("--trim " +  '"' + trim + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alphabet: "Alphabet of the sequences (default: b'ACGT')"
     compile: "File output compiled model (default: None)"

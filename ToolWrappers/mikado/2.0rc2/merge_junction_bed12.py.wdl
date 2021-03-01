@@ -16,6 +16,9 @@ task MergeJunctionBed12py {
       ~{if (top_hat) then "--tophat" else ""} \
       ~{if defined(output_file_default) then ("--output " +  '"' + output_file_default + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     delim: "Delimiter for merged names. Default: ;"
     threads: "Number of threads to use for multiprocessing. Default:\\n1"

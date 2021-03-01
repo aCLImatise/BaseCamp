@@ -22,6 +22,9 @@ task GseapyBiomart {
       ~{if defined(mart) then ("--mart " +  '"' + mart + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     value__filter: "VALUE, --filter NAME VALUE\\nWhich filter to use. Input filter name, and value. If\\nmulti-value required, separate each value by comma. If\\nvalue is a txt file, then one ID per row, exclude\\nheader."
     attributes: "Which attribute(s) to retrieve. Separate each attr by\\ncomma."

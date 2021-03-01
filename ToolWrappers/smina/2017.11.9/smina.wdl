@@ -31,7 +31,7 @@ task Smina {
     Int? force_cap
     File? user_grid
     Boolean? print_terms
-    File? arg_output_file
+    File? arg_output_file_name
     File? log
     String? atom_terms
     Int? cpu
@@ -89,7 +89,7 @@ task Smina {
       ~{if defined(force_cap) then ("--force_cap " +  '"' + force_cap + '"') else ""} \
       ~{if defined(user_grid) then ("--user_grid " +  '"' + user_grid + '"') else ""} \
       ~{if (print_terms) then "--print_terms" else ""} \
-      ~{if (arg_output_file) then "-o" else ""} \
+      ~{if (arg_output_file_name) then "-o" else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if defined(atom_terms) then ("--atom_terms " +  '"' + atom_terms + '"') else ""} \
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
@@ -102,6 +102,9 @@ task Smina {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if (help_hidden) then "--help_hidden" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_rigid_part: "[ --receptor ] arg         rigid part of the receptor (PDBQT)"
     flex: "flexible side chains, if any (PDBQT)"
@@ -132,7 +135,7 @@ task Smina {
     force_cap: "max allowed force; lower values more gently\\nminimize clashing structures"
     user_grid: "Autodock map file for user grid data based"
     print_terms: "Print all available terms with default"
-    arg_output_file: "[ --out ] arg              output file name, format taken from file"
+    arg_output_file_name: "[ --out ] arg              output file name, format taken from file"
     log: "optionally, write log file"
     atom_terms: "optionally write per-atom interaction term"
     cpu: "the number of CPUs to use (the default is to\\ntry to detect the number of CPUs or, failing\\nthat, use 1)"
@@ -154,6 +157,6 @@ task Smina {
   }
   output {
     File out_stdout = stdout()
-    File out_arg_output_file = "${in_arg_output_file}"
+    File out_arg_output_file_name = "${in_arg_output_file_name}"
   }
 }

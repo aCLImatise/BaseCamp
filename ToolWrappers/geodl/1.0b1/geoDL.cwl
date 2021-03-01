@@ -3,17 +3,17 @@ id: geoDL.cwl
 inputs:
 - id: in_meta
   doc: Use metadata file instead of fetching it on EBI
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --meta
 - id: in_s
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_d
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_gse
@@ -26,15 +26,11 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_cmds
-  doc: -s [SAMPLES [SAMPLES ...]], --samples [SAMPLES [SAMPLES ...]]
-  type: string
-  inputBinding:
-    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - geoDL

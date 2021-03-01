@@ -16,6 +16,9 @@ task Rsemsynthesisreferencetranscripts {
       ~{quiet} \
       ~{has_mapping_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     synthesis_ref: ""
     refname: ""

@@ -18,6 +18,9 @@ task BigWigAverageOverBed {
       ~{if defined(sample_around_center) then ("-sampleAroundCenter " +  '"' + sample_around_center + '"') else ""} \
       ~{if (minmax) then "-minMax" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     stats: "- Output a collection of overall statistics to stat.ra file"
     bed_out: "- Make output bed that is echo of input bed but with mean column appended"

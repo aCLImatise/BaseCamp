@@ -16,6 +16,9 @@ task AutoCollapsePopspy {
       ~{if defined(name_report_file) then ("-r " +  '"' + name_report_file + '"') else ""} \
       ~{if defined(file_location_profiletxt) then ("-p " +  '"' + file_location_profiletxt + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     flock_output_file: "FLOCK output file"
     name_output_file: "Name of the output file."

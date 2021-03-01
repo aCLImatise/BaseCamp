@@ -5,44 +5,44 @@ inputs:
   doc: "Path to write expected value and standard deviation estimates of expression\
     \ to.\nOutput is formatted into columns: cell, feature, expected value, standard\
     \ deviation"
-  type: File
+  type: File?
   inputBinding:
     prefix: --estimate
 - id: in_stats
   doc: "Path to write global statistics per cell to.\nOutput is formatted into columns:\
     \ cell, noise-rate"
-  type: File
+  type: File?
   inputBinding:
     prefix: --stats
 - id: in_seed
   doc: Seed for shuffling that occurs in EM algorithm.
-  type: long
+  type: long?
   inputBinding:
     prefix: --seed
 - id: in_pzero
   doc: '...              Prior probability of 0->1 error [default: 0.04]'
-  type: double
+  type: double?
   inputBinding:
     prefix: --p0
 - id: in_p_one
   doc: '...              Prior probability of 1->0 error [default: 0.1]'
-  type: double
+  type: double?
   inputBinding:
     prefix: --p1
 - id: in_cells
   doc: 'Regular expression to select cells from cell column (see above). [default:
     .*]'
-  type: string
+  type: string?
   inputBinding:
     prefix: --cells
 - id: in_pm_f_window_width
   doc: '<INT,>    Width of the window to calculate PMF for. [default: 100]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pmf-window-width
 - id: in_threads
   doc: 'Number of threads to use. [default: 1]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_codebook_dot
@@ -78,15 +78,16 @@ outputs:
   doc: "Path to write expected value and standard deviation estimates of expression\
     \ to.\nOutput is formatted into columns: cell, feature, expected value, standard\
     \ deviation"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_estimate)
 - id: out_stats
   doc: "Path to write global statistics per cell to.\nOutput is formatted into columns:\
     \ cell, noise-rate"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_stats)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - merfishtools

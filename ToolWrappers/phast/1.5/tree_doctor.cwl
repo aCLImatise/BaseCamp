@@ -6,18 +6,18 @@ inputs:
     \ then remove nodes and combine branches\nto restore as a complete binary tree\
     \ (i.e., with each\nnode having zero children or two children).  This option is\n\
     applied *before* all other options."
-  type: string
+  type: string?
   inputBinding:
     prefix: --prune
 - id: in_prune_all_but
   doc: Like --prune, but remove all leaves *except* the ones specified.
-  type: string
+  type: string?
   inputBinding:
     prefix: --prune-all-but
 - id: in_get_subtree
   doc: "Like --prune, but remove all leaves who are not descendants of\nnode.  (Note:\
     \ implies --name-ancestors if given node not\nexplicitly named in input tree)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --get-subtree
 - id: in_rename
@@ -25,19 +25,19 @@ inputs:
     \ be: \"oldname1 -> newname1 ; oldname2 ->\nnewname2 ; ...\".  This option is\
     \ applied *after* all other\noptions (i.e., old names will be used for --prune,\
     \ --merge,\netc.)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --rename
 - id: in_scale
   doc: Scale all branches by the specified factor.
-  type: string
+  type: string?
   inputBinding:
     prefix: --scale
 - id: in_name_ancestors
   doc: "Ensure names are assigned to all ancestral nodes.  If a node\nis unnamed,\
     \ create a name by concatenating the names of a leaf\nfrom its left subtree and\
     \ a leaf from its right subtree."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --name-ancestors
 - id: in_label_subtree
@@ -48,59 +48,59 @@ inputs:
     \ and --label-branches options are parsed in\nthe order given, so that later uses\
     \ may override earlier ones.\nLabels are applied *after* all pruning, re-rooting,\
     \ and re-naming\noptions are applied."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --label-subtree
 - id: in_label_branches
   doc: "<branch1,branch2,...:label>\nAdd a label to the branches listed.  Branches\
     \ are named by the name\nof the node which descends from that branch.  See --label-subtree\n\
     above for more information."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --label-branches
 - id: in_tree_only
   doc: Output tree only in Newick format rather than complete tree model.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tree-only
 - id: in_no_branch_len
   doc: (Implies --tree-only).  Output only topology in Newick format.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-branchlen
 - id: in_dissect
   doc: "In place of ordinary output, print a description of the id,\nname, parent,\
     \ children, and distance to parent for each node\nof the tree.  Sometimes useful\
     \ for debugging.  Can be used with\nother options."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dissect
 - id: in_branch_len
   doc: "In place of ordinary output, print the total branch length of\nthe tree that\
     \ would have been printed."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --branchlen
 - id: in_depth
   doc: "In place of ordinary output, report distance from named node to\nroot"
-  type: string
+  type: string?
   inputBinding:
     prefix: --depth
 - id: in_re_root
   doc: Reroot tree at internal node with specified name.
-  type: string
+  type: string?
   inputBinding:
     prefix: --reroot
 - id: in_subtree
   doc: "(for use with --scale)  Alter only the branches in the subtree\nbeneath the\
     \ specified node."
-  type: string
+  type: string?
   inputBinding:
     prefix: --subtree
 - id: in_with_branch
   doc: "(For use with --reroot or --subtree) include branch above specified\nnode\
     \ with subtree beneath it."
-  type: string
+  type: string?
   inputBinding:
     prefix: --with-branch
 - id: in_merge
@@ -117,7 +117,7 @@ inputs:
     \ to the primary tree has equal overall\nlength to the primary tree, then combining\
     \ the primary tree\nwith the non-overlapping portion of the secondary tree.  The\n\
     names of matching species (leaves) must be exactly equal."
-  type: File
+  type: File?
   inputBinding:
     prefix: --merge
 - id: in_extrapolate
@@ -134,13 +134,13 @@ inputs:
     \ in that the branch\nlength proportions of the output tree come completely from\
     \ the\nlarger tree and the smaller tree doesn't have to be a proper\nsubset of\
     \ the larger tree."
-  type: long
+  type: long?
   inputBinding:
     prefix: --extrapolate
 - id: in_newick
   doc: "The input file is in Newick format (necessary if file name does\nnot end in\
     \ .nh)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --newick
 - id: in_file_dot_mod
@@ -152,6 +152,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tree_doctor

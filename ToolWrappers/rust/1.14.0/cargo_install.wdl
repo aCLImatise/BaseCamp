@@ -46,6 +46,9 @@ task CargoInstall {
       ~{if (frozen) then "--frozen" else ""} \
       ~{if (locked) then "--locked" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vers: "Specify a version to install from crates.io"
     git: "Git URL to install the specified crate from"

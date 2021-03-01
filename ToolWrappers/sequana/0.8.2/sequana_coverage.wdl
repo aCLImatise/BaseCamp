@@ -6,7 +6,10 @@ task SequanaCoverage {
     Int? chromosome
     Boolean? circular
     Directory? output_directory
-    Boolean? quiet
+    Boolean? no_html
+    Boolean? no_multi_qc
+    String? debug_level
+    String? level
     String? genbank
     Int? reference
     Int? window_gc
@@ -34,7 +37,10 @@ task SequanaCoverage {
       ~{if defined(chromosome) then ("--chromosome " +  '"' + chromosome + '"') else ""} \
       ~{if (circular) then "--circular" else ""} \
       ~{if defined(output_directory) then ("--output-directory " +  '"' + output_directory + '"') else ""} \
-      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (no_html) then "--no-html" else ""} \
+      ~{if (no_multi_qc) then "--no-multiqc" else ""} \
+      ~{if defined(debug_level) then ("--debug-level " +  '"' + debug_level + '"') else ""} \
+      ~{if defined(level) then ("--level " +  '"' + level + '"') else ""} \
       ~{if defined(genbank) then ("--genbank " +  '"' + genbank + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(window_gc) then ("--window-gc " +  '"' + window_gc + '"') else ""} \
@@ -50,12 +56,18 @@ task SequanaCoverage {
       ~{if defined(cnv_clustering) then ("--cnv-clustering " +  '"' + cnv_clustering + '"') else ""} \
       ~{if defined(download_reference) then ("--download-reference " +  '"' + download_reference + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_bed: "Input file in BED or BAM format. If a BAM file is\\nprovided, it will be converted locally to a BED file\\nusing genomecov, which must be installed. (default:\\nNone)"
     chromosome: "Chromosome number (if only one chromosome found, the\\nsingle chromosome is chosen automatically). Otherwise\\nall chromosomes are analysed. You may want to analyse\\nonly one in which case, use this parameter (e.g., -c\\n1). !!START AT INDEX 0 !! (default: -1)"
     circular: "If the DNA of the organism is circular (typically\\nviruses or bacteria), set to True (default: False)"
     output_directory: "name of the output (report) directory. (default:\\nreport)"
-    quiet: "--no-html             Do not create any HTML reports. Save ROIs and\\nstatistics only. (default: False)\\n--no-multiqc          Do not create any multiqc HTML page. (default: False)\\n--debug-level LOGGING_LEVEL\\nset to DEBUG, INFO, WARNING, CRITICAL, ERROR (default:\\nINFO)\\n--level LOGGING_LEVEL\\nset to DEBUG, INFO, WARNING, CRITICAL, ERROR (default:\\nINFO)"
+    no_html: "Do not create any HTML reports. Save ROIs and\\nstatistics only. (default: False)"
+    no_multi_qc: "Do not create any multiqc HTML page. (default: False)"
+    debug_level: "set to DEBUG, INFO, WARNING, CRITICAL, ERROR (default:\\nINFO)"
+    level: "set to DEBUG, INFO, WARNING, CRITICAL, ERROR (default:\\nINFO)"
     genbank: "a valid genbank annotation (default: None)"
     reference: "If available, you can provide a reference (ENA/NCBI).\\nIt must have the same length as the one used to create\\nthe BAM or BED file. If provided, it is used to create\\nthe coverage versus GC content image (default: None)"
     window_gc: "Length of the running window to compute the GC content\\n(default: 201)"
@@ -69,7 +81,7 @@ task SequanaCoverage {
     length_chunk_used: "[minimum=1000000], --chunk-size [minimum=1000000]\\nLength of the chunk to be used for the analysis.\\n(default: 5000000)"
     merge_consecutive_data: "[minimum=2], --binning [minimum=2]\\nmerge consecutive (non overlapping) data points,\\ntaking the mean. This is useful for large genome (e.g.\\nhuman). This allows a faster computation, especially\\nfor CNV detection were only large windows are of\\ninterest. For instance, using a binning of 50 or 100\\nallows the human genome to be analysed. (default:\\nNone)"
     cnv_clustering: "Two consecutive ROIs are merged when their distance in\\nbases is below this parameter. If set to -1, not used.\\n(default: -1)"
-    download_reference: "--download-genbank DOWNLOAD_GENBANK\\n--database {ENA,EUtils}\\nDownload the reference from one of these database\\n(default ENA) (default: ENA)"
+    download_reference: "Download the reference from one of these database\\n(default ENA) (default: ENA)"
     welcome: ""
     to: ""
     se_quan_a: ""

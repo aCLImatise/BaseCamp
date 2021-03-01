@@ -2,14 +2,29 @@ version 1.0
 
 task PhizzQuery {
   input {
-    File? config
+    File? hpo_term
+    String? mim_term
+    File? outfile
+    Boolean? to_json
+    String? chrom
   }
   command <<<
     phizz query \
-      ~{if defined(config) then ("--config " +  '"' + config + '"') else ""}
+      ~{if defined(hpo_term) then ("--hpo_term " +  '"' + hpo_term + '"') else ""} \
+      ~{if defined(mim_term) then ("--mim_term " +  '"' + mim_term + '"') else ""} \
+      ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
+      ~{if (to_json) then "--to_json" else ""} \
+      ~{if defined(chrom) then ("--chrom " +  '"' + chrom + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    config: "-h, --hpo_term TEXT     Specify a hpo term\\n-m, --mim_term TEXT     Specify a omim id\\n-o, --outfile FILENAME  Specify path to outfile\\n-j, --to_json           If output should be in json format\\n--chrom TEXT            The chromosome\\n--start INTEGER\\n--stop INTEGER\\n--help                  Show this message and exit.\\n"
+    hpo_term: "Specify a hpo term"
+    mim_term: "Specify a omim id"
+    outfile: "Specify path to outfile"
+    to_json: "If output should be in json format"
+    chrom: "The chromosome"
   }
   output {
     File out_stdout = stdout()

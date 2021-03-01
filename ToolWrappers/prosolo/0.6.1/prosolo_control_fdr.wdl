@@ -20,6 +20,9 @@ task ProsoloControlfdr {
       ~{if defined(bcf_file_contains) then ("--output " +  '"' + bcf_file_contains + '"') else ""} \
       ~{if defined(var) then ("--var " +  '"' + var + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fdr: "FDR to control for. [default: 0.05]"
     events: "<STRING(,STRING)*>    Comma-separated list of Events to consider jointly (e.g. `--events\\nEvent1,Event2`)."

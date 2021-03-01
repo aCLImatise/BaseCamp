@@ -3,17 +3,17 @@ id: fa2fq.cwl
 inputs:
 - id: in_paired
   doc: if the reads are paired-end in one file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --paired
 - id: in_merge
   doc: if the reads are paired-end in two files
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --merge
 - id: in_filter
   doc: filter out reads containing 'N'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --filter
 - id: in_fq_two_fa
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fa2fq

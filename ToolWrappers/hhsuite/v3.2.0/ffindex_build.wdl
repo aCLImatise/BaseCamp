@@ -16,6 +16,9 @@ task FfindexBuild {
       ~{if (sort_index_file) then "-s" else ""} \
       ~{if (print_version_info) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     append_filesindexes_also: "append files/indexes, also needed for sorting an already existing ffindex"
     second_ffindex_data: "a second ffindex data file for inserting/appending"

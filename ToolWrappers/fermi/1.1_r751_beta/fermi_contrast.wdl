@@ -24,6 +24,9 @@ task FermiContrast {
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
       ~{if defined(kmer_length) then ("-k " +  '"' + kmer_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minimum_occurrence: "minimum occurrence [3]"
     number_of_threads: "number of threads [1]"

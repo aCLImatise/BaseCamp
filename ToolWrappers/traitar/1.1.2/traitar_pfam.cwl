@@ -3,7 +3,7 @@ id: traitar_pfam.cwl
 inputs:
 - id: in_local
   doc: the Pfam HMMs are in the above directory with name 'Pfam-A.hmm'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --local
 - id: in_download
@@ -16,6 +16,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - traitar

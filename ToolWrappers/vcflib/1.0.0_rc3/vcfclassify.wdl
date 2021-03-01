@@ -8,6 +8,9 @@ task Vcfclassify {
     vcfclassify \
       ~{vcf_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file: ""
   }

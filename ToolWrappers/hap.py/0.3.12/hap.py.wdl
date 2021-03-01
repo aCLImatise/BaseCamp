@@ -124,6 +124,9 @@ task Happy {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "Specify a reference file."
     report_prefix: "Filename prefix for report output."

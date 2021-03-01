@@ -4,17 +4,17 @@ inputs:
 - id: in_input_object_file
   doc: singleCellExperiment object containing expression values and experimental information.
     Must have been appropriately prepared.
-  type: File
+  type: File?
   inputBinding:
     prefix: --input-object-file
 - id: in_metric
   doc: Metric name.
-  type: string
+  type: string?
   inputBinding:
     prefix: --metric
 - id: in_output_file
   doc: Output file name, will be comma-separated cell,value.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file
 outputs:
@@ -23,9 +23,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: Output file name, will be comma-separated cell,value.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - scater-extract-qc-metric.R

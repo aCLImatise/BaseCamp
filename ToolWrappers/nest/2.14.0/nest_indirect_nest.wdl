@@ -10,6 +10,9 @@ task NestIndirectNest {
       ~{nest_indirect} \
       ~{script}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nest_indirect: ""
     script: ""

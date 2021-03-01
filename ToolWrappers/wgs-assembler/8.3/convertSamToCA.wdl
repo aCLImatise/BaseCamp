@@ -18,6 +18,9 @@ task ConvertSamToCA {
       ~{length} \
       ~{mapping}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sam_file: ""
     eid_to_iid_mapping: ""

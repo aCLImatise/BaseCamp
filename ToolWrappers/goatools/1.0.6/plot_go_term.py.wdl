@@ -20,6 +20,9 @@ task PlotGoTermpy {
       ~{if (disable_draw_parents) then "--disable-draw-parents" else ""} \
       ~{if (disable_draw_children) then "--disable-draw-children" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     description: "write term descriptions to stdout from the obo file\\nspecified in args"
     term: "write the parents and children of the query term"

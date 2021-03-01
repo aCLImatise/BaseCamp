@@ -3,7 +3,7 @@ id: annotate_vcf_bam.py.cwl
 inputs:
 - id: in_bam
   doc: 'BAM file (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --bam
 - id: in_chromosomes
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - annotate_vcf_bam.py

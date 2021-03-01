@@ -8,6 +8,9 @@ task Khistsh {
     khist_sh \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
   }

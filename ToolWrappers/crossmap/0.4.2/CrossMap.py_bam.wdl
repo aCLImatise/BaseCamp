@@ -20,6 +20,9 @@ task CrossMappyBam {
       ~{if defined(times) then ("--times " +  '"' + times + '"') else ""} \
       ~{if (append_tags) then "--append-tags" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mean: "Average insert size of pair-end sequencing (bp).\\n[default=200.0]"
     stdev: "Stanadard deviation of insert size. [default=30.0]"

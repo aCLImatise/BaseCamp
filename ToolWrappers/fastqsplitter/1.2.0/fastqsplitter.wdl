@@ -18,6 +18,9 @@ task Fastqsplitter {
       ~{if (cyt_hon) then "--cython" else ""} \
       ~{if (python) then "--python" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fastq_file_scattered: "The fastq file to be scattered."
     scatter_output_files: "Scatter over these output files. Multiple -o flags can\\nbe used. The extensions determine which compression\\nalgorithm will be used. '.gz' for gzip, '.bz2' for\\nbzip2, '.xz' for xz. Other extensions will use no\\ncompression."

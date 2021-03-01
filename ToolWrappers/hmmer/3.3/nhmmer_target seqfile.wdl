@@ -12,6 +12,9 @@ task NhmmerTargetseqfile {
       ~{query_hmm_file_vertical_line_align_file_vertical_line_seq_file} \
       ~{target_seq_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_hmmer: ""
     query_hmm_file_vertical_line_align_file_vertical_line_seq_file: ""

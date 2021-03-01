@@ -22,6 +22,9 @@ task NcbipyTblTransfer {
       ~{if (tmp_dir_keep) then "--tmp_dirKeep" else ""} \
       ~{if defined(loglevel) then ("--loglevel " +  '"' + loglevel + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     oob_clip: "Out of bounds feature behavior. False: drop all\\nfeatures that are completely or partly out of bounds\\nTrue: drop all features completely out of bounds but\\ntruncate any features that are partly out of bounds"
     tmp_dir: "Base directory for temp files. [default: /tmp]"

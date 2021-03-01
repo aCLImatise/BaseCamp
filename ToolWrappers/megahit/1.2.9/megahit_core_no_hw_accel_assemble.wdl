@@ -40,6 +40,9 @@ task MegahitCoreNoHwAccelAssemble {
       ~{if (output_standalone) then "--output_standalone" else ""} \
       ~{if (careful_bubble) then "--careful_bubble" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s_dbg_name: "succinct de Bruijn graph name"
     output_prefix: "(=out)         output prefix"

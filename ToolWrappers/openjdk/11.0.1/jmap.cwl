@@ -3,22 +3,22 @@ id: jmap.cwl
 inputs:
 - id: in_dump
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -dump
 - id: in_histo
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -histo
 - id: in_finalizer_info
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -finalizerinfo
 - id: in_cl_stats
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -clstats
 - id: in_live
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - jmap

@@ -16,6 +16,9 @@ task Bedgraph2wigpl {
       ~{if (output_file) then "--outputfile" else ""} \
       ~{if (span) then "--span" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_graph_file: ": The path to the bedgraphffile"
     output_file: ": The file where the output should be saved. If not supplied, the output is printed to STDOUT"

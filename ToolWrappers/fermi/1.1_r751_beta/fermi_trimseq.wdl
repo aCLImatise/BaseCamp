@@ -8,6 +8,9 @@ task FermiTrimseq {
     fermi trimseq \
       ~{if (n) then "-N" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n: ""
   }

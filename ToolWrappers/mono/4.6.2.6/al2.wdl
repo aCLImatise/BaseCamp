@@ -10,6 +10,9 @@ task Al2 {
       ~{al} \
       ~{sources}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     al: ""
     sources: ""

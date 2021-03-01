@@ -12,6 +12,9 @@ task DimspyGetaveragepeaklist {
       ~{if defined(hdf_file_save) then ("--output " +  '"' + hdf_file_save + '"') else ""} \
       ~{if defined(name_peak_list) then ("--name-peaklist " +  '"' + name_peak_list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     single_multiple_hdf: "Single or Multiple HDF5 files that contain a peak\\nmatrix object from one of the processing steps."
     hdf_file_save: "HDF5 file to save the peaklist object to."

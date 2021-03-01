@@ -13,18 +13,18 @@ task Varcall {
     Boolean? min_pct_balance
     Float? max_duplicate_read
     Float? minimum_diversity_cv
-    Float? minimum_agreement_weighted
+    Float? minimum_agreement_cv
     Boolean? zero_filters_set
     Boolean? running_bam_turn
-    Boolean? homopolymer_repeat_filtering
+    Boolean? homopolymer_repeat_indel
     Float? alpha_filter_use
     Float? global_minimum_error
-    Int? number_locii_total
+    Int? number_locii_mil
     String? pos_output_pos
     File? read_statistics_params
-    File? calculate_intarget_requires
+    File? calculate_intarget_stats
     String? output_prefix_works
-    File? list_file_types
+    File? list_output_vcf
     Boolean? pcr_an_not
     Boolean? stranded
     Boolean? diversity
@@ -66,24 +66,27 @@ task Varcall {
       ~{if (min_pct_balance) then "-b" else ""} \
       ~{if defined(max_duplicate_read) then ("-D " +  '"' + max_duplicate_read + '"') else ""} \
       ~{if defined(minimum_diversity_cv) then ("-d " +  '"' + minimum_diversity_cv + '"') else ""} \
-      ~{if defined(minimum_agreement_weighted) then ("-G " +  '"' + minimum_agreement_weighted + '"') else ""} \
+      ~{if defined(minimum_agreement_cv) then ("-G " +  '"' + minimum_agreement_cv + '"') else ""} \
       ~{if (zero_filters_set) then "-0" else ""} \
       ~{if (running_bam_turn) then "-B" else ""} \
-      ~{if (homopolymer_repeat_filtering) then "-R" else ""} \
+      ~{if (homopolymer_repeat_indel) then "-R" else ""} \
       ~{if defined(alpha_filter_use) then ("-e " +  '"' + alpha_filter_use + '"') else ""} \
       ~{if defined(global_minimum_error) then ("-g " +  '"' + global_minimum_error + '"') else ""} \
-      ~{if defined(number_locii_total) then ("-l " +  '"' + number_locii_total + '"') else ""} \
+      ~{if defined(number_locii_mil) then ("-l " +  '"' + number_locii_mil + '"') else ""} \
       ~{if defined(pos_output_pos) then ("-x " +  '"' + pos_output_pos + '"') else ""} \
       ~{if defined(read_statistics_params) then ("-S " +  '"' + read_statistics_params + '"') else ""} \
-      ~{if defined(calculate_intarget_requires) then ("-A " +  '"' + calculate_intarget_requires + '"') else ""} \
+      ~{if defined(calculate_intarget_stats) then ("-A " +  '"' + calculate_intarget_stats + '"') else ""} \
       ~{if defined(output_prefix_works) then ("-o " +  '"' + output_prefix_works + '"') else ""} \
-      ~{if defined(list_file_types) then ("-F " +  '"' + list_file_types + '"') else ""} \
+      ~{if defined(list_output_vcf) then ("-F " +  '"' + list_output_vcf + '"') else ""} \
       ~{if (pcr_an_not) then "--pcr-annot" else ""} \
       ~{if (stranded) then "--stranded" else ""} \
       ~{if (diversity) then "--diversity" else ""} \
       ~{if (agreement) then "--agreement" else ""} \
       ~{if (no_indels) then "--no-indels" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     calculate_statistics: "Calculate statistics"
     version_calculate_variants: "|version  Calculate variants bases on supplied parameters (see -S)"
@@ -96,18 +99,18 @@ task Varcall {
     min_pct_balance: "Min pct balance (strand/total) (0)"
     max_duplicate_read: "Max duplicate read fraction (depth/length per position) (1)"
     minimum_diversity_cv: "Minimum diversity (CV from optimal depth) (0.25)"
-    minimum_agreement_weighted: "Minimum agreement (Weighted CV of positional variation) (0.25)"
+    minimum_agreement_cv: "Minimum agreement (Weighted CV of positional variation) (0.25)"
     zero_filters_set: "Zero out all filters, set e-value filter to 1, report everything"
     running_bam_turn: "If running from a BAM, turn off BAQ correction (false)"
-    homopolymer_repeat_filtering: "Homopolymer repeat indel filtering (8)"
+    homopolymer_repeat_indel: "Homopolymer repeat indel filtering (8)"
     alpha_filter_use: "Alpha filter to use, requires -l or -S (.05)"
     global_minimum_error: "Global minimum error rate (default: assume phred is ok)"
-    number_locii_total: "Number of locii in total pileup used for bonferroni (1 mil)"
+    number_locii_mil: "Number of locii in total pileup used for bonferroni (1 mil)"
     pos_output_pos: ":POS  Output this pos only, then quit"
     read_statistics_params: "Read in statistics and params from a previous run with -s (do this!)"
-    calculate_intarget_requires: "Calculate in-target stats using the annotation file (requires -o)"
+    calculate_intarget_stats: "Calculate in-target stats using the annotation file (requires -o)"
     output_prefix_works: "Output prefix (works with -s or -v)"
-    list_file_types: "List of file types to output (var, varsum, eav, vcf)"
+    list_output_vcf: "List of file types to output (var, varsum, eav, vcf)"
     pcr_an_not: "BED      Only include reads adhering to the expected amplicons"
     stranded: "TYPE     Can be FR (the default), FF, FR.  Used with pcr-annot"
     diversity: "|d FLOAT    Alias for -d"
@@ -127,6 +130,6 @@ task Varcall {
   }
   output {
     File out_stdout = stdout()
-    File out_list_file_types = "${in_list_file_types}"
+    File out_list_output_vcf = "${in_list_output_vcf}"
   }
 }

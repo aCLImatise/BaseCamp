@@ -10,6 +10,9 @@ task MakeFastaFromFastgpy {
       ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graph: "(spades 3.50+) FASTG file to process [recommended:\\nbefore_rr.fastg]"
     output_file_name: "output file name for FASTA of cycles\\n"

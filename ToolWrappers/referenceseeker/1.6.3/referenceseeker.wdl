@@ -20,6 +20,9 @@ task Referenceseeker {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crg: "Max number of candidate reference genomes to pass kmer\\nprefilter (default = 100)"
     ani: "ANI threshold (default = 0.95)"

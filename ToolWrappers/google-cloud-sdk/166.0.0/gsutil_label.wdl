@@ -10,6 +10,9 @@ task GsutilLabel {
       ~{command_dot} \
       ~{if (remove_label_specified) then "-d" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     remove_label_specified: "Remove the label with the specified key."
     command_dot: "SET"

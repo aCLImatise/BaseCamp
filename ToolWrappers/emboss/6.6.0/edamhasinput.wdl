@@ -16,6 +16,9 @@ task Edamhasinput {
       ~{if (subclasses) then "-subclasses" else ""} \
       ~{if (obsolete) then "-obsolete" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     namespace: "menu       [*] By default all terms are returned.\\nSearches can be limited to one or a few\\nnamespaces. (Values: data (Data entity);\\nentity (Biological entity); format (Data\\nformat); identifier (Identifier); operation\\n(Bioinformatics operation); resource (Data\\nresource); topic (Field of bioinformatics\\nstudy))"
     sensitive: "boolean    [N] By default, the query keywords are\\nmatched against the EDAM term names (and\\nsynonyms) only. This option also matches the\\nkeywords against the EDAM term definitions\\nand will therefore (typically) report more\\nmatches."

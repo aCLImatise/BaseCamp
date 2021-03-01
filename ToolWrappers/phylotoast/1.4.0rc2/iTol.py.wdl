@@ -24,6 +24,9 @@ task ITolpy {
       ~{if (stabilize_variance) then "--stabilize_variance" else ""} \
       ~{if (keep_ot_uids) then "--keep_otuids" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     otu_table: "The biom-format file with OTU-Sample abundance data."
     mapping: "The mapping file specifying group information for each\\nsample."

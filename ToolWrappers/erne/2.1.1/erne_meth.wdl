@@ -60,6 +60,9 @@ task Ernemeth {
       ~{if defined(aligned_reads_thr) then ("--aligned-reads-thr " +  '"' + aligned_reads_thr + '"') else ""} \
       ~{if defined(contamination_reference) then ("--contamination-reference " +  '"' + contamination_reference + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "reference fasta file (can be repeated several\\ntime). [REQUIRED]"
     bamsam_file_generated: "BAM/SAM file generated with erne-bs5 [REQUIRED]"

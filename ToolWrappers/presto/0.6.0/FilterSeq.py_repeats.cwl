@@ -16,59 +16,60 @@ inputs:
 - id: in_outdir
   doc: "Specify to changes the output directory to the\nlocation specified. The input\
     \ file directory is used\nif this is not specified. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_out_name
   doc: "Changes the prefix of the successfully processed\noutput file to the string\
     \ specified. May not be\nspecified with multiple input files. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outname
 - id: in_log
   doc: "Specify to write verbose logging to a file. May not be\nspecified with multiple\
     \ input files. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --log
 - id: in_failed
   doc: "If specified create files containing records that fail\nprocessing. (default:\
     \ False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --failed
 - id: in_fast_a
   doc: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fasta
 - id: in_nproc
   doc: "The number of simultaneous computational processes to\nexecute (CPU cores\
     \ to utilized). (default: 8)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --nproc
 - id: in_threshold_fraction_repeating
   doc: "Threshold for fraction of repeating nucleotides.\n(default: 15)"
-  type: long
+  type: long?
   inputBinding:
     prefix: -n
 - id: in_missing
   doc: "If specified count consecutive gap and N characters '\nin addition to {A,C,G,T}.\
     \ (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --missing
 - id: in_inner
   doc: "If specified exclude consecutive missing characters at\neither end of the\
     \ sequence. (default: False)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --inner
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - FilterSeq.py

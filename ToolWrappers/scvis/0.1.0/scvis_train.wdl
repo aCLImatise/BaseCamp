@@ -24,6 +24,9 @@ task ScvisTrain {
       ~{if defined(verbose_interval) then ("--verbose_interval " +  '"' + verbose_interval + '"') else ""} \
       ~{if (show_plot) then "--show_plot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_matrix_file: "The high-dimensional data matrix"
     config_file: "Path to a yaml format configuration file"

@@ -1,0 +1,128 @@
+!Command
+command:
+- MergeDgeSparse
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: cell.
+  description: 'At least one of RAW_DGE_OUTPUT_FILE and SCALED_DGE_OUTPUT_FILE must
+    be set. '
+- !Positional
+  optional: false
+  position: 0
+  name: null.
+  description: DISCARDED_CELLS_FILE=File     If set, write a list of cell barcodes
+    that have been filtered by any of the filtering
+- !Positional
+  optional: false
+  position: 1
+  name: mechanisms.
+  description: 'Default value: null. '
+- !Positional
+  optional: false
+  position: 0
+  name: set.
+  description: "Default value: STRICT. This option can be set to 'null' to clear the\
+    \ default value."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: (default 4g)
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: final command line before executing
+  args: !SimpleFlagArg
+    name: echo
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: /usr/local/bin/MergeDgeSparse [-m <jvm_heap_size>] [-v] program\
+  \ args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final command\
+  \ line before executing\n\nProgram options:\nUSAGE: MergeDgeSparse [options]\n\n\
+  To be invoked by the clustering workflow.  Read a YAML containing a list of DGEs\
+  \ and some configuration parameters, \nand produce a merged, filtered Matrix Market\
+  \ sparse DGE, with genes and cell barcodes in the MM header. \nGenes are alphabetically\
+  \ sorted.  Cell barcodes are ordered according to the location of the input DGE\
+  \ \nin the YAML, and within a single input DGE are ordered by size (descending).\n\
+  Version: 2.4.0(3d2b3d8_1600201514)\n\n\nOptions:\n\n--help\n-h                 \
+  \           Displays options specific to this tool.\n\n--stdhelp\n-H           \
+  \                 Displays options specific to this tool AND options common to all\
+  \ Picard command line\n                              tools.\n\n--version       \
+  \              Displays program version.\n\nYAML=File\nY=File                  \
+  \      Input file containing list of data sets as for clustering workflow.\n   \
+  \                           The file is expected to contain a 'datasets' list. \
+  \ Each element of the list will contain:\n                              \n     \
+  \                         path: the location of the DGE. (required)\n          \
+  \                    name: a prefix to prepend to each cell barcode (plus underscore).\
+  \  (optional)\n                              cell_count: If present and non-zero,\
+  \ take this many cells from the input DGE, selecting\n                         \
+  \     the largest. (optional)\n                              \n                \
+  \              YAML argument is  Required. \n\nCELL_SIZE_OUTPUT_FILE=File    If\
+  \ set, write a table of cell barcodes and number of transcripts to a possibly gzipped\n\
+  \                              output file.  Default value: null. \n\nRAW_DGE_OUTPUT_FILE=File\
+  \      If set, write a Matrix Market sparse matrix containing the merge of all the\
+  \ DGEs listed in\n                              the YAML.  At least one of RAW_DGE_OUTPUT_FILE\
+  \ and SCALED_DGE_OUTPUT_FILE must be set. \n                              Default\
+  \ value: null. \n\nSCALED_DGE_OUTPUT_FILE=File   If set, write a Matrix Market sparse\
+  \ matrix containing the merge of all the DGEs listed in\n                      \
+  \        the YAML.  The expression for each {gene,cell} is divided by the total\
+  \ expression of the\n                              cell.  At least one of RAW_DGE_OUTPUT_FILE\
+  \ and SCALED_DGE_OUTPUT_FILE must be set. \n                              Default\
+  \ value: null. \n\nDGE_HEADER_OUTPUT_FILE=File   If set, write a DGE header that\
+  \ is the result of merging the headers of the input DGEs. \n                   \
+  \           Default value: null. \n\nDISCARDED_CELLS_FILE=File     If set, write\
+  \ a list of cell barcodes that have been filtered by any of the filtering\n    \
+  \                          mechanisms.  Default value: null. \n\nMIN_CELLS=Integer\
+  \             Remove genes with fewer than this many cells.  This filtering is done\
+  \ after all the\n                              cell-based filters.  Default value:\
+  \ 0. This option can be set to 'null' to clear the\n                           \
+  \   default value. \n\nMIN_GENES=Integer             Remove cells with fewer than\
+  \ this many genes.  Default value: 400. This option can be set\n               \
+  \               to 'null' to clear the default value. \n\nMIN_TRANSCRIPTS=Integer\
+  \       Remove cells with fewer than this many transcripts.  Default value: 0. This\
+  \ option can be\n                              set to 'null' to clear the default\
+  \ value. \n\nFILTERED_GENE_RE=String       Genes that match one of these regular\
+  \ expressions will be removed.  Default value: null.\n                         \
+  \     This option may be specified 0 or more times. \n\nCELL_BC_FILE=File      \
+  \       If specified, files containing lists of cell barcodes, one per line.  May\
+  \ be gzipped. \n                              Lines starting with # are ignored.\
+  \  Only the cells in listed in these file(s) are included\n                    \
+  \          in the output.  If no files are specified, all cellbarcodes are included,\
+  \ subject to the\n                              other filters.  Default value: null.\
+  \ This option may be specified 0 or more times. \n\nHEADER_STRINGENCY=Stringency\
+  \  Controls stringency of DGE header merging.  Only relevant if DGE_HEADER_OUTPUT_FILE\
+  \ is\n                              set.  Default value: STRICT. This option can\
+  \ be set to 'null' to clear the default value.\n                              Possible\
+  \ values: {STRICT, LENIENT, NONE} \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/dropseq_tools:2.4.0--0

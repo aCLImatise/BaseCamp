@@ -3,6 +3,8 @@ version 1.0
 task MosaikAligner {
   input {
     File? in
+    File? out
+    File? ibs
     Int? hs
     String? ls
     String? mhp
@@ -33,6 +35,8 @@ task MosaikAligner {
       ~{references} \
       ~{one_zero_dot_zero_zero} \
       ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(ibs) then ("-ibs " +  '"' + ibs + '"') else ""} \
       ~{if defined(hs) then ("-hs " +  '"' + hs + '"') else ""} \
       ~{if defined(ls) then ("-ls " +  '"' + ls + '"') else ""} \
       ~{if defined(mhp) then ("-mhp " +  '"' + mhp + '"') else ""} \
@@ -54,8 +58,13 @@ task MosaikAligner {
       ~{if defined(gep) then ("-gep " +  '"' + gep + '"') else ""} \
       ~{if defined(h_gop) then ("-hgop " +  '"' + h_gop + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    in: "the input read file\\n-out <MOSAIK alignment filename>  the output alignment file\\n-ibs <MOSAIK reference filename>  enables colorspace to basespace conversion\\nusing the supplied BASESPACE reference\\narchive\\n-annpe <Neural network filename>\\n-annse <Neural network filename>"
+    in: "the input read file"
+    out: "the output alignment file"
+    ibs: "enables colorspace to basespace conversion\\nusing the supplied BASESPACE reference\\narchive"
     hs: "hash size [4 - 32]. def: 15"
     ls: "enable local alignment search for PE reads"
     mhp: "the maximum # of positions stored per seed"
@@ -82,5 +91,6 @@ task MosaikAligner {
   }
   output {
     File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

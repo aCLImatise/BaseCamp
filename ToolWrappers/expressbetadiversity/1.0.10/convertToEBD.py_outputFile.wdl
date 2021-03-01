@@ -12,6 +12,9 @@ task ConvertToEBDpyOutputFile {
       ~{input_file} \
       ~{output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     convert_to_ebd_do_tpy: ""
     input_file: ""

@@ -60,6 +60,9 @@ task IsONclust2 {
       ~{if (outdir) then "--outdir" else ""} \
       ~{if (index) then "--index" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     batch_size: "Batch size in kilobases (default: 50000)"
     batch_max_seq: "Maximum number of sequences per batch (default: 3000)."

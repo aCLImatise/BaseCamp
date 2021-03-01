@@ -1,0 +1,98 @@
+!Command
+command:
+- clipcontext
+- mtf
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: files
+  description: --stats-out str  Output table to store motif search results in (for
+    --in
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --gtf
+  description: "Genomic annotations (hg38) GTF file (.gtf or .gtf.gz).\nRequired for\
+    \ --in type (2) or (3)"
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --gen
+  description: "Genomic sequences (hg38) .2bit file. Required for --in type\n(2) or\
+    \ (3)"
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: Output results folder, to store motif hit regions in BED
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --data-id
+  description: "Data ID (column 1) for --stats-out output table to store\nmotif search\
+    \ results (requires --stats-out to be set)"
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --in
+  description: "Three different inputs possible: (1) output folder of\nclipcontext\
+    \ g2t or clipcontext t2g with genomic and\ntranscript context sequence sets in\
+    \ which to look for given\n--motif. (2) BED file (genomic or transcript regions)\
+    \ in\nwhich to look for given --motif. (3) Transcript list file,\nto search for\
+    \ --motif in the respective transcript\nsequences. Note that (2)+(3) need --gtf\
+    \ and --gen"
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --motif
+  description: Motif or regular expression (RNA letters!) to search for in
+  args: !SimpleFlagArg
+    name: str
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: clipcontext mtf [-h] --in str --motif str [--gtf str] [--gen str]\n\
+  \                       [--out str] [--stats-out str] [--data-id str]\n\noptional\
+  \ arguments:\n  -h, --help       show this help message and exit\n  --gtf str  \
+  \      Genomic annotations (hg38) GTF file (.gtf or .gtf.gz).\n                \
+  \   Required for --in type (2) or (3)\n  --gen str        Genomic sequences (hg38)\
+  \ .2bit file. Required for --in type\n                   (2) or (3)\n  --out str\
+  \        Output results folder, to store motif hit regions in BED\n            \
+  \       files\n  --stats-out str  Output table to store motif search results in\
+  \ (for --in\n                   type (1) (requires --data-id to be set). If table\
+  \ exists,\n                   append results row to table\n  --data-id str    Data\
+  \ ID (column 1) for --stats-out output table to store\n                   motif\
+  \ search results (requires --stats-out to be set)\n\nrequired arguments:\n  --in\
+  \ str         Three different inputs possible: (1) output folder of\n          \
+  \         clipcontext g2t or clipcontext t2g with genomic and\n                \
+  \   transcript context sequence sets in which to look for given\n              \
+  \     --motif. (2) BED file (genomic or transcript regions) in\n               \
+  \    which to look for given --motif. (3) Transcript list file,\n              \
+  \     to search for --motif in the respective transcript\n                   sequences.\
+  \ Note that (2)+(3) need --gtf and --gen\n  --motif str      Motif or regular expression\
+  \ (RNA letters!) to search for in\n                   --in folder context sequences\
+  \ (e.g. --motif '[AC]UGCUAA')\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/clipcontext:0.7--py_0

@@ -5,51 +5,50 @@ command:
 - create_ground_truth
 positional:
 - !Positional
-  description: --strand-offset STRAND_OFFSET
+  optional: false
   position: 0
   name: ground_truth_modifications.csv
-  optional: false
+  description: --strand-offset STRAND_OFFSET
 named:
 - !Flag
-  description: "BED_METHYL_FILES\n[BED_METHYL_FILES ...]\n[--coverage-threshold COVERAGE_THRESHOLD]\n\
-    [--pct-mod-thresholds PCT_MOD_THRESHOLDS PCT_MOD_THRESHOLDS]\n[--out-csv OUT_CSV]\n\
-    [--strand-offset STRAND_OFFSET]"
+  optional: true
   synonyms:
   - --bed-methyl-files
-  args: !EmptyFlagArg {}
-  optional: true
+  description: Bed methyl files.
+  args: !RepeatFlagArg
+    name: BED_METHYL_FILES
 - !Flag
-  description: "Only include sites with sufficient coverage. Default:\n1 (= All sites)"
+  optional: true
   synonyms:
   - --coverage-threshold
+  description: "Only include sites with sufficient coverage. Default:\n1 (= All sites)"
   args: !SimpleFlagArg
     name: COVERAGE_THRESHOLD
-  optional: true
 - !Flag
-  description: "PCT_MOD_THRESHOLDS\nLower and upper percent modified thresholds for\
-    \ ground\ntruth modified positions. Default: [10.0, 90.0]"
+  optional: true
   synonyms:
   - --pct-mod-thresholds
+  description: "PCT_MOD_THRESHOLDS\nLower and upper percent modified thresholds for\
+    \ ground\ntruth modified positions. Default: [10.0, 90.0]"
   args: !SimpleFlagArg
     name: PCT_MOD_THRESHOLDS
-  optional: true
 - !Flag
-  description: 'Output filename for ground truth calls. Default:'
+  optional: true
   synonyms:
   - --out-csv
+  description: 'Output filename for ground truth calls. Default:'
   args: !SimpleFlagArg
     name: OUT_CSV
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: megalodon_extras modified_bases create_ground_truth [-h]\n    \
@@ -75,3 +74,4 @@ help_text: "usage: megalodon_extras modified_bases create_ground_truth [-h]\n   
   \                 values. Default treat strands independently.\n"
 generated_using:
 - --help
+docker_image:

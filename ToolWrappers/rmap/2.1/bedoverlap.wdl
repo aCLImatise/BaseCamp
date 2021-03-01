@@ -14,6 +14,9 @@ task Bedoverlap {
       ~{if (name_output_file) then "-output" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_output_file: "Name of output file (default: stdout)"
     about: "print about message"

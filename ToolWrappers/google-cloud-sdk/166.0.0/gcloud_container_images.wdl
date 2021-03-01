@@ -18,6 +18,9 @@ task GcloudContainerImages {
       ~{list_tags} \
       ~{un_tag}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     images: "SYNOPSIS"
     add_tag: "Adds tags to existing image."

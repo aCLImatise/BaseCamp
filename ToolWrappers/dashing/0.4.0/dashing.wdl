@@ -10,6 +10,9 @@ task Dashing {
       ~{subcommand} \
       ~{options_dot_dot_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     subcommand: ""
     options_dot_dot_dot: ""

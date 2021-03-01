@@ -36,6 +36,9 @@ task GoalignMask {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     length: "Length of the sub alignment (default 10)"
     alignment_output_file: "Alignment output file (default \\\"stdout\\\")"

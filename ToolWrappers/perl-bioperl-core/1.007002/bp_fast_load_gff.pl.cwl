@@ -3,70 +3,70 @@ id: bp_fast_load_gff.pl.cwl
 inputs:
 - id: in_of__database
   doc: of --database.
-  type: string
+  type: string?
   inputBinding:
     prefix: -d
 - id: in_database
   doc: Mysql database name
-  type: string
+  type: string?
   inputBinding:
     prefix: --database
 - id: in_create
   doc: Reinitialize/create data tables without asking
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --create
 - id: in_local
   doc: Try to load a remote database using local data.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --local
 - id: in_user
   doc: Username to log in as
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --user
 - id: in_fast_a
   doc: File or directory containing fasta files to load
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fasta
 - id: in_password
   doc: Password to use for authentication
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --password
 - id: in_long_list
   doc: "Directory containing a very large number of\nGFF and/or FASTA files"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --long_list
 - id: in_max_feature
   doc: Set the value of the maximum feature size (default 100Mb; must be a power of
     10)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --maxfeature
 - id: in_group
   doc: "A list of one or more tag names (comma or space separated)\nto be used for\
     \ grouping in the 9th column."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --group
 - id: in_gff_three_munge
   doc: Activate GFF3 name munging (see Bio::DB::GFF)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gff3_munge
 - id: in_summary
   doc: "Generate summary statistics for drawing coverage histograms.\nThis can be\
     \ run on a previously loaded database or during\nthe load."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --summary
 - id: in_temporary
   doc: Location of a writable scratch directory
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --Temporary
 - id: in_notes
@@ -96,6 +96,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bp_fast_load_gff.pl

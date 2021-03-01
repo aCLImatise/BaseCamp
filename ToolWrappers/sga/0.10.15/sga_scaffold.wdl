@@ -32,6 +32,9 @@ task SgaScaffold {
       ~{if (remove_conflicting) then "--remove-conflicting" else ""} \
       ~{if (strict) then "--strict" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     pe: "load links derived from paired-end (short insert) libraries from FILE"

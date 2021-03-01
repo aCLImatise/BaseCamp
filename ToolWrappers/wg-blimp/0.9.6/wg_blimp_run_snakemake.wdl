@@ -16,6 +16,9 @@ task WgblimpRunsnakemake {
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if (genome_build) then "--genome_build" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dry_run: "Only dry-run the pipeline."
     use_sample_files: "Load sample names from text files instead of\\npassing them as a comma-seperated list."

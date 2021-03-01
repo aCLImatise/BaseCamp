@@ -28,6 +28,9 @@ task Tigmintmolecule {
       ~{if defined(nm) then ("--nm " +  '"' + nm + '"') else ""} \
       ~{if defined(size) then ("--size " +  '"' + size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_tsv_file: "Output TSV file [stdout]"
     out_bam: "Output BAM file with MI tags (optional)"

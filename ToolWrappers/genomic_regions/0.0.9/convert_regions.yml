@@ -1,0 +1,81 @@
+!Command
+command:
+- convert-regions
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input
+  description: Input file
+- !Positional
+  optional: false
+  position: 1
+  name: output
+  description: Output file
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-format
+  description: "Output format (bed (BED), bigwig (BigWig), bw\n(BigWig), gff (GFF)"
+  args: !SimpleFlagArg
+    name: OUTPUT_FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chromosome-sizes
+  description: "Genome identifier (mm10, hg38, ...) or chrom.sizes\nfile"
+  args: !SimpleFlagArg
+    name: CHROMOSOME_SIZES
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --subset
+  description: "Regions subset identifier of the form\n<chr>[:<start>-<end>]"
+  args: !SimpleFlagArg
+    name: SUBSET
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force-overwrite
+  description: Force overwriting of existing output file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tmp
+  - --work-in-tmp
+  description: Work in temporary directory
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: convert-regions [-h] [-o OUTPUT_FORMAT] [-c CHROMOSOME_SIZES]\n\
+  \                       [-s SUBSET] [-f] [-tmp]\n                       input [output]\n\
+  \nPrint log files.\n\npositional arguments:\n  input                 Input file\n\
+  \  output                Output file\n\noptional arguments:\n  -h, --help      \
+  \      show this help message and exit\n  -o OUTPUT_FORMAT, --output-format OUTPUT_FORMAT\n\
+  \                        Output format (bed (BED), bigwig (BigWig), bw\n       \
+  \                 (BigWig), gff (GFF)\n  -c CHROMOSOME_SIZES, --chromosome-sizes\
+  \ CHROMOSOME_SIZES\n                        Genome identifier (mm10, hg38, ...)\
+  \ or chrom.sizes\n                        file\n  -s SUBSET, --subset SUBSET\n \
+  \                       Regions subset identifier of the form\n                \
+  \        <chr>[:<start>-<end>]\n  -f, --force-overwrite\n                      \
+  \  Force overwriting of existing output file\n  -tmp, --work-in-tmp   Work in temporary\
+  \ directory\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/genomic_regions:0.0.9--py_0

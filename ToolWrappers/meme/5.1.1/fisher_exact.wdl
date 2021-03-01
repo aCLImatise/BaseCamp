@@ -26,6 +26,9 @@ task FisherExact {
       ~{test} \
       ~{p_value}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compute: ""
     pr: ""

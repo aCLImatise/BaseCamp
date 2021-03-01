@@ -3,25 +3,22 @@ version 1.0
 task UmisFastqtransform {
   input {
     Boolean? keep_fast_q_tags
-    String transform
-    Int fast_q_one
-    Int? fast_q_two
-    Int? fast_q_three
+    Int? demux_ed_cb
+    String stdout_dot
   }
   command <<<
     umis fastqtransform \
-      ~{transform} \
-      ~{fast_q_one} \
-      ~{fast_q_two} \
-      ~{fast_q_three} \
-      ~{if (keep_fast_q_tags) then "--keep_fastq_tags" else ""}
+      ~{stdout_dot} \
+      ~{if (keep_fast_q_tags) then "--keep_fastq_tags" else ""} \
+      ~{if defined(demux_ed_cb) then ("--demuxed_cb " +  '"' + demux_ed_cb + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    keep_fast_q_tags: "--separate_cb         Keep dual index barcodes separate.\\n--demuxed_cb TEXT\\n--cores INTEGER\\n--fastq1out TEXT\\n--fastq2out TEXT\\n--min_length INTEGER  Minimum length of read to keep.\\n--help                Show this message and exit.\\n"
-    transform: ""
-    fast_q_one: ""
-    fast_q_two: ""
-    fast_q_three: ""
+    keep_fast_q_tags: "Keep dual index barcodes separate."
+    demux_ed_cb: "Minimum length of read to keep."
+    stdout_dot: "Options:"
   }
   output {
     File out_stdout = stdout()

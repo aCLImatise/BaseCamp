@@ -4,6 +4,9 @@ task RankprodboundsR {
   command <<<
     rankprodbounds_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

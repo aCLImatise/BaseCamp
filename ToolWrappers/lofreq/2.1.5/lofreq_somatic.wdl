@@ -50,6 +50,9 @@ task LofreqSomatic {
       ~{if (debug) then "--debug" else ""} \
       ~{if (continue) then "--continue" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Be verbose"
     normal: "Normal BAM file"

@@ -3,12 +3,12 @@ id: splitFile.cwl
 inputs:
 - id: in_head
   doc: '- put head in front of each output'
-  type: File
+  type: File?
   inputBinding:
     prefix: -head
 - id: in_tail
   doc: '- put tail at end of each output'
-  type: File
+  type: File?
   inputBinding:
     prefix: -tail
 - id: in_source
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - splitFile

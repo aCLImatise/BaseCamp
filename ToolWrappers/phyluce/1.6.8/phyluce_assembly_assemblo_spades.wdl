@@ -22,6 +22,9 @@ task PhyluceAssemblyAssembloSpades {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if defined(dir) then ("--dir " +  '"' + dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_store_data: "The directory in which to store the assembly data"
     cores: "The number of compute cores/threads to run with SPAdes"

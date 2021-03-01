@@ -16,6 +16,9 @@ task RemoveGapsMsa {
       ~{if (use_bases_ones) then "-a" else ""} \
       ~{if (print_loci_discarded) then "-q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_write_sequences: "Name of output file to write sequences to"
     minimum_case_coverage: "Minimum case coverage to keep locus"

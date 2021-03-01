@@ -8,12 +8,12 @@ inputs:
     position: 0
 - id: in_ex_dot
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 1
 - id: in_ref_dot_fa
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 2
 - id: in_prefix
@@ -23,13 +23,14 @@ inputs:
     position: 3
 - id: in_my_ref
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 5
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bwt_index

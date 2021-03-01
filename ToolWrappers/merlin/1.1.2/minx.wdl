@@ -1,15 +1,11 @@
 version 1.0
 
 task Minx {
-  input {
-    Boolean? tabulate
-  }
   command <<<
-    minx \
-      ~{if (tabulate) then "--tabulate" else ""}
+    minx
   >>>
-  parameter_meta {
-    tabulate: "[merlin]"
+  runtime {
+    docker: "None"
   }
   output {
     File out_stdout = stdout()

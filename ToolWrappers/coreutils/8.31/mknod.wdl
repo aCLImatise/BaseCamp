@@ -12,6 +12,9 @@ task Mknod {
       ~{if (set_security_context) then "-Z" else ""} \
       ~{if (context) then "--context" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: "set file permission bits to MODE, not a=rw - umask"
     set_security_context: "set the SELinux security context to default type"

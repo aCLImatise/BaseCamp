@@ -16,6 +16,9 @@ task Dshinterleavefastq {
       ~{if (paired_file) then "--paired-file" else ""} \
       ~{if (unpaired_file) then "--unpaired-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     first_fast_q_file: "[class java.io.File]  first FASTQ input file [required]"

@@ -66,6 +66,9 @@ task Gcpp {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "FILE   The filename of the reference FASTA file."
     str_output_filenames: "STR    The output filename(s), as a comma-separated list. Valid output formats are\\n.fa/.fasta, .fq/.fastq, .gff, .vcf"

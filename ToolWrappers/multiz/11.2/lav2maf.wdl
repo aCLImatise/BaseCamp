@@ -4,6 +4,9 @@ task Lav2maf {
   command <<<
     lav2maf
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

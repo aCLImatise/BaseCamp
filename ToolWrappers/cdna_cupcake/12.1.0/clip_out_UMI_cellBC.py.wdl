@@ -22,6 +22,9 @@ task ClipOutUMICellBCpy {
       ~{if defined(g_five_clip_seq) then ("--g5_clip_seq " +  '"' + g_five_clip_seq + '"') else ""} \
       ~{if defined(bc_rank_file) then ("--bc_rank_file " +  '"' + bc_rank_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     umi_len: "Length of UMI"
     bc_len: "Length of cell barcode"

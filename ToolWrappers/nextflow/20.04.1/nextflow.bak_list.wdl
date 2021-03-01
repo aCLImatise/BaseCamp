@@ -8,6 +8,9 @@ task NextflowbakList {
     nextflow_bak list \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list: ""
   }

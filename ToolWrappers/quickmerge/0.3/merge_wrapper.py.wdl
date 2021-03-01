@@ -4,7 +4,7 @@ task MergeWrapperpy {
   input {
     String? prefix
     Float? hco
-    Float? quickmerge_c_parameter
+    Float? quickmerge_parameter_default
     Int? length_cut_off
     Boolean? no_nuc_mer
     Boolean? no_delta
@@ -21,7 +21,7 @@ task MergeWrapperpy {
       ~{dbgt_wool_c} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(hco) then ("--hco " +  '"' + hco + '"') else ""} \
-      ~{if defined(quickmerge_c_parameter) then ("--c " +  '"' + quickmerge_c_parameter + '"') else ""} \
+      ~{if defined(quickmerge_parameter_default) then ("--c " +  '"' + quickmerge_parameter_default + '"') else ""} \
       ~{if defined(length_cut_off) then ("--length_cutoff " +  '"' + length_cut_off + '"') else ""} \
       ~{if (no_nuc_mer) then "--no_nucmer" else ""} \
       ~{if (no_delta) then "--no_delta" else ""} \
@@ -30,10 +30,13 @@ task MergeWrapperpy {
       ~{if defined(merging_length_cut_off) then ("--merging_length_cutoff " +  '"' + merging_length_cut_off + '"') else ""} \
       ~{if (clean_only) then "--clean_only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "the prefix for all output files"
     hco: "the quickmerge hco parameter (default=5.0)"
-    quickmerge_c_parameter: "the quickmerge c parameter (default=1.5)"
+    quickmerge_parameter_default: "the quickmerge c parameter (default=1.5)"
     length_cut_off: "minimum seed contig length to be merged (default=0)"
     no_nuc_mer: "skip the nucmer step"
     no_delta: "skip the nucmer and delta-filter steps"

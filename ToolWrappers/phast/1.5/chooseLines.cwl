@@ -3,7 +3,7 @@ id: chooseLines.cwl
 inputs:
 - id: in_number_choose_default
   doc: Number of lines to choose (default is all lines).
-  type: long
+  type: long?
   inputBinding:
     prefix: -k
 - id: in_in_file
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - chooseLines

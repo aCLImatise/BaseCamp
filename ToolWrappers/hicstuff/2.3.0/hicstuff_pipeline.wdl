@@ -54,6 +54,9 @@ task HicstuffPipeline {
       ~{if (p) then "-p" else ""} \
       ~{if (e) then "-e" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aligner: "Alignment software to use. Can be either\\nbowtie2, minimap2 or bwa. minimap2 should\\nonly be used for reads > 100 bp.\\n[default: bowtie2]"
     centromeres: "Positions of the centromeres separated by\\na space and in the same order than the\\nchromosomes. Discordant with the circular\\noption."

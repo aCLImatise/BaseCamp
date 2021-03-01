@@ -28,6 +28,9 @@ task MzMLSplitter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*        Input file (valid formats: 'mzML')"
     out: "Prefix for output files ('_part1of2.mzML' etc. will be appended; default: same as 'in' without the file extension)"

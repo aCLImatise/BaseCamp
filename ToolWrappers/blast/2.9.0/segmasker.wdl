@@ -4,6 +4,9 @@ task Segmasker {
   command <<<
     segmasker
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

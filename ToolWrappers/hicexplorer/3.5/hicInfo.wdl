@@ -12,6 +12,9 @@ task HicInfo {
       ~{if defined(out_filename) then ("--outFileName " +  '"' + out_filename + '"') else ""} \
       ~{if (no_metadata) then "--no_metadata" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrices: "The matrix (or multiple matrices) to get information\\nabout. HiCExplorer supports the following file\\nformats: h5 (native HiCExplorer format) and cool."
     out_filename: "File name to save information of the matrix instead of\\nwriting it to the bash."

@@ -11,7 +11,7 @@ inputs:
   doc: "name, -o file name\nFile name to save the file. The given file ending will\n\
     be used to determine the image format. The available\noptions are: .png, .emf,\
     \ .eps, .pdf and .svg."
-  type: File
+  type: File?
   inputBinding:
     prefix: --plotFile
 - id: in_labels
@@ -23,19 +23,19 @@ inputs:
     prefix: --labels
 - id: in_skip_diagonal
   doc: If set, diagonal counts are not included.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skipDiagonal
 - id: in_maxdepth
   doc: "bp     Maximum distance from diagonal to use. In other words,\ndistances up\
     \ to maxDepth are computed. Default is 3\nmillion bp."
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxdepth
 - id: in_per_chr
   doc: "If given, computes and display distance versus Hi-C\ncounts plots for each\
     \ chromosome stored in the\nmatrices passed to --matrices."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --perchr
 - id: in_chromosome_exclude
@@ -46,20 +46,21 @@ inputs:
     prefix: --chromosomeExclude
 - id: in_outfile_data
   doc: "If given, the data underlying the plots is saved on\nthis file."
-  type: File
+  type: File?
   inputBinding:
     prefix: --outFileData
 - id: in_plot_size
   doc: "PLOTSIZE\nWidth and height of the plot (in inches). Default is\n6*number of\
     \ cols, 4 * number of rows. The maximum\nnumber of rows is 4. Example: --plotsize\
     \ 6 5"
-  type: long
+  type: long?
   inputBinding:
     prefix: --plotsize
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicPlotDistVsCounts

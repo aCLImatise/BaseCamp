@@ -26,6 +26,9 @@ task ContigOverlapTrimmer {
       ~{if defined(skip) then ("--skip " +  '"' + skip + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_trim: "Do not trim overlaps"
     trim_rev_overlaps: "Trim reversed overlaps"

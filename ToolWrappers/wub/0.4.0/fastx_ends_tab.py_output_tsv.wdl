@@ -12,6 +12,9 @@ task FastxEndsTabpyOutputTsv {
       ~{if defined(n) then ("-n " +  '"' + n + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n: ""
     i: ""

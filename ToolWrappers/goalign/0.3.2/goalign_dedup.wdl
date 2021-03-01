@@ -36,6 +36,9 @@ task GoalignDedup {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log: "Deduplicated output log file (default \\\"none\\\")"
     deduplicated_output_alignment: "Deduplicated output alignment file (default \\\"stdout\\\")"

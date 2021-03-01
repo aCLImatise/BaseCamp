@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Directory, Int, Boolean, Float
+
+Mob_Cluster_V0_1_0 = CommandToolBuilder(tool="mob_cluster", base_command=["mob_cluster"], inputs=[ToolInput(tag="in_mode", input_type=String(optional=True), prefix="--mode", doc=InputDocumentation(doc="Build: Create a new database from scratch, Update:\nUpdate an existing database with one or more sequences")), ToolInput(tag="in_in_file", input_type=File(optional=True), prefix="--infile", doc=InputDocumentation(doc="Fasta file of sequences to cluster")), ToolInput(tag="in_mob_type_r_file", input_type=File(optional=True), prefix="--mob_typer_file", doc=InputDocumentation(doc="MOB-typer report file for new sequences")), ToolInput(tag="in_taxonomy", input_type=File(optional=True), prefix="--taxonomy", doc=InputDocumentation(doc="TSV file for new sequences with the fields 'id,\norganism'")), ToolInput(tag="in_outdir", input_type=Directory(optional=True), prefix="--outdir", doc=InputDocumentation(doc="Output Directory to put results")), ToolInput(tag="in_ref_cluster_file", input_type=File(optional=True), prefix="--ref_cluster_file", doc=InputDocumentation(doc="Existing MOB-cluster file to add the new sequences to")), ToolInput(tag="in_ref_fast_a_file", input_type=File(optional=True), prefix="--ref_fasta_file", doc=InputDocumentation(doc="Existing MOB-cluster fasta file of sequences contained\nin the MOB-cluster file")), ToolInput(tag="in_num_threads", input_type=Int(optional=True), prefix="--num_threads", doc=InputDocumentation(doc="Number of threads to be used")), ToolInput(tag="in_primary_cluster_dist", input_type=Int(optional=True), prefix="--primary_cluster_dist", doc=InputDocumentation(doc="Mash distance for assigning primary cluster id 0 - 1")), ToolInput(tag="in_secondary_cluster_dist", input_type=Int(optional=True), prefix="--secondary_cluster_dist", doc=InputDocumentation(doc="Mash distance for assigning primary cluster id 0 - 1")), ToolInput(tag="in_debug", input_type=Boolean(optional=True), prefix="--debug", doc=InputDocumentation(doc="Show debug information")), ToolInput(tag="in_three_dot_zero_dot_zero", input_type=Float(), position=0, doc=InputDocumentation(doc="optional arguments:"))], outputs=[ToolOutput(tag="out_outdir", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_outdir", type_hint=File()), doc=OutputDocumentation(doc="Output Directory to put results"))], container="quay.io/biocontainers/mob_suite:3.0.1--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Mob_Cluster_V0_1_0().translate("wdl")
+

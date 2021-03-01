@@ -18,6 +18,9 @@ task MagpurifyGccontentOut {
       ~{if (weighted_mean) then "--weighted-mean" else ""} \
       ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     weighted_mean: ""
     cut_off: ""

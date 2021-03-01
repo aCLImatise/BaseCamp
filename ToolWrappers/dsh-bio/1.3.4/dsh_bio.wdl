@@ -96,6 +96,9 @@ task Dshbio {
       ~{vcf_samples} \
       ~{if (about) then "--about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     compress_bed: "compress features in BED format to splittable bgzf or bzip2 compression codecs"

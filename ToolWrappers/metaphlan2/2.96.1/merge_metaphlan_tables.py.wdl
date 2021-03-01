@@ -10,6 +10,9 @@ task MergeMetaphlanTablespy {
       ~{input_dot_txt} \
       ~{if defined(name_output_file) then ("-o " +  '"' + name_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_output_file: "Name of output file in which joined tables are saved"
     input_dot_txt: "One or more tab-delimited text tables to join"

@@ -22,6 +22,9 @@ task VarfishannotatorInitdb {
       ~{if (region) then "--region" else ""} \
       ~{if (thousand_genomes_path) then "--thousand-genomes-path" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clin_var_path: "Path to Clinvar TSV file(s) to use for import, see documentation for\\nmore information"
     db_release_info: "Provide database release information as \\\"$db:$release\\\" for storage in DB"

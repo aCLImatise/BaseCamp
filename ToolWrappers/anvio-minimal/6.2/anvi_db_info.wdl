@@ -12,6 +12,9 @@ task Anvidbinfo {
       ~{if defined(self_value) then ("--self-value " +  '"' + self_value + '"') else ""} \
       ~{if (just_do_it) then "--just-do-it" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     self_key: "The key you wish to set or change."
     self_value: "The value you wish to set for the self key."

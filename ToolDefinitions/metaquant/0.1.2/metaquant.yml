@@ -3,146 +3,151 @@ command:
 - metaquant
 positional:
 - !Positional
-  description: --threshold THRESHOLD
+  optional: false
   position: 0
   name: t-tests.
-  optional: false
+  description: --threshold THRESHOLD
 named:
 - !Flag
-  description: "[--func_file FUNC_FILE] [--ontology {go,cog}]\n[--obo_path OBO_PATH]\
-    \ [--slim_path SLIM_PATH] [--slim_down]\n[--update_obo] [--tax_file TAX_FILE]\n\
-    [--tax_colname TAX_COLNAME] [--test] [--paired]\n[--threshold THRESHOLD]"
-  synonyms:
-  - --pep_colname
-  - --outfile
-  args: !SimpleFlagArg
-    name: PEP_COLNAME
   optional: true
-- !Flag
-  description: "Analysis mode. If taxfun is chosen, both function and\ntaxonomy files\
-    \ must be provided"
   synonyms:
   - --mode
   - -m
+  description: "Analysis mode. If taxfun is chosen, both function and\ntaxonomy files\
+    \ must be provided"
   args: !ChoiceFlagArg
     choices: !!set
       fn:
       tax:
       taxfn:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --samps
+  - -s
   description: "Give the column names in the intensity file that\ncorrespond to a\
     \ given sample group. This can either be\nJSON formatted or be a path to a tabular\
     \ file. JSON\nexample of two experimental groups and two samples in\neach group:\
     \ {\"A\": [\"A1\", \"A2\"], \"B\": [\"B1\", \"B2\"]}"
-  synonyms:
-  - --samps
-  - -s
   args: !SimpleFlagArg
     name: SAMPS
-  optional: true
 - !Flag
-  description: "Path to the file with intensity data. Must be tabular,\nhave a peptide\
-    \ sequence column, and be raw,\nuntransformed intensity values. Missing values\
-    \ can be\n0, NA, or NaN- transformed to NA for analysis"
+  optional: true
   synonyms:
   - --int_file
   - -i
+  description: "Path to the file with intensity data. Must be tabular,\nhave a peptide\
+    \ sequence column, and be raw,\nuntransformed intensity values. Missing values\
+    \ can be\n0, NA, or NaN- transformed to NA for analysis"
   args: !SimpleFlagArg
     name: INT_FILE
-  optional: true
 - !Flag
-  description: "Path to file with function. The file must be tabular,\nwith a peptide\
-    \ sequence column and either a GO-term\ncolumn (named \"go\") and/or a COG column\
-    \ (named \"cog\")."
+  optional: true
+  synonyms:
+  - --pep_colname
+  description: "The column name within the intensity, function, and/or\ntaxonomy file\
+    \ that corresponds to the peptide\nsequences."
+  args: !SimpleFlagArg
+    name: PEP_COLNAME
+- !Flag
+  optional: true
+  synonyms:
+  - --outfile
+  description: Output file
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
   synonyms:
   - --func_file
   - -f
+  description: "Path to file with function. The file must be tabular,\nwith a peptide\
+    \ sequence column and either a GO-term\ncolumn (named \"go\") and/or a COG column\
+    \ (named \"cog\")."
   args: !SimpleFlagArg
     name: FUNC_FILE
-  optional: true
 - !Flag
-  description: "Which functional terms to use. This also corresponds\nto the column\
-    \ name in func_file"
+  optional: true
   synonyms:
   - --ontology
+  description: "Which functional terms to use. This also corresponds\nto the column\
+    \ name in func_file"
   args: !ChoiceFlagArg
     choices: !!set
       cog:
       go:
-  optional: true
 - !Flag
-  description: "Path to full obo. If obo_path does not exist, the file\nwill be downloaded."
+  optional: true
   synonyms:
   - --obo_path
+  description: "Path to full obo. If obo_path does not exist, the file\nwill be downloaded."
   args: !SimpleFlagArg
     name: OBO_PATH
-  optional: true
 - !Flag
-  description: "Path to generic slim obo. If slim_path does not exist,\nthe file will\
-    \ be downloaded."
+  optional: true
   synonyms:
   - --slim_path
+  description: "Path to generic slim obo. If slim_path does not exist,\nthe file will\
+    \ be downloaded."
   args: !SimpleFlagArg
     name: SLIM_PATH
-  optional: true
 - !Flag
-  description: "Flag. If provided, terms are mapped from the full OBO\nto the slim\
-    \ OBO. Terms not in the full OBO will be\nskipped."
+  optional: true
   synonyms:
   - --slim_down
+  description: "Flag. If provided, terms are mapped from the full OBO\nto the slim\
+    \ OBO. Terms not in the full OBO will be\nskipped."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --update_obo
   description: "Flag. If provided, the most recent OBO file is\ndownloaded to obo_path,\
     \ and if slim_down, the most\nrecent generic slim is downloaded as well. Caution:\n\
     will overwrite anything at these locations."
-  synonyms:
-  - --update_obo
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Path to (tabular) file with taxonomy assignments.\nThere should be\
-    \ a peptide sequence column with name\npep_colname, and a taxonomy column with\
-    \ name\ntax_colname"
+  optional: true
   synonyms:
   - --tax_file
   - -t
+  description: "Path to (tabular) file with taxonomy assignments.\nThere should be\
+    \ a peptide sequence column with name\npep_colname, and a taxonomy column with\
+    \ name\ntax_colname"
   args: !SimpleFlagArg
     name: TAX_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --tax_colname
   description: "Name of taxonomy column in tax file. The column must\nbe either NCBI\
     \ taxids (strongly preferred) or taxonomy\nnames. Unipept name output is known\
     \ to function well,\nbut other formats may not work."
-  synonyms:
-  - --tax_colname
   args: !SimpleFlagArg
     name: TAX_COLNAME
-  optional: true
 - !Flag
-  description: "Perform t-tests on the summed intensities.FDR-\ncorrected q-values\
-    \ are returned."
+  optional: true
   synonyms:
   - --test
+  description: "Perform t-tests on the summed intensities.FDR-\ncorrected q-values\
+    \ are returned."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: If --test and --paired are provided, perform paired
+  optional: true
   synonyms:
   - --paired
+  description: If --test and --paired are provided, perform paired
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: metaquant [-h] --mode {fn,tax,taxfn} --samps SAMPS --int_file INT_FILE\n\
@@ -199,3 +204,4 @@ help_text: "usage: metaquant [-h] --mode {fn,tax,taxfn} --samps SAMPS --int_file
   \    descriptive statistics.\n"
 generated_using:
 - --help
+docker_image:

@@ -4,6 +4,9 @@ task Cgatreportserve {
   command <<<
     cgatreport_serve
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

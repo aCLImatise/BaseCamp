@@ -2,9 +2,10 @@ version 1.0
 
 task MethylpySingleendpipeline {
   input {
-    Int? forward_ref
     Array[String] read_files
     String? sample
+    File? forward_ref
+    File? reverse_ref
     File? ref_fast_a
     Array[String] libraries
     File? path_to_output
@@ -50,9 +51,10 @@ task MethylpySingleendpipeline {
   }
   command <<<
     methylpy single_end_pipeline \
-      ~{if defined(forward_ref) then ("--forward-ref " +  '"' + forward_ref + '"') else ""} \
       ~{if defined(read_files) then ("--read-files " +  '"' + read_files + '"') else ""} \
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
+      ~{if defined(forward_ref) then ("--forward-ref " +  '"' + forward_ref + '"') else ""} \
+      ~{if defined(reverse_ref) then ("--reverse-ref " +  '"' + reverse_ref + '"') else ""} \
       ~{if defined(ref_fast_a) then ("--ref-fasta " +  '"' + ref_fast_a + '"') else ""} \
       ~{if defined(libraries) then ("--libraries " +  '"' + libraries + '"') else ""} \
       ~{if defined(path_to_output) then ("--path-to-output " +  '"' + path_to_output + '"') else ""} \
@@ -96,10 +98,14 @@ task MethylpySingleendpipeline {
       ~{if defined(min_base_quality) then ("--min-base-quality " +  '"' + min_base_quality + '"') else ""} \
       ~{if defined(keep_temp_files) then ("--keep-temp-files " +  '"' + keep_temp_files + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    forward_ref: "REVERSE_REF --ref-fasta REF_FASTA\\n[--libraries LIBRARIES [LIBRARIES ...]]\\n[--path-to-output PATH_TO_OUTPUT]\\n[--pbat PBAT]\\n[--check-dependency CHECK_DEPENDENCY]\\n[--num-procs NUM_PROCS]\\n[--sort-mem SORT_MEM]\\n[--num-upstream-bases NUM_UPSTREAM_BASES]\\n[--num-downstream-bases NUM_DOWNSTREAM_BASES]\\n[--generate-allc-file GENERATE_ALLC_FILE]\\n[--generate-mpileup-file GENERATE_MPILEUP_FILE]\\n[--compress-output COMPRESS_OUTPUT]\\n[--bgzip BGZIP]\\n[--path-to-bgzip PATH_TO_BGZIP]\\n[--path-to-tabix PATH_TO_TABIX]\\n[--trim-reads TRIM_READS]\\n[--path-to-cutadapt PATH_TO_CUTADAPT]\\n[--path-to-aligner PATH_TO_ALIGNER]\\n[--aligner ALIGNER]\\n[--aligner-options ALIGNER_OPTIONS [ALIGNER_OPTIONS ...]]\\n[--merge-by-max-mapq MERGE_BY_MAX_MAPQ]\\n[--remove-clonal REMOVE_CLONAL]\\n[--path-to-picard PATH_TO_PICARD]\\n[--keep-clonal-stats KEEP_CLONAL_STATS]\\n[--java-options JAVA_OPTIONS]\\n[--path-to-samtools PATH_TO_SAMTOOLS]\\n[--adapter-seq ADAPTER_SEQ]\\n[--remove-chr-prefix REMOVE_CHR_PREFIX]\\n[--add-snp-info ADD_SNP_INFO]\\n[--unmethylated-control UNMETHYLATED_CONTROL]\\n[--binom-test BINOM_TEST]\\n[--sig-cutoff SIG_CUTOFF]\\n[--min-mapq MIN_MAPQ] [--min-cov MIN_COV]\\n[--max-adapter-removal MAX_ADAPTER_REMOVAL]\\n[--overlap-length OVERLAP_LENGTH]\\n[--zero-cap ZERO_CAP]\\n[--error-rate ERROR_RATE]\\n[--min-qual-score MIN_QUAL_SCORE]\\n[--min-read-len MIN_READ_LEN]\\n[--min-base-quality MIN_BASE_QUALITY]\\n[--keep-temp-files KEEP_TEMP_FILES]"
     read_files: "list of all the fastq files you would like to run\\nthrough the pipeline. Note that globbing is supported\\nhere (i.e., you can use * in your paths) (default:\\nNone)"
     sample: "String indicating the name of the sample you are\\nprocessing. It will be included in the output files.\\n(default: None)"
+    forward_ref: "string indicating the path to the forward strand\\nreference created by build_ref (default: None)"
+    reverse_ref: "string indicating the path to the reverse strand\\nreference created by build_ref (default: None)"
     ref_fast_a: "string indicating the path to a fasta file containing\\nthe sequences you used for mapping (default: None)"
     libraries: "list of library IDs (in the same order as the files\\nlist) indiciating which libraries each set of fastq\\nfiles belong to. If you use a glob, you only need to\\nindicate the library ID for those fastqs once (i.e.,\\nthe length of files and libraries should be the same)\\n(default: ['libA'])"
     path_to_output: "Path to a directory where you would like the output to\\nbe stored. The default is the same directory as the\\ninput fastqs. (default: )"

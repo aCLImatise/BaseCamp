@@ -18,6 +18,9 @@ task OncogeminiDump {
       ~{if defined(sep) then ("--sep " +  '"' + sep + '"') else ""} \
       ~{if (tf_am) then "--tfam" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     variants: "Report all rows/columns from the variants table."
     genotypes: "Report all rows/columns from the variants table with one line\\nper sample/genotype."

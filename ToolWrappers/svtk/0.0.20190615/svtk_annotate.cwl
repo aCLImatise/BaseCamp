@@ -3,12 +3,12 @@ id: svtk_annotate.cwl
 inputs:
 - id: in_gen_code
   doc: Gencode gene annotations (GTF).
-  type: string
+  type: string?
   inputBinding:
     prefix: --gencode
 - id: in_noncoding
   doc: "Noncoding elements (bed). Columns =\nchr,start,end,element_class,element_name\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --noncoding
 - id: in_site_dot
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - svtk

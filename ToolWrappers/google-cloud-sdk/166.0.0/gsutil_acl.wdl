@@ -20,6 +20,9 @@ task GsutilAcl {
       ~{if (performs_request_object) then "-a" else ""} \
       ~{if (normally_gsutil_stops) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     u: ":<perm>"
     g: ":<perm>"

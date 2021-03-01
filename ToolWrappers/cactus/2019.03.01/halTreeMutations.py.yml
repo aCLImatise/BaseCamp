@@ -3,49 +3,50 @@ command:
 - halTreeMutations.py
 positional:
 - !Positional
-  description: input hal
+  optional: false
   position: 0
   name: hal
-  optional: false
+  description: input hal
 - !Positional
-  description: output dir
+  optional: false
   position: 1
   name: outDir
-  optional: false
+  description: output dir
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --doSnps
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --root
-  args: !SimpleFlagArg
-    name: ROOT
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - --bedName
+  description: "Name function for output bed files where sequence name\nis specifed\
+    \ as %s (default: %%s.bed)"
   args: !SimpleFlagArg
     name: BEDNAME
+- !Flag
   optional: true
+  synonyms:
+  - --root
+  description: 'root (default: None)'
+  args: !SimpleFlagArg
+    name: ROOT
+- !Flag
+  optional: true
+  synonyms:
+  - --doSnps
+  - --doParentDeletions
+  - --maxGap
+  description: 'gap threshold (default: 10)'
+  args: !SimpleFlagArg
+    name: MAXGAP
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--bedName BEDNAME    Name function\
-    \ for output bed files where sequence name\nis specifed as %s (default: %%s.bed)\n\
-    --root ROOT          root (default: None)\n--doSnps\n--doParentDeletions\n--maxGap\
-    \ MAXGAP      gap threshold (default: 10)\n--noSort\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: halTreeMutations.py [-h] [--bedName BEDNAME] [--root ROOT] [--doSnps]\n\
@@ -59,3 +60,4 @@ help_text: "usage: halTreeMutations.py [-h] [--bedName BEDNAME] [--root ROOT] [-
   \ 10)\n  --noSort\n"
 generated_using:
 - --help
+docker_image:

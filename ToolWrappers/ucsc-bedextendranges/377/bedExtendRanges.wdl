@@ -4,6 +4,9 @@ task BedExtendRanges {
   command <<<
     bedExtendRanges
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

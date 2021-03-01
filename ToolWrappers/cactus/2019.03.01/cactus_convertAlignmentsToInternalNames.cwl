@@ -3,13 +3,14 @@ id: cactus_convertAlignmentsToInternalNames.cwl
 inputs:
 - id: in_cactus_disk
   doc: must be provided
-  type: string
+  type: string?
   inputBinding:
     prefix: --cactusDisk
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cactus_convertAlignmentsToInternalNames

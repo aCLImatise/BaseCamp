@@ -20,6 +20,9 @@ task Xmlcatalog {
       ~{if (no_super_update) then "--no-super-update" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sgml: ": handle SGML Super catalogs for --add and --del"
     shell: ": run a shell allowing interactive queries"

@@ -18,6 +18,9 @@ task FilterShrimppl {
       ~{if defined(common_gene_file) then ("--commongenefile " +  '"' + common_gene_file + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_score: "minimal percentage of identity (default 300)"
     uniq: "take only best match and only, when second best is much worse (default false)"

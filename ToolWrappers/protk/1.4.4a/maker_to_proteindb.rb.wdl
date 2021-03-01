@@ -16,6 +16,9 @@ task MakerToProteindbrb {
       ~{if (info) then "--info" else ""} \
       ~{if defined(prot_fast_a) then ("--prot-fasta " +  '"' + prot_fast_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicitly_named_output: "An explicitly named output file."
     debug: "Run in debug mode [false]"

@@ -28,6 +28,9 @@ task MendelscanSibd {
       ~{if (inheritance) then "--inheritance" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ped_file: "Pedigree file in 6-column tab-delimited format"
     markers_file: "Markers file in BEAGLE format"

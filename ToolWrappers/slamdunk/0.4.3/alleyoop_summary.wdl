@@ -12,6 +12,9 @@ task AlleyoopSummary {
       ~{if defined(output_file) then ("--output " +  '"' + output_file + '"') else ""} \
       ~{if defined(t_count_dir) then ("--tcountDir " +  '"' + t_count_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "Output file"
     t_count_dir: "Folder containing tcount files\\n"

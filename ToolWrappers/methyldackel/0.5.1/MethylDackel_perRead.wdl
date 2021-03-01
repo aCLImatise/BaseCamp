@@ -30,6 +30,9 @@ task MethylDackelPerRead {
       ~{if defined(at) then ("-@ " +  '"' + at + '"') else ""} \
       ~{if defined(chunksize) then ("--chunkSize " +  '"' + chunksize + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minimum_mapq_threshold: "Minimum MAPQ threshold to include an alignment (default 10)"
     minimum_phred_threshold: "Minimum Phred threshold to include a base (default 5). This must             be >0."

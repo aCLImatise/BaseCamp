@@ -3,87 +3,87 @@ id: exclude_uid_lists.cwl
 inputs:
 - id: in_ignore_leading_blanks
   doc: Ignore leading blanks
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in_check_input_sorted
   doc: Check whether input is sorted
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_dictionary_order_blank
   doc: Dictionary order (blank or alphanumeric only)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_ignore_case
   doc: Ignore case
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_general_numerical_sort
   doc: General numerical sort
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
 - id: in_ignore_unprintable_characters
   doc: Ignore unprintable characters
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_sort_key
   doc: Sort key
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -k
 - id: in_sort_month
   doc: Sort month
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -M
 - id: in_sort_numbers
   doc: Sort numbers
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_output_to_file
   doc: Output to file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_key_separator
   doc: Key separator
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_reverse_sort_order
   doc: Reverse sort order
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_stable_sort_ties
   doc: Stable (don't sort ties alphabetically)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_suppress_duplicate_lines
   doc: Suppress duplicate lines
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -u
 - id: in_lines_terminated_newline
   doc: Lines are terminated by NUL, not newline
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -z
 - id: in_mst
   doc: Ignored for GNU compatibility
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -mST
 - id: in_nrugmcszbdfimstokt
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -nrugMcszbdfimSTokt
 - id: in_sort
@@ -97,9 +97,10 @@ outputs:
   type: stdout
 - id: out_output_to_file
   doc: Output to file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_to_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - exclude-uid-lists

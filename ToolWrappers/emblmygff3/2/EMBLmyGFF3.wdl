@@ -94,6 +94,9 @@ task EMBLmyGFF3 {
       ~{if defined(isolation_source) then ("--isolation_source " +  '"' + isolation_source + '"') else ""} \
       ~{if defined(isolate) then ("--isolate " +  '"' + isolate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     accession: "Bolean. Accession number(s) for the entry. Default\\nvalue: XXX. The proper value is automatically filled\\nup by ENA during the submission by a unique accession\\nnumber they will assign. The accession number is used\\nto set up the AC line and the first token of the ID\\nline as well. Please visit [this\\npage](https://www.ebi.ac.uk/ena/submit/accession-\\nnumber-formats) and [this\\none](https://www.ebi.ac.uk/ena/submit/sequence-\\nsubmission) to learn more about it. Activating the\\noption will set the Accession number with the fasta\\nsequence identifier."
     created: "Creation time of the original entry. The default value\\nis the date of the day."

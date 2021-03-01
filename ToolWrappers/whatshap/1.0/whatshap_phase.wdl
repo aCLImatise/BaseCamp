@@ -68,6 +68,9 @@ task WhatshapPhase {
       ~{if (no_genetic_haplo_typing) then "--no-genetic-haplotyping" else ""} \
       ~{if (use_ped_samples) then "--use-ped-samples" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_vcf_file: "Output VCF file. Add .gz to the file name to get\\ncompressed output. If omitted, use standard output."
     reference: "Reference file. Provide this to detect alleles through\\nre-alignment. If no index (.fai) exists, it will be\\ncreated"
@@ -92,7 +95,7 @@ task WhatshapPhase {
     default_gq: "Default genotype quality used as cost of changing a\\ngenotype when no genotype likelihoods are available\\n(default 30)"
     gl_regularize_r: "Constant (float) to be used to regularize genotype\\nlikelihoods read from input VCF (default None)."
     changed_genotype_list: "Write list of changed genotypes to FILE."
-    ped: "Use pedigree information in PED file to improve\\nphasing (switches to PedMEC algorithm). Columns 2, 3,\\n4 must refer to child, mother, and father sample names\\nas used in the VCF and BAM/CRAM. Other columns are\\nignored."
+    ped: "/FAM         Use pedigree information in PED file to improve\\nphasing (switches to PedMEC algorithm). Columns 2, 3,\\n4 must refer to child, mother, and father sample names\\nas used in the VCF and BAM/CRAM. Other columns are\\nignored."
     recombination_list: "Write putative recombination events to FILE."
     recomb_rate: "Recombination rate in cM/Mb (used with --ped). If\\ngiven, a constant recombination rate is assumed\\n(default: 1.26cM/Mb)."
     gen_map: "File with genetic map (used with --ped) to be used\\ninstead of constant recombination rate, i.e. overrides\\noption --recombrate."

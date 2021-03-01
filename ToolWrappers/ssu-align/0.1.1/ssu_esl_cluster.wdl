@@ -20,6 +20,9 @@ task Ssueslcluster {
       ~{if defined(_clustering_threshold) then ("-x " +  '"' + _clustering_threshold + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     field_read_query: ": field to read as query name, 1..n  [8]  (n>0)"
     field_read_target: ": field to read as target name, 1..n  [5]  (n>0)"

@@ -17,11 +17,11 @@ task Probabilistic2020Oncogene {
     Boolean? use_unmapped
     File? genome
     Int? seed
-    String find_genes_evaluates
+    String find_evaluates_clustering
   }
   command <<<
     probabilistic2020 oncogene \
-      ~{find_genes_evaluates} \
+      ~{find_evaluates_clustering} \
       ~{if defined(gene_fasta_file) then ("--input " +  '"' + gene_fasta_file + '"') else ""} \
       ~{if defined(mutations) then ("--mutations " +  '"' + mutations + '"') else ""} \
       ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
@@ -38,6 +38,9 @@ task Probabilistic2020Oncogene {
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene_fasta_file: "gene FASTA file from extract_gene_seq.py script"
     mutations: "DNA mutations file (MAF file). Columns can be in any\\norder, but should contain the correct column header\\nnames."
@@ -54,7 +57,7 @@ task Probabilistic2020Oncogene {
     use_unmapped: "Use mutations that are not mapped to the the single\\nreference transcript for a gene specified in the bed\\nfile indicated by the -b option."
     genome: "Path to the genome fasta file. Required if --use-\\nunmapped flag is used. (Default: None)"
     seed: "Specify the seed for the pseudo random number\\ngenerator. By default, the seed is randomly chosen.\\nThe seed will be used for the monte carlo simulations\\n(Default: 101).\\n"
-    find_genes_evaluates: "Find statsitically significant oncogene-like genes. Evaluates clustering of"
+    find_evaluates_clustering: "Find statsitically significant oncogene-like genes. Evaluates clustering of"
   }
   output {
     File out_stdout = stdout()

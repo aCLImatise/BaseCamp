@@ -20,6 +20,9 @@ task DownloadRefSeqpl {
       ~{if defined(seq_ences_out_directory) then ("--seqencesOutDirectory " +  '"' + seq_ences_out_directory + '"') else ""} \
       ~{if (var_1) then "--DB" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_ences_out_directory: ""
     var_1: ""

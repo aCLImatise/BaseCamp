@@ -3,32 +3,62 @@ command:
 - precheck.py
 positional:
 - !Positional
-  description: The first mates in the read pairs.
+  optional: false
   position: 0
   name: reads_1.fq
-  optional: false
+  description: The first mates in the read pairs.
 - !Positional
-  description: The second mates in the read pairs.
+  optional: false
   position: 1
   name: reads_2.fq
-  optional: false
-named: []
+  description: The second mates in the read pairs.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --families
+  description: The output of make-families.awk.
+  args: !SimpleFlagArg
+    name: families.tsv
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tag-length
+  - -c
+  - --constant-length
+  - -m
+  - --min-reads
+  description: "The minimum number of reads required in each single-\nstranded family.\
+    \ Default: 3"
+  args: !SimpleFlagArg
+    name: TAG_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --validate
+  description: "Check the id's of the reads to make sure the correct\nreads are mated\
+    \ into pairs (the id's of mates must be\nidentical). Default: False."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --no-check-ids
+  description: Don't check read ids.
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-f families.tsv, --families families.tsv\n\
-    The output of make-families.awk.\n-t TAG_LEN, --tag-length TAG_LEN\n-c CONST_LEN,\
-    \ --constant-length CONST_LEN\n-m MIN_READS, --min-reads MIN_READS\nThe minimum\
-    \ number of reads required in each single-\nstranded family. Default: 3\n-v, --validate\
-    \        Check the id's of the reads to make sure the correct\nreads are mated\
-    \ into pairs (the id's of mates must be\nidentical). Default: False.\n-I, --no-check-ids\
-    \    Don't check read ids."
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: $ precheck.py [options] reads_1.fq reads_2.fq\n       $ precheck.py\
@@ -48,3 +78,4 @@ help_text: "usage: $ precheck.py [options] reads_1.fq reads_2.fq\n       $ prech
   for a 10GB, 32 million read dataset with an average of 4 pairs per barcode.\n"
 generated_using:
 - --help
+docker_image:

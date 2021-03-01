@@ -4,6 +4,9 @@ task Taxsummary2krona {
   command <<<
     taxsummary2krona
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

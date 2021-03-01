@@ -12,6 +12,9 @@ task CtseqPlotMultiple {
       ~{if defined(frag_info) then ("--fragInfo " +  '"' + frag_info + '"') else ""} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "Path to directory where you want your plots to be\\ncreated. If no path is given, ctseq will create the\\nplots in your current working directory. Remember to\\ninclude a file ending in '_directories.txt' containing\\nthe paths of the directories containing the data you\\nwant to plot"
     frag_info: "Name of file containing your fragment info file for\\nthese combined plots. If not in same directory as your\\ncurrent working directory, please designate full path\\nto the 'fragInfo' file. See documentation for more info\\n(required)"

@@ -24,6 +24,9 @@ task ComparemHclust {
       ~{if defined(value_col) then ("--value_col " +  '"' + value_col + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     method: "clustering method to use. (default: average)"
     similarity: "indicates file contain similarity values"

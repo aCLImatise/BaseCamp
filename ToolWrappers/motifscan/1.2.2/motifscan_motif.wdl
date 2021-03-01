@@ -34,6 +34,9 @@ task MotifscanMotif {
       ~{if defined(n_random) then ("--n-random " +  '"' + n_random + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Enable verbose log messages."
     list: "Display installed motif sets."

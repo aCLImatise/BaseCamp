@@ -4,24 +4,29 @@ inputs:
 - id: in_comparison
   doc: "two CRISPRessoPooled or CRISPRessoWGS analysis-\n)                       \
     \                                                              )"
-  type: string
+  type: string?
   inputBinding:
     prefix: -Comparison
-- id: in_save_also_png
-  doc: Save also .png images additionally to .pdf files
-  type: boolean
+- id: in_name
+  doc: 'Output name (default: )'
+  type: string?
   inputBinding:
-    prefix: --save_also_png
-- id: in_none
-  doc: ''
-  type: long
+    prefix: --name
+- id: in_sample_one_name
+  doc: 'Sample 1 name (default: Sample_1)'
+  type: long?
   inputBinding:
-    prefix: -n1
-- id: in_n
-  doc: ''
-  type: string
+    prefix: --sample_1_name
+- id: in_sample_two_name
+  doc: 'Sample 2 name (default: Sample_2)'
+  type: long?
   inputBinding:
-    prefix: -n
+    prefix: --sample_2_name
+- id: in_output_folder
+  doc: "Save also .png images additionally to .pdf files\n(default: False)\n"
+  type: Directory?
+  inputBinding:
+    prefix: --output_folder
 - id: in_cris_presso_pooled_wgs_output_folder_two
   doc: "Second output folder with CRISPRessoPooled or\nCRISPRessoWGS analysis"
   type: long
@@ -31,6 +36,12 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+- id: out_output_folder
+  doc: "Save also .png images additionally to .pdf files\n(default: False)\n"
+  type: Directory?
+  outputBinding:
+    glob: $(inputs.in_output_folder)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - CRISPRessoPooledWGSCompare

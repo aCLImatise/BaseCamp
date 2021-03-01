@@ -4,185 +4,185 @@ command:
 - count
 positional:
 - !Positional
-  description: 'Optional arguments for quality controls:'
+  optional: false
   position: 0
   name: mapping.
-  optional: false
+  description: 'Optional arguments for quality controls:'
 named:
 - !Flag
-  description: "A file containing the list of sgRNA names, their\nsequences and associated\
-    \ genes. Support file format:\ncsv and txt. Provide an empty file for collecting\
-    \ all\npossible sgRNA counts."
+  optional: true
   synonyms:
   - -l
   - --list-seq
+  description: "A file containing the list of sgRNA names, their\nsequences and associated\
+    \ genes. Support file format:\ncsv and txt. Provide an empty file for collecting\
+    \ all\npossible sgRNA counts."
   args: !SimpleFlagArg
     name: LIST_SEQ
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --fastq
   description: "Sample fastq files (or fastq.gz files, or SAM/BAM\nfiles after v0.5.5),\
     \ separated by space; use comma (,)\nto indicate technical replicates of the same\
     \ sample.\nFor example, \"--fastq\nsample1_replicate1.fastq,sample1_replicate2.fastq\n\
     sample2_replicate1.fastq,sample2_replicate2.fastq\"\nindicates two samples with\
     \ 2 technical replicates for\neach sample."
-  synonyms:
-  - --fastq
   args: !RepeatFlagArg
     name: FASTQ
-  optional: true
 - !Flag
-  description: The read count table file. Only 1 file is accepted.
+  optional: true
   synonyms:
   - -k
   - --count-table
+  description: The read count table file. Only 1 file is accepted.
   args: !SimpleFlagArg
     name: COUNT_TABLE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --norm-method
   description: "Method for normalization, including \"none\" (no\nnormalization),\
     \ \"median\" (median normalization,\ndefault), \"total\" (normalization by total\
     \ read\ncounts), \"control\" (normalization by control sgRNAs\nspecified by the\
     \ --control-sgrna option)."
-  synonyms:
-  - --norm-method
   args: !ChoiceFlagArg
     choices: !!set
       median:
-      total:
       none:
       control:
-  optional: true
+      total:
 - !Flag
-  description: "A list of control sgRNAs for normalization and for\ngenerating the\
-    \ null distribution of RRA."
+  optional: true
   synonyms:
   - --control-sgrna
+  description: "A list of control sgRNAs for normalization and for\ngenerating the\
+    \ null distribution of RRA."
   args: !SimpleFlagArg
     name: CONTROL_SGRNA
-  optional: true
 - !Flag
-  description: "A list of genes whose sgRNAs are used as control\nsgRNAs for normalization\
-    \ and for generating the null\ndistribution of RRA."
+  optional: true
   synonyms:
   - --control-gene
+  description: "A list of genes whose sgRNAs are used as control\nsgRNAs for normalization\
+    \ and for generating the null\ndistribution of RRA."
   args: !SimpleFlagArg
     name: CONTROL_GENE
-  optional: true
 - !Flag
-  description: "Sample labels, separated by comma (,). Must be equal\nto the number\
-    \ of samples provided (in --fastq option).\nDefault \"sample1,sample2,...\"."
+  optional: true
   synonyms:
   - --sample-label
+  description: "Sample labels, separated by comma (,). Must be equal\nto the number\
+    \ of samples provided (in --fastq option).\nDefault \"sample1,sample2,...\"."
   args: !SimpleFlagArg
     name: SAMPLE_LABEL
-  optional: true
 - !Flag
-  description: The prefix of the output file(s). Default sample1.
+  optional: true
   synonyms:
   - -n
   - --output-prefix
+  description: The prefix of the output file(s). Default sample1.
   args: !SimpleFlagArg
     name: OUTPUT_PREFIX
-  optional: true
 - !Flag
-  description: "Save unmapped reads to file, with sgRNA lengths\nspecified by --sgrna-len\
-    \ option."
+  optional: true
   synonyms:
   - --unmapped-to-file
+  description: "Save unmapped reads to file, with sgRNA lengths\nspecified by --sgrna-len\
+    \ option."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Keep intermediate files.
+  optional: true
   synonyms:
   - --keep-tmp
+  description: Keep intermediate files.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Test running. If this option is on, MAGeCK will only\nprocess the\
-    \ first 1M records for each file."
+  optional: true
   synonyms:
   - --test-run
+  description: "Test running. If this option is on, MAGeCK will only\nprocess the\
+    \ first 1M records for each file."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Paired sample fastq files (or fastq.gz files), the\norder of which\
-    \ should be consistent with that in fastq\noption."
+  optional: true
   synonyms:
   - --fastq-2
+  description: "Paired sample fastq files (or fastq.gz files), the\norder of which\
+    \ should be consistent with that in fastq\noption."
   args: !RepeatFlagArg
     name: FASTQ_2
-  optional: true
 - !Flag
-  description: "Report all valid alignments per read or pair (default:\nFalse)."
+  optional: true
   synonyms:
   - --count-pair
+  description: "Report all valid alignments per read or pair (default:\nFalse)."
   args: !SimpleFlagArg
     name: COUNT_PAIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --trim-5
   description: "Length of trimming the 5' of the reads. Users can\nspecify multiple\
     \ trimming lengths, separated by comma\n(,); for example, \"7,8\". Use \"AUTO\"\
     \ to allow MAGeCK to\nautomatically determine the trimming length. Default\nAUTO."
-  synonyms:
-  - --trim-5
   args: !SimpleFlagArg
     name: TRIM_5
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sgrna-len
   description: "Length of the sgRNA. Default 20. ATTENTION: after\nv0.5.3, the program\
     \ will automatically determine the\nsgRNA length from library file; so only use\
     \ this if\nyou turn on the --unmapped-to-file option."
-  synonyms:
-  - --sgrna-len
   args: !SimpleFlagArg
     name: SGRNA_LEN
-  optional: true
 - !Flag
-  description: "Count sgRNAs with Ns. By default, sgRNAs containing N\nwill be discarded."
+  optional: true
   synonyms:
   - --count-n
+  description: "Count sgRNAs with Ns. By default, sgRNAs containing N\nwill be discarded."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Reverse complement the sequences in library for read
+  optional: true
   synonyms:
   - --reverse-complement
+  description: Reverse complement the sequences in library for read
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Generate pdf report of the fastq files.
+  optional: true
   synonyms:
   - --pdf-report
+  description: Generate pdf report of the fastq files.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --day0-label
   description: "Turn on the negative selection QC and specify the\nlabel for control\
     \ sample (usually day 0 or plasmid).\nFor every other sample label, the negative\
     \ selection\nQC will compare it with day0 sample, and estimate the\ndegree of\
     \ negative selections in essential genes."
-  synonyms:
-  - --day0-label
   args: !SimpleFlagArg
     name: DAY0_LABEL
-  optional: true
 - !Flag
-  description: "The pathway file used for QC, in GMT format. By\ndefault it will use\
-    \ the GMT file provided by MAGeCK.\n"
+  optional: true
   synonyms:
   - --gmt-file
+  description: "The pathway file used for QC, in GMT format. By\ndefault it will use\
+    \ the GMT file provided by MAGeCK.\n"
   args: !SimpleFlagArg
     name: GMT_FILE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: mageck count [-h] [-l LIST_SEQ]\n                    (--fastq FASTQ\
@@ -254,3 +254,4 @@ help_text: "usage: mageck count [-h] [-l LIST_SEQ]\n                    (--fastq
   \ file provided by MAGeCK.\n"
 generated_using:
 - --help
+docker_image:

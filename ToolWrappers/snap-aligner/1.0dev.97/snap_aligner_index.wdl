@@ -38,6 +38,9 @@ task SnapalignerIndex {
       ~{if (location_size) then "-locationSize" else ""} \
       ~{if (sm) then "-sm" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seed_size_default: "Seed size (default: 20)"
     h_gone_nine: "Use pre-computed table bias for hg19, which results in better speed, balance, and a smaller index, but only works for the complete human reference."

@@ -16,6 +16,9 @@ task SingularityRemoteRemove {
       ~{remote} \
       ~{remove}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

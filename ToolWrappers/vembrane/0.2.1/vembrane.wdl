@@ -20,6 +20,9 @@ task Vembrane {
       ~{if defined(statistics) then ("--statistics " +  '"' + statistics + '"') else ""} \
       ~{if (keep_unmatched) then "--keep-unmatched" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_specified: "Output file, if not specified, output is written to\\nSTDOUT."
     output_fmt: "Output format."

@@ -4,7 +4,7 @@ task Ssucmstat {
   input {
     Boolean? configure_cm_glocal
     Boolean? only_print_model
-    Int? set_database_size
+    Int? set_z_database
     Boolean? all
     Boolean? le
     Boolean? ge
@@ -39,7 +39,7 @@ task Ssucmstat {
       ~{cm_file} \
       ~{if (configure_cm_glocal) then "-g" else ""} \
       ~{if (only_print_model) then "-m" else ""} \
-      ~{if defined(set_database_size) then ("-Z " +  '"' + set_database_size + '"') else ""} \
+      ~{if defined(set_z_database) then ("-Z " +  '"' + set_z_database + '"') else ""} \
       ~{if (all) then "--all" else ""} \
       ~{if (le) then "--le" else ""} \
       ~{if (ge) then "--ge" else ""} \
@@ -68,10 +68,13 @@ task Ssucmstat {
       ~{if (bits) then "--bits" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     configure_cm_glocal: ": configure CM for glocal alignment [default: local]"
     only_print_model: ": only print one line summary of model statistics  [default]"
-    set_database_size: ": set Z (database size in *Mb*) to <x> for E-value calculations"
+    set_z_database: ": set Z (database size in *Mb*) to <x> for E-value calculations"
     all: ": print model, E-value and filter thresholds stats"
     le: ": only print one line summary of  local E-value statistics"
     ge: ": only print one line summary of glocal E-value statistics"

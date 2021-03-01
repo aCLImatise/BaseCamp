@@ -26,6 +26,9 @@ task ParseSdrfConvertmaxquant {
       ~{if defined(output_one) then ("--output1 " +  '"' + output_one + '"') else ""} \
       ~{if defined(output_two) then ("--output2 " +  '"' + output_two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sd_rf: "SDRF file"
     fast_a_file_path: "protein database file path,please use /"

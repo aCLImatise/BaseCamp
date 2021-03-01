@@ -18,6 +18,9 @@ task GustafMateJoining {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (very_verbose) then "--very-verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version_check: "Turn this option off to disable version update notifications of the\\napplication. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\\nDefault: 1."
     out_path: "of OUTPUT_FILE's\\nSet name of output FASTA/FASTQ file(s). Valid filetypes are: .fq,\\n.fastq, .fasta, and .fa. Default: joined_mates.fa."

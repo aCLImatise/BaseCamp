@@ -4,17 +4,17 @@ inputs:
 - id: in_ref_name
   doc: "Reference to process, only needed if bams contain\nmultiple references. (default:\
     \ None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --ref_name
 - id: in_output_prefix
   doc: 'Prefix for outputs. (default: trimmed)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --output_prefix
 - id: in_reference_fast_a
   doc: "Reference fasta to trim to alignment window. (default:\nNone)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --reference_fasta
 - id: in_bams
@@ -26,6 +26,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - trim_alignments

@@ -12,6 +12,9 @@ task SpacepharerFindpam {
       ~{if defined(compressed) then ("--compressed " +  '"' + compressed + '"') else ""} \
       ~{if defined(verbosity_level_errors) then ("-v " +  '"' + verbosity_level_errors + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of CPU-cores used (all by default) [8]"
     compressed: "Write compressed output [0]"

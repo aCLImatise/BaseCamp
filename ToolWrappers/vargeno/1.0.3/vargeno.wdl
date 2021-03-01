@@ -10,6 +10,9 @@ task Vargeno {
       ~{option} \
       ~{parameters}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     option: ""
     parameters: ""

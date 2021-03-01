@@ -3,34 +3,34 @@ id: taxonkit_version.cwl
 inputs:
 - id: in_check_update
   doc: check update
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --check-update
 - id: in_data_dir
   doc: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --data-dir
 - id: in_line_buffered
   doc: use line buffering on output, i.e., immediately writing to stdin/file for every
     line of output
-  type: File
+  type: File?
   inputBinding:
     prefix: --line-buffered
 - id: in_out_file
   doc: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
-  type: File
+  type: File?
   inputBinding:
     prefix: --out-file
 - id: in_threads
   doc: 'number of CPUs. 2 is enough (default value: 1 for single-CPU PC, 2 for others)
     (default 2)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_verbose
   doc: print verbose information
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 outputs:
@@ -40,14 +40,15 @@ outputs:
 - id: out_line_buffered
   doc: use line buffering on output, i.e., immediately writing to stdin/file for every
     line of output
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_line_buffered)
 - id: out_out_file
   doc: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - taxonkit

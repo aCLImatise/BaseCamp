@@ -1,0 +1,70 @@
+!Command
+command:
+- MetaPop.R
+positional: []
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "[1] \"Welcome to MetaPop.\"\n[1] \"\"\n[1] \"usage: MetaPop.R [OPTS] -dir\
+  \ -assem -ct\"\n[1] \"\"\n[1] \"Program options:\"\n[1] \"-preprocess_only : Flag\
+  \ indicating to filter reads for %ID, length, and depth of coverage and stop.\"\n\
+  [1] \"-micro_only : Flag indicating to perform only macrodiversity calculations.\
+  \ Assumes preprocess has been done.\"\n[1] \"-macro_only : Flag indicating to perform\
+  \ only microdiversity calculations. Assumes preprocess has been done.\"\n[1] \"\
+  -viz_only : Flag indicating to only produce visualizations. Assumes preprocess has\
+  \ been done.\"\n[1] \"-no_micro Flag : indicating to skip microdiversity and only\
+  \ perform preprocess and macrodiversity\"\n[1] \"-no_macro Flag : indicating to\
+  \ skip macrodiversity and only perform preprocess and microdiversity\"\n[1] \"-no_viz\
+  \ Flag : indicating to not attempt to visualize results.\"\n[1] \"\"\n[1] \"Mandatory\
+  \ arguments:\"\n[1] \"-dir : Directory containing mapped read files in BAM format\"\
+  \n[1] \"-assem : Absolute path to assembled contigs\"\n[1] \"-ct : Absolute path\
+  \ to counnts normalization file (only mandatory if performing macrodiversity calculations)\"\
+  \n[1] \"\"\n[1] \"Preprocessing Arguments:\"\n[1] \"-sam : absolute path to samtools\
+  \ - optional if samtools is in PATH\"\n[1] \"-bcf : absolute path to bcftools -\
+  \ optional if samtools is in PATH\"\n[1] \"-prodigal : absolute path to prodigal\
+  \ gene prediction tool - optional if prodigal is in PATH or if -genes specified\
+  \ with existing prodigal FASTA format gene calls\"\n[1] \"-genes : absolute path\
+  \ to prodigal FASTA format gene file for assembled contiigs. May be left absent\
+  \ if you want metapop to generate this file.\"\n[1] \"-id INT : reads below this\
+  \ percent identity (mismatch/alignment length) are removed. Use -global to calculate\
+  \ as (mismatch/read length). Default 95\"\n[1] \"-min INT : reads shorter than this\
+  \ are removed. Default 30.\"\n[1] \"-cov INT : contigs with breadth of coverage\
+  \ (#bases covered/contig length) less than this are removed from microdiversity.\
+  \ Default 70\"\n[1] \"-dep INT : contigs with truncated average depth of coverage\
+  \ (mean of the 10th - 90th percentile depths of coverage) less than this are removed\
+  \ from microdiversity. Default 10.\"\n[1] \"-trunc INT : sets the percentiles at\
+  \ which depths of coverage will be truncated for depth. Default 10.\"\n[1] \"-threads\
+  \ INT : Number of threads to parallelize processes for. Default 4.\"\n[1] \"-global\
+  \ FLAG : Flag indicating to calculate percent identity using read length instead\
+  \ of alignment length.\"\n[1] \"-force_genes FLAG: Flag indicating that the file\
+  \ specified with -genes doesn't exist, and requests a file with this name be generated\
+  \ using prodigal.\"\n[1] \"\"\n[1] \"Variant Calling Arguments:\"\n[1] \"-first\
+  \ STRING : prefix of sample to be used as the SNP reference point for all other\
+  \ samples. A prefix is the set of characters before .bam extension in a sample,\
+  \ e.g. a_file.bam has prefix a_file.\"\n[1] \"-obs INT : Minimum number of observations\
+  \ of a variant allele at a particular locus for it to be called a SNP. Default 4\"\
+  \n[1] \"-rep INT : Minimum percent of the population a variant allele at a particular\
+  \ locus must represent for it to be called a SNP. Default 1\"\n[1] \"-var_qual INT\
+  \ : Minimum PHRED score for a base to be used in initial variant calling. Default\
+  \ 20.\"\n[1] \"\"\n[1] \"Microdiversity Arguments:\"\n[1] \"-subsamp INT : SNP loci\
+  \ will be subsampled proportionallydown to this depth of coverage for microdiversity\
+  \ calculations. Default 10.\"\n[1] \"Macrodiversity Arguments:\"\n[1] \"-complete_bact\
+  \ FLAG : Assumes that each contig supplied is a complete bacterial genome. Lowers\
+  \ the threshold of detection from 70% coverage to 20% coverage.\"\n[1] \"-min_det\
+  \ INT : Minimum percent of bases covered for a contig to be considered detected.\
+  \ Default 70; will change if -cov is set to a different value of -complete_bact\
+  \ is used.\"\n[1] \"-min_bp INT : Minimum number of positions required to be covered\
+  \ for a contig to be considered detected. Default 5000.\"\n[1] \"Visualization arguments:\"\
+  \n[1] \"-all FLAG : Metapop will print all contigs from microdiversity results.\
+  \ This will likely take a long time. Default prints top 3 genomes by highest % of\
+  \ genes under positive selection in each sample.\"\n[1] \"-snp_scale [local, global,\
+  \ both] : Metapop will print microdiversity results using SNPs assessed at the local\
+  \ (per sample) or global (across all samples) levels, or both. Defaults to local.\"\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/metapop:1.0.2--0

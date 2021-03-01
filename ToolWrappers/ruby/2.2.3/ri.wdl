@@ -4,7 +4,7 @@ task Ri {
   input {
     Boolean? _interactive_interactive
     Boolean? _show_documentation
-    Boolean? synonym__nopager
+    Boolean? synonym_for_
     String? width
     Boolean? server
     String? format
@@ -20,7 +20,7 @@ task Ri {
       ~{library_dot} \
       ~{if (_interactive_interactive) then "-i" else ""} \
       ~{if (_show_documentation) then "-a" else ""} \
-      ~{if (synonym__nopager) then "-T" else ""} \
+      ~{if (synonym_for_) then "-T" else ""} \
       ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
       ~{if (server) then "--server" else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
@@ -28,10 +28,13 @@ task Ri {
       ~{if (no_standard_docs) then "--no-standard-docs" else ""} \
       ~{if defined(dump) then ("--dump " +  '"' + dump + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _interactive_interactive: ", --[no-]interactive           In interactive mode you can repeatedly\\nlook up methods with autocomplete."
     _show_documentation: ", --[no-]all                   Show all documentation for a class or"
-    synonym__nopager: "Synonym for --no-pager"
+    synonym_for_: "Synonym for --no-pager"
     width: "Set the width of the output."
     server: "[PORT]              Run RDoc server on the given port.\\nThe default port is 8214."
     format: "Uses the selected formatter. The default\\nformatter is bs for paged output and ansi\\notherwise. Valid formatters are:\\nansi bs markdown rdoc"

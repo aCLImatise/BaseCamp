@@ -10,6 +10,9 @@ task HmmgsStats {
       ~{bloom_filter_stats} \
       ~{bloom_filter}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bloom_filter_stats: ""
     bloom_filter: ""

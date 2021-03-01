@@ -22,6 +22,9 @@ task OpenSwathRewriteToFeatureXML {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     csv: "MProphet tsv output file: \\\"all_peakgroups.xls\\\" (valid formats: 'csv')"
     feature_xml: "*   Input featureXML file (valid formats: 'featureXML')"

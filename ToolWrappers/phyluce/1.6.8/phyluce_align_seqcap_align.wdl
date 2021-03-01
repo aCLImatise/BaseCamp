@@ -38,6 +38,9 @@ task PhyluceAlignSeqcapAlign {
       ~{if (ambiguous) then "--ambiguous" else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "The file containing FASTA reads associated with\\ntargted loci from get_fastas_from_match_counts.py\\n(default: None)"
     directory_store_resultingalignments: "The directory in which to store the resulting\\nalignments. (default: None)"

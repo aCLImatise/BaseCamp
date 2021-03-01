@@ -8,6 +8,9 @@ task Convertmirdeep2fastapy {
     convert_mirdeep2_fasta_py \
       ~{fast_an}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_an: ""
   }

@@ -30,6 +30,9 @@ task Statisticpl {
       ~{if (extended) then "--extended" else ""} \
       ~{if (format) then "--format" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_gram: "Assumes that n-grams in SOURCE file have N\\ntokens each. N = 2 by default."
     set_freq_combo: "Uses the frequency combinations in FILE to\\ndecode the \\\"meaning\\\" of the frequency\\nvalues in SOURCE. By default, the default\\nfrequency combinations output by count.pl\\nfor ngrams of size N are assumed."

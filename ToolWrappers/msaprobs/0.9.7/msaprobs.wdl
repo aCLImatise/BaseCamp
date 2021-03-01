@@ -24,6 +24,9 @@ task Msaprobs {
       ~{if (alignment_order) then "--alignment-order" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "specify the output file name (STDOUT by default)"
     num_threads: "specify the number of threads used, and otherwise detect automatically"

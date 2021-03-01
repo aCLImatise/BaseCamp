@@ -24,6 +24,9 @@ task TestMusiccpy {
       ~{if (catch) then "--catch" else ""} \
       ~{if (buffer) then "--buffer" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Verbose output"
     quiet: "Quiet output"

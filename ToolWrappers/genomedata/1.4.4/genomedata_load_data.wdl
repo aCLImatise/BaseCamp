@@ -14,6 +14,9 @@ task Genomedataloaddata {
       ~{track_name} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print status and diagnostic messages"
     option_dot_dot_dot: ""

@@ -50,6 +50,9 @@ task Scapp {
       ~{if defined(plasmid_len_thresh) then ("--plasmid_len_thresh " +  '"' + plasmid_len_thresh + '"') else ""} \
       ~{if defined(good_cyc_dominated_thresh) then ("--good_cyc_dominated_thresh " +  '"' + good_cyc_dominated_thresh + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graph: "Assembly graph FASTG file to process"
     output_dir: "Output directory"

@@ -3,7 +3,7 @@ id: phylorank_bl_table.cwl
 inputs:
 - id: in_step_size
   doc: "step size for mean branch length criterion (default:\n0.01)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --step_size
 - id: in_input_tree
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phylorank

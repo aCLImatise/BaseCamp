@@ -8,6 +8,9 @@ task CollapseReadsMdpl {
     collapse_reads_md_pl \
       ~{if (outputs_progress) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outputs_progress: "outputs progress"
   }

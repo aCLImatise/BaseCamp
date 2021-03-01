@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, Int, String
+
+Snp_Filter_Py_V0_1_0 = CommandToolBuilder(tool="snp_filter.py", base_command=["snp_filter.py"], inputs=[ToolInput(tag="in_force", input_type=Boolean(optional=True), prefix="--force", doc=InputDocumentation(doc="Force processing even when result files already exist\nand are newer than inputs (default: False)")), ToolInput(tag="in_vcf_name", input_type=File(optional=True), prefix="--vcfname", doc=InputDocumentation(doc="File name of the input VCF files which must exist in\neach of the sample directories (default: var.flt.vcf)")), ToolInput(tag="in_edge_length", input_type=Int(optional=True), prefix="--edge_length", doc=InputDocumentation(doc="The length of the edge regions in a contig, in which\nall SNPs will be removed. (default: 500)")), ToolInput(tag="in_length_window_be", input_type=Boolean(optional=True), prefix="-w", doc=InputDocumentation(doc="[WINDOW_SIZE [WINDOW_SIZE ...]], --window_size [WINDOW_SIZE [WINDOW_SIZE ...]]\nThe length of the window in which the number of SNPs\nshould be no more than max_num_snp. (default: [1000])")), ToolInput(tag="in_maximum_number_snps", input_type=Boolean(optional=True), prefix="-m", doc=InputDocumentation(doc="[MAX_NUM_SNPs [MAX_NUM_SNPs ...]], --max_snp [MAX_NUM_SNPs [MAX_NUM_SNPs ...]]\nThe maximum number of SNPs allowed in a window.\n(default: [3])")), ToolInput(tag="in_out_group", input_type=File(optional=True), prefix="--out_group", doc=InputDocumentation(doc="Relative or absolute path to the file indicating\noutgroup samples, one sample ID per line. (default:\nNone)")), ToolInput(tag="in_mode", input_type=String(optional=True), prefix="--mode", doc=InputDocumentation(doc="Control whether dense snp regions found in any sample\nare filtered from all of the samples, or each sample\nindependently. (default: all)")), ToolInput(tag="in_verbose", input_type=Int(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Verbose message level (0=no info, 5=lots) (default: 1)")), ToolInput(tag="in_sample_dirs_file", input_type=String(), position=0, doc=InputDocumentation(doc="Relative or absolute path to file containing a list of\ndirectories -- one per sample")), ToolInput(tag="in_ref_fast_a_file", input_type=String(), position=1, doc=InputDocumentation(doc="Relative or absolute path to the reference fasta file"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Snp_Filter_Py_V0_1_0().translate("wdl", allow_empty_container=True)
+

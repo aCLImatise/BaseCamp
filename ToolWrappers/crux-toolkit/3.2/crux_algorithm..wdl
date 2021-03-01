@@ -64,6 +64,9 @@ task CruxAlgorithm {
       ~{stat_column} \
       ~{sort_by_column}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bullseye: "Assign high resolution precursor m/z values to\\nMS/MS data using the Hardklör algorithm."
     tide_index: "Create an index for all peptides in a fasta file,\\nfor use in subsequent calls to tide-search."

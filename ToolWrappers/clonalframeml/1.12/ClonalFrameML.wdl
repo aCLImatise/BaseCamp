@@ -54,6 +54,9 @@ task ClonalFrameML {
       ~{if (brent_tolerance) then "-brent_tolerance" else ""} \
       ~{if (powell_tolerance) then "-powell_tolerance" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     em: "true (default) or false   Estimate parameters by a Baum-Welch expectation maximization algorithm."
     em_branch: "true or false (default)   Estimate parameters for each branch using the EM algorithm."

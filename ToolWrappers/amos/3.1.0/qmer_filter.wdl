@@ -12,6 +12,9 @@ task Qmerfilter {
       ~{in} \
       ~{out}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threshold: ""
     in: ""

@@ -3,96 +3,96 @@ command:
 - genomedata-load
 positional:
 - !Positional
-  description: Create Genomedata archive named GENOMEDATAFILE by loading
+  optional: false
   position: 0
   name: GENOMEDATAFILE
-  optional: false
+  description: Create Genomedata archive named GENOMEDATAFILE by loading
 - !Positional
-  description: 'Example: genomedata-load -t high=signal.high.wig -t low=signal.low.bed.gz
-    -s chrX.fa -s chrY.fa.gz GENOMEDATAFILE'
+  optional: false
   position: 0
   name: respectively.
-  optional: false
+  description: 'Example: genomedata-load -t high=signal.high.wig -t low=signal.low.bed.gz
+    -s chrX.fa -s chrY.fa.gz GENOMEDATAFILE'
 - !Positional
-  description: genomedata archive
+  optional: false
   position: 0
   name: GENOMEDATAFILE
-  optional: false
+  description: genomedata archive
 named:
 - !Flag
-  description: "Add the sequence data in the specified file or files\n(may use UNIX\
-    \ glob wildcard syntax)"
+  optional: true
   synonyms:
   - -s
   - --sequence
+  description: "Add the sequence data in the specified file or files\n(may use UNIX\
+    \ glob wildcard syntax)"
   args: !SimpleFlagArg
     name: SEQUENCE
-  optional: true
 - !Flag
-  description: Print status updates and diagnostic messages
+  optional: true
   synonyms:
   - --verbose
+  description: Print status updates and diagnostic messages
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "=FILE, --track NAME=FILE\nAdd data from FILE as the track NAME, such\
-    \ as: -t\nsignal=signal.wig"
+  optional: true
   synonyms:
   - -t
+  description: "=FILE, --track NAME=FILE\nAdd data from FILE as the track NAME, such\
+    \ as: -t\nsignal=signal.wig"
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: "A BED file containing regions to mask out from tracks\nbefore loading"
+  optional: true
   synonyms:
   - -m
   - --maskfile
+  description: "A BED file containing regions to mask out from tracks\nbefore loading"
   args: !SimpleFlagArg
     name: MASKFILE
-  optional: true
 - !Flag
-  description: sequence files contain assembly (AGP) files instead of
+  optional: true
   synonyms:
   - --assembly
+  description: sequence files contain assembly (AGP) files instead of
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --file-mode
   description: "If specified, the Genomedata archive will be\nimplemented as a single\
     \ file, with a separate h5 group\nfor each Chromosome. This is recommended if\
     \ there are\na large number of Chromosomes. The default behavior is\nto use a\
     \ single file if there are at least 100\nChromosomes being added."
-  synonyms:
-  - -f
-  - --file-mode
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --directory-mode
   description: "If specified, the Genomedata archive will be\nimplemented as a directory,\
     \ with a separate file for\neach Chromosome. This is recommended if there are\
     \ a\nsmall number of Chromosomes. The default behavior is\nto use a directory\
     \ if there are fewer than 100\nChromosomes being added."
-  synonyms:
-  - -d
-  - --directory-mode
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: genomedata-load [-h] [--version] [--verbose] -s SEQUENCE -t NAME=FILE\n\
   \                       [-m MASKFILE] [--assembly | --sizes] [-f | -d]\n       \
   \                GENOMEDATAFILE\n\nCreate Genomedata archive named GENOMEDATAFILE\
@@ -128,3 +128,4 @@ help_text: "usage: genomedata-load [-h] [--version] [--verbose] -s SEQUENCE -t N
   \ functional genomics data.\nBioinformatics 26 (11):1458-1459.\nhttp://dx.doi.org/10.1093/bioinformatics/btq164\n"
 generated_using:
 - --help
+docker_image:

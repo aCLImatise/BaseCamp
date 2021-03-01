@@ -54,6 +54,9 @@ task GetPeakTags {
       ~{if defined(vcf) then ("-vcf " +  '"' + vcf + '"') else ""} \
       ~{if defined(wig) then ("-wig " +  '"' + wig + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     start: "<#> (position to start counting tags relative to peak center, default: -1000)"
     end: "<#> (position to stop counting tags relative to peak center, default: 1000)"

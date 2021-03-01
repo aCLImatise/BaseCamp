@@ -3,34 +3,84 @@ command:
 - bowtie-align-reads.py
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: fastaN
-  optional: false
-named: []
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: "Reference genome in fasta format. If you have multiple\nreference\
+    \ files, please use multipe -r options. If you\nhave aready index the reference\
+    \ sequences, you should\nuse the -i option."
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --index
+  description: "Use the supplied bowtie index file, instead of\nindexing the genome\
+    \ in the script.\nIf your genome index files are in folder\n/user/home/index,\
+    \ with names TAIR10.1.ebwt,\nTAIR10.2.ebwt, etc, you must use -i\n/user/home/index/TAIR10\
+    \ for the -i option."
+  args: !SimpleFlagArg
+    name: INDEX
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --temp
+  description: "Temporary folder to hold the bowtie index files. If\nnot supplied,\
+    \ the current directory is used. Only used\nwith -r."
+  args: !SimpleFlagArg
+    name: TEMP
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --allowedmismatch
+  - -v
+  description: "in bowtie. Number of mismatches allowed.\nDefault is 0."
+  args: !SimpleFlagArg
+    name: ALLOWEDMISMATCH
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --multialignment
+  - -k
+  description: "in bowtie.  Report up to <int> vaild\nalignment. Default is 20."
+  args: !SimpleFlagArg
+    name: MULTIALIGNMENT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --processor
+  description: Use multiple threads to do alignment.
+  args: !SimpleFlagArg
+    name: PROCESSOR
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --filterunmapped
+  description: Filter out unmapped alignments in the output.
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-r REFERENCE, --reference=REFERENCE\n\
-    Reference genome in fasta format. If you have multiple\nreference files, please\
-    \ use multipe -r options. If you\nhave aready index the reference sequences, you\
-    \ should\nuse the -i option.\n-i INDEX, --index=INDEX\nUse the supplied bowtie\
-    \ index file, instead of\nindexing the genome in the script.\nIf your genome index\
-    \ files are in folder\n/user/home/index, with names TAIR10.1.ebwt,\nTAIR10.2.ebwt,\
-    \ etc, you must use -i\n/user/home/index/TAIR10 for the -i option.\n-t TEMP, --temp=TEMP\
-    \  Temporary folder to hold the bowtie index files. If\nnot supplied, the current\
-    \ directory is used. Only used\nwith -r.\n-v ALLOWEDMISMATCH, --allowedmismatch=ALLOWEDMISMATCH\n\
-    -v option in bowtie. Number of mismatches allowed.\nDefault is 0.\n-k MULTIALIGNMENT,\
-    \ --multialignment=MULTIALIGNMENT\n-k option in bowtie.  Report up to <int> vaild\n\
-    alignment. Default is 20.\n-p PROCESSOR, --processor=PROCESSOR\nUse multiple threads\
-    \ to do alignment.\n-f, --filterunmapped  Filter out unmapped alignments in the\
-    \ output.\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: python bowtie-align-reads.py [options] <fasta1> ... <fastaN>\n\n\
@@ -73,3 +123,4 @@ help_text: "Usage: python bowtie-align-reads.py [options] <fasta1> ... <fastaN>\
   \  Filter out unmapped alignments in the output.\n"
 generated_using:
 - --help
+docker_image:

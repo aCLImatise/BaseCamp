@@ -16,6 +16,9 @@ task Allegro {
       ~{if (t) then "-t" else ""} \
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     m: ""
     n: ""

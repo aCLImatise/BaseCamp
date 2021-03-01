@@ -8,6 +8,9 @@ task PomoxisPath {
     pomoxis_path \
       ~{program}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     program: "name of program."
   }

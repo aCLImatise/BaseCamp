@@ -40,6 +40,9 @@ task Curesim {
       ~{if (skip) then "-skip" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_fasta_file: "[mandatory] genome fasta file or reads fastq file"
     o: "[facultative] name of output fastq file [output.fastq]"

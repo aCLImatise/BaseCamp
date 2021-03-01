@@ -3,7 +3,7 @@ id: Lace_Checker.py.cwl
 inputs:
 - id: in_cores
   doc: The number of cores you wish to run the job on (default = 1)
-  type: long
+  type: long?
   inputBinding:
     prefix: --cores
 - id: in_super_file
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - Lace_Checker.py

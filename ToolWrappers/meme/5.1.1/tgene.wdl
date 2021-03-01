@@ -48,6 +48,9 @@ task Tgene {
       ~{if defined(f_desc) then ("--fdesc " +  '"' + f_desc + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: "output to the specified directory; default: tgene_out"
     oc: "output to the specified directory; default: tgene_out"

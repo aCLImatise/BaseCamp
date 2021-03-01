@@ -8,6 +8,9 @@ task SplitScaffold {
     split_scaffold \
       ~{scaffold_dot_fa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     scaffold_dot_fa: ""
   }

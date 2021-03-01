@@ -3,12 +3,12 @@ id: cat_corrects.cwl
 inputs:
 - id: in_file_containing_names
   doc: a file containing names of erate files
-  type: File
+  type: File?
   inputBinding:
     prefix: -L
 - id: in_output_file
   doc: output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cat-corrects

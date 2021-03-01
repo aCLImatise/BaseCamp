@@ -3,34 +3,37 @@ command:
 - spectrast_filter.rb
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: file1.splib
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: An explicitly named output file.
+  optional: true
   synonyms:
   - -o
   - --output
+  description: An explicitly named output file.
   args: !SimpleFlagArg
     name: out
-  optional: true
 - !Flag
-  description: Produce spectral libraries in binary format rather than ASCII [false]
+  optional: true
   synonyms:
   - -B
   - --binary-output
+  description: Produce spectral libraries in binary format rather than ASCII [false]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Keep only spectra satifying predicate pred. Should be a C-style predicate
+  optional: true
   synonyms:
   - --predicate
+  description: Keep only spectra satifying predicate pred. Should be a C-style predicate
   args: !SimpleFlagArg
     name: pred
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --merge
   description: "How to combine multiple splib files (if provided). Options are U,S,H\n\
     U: Union. Include all the peptide ions in all the files.\nS: Subtraction. Only\
     \ include peptide ions in the first file\nthat are not present in any of the other\
@@ -40,31 +43,28 @@ named:
     the first file in the argument list that contains that peptide ion.\nUseful for\
     \ keeping existing consensus spectra unchanged while adding\nonly previously unseen\
     \ peptide ions. [U]"
-  synonyms:
-  - --merge
   args: !SimpleFlagArg
     name: method
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --replicates
   description: "How to derive a single spectrum from replicates. Options are None,\
     \ C,B\nC: Consensus. Create the consensus spectrum of all replicate spectra of\
     \ each peptide ion.\nB: Best replicate. Pick the best replicate of each peptide\
     \ ion. [None]\n"
-  synonyms:
-  - --replicates
   args: !SimpleFlagArg
     name: method
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Display this screen
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Display this screen
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Manipulate splib files.\n\nUsage: spectrast_filter.rb [options] file1.splib\
@@ -89,3 +89,4 @@ help_text: "Manipulate splib files.\n\nUsage: spectrast_filter.rb [options] file
   \ of each peptide ion. [None]\n"
 generated_using:
 - --help
+docker_image:

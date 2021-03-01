@@ -14,6 +14,9 @@ task CleanPairsMemorypy {
       ~{if defined(two) then ("-2 " +  '"' + two + '"') else ""} \
       ~{if defined(one) then ("-1 " +  '"' + one + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
     r: ""

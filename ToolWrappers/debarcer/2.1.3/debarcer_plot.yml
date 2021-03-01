@@ -1,0 +1,131 @@
+!Command
+command:
+- debarcer
+- plot
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --Config
+  description: Path to the config file
+  args: !SimpleFlagArg
+    name: CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --Directory
+  description: Directory with subdirectories ConsFiles and Datafiles
+  args: !SimpleFlagArg
+    name: DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --Extension
+  description: "Figure format. Does not generate a report if pdf, even\nwith -r True.\
+    \ Default is png"
+  args: !ChoiceFlagArg
+    choices: !!set
+      png:
+      pdf:
+      jpeg:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --Sample
+  description: "Sample name to apear in the report is reporting flag\nactivated. Optional"
+  args: !SimpleFlagArg
+    name: SAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --Report
+  description: Generate a report if activated. Default is True
+  args: !ChoiceFlagArg
+    choices: !!set
+      'True':
+      'False':
+- !Flag
+  optional: true
+  synonyms:
+  - -mv
+  - --MinCov
+  description: "Minimum coverage value. Values below are plotted in\nred"
+  args: !SimpleFlagArg
+    name: MINCOV
+- !Flag
+  optional: true
+  synonyms:
+  - -mr
+  - --MinRatio
+  description: "Minimum children to parent umi ratio. Values below are\nplotted in\
+    \ red"
+  args: !SimpleFlagArg
+    name: MINRATIO
+- !Flag
+  optional: true
+  synonyms:
+  - -mu
+  - --MinUmis
+  description: Minimum umi count. Values below are plotted in red
+  args: !SimpleFlagArg
+    name: MINUMIS
+- !Flag
+  optional: true
+  synonyms:
+  - -mc
+  - --MinChildren
+  description: "Minimum children umi count. Values below are plotted\nin red"
+  args: !SimpleFlagArg
+    name: MINCHILDREN
+- !Flag
+  optional: true
+  synonyms:
+  - -rt
+  - --RefThreshold
+  description: "Cut Y axis at non-ref frequency, the minimum frequency\nto consider\
+    \ a position variable\n"
+  args: !SimpleFlagArg
+    name: REFTHRESHOLD
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: debarcer.py plot [-h] [-c CONFIG] -d DIRECTORY [-e {pdf,png,jpeg}]\n\
+  \                        [-s SAMPLE] [-r {False,True}] [-mv MINCOV]\n          \
+  \              [-mr MINRATIO] [-mu MINUMIS] [-mc MINCHILDREN]\n                \
+  \        [-rt REFTHRESHOLD]\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -c CONFIG, --Config CONFIG\n                   \
+  \     Path to the config file\n  -d DIRECTORY, --Directory DIRECTORY\n         \
+  \               Directory with subdirectories ConsFiles and Datafiles\n  -e {pdf,png,jpeg},\
+  \ --Extension {pdf,png,jpeg}\n                        Figure format. Does not generate\
+  \ a report if pdf, even\n                        with -r True. Default is png\n\
+  \  -s SAMPLE, --Sample SAMPLE\n                        Sample name to apear in the\
+  \ report is reporting flag\n                        activated. Optional\n  -r {False,True},\
+  \ --Report {False,True}\n                        Generate a report if activated.\
+  \ Default is True\n  -mv MINCOV, --MinCov MINCOV\n                        Minimum\
+  \ coverage value. Values below are plotted in\n                        red\n  -mr\
+  \ MINRATIO, --MinRatio MINRATIO\n                        Minimum children to parent\
+  \ umi ratio. Values below are\n                        plotted in red\n  -mu MINUMIS,\
+  \ --MinUmis MINUMIS\n                        Minimum umi count. Values below are\
+  \ plotted in red\n  -mc MINCHILDREN, --MinChildren MINCHILDREN\n               \
+  \         Minimum children umi count. Values below are plotted\n               \
+  \         in red\n  -rt REFTHRESHOLD, --RefThreshold REFTHRESHOLD\n            \
+  \            Cut Y axis at non-ref frequency, the minimum frequency\n          \
+  \              to consider a position variable\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/debarcer:2.1.3--py_0

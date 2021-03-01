@@ -42,6 +42,9 @@ task Ama {
       ~{if defined(max_seq_length) then ("--max-seq-length " +  '"' + max_seq_length + '"') else ""} \
       ~{if defined(last) then ("--last " +  '"' + last + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s_dbg: "Use Markov background model of order <order>\\nderived from the sequence to compute its\\nlikelihood ratios;\\noverrides --pvalues, --gcbins and --rma;\\n<background file> is required unless\\n--sdbg is given."
     motif: "Use only the motif identified by <id>.\\nThis option may be repeated."

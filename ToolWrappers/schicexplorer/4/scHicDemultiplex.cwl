@@ -11,36 +11,36 @@ inputs:
     to be in the right format:fastq-dump --accession\nSRR5229025 --split-files --defline-seq\n\
     '@$sn[_$rn]/$ri' --defline-qual '+' --split-spot\n--stdout SRR5229025 > SRR5229025.fastq\
     \ (default: None)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --fastq
 - id: in_barcode_file
   doc: "of fastq files to demultiplex. Use GSE94489_README.txt file., -bf list of\
     \ fastq files to demultiplex. Use GSE94489_README.txt file.\nThe fastq files to\
     \ demultiplex (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --barcodeFile
 - id: in_srr_to_sample_file
   doc: "The mappings from SRR number to sample id as given in\nthe barcode file. (default:\
     \ None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --srrToSampleFile
 - id: in_output_folder
   doc: "Path of folder to save the demultiplexed files\n(default: demultiplexed)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outputFolder
 - id: in_threads
   doc: "Number of threads. Using the python multiprocessing\nmodule. (default: 4)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_buffer_size
   doc: "Number of lines to buffer in memory, if full, write\nthe data to disk. (default:\
     \ 20000000.0)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --bufferSize
 - id: in_of
@@ -72,6 +72,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - scHicDemultiplex

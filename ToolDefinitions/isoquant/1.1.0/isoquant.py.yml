@@ -1,0 +1,254 @@
+!Command
+command:
+- isoquant.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: alignments.
+  description: --bam BAM [BAM ...]   sorted and indexed BAM file(s), each file will
+    be
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  - -o
+  description: "output folder, will be created automatically\n[default=isoquant_output]"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --genedb
+  - -g
+  description: gene database in gffutils DB format or GTF/GFF format
+  args: !SimpleFlagArg
+    name: GENEDB
+- !Flag
+  optional: true
+  synonyms:
+  - --complete_genedb
+  description: "use this flag if gene annotation contains transcript\nand gene metafeatures,\
+    \ e.g. with official annotations,\nsuch as GENCODE; speeds up gene database conversion"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  - -r
+  description: "reference genome in FASTA format, should be provided\nto compute some\
+    \ additional stats and when raw reads\nare used as an input"
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --index
+  description: "genome index for specified aligner, should be provided\nonly when\
+    \ raw reads are used as an input"
+  args: !SimpleFlagArg
+    name: INDEX
+- !Flag
+  optional: true
+  synonyms:
+  - --clean_start
+  description: Do not use previously generated index, feature db or
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fastq
+  description: "input FASTQ file(s), each file will be treated as a\nseparate sample;\
+    \ reference genome should be provided\nwhen using raw reads"
+  args: !RepeatFlagArg
+    name: FASTQ
+- !Flag
+  optional: true
+  synonyms:
+  - --bam_list
+  description: "text file with list of BAM files, one file per line,\nleave empty\
+    \ line between samples"
+  args: !SimpleFlagArg
+    name: BAM_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - --fastq_list
+  description: "text file with list of FASTQ files, one file per line,\nleave empty\
+    \ line between samples"
+  args: !SimpleFlagArg
+    name: FASTQ_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - --data_type
+  - -d
+  description: "type of data to process, supported types are:\nassembly, pacbio_raw,\
+    \ pacbio_ccs, nanopore"
+  args: !ChoiceFlagArg
+    choices: !!set
+      nanopore:
+      pacbio_raw:
+      assembly:
+      pacbio_ccs:
+- !Flag
+  optional: true
+  synonyms:
+  - --stranded
+  description: "reads strandness type, supported values are: forward,\nreverse, none"
+  args: !SimpleFlagArg
+    name: STRANDED
+- !Flag
+  optional: true
+  synonyms:
+  - --has_polya
+  description: "set if reads were not polyA trimmed; polyA tails will\nbe detected\
+    \ and further required for transcript model\nconstruction"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fl_data
+  description: "reads represent FL transcripts; both ends of the read\nare considered\
+    \ to be reliable"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --full_help
+  description: show full list of options
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --test
+  description: run IsoQuant on toy dataset
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: number of threads to use
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --labels
+  - -l
+  description: "sample names to be used; input file names are used if\nnot set"
+  args: !RepeatFlagArg
+    name: LABELS
+- !Flag
+  optional: true
+  synonyms:
+  - --read_group
+  description: "a way to group feature counts (no grouping by\ndefault): by BAM file\
+    \ tag (tag:TAG), using additional\nfile (file:FILE:READ_COL:GROUP_COL:DELIM),\
+    \ using read\nid (read_id:DELIM)"
+  args: !SimpleFlagArg
+    name: READ_GROUP
+- !Flag
+  optional: true
+  synonyms:
+  - --sqanti_output
+  description: produce SQANTI-like TSV output (requires more time)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --count_exons
+  description: perform exon and intron counting
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --matching_strategy
+  description: matching strategy to use from most strict to least
+  args: !ChoiceFlagArg
+    choices: !!set
+      default:
+      loose:
+      precise:
+      exact:
+- !Flag
+  optional: true
+  synonyms:
+  - --model_construction_strategy
+  description: "transcritp model construnction strategy to use\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      default:
+      all:
+      fl:
+      reliable:
+      assembly:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: isoquant.py [-h] [--output OUTPUT] --genedb GENEDB [--complete_genedb]\n\
+  \                   [--reference REFERENCE] [--index INDEX] [--clean_start]\n  \
+  \                 (--bam BAM [BAM ...] | --fastq FASTQ [FASTQ ...] | --bam_list\
+  \ BAM_LIST | --fastq_list FASTQ_LIST)\n                   --data_type {assembly,pacbio_raw,pacbio_ccs,nanopore}\n\
+  \                   [--stranded STRANDED] [--has_polya] [--fl_data]\n          \
+  \         [--full_help] [--test] [--threads THREADS]\n                   [--labels\
+  \ LABELS [LABELS ...]] [--read_group READ_GROUP]\n                   [--sqanti_output]\
+  \ [--count_exons]\n                   [--matching_strategy {exact,precise,default,loose}]\n\
+  \                   [--model_construction_strategy {reliable,default,fl,all,assembly}]\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --output OUTPUT, -o OUTPUT\n                        output folder, will be created\
+  \ automatically\n                        [default=isoquant_output]\n  --genedb GENEDB,\
+  \ -g GENEDB\n                        gene database in gffutils DB format or GTF/GFF\
+  \ format\n  --complete_genedb     use this flag if gene annotation contains transcript\n\
+  \                        and gene metafeatures, e.g. with official annotations,\n\
+  \                        such as GENCODE; speeds up gene database conversion\n \
+  \ --reference REFERENCE, -r REFERENCE\n                        reference genome\
+  \ in FASTA format, should be provided\n                        to compute some additional\
+  \ stats and when raw reads\n                        are used as an input\n  --index\
+  \ INDEX         genome index for specified aligner, should be provided\n       \
+  \                 only when raw reads are used as an input\n  --clean_start    \
+  \     Do not use previously generated index, feature db or\n                   \
+  \     alignments.\n  --bam BAM [BAM ...]   sorted and indexed BAM file(s), each\
+  \ file will be\n                        treated as a separate sample\n  --fastq\
+  \ FASTQ [FASTQ ...]\n                        input FASTQ file(s), each file will\
+  \ be treated as a\n                        separate sample; reference genome should\
+  \ be provided\n                        when using raw reads\n  --bam_list BAM_LIST\
+  \   text file with list of BAM files, one file per line,\n                     \
+  \   leave empty line between samples\n  --fastq_list FASTQ_LIST\n              \
+  \          text file with list of FASTQ files, one file per line,\n            \
+  \            leave empty line between samples\n  --data_type {assembly,pacbio_raw,pacbio_ccs,nanopore},\
+  \ -d {assembly,pacbio_raw,pacbio_ccs,nanopore}\n                        type of\
+  \ data to process, supported types are:\n                        assembly, pacbio_raw,\
+  \ pacbio_ccs, nanopore\n  --stranded STRANDED   reads strandness type, supported\
+  \ values are: forward,\n                        reverse, none\n  --has_polya   \
+  \        set if reads were not polyA trimmed; polyA tails will\n               \
+  \         be detected and further required for transcript model\n              \
+  \          construction\n  --fl_data             reads represent FL transcripts;\
+  \ both ends of the read\n                        are considered to be reliable\n\
+  \  --full_help           show full list of options\n  --test                run\
+  \ IsoQuant on toy dataset\n  --threads THREADS, -t THREADS\n                   \
+  \     number of threads to use\n  --labels LABELS [LABELS ...], -l LABELS [LABELS\
+  \ ...]\n                        sample names to be used; input file names are used\
+  \ if\n                        not set\n  --read_group READ_GROUP\n             \
+  \           a way to group feature counts (no grouping by\n                    \
+  \    default): by BAM file tag (tag:TAG), using additional\n                   \
+  \     file (file:FILE:READ_COL:GROUP_COL:DELIM), using read\n                  \
+  \      id (read_id:DELIM)\n  --sqanti_output       produce SQANTI-like TSV output\
+  \ (requires more time)\n  --count_exons         perform exon and intron counting\n\
+  \  --matching_strategy {exact,precise,default,loose}\n                        matching\
+  \ strategy to use from most strict to least\n  --model_construction_strategy {reliable,default,fl,all,assembly}\n\
+  \                        transcritp model construnction strategy to use\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/isoquant:1.1.0--0

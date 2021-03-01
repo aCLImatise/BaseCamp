@@ -14,6 +14,9 @@ task CombineEvalReportspl {
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     eval_report_mode: ": Eval report mode [default]"
     general_statistics_report: ": General statistics report mode.  Cannot be used with -e."

@@ -14,6 +14,9 @@ task Alnseqspl {
       ~{if defined(null) then ("--null " +  '"' + null + '"') else ""} \
       ~{if defined(no_hash) then ("-no-hash " +  '"' + no_hash + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "documentation"
     sort: "by number of sequences"

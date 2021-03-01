@@ -30,6 +30,9 @@ task CIRCexplorer2Denovo {
       ~{if (no_fix) then "--no-fix" else ""} \
       ~{if (rp_km) then "--rpkm" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "Gene annotation."
     detect_alternative_splicing: "Detect alternative splicing and output."

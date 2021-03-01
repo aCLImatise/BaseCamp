@@ -12,6 +12,9 @@ task GdtoolsNOTEVIDENCE {
       ~{if (id) then "--id" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_gd_file: "output GD file (DEFAULT=output.gd)"
     id: "Reorder IDs (Flag)"

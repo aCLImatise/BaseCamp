@@ -16,6 +16,9 @@ task Coords2clntpy {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "Write results to this file."
     three_prime: "Set position one nt downstream of 3'-end as\\ncrosslinked nucleotide."

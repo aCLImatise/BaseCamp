@@ -3,7 +3,7 @@ id: seqhax_stats.cwl
 inputs:
 - id: in_number_parallel_jobs
   doc: Number of parallel jobs [1]
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_file
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - seqhax

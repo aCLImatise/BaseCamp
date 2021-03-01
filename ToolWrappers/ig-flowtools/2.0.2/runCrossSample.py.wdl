@@ -22,6 +22,9 @@ task RunCrossSamplepy {
       ~{if defined(file_location_mfi_summary) then ("-S " +  '"' + file_location_mfi_summary + '"') else ""} \
       ~{if defined(file_location_stats) then ("-a " +  '"' + file_location_stats + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_locations_flow: "File locations for flow text files."
     filenames: "Filenames"

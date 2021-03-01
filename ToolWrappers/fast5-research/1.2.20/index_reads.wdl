@@ -4,6 +4,9 @@ task IndexReads {
   command <<<
     index_reads
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

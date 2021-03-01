@@ -50,6 +50,9 @@ task JgiSummarizeBamContigDepths {
       ~{if (min_contig_length) then "--minContigLength" else ""} \
       ~{if (min_contig_depth) then "--minContigDepth" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_depth: "arg  The file to put the contig by bam depth matrix (default: STDOUT)"
     percent_identity: "arg  The minimum end-to-end % identity of qualifying reads (default: 97)"

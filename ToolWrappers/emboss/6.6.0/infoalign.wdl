@@ -34,6 +34,9 @@ task Infoalign {
       ~{if (gap_count) then "-gapcount" else ""} \
       ~{if (description) then "-description" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "matrix     [EBLOSUM62 for protein, EDNAFULL for DNA]\\nThis is the scoring matrix file used when\\ncomparing sequences. By default it is the\\nfile 'EBLOSUM62' (for proteins) or the file\\n'EDNAFULL' (for nucleic sequences). These\\nfiles are found in the 'data' directory of\\nthe EMBOSS installation."
     refseq: "string     [0] If you give the number in the alignment\\nor the name of a sequence, it will be taken\\nto be the reference sequence. The reference\\nsequence is the one against which all the\\nother sequences are compared. If this is set\\nto 0 then the consensus sequence will be\\nused as the reference sequence. By default\\nthe consensus sequence is used as the\\nreference sequence. (Any string)"

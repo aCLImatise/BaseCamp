@@ -30,6 +30,9 @@ task BamtoolsResolve {
       ~{if defined(umt) then ("-umt " +  '"' + umt + '"') else ""} \
       ~{if (force) then "-force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "the input BAM file(s) [stdin]"
     out: "the output BAM file [stdout]"

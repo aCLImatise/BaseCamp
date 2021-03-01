@@ -24,6 +24,9 @@ task WbView {
       ~{if (window_size) then "-window-size" else ""} \
       ~{if (window_pos) then "-window-pos" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graphics_size: "<X Y>\\nSet the size of the graphics region.\\nIf this option is used you WILL NOT be able\\nto change the size of the graphic region. It\\nmay be useful when image captures of a particular\\nsize are desired."
     logging: "Set the logging level.\\nValid Levels are:\\nSEVERE\\nWARNING\\nINFO\\nCONFIG\\nFINE\\nFINER\\nFINEST\\nALL\\nOFF"

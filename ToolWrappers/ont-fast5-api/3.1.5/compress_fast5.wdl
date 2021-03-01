@@ -24,6 +24,9 @@ task CompressFast5 {
       ~{files} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: ""
     tool: ""

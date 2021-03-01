@@ -38,6 +38,9 @@ task HalLodExtract {
       ~{if defined(probe_frac) then ("--probeFrac " +  '"' + probe_frac + '"') else ""} \
       ~{if defined(root) then ("--root " +  '"' + root + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all_sequences: ":            Sample all sequences (chromsomes / contigs / etc.) no\\nmatter how small they are.  By default, small sequences\\nmay be skipped if they fall within the step size. [default\\n= 0]"
     cache_bytes: ":      maximum size in bytes of regular hdf5 cache [default =\\n15728640]"

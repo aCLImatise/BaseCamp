@@ -4,27 +4,17 @@ command:
 positional: []
 named:
 - !Flag
-  description: "[--minDepth INT bp] [--maxDepth INT bp] [--step INT bp]\n[--TAD_sep_score_prefix\
-    \ TAD_SEP_SCORE_PREFIX]\n[--thresholdComparisons THRESHOLDCOMPARISONS]\n[--delta\
-    \ DELTA] [--minBoundaryDistance MINBOUNDARYDISTANCE]\n[--chromosomes CHROMOSOMES\
-    \ [CHROMOSOMES ...]]\n[--numberOfProcessors NUMBEROFPROCESSORS] [--help]\n[--version]"
-  synonyms:
-  - --correctForMultipleTesting
-  args: !ChoiceFlagArg
-    choices: !!set
-      bonferroni:
-      None:
-      fdr:
   optional: true
-- !Flag
-  description: Corrected Hi-C matrix to use for the computations.
   synonyms:
   - --matrix
   - -m
+  description: Corrected Hi-C matrix to use for the computations.
   args: !SimpleFlagArg
     name: MATRIX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outPrefix
   description: "File prefix to save the resulting files: 1.\n<prefix>_tad_separation.bm\
     \ The format of the output\nfile is chrom start end TAD-sep1 TAD-sep2 TAD-sep3\
     \ ..\netc. We call this format a bedgraph matrix and can be\nplotted using `hicPlotTADs`.\
@@ -41,52 +31,66 @@ named:
     \ 6.\n<prefix>_score.bedgraph file contains the TAD-\nseparation score measured\
     \ at each Hi-C bin coordinate.\nIs useful to visualize in a genome browser. The\
     \ delta\nand p-value settings are saved as part of the name."
-  synonyms:
-  - --outPrefix
   args: !SimpleFlagArg
     name: OUTPREFIX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --correctForMultipleTesting
+  description: "Select the bonferroni or false discovery rate for a\nmultiple comparison.\
+    \ Bonferroni controls the family-\nwise error rate (FWER) and needs a p-value.\
+    \ The false\ndiscovery rate (FDR) controls the likelyhood of type I\nerrors and\
+    \ needs a q-value. As a third option it is\npossible to not use a multiple comparison\
+    \ method at\nall."
+  args: !ChoiceFlagArg
+    choices: !!set
+      bonferroni:
+      None:
+      fdr:
+- !Flag
+  optional: true
+  synonyms:
+  - --minDepth
   description: "bp     Minimum window length (in bp) to be considered to the\nleft\
     \ and to the right of each Hi-C bin. This number\nshould be at least 3 times as\
     \ large as the bin size of\nthe Hi-C matrix."
-  synonyms:
-  - --minDepth
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxDepth
   description: "bp     Maximum window length to be considered to the left and\nto\
     \ the right of the cut point in bp. This number\nshould around 6-10 times as large\
     \ as the bin size of\nthe Hi-C matrix."
-  synonyms:
-  - --maxDepth
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --step
   description: "bp         Step size when moving from --minDepth to --maxDepth.\n\
     Note, the step size grows exponentially as `minDeph +\n(step * int(x)**1.5) for\
     \ x in [0, 1, ...]` until it\nreaches `maxDepth`. For example, selecting\nstep=10,000,\
     \ minDepth=20,000 and maxDepth=150,000 will\ncompute TAD-scores for window sizes:\
     \ 20,000, 30,000,\n40,000, 70,000 and 100,000"
-  synonyms:
-  - --step
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --TAD_sep_score_prefix
   description: "Sometimes it is useful to change some of the\nparameters without recomputing\
     \ the z-score matrix and\nthe TAD-separation score. For this case, the prefix\n\
     containing the TAD separation score and the z-score\nmatrix can be given. If this\
     \ option is given, new\nboundaries will be computed but the values of\n--minDepth,\
     \ --maxDepth and --step will not be used."
-  synonyms:
-  - --TAD_sep_score_prefix
   args: !SimpleFlagArg
     name: TAD_SEP_SCORE_PREFIX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --thresholdComparisons
   description: "P-value threshold for the Bonferroni correction /\nq-value for FDR.\
     \ The probability of a local minima to\nbe a boundary is estimated by comparing\
     \ the\ndistribution (Wilcoxon ranksum) of the z-scores\nbetween the left and right\
@@ -94,64 +98,61 @@ named:
     at --minDepth to the left and a diamond --minDepth to\nthe right. If --correctForMultipleTesting\
     \ is 'None'\nthe threshold is applied on the raw p-values without\nany multiple\
     \ testing correction. Set it to '1' if no\nthreshold should be used."
-  synonyms:
-  - --thresholdComparisons
   args: !SimpleFlagArg
     name: THRESHOLDCOMPARISONS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --delta
   description: "Minimum threshold of the difference between the TAD-\nseparation score\
     \ of a putative boundary and the mean\nof the TAD-sep. score of surrounding bins.\
     \ The delta\nvalue reduces spurious boundaries that are shallow,\nwhich usually\
     \ occur at the center of large TADs when\nthe TAD-sep. score is flat. Higher delta\
     \ threshold\nvalues produce more conservative boundary estimations.\nBy default\
     \ a value of 0.01 is used."
-  synonyms:
-  - --delta
   args: !SimpleFlagArg
     name: DELTA
-  optional: true
 - !Flag
-  description: "Minimum distance between boundaries (in bp). This\nparameter can be\
-    \ used to reduce spurious boundaries\ncaused by noise."
+  optional: true
   synonyms:
   - --minBoundaryDistance
+  description: "Minimum distance between boundaries (in bp). This\nparameter can be\
+    \ used to reduce spurious boundaries\ncaused by noise."
   args: !SimpleFlagArg
     name: MINBOUNDARYDISTANCE
-  optional: true
 - !Flag
-  description: "Chromosomes and order in which the chromosomes should\nbe plotted.\
-    \ This option overrides --region and\n--region2."
+  optional: true
   synonyms:
   - --chromosomes
+  description: "Chromosomes and order in which the chromosomes should\nbe plotted.\
+    \ This option overrides --region and\n--region2."
   args: !RepeatFlagArg
     name: CHROMOSOMES
-  optional: true
 - !Flag
-  description: Number of processors to use
+  optional: true
   synonyms:
   - --numberOfProcessors
   - -p
+  description: Number of processors to use
   args: !SimpleFlagArg
     name: NUMBEROFPROCESSORS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit.
+  optional: true
   synonyms:
   - --help
   - -h
+  description: show this help message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: hicFindTADs --matrix MATRIX --outPrefix OUTPREFIX\n           \
   \        --correctForMultipleTesting {fdr,bonferroni,None}\n                   [--minDepth\
   \ INT bp] [--maxDepth INT bp] [--step INT bp]\n                   [--TAD_sep_score_prefix\
@@ -256,3 +257,4 @@ help_text: "usage: hicFindTADs --matrix MATRIX --outPrefix OUTPREFIX\n          
   \             show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

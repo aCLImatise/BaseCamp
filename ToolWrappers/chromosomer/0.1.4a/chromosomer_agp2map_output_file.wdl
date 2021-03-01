@@ -14,6 +14,9 @@ task ChromosomerAgp2mapOutputFile {
       ~{agp_file} \
       ~{output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chromosome_r: ""
     agp_two_map: ""

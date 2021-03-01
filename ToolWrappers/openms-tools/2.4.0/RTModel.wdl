@@ -52,6 +52,9 @@ task RTModel {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "This is the name of the input file (RT prediction). It is assumed that the file type is idXML. Alternatively you can provide a .txt file having a sequence and the corresponding rt per line.\\n(valid formats: 'idXML', 'txt')"
     in_positive: "Input file with positive examples (peptide separation prediction)\\n(valid formats: 'idXML')"

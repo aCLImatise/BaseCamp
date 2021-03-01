@@ -5,111 +5,111 @@ command:
 positional: []
 named:
 - !Flag
-  description: "An ordered list of FASTA/FASTQ files containing\nhead/primary sequences.\
-    \ (default: None)"
+  optional: true
   synonyms:
   - '-1'
+  description: "An ordered list of FASTA/FASTQ files containing\nhead/primary sequences.\
+    \ (default: None)"
   args: !RepeatFlagArg
     name: SEQ_FILES_1
-  optional: true
 - !Flag
-  description: "An ordered list of FASTA/FASTQ files containing\ntail/secondary sequences.\
-    \ (default: None)"
+  optional: true
   synonyms:
   - '-2'
+  description: "An ordered list of FASTA/FASTQ files containing\ntail/secondary sequences.\
+    \ (default: None)"
   args: !RepeatFlagArg
     name: SEQ_FILES_2
-  optional: true
 - !Flag
-  description: "Specify to changes the output directory to the\nlocation specified.\
-    \ The input file directory is used\nif this is not specified. (default: None)"
+  optional: true
   synonyms:
   - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
   args: !SimpleFlagArg
     name: OUT_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outname
   description: "Changes the prefix of the successfully processed\noutput file to the\
     \ string specified. May not be\nspecified with multiple input files. (default:\
     \ None)"
-  synonyms:
-  - --outname
   args: !SimpleFlagArg
     name: OUT_NAME
-  optional: true
 - !Flag
-  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
+  optional: true
   synonyms:
   - --fasta
+  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --delim
   description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
     annotation blocks, field names and values, and values\nwithin a field, respectively.\
     \ (default: ('|', '=',\n','))"
-  synonyms:
-  - --delim
   args: !SimpleFlagArg
     name: DELIMITER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -n
   description: "Maximum number of paired sequences to sample from each\nset of files,\
     \ fields or annotations. The default\nbehavior, without the -f argument, is to\
     \ sample from\nthe complete set of paired sequences in the input\nfiles. (default:\
     \ None)"
-  synonyms:
-  - -n
   args: !RepeatFlagArg
     name: MAX_COUNT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
   description: "The annotation field for sampling criteria. If the -u\nargument is\
     \ not also specified, then sampling will be\nperformed for each unique annotation\
     \ value in the\ndeclared field separately. (default: None)"
-  synonyms:
-  - -f
   args: !SimpleFlagArg
     name: FIELD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -u
   description: "If specified, sampling will be restricted to sequences\nthat contain\
     \ one of the declared annotation values in\nthe specified field. Requires the\
     \ -f argument.\n(default: None)"
-  synonyms:
-  - -u
   args: !RepeatFlagArg
     name: VALUES
-  optional: true
 - !Flag
-  description: "The format of the sequence identifier which defines\nshared coordinate\
-    \ information across paired read\nfiles. (default: presto)\n"
+  optional: true
   synonyms:
   - --coord
+  description: "The format of the sequence identifier which defines\nshared coordinate\
+    \ information across paired read\nfiles. (default: presto)\n"
   args: !ChoiceFlagArg
     choices: !!set
-      solexa:
-      illumina:
       '454':
       sra:
+      illumina:
+      solexa:
       presto:
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: SplitSeq.py samplepair [--version] [-h] -1 SEQ_FILES_1\n      \
   \                        [SEQ_FILES_1 ...] -2 SEQ_FILES_2\n                    \
   \          [SEQ_FILES_2 ...] [--outdir OUT_DIR]\n                              [--outname\
@@ -152,3 +152,4 @@ help_text: "usage: SplitSeq.py samplepair [--version] [-h] -1 SEQ_FILES_1\n     
   \                   files. (default: presto)\n"
 generated_using:
 - --help
+docker_image:

@@ -10,6 +10,9 @@ task Simplifyfasta {
       ~{if (specify_name_input) then "-i" else ""} \
       ~{if (specify_name_output) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specify_name_input: "Specify the name of the input file"
     specify_name_output: "Specify the name for the output file"

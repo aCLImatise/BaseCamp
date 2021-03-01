@@ -36,6 +36,9 @@ task Scmp {
       ~{if defined(distance_max_dist) then ("--distance-maxdist " +  '"' + distance_max_dist + '"') else ""} \
       ~{if defined(enumerate_max_enum) then ("--enumerate-maxenum " +  '"' + enumerate_max_enum + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Input VCF file. Must have exactly two\\nsamples, the first sample will be used\\nas truth, the second one as query. This\\ncan be obtained using bcftools:\\nbcftools merge truth.vcf.gz\\nquery.vcf.gz --force-samples"
     arg_output_file: "[ --output-file ] arg              The output file name (VCF / BCF /\\nVCF.gz)."

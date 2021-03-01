@@ -1,29 +1,29 @@
 class: CommandLineTool
 id: alfred_replication.cwl
 inputs:
-- id: in_arg_min_quality
+- id: in_arg_min_mapping
   doc: '[ --qual ] arg (=1)          min. mapping quality'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
-- id: in_arg_sliding_size
+- id: in_arg_sliding_window
   doc: '[ --window ] arg (=50000)    sliding window size'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -w
 - id: in_arg_window_offset
   doc: '[ --step ] arg (=1000)       window offset (step size)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_arg_reference_fasta
   doc: '[ --reference ] arg          reference fasta file (required)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_arg_pref_output
   doc: '[ --outprefix ] arg (=pref)  output file prefix'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_gone_b_dot_bam
@@ -62,9 +62,10 @@ outputs:
   type: stdout
 - id: out_arg_pref_output
   doc: '[ --outprefix ] arg (=pref)  output file prefix'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_arg_pref_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - alfred

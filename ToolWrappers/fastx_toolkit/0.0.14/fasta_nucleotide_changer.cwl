@@ -3,38 +3,39 @@ id: fasta_nucleotide_changer.cwl
 inputs:
 - id: in_d
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_r
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_i
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_z
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -z
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fasta_nucleotide_changer

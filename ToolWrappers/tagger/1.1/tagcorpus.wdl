@@ -2,17 +2,26 @@ version 1.0
 
 task Tagcorpus {
   input {
-    File? types
     File? documents
+    File? type_pairs
+    File? autodetect
+    String? tokenize_characters
   }
   command <<<
     tagcorpus \
-      ~{if defined(types) then ("--types " +  '"' + types + '"') else ""} \
-      ~{if defined(documents) then ("--documents " +  '"' + documents + '"') else ""}
+      ~{if defined(documents) then ("--documents " +  '"' + documents + '"') else ""} \
+      ~{if defined(type_pairs) then ("--type-pairs " +  '"' + type_pairs + '"') else ""} \
+      ~{if defined(autodetect) then ("--autodetect " +  '"' + autodetect + '"') else ""} \
+      ~{if defined(tokenize_characters) then ("--tokenize-characters " +  '"' + tokenize_characters + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    types: "--entities=filename\\n--names=filename"
-    documents: "Read input from file instead of from STDIN\\n--groups=filename\\n--type-pairs=filename   Types of pairs that are allowed\\n--stopwords=filename\\n--autodetect Turn autodetect on\\n--tokenize-characters Turn single-character tokenization on\\n--document-weight=1.00\\n--paragraph-weight=2.00\\n--sentence-weight=0.20\\n--normalization-factor=0.60\\n--threads=1\\n--out-matches=filename\\n--out-pairs=filename\\n--out-segments=filename\\n"
+    documents: "Read input from file instead of from STDIN"
+    type_pairs: "Types of pairs that are allowed"
+    autodetect: "autodetect on"
+    tokenize_characters: "single-character tokenization on"
   }
   output {
     File out_stdout = stdout()

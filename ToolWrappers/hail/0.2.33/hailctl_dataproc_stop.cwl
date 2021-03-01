@@ -3,12 +3,12 @@ id: hailctl_dataproc_stop.cwl
 inputs:
 - id: in_async
   doc: Do not wait for cluster deletion.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --async
 - id: in_dry_run
   doc: Print gcloud dataproc command, but don't run it.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dry-run
 - id: in_name
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hailctl

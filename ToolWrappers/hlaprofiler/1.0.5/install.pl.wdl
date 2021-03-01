@@ -8,6 +8,9 @@ task Installpl {
     install_pl \
       ~{make}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     make: "make install"
   }

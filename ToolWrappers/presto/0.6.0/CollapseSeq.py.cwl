@@ -16,44 +16,44 @@ inputs:
 - id: in_outdir
   doc: "Specify to changes the output directory to the\nlocation specified. The input\
     \ file directory is used\nif this is not specified. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_out_name
   doc: "Changes the prefix of the successfully processed\noutput file to the string\
     \ specified. May not be\nspecified with multiple input files. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outname
 - id: in_log
   doc: "Specify to write verbose logging to a file. May not be\nspecified with multiple\
     \ input files. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --log
 - id: in_failed
   doc: "If specified create files containing records that fail\nprocessing. (default:\
     \ False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --failed
 - id: in_fast_a
   doc: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fasta
 - id: in_delim
   doc: "DELIMITER DELIMITER\nA list of the three delimiters that separate\nannotation\
     \ blocks, field names and values, and values\nwithin a field, respectively. (default:\
     \ ('|', '=',\n','))"
-  type: string
+  type: string?
   inputBinding:
     prefix: --delim
-- id: in_maximum_number_consider
+- id: in_maximum_number_missing
   doc: "Maximum number of missing nucleotides to consider for\ncollapsing sequences.\
     \ A sequence will be considered\nundetermined if it contains too many missing\n\
     nucleotides. (default: 0)"
-  type: long
+  type: long?
   inputBinding:
     prefix: -n
 - id: in_uf
@@ -74,13 +74,13 @@ inputs:
     \ \"min\", \"max\", \"sum\" perform\nthe corresponding mathematical operation\
     \ on numeric\nannotations. The action \"set\" collapses annotations\ninto a comma\
     \ delimited list of unique values.\n(default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --act
 - id: in_inner
   doc: "If specified, exclude consecutive missing characters\nat either end of the\
     \ sequence. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --inner
 - id: in_keep_miss
@@ -88,19 +88,19 @@ inputs:
     \ by the -n parameter will be\nwritten to the unique sequence output file with\
     \ a\nDUPCOUNT=1 annotation. If not specified, such\nsequences will be written\
     \ to a separate file.\n(default: False)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --keepmiss
 - id: in_max_f
   doc: "Specify the field whose maximum value determines the\nretained sequence; mutually\
     \ exclusive with --minf.\n(default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --maxf
 - id: in_minf
   doc: "Specify the field whose minimum value determines the\nretained sequence; mutually\
     \ exclusive with --minf.\n(default: None)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --minf
 - id: in_collapse_unique
@@ -137,9 +137,10 @@ outputs:
     \ by the -n parameter will be\nwritten to the unique sequence output file with\
     \ a\nDUPCOUNT=1 annotation. If not specified, such\nsequences will be written\
     \ to a separate file.\n(default: False)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_keep_miss)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - CollapseSeq.py

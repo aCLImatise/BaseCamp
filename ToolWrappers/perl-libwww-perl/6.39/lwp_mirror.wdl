@@ -6,22 +6,25 @@ task Lwpmirror {
     String? set_timeout_value
     Boolean? options
     String url
-    File file
+    File var_file
   }
   command <<<
     lwp_mirror \
       ~{url} \
-      ~{file} \
+      ~{var_file} \
       ~{if (print_version_number) then "-v" else ""} \
       ~{if defined(set_timeout_value) then ("-t " +  '"' + set_timeout_value + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_version_number: "print version number of program"
     set_timeout_value: "Set timeout value"
     options: ""
     url: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

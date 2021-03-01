@@ -1,0 +1,307 @@
+&id001 !Command
+command:
+- yacrd
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --coverage
+  description: 'if coverage reach this value region is mark as bad [default: 0]'
+  args: !SimpleFlagArg
+    name: coverage
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "path to input file overlap (.paf|.m4|.mhap) or yacrd report (.yacrd),\
+    \ format is autodetect and compression\ninput is allowed (gz|bzip2|lzma)"
+  args: !SimpleFlagArg
+    name: input
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --not-coverage
+  description: "if the ratio of bad region length on total length is lower than this\
+    \ value, read is marked as NotCovered\n[default: 0.8]"
+  args: !SimpleFlagArg
+    name: not-coverage
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --ondisk
+  description: "yacrd switches to 'ondisk' mode which will reduce memory usage but\
+    \ increase computation time. The value\npassed as a parameter is used as a prefix\
+    \ for the temporary files created by yacrd. Be careful if the prefix\ncontains\
+    \ path separators (`/` for unix or `\\` for windows) this folder will be deleted"
+  args: !SimpleFlagArg
+    name: ondisk
+- !Flag
+  optional: true
+  synonyms:
+  - --ondisk-buffer-size
+  description: "with the default value yacrd in 'ondisk' mode use around 1 GBytes,\
+    \ you can increase to reduce runtime but\nincrease memory usage [default: 64000000]"
+  args: !SimpleFlagArg
+    name: ondisk-buffer-size
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: path output file
+  args: !SimpleFlagArg
+    name: output
+parent:
+subcommands:
+- !Command
+  command:
+  - yacrd
+  - extract
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: path to sequence input (fasta|fastq) compression is autodetect (none|gzip|bzip2|lzma)
+    args: !SimpleFlagArg
+      name: input
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: path to output file, format and compression of input is preserved
+    args: !SimpleFlagArg
+      name: output
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "yacrd-extract \nRecord mark as chimeric or NotCovered is extract\n\n\
+    USAGE:\n    yacrd --input <input> --output <output> extract --input <input> --output\
+    \ <output>\n\nFLAGS:\n    -h, --help       Prints help information\n    -V, --version\
+    \    Prints version information\n\nOPTIONS:\n    -i, --input <input>      path\
+    \ to sequence input (fasta|fastq) compression is autodetect (none|gzip|bzip2|lzma)\n\
+    \    -o, --output <output>    path to output file, format and compression of input\
+    \ is preserved\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/yacrd:0.6.2--hbcae180_1
+- !Command
+  command:
+  - yacrd
+  - split
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: path to sequence input (fasta|fastq) compression is autodetect (none|gzip|bzip2|lzma)
+    args: !SimpleFlagArg
+      name: input
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: path to output file, format and compression of input is preserved
+    args: !SimpleFlagArg
+      name: output
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "yacrd-split \nRecord mark as chimeric or NotCovered is split\n\nUSAGE:\n\
+    \    yacrd --input <input> --output <output> split --input <input> --output <output>\n\
+    \nFLAGS:\n    -h, --help       Prints help information\n    -V, --version    Prints\
+    \ version information\n\nOPTIONS:\n    -i, --input <input>      path to sequence\
+    \ input (fasta|fastq) compression is autodetect (none|gzip|bzip2|lzma)\n    -o,\
+    \ --output <output>    path to output file, format and compression of input is\
+    \ preserved\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/yacrd:0.6.2--hbcae180_1
+- !Command
+  command:
+  - yacrd
+  - filter
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: path to sequence input (fasta|fastq) compression is autodetect (none|gzip|bzip2|lzma)
+    args: !SimpleFlagArg
+      name: input
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: path to output file, format and compression of input is preserved
+    args: !SimpleFlagArg
+      name: output
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "yacrd-filter \nRecord mark as chimeric or NotCovered is filter\n\nUSAGE:\n\
+    \    yacrd --input <input> --output <output> filter --input <input> --output <output>\n\
+    \nFLAGS:\n    -h, --help       Prints help information\n    -V, --version    Prints\
+    \ version information\n\nOPTIONS:\n    -i, --input <input>      path to sequence\
+    \ input (fasta|fastq) compression is autodetect (none|gzip|bzip2|lzma)\n    -o,\
+    \ --output <output>    path to output file, format and compression of input is\
+    \ preserved\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/yacrd:0.6.2--hbcae180_1
+- !Command
+  command:
+  - yacrd
+  - scrubb
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: path to sequence input (fasta|fastq) compression is autodetect (none|gzip|bzip2|lzma)
+    args: !SimpleFlagArg
+      name: input
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: path to output file, format and compression of input is preserved
+    args: !SimpleFlagArg
+      name: output
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "yacrd-scrubb \nAll bad region of read is removed\n\nUSAGE:\n    yacrd\
+    \ --input <input> --output <output> scrubb --input <input> --output <output>\n\
+    \nFLAGS:\n    -h, --help       Prints help information\n    -V, --version    Prints\
+    \ version information\n\nOPTIONS:\n    -i, --input <input>      path to sequence\
+    \ input (fasta|fastq) compression is autodetect (none|gzip|bzip2|lzma)\n    -o,\
+    \ --output <output>    path to output file, format and compression of input is\
+    \ preserved\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/yacrd:0.6.2--hbcae180_1
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "yacrd 0.6.2 Ivysaur\nPierre Marijon <pmarijon@mpi-inf.mpg.de>\n\nYacrd\
+  \ use overlap between reads, to detect 'good' and 'bad' region,\na region with coverage\
+  \ over the threshold is 'good' others are 'bad'.\nIf read has a 'bad' region in\
+  \ middle this reads is mark as 'Chimeric'.\nIf the ratio of 'bad' region length\
+  \ on total read length is larger than threshold this reads is mark as 'Not_covered'.\n\
+  \nYacrd can make some other actions:\n- filter: for sequence or overlap file, record\
+  \ with reads marked as Chimeric or NotCovered isn't written in the output\n- extract:\
+  \ for sequence or overlap file, record contains reads marked as Chimeric or NotCovered\
+  \ is written in the output\n- split: for sequence file bad region in the middle\
+  \ of reads are removed, NotCovered read is removed\n- scrubb: for sequence file\
+  \ all bad region are removed, NotCovered read is removed\n\nUSAGE:\n    yacrd [OPTIONS]\
+  \ --input <input> --output <output> [SUBCOMMAND]\n\nFLAGS:\n    -h, --help     \
+  \  Prints help information\n    -V, --version    Prints version information\n\n\
+  OPTIONS:\n    -c, --coverage <coverage>                        if coverage reach\
+  \ this value region is mark as bad [default: 0]\n    -i, --input <input>\n     \
+  \       path to input file overlap (.paf|.m4|.mhap) or yacrd report (.yacrd), format\
+  \ is autodetect and compression\n            input is allowed (gz|bzip2|lzma)\n\
+  \    -n, --not-coverage <not-coverage>\n            if the ratio of bad region length\
+  \ on total length is lower than this value, read is marked as NotCovered\n     \
+  \       [default: 0.8]\n    -d, --ondisk <ondisk>\n            yacrd switches to\
+  \ 'ondisk' mode which will reduce memory usage but increase computation time. The\
+  \ value\n            passed as a parameter is used as a prefix for the temporary\
+  \ files created by yacrd. Be careful if the prefix\n            contains path separators\
+  \ (`/` for unix or `\\` for windows) this folder will be deleted\n        --ondisk-buffer-size\
+  \ <ondisk-buffer-size>\n            with the default value yacrd in 'ondisk' mode\
+  \ use around 1 GBytes, you can increase to reduce runtime but\n            increase\
+  \ memory usage [default: 64000000]\n    -o, --output <output>                  \
+  \          path output file\n\nSUBCOMMANDS:\n    extract    Record mark as chimeric\
+  \ or NotCovered is extract\n    filter     Record mark as chimeric or NotCovered\
+  \ is filter\n    help       Prints this message or the help of the given subcommand(s)\n\
+  \    scrubb     All bad region of read is removed\n    split      Record mark as\
+  \ chimeric or NotCovered is split\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/yacrd:0.6.2--hbcae180_1

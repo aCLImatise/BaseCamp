@@ -1,0 +1,466 @@
+&id001 !Command
+command:
+- kb
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --list
+  description: Display list of supported single-cell technologies
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - kb
+  - count
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: fastqs
+    description: "FASTQ files. For technology `SMARTSEQ`, all input\nFASTQs are alphabetically\
+      \ sorted by path and paired in\norder, and cell IDs are assigned as incrementing\n\
+      integers starting from zero. A single batch TSV with\ncell ID, read 1, and read\
+      \ 2 as columns can be provided\nto override this behavior."
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --tmp
+    description: Override default temporary directory
+    args: !SimpleFlagArg
+      name: TMP
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-tmp
+    description: Do not delete the tmp directory
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: Print debugging information
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: 'Path to output directory (default: current directory)'
+    args: !SimpleFlagArg
+      name: OUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    description: "Path to file of whitelisted barcodes to correct to. If\nnot provided\
+      \ and bustools supports the technology, a\npre-packaged whitelist is used. Otherwise,\
+      \ or if\n'None', is provided, the bustools whitelist command is\nused. (`kb\
+      \ --list` to view whitelists)"
+    args: !SimpleFlagArg
+      name: WHITELIST
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: 'Number of threads to use (default: 8)'
+    args: !SimpleFlagArg
+      name: THREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: 'Maximum memory used (default: 4G)'
+    args: !SimpleFlagArg
+      name: MEMORY
+  - !Flag
+    optional: true
+    synonyms:
+    - --workflow
+    description: "{standard,lamanno,nucleus,kite,kite:10xFB}\nType of workflow. Use\
+      \ `lamanno` for RNA velocity based\non La Manno et al. 2018 logic. Use `nucleus`\
+      \ for RNA\nvelocity on single-nucleus RNA-seq reads. Use `kite`\nfor feature\
+      \ barcoding. Use `kite:10xFB` for 10x\nGenomics Feature Barcoding technology.\
+      \ (default:\nstandard)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --mm
+    description: Include reads that pseudoalign to multiple genes.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --tcc
+    description: Generate a TCC matrix instead of a gene count matrix.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --filter
+    description: "[{bustools}]\nProduce a filtered gene count matrix (default:\nbustools)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --overwrite
+    description: Overwrite existing output.bus file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --dry-run
+    description: Dry run
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --lamanno
+    description: Deprecated. Use `--workflow lamanno` instead.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --nucleus
+    description: Deprecated. Use `--workflow nucleus` instead.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --loom
+    description: Generate loom file from count matrix
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --h5ad
+    description: Generate h5ad file from count matrix
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cellranger
+    description: Convert count matrices to cellranger-compatible format
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --report
+    description: "Generate a HTML report containing run statistics and\nbasic plots.\
+      \ Using this option may cause kb to use\nmore memory than specified with the\
+      \ `-m` option. It\nmay also cause it to crash due to memory."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: Path to kallisto index/indices, comma-delimited
+    args: !SimpleFlagArg
+      name: INDEX
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: Path to transcript-to-gene mapping
+    args: !SimpleFlagArg
+      name: T2G
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    description: Single-cell technology used (`kb --list` to view)
+    args: !SimpleFlagArg
+      name: TECHNOLOGY
+  - !Flag
+    optional: true
+    synonyms:
+    - -c1
+    description: Path to cDNA transcripts-to-capture
+    args: !SimpleFlagArg
+      name: T2C
+  - !Flag
+    optional: true
+    synonyms:
+    - -c2
+    description: Path to intron transcripts-to-captured
+    args: !SimpleFlagArg
+      name: T2C
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: kb count [-h] [--tmp TMP] [--keep-tmp] [--verbose] -i INDEX -g\
+    \ T2G -x\n                TECHNOLOGY [-o OUT] [-w WHITELIST] [-t THREADS] [-m\
+    \ MEMORY]\n                [--workflow {standard,lamanno,nucleus,kite,kite:10xFB}]\n\
+    \                [--mm | --tcc] [--filter [{bustools}]] [-c1 T2C] [-c2 T2C]\n\
+    \                [--overwrite] [--dry-run] [--lamanno | --nucleus]\n         \
+    \       [--loom | --h5ad] [--cellranger] [--report]\n                fastqs [fastqs\
+    \ ...]\n\nGenerate count matrices from a set of single-cell FASTQ files. Run `kb\
+    \ --list`\nto view single-cell technology information.\n\npositional arguments:\n\
+    \  fastqs                FASTQ files. For technology `SMARTSEQ`, all input\n \
+    \                       FASTQs are alphabetically sorted by path and paired in\n\
+    \                        order, and cell IDs are assigned as incrementing\n  \
+    \                      integers starting from zero. A single batch TSV with\n\
+    \                        cell ID, read 1, and read 2 as columns can be provided\n\
+    \                        to override this behavior.\n\noptional arguments:\n \
+    \ -h, --help            Show this help message and exit\n  --tmp TMP         \
+    \    Override default temporary directory\n  --keep-tmp            Do not delete\
+    \ the tmp directory\n  --verbose             Print debugging information\n  -o\
+    \ OUT                Path to output directory (default: current directory)\n \
+    \ -w WHITELIST          Path to file of whitelisted barcodes to correct to. If\n\
+    \                        not provided and bustools supports the technology, a\n\
+    \                        pre-packaged whitelist is used. Otherwise, or if\n  \
+    \                      'None', is provided, the bustools whitelist command is\n\
+    \                        used. (`kb --list` to view whitelists)\n  -t THREADS\
+    \            Number of threads to use (default: 8)\n  -m MEMORY             Maximum\
+    \ memory used (default: 4G)\n  --workflow {standard,lamanno,nucleus,kite,kite:10xFB}\n\
+    \                        Type of workflow. Use `lamanno` for RNA velocity based\n\
+    \                        on La Manno et al. 2018 logic. Use `nucleus` for RNA\n\
+    \                        velocity on single-nucleus RNA-seq reads. Use `kite`\n\
+    \                        for feature barcoding. Use `kite:10xFB` for 10x\n   \
+    \                     Genomics Feature Barcoding technology. (default:\n     \
+    \                   standard)\n  --mm                  Include reads that pseudoalign\
+    \ to multiple genes.\n  --tcc                 Generate a TCC matrix instead of\
+    \ a gene count matrix.\n  --filter [{bustools}]\n                        Produce\
+    \ a filtered gene count matrix (default:\n                        bustools)\n\
+    \  --overwrite           Overwrite existing output.bus file\n  --dry-run     \
+    \        Dry run\n  --lamanno             Deprecated. Use `--workflow lamanno`\
+    \ instead.\n  --nucleus             Deprecated. Use `--workflow nucleus` instead.\n\
+    \  --loom                Generate loom file from count matrix\n  --h5ad      \
+    \          Generate h5ad file from count matrix\n  --cellranger          Convert\
+    \ count matrices to cellranger-compatible format\n  --report              Generate\
+    \ a HTML report containing run statistics and\n                        basic plots.\
+    \ Using this option may cause kb to use\n                        more memory than\
+    \ specified with the `-m` option. It\n                        may also cause it\
+    \ to crash due to memory.\n\nrequired arguments:\n  -i INDEX              Path\
+    \ to kallisto index/indices, comma-delimited\n  -g T2G                Path to\
+    \ transcript-to-gene mapping\n  -x TECHNOLOGY         Single-cell technology used\
+    \ (`kb --list` to view)\n\nrequired arguments for `lamanno` and `nucleus` workflows:\n\
+    \  -c1 T2C               Path to cDNA transcripts-to-capture\n  -c2 T2C      \
+    \         Path to intron transcripts-to-captured\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/kb-python:0.25.1--py_0
+- !Command
+  command:
+  - kb
+  - ref
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: fasta
+    description: Genomic FASTA file(s), comma-delimited
+  - !Positional
+    optional: false
+    position: 1
+    name: gtf
+    description: Reference GTF file(s), comma-delimited
+  - !Positional
+    optional: false
+    position: 2
+    name: feature
+    description: "[`kite` workflow only] Path to TSV containing barcodes\nand feature\
+      \ names."
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --tmp
+    description: Override default temporary directory
+    args: !SimpleFlagArg
+      name: TMP
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-tmp
+    description: Do not delete the tmp directory
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: Print debugging information
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: "Number of files to split the index into. If this\noption is specified,\
+      \ the FASTA that is normally used\nto create an index is split into `N` approximately-\n\
+      equal parts. Each of these FASTAs are indexed\nseparately. When using this option\
+      \ with `--workflow\nlamanno`, the intron FASTA is split into N-1\napproximately-equal\
+      \ parts and indexed, while the cDNA\nFASTA is not split and indexed."
+    args: !SimpleFlagArg
+      name: N
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: "Download a pre-built kallisto index (along with all\nnecessary files)\
+      \ instead of building it locally"
+    args: !ChoiceFlagArg
+      choices: !!set
+        mouse:
+        linnarsson:
+        human:
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    description: "Use this option to override the k-mer length of the\nindex. Usually,\
+      \ the k-mer length automatically\ncalculated by `kb` provides the best results."
+    args: !SimpleFlagArg
+      name: K
+  - !Flag
+    optional: true
+    synonyms:
+    - --workflow
+    description: "Type of workflow to prepare files for. Use `lamanno`\nfor RNA velocity\
+      \ based on La Manno et al. 2018 logic.\nUse `nucleus` for RNA velocity on single-nucleus\
+      \ RNA-\nseq reads. Use `kite` for feature barcoding. (default:\nstandard)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        standard:
+        nucleus:
+        kite:
+        lamanno:
+  - !Flag
+    optional: true
+    synonyms:
+    - --lamanno
+    description: Deprecated. Use `--workflow lamanno` instead.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --overwrite
+    description: Overwrite existing kallisto index
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "Path to the kallisto index to be constructed. If `-n`\nis also specified,\
+      \ this is the prefix for the n\nindices to construct."
+    args: !SimpleFlagArg
+      name: INDEX
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: Path to transcript-to-gene mapping to be generated
+    args: !SimpleFlagArg
+      name: T2G
+  - !Flag
+    optional: true
+    synonyms:
+    - -f1
+    description: "[Optional with -d] Path to the cDNA FASTA (lamanno,\nnucleus) or\
+      \ mismatch FASTA (kite) to be generated"
+    args: !SimpleFlagArg
+      name: FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - -f2
+    description: Path to the intron FASTA to be generated
+    args: !SimpleFlagArg
+      name: FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - -c1
+    description: Path to generate cDNA transcripts-to-capture
+    args: !SimpleFlagArg
+      name: T2C
+  - !Flag
+    optional: true
+    synonyms:
+    - -c2
+    description: Path to generate intron transcripts-to-capture
+    args: !SimpleFlagArg
+      name: T2C
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: kb ref [-h] [--tmp TMP] [--keep-tmp] [--verbose] -i INDEX -g\
+    \ T2G -f1\n              FASTA [-f2 FASTA] [-c1 T2C] [-c2 T2C] [-n N]\n      \
+    \        [-d {human,mouse,linnarsson}] [-k K]\n              [--workflow {standard,lamanno,nucleus,kite}]\
+    \ [--lamanno]\n              [--overwrite]\n              fasta gtf [feature]\n\
+    \nBuild a kallisto index and transcript-to-gene mapping\n\npositional arguments:\n\
+    \  fasta                 Genomic FASTA file(s), comma-delimited\n  gtf       \
+    \            Reference GTF file(s), comma-delimited\n  feature               [`kite`\
+    \ workflow only] Path to TSV containing barcodes\n                        and\
+    \ feature names.\n\noptional arguments:\n  -h, --help            Show this help\
+    \ message and exit\n  --tmp TMP             Override default temporary directory\n\
+    \  --keep-tmp            Do not delete the tmp directory\n  --verbose        \
+    \     Print debugging information\n  -n N                  Number of files to\
+    \ split the index into. If this\n                        option is specified,\
+    \ the FASTA that is normally used\n                        to create an index\
+    \ is split into `N` approximately-\n                        equal parts. Each\
+    \ of these FASTAs are indexed\n                        separately. When using\
+    \ this option with `--workflow\n                        lamanno`, the intron FASTA\
+    \ is split into N-1\n                        approximately-equal parts and indexed,\
+    \ while the cDNA\n                        FASTA is not split and indexed.\n  -d\
+    \ {human,mouse,linnarsson}\n                        Download a pre-built kallisto\
+    \ index (along with all\n                        necessary files) instead of building\
+    \ it locally\n  -k K                  Use this option to override the k-mer length\
+    \ of the\n                        index. Usually, the k-mer length automatically\n\
+    \                        calculated by `kb` provides the best results.\n  --workflow\
+    \ {standard,lamanno,nucleus,kite}\n                        Type of workflow to\
+    \ prepare files for. Use `lamanno`\n                        for RNA velocity based\
+    \ on La Manno et al. 2018 logic.\n                        Use `nucleus` for RNA\
+    \ velocity on single-nucleus RNA-\n                        seq reads. Use `kite`\
+    \ for feature barcoding. (default:\n                        standard)\n  --lamanno\
+    \             Deprecated. Use `--workflow lamanno` instead.\n  --overwrite   \
+    \        Overwrite existing kallisto index\n\nrequired arguments:\n  -i INDEX\
+    \              Path to the kallisto index to be constructed. If `-n`\n       \
+    \                 is also specified, this is the prefix for the n\n          \
+    \              indices to construct.\n  -g T2G                Path to transcript-to-gene\
+    \ mapping to be generated\n  -f1 FASTA             [Optional with -d] Path to\
+    \ the cDNA FASTA (lamanno,\n                        nucleus) or mismatch FASTA\
+    \ (kite) to be generated\n\nrequired arguments for `lamanno` and `nucleus` workflows:\n\
+    \  -f2 FASTA             Path to the intron FASTA to be generated\n  -c1 T2C \
+    \              Path to generate cDNA transcripts-to-capture\n  -c2 T2C       \
+    \        Path to generate intron transcripts-to-capture\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/kb-python:0.25.1--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: kb [-h] [--list] <CMD> ...\n\nkb_python 0.25.1\n\npositional arguments:\n\
+  \  <CMD>\n    info      Display package and citation information\n    ref      \
+  \ Build a kallisto index and transcript-to-gene mapping\n    count     Generate\
+  \ count matrices from a set of single-cell FASTQ files\n\noptional arguments:\n\
+  \  -h, --help  Show this help message and exit\n  --list      Display list of supported\
+  \ single-cell technologies\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/kb-python:0.25.1--py_0

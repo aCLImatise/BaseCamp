@@ -3,22 +3,22 @@ id: eigenstrat.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_p
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
 - id: in_j
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -j
 - id: in_i
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_must
@@ -45,6 +45,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - eigenstrat

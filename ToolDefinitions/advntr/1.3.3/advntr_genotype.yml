@@ -4,130 +4,143 @@ command:
 - genotype
 positional:
 - !Positional
-  description: -o/--outfile <file>             file to write results. adVNTR writes
-    output to stdout if oufile is not
+  optional: false
   position: 0
   name: Illumina
-  optional: false
+  description: -o/--outfile <file>             file to write results. adVNTR writes
+    output to stdout if oufile is not
 - !Positional
-  description: -of/--outfmt <format>           output format. Allowed values are {text,
-    bed} [text]
+  optional: false
   position: 1
   name: specified.
-  optional: false
+  description: -of/--outfmt <format>           output format. Allowed values are {text,
+    bed} [text]
 named:
 - !Flag
-  description: alignment file in SAM/BAM/CRAM format
+  optional: true
   synonyms:
-  - -a/--alignment_file
+  - -a
+  - --alignment_file
+  description: alignment file in SAM/BAM/CRAM format
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference_filename
   description: "path to a FASTA-formatted reference file for CRAM files. It overrides\n\
     filename specified in header, which is normally used to find the reference"
-  synonyms:
-  - -r/--reference_filename
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
   description: Fasta file containing raw reads
-  synonyms:
-  - -f/--fasta
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pacbio
   description: set this flag if input file contains PacBio reads instead of Illumina
     reads
-  synonyms:
-  - -p/--pacbio
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --nanopore
   description: set this flag if input file contains Nanopore MinION reads instead
     of
-  synonyms:
-  - -n/--nanopore
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -fs
+  - --frameshift
   description: "set this flag to search for frameshifts in VNTR instead of copy number.\n\
     Supported VNTR IDs: [25561, 519759]"
-  synonyms:
-  - -fs/--frameshift
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --expansion
   description: set this flag to determine long expansion from PCR-free data
-  synonyms:
-  - -e/--expansion
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: average sequencing coverage in PCR-free sequencing
+  optional: true
   synonyms:
-  - -c/--coverage
+  - -c
+  - --coverage
+  description: average sequencing coverage in PCR-free sequencing
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
-  description: set this flag if the organism is haploid
+  optional: true
   synonyms:
   - --haploid
+  description: set this flag if the organism is haploid
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -naive
+  - --naive
   description: use naive approach for PacBio reads
-  synonyms:
-  - -naive/--naive
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h/--help
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: working directory for creating temporary files needed for computation
   synonyms:
   - --working_directory
+  description: working directory for creating temporary files needed for computation
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]
+  optional: true
   synonyms:
-  - -m/--models
+  - -m
+  - --models
+  description: VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: number of threads [1]
+  optional: true
   synonyms:
-  - -t/--threads
+  - -t
+  - --threads
+  description: number of threads [1]
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --update
   description: set this flag to iteratively update the model
-  synonyms:
-  - -u/--update
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: comma-separated list of VNTR IDs
+  optional: true
   synonyms:
-  - -vid/--vntr_id
+  - -vid
+  - --vntr_id
+  description: comma-separated list of VNTR IDs
   args: !SimpleFlagArg
     name: text
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "usage: advntr genotype [options]\n\nInput/output options:\n  -a/--alignment_file\
@@ -156,3 +169,4 @@ help_text: "usage: advntr genotype [options]\n\nInput/output options:\n  -a/--al
   \           comma-separated list of VNTR IDs\n"
 generated_using:
 - --help
+docker_image:

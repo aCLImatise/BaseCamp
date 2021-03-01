@@ -8,6 +8,9 @@ task Vcfoverlay {
     vcfoverlay \
       ~{vcf_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file: ""
   }

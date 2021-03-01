@@ -34,6 +34,9 @@ task MapGLpy {
       ~{if (no_prune) then "--no_prune" else ""} \
       ~{if defined(priority) then ("--priority " +  '"' + priority + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_default: "Output file. Default stdout. (default: stdout)"
     threshold: "Mapping threshold i.e., |elem| * threshold <=\\n|mapped_elem|. Default = 0.0 -- equivalent to\\naccepting a single-base overlap. On the other end of\\nthe spectrum, setting this value to 1 is equivalent to\\nonly accepting full-length overlaps. (default: 0.0)"

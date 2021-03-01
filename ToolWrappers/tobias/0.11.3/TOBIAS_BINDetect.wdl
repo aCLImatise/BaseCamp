@@ -18,11 +18,9 @@ task TOBIASBINDetect {
     Int? cores
     Int? split
     Int? verbosity
-    String conditions
   }
   command <<<
     TOBIAS BINDetect \
-      ~{conditions} \
       ~{if (signals) then "--signals" else ""} \
       ~{if defined(peaks) then ("--peaks " +  '"' + peaks + '"') else ""} \
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
@@ -40,6 +38,9 @@ task TOBIASBINDetect {
       ~{if defined(split) then ("--split " +  '"' + split + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     signals: "[<bigwig> [<bigwig> ...]]\\nSignal per condition (.bigwig format)"
     peaks: "Peaks.bed containing open chromatin regions across all"
@@ -57,7 +58,6 @@ task TOBIASBINDetect {
     cores: "Number of cores to use for computation (default: 1)"
     split: "Split of multiprocessing jobs (default: 100)"
     verbosity: "Level of output logging (0: silent, 1: errors/warnings,\\n2: info, 3: stats, 4: debug, 5: spam) (default: 3)\\n"
-    conditions: "--motifs [<motifs> [<motifs> ...]]"
   }
   output {
     File out_stdout = stdout()

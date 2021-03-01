@@ -3,22 +3,22 @@ id: fetchChromSizes.cwl
 inputs:
 - id: in_always_prompt_removing
   doc: Always prompt before removing
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_never_prompt
   doc: Never prompt
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_recurse
   doc: Recurse
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -R
 - id: in_irf
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -irf
 - id: in_rm
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fetchChromSizes

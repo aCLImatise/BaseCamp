@@ -51,7 +51,7 @@ task MakeGnuplotGraphpl {
     Int? y_two_tics_one
     Int? log_scale
     String? additional_commands_gnuplot
-    String? title_graph_title
+    String? title_graph_default
     String? multiplot
     Boolean? grid
     Boolean? grid_x
@@ -123,7 +123,7 @@ task MakeGnuplotGraphpl {
       ~{if defined(y_two_tics_one) then ("-y2tics1 " +  '"' + y_two_tics_one + '"') else ""} \
       ~{if defined(log_scale) then ("-logscale " +  '"' + log_scale + '"') else ""} \
       ~{if defined(additional_commands_gnuplot) then ("-c " +  '"' + additional_commands_gnuplot + '"') else ""} \
-      ~{if defined(title_graph_title) then ("-t " +  '"' + title_graph_title + '"') else ""} \
+      ~{if defined(title_graph_default) then ("-t " +  '"' + title_graph_default + '"') else ""} \
       ~{if defined(multiplot) then ("-multiplot " +  '"' + multiplot + '"') else ""} \
       ~{if (grid) then "-grid" else ""} \
       ~{if (grid_x) then "-gridx" else ""} \
@@ -144,6 +144,9 @@ task MakeGnuplotGraphpl {
       ~{if (no_key) then "-no_key" else ""} \
       ~{if (debug) then "-debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     x_one: ":       Index of the x column (x-axis). NOTE: 1-based. NOTE: use -x2... to specify more indices to plot"
     y_one: ":       Index of the y column (y-axis). NOTE: 1-based. NOTE: use -y2... to specify more indices to plot"
@@ -194,7 +197,7 @@ task MakeGnuplotGraphpl {
     y_two_tics_one: "y2tics for the first plot. NOTE: use -y2tics2... to specify y2tics of more plots"
     log_scale: "Sets the given axis to logscale. axis can be x, y ,x2 ,y2 or any combination (e.g. xyx2)"
     additional_commands_gnuplot: "Additional commands for gnuplot. \\n will be made into newline"
-    title_graph_title: "Title for the graph (default: no title)"
+    title_graph_default: "Title for the graph (default: no title)"
     multiplot: "Use multiplot mode (<str> can be left empty or be given layout and title commands)."
     grid: ":           Sets on grid for the plot"
     grid_x: ":          Sets on grid only for x-axis"

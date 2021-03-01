@@ -20,6 +20,9 @@ task Gsnd {
       ~{if defined(s_device) then ("-sDEVICE " +  '"' + s_device + '"') else ""} \
       ~{if defined(soutputfile) then ("-sOutputFile " +  '"' + soutputfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d_no_pause: "no pause after page   | -q       `quiet', fewer messages"
     widthxheight_page_size: "<width>x<height>  page size in pixels   | -r<res>  pixels/inch resolution"

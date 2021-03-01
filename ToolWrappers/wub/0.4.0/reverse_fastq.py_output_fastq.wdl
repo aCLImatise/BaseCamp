@@ -12,6 +12,9 @@ task ReverseFastqpyOutputFastq {
       ~{input_fast_q} \
       ~{output_fast_q}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reverse_fast_q_do_tpy: ""
     input_fast_q: ""

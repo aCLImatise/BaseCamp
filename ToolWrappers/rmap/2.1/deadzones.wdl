@@ -24,6 +24,9 @@ task Deadzones {
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_output_file: "Name of output file (default: stdout)"
     km_er: "Width of k-mers"

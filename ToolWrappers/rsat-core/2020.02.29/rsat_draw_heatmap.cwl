@@ -1,11 +1,6 @@
 class: CommandLineTool
 id: rsat_draw_heatmap.cwl
 inputs:
-- id: in_out_format
-  doc: '[png|jpeg]'
-  type: boolean
-  inputBinding:
-    prefix: -out_format
 - id: in_draw_heat_map
   doc: "\e[1mVERSION\e[0m"
   type: string
@@ -25,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

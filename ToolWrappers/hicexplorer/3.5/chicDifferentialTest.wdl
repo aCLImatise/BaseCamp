@@ -22,6 +22,9 @@ task ChicDifferentialTest {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(rejected_filenames_to_file) then ("--rejectedFileNamesToFile " +  '"' + rejected_filenames_to_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     interaction_file: "path to the interaction files which should be used for\\nthe differential test."
     alpha: "define a significance level (alpha) for accepting\\nsamples"

@@ -12,7 +12,7 @@ task GmapBuild {
     String? fast_a_pipe
     Boolean? fast_q
     Boolean? rev_comp
-    Int? wait_sleep_seconds
+    Int? sleep_many_seconds
     File? circular
     File? alt_scaffold
     Int? n_messages
@@ -38,7 +38,7 @@ task GmapBuild {
       ~{if defined(fast_a_pipe) then ("--fasta-pipe " +  '"' + fast_a_pipe + '"') else ""} \
       ~{if (fast_q) then "--fastq" else ""} \
       ~{if (rev_comp) then "--revcomp" else ""} \
-      ~{if defined(wait_sleep_seconds) then ("-w " +  '"' + wait_sleep_seconds + '"') else ""} \
+      ~{if defined(sleep_many_seconds) then ("-w " +  '"' + sleep_many_seconds + '"') else ""} \
       ~{if defined(circular) then ("--circular " +  '"' + circular + '"') else ""} \
       ~{if defined(alt_scaffold) then ("--altscaffold " +  '"' + alt_scaffold + '"') else ""} \
       ~{if defined(n_messages) then ("--nmessages " +  '"' + n_messages + '"') else ""} \
@@ -48,6 +48,9 @@ task GmapBuild {
       ~{if defined(transcripts) then ("--transcripts " +  '"' + transcripts + '"') else ""} \
       ~{if defined(n_threads) then ("--nthreads " +  '"' + n_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "Destination directory for installation (defaults to gmapdb\\ndirectory specified at configure time)"
     genome_db: "Genome name (required)"
@@ -59,7 +62,7 @@ task GmapBuild {
     fast_a_pipe: "Interpret argument as a command, instead of a list of FASTA files"
     fast_q: "Files are in FASTQ format"
     rev_comp: "Reverse complement all contigs"
-    wait_sleep_seconds: "Wait (sleep) this many seconds after each step (default 2)"
+    sleep_many_seconds: "Wait (sleep) this many seconds after each step (default 2)"
     circular: "Circular chromosomes (either a list of chromosomes separated\\nby a comma, or a filename containing circular chromosomes,\\none per line).  If you use the --names feature, then you\\nshould use the original name of the chromosome, not the\\nsubstitute name, for this option."
     alt_scaffold: "File with alt scaffold info, listing alternate scaffolds,\\none per line, tab-delimited, with the following fields:\\n(1) alt_scaf_acc, (2) parent_name, (3) orientation,\\n(4) alt_scaf_start, (5) alt_scaf_stop, (6) parent_start, (7) parent_end."
     n_messages: "Maximum number of messages (warnings, contig reports) to report (default 50)"

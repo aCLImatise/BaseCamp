@@ -14,6 +14,9 @@ task EnsembleEnergy {
       ~{if (silent) then "--silent" else ""} \
       ~{if (sequence) then "--sequence" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "This flag only matters if the input file is a sequence file and has been\\nspecified as such. Specify that the sequence is DNA, and DNA parameters are\\nto be used.\\nDefault is to use RNA parameters."
     silent: "Suppress all progress messages except the final ensemble energy result.\\nNote that this does NOT suppress errors."

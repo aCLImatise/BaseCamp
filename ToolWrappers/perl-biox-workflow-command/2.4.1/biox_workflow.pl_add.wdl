@@ -6,7 +6,7 @@ task BioxworkflowplAdd {
     Boolean? plugins
     Boolean? config
     Boolean? search_path
-    Boolean? no_configs
+    String? no_configs
     Boolean? search
     Boolean? rules
     Boolean? supply_a_workflow
@@ -23,19 +23,22 @@ task BioxworkflowplAdd {
       ~{if (plugins) then "--plugins" else ""} \
       ~{if (config) then "--config" else ""} \
       ~{if (search_path) then "--search_path" else ""} \
-      ~{if (no_configs) then "--no_configs" else ""} \
+      ~{if defined(no_configs) then ("--no_configs " +  '"' + no_configs + '"') else ""} \
       ~{if (search) then "--search" else ""} \
       ~{if (rules) then "--rules" else ""} \
       ~{if (supply_a_workflow) then "--workflow" else ""} \
       ~{if (stdout) then "--stdout" else ""} \
       ~{if (outfile) then "--outfile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     plugins_opts: "Options for application plugins [Key-Value]"
     plugins: "Load aplication plugins [Multiple; Split by \\\",\\\"]"
     config: "Override the search paths and supply your own"
     search_path: "Enable a search path for configs. Default is the\\nhome dir and your cwd. [Multiple]"
-    no_configs: "--no_configs tells HPC::Runner not to load any\\nconfigs [Flag]"
+    no_configs: "HPC::Runner not to load any\\nconfigs [Flag]"
     search: "Search for config files in ~/.config.(ext) and in\\nyour current working directory. [Flag]"
     rules: "Add rules [Multiple; Split by \\\",\\\"]"
     supply_a_workflow: "Supply a workflow [Required]"

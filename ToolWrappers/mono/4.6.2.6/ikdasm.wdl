@@ -16,6 +16,9 @@ task Ikdasm {
       ~{if (assembly_ref) then "-assemblyref" else ""} \
       ~{if (module_ref) then "-moduleref" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "Direct output to file rather than stdout"
     assembly: "Dumps the contents of the Assembly table"

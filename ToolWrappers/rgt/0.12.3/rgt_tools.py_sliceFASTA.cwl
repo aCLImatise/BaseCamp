@@ -3,27 +3,27 @@ id: rgt_tools.py_sliceFASTA.cwl
 inputs:
 - id: in_input_fasta_file
   doc: Input FASTA file
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_length_slice_sequence
   doc: Length of the slice sequence
-  type: long
+  type: long?
   inputBinding:
     prefix: -l
 - id: in_output_fasta_file
   doc: Output FASTA file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_the_start_position
   doc: The start position
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_reverse
   doc: Reverse the sequence
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reverse
 outputs:
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_output_fasta_file
   doc: Output FASTA file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_fasta_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rgt-tools.py

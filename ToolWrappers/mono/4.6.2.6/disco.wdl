@@ -28,6 +28,9 @@ task Disco {
       ~{if (proxy_password) then "-proxypassword" else ""} \
       ~{if (proxy_domin) then "-proxydomin" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nologo: "Supress the startup logo"
     no_save: "Do not save the discovered documents to disk.\\nThe default is to save the documents."

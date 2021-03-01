@@ -4,91 +4,100 @@ command:
 - uniq
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: indexed-in.bam
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: '| --vcf-in FILE      Input vcf file listing variants [- = stdin; gzip
-    supported]'
+  optional: true
   synonyms:
   - -v
-  args: !EmptyFlagArg {}
-  optional: true
+  - --vcf-in
+  description: Input vcf file listing variants [- = stdin; gzip supported]
+  args: !SimpleFlagArg
+    name: FILE
 - !Flag
-  description: '| --vcf-out FILE     Output vcf file [- = stdout; gzip supported]'
+  optional: true
   synonyms:
   - -o
-  args: !EmptyFlagArg {}
-  optional: true
+  - --vcf-out
+  description: Output vcf file [- = stdout; gzip supported]
+  args: !SimpleFlagArg
+    name: FILE
 - !Flag
-  description: '| --uni-freq         Assume variants have uniform test frequency of
-    this value (unused if <=0) [-1.000000]'
+  optional: true
   synonyms:
   - -f
+  - --uni-freq
+  description: Assume variants have uniform test frequency of this value (unused if
+    <=0) [-1.000000]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '| --uniq-thresh INT  Minimum uniq phred-value required. Conflicts
-    with -m. 0 for off (default=0)'
+  optional: true
   synonyms:
   - -t
-  args: !EmptyFlagArg {}
-  optional: true
+  - --uniq-thresh
+  description: Minimum uniq phred-value required. Conflicts with -m. 0 for off (default=0)
+  args: !SimpleFlagArg
+    name: INT
 - !Flag
-  description: "| --uniq-mtc STRING  Uniq multiple testing correction type. One of\
-    \ 'bonf', 'holm' or 'fdr'. (default=MTC_FDR)"
+  optional: true
   synonyms:
   - -m
-  args: !EmptyFlagArg {}
-  optional: true
+  - --uniq-mtc
+  description: Uniq multiple testing correction type. One of 'bonf', 'holm' or 'fdr'.
+    (default=MTC_FDR)
+  args: !SimpleFlagArg
+    name: STRING
 - !Flag
-  description: '| --uniq-alpha FLOAT Uniq Multiple testing correction p-value threshold
-    (default=0.001000)'
+  optional: true
   synonyms:
   - -a
-  args: !EmptyFlagArg {}
-  optional: true
+  - --uniq-alpha
+  description: Uniq Multiple testing correction p-value threshold (default=0.001000)
+  args: !SimpleFlagArg
+    name: FLOAT
 - !Flag
-  description: '| --uniq-ntests INT  Uniq multiple testing correction p-value threshold
-    (default=#vars)'
+  optional: true
   synonyms:
   - -n
-  args: !EmptyFlagArg {}
-  optional: true
+  - --uniq-ntests
+  description: Uniq multiple testing correction p-value threshold (default=#vars)
+  args: !SimpleFlagArg
+    name: INT
 - !Flag
-  description: "Report all variants instead of only the ones, marked unique.\nNote,\
-    \ that variants already filtered in input will not be printed."
+  optional: true
   synonyms:
   - --output-all
+  description: "Report all variants instead of only the ones, marked unique.\nNote,\
+    \ that variants already filtered in input will not be printed."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Report variants if they are above implied detection limit\nDefault\
-    \ is to use binomial test to check for frequency differences"
+  optional: true
   synonyms:
   - --use-det-lim
+  description: "Report variants if they are above implied detection limit\nDefault\
+    \ is to use binomial test to check for frequency differences"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Don't ignore anomalous read pairs / orphan reads
+  optional: true
   synonyms:
   - --use-orphan
+  description: Don't ignore anomalous read pairs / orphan reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Be verbose
+  optional: true
   synonyms:
   - --verbose
+  description: Be verbose
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Enable debugging
+  optional: true
   synonyms:
   - --debug
+  description: Enable debugging
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -121,3 +130,4 @@ help_text: "\nlofreq uniq: Checks whether variants predicted in one sample (list
   \     --debug            Enable debugging\n"
 generated_using:
 - --help
+docker_image:

@@ -36,6 +36,9 @@ task Abricate {
       ~{if (min_cov) then "--mincov" else ""} \
       ~{if (summary) then "--summary" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Verbose debug output."
     quiet: "Quiet mode, no stderr output."

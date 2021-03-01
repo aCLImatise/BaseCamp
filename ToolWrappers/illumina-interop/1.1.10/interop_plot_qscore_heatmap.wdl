@@ -30,6 +30,9 @@ task InteropPlotQscoreHeatmap {
       ~{if defined(option_two) then ("--option2 " +  '"' + option_two + '"') else ""} \
       ~{if defined(option_one) then ("--option1 " +  '"' + option_one + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filter_by_lane: "[]: Only the data for the selected lane will be displayed"
     filter_by_channel: "[]: Only the data for the selected channel will be displayed"

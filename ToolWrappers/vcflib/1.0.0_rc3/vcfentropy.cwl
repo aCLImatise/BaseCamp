@@ -3,12 +3,12 @@ id: vcfentropy.cwl
 inputs:
 - id: in_fast_a_reference
   doc: FASTA reference file to use to obtain flanking sequences
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fasta-reference
 - id: in_window_size
   doc: Size of the window over which to calculate entropy
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --window-size
 - id: in_vcf_file
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vcfentropy

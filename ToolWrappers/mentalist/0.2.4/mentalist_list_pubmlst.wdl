@@ -8,6 +8,9 @@ task MentalistListPubmlst {
     mentalist list_pubmlst \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "Only list schemes where the species name starts\\nwith this prefix."
   }

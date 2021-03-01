@@ -18,6 +18,9 @@ task Mhpl8rUniteDad {
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s: ""
     o: ""

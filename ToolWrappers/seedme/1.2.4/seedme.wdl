@@ -28,7 +28,7 @@ task Seedme {
     Boolean? overwrite
     String? post
     String? privacy
-    Boolean? query_collections_optional
+    Boolean? query_your_collections
     String? list
     String? read_timeout
     String? sequence_description
@@ -78,7 +78,7 @@ task Seedme {
       ~{if (overwrite) then "-overwrite" else ""} \
       ~{if defined(post) then ("-post " +  '"' + post + '"') else ""} \
       ~{if defined(privacy) then ("-privacy " +  '"' + privacy + '"') else ""} \
-      ~{if (query_collections_optional) then "-q" else ""} \
+      ~{if (query_your_collections) then "-q" else ""} \
       ~{if defined(list) then ("-list " +  '"' + list + '"') else ""} \
       ~{if defined(read_timeout) then ("-read_timeout " +  '"' + read_timeout + '"') else ""} \
       ~{if defined(sequence_description) then ("-sequence_description " +  '"' + sequence_description + '"') else ""} \
@@ -100,6 +100,9 @@ task Seedme {
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     api_key: "Specify your apikey at SeedMe.org"
     auth_path: "Specify path to authorization file\\n(default file at ~/seedme.txt or ~/.seedme\\nis searched when this option not specified)\\nThis file must contain the following\\n{\\\"username\\\" : \\\"YourUserName\\\", \\\"apikey\\\" : \\\"YourApiKey\\\"}\\nDownload this file from https://www.seedme.org/user"
@@ -127,7 +130,7 @@ task Seedme {
     overwrite: "Overwrite existing files, if any"
     post: "Overide post method\\n(default: requests)"
     privacy: "Specify privacy to access the collection\\n(default: private)"
-    query_collections_optional: "[COLLECTION_ID (required with list args)], -query [COLLECTION_ID (required with list args)]\\nQuery your collections with optional ID\\n(default: Returns a list of ID and Title)"
+    query_your_collections: "[COLLECTION_ID (required with list args)], -query [COLLECTION_ID (required with list args)]\\nQuery your collections with optional ID\\n(default: Returns a list of ID and Title)"
     list: "list content for a collection(default: ticker)Must be used with -query ID option"
     read_timeout: "Read timeout duration in seconds\\n(default: None"
     sequence_description: "Add sequence description"

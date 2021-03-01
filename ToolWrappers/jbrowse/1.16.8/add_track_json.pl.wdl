@@ -10,6 +10,9 @@ task Addtrackjsonpl {
       ~{file_dot} \
       ~{options}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_dot: "For example, if you wanted to add a sequence track to"
     options: "none yet"

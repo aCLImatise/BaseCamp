@@ -4,12 +4,12 @@ inputs:
 - id: in_ignore_missing
   doc: "ignore sequences in the specified order file that are\nmissing in the input\
     \ FASTA file\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ignore_missing
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_fast_a
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bioformats

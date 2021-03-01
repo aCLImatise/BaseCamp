@@ -8,6 +8,9 @@ task MergeCutupClusteringpy {
     merge_cutup_clustering_py \
       ~{cut_up_clustering_result}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cut_up_clustering_result: "Input cutup clustering result."
   }

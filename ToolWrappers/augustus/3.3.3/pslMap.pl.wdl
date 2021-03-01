@@ -16,6 +16,9 @@ task PslMappl {
       ~{filter_unspliced} \
       ~{min_match}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "psl input file, e.g. from an alignment of transcript reads against mRNA sequences"
     psl_input_mrna: "psl input file, e.g. from an alignment of mRNA sequences against a genome\\nThe queries of map must be the targets of in."

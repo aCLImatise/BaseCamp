@@ -26,6 +26,9 @@ task GcloudComputeTargetpools {
       ~{remove_instances} \
       ~{set_backup}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_health_checks: "Add an HTTP health check to a target pool."
     add_instances: "Add instances to a target pool."

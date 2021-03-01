@@ -12,6 +12,9 @@ task Gvcf2coverage {
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n: ""
     d: ""

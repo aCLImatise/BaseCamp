@@ -3,19 +3,19 @@ id: readstats.py.cwl
 inputs:
 - id: in_info
   doc: print citation information
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --info
 - id: in_output
   doc: "output file for statistics; defaults to stdout.\n(default: <_io.TextIOWrapper\
     \ name='<stdout>' mode='w'\nencoding='utf-8'>)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_csv
   doc: "Use the CSV format for the statistics, including\ncolumn headers. (default:\
     \ False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --csv
 - id: in_filenames
@@ -30,9 +30,10 @@ outputs:
 - id: out_output
   doc: "output file for statistics; defaults to stdout.\n(default: <_io.TextIOWrapper\
     \ name='<stdout>' mode='w'\nencoding='utf-8'>)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - readstats.py

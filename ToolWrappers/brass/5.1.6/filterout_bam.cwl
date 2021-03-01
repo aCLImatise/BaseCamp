@@ -1,24 +1,24 @@
 class: CommandLineTool
 id: filterout_bam.cwl
 inputs:
-- id: in_write_bam_compressed
+- id: in_write_output_bam
   doc: Write output BAM compressed [uncompressed]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_select_discard_alignment
   doc: Select and discard alignment records matching FLAGS
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_write_bam_file
   doc: Write output BAM file to FILE rather than standard output
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_select_discard_records_mapping
   doc: Select and discard records with mapping quality less than NUM
-  type: long
+  type: long?
   inputBinding:
     prefix: -q
 - id: in_original_mapping_quality
@@ -28,7 +28,7 @@ inputs:
     prefix: -Q
 - id: in_select_discard_records_more
   doc: Select and discard records with more than NUM suboptimal hits
-  type: long
+  type: long?
   inputBinding:
     prefix: -s
 - id: in_more_num_original
@@ -38,7 +38,7 @@ inputs:
     prefix: -S
 - id: in_display_file_information
   doc: Display file information and statistics
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
@@ -47,9 +47,10 @@ outputs:
   type: stdout
 - id: out_write_bam_file
   doc: Write output BAM file to FILE rather than standard output
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_write_bam_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - filterout-bam

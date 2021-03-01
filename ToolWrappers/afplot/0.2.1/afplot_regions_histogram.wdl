@@ -24,6 +24,9 @@ task AfplotRegionsHistogram {
       ~{if defined(color_palette) then ("--color-palette " +  '"' + color_palette + '"') else ""} \
       ~{if (kde_only) then "--kde-only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     margin: "Margin around regions to plot"
     region: "Region string. Must be of format <contig:start-end>"

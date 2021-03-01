@@ -20,6 +20,9 @@ task Snpgeniepl {
       ~{if (workdir) then "--workdir" else ""} \
       ~{if (outdir) then "--outdir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_file: ": FASTA file containing exactly one (1) reference sequence.\\nAll positions in the SNP report must correspond to one position in this\\nsequence. DEFAULT: .fa/.fasta file in the working directory."
     gtf_file: ": tab-delimited Gene Transfer Format file containing non-redundant\\nrecords for all \\\"CDS\\\" elements (i.e., open reading frames, or ORFs)\\npresent in the SNP report(s). DEFAULT: .gtf file in the working directory."

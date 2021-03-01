@@ -3,42 +3,42 @@ id: samtools_0.1.18_calmd.cwl
 inputs:
 - id: in_change_identical_bases
   doc: change identical bases to '='
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -e
 - id: in_uncompressed_bam_output
   doc: uncompressed BAM output (for piping)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -u
 - id: in_compressed_bam_output
   doc: compressed BAM output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -b
 - id: in_input_sam_header
   doc: the input is SAM with header
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -S
 - id: in_modify_quality_string
   doc: modify the quality string
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -A
 - id: in_compute_bq_tag
   doc: compute the BQ tag (without -A) or cap baseQ by BAQ (with -A)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_extended_baq_better
   doc: extended BAQ for better sensitivity but lower specificity
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -E
 - id: in_eu_brs
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -eubrS
 - id: in_sam_tools
@@ -65,6 +65,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - samtools_0.1.18

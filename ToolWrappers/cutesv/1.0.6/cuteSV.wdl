@@ -60,6 +60,9 @@ task CuteSV {
       ~{if defined(max_cluster_bias_tra) then ("--max_cluster_bias_TRA " +  '"' + max_cluster_bias_tra + '"') else ""} \
       ~{if defined(diff_ratio_filtering_tra) then ("--diff_ratio_filtering_TRA " +  '"' + diff_ratio_filtering_tra + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads to use.[16]"
     batches: "Batch of genome segmentation interval.[10000000]"

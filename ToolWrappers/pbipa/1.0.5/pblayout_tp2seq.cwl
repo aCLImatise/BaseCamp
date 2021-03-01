@@ -3,33 +3,33 @@ id: pblayout_tp2seq.cwl
 inputs:
 - id: in_use_seq_ids
   doc: "The input tiling path contains sequence IDs instead\nof read names."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use-seq-ids
 - id: in_use_hpc
   doc: "Assumes that the input tiling paths were constructed\nin the homopolymer-compressed\
     \ space, and expands the\nsequences during sequence construction."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use-hpc
 - id: in_realign
   doc: Realigns the tiling path edges to improve tiling
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --realign
 - id: in_num_threads
   doc: INT   Number of threads to use, 0 means autodetection. [0]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --num-threads
 - id: in_log_level
   doc: "STR   Set log level. Valid choices: (TRACE, DEBUG, INFO,\nWARN, FATAL). [WARN]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --log-level
 - id: in_log_file
   doc: FILE  Log to a file, instead of stderr.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --log-file
 - id: in_in_reads_fn
@@ -56,6 +56,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pblayout

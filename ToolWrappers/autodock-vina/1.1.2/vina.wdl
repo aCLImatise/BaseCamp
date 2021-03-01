@@ -42,6 +42,9 @@ task Vina {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if (help_advanced) then "--help_advanced" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     receptor: "rigid part of the receptor (PDBQT)"
     flex: "flexible side chains, if any (PDBQT)"

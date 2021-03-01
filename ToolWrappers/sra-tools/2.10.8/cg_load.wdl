@@ -56,6 +56,9 @@ task Cgload {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     map_input_directory: "MAP input directory path containing files"
     output_database_path: "output database path"

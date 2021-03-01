@@ -14,6 +14,9 @@ task ScpredPreprocessDataR {
       ~{if defined(output_matrix_object) then ("--output-matrix-object " +  '"' + output_matrix_object + '"') else ""} \
       ~{if defined(output_labels) then ("--output-labels " +  '"' + output_labels + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sce_object: "Path to the input SCE object in .rds format"
     normalised_counts_slot: "Name of the slot with normalised counts matrix in SCE object. Default: normcounts"

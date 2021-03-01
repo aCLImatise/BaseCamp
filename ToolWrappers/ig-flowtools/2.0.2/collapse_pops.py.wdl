@@ -16,6 +16,9 @@ task CollapsePopspy {
       ~{if defined(name_output_file) then ("-o " +  '"' + name_output_file + '"') else ""} \
       ~{if defined(what_collapse_populations) then ("-c " +  '"' + what_collapse_populations + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_location_text: "File location for the text file."
     list_populations_collapse: "List of populations to collapse."

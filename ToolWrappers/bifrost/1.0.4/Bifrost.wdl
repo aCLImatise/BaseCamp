@@ -26,7 +26,7 @@ task Bifrost {
     Boolean? in_exact
     String build_compacted_graph
     String update_compacted_graph
-    String query_compacted_possible
+    String query_compacted_graph
     String var_25
     String var_26
     String var_27
@@ -35,7 +35,7 @@ task Bifrost {
     Bifrost \
       ~{build_compacted_graph} \
       ~{update_compacted_graph} \
-      ~{query_compacted_possible} \
+      ~{query_compacted_graph} \
       ~{var_25} \
       ~{var_26} \
       ~{var_27} \
@@ -62,6 +62,9 @@ task Bifrost {
       ~{if (ratio_km_ers) then "--ratio-kmers" else ""} \
       ~{if (in_exact) then "--inexact" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_seq_file: "Input sequence file (FASTA/FASTQ possibly gzipped)\\nMultiple files can be provided as a list in a TXT file (one file per line)\\nK-mers with exactly 1 occurrence in the input sequence files will be discarded"
     input_ref_file: "Input reference file (FASTA/FASTQ possibly gzipped and GFA)\\nMultiple files can be provided as a list in a TXT file (one file per line)\\nAll k-mers of the input reference files are used"
@@ -87,7 +90,7 @@ task Bifrost {
     in_exact: "Graph is searched with exact and inexact k-mers (1 substitution or indel) from queries"
     build_compacted_graph: "Build a compacted de Bruijn graph, with or without colors"
     update_compacted_graph: "Update a compacted (possible colored) de Bruijn graph with new sequences"
-    query_compacted_possible: "Query a compacted (possible colored) de Bruijn graph"
+    query_compacted_graph: "Query a compacted (possible colored) de Bruijn graph"
     var_25: "> Mandatory with required argument:"
     var_26: "> Mandatory with required argument:"
     var_27: "> Mandatory with required argument:"

@@ -40,6 +40,9 @@ task Fast5Subset {
       ~{if (recursive) then "--recursive" else ""} \
       ~{if defined(file_list) then ("--file_list " +  '"' + file_list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_fast_file: "Path to Fast5 file or directory of Fast5 files"
     save_path: "Folder to output MultiRead subset to"

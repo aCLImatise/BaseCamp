@@ -32,6 +32,9 @@ task HtsboxPeovlp {
       ~{if (output_paired_reads) then "-P" else ""} \
       ~{if (tabular_output_debugging) then "-d" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     barcode_file_overriding: "barcode file (overriding -B) []"
     barcode_length: "barcode length [0,0]"

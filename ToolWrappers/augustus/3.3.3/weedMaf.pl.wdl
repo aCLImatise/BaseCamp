@@ -8,6 +8,9 @@ task WeedMafpl {
     weedMaf_pl \
       ~{format}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "SYNOPSIS"
   }

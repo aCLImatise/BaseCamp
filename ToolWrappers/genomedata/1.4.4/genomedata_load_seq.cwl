@@ -3,7 +3,7 @@ id: genomedata_load_seq.cwl
 inputs:
 - id: in_assembly
   doc: SEQFILE contains assembly (AGP) files instead of
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --assembly
 - id: in_file_mode
@@ -11,7 +11,7 @@ inputs:
     \ with a separate h5 group\nfor each Chromosome. This is recommended if there\
     \ are\na large number of Chromosomes. The default behavior is\nto use a single\
     \ file if there are at least 100\nChromosomes being added."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --file-mode
 - id: in_directory_mode
@@ -19,17 +19,17 @@ inputs:
     \ with a separate file for\neach Chromosome. This is recommended if there are\
     \ a\nsmall number of Chromosomes. The default behavior is\nto use a directory\
     \ if there are fewer than 100\nChromosomes being added."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --directory-mode
 - id: in_verbose
   doc: Print status updates and diagnostic messages
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_s
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_gd_archive
@@ -51,6 +51,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - genomedata-load-seq

@@ -26,6 +26,9 @@ task Fuextract {
       ~{if (column) then "--column" else ""} \
       ~{if (s) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pattern: "STRING"
     min_len: "INT"

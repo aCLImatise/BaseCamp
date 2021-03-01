@@ -20,6 +20,9 @@ task Albatradisscatterplot {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     control: "control files (use 2 or more) (default: None)"
     condition: "condition files (use 2 or more) (default: None)"

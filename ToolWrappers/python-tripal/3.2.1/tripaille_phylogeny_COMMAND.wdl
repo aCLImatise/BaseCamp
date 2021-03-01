@@ -8,6 +8,9 @@ task TripaillePhylogenyCOMMAND {
     tripaille phylogeny COMMAND \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     args: ""
   }

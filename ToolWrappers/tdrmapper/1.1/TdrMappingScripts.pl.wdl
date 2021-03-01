@@ -8,6 +8,9 @@ task TdrMappingScriptspl {
     TdrMappingScripts_pl \
       ~{reference_trna_dot_fa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_trna_dot_fa: ""
   }

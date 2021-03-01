@@ -8,12 +8,12 @@ inputs:
     \ monomer rates, B with\n|  A  C  |  the dimer rates, C with the monomer-dimer\n\
     |        |  (dimerization) rates, and D with the dimer-monomer\n|  D  B  |  (dissociation)\
     \ rates.\n`-      -´"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -A
-- id: in_allow_matrix_check
+- id: in_allow_check_are
   doc: ':     Allow disconnected matrix / do not check whether A and B are'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_connected_dot
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kinSimRibo_mergeRateMats

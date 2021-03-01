@@ -20,6 +20,9 @@ task DeepacstrainExplainFa2transfac {
       ~{if (weighting) then "--weighting" else ""} \
       ~{if defined(weight_dir) then ("--weight_dir " +  '"' + weight_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dir: "Directory containing motifs per filter (.fasta)"
     out_dir: "Output directory"

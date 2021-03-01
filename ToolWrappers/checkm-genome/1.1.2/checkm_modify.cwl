@@ -3,22 +3,22 @@ id: checkm_modify.cwl
 inputs:
 - id: in_add
   doc: ID of sequence to add to bin (may specify multiple times)
-  type: string
+  type: string?
   inputBinding:
     prefix: --add
 - id: in_remove
   doc: ID of sequence to remove from bin (may specify multiple times)
-  type: string
+  type: string?
   inputBinding:
     prefix: --remove
 - id: in_outlier_file
   doc: remove all sequences marked as outliers in the bin (see outlier command)
-  type: File
+  type: File?
   inputBinding:
     prefix: --outlier_file
 - id: in_quiet
   doc: suppress console output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_seq_file
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - checkm

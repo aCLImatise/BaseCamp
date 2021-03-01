@@ -20,6 +20,9 @@ task MsstitchStorequant {
       ~{if defined(mz_to_l) then ("--mztol " +  '"' + mz_to_l + '"') else ""} \
       ~{if defined(mz_to_ltype) then ("--mztoltype " +  '"' + mz_to_ltype + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dbfile: "Database lookup file"
     spectra: "Spectra files in mzML format. Multiple files can be\\nspecified, if order is important, e.g. when matching\\nthem with quant data, the order will be their input\\norder at the command line."

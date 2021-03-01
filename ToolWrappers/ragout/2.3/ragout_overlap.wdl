@@ -20,6 +20,9 @@ task Ragoutoverlap {
       ~{if (hist) then "--hist" else ""} \
       ~{if (detect_km_er) then "--detect-kmer" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hist: ""
     detect_km_er: ""

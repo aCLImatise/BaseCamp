@@ -15,17 +15,17 @@ inputs:
     prefix: --samples
 - id: in_freq
   doc: "Output file 1, taxon matrix with normalized\nfrequencies [default: taxa_freq_norm.tsv]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --freq
 - id: in_counts
   doc: "Output file 2, taxon matrix with counts [default:\ntaxa_counts.tsv]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --counts
 - id: in_plot
   doc: "Output file 3, stacked barplot of total count\nnormalized taxa [default: taxa_freq_norm.svg]\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --plot
 outputs:
@@ -34,19 +34,20 @@ outputs:
   type: stdout
 - id: out_freq
   doc: "Output file 1, taxon matrix with normalized\nfrequencies [default: taxa_freq_norm.tsv]"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_freq)
 - id: out_counts
   doc: "Output file 2, taxon matrix with counts [default:\ntaxa_counts.tsv]"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_counts)
 - id: out_plot
   doc: "Output file 3, stacked barplot of total count\nnormalized taxa [default: taxa_freq_norm.svg]\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_plot)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - taxmapper

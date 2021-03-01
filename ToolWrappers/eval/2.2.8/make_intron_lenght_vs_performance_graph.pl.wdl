@@ -2,7 +2,7 @@ version 1.0
 
 task MakeIntronLenghtVsPerformanceGraphpl {
   input {
-    Int? sets_minimum_start
+    Int? sets_minimum_bin
     Int? sets_maximum_end
     Int? sets_size_used
     Int? sets_number_used
@@ -14,7 +14,7 @@ task MakeIntronLenghtVsPerformanceGraphpl {
   }
   command <<<
     make_intron_lenght_vs_performance_graph_pl \
-      ~{if defined(sets_minimum_start) then ("-m " +  '"' + sets_minimum_start + '"') else ""} \
+      ~{if defined(sets_minimum_bin) then ("-m " +  '"' + sets_minimum_bin + '"') else ""} \
       ~{if defined(sets_maximum_end) then ("-x " +  '"' + sets_maximum_end + '"') else ""} \
       ~{if defined(sets_size_used) then ("-b " +  '"' + sets_size_used + '"') else ""} \
       ~{if defined(sets_number_used) then ("-B " +  '"' + sets_number_used + '"') else ""} \
@@ -24,8 +24,11 @@ task MakeIntronLenghtVsPerformanceGraphpl {
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    sets_minimum_start: ": Sets the minimum bin start [default: min intron length];"
+    sets_minimum_bin: ": Sets the minimum bin start [default: min intron length];"
     sets_maximum_end: ": Sets the maximum bin end [default: max intron length];"
     sets_size_used: ": Sets the bin size [default: 1/10 length range]\\nCannot be used with -B"
     sets_number_used: ": Sets the number of bins [default: 10]\\nCannot be used with -b"

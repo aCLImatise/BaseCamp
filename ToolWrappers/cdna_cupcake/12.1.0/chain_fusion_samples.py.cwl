@@ -3,7 +3,7 @@ id: chain_fusion_samples.py.cwl
 inputs:
 - id: in_fuzzy_junction
   doc: "Max allowed distance in junction to be considered\nidentical (default: 5 bp)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --fuzzy_junction
 - id: in_config_file
@@ -16,6 +16,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - chain_fusion_samples.py

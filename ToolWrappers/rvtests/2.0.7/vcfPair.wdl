@@ -4,6 +4,9 @@ task VcfPair {
   command <<<
     vcfPair
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

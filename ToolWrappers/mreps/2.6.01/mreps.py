@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Boolean, Int, File
+
+Mreps_V0_1_0 = CommandToolBuilder(tool="mreps", base_command=["mreps"], inputs=[ToolInput(tag="in_specifies_sequence_command", input_type=String(optional=True), prefix="-s", doc=InputDocumentation(doc=": specifies the sequence in command line")), ToolInput(tag="in_fast_a", input_type=Boolean(optional=True), prefix="-fasta", doc=InputDocumentation(doc=": allows DNA sequences in FASTA format")), ToolInput(tag="in_res", input_type=String(optional=True), prefix="-res", doc=InputDocumentation(doc=": 'resolution' (error level)")), ToolInput(tag="in_from", input_type=String(optional=True), prefix="-from", doc=InputDocumentation(doc=": starting position n")), ToolInput(tag="in_to", input_type=String(optional=True), prefix="-to", doc=InputDocumentation(doc=": end position n")), ToolInput(tag="in_minsize", input_type=Int(optional=True), prefix="-minsize", doc=InputDocumentation(doc=": repeats whose size is at least n")), ToolInput(tag="in_maxsize", input_type=Int(optional=True), prefix="-maxsize", doc=InputDocumentation(doc=": repeats whose size is at most n")), ToolInput(tag="in_min_period", input_type=String(optional=True), prefix="-minperiod", doc=InputDocumentation(doc=": repeats whose period is at least n")), ToolInput(tag="in_max_period", input_type=String(optional=True), prefix="-maxperiod", doc=InputDocumentation(doc=": repeats whose period is at most n")), ToolInput(tag="in_exp", input_type=String(optional=True), prefix="-exp", doc=InputDocumentation(doc=": repeats whose exponent is at least x")), ToolInput(tag="in_allow_small", input_type=Boolean(optional=True), prefix="-allowsmall", doc=InputDocumentation(doc=": output small repeats that can occur randomly")), ToolInput(tag="in_win", input_type=Int(optional=True), prefix="-win", doc=InputDocumentation(doc=": process by sliding windows of size 2*n overlaping by n")), ToolInput(tag="in_version", input_type=Boolean(optional=True), prefix="-version", doc=InputDocumentation(doc=": show version")), ToolInput(tag="in_xml_output", input_type=File(optional=True), prefix="-xmloutput", doc=InputDocumentation(doc=": outputs to <file> in xml format")), ToolInput(tag="in_no_print", input_type=Boolean(optional=True), prefix="-noprint", doc=InputDocumentation(doc=": if specified, the repetition sequences will not be output")), ToolInput(tag="in_options", input_type=String(optional=True), position=0, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Mreps_V0_1_0().translate("wdl", allow_empty_container=True)
+

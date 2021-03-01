@@ -12,14 +12,14 @@ subcommands:
   positional: []
   named:
   - !Flag
+    optional: true
+    synonyms:
+    - -a
     description: ": the maximum depth is expressed in number of ancestors, not distance.\n\
       Nodes are not shortened, but no node is retained that has more\nancestors than\
       \ the maximum."
-    synonyms:
-    - -a
     args: !EmptyFlagArg {}
-    optional: true
-  parent: &id009 !Command
+  parent: &id010 !Command
     command: *id001
     positional: []
     named: []
@@ -30,14 +30,14 @@ subcommands:
       positional: []
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - -a
         description: ": the maximum depth is expressed in number of ancestors, not\
           \ distance.\nNodes are not shortened, but no node is retained that has more\n\
           ancestors than the maximum."
-        synonyms:
-        - -a
         args: !EmptyFlagArg {}
-        optional: true
-      parent: &id008 !Command
+      parent: &id009 !Command
         command: *id001
         positional: []
         named: []
@@ -48,14 +48,14 @@ subcommands:
           positional: []
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - -a
             description: ": the maximum depth is expressed in number of ancestors,\
               \ not distance.\nNodes are not shortened, but no node is retained that\
               \ has more\nancestors than the maximum."
-            synonyms:
-            - -a
             args: !EmptyFlagArg {}
-            optional: true
-          parent: &id007 !Command
+          parent: &id008 !Command
             command: *id001
             positional: []
             named: []
@@ -66,23 +66,17 @@ subcommands:
               positional: []
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - -a
                 description: ": the maximum depth is expressed in number of ancestors,\
                   \ not distance.\nNodes are not shortened, but no node is retained\
                   \ that has more\nancestors than the maximum."
-                synonyms:
-                - -a
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: &id007 !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -ah
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
@@ -90,68 +84,137 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - -a
                     description: ": the maximum depth is expressed in number of ancestors,\
                       \ not distance.\nNodes are not shortened, but no node is retained\
                       \ that has more\nancestors than the maximum."
-                    synonyms:
-                    - -a
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -ah
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -a
+                        description: ": the maximum depth is expressed in number of\
+                          \ ancestors, not distance.\nNodes are not shortened, but\
+                          \ no node is retained that has more\nancestors than the\
+                          \ maximum."
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ': print this message and exit'
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Trims a tree in various ways.\n\nSynopsis\n--------\n\
+                        \nnw_trim [-ah] <newick trees filename|-> <maximum depth>\n\
+                        \nor\nnw_trim [-h] <newick trees filename|->\n\nInput\n-----\n\
+                        \nTwo-argument form:\nThe first argument is the name of a\
+                        \ file that contains Newick trees, or '-'\n(in which case\
+                        \ trees are read from standard input). The second argument\
+                        \ is\nthe maximum depth: nodes deeper than this will be trimmed.\n\
+                        \nOne-argument form:\nThe argument is the name of the trees\
+                        \ file, or '-' for standard input. The \nprogram trims the\
+                        \ tree's root.\n\nOutput\n------\n\nA tree whose depth is\
+                        \ at most the maximum depth (second argument).\nEffectively,\
+                        \ it is like cutting the tree at that value: nodes that are\
+                        \ too\ndeep get trimmed, and internal nodes also lose their\
+                        \ children.\n\nOptions\n-------\n\n    -a: the maximum depth\
+                        \ is expressed in number of ancestors, not distance.\n   \
+                        \     Nodes are not shortened, but no node is retained that\
+                        \ has more\n        ancestors than the maximum.\n    -h: print\
+                        \ this message and exit\n\nExamples\n--------\n\n# Cut tree\
+                        \ at depth 20\n$ nw_trim data/catarrhini 20\n\n# Discard nodes\
+                        \ with more than 3 ancestors\n$ nw_trim -a data/catarrhini\
+                        \ 3\n"
+                      generated_using: &id004
+                      - -h
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - nw_trim
+                      - filename|-
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -a
+                        description: ": the maximum depth is expressed in number of\
+                          \ ancestors, not distance.\nNodes are not shortened, but\
+                          \ no node is retained that has more\nancestors than the\
+                          \ maximum."
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ': print this message and exit'
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Trims a tree in various ways.\n\nSynopsis\n--------\n\
+                        \nnw_trim [-ah] <newick trees filename|-> <maximum depth>\n\
+                        \nor\nnw_trim [-h] <newick trees filename|->\n\nInput\n-----\n\
+                        \nTwo-argument form:\nThe first argument is the name of a\
+                        \ file that contains Newick trees, or '-'\n(in which case\
+                        \ trees are read from standard input). The second argument\
+                        \ is\nthe maximum depth: nodes deeper than this will be trimmed.\n\
+                        \nOne-argument form:\nThe argument is the name of the trees\
+                        \ file, or '-' for standard input. The \nprogram trims the\
+                        \ tree's root.\n\nOutput\n------\n\nA tree whose depth is\
+                        \ at most the maximum depth (second argument).\nEffectively,\
+                        \ it is like cutting the tree at that value: nodes that are\
+                        \ too\ndeep get trimmed, and internal nodes also lose their\
+                        \ children.\n\nOptions\n-------\n\n    -a: the maximum depth\
+                        \ is expressed in number of ancestors, not distance.\n   \
+                        \     Nodes are not shortened, but no node is retained that\
+                        \ has more\n        ancestors than the maximum.\n    -h: print\
+                        \ this message and exit\n\nExamples\n--------\n\n# Cut tree\
+                        \ at depth 20\n$ nw_trim data/catarrhini 20\n\n# Discard nodes\
+                        \ with more than 3 ancestors\n$ nw_trim -a data/catarrhini\
+                        \ 3\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: nw_trim [-ah] <filename|-> [depth]\n"
+                    generated_using: &id006 []
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ': print this message and exit'
+                    optional: true
                     synonyms:
                     - -h
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  usage_flag:
-                  version_flag:
-                  help_text: "Trims a tree in various ways.\n\nSynopsis\n--------\n\
-                    \nnw_trim [-ah] <newick trees filename|-> <maximum depth>\n\n\
-                    or\nnw_trim [-h] <newick trees filename|->\n\nInput\n-----\n\n\
-                    Two-argument form:\nThe first argument is the name of a file that\
-                    \ contains Newick trees, or '-'\n(in which case trees are read\
-                    \ from standard input). The second argument is\nthe maximum depth:\
-                    \ nodes deeper than this will be trimmed.\n\nOne-argument form:\n\
-                    The argument is the name of the trees file, or '-' for standard\
-                    \ input. The \nprogram trims the tree's root.\n\nOutput\n------\n\
-                    \nA tree whose depth is at most the maximum depth (second argument).\n\
-                    Effectively, it is like cutting the tree at that value: nodes\
-                    \ that are too\ndeep get trimmed, and internal nodes also lose\
-                    \ their children.\n\nOptions\n-------\n\n    -a: the maximum depth\
-                    \ is expressed in number of ancestors, not distance.\n       \
-                    \ Nodes are not shortened, but no node is retained that has more\n\
-                    \        ancestors than the maximum.\n    -h: print this message\
-                    \ and exit\n\nExamples\n--------\n\n# Cut tree at depth 20\n$\
-                    \ nw_trim data/catarrhini 20\n\n# Discard nodes with more than\
-                    \ 3 ancestors\n$ nw_trim -a data/catarrhini 3\n"
-                  generated_using: &id004
-                  - -h
-                - !Command
-                  command: &id005
-                  - nw_trim
-                  - filename|-
-                  positional: []
-                  named:
-                  - !Flag
-                    description: ": the maximum depth is expressed in number of ancestors,\
-                      \ not distance.\nNodes are not shortened, but no node is retained\
-                      \ that has more\nancestors than the maximum."
-                    synonyms:
-                    - -a
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
-                  subcommands: []
-                  usage: []
-                  help_flag: !Flag
                     description: ': print this message and exit'
-                    synonyms:
-                    - -h
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Trims a tree in various ways.\n\nSynopsis\n--------\n\
@@ -174,20 +237,66 @@ subcommands:
                     \ nw_trim data/catarrhini 20\n\n# Discard nodes with more than\
                     \ 3 ancestors\n$ nw_trim -a data/catarrhini 3\n"
                   generated_using: *id004
+                  docker_image:
+                - !Command
+                  command: *id005
+                  positional: []
+                  named:
+                  - !Flag
+                    optional: true
+                    synonyms:
+                    - -a
+                    description: ": the maximum depth is expressed in number of ancestors,\
+                      \ not distance.\nNodes are not shortened, but no node is retained\
+                      \ that has more\nancestors than the maximum."
+                    args: !EmptyFlagArg {}
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    optional: true
+                    synonyms:
+                    - -h
+                    description: ': print this message and exit'
+                    args: !EmptyFlagArg {}
+                  usage_flag:
+                  version_flag:
+                  help_text: "Trims a tree in various ways.\n\nSynopsis\n--------\n\
+                    \nnw_trim [-ah] <newick trees filename|-> <maximum depth>\n\n\
+                    or\nnw_trim [-h] <newick trees filename|->\n\nInput\n-----\n\n\
+                    Two-argument form:\nThe first argument is the name of a file that\
+                    \ contains Newick trees, or '-'\n(in which case trees are read\
+                    \ from standard input). The second argument is\nthe maximum depth:\
+                    \ nodes deeper than this will be trimmed.\n\nOne-argument form:\n\
+                    The argument is the name of the trees file, or '-' for standard\
+                    \ input. The \nprogram trims the tree's root.\n\nOutput\n------\n\
+                    \nA tree whose depth is at most the maximum depth (second argument).\n\
+                    Effectively, it is like cutting the tree at that value: nodes\
+                    \ that are too\ndeep get trimmed, and internal nodes also lose\
+                    \ their children.\n\nOptions\n-------\n\n    -a: the maximum depth\
+                    \ is expressed in number of ancestors, not distance.\n       \
+                    \ Nodes are not shortened, but no node is retained that has more\n\
+                    \        ancestors than the maximum.\n    -h: print this message\
+                    \ and exit\n\nExamples\n--------\n\n# Cut tree at depth 20\n$\
+                    \ nw_trim data/catarrhini 20\n\n# Discard nodes with more than\
+                    \ 3 ancestors\n$ nw_trim -a data/catarrhini 3\n"
+                  generated_using: *id004
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "Usage: nw_trim [-ah] <filename|-> [depth]\n"
-                generated_using: &id006 []
+                generated_using: *id006
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ': print this message and exit'
+                optional: true
                 synonyms:
                 - -h
+                description: ': print this message and exit'
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Trims a tree in various ways.\n\nSynopsis\n--------\n\n\
@@ -209,27 +318,28 @@ subcommands:
                 \ data/catarrhini 20\n\n# Discard nodes with more than 3 ancestors\n\
                 $ nw_trim -a data/catarrhini 3\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional: []
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - -a
                 description: ": the maximum depth is expressed in number of ancestors,\
                   \ not distance.\nNodes are not shortened, but no node is retained\
                   \ that has more\nancestors than the maximum."
-                synonyms:
-                - -a
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id007
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ': print this message and exit'
+                optional: true
                 synonyms:
                 - -h
+                description: ': print this message and exit'
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Trims a tree in various ways.\n\nSynopsis\n--------\n\n\
@@ -251,20 +361,22 @@ subcommands:
                 \ data/catarrhini 20\n\n# Discard nodes with more than 3 ancestors\n\
                 $ nw_trim -a data/catarrhini 3\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
             version_flag:
             help_text: "Usage: nw_trim [-ah] <filename|-> [depth]\n"
             generated_using: *id006
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ': print this message and exit'
+            optional: true
             synonyms:
             - -h
+            description: ': print this message and exit'
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Trims a tree in various ways.\n\nSynopsis\n--------\n\nnw_trim\
@@ -285,27 +397,28 @@ subcommands:
             \ at depth 20\n$ nw_trim data/catarrhini 20\n\n# Discard nodes with more\
             \ than 3 ancestors\n$ nw_trim -a data/catarrhini 3\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional: []
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - -a
             description: ": the maximum depth is expressed in number of ancestors,\
               \ not distance.\nNodes are not shortened, but no node is retained that\
               \ has more\nancestors than the maximum."
-            synonyms:
-            - -a
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id007
+          parent: *id008
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ': print this message and exit'
+            optional: true
             synonyms:
             - -h
+            description: ': print this message and exit'
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Trims a tree in various ways.\n\nSynopsis\n--------\n\nnw_trim\
@@ -326,20 +439,22 @@ subcommands:
             \ at depth 20\n$ nw_trim data/catarrhini 20\n\n# Discard nodes with more\
             \ than 3 ancestors\n$ nw_trim -a data/catarrhini 3\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
         version_flag:
         help_text: "Usage: nw_trim [-ah] <filename|-> [depth]\n"
         generated_using: *id006
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ': print this message and exit'
+        optional: true
         synonyms:
         - -h
+        description: ': print this message and exit'
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Trims a tree in various ways.\n\nSynopsis\n--------\n\nnw_trim [-ah]\
@@ -359,27 +474,28 @@ subcommands:
         \n# Cut tree at depth 20\n$ nw_trim data/catarrhini 20\n\n# Discard nodes\
         \ with more than 3 ancestors\n$ nw_trim -a data/catarrhini 3\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional: []
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - -a
         description: ": the maximum depth is expressed in number of ancestors, not\
           \ distance.\nNodes are not shortened, but no node is retained that has more\n\
           ancestors than the maximum."
-        synonyms:
-        - -a
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ': print this message and exit'
+        optional: true
         synonyms:
         - -h
+        description: ': print this message and exit'
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Trims a tree in various ways.\n\nSynopsis\n--------\n\nnw_trim [-ah]\
@@ -399,20 +515,22 @@ subcommands:
         \n# Cut tree at depth 20\n$ nw_trim data/catarrhini 20\n\n# Discard nodes\
         \ with more than 3 ancestors\n$ nw_trim -a data/catarrhini 3\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
     version_flag:
     help_text: "Usage: nw_trim [-ah] <filename|-> [depth]\n"
     generated_using: *id006
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ': print this message and exit'
+    optional: true
     synonyms:
     - -h
+    description: ': print this message and exit'
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Trims a tree in various ways.\n\nSynopsis\n--------\n\nnw_trim [-ah]\
@@ -432,27 +550,28 @@ subcommands:
     \ 20\n\n# Discard nodes with more than 3 ancestors\n$ nw_trim -a data/catarrhini\
     \ 3\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional: []
   named:
   - !Flag
+    optional: true
+    synonyms:
+    - -a
     description: ": the maximum depth is expressed in number of ancestors, not distance.\n\
       Nodes are not shortened, but no node is retained that has more\nancestors than\
       \ the maximum."
-    synonyms:
-    - -a
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ': print this message and exit'
+    optional: true
     synonyms:
     - -h
+    description: ': print this message and exit'
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Trims a tree in various ways.\n\nSynopsis\n--------\n\nnw_trim [-ah]\
@@ -472,9 +591,11 @@ subcommands:
     \ 20\n\n# Discard nodes with more than 3 ancestors\n$ nw_trim -a data/catarrhini\
     \ 3\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
 version_flag:
 help_text: "Usage: nw_trim [-ah] <filename|-> [depth]\n"
 generated_using: *id006
+docker_image:

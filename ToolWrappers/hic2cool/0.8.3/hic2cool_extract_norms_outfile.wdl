@@ -20,6 +20,9 @@ task Hic2coolExtractnormsOutfile {
       ~{if (s) then "-s" else ""} \
       ~{if (e) then "-e" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     w: ""
     s: ""

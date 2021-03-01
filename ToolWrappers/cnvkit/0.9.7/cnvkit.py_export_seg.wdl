@@ -12,6 +12,9 @@ task CnvkitpyExportSeg {
       ~{if (enumerate_chrom_s) then "--enumerate-chroms" else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     enumerate_chrom_s: "Replace chromosome names with sequential integer IDs."
     output_file_name: "Output file name.\\n"

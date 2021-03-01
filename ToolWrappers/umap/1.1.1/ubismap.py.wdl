@@ -40,6 +40,9 @@ task Ubismappy {
       ~{if (pipe) then "-pipe" else ""} \
       ~{if defined(chunk) then ("-chunk " +  '"' + chunk + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     terse_dot: "these options do not exist in your cluster,"
     km_ers: "[KMERS [KMERS ...]]\\nKmer length for mappability. e.g. 24 36 50 100"

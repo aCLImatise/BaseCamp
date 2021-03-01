@@ -28,6 +28,9 @@ task MimoddVcffilter {
       ~{if (indels_only) then "--indels-only" else ""} \
       ~{if defined(v_filter) then ("--vfilter " +  '"' + v_filter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ofile: "redirect the output to the specified file (default:\\nstdout)"
     samples: "one or more sample names that the sample-specific\\nfilters --gt, --dp, and --gq should work on."

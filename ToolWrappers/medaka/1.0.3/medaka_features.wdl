@@ -36,6 +36,9 @@ task MedakaFeatures {
       ~{if defined(feature_encoder) then ("--feature_encoder " +  '"' + feature_encoder + '"') else ""} \
       ~{if defined(feature_encoder_args) then ("--feature_encoder_args " +  '"' + feature_encoder_args + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Verbose logging of debug information. (default: 20)"
     quiet: "Minimal logging; warnings only). (default: 20)"

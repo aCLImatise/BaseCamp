@@ -10,6 +10,9 @@ task BiomShowinstallinfoFormatorg {
       ~{biom} \
       ~{show_install_info}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     biom: ""
     show_install_info: ""

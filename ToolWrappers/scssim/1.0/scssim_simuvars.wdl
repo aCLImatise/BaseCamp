@@ -14,6 +14,9 @@ task ScssimSimuvars {
       ~{if defined(var) then ("--var " +  '"' + var + '"') else ""} \
       ~{if defined(output_file_save) then ("--output " +  '"' + output_file_save + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "reference file (.fasta)"
     snp: "SNP file containing the SNPs to be simulated [Default:null]"

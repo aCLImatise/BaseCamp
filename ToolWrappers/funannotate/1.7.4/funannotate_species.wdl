@@ -16,6 +16,9 @@ task FunannotateSpecies {
       ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d: ""
     p: ""

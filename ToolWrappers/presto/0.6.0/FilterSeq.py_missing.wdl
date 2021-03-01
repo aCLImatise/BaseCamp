@@ -10,7 +10,7 @@ task FilterSeqpyMissing {
     Boolean? failed
     Boolean? fast_a
     Int? nproc
-    Int? threshold_fraction_gap
+    Int? threshold_fraction_nucleotidesdefault
     Boolean? inner
   }
   command <<<
@@ -23,9 +23,12 @@ task FilterSeqpyMissing {
       ~{if (failed) then "--failed" else ""} \
       ~{if (fast_a) then "--fasta" else ""} \
       ~{if defined(nproc) then ("--nproc " +  '"' + nproc + '"') else ""} \
-      ~{if defined(threshold_fraction_gap) then ("-n " +  '"' + threshold_fraction_gap + '"') else ""} \
+      ~{if defined(threshold_fraction_nucleotidesdefault) then ("-n " +  '"' + threshold_fraction_nucleotidesdefault + '"') else ""} \
       ~{if (inner) then "--inner" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_fastafastq_files: "A list of FASTA/FASTQ files containing sequences to\\nprocess. (default: None)"
     explicit_output_file: "Explicit output file name(s). Note, this argument\\ncannot be used with the --failed, --outdir, or\\n--outname arguments. If unspecified, then the output\\nfilename will be based on the input filename(s).\\n(default: None)"
@@ -35,7 +38,7 @@ task FilterSeqpyMissing {
     failed: "If specified create files containing records that fail\\nprocessing. (default: False)"
     fast_a: "Specify to force output as FASTA rather than FASTQ.\\n(default: None)"
     nproc: "The number of simultaneous computational processes to\\nexecute (CPU cores to utilized). (default: 8)"
-    threshold_fraction_gap: "Threshold for fraction of gap or N nucleotides.\\n(default: 10)"
+    threshold_fraction_nucleotidesdefault: "Threshold for fraction of gap or N nucleotides.\\n(default: 10)"
     inner: "If specified exclude consecutive missing characters at\\neither end of the sequence. (default: False)\\n"
   }
   output {

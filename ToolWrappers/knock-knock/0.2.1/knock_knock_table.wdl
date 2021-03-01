@@ -10,6 +10,9 @@ task KnockknockTable {
       ~{project_directory} \
       ~{if defined(group) then ("--group " +  '"' + group + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     group: "if specified, the single group name to generate tables\\nfor; if not specified, all groups will be generated\\n"
     project_directory: "the base directory to store input data, reference\\nannotations, and analysis output for a project"

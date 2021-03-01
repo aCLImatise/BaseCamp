@@ -14,6 +14,9 @@ task PartitionBank {
       ~{bank_name} \
       ~{if (b) then "-b" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     b: ""
     partition_bank: ""

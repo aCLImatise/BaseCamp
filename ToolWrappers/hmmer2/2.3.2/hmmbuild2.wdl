@@ -3,7 +3,7 @@ version 1.0
 task Hmmbuild2 {
   input {
     String? name_name_hmm
-    String? resave_annotated_alignment
+    String? _annotated_alignment
     Boolean? append_append_hmm
     Boolean? force_allow_overwriting
     Boolean? multihit_local_hmmfs
@@ -45,7 +45,7 @@ task Hmmbuild2 {
       ~{hmm_file_output} \
       ~{alignment_file} \
       ~{if defined(name_name_hmm) then ("-n " +  '"' + name_name_hmm + '"') else ""} \
-      ~{if defined(resave_annotated_alignment) then ("-o " +  '"' + resave_annotated_alignment + '"') else ""} \
+      ~{if defined(_annotated_alignment) then ("-o " +  '"' + _annotated_alignment + '"') else ""} \
       ~{if (append_append_hmm) then "-A" else ""} \
       ~{if (force_allow_overwriting) then "-F" else ""} \
       ~{if (multihit_local_hmmfs) then "-f" else ""} \
@@ -78,9 +78,12 @@ task Hmmbuild2 {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_name_hmm: ": name; name this (first) HMM <s>"
-    resave_annotated_alignment: ": re-save annotated alignment to <f>"
+    _annotated_alignment: ": re-save annotated alignment to <f>"
     append_append_hmm: ": append; append this HMM to <hmmfile>"
     force_allow_overwriting: ": force; allow overwriting of <hmmfile>"
     multihit_local_hmmfs: ": multi-hit local (hmmfs style)"

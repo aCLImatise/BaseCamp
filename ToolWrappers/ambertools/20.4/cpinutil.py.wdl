@@ -40,6 +40,9 @@ task Cpinutilpy {
       ~{if (describe) then "--describe" else ""} \
       ~{if (list) then "--list" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Enable verbose tracebacks to debug this program"
     old_format: "Print output file in a format compatible with Amber 16\\nand older versions"

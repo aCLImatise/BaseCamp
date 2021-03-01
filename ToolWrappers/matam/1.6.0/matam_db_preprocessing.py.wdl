@@ -36,6 +36,9 @@ task MatamDbPreprocessingpy {
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_ref: "Input reference file (fasta format). Silva-formated taxonomies will be used if"
     verbose: "Increase verbosity"

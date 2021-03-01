@@ -32,6 +32,9 @@ task VtoolsReportPlotAssociationManhattanPlain {
       ~{if defined(label_these) then ("--label_these " +  '"' + label_these + '"') else ""} \
       ~{if defined(font_size) then ("--font_size " +  '"' + font_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chrom: "Specify the particular chromosome(s) to display. Can\\nbe one or multiple in this list: \\\"1 2 3 4 5 6 7 8 9 10\\n11 12 13 14 15 16 17 18 19 20 21 22 X Y Un ?:?\\\".\\nSlicing syntax \\\"?:?\\\" is supported. For example \\\"1:22\\\"\\nis equivalent to displaying all autosomes; \\\"1:Y\\\" is\\nequivalent to displaying all mapped chromosomes.\\nDefault set to all including unmapped chromosomes."
     chrom_prefix: "Prefix chromosome ID with a string. Default is set to\\n\\\"chr\\\" (X-axis will be displayed as \\\"chr1\\\", \\\"chr2\\\",\\netc). Use \\\"None\\\" for no prefix."

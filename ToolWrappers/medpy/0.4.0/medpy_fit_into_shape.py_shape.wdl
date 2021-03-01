@@ -20,6 +20,9 @@ task MedpyFitIntoShapepyShape {
       ~{if (d) then "-d" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
     d: ""

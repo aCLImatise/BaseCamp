@@ -3,22 +3,22 @@ id: ffactor.cwl
 inputs:
 - id: in_anc
   doc: boolean    [N] Put ancestral states in output file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -anc
 - id: in_factors
   doc: boolean    [N] Put factors information in output file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -factors
 - id: in_out_factor_file
   doc: "outfile    [*.ffactor] Phylip factor data output file\n(optional)"
-  type: File
+  type: File?
   inputBinding:
     prefix: -outfactorfile
 - id: in_out_an_c_file
   doc: "outfile    [*.ffactor] Phylip ancestor data output file\n(optional)"
-  type: File
+  type: File?
   inputBinding:
     prefix: -outancfile
 - id: in_file
@@ -32,14 +32,15 @@ outputs:
   type: stdout
 - id: out_out_factor_file
   doc: "outfile    [*.ffactor] Phylip factor data output file\n(optional)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_factor_file)
 - id: out_out_an_c_file
   doc: "outfile    [*.ffactor] Phylip ancestor data output file\n(optional)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_an_c_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ffactor

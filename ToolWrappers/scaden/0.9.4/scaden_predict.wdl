@@ -12,6 +12,9 @@ task ScadenPredict {
       ~{if defined(model_dir) then ("--model_dir " +  '"' + model_dir + '"') else ""} \
       ~{if defined(out_name) then ("--outname " +  '"' + out_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     model_dir: "Path to trained model"
     out_name: "Name of predictions file."

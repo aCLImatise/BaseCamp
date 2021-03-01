@@ -22,6 +22,9 @@ task Centrifugecompresspl {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(var_map) then ("-map " +  '"' + var_map + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_dust_masker: ""
     maxg: ""

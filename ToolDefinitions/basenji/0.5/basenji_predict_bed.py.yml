@@ -1,0 +1,122 @@
+!Command
+command:
+- basenji_predict_bed.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: params_file
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: model_file
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: bed_file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: Comma-separated list of target indexes to write BigWigs
+  args: !SimpleFlagArg
+    name: BIGWIG_INDEXES
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: Embed sequences using the specified layer index.
+  args: !SimpleFlagArg
+    name: EMBED_LAYER
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: 'Genome FASTA for sequences [Default: none]'
+  args: !SimpleFlagArg
+    name: GENOME_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: 'Chromosome length information [Default: none]'
+  args: !SimpleFlagArg
+    name: GENOME_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: 'Prediction site length. [Default: params.seq_length]'
+  args: !SimpleFlagArg
+    name: SITE_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: 'Output directory [Default: pred_out]'
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: Number of processes, passed by multi script
+  args: !SimpleFlagArg
+    name: PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - --rc
+  description: "Ensemble forward and reverse complement predictions\n[Default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: 'Sum site predictions [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --shifts
+  description: 'Ensemble prediction shifts [Default: 0]'
+  args: !SimpleFlagArg
+    name: SHIFTS
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: File specifying target indexes and labels in table format
+  args: !SimpleFlagArg
+    name: TARGETS_FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: basenji_predict_bed.py [options] <params_file> <model_file> <bed_file>\n\
+  \nOptions:\n  -h, --help         show this help message and exit\n  -b BIGWIG_INDEXES\
+  \  Comma-separated list of target indexes to write BigWigs\n  -e EMBED_LAYER   \
+  \  Embed sequences using the specified layer index.\n  -f GENOME_FASTA    Genome\
+  \ FASTA for sequences [Default: none]\n  -g GENOME_FILE     Chromosome length information\
+  \ [Default: none]\n  -l SITE_LENGTH     Prediction site length. [Default: params.seq_length]\n\
+  \  -o OUT_DIR         Output directory [Default: pred_out]\n  -p PROCESSES     \
+  \  Number of processes, passed by multi script\n  --rc               Ensemble forward\
+  \ and reverse complement predictions\n                     [Default: False]\n  -s\
+  \                 Sum site predictions [Default: False]\n  --shifts=SHIFTS    Ensemble\
+  \ prediction shifts [Default: 0]\n  -t TARGETS_FILE    File specifying target indexes\
+  \ and labels in table format\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/basenji:0.5--py_0

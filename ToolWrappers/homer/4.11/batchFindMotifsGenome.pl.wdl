@@ -20,6 +20,9 @@ task BatchFindMotifsGenomepl {
       ~{if (cpu) then "-cpu" else ""} \
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dist: "<#> (Will only analyze promoter-distal regions ># away from TSS)"
     cpu: "(# of concurrent jobs, -p controls CPUs used by each findMotifsGenome.pl instance)"

@@ -30,6 +30,9 @@ task Mutscan {
       ~{if (simplified) then "--simplified" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_one: "read1 file name (string)"
     read_two: "read2 file name (string [=])"

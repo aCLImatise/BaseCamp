@@ -34,6 +34,9 @@ task ComparemClassify {
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_top_targets: "number of top scoring target genomes to report per\\nquery genome (default: 1)"
     taxonomy_file: "file indicating taxonomic identification of all target\\ngenomes"

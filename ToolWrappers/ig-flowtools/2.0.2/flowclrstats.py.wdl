@@ -14,6 +14,9 @@ task Flowclrstatspy {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_locations_flow: "File locations for flow clr file."
     o: "Path to the directory for the output file."

@@ -5,70 +5,70 @@ command:
 positional: []
 named:
 - !Flag
-  description: '[--confidence]'
-  synonyms:
-  - --columns
-  args: !RepeatFlagArg
-    name: COLUMNS
   optional: true
-- !Flag
-  description: "tree to perform trait reconstruction on (default:\nNone)"
   synonyms:
   - --tree
   - -t
+  description: "tree to perform trait reconstruction on (default:\nNone)"
   args: !SimpleFlagArg
     name: TREE
-  optional: true
 - !Flag
-  description: 'tsv/csv table with meta data (default: None)'
+  optional: true
   synonyms:
   - --metadata
+  description: 'tsv/csv table with meta data (default: None)'
   args: !SimpleFlagArg
     name: METADATA
-  optional: true
 - !Flag
-  description: "tsv/csv table with equilibrium probabilities of\ndiscrete states (default:\
-    \ None)"
+  optional: true
   synonyms:
   - --weights
+  description: "tsv/csv table with equilibrium probabilities of\ndiscrete states (default:\
+    \ None)"
   args: !SimpleFlagArg
     name: WEIGHTS
-  optional: true
 - !Flag
-  description: "record the distribution of subleading mugration states\n(default:\
-    \ False)"
+  optional: true
+  synonyms:
+  - --columns
+  description: "metadata fields to perform discrete reconstruction on\n(default: None)"
+  args: !RepeatFlagArg
+    name: COLUMNS
+- !Flag
+  optional: true
   synonyms:
   - --confidence
+  description: "record the distribution of subleading mugration states\n(default:\
+    \ False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sampling-bias-correction
   description: "a rough estimate of how many more events would have\nbeen observed\
     \ if sequences represented an even sample.\nThis should be roughly the (1-sum_i\
     \ p_i^2)/(1-sum_i\nt_i^2), where p_i are the equilibrium frequencies and\nt_i\
     \ are apparent ones.(or rather the time spent in a\nparticular state on the tree)\
     \ (default: None)"
-  synonyms:
-  - --sampling-bias-correction
   args: !SimpleFlagArg
     name: SAMPLING_BIAS_CORRECTION
-  optional: true
 - !Flag
-  description: "name of JSON file to save trait inferences to\n(default: None)"
+  optional: true
   synonyms:
   - --output-node-data
+  description: "name of JSON file to save trait inferences to\n(default: None)"
   args: !SimpleFlagArg
     name: OUTPUT_NODE_DATA
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: augur traits [-h] --tree TREE --metadata METADATA [--weights WEIGHTS]\n\
@@ -95,3 +95,4 @@ help_text: "usage: augur traits [-h] --tree TREE --metadata METADATA [--weights 
   \ represented by a `?` character. Missing data\nwill currently be inferred.\n"
 generated_using:
 - --help
+docker_image:

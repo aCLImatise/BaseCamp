@@ -4,7 +4,7 @@ task Wtext {
   input {
     Int? number_of_threads
     Int? total_parallel_jobs
-    Int? index_run_it
+    Int? index_current_p
     File? long_reads_file
     String? long_reads_previous_region
     String? long_reads_retained_region
@@ -22,7 +22,7 @@ task Wtext {
     wtext \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
       ~{if defined(total_parallel_jobs) then ("-P " +  '"' + total_parallel_jobs + '"') else ""} \
-      ~{if defined(index_run_it) then ("-p " +  '"' + index_run_it + '"') else ""} \
+      ~{if defined(index_current_p) then ("-p " +  '"' + index_current_p + '"') else ""} \
       ~{if defined(long_reads_file) then ("-i " +  '"' + long_reads_file + '"') else ""} \
       ~{if defined(long_reads_previous_region) then ("-B " +  '"' + long_reads_previous_region + '"') else ""} \
       ~{if defined(long_reads_retained_region) then ("-b " +  '"' + long_reads_retained_region + '"') else ""} \
@@ -36,10 +36,13 @@ task Wtext {
       ~{if defined(alignment_penalty_read) then ("-T " +  '"' + alignment_penalty_read + '"') else ""} \
       ~{if defined(maximum_extension_bp) then ("-S " +  '"' + maximum_extension_bp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_threads: "Number of threads, [1]"
     total_parallel_jobs: "Total parallel jobs, [1]"
-    index_run_it: "Index of current job (0-based), [0]\\nSuppose to run it parallelly in 60 nodes. For node1, -P 60 -p 0; node2, -P 60 -p 1, ..."
+    index_current_p: "Index of current job (0-based), [0]\\nSuppose to run it parallelly in 60 nodes. For node1, -P 60 -p 0; node2, -P 60 -p 1, ..."
     long_reads_file: "Long reads sequences file, + *"
     long_reads_previous_region: "Long reads previous retained region, often from wtcyc, +\\nFormat: read_name\\toffset\\tlength"
     long_reads_retained_region: "Long reads retained region, often from wtobt, +\\nFormat: read_name\\toffset\\tlength"

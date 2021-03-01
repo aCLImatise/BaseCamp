@@ -15,19 +15,20 @@ inputs:
     \ African apes into a single leaf (since they\nform a clade) with label 'Africa_Homo_3'.\
     \ It would not be able to\ncondense further, however, because Pongo belong to\
     \ group 'Asia'."
-  type: File
+  type: File?
   inputBinding:
     prefix: -m
 - id: in_unicifies_leaf_labels
   doc: ": unicifies leaf labels by visiting the tree in Newick order and\nremoving\
     \ any leaf node whose label was already seen."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -u
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nw_condense

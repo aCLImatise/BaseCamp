@@ -16,6 +16,9 @@ task StatsAlignmentpy {
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(outdir) then ("--outDir " +  '"' + outdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query: "file containing the inserted sequences obtained from MindTheGap (format: 'xxx.insertions.fasta')"
     reference: "file containing the reference sequence of the gap (format: 'xxx.fasta')"

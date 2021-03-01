@@ -4,6 +4,9 @@ task Peverify {
   command <<<
     peverify
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

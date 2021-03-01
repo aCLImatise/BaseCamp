@@ -16,14 +16,14 @@ task MergeDoubleRgspl {
     String? a
     String bed_tools
     String cut
-    File? file
+    File? var_file
     String pair_to_pair
   }
   command <<<
     merge_double_rgs_pl \
       ~{bed_tools} \
       ~{cut} \
-      ~{file} \
+      ~{var_file} \
       ~{pair_to_pair} \
       ~{if (minimum_overlap_required) then "-f" else ""} \
       ~{if (type) then "-type" else ""} \
@@ -38,6 +38,9 @@ task MergeDoubleRgspl {
       ~{if (ignored) then "-n" else ""} \
       ~{if defined(a) then ("-a " +  '"' + a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minimum_overlap_required: "Minimum overlap required as fraction of A (e.g. 0.05).\\nDefault is 1E-9 (effectively 1bp)."
     type: "Approach to reporting overlaps between A and B.\\nneither Report overlaps if neither end of A overlaps B.\\neither  Report overlaps if either ends of A overlap B.\\nboth    Report overlaps if both ends of A overlap B.\\nnotboth Report overlaps if one or neither of A's overlap B.\\n- Default = both."
@@ -53,7 +56,7 @@ task MergeDoubleRgspl {
     a: ""
     bed_tools: ""
     cut: ""
-    file: ""
+    var_file: ""
     pair_to_pair: ""
   }
   output {

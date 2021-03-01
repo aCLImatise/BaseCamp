@@ -106,6 +106,9 @@ task FindDifferentialPrimerspy {
       ~{if (keep_logs) then "--keep_logs" else ""} \
       ~{if defined(log_dir) then ("--log_dir " +  '"' + log_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "location of configuration file"
     outdir: "directory for output files"

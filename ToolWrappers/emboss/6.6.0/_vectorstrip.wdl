@@ -10,6 +10,9 @@ task Vectorstrip {
       ~{if (mismatch) then "-mismatch" else ""} \
       ~{if (all_sequences) then "-allsequences" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mismatch: "integer    [10] Max allowed % mismatch (Any integer\\nvalue)"
     all_sequences: "boolean    [N] Show all sequences in output"

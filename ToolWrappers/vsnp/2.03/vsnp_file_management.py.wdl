@@ -14,6 +14,9 @@ task VsnpFileManagementpy {
       ~{if defined(extension) then ("--extension " +  '"' + extension + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     codes: "Excel file containing genotype code Column 1: to match\\nsample name minus everything left of first occurring _\\nor . Column 2: New name"
     extension: "File extension type to be renamed"

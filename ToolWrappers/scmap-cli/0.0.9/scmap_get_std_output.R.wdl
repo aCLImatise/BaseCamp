@@ -18,6 +18,9 @@ task ScmapGetStdOutputR {
       ~{if defined(tool) then ("--tool " +  '"' + tool + '"') else ""} \
       ~{if defined(sim_col_name) then ("--sim-col-name " +  '"' + sim_col_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     predictions_file: "Path to the predictions file in text format"
     output_table: "Path to the final output file in text format"

@@ -20,6 +20,9 @@ task FunannotateClean {
       ~{if (min_len) then "--minlen" else ""} \
       ~{if (exhaustive) then "--exhaustive" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     multifasta_genome_file: "Multi-fasta genome file (Required)"
     out: "Cleaned multi-fasta output file (Required)"

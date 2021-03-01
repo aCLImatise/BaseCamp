@@ -32,6 +32,9 @@ task HicCorrectMatrixCorrect {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(one_dot_two) then ("-1.2 " +  '"' + one_dot_two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "Name of the Hi-C matrix to correct in .h5 format.\\n(default: None)"
     out_filename: "File name to save the resulting matrix. The output is\\na .h5 file. (default: None)"

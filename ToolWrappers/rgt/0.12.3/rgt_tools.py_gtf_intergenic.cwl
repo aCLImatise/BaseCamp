@@ -3,17 +3,17 @@ id: rgt_tools.py_gtf_intergenic.cwl
 inputs:
 - id: in_input_gtf_file
   doc: Input GTF file
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_output_directory_bed
   doc: Output directory for BED file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_organism
   doc: Define the organism
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -organism
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_directory_bed
   doc: Output directory for BED file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_directory_bed)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rgt-tools.py

@@ -38,6 +38,9 @@ task Plantcvworkflowpy {
       ~{if (write_img) then "--writeimg" else ""} \
       ~{if defined(other_args) then ("--other_args " +  '"' + other_args + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "Input directory containing images or snapshots.\\n(default: None)"
     adaptor: "Image metadata reader adaptor. PhenoFront metadata is\\nstored in a CSV file and the image file name. For the\\nfilename option, all metadata is stored in the image\\nfile name. Current adaptors: phenofront, filename\\n(default: phenofront)"

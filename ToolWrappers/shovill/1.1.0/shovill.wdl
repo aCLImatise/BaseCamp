@@ -48,6 +48,9 @@ task Shovill {
       ~{if (no_stitch) then "--nostitch" else ""} \
       ~{if (no_corr) then "--nocorr" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     check: "Check dependencies are installed"
     r_one: "Read 1 FASTQ (default: '')"

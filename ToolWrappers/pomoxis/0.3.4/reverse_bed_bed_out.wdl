@@ -14,6 +14,9 @@ task ReverseBedBedOut {
       ~{ref_fast_a} \
       ~{bed_out}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reverse_bed: ""
     bed_in: ""

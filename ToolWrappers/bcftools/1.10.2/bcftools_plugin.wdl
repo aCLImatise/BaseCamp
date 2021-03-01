@@ -15,12 +15,12 @@ task BcftoolsPlugin {
     Boolean? list_plugins
     Boolean? verbose
     String name
-    File file
+    File var_file
   }
   command <<<
     bcftools plugin \
       ~{name} \
-      ~{file} \
+      ~{var_file} \
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
       ~{if defined(include) then ("--include " +  '"' + include + '"') else ""} \
       ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
@@ -34,6 +34,9 @@ task BcftoolsPlugin {
       ~{if (list_plugins) then "--list-plugins" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exclude: "exclude sites for which the expression is true"
     include: "select sites for which the expression is true"
@@ -48,7 +51,7 @@ task BcftoolsPlugin {
     list_plugins: "list available plugins. See BCFTOOLS_PLUGINS environment variable and man page for details"
     verbose: "print verbose information, -vv increases verbosity"
     name: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

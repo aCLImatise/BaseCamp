@@ -4,6 +4,9 @@ task Ovcpy {
   command <<<
     ovc_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

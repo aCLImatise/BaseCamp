@@ -26,6 +26,9 @@ task PhyluceAlignGetAlignsPartitionedByCluster {
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_containing_files: "The directory containing the alignment files"
     cluster_csv: "The cluster CSV file"

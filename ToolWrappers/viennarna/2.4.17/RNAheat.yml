@@ -1,0 +1,228 @@
+!Command
+command:
+- RNAheat
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: program
+  description: "--Tmin=t1              Lowest temperature\n(default=`0')"
+- !Positional
+  optional: false
+  position: 0
+  name: molecule.
+  description: (default=off)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --detailed-help
+  description: "Print help, including all details and hidden\noptions, and exit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --full-help
+  description: Print help, including hidden options, and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --Tmax
+  description: "Highest temperature\n(default=`100')"
+  args: !SimpleFlagArg
+    name: t2
+- !Flag
+  optional: true
+  synonyms:
+  - --stepsize
+  description: "Calculate partition function every stepsize\ndegrees C\n(default=`1.')"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --ipoints
+  description: "The program fits a parabola to 2*ipoints+1 data\npoints to calculate\
+    \ 2nd derivatives. Increasing\nthis parameter produces a smoother curve\n(default=`2')"
+  args: !SimpleFlagArg
+    name: ipoints
+- !Flag
+  optional: true
+  synonyms:
+  - --noconv
+  description: "Do not automatically substitude nucleotide \"T\"\nwith \"U\"\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
+  description: "[=number]        Split batch input into jobs and start processing\n\
+    in parallel using multiple threads. A value of 0\nindicates to use as many parallel\
+    \ threads as\ncomputation cores are available.\n(default=`0')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --infile
+  description: Read a file instead of reading from stdin
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --auto-id
+  description: "Automatically generate an ID for each sequence.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --id-prefix
+  description: "Prefix for automatically generated IDs (as used in\noutput file names)\n\
+    (default=`sequence')"
+  args: !SimpleFlagArg
+    name: prefix
+- !Flag
+  optional: true
+  synonyms:
+  - --maxBPspan
+  description: "Set the maximum base pair span\n(default=`-1')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - '-4'
+  - --noTetra
+  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
+    \ and hexaloop hairpins.\nMostly for testing.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dangles
+  description: "How to treat \"dangling end\" energies for bases\nadjacent to helices\
+    \ in free ends and multi-loops\n(default=`2')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --noLP
+  description: "Produce structures without lonely pairs (helices\nof length 1).\n\
+    (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noGU
+  description: "Do not allow GU pairs\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noClosingGU
+  description: "Do not allow GU pairs at the end of helices\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --paramFile
+  description: "Read energy parameters from paramfile, instead of\nusing the default\
+    \ parameter set."
+  args: !SimpleFlagArg
+    name: paramfile
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gquad
+  description: "Incoorporate G-Quadruplex formation into the\nstructure prediction\
+    \ algorithm.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --circ
+  description: Assume a circular (instead of linear) RNA
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: RNAheat [OPTIONS] [<input0>] [<input1>]...\ncalculate specific\
+  \ heat of RNAs\n\nReads RNA sequences from stdin or input files and calculates their\
+  \ specific\nheat in the temperature range t1 to t2, from the partition function\
+  \ by numeric\ndifferentiation. The result is written to stdout as a list of pairs\
+  \ of\ntemperature in C and specific heat in Kcal/(Mol*K).\nThe program will continue\
+  \ to read new sequences until a line consisting of the\nsingle character \"@\" or\
+  \ an end of file condition is encountered.\n\n\n  -h, --help                 Print\
+  \ help and exit\n      --detailed-help        Print help, including all details\
+  \ and hidden\n                               options, and exit\n      --full-help\
+  \            Print help, including hidden options, and exit\n  -V, --version   \
+  \           Print version and exit\n\nGeneral Options:\n  Below are command line\
+  \ options which alter the general behavior of this\n  program\n\n\n      --Tmin=t1\
+  \              Lowest temperature\n\n                                 (default=`0')\n\
+  \      --Tmax=t2              Highest temperature\n\n                          \
+  \       (default=`100')\n      --stepsize=FLOAT       Calculate partition function\
+  \ every stepsize\n                               degrees C\n\n                 \
+  \                (default=`1.')\n  -m, --ipoints=ipoints      The program fits a\
+  \ parabola to 2*ipoints+1 data\n                               points to calculate\
+  \ 2nd derivatives. Increasing\n                               this parameter produces\
+  \ a smoother curve\n\n                                 (default=`2')\n      --noconv\
+  \               Do not automatically substitude nucleotide \"T\"\n             \
+  \                  with \"U\"\n\n                                 (default=off)\n\
+  \  -j, --jobs[=number]        Split batch input into jobs and start processing\n\
+  \                               in parallel using multiple threads. A value of 0\n\
+  \                               indicates to use as many parallel threads as\n \
+  \                              computation cores are available.\n              \
+  \                   (default=`0')\n  -i, --infile=<filename>    Read a file instead\
+  \ of reading from stdin\n\n      --auto-id              Automatically generate an\
+  \ ID for each sequence.\n                                 (default=off)\n      --id-prefix=prefix\
+  \     Prefix for automatically generated IDs (as used in\n                     \
+  \          output file names)\n\n                                 (default=`sequence')\n\
+  \nStructure Constraints:\n  Command line options to interact with the structure\
+  \ constraints feature of\n  this program\n\n\n      --maxBPspan=INT        Set the\
+  \ maximum base pair span\n\n                                 (default=`-1')\n\n\
+  Model Details:\n  -4, --noTetra              Do not include special tabulated stabilizing\n\
+  \                               energies for tri-, tetra- and hexaloop hairpins.\n\
+  \                               Mostly for testing.\n\n                        \
+  \         (default=off)\n  -d, --dangles=INT          How to treat \"dangling end\"\
+  \ energies for bases\n                               adjacent to helices in free\
+  \ ends and multi-loops\n                                 (default=`2')\n      --noLP\
+  \                 Produce structures without lonely pairs (helices\n           \
+  \                    of length 1).\n                                 (default=off)\n\
+  \      --noGU                 Do not allow GU pairs\n\n                        \
+  \         (default=off)\n      --noClosingGU          Do not allow GU pairs at the\
+  \ end of helices\n\n                                 (default=off)\n  -P, --paramFile=paramfile\
+  \  Read energy parameters from paramfile, instead of\n                         \
+  \      using the default parameter set.\n\n  -g, --gquad                Incoorporate\
+  \ G-Quadruplex formation into the\n                               structure prediction\
+  \ algorithm.\n\n                                 (default=off)\n  -c, --circ   \
+  \              Assume a circular (instead of linear) RNA\n                     \
+  \          molecule.\n\n                                 (default=off)\n\nIf in\
+  \ doubt our program is right, nature is at fault.\nComments should be sent to rna@tbi.univie.ac.at.\n\
+  \n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/viennarna:2.4.17--py36hd181a71_0

@@ -10,6 +10,9 @@ task Applauncher {
       ~{app_launcher} \
       ~{if (list) then "-list" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list: ""
     app_launcher: "applauncher -help"

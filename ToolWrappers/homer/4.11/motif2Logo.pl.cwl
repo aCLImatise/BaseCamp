@@ -3,22 +3,22 @@ id: motif2Logo.pl.cwl
 inputs:
 - id: in_pdf
   doc: '(create a pdf: "motif file".pdf: default creates a PNG image)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pdf
 - id: in_ns
   doc: '<#> (Number of sequences to feed seqlogo: default 100)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ns
 - id: in_bit
   doc: '(scale logo by information content: default scales nucleotides to probability)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bit
-- id: in_prefix_ie_outputprefixpng
+- id: in_prefix_output_file
   doc: '(prefix of output file, i.e. outputprefix.png : default, motif file)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_motif_file
@@ -30,11 +30,12 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_prefix_ie_outputprefixpng
+- id: out_prefix_output_file
   doc: '(prefix of output file, i.e. outputprefix.png : default, motif file)'
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_prefix_ie_outputprefixpng)
+    glob: $(inputs.in_prefix_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - motif2Logo.pl

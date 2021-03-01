@@ -3,22 +3,22 @@ id: compare.cwl
 inputs:
 - id: in_an_not
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -annot
 - id: in_caps
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -caps
 - id: in_core
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -core
 - id: in_col
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -col
 - id: in_score
@@ -38,13 +38,14 @@ inputs:
     position: 2
 - id: in_bali_base_an_not_file
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 3
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - compare

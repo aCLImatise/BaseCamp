@@ -30,6 +30,9 @@ task SelectSequencesFromMSA {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_clustal_path: "Path to input clustal file"
     output_path: "Path to output directory. Default:\\ncurrent working directory"

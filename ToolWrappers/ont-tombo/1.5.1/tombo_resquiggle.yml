@@ -4,134 +4,134 @@ command:
 - resquiggle
 positional:
 - !Positional
-  description: "Directory containing fast5 files. All files ending in\n\"fast5\" found\
-    \ recursively within this base directory\nwill be processed."
+  optional: false
   position: 0
   name: fast5s_basedir
-  optional: false
+  description: "Directory containing fast5 files. All files ending in\n\"fast5\" found\
+    \ recursively within this base directory\nwill be processed."
 - !Positional
-  description: "Reference genome/transcriptome FASTA file or minimap2\nindex (with\
-    \ \"map-ont\" preset) for mapping."
+  optional: false
   position: 1
   name: reference
-  optional: false
+  description: "Reference genome/transcriptome FASTA file or minimap2\nindex (with\
+    \ \"map-ont\" preset) for mapping."
 named:
 - !Flag
-  description: "Explicitly select canonical DNA model. Default:\nAutomatically determine\
-    \ from FAST5s"
+  optional: true
   synonyms:
   - --dna
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Explicitly select canonical RNA model. Default:\nAutomatically determine\
+  description: "Explicitly select canonical DNA model. Default:\nAutomatically determine\
     \ from FAST5s"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --rna
+  description: "Explicitly select canonical RNA model. Default:\nAutomatically determine\
+    \ from FAST5s"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --obs-per-base-filter
   description: "Filter reads based on observations per base percentile\nthresholds.\
     \ Format thresholds as \"percentile:thresh\n[pctl2:thresh2 ...]\". For example\
     \ to filter reads with\n99th pctl > 200 obs/base or max > 5k obs/base use\n\"\
     99:200 100:5000\"."
-  synonyms:
-  - --obs-per-base-filter
   args: !RepeatFlagArg
     name: OBS_PER_BASE_FILTER
-  optional: true
 - !Flag
-  description: "Q-score threshold for filtering low quality reads.\nDefault: 0.000000"
+  optional: true
   synonyms:
   - --q-score
+  description: "Q-score threshold for filtering low quality reads.\nDefault: 0.000000"
   args: !SimpleFlagArg
     name: Q_SCORE
-  optional: true
 - !Flag
-  description: "Observed to expected signal matching score (higher\nscore indicates\
-    \ poor matching). Sample type defaults:\nRNA : 2 || DNA : 1.1"
+  optional: true
   synonyms:
   - --signal-matching-score
+  description: "Observed to expected signal matching score (higher\nscore indicates\
+    \ poor matching). Sample type defaults:\nRNA : 2 || DNA : 1.1"
   args: !SimpleFlagArg
     name: SIGNAL_MATCHING_SCORE
-  optional: true
 - !Flag
-  description: 'Number of processes. Default: 1'
+  optional: true
   synonyms:
   - --processes
+  description: 'Number of processes. Default: 1'
   args: !SimpleFlagArg
     name: PROCESSES
-  optional: true
 - !Flag
-  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
+  optional: true
   synonyms:
   - --corrected-group
+  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
   args: !SimpleFlagArg
     name: CORRECTED_GROUP
-  optional: true
 - !Flag
-  description: "FAST5 group obtain original basecalls (under Analyses\ngroup). Default:\
-    \ Basecall_1D_000"
+  optional: true
   synonyms:
   - --basecall-group
+  description: "FAST5 group obtain original basecalls (under Analyses\ngroup). Default:\
+    \ Basecall_1D_000"
   args: !SimpleFlagArg
     name: BASECALL_GROUP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --basecall-subgroups
   description: "FAST5 subgroup(s) (under /Analyses/[--basecall-\ngroup]/) containing\
     \ basecalls and created within\n[--corrected-group] containing re-squiggle results.\n\
     Default: ['BaseCalled_template']"
-  synonyms:
-  - --basecall-subgroups
   args: !RepeatFlagArg
     name: BASECALL_SUBGROUPS
-  optional: true
 - !Flag
-  description: "Overwrite previous corrected group in FAST5 files.\nNote: only effects\
-    \ --corrected-group or --new-\ncorrected-group."
+  optional: true
   synonyms:
   - --overwrite
+  description: "Overwrite previous corrected group in FAST5 files.\nNote: only effects\
+    \ --corrected-group or --new-\ncorrected-group."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output failed read filenames with assoicated error.\nDefault: Do not\
-    \ store failed reads."
+  optional: true
   synonyms:
   - --failed-reads-filename
+  description: "Output failed read filenames with assoicated error.\nDefault: Do not\
+    \ store failed reads."
   args: !SimpleFlagArg
     name: FAILED_READS_FILENAME
-  optional: true
 - !Flag
-  description: "Dynamically show this many most common errors so far\nthrough run.\
-    \ Default: 0; Just show progress"
+  optional: true
   synonyms:
   - --num-most-common-errors
+  description: "Dynamically show this many most common errors so far\nthrough run.\
+    \ Default: 0; Just show progress"
   args: !SimpleFlagArg
     name: NUM_MOST_COMMON_ERRORS
-  optional: true
 - !Flag
-  description: Print advanced re-squiggle arguments and exit.
+  optional: true
   synonyms:
   - --print-advanced-arguments
+  description: Print advanced re-squiggle arguments and exit.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Don't print status information.
+  optional: true
   synonyms:
   - --quiet
   - -q
+  description: Don't print status information.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: Print this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: tombo resquiggle [--dna] [--rna]\n                        [--obs-per-base-filter\
@@ -185,3 +185,4 @@ help_text: "usage: tombo resquiggle [--dna] [--rna]\n                        [--
   \   Print this help message and exit\n"
 generated_using:
 - --help
+docker_image:

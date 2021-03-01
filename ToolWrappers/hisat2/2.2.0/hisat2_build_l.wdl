@@ -3,16 +3,16 @@ version 1.0
 task Hisat2buildl {
   input {
     Boolean? reference_sequences_given
-    Boolean? a_slash_no_auto
+    Boolean? no_auto
     Int? number_of_threads
     Int? bmax
     Int? bmax_divn
     Int? dcv
     Boolean? no_dc
-    Boolean? r_slash_no_ref
-    Boolean? three_slash_just_ref
-    Int? oslash_off_rate
-    Int? t_slash_f_tab_chars
+    Boolean? no_ref
+    Boolean? just_ref
+    Int? off_rate
+    Int? f_tab_chars
     Int? local_off_rate
     Int? local_f_tab_chars
     File? snp
@@ -24,8 +24,7 @@ task Hisat2buildl {
     File? repeat_snp
     File? repeat_haplotype
     Int? seed
-    Boolean? q_slash_quiet
-    Boolean? h_slash_help
+    Boolean? quiet
     String reference_in
     Int his_at_two_index_base
   }
@@ -34,16 +33,16 @@ task Hisat2buildl {
       ~{reference_in} \
       ~{his_at_two_index_base} \
       ~{if (reference_sequences_given) then "-c" else ""} \
-      ~{if (a_slash_no_auto) then "-a/--noauto" else ""} \
+      ~{if (no_auto) then "--noauto" else ""} \
       ~{if defined(number_of_threads) then ("-p " +  '"' + number_of_threads + '"') else ""} \
       ~{if defined(bmax) then ("--bmax " +  '"' + bmax + '"') else ""} \
       ~{if defined(bmax_divn) then ("--bmaxdivn " +  '"' + bmax_divn + '"') else ""} \
       ~{if defined(dcv) then ("--dcv " +  '"' + dcv + '"') else ""} \
       ~{if (no_dc) then "--nodc" else ""} \
-      ~{if (r_slash_no_ref) then "-r/--noref" else ""} \
-      ~{if (three_slash_just_ref) then "-3/--justref" else ""} \
-      ~{if defined(oslash_off_rate) then ("-o/--offrate " +  '"' + oslash_off_rate + '"') else ""} \
-      ~{if defined(t_slash_f_tab_chars) then ("-t/--ftabchars " +  '"' + t_slash_f_tab_chars + '"') else ""} \
+      ~{if (no_ref) then "--noref" else ""} \
+      ~{if (just_ref) then "--justref" else ""} \
+      ~{if defined(off_rate) then ("--offrate " +  '"' + off_rate + '"') else ""} \
+      ~{if defined(f_tab_chars) then ("--ftabchars " +  '"' + f_tab_chars + '"') else ""} \
       ~{if defined(local_off_rate) then ("--localoffrate " +  '"' + local_off_rate + '"') else ""} \
       ~{if defined(local_f_tab_chars) then ("--localftabchars " +  '"' + local_f_tab_chars + '"') else ""} \
       ~{if defined(snp) then ("--snp " +  '"' + snp + '"') else ""} \
@@ -55,21 +54,23 @@ task Hisat2buildl {
       ~{if defined(repeat_snp) then ("--repeat-snp " +  '"' + repeat_snp + '"') else ""} \
       ~{if defined(repeat_haplotype) then ("--repeat-haplotype " +  '"' + repeat_haplotype + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{if (q_slash_quiet) then "-q/--quiet" else ""} \
-      ~{if (h_slash_help) then "-h/--help" else ""}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_sequences_given: "reference sequences given on cmd line (as\\n<reference_in>)"
-    a_slash_no_auto: "disable automatic -p/--bmax/--dcv memory-fitting"
+    no_auto: "disable automatic -p/--bmax/--dcv memory-fitting"
     number_of_threads: "number of threads"
     bmax: "max bucket sz for blockwise suffix-array builder"
     bmax_divn: "max bucket sz as divisor of ref len (default: 4)"
     dcv: "diff-cover period for blockwise (default: 1024)"
     no_dc: "disable diff-cover (algorithm becomes quadratic)"
-    r_slash_no_ref: "don't build .3/.4.ht2 (packed reference) portion"
-    three_slash_just_ref: "just build .3/.4.ht2 (packed reference) portion"
-    oslash_off_rate: "SA is sampled every 2^offRate BWT chars (default: 5)"
-    t_slash_f_tab_chars: "# of chars consumed in initial lookup (default: 10)"
+    no_ref: "don't build .3/.4.ht2 (packed reference) portion"
+    just_ref: "just build .3/.4.ht2 (packed reference) portion"
+    off_rate: "SA is sampled every 2^offRate BWT chars (default: 5)"
+    f_tab_chars: "# of chars consumed in initial lookup (default: 10)"
     local_off_rate: "SA (local) is sampled every 2^offRate BWT chars (default: 3)"
     local_f_tab_chars: "# of chars consumed in initial lookup in a local index (default: 6)"
     snp: "SNP file name"
@@ -81,8 +82,7 @@ task Hisat2buildl {
     repeat_snp: "Repeat snp file name"
     repeat_haplotype: "Repeat haplotype file name"
     seed: "seed for random number generator"
-    q_slash_quiet: "disable verbose output (for debugging)"
-    h_slash_help: "print detailed description of tool and its options"
+    quiet: "disable verbose output (for debugging)"
     reference_in: "comma-separated list of files with ref sequences"
     his_at_two_index_base: "write ht2l data to files with this dir/basename"
   }

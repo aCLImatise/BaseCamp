@@ -14,6 +14,9 @@ task SeqtkSubseq {
       ~{if (tab_delimited_output) then "-t" else ""} \
       ~{if defined(sequence_line_length) then ("-l " +  '"' + sequence_line_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tab_delimited_output: "TAB delimited output"
     sequence_line_length: "sequence line length [0]"

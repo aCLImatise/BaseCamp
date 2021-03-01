@@ -12,6 +12,9 @@ task MmseqsConcatdbs {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     preserve_keys: "false           the keys of the two DB should be distinct, and they will be preserved in the concatenation."
     threads: "1               number of cores used for the computation (uses all cores by default)"

@@ -24,6 +24,9 @@ task HicPlotDistVsCounts {
       ~{if defined(outfile_data) then ("--outFileData " +  '"' + outfile_data + '"') else ""} \
       ~{if defined(plot_size) then ("--plotsize " +  '"' + plot_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrices: "Hi-C normalized (corrected) matrices. Each path should\\nbe separated by a space."
     plot_file: "name, -o file name\\nFile name to save the file. The given file ending will\\nbe used to determine the image format. The available\\noptions are: .png, .emf, .eps, .pdf and .svg."

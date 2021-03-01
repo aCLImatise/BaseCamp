@@ -16,6 +16,9 @@ task FcFetchReads {
       ~{if defined(out_dir) then ("--out_dir " +  '"' + out_dir + '"') else ""} \
       ~{if defined(min_ctg_lenth) then ("--min_ctg_lenth " +  '"' + min_ctg_lenth + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base_dir: "the base working dir of a falcon assembly"
     fof_n: "path to the file of the list of raw read fasta files"

@@ -1,0 +1,938 @@
+&id001 !Command
+command:
+- fio
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Increase verbosity.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: Decrease verbosity.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --aws-profile
+  description: Select a profile from the AWS credentials file
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --aws-no-sign-requests
+  description: Make requests anonymously
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --aws-requester-pays
+  description: Requester pays data transfer costs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gdal-version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --python-version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - fio
+  - ls
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: INPUT
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --indent
+    description: Indentation level for JSON output
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fio ls [OPTIONS] INPUT\n\n  List layers in a datasource.\n\n\
+    Options:\n  --indent INTEGER  Indentation level for JSON output\n  --help    \
+    \        Show this message and exit.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/fiona:1.8.6
+- !Command
+  command:
+  - fio
+  - load
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: OUTPUT
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: FEATURES...
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --format
+    - --driver
+    description: Output format driver name.  [required]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --src-crs
+    - --src_crs
+    description: Source CRS.
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --dst-crs
+    - --dst_crs
+    description: "Destination CRS.  Defaults to --src-crs when\nnot given."
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --layer
+    description: "|NAME           Load features into specified layer.  Layers use\n\
+      zero-based numbering when accessed by index."
+    args: !SimpleFlagArg
+      name: INDEX
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fio load [OPTIONS] OUTPUT FEATURES...\n\n  Load features from\
+    \ JSON to a file in another format.\n\n  The input is a GeoJSON feature collection\
+    \ or optionally a sequence of\n  GeoJSON feature objects.\n\nOptions:\n  -f, --format,\
+    \ --driver TEXT  Output format driver name.  [required]\n  --src-crs, --src_crs\
+    \ TEXT    Source CRS.\n  --dst-crs, --dst_crs TEXT    Destination CRS.  Defaults\
+    \ to --src-crs when\n                               not given.\n\n  --layer INDEX|NAME\
+    \           Load features into specified layer.  Layers use\n                \
+    \               zero-based numbering when accessed by index.\n\n  --help     \
+    \                  Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fiona:1.8.6
+- !Command
+  command:
+  - fio
+  - info
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: INPUT
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --layer
+    description: "|NAME      Print information about a specific layer.  The first\n\
+      layer is used by default.  Layers use zero-based\nnumbering when accessed by\
+      \ index."
+    args: !SimpleFlagArg
+      name: INDEX
+  - !Flag
+    optional: true
+    synonyms:
+    - --indent
+    description: Indentation level for JSON output
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --count
+    description: Print the count of features.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --format
+    - --driver
+    description: Print the format driver.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --crs
+    description: Print the CRS as a PROJ.4 string.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --bounds
+    description: "Print the boundary coordinates (left, bottom, right,\ntop)."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --name
+    description: Print the datasource's name.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fio info [OPTIONS] INPUT\n\n  Print information about a dataset.\n\
+    \n  When working with a multi-layer dataset the first layer is used by\n  default.\
+    \ Use the '--layer' option to select a different layer.\n\nOptions:\n  --layer\
+    \ INDEX|NAME      Print information about a specific layer.  The first\n     \
+    \                     layer is used by default.  Layers use zero-based\n     \
+    \                     numbering when accessed by index.\n\n  --indent INTEGER\
+    \        Indentation level for JSON output\n  --count                 Print the\
+    \ count of features.\n  -f, --format, --driver  Print the format driver.\n  --crs\
+    \                   Print the CRS as a PROJ.4 string.\n  --bounds            \
+    \    Print the boundary coordinates (left, bottom, right,\n                  \
+    \        top).\n\n  --name                  Print the datasource's name.\n  --help\
+    \                  Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fiona:1.8.6
+- !Command
+  command:
+  - fio
+  - collect
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --precision
+    description: Decimal precision of coordinates.
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --indent
+    description: Indentation level for JSON output
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --compact
+    - --not-compact
+    description: Use compact separators (',', ':').
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --record-buffered
+    - --no-record-buffered
+    description: "Economical buffering of writes at record,\nnot collection (default),\
+      \ level."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ignore-errors
+    - --no-ignore-errors
+    description: log errors but do not stop serialization.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --src-crs
+    - --src_crs
+    description: Source CRS.
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --with-ld-context
+    - --without-ld-context
+    description: add a JSON-LD context to JSON output.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --add-ld-context-item
+    description: "map a term to a URI and add it to the\noutput's JSON LD context."
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --parse
+    - --no-parse
+    description: "load and dump the geojson feature (default\nis True)"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fio collect [OPTIONS]\n\n  Make a GeoJSON feature collection\
+    \ from a sequence of GeoJSON features and\n  print it.\n\nOptions:\n  --precision\
+    \ INTEGER             Decimal precision of coordinates.\n  --indent INTEGER  \
+    \              Indentation level for JSON output\n  --compact / --not-compact\
+    \       Use compact separators (',', ':').\n  --record-buffered / --no-record-buffered\n\
+    \                                  Economical buffering of writes at record,\n\
+    \                                  not collection (default), level.\n\n  --ignore-errors\
+    \ / --no-ignore-errors\n                                  log errors but do not\
+    \ stop serialization.\n  --src-crs, --src_crs TEXT       Source CRS.\n  --with-ld-context\
+    \ / --without-ld-context\n                                  add a JSON-LD context\
+    \ to JSON output.\n  --add-ld-context-item TEXT      map a term to a URI and add\
+    \ it to the\n                                  output's JSON LD context.\n\n \
+    \ --parse / --no-parse            load and dump the geojson feature (default\n\
+    \                                  is True)\n\n  --help                      \
+    \    Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fiona:1.8.6
+- !Command
+  command:
+  - fio
+  - bounds
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --precision
+    description: Decimal precision of coordinates.
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --explode
+    - --no-explode
+    description: 'Explode collections into features (default: no).'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --with-id
+    - --without-id
+    description: "Print GeoJSON ids and bounding boxes together\n(default: without)."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --with-obj
+    - --without-obj
+    description: "Print GeoJSON objects and bounding boxes\ntogether (default: without)."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --rs
+    - --no-rs
+    description: "Use RS (0x1E) as a prefix for individual texts\nin a sequence as\
+      \ per\nhttp://tools.ietf.org/html/draft-ietf-json-text-\nsequence-13 (default\
+      \ is False)."
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fio bounds [OPTIONS]\n\n  Print the bounding boxes of GeoJSON\
+    \ objects read from stdin.\n\n  Optionally explode collections and print the bounds\
+    \ of their features.\n\n  To print identifiers for input objects along with their\
+    \ bounds as a {id:\n  identifier, bbox: bounds} JSON object, use --with-id.\n\n\
+    \  To print the input objects themselves along with their bounds as GeoJSON\n\
+    \  object, use --with-obj. This has the effect of updating input objects with\n\
+    \  {id: identifier, bbox: bounds}.\n\nOptions:\n  --precision INTEGER        \
+    \ Decimal precision of coordinates.\n  --explode / --no-explode    Explode collections\
+    \ into features (default: no).\n  --with-id / --without-id    Print GeoJSON ids\
+    \ and bounding boxes together\n                              (default: without).\n\
+    \n  --with-obj / --without-obj  Print GeoJSON objects and bounding boxes\n   \
+    \                           together (default: without).\n\n  --rs / --no-rs \
+    \             Use RS (0x1E) as a prefix for individual texts\n               \
+    \               in a sequence as per\n                              http://tools.ietf.org/html/draft-ietf-json-text-\n\
+    \                              sequence-13 (default is False).\n\n  --help   \
+    \                   Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fiona:1.8.6
+- !Command
+  command:
+  - fio
+  - env
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --formats
+    description: Enumerate the available formats.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --credentials
+    description: Print credentials.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --gdal-data
+    description: Print GDAL data path.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --proj-data
+    description: Print PROJ data path.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fio env [OPTIONS]\n\n  Print information about the Fiona environment:\
+    \ available formats, etc.\n\nOptions:\n  --formats      Enumerate the available\
+    \ formats.\n  --credentials  Print credentials.\n  --gdal-data    Print GDAL data\
+    \ path.\n  --proj-data    Print PROJ data path.\n  --help         Show this message\
+    \ and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fiona:1.8.6
+- !Command
+  command:
+  - fio
+  - cat
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: box
+    description: --help                          Show this message and exit.
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --layer
+    description: "Input layer(s), specified as\n'fileindex:layer` For example, '1:foo,2:bar'\n\
+      will concatenate layer foo from file 1 and\nlayer bar from file 2"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --precision
+    description: Decimal precision of coordinates.
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --indent
+    description: Indentation level for JSON output
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --compact
+    - --not-compact
+    description: Use compact separators (',', ':').
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ignore-errors
+    - --no-ignore-errors
+    description: log errors but do not stop serialization.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --dst-crs
+    - --dst_crs
+    description: Destination CRS.
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --rs
+    - --no-rs
+    description: "Use RS (0x1E) as a prefix for individual\ntexts in a sequence as\
+      \ per\nhttp://tools.ietf.org/html/draft-ietf-json-\ntext-sequence-13 (default\
+      \ is False)."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --bbox
+    description: ',s,e,n                  filter for features intersecting a bounding'
+    args: !SimpleFlagArg
+      name: w
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fio cat [OPTIONS] INPUTS...\n\n  Concatenate and print the features\
+    \ of input datasets as a sequence of\n  GeoJSON features.\n\n  When working with\
+    \ a multi-layer dataset the first layer is used by\n  default. Use the '--layer'\
+    \ option to select a different layer.\n\nOptions:\n  --layer TEXT            \
+    \        Input layer(s), specified as\n                                  'fileindex:layer`\
+    \ For example, '1:foo,2:bar'\n                                  will concatenate\
+    \ layer foo from file 1 and\n                                  layer bar from\
+    \ file 2\n\n  --precision INTEGER             Decimal precision of coordinates.\n\
+    \  --indent INTEGER                Indentation level for JSON output\n  --compact\
+    \ / --not-compact       Use compact separators (',', ':').\n  --ignore-errors\
+    \ / --no-ignore-errors\n                                  log errors but do not\
+    \ stop serialization.\n  --dst-crs, --dst_crs TEXT       Destination CRS.\n  --rs\
+    \ / --no-rs                  Use RS (0x1E) as a prefix for individual\n      \
+    \                            texts in a sequence as per\n                    \
+    \              http://tools.ietf.org/html/draft-ietf-json-\n                 \
+    \                 text-sequence-13 (default is False).\n\n  --bbox w,s,e,n   \
+    \               filter for features intersecting a bounding\n                \
+    \                  box\n\n  --help                          Show this message\
+    \ and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fiona:1.8.6
+- !Command
+  command:
+  - fio
+  - insp
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: SRC_PATH
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --ipython
+    description: Use IPython as interpreter.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fio insp [OPTIONS] SRC_PATH\n\n  Open a collection within an\
+    \ interactive interpreter.\n\nOptions:\n  --ipython  Use IPython as interpreter.\n\
+    \  --help     Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fiona:1.8.6
+- !Command
+  command:
+  - fio
+  - rm
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: INPUT
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --layer
+    description: Name of layer to remove.
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --yes
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fio rm [OPTIONS] INPUT\n\n  Remove a datasource or an individual\
+    \ layer.\n\nOptions:\n  --layer TEXT  Name of layer to remove.\n  --yes\n  --help\
+    \        Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fiona:1.8.6
+- &id003 !Command
+  command:
+  - fio
+  - calc
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --overwrite
+    description: 'Overwrite properties, default: False'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --rs
+    - --no-rs
+    description: "Use RS (0x1E) as a prefix for individual texts in a sequence\nas\
+      \ per http://tools.ietf.org/html/draft-ietf-json-text-\nsequence-13 (default\
+      \ is False)."
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - fio
+    - calc
+    - Example
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: fio
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: calc
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: PROPERTY_NAME
+      description: ''
+    - !Positional
+      optional: false
+      position: 3
+      name: EXPRESSION
+      description: ''
+    named: []
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "proj_create: Open of /usr/local/share/proj failed\nproj_create: init=epsg:/init=IGNF:\
+      \ syntax not supported in non-PROJ4 emulation mode\nproj_create: Open of /usr/local/share/proj\
+      \ failed\nproj_create: init=epsg:/init=IGNF: syntax not supported in non-PROJ4\
+      \ emulation mode\nUsage: fio calc [OPTIONS] PROPERTY_NAME EXPRESSION\nTry 'fio\
+      \ calc --help' for help.\n\nError: no such option: -h\n"
+    generated_using:
+    - -h
+    docker_image: quay.io/biocontainers/fiona:1.8.6
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fio calc [OPTIONS] PROPERTY_NAME EXPRESSION\n\n  Create a new\
+    \ property on GeoJSON features using the specified expression.\n\n  The expression\
+    \ is evaluated in a restricted namespace containing:\n      - sum, pow, min, max\
+    \ and the imported math module\n      - shape (optional, imported from shapely.geometry\
+    \ if available)\n      - bool, int, str, len, float type conversions\n      -\
+    \ f (the feature to be evaluated,\n           allows item access via javascript-style\
+    \ dot notation using munch)\n\n  The expression will be evaluated for each feature\
+    \ and its return value\n  will be added to the properties as the specified property_name.\
+    \ Existing\n  properties will not be overwritten by default (an Exception is raised).\n\
+    \n  Example\n\n  $ fio cat data.shp | fio calc sumAB  \"f.properties.A + f.properties.B\"\
+    \n\nOptions:\n  --overwrite     Overwrite properties, default: False\n  --rs /\
+    \ --no-rs  Use RS (0x1E) as a prefix for individual texts in a sequence\n    \
+    \              as per http://tools.ietf.org/html/draft-ietf-json-text-\n     \
+    \             sequence-13 (default is False).\n\n  --help          Show this message\
+    \ and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fiona:1.8.6
+- !Command
+  command:
+  - fio
+  - dump
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: INPUT
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --layer
+    description: "|NAME              Print information about a specific layer.\nThe\
+      \ first layer is used by default.  Layers\nuse zero-based numbering when accessed\
+      \ by\nindex."
+    args: !SimpleFlagArg
+      name: INDEX
+  - !Flag
+    optional: true
+    synonyms:
+    - --encoding
+    description: Specify encoding of the input file.
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --precision
+    description: Decimal precision of coordinates.
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --indent
+    description: Indentation level for JSON output
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --compact
+    - --not-compact
+    description: Use compact separators (',', ':').
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --record-buffered
+    - --no-record-buffered
+    description: "Economical buffering of writes at record,\nnot collection (default),\
+      \ level."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ignore-errors
+    - --no-ignore-errors
+    description: log errors but do not stop serialization.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --with-ld-context
+    - --without-ld-context
+    description: add a JSON-LD context to JSON output.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --add-ld-context-item
+    description: "map a term to a URI and add it to the\noutput's JSON LD context."
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fio dump [OPTIONS] INPUT\n\n  Dump a dataset either as a GeoJSON\
+    \ feature collection (the default) or a\n  sequence of GeoJSON features.\n\nOptions:\n\
+    \  --layer INDEX|NAME              Print information about a specific layer.\n\
+    \                                  The first layer is used by default.  Layers\n\
+    \                                  use zero-based numbering when accessed by\n\
+    \                                  index.\n\n  --encoding TEXT               \
+    \  Specify encoding of the input file.\n  --precision INTEGER             Decimal\
+    \ precision of coordinates.\n  --indent INTEGER                Indentation level\
+    \ for JSON output\n  --compact / --not-compact       Use compact separators (',',\
+    \ ':').\n  --record-buffered / --no-record-buffered\n                        \
+    \          Economical buffering of writes at record,\n                       \
+    \           not collection (default), level.\n\n  --ignore-errors / --no-ignore-errors\n\
+    \                                  log errors but do not stop serialization.\n\
+    \  --with-ld-context / --without-ld-context\n                                \
+    \  add a JSON-LD context to JSON output.\n  --add-ld-context-item TEXT      map\
+    \ a term to a URI and add it to the\n                                  output's\
+    \ JSON LD context.\n\n  --help                          Show this message and\
+    \ exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fiona:1.8.6
+- !Command
+  command:
+  - fio
+  - distrib
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --rs
+    - --no-rs
+    description: "Use RS (0x1E) as a prefix for individual texts in a sequence\nas\
+      \ per http://tools.ietf.org/html/draft-ietf-json-text-\nsequence-13 (default\
+      \ is False)."
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fio distrib [OPTIONS]\n\n  Distribute features from a collection.\n\
+    \n  Print the features of GeoJSON objects read from stdin.\n\nOptions:\n  --rs\
+    \ / --no-rs  Use RS (0x1E) as a prefix for individual texts in a sequence\n  \
+    \                as per http://tools.ietf.org/html/draft-ietf-json-text-\n   \
+    \               sequence-13 (default is False).\n\n  --help          Show this\
+    \ message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fiona:1.8.6
+- !Command
+  command:
+  - fio
+  - filter
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: FILTER_EXPRESSION
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --rs
+    - --no-rs
+    description: "Use RS (0x1E) as a prefix for individual texts in a sequence\nas\
+      \ per http://tools.ietf.org/html/draft-ietf-json-text-\nsequence-13 (default\
+      \ is False)."
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: fio filter [OPTIONS] FILTER_EXPRESSION\n\n  Filter GeoJSON features\
+    \ by python expression.\n\n  Features are read from stdin.\n\n  The expression\
+    \ is evaluated in a restricted namespace containing:     -\n  sum, pow, min, max\
+    \ and the imported math module     - shape (optional,\n  imported from shapely.geometry\
+    \ if available)     - bool, int, str, len,\n  float type conversions     - f (the\
+    \ feature to be evaluated,\n  allows item access via javascript-style dot notation\
+    \ using munch)\n\n  The expression will be evaluated for each feature and, if\
+    \ true, the\n  feature will be included in the output.  For example:\n\n     \
+    \ $ fio cat data.shp \\\n          | fio filter \"f.properties.area > 1000.0\"\
+    \ \\\n          | fio collect > large_polygons.geojson\n\nOptions:\n  --rs / --no-rs\
+    \  Use RS (0x1E) as a prefix for individual texts in a sequence\n            \
+    \      as per http://tools.ietf.org/html/draft-ietf-json-text-\n             \
+    \     sequence-13 (default is False).\n\n  --help          Show this message and\
+    \ exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fiona:1.8.6
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: fio [OPTIONS] COMMAND [ARGS]...\n\n  Fiona command line interface.\n\
+  \nOptions:\n  -v, --verbose           Increase verbosity.\n  -q, --quiet       \
+  \      Decrease verbosity.\n  --aws-profile TEXT      Select a profile from the\
+  \ AWS credentials file\n  --aws-no-sign-requests  Make requests anonymously\n  --aws-requester-pays\
+  \    Requester pays data transfer costs\n  --version               Show the version\
+  \ and exit.\n  --gdal-version          Show the version and exit.\n  --python-version\
+  \        Show the version and exit.\n  --help                  Show this message\
+  \ and exit.\n\nCommands:\n  bounds   Print the extent of GeoJSON objects\n  calc\
+  \     Calculate GeoJSON property by Python expression\n  cat      Concatenate and\
+  \ print the features of datasets\n  collect  Collect a sequence of features.\n \
+  \ distrib  Distribute features from a collection.\n  dump     Dump a dataset to\
+  \ GeoJSON.\n  env      Print information about the fio environment.\n  filter  \
+  \ Filter GeoJSON features by python expression.\n  info     Print information about\
+  \ a dataset.\n  insp     Open a dataset and start an interpreter.\n  load     Load\
+  \ GeoJSON to a dataset in another format.\n  ls       List layers in a datasource.\n\
+  \  rm       Remove a datasource or an individual layer.\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/fiona:1.8.6

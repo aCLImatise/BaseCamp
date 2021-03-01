@@ -1,0 +1,65 @@
+!Command
+command:
+- iu-gen-matching-fastq-files
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: identifier.
+  description: --sequential          Your identifier code parses an integer value
+    that can
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --r1
+  description: R1
+  args: !SimpleFlagArg
+    name: FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --r2
+  description: R2
+  args: !SimpleFlagArg
+    name: FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --identifier-code
+  description: "CODE\nLambda function to parse the header. Default:\n'''lambda defline:\
+    \ defline.split()[0]'''."
+  args: !SimpleFlagArg
+    name: PYTHON
+- !Flag
+  optional: true
+  synonyms:
+  - --identifier-tested
+  description: Use this flag to indicate that you tested your
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: iu-gen-matching-fastq-files [-h] --r1 FILE_PATH --r2 FILE_PATH\n\
+  \                                   [--identifier-code PYTHON CODE]\n          \
+  \                         [--identifier-tested] [--sequential]\n\nRecover matching\
+  \ ids in two FASTQ files\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --r1 FILE_PATH        R1\n  --r2 FILE_PATH        R2\n\
+  \  --identifier-code PYTHON CODE\n                        Lambda function to parse\
+  \ the header. Default:\n                        '''lambda defline: defline.split()[0]'''.\n\
+  \  --identifier-tested   Use this flag to indicate that you tested your\n      \
+  \                  identifier.\n  --sequential          Your identifier code parses\
+  \ an integer value that can\n                        link pairs, and is incremental\
+  \ throughout the file.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/illumina-utils:2.10--py_0

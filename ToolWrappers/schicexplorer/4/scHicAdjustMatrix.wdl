@@ -18,6 +18,9 @@ task ScHicAdjustMatrix {
       ~{if defined(action) then ("--action " +  '"' + action + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "The matrix to adjust in the scool format. (default:\\nNone)"
     out_filename: "File name to save the adjusted matrix. (default: None)"

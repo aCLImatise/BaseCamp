@@ -10,6 +10,9 @@ task OpopulatedatasetsfromVAMPSdownload {
       ~{if defined(tax_on) then ("--taxon " +  '"' + tax_on + '"') else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tax_on: "Isolate a particular taxon"
     output_file_name: "Output file name\\n"

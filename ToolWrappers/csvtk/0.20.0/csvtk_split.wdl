@@ -44,6 +44,9 @@ task CsvtkSplit {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     buf_groups: "buffering N groups before writing to file (default 100)"
     buf_rows: "buffering N rows for every group before writing to file (default 100000)"

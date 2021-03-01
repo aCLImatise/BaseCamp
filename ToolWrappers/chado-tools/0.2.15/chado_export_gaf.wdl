@@ -2,7 +2,6 @@ version 1.0
 
 task ChadoExportGaf {
   input {
-    String? dbname
     Boolean? verbose
     File? config
     Boolean? use_password
@@ -11,12 +10,9 @@ task ChadoExportGaf {
     File? database_authority
     File? annotation_level
     Boolean? include_obsolete
-    String dbname
   }
   command <<<
     chado export gaf \
-      ~{dbname} \
-      ~{if defined(dbname) then ("-A " +  '"' + dbname + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if (use_password) then "--use_password" else ""} \
@@ -26,8 +22,10 @@ task ChadoExportGaf {
       ~{if defined(annotation_level) then ("--annotation_level " +  '"' + annotation_level + '"') else ""} \
       ~{if (include_obsolete) then "--include_obsolete" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    dbname: "name of the database"
     verbose: "verbose mode"
     config: "YAML file containing connection details"
     use_password: "connect with password (default: no password)"

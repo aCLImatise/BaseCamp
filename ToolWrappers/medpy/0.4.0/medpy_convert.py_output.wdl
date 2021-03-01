@@ -20,6 +20,9 @@ task MedpyConvertpyOutput {
       ~{if (v) then "-v" else ""} \
       ~{if (e) then "-e" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
     d: ""

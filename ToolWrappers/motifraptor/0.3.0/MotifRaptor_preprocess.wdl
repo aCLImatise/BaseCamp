@@ -14,6 +14,9 @@ task MotifRaptorPreprocess {
       ~{if defined(score_type) then ("--score_type " +  '"' + score_type + '"') else ""} \
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     g_was_summary: "GWAS summary statistic file"
     column_numbers: "provide six column numbers for information in such\\norder: ID,CHR,POS,A1,A2,SCORE eg. 1,2,3,4,5,6"

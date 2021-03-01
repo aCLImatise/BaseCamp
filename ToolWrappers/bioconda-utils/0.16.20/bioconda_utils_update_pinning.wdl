@@ -32,6 +32,9 @@ task BiocondautilsUpdatepinning {
       ~{if defined(log_file_level) then ("--logfile-level " +  '"' + log_file_level + '"') else ""} \
       ~{if defined(log_command_max_lines) then ("--log-command-max-lines " +  '"' + log_command_max_lines + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     packages: "Glob for package[s] to update, as needed due to a\\nchange in pinnings (default: '*')"
     skip_additional_channels: "[SKIP_ADDITIONAL_CHANNELS [SKIP_ADDITIONAL_CHANNELS ...]]\\nSkip updating/bumping packges that are already built\\nwith compatible pinnings in one of the given channels\\nin addition to those listed in 'config'. (default: -)"

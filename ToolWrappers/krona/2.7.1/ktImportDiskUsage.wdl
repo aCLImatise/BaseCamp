@@ -4,6 +4,9 @@ task KtImportDiskUsage {
   command <<<
     ktImportDiskUsage
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

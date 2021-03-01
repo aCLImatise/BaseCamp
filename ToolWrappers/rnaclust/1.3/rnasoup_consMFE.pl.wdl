@@ -10,6 +10,9 @@ task RnasoupConsMFEpl {
       ~{if (fast_a) then "--fasta" else ""} \
       ~{if (dir) then "--dir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "Original FASTA file with sequences which have been clustered."
     dir: "Directory containing intermediate*.aln files."

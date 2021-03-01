@@ -3,23 +3,23 @@ id: wg_blimp_run_snakemake.cwl
 inputs:
 - id: in_dry_run
   doc: Only dry-run the pipeline.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dry-run
 - id: in_use_sample_files
   doc: "Load sample names from text files instead of\npassing them as a comma-seperated\
     \ list."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --use-sample-files
 - id: in_cores
   doc: The number of cores to use for running the
-  type: long
+  type: long?
   inputBinding:
     prefix: --cores
 - id: in_genome_build
   doc: "[hg19|hg38|mmul10]\nBuild of the reference used for annotation."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --genome_build
 - id: in_pipeline_dot
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - wg-blimp

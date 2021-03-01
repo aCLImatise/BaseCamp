@@ -12,6 +12,9 @@ task GcloudComputeAcceleratortypes {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     types: "SYNOPSIS"
     describe: "Describe Google Compute Engine accelerator types."

@@ -3,33 +3,34 @@ id: fastq_quality_converter.cwl
 inputs:
 - id: in_f
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_i
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_z
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -z
 - id: in_n
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_a
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fastq_quality_converter

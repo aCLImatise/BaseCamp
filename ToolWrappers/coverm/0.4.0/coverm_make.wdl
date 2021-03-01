@@ -32,6 +32,9 @@ task CovermMake {
       ~{if defined(bwa_params) then ("--bwa-params " +  '"' + bwa_params + '"') else ""} \
       ~{if (discard_unmapped) then "--discard-unmapped" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_directory: "Where generated BAM files will go"
     reference: "..             FASTA file of contigs e.g. concatenated\\ngenomes or assembly, or minimap2 index\\n(with --minimap2-reference-is-index),\\nor BWA index stem (with -p bwa-mem).\\nIf multiple references FASTA files are\\nprovided and --sharded is specified,\\nthen reads will be mapped to references\\nseparately as sharded BAMs."

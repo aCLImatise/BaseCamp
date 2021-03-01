@@ -4,118 +4,121 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -m
   description: "Method to use.  Default: oMCMC.\n<method> is either MCMCwithTree,\
     \ oMCMC (MCMC without tree),\nSplitMerge, Tree, or admixture, or a contraction\
     \ of any.\nNote that admixture does not infer the population\nso should be provided\
     \ with a good one in \"initialpopfile\"."
-  synonyms:
-  - -m
   args: !SimpleFlagArg
     name: method
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -I
   description: "Initial number of populations.  <x> is either a number\nor \"n\" for\
     \ the number of individuals, or \"l\" for label detected\npopulations.  Default\
     \ is 1."
-  synonyms:
-  - -I
   args: !SimpleFlagArg
     name: x
-  optional: true
 - !Flag
-  description: Sets the RNG seed to s (>0)
+  optional: true
   synonyms:
   - -s
+  description: Sets the RNG seed to s (>0)
   args: !SimpleFlagArg
     name: s
-  optional: true
 - !Flag
-  description: Ignores the first i lines of the input file
+  optional: true
   synonyms:
   - -i
+  description: Ignores the first i lines of the input file
   args: !SimpleFlagArg
     name: i
-  optional: true
 - !Flag
-  description: Number of burn in iterations for MCMC method.
+  optional: true
   synonyms:
   - -x
+  description: Number of burn in iterations for MCMC method.
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
-  description: Number of sample iterations for MCMC method.
+  optional: true
   synonyms:
   - -y
+  description: Number of sample iterations for MCMC method.
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
-  description: Thin interval in the output file, for MCMC method.
+  optional: true
   synonyms:
   - -z
+  description: Thin interval in the output file, for MCMC method.
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
-  description: Maximum number of tree comparisons for splitting/merging.
+  optional: true
   synonyms:
   - -t
+  description: Maximum number of tree comparisons for splitting/merging.
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
-  description: "Fix the number of populations to whatever you started with.\nThis\
-    \ would be set by '-I' or by an initial state file."
+  optional: true
   synonyms:
   - -K
+  description: "Fix the number of populations to whatever you started with.\nThis\
+    \ would be set by '-I' or by an initial state file."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -l
   description: "Specify the average copy length datafile.  -i,-X,-Y options\n*preciding*\
     \ this file will affect this read; you can set different\noptions for the copy\
     \ rate datafile by specifying these -i,-X,-Y again\nafter the -l option."
-  synonyms:
-  - -l
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -u
   description: "Use a data inference method; one of :\ncounts: use only the copy counts\
     \ data. (default if -l not specified)\nlengths: use only the copy length data\
     \ (still needs valid counts data!)\ntotallengths: use the mean length of chunk\
     \ sizes\nall: use all data (careful: this may not be statistically valid).\ndefault:\
     \ use counts and totallengths (default with -l specified)."
-  synonyms:
-  - -u
   args: !SimpleFlagArg
     name: datatype
-  optional: true
 - !Flag
-  description: "Set alpha, the prior of the number of parameters\n(default: 1.0)."
+  optional: true
   synonyms:
   - -a
+  description: "Set alpha, the prior of the number of parameters\n(default: 1.0)."
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
-  description: "Set the likelihood correction factor: L_{used}=L^{1/<corfactor>}.\n\
-    (default: 1.0)"
+  optional: true
   synonyms:
   - -c
+  description: "Set the likelihood correction factor: L_{used}=L^{1/<corfactor>}.\n\
+    (default: 1.0)"
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -B
   description: "Choose a model for beta:\n1/e/E:  Equipartition model of Pella and\
     \ Masuda.\n2/c/C:  Constant model.\n4/o/O:  F model of Falush et al 2003 with\
     \ a single parameter\nfor all populations (default)."
-  synonyms:
-  - -B
   args: !SimpleFlagArg
     name: model
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -b
   description: "(,<num>,..) Hyperparameters for ALL models, in the order COUNTS,LENGTHS,MEANS.\n\
     COUNTS: *must* be included, even if count matrix not used!\nFor model 1, there\
     \ are no parameters.\nFor model 2, set the prior of the distribution of\npopulation\
@@ -126,24 +129,24 @@ named:
     MEANS: 6 parameters:\n(k_betamu, k_alphamu, k_kappa, beta_alphamu,beta_betamu,beta_kappa)\n\
     Set K parameters negative for fixed =|k|\ne.g. when finding a tree given the mean\
     \ parameters."
-  synonyms:
-  - -b
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -M
   description: "Specify the type of inference model for chunk counts.\n<modeltype>\
     \ accept contractions and lower case, and can be:\n1 or Finestructure: standard\
     \ finestructure model (default).\n2 or Normalised: Normalise data row and columns\
     \ within a population.\n3 or MergeOnly: As 2, but only compare populations being\
     \ merged or split.\n4 or Individual: Prior is placed on individual rows instead\
     \ of\npopulation rows. (slowest model)."
-  synonyms:
-  - -M
   args: !SimpleFlagArg
     name: modeltype
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
   description: "Extract details from a state; can be (a unique contraction of):\n\
     beta: the parameter matrix\nX: the copying data matrix for populations\nX2: the\
     \ normalised copying matrix\nmaxstate: maximum observed posterior probability\
@@ -155,24 +158,24 @@ named:
     \ of the data\ngiven the conditions of the outputfile.\nlikelihood: samples the\
     \ likelihood of the data given the conditions\nin the outputfile.\ntree: extract\
     \ the tree in newick format and print it to a FOURTH file"
-  synonyms:
-  - -e
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -F
   description: "Fix the populations specified in the file.  They should be specified\
     \ as\npopulation format, i.e. PopA(ind1,ind2) would fix the data rows ind1 and\
     \ ind2\nto always be in the same population (they form a 'super individual')\n\
     called PopA. Continents are specified with a * before the name, and are treated\n\
     specially in the tree building phase,  i.e. *ContA(ind1,ind2).  Continents\nare\
     \ not merged with the rest of the tree."
-  synonyms:
-  - -F
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -T
   description: "When using a merge tree, initialisation can be set to the following:\n\
     1:      Use the initial state \"as is\".\n2:      Perform merging to get to best\
     \ posterior state.\n3:      Perform full range of moves to to get to best posterior\
@@ -182,62 +185,59 @@ named:
     \ flatten maximum copy rates for the main tree.\n7:      As 1, but maximise hyperparameters\
     \ between merges.\n8:      As 2, but maximise hyperparameters between merges.\n\
     9:      As 3, but maximise hyperparameters between merges."
-  synonyms:
-  - -T
   args: !SimpleFlagArg
     name: type
-  optional: true
 - !Flag
-  description: File containing a state to use for ordering, if not the main file.
+  optional: true
   synonyms:
   - -o
+  description: File containing a state to use for ordering, if not the main file.
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -k
   description: "Change the tree building algorithm.\n0:      Discard all ordering\
     \ and likelihood information (default).\n1:      Maintain ordering.\n2:      Maintain\
     \ ordering and likelihood."
-  synonyms:
-  - -k
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
-  description: "Specifies that there are row names in the data (not necessary for\n\
-    ChromoPainter or ChromoCombine style files.)"
+  optional: true
   synonyms:
   - -X
+  description: "Specifies that there are row names in the data (not necessary for\n\
+    ChromoPainter or ChromoCombine style files.)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Specifies that there are column names in the data file (as -X, not
-    necessary.)
+  optional: true
   synonyms:
   - -Y
+  description: Specifies that there are column names in the data file (as -X, not
+    necessary.)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Verbose mode
+  optional: true
   synonyms:
   - -v
+  description: Verbose mode
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Print Version info
+  optional: true
   synonyms:
   - -V
+  description: Print Version info
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: This help message
+  optional: true
   synonyms:
   - -h
+  description: This help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "    Usage: finestructure [OPTIONS] datafile <initialpopfile> outputfile\n\
@@ -339,3 +339,4 @@ help_text: "    Usage: finestructure [OPTIONS] datafile <initialpopfile> outputf
   \ comparisons to the observed admixture matrix.\n    \n"
 generated_using:
 - -h
+docker_image:

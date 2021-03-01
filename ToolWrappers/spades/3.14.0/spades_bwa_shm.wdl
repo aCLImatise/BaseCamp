@@ -16,6 +16,9 @@ task SpadesbwaShm {
       ~{if (list_names_indices) then "-l" else ""} \
       ~{if defined(temporary_file_reduce) then ("-f " +  '"' + temporary_file_reduce + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     destroy_indices_shared: "destroy all indices in shared memory"
     list_names_indices: "list names of indices in shared memory"

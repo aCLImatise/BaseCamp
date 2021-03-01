@@ -13,14 +13,14 @@ task TraitarPhenotype {
     String positional_arguments
     String input_dir
     Int sample_two_file
-    String directory_output_will
+    String directory_output_created
   }
   command <<<
     traitar phenotype \
       ~{positional_arguments} \
       ~{input_dir} \
       ~{sample_two_file} \
-      ~{directory_output_will} \
+      ~{directory_output_created} \
       ~{if defined(gene_gff_type) then ("--gene_gff_type " +  '"' + gene_gff_type + '"') else ""} \
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if defined(primary_models) then ("--primary_models " +  '"' + primary_models + '"') else ""} \
@@ -30,6 +30,9 @@ task TraitarPhenotype {
       ~{if (no_heat_map_phenotype_clustering) then "--no_heatmap_phenotype_clustering" else ""} \
       ~{if defined(heat_map_format) then ("--heatmap_format " +  '"' + heat_map_format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene_gff_type: "if the input is amino acids the type of gene\\nprediction GFF file can be specified for mapping the\\nphenotype predictions to the genes"
     cpus: "number of cpus used for the individual steps; maximum\\nis number of samples; needs parallel"
@@ -42,7 +45,7 @@ task TraitarPhenotype {
     positional_arguments: "positional arguments:"
     input_dir: "directory with the input data"
     sample_two_file: "mapping from samples to fasta files (also see gitHub\\nhelp): sample1_file_name{tab}sample1_name\\nsample2_file_name{tab}sample2_name"
-    directory_output_will: "directory for the output; will be created if it\\ndoesn't exist yet"
+    directory_output_created: "directory for the output; will be created if it\\ndoesn't exist yet"
   }
   output {
     File out_stdout = stdout()

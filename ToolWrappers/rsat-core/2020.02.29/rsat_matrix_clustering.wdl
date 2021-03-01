@@ -3,6 +3,7 @@ version 1.0
 task RsatMatrixclustering {
   input {
     String matrix_clustering
+    String jacques_dot_van_helden_at_univ_am_udot_fr
     String util
     String computer_dot
     String results_dot
@@ -20,6 +21,7 @@ task RsatMatrixclustering {
   command <<<
     rsat matrix_clustering \
       ~{matrix_clustering} \
+      ~{jacques_dot_van_helden_at_univ_am_udot_fr} \
       ~{util} \
       ~{computer_dot} \
       ~{results_dot} \
@@ -34,8 +36,12 @@ task RsatMatrixclustering {
       ~{html_dot} \
       ~{cluster_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix_clustering: "[1mDESCRIPTION[0m"
+    jacques_dot_van_helden_at_univ_am_udot_fr: "[1mConception[0m"
     util: "[1mUSAGE[0m"
     computer_dot: "[1mSEE ALSO[0m"
     results_dot: "This label is useful when two motifs for the same TF come from"

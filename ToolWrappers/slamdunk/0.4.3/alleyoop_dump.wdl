@@ -20,6 +20,9 @@ task AlleyoopDump {
       ~{if defined(min_base_quality) then ("--min-basequality " +  '"' + min_base_quality + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "Reference fasta file"
     snp_directory: "Directory containing SNP files."

@@ -14,6 +14,9 @@ task TomboFilterLevelCoverage {
       ~{if defined(corrected_group) then ("--corrected-group " +  '"' + corrected_group + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_five_based_irs: "Directories containing fast5 files."
     percent_to_filter: "Percentage of all reads to filter. Reads are randomly\\nselected weighted according to the approximate\\ncoverage at the mapped genomic location. This can be\\nuseful in modeling and testing. Default: 10.000000"

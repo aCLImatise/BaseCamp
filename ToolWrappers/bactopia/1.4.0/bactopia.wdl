@@ -78,6 +78,9 @@ task Bactopia {
       ~{if (dry_run) then "--dry_run" else ""} \
       ~{if (help_all) then "--help_all" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_qs: "An input file containing the sample name and\\nabsolute paths to FASTQ/FASTAs to process"
     r_one: "First set of reads for paired end in compressed (gzip)\\nFASTQ format"

@@ -3,12 +3,12 @@ id: make_fasta_from_fastg.py.cwl
 inputs:
 - id: in_graph
   doc: "(spades 3.50+) FASTG file to process [recommended:\nbefore_rr.fastg]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --graph
 - id: in_output
   doc: "output file name for FASTA of cycles\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "output file name for FASTA of cycles\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - make_fasta_from_fastg.py

@@ -1,46 +1,46 @@
 class: CommandLineTool
 id: twopaco.cwl
 inputs:
-- id: in__outfile_file
-  doc: ",  --outfile <file name>\nOutput file name prefix"
-  type: File
+- id: in_outfile
+  doc: Output file name prefix
+  type: File?
   inputBinding:
-    prefix: -o
+    prefix: --outfile
 - id: in_test
   doc: Run tests
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --test
 - id: in_tmpdir
   doc: Temporary directory name
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --tmpdir
-- id: in__threads_integernumber
-  doc: ",  --threads <integer>\nNumber of worker threads"
-  type: long
+- id: in_threads
+  doc: Number of worker threads
+  type: long?
   inputBinding:
-    prefix: -t
-- id: in__rounds_integernumber
-  doc: ",  --rounds <integer>\nNumber of computation rounds"
-  type: long
+    prefix: --threads
+- id: in_rounds
+  doc: Number of computation rounds
+  type: long?
   inputBinding:
-    prefix: -r
-- id: in__hashfnumber_integernumber
-  doc: ",  --hashfnumber <integer>\nNumber of hash functions"
-  type: long
+    prefix: --rounds
+- id: in_has_hf_number
+  doc: Number of hash functions
+  type: long?
   inputBinding:
-    prefix: -q
-- id: in__filtersize_integerrequired
-  doc: ",  --filtersize <integer>\n(required)  Size of the filter"
-  type: long
+    prefix: --hashfnumber
+- id: in_filter_size
+  doc: (required)  Size of the filter
+  type: long?
   inputBinding:
-    prefix: -f
-- id: in__kvalue_oddcvalue
-  doc: ",  --kvalue <oddc>\nValue of k"
-  type: string
+    prefix: --filtersize
+- id: in_k_value
+  doc: Value of k
+  type: string?
   inputBinding:
-    prefix: -k
+    prefix: --kvalue
 - id: in_two_paco
   doc: "[-o <file name>] [--test] [--tmpdir <directory name>] [-t\n<integer>] [-r\
     \ <integer>] [-q <integer>] -f <integer> [-k\n<oddc>] [--] [--version] [-h] <fasta\
@@ -52,11 +52,12 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out__outfile_file
-  doc: ",  --outfile <file name>\nOutput file name prefix"
-  type: File
+- id: out_outfile
+  doc: Output file name prefix
+  type: File?
   outputBinding:
-    glob: $(inputs.in__outfile_file)
+    glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - twopaco

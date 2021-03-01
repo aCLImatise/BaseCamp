@@ -1,0 +1,160 @@
+!Command
+command:
+- phigaro
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta-file
+  description: Assembly scaffolds/contigs or full genomes, required
+  args: !SimpleFlagArg
+    name: FASTA_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config
+  description: "Path to the config file, not required. The deafult is\n/root/.phigaro/config.yml"
+  args: !SimpleFlagArg
+    name: CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --print-vogs
+  description: Print phage vogs for each region
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --extension
+  description: "Type of the output: html, tsv, gff, bed or stdout.\nDefault is html.\
+    \ You can specify several file formats\nwith a space as a separator. Example:\
+    \ -e tsv html\nstdout."
+  args: !RepeatFlagArg
+    name: EXTENSION
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output filename for html and txt outputs. Required by\ndefault, but\
+    \ not required for stdout only output."
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --not-open
+  description: "Do not open html file automatically, if html output\ntype is specified."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Num of threads (default is num of CPUs=8)
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --no-cleanup
+  description: "Do not delete any temporary files that was generated\nby Phigaro (HMMER\
+    \ & Prodigal outputs and some others)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --substitute-output
+  description: "If you have precomputed prodigal and/or hmmer data you\ncan provide\
+    \ paths to the files in the following\nformat: program:address/to/the/file. In\
+    \ place of\nprogram you should write hmmer or prodigal. If you\nneed to provide\
+    \ both files you should pass them\nseparetely as two parametres."
+  args: !SimpleFlagArg
+    name: SUBSTITUTE_OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --save-fasta
+  description: Save all phage fasta sequences in a fasta file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --delete-shorts
+  description: Exclude sequences with length < 20000 automatically.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mode
+  description: "You can launch Phigaro at one of 3 modes: basic, abs,\nwithout_gc.\
+    \ Default is basic. Read more about modes at\nhttps://github.com/bobeobibo/phigaro/\n"
+  args: !SimpleFlagArg
+    name: MODE
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: phigaro [-h] [-V] -f FASTA_FILE [-c CONFIG] [-p]\n            \
+  \   [-e EXTENSION [EXTENSION ...]] [-o OUTPUT] [--not-open]\n               [-t\
+  \ THREADS] [--no-cleanup] [-S SUBSTITUTE_OUTPUT]\n               [--save-fasta]\
+  \ [-d] [-m MODE]\n\nPhigaro is a scalable command-line tool for predictions phages\
+  \ and prophages\nfrom nucleid acid sequences\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -V, --version         show program's\
+  \ version number and exit\n  -f FASTA_FILE, --fasta-file FASTA_FILE\n          \
+  \              Assembly scaffolds/contigs or full genomes, required\n  -c CONFIG,\
+  \ --config CONFIG\n                        Path to the config file, not required.\
+  \ The deafult is\n                        /root/.phigaro/config.yml\n  -p, --print-vogs\
+  \      Print phage vogs for each region\n  -e EXTENSION [EXTENSION ...], --extension\
+  \ EXTENSION [EXTENSION ...]\n                        Type of the output: html, tsv,\
+  \ gff, bed or stdout.\n                        Default is html. You can specify\
+  \ several file formats\n                        with a space as a separator. Example:\
+  \ -e tsv html\n                        stdout.\n  -o OUTPUT, --output OUTPUT\n \
+  \                       Output filename for html and txt outputs. Required by\n\
+  \                        default, but not required for stdout only output.\n  --not-open\
+  \            Do not open html file automatically, if html output\n             \
+  \           type is specified.\n  -t THREADS, --threads THREADS\n              \
+  \          Num of threads (default is num of CPUs=8)\n  --no-cleanup          Do\
+  \ not delete any temporary files that was generated\n                        by\
+  \ Phigaro (HMMER & Prodigal outputs and some others).\n  -S SUBSTITUTE_OUTPUT, --substitute-output\
+  \ SUBSTITUTE_OUTPUT\n                        If you have precomputed prodigal and/or\
+  \ hmmer data you\n                        can provide paths to the files in the\
+  \ following\n                        format: program:address/to/the/file. In place\
+  \ of\n                        program you should write hmmer or prodigal. If you\n\
+  \                        need to provide both files you should pass them\n     \
+  \                   separetely as two parametres.\n  --save-fasta          Save\
+  \ all phage fasta sequences in a fasta file.\n  -d, --delete-shorts   Exclude sequences\
+  \ with length < 20000 automatically.\n  -m MODE, --mode MODE  You can launch Phigaro\
+  \ at one of 3 modes: basic, abs,\n                        without_gc. Default is\
+  \ basic. Read more about modes at\n                        https://github.com/bobeobibo/phigaro/\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/phigaro:2.3.0--pyh7b7c402_1

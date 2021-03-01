@@ -10,6 +10,9 @@ task ArrowStatusUpdateStatus {
       ~{id_number} \
       ~{new_value}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id_number: ""
     new_value: ""

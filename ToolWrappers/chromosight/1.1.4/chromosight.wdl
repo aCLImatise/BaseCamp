@@ -29,7 +29,7 @@ task Chromosight {
     String name_output_directory
     Int bed_two_d
     String path_contact_map
-    String output_directory_generated
+    String output_directory_where
     String prefix
   }
   command <<<
@@ -39,7 +39,7 @@ task Chromosight {
       ~{name_output_directory} \
       ~{bed_two_d} \
       ~{path_contact_map} \
-      ~{output_directory_generated} \
+      ~{output_directory_where} \
       ~{prefix} \
       ~{if defined(preset) then ("--preset " +  '"' + preset + '"') else ""} \
       ~{if defined(click) then ("--click " +  '"' + click + '"') else ""} \
@@ -64,6 +64,9 @@ task Chromosight {
       ~{if defined(win_fmt) then ("--win-fmt " +  '"' + win_fmt + '"') else ""} \
       ~{if defined(win_size) then ("--win-size " +  '"' + win_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     preset: "Generate a preset config for the given pattern.\\nPreset configs available are \\\"loops\\\" and\\n\\\"borders\\\". [default: loops]"
     click: "Show input contact map and uses double clicks from\\nuser to build the kernel. Warning: memory-heavy,\\nreserve for small genomes or subsetted matrices."
@@ -92,7 +95,7 @@ task Chromosight {
     name_output_directory: "name of the output directory"
     bed_two_d: "Tab-separated text files with columns chrom1, start1\\nend1, chrom2, start2, end2. Each line correspond to\\na pair of positions (i.e. a position in the matrix)."
     path_contact_map: "Path to the contact map, in bedgraph2d or\\ncool format."
-    output_directory_generated: "output directory where files should be generated."
+    output_directory_where: "output directory where files should be generated."
     prefix: "Path prefix for config files. If prefix is a/b,\\nfiles a/b.json and a/b.1.txt will be generated.\\nIf a given pattern has N kernel matrices, N txt\\nfiles are created they will be named a/b.[1-N].txt."
   }
   output {

@@ -18,6 +18,9 @@ task MedpyJoinMaskspy {
       ~{if (display_debug_information) then "-d" else ""} \
       ~{if (silently_override_images) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     operation: "Combinatorial operation to conduct."
     display_more_information: "Display more information."

@@ -18,6 +18,9 @@ task GetOverlapStatspl {
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specify_overlap_mode: ": Specify overlap mode.  Must be a number selected from the list below.\\nDefault is mode 1."
     input_files_gtf: ": Input files are in GTF format."

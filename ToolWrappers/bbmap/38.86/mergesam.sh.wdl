@@ -12,6 +12,9 @@ task Mergesamsh {
       ~{out} \
       ~{if (da) then "-da" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     da: "Disable assertions."
     files: ""

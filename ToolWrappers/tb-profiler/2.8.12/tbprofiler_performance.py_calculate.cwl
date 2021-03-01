@@ -3,17 +3,17 @@ id: tbprofiler_performance.py_calculate.cwl
 inputs:
 - id: in_dir
   doc: 'NGS Platform (default: results/)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --dir
 - id: in_miss
   doc: "Fraction of gene missing to call gDST as missing\n(default: 0.1)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --miss
 - id: in_drugs
   doc: 'NGS Platform (default: None)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --drugs
 - id: in_samples
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tbprofiler_performance.py

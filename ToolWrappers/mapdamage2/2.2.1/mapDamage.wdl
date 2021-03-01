@@ -2,7 +2,7 @@ version 1.0
 
 task MapDamage {
   input {
-    File? sambam_file_must
+    File? sambam_file_contain
     File? reference
     Int? down_sample
     String? down_sample_seed
@@ -41,12 +41,12 @@ task MapDamage {
     File? rescale_out
     Int? rescale_length_five_p
     Int? rescale_length_three_p
-    Directory _nostats_disabled
+    Directory nostats_disabled_statistical
   }
   command <<<
     mapDamage \
-      ~{_nostats_disabled} \
-      ~{if defined(sambam_file_must) then ("--input " +  '"' + sambam_file_must + '"') else ""} \
+      ~{nostats_disabled_statistical} \
+      ~{if defined(sambam_file_contain) then ("--input " +  '"' + sambam_file_contain + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(down_sample) then ("--downsample " +  '"' + down_sample + '"') else ""} \
       ~{if defined(down_sample_seed) then ("--downsample-seed " +  '"' + down_sample_seed + '"') else ""} \
@@ -86,8 +86,11 @@ task MapDamage {
       ~{if defined(rescale_length_five_p) then ("--rescale-length-5p " +  '"' + rescale_length_five_p + '"') else ""} \
       ~{if defined(rescale_length_three_p) then ("--rescale-length-3p " +  '"' + rescale_length_three_p + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    sambam_file_must: "SAM/BAM file, must contain a valid header, use '-' for\\nreading a BAM from stdin"
+    sambam_file_contain: "SAM/BAM file, must contain a valid header, use '-' for\\nreading a BAM from stdin"
     reference: "Reference file in FASTA format"
     down_sample: "Downsample to a randomly selected fraction of the\\nreads (if 0 < DOWNSAMPLE < 1), or a fixed number of\\nrandomly selected reads (if DOWNSAMPLE >= 1). By\\ndefault, no downsampling is performed."
     down_sample_seed: "Seed value to use for downsampling. See documentation\\nfor py module 'random' for default behavior."
@@ -126,7 +129,7 @@ task MapDamage {
     rescale_out: "Write the rescaled BAM to this file"
     rescale_length_five_p: "How many bases to rescale at the 5' termini; defaults\\nto --seq-length."
     rescale_length_three_p: "How many bases to rescale at the 5' termini; defaults\\nto --seq-length."
-    _nostats_disabled: "--no-stats          Disabled statistical estimation, active by default"
+    nostats_disabled_statistical: "--no-stats          Disabled statistical estimation, active by default"
   }
   output {
     File out_stdout = stdout()

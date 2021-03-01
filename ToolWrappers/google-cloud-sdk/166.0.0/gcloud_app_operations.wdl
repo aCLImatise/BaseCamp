@@ -12,6 +12,9 @@ task GcloudAppOperations {
       ~{list} \
       ~{wait}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     describe: "Describes the operation."
     list: "List the operations."

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Int
+
+Ghostz_V0_1_0 = CommandToolBuilder(tool="ghostz", base_command=["ghostz"], inputs=[ToolInput(tag="in_protein_sequences_fasta", input_type=String(optional=True), prefix="-i", doc=InputDocumentation(doc="Protein sequences in FASTA format for a database")), ToolInput(tag="in_the_name_database", input_type=String(optional=True), prefix="-o", doc=InputDocumentation(doc="The name of the database")), ToolInput(tag="in_clustering_t_enable", input_type=String(optional=True), prefix="-C", doc=InputDocumentation(doc="Clustering, T (enable) or F (disable) [T]")), ToolInput(tag="in_chunk_size_database", input_type=Int(optional=True), prefix="-l", doc=InputDocumentation(doc="Chunk size of the database (bytes) [1073741824 (=1GB)]")), ToolInput(tag="in_length_subsequence_clustering", input_type=Int(optional=True), prefix="-L", doc=InputDocumentation(doc="Length of a subsequence for clustering [10]")), ToolInput(tag="in_the_seed_threshold", input_type=Int(optional=True), prefix="-s", doc=InputDocumentation(doc="The seed threshold [39]")), ToolInput(tag="in_database_name_formatted", input_type=String(optional=True), prefix="-d", doc=InputDocumentation(doc="database name (must be formatted)")), ToolInput(tag="in_maximum_number_alignments", input_type=Int(optional=True), prefix="-v", doc=InputDocumentation(doc="Maximum number of alignments for each subject [1]")), ToolInput(tag="in_maximum_number_output", input_type=Int(optional=True), prefix="-b", doc=InputDocumentation(doc="Maximum number of the output for a query [10]")), ToolInput(tag="in_query_sequence_type", input_type=String(optional=True), prefix="-q", doc=InputDocumentation(doc="Query sequence type, p (protein) or d (dna) [p]")), ToolInput(tag="in_database_sequence_type", input_type=String(optional=True), prefix="-t", doc=InputDocumentation(doc="Database sequence type, p (protein) or d (dna) [p]")), ToolInput(tag="in_filter_query_sequence", input_type=String(optional=True), prefix="-F", doc=InputDocumentation(doc="Filter query sequence, T (enable) or F (disable) [T]")), ToolInput(tag="in_the_number_threads", input_type=Int(optional=True), prefix="-a", doc=InputDocumentation(doc="The number of threads [1]")), ToolInput(tag="in_minimum_length_query", input_type=Int(optional=True), prefix="-n", doc=InputDocumentation(doc="Minimum length of query[12]"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Ghostz_V0_1_0().translate("wdl", allow_empty_container=True)
+

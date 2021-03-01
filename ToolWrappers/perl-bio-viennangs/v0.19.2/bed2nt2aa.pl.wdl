@@ -16,6 +16,9 @@ task Bed2nt2aapl {
       ~{if (stdout) then "--stdout" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "Input file in BED6 format (mandatory)"
     fa: "Input file in Fasta format (mandatory)"

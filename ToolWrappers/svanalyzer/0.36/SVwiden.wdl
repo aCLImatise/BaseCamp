@@ -22,6 +22,9 @@ task SVwiden {
       ~{if (noheader) then "--noheader" else ""} \
       ~{if defined(variants) then ("--variants " +  '"' + variants + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "Specify the path to the multi-fasta file that serves as a reference\\nfor the structural variants in the VCF file."
     prefix: "Specify a prefix for the path to which to write a new VCF file\\ncontaining the structural variants from the input VCF file, but now\\nwith tags specifying widened coordinates. (Default \\\"./widened\\\")."

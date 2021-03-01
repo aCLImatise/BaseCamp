@@ -22,6 +22,9 @@ task PoretoolsHist {
       ~{if (theme_bw) then "--theme-bw" else ""} \
       ~{if (watch) then "--watch" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     min_length: "Minimum read length to be included in histogram."

@@ -10,6 +10,9 @@ task AnnotateBacteria {
       ~{clusters} \
       ~{tigrfams}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clusters: "Conserved domain database"
     tigrfams: "pfam (A)"

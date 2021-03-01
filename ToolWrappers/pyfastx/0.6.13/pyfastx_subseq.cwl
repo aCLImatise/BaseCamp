@@ -4,17 +4,17 @@ inputs:
 - id: in_region_file
   doc: "tab-delimited file, one region per line, both start\nand end position are\
     \ 1-based"
-  type: File
+  type: File?
   inputBinding:
     prefix: --region-file
 - id: in_bed_file
   doc: "tab-delimited BED file, 0-based start position and\n1-based end position"
-  type: File
+  type: File?
   inputBinding:
     prefix: --bed-file
 - id: in_out_file
   doc: "output file, default: output to stdout\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --out-file
 - id: in_fast_x
@@ -34,9 +34,10 @@ outputs:
   type: stdout
 - id: out_out_file
   doc: "output file, default: output to stdout\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pyfastx

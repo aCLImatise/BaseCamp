@@ -10,6 +10,9 @@ task GetTermIdVsTermNamespacepl {
       ~{usage} \
       ~{if (obo_input_file) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     obo_input_file: "OBO input file"
     usage: ": get_term_id_vs_term_namespace.pl [options]"

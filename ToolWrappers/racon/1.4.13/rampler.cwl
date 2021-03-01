@@ -3,7 +3,7 @@ id: rampler.cwl
 inputs:
 - id: in_out_directory
   doc: "default: current directory\npath in which sampled files will be created"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --out-directory
 - id: in_sequences
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_out_directory
   doc: "default: current directory\npath in which sampled files will be created"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_out_directory)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rampler

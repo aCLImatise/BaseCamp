@@ -4,21 +4,25 @@ command:
 - bdgopt
 positional:
 - !Positional
-  description: 'optional arguments:'
+  optional: false
   position: 0
   name: OFILE
-  optional: false
+  description: 'optional arguments:'
 named:
 - !Flag
-  description: "MACS score in bedGraph. Note: this must be a bedGraph\nfile covering\
-    \ the ENTIRE genome. REQUIRED"
+  optional: true
   synonyms:
   - -i
   - --ifile
+  description: "MACS score in bedGraph. Note: this must be a bedGraph\nfile covering\
+    \ the ENTIRE genome. REQUIRED"
   args: !SimpleFlagArg
     name: IFILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --method
   description: "Method to modify the score column of bedGraph file.\nAvailable choices\
     \ are: multiply, add, max, min, or\np2q. 1) multiply, the EXTRAPARAM is required\
     \ and will\nbe multiplied to the score column. If you intend to\ndivide the score\
@@ -31,50 +35,46 @@ named:
     \ using Benjamini-Hochberg process.\nThe EXTRAPARAM is not required. This method\
     \ assumes\nthe scores are -log10 p-value from MACS2. Any other\ntypes of score\
     \ will cause unexpected errors."
-  synonyms:
-  - -m
-  - --method
   args: !ChoiceFlagArg
     choices: !!set
-      min:
-      multiply:
       p2q:
       add:
+      multiply:
+      min:
       max:
-  optional: true
 - !Flag
-  description: "[EXTRAPARAM [EXTRAPARAM ...]], --extra-param [EXTRAPARAM [EXTRAPARAM\
-    \ ...]]\nThe extra parameter for METHOD. Check the detail of -m\noption."
+  optional: true
   synonyms:
   - -p
+  description: "[EXTRAPARAM [EXTRAPARAM ...]], --extra-param [EXTRAPARAM [EXTRAPARAM\
+    \ ...]]\nThe extra parameter for METHOD. Check the detail of -m\noption."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If specified all output files will be written to that\ndirectory.\
-    \ Default: the current working directory"
+  optional: true
   synonyms:
   - --outdir
+  description: "If specified all output files will be written to that\ndirectory.\
+    \ Default: the current working directory"
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
-  description: "Output BEDGraph filename.\n"
+  optional: true
   synonyms:
   - -o
   - --ofile
+  description: "Output BEDGraph filename.\n"
   args: !SimpleFlagArg
     name: OFILE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: macs2 bdgopt [-h] -i IFILE [-m {multiply,add,p2q,max,min}]\n  \
@@ -107,3 +107,4 @@ help_text: "usage: macs2 bdgopt [-h] -i IFILE [-m {multiply,add,p2q,max,min}]\n 
   \ OFILE, --ofile OFILE\n                        Output BEDGraph filename.\n"
 generated_using:
 - --help
+docker_image:

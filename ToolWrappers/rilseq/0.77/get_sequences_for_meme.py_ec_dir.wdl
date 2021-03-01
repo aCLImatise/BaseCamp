@@ -16,6 +16,9 @@ task GetSequencesForMemepyEcDir {
       ~{out_head} \
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     p: ""
     get_sequences_for_meme_do_tpy: ""

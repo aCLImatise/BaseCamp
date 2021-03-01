@@ -30,6 +30,9 @@ task SpliceSiteSummarypl {
       ~{if (prefix_output_files) then "-p" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_annotation_bed: "Reference annotation in BED12 format"
     splice_junctions_mapped: "Splice junctions from mapped RNA-seq data in BED6 format"

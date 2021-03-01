@@ -84,6 +84,9 @@ task Hmmsim {
       ~{if defined(p_thresh) then ("--pthresh " +  '"' + p_thresh + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     obtain_length_statistics: ": obtain alignment length statistics too"
     verbose_print_scores: ": verbose: print scores"

@@ -36,6 +36,9 @@ task RNALfold {
       ~{if (no_lp) then "--noLP" else ""} \
       ~{if defined(param_file) then ("--paramFile " +  '"' + param_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     full_help: "Print help, including hidden options, and exit"

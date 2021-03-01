@@ -12,6 +12,9 @@ task Samtools0118Flagstat {
       ~{flag_stat} \
       ~{in_dot_bam}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sam_tools: ""
     flag_stat: ""

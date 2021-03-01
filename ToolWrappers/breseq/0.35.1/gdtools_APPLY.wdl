@@ -14,6 +14,9 @@ task GdtoolsAPPLY {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_name: "Output file name (DEFAULT=output.*)"
     format: "Output file format (Options: FASTA, GFF3) (DEFAULT=FASTA)"

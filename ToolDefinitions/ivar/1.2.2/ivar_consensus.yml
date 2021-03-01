@@ -4,28 +4,31 @@ command:
 - consensus
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: samtools
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: mpileup
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: input.bam
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: 'Minimum quality score threshold to count base (Default: 20)'
+  optional: true
   synonyms:
   - -q
+  description: 'Minimum quality score threshold to count base (Default: 20)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
   description: "Minimum frequency threshold(0 - 1) to call consensus. (Default: 0)\n\
     Frequently used thresholds | Description\n---------------------------|------------\n\
     0 | Majority or most common base\n0.2 | Bases that make up atleast 20% of the\
@@ -33,63 +36,60 @@ named:
     \ at a position\n0.9 | Strict or bases that make up atleast 90% of the depth at\
     \ a position\n1 | Identical or bases that make up 100% of the depth at a position.\
     \ Will have highest ambiguities"
-  synonyms:
-  - -t
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Minimum depth to call consensus(Default: 10)'
+  optional: true
   synonyms:
   - -m
+  description: 'Minimum depth to call consensus(Default: 10)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -k
   description: If '-k' flag is added, regions with depth less than minimum depth will
     not be added to the consensus sequence. Using '-k' will override any option specified
     using -n
-  synonyms:
-  - -k
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '(N/-) Character to print in regions with less than minimum coverage(Default:
-    N)'
+  optional: true
   synonyms:
   - -n
+  description: '(N/-) Character to print in regions with less than minimum coverage(Default:
+    N)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (Required) Prefix for the output fasta file and quality file
+  optional: true
   synonyms:
   - -p
+  description: (Required) Prefix for the output fasta file and quality file
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -Q
+  description: ''
   args: !SimpleFlagArg
     name: '0'
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -d
+  description: ''
   args: !SimpleFlagArg
     name: '0'
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -A
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -aa
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -117,3 +117,4 @@ help_text: "Usage: samtools mpileup -aa -A -d 0 -Q 0 <input.bam> | ivar consensu
   \ Prefix for the output fasta file and quality file\n"
 generated_using:
 - --help
+docker_image:

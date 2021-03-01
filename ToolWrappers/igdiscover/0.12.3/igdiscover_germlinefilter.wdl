@@ -38,6 +38,9 @@ task IgdiscoverGermlinefilter {
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
       ~{if defined(annotate) then ("--annotate " +  '"' + annotate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cluster_size: "Consensus must represent at least N sequences.\\nDefault: 0"
     cross_mapping_ratio: "Ratio for detection of cross-mapping artifacts.\\nDefault: 0.02"

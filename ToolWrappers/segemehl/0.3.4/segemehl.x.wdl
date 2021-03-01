@@ -44,12 +44,12 @@ task Segemehlx {
     Boolean? no_head
     Boolean? full_name
     Boolean? be_svoc_f
-    File? file
+    File? var_file
     String? basename
   }
   command <<<
     segemehl_x \
-      ~{file} \
+      ~{var_file} \
       ~{basename} \
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if defined(query) then ("--query " +  '"' + query + '"') else ""} \
@@ -94,6 +94,9 @@ task Segemehlx {
       ~{if (full_name) then "--fullname" else ""} \
       ~{if (be_svoc_f) then "-besVOcf" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: "[<file>]  list of path/filename(s) of fasta database sequence(s)"
     query: "path/filename of query sequences (default:none)"
@@ -137,7 +140,7 @@ task Segemehlx {
     no_head: "do not output header"
     full_name: "write full query name (no trunctation at whitespace)"
     be_svoc_f: ""
-    file: ""
+    var_file: ""
     basename: ""
   }
   output {

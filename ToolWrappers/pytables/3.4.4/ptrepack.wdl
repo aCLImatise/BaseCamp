@@ -46,6 +46,9 @@ task Ptrepack {
       ~{if defined(sort_by) then ("--sortby " +  '"' + sort_by + '"') else ""} \
       ~{if (check_csi) then "--checkCSI" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "show verbose information"
     overwrite: "overwrite destination file"

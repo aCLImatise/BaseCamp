@@ -22,6 +22,9 @@ task Dsk {
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     c: ""
     histo: ""

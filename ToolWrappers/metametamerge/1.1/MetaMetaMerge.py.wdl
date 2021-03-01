@@ -2,7 +2,7 @@ version 1.0
 
 task MetaMetaMergepy {
   input {
-    Boolean? input_binning_profiling
+    Boolean? input_binning_files
     Boolean? database_profiles_same
     String? tool_identifier
     String? tool_method
@@ -23,7 +23,7 @@ task MetaMetaMergepy {
   command <<<
     MetaMetaMerge_py \
       ~{input_files} \
-      ~{if (input_binning_profiling) then "-i" else ""} \
+      ~{if (input_binning_files) then "-i" else ""} \
       ~{if (database_profiles_same) then "-d" else ""} \
       ~{if defined(tool_identifier) then ("--tool-identifier " +  '"' + tool_identifier + '"') else ""} \
       ~{if defined(tool_method) then ("--tool-method " +  '"' + tool_method + '"') else ""} \
@@ -40,8 +40,11 @@ task MetaMetaMergepy {
       ~{if (detailed) then "--detailed" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    input_binning_profiling: "[<input_files> [<input_files> ...]], --input-files [<input_files> [<input_files> ...]]\\nInput (binning or profiling) files. Bioboxes or tsv\\nformat (see README)"
+    input_binning_files: "[<input_files> [<input_files> ...]], --input-files [<input_files> [<input_files> ...]]\\nInput (binning or profiling) files. Bioboxes or tsv\\nformat (see README)"
     database_profiles_same: "[<database_profiles> [<database_profiles> ...]], --database-profiles [<database_profiles> [<database_profiles> ...]]\\nDatabase profiles on the same order of the input files\\n(see README)"
     tool_identifier: "Comma-separated identifiers on the same order of the\\ninput files"
     tool_method: "Comma-separated methods on the same order of the input\\nfiles (p -> profiling / b -> binning)"

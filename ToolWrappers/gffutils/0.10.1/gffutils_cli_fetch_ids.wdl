@@ -14,6 +14,9 @@ task GffutilscliFetchIds {
       ~{db} \
       ~{ids}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff_utils_cli: ""
     fetch: ""

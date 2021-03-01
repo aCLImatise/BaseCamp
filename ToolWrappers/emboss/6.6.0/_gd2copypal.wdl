@@ -12,6 +12,9 @@ task Gd2copypal {
       ~{palette_file_dot_gd_two} \
       ~{filename_dot_gd_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gd_two_copy_pal: ""
     palette_file_dot_gd_two: ""

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, String
+
+O_Visualize_Distance_Matrix_R_V0_1_0 = CommandToolBuilder(tool="o_visualize_distance_matrix.R", base_command=["o-visualize-distance-matrix.R"], inputs=[ToolInput(tag="in_metadata", input_type=File(optional=True), prefix="--metadata", doc=InputDocumentation(doc="Metadata file")), ToolInput(tag="in_otu_limits", input_type=Int(optional=True), prefix="--otu_limits", doc=InputDocumentation(doc="Color 3% OTU limits [default 'FALSE']")), ToolInput(tag="in_output_file_prefix", input_type=File(optional=True), prefix="--output_file_prefix", doc=InputDocumentation(doc="Output file prefix for visualization files [default 'unknown']")), ToolInput(tag="in_distance_col", input_type=String(optional=True), prefix="--distance_col", doc=InputDocumentation(doc="Distance metric for columns [default 'horn']")), ToolInput(tag="in_distance_row", input_type=String(optional=True), prefix="--distance_row", doc=InputDocumentation(doc="Distance metric for rows [default 'horn']")), ToolInput(tag="in_clustering", input_type=String(optional=True), prefix="--clustering", doc=InputDocumentation(doc="Clistering method [default 'ward']")), ToolInput(tag="in_pdf_size", input_type=Int(optional=True), prefix="--pdf_size", doc=InputDocumentation(doc="PDF output height and width [default '20']")), ToolInput(tag="in_tree_height_col", input_type=Int(optional=True), prefix="--treeheight_col", doc=InputDocumentation(doc="Dendrogram size for columns [default '100']")), ToolInput(tag="in_tree_height_row", input_type=Int(optional=True), prefix="--treeheight_row", doc=InputDocumentation(doc="Dendrogram size for rows (0 would make it disappear) [default '100']")), ToolInput(tag="in_title", input_type=String(optional=True), prefix="--title", doc=InputDocumentation(doc="Title for the output figure [default '(unknown title)']")), ToolInput(tag="in_heat_map_do_tr", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_input_file", input_type=String(), position=1, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_output_file_prefix", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_file_prefix", type_hint=File()), doc=OutputDocumentation(doc="Output file prefix for visualization files [default 'unknown']"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    O_Visualize_Distance_Matrix_R_V0_1_0().translate("wdl", allow_empty_container=True)
+

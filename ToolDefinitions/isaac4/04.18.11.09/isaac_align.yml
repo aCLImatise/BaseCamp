@@ -1,0 +1,1654 @@
+!Command
+command:
+- isaac-align
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: arguments
+  description: '-s [ --sample-sheet ] arg                       Multiple entries allowed. '
+- !Positional
+  optional: false
+  position: 0
+  name: alignments
+  description: "--use-bases-mask arg                            Conversion mask characters:\n\
+    - Y or y          : use\n- N or n          : discard\n- I or i          : use\
+    \ for"
+- !Positional
+  optional: false
+  position: 1
+  name: indexing
+  description: 'If not given, the mask will '
+- !Positional
+  optional: false
+  position: 0
+  name: information
+  description: 'Failed to parse the options: /opt/conda/conda-bld/isaac4_1595676738617/work/src/c++/lib/options/AlignOptions.cpp(614):
+    Throw in function void isaac::options::AlignOptions::verifyMandatoryPaths(boost::program_options::variables_map&)'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-empty-flowcells
+  description: "(=0)                Avoid failure when some of\nthe --base-calls contain\
+    \ no\ndata"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --anchor-mate
+  description: "(=1)                          Allow entire pair to be\nanchored by\
+    \ only one read if\nit has not been realigned. If\nnot set, each read is\nanchored\
+    \ individually and\ndoes not affect anchoring of\nits mate."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --anomalous-pair-handicap
+  description: "(=240)            When deciding between an\nanomalous pair and a rescued\n\
+    pair, this is proportional to\nthe number of mismatches\nanomalous pair needs\
+    \ to have\nless in order to be accepted\ninstead of a rescued pair."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bam-exclude-tags
+  description: "(=ZX,ZY)                 Comma-separated list of\nregular tags to\
+    \ exclude from\nthe output BAM files. Allowed\nvalues are: all,none,AS,BC,NM\n\
+    ,OC,RG,SM,ZX,ZY"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bam-gzip-level
+  description: (=1)                       Gzip level to use for BAM
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bam-header-tag
+  description: "Additional bam entries that\nare copied into the header of\neach produced\
+    \ bam file. Use\n'\\t' to represent tab\nseparators."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bam-pessimistic-mapq
+  description: "(=0)                 When set, the MAPQ is\ncomputed as MAPQ:=min(60,\n\
+    min(SM, AS)), otherwise\nMAPQ:=min(60, max(SM, AS))"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bam-produce-md5
+  description: "(=1)                      Controls whether a separate\nfile containing\
+    \ md5 checksum\nis produced for each output\nbam."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bam-pu-format
+  description: "(=%F:%L:%B)                 Template string for bam\nheader RG tag\
+    \ PU field.\nOrdinary characters are\ndirectly copied. The\nfollowing placeholders\
+    \ are\nsupported:\n- %F             : Flowcell\nID\n- %L             : Lane\n\
+    number\n- %B             : Barcode"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --barcode-mismatches
+  description: "(=1)                   Multiple entries allowed.\nEach entry is applied\
+    \ to the\ncorresponding base-calls.\nLast entry applies to all the\nbases-calls-directory\
+    \ that do\nnot have barcode-mismatches\nspecified. Last component\nmismatch value\
+    \ applies to all\nsubsequent barcode components\nshould there be more than\none.\
+    \ Examples:\n- 1:0             : allow\none mismatch for the first\nbarcode component\
+    \ and no\nmismatches for the subsequent\ncomponents.\n- 1               : allow\n\
+    one mismatch for every\nbarcode component.\n- 0               : no\nmismatches\
+    \ allowed in any\nbarcode component. This is\nthe default."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: "[ --base-calls ] arg                         full path to the base\
+    \ calls.\nMultiple entries allowed.\nPath should point either to a\ndirectory\
+    \ or a file depending\non --base-calls-format"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "[ --base-calls-format ] arg                  Multiple entries allowed.\n\
+    Each entry is applied to the\ncorresponding base-calls.\nLast entry is applied\
+    \ to all\n--base-calls that don't have\n--base-calls-format\nspecified.\n- bam\
+    \             :\n--base-calls points to a Bam\nfile. All data found in bam\nfile\
+    \ is assumed to come from\nlane 1 of a single flowcell.\n- bcl             :\n\
+    --base-calls points to\nRunInfo.xml file. Data is\nmade of uncompressed bcl\n\
+    files.\n- bcl-gz          :\n--base-calls points to\nRunInfo.xml file. Bcl cycle\n\
+    tile files are individually\ncompressed and named\ns_X_YYYY.bcl.gz\n- bcl-bgzf\
+    \        :\n--base-calls points to\nRunInfo.xml file. Bcl data is\nstored in cycle\
+    \ files that\nare named CCCC.bcl.bgzf\n- fastq           :\n--base-calls points\
+    \ to a\ndirectory containing one\nfastq per lane/read named\nlane<X>_read<Y>.fastq.\
+    \ Use\nlane<X>_read1.fastq for\nsingle-ended data.\n- fastq-gz        :\n--base-calls\
+    \ points to a\ndirectory containing one\ncompressed fastq per\nlane/read named\n\
+    lane<X>_read<Y>.fastq.gz. Use\nlane<X>_read1.fastq.gz for\nsingle-ended data."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --base-quality-cutoff
+  description: "(=15)                 3' end quality trimming\ncutoff. Value above\
+    \ 0 causes\nlow quality bases to be\nsoft-clipped. 0 turns the\ntrimming off."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bcl-tiles-per-chunk
+  description: "(=1)                  Increase this number when the\ntiles are too\
+    \ small for the\nprocessing to be efficient.\nIn particular, collecting the\n\
+    template length statistics\nrequires several tens of\nthousands clusters to work.\n\
+    If tiles are small and data\nis heavily multiplexed, there\nmight be not enough\
+    \ clusters\nin a single tile to collect\nthe tls for a sample"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bin-regex
+  description: "(=all)                          Define which bins appear in\nthe output\
+    \ bam files\nall                   :\nInclude all bins in the bam\nand all contig\
+    \ entries in the\nbam header.\nskip-empty             :\nInclude only the contigs\
+    \ that\nhave aligned data.\nREGEX                 : Is\ntreated as comma-separated\n\
+    list of regular expressions.\nBam files will be filtered to\ncontain only the\
+    \ bins that\nmatch by the name."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --candidate-matches-max
+  description: "(=800)              Maximum number of candidate\nmatches to be considered\
+    \ for\nfinding the best alignment.\nIf seeds yield a greater\nnumber, the alignment\n\
+    generally is not performed.\nOther mechanisms such as\nshadow rescue may still\
+    \ place\nthe fragment."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --cleanup-intermediary
+  description: "(=0)                 When set, Isaac will erase\nintermediate input\
+    \ files for\nthe stages that have been\ncompleted. Notice that this\nwill prevent\
+    \ resumption from\nthe stages that have their\ninput files removed.\n--start-from\
+    \ Last will still\nwork."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --clip-overlapping
+  description: "(=1)                     When set, the pairs that have\nread ends\
+    \ overlapping each\nother will have the\nlower-quality end\nsoft-clipped."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --clip-semialigned
+  description: "(=0)                     When set, reads have their\nbases soft-clipped\
+    \ on either\nsides until a stretch of 5\nmatches is found"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "[ --cluster ] arg                            Restrict the alignment\
+    \ to the\nspecified cluster Id\n(multiple entries allowed)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --clusters-at-a-time
+  description: "(=8000000)             Bam and fastq only. When not\nset, number of\
+    \ clusters to\nprocess together when input\nis bam or fastq is computed\nautomatically\
+    \ based on the\namount of available RAM. Set\nto non-zero value to force\ndeterministic\
+    \ behavior."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --decoy-regex
+  description: "(=decoy)                      Contigs that have matching\nnames are\
+    \ marked as decoys\nand enjoy reduced effort. In\nparticular:\n- Smith waterman\
+    \ is not\nused for alignments\n- Suspicious alignments are\nmarked dodgyFor example,\
+    \ to\nmark everything that does not\nbegin with chr as decoy use\nthe following\
+    \ regex:\n^(?!chr.*)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --default-adapters
+  description: "Multiple entries allowed.\nEach entry is associated with\nthe corresponding\
+    \ base-calls.\nFlowcells that don't have\ndefault-adapters provided,\ndon't get\
+    \ adapters clipped in\nthe data.\nEach entry is a\ncomma-separated list of\nadapter\
+    \ sequences written in\nthe direction of the\nreference. Wildcard (*\ncharacter)\
+    \ is allowed only on\none side of the sequence.\nEntries with * apply only to\n\
+    the alignments on the\nmatching strand. Entries\nwithout * apply to all strand\n\
+    alignments and are matched in\nthe order of appearance in\nthe list.\nExamples:\n\
+    ACGT*,*TGCA       : Will\nclip ACGT and all subsequent\nbases in the forward-strand\n\
+    alignments and mirror the\nbehavior for the\nreverse-strand alignments.\nACGT,TGCA\
+    \         : Will\nfind the following sequences\nin the reads: ACGT, TGCA,\nACGTTGCA\
+    \  (but not TGCAACGT!)\nregardless of the alignment\nstrand. Then will attempt\
+    \ to\nclip off the side of the read\nthat is shorter. If both\nsides are roughly\
+    \ equal\nlength, will clip off the\nside that has less matches.\nStandard    \
+    \      :\nStandard protocol adapters.\nSame as AGATCGGAAGAGC*,*GCTCT\nTCCGATCT\n\
+    Nextera           : Nextera\nstandard. Same as\nCTGTCTCTTATACACATCT*,*AGATGTG\n\
+    TATAAGAGACAG\nNexteraMp         : Nextera\nmate-pair. Same as\nCTGTCTCTTATACACATCT,AGATGTGTA\n\
+    TAAGAGACAG"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --description
+  description: "Free form text to be stored\nin the Isaac @PG DS bam\nheader tag"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --detect-template-block-size
+  description: "(=10000)       Number of pairs to use as a\nsingle block for template\n\
+    length statistics detection"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --disable-resume
+  description: "(=0)                       If eanbled, Isaac does not\npersist the\
+    \ state of the\nanalysis on disk. This might\nsave noticeable amount of\nruntime\
+    \ at the expense of not\nbeing able to use\n--start-from option."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --dodgy-alignment-score
+  description: "(=0)                Controls the behavior for\ntemplates where alignment\n\
+    score is impossible to\nassign:\n- Unaligned        : marks\ntemplate fragments\
+    \ as\nunaligned\n- 0-254            : exact\nMAPQ value to be set in bam\n- Unknown\
+    \          : assigns\nvalue 255 for bam MAPQ.\nEnsures SM and AS are not\nspecified\
+    \ in the bam"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --enable-numa
+  description: "[=arg(=1)] (=0)                   Replicate static data across\nNUMA\
+    \ nodes, lock threads to\ntheir NUMA nodes, allocate\nthread private data on the\n\
+    corresponding NUMA node"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --expected-bgzf-ratio
+  description: "(=1)                  compressed = ratio *\nuncompressed. To avoid\
+    \ memory\noverallocation during the bam\ngeneration, Isaac has to\nassume certain\
+    \ compression\nratio. If Isaac estimates\nless memory than is actually\nrequired,\
+    \ it will fail at\nruntime. You can check how\nfar you are from the\ndangerous\
+    \ zone by looking at\nthe resident/swap memory\nnumbers for your process\nduring\
+    \ the bam generation. If\nyou see too much showing as\n'swap', it is safe to reduce\n\
+    the --expected-bgzf-ratio."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --expected-coverage
+  description: "(=60)                   Expected coverage is required\nfor Isaac to\
+    \ estimate the\nefficient binning of the\naligned data."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --fastq-q0
+  description: "(=!)                             Character to serve as base\nquality\
+    \ 0 in fastq input."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --gap-scoring
+  description: "(=bwa)                        Gapped alignment algorithm\nparameters:\n\
+    - eland            :\nequivalent of 2:-1:-15:-3:-25\n- bwa              :\nequivalent\
+    \ of 0:-3:-11:-4:-20\n- bwa-mem          :\nequivalent of 1:-4:-6:-1:-20\n- m:mm:go:ge:me:gl\
+    \ :\ncolon-delimited string of\nvalues where:\nm              : match\nscore\n\
+    mm             :\nmismatch score\ngo             : gap\nopen score\nge       \
+    \      : gap\nextend score\nme             : min\nextend score (all gaps\nreaching\
+    \ this score will be\ntreated as equal)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --hash-table-buckets
+  description: "(=0)                   Number of buckets to use for\nreference hash\
+    \ table. Larger\nnumber of buckets requires\nmore RAM but it tends to\nspeed up\
+    \ the execution and\nimprove sensitivity. Value of\n0 indicates default bucket\n\
+    count: 2^({seed-length}*2)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --help-defaults
+  description: "produce tab-delimited list of\ncommand line options and\ntheir default\
+    \ values"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --help-md
+  description: "produce help message\npre-formatted as a markdown\nfile section and\
+    \ exit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-missing-bcls
+  description: "(=0)                  When set, missing bcl files\nare treated as\
+    \ all clusters\nhaving N bases for the\ncorresponding tile cycle.\nOtherwise,\
+    \ encountering a\nmissing bcl file causes the\nanalysis to fail."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-missing-filters
+  description: "(=0)               When set, missing filter\nfiles are treated as\
+    \ if all\nclusters pass filter for the\ncorresponding tile.\nOtherwise, encountering\
+    \ a\nmissing filter file causes\nthe analysis to fail."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --input-concurrent-load
+  description: "(=64)               Maximum number of concurrent\nfile read operations\
+    \ for\n--base-calls"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  description: "[ --jobs ] arg (=8)                          Maximum number of compute\n\
+    threads to run in parallel"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-duplicates
+  description: "(=1)                      Keep duplicate pairs in the\nbam file (with\
+    \ 0x400 flag set\nin all but the best one)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-unaligned
+  description: "(=back)                    Available options:\n- discard         \
+    \ : discard\nclusters where both reads are\nnot aligned\n- front            :\
+    \ keep\nunaligned clusters in the\nfront of the BAM file\n- back             :\
+    \ keep\nunaligned clusters in the\nback of the BAM file"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --known-indels
+  description: "path to a VCF file containing\nknown indels fore\nrealignment."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --lane-number-max
+  description: "(=8)                      Maximum lane number to look\nfor in --base-calls-directory\n\
+    (fastq only)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --mapq-threshold
+  description: "(=-1)                      If any fragment alignment in\ntemplate\
+    \ is below the\nthreshold, template is not\nstored in the BAM."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --mark-duplicates
+  description: "(=1)                      If not set and --keep-duplica\ntes is set,\
+    \ the duplicates\nare not discarded and not\nflagged."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --match-finder-shadow-split-repeats
+  description: "(=100000)\nMaximum number of seed\ncandidate matches to be\nconsidered\
+    \ for finding a\npossible alignment split."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --match-finder-too-many-repeats
+  description: "(=4000)     Maximum number of seed\nmatches to be looked at for\n\
+    each attempted seed"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --match-finder-way-too-many-repeats
+  description: "(=100000)\nMaximum number of seed\nmatches to be looked at if in\n\
+    a pair one read has candidate\nalignments and the otherhas\ngone over match-finder-too-ma\n\
+    ny-repeats on all seeds or\nover candidate-matches-max\nwhen seed position merge\
+    \ was\nattempted"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --memory-control
+  description: "(=off)                     Define the behavior in case\nunexpected\
+    \ memory allocations\nare detected:\n- warning         : Log\nWARNING about the\
+    \ allocation.\n- off             : Don't\nmonitor dynamic memory usage.\n- strict\
+    \          : Fail\nmemory allocation. Intended\nfor development use."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "[ --memory-limit ] arg (=0)                  Limits major memory\n\
+    consumption operations to a\nset number of gigabytes. 0\nmeans no limit, however\
+    \ 0 is\nnot allowed as in such case\nIsaac will most likely\nconsume all the memory\
+    \ on the\nsystem and cause it to crash.\nDefault value is taken from\nulimit -v."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --neighborhood-size-threshold
+  description: "(=0)          Threshold used to decide if\nthe number of reference\n\
+    32-mers sharing the same\nprefix (16 bases) is small\nenough to justify the\n\
+    neighborhood search. Use\nlarge enough value e.g. 10000\nto enable alignment to\n\
+    positions where seeds don't\nmatch exactly."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --output-concurrent-save
+  description: "(=120)             Maximum number of concurrent\nfile write operations\
+    \ for\n--output-directory"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "[ --output-directory ] arg (=./Aligned)      Directory where the final\n\
+    alignment data be stored"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --per-tile-tls
+  description: "(=0)                         Forces template length\nstatistics(TLS)\
+    \ to be\nrecomputed for each tile.\nWhen not set, the first tile\nthat produces\
+    \ stable TLS will\ndetermine TLS for the rest of\nthe tiles of the lane. Notice\n\
+    that as the tiles are not\nguaranteed to be processed in\nthe same order between\n\
+    different runs, some pair\nalignments might vary between\ntwo runs on the same\
+    \ data\nunless --per-tile-tls is set.\nIt is not recommended to set\n--per-tile-tls\
+    \ when input\ndata is not randomly\ndistributed (such as bam) as\nin such cases,\
+    \ the shadow\nrescue range will be biased\nby the input data ordering."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --pf-only
+  description: "(=1)                              When set, only the fragments\npassing\
+    \ filter (PF) are\ngenerated in the BAM file"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --pre-allocate-bins
+  description: "(=0)                    Use fallocate to reduce the\nbin file fragmentation.\
+    \ Since\nbin files are pre-allocated\nbased on the estimation of\ntheir size,\
+    \ it is recommended\nto turn bin pre-allocation\noff when using RAM disk as\n\
+    temporary storage."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --pre-sort-bins
+  description: "(=1)                        Unset this value if you are\nworking with\
+    \ references that\nhave many contigs (1000+)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --read-name-length
+  description: "(=0)                     Maximum read name length\n(fastq and bam\
+    \ only). Value\nof 0 causes the read name\nlength to be determined by\nreading\
+    \ the first records of\nthe input data. Shorter than\nneeded read names can cause\n\
+    duplicate names in the output\nbam files."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --realign-dodgy
+  description: "(=0)                        If not set, the reads without\nalignment\
+    \ score are not\nrealigned against gaps found\nin other reads."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --realign-gaps
+  description: "(=sample)                    For reads overlapping the\ngaps occurring\
+    \ on other\nreads, check if applying\nthose gaps reduces mismatch\ncount. Significantly\
+    \ reduces\nnumber of false SNPs reported\naround short indels.\n- no         \
+    \     : no gap\nrealignment\n- sample          : realign\nagainst gaps found in\
+    \ the\nsame sample\n- project         : realign\nagainst gaps found in all\nsamples\
+    \ of the same project\n- all             : realign\nagainst gaps found in all\n\
+    samples"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --realign-mapq-min
+  description: "(=60)                    Gaps from alignments with\nlower MAPQ will\
+    \ not be used\nas candidates for gap\nrealignment"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --realign-vigorously
+  description: "(=0)                   If set, the realignment\nresult will be used\
+    \ to search\nfor more gaps and attempt\nanother realignment,\neffectively extending\
+    \ the\nrealignment over multiple\ndeletions not covered by the\noriginal alignment."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --realigned-gaps-per-fragment
+  description: "(=4)          Maximum number of gaps the\nrealigner can introduce\
+    \ into\na fragment. For 100 bases\nlong DNA it is reasonable to\nkeep it no bigger\
+    \ than 2. RNA\nreads can overlap multiple\nintrons. Therefore a larger\nnumber\
+    \ is probably required\nfor RNA. Notice that bigger\nvalues can significantly\
+    \ slow\ndown the bam generation as\nthere is a n choose k\ncombination try with\
+    \ n being\nthe number of gaps detected\nby all other fragment\nalignments that\
+    \ overlap the\nfragment being realigned."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "[ --reference-genome ] arg                   Full path to the reference\n\
+    genome XML descriptor."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "[ --reference-name ] arg (=default)          Unique symbolic name\
+    \ of the\nreference. Multiple entries\nallowed. Each entry is\nassociated with\
+    \ the\ncorresponding --reference-gen\nome and will be matched\nagainst the 'reference'\n\
+    column in the sample sheet.\nSpecial names:\n- unknown         : default\nreference\
+    \ to use with data\nthat did not match any\nbarcode.\n- default         :\nreference\
+    \ to use for the data\nwith no matching value in\nsample sheet 'reference'\ncolumn."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --remap-qscores
+  description: "Replace the base calls\nqscores according to the\nrules provided.\n\
+    - identity   : No remapping.\nOriginal qscores are\npreserved\n- bin:8      :\
+    \ Equivalent of\n0-1:0,2-9:7,10-19:11,20-24:22\n,25-29:27,30-34:32,35-39:37,4\n\
+    0-63:40"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --repeat-threshold
+  description: "(=100)                   Threshold used to decide if\nmatches must\
+    \ be discarded as\ntoo abundant (when the number\nof repeats is greater or\nequal\
+    \ to the threshold)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --rescue-shadows
+  description: "(=1)                       Scan within dominant template\nrange off\
+    \ an orphan, for a\npossible shadow alignment"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --response-file
+  description: file with more command line
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --scatter-repeats
+  description: "(=1)                      When set, extra care will be\ntaken to scatter\
+    \ pairs\naligning to repeats across\nthe repeat locations"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --seed-base-quality-min
+  description: "(=3)                Minimum base quality for the\nseed to be used\
+    \ in alignment\ncandidate search."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --seed-length
+  description: "(=16)                         Length of the seed in bases.\nOnly 10\
+    \ 11 12 13 14 15 16 17\n18 19 20  are allowed. Longer\nseeds reduce sensitivity\
+    \ on\nnoisy data but improve repeat\nresolution and run time."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --shadow-scan-range
+  description: "(=-1)                   -1     - scan for possible\nmate alignments\
+    \ between\ntemplate min and max\n>=0    - scan for possible\nmate alignments in\
+    \ range of\ntemplate median +=\nshadow-scan-range"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --single-library-samples
+  description: "(=1)               If set, the duplicate\ndetection will occur across\n\
+    all read pairs in the sample.\nIf not set, different lanes\nare assumed to originate\
+    \ from\ndifferent libraries and\nduplicate detection is not\nperformed across\
+    \ lanes."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --smith-waterman-gap-size-max
+  description: "(=16)         Maximum length of gap\ndetectable by smith waterman\n\
+    algorithm."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --smith-waterman-gaps-max
+  description: "(=4)              Maximum number of gaps that\ncan be introduced into\
+    \ an\nalignment by Smith-Waterman\nalgorithm. If the optimum\nalignment has more\
+    \ gaps, it\nis simply ignored as an\nalignment candidate."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --split-alignments
+  description: "(=1)                     When set, alignments crossing\na structural\
+    \ variant are\nallowed to be split with SA\ntag."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --split-gap-length
+  description: "(=10000)                 Maximum length of insertion\nor deletion\
+    \ allowed to exist\nin a read. If a gap exceeds\nthis limit, the read gets\nbroken\
+    \ up around the gap with\nSA tag introduced"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --start-from
+  description: "(=Start)                       Start processing at the\nspecified\
+    \ stage:\n- Start            : don't\nresume, start from beginning\n- Align  \
+    \          : same\nas Start\n- AlignmentReports :\nregenerate alignment reports\n\
+    and bam\n- Bam              : resume\nat bam generation\n- Finish           :\
+    \ Same\nas Bam.\n- Last             : resume\nfrom the last successful step\n\
+    Note that although Isaac\nattempts to perform some\nbasic validation, the only\n\
+    safe option is 'Start' The\nprimary purpose of the\nfeature is to reduce the time\n\
+    required to diagnose the\nissues rather than be used on\na regular basis."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --stats-image-format
+  description: "(=none)                Format to use for images\nduring stats generation\n\
+    - gif        : produce .gif\ntype plots\n- none       : no stat\ngeneration"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --stop-at
+  description: "(=Finish)                         Stop processing after the\nspecified\
+    \ stage is complete:\n- Start            :\nperform the first stage only\n- Align\
+    \            : same\nas Start\n- AlignmentReports : don't\nperform bam generation\n\
+    - Bam              : finish\nwhen bam is done\n- Finish           : stop\nat the\
+    \ end.\n- Last             :\nperform up to the last\nsuccessful step only\nNote\
+    \ that although Isaac\nattempts to perform some\nbasic validation, the only\n\
+    safe option is 'Finish' The\nprimary purpose of the\nfeature is to reduce the\
+    \ time\nrequired to diagnose the\nissues rather than be used on\na regular basis."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --target-bin-size
+  description: "(=0)                      Isaac will attempt to bin\ntemporary data\
+    \ so that each\nbin is close to targetBinSize\nin megabytes (1024 * 1024\nbytes).\
+    \ Value of 0 will cause\nIsaac to compute the target\nbin size automatically based\n\
+    on the available memory."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --temp-concurrent-load
+  description: "(=4)                 Maximum number of concurrent\nfile read operations\
+    \ for\n--temp-directory"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --temp-concurrent-save
+  description: "(=680)               Maximum number of concurrent\nfile write operations\
+    \ for\n--temp-directory"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "[ --temp-directory ] arg (=./Temp)           Directory where the temporary\n\
+    files will be stored\n(matches, unsorted\nalignments, etc.)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tiles
+  description: "Comma-separated list of\nregular expressions to select\nonly a subset\
+    \ of the tiles\navailable in the flow-cell.\n- to select all the tiles\nending\
+    \ with '5' in all lanes:\n--tiles [0-9][0-9][0-9]5\n- to select tile 2 in lane\
+    \ 1\nand all the tiles in the\nother lanes: --tiles\ns_1_0002,s_[2-8]\nMultiple\
+    \ entries allowed,\neach applies to the\ncorresponding base-calls."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --tls
+  description: "Template-length statistics in\nthe format 'min:median:max:lo\nwStdDev:highStdDev:M0:M1',\n\
+    where M0 and M1 are the\nnumeric value of the models\n(0=FFp, 1=FRp, 2=RFp, 3=RRp,\n\
+    4=FFm, 5=FRm, 6=RFm, 7=RRm)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --trim-pe
+  description: (=1)                              Trim overhanging ends of PE
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --use-smith-waterman
+  description: "(=smart)               One of the following:\n- always           :\
+    \ Use\nsmith-waterman to reduce the\namount of mismatches in\naligned reads\n\
+    - smart            : apply\nheuristics to avoid executing\ncostly smith-waterman\
+    \ on\nsequences that are unlikely\nto produce gaps\n- never            : Don't\n\
+    use smith-waterman"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --variable-read-length
+  description: "Unless set, Isaac will fail\nif the length of the sequence\nchanges\
+    \ between the records\nof a fastq or a bam file."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: "(=2)                            Verbosity: FATAL(0),\nERRORS(1), WARNINGS(2),\n\
+    INFO(3), DEBUG(4) (not\nsupported yet)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: '[ --version ]                                print program version'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: '[ --help ]                                   produce help message
+    and exit'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "2021-02-28 15:39:03 \t[7fc81cea0740]\tForcing LC_ALL to C\n2021-02-28\
+  \ 15:39:03 \t[7fc81cea0740]\tVersion: Isaac-04.18.11.09\n2021-02-28 15:39:03 \t\
+  [7fc81cea0740]\tGenome offset type: j\n2021-02-28 15:39:03 \t[7fc81cea0740]\targc:\
+  \ 1 argv: isaac-align\nisaac-align -r <reference> -b <base calls> -m <memory limit>\
+  \ [optional arguments]\n\nCommand line options:\n  --allow-empty-flowcells arg (=0)\
+  \                Avoid failure when some of \n                                 \
+  \                 the --base-calls contain no \n                               \
+  \                   data\n  --anchor-mate arg (=1)                          Allow\
+  \ entire pair to be \n                                                  anchored\
+  \ by only one read if \n                                                  it has\
+  \ not been realigned. If\n                                                  not\
+  \ set, each read is \n                                                  anchored\
+  \ individually and \n                                                  does not\
+  \ affect anchoring of \n                                                  its mate.\n\
+  \  --anomalous-pair-handicap arg (=240)            When deciding between an \n \
+  \                                                 anomalous pair and a rescued \n\
+  \                                                  pair, this is proportional to\n\
+  \                                                  the number of mismatches \n \
+  \                                                 anomalous pair needs to have \n\
+  \                                                  less in order to be accepted\
+  \ \n                                                  instead of a rescued pair.\n\
+  \  --bam-exclude-tags arg (=ZX,ZY)                 Comma-separated list of \n  \
+  \                                                regular tags to exclude from \n\
+  \                                                  the output BAM files. Allowed\n\
+  \                                                  values are: all,none,AS,BC,NM\n\
+  \                                                  ,OC,RG,SM,ZX,ZY\n  --bam-gzip-level\
+  \ arg (=1)                       Gzip level to use for BAM\n  --bam-header-tag arg\
+  \                            Additional bam entries that \n                    \
+  \                              are copied into the header of\n                 \
+  \                                 each produced bam file. Use \n               \
+  \                                   '\\t' to represent tab \n                  \
+  \                                separators.\n  --bam-pessimistic-mapq arg (=0)\
+  \                 When set, the MAPQ is \n                                     \
+  \             computed as MAPQ:=min(60, \n                                     \
+  \             min(SM, AS)), otherwise \n                                       \
+  \           MAPQ:=min(60, max(SM, AS))\n  --bam-produce-md5 arg (=1)           \
+  \           Controls whether a separate \n                                     \
+  \             file containing md5 checksum \n                                  \
+  \                is produced for each output \n                                \
+  \                  bam.\n  --bam-pu-format arg (=%F:%L:%B)                 Template\
+  \ string for bam \n                                                  header RG tag\
+  \ PU field. \n                                                  Ordinary characters\
+  \ are \n                                                  directly copied. The \n\
+  \                                                  following placeholders are \n\
+  \                                                  supported:\n                \
+  \                                    - %F             : Flowcell\n             \
+  \                                     ID\n                                     \
+  \               - %L             : Lane \n                                     \
+  \             number\n                                                    - %B \
+  \            : Barcode\n  --barcode-mismatches arg (=1)                   Multiple\
+  \ entries allowed. \n                                                  Each entry\
+  \ is applied to the \n                                                  corresponding\
+  \ base-calls. \n                                                  Last entry applies\
+  \ to all the\n                                                  bases-calls-directory\
+  \ that do\n                                                  not have barcode-mismatches\
+  \ \n                                                  specified. Last component\
+  \ \n                                                  mismatch value applies to\
+  \ all\n                                                  subsequent barcode components\n\
+  \                                                  should there be more than \n\
+  \                                                  one. Examples: \n           \
+  \                                         - 1:0             : allow \n         \
+  \                                         one mismatch for the first \n        \
+  \                                          barcode component and no \n         \
+  \                                         mismatches for the subsequent\n      \
+  \                                            components.\n                     \
+  \                               - 1               : allow \n                   \
+  \                               one mismatch for every \n                      \
+  \                            barcode component.\n                              \
+  \                      - 0               : no \n                               \
+  \                   mismatches allowed in any \n                               \
+  \                   barcode component. This is \n                              \
+  \                    the default.\n  -b [ --base-calls ] arg                   \
+  \      full path to the base calls. \n                                         \
+  \         Multiple entries allowed. \n                                         \
+  \         Path should point either to a\n                                      \
+  \            directory or a file depending\n                                   \
+  \               on --base-calls-format\n  -f [ --base-calls-format ] arg       \
+  \           Multiple entries allowed. \n                                       \
+  \           Each entry is applied to the \n                                    \
+  \              corresponding base-calls. \n                                    \
+  \              Last entry is applied to all \n                                 \
+  \                 --base-calls that don't have \n                              \
+  \                    --base-calls-format \n                                    \
+  \              specified.\n                                                    -\
+  \ bam             : \n                                                  --base-calls\
+  \ points to a Bam \n                                                  file. All\
+  \ data found in bam \n                                                  file is\
+  \ assumed to come from \n                                                  lane\
+  \ 1 of a single flowcell.\n                                                    -\
+  \ bcl             : \n                                                  --base-calls\
+  \ points to \n                                                  RunInfo.xml file.\
+  \ Data is \n                                                  made of uncompressed\
+  \ bcl \n                                                  files.\n             \
+  \                                       - bcl-gz          : \n                 \
+  \                                 --base-calls points to \n                    \
+  \                              RunInfo.xml file. Bcl cycle \n                  \
+  \                                tile files are individually \n                \
+  \                                  compressed and named \n                     \
+  \                             s_X_YYYY.bcl.gz\n                                \
+  \                    - bcl-bgzf        : \n                                    \
+  \              --base-calls points to \n                                       \
+  \           RunInfo.xml file. Bcl data is\n                                    \
+  \              stored in cycle files that \n                                   \
+  \               are named CCCC.bcl.bgzf\n                                      \
+  \              - fastq           : \n                                          \
+  \        --base-calls points to a \n                                           \
+  \       directory containing one \n                                            \
+  \      fastq per lane/read named \n                                            \
+  \      lane<X>_read<Y>.fastq. Use \n                                           \
+  \       lane<X>_read1.fastq for \n                                             \
+  \     single-ended data.\n                                                    -\
+  \ fastq-gz        : \n                                                  --base-calls\
+  \ points to a \n                                                  directory containing\
+  \ one \n                                                  compressed fastq per \n\
+  \                                                  lane/read named \n          \
+  \                                        lane<X>_read<Y>.fastq.gz. Use\n       \
+  \                                           lane<X>_read1.fastq.gz for \n      \
+  \                                            single-ended data.\n  --base-quality-cutoff\
+  \ arg (=15)                 3' end quality trimming \n                         \
+  \                         cutoff. Value above 0 causes \n                      \
+  \                            low quality bases to be \n                        \
+  \                          soft-clipped. 0 turns the \n                        \
+  \                          trimming off.\n  --bcl-tiles-per-chunk arg (=1)     \
+  \             Increase this number when the\n                                  \
+  \                tiles are too small for the \n                                \
+  \                  processing to be efficient. \n                              \
+  \                    In particular, collecting the\n                           \
+  \                       template length statistics \n                          \
+  \                        requires several tens of \n                           \
+  \                       thousands clusters to work. \n                         \
+  \                         If tiles are small and data \n                       \
+  \                           is heavily multiplexed, there\n                    \
+  \                              might be not enough clusters \n                 \
+  \                                 in a single tile to collect \n               \
+  \                                   the tls for a sample\n  --bin-regex arg (=all)\
+  \                          Define which bins appear in \n                      \
+  \                            the output bam files\n                            \
+  \                      all                   : \n                              \
+  \                    Include all bins in the bam \n                            \
+  \                      and all contig entries in the\n                         \
+  \                         bam header.\n                                        \
+  \          skip-empty             : \n                                         \
+  \         Include only the contigs that\n                                      \
+  \            have aligned data.\n                                              \
+  \    REGEX                 : Is \n                                             \
+  \     treated as comma-separated \n                                            \
+  \      list of regular expressions. \n                                         \
+  \         Bam files will be filtered to\n                                      \
+  \            contain only the bins that \n                                     \
+  \             match by the name.\n  --candidate-matches-max arg (=800)         \
+  \     Maximum number of candidate \n                                           \
+  \       matches to be considered for \n                                        \
+  \          finding the best alignment. \n                                      \
+  \            If seeds yield a greater \n                                       \
+  \           number, the alignment \n                                           \
+  \       generally is not performed. \n                                         \
+  \         Other mechanisms such as \n                                          \
+  \        shadow rescue may still place\n                                       \
+  \           the fragment.\n  --cleanup-intermediary arg (=0)                 When\
+  \ set, Isaac will erase \n                                                  intermediate\
+  \ input files for \n                                                  the stages\
+  \ that have been \n                                                  completed.\
+  \ Notice that this \n                                                  will prevent\
+  \ resumption from \n                                                  the stages\
+  \ that have their \n                                                  input files\
+  \ removed. \n                                                  --start-from Last\
+  \ will still \n                                                  work.\n  --clip-overlapping\
+  \ arg (=1)                     When set, the pairs that have\n                 \
+  \                                 read ends overlapping each \n                \
+  \                                  other will have the \n                      \
+  \                            lower-quality end \n                              \
+  \                    soft-clipped.\n  --clip-semialigned arg (=0)              \
+  \       When set, reads have their \n                                          \
+  \        bases soft-clipped on either \n                                       \
+  \           sides until a stretch of 5 \n                                      \
+  \            matches is found\n  -c [ --cluster ] arg                          \
+  \  Restrict the alignment to the\n                                             \
+  \     specified cluster Id \n                                                  (multiple\
+  \ entries allowed)\n  --clusters-at-a-time arg (=8000000)             Bam and fastq\
+  \ only. When not \n                                                  set, number\
+  \ of clusters to \n                                                  process together\
+  \ when input \n                                                  is bam or fastq\
+  \ is computed \n                                                  automatically\
+  \ based on the \n                                                  amount of available\
+  \ RAM. Set \n                                                  to non-zero value\
+  \ to force \n                                                  deterministic behavior.\n\
+  \  --decoy-regex arg (=decoy)                      Contigs that have matching \n\
+  \                                                  names are marked as decoys \n\
+  \                                                  and enjoy reduced effort. In\
+  \ \n                                                  particular: \n           \
+  \                                         - Smith waterman is not \n           \
+  \                                       used for alignments\n                  \
+  \                                  - Suspicious alignments are\n               \
+  \                                   marked dodgyFor example, to \n             \
+  \                                     mark everything that does not\n          \
+  \                                        begin with chr as decoy use \n        \
+  \                                          the following regex: \n             \
+  \                                     ^(?!chr.*)\n  --default-adapters arg     \
+  \                     Multiple entries allowed. \n                             \
+  \                     Each entry is associated with\n                          \
+  \                        the corresponding base-calls.\n                       \
+  \                           Flowcells that don't have \n                       \
+  \                           default-adapters provided, \n                      \
+  \                            don't get adapters clipped in\n                   \
+  \                               the data. \n                                   \
+  \               Each entry is a \n                                             \
+  \     comma-separated list of \n                                               \
+  \   adapter sequences written in \n                                            \
+  \      the direction of the \n                                                 \
+  \ reference. Wildcard (* \n                                                  character)\
+  \ is allowed only on\n                                                  one side\
+  \ of the sequence. \n                                                  Entries with\
+  \ * apply only to \n                                                  the alignments\
+  \ on the \n                                                  matching strand. Entries\
+  \ \n                                                  without * apply to all strand\n\
+  \                                                  alignments and are matched in\n\
+  \                                                  the order of appearance in \n\
+  \                                                  the list.\n                 \
+  \                                 Examples:\n                                  \
+  \                  ACGT*,*TGCA       : Will \n                                 \
+  \                 clip ACGT and all subsequent \n                              \
+  \                    bases in the forward-strand \n                            \
+  \                      alignments and mirror the \n                            \
+  \                      behavior for the \n                                     \
+  \             reverse-strand alignments.\n                                     \
+  \               ACGT,TGCA         : Will \n                                    \
+  \              find the following sequences \n                                 \
+  \                 in the reads: ACGT, TGCA, \n                                 \
+  \                 ACGTTGCA  (but not TGCAACGT!)\n                              \
+  \                    regardless of the alignment \n                            \
+  \                      strand. Then will attempt to \n                         \
+  \                         clip off the side of the read\n                      \
+  \                            that is shorter. If both \n                       \
+  \                           sides are roughly equal \n                         \
+  \                         length, will clip off the \n                         \
+  \                         side that has less matches.\n                        \
+  \                            Standard          : \n                            \
+  \                      Standard protocol adapters. \n                          \
+  \                        Same as AGATCGGAAGAGC*,*GCTCT\n                       \
+  \                           TCCGATCT\n                                         \
+  \           Nextera           : Nextera\n                                      \
+  \            standard. Same as \n                                              \
+  \    CTGTCTCTTATACACATCT*,*AGATGTG\n                                           \
+  \       TATAAGAGACAG\n                                                    NexteraMp\
+  \         : Nextera\n                                                  mate-pair.\
+  \ Same as \n                                                  CTGTCTCTTATACACATCT,AGATGTGTA\n\
+  \                                                  TAAGAGACAG\n  --description arg\
+  \                               Free form text to be stored \n                 \
+  \                                 in the Isaac @PG DS bam \n                   \
+  \                               header tag\n  --detect-template-block-size arg (=10000)\
+  \       Number of pairs to use as a \n                                         \
+  \         single block for template \n                                         \
+  \         length statistics detection\n  --disable-resume arg (=0)             \
+  \          If eanbled, Isaac does not \n                                       \
+  \           persist the state of the \n                                        \
+  \          analysis on disk. This might \n                                     \
+  \             save noticeable amount of \n                                     \
+  \             runtime at the expense of not\n                                  \
+  \                being able to use \n                                          \
+  \        --start-from option.\n  --dodgy-alignment-score arg (=0)              \
+  \  Controls the behavior for \n                                                \
+  \  templates where alignment \n                                                \
+  \  score is impossible to \n                                                  assign:\n\
+  \                                                   - Unaligned        : marks \n\
+  \                                                  template fragments as \n    \
+  \                                              unaligned\n                     \
+  \                              - 0-254            : exact \n                   \
+  \                               MAPQ value to be set in bam\n                  \
+  \                                 - Unknown          : assigns\n               \
+  \                                   value 255 for bam MAPQ. \n                 \
+  \                                 Ensures SM and AS are not \n                 \
+  \                                 specified in the bam\n  --enable-numa [=arg(=1)]\
+  \ (=0)                   Replicate static data across \n                       \
+  \                           NUMA nodes, lock threads to \n                     \
+  \                             their NUMA nodes, allocate \n                    \
+  \                              thread private data on the \n                   \
+  \                               corresponding NUMA node\n  --expected-bgzf-ratio\
+  \ arg (=1)                  compressed = ratio * \n                            \
+  \                      uncompressed. To avoid memory\n                         \
+  \                         overallocation during the bam\n                      \
+  \                            generation, Isaac has to \n                       \
+  \                           assume certain compression \n                      \
+  \                            ratio. If Isaac estimates \n                      \
+  \                            less memory than is actually \n                   \
+  \                               required, it will fail at \n                   \
+  \                               runtime. You can check how \n                  \
+  \                                far you are from the \n                       \
+  \                           dangerous zone by looking at \n                    \
+  \                              the resident/swap memory \n                     \
+  \                             numbers for your process \n                      \
+  \                            during the bam generation. If\n                   \
+  \                               you see too much showing as \n                 \
+  \                                 'swap', it is safe to reduce \n              \
+  \                                    the --expected-bgzf-ratio.\n  --expected-coverage\
+  \ arg (=60)                   Expected coverage is required\n                  \
+  \                                for Isaac to estimate the \n                  \
+  \                                efficient binning of the \n                   \
+  \                               aligned data.\n  --fastq-q0 arg (=!)           \
+  \                  Character to serve as base \n                               \
+  \                   quality 0 in fastq input.\n  --gap-scoring arg (=bwa)      \
+  \                  Gapped alignment algorithm \n                               \
+  \                   parameters:\n                                              \
+  \     - eland            : \n                                                  equivalent\
+  \ of 2:-1:-15:-3:-25\n                                                   - bwa \
+  \             : \n                                                  equivalent of\
+  \ 0:-3:-11:-4:-20\n                                                   - bwa-mem\
+  \          : \n                                                  equivalent of 1:-4:-6:-1:-20\n\
+  \                                                   - m:mm:go:ge:me:gl : \n    \
+  \                                              colon-delimited string of \n    \
+  \                                              values where:\n                 \
+  \                                      m              : match \n               \
+  \                                   score\n                                    \
+  \                   mm             : \n                                        \
+  \          mismatch score\n                                                    \
+  \   go             : gap \n                                                  open\
+  \ score\n                                                       ge             :\
+  \ gap \n                                                  extend score\n       \
+  \                                                me             : min \n       \
+  \                                           extend score (all gaps \n          \
+  \                                        reaching this score will be \n        \
+  \                                          treated as equal)\n  --hash-table-buckets\
+  \ arg (=0)                   Number of buckets to use for \n                   \
+  \                               reference hash table. Larger \n                \
+  \                                  number of buckets requires \n               \
+  \                                   more RAM but it tends to \n                \
+  \                                  speed up the execution and \n               \
+  \                                   improve sensitivity. Value of\n            \
+  \                                      0 indicates default bucket \n           \
+  \                                       count: 2^({seed-length}*2)\n  -h [ --help\
+  \ ]                                   produce help message and exit\n  --help-defaults\
+  \                                 produce tab-delimited list of\n              \
+  \                                    command line options and \n               \
+  \                                   their default values\n  --help-md          \
+  \                             produce help message \n                          \
+  \                        pre-formatted as a markdown \n                        \
+  \                          file section and exit\n  --ignore-missing-bcls arg (=0)\
+  \                  When set, missing bcl files \n                              \
+  \                    are treated as all clusters \n                            \
+  \                      having N bases for the \n                               \
+  \                   corresponding tile cycle. \n                               \
+  \                   Otherwise, encountering a \n                               \
+  \                   missing bcl file causes the \n                             \
+  \                     analysis to fail.\n  --ignore-missing-filters arg (=0)   \
+  \            When set, missing filter \n                                       \
+  \           files are treated as if all \n                                     \
+  \             clusters pass filter for the \n                                  \
+  \                corresponding tile. \n                                        \
+  \          Otherwise, encountering a \n                                        \
+  \          missing filter file causes \n                                       \
+  \           the analysis to fail.\n  --input-concurrent-load arg (=64)         \
+  \      Maximum number of concurrent \n                                         \
+  \         file read operations for \n                                          \
+  \        --base-calls\n  -j [ --jobs ] arg (=8)                          Maximum\
+  \ number of compute \n                                                  threads\
+  \ to run in parallel\n  --keep-duplicates arg (=1)                      Keep duplicate\
+  \ pairs in the \n                                                  bam file (with\
+  \ 0x400 flag set\n                                                  in all but the\
+  \ best one)\n  --keep-unaligned arg (=back)                    Available options:\n\
+  \                                                   - discard          : discard\n\
+  \                                                  clusters where both reads are\n\
+  \                                                  not aligned\n               \
+  \                                    - front            : keep \n              \
+  \                                    unaligned clusters in the \n              \
+  \                                    front of the BAM file\n                   \
+  \                                - back             : keep \n                  \
+  \                                unaligned clusters in the \n                  \
+  \                                back of the BAM file\n  --known-indels arg    \
+  \                          path to a VCF file containing\n                     \
+  \                             known indels fore \n                             \
+  \                     realignment.\n  --lane-number-max arg (=8)               \
+  \       Maximum lane number to look \n                                         \
+  \         for in --base-calls-directory\n                                      \
+  \            (fastq only).\n  --mapq-threshold arg (=-1)                      If\
+  \ any fragment alignment in \n                                                 \
+  \ template is below the \n                                                  threshold,\
+  \ template is not \n                                                  stored in\
+  \ the BAM.\n  --mark-duplicates arg (=1)                      If not set and --keep-duplica\n\
+  \                                                  tes is set, the duplicates \n\
+  \                                                  are not discarded and not \n\
+  \                                                  flagged.\n  --match-finder-shadow-split-repeats\
+  \ arg (=100000)\n                                                  Maximum number\
+  \ of seed \n                                                  candidate matches\
+  \ to be \n                                                  considered for finding\
+  \ a \n                                                  possible alignment split.\n\
+  \  --match-finder-too-many-repeats arg (=4000)     Maximum number of seed \n   \
+  \                                               matches to be looked at for \n \
+  \                                                 each attempted seed\n  --match-finder-way-too-many-repeats\
+  \ arg (=100000)\n                                                  Maximum number\
+  \ of seed \n                                                  matches to be looked\
+  \ at if in\n                                                  a pair one read has\
+  \ candidate\n                                                  alignments and the\
+  \ otherhas \n                                                  gone over match-finder-too-ma\n\
+  \                                                  ny-repeats on all seeds or \n\
+  \                                                  over candidate-matches-max \n\
+  \                                                  when seed position merge was\
+  \ \n                                                  attempted \n  --memory-control\
+  \ arg (=off)                     Define the behavior in case \n                \
+  \                                  unexpected memory allocations\n             \
+  \                                     are detected: \n                         \
+  \                           - warning         : Log \n                         \
+  \                         WARNING about the allocation.\n                      \
+  \                              - off             : Don't \n                    \
+  \                              monitor dynamic memory usage.\n                 \
+  \                                   - strict          : Fail \n                \
+  \                                  memory allocation. Intended \n              \
+  \                                    for development use.\n  -m [ --memory-limit\
+  \ ] arg (=0)                  Limits major memory \n                           \
+  \                       consumption operations to a \n                         \
+  \                         set number of gigabytes. 0 \n                        \
+  \                          means no limit, however 0 is \n                     \
+  \                             not allowed as in such case \n                   \
+  \                               Isaac will most likely \n                      \
+  \                            consume all the memory on the\n                   \
+  \                               system and cause it to crash.\n                \
+  \                                  Default value is taken from \n              \
+  \                                    ulimit -v.\n  --neighborhood-size-threshold\
+  \ arg (=0)          Threshold used to decide if \n                             \
+  \                     the number of reference \n                               \
+  \                   32-mers sharing the same \n                                \
+  \                  prefix (16 bases) is small \n                               \
+  \                   enough to justify the \n                                   \
+  \               neighborhood search. Use \n                                    \
+  \              large enough value e.g. 10000\n                                 \
+  \                 to enable alignment to \n                                    \
+  \              positions where seeds don't \n                                  \
+  \                match exactly.\n  --output-concurrent-save arg (=120)         \
+  \    Maximum number of concurrent \n                                           \
+  \       file write operations for \n                                           \
+  \       --output-directory\n  -o [ --output-directory ] arg (=./Aligned)      Directory\
+  \ where the final \n                                                  alignment\
+  \ data be stored\n  --per-tile-tls arg (=0)                         Forces template\
+  \ length \n                                                  statistics(TLS) to\
+  \ be \n                                                  recomputed for each tile.\
+  \ \n                                                  When not set, the first tile\
+  \ \n                                                  that produces stable TLS will\n\
+  \                                                  determine TLS for the rest of\n\
+  \                                                  the tiles of the lane. Notice\n\
+  \                                                  that as the tiles are not \n\
+  \                                                  guaranteed to be processed in\n\
+  \                                                  the same order between \n   \
+  \                                               different runs, some pair \n   \
+  \                                               alignments might vary between\n\
+  \                                                  two runs on the same data \n\
+  \                                                  unless --per-tile-tls is set.\n\
+  \                                                  It is not recommended to set\
+  \ \n                                                  --per-tile-tls when input\
+  \ \n                                                  data is not randomly \n  \
+  \                                                distributed (such as bam) as \n\
+  \                                                  in such cases, the shadow \n\
+  \                                                  rescue range will be biased \n\
+  \                                                  by the input data ordering.\n\
+  \  --pf-only arg (=1)                              When set, only the fragments\
+  \ \n                                                  passing filter (PF) are \n\
+  \                                                  generated in the BAM file\n \
+  \ --pre-allocate-bins arg (=0)                    Use fallocate to reduce the \n\
+  \                                                  bin file fragmentation. Since\n\
+  \                                                  bin files are pre-allocated \n\
+  \                                                  based on the estimation of \n\
+  \                                                  their size, it is recommended\n\
+  \                                                  to turn bin pre-allocation \n\
+  \                                                  off when using RAM disk as \n\
+  \                                                  temporary storage.\n  --pre-sort-bins\
+  \ arg (=1)                        Unset this value if you are \n               \
+  \                                   working with references that \n            \
+  \                                      have many contigs (1000+)\n  --read-name-length\
+  \ arg (=0)                     Maximum read name length \n                     \
+  \                             (fastq and bam only). Value \n                   \
+  \                               of 0 causes the read name \n                   \
+  \                               length to be determined by \n                  \
+  \                                reading the first records of \n               \
+  \                                   the input data. Shorter than \n            \
+  \                                      needed read names can cause \n          \
+  \                                        duplicate names in the output\n       \
+  \                                           bam files.\n  --realign-dodgy arg (=0)\
+  \                        If not set, the reads without\n                       \
+  \                           alignment score are not \n                         \
+  \                         realigned against gaps found \n                      \
+  \                            in other reads.\n  --realign-gaps arg (=sample)   \
+  \                 For reads overlapping the \n                                 \
+  \                 gaps occurring on other \n                                   \
+  \               reads, check if applying \n                                    \
+  \              those gaps reduces mismatch \n                                  \
+  \                count. Significantly reduces \n                               \
+  \                   number of false SNPs reported\n                            \
+  \                      around short indels.\n                                  \
+  \                  - no              : no gap \n                               \
+  \                   realignment\n                                              \
+  \      - sample          : realign\n                                           \
+  \       against gaps found in the \n                                           \
+  \       same sample\n                                                    - project\
+  \         : realign\n                                                  against gaps\
+  \ found in all \n                                                  samples of the\
+  \ same project\n                                                    - all      \
+  \       : realign\n                                                  against gaps\
+  \ found in all \n                                                  samples\n  --realign-mapq-min\
+  \ arg (=60)                    Gaps from alignments with \n                    \
+  \                              lower MAPQ will not be used \n                  \
+  \                                as candidates for gap \n                      \
+  \                            realignment\n  --realign-vigorously arg (=0)      \
+  \             If set, the realignment \n                                       \
+  \           result will be used to search\n                                    \
+  \              for more gaps and attempt \n                                    \
+  \              another realignment, \n                                         \
+  \         effectively extending the \n                                         \
+  \         realignment over multiple \n                                         \
+  \         deletions not covered by the \n                                      \
+  \            original alignment.\n  --realigned-gaps-per-fragment arg (=4)     \
+  \     Maximum number of gaps the \n                                            \
+  \      realigner can introduce into \n                                         \
+  \         a fragment. For 100 bases \n                                         \
+  \         long DNA it is reasonable to \n                                      \
+  \            keep it no bigger than 2. RNA\n                                   \
+  \               reads can overlap multiple \n                                  \
+  \                introns. Therefore a larger \n                                \
+  \                  number is probably required \n                              \
+  \                    for RNA. Notice that bigger \n                            \
+  \                      values can significantly slow\n                         \
+  \                         down the bam generation as \n                        \
+  \                          there is a n choose k \n                            \
+  \                      combination try with n being \n                         \
+  \                         the number of gaps detected \n                       \
+  \                           by all other fragment \n                           \
+  \                       alignments that overlap the \n                         \
+  \                         fragment being realigned.\n  -r [ --reference-genome ]\
+  \ arg                   Full path to the reference \n                          \
+  \                        genome XML descriptor.\n  -n [ --reference-name ] arg (=default)\
+  \          Unique symbolic name of the \n                                      \
+  \            reference. Multiple entries \n                                    \
+  \              allowed. Each entry is \n                                       \
+  \           associated with the \n                                             \
+  \     corresponding --reference-gen\n                                          \
+  \        ome and will be matched \n                                            \
+  \      against the 'reference' \n                                              \
+  \    column in the sample sheet. \n                                            \
+  \      Special names:\n                                                    - unknown\
+  \         : default\n                                                  reference\
+  \ to use with data \n                                                  that did\
+  \ not match any \n                                                  barcode.\n \
+  \                                                   - default         : \n     \
+  \                                             reference to use for the data\n  \
+  \                                                with no matching value in \n  \
+  \                                                sample sheet 'reference' \n   \
+  \                                               column.\n  --remap-qscores arg \
+  \                            Replace the base calls \n                         \
+  \                         qscores according to the \n                          \
+  \                        rules provided.\n                                     \
+  \              - identity   : No remapping.\n                                  \
+  \                Original qscores are \n                                       \
+  \           preserved\n                                                   - bin:8\
+  \      : Equivalent of\n                                                  0-1:0,2-9:7,10-19:11,20-24:22\n\
+  \                                                  ,25-29:27,30-34:32,35-39:37,4\n\
+  \                                                  0-63:40\n  --repeat-threshold\
+  \ arg (=100)                   Threshold used to decide if \n                  \
+  \                                matches must be discarded as \n               \
+  \                                   too abundant (when the number\n            \
+  \                                      of repeats is greater or \n             \
+  \                                     equal to the threshold)\n  --rescue-shadows\
+  \ arg (=1)                       Scan within dominant template\n               \
+  \                                   range off an orphan, for a \n              \
+  \                                    possible shadow alignment\n  --response-file\
+  \ arg                             file with more command line \n               \
+  \                                   arguments\n  -s [ --sample-sheet ] arg     \
+  \                  Multiple entries allowed. \n                                \
+  \                  Each entry is applied to the \n                             \
+  \                     corresponding base-calls.\n                              \
+  \                      - none            : process\n                           \
+  \                       flowcell as if there is no \n                          \
+  \                        sample sheet\n                                        \
+  \            - default         : use \n                                        \
+  \          <base-calls>/SampleSheet.csv \n                                     \
+  \             if it exists. This is the \n                                     \
+  \             default behavior.\n                                              \
+  \      - <file path>     : use \n                                              \
+  \    <file path> as sample sheet \n                                            \
+  \      for the flowcell.\n  --scatter-repeats arg (=1)                      When\
+  \ set, extra care will be \n                                                  taken\
+  \ to scatter pairs \n                                                  aligning\
+  \ to repeats across \n                                                  the repeat\
+  \ locations \n  --seed-base-quality-min arg (=3)                Minimum base quality\
+  \ for the \n                                                  seed to be used in\
+  \ alignment \n                                                  candidate search.\n\
+  \  --seed-length arg (=16)                         Length of the seed in bases.\
+  \ \n                                                  Only 10 11 12 13 14 15 16\
+  \ 17 \n                                                  18 19 20  are allowed.\
+  \ Longer\n                                                  seeds reduce sensitivity\
+  \ on \n                                                  noisy data but improve\
+  \ repeat\n                                                  resolution and run time.\n\
+  \  --shadow-scan-range arg (=-1)                   -1     - scan for possible \n\
+  \                                                  mate alignments between \n  \
+  \                                                template min and max\n        \
+  \                                          >=0    - scan for possible \n       \
+  \                                           mate alignments in range of \n     \
+  \                                             template median += \n            \
+  \                                      shadow-scan-range\n  --single-library-samples\
+  \ arg (=1)               If set, the duplicate \n                              \
+  \                    detection will occur across \n                            \
+  \                      all read pairs in the sample.\n                         \
+  \                         If not set, different lanes \n                       \
+  \                           are assumed to originate from\n                    \
+  \                              different libraries and \n                      \
+  \                            duplicate detection is not \n                     \
+  \                             performed across lanes.\n  --smith-waterman-gap-size-max\
+  \ arg (=16)         Maximum length of gap \n                                   \
+  \               detectable by smith waterman \n                                \
+  \                  algorithm.\n  --smith-waterman-gaps-max arg (=4)            \
+  \  Maximum number of gaps that \n                                              \
+  \    can be introduced into an \n                                              \
+  \    alignment by Smith-Waterman \n                                            \
+  \      algorithm. If the optimum \n                                            \
+  \      alignment has more gaps, it \n                                          \
+  \        is simply ignored as an \n                                            \
+  \      alignment candidate.\n  --split-alignments arg (=1)                     When\
+  \ set, alignments crossing\n                                                  a\
+  \ structural variant are \n                                                  allowed\
+  \ to be split with SA \n                                                  tag.\n\
+  \  --split-gap-length arg (=10000)                 Maximum length of insertion \n\
+  \                                                  or deletion allowed to exist\
+  \ \n                                                  in a read. If a gap exceeds\
+  \ \n                                                  this limit, the read gets\
+  \ \n                                                  broken up around the gap with\n\
+  \                                                  SA tag introduced\n  --start-from\
+  \ arg (=Start)                       Start processing at the \n                \
+  \                                  specified stage:\n                          \
+  \                          - Start            : don't \n                       \
+  \                           resume, start from beginning\n                     \
+  \                               - Align            : same \n                   \
+  \                               as Start\n                                     \
+  \               - AlignmentReports : \n                                        \
+  \          regenerate alignment reports \n                                     \
+  \             and bam\n                                                    - Bam\
+  \              : resume\n                                                  at bam\
+  \ generation\n                                                    - Finish     \
+  \      : Same \n                                                  as Bam.\n    \
+  \                                                - Last             : resume\n \
+  \                                                 from the last successful step\n\
+  \                                                  Note that although Isaac \n \
+  \                                                 attempts to perform some \n  \
+  \                                                basic validation, the only \n \
+  \                                                 safe option is 'Start' The \n\
+  \                                                  primary purpose of the \n   \
+  \                                               feature is to reduce the time\n\
+  \                                                  required to diagnose the \n \
+  \                                                 issues rather than be used on\n\
+  \                                                  a regular basis.\n  --stats-image-format\
+  \ arg (=none)                Format to use for images \n                       \
+  \                           during stats generation\n                          \
+  \                         - gif        : produce .gif \n                       \
+  \                           type plots\n                                       \
+  \            - none       : no stat \n                                         \
+  \         generation\n  --stop-at arg (=Finish)                         Stop processing\
+  \ after the \n                                                  specified stage\
+  \ is complete:\n                                                    - Start    \
+  \        : \n                                                  perform the first\
+  \ stage only\n                                                    - Align      \
+  \      : same \n                                                  as Start\n   \
+  \                                                 - AlignmentReports : don't \n\
+  \                                                  perform bam generation\n    \
+  \                                                - Bam              : finish\n \
+  \                                                 when bam is done\n           \
+  \                                         - Finish           : stop \n         \
+  \                                         at the end.\n                        \
+  \                            - Last             : \n                           \
+  \                       perform up to the last \n                              \
+  \                    successful step only\n                                    \
+  \              Note that although Isaac \n                                     \
+  \             attempts to perform some \n                                      \
+  \            basic validation, the only \n                                     \
+  \             safe option is 'Finish' The \n                                   \
+  \               primary purpose of the \n                                      \
+  \            feature is to reduce the time\n                                   \
+  \               required to diagnose the \n                                    \
+  \              issues rather than be used on\n                                 \
+  \                 a regular basis.\n  --target-bin-size arg (=0)               \
+  \       Isaac will attempt to bin \n                                           \
+  \       temporary data so that each \n                                         \
+  \         bin is close to targetBinSize\n                                      \
+  \            in megabytes (1024 * 1024 \n                                      \
+  \            bytes). Value of 0 will cause\n                                   \
+  \               Isaac to compute the target \n                                 \
+  \                 bin size automatically based \n                              \
+  \                    on the available memory.\n  --temp-concurrent-load arg (=4)\
+  \                 Maximum number of concurrent \n                              \
+  \                    file read operations for \n                               \
+  \                   --temp-directory\n  --temp-concurrent-save arg (=680)      \
+  \         Maximum number of concurrent \n                                      \
+  \            file write operations for \n                                      \
+  \            --temp-directory\n  -t [ --temp-directory ] arg (=./Temp)         \
+  \  Directory where the temporary\n                                             \
+  \     files will be stored \n                                                  (matches,\
+  \ unsorted \n                                                  alignments, etc.)\n\
+  \  --tiles arg                                     Comma-separated list of \n  \
+  \                                                regular expressions to select\n\
+  \                                                  only a subset of the tiles \n\
+  \                                                  available in the flow-cell.\n\
+  \                                                  - to select all the tiles \n\
+  \                                                  ending with '5' in all lanes:\n\
+  \                                                  --tiles [0-9][0-9][0-9]5\n  \
+  \                                                - to select tile 2 in lane 1 \n\
+  \                                                  and all the tiles in the \n \
+  \                                                 other lanes: --tiles \n      \
+  \                                            s_1_0002,s_[2-8]\n                \
+  \                                  Multiple entries allowed, \n                \
+  \                                  each applies to the \n                      \
+  \                            corresponding base-calls.\n  --tls arg            \
+  \                           Template-length statistics in\n                    \
+  \                              the format 'min:median:max:lo\n                 \
+  \                                 wStdDev:highStdDev:M0:M1', \n                \
+  \                                  where M0 and M1 are the \n                  \
+  \                                numeric value of the models \n                \
+  \                                  (0=FFp, 1=FRp, 2=RFp, 3=RRp, \n             \
+  \                                     4=FFm, 5=FRm, 6=RFm, 7=RRm)\n  --trim-pe arg\
+  \ (=1)                              Trim overhanging ends of PE \n             \
+  \                                     alignments\n  --use-bases-mask arg       \
+  \                     Conversion mask characters:\n                            \
+  \                        - Y or y          : use\n                             \
+  \                       - N or n          : discard\n                          \
+  \                          - I or i          : use for\n                       \
+  \                           indexing\n                                         \
+  \         \n                                                  If not given, the\
+  \ mask will \n                                                  be guessed from\
+  \ the \n                                                  config.xml file in the\
+  \ \n                                                  base-calls directory.\n  \
+  \                                                \n                            \
+  \                      For instance, in a 2x76 \n                              \
+  \                    indexed paired end run, the \n                            \
+  \                      mask I<Y76,I6n,y75n> means:\n                           \
+  \                         use all 76 bases from the \n                         \
+  \                         first end, discard the last \n                       \
+  \                           base of the indexing read, \n                      \
+  \                            and use only the first 75 \n                      \
+  \                            bases of the second end.\n  --use-smith-waterman arg\
+  \ (=smart)               One of the following:\n                               \
+  \                    - always           : Use \n                               \
+  \                   smith-waterman to reduce the \n                            \
+  \                      amount of mismatches in \n                              \
+  \                    aligned reads\n                                           \
+  \        - smart            : apply \n                                         \
+  \         heuristics to avoid executing\n                                      \
+  \            costly smith-waterman on \n                                       \
+  \           sequences that are unlikely \n                                     \
+  \             to produce gaps\n                                                \
+  \   - never            : Don't \n                                              \
+  \    use smith-waterman\n  --variable-read-length arg                      Unless\
+  \ set, Isaac will fail \n                                                  if the\
+  \ length of the sequence\n                                                  changes\
+  \ between the records \n                                                  of a fastq\
+  \ or a bam file.\n  --verbosity arg (=2)                            Verbosity: FATAL(0),\
+  \ \n                                                  ERRORS(1), WARNINGS(2), \n\
+  \                                                  INFO(3), DEBUG(4) (not \n   \
+  \                                               supported yet)\n  -v [ --version\
+  \ ]                                print program version \n                    \
+  \                              information\n\n\nFailed to parse the options: /opt/conda/conda-bld/isaac4_1595676738617/work/src/c++/lib/options/AlignOptions.cpp(614):\
+  \ Throw in function void isaac::options::AlignOptions::verifyMandatoryPaths(boost::program_options::variables_map&)\n\
+  Dynamic exception type: boost::wrapexcept<isaac::common::InvalidOptionException>\n\
+  std::exception::what: \n   *** The 'reference-genome' option is required ***\n\n\
+  \n"
+generated_using: []
+docker_image: quay.io/biocontainers/isaac4:04.18.11.09--h07bff40_0

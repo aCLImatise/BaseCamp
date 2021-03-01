@@ -4,30 +4,34 @@ command:
 positional: []
 named:
 - !Flag
-  description: A FASTA-formatted input file
+  optional: true
   synonyms:
   - -f
   - --fasta-file
+  description: A FASTA-formatted input file
   args: !SimpleFlagArg
     name: FASTA
-  optional: true
 - !Flag
-  description: File path to store results.
+  optional: true
   synonyms:
   - -o
   - --output-file
+  description: File path to store results.
   args: !SimpleFlagArg
     name: FILE_PATH
-  optional: true
 - !Flag
-  description: "DELIMITED FILE, --blast-output TAB DELIMITED FILE\nBLAST table generated\
-    \ with blastp. `--outfmt 6` as the\noutput format is assumed."
+  optional: true
   synonyms:
   - -b
+  description: "DELIMITED FILE, --blast-output TAB DELIMITED FILE\nBLAST table generated\
+    \ with blastp. `--outfmt 6` as the\noutput format is assumed."
   args: !SimpleFlagArg
     name: TAB
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --outfmt
   description: "Specify the column ordering of your BLAST report. We\nadd the following\
     \ paramter to our BLAST searches so\nthe output report contains the `qlen` field,\
     \ which is\nnot included by default: `-outfmt '6 qseqid sseqid\npident length\
@@ -39,13 +43,13 @@ named:
     \ sstart send evalue\nbitscore qlen slen\". Regardless of the BLAST output\nformat,\
     \ your columns MUST contain the following\nparameters for this program to work\
     \ properly:\n'qseqid', 'bitscore', 'length', 'qlen', and 'pident'."
-  synonyms:
-  - -s
-  - --outfmt
   args: !SimpleFlagArg
     name: OUTFMT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threshold
   description: "What `proper_pident` threshold do you want to use for\nfiltering out\
     \ sequences whose top bit-score matches\nhave `proper_pident`s less than this\
     \ threshold? We\nhave defined `proper_pident` to be the percentage of\nthe query\
@@ -55,28 +59,24 @@ named:
     \ does.\nFor example, a sequence that's only half aligned by a\nmatch but with\
     \ 100% identity at matched regions has a\n`pident` of 100 but a `proper_pident`\
     \ of 50. The\ndefault is 30.0%."
-  synonyms:
-  - -t
-  - --threshold
   args: !SimpleFlagArg
     name: THRESHOLD
-  optional: true
 - !Flag
-  description: "Don't bother me with questions or warnings, just do\nit.\n"
+  optional: true
   synonyms:
   - --just-do-it
+  description: "Don't bother me with questions or warnings, just do\nit.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: anvi-script-filter-fasta-by-blast [-h] [-f FASTA] [-o FILE_PATH]\
@@ -120,3 +120,4 @@ help_text: "usage: anvi-script-filter-fasta-by-blast [-h] [-f FASTA] [-o FILE_PA
   \ with questions or warnings, just do\n                        it.\n"
 generated_using:
 - --help
+docker_image:

@@ -12,12 +12,10 @@ task AnnotateBed2waypl {
     Boolean? reverse_strand
     Boolean? bed_tools_path
     Int? align_start
-    String bed_slash_gff_file
     String summary_file_dot_txt
   }
   command <<<
     annotateBed_2way_pl \
-      ~{bed_slash_gff_file} \
       ~{summary_file_dot_txt} \
       ~{if defined(an_no) then ("--anno " +  '"' + an_no + '"') else ""} \
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
@@ -30,6 +28,9 @@ task AnnotateBed2waypl {
       ~{if (bed_tools_path) then "--bedtools_path" else ""} \
       ~{if defined(align_start) then ("--align_start " +  '"' + align_start + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     an_no: ": genomic features' bed files, which are used to annotate input bed files, allow multiple files"
     genome: ": genome fasta index file, used to generate random number in each of the chromosome"
@@ -41,7 +42,6 @@ task AnnotateBed2waypl {
     reverse_strand: ": Require different strandedness.  That is, only count overlaps on the _opposite_ strand (Default: both strand)."
     bed_tools_path: ": path to BEDtools/bin/.if not specified in PATH environment variable"
     align_start: ": (Default: --align_start 1)\\n1) extend upstream, downstream from both of 5', 3' border\\n2) extend upstream, downstream from 5' border\\n3) extend upstream, downstream from 3' border\\n4) extend upstream, downstream from center of .bed region\\n"
-    bed_slash_gff_file: "Input bed/gff file which requires the annotation."
     summary_file_dot_txt: "Summary statistics about annotation result."
   }
   output {

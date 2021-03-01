@@ -3,68 +3,100 @@ command:
 - tensorboard
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: DEBUG
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: '[DEBUG]       Whether to run the app in debug mode. This increases'
+  optional: true
+  synonyms:
+  - --logdir
+  description: "logdir specifies the directory where TensorBoard will\nlook to find\
+    \ TensorFlow event files that it can\ndisplay. TensorBoard will recursively walk\
+    \ the\ndirectory structure rooted at logdir, looking for\n.*tfevents.* files.\
+    \ You may also pass a comma\nseparated list of log directories, and TensorBoard\n\
+    will watch each directory. You can also assign names\nto individual log directories\
+    \ by putting a colon\nbetween the name and the path, as in tensorboard\n--logdir=name1:/path/to/logs/1,name2:/path/to/logs/2"
+  args: !SimpleFlagArg
+    name: LOGDIR
+- !Flag
+  optional: true
   synonyms:
   - --debug
+  description: "[DEBUG]       Whether to run the app in debug mode. This increases\n\
+    log verbosity to DEBUG."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: What host to listen to. Defaults to serving on
-  synonyms:
-  - --host
-  args: !SimpleFlagArg
-    name: HOST
   optional: true
-- !Flag
-  description: tensorboard --inspect
-  synonyms:
-  - --inspect
-  - --logdir
-  args: !SimpleFlagArg
-    name: mylogdir
-  optional: true
-- !Flag
-  description: See
-  synonyms:
-  - --logdir
-  - --tag
-  args: !SimpleFlagArg
-    name: mylogdir
-  optional: true
-- !Flag
-  description: What port to serve TensorBoard on.
-  synonyms:
-  - --port
-  args: !SimpleFlagArg
-    name: PORT
-  optional: true
-- !Flag
-  description: '[PURGE_ORPHANED_DATA]'
-  synonyms:
-  - --purge_orphaned_data
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - --nodebug
-  args: !EmptyFlagArg {}
+  - --host
+  description: "What host to listen to. Defaults to serving on\n0.0.0.0, set to 127.0.0.1\
+    \ (localhost) todisable remote\naccess (also quiets security warnings)."
+  args: !SimpleFlagArg
+    name: HOST
+- !Flag
   optional: true
+  synonyms:
+  - --inspect
+  description: "[INSPECT]   Use this flag to print out a digest of your event\nfiles\
+    \ to the command line, when no data is shown on\nTensorBoard or the data shown\
+    \ looks weird. Example\nusages: tensorboard --inspect\n--event_file=myevents.out\
+    \ tensorboard --inspect\n--event_file=myevents.out --tag=loss tensorboard\n--inspect\
+    \ --logdir=mylogdir tensorboard --inspect\n--logdir=mylogdir --tag=loss See\n\
+    tensorflow/python/summary/event_file_inspector.py for\nmore info and detailed\
+    \ usage."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noinspect
+  - --tag
+  description: The particular tag to query for. Only used if
+  args: !SimpleFlagArg
+    name: TAG
+- !Flag
+  optional: true
+  synonyms:
+  - --event_file
+  description: "The particular event file to query for. Only used if\n--inspect is\
+    \ present and --logdir is not specified."
+  args: !SimpleFlagArg
+    name: EVENT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --port
+  description: What port to serve TensorBoard on.
+  args: !SimpleFlagArg
+    name: PORT
+- !Flag
+  optional: true
+  synonyms:
+  - --purge_orphaned_data
+  description: "[PURGE_ORPHANED_DATA]\nWhether to purge data that may have been orphaned\
+    \ due\nto TensorBoard restarts. Disabling purge_orphaned_data\ncan be used to\
+    \ debug data disappearance."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nopurge_orphaned_data
+  - --reload_interval
+  description: "How often the backend should load more data.\n"
+  args: !SimpleFlagArg
+    name: RELOAD_INTERVAL
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: tensorboard [-h] [--logdir LOGDIR] [--debug [DEBUG]] [--nodebug]\n\
@@ -107,3 +139,4 @@ help_text: "usage: tensorboard [-h] [--logdir LOGDIR] [--debug [DEBUG]] [--nodeb
   \ should load more data.\n"
 generated_using:
 - --help
+docker_image:

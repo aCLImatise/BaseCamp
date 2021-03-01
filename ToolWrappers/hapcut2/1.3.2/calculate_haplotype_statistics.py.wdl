@@ -18,6 +18,9 @@ task CalculateHaplotypeStatisticspy {
       ~{if defined(haplotype_blocks_two) then ("--haplotype_blocks2 " +  '"' + haplotype_blocks_two + '"') else ""} \
       ~{if (indels) then "--indels" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v_two: "optionally -h2 arguments). All files must contain information for one"
     vcf_one: "A phased, single sample VCF file to compute haplotype\\nstatistics on."

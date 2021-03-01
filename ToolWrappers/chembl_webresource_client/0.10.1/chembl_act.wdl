@@ -12,6 +12,9 @@ task ChemblAct {
       ~{if defined(input_file_names) then ("--input " +  '"' + input_file_names + '"') else ""} \
       ~{if defined(output_file_chembl) then ("--output " +  '"' + output_file_chembl + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_names: "input file with names, one line each"
     output_file_chembl: "output file with ChEMBL IDs\\n"

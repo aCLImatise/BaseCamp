@@ -14,6 +14,9 @@ task Biopetfastqsplitter {
       ~{if defined(input_file) then ("--inputFile " +  '"' + input_file + '"') else ""} \
       ~{if defined(output_file) then ("--outputFile " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_level: "Level of log information printed. Possible levels: 'debug', 'info', 'warn', 'error'"
     input_file: "Path to input file"

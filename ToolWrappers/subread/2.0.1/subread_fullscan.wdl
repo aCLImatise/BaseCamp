@@ -12,6 +12,9 @@ task Subreadfullscan {
       ~{if defined(base_name_index) then ("-i " +  '"' + base_name_index + '"') else ""} \
       ~{if defined(minimum_fraction_matched) then ("-m " +  '"' + minimum_fraction_matched + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base_name_index: "Base name of the index."
     minimum_fraction_matched: "The minimum fraction of matched bases in the read, 0.8 by default"

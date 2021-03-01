@@ -4,6 +4,9 @@ task Bamalignfrac {
   command <<<
     bamalignfrac
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

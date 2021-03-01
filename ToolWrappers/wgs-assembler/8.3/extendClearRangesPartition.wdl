@@ -20,6 +20,9 @@ task ExtendClearRangesPartition {
       ~{if defined(maximum_fragments_partition) then ("-M " +  '"' + maximum_fragments_partition + '"') else ""} \
       ~{if defined(partition_information_output) then ("-p " +  '"' + partition_information_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     the_gatekeeper_store: "The gatekeeper store"
     the_checkpoint_use: "The checkpoint to use"

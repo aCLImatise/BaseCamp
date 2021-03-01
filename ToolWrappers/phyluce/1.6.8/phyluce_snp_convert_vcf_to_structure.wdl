@@ -14,6 +14,9 @@ task PhyluceSnpConvertVcfToStructure {
       ~{if (filter_identical) then "--filter-identical" else ""} \
       ~{if (filter_informative) then "--filter-informative" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file_process: "The VCF file to process"
     structure_file_write: "The STRUCTURE file to write"

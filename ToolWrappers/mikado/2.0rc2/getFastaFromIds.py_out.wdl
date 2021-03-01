@@ -16,6 +16,9 @@ task GetFastaFromIdspyOut {
       ~{out} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
     get_fasta_from_ids_do_tpy: ""

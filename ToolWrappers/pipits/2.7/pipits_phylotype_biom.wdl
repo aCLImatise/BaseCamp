@@ -12,6 +12,9 @@ task PipitsPhylotypeBiom {
       ~{if defined(phylotype_txt_file) then ("-o " +  '"' + phylotype_txt_file + '"') else ""} \
       ~{if defined(classification_level_species) then ("-l " +  '"' + classification_level_species + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _biom_file: "[REQUIRED] BIOM file"
     phylotype_txt_file: "[REQUIRED] PHYLOTYPE txt file"

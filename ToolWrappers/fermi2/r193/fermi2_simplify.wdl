@@ -6,7 +6,7 @@ task Fermi2Simplify {
     Boolean? read_graph_modifications
     Boolean? attempt_fix_force
     Int? minimum_overlap_merge
-    Float? drop_neighbor_overlap
+    Float? drop_neighbor_ratio
     Boolean? clean_the_graph
     Int? minimum_tip_length
     Int? minimum_tip_read
@@ -27,7 +27,7 @@ task Fermi2Simplify {
       ~{if (read_graph_modifications) then "-O" else ""} \
       ~{if (attempt_fix_force) then "-F" else ""} \
       ~{if defined(minimum_overlap_merge) then ("-m " +  '"' + minimum_overlap_merge + '"') else ""} \
-      ~{if defined(drop_neighbor_overlap) then ("-d " +  '"' + drop_neighbor_overlap + '"') else ""} \
+      ~{if defined(drop_neighbor_ratio) then ("-d " +  '"' + drop_neighbor_ratio + '"') else ""} \
       ~{if (clean_the_graph) then "-C" else ""} \
       ~{if defined(minimum_tip_length) then ("-l " +  '"' + minimum_tip_length + '"') else ""} \
       ~{if defined(minimum_tip_read) then ("-e " +  '"' + minimum_tip_read + '"') else ""} \
@@ -40,12 +40,15 @@ task Fermi2Simplify {
       ~{if defined(minimum_fraction_keep) then ("-r " +  '"' + minimum_fraction_keep + '"') else ""} \
       ~{if defined(trim_intbp_dp) then ("-T " +  '"' + trim_intbp_dp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_maximum_neighbors: "read maximum INT neighbors per node [512]"
     read_graph_modifications: "read the graph without modifications"
     attempt_fix_force: "don't attempt to fix erroneous edges (force -O)"
     minimum_overlap_merge: "minimum overlap to merge [0]"
-    drop_neighbor_overlap: "drop a neighbor if relative overlap ratio below FLOAT [0.60]"
+    drop_neighbor_ratio: "drop a neighbor if relative overlap ratio below FLOAT [0.60]"
     clean_the_graph: "clean the graph"
     minimum_tip_length: "minimum tip length [300]"
     minimum_tip_read: "minimum tip read count [0]"

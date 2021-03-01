@@ -24,6 +24,9 @@ task MegahitToolkitIterate {
       ~{if defined(step) then ("--step " +  '"' + step + '"') else ""} \
       ~{if defined(output_prefix) then ("--output_prefix " +  '"' + output_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contig_file: "(*) contigs file, fasta/fastq format, output by assembler"
     bubble_file: "(*) bubble file, fasta/fastq format, output by assembler"

@@ -30,6 +30,9 @@ task Fitsdiff {
       ~{if defined(ignore_comments) then ("--ignore-comments " +  '"' + ignore_comments + '"') else ""} \
       ~{if defined(ignore_fields) then ("--ignore-fields " +  '"' + ignore_fields + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Produce no output and just return a status code."
     num_diffs: "Max number of data differences (image pixel or table\\nelement) to report per extension (default 10)."

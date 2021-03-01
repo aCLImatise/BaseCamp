@@ -3,22 +3,22 @@ id: TOBIAS_MaxPos.cwl
 inputs:
 - id: in_bed
   doc: Regions to search for max position within
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bed
 - id: in_bigwig
   doc: Scores used to identify maximum value
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bigwig
 - id: in_output
   doc: 'Path to output .bed-file (default: scored sites are written to stdout)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_invert
   doc: Find minimum position instead of maximum position
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --invert
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: 'Path to output .bed-file (default: scored sites are written to stdout)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - TOBIAS

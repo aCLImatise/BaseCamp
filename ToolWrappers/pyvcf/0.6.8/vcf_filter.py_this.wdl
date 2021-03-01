@@ -12,6 +12,9 @@ task VcfFilterpyThis {
       ~{if (no_filtered) then "--no-filtered" else ""} \
       ~{if (no_short_circuit) then "--no-short-circuit" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_filtered: ""
     no_short_circuit: ""

@@ -4,6 +4,9 @@ task NgsPSMC {
   command <<<
     ngsPSMC
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -1,0 +1,95 @@
+!Command
+command:
+- compute_full_matrix.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --in
+  description: "A list of mProphet output files containing all\npeakgroups (use quotes\
+    \ around the filenames)"
+  args: !RepeatFlagArg
+    name: INFILES
+- !Flag
+  optional: true
+  synonyms:
+  - --out_matrix
+  description: "Matrix containing one peak group per (supports .csv,\n.tsv or .xls)"
+  args: !SimpleFlagArg
+    name: MATRIX_OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --frac_selected
+  description: "Do not write peakgroup if selected in less than this\nfraction of\
+    \ runs (range 0 to 1)"
+  args: !SimpleFlagArg
+    name: '0'
+- !Flag
+  optional: true
+  synonyms:
+  - --file_format
+  description: "Which input file format is used (openswath or\npeakview)"
+  args: !SimpleFlagArg
+    name: FILE_FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --output_method
+  description: "Which columns are written besides Intensity (none, RT,\nscore or full)"
+  args: !SimpleFlagArg
+    name: OUTPUT_METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - --readmethod
+  description: Read full or minimal transition groups (minimal,full)
+  args: !SimpleFlagArg
+    name: READMETHOD
+- !Flag
+  optional: true
+  synonyms:
+  - --remove_requant_values
+  - --aligner_mscore_threshold
+  description: "cutoff used at alignment, for coloring realigned\nvalues in blue\n"
+  args: !SimpleFlagArg
+    name: ALIGNER_MSCORE_THRESHOLD
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: compute_full_matrix.py [-h] --in INFILES [INFILES ...]\n      \
+  \                        [--out_matrix MATRIX_OUTFILE]\n                       \
+  \       [--frac_selected 0] [--file_format FILE_FORMAT]\n                      \
+  \        [--output_method OUTPUT_METHOD]\n                              [--readmethod\
+  \ READMETHOD]\n                              [--remove_requant_values]\n       \
+  \                       [--aligner_mscore_threshold ALIGNER_MSCORE_THRESHOLD]\n\n\
+  This program will select all peakgroups below the FDR cutoff in all files and\n\
+  try to align them to each other. If only one file is given, it will act as\npeakgroup\
+  \ selector (best by m_score) and will apply the provided FDR cutoff.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --in INFILES\
+  \ [INFILES ...]\n                        A list of mProphet output files containing\
+  \ all\n                        peakgroups (use quotes around the filenames)\n  --out_matrix\
+  \ MATRIX_OUTFILE\n                        Matrix containing one peak group per (supports\
+  \ .csv,\n                        .tsv or .xls)\n  --frac_selected 0     Do not write\
+  \ peakgroup if selected in less than this\n                        fraction of runs\
+  \ (range 0 to 1)\n  --file_format FILE_FORMAT\n                        Which input\
+  \ file format is used (openswath or\n                        peakview)\n  --output_method\
+  \ OUTPUT_METHOD\n                        Which columns are written besides Intensity\
+  \ (none, RT,\n                        score or full)\n  --readmethod READMETHOD\n\
+  \                        Read full or minimal transition groups (minimal,full)\n\
+  \  --remove_requant_values\n  --aligner_mscore_threshold ALIGNER_MSCORE_THRESHOLD\n\
+  \                        cutoff used at alignment, for coloring realigned\n    \
+  \                    values in blue\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/msproteomicstools:0.11.0--py27ha968a36_1

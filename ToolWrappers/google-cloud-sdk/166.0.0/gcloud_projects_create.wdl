@@ -18,6 +18,9 @@ task GcloudProjectsCreate {
       ~{if defined(organization) then ("--organization " +  '"' + organization + '"') else ""} \
       ~{if (set_as_default) then "--set-as-default" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     enable_cloud_apis: "Enable cloudapis.googleapis.com during creation. Enabled by default,\\nuse --no-enable-cloud-apis to disable."
     labels: "=[KEY=VALUE,...]\\nA list of label KEY=VALUE pairs to add."

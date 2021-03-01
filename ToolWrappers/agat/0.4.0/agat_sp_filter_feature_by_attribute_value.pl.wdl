@@ -22,6 +22,9 @@ task AgatSpFilterFeatureByAttributeValuepl {
       ~{if defined(output_gff_file) then ("--output " +  '"' + output_gff_file + '"') else ""} \
       ~{if (verbose_option_debugging) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_file: "Input GFF3 file that will be read"
     attribute: "Attribute tag to specify the attribute to analyse (attribute\\nexample: tag=value)."

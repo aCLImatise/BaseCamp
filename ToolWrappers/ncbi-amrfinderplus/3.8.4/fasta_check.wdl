@@ -12,6 +12,9 @@ task FastaCheck {
       ~{if (hyphen) then "-hyphen" else ""} \
       ~{if (aa) then "-aa" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hyphen: ""
     aa: ""

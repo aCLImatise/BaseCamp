@@ -12,6 +12,9 @@ task CompareHLApyUtswFname {
       ~{his_at_genotype_fname} \
       ~{ut_sw_fname}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compare_hla_do_tpy: ""
     his_at_genotype_fname: ""

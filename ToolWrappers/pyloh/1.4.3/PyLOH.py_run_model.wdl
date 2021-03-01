@@ -14,6 +14,9 @@ task PyLOHpyRunModel {
       ~{if defined(max_iters) then ("--max_iters " +  '"' + max_iters + '"') else ""} \
       ~{if defined(stop_value) then ("--stop_value " +  '"' + stop_value + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     allele_number_max: "Maximum copy number of each allele allows to take.\\nDefault is 2."
     priors: "File of the prior distribution. If not provided, use\\nuniform prior. Default is None."

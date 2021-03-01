@@ -26,6 +26,9 @@ task FusionFinderpy {
       ~{if defined(min_total_coverage) then ("--min_total_coverage " +  '"' + min_total_coverage + '"') else ""} \
       ~{if defined(min_dist_between_loci) then ("--min_dist_between_loci " +  '"' + min_dist_between_loci + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fafq_filename: "Input FA/FQ filename"
     fq: "Input is a fastq file (default is fasta)"

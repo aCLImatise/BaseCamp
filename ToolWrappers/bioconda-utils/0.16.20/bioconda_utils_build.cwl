@@ -17,68 +17,68 @@ inputs:
     prefix: --git-range
 - id: in_test_only
   doc: 'Test packages instead of building (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --testonly
 - id: in_force
   doc: "Force building the recipe even if it already exists in\nthe bioconda channel.\
     \ If --force is specified, --git-\nrange is ignored and only those packages matching\n\
     --packages globs will be built. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_docker
   doc: 'Build packages in docker container. (default: -)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --docker
 - id: in_mulled_test
   doc: "Run a mulled-build test on the built package (default:\nFalse)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mulled-test
 - id: in_build_script_template
   doc: "Filename to optionally replace build script template\nused by the Docker container.\
     \ By default use\ndocker_utils.BUILD_SCRIPT_TEMPLATE. Only used if\n--docker is\
     \ True. (default: -)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --build_script_template
 - id: in_pkg_dir
   doc: "Specifies the directory to which container-built\npackages should be stored\
     \ on the host. Default is to\nuse the host's conda-bld dir. If --docker is not\n\
     specified, then this argument is ignored. (default: -)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --pkg_dir
 - id: in_anaconda_upload
   doc: "After building recipes, upload them to Anaconda. This\nrequires $ANACONDA_TOKEN\
     \ to be set. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --anaconda-upload
 - id: in_mulled_upload_target
   doc: "Provide a quay.io target to push mulled docker images\nto. (default: -)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --mulled-upload-target
 - id: in_build_image
   doc: "Build temporary docker build image with conda/conda-\nbuild version matching\
     \ local versions (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --build-image
 - id: in_keep_image
   doc: "After building recipes, the created Docker image is\nremoved by default to\
     \ save disk space. Use this\nargument to disable this behavior. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep-image
 - id: in_pre_lint
   doc: "Just before each recipe, apply the linting functions\nto it. This can be used\
     \ as an alternative to linting\nall recipes before any building takes place with\
     \ the\n`bioconda-utils lint` command. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --prelint
 - id: in_lint_exclude
@@ -102,7 +102,7 @@ inputs:
     \ is 1, which is intended for cases where there\nare NOT parallel workers (i.e.,\
     \ the majority of\ncases). This should generally NOT be used in\nconjunctions\
     \ with the --packages or --git-range\noptions! (default: 1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --n-workers
 - id: in_worker_offset
@@ -113,33 +113,33 @@ inputs:
     sub-DAGs. Equivalently, using \"--n-workers 5 --worker-\noffset 1\" will result\
     \ in sub-DAGs 2, 7, 12, etc. being\nprocessed. If you use more than one worker,\
     \ then make\nsure to give each a different offset! (default: 0)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --worker-offset
 - id: in_keep_old_work
   doc: "Do not remove anything from environment, even after\nsuccessful build and\
     \ test. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep-old-work
 - id: in_loglevel
   doc: "Set logging level (debug, info, warning, error,\ncritical) (default: 'info')"
-  type: string
+  type: string?
   inputBinding:
     prefix: --loglevel
 - id: in_log_file
   doc: 'Write log to file (default: -)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --logfile
 - id: in_log_file_level
   doc: "Log level for log file (default: 'debug')"
-  type: File
+  type: File?
   inputBinding:
     prefix: --logfile-level
 - id: in_log_command_max_lines
   doc: "Limit lines emitted for commands executed (default: -)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --log-command-max-lines
 - id: in_recipe_folder
@@ -156,6 +156,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bioconda-utils

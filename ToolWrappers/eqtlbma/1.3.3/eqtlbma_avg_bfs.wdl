@@ -46,6 +46,9 @@ task EqtlbmaAvgBfs {
       ~{if (out) then "--out" else ""} \
       ~{if (thread) then "--thread" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "level (0/default=1/2/3)"
     in: "pattern to glob '_l10abfs_raw' files from 'eqtlbma_bf'"

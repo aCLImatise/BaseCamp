@@ -92,6 +92,9 @@ task MmseqsMap {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sensitivity_faster_fast: "2.000           sensitivity: 1.0 faster; 4.0 fast default; 7.5 sensitive [1.0,7.5]"
     kmer_size_range: "0               k-mer size in the range [6,7] (0: set automatically to optimum)"

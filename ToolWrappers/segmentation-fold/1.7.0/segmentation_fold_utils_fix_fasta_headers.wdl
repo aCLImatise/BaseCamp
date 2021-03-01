@@ -8,6 +8,9 @@ task SegmentationfoldutilsFixfastaheaders {
     segmentation_fold_utils fix_fasta_headers \
       ~{fast_a_output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_output_file: "Options:"
   }

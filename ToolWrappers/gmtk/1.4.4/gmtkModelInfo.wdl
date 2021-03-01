@@ -4,6 +4,9 @@ task GmtkModelInfo {
   command <<<
     gmtkModelInfo
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -52,6 +52,9 @@ task BcftoolsAnnotate {
       ~{if defined(remove) then ("--remove " +  '"' + remove + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     annotations: "VCF file or tabix-indexed file with annotations: CHR\\tPOS[\\tVALUE]+"
     collapse: "matching records by <snps|indels|both|all|some|none>, see man page for details [some]"

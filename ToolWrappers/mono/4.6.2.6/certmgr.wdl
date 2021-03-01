@@ -40,6 +40,9 @@ task Certmgr {
       ~{if (password_used_decrypt) then "-p" else ""} \
       ~{if (pem) then "-pem" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add: "Add a certificate, CRL or CTL to specified store"
     del: "Remove a certificate, CRL or CTL to specified store"

@@ -12,6 +12,9 @@ task GhosttreeComparetrees {
       ~{tree_file_two} \
       ~{if (method) then "--method" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     method: "[pearson|spearman]\\ncorrelation method to use in Mantel test"
     tree_file_one: ""

@@ -50,6 +50,9 @@ task PmWhich {
       ~{if (dump) then "--dump" else ""} \
       ~{if (var_8) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Just print paths"
     paths: "Just convert the module name into a relative path"

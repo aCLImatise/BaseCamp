@@ -8,6 +8,9 @@ task Ontogetobsolete {
     ontogetobsolete \
       ~{if (subclasses) then "-subclasses" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     subclasses: "boolean    [N] Extend the query matches to include all\\nterms which are specialisations\\n(sub-classes) of the matched terms."
   }

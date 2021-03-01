@@ -3,64 +3,71 @@ command:
 - FilterBam
 positional:
 - !Positional
-  description: MINIMUM_MAPPING_QUALITY=Integer
+  optional: false
   position: 0
   name: null.
-  optional: false
+  description: MINIMUM_MAPPING_QUALITY=Integer
 - !Positional
-  description: 'Default value: null. This option may be specified 0 or more times. '
+  optional: false
   position: 0
   name: side.
-  optional: false
+  description: 'Default value: null. This option may be specified 0 or more times. '
 - !Positional
-  description: REF_HARD_MATCHED_RETAINED=String
+  optional: false
   position: 0
   name: times.
-  optional: false
+  description: REF_HARD_MATCHED_RETAINED=String
 - !Positional
-  description: STRIP_REF_PREFIX=String       Edit contig names so that a contig that
-    starts with one of these prefixes has the prefix
+  optional: false
   position: 0
   name: null.
-  optional: false
+  description: STRIP_REF_PREFIX=String       Edit contig names so that a contig that
+    starts with one of these prefixes has the prefix
 - !Positional
-  description: 'Default value: null. This option may be specified 0 or more times. '
+  optional: false
   position: 1
   name: stripped.
-  optional: false
+  description: 'Default value: null. This option may be specified 0 or more times. '
 named:
 - !Flag
-  description: (default 4g)
+  optional: true
   synonyms:
   - -m
+  description: (default 4g)
   args: !SimpleFlagArg
     name: jvm_heap_size
-  optional: true
 - !Flag
-  description: final command line before executing
+  optional: true
   synonyms:
   - -v
+  description: final command line before executing
   args: !SimpleFlagArg
     name: echo
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
   description: "Displays options specific to this tool AND options common to all Picard\
     \ command line\ntools."
-  synonyms:
-  - -H
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag: !Flag
-  description: Displays program version.
+  optional: true
   synonyms:
   - --version
+  description: Displays program version.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "USAGE: /usr/local/bin/FilterBam [-m <jvm_heap_size>] [-v] program args...\n\
   \       -m <jvm_heap_size> (default 4g)\n       -v echo final command line before\
   \ executing\n\nProgram options:\nUSAGE: FilterBam [options]\n\nFilters a BAM file\
@@ -126,3 +133,4 @@ help_text: "USAGE: /usr/local/bin/FilterBam [-m <jvm_heap_size>] [-v] program ar
   \ set to 'null' to clear the default value. Possible values: {true, false} \n\n"
 generated_using:
 - --help
+docker_image:

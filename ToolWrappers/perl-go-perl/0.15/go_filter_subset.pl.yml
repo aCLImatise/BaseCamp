@@ -1,59 +1,57 @@
 !Command
 command:
 - go-filter-subset.pl
-positional:
-- !Positional
-  description: <http://www.godatabase.org/dev>
-  position: 0
-  name: DOCUMENTATION
-  optional: false
+positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -id
   description: "ID to use as leaf node in subgraph. All ancestors of this ID are\n\
     included in the exported graph (unless -partial is set)\nMultiple IDs can be passed\n\
     -id ID1 -id ID2 -id ID3 ....etc"
-  synonyms:
-  - -id
   args: !SimpleFlagArg
     name: ID
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -subset
   description: "Extracts a named subset from the ontology file. (only works with obo\n\
     format files). For example, a specific GO slim\nONLY terms belonging to the subset\
     \ are exported - the -partial\noption is automatically set"
-  synonyms:
-  - -subset
   args: !SimpleFlagArg
     name: SUBSET_ID
-  optional: true
 - !Flag
-  description: only terms in this namespace
+  optional: true
   synonyms:
   - -namespace
+  description: only terms in this namespace
   args: !SimpleFlagArg
     name: NAMESPACE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -filter_code
   description: "advanced option\nA subroutine with which the GO::Model::Term object\
     \ is tested for\ninclusion in the subgraph (all ancestors are automatically included)\n\
     You should have an understanding of the go-perl object model before\nusing this\
     \ option\nExample:\ngo-filter-subset -filter_code 'sub {shift->namespace eq 'molecular_function'}'\
     \ go.obo\n(the same things can be achieved with the -namespace option)"
-  synonyms:
-  - -filter_code
   args: !SimpleFlagArg
     name: SUBROUTINE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -partial
   description: "If this is set, then only terms that match the user query are\nincluded.\
     \ Parentage is set to the next recursive parent node in the\nfilter\nFor example,\
     \ with the -subset option: if X and Y belong to the\nsubset, and Z does not, and\
     \ X is_a Z is_a Y, then the exported graph\nwithh have X is_a Y"
-  synonyms:
-  - -partial
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -use_cache
   description: "If this switch is specified, then caching mode is turned on.\nWith\
     \ caching mode, the first time you parse a file, then an\nadditional file will\
     \ be exported in a special format that is fast to\nparse. This file will have\
@@ -62,10 +60,7 @@ named:
     check for the existence of the \".cache\" file. If it exists, and is\nmore recent\
     \ than the file you specified, this is parsed instead. If\nit does not exist,\
     \ it is rebuilt."
-  synonyms:
-  - -use_cache
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -108,3 +103,4 @@ help_text: "NAME\n    go-filter-subset.pl - extracts a subgraph from an ontology
   \ it is rebuilt.\n\n  DOCUMENTATION\n    <http://www.godatabase.org/dev>\n\n"
 generated_using:
 - --help
+docker_image:

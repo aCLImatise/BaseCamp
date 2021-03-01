@@ -2,29 +2,29 @@ version 1.0
 
 task Bowtieinspect {
   input {
-    Int? a_slash_across
-    Boolean? n_slash_names
-    Boolean? s_slash_summary
-    Boolean? e_slash_e_bwt_ref
-    Boolean? v_slash_verbose
-    Boolean? h_slash_help
+    Int? across
+    Boolean? names
+    Boolean? summary
+    Boolean? e_bwt_ref
+    Boolean? verbose
   }
   command <<<
     bowtie_inspect \
-      ~{if defined(a_slash_across) then ("-a/--across " +  '"' + a_slash_across + '"') else ""} \
-      ~{if (n_slash_names) then "-n/--names" else ""} \
-      ~{if (s_slash_summary) then "-s/--summary" else ""} \
-      ~{if (e_slash_e_bwt_ref) then "-e/--ebwt-ref" else ""} \
-      ~{if (v_slash_verbose) then "-v/--verbose" else ""} \
-      ~{if (h_slash_help) then "-h/--help" else ""}
+      ~{if defined(across) then ("--across " +  '"' + across + '"') else ""} \
+      ~{if (names) then "--names" else ""} \
+      ~{if (summary) then "--summary" else ""} \
+      ~{if (e_bwt_ref) then "--ebwt-ref" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    a_slash_across: "Number of characters across in FASTA output (default: 60)"
-    n_slash_names: "Print reference sequence names only"
-    s_slash_summary: "Print summary incl. ref names, lengths, index properties"
-    e_slash_e_bwt_ref: "Reconstruct reference from ebwt (slow, preserves colors)"
-    v_slash_verbose: "Verbose output (for debugging)"
-    h_slash_help: "print detailed description of tool and its options"
+    across: "Number of characters across in FASTA output (default: 60)"
+    names: "Print reference sequence names only"
+    summary: "Print summary incl. ref names, lengths, index properties"
+    e_bwt_ref: "Reconstruct reference from ebwt (slow, preserves colors)"
+    verbose: "Verbose output (for debugging)"
   }
   output {
     File out_stdout = stdout()

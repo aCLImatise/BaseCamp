@@ -28,6 +28,9 @@ task Kcstashtest {
       ~{if (var_5) then "-tran" else ""} \
       ~{if (etc) then "-etc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     lv: ""
     b_num: ""

@@ -4,46 +4,46 @@ inputs:
 - id: in_ref
   doc: "PATH        Required  Reference file (FASTA) absolute or relative path.\n\
     Use mutliple times, once per a reference file"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ref
 - id: in_reads
   doc: "PATH        Required  Raw reads file (FASTA/FASTQ/FASTA.GZ/FASTQ.GZ).\nUse\
     \ twice for files with paired reads"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --reads
 - id: in_workdir
   doc: "PATH        Optional  Directory for storing Reference index,      USRDIR/sortmerna/run/\n\
     Key-value database, and the output.\nDefault structure:\nWORKDIR/\nidx/\nkvdb/\n\
     out/"
-  type: File
+  type: File?
   inputBinding:
     prefix: --workdir
 - id: in_kv_db
   doc: "PATH        Optional  Directory for storing Key-value database    WORKDIR/kvdb\n\
     KVDB is used for storing alignement results."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --kvdb
 - id: in_idx
   doc: PATH        Optional  Directory for storing Reference index.      WORKDIR/idx
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --idx
 - id: in_fast_x
   doc: BOOL        Optional  Output aligned reads into FASTA/FASTQ file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fastx
 - id: in_sam
   doc: BOOL        Optional  Output SAM alignment for aligned reads.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sam
 - id: in_sq
   doc: BOOL        Optional  Add SQ tags to the SAM file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --SQ
 - id: in_blast
@@ -52,7 +52,7 @@ inputs:
     \ format)\n'1 cigar'              - tabular + column for CIGAR\n'1 cigar qcov'\
     \         - tabular + columns for CIGAR\nand query coverage\n'1 cigar qcov qstrand'\
     \ - tabular + columns for CIGAR,\nquery coverage and strand"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --blast
 - id: in_aligned
@@ -66,7 +66,7 @@ inputs:
     -aligned dir_1/apfx           -> $PWD/dir_1/apfx.fasta\n-aligned dir_1/      \
     \         -> $PWD/aligned.fasta\n-aligned apfx                 -> $PWD/apfx.fasta\n\
     -aligned  (no argument)       -> WORKDIR/out/aligned.fasta"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --aligned
 - id: in_other
@@ -82,13 +82,13 @@ inputs:
     -other apfx                 -> $PWD/apfx.fasta\n-other  (no argument)       ->\
     \ aligned_out/other.fasta\ni.e. the same output directory as used\nfor aligned\
     \ output"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --other
 - id: in_num_alignments
   doc: "INT         Optional  Positive integer (INT >=0).\nReport first INT alignments\
     \ per read reaching E-value\nIf INT = 0, all alignments will be output"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --num_alignments
 - id: in_best
@@ -100,7 +100,7 @@ inputs:
     The 'best' alignment is an alignment that is better\nthan the previously found\
     \ alignments.\nThe very first found alignment is automatically the best alignment\n\
     until a better one is found."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --best
 - id: in_min_lis
@@ -108,13 +108,13 @@ inputs:
     LIS stands for Longest Increasing Subsequence,\nit is computed using seeds' positions\
     \ to expand hits into\nlonger matches prior to Smith - Waterman alignment.\nRequires\
     \ option 'best'.\nMutually exclusive with option 'num_alignments'"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --min_lis
 - id: in_print_all_reads
   doc: "Optional  Output null alignment strings for non-aligned reads     False\n\
     to SAM and/or BLAST tabular files"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --print_all_reads
 - id: in_paired
@@ -122,48 +122,48 @@ inputs:
     \     False\nIf a single reads file with paired reads is used,\nand neither 'paired_in'\
     \ nor 'paired_out' are specified,\nuse this option together with 'out2' to output\n\
     FWD and REV reads into separate files"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --paired
 - id: in_paired_in
   doc: "BOOL        Optional  If one of the paired-end reads is Aligned,         \
     \     False\nput both reads into Aligned FASTA/Q file\nMust be used with 'fastx'.\n\
     Mutually exclusive with 'paired_out'."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --paired_in
 - id: in_paired_out
   doc: "BOOL        Optional  If one of the paired-end reads is Non-aligned,     \
     \     False\nput both reads into Non-Aligned FASTA/Q file\nMust be used with 'fastx'.\n\
     Mutually exclusive with 'paired_in'."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --paired_out
 - id: in_out_two
   doc: "BOOL        Optional  Output paired reads into separate files.           \
     \     False\nMust be used with 'fastx'.\nIgnored without either of 'paired_in'\
     \ |\n'paired_out' | 'paired' | two 'reads'"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --out2
 - id: in_match
   doc: INT         Optional  SW score (positive integer) for a match.                2
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --match
 - id: in_mismatch
   doc: INT         Optional  SW penalty (negative integer) for a mismatch.          -3
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mismatch
 - id: in_gap_open
   doc: INT         Optional  SW penalty (positive integer) for introducing a gap.    5
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gap_open
 - id: in_gap_ext
   doc: INT         Optional  SW penalty (positive integer) for extending a gap.      2
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gap_ext
 - id: in_double_optional_evalue
@@ -171,132 +171,132 @@ inputs:
     \     1\nDefines the 'statistical significance' of a local alignment.\nExponentially\
     \ correllates with the Minimal Alignment Score.\nHigher E-values (100, 1000, ...)\
     \ cause More reads\nto Pass the alignment threshold"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -e
 - id: in_bool_optional_forward
   doc: BOOL        Optional  Search only the forward strand.                         False
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -F
 - id: in_bool_optional_sw
   doc: "BOOL        Optional  SW penalty for ambiguous letters (N's) scored\nas --mismatch"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -N
 - id: in_bool_optional_reversecomplementary
   doc: BOOL        Optional  Search only the reverse-complementary strand.           False
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -R
 - id: in_id
   doc: "INT         Optional  %%id similarity threshold (the alignment           \
     \     0.97\nmust still pass the E-value threshold)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --id
 - id: in_coverage
   doc: "INT         Optional  %%query coverage threshold (the alignment must     \
     \     0.97\nstill pass the E-value threshold)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --coverage
 - id: in_de_novo_otu
   doc: "BOOL        Optional  FASTA/FASTQ file for reads matching database < %%id\
     \     False\n(set using --id) and < %%cov (set using --coverage)\n(alignment must\
     \ still pass the E-value threshold)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --de_novo_otu
 - id: in_otu_map
   doc: BOOL        Optional  Output OTU map (input to QIIME's make_otu_table.py).    False
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --otu_map
 - id: in_passes
   doc: "INT,INT,INT Optional  Three intervals at which to place the seed on the read\
     \  L,L/2,3\n(L is the seed length)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --passes
 - id: in_edges
   doc: "INT         Optional  Number (or percent if INT followed by %% sign) of  \
     \     4\nnucleotides to add to each edge of the read\nprior to SW local alignment"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --edges
 - id: in_num_seeds
   doc: "BOOL        Optional  Number of seeds matched before searching           \
     \     2\nfor candidate LIS"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --num_seeds
 - id: in_full_search
   doc: "INT         Optional  Search for all 0-error and 1-error seed            \
     \     False\nmatches in the index rather than stopping\nafter finding a 0-error\
     \ match (<1%% gain in\nsensitivity with up four-fold decrease in speed)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --full_search
 - id: in_pid
   doc: BOOL        Optional  Add pid to output file names.                           False
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pid
 - id: in_int_optional_deprecated
   doc: "INT         Optional  DEPRECATED in favour of '-threads'. Number of      \
     \     numCores\nprocessing threads to use.\nAutomatically redirects to '-threads'"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_threads
   doc: INT         Optional  Number of Processing threads to use                     numCores
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --threads
-- id: in_double_seed_length
+- id: in_double_optional_indexing_seed
   doc: 'DOUBLE      Optional  Indexing: seed length.                                  18'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -L
-- id: in_double_optional_indexing
+- id: in_double_optional_indexing_amount
   doc: "DOUBLE      Optional  Indexing: the amount of memory (in Mbytes) for building\
     \ 3072\nthe index."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
 - id: in_bool_optional_produce
   doc: BOOL        Optional  Produce verbose output when building the index          True
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_interval
   doc: "INT         Optional  Indexing: Positive integer: index every Nth L-mer in\
     \    1\nthe reference database e.g. '-interval 2'."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --interval
 - id: in_max_pos
   doc: "INT         Optional  Indexing: maximum (integer) number of positions to store\
     \  1000\nfor each unique L-mer. If 0 all positions are stored."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --max_pos
 - id: in_dbg_put_db
   doc: BOOL        Optional
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dbg_put_db
 - id: in_cmd
   doc: BOOL        Optional  Launch an interactive session (command prompt)          False
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cmd
 - id: in_task
   doc: "INT         Optional  Processing Task:                                   \
     \     4\n0 - align. Only perform alignment\n1 - post-processing (log writing)\n\
     2 - generate reports\n3 - align and post-process\n4 - all\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --task
 outputs:
@@ -307,9 +307,10 @@ outputs:
   doc: "PATH        Optional  Directory for storing Reference index,      USRDIR/sortmerna/run/\n\
     Key-value database, and the output.\nDefault structure:\nWORKDIR/\nidx/\nkvdb/\n\
     out/"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_workdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sortmerna

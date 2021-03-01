@@ -20,11 +20,13 @@ task Javap {
     File? classpath
     File? cp
     File? boot_classpath
-    File path_slash_to_slash_my_class_dot_class
+    String options
+    String classes
   }
   command <<<
     javap \
-      ~{path_slash_to_slash_my_class_dot_class} \
+      ~{options} \
+      ~{classes} \
       ~{if (version) then "-version" else ""} \
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (print_line_number) then "-l" else ""} \
@@ -44,6 +46,9 @@ task Javap {
       ~{if defined(cp) then ("-cp " +  '"' + cp + '"') else ""} \
       ~{if defined(boot_classpath) then ("-bootclasspath " +  '"' + boot_classpath + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version: "Version information"
     verbose: "Print additional information"
@@ -63,7 +68,8 @@ task Javap {
     classpath: "Specify where to find user class files"
     cp: "Specify where to find user class files"
     boot_classpath: "Override location of bootstrap class files"
-    path_slash_to_slash_my_class_dot_class: "jar:file:///path/to/MyJar.jar!/mypkg/MyClass.class"
+    options: ""
+    classes: ""
   }
   output {
     File out_stdout = stdout()

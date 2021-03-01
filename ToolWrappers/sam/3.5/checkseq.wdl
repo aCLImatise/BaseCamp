@@ -4,6 +4,9 @@ task Checkseq {
   command <<<
     checkseq
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -20,6 +20,9 @@ task HailctlDataprocDiagnose {
       ~{if (workers) then "--workers" else ""} \
       ~{if defined(take) then ("--take " +  '"' + take + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dest: "Directory for diagnose output -- must be local."
     hail_log: "Path for hail.log file."

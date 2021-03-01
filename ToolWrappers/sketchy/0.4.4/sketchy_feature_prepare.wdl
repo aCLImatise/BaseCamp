@@ -12,6 +12,9 @@ task SketchyFeaturePrepare {
       ~{if defined(drop) then ("--drop " +  '"' + drop + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index: "Path to feature index input file  [required]"
     drop: "Comma separated string of columns to drop"

@@ -3,32 +3,32 @@ id: parallel_fastq_dump.cwl
 inputs:
 - id: in_sra_id
   doc: SRA id
-  type: string
+  type: string?
   inputBinding:
     prefix: --sra-id
 - id: in_threads
   doc: number of threads
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_outdir
   doc: output directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_tmpdir
   doc: temporary directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --tmpdir
 - id: in_min_spot_id
   doc: Minimum spot id
-  type: long
+  type: long?
   inputBinding:
     prefix: --minSpotId
 - id: in_max_spot_id
   doc: Maximum spot id
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxSpotId
 outputs:
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: output directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - parallel-fastq-dump

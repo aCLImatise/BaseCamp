@@ -10,6 +10,9 @@ task SecaprQualityCheck {
       ~{if defined(directory_containing_files) then ("--input " +  '"' + directory_containing_files + '"') else ""} \
       ~{if defined(output_directory_besaved) then ("--output " +  '"' + output_directory_besaved + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_containing_files: "The directory containing fastq files"
     output_directory_besaved: "The output directory where quality-test results will be\\nsaved\\n"

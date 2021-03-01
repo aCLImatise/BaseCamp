@@ -3,7 +3,7 @@ version 1.0
 task BatchParallelpl {
   input {
     Boolean? cpu
-    File? file_suffix_ie
+    File? file_suffix_stdout
     String? f
     String var_command
     String output_suffix_vertical_line_none
@@ -13,7 +13,7 @@ task BatchParallelpl {
     String the
     String for
     String each
-    File file
+    File var_file
     String provided
     String after
   }
@@ -27,16 +27,19 @@ task BatchParallelpl {
       ~{the} \
       ~{for} \
       ~{each} \
-      ~{file} \
+      ~{var_file} \
       ~{provided} \
       ~{after} \
       ~{if (cpu) then "-cpu" else ""} \
-      ~{if defined(file_suffix_ie) then ("-o " +  '"' + file_suffix_ie + '"') else ""} \
+      ~{if defined(file_suffix_stdout) then ("-o " +  '"' + file_suffix_stdout + '"') else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cpu: "<#> (max number of parallel processes, default: 20)"
-    file_suffix_ie: "<file suffix> (instead of stdout, \\\"flag file.suffix will be used\\\")\\ni.e. -o -o txt"
+    file_suffix_stdout: "<file suffix> (instead of stdout, \\\"flag file.suffix will be used\\\")\\ni.e. -o -o txt"
     f: ""
     var_command: ""
     output_suffix_vertical_line_none: ""
@@ -46,7 +49,7 @@ task BatchParallelpl {
     the: ""
     for: ""
     each: ""
-    file: ""
+    var_file: ""
     provided: ""
     after: ""
   }

@@ -3,17 +3,17 @@ id: poretools_occupancy.cwl
 inputs:
 - id: in_quiet
   doc: Do not output warnings to stderr
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_save_as
   doc: Save the plot to a file. Extension (.pdf or .png) drives
-  type: File
+  type: File?
   inputBinding:
     prefix: --saveas
 - id: in_plot_type
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --plot-type
 - id: in_files
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - poretools

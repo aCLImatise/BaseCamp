@@ -20,7 +20,7 @@ task Angsd {
     Boolean? do_het_plas
     Boolean? bam
     Boolean? do_major_minor
-    Boolean? ref_slash_anc
+    Boolean? ref
     Boolean? do_snp_stat
     Boolean? cig_stat
     Boolean? do_bcf
@@ -45,14 +45,17 @@ task Angsd {
       ~{if (do_het_plas) then "-doHetPlas" else ""} \
       ~{if (bam) then "-bam" else ""} \
       ~{if (do_major_minor) then "-doMajorMinor" else ""} \
-      ~{if (ref_slash_anc) then "-ref/-anc" else ""} \
+      ~{if (ref) then "-ref" else ""} \
       ~{if (do_snp_stat) then "-doSNPstat" else ""} \
       ~{if (cig_stat) then "-cigstat" else ""} \
       ~{if (do_bcf) then "-doBcf" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_threads: "1       Number of threads to use"
-    n_queue_size: "-1      Maximum number of queud elements"
+    n_queue_size: "Maximum number of queud elements"
     how_often: "100     How often should the program show progress"
     gl: "Estimate genotype likelihoods"
     do_counts: "Calculate various counts statistics"
@@ -69,7 +72,7 @@ task Angsd {
     do_het_plas: "Estimate hetplasmy by calculating a pooled haploid frequency"
     bam: "Options relating to bam reading"
     do_major_minor: "Infer the major/minor using different approaches"
-    ref_slash_anc: "Read reference or ancestral genome"
+    ref: "Read reference or ancestral genome"
     do_snp_stat: "Calculate various SNPstat"
     cig_stat: "Printout CIGAR stat across readlength"
     do_bcf: "Wrapper around -dopost -domajorminor -dofreq -gl -dovcf docounts"

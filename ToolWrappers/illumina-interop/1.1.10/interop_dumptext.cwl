@@ -3,22 +3,22 @@ id: interop_dumptext.cwl
 inputs:
 - id: in_subset
   doc: '[0]: Number of metrics to subsample'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --subset
 - id: in_metric
   doc: '[]: Name of metric to load, e.g. --metric=Tile to load TileMetricsOut.bin'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --metric
 - id: in_option_two
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: --option2
 - id: in_option_one
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: --option1
 - id: in_run_folder
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - interop_dumptext

@@ -3,27 +3,27 @@ id: seq_seq_pan_maf.cwl
 inputs:
 - id: in_g
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -g
 - id: in_x
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -x
 - id: in_n
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -n
 - id: in_p
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_quiet
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_seq_seq_pando_tpy
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - seq-seq-pan

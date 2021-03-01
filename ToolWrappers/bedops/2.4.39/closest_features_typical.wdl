@@ -30,6 +30,9 @@ task Closestfeaturestypical {
       ~{if (no_overlaps) then "--no-overlaps" else ""} \
       ~{if (no_ref) then "--no-ref" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chrom: "Jump to and process data for given <chromosome> only."
     closest: "Choose the closest element for output only.  Ties go the left element."

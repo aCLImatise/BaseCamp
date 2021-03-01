@@ -14,6 +14,9 @@ task TQSexportpy {
       ~{if defined(consec) then ("--consec " +  '"' + consec + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     export: "=EXPORTFILE\\nIllumina export file - Output format from the Genome\\nAnalyzer"
     phred: "threshold=THRESHOLD\\nBase intensity threshold value (Phred quality scores 0\\nto 40, default=10)"

@@ -58,6 +58,9 @@ task BcftoolsConvert {
       ~{if (hap_legend_sample_two_vcf) then "--haplegendsample2vcf" else ""} \
       ~{if defined(tsv_two_vcf) then ("--tsv2vcf " +  '"' + tsv_two_vcf + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exclude: "exclude sites for which the expression is true"
     include: "select sites for which the expression is true"
@@ -83,7 +86,7 @@ task BcftoolsConvert {
     hap_sample: "<...>       <prefix>|<hap-file>,<sample-file>"
     haploid_two_diploid: "convert haploid genotypes to diploid homozygotes"
     hap_legend_sample_two_vcf: "<...>  <prefix>|<hap-file>,<legend-file>,<sample-file>"
-    tsv_two_vcf: "-c, --columns <string>      columns of the input tsv file [ID,CHROM,POS,AA]\\n-f, --fasta-ref <file>      reference sequence in fasta format\\n-s, --samples <list>        list of sample names\\n-S, --samples-file <file>   file of sample names\\n"
+    tsv_two_vcf: "columns of the input tsv file [ID,CHROM,POS,AA]"
     input_file: ""
   }
   output {

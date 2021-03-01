@@ -3,27 +3,27 @@ id: phyluce_align_explode_alignments.cwl
 inputs:
 - id: in_alignments
   doc: Input folder of alignments
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --alignments
 - id: in_output_folder_fasta
   doc: Output folder of fasta files
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 - id: in_input_format
   doc: The input alignment format
-  type: string
+  type: string?
   inputBinding:
     prefix: --input-format
 - id: in_conf
   doc: Config file for renaming
-  type: File
+  type: File?
   inputBinding:
     prefix: --conf
 - id: in_section
   doc: Section of config file to use
-  type: File
+  type: File?
   inputBinding:
     prefix: --section
 - id: in_exclude
@@ -33,12 +33,12 @@ inputs:
     prefix: --exclude
 - id: in_by_tax_on
   doc: Explode file by taxon instead of by-locus
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --by-taxon
 - id: in_include_locus
   doc: Include the locus name in the FASTA header
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --include-locus
 - id: in_var_8
@@ -52,9 +52,10 @@ outputs:
   type: stdout
 - id: out_output_folder_fasta
   doc: Output folder of fasta files
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_folder_fasta)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phyluce_align_explode_alignments

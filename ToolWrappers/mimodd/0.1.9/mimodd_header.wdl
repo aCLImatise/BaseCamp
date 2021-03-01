@@ -32,6 +32,9 @@ task MimoddHeader {
       ~{if defined(rg_pu) then ("--rg-pu " +  '"' + rg_pu + '"') else ""} \
       ~{if (co) then "--co" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ofile: "redirect the output to the specified file (default:\\nstdout)"
     relaxed: "do not enforce a sample name to be specified for every\\nread group"

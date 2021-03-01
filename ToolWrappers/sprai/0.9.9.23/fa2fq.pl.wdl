@@ -10,6 +10,9 @@ task Fa2fqpl {
       ~{this} \
       ~{in_dot_fast_a}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this: ""
     in_dot_fast_a: ""

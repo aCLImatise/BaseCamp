@@ -4,6 +4,9 @@ task Monofindrequires {
   command <<<
     mono_find_requires
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

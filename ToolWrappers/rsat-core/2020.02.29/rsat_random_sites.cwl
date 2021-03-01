@@ -1,26 +1,26 @@
 class: CommandLineTool
 id: rsat_random_sites.cwl
 inputs:
-- id: in__verbosity_set
+- id: in_verbosity_set_verbosity
   doc: "#, --verbosity=#   set verbosity to level #\n0 no verbosity\n1 max verbosity"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
-- id: in__output_output
+- id: in__output_results
   doc: "#, --output=#      output results to #\nif not specified, the standard output\
     \ is used"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -o
 - id: in__motif_read
   doc: "#, --motif=#       read motif(s) from #\nif not specified, the standard input\
     \ is used"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
 - id: in_number_sites_generate
   doc: '#                  number of sites to generate'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_random_sites
@@ -47,6 +47,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

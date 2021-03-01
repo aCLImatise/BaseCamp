@@ -14,6 +14,9 @@ task PhylorankScaleTreeOutputTree {
       ~{input_tree} \
       ~{output_tree}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     phylo_rank: ""
     scale_tree: ""

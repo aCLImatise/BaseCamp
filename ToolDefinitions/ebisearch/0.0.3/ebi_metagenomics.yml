@@ -12,13 +12,13 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: Id of a run in EBI metagenomics
+    optional: true
     synonyms:
     - --run
+    description: Id of a run in EBI metagenomics
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -29,13 +29,13 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: Id of a run in EBI metagenomics
+        optional: true
         synonyms:
         - --run
+        description: Id of a run in EBI metagenomics
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -46,13 +46,13 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: Id of a run in EBI metagenomics
+            optional: true
             synonyms:
             - --run
+            description: Id of a run in EBI metagenomics
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
-          parent: &id006 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
             named: []
@@ -63,13 +63,13 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: Id of a run in EBI metagenomics
+                optional: true
                 synonyms:
                 - --run
+                description: Id of a run in EBI metagenomics
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
-              parent: &id003 !Command
+              parent: &id006 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -80,63 +80,155 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: Id of a run in EBI metagenomics
+                    optional: true
                     synonyms:
                     - --run
+                    description: Id of a run in EBI metagenomics
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --run
+                        description: Id of a run in EBI metagenomics
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: ebi_metagenomics print_possible_run_data\
+                        \ [OPTIONS]\n\n  Print information about the possible data\
+                        \ to download for a run\n\nOptions:\n  --run TEXT  Id of a\
+                        \ run in EBI metagenomics\n  --help      Show this message\
+                        \ and exit.\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - ebi_metagenomics
+                      - download_run_data
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: get_possible_run_data
+                        description: --file PATH  File to export downloaded data
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --run
+                        description: Id of a run in EBI metagenomics
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --data
+                        description: Data to download for the run (accessible with
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: ebi_metagenomics download_run_data [OPTIONS]\n\
+                        \n  Download data for a run\n\nOptions:\n  --run TEXT   Id\
+                        \ of a run in EBI metagenomics\n  --data TEXT  Data to download\
+                        \ for the run (accessible with\n               get_possible_run_data\n\
+                        \  --file PATH  File to export downloaded data\n  --help \
+                        \      Show this message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --help
+                      description: Show this message and exit.
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: ebi_metagenomics [OPTIONS] COMMAND [ARGS]...\n\
+                      \nOptions:\n  --help  Show this message and exit.\n\nCommands:\n\
+                      \  download_run_data        Download run data\n  print_possible_run_data\
+                      \  Get possible data for a run\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: ebi_metagenomics print_possible_run_data [OPTIONS]\n\
                     \n  Print information about the possible data to download for\
                     \ a run\n\nOptions:\n  --run TEXT  Id of a run in EBI metagenomics\n\
                     \  --help      Show this message and exit.\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - ebi_metagenomics
-                  - download_run_data
+                  command: *id005
                   positional:
                   - !Positional
-                    description: --file PATH  File to export downloaded data
+                    optional: false
                     position: 0
                     name: get_possible_run_data
-                    optional: false
+                    description: --file PATH  File to export downloaded data
                   named:
                   - !Flag
-                    description: Id of a run in EBI metagenomics
+                    optional: true
                     synonyms:
                     - --run
+                    description: Id of a run in EBI metagenomics
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: Data to download for the run (accessible with
+                    optional: true
                     synonyms:
                     - --data
+                    description: Data to download for the run (accessible with
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: ebi_metagenomics download_run_data [OPTIONS]\n\
@@ -146,13 +238,9 @@ subcommands:
                     \  --file PATH  File to export downloaded data\n  --help     \
                     \  Show this message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "Usage: ebi_metagenomics [OPTIONS] COMMAND [ARGS]...\n\n\
@@ -160,14 +248,15 @@ subcommands:
                   \ download_run_data        Download run data\n  print_possible_run_data\
                   \  Get possible data for a run\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: ebi_metagenomics print_possible_run_data [OPTIONS]\n\
@@ -175,38 +264,39 @@ subcommands:
                 \nOptions:\n  --run TEXT  Id of a run in EBI metagenomics\n  --help\
                 \      Show this message and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
-                description: --file PATH  File to export downloaded data
+                optional: false
                 position: 0
                 name: get_possible_run_data
-                optional: false
+                description: --file PATH  File to export downloaded data
               named:
               - !Flag
-                description: Id of a run in EBI metagenomics
+                optional: true
                 synonyms:
                 - --run
+                description: Id of a run in EBI metagenomics
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: Data to download for the run (accessible with
+                optional: true
                 synonyms:
                 - --data
+                description: Data to download for the run (accessible with
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
-              parent: *id003
+              parent: *id006
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: ebi_metagenomics download_run_data [OPTIONS]\n\n\
@@ -216,6 +306,7 @@ subcommands:
                 \ PATH  File to export downloaded data\n  --help       Show this message\
                 \ and exit.\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -225,14 +316,15 @@ subcommands:
               \        Download run data\n  print_possible_run_data  Get possible\
               \ data for a run\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: ebi_metagenomics print_possible_run_data [OPTIONS]\n\n\
@@ -240,38 +332,39 @@ subcommands:
             Options:\n  --run TEXT  Id of a run in EBI metagenomics\n  --help    \
             \  Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: --file PATH  File to export downloaded data
+            optional: false
             position: 0
             name: get_possible_run_data
-            optional: false
+            description: --file PATH  File to export downloaded data
           named:
           - !Flag
-            description: Id of a run in EBI metagenomics
+            optional: true
             synonyms:
             - --run
+            description: Id of a run in EBI metagenomics
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: Data to download for the run (accessible with
+            optional: true
             synonyms:
             - --data
+            description: Data to download for the run (accessible with
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
-          parent: *id006
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: ebi_metagenomics download_run_data [OPTIONS]\n\n  Download\
@@ -280,6 +373,7 @@ subcommands:
             \         get_possible_run_data\n  --file PATH  File to export downloaded\
             \ data\n  --help       Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -289,14 +383,15 @@ subcommands:
           \        Download run data\n  print_possible_run_data  Get possible data\
           \ for a run\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: ebi_metagenomics print_possible_run_data [OPTIONS]\n\n  Print\
@@ -304,38 +399,39 @@ subcommands:
         \  --run TEXT  Id of a run in EBI metagenomics\n  --help      Show this message\
         \ and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: --file PATH  File to export downloaded data
+        optional: false
         position: 0
         name: get_possible_run_data
-        optional: false
+        description: --file PATH  File to export downloaded data
       named:
       - !Flag
-        description: Id of a run in EBI metagenomics
+        optional: true
         synonyms:
         - --run
+        description: Id of a run in EBI metagenomics
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: Data to download for the run (accessible with
+        optional: true
         synonyms:
         - --data
+        description: Data to download for the run (accessible with
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: ebi_metagenomics download_run_data [OPTIONS]\n\n  Download\
@@ -344,6 +440,7 @@ subcommands:
         \     get_possible_run_data\n  --file PATH  File to export downloaded data\n\
         \  --help       Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -353,52 +450,54 @@ subcommands:
       \     Download run data\n  print_possible_run_data  Get possible data for a\
       \ run\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: ebi_metagenomics print_possible_run_data [OPTIONS]\n\n  Print\
     \ information about the possible data to download for a run\n\nOptions:\n  --run\
     \ TEXT  Id of a run in EBI metagenomics\n  --help      Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: --file PATH  File to export downloaded data
+    optional: false
     position: 0
     name: get_possible_run_data
-    optional: false
+    description: --file PATH  File to export downloaded data
   named:
   - !Flag
-    description: Id of a run in EBI metagenomics
+    optional: true
     synonyms:
     - --run
+    description: Id of a run in EBI metagenomics
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: Data to download for the run (accessible with
+    optional: true
     synonyms:
     - --data
+    description: Data to download for the run (accessible with
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: ebi_metagenomics download_run_data [OPTIONS]\n\n  Download data\
@@ -407,6 +506,7 @@ subcommands:
     \  --file PATH  File to export downloaded data\n  --help       Show this message\
     \ and exit.\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -415,3 +515,4 @@ help_text: "Usage: ebi_metagenomics [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -
   \  Show this message and exit.\n\nCommands:\n  download_run_data        Download\
   \ run data\n  print_possible_run_data  Get possible data for a run\n"
 generated_using: *id004
+docker_image:

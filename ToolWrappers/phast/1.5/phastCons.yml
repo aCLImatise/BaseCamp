@@ -3,106 +3,56 @@ command:
 - phastCons
 positional:
 - !Positional
-  description: Also predict conserved elements as well as
+  optional: false
+  position: 0
+  name: algorithm.
+  description: To specify them at the command line, use either the
+- !Positional
+  optional: false
+  position: 0
+  name: alignment.
+  description: They can be suppressed with the --no-post-probs
+- !Positional
+  optional: false
+  position: 1
+  name: option.
+  description: The secondary type of output, activated with the
+- !Positional
+  optional: false
+  position: 0
+  name: here.
+  description: For example, it is possible to produce conservation scores
+- !Positional
+  optional: false
   position: 0
   name: parameter.
-  optional: false
+  description: Also predict conserved elements as well as
 - !Positional
-  description: Output the conservation scores but not the conserved
+  optional: false
   position: 0
   name: models.
-  optional: false
+  description: Output the conservation scores but not the conserved
 - !Positional
-  description: phastCons mydata.ss cons.mod,noncons.mod > scores.wig
+  optional: false
   position: 1
   name: elements.
-  optional: false
+  description: phastCons mydata.ss cons.mod,noncons.mod > scores.wig
 named:
 - !Flag
-  description: "|FASTA|MPM|SS|MAF\nAlignment file format.  Default is to guess format\
-    \ based on\nfile contents.  Note that the msa_view program can be used to\nconvert\
-    \ between formats."
+  optional: true
   synonyms:
   - --msa-format
   - -i
+  description: "|FASTA|MPM|SS|MAF\nAlignment file format.  Default is to guess format\
+    \ based on\nfile contents.  Note that the msa_view program can be used to\nconvert\
+    \ between formats."
   args: !SimpleFlagArg
     name: PHYLIP
-  optional: true
 - !Flag
-  description: Like --estimate-trees, but estimate only the parameter rho.
+  optional: true
   synonyms:
-  - --estimate-rho
-  - -O
-  args: !SimpleFlagArg
-    name: fname_root
-  optional: true
-- !Flag
-  description: "(Optionally use with --viterbi) Assign a log-odds score to\neach prediction."
-  synonyms:
-  - --score
-  - -s
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "[~]<omega>  {--expected-lengths also allowed,\nfor backward compatibility}\n\
-    (For use with --target-coverage, alternative to --transitions)\nSet transition\
-    \ probabilities such that the expected length of\na conserved element is <omega>.\
-    \  Specifically, the parameter\nmu is set to 1/<omega>.  If preceded by '~', <omega>\
-    \ will be\nestimated, but will be initialized to the specified value."
-  synonyms:
-  - --expected-length
-  - -E
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Set the *scale* (overall evolutionary rate) of the model for\nthe\
-    \ conserved state to be <rho> times that of the model for\nthe non-conserved state\
-    \ (0 < <rho> < 1; default 0.3).  If used\nwith --estimate-trees or --estimate-rho,\
-    \ the specified value\nwill be used for initialization only (rho will be\nestimated).\
-    \  This option is ignored if two tree models are\ngiven."
-  synonyms:
-  - --rho
-  - -R
-  args: !SimpleFlagArg
-    name: rho
-  optional: true
-- !Flag
-  description: "Estimate free parameters of tree models and write new models\nto <fname_root>.cons.mod\
-    \ and <fname_root>.noncons.mod."
-  synonyms:
-  - --estimate-trees
-  - -T
-  args: !SimpleFlagArg
-    name: fname_root
-  optional: true
-- !Flag
-  description: "(Optionally use with --estimate-trees or --estimate-rho)\nAssume a\
-    \ background nucleotide distribution consistent with\nthe given average G+C content\
-    \ (0 < <val> < 1) when estimating\ntree models.  (The frequencies of G and C will\
-    \ be set to\n<val>/2 and the frequencies of A and T will be set to\n(1-<val>)/2.)\
-    \  This option overrides the default behavior of\nestimating the background distribution\
-    \ from the data (if\n--estimate-trees) or obtaining them from the input model\
-    \ (if\n--estimate-rho)."
-  synonyms:
-  - --gc
-  - -G
-  args: !SimpleFlagArg
-    name: val
-  optional: true
-- !Flag
-  description: "| <nrates_conserved,nrates_nonconserved>\n(Optionally use with a discrete-gamma\
-    \ model and --estimate-trees)\nAssume the specified number of rate categories,\
-    \ instead of the\nnumber given in the *.mod file.  The shape parameter 'alpha'\
-    \ will\nbe as given in the *.mod file.  In the case of the default\ntwo-state\
-    \ HMM, two values can be specified, for the numbers of\nrates for the conserved\
-    \ and the nonconserved states, resp."
-  synonyms:
-  - --nrates
-  - -k
-  args: !SimpleFlagArg
-    name: nrates
-  optional: true
-- !Flag
+  - --transitions
+  - -t
   description: "[~]<mu>,<nu>\nFix the transition probabilities of the two-state HMM\
     \ as\nspecified, rather than estimating them by maximum likelihood.\nAlternatively,\
     \ if first character of argument is '~', estimate\nparameters, but initialize\
@@ -111,12 +61,23 @@ named:
     \ of the\nreverse transition.  The probabilities of self transitions are\nthus\
     \ 1-<mu> and 1-<nu> and the expected lengths of conserved\nand nonconserved elements\
     \ are 1/<mu> and 1/<nu>, respectively."
-  synonyms:
-  - --transitions
-  - -t
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --expected-length
+  - -E
+  description: "[~]<omega>  {--expected-lengths also allowed,\nfor backward compatibility}\n\
+    (For use with --target-coverage, alternative to --transitions)\nSet transition\
+    \ probabilities such that the expected length of\na conserved element is <omega>.\
+    \  Specifically, the parameter\nmu is set to 1/<omega>.  If preceded by '~', <omega>\
+    \ will be\nestimated, but will be initialized to the specified value."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --target-coverage
+  - -C
   description: "(Alternative to --transitions) Constrain transition parameters\nsuch\
     \ that the expected fraction of sites in conserved elements\nis <gamma> (0 < <gamma>\
     \ < 1).  This is a *prior* rather than\n*posterior* expectation and assumes stationarity\
@@ -124,105 +85,174 @@ named:
     \ mu/nu to be fixed at (1-<gamma>)/<gamma>.  If used with\n--expected-length,\
     \ the transition probabilities will be\ncompletely fixed; otherwise the expected-length\
     \ parameter\n<omega> will be estimated by maximum likelihood."
-  synonyms:
-  - --target-coverage
-  - -C
   args: !SimpleFlagArg
     name: gamma
-  optional: true
 - !Flag
-  description: "[alternatively --most-conserved], -V <fname>\nPredict discrete elements\
-    \ using the Viterbi algorithm and\nwrite to specified file.  Output is in BED\
-    \ format, unless\n<fname> has suffix \".gff\", in which case output is in GFF."
-  synonyms:
-  - --viterbi
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: "Compute total log likelihood using the forward algorithm and\nwrite\
-    \ to specified file."
-  synonyms:
-  - --lnl
-  - -L
-  args: !SimpleFlagArg
-    name: fname
-  optional: true
-- !Flag
-  description: "Suppress output of posterior probabilities.  Useful if only\ndiscrete\
-    \ elements or likelihood is of interest."
-  synonyms:
-  - --no-post-probs
-  - -n
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "(Optionally use when estimating free parameters) Write log of\noptimization\
-    \ procedure to specified file."
-  synonyms:
-  - --log
-  - -g
-  args: !SimpleFlagArg
-    name: log_fname
-  optional: true
-- !Flag
-  description: "Use coordinate frame of specified sequence in output.  Default\nvalue\
-    \ is 1, first sequence in alignment; 0 indicates\ncoordinate frame of entire multiple\
-    \ alignment."
   synonyms:
   - --refidx
   - -r
+  description: "Use coordinate frame of specified sequence in output.  Default\nvalue\
+    \ is 1, first sequence in alignment; 0 indicates\ncoordinate frame of entire multiple\
+    \ alignment."
   args: !SimpleFlagArg
     name: refseq_idx
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --most-conserved
+  description: (aka --viterbi) option, is a set of discrete
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rho
+  - -R
+  description: "Set the *scale* (overall evolutionary rate) of the model for\nthe\
+    \ conserved state to be <rho> times that of the model for\nthe non-conserved state\
+    \ (0 < <rho> < 1; default 0.3).  If used\nwith --estimate-trees or --estimate-rho,\
+    \ the specified value\nwill be used for initialization only (rho will be\nestimated).\
+    \  This option is ignored if two tree models are\ngiven."
+  args: !SimpleFlagArg
+    name: rho
+- !Flag
+  optional: true
+  synonyms:
+  - --estimate-trees
+  - -T
+  description: "Estimate free parameters of tree models and write new models\nto <fname_root>.cons.mod\
+    \ and <fname_root>.noncons.mod."
+  args: !SimpleFlagArg
+    name: fname_root
+- !Flag
+  optional: true
+  synonyms:
+  - --estimate-rho
+  - -O
+  description: Like --estimate-trees, but estimate only the parameter rho.
+  args: !SimpleFlagArg
+    name: fname_root
+- !Flag
+  optional: true
+  synonyms:
+  - --gc
+  - -G
+  description: "(Optionally use with --estimate-trees or --estimate-rho)\nAssume a\
+    \ background nucleotide distribution consistent with\nthe given average G+C content\
+    \ (0 < <val> < 1) when estimating\ntree models.  (The frequencies of G and C will\
+    \ be set to\n<val>/2 and the frequencies of A and T will be set to\n(1-<val>)/2.)\
+    \  This option overrides the default behavior of\nestimating the background distribution\
+    \ from the data (if\n--estimate-trees) or obtaining them from the input model\
+    \ (if\n--estimate-rho)."
+  args: !SimpleFlagArg
+    name: val
+- !Flag
+  optional: true
+  synonyms:
+  - --nrates
+  - -k
+  description: "| <nrates_conserved,nrates_nonconserved>\n(Optionally use with a discrete-gamma\
+    \ model and --estimate-trees)\nAssume the specified number of rate categories,\
+    \ instead of the\nnumber given in the *.mod file.  The shape parameter 'alpha'\
+    \ will\nbe as given in the *.mod file.  In the case of the default\ntwo-state\
+    \ HMM, two values can be specified, for the numbers of\nrates for the conserved\
+    \ and the nonconserved states, resp."
+  args: !SimpleFlagArg
+    name: nrates
+- !Flag
+  optional: true
+  synonyms:
+  - --viterbi
+  description: "[alternatively --most-conserved], -V <fname>\nPredict discrete elements\
+    \ using the Viterbi algorithm and\nwrite to specified file.  Output is in BED\
+    \ format, unless\n<fname> has suffix \".gff\", in which case output is in GFF."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --score
+  - -s
+  description: "(Optionally use with --viterbi) Assign a log-odds score to\neach prediction."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --lnl
+  - -L
+  description: "Compute total log likelihood using the forward algorithm and\nwrite\
+    \ to specified file."
+  args: !SimpleFlagArg
+    name: fname
+- !Flag
+  optional: true
+  synonyms:
+  - --no-post-probs
+  - -n
+  description: "Suppress output of posterior probabilities.  Useful if only\ndiscrete\
+    \ elements or likelihood is of interest."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  - -g
+  description: "(Optionally use when estimating free parameters) Write log of\noptimization\
+    \ procedure to specified file."
+  args: !SimpleFlagArg
+    name: log_fname
+- !Flag
+  optional: true
+  synonyms:
+  - --seqname
+  - -N
   description: "(Optionally use with --viterbi) Use specified string\nfor 'seqname'\
     \ (GFF) or 'chrom' field in output file.  Default\nis obtained from input file\
     \ name (double filename root, e.g.,\n\"chr22\" if input file is \"chr22.35.ss\"\
     )."
-  synonyms:
-  - --seqname
-  - -N
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --idpref
+  - -P
   description: "(Optionally use with --viterbi) Use specified string as\nprefix of\
     \ generated ids in output file.  Can be used to ensure\nids are unique.  Default\
     \ is obtained from input file name\n(single filename root, e.g., \"chr22.35\"\
     \ if input file is\n\"chr22.35.ss\")."
-  synonyms:
-  - --idpref
-  - -P
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
-  description: Proceed quietly (without updates to stderr).
+  optional: true
   synonyms:
   - --quiet
   - -q
+  description: Proceed quietly (without updates to stderr).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Expand HMM state space to model indels as described in Siepel\n& Haussler\
-    \ (2004)."
+  optional: true
   synonyms:
   - --indels
   - -I
+  description: "Expand HMM state space to model indels as described in Siepel\n& Haussler\
+    \ (2004)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-micro-indel
+  - -Y
   description: "(Optionally use with --indels) Maximum length of an alignment\ngap\
     \ to be considered a \"micro-indel\" and therefore\naddressed by the indel model.\
     \  Gaps longer than this threshold\nwill be treated as missing data.  Default\
     \ value is 20."
-  synonyms:
-  - --max-micro-indel
-  - -Y
   args: !SimpleFlagArg
     name: length
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --indel-params
+  - -D
   description: "[~]<alpha_0,beta_0,tau_0,alpha_1,beta_1,tau_1>\n(Optionally use with\
     \ --indels and default two-state HMM) Fix\nthe indel parameters at (alpha_0, beta_0,\
     \ tau_0) for the\nconserved state and at (alpha_1, beta_1, tau_1) for the\nnon-conserved\
@@ -232,21 +262,21 @@ named:
     \ per site in state j (typically ~0.05), beta_j is\nthe rate of deletion events\
     \ per substitution per site in state\nj (typically ~0.05), and tau_j is approximately\
     \ the inverse\nof the expected indel length in state j (typically 0.2-0.5)."
-  synonyms:
-  - --indel-params
-  - -D
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Like --indels but force the use of a single-state HMM.  This\noption\
-    \ allows the effect of the indel model in isolation to be\nobserved.  Implies\
-    \ --no-post-probs.  Use with --lnl."
+  optional: true
   synonyms:
   - --indels-only
   - -J
+  description: "Like --indels but force the use of a single-state HMM.  This\noption\
+    \ allows the effect of the indel model in isolation to be\nobserved.  Implies\
+    \ --no-post-probs.  Use with --lnl."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --FC
+  - -X
   description: "(Alternative to --hmm; specify only one *.mod file with this\noption)\
     \ Use an HMM with a state for every rate\ncategory in the given phylogenetic model,\
     \ and transition\nprobabilities defined by an autocorrelation parameter lambda\n\
@@ -259,12 +289,12 @@ named:
     model of rate variation must have been used (-K option to\nphyloFit), and the\
     \ rate constants will be as defined\n(explicitly) in the *.mod file.  By default,\
     \ the parameter\nlambda will be estimated by maximum likelihood (see --lambda)."
-  synonyms:
-  - --FC
-  - -X
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --lambda
+  - -l
   description: "[~]<lambda>\n(Optionally use with --FC) Fix lambda at the\nspecified\
     \ value rather than estimating it by maximum\nlikelihood.  Alternatively, if first\
     \ character is '~',\nestimate but initialize at specified value.  Allowable range\n\
@@ -272,12 +302,12 @@ named:
     \ state j will be lambda * I(i == j) +\n(1-lambda)/k, where I is the indicator\
     \ function.  Thus, lambda\n= 0 implies no autocorrelation and lambda = 1 implies\
     \ perfect\nautocorrelation."
-  synonyms:
-  - --lambda
-  - -l
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --coding-potential
+  - -p
   description: "Use parameter settings that cause output to be interpretable\nas a\
     \ coding potential score.  By default, a simplified version\nof exoniphy's phylo-HMM\
     \ is used, with a noncoding (background)\nstate, a conserved non-coding (CNS)\
@@ -285,12 +315,12 @@ named:
     \ \"NCATS=4;\nCNS 1; CDS 2-4\" --hmm <default-HMM-file> --states CDS\n--reflect-strand\
     \ background,CNS and a set of default *.mod\nfiles (all of which can be overridden).\
     \  This option can be\nused with or without --indels."
-  synonyms:
-  - --coding-potential
-  - -p
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --extrapolate
+  - -e
   description: "| default\nExtrapolate to a larger set of species based on the given\n\
     phylogeny (Newick-format).  The trees in the given tree models\n(*.mod files)\
     \ must be subtrees of the larger phylogeny.  For\neach tree model M, a copy will\
@@ -301,70 +331,70 @@ named:
     \ the string \"default\"\nis given instead of a filename, then a phylogeny for\
     \ 25\nvertebrate species, estimated from sequence data for Target 1\n(CFTR) of\
     \ the NISC Comparative Sequencing Program (Thomas et\nal., 2003), will be assumed."
-  synonyms:
-  - --extrapolate
-  - -e
   args: !SimpleFlagArg
     name: phylog.nh
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --alias
+  - -A
   description: "Alias names in input alignment according to given definition,\ne.g.,\
     \ \"hg17=human; mm5=mouse; rn3=rat\".  Useful with default\n*.mod files, e.g.,\
     \ with --coding-potential.  (Default models\nuse generic common names such as\
     \ \"human\", \"mouse\", and\n\"rat\".  This option allows a mapping to be established\n\
     between the leaves of trees in these files and the sequences\nof an alignment\
     \ that uses an alternative naming convention.)"
-  synonyms:
-  - --alias
-  - -A
   args: !SimpleFlagArg
     name: alias_def
-  optional: true
 - !Flag
-  description: "Name of HMM file explicitly defining the probabilities of all\nstate\
-    \ transitions.  States in the file must correspond in\nnumber and order to phylogenetic\
-    \ models in <mod_fname_list>.\nExpected file format is as produced by 'hmm_train.'"
+  optional: true
   synonyms:
   - --hmm
   - -H
+  description: "Name of HMM file explicitly defining the probabilities of all\nstate\
+    \ transitions.  States in the file must correspond in\nnumber and order to phylogenetic\
+    \ models in <mod_fname_list>.\nExpected file format is as produced by 'hmm_train.'"
   args: !SimpleFlagArg
     name: hmm_fname
-  optional: true
 - !Flag
-  description: "|<string>\n(Optionally use with --hmm)  Mapping of feature types to\
-    \ category\nnumbers.  Can give either a filename or an \"inline\" description\n\
-    of a simple category map, e.g., --catmap \"NCATS = 3 ; CDS 1-3\"."
+  optional: true
   synonyms:
   - --catmap
   - -c
+  description: "|<string>\n(Optionally use with --hmm)  Mapping of feature types to\
+    \ category\nnumbers.  Can give either a filename or an \"inline\" description\n\
+    of a simple category map, e.g., --catmap \"NCATS = 3 ; CDS 1-3\"."
   args: !SimpleFlagArg
     name: fname
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --states
+  - -S
   description: "States of interest in the phylo-HMM, specified by number\n(indexing\
     \ starts with 0), or if --catmap, by category name.\nDefault value is 1.  Choosing\
     \ --states \"0,1,2\" will cause\noutput of the sum of the posterior probabilities\
     \ for states 0,\n1, and 2, and/or of regions in which the Viterbi path\ncoincides\
     \ with (any of) states 0, 1, or 2 (see --viterbi)."
-  synonyms:
-  - --states
-  - -S
   args: !SimpleFlagArg
     name: state_list
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --reflect-strand
+  - -U
   description: "(Optionally use with --hmm) Given an HMM describing the\nforward strand,\
     \ create a larger HMM that allows for features\non both strands by \"reflecting\"\
     \ the original HMM about the\nspecified \"pivot\" states.  The new HMM will be\
     \ used for\nprediction on both strands.  States can be specified by number\n(indexing\
     \ starts with 0), or if --catmap, by category name."
-  synonyms:
-  - --reflect-strand
-  - -U
   args: !SimpleFlagArg
     name: pivot_states
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --require-informative
+  - -M
   description: "Require \"informative\" columns (i.e., columns with more than\ntwo\
     \ non-missing-data characters, excluding sequences specified\nby --not-informative)\
     \ in specified HMM states, to help\neliminate false positive predictions.  States\
@@ -373,13 +403,13 @@ named:
     \ of zero.  By default, this option is active,\nwith <states> equal to the set\
     \ of states of interest for\nprediction (as specified by --states).  Use \"none\"\
     \ to disable\ncompletely."
-  synonyms:
-  - --require-informative
-  - -M
   args: !SimpleFlagArg
     name: states
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --not-informative
+  - -F
   description: "Do not consider the specified sequences (listed by name) when\ndeciding\
     \ whether a column is informative.  This option may be\nuseful when sequences\
     \ are present that are very close to the\nreference sequence and thus do not contribute\
@@ -387,34 +417,30 @@ named:
     \ chimp\" with a human-referenced multiple\nalignment including chimp sequence,\
     \ to avoid false-positive\npredictions based only on human/chimp alignments (can\
     \ be a\nproblem, e.g., with --coding-potential)."
-  synonyms:
-  - --not-informative
-  - -F
   args: !SimpleFlagArg
     name: list
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ignore-missing
+  - -z
   description: "(For use when estimating transition probabilities) Ignore\nregions\
     \ of missing data in all sequences but the reference\nsequence (excluding sequences\
     \ specified by --not-informative)\nwhen estimating transition probabilities. \
     \ Can help avoid\ntoo-low estimates of <mu> and <nu> or too-high estimates of\n\
     <lambda>.  Warning: this option should not be used with\n--viterbi because coordinates\
     \ in output will be\nunrecognizable."
-  synonyms:
-  - --ignore-missing
-  - -z
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message.
+  optional: true
   synonyms:
   - --help
   - -h
+  description: Print this help message.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nPROGRAM: phastCons\n\nUSAGE: phastCons [OPTIONS] alignment m1.mod,m2.mod,...\
@@ -673,3 +699,4 @@ help_text: "\nPROGRAM: phastCons\n\nUSAGE: phastCons [OPTIONS] alignment m1.mod,
   \ approximate\n      methods. J. Mol. Evol., 39:306-314.\n"
 generated_using:
 - --help
+docker_image:

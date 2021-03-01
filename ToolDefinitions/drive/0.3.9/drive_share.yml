@@ -3,11 +3,77 @@ command:
 - drive
 - share
 positional: []
-named: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -emails
+  description: emails to share the file to
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -message
+  description: message to send receipients
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -no-prompt
+  description: disables the prompt
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -notify
+  description: toggle whether to notify receipients about share (default true)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -quiet
+  description: if set, do not log anything but errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -role
+  description: "role to set to receipients of share. Possible values:\n* owner.\n\
+    * reader.\n* writer.\n* commenter."
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -type
+  description: "scope of accounts to share files with. Possible values:\n* anyone.\n\
+    * user.\n* domain.\n* group"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -verbose
+  description: show step by step information verbosely (default true)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -with-link
+  description: "turn off file indexing so that only those with the link can view it\n"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - -id
+  description: share by id instead of path
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage of share:\n  -emails string\n    \temails to share the file to\n\
@@ -22,3 +88,4 @@ help_text: "Usage of share:\n  -emails string\n    \temails to share the file to
   \ so that only those with the link can view it\n"
 generated_using:
 - --help
+docker_image:

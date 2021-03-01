@@ -12,6 +12,9 @@ task StaramrDbInfo {
       ~{if (v) then "-V" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
     verbose: ""

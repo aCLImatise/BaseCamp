@@ -5,78 +5,81 @@ command:
 positional: []
 named:
 - !Flag
-  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
-    \ None)"
+  optional: true
   synonyms:
   - -s
+  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
+    \ None)"
   args: !RepeatFlagArg
     name: SEQ_FILES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
   description: "Explicit output file name(s). Note, this argument\ncannot be used\
     \ with the --failed, --outdir, or\n--outname arguments. If unspecified, then the\
     \ output\nfilename will be based on the input filename(s).\n(default: None)"
-  synonyms:
-  - -o
   args: !RepeatFlagArg
     name: OUT_FILES
-  optional: true
 - !Flag
-  description: "Specify to changes the output directory to the\nlocation specified.\
-    \ The input file directory is used\nif this is not specified. (default: None)"
+  optional: true
   synonyms:
   - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
   args: !SimpleFlagArg
     name: OUT_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --outname
   description: "Changes the prefix of the successfully processed\noutput file to the\
     \ string specified. May not be\nspecified with multiple input files. (default:\
     \ None)"
-  synonyms:
-  - --outname
   args: !SimpleFlagArg
     name: OUT_NAME
-  optional: true
 - !Flag
-  description: "If specified create files containing records that fail\nprocessing.\
-    \ (default: False)"
+  optional: true
   synonyms:
   - --failed
+  description: "If specified create files containing records that fail\nprocessing.\
+    \ (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
+  optional: true
   synonyms:
   - --fasta
+  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --delim
   description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
     annotation blocks, field names and values, and values\nwithin a field, respectively.\
     \ (default: ('|', '=',\n','))"
-  synonyms:
-  - --delim
   args: !SimpleFlagArg
     name: DELIMITER
-  optional: true
 - !Flag
-  description: 'List of fields to copy. (default: None)'
+  optional: true
   synonyms:
   - -f
+  description: 'List of fields to copy. (default: None)'
   args: !RepeatFlagArg
     name: FIELDS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -k
   description: "List of names for each copied field. If the new field\nis already\
     \ present, the copied field will be merged\ninto the existing field. (default:\
     \ None)"
-  synonyms:
-  - -k
   args: !RepeatFlagArg
     name: NAMES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --act
   description: "[{min,max,sum,first,last,set,cat} ...]\nList of collapse actions to\
     \ take on each new field\nfollowing the copy operation defining how each\nannotation\
     \ will be combined into a single value. The\nactions \"min\", \"max\", \"sum\"\
@@ -85,35 +88,32 @@ named:
     \ in the annotation. The action\n\"set\" collapses annotations into a comma delimited\n\
     list of unique values. The action \"cat\" concatenates\nthe values together into\
     \ a single string. (default:\nNone)\n"
-  synonyms:
-  - --act
   args: !ChoiceFlagArg
     choices: !!set
-      first:
-      min:
       cat:
       set:
       sum:
+      first:
+      min:
       max:
       last:
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: ParseHeaders.py copy [--version] [-h] -s SEQ_FILES [SEQ_FILES ...]\n\
   \                            [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n\
   \                            [--outname OUT_NAME] [--failed] [--fasta]\n       \
@@ -159,3 +159,4 @@ help_text: "usage: ParseHeaders.py copy [--version] [-h] -s SEQ_FILES [SEQ_FILES
   \ string. (default:\n                        None)\n"
 generated_using:
 - --help
+docker_image:

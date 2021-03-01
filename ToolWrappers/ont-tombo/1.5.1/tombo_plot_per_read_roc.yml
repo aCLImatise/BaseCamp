@@ -3,97 +3,92 @@ command:
 - tombo
 - plot
 - per_read_roc
-positional:
-- !Positional
-  description: '[PER_READ_STATISTICS_FILENAMES ...]'
-  position: 0
-  name: PER_READ_STATISTICS_FILENAMES
-  optional: false
+positional: []
 named:
 - !Flag
-  description: "Binary files containing per-read statistics from\nstatistical testing."
+  optional: true
   synonyms:
   - --per-read-statistics-filenames
+  description: "Binary files containing per-read statistics from\nstatistical testing."
   args: !RepeatFlagArg
     name: PER_READ_STATISTICS_FILENAMES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --modified-locations
   description: "Modification description and bed format files\ncontaining single base\
     \ locations of ground truth\nmodified sites. Bed files should contain 6 fields\n\
     including strand. Format descriptions as\n\"mod_name:locs.bed\". Example: \"CpG\n\
     bisulfite\":bisulfite_locs.bed"
-  synonyms:
-  - --modified-locations
   args: !RepeatFlagArg
     name: MODIFIED_LOCATIONS
-  optional: true
 - !Flag
-  description: "Bed format files containing single base locations of\nground truth\
-    \ unmodified sites. Bed files should\ncontain 6 fields including strand."
+  optional: true
   synonyms:
   - --unmodified-locations
+  description: "Bed format files containing single base locations of\nground truth\
+    \ unmodified sites. Bed files should\ncontain 6 fields including strand."
   args: !RepeatFlagArg
     name: UNMODIFIED_LOCATIONS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --motif-descriptions
   description: "Ground truth, motif centered, modified base\ndescriptions for computing\
     \ ROC and PR curves. Each\nstatistics file is associated with a set of motif\n\
     descriptions. Format descriptions as:\n\"motif:mod_pos:name[::motif2:mod_pos2:name2...]\"\
     .\nmod_pos indicates the alternate-base within the motif\n(1-based index). Example:\
     \ CCWGG:2:\"dcm\n5mC\"::GATC:2:\"dam 6mA\" would assess the performance of\na\
     \ single Tombo statistics file for identification of\nE. coli dam and dcm methylation."
-  synonyms:
-  - --motif-descriptions
   args: !RepeatFlagArg
     name: MOTIF_DESCRIPTIONS
-  optional: true
 - !Flag
-  description: "FASTA file used to re-squiggle. For faster sequence\naccess."
+  optional: true
   synonyms:
   - --genome-fasta
+  description: "FASTA file used to re-squiggle. For faster sequence\naccess."
   args: !SimpleFlagArg
     name: GENOME_FASTA
-  optional: true
 - !Flag
-  description: "Number of randomly selected per-read, per-base\nstatistics to extract\
-    \ from each genomic block for\nplotting. Default: 100000"
+  optional: true
   synonyms:
   - --statistics-per-block
+  description: "Number of randomly selected per-read, per-base\nstatistics to extract\
+    \ from each genomic block for\nplotting. Default: 100000"
   args: !SimpleFlagArg
     name: STATISTICS_PER_BLOCK
-  optional: true
 - !Flag
-  description: "Total per-read statistics to be extracted for\nplotting. Avoids memory\
-    \ overflow for large runs.\nDefault: 5000000"
+  optional: true
   synonyms:
   - --total-statistics-limit
+  description: "Total per-read statistics to be extracted for\nplotting. Avoids memory\
+    \ overflow for large runs.\nDefault: 5000000"
   args: !SimpleFlagArg
     name: TOTAL_STATISTICS_LIMIT
-  optional: true
 - !Flag
-  description: "PDF filename to store plot(s). Default:\ntombo_results.per_reads_roc.pdf"
+  optional: true
   synonyms:
   - --pdf-filename
+  description: "PDF filename to store plot(s). Default:\ntombo_results.per_reads_roc.pdf"
   args: !SimpleFlagArg
     name: PDF_FILENAME
-  optional: true
 - !Flag
-  description: Don't print status information.
+  optional: true
   synonyms:
   - --quiet
   - -q
+  description: Don't print status information.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: Print this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: tombo plot per_read_roc --per-read-statistics-filenames\n     \
@@ -143,3 +138,4 @@ help_text: "usage: tombo plot per_read_roc --per-read-statistics-filenames\n    
   \   Print this help message and exit\n"
 generated_using:
 - --help
+docker_image:

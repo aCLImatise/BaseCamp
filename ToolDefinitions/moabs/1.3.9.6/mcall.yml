@@ -4,217 +4,217 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -m
   description: "[ --mappedFiles ] arg           Specify the names of RRBS/WGBS alignment\n\
     files for methylation calling. Multiple\nfiles can be provided to combine them(eg.\n\
     lanes or replicates) into a single track;"
-  synonyms:
-  - -m
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If two or more mappedFiles are specifed,\nthis option generates a\
-    \ merged result;\nIgnored for one input file;"
+  optional: true
   synonyms:
   - --sampleName
+  description: "If two or more mappedFiles are specifed,\nthis option generates a\
+    \ merged result;\nIgnored for one input file;"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: The name of the output directory;
+  optional: true
   synonyms:
   - --outputDir
+  description: The name of the output directory;
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "The name of the web-accessible output\ndirectory for UCSC Genome Browser\
-    \ tracks;"
+  optional: true
   synonyms:
   - --webOutputDir
+  description: "The name of the web-accessible output\ndirectory for UCSC Genome Browser\
+    \ tracks;"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "[ --genome ] arg                The UCSC Genome Browser identifier\
-    \ of\nsource genome assembly; mm9 for example;"
+  optional: true
   synonyms:
   - -g
+  description: "[ --genome ] arg                The UCSC Genome Browser identifier\
+    \ of\nsource genome assembly; mm9 for example;"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[ --reference ] arg             Reference DNA fasta file; It's required\
-    \ if\nCHG methylation is wanted;"
+  optional: true
   synonyms:
   - -r
+  description: "[ --reference ] arg             Reference DNA fasta file; It's required\
+    \ if\nCHG methylation is wanted;"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=20)       Threshold for cytosine quality score\n(default: 20). Discard\
-    \ the base if\nthreshold is not reached;"
+  optional: true
   synonyms:
   - --cytosineMinScore
+  description: "(=20)       Threshold for cytosine quality score\n(default: 20). Discard\
+    \ the base if\nthreshold is not reached;"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nextBaseMinScore
   description: "(=3)        Threshold for the next base quality\nscore(default: 3,ie,\
     \ better than B or #);\nPossible values: -1 makes the program not\nto check if\
     \ next base matches reference;\nany positive integer or zero makes the\nprogram\
     \ to check if next base matches\nreference and reaches this score\nthreshold;"
-  synonyms:
-  - --nextBaseMinScore
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=0)        Specify quality score system: 0 means\nautodetection;\
-    \ Sanger=>33;Solexa=>59;Illum\nina=>64; See wiki FASTQ_format for\ndetails;"
+  optional: true
   synonyms:
   - --qualityScoreBase
+  description: "(=0)        Specify quality score system: 0 means\nautodetection;\
+    \ Sanger=>33;Solexa=>59;Illum\nina=>64; See wiki FASTQ_format for\ndetails;"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --trimWGBSEndRepairPE2Seq
   description: "(=3) How to trim end-repair sequence from begin\nof +-/-- reads from\
     \ Pair End WGBS\nSequencing; 0: no trim; n(positive\ninteger): trim n bases from\
     \ begin of +-/--\nreads; -2: model determined n; -1: trim\nfrom beginning to before\
     \ 1st methylated C;\nSuggest 3; n>readLen is equivalent to use\nPE1 reads;"
-  synonyms:
-  - --trimWGBSEndRepairPE2Seq
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --trimWGBSEndRepairPE1Seq
   description: "(=3) How to trim end-repair sequence from end\nof ++/-+ reads from\
     \ Pair End WGBS\nSequencing; 0: no trim; n(positive\ninteger): trim n + NM bases\
     \ from end of\n++/-+ reads if fragSize <= maxReadLen; -2:\nmodel determined n;\
     \ Suggest 3;"
-  synonyms:
-  - --trimWGBSEndRepairPE1Seq
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=1)     1/0 makes the program count once/twice the\noverlap seq of\
-    \ two pairs;"
+  optional: true
   synonyms:
   - --processPEOverlapSeq
+  description: "(=1)     1/0 makes the program count once/twice the\noverlap seq of\
+    \ two pairs;"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --trimRRBSEndRepairSeq
   description: "(=2)    How to trim end-repair sequence for RRBS\nreads; RRBS or WGBS\
     \ protocol can be\nautomatically detected; 0: no trim; 2:\ntrim the last CG at\
     \ exactly end of ++/-+\nreads and trim the first CG at exactly\nbegin of +-/--\
     \ reads like the WGBS\nsituation;"
-  synonyms:
-  - --trimRRBSEndRepairSeq
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=1)         Specify whether to skip random and hadrop\nchrom;"
+  optional: true
   synonyms:
   - --skipRandomChrom
+  description: "(=1)         Specify whether to skip random and hadrop\nchrom;"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
   description: "[ --requiredFlag ] arg (=0)     Requiring samtools flag; 0x2(properly\n\
     paried), 0x40(PE1), 0x80(PE2), 0x100(not\nunique), r=0x10(reverse); Examples:\
     \ -f\n0x10 <=> +-/-+ (Right) reads; -f 0x40 <=>\n++/-+ (PE1) reads; -f 0x50 <=>\
     \ -+ read; -f\n0x90 <=> +- read;"
-  synonyms:
-  - -f
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --minFragSize
   description: "(=0)             Requiring min fragment size, the 9th field\nin sam\
     \ file; Since non-properly-paired\nread has 0 at 9th field, setting this\noption\
     \ is requiring properly paired and\nlarge enough fragment size;"
-  synonyms:
-  - --minFragSize
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --minMMFragSize
   description: "(=0)           Requiring min fragment size for multiply\nmatched read;\
     \ Same as option above but\nonly this option is only applicable to\nreads with\
     \ flag 0x100 set as 1;"
-  synonyms:
-  - --minMMFragSize
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=G)               X=G generates a file for CpG methylation;\nA/C/T\
-    \ generates file for CpA/CpC/CpT meth;"
+  optional: true
   synonyms:
   - --reportCpX
+  description: "(=G)               X=G generates a file for CpG methylation;\nA/C/T\
+    \ generates file for CpA/CpC/CpT meth;"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=X)               X=G generates a file for CHG methylation;\nA/C/T\
-    \ generates file for CHA/CHC/CHT meth;\nThis file is large;"
+  optional: true
   synonyms:
   - --reportCHX
+  description: "(=X)               X=G generates a file for CHG methylation;\nA/C/T\
+    \ generates file for CHA/CHC/CHT meth;\nThis file is large;"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -a
   description: "[ --fullMode ] arg (=0)         Specify whether to turn on full mode.\n\
     Off(0): only *.G.bed, *.HG.bed and\n*_stat.txt are allowed to be generated.\n\
     On(1): file *.HG.bed, *.bed, *_skip.bed,\nand *_strand.bed are forced to be\n\
     generated. Extremely large files will be\ngenerated at fullMode."
-  synonyms:
-  - -a
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=0)               Off(0): no effect. On(1): only *_stat.txt\nis generated."
+  optional: true
   synonyms:
   - --statsOnly
+  description: "(=0)               Off(0): no effect. On(1): only *_stat.txt\nis generated."
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --statSplit
   description: "To split statistics file by chromosome\ngroups. Chromosomes in a group\
     \ are\nseparated by `,`, and groups are separated\nby `/`. For example, `--statSplit\n\
     chr1,chr2,chr3/chrLambda`. This example\nwill generate two or three statistics\n\
     files: one for chr1,2,3; one for\nchrLambda; one for the rest of chromosomes\n\
     if existing."
-  synonyms:
-  - --statSplit
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=0)                Specify whether to keep temp files;
+  optional: true
   synonyms:
   - --keepTemp
+  description: (=0)                Specify whether to keep temp files;
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "[ --threads ] arg (=1)          Number of threads on all mapped file.\n\
-    Suggest 1~8 on EACH input file depending\nRAM size and disk speed.\n"
+  optional: true
   synonyms:
   - -p
+  description: "[ --threads ] arg (=1)          Number of threads on all mapped file.\n\
+    Suggest 1~8 on EACH input file depending\nRAM size and disk speed.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
   description: "[ --help ]                      Produce help message. Common options\
     \ are\nprovided with single letter format.\nParameter defaults are in brackts.\
     \ Example\ncommand: mCall -m Ko.bam; mCall -m\nwt_r1.bam -m wt_r2.bam -sampleName\
     \ Wt; See\ndoc for more details."
-  synonyms:
-  - -h
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Allowed options;:\n  -h [ --help ]                      Produce help message.\
@@ -320,3 +320,4 @@ help_text: "Allowed options;:\n  -h [ --help ]                      Produce help
   \ \n                                     RAM size and disk speed.\n\n"
 generated_using:
 - --help
+docker_image:

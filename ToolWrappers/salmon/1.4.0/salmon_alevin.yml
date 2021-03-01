@@ -1,0 +1,454 @@
+!Command
+command:
+- salmon
+- alevin
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: type
+  description: -i [ --index ] arg                    salmon index
+- !Positional
+  optional: false
+  position: 0
+  name: concurrently.
+  description: --tgMap arg                           transcript to gene map tsv file
+- !Positional
+  optional: false
+  position: 1
+  name: model.
+  description: '--numCellBootstraps arg (=0)          Generate mean and variance for
+    cell x '
+- !Positional
+  optional: false
+  position: 0
+  name: barcodes
+  description: '--umiEditDistance arg (=1)            Maximum allowble edit distance
+    to '
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: '[ --libType ] arg                  Format string describing the library'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "[ --unmatedReads ] arg             List of files containing unmated\
+    \ reads\nof (e.g. single-end reads)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: '[ --mates1 ] arg                   File containing the #1 mates'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: '[ --mates2 ] arg                   File containing the #2 mates'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: '[ --version ]                      print version string'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: '[ --output ] arg                   Output quantification directory.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  description: "[ --rad ]                          just selectively align the data\
+    \ and\nwrite the results to a RAD file.  Do\nnot perform the rest of the\nquantification\
+    \ procedure."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sketch
+  description: "perform sketching rather than selective\nalignment and write the results\
+    \ to a\nRAD file. Requires the `--rad` flag. Do\nnot perform the rest of the\n\
+    quantification procedure."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: '[ --threads ] arg (=2)             The number of threads to use'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hash
+  description: "Secondary input point for Alevin using\nBig freaking Hash (bfh.txt)\
+    \ file. Works\nOnly with --chromium"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --dropseq
+  description: "Use DropSeq Single Cell protocol for\nthe library"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chromiumV3
+  description: "Use 10x chromium v3 Single Cell\nprotocol for the library."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chromium
+  description: "Use 10x chromium v2 Single Cell\nprotocol for the library."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gemcode
+  description: "Use 10x gemcode v1 Single Cell protocol\nfor the library."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --citeseq
+  description: "Use CITESeq Single Cell protocol for\nthe library, 16 CB, 12 UMI and\n\
+    features."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --celseq
+  description: "Use CEL-Seq Single Cell protocol for\nthe library."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --celseq2
+  description: "Use CEL-Seq2 Single Cell protocol for\nthe library."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quartzseq2
+  description: "Use Quartz-Seq2 v3.2 Single Cell\nprotocol for the library assumes\
+    \ 15\nlength barcode and 8 length UMI."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --whitelist
+  description: File containing white-list barcodes
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --featureStart
+  description: "This flag should be used with citeseq\nand specifies the starting\
+    \ index of the\nfeature barcode on Read2."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --featureLength
+  description: "This flag should be used with citeseq\nand specifies the length of\
+    \ the feature\nbarcode."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --noQuant
+  description: Don't run downstream barcode-salmon
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --numCellGibbsSamples
+  description: "(=0)        Generate mean and variance for cell x\ngene matrix quantification\
+    \ by running\ngibbs chain estimates."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --forceCells
+  description: (=0)                 Explicitly specify the number of cells.
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --expectCells
+  description: "(=0)                define a close upper bound on expected\nnumber\
+    \ of cells"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --mrna
+  description: "path to a file containing mito-RNA\ngene, one per line"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --rrna
+  description: "path to a file containing ribosomal\nRNA, one per line"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --keepCBFraction
+  description: "(=0)             fraction of CB to keep, value must be\nin range (0,1],\
+    \ use 1 to quantify all\nCB."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --read-geometry
+  description: "format string describing the geometry\nof the read"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bc-geometry
+  description: "format string describing the geometry\nof the cell barcode"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --umi-geometry
+  description: "format string describing the genometry\nof the umi"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --end
+  description: "Cell-Barcodes end (5 or 3) location in\nthe read sequence from where\
+    \ barcode\nhas to be extracted. (end, umiLength,\nbarcodeLength) should all be\
+    \ provided\nif using this option"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --umiLength
+  description: "umi length Parameter for unknown\nprotocol. (end, umiLength,\nbarcodeLength)\
+    \ should all be provided\nif using this option"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --barcodeLength
+  description: "barcode length Parameter for unknown\nprotocol. (end, umiLength,\n\
+    barcodeLength) should all be provided\nif using this option"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --noem
+  description: do not run em
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --freqThreshold
+  description: (=10)             threshold for the frequency of the
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --dumpfq
+  description: "Dump barcode modified fastq file for\ndownstream analysis by using\
+    \ coin toss\nfor multi-mapping."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dumpBfh
+  description: "dump the big hash with all the barcodes\nand the UMI sequence."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dumpArborescences
+  description: "dump the gene-v-cell matrix for the\ntotal number of fragments used\
+    \ in the\nUMI deduplicaiton."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dumpUmiGraph
+  description: dump the per cell level Umi Graph.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dumpCellEq
+  description: "dump the per cell level deduplicated\nequivalence classes."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dumpFeatures
+  description: "Dump features for whitelist and\ndownstream analysis."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dumpMtx
+  description: "Dump cell v transcripts count matrix in\nsparse mtx format."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --lowRegionMinNumBarcodes
+  description: "(=200)  Minimum Number of CB to use for\nlearning Low confidence region\n\
+    (Default: 200)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --maxNumBarcodes
+  description: "(=100000)        Maximum allowable limit to process the\ncell barcodes.\
+    \ (Default: 100000)\n"
+  args: !SimpleFlagArg
+    name: arg
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: '[ --help ]                         produce help message'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nalevin\n==========\nsalmon-based processing of single-cell RNA-seq data.\n\
+  \nalevin options:\n\n\nmapping input options:\n  -l [ --libType ] arg          \
+  \        Format string describing the library \n                               \
+  \         type\n  -i [ --index ] arg                    salmon index\n  -r [ --unmatedReads\
+  \ ] arg             List of files containing unmated reads \n                  \
+  \                      of (e.g. single-end reads)\n  -1 [ --mates1 ] arg       \
+  \            File containing the #1 mates\n  -2 [ --mates2 ] arg               \
+  \    File containing the #2 mates\n\n\nalevin-specific Options:\n  -v [ --version\
+  \ ]                      print version string\n  -h [ --help ]                 \
+  \        produce help message\n  -o [ --output ] arg                   Output quantification\
+  \ directory.\n  -j [ --rad ]                          just selectively align the\
+  \ data and \n                                        write the results to a RAD\
+  \ file.  Do \n                                        not perform the rest of the\
+  \ \n                                        quantification procedure.\n  --sketch\
+  \                              perform sketching rather than selective\n       \
+  \                                 alignment and write the results to a \n      \
+  \                                  RAD file. Requires the `--rad` flag. Do\n   \
+  \                                     not perform the rest of the \n           \
+  \                             quantification procedure.\n  -p [ --threads ] arg\
+  \ (=2)             The number of threads to use \n                             \
+  \           concurrently.\n  --tgMap arg                           transcript to\
+  \ gene map tsv file\n  --hash arg                            Secondary input point\
+  \ for Alevin using \n                                        Big freaking Hash (bfh.txt)\
+  \ file. Works\n                                        Only with --chromium\n  --dropseq\
+  \                             Use DropSeq Single Cell protocol for \n          \
+  \                              the library\n  --chromiumV3                     \
+  \     Use 10x chromium v3 Single Cell \n                                       \
+  \ protocol for the library.\n  --chromium                            Use 10x chromium\
+  \ v2 Single Cell \n                                        protocol for the library.\n\
+  \  --gemcode                             Use 10x gemcode v1 Single Cell protocol\n\
+  \                                        for the library.\n  --citeseq         \
+  \                    Use CITESeq Single Cell protocol for \n                   \
+  \                     the library, 16 CB, 12 UMI and \n                        \
+  \                features.\n  --celseq                              Use CEL-Seq\
+  \ Single Cell protocol for \n                                        the library.\n\
+  \  --celseq2                             Use CEL-Seq2 Single Cell protocol for \n\
+  \                                        the library.\n  --quartzseq2          \
+  \                Use Quartz-Seq2 v3.2 Single Cell \n                           \
+  \             protocol for the library assumes 15 \n                           \
+  \             length barcode and 8 length UMI.\n  --whitelist arg              \
+  \         File containing white-list barcodes\n  --featureStart arg            \
+  \        This flag should be used with citeseq \n                              \
+  \          and specifies the starting index of the\n                           \
+  \             feature barcode on Read2.\n  --featureLength arg                 \
+  \  This flag should be used with citeseq \n                                    \
+  \    and specifies the length of the feature\n                                 \
+  \       barcode.\n  --noQuant                             Don't run downstream barcode-salmon\
+  \ \n                                        model.\n  --numCellBootstraps arg (=0)\
+  \          Generate mean and variance for cell x \n                            \
+  \            gene matrix quantification estimates.\n  --numCellGibbsSamples arg\
+  \ (=0)        Generate mean and variance for cell x \n                         \
+  \               gene matrix quantification by running \n                       \
+  \                 gibbs chain estimates.\n  --forceCells arg (=0)              \
+  \   Explicitly specify the number of cells.\n  --expectCells arg (=0)          \
+  \      define a close upper bound on expected \n                               \
+  \         number of cells\n  --mrna arg                            path to a file\
+  \ containing mito-RNA \n                                        gene, one per line\n\
+  \  --rrna arg                            path to a file containing ribosomal \n\
+  \                                        RNA, one per line\n  --keepCBFraction arg\
+  \ (=0)             fraction of CB to keep, value must be \n                    \
+  \                    in range (0,1], use 1 to quantify all \n                  \
+  \                      CB.\n  --read-geometry arg                   format string\
+  \ describing the geometry \n                                        of the read\n\
+  \  --bc-geometry arg                     format string describing the geometry \n\
+  \                                        of the cell barcode\n  --umi-geometry arg\
+  \                    format string describing the genometry \n                 \
+  \                       of the umi\n  --end arg                             Cell-Barcodes\
+  \ end (5 or 3) location in \n                                        the read sequence\
+  \ from where barcode \n                                        has to be extracted.\
+  \ (end, umiLength, \n                                        barcodeLength) should\
+  \ all be provided \n                                        if using this option\n\
+  \  --umiLength arg                       umi length Parameter for unknown \n   \
+  \                                     protocol. (end, umiLength, \n            \
+  \                            barcodeLength) should all be provided \n          \
+  \                              if using this option\n  --barcodeLength arg     \
+  \              barcode length Parameter for unknown \n                         \
+  \               protocol. (end, umiLength, \n                                  \
+  \      barcodeLength) should all be provided \n                                \
+  \        if using this option\n  --noem                                do not run\
+  \ em\n  --freqThreshold arg (=10)             threshold for the frequency of the\
+  \ \n                                        barcodes\n  --umiEditDistance arg (=1)\
+  \            Maximum allowble edit distance to \n                              \
+  \          collapse UMIs, Expect delay in running \n                           \
+  \             time if != 1\n  --dumpfq                              Dump barcode\
+  \ modified fastq file for \n                                        downstream analysis\
+  \ by using coin toss \n                                        for multi-mapping.\n\
+  \  --dumpBfh                             dump the big hash with all the barcodes\n\
+  \                                        and the UMI sequence.\n  --dumpArborescences\
+  \                   dump the gene-v-cell matrix for the \n                     \
+  \                   total number of fragments used in the \n                   \
+  \                     UMI deduplicaiton.\n  --dumpUmiGraph                     \
+  \   dump the per cell level Umi Graph.\n  --dumpCellEq                         \
+  \ dump the per cell level deduplicated \n                                      \
+  \  equivalence classes.\n  --dumpFeatures                        Dump features for\
+  \ whitelist and \n                                        downstream analysis.\n\
+  \  --dumpMtx                             Dump cell v transcripts count matrix in\n\
+  \                                        sparse mtx format.\n  --lowRegionMinNumBarcodes\
+  \ arg (=200)  Minimum Number of CB to use for \n                               \
+  \         learning Low confidence region \n                                    \
+  \    (Default: 200).\n  --maxNumBarcodes arg (=100000)        Maximum allowable\
+  \ limit to process the \n                                        cell barcodes.\
+  \ (Default: 100000)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/salmon:1.4.0--hf69c8f4_0

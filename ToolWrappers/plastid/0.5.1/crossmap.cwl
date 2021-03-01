@@ -3,61 +3,61 @@ id: crossmap.cwl
 inputs:
 - id: in_kmer_length_generate
   doc: "K-mer length to generate from input file. (Default:\n29)"
-  type: long
+  type: long?
   inputBinding:
     prefix: -k
 - id: in_offset
   doc: "Offset from 5' end of plus-strand read at which to\nattribute score (Default:\
     \ 14)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --offset
 - id: in_mismatches
   doc: "Number of mismatches tolerated in alignment. (Default:\n0)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --mismatches
 - id: in_bowtie
   doc: "Location of bowtie binary (Default:\n``/usr/local/bin/bowtie``)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --bowtie
 - id: in_have_km_ers
   doc: "If specified, use k-mer files from previous run. In\nthis case 'sequence_file'\
     \ should be the value\n'outbase' from the k-mer files you want to use."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --have_kmers
 - id: in_save_km_ers
   doc: Save k-mer files for reuse in a subsequent run.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --save_kmers
 - id: in_processes
   doc: Number of processes to use (should be <= number of
-  type: long
+  type: long?
   inputBinding:
     prefix: --processes
 - id: in_quiet
   doc: Suppress all warning messages. Cannot use with '-v'.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_verbose
   doc: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn warnings\
     \ into exceptions. Cannot use\nwith '-q'. (Default: show each type of warning\
     \ once)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_sequence_file
   doc: "[fasta | fastq | twobit | genbank | embl]\nA file of DNA sequence"
-  type: File
+  type: File?
   inputBinding:
     prefix: --sequence_file
 - id: in_sequence_format
   doc: "Format of sequence_file (Default: fasta).\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --sequence_format
 - id: in_out_base_read_length_mismatches_crossmap_dot_bed
@@ -97,6 +97,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - crossmap

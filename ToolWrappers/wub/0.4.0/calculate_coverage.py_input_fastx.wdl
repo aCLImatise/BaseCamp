@@ -12,6 +12,9 @@ task CalculateCoveragepyInputFastx {
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s: ""
     f: ""

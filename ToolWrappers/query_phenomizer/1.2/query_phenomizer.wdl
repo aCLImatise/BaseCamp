@@ -18,12 +18,15 @@ task QueryPhenomizer {
       ~{if defined(specify_path_file) then ("--output " +  '"' + specify_path_file + '"') else ""} \
       ~{if (to_json) then "--to-json" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     username: "A username for phenomizer"
     password: "A password for phenomizer"
     check_terms: "Check if the term(s) exist"
     specify_path_file: "Specify the path to a file for storing the phenomizer"
-    to_json: "If result should be printed to json format\\n-v, --verbose\\n--help                 Show this message and exit.\\n"
+    to_json: "If result should be printed to json format"
     output_dot: "--p-value-limit FLOAT  Specify the highest p-value that you want included."
   }
   output {

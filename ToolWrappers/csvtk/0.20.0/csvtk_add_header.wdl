@@ -34,6 +34,9 @@ task CsvtkAddheader {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     names: "column names to add, in CSV format"
     chunk_size: "chunk size of CSV reader (default 50)"

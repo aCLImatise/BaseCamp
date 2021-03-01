@@ -22,6 +22,9 @@ task Metagenomics {
       ~{if defined(left_fq) then ("--left_fq " +  '"' + left_fq + '"') else ""} \
       ~{if defined(unpaired_reads) then ("--unpaired_reads " +  '"' + unpaired_reads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Launch NTHREADS parallel search threads - default: 1\\n(default: 1)"
     format: "Choose format (default: fastq)"

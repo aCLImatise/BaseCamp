@@ -14,6 +14,9 @@ task SingularitySearch {
       ~{options_dot_dot_dot} \
       ~{search}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

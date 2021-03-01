@@ -1,0 +1,128 @@
+!Command
+command:
+- anvi-setup-scg-taxonomy
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --num-threads
+  description: "Maximum number of threads to use for multithreading\nwhenever possible.\
+    \ Very conservatively, the default is\n1. It is a good idea to not exceed the\
+    \ number of CPUs\n/ cores on your system. Plus, please be careful with\nthis option\
+    \ if you are running your commands on a SGE\n--if you are clusterizing your runs,\
+    \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
+    \ fast. (default: 1)"
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --scgs-taxonomy-data-dir
+  description: "The directory for SCGs data to be stored (or read\nfrom, depending\
+    \ on the context). If you leave it as is\nwithout specifying anything, anvi'o\
+    \ will set up\neverything in (or try to read things from) a pre-\ndefined default\
+    \ directory. The advantage of using the\ndefault directory at the time of set\
+    \ up is that every\nuser of anvi'o on a computer system will be using a\nsingle\
+    \ data directory, but then you may need to run\nthe setup program with superuser\
+    \ privileges. If you\ndon't have superuser privileges, then you can use this\n\
+    parameter to tell anvi'o the location you wish to use\nto setup your databases.\
+    \ If you are using a program\n(such as `anvi-run-scg-taxonomy` or `anvi-estimate-\n\
+    scg-taxonomy`) you will have to use this parameter to\ntell those programs where\
+    \ your data are. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --gtdb-release
+  description: "If you are particularly intersted an earlier release\nanvi'o knows\
+    \ about, you can set it here Otherwise\nanvi'o will always use the latest release\
+    \ it knows\nabout. (default: None)"
+  args: !SimpleFlagArg
+    name: RELEASE_NUM
+- !Flag
+  optional: true
+  synonyms:
+  - --reset
+  description: "Remove all the previously stored files and start over.\nIf something\
+    \ is feels wrong for some reason and if you\nbelieve re-downloading files and\
+    \ setting them up could\naddress the issue, this is the flag that will tell\n\
+    anvi'o to act like a real computer scientist\nchallenged with a computational\
+    \ problem. (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --redo-databases
+  description: "Remove existing databases and re-create them. This can\nbe necessary\
+    \ when versions of programs change and\ndatabases they create and use become incompatible.\n\
+    (default: False)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-setup-scg-taxonomy [-h] [-T NUM_THREADS]\n               \
+  \                [--scgs-taxonomy-data-dir PATH]\n                             \
+  \  [--gtdb-release RELEASE_NUM] [--reset]\n                               [--redo-databases]\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -T NUM_THREADS, --num-threads NUM_THREADS\n                        Maximum number\
+  \ of threads to use for multithreading\n                        whenever possible.\
+  \ Very conservatively, the default is\n                        1. It is a good idea\
+  \ to not exceed the number of CPUs\n                        / cores on your system.\
+  \ Plus, please be careful with\n                        this option if you are running\
+  \ your commands on a SGE\n                        --if you are clusterizing your\
+  \ runs, and asking for\n                        multiple threads to use, you may\
+  \ deplete your\n                        resources very fast. (default: 1)\n  --scgs-taxonomy-data-dir\
+  \ PATH\n                        The directory for SCGs data to be stored (or read\n\
+  \                        from, depending on the context). If you leave it as is\n\
+  \                        without specifying anything, anvi'o will set up\n     \
+  \                   everything in (or try to read things from) a pre-\n        \
+  \                defined default directory. The advantage of using the\n       \
+  \                 default directory at the time of set up is that every\n      \
+  \                  user of anvi'o on a computer system will be using a\n       \
+  \                 single data directory, but then you may need to run\n        \
+  \                the setup program with superuser privileges. If you\n         \
+  \               don't have superuser privileges, then you can use this\n       \
+  \                 parameter to tell anvi'o the location you wish to use\n      \
+  \                  to setup your databases. If you are using a program\n       \
+  \                 (such as `anvi-run-scg-taxonomy` or `anvi-estimate-\n        \
+  \                scg-taxonomy`) you will have to use this parameter to\n       \
+  \                 tell those programs where your data are. (default:\n         \
+  \               None)\n  --gtdb-release RELEASE_NUM\n                        If\
+  \ you are particularly intersted an earlier release\n                        anvi'o\
+  \ knows about, you can set it here Otherwise\n                        anvi'o will\
+  \ always use the latest release it knows\n                        about. (default:\
+  \ None)\n  --reset               Remove all the previously stored files and start\
+  \ over.\n                        If something is feels wrong for some reason and\
+  \ if you\n                        believe re-downloading files and setting them\
+  \ up could\n                        address the issue, this is the flag that will\
+  \ tell\n                        anvi'o to act like a real computer scientist\n \
+  \                       challenged with a computational problem. (default:\n   \
+  \                     False)\n  --redo-databases      Remove existing databases\
+  \ and re-create them. This can\n                        be necessary when versions\
+  \ of programs change and\n                        databases they create and use\
+  \ become incompatible.\n                        (default: False)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   The purpose of this program is to download\
+  \ necessary information from GTDB\n   (https://gtdb.ecogenomic.org/), and set it\
+  \ up in such a way that your anvi'o\n   installation is able to assign taxonomy\
+  \ to single-copy core genes using\n   `anvi-run-scg-taxonomy` and estimate taxonomy\
+  \ for genomes or metagenomes\n   using `anvi-estimate-scg-taxonomy`)\n\n\U0001F9C0\
+  \ Can consume: \n\n\U0001F355 Can provide: \n\n\U0001F37A More on `anvi-setup-scg-taxonomy`:\n\
+  \n   https://merenlab.org/software/anvio/help/7/programs/anvi-setup-scg-taxonomy\n\
+  \n\U0001F37B All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

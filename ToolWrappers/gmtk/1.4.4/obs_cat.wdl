@@ -4,6 +4,9 @@ task Obscat {
   command <<<
     obs_cat
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

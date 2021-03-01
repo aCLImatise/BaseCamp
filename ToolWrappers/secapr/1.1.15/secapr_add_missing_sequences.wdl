@@ -10,6 +10,9 @@ task SecaprAddMissingSequences {
       ~{if defined(directory_containing_alignments) then ("--input " +  '"' + directory_containing_alignments + '"') else ""} \
       ~{if defined(output_directory_safed) then ("--output " +  '"' + output_directory_safed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_containing_alignments: "The directory containing fasta alignments"
     output_directory_safed: "The output directory where results will be safed"

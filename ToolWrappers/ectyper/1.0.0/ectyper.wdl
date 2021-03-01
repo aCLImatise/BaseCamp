@@ -32,6 +32,9 @@ task Ectyper {
       ~{if defined(db_path) then ("--dbpath " +  '"' + db_path + '"') else ""} \
       ~{if (v) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     location_e_coli: "Location of E. coli genome file(s). Can be a single\\nfile, a comma-separated list of files, or a directory"
     cores: "The number of cores to run ectyper with"

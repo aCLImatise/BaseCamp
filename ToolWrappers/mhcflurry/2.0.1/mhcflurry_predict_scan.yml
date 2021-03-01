@@ -1,0 +1,259 @@
+!Command
+command:
+- mhcflurry-predict-scan
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: '02'
+  description: 'Help:'
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT
+  description: Input CSV or FASTA
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --list-supported-alleles
+  description: Print the list of supported alleles and exits
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --list-supported-peptide-lengths
+  description: Print the list of supported peptide lengths and exits
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --input-format
+  description: "Format of input file. By default, it is guessed from\nthe file extension."
+  args: !ChoiceFlagArg
+    choices: !!set
+      csv:
+      guess:
+      fasta:
+- !Flag
+  optional: true
+  synonyms:
+  - --alleles
+  description: Alleles to predict
+  args: !RepeatFlagArg
+    name: ALLELE
+- !Flag
+  optional: true
+  synonyms:
+  - --sequences
+  description: "Sequences to predict (exclusive with passing an input\nfile)"
+  args: !RepeatFlagArg
+    name: SEQ
+- !Flag
+  optional: true
+  synonyms:
+  - --sequence-id-column
+  description: "Input CSV column name for sequence IDs. Default:\n'sequence_id'"
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --sequence-column
+  description: "Input CSV column name for sequences. Default:\n'sequence'"
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --no-throw
+  description: "Return NaNs for unsupported alleles or peptides\ninstead of raising"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --peptide-lengths
+  description: "Peptide lengths to consider. Pass as START-END (e.g.\n8-11) or a comma-separated\
+    \ list (8,9,10,11). When\nusing START-END, the range is INCLUSIVE on both ends.\n\
+    Default: 8-11."
+  args: !SimpleFlagArg
+    name: L
+- !Flag
+  optional: true
+  synonyms:
+  - --results-all
+  description: "Return results for all peptides regardless of\naffinity, etc."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --results-best
+  description: "Take the top result for each sequence according to the\nspecified\
+    \ predicted quantity"
+  args: !ChoiceFlagArg
+    choices: !!set
+      affinity:
+      processing_score:
+      presentation_score:
+      affinity_percentile:
+- !Flag
+  optional: true
+  synonyms:
+  - --results-filtered
+  description: Filter results by the specified quantity.
+  args: !ChoiceFlagArg
+    choices: !!set
+      affinity:
+      processing_score:
+      presentation_score:
+      affinity_percentile:
+- !Flag
+  optional: true
+  synonyms:
+  - --threshold-presentation-score
+  description: "Threshold if filtering by presentation score. Default:\n0.7"
+  args: !SimpleFlagArg
+    name: THRESHOLD_PRESENTATION_SCORE
+- !Flag
+  optional: true
+  synonyms:
+  - --threshold-processing-score
+  description: "Threshold if filtering by processing score. Default:\n0.5"
+  args: !SimpleFlagArg
+    name: THRESHOLD_PROCESSING_SCORE
+- !Flag
+  optional: true
+  synonyms:
+  - --threshold-affinity
+  description: 'Threshold if filtering by affinity. Default: 500'
+  args: !SimpleFlagArg
+    name: THRESHOLD_AFFINITY
+- !Flag
+  optional: true
+  synonyms:
+  - --threshold-affinity-percentile
+  description: "Threshold if filtering by affinity percentile.\nDefault: 2.0"
+  args: !SimpleFlagArg
+    name: THRESHOLD_AFFINITY_PERCENTILE
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: Output CSV
+  args: !SimpleFlagArg
+    name: OUTPUT.csv
+- !Flag
+  optional: true
+  synonyms:
+  - --output-delimiter
+  description: "Delimiter character for results. Default: ','"
+  args: !SimpleFlagArg
+    name: CHAR
+- !Flag
+  optional: true
+  synonyms:
+  - --no-affinity-percentile
+  description: Do not include affinity percentile rank
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --models
+  description: "Directory containing presentation models.Default: /roo\nt/.local/share/mhcflurry/4/2.0.0/models_class1_present\n\
+    ation/models"
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --no-flanking
+  description: "Do not use flanking sequence information in\npredictions\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: mhcflurry-predict-scan [-h] [--list-supported-alleles]\n      \
+  \                        [--list-supported-peptide-lengths] [--version]\n      \
+  \                        [--input-format {guess,csv,fasta}]\n                  \
+  \            [--alleles ALLELE [ALLELE ...]]\n                              [--sequences\
+  \ SEQ [SEQ ...]]\n                              [--sequence-id-column NAME]\n  \
+  \                            [--sequence-column NAME] [--no-throw]\n           \
+  \                   [--peptide-lengths L] [--results-all]\n                    \
+  \          [--results-best {presentation_score,processing_score,affinity,affinity_percentile}]\n\
+  \                              [--results-filtered {presentation_score,processing_score,affinity,affinity_percentile}]\n\
+  \                              [--threshold-presentation-score THRESHOLD_PRESENTATION_SCORE]\n\
+  \                              [--threshold-processing-score THRESHOLD_PROCESSING_SCORE]\n\
+  \                              [--threshold-affinity THRESHOLD_AFFINITY]\n     \
+  \                         [--threshold-affinity-percentile THRESHOLD_AFFINITY_PERCENTILE]\n\
+  \                              [--out OUTPUT.csv] [--output-delimiter CHAR]\n  \
+  \                            [--no-affinity-percentile] [--models DIR]\n       \
+  \                       [--no-flanking]\n                              [INPUT]\n\
+  \nScan protein sequences using the MHCflurry presentation predictor.\n\nBy default,\
+  \ sub-sequences (peptides) with affinity percentile ranks less than\n2.0 are returned.\
+  \ You can also specify --results-all to return predictions for\nall peptides, or\
+  \ --results-best to return the top peptide for each sequence.\n\nExamples:\n\nScan\
+  \ a set of sequences in a FASTA file for binders to any alleles in a MHC I\ngenotype:\n\
+  \n$ mhcflurry-predict-scan     test/data/example.fasta     --alleles HLA-A*02:01,HLA-A*03:01,HLA-B*57:01,HLA-B*45:01,HLA-C*02:01,HLA-C*07:02\n\
+  \nInstead of a FASTA, you can also pass a CSV that has \"sequence_id\" and \"sequence\"\
+  \ncolumns.\n\nYou can also specify multiple MHC I genotypes to scan as space-separated\n\
+  arguments to the --alleles option:\n\n$ mhcflurry-predict-scan     test/data/example.fasta\
+  \     --alleles         HLA-A*02:01,HLA-A*03:01,HLA-B*57:01,HLA-B*45:01,HLA-C*02:02,HLA-C*07:02\
+  \         HLA-A*01:01,HLA-A*02:06,HLA-B*44:02,HLA-B*07:02,HLA-C*01:02,HLA-C*03:01\n\
+  \nIf `--out` is not specified, results are written to standard out.\n\nYou can also\
+  \ specify sequences on the commandline:\n\nmhcflurry-predict-scan     --sequences\
+  \ MGYINVFAFPFTIYSLLLCRMNSRNYIAQVDVVNFNLT     --alleles HLA-A*02:01,HLA-A*03:01,HLA-B*57:01,HLA-B*45:01,HLA-C*02:02,HLA-C*07:02\n\
+  \nHelp:\n  -h, --help            Show this help message and exit\n  --list-supported-alleles\n\
+  \                        Print the list of supported alleles and exits\n  --list-supported-peptide-lengths\n\
+  \                        Print the list of supported peptide lengths and exits\n\
+  \  --version             show program's version number and exit\n\nInput options:\n\
+  \  INPUT                 Input CSV or FASTA\n  --input-format {guess,csv,fasta}\n\
+  \                        Format of input file. By default, it is guessed from\n\
+  \                        the file extension.\n  --alleles ALLELE [ALLELE ...]\n\
+  \                        Alleles to predict\n  --sequences SEQ [SEQ ...]\n     \
+  \                   Sequences to predict (exclusive with passing an input\n    \
+  \                    file)\n  --sequence-id-column NAME\n                      \
+  \  Input CSV column name for sequence IDs. Default:\n                        'sequence_id'\n\
+  \  --sequence-column NAME\n                        Input CSV column name for sequences.\
+  \ Default:\n                        'sequence'\n  --no-throw            Return NaNs\
+  \ for unsupported alleles or peptides\n                        instead of raising\n\
+  \nResult options:\n  --peptide-lengths L   Peptide lengths to consider. Pass as\
+  \ START-END (e.g.\n                        8-11) or a comma-separated list (8,9,10,11).\
+  \ When\n                        using START-END, the range is INCLUSIVE on both\
+  \ ends.\n                        Default: 8-11.\n  --results-all         Return\
+  \ results for all peptides regardless of\n                        affinity, etc.\n\
+  \  --results-best {presentation_score,processing_score,affinity,affinity_percentile}\n\
+  \                        Take the top result for each sequence according to the\n\
+  \                        specified predicted quantity\n  --results-filtered {presentation_score,processing_score,affinity,affinity_percentile}\n\
+  \                        Filter results by the specified quantity.\n  --threshold-presentation-score\
+  \ THRESHOLD_PRESENTATION_SCORE\n                        Threshold if filtering by\
+  \ presentation score. Default:\n                        0.7\n  --threshold-processing-score\
+  \ THRESHOLD_PROCESSING_SCORE\n                        Threshold if filtering by\
+  \ processing score. Default:\n                        0.5\n  --threshold-affinity\
+  \ THRESHOLD_AFFINITY\n                        Threshold if filtering by affinity.\
+  \ Default: 500\n  --threshold-affinity-percentile THRESHOLD_AFFINITY_PERCENTILE\n\
+  \                        Threshold if filtering by affinity percentile.\n      \
+  \                  Default: 2.0\n\nOutput options:\n  --out OUTPUT.csv      Output\
+  \ CSV\n  --output-delimiter CHAR\n                        Delimiter character for\
+  \ results. Default: ','\n  --no-affinity-percentile\n                        Do\
+  \ not include affinity percentile rank\n\nModel options:\n  --models DIR       \
+  \   Directory containing presentation models.Default: /roo\n                   \
+  \     t/.local/share/mhcflurry/4/2.0.0/models_class1_present\n                 \
+  \       ation/models\n  --no-flanking         Do not use flanking sequence information\
+  \ in\n                        predictions\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mhcflurry:2.0.1--pyh864c0ab_0

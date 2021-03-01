@@ -10,6 +10,9 @@ task MbplotheatmapsmallOutputdir {
       ~{mb_plot_heat_map_small} \
       ~{if defined(downstream) then ("--downstream " +  '"' + downstream + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     downstream: ""
     mb_plot_heat_map_small: ""

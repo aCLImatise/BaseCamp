@@ -30,6 +30,9 @@ task AquilaStLFRStep1 {
       ~{if defined(block_threshold) then ("--block_threshold " +  '"' + block_threshold + '"') else ""} \
       ~{if defined(block_len_use) then ("--block_len_use " +  '"' + block_len_use + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q_file: "Required parameter; stLFR FASTQ file with paired reads"
     bam_file: "Required parameter; BAM file, called by bwa mem"

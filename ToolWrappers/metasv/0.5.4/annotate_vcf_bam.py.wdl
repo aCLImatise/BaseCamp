@@ -12,6 +12,9 @@ task AnnotateVcfBampy {
       ~{if defined(chromosomes) then ("--chromosomes " +  '"' + chromosomes + '"') else ""} \
       ~{if defined(v_cfs) then ("--vcfs " +  '"' + v_cfs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "BAM file (default: None)"
     chromosomes: "Chromosomes (default: [])"

@@ -56,6 +56,9 @@ task RunUpppy {
       ~{if defined(fragment) then ("--fragment " +  '"' + fragment + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fragment_chunksize: "maximum fragment chunk size of N. Helps controlling\\nmemory. [default: 20000]"
     distance: "minimum p-distance before stopping the\\ndecomposition[default: 1]"

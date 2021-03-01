@@ -4,6 +4,9 @@ task Dnamlk {
   command <<<
     dnamlk
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -16,6 +16,9 @@ task PhyluceUtilitiesReplaceManyLinks {
       ~{if defined(newpath) then ("--newpath " +  '"' + newpath + '"') else ""} \
       ~{if defined(output_directory_hold) then ("--outdir " +  '"' + output_directory_hold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dir: "The directory containing the links to rename"
     oldpath: "The text you want to replace in the oldpath (include '/')"

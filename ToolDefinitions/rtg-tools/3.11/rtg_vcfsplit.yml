@@ -4,75 +4,75 @@ command:
 - vcfsplit
 positional:
 - !Positional
-  description: -o, --output=DIR                directory for output
+  optional: false
   position: 0
   name: input
-  optional: false
+  description: -o, --output=DIR                directory for output
 named:
 - !Flag
-  description: "if set, only read VCF records that overlap\nthe ranges contained in\
-    \ the specified BED\nfile"
+  optional: true
   synonyms:
   - --bed-regions
+  description: "if set, only read VCF records that overlap\nthe ranges contained in\
+    \ the specified BED\nfile"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: the input VCF, or '-' to read from standard
+  optional: true
   synonyms:
   - -i
   - --input
+  description: the input VCF, or '-' to read from standard
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --region
   description: "if set, only read VCF records within the\nspecified range. The format\
     \ is one of\n<sequence_name>,\n<sequence_name>:<start>-<end>,\n<sequence_name>:<pos>+<length>\
     \ or\n<sequence_name>:<pos>~<padding>"
-  synonyms:
-  - --region
   args: !SimpleFlagArg
     name: REGION
-  optional: true
 - !Flag
-  description: keep records where the sample is reference
+  optional: true
   synonyms:
   - --keep-ref
+  description: keep records where the sample is reference
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "|FILE   file containing sample IDs to select, or a\nliteral sample\
-    \ name. May be specified 0 or\nmore times, or as a comma separated list"
+  optional: true
   synonyms:
   - --keep-sample
+  description: "|FILE   file containing sample IDs to select, or a\nliteral sample\
+    \ name. May be specified 0 or\nmore times, or as a comma separated list"
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: "|FILE file containing sample IDs to ignore, or a\nliteral sample name.\
-    \ May be specified 0 or\nmore times, or as a comma separated list"
+  optional: true
   synonyms:
   - --remove-sample
+  description: "|FILE file containing sample IDs to ignore, or a\nliteral sample name.\
+    \ May be specified 0 or\nmore times, or as a comma separated list"
   args: !SimpleFlagArg
     name: STRING
-  optional: true
 - !Flag
-  description: do not gzip the output
+  optional: true
   synonyms:
   - -Z
   - --no-gzip
+  description: do not gzip the output
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: print help on command-line flag usage
+  optional: true
   synonyms:
   - -h
   - --help
+  description: print help on command-line flag usage
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: rtg vcfsplit [OPTION]... -i FILE -o DIR\n\nSplits samples contained\
@@ -98,3 +98,4 @@ help_text: "Usage: rtg vcfsplit [OPTION]... -i FILE -o DIR\n\nSplits samples con
   \     do not gzip the output\n\n"
 generated_using:
 - --help
+docker_image:

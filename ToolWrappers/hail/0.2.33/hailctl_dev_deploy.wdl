@@ -12,6 +12,9 @@ task HailctlDevDeploy {
       ~{if defined(steps) then ("--steps " +  '"' + steps + '"') else ""} \
       ~{if (open) then "--open" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     branch: "Fully-qualified branch, e.g., hail-is/hail:feature."
     steps: "Comma-separated list of steps to run."

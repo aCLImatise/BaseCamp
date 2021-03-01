@@ -3,7 +3,7 @@ id: bxtools_mol.cwl
 inputs:
 - id: in_verbose
   doc: Set verbose output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_bam_slash_sam_slash_cram
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bxtools

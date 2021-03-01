@@ -10,6 +10,9 @@ task RbtRecord {
       ~{rbt} \
       ~{flags}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rbt: ""
     flags: ""

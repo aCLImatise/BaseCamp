@@ -3,17 +3,17 @@ id: rgt_tools.py_bed_polya.cwl
 inputs:
 - id: in_input_bed_file
   doc: Input BED file
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_input_bam_file
   doc: Input BAM file
-  type: File
+  type: File?
   inputBinding:
     prefix: -b
 - id: in_output_file
   doc: Output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: Output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rgt-tools.py

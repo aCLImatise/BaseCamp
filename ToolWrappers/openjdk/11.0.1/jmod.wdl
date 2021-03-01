@@ -50,6 +50,9 @@ task Jmod {
       ~{if defined(module_path) then ("--module-path " +  '"' + module_path + '"') else ""} \
       ~{if (target_platform) then "--target-platform" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     class_path: "Application jar files|dir containing"
     config: "Location of user-editable config files"

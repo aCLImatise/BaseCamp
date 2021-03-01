@@ -16,6 +16,9 @@ task CountRead {
       ~{if defined(output_file_default) then ("-o " +  '"' + output_file_default + '"') else ""} \
       ~{if defined(chrom) then ("--chrom " +  '"' + chrom + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     normalized_data_case: ": the normalized data for the case genome; This is is an required option"
     normalized_data_control: ": the normalized data for the control genome; This is optional."

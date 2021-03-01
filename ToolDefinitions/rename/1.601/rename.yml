@@ -3,124 +3,161 @@ command:
 - rename
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: Switches
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 0
   name: Transforms
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 0
   name: switches|transforms
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "(read the full manual)\n-0/--null (when reading from STDIN)\n-f/--force\
-    \ or -i/--interactive (proceed or prompt when overwriting)\n-g/--glob (expand\
-    \ \"*\" etc. in filenames, useful in Windows\\x{2122} CMD.EXE)\n-k/--backwards/--reverse-order\n\
-    -l/--symlink or -L/--hardlink\n-M/--use=Module\n-n/--just-print/--dry-run\n-N/--counter-format\n\
-    -p/--mkpath/--make-dirs\n--stdin/--no-stdin\n-t/--sort-time\n-T/--transcode=encoding\n\
-    -v/--verbose\nTransforms, applied sequentially:\n-a/--append=str\n-A/--prepend=str\n\
-    -c/--lower-case\n-C/--upper-case\n-d/--delete=str\n-D/--delete-all=str\n-e/--expr=code\n\
-    -P/--pipe=cmd\n-s/--subst from to\n-S/--subst-all from to\n-x/--remove-extension\n\
-    -X/--keep-extension\n-z/--sanitize\n--camelcase --urlesc --nows --rews --noctrl\
-    \ --nometa --trim (see manual)\n"
+  optional: true
   synonyms:
   - --man
+  description: (read the full manual)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
-  - --trim
+  - '-0'
+  - --null
+  description: (when reading from STDIN)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
-  - --nometa
+  - -f
+  - --force
+  - -i
+  - --interactive
+  description: (proceed or prompt when overwriting)
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --glob
+  description: (expand "*" etc. in filenames, useful in Windows\x{2122} CMD.EXE)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
-  synonyms:
-  - --noctrl
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
   synonyms:
-  - --rews
-  args: !EmptyFlagArg {}
+  - -a
+  - --append
+  - -A
+  - --prepend
+  - -c
+  - --lower-case
+  - -C
+  - --upper-case
+  - -d
+  - --delete
+  - -D
+  - --delete-all
+  - -e
+  - --expr
+  - -P
+  - --pipe
+  - -s
+  - --subst
+  description: to
+  args: !SimpleFlagArg
+    name: str
+- !Flag
   optional: true
-- !Flag
-  description: ''
   synonyms:
-  - --nows
-  args: !EmptyFlagArg {}
+  - -S
+  - --subst-all
+  description: to
+  args: !SimpleFlagArg
+    name: from
+- !Flag
   optional: true
-- !Flag
-  description: ''
   synonyms:
-  - --urlesc
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
+  - -x
+  - --remove-extension
+  - -X
+  - --keep-extension
+  - -z
+  - --sanitize
   - --camelcase
+  - --urlesc
+  - --nows
+  - --rews
+  - --noctrl
+  - --nometa
+  - --trim
+  description: (see manual)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
-  synonyms:
-  - -S/--subst-all
-  args: !SimpleFlagArg
-    name: from
   optional: true
-- !Flag
-  description: ''
   synonyms:
-  - -s/--subst
-  args: !SimpleFlagArg
-    name: from
-  optional: true
-- !Flag
+  - -v
   description: ''
-  synonyms:
-  - -l/--symlink
-  args: !SimpleFlagArg
-    name: or
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -g/--glob
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
-  - -i/--interactive
+  - -T
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
-  synonyms:
-  - -f/--force
-  args: !SimpleFlagArg
-    name: or
   optional: true
-- !Flag
-  description: ''
   synonyms:
-  - -0/--null
+  - -t
+  description: ''
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - --stdin
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: ''
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
@@ -141,3 +178,4 @@ help_text: "Usage:\n    rename [switches|transforms] [files]\n\n    Switches:\n\
   \ --noctrl --nometa --trim (see manual)\n\n"
 generated_using:
 - --help
+docker_image:

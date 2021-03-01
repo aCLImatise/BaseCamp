@@ -12,6 +12,9 @@ task Chktrust {
       ~{if (quiet_mode_gui) then "-q" else ""} \
       ~{if (verbose_mode_display) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet_mode_gui: "quiet mode (no gui)"
     verbose_mode_display: "verbose mode (display status for every steps)"

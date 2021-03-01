@@ -3,22 +3,25 @@ command:
 - clipkit
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: Modes
   description: "gappy: trim sites that are greater than the gaps threshold\nkpic (alias:\
     \ medium): keeps parismony informative and constant sites\nkpic-gappy (alias:\
     \ medium-gappy): a combination of kpic- and gappy-based trimming\nkpi (alias:\
     \ heavy): keep only parsimony informative sites\nkpi-gappy (alias: heavy-gappy):\
     \ a combination of kpi- and gappy-based trimming"
-  position: 0
-  name: Modes
-  optional: false
 - !Positional
+  optional: false
+  position: 1
+  name: Gaps
   description: "Positions with gappyness greater than threshold will be trimmed. \n\
     Must be between 0 and 1. (Default: 0.9). This argument is ignored\nwhen using\
     \ the kpi mode of trimming."
-  position: 1
-  name: Gaps
-  optional: false
 - !Positional
+  optional: false
+  position: 0
+  name: Log
   description: "Creates a log file that summarizes the characteristics of each position.\n\
     The log file has four columns.\n- Column 1 is the position in the alignment (starting\
     \ at 1),\n- Column 2 reports if the site was trimmed or kept (trim and keep, respectively),\n\
@@ -26,89 +29,86 @@ positional:
     \ nPI, respectively), or\na constant site or not (Const, nConst), or neither (nConst,\
     \ nPI)\n- Column 4 reports the gappyness of the the position (number of gaps /\
     \ entries in alignment)"
-  position: 0
-  name: Log
-  optional: false
 - !Positional
-  description: Creates an alignment file of only the trimmed sequences
+  optional: false
   position: 1
   name: Complementary
-  optional: false
+  description: Creates an alignment file of only the trimmed sequences
 named:
 - !Flag
-  description: "output file name\n(default: input file named with '.clipkit' suffix)"
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "output file name\n(default: input file named with '.clipkit' suffix)"
   args: !SimpleFlagArg
     name: output_file_name
-  optional: true
 - !Flag
-  description: "<gappy,                         trimming mode\nkpic (alias: medium),\
-    \           (default: gappy)\nkpic-gappy (alias: medium-gappy),\nkpi (alias: heavy),\n\
-    kpi-gappy (alias: heavy-gappy)>"
+  optional: true
   synonyms:
   - -m
   - --modes
+  description: "<gappy,                         trimming mode\nkpic (alias: medium),\
+    \           (default: gappy)\nkpic-gappy (alias: medium-gappy),\nkpi (alias: heavy),\n\
+    kpi-gappy (alias: heavy-gappy)>"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "specifies gaps threshold\n(default: 0.9)"
+  optional: true
   synonyms:
   - -g
   - --gaps
+  description: "specifies gaps threshold\n(default: 0.9)"
   args: !SimpleFlagArg
     name: threshold of gaps
-  optional: true
 - !Flag
-  description: "specifies input file format\n(default: auto-detect)"
+  optional: true
   synonyms:
   - -if
   - --input_file_format
+  description: "specifies input file format\n(default: auto-detect)"
   args: !SimpleFlagArg
     name: file_format
-  optional: true
 - !Flag
-  description: "specifies output file format\n(default: same as input file format)"
+  optional: true
   synonyms:
   - -of
   - --output_file_format
+  description: "specifies output file format\n(default: same as input file format)"
   args: !SimpleFlagArg
     name: file_format
-  optional: true
 - !Flag
-  description: "creates a log file\n(input file named with '.log' suffix)"
+  optional: true
   synonyms:
   - -l
   - --log
+  description: "creates a log file\n(input file named with '.log' suffix)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "creates complementary alignment of trimmed sequences\n(input file\
-    \ named with '.log' suffix)"
+  optional: true
   synonyms:
   - -c
   - --complementary
+  description: "creates complementary alignment of trimmed sequences\n(input file\
+    \ named with '.log' suffix)"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: help message
+  optional: true
   synonyms:
   - -h
   - --help
+  description: help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: print version
+  optional: true
   synonyms:
   - -v
   - --version
+  description: print version
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "      _____ _ _       _  _______ _______ \n     / ____| (_)     | |/ /_\
   \   _|__   __|\n    | |    | |_ _ __ | ' /  | |    | |   \n    | |    | | | '_ \\\
   |  <   | |    | |   \n    | |____| | | |_) | . \\ _| |_   | |   \n     \\_____|_|_|\
@@ -157,3 +157,4 @@ help_text: "      _____ _ _       _  _______ _______ \n     / ____| (_)     | |/
   \ file of only the trimmed sequences\n"
 generated_using:
 - --help
+docker_image:

@@ -8,6 +8,9 @@ task Seqseqpanconsensus {
     seq_seq_pan_consensus \
       ~{input_do_tx_mfa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_do_tx_mfa: ""
   }

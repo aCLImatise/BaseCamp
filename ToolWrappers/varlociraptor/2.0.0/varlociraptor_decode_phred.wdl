@@ -8,6 +8,9 @@ task VarlociraptorDecodephred {
     varlociraptor decode_phred \
       ~{var_loci_raptor}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_loci_raptor: ""
   }

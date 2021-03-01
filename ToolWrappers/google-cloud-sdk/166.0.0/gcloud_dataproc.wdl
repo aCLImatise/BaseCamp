@@ -14,6 +14,9 @@ task GcloudDataproc {
       ~{operations} \
       ~{if defined(region) then ("--region " +  '"' + region + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     region: "Specifies the Cloud Dataproc region to use. Each Cloud Dataproc region\\nconstitutes an independent resource namespace constrained to deploying\\ninstances into Google Compute Engine zones inside the region. The\\ndefault value of \\\"global\\\" is a special multi-region namespace which is\\ncapable of deploying instances into all Google Compute Engine zones\\nglobally, and is disjoint from other Cloud Dataproc regions. Overrides\\nthe default dataproc/region property value for this command invocation."
     clusters: "Create and manage Google Cloud Dataproc clusters."

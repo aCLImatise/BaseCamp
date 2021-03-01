@@ -14,6 +14,9 @@ task SinglemGetTree {
       ~{if (full_help) then "--full_help" else ""} \
       ~{if defined(single_m_packages) then ("--singlem_packages " +  '"' + single_m_packages + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "output debug information"
     quiet: "only output errors"

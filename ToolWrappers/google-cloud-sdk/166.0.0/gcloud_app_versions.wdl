@@ -20,6 +20,9 @@ task GcloudAppVersions {
       ~{start} \
       ~{stop}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     browse: "Open the specified versions in a browser."
     delete: "Delete a specified version."

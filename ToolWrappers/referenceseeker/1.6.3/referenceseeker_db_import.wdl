@@ -18,6 +18,9 @@ task ReferenceseekerDbImport {
       ~{if defined(status) then ("--status " +  '"' + status + '"') else ""} \
       ~{if defined(organism) then ("--organism " +  '"' + organism + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "ReferenceSeeker database path"
     genome: "Genome path [Fasta, GenBank, EMBL]"

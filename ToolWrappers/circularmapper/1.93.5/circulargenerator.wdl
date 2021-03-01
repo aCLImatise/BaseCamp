@@ -12,6 +12,9 @@ task Circulargenerator {
       ~{if defined(input_fasta_file) then ("--input " +  '"' + input_fasta_file + '"') else ""} \
       ~{if defined(seq) then ("--seq " +  '"' + seq + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_file: "the input FastA File"
     seq: "the names of the sequences that should to\\nbe elongated\\n"

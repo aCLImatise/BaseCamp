@@ -3,12 +3,12 @@ id: vk_genome.cwl
 inputs:
 - id: in_directory
   doc: Set Genome Directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --directory
 - id: in_ref
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --ref
 - id: in_location
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vk

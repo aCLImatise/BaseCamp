@@ -3,8 +3,8 @@ version 1.0
 task RunReadsMappingpl {
   input {
     Boolean? referencefasta
-    Boolean? querydir_contains_reads
-    Boolean? outputdirectory_provided_will
+    Boolean? contains_reads_files
+    Boolean? provided_write_files
     Boolean? _of_threads
     Boolean? list_file
     Boolean? aligner_bwabowtie
@@ -12,16 +12,19 @@ task RunReadsMappingpl {
   command <<<
     runReadsMapping_pl \
       ~{if (referencefasta) then "-r" else ""} \
-      ~{if (querydir_contains_reads) then "-q" else ""} \
-      ~{if (outputdirectory_provided_will) then "-d" else ""} \
+      ~{if (contains_reads_files) then "-q" else ""} \
+      ~{if (provided_write_files) then "-d" else ""} \
       ~{if (_of_threads) then "-t" else ""} \
       ~{if (list_file) then "-l" else ""} \
       ~{if (aligner_bwabowtie) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     referencefasta: "<reference_fasta>"
-    querydir_contains_reads: "<query_dir> , contains reads files in the format *R[1-2].fastq, if paired, elase *.fastq"
-    outputdirectory_provided_will: "<output_directory>, if not provided will write files in current directory"
+    contains_reads_files: "<query_dir> , contains reads files in the format *R[1-2].fastq, if paired, elase *.fastq"
+    provided_write_files: "<output_directory>, if not provided will write files in current directory"
     _of_threads: "<# of threads>"
     list_file: "<list file>"
     aligner_bwabowtie: "<aligner bwa|bowtie>"

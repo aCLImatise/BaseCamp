@@ -22,6 +22,9 @@ task MetaWRAPBlobology {
       ~{if (subs_amble) then "--subsamble" else ""} \
       ~{if (bins) then "--bins" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly_fasta_file: "assembly fasta file"
     output_directory: "output directory"

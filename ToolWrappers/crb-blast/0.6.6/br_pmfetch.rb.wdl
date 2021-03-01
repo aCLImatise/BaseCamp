@@ -42,6 +42,9 @@ task BrPmfetchrb {
       ~{if defined(maxdate) then ("--maxdate " +  '"' + maxdate + '"') else ""} \
       ~{if (examples) then "--examples" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query: "\\\"genome AND virus\\\"  Query string for PubMed search"
     title: "\\\"mobile elements\\\"   Title of the article to search"
@@ -57,8 +60,8 @@ task BrPmfetchrb {
     ret_start: "#                Starting number of the articles to retrieve"
     sort: "+date             Sort method for the summary output"
     rel_date: "#                 Search articles published within recent # days"
-    min_date: "Search articles published after the date"
-    maxdate: "Search articles published before the date"
+    min_date: "/MM/DD        Search articles published after the date"
+    maxdate: "/MM/DD        Search articles published before the date"
     examples: "Output examples, then exit"
     options_dot_dot_dot: ""
   }

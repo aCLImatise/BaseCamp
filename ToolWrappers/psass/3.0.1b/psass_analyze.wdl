@@ -40,6 +40,9 @@ task PsassAnalyze {
       ~{if (min_fst) then "--min-fst" else ""} \
       ~{if (group_snps) then "--group-snps" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pool_one: "TEXT         Name of the first pool (order in the pileup file)                        [females]"
     pool_two: "TEXT         Name of the second pool (order in the pileup file)                       [males]"

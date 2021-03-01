@@ -9,12 +9,12 @@ task Fdnamlk {
     Boolean? print_data
     Boolean? hyp_state
     String alignments
-    File file
+    File additional_optional_qualifiers
   }
   command <<<
     _fdnamlk \
       ~{alignments} \
-      ~{file} \
+      ~{additional_optional_qualifiers} \
       ~{if (n_categories) then "-ncategories" else ""} \
       ~{if (weights) then "-weights" else ""} \
       ~{if (tt_ratio) then "-ttratio" else ""} \
@@ -22,6 +22,9 @@ task Fdnamlk {
       ~{if (print_data) then "-printdata" else ""} \
       ~{if (hyp_state) then "-hypstate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_categories: "integer    [1] Number of substitution rate categories\\n(Integer from 1 to 9)"
     weights: "properties Weights file"
@@ -30,7 +33,7 @@ task Fdnamlk {
     print_data: "boolean    [N] Print data at start of run"
     hyp_state: "boolean    [N] Reconstruct hypothetical sequence"
     alignments: "[-intreefile]        tree       Phylip tree file (optional)"
-    file: "Additional (Optional) qualifiers (* if not always prompted):"
+    additional_optional_qualifiers: "Additional (Optional) qualifiers (* if not always prompted):"
   }
   output {
     File out_stdout = stdout()

@@ -14,6 +14,9 @@ task HYPHYMPISa {
       ~{treenodes} \
       ~{additionorder}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fprintfstdout: "fprintf(stdout, \\\"Input file contained 3 or fewer sequences - not much inference to be done!\\n\\\");"
     branch_under_condition: "Branch under condition 'randomOption==1'"

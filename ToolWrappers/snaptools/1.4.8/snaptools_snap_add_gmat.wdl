@@ -16,6 +16,9 @@ task SnaptoolsSnapaddgmat {
       ~{if defined(tmp_folder) then ("--tmp-folder " +  '"' + tmp_folder + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     snap_file: "snap file. (default: None)"
     gene_file: "bed file contains genes. (default: None)"

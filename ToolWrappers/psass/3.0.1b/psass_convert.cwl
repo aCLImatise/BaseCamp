@@ -3,7 +3,7 @@ id: psass_convert.cwl
 inputs:
 - id: in_output_file
   doc: TEXT    Write to an output file instead of stdout
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file
 - id: in_input
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: TEXT    Write to an output file instead of stdout
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - psass

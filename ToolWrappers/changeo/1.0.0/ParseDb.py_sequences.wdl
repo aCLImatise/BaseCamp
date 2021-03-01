@@ -8,6 +8,9 @@ task ParseDbpySequences {
     ParseDb_py sequences \
       ~{parsed_b_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     parsed_b_do_tpy: ""
   }

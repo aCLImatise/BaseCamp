@@ -6,44 +6,52 @@ command:
 positional: []
 named:
 - !Flag
-  description: "[--timeout-seconds TIMEOUT_SECONDS] [--no-progress]\n[--bundle-uuid\
-    \ BUNDLE_UUID]"
-  synonyms:
-  - --staging-bucket
-  args: !SimpleFlagArg
-    name: STAGING_BUCKET
   optional: true
-- !Flag
-  description: "file path to a directory of files to upload to the replica.\n--replica\
-    \ REPLICA     the replica to upload to. The supported replicas are: aws for Amazon\
-    \ Web Services, and\ngcp for Google Cloud Platform. [aws, gcp]\n--staging-bucket\
-    \ STAGING_BUCKET\na client controlled AWS S3 storage bucket to upload from.\n\
-    --timeout-seconds TIMEOUT_SECONDS\nthe time to wait for a file to upload to replica.\n\
-    --no-progress         if set, will not report upload progress. Note that even\
-    \ if this flag\nis not set, progress will not be reported if the logging level\
-    \ is higher\nthan INFO or if the session is not interactive.\n--bundle-uuid BUNDLE_UUID\n"
   synonyms:
   - --src-dir
+  description: file path to a directory of files to upload to the replica.
   args: !SimpleFlagArg
     name: SRC_DIR
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - --replica
+  description: "the replica to upload to. The supported replicas are: aws for Amazon\
+    \ Web Services, and\ngcp for Google Cloud Platform. [aws, gcp]"
   args: !SimpleFlagArg
     name: REPLICA
+- !Flag
   optional: true
+  synonyms:
+  - --staging-bucket
+  description: a client controlled AWS S3 storage bucket to upload from.
+  args: !SimpleFlagArg
+    name: STAGING_BUCKET
+- !Flag
+  optional: true
+  synonyms:
+  - --timeout-seconds
+  description: the time to wait for a file to upload to replica.
+  args: !SimpleFlagArg
+    name: TIMEOUT_SECONDS
+- !Flag
+  optional: true
+  synonyms:
+  - --no-progress
+  description: "if set, will not report upload progress. Note that even if this flag\n\
+    is not set, progress will not be reported if the logging level is higher\nthan\
+    \ INFO or if the session is not interactive."
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: hca dss upload [-h] --src-dir SRC_DIR --replica REPLICA\n     \
@@ -65,3 +73,4 @@ help_text: "usage: hca dss upload [-h] --src-dir SRC_DIR --replica REPLICA\n    
   \  --bundle-uuid BUNDLE_UUID\n\n"
 generated_using:
 - --help
+docker_image:

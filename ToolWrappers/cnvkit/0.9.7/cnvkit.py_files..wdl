@@ -8,6 +8,9 @@ task CnvkitpyFiles {
     cnvkit_py files_ \
       ~{cnv_kit_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cnv_kit_do_tpy: ""
   }

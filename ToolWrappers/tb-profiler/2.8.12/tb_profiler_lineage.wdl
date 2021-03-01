@@ -20,6 +20,9 @@ task TbprofilerLineage {
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(external_db) then ("--external_db " +  '"' + external_db + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "BAM file. Make sure it has been generated using the\\nH37Rv genome (GCA_000195955.2) (default: None)"
     prefix: "Sample prefix (default: tbprofiler)"

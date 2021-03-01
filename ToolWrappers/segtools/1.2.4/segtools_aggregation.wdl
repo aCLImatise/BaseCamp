@@ -40,6 +40,9 @@ task Segtoolsaggregation {
       ~{if defined(exon_samples) then ("--exon-samples " +  '"' + exon_samples + '"') else ""} \
       ~{if defined(val_pass_val) then ("-R " +  '"' + val_pass_val + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mnemonic_file: "If specified, labels will be shown using mnemonics\\nfound in FILE"
     outdir: "File output directory (will be created if it does not\\nexist) [default: feature_aggregation]"

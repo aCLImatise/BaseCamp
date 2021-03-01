@@ -4,6 +4,9 @@ task Morpheus {
   command <<<
     morpheus
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

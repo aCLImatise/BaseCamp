@@ -10,6 +10,9 @@ task PartitionFapl {
       ~{this} \
       ~{in_dot_fa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this: ""
     in_dot_fa: ""

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String
+
+Gffmunger_V0_1_0 = CommandToolBuilder(tool="gffmunger", base_command=["gffmunger"], inputs=[ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Turn on debugging [False]")), ToolInput(tag="in_quiet", input_type=Boolean(optional=True), prefix="--quiet", doc=InputDocumentation(doc="Suppress messages & warnings [False]")), ToolInput(tag="in_no_validate", input_type=Boolean(optional=True), prefix="--no-validate", doc=InputDocumentation(doc="Do not validate the input GFF3 [False]")), ToolInput(tag="in_force", input_type=File(optional=True), prefix="--force", doc=InputDocumentation(doc="Force writing of output file, even if it already exists [False]")), ToolInput(tag="in_fast_a_file", input_type=File(optional=True), prefix="--fasta-file", doc=InputDocumentation(doc="Read FASTA from separate file instead of GFF3 input")), ToolInput(tag="in_input_file", input_type=File(optional=True), prefix="--input-file", doc=InputDocumentation(doc="Read GFF3 from file instead of STDIN")), ToolInput(tag="in_output_file", input_type=File(optional=True), prefix="--output-file", doc=InputDocumentation(doc="Write GFF3 to file instead of STDOUT")), ToolInput(tag="in_config", input_type=File(optional=True), prefix="--config", doc=InputDocumentation(doc="Config file [/usr/local/config/gffmunger-config.yml]")), ToolInput(tag="in_genome_tools", input_type=File(optional=True), prefix="--genometools", doc=InputDocumentation(doc="genometools path (override path in config)")), ToolInput(tag="in_move_polypeptide_an_not", input_type=String(), position=0, doc=InputDocumentation(doc="transfer annotations from polypeptides to the\nfeature (e.g. mRNA) they derive from")), ToolInput(tag="in_null", input_type=String(), position=1, doc=InputDocumentation(doc="do nothing")), ToolInput(tag="in_command", input_type=String(), position=0, doc=InputDocumentation(doc="Command(s) defining how the GFF should be munged"))], outputs=[ToolOutput(tag="out_force", output_type=File(optional=True), selector=InputSelector(input_to_select="in_force", type_hint=File()), doc=OutputDocumentation(doc="Force writing of output file, even if it already exists [False]")), ToolOutput(tag="out_output_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_file", type_hint=File()), doc=OutputDocumentation(doc="Write GFF3 to file instead of STDOUT"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Gffmunger_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -3,155 +3,162 @@ command:
 - centrifuge-build-bin
 positional:
 - !Positional
-  description: comma-separated list of files with ref sequences
+  optional: false
   position: 0
   name: reference_in
-  optional: false
+  description: comma-separated list of files with ref sequences
 - !Positional
-  description: write cf data to files with this dir/basename
+  optional: false
   position: 1
   name: centrifuge_index_base
-  optional: false
+  description: write cf data to files with this dir/basename
 named:
 - !Flag
-  description: "reference sequences given on cmd line (as\n<reference_in>)"
+  optional: true
   synonyms:
   - -c
+  description: "reference sequences given on cmd line (as\n<reference_in>)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: disable automatic -p/--bmax/--dcv memory-fitting
+  optional: true
   synonyms:
-  - -a/--noauto
+  - -a
+  - --noauto
+  description: disable automatic -p/--bmax/--dcv memory-fitting
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: max bucket sz for blockwise suffix-array builder
+  optional: true
   synonyms:
   - --bmax
+  description: max bucket sz for blockwise suffix-array builder
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'max bucket sz as divisor of ref len (default: 4)'
+  optional: true
   synonyms:
   - --bmaxdivn
+  description: 'max bucket sz as divisor of ref len (default: 4)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: 'diff-cover period for blockwise (default: 1024)'
+  optional: true
   synonyms:
   - --dcv
+  description: 'diff-cover period for blockwise (default: 1024)'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: disable diff-cover (algorithm becomes quadratic)
+  optional: true
   synonyms:
   - --nodc
+  description: disable diff-cover (algorithm becomes quadratic)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --noref
   description: don't build .3/.4.bt2 (packed reference) portion
-  synonyms:
-  - -r/--noref
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - '-3'
+  - --justref
   description: just build .3/.4.bt2 (packed reference) portion
-  synonyms:
-  - -3/--justref
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --offrate
   description: 'SA is sampled every 2^offRate BWT chars (default: 5)'
-  synonyms:
-  - -o/--offrate
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --ftabchars
   description: '# of chars consumed in initial lookup (default: 10)'
-  synonyms:
-  - -t/--ftabchars
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: a table that converts any id to a taxonomy id
+  optional: true
   synonyms:
   - --conversion-table
+  description: a table that converts any id to a taxonomy id
   args: !SimpleFlagArg
     name: file name
-  optional: true
 - !Flag
-  description: <file name>  taxonomy tree
+  optional: true
   synonyms:
   - --taxonomy-tree
+  description: <file name>  taxonomy tree
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <file name>  names corresponding to taxonomic IDs
+  optional: true
   synonyms:
   - --name-table
+  description: <file name>  names corresponding to taxonomic IDs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <file name>  table of contig (or genome) sizes
+  optional: true
   synonyms:
   - --size-table
+  description: <file name>  table of contig (or genome) sizes
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: seed for random number generator
+  optional: true
   synonyms:
   - --seed
+  description: seed for random number generator
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
   description: verbose output (for debugging)
-  synonyms:
-  - -q/--quiet
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: number of alignment threads to launch (1)
+  optional: true
   synonyms:
-  - -p/--threads
+  - -p
+  - --threads
+  description: number of alignment threads to launch (1)
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: k size for counting the number of distinct k-mer
+  optional: true
   synonyms:
   - --kmer-count
+  description: k size for counting the number of distinct k-mer
   args: !SimpleFlagArg
     name: int
-  optional: true
-- !Flag
-  description: print detailed description of tool and its options
-  synonyms:
-  - -h/--help
-  args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print detailed description of tool and its options
+  args: !EmptyFlagArg {}
 usage_flag: !Flag
-  description: print this usage message
+  optional: true
   synonyms:
   - --usage
+  description: print this usage message
   args: !EmptyFlagArg {}
-  optional: true
 version_flag: !Flag
-  description: print version information and quit
+  optional: true
   synonyms:
   - --version
+  description: print version information and quit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Centrifuge version 1.0.4 by Daehwan Kim (infphilo@gmail.com, http://www.ccb.jhu.edu/people/infphilo)\n\
   Usage: centrifuge-build [options]* --conversion-table <table file> --taxonomy-tree\
   \ <taxonomy tree file> <reference_in> <cf_index_base>\n    reference_in        \
@@ -179,3 +186,4 @@ help_text: "Centrifuge version 1.0.4 by Daehwan Kim (infphilo@gmail.com, http://
   \ information and quit\n"
 generated_using:
 - --help
+docker_image:

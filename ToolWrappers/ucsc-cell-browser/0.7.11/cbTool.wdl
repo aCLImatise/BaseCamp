@@ -16,6 +16,9 @@ task CbTool {
       ~{if defined(first) then ("--first " +  '"' + first + '"') else ""} \
       ~{if defined(del) then ("--del " +  '"' + del + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "show debug messages"
     fix_dots: "try to fix R's mangling of various special chars to '.' in\\nthe cell IDs"

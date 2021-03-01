@@ -10,6 +10,9 @@ task Pscan {
       ~{if (emin) then "-emin" else ""} \
       ~{if (emax) then "-emax" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     emin: "integer    [2] Minimum number of elements per\\nfingerprint (Integer from 1 to 20)"
     emax: "integer    [20] Maximum number of elements per\\nfingerprint (Integer up to 20)"

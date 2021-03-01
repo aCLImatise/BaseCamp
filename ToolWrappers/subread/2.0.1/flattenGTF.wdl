@@ -16,6 +16,9 @@ task FlattenGTF {
       ~{if defined(specify_attribute_type) then ("-g " +  '"' + specify_attribute_type + '"') else ""} \
       ~{if (merging_overlapping_exons) then "-C" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_annotation_file: "Name of an annotation file in GTF/GFF format."
     name_output_file: "Name of output file."

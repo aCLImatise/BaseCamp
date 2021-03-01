@@ -40,6 +40,9 @@ task PpanggolinPartition {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pan_genome: "The pangenome .h5 file (default: None)"
     beta: "beta is the strength of the smoothing using the graph\\ntopology during partitionning. 0 will deactivate\\nspatial smoothing. (default: 2.5)"

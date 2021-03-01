@@ -18,6 +18,9 @@ task SnpSiftOp {
       ~{if defined(op) then ("-op " +  '"' + op + '"') else ""} \
       ~{if defined(outfield) then ("-outfield " +  '"' + outfield + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fields: ": Input VCF field names (comma separated list)."
     op: ": Operator to be applied to the fields"

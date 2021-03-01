@@ -8,7 +8,7 @@ task GetGffsFromListpy {
     String from
     String a
     String gff
-    File file
+    File var_file
     String list
   }
   command <<<
@@ -18,10 +18,13 @@ task GetGffsFromListpy {
       ~{from} \
       ~{a} \
       ~{gff} \
-      ~{file} \
+      ~{var_file} \
       ~{list} \
       ~{if (partial) then "--partial" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     partial: ""
     get: ""
@@ -29,7 +32,7 @@ task GetGffsFromListpy {
     from: ""
     a: ""
     gff: ""
-    file: ""
+    var_file: ""
     list: ""
   }
   output {

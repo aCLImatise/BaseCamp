@@ -3,17 +3,17 @@ id: stdbuf.cwl
 inputs:
 - id: in_input
   doc: adjust standard input stream buffering
-  type: string
+  type: string?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: adjust standard output stream buffering
-  type: string
+  type: string?
   inputBinding:
     prefix: --output
 - id: in_error
   doc: adjust standard error stream buffering
-  type: string
+  type: string?
   inputBinding:
     prefix: --error
 - id: in_option_dot_dot_dot
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - stdbuf

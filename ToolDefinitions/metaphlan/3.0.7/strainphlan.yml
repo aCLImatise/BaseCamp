@@ -1,0 +1,200 @@
+!Command
+command:
+- strainphlan
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --database
+  description: "The input MetaPhlAn 3.0 database (default:\n/usr/local/lib/python3.8/site-packages/metaphlan/metap\n\
+    hlan_databases/mpa_v30_CHOCOPhlAn_201901.pkl)"
+  args: !SimpleFlagArg
+    name: DATABASE
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --clade_markers
+  description: 'The clade markers as FASTA file (default: None)'
+  args: !SimpleFlagArg
+    name: CLADE_MARKERS
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --samples
+  description: "The reconstructed markers for each sample (default:\n[])"
+  args: !RepeatFlagArg
+    name: SAMPLES
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --references
+  description: 'The reference genomes (default: [])'
+  args: !RepeatFlagArg
+    name: REFERENCES
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --clade
+  description: 'The clade to investigate (default: None)'
+  args: !SimpleFlagArg
+    name: CLADE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_dir
+  description: 'The output directory (default: None)'
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --nprocs
+  description: 'The number of threads to use (default: 1)'
+  args: !SimpleFlagArg
+    name: NPROCS
+- !Flag
+  optional: true
+  synonyms:
+  - --secondary_samples
+  description: "The reconstructed markers for each secondary sample\n(default: [])"
+  args: !RepeatFlagArg
+    name: SECONDARY_SAMPLES
+- !Flag
+  optional: true
+  synonyms:
+  - --secondary_references
+  description: 'The secondary reference genomes (default: [])'
+  args: !RepeatFlagArg
+    name: SECONDARY_REFERENCES
+- !Flag
+  optional: true
+  synonyms:
+  - --trim_sequences
+  description: "The number of bases to remove from both ends when\ntrimming markers\
+    \ (default: 50)"
+  args: !SimpleFlagArg
+    name: TRIM_SEQUENCES
+- !Flag
+  optional: true
+  synonyms:
+  - --marker_in_n_samples
+  description: "Theshold defining the minimum percentage of samples to\nkeep a marker\
+    \ (default: 80)"
+  args: !SimpleFlagArg
+    name: MARKER_IN_N_SAMPLES
+- !Flag
+  optional: true
+  synonyms:
+  - --sample_with_n_markers
+  description: "Threshold defining the minimun number of markers to\nkeep a sample\
+    \ (default: 20)"
+  args: !SimpleFlagArg
+    name: SAMPLE_WITH_N_MARKERS
+- !Flag
+  optional: true
+  synonyms:
+  - --secondary_sample_with_n_markers
+  description: "Threshold defining the minimun number of markers to\nkeep a secondary\
+    \ sample (default: 20)"
+  args: !SimpleFlagArg
+    name: SECONDARY_SAMPLE_WITH_N_MARKERS
+- !Flag
+  optional: true
+  synonyms:
+  - --phylophlan_mode
+  description: "The presets for fast or accurate phylogenetic analysis\n(default:\
+    \ accurate)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      fast:
+      accurate:
+- !Flag
+  optional: true
+  synonyms:
+  - --phylophlan_configuration
+  description: 'The PhyloPhlAn configuration file (default: None)'
+  args: !SimpleFlagArg
+    name: PHYLOPHLAN_CONFIGURATION
+- !Flag
+  optional: true
+  synonyms:
+  - --mutation_rates
+  description: "If specified will produced a mutation rates table for\neach of the\
+    \ aligned markers and a summary table for\nthe concatenated MSA. This operation\
+    \ can take long\ntime to finish (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print_clades_only
+  description: "If specified only print the potential clades and stop\nwithout building\
+    \ any tree (default: False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: strainphlan [-h] [-d DATABASE] [-m CLADE_MARKERS]\n           \
+  \        [-s SAMPLES [SAMPLES ...]] [-r REFERENCES [REFERENCES ...]]\n         \
+  \          [-c CLADE] [-o OUTPUT_DIR] [-n NPROCS]\n                   [--secondary_samples\
+  \ SECONDARY_SAMPLES [SECONDARY_SAMPLES ...]]\n                   [--secondary_references\
+  \ SECONDARY_REFERENCES [SECONDARY_REFERENCES ...]]\n                   [--trim_sequences\
+  \ TRIM_SEQUENCES]\n                   [--marker_in_n_samples MARKER_IN_N_SAMPLES]\n\
+  \                   [--sample_with_n_markers SAMPLE_WITH_N_MARKERS]\n          \
+  \         [--secondary_sample_with_n_markers SECONDARY_SAMPLE_WITH_N_MARKERS]\n\
+  \                   [--phylophlan_mode {accurate,fast}]\n                   [--phylophlan_configuration\
+  \ PHYLOPHLAN_CONFIGURATION]\n                   [--mutation_rates] [--print_clades_only]\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -d DATABASE, --database DATABASE\n                        The input MetaPhlAn\
+  \ 3.0 database (default:\n                        /usr/local/lib/python3.8/site-packages/metaphlan/metap\n\
+  \                        hlan_databases/mpa_v30_CHOCOPhlAn_201901.pkl)\n  -m CLADE_MARKERS,\
+  \ --clade_markers CLADE_MARKERS\n                        The clade markers as FASTA\
+  \ file (default: None)\n  -s SAMPLES [SAMPLES ...], --samples SAMPLES [SAMPLES ...]\n\
+  \                        The reconstructed markers for each sample (default:\n \
+  \                       [])\n  -r REFERENCES [REFERENCES ...], --references REFERENCES\
+  \ [REFERENCES ...]\n                        The reference genomes (default: [])\n\
+  \  -c CLADE, --clade CLADE\n                        The clade to investigate (default:\
+  \ None)\n  -o OUTPUT_DIR, --output_dir OUTPUT_DIR\n                        The output\
+  \ directory (default: None)\n  -n NPROCS, --nprocs NPROCS\n                    \
+  \    The number of threads to use (default: 1)\n  --secondary_samples SECONDARY_SAMPLES\
+  \ [SECONDARY_SAMPLES ...]\n                        The reconstructed markers for\
+  \ each secondary sample\n                        (default: [])\n  --secondary_references\
+  \ SECONDARY_REFERENCES [SECONDARY_REFERENCES ...]\n                        The secondary\
+  \ reference genomes (default: [])\n  --trim_sequences TRIM_SEQUENCES\n         \
+  \               The number of bases to remove from both ends when\n            \
+  \            trimming markers (default: 50)\n  --marker_in_n_samples MARKER_IN_N_SAMPLES\n\
+  \                        Theshold defining the minimum percentage of samples to\n\
+  \                        keep a marker (default: 80)\n  --sample_with_n_markers\
+  \ SAMPLE_WITH_N_MARKERS\n                        Threshold defining the minimun\
+  \ number of markers to\n                        keep a sample (default: 20)\n  --secondary_sample_with_n_markers\
+  \ SECONDARY_SAMPLE_WITH_N_MARKERS\n                        Threshold defining the\
+  \ minimun number of markers to\n                        keep a secondary sample\
+  \ (default: 20)\n  --phylophlan_mode {accurate,fast}\n                        The\
+  \ presets for fast or accurate phylogenetic analysis\n                        (default:\
+  \ accurate)\n  --phylophlan_configuration PHYLOPHLAN_CONFIGURATION\n           \
+  \             The PhyloPhlAn configuration file (default: None)\n  --mutation_rates\
+  \      If specified will produced a mutation rates table for\n                 \
+  \       each of the aligned markers and a summary table for\n                  \
+  \      the concatenated MSA. This operation can take long\n                    \
+  \    time to finish (default: False)\n  --print_clades_only   If specified only\
+  \ print the potential clades and stop\n                        without building\
+  \ any tree (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/metaphlan:3.0.7--pyh7b7c402_0

@@ -26,6 +26,9 @@ task TadbitParse {
       ~{if defined(job_ids) then ("--jobids " +  '"' + job_ids + '"') else ""} \
       ~{if (nox) then "--noX" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     workdir: "path to working directory (generated with the tool tadbit mapper)"
     type: "[map]file type to be parser, MAP (GEM-mapper), SAM or BAM"

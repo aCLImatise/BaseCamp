@@ -1,15 +1,11 @@
 version 1.0
 
 task Lfmm2geno {
-  input {
-    File? _help
-  }
   command <<<
-    lfmm2geno \
-      ~{if defined(_help) then ("-input " +  '"' + _help + '"') else ""}
+    lfmm2geno
   >>>
-  parameter_meta {
-    _help: "--help"
+  runtime {
+    docker: "None"
   }
   output {
     File out_stdout = stdout()

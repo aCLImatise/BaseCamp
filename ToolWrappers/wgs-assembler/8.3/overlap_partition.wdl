@@ -8,6 +8,9 @@ task OverlapPartition {
     overlap_partition \
       ~{opts}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     opts: ""
   }

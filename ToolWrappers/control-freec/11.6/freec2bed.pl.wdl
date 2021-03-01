@@ -12,6 +12,9 @@ task Freec2bedpl {
       ~{if (ploidy_ploidy_default) then "-p" else ""} \
       ~{if (verbose_mode) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_file_ratio: "file                   file with ratio"
     ploidy_ploidy_default: "ploidy                 ploidy (default 2)"

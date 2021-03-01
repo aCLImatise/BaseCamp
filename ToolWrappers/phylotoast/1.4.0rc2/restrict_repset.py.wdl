@@ -12,6 +12,9 @@ task RestrictRepsetpy {
       ~{if defined(rep_set_fp) then ("--repset_fp " +  '"' + rep_set_fp + '"') else ""} \
       ~{if defined(rep_set_out_fp) then ("--repset_out_fp " +  '"' + rep_set_out_fp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     biom_fp: "Path to a biom-format file with OTU-Sample abundance\\ndata."
     rep_set_fp: "Path to a FASTA-format file containing the\\nrepresentative set of OTUs"

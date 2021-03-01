@@ -440,6 +440,9 @@ task Curl {
       ~{if defined(write_out) then ("--write-out " +  '"' + write_out + '"') else ""} \
       ~{if (xattr) then "--xattr" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     abstract_unix_socket: "Connect via abstract Unix domain socket"
     any_auth: "Pick any authentication method"

@@ -48,6 +48,9 @@ task Mapfastqpl {
       ~{if (pass) then "-pass" else ""} \
       ~{if (show_errors) then "-showErrors" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_cpus_instance: "<#> (Number of cpus per instance, default: 1)"
     path_index_use: "(path to index to use for mapping)"

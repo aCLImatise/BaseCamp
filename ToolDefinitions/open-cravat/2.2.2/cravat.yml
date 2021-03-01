@@ -1,0 +1,326 @@
+!Command
+command:
+- cravat
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: inputs
+  description: "Input file(s). One or more variant files in a\nsupported format like\
+    \ VCF. See the -i/--input-format\nflag for supported formats. In the special case\
+    \ where\nyou want to add annotations to an existing open-cravat\nanalysis, provide\
+    \ the output sqlite database from the\nprevious run as input instead of a variant\
+    \ input file."
+- !Positional
+  optional: false
+  position: 0
+  name: one.
+  description: --newlog              deletes the existing log file and creates a new
+    one.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: annotators to run
+  args: !RepeatFlagArg
+    name: ANNOTATORS
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: annotators to exclude
+  args: !RepeatFlagArg
+    name: EXCLUDES
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: name of cravat run
+  args: !SimpleFlagArg
+    name: RUN_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: directory for output files
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --startat
+  description: starts at given stage
+  args: !ChoiceFlagArg
+    choices: !!set
+      mapper:
+      annotator:
+      aggregator:
+      reporter:
+      converter:
+      postaggregator:
+- !Flag
+  optional: true
+  synonyms:
+  - --endat
+  description: ends after given stage.
+  args: !ChoiceFlagArg
+    choices: !!set
+      mapper:
+      annotator:
+      aggregator:
+      reporter:
+      converter:
+      postaggregator:
+- !Flag
+  optional: true
+  synonyms:
+  - --skip
+  description: "[{converter,mapper,annotator,aggregator,postaggregator,reporter} ...]\n\
+    skips given stage(s)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      mapper:
+      annotator:
+      aggregator:
+      reporter:
+      converter:
+      postaggregator:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: path to a conf file
+  args: !SimpleFlagArg
+    name: CONF
+- !Flag
+  optional: true
+  synonyms:
+  - --cs
+  description: configuration string
+  args: !SimpleFlagArg
+    name: CONFS
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: verbose
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "[{text,excel} ...]\nreport types. If omitted, default one in cravat.yml\
+    \ is\nused."
+  args: !ChoiceFlagArg
+    choices: !!set
+      excel:
+      text:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --liftover
+  description: "reference genome of input. CRAVAT will lift over to\nhg38 if needed."
+  args: !ChoiceFlagArg
+    choices: !!set
+      hg38:
+      hg19:
+      hg18:
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: deletes the existing result database and creates a new
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --note
+  description: "note will be written to the run status file\n(.status.json)"
+  args: !SimpleFlagArg
+    name: NOTE
+- !Flag
+  optional: true
+  synonyms:
+  - --mp
+  description: number of processes to use to run annotators
+  args: !SimpleFlagArg
+    name: MP
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-format
+  description: Force input format
+  args: !ChoiceFlagArg
+    choices: !!set
+      oldcravat:
+      cravat:
+      vcf:
+- !Flag
+  optional: true
+  synonyms:
+  - --temp-files
+  description: Leave temporary files after run is complete.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --writeadmindb
+  description: Write job information to admin db after job completion
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --jobid
+  description: Job ID for server version
+  args: !SimpleFlagArg
+    name: JOBID
+- !Flag
+  optional: true
+  synonyms:
+  - --separatesample
+  description: Separate variant results by sample
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --primary-transcript
+  description: "[PRIMARY_TRANSCRIPT ...]\n\"mane\" for MANE transcripts as primary\
+    \ transcripts, or\na path to a file of primary transcripts. MANE is\ndefault."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cleanrun
+  description: "Deletes all previous output files for the job and\ngenerate new ones."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --do-not-change-status
+  description: Job status in status.json will not be changed
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --module-option
+  description: "[MODULE_OPTION ...]\nModule-specific option in module_name.key=value\n\
+    syntax. For example, --module-option\nvcfreporter.type=separate"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --system-option
+  description: "[SYSTEM_OPTION ...]\nSystem option in key=value syntax. For example,\n\
+    --system-option modules_dir=/home/user/open-\ncravat/modules"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --silent
+  description: Runs silently.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --concise-report
+  description: "Generate concise reports with default columns defined\nby each annotation\
+    \ module"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Shows open-cravat version.
+  args: !EmptyFlagArg {}
+help_text: "usage: cravat input_file_path_1 input_file_path_2 ... [-h]\n         \
+  \                                             [-a ANNOTATORS [ANNOTATORS ...]]\n\
+  \                                                      [-e EXCLUDES [EXCLUDES ...]]\n\
+  \                                                      [-n RUN_NAME]\n         \
+  \                                             [-d OUTPUT_DIR]\n                \
+  \                                      [--startat {converter,mapper,annotator,aggregator,postaggregator,reporter}]\n\
+  \                                                      [--endat {converter,mapper,annotator,aggregator,postaggregator,reporter}]\n\
+  \                                                      [--skip {converter,mapper,annotator,aggregator,postaggregator,reporter}\
+  \ [{converter,mapper,annotator,aggregator,postaggregator,reporter} ...]]\n     \
+  \                                                 [-c CONF] [--cs CONFS]\n     \
+  \                                                 [-v]\n                       \
+  \                               [-t {text,excel} [{text,excel} ...]]\n         \
+  \                                             [-l {hg38,hg19,hg18}]\n          \
+  \                                            [-x] [--newlog]\n                 \
+  \                                     [--note NOTE] [--mp MP]\n                \
+  \                                      [-i {cravat,oldcravat,vcf}]\n           \
+  \                                           [--temp-files]\n                   \
+  \                                   [--writeadmindb]\n                         \
+  \                             [--jobid JOBID]\n                                \
+  \                      [--version]\n                                           \
+  \           [--separatesample]\n                                               \
+  \       [--primary-transcript [PRIMARY_TRANSCRIPT ...]]\n                      \
+  \                                [--cleanrun]\n                                \
+  \                      [--do-not-change-status]\n                              \
+  \                        [--module-option [MODULE_OPTION ...]]\n               \
+  \                                       [--system-option [SYSTEM_OPTION ...]]\n\
+  \                                                      [--silent]\n            \
+  \                                          [--concise-report]\n                \
+  \                                      [inputs ...]\n\nOpen-CRAVAT genomic variant\
+  \ interpreter. https://github.com/KarchinLab/open-\ncravat. Use input_file_path\
+  \ arguments before any option or define them in a\nconf file (option -c).\n\npositional\
+  \ arguments:\n  inputs                Input file(s). One or more variant files in\
+  \ a\n                        supported format like VCF. See the -i/--input-format\n\
+  \                        flag for supported formats. In the special case where\n\
+  \                        you want to add annotations to an existing open-cravat\n\
+  \                        analysis, provide the output sqlite database from the\n\
+  \                        previous run as input instead of a variant input file.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -a ANNOTATORS [ANNOTATORS ...]\n                        annotators to run\n \
+  \ -e EXCLUDES [EXCLUDES ...]\n                        annotators to exclude\n  -n\
+  \ RUN_NAME           name of cravat run\n  -d OUTPUT_DIR         directory for output\
+  \ files\n  --startat {converter,mapper,annotator,aggregator,postaggregator,reporter}\n\
+  \                        starts at given stage\n  --endat {converter,mapper,annotator,aggregator,postaggregator,reporter}\n\
+  \                        ends after given stage.\n  --skip {converter,mapper,annotator,aggregator,postaggregator,reporter}\
+  \ [{converter,mapper,annotator,aggregator,postaggregator,reporter} ...]\n      \
+  \                  skips given stage(s).\n  -c CONF               path to a conf\
+  \ file\n  --cs CONFS            configuration string\n  -v                    verbose\n\
+  \  -t {text,excel} [{text,excel} ...]\n                        report types. If\
+  \ omitted, default one in cravat.yml is\n                        used.\n  -l {hg38,hg19,hg18},\
+  \ --liftover {hg38,hg19,hg18}\n                        reference genome of input.\
+  \ CRAVAT will lift over to\n                        hg38 if needed.\n  -x      \
+  \              deletes the existing result database and creates a new\n        \
+  \                one.\n  --newlog              deletes the existing log file and\
+  \ creates a new one.\n  --note NOTE           note will be written to the run status\
+  \ file\n                        (.status.json)\n  --mp MP               number of\
+  \ processes to use to run annotators\n  -i {cravat,oldcravat,vcf}, --input-format\
+  \ {cravat,oldcravat,vcf}\n                        Force input format\n  --temp-files\
+  \          Leave temporary files after run is complete.\n  --writeadmindb      \
+  \  Write job information to admin db after job completion\n  --jobid JOBID     \
+  \    Job ID for server version\n  --version             Shows open-cravat version.\n\
+  \  --separatesample      Separate variant results by sample\n  --primary-transcript\
+  \ [PRIMARY_TRANSCRIPT ...]\n                        \"mane\" for MANE transcripts\
+  \ as primary transcripts, or\n                        a path to a file of primary\
+  \ transcripts. MANE is\n                        default.\n  --cleanrun         \
+  \   Deletes all previous output files for the job and\n                        generate\
+  \ new ones.\n  --do-not-change-status\n                        Job status in status.json\
+  \ will not be changed\n  --module-option [MODULE_OPTION ...]\n                 \
+  \       Module-specific option in module_name.key=value\n                      \
+  \  syntax. For example, --module-option\n                        vcfreporter.type=separate\n\
+  \  --system-option [SYSTEM_OPTION ...]\n                        System option in\
+  \ key=value syntax. For example,\n                        --system-option modules_dir=/home/user/open-\n\
+  \                        cravat/modules\n  --silent              Runs silently.\n\
+  \  --concise-report      Generate concise reports with default columns defined\n\
+  \                        by each annotation module\n\ninputs should be the first\
+  \ option\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/open-cravat:2.2.2--pyh3252c3a_0

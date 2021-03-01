@@ -14,6 +14,9 @@ task InferExperimentpy {
       ~{if defined(sample_size) then ("--sample-size " +  '"' + sample_size + '"') else ""} \
       ~{if defined(mapq) then ("--mapq " +  '"' + mapq + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Input alignment file in SAM or BAM format"
     ref_gene: "Reference gene model in bed fomat."

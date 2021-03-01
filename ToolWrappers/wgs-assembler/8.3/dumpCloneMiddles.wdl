@@ -2,43 +2,46 @@ version 1.0
 
 task DumpCloneMiddles {
   input {
-    String? _attempt_guess
+    String? attempt_guess_options
     Boolean? ctg
     Boolean? scf
-    String? ovlstorenamec_ckptfilenamen_ckpptnum
     String? _generate_contig
-    Int? _generate_only
-    Boolean? _suppress_surrogate
+    Int? _generate_scaffolds
+    Boolean? suppress_surrogate_fragment
     String? n
     String? c
     String? o
+    String? g
     String? other
   }
   command <<<
     dumpCloneMiddles \
       ~{other} \
-      ~{if defined(_attempt_guess) then ("-p " +  '"' + _attempt_guess + '"') else ""} \
+      ~{if defined(attempt_guess_options) then ("-p " +  '"' + attempt_guess_options + '"') else ""} \
       ~{if (ctg) then "-ctg" else ""} \
       ~{if (scf) then "-scf" else ""} \
-      ~{if defined(ovlstorenamec_ckptfilenamen_ckpptnum) then ("-g " +  '"' + ovlstorenamec_ckptfilenamen_ckpptnum + '"') else ""} \
       ~{if defined(_generate_contig) then ("-i " +  '"' + _generate_contig + '"') else ""} \
-      ~{if defined(_generate_only) then ("-l " +  '"' + _generate_only + '"') else ""} \
-      ~{if (_suppress_surrogate) then "-S" else ""} \
+      ~{if defined(_generate_scaffolds) then ("-l " +  '"' + _generate_scaffolds + '"') else ""} \
+      ~{if (suppress_surrogate_fragment) then "-S" else ""} \
       ~{if defined(n) then ("-n " +  '"' + n + '"') else ""} \
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(g) then ("-g " +  '"' + g + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _attempt_guess: "-- attempt to guess all the required options, if your assembly\\nfollows runCA-OBT naming conventions."
+    attempt_guess_options: "-- attempt to guess all the required options, if your assembly\\nfollows runCA-OBT naming conventions."
     ctg: "-- dump contigs"
     scf: "-- dump scaffolds"
-    ovlstorenamec_ckptfilenamen_ckpptnum: "-o <OVLStoreName>\\n-c <CkptFileName>\\n-n <CkpPtNum>"
     _generate_contig: "-- generate a single contig or scaffold"
-    _generate_only: "-- generate only scaffolds larger than min length"
-    _suppress_surrogate: "-- suppress surrogate fragment placement (possibly multiple placements per frg)"
+    _generate_scaffolds: "-- generate only scaffolds larger than min length"
+    suppress_surrogate_fragment: "-- suppress surrogate fragment placement (possibly multiple placements per frg)"
     n: ""
     c: ""
     o: ""
+    g: ""
     other: ""
   }
   output {

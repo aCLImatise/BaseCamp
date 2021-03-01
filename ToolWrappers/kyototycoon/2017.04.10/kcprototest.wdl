@@ -26,6 +26,9 @@ task Kcprototest {
       ~{if (var_4) then "-tran" else ""} \
       ~{if (etc) then "-etc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     it: ""
     th: ""

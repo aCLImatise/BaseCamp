@@ -130,6 +130,9 @@ task Laa {
       ~{if (emit_tool_contract) then "--emit-tool-contract" else ""} \
       ~{if (resolved_tool_contract) then "--resolved-tool-contract" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rng_seed: "RNG seed, modulates reservoir filtering of reads.\\n[42]"
     generate_bam_index: "Generate PacBio indicies (*.pbi) for BAM files that\\ndon't have them."

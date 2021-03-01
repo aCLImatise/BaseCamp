@@ -8,6 +8,9 @@ task Variationget {
     variationget \
       ~{if (variation) then "-variation" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     variation: ": enter variation value: Error: Unable to get reply from user - end of standard input"
   }

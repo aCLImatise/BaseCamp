@@ -28,18 +28,19 @@ inputs:
     position: 4
 - id: in_random
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 5
 - id: in_seed
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 6
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - randomGeneSample

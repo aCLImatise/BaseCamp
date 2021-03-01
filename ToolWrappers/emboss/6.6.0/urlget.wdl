@@ -8,6 +8,9 @@ task Urlget {
     urlget \
       ~{if (url) then "-url" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     url: ": enter url value: Error: Unable to get reply from user - end of standard input"
   }

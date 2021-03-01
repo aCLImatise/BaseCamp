@@ -30,6 +30,9 @@ task RNAMassCalculator {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input file with RNA sequences and optionally charge numbers (mutually exclusive to 'in_seq') (valid formats: 'txt')"
     in_seq: "List of RNA sequences (mutually exclusive to 'in')"

@@ -8,6 +8,9 @@ task MykrobePanels {
     mykrobe panels \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "do not output warnings to stderr"
   }

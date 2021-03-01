@@ -22,6 +22,9 @@ task AMASpyRemove {
       ~{if defined(in_format) then ("--in-format " +  '"' + in_format + '"') else ""} \
       ~{if defined(data_type) then ("--data-type " +  '"' + data_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tax_a_to_remove: "Taxon/sequence names to be removed."
     out_format: "File format for the output alignment. Default: fasta"

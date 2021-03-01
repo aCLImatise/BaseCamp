@@ -1,0 +1,132 @@
+!Command
+command:
+- PlotMetageneAnalysisForTheWholeRegions
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "Input file in txt format.And the files have N columns,\nmeaning N\
+    \ samples and have total bins rows.\n[FiveUTR+CDS+ThreeUTR]"
+  args: !SimpleFlagArg
+    name: DENSITY_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Prefix of output files.[required]
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --group
+  description: "Group name of each group separated by comma. e.g. 'si-\ncontrol,si-eIF3e'"
+  args: !SimpleFlagArg
+    name: GROUP_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --replicate
+  description: "Replicate name of each group separated by comma. e.g.\n'si_3e_1_80S,si_3e_2_80S__si_cttl_1_80S,si_ctrl_2_80S'"
+  args: !SimpleFlagArg
+    name: REPLICATE_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
+  description: Output file format,'pdf','png' or 'jpg'. default=pdf
+  args: !SimpleFlagArg
+    name: OUTPUT_FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bins
+  description: "Bins to scale the transcript length.e.g.'15,90,60'.\nbins must be\
+    \ separated by comma, namely\n'5UTRBins,CDSBins,3UTRBins'. default=15,90,60"
+  args: !SimpleFlagArg
+    name: BINS
+- !Flag
+  optional: true
+  synonyms:
+  - --ymax
+  description: The max of ylim. default=none
+  args: !SimpleFlagArg
+    name: YMAX
+- !Flag
+  optional: true
+  synonyms:
+  - --ymin
+  description: The min of ylim. default=none
+  args: !SimpleFlagArg
+    name: YMIN
+- !Flag
+  optional: true
+  synonyms:
+  - --mode
+  description: "plot all samples or just mean samples [all or mean].If\nchoose 'all',output\
+    \ all samples as well as mean\nsamples, else just mean samples.default=all"
+  args: !SimpleFlagArg
+    name: MODE
+- !Flag
+  optional: true
+  synonyms:
+  - --xlabel-loc
+  description: "Location of xlabel. Used to control the yaxis location\nof xlabel.\
+    \ default=none\n"
+  args: !SimpleFlagArg
+    name: XLABELLOC
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: python PlotMetageneAnalysisForTheWholeRegions [options]\n\n@Description:\
+  \ This script is used for plot metagene results for the whole transcripts\n\t\t\t\
+  usage: python PlotMetageneAnalysisForTheWholeRegions.py -i test_scaled_dataframe.txt\
+  \ -o test -g si-Ctrl,si-eIF3e -r si_ctrl_1_80S,si_ctrl_2_80S,si_ctrl_3_80S__si_3e_1_80S,si_3e_2_80S,si_3e_3_80S\
+  \ -f pdf -b 15,90,60 --mode all\n\t\t\tinput:\n\t\t\t1) metagene results generated\
+  \ by MetageneAnalysisForTheWholeRegions.py\n\t\t\toutput (selective):\n\t\t\t1)\
+  \ plots for all samples\n\t\t\t2) plots for mean samples\n\n\n\nOptions:\n  --version\
+  \             show program's version number and exit\n  -h, --help            show\
+  \ this help message and exit\n  -i DENSITY_FILE, --input=DENSITY_FILE\n        \
+  \                Input file in txt format.And the files have N columns,\n      \
+  \                  meaning N samples and have total bins rows.\n               \
+  \         [FiveUTR+CDS+ThreeUTR]\n  -o OUTPUT_PREFIX, --output=OUTPUT_PREFIX\n \
+  \                       Prefix of output files.[required]\n  -g GROUP_NAME, --group=GROUP_NAME\n\
+  \                        Group name of each group separated by comma. e.g. 'si-\n\
+  \                        control,si-eIF3e'\n  -r REPLICATE_NAME, --replicate=REPLICATE_NAME\n\
+  \                        Replicate name of each group separated by comma. e.g.\n\
+  \                        'si_3e_1_80S,si_3e_2_80S__si_cttl_1_80S,si_ctrl_2_80S'\n\
+  \  -f OUTPUT_FORMAT, --format=OUTPUT_FORMAT\n                        Output file\
+  \ format,'pdf','png' or 'jpg'. default=pdf\n  -b BINS, --bins=BINS  Bins to scale\
+  \ the transcript length.e.g.'15,90,60'.\n                        bins must be separated\
+  \ by comma, namely\n                        '5UTRBins,CDSBins,3UTRBins'. default=15,90,60\n\
+  \  --ymax=YMAX           The max of ylim. default=none\n  --ymin=YMIN          \
+  \ The min of ylim. default=none\n  --mode=MODE           plot all samples or just\
+  \ mean samples [all or mean].If\n                        choose 'all',output all\
+  \ samples as well as mean\n                        samples, else just mean samples.default=all\n\
+  \  --xlabel-loc=XLABELLOC\n                        Location of xlabel. Used to control\
+  \ the yaxis location\n                        of xlabel. default=none\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ribominer:0.2.3.1--pyh3252c3a_0

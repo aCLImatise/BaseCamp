@@ -26,6 +26,9 @@ task HisatgenotypeBuildGenomepy {
       ~{if (linear_index) then "--linear-index" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base_fname: "base filename for genotype genome (default:\\ngenotype_genome)"
     threads: "Number of threads"

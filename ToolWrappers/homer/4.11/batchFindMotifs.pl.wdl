@@ -16,6 +16,9 @@ task BatchFindMotifspl {
       ~{if (cpu) then "-cpu" else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cpu: "(# of concurrent jobs, -p controls CPUs used by each findMotifsGenome.pl instance)"
     f: ""

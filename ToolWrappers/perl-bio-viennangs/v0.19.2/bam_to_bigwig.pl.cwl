@@ -3,12 +3,12 @@ id: bam_to_bigwig.pl.cwl
 inputs:
 - id: in_bam
   doc: Input file in BAM format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --bam
 - id: in_cs
   doc: Chromosome sizes file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cs
 - id: in_strand
@@ -22,23 +22,23 @@ inputs:
     \ ie contains reads mapped to both positive and\nnegative strand, then the default\
     \ value '+' will be used, resulting\nin bigWig coverage profiles rendered in positive\
     \ (y-axis direction)\nin the UCSC genome browser."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --strand
 - id: in_output_directory
   doc: Output directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
 - id: in_log
   doc: "Name of the log file. Unless specified, the default log file will be\n\"bam_to_bigwig.log\"\
     \ in the given output directory."
-  type: File
+  type: File?
   inputBinding:
     prefix: --log
 - id: in_man
   doc: "Prints the manual page and exits\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --man
 outputs:
@@ -47,15 +47,16 @@ outputs:
   type: stdout
 - id: out_output_directory
   doc: Output directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_directory)
 - id: out_log
   doc: "Name of the log file. Unless specified, the default log file will be\n\"bam_to_bigwig.log\"\
     \ in the given output directory."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_log)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bam_to_bigwig.pl

@@ -26,6 +26,9 @@ task GrootAlign {
       ~{if defined(processors) then ("--processors " +  '"' + processors + '"') else ""} \
       ~{if (profiling) then "--profiling" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cont_thresh: "containment threshold for the LSH ensemble (default 0.99)"
     fast_a: "if set, the input will be treated as fasta sequence(s) (experimental feature)"

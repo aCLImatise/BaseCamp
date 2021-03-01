@@ -1,0 +1,129 @@
+!Command
+command:
+- make_training_sets.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --indir
+  description: "Path to input directory with GenBank file(s) for\ntraining. This path\
+    \ will be added to file names in\ngroups file."
+  args: !SimpleFlagArg
+    name: INDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --groups
+  description: "Path to file two tab-delimited columns: file name and\ngroup name.\
+    \ If not provided each file will have its\nown training set."
+  args: !SimpleFlagArg
+    name: GROUPS
+- !Flag
+  optional: true
+  synonyms:
+  - --use_taxonomy
+  description: "If set, taxonomy from input files will be used to\nupdate or create\
+    \ new groups. This is performed after\nreading groups file."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer_size
+  description: "The size of required kmers. For codon approach use\nmultiplicity of\
+    \ 3. [Default: 12]"
+  args: !SimpleFlagArg
+    name: KMER_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --kmers_type
+  description: "Approach for creating kmers. Options are: simple (just\nslicing the\
+    \ sequence from the first position), all\n(all possible kmers), codon (all possible\
+    \ kmers made\nwith step of 3 nts to get kmers corresponding\ntranslated aas).\
+    \ [Default: all]"
+  args: !SimpleFlagArg
+    name: KMERS_TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - --phmms
+  description: "Phage HMM profile database (like pVOGs) will be mapped\nagainst the\
+    \ genome of interest and used as additional\nfeature to identify prophages."
+  args: !SimpleFlagArg
+    name: PHMMS
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of threads to use while searching with phmms.
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --retrain
+  description: "Set if any of reference files previously used for\ntraining has changed,\
+    \ e.g. prophage protein features\nindication was modified."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --absolute_retrain
+  description: "If set, ignores trainingGenome_list file and PhiSpy's\ndefault reference\
+    \ genomes. This option allows to train\nPhiSpy with files provided just by the\
+    \ user."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: make_training_sets.py [-h] [-d INDIR] [-g GROUPS] [--use_taxonomy]\n\
+  \                             [-k KMER_SIZE] [-t KMERS_TYPE] [--phmms PHMMS]\n \
+  \                            [--threads THREADS] [--retrain]\n                 \
+  \            [--absolute_retrain]\n\nAutomates making new or extending current PhiSpy's\
+  \ training sets. By default these will be created in PhiSpyModules/data directory\
+  \ so keep that in mind preparing groups file. \n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -d INDIR, --indir INDIR\n      \
+  \                  Path to input directory with GenBank file(s) for\n          \
+  \              training. This path will be added to file names in\n            \
+  \            groups file.\n  -g GROUPS, --groups GROUPS\n                      \
+  \  Path to file two tab-delimited columns: file name and\n                     \
+  \   group name. If not provided each file will have its\n                      \
+  \  own training set.\n  --use_taxonomy        If set, taxonomy from input files\
+  \ will be used to\n                        update or create new groups. This is\
+  \ performed after\n                        reading groups file.\n  -k KMER_SIZE,\
+  \ --kmer_size KMER_SIZE\n                        The size of required kmers. For\
+  \ codon approach use\n                        multiplicity of 3. [Default: 12]\n\
+  \  -t KMERS_TYPE, --kmers_type KMERS_TYPE\n                        Approach for\
+  \ creating kmers. Options are: simple (just\n                        slicing the\
+  \ sequence from the first position), all\n                        (all possible\
+  \ kmers), codon (all possible kmers made\n                        with step of 3\
+  \ nts to get kmers corresponding\n                        translated aas). [Default:\
+  \ all]\n  --phmms PHMMS         Phage HMM profile database (like pVOGs) will be\
+  \ mapped\n                        against the genome of interest and used as additional\n\
+  \                        feature to identify prophages.\n  --threads THREADS   \
+  \  Number of threads to use while searching with phmms.\n  --retrain           \
+  \  Set if any of reference files previously used for\n                        training\
+  \ has changed, e.g. prophage protein features\n                        indication\
+  \ was modified.\n  --absolute_retrain    If set, ignores trainingGenome_list file\
+  \ and PhiSpy's\n                        default reference genomes. This option allows\
+  \ to train\n                        PhiSpy with files provided just by the user.\n\
+  \nExample usage:\npython3 scripts/make_training_sets.py -d test_genbank_files -g\
+  \ test_genbank_files/groups.txt --retrain --use_taxonomy --phmms pVOGs.hmm --threads\
+  \ 4\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/phispy:4.2.6--py38hed8969a_0

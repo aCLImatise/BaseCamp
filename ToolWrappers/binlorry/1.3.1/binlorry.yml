@@ -4,122 +4,122 @@ command:
 positional: []
 named:
 - !Flag
-  description: "FASTA/FASTQ of input reads or a directory which will\nbe recursively\
-    \ searched for FASTQ files (required)."
+  optional: true
   synonyms:
   - -i
   - --input
+  description: "FASTA/FASTQ of input reads or a directory which will\nbe recursively\
+    \ searched for FASTQ files (required)."
   args: !SimpleFlagArg
     name: INPUT_PATH
-  optional: true
 - !Flag
-  description: "A CSV file with metadata fields for reads or a\ndirectory of csv files\
-    \ that will be recursively\nsearched for names corresponding to a matching input\n\
-    FASTA/FASTQ files."
+  optional: true
   synonyms:
   - -t
   - --data
+  description: "A CSV file with metadata fields for reads or a\ndirectory of csv files\
+    \ that will be recursively\nsearched for names corresponding to a matching input\n\
+    FASTA/FASTQ files."
   args: !SimpleFlagArg
     name: CSV_FILE
-  optional: true
 - !Flag
-  description: "The metadata tables are not in the same order as the\nreads - they\
-    \ will all beloaded and then looked up as\nneeded (slower). (default: False)"
+  optional: true
   synonyms:
   - -u
   - --unordered_data
+  description: "The metadata tables are not in the same order as the\nreads - they\
+    \ will all beloaded and then looked up as\nneeded (slower). (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Output filename (or filename prefix)
+  optional: true
   synonyms:
   - -o
   - --output
+  description: Output filename (or filename prefix)
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: "Output a report along with FASTA/FASTQ. (default:\nFalse)"
+  optional: true
   synonyms:
   - -r
   - --out-report
+  description: "Output a report along with FASTA/FASTQ. (default:\nFalse)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output binned/filtered files even if empty.\n(default: False)"
+  optional: true
   synonyms:
   - -f
   - --force-output
+  description: "Output binned/filtered files even if empty.\n(default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Level of output information: 0 = none, 1 = some, 2 =\nlots (default:\
-    \ 1)"
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Level of output information: 0 = none, 1 = some, 2 =\nlots (default:\
+    \ 1)"
   args: !SimpleFlagArg
     name: VERBOSITY
-  optional: true
 - !Flag
-  description: "Specify header field(s) to bin the reads by. For\nmultiple fields\
-    \ these will be nested in order\nspecified. e.g. `--bin-by barcode reference`"
+  optional: true
   synonyms:
   - --bin-by
+  description: "Specify header field(s) to bin the reads by. For\nmultiple fields\
+    \ these will be nested in order\nspecified. e.g. `--bin-by barcode reference`"
   args: !RepeatFlagArg
     name: FIELD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filter-by
   description: "Specify header field and accepted values to filter\nthe reads by.\
     \ Multiple instances of this option can\nbe specified. e.g. `--filter-by barcode\
     \ BC01 BC02--\nfilter-by genotype Type1`"
-  synonyms:
-  - --filter-by
   args: !RepeatFlagArg
     name: FILTER
-  optional: true
 - !Flag
-  description: "Filter the reads by their length, specifying the\nminimum length."
+  optional: true
   synonyms:
   - -n
   - --min-length
+  description: "Filter the reads by their length, specifying the\nminimum length."
   args: !SimpleFlagArg
     name: MIN
-  optional: true
 - !Flag
-  description: "Filter the reads by their length, specifying the\nmaximum length."
+  optional: true
   synonyms:
   - -x
   - --max-length
+  description: "Filter the reads by their length, specifying the\nmaximum length."
   args: !SimpleFlagArg
     name: MAX
-  optional: true
 - !Flag
-  description: "Delimiters to use when searching for key:value pairs\nin FASTA/FASTQ\
-    \ header. (default: =)"
+  optional: true
   synonyms:
   - -d
   - --header-delimiters
+  description: "Delimiters to use when searching for key:value pairs\nin FASTA/FASTQ\
+    \ header. (default: =)"
   args: !SimpleFlagArg
     name: DELIM
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: Show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: binlorry -i INPUT_PATH [-t CSV_FILE] [-u] -o OUTPUT [-r] [-f]\n\
   \                [-v VERBOSITY] [--bin-by FIELD [FIELD ...]]\n                [--filter-by\
   \ FILTER [FILTER ...]] [-n MIN] [-x MAX] [-d DELIM]\n                [-h] [--version]\n\
@@ -157,3 +157,4 @@ help_text: "usage: binlorry -i INPUT_PATH [-t CSV_FILE] [-u] -o OUTPUT [-r] [-f]
   \ version number and exit\n"
 generated_using:
 - --help
+docker_image:

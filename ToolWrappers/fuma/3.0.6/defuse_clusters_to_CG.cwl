@@ -3,17 +3,17 @@ id: defuse_clusters_to_CG.cwl
 inputs:
 - id: in_gene_annotation
   doc: GTF-file used by defuse
-  type: File
+  type: File?
   inputBinding:
     prefix: --gene-annotation
 - id: in_output
   doc: "output filename; '-' for stdout\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -V
 - id: in_input
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "output filename; '-' for stdout\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - defuse-clusters-to-CG

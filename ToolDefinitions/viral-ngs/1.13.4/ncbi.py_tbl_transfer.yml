@@ -4,79 +4,79 @@ command:
 - tbl_transfer
 positional:
 - !Positional
-  description: Input sequence of reference genome
+  optional: false
   position: 0
   name: ref_fasta
-  optional: false
+  description: Input sequence of reference genome
 - !Positional
-  description: Input reference annotations (NCBI TBL format)
+  optional: false
   position: 1
   name: ref_tbl
-  optional: false
+  description: Input reference annotations (NCBI TBL format)
 - !Positional
-  description: Input sequence of new genome
+  optional: false
   position: 2
   name: alt_fasta
-  optional: false
+  description: Input sequence of new genome
 - !Positional
-  description: Output file with transferred annotations
+  optional: false
   position: 3
   name: out_tbl
-  optional: false
+  description: Output file with transferred annotations
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --oob_clip
   description: "Out of bounds feature behavior. False: drop all\nfeatures that are\
     \ completely or partly out of bounds\nTrue: drop all features completely out of\
     \ bounds but\ntruncate any features that are partly out of bounds"
-  synonyms:
-  - --oob_clip
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Base directory for temp files. [default: /tmp]'
+  optional: true
   synonyms:
   - --tmp_dir
+  description: 'Base directory for temp files. [default: /tmp]'
   args: !SimpleFlagArg
     name: TMP_DIR
-  optional: true
 - !Flag
-  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
-    \ to delete all temp files at the end, even\nif there's a failure."
+  optional: true
   synonyms:
   - --tmp_dirKeep
+  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
+    \ to delete all temp files at the end, even\nif there's a failure."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Verboseness of output. [default: DEBUG]'
+  optional: true
   synonyms:
   - --loglevel
+  description: 'Verboseness of output. [default: DEBUG]'
   args: !ChoiceFlagArg
     choices: !!set
-      CRITICAL:
-      ERROR:
       INFO:
-      WARNING:
       DEBUG:
+      CRITICAL:
+      WARNING:
+      ERROR:
       EXCEPTION:
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
   - -V
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: ncbi.py subcommand tbl_transfer [-h] [--oob_clip] [--tmp_dir TMP_DIR]\n\
   \                                       [--tmp_dirKeep]\n                      \
   \                 [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n \
@@ -100,3 +100,4 @@ help_text: "usage: ncbi.py subcommand tbl_transfer [-h] [--oob_clip] [--tmp_dir 
   \ version number and exit\n"
 generated_using:
 - --help
+docker_image:

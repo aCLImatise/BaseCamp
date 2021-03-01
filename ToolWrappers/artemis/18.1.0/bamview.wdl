@@ -4,6 +4,9 @@ task Bamview {
   command <<<
     bamview
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

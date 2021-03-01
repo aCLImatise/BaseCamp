@@ -3,53 +3,53 @@ id: rtg_samplesim.cwl
 inputs:
 - id: in_input
   doc: input VCF containing population variants
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: output VCF file name
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_output_sdf
   doc: if set, output an SDF containing the sample genome
-  type: string
+  type: string?
   inputBinding:
     prefix: --output-sdf
 - id: in_reference
   doc: SDF containing the reference genome
-  type: string
+  type: string?
   inputBinding:
     prefix: --reference
 - id: in_sample
   doc: name for sample
-  type: string
+  type: string?
   inputBinding:
     prefix: --sample
 - id: in_allow_missing_af
   doc: "set, treat variants without allele frequency\nannotation as uniformly likely"
-  type: string
+  type: string?
   inputBinding:
     prefix: --allow-missing-af
 - id: in_no_gzip
   doc: do not gzip the output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-gzip
 - id: in_ploidy
   doc: "ploidy to use. Allowed values are [auto, diploid,\nhaploid] (Default is auto)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --ploidy
 - id: in_seed
   doc: seed for the random number generator
-  type: long
+  type: long?
   inputBinding:
     prefix: --seed
 - id: in_sex
   doc: "sex of individual. Allowed values are [male, female,\neither] (Default is\
     \ either)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --sex
 outputs:
@@ -58,9 +58,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: output VCF file name
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rtg

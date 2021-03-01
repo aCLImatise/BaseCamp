@@ -8,6 +8,9 @@ task SynthReadGenInputFile {
     synthReadGen inputFile \
       ~{output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: ""
   }

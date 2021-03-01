@@ -16,6 +16,9 @@ task LongGF {
       ~{bin_size} \
       ~{min_map_len}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_bam: ""
     input_gtf: ""

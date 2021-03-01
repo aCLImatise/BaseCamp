@@ -10,6 +10,9 @@ task CnvkitpyImportpicard {
       ~{targets} \
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Output directory name.\\n"
     targets: "Sample coverage .csv files (target and antitarget)."

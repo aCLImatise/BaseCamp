@@ -10,6 +10,9 @@ task Overlapalign {
       ~{fast_a_one} \
       ~{fast_a_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_one: ""
     fast_a_two: ""

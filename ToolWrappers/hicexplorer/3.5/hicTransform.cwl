@@ -3,12 +3,12 @@ id: hicTransform.cwl
 inputs:
 - id: in_matrix
   doc: "input file. The computation is done per chromosome.\n(default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --matrix
 - id: in_out_filename
   doc: 'File name to save the exported matrix. (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --outFileName
 - id: in_method
@@ -26,7 +26,7 @@ inputs:
     \ *\nC_j,j) and C is the covariance matrixcovariance\ncomputes the Covariance\
     \ of the input matrix: Cov_i,j =\nE[M_i, M_j] - my_i * my_j where M is the input\
     \ matrix\nand my the mean. (default: obs_exp)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --method
 - id: in_ligation_factor
@@ -34,7 +34,7 @@ inputs:
     \ matrix to take care of the\nproximity ligation as has been explained in Homer\n\
     software. This flag is only affective with\nobs_exp_non_zero method and will be\
     \ ignored if any\nother obs/exp method is chosen. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ligation_factor
 - id: in_chromosomes
@@ -45,7 +45,7 @@ inputs:
 - id: in_per_chromosome
   doc: "Each chromosome is processed individually, inter-\nchromosomal interactions\
     \ are ignored. Option not valid\nfor obs_exp_lieberman. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --perChromosome
 outputs:
@@ -54,9 +54,10 @@ outputs:
   type: stdout
 - id: out_out_filename
   doc: 'File name to save the exported matrix. (default: None)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicTransform

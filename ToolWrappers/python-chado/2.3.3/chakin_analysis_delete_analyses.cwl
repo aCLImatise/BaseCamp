@@ -3,47 +3,47 @@ id: chakin_analysis_delete_analyses.cwl
 inputs:
 - id: in_analysis_id
   doc: analysis_id filter
-  type: long
+  type: long?
   inputBinding:
     prefix: --analysis_id
 - id: in_name
   doc: analysis name filter
-  type: string
+  type: string?
   inputBinding:
     prefix: --name
 - id: in_program
   doc: analysis program filter
-  type: string
+  type: string?
   inputBinding:
     prefix: --program
 - id: in_program_version
   doc: analysis programversion filter
-  type: string
+  type: string?
   inputBinding:
     prefix: --programversion
 - id: in_algorithm
   doc: analysis algorithm filter
-  type: string
+  type: string?
   inputBinding:
     prefix: --algorithm
 - id: in_source_name
   doc: analysis sourcename filter
-  type: string
+  type: string?
   inputBinding:
     prefix: --sourcename
 - id: in_source_version
   doc: analysis sourceversion filter
-  type: string
+  type: string?
   inputBinding:
     prefix: --sourceversion
 - id: in_source_uri
   doc: analysis sourceuri filter
-  type: string
+  type: string?
   inputBinding:
     prefix: --sourceuri
 - id: in_description
   doc: analysis description
-  type: string
+  type: string?
   inputBinding:
     prefix: --description
 - id: in_none
@@ -55,6 +55,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - chakin

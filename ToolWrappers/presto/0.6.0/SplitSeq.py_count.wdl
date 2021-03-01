@@ -18,6 +18,9 @@ task SplitSeqpyCount {
       ~{if (fast_a) then "--fasta" else ""} \
       ~{if defined(maximum_number_defaultnone) then ("-n " +  '"' + maximum_number_defaultnone + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_fastafastq_files: "A list of FASTA/FASTQ files containing sequences to\\nprocess. (default: None)"
     outdir: "Specify to changes the output directory to the\\nlocation specified. The input file directory is used\\nif this is not specified. (default: None)"

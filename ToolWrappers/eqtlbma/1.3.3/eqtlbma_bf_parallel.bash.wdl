@@ -8,7 +8,7 @@ task EqtlbmaBfParallelbash {
     Boolean? snp_d
     Boolean? in_ssd
     Boolean? seed_f
-    Boolean? task_identifier_sge
+    Boolean? task_identifier_only
     Boolean? geno
     Boolean? s_coord
     Boolean? exp
@@ -43,7 +43,7 @@ task EqtlbmaBfParallelbash {
       ~{if (snp_d) then "--snpD" else ""} \
       ~{if (in_ssd) then "--inssD" else ""} \
       ~{if (seed_f) then "--seedF" else ""} \
-      ~{if (task_identifier_sge) then "--task" else ""} \
+      ~{if (task_identifier_only) then "--task" else ""} \
       ~{if (geno) then "--geno" else ""} \
       ~{if (s_coord) then "--scoord" else ""} \
       ~{if (exp) then "--exp" else ""} \
@@ -70,6 +70,9 @@ task EqtlbmaBfParallelbash {
       ~{if (thread) then "--thread" else ""} \
       ~{if (sb_grp) then "--sbgrp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "level (0/default=1/2/3)"
     p_two_b: "path to the binary 'eqtlbma_bf'"
@@ -77,7 +80,7 @@ task EqtlbmaBfParallelbash {
     snp_d: "directory with lists of SNPs to analyze (optional)\\nfile names have to be like '<anything>_<batchId>.<anything>'\\neach SNP file should correspond to a feature file, in the same order"
     in_ssd: "directory with lists of files with absolute paths to files with summary statistics\\nfile names have to be like '<anything>_<batchId>.<abything>'\\nif --inssD is given, neither --geneD nor --snpD are used (nor --geno, --scoord, --exp, etc)"
     seed_f: "file with seeds (as many as files in --geneD)\\noptional, default=list_seeds.txt.gz (should be gzipped)"
-    task_identifier_sge: "task identifier (not for SGE, for SLURM only)"
+    task_identifier_only: "task identifier (not for SGE, for SLURM only)"
     geno: "file with absolute paths to genotype files\\ndefault=list_genotypes.txt"
     s_coord: "file with the SNP coordinates"
     exp: "file with absolute paths to expression level files\\ndefault=list_expressions.txt"

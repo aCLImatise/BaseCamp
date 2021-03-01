@@ -20,6 +20,9 @@ task BcbioFastqUmiPreppySingle {
       ~{if defined(tag_one) then ("--tag1 " +  '"' + tag_one + '"') else ""} \
       ~{if defined(tag_two) then ("--tag2 " +  '"' + tag_two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cores: "Number of cores to use for parallel bgzip"
     tag_one: "Duplex read 1 tag -- bases to trim from 5' end"

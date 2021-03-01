@@ -28,6 +28,9 @@ task Vcf2ldWindow {
       ~{if (window) then "--window" else ""} \
       ~{if (anchor) then "--anchor" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_vcf: ": input VCF File"
     out: ": output prefix"

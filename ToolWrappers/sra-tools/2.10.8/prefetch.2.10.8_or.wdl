@@ -42,6 +42,9 @@ task Prefetch2108Or {
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type: "Specify file type to download. Default: sra"
     min_size: "Minimum file size to download in KB\\n(inclusive)."

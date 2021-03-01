@@ -46,6 +46,9 @@ task TadbitMerge {
       ~{if defined(sam_tools) then ("--samtools " +  '"' + sam_tools + '"') else ""} \
       ~{if defined(tmp_db) then ("--tmpdb " +  '"' + tmp_db + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     workdir: "path to a new output folder"
     workdir_one: "path to working directory of the first HiC data sample to merge"

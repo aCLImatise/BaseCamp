@@ -8,6 +8,9 @@ task ChakinExportExportGff3 {
     chakin export export_gff3 \
       ~{options}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: "Options:"
   }

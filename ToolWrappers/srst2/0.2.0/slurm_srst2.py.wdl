@@ -28,6 +28,9 @@ task SlurmSrst2py {
       ~{if defined(reverse) then ("--reverse " +  '"' + reverse + '"') else ""} \
       ~{if defined(other_args) then ("--other_args " +  '"' + other_args + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_output: "[--input_se INPUT_SE [INPUT_SE ...]]"
     wall_time: "wall time (default 0-1:0 = 1 h)"

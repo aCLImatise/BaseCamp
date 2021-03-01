@@ -30,6 +30,9 @@ task Mtsvreadprep {
       ~{if defined(quality_threshold) then ("--quality_threshold " +  '"' + quality_threshold + '"') else ""} \
       ~{if defined(segment) then ("--segment " +  '"' + segment + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     lcd: "Enable LCD trim mode (takes first N bases of each read, where N = shortest read length in FASTQ\\nfiles)."
     lcd_qual: "Enable LCDQ trim mode (takes highest quality N bases of each read, where N = shortest read length\\nin FASTQ files)."

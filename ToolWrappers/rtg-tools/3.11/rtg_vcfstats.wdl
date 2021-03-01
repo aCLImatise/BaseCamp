@@ -16,6 +16,9 @@ task RtgVcfstats {
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
       ~{if defined(allele_lengths) then ("--allele-lengths " +  '"' + allele_lengths + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     known: "only calculate statistics for known variants (Default is\\nto ignore known/novel status)"
     novel: "only calculate statistics for novel variants (Default is\\nto ignore known/novel status)"

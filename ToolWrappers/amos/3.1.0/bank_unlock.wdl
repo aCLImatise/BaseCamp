@@ -4,6 +4,9 @@ task Bankunlock {
   command <<<
     bank_unlock
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

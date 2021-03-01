@@ -8,6 +8,9 @@ task PyprophetStatistics {
     pyprophet statistics \
       ~{if defined(in) then ("--in " +  '"' + in + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "PyProphet input file.  [required]"
   }

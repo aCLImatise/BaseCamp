@@ -4,6 +4,9 @@ task Epydocgui {
   command <<<
     epydocgui
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

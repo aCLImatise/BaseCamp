@@ -4,37 +4,56 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -p
-  args: !SimpleFlagArg
-    name: PRUNED_OUTPUT_FILE
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - -i
+  - --input_assigned_taxonomy
+  description: "The taxonomy file output by the assign_taxonomy\nscript."
   args: !SimpleFlagArg
     name: INPUT_ASSIGNED_TAXONOMY
+- !Flag
   optional: true
+  synonyms:
+  - -p
+  - --pruned_output_file
+  description: "The output file for the pruned taxonomy list. Defaults\nto condensed_assigned_taxonomy.txt"
+  args: !SimpleFlagArg
+    name: PRUNED_OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --non_unique_output_file
+  description: "The file will contain a list of pruned OTU IDs\nassociated with the\
+    \ OTU IDs they replaced. Defaults to\nnonunique_otu_matrix.txt"
+  args: !SimpleFlagArg
+    name: NON_UNIQUE_OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --phylogenetic_level
+  description: "Set the phylogenetic level at which to define OTUs for\ncondensing\
+    \ and downstream processing. Defaults to\nspecies level."
+  args: !ChoiceFlagArg
+    choices: !!set
+      k:
+      c:
+      o:
+      f:
+      s:
+      p:
+      g:
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-i INPUT_ASSIGNED_TAXONOMY, --input_assigned_taxonomy\
-    \ INPUT_ASSIGNED_TAXONOMY\nThe taxonomy file output by the assign_taxonomy\nscript.\n\
-    -p PRUNED_OUTPUT_FILE, --pruned_output_file PRUNED_OUTPUT_FILE\nThe output file\
-    \ for the pruned taxonomy list. Defaults\nto condensed_assigned_taxonomy.txt\n\
-    -n NON_UNIQUE_OUTPUT_FILE, --non_unique_output_file NON_UNIQUE_OUTPUT_FILE\nThe\
-    \ file will contain a list of pruned OTU IDs\nassociated with the OTU IDs they\
-    \ replaced. Defaults to\nnonunique_otu_matrix.txt\n-l {k,p,c,o,f,g,s}, --phylogenetic_level\
-    \ {k,p,c,o,f,g,s}\nSet the phylogenetic level at which to define OTUs for\ncondensing\
-    \ and downstream processing. Defaults to\nspecies level.\n-v, --verbose\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: otu_condense.py [-h] -i INPUT_ASSIGNED_TAXONOMY [-p PRUNED_OUTPUT_FILE]\n\
@@ -56,3 +75,4 @@ help_text: "usage: otu_condense.py [-h] -i INPUT_ASSIGNED_TAXONOMY [-p PRUNED_OU
   \     species level.\n  -v, --verbose\n"
 generated_using:
 - --help
+docker_image:

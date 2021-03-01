@@ -3,20 +3,20 @@ id: TagReadWithGeneExonFunction.cwl
 inputs:
 - id: in_default_g
   doc: (default 4g)
-  type: long
+  type: long?
   inputBinding:
     prefix: -m
 - id: in_final_command_line
   doc: final command line before executing
-  type: string
+  type: string?
   inputBinding:
     prefix: -v
-- id: in_displays_options_specific
+- id: in_std_help
   doc: "Displays options specific to this tool AND options common to all Picard command\
     \ line\ntools."
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -H
+    prefix: --stdhelp
 - id: in_value_dot
   doc: 'FUNCTION_TAG=String           The functional annotation for the read  Default
     value: XF. This option can be set to'
@@ -33,6 +33,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - TagReadWithGeneExonFunction

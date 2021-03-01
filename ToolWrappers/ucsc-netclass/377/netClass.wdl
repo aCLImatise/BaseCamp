@@ -28,6 +28,9 @@ task NetClass {
       ~{if defined(lift_q) then ("-liftQ " +  '"' + lift_q + '"') else ""} \
       ~{if defined(lift_t) then ("-liftT " +  '"' + lift_t + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t_new_r: "- Dir of chrN.out.spec files, with RepeatMasker .out format\\nlines describing lineage specific repeats in target"
     q_new_r: "- Dir of chrN.out.spec files for query"

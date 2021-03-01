@@ -3,12 +3,12 @@ id: hitac.py_prediction.cwl
 inputs:
 - id: in_threads
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --threads
 - id: in_km_er
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --kmer
 - id: in_hit_a_cdot_py
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hitac.py

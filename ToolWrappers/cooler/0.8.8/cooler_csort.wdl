@@ -15,11 +15,11 @@ task CoolerCsort {
     String? sort_options
     Int? strand_one
     Int? strand_two
-    String _text_output
+    String o__text
   }
   command <<<
     cooler csort \
-      ~{_text_output} \
+      ~{o__text} \
       ~{if defined(chrom_one) then ("--chrom1 " +  '"' + chrom_one + '"') else ""} \
       ~{if defined(chrom_two) then ("--chrom2 " +  '"' + chrom_two + '"') else ""} \
       ~{if defined(pos_one) then ("--pos1 " +  '"' + pos_one + '"') else ""} \
@@ -34,6 +34,9 @@ task CoolerCsort {
       ~{if defined(strand_one) then ("--strand1 " +  '"' + strand_one + '"') else ""} \
       ~{if defined(strand_two) then ("--strand2 " +  '"' + strand_two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chrom_one: "chrom1 field number in the input file (starting\\nfrom 1)  [required]"
     chrom_two: "chrom2 field number  [required]"
@@ -48,7 +51,7 @@ task CoolerCsort {
     sort_options: "Quoted list of additional options to `sort`"
     strand_one: "strand1 field number (deprecated)"
     strand_two: "strand2 field number (deprecated)"
-    _text_output: "-o, --out TEXT              Output gzip file"
+    o__text: "-o, --out TEXT              Output gzip file"
   }
   output {
     File out_stdout = stdout()

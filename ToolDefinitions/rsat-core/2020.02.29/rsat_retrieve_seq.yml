@@ -4,157 +4,160 @@ command:
 - retrieve-seq
 positional:
 - !Positional
-  description: CATEGORY
+  optional: false
   position: 0
   name: genes.
-  optional: false
+  description: CATEGORY
 - !Positional
-  description: sequences
+  optional: false
   position: 1
   name: genomics
-  optional: false
+  description: sequences
 - !Positional
-  description: field   description
+  optional: false
   position: 0
   name: column
-  optional: false
+  description: field   description
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -org
   description: "When an organism is specified, the program automatically\nloads the\
     \ appropriate genome sequence and feature table.\nIf this option is not used,\
     \ the option -seq must be used\ninstead.\n(type supported-organism to obtain the\
     \ list of supported\norganisms)"
-  synonyms:
-  - -org
   args: !SimpleFlagArg
     name: organism
-  optional: true
 - !Flag
-  description: "input sequence file\n(alternative to organism)\nSpecify the input\
-    \ sequence file. See INPUT FORMAT\nbelow."
+  optional: true
   synonyms:
   - -seq
+  description: "input sequence file\n(alternative to organism)\nSpecify the input\
+    \ sequence file. See INPUT FORMAT\nbelow."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: input sequence format
+  optional: true
   synonyms:
   - -informat
+  description: input sequence format
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: prefix for sequence identifier
+  optional: true
   synonyms:
   - -prefix
+  description: prefix for sequence identifier
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Feature type.\nSupported: gene,mRNA,tRNA,rRNA,scRNA,misc_RNA,CDS,start_codon,stop_codon,exon"
+  optional: true
   synonyms:
   - -feattype
+  description: "Feature type.\nSupported: gene,mRNA,tRNA,rRNA,scRNA,misc_RNA,CDS,start_codon,stop_codon,exon"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -type
   description: "sequence type\nCurrently supported sequence types\nupstream (default)\n\
     downstream\norf (warning: introns are not spliced out)\nrandom (random fragments)\n\
     To implement in the future\nintrons\ncoding\nThe sub-option\n-type random\nrequires\
     \ to use the -n for specifying the number of sequences."
-  synonyms:
-  - -type
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: of sequecnes (only with -type random)
+  optional: true
   synonyms:
   - -n
+  description: of sequecnes (only with -type random)
   args: !SimpleFlagArg
     name: number
-  optional: true
 - !Flag
-  description: "The query should be an orf identifier (eg 'metR').\nThe query is case-insensitive.\n\
-    Multiple queries can be entered by reiteratively using the -q\noption."
+  optional: true
   synonyms:
   - -q
+  description: "The query should be an orf identifier (eg 'metR').\nThe query is case-insensitive.\n\
+    Multiple queries can be entered by reiteratively using the -q\noption."
   args: !SimpleFlagArg
     name: query
-  optional: true
 - !Flag
-  description: "query file. The first word of each line is taken as a query.\nThis\
-    \ option is incompatible with -q."
+  optional: true
   synonyms:
   - -i
+  description: "query file. The first word of each line is taken as a query.\nThis\
+    \ option is incompatible with -q."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use this option if the queries are provided as a list\nof IDs. This\
-    \ avoids to load the table of synonyms, in\norder tos ave time."
+  optional: true
   synonyms:
   - -ids_only
+  description: "Use this option if the queries are provided as a list\nof IDs. This\
+    \ avoids to load the table of synonyms, in\norder tos ave time."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: return all genomic upstream regions
+  optional: true
   synonyms:
   - -all
+  description: return all genomic upstream regions
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: name of the output file
+  optional: true
   synonyms:
   - -o
+  description: name of the output file
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "output features file\nin addition to the sequences, export a feature\
-    \ file with the\nchromosomal location of the retrieved sequences."
+  optional: true
   synonyms:
   - -oft
+  description: "output features file\nin addition to the sequences, export a feature\
+    \ file with the\nchromosomal location of the retrieved sequences."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -from
   description: "#1 -to #2\nwhere #1 and #2 are numbers. #2 should be higher than #1.\n\
     limits of the region to extract, relative to orf start\n(=position 0). Use negative\
     \ values for upstream sequence.\nexample: -from -800 -to -1\nwill extract the\
     \ 800 bp upstream the orf start.\n(this is the default)"
-  synonyms:
-  - -from
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -format
   description: "to select different output formats, with the following\noptions:\n\
     IG      IntelliGenetics (default format)\nWC      wconsensus format\nraw     only\
     \ the sequence is returned, without spaces, newlines\nnor comments.\nFastA"
-  synonyms:
-  - -format
   args: !SimpleFlagArg
     name: allows
-  optional: true
 - !Flag
-  description: "##  Line width. A newline character will be inserted in the\nsequence\
-    \ every ## bases. Default is 60.\n-lw 0 will prevent newline insertion."
+  optional: true
   synonyms:
   - -lw
+  description: "##  Line width. A newline character will be inserted in the\nsequence\
+    \ every ## bases. Default is 60.\n-lw 0 will prevent newline insertion."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -label
   description: "Field(s) to be used in the sequence label.\nDefault: name.\nSupported:\
     \ id,name,query,organism_name,sequence_type,current_from,current_to,ctg,orf_strand,reg_left,reg_right\n\
     Multiple fields can be specified, separated by commas\nin the command line.\n\
     Example:\n-label org,name,id\nIn this case, the sequence identifier will contain\
     \ all\nof these fields, separated by the separator specified\nwith the option\
     \ -labelsep."
-  synonyms:
-  - -label
   args: !SimpleFlagArg
     name: label_fields
-  optional: true
 - !Flag
-  description: 'Separator between label fields. Default: |'
+  optional: true
   synonyms:
   - -labelsep
+  description: 'Separator between label fields. Default: |'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -noorf
   description: "prevent overlap with neighbout genes.\nWhen this option is active,\
     \ the sequence size is\nadapted to avoid including coding sequences of the\nneighbour\
     \ genes.\nThe reason for preventing overlap with upstream genes\nis that (at least\
@@ -171,65 +174,62 @@ named:
     \ bacterial sequences, it is essential to prevent\noverlap with upstream genes,\
     \ because intergenic\ndistances are often very short, especially between\npairs\
     \ of genes comprised in the same operon."
-  synonyms:
-  - -noorf
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use the repeat masked version of the genome.  Attention :\nrepeated\
-    \ regions are annotated for some genomes only."
+  optional: true
   synonyms:
   - -rm
+  description: "Use the repeat masked version of the genome.  Attention :\nrepeated\
+    \ regions are annotated for some genomes only."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "no comments. Only the identifier and the sequence are\nreturned. By\
-    \ default, the comment indicates the ORF and\nupstream sequence coordinates."
+  optional: true
   synonyms:
   - -nocom
+  description: "no comments. Only the identifier and the sequence are\nreturned. By\
+    \ default, the comment indicates the ORF and\nupstream sequence coordinates."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -imp_pos
   description: "Admit imprecise positions.\nIn the annotation of some genomes, the\
     \ limits of some genes\nare imprecisely specified (e.g. <555245, >898098). By\
     \ default,\nthese genes are not loaded. The option -imp_pos allows to\nretrieve\
     \ sequence for these genes as well, using the imprecise\ncoordinate as reference\
     \ position."
-  synonyms:
-  - -imp_pos
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Prevents warning when a gene cannot be identified.
+  optional: true
   synonyms:
   - -nowarn
+  description: Prevents warning when a gene cannot be identified.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -randsels
   description: "#\nSelect a random set of # genes in the genome annotations.\nThis\
     \ option ois obsolete, it has been replaced by a\nseparate command: random-genes.\
     \ The option is\nmaintained for backward compatibility."
-  synonyms:
-  - -randsels
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -lf
   description: "length file\n(only with the option '-type random')\nAllows to generate\
     \ random sequences with the same\nlengths as a set of reference sequences. The\
     \ sequence\nlength file can be obtained with the command\nsequence-lengths\nThe\
     \ length file contains two columns :\n- sequence ID (ignored)\n- sequence length"
-  synonyms:
-  - -lf
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -features
   description: "alternate feature table. This option allows to speify\nan alternate\
     \ file where the ORF locations are found.\nSee below for a description of the\
     \ feature file format."
-  synonyms:
-  - -features
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -331,3 +331,4 @@ help_text: "USAGE\n\tretrieve-seq -type type -org organism\n\t\t\t[-from] [-to] 
   \ 60 following being\n\tthe beginning of the coding sequence.\n\n"
 generated_using:
 - -h
+docker_image:

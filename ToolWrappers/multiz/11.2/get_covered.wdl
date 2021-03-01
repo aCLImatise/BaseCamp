@@ -4,6 +4,9 @@ task GetCovered {
   command <<<
     get_covered
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

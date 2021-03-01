@@ -3,12 +3,12 @@ id: genometreetk_combine.cwl
 inputs:
 - id: in_support_type
   doc: 'type of support values to compute (default: average)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --support_type
 - id: in_silent
   doc: suppress output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --silent
 - id: in_combine_support_values
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - genometreetk

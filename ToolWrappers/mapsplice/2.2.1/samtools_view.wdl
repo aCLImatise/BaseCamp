@@ -3,11 +3,11 @@ version 1.0
 task SamtoolsView {
   input {
     Boolean? output_bam
-    Boolean? print_header_alignments
+    Boolean? print_header_only
     Boolean? input_is_sam
     Boolean? uncompressed_bam_output
-    Boolean? output_flag_hex
-    Boolean? output_flag_string
+    Boolean? output_flag_hex_specific
+    Boolean? output_flag_string_specific
     File? list_reference_names
     File? reference_sequence_file
     File? output_file_name
@@ -23,11 +23,11 @@ task SamtoolsView {
     samtools view \
       ~{in_dot_bam} \
       ~{if (output_bam) then "-b" else ""} \
-      ~{if (print_header_alignments) then "-H" else ""} \
+      ~{if (print_header_only) then "-H" else ""} \
       ~{if (input_is_sam) then "-S" else ""} \
       ~{if (uncompressed_bam_output) then "-u" else ""} \
-      ~{if (output_flag_hex) then "-x" else ""} \
-      ~{if (output_flag_string) then "-X" else ""} \
+      ~{if (output_flag_hex_specific) then "-x" else ""} \
+      ~{if (output_flag_string_specific) then "-X" else ""} \
       ~{if defined(list_reference_names) then ("-t " +  '"' + list_reference_names + '"') else ""} \
       ~{if defined(reference_sequence_file) then ("-T " +  '"' + reference_sequence_file + '"') else ""} \
       ~{if defined(output_file_name) then ("-o " +  '"' + output_file_name + '"') else ""} \
@@ -38,13 +38,16 @@ task SamtoolsView {
       ~{if defined(only_output_reads_library_str) then ("-l " +  '"' + only_output_reads_library_str + '"') else ""} \
       ~{if defined(only_output_reads_read_str) then ("-r " +  '"' + only_output_reads_read_str + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_bam: "output BAM"
-    print_header_alignments: "print header only (no alignments)"
+    print_header_only: "print header only (no alignments)"
     input_is_sam: "input is SAM"
     uncompressed_bam_output: "uncompressed BAM output (force -b)"
-    output_flag_hex: "output FLAG in HEX (samtools-C specific)"
-    output_flag_string: "output FLAG in string (samtools-C specific)"
+    output_flag_hex_specific: "output FLAG in HEX (samtools-C specific)"
+    output_flag_string_specific: "output FLAG in string (samtools-C specific)"
     list_reference_names: "list of reference names and lengths (force -S) [null]"
     reference_sequence_file: "reference sequence file (force -S) [null]"
     output_file_name: "output file name [stdout]"

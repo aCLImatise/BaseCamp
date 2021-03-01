@@ -4,77 +4,81 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Input trait table (comma-separated-values). Trait\npresence is indicated\
-    \ by 1, trait absence by 0.\nAssumes strain names in the first column and trait\n\
-    names in the first row"
+  optional: true
   synonyms:
   - -t
   - --traits
+  description: "Input trait table (comma-separated-values). Trait\npresence is indicated\
+    \ by 1, trait absence by 0.\nAssumes strain names in the first column and trait\n\
+    names in the first row"
   args: !SimpleFlagArg
     name: TRAITS
-  optional: true
 - !Flag
-  description: "Input gene presence/absence table (comma-separated-\nvalues) from\
-    \ ROARY. Strain names must be equal to\nthose in the trait table"
+  optional: true
   synonyms:
   - -g
   - --genes
+  description: "Input gene presence/absence table (comma-separated-\nvalues) from\
+    \ ROARY. Strain names must be equal to\nthose in the trait table"
   args: !SimpleFlagArg
     name: GENES
-  optional: true
 - !Flag
-  description: "Supply a custom tree (Newick format) for phylogenetic\nanalyses instead\
-    \ instead of calculating it internally."
+  optional: true
   synonyms:
   - -n
   - --newicktree
+  description: "Supply a custom tree (Newick format) for phylogenetic\nanalyses instead\
+    \ instead of calculating it internally."
   args: !SimpleFlagArg
     name: NEWICKTREE
-  optional: true
 - !Flag
-  description: "On which column in the gene presence/absence file do\nindividual strain\
-    \ info start. Default=15. (1-based\nindexing)"
+  optional: true
   synonyms:
   - -s
   - --start_col
+  description: "On which column in the gene presence/absence file do\nindividual strain\
+    \ info start. Default=15. (1-based\nindexing)"
   args: !SimpleFlagArg
     name: START_COL
-  optional: true
 - !Flag
-  description: "The delimiter between cells in the gene\npresence/absence and trait\
-    \ files, as well as the\noutput file."
+  optional: true
   synonyms:
   - --delimiter
+  description: "The delimiter between cells in the gene\npresence/absence and trait\
+    \ files, as well as the\noutput file."
   args: !SimpleFlagArg
     name: DELIMITER
-  optional: true
 - !Flag
-  description: "Use if you only want to analyze a subset of your\nstrains. Scoary\
-    \ will read the provided comma-separated\ntable of strains and restrict analyzes\
-    \ to these."
+  optional: true
   synonyms:
   - -r
   - --restrict_to
+  description: "Use if you only want to analyze a subset of your\nstrains. Scoary\
+    \ will read the provided comma-separated\ntable of strains and restrict analyzes\
+    \ to these."
   args: !SimpleFlagArg
     name: RESTRICT_TO
-  optional: true
 - !Flag
-  description: Directory to place output files. Default = .
+  optional: true
   synonyms:
   - -o
   - --outdir
+  description: Directory to place output files. Default = .
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
-  description: "This flag will cause Scoary to write the calculated\nUPGMA tree to\
-    \ a newick file"
+  optional: true
   synonyms:
   - -u
   - --upgma_tree
+  description: "This flag will cause Scoary to write the calculated\nUPGMA tree to\
+    \ a newick file"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --p_value_cutoff
   description: "P-value cut-off / alpha level. For Fishers,\nBonferronis, and Benjamini-Hochbergs\
     \ tests, SCOARY\nwill not report genes with higher p-values than this.\nFor empirical\
     \ p-values, this is treated as an alpha\nlevel instead. I.e. 0.02 will filter\
@@ -82,13 +86,12 @@ named:
     -p 1.0\" to report all genes. Accepts standard\nform (e.g. 1E-8). Provide a single\
     \ value (applied to\nall) or exactly as many values as correction criteria\nand\
     \ in corresponding order. (See example under\ncorrection). Default = 0.05"
-  synonyms:
-  - -p
-  - --p_value_cutoff
   args: !RepeatFlagArg
     name: P_VALUE_CUTOFF
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
   description: "[{I,B,BH,PW,EPW,P} [{I,B,BH,PW,EPW,P} ...]], --correction [{I,B,BH,PW,EPW,P}\
     \ [{I,B,BH,PW,EPW,P} ...]]\nApply the indicated filtration measure. Allowed values\n\
     are I, B, BH, PW, EPW, P. I=Individual (naive)\np-value. B=Bonferroni adjusted\
@@ -103,110 +106,107 @@ named:
     \ to the empirical\n(permuted) p-values, i.e. it will filter everything\nexcept\
     \ the upper and lower 2.5 percent of the\ndistribution. Default = Individual p-value.\
     \ (I)"
-  synonyms:
-  - -c
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Maximum number of hits to report. SCOARY will only\nreport the top\
-    \ max_hits results per trait"
+  optional: true
   synonyms:
   - -m
   - --max_hits
+  description: "Maximum number of hits to report. SCOARY will only\nreport the top\
+    \ max_hits results per trait"
   args: !SimpleFlagArg
     name: MAX_HITS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --include_input_columns
   description: "Grab columns from the input Roary file. and puts them\nin the output.\
     \ Handles comma and ranges, e.g.\n--include_input_columns 4,6,8,16-23. The special\n\
     keyword ALL will include all relevant input columns in\nthe output"
-  synonyms:
-  - --include_input_columns
   args: !SimpleFlagArg
     name: GRABCOLS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --write_reduced
   description: "Use with -r if you want Scoary to create a new gene\npresence absence\
     \ file from your reduced set of\nisolates. Note: Columns 1-14 (No. sequences,\
     \ Avg group\nsize nuc etc) in this file do not reflect the reduced\ndataset. These\
     \ are taken from the full dataset."
-  synonyms:
-  - -w
-  - --write_reduced
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-time
   description: "Output file in the form TRAIT.results.csv, instead of\nTRAIT_TIMESTAMP.csv.\
     \ When used with the -w argument\nwill output a reduced gene matrix in the form\n\
     gene_presence_absence_reduced.csv rather than\ngene_presence_absence_reduced_TIMESTAMP.csv"
-  synonyms:
-  - --no-time
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --permute
   description: "Perform N number of permutations of the significant\nresults post-analysis.\
     \ Each permutation will do a\nlabel switching of the phenotype and a new p-value\
     \ is\ncalculated according to this new dataset. After all N\npermutations are\
     \ completed, the results are ordered in\nascending order, and the percentile of\
     \ the original\nresult in the permuted p-value distribution is\nreported."
-  synonyms:
-  - -e
-  - --permute
   args: !SimpleFlagArg
     name: PERMUTE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no_pairwise
   description: "Do not perform pairwise comparisons. Inthis mode,\nScoary will perform\
     \ population structure-naive\ncalculations only. (Fishers test, ORs etc). Useful\
     \ for\nsummary operations and exploring sets. (Genes unique\nin groups, intersections\
     \ etc) but not causal analyses."
-  synonyms:
-  - --no_pairwise
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Add this to collapse correlated genes (genes that have\nidentical\
-    \ distribution patterns in the sample) into\nmerged units."
+  optional: true
   synonyms:
   - --collapse
+  description: "Add this to collapse correlated genes (genes that have\nidentical\
+    \ distribution patterns in the sample) into\nmerged units."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Number of threads to use. Default = 1
+  optional: true
   synonyms:
   - --threads
+  description: Number of threads to use. Default = 1
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: "Run Scoary on the test set in exampledata, overriding\nall other parameters."
+  optional: true
   synonyms:
   - --test
+  description: "Run Scoary on the test set in exampledata, overriding\nall other parameters."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Show citation information, and exit.
+  optional: true
   synonyms:
   - --citation
+  description: Show citation information, and exit.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Display Scoary version, and exit.
+  optional: true
   synonyms:
   - --version
+  description: Display Scoary version, and exit.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: scoary [-h] [-t TRAITS] [-g GENES] [-n NEWICKTREE] [-s START_COL]\n\
   \              [--delimiter DELIMITER] [-r RESTRICT_TO] [-o OUTDIR] [-u]\n     \
   \         [-p P_VALUE_CUTOFF [P_VALUE_CUTOFF ...]]\n              [-c [{I,B,BH,PW,EPW,P}\
@@ -304,3 +304,4 @@ help_text: "usage: scoary [-h] [-t TRAITS] [-g GENES] [-n NEWICKTREE] [-s START_
   \ Brynildsrud (olbb@fhi.no)\n"
 generated_using:
 - --help
+docker_image:

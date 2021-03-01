@@ -30,6 +30,9 @@ task HalWiggleLiftover {
       ~{if (in_memory) then "--inMemory" else ""} \
       ~{if (no_dupes) then "--noDupes" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     append: ":               append/merge results into tgtWig.  Note that the entire\\ntgtWig file will be loaded into memory then overwritten, so\\nthis data can be lost in event of a crash [default = 0]"
     cache_bytes: ":   maximum size in bytes of regular hdf5 cache [default =\\n15728640]"

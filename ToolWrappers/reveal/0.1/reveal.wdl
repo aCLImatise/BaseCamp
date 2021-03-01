@@ -10,6 +10,9 @@ task Reveal {
       ~{usage} \
       ~{if defined(h) then ("-h " +  '"' + h + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     h: ""
     usage: ""

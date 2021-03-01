@@ -40,6 +40,9 @@ task KatPlotSpectraHist {
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_output_file: "The path to the output file."
     output_type: "The plot file type to create (default is based on\\ngiven output name)."

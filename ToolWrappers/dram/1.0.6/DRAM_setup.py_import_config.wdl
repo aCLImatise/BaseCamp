@@ -8,6 +8,9 @@ task DRAMsetuppyImportConfig {
     DRAM_setup_py import_config \
       ~{if defined(config_loc) then ("--config_loc " +  '"' + config_loc + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_loc: "CONFIG file to replace current CONFIG with (default:\\nNone)\\n"
   }

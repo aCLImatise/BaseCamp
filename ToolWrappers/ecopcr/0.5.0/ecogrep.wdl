@@ -22,6 +22,9 @@ task Ecogrep {
       ~{if (estrict_search_subtree) then "-r" else ""} \
       ~{if (inert_sense_select) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compare_pattern_direct: ": [FIRST] : compare the given pattern with direct strand oligonucleotide"
     compare_pattern_reverse: ": [SECOND] : compare the given pattern with reverse strand oligonucleotide"

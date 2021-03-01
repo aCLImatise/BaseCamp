@@ -2,12 +2,12 @@ version 1.0
 
 task ScanIndelpy {
   input {
-    Directory? setting_default_directory
+    Directory? setting_output_directory
     Boolean? setting_minalternatefraction_freebayes
     Boolean? setting_minalternatecount_freebayes
-    Boolean? setting_mincoverage_freebayes
-    Boolean? setting__target
-    Boolean? softclipping_percentage_triggering
+    Boolean? setting_mincoverage_default
+    Boolean? setting_target_provide
+    Boolean? softclipping_triggering_default
     Boolean? min_percent_hq
     Boolean? low_qual_cut_off
     Boolean? mapq_cut_off
@@ -23,12 +23,12 @@ task ScanIndelpy {
   }
   command <<<
     ScanIndel_py \
-      ~{if (setting_default_directory) then "-o" else ""} \
+      ~{if (setting_output_directory) then "-o" else ""} \
       ~{if (setting_minalternatefraction_freebayes) then "-F" else ""} \
       ~{if (setting_minalternatecount_freebayes) then "-C" else ""} \
-      ~{if (setting_mincoverage_freebayes) then "-d" else ""} \
-      ~{if (setting__target) then "-t" else ""} \
-      ~{if (softclipping_percentage_triggering) then "-s" else ""} \
+      ~{if (setting_mincoverage_default) then "-d" else ""} \
+      ~{if (setting_target_provide) then "-t" else ""} \
+      ~{if (softclipping_triggering_default) then "-s" else ""} \
       ~{if (min_percent_hq) then "--min_percent_hq" else ""} \
       ~{if (low_qual_cut_off) then "--lowqual_cutoff" else ""} \
       ~{if (mapq_cut_off) then "--mapq_cutoff" else ""} \
@@ -42,13 +42,16 @@ task ScanIndelpy {
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    setting_default_directory: ":setting the output directory (default current working directory)"
+    setting_output_directory: ":setting the output directory (default current working directory)"
     setting_minalternatefraction_freebayes: ":setting min-alternate-fraction for FreeBayes (default 0.2)"
     setting_minalternatecount_freebayes: ":setting min-alternate-count for FreeBayes (default 2)"
-    setting_mincoverage_freebayes: ":setting min-coverage for Freebayes (default 0)"
-    setting__target: ":setting --target for Freebayes to provide a BED file for analysis"
-    softclipping_percentage_triggering: ":softclipping percentage triggering BLAT re-alignment (default 0.2)"
+    setting_mincoverage_default: ":setting min-coverage for Freebayes (default 0)"
+    setting_target_provide: ":setting --target for Freebayes to provide a BED file for analysis"
+    softclipping_triggering_default: ":softclipping percentage triggering BLAT re-alignment (default 0.2)"
     min_percent_hq: ":min percentage of high quality base in soft clipping reads, default 0.8"
     low_qual_cut_off: ":low quality cutoff value, default 20"
     mapq_cut_off: ":low mapping quality cutoff, default 1"
@@ -64,6 +67,6 @@ task ScanIndelpy {
   }
   output {
     File out_stdout = stdout()
-    Directory out_setting_default_directory = "${in_setting_default_directory}"
+    Directory out_setting_output_directory = "${in_setting_output_directory}"
   }
 }

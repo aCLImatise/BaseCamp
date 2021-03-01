@@ -20,6 +20,9 @@ task Humann2UnpackPathways {
       ~{if (remove_taxonomy) then "--remove-taxonomy" else ""} \
       ~{if defined(the_table_write) then ("--output " +  '"' + the_table_write + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_genes: "the gene family or EC abundance file"
     input_pathways: "the pathway abundance file"

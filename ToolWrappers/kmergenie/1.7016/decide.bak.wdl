@@ -12,6 +12,9 @@ task Decidebak {
       ~{if (first_pass) then "--first_pass" else ""} \
       ~{if defined(number_threads_default) then ("-t " +  '"' + number_threads_default + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     diploid: "use the diploid model"
     first_pass: "do not display 'best k' at the end, inform user of rough estimation"

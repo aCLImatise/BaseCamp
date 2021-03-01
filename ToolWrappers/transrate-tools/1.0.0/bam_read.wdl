@@ -10,6 +10,9 @@ task Bamread {
       ~{bam_file} \
       ~{output_csv}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam_file: ""
     output_csv: ""

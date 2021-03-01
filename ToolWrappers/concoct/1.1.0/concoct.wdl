@@ -38,6 +38,9 @@ task Concoct {
       ~{if (converge_out) then "--converge_out" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     coverage_file: "specify the coverage file, containing a table where\\neach row correspond to a contig, and each column\\ncorrespond to a sample. The values are the average\\ncoverage for this contig in that sample. All values\\nare separated with tabs."
     composition_file: "specify the composition file, containing sequences in\\nfasta format. It is named the composition file since\\nit is used to calculate the kmer composition (the\\ngenomic signature) of each contig."

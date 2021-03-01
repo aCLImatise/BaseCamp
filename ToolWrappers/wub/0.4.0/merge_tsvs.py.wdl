@@ -16,6 +16,9 @@ task MergeTsvspy {
       ~{if defined(output_tsv_mergetsvstsv) then ("-o " +  '"' + output_tsv_mergetsvstsv + '"') else ""} \
       ~{if (fill_na_values) then "-z" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     join_type_outer: "Join type (outer)."
     join_field_read: "Join on this field (Read)."

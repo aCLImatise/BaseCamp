@@ -16,6 +16,9 @@ task Extractmessages {
       ~{if (message) then "-m" else ""} \
       ~{if (write_output_here) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     include_following_messages: "include the following messages in the next output"
     exclude_following_messages: "exclude the following messages from the next output"

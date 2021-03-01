@@ -62,6 +62,9 @@ task PvacseqRun {
       ~{if defined(downstream_sequence_length) then ("--downstream-sequence-length " +  '"' + downstream_sequence_length + '"') else ""} \
       ~{if (keep_tmp_files) then "--keep-tmp-files" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     epitope_length: "Length of subpeptides (neoepitopes) to predict.\\nMultiple epitope lengths can be specified using a\\ncomma-separated list. Typical epitope lengths vary\\nbetween 8-11. Required for Class I prediction\\nalgorithms"
     peptide_sequence_length: "Length of the peptide sequence to use when creating\\nthe FASTA. Default: 21"

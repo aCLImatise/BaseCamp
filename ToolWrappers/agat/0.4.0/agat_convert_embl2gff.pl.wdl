@@ -18,6 +18,9 @@ task AgatConvertEmbl2gffpl {
       ~{if (means_tags_discarded) then "-d" else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     embl: "Input EMBL file that will be read"
     primary_tag: "List of \\\"primary tag\\\". Useful to discard or keep specific\\nfeatures. Multiple tags must be coma-separated."

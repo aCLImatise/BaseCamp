@@ -10,13 +10,14 @@ inputs:
     \ says don't\nuse the decision constant offsets, and idc=1\nto 6 indicates that\
     \ various combinations of\ndch,dcs offsets should be used. (Integer\nfrom 0 to\
     \ 6)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -idc
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _garnier

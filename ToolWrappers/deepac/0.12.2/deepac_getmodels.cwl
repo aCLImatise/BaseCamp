@@ -3,17 +3,17 @@ id: deepac_getmodels.cwl
 inputs:
 - id: in_debug_tf
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --debug-tf
 - id: in_debug_no_eager
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug-no-eager
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_deep_ac
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - deepac

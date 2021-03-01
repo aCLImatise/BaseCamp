@@ -14,6 +14,9 @@ task Otrim {
       ~{if defined(min_length) then ("--min-length " +  '"' + min_length + '"') else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     trim_from: "Start position"
     trim_to: "End position"

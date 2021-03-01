@@ -9,7 +9,7 @@ task Fa {
     Boolean? each
     Int? minsize
     Boolean? widthi_max_width
-    Boolean? tabbed_delimited_default
+    Boolean? tabbed_produce_tab
   }
   command <<<
     fa \
@@ -20,8 +20,11 @@ task Fa {
       ~{if (each) then "--each" else ""} \
       ~{if defined(minsize) then ("--minsize " +  '"' + minsize + '"') else ""} \
       ~{if (widthi_max_width) then "--w" else ""} \
-      ~{if (tabbed_delimited_default) then "--t" else ""}
+      ~{if (tabbed_produce_tab) then "--t" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "!      Debug info (default '0')."
     desc: "!         Description at end (default '0')."
@@ -30,7 +33,7 @@ task Fa {
     each: "!         Don't combine results of all input files into one (default '0')."
     minsize: "Minimum size to include in calcs (default '0')."
     widthi_max_width: "|width=i     Max. width of filename column (default '25')."
-    tabbed_delimited_default: "|tabbed!     Produce tab delimited output table (default '0')."
+    tabbed_produce_tab: "|tabbed!     Produce tab delimited output table (default '0')."
   }
   output {
     File out_stdout = stdout()

@@ -22,6 +22,9 @@ task Preprocessorpy {
       ~{if defined(q_cut) then ("--qCut " +  '"' + q_cut + '"') else ""} \
       ~{if defined(method) then ("--method " +  '"' + method + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Input file in BAM format. BAM file must be sorted and\\nindexed using samTools. Replicates separated by\\ncomma(',') e.g. \\\"-i rep1.bam,rep2.bam,rep3.bam\\\""
     chrom_size: "Chromosome size file. Tab or space separated text file\\nwith 2 columns: first column is chromosome name,\\nsecond column is size of the chromosome."

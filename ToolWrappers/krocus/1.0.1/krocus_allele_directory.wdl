@@ -8,6 +8,9 @@ task KrocusAlleleDirectory {
     krocus allele_directory \
       ~{input_dot_fast_q}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dot_fast_q: ""
   }

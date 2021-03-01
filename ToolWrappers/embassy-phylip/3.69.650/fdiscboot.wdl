@@ -18,6 +18,9 @@ task Fdiscboot {
       ~{if (test) then "-test" else ""} \
       ~{if (print_data) then "-printdata" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mix_file: "properties File of mixtures"
     anc_file: "properties File of ancestors"

@@ -12,6 +12,9 @@ task GenerateReportpy {
       ~{if defined(name_report_file) then ("-o " +  '"' + name_report_file + '"') else ""} \
       ~{if (diploid) then "--diploid" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_report_file: "name of the report file (default: [prefix]_report.html)"
     diploid: "use the diploid model"

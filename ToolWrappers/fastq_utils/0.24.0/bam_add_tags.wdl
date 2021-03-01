@@ -14,6 +14,9 @@ task BamAddTags {
       ~{if defined(out_bam) then ("--outbam " +  '"' + out_bam + '"') else ""} \
       ~{if defined(in_bam) then ("--inbam " +  '"' + in_bam + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tx_two_gx: ""
     tx: ""

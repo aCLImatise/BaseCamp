@@ -10,6 +10,9 @@ task EraseAnnoyingSequencespy {
       ~{if defined(input_fasta_file) then ("--input " +  '"' + input_fasta_file + '"') else ""} \
       ~{if defined(output_fasta_file) then ("--output " +  '"' + output_fasta_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_file: "Input FASTA file"
     output_fasta_file: "Output FASTA file of negative sequences"

@@ -22,6 +22,9 @@ task DbTestScript {
       ~{if (min_record_size) then "--minRecordSize" else ""} \
       ~{if (create) then "--create" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: ": Set the log level"
     database_conf: ": The database connection script"

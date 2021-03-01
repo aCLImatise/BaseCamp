@@ -3,43 +3,55 @@ command:
 - neurodocker
 positional:
 - !Positional
-  description: generate recipes
+  optional: false
   position: 0
   name: generate
-  optional: false
+  description: generate recipes
 named:
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -V
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -v
+  description: ''
   args: !ChoiceFlagArg
     choices: !!set
-      debug:
-      error:
-      warning:
       info:
       critical:
-  optional: true
+      warning:
+      debug:
+      error:
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-v {debug,info,warning,error,critical},\
-    \ --verbosity {debug,info,warning,error,critical}\n-V, --version         show\
-    \ program's version number and exit"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbosity
+  - -V
+  - --version
+  description: show program's version number and exit
+  args: !ChoiceFlagArg
+    choices: !!set
+      info:
+      critical:
+      warning:
+      debug:
+      error:
 help_text: "usage: neurodocker [-h] [-v {debug,info,warning,error,critical}] [-V]\n\
   \                   {generate,reprozip} ...\n\nNeurodocker is a command-line interface\
   \ to generate custom Dockerfiles and\nSingularity recipes.\n\nFor help generating\
@@ -51,3 +63,4 @@ help_text: "usage: neurodocker [-h] [-v {debug,info,warning,error,critical}] [-V
   \    generate            generate recipes\n    reprozip\n"
 generated_using:
 - --help
+docker_image:

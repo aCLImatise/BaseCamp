@@ -24,6 +24,9 @@ task FrameBotIndex {
       ~{if defined(transl_table) then ("--transl-table " +  '"' + transl_table + '"') else ""} \
       ~{if defined(scoring_matrix) then ("--scoring-matrix " +  '"' + scoring_matrix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gap_ext_penalty: "gap extension penalty. Default is -4"
     frameshift_penalty: "frameshift penalty. Default is -10"

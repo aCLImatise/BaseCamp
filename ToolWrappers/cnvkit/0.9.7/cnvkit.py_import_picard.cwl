@@ -3,7 +3,7 @@ id: cnvkit.py_import_picard.cwl
 inputs:
 - id: in_output_dir
   doc: "Output directory name.\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output-dir
 - id: in_targets
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_dir
   doc: "Output directory name.\n"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cnvkit.py

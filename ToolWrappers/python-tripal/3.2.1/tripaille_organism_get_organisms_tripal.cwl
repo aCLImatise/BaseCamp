@@ -3,13 +3,14 @@ id: tripaille_organism_get_organisms_tripal.cwl
 inputs:
 - id: in_organism_id
   doc: An organism entity ID
-  type: long
+  type: long?
   inputBinding:
     prefix: --organism_id
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tripaille

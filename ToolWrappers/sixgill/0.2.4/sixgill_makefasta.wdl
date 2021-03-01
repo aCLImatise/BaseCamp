@@ -16,6 +16,9 @@ task SixgillMakefasta {
       ~{if defined(min_peptide_length) then ("--minpeptidelength " +  '"' + min_peptide_length + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "output file"
     type: "database type"

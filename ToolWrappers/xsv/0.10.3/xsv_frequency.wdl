@@ -22,6 +22,9 @@ task XsvFrequency {
       ~{if (no_headers) then "--no-headers" else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     select: "Select a subset of columns to compute frequencies\\nfor. See 'xsv select --help' for the format\\ndetails. This is provided here because piping 'xsv\\nselect' into 'xsv frequency' will disable the use\\nof indexing."
     limit: "Limit the frequency table to the N most common\\nitems. Set to '0' to disable a limit.\\n[default: 10]"

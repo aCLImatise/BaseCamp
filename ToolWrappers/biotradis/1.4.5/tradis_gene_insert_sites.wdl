@@ -14,6 +14,9 @@ task TradisGeneInsertSites {
       ~{if (trim_three) then "-trim3" else ""} \
       ~{if (joinedoutput_output_file) then "-j" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     trim_five: "<trim insertion sites from 5' end of gene (optional, default = 0)>"
     trim_three: "<trim insertion sites from 3' end of gene (optional, default = 0)>"

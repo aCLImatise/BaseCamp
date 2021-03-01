@@ -4,71 +4,71 @@ command:
 positional: []
 named:
 - !Flag
-  description: "The matrix (or multiple matrices) to get information\nabout. HiCExplorer\
-    \ supports the following file\nformats: h5 (native HiCExplorer format) and cool."
+  optional: true
   synonyms:
   - --matrices
   - -m
+  description: "The matrix (or multiple matrices) to get information\nabout. HiCExplorer\
+    \ supports the following file\nformats: h5 (native HiCExplorer format) and cool."
   args: !RepeatFlagArg
     name: MATRICES
-  optional: true
 - !Flag
-  description: "Normalize to a) 0 to 1 range, b) all matrices to the\nlowest read\
-    \ count of the given matrices."
+  optional: true
   synonyms:
   - --normalize
   - -n
+  description: "Normalize to a) 0 to 1 range, b) all matrices to the\nlowest read\
+    \ count of the given matrices."
   args: !ChoiceFlagArg
     choices: !!set
-      multiplicative:
-      norm_range:
       smallest:
-  optional: true
+      norm_range:
+      multiplicative:
 - !Flag
-  description: Output file name for the Hi-C matrix.
+  optional: true
   synonyms:
   - --outFileName
   - -o
+  description: Output file name for the Hi-C matrix.
   args: !RepeatFlagArg
     name: FILENAME
-  optional: true
 - !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - --multiplicativeValue
   - -mv
+  description: show this help message and exit
   args: !SimpleFlagArg
     name: MULTIPLICATIVEVALUE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --setToZeroThreshold
+  - -sz
   description: "A threshold to set all values after normalization to 0\nif smaller\
     \ this threshold. Default value is 0 i.e.\nthere is no effect.It is recommended\
     \ to set it for the\nnormalize mode \"smallest\" to 1.0. This parameter will\n\
     influence the sparsity of the matrix by removing many\nvalues close to 0 in smallest\
     \ normalization mode."
-  synonyms:
-  - --setToZeroThreshold
-  - -sz
   args: !SimpleFlagArg
     name: SETTOZEROTHRESHOLD
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - --help
   - -h
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: hicNormalize --matrices MATRICES [MATRICES ...] --normalize\n \
   \                   {norm_range,smallest,multiplicative} --outFileName\n       \
   \             FILENAME [FILENAME ...]\n                    [--multiplicativeValue\
@@ -98,3 +98,4 @@ help_text: "usage: hicNormalize --matrices MATRICES [MATRICES ...] --normalize\n
   \ version number and exit\n"
 generated_using:
 - --help
+docker_image:

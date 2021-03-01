@@ -24,6 +24,9 @@ task Nad {
       ~{if (url) then "--url" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     molecule: "Molecule type to download. Default: nucleotide"
     extended_validation: "Perform extended validation. Possible options are\\n'none' to skip validation, 'loads' to check if the\\nsequence file loads in Biopython, or 'all' to run all\\nchecks. Default: none"

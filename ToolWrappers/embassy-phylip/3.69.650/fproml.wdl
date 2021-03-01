@@ -22,6 +22,9 @@ task Fproml {
       ~{if (print_data) then "-printdata" else ""} \
       ~{if (hyp_state) then "-hypstate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_categories: "integer    [1] Number of substitution rate categories\\n(Integer from 1 to 9)"
     weights: "properties Weights file"

@@ -18,6 +18,9 @@ task AgatSqAddAttributesFromTsvpl {
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""} \
       ~{if defined(string_output_file) then ("--output " +  '"' + string_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "STRING: Input GTF/GFF file."
     tsv: "STRING: Input tsv file"

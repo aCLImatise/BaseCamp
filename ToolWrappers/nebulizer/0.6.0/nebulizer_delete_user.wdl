@@ -14,6 +14,9 @@ task NebulizerDeleteUser {
       ~{if (purge) then "--purge" else ""} \
       ~{if (yes) then "--yes" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     purge: "also purge (permanently delete) the user."
     yes: "don't ask for confirmation of deletions."

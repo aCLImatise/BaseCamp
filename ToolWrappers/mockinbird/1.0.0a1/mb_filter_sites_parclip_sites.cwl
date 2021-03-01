@@ -3,7 +3,7 @@ id: mb_filter_sites_parclip_sites.cwl
 inputs:
 - id: in_padding_bp
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --padding_bp
 - id: in_mb_filter_sites
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mb-filter-sites

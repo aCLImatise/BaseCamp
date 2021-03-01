@@ -10,6 +10,9 @@ task Weedamb {
       ~{seq_file_in} \
       ~{if defined(save_ambiguous_sequences) then ("-s " +  '"' + save_ambiguous_sequences + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     save_ambiguous_sequences: ": save ambiguous sequences to this file"
     seq_file_in: ""

@@ -8,46 +8,46 @@ inputs:
     \ for each mapped element, in which\nthe chromosome, start, end, and peak positions\
     \ are\nmapped to the target species and all other columns are\npassed through\
     \ unchanged. (default: BED4)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
 - id: in_output
   doc: "Output file. Mandatory if more than on file in input.\n(default: stdout)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_threshold
   doc: "Mapping threshold i.e., |elem| * threshold <=\n|mapped_elem| (default: 0.0)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --threshold
 - id: in_screen
   doc: "Only report elements in the alignment (without\nmapping). -t has not effect\
     \ here (TODO) (default:\nFalse)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --screen
 - id: in_gap
   doc: "Ignore elements with an insertion/deletion of this or\nbigger size. (default:\
     \ -1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --gap
 - id: in_verbose
   doc: 'Verbosity level (default: info)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbose
 - id: in_keep_split
   doc: "If elements span multiple chains, report the segment\nwith the longest overlap\
     \ instead of silently dropping\nthem. (This is the default behavior for liftOver.)\n\
     (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep_split
 - id: in_in_format
   doc: 'Input file format. (default: BED)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --in_format
 - id: in_input
@@ -65,6 +65,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bnMapper.py

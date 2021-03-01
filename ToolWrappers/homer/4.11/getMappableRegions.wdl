@@ -4,6 +4,9 @@ task GetMappableRegions {
   command <<<
     getMappableRegions
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

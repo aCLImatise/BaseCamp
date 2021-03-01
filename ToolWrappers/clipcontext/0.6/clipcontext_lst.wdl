@@ -16,6 +16,9 @@ task ClipcontextLst {
       ~{if defined(gtf) then ("--gtf " +  '"' + gtf + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_len: "Accept only transcripts with length >= --min-len (default:\\nFalse)"
     strict: "Accept only transcripts with transcript support level (TSL)\\n1-5 (default: False)"

@@ -4,6 +4,9 @@ task Isnns {
   command <<<
     isnns
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

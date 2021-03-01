@@ -4,145 +4,145 @@ command:
 - diffexp
 positional:
 - !Positional
-  description: '[required]'
+  optional: false
   position: 0
   name: consider.
-  optional: false
+  description: '[required]'
 named:
 - !Flag
-  description: "[anndata|loom]\nInput object format.  [default: anndata]"
+  optional: true
   synonyms:
   - -f
   - --input-format
+  description: "[anndata|loom]\nInput object format.  [default: anndata]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+  optional: true
   synonyms:
   - -F
   - --output-format
+  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Chunk size for writing output in zarr
+  optional: true
   synonyms:
   - -z
   - --zarr-chunk-size
+  description: Chunk size for writing output in zarr
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "When specified, using it as prefix for\nexporting mtx files. If not\
-    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+  optional: true
   synonyms:
   - -X
   - --export-mtx
+  description: "When specified, using it as prefix for\nexporting mtx files. If not\
+    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "[stdout|stderr]      Print output object summary info to\nspecified\
-    \ stream."
+  optional: true
   synonyms:
   - --show-obj
+  description: "[stdout|stderr]      Print output object summary info to\nspecified\
+    \ stream."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ --no-raw            Use expression values in `.raw` if present.\n\
-    [default: True]"
+  optional: true
   synonyms:
   - --use-raw
+  - --no-raw
+  description: "Use expression values in `.raw` if present.\n[default: True]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The key of the observations grouping to
+  optional: true
   synonyms:
   - -g
   - --groupby
+  description: The key of the observations grouping to
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Subset of groups to which comparison shall\nbe restricted.  [default:\
-    \ all]"
+  optional: true
   synonyms:
   - --groups
+  description: "Subset of groups to which comparison shall\nbe restricted.  [default:\
+    \ all]"
   args: !OptionalFlagArg
     names:
     - TEXT
     - TEXT...
     separator: ','
-  optional: true
 - !Flag
-  description: "If \"rest\", compare each group to the union\nof the rest of the groups.\
-    \ If a group\nidentifier, compare with respect to this\ngroup.  [default: rest]"
+  optional: true
   synonyms:
   - --reference
+  description: "If \"rest\", compare each group to the union\nof the rest of the groups.\
+    \ If a group\nidentifier, compare with respect to this\ngroup.  [default: rest]"
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "The number of genes that appear in the\nretured tables. By default\
-    \ return all\navailable genes depending on the value of\n--use-raw."
+  optional: true
   synonyms:
   - -n
   - --n-genes
+  description: "The number of genes that appear in the\nretured tables. By default\
+    \ return all\navailable genes depending on the value of\n--use-raw."
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "[logreg|t-test|wilcoxon|t-test_overestim_var]\nMethod of performing\
-    \ differential expression\nanalysis.  [default: t-test_overestim_var]"
+  optional: true
   synonyms:
   - --method
+  description: "[logreg|t-test|wilcoxon|t-test_overestim_var]\nMethod of performing\
+    \ differential expression\nanalysis.  [default: t-test_overestim_var]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[benjamini-hochberg|bonferroni]\nP-value correction method. Used only\
-    \ for\n\"t-test\", \"t-test_overestim_var\" and\n\"wilcoxon\".  [default: benjamini-hochberg]"
+  optional: true
   synonyms:
   - --corr-method
+  description: "[benjamini-hochberg|bonferroni]\nP-value correction method. Used only\
+    \ for\n\"t-test\", \"t-test_overestim_var\" and\n\"wilcoxon\".  [default: benjamini-hochberg]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Rank genes by the absolute value of the\nscore, not by the score.\
-    \ The returned scores\nare never the absolute values.  [default:\nFalse]"
+  optional: true
   synonyms:
   - --rankby-abs
+  description: "Rank genes by the absolute value of the\nscore, not by the score.\
+    \ The returned scores\nare never the absolute values.  [default:\nFalse]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filter-params
   description: ":VAL[,TEXT:VAL...]\nParameters for filtering DE results, valid\nparameters\
     \ are: \"min_in_group_fraction\"\n(float), \"max_out_group_fraction\" (float),\n\
     \"min_fold_change\" (float)."
-  synonyms:
-  - --filter-params
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: ":VAL[,TEXT:VAL...]\nParameters passed to\n`sklearn.linear_model.LogisticRegression`."
+  optional: true
   synonyms:
   - --logreg-param
+  description: ":VAL[,TEXT:VAL...]\nParameters passed to\n`sklearn.linear_model.LogisticRegression`."
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Tab-separated table to store results of\ndifferential expression analysis."
+  optional: true
   synonyms:
   - --save
+  description: "Tab-separated table to store results of\ndifferential expression analysis."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: scanpy-cli diffexp [OPTIONS] <input_obj> <output_obj>\n\n  Find\
@@ -191,3 +191,4 @@ help_text: "Usage: scanpy-cli diffexp [OPTIONS] <input_obj> <output_obj>\n\n  Fi
   \ this message and exit.\n"
 generated_using:
 - --help
+docker_image:

@@ -20,6 +20,9 @@ task RunMusiccpy {
       ~{if (performance) then "--performance" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "Output destination for corrected abundance (default:\\nMUSiCC.tab)"
     input_format: "Option indicating the format of the input file\\n(default: tab)"

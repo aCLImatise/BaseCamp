@@ -12,6 +12,9 @@ task ScramPileup {
       ~{if (gap_pileup_format) then "-5" else ""} \
       ~{if (depth_format) then "-d" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gap_pileup_format: "Gap5 pileup format."
     depth_format: "Depth format."

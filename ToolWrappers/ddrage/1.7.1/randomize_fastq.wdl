@@ -12,6 +12,9 @@ task RandomizeFastq {
       ~{if (force) then "--force" else ""} \
       ~{if defined(buffer_size) then ("--buffersize " +  '"' + buffer_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "overwrite existing output file(s)"
     buffer_size: "size of output buffer in bytes [128 MB]. Not used if\\nwriting gzipped files.\\n"

@@ -16,6 +16,9 @@ task PyfastxSample {
       ~{if (sequential_read) then "--sequential-read" else ""} \
       ~{if defined(out_file) then ("--out-file " +  '"' + out_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_sequences_sampled: "number of sequences to be sampled"
     proportion_sequences_sampled: "proportion of sequences to be sampled, 0~1"

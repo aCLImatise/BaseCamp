@@ -12,6 +12,9 @@ task Edgeredef {
       ~{seq_list} \
       ~{start}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fam_def: ""
     seq_list: ""

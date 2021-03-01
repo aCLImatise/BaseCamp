@@ -32,6 +32,9 @@ task AktKin {
       ~{if (samples) then "--samples" else ""} \
       ~{if (samples_file) then "--samples-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minkin: ":                   threshold for relatedness output (none)"
     freq_file: ":                a file containing population allele frequencies to use in kinship calculation"

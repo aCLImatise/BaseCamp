@@ -46,6 +46,9 @@ task FrameBotFramebot {
       ~{if defined(scoring_matrix) then ("--scoring-matrix " +  '"' + scoring_matrix + '"') else ""} \
       ~{if (de_novo) then "--de-novo" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignment_mode: "Alignment mode: glocal, local or global (default = glocal)"
     de_novo_abund_cut_off: "minimum abundance for de-novo mode. default = 10"

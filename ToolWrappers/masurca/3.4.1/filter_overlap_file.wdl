@@ -16,6 +16,9 @@ task FilterOverlapFile {
       ~{if defined(output_file_devfd) then ("--output " +  '"' + output_file_devfd + '"') else ""} \
       ~{if (dump) then "--dump" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads (1)"
     output_file_devfd: "Output file (/dev/fd/1)"

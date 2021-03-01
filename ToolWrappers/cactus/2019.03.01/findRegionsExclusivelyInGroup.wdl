@@ -30,6 +30,9 @@ task FindRegionsExclusivelyInGroup {
       ~{if defined(max_out_group_genomes) then ("--maxOutgroupGenomes " +  '"' + max_out_group_genomes + '"') else ""} \
       ~{if defined(min_in_group_genomes) then ("--minIngroupGenomes " +  '"' + min_in_group_genomes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cache_bytes: ":           maximum size in bytes of regular hdf5 cache [default\\n= 15728640]"
     cache_mdc: ":             number of metadata slots in hdf5 cache [default =\\n113]"

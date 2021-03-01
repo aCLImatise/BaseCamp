@@ -8,6 +8,9 @@ task DRAMsetuppyPrintConfig {
     DRAM_setup_py print_config \
       ~{dram_setup_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dram_setup_do_tpy: ""
   }

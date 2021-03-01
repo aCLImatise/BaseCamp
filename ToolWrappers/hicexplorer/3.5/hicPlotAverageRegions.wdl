@@ -22,6 +22,9 @@ task HicPlotAverageRegions {
       ~{if defined(vmax) then ("--vMax " +  '"' + vmax + '"') else ""} \
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "The averaged regions file computed by\\nhicAverageRegions (npz file)."
     output_file: "The averaged regions plot."

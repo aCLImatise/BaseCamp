@@ -3,122 +3,130 @@ command:
 - prinseq-lite.pl
 positional:
 - !Positional
-  description: If you specify any statistic option, no other ouput will be
+  optional: false
   position: 0
   name: tabs.
+  description: If you specify any statistic option, no other ouput will be
+- !Positional
   optional: false
+  position: 0
+  name: option.
+  description: -stats_info
 named:
 - !Flag
-  description: Print the full documentation; ignore other arguments.
+  optional: true
   synonyms:
   - -man
+  description: Print the full documentation; ignore other arguments.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Print program version; ignore other arguments.
+  optional: true
   synonyms:
   - -version
+  description: Print program version; ignore other arguments.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Prints status and info messages during processing.
+  optional: true
   synonyms:
   - -verbose
+  description: Prints status and info messages during processing.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -fastq
   description: "Input file in FASTQ format that contains the sequence and\nquality\
     \ data. Use stdin instead of a file name to read from\nSTDIN (-fasta stdin). This\
     \ can be useful to process compressed\nfiles using Unix pipes."
-  synonyms:
-  - -fastq
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -fasta
   description: "Input file in FASTA format that contains the sequence data. Use\n\
     stdin instead of a file name to read from STDIN (-fastq stdin).\nThis can be useful\
     \ to process compressed files using Unix pipes."
-  synonyms:
-  - -fasta
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: Input file in QUAL format that contains the quality data.
+  optional: true
   synonyms:
   - -qual
+  description: Input file in QUAL format that contains the quality data.
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -fastq2
   description: "For paired-end data only. Input file in FASTQ format that\ncontains\
     \ the sequence and quality data. The sequence identifiers\nfor two matching paired-end\
     \ sequences in separate files can be\nmarked by /1 and /2, or _L and _R, or _left\
     \ and _right, or must\nhave the exact same identifier in both input files. The\
     \ input\nsequences must be sorted by their sequence identifiers.\nSingletons are\
     \ allowed in the input files."
-  synonyms:
-  - -fastq2
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -fasta2
   description: "For paired-end data only. Input file in FASTA format that\ncontains\
     \ the sequence data. The sequence identifiers for two\nmatching paired-end sequences\
     \ in separate files can be marked by\n/1 and /2, or _L and _R, or _left and _right,\
     \ or must have the\nexact same identifier in both input files. The input sequences\n\
     must be sorted by their sequence identifiers. Singletons are\nallowed in the input\
     \ files."
-  synonyms:
-  - -fasta2
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -params
   description: "Input file in text format that contains PRINSEQ parameters. Each\n\
     parameter should be specified on a new line and arguments should\nbe separated\
     \ by spaces or tabs. Comments can be specified on\nlines starting with the # sign.\
     \ Can be combined with command\nline parameters. Parameters specified on the command\
     \ line will\noverwrite the arguments in the file (if any)."
-  synonyms:
-  - -params
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: This option was replaced by option -phred64.
+  optional: true
   synonyms:
   - -si13
+  description: This option was replaced by option -phred64.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Quality data in FASTQ file is in Phred+64 format\n(http://en.wikipedia.org/wiki/FASTQ_format#Encoding).\
-    \ Not\nrequired for Illumina 1.8+, Sanger, Roche/454, Ion Torrent,\nPacBio data."
+  optional: true
   synonyms:
   - -phred64
+  description: "Quality data in FASTQ file is in Phred+64 format\n(http://en.wikipedia.org/wiki/FASTQ_format#Encoding).\
+    \ Not\nrequired for Illumina 1.8+, Sanger, Roche/454, Ion Torrent,\nPacBio data."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -aa
   description: "Input is amino acid (protein) sequences instead of nucleic acid\n\
     (DNA or RNA) sequences. Allowed amino acid characters:\nABCDEFGHIKLMNOPQRSTUVWYZXabcdefghiklmmopqrstuvwyzx*-\
     \ and allowed\nnucleic acid characters: ACGTURYKMSWBDHVNXacgturykmswbdhvnx-\n\
     The following options are ignored for -aa:\nstats_dinuc,stats_tag,stats_ns,dna_rna"
-  synonyms:
-  - -aa
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -out_format
   description: "To change the output format, use one of the following options.\nIf\
     \ not defined, the output format will be the same as the input\nformat.\n1 (FASTA\
     \ only), 2 (FASTA and QUAL), 3 (FASTQ), 4 (FASTQ and\nFASTA), or 5 (FASTQ, FASTA\
     \ and QUAL)"
-  synonyms:
-  - -out_format
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -out_good
   description: "By default, the output files are created in the same directory\nas\
     \ the input file containing the sequence data with an\nadditional \"_prinseq_good_XXXX\"\
     \ in their name (where XXXX is\nreplaced by random characters to prevent overwriting\
@@ -131,12 +139,12 @@ named:
     \ all filters to STDOUT (only for\nFASTA or FASTQ output files).\nExample: use\
     \ \"file_passed\" to generate the output file\nfile_passed.fasta in the current\
     \ directory"
-  synonyms:
-  - -out_good
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -out_bad
   description: "By default, the output files are created in the same directory\nas\
     \ the input file containing the sequence data with an\nadditional \"_prinseq_bad_XXXX\"\
     \ in their name (where XXXX is\nreplaced by random characters to prevent overwriting\
@@ -150,21 +158,21 @@ named:
     \ the output file\nfile_filtered.fasta in the current directory\nExample: \"-out_good\
     \ stdout -out_bad null\" will write data\npassing filters to STDOUT and data not\
     \ passing any filter will\nbe ignored"
-  synonyms:
-  - -out_bad
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -log
   description: "Log file to keep track of parameters, errors, etc. The log file\n\
     name is optional. If no file name is given, the log file name\nwill be \"inputname.log\"\
     . If the log file already exists, new\ncontent will be added to the file."
-  synonyms:
-  - -log
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -graph_data
   description: "File that contains the necessary information to generate the\ngraphs\
     \ similar to the ones in the web version. The file name is\noptional. If no file\
     \ name is given, the file name will be\n\"inputname.gd\". If the file already\
@@ -175,12 +183,12 @@ named:
     \ If\nyou have trouble installing the required prinseq-graphs.pl\nmodules or want\
     \ to see an output example report, upload the\ngraph data file at: http://edwards.sdsu.edu/prinseq/\
     \ -> Choose\n\"Get Report\""
-  synonyms:
-  - -graph_data
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -graph_stats
   description: "Use this option to select what statistics should be calculated\nand\
     \ included in the graph_data file. This is useful if you e.g.\ndo not need sequence\
     \ complexity information, which requires a\nlot of computation. Requires to have\
@@ -191,42 +199,42 @@ named:
     \ duplication - exact only), da (Sequence duplication -\nexact + 5'/3'), sc (Sequence\
     \ complexity), dn (Dinucleotide odds\nratios, includes the PCA plots)\nExample\
     \ use: -graph_stats ld,gc,qd,de"
-  synonyms:
-  - -graph_stats
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -qual_noscale
   description: "Use this option if all your sequences are shorter than 100bp as\n\
     they do not require to scale quality data to 100 data points in\nthe graph. By\
     \ default, quality scores of sequences shorter than\n100bp or longer than 100bp\
     \ are fit to 100 data points. (To\nretrieve this information and calculate the\
     \ graph data would\notherwise require to parse the data two times or store all\
     \ the\nquality data in memory.)"
-  synonyms:
-  - -qual_noscale
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -no_qual_header
   description: "In order to reduce the file size, this option will generate an\nempty\
     \ header line for the quality data in FASTQ files. Instead\nof +header, only the\
     \ + sign will be output. The header of the\nsequence data will be left unchanged.\
     \ This option applies to\nFASTQ output files only."
-  synonyms:
-  - -no_qual_header
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -exact_only
   description: "Use this option to check for exact (forward and reverse)\nduplicates\
     \ only when generating the graph data. This allows to\nkeep the memory requirements\
     \ low for large input files and is\nfaster. This option will automatically be\
     \ applied when using\n-derep options 1 and/or 4 only. Specify option -derep 1\
     \ or\n-derep 4 if you do not want to apply both at the same time."
-  synonyms:
-  - -exact_only
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -seq_id_mappings
   description: "Text file containing the old and new (specified with -seq_id)\nidentifiers\
     \ for later reference. This option is useful if e.g. a\nrenamed sequence has to\
     \ be identified based on the new sequence\nidentifier. The file name is optional.\
@@ -235,154 +243,154 @@ named:
     \ new content will overwrite the old file. The text file\ncontains one sequence\
     \ identifier pair per line, separated by\ntabs (old-tab-new). Requires option\
     \ -seq_id."
-  synonyms:
-  - -seq_id_mappings
   args: !SimpleFlagArg
     name: file
-  optional: true
 - !Flag
-  description: Filter sequence shorter than min_len.
+  optional: true
   synonyms:
   - -min_len
+  description: Filter sequence shorter than min_len.
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: Filter sequence longer than max_len.
+  optional: true
   synonyms:
   - -max_len
+  description: Filter sequence longer than max_len.
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: "Filter sequence by length range. Multiple range values should be\n\
-    separated by comma without spaces.\nExample: -range_len 50-100,250-300"
+  optional: true
   synonyms:
   - -range_len
+  description: "Filter sequence by length range. Multiple range values should be\n\
+    separated by comma without spaces.\nExample: -range_len 50-100,250-300"
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: Filter sequence with GC content below min_gc.
+  optional: true
   synonyms:
   - -min_gc
+  description: Filter sequence with GC content below min_gc.
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: Filter sequence with GC content above max_gc.
+  optional: true
   synonyms:
   - -max_gc
+  description: Filter sequence with GC content above max_gc.
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: "Filter sequence by GC content range. Multiple range values\nshould\
-    \ be separated by comma without spaces.\nExample: -range_gc 50-60,75-90"
+  optional: true
   synonyms:
   - -range_gc
+  description: "Filter sequence by GC content range. Multiple range values\nshould\
+    \ be separated by comma without spaces.\nExample: -range_gc 50-60,75-90"
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: "Filter sequence with at least one quality score below\nmin_qual_score."
+  optional: true
   synonyms:
   - -min_qual_score
+  description: "Filter sequence with at least one quality score below\nmin_qual_score."
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: "Filter sequence with at least one quality score above\nmax_qual_score."
+  optional: true
   synonyms:
   - -max_qual_score
+  description: "Filter sequence with at least one quality score above\nmax_qual_score."
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: Filter sequence with quality score mean below min_qual_mean.
+  optional: true
   synonyms:
   - -min_qual_mean
+  description: Filter sequence with quality score mean below min_qual_mean.
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: Filter sequence with quality score mean above max_qual_mean.
+  optional: true
   synonyms:
   - -max_qual_mean
+  description: Filter sequence with quality score mean above max_qual_mean.
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: Filter sequence with more than ns_max_p percentage of Ns.
+  optional: true
   synonyms:
   - -ns_max_p
+  description: Filter sequence with more than ns_max_p percentage of Ns.
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: Filter sequence with more than ns_max_n Ns.
+  optional: true
   synonyms:
   - -ns_max_n
+  description: Filter sequence with more than ns_max_n Ns.
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: Filter sequence with characters other than A, C, G, T or N.
+  optional: true
   synonyms:
   - -noniupac
+  description: Filter sequence with characters other than A, C, G, T or N.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Only keep the first seq_num number of sequences (that pass all\nother\
-    \ filters)."
+  optional: true
   synonyms:
   - -seq_num
+  description: "Only keep the first seq_num number of sequences (that pass all\nother\
+    \ filters)."
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -derep
   description: "Type of duplicates to filter. Allowed values are 1, 2, 3, 4 and\n\
     5. Use integers for multiple selections (e.g. 124 to use type 1,\n2 and 4). The\
     \ order does not matter. Option 2 and 3 will set 1\nand option 5 will set 4 as\
     \ these are subsets of the other\noption.\n1 (exact duplicate), 2 (5' duplicate),\
     \ 3 (3' duplicate), 4\n(reverse complement exact duplicate), 5 (reverse complement\n\
     5'/3' duplicate)"
-  synonyms:
-  - -derep
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -derep_min
   description: "This option specifies the number of allowed duplicates. If you\nwant\
     \ to remove sequence duplicates that occur more than x times,\nthen you would\
     \ specify x+1 as the -derep_min values. For\nexamples, to remove sequences that\
     \ occur more than 5 times, you\nwould specify -derep_min 6. This option can only\
     \ be used in\ncombination with -derep 1 and/or 4 (forward and/or reverse exact\n\
     duplicates). [default : 2]"
-  synonyms:
-  - -derep_min
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -lc_method
   description: "Method to filter low complexity sequences. The current options\nare\
     \ \"dust\" and \"entropy\". Use \"-lc_method dust\" to calculate the\ncomplexity\
     \ using the dust method."
-  synonyms:
-  - -lc_method
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -lc_threshold
   description: "The threshold value (between 0 and 100) used to filter sequences\n\
     by sequence complexity. The dust method uses this as maximum\nallowed score and\
     \ the entropy method as minimum allowed value."
-  synonyms:
-  - -lc_threshold
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -custom_params
   description: "Can be used to specify additional filters. The current set of\npossible\
     \ rules is limited and has to follow the specifications\nbelow. The custom parameters\
     \ have to be specified within quotes\n(either ' or \").\nPlease separate parameter\
@@ -395,255 +403,253 @@ named:
     \ anywhere in the sequence), \"T\n70%\" (filters out sequences with more than\
     \ 70% Ts in the\nsequence), \"A 15\" (filters out sequences containing\nAAAAAAAAAAAAAAA\
     \ anywhere in the sequence), \"AAT 10;T 70%;A 15\"\n(apply all three filters)"
-  synonyms:
-  - -custom_params
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: "Trim all sequence from the 3'-end to result in sequence with\nthis\
-    \ length."
+  optional: true
   synonyms:
   - -trim_to_len
+  description: "Trim all sequence from the 3'-end to result in sequence with\nthis\
+    \ length."
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: Trim sequence at the 5'-end by trim_left positions.
+  optional: true
   synonyms:
   - -trim_left
+  description: Trim sequence at the 5'-end by trim_left positions.
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: Trim sequence at the 3'-end by trim_right positions.
+  optional: true
   synonyms:
   - -trim_right
+  description: Trim sequence at the 3'-end by trim_right positions.
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -trim_left_p
   description: "Trim sequence at the 5'-end by trim_left_p percentage of read\nlength.\
     \ The trim length is rounded towards the lower integer\n(e.g. 143.6 is rounded\
     \ to 143 positions). Use an integer between\n1 and 100 for the percentage value."
-  synonyms:
-  - -trim_left_p
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -trim_right_p
   description: "Trim sequence at the 3'-end by trim_right_p percentage of read\nlength.\
     \ The trim length is rounded towards the lower integer\n(e.g. 143.6 is rounded\
     \ to 143 positions). Use an integer between\n1 and 100 for the percentage value."
-  synonyms:
-  - -trim_right_p
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: "Trim poly-A/T tail with a minimum length of trim_tail_left at\nthe\
-    \ 5'-end."
+  optional: true
   synonyms:
   - -trim_tail_left
+  description: "Trim poly-A/T tail with a minimum length of trim_tail_left at\nthe\
+    \ 5'-end."
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: "Trim poly-A/T tail with a minimum length of trim_tail_right at\nthe\
-    \ 3'-end."
+  optional: true
   synonyms:
   - -trim_tail_right
+  description: "Trim poly-A/T tail with a minimum length of trim_tail_right at\nthe\
+    \ 3'-end."
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: "Trim poly-N tail with a minimum length of trim_ns_left at the\n5'-end."
+  optional: true
   synonyms:
   - -trim_ns_left
+  description: "Trim poly-N tail with a minimum length of trim_ns_left at the\n5'-end."
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: "Trim poly-N tail with a minimum length of trim_ns_right at the\n3'-end."
+  optional: true
   synonyms:
   - -trim_ns_right
+  description: "Trim poly-N tail with a minimum length of trim_ns_right at the\n3'-end."
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: "Trim sequence by quality score from the 5'-end with this\nthreshold\
-    \ score."
+  optional: true
   synonyms:
   - -trim_qual_left
+  description: "Trim sequence by quality score from the 5'-end with this\nthreshold\
+    \ score."
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: "Trim sequence by quality score from the 3'-end with this\nthreshold\
-    \ score."
+  optional: true
   synonyms:
   - -trim_qual_right
+  description: "Trim sequence by quality score from the 3'-end with this\nthreshold\
+    \ score."
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: "Type of quality score calculation to use. Allowed options are\nmin,\
-    \ mean, max and sum. [default: min]"
+  optional: true
   synonyms:
   - -trim_qual_type
+  description: "Type of quality score calculation to use. Allowed options are\nmin,\
+    \ mean, max and sum. [default: min]"
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -trim_qual_rule
   description: "Rule to use to compare quality score to calculated value.\nAllowed\
     \ options are lt (less than), gt (greater than) and et\n(equal to). [default:\
     \ lt]"
-  synonyms:
-  - -trim_qual_rule
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -trim_qual_window
   description: "The sliding window size used to calculate quality score by type.\n\
     To stop at the first base that fails the rule defined, use a\nwindow size of 1.\
     \ [default: 1]"
-  synonyms:
-  - -trim_qual_window
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -trim_qual_step
   description: "Step size used to move the sliding window. To move the window\nover\
     \ all quality scores without missing any, the step size\nshould be less or equal\
     \ to the window size. [default: 1]"
-  synonyms:
-  - -trim_qual_step
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -seq_case
   description: "Changes sequence character case to upper or lower case. Allowed\n\
     options are \"upper\" and \"lower\". Use this option to remove\nsoft-masking from\
     \ your sequences."
-  synonyms:
-  - -seq_case
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: "Convert sequence between DNA and RNA. Allowed options are \"dna\"\n\
-    (convert from RNA to DNA) and \"rna\" (convert from DNA to RNA)."
+  optional: true
   synonyms:
   - -dna_rna
+  description: "Convert sequence between DNA and RNA. Allowed options are \"dna\"\n\
+    (convert from RNA to DNA) and \"rna\" (convert from DNA to RNA)."
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -line_width
   description: "Sequence characters per line. Use 0 if you want each sequence in\n\
     a single line. Use 80 for line breaks every 80 characters. Note\nthat this option\
     \ only applies to FASTA output files, since FASTQ\nfiles store sequences without\
     \ additional line breaks. [default:\n60]"
-  synonyms:
-  - -line_width
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: "Remove the sequence header. This includes everything after the\nsequence\
-    \ identifier (which is kept unchanged)."
+  optional: true
   synonyms:
   - -rm_header
+  description: "Remove the sequence header. This includes everything after the\nsequence\
+    \ identifier (which is kept unchanged)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -seq_id
   description: "Rename the sequence identifier. A counter is added to each\nidentifier\
     \ to assure its uniqueness. Use option -seq_id_mappings\nto generate a file containing\
     \ the old and new identifiers for\nlater reference.\nExample: \"mySeq_10\" will\
     \ generate the IDs (in FASTA format)\n>mySeq_101, >mySeq_102, >mySeq_103, ..."
-  synonyms:
-  - -seq_id
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -stats_len
   description: "Outputs minimum (min), maximum (max), range (range), mean\n(mean),\
     \ standard deviation (stddev), mode (mode) and mode value\n(modeval), and median\
     \ (median) for read length."
-  synonyms:
-  - -stats_len
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -stats_dinuc
   description: "Outputs the dinucleotide odds ratio for AA/TT (aatt), AC/GT\n(acgt),\
     \ AG/CT (agct), AT (at), CA/TG (catg), CC/GG (ccgg), CG\n(cg), GA/TC (gatc), GC\
     \ (gc) and TA (ta)."
-  synonyms:
-  - -stats_dinuc
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -stats_tag
   description: "Outputs the probability of a tag sequence at the 5'-end (prob5)\n\
     and 3'-end (prob3) in percentage (0..100). Provides the number\nof predefined\
     \ MIDs (midnum) and the MID sequences (midseq,\nseparated by comma, only provided\
     \ if midnum > 0) that occur in\nmore than 34/100 (approx. 3%) of the reads."
-  synonyms:
-  - -stats_tag
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -stats_dupl
   description: "Outputs the number of exact duplicates (exact), 5' duplicates\n(5),\
     \ 3' duplicates (3), exact duplicates with reverse\ncomplements (exactrevcom)\
     \ and 5'/3' duplicates with reverse\ncomplements (revcomp), and total number of\
     \ duplicates (total).\nThe maximum number of duplicates is given under the value\
     \ name\nwith an additional \"maxd\" (e.g. exactmaxd or 5maxd)."
-  synonyms:
-  - -stats_dupl
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -stats_ns
   description: "Outputs the number of reads with ambiguous base N (seqswithn),\nthe\
     \ maximum number of Ns per read (maxn) and the maximum\npercentage of Ns per read\
     \ (maxp). The maxn and maxp value are\nnot necessary from the same sequence."
-  synonyms:
-  - -stats_ns
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -stats_assembly
   description: "Outputs the N50, N90, etc contig sizes. The Nxx contig size is a\n\
     weighted median that is defined as the length of the smallest\ncontig C in the\
     \ sorted list of all contigs where the cumulative\nlength from the largest contig\
     \ to contig C is at least xx% of\nthe total length (sum of contig lengths)."
-  synonyms:
-  - -stats_assembly
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Outputs all available summary statistics.
+  optional: true
   synonyms:
   - -stats_all
+  description: Outputs all available summary statistics.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -stats_info
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -h
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "| -h\nPrint the help message; ignore other arguments."
+  optional: true
   synonyms:
   - -help
+  - -h
+  description: Print the help message; ignore other arguments.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage:\n    perl prinseq-lite.pl [-h] [-help] [-version] [-man] [-verbose]\
@@ -934,3 +940,4 @@ help_text: "Usage:\n    perl prinseq-lite.pl [-h] [-help] [-version] [-man] [-ve
   \ dna_rna, out_format\n\n"
 generated_using:
 - --help
+docker_image:

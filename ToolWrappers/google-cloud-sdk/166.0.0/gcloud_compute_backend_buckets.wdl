@@ -16,6 +16,9 @@ task GcloudComputeBackendbuckets {
       ~{list} \
       ~{update}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create a backend bucket."
     delete: "Delete backend buckets."

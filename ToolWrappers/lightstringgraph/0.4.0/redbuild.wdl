@@ -14,6 +14,9 @@ task Redbuild {
       ~{if (r) then "-r" else ""} \
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     b: "# (required)"
     m: "# (required)"

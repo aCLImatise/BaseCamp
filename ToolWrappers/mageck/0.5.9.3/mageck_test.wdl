@@ -54,6 +54,9 @@ task MageckTest {
       ~{if defined(cell_line) then ("--cell-line " +  '"' + cell_line + '"') else ""} \
       ~{if defined(cnv_est) then ("--cnv-est " +  '"' + cnv_est + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count_table: "Provide a tab-separated count table instead of sam\\nfiles. Each line in the table should include sgRNA\\nname (1st column), gene name (2nd column) and read\\ncounts in each sample."
     treatment_id: "Sample label or sample index (0 as the first sample)\\nin the count table as treatment experiments, separated\\nby comma (,). If sample label is provided, the labels\\nmust match the labels in the first line of the count\\ntable; for example, \\\"HL60.final,KBM7.final\\\". For\\nsample index, \\\"0,2\\\" means the 1st and 3rd samples are\\ntreatment experiments."

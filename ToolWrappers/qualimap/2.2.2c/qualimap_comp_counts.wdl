@@ -26,6 +26,9 @@ task QualimapCompcounts {
       ~{if (sorted) then "--sorted" else ""} \
       ~{if defined(type) then ("-type " +  '"' + type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     algorithm: "Counting algorithm:\\nuniquely-mapped-reads(default) or proportional"
     bam: "Mapping file in BAM format"

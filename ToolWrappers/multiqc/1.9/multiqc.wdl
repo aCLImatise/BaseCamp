@@ -28,7 +28,6 @@ task Multiqc {
     Boolean? quiet
     Boolean? profile_runtime
     Boolean? no_ansi
-    Directory directory_dot
     String report
     String tsv
     String development
@@ -36,7 +35,6 @@ task Multiqc {
   }
   command <<<
     multiqc \
-      ~{directory_dot} \
       ~{report} \
       ~{tsv} \
       ~{development} \
@@ -68,6 +66,9 @@ task Multiqc {
       ~{if (profile_runtime) then "--profile-runtime" else ""} \
       ~{if (no_ansi) then "--no-ansi" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "Overwrite any existing reports"
     dirs: "Prepend directory to sample names"
@@ -95,7 +96,6 @@ task Multiqc {
     quiet: "Only show log warnings"
     profile_runtime: "Add analysis of how long MultiQC takes to\\nrun to the report"
     no_ansi: "Disable coloured log output"
-    directory_dot: "-t, --template [default|default_dev|gathered|geo|sections|simple]"
     report: "-l, --file-list                 Supply a file containing a list of file"
     tsv: "-z, --zip-data-dir              Compress the data directory."
     development: "--pdf                           Creates PDF report with 'simple' template."

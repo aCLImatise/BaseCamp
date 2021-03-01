@@ -14,6 +14,9 @@ task Vcf2bedNOMEpl {
       ~{input_file_name} \
       ~{cg}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     perl: ""
     vcftwobedsixplussixdotpl: ""

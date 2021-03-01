@@ -18,6 +18,9 @@ task SvtkVcfclusterFilelist {
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     x: ""
     f: ""

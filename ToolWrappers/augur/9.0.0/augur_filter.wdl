@@ -38,6 +38,9 @@ task AugurFilter {
       ~{if defined(query) then ("--query " +  '"' + query + '"') else ""} \
       ~{if defined(output_file_default) then ("--output " +  '"' + output_file_default + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequences: "sequences in fasta or VCF format (default: None)"
     metadata: "metadata associated with sequences (default: None)"

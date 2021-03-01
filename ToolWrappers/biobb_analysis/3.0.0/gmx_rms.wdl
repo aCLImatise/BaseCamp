@@ -16,6 +16,9 @@ task GmxRms {
       ~{if defined(input_t_raj_path) then ("--input_traj_path " +  '"' + input_t_raj_path + '"') else ""} \
       ~{if defined(output_x_vg_path) then ("--output_xvg_path " +  '"' + output_x_vg_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Configuration file"
     input_index_path: "Path to the GROMACS index file. Accepted formats: ndx."

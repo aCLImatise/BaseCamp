@@ -3,58 +3,58 @@ command:
 - consolidate_vcfs.pl
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: v1
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: /opt/bcftools/bcftools
+  optional: true
   synonyms:
   - --snv-abundance-ratio
   - --bcftools-path
+  description: /opt/bcftools/bcftools
   args: !SimpleFlagArg
     name: '0.75'
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --vcfsplit
   description: "[REQUIRED]\nMultiple list of key/value pair. Multiple .gz files can\
     \ be input.\nExample with 3 gz files: --vcfsplit 'name=/path/vcf1.gz' --vcfsplit\n\
     'name=/path/vcf2.gz' --vcfsplit 'name=/path/vcf3.gz'."
-  synonyms:
-  - --vcfsplit
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mpileup
   description: "[REQUIRED]\nMultiple list of key/value pair. Multiple .gz files can\
     \ be input.\nExample with 3 gz files: --mpileup 'name=/path/vcf1.gz' --mpileup\n\
     'name=/path/vcf2.gz' --mpileup 'name=/path/vcf3.gz'."
-  synonyms:
-  - --mpileup
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[REQUIRED]\nThe cutoff for coverage to include a reference base (default:\
-    \ 1)."
+  optional: true
   synonyms:
   - --coverage-cutoff
+  description: "[REQUIRED]\nThe cutoff for coverage to include a reference base (default:\
+    \ 1)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[REQUIRED]\nMean mapping quality of observed alternate alleles."
+  optional: true
   synonyms:
   - --min-mean-mapping
+  description: "[REQUIRED]\nMean mapping quality of observed alternate alleles."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "Displays the help screen.\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: "Displays the help screen.\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage:\n    consolidate_vcfs.pl --vcfsplit v1=files/dataset1.dat --mpileup\n\
@@ -75,3 +75,4 @@ help_text: "Usage:\n    consolidate_vcfs.pl --vcfsplit v1=files/dataset1.dat --m
   \ to BCFTools.\n\n    -h, --help\n        Displays the help screen.\n\n"
 generated_using:
 - --help
+docker_image:

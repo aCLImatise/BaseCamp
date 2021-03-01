@@ -18,6 +18,9 @@ task MakeBloom {
       ~{if (hash_num) then "--hashNum" else ""} \
       ~{if (bf_size_bits) then "--bfsizeBits" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "Fasta input file. Mandatory option."
     output_file_extension: "Output file, with NO extension. Mandatory option."

@@ -3,17 +3,17 @@ id: fermi_unitig.cwl
 inputs:
 - id: in_min_match
   doc: min match [0]
-  type: long
+  type: long?
   inputBinding:
     prefix: -l
 - id: in_number_of_threads
   doc: number of threads [1]
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_rank_file
   doc: rank file [null]
-  type: File
+  type: File?
   inputBinding:
     prefix: -r
 - id: in_reads_dot_fmd
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fermi

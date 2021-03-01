@@ -86,6 +86,9 @@ task GcloudTopicConfigurations {
       ~{instance} \
       ~{if defined(configuration) then ("--configuration " +  '"' + configuration + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     configuration: ", or environment variable"
     unset_dot: "Creating configurations"

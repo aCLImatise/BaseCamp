@@ -46,6 +46,9 @@ task GWAMA {
       ~{if (name_or_nine_five_l) then "--name_or_95l" else ""} \
       ~{if (name_or_nine_five_u) then "--name_or_95u" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     random: "Use random effect correction"
     genomic_control: "Use genomic control for\\nadjusting studies' result files"

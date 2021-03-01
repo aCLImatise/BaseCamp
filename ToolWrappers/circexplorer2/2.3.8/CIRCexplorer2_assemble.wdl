@@ -22,6 +22,9 @@ task CIRCexplorer2Assemble {
       ~{if (remove_rrna) then "--remove-rRNA" else ""} \
       ~{if defined(max_bundle_frags) then ("--max-bundle-frags " +  '"' + max_bundle_frags + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "Gene annotation file."
     top_hat: "TopHat mapping folder."

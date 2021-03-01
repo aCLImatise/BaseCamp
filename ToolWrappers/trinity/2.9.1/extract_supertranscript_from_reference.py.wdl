@@ -16,6 +16,9 @@ task ExtractSupertranscriptFromReferencepy {
       ~{if defined(seq) then ("--seq " +  '"' + seq + '"') else ""} \
       ~{if defined(name_base_path) then ("-o " +  '"' + name_base_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gtf: "Path to gtf annotation file."
     gff_three: "Path to gff3 annotation file."

@@ -4,12 +4,12 @@ inputs:
 - id: in_retries
   doc: "Maximum number of times to retry server requests that\nencounter temporary\
     \ failures (e.g., server down). Default\n3."
-  type: long
+  type: long?
   inputBinding:
     prefix: --retries
 - id: in_list_file_sizes
   doc: List file sizes, in KiB.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_locator
@@ -26,6 +26,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - arv-ls

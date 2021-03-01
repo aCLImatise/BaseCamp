@@ -1,21 +1,21 @@
 class: CommandLineTool
 id: go2summary.cwl
 inputs:
-- id: in_writes_errors_defaults
+- id: in_writes_parse_errors
   doc: "writes parse errors in XML - defaults to STDERR (there should be no\nparse\
     \ errors in well formed files)"
-  type: string
+  type: string?
   inputBinding:
     prefix: -e
 - id: in_determines_parser_use
   doc: "determines which parser to use; if left unspecified, will make a guess\nbased\
     \ on file suffix. See below for formats"
-  type: File
+  type: File?
   inputBinding:
     prefix: -p
-- id: in_writer_formatformat_output
+- id: in_writer_formatformat_see
   doc: "|writer FORMAT\nformat for output - see below for list"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -w
 - id: in_use_cache
@@ -30,7 +30,7 @@ inputs:
     \ as pathlist). Most output formats work with event-based\nparsing, so caching\
     \ the object brings no benefit and will in fact be\nslower than bypassing the\
     \ cache"
-  type: File
+  type: File?
   inputBinding:
     prefix: -use_cache
 - id: in_format
@@ -122,11 +122,6 @@ inputs:
   type: string
   inputBinding:
     position: 4
-- id: in_documentation
-  doc: <http://www.godatabase.org/dev>
-  type: string
-  inputBinding:
-    position: 5
 outputs:
 - id: out_stdout
   doc: Standard output stream
@@ -143,9 +138,10 @@ outputs:
     \ as pathlist). Most output formats work with event-based\nparsing, so caching\
     \ the object brings no benefit and will in fact be\nslower than bypassing the\
     \ cache"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_use_cache)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - go2summary

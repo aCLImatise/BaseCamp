@@ -24,6 +24,9 @@ task ChIPAssoc {
       ~{if defined(rbg) then ("--rbg " +  '"' + rbg + '"') else ""} \
       ~{if (g_name_two) then "--gname2" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "BED file of genomic coordinates (e.g. ChIP-Seq peaks).\\nThe center of each peak will be used to compute the\\ndistance from a gene."
     db: "Gene annotation table. This can be a sqlite3 local db\\nfile, BED file or genome version of UCSC. The BED file\\nmust have an extension of '.bed'"

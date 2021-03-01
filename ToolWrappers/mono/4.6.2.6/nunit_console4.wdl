@@ -40,6 +40,9 @@ task Nunitconsole4 {
       ~{if (nologo) then "-nologo" else ""} \
       ~{if (no_dots) then "-nodots" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fixture: "Test fixture to be loaded (Short format: -load=STR)"
     run: "Name of the test to run"

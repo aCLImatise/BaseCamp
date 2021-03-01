@@ -16,6 +16,9 @@ task BamFillUnalignedpyOutputFile {
       ~{if defined(q) then ("-q " +  '"' + q + '"') else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     q: ""
     f: ""

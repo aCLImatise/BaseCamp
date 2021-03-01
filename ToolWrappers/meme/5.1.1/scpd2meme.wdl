@@ -20,6 +20,9 @@ task Scpd2meme {
       ~{if (log_odds) then "-logodds" else ""} \
       ~{if defined(url) then ("-url " +  '"' + url + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     skip: "skip this ID (may be repeated)"
     numbers: "use numbers instead of strings as motif names"

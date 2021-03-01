@@ -18,6 +18,9 @@ task Abruijnpolish {
       ~{if defined(path_file_verbose) then ("-v " +  '"' + path_file_verbose + '"') else ""} \
       ~{if defined(number_parallel_threads) then ("-t " +  '"' + number_parallel_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_file_verbose: "path to the file with verbose log [default = not set]"
     number_parallel_threads: "number of parallel threads [default = 1]"

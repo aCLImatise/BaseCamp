@@ -20,6 +20,9 @@ task Chmod {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if (recursive) then "--recursive" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     changes: "like verbose but report only when a change is made"
     silent: "suppress most error messages"

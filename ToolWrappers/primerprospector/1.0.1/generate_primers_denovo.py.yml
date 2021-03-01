@@ -4,126 +4,126 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Print information during execution -- useful for\ndebugging [default:\
-    \ False]"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: "Print information during execution -- useful for\ndebugging [default:\
+    \ False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Excluded aligned fasta file(s).  To pass multiple\nfiles, separate\
-    \ each file with a colon.  Example: -e\ntest1.fasta:test2.fasta.  If not specified,\
-    \ will skip\nexclusion step [default: none]"
+  optional: true
   synonyms:
   - -e
   - --exclude_fasta
+  description: "Excluded aligned fasta file(s).  To pass multiple\nfiles, separate\
+    \ each file with a colon.  Example: -e\ntest1.fasta:test2.fasta.  If not specified,\
+    \ will skip\nexclusion step [default: none]"
   args: !SimpleFlagArg
     name: EXCLUDE_FASTA_FILEPATH
-  optional: true
 - !Flag
-  description: "Percentage of sequence matches to primer that must\nmatch in order\
-    \ to retain prospective sequence in\ndictionary. [default: 0.6]"
+  optional: true
   synonyms:
   - -p
   - --percent_match
+  description: "Percentage of sequence matches to primer that must\nmatch in order\
+    \ to retain prospective sequence in\ndictionary. [default: 0.6]"
   args: !SimpleFlagArg
     name: PERCENT_MATCH
-  optional: true
 - !Flag
-  description: "Overall primer length to retrieve from sequences.\n[default: 20]"
+  optional: true
   synonyms:
   - -s
   - --full_primer_length
+  description: "Overall primer length to retrieve from sequences.\n[default: 20]"
   args: !SimpleFlagArg
     name: FULL_PRIMER_LENGTH
-  optional: true
 - !Flag
-  description: "Xmer length to search for in target fasta sequence(s).\n[default:\
-    \ 5]"
+  optional: true
   synonyms:
   - -x
   - --xmer_length
+  description: "Xmer length to search for in target fasta sequence(s).\n[default:\
+    \ 5]"
   args: !SimpleFlagArg
     name: SEQUENCE_LENGTH
-  optional: true
 - !Flag
-  description: "Sets specificity threshold for excluded fasta\nsequences. [default:\
-    \ 0.01]"
+  optional: true
   synonyms:
   - -S
   - --specificity_threshold
+  description: "Sets specificity threshold for excluded fasta\nsequences. [default:\
+    \ 0.01]"
   args: !SimpleFlagArg
     name: SPECIFICITY_THRESHOLD
-  optional: true
 - !Flag
-  description: "log filepath. If not specified, no log file will be\nwritten.  [default:\
-    \ none]"
+  optional: true
   synonyms:
   - -l
   - --log_file
+  description: "log filepath. If not specified, no log file will be\nwritten.  [default:\
+    \ none]"
   args: !SimpleFlagArg
     name: LOG_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --standard_index_file
   description: "Aligned sequence file with which to assign prospective\nprimer indices\
     \ to.  The alignment where a conserved\nsequence is found will be used to determine\
     \ the\nunaligned index in the supplied file (for instance an\nE. coli sequence)\
     \ and will be recorded in the output\nfile for the purpose of giving a meaningful\
     \ name to\nprospective primers.  Only the first sequence in the\nfile will be\
     \ used for determining an index [default:\nnone]"
-  synonyms:
-  - -a
-  - --standard_index_file
   args: !SimpleFlagArg
     name: STANDARD_INDEX_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --search_range
   description: "Range of nucleotides in the supplied aligned target\nsequences to\
     \ search for primers.  Supply the starting\nindex and end index separated by a\
     \ colon.  Example -r\n1500:2700  Enable this option to generate primers that\n\
     target certain regions. [default: none]"
-  synonyms:
-  - -r
-  - --search_range
   args: !SimpleFlagArg
     name: SEARCH_RANGE
-  optional: true
 - !Flag
-  description: "Target aligned fasta sequence files to find conserved\nsites for primer\
-    \ design.  Separate multiple files with\na colon. [REQUIRED]"
+  optional: true
   synonyms:
   - -i
   - --target_seqs
+  description: "Target aligned fasta sequence files to find conserved\nsites for primer\
+    \ design.  Separate multiple files with\na colon. [REQUIRED]"
   args: !SimpleFlagArg
     name: TARGET_SEQS
-  optional: true
 - !Flag
-  description: "name of output filepath to write details about\nconserved sequence\
-    \ sites. [REQUIRED]\n"
+  optional: true
   synonyms:
   - -o
   - --output_filepath
+  description: "name of output filepath to write details about\nconserved sequence\
+    \ sites. [REQUIRED]\n"
   args: !SimpleFlagArg
     name: OUTPUT_FILEPATH
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: generate_primers_denovo.py [options] {-i/--target_seqs TARGET_SEQS\
   \ -o/--output_filepath OUTPUT_FILEPATH}\n\n[] indicates optional input (order unimportant)\n\
   {} indicates required input (order unimportant)\n\nThe generate_primers_denovo module\
@@ -181,3 +181,4 @@ help_text: "Usage: generate_primers_denovo.py [options] {-i/--target_seqs TARGET
   \ to write details about\n                        conserved sequence sites. [REQUIRED]\n"
 generated_using:
 - --help
+docker_image:

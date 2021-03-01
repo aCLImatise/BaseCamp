@@ -4,6 +4,14 @@ command:
 - fetch_genbank_records
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: accession_IDs
+  description: '[accession_IDs ...]'
+- !Positional
+  optional: false
+  position: 0
+  name: emailAddress
   description: "Your email address. To access the Genbank\nCoreNucleotide database,\
     \ NCBI requires you to specify\nyour email address with each request. In case\
     \ of\nexcessive usage of the E-utilities, NCBI will attempt\nto contact a user\
@@ -11,104 +19,101 @@ positional:
     \ be\nregistered with NCBI. To register an email address,\nsimply send an email\
     \ to eutilities@ncbi.nlm.nih.gov\nincluding your email address and the tool name\n\
     (tool='https://github.com/broadinstitute/viral-ngs')."
-  position: 0
-  name: emailAddress
-  optional: false
 - !Positional
-  description: "Output directory with where .fasta and .tbl files will\nbe saved"
+  optional: false
   position: 1
   name: destinationDir
-  optional: false
+  description: "Output directory with where .fasta and .tbl files will\nbe saved"
 - !Positional
-  description: List of Genbank nuccore accession IDs
+  optional: false
   position: 2
   name: accession_IDs
-  optional: false
+  description: List of Genbank nuccore accession IDs
 named:
 - !Flag
-  description: Overwrite existing files, if present.
+  optional: true
   synonyms:
   - --forceOverwrite
+  description: Overwrite existing files, if present.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The prefix of the file containing the combined\nconcatenated results\
-    \ returned by the list of accession\nIDs, in the order provided."
+  optional: true
   synonyms:
   - --combinedFilePrefix
+  description: "The prefix of the file containing the combined\nconcatenated results\
+    \ returned by the list of accession\nIDs, in the order provided."
   args: !SimpleFlagArg
     name: COMBINEDFILEPREFIX
-  optional: true
 - !Flag
-  description: The extension to use for the downloaded files
+  optional: true
   synonyms:
   - --fileExt
+  description: The extension to use for the downloaded files
   args: !SimpleFlagArg
     name: FILEEXT
-  optional: true
 - !Flag
-  description: "If specified, remove the individual files and leave\nonly the combined\
-    \ file."
+  optional: true
   synonyms:
   - --removeSeparateFiles
+  description: "If specified, remove the individual files and leave\nonly the combined\
+    \ file."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --chunkSize
   description: "Causes files to be downloaded from GenBank in chunks\nof N accessions.\
     \ Each chunk will be its own combined\nfile, separate from any combined file created\
     \ via\n--combinedFilePrefix (default: 1). If chunkSize is\nunspecified and >500\
     \ accessions are provided,\nchunkSize will be set to 500 to adhere to the NCBI\n\
     guidelines on information retreival."
-  synonyms:
-  - --chunkSize
   args: !SimpleFlagArg
     name: CHUNKSIZE
-  optional: true
 - !Flag
-  description: 'Base directory for temp files. [default: /tmp]'
+  optional: true
   synonyms:
   - --tmp_dir
+  description: 'Base directory for temp files. [default: /tmp]'
   args: !SimpleFlagArg
     name: TMP_DIR
-  optional: true
 - !Flag
-  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
-    \ to delete all temp files at the end, even\nif there's a failure."
+  optional: true
   synonyms:
   - --tmp_dirKeep
+  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
+    \ to delete all temp files at the end, even\nif there's a failure."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Verboseness of output. [default: DEBUG]'
+  optional: true
   synonyms:
   - --loglevel
+  description: 'Verboseness of output. [default: DEBUG]'
   args: !ChoiceFlagArg
     choices: !!set
-      CRITICAL:
-      ERROR:
       INFO:
-      WARNING:
       DEBUG:
+      CRITICAL:
+      WARNING:
+      ERROR:
       EXCEPTION:
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
   - -V
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: ncbi.py subcommand fetch_genbank_records [-h] [--forceOverwrite]\n\
   \                                                [--combinedFilePrefix COMBINEDFILEPREFIX]\n\
   \                                                [--fileExt FILEEXT]\n         \
@@ -157,3 +162,4 @@ help_text: "usage: ncbi.py subcommand fetch_genbank_records [-h] [--forceOverwri
   \ version number and exit\n"
 generated_using:
 - --help
+docker_image:

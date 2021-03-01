@@ -4,6 +4,9 @@ task Chips {
   command <<<
     chips
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

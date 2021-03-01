@@ -4,7 +4,7 @@ task Bogart {
   input {
     File? mandatory_path_existing_seqstore
     File? mandatory_path_existing_ovlstore
-    File? mandatory_path_output
+    File? mandatory_path_tigstore
     String? mandatory_prefix_output
     String? threads
     String? use_most_gigabytes
@@ -31,6 +31,7 @@ task Bogart {
     String error_profiles
     String chunk_graph
     String place_unplaced
+    String split_discontinuous
     String setparent_and_hang
   }
   command <<<
@@ -39,10 +40,11 @@ task Bogart {
       ~{error_profiles} \
       ~{chunk_graph} \
       ~{place_unplaced} \
+      ~{split_discontinuous} \
       ~{setparent_and_hang} \
       ~{if defined(mandatory_path_existing_seqstore) then ("-S " +  '"' + mandatory_path_existing_seqstore + '"') else ""} \
       ~{if defined(mandatory_path_existing_ovlstore) then ("-O " +  '"' + mandatory_path_existing_ovlstore + '"') else ""} \
-      ~{if defined(mandatory_path_output) then ("-T " +  '"' + mandatory_path_output + '"') else ""} \
+      ~{if defined(mandatory_path_tigstore) then ("-T " +  '"' + mandatory_path_tigstore + '"') else ""} \
       ~{if defined(mandatory_prefix_output) then ("-o " +  '"' + mandatory_prefix_output + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(use_most_gigabytes) then ("-M " +  '"' + use_most_gigabytes + '"') else ""} \
@@ -66,10 +68,13 @@ task Bogart {
       ~{if defined(enable_loggingdebugging_specific) then ("-D " +  '"' + enable_loggingdebugging_specific + '"') else ""} \
       ~{if defined(disable_loggingdebugging_specific) then ("-d " +  '"' + disable_loggingdebugging_specific + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mandatory_path_existing_seqstore: "Mandatory path to an existing seqStore."
     mandatory_path_existing_ovlstore: "Mandatory path to an existing ovlStore."
-    mandatory_path_output: "Mandatory path to an output tigStore (can exist or not)."
+    mandatory_path_tigstore: "Mandatory path to an output tigStore (can exist or not)."
     mandatory_prefix_output: "Mandatory prefix for the output files."
     threads: "Use at most T compute threads."
     use_most_gigabytes: "Use at most 'gb' gigabytes of memory."
@@ -96,10 +101,11 @@ task Bogart {
     error_profiles: "optimizePositions"
     chunk_graph: "buildUnitig"
     place_unplaced: "orphans"
+    split_discontinuous: "intermediateTigs"
     setparent_and_hang: "stderr"
   }
   output {
     File out_stdout = stdout()
-    File out_mandatory_path_output = "${in_mandatory_path_output}"
+    File out_mandatory_path_tigstore = "${in_mandatory_path_tigstore}"
   }
 }

@@ -76,6 +76,9 @@ task Cathssap {
       ~{if (citation_help) then "--citation-help" else ""} \
       ~{if (scores_help) then "--scores-help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_version_information: "[ --version ]                         Output version information"
     debug: "Output debugging information"

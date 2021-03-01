@@ -3,7 +3,7 @@ id: get_position_from_sam.py_fastafile.cwl
 inputs:
 - id: in_r
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
 - id: in_get_position_from_sam_do_tpy
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - get_position_from_sam.py

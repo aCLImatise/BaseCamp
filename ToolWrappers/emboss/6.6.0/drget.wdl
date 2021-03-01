@@ -8,6 +8,9 @@ task Drget {
     drget \
       ~{if (resources) then "-resources" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     resources: ": enter resource value: Error: Unable to get reply from user - end of standard input"
   }

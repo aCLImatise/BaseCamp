@@ -14,6 +14,9 @@ task TransIndelBuildDNApy {
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mapq_cut_off: ":minimal MapQ in SAM for support SV event, default 15"
     max_del_length: ":maximum deletion length to be detected (10e6)"

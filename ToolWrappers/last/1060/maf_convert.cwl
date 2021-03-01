@@ -3,37 +3,37 @@ id: maf_convert.cwl
 inputs:
 - id: in_protein
   doc: assume protein alignments, for psl match counts
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --protein
 - id: in_join
   doc: join co-linear alignments separated by <= N letters
-  type: string
+  type: string?
   inputBinding:
     prefix: --join
 - id: in_noheader
   doc: omit any header lines from the output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noheader
 - id: in_dictionary
   doc: include dictionary of sequence lengths in sam format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dictionary
 - id: in_dict_file
   doc: get sequence dictionary from DICTFILE
-  type: File
+  type: File?
   inputBinding:
     prefix: --dictfile
 - id: in_read_group
   doc: read group info for sam format
-  type: string
+  type: string?
   inputBinding:
     prefix: --readgroup
 - id: in_line_size
   doc: "line length for blast and html formats (default: 60)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --linesize
 - id: in_axt
@@ -85,6 +85,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - maf-convert

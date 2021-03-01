@@ -4,7 +4,7 @@ task Arcs {
   input {
     File? fof_name
     Boolean? mult_file
-    File? file
+    File? fasta_file_contig
     Int? min_reads
     Int? min_links
     Int? min_size
@@ -39,7 +39,7 @@ task Arcs {
       ~{or} \
       ~{if defined(fof_name) then ("--fofName " +  '"' + fof_name + '"') else ""} \
       ~{if (mult_file) then "--multfile" else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(fasta_file_contig) then ("--file " +  '"' + fasta_file_contig + '"') else ""} \
       ~{if defined(min_reads) then ("--min_reads " +  '"' + min_reads + '"') else ""} \
       ~{if defined(min_links) then ("--min_links " +  '"' + min_links + '"') else ""} \
       ~{if defined(min_size) then ("--min_size " +  '"' + min_size + '"') else ""} \
@@ -66,10 +66,13 @@ task Arcs {
       ~{if defined(samples_tsv) then ("--samples_tsv " +  '"' + samples_tsv + '"') else ""} \
       ~{if (output_scaffolds_pairing) then "--pair" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fof_name: "text file listing input filenames"
     mult_file: "tsv or csv file listing barcode multiplicities [optional]"
-    file: "FASTA file of contig sequences to scaffold"
+    fasta_file_contig: "FASTA file of contig sequences to scaffold"
     min_reads: "min aligned read pairs per barcode mapping [5]"
     min_links: "min shared barcodes between contigs [0]"
     min_size: "min contig length [500]"

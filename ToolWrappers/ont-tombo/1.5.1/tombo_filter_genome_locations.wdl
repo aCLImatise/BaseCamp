@@ -16,6 +16,9 @@ task TomboFilterGenomeLocations {
       ~{if defined(corrected_group) then ("--corrected-group " +  '"' + corrected_group + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_five_based_irs: "Directories containing fast5 files."
     include_regions: "Filter out reads not falling completely within include\\nregions. Omit start and end coordinates to include an\\nentire chromosome/sequence record. Format regions as\\n\\\"chrm[:start-end] [chrm2[:start2-end2] ...]\\\"."

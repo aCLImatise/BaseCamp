@@ -16,6 +16,9 @@ task PblayoutM4tog {
       ~{if (disable_chime_r_bridge_removal) then "--disable-chimer-bridge-removal" else ""} \
       ~{if (ctg_prefix) then "--ctg-prefix" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     lfc: "use local flow constraint method rather\\nthan best overlap method to resolve\\nknots in string graph"
     disable_chime_r_bridge_removal: "and do not write chimer_nodes file"

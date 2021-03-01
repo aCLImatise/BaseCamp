@@ -2,11 +2,10 @@ version 1.0
 
 task MsaSplit {
   input {
-    File? out_root
-    Boolean? windows
     Boolean? by_category
-    File? by_group
     Boolean? for_features
+    Boolean? windows
+    File? by_group
     Int? by_index
     Int? n_partitions
     Int? between_blocks
@@ -16,6 +15,7 @@ task MsaSplit {
     File? in_format
     File? refseq
     File? out_format
+    File? out_root
     Boolean? sub_features
     Boolean? reverse_compl
     String? gap_strip
@@ -28,16 +28,15 @@ task MsaSplit {
     Boolean? unordered_ss
     File? summary
     Boolean? quiet
-    String fname
+    String format_dot
   }
   command <<<
     msa_split \
-      ~{fname} \
-      ~{if defined(out_root) then ("--out-root " +  '"' + out_root + '"') else ""} \
-      ~{if (windows) then "--windows" else ""} \
+      ~{format_dot} \
       ~{if (by_category) then "--by-category" else ""} \
-      ~{if defined(by_group) then ("--by-group " +  '"' + by_group + '"') else ""} \
       ~{if (for_features) then "--for-features" else ""} \
+      ~{if (windows) then "--windows" else ""} \
+      ~{if defined(by_group) then ("--by-group " +  '"' + by_group + '"') else ""} \
       ~{if defined(by_index) then ("--by-index " +  '"' + by_index + '"') else ""} \
       ~{if defined(n_partitions) then ("--npartitions " +  '"' + n_partitions + '"') else ""} \
       ~{if defined(between_blocks) then ("--between-blocks " +  '"' + between_blocks + '"') else ""} \
@@ -47,6 +46,7 @@ task MsaSplit {
       ~{if defined(in_format) then ("--in-format " +  '"' + in_format + '"') else ""} \
       ~{if defined(refseq) then ("--refseq " +  '"' + refseq + '"') else ""} \
       ~{if defined(out_format) then ("--out-format " +  '"' + out_format + '"') else ""} \
+      ~{if defined(out_root) then ("--out-root " +  '"' + out_root + '"') else ""} \
       ~{if (sub_features) then "--sub-features" else ""} \
       ~{if (reverse_compl) then "--reverse-compl" else ""} \
       ~{if defined(gap_strip) then ("--gap-strip " +  '"' + gap_strip + '"') else ""} \
@@ -60,12 +60,14 @@ task MsaSplit {
       ~{if (summary) then "--summary" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    out_root: "Filename root for output files (default \\\"msa_split\\\")."
-    windows: "<win_size,win_overlap>\\nSplit the alignment into \\\"windows\\\" of size <win_size> bases,\\noverlapping by <win_overlap>."
     by_category: "(Requires --features) Split by category, as defined by\\nannotations file and (optionally) category map (see\\n--catmap)"
-    by_group: "(Requires --features) Split by groups in annotation file,\\nas defined by specified tag.  Splits midway between every\\npair of consecutive groups.  Features will be sorted by group.\\nThere should be no overlapping features (see 'refeature\\n--unique')."
     for_features: "(Requires --features) Extract section of alignment\\ncorresponding to every feature.  There will be no output for\\nregions not covered by features."
+    windows: "<win_size,win_overlap>\\nSplit the alignment into \\\"windows\\\" of size <win_size> bases,\\noverlapping by <win_overlap>."
+    by_group: "(Requires --features) Split by groups in annotation file,\\nas defined by specified tag.  Splits midway between every\\npair of consecutive groups.  Features will be sorted by group.\\nThere should be no overlapping features (see 'refeature\\n--unique')."
     by_index: "List of explicit indices at which to split alignment\\n(comma-separated).  If the list of indices is \\\"10,20\\\",\\nthen sub-alignments will be output for sites 1-9, 10-19, and\\n20-<msa_len>.  Note that the indices are relative to the\\ninput alignment, and not necessarily in genomic coordinates."
     n_partitions: "Split alignment equally into specified number of partitions."
     between_blocks: "(Not for use with --by-category or --for-features) Try to\\npartition at sites between alignment blocks.  Assumes a\\nreference sequence alignment, with the first sequence as the\\nreference seq (as created by multiz).  Blocks of 30 sites with\\ngaps in all sequences but the reference seq are assumed to\\nindicate boundaries between alignment blocks.  Partition\\nindices will not be moved more than <radius> sites."
@@ -75,6 +77,7 @@ task MsaSplit {
     in_format: "|PHYLIP|MPM|MAF|SS\\nInput alignment file format.  Default is to guess format from\\nfile contents."
     refseq: "(For use with --in-format MAF) Name of file containing\\nreference sequence, in FASTA format."
     out_format: "|PHYLIP|MPM|SS\\nOutput alignment file format.  Default is FASTA."
+    out_root: "Filename root for output files (default \\\"msa_split\\\")."
     sub_features: "(For use with --features)  Output subsets of features\\ncorresponding to subalignments.  Features overlapping\\npartition boundaries will be discarded.  Not permitted with\\n--by-category."
     reverse_compl: "Reverse complement all segments having at least one feature on\\nthe reverse strand and none on the positive strand.  For use\\nwith --by-group.  Can also be used with --by-category to ensure\\nall sites in a category are represented in the same strand\\norientation."
     gap_strip: "|ANY|<seqno>\\nStrip columns in output alignments containing all gaps, any\\ngaps, or gaps in the specified sequence (<seqno>; indexing\\nbegins with one).  Default is not to strip any columns."
@@ -87,12 +90,12 @@ task MsaSplit {
     unordered_ss: "(For use with --out-format SS)  Suppress the portion of the\\nsufficient statistics concerned with the order in which columns\\nappear."
     summary: "Output summary of each output alignment to a file with suffix\\n\\\".sum\\\" (includes base frequencies and numbers of gapped columns)."
     quiet: "Proceed quietly."
-    fname: ""
+    format_dot: "msa_split mydata.fa --features conserved.bed --by-category \\"
   }
   output {
     File out_stdout = stdout()
-    File out_out_root = "${in_out_root}"
     File out_out_format = "${in_out_format}"
+    File out_out_root = "${in_out_root}"
     File out_summary = "${in_summary}"
   }
 }

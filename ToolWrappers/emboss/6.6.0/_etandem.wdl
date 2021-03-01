@@ -18,6 +18,9 @@ task Etandem {
       ~{if (uniform) then "-uniform" else ""} \
       ~{if (orig_file) then "-origfile" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_repeat: "integer    [10] Minimum repeat size (Integer, 2 or\\nhigher)"
     max_repeat: "integer    [Same as -minrepeat] Maximum repeat size\\n(Integer, same as -minrepeat or higher)"

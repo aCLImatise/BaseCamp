@@ -14,10 +14,13 @@ task CreateKUnitigMaxOverlaps {
       ~{if defined(create_coords_file) then ("-create-coords-file " +  '"' + create_coords_file + '"') else ""} \
       ~{if defined(largest_kuni_tig_number) then ("-largest-kunitig-number " +  '"' + largest_kuni_tig_number + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er_value: "to specify the k-mer size used when generating the k-unitigs."
     create_coords_file: "output the coords file as well as the overlaps file"
-    largest_kuni_tig_number: "(in this case the"
+    largest_kuni_tig_number: "(in this case the\\nk-unitigs don't have to be in numeric order in the files.)\\n"
     prefix_dot_coords: "and   prefix.overlaps."
   }
   output {

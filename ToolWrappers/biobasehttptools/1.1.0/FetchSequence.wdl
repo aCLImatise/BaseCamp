@@ -16,6 +16,9 @@ task FetchSequence {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     geneid: "Gene id"
     gene_start: "Gene start"

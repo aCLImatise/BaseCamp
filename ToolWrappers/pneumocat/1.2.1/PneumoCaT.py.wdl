@@ -24,6 +24,9 @@ task PneumoCaTpy {
       ~{if defined(sam_tools) then ("--samtools " +  '"' + sam_tools + '"') else ""} \
       ~{if (cleanup) then "--cleanup" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_directory: "please provide the path to the directory contains the\\nfastq files [REQUIRED - OPTION 1]"
     fast_q_one: "Fastq file pair 1 [REQUIRED - OPTION 2]"

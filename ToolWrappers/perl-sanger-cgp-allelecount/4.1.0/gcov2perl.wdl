@@ -12,6 +12,9 @@ task Gcov2perl {
       ~{if (v) then "-v" else ""} \
       ~{if (i) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: ""
     v: ""

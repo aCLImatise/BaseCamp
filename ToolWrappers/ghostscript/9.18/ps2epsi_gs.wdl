@@ -4,6 +4,9 @@ task Ps2epsiGs {
   command <<<
     ps2epsi gs
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

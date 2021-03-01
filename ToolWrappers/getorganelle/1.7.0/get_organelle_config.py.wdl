@@ -32,6 +32,9 @@ task GetOrganelleConfigpy {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(f) then ("-F " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add: "Add database for organelle type(s). Followed by any of\\nall/embplant_pt/embplant_mt/embplant_nr/fungus_mt/anim\\nal_mt/other_pt or multiple types joined by comma such\\nas embplant_pt,embplant_mt,fungus_mt."
     use_version: "The version of database to add. Find more versions at\\ngithub.com/Kinggerm/GetOrganelleDB. Default: latest"

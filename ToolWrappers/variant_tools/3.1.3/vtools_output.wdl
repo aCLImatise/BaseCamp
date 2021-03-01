@@ -30,6 +30,9 @@ task VtoolsOutput {
       ~{if (all) then "--all" else ""} \
       ~{if defined(order_by) then ("--order_by " +  '"' + order_by + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbosity: "Output error and warning (0), info (1), debug (2) and\\ntrace (3) information to standard output (default to\\n1)."
     header: "[HEADER [HEADER ...]]\\nA complete header or a list of names that will be\\njoined by a delimiter (parameter --delimiter). If a\\nspecial name - is specified, the header will be read\\nfrom the standard input, which is the preferred way to\\nspecify large multi-line headers (e.g. cat myheader |\\nvtools export --header -). If this parameter is given\\nwithout parameter, a default header will be derived\\nfrom field names."

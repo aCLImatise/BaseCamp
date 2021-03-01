@@ -20,6 +20,9 @@ task CramtoolsFixheader {
       ~{if (uri_pattern) then "--uri-pattern" else ""} \
       ~{if (log_level) then "--log-level" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     confirm_md_five: "Calculate MD5 for sequences mentioned in the header. Requires --reference-fasta-file option. (default: false)"
     inject_uri: "Inject URI for all reference sequences in the header. (default: false)"

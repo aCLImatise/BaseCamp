@@ -19,17 +19,17 @@ task Mcxassemble {
     String? ctag
     File? skw
     File? prm
-    Boolean? check_primary_symmetry
+    Boolean? check_result_symmetry
     Boolean? raw_tf
     Boolean? prm_tf
     Boolean? sym_tf
     Int? rv
     Int? re
     Int? ri
-    Int? same_entries_vectors
+    Int? same_entries_matrix
     Boolean? quiet_re
     Boolean? quiet_rv
-    Boolean? two_above_combined
+    Boolean? the_two_combined
     Boolean? help
   }
   command <<<
@@ -51,19 +51,22 @@ task Mcxassemble {
       ~{if defined(ctag) then ("-ctag " +  '"' + ctag + '"') else ""} \
       ~{if defined(skw) then ("-skw " +  '"' + skw + '"') else ""} \
       ~{if defined(prm) then ("-prm " +  '"' + prm + '"') else ""} \
-      ~{if (check_primary_symmetry) then "-s" else ""} \
+      ~{if (check_result_symmetry) then "-s" else ""} \
       ~{if (raw_tf) then "-raw-tf" else ""} \
       ~{if (prm_tf) then "-prm-tf" else ""} \
       ~{if (sym_tf) then "-sym-tf" else ""} \
       ~{if defined(rv) then ("-rv " +  '"' + rv + '"') else ""} \
       ~{if defined(re) then ("-re " +  '"' + re + '"') else ""} \
       ~{if defined(ri) then ("-ri " +  '"' + ri + '"') else ""} \
-      ~{if defined(same_entries_vectors) then ("-r " +  '"' + same_entries_vectors + '"') else ""} \
+      ~{if defined(same_entries_matrix) then ("-r " +  '"' + same_entries_matrix + '"') else ""} \
       ~{if (quiet_re) then "--quiet-re" else ""} \
       ~{if (quiet_rv) then "--quiet-rv" else ""} \
-      ~{if (two_above_combined) then "-q" else ""} \
+      ~{if (the_two_combined) then "-q" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     use_baseraw_basehdr: "use base.raw, base.hdr, and optionally base.map"
     hdr: "read header file"
@@ -82,17 +85,17 @@ task Mcxassemble {
     ctag: "apply col map in base.tag"
     skw: "write skew matrix to file"
     prm: "write primary result to file"
-    check_primary_symmetry: "check primary result symmetry by creating skew matrix"
+    check_result_symmetry: "check primary result symmetry by creating skew matrix"
     raw_tf: "<func(arg)[, func(arg)]*> apply unary transformations to raw values"
     prm_tf: "<func(arg)[, func(arg)]*> apply unary transformations to primary matrix"
     sym_tf: "<func(arg)[, func(arg)]*> apply unary transformations to symmetrified matrix"
     rv: "action for repeated vectors"
     re: "action for repeated entries"
     ri: "action for adding image with mirror"
-    same_entries_vectors: "same for entries and vectors and matrix"
+    same_entries_matrix: "same for entries and vectors and matrix"
     quiet_re: "do not warn for repeated entries"
     quiet_rv: "do not warn for repeated vectors"
-    two_above_combined: "the two above combined"
+    the_two_combined: "the two above combined"
     help: "print this help"
   }
   output {

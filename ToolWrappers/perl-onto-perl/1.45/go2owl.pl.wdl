@@ -10,6 +10,9 @@ task Go2owlpl {
       ~{usage} \
       ~{if (obo_input_file) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     obo_input_file: "OBO input file"
     usage: ": go2owl.pl [options]"

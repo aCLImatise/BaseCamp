@@ -14,6 +14,9 @@ task AwsSubcommand {
       ~{subcommand} \
       ~{parameters}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aws: ""
     var_command: ""

@@ -16,6 +16,9 @@ task Errno {
       ~{if (list) then "--list" else ""} \
       ~{if (lss) then "-lsS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     search_all_locales: ""
     search: ""

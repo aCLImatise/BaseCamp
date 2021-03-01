@@ -1,15 +1,11 @@
 version 1.0
 
 task Geno2lfmm {
-  input {
-    File? _help
-  }
   command <<<
-    geno2lfmm \
-      ~{if defined(_help) then ("-input " +  '"' + _help + '"') else ""}
+    geno2lfmm
   >>>
-  parameter_meta {
-    _help: "--help"
+  runtime {
+    docker: "None"
   }
   output {
     File out_stdout = stdout()

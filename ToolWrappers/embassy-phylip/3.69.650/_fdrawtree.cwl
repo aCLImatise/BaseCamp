@@ -16,7 +16,7 @@ inputs:
     \ dot-matrix printer);\nt (Toshiba 24-pin dot-matrix printer); o\n(Okidata dot-matrix\
     \ printer); b (Houston\nInstruments plotter); u (other (one you have\ninserted\
     \ code for)))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -plotter
 - id: in_previewer
@@ -24,82 +24,83 @@ inputs:
     \ (MSDOS graphics screen\nm:Macintosh screens); x (X Windows display);\nw (MS\
     \ Windows display); k (TeKtronix 4010\ngraphics terminal); d (DEC ReGIS graphics\n\
     (VT240 terminal)); o (Other (one you have\ninserted code for)))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -previewer
 - id: in_iterate
   doc: "menu       [e] Iterate to improve tree (Values: n (No);\ne (Equal-Daylight\
     \ algorithm); b (n-Body\nalgorithm))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -iterate
 - id: in_lengths
   doc: boolean    [N] Use branch lengths from user trees
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -lengths
 - id: in_label_direction
   doc: "menu       [m] Label direction (Values: a (along); f\n(fixed); r (radial);\
     \ m (middle))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -labeldirection
 - id: in_tree_angle
   doc: "float      [90.0] Angle the tree is to be plotted\n(Number from -360.000 to\
     \ 360.000)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -treeangle
 - id: in_arc
   doc: "float      [360] Degrees the arc should occupy (Number\nfrom 0.000 to 360.000)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -arc
 - id: in_tree_depth
   doc: "float      [0.53] Depth of tree as fraction of its\nbreadth (Number from 0.100\
     \ to 100.000)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -treedepth
 - id: in_paper_x
   doc: float      [20.63750] Paper width (Any numeric value)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -paperx
 - id: in_papery
   doc: "float      [26.98750] Paper height (Number 0.100 or\nmore)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -papery
 - id: in_pages_height
   doc: "float      [1] Number of trees across height of page\n(Number 1.000 or more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pagesheight
 - id: in_pages_width
   doc: "float      [1] Number of trees across width of page\n(Number 1.000 or more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -pageswidth
 - id: in_hp_margin
   doc: "float      [0.41275] Horizontal overlap (cm) (Number\n0.001 or more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -hpmargin
 - id: in_vp_margin
   doc: "float      [0.53975] Vertical overlap (cm) (Number\n0.001 or more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -vpmargin
 - id: in_font_file
   doc: string     [font1] Fontfile name (Any string)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -fontfile
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _fdrawtree

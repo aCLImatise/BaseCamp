@@ -18,6 +18,9 @@ task IgdiscoverDereplicate {
       ~{if defined(barcode_length) then ("--barcode-length " +  '"' + barcode_length + '"') else ""} \
       ~{if defined(json) then ("--json " +  '"' + json + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     limit: "Limit processing to the first N reads"
     trim_g: "Trim 'G' nucleotides at 5' end"

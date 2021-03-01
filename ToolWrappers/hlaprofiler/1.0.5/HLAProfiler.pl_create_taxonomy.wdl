@@ -16,6 +16,9 @@ task HLAProfilerplCreateTaxonomy {
       ~{if (output_dir) then "-output_dir" else ""} \
       ~{if (log) then "-log" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "|r    HLA reference fasta (required)"
     cwd: "File containing the names of common and well-documented alleles. This file can be blank but must be specified.(required)"

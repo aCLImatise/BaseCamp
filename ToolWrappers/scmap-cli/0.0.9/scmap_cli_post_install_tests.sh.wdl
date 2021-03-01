@@ -12,6 +12,9 @@ task Scmapclipostinstalltestssh {
       ~{action} \
       ~{use_existing_outputs}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sc_map_scripts_post_install_tests_dots_h: ""
     action: ""

@@ -34,6 +34,9 @@ task Phast {
       ~{hmm_train} \
       ~{hmm_tweak}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all_dists: "hmm_view        phastBias"
     base_evolve: "indelFit        phastCons"

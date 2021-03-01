@@ -20,6 +20,9 @@ task KmerStream {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if (bam) then "--bam" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er_size: "Size of k-mers, either a single value or comma separated list"
     quality_cut_off: "Comma separated list, keep k-mers with bases above quality threshold in PHRED (default 0)"

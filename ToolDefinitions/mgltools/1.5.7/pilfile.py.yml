@@ -12,12 +12,12 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: ": [Errno 2] No such file or directory: '-h'"
+    optional: true
     synonyms:
     - -h
+    description: ": [Errno 2] No such file or directory: '-h'"
     args: !SimpleFlagArg
       name: failed
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -29,12 +29,12 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: ": [Errno 2] No such file or directory: '-h'"
+        optional: true
         synonyms:
         - -h
+        description: ": [Errno 2] No such file or directory: '-h'"
         args: !SimpleFlagArg
           name: failed
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -46,12 +46,12 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: ": [Errno 2] No such file or directory: '-h'"
+            optional: true
             synonyms:
             - -h
+            description: ": [Errno 2] No such file or directory: '-h'"
             args: !SimpleFlagArg
               name: failed
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -63,40 +63,16 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: ": [Errno 2] No such file or directory: '-h'"
+                optional: true
                 synonyms:
                 - -h
+                description: ": [Errno 2] No such file or directory: '-h'"
                 args: !SimpleFlagArg
                   name: failed
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: list supported file formats
-                  synonyms:
-                  - -f
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: show associated info and tile data
-                  synonyms:
-                  - -i
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: verify file headers
-                  synonyms:
-                  - -v
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: quiet, don't warn for unidentified/missing/broken files
-                  synonyms:
-                  - -q
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
@@ -104,13 +80,77 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: ": [Errno 2] No such file or directory: '-h'"
+                    optional: true
                     synonyms:
                     - -h
+                    description: ": [Errno 2] No such file or directory: '-h'"
                     args: !SimpleFlagArg
                       name: failed
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -f
+                      description: list supported file formats
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -i
+                      description: show associated info and tile data
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -v
+                      description: verify file headers
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -q
+                      description: quiet, don't warn for unidentified/missing/broken
+                        files
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ": [Errno 2] No such file or directory: '-h'"
+                        args: !SimpleFlagArg
+                          name: failed
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "files... failed: [Errno 2] No such file or directory:\
+                        \ 'files...'\n-h failed: [Errno 2] No such file or directory:\
+                        \ '-h'\n"
+                      generated_using: &id004
+                      - -h
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "PIL File 0.4/2003-09-30 -- identify image files\n\
+                      Usage: pilfile [option] files...\nOptions:\n  -f  list supported\
+                      \ file formats\n  -i  show associated info and tile data\n \
+                      \ -v  verify file headers\n  -q  quiet, don't warn for unidentified/missing/broken\
+                      \ files\n"
+                    generated_using: &id005 []
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -119,8 +159,8 @@ subcommands:
                   help_text: "files... failed: [Errno 2] No such file or directory:\
                     \ 'files...'\n-h failed: [Errno 2] No such file or directory:\
                     \ '-h'\n"
-                  generated_using: &id004
-                  - -h
+                  generated_using: *id004
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -130,7 +170,8 @@ subcommands:
                   \ formats\n  -i  show associated info and tile data\n  -v  verify\
                   \ file headers\n  -q  quiet, don't warn for unidentified/missing/broken\
                   \ files\n"
-                generated_using: &id005 []
+                generated_using: *id005
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -139,6 +180,7 @@ subcommands:
               help_text: "files... failed: [Errno 2] No such file or directory: 'files...'\n\
                 -h failed: [Errno 2] No such file or directory: '-h'\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -148,6 +190,7 @@ subcommands:
               \ -i  show associated info and tile data\n  -v  verify file headers\n\
               \  -q  quiet, don't warn for unidentified/missing/broken files\n"
             generated_using: *id005
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -156,6 +199,7 @@ subcommands:
           help_text: "files... failed: [Errno 2] No such file or directory: 'files...'\n\
             -h failed: [Errno 2] No such file or directory: '-h'\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -165,6 +209,7 @@ subcommands:
           \ show associated info and tile data\n  -v  verify file headers\n  -q  quiet,\
           \ don't warn for unidentified/missing/broken files\n"
         generated_using: *id005
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -173,6 +218,7 @@ subcommands:
       help_text: "files... failed: [Errno 2] No such file or directory: 'files...'\n\
         -h failed: [Errno 2] No such file or directory: '-h'\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -182,6 +228,7 @@ subcommands:
       \ info and tile data\n  -v  verify file headers\n  -q  quiet, don't warn for\
       \ unidentified/missing/broken files\n"
     generated_using: *id005
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -190,6 +237,7 @@ subcommands:
   help_text: "files... failed: [Errno 2] No such file or directory: 'files...'\n-h\
     \ failed: [Errno 2] No such file or directory: '-h'\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -199,3 +247,4 @@ help_text: "PIL File 0.4/2003-09-30 -- identify image files\nUsage: pilfile [opt
   \ and tile data\n  -v  verify file headers\n  -q  quiet, don't warn for unidentified/missing/broken\
   \ files\n"
 generated_using: *id005
+docker_image:

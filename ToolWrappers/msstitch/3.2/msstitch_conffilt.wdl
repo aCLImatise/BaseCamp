@@ -22,6 +22,9 @@ task MsstitchConffilt {
       ~{if defined(confidence_better) then ("--confidence-better " +  '"' + confidence_better + '"') else ""} \
       ~{if (unroll) then "--unroll" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_format: "Input file of {} format"
     directory_to_output: "Directory to output in"

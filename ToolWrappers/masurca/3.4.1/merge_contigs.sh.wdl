@@ -4,7 +4,7 @@ task MergeContigssh {
   input {
     String basename
     String nuc_mer
-    File file
+    File var_file
     String ref
     String? suffix
   }
@@ -12,14 +12,17 @@ task MergeContigssh {
     merge_contigs_sh \
       ~{basename} \
       ~{nuc_mer} \
-      ~{file} \
+      ~{var_file} \
       ~{ref} \
       ~{suffix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     basename: ""
     nuc_mer: ""
-    file: ""
+    var_file: ""
     ref: ""
     suffix: ""
   }

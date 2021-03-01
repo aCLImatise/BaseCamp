@@ -22,14 +22,14 @@ task Emmtyper {
     File file_dot
     String _primerdb_text
     String primer_dot
-    String _help_show
+    String help_show_message
   }
   command <<<
     emmtyper \
       ~{file_dot} \
       ~{_primerdb_text} \
       ~{primer_dot} \
-      ~{_help_show} \
+      ~{help_show_message} \
       ~{if (var_workflow) then "--workflow" else ""} \
       ~{if defined(blast_db) then ("--blast_db " +  '"' + blast_db + '"') else ""} \
       ~{if (keep) then "--keep" else ""} \
@@ -48,6 +48,9 @@ task Emmtyper {
       ~{if defined(max_size) then ("--max-size " +  '"' + max_size + '"') else ""} \
       ~{if defined(is_pcr_path) then ("--ispcr-path " +  '"' + is_pcr_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_workflow: "[blast|pcr]      Choose workflow  [default: blast]"
     blast_db: "Path to EMM BLAST DB  [default:\\n/usr/local/lib/python3.7/site-\\npackages/emmtyper/db/emm.fna]"
@@ -69,7 +72,7 @@ task Emmtyper {
     file_dot: "[default: stdout]"
     _primerdb_text: "--primer-db TEXT                [isPcr] PCR primer. Text file with 3"
     primer_dot: "[default:"
-    _help_show: "--help                          Show this message and exit."
+    help_show_message: "--help                          Show this message and exit."
   }
   output {
     File out_stdout = stdout()

@@ -10,6 +10,9 @@ task Fermi2Unpack {
       ~{reads_dot_rld} \
       ~{list_vertical_line_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reads_dot_rld: ""
     list_vertical_line_file: ""

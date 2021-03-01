@@ -11,35 +11,87 @@ subcommands:
   - call
   positional:
   - !Positional
-    description: path to bam file
+    optional: false
     position: 0
     name: bam
-    optional: false
+    description: path to bam file
   - !Positional
-    description: bin file previously created by `strling extract`
+    optional: false
     position: 1
     name: bin
-    optional: false
+    description: bin file previously created by `strling extract`
   named:
   - !Flag
-    description: "path to fasta file\n-m, --min-support=MIN_SUPPORT\nminimum number\
-      \ of supporting reads for a locus to be reported (default: 6)\n-c, --min-clip=MIN_CLIP\
-      \    minimum number of supporting clipped reads for each side of a locus (default:\
-      \ 0)\n-t, --min-clip-total=MIN_CLIP_TOTAL\nminimum total number of supporting\
-      \ clipped reads for a locus (default: 0)\n-q, --min-mapq=MIN_MAPQ    minimum\
-      \ mapping quality (does not apply to STR reads) (default: 40)\n-l, --loci=LOCI\
-      \            Annoated bed file specifying additional STR loci to genotype. Format\
-      \ is: chr start stop repeatunit [name]\n-b, --bounds=BOUNDS        STRling -bounds.txt\
-      \ file (usually produced by strling merge) specifying additional STR loci to\
-      \ genotype.\n-o, --output-prefix=OUTPUT_PREFIX\nprefix for output files (default:\
-      \ strling)\n-v, --verbose\n-h, --help                 Show this help\n"
+    optional: true
     synonyms:
     - -f
     - --fasta
+    description: path to fasta file
     args: !SimpleFlagArg
       name: FASTA
+  - !Flag
     optional: true
-  parent: &id010 !Command
+    synonyms:
+    - -m
+    - --min-support
+    description: 'minimum number of supporting reads for a locus to be reported (default:
+      6)'
+    args: !SimpleFlagArg
+      name: MIN_SUPPORT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --min-clip
+    description: 'minimum number of supporting clipped reads for each side of a locus
+      (default: 0)'
+    args: !SimpleFlagArg
+      name: MIN_CLIP
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --min-clip-total
+    description: 'minimum total number of supporting clipped reads for a locus (default:
+      0)'
+    args: !SimpleFlagArg
+      name: MIN_CLIP_TOTAL
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --min-mapq
+    description: 'minimum mapping quality (does not apply to STR reads) (default:
+      40)'
+    args: !SimpleFlagArg
+      name: MIN_MAPQ
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --loci
+    description: 'Annoated bed file specifying additional STR loci to genotype. Format
+      is: chr start stop repeatunit [name]'
+    args: !SimpleFlagArg
+      name: LOCI
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --bounds
+    description: STRling -bounds.txt file (usually produced by strling merge) specifying
+      additional STR loci to genotype.
+    args: !SimpleFlagArg
+      name: BOUNDS
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-prefix
+    description: 'prefix for output files (default: strling)'
+    args: !SimpleFlagArg
+      name: OUTPUT_PREFIX
+  parent: &id011 !Command
     command: *id001
     positional: []
     named: []
@@ -49,17 +101,21 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: path to bam file
+        optional: false
         position: 0
         name: bam
-        optional: false
+        description: path to bam file
       - !Positional
-        description: bin file previously created by `strling extract`
+        optional: false
         position: 1
         name: bin
-        optional: false
+        description: bin file previously created by `strling extract`
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - -f
+        - --fasta
         description: "path to fasta file\n-m, --min-support=MIN_SUPPORT\nminimum number\
           \ of supporting reads for a locus to be reported (default: 6)\n-c, --min-clip=MIN_CLIP\
           \    minimum number of supporting clipped reads for each side of a locus\
@@ -72,13 +128,9 @@ subcommands:
           \ additional STR loci to genotype.\n-o, --output-prefix=OUTPUT_PREFIX\n\
           prefix for output files (default: strling)\n-v, --verbose\n-h, --help  \
           \               Show this help\n"
-        synonyms:
-        - -f
-        - --fasta
         args: !SimpleFlagArg
           name: FASTA
-        optional: true
-      parent: &id009 !Command
+      parent: &id010 !Command
         command: *id001
         positional: []
         named: []
@@ -88,17 +140,21 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: path to bam file
+            optional: false
             position: 0
             name: bam
-            optional: false
+            description: path to bam file
           - !Positional
-            description: bin file previously created by `strling extract`
+            optional: false
             position: 1
             name: bin
-            optional: false
+            description: bin file previously created by `strling extract`
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - -f
+            - --fasta
             description: "path to fasta file\n-m, --min-support=MIN_SUPPORT\nminimum\
               \ number of supporting reads for a locus to be reported (default: 6)\n\
               -c, --min-clip=MIN_CLIP    minimum number of supporting clipped reads\
@@ -112,13 +168,9 @@ subcommands:
               \ loci to genotype.\n-o, --output-prefix=OUTPUT_PREFIX\nprefix for output\
               \ files (default: strling)\n-v, --verbose\n-h, --help              \
               \   Show this help\n"
-            synonyms:
-            - -f
-            - --fasta
             args: !SimpleFlagArg
               name: FASTA
-            optional: true
-          parent: &id008 !Command
+          parent: &id009 !Command
             command: *id001
             positional: []
             named: []
@@ -128,17 +180,21 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: path to bam file
+                optional: false
                 position: 0
                 name: bam
-                optional: false
+                description: path to bam file
               - !Positional
-                description: bin file previously created by `strling extract`
+                optional: false
                 position: 1
                 name: bin
-                optional: false
+                description: bin file previously created by `strling extract`
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - -f
+                - --fasta
                 description: "path to fasta file\n-m, --min-support=MIN_SUPPORT\n\
                   minimum number of supporting reads for a locus to be reported (default:\
                   \ 6)\n-c, --min-clip=MIN_CLIP    minimum number of supporting clipped\
@@ -152,13 +208,9 @@ subcommands:
                   \ specifying additional STR loci to genotype.\n-o, --output-prefix=OUTPUT_PREFIX\n\
                   prefix for output files (default: strling)\n-v, --verbose\n-h, --help\
                   \                 Show this help\n"
-                synonyms:
-                - -f
-                - --fasta
                 args: !SimpleFlagArg
                   name: FASTA
-                optional: true
-              parent: &id003 !Command
+              parent: &id008 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -168,103 +220,435 @@ subcommands:
                   command: *id002
                   positional:
                   - !Positional
-                    description: path to bam file
+                    optional: false
                     position: 0
                     name: bam
-                    optional: false
+                    description: path to bam file
                   - !Positional
-                    description: bin file previously created by `strling extract`
+                    optional: false
                     position: 1
                     name: bin
-                    optional: false
+                    description: bin file previously created by `strling extract`
                   named:
                   - !Flag
-                    description: path to fasta file
+                    optional: true
                     synonyms:
                     - -f
                     - --fasta
+                    description: "path to fasta file\n-m, --min-support=MIN_SUPPORT\n\
+                      minimum number of supporting reads for a locus to be reported\
+                      \ (default: 6)\n-c, --min-clip=MIN_CLIP    minimum number of\
+                      \ supporting clipped reads for each side of a locus (default:\
+                      \ 0)\n-t, --min-clip-total=MIN_CLIP_TOTAL\nminimum total number\
+                      \ of supporting clipped reads for a locus (default: 0)\n-q,\
+                      \ --min-mapq=MIN_MAPQ    minimum mapping quality (does not apply\
+                      \ to STR reads) (default: 40)\n-l, --loci=LOCI            Annoated\
+                      \ bed file specifying additional STR loci to genotype. Format\
+                      \ is: chr start stop repeatunit [name]\n-b, --bounds=BOUNDS\
+                      \        STRling -bounds.txt file (usually produced by strling\
+                      \ merge) specifying additional STR loci to genotype.\n-o, --output-prefix=OUTPUT_PREFIX\n\
+                      prefix for output files (default: strling)\n-v, --verbose\n\
+                      -h, --help                 Show this help\n"
                     args: !SimpleFlagArg
                       name: FASTA
-                    optional: true
-                  - !Flag
-                    description: 'minimum number of supporting reads for a locus to
-                      be reported (default: 6)'
-                    synonyms:
-                    - -m
-                    - --min-support
-                    args: !SimpleFlagArg
-                      name: MIN_SUPPORT
-                    optional: true
-                  - !Flag
-                    description: 'minimum number of supporting clipped reads for each
-                      side of a locus (default: 0)'
-                    synonyms:
-                    - -c
-                    - --min-clip
-                    args: !SimpleFlagArg
-                      name: MIN_CLIP
-                    optional: true
-                  - !Flag
-                    description: 'minimum total number of supporting clipped reads
-                      for a locus (default: 0)'
-                    synonyms:
-                    - -t
-                    - --min-clip-total
-                    args: !SimpleFlagArg
-                      name: MIN_CLIP_TOTAL
-                    optional: true
-                  - !Flag
-                    description: 'minimum mapping quality (does not apply to STR reads)
-                      (default: 40)'
-                    synonyms:
-                    - -q
-                    - --min-mapq
-                    args: !SimpleFlagArg
-                      name: MIN_MAPQ
-                    optional: true
-                  - !Flag
-                    description: 'Annoated bed file specifying additional STR loci
-                      to genotype. Format is: chr start stop repeatunit [name]'
-                    synonyms:
-                    - -l
-                    - --loci
-                    args: !SimpleFlagArg
-                      name: LOCI
-                    optional: true
-                  - !Flag
-                    description: STRling -bounds.txt file (usually produced by strling
-                      merge) specifying additional STR loci to genotype.
-                    synonyms:
-                    - -b
-                    - --bounds
-                    args: !SimpleFlagArg
-                      name: BOUNDS
-                    optional: true
-                  - !Flag
-                    description: 'prefix for output files (default: strling)'
-                    synonyms:
-                    - -o
-                    - --output-prefix
-                    args: !SimpleFlagArg
-                      name: OUTPUT_PREFIX
-                    optional: true
-                  - !Flag
-                    description: ''
-                    synonyms:
-                    - -v
-                    - --verbose
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: bam
+                        description: path to bam file
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: bin
+                        description: bin file previously created by `strling extract`
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        - --fasta
+                        description: path to fasta file
+                        args: !SimpleFlagArg
+                          name: FASTA
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -m
+                        - --min-support
+                        description: 'minimum number of supporting reads for a locus
+                          to be reported (default: 6)'
+                        args: !SimpleFlagArg
+                          name: MIN_SUPPORT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        - --min-clip
+                        description: 'minimum number of supporting clipped reads for
+                          each side of a locus (default: 0)'
+                        args: !SimpleFlagArg
+                          name: MIN_CLIP
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        - --min-clip-total
+                        description: 'minimum total number of supporting clipped reads
+                          for a locus (default: 0)'
+                        args: !SimpleFlagArg
+                          name: MIN_CLIP_TOTAL
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -q
+                        - --min-mapq
+                        description: 'minimum mapping quality (does not apply to STR
+                          reads) (default: 40)'
+                        args: !SimpleFlagArg
+                          name: MIN_MAPQ
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        - --loci
+                        description: 'Annoated bed file specifying additional STR
+                          loci to genotype. Format is: chr start stop repeatunit [name]'
+                        args: !SimpleFlagArg
+                          name: LOCI
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -b
+                        - --bounds
+                        description: STRling -bounds.txt file (usually produced by
+                          strling merge) specifying additional STR loci to genotype.
+                        args: !SimpleFlagArg
+                          name: BOUNDS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --output-prefix
+                        description: 'prefix for output files (default: strling)'
+                        args: !SimpleFlagArg
+                          name: OUTPUT_PREFIX
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -v
+                        - --verbose
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Show this help
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "strling call\n\nUsage:\n  strling call [options]\
+                        \ bam bin\n\nArguments:\n  bam              path to bam file\n\
+                        \  bin              bin file previously created by `strling\
+                        \ extract`\n\nOptions:\n  -f, --fasta=FASTA          path\
+                        \ to fasta file\n  -m, --min-support=MIN_SUPPORT\n       \
+                        \                      minimum number of supporting reads\
+                        \ for a locus to be reported (default: 6)\n  -c, --min-clip=MIN_CLIP\
+                        \    minimum number of supporting clipped reads for each side\
+                        \ of a locus (default: 0)\n  -t, --min-clip-total=MIN_CLIP_TOTAL\n\
+                        \                             minimum total number of supporting\
+                        \ clipped reads for a locus (default: 0)\n  -q, --min-mapq=MIN_MAPQ\
+                        \    minimum mapping quality (does not apply to STR reads)\
+                        \ (default: 40)\n  -l, --loci=LOCI            Annoated bed\
+                        \ file specifying additional STR loci to genotype. Format\
+                        \ is: chr start stop repeatunit [name]\n  -b, --bounds=BOUNDS\
+                        \        STRling -bounds.txt file (usually produced by strling\
+                        \ merge) specifying additional STR loci to genotype.\n  -o,\
+                        \ --output-prefix=OUTPUT_PREFIX\n                        \
+                        \     prefix for output files (default: strling)\n  -v, --verbose\n\
+                        \  -h, --help                 Show this help\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - strling
+                      - merge
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        - --fasta
+                        description: path to fasta file (required if using CRAM input)
+                        args: !SimpleFlagArg
+                          name: FASTA
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -w
+                        - --window
+                        description: 'Number of bp within which to search for reads
+                          supporting the other side of a bound. Estimated from the
+                          insert size distribution by default. (default: -1)'
+                        args: !SimpleFlagArg
+                          name: WINDOW
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -m
+                        - --min-support
+                        description: 'minimum number of supporting reads for a locus
+                          to be reported (default: 6)'
+                        args: !SimpleFlagArg
+                          name: MIN_SUPPORT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        - --min-clip
+                        description: 'minimum number of supporting clipped reads for
+                          each side of a locus (default: 0)'
+                        args: !SimpleFlagArg
+                          name: MIN_CLIP
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        - --min-clip-total
+                        description: 'minimum total number of supporting clipped reads
+                          for a locus (default: 0)'
+                        args: !SimpleFlagArg
+                          name: MIN_CLIP_TOTAL
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -q
+                        - --min-mapq
+                        description: 'minimum mapping quality (does not apply to STR
+                          reads) (default: 40)'
+                        args: !SimpleFlagArg
+                          name: MIN_MAPQ
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -l
+                        - --bed
+                        description: 'Annoated bed file specifying additional STR
+                          loci to genotype. Format is: chr start stop repeatunit [name]'
+                        args: !SimpleFlagArg
+                          name: BED
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --output-prefix
+                        description: 'prefix for output files. Suffix will be -bounds.txt
+                          (default: strling)'
+                        args: !SimpleFlagArg
+                          name: OUTPUT_PREFIX
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -v
+                        - --verbose
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Show this help
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "strling merge\n\nUsage:\n  strling merge [options]\
+                        \ [bin ...]\n\nArguments:\n  [bin ...]        One or more\
+                        \ bin files previously created by `strling extract`\n\nOptions:\n\
+                        \  -f, --fasta=FASTA          path to fasta file (required\
+                        \ if using CRAM input)\n  -w, --window=WINDOW        Number\
+                        \ of bp within which to search for reads supporting the other\
+                        \ side of a bound. Estimated from the insert size distribution\
+                        \ by default. (default: -1)\n  -m, --min-support=MIN_SUPPORT\n\
+                        \                             minimum number of supporting\
+                        \ reads for a locus to be reported (default: 6)\n  -c, --min-clip=MIN_CLIP\
+                        \    minimum number of supporting clipped reads for each side\
+                        \ of a locus (default: 0)\n  -t, --min-clip-total=MIN_CLIP_TOTAL\n\
+                        \                             minimum total number of supporting\
+                        \ clipped reads for a locus (default: 0)\n  -q, --min-mapq=MIN_MAPQ\
+                        \    minimum mapping quality (does not apply to STR reads)\
+                        \ (default: 40)\n  -l, --bed=BED              Annoated bed\
+                        \ file specifying additional STR loci to genotype. Format\
+                        \ is: chr start stop repeatunit [name]\n  -o, --output-prefix=OUTPUT_PREFIX\n\
+                        \                             prefix for output files. Suffix\
+                        \ will be -bounds.txt (default: strling)\n  -v, --verbose\n\
+                        \  -h, --help                 Show this help\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - strling
+                      - pull_region
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: bam
+                        description: region
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        - --fasta
+                        description: path to fasta file, only required for cram
+                        args: !SimpleFlagArg
+                          name: FASTA
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        - --output-bam
+                        description: 'path to output bam (default: extracted.bam)'
+                        args: !SimpleFlagArg
+                          name: OUTPUT_BAM
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Show this help
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "strling pull_region\n\nUsage:\n  strling pull_region\
+                        \ [options] bam region\n\nArguments:\n  bam\n  region\n\n\
+                        Options:\n  -f, --fasta=FASTA          path to fasta file,\
+                        \ only required for cram\n  -o, --output-bam=OUTPUT_BAM\n\
+                        \                             path to output bam (default:\
+                        \ extracted.bam)\n  -h, --help                 Show this help\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - strling
+                      - extract
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: bam
+                        description: path to bam file
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: bin
+                        description: path bin to output bin file to be created
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        - --fasta
+                        description: path to fasta file (required for CRAM)
+                        args: !SimpleFlagArg
+                          name: FASTA
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -g
+                        - --genome-repeats
+                        description: optional path to genome repeats file. if it does
+                          not exist, it will be created
+                        args: !SimpleFlagArg
+                          name: GENOME_REPEATS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -p
+                        - --proportion-repeat
+                        description: 'proportion of read that is repetitive to be
+                          considered as STR (default: 0.8)'
+                        args: !SimpleFlagArg
+                          name: PROPORTION_REPEAT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -q
+                        - --min-mapq
+                        description: 'minimum mapping quality (does not apply to STR
+                          reads) (default: 40)'
+                        args: !SimpleFlagArg
+                          name: MIN_MAPQ
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -v
+                        - --verbose
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Show this help
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "strling extract\n\nUsage:\n  strling extract [options]\
+                        \ bam bin\n\nArguments:\n  bam              path to bam file\n\
+                        \  bin              path bin to output bin file to be created\n\
+                        \nOptions:\n  -f, --fasta=FASTA          path to fasta file\
+                        \ (required for CRAM)\n  -g, --genome-repeats=GENOME_REPEATS\n\
+                        \                             optional path to genome repeats\
+                        \ file. if it does not exist, it will be created\n  -p, --proportion-repeat=PROPORTION_REPEAT\n\
+                        \                             proportion of read that is repetitive\
+                        \ to be considered as STR (default: 0.8)\n  -q, --min-mapq=MIN_MAPQ\
+                        \    minimum mapping quality (does not apply to STR reads)\
+                        \ (default: 40)\n  -v, --verbose\n  -h, --help           \
+                        \      Show this help\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "  extract      :   extract informative STR reads from\
+                      \ a BAM/CRAM. This is a required first step.\n  merge      \
+                      \  :   merge putitive STR loci from multiple samples. Only required\
+                      \ for joint calling.\n  call         :   call STRs\n  pull_region\
+                      \  :   for debugging; pull all reads (and mates) for a given\
+                      \ regions\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
-                  help_flag: !Flag
-                    description: Show this help
-                    synonyms:
-                    - -h
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "strling call\n\nUsage:\n  strling call [options] bam\
@@ -286,103 +670,39 @@ subcommands:
                     \ genotype.\n  -o, --output-prefix=OUTPUT_PREFIX\n           \
                     \                  prefix for output files (default: strling)\n\
                     \  -v, --verbose\n  -h, --help                 Show this help\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - strling
-                  - merge
+                  command: *id005
                   positional: []
                   named:
                   - !Flag
-                    description: path to fasta file (required if using CRAM input)
+                    optional: true
                     synonyms:
                     - -f
                     - --fasta
+                    description: "path to fasta file (required if using CRAM input)\n\
+                      -w, --window=WINDOW        Number of bp within which to search\
+                      \ for reads supporting the other side of a bound. Estimated\
+                      \ from the insert size distribution by default. (default: -1)\n\
+                      -m, --min-support=MIN_SUPPORT\nminimum number of supporting\
+                      \ reads for a locus to be reported (default: 6)\n-c, --min-clip=MIN_CLIP\
+                      \    minimum number of supporting clipped reads for each side\
+                      \ of a locus (default: 0)\n-t, --min-clip-total=MIN_CLIP_TOTAL\n\
+                      minimum total number of supporting clipped reads for a locus\
+                      \ (default: 0)\n-q, --min-mapq=MIN_MAPQ    minimum mapping quality\
+                      \ (does not apply to STR reads) (default: 40)\n-l, --bed=BED\
+                      \              Annoated bed file specifying additional STR loci\
+                      \ to genotype. Format is: chr start stop repeatunit [name]\n\
+                      -o, --output-prefix=OUTPUT_PREFIX\nprefix for output files.\
+                      \ Suffix will be -bounds.txt (default: strling)\n-v, --verbose\n\
+                      -h, --help                 Show this help\n"
                     args: !SimpleFlagArg
                       name: FASTA
-                    optional: true
-                  - !Flag
-                    description: 'Number of bp within which to search for reads supporting
-                      the other side of a bound. Estimated from the insert size distribution
-                      by default. (default: -1)'
-                    synonyms:
-                    - -w
-                    - --window
-                    args: !SimpleFlagArg
-                      name: WINDOW
-                    optional: true
-                  - !Flag
-                    description: 'minimum number of supporting reads for a locus to
-                      be reported (default: 6)'
-                    synonyms:
-                    - -m
-                    - --min-support
-                    args: !SimpleFlagArg
-                      name: MIN_SUPPORT
-                    optional: true
-                  - !Flag
-                    description: 'minimum number of supporting clipped reads for each
-                      side of a locus (default: 0)'
-                    synonyms:
-                    - -c
-                    - --min-clip
-                    args: !SimpleFlagArg
-                      name: MIN_CLIP
-                    optional: true
-                  - !Flag
-                    description: 'minimum total number of supporting clipped reads
-                      for a locus (default: 0)'
-                    synonyms:
-                    - -t
-                    - --min-clip-total
-                    args: !SimpleFlagArg
-                      name: MIN_CLIP_TOTAL
-                    optional: true
-                  - !Flag
-                    description: 'minimum mapping quality (does not apply to STR reads)
-                      (default: 40)'
-                    synonyms:
-                    - -q
-                    - --min-mapq
-                    args: !SimpleFlagArg
-                      name: MIN_MAPQ
-                    optional: true
-                  - !Flag
-                    description: 'Annoated bed file specifying additional STR loci
-                      to genotype. Format is: chr start stop repeatunit [name]'
-                    synonyms:
-                    - -l
-                    - --bed
-                    args: !SimpleFlagArg
-                      name: BED
-                    optional: true
-                  - !Flag
-                    description: 'prefix for output files. Suffix will be -bounds.txt
-                      (default: strling)'
-                    synonyms:
-                    - -o
-                    - --output-prefix
-                    args: !SimpleFlagArg
-                      name: OUTPUT_PREFIX
-                    optional: true
-                  - !Flag
-                    description: ''
-                    synonyms:
-                    - -v
-                    - --verbose
-                    args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
-                  help_flag: !Flag
-                    description: Show this help
-                    synonyms:
-                    - -h
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "strling merge\n\nUsage:\n  strling merge [options] [bin\
@@ -406,43 +726,42 @@ subcommands:
                     \ (default: strling)\n  -v, --verbose\n  -h, --help          \
                     \       Show this help\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - strling
-                  - pull_region
+                  command: *id006
                   positional:
                   - !Positional
-                    description: region
+                    optional: false
                     position: 0
                     name: bam
-                    optional: false
+                    description: region
                   named:
                   - !Flag
-                    description: path to fasta file, only required for cram
+                    optional: true
                     synonyms:
                     - -f
                     - --fasta
+                    description: path to fasta file, only required for cram
                     args: !SimpleFlagArg
                       name: FASTA
-                    optional: true
                   - !Flag
-                    description: 'path to output bam (default: extracted.bam)'
+                    optional: true
                     synonyms:
                     - -o
                     - --output-bam
+                    description: 'path to output bam (default: extracted.bam)'
                     args: !SimpleFlagArg
                       name: OUTPUT_BAM
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this help
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: Show this help
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "strling pull_region\n\nUsage:\n  strling pull_region\
@@ -452,74 +771,39 @@ subcommands:
                     \           path to output bam (default: extracted.bam)\n  -h,\
                     \ --help                 Show this help\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - strling
-                  - extract
+                  command: *id007
                   positional:
                   - !Positional
-                    description: path to bam file
+                    optional: false
                     position: 0
                     name: bam
-                    optional: false
+                    description: path to bam file
                   - !Positional
-                    description: path bin to output bin file to be created
+                    optional: false
                     position: 1
                     name: bin
-                    optional: false
+                    description: path bin to output bin file to be created
                   named:
                   - !Flag
-                    description: path to fasta file (required for CRAM)
+                    optional: true
                     synonyms:
                     - -f
                     - --fasta
+                    description: "path to fasta file (required for CRAM)\n-g, --genome-repeats=GENOME_REPEATS\n\
+                      optional path to genome repeats file. if it does not exist,\
+                      \ it will be created\n-p, --proportion-repeat=PROPORTION_REPEAT\n\
+                      proportion of read that is repetitive to be considered as STR\
+                      \ (default: 0.8)\n-q, --min-mapq=MIN_MAPQ    minimum mapping\
+                      \ quality (does not apply to STR reads) (default: 40)\n-v, --verbose\n\
+                      -h, --help                 Show this help\n"
                     args: !SimpleFlagArg
                       name: FASTA
-                    optional: true
-                  - !Flag
-                    description: optional path to genome repeats file. if it does
-                      not exist, it will be created
-                    synonyms:
-                    - -g
-                    - --genome-repeats
-                    args: !SimpleFlagArg
-                      name: GENOME_REPEATS
-                    optional: true
-                  - !Flag
-                    description: 'proportion of read that is repetitive to be considered
-                      as STR (default: 0.8)'
-                    synonyms:
-                    - -p
-                    - --proportion-repeat
-                    args: !SimpleFlagArg
-                      name: PROPORTION_REPEAT
-                    optional: true
-                  - !Flag
-                    description: 'minimum mapping quality (does not apply to STR reads)
-                      (default: 40)'
-                    synonyms:
-                    - -q
-                    - --min-mapq
-                    args: !SimpleFlagArg
-                      name: MIN_MAPQ
-                    optional: true
-                  - !Flag
-                    description: ''
-                    synonyms:
-                    - -v
-                    - --verbose
-                    args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
-                  help_flag: !Flag
-                    description: Show this help
-                    synonyms:
-                    - -h
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "strling extract\n\nUsage:\n  strling extract [options]\
@@ -535,6 +819,7 @@ subcommands:
                     \ 40)\n  -v, --verbose\n  -h, --help                 Show this\
                     \ help\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
                 help_flag:
                 usage_flag:
@@ -545,6 +830,7 @@ subcommands:
                   \ for joint calling.\n  call         :   call STRs\n  pull_region\
                   \  :   for debugging; pull all reads (and mates) for a given regions\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -569,11 +855,16 @@ subcommands:
                 \  prefix for output files (default: strling)\n  -v, --verbose\n \
                 \ -h, --help                 Show this help\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional: []
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - -f
+                - --fasta
                 description: "path to fasta file (required if using CRAM input)\n\
                   -w, --window=WINDOW        Number of bp within which to search for\
                   \ reads supporting the other side of a bound. Estimated from the\
@@ -588,13 +879,9 @@ subcommands:
                   \ Format is: chr start stop repeatunit [name]\n-o, --output-prefix=OUTPUT_PREFIX\n\
                   prefix for output files. Suffix will be -bounds.txt (default: strling)\n\
                   -v, --verbose\n-h, --help                 Show this help\n"
-                synonyms:
-                - -f
-                - --fasta
                 args: !SimpleFlagArg
                   name: FASTA
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag:
@@ -620,41 +907,42 @@ subcommands:
                 \  prefix for output files. Suffix will be -bounds.txt (default: strling)\n\
                 \  -v, --verbose\n  -h, --help                 Show this help\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: region
+                optional: false
                 position: 0
                 name: bam
-                optional: false
+                description: region
               named:
               - !Flag
-                description: path to fasta file, only required for cram
+                optional: true
                 synonyms:
                 - -f
                 - --fasta
+                description: path to fasta file, only required for cram
                 args: !SimpleFlagArg
                   name: FASTA
-                optional: true
               - !Flag
-                description: 'path to output bam (default: extracted.bam)'
+                optional: true
                 synonyms:
                 - -o
                 - --output-bam
+                description: 'path to output bam (default: extracted.bam)'
                 args: !SimpleFlagArg
                   name: OUTPUT_BAM
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this help
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: Show this help
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "strling pull_region\n\nUsage:\n  strling pull_region [options]\
@@ -663,21 +951,26 @@ subcommands:
                 \                             path to output bam (default: extracted.bam)\n\
                 \  -h, --help                 Show this help\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional:
               - !Positional
-                description: path to bam file
+                optional: false
                 position: 0
                 name: bam
-                optional: false
+                description: path to bam file
               - !Positional
-                description: path bin to output bin file to be created
+                optional: false
                 position: 1
                 name: bin
-                optional: false
+                description: path bin to output bin file to be created
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - -f
+                - --fasta
                 description: "path to fasta file (required for CRAM)\n-g, --genome-repeats=GENOME_REPEATS\n\
                   optional path to genome repeats file. if it does not exist, it will\
                   \ be created\n-p, --proportion-repeat=PROPORTION_REPEAT\nproportion\
@@ -685,13 +978,9 @@ subcommands:
                   -q, --min-mapq=MIN_MAPQ    minimum mapping quality (does not apply\
                   \ to STR reads) (default: 40)\n-v, --verbose\n-h, --help       \
                   \          Show this help\n"
-                synonyms:
-                - -f
-                - --fasta
                 args: !SimpleFlagArg
                   name: FASTA
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag:
@@ -709,6 +998,7 @@ subcommands:
                 \    minimum mapping quality (does not apply to STR reads) (default:\
                 \ 40)\n  -v, --verbose\n  -h, --help                 Show this help\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -719,6 +1009,7 @@ subcommands:
               \  call         :   call STRs\n  pull_region  :   for debugging; pull\
               \ all reads (and mates) for a given regions\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -742,11 +1033,16 @@ subcommands:
             \             prefix for output files (default: strling)\n  -v, --verbose\n\
             \  -h, --help                 Show this help\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional: []
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - -f
+            - --fasta
             description: "path to fasta file (required if using CRAM input)\n-w, --window=WINDOW\
               \        Number of bp within which to search for reads supporting the\
               \ other side of a bound. Estimated from the insert size distribution\
@@ -761,13 +1057,9 @@ subcommands:
               \ stop repeatunit [name]\n-o, --output-prefix=OUTPUT_PREFIX\nprefix\
               \ for output files. Suffix will be -bounds.txt (default: strling)\n\
               -v, --verbose\n-h, --help                 Show this help\n"
-            synonyms:
-            - -f
-            - --fasta
             args: !SimpleFlagArg
               name: FASTA
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag:
@@ -793,41 +1085,42 @@ subcommands:
             \ (default: strling)\n  -v, --verbose\n  -h, --help                 Show\
             \ this help\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: region
+            optional: false
             position: 0
             name: bam
-            optional: false
+            description: region
           named:
           - !Flag
-            description: path to fasta file, only required for cram
+            optional: true
             synonyms:
             - -f
             - --fasta
+            description: path to fasta file, only required for cram
             args: !SimpleFlagArg
               name: FASTA
-            optional: true
           - !Flag
-            description: 'path to output bam (default: extracted.bam)'
+            optional: true
             synonyms:
             - -o
             - --output-bam
+            description: 'path to output bam (default: extracted.bam)'
             args: !SimpleFlagArg
               name: OUTPUT_BAM
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this help
+            optional: true
             synonyms:
             - -h
             - --help
+            description: Show this help
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "strling pull_region\n\nUsage:\n  strling pull_region [options]\
@@ -836,21 +1129,26 @@ subcommands:
             \                             path to output bam (default: extracted.bam)\n\
             \  -h, --help                 Show this help\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional:
           - !Positional
-            description: path to bam file
+            optional: false
             position: 0
             name: bam
-            optional: false
+            description: path to bam file
           - !Positional
-            description: path bin to output bin file to be created
+            optional: false
             position: 1
             name: bin
-            optional: false
+            description: path bin to output bin file to be created
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - -f
+            - --fasta
             description: "path to fasta file (required for CRAM)\n-g, --genome-repeats=GENOME_REPEATS\n\
               optional path to genome repeats file. if it does not exist, it will\
               \ be created\n-p, --proportion-repeat=PROPORTION_REPEAT\nproportion\
@@ -858,13 +1156,9 @@ subcommands:
               -q, --min-mapq=MIN_MAPQ    minimum mapping quality (does not apply to\
               \ STR reads) (default: 40)\n-v, --verbose\n-h, --help              \
               \   Show this help\n"
-            synonyms:
-            - -f
-            - --fasta
             args: !SimpleFlagArg
               name: FASTA
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag:
@@ -881,6 +1175,7 @@ subcommands:
             \ mapping quality (does not apply to STR reads) (default: 40)\n  -v, --verbose\n\
             \  -h, --help                 Show this help\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -891,6 +1186,7 @@ subcommands:
           \        :   call STRs\n  pull_region  :   for debugging; pull all reads\
           \ (and mates) for a given regions\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -913,11 +1209,16 @@ subcommands:
         \         prefix for output files (default: strling)\n  -v, --verbose\n  -h,\
         \ --help                 Show this help\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional: []
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - -f
+        - --fasta
         description: "path to fasta file (required if using CRAM input)\n-w, --window=WINDOW\
           \        Number of bp within which to search for reads supporting the other\
           \ side of a bound. Estimated from the insert size distribution by default.\
@@ -931,13 +1232,9 @@ subcommands:
           \ to genotype. Format is: chr start stop repeatunit [name]\n-o, --output-prefix=OUTPUT_PREFIX\n\
           prefix for output files. Suffix will be -bounds.txt (default: strling)\n\
           -v, --verbose\n-h, --help                 Show this help\n"
-        synonyms:
-        - -f
-        - --fasta
         args: !SimpleFlagArg
           name: FASTA
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag:
@@ -961,41 +1258,42 @@ subcommands:
         \ for output files. Suffix will be -bounds.txt (default: strling)\n  -v, --verbose\n\
         \  -h, --help                 Show this help\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: region
+        optional: false
         position: 0
         name: bam
-        optional: false
+        description: region
       named:
       - !Flag
-        description: path to fasta file, only required for cram
+        optional: true
         synonyms:
         - -f
         - --fasta
+        description: path to fasta file, only required for cram
         args: !SimpleFlagArg
           name: FASTA
-        optional: true
       - !Flag
-        description: 'path to output bam (default: extracted.bam)'
+        optional: true
         synonyms:
         - -o
         - --output-bam
+        description: 'path to output bam (default: extracted.bam)'
         args: !SimpleFlagArg
           name: OUTPUT_BAM
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this help
+        optional: true
         synonyms:
         - -h
         - --help
+        description: Show this help
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "strling pull_region\n\nUsage:\n  strling pull_region [options] bam\
@@ -1004,34 +1302,35 @@ subcommands:
         \                             path to output bam (default: extracted.bam)\n\
         \  -h, --help                 Show this help\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional:
       - !Positional
-        description: path to bam file
+        optional: false
         position: 0
         name: bam
-        optional: false
+        description: path to bam file
       - !Positional
-        description: path bin to output bin file to be created
+        optional: false
         position: 1
         name: bin
-        optional: false
+        description: path bin to output bin file to be created
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - -f
+        - --fasta
         description: "path to fasta file (required for CRAM)\n-g, --genome-repeats=GENOME_REPEATS\n\
           optional path to genome repeats file. if it does not exist, it will be created\n\
           -p, --proportion-repeat=PROPORTION_REPEAT\nproportion of read that is repetitive\
           \ to be considered as STR (default: 0.8)\n-q, --min-mapq=MIN_MAPQ    minimum\
           \ mapping quality (does not apply to STR reads) (default: 40)\n-v, --verbose\n\
           -h, --help                 Show this help\n"
-        synonyms:
-        - -f
-        - --fasta
         args: !SimpleFlagArg
           name: FASTA
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag:
@@ -1048,6 +1347,7 @@ subcommands:
         \ quality (does not apply to STR reads) (default: 40)\n  -v, --verbose\n \
         \ -h, --help                 Show this help\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -1058,9 +1358,18 @@ subcommands:
       \   call STRs\n  pull_region  :   for debugging; pull all reads (and mates)\
       \ for a given regions\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
-  help_flag:
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -h
+    - --help
+    description: Show this help
+    args: !EmptyFlagArg {}
   usage_flag:
   version_flag:
   help_text: "strling call\n\nUsage:\n  strling call [options] bam bin\n\nArguments:\n\
@@ -1079,33 +1388,94 @@ subcommands:
     \          prefix for output files (default: strling)\n  -v, --verbose\n  -h,\
     \ --help                 Show this help\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional: []
   named:
   - !Flag
-    description: "path to fasta file (required if using CRAM input)\n-w, --window=WINDOW\
-      \        Number of bp within which to search for reads supporting the other\
-      \ side of a bound. Estimated from the insert size distribution by default. (default:\
-      \ -1)\n-m, --min-support=MIN_SUPPORT\nminimum number of supporting reads for\
-      \ a locus to be reported (default: 6)\n-c, --min-clip=MIN_CLIP    minimum number\
-      \ of supporting clipped reads for each side of a locus (default: 0)\n-t, --min-clip-total=MIN_CLIP_TOTAL\n\
-      minimum total number of supporting clipped reads for a locus (default: 0)\n\
-      -q, --min-mapq=MIN_MAPQ    minimum mapping quality (does not apply to STR reads)\
-      \ (default: 40)\n-l, --bed=BED              Annoated bed file specifying additional\
-      \ STR loci to genotype. Format is: chr start stop repeatunit [name]\n-o, --output-prefix=OUTPUT_PREFIX\n\
-      prefix for output files. Suffix will be -bounds.txt (default: strling)\n-v,\
-      \ --verbose\n-h, --help                 Show this help\n"
+    optional: true
     synonyms:
     - -f
     - --fasta
+    description: path to fasta file (required if using CRAM input)
     args: !SimpleFlagArg
       name: FASTA
+  - !Flag
     optional: true
-  parent: *id010
+    synonyms:
+    - -w
+    - --window
+    description: 'Number of bp within which to search for reads supporting the other
+      side of a bound. Estimated from the insert size distribution by default. (default:
+      -1)'
+    args: !SimpleFlagArg
+      name: WINDOW
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --min-support
+    description: 'minimum number of supporting reads for a locus to be reported (default:
+      6)'
+    args: !SimpleFlagArg
+      name: MIN_SUPPORT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --min-clip
+    description: 'minimum number of supporting clipped reads for each side of a locus
+      (default: 0)'
+    args: !SimpleFlagArg
+      name: MIN_CLIP
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --min-clip-total
+    description: 'minimum total number of supporting clipped reads for a locus (default:
+      0)'
+    args: !SimpleFlagArg
+      name: MIN_CLIP_TOTAL
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --min-mapq
+    description: 'minimum mapping quality (does not apply to STR reads) (default:
+      40)'
+    args: !SimpleFlagArg
+      name: MIN_MAPQ
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --bed
+    description: 'Annoated bed file specifying additional STR loci to genotype. Format
+      is: chr start stop repeatunit [name]'
+    args: !SimpleFlagArg
+      name: BED
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-prefix
+    description: 'prefix for output files. Suffix will be -bounds.txt (default: strling)'
+    args: !SimpleFlagArg
+      name: OUTPUT_PREFIX
+  parent: *id011
   subcommands: []
   usage: []
-  help_flag:
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -h
+    - --help
+    description: Show this help
+    args: !EmptyFlagArg {}
   usage_flag:
   version_flag:
   help_text: "strling merge\n\nUsage:\n  strling merge [options] [bin ...]\n\nArguments:\n\
@@ -1125,41 +1495,42 @@ subcommands:
     \          prefix for output files. Suffix will be -bounds.txt (default: strling)\n\
     \  -v, --verbose\n  -h, --help                 Show this help\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: region
+    optional: false
     position: 0
     name: bam
-    optional: false
+    description: region
   named:
   - !Flag
-    description: path to fasta file, only required for cram
+    optional: true
     synonyms:
     - -f
     - --fasta
+    description: path to fasta file, only required for cram
     args: !SimpleFlagArg
       name: FASTA
-    optional: true
   - !Flag
-    description: 'path to output bam (default: extracted.bam)'
+    optional: true
     synonyms:
     - -o
     - --output-bam
+    description: 'path to output bam (default: extracted.bam)'
     args: !SimpleFlagArg
       name: OUTPUT_BAM
-    optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this help
+    optional: true
     synonyms:
     - -h
     - --help
+    description: Show this help
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "strling pull_region\n\nUsage:\n  strling pull_region [options] bam region\n\
@@ -1168,37 +1539,68 @@ subcommands:
     \                     path to output bam (default: extracted.bam)\n  -h, --help\
     \                 Show this help\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional:
   - !Positional
-    description: path to bam file
+    optional: false
     position: 0
     name: bam
-    optional: false
+    description: path to bam file
   - !Positional
-    description: path bin to output bin file to be created
+    optional: false
     position: 1
     name: bin
-    optional: false
+    description: path bin to output bin file to be created
   named:
   - !Flag
-    description: "path to fasta file (required for CRAM)\n-g, --genome-repeats=GENOME_REPEATS\n\
-      optional path to genome repeats file. if it does not exist, it will be created\n\
-      -p, --proportion-repeat=PROPORTION_REPEAT\nproportion of read that is repetitive\
-      \ to be considered as STR (default: 0.8)\n-q, --min-mapq=MIN_MAPQ    minimum\
-      \ mapping quality (does not apply to STR reads) (default: 40)\n-v, --verbose\n\
-      -h, --help                 Show this help\n"
+    optional: true
     synonyms:
     - -f
     - --fasta
+    description: path to fasta file (required for CRAM)
     args: !SimpleFlagArg
       name: FASTA
+  - !Flag
     optional: true
-  parent: *id010
+    synonyms:
+    - -g
+    - --genome-repeats
+    description: optional path to genome repeats file. if it does not exist, it will
+      be created
+    args: !SimpleFlagArg
+      name: GENOME_REPEATS
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --proportion-repeat
+    description: 'proportion of read that is repetitive to be considered as STR (default:
+      0.8)'
+    args: !SimpleFlagArg
+      name: PROPORTION_REPEAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --min-mapq
+    description: 'minimum mapping quality (does not apply to STR reads) (default:
+      40)'
+    args: !SimpleFlagArg
+      name: MIN_MAPQ
+  parent: *id011
   subcommands: []
   usage: []
-  help_flag:
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -h
+    - --help
+    description: Show this help
+    args: !EmptyFlagArg {}
   usage_flag:
   version_flag:
   help_text: "strling extract\n\nUsage:\n  strling extract [options] bam bin\n\nArguments:\n\
@@ -1212,6 +1614,7 @@ subcommands:
     \ apply to STR reads) (default: 40)\n  -v, --verbose\n  -h, --help           \
     \      Show this help\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -1221,3 +1624,4 @@ help_text: "  extract      :   extract informative STR reads from a BAM/CRAM. Th
   \ samples. Only required for joint calling.\n  call         :   call STRs\n  pull_region\
   \  :   for debugging; pull all reads (and mates) for a given regions\n"
 generated_using: *id004
+docker_image:

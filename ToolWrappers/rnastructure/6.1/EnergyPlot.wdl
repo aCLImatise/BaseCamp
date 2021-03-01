@@ -22,6 +22,9 @@ task EnergyPlot {
       ~{if (maximum) then "--maximum" else ""} \
       ~{if (minimum) then "--minimum" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     svg: "Specify that the output file should be an SVG image file, rather than a\\nPostscript image file."
     text: "Specifies that output should be a dot plot (text) file."

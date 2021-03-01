@@ -18,28 +18,29 @@ inputs:
     position: 2
 - id: in_srcx
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 3
 - id: in_src_y
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 4
 - id: in_width
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 5
 - id: in_height
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 6
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _gd2topng

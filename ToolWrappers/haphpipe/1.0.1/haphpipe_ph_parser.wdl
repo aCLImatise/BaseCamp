@@ -18,6 +18,9 @@ task HaphpipePhParser {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     haplotypes_fa: "Haplotype file created by PredictHaplo."
     outdir: "Output directory. (default: .)"

@@ -8,6 +8,9 @@ task Nohead {
     nohead \
       ~{if defined(lines) then ("--lines " +  '"' + lines + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     lines: "suppress NUM lines (default 1)"
   }

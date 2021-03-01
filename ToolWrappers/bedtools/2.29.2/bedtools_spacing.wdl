@@ -16,6 +16,9 @@ task BedtoolsSpacing {
       ~{if (i_obuf) then "-iobuf" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "If using BAM input, write output as BED."
     header: "the header from the A file prior to results."

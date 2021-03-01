@@ -52,6 +52,9 @@ task CsvtkWatch {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bins: "number of histogram bins (default -1)"
     delay: "sleep this many seconds after plotting (default 1)"

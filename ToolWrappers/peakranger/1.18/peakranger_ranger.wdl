@@ -8,7 +8,7 @@ task PeakrangerRanger {
     Boolean? arg_output_location
     Boolean? generate_html_reports
     Int? plot_region
-    Boolean? arg_p_value
+    Boolean? arg_value_cutoff
     Boolean? arg_fdr_cutoff
     Boolean? arg_read_length
     Boolean? arg_sensitivity_summit
@@ -27,7 +27,7 @@ task PeakrangerRanger {
       ~{if (arg_output_location) then "-o" else ""} \
       ~{if (generate_html_reports) then "--report" else ""} \
       ~{if defined(plot_region) then ("--plot_region " +  '"' + plot_region + '"') else ""} \
-      ~{if (arg_p_value) then "-p" else ""} \
+      ~{if (arg_value_cutoff) then "-p" else ""} \
       ~{if (arg_fdr_cutoff) then "-q" else ""} \
       ~{if (arg_read_length) then "-l" else ""} \
       ~{if (arg_sensitivity_summit) then "-r" else ""} \
@@ -36,6 +36,9 @@ task PeakrangerRanger {
       ~{if (arg_number_worker) then "-t" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_data_file: "[ --data ] arg               data file"
     arg_control_file: "[ --control ] arg            control file"
@@ -43,7 +46,7 @@ task PeakrangerRanger {
     arg_output_location: "[ --output ] arg             the output location"
     generate_html_reports: "generate html reports"
     plot_region: "(=6000)       the length of the snapshort regions in the"
-    arg_p_value: "[ --pval ] arg (=0.0001)     p value cut-off"
+    arg_value_cutoff: "[ --pval ] arg (=0.0001)     p value cut-off"
     arg_fdr_cutoff: "[ --FDR ] arg (=0.01)        FDR cut-off"
     arg_read_length: "[ --ext_length ] arg (=100)  read extension length"
     arg_sensitivity_summit: "[ --delta ] arg (=1)         sensitivity of the summit detector"

@@ -18,6 +18,9 @@ task CombineKreportspy {
       ~{if defined(sample_names) then ("--sample-names " +  '"' + sample_names + '"') else ""} \
       ~{if (only_combined) then "--only-combined" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report_files: "Input kraken report files to combine (separate by\\nspaces)"
     output_kraken_report: "Output kraken report file with combined information"

@@ -14,6 +14,9 @@ task ClippingProfilepy {
       ~{if defined(mapq) then ("--mapq " +  '"' + mapq + '"') else ""} \
       ~{if defined(sequencing) then ("--sequencing " +  '"' + sequencing + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Alignment file in BAM or SAM format."
     out_prefix: "Prefix of output files(s)."

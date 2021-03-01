@@ -16,6 +16,9 @@ task BedAnnotateFreq {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Input BAM file(s)."
     in: "Input BED file. If unset, reads from STDIN.\\nDefault value: ''"

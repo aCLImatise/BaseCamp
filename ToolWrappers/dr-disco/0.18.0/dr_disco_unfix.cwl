@@ -3,7 +3,7 @@ id: dr_disco_unfix.cwl
 inputs:
 - id: in_temp_dir
   doc: 'Path in which temp files are stored (default: /tmp)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --temp-dir
 - id: in_input_alignment_file
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dr-disco

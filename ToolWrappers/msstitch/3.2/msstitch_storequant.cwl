@@ -3,7 +3,7 @@ id: msstitch_storequant.cwl
 inputs:
 - id: in_dbfile
   doc: Database lookup file
-  type: File
+  type: File?
   inputBinding:
     prefix: --dbfile
 - id: in_spectra
@@ -28,25 +28,26 @@ inputs:
 - id: in_rt_to_l
   doc: "Specifies tolerance in seconds for retention time when\nmapping MS1 feature\
     \ quant info to identifications in\nthe PSM table."
-  type: long
+  type: long?
   inputBinding:
     prefix: --rttol
 - id: in_mz_to_l
   doc: "Specifies tolerance in mass-to-charge when mapping MS1\nfeature quant info\
     \ to identifications in the PSM\ntable."
-  type: long
+  type: long?
   inputBinding:
     prefix: --mztol
 - id: in_mz_to_ltype
   doc: "Type of tolerance in mass-to-charge when mapping MS1\nfeature quant info to\
     \ identifications in the PSM\ntable. One of ppm, Da.\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --mztoltype
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - msstitch

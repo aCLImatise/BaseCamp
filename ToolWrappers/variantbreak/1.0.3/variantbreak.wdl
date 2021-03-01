@@ -30,6 +30,9 @@ task Variantbreak {
       ~{if defined(filename) then ("--filename " +  '"' + filename + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     annotation_file_dir: "path to single annotation file or directory containing annotation\\nfiles of GTF/GFF or BED formats. Formats: .gtf/.gff/.gff3/.bed"
     filter_file_dir: "path to single filter file or directory containing filter files of\\nBED format. Format: .bed"

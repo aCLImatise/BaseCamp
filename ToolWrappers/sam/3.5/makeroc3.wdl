@@ -12,6 +12,9 @@ task Makeroc3 {
       ~{if defined(distfile) then ("-distfile " +  '"' + distfile + '"') else ""} \
       ~{if defined(option) then ("-option " +  '"' + option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     distfile: ".dist    Score file to read (required)."
     option: ""

@@ -1,0 +1,271 @@
+!Command
+command:
+- Bifrost
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: build
+  description: Build a compacted de Bruijn graph, with or without colors
+- !Positional
+  optional: false
+  position: 1
+  name: update
+  description: Update a compacted (possible colored) de Bruijn graph with new sequences
+- !Positional
+  optional: false
+  position: 2
+  name: query
+  description: Query a compacted (possible colored) de Bruijn graph
+- !Positional
+  optional: false
+  position: 0
+  name: build
+  description: '> Mandatory with required argument:'
+- !Positional
+  optional: false
+  position: 0
+  name: update
+  description: '> Mandatory with required argument:'
+- !Positional
+  optional: false
+  position: 0
+  name: query
+  description: '> Mandatory with required argument:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --input-seq-file
+  description: "Input sequence file (FASTA/FASTQ possibly gzipped)\nMultiple files\
+    \ can be provided as a list in a TXT file (one file per line)\nK-mers with exactly\
+    \ 1 occurrence in the input sequence files will be discarded"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --input-ref-file
+  description: "Input reference file (FASTA/FASTQ possibly gzipped and GFA)\nMultiple\
+    \ files can be provided as a list in a TXT file (one file per line)\nAll k-mers\
+    \ of the input reference files are used"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-file
+  description: Prefix for output file(s)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads (default is 1)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer-length
+  description: Length of k-mers (default is 31)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-length
+  description: Length of minimizers (default is automatically chosen)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bloom-bits
+  description: Number of Bloom filter bits per k-mer with 1+ occurrences in the input
+    files (default is 14)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --bloom-bits2
+  description: Number of Bloom filter bits per k-mer with 2+ occurrences in the input
+    files (default is 14)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --load-mbbf
+  description: Input Blocked Bloom Filter file, skips filtering step (default is no
+    input)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --write-mbbf
+  description: Output Blocked Bloom Filter file (default is no output)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --chunk-size
+  description: Read chunk size per thread (default is 64)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --colors
+  description: Color the compacted de Bruijn graph (default is no coloring)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --keep-mercy
+  description: Keep low coverage k-mers connecting tips
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --clip-tips
+  description: Clip tips shorter than k k-mers in length
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --del-isolated
+  description: Delete isolated contigs shorter than k k-mers in length
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --fasta
+  description: Output file is in FASTA format (only sequences) instead of GFA
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Print information messages during execution
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --input-graph-file
+  description: Input graph file to update (GFA format)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --input-color-file
+  description: Input color file associated with the input graph file to update
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --input-query-file
+  description: "Input query file (FASTA/FASTQ possibly gzipped)\nMultiple files can\
+    \ be provided as a list in a TXT file (one file per line)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --ratio-kmers
+  description: Ratio of k-mers from queries that must occur in the graph (default
+    is 0.8)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --inexact
+  description: Graph is searched with exact and inexact k-mers (1 substitution or
+    indel) from queries
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Bifrost 1.0.5\n\nHighly parallel construction, indexing and querying of\
+  \ colored and compacted de Bruijn graphs\n\nUsage: Bifrost [COMMAND] [PARAMETERS]\n\
+  \n[COMMAND]:\n\n   build                   Build a compacted de Bruijn graph, with\
+  \ or without colors\n   update                  Update a compacted (possible colored)\
+  \ de Bruijn graph with new sequences\n   query                   Query a compacted\
+  \ (possible colored) de Bruijn graph\n\n[PARAMETERS]: build\n\n   > Mandatory with\
+  \ required argument:\n\n   -s, --input-seq-file     Input sequence file (FASTA/FASTQ\
+  \ possibly gzipped)\n                            Multiple files can be provided\
+  \ as a list in a TXT file (one file per line)\n                            K-mers\
+  \ with exactly 1 occurrence in the input sequence files will be discarded\n   -r,\
+  \ --input-ref-file     Input reference file (FASTA/FASTQ possibly gzipped and GFA)\n\
+  \                            Multiple files can be provided as a list in a TXT file\
+  \ (one file per line)\n                            All k-mers of the input reference\
+  \ files are used\n   -o, --output-file        Prefix for output file(s)\n\n   >\
+  \ Optional with required argument:\n\n   -t, --threads            Number of threads\
+  \ (default is 1)\n   -k, --kmer-length        Length of k-mers (default is 31)\n\
+  \   -m, --min-length         Length of minimizers (default is automatically chosen)\n\
+  \   -b, --bloom-bits         Number of Bloom filter bits per k-mer with 1+ occurrences\
+  \ in the input files (default is 14)\n   -B, --bloom-bits2        Number of Bloom\
+  \ filter bits per k-mer with 2+ occurrences in the input files (default is 14)\n\
+  \   -l, --load-mbbf          Input Blocked Bloom Filter file, skips filtering step\
+  \ (default is no input)\n   -w, --write-mbbf         Output Blocked Bloom Filter\
+  \ file (default is no output)\n   -u, --chunk-size         Read chunk size per thread\
+  \ (default is 64)\n\n   > Optional with no argument:\n\n   -c, --colors        \
+  \     Color the compacted de Bruijn graph (default is no coloring)\n   -y, --keep-mercy\
+  \         Keep low coverage k-mers connecting tips\n   -i, --clip-tips         \
+  \ Clip tips shorter than k k-mers in length\n   -d, --del-isolated       Delete\
+  \ isolated contigs shorter than k k-mers in length\n   -a, --fasta             \
+  \ Output file is in FASTA format (only sequences) instead of GFA\n   -v, --verbose\
+  \            Print information messages during execution\n\n[PARAMETERS]: update\n\
+  \n  > Mandatory with required argument:\n\n   -g, --input-graph-file   Input graph\
+  \ file to update (GFA format)\n   -s, --input-seq-file     Input sequence file (FASTA/FASTQ\
+  \ possibly gzipped)\n                            Multiple files can be provided\
+  \ as a list in a TXT file (one file per line)\n                            K-mers\
+  \ with exactly 1 occurrence in the input sequence files will be discarded\n   -r,\
+  \ --input-ref-file     Input reference file (FASTA/FASTQ possibly gzipped and GFA)\n\
+  \                            Multiple files can be provided as a list in a TXT file\
+  \ (one file per line)\n                            All k-mers of the input reference\
+  \ files are used\n   -o, --output-file        Prefix for output file(s)\n\n   >\
+  \ Optional with required argument:\n\n   -f, --input-color-file   Input color file\
+  \ associated with the input graph file to update\n   -t, --threads            Number\
+  \ of threads (default is 1)\n   -k, --kmer-length        Length of k-mers (default\
+  \ is read from input graph file if built with Bifrost or 31)\n   -m, --min-length\
+  \         Length of minimizers (default is read from input graph file if built with\
+  \ Bifrost or automatically chosen)\n\n   > Optional with no argument:\n\n   -i,\
+  \ --clip-tips          Clip tips shorter than k k-mers in length\n   -d, --del-isolated\
+  \       Delete isolated contigs shorter than k k-mers in length\n   -v, --verbose\
+  \            Print information messages during execution\n\n[PARAMETERS]: query\n\
+  \n  > Mandatory with required argument:\n\n   -g, --input-graph-file   Input graph\
+  \ file to query (GFA format)\n   -q, --input-query-file   Input query file (FASTA/FASTQ\
+  \ possibly gzipped)\n                            Multiple files can be provided\
+  \ as a list in a TXT file (one file per line)\n   -o, --output-file        Prefix\
+  \ for output file\n   -e, --ratio-kmers        Ratio of k-mers from queries that\
+  \ must occur in the graph (default is 0.8)\n\n   > Optional with required argument:\n\
+  \n   -f, --input-color-file   Input color file associated with the input graph file\
+  \ to query\n                            Presence/absence of queries will be output\
+  \ for each color\n   -t, --threads            Number of threads (default is 1)\n\
+  \   -k, --kmer-length        Length of k-mers (default is read from input graph\
+  \ file if built with Bifrost or 31)\n   -m, --min-length         Length of minimizers\
+  \ (default is read from input graph file if built with Bifrost or or automatically\
+  \ chosen)\n\n   > Optional with no argument:\n\n   -n, --inexact            Graph\
+  \ is searched with exact and inexact k-mers (1 substitution or indel) from queries\n\
+  \   -v, --verbose            Print information messages during execution\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bifrost:1.0.5--h8b12597_0

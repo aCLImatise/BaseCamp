@@ -22,6 +22,9 @@ task MRMPairFinder {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*          Input featureXML file containing the features of the MRM experiment spectra. (valid formats: 'featureXML')"
     pair_in: "*     Pair-file in the format: prec-m/z-light prec-m/z-heavy frag-m/z-light frag-m/z-heavy rt (valid formats: 'csv')"

@@ -24,6 +24,9 @@ task IntronExonReadspy {
       ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "GFF or GTF file containing annotations"
     bam: "BAM file containing reads to be counted"

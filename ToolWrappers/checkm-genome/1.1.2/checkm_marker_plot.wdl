@@ -28,6 +28,9 @@ task CheckmMarkerPlot {
       ~{if defined(fig_padding) then ("--fig_padding " +  '"' + fig_padding + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     image_type: "desired image type (default: png)"
     dpi: "desired DPI of output image (default: 600)"

@@ -12,6 +12,9 @@ task DBsplit {
       ~{if (x) then "-x" else ""} \
       ~{if (a) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     x: ""
     a: ""

@@ -38,6 +38,9 @@ task VtoolsReportPlotPhenoFields {
       ~{if defined(outlier_size) then ("--outlier_size " +  '"' + outlier_size + '"') else ""} \
       ~{if defined(color) then ("--color " +  '"' + color + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     samples: "[SAMPLES [SAMPLES ...]]\\nConditions based on which samples are selected.\\nDefault to all samples."
     save_data: "Save data to file."

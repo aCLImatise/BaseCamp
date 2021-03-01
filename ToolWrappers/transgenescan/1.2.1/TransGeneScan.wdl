@@ -4,6 +4,9 @@ task TransGeneScan {
   command <<<
     TransGeneScan
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

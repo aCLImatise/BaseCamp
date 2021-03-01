@@ -3,14 +3,14 @@ id: ribo_swap.cwl
 inputs:
 - id: in_output
   doc: 'output directory; default: /'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 - id: in_verbosity
   doc: "Logger writes debug to file in output dir; this sets\nverbosity level sent\
     \ to stderr. 1 = debug(), 2 =\ninfo(), 3 = warning(), 4 = error() and 5 = critical();\n\
     default: 2"
-  type: File
+  type: File?
   inputBinding:
     prefix: --verbosity
 - id: in_de_novo_file
@@ -39,16 +39,17 @@ outputs:
   type: stdout
 - id: out_output
   doc: 'output directory; default: /'
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output)
 - id: out_verbosity
   doc: "Logger writes debug to file in output dir; this sets\nverbosity level sent\
     \ to stderr. 1 = debug(), 2 =\ninfo(), 3 = warning(), 4 = error() and 5 = critical();\n\
     default: 2"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_verbosity)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ribo

@@ -5,19 +5,19 @@ inputs:
   doc: "Specify that the structure should be drawn with its backbone stretched\naround\
     \ a circle. Note that pseudoknotted structures will be drawn\ncircularized even\
     \ if this option is not specified.\nDefault is to show a collapsed structure."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --circle
 - id: in_flat
   doc: "Specify that the structure should be drawn with its backbone stretched in\
     \ a\nstraight line.\nDefault is to show a collapsed structure."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --flat
 - id: in_levo_rotatory
   doc: "Specify that the drawn structure is rendered counterclockwise.\nDefault is\
     \ to render drawn structures clockwise."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --levorotatory
 - id: in_svg
@@ -25,13 +25,13 @@ inputs:
     Postscript image file. Note that only one SVG image can be written into a\nparticular\
     \ file, so the structure number flag must also be specified when\nwriting an SVG\
     \ document."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --svg
 - id: in_uncircled
   doc: "Specify that no circles should surround nucleotides when drawing.\nDefault\
     \ is to surround nucleotides with circles."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --uncircled
 - id: in_desc
@@ -45,14 +45,14 @@ inputs:
     \ character immediately after \"~list\" will be\nused as the separator. (5) Any\
     \ other value is assumed to be the literal\ndescription you want to have displayed\
     \ in the plot legend."
-  type: File
+  type: File?
   inputBinding:
     prefix: --desc
 - id: in_end
   doc: "Specify the ending structure number. Use this in combination with the\n--number\
     \ (-n) flag to specify a range of structures to draw, e.g.\n\"--number 3 --end\
     \ 7\" to draw structures 3 through 7."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --end
 - id: in_loop_probability
@@ -60,21 +60,21 @@ inputs:
     data will be read for annotation. This file should describe pairing data\nfor\
     \ the predicted structure, not the accepted structure.\nDefault is no probability\
     \ annotation file used."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --loopprobability
 - id: in_max_structures
   doc: "Limit the total number of structures drawn. This is useful in automated\n\
     tool chains to prevent creation of huge output files when many results are\nreturned\
     \ from another program (e.g. AllSub)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --maxstructures
 - id: in_number
   doc: "Specify the index of a particular structure in the predicted CT to be\ncompared\
     \ with the accepted CT, one-indexed.\nDefault is -1, which signifies all structures\
     \ output to one file."
-  type: File
+  type: File?
   inputBinding:
     prefix: --number
 - id: in_probability
@@ -82,13 +82,13 @@ inputs:
     probability data will be read for annotation. This file should describe\npairing\
     \ data for the predicted structure, not the accepted structure.\nDefault is no\
     \ probability annotation file used."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --probability
 - id: in_shape
   doc: "Specify the name of the file from which SHAPE data will be read for\nannotation.\n\
     Default is no SHAPE annotation file used."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --SHAPE
 - id: in_text
@@ -96,7 +96,7 @@ inputs:
     will be read for annotation. This file should describe pairing data for the\n\
     predicted structure, not the accepted structure.\nDefault is no probability annotation\
     \ file used.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --text
 - id: in_ct_file
@@ -124,14 +124,14 @@ outputs:
     \ character immediately after \"~list\" will be\nused as the separator. (5) Any\
     \ other value is assumed to be the literal\ndescription you want to have displayed\
     \ in the plot legend."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_desc)
 - id: out_number
   doc: "Specify the index of a particular structure in the predicted CT to be\ncompared\
     \ with the accepted CT, one-indexed.\nDefault is -1, which signifies all structures\
     \ output to one file."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_number)
 - id: out_output_file
@@ -139,6 +139,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - draw

@@ -4,6 +4,9 @@ task Mispipe {
   command <<<
     mispipe
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

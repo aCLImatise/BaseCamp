@@ -8,7 +8,7 @@ task GuppyKr {
     Boolean? specify_filename_write
     Boolean? out_dir
     Boolean? prefix
-    Boolean? exponent_ie_value
+    Boolean? exponent_kr_value
     Boolean? normalize
     Boolean? seed
     Boolean? list_out
@@ -29,7 +29,7 @@ task GuppyKr {
       ~{if (specify_filename_write) then "-o" else ""} \
       ~{if (out_dir) then "--out-dir" else ""} \
       ~{if (prefix) then "--prefix" else ""} \
-      ~{if (exponent_ie_value) then "-p" else ""} \
+      ~{if (exponent_kr_value) then "-p" else ""} \
       ~{if (normalize) then "--normalize" else ""} \
       ~{if (seed) then "--seed" else ""} \
       ~{if (list_out) then "--list-out" else ""} \
@@ -38,6 +38,9 @@ task GuppyKr {
       ~{if (gaussian) then "--gaussian" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     point_mass: "Treat every pquery as a point mass concentrated on the highest-weight placement."
     pp: "Use posterior probability for the weight."
@@ -45,7 +48,7 @@ task GuppyKr {
     specify_filename_write: "Specify the filename to write to."
     out_dir: "Specify the directory to write files to."
     prefix: "Specify a string to be prepended to filenames."
-    exponent_ie_value: "Exponent for KR integration, i.e. value of p in Z_p. Default 1."
+    exponent_kr_value: "Exponent for KR integration, i.e. value of p in Z_p. Default 1."
     normalize: "Divide KR by a given value. Legal arguments are \\\"tree-length\\\"."
     seed: "Set the random seed, an integer > 0. Default is 1."
     list_out: "Output the KR results as a list rather than a matrix."

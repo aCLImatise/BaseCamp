@@ -12,6 +12,9 @@ task EslmixdchletSample {
       ~{if defined(_alphabet_size) then ("-K " +  '"' + _alphabet_size + '"') else ""} \
       ~{if defined(number_mixture_components) then ("-Q " +  '"' + number_mixture_components + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     set_random_seed: ": set random number seed  [0]"
     _alphabet_size: ": alphabet size  [20]"

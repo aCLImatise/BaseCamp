@@ -30,6 +30,9 @@ task VcfAnnotateFromVcf {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: "TSV file containing the annotation file path, the prefix, the INFO ids and the id column for multiple annotations.\\nDefault value: ''"
     annotation_file: "Tabix indexed VCF.GZ file used for annotation.\\nDefault value: ''"

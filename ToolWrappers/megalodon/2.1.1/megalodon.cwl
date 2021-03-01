@@ -3,12 +3,12 @@ id: megalodon.cwl
 inputs:
 - id: in_guppy_config
   doc: "Guppy config. Default: dna_r9.4.1_450bps_modbases_dam-\ndcm-cpg_hac.cfg"
-  type: double
+  type: double?
   inputBinding:
     prefix: --guppy-config
 - id: in_guppy_server_path
   doc: "Path to guppy server executable. Default: ./ont-\nguppy/bin/guppy_basecall_server"
-  type: File
+  type: File?
   inputBinding:
     prefix: --guppy-server-path
 - id: in_outputs
@@ -22,68 +22,68 @@ inputs:
     mod_mappings: Per-read mappings annotated with modified base calls\nsignal_mappings:\
     \ Signal mappings for taiyaki model training (HDF5)\nper_read_refs: Per-read reference\
     \ sequence for model training (FASTA)\nDefault: ['basecalls']"
-  type: string
+  type: string?
   inputBinding:
     prefix: --outputs
 - id: in_output_directory
   doc: "Directory to store output results. Default:\nmegalodon_results"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output-directory
 - id: in_overwrite
   doc: Overwrite output directory if it exists.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --overwrite
 - id: in_mappings_format
   doc: 'Mappings output format. Choices: bam, cram, sam'
-  type: string
+  type: string?
   inputBinding:
     prefix: --mappings-format
 - id: in_reference
   doc: "Reference FASTA or minimap2 index file used for\nmapping called reads."
-  type: File
+  type: File?
   inputBinding:
     prefix: --reference
 - id: in_haploid
   doc: "Compute variant aggregation for haploid genotypes.\nDefault: diploid"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --haploid
 - id: in_variant_filename
   doc: "Sequence variants to call for each read in VCF/BCF\nformat (required for variant\
     \ output)."
-  type: File
+  type: File?
   inputBinding:
     prefix: --variant-filename
 - id: in_variant_calibration_filename
   doc: "File containing emperical calibration for variant\nscores. See `megalodon_extras\
     \ calibrate variants`\ncommand. Default: Load default calibration for\nspecified\
     \ guppy config."
-  type: File
+  type: File?
   inputBinding:
     prefix: --variant-calibration-filename
 - id: in_mod_motif
   doc: "MOTIF REL_POSITION\nRestrict modified base calls to specified motif(s).\n\
     For example to restrict to CpG sites use \"--mod-motif\nZ CG 0\"."
-  type: long
+  type: long?
   inputBinding:
     prefix: --mod-motif
 - id: in_mod_calibration_filename
   doc: "File containing emperical calibration for modified\nbase scores. See `megalodon_extras\
     \ calibrate\nmodified_bases` command. Default: Load default\ncalibration for specified\
     \ guppy config."
-  type: File
+  type: File?
   inputBinding:
     prefix: --mod-calibration-filename
 - id: in_help_long
   doc: Show all options.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --help-long
 - id: in_processes
   doc: 'Number of parallel processes. Default: 1'
-  type: long
+  type: long?
   inputBinding:
     prefix: --processes
 - id: in_devices
@@ -94,12 +94,12 @@ inputs:
 - id: in_verbose_read_progress
   doc: "Output verbose output on read progress. Outputs N most\ncommon points where\
     \ reads could not be processed\nfurther. Default: 3"
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbose-read-progress
 - id: in_rna
   doc: 'RNA input data. Requires RNA model. Default: DNA input'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rna
 - id: in_data
@@ -113,14 +113,15 @@ outputs:
   type: stdout
 - id: out_output_directory
   doc: "Directory to store output results. Default:\nmegalodon_results"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output_directory)
 - id: out_overwrite
   doc: Overwrite output directory if it exists.
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_overwrite)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - megalodon

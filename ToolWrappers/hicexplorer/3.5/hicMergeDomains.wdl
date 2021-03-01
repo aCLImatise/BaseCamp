@@ -24,6 +24,9 @@ task HicMergeDomains {
       ~{if defined(output_tree_plot_prefix) then ("--outputTreePlotPrefix " +  '"' + output_tree_plot_prefix + '"') else ""} \
       ~{if defined(output_tree_plot_format) then ("--outputTreePlotFormat " +  '"' + output_tree_plot_format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     domain_files: "The domain files of the different resolutions is\\nrequired"
     protein_file: "In order to be able to better assess the relationship\\nbetween TADs, the associated protein file (e.g. CTCF\\nfor mammals) can be included. The protein file is\\nrequired in broadpeak format"

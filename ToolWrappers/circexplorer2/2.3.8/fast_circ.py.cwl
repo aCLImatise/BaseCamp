@@ -3,47 +3,47 @@ id: fast_circ.py.cwl
 inputs:
 - id: in_ref
   doc: Gene annotation.
-  type: string
+  type: string?
   inputBinding:
     prefix: --ref
 - id: in_genome
   doc: Genome FASTA file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --genome
 - id: in_gtf
   doc: Annotation GTF file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --gtf
 - id: in_aligner_tophatfusion_star
   doc: Aligner (TopHat-Fusion, STAR, MapSplice, BWA, segemehl).
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_pe
   doc: Parse paired-end alignment file (only for TopHat-Fusion).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pe
 - id: in_fast_q
   doc: Input file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --fastq
 - id: in_pa_plus
   doc: TopHat mapping directory for p(A)+ RNA-seq.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --pAplus
 - id: in_thread
   doc: 'Running threads. [default: 10]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --thread
 - id: in_output
   doc: 'Output directory. [default: .]'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 - id: in_annotate
@@ -67,9 +67,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: 'Output directory. [default: .]'
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fast_circ.py

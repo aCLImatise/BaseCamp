@@ -11,12 +11,12 @@ task Nglview {
     Boolean? clean
     Boolean? auto
     Boolean? symlink
-    String command_could_topology
+    String command_be_filename
     String t_raj
   }
   command <<<
     nglview \
-      ~{command_could_topology} \
+      ~{command_be_filename} \
       ~{t_raj} \
       ~{if defined(crd) then ("--crd " +  '"' + crd + '"') else ""} \
       ~{if defined(browser) then ("--browser " +  '"' + browser + '"') else ""} \
@@ -28,6 +28,9 @@ task Nglview {
       ~{if (auto) then "--auto" else ""} \
       ~{if (symlink) then "--symlink" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crd: "coordinate filename"
     browser: "web browser"
@@ -38,7 +41,7 @@ task Nglview {
     clean: "delete temp file after closing notebook"
     auto: "Run 1st cell right after openning notebook"
     symlink: "Create symlink for nglview-js-widgets (developer mode)"
-    command_could_topology: "command could be a topology filename (.pdb, .mol2,\\n.parm7, ...) or could be a python script (.py), a\\nnotebook (.ipynb). If not given, a notebook will be\\ncreated with only nglview imported"
+    command_be_filename: "command could be a topology filename (.pdb, .mol2,\\n.parm7, ...) or could be a python script (.py), a\\nnotebook (.ipynb). If not given, a notebook will be\\ncreated with only nglview imported"
     t_raj: "coordinate filename, optional"
   }
   output {

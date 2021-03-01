@@ -22,6 +22,9 @@ task Csbprecision {
       ~{if defined(output_directory_default) then ("--output " +  '"' + output_directory_default + '"') else ""} \
       ~{if (save_structures) then "--save-structures" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pdb: "the PDB database (a directory containing all PDB\\nfiles)"
     native: "native structure of the target (PDB file)"

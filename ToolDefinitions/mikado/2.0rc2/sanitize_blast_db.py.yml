@@ -11,25 +11,25 @@ subcommands:
   - fasta
   positional:
   - !Positional
-    description: ''
+    optional: true
     position: 0
     name: fasta
-    optional: true
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -o
+    description: ''
     args: !SimpleFlagArg
       name: OUT
-    optional: true
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -ml
+    description: ''
     args: !SimpleFlagArg
       name: MIN_LENGTH
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -40,25 +40,25 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: true
         position: 0
         name: fasta
-        optional: true
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -o
+        description: ''
         args: !SimpleFlagArg
           name: OUT
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -ml
+        description: ''
         args: !SimpleFlagArg
           name: MIN_LENGTH
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -69,25 +69,25 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: true
             position: 0
             name: fasta
-            optional: true
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -o
+            description: ''
             args: !SimpleFlagArg
               name: OUT
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -ml
+            description: ''
             args: !SimpleFlagArg
               name: MIN_LENGTH
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -98,95 +98,152 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: true
                 position: 0
                 name: fasta
-                optional: true
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -o
+                description: ''
                 args: !SimpleFlagArg
                   name: OUT
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -ml
+                description: ''
                 args: !SimpleFlagArg
                   name: MIN_LENGTH
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -ml
-                  - --min-length
-                  args: !SimpleFlagArg
-                    name: MIN_LENGTH
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -o
-                  - --out
-                  args: !SimpleFlagArg
-                    name: OUT
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: true
                     position: 0
                     name: fasta
-                    optional: true
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -o
+                    description: ''
                     args: !SimpleFlagArg
                       name: OUT
-                    optional: true
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -ml
+                    description: ''
                     args: !SimpleFlagArg
                       name: MIN_LENGTH
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -ml
+                      - --min-length
+                      description: ''
+                      args: !SimpleFlagArg
+                        name: MIN_LENGTH
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -o
+                      - --out
+                      description: ''
+                      args: !SimpleFlagArg
+                        name: OUT
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: true
+                        position: 0
+                        name: fasta
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: OUT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -ml
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: MIN_LENGTH
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: sanitize_blast_db.py [-h] [-ml MIN_LENGTH]\
+                        \ [-o OUT] fasta [fasta ...]\nsanitize_blast_db.py: error:\
+                        \ argument fasta: can't open 'fasta': [Errno 2] No such file\
+                        \ or directory: 'fasta'\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: sanitize_blast_db.py [-h] [-ml MIN_LENGTH]\
+                      \ [-o OUT] fasta [fasta ...]\n\npositional arguments:\n  fasta\n\
+                      \noptional arguments:\n  -h, --help            show this help\
+                      \ message and exit\n  -ml MIN_LENGTH, --min-length MIN_LENGTH\n\
+                      \  -o OUT, --out OUT\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: sanitize_blast_db.py [-h] [-ml MIN_LENGTH] [-o\
                     \ OUT] fasta [fasta ...]\nsanitize_blast_db.py: error: argument\
                     \ fasta: can't open 'fasta': [Errno 2] No such file or directory:\
                     \ 'fasta'\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "usage: sanitize_blast_db.py [-h] [-ml MIN_LENGTH] [-o\
@@ -195,20 +252,22 @@ subcommands:
                   \ exit\n  -ml MIN_LENGTH, --min-length MIN_LENGTH\n  -o OUT, --out\
                   \ OUT\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: sanitize_blast_db.py [-h] [-ml MIN_LENGTH] [-o OUT]\
                 \ fasta [fasta ...]\nsanitize_blast_db.py: error: argument fasta:\
                 \ can't open 'fasta': [Errno 2] No such file or directory: 'fasta'\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -218,20 +277,22 @@ subcommands:
               \  -h, --help            show this help message and exit\n  -ml MIN_LENGTH,\
               \ --min-length MIN_LENGTH\n  -o OUT, --out OUT\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: sanitize_blast_db.py [-h] [-ml MIN_LENGTH] [-o OUT] fasta\
             \ [fasta ...]\nsanitize_blast_db.py: error: argument fasta: can't open\
             \ 'fasta': [Errno 2] No such file or directory: 'fasta'\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -241,20 +302,22 @@ subcommands:
           \  -h, --help            show this help message and exit\n  -ml MIN_LENGTH,\
           \ --min-length MIN_LENGTH\n  -o OUT, --out OUT\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: sanitize_blast_db.py [-h] [-ml MIN_LENGTH] [-o OUT] fasta\
         \ [fasta ...]\nsanitize_blast_db.py: error: argument fasta: can't open 'fasta':\
         \ [Errno 2] No such file or directory: 'fasta'\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -264,20 +327,22 @@ subcommands:
       \            show this help message and exit\n  -ml MIN_LENGTH, --min-length\
       \ MIN_LENGTH\n  -o OUT, --out OUT\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: sanitize_blast_db.py [-h] [-ml MIN_LENGTH] [-o OUT] fasta [fasta\
     \ ...]\nsanitize_blast_db.py: error: argument fasta: can't open 'fasta': [Errno\
     \ 2] No such file or directory: 'fasta'\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -287,3 +352,4 @@ help_text: "usage: sanitize_blast_db.py [-h] [-ml MIN_LENGTH] [-o OUT] fasta [fa
   \          show this help message and exit\n  -ml MIN_LENGTH, --min-length MIN_LENGTH\n\
   \  -o OUT, --out OUT\n"
 generated_using: *id004
+docker_image:

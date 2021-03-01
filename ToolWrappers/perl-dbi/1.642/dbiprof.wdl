@@ -22,6 +22,9 @@ task Dbiprof {
       ~{if (delete) then "-delete" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number: "show top N, defaults to 10"
     sort: "sort by S, defaults to total"

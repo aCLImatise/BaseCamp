@@ -1,72 +1,72 @@
 class: CommandLineTool
 id: set_finder.cwl
 inputs:
-- id: in__find_cliques
-  doc: --all          Find all cliques.
-  type: boolean
+- id: in_all
+  doc: Find all cliques.
+  type: boolean?
   inputBinding:
-    prefix: -a
-- id: in__single_find
-  doc: --single       Find only one clique (default).
-  type: boolean
+    prefix: --all
+- id: in_single
+  doc: Find only one clique (default).
+  type: boolean?
   inputBinding:
-    prefix: -s
-- id: in__weight_tell
-  doc: --weight       Tell only maximum weight (no faster than -s).
-  type: boolean
+    prefix: --single
+- id: in_weight
+  doc: Tell only maximum weight (no faster than -s).
+  type: boolean?
   inputBinding:
-    prefix: -w
+    prefix: --weight
 - id: in_min
   doc: "Search for cliques with weight at least N.  If N=0,\nsearches for maximum\
     \ weight clique (default)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --min
 - id: in_max
   doc: "Search for cliques with weight at most N.  If N=0,\nno limit is imposed (default).\
     \  N being positive is\nincompatible with \"--min 0\" (\"--min 1\" is assumed)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --max
 - id: in_bg_freq
   doc: Minimum value for genome_length/primer_counts in a set.
-  type: string
+  type: string?
   inputBinding:
     prefix: --bg_freq
 - id: in_bg_len
   doc: Length of the background genome (in bases).
-  type: long
+  type: long?
   inputBinding:
     prefix: --bg_len
-- id: in__maximal_require
-  doc: --maximal      Require cliques to be maximal.
-  type: boolean
+- id: in_maximal
+  doc: Require cliques to be maximal.
+  type: boolean?
   inputBinding:
-    prefix: -x
-- id: in__unweighted_assume
-  doc: --unweighted   Assume weight 1 for all vertices.
-  type: boolean
+    prefix: --maximal
+- id: in_unweighted
+  doc: Assume weight 1 for all vertices.
+  type: boolean?
   inputBinding:
-    prefix: -u
-- id: in__when_writing
-  doc: --from-0       Number vertices 0 to n-1 instead of 1 to n when writing.
-  type: boolean
+    prefix: --unweighted
+- id: in_from_zero
+  doc: Number vertices 0 to n-1 instead of 1 to n when writing.
+  type: boolean?
   inputBinding:
-    prefix: '-0'
+    prefix: --from-0
 - id: in_reorder
   doc: Reorder with function F.  See below for details.
-  type: string
+  type: string?
   inputBinding:
     prefix: --reorder
-- id: in__quiet_suppresses
-  doc: "--quiet        Suppresses progress output.  Specifying -q twice\nsuppresses\
-    \ all output except the actual result."
-  type: boolean
+- id: in_quiet
+  doc: "Suppresses progress output.  Specifying -q twice\nsuppresses all output except\
+    \ the actual result."
+  type: boolean?
   inputBinding:
-    prefix: -q
+    prefix: --quiet
 - id: in_output
   doc: Output results to file F.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_none
@@ -110,9 +110,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output results to file F.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - set_finder

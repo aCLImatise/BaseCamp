@@ -12,6 +12,9 @@ task EasypqpPyProphet {
       ~{command_one} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     easy_pqp: ""
     command_one: ""

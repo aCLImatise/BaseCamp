@@ -4,9 +4,9 @@ task Wtcns {
   input {
     Int? number_of_threads
     Int? total_parallel_jobs
-    Int? index_run_wtcns
+    Int? index_current_cpu
     File? input_file_layout
-    File? output_file_consensus
+    File? output_file_sequences
     Boolean? force_overwrite
     Boolean? trun_homopolymer_compression
     Int? zmer_window
@@ -31,15 +31,15 @@ task Wtcns {
     String? align_reads_final
     Boolean? disable_fast_zmer
     Float? ouput_call_variants
-    Boolean? verbose_be_output
+    Boolean? verbose_be_careful
   }
   command <<<
     wtcns \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
       ~{if defined(total_parallel_jobs) then ("-P " +  '"' + total_parallel_jobs + '"') else ""} \
-      ~{if defined(index_run_wtcns) then ("-p " +  '"' + index_run_wtcns + '"') else ""} \
+      ~{if defined(index_current_cpu) then ("-p " +  '"' + index_current_cpu + '"') else ""} \
       ~{if defined(input_file_layout) then ("-i " +  '"' + input_file_layout + '"') else ""} \
-      ~{if defined(output_file_consensus) then ("-o " +  '"' + output_file_consensus + '"') else ""} \
+      ~{if defined(output_file_sequences) then ("-o " +  '"' + output_file_sequences + '"') else ""} \
       ~{if (force_overwrite) then "-f" else ""} \
       ~{if (trun_homopolymer_compression) then "-H" else ""} \
       ~{if defined(zmer_window) then ("-y " +  '"' + zmer_window + '"') else ""} \
@@ -64,14 +64,17 @@ task Wtcns {
       ~{if defined(align_reads_final) then ("-a " +  '"' + align_reads_final + '"') else ""} \
       ~{if (disable_fast_zmer) then "-A" else ""} \
       ~{if defined(ouput_call_variants) then ("-V " +  '"' + ouput_call_variants + '"') else ""} \
-      ~{if (verbose_be_output) then "-v" else ""}
+      ~{if (verbose_be_careful) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_of_threads: "Number of threads, [16]"
     total_parallel_jobs: "Total parallel jobs, [1]"
-    index_run_wtcns: "Index of current job (0-based), [0]\\nSuppose to run wtcns for the same layout file parallelly in 60 cpu. For cpu1, -P 60 -p 0; cpu2, -P 60 -p 1, ..."
+    index_current_cpu: "Index of current job (0-based), [0]\\nSuppose to run wtcns for the same layout file parallelly in 60 cpu. For cpu1, -P 60 -p 0; cpu2, -P 60 -p 1, ..."
     input_file_layout: "Input file, layout from wtlay, +"
-    output_file_consensus: "Output file, consensus sequences, [STDOUT]"
+    output_file_sequences: "Output file, consensus sequences, [STDOUT]"
     force_overwrite: "Force overwrite"
     trun_homopolymer_compression: "Trun on homopolymer compression"
     zmer_window: "Zmer window, [800]"
@@ -96,10 +99,10 @@ task Wtcns {
     align_reads_final: "Align reads against final consensus, and output to <-a>"
     disable_fast_zmer: "Disable fast zmer align in final aligning (see -a), use standard smith-waterman\\nMore than once -A, will disable fast zmer align in all process"
     ouput_call_variants: "Ouput call variants and print to <-a>, -V 2.05 mean: min_allele_count>=2,min_allele_freq>=0.05"
-    verbose_be_output: "Verbose, BE careful, HUGEEEEEEEE output on STDOUT"
+    verbose_be_careful: "Verbose, BE careful, HUGEEEEEEEE output on STDOUT"
   }
   output {
     File out_stdout = stdout()
-    File out_output_file_consensus = "${in_output_file_consensus}"
+    File out_output_file_sequences = "${in_output_file_sequences}"
   }
 }

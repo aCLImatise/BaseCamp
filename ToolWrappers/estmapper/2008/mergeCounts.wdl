@@ -10,6 +10,9 @@ task MergeCounts {
       ~{count_one} \
       ~{count_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count_one: ""
     count_two: ""

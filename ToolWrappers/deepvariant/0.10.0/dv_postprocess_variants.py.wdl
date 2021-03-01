@@ -12,6 +12,9 @@ task DvPostprocessVariantspy {
       ~{if defined(in_file) then ("--infile " +  '"' + in_file + '"') else ""} \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: ""
     in_file: ""

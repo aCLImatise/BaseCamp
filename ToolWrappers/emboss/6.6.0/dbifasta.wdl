@@ -28,6 +28,9 @@ task Dbifasta {
       ~{if (sort_options) then "-sortoptions" else ""} \
       ~{if (index_outdir) then "-indexoutdir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id_format: "menu       [idacc] ID line format (Values: simple\\n(>ID); idacc (>ID ACC or >ID (ACC)); gcgid\\n(>db:ID); gcgidacc (>db:ID ACC); dbid (>db\\nID); ncbi (| formats))"
     directory: "directory  [.] Database directory"

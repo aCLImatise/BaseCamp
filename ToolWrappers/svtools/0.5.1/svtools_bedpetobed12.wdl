@@ -16,6 +16,9 @@ task SvtoolsBedpetobed12 {
       ~{if defined(max_dist) then ("--maxdist " +  '"' + max_dist + '"') else ""} \
       ~{if defined(tempdir) then ("--tempdir " +  '"' + tempdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bedpe_input_file: "BEDPE input file"
     output_bed_write: "Output BED12 to write (default: stdout)"

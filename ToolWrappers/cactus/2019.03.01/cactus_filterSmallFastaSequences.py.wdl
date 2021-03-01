@@ -14,6 +14,9 @@ task CactusFilterSmallFastaSequencespy {
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "only filter sequences with prefix in name"
     length: "filter shorter than length [default=1000]"

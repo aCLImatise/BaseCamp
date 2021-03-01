@@ -18,6 +18,9 @@ task CombineResultspl {
       ~{acf} \
       ~{cn_state}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     x_ann_dot_groups: ""
     x_ann_dot_assembled: ""

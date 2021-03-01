@@ -2,7 +2,7 @@ version 1.0
 
 task BayesTyperToolsFilter {
   input {
-    Boolean? arg_variant_format
+    Boolean? arg_variant_file
     Boolean? arg_output_prefix
     File? compress_output_files
     Int? min_homozygote_genotypes
@@ -12,7 +12,7 @@ task BayesTyperToolsFilter {
   }
   command <<<
     bayesTyperTools filter \
-      ~{if (arg_variant_format) then "-v" else ""} \
+      ~{if (arg_variant_file) then "-v" else ""} \
       ~{if (arg_output_prefix) then "-o" else ""} \
       ~{if (compress_output_files) then "-z" else ""} \
       ~{if defined(min_homozygote_genotypes) then ("--min-homozygote-genotypes " +  '"' + min_homozygote_genotypes + '"') else ""} \
@@ -20,8 +20,11 @@ task BayesTyperToolsFilter {
       ~{if defined(min_number_of_km_ers) then ("--min-number-of-kmers " +  '"' + min_number_of_km_ers + '"') else ""} \
       ~{if defined(km_er_coverage_file) then ("--kmer-coverage-file " +  '"' + km_er_coverage_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    arg_variant_format: "[ --variant-file ] arg             variant file (vcf format)."
+    arg_variant_file: "[ --variant-file ] arg             variant file (vcf format)."
     arg_output_prefix: "[ --output-prefix ] arg            output prefix."
     compress_output_files: "[ --gzip-output ] [=arg(=1)] (=0)  compress output file(s) using gzip."
     min_homozygote_genotypes: "(=0)   filter variants with less than <value> homozygote genotypes (calculated before other filters)."

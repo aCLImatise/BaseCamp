@@ -3,119 +3,132 @@ command:
 - obiaddtaxids
 positional:
 - !Positional
-  description: '- If the input file is an ``OBITools`` extended :doc:`fasta <../fasta>`
-    format, the ``-k`` option'
+  optional: false
   position: 0
   name: database.
-  optional: false
+  description: '- If the input file is an ``OBITools`` extended :doc:`fasta <../fasta>`
+    format, the ``-k`` option'
 - !Positional
-  description: '- Otherwise the sequence record is stored in the ``unidentified.fasta``
-    file.'
+  optional: false
+  position: 0
+  name: bash
+  description: '> obiaddtaxids -k species_name -g genus_identified.fasta \'
+- !Positional
+  optional: false
   position: 0
   name: file.
-  optional: false
+  description: '- Otherwise the sequence record is stored in the ``unidentified.fasta``
+    file.'
 named:
 - !Flag
-  description: Set logging in debug mode
+  optional: true
+  synonyms:
+  - -u
+  - -d
+  description: \
+  args: !SimpleFlagArg
+    name: unidentified.fasta
+- !Flag
+  optional: true
   synonyms:
   - --DEBUG
+  description: Set logging in debug mode
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: desactivate progress bar
+  optional: true
   synonyms:
   - --without-progress-bar
+  description: desactivate progress bar
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(not with UNITE databases) file used to store\nsequences with the\
-    \ genus found."
+  optional: true
   synonyms:
   - -g
   - --genus_found
+  description: "(not with UNITE databases) file used to store\nsequences with the\
+    \ genus found."
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
-  description: file used to store completely unidentified sequences.
+  optional: true
   synonyms:
   - -u
   - --unidentified
+  description: file used to store completely unidentified sequences.
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --dirty
   description: "(not with UNITE databases) if chosen, ALL the words in\nthe name used\
     \ to identify the sequences will be\nsearched when neither the exact name nor\
     \ the genus\nhave been found. Only use if the sequences in your\ndatabase are\
     \ badly named with useless words or numbers\nin the name etc. The sequences identified\
     \ this way\nwill be written in <FILENAME>."
-  synonyms:
-  - -s
-  - --dirty
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
   description: "type of the database with the taxa to be added.\nPossibilities : 'raw',\
     \ 'UNITE_FULL', 'UNITE_GENERAL'\nor 'SILVA'.The UNITE_FULL format is the one used\
     \ for\nthe 'Full UNITE+INSD dataset', and the UNITE_GENERAL\nformat is the one\
     \ used for the 'General FASTA\nrelease'. Default : raw."
-  synonyms:
-  - -f
-  - --format
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --key-name
   description: "name of the key attribute containing the taxon name in\ndatabases\
     \ of 'raw' type. Default : the taxon name is\nthe id of the sequence. The taxon\
     \ name MUST have '_'\nbetween the words of the name when it's the id, and\nCAN\
     \ be of this form when it's in a field."
-  synonyms:
-  - -k
-  - --key-name
   args: !SimpleFlagArg
     name: KEYNAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --restricting_ancestor
   description: "can be a word or a taxid (number). Enables to restrict\nthe search\
     \ of taxids under a specified ancestor. If\nit's a word, it's the field containing\
     \ the ancestor's\ntaxid in each sequence's header (can be different for\neach\
     \ sequence). If it's a number, it's the taxid of\nthe ancestor (in which case\
     \ it's the same for all the\nsequences)"
-  synonyms:
-  - -a
-  - --restricting_ancestor
   args: !SimpleFlagArg
     name: ANCESTOR
-  optional: true
 - !Flag
-  description: ecoPCR taxonomy Database name
+  optional: true
   synonyms:
   - -d
   - --database
+  description: ecoPCR taxonomy Database name
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
-  description: "NCBI Taxonomy dump repository name\n"
+  optional: true
   synonyms:
   - -t
   - --taxonomy-dump
+  description: "NCBI Taxonomy dump repository name\n"
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: \n:py:mod:`obiaddtaxids`: adds *taxids* to sequence records using\
@@ -195,3 +208,4 @@ help_text: "Usage: \n:py:mod:`obiaddtaxids`: adds *taxids* to sequence records u
   \ dump repository name\n"
 generated_using:
 - --help
+docker_image:

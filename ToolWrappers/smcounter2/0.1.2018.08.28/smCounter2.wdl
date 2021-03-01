@@ -50,6 +50,9 @@ task SmCounter2 {
       ~{if defined(bam_type) then ("--bamType " +  '"' + bam_type + '"') else ""} \
       ~{if defined(input_vcf) then ("--inputVCF " +  '"' + input_vcf + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run_path: "path to working directory"
     bed_target: "BED file"

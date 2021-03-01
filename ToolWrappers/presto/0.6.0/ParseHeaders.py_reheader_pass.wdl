@@ -8,6 +8,9 @@ task ParseHeaderspyReheaderpass {
     ParseHeaders_py reheader_pass \
       ~{parse_headers_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     parse_headers_do_tpy: ""
   }

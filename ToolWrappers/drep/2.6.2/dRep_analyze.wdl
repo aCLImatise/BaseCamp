@@ -14,6 +14,9 @@ task DRepAnalyze {
       ~{if (debug) then "--debug" else ""} \
       ~{if (pl) then "-pl" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     processors: "threads (default: 6)"
     debug: "make extra debugging output (default: False)"

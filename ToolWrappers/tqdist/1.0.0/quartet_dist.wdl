@@ -12,6 +12,9 @@ task QuartetDist {
       ~{filename_two} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
     filename_one: ""

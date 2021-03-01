@@ -3,7 +3,7 @@ id: mimodd_covstats.cwl
 inputs:
 - id: in_ofile
   doc: "redirect the output to the specified file (default:\nstdout)\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --ofile
 - id: in_cov_stats
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_ofile
   doc: "redirect the output to the specified file (default:\nstdout)\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_ofile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mimodd

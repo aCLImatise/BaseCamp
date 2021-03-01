@@ -3,23 +3,24 @@ id: combine_tradis_plots.cwl
 inputs:
 - id: in_plotfile_file_plots
   doc: '|plotfile   : file with plots to be combined'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -p
-- id: in_outputdir_name_directory
+- id: in_outputdir_name_combined
   doc: '|output_dir : name of directory for output (default: combined)'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_outputdir_name_directory
+- id: out_outputdir_name_combined
   doc: '|output_dir : name of directory for output (default: combined)'
-  type: Directory
+  type: Directory?
   outputBinding:
-    glob: $(inputs.in_outputdir_name_directory)
+    glob: $(inputs.in_outputdir_name_combined)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - combine_tradis_plots

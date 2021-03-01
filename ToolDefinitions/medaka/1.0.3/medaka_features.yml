@@ -4,127 +4,127 @@ command:
 - features
 positional:
 - !Positional
-  description: Input alignments.
+  optional: false
   position: 0
   name: bam
-  optional: false
+  description: Input alignments.
 - !Positional
-  description: Output features file.
+  optional: false
   position: 1
   name: output
-  optional: false
+  description: Output features file.
 named:
 - !Flag
-  description: 'Verbose logging of debug information. (default: 20)'
+  optional: true
   synonyms:
   - --debug
+  description: 'Verbose logging of debug information. (default: 20)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Minimal logging; warnings only). (default: 20)'
+  optional: true
   synonyms:
   - --quiet
+  description: 'Minimal logging; warnings only). (default: 20)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Inference batch size. (default: 100)'
+  optional: true
   synonyms:
   - --batch_size
+  description: 'Inference batch size. (default: 100)'
   args: !SimpleFlagArg
     name: BATCH_SIZE
-  optional: true
 - !Flag
-  description: "Genomic regions to analyse, or a bed file. (default:\nNone)"
+  optional: true
   synonyms:
   - --regions
+  description: "Genomic regions to analyse, or a bed file. (default:\nNone)"
   args: !RepeatFlagArg
     name: REGIONS
-  optional: true
 - !Flag
-  description: 'Chunk length of samples. (default: 10000)'
+  optional: true
   synonyms:
   - --chunk_len
+  description: 'Chunk length of samples. (default: 10000)'
   args: !SimpleFlagArg
     name: CHUNK_LEN
-  optional: true
 - !Flag
-  description: 'Overlap of chunks. (default: 1000)'
+  optional: true
   synonyms:
   - --chunk_ovlp
+  description: 'Overlap of chunks. (default: 1000)'
   args: !SimpleFlagArg
     name: CHUNK_OVLP
-  optional: true
 - !Flag
-  description: "Bam of truth aligned to ref to create features for\ntraining. (default:\
-    \ None)"
+  optional: true
   synonyms:
   - --truth
+  description: "Bam of truth aligned to ref to create features for\ntraining. (default:\
+    \ None)"
   args: !SimpleFlagArg
     name: TRUTH
-  optional: true
 - !Flag
-  description: "Two-letter tag defining haplotype of alignments for\npolyploidy labels.\
-    \ (default: None)"
+  optional: true
   synonyms:
   - --truth_haplotag
+  description: "Two-letter tag defining haplotype of alignments for\npolyploidy labels.\
+    \ (default: None)"
   args: !SimpleFlagArg
     name: TRUTH_HAPLOTAG
-  optional: true
 - !Flag
-  description: 'Number of threads for parallel execution. (default: 1)'
+  optional: true
   synonyms:
   - --threads
+  description: 'Number of threads for parallel execution. (default: 1)'
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: 'Labelling scheme. (default: HaploidLabelScheme)'
+  optional: true
   synonyms:
   - --label_scheme
+  description: 'Labelling scheme. (default: HaploidLabelScheme)'
   args: !ChoiceFlagArg
     choices: !!set
-      DiploidZygosityLabelScheme:
-      DiploidLabelScheme:
       RLELabelScheme:
+      DiploidZygosityLabelScheme:
       HaploidLabelScheme:
-  optional: true
+      DiploidLabelScheme:
 - !Flag
-  description: "=VAL1 KEY2=VAL2a,VAL2b... [KEY1=VAL1 KEY2=VAL2a,VAL2b... ...]\nLabel\
-    \ scheme key-word arguments. (default: {})"
+  optional: true
   synonyms:
   - --label_scheme_args
+  description: "=VAL1 KEY2=VAL2a,VAL2b... [KEY1=VAL1 KEY2=VAL2a,VAL2b... ...]\nLabel\
+    \ scheme key-word arguments. (default: {})"
   args: !SimpleFlagArg
     name: KEY1
-  optional: true
 - !Flag
-  description: "FeatureEncoder used to create the features. (default:\nCountsFeatureEncoder)"
+  optional: true
   synonyms:
   - --feature_encoder
+  description: "FeatureEncoder used to create the features. (default:\nCountsFeatureEncoder)"
   args: !ChoiceFlagArg
     choices: !!set
       SymHardRLEFeatureEncoder:
-      HardRLEFeatureEncoder:
-      SoftRLEFeatureEncoder:
       CountsFeatureEncoder:
-  optional: true
+      SoftRLEFeatureEncoder:
+      HardRLEFeatureEncoder:
 - !Flag
-  description: "=VAL1 KEY2=VAL2a,VAL2b... [KEY1=VAL1 KEY2=VAL2a,VAL2b... ...]\nFeature\
-    \ encoder key-word arguments. (default: {})\n"
+  optional: true
   synonyms:
   - --feature_encoder_args
+  description: "=VAL1 KEY2=VAL2a,VAL2b... [KEY1=VAL1 KEY2=VAL2a,VAL2b... ...]\nFeature\
+    \ encoder key-word arguments. (default: {})\n"
   args: !SimpleFlagArg
     name: KEY1
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: medaka features [-h] [--debug | --quiet] [--batch_size BATCH_SIZE]\n\
@@ -160,3 +160,4 @@ help_text: "usage: medaka features [-h] [--debug | --quiet] [--batch_size BATCH_
   \    Feature encoder key-word arguments. (default: {})\n"
 generated_using:
 - --help
+docker_image:

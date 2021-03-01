@@ -16,16 +16,16 @@ inputs:
 - id: in_outdir
   doc: "Specify to changes the output directory to the\nlocation specified. The input\
     \ file directory is used\nif this is not specified. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_out_name
   doc: "Changes the prefix of the successfully processed\noutput file to the string\
     \ specified. May not be\nspecified with multiple input files. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outname
-- id: in_name_fields_check
+- id: in_name_check_none
   doc: "The name of the fields to check for selection\ncriteria. (default: None)"
   type: string[]
   inputBinding:
@@ -39,19 +39,20 @@ inputs:
 - id: in_logic
   doc: "Defines whether a value may appear in any field (any)\nor whether it must\
     \ appear in all fields (all).\n(default: any)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --logic
 - id: in_regex
   doc: "If specified, treat values as regular expressions and\nallow partial string\
     \ matches. (default: False)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --regex
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ParseDb.py

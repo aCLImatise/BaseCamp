@@ -4,81 +4,81 @@ command:
 positional: []
 named:
 - !Flag
-  description: "The names of the sequence files that will be have job\nscripts generated\
-    \ to process them. The expected input\nis from the split_sequence_data.py script\
-    \ (e.g. 0.fna,\n1.fna, ..., n.fna)."
+  optional: true
   synonyms:
   - -i
   - --input_fna
+  description: "The names of the sequence files that will be have job\nscripts generated\
+    \ to process them. The expected input\nis from the split_sequence_data.py script\
+    \ (e.g. 0.fna,\n1.fna, ..., n.fna)."
   args: !RepeatFlagArg
     name: INPUT_FNA
-  optional: true
 - !Flag
-  description: 'Sequence similarity threshold [default: 0.97]'
+  optional: true
   synonyms:
   - -s
   - --similarity
+  description: 'Sequence similarity threshold [default: 0.97]'
   args: !SimpleFlagArg
     name: SIMILARITY
-  optional: true
 - !Flag
-  description: "A file template containing placeholders for variables\nthat this script\
-    \ will fill in when creating a new job\nscript for each input FASTA query file.\
-    \ An example\nfile for PBS systems is included with phylotoast."
+  optional: true
   synonyms:
   - -j
   - --job_script_template
+  description: "A file template containing placeholders for variables\nthat this script\
+    \ will fill in when creating a new job\nscript for each input FASTA query file.\
+    \ An example\nfile for PBS systems is included with phylotoast."
   args: !SimpleFlagArg
     name: JOB_SCRIPT_TEMPLATE
-  optional: true
 - !Flag
-  description: "The path to the sequence database file to run the\nBLAST against."
+  optional: true
   synonyms:
   - -d
   - --database
+  description: "The path to the sequence database file to run the\nBLAST against."
   args: !SimpleFlagArg
     name: DATABASE
-  optional: true
 - !Flag
-  description: "The maximum running time in hours for each script.\nDefault is 10\
-    \ hours."
+  optional: true
   synonyms:
   - -t
   - --walltime
+  description: "The maximum running time in hours for each script.\nDefault is 10\
+    \ hours."
   args: !SimpleFlagArg
     name: WALLTIME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --job_name
   description: "A descriptive name for the job script that will appear\nwhen checking\
     \ the job status. Max length is 15\ncharacters, but '_#' will be appended to the\
     \ name you\nprovide to differentiate among all the jobs, so this\nparameter will\
     \ be truncated if necessary to\naccommodate for the number of input files."
-  synonyms:
-  - -n
-  - --job_name
   args: !SimpleFlagArg
     name: JOB_NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
   description: "This will cause the program to print the full path for\neach output\
     \ file to the command line. This can be used\nfor informational purposes or to\
     \ pipe (|) to the PBS\nmulti-submission script to automate job submission as\n\
     soon as the scripts are created.\n"
-  synonyms:
-  - -v
-  - --verbose
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: multi_parallel_pick_otus.py [-h] -i INPUT_FNA [INPUT_FNA ...]\n\
@@ -114,3 +114,4 @@ help_text: "usage: multi_parallel_pick_otus.py [-h] -i INPUT_FNA [INPUT_FNA ...]
   \ are created.\n"
 generated_using:
 - --help
+docker_image:

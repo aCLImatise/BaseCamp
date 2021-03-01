@@ -4,315 +4,316 @@ command:
 positional: []
 named:
 - !Flag
-  description: (the STDOUT log file name in your RUN COMMAND - see above )
+  optional: true
   synonyms:
   - --outfile
+  description: (the STDOUT log file name in your RUN COMMAND - see above )
   args: !SimpleFlagArg
     name: qsub.out
-  optional: true
 - !Flag
-  description: (the STDERR log file name in your RUN COMMAND - see above )
+  optional: true
   synonyms:
   - --errfile
+  description: (the STDERR log file name in your RUN COMMAND - see above )
   args: !SimpleFlagArg
     name: qsub.err
-  optional: true
 - !Flag
-  description: (use orange-blue color scheme instead of red-green)
+  optional: true
   synonyms:
   - --orangeBlue
+  description: (use orange-blue color scheme instead of red-green)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (input files are provided in file.fastq.gz compressed format )
+  optional: true
   synonyms:
   - --gz
+  description: (input files are provided in file.fastq.gz compressed format )
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (set this to be the number of lanes, if there are more than 1 lanes
-    in your fastq files)
+  optional: true
   synonyms:
   - --lanes
+  description: (set this to be the number of lanes, if there are more than 1 lanes
+    in your fastq files)
   args: !SimpleFlagArg
     name: '2'
-  optional: true
 - !Flag
-  description: '- to run single end sequencing files (default behavior is paired end
-    files)'
+  optional: true
   synonyms:
   - --singleEnd
+  description: '- to run single end sequencing files (default behavior is paired end
+    files)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': to how many processors we will parallelise the bowtie part of the
-    run'
+  optional: true
   synonyms:
   - -p
+  description: ': to how many processors we will parallelise the bowtie part of the
+    run'
   args: !SimpleFlagArg
     name: '3'
-  optional: true
 - !Flag
-  description: / --bowtie2 (default is bowtie1 - decide if bowtie1 or bowtie2 is to
-    be used. bowtie2 is better to long reads - read lenght more than 70b, fragment
-    lenght more than 350b)
+  optional: true
   synonyms:
   - --bowtie1
+  - --bowtie2
+  description: (default is bowtie1 - decide if bowtie1 or bowtie2 is to be used. bowtie2
+    is better to long reads - read lenght more than 70b, fragment lenght more than
+    350b)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '- memory allocated to Bowtie, defaults to 256mb - only affects bowtie1
-    run'
+  optional: true
   synonyms:
   - --chunkmb
+  description: '- memory allocated to Bowtie, defaults to 256mb - only affects bowtie1
+    run'
   args: !SimpleFlagArg
     name: '256'
-  optional: true
 - !Flag
-  description: run with bowtie parameter M=2 (if maps more than M times, report one
-    alignment in random) - only affects bowtie1 run
+  optional: true
   synonyms:
   - -M
+  description: run with bowtie parameter M=2 (if maps more than M times, report one
+    alignment in random) - only affects bowtie1 run
   args: !SimpleFlagArg
     name: '2'
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxins
   description: ': sets the TRUE fragment (max) lenght to 350bp. Bowtie1 default 250,
     bowtie2 default 500, this script default 350. (Bowtie mappings resulting in fragments
     longer than --maxins are not reported)'
-  synonyms:
-  - --maxins
   args: !SimpleFlagArg
     name: '350'
-  optional: true
 - !Flag
-  description: only pipe AFTER bowtie (assumes PIPE_mappedBamPaths.txt, see above)
+  optional: true
   synonyms:
   - --noBowtie
+  description: only pipe AFTER bowtie (assumes PIPE_mappedBamPaths.txt, see above)
   args: !SimpleFlagArg
     name: runs
-  optional: true
 - !Flag
-  description: "**/noFlash (run/do-not-run Flash - for unmapped reads 'try to merge\
-    \ overlapping short reads to longer single end read' to enhance mapping)"
+  optional: true
   synonyms:
   - --flash
+  description: "**/noFlash (run/do-not-run Flash - for unmapped reads 'try to merge\
+    \ overlapping short reads to longer single end read' to enhance mapping)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '- supported genomes mm9 mm10 hg18 hg19 (filter/do-not-filter blacklisted
-    regions out from the final bam file)'
+  optional: true
   synonyms:
-  - --blacklistFilter/noBlacklistFilter
+  - --blacklistFilter
+  description: /noBlacklistFilter - supported genomes mm9 mm10 hg18 hg19 (filter/do-not-filter
+    blacklisted regions out from the final bam file)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': generate also footprint tracks (see footprint(FP) parameters below)'
+  optional: true
   synonyms:
   - --footPrint
+  description: ': generate also footprint tracks (see footprint(FP) parameters below)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': generate also peak call (see peak call(P) parameters below)'
+  optional: true
   synonyms:
   - --peakCall
+  description: ': generate also peak call (see peak call(P) parameters below)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': use Nextera adaptors in trimming, instead of standard illumina PE
-    adapters'
+  optional: true
   synonyms:
   - --nextera
+  description: ': use Nextera adaptors in trimming, instead of standard illumina PE
+    adapters'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "** (run/do-not-run TrimGalore for the data - Illumina PE standard\
-    \ adapter filter, trims on 3' end)"
+  optional: true
   synonyms:
-  - --trim/noTrim
+  - --trim
+  description: /noTrim** (run/do-not-run TrimGalore for the data - Illumina PE standard
+    adapter filter, trims on 3' end)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (run trimming also for 5' end of the data - Illumina PE standard adapter
-    filter, combination of TrimGalore and cutadapt)
+  optional: true
   synonyms:
   - --trim5
+  description: (run trimming also for 5' end of the data - Illumina PE standard adapter
+    filter, combination of TrimGalore and cutadapt)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ": custom adapters 3' trimming, R1 and R2 (give both if PE custom trimming\
-    \ is needed, SE trimming needs only R1) - these adapters will be used instead\
-    \ of Illumina default / atac adapters. SEQUENCE has to be in CAPITAL letters ATCG"
+  optional: true
   synonyms:
   - --ada3read1
   - --ada3read2
-  args: !SimpleFlagArg
-    name: SEQUENCE
-  optional: true
-- !Flag
-  description: ": custom adapters 5' trimming, R1 and R2 (give both if PE custom trimming\
+  description: ": custom adapters 3' trimming, R1 and R2 (give both if PE custom trimming\
     \ is needed, SE trimming needs only R1) - these adapters will be used instead\
     \ of Illumina default / atac adapters. SEQUENCE has to be in CAPITAL letters ATCG"
+  args: !SimpleFlagArg
+    name: SEQUENCE
+- !Flag
+  optional: true
   synonyms:
   - --ada5read1
   - --ada5read2
+  description: ": custom adapters 5' trimming, R1 and R2 (give both if PE custom trimming\
+    \ is needed, SE trimming needs only R1) - these adapters will be used instead\
+    \ of Illumina default / atac adapters. SEQUENCE has to be in CAPITAL letters ATCG"
   args: !SimpleFlagArg
     name: SEQUENCE
-  optional: true
 - !Flag
-  description: ': no windowing - instead plot 1b resolution raw read depths'
+  optional: true
   synonyms:
   - --noWindow
+  description: ': no windowing - instead plot 1b resolution raw read depths'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --windowSize
   description: ": custom window size (instead of default 300b) - this value has to\
     \ be even number (or is rounded into one).\nIf no custom INCREMENT is given, increment\
     \ is set to 10% of windowSize , i.e. the windowSize value has to be divisible\
     \ by 10 (or will be rounded to behave as such)."
-  synonyms:
-  - --windowSize
   args: !SimpleFlagArg
     name: '300'
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --windowIncr
   description: ": custom window increment (instead of default 10%). The value of windowIncr\
     \ should be even number, given in BASES (10 bases : windowIncr=10), not percentages.\n\
     If no custom windowSize is given, the windowSize will be set to 300bases, and\
     \ increment rounded so that 300bases is divisible by the given increment (allows\
     \ only values 10 and 30)."
-  synonyms:
-  - --windowIncr
   args: !SimpleFlagArg
     name: '30'
-  optional: true
 - !Flag
-  description: '(save fastq files UNMAPPED_1.fastq UNMAPPED_2.fastq for not-paired-mapped
-    reads : only for PE data)'
+  optional: true
   synonyms:
   - --saveUnmapped
+  description: '(save fastq files UNMAPPED_1.fastq UNMAPPED_2.fastq for not-paired-mapped
+    reads : only for PE data)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (save bam files singleEnd_bowtie_READ1.bam singleEnd_bowtie_READ2.bam
-    for unpaired mapped reads - not blacklisted/duplicate-filtered)
+  optional: true
   synonyms:
   - --saveUnpaired
+  description: (save bam files singleEnd_bowtie_READ1.bam singleEnd_bowtie_READ2.bam
+    for unpaired mapped reads - not blacklisted/duplicate-filtered)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (save bam files singleEnd_bowtie_filtered_READ1.bam singleEnd_bowtie_filtered_READ1.bam
-    for unpaired mapped reads - blacklisted/duplicate-filtered)
+  optional: true
   synonyms:
   - --saveUnpairedFiltered
+  description: (save bam files singleEnd_bowtie_filtered_READ1.bam singleEnd_bowtie_filtered_READ1.bam
+    for unpaired mapped reads - blacklisted/duplicate-filtered)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (save original bam file bowtie_out.bam - straight from bowtie output)
+  optional: true
   synonyms:
   - --saveUnfiltered
+  description: (save original bam file bowtie_out.bam - straight from bowtie output)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (save original bam file mapped.bam - straight from bowtie output. Do
-    not print out unmapped reads (single end) / non-proper pairs (paired end).)
+  optional: true
   synonyms:
   - --saveUnfilteredMapped
+  description: (save original bam file mapped.bam - straight from bowtie output. Do
+    not print out unmapped reads (single end) / non-proper pairs (paired end).)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (run EXTRA bowtie-run before trimming, save the bam file UNTRIMMED_bowtie_out.bam
-    - straight from before-trimming bowtie output - includes all reads)
+  optional: true
   synonyms:
   - --saveUntrimmed
+  description: (run EXTRA bowtie-run before trimming, save the bam file UNTRIMMED_bowtie_out.bam
+    - straight from before-trimming bowtie output - includes all reads)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --saveUntrimmedMapped
   description: (run EXTRA bowtie-run before trimming, save the bam file UNTRIMMED_onlyMapped_bowtie_out.bam
     - straight from before-trimming bowtie output. Do not print out unmapped reads
     (single end) / non-proper pairs (paired end).)
-  synonyms:
-  - --saveUntrimmedMapped
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '(save unpacked BDG files - default : save only BIGWIG packed versions
-    of these files'
+  optional: true
   synonyms:
   - --saveBDG
+  description: '(save unpacked BDG files - default : save only BIGWIG packed versions
+    of these files'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': if you are running peak calls / footprints via PYRAMID pipeline,
-    set this on.'
+  optional: true
   synonyms:
   - --pyramidRerun
+  description: ': if you are running peak calls / footprints via PYRAMID pipeline,
+    set this on.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': only run Peak Call (to finetune peak call part) - expects PIPE_previousRunPaths.txt
-    (see above)'
+  optional: true
   synonyms:
   - --onlyPeakCall
+  description: ': only run Peak Call (to finetune peak call part) - expects PIPE_previousRunPaths.txt
+    (see above)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': only run Peak Call and FootPrinting (to finetune FootPrint windowing
-    and peak call parameters) - expects PIPE_previousRunPaths.txt (see above)'
+  optional: true
   synonyms:
   - --onlyFPandPC
+  description: ': only run Peak Call and FootPrinting (to finetune FootPrint windowing
+    and peak call parameters) - expects PIPE_previousRunPaths.txt (see above)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --onlyHub
   description: ": only generates data hub - NOTE !! this DOES NOT include data from\
     \ any 'footprint / peak call rerun' folders - it hubs only the ORIGINAL data set\
     \ - (expects PIPE_previousRunPaths.txt, see above)"
-  synonyms:
-  - --onlyHub
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --windowFP
   description: ': (windowing the signal for visualisation) - sliding window, where
     overlap 2*WINDOW, and window size 4*WINDOW, resulting in 2*WINDOW size increments
     in graph. Value 0 means NO WINDOWING (only raw 1b resolution track is given)'
-  synonyms:
-  - --windowFP
   args: !SimpleFlagArg
     name: '1'
-  optional: true
 - !Flag
-  description: ': (first filter)  RANGE of depthP - Each region should have at least
-    40 reads to be included to the peak call.'
+  optional: true
   synonyms:
   - --depthP
+  description: ': (first filter)  RANGE of depthP - Each region should have at least
+    40 reads to be included to the peak call.'
   args: !SimpleFlagArg
     name: '40'
-  optional: true
 - !Flag
-  description: ': (second filter) Merges regions separated by 0bp or less.'
+  optional: true
   synonyms:
   - --mergeP
+  description: ': (second filter) Merges regions separated by 0bp or less.'
   args: !SimpleFlagArg
     name: '0'
-  optional: true
 - !Flag
-  description: ': (third filter)  Regions (merged, depth-filtered) should be at least
-    20bp wide to be considered.'
+  optional: true
   synonyms:
   - --contigP
+  description: ': (third filter)  Regions (merged, depth-filtered) should be at least
+    20bp wide to be considered.'
   args: !SimpleFlagArg
     name: '20'
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ': prints this help'
+  optional: true
   synonyms:
   - -h
   - --help
+  description: ': prints this help'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "NGseqBasic.sh - by Jelena Telenius, 03/11/2016\n\nrun started : Wed Sep\
@@ -453,3 +454,4 @@ help_text: "NGseqBasic.sh - by Jelena Telenius, 03/11/2016\n\nrun started : Wed 
   \n"
 generated_using:
 - --help
+docker_image:

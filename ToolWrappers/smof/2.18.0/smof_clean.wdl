@@ -2,7 +2,7 @@ version 1.0
 
 task SmofClean {
   input {
-    String? _type_np
+    String? _type_type
     Boolean? to_upper
     Boolean? to_lower
     Boolean? to_seq
@@ -11,12 +11,12 @@ task SmofClean {
     Boolean? mask_lowercase
     Int? col_width
     Boolean? standardize
-    String input_fasta_default
+    String input_fasta_sequence
   }
   command <<<
     smof clean \
-      ~{input_fasta_default} \
-      ~{if defined(_type_np) then ("-t " +  '"' + _type_np + '"') else ""} \
+      ~{input_fasta_sequence} \
+      ~{if defined(_type_type) then ("-t " +  '"' + _type_type + '"') else ""} \
       ~{if (to_upper) then "--toupper" else ""} \
       ~{if (to_lower) then "--tolower" else ""} \
       ~{if (to_seq) then "--toseq" else ""} \
@@ -26,8 +26,11 @@ task SmofClean {
       ~{if defined(col_width) then ("--col_width " +  '"' + col_width + '"') else ""} \
       ~{if (standardize) then "--standardize" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _type_np: "|p, --type n|p    sequence type"
+    _type_type: "|p, --type n|p    sequence type"
     to_upper: "convert to uppercase"
     to_lower: "convert to lowercase"
     to_seq: "removes all non-letter characters (gaps, stops, etc.)"
@@ -36,7 +39,7 @@ task SmofClean {
     mask_lowercase: "convert lower-case to unknown"
     col_width: "width of the sequence output (0 indicates no wrapping)"
     standardize: "Convert 'X' in DNA to 'N' and '[._]' to '-' (for gaps)"
-    input_fasta_default: "input fasta sequence (default = stdin)"
+    input_fasta_sequence: "input fasta sequence (default = stdin)"
   }
   output {
     File out_stdout = stdout()

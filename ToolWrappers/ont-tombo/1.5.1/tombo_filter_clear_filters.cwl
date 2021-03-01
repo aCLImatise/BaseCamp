@@ -8,18 +8,19 @@ inputs:
     prefix: --fast5-basedirs
 - id: in_corrected_group
   doc: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
-  type: long
+  type: long?
   inputBinding:
     prefix: --corrected-group
 - id: in_quiet
   doc: Don't print status information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tombo

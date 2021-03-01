@@ -40,6 +40,9 @@ task CsvtkCat {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     buff_size: "buffer size (default 8192)"
     lines: "count lines instead of bytes"

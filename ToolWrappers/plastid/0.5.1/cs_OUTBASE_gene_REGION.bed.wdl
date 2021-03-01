@@ -8,6 +8,9 @@ task CsOUTBASEGeneREGIONbed {
     cs OUTBASE_gene_REGION_bed \
       ~{cs}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cs: ""
   }

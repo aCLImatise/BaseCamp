@@ -12,6 +12,9 @@ task StrainestMapgenomes {
       ~{reference} \
       ~{mapped}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genomes_dot_dot_dot: ""
     reference: ""

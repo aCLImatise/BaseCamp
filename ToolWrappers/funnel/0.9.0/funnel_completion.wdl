@@ -8,6 +8,9 @@ task FunnelCompletion {
     funnel completion \
       ~{bash}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bash: "Generate bash completion code"
   }

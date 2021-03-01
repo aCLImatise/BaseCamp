@@ -8,14 +8,14 @@ inputs:
     prefix: --exclude
 - id: in_quiet
   doc: Suppress all warning messages. Cannot use with '-v'.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_verbose
   doc: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn warnings\
     \ into exceptions. Cannot use\nwith '-q'. (Default: show each type of warning\
     \ once)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_in_file_dot_gff
@@ -32,6 +32,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gff_parent_types

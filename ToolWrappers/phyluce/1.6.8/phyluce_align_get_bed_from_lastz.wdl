@@ -20,6 +20,9 @@ task PhyluceAlignGetBedFromLastz {
       ~{if defined(conf) then ("--conf " +  '"' + conf + '"') else ""} \
       ~{if defined(sections) then ("--sections " +  '"' + sections + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     last_z: "The input lastz file."
     output_bed_file: "The output BED file"

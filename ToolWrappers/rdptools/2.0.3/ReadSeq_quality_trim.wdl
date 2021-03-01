@@ -16,6 +16,9 @@ task ReadSeqQualitytrim {
       ~{if (less_than) then "--less-than" else ""} \
       ~{if defined(min_seq_length) then ("--min_seq_length " +  '"' + min_seq_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q_out: "Write fastq instead of fasta file, offset 33\\n(#)"
     illumina: "Illumina trimming mode"

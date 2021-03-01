@@ -12,6 +12,9 @@ task Anviselftest {
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(suite) then ("--suite " +  '"' + suite + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: ""
     debug: ""

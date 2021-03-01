@@ -5,19 +5,19 @@ inputs:
   doc: "The software would infer it based on the name of the\n'out_dir'. If it is\
     \ set and contradicts the 'out_dir', a\nsubfolder under out_dir will be created\
     \ named 'kmer' and\nout_dir will be changed to that."
-  type: string
+  type: string?
   inputBinding:
     prefix: --kmer
 - id: in_job_id
   doc: "If not submitted in job array, would require this parameter\nto be set. (1-based\
     \ index)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --job_id
 - id: in_var_id
   doc: "The variable name that the script would use for identifying\nthe job id. By\
     \ default: SGE_TASK_ID.\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --var_id
 - id: in_chrom_size_path
@@ -47,6 +47,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - get_kmers.py

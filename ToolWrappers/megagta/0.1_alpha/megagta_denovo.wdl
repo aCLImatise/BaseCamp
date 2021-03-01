@@ -22,6 +22,9 @@ task MegagtaDenovo {
       ~{if defined(min_standalone) then ("--min_standalone " +  '"' + min_standalone + '"') else ""} \
       ~{if defined(min_contig) then ("--min_contig " +  '"' + min_contig + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s_dbg_name: "succinct de Bruijn graph name"
     output_prefix: "(=out)         output prefix"

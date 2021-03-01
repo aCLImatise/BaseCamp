@@ -14,6 +14,9 @@ task RandomLines {
       ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""} \
       ~{if (de_comment) then "-decomment" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seed: "- Set seed used for randomizing, useful for debugging."
     de_comment: "- remove blank lines and those starting with"

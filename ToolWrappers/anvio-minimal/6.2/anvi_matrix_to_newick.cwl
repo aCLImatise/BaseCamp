@@ -3,7 +3,7 @@ id: anvi_matrix_to_newick.cwl
 inputs:
 - id: in_output_file
   doc: File path to store results.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file
 - id: in_items_order_file
@@ -11,12 +11,12 @@ inputs:
     \ report the order of items in the\nresulting tree in a separate file. The content\
     \ of this\nfile will be a single-column item names the way they\nare ordered in\
     \ the output newick dendrogram."
-  type: File
+  type: File?
   inputBinding:
     prefix: --items-order-file
 - id: in_transpose
   doc: Transpose the input matrix file before clustering.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --transpose
 - id: in_distance
@@ -25,7 +25,7 @@ inputs:
     \ by\nmaking a mistake (such as entering a non-existent\ndistance metric and making\
     \ anvi'o upset), or by taking\na look at the help menu of the\nhierarchy.distance.pdist\
     \ function in the scipy.cluster\nmodule."
-  type: string
+  type: string?
   inputBinding:
     prefix: --distance
 - id: in_linkage
@@ -37,7 +37,7 @@ inputs:
     \ available ones you can check the\nhierarcy.linkage function in the scipy.cluster\
     \ module.\nUp to you really. But then you can't use ward anymore,\nand you would\
     \ have to leave anvi'o right now.\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --linkage
 outputs:
@@ -46,7 +46,7 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: File path to store results.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
 - id: out_items_order_file
@@ -54,9 +54,10 @@ outputs:
     \ report the order of items in the\nresulting tree in a separate file. The content\
     \ of this\nfile will be a single-column item names the way they\nare ordered in\
     \ the output newick dendrogram."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_items_order_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-matrix-to-newick

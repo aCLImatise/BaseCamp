@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Array, String, File, Boolean, Int
+
+Alignrecords_Py_Within_V0_1_0 = CommandToolBuilder(tool="AlignRecords.py_within", base_command=["AlignRecords.py", "within"], inputs=[ToolInput(tag="in_list_tab_defaultnone", input_type=Array(t=String(), optional=True), prefix="-d", doc=InputDocumentation(doc="A list of tab delimited database files. (default:\nNone)")), ToolInput(tag="in_explicit_output_file", input_type=Array(t=String(), optional=True), prefix="-o", doc=InputDocumentation(doc="Explicit output file name. Note, this argument cannot\nbe used with the --failed, --outdir, or --outname\narguments. If unspecified, then the output filename\nwill be based on the input filename(s). (default:\nNone)")), ToolInput(tag="in_outdir", input_type=File(optional=True), prefix="--outdir", doc=InputDocumentation(doc="Specify to changes the output directory to the\nlocation specified. The input file directory is used\nif this is not specified. (default: None)")), ToolInput(tag="in_out_name", input_type=File(optional=True), prefix="--outname", doc=InputDocumentation(doc="Changes the prefix of the successfully processed\noutput file to the string specified. May not be\nspecified with multiple input files. (default: None)")), ToolInput(tag="in_log", input_type=File(optional=True), prefix="--log", doc=InputDocumentation(doc="Specify to write verbose logging to a file. May not be\nspecified with multiple input files. (default: None)")), ToolInput(tag="in_failed", input_type=Boolean(optional=True), prefix="--failed", doc=InputDocumentation(doc="If specified create files containing records that fail\nprocessing. (default: False)")), ToolInput(tag="in_format", input_type=String(optional=True), prefix="--format", doc=InputDocumentation(doc="Specify input and output format. (default: airr)")), ToolInput(tag="in_nproc", input_type=Int(optional=True), prefix="--nproc", doc=InputDocumentation(doc="The number of simultaneous computational processes to\nexecute (CPU cores to utilized). (default: 8)")), ToolInput(tag="in_sf", input_type=Array(t=String(), optional=True), prefix="--sf", doc=InputDocumentation(doc="The sequence fields to multiple align within each\nrecord. (default: None)")), ToolInput(tag="in_exec", input_type=String(optional=True), prefix="--exec", doc=InputDocumentation(doc="The location of the MUSCLE executable (default:\nmuscle)\n"))], outputs=[], container="quay.io/biocontainers/changeo:1.0.2--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Alignrecords_Py_Within_V0_1_0().translate("wdl")
+

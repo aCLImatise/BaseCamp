@@ -2,7 +2,7 @@ version 1.0
 
 task PairtoolsFilterbycov {
   input {
-    File? output_file_pairs_low
+    File? output_file_path_ends_is
     File? output_high_cov
     File? output_unmapped
     File? output_stats
@@ -31,7 +31,7 @@ task PairtoolsFilterbycov {
     pairtools filterbycov \
       ~{number_dot} \
       ~{interactors_dot} \
-      ~{if defined(output_file_pairs_low) then ("--output " +  '"' + output_file_pairs_low + '"') else ""} \
+      ~{if defined(output_file_path_ends_is) then ("--output " +  '"' + output_file_path_ends_is + '"') else ""} \
       ~{if defined(output_high_cov) then ("--output-highcov " +  '"' + output_high_cov + '"') else ""} \
       ~{if defined(output_unmapped) then ("--output-unmapped " +  '"' + output_unmapped + '"') else ""} \
       ~{if defined(output_stats) then ("--output-stats " +  '"' + output_stats + '"') else ""} \
@@ -54,8 +54,11 @@ task PairtoolsFilterbycov {
       ~{if defined(cmd_in) then ("--cmd-in " +  '"' + cmd_in + '"') else ""} \
       ~{if defined(cmd_out) then ("--cmd-out " +  '"' + cmd_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    output_file_pairs_low: "output file for pairs from low coverage\\nregions. If the path ends with .gz or .lz4,\\nthe output is pbgzip-/lz4c-compressed. By\\ndefault, the output is printed into stdout."
+    output_file_path_ends_is: "output file for pairs from low coverage\\nregions. If the path ends with .gz or .lz4,\\nthe output is pbgzip-/lz4c-compressed. By\\ndefault, the output is printed into stdout."
     output_high_cov: "output file for pairs from high coverage\\nregions. If the path ends with .gz or .lz4,\\nthe output is pbgzip-/lz4c-compressed. If\\nthe path is the same as in --output or -,\\noutput duplicates together  with deduped\\npairs. By default, duplicates are dropped."
     output_unmapped: "output file for unmapped pairs. If the path\\nends with .gz or .lz4, the output is\\npbgzip-/lz4c-compressed. If the path is the\\nsame as in --output or -, output unmapped\\npairs together with deduped pairs. If the\\npath is the same as --output-highcov, output\\nunmapped reads together. By default,\\nunmapped pairs are dropped."
     output_stats: "output file for statistics of multiple"
@@ -82,7 +85,7 @@ task PairtoolsFilterbycov {
   }
   output {
     File out_stdout = stdout()
-    File out_output_file_pairs_low = "${in_output_file_pairs_low}"
+    File out_output_file_path_ends_is = "${in_output_file_path_ends_is}"
     File out_output_high_cov = "${in_output_high_cov}"
     File out_output_unmapped = "${in_output_unmapped}"
     File out_output_stats = "${in_output_stats}"

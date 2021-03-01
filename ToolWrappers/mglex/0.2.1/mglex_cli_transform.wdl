@@ -28,6 +28,9 @@ task MglexcliTransform {
       ~{if defined(class_index) then ("--class-index " +  '"' + class_index + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data: "Likelihood matrix; default standard input"
     precision: "Output precision; default 2"
@@ -39,7 +42,7 @@ task MglexcliTransform {
     logarithm: "Convert from simple to logarithmic format"
     class_index: "Report only class indices (one-based) with likelihoods above threshold; default 1.0"
     v: ""
-    transform: ""
+    transform: "[--data <file>] [--beta <float> --precision <int>]\\n[--logarithm|--maximum-likelihood|--posterior|--posterior-ratio|--class-index <float>]\\n[--raw-probability]"
   }
   output {
     File out_stdout = stdout()

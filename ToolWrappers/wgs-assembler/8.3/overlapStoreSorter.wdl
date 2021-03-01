@@ -4,6 +4,9 @@ task OverlapStoreSorter {
   command <<<
     overlapStoreSorter
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

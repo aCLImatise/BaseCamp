@@ -4,108 +4,112 @@ command:
 positional: []
 named:
 - !Flag
-  description: "--un-single UN_SINGLE --al-single\nAL_SINGLE [-U ORPHAN] [-S SAM]\n\
-    [--bowtie2 BOWTIE2]\n[--threads THREADS]\n[--bowtie2-options BOWTIE2_OPTIONS]\n\
-    [--cat-pairs] [--reorder]"
-  synonyms:
-  - --un-pair
-  - --al-pair
-  args: !SimpleFlagArg
-    name: UN_PAIR
   optional: true
-- !Flag
-  description: the fastq file of pair1 reads
   synonyms:
   - '-1'
+  description: the fastq file of pair1 reads
   args: !SimpleFlagArg
     name: PAIR1
-  optional: true
 - !Flag
-  description: the fastq file of pair2 reads
+  optional: true
   synonyms:
   - '-2'
+  description: the fastq file of pair2 reads
   args: !SimpleFlagArg
     name: PAIR2
-  optional: true
 - !Flag
-  description: the database index file
+  optional: true
   synonyms:
   - -x
+  description: the database index file
   args: !SimpleFlagArg
     name: INDEX
-  optional: true
 - !Flag
-  description: the name of the output files for the orphan reads without alignments
+  optional: true
+  synonyms:
+  - --un-pair
+  description: the name of the output files for the paired reads without any alignments
+  args: !SimpleFlagArg
+    name: UN_PAIR
+- !Flag
+  optional: true
+  synonyms:
+  - --al-pair
+  description: the name of the output files for the paired reads with concordant alignments
+  args: !SimpleFlagArg
+    name: AL_PAIR
+- !Flag
+  optional: true
   synonyms:
   - --un-single
+  description: the name of the output files for the orphan reads without alignments
   args: !SimpleFlagArg
     name: UN_SINGLE
-  optional: true
 - !Flag
-  description: the name of the output files for the orphan reads with alignments
+  optional: true
   synonyms:
   - --al-single
+  description: the name of the output files for the orphan reads with alignments
   args: !SimpleFlagArg
     name: AL_SINGLE
-  optional: true
 - !Flag
-  description: the fastq files of orphan reads in comma-delimited list
+  optional: true
   synonyms:
   - -U
+  description: the fastq files of orphan reads in comma-delimited list
   args: !SimpleFlagArg
     name: ORPHAN
-  optional: true
 - !Flag
-  description: the file to write the sam output
+  optional: true
   synonyms:
   - -S
+  description: the file to write the sam output
   args: !SimpleFlagArg
     name: SAM
-  optional: true
 - !Flag
-  description: the path to the bowtie2 executable
+  optional: true
   synonyms:
   - --bowtie2
+  description: the path to the bowtie2 executable
   args: !SimpleFlagArg
     name: BOWTIE2
-  optional: true
 - !Flag
-  description: the number of threads to use
+  optional: true
   synonyms:
   - --threads
+  description: the number of threads to use
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: the bowtie2 options to apply
+  optional: true
   synonyms:
   - --bowtie2-options
+  description: the bowtie2 options to apply
   args: !SimpleFlagArg
     name: BOWTIE2_OPTIONS
-  optional: true
 - !Flag
-  description: concatenate pair files before aligning so reads are aligned as single
-    end
+  optional: true
   synonyms:
   - --cat-pairs
+  description: concatenate pair files before aligning so reads are aligned as single
+    end
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: print the sequences in the same order as the input files
+  optional: true
   synonyms:
   - --reorder
+  description: print the sequences in the same order as the input files
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: kneaddata_bowtie2_discordant_pairs [-h] -1 PAIR1 -2 PAIR2 -x INDEX\n\
@@ -133,3 +137,4 @@ help_text: "usage: kneaddata_bowtie2_discordant_pairs [-h] -1 PAIR1 -2 PAIR2 -x 
   \ sequences in the same order as the input files\n"
 generated_using:
 - --help
+docker_image:

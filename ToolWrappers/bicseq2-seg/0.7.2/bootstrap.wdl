@@ -4,6 +4,9 @@ task Bootstrap {
   command <<<
     bootstrap
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -56,6 +56,9 @@ task Referencesannotator {
       ~{if (accession_tags) then "--accessionTags" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "[string]                    Input references file (gzipped ok). Mandatory option."
     out: "[string]                   Output file. Mandatory option."

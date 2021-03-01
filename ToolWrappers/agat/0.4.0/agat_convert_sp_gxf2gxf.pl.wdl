@@ -28,6 +28,9 @@ task AgatConvertSpGxf2gxfpl {
       ~{if defined(gff_version_input) then ("--gff_version_input " +  '"' + gff_version_input + '"') else ""} \
       ~{if defined(gff_version_output) then ("--gff_version_output " +  '"' + gff_version_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GTF/GFF file."
     ct: "When the features do not have Parent/ID relationships, the\\nparser will try to group features using a common/shared\\nattribute (i.e. a locus tag.). By default locus_tag and gene_id.\\nYou can provide another specific common/shared attribute using\\nthis option."

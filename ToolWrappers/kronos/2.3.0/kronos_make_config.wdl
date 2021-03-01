@@ -10,6 +10,9 @@ task KronosMakeConfig {
       ~{components} \
       ~{if defined(output_filename) then ("--output_filename " +  '"' + output_filename + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_filename: "a name for the resultant config file\\n"
     components: "list of component names"

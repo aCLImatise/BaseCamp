@@ -12,6 +12,9 @@ task AribaPubmlstget {
       ~{outdir} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Be verbose"
     species: "Species to download. Put it in quotes"

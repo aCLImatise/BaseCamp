@@ -8,6 +8,9 @@ task Seq2scienceExplain {
     seq2science explain \
       ~{if defined(config_file) then ("--configfile " +  '"' + config_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: "The path to the config file.\\n"
   }

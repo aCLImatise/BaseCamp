@@ -16,6 +16,9 @@ task ClinvarTsvNormalizeTsv {
       ~{if defined(input_tsv) then ("--input-tsv " +  '"' + input_tsv + '"') else ""} \
       ~{if defined(output_tsv) then ("--output-tsv " +  '"' + output_tsv + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "Path to reference FASTA file"
     input_tsv: "Path to input TSV file."

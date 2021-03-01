@@ -5,128 +5,128 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --matrixfile
   description: "The matrix compressed file contains single or multiple\nresolutions\
     \ Hi-C contact matrix files (multi-cool, or\nhic file), resolution should be set\
     \ via parameter -r;\nor a sparse | dense format matrix file whole genome\nwidely\
     \ (not suggest when using a high resolution)"
-  synonyms:
-  - -m
-  - --matrixfile
   args: !SimpleFlagArg
     name: MATRIXFILE
-  optional: true
 - !Flag
-  description: "the reference directory that downloaded from dropbox\ndropbox. (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A\n\
-    ABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)"
+  optional: true
   synonyms:
   - --refdir
+  description: "the reference directory that downloaded from dropbox\ndropbox. (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A\n\
+    ABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)"
   args: !SimpleFlagArg
     name: REFERENCEDIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maptrack
   description: "Choose which ENCODE mappability track should be used\nfor regression.\
     \ See more details\nhttp://genome.ucsc.edu/cgi-\nbin/hgTrackUi?db=hg18&g=wgEncodeMapability.\
     \ DEFAULT:\n50mer"
-  synonyms:
-  - --maptrack
   args: !ChoiceFlagArg
     choices: !!set
       36mer:
-      24mer:
       50mer:
-  optional: true
+      24mer:
 - !Flag
-  description: /path/to/bicseqDir/
+  optional: true
   synonyms:
   - --bicseq
+  description: /path/to/bicseqDir/
   args: !SimpleFlagArg
     name: BICSEQ
-  optional: true
 - !Flag
-  description: "If this switch is on, HiNT will do the iterative\nregression model\
-    \ by removing copy numer variated\nregions, DEFAULT=False"
+  optional: true
   synonyms:
   - --doiter
+  description: "If this switch is on, HiNT will do the iterative\nregression model\
+    \ by removing copy numer variated\nregions, DEFAULT=False"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Format for the output contact matrix, DEFAULT: cooler'
+  optional: true
   synonyms:
   - -f
   - --format
+  description: 'Format for the output contact matrix, DEFAULT: cooler'
   args: !ChoiceFlagArg
     choices: !!set
       cooler:
       juicer:
-  optional: true
 - !Flag
-  description: "enzyme used for the Hi-C experiments, will be used to\ncalculate enzyme\
-    \ sites"
+  optional: true
   synonyms:
   - -e
   - --enzyme
+  description: "enzyme used for the Hi-C experiments, will be used to\ncalculate enzyme\
+    \ sites"
   args: !ChoiceFlagArg
     choices: !!set
-      DpnII:
-      MboI:
       HindIII:
-  optional: true
+      MboI:
+      DpnII:
 - !Flag
-  description: "Resolution for the Hi-C contact matrix used for the\nCNV detection,\
-    \ unit: kb, DEFAULT: 50kb"
+  optional: true
   synonyms:
   - -r
   - --resolution
+  description: "Resolution for the Hi-C contact matrix used for the\nCNV detection,\
+    \ unit: kb, DEFAULT: 50kb"
   args: !SimpleFlagArg
     name: RESOLUTION
-  optional: true
 - !Flag
-  description: "Specify your species, choose form hg38, hg19, and\nmm10. DEFAULT:\
-    \ hg19"
+  optional: true
   synonyms:
   - -g
   - --genome
+  description: "Specify your species, choose form hg38, hg19, and\nmm10. DEFAULT:\
+    \ hg19"
   args: !ChoiceFlagArg
     choices: !!set
-      hg19:
       hg38:
       mm10:
-  optional: true
+      hg19:
 - !Flag
-  description: "Path to the output directory, where you want to store\nall the output\
-    \ files, if not set, the current\ndirectory will be used"
+  optional: true
   synonyms:
   - -o
   - --outdir
+  description: "Path to the output directory, where you want to store\nall the output\
+    \ files, if not set, the current\ndirectory will be used"
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
-  description: "Prefix for the result files. If not set, 'NA' will be\nused instead"
+  optional: true
   synonyms:
   - -n
   - --name
+  description: "Prefix for the result files. If not set, 'NA' will be\nused instead"
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: "Number of threads for running HiNT-cnv, DEFAULT: 16\n"
+  optional: true
   synonyms:
   - -p
   - --threads
+  description: "Number of threads for running HiNT-cnv, DEFAULT: 16\n"
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: hint cnv [-h] -m MATRIXFILE --refdir REFERENCEDIR\n           \
@@ -168,3 +168,4 @@ help_text: "usage: hint cnv [-h] -m MATRIXFILE --refdir REFERENCEDIR\n          
   \ running HiNT-cnv, DEFAULT: 16\n"
 generated_using:
 - --help
+docker_image:

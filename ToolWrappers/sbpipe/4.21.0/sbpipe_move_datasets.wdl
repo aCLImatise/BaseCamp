@@ -12,6 +12,9 @@ task SbpipeMoveDatasets {
       ~{if defined(input_path) then ("--input-path " +  '"' + input_path + '"') else ""} \
       ~{if defined(output_path) then ("--output-path " +  '"' + output_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     model_name: "the model name without extension"
     input_path: "the path containing the input files"

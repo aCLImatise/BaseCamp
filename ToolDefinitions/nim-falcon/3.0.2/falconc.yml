@@ -1,0 +1,3594 @@
+&id001 !Command
+command:
+- falconc
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - falconc
+  - ipa-shard-ovl-asym
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: ipa-shard-ovl-asym
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: =, --max-nshards=   int     REQUIRED  Maximum number of distributed
+      jobs
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: "=, --shard-prefix=  string  \"shard\"   The output. Shard files\
+      \ are\n(prefix).(shard_id).block_ids (though\nthey really are block_id ranges)."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: "=, --n=             int     REQUIRED  Generate comparisons for\n\
+      upper-triangle of nxn matrix"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "=, --out-ids-fn=    string  \"\"        If given, this lists the\
+      \ shard_ids,\n0 thru N-1, corresponding to the\nshard-prefix.block_id files.\
+      \ Useful\nfor Cromwell.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  ipa-shard-ovl-asym [required&optional-params] \n(Used to shard\
+    \ the asymmetric overlap jobs.)\nOptions:\n  -h, --help                      \
+    \        print this cligen-erated help\n  --help-syntax                      \
+    \     advanced: prepend,plurals,..\n  -m=, --max-nshards=   int     REQUIRED \
+    \ Maximum number of distributed jobs\n  -s=, --shard-prefix=  string  \"shard\"\
+    \   The output. Shard files are\n                                          (prefix).(shard_id).block_ids\
+    \ (though\n                                          they really are block_id\
+    \ ranges).\n  -n=, --n=             int     REQUIRED  Generate comparisons for\n\
+    \                                          upper-triangle of nxn matrix\n  -o=,\
+    \ --out-ids-fn=    string  \"\"        If given, this lists the shard_ids,\n \
+    \                                         0 thru N-1, corresponding to the\n \
+    \                                         shard-prefix.block_id files. Useful\n\
+    \                                          for Cromwell.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - paf-filter
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: paf-filter
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: "=, --fai-fn=      string  REQUIRED  input fasta-index filename (as\
+      \ in\nfoo.fasta.fai, but assume foo.fasta is\nnext to it; foo.fasta must then\
+      \ exist,\nbut it can be empty since it is ignored)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: =, --in-paf-fn=   string  "-"       paf filename ('-' => stdin)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "=, --out-paf-fn=  string  \"-\"       output paf filename, with\
+      \ only the\ncontigs inside the fasta ('-' => stdout)\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  paf-filter [required&optional-params] \nDrop the lines of\
+    \ PAF that involve contigs not in FASTA index.\nWrite the rest to out_paf_fn.\
+    \  (\"-\" means stdin/stdout for PAF.)\nhttps://bioconvert.readthedocs.io/en/master/formats.html#paf-pairwise-mapping-format\n\
+    Options:\n  -h, --help                            print this cligen-erated help\n\
+    \  --help-syntax                         advanced: prepend,plurals,..\n  -f=,\
+    \ --fai-fn=      string  REQUIRED  input fasta-index filename (as in\n       \
+    \                                 foo.fasta.fai, but assume foo.fasta is\n   \
+    \                                     next to it; foo.fasta must then exist,\n\
+    \                                        but it can be empty since it is ignored)\n\
+    \  -i=, --in-paf-fn=   string  \"-\"       paf filename ('-' => stdin)\n  -o=,\
+    \ --out-paf-fn=  string  \"-\"       output paf filename, with only the\n    \
+    \                                    contigs inside the fasta ('-' => stdout)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - raptor-db-subsample
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: RaptorDB.
+    description: -u, --use-umc          bool    REQUIRED  Use Unique Molecular Coverage
+      when
+  - !Positional
+    optional: false
+    position: 0
+    name: megabytes.
+    description: -a=, --alarms-fn=      string  ""        Optional JSON file to write
+      SMRT Link
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: =, --rdb_fn=         string  REQUIRED  Path to the RaptorDB file.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: =, --genome_size=    int64   REQUIRED  Approximate genome size.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: =, --coverage=       float   REQUIRED  Coverage to select from the
+      input
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --random-seed
+    description: =         int64   REQUIRED  Seed for random generation.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: =, --block-size-mb=  float   REQUIRED  Block size of the output DB,
+      in
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  raptor-db-subsample [required&optional-params] \nOptions:\n\
+    \  -h, --help                               print this cligen-erated help\n  --help-syntax\
+    \                            advanced: prepend,plurals,..\n  -r=, --rdb_fn=  \
+    \       string  REQUIRED  Path to the RaptorDB file.\n  -g=, --genome_size=  \
+    \  int64   REQUIRED  Approximate genome size.\n  -c=, --coverage=       float\
+    \   REQUIRED  Coverage to select from the input\n                            \
+    \               RaptorDB.\n  -u, --use-umc          bool    REQUIRED  Use Unique\
+    \ Molecular Coverage when\n                                           subsampling.\
+    \ If a subread is picked,\n                                           then all\
+    \ subreads from that ZMW will\n                                           be output\
+    \ as well.\n  --random-seed=         int64   REQUIRED  Seed for random generation.\n\
+    \  -b=, --block-size-mb=  float   REQUIRED  Block size of the output DB, in\n\
+    \                                           megabytes.\n  -a=, --alarms-fn=  \
+    \    string  \"\"        Optional JSON file to write SMRT Link\n             \
+    \                              alarms. (typically used w/ -f)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - raptor-db-calc-length-cutoff
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: raptor-db-calc-length-cutoff
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: =, --rdb-fn=       string  "rawreads.db"  set rdb_fn
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: =, --genome-size=  int64   4600000        set genome_size
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: =, --coverage=     float   30.0           set coverage
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --fail-low-cov
+    description: "bool    false          Exit non-zero if the input\ncoverage was\
+      \ insufficient to\nsatisfy the requirement."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: "=, --alarms-fn=    string  \"\"             Optional JSON file to\
+      \ write SMRT\nLink alarms. (typically used w/\n-f)\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  raptor-db-calc-length-cutoff [optional-params] \nPerform a\
+    \ linear pass on an overlap file, and determine rough clipping\ncoordinates to\
+    \ 'correct' reads.  Write integer to stdout.\nOptions:\n  -h, --help         \
+    \                         print this cligen-erated help\n  --help-syntax     \
+    \                          advanced: prepend,plurals,..\n  -r=, --rdb-fn=    \
+    \   string  \"rawreads.db\"  set rdb_fn\n  -g=, --genome-size=  int64   4600000\
+    \        set genome_size\n  -c=, --coverage=     float   30.0           set coverage\n\
+    \  -f, --fail-low-cov   bool    false          Exit non-zero if the input\n  \
+    \                                            coverage was insufficient to\n  \
+    \                                            satisfy the requirement.\n  -a=,\
+    \ --alarms-fn=    string  \"\"             Optional JSON file to write SMRT\n\
+    \                                              Link alarms. (typically used w/\n\
+    \                                              -f)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - kmers
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: kmers
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: =, --int-dummy=     int     42       set int_dummy
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: =, --string-dummy=  string  "hello"  set string_dummy
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  kmers [optional-params] \nOptions:\n  -h, --help         \
+    \                    print this cligen-erated help\n  --help-syntax          \
+    \                advanced: prepend,plurals,..\n  -d=, --int-dummy=     int   \
+    \  42       set int_dummy\n  -s=, --string-dummy=  string  \"hello\"  set string_dummy\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - align-filter
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: align-filter
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: =, --bams-fofn=             string  REQUIRED  set bams_fofn
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: =, --all-subread-names-fn=  string  ""        set all_subread_names_fn
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: =, --min-len=               int     -1        set min_len
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-frac
+    description: =                   float   0.7       set min_frac
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  align-filter [required&optional-params] \nalias for bam-filter-ipa\n\
+    Options:\n  -h, --help                                      print this cligen-erated\
+    \ help\n  --help-syntax                                   advanced: prepend,plurals,..\n\
+    \  -b=, --bams-fofn=             string  REQUIRED  set bams_fofn\n  -a=, --all-subread-names-fn=\
+    \  string  \"\"        set all_subread_names_fn\n  -m=, --min-len=           \
+    \    int     -1        set min_len\n  --min-frac=                   float   0.7\
+    \       set min_frac\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - help
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: mapping.
+    description: 'Options:'
+  - !Positional
+    optional: false
+    position: 1
+    name: augmented
+    description: 'raptor-db-filter [optional-params] '
+  - !Positional
+    optional: false
+    position: 0
+    name: RaptorDB.
+    description: -u, --use-umc          bool    REQUIRED  Use Unique Molecular Coverage
+  - !Positional
+    optional: false
+    position: 0
+    name: megabytes.
+    description: -a=, --alarms-fn=      string  ""        Optional JSON file to write
+      SMRT
+  - !Positional
+    optional: false
+    position: 0
+    name: output.
+    description: 'Options:'
+  - !Positional
+    optional: false
+    position: 1
+    name: sequences
+    description: -o=, --output-fn=  string  REQUIRED  fasta (or fastq) file output
+  - !Positional
+    optional: false
+    position: 0
+    name: read
+    description: -k=, --kmersize=    int     21        Kmer size
+  - !Positional
+    optional: false
+    position: 0
+    name: filter
+    description: -m=, --min-len=           int     6000      Minimum read length,
+      reads
+  - !Positional
+    optional: false
+    position: 0
+    name: discarded
+    description: --min-cov=                int     2         Minimum number of overlaps
+      on
+  - !Positional
+    optional: false
+    position: 0
+    name: locally
+    description: --in-fn=                  string  REQUIRED  M4 overlaps file
+  - !Positional
+    optional: false
+    position: 0
+    name: file
+    description: -o=, --out-fn=           string  REQUIRED         Final m4 overlap
+      file
+  - !Positional
+    optional: false
+    position: 0
+    name: filter
+    description: -m=, --min-len=          int     6000      Minimum read length, reads
+  - !Positional
+    optional: false
+    position: 0
+    name: discarded
+    description: --min-cov=               int     2         Minimum number of overlaps
+      on
+  - !Positional
+    optional: false
+    position: 0
+    name: locally
+    description: -f=, --filter-log-fn=    string  REQUIRED  Write read filter stats
+      to this
+  - !Positional
+    optional: false
+    position: 1
+    name: file
+    description: --outputFn=              string  REQUIRED  Final m4 overlap file
+  - !Positional
+    optional: false
+    position: 0
+    name: assembly.
+    description: 'stats-gff [required&optional-params] '
+  - !Positional
+    optional: false
+    position: 0
+    name: pbreports.
+    description: 'rr-hctg-track1 [optional-params] '
+  - !Positional
+    optional: false
+    position: 0
+    name: phased_read_file
+    description: -r=, --read-to-contig-map=  string  "./4-quiver/read_maps/read_to_contig_map"                       set
+  - !Positional
+    optional: false
+    position: 1
+    name: phased_read_file
+    description: --rawread-ids=              string  ""                                           set
+      rawread_ids
+  - !Positional
+    optional: false
+    position: 0
+    name: jobs
+    description: -s=, --shard-prefix=    string  "shard"   The output. Shard files
+      are
+  - !Positional
+    optional: false
+    position: 0
+    name: ctg-name
+    description: -o=, --out-ids-fn=            string  "all_shard_ids"              If
+      given,
+  - !Positional
+    optional: false
+    position: 0
+    name: corresponding
+    description: to the
+  - !Positional
+    optional: false
+    position: 1
+    name: shard-prefix.block_id
+    description: files.
+  - !Positional
+    optional: false
+    position: 0
+    name: DEPRECATED
+    description: 'Options:'
+  - !Positional
+    optional: false
+    position: 1
+    name: jobs
+    description: -s=, --shard-prefix=  string  "shard_id"  The output. Shard files
+      are
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: =, --int-dummy=     int     42       set int_dummy
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: =, --string-dummy=  string  "hello"  set string_dummy
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: =, --float_req=  float  REQUIRED  special help message
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: =, --bams-fofn=             string  REQUIRED  set bams_fofn
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: =, --all-subread-names-fn=  string  ""        set all_subread_names_fn
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: =, --min-len=               int     -1        set min_len
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-frac
+    description: =                   float   0.7       set min_frac
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "=, --output-fn=  string  REQUIRED  Bam or Sam filename (based on\
+      \ its\nextension)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "=, --input-fn=   string  REQUIRED  Bam or Sam filename (based on\
+      \ its\nextension), or '-'"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fn
+    description: "=             string  REQUIRED  Bam or Sam filename (based on\n\
+      its extension)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    description: "=, --end-margin=       int     25        Maximum margin on contig\
+      \ ends,\nin basepairs"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    description: "=, --Flags-exclude=    string  \"0\"       Integer (0x ok) of flags\
+      \ to\nexclude, independent of other\nfilters"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: "bool    false     Show each skipped alignment,\nand a count."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --tags-enrich
+    description: "bool    false     Also enrich the tags. (See\nbam-tags-enrich.)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: =, --phase-fn=  string  REQUIRED  read2ctg.txt file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: =, --rdb-fn=       string  "rawreads.db"  set rdb_fn
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: =, --genome-size=  int64   4600000        set genome_size
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: =, --coverage=     float   30.0           set coverage
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --fail-low-cov
+    description: "bool    false          Exit non-zero if the input\ncoverage was\
+      \ insufficient to\nsatisfy the requirement."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --random-seed
+    description: =         int64   REQUIRED  Seed for random generation.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    description: "=, --wl-fn=      string  \"\"        white list of sequences to\
+      \ rotate,\none per line, no spaces, no trailing\nspaces"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --window
+    description: =          int     500       window size to caculate gc-skew
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --print
+    description: "bool    false     print skew data to files\n('SEQ.gc_skew.txt'),\
+      \ one per sequence"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --maxCov
+    description: =          int     200       set maxCov
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minCov
+    description: =          int     2         set minCov
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minLen
+    description: =          int     6000      set minLen
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minIdt
+    description: =          float   95.0      set minIdt
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gapFilt
+    description: bool    false     set gapFilt
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minDepth
+    description: =        int     2         set minDepth
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minOverhang
+    description: =          int     0         set minOverhang
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --blacklistIn
+    description: =          string  REQUIRED  set blacklistIn
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --idt-stage2
+    description: =             float   90.0      Stage two percent identify
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-cov
+    description: "=                int     200       Maximum number of overlaps on\n\
+      either side of a read"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-diff
+    description: "=               int     100       Reads are skipped is\nabs(5p-3p)\
+      \ overlap counts >\nmaxDiff"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --high-copy-sample-rate
+    description: "=  float   1.0       Downsample reads from high\ncopy elements to\
+      \ expected\ncoverage maxCov*rate\n[0=discard reads]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-overhang
+    description: "=           int     0         Minimum amount of overhang\nbases\
+      \ in an overlap to keep\nthe overlap"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-depth
+    description: "=              int     2         Depths lower than minDepth are\n\
+      considered gaps"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gap-filt
+    description: "bool    false     Run depth filter, takes a\nlittle more time"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --keepIntermediates
+    description: bool    false     set keepIntermediates
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: =, --n-proc=            int     24        Number of processes to
+      run
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: "=, --las-json-fn=      string  REQUIRED         List of las files\n\
+      from falcon, e.g\n../1-preads_ovl/las-merge-combine/las_fofn.json"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-cov
+    description: "=               int     2                Minimum number of\noverlaps\
+      \ on either side\nof a read"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug-log-fn
+    description: =          string  "LA4Falcon.log"  Write stderr to this
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-len
+    description: "=      int     400       Minimum read length; reads shorter than\n\
+      minLen will be discarded"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-idt-pct
+    description: "=  float   96.0      Minimum overlap identity; worse overlaps\n\
+      will be discarded"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --dry-run
+    description: bool    false                     set dry_run
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --test
+    description: bool    false                                                           set
+      test
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --stream
+    description: bool    false                                                           set
+      stream
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --debug
+    description: bool    false                                                           set
+      debug
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: bool    false                                                           set
+      silent
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --phased-read-file
+    description: =         string  ""                                           set
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --flip-rc
+    description: "bool    false     reverse complement (RC) the sequence if\nalignment\
+      \ is in RC"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --out-a-paf-fn
+    description: "=       string  REQUIRED  output paf filename for a-contigs\n(those\
+      \ with - in their name)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --out-fmt
+    description: "=      string  \"json\"    Output format of the config file. (json\n\
+      or bash)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --no-sort
+    description: bool    false     set no_sort
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --n_target_blocks
+    description: =      int     REQUIRED  Number of blocks in target db
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --mb-per-block
+    description: "=               int     REQUIRED                     Try to target\n\
+      megabases total\nin all contigs\nin any block"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --blacklist-fn
+    description: "=               string  \"\"                           Specifies\
+      \ a file\nwith a list of\ncontigs to skip\nfor polishing."
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "This is a multiple-dispatch command.  -h/--help/--help-syntax is available\n\
+    for top-level/all subcommands.  Usage is like:\n    falconc {SUBCMD} [subcommand-opts\
+    \ & args]\nwhere subcommand syntaxes are as follows:\n\n  version [optional-params]\
+    \ \n  Options:\n\n  dataset [optional-params] [extras: string...]\n  Options:\n\
+    \n  kmers [optional-params] \n  Options:\n      -d=, --int-dummy=     int    \
+    \ 42       set int_dummy\n      -s=, --string-dummy=  string  \"hello\"  set string_dummy\n\
+    \n  utils [required&optional-params] [extras: string...]\n  Options:\n      -f=,\
+    \ --float_req=  float  REQUIRED  special help message\n\n  bam-filter-ipa [required&optional-params]\
+    \ \n    Print subreads which have decent alignments in any of the bam inputs.\n\
+    \  Options:\n      -b=, --bams-fofn=             string  REQUIRED  set bams_fofn\n\
+    \      -a=, --all-subread-names-fn=  string  \"\"        set all_subread_names_fn\n\
+    \      -m=, --min-len=               int     -1        set min_len\n      --min-frac=\
+    \                   float   0.7       set min_frac\n\n  align-filter [required&optional-params]\
+    \ \n    alias for bam-filter-ipa\n  Options:\n      -b=, --bams-fofn=        \
+    \     string  REQUIRED  set bams_fofn\n      -a=, --all-subread-names-fn=  string\
+    \  \"\"        set all_subread_names_fn\n      -m=, --min-len=               int\
+    \     -1        set min_len\n      --min-frac=                   float   0.7 \
+    \      set min_frac\n\n  bam-tags-enrich [required&optional-params] \n    Add\
+    \ XB/XE/XP/XR/XQ: beg/end/%idt/aln-ref-len/qry-len\n  Options:\n      -o=, --output-fn=\
+    \  string  REQUIRED  Bam or Sam filename (based on its\n                     \
+    \                      extension)\n      -i=, --input-fn=   string  REQUIRED \
+    \ Bam or Sam filename (based on its\n                                        \
+    \   extension), or '-'\n\n  bam-filter-clipped [required&optional-params] \n \
+    \   Filter alignments with significant clipping.  To skip an alignment, both\n\
+    \    max_clipping and end_margin must be exceeded on at least 1 end.\n  Options:\n\
+    \      -o=, --output-count-fn=  string  REQUIRED  file reporting the number of\n\
+    \                                                 reads post filtering\n     \
+    \ --output-fn=             string  REQUIRED  Bam or Sam filename (based on\n \
+    \                                                its extension)\n      -i=, --input-fn=\
+    \         string  REQUIRED  Bam or Sam filename (based on\n                  \
+    \                               its extension), or '-'\n      -m=, --max-clipping=\
+    \     int     100       Maximum clipping on left or\n                        \
+    \                         right of query, in basepairs\n      -e=, --end-margin=\
+    \       int     25        Maximum margin on contig ends,\n                   \
+    \                              in basepairs\n      -F=, --Flags-exclude=    string\
+    \  \"0\"       Integer (0x ok) of flags to\n                                 \
+    \                exclude, independent of other\n                             \
+    \                    filters\n      -v, --verbose            bool    false   \
+    \  Show each skipped alignment,\n                                            \
+    \     and a count.\n      -t, --tags-enrich        bool    false     Also enrich\
+    \ the tags. (See\n                                                 bam-tags-enrich.)\n\
+    \n  falcon-read2ctg-augment [required&optional-params] \n    Assigns the unphased\
+    \ reads to haplotigs or primary contigs based on pbmm2\n    mapping.\n  Options:\n\
+    \      -p=, --phase-fn=  string  REQUIRED  read2ctg.txt file\n      -b=, --bam-fn=\
+    \    string  REQUIRED  bam/sam file of unphased reads mapped\n      -o=, --out-fn=\
+    \    string  REQUIRED  mostly same as read2ctg.txt, but\n                    \
+    \                      augmented\n\n  raptor-db-filter [optional-params] \n  \
+    \  Read/write raptor-db to/from stdin/stdout.  Exclude zmws in blacklist.\n  Options:\n\
+    \      -b=, --blacklist-fn=  string  \"\"  set blacklist_fn\n\n  raptor-db-calc-length-cutoff\
+    \ [optional-params] \n    Perform a linear pass on an overlap file, and determine\
+    \ rough clipping\n    coordinates to 'correct' reads.  Write integer to stdout.\n\
+    \  Options:\n      -r=, --rdb-fn=       string  \"rawreads.db\"  set rdb_fn\n\
+    \      -g=, --genome-size=  int64   4600000        set genome_size\n      -c=,\
+    \ --coverage=     float   30.0           set coverage\n      -f, --fail-low-cov\
+    \   bool    false          Exit non-zero if the input\n                      \
+    \                            coverage was insufficient to\n                  \
+    \                                satisfy the requirement.\n      -a=, --alarms-fn=\
+    \    string  \"\"             Optional JSON file to write\n                  \
+    \                                SMRT Link alarms. (typically\n              \
+    \                                    used w/ -f)\n\n  raptor-db-subsample [required&optional-params]\
+    \ \n  Options:\n      -r=, --rdb_fn=         string  REQUIRED  Path to the RaptorDB\
+    \ file.\n      -g=, --genome_size=    int64   REQUIRED  Approximate genome size.\n\
+    \      -c=, --coverage=       float   REQUIRED  Coverage to select from the input\n\
+    \                                               RaptorDB.\n      -u, --use-umc\
+    \          bool    REQUIRED  Use Unique Molecular Coverage\n                 \
+    \                              when subsampling. If a subread\n              \
+    \                                 is picked, then all subreads from\n        \
+    \                                       that ZMW will be output as well.\n   \
+    \   --random-seed=         int64   REQUIRED  Seed for random generation.\n   \
+    \   -b=, --block-size-mb=  float   REQUIRED  Block size of the output DB, in\n\
+    \                                               megabytes.\n      -a=, --alarms-fn=\
+    \      string  \"\"        Optional JSON file to write SMRT\n                \
+    \                               Link alarms. (typically used w/\n            \
+    \                                   -f)\n\n  circ-orient [required&optional-params]\
+    \ \n    reorients circular sequences based on gc-skew distribution and writes\
+    \ to\n    output.\n  Options:\n      -i=, --input-fn=   string  REQUIRED  fasta\
+    \ (or fastq) file of circular\n                                           sequences\n\
+    \      -o=, --output-fn=  string  REQUIRED  fasta (or fastq) file output\n   \
+    \   -w=, --wl-fn=      string  \"\"        white list of sequences to rotate,\n\
+    \                                           one per line, no spaces, no trailing\n\
+    \                                           spaces\n      --window=          int\
+    \     500       window size to caculate gc-skew\n      -s=, --step=       int\
+    \     200       window step\n      -p, --print        bool    false     print\
+    \ skew data to files\n                                           ('SEQ.gc_skew.txt'),\
+    \ one per sequence\n\n  circ-randomize [required&optional-params] \n    randomly\
+    \ rotates left rotates the sequence and writes to the output file.\n  Options:\n\
+    \      -i=, --input=   string  REQUIRED  fasta file of circular sequences\n  \
+    \    -o=, --output=  string  REQUIRED  fasta file output\n      -s=, --seed= \
+    \   int64   0         set seed, if non-zero\n\n  phasr [required&optional-params]\
+    \ \n    Phase PacBio CCS/HIFI reads.\n  Options:\n      -a=, --aln-fn=      string\
+    \  REQUIRED  BAM alignment, sorted on\n                                      \
+    \      'coordinate'\n      -r=, --ref-fn=      string  REQUIRED  FASTA reference\n\
+    \      -o=, --out-fn=      string  REQUIRED  Output file name\n      -i=, --iterations=\
+    \  int     1000      Number of phasing iterations per\n                      \
+    \                      read\n      -k=, --kmersize=    int     21        Kmer\
+    \ size\n      -d=, --delta=       float   0.75      Frequency cut\n\n  m4filt-merge-blacklist\
+    \ [required&optional-params] \n  Options:\n      -b=, --blistFofn=  string  REQUIRED\
+    \  set blistFofn\n      -o=, --outFn=      string  REQUIRED  set outFn\n\n  m4filt-stage1\
+    \ [required&optional-params] \n  Options:\n      -m=, --maxDiff=    int     100\
+    \       set maxDiff\n      --maxCov=          int     200       set maxCov\n \
+    \     --minCov=          int     2         set minCov\n      --minLen=       \
+    \   int     6000      set minLen\n      --minIdt=          float   95.0      set\
+    \ minIdt\n      -g, --gapFilt      bool    false     set gapFilt\n      --minDepth=\
+    \        int     2         set minDepth\n      -b=, --blacklist=  string  REQUIRED\
+    \  set blacklist\n\n  m4filt-stage2 [required&optional-params] \n  Options:\n\
+    \      -m=, --minIdt=          float   90.0      set minIdt\n      -b=, --bestN=\
+    \           int     10        set bestN\n      --minOverhang=          int   \
+    \  0         set minOverhang\n      --blacklistIn=          string  REQUIRED \
+    \ set blacklistIn\n      -f=, --filteredOutput=  string  REQUIRED  set filteredOutput\n\
+    \n  m4filt-dump-blacklist [required&optional-params] \n  Options:\n      -b=,\
+    \ --blacklist=  string  REQUIRED  set blacklist\n\n  m4filt [required&optional-params]\
+    \ \n    Run the multi-stage m4 overlap filter (for HiFi Asm).  Take only one m4\n\
+    \    file, inFn. If in+'.idx' exists, that is the index.  In stage one, reads\n\
+    \    that trigger a filter are marked including containment, gaps in coverage\n\
+    \    along the A-read, and repeat reads.  In stage two the filters are applied\n\
+    \    and the N-best overlaps are kept for the 5prime and 3prime of each read.\n\
+    \  Options:\n      -i=, --idt-stage1=        float   90.0      Stage one percent\
+    \ identity\n                                                  filter, formatted\
+    \ as\n                                                  percentage, overlaps <\
+    \ %idt\n                                                  are skipped\n      --idt-stage2=\
+    \             float   90.0      Stage two percent identify\n                 \
+    \                                 filter\n      -m=, --min-len=           int\
+    \     6000      Minimum read length, reads\n                                 \
+    \                 shorter than minLen will be\n                              \
+    \                    discarded\n      --min-cov=                int     2    \
+    \     Minimum number of overlaps on\n                                        \
+    \          either side of a read\n      --max-cov=                int     200\
+    \       Maximum number of overlaps on\n                                      \
+    \            either side of a read\n      --max-diff=               int     100\
+    \       Reads are skipped is\n                                               \
+    \   abs(5p-3p) overlap counts >\n                                            \
+    \      maxDiff\n      --high-copy-sample-rate=  float   1.0       Downsample reads\
+    \ from high\n                                                  copy elements to\
+    \ expected\n                                                  coverage maxCov*rate\n\
+    \                                                  [0=discard reads]\n      -b=,\
+    \ --bestn=             int     10        Keep N best overlaps at 5prime\n    \
+    \                                              AND 3prime of a read\n      --min-overhang=\
+    \           int     0         Minimum amount of overhang\n                   \
+    \                               bases in an overlap to keep\n                \
+    \                                  the overlap\n      --min-depth=           \
+    \   int     2         Depths lower than minDepth are\n                       \
+    \                           considered gaps\n      -g, --gap-filt            bool\
+    \    false     Run depth filter, takes a\n                                   \
+    \               little more time\n      -k, --keepIntermediates   bool    false\
+    \     set keepIntermediates\n      -n=, --n-proc=            int     24      \
+    \  Number of processes to run\n                                              \
+    \    locally\n      --in-fn=                  string  REQUIRED  M4 overlaps file\n\
+    \      -f=, --filter-log-fn=     string  REQUIRED  Write read filter stats to\n\
+    \                                                  this file\n      -o=, --out-fn=\
+    \            string  REQUIRED  Final m4 overlaps file\n\n  m4filt-falconRunner\
+    \ [required&optional-params] \n    Runs the multi-stage m4 overlap filter for\
+    \ falcon. In stage one, reads that\n    trigger a filter are marked including\
+    \ containment, gaps in coverage along\n    the A-read, and repeat reads. In stage\
+    \ two the filters are applied and the\n    N-best overlaps are kept for the 5prime\
+    \ and 3prime of each read.\n  Options:\n      -d=, --db=               string\
+    \  REQUIRED         set db\n      -l=, --las-json-fn=      string  REQUIRED  \
+    \       List of las files\n                                                  \
+    \      from falcon, e.g\n                                                    \
+    \    ../1-preads_ovl/las-merge-combine/las_fofn.json\n      -i=, --idt-stage1=\
+    \       float   90.0             Stage one percent\n                         \
+    \                               identity filter,\n                           \
+    \                             formatted as percentage,\n                     \
+    \                                   overlaps < %idt are\n                    \
+    \                                    skipped\n      --idt-stage2=            float\
+    \   90.0             Stage two percent\n                                     \
+    \                   identify filter\n      -m=, --min-len=          int     6000\
+    \             Minimum read length,\n                                         \
+    \               reads shorter than\n                                         \
+    \               minLen will be discarded\n      --min-cov=               int \
+    \    2                Minimum number of\n                                    \
+    \                    overlaps on either side\n                               \
+    \                         of a read\n      --max-cov=               int     200\
+    \              Maximum number of\n                                           \
+    \             overlaps on either side\n                                      \
+    \                  of a read\n      --max-diff=              int     100     \
+    \         Reads are skipped is\n                                             \
+    \           abs(5p-3p) overlap\n                                             \
+    \           counts > maxDiff\n      -b=, --bestn=            int     10      \
+    \         Keep N best overlaps at\n                                          \
+    \              5prime AND 3prime of a\n                                      \
+    \                  read\n      --min-depth=             int     2            \
+    \    Depths lower than\n                                                     \
+    \   minDepth are considered\n                                                \
+    \        gaps\n      --minOverhang=           int     0                set minOverhang\n\
+    \      -g, --gap-filt           bool    false            Run depth filter, takes\n\
+    \                                                        a little more time\n\
+    \      -k, --keepIntermediates  bool    false            set keepIntermediates\n\
+    \      -n=, --n-proc=           int     24               Number of processes to\n\
+    \                                                        run locally\n      -f=,\
+    \ --filter-log-fn=    string  REQUIRED         Write read filter stats\n     \
+    \                                                   to this file\n      --debug-log-fn=\
+    \          string  \"LA4Falcon.log\"  Write stderr to this\n                 \
+    \                                       file\n      -o=, --out-fn=           string\
+    \  REQUIRED         Final m4 overlap file\n\n  m4filt-ipaRunner [required&optional-params]\
+    \ \n    Runs the multi-stage m4 overlap filter for IPA. In stage one, reads that\n\
+    \    trigger a filter are marked including containment, gaps in coverage along\n\
+    \    the A-read, and repeat reads. In stage two the filters are applied and the\n\
+    \    N-best overlaps are kept for the 5prime and 3prime of each read.\n  Options:\n\
+    \      -o=, --ovls-fofn-fn=     string  REQUIRED  List of m4 files from\n    \
+    \                                             ipa/raptor\n      -i=, --idt-stage1=\
+    \       float   90.0      Stage one percent identity\n                       \
+    \                          filter, formatted as\n                            \
+    \                     percentage, overlaps < %idt are\n                      \
+    \                           skipped\n      --idt-stage2=            float   90.0\
+    \      Stage two percent identify\n                                          \
+    \       filter\n      -m=, --min-len=          int     6000      Minimum read\
+    \ length, reads\n                                                 shorter than\
+    \ minLen will be\n                                                 discarded\n\
+    \      --min-cov=               int     2         Minimum number of overlaps on\n\
+    \                                                 either side of a read\n    \
+    \  --max-cov=               int     200       Maximum number of overlaps on\n\
+    \                                                 either side of a read\n    \
+    \  --max-diff=              int     100       Reads are skipped is abs(5p-3p)\n\
+    \                                                 overlap counts > maxDiff\n \
+    \     -b=, --bestn=            int     10        Keep N best overlaps at 5prime\n\
+    \                                                 AND 3prime of a read\n     \
+    \ --minOverhang=           int     0         set minOverhang\n      --min-depth=\
+    \             int     2         Depths lower than minDepth are\n             \
+    \                                    considered gaps\n      -g, --gap-filt   \
+    \        bool    false     Run depth filter, takes a\n                       \
+    \                          little more time\n      -k, --keepIntermediates  bool\
+    \    false     set keepIntermediates\n      -n=, --n-proc=           int     24\
+    \        Number of processes to run\n                                        \
+    \         locally\n      -f=, --filter-log-fn=    string  REQUIRED  Write read\
+    \ filter stats to this\n                                                 file\n\
+    \      --outputFn=              string  REQUIRED  Final m4 overlap file\n\n  m4filt-contained\
+    \ [required&optional-params] \n    Parse .m4 file.  Write only the overlaps which\
+    \ pass the filters.  (no\n    overlaps involving contained reads;\n     no overlaps\
+    \ involving short reads;\n     no overlaps with low identity)\n  Options:\n  \
+    \    -i=, --in-fn=   string  REQUIRED  Input m4 overlap file\n      -o=, --out-fn=\
+    \  string  REQUIRED  Output m4 overlap file\n      -n=, --n-proc=  int     24\
+    \        Number of processes to run locally\n                                \
+    \        (ignored for now)\n      --min-len=      int     400       Minimum read\
+    \ length; reads shorter than\n                                        minLen will\
+    \ be discarded\n      --min-idt-pct=  float   96.0      Minimum overlap identity;\
+    \ worse overlaps\n                                        will be discarded\n\n\
+    \  m4filt-idx [required&optional-params] \n    Given foo.m4, create index file\
+    \ foo.m4.idx (Or just use it if it exists.)\n    Format is \"0000 count start\
+    \ len\", where count is the number of overlaps in\n    the pile.  (First field\
+    \ is dummy, instead of Aread name, for efficiency.)\n    Return the sum of all\
+    \ pileups, which should exactly match filesize.\n  Options:\n      -i=, --in-fn=\
+    \  string  REQUIRED  Path to .m4 file. Index filename will\n                 \
+    \                      have '.idx' appended.\n\n  ovl-cov-stats [required&optional-params]\
+    \ \n  Options:\n      -i=, --in-fn=  string  REQUIRED  An overlap file in M4 format,\
+    \ or a FOFN\n                                       of M4 files.\n\n  pbcromwell-rm-las\
+    \ [optional-params] \n    Remove all .las files except final stage of merge. (Unzip\
+    \ is still\n    possible.) Filepaths come from the provided command as a subprocess,\
+    \ or\n    from stdin if command==\"-\", (Someday, we will add a flag to delete\
+    \ the final\n    stage too, optionally.)\n  Options:\n      -c=, --command=  string\
+    \  \"find . -name \\'*.las\\'\"  set command\n      -v=, --verbose=  int     1\
+    \                         set verbose\n      -n, --dry-run    bool    false  \
+    \                   set dry_run\n\n  pbreports-circ [required&optional-params]\
+    \ \n    Given FASTA of all ctgs and text-list of circular ctgs, print a report\n\
+    \    (pbreports format).\n  Options:\n      -f=, --fasta-fn=  string  REQUIRED\
+    \  FASTA filename, preferably indexed\n                                      \
+    \    (with .fai)\n      -c=, --circ-fn=   string  REQUIRED  Text list of circular\
+    \ contigs\n                                          (newline-delimited)\n\n \
+    \ pbreports-ctg-table [required&optional-params] \n  Options:\n      -f=, --fasta-fn=\
+    \  string  REQUIRED  FASTA filename, preferably indexed\n                    \
+    \                      (with .fai)\n      -c=, --circ-fn=   string  REQUIRED \
+    \ Text list of circular contigs\n                                          (newline-delimited)\n\
+    \      -g=, --gff-fn=    string  REQUIRED  PacBio coverage GFF file.\n\n  stats-assembly\
+    \ [required&optional-params] \n  Options:\n      -f=, --fasta-fn=  string  REQUIRED\
+    \  FASTA filename, preferably indexed\n                                      \
+    \    (with .fai)\n\n  stats-preassembly [required&optional-params] \n  Options:\n\
+    \      -r=, --rawreads-rdb-fn=  string  REQUIRED  Path to the raw reads RaptorDB.\n\
+    \      -p=, --preads-rdb-fn=    string  REQUIRED  Path to the preads\n       \
+    \                                          (error-corrected reads)\n         \
+    \                                        RaptorDB.\n      -g=, --genome-length=\
+    \    int32   REQUIRED  Length of the genome.\n      -c=, --cutoff-length=    int32\
+    \   REQUIRED  Length cutoff used for\n                                       \
+    \          assembly.\n\n  stats-gff [required&optional-params] \n  Options:\n\
+    \      -g=, --gff-fn=  string  REQUIRED  A coverage.gff file generated by\n  \
+    \                                      pbreports.\n\n  rr-hctg-track1 [optional-params]\
+    \ \n  Options:\n      -t, --test                  bool    false              \
+    \                                             set test\n      -p=, --phased-read-file=\
+    \    string  \"./3-unzip/all_phased_reads\"                                  \
+    \  set\n                                                                     \
+    \                                     phased_read_file\n      -r=, --read-to-contig-map=\
+    \  string  \"./4-quiver/read_maps/read_to_contig_map\"                       set\n\
+    \                                                                            \
+    \                              read_to_contig_map\n      --rawread-ids=      \
+    \        string  \"./2-asm-falcon/read_maps/dump_rawread_ids/rawread_ids\"   \
+    \      set rawread_ids\n      -b=, --bestn=               int     40         \
+    \                                                     set bestn\n      -n=, --n-core=\
+    \              int     0                                                     \
+    \          set n_core\n      -m=, --min-len=             int     2500        \
+    \                                                    set min_len\n      -o=, --output=\
+    \              string  \"./2-asm-falcon/read_maps/dump_rawread_ids/rawread_to_contigs\"\
+    \  set output\n      -s, --stream                bool    false               \
+    \                                            set stream\n      -d, --debug   \
+    \              bool    false                                                 \
+    \          set debug\n      --silent                    bool    false        \
+    \                                                   set silent\n\n  rr-hctg-track2\
+    \ [optional-params] \n    Stage 2 of rr_hctg_track\n  Options:\n      -t, --test\
+    \                  bool    false                                        set test\n\
+    \      -r=, --read-to-contig-map=  string  \"./4-quiver/track_reads/read_to_contig_map\"\
+    \  set\n                                                                     \
+    \                  read_to_contig_map\n      -p=, --partials-fn=         string\
+    \  \"./4-quiver/track-reads/partials.json\"       set partials_fn\n      -o=,\
+    \ --output=              string  \"./4-quiver/track-reads/rawread_to_contigs\"\
+    \  set output\n      -b=, --bestn=               int     40                  \
+    \                         set bestn\n      -n=, --n-core=              int   \
+    \  0                                            set n_core\n      --phased-read-file=\
+    \         string  \"\"                                           set\n       \
+    \                                                                            \
+    \    phased_read_file\n      --rawread-ids=              string  \"\"        \
+    \                                   set rawread_ids\n      -m=, --min-len=   \
+    \          int     2500                                         set min_len\n\
+    \      -s, --stream                bool    false                             \
+    \           set stream\n      -d, --debug                 bool    false      \
+    \                                  set debug\n      --silent                 \
+    \   bool    false                                        set silent\n\n  bam2clippedFasta\
+    \ [required&optional-params] \n    Very similar to `samtools fasta`, but the reads\
+    \ are subSequenced.  Output is\n    printed to STDOUT\n  Options:\n      -i=,\
+    \ --in-bam=  string  REQUIRED  input bam name\n      -r=, --region=  string  REQUIRED\
+    \  htslib formatted region seqid:start-end\n      -f=, --flag=    int     3844\
+    \      filter reads with flag\n      --flip-rc       bool    false     reverse\
+    \ complement (RC) the sequence if\n                                        alignment\
+    \ is in RC\n\n  bam2paf [required&optional-params] \n    https://bioconvert.readthedocs.io/en/master/formats.html#paf-pairwise-mapping-format\n\
+    \  Options:\n      -i=, --in-bam-fn=     string  REQUIRED  input bam filename\n\
+    \      -o=, --out-p-paf-fn=  string  REQUIRED  output paf filename for p-contigs\n\
+    \      --out-a-paf-fn=       string  REQUIRED  output paf filename for a-contigs\n\
+    \                                              (those with - in their name)\n\n\
+    \  paf-filter [required&optional-params] \n    Drop the lines of PAF that involve\
+    \ contigs not in FASTA index.\n    Write the rest to out_paf_fn.  (\"-\" means\
+    \ stdin/stdout for PAF.)\n    https://bioconvert.readthedocs.io/en/master/formats.html#paf-pairwise-mapping-format\n\
+    \  Options:\n      -f=, --fai-fn=      string  REQUIRED  input fasta-index filename\
+    \ (as in\n                                            foo.fasta.fai, but assume\
+    \ foo.fasta\n                                            is next to it; foo.fasta\
+    \ must then\n                                            exist, but it can be\
+    \ empty since it\n                                            is ignored)\n  \
+    \    -i=, --in-paf-fn=   string  \"-\"       paf filename ('-' => stdin)\n   \
+    \   -o=, --out-paf-fn=  string  \"-\"       output paf filename, with only the\n\
+    \                                            contigs inside the fasta ('-' =>\n\
+    \                                            stdout)\n\n  ipa2-construct-config\
+    \ [required&optional-params] \n    Takes an advanced options string, and reformats\
+    \ it into JSON format.\n    Input/output is on stdin/stdout. Options which aren't\
+    \ set explicitly in the\n    input will be set to default (configurable via args).\n\
+    \  Options:\n      -o=, --out-fn=  string  REQUIRED  Output file.\n      --out-fmt=\
+    \      string  \"json\"    Output format of the config file. (json\n         \
+    \                               or bash)\n      -i=, --in-fn=   string  \"-\"\
+    \       set in_fn\n      -n, --no-sort   bool    false     set no_sort\n\n  ipa-shard-ovl-asym\
+    \ [required&optional-params] \n    (Used to shard the asymmetric overlap jobs.)\n\
+    \  Options:\n      -m=, --max-nshards=   int     REQUIRED  Maximum number of distributed\
+    \ jobs\n      -s=, --shard-prefix=  string  \"shard\"   The output. Shard files\
+    \ are\n                                              (prefix).(shard_id).block_ids\n\
+    \                                              (though they really are block_id\n\
+    \                                              ranges).\n      -n=, --n=     \
+    \        int     REQUIRED  Generate comparisons for\n                        \
+    \                      upper-triangle of nxn matrix\n      -o=, --out-ids-fn=\
+    \    string  \"\"        If given, this lists the\n                          \
+    \                    shard_ids, 0 thru N-1,\n                                \
+    \              corresponding to the\n                                        \
+    \      shard-prefix.block_id files.\n                                        \
+    \      Useful for Cromwell.\n\n  ipa-shard-mapping [required&optional-params]\
+    \ \n    Generate comparisons for nq-by-nt matrix.  (Used to shard the purge_dups\n\
+    \    overlap jobs, contigs vs. reads.)\n  Options:\n      -m=, --max-nshards=\
+    \     int     REQUIRED  Maximum number of distributed\n                      \
+    \                          jobs\n      -s=, --shard-prefix=    string  \"shard\"\
+    \   The output. Shard files are\n                                            \
+    \    (prefix).(shard_id).block_ids\n                                         \
+    \       (though they really are block_id\n                                   \
+    \             ranges).\n      -n=, --n_query_blocks=  int     REQUIRED  Number\
+    \ of blocks in query db\n      --n_target_blocks=      int     REQUIRED  Number\
+    \ of blocks in target db\n      -o=, --out-ids-fn=      string  \"\"        If\
+    \ given, this lists the\n                                                shard_ids,\
+    \ 0 thru N-1,\n                                                corresponding to\
+    \ the\n                                                shard-prefix.block_id files.\n\
+    \                                                Useful for Cromwell.\n\n  ipa-polish-split\
+    \ [required&optional-params] Indexed fasta filenames to polish\n    The trailing\
+    \ list of fasta.fai filenames are FASTA index files.  They will\n    be used to\
+    \ split the shards somewhat evenly.  (Used to shard the polishing\n    jobs.)\n\
+    \  Options:\n      -m=, --max-nshards=           int     REQUIRED            \
+    \         Maximum number\n                                                   \
+    \                      of distributed\n                                      \
+    \                                   jobs\n      -s=, --shard-prefix=         \
+    \ string  \"shard\"                      The output.\n                       \
+    \                                                  Shard files are\n         \
+    \                                                                (prefix).(shard_id).block_ids\n\
+    \      -b=, --block-prefix=          string  \"block\"                      Block\
+    \ files are\n                                                                \
+    \         (prefix).(block_id).reads\n                                        \
+    \                                 (prepared\n                                \
+    \                                         previously)\n      -i=, --in-read-to-contig-fn=\
+    \  string  \"sorted.read_to_contig.csv\"  2-columns: read#\n                 \
+    \                                                        ctg-name\n      -o=,\
+    \ --out-ids-fn=            string  \"all_shard_ids\"              If given,\n\
+    \                                                                         this\
+    \ lists\n                                                                    \
+    \     the shard_ids,\n                                                       \
+    \                  0 thru N-1,\n                                             \
+    \                            corresponding\n                                 \
+    \                                        to the\n                            \
+    \                                             shard-prefix.block_id\n        \
+    \                                                                 files.\n   \
+    \   --mb-per-block=               int     REQUIRED                     Try to\
+    \ target\n                                                                   \
+    \      megabases total\n                                                     \
+    \                    in all contigs\n                                        \
+    \                                 in any block\n      --blacklist-fn=        \
+    \       string  \"\"                           Specifies a file\n            \
+    \                                                             with a list of\n\
+    \                                                                         contigs\
+    \ to skip\n                                                                  \
+    \       for polishing.\n\n  ipa-shard-blocks-m4 [required&optional-params] \n\
+    \    Given several {block_prefix}.(block_id).m4 files, create up to {max_nshards}\n\
+    \    files that each contain a list of block_ids (one per line).  For now, they\n\
+    \    are balanced by the number of reads in each .m4 file.  (Later, the contents\n\
+    \    of each shard will be processed linearly, one block at a time, on a given\n\
+    \    compute node.) (Used to shard the phasing jobs.)\n  Options:\n      -m=,\
+    \ --max-nshards=   int     REQUIRED         Maximum number of\n              \
+    \                                       distributed jobs\n      -s=, --shard-prefix=\
+    \  string  \"shard\"          The output. Shard files are\n                  \
+    \                                   (prefix).(shard_id).block_ids\n      -b=,\
+    \ --block-prefix=  string  \"block\"          Block files are\n              \
+    \                                       (prefix).(block_id).m4\n             \
+    \                                        (prepared previously)\n      -o=, --out-ids-fn=\
+    \    string  \"all_shard_ids\"  If given, this lists the\n                   \
+    \                                  shard_ids, 0 thru N-1,\n                  \
+    \                                   corresponding to the\n                   \
+    \                                  shard-prefix.block_id\n                   \
+    \                                  files.\n\n  ipa2-polish-prepare [required&optional-params]\
+    \ \n    DEPRECATED\n  Options:\n      -m=, --max-nshards=   int     REQUIRED \
+    \   Maximum number of distributed\n                                          \
+    \      jobs\n      -s=, --shard-prefix=  string  \"shard_id\"  The output. Shard\
+    \ files are\n                                                (prefix).(shard_id).block_ids\n\
+    \      -b=, --block-prefix=  string  \"block_id\"  Block files are\n         \
+    \                                       (prefix).(block_id).reads\n          \
+    \                                      (prepared previously)\n      -o=, --out-ids-fn=\
+    \    string  \"\"          If given, this lists the\n                        \
+    \                        shard_ids, 0 thru N-1,\n                            \
+    \                    corresponding to the\n                                  \
+    \              shard-prefix.block_id files.\n"
+  generated_using: []
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - m4filt-stage2
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: m4filt-stage2
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: =, --minIdt=          float   90.0      set minIdt
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: =, --bestN=           int     10        set bestN
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minOverhang
+    description: =          int     0         set minOverhang
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --blacklistIn
+    description: =          string  REQUIRED  set blacklistIn
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: =, --filteredOutput=  string  REQUIRED  set filteredOutput
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  m4filt-stage2 [required&optional-params] \nOptions:\n  -h,\
+    \ --help                                print this cligen-erated help\n  --help-syntax\
+    \                             advanced: prepend,plurals,..\n  -m=, --minIdt= \
+    \         float   90.0      set minIdt\n  -b=, --bestN=           int     10 \
+    \       set bestN\n  --minOverhang=          int     0         set minOverhang\n\
+    \  --blacklistIn=          string  REQUIRED  set blacklistIn\n  -f=, --filteredOutput=\
+    \  string  REQUIRED  set filteredOutput\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - raptor-db-filter
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: raptor-db-filter
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: =, --blacklist-fn=  string  ""  set blacklist_fn
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  raptor-db-filter [optional-params] \nRead/write raptor-db\
+    \ to/from stdin/stdout.  Exclude zmws in blacklist.\nOptions:\n  -h, --help  \
+    \                      print this cligen-erated help\n  --help-syntax        \
+    \             advanced: prepend,plurals,..\n  -b=, --blacklist-fn=  string  \"\
+    \"  set blacklist_fn\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - m4filt-merge-blacklist
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: m4filt-merge-blacklist
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: =, --blistFofn=  string  REQUIRED  set blistFofn
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: =, --outFn=      string  REQUIRED  set outFn
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  m4filt-merge-blacklist [required&optional-params] \nOptions:\n\
+    \  -h, --help                           print this cligen-erated help\n  --help-syntax\
+    \                        advanced: prepend,plurals,..\n  -b=, --blistFofn=  string\
+    \  REQUIRED  set blistFofn\n  -o=, --outFn=      string  REQUIRED  set outFn\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - m4filt-ipaRunner
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: file
+    description: --outputFn=              string  REQUIRED  Final m4 overlap file
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: =, --ovls-fofn-fn=     string  REQUIRED  List of m4 files from ipa/raptor
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "=, --idt-stage1=       float   90.0      Stage one percent identity\
+      \ filter,\nformatted as percentage, overlaps <\n%idt are skipped"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --idt-stage2
+    description: =            float   90.0      Stage two percent identify filter
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: "=, --min-len=          int     6000      Minimum read length, reads\
+      \ shorter\nthan minLen will be discarded"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-cov
+    description: "=               int     2         Minimum number of overlaps on\n\
+      either side of a read"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-cov
+    description: "=               int     200       Maximum number of overlaps on\n\
+      either side of a read"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-diff
+    description: "=              int     100       Reads are skipped is abs(5p-3p)\n\
+      overlap counts > maxDiff"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: "=, --bestn=            int     10        Keep N best overlaps at\
+      \ 5prime AND\n3prime of a read"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minOverhang
+    description: =           int     0         set minOverhang
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-depth
+    description: "=             int     2         Depths lower than minDepth are\n\
+      considered gaps"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gap-filt
+    description: "bool    false     Run depth filter, takes a little\nmore time"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --keepIntermediates
+    description: bool    false     set keepIntermediates
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: =, --n-proc=           int     24        Number of processes to run
+      locally
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: =, --filter-log-fn=    string  REQUIRED  Write read filter stats
+      to this
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  m4filt-ipaRunner [required&optional-params] \nRuns the multi-stage\
+    \ m4 overlap filter for IPA. In stage one, reads that trigger\na filter are marked\
+    \ including containment, gaps in coverage along the A-read,\nand repeat reads.\
+    \ In stage two the filters are applied and the N-best overlaps\nare kept for the\
+    \ 5prime and 3prime of each read.\nOptions:\n  -h, --help                    \
+    \             print this cligen-erated help\n  --help-syntax                 \
+    \             advanced: prepend,plurals,..\n  -o=, --ovls-fofn-fn=     string\
+    \  REQUIRED  List of m4 files from ipa/raptor\n  -i=, --idt-stage1=       float\
+    \   90.0      Stage one percent identity filter,\n                           \
+    \                  formatted as percentage, overlaps <\n                     \
+    \                        %idt are skipped\n  --idt-stage2=            float  \
+    \ 90.0      Stage two percent identify filter\n  -m=, --min-len=          int\
+    \     6000      Minimum read length, reads shorter\n                         \
+    \                    than minLen will be discarded\n  --min-cov=             \
+    \  int     2         Minimum number of overlaps on\n                         \
+    \                    either side of a read\n  --max-cov=               int   \
+    \  200       Maximum number of overlaps on\n                                 \
+    \            either side of a read\n  --max-diff=              int     100   \
+    \    Reads are skipped is abs(5p-3p)\n                                       \
+    \      overlap counts > maxDiff\n  -b=, --bestn=            int     10       \
+    \ Keep N best overlaps at 5prime AND\n                                       \
+    \      3prime of a read\n  --minOverhang=           int     0         set minOverhang\n\
+    \  --min-depth=             int     2         Depths lower than minDepth are\n\
+    \                                             considered gaps\n  -g, --gap-filt\
+    \           bool    false     Run depth filter, takes a little\n             \
+    \                                more time\n  -k, --keepIntermediates  bool  \
+    \  false     set keepIntermediates\n  -n=, --n-proc=           int     24    \
+    \    Number of processes to run locally\n  -f=, --filter-log-fn=    string  REQUIRED\
+    \  Write read filter stats to this\n                                         \
+    \    file\n  --outputFn=              string  REQUIRED  Final m4 overlap file\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - bam2paf
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bam2paf
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: =, --in-bam-fn=     string  REQUIRED  input bam filename
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: =, --out-p-paf-fn=  string  REQUIRED  output paf filename for p-contigs
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --out-a-paf-fn
+    description: "=       string  REQUIRED  output paf filename for a-contigs\n(those\
+      \ with - in their name)\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  bam2paf [required&optional-params] \nhttps://bioconvert.readthedocs.io/en/master/formats.html#paf-pairwise-mapping-format\n\
+    Options:\n  -h, --help                              print this cligen-erated help\n\
+    \  --help-syntax                           advanced: prepend,plurals,..\n  -i=,\
+    \ --in-bam-fn=     string  REQUIRED  input bam filename\n  -o=, --out-p-paf-fn=\
+    \  string  REQUIRED  output paf filename for p-contigs\n  --out-a-paf-fn=    \
+    \   string  REQUIRED  output paf filename for a-contigs\n                    \
+    \                      (those with - in their name)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - m4filt-contained
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: m4filt-contained
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: =, --in-fn=   string  REQUIRED  Input m4 overlap file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: =, --out-fn=  string  REQUIRED  Output m4 overlap file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: "=, --n-proc=  int     24        Number of processes to run locally\
+      \ (ignored\nfor now)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-len
+    description: "=      int     400       Minimum read length; reads shorter than\n\
+      minLen will be discarded"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-idt-pct
+    description: "=  float   96.0      Minimum overlap identity; worse overlaps\n\
+      will be discarded\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  m4filt-contained [required&optional-params] \nParse .m4 file.\
+    \  Write only the overlaps which pass the filters.  (no overlaps\ninvolving contained\
+    \ reads;\n no overlaps involving short reads;\n no overlaps with low identity)\n\
+    Options:\n  -h, --help                        print this cligen-erated help\n\
+    \  --help-syntax                     advanced: prepend,plurals,..\n  -i=, --in-fn=\
+    \   string  REQUIRED  Input m4 overlap file\n  -o=, --out-fn=  string  REQUIRED\
+    \  Output m4 overlap file\n  -n=, --n-proc=  int     24        Number of processes\
+    \ to run locally (ignored\n                                    for now)\n  --min-len=\
+    \      int     400       Minimum read length; reads shorter than\n           \
+    \                         minLen will be discarded\n  --min-idt-pct=  float  \
+    \ 96.0      Minimum overlap identity; worse overlaps\n                       \
+    \             will be discarded\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - bam-filter-clipped
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: basepairs
+    description: -F=, --Flags-exclude=    string  "0"       Integer (0x ok) of flags
+      to
+  - !Positional
+    optional: false
+    position: 0
+    name: filters
+    description: -v, --verbose            bool    false     Show each skipped alignment,
+      and a
+  - !Positional
+    optional: false
+    position: 1
+    name: count.
+    description: -t, --tags-enrich        bool    false     Also enrich the tags.
+      (See
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "=, --output-count-fn=  string  REQUIRED  file reporting the number\
+      \ of reads\npost filtering"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fn
+    description: "=             string  REQUIRED  Bam or Sam filename (based on its\n\
+      extension)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "=, --input-fn=         string  REQUIRED  Bam or Sam filename (based\
+      \ on its\nextension), or '-'"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: "=, --max-clipping=     int     100       Maximum clipping on left\
+      \ or right\nof query, in basepairs"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    description: =, --end-margin=       int     25        Maximum margin on contig
+      ends, in
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  bam-filter-clipped [required&optional-params] \nFilter alignments\
+    \ with significant clipping.  To skip an alignment, both\nmax_clipping and end_margin\
+    \ must be exceeded on at least 1 end.\nOptions:\n  -h, --help                \
+    \                 print this cligen-erated help\n  --help-syntax             \
+    \                 advanced: prepend,plurals,..\n  -o=, --output-count-fn=  string\
+    \  REQUIRED  file reporting the number of reads\n                            \
+    \                 post filtering\n  --output-fn=             string  REQUIRED\
+    \  Bam or Sam filename (based on its\n                                       \
+    \      extension)\n  -i=, --input-fn=         string  REQUIRED  Bam or Sam filename\
+    \ (based on its\n                                             extension), or '-'\n\
+    \  -m=, --max-clipping=     int     100       Maximum clipping on left or right\n\
+    \                                             of query, in basepairs\n  -e=, --end-margin=\
+    \       int     25        Maximum margin on contig ends, in\n                \
+    \                             basepairs\n  -F=, --Flags-exclude=    string  \"\
+    0\"       Integer (0x ok) of flags to\n                                      \
+    \       exclude, independent of other\n                                      \
+    \       filters\n  -v, --verbose            bool    false     Show each skipped\
+    \ alignment, and a\n                                             count.\n  -t,\
+    \ --tags-enrich        bool    false     Also enrich the tags. (See\n        \
+    \                                     bam-tags-enrich.)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - pbreports-circ
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: pbreports-circ
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: "=, --fasta-fn=  string  REQUIRED  FASTA filename, preferably indexed\
+      \ (with\n.fai)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: "=, --circ-fn=   string  REQUIRED  Text list of circular contigs\n\
+      (newline-delimited)\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  pbreports-circ [required&optional-params] \nGiven FASTA of\
+    \ all ctgs and text-list of circular ctgs, print a report\n(pbreports format).\n\
+    Options:\n  -h, --help                          print this cligen-erated help\n\
+    \  --help-syntax                       advanced: prepend,plurals,..\n  -f=, --fasta-fn=\
+    \  string  REQUIRED  FASTA filename, preferably indexed (with\n              \
+    \                        .fai)\n  -c=, --circ-fn=   string  REQUIRED  Text list\
+    \ of circular contigs\n                                      (newline-delimited)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - m4filt-falconRunner
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: help
+    description: '--help-syntax                                     advanced: prepend,plurals,..'
+  - !Positional
+    optional: false
+    position: 1
+    name: filter
+    description: -m=, --min-len=          int     6000             Minimum read length,
+      reads
+  - !Positional
+    optional: false
+    position: 0
+    name: discarded
+    description: --min-cov=               int     2                Minimum number
+      of overlaps
+  - !Positional
+    optional: false
+    position: 0
+    name: locally
+    description: -f=, --filter-log-fn=    string  REQUIRED         Write read filter
+      stats to
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: =, --db=               string  REQUIRED         set db
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: "=, --las-json-fn=      string  REQUIRED         List of las files\n\
+      from falcon, e.g\n../1-preads_ovl/las-merge-combine/las_fofn.json"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "=, --idt-stage1=       float   90.0             Stage one percent\
+      \ identity\nfilter, formatted as\npercentage, overlaps < %idt\nare skipped"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --idt-stage2
+    description: =            float   90.0             Stage two percent identify
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-cov
+    description: "=               int     200              Maximum number of overlaps\n\
+      on either side of a read"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-diff
+    description: "=              int     100              Reads are skipped is\nabs(5p-3p)\
+      \ overlap counts >\nmaxDiff"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: "=, --bestn=            int     10               Keep N best overlaps\
+      \ at\n5prime AND 3prime of a read"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-depth
+    description: "=             int     2                Depths lower than minDepth\n\
+      are considered gaps"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minOverhang
+    description: =           int     0                set minOverhang
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gap-filt
+    description: "bool    false            Run depth filter, takes a\nlittle more\
+      \ time"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --keepIntermediates
+    description: bool    false            set keepIntermediates
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: =, --n-proc=           int     24               Number of processes
+      to run
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug-log-fn
+    description: =          string  "LA4Falcon.log"  Write stderr to this file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: =, --out-fn=           string  REQUIRED         Final m4 overlap
+      file
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  m4filt-falconRunner [required&optional-params] \nRuns the\
+    \ multi-stage m4 overlap filter for falcon. In stage one, reads that\ntrigger\
+    \ a filter are marked including containment, gaps in coverage along the\nA-read,\
+    \ and repeat reads. In stage two the filters are applied and the N-best\noverlaps\
+    \ are kept for the 5prime and 3prime of each read.\nOptions:\n  -h, --help   \
+    \                                     print this cligen-erated\n             \
+    \                                       help\n  --help-syntax                \
+    \                     advanced: prepend,plurals,..\n  -d=, --db=             \
+    \  string  REQUIRED         set db\n  -l=, --las-json-fn=      string  REQUIRED\
+    \         List of las files\n                                                \
+    \    from falcon, e.g\n                                                    ../1-preads_ovl/las-merge-combine/las_fofn.json\n\
+    \  -i=, --idt-stage1=       float   90.0             Stage one percent identity\n\
+    \                                                    filter, formatted as\n  \
+    \                                                  percentage, overlaps < %idt\n\
+    \                                                    are skipped\n  --idt-stage2=\
+    \            float   90.0             Stage two percent identify\n           \
+    \                                         filter\n  -m=, --min-len=          int\
+    \     6000             Minimum read length, reads\n                          \
+    \                          shorter than minLen will be\n                     \
+    \                               discarded\n  --min-cov=               int    \
+    \ 2                Minimum number of overlaps\n                              \
+    \                      on either side of a read\n  --max-cov=               int\
+    \     200              Maximum number of overlaps\n                          \
+    \                          on either side of a read\n  --max-diff=           \
+    \   int     100              Reads are skipped is\n                          \
+    \                          abs(5p-3p) overlap counts >\n                     \
+    \                               maxDiff\n  -b=, --bestn=            int     10\
+    \               Keep N best overlaps at\n                                    \
+    \                5prime AND 3prime of a read\n  --min-depth=             int \
+    \    2                Depths lower than minDepth\n                           \
+    \                         are considered gaps\n  --minOverhang=           int\
+    \     0                set minOverhang\n  -g, --gap-filt           bool    false\
+    \            Run depth filter, takes a\n                                     \
+    \               little more time\n  -k, --keepIntermediates  bool    false   \
+    \         set keepIntermediates\n  -n=, --n-proc=           int     24       \
+    \        Number of processes to run\n                                        \
+    \            locally\n  -f=, --filter-log-fn=    string  REQUIRED         Write\
+    \ read filter stats to\n                                                    this\
+    \ file\n  --debug-log-fn=          string  \"LA4Falcon.log\"  Write stderr to\
+    \ this file\n  -o=, --out-fn=           string  REQUIRED         Final m4 overlap\
+    \ file\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - phasr
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: phasr
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: =, --aln-fn=      string  REQUIRED  BAM alignment, sorted on 'coordinate'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: =, --ref-fn=      string  REQUIRED  FASTA reference
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: =, --out-fn=      string  REQUIRED  Output file name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: =, --iterations=  int     1000      Number of phasing iterations
+      per read
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    description: =, --kmersize=    int     21        Kmer size
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: =, --delta=       float   0.75      Frequency cut
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  phasr [required&optional-params] \nPhase PacBio CCS/HIFI reads.\n\
+    Options:\n  -h, --help                            print this cligen-erated help\n\
+    \  --help-syntax                         advanced: prepend,plurals,..\n  -a=,\
+    \ --aln-fn=      string  REQUIRED  BAM alignment, sorted on 'coordinate'\n  -r=,\
+    \ --ref-fn=      string  REQUIRED  FASTA reference\n  -o=, --out-fn=      string\
+    \  REQUIRED  Output file name\n  -i=, --iterations=  int     1000      Number\
+    \ of phasing iterations per read\n  -k=, --kmersize=    int     21        Kmer\
+    \ size\n  -d=, --delta=       float   0.75      Frequency cut\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - ipa-shard-mapping
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: ipa-shard-mapping
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: =, --max-nshards=     int     REQUIRED  Maximum number of distributed
+      jobs
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: "=, --shard-prefix=    string  \"shard\"   The output. Shard files\
+      \ are\n(prefix).(shard_id).block_ids\n(though they really are block_id\nranges)."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: =, --n_query_blocks=  int     REQUIRED  Number of blocks in query
+      db
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --n_target_blocks
+    description: =      int     REQUIRED  Number of blocks in target db
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "=, --out-ids-fn=      string  \"\"        If given, this lists the\
+      \ shard_ids,\n0 thru N-1, corresponding to the\nshard-prefix.block_id files.\
+      \ Useful\nfor Cromwell.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  ipa-shard-mapping [required&optional-params] \nGenerate comparisons\
+    \ for nq-by-nt matrix.  (Used to shard the purge_dups overlap\njobs, contigs vs.\
+    \ reads.)\nOptions:\n  -h, --help                                print this cligen-erated\
+    \ help\n  --help-syntax                             advanced: prepend,plurals,..\n\
+    \  -m=, --max-nshards=     int     REQUIRED  Maximum number of distributed jobs\n\
+    \  -s=, --shard-prefix=    string  \"shard\"   The output. Shard files are\n \
+    \                                           (prefix).(shard_id).block_ids\n  \
+    \                                          (though they really are block_id\n\
+    \                                            ranges).\n  -n=, --n_query_blocks=\
+    \  int     REQUIRED  Number of blocks in query db\n  --n_target_blocks=      int\
+    \     REQUIRED  Number of blocks in target db\n  -o=, --out-ids-fn=      string\
+    \  \"\"        If given, this lists the shard_ids,\n                         \
+    \                   0 thru N-1, corresponding to the\n                       \
+    \                     shard-prefix.block_id files. Useful\n                  \
+    \                          for Cromwell.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - pbreports-ctg-table
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: pbreports-ctg-table
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: "=, --fasta-fn=  string  REQUIRED  FASTA filename, preferably indexed\
+      \ (with\n.fai)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: "=, --circ-fn=   string  REQUIRED  Text list of circular contigs\n\
+      (newline-delimited)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: =, --gff-fn=    string  REQUIRED  PacBio coverage GFF file.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  pbreports-ctg-table [required&optional-params] \nOptions:\n\
+    \  -h, --help                          print this cligen-erated help\n  --help-syntax\
+    \                       advanced: prepend,plurals,..\n  -f=, --fasta-fn=  string\
+    \  REQUIRED  FASTA filename, preferably indexed (with\n                      \
+    \                .fai)\n  -c=, --circ-fn=   string  REQUIRED  Text list of circular\
+    \ contigs\n                                      (newline-delimited)\n  -g=, --gff-fn=\
+    \    string  REQUIRED  PacBio coverage GFF file.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - bam2clippedFasta
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bam2clippedFasta
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: =, --in-bam=  string  REQUIRED  input bam name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: =, --region=  string  REQUIRED  htslib formatted region seqid:start-end
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: =, --flag=    int     3844      filter reads with flag
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --flip-rc
+    description: "bool    false     reverse complement (RC) the sequence if\nalignment\
+      \ is in RC\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  bam2clippedFasta [required&optional-params] \nVery similar\
+    \ to `samtools fasta`, but the reads are subSequenced.  Output is\nprinted to\
+    \ STDOUT\nOptions:\n  -h, --help                        print this cligen-erated\
+    \ help\n  --help-syntax                     advanced: prepend,plurals,..\n  -i=,\
+    \ --in-bam=  string  REQUIRED  input bam name\n  -r=, --region=  string  REQUIRED\
+    \  htslib formatted region seqid:start-end\n  -f=, --flag=    int     3844   \
+    \   filter reads with flag\n  --flip-rc       bool    false     reverse complement\
+    \ (RC) the sequence if\n                                    alignment is in RC\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - bam-filter-ipa
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bam-filter-ipa
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: =, --bams-fofn=             string  REQUIRED  set bams_fofn
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: =, --all-subread-names-fn=  string  ""        set all_subread_names_fn
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: =, --min-len=               int     -1        set min_len
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-frac
+    description: =                   float   0.7       set min_frac
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  bam-filter-ipa [required&optional-params] \nPrint subreads\
+    \ which have decent alignments in any of the bam inputs.\nOptions:\n  -h, --help\
+    \                                      print this cligen-erated help\n  --help-syntax\
+    \                                   advanced: prepend,plurals,..\n  -b=, --bams-fofn=\
+    \             string  REQUIRED  set bams_fofn\n  -a=, --all-subread-names-fn=\
+    \  string  \"\"        set all_subread_names_fn\n  -m=, --min-len=           \
+    \    int     -1        set min_len\n  --min-frac=                   float   0.7\
+    \       set min_frac\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - m4filt
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: file
+    description: -o=, --out-fn=            string  REQUIRED  Final m4 overlaps file
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "=, --idt-stage1=        float   90.0      Stage one percent identity\
+      \ filter,\nformatted as percentage, overlaps\n< %idt are skipped"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --idt-stage2
+    description: =             float   90.0      Stage two percent identify filter
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: "=, --min-len=           int     6000      Minimum read length, reads\
+      \ shorter\nthan minLen will be discarded"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-cov
+    description: "=                int     2         Minimum number of overlaps on\n\
+      either side of a read"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-cov
+    description: "=                int     200       Maximum number of overlaps on\n\
+      either side of a read"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-diff
+    description: "=               int     100       Reads are skipped is abs(5p-3p)\n\
+      overlap counts > maxDiff"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --high-copy-sample-rate
+    description: "=  float   1.0       Downsample reads from high copy\nelements to\
+      \ expected coverage\nmaxCov*rate [0=discard reads]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: "=, --bestn=             int     10        Keep N best overlaps at\
+      \ 5prime AND\n3prime of a read"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-overhang
+    description: "=           int     0         Minimum amount of overhang bases\n\
+      in an overlap to keep the overlap"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-depth
+    description: "=              int     2         Depths lower than minDepth are\n\
+      considered gaps"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gap-filt
+    description: "bool    false     Run depth filter, takes a little\nmore time"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --keepIntermediates
+    description: bool    false     set keepIntermediates
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: =, --n-proc=            int     24        Number of processes to
+      run locally
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --in-fn
+    description: =                  string  REQUIRED  M4 overlaps file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: =, --filter-log-fn=     string  REQUIRED  Write read filter stats
+      to this
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  m4filt [required&optional-params] \nRun the multi-stage m4\
+    \ overlap filter (for HiFi Asm).  Take only one m4 file,\ninFn. If in+'.idx' exists,\
+    \ that is the index.  In stage one, reads that trigger\na filter are marked including\
+    \ containment, gaps in coverage along the A-read,\nand repeat reads.  In stage\
+    \ two the filters are applied and the N-best overlaps\nare kept for the 5prime\
+    \ and 3prime of each read.\nOptions:\n  -h, --help                           \
+    \       print this cligen-erated help\n  --help-syntax                       \
+    \        advanced: prepend,plurals,..\n  -i=, --idt-stage1=        float   90.0\
+    \      Stage one percent identity filter,\n                                  \
+    \            formatted as percentage, overlaps\n                             \
+    \                 < %idt are skipped\n  --idt-stage2=             float   90.0\
+    \      Stage two percent identify filter\n  -m=, --min-len=           int    \
+    \ 6000      Minimum read length, reads shorter\n                             \
+    \                 than minLen will be discarded\n  --min-cov=                int\
+    \     2         Minimum number of overlaps on\n                              \
+    \                either side of a read\n  --max-cov=                int     200\
+    \       Maximum number of overlaps on\n                                      \
+    \        either side of a read\n  --max-diff=               int     100      \
+    \ Reads are skipped is abs(5p-3p)\n                                          \
+    \    overlap counts > maxDiff\n  --high-copy-sample-rate=  float   1.0       Downsample\
+    \ reads from high copy\n                                              elements\
+    \ to expected coverage\n                                              maxCov*rate\
+    \ [0=discard reads]\n  -b=, --bestn=             int     10        Keep N best\
+    \ overlaps at 5prime AND\n                                              3prime\
+    \ of a read\n  --min-overhang=           int     0         Minimum amount of overhang\
+    \ bases\n                                              in an overlap to keep the\
+    \ overlap\n  --min-depth=              int     2         Depths lower than minDepth\
+    \ are\n                                              considered gaps\n  -g, --gap-filt\
+    \            bool    false     Run depth filter, takes a little\n            \
+    \                                  more time\n  -k, --keepIntermediates   bool\
+    \    false     set keepIntermediates\n  -n=, --n-proc=            int     24 \
+    \       Number of processes to run locally\n  --in-fn=                  string\
+    \  REQUIRED  M4 overlaps file\n  -f=, --filter-log-fn=     string  REQUIRED  Write\
+    \ read filter stats to this\n                                              file\n\
+    \  -o=, --out-fn=            string  REQUIRED  Final m4 overlaps file\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - circ-randomize
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: circ-randomize
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: =, --input=   string  REQUIRED  fasta file of circular sequences
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: =, --output=  string  REQUIRED  fasta file output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: =, --seed=    int64   0         set seed, if non-zero
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  circ-randomize [required&optional-params] \nrandomly rotates\
+    \ left rotates the sequence and writes to the output file.\nOptions:\n  -h, --help\
+    \                        print this cligen-erated help\n  --help-syntax      \
+    \               advanced: prepend,plurals,..\n  -i=, --input=   string  REQUIRED\
+    \  fasta file of circular sequences\n  -o=, --output=  string  REQUIRED  fasta\
+    \ file output\n  -s=, --seed=    int64   0         set seed, if non-zero\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - ipa-polish-split
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: cligen-erated
+    description: help
+  - !Positional
+    optional: false
+    position: 1
+    name: ctg-name
+    description: -o=, --out-ids-fn=            string  "all_shard_ids"              If
+      given,
+  - !Positional
+    optional: false
+    position: 0
+    name: corresponding
+    description: to the
+  - !Positional
+    optional: false
+    position: 1
+    name: shard-prefix.block_id
+    description: files.
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: "advanced:\nprepend,plurals,.."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: "=, --max-nshards=           int     REQUIRED                   \
+      \  Maximum number\nof distributed\njobs"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: "=, --shard-prefix=          string  \"shard\"                  \
+      \    The output.\nShard files are\n(prefix).(shard_id).block_ids"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: "=, --block-prefix=          string  \"block\"                  \
+      \    Block files are\n(prefix).(block_id).reads\n(prepared\npreviously)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: '=, --in-read-to-contig-fn=  string  "sorted.read_to_contig.csv"  2-columns:
+      read#'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --mb-per-block
+    description: "=               int     REQUIRED                     Try to target\n\
+      megabases total\nin all contigs\nin any block"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --blacklist-fn
+    description: "=               string  \"\"                           Specifies\
+      \ a file\nwith a list of\ncontigs to skip\nfor polishing.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  ipa-polish-split [required&optional-params] Indexed fasta\
+    \ filenames to polish\nThe trailing list of fasta.fai filenames are FASTA index\
+    \ files.  They will be\nused to split the shards somewhat evenly.  (Used to shard\
+    \ the polishing jobs.)\nOptions:\n  -h, --help                               \
+    \                          print this\n                                      \
+    \                               cligen-erated\n                              \
+    \                                       help\n  --help-syntax                \
+    \                                      advanced:\n                           \
+    \                                          prepend,plurals,..\n  -m=, --max-nshards=\
+    \           int     REQUIRED                     Maximum number\n            \
+    \                                                         of distributed\n   \
+    \                                                                  jobs\n  -s=,\
+    \ --shard-prefix=          string  \"shard\"                      The output.\n\
+    \                                                                     Shard files\
+    \ are\n                                                                     (prefix).(shard_id).block_ids\n\
+    \  -b=, --block-prefix=          string  \"block\"                      Block\
+    \ files are\n                                                                \
+    \     (prefix).(block_id).reads\n                                            \
+    \                         (prepared\n                                        \
+    \                             previously)\n  -i=, --in-read-to-contig-fn=  string\
+    \  \"sorted.read_to_contig.csv\"  2-columns: read#\n                         \
+    \                                            ctg-name\n  -o=, --out-ids-fn=  \
+    \          string  \"all_shard_ids\"              If given,\n                \
+    \                                                     this lists\n           \
+    \                                                          the shard_ids,\n  \
+    \                                                                   0 thru N-1,\n\
+    \                                                                     corresponding\n\
+    \                                                                     to the\n\
+    \                                                                     shard-prefix.block_id\n\
+    \                                                                     files.\n\
+    \  --mb-per-block=               int     REQUIRED                     Try to target\n\
+    \                                                                     megabases\
+    \ total\n                                                                    \
+    \ in all contigs\n                                                           \
+    \          in any block\n  --blacklist-fn=               string  \"\"        \
+    \                   Specifies a file\n                                       \
+    \                              with a list of\n                              \
+    \                                       contigs to skip\n                    \
+    \                                                 for polishing.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - bam-tags-enrich
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: bam-tags-enrich
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "=, --output-fn=  string  REQUIRED  Bam or Sam filename (based on\
+      \ its\nextension)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "=, --input-fn=   string  REQUIRED  Bam or Sam filename (based on\
+      \ its\nextension), or '-'\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  bam-tags-enrich [required&optional-params] \nAdd XB/XE/XP/XR/XQ:\
+    \ beg/end/%idt/aln-ref-len/qry-len\nOptions:\n  -h, --help                   \
+    \        print this cligen-erated help\n  --help-syntax                      \
+    \  advanced: prepend,plurals,..\n  -o=, --output-fn=  string  REQUIRED  Bam or\
+    \ Sam filename (based on its\n                                       extension)\n\
+    \  -i=, --input-fn=   string  REQUIRED  Bam or Sam filename (based on its\n  \
+    \                                     extension), or '-'\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - version
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: version
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  version [optional-params] \nOptions:\n  -h, --help       \
+    \  print this cligen-erated help\n  --help-syntax      advanced: prepend,plurals,..\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - ipa2-polish-prepare
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: ipa2-polish-prepare
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: =, --max-nshards=   int     REQUIRED    Maximum number of distributed
+      jobs
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: "=, --shard-prefix=  string  \"shard_id\"  The output. Shard files\
+      \ are\n(prefix).(shard_id).block_ids"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: "=, --block-prefix=  string  \"block_id\"  Block files are\n(prefix).(block_id).reads\
+      \ (prepared\npreviously)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "=, --out-ids-fn=    string  \"\"          If given, this lists the\
+      \ shard_ids,\n0 thru N-1, corresponding to the\nshard-prefix.block_id files.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  ipa2-polish-prepare [required&optional-params] \nDEPRECATED\n\
+    Options:\n  -h, --help                                print this cligen-erated\
+    \ help\n  --help-syntax                             advanced: prepend,plurals,..\n\
+    \  -m=, --max-nshards=   int     REQUIRED    Maximum number of distributed jobs\n\
+    \  -s=, --shard-prefix=  string  \"shard_id\"  The output. Shard files are\n \
+    \                                           (prefix).(shard_id).block_ids\n  -b=,\
+    \ --block-prefix=  string  \"block_id\"  Block files are\n                   \
+    \                         (prefix).(block_id).reads (prepared\n              \
+    \                              previously)\n  -o=, --out-ids-fn=    string  \"\
+    \"          If given, this lists the shard_ids,\n                            \
+    \                0 thru N-1, corresponding to the\n                          \
+    \                  shard-prefix.block_id files.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - rr-hctg-track1
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: cligen-erated
+    description: help
+  - !Positional
+    optional: false
+    position: 1
+    name: phased_read_file
+    description: -r=, --read-to-contig-map=  string  "./4-quiver/read_maps/read_to_contig_map"                       set
+  - !Positional
+    optional: false
+    position: 2
+    name: read_to_contig_map
+    description: --rawread-ids=              string  "./2-asm-falcon/read_maps/dump_rawread_ids/rawread_ids"         set
+      rawread_ids
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: "advanced:\nprepend,plurals,.."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --test
+    description: bool    false                                                           set
+      test
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: =, --phased-read-file=    string  "./3-unzip/all_phased_reads"                                    set
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: =, --bestn=               int     40                                                              set
+      bestn
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: =, --n-core=              int     0                                                               set
+      n_core
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: =, --min-len=             int     2500                                                            set
+      min_len
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: =, --output=              string  "./2-asm-falcon/read_maps/dump_rawread_ids/rawread_to_contigs"  set
+      output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --stream
+    description: bool    false                                                           set
+      stream
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --debug
+    description: bool    false                                                           set
+      debug
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: bool    false                                                           set
+      silent
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  rr-hctg-track1 [optional-params] \nOptions:\n  -h, --help\
+    \                                                                            \
+    \              print this\n                                                  \
+    \                                                    cligen-erated\n         \
+    \                                                                            \
+    \                 help\n  --help-syntax                                      \
+    \                                                 advanced:\n                \
+    \                                                                            \
+    \          prepend,plurals,..\n  -t, --test                  bool    false   \
+    \                                                        set test\n  -p=, --phased-read-file=\
+    \    string  \"./3-unzip/all_phased_reads\"                                  \
+    \  set\n                                                                     \
+    \                                 phased_read_file\n  -r=, --read-to-contig-map=\
+    \  string  \"./4-quiver/read_maps/read_to_contig_map\"                       set\n\
+    \                                                                            \
+    \                          read_to_contig_map\n  --rawread-ids=              string\
+    \  \"./2-asm-falcon/read_maps/dump_rawread_ids/rawread_ids\"         set rawread_ids\n\
+    \  -b=, --bestn=               int     40                                    \
+    \                          set bestn\n  -n=, --n-core=              int     0\
+    \                                                               set n_core\n \
+    \ -m=, --min-len=             int     2500                                   \
+    \                         set min_len\n  -o=, --output=              string  \"\
+    ./2-asm-falcon/read_maps/dump_rawread_ids/rawread_to_contigs\"  set output\n \
+    \ -s, --stream                bool    false                                  \
+    \                         set stream\n  -d, --debug                 bool    false\
+    \                                                           set debug\n  --silent\
+    \                    bool    false                                           \
+    \                set silent\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - ipa-shard-blocks-m4
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: jobs
+    description: -s=, --shard-prefix=  string  "shard"          The output. Shard
+      files are
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: =, --max-nshards=   int     REQUIRED         Maximum number of distributed
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: "=, --block-prefix=  string  \"block\"          Block files are\n\
+      (prefix).(block_id).m4\n(prepared previously)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "=, --out-ids-fn=    string  \"all_shard_ids\"  If given, this lists\
+      \ the\nshard_ids, 0 thru N-1,\ncorresponding to the\nshard-prefix.block_id files.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  ipa-shard-blocks-m4 [required&optional-params] \nGiven several\
+    \ {block_prefix}.(block_id).m4 files, create up to {max_nshards}\nfiles that each\
+    \ contain a list of block_ids (one per line).  For now, they are\nbalanced by\
+    \ the number of reads in each .m4 file.  (Later, the contents of each\nshard will\
+    \ be processed linearly, one block at a time, on a given compute node.)\n(Used\
+    \ to shard the phasing jobs.)\nOptions:\n  -h, --help                        \
+    \             print this cligen-erated help\n  --help-syntax                 \
+    \                 advanced: prepend,plurals,..\n  -m=, --max-nshards=   int  \
+    \   REQUIRED         Maximum number of distributed\n                         \
+    \                        jobs\n  -s=, --shard-prefix=  string  \"shard\"     \
+    \     The output. Shard files are\n                                          \
+    \       (prefix).(shard_id).block_ids\n  -b=, --block-prefix=  string  \"block\"\
+    \          Block files are\n                                                 (prefix).(block_id).m4\n\
+    \                                                 (prepared previously)\n  -o=,\
+    \ --out-ids-fn=    string  \"all_shard_ids\"  If given, this lists the\n     \
+    \                                            shard_ids, 0 thru N-1,\n        \
+    \                                         corresponding to the\n             \
+    \                                    shard-prefix.block_id files.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - ovl-cov-stats
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: ovl-cov-stats
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "=, --in-fn=  string  REQUIRED  An overlap file in M4 format, or\
+      \ a FOFN of M4\nfiles.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  ovl-cov-stats [required&optional-params] \nOptions:\n  -h,\
+    \ --help                       print this cligen-erated help\n  --help-syntax\
+    \                    advanced: prepend,plurals,..\n  -i=, --in-fn=  string  REQUIRED\
+    \  An overlap file in M4 format, or a FOFN of M4\n                           \
+    \        files.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - stats-preassembly
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: stats-preassembly
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: =, --rawreads-rdb-fn=  string  REQUIRED  Path to the raw reads RaptorDB.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: "=, --preads-rdb-fn=    string  REQUIRED  Path to the preads (error-corrected\n\
+      reads) RaptorDB."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: =, --genome-length=    int32   REQUIRED  Length of the genome.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: =, --cutoff-length=    int32   REQUIRED  Length cutoff used for assembly.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  stats-preassembly [required&optional-params] \nOptions:\n\
+    \  -h, --help                                 print this cligen-erated help\n\
+    \  --help-syntax                              advanced: prepend,plurals,..\n \
+    \ -r=, --rawreads-rdb-fn=  string  REQUIRED  Path to the raw reads RaptorDB.\n\
+    \  -p=, --preads-rdb-fn=    string  REQUIRED  Path to the preads (error-corrected\n\
+    \                                             reads) RaptorDB.\n  -g=, --genome-length=\
+    \    int32   REQUIRED  Length of the genome.\n  -c=, --cutoff-length=    int32\
+    \   REQUIRED  Length cutoff used for assembly.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - ipa2-construct-config
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: ipa2-construct-config
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: =, --out-fn=  string  REQUIRED  Output file.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --out-fmt
+    description: "=      string  \"json\"    Output format of the config file. (json\
+      \ or\nbash)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: =, --in-fn=   string  "-"       set in_fn
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --no-sort
+    description: bool    false     set no_sort
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  ipa2-construct-config [required&optional-params] \nTakes an\
+    \ advanced options string, and reformats it into JSON format.\nInput/output is\
+    \ on stdin/stdout. Options which aren't set explicitly in the\ninput will be set\
+    \ to default (configurable via args).\nOptions:\n  -h, --help                \
+    \        print this cligen-erated help\n  --help-syntax                     advanced:\
+    \ prepend,plurals,..\n  -o=, --out-fn=  string  REQUIRED  Output file.\n  --out-fmt=\
+    \      string  \"json\"    Output format of the config file. (json or\n      \
+    \                              bash)\n  -i=, --in-fn=   string  \"-\"       set\
+    \ in_fn\n  -n, --no-sort   bool    false     set no_sort\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - falcon-read2ctg-augment
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: falcon-read2ctg-augment
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: =, --phase-fn=  string  REQUIRED  read2ctg.txt file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: =, --bam-fn=    string  REQUIRED  bam/sam file of unphased reads
+      mapped
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: =, --out-fn=    string  REQUIRED  mostly same as read2ctg.txt, but
+      augmented
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  falcon-read2ctg-augment [required&optional-params] \nAssigns\
+    \ the unphased reads to haplotigs or primary contigs based on pbmm2\nmapping.\n\
+    Options:\n  -h, --help                          print this cligen-erated help\n\
+    \  --help-syntax                       advanced: prepend,plurals,..\n  -p=, --phase-fn=\
+    \  string  REQUIRED  read2ctg.txt file\n  -b=, --bam-fn=    string  REQUIRED \
+    \ bam/sam file of unphased reads mapped\n  -o=, --out-fn=    string  REQUIRED\
+    \  mostly same as read2ctg.txt, but augmented\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+- !Command
+  command:
+  - falconc
+  - m4filt-idx
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: m4filt-idx
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-syntax
+    description: 'advanced: prepend,plurals,..'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: "=, --in-fn=  string  REQUIRED  Path to .m4 file. Index filename\
+      \ will have\n'.idx' appended.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print this cligen-erated help
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  m4filt-idx [required&optional-params] \nGiven foo.m4, create\
+    \ index file foo.m4.idx (Or just use it if it exists.) Format\nis \"0000 count\
+    \ start len\", where count is the number of overlaps in the pile.\n(First field\
+    \ is dummy, instead of Aread name, for efficiency.) Return the sum of\nall pileups,\
+    \ which should exactly match filesize.\nOptions:\n  -h, --help               \
+    \        print this cligen-erated help\n  --help-syntax                    advanced:\
+    \ prepend,plurals,..\n  -i=, --in-fn=  string  REQUIRED  Path to .m4 file. Index\
+    \ filename will have\n                                   '.idx' appended.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage:\n  falconc {SUBCMD}  [sub-command options & parameters]\nwhere\
+  \ {SUBCMD} is one of:\n  help                          print comprehensive or per-cmd\
+  \ help\n  version                       \n  dataset                       \n  kmers\
+  \                         \n  utils                         \n  bam-filter-ipa \
+  \               Print subreads which have decent alignments in\n               \
+  \                 any of the bam inputs.\n  align-filter                  alias\
+  \ for bam-filter-ipa\n  bam-tags-enrich               Add XB/XE/XP/XR/XQ:\n    \
+  \                            beg/end/%idt/aln-ref-len/qry-len\n  bam-filter-clipped\
+  \            Filter alignments with significant clipping.\n                    \
+  \            To skip an alignment, both max_clipping and\n                     \
+  \           end_margin must be exceeded on at least 1 end.\n  falcon-read2ctg-augment\
+  \       Assigns the unphased reads to haplotigs or\n                           \
+  \     primary contigs based on pbmm2 mapping.\n  raptor-db-filter              Read/write\
+  \ raptor-db to/from stdin/stdout.\n                                Exclude zmws\
+  \ in blacklist.\n  raptor-db-calc-length-cutoff  Perform a linear pass on an overlap\
+  \ file,\n                                and determine rough clipping coordinates\
+  \ to\n                                'correct' reads. Write integer to stdout.\n\
+  \  raptor-db-subsample           \n  circ-orient                   reorients circular\
+  \ sequences based on gc-skew\n                                distribution and writes\
+  \ to output.\n  circ-randomize                randomly rotates left rotates the\
+  \ sequence and\n                                writes to the output file.\n  phasr\
+  \                         Phase PacBio CCS/HIFI reads.\n  m4filt-merge-blacklist\
+  \        \n  m4filt-stage1                 \n  m4filt-stage2                 \n\
+  \  m4filt-dump-blacklist         \n  m4filt                        Run the multi-stage\
+  \ m4 overlap filter (for HiFi\n                                Asm). Take only one\
+  \ m4 file, inFn. If in+'.idx'\n                                exists, that is the\
+  \ index. In stage one, reads\n                                that trigger a filter\
+  \ are marked including\n                                containment, gaps in coverage\
+  \ along the A-read,\n                                and repeat reads. In stage\
+  \ two the filters are\n                                applied and the N-best overlaps\
+  \ are kept for the\n                                5prime and 3prime of each read.\n\
+  \  m4filt-falconRunner           Runs the multi-stage m4 overlap filter for\n  \
+  \                              falcon. In stage one, reads that trigger a\n    \
+  \                            filter are marked including containment, gaps in\n\
+  \                                coverage along the A-read, and repeat reads. In\n\
+  \                                stage two the filters are applied and the N-best\n\
+  \                                overlaps are kept for the 5prime and 3prime of\n\
+  \                                each read.\n  m4filt-ipaRunner              Runs\
+  \ the multi-stage m4 overlap filter for IPA.\n                                In\
+  \ stage one, reads that trigger a filter are\n                                marked\
+  \ including containment, gaps in coverage\n                                along\
+  \ the A-read, and repeat reads. In stage two\n                                the\
+  \ filters are applied and the N-best overlaps\n                                are\
+  \ kept for the 5prime and 3prime of each read.\n  m4filt-contained             \
+  \ Parse .m4 file. Write only the overlaps which\n                              \
+  \  pass the filters. (no overlaps involving\n                                contained\
+  \ reads; no overlaps involving short\n                                reads; no\
+  \ overlaps with low identity)\n  m4filt-idx                    Given foo.m4, create\
+  \ index file foo.m4.idx\n                                (Or just use it if it exists.)\
+  \ Format is \"0000\n                                count start len\", where count\
+  \ is the number of\n                                overlaps in the pile. (First\
+  \ field is dummy,\n                                instead of Aread name, for efficiency.)\
+  \ Return\n                                the sum of all pileups, which should exactly\n\
+  \                                match filesize.\n  ovl-cov-stats              \
+  \   \n  pbcromwell-rm-las             Remove all .las files except final stage of\n\
+  \                                merge. (Unzip is still possible.) Filepaths\n \
+  \                               come from the provided command as a subprocess,\n\
+  \                                or from stdin if command==\"-\", (Someday, we\n\
+  \                                will add a flag to delete the final stage too,\n\
+  \                                optionally.)\n  pbreports-circ                Given\
+  \ FASTA of all ctgs and text-list of\n                                circular ctgs,\
+  \ print a report (pbreports\n                                format).\n  pbreports-ctg-table\
+  \           \n  stats-assembly                \n  stats-preassembly            \
+  \ \n  stats-gff                     \n  rr-hctg-track1                \n  rr-hctg-track2\
+  \                Stage 2 of rr_hctg_track\n  bam2clippedFasta              Very\
+  \ similar to `samtools fasta`, but the reads\n                                are\
+  \ subSequenced.  Output is printed to STDOUT\n  bam2paf                       https://bioconvert.readthedocs.io/en/master/formats.html#paf-pairwise-mapping-format\n\
+  \  paf-filter                    Drop the lines of PAF that involve contigs\n  \
+  \                              not in FASTA index. Write the rest to\n         \
+  \                       out_paf_fn. (\"-\" means stdin/stdout for PAF.)\n      \
+  \                          https://bioconvert.readthedocs.io/en/master/formats.html#paf-pairwise-mapping-format\n\
+  \  ipa2-construct-config         Takes an advanced options string, and\n       \
+  \                         reformats it into JSON format. Input/output\n        \
+  \                        is on stdin/stdout. Options which aren't set\n        \
+  \                        explicitly in the input will be set to default\n      \
+  \                          (configurable via args).\n  ipa-shard-ovl-asym      \
+  \      (Used to shard the asymmetric overlap jobs.)\n  ipa-shard-mapping       \
+  \      Generate comparisons for nq-by-nt matrix. (Used\n                       \
+  \         to shard the purge_dups overlap jobs, contigs\n                      \
+  \          vs. reads.)\n  ipa-polish-split              The trailing list of fasta.fai\
+  \ filenames are\n                                FASTA index files. They will be\
+  \ used to split\n                                the shards somewhat evenly. (Used\
+  \ to shard the\n                                polishing jobs.)\n  ipa-shard-blocks-m4\
+  \           Given several {block_prefix}.(block_id).m4\n                       \
+  \         files, create up to {max_nshards} files that\n                       \
+  \         each contain a list of block_ids (one per line).\n                   \
+  \             For now, they are balanced by the number of\n                    \
+  \            reads in each .m4 file. (Later, the contents of\n                 \
+  \               each shard will be processed linearly, one block\n             \
+  \                   at a time, on a given compute node.) (Used to\n            \
+  \                    shard the phasing jobs.)\n  ipa2-polish-prepare           DEPRECATED\n\
+  \nfalconc {-h|--help} or with no args at all prints this message.\nfalconc --help-syntax\
+  \ gives general cligen syntax help.\nRun \"falconc {help SUBCMD|SUBCMD --help}\"\
+  \ to see help for just SUBCMD.\nRun \"falconc help\" to get *comprehensive* help.\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0

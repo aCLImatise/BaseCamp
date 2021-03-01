@@ -20,6 +20,9 @@ task Pfscale {
       ~{if (valuelower_threshold_probability) then "-Q" else ""} \
       ~{if (lhl_mn_pq) then "-lhLMNPQ" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     impose_limit_line: ": do not impose limit on line length."
     valuelogarithmic_base_parameters: "<value>:\\nlogarithmic base of parameters (default: 10)."

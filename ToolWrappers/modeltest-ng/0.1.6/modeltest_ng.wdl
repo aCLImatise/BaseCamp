@@ -3,7 +3,7 @@ version 1.0
 task Modeltestng {
   input {
     String? datatype
-    File? sets_file_fasta
+    File? sets_file_format
     File? pipes_output_file
     Int? processes
     File? partitions
@@ -60,7 +60,7 @@ task Modeltestng {
       ~{mr_bayes} \
       ~{paup} \
       ~{if defined(datatype) then ("--datatype " +  '"' + datatype + '"') else ""} \
-      ~{if defined(sets_file_fasta) then ("--input " +  '"' + sets_file_fasta + '"') else ""} \
+      ~{if defined(sets_file_format) then ("--input " +  '"' + sets_file_format + '"') else ""} \
       ~{if defined(pipes_output_file) then ("--output " +  '"' + pipes_output_file + '"') else ""} \
       ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""} \
       ~{if defined(partitions) then ("--partitions " +  '"' + partitions + '"') else ""} \
@@ -82,9 +82,12 @@ task Modeltestng {
       ~{if (keep_params) then "--keep-params" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     datatype: "sets the data type"
-    sets_file_fasta: "sets the input alignment file (FASTA or PHYLIP format, required)"
+    sets_file_format: "sets the input alignment file (FASTA or PHYLIP format, required)"
     pipes_output_file: "pipes the output into a file"
     processes: "sets the number of processors to use (shared memory)"
     partitions: "sets a partitioning scheme"

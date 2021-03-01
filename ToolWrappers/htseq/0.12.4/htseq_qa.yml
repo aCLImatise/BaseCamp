@@ -4,86 +4,86 @@ command:
 positional: []
 named:
 - !Flag
-  description: "type of read_file (one of: sam [default], bam, solexa-\nexport, fastq,\
-    \ solexa-fastq)"
+  optional: true
   synonyms:
   - -t
   - --type
+  description: "type of read_file (one of: sam [default], bam, solexa-\nexport, fastq,\
+    \ solexa-fastq)"
   args: !ChoiceFlagArg
     choices: !!set
-      fastq:
-      solexa-export:
-      bam:
-      solexa-fastq:
       sam:
-  optional: true
+      bam:
+      solexa-export:
+      fastq:
+      solexa-fastq:
 - !Flag
-  description: output filename (default is <read_file>.pdf)
+  optional: true
   synonyms:
   - -o
   - --outfile
+  description: output filename (default is <read_file>.pdf)
   args: !SimpleFlagArg
     name: OUTFILE
-  optional: true
 - !Flag
-  description: "the maximum read length (when not specified, the\nscript guesses from\
-    \ the file"
+  optional: true
   synonyms:
   - -r
   - --readlength
+  description: "the maximum read length (when not specified, the\nscript guesses from\
+    \ the file"
   args: !SimpleFlagArg
     name: READLEN
-  optional: true
 - !Flag
-  description: "the gamma factor for the contrast adjustment of the\nquality score\
-    \ plot"
+  optional: true
   synonyms:
   - -g
   - --gamma
+  description: "the gamma factor for the contrast adjustment of the\nquality score\
+    \ plot"
   args: !SimpleFlagArg
     name: GAMMA
-  optional: true
 - !Flag
-  description: do not split reads in unaligned and aligned ones
+  optional: true
   synonyms:
   - -n
   - --nosplit
+  description: do not split reads in unaligned and aligned ones
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "the maximum quality score that appears in the data\n(default: 41)"
+  optional: true
   synonyms:
   - -m
   - --maxqual
+  description: "the maximum quality score that appears in the data\n(default: 41)"
   args: !SimpleFlagArg
     name: MAXQUAL
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --primary-only
   description: "For SAM/BAM input files, ignore alignments that are\nnot primary.\
     \ This only affects 'multimapper' reads\nthat align to several regions in the\
     \ genome. By\nchoosing this option, each read will only count as\none; without\
     \ this option, each of its alignments\ncounts as one."
-  synonyms:
-  - --primary-only
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Limit the analysis to the first N reads/alignments.\n"
+  optional: true
   synonyms:
   - --max-records
+  description: "Limit the analysis to the first N reads/alignments.\n"
   args: !SimpleFlagArg
     name: MAX_RECORDS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: htseq-qa [-h] [-t {sam,bam,solexa-export,fastq,solexa-fastq}]\n\
@@ -114,3 +114,4 @@ help_text: "usage: htseq-qa [-h] [-t {sam,bam,solexa-export,fastq,solexa-fastq}]
   \               Limit the analysis to the first N reads/alignments.\n"
 generated_using:
 - --help
+docker_image:

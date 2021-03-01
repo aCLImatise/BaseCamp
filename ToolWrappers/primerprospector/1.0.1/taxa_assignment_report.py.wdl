@@ -22,6 +22,9 @@ task TaxaAssignmentReportpy {
       ~{if defined(tax_a_mapping_fp) then ("--taxa_mapping_fp " +  '"' + tax_a_mapping_fp + '"') else ""} \
       ~{if defined(fast_a_fp) then ("--fasta_fp " +  '"' + fast_a_fp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     tax_a_depth: "Depth of taxonomy to test for accuracy.  Depth that\\nexceeds specifications in the taxonomy mapping file or\\nreport will be ignored [default: 3]"

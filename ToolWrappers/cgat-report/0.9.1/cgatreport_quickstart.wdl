@@ -8,6 +8,9 @@ task Cgatreportquickstart {
     cgatreport_quickstart \
       ~{if defined(dest) then ("--dest " +  '"' + dest + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dest: "destination directory.\\n"
   }

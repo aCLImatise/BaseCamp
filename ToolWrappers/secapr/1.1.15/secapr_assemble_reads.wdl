@@ -24,6 +24,9 @@ task SecaprAssembleReads {
       ~{if (disable_stats) then "--disable_stats" else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     call_folder_contains: "Call the folder that contains the trimmed reads,\\norganized in a separate subfolder for each sample. The\\nname of the subfolder has to start with the sample\\nname, delimited with an underscore [_]"
     output_directory_saved: "The output directory where results will be saved"

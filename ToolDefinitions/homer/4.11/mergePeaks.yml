@@ -3,108 +3,93 @@ command:
 - mergePeaks
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: primary peak file
-  optional: false
-- !Positional
   description: ''
-  position: 1
-  name: additional
-  optional: true
-- !Positional
-  description: ''
-  position: 2
-  name: peak/annotation
-  optional: true
-- !Positional
-  description: ''
-  position: 3
-  name: files...
-  optional: true
 named:
 - !Flag
-  description: '(Only merge/consider peaks on the same strand, default: either strand)'
+  optional: true
   synonyms:
   - -strand
+  description: '(Only merge/consider peaks on the same strand, default: either strand)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -d
   description: "<#|given> (Maximum distance between peak centers to merge, default:\
     \ given)\nUsing \"-d given\" looks for literal overlaps in peak regions - DEFAULT\
     \ since v4.4\nUse \"-d given\" when features have vastly different sizes (i.e.\
     \ peaks vs. introns)"
-  synonyms:
-  - -d
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (file listing peak files to compare - for lots of peak files)
+  optional: true
   synonyms:
   - -file
+  description: (file listing peak files to compare - for lots of peak files)
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
-  description: '<#> (Genome size for significance calculations, default: 2e9)'
+  optional: true
   synonyms:
   - -gsize
+  description: '<#> (Genome size for significance calculations, default: 2e9)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(Generates separate files for overlapping and unique peaks)\nBy default\
-    \ all peaks are sent to stdout"
+  optional: true
   synonyms:
   - -prefix
+  description: "(Generates separate files for overlapping and unique peaks)\nBy default\
+    \ all peaks are sent to stdout"
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -matrix
   description: "(Generates files with pairwise comparison statistics)\nfilename.logPvalue.matrix.txt\
     \ - ln p-values for overlap, +values for divergence\nfilename.logRatio.matrix.txt\
     \ - ln ratio of observed/expected overlaps\nfilename.count.matrix.txt - peak overlap\
     \ counts"
-  synonyms:
-  - -matrix
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
-  description: '(output venn diagram numbers to file, default: to stderr)'
+  optional: true
   synonyms:
   - -venn
+  description: '(output venn diagram numbers to file, default: to stderr)'
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
-  description: (report peak membership as binary instead of by file names)
+  optional: true
   synonyms:
   - -code
+  description: (report peak membership as binary instead of by file names)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -cobound
   description: "<#> (Maximum number of co-bound peaks to consider)\nWill output sets\
     \ of peaks that are co-bound by various numbers of factors\nto files coBoundBy0.txt,\
     \ coBoundBy1.txt, coboundBy2.txt, ...\nOr <prefix>.coBoundBy0.txt, <prefix>.coBoundBy1.txt,\
     \ ..."
-  synonyms:
-  - -cobound
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: :XXX-YYY (only analyze peaks within range)
+  optional: true
   synonyms:
   - -filter
+  description: :XXX-YYY (only analyze peaks within range)
   args: !SimpleFlagArg
     name: chrN
-  optional: true
 - !Flag
-  description: (returns the total bp covered by each peak file - use "-d given"
+  optional: true
   synonyms:
   - -coverage
+  description: (returns the total bp covered by each peak file - use "-d given"
   args: !SimpleFlagArg
     name: output file
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -139,3 +124,4 @@ help_text: "!!! Can't recognize \"--help\"\n\n\tUsage: mergePeaks [options] <pri
   \ by each peak file - use \"-d given\"\n\n"
 generated_using:
 - --help
+docker_image:

@@ -10,6 +10,9 @@ task PblayoutM4tosg {
       ~{in_do_tm_four} \
       ~{out_dots_g}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_do_tm_four: "STR  Input M4 or M4F."
     out_dots_g: "STR  Output SG."

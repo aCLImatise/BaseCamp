@@ -8,6 +8,9 @@ task ConvertHeaderspyTool {
     ConvertHeaders_py tool_ \
       ~{convert_headers_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     convert_headers_do_tpy: ""
   }

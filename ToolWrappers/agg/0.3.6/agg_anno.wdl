@@ -16,6 +16,9 @@ task AggAnno {
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
       ~{if defined(output_type) then ("--output-type " +  '"' + output_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     include: "filters to apply eg. -i 'QUAL>=10 && DP<100000 && HWE<10'"
     regions: "a set of variants that are trusted (eg. 1000G)"

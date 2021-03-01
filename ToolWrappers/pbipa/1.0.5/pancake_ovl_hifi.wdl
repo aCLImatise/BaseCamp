@@ -78,6 +78,9 @@ task PancakeOvlhifi {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_fmt: "STR    Select the output format. Valid choices: (m4, ipa). [m4]"
     freq_percentile: "FLOAT  Filter frequent kmers. [0.0002]"

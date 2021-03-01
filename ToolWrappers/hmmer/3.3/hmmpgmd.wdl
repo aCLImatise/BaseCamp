@@ -26,6 +26,9 @@ task Hmmpgmd {
       ~{if defined(hmm_db) then ("--hmmdb " +  '"' + hmm_db + '"') else ""} \
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     master: ": run program as the master server"
     worker: ": run program as a worker with server at <s>"

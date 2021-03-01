@@ -1,0 +1,164 @@
+!Command
+command:
+- anvi-run-workflow
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --workflow
+  description: "You must specify a workflow name. To see a list of\navailable workflows\
+    \ run --list-workflows. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: WORKFLOW
+- !Flag
+  optional: true
+  synonyms:
+  - --get-default-config
+  description: "Store a json formatted config file with all the\ndefault settings\
+    \ of the workflow. This is a good draft\nyou could use in order to write your\
+    \ own config file.\nThis config file contains all parameters that could be\nconfigured\
+    \ for this workflow. NOTICE: the config file\nis provided with default values\
+    \ only for parameters\nthat are set by us in the workflow. The values for the\n\
+    rest of the parameters are determined by the relevant\nprogram. (default: None)"
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --list-workflows
+  description: "Print a list of available snakemake workflows\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --list-dependencies
+  description: "Print a list of the dependencies of this workflow. You\nmust provide\
+    \ a workflow name and a config file.\nsnakemake will figure out which rules need\
+    \ to be run\naccording to your config file, and according to the\nfiles available\
+    \ on your disk. According to the rules\nthat need to be run, we will let you know\
+    \ which\nprograms are going to be used, so that you can make\nsure you have all\
+    \ of them installed and loaded.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config-file
+  description: 'A JSON-formatted configuration file. (default: None)'
+  args: !SimpleFlagArg
+    name: CONFIG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --dry-run
+  description: "Don't do anything real. Test everything, and stop\nright before wherever\
+    \ the developer said 'well, this\nis enough testing', and decided to print out\
+    \ results.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-dry-run
+  description: "Don't do a dry run. Just start the workflow! Useful\nwhen your job\
+    \ is so big it takes hours to do a dry\nrun. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --save-workflow-graph
+  description: "Save a graph representation of the workflow. If you\nare using this\
+    \ flag and if your system is unable to\ngenerate such graph outputs, you will\
+    \ hear anvi'o\ncomplaining (still, totally worth trying). (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: "..., --additional-params ...\nAdditional snakemake parameters to add\
+    \ when running\nsnakemake. NOTICE: --additional-params HAS TO BE THE\nLAST ARGUMENT\
+    \ THAT IS PASSED TO anvi-run-workflow,\nANYTHING THAT FOLLOWS WILL BE CONSIDERED\
+    \ AS PART OF\nTHE ADDITIONAL PARAMETERS THAT ARE PASSED TO\nSNAKEMAKE. Any parameter\
+    \ that is accepted by snakemake\nshould be fair game here, but it is your\nresponsibility\
+    \ to make sure that whatever you added\nmakes sense. To see what parameters are\
+    \ available\nplease refer to the snakemake documentation. For\nexample, you could\
+    \ use this to set up cluster\nsubmission using --additional-params --cluster 'YOUR-\n\
+    CLUSTER-SUBMISSION-CMD'. (default: None)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-run-workflow [-h] [-w WORKFLOW]\n                        \
+  \ [--get-default-config OUTPUT_FILENAME]\n                         [--list-workflows]\
+  \ [--list-dependencies]\n                         [-c CONFIG_FILE] [--dry-run] [--skip-dry-run]\n\
+  \                         [--save-workflow-graph] [-A ...]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n\nESSENTIAL INPUTS:\n\
+  \  Things you must provide or this won't work\n\n  -w WORKFLOW, --workflow WORKFLOW\n\
+  \                        You must specify a workflow name. To see a list of\n  \
+  \                      available workflows run --list-workflows. (default:\n   \
+  \                     None)\n\nADDITIONAL STUFF:\n  additional stuff\n\n  --get-default-config\
+  \ OUTPUT_FILENAME\n                        Store a json formatted config file with\
+  \ all the\n                        default settings of the workflow. This is a good\
+  \ draft\n                        you could use in order to write your own config\
+  \ file.\n                        This config file contains all parameters that could\
+  \ be\n                        configured for this workflow. NOTICE: the config file\n\
+  \                        is provided with default values only for parameters\n \
+  \                       that are set by us in the workflow. The values for the\n\
+  \                        rest of the parameters are determined by the relevant\n\
+  \                        program. (default: None)\n  --list-workflows      Print\
+  \ a list of available snakemake workflows\n                        (default: False)\n\
+  \  --list-dependencies   Print a list of the dependencies of this workflow. You\n\
+  \                        must provide a workflow name and a config file.\n     \
+  \                   snakemake will figure out which rules need to be run\n     \
+  \                   according to your config file, and according to the\n      \
+  \                  files available on your disk. According to the rules\n      \
+  \                  that need to be run, we will let you know which\n           \
+  \             programs are going to be used, so that you can make\n            \
+  \            sure you have all of them installed and loaded.\n                 \
+  \       (default: False)\n  -c CONFIG_FILE, --config-file CONFIG_FILE\n        \
+  \                A JSON-formatted configuration file. (default: None)\n  --dry-run\
+  \             Don't do anything real. Test everything, and stop\n              \
+  \          right before wherever the developer said 'well, this\n              \
+  \          is enough testing', and decided to print out results.\n             \
+  \           (default: False)\n  --skip-dry-run        Don't do a dry run. Just start\
+  \ the workflow! Useful\n                        when your job is so big it takes\
+  \ hours to do a dry\n                        run. (default: False)\n  --save-workflow-graph\n\
+  \                        Save a graph representation of the workflow. If you\n \
+  \                       are using this flag and if your system is unable to\n  \
+  \                      generate such graph outputs, you will hear anvi'o\n     \
+  \                   complaining (still, totally worth trying). (default:\n     \
+  \                   False)\n  -A ..., --additional-params ...\n                \
+  \        Additional snakemake parameters to add when running\n                 \
+  \       snakemake. NOTICE: --additional-params HAS TO BE THE\n                 \
+  \       LAST ARGUMENT THAT IS PASSED TO anvi-run-workflow,\n                   \
+  \     ANYTHING THAT FOLLOWS WILL BE CONSIDERED AS PART OF\n                    \
+  \    THE ADDITIONAL PARAMETERS THAT ARE PASSED TO\n                        SNAKEMAKE.\
+  \ Any parameter that is accepted by snakemake\n                        should be\
+  \ fair game here, but it is your\n                        responsibility to make\
+  \ sure that whatever you added\n                        makes sense. To see what\
+  \ parameters are available\n                        please refer to the snakemake\
+  \ documentation. For\n                        example, you could use this to set\
+  \ up cluster\n                        submission using --additional-params --cluster\
+  \ 'YOUR-\n                        CLUSTER-SUBMISSION-CMD'. (default: None)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   Execute, manage, parallelize, and troubleshoot\
+  \ entire 'omics workflows and\n   chain together anvi'o and third party programs\n\
+  \n\U0001F9C0 Can consume: \n\n   samples-txt / fasta-txt / workflow-config\n   \n\
+  \U0001F355 Can provide: \n\n   contigs-workflow / metagenomics-workflow / pangenomics-workflow\
+  \ / \n   phylogenomics-workflow / trnaseq-workflow\n   \n\U0001F37A More on `anvi-run-workflow`:\n\
+  \n   https://merenlab.org/software/anvio/help/7/programs/anvi-run-workflow\n\n\U0001F37B\
+  \ All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

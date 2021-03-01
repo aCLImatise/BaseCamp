@@ -10,6 +10,9 @@ task MashPaste {
       ~{option} \
       ~{if (input_files_lists) then "-l" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_files_lists: "Input files are lists of file names."
     option: "Description (range) [default]"

@@ -24,6 +24,9 @@ task AquilaPhasingAllVariants {
       ~{if defined(assembly_dir) then ("--assembly_dir " +  '"' + assembly_dir + '"') else ""} \
       ~{if defined(block_len_use) then ("--block_len_use " +  '"' + block_len_use + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly_vcf: "Required parameter, Aquila assembly based VCF file,\\n\\\"Aquila_final_sorted.vcf\\\", called by\\n\\\"Aquila_assembly_based_variants_call.py\\\""
     vcf_file: "Required parameter, VCF file called by FreeBayes"

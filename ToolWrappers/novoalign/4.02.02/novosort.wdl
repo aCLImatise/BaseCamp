@@ -10,6 +10,9 @@ task Novosort {
       ~{sorted_dot} \
       ~{if (umi) then "--UMI" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     umi: "UMI is part of Illumina read header '@Instrument:RunID:FlowCellID:Lane:Tile:X:Y:UMI'\\nIf --UMI & --uniqueTags are both used then UMI tags takes precedence if it exists\\non the header. If not found we look for the unique tags. This allows some degree of\\nmixing source of UMI."
     sorted_dot: "[--assumesorted|-a]            Assume input files are already sorted even if @HD doesn't"

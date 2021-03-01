@@ -3,36 +3,43 @@ command:
 - createKUnitigMaxOverlaps
 positional:
 - !Positional
-  description: and   prefix.overlaps.
+  optional: false
   position: 0
   name: prefix.coords
-  optional: false
+  description: and   prefix.overlaps.
 named:
 - !Flag
-  description: to specify the k-mer size used when generating the k-unitigs.
+  optional: true
   synonyms:
   - -kmervalue
+  description: to specify the k-mer size used when generating the k-unitigs.
   args: !SimpleFlagArg
     name: kMerSize
-  optional: true
 - !Flag
-  description: output the coords file as well as the overlaps file
+  optional: true
   synonyms:
+  - -kmervalue
   - -create-coords-file
+  description: output the coords file as well as the overlaps file
   args: !SimpleFlagArg
-    name: to
-  optional: true
+    name: kMerSize
 - !Flag
-  description: (in this case the
+  optional: true
   synonyms:
   - -largest-kunitig-number
+  description: "(in this case the\nk-unitigs don't have to be in numeric order in\
+    \ the files.)\n"
   args: !SimpleFlagArg
     name: largestKUnitigNumber
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ': help and exit'
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "\nUnrecognized flag: --help\n\nThis program outputs the overlaps file\
@@ -53,3 +60,4 @@ help_text: "\nUnrecognized flag: --help\n\nThis program outputs the overlaps fil
   \ (in this case the\n       k-unitigs don't have to be in numeric order in the files.)\n"
 generated_using:
 - --help
+docker_image:

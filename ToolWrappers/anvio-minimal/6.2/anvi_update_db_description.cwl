@@ -6,7 +6,7 @@ inputs:
     \ use Markdwon syntax. The\ndescription text will be rendered and shown in all\n\
     relevant interfaces, including the anvi'o interactive\ninterface, or anvi'o summary\
     \ outputs.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --description
 - id: in_db
@@ -18,6 +18,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - anvi-update-db-description

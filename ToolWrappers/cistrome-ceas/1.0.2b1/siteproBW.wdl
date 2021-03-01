@@ -24,6 +24,9 @@ task SiteproBW {
       ~{if (confid) then "--confid" else ""} \
       ~{if defined(label) then ("--label " +  '"' + label + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bw: "input bigWIG file. Multiple bigWIG files can be given\\nvia -w (--bw) individually (eg -w WIG1.bw, -w\\nWIG2.bw). WARNING! multiple bigwig and bed files are\\nnot allowed."
     bed: "BED file of regions of interest. (eg, binding sites or\\nmotif locations) Multiple BED files can be given via\\n-b (--bed) individually (eg -b BED1.bed -b BED2.bed).\\nWARNING! multiple wig and bed files are not allowed."

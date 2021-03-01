@@ -8,6 +8,9 @@ task EstimateErrorpyThresholdset {
     EstimateError_py threshold_set \
       ~{estimate_error_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     estimate_error_do_tpy: ""
   }

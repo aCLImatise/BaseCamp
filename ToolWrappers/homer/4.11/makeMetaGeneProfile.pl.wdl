@@ -22,6 +22,9 @@ task MakeMetaGeneProfilepl {
       ~{if (bin) then "-bin" else ""} \
       ~{if (size) then "-size" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min: "<#> (minimum size of genes/regions to use, default: 3000)\\n(This prevents extremely small regions from being used)"
     max: "<#> (max size of genes/regions to use, default: no max)"

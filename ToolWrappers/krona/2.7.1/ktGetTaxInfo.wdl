@@ -22,6 +22,9 @@ task KtGetTaxInfo {
       ~{tag} \
       ~{example}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_zero_zero_zero_zero_one_dot_one: ""
     var_command: ""

@@ -8,6 +8,9 @@ task Estimatemerthreshold {
     estimate_mer_threshold \
       ~{if defined(file_of_mercounts) then ("-m " +  '"' + file_of_mercounts + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_of_mercounts: "file of mercounts"
   }

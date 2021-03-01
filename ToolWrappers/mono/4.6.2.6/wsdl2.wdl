@@ -40,6 +40,9 @@ task Wsdl2 {
       ~{if (app_setting_baseurl) then "-appsettingbaseurl" else ""} \
       ~{if (sample) then "-sample" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     domain: ":domain           Domain of username for server authentication."
     language: ":language       Language of generated code. Allowed CS (default)\\nand VB. You can also specify the fully qualified\\nname of a class that implements the\\nSystem.CodeDom.Compiler.CodeDomProvider Class."

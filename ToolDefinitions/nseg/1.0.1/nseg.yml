@@ -3,57 +3,105 @@ command:
 - nseg
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: file
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: window
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: locut
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 3
   name: hicut
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 4
   name: options
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "each input sequence is represented by a single output\nsequence with\
-    \ low-complexity regions replaced by\nstrings of 'x' characters"
+  optional: true
   synonyms:
   - -x
+  description: "each input sequence is represented by a single output\nsequence with\
+    \ low-complexity regions replaced by\nstrings of 'x' characters"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "number of sequence characters/line (default 60)\n-m <size> minimum\
-    \ length for a high-complexity segment\n(default 0).  Shorter segments are merged\
-    \ with adjacent\nlow-complexity segments\n-l  show only low-complexity segments\
-    \ (fasta format)\n-h  show only high-complexity segments (fasta format)\n-a  show\
-    \ all segments (fasta format)\n-n  do not add complexity information to the header\
-    \ line\n-o  show overlapping low-complexity segments (default merge)\n-t <maxtrim>\
-    \ maximum trimming of raw segment (default 100)\n-p  prettyprint each segmented\
-    \ sequence (tree format)\n-q  prettyprint each segmented sequence (block format)\n\
-    -z <period>\n"
+  optional: true
   synonyms:
   - -c
+  description: number of sequence characters/line (default 60)
   args: !SimpleFlagArg
     name: chars
+- !Flag
   optional: true
+  synonyms:
+  - -m
+  description: "minimum length for a high-complexity segment\n(default 0).  Shorter\
+    \ segments are merged with adjacent\nlow-complexity segments"
+  args: !SimpleFlagArg
+    name: size
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: show only low-complexity segments (fasta format)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: show all segments (fasta format)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: do not add complexity information to the header line
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: show overlapping low-complexity segments (default merge)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: maximum trimming of raw segment (default 100)
+  args: !SimpleFlagArg
+    name: maxtrim
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: prettyprint each segmented sequence (tree format)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: prettyprint each segmented sequence (block format)
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: show only high-complexity segments (fasta format)
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: nseg <file> <window> <locut> <hicut> <options>\n         <file>\
@@ -74,3 +122,4 @@ help_text: "Usage: nseg <file> <window> <locut> <hicut> <options>\n         <fil
   \          -p  prettyprint each segmented sequence (tree format) \n            -q\
   \  prettyprint each segmented sequence (block format) \n            -z <period>\n"
 generated_using: []
+docker_image:

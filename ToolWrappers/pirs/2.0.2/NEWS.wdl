@@ -4,6 +4,9 @@ task NEWS {
   command <<<
     NEWS
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

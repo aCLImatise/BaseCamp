@@ -18,6 +18,9 @@ task Einverted {
       ~{if (mismatch) then "-mismatch" else ""} \
       ~{if (max_repeat) then "-maxrepeat" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gap: "integer    [12] Gap penalty (Integer 0 or more)"
     threshold: "integer    [50] Minimum score threshold (Integer 0 or\\nmore)"

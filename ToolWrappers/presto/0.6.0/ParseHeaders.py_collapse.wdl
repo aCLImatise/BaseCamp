@@ -24,6 +24,9 @@ task ParseHeaderspyCollapse {
       ~{if defined(list_collapse_default) then ("-f " +  '"' + list_collapse_default + '"') else ""} \
       ~{if defined(act) then ("--act " +  '"' + act + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_fastafastq_files: "A list of FASTA/FASTQ files containing sequences to\\nprocess. (default: None)"
     explicit_output_file: "Explicit output file name(s). Note, this argument\\ncannot be used with the --failed, --outdir, or\\n--outname arguments. If unspecified, then the output\\nfilename will be based on the input filename(s).\\n(default: None)"

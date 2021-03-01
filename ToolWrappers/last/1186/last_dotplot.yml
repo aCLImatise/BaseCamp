@@ -1,0 +1,356 @@
+!Command
+command:
+- last-dotplot
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: show progress messages & data about the plot
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --width
+  description: 'maximum width in pixels (default: 1000)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --height
+  description: 'maximum height in pixels (default: 1000)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --maxseqs
+  description: "maximum number of horizontal or vertical sequences\n(default=100)"
+  args: !SimpleFlagArg
+    name: M
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - --seq1
+  description: which sequences to show from the 1st genome
+  args: !SimpleFlagArg
+    name: PATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  - --seq2
+  description: which sequences to show from the 2nd genome
+  args: !SimpleFlagArg
+    name: PATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --forwardcolor
+  description: 'color for forward alignments (default: red)'
+  args: !SimpleFlagArg
+    name: COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reversecolor
+  description: 'color for reverse alignments (default: blue)'
+  args: !SimpleFlagArg
+    name: COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - --alignments
+  description: secondary alignments
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --sort1
+  description: "genome1 sequence order: 0=input order, 1=name order,\n2=length order,\
+    \ 3=alignment order (default=1)"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --sort2
+  description: "genome2 sequence order: 0=input order, 1=name order,\n2=length order,\
+    \ 3=alignment order (default=1)"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --strands1
+  description: "genome1 sequence orientation: 0=forward orientation,\n1=alignment\
+    \ orientation (default=0)"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --strands2
+  description: "genome2 sequence orientation: 0=forward orientation,\n1=alignment\
+    \ orientation (default=0)"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --max-gap1
+  description: "maximum unaligned (end,mid) gap in genome1: fraction\nof aligned length\
+    \ (default=0.5,2)"
+  args: !SimpleFlagArg
+    name: FRAC
+- !Flag
+  optional: true
+  synonyms:
+  - --max-gap2
+  description: "maximum unaligned (end,mid) gap in genome2: fraction\nof aligned length\
+    \ (default=0.5,2)"
+  args: !SimpleFlagArg
+    name: FRAC
+- !Flag
+  optional: true
+  synonyms:
+  - --pad
+  description: "pad length when cutting unaligned gaps: fraction of\naligned length\
+    \ (default=0.04)"
+  args: !SimpleFlagArg
+    name: FRAC
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --join
+  description: "join: 0=nothing, 1=alignments adjacent in genome1,\n2=alignments adjacent\
+    \ in genome2 (default=0)"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --border-pixels
+  description: number of pixels between sequences (default=1)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --border-color
+  description: color for pixels between sequences (default=black)
+  args: !SimpleFlagArg
+    name: COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - --margin-color
+  description: margin color
+  args: !SimpleFlagArg
+    name: COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fontfile
+  description: TrueType or OpenType font file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --fontsize
+  description: 'TrueType or OpenType font size (default: 14)'
+  args: !SimpleFlagArg
+    name: SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --labels1
+  description: "genome1 labels: 0=name, 1=name:length,\n2=name:start:length, 3=name:start-end\
+    \ (default=0)"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --labels2
+  description: "genome2 labels: 0=name, 1=name:length,\n2=name:start:length, 3=name:start-end\
+    \ (default=0)"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --rot1
+  description: text rotation for the 1st genome (default=h)
+  args: !SimpleFlagArg
+    name: ROT
+- !Flag
+  optional: true
+  synonyms:
+  - --rot2
+  description: text rotation for the 2nd genome (default=v)
+  args: !SimpleFlagArg
+    name: ROT
+- !Flag
+  optional: true
+  synonyms:
+  - --bed1
+  description: read genome1 annotations from BED file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --bed2
+  description: read genome2 annotations from BED file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --rmsk1
+  description: "read genome1 repeats from RepeatMasker .out or\nrmsk.txt file"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --rmsk2
+  description: "read genome2 repeats from RepeatMasker .out or\nrmsk.txt file"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --genePred1
+  description: read genome1 genes from genePred file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --genePred2
+  description: read genome2 genes from genePred file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --exon-color
+  description: color for exons (default=PaleGreen)
+  args: !SimpleFlagArg
+    name: COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - --cds-color
+  description: color for protein-coding regions (default=LimeGreen)
+  args: !SimpleFlagArg
+    name: COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - --gap1
+  description: read genome1 unsequenced gaps from agp or gap file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --gap2
+  description: read genome2 unsequenced gaps from agp or gap file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --bridged-color
+  description: 'color for bridged gaps (default: yellow)'
+  args: !SimpleFlagArg
+    name: COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - --unbridged-color
+  description: "color for unbridged gaps (default: orange)\n"
+  args: !SimpleFlagArg
+    name: COLOR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: last-dotplot --help\n   or: last-dotplot [options] maf-or-tab-alignments\
+  \ dotplot.png\n   or: last-dotplot [options] maf-or-tab-alignments dotplot.gif\n\
+  \   or: ...\n\nDraw a dotplot of pair-wise sequence alignments in MAF or tabular\
+  \ format.\n\nOptions:\n  -h, --help            show this help message and exit\n\
+  \  -v, --verbose         show progress messages & data about the plot\n  -x INT,\
+  \ --width=INT   maximum width in pixels (default: 1000)\n  -y INT, --height=INT\
+  \  maximum height in pixels (default: 1000)\n  -m M, --maxseqs=M     maximum number\
+  \ of horizontal or vertical sequences\n                        (default=100)\n \
+  \ -1 PATTERN, --seq1=PATTERN\n                        which sequences to show from\
+  \ the 1st genome\n  -2 PATTERN, --seq2=PATTERN\n                        which sequences\
+  \ to show from the 2nd genome\n  -c COLOR, --forwardcolor=COLOR\n              \
+  \          color for forward alignments (default: red)\n  -r COLOR, --reversecolor=COLOR\n\
+  \                        color for reverse alignments (default: blue)\n  --alignments=FILE\
+  \     secondary alignments\n  --sort1=N             genome1 sequence order: 0=input\
+  \ order, 1=name order,\n                        2=length order, 3=alignment order\
+  \ (default=1)\n  --sort2=N             genome2 sequence order: 0=input order, 1=name\
+  \ order,\n                        2=length order, 3=alignment order (default=1)\n\
+  \  --strands1=N          genome1 sequence orientation: 0=forward orientation,\n\
+  \                        1=alignment orientation (default=0)\n  --strands2=N   \
+  \       genome2 sequence orientation: 0=forward orientation,\n                 \
+  \       1=alignment orientation (default=0)\n  --max-gap1=FRAC       maximum unaligned\
+  \ (end,mid) gap in genome1: fraction\n                        of aligned length\
+  \ (default=0.5,2)\n  --max-gap2=FRAC       maximum unaligned (end,mid) gap in genome2:\
+  \ fraction\n                        of aligned length (default=0.5,2)\n  --pad=FRAC\
+  \            pad length when cutting unaligned gaps: fraction of\n             \
+  \           aligned length (default=0.04)\n  -j N, --join=N        join: 0=nothing,\
+  \ 1=alignments adjacent in genome1,\n                        2=alignments adjacent\
+  \ in genome2 (default=0)\n  --border-pixels=INT   number of pixels between sequences\
+  \ (default=1)\n  --border-color=COLOR  color for pixels between sequences (default=black)\n\
+  \  --margin-color=COLOR  margin color\n\n  Text options:\n    -f FILE, --fontfile=FILE\n\
+  \                        TrueType or OpenType font file\n    -s SIZE, --fontsize=SIZE\n\
+  \                        TrueType or OpenType font size (default: 14)\n    --labels1=N\
+  \         genome1 labels: 0=name, 1=name:length,\n                        2=name:start:length,\
+  \ 3=name:start-end (default=0)\n    --labels2=N         genome2 labels: 0=name,\
+  \ 1=name:length,\n                        2=name:start:length, 3=name:start-end\
+  \ (default=0)\n    --rot1=ROT          text rotation for the 1st genome (default=h)\n\
+  \    --rot2=ROT          text rotation for the 2nd genome (default=v)\n\n  Annotation\
+  \ options:\n    --bed1=FILE         read genome1 annotations from BED file\n   \
+  \ --bed2=FILE         read genome2 annotations from BED file\n    --rmsk1=FILE \
+  \       read genome1 repeats from RepeatMasker .out or\n                       \
+  \ rmsk.txt file\n    --rmsk2=FILE        read genome2 repeats from RepeatMasker\
+  \ .out or\n                        rmsk.txt file\n\n  Gene options:\n    --genePred1=FILE\
+  \    read genome1 genes from genePred file\n    --genePred2=FILE    read genome2\
+  \ genes from genePred file\n    --exon-color=COLOR  color for exons (default=PaleGreen)\n\
+  \    --cds-color=COLOR   color for protein-coding regions (default=LimeGreen)\n\n\
+  \  Unsequenced gap options:\n    --gap1=FILE         read genome1 unsequenced gaps\
+  \ from agp or gap file\n    --gap2=FILE         read genome2 unsequenced gaps from\
+  \ agp or gap file\n    --bridged-color=COLOR\n                        color for\
+  \ bridged gaps (default: yellow)\n    --unbridged-color=COLOR\n                \
+  \        color for unbridged gaps (default: orange)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/last:1186--h8b12597_0

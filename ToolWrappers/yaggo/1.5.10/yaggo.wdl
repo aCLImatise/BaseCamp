@@ -20,6 +20,9 @@ task Yaggo {
       ~{if (extended_syntax) then "--extended-syntax" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "Output file"
     license: "License file to copy in header"

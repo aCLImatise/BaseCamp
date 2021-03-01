@@ -10,6 +10,9 @@ task Locarnameapl {
       ~{loca_rna_me_a} \
       ~{if defined(man) then ("--man " +  '"' + man + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "documentation"
     loca_rna_me_a: ""

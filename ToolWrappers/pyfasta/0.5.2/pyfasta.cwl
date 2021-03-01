@@ -9,13 +9,14 @@ inputs:
     \ will use the inplace flattened version\nrather than creating another .flat copy\
     \ of the\nsequence.\nto view the help for a particular action, use:\npyfasta [action]\
     \ --help\ne.g.:\npyfasta extract --help\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: -h
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pyfasta

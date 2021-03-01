@@ -1,65 +1,71 @@
 !Command
 command:
 - phyluce_genetrees_get_tree_counts
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: LOCUS_SUPPORT_OUTPUT
+  description: '[--schema {nexus,newick,nexml,fasta,phylip}]'
 named:
 - !Flag
-  description: "LOCUS_SUPPORT_OUTPUT\n[--schema {nexus,newick,nexml,fasta,phylip}]\n\
-    --root ROOT --extension EXTENSION\n[--exclude EXCLUDE [EXCLUDE ...]]"
-  synonyms:
-  - --locus-support-output
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: Tree file
   synonyms:
   - --trees
+  description: Tree file
   args: !SimpleFlagArg
     name: TREES
-  optional: true
 - !Flag
-  description: The scheme of the input data
+  optional: true
+  synonyms:
+  - --locus-support-output
+  description: "The output file in which to store trees and their\nassociated loci\
+    \ (config format)"
+  args: !SimpleFlagArg
+    name: LOCUS_SUPPORT_OUTPUT
+- !Flag
+  optional: true
   synonyms:
   - --schema
+  description: The scheme of the input data
   args: !ChoiceFlagArg
     choices: !!set
-      phylip:
-      fasta:
       nexml:
+      fasta:
+      phylip:
       newick:
       nexus:
-  optional: true
 - !Flag
-  description: The taxon on which to root trees
+  optional: true
   synonyms:
   - --root
+  description: The taxon on which to root trees
   args: !SimpleFlagArg
     name: ROOT
-  optional: true
 - !Flag
-  description: File extension used with each 'best' tree
+  optional: true
   synonyms:
   - --extension
+  description: File extension used with each 'best' tree
   args: !SimpleFlagArg
     name: EXTENSION
-  optional: true
 - !Flag
-  description: "Loci to exclude\n"
+  optional: true
   synonyms:
   - --exclude
+  description: "Loci to exclude\n"
   args: !RepeatFlagArg
     name: EXCLUDE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: phyluce_genetrees_get_tree_counts [-h] --trees TREES\n        \
@@ -78,3 +84,4 @@ help_text: "usage: phyluce_genetrees_get_tree_counts [-h] --trees TREES\n       
   \                        Loci to exclude\n"
 generated_using:
 - --help
+docker_image:

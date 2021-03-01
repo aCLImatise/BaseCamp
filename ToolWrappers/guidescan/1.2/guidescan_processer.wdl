@@ -34,6 +34,9 @@ task GuidescanProcesser {
       ~{if defined(gnu_path) then ("--gnupath " +  '"' + gnu_path + '"') else ""} \
       ~{if defined(how_many_threads) then ("-t " +  '"' + how_many_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_fasta_file: "path to fasta file or folder with fasta files (will\\nuse all .fa, .fasta, .fa.gz, .fasta.gz files found in\\nthe folder) (default: None)"
     project_name_use: "project name, use in all output (will produce a folder\\nwith this name containing intermediate and final files\\nin it) (default: myguides)"

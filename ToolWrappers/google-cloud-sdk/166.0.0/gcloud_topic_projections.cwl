@@ -266,11 +266,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_angry_snake_case_dot
-  doc: '[no-]reverse'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_wrap
   doc: "Enables the column text to be wrapped if the table would otherwise be\ntoo\
     \ wide for the display."
@@ -281,6 +276,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

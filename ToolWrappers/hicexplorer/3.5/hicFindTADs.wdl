@@ -2,9 +2,9 @@ version 1.0
 
 task HicFindTADs {
   input {
-    String? correct_for_multiple_testing
     String? matrix
     Int? out_prefix
+    String? correct_for_multiple_testing
     Int? min_depth
     Int? maxdepth
     Int? step
@@ -17,9 +17,9 @@ task HicFindTADs {
   }
   command <<<
     hicFindTADs \
-      ~{if defined(correct_for_multiple_testing) then ("--correctForMultipleTesting " +  '"' + correct_for_multiple_testing + '"') else ""} \
       ~{if defined(matrix) then ("--matrix " +  '"' + matrix + '"') else ""} \
       ~{if defined(out_prefix) then ("--outPrefix " +  '"' + out_prefix + '"') else ""} \
+      ~{if defined(correct_for_multiple_testing) then ("--correctForMultipleTesting " +  '"' + correct_for_multiple_testing + '"') else ""} \
       ~{if defined(min_depth) then ("--minDepth " +  '"' + min_depth + '"') else ""} \
       ~{if defined(maxdepth) then ("--maxDepth " +  '"' + maxdepth + '"') else ""} \
       ~{if defined(step) then ("--step " +  '"' + step + '"') else ""} \
@@ -30,10 +30,13 @@ task HicFindTADs {
       ~{if defined(chromosomes) then ("--chromosomes " +  '"' + chromosomes + '"') else ""} \
       ~{if defined(number_of_processors) then ("--numberOfProcessors " +  '"' + number_of_processors + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    correct_for_multiple_testing: "[--minDepth INT bp] [--maxDepth INT bp] [--step INT bp]\\n[--TAD_sep_score_prefix TAD_SEP_SCORE_PREFIX]\\n[--thresholdComparisons THRESHOLDCOMPARISONS]\\n[--delta DELTA] [--minBoundaryDistance MINBOUNDARYDISTANCE]\\n[--chromosomes CHROMOSOMES [CHROMOSOMES ...]]\\n[--numberOfProcessors NUMBEROFPROCESSORS] [--help]\\n[--version]"
     matrix: "Corrected Hi-C matrix to use for the computations."
     out_prefix: "File prefix to save the resulting files: 1.\\n<prefix>_tad_separation.bm The format of the output\\nfile is chrom start end TAD-sep1 TAD-sep2 TAD-sep3 ..\\netc. We call this format a bedgraph matrix and can be\\nplotted using `hicPlotTADs`. Each of the TAD-\\nseparation scores in the file corresponds to a\\ndifferent window length starting from --minDepth to\\n--maxDepth. 2. <prefix>_zscore_matrix.h5, the z-score\\nmatrix used for the computation of the TAD-separation\\nscore. 3. < prefix > _boundaries.bed, which contains\\nthe positions of boundaries. The genomic coordinates\\nin this file correspond to the resolution used. Thus,\\nfor Hi-C bins of 10.000bp the boundary position is\\n10.000bp long. For restriction fragment matrices the\\nboundary position varies depending on the fragment\\nlength at the boundary. 4. <prefix>_domains.bed\\ncontains the TADs positions. This is a non-overlapping\\nset of genomic positions. 5. <prefix>_boundaries.gff\\nSimilar to the boundaries bed file but with extra\\ninformation (p-value, delta). 6.\\n<prefix>_score.bedgraph file contains the TAD-\\nseparation score measured at each Hi-C bin coordinate.\\nIs useful to visualize in a genome browser. The delta\\nand p-value settings are saved as part of the name."
+    correct_for_multiple_testing: "Select the bonferroni or false discovery rate for a\\nmultiple comparison. Bonferroni controls the family-\\nwise error rate (FWER) and needs a p-value. The false\\ndiscovery rate (FDR) controls the likelyhood of type I\\nerrors and needs a q-value. As a third option it is\\npossible to not use a multiple comparison method at\\nall."
     min_depth: "bp     Minimum window length (in bp) to be considered to the\\nleft and to the right of each Hi-C bin. This number\\nshould be at least 3 times as large as the bin size of\\nthe Hi-C matrix."
     maxdepth: "bp     Maximum window length to be considered to the left and\\nto the right of the cut point in bp. This number\\nshould around 6-10 times as large as the bin size of\\nthe Hi-C matrix."
     step: "bp         Step size when moving from --minDepth to --maxDepth.\\nNote, the step size grows exponentially as `minDeph +\\n(step * int(x)**1.5) for x in [0, 1, ...]` until it\\nreaches `maxDepth`. For example, selecting\\nstep=10,000, minDepth=20,000 and maxDepth=150,000 will\\ncompute TAD-scores for window sizes: 20,000, 30,000,\\n40,000, 70,000 and 100,000"

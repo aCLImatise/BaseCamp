@@ -11,74 +11,947 @@ subcommands:
   - call
   positional: []
   named: []
-  parent: &id033 !Command
+  parent: &id038 !Command
     command: *id001
     positional: []
     named: []
     parent:
     subcommands:
-    - &id032 !Command
+    - &id037 !Command
       command: *id002
       positional: []
       named: []
-      parent: &id028 !Command
+      parent: &id033 !Command
         command: *id001
         positional: []
         named: []
         parent:
         subcommands:
-        - &id027 !Command
+        - &id032 !Command
           command: *id002
           positional: []
           named: []
-          parent: &id023 !Command
+          parent: &id028 !Command
             command: *id001
             positional: []
             named: []
             parent:
             subcommands:
-            - &id022 !Command
+            - &id027 !Command
               command: *id002
               positional: []
               named: []
-              parent: &id003 !Command
+              parent: &id023 !Command
                 command: *id001
                 positional: []
                 named: []
                 parent:
                 subcommands:
-                - &id004 !Command
+                - &id022 !Command
                   command: *id002
                   positional: []
                   named: []
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - &id004 !Command
+                      command: *id002
+                      positional: []
+                      named: []
+                      parent: *id003
+                      subcommands:
+                      - !Command
+                        command: &id009
+                        - varlociraptor
+                        - call
+                        - help
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: For
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: more
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 2
+                          name: information
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 3
+                          name: try
+                          description: ''
+                        named: []
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag:
+                        usage_flag:
+                        version_flag:
+                        help_text: "error: The subcommand '--help' wasn't recognized\n\
+                          \nUSAGE:\n\tvarlociraptor call help <subcommands>...\n\n\
+                          For more information try --help\n"
+                        generated_using: &id005
+                        - --help
+                        docker_image:
+                      - !Command
+                        command: &id010
+                        - varlociraptor
+                        - call
+                        - variants
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: generic
+                          description: "Call variants for a given scenario specified\
+                            \ with the varlociraptor calling grammar and a\nVCF/BCF\
+                            \ with candidate variants."
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: help
+                          description: Prints this message or the help of the given
+                            subcommand(s)
+                        - !Positional
+                          optional: false
+                          position: 2
+                          name: tumor-normal
+                          description: "Call somatic and germline variants from a\
+                            \ tumor-normal sample pair and a VCF/BCF with candidate\n\
+                            variants.\n"
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - -o
+                          - --output
+                          description: "Output variant calls to given path (in BCF\
+                            \ format). If omitted, prints\ncalls to STDOUT."
+                          args: !SimpleFlagArg
+                            name: output
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --testcase-locus
+                          description: "Create a test case for the given locus. Locus\
+                            \ must be given in the form\nCHROM:POS[:IDX]. IDX is thereby\
+                            \ an optional value to select a particular\nvariant at\
+                            \ the locus, counting from 1. If IDX is not specified,\
+                            \ the first\nvariant will be chosen. Alternatively, for\
+                            \ single variant VCFs, you can\nspecify 'all'."
+                          args: !SimpleFlagArg
+                            name: testcase-locus
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --testcase-prefix
+                          description: Create test case files in the given directory.
+                          args: !SimpleFlagArg
+                            name: testcase-prefix
+                        parent: *id004
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: Prints help information
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -V
+                          - --version
+                          description: Prints version information
+                          args: !EmptyFlagArg {}
+                        help_text: "varlociraptor-call-variants 2.0.0\nCall variants.\n\
+                          \nUSAGE:\n    varlociraptor call variants [OPTIONS] <SUBCOMMAND>\n\
+                          \nFLAGS:\n    -h, --help       Prints help information\n\
+                          \    -V, --version    Prints version information\n\nOPTIONS:\n\
+                          \    -o, --output <output>                      Output variant\
+                          \ calls to given path (in BCF format). If omitted, prints\n\
+                          \                                               calls to\
+                          \ STDOUT.\n        --testcase-locus <testcase-locus>   \
+                          \   Create a test case for the given locus. Locus must be\
+                          \ given in the form\n                                  \
+                          \             CHROM:POS[:IDX]. IDX is thereby an optional\
+                          \ value to select a particular\n                       \
+                          \                        variant at the locus, counting\
+                          \ from 1. If IDX is not specified, the first\n         \
+                          \                                      variant will be chosen.\
+                          \ Alternatively, for single variant VCFs, you can\n    \
+                          \                                           specify 'all'.\n\
+                          \        --testcase-prefix <testcase-prefix>    Create test\
+                          \ case files in the given directory.\n\nSUBCOMMANDS:\n \
+                          \   generic         Call variants for a given scenario specified\
+                          \ with the varlociraptor calling grammar and a\n       \
+                          \             VCF/BCF with candidate variants.\n    help\
+                          \            Prints this message or the help of the given\
+                          \ subcommand(s)\n    tumor-normal    Call somatic and germline\
+                          \ variants from a tumor-normal sample pair and a VCF/BCF\
+                          \ with candidate\n                    variants.\n"
+                        generated_using: *id005
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Prints help information
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -V
+                        - --version
+                        description: Prints version information
+                        args: !EmptyFlagArg {}
+                      help_text: "varlociraptor-call 2.0.0\nCall variants.\n\nUSAGE:\n\
+                        \    varlociraptor call <SUBCOMMAND>\n\nFLAGS:\n    -h, --help\
+                        \       Prints help information\n    -V, --version    Prints\
+                        \ version information\n\nSUBCOMMANDS:\n    help        Prints\
+                        \ this message or the help of the given subcommand(s)\n  \
+                        \  variants    Call variants.\n"
+                      generated_using: *id005
+                      docker_image:
+                    - &id006 !Command
+                      command: &id011
+                      - varlociraptor
+                      - filter-calls
+                      positional: []
+                      named: []
+                      parent: *id003
+                      subcommands:
+                      - !Command
+                        command: &id012
+                        - varlociraptor
+                        - filter-calls
+                        - help
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: For
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: more
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 2
+                          name: information
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 3
+                          name: try
+                          description: ''
+                        named: []
+                        parent: *id006
+                        subcommands: []
+                        usage: []
+                        help_flag:
+                        usage_flag:
+                        version_flag:
+                        help_text: "error: The subcommand '--help' wasn't recognized\n\
+                          \nUSAGE:\n\tvarlociraptor filter-calls help <subcommands>...\n\
+                          \nFor more information try --help\n"
+                        generated_using: *id005
+                        docker_image:
+                      - !Command
+                        command: &id013
+                        - varlociraptor
+                        - filter-calls
+                        - posterior-odds
+                        positional: []
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --events
+                          description: '...    Events to consider.'
+                          args: !SimpleFlagArg
+                            name: events
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --odds
+                          description: "Kass-Raftery score to filter against. [possible\
+                            \ values: none, barely, positive, strong,\nvery-strong]\n"
+                          args: !SimpleFlagArg
+                            name: odds
+                        parent: *id006
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: Prints help information
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -V
+                          - --version
+                          description: Prints version information
+                          args: !EmptyFlagArg {}
+                        help_text: "varlociraptor-filter-calls-posterior-odds 2.0.0\n\
+                          Filter variant calls by posterior odds of given events against\
+                          \ the rest of events. Calls are taken from STDIN, filtered\n\
+                          calls are printed to STDOUT.\n\nUSAGE:\n    varlociraptor\
+                          \ filter-calls posterior-odds --events SOMATIC_TUMOR --odds\
+                          \ strong < calls.bcf\n\nFLAGS:\n    -h, --help       Prints\
+                          \ help information\n    -V, --version    Prints version\
+                          \ information\n\nOPTIONS:\n        --events <events>...\
+                          \    Events to consider.\n        --odds <odds>        \
+                          \   Kass-Raftery score to filter against. [possible values:\
+                          \ none, barely, positive, strong,\n                    \
+                          \            very-strong]\n"
+                        generated_using: *id005
+                        docker_image:
+                      - !Command
+                        command: &id014
+                        - varlociraptor
+                        - filter-calls
+                        - control-fdr
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: calls.bcf
+                          description: ''
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --events
+                          description: '...    Events to consider.'
+                          args: !SimpleFlagArg
+                            name: events
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --fdr
+                          description: FDR to control for.
+                          args: !SimpleFlagArg
+                            name: fdr
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --maxlen
+                          description: Maximum indel length to consider (exclusive).
+                          args: !SimpleFlagArg
+                            name: maxlen
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --minlen
+                          description: Minimum indel length to consider.
+                          args: !SimpleFlagArg
+                            name: minlen
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --var
+                          description: 'Variant type to consider. [possible values:
+                            INS, DEL, SNV, MNV, BND, INV, DUP, REF]'
+                          args: !SimpleFlagArg
+                            name: vartype
+                        parent: *id006
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: Prints help information
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -V
+                          - --version
+                          description: Prints version information
+                          args: !EmptyFlagArg {}
+                        help_text: "varlociraptor-filter-calls-control-fdr 2.0.0\n\
+                          Filter variant calls by controlling FDR. Filtered calls\
+                          \ are printed to STDOUT.\n\nUSAGE:\n    varlociraptor filter-calls\
+                          \ control-fdr calls.bcf --events SOMATIC_TUMOR --fdr 0.05\
+                          \ --var SNV > calls.filtered.bcf\n\nFLAGS:\n    -h, --help\
+                          \       Prints help information\n    -V, --version    Prints\
+                          \ version information\n\nOPTIONS:\n        --events <events>...\
+                          \    Events to consider.\n        --fdr <fdr>          \
+                          \   FDR to control for.\n        --maxlen <maxlen>     \
+                          \  Maximum indel length to consider (exclusive).\n     \
+                          \   --minlen <minlen>       Minimum indel length to consider.\n\
+                          \        --var <vartype>         Variant type to consider.\
+                          \ [possible values: INS, DEL, SNV, MNV, BND, INV, DUP, REF]\n\
+                          \nARGS:\n    <calls>    BCF file with varlociraptor calls.\n"
+                        generated_using: *id005
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Prints help information
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -V
+                        - --version
+                        description: Prints version information
+                        args: !EmptyFlagArg {}
+                      help_text: "varlociraptor-filter-calls 2.0.0\nFilter calls by\
+                        \ either controlling the false discovery rate (FDR) at given\
+                        \ level, or by posterior odds against the given\nevents.\n\
+                        \nUSAGE:\n    varlociraptor filter-calls <SUBCOMMAND>\n\n\
+                        FLAGS:\n    -h, --help       Prints help information\n   \
+                        \ -V, --version    Prints version information\n\nSUBCOMMANDS:\n\
+                        \    control-fdr       Filter variant calls by controlling\
+                        \ FDR. Filtered calls are printed to STDOUT.\n    help   \
+                        \           Prints this message or the help of the given subcommand(s)\n\
+                        \    posterior-odds    Filter variant calls by posterior odds\
+                        \ of given events against the rest of events. Calls are\n\
+                        \                      taken from STDIN, filtered calls are\
+                        \ printed to STDOUT.\n"
+                      generated_using: *id005
+                      docker_image:
+                    - &id007 !Command
+                      command: &id015
+                      - varlociraptor
+                      - preprocess
+                      positional: []
+                      named: []
+                      parent: *id003
+                      subcommands:
+                      - !Command
+                        command: &id016
+                        - varlociraptor
+                        - preprocess
+                        - help
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: For
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: more
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 2
+                          name: information
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 3
+                          name: try
+                          description: ''
+                        named: []
+                        parent: *id007
+                        subcommands: []
+                        usage: []
+                        help_flag:
+                        usage_flag:
+                        version_flag:
+                        help_text: "error: The subcommand '--help' wasn't recognized\n\
+                          \nUSAGE:\n\tvarlociraptor preprocess help <subcommands>...\n\
+                          \nFor more information try --help\n"
+                        generated_using: *id005
+                        docker_image:
+                      - !Command
+                        command: &id017
+                        - varlociraptor
+                        - preprocess
+                        - variants
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: reference.fasta
+                          description: ''
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --omit-insert-size
+                          description: "Do not consider insert size when calculating\
+                            \ support for a variant. Use this flag when\nprocessing\
+                            \ amplicon data, where indels do not impact the observed\
+                            \ insert size"
+                          args: !EmptyFlagArg {}
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --alignment-properties
+                          description: "Alignment properties JSON file for sample.\
+                            \ If not provided, properties will be estimated from the\
+                            \ given BAM\nfile."
+                          args: !SimpleFlagArg
+                            name: alignment-properties
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --bam
+                          description: BAM file with aligned reads from a single sample.
+                          args: !SimpleFlagArg
+                            name: bam
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --candidates
+                          description: VCF/BCF file to process (if omitted, read from
+                            STDIN).
+                          args: !SimpleFlagArg
+                            name: candidates
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --max-depth
+                          description: "Maximum number of observations to use for\
+                            \ calling. If locus is exceeding this number, downsampling\
+                            \ is\nperformed. [default: 200]"
+                          args: !SimpleFlagArg
+                            name: max-depth
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --output
+                          description: BCF file that shall contain the results (if
+                            omitted, write to STDOUT).
+                          args: !SimpleFlagArg
+                            name: output
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --strandedness
+                          description: "Strandedness of sequencing protocol in case\
+                            \ of paired-end (opposite strand as usual or same strand\
+                            \ as with\nmate-pair sequencing.) [default: opposite]\
+                            \  [possible values: opposite, same]"
+                          args: !SimpleFlagArg
+                            name: protocol-strandedness
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --indel-window
+                          description: "Number of bases to consider left and right\
+                            \ of breakpoint when calculating read support. Currently\n\
+                            implemented maximum value is 64. [default: 64]"
+                          args: !SimpleFlagArg
+                            name: realignment-window
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --spurious-del-rate
+                          description: "Rate of spuriosly deleted bases by the sequencer\
+                            \ (Illumina: 5.1e-6, see Schirmer et al. BMC Bioinformatics\n\
+                            2016). [default: 5.1e-6]"
+                          args: !SimpleFlagArg
+                            name: spurious-del-rate
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --spurious-delext-rate
+                          description: "Extension rate of spurious deletions by the\
+                            \ sequencer (Illumina: 0.0, see Schirmer et al. BMC Bioinformatics\n\
+                            2016) [default: 0.0]"
+                          args: !SimpleFlagArg
+                            name: spurious-delext-rate
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --spurious-ins-rate
+                          description: "Rate of spuriously inserted bases by the sequencer\
+                            \ (Illumina: 2.8e-6, see Schirmer et al. BMC Bioinformatics\n\
+                            2016). [default: 2.8e-6]"
+                          args: !SimpleFlagArg
+                            name: spurious-ins-rate
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --spurious-insext-rate
+                          description: "Extension rate of spurious insertions by the\
+                            \ sequencer (Illumina: 0.0, see Schirmer et al. BMC\n\
+                            Bioinformatics 2016) [default: 0.0]"
+                          args: !SimpleFlagArg
+                            name: spurious-insext-rate
+                        parent: *id007
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: Prints help information
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -V
+                          - --version
+                          description: Prints version information
+                          args: !EmptyFlagArg {}
+                        help_text: "varlociraptor-preprocess-variants 2.0.0\nPreprocess\
+                          \ given variants by obtaining internal observations (allele\
+                          \ likelihoods, strand information, ...)for each\nfragment.\
+                          \ The obtained observations are printed to STDOUT in BCF\
+                          \ format. Note that the resulting BCFs will be very large\n\
+                          and are only intended for internal use (e.g. for piping\
+                          \ into 'varlociraptor call variants generic').\n\nUSAGE:\n\
+                          \    varlociraptor preprocess variants reference.fasta --candidates\
+                          \ candidates.bcf --bam sample.bam --output sample.observations.bcf\n\
+                          \nFLAGS:\n    -h, --help                Prints help information\n\
+                          \        --omit-insert-size    Do not consider insert size\
+                          \ when calculating support for a variant. Use this flag\
+                          \ when\n                              processing amplicon\
+                          \ data, where indels do not impact the observed insert size\n\
+                          \    -V, --version             Prints version information\n\
+                          \nOPTIONS:\n        --alignment-properties <alignment-properties>\n\
+                          \            Alignment properties JSON file for sample.\
+                          \ If not provided, properties will be estimated from the\
+                          \ given BAM\n            file.\n        --bam <bam>    \
+                          \                                  BAM file with aligned\
+                          \ reads from a single sample.\n        --candidates <candidates>\
+                          \                        VCF/BCF file to process (if omitted,\
+                          \ read from STDIN).\n        --max-depth <max-depth>\n \
+                          \           Maximum number of observations to use for calling.\
+                          \ If locus is exceeding this number, downsampling is\n \
+                          \           performed. [default: 200]\n        --output\
+                          \ <output>\n            BCF file that shall contain the\
+                          \ results (if omitted, write to STDOUT).\n\n        --strandedness\
+                          \ <protocol-strandedness>\n            Strandedness of sequencing\
+                          \ protocol in case of paired-end (opposite strand as usual\
+                          \ or same strand as with\n            mate-pair sequencing.)\
+                          \ [default: opposite]  [possible values: opposite, same]\n\
+                          \        --indel-window <realignment-window>\n         \
+                          \   Number of bases to consider left and right of breakpoint\
+                          \ when calculating read support. Currently\n           \
+                          \ implemented maximum value is 64. [default: 64]\n     \
+                          \   --spurious-del-rate <spurious-del-rate>\n          \
+                          \  Rate of spuriosly deleted bases by the sequencer (Illumina:\
+                          \ 5.1e-6, see Schirmer et al. BMC Bioinformatics\n     \
+                          \       2016). [default: 5.1e-6]\n        --spurious-delext-rate\
+                          \ <spurious-delext-rate>\n            Extension rate of\
+                          \ spurious deletions by the sequencer (Illumina: 0.0, see\
+                          \ Schirmer et al. BMC Bioinformatics\n            2016)\
+                          \ [default: 0.0]\n        --spurious-ins-rate <spurious-ins-rate>\n\
+                          \            Rate of spuriously inserted bases by the sequencer\
+                          \ (Illumina: 2.8e-6, see Schirmer et al. BMC Bioinformatics\n\
+                          \            2016). [default: 2.8e-6]\n        --spurious-insext-rate\
+                          \ <spurious-insext-rate>\n            Extension rate of\
+                          \ spurious insertions by the sequencer (Illumina: 0.0, see\
+                          \ Schirmer et al. BMC\n            Bioinformatics 2016)\
+                          \ [default: 0.0]\n\nARGS:\n    <reference>    FASTA file\
+                          \ with reference genome. Has to be indexed with samtools\
+                          \ faidx.\n"
+                        generated_using: *id005
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Prints help information
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -V
+                        - --version
+                        description: Prints version information
+                        args: !EmptyFlagArg {}
+                      help_text: "varlociraptor-preprocess 2.0.0\nPreprocess variants\n\
+                        \nUSAGE:\n    varlociraptor preprocess <SUBCOMMAND>\n\nFLAGS:\n\
+                        \    -h, --help       Prints help information\n    -V, --version\
+                        \    Prints version information\n\nSUBCOMMANDS:\n    help\
+                        \        Prints this message or the help of the given subcommand(s)\n\
+                        \    variants    Preprocess given variants by obtaining internal\
+                        \ observations (allele likelihoods, strand\n             \
+                        \   information, ...)for each fragment. The obtained observations\
+                        \ are printed to STDOUT in BCF format.\n                Note\
+                        \ that the resulting BCFs will be very large and are only\
+                        \ intended for internal use (e.g. for\n                piping\
+                        \ into 'varlociraptor call variants generic').\n"
+                      generated_using: *id005
+                      docker_image:
+                    - !Command
+                      command: &id018
+                      - varlociraptor
+                      - decode-phred
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: varlociraptor
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Prints help information
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -V
+                        - --version
+                        description: Prints version information
+                        args: !EmptyFlagArg {}
+                      help_text: "varlociraptor-decode-phred 2.0.0\nDecode PHRED-scaled\
+                        \ values to human readable probabilities.\n\nUSAGE:\n    varlociraptor\
+                        \ decode-phred\n\nFLAGS:\n    -h, --help       Prints help\
+                        \ information\n    -V, --version    Prints version information\n"
+                      generated_using: *id005
+                      docker_image:
+                    - &id008 !Command
+                      command: &id019
+                      - varlociraptor
+                      - estimate
+                      positional: []
+                      named: []
+                      parent: *id003
+                      subcommands:
+                      - !Command
+                        command: &id020
+                        - varlociraptor
+                        - estimate
+                        - help
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: For
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 1
+                          name: more
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 2
+                          name: information
+                          description: ''
+                        - !Positional
+                          optional: false
+                          position: 3
+                          name: try
+                          description: ''
+                        named: []
+                        parent: *id008
+                        subcommands: []
+                        usage: []
+                        help_flag:
+                        usage_flag:
+                        version_flag:
+                        help_text: "error: The subcommand '--help' wasn't recognized\n\
+                          \nUSAGE:\n\tvarlociraptor estimate help <subcommands>...\n\
+                          \nFor more information try --help\n"
+                        generated_using: *id005
+                        docker_image:
+                      - !Command
+                        command: &id021
+                        - varlociraptor
+                        - estimate
+                        - tmb
+                        positional:
+                        - !Positional
+                          optional: false
+                          position: 0
+                          name: 'calls.bcf | vg2svg '
+                          description: ''
+                        named:
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --coding-genome-size
+                          description: 'Size (in bases) of the covered coding genome.
+                            [default: 3e7]'
+                          args: !SimpleFlagArg
+                            name: coding-genome-size
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --plot-mode
+                          description: 'How to plot (as stratified curve or as histogram).
+                            [possible values: hist, curve]'
+                          args: !SimpleFlagArg
+                            name: mode
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --somatic-tumor-events
+                          description: "...\nEvents to consider (e.g. SOMATIC_TUMOR).\
+                            \ [default: SOMATIC_TUMOR]"
+                          args: !SimpleFlagArg
+                            name: somatic-tumor-events
+                        - !Flag
+                          optional: true
+                          synonyms:
+                          - --tumor-sample
+                          description: "Name of the tumor sample in the given VCF/BCF.\
+                            \ [default: tumor]\n"
+                          args: !SimpleFlagArg
+                            name: tumor-sample
+                        parent: *id008
+                        subcommands: []
+                        usage: []
+                        help_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -h
+                          - --help
+                          description: Prints help information
+                          args: !EmptyFlagArg {}
+                        usage_flag:
+                        version_flag: !Flag
+                          optional: true
+                          synonyms:
+                          - -V
+                          - --version
+                          description: Prints version information
+                          args: !EmptyFlagArg {}
+                        help_text: "varlociraptor-estimate-tmb 2.0.0\nEstimate tumor\
+                          \ mutational burden. Takes Varlociraptor calls (must be\
+                          \ annotated with e.g. snpEFF) from STDIN, prints TMB\nestimate\
+                          \ in Vega-lite JSON format to STDOUT. It can be converted\
+                          \ to an image via vega-lite-cli (see conda package).\n\n\
+                          USAGE:\n    varlociraptor estimate tmb --coding-genome-size\
+                          \ 3e7 --somatic-tumor-events SOMATIC_TUMOR --tumor-sample\
+                          \ tumor < calls.bcf | vg2svg > tmb.svg\n\nFLAGS:\n    -h,\
+                          \ --help       Prints help information\n    -V, --version\
+                          \    Prints version information\n\nOPTIONS:\n        --coding-genome-size\
+                          \ <coding-genome-size>           Size (in bases) of the\
+                          \ covered coding genome. [default: 3e7]\n        --plot-mode\
+                          \ <mode>\n            How to plot (as stratified curve or\
+                          \ as histogram). [possible values: hist, curve]\n\n    \
+                          \    --somatic-tumor-events <somatic-tumor-events>...\n\
+                          \            Events to consider (e.g. SOMATIC_TUMOR). [default:\
+                          \ SOMATIC_TUMOR]\n\n        --tumor-sample <tumor-sample>\n\
+                          \            Name of the tumor sample in the given VCF/BCF.\
+                          \ [default: tumor]\n\n"
+                        generated_using: *id005
+                        docker_image:
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Prints help information
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -V
+                        - --version
+                        description: Prints version information
+                        args: !EmptyFlagArg {}
+                      help_text: "varlociraptor-estimate 2.0.0\nPerform estimations.\n\
+                        \nUSAGE:\n    varlociraptor estimate <SUBCOMMAND>\n\nFLAGS:\n\
+                        \    -h, --help       Prints help information\n    -V, --version\
+                        \    Prints version information\n\nSUBCOMMANDS:\n    help\
+                        \    Prints this message or the help of the given subcommand(s)\n\
+                        \    tmb     Estimate tumor mutational burden. Takes Varlociraptor\
+                        \ calls (must be annotated with e.g. snpEFF) from\n      \
+                        \      STDIN, prints TMB estimate in Vega-lite JSON format\
+                        \ to STDOUT. It can be converted to an image via vega-\n \
+                        \           lite-cli (see conda package).\n"
+                      generated_using: *id005
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: Prints help information
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -V
+                      - --version
+                      description: Prints version information
+                      args: !EmptyFlagArg {}
+                    help_text: "varlociraptor 2.0.0\nA caller for SNVs and indels\
+                      \ in tumor-normal pairs.\n\nUSAGE:\n    varlociraptor <SUBCOMMAND>\n\
+                      \nFLAGS:\n    -h, --help       Prints help information\n   \
+                      \ -V, --version    Prints version information\n\nSUBCOMMANDS:\n\
+                      \    call            Call variants.\n    decode-phred    Decode\
+                      \ PHRED-scaled values to human readable probabilities.\n   \
+                      \ estimate        Perform estimations.\n    filter-calls   \
+                      \ Filter calls by either controlling the false discovery rate\
+                      \ (FDR) at given level, or by\n                    posterior\
+                      \ odds against the given events.\n    help            Prints\
+                      \ this message or the help of the given subcommand(s)\n    preprocess\
+                      \      Preprocess variants\n"
+                    generated_using: *id005
+                    docker_image:
                   subcommands:
                   - !Command
-                    command: &id009
-                    - varlociraptor
-                    - call
-                    - help
+                    command: *id009
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: For
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 1
                       name: more
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 2
                       name: information
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 3
                       name: try
-                      optional: false
+                      description: ''
                     named: []
                     parent: *id004
                     subcommands: []
@@ -89,79 +962,76 @@ subcommands:
                     help_text: "error: The subcommand '--help' wasn't recognized\n\
                       \nUSAGE:\n\tvarlociraptor call help <subcommands>...\n\nFor\
                       \ more information try --help\n"
-                    generated_using: &id005
-                    - --help
+                    generated_using: *id005
+                    docker_image:
                   - !Command
-                    command: &id010
-                    - varlociraptor
-                    - call
-                    - variants
+                    command: *id010
                     positional:
                     - !Positional
+                      optional: false
+                      position: 0
+                      name: generic
                       description: "Call variants for a given scenario specified with\
                         \ the varlociraptor calling grammar and a\nVCF/BCF with candidate\
                         \ variants."
-                      position: 0
-                      name: generic
-                      optional: false
                     - !Positional
-                      description: Prints this message or the help of the given subcommand(s)
+                      optional: false
                       position: 1
                       name: help
-                      optional: false
+                      description: Prints this message or the help of the given subcommand(s)
                     - !Positional
-                      description: "Call somatic and germline variants from a tumor-normal\
-                        \ sample pair and a VCF/BCF with candidate\nvariants.\n"
+                      optional: false
                       position: 2
                       name: tumor-normal
-                      optional: false
+                      description: "Call somatic and germline variants from a tumor-normal\
+                        \ sample pair and a VCF/BCF with candidate\nvariants.\n"
                     named:
                     - !Flag
-                      description: "Output variant calls to given path (in BCF format).\
-                        \ If omitted, prints\ncalls to STDOUT."
+                      optional: true
                       synonyms:
                       - -o
                       - --output
+                      description: "Output variant calls to given path (in BCF format).\
+                        \ If omitted, prints\ncalls to STDOUT."
                       args: !SimpleFlagArg
                         name: output
-                      optional: true
                     - !Flag
+                      optional: true
+                      synonyms:
+                      - --testcase-locus
                       description: "Create a test case for the given locus. Locus\
                         \ must be given in the form\nCHROM:POS[:IDX]. IDX is thereby\
                         \ an optional value to select a particular\nvariant at the\
                         \ locus, counting from 1. If IDX is not specified, the first\n\
                         variant will be chosen. Alternatively, for single variant\
                         \ VCFs, you can\nspecify 'all'."
-                      synonyms:
-                      - --testcase-locus
                       args: !SimpleFlagArg
                         name: testcase-locus
-                      optional: true
                     - !Flag
-                      description: Create test case files in the given directory.
+                      optional: true
                       synonyms:
                       - --testcase-prefix
+                      description: Create test case files in the given directory.
                       args: !SimpleFlagArg
                         name: testcase-prefix
-                      optional: true
                     parent: *id004
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: Prints help information
+                      optional: true
                       synonyms:
                       - -h
                       - --help
+                      description: Prints help information
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag: !Flag
-                      description: Prints version information
+                      optional: true
                       synonyms:
                       - -V
                       - --version
+                      description: Prints version information
                       args: !EmptyFlagArg {}
-                      optional: true
                     help_text: "varlociraptor-call-variants 2.0.0\nCall variants.\n\
                       \nUSAGE:\n    varlociraptor call variants [OPTIONS] <SUBCOMMAND>\n\
                       \nFLAGS:\n    -h, --help       Prints help information\n   \
@@ -188,22 +1058,11 @@ subcommands:
                       \ sample pair and a VCF/BCF with candidate\n               \
                       \     variants.\n"
                     generated_using: *id005
+                    docker_image:
                   usage: []
-                  help_flag: !Flag
-                    description: Prints help information
-                    synonyms:
-                    - -h
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
-                  version_flag: !Flag
-                    description: Prints version information
-                    synonyms:
-                    - -V
-                    - --version
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  version_flag:
                   help_text: "varlociraptor-call 2.0.0\nCall variants.\n\nUSAGE:\n\
                     \    varlociraptor call <SUBCOMMAND>\n\nFLAGS:\n    -h, --help\
                     \       Prints help information\n    -V, --version    Prints version\
@@ -211,40 +1070,36 @@ subcommands:
                     \ or the help of the given subcommand(s)\n    variants    Call\
                     \ variants.\n"
                   generated_using: *id005
-                - &id006 !Command
-                  command: &id011
-                  - varlociraptor
-                  - filter-calls
+                  docker_image:
+                - &id024 !Command
+                  command: *id011
                   positional: []
                   named: []
                   parent: *id003
                   subcommands:
                   - !Command
-                    command: &id012
-                    - varlociraptor
-                    - filter-calls
-                    - help
+                    command: *id012
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: For
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 1
                       name: more
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 2
                       name: information
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 3
                       name: try
-                      optional: false
+                      description: ''
                     named: []
                     parent: *id006
                     subcommands: []
@@ -256,46 +1111,44 @@ subcommands:
                       \nUSAGE:\n\tvarlociraptor filter-calls help <subcommands>...\n\
                       \nFor more information try --help\n"
                     generated_using: *id005
+                    docker_image:
                   - !Command
-                    command: &id013
-                    - varlociraptor
-                    - filter-calls
-                    - posterior-odds
+                    command: *id013
                     positional: []
                     named:
                     - !Flag
-                      description: '...    Events to consider.'
+                      optional: true
                       synonyms:
                       - --events
+                      description: '...    Events to consider.'
                       args: !SimpleFlagArg
                         name: events
-                      optional: true
                     - !Flag
-                      description: "Kass-Raftery score to filter against. [possible\
-                        \ values: none, barely, positive, strong,\nvery-strong]\n"
+                      optional: true
                       synonyms:
                       - --odds
+                      description: "Kass-Raftery score to filter against. [possible\
+                        \ values: none, barely, positive, strong,\nvery-strong]\n"
                       args: !SimpleFlagArg
                         name: odds
-                      optional: true
                     parent: *id006
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: Prints help information
+                      optional: true
                       synonyms:
                       - -h
                       - --help
+                      description: Prints help information
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag: !Flag
-                      description: Prints version information
+                      optional: true
                       synonyms:
                       - -V
                       - --version
+                      description: Prints version information
                       args: !EmptyFlagArg {}
-                      optional: true
                     help_text: "varlociraptor-filter-calls-posterior-odds 2.0.0\n\
                       Filter variant calls by posterior odds of given events against\
                       \ the rest of events. Calls are taken from STDIN, filtered\n\
@@ -308,72 +1161,70 @@ subcommands:
                       \ [possible values: none, barely, positive, strong,\n      \
                       \                          very-strong]\n"
                     generated_using: *id005
+                    docker_image:
                   - !Command
-                    command: &id014
-                    - varlociraptor
-                    - filter-calls
-                    - control-fdr
+                    command: *id014
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: calls.bcf
-                      optional: false
+                      description: ''
                     named:
                     - !Flag
-                      description: '...    Events to consider.'
+                      optional: true
                       synonyms:
                       - --events
+                      description: '...    Events to consider.'
                       args: !SimpleFlagArg
                         name: events
-                      optional: true
                     - !Flag
-                      description: FDR to control for.
+                      optional: true
                       synonyms:
                       - --fdr
+                      description: FDR to control for.
                       args: !SimpleFlagArg
                         name: fdr
-                      optional: true
                     - !Flag
-                      description: Maximum indel length to consider (exclusive).
+                      optional: true
                       synonyms:
                       - --maxlen
+                      description: Maximum indel length to consider (exclusive).
                       args: !SimpleFlagArg
                         name: maxlen
-                      optional: true
                     - !Flag
-                      description: Minimum indel length to consider.
+                      optional: true
                       synonyms:
                       - --minlen
+                      description: Minimum indel length to consider.
                       args: !SimpleFlagArg
                         name: minlen
-                      optional: true
                     - !Flag
-                      description: 'Variant type to consider. [possible values: INS,
-                        DEL, SNV, MNV, BND, INV, DUP, REF]'
+                      optional: true
                       synonyms:
                       - --var
+                      description: 'Variant type to consider. [possible values: INS,
+                        DEL, SNV, MNV, BND, INV, DUP, REF]'
                       args: !SimpleFlagArg
                         name: vartype
-                      optional: true
                     parent: *id006
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: Prints help information
+                      optional: true
                       synonyms:
                       - -h
                       - --help
+                      description: Prints help information
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag: !Flag
-                      description: Prints version information
+                      optional: true
                       synonyms:
                       - -V
                       - --version
+                      description: Prints version information
                       args: !EmptyFlagArg {}
-                      optional: true
                     help_text: "varlociraptor-filter-calls-control-fdr 2.0.0\nFilter\
                       \ variant calls by controlling FDR. Filtered calls are printed\
                       \ to STDOUT.\n\nUSAGE:\n    varlociraptor filter-calls control-fdr\
@@ -388,22 +1239,11 @@ subcommands:
                       \ values: INS, DEL, SNV, MNV, BND, INV, DUP, REF]\n\nARGS:\n\
                       \    <calls>    BCF file with varlociraptor calls.\n"
                     generated_using: *id005
+                    docker_image:
                   usage: []
-                  help_flag: !Flag
-                    description: Prints help information
-                    synonyms:
-                    - -h
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
-                  version_flag: !Flag
-                    description: Prints version information
-                    synonyms:
-                    - -V
-                    - --version
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  version_flag:
                   help_text: "varlociraptor-filter-calls 2.0.0\nFilter calls by either\
                     \ controlling the false discovery rate (FDR) at given level, or\
                     \ by posterior odds against the given\nevents.\n\nUSAGE:\n   \
@@ -417,40 +1257,36 @@ subcommands:
                     \ Calls are\n                      taken from STDIN, filtered\
                     \ calls are printed to STDOUT.\n"
                   generated_using: *id005
-                - &id007 !Command
-                  command: &id015
-                  - varlociraptor
-                  - preprocess
+                  docker_image:
+                - &id025 !Command
+                  command: *id015
                   positional: []
                   named: []
                   parent: *id003
                   subcommands:
                   - !Command
-                    command: &id016
-                    - varlociraptor
-                    - preprocess
-                    - help
+                    command: *id016
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: For
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 1
                       name: more
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 2
                       name: information
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 3
                       name: try
-                      optional: false
+                      description: ''
                     named: []
                     parent: *id007
                     subcommands: []
@@ -462,140 +1298,138 @@ subcommands:
                       \nUSAGE:\n\tvarlociraptor preprocess help <subcommands>...\n\
                       \nFor more information try --help\n"
                     generated_using: *id005
+                    docker_image:
                   - !Command
-                    command: &id017
-                    - varlociraptor
-                    - preprocess
-                    - variants
+                    command: *id017
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: reference.fasta
-                      optional: false
+                      description: ''
                     named:
                     - !Flag
+                      optional: true
+                      synonyms:
+                      - --omit-insert-size
                       description: "Do not consider insert size when calculating support\
                         \ for a variant. Use this flag when\nprocessing amplicon data,\
                         \ where indels do not impact the observed insert size"
-                      synonyms:
-                      - --omit-insert-size
                       args: !EmptyFlagArg {}
-                      optional: true
                     - !Flag
+                      optional: true
+                      synonyms:
+                      - --alignment-properties
                       description: "Alignment properties JSON file for sample. If\
                         \ not provided, properties will be estimated from the given\
                         \ BAM\nfile."
-                      synonyms:
-                      - --alignment-properties
                       args: !SimpleFlagArg
                         name: alignment-properties
-                      optional: true
                     - !Flag
-                      description: BAM file with aligned reads from a single sample.
+                      optional: true
                       synonyms:
                       - --bam
+                      description: BAM file with aligned reads from a single sample.
                       args: !SimpleFlagArg
                         name: bam
-                      optional: true
                     - !Flag
-                      description: VCF/BCF file to process (if omitted, read from
-                        STDIN).
+                      optional: true
                       synonyms:
                       - --candidates
+                      description: VCF/BCF file to process (if omitted, read from
+                        STDIN).
                       args: !SimpleFlagArg
                         name: candidates
-                      optional: true
                     - !Flag
+                      optional: true
+                      synonyms:
+                      - --max-depth
                       description: "Maximum number of observations to use for calling.\
                         \ If locus is exceeding this number, downsampling is\nperformed.\
                         \ [default: 200]"
-                      synonyms:
-                      - --max-depth
                       args: !SimpleFlagArg
                         name: max-depth
-                      optional: true
                     - !Flag
-                      description: BCF file that shall contain the results (if omitted,
-                        write to STDOUT).
+                      optional: true
                       synonyms:
                       - --output
+                      description: BCF file that shall contain the results (if omitted,
+                        write to STDOUT).
                       args: !SimpleFlagArg
                         name: output
-                      optional: true
                     - !Flag
+                      optional: true
+                      synonyms:
+                      - --strandedness
                       description: "Strandedness of sequencing protocol in case of\
                         \ paired-end (opposite strand as usual or same strand as with\n\
                         mate-pair sequencing.) [default: opposite]  [possible values:\
                         \ opposite, same]"
-                      synonyms:
-                      - --strandedness
                       args: !SimpleFlagArg
                         name: protocol-strandedness
-                      optional: true
                     - !Flag
+                      optional: true
+                      synonyms:
+                      - --indel-window
                       description: "Number of bases to consider left and right of\
                         \ breakpoint when calculating read support. Currently\nimplemented\
                         \ maximum value is 64. [default: 64]"
-                      synonyms:
-                      - --indel-window
                       args: !SimpleFlagArg
                         name: realignment-window
-                      optional: true
                     - !Flag
+                      optional: true
+                      synonyms:
+                      - --spurious-del-rate
                       description: "Rate of spuriosly deleted bases by the sequencer\
                         \ (Illumina: 5.1e-6, see Schirmer et al. BMC Bioinformatics\n\
                         2016). [default: 5.1e-6]"
-                      synonyms:
-                      - --spurious-del-rate
                       args: !SimpleFlagArg
                         name: spurious-del-rate
-                      optional: true
                     - !Flag
+                      optional: true
+                      synonyms:
+                      - --spurious-delext-rate
                       description: "Extension rate of spurious deletions by the sequencer\
                         \ (Illumina: 0.0, see Schirmer et al. BMC Bioinformatics\n\
                         2016) [default: 0.0]"
-                      synonyms:
-                      - --spurious-delext-rate
                       args: !SimpleFlagArg
                         name: spurious-delext-rate
-                      optional: true
                     - !Flag
+                      optional: true
+                      synonyms:
+                      - --spurious-ins-rate
                       description: "Rate of spuriously inserted bases by the sequencer\
                         \ (Illumina: 2.8e-6, see Schirmer et al. BMC Bioinformatics\n\
                         2016). [default: 2.8e-6]"
-                      synonyms:
-                      - --spurious-ins-rate
                       args: !SimpleFlagArg
                         name: spurious-ins-rate
-                      optional: true
                     - !Flag
+                      optional: true
+                      synonyms:
+                      - --spurious-insext-rate
                       description: "Extension rate of spurious insertions by the sequencer\
                         \ (Illumina: 0.0, see Schirmer et al. BMC\nBioinformatics\
                         \ 2016) [default: 0.0]"
-                      synonyms:
-                      - --spurious-insext-rate
                       args: !SimpleFlagArg
                         name: spurious-insext-rate
-                      optional: true
                     parent: *id007
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: Prints help information
+                      optional: true
                       synonyms:
                       - -h
                       - --help
+                      description: Prints help information
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag: !Flag
-                      description: Prints version information
+                      optional: true
                       synonyms:
                       - -V
                       - --version
+                      description: Prints version information
                       args: !EmptyFlagArg {}
-                      optional: true
                     help_text: "varlociraptor-preprocess-variants 2.0.0\nPreprocess\
                       \ given variants by obtaining internal observations (allele\
                       \ likelihoods, strand information, ...)for each\nfragment. The\
@@ -646,22 +1480,11 @@ subcommands:
                       \ 2016) [default: 0.0]\n\nARGS:\n    <reference>    FASTA file\
                       \ with reference genome. Has to be indexed with samtools faidx.\n"
                     generated_using: *id005
+                    docker_image:
                   usage: []
-                  help_flag: !Flag
-                    description: Prints help information
-                    synonyms:
-                    - -h
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
-                  version_flag: !Flag
-                    description: Prints version information
-                    synonyms:
-                    - -V
-                    - --version
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  version_flag:
                   help_text: "varlociraptor-preprocess 2.0.0\nPreprocess variants\n\
                     \nUSAGE:\n    varlociraptor preprocess <SUBCOMMAND>\n\nFLAGS:\n\
                     \    -h, --help       Prints help information\n    -V, --version\
@@ -675,74 +1498,69 @@ subcommands:
                     \ (e.g. for\n                piping into 'varlociraptor call variants\
                     \ generic').\n"
                   generated_using: *id005
+                  docker_image:
                 - !Command
-                  command: &id018
-                  - varlociraptor
-                  - decode-phred
+                  command: *id018
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: varlociraptor
-                    optional: false
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Prints help information
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: Prints help information
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag: !Flag
-                    description: Prints version information
+                    optional: true
                     synonyms:
                     - -V
                     - --version
+                    description: Prints version information
                     args: !EmptyFlagArg {}
-                    optional: true
                   help_text: "varlociraptor-decode-phred 2.0.0\nDecode PHRED-scaled\
                     \ values to human readable probabilities.\n\nUSAGE:\n    varlociraptor\
                     \ decode-phred\n\nFLAGS:\n    -h, --help       Prints help information\n\
                     \    -V, --version    Prints version information\n"
                   generated_using: *id005
-                - &id008 !Command
-                  command: &id019
-                  - varlociraptor
-                  - estimate
+                  docker_image:
+                - &id026 !Command
+                  command: *id019
                   positional: []
                   named: []
                   parent: *id003
                   subcommands:
                   - !Command
-                    command: &id020
-                    - varlociraptor
-                    - estimate
-                    - help
+                    command: *id020
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: For
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 1
                       name: more
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 2
                       name: information
-                      optional: false
-                    - !Positional
                       description: ''
+                    - !Positional
+                      optional: false
                       position: 3
                       name: try
-                      optional: false
+                      description: ''
                     named: []
                     parent: *id008
                     subcommands: []
@@ -754,68 +1572,66 @@ subcommands:
                       \nUSAGE:\n\tvarlociraptor estimate help <subcommands>...\n\n\
                       For more information try --help\n"
                     generated_using: *id005
+                    docker_image:
                   - !Command
-                    command: &id021
-                    - varlociraptor
-                    - estimate
-                    - tmb
+                    command: *id021
                     positional:
                     - !Positional
-                      description: ''
+                      optional: false
                       position: 0
                       name: 'calls.bcf | vg2svg '
-                      optional: false
+                      description: ''
                     named:
                     - !Flag
-                      description: 'Size (in bases) of the covered coding genome.
-                        [default: 3e7]'
+                      optional: true
                       synonyms:
                       - --coding-genome-size
+                      description: 'Size (in bases) of the covered coding genome.
+                        [default: 3e7]'
                       args: !SimpleFlagArg
                         name: coding-genome-size
-                      optional: true
                     - !Flag
-                      description: 'How to plot (as stratified curve or as histogram).
-                        [possible values: hist, curve]'
+                      optional: true
                       synonyms:
                       - --plot-mode
+                      description: 'How to plot (as stratified curve or as histogram).
+                        [possible values: hist, curve]'
                       args: !SimpleFlagArg
                         name: mode
-                      optional: true
                     - !Flag
-                      description: "...\nEvents to consider (e.g. SOMATIC_TUMOR).\
-                        \ [default: SOMATIC_TUMOR]"
+                      optional: true
                       synonyms:
                       - --somatic-tumor-events
+                      description: "...\nEvents to consider (e.g. SOMATIC_TUMOR).\
+                        \ [default: SOMATIC_TUMOR]"
                       args: !SimpleFlagArg
                         name: somatic-tumor-events
-                      optional: true
                     - !Flag
-                      description: "Name of the tumor sample in the given VCF/BCF.\
-                        \ [default: tumor]\n"
+                      optional: true
                       synonyms:
                       - --tumor-sample
+                      description: "Name of the tumor sample in the given VCF/BCF.\
+                        \ [default: tumor]\n"
                       args: !SimpleFlagArg
                         name: tumor-sample
-                      optional: true
                     parent: *id008
                     subcommands: []
                     usage: []
                     help_flag: !Flag
-                      description: Prints help information
+                      optional: true
                       synonyms:
                       - -h
                       - --help
+                      description: Prints help information
                       args: !EmptyFlagArg {}
-                      optional: true
                     usage_flag:
                     version_flag: !Flag
-                      description: Prints version information
+                      optional: true
                       synonyms:
                       - -V
                       - --version
+                      description: Prints version information
                       args: !EmptyFlagArg {}
-                      optional: true
                     help_text: "varlociraptor-estimate-tmb 2.0.0\nEstimate tumor mutational\
                       \ burden. Takes Varlociraptor calls (must be annotated with\
                       \ e.g. snpEFF) from STDIN, prints TMB\nestimate in Vega-lite\
@@ -835,22 +1651,11 @@ subcommands:
                       \            Name of the tumor sample in the given VCF/BCF.\
                       \ [default: tumor]\n\n"
                     generated_using: *id005
+                    docker_image:
                   usage: []
-                  help_flag: !Flag
-                    description: Prints help information
-                    synonyms:
-                    - -h
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
-                  version_flag: !Flag
-                    description: Prints version information
-                    synonyms:
-                    - -V
-                    - --version
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  version_flag:
                   help_text: "varlociraptor-estimate 2.0.0\nPerform estimations.\n\
                     \nUSAGE:\n    varlociraptor estimate <SUBCOMMAND>\n\nFLAGS:\n\
                     \    -h, --help       Prints help information\n    -V, --version\
@@ -862,22 +1667,11 @@ subcommands:
                     \ be converted to an image via vega-\n            lite-cli (see\
                     \ conda package).\n"
                   generated_using: *id005
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: Prints help information
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: Prints version information
-                  synonyms:
-                  - -V
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "varlociraptor 2.0.0\nA caller for SNVs and indels in tumor-normal\
                   \ pairs.\n\nUSAGE:\n    varlociraptor <SUBCOMMAND>\n\nFLAGS:\n \
                   \   -h, --help       Prints help information\n    -V, --version\
@@ -890,32 +1684,33 @@ subcommands:
                   \            Prints this message or the help of the given subcommand(s)\n\
                   \    preprocess      Preprocess variants\n"
                 generated_using: *id005
+                docker_image:
               subcommands:
               - !Command
                 command: *id009
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: For
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: more
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 2
                   name: information
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 3
                   name: try
-                  optional: false
+                  description: ''
                 named: []
-                parent: *id004
+                parent: *id022
                 subcommands: []
                 usage: []
                 help_flag:
@@ -925,74 +1720,75 @@ subcommands:
                   \tvarlociraptor call help <subcommands>...\n\nFor more information\
                   \ try --help\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id010
                 positional:
                 - !Positional
+                  optional: false
+                  position: 0
+                  name: generic
                   description: "Call variants for a given scenario specified with\
                     \ the varlociraptor calling grammar and a\nVCF/BCF with candidate\
                     \ variants."
-                  position: 0
-                  name: generic
-                  optional: false
                 - !Positional
-                  description: Prints this message or the help of the given subcommand(s)
+                  optional: false
                   position: 1
                   name: help
-                  optional: false
+                  description: Prints this message or the help of the given subcommand(s)
                 - !Positional
-                  description: "Call somatic and germline variants from a tumor-normal\
-                    \ sample pair and a VCF/BCF with candidate\nvariants.\n"
+                  optional: false
                   position: 2
                   name: tumor-normal
-                  optional: false
+                  description: "Call somatic and germline variants from a tumor-normal\
+                    \ sample pair and a VCF/BCF with candidate\nvariants.\n"
                 named:
                 - !Flag
-                  description: "Output variant calls to given path (in BCF format).\
-                    \ If omitted, prints\ncalls to STDOUT."
+                  optional: true
                   synonyms:
                   - -o
                   - --output
+                  description: "Output variant calls to given path (in BCF format).\
+                    \ If omitted, prints\ncalls to STDOUT."
                   args: !SimpleFlagArg
                     name: output
-                  optional: true
                 - !Flag
+                  optional: true
+                  synonyms:
+                  - --testcase-locus
                   description: "Create a test case for the given locus. Locus must\
                     \ be given in the form\nCHROM:POS[:IDX]. IDX is thereby an optional\
                     \ value to select a particular\nvariant at the locus, counting\
                     \ from 1. If IDX is not specified, the first\nvariant will be\
                     \ chosen. Alternatively, for single variant VCFs, you can\nspecify\
                     \ 'all'."
-                  synonyms:
-                  - --testcase-locus
                   args: !SimpleFlagArg
                     name: testcase-locus
-                  optional: true
                 - !Flag
-                  description: Create test case files in the given directory.
+                  optional: true
                   synonyms:
                   - --testcase-prefix
+                  description: Create test case files in the given directory.
                   args: !SimpleFlagArg
                     name: testcase-prefix
-                  optional: true
-                parent: *id004
+                parent: *id022
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: Prints help information
+                  optional: true
                   synonyms:
                   - -h
                   - --help
+                  description: Prints help information
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag: !Flag
-                  description: Prints version information
+                  optional: true
                   synonyms:
                   - -V
                   - --version
+                  description: Prints version information
                   args: !EmptyFlagArg {}
-                  optional: true
                 help_text: "varlociraptor-call-variants 2.0.0\nCall variants.\n\n\
                   USAGE:\n    varlociraptor call variants [OPTIONS] <SUBCOMMAND>\n\
                   \nFLAGS:\n    -h, --help       Prints help information\n    -V,\
@@ -1017,6 +1813,7 @@ subcommands:
                   \    Call somatic and germline variants from a tumor-normal sample\
                   \ pair and a VCF/BCF with candidate\n                    variants.\n"
                 generated_using: *id005
+                docker_image:
               usage: []
               help_flag:
               usage_flag:
@@ -1027,37 +1824,38 @@ subcommands:
                 \nSUBCOMMANDS:\n    help        Prints this message or the help of\
                 \ the given subcommand(s)\n    variants    Call variants.\n"
               generated_using: *id005
-            - &id024 !Command
+              docker_image:
+            - &id029 !Command
               command: *id011
               positional: []
               named: []
-              parent: *id003
+              parent: *id023
               subcommands:
               - !Command
                 command: *id012
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: For
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: more
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 2
                   name: information
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 3
                   name: try
-                  optional: false
+                  description: ''
                 named: []
-                parent: *id006
+                parent: *id024
                 subcommands: []
                 usage: []
                 help_flag:
@@ -1067,43 +1865,44 @@ subcommands:
                   \tvarlociraptor filter-calls help <subcommands>...\n\nFor more information\
                   \ try --help\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id013
                 positional: []
                 named:
                 - !Flag
-                  description: '...    Events to consider.'
+                  optional: true
                   synonyms:
                   - --events
+                  description: '...    Events to consider.'
                   args: !SimpleFlagArg
                     name: events
-                  optional: true
                 - !Flag
-                  description: "Kass-Raftery score to filter against. [possible values:\
-                    \ none, barely, positive, strong,\nvery-strong]\n"
+                  optional: true
                   synonyms:
                   - --odds
+                  description: "Kass-Raftery score to filter against. [possible values:\
+                    \ none, barely, positive, strong,\nvery-strong]\n"
                   args: !SimpleFlagArg
                     name: odds
-                  optional: true
-                parent: *id006
+                parent: *id024
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: Prints help information
+                  optional: true
                   synonyms:
                   - -h
                   - --help
+                  description: Prints help information
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag: !Flag
-                  description: Prints version information
+                  optional: true
                   synonyms:
                   - -V
                   - --version
+                  description: Prints version information
                   args: !EmptyFlagArg {}
-                  optional: true
                 help_text: "varlociraptor-filter-calls-posterior-odds 2.0.0\nFilter\
                   \ variant calls by posterior odds of given events against the rest\
                   \ of events. Calls are taken from STDIN, filtered\ncalls are printed\
@@ -1115,69 +1914,70 @@ subcommands:
                   \ score to filter against. [possible values: none, barely, positive,\
                   \ strong,\n                                very-strong]\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id014
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: calls.bcf
-                  optional: false
+                  description: ''
                 named:
                 - !Flag
-                  description: '...    Events to consider.'
+                  optional: true
                   synonyms:
                   - --events
+                  description: '...    Events to consider.'
                   args: !SimpleFlagArg
                     name: events
-                  optional: true
                 - !Flag
-                  description: FDR to control for.
+                  optional: true
                   synonyms:
                   - --fdr
+                  description: FDR to control for.
                   args: !SimpleFlagArg
                     name: fdr
-                  optional: true
                 - !Flag
-                  description: Maximum indel length to consider (exclusive).
+                  optional: true
                   synonyms:
                   - --maxlen
+                  description: Maximum indel length to consider (exclusive).
                   args: !SimpleFlagArg
                     name: maxlen
-                  optional: true
                 - !Flag
-                  description: Minimum indel length to consider.
+                  optional: true
                   synonyms:
                   - --minlen
+                  description: Minimum indel length to consider.
                   args: !SimpleFlagArg
                     name: minlen
-                  optional: true
                 - !Flag
-                  description: 'Variant type to consider. [possible values: INS, DEL,
-                    SNV, MNV, BND, INV, DUP, REF]'
+                  optional: true
                   synonyms:
                   - --var
+                  description: 'Variant type to consider. [possible values: INS, DEL,
+                    SNV, MNV, BND, INV, DUP, REF]'
                   args: !SimpleFlagArg
                     name: vartype
-                  optional: true
-                parent: *id006
+                parent: *id024
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: Prints help information
+                  optional: true
                   synonyms:
                   - -h
                   - --help
+                  description: Prints help information
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag: !Flag
-                  description: Prints version information
+                  optional: true
                   synonyms:
                   - -V
                   - --version
+                  description: Prints version information
                   args: !EmptyFlagArg {}
-                  optional: true
                 help_text: "varlociraptor-filter-calls-control-fdr 2.0.0\nFilter variant\
                   \ calls by controlling FDR. Filtered calls are printed to STDOUT.\n\
                   \nUSAGE:\n    varlociraptor filter-calls control-fdr calls.bcf --events\
@@ -1192,6 +1992,7 @@ subcommands:
                   \ DUP, REF]\n\nARGS:\n    <calls>    BCF file with varlociraptor\
                   \ calls.\n"
                 generated_using: *id005
+                docker_image:
               usage: []
               help_flag:
               usage_flag:
@@ -1208,37 +2009,38 @@ subcommands:
                 \ events against the rest of events. Calls are\n                 \
                 \     taken from STDIN, filtered calls are printed to STDOUT.\n"
               generated_using: *id005
-            - &id025 !Command
+              docker_image:
+            - &id030 !Command
               command: *id015
               positional: []
               named: []
-              parent: *id003
+              parent: *id023
               subcommands:
               - !Command
                 command: *id016
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: For
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: more
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 2
                   name: information
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 3
                   name: try
-                  optional: false
+                  description: ''
                 named: []
-                parent: *id007
+                parent: *id025
                 subcommands: []
                 usage: []
                 help_flag:
@@ -1248,136 +2050,137 @@ subcommands:
                   \tvarlociraptor preprocess help <subcommands>...\n\nFor more information\
                   \ try --help\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id017
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: reference.fasta
-                  optional: false
+                  description: ''
                 named:
                 - !Flag
+                  optional: true
+                  synonyms:
+                  - --omit-insert-size
                   description: "Do not consider insert size when calculating support\
                     \ for a variant. Use this flag when\nprocessing amplicon data,\
                     \ where indels do not impact the observed insert size"
-                  synonyms:
-                  - --omit-insert-size
                   args: !EmptyFlagArg {}
-                  optional: true
                 - !Flag
+                  optional: true
+                  synonyms:
+                  - --alignment-properties
                   description: "Alignment properties JSON file for sample. If not\
                     \ provided, properties will be estimated from the given BAM\n\
                     file."
-                  synonyms:
-                  - --alignment-properties
                   args: !SimpleFlagArg
                     name: alignment-properties
-                  optional: true
                 - !Flag
-                  description: BAM file with aligned reads from a single sample.
+                  optional: true
                   synonyms:
                   - --bam
+                  description: BAM file with aligned reads from a single sample.
                   args: !SimpleFlagArg
                     name: bam
-                  optional: true
                 - !Flag
-                  description: VCF/BCF file to process (if omitted, read from STDIN).
+                  optional: true
                   synonyms:
                   - --candidates
+                  description: VCF/BCF file to process (if omitted, read from STDIN).
                   args: !SimpleFlagArg
                     name: candidates
-                  optional: true
                 - !Flag
+                  optional: true
+                  synonyms:
+                  - --max-depth
                   description: "Maximum number of observations to use for calling.\
                     \ If locus is exceeding this number, downsampling is\nperformed.\
                     \ [default: 200]"
-                  synonyms:
-                  - --max-depth
                   args: !SimpleFlagArg
                     name: max-depth
-                  optional: true
                 - !Flag
-                  description: BCF file that shall contain the results (if omitted,
-                    write to STDOUT).
+                  optional: true
                   synonyms:
                   - --output
+                  description: BCF file that shall contain the results (if omitted,
+                    write to STDOUT).
                   args: !SimpleFlagArg
                     name: output
-                  optional: true
                 - !Flag
+                  optional: true
+                  synonyms:
+                  - --strandedness
                   description: "Strandedness of sequencing protocol in case of paired-end\
                     \ (opposite strand as usual or same strand as with\nmate-pair\
                     \ sequencing.) [default: opposite]  [possible values: opposite,\
                     \ same]"
-                  synonyms:
-                  - --strandedness
                   args: !SimpleFlagArg
                     name: protocol-strandedness
-                  optional: true
                 - !Flag
+                  optional: true
+                  synonyms:
+                  - --indel-window
                   description: "Number of bases to consider left and right of breakpoint\
                     \ when calculating read support. Currently\nimplemented maximum\
                     \ value is 64. [default: 64]"
-                  synonyms:
-                  - --indel-window
                   args: !SimpleFlagArg
                     name: realignment-window
-                  optional: true
                 - !Flag
+                  optional: true
+                  synonyms:
+                  - --spurious-del-rate
                   description: "Rate of spuriosly deleted bases by the sequencer (Illumina:\
                     \ 5.1e-6, see Schirmer et al. BMC Bioinformatics\n2016). [default:\
                     \ 5.1e-6]"
-                  synonyms:
-                  - --spurious-del-rate
                   args: !SimpleFlagArg
                     name: spurious-del-rate
-                  optional: true
                 - !Flag
+                  optional: true
+                  synonyms:
+                  - --spurious-delext-rate
                   description: "Extension rate of spurious deletions by the sequencer\
                     \ (Illumina: 0.0, see Schirmer et al. BMC Bioinformatics\n2016)\
                     \ [default: 0.0]"
-                  synonyms:
-                  - --spurious-delext-rate
                   args: !SimpleFlagArg
                     name: spurious-delext-rate
-                  optional: true
                 - !Flag
+                  optional: true
+                  synonyms:
+                  - --spurious-ins-rate
                   description: "Rate of spuriously inserted bases by the sequencer\
                     \ (Illumina: 2.8e-6, see Schirmer et al. BMC Bioinformatics\n\
                     2016). [default: 2.8e-6]"
-                  synonyms:
-                  - --spurious-ins-rate
                   args: !SimpleFlagArg
                     name: spurious-ins-rate
-                  optional: true
                 - !Flag
+                  optional: true
+                  synonyms:
+                  - --spurious-insext-rate
                   description: "Extension rate of spurious insertions by the sequencer\
                     \ (Illumina: 0.0, see Schirmer et al. BMC\nBioinformatics 2016)\
                     \ [default: 0.0]"
-                  synonyms:
-                  - --spurious-insext-rate
                   args: !SimpleFlagArg
                     name: spurious-insext-rate
-                  optional: true
-                parent: *id007
+                parent: *id025
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: Prints help information
+                  optional: true
                   synonyms:
                   - -h
                   - --help
+                  description: Prints help information
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag: !Flag
-                  description: Prints version information
+                  optional: true
                   synonyms:
                   - -V
                   - --version
+                  description: Prints version information
                   args: !EmptyFlagArg {}
-                  optional: true
                 help_text: "varlociraptor-preprocess-variants 2.0.0\nPreprocess given\
                   \ variants by obtaining internal observations (allele likelihoods,\
                   \ strand information, ...)for each\nfragment. The obtained observations\
@@ -1426,6 +2229,7 @@ subcommands:
                   \    <reference>    FASTA file with reference genome. Has to be\
                   \ indexed with samtools faidx.\n"
                 generated_using: *id005
+                docker_image:
               usage: []
               help_flag:
               usage_flag:
@@ -1442,69 +2246,71 @@ subcommands:
                 \ are only intended for internal use (e.g. for\n                piping\
                 \ into 'varlociraptor call variants generic').\n"
               generated_using: *id005
+              docker_image:
             - !Command
               command: *id018
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: varlociraptor
-                optional: false
+                description: ''
               named: []
-              parent: *id003
+              parent: *id023
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Prints help information
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: Prints help information
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag: !Flag
-                description: Prints version information
+                optional: true
                 synonyms:
                 - -V
                 - --version
+                description: Prints version information
                 args: !EmptyFlagArg {}
-                optional: true
               help_text: "varlociraptor-decode-phred 2.0.0\nDecode PHRED-scaled values\
                 \ to human readable probabilities.\n\nUSAGE:\n    varlociraptor decode-phred\n\
                 \nFLAGS:\n    -h, --help       Prints help information\n    -V, --version\
                 \    Prints version information\n"
               generated_using: *id005
-            - &id026 !Command
+              docker_image:
+            - &id031 !Command
               command: *id019
               positional: []
               named: []
-              parent: *id003
+              parent: *id023
               subcommands:
               - !Command
                 command: *id020
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: For
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 1
                   name: more
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 2
                   name: information
-                  optional: false
-                - !Positional
                   description: ''
+                - !Positional
+                  optional: false
                   position: 3
                   name: try
-                  optional: false
+                  description: ''
                 named: []
-                parent: *id008
+                parent: *id026
                 subcommands: []
                 usage: []
                 help_flag:
@@ -1514,65 +2320,66 @@ subcommands:
                   \tvarlociraptor estimate help <subcommands>...\n\nFor more information\
                   \ try --help\n"
                 generated_using: *id005
+                docker_image:
               - !Command
                 command: *id021
                 positional:
                 - !Positional
-                  description: ''
+                  optional: false
                   position: 0
                   name: 'calls.bcf | vg2svg '
-                  optional: false
+                  description: ''
                 named:
                 - !Flag
-                  description: 'Size (in bases) of the covered coding genome. [default:
-                    3e7]'
+                  optional: true
                   synonyms:
                   - --coding-genome-size
+                  description: 'Size (in bases) of the covered coding genome. [default:
+                    3e7]'
                   args: !SimpleFlagArg
                     name: coding-genome-size
-                  optional: true
                 - !Flag
-                  description: 'How to plot (as stratified curve or as histogram).
-                    [possible values: hist, curve]'
+                  optional: true
                   synonyms:
                   - --plot-mode
+                  description: 'How to plot (as stratified curve or as histogram).
+                    [possible values: hist, curve]'
                   args: !SimpleFlagArg
                     name: mode
-                  optional: true
                 - !Flag
-                  description: "...\nEvents to consider (e.g. SOMATIC_TUMOR). [default:\
-                    \ SOMATIC_TUMOR]"
+                  optional: true
                   synonyms:
                   - --somatic-tumor-events
+                  description: "...\nEvents to consider (e.g. SOMATIC_TUMOR). [default:\
+                    \ SOMATIC_TUMOR]"
                   args: !SimpleFlagArg
                     name: somatic-tumor-events
-                  optional: true
                 - !Flag
-                  description: "Name of the tumor sample in the given VCF/BCF. [default:\
-                    \ tumor]\n"
+                  optional: true
                   synonyms:
                   - --tumor-sample
+                  description: "Name of the tumor sample in the given VCF/BCF. [default:\
+                    \ tumor]\n"
                   args: !SimpleFlagArg
                     name: tumor-sample
-                  optional: true
-                parent: *id008
+                parent: *id026
                 subcommands: []
                 usage: []
                 help_flag: !Flag
-                  description: Prints help information
+                  optional: true
                   synonyms:
                   - -h
                   - --help
+                  description: Prints help information
                   args: !EmptyFlagArg {}
-                  optional: true
                 usage_flag:
                 version_flag: !Flag
-                  description: Prints version information
+                  optional: true
                   synonyms:
                   - -V
                   - --version
+                  description: Prints version information
                   args: !EmptyFlagArg {}
-                  optional: true
                 help_text: "varlociraptor-estimate-tmb 2.0.0\nEstimate tumor mutational\
                   \ burden. Takes Varlociraptor calls (must be annotated with e.g.\
                   \ snpEFF) from STDIN, prints TMB\nestimate in Vega-lite JSON format\
@@ -1590,6 +2397,7 @@ subcommands:
                   \n        --tumor-sample <tumor-sample>\n            Name of the\
                   \ tumor sample in the given VCF/BCF. [default: tumor]\n\n"
                 generated_using: *id005
+                docker_image:
               usage: []
               help_flag:
               usage_flag:
@@ -1604,6 +2412,7 @@ subcommands:
                 \ Vega-lite JSON format to STDOUT. It can be converted to an image\
                 \ via vega-\n            lite-cli (see conda package).\n"
               generated_using: *id005
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -1619,32 +2428,33 @@ subcommands:
               \ events.\n    help            Prints this message or the help of the\
               \ given subcommand(s)\n    preprocess      Preprocess variants\n"
             generated_using: *id005
+            docker_image:
           subcommands:
           - !Command
             command: *id009
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: For
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: more
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 2
               name: information
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 3
               name: try
-              optional: false
+              description: ''
             named: []
-            parent: *id022
+            parent: *id027
             subcommands: []
             usage: []
             help_flag:
@@ -1654,72 +2464,73 @@ subcommands:
               \tvarlociraptor call help <subcommands>...\n\nFor more information try\
               \ --help\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id010
             positional:
             - !Positional
-              description: "Call variants for a given scenario specified with the\
-                \ varlociraptor calling grammar and a\nVCF/BCF with candidate variants."
+              optional: false
               position: 0
               name: generic
-              optional: false
+              description: "Call variants for a given scenario specified with the\
+                \ varlociraptor calling grammar and a\nVCF/BCF with candidate variants."
             - !Positional
-              description: Prints this message or the help of the given subcommand(s)
+              optional: false
               position: 1
               name: help
-              optional: false
+              description: Prints this message or the help of the given subcommand(s)
             - !Positional
-              description: "Call somatic and germline variants from a tumor-normal\
-                \ sample pair and a VCF/BCF with candidate\nvariants.\n"
+              optional: false
               position: 2
               name: tumor-normal
-              optional: false
+              description: "Call somatic and germline variants from a tumor-normal\
+                \ sample pair and a VCF/BCF with candidate\nvariants.\n"
             named:
             - !Flag
-              description: "Output variant calls to given path (in BCF format). If\
-                \ omitted, prints\ncalls to STDOUT."
+              optional: true
               synonyms:
               - -o
               - --output
+              description: "Output variant calls to given path (in BCF format). If\
+                \ omitted, prints\ncalls to STDOUT."
               args: !SimpleFlagArg
                 name: output
-              optional: true
             - !Flag
+              optional: true
+              synonyms:
+              - --testcase-locus
               description: "Create a test case for the given locus. Locus must be\
                 \ given in the form\nCHROM:POS[:IDX]. IDX is thereby an optional value\
                 \ to select a particular\nvariant at the locus, counting from 1. If\
                 \ IDX is not specified, the first\nvariant will be chosen. Alternatively,\
                 \ for single variant VCFs, you can\nspecify 'all'."
-              synonyms:
-              - --testcase-locus
               args: !SimpleFlagArg
                 name: testcase-locus
-              optional: true
             - !Flag
-              description: Create test case files in the given directory.
+              optional: true
               synonyms:
               - --testcase-prefix
+              description: Create test case files in the given directory.
               args: !SimpleFlagArg
                 name: testcase-prefix
-              optional: true
-            parent: *id022
+            parent: *id027
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: Prints help information
+              optional: true
               synonyms:
               - -h
               - --help
+              description: Prints help information
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag: !Flag
-              description: Prints version information
+              optional: true
               synonyms:
               - -V
               - --version
+              description: Prints version information
               args: !EmptyFlagArg {}
-              optional: true
             help_text: "varlociraptor-call-variants 2.0.0\nCall variants.\n\nUSAGE:\n\
               \    varlociraptor call variants [OPTIONS] <SUBCOMMAND>\n\nFLAGS:\n\
               \    -h, --help       Prints help information\n    -V, --version   \
@@ -1743,6 +2554,7 @@ subcommands:
               \ and germline variants from a tumor-normal sample pair and a VCF/BCF\
               \ with candidate\n                    variants.\n"
             generated_using: *id005
+            docker_image:
           usage: []
           help_flag:
           usage_flag:
@@ -1753,37 +2565,38 @@ subcommands:
             \ help        Prints this message or the help of the given subcommand(s)\n\
             \    variants    Call variants.\n"
           generated_using: *id005
-        - &id029 !Command
+          docker_image:
+        - &id034 !Command
           command: *id011
           positional: []
           named: []
-          parent: *id023
+          parent: *id028
           subcommands:
           - !Command
             command: *id012
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: For
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: more
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 2
               name: information
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 3
               name: try
-              optional: false
+              description: ''
             named: []
-            parent: *id024
+            parent: *id029
             subcommands: []
             usage: []
             help_flag:
@@ -1793,43 +2606,44 @@ subcommands:
               \tvarlociraptor filter-calls help <subcommands>...\n\nFor more information\
               \ try --help\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id013
             positional: []
             named:
             - !Flag
-              description: '...    Events to consider.'
+              optional: true
               synonyms:
               - --events
+              description: '...    Events to consider.'
               args: !SimpleFlagArg
                 name: events
-              optional: true
             - !Flag
-              description: "Kass-Raftery score to filter against. [possible values:\
-                \ none, barely, positive, strong,\nvery-strong]\n"
+              optional: true
               synonyms:
               - --odds
+              description: "Kass-Raftery score to filter against. [possible values:\
+                \ none, barely, positive, strong,\nvery-strong]\n"
               args: !SimpleFlagArg
                 name: odds
-              optional: true
-            parent: *id024
+            parent: *id029
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: Prints help information
+              optional: true
               synonyms:
               - -h
               - --help
+              description: Prints help information
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag: !Flag
-              description: Prints version information
+              optional: true
               synonyms:
               - -V
               - --version
+              description: Prints version information
               args: !EmptyFlagArg {}
-              optional: true
             help_text: "varlociraptor-filter-calls-posterior-odds 2.0.0\nFilter variant\
               \ calls by posterior odds of given events against the rest of events.\
               \ Calls are taken from STDIN, filtered\ncalls are printed to STDOUT.\n\
@@ -1840,69 +2654,70 @@ subcommands:
               \ <odds>           Kass-Raftery score to filter against. [possible values:\
               \ none, barely, positive, strong,\n                                very-strong]\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id014
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: calls.bcf
-              optional: false
+              description: ''
             named:
             - !Flag
-              description: '...    Events to consider.'
+              optional: true
               synonyms:
               - --events
+              description: '...    Events to consider.'
               args: !SimpleFlagArg
                 name: events
-              optional: true
             - !Flag
-              description: FDR to control for.
+              optional: true
               synonyms:
               - --fdr
+              description: FDR to control for.
               args: !SimpleFlagArg
                 name: fdr
-              optional: true
             - !Flag
-              description: Maximum indel length to consider (exclusive).
+              optional: true
               synonyms:
               - --maxlen
+              description: Maximum indel length to consider (exclusive).
               args: !SimpleFlagArg
                 name: maxlen
-              optional: true
             - !Flag
-              description: Minimum indel length to consider.
+              optional: true
               synonyms:
               - --minlen
+              description: Minimum indel length to consider.
               args: !SimpleFlagArg
                 name: minlen
-              optional: true
             - !Flag
-              description: 'Variant type to consider. [possible values: INS, DEL,
-                SNV, MNV, BND, INV, DUP, REF]'
+              optional: true
               synonyms:
               - --var
+              description: 'Variant type to consider. [possible values: INS, DEL,
+                SNV, MNV, BND, INV, DUP, REF]'
               args: !SimpleFlagArg
                 name: vartype
-              optional: true
-            parent: *id024
+            parent: *id029
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: Prints help information
+              optional: true
               synonyms:
               - -h
               - --help
+              description: Prints help information
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag: !Flag
-              description: Prints version information
+              optional: true
               synonyms:
               - -V
               - --version
+              description: Prints version information
               args: !EmptyFlagArg {}
-              optional: true
             help_text: "varlociraptor-filter-calls-control-fdr 2.0.0\nFilter variant\
               \ calls by controlling FDR. Filtered calls are printed to STDOUT.\n\n\
               USAGE:\n    varlociraptor filter-calls control-fdr calls.bcf --events\
@@ -1916,6 +2731,7 @@ subcommands:
               \ [possible values: INS, DEL, SNV, MNV, BND, INV, DUP, REF]\n\nARGS:\n\
               \    <calls>    BCF file with varlociraptor calls.\n"
             generated_using: *id005
+            docker_image:
           usage: []
           help_flag:
           usage_flag:
@@ -1932,37 +2748,38 @@ subcommands:
             \ events. Calls are\n                      taken from STDIN, filtered\
             \ calls are printed to STDOUT.\n"
           generated_using: *id005
-        - &id030 !Command
+          docker_image:
+        - &id035 !Command
           command: *id015
           positional: []
           named: []
-          parent: *id023
+          parent: *id028
           subcommands:
           - !Command
             command: *id016
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: For
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: more
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 2
               name: information
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 3
               name: try
-              optional: false
+              description: ''
             named: []
-            parent: *id025
+            parent: *id030
             subcommands: []
             usage: []
             help_flag:
@@ -1972,134 +2789,135 @@ subcommands:
               \tvarlociraptor preprocess help <subcommands>...\n\nFor more information\
               \ try --help\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id017
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: reference.fasta
-              optional: false
+              description: ''
             named:
             - !Flag
+              optional: true
+              synonyms:
+              - --omit-insert-size
               description: "Do not consider insert size when calculating support for\
                 \ a variant. Use this flag when\nprocessing amplicon data, where indels\
                 \ do not impact the observed insert size"
-              synonyms:
-              - --omit-insert-size
               args: !EmptyFlagArg {}
-              optional: true
             - !Flag
-              description: "Alignment properties JSON file for sample. If not provided,\
-                \ properties will be estimated from the given BAM\nfile."
+              optional: true
               synonyms:
               - --alignment-properties
+              description: "Alignment properties JSON file for sample. If not provided,\
+                \ properties will be estimated from the given BAM\nfile."
               args: !SimpleFlagArg
                 name: alignment-properties
-              optional: true
             - !Flag
-              description: BAM file with aligned reads from a single sample.
+              optional: true
               synonyms:
               - --bam
+              description: BAM file with aligned reads from a single sample.
               args: !SimpleFlagArg
                 name: bam
-              optional: true
             - !Flag
-              description: VCF/BCF file to process (if omitted, read from STDIN).
+              optional: true
               synonyms:
               - --candidates
+              description: VCF/BCF file to process (if omitted, read from STDIN).
               args: !SimpleFlagArg
                 name: candidates
-              optional: true
             - !Flag
+              optional: true
+              synonyms:
+              - --max-depth
               description: "Maximum number of observations to use for calling. If\
                 \ locus is exceeding this number, downsampling is\nperformed. [default:\
                 \ 200]"
-              synonyms:
-              - --max-depth
               args: !SimpleFlagArg
                 name: max-depth
-              optional: true
             - !Flag
-              description: BCF file that shall contain the results (if omitted, write
-                to STDOUT).
+              optional: true
               synonyms:
               - --output
+              description: BCF file that shall contain the results (if omitted, write
+                to STDOUT).
               args: !SimpleFlagArg
                 name: output
-              optional: true
             - !Flag
+              optional: true
+              synonyms:
+              - --strandedness
               description: "Strandedness of sequencing protocol in case of paired-end\
                 \ (opposite strand as usual or same strand as with\nmate-pair sequencing.)\
                 \ [default: opposite]  [possible values: opposite, same]"
-              synonyms:
-              - --strandedness
               args: !SimpleFlagArg
                 name: protocol-strandedness
-              optional: true
             - !Flag
+              optional: true
+              synonyms:
+              - --indel-window
               description: "Number of bases to consider left and right of breakpoint\
                 \ when calculating read support. Currently\nimplemented maximum value\
                 \ is 64. [default: 64]"
-              synonyms:
-              - --indel-window
               args: !SimpleFlagArg
                 name: realignment-window
-              optional: true
             - !Flag
+              optional: true
+              synonyms:
+              - --spurious-del-rate
               description: "Rate of spuriosly deleted bases by the sequencer (Illumina:\
                 \ 5.1e-6, see Schirmer et al. BMC Bioinformatics\n2016). [default:\
                 \ 5.1e-6]"
-              synonyms:
-              - --spurious-del-rate
               args: !SimpleFlagArg
                 name: spurious-del-rate
-              optional: true
             - !Flag
+              optional: true
+              synonyms:
+              - --spurious-delext-rate
               description: "Extension rate of spurious deletions by the sequencer\
                 \ (Illumina: 0.0, see Schirmer et al. BMC Bioinformatics\n2016) [default:\
                 \ 0.0]"
-              synonyms:
-              - --spurious-delext-rate
               args: !SimpleFlagArg
                 name: spurious-delext-rate
-              optional: true
             - !Flag
+              optional: true
+              synonyms:
+              - --spurious-ins-rate
               description: "Rate of spuriously inserted bases by the sequencer (Illumina:\
                 \ 2.8e-6, see Schirmer et al. BMC Bioinformatics\n2016). [default:\
                 \ 2.8e-6]"
-              synonyms:
-              - --spurious-ins-rate
               args: !SimpleFlagArg
                 name: spurious-ins-rate
-              optional: true
             - !Flag
+              optional: true
+              synonyms:
+              - --spurious-insext-rate
               description: "Extension rate of spurious insertions by the sequencer\
                 \ (Illumina: 0.0, see Schirmer et al. BMC\nBioinformatics 2016) [default:\
                 \ 0.0]"
-              synonyms:
-              - --spurious-insext-rate
               args: !SimpleFlagArg
                 name: spurious-insext-rate
-              optional: true
-            parent: *id025
+            parent: *id030
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: Prints help information
+              optional: true
               synonyms:
               - -h
               - --help
+              description: Prints help information
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag: !Flag
-              description: Prints version information
+              optional: true
               synonyms:
               - -V
               - --version
+              description: Prints version information
               args: !EmptyFlagArg {}
-              optional: true
             help_text: "varlociraptor-preprocess-variants 2.0.0\nPreprocess given\
               \ variants by obtaining internal observations (allele likelihoods, strand\
               \ information, ...)for each\nfragment. The obtained observations are\
@@ -2145,6 +2963,7 @@ subcommands:
               \ 0.0]\n\nARGS:\n    <reference>    FASTA file with reference genome.\
               \ Has to be indexed with samtools faidx.\n"
             generated_using: *id005
+            docker_image:
           usage: []
           help_flag:
           usage_flag:
@@ -2160,69 +2979,71 @@ subcommands:
             \ very large and are only intended for internal use (e.g. for\n      \
             \          piping into 'varlociraptor call variants generic').\n"
           generated_using: *id005
+          docker_image:
         - !Command
           command: *id018
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: varlociraptor
-            optional: false
+            description: ''
           named: []
-          parent: *id023
+          parent: *id028
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Prints help information
+            optional: true
             synonyms:
             - -h
             - --help
+            description: Prints help information
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag: !Flag
-            description: Prints version information
+            optional: true
             synonyms:
             - -V
             - --version
+            description: Prints version information
             args: !EmptyFlagArg {}
-            optional: true
           help_text: "varlociraptor-decode-phred 2.0.0\nDecode PHRED-scaled values\
             \ to human readable probabilities.\n\nUSAGE:\n    varlociraptor decode-phred\n\
             \nFLAGS:\n    -h, --help       Prints help information\n    -V, --version\
             \    Prints version information\n"
           generated_using: *id005
-        - &id031 !Command
+          docker_image:
+        - &id036 !Command
           command: *id019
           positional: []
           named: []
-          parent: *id023
+          parent: *id028
           subcommands:
           - !Command
             command: *id020
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: For
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 1
               name: more
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 2
               name: information
-              optional: false
-            - !Positional
               description: ''
+            - !Positional
+              optional: false
               position: 3
               name: try
-              optional: false
+              description: ''
             named: []
-            parent: *id026
+            parent: *id031
             subcommands: []
             usage: []
             help_flag:
@@ -2232,65 +3053,66 @@ subcommands:
               \tvarlociraptor estimate help <subcommands>...\n\nFor more information\
               \ try --help\n"
             generated_using: *id005
+            docker_image:
           - !Command
             command: *id021
             positional:
             - !Positional
-              description: ''
+              optional: false
               position: 0
               name: 'calls.bcf | vg2svg '
-              optional: false
+              description: ''
             named:
             - !Flag
-              description: 'Size (in bases) of the covered coding genome. [default:
-                3e7]'
+              optional: true
               synonyms:
               - --coding-genome-size
+              description: 'Size (in bases) of the covered coding genome. [default:
+                3e7]'
               args: !SimpleFlagArg
                 name: coding-genome-size
-              optional: true
             - !Flag
-              description: 'How to plot (as stratified curve or as histogram). [possible
-                values: hist, curve]'
+              optional: true
               synonyms:
               - --plot-mode
+              description: 'How to plot (as stratified curve or as histogram). [possible
+                values: hist, curve]'
               args: !SimpleFlagArg
                 name: mode
-              optional: true
             - !Flag
-              description: "...\nEvents to consider (e.g. SOMATIC_TUMOR). [default:\
-                \ SOMATIC_TUMOR]"
+              optional: true
               synonyms:
               - --somatic-tumor-events
+              description: "...\nEvents to consider (e.g. SOMATIC_TUMOR). [default:\
+                \ SOMATIC_TUMOR]"
               args: !SimpleFlagArg
                 name: somatic-tumor-events
-              optional: true
             - !Flag
-              description: "Name of the tumor sample in the given VCF/BCF. [default:\
-                \ tumor]\n"
+              optional: true
               synonyms:
               - --tumor-sample
+              description: "Name of the tumor sample in the given VCF/BCF. [default:\
+                \ tumor]\n"
               args: !SimpleFlagArg
                 name: tumor-sample
-              optional: true
-            parent: *id026
+            parent: *id031
             subcommands: []
             usage: []
             help_flag: !Flag
-              description: Prints help information
+              optional: true
               synonyms:
               - -h
               - --help
+              description: Prints help information
               args: !EmptyFlagArg {}
-              optional: true
             usage_flag:
             version_flag: !Flag
-              description: Prints version information
+              optional: true
               synonyms:
               - -V
               - --version
+              description: Prints version information
               args: !EmptyFlagArg {}
-              optional: true
             help_text: "varlociraptor-estimate-tmb 2.0.0\nEstimate tumor mutational\
               \ burden. Takes Varlociraptor calls (must be annotated with e.g. snpEFF)\
               \ from STDIN, prints TMB\nestimate in Vega-lite JSON format to STDOUT.\
@@ -2307,6 +3129,7 @@ subcommands:
               \n        --tumor-sample <tumor-sample>\n            Name of the tumor\
               \ sample in the given VCF/BCF. [default: tumor]\n\n"
             generated_using: *id005
+            docker_image:
           usage: []
           help_flag:
           usage_flag:
@@ -2320,6 +3143,7 @@ subcommands:
             \ prints TMB estimate in Vega-lite JSON format to STDOUT. It can be converted\
             \ to an image via vega-\n            lite-cli (see conda package).\n"
           generated_using: *id005
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -2335,32 +3159,33 @@ subcommands:
           \         Prints this message or the help of the given subcommand(s)\n \
           \   preprocess      Preprocess variants\n"
         generated_using: *id005
+        docker_image:
       subcommands:
       - !Command
         command: *id009
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: For
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: more
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 2
           name: information
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 3
           name: try
-          optional: false
+          description: ''
         named: []
-        parent: *id027
+        parent: *id032
         subcommands: []
         usage: []
         help_flag:
@@ -2369,72 +3194,73 @@ subcommands:
         help_text: "error: The subcommand '--help' wasn't recognized\n\nUSAGE:\n\t\
           varlociraptor call help <subcommands>...\n\nFor more information try --help\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id010
         positional:
         - !Positional
-          description: "Call variants for a given scenario specified with the varlociraptor\
-            \ calling grammar and a\nVCF/BCF with candidate variants."
+          optional: false
           position: 0
           name: generic
-          optional: false
+          description: "Call variants for a given scenario specified with the varlociraptor\
+            \ calling grammar and a\nVCF/BCF with candidate variants."
         - !Positional
-          description: Prints this message or the help of the given subcommand(s)
+          optional: false
           position: 1
           name: help
-          optional: false
+          description: Prints this message or the help of the given subcommand(s)
         - !Positional
-          description: "Call somatic and germline variants from a tumor-normal sample\
-            \ pair and a VCF/BCF with candidate\nvariants.\n"
+          optional: false
           position: 2
           name: tumor-normal
-          optional: false
+          description: "Call somatic and germline variants from a tumor-normal sample\
+            \ pair and a VCF/BCF with candidate\nvariants.\n"
         named:
         - !Flag
-          description: "Output variant calls to given path (in BCF format). If omitted,\
-            \ prints\ncalls to STDOUT."
+          optional: true
           synonyms:
           - -o
           - --output
+          description: "Output variant calls to given path (in BCF format). If omitted,\
+            \ prints\ncalls to STDOUT."
           args: !SimpleFlagArg
             name: output
-          optional: true
         - !Flag
+          optional: true
+          synonyms:
+          - --testcase-locus
           description: "Create a test case for the given locus. Locus must be given\
             \ in the form\nCHROM:POS[:IDX]. IDX is thereby an optional value to select\
             \ a particular\nvariant at the locus, counting from 1. If IDX is not specified,\
             \ the first\nvariant will be chosen. Alternatively, for single variant\
             \ VCFs, you can\nspecify 'all'."
-          synonyms:
-          - --testcase-locus
           args: !SimpleFlagArg
             name: testcase-locus
-          optional: true
         - !Flag
-          description: Create test case files in the given directory.
+          optional: true
           synonyms:
           - --testcase-prefix
+          description: Create test case files in the given directory.
           args: !SimpleFlagArg
             name: testcase-prefix
-          optional: true
-        parent: *id027
+        parent: *id032
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: Prints help information
+          optional: true
           synonyms:
           - -h
           - --help
+          description: Prints help information
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag: !Flag
-          description: Prints version information
+          optional: true
           synonyms:
           - -V
           - --version
+          description: Prints version information
           args: !EmptyFlagArg {}
-          optional: true
         help_text: "varlociraptor-call-variants 2.0.0\nCall variants.\n\nUSAGE:\n\
           \    varlociraptor call variants [OPTIONS] <SUBCOMMAND>\n\nFLAGS:\n    -h,\
           \ --help       Prints help information\n    -V, --version    Prints version\
@@ -2457,6 +3283,7 @@ subcommands:
           \ variants from a tumor-normal sample pair and a VCF/BCF with candidate\n\
           \                    variants.\n"
         generated_using: *id005
+        docker_image:
       usage: []
       help_flag:
       usage_flag:
@@ -2467,37 +3294,38 @@ subcommands:
         \        Prints this message or the help of the given subcommand(s)\n    variants\
         \    Call variants.\n"
       generated_using: *id005
-    - &id034 !Command
+      docker_image:
+    - &id039 !Command
       command: *id011
       positional: []
       named: []
-      parent: *id028
+      parent: *id033
       subcommands:
       - !Command
         command: *id012
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: For
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: more
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 2
           name: information
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 3
           name: try
-          optional: false
+          description: ''
         named: []
-        parent: *id029
+        parent: *id034
         subcommands: []
         usage: []
         help_flag:
@@ -2507,43 +3335,44 @@ subcommands:
           varlociraptor filter-calls help <subcommands>...\n\nFor more information\
           \ try --help\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id013
         positional: []
         named:
         - !Flag
-          description: '...    Events to consider.'
+          optional: true
           synonyms:
           - --events
+          description: '...    Events to consider.'
           args: !SimpleFlagArg
             name: events
-          optional: true
         - !Flag
-          description: "Kass-Raftery score to filter against. [possible values: none,\
-            \ barely, positive, strong,\nvery-strong]\n"
+          optional: true
           synonyms:
           - --odds
+          description: "Kass-Raftery score to filter against. [possible values: none,\
+            \ barely, positive, strong,\nvery-strong]\n"
           args: !SimpleFlagArg
             name: odds
-          optional: true
-        parent: *id029
+        parent: *id034
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: Prints help information
+          optional: true
           synonyms:
           - -h
           - --help
+          description: Prints help information
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag: !Flag
-          description: Prints version information
+          optional: true
           synonyms:
           - -V
           - --version
+          description: Prints version information
           args: !EmptyFlagArg {}
-          optional: true
         help_text: "varlociraptor-filter-calls-posterior-odds 2.0.0\nFilter variant\
           \ calls by posterior odds of given events against the rest of events. Calls\
           \ are taken from STDIN, filtered\ncalls are printed to STDOUT.\n\nUSAGE:\n\
@@ -2554,69 +3383,70 @@ subcommands:
           \ score to filter against. [possible values: none, barely, positive, strong,\n\
           \                                very-strong]\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id014
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: calls.bcf
-          optional: false
+          description: ''
         named:
         - !Flag
-          description: '...    Events to consider.'
+          optional: true
           synonyms:
           - --events
+          description: '...    Events to consider.'
           args: !SimpleFlagArg
             name: events
-          optional: true
         - !Flag
-          description: FDR to control for.
+          optional: true
           synonyms:
           - --fdr
+          description: FDR to control for.
           args: !SimpleFlagArg
             name: fdr
-          optional: true
         - !Flag
-          description: Maximum indel length to consider (exclusive).
+          optional: true
           synonyms:
           - --maxlen
+          description: Maximum indel length to consider (exclusive).
           args: !SimpleFlagArg
             name: maxlen
-          optional: true
         - !Flag
-          description: Minimum indel length to consider.
+          optional: true
           synonyms:
           - --minlen
+          description: Minimum indel length to consider.
           args: !SimpleFlagArg
             name: minlen
-          optional: true
         - !Flag
-          description: 'Variant type to consider. [possible values: INS, DEL, SNV,
-            MNV, BND, INV, DUP, REF]'
+          optional: true
           synonyms:
           - --var
+          description: 'Variant type to consider. [possible values: INS, DEL, SNV,
+            MNV, BND, INV, DUP, REF]'
           args: !SimpleFlagArg
             name: vartype
-          optional: true
-        parent: *id029
+        parent: *id034
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: Prints help information
+          optional: true
           synonyms:
           - -h
           - --help
+          description: Prints help information
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag: !Flag
-          description: Prints version information
+          optional: true
           synonyms:
           - -V
           - --version
+          description: Prints version information
           args: !EmptyFlagArg {}
-          optional: true
         help_text: "varlociraptor-filter-calls-control-fdr 2.0.0\nFilter variant calls\
           \ by controlling FDR. Filtered calls are printed to STDOUT.\n\nUSAGE:\n\
           \    varlociraptor filter-calls control-fdr calls.bcf --events SOMATIC_TUMOR\
@@ -2630,6 +3460,7 @@ subcommands:
           \ BND, INV, DUP, REF]\n\nARGS:\n    <calls>    BCF file with varlociraptor\
           \ calls.\n"
         generated_using: *id005
+        docker_image:
       usage: []
       help_flag:
       usage_flag:
@@ -2645,37 +3476,38 @@ subcommands:
         \ against the rest of events. Calls are\n                      taken from\
         \ STDIN, filtered calls are printed to STDOUT.\n"
       generated_using: *id005
-    - &id035 !Command
+      docker_image:
+    - &id040 !Command
       command: *id015
       positional: []
       named: []
-      parent: *id028
+      parent: *id033
       subcommands:
       - !Command
         command: *id016
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: For
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: more
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 2
           name: information
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 3
           name: try
-          optional: false
+          description: ''
         named: []
-        parent: *id030
+        parent: *id035
         subcommands: []
         usage: []
         help_flag:
@@ -2685,129 +3517,130 @@ subcommands:
           varlociraptor preprocess help <subcommands>...\n\nFor more information try\
           \ --help\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id017
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: reference.fasta
-          optional: false
+          description: ''
         named:
         - !Flag
+          optional: true
+          synonyms:
+          - --omit-insert-size
           description: "Do not consider insert size when calculating support for a\
             \ variant. Use this flag when\nprocessing amplicon data, where indels\
             \ do not impact the observed insert size"
-          synonyms:
-          - --omit-insert-size
           args: !EmptyFlagArg {}
-          optional: true
         - !Flag
-          description: "Alignment properties JSON file for sample. If not provided,\
-            \ properties will be estimated from the given BAM\nfile."
+          optional: true
           synonyms:
           - --alignment-properties
+          description: "Alignment properties JSON file for sample. If not provided,\
+            \ properties will be estimated from the given BAM\nfile."
           args: !SimpleFlagArg
             name: alignment-properties
-          optional: true
         - !Flag
-          description: BAM file with aligned reads from a single sample.
+          optional: true
           synonyms:
           - --bam
+          description: BAM file with aligned reads from a single sample.
           args: !SimpleFlagArg
             name: bam
-          optional: true
         - !Flag
-          description: VCF/BCF file to process (if omitted, read from STDIN).
+          optional: true
           synonyms:
           - --candidates
+          description: VCF/BCF file to process (if omitted, read from STDIN).
           args: !SimpleFlagArg
             name: candidates
-          optional: true
         - !Flag
-          description: "Maximum number of observations to use for calling. If locus\
-            \ is exceeding this number, downsampling is\nperformed. [default: 200]"
+          optional: true
           synonyms:
           - --max-depth
+          description: "Maximum number of observations to use for calling. If locus\
+            \ is exceeding this number, downsampling is\nperformed. [default: 200]"
           args: !SimpleFlagArg
             name: max-depth
-          optional: true
         - !Flag
-          description: BCF file that shall contain the results (if omitted, write
-            to STDOUT).
+          optional: true
           synonyms:
           - --output
+          description: BCF file that shall contain the results (if omitted, write
+            to STDOUT).
           args: !SimpleFlagArg
             name: output
-          optional: true
         - !Flag
+          optional: true
+          synonyms:
+          - --strandedness
           description: "Strandedness of sequencing protocol in case of paired-end\
             \ (opposite strand as usual or same strand as with\nmate-pair sequencing.)\
             \ [default: opposite]  [possible values: opposite, same]"
-          synonyms:
-          - --strandedness
           args: !SimpleFlagArg
             name: protocol-strandedness
-          optional: true
         - !Flag
+          optional: true
+          synonyms:
+          - --indel-window
           description: "Number of bases to consider left and right of breakpoint when\
             \ calculating read support. Currently\nimplemented maximum value is 64.\
             \ [default: 64]"
-          synonyms:
-          - --indel-window
           args: !SimpleFlagArg
             name: realignment-window
-          optional: true
         - !Flag
-          description: "Rate of spuriosly deleted bases by the sequencer (Illumina:\
-            \ 5.1e-6, see Schirmer et al. BMC Bioinformatics\n2016). [default: 5.1e-6]"
+          optional: true
           synonyms:
           - --spurious-del-rate
+          description: "Rate of spuriosly deleted bases by the sequencer (Illumina:\
+            \ 5.1e-6, see Schirmer et al. BMC Bioinformatics\n2016). [default: 5.1e-6]"
           args: !SimpleFlagArg
             name: spurious-del-rate
-          optional: true
         - !Flag
-          description: "Extension rate of spurious deletions by the sequencer (Illumina:\
-            \ 0.0, see Schirmer et al. BMC Bioinformatics\n2016) [default: 0.0]"
+          optional: true
           synonyms:
           - --spurious-delext-rate
+          description: "Extension rate of spurious deletions by the sequencer (Illumina:\
+            \ 0.0, see Schirmer et al. BMC Bioinformatics\n2016) [default: 0.0]"
           args: !SimpleFlagArg
             name: spurious-delext-rate
-          optional: true
         - !Flag
-          description: "Rate of spuriously inserted bases by the sequencer (Illumina:\
-            \ 2.8e-6, see Schirmer et al. BMC Bioinformatics\n2016). [default: 2.8e-6]"
+          optional: true
           synonyms:
           - --spurious-ins-rate
+          description: "Rate of spuriously inserted bases by the sequencer (Illumina:\
+            \ 2.8e-6, see Schirmer et al. BMC Bioinformatics\n2016). [default: 2.8e-6]"
           args: !SimpleFlagArg
             name: spurious-ins-rate
-          optional: true
         - !Flag
-          description: "Extension rate of spurious insertions by the sequencer (Illumina:\
-            \ 0.0, see Schirmer et al. BMC\nBioinformatics 2016) [default: 0.0]"
+          optional: true
           synonyms:
           - --spurious-insext-rate
+          description: "Extension rate of spurious insertions by the sequencer (Illumina:\
+            \ 0.0, see Schirmer et al. BMC\nBioinformatics 2016) [default: 0.0]"
           args: !SimpleFlagArg
             name: spurious-insext-rate
-          optional: true
-        parent: *id030
+        parent: *id035
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: Prints help information
+          optional: true
           synonyms:
           - -h
           - --help
+          description: Prints help information
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag: !Flag
-          description: Prints version information
+          optional: true
           synonyms:
           - -V
           - --version
+          description: Prints version information
           args: !EmptyFlagArg {}
-          optional: true
         help_text: "varlociraptor-preprocess-variants 2.0.0\nPreprocess given variants\
           \ by obtaining internal observations (allele likelihoods, strand information,\
           \ ...)for each\nfragment. The obtained observations are printed to STDOUT\
@@ -2850,6 +3683,7 @@ subcommands:
           \    <reference>    FASTA file with reference genome. Has to be indexed\
           \ with samtools faidx.\n"
         generated_using: *id005
+        docker_image:
       usage: []
       help_flag:
       usage_flag:
@@ -2865,69 +3699,71 @@ subcommands:
         \ intended for internal use (e.g. for\n                piping into 'varlociraptor\
         \ call variants generic').\n"
       generated_using: *id005
+      docker_image:
     - !Command
       command: *id018
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: varlociraptor
-        optional: false
+        description: ''
       named: []
-      parent: *id028
+      parent: *id033
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Prints help information
+        optional: true
         synonyms:
         - -h
         - --help
+        description: Prints help information
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag: !Flag
-        description: Prints version information
+        optional: true
         synonyms:
         - -V
         - --version
+        description: Prints version information
         args: !EmptyFlagArg {}
-        optional: true
       help_text: "varlociraptor-decode-phred 2.0.0\nDecode PHRED-scaled values to\
         \ human readable probabilities.\n\nUSAGE:\n    varlociraptor decode-phred\n\
         \nFLAGS:\n    -h, --help       Prints help information\n    -V, --version\
         \    Prints version information\n"
       generated_using: *id005
-    - &id036 !Command
+      docker_image:
+    - &id041 !Command
       command: *id019
       positional: []
       named: []
-      parent: *id028
+      parent: *id033
       subcommands:
       - !Command
         command: *id020
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: For
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 1
           name: more
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 2
           name: information
-          optional: false
-        - !Positional
           description: ''
+        - !Positional
+          optional: false
           position: 3
           name: try
-          optional: false
+          description: ''
         named: []
-        parent: *id031
+        parent: *id036
         subcommands: []
         usage: []
         help_flag:
@@ -2937,62 +3773,63 @@ subcommands:
           varlociraptor estimate help <subcommands>...\n\nFor more information try\
           \ --help\n"
         generated_using: *id005
+        docker_image:
       - !Command
         command: *id021
         positional:
         - !Positional
-          description: ''
+          optional: false
           position: 0
           name: 'calls.bcf | vg2svg '
-          optional: false
+          description: ''
         named:
         - !Flag
-          description: 'Size (in bases) of the covered coding genome. [default: 3e7]'
+          optional: true
           synonyms:
           - --coding-genome-size
+          description: 'Size (in bases) of the covered coding genome. [default: 3e7]'
           args: !SimpleFlagArg
             name: coding-genome-size
-          optional: true
         - !Flag
-          description: 'How to plot (as stratified curve or as histogram). [possible
-            values: hist, curve]'
+          optional: true
           synonyms:
           - --plot-mode
+          description: 'How to plot (as stratified curve or as histogram). [possible
+            values: hist, curve]'
           args: !SimpleFlagArg
             name: mode
-          optional: true
         - !Flag
-          description: "...\nEvents to consider (e.g. SOMATIC_TUMOR). [default: SOMATIC_TUMOR]"
+          optional: true
           synonyms:
           - --somatic-tumor-events
+          description: "...\nEvents to consider (e.g. SOMATIC_TUMOR). [default: SOMATIC_TUMOR]"
           args: !SimpleFlagArg
             name: somatic-tumor-events
-          optional: true
         - !Flag
-          description: "Name of the tumor sample in the given VCF/BCF. [default: tumor]\n"
+          optional: true
           synonyms:
           - --tumor-sample
+          description: "Name of the tumor sample in the given VCF/BCF. [default: tumor]\n"
           args: !SimpleFlagArg
             name: tumor-sample
-          optional: true
-        parent: *id031
+        parent: *id036
         subcommands: []
         usage: []
         help_flag: !Flag
-          description: Prints help information
+          optional: true
           synonyms:
           - -h
           - --help
+          description: Prints help information
           args: !EmptyFlagArg {}
-          optional: true
         usage_flag:
         version_flag: !Flag
-          description: Prints version information
+          optional: true
           synonyms:
           - -V
           - --version
+          description: Prints version information
           args: !EmptyFlagArg {}
-          optional: true
         help_text: "varlociraptor-estimate-tmb 2.0.0\nEstimate tumor mutational burden.\
           \ Takes Varlociraptor calls (must be annotated with e.g. snpEFF) from STDIN,\
           \ prints TMB\nestimate in Vega-lite JSON format to STDOUT. It can be converted\
@@ -3009,6 +3846,7 @@ subcommands:
           \          Name of the tumor sample in the given VCF/BCF. [default: tumor]\n\
           \n"
         generated_using: *id005
+        docker_image:
       usage: []
       help_flag:
       usage_flag:
@@ -3022,6 +3860,7 @@ subcommands:
         \ in Vega-lite JSON format to STDOUT. It can be converted to an image via\
         \ vega-\n            lite-cli (see conda package).\n"
       generated_using: *id005
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -3037,32 +3876,33 @@ subcommands:
       \ message or the help of the given subcommand(s)\n    preprocess      Preprocess\
       \ variants\n"
     generated_using: *id005
+    docker_image:
   subcommands:
   - !Command
     command: *id009
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: For
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 1
       name: more
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 2
       name: information
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 3
       name: try
-      optional: false
+      description: ''
     named: []
-    parent: *id032
+    parent: *id037
     subcommands: []
     usage: []
     help_flag:
@@ -3071,72 +3911,73 @@ subcommands:
     help_text: "error: The subcommand '--help' wasn't recognized\n\nUSAGE:\n\tvarlociraptor\
       \ call help <subcommands>...\n\nFor more information try --help\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id010
     positional:
     - !Positional
-      description: "Call variants for a given scenario specified with the varlociraptor\
-        \ calling grammar and a\nVCF/BCF with candidate variants."
+      optional: false
       position: 0
       name: generic
-      optional: false
+      description: "Call variants for a given scenario specified with the varlociraptor\
+        \ calling grammar and a\nVCF/BCF with candidate variants."
     - !Positional
-      description: Prints this message or the help of the given subcommand(s)
+      optional: false
       position: 1
       name: help
-      optional: false
+      description: Prints this message or the help of the given subcommand(s)
     - !Positional
-      description: "Call somatic and germline variants from a tumor-normal sample\
-        \ pair and a VCF/BCF with candidate\nvariants.\n"
+      optional: false
       position: 2
       name: tumor-normal
-      optional: false
+      description: "Call somatic and germline variants from a tumor-normal sample\
+        \ pair and a VCF/BCF with candidate\nvariants.\n"
     named:
     - !Flag
-      description: "Output variant calls to given path (in BCF format). If omitted,\
-        \ prints\ncalls to STDOUT."
+      optional: true
       synonyms:
       - -o
       - --output
+      description: "Output variant calls to given path (in BCF format). If omitted,\
+        \ prints\ncalls to STDOUT."
       args: !SimpleFlagArg
         name: output
-      optional: true
     - !Flag
+      optional: true
+      synonyms:
+      - --testcase-locus
       description: "Create a test case for the given locus. Locus must be given in\
         \ the form\nCHROM:POS[:IDX]. IDX is thereby an optional value to select a\
         \ particular\nvariant at the locus, counting from 1. If IDX is not specified,\
         \ the first\nvariant will be chosen. Alternatively, for single variant VCFs,\
         \ you can\nspecify 'all'."
-      synonyms:
-      - --testcase-locus
       args: !SimpleFlagArg
         name: testcase-locus
-      optional: true
     - !Flag
-      description: Create test case files in the given directory.
+      optional: true
       synonyms:
       - --testcase-prefix
+      description: Create test case files in the given directory.
       args: !SimpleFlagArg
         name: testcase-prefix
-      optional: true
-    parent: *id032
+    parent: *id037
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: Prints help information
+      optional: true
       synonyms:
       - -h
       - --help
+      description: Prints help information
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag: !Flag
-      description: Prints version information
+      optional: true
       synonyms:
       - -V
       - --version
+      description: Prints version information
       args: !EmptyFlagArg {}
-      optional: true
     help_text: "varlociraptor-call-variants 2.0.0\nCall variants.\n\nUSAGE:\n    varlociraptor\
       \ call variants [OPTIONS] <SUBCOMMAND>\n\nFLAGS:\n    -h, --help       Prints\
       \ help information\n    -V, --version    Prints version information\n\nOPTIONS:\n\
@@ -3157,6 +3998,7 @@ subcommands:
       \    tumor-normal    Call somatic and germline variants from a tumor-normal\
       \ sample pair and a VCF/BCF with candidate\n                    variants.\n"
     generated_using: *id005
+    docker_image:
   usage: []
   help_flag:
   usage_flag:
@@ -3167,37 +4009,38 @@ subcommands:
     \     Prints this message or the help of the given subcommand(s)\n    variants\
     \    Call variants.\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id011
   positional: []
   named: []
-  parent: *id033
+  parent: *id038
   subcommands:
   - !Command
     command: *id012
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: For
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 1
       name: more
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 2
       name: information
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 3
       name: try
-      optional: false
+      description: ''
     named: []
-    parent: *id034
+    parent: *id039
     subcommands: []
     usage: []
     help_flag:
@@ -3206,43 +4049,44 @@ subcommands:
     help_text: "error: The subcommand '--help' wasn't recognized\n\nUSAGE:\n\tvarlociraptor\
       \ filter-calls help <subcommands>...\n\nFor more information try --help\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id013
     positional: []
     named:
     - !Flag
-      description: '...    Events to consider.'
+      optional: true
       synonyms:
       - --events
+      description: '...    Events to consider.'
       args: !SimpleFlagArg
         name: events
-      optional: true
     - !Flag
-      description: "Kass-Raftery score to filter against. [possible values: none,\
-        \ barely, positive, strong,\nvery-strong]\n"
+      optional: true
       synonyms:
       - --odds
+      description: "Kass-Raftery score to filter against. [possible values: none,\
+        \ barely, positive, strong,\nvery-strong]\n"
       args: !SimpleFlagArg
         name: odds
-      optional: true
-    parent: *id034
+    parent: *id039
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: Prints help information
+      optional: true
       synonyms:
       - -h
       - --help
+      description: Prints help information
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag: !Flag
-      description: Prints version information
+      optional: true
       synonyms:
       - -V
       - --version
+      description: Prints version information
       args: !EmptyFlagArg {}
-      optional: true
     help_text: "varlociraptor-filter-calls-posterior-odds 2.0.0\nFilter variant calls\
       \ by posterior odds of given events against the rest of events. Calls are taken\
       \ from STDIN, filtered\ncalls are printed to STDOUT.\n\nUSAGE:\n    varlociraptor\
@@ -3253,69 +4097,70 @@ subcommands:
       \ against. [possible values: none, barely, positive, strong,\n             \
       \                   very-strong]\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id014
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: calls.bcf
-      optional: false
+      description: ''
     named:
     - !Flag
-      description: '...    Events to consider.'
+      optional: true
       synonyms:
       - --events
+      description: '...    Events to consider.'
       args: !SimpleFlagArg
         name: events
-      optional: true
     - !Flag
-      description: FDR to control for.
+      optional: true
       synonyms:
       - --fdr
+      description: FDR to control for.
       args: !SimpleFlagArg
         name: fdr
-      optional: true
     - !Flag
-      description: Maximum indel length to consider (exclusive).
+      optional: true
       synonyms:
       - --maxlen
+      description: Maximum indel length to consider (exclusive).
       args: !SimpleFlagArg
         name: maxlen
-      optional: true
     - !Flag
-      description: Minimum indel length to consider.
+      optional: true
       synonyms:
       - --minlen
+      description: Minimum indel length to consider.
       args: !SimpleFlagArg
         name: minlen
-      optional: true
     - !Flag
-      description: 'Variant type to consider. [possible values: INS, DEL, SNV, MNV,
-        BND, INV, DUP, REF]'
+      optional: true
       synonyms:
       - --var
+      description: 'Variant type to consider. [possible values: INS, DEL, SNV, MNV,
+        BND, INV, DUP, REF]'
       args: !SimpleFlagArg
         name: vartype
-      optional: true
-    parent: *id034
+    parent: *id039
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: Prints help information
+      optional: true
       synonyms:
       - -h
       - --help
+      description: Prints help information
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag: !Flag
-      description: Prints version information
+      optional: true
       synonyms:
       - -V
       - --version
+      description: Prints version information
       args: !EmptyFlagArg {}
-      optional: true
     help_text: "varlociraptor-filter-calls-control-fdr 2.0.0\nFilter variant calls\
       \ by controlling FDR. Filtered calls are printed to STDOUT.\n\nUSAGE:\n    varlociraptor\
       \ filter-calls control-fdr calls.bcf --events SOMATIC_TUMOR --fdr 0.05 --var\
@@ -3328,6 +4173,7 @@ subcommands:
       \ INS, DEL, SNV, MNV, BND, INV, DUP, REF]\n\nARGS:\n    <calls>    BCF file\
       \ with varlociraptor calls.\n"
     generated_using: *id005
+    docker_image:
   usage: []
   help_flag:
   usage_flag:
@@ -3343,37 +4189,38 @@ subcommands:
     \ events. Calls are\n                      taken from STDIN, filtered calls are\
     \ printed to STDOUT.\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id015
   positional: []
   named: []
-  parent: *id033
+  parent: *id038
   subcommands:
   - !Command
     command: *id016
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: For
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 1
       name: more
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 2
       name: information
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 3
       name: try
-      optional: false
+      description: ''
     named: []
-    parent: *id035
+    parent: *id040
     subcommands: []
     usage: []
     help_flag:
@@ -3382,128 +4229,129 @@ subcommands:
     help_text: "error: The subcommand '--help' wasn't recognized\n\nUSAGE:\n\tvarlociraptor\
       \ preprocess help <subcommands>...\n\nFor more information try --help\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id017
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: reference.fasta
-      optional: false
+      description: ''
     named:
     - !Flag
+      optional: true
+      synonyms:
+      - --omit-insert-size
       description: "Do not consider insert size when calculating support for a variant.\
         \ Use this flag when\nprocessing amplicon data, where indels do not impact\
         \ the observed insert size"
-      synonyms:
-      - --omit-insert-size
       args: !EmptyFlagArg {}
-      optional: true
     - !Flag
-      description: "Alignment properties JSON file for sample. If not provided, properties\
-        \ will be estimated from the given BAM\nfile."
+      optional: true
       synonyms:
       - --alignment-properties
+      description: "Alignment properties JSON file for sample. If not provided, properties\
+        \ will be estimated from the given BAM\nfile."
       args: !SimpleFlagArg
         name: alignment-properties
-      optional: true
     - !Flag
-      description: BAM file with aligned reads from a single sample.
+      optional: true
       synonyms:
       - --bam
+      description: BAM file with aligned reads from a single sample.
       args: !SimpleFlagArg
         name: bam
-      optional: true
     - !Flag
-      description: VCF/BCF file to process (if omitted, read from STDIN).
+      optional: true
       synonyms:
       - --candidates
+      description: VCF/BCF file to process (if omitted, read from STDIN).
       args: !SimpleFlagArg
         name: candidates
-      optional: true
     - !Flag
-      description: "Maximum number of observations to use for calling. If locus is\
-        \ exceeding this number, downsampling is\nperformed. [default: 200]"
+      optional: true
       synonyms:
       - --max-depth
+      description: "Maximum number of observations to use for calling. If locus is\
+        \ exceeding this number, downsampling is\nperformed. [default: 200]"
       args: !SimpleFlagArg
         name: max-depth
-      optional: true
     - !Flag
-      description: BCF file that shall contain the results (if omitted, write to STDOUT).
+      optional: true
       synonyms:
       - --output
+      description: BCF file that shall contain the results (if omitted, write to STDOUT).
       args: !SimpleFlagArg
         name: output
-      optional: true
     - !Flag
+      optional: true
+      synonyms:
+      - --strandedness
       description: "Strandedness of sequencing protocol in case of paired-end (opposite\
         \ strand as usual or same strand as with\nmate-pair sequencing.) [default:\
         \ opposite]  [possible values: opposite, same]"
-      synonyms:
-      - --strandedness
       args: !SimpleFlagArg
         name: protocol-strandedness
-      optional: true
     - !Flag
+      optional: true
+      synonyms:
+      - --indel-window
       description: "Number of bases to consider left and right of breakpoint when\
         \ calculating read support. Currently\nimplemented maximum value is 64. [default:\
         \ 64]"
-      synonyms:
-      - --indel-window
       args: !SimpleFlagArg
         name: realignment-window
-      optional: true
     - !Flag
-      description: "Rate of spuriosly deleted bases by the sequencer (Illumina: 5.1e-6,\
-        \ see Schirmer et al. BMC Bioinformatics\n2016). [default: 5.1e-6]"
+      optional: true
       synonyms:
       - --spurious-del-rate
+      description: "Rate of spuriosly deleted bases by the sequencer (Illumina: 5.1e-6,\
+        \ see Schirmer et al. BMC Bioinformatics\n2016). [default: 5.1e-6]"
       args: !SimpleFlagArg
         name: spurious-del-rate
-      optional: true
     - !Flag
-      description: "Extension rate of spurious deletions by the sequencer (Illumina:\
-        \ 0.0, see Schirmer et al. BMC Bioinformatics\n2016) [default: 0.0]"
+      optional: true
       synonyms:
       - --spurious-delext-rate
+      description: "Extension rate of spurious deletions by the sequencer (Illumina:\
+        \ 0.0, see Schirmer et al. BMC Bioinformatics\n2016) [default: 0.0]"
       args: !SimpleFlagArg
         name: spurious-delext-rate
-      optional: true
     - !Flag
-      description: "Rate of spuriously inserted bases by the sequencer (Illumina:\
-        \ 2.8e-6, see Schirmer et al. BMC Bioinformatics\n2016). [default: 2.8e-6]"
+      optional: true
       synonyms:
       - --spurious-ins-rate
+      description: "Rate of spuriously inserted bases by the sequencer (Illumina:\
+        \ 2.8e-6, see Schirmer et al. BMC Bioinformatics\n2016). [default: 2.8e-6]"
       args: !SimpleFlagArg
         name: spurious-ins-rate
-      optional: true
     - !Flag
-      description: "Extension rate of spurious insertions by the sequencer (Illumina:\
-        \ 0.0, see Schirmer et al. BMC\nBioinformatics 2016) [default: 0.0]"
+      optional: true
       synonyms:
       - --spurious-insext-rate
+      description: "Extension rate of spurious insertions by the sequencer (Illumina:\
+        \ 0.0, see Schirmer et al. BMC\nBioinformatics 2016) [default: 0.0]"
       args: !SimpleFlagArg
         name: spurious-insext-rate
-      optional: true
-    parent: *id035
+    parent: *id040
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: Prints help information
+      optional: true
       synonyms:
       - -h
       - --help
+      description: Prints help information
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag: !Flag
-      description: Prints version information
+      optional: true
       synonyms:
       - -V
       - --version
+      description: Prints version information
       args: !EmptyFlagArg {}
-      optional: true
     help_text: "varlociraptor-preprocess-variants 2.0.0\nPreprocess given variants\
       \ by obtaining internal observations (allele likelihoods, strand information,\
       \ ...)for each\nfragment. The obtained observations are printed to STDOUT in\
@@ -3545,6 +4393,7 @@ subcommands:
       \ <reference>    FASTA file with reference genome. Has to be indexed with samtools\
       \ faidx.\n"
     generated_using: *id005
+    docker_image:
   usage: []
   help_flag:
   usage_flag:
@@ -3559,69 +4408,71 @@ subcommands:
     \ BCFs will be very large and are only intended for internal use (e.g. for\n \
     \               piping into 'varlociraptor call variants generic').\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id018
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: varlociraptor
-    optional: false
+    description: ''
   named: []
-  parent: *id033
+  parent: *id038
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Prints help information
+    optional: true
     synonyms:
     - -h
     - --help
+    description: Prints help information
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag: !Flag
-    description: Prints version information
+    optional: true
     synonyms:
     - -V
     - --version
+    description: Prints version information
     args: !EmptyFlagArg {}
-    optional: true
   help_text: "varlociraptor-decode-phred 2.0.0\nDecode PHRED-scaled values to human\
     \ readable probabilities.\n\nUSAGE:\n    varlociraptor decode-phred\n\nFLAGS:\n\
     \    -h, --help       Prints help information\n    -V, --version    Prints version\
     \ information\n"
   generated_using: *id005
+  docker_image:
 - !Command
   command: *id019
   positional: []
   named: []
-  parent: *id033
+  parent: *id038
   subcommands:
   - !Command
     command: *id020
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: For
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 1
       name: more
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 2
       name: information
-      optional: false
-    - !Positional
       description: ''
+    - !Positional
+      optional: false
       position: 3
       name: try
-      optional: false
+      description: ''
     named: []
-    parent: *id036
+    parent: *id041
     subcommands: []
     usage: []
     help_flag:
@@ -3630,62 +4481,63 @@ subcommands:
     help_text: "error: The subcommand '--help' wasn't recognized\n\nUSAGE:\n\tvarlociraptor\
       \ estimate help <subcommands>...\n\nFor more information try --help\n"
     generated_using: *id005
+    docker_image:
   - !Command
     command: *id021
     positional:
     - !Positional
-      description: ''
+      optional: false
       position: 0
       name: 'calls.bcf | vg2svg '
-      optional: false
+      description: ''
     named:
     - !Flag
-      description: 'Size (in bases) of the covered coding genome. [default: 3e7]'
+      optional: true
       synonyms:
       - --coding-genome-size
+      description: 'Size (in bases) of the covered coding genome. [default: 3e7]'
       args: !SimpleFlagArg
         name: coding-genome-size
-      optional: true
     - !Flag
-      description: 'How to plot (as stratified curve or as histogram). [possible values:
-        hist, curve]'
+      optional: true
       synonyms:
       - --plot-mode
+      description: 'How to plot (as stratified curve or as histogram). [possible values:
+        hist, curve]'
       args: !SimpleFlagArg
         name: mode
-      optional: true
     - !Flag
-      description: "...\nEvents to consider (e.g. SOMATIC_TUMOR). [default: SOMATIC_TUMOR]"
+      optional: true
       synonyms:
       - --somatic-tumor-events
+      description: "...\nEvents to consider (e.g. SOMATIC_TUMOR). [default: SOMATIC_TUMOR]"
       args: !SimpleFlagArg
         name: somatic-tumor-events
-      optional: true
     - !Flag
-      description: "Name of the tumor sample in the given VCF/BCF. [default: tumor]\n"
+      optional: true
       synonyms:
       - --tumor-sample
+      description: "Name of the tumor sample in the given VCF/BCF. [default: tumor]\n"
       args: !SimpleFlagArg
         name: tumor-sample
-      optional: true
-    parent: *id036
+    parent: *id041
     subcommands: []
     usage: []
     help_flag: !Flag
-      description: Prints help information
+      optional: true
       synonyms:
       - -h
       - --help
+      description: Prints help information
       args: !EmptyFlagArg {}
-      optional: true
     usage_flag:
     version_flag: !Flag
-      description: Prints version information
+      optional: true
       synonyms:
       - -V
       - --version
+      description: Prints version information
       args: !EmptyFlagArg {}
-      optional: true
     help_text: "varlociraptor-estimate-tmb 2.0.0\nEstimate tumor mutational burden.\
       \ Takes Varlociraptor calls (must be annotated with e.g. snpEFF) from STDIN,\
       \ prints TMB\nestimate in Vega-lite JSON format to STDOUT. It can be converted\
@@ -3701,6 +4553,7 @@ subcommands:
       \n        --tumor-sample <tumor-sample>\n            Name of the tumor sample\
       \ in the given VCF/BCF. [default: tumor]\n\n"
     generated_using: *id005
+    docker_image:
   usage: []
   help_flag:
   usage_flag:
@@ -3714,6 +4567,7 @@ subcommands:
     \ to STDOUT. It can be converted to an image via vega-\n            lite-cli (see\
     \ conda package).\n"
   generated_using: *id005
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -3728,3 +4582,4 @@ help_text: "varlociraptor 2.0.0\nA caller for SNVs and indels in tumor-normal pa
   \ events.\n    help            Prints this message or the help of the given subcommand(s)\n\
   \    preprocess      Preprocess variants\n"
 generated_using: *id005
+docker_image:

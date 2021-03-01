@@ -16,6 +16,9 @@ task CfsanSnpPipelineCombineMetrics {
       ~{if (spaces) then "--spaces" else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "Force processing even when result files already exist\\nand are newer than inputs (default: False)"
     metrics: "File name of the metrics files which must exist in\\neach of the sample directories. (default: metrics)"

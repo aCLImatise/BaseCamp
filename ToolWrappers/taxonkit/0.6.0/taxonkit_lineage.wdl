@@ -26,6 +26,9 @@ task TaxonkitLineage {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     delimiter: "field delimiter in lineage (default \\\";\\\")"
     show_lineage_tax_ids: "appending lineage consisting of taxids"

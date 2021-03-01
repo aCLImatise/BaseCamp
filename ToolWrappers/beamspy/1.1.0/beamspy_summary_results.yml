@@ -1,0 +1,127 @@
+!Command
+command:
+- beamspy
+- summary-results
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --peaklist
+  description: Tab-delimited peaklist
+  args: !SimpleFlagArg
+    name: PEAKLIST
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --intensity-matrix
+  description: Tab-delimited intensity matrix.
+  args: !SimpleFlagArg
+    name: INTENSITY_MATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output file for the summary
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pdf
+  description: Output pdf file for the summary plots
+  args: !SimpleFlagArg
+    name: PDF
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --db
+  description: "Sqlite database that contains the results from the\nprevious steps."
+  args: !SimpleFlagArg
+    name: DB
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sep
+  description: "Values on each line of the output are separated by\nthis character."
+  args: !ChoiceFlagArg
+    choices: !!set
+      comma:
+      tab:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --single-row
+  description: "Concatenate the annotations for each spectral feature\nand represent\
+    \ in a single row."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --single-column
+  description: "Concatenate the annotations for each spectral feature\nand keep seperate\
+    \ columns for molecular formula,\nadduct, name, etc."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --ndigits-mz
+  description: Digits after the decimal point for m/z values.
+  args: !SimpleFlagArg
+    name: NDIGITS_MZ
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --convert-rt
+  description: "Covert the retention time to seconds or minutes. An\nadditional column\
+    \ will be added.\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      min:
+      None:
+      sec:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Executing BEAMSpy version 1.1.0.\nusage: beamspy summary-results [-h]\
+  \ -l PEAKLIST [-i INTENSITY_MATRIX] -o\n                               OUTPUT [-p\
+  \ PDF] -d DB -s {tab,comma} [-r] [-c]\n                               [-n NDIGITS_MZ]\
+  \ [-t {sec,min,None}]\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -l PEAKLIST, --peaklist PEAKLIST\n                  \
+  \      Tab-delimited peaklist\n  -i INTENSITY_MATRIX, --intensity-matrix INTENSITY_MATRIX\n\
+  \                        Tab-delimited intensity matrix.\n  -o OUTPUT, --output\
+  \ OUTPUT\n                        Output file for the summary\n  -p PDF, --pdf PDF\
+  \     Output pdf file for the summary plots\n  -d DB, --db DB        Sqlite database\
+  \ that contains the results from the\n                        previous steps.\n\
+  \  -s {tab,comma}, --sep {tab,comma}\n                        Values on each line\
+  \ of the output are separated by\n                        this character.\n  -r,\
+  \ --single-row      Concatenate the annotations for each spectral feature\n    \
+  \                    and represent in a single row.\n  -c, --single-column   Concatenate\
+  \ the annotations for each spectral feature\n                        and keep seperate\
+  \ columns for molecular formula,\n                        adduct, name, etc.\n \
+  \ -n NDIGITS_MZ, --ndigits-mz NDIGITS_MZ\n                        Digits after the\
+  \ decimal point for m/z values.\n  -t {sec,min,None}, --convert-rt {sec,min,None}\n\
+  \                        Covert the retention time to seconds or minutes. An\n \
+  \                       additional column will be added.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/beamspy:1.1.0--py_0

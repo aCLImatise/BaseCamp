@@ -20,6 +20,9 @@ task FunannotateSetup {
       ~{if (force) then "--force" else ""} \
       ~{if (wget) then "--wget" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     install: "Download format databases. Default: all\\n[merops,uniprot,dbCAN,pfam,repeats,go,\\nmibig,interpro,busco_outgroups,gene2product]"
     busco_db: "Busco Databases to install. Default: dikarya [all,fungi,aves,etc]"

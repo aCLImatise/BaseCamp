@@ -32,6 +32,9 @@ task Ssueslweight {
       ~{if (rna) then "--rna" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gersteinsonnhammerchothia_tree_weights: ": Gerstein/Sonnhammer/Chothia tree weights  [default]"
     henikoff_positionbased_weights: ": Henikoff position-based weights"

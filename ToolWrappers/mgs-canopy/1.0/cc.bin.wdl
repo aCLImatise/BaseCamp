@@ -52,6 +52,9 @@ task Ccbin {
       ~{if (show_progress_bar) then "-b" else ""} \
       ~{if defined(canopy_size_stats_file) then ("--canopy_size_stats_file " +  '"' + canopy_size_stats_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_path_input: "[ --input_file_path ] arg          Path to the input file"
     argpath_file_clusters: "[ --output_clusters_file_path ] arg\\nPath to file to which clusters will be\\nwritten"

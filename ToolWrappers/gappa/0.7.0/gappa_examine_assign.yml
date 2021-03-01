@@ -1,0 +1,249 @@
+!Command
+command:
+- gappa
+- examine
+- assign
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --jplace-path
+  description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+    \ to process. For directories, only files with the extension `.jplace[.gz]` are\
+    \ processed."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --taxon-file
+  description: ":FILE REQUIRED\nFile containing a tab-separated list of reference\
+    \ taxon to taxonomic string assignments."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --root-outgroup
+  description: :FILE   Root the tree by the outgroup taxa defined in the specified
+    file.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --taxonomy
+  description: ':FILE        EXPERIMENTAL: File containing a tab-separated list defining
+    the taxonomy. If mapping is incomplete (for example if the output taxonomy shall
+    be NCBI, but SILVA was used as the basis in the --taxon-file) a best-effort mapping
+    is attempted.'
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --ranks-string
+  description: "=superkingdom|phylum|class|order|family|genus|species\nString specifying\
+    \ the rank names, in order, to which the taxonomy adheres. Required when using\
+    \ the CAMI output format. Assignments not adhereing to this constrained will be\
+    \ collapsed to the last valid mapping\nEXAMPLE: superkingdom|phylum|class|order|family|genus|species"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --sub-taxopath
+  description: "Taxopath (example: Eukaryota;Animalia;Chordata) by which the high\
+    \ level summary should be filtered. Doesn't affect intermediate results, and an\
+    \ unfiltered verison will be printed as well."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --max-level
+  description: =0          Maximal level of the taxonomy to be printed. Default is
+    0, that is, the whole taxonomy is printed. If set to a value about 0, only this
+    many levels are printed. That is, taxonomic levels below the specified one are
+    omitted.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --distribution-ratio
+  description: ":FLOAT in [0 - 1]=-1\nRatio by which LWR is split between annotations\
+    \ if an edge has two possible annotations. Specifies the amount going to the proximal\
+    \ annotation. If not set program will determine the ratio automatically from the\
+    \ 'distal length' specified per placement."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --consensus-thresh
+  description: ":FLOAT in [0 - 1]=1\nFor assignment of taxonomic labels to the reference\
+    \ tree, require this consensus threshold. Example: if set to 0.6, and 60% of an\
+    \ inner node's descendants share a taxonomic path, set that path at the inner\
+    \ node."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --resolve-missing-paths
+  description: "Should the taxon file be incomplete and leave some taxa without taxopaths,\
+    \ fill in the missing node labels using the closest (in the tree) label.\nIf not\
+    \ specified, those parts of the tree remain unlabelled, and their placements unassigned."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --out-dir
+  description: =.            Directory to write files to
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-prefix
+  description: File prefix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-suffix
+  description: File suffix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --cami
+  description: ': --taxonomy    EXPERIMENTAL: Print result in the CAMI Taxonomic Profiling
+    Output Format.'
+  args: !SimpleFlagArg
+    name: Needs
+- !Flag
+  optional: true
+  synonyms:
+  - --sample-id
+  description: "Needs: --cami\nSample-ID string to be used in the CAMI output file"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --krona
+  description: Print result in the Krona text format.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sativa
+  description: Print result as SATIVA would.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --per-query-results
+  description: Print intermediate / per-query results (per_query.tsv).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --best-hit
+  description: In the per-query results, only print the taxonomic path with the highest
+    LWR.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-file-overwriting
+  description: Allow to overwrite existing output files instead of aborting the command.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Produce more verbose output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: =8            Number of threads to use for calculations.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: Write all output to a log file, in addition to standard output to the
+    terminal.
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Taxonomically assign placed query sequences and output tabulated summarization.\n\
+  Usage: gappa examine assign [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[]\
+  \ ... REQUIRED\n                              List of jplace files or directories\
+  \ to process. For directories, only files with the extension `.jplace[.gz]` are\
+  \ processed.\n  --taxon-file TEXT:FILE REQUIRED\n                              File\
+  \ containing a tab-separated list of reference taxon to taxonomic string assignments.\n\
+  \  --root-outgroup TEXT:FILE   Root the tree by the outgroup taxa defined in the\
+  \ specified file.\n  --taxonomy TEXT:FILE        EXPERIMENTAL: File containing a\
+  \ tab-separated list defining the taxonomy. If mapping is incomplete (for example\
+  \ if the output taxonomy shall be NCBI, but SILVA was used as the basis in the --taxon-file)\
+  \ a best-effort mapping is attempted.\n  --ranks-string TEXT=superkingdom|phylum|class|order|family|genus|species\n\
+  \                              String specifying the rank names, in order, to which\
+  \ the taxonomy adheres. Required when using the CAMI output format. Assignments\
+  \ not adhereing to this constrained will be collapsed to the last valid mapping\n\
+  \                              EXAMPLE: superkingdom|phylum|class|order|family|genus|species\n\
+  \n\nSettings:\n  --sub-taxopath TEXT         Taxopath (example: Eukaryota;Animalia;Chordata)\
+  \ by which the high level summary should be filtered. Doesn't affect intermediate\
+  \ results, and an unfiltered verison will be printed as well.\n  --max-level UINT=0\
+  \          Maximal level of the taxonomy to be printed. Default is 0, that is, the\
+  \ whole taxonomy is printed. If set to a value about 0, only this many levels are\
+  \ printed. That is, taxonomic levels below the specified one are omitted.\n  --distribution-ratio\
+  \ FLOAT:FLOAT in [0 - 1]=-1\n                              Ratio by which LWR is\
+  \ split between annotations if an edge has two possible annotations. Specifies the\
+  \ amount going to the proximal annotation. If not set program will determine the\
+  \ ratio automatically from the 'distal length' specified per placement.\n  --consensus-thresh\
+  \ FLOAT:FLOAT in [0 - 1]=1\n                              For assignment of taxonomic\
+  \ labels to the reference tree, require this consensus threshold. Example: if set\
+  \ to 0.6, and 60% of an inner node's descendants share a taxonomic path, set that\
+  \ path at the inner node.\n  --resolve-missing-paths     Should the taxon file be\
+  \ incomplete and leave some taxa without taxopaths, fill in the missing node labels\
+  \ using the closest (in the tree) label.\n                              If not specified,\
+  \ those parts of the tree remain unlabelled, and their placements unassigned.\n\n\
+  \nOutput:\n  --out-dir TEXT=.            Directory to write files to\n  --file-prefix\
+  \ TEXT          File prefix for output files\n  --file-suffix TEXT          File\
+  \ suffix for output files\n  --cami Needs: --taxonomy    EXPERIMENTAL: Print result\
+  \ in the CAMI Taxonomic Profiling Output Format.\n  --sample-id TEXT Needs: --cami\n\
+  \                              Sample-ID string to be used in the CAMI output file\n\
+  \  --krona                     Print result in the Krona text format.\n  --sativa\
+  \                    Print result as SATIVA would.\n  --per-query-results      \
+  \   Print intermediate / per-query results (per_query.tsv).\n  --best-hit      \
+  \            In the per-query results, only print the taxonomic path with the highest\
+  \ LWR.\n\n\nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite existing\
+  \ output files instead of aborting the command.\n  --verbose                   Produce\
+  \ more verbose output.\n  --threads UINT=8            Number of threads to use for\
+  \ calculations.\n  --log-file TEXT             Write all output to a log file, in\
+  \ addition to standard output to the terminal.\n  --help                      Print\
+  \ this help message and exit.\n\ngappa - a toolkit for analyzing and visualizing\
+  \ phylogenetic (placement) data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gappa:0.7.0--he513fc3_0

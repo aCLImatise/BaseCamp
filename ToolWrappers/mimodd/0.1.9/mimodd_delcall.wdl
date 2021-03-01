@@ -22,6 +22,9 @@ task MimoddDelcall {
       ~{if (group_by_id) then "--group-by-id" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index_files: "FILE [INDEX FILE ...]\\npre-computed index files for all input files"
     ofile: "redirect the output to the specified file (default:\\nstdout)"

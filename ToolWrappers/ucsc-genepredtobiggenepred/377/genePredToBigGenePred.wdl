@@ -20,6 +20,9 @@ task GenePredToBigGenePred {
       ~{if defined(colors) then ("-colors " +  '"' + colors + '"') else ""} \
       ~{if defined(cds) then ("-cds " +  '"' + cds + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     known: "input file is a genePred in knownGene format"
     score: "scores is two column file with id's mapping to scores"

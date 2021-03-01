@@ -4,81 +4,81 @@ command:
 - hclust
 positional:
 - !Positional
-  description: "file with pairwise similarity or dissimilarity values\nbetween genomes"
+  optional: false
   position: 0
   name: pairwise_value_file
-  optional: false
+  description: "file with pairwise similarity or dissimilarity values\nbetween genomes"
 - !Positional
-  description: name for output hierarchical cluster tree
+  optional: false
   position: 1
   name: output_tree
-  optional: false
+  description: name for output hierarchical cluster tree
 named:
 - !Flag
-  description: 'clustering method to use. (default: average)'
+  optional: true
   synonyms:
   - --method
+  description: 'clustering method to use. (default: average)'
   args: !ChoiceFlagArg
     choices: !!set
-      centroid:
+      single:
+      average:
       weighted:
       median:
       complete:
-      single:
+      centroid:
       ward:
-      average:
-  optional: true
 - !Flag
-  description: indicates file contain similarity values
+  optional: true
   synonyms:
   - --similarity
+  description: indicates file contain similarity values
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'maximum similarity value (default: 100)'
+  optional: true
   synonyms:
   - --max_sim_value
+  description: 'maximum similarity value (default: 100)'
   args: !SimpleFlagArg
     name: MAX_SIM_VALUE
-  optional: true
 - !Flag
-  description: 'index of first column with genome names (default: 0)'
+  optional: true
   synonyms:
   - --name_col1
+  description: 'index of first column with genome names (default: 0)'
   args: !SimpleFlagArg
     name: NAME_COL1
-  optional: true
 - !Flag
-  description: 'index of second column with genome names (default: 1)'
+  optional: true
   synonyms:
   - --name_col2
+  description: 'index of second column with genome names (default: 1)'
   args: !SimpleFlagArg
     name: NAME_COL2
-  optional: true
 - !Flag
-  description: "index of column with similarity or dissimilarity\nvalues (default:\
-    \ 2)"
+  optional: true
   synonyms:
   - --value_col
+  description: "index of column with similarity or dissimilarity\nvalues (default:\
+    \ 2)"
   args: !SimpleFlagArg
     name: VALUE_COL
-  optional: true
 - !Flag
-  description: suppress output
+  optional: true
   synonyms:
   - --silent
+  description: suppress output
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: comparem hclust [-h]\n                       [--method {single,complete,average,weighted,centroid,median,ward}]\n\
@@ -100,3 +100,4 @@ help_text: "usage: comparem hclust [-h]\n                       [--method {singl
   \ 2)\n  --silent              suppress output\n"
 generated_using:
 - --help
+docker_image:

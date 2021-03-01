@@ -22,6 +22,9 @@ task RiboStack {
       ~{if (infer) then "--infer" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_directory_default: "output directory; default: /"
     bam: "BAM file; tested with BWA output; default: None"

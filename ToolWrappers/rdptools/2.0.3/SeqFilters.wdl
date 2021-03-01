@@ -40,6 +40,9 @@ task SeqFilters {
       ~{if defined(tag_file) then ("--tag-file " +  '"' + tag_file + '"') else ""} \
       ~{if defined(max_length) then ("--max-length " +  '"' + max_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     forward_primers: "Comma seperated list of forward primers"
     max_forward: "Maximum forward edit distance (default=2)"

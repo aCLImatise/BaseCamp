@@ -16,6 +16,9 @@ task Tr {
       ~{if (squeeze_repeats) then "--squeeze-repeats" else ""} \
       ~{if (truncate_set_one) then "--truncate-set1" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     complement: "use the complement of SET1"
     delete: "delete characters in SET1, do not translate"

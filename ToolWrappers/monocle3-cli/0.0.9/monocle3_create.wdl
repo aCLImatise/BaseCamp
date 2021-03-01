@@ -20,6 +20,9 @@ task Monocle3Create {
       ~{if defined(gene_annotation) then ("--gene-annotation " +  '"' + gene_annotation + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_object_format: "Format of output object. [Default: cds3]"
     introspective: "Print introspective information of the output object."

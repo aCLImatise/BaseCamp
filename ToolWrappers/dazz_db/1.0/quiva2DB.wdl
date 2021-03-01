@@ -8,6 +8,9 @@ task Quiva2DB {
     quiva2DB \
       ~{if (vl) then "-vl" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vl: ""
   }

@@ -10,6 +10,9 @@ task TrimByOvl {
       ~{file_do_to_vl} \
       ~{n}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_do_to_vl: ""
     n: ""

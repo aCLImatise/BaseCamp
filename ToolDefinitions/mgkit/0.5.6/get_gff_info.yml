@@ -1,0 +1,391 @@
+&id001 !Command
+command:
+- get-gff-info
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - get-gff-info
+  - sequence
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: GFF_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: FASTA_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -r
+    - --reverse
+    description: Reverse complement sequences on the - strand
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --no-wrap
+    description: Write the sequences on one line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --split
+    description: "Split the sequence header of the reference at the\nfirst space,\
+      \ to emulate BLAST behaviour"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --reference
+    description: "Fasta file containing the reference sequences of\nthe GFF file"
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --progress
+    description: Shows Progress Bar
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: get-gff-info sequence [OPTIONS] [GFF_FILE] [FASTA_FILE]\n\n \
+    \ Extract the nucleotidic sequences of annotations from [gff-file] to\n  [fasta-file]\n\
+    \nOptions:\n  -v, --verbose\n  -r, --reverse             Reverse complement sequences\
+    \ on the - strand\n  -w, --no-wrap             Write the sequences on one line\n\
+    \  -s, --split               Split the sequence header of the reference at the\n\
+    \                            first space, to emulate BLAST behaviour\n\n  -f,\
+    \ --reference FILENAME  Fasta file containing the reference sequences of\n   \
+    \                         the GFF file\n\n  --progress                Shows Progress\
+    \ Bar\n  --help                    Show this message and exit.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - get-gff-info
+  - gtf
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: GFF_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: GTF_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -g
+    - --gene-id
+    description: "GFF attribute to use for the GTF *gene_id* attribute\n[default:\
+      \ gene_id]"
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: get-gff-info gtf [OPTIONS] [GFF_FILE] [GTF_FILE]\n\n  Extract\
+    \ annotations from a GFF file [gff-file] to a GTF file [gtf-file]\n\nOptions:\n\
+    \  -v, --verbose\n  -g, --gene-id TEXT  GFF attribute to use for the GTF *gene_id*\
+    \ attribute\n                      [default: gene_id]\n\n  --help            \
+    \  Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - get-gff-info
+  - mongodb
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: GFF_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -t
+    - --taxonomy
+    description: Taxonomy used to populate the lineage
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --no-cache
+    description: No cache for the lineage function
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --indent
+    description: "If used, the json will be written in a human\nreadble form"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --progress
+    description: Shows Progress Bar
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: get-gff-info mongodb [OPTIONS] [GFF_FILE] [OUTPUT_FILE]\n\n \
+    \ Extract annotations from a GFF [gff-file] file and makes output for\n  MongoDB\
+    \ [output-file]\n\nOptions:\n  -v, --verbose\n  -t, --taxonomy FILENAME  Taxonomy\
+    \ used to populate the lineage\n  -c, --no-cache           No cache for the lineage\
+    \ function\n  -i, --indent INTEGER     If used, the json will be written in a\
+    \ human\n                           readble form\n\n  --progress             \
+    \  Shows Progress Bar\n  --help                   Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - get-gff-info
+  - cov
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: GFF_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -f
+    - --reference
+    description: Reference FASTA file for the GFF  [required]
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --json-out
+    description: The output will be a JSON dictionary
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --strand-specific
+    description: If the coverage must be calculated on each strand
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --rename
+    description: "Emulate BLAST output (use only the header part\nbefore the first\
+      \ space)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --progress
+    description: Shows Progress Bar
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: get-gff-info cov [OPTIONS] [GFF_FILE] [OUTPUT_FILE]\n\n  Report\
+    \ on how much a sequence length is covered by annotations in [gff-\n  file]\n\n\
+    Options:\n  -v, --verbose\n  -f, --reference FILENAME  Reference FASTA file for\
+    \ the GFF  [required]\n  -j, --json-out            The output will be a JSON dictionary\n\
+    \  -s, --strand-specific     If the coverage must be calculated on each strand\n\
+    \  -r, --rename              Emulate BLAST output (use only the header part\n\
+    \                            before the first space)\n\n  --progress         \
+    \       Shows Progress Bar\n  --help                    Show this message and\
+    \ exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - get-gff-info
+  - split
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: GFF_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -p
+    - --prefix
+    description: 'Prefix for the file name in output  [default: split]'
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --number
+    description: "Number of chunks into which split the GFF file\n[default: 10]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -z
+    - --gzip
+    description: gzip output files
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: get-gff-info split [OPTIONS] [GFF_FILE]\n\n  Split annotations\
+    \ from a GFF file [gff-file] to several files starting\n  with [prefix]\n\nOptions:\n\
+    \  -v, --verbose\n  -p, --prefix TEXT     Prefix for the file name in output \
+    \ [default: split]\n  -n, --number INTEGER  Number of chunks into which split\
+    \ the GFF file\n                        [default: 10]\n\n  -z, --gzip        \
+    \    gzip output files\n  --help                Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - get-gff-info
+  - dbm
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: GFF_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -d
+    - --output-dir
+    description: 'Directory for the database  [default: gff-dbm]'
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: get-gff-info dbm [OPTIONS] [GFF_FILE]\n\n  Creates a dbm database\
+    \ with annotations from file [gff-file] into db\n  [output-dir]\n\nOptions:\n\
+    \  -v, --verbose\n  -d, --output-dir TEXT  Directory for the database  [default:\
+    \ gff-dbm]\n  --help                 Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --cite
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: get-gff-info [OPTIONS] COMMAND [ARGS]...\n\n  Main function\n\n\
+  Options:\n  --version  Show the version and exit.\n  --cite\n  --help     Show this\
+  \ message and exit.\n\nCommands:\n  cov       Report on how much a sequence length\
+  \ is covered by annotations...\n  dbm       Creates a dbm database with annotations\
+  \ from file [gff-file]...\n  gtf       Extract annotations from a GFF file [gff-file]\
+  \ to a GTF file...\n  mongodb   Extract annotations from a GFF [gff-file] file and\
+  \ makes output...\n  sequence  Extract the nucleotidic sequences of annotations\
+  \ from [gff-\n            file]...\n\n  split     Split annotations from a GFF file\
+  \ [gff-file] to several files...\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0

@@ -50,6 +50,9 @@ task AmptkDatabase {
       ~{if (install) then "--install" else ""} \
       ~{if (u_search) then "--usearch" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "Input FASTA file"
     out: "Base name for output files, i.e. ITS2"

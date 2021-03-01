@@ -18,6 +18,9 @@ task KssdShuffle {
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if (use_default) then "--usedefault" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     half_k_merle_n: "a half of the length of k-mer. For proyakat\\ngenome, k = 8 is suggested; for mammals, k = 10 or\\n11 is suggested.[8]"
     half_sub_strlen: "a half of the length of k-mer substring. [5]"

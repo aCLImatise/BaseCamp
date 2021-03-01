@@ -18,6 +18,9 @@ task FilterGtfspl {
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_filter_types: ": List filter types"
     inputs_gtf_files: ": Inputs are gtf files instead of list files"

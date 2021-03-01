@@ -2,7 +2,7 @@ version 1.0
 
 task AgatSpManageFunctionalAnnotationpl {
   input {
-    Boolean? ref_file
+    File? ref_file
     File? blast
     File? db
     Int? blast_evalue
@@ -42,7 +42,7 @@ task AgatSpManageFunctionalAnnotationpl {
       ~{one_zero_dot} \
       ~{one_one_dot} \
       ~{one_two_dot} \
-      ~{if (ref_file) then "--reffile" else ""} \
+      ~{if defined(ref_file) then ("--reffile " +  '"' + ref_file + '"') else ""} \
       ~{if defined(blast) then ("--blast " +  '"' + blast + '"') else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(blast_evalue) then ("--blast_evalue " +  '"' + blast_evalue + '"') else ""} \
@@ -54,8 +54,11 @@ task AgatSpManageFunctionalAnnotationpl {
       ~{if defined(string_gff_file) then ("--output " +  '"' + string_gff_file + '"') else ""} \
       ~{if (boolean_verbose_debug) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    ref_file: ", --gff or --gff3\\nString - Input GTF/GFF file."
+    ref_file: "String - Input GTF/GFF file."
     blast: "String - Input blast ( outfmt 6 = tabular ) file that will be\\nused to complement the features read from the first file\\n(specified with --ref)."
     db: "String - The fasta file that has been used as DB for the blast.\\nGene names and products/descriptions will be fished from this\\nfile."
     blast_evalue: "Integer - Maximum e-value to keep the annotation from the blast\\nfile. By default 1e-6."

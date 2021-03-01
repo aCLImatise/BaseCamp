@@ -8,6 +8,9 @@ task TripailleOrganismGetOrganismsTripal {
     tripaille organism get_organisms_tripal \
       ~{if defined(organism_id) then ("--organism_id " +  '"' + organism_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     organism_id: "An organism entity ID"
   }

@@ -8,6 +8,9 @@ task Fasta2DAM {
     fasta2DAM \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
   }

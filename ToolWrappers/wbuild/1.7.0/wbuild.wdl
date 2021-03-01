@@ -14,6 +14,9 @@ task Wbuild {
       ~{update} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbosity: "Either CRITICAL, ERROR, WARNING, INFO or DEBUG"
     demo: "Setup a demo wBuild demo project"

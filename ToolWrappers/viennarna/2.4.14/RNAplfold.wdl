@@ -56,6 +56,9 @@ task RNAplfold {
       ~{if defined(param_file) then ("--paramFile " +  '"' + param_file + '"') else ""} \
       ~{if (binaries) then "--binaries" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     full_help: "Print help, including hidden options, and exit"
@@ -70,7 +73,7 @@ task RNAplfold {
     auto_id: "Automatically generate an ID for each sequence.\\n(default=off)"
     id_prefix: "Prefix for automatically generated IDs (as used\\nin output file names)\\n(default=`sequence')"
     shape: "Use SHAPE reactivity data to guide structure"
-    shape_conversion: "+ [optional parameters]\\nSelect method to convert SHAPE reactivities to\\npairing probabilities.\\n(default=`O')"
+    shape_conversion: "/C/S/L/O  + [optional parameters]\\nSelect method to convert SHAPE reactivities to\\npairing probabilities.\\n(default=`O')"
     temp: "Rescale energy parameters to a temperature of\\ntemp C. Default is 37C."
     no_tetra: "Do not include special tabulated stabilizing\\nenergies for tri-, tetra- and hexaloop\\nhairpins. Mostly for testing.\\n(default=off)"
     dangles: "How to treat \\\"dangling end\\\" energies for\\nbases adjacent to helices in free ends and\\nmulti-loops\\n(default=`2')"

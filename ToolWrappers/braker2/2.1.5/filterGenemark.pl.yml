@@ -4,73 +4,73 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --hints
   description: "Corresponding hints file in gff format;\nit is vital that this file\
     \ contains intron\nhints; start/stop hints are optional;\ndo not mix start/stop\
     \ hints with --singleCDSfile\n(this might double the number of evidence supported\n\
     single exon genes)"
-  synonyms:
-  - --hints
   args: !SimpleFlagArg
     name: hints.gff
-  optional: true
 - !Flag
-  description: File in gtf format
+  optional: true
   synonyms:
   - --genemark
+  description: File in gtf format
   args: !SimpleFlagArg
     name: genemark.gtf
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --output
   description: "Specifies output file name. Default are\n'genemark-input_file_name.c.gtf'\n\
     and 'genemark-input_file_name.f.good.gtf'\nand 'genemark-input_file_name.f.bad.gtf'\
     \ for\nevidence anchored genes and genes not anchored by\nevidence (but included\
     \ in the output file), respectively"
-  synonyms:
-  - --output
   args: !SimpleFlagArg
     name: newfile.gtf
-  optional: true
 - !Flag
-  description: Suppress file output
+  optional: true
   synonyms:
   - --suppress
+  description: Suppress file output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filterOutShort
   description: "Filters intron containing genes as \"bad\" that\nhave an RNA-Seq supported\
     \ intron\nwithin 2*maximal CDS length of the gene with at\nleast 20% of average\
     \ intron\nmultiplicity for that gene (screens also\ndownstream of stop, which\
     \ either indicates\nwrong reading frame, or a downstream UTR)"
-  synonyms:
-  - --filterOutShort
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --singleCDSfile
   description: "file with single exon genes CDSpart hints, they\nare used to filter\
     \ single exon training genes as\n\"good\". If number is not sufficient, unsupported\n\
     genes are still added to \"good genes\" in order\nto generate a good training\
     \ gene set for\nAUGUSTUS"
-  synonyms:
-  - --singleCDSfile
   args: !SimpleFlagArg
     name: cds.gtf
-  optional: true
 - !Flag
-  description: "CDSpart cutoff that was used for generating hints\ndefault 15"
+  optional: true
   synonyms:
   - --cdspart_cutoff
+  description: "CDSpart cutoff that was used for generating hints\ndefault 15"
   args: !SimpleFlagArg
     name: n
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message
+  optional: true
   synonyms:
   - --help
+  description: Print this help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nfilterGenemark.pl     filter GeneMark-EX files and search for \"good\"\
@@ -109,3 +109,4 @@ help_text: "\nfilterGenemark.pl     filter GeneMark-EX files and search for \"go
   \ --introns=introns.gff\n\n"
 generated_using:
 - --help
+docker_image:

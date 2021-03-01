@@ -14,6 +14,9 @@ task Biopetvalidatefastq {
       ~{if defined(fast_q_one) then ("--fastq1 " +  '"' + fast_q_one + '"') else ""} \
       ~{if defined(fast_q_two) then ("--fastq2 " +  '"' + fast_q_two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_level: "Level of log information printed. Possible levels: 'debug', 'info', 'warn', 'error'"
     fast_q_one: "FASTQ file to be validated. (Required)"

@@ -2,7 +2,7 @@ version 1.0
 
 task Idxdepth {
   input {
-    Boolean? arg_bam_file
+    Boolean? arg_bam_cram
     File? bam_index
     File? arg_output_file
     Boolean? arg_output_binned
@@ -19,7 +19,7 @@ task Idxdepth {
   command <<<
     idxdepth \
       ~{estimation_dot} \
-      ~{if (arg_bam_file) then "-b" else ""} \
+      ~{if (arg_bam_cram) then "-b" else ""} \
       ~{if defined(bam_index) then ("--bam-index " +  '"' + bam_index + '"') else ""} \
       ~{if (arg_output_file) then "-o" else ""} \
       ~{if (arg_output_binned) then "-O" else ""} \
@@ -32,8 +32,11 @@ task Idxdepth {
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""} \
       ~{if defined(log_async) then ("--log-async " +  '"' + log_async + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    arg_bam_file: "[ --bam ] arg                      BAM / CRAM input file"
+    arg_bam_cram: "[ --bam ] arg                      BAM / CRAM input file"
     bam_index: "BAM / CRAM index file when not at\\ndefault location."
     arg_output_file: "[ --output ] arg                   Output file name. Will output to stdout\\nif omitted."
     arg_output_binned: "[ --output-bins ] arg              Output binned coverage in tsv format."

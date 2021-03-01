@@ -1,17 +1,30 @@
 !Command
 command:
 - get_fisher_scores
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: '05'
+  description: -i model_file  (or -modelfile)
 named:
 - !Flag
-  description: "(or -modelfile)\n-db seq_file\n-prior_library prior\n-i model\n-fisher_feature\
-    \ trans|insert|match|match_prior|simple\n-null_score_weight_scale 10.0 (0.0 to\
-    \ disable)\n-rdb 0\n-write_dist 0"
-  synonyms:
-  - -i
-  args: !SimpleFlagArg
-    name: model_file
   optional: true
+  synonyms:
+  - -db
+  - -prior_library
+  - -i
+  - -fisher_feature
+  description: '|insert|match|match_prior|simple'
+  args: !SimpleFlagArg
+    name: seq_file
+- !Flag
+  optional: true
+  synonyms:
+  - -null_score_weight_scale
+  description: (0.0 to disable)
+  args: !SimpleFlagArg
+    name: '10.0'
 parent:
 subcommands: []
 usage: []
@@ -23,3 +36,4 @@ help_text: "SAM: get_fisher_scores v3.5 (July 15, 2005) compiled 12/08/06_16:16:
   \    -i model\n    -fisher_feature trans|insert|match|match_prior|simple\n    -null_score_weight_scale\
   \ 10.0 (0.0 to disable)\n    -rdb 0\n    -write_dist 0\nPlus other hmmscore options.\n"
 generated_using: []
+docker_image:

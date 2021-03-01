@@ -36,6 +36,9 @@ task Nl {
       ~{if defined(starting_line_number) then ("--starting-line-number " +  '"' + starting_line_number + '"') else ""} \
       ~{if defined(number_width) then ("--number-width " +  '"' + number_width + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     body_numbering: "use STYLE for numbering body lines"
     section_delimiter: "use CC for logical page delimiters"

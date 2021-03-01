@@ -1,0 +1,1048 @@
+!Command
+command:
+- shasta
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: memory.
+  description: 'Allowed values: disk, 4K , 2M (for best'
+- !Positional
+  optional: false
+  position: 0
+  name: discarded.
+  description: '--Reads.desiredCoverage arg (=0)      Reduce coverage to desired value.
+    If '
+- !Positional
+  optional: false
+  position: 0
+  name: coverage.
+  description: '--Reads.noCache                       If set, skip the Linux cache
+    when '
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: '[ --version ]                      Identify the Shasta version.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --config
+  description: Configuration file name.
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --input
+  description: "Names of input files containing reads.\nSpecify at least one."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --assemblyDirectory
+  description: "(=ShastaRun)  Name of the output directory. If\ncommand is assemble,\
+    \ this directory\nmust not exist."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --command
+  description: "(=assemble)             Command to run. Must be one of:\nassemble,\
+    \ saveBinaryData,\ncleanupBinaryData, explore,\ncreateBashCompletionScript"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --memoryMode
+  description: "(=anonymous)         Specify whether allocated memory is\nanonymous\
+    \ or backed by a filesystem.\nAllowed values: anonymous, filesystem."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --memoryBacking
+  description: (=4K)             Specify the type of pages used to back
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: "(=0)                    Number of threads, or 0 to use one\nthread\
+    \ per virtual processor."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --exploreAccess
+  description: "(=user)           Specify allowed access for --command\nexplore. Allowed\
+    \ values: user, local,\nunrestricted. DO NOT CHANGE FROM\nDEFAULT VALUE WITHOUT\
+    \ UNDERSTANDING THE\nSECURITY IMPLICATIONS."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --port
+  description: "(=17100)                   Port to be used by the http server\n(command\
+    \ --explore)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Reads.palindromicReads.skipFlagging
+  description: "Skip flagging palindromic reads. Oxford\nNanopore reads should be\
+    \ flagged for\nbetter results."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --Reads.palindromicReads.maxSkip
+  description: "(=100)\nUsed for palindromic read detection."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Reads.palindromicReads.maxDrift
+  description: "(=100)\nUsed for palindromic read detection."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Reads.palindromicReads.maxMarkerFrequency
+  description: "(=10)\nUsed for palindromic read detection."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Reads.palindromicReads.alignedFractionThreshold
+  description: "(=0.1)\nUsed for palindromic read detection."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Reads.palindromicReads.nearDiagonalFractionThreshold
+  description: "(=0.1)\nUsed for palindromic read detection."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Reads.palindromicReads.deltaThreshold
+  description: "(=100)\nUsed for palindromic read detection."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Kmers.generationMethod
+  description: "(=0)     Method to generate marker k-mers: 0 =\nrandom, 1 = random,\
+    \ excluding globally\noverenriched,2 = random, excluding\noverenriched even in\
+    \ a single read,3 =\nread from file."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Kmers.k
+  description: "(=10)                   Length of marker k-mers (in run-length\nspace)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Kmers.probability
+  description: (=0.1)        Fraction k-mers used as a marker.
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Kmers.enrichmentThreshold
+  description: "(=100.)\nEnrichment threshold for\nKmers.generationMethod 1 and 2."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Kmers.file
+  description: "The absolute path of a file containing\nthe k-mers to be used as markers,\
+    \ one\nper line. A relative path is not\naccepted. Only used if\nKmers.generationMethod\
+    \ is 3."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MinHash.version
+  description: "(=0)            Controls the version of the LowHash\nalgorithm to\
+    \ use. Can be 0 (default) or\n1.(experimental)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MinHash.m
+  description: "(=4)                  The number of consecutive markers that\ndefine\
+    \ a MinHash/LowHash feature."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MinHash.hashFraction
+  description: "(=0.01)    Defines how low a hash has to be to be\nused with the LowHash\
+    \ algorithm."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MinHash.minHashIterationCount
+  description: "(=10)\nThe number of MinHash/LowHash\niterations, or 0 to let\n--MinHash.alignmentCandidatesPerRead\n\
+    control the number of iterations."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MinHash.alignmentCandidatesPerRead
+  description: "(=20)\nIf --MinHash.minHashIterationCount is\n0, MinHash iteration\
+    \ is stopped when\nthe average number of alignment\ncandidates that each read\
+    \ is involved\nin reaches this value. If\n--MinHash.minHashIterationCount is not\n\
+    0, this is not used."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MinHash.minBucketSize
+  description: "(=0)      The minimum bucket size to be used by\nthe LowHash algoritm."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MinHash.maxBucketSize
+  description: "(=10)     The maximum bucket size to be used by\nthe LowHash algoritm."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MinHash.minFrequency
+  description: "(=2)       The minimum number of times a pair of\nreads must be found\
+    \ by the\nMinHash/LowHash algorithm in order to\nbe considered a candidate alignment."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MinHash.allPairs
+  description: "Skip the MinHash algorithm and mark all\npairs of reads as alignmentcandidates\n\
+    with both orientation. This should only\nbe used for experimentation on very\n\
+    small runs because it is very time\nconsuming."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --Align.alignMethod
+  description: "(=3)          The alignment method to be used to\ncreate the read\
+    \ graph & the marker\ngraph. 0 = old Shasta method, 1 = SeqAn\n(slow), 3 = banded\
+    \ SeqAn."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Align.maxSkip
+  description: "(=30)             The maximum number of markers that an\nalignment\
+    \ is allowed to skip."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Align.maxDrift
+  description: "(=30)            The maximum amount of marker drift that\nan alignment\
+    \ is allowed to tolerate\nbetween successive markers."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Align.maxTrim
+  description: "(=30)             The maximum number of unaligned markers\ntolerated\
+    \ at the beginning and end of\nan alignment."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Align.maxMarkerFrequency
+  description: "(=10)  Marker frequency threshold. Markers\nmore frequent than this\
+    \ value in either\nof two oriented reads being aligned are\ndiscarded and not\
+    \ used to compute the\nalignment."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Align.minAlignedMarkerCount
+  description: "(=100)\nThe minimum number of aligned markers\nfor an alignment to\
+    \ be used."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Align.minAlignedFraction
+  description: "(=0)   The minimum fraction of aligned markers\nfor an alignment to\
+    \ be used."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Align.matchScore
+  description: "(=6)           Match score for marker alignments (only\nused for alignment\
+    \ methods 1 and 3)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Align.mismatchScore
+  description: "(=-1)       Mismatch score for marker alignments\n(only used for alignment\
+    \ methods 1 and\n3)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Align.gapScore
+  description: "(=-1)            Gap score for marker alignments (only\nused for alignment\
+    \ methods 1 and 3)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Align.downsamplingFactor
+  description: "(=0.10000000000000001)\nDownsampling factor (only used for\nalignment\
+    \ method 3)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Align.bandExtend
+  description: "(=10)          Amount to extend the downsampled band\n(only used for\
+    \ alignment method 3)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Align.maxBand
+  description: "(=1000)           Maximum alignment band (only used for\nalignment\
+    \ method 3)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Align.sameChannelReadAlignment.suppressDeltaThreshold
+  description: "(=0)\nIf not zero, alignments between reads\nfrom the same nanopore\
+    \ channel and\nclose in time are suppressed. The\n\"read\" meta data fields from\
+    \ the FASTA\nor FASTQ header are checked. If their\ndifference, in absolute value,\
+    \ is less\nthan the value of this option, the\nalignment is suppressed. This can\
+    \ help\navoid assembly artifact. This check is\nonly done if the two reads have\n\
+    identical meta data fields \"runid\",\n\"sampleid\", and \"ch\". If any of these\n\
+    meta data fields are missing, this\ncheck is suppressed and this option has\n\
+    no effect."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Align.suppressContainments
+  description: "Suppress containment alignments, that\nis alignments in which one\
+    \ read is\nentirely contained in another read,\nexcept possibly for up to maxTrim\n\
+    markers at the beginning and end."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ReadGraph.creationMethod
+  description: "(=0)   The method used to create the read\ngraph (0 default, 1 or\
+    \ 2 experimental)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --ReadGraph.maxAlignmentCount
+  description: "(=6)\nThe maximum number of alignments to be\nkept for each read."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --ReadGraph.minComponentSize
+  description: "(=100)\nThe minimum size (number of oriented\nreads) of a connected\
+    \ component of the\nread graph to be kept. This is\ncurrently ignored."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --ReadGraph.maxChimericReadDistance
+  description: "(=2)\nUsed for chimeric read detection."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --ReadGraph.crossStrandMaxDistance
+  description: "(=6)\nMaximum distance (edges) for\nflagCrossStrandReadGraphEdges.\
+    \ Set this\nto zero to entirely suppress\nflagCrossStrandReadGraphEdges."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --ReadGraph.containedNeighborCount
+  description: "(=6)\nMaximum number of alignments to be kept\nfor each contained\
+    \ read (only used when\ncreationMethod is 1)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --ReadGraph.uncontainedNeighborCountPerDirection
+  description: "(=3)\nMaximum number of alignments to be kept\nin each direction (forward,\
+    \ backward)\nfor each uncontained read (only used\nwhen creationMethod is 1)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --ReadGraph.removeConflicts
+  description: "Remove conflicts from the read graph.\nExperimental - do not use."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ReadGraph.markerCountPercentile
+  description: "(=0.015)\nPercentile for markerCount (only used\nwhen creationMethod\
+    \ is 2)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --ReadGraph.alignedFractionPercentile
+  description: "(=0.12)\nPercentile for alignedFraction (only\nused when creationMethod\
+    \ is 2)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --ReadGraph.maxSkipPercentile
+  description: "(=0.12)\nPercentile for maxSkip (only used when\ncreationMethod is\
+    \ 2)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --ReadGraph.maxDriftPercentile
+  description: "(=0.12)\nPercentile for maxDrift (only used when\ncreationMethod is\
+    \ 2)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --ReadGraph.maxTrimPercentile
+  description: "(=0.015)\nPercentile for maxTrim (only used when\ncreationMethod is\
+    \ 2)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MarkerGraph.minCoverage
+  description: "(=10)   Minimum coverage (number of supporting\noriented reads) for\
+    \ a marker graph\nvertex to be created.Specifying 0\ncauses a suitable value of\
+    \ this\nparameter to be selected automatically."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MarkerGraph.maxCoverage
+  description: "(=100)  Maximum coverage (number of supporting\noriented reads) for\
+    \ a marker graph\nvertex."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MarkerGraph.minCoveragePerStrand
+  description: "(=0)\nMinimum coverage (number of supporting\noriented reads) for\
+    \ each strand for a\nmarker graph vertex."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MarkerGraph.lowCoverageThreshold
+  description: "(=0)\nUsed during approximate transitive\nreduction. Marker graph\
+    \ edges with\ncoverage lower than this value are\nalways marked as removed regardless\
+    \ of\nreachability."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MarkerGraph.highCoverageThreshold
+  description: "(=256)\nUsed during approximate transitive\nreduction. Marker graph\
+    \ edges with\ncoverage higher than this value are\nnever marked as removed regardless\
+    \ of\nreachability."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MarkerGraph.maxDistance
+  description: (=30)   Used during approximate transitive
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MarkerGraph.simplifyMaxLength
+  description: "(=10,100,1000)\nMaximum lengths (in markers) used at\neach iteration\
+    \ of simplifyMarkerGraph."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MarkerGraph.crossEdgeCoverageThreshold
+  description: "(=0)\nExperimental. Cross edge coverage\nthreshold. If this is not\
+    \ zero,\nassembly graph cross-edges with average\nedge coverage less than this\
+    \ value are\nremoved, together with the\ncorresponding marker graph edges. A\n\
+    cross edge is defined as an edge v0->v1\nwith out-degree(v0)>1, in-degree(v1)>1."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MarkerGraph.refineThreshold
+  description: "(=0)\nExperimental. Length threshold, in\nmarkers, for the marker\
+    \ graph\nrefinement step, or 0 to turn off the\nrefinement step."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MarkerGraph.reverseTransitiveReduction
+  description: "Perform approximate reverse transitive\nreduction of the marker graph."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --MarkerGraph.peakFinder.minAreaFraction
+  description: "(=0.080000000000000002)\nUsed in the automatic selection of\n--MarkerGraph.minCoverage\
+    \ when\n--MarkerGraph.minCoverage is set to 0."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --MarkerGraph.peakFinder.areaStartIndex
+  description: "(=2)\nUsed in the automatic selection of\n--MarkerGraph.minCoverage\
+    \ when\n--MarkerGraph.minCoverage is set to 0."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.crossEdgeCoverageThreshold
+  description: "(=3)\nMaximum average edge coverage for a\ncross edge of the assembly\
+    \ graph to be\nremoved."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.markerGraphEdgeLengthThresholdForConsensus
+  description: "(=1000)\nControls assembly of long marker graph\nedges."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.consensusCaller
+  description: "(=Bayesian:guppy-2.3.5-a)\nSelects the consensus caller for repeat\n\
+    counts. See the documentation for\navailable choices."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.storeCoverageData
+  description: "Used to request storing coverage data\nin binary format."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.storeCoverageDataCsvLengthThreshold
+  description: "(=0)\nUsed to specify the minimum length of\nan assembled segment\
+    \ for which coverage\ndata in csv format should be stored. If\n0, no coverage\
+    \ data in csv format is\nstored."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.writeReadsByAssembledSegment
+  description: "Used to request writing the reads that\ncontributed to assembling\
+    \ each segment."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.detangleMethod
+  description: "(=0)    Specify the method used to detangle the\nassembly graph. 0\
+    \ = no detangling, 1 =\nstrict detangling, 2 = less strict\ndetangling, controlled\
+    \ by\nAssembly.detangle.* options\n(experimental)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.detangle.diagonalReadCountMin
+  description: "(=1)\nMinimum number of reads on detangle\nmatrix diagonal elements\
+    \ required for\ndetangling."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.detangle.offDiagonalReadCountMax
+  description: "(=2)\nMaximum number of reads on detangle\nmatrix off-diagonal elements\
+    \ allowed\nfor detangling."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.detangle.offDiagonalRatio
+  description: "(=0.29999999999999999)\nMaximum ratio of total off-diagonal\nelements\
+    \ over diagonal element allowed\nfor detangling."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.iterative
+  description: "Used to request iterative assembly\n(experimental)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.iterative.iterationCount
+  description: "(=3)\nNumber of iterations for iterative\nassembly (experimental)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.iterative.pseudoPathAlignMatchScore
+  description: "(=1)\nPseudopath alignment match score for\niterative assembly (experimental)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.iterative.pseudoPathAlignMismatchScore
+  description: "(=-1)\nPseudopath alignment mismatch score for\niterative assembly\
+    \ (experimental)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.iterative.pseudoPathAlignGapScore
+  description: "(=-1)\nPseudopath alignment gap score for\niterative assembly (experimental)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.iterative.mismatchSquareFactor
+  description: "(=3)\nMismatch square factor for iterative\nassembly (experimental)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.iterative.minScore
+  description: "(=0)\nMinimum pseudo-alignment score for\niterative assembly (experimental)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.iterative.maxAlignmentCount
+  description: "(=6)\nMaximum number of read graph neighbors\nfor iterative assembly\
+    \ (experimental)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.iterative.bridgeRemovalIterationCount
+  description: "(=3)\nNumber of read graph bridge removal\niterations for iterative\
+    \ assembly\n(experimental)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --Assembly.iterative.bridgeRemovalMaxDistance
+  description: "(=2)\nMaximum distance for read graph bridge\nremoval for iterative\
+    \ assembly\n(experimental).\n"
+  args: !SimpleFlagArg
+    name: arg
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: '[ --help ]                         Write a help message.'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nOptions allowed only on the command line:\n  -h [ --help ]         \
+  \                Write a help message.\n  -v [ --version ]                     \
+  \ Identify the Shasta version.\n  --config arg                          Configuration\
+  \ file name.\n  --input arg                           Names of input files containing\
+  \ reads. \n                                        Specify at least one.\n  --assemblyDirectory\
+  \ arg (=ShastaRun)  Name of the output directory. If \n                        \
+  \                command is assemble, this directory \n                        \
+  \                must not exist.\n  --command arg (=assemble)             Command\
+  \ to run. Must be one of: \n                                        assemble, saveBinaryData,\
+  \ \n                                        cleanupBinaryData, explore, \n     \
+  \                                   createBashCompletionScript\n  --memoryMode arg\
+  \ (=anonymous)         Specify whether allocated memory is \n                  \
+  \                      anonymous or backed by a filesystem. \n                 \
+  \                       Allowed values: anonymous, filesystem.\n  --memoryBacking\
+  \ arg (=4K)             Specify the type of pages used to back \n              \
+  \                          memory.\n                                        Allowed\
+  \ values: disk, 4K , 2M (for best\n                                        performance).\
+  \ All combinations \n                                        (memoryMode, memoryBacking)\
+  \ are allowed\n                                        except for (anonymous, disk).\n\
+  \                                        Some combinations require root \n     \
+  \                                   privilege, which is obtained using sudo\n  \
+  \                                      and may result in a password prompting \n\
+  \                                        depending on your sudo set up.\n  --threads\
+  \ arg (=0)                    Number of threads, or 0 to use one \n            \
+  \                            thread per virtual processor.\n  --exploreAccess arg\
+  \ (=user)           Specify allowed access for --command \n                    \
+  \                    explore. Allowed values: user, local, \n                  \
+  \                      unrestricted. DO NOT CHANGE FROM \n                     \
+  \                   DEFAULT VALUE WITHOUT UNDERSTANDING THE\n                  \
+  \                      SECURITY IMPLICATIONS.\n  --port arg (=17100)           \
+  \        Port to be used by the http server \n                                 \
+  \       (command --explore).\n\nOptions allowed on the command line and in the config\
+  \ file:\n  --Reads.minReadLength arg (=10000)    Read length cutoff. Shorter reads\
+  \ are \n                                        discarded.\n  --Reads.desiredCoverage\
+  \ arg (=0)      Reduce coverage to desired value. If \n                        \
+  \                not zero, specifies desired coverage \n                       \
+  \                 (number of bases). The read length \n                        \
+  \                cutoff specified via \n                                       \
+  \ --Reads.minReadLength is increased to \n                                     \
+  \   reduce coverage to the specified value.\n                                  \
+  \      Power of 10 multipliers can be used, \n                                 \
+  \       for example 120Gb to request 120 Gb of \n                              \
+  \          coverage.\n  --Reads.noCache                       If set, skip the Linux\
+  \ cache when \n                                        loading reads. This is done\
+  \ by \n                                        specifying the O_DIRECT flag when\
+  \ \n                                        opening input files containing reads.\n\
+  \  --Reads.palindromicReads.skipFlagging \n                                    \
+  \    Skip flagging palindromic reads. Oxford\n                                 \
+  \       Nanopore reads should be flagged for \n                                \
+  \        better results.\n  --Reads.palindromicReads.maxSkip arg (=100)\n      \
+  \                                  Used for palindromic read detection.\n  --Reads.palindromicReads.maxDrift\
+  \ arg (=100)\n                                        Used for palindromic read\
+  \ detection.\n  --Reads.palindromicReads.maxMarkerFrequency arg (=10)\n        \
+  \                                Used for palindromic read detection.\n  --Reads.palindromicReads.alignedFractionThreshold\
+  \ arg (=0.1)\n                                        Used for palindromic read\
+  \ detection.\n  --Reads.palindromicReads.nearDiagonalFractionThreshold arg (=0.1)\n\
+  \                                        Used for palindromic read detection.\n\
+  \  --Reads.palindromicReads.deltaThreshold arg (=100)\n                        \
+  \                Used for palindromic read detection.\n  --Kmers.generationMethod\
+  \ arg (=0)     Method to generate marker k-mers: 0 = \n                        \
+  \                random, 1 = random, excluding globally \n                     \
+  \                   overenriched,2 = random, excluding \n                      \
+  \                  overenriched even in a single read,3 = \n                   \
+  \                     read from file.\n  --Kmers.k arg (=10)                   Length\
+  \ of marker k-mers (in run-length \n                                        space).\n\
+  \  --Kmers.probability arg (=0.1)        Fraction k-mers used as a marker.\n  --Kmers.enrichmentThreshold\
+  \ arg (=100.)\n                                        Enrichment threshold for\
+  \ \n                                        Kmers.generationMethod 1 and 2.\n  --Kmers.file\
+  \ arg                      The absolute path of a file containing \n           \
+  \                             the k-mers to be used as markers, one \n         \
+  \                               per line. A relative path is not \n            \
+  \                            accepted. Only used if \n                         \
+  \               Kmers.generationMethod is 3.\n  --MinHash.version arg (=0)     \
+  \       Controls the version of the LowHash \n                                 \
+  \       algorithm to use. Can be 0 (default) or\n                              \
+  \          1.(experimental).\n  --MinHash.m arg (=4)                  The number\
+  \ of consecutive markers that \n                                        define a\
+  \ MinHash/LowHash feature.\n  --MinHash.hashFraction arg (=0.01)    Defines how\
+  \ low a hash has to be to be \n                                        used with\
+  \ the LowHash algorithm.\n  --MinHash.minHashIterationCount arg (=10)\n        \
+  \                                The number of MinHash/LowHash \n              \
+  \                          iterations, or 0 to let \n                          \
+  \              --MinHash.alignmentCandidatesPerRead \n                         \
+  \               control the number of iterations.\n  --MinHash.alignmentCandidatesPerRead\
+  \ arg (=20)\n                                        If --MinHash.minHashIterationCount\
+  \ is \n                                        0, MinHash iteration is stopped when\
+  \ \n                                        the average number of alignment \n \
+  \                                       candidates that each read is involved \n\
+  \                                        in reaches this value. If \n          \
+  \                              --MinHash.minHashIterationCount is not \n       \
+  \                                 0, this is not used.\n  --MinHash.minBucketSize\
+  \ arg (=0)      The minimum bucket size to be used by \n                       \
+  \                 the LowHash algoritm.\n  --MinHash.maxBucketSize arg (=10)   \
+  \  The maximum bucket size to be used by \n                                    \
+  \    the LowHash algoritm.\n  --MinHash.minFrequency arg (=2)       The minimum\
+  \ number of times a pair of \n                                        reads must\
+  \ be found by the \n                                        MinHash/LowHash algorithm\
+  \ in order to \n                                        be considered a candidate\
+  \ alignment.\n  --MinHash.allPairs                    Skip the MinHash algorithm\
+  \ and mark all\n                                        pairs of reads as alignmentcandidates\
+  \ \n                                        with both orientation. This should only\n\
+  \                                        be used for experimentation on very \n\
+  \                                        small runs because it is very time \n \
+  \                                       consuming.\n  --Align.alignMethod arg (=3)\
+  \          The alignment method to be used to \n                               \
+  \         create the read graph & the marker \n                                \
+  \        graph. 0 = old Shasta method, 1 = SeqAn\n                             \
+  \           (slow), 3 = banded SeqAn.\n  --Align.maxSkip arg (=30)             The\
+  \ maximum number of markers that an \n                                        alignment\
+  \ is allowed to skip.\n  --Align.maxDrift arg (=30)            The maximum amount\
+  \ of marker drift that\n                                        an alignment is\
+  \ allowed to tolerate \n                                        between successive\
+  \ markers.\n  --Align.maxTrim arg (=30)             The maximum number of unaligned\
+  \ markers\n                                        tolerated at the beginning and\
+  \ end of \n                                        an alignment.\n  --Align.maxMarkerFrequency\
+  \ arg (=10)  Marker frequency threshold. Markers \n                            \
+  \            more frequent than this value in either\n                         \
+  \               of two oriented reads being aligned are\n                      \
+  \                  discarded and not used to compute the \n                    \
+  \                    alignment.\n  --Align.minAlignedMarkerCount arg (=100)\n  \
+  \                                      The minimum number of aligned markers \n\
+  \                                        for an alignment to be used.\n  --Align.minAlignedFraction\
+  \ arg (=0)   The minimum fraction of aligned markers\n                         \
+  \               for an alignment to be used.\n  --Align.matchScore arg (=6)    \
+  \       Match score for marker alignments (only\n                              \
+  \          used for alignment methods 1 and 3).\n  --Align.mismatchScore arg (=-1)\
+  \       Mismatch score for marker alignments \n                                \
+  \        (only used for alignment methods 1 and \n                             \
+  \           3).\n  --Align.gapScore arg (=-1)            Gap score for marker alignments\
+  \ (only \n                                        used for alignment methods 1 and\
+  \ 3).\n  --Align.downsamplingFactor arg (=0.10000000000000001)\n               \
+  \                         Downsampling factor (only used for \n                \
+  \                        alignment method 3).\n  --Align.bandExtend arg (=10)  \
+  \        Amount to extend the downsampled band \n                              \
+  \          (only used for alignment method 3).\n  --Align.maxBand arg (=1000)  \
+  \         Maximum alignment band (only used for \n                             \
+  \           alignment method 3).\n  --Align.sameChannelReadAlignment.suppressDeltaThreshold\
+  \ arg (=0)\n                                        If not zero, alignments between\
+  \ reads \n                                        from the same nanopore channel\
+  \ and \n                                        close in time are suppressed. The\
+  \ \n                                        \"read\" meta data fields from the FASTA\
+  \ \n                                        or FASTQ header are checked. If their\
+  \ \n                                        difference, in absolute value, is less\
+  \ \n                                        than the value of this option, the \n\
+  \                                        alignment is suppressed. This can help\
+  \ \n                                        avoid assembly artifact. This check\
+  \ is \n                                        only done if the two reads have \n\
+  \                                        identical meta data fields \"runid\", \n\
+  \                                        \"sampleid\", and \"ch\". If any of these\
+  \ \n                                        meta data fields are missing, this \n\
+  \                                        check is suppressed and this option has\n\
+  \                                        no effect.\n  --Align.suppressContainments\
+  \          Suppress containment alignments, that \n                            \
+  \            is alignments in which one read is \n                             \
+  \           entirely contained in another read, \n                             \
+  \           except possibly for up to maxTrim \n                               \
+  \         markers at the beginning and end.\n  --ReadGraph.creationMethod arg (=0)\
+  \   The method used to create the read \n                                      \
+  \  graph (0 default, 1 or 2 experimental).\n  --ReadGraph.maxAlignmentCount arg\
+  \ (=6)\n                                        The maximum number of alignments\
+  \ to be \n                                        kept for each read.\n  --ReadGraph.minComponentSize\
+  \ arg (=100)\n                                        The minimum size (number of\
+  \ oriented \n                                        reads) of a connected component\
+  \ of the \n                                        read graph to be kept. This is\
+  \ \n                                        currently ignored.\n  --ReadGraph.maxChimericReadDistance\
+  \ arg (=2)\n                                        Used for chimeric read detection.\n\
+  \  --ReadGraph.crossStrandMaxDistance arg (=6)\n                               \
+  \         Maximum distance (edges) for \n                                      \
+  \  flagCrossStrandReadGraphEdges. Set this\n                                   \
+  \     to zero to entirely suppress \n                                        flagCrossStrandReadGraphEdges.\n\
+  \  --ReadGraph.containedNeighborCount arg (=6)\n                               \
+  \         Maximum number of alignments to be kept\n                            \
+  \            for each contained read (only used when\n                         \
+  \               creationMethod is 1).\n  --ReadGraph.uncontainedNeighborCountPerDirection\
+  \ arg (=3)\n                                        Maximum number of alignments\
+  \ to be kept\n                                        in each direction (forward,\
+  \ backward) \n                                        for each uncontained read\
+  \ (only used \n                                        when creationMethod is 1).\n\
+  \  --ReadGraph.removeConflicts           Remove conflicts from the read graph. \n\
+  \                                        Experimental - do not use.\n  --ReadGraph.markerCountPercentile\
+  \ arg (=0.015)\n                                        Percentile for markerCount\
+  \ (only used \n                                        when creationMethod is 2).\n\
+  \  --ReadGraph.alignedFractionPercentile arg (=0.12)\n                         \
+  \               Percentile for alignedFraction (only \n                        \
+  \                used when creationMethod is 2).\n  --ReadGraph.maxSkipPercentile\
+  \ arg (=0.12)\n                                        Percentile for maxSkip (only\
+  \ used when \n                                        creationMethod is 2).\n  --ReadGraph.maxDriftPercentile\
+  \ arg (=0.12)\n                                        Percentile for maxDrift (only\
+  \ used when\n                                        creationMethod is 2).\n  --ReadGraph.maxTrimPercentile\
+  \ arg (=0.015)\n                                        Percentile for maxTrim (only\
+  \ used when \n                                        creationMethod is 2).\n  --MarkerGraph.minCoverage\
+  \ arg (=10)   Minimum coverage (number of supporting \n                        \
+  \                oriented reads) for a marker graph \n                         \
+  \               vertex to be created.Specifying 0 \n                           \
+  \             causes a suitable value of this \n                               \
+  \         parameter to be selected automatically.\n  --MarkerGraph.maxCoverage arg\
+  \ (=100)  Maximum coverage (number of supporting \n                            \
+  \            oriented reads) for a marker graph \n                             \
+  \           vertex.\n  --MarkerGraph.minCoveragePerStrand arg (=0)\n           \
+  \                             Minimum coverage (number of supporting \n        \
+  \                                oriented reads) for each strand for a \n      \
+  \                                  marker graph vertex.\n  --MarkerGraph.lowCoverageThreshold\
+  \ arg (=0)\n                                        Used during approximate transitive\
+  \ \n                                        reduction. Marker graph edges with \n\
+  \                                        coverage lower than this value are \n \
+  \                                       always marked as removed regardless of \n\
+  \                                        reachability.\n  --MarkerGraph.highCoverageThreshold\
+  \ arg (=256)\n                                        Used during approximate transitive\
+  \ \n                                        reduction. Marker graph edges with \n\
+  \                                        coverage higher than this value are \n\
+  \                                        never marked as removed regardless of \n\
+  \                                        reachability.\n  --MarkerGraph.maxDistance\
+  \ arg (=30)   Used during approximate transitive \n                            \
+  \            reduction.\n  --MarkerGraph.edgeMarkerSkipThreshold arg (=100)\n  \
+  \                                      Used during approximate transitive \n   \
+  \                                     reduction.\n  --MarkerGraph.pruneIterationCount\
+  \ arg (=6)\n                                        Number of prune iterations.\n\
+  \  --MarkerGraph.simplifyMaxLength arg (=10,100,1000)\n                        \
+  \                Maximum lengths (in markers) used at \n                       \
+  \                 each iteration of simplifyMarkerGraph.\n  --MarkerGraph.crossEdgeCoverageThreshold\
+  \ arg (=0)\n                                        Experimental. Cross edge coverage\
+  \ \n                                        threshold. If this is not zero, \n \
+  \                                       assembly graph cross-edges with average\n\
+  \                                        edge coverage less than this value are\
+  \ \n                                        removed, together with the \n      \
+  \                                  corresponding marker graph edges. A \n      \
+  \                                  cross edge is defined as an edge v0->v1\n   \
+  \                                     with out-degree(v0)>1, in-degree(v1)>1.\n\
+  \  --MarkerGraph.refineThreshold arg (=0)\n                                    \
+  \    Experimental. Length threshold, in \n                                     \
+  \   markers, for the marker graph \n                                        refinement\
+  \ step, or 0 to turn off the \n                                        refinement\
+  \ step.\n  --MarkerGraph.reverseTransitiveReduction \n                         \
+  \               Perform approximate reverse transitive \n                      \
+  \                  reduction of the marker graph.\n  --MarkerGraph.peakFinder.minAreaFraction\
+  \ arg (=0.080000000000000002)\n                                        Used in the\
+  \ automatic selection of \n                                        --MarkerGraph.minCoverage\
+  \ when \n                                        --MarkerGraph.minCoverage is set\
+  \ to 0.\n  --MarkerGraph.peakFinder.areaStartIndex arg (=2)\n                  \
+  \                      Used in the automatic selection of \n                   \
+  \                     --MarkerGraph.minCoverage when \n                        \
+  \                --MarkerGraph.minCoverage is set to 0.\n  --Assembly.crossEdgeCoverageThreshold\
+  \ arg (=3)\n                                        Maximum average edge coverage\
+  \ for a \n                                        cross edge of the assembly graph\
+  \ to be \n                                        removed.\n  --Assembly.markerGraphEdgeLengthThresholdForConsensus\
+  \ arg (=1000)\n                                        Controls assembly of long\
+  \ marker graph \n                                        edges.\n  --Assembly.consensusCaller\
+  \ arg (=Bayesian:guppy-2.3.5-a)\n                                        Selects\
+  \ the consensus caller for repeat\n                                        counts.\
+  \ See the documentation for \n                                        available\
+  \ choices.\n  --Assembly.storeCoverageData          Used to request storing coverage\
+  \ data \n                                        in binary format.\n  --Assembly.storeCoverageDataCsvLengthThreshold\
+  \ arg (=0)\n                                        Used to specify the minimum\
+  \ length of \n                                        an assembled segment for which\
+  \ coverage\n                                        data in csv format should be\
+  \ stored. If\n                                        0, no coverage data in csv\
+  \ format is \n                                        stored.\n  --Assembly.writeReadsByAssembledSegment\
+  \ \n                                        Used to request writing the reads that\
+  \ \n                                        contributed to assembling each segment.\n\
+  \  --Assembly.detangleMethod arg (=0)    Specify the method used to detangle the\n\
+  \                                        assembly graph. 0 = no detangling, 1 =\
+  \ \n                                        strict detangling, 2 = less strict \n\
+  \                                        detangling, controlled by \n          \
+  \                              Assembly.detangle.* options \n                  \
+  \                      (experimental).\n  --Assembly.detangle.diagonalReadCountMin\
+  \ arg (=1)\n                                        Minimum number of reads on detangle\
+  \ \n                                        matrix diagonal elements required for\
+  \ \n                                        detangling.\n  --Assembly.detangle.offDiagonalReadCountMax\
+  \ arg (=2)\n                                        Maximum number of reads on detangle\
+  \ \n                                        matrix off-diagonal elements allowed\
+  \ \n                                        for detangling.\n  --Assembly.detangle.offDiagonalRatio\
+  \ arg (=0.29999999999999999)\n                                        Maximum ratio\
+  \ of total off-diagonal \n                                        elements over\
+  \ diagonal element allowed \n                                        for detangling.\n\
+  \  --Assembly.iterative                  Used to request iterative assembly \n \
+  \                                       (experimental).\n  --Assembly.iterative.iterationCount\
+  \ arg (=3)\n                                        Number of iterations for iterative\
+  \ \n                                        assembly (experimental).\n  --Assembly.iterative.pseudoPathAlignMatchScore\
+  \ arg (=1)\n                                        Pseudopath alignment match score\
+  \ for \n                                        iterative assembly (experimental).\n\
+  \  --Assembly.iterative.pseudoPathAlignMismatchScore arg (=-1)\n               \
+  \                         Pseudopath alignment mismatch score for\n            \
+  \                            iterative assembly (experimental).\n  --Assembly.iterative.pseudoPathAlignGapScore\
+  \ arg (=-1)\n                                        Pseudopath alignment gap score\
+  \ for \n                                        iterative assembly (experimental).\n\
+  \  --Assembly.iterative.mismatchSquareFactor arg (=3)\n                        \
+  \                Mismatch square factor for iterative \n                       \
+  \                 assembly (experimental).\n  --Assembly.iterative.minScore arg\
+  \ (=0)\n                                        Minimum pseudo-alignment score for\
+  \ \n                                        iterative assembly (experimental).\n\
+  \  --Assembly.iterative.maxAlignmentCount arg (=6)\n                           \
+  \             Maximum number of read graph neighbors \n                        \
+  \                for iterative assembly (experimental).\n  --Assembly.iterative.bridgeRemovalIterationCount\
+  \ arg (=3)\n                                        Number of read graph bridge\
+  \ removal \n                                        iterations for iterative assembly\
+  \ \n                                        (experimental).\n  --Assembly.iterative.bridgeRemovalMaxDistance\
+  \ arg (=2)\n                                        Maximum distance for read graph\
+  \ bridge \n                                        removal for iterative assembly\
+  \ \n                                        (experimental).\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/shasta:0.6.0--hc9558a2_0

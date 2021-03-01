@@ -22,6 +22,9 @@ task Ipa2OvlpToGraph {
       ~{if defined(width_cut_off) then ("--width-cutoff " +  '"' + width_cut_off + '"') else ""} \
       ~{if defined(length_cut_off) then ("--length-cutoff " +  '"' + length_cut_off + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     overlap_file: "a file that contains the overlap information. (default: preads.m4)"
     lfc: "use local flow constraint method rather than best overlap method to resolve knots in string graph (default: False)"

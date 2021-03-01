@@ -48,6 +48,9 @@ task Obiuniq {
       ~{if (nuc) then "--nuc" else ""} \
       ~{if (prot) then "--prot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Set logging in debug mode"
     without_progress_bar: "desactivate progress bar"

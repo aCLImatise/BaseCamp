@@ -3,38 +3,28 @@ id: planemo_shed_lint.cwl
 inputs:
 - id: in_recursive
   doc: "Recursively perform command for nested\nrepository directories."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --recursive
 - id: in_fail_fast
   doc: "If multiple repositories are specified and\nan error occurs stop immediately\
     \ instead of\nprocessing remaining repositories."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fail_fast
-- id: in_report_level
-  doc: '[all|warn|error]'
-  type: boolean
-  inputBinding:
-    prefix: --report_level
-- id: in_fail_level
-  doc: '[warn|error]'
-  type: boolean
-  inputBinding:
-    prefix: --fail_level
 - id: in_tools
   doc: "Lint tools discovered in the process of\nlinting repositories."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tools
-- id: in_xsd
-  doc: / --no_xsd                Include tool XSD validation in linting
-  type: boolean
+- id: in_no_xsd
+  doc: Include tool XSD validation in linting
+  type: boolean?
   inputBinding:
-    prefix: --xsd
+    prefix: --no_xsd
 - id: in_urls
   doc: Check validity of URLs in XML files
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --urls
 - id: in_process_dot
@@ -46,6 +36,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - planemo

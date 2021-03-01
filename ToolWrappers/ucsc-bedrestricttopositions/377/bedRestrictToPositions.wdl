@@ -4,6 +4,9 @@ task BedRestrictToPositions {
   command <<<
     bedRestrictToPositions
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

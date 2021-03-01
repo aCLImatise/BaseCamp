@@ -32,6 +32,9 @@ task LiftUp {
       ~{if (ignore_versions) then "-ignoreVersions" else ""} \
       ~{if defined(ext_gene_pred) then ("-extGenePred " +  '"' + ext_gene_pred + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_head: "No header written for .psl files"
     dots: "Output a dot every N lines processed"

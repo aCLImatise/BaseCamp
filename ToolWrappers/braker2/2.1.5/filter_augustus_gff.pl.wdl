@@ -12,6 +12,9 @@ task FilterAugustusGffpl {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if (src) then "--src" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "AUGUSTUS output file in GFF format"
     out: "If specified, write filtered gene predictions\\nin GTF format to given file. If not specified,\\nonly the number of supported genes is printed\\nto STDOUT."

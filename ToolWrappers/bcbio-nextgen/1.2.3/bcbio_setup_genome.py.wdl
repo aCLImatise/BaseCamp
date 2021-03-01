@@ -28,6 +28,9 @@ task BcbioSetupGenomepy {
       ~{if defined(srna_gtf) then ("--srna_gtf " +  '"' + srna_gtf + '"') else ""} \
       ~{if defined(build_version) then ("--buildversion " +  '"' + build_version + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cores: "number of cores to use"
     fast_a: "FASTA file of the genome."

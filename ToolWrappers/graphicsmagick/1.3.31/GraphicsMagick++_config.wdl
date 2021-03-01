@@ -8,6 +8,9 @@ task GraphicsMagickconfig {
     GraphicsMagick___config \
       ~{graphicsmagick}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graphicsmagick: ""
   }

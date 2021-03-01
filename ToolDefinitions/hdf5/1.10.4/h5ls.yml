@@ -3,161 +3,153 @@ command:
 - h5ls
 positional:
 - !Positional
-  description: -h, -?, --help  Print a usage message and exit
+  optional: false
   position: 0
   name: OPTIONS
-  optional: false
-- !Positional
-  description: "Each object consists of an HDF5 file name optionally followed by a\n\
-    slash and an object name within the file (if no object is specified\nwithin the\
-    \ file then the contents of the root group are displayed).\nThe file name may\
-    \ include a printf(3C) integer format such as\n\"%05d\" to open a file family."
-  position: 1
-  name: file/OBJECT
-  optional: false
+  description: -h, -?, --help  Print a usage message and exit
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --address
   description: "Print raw data address.  If dataset is contiguous, address\nis offset\
     \ in file of beginning of raw data. If chunked,\nreturned list of addresses indicates\
     \ offset of each chunk.\nMust be used with -v, --verbose option.\nProvides no\
     \ information for non-dataset objects."
-  synonyms:
-  - -a
-  - --address
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Print the values of datasets
+  optional: true
   synonyms:
   - -d
   - --data
+  description: Print the values of datasets
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Prints messages from the HDF5 error stack as they occur.
+  optional: true
   synonyms:
   - --enable-error-stack
+  description: Prints messages from the HDF5 error stack as they occur.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --follow-symlinks
   description: "Follow symbolic links (soft links and external links)\nto display\
     \ target object information.\nWithout this option, h5ls identifies a symbolic\
     \ link\nas a soft link or external link and prints the value\nassigned to the\
     \ symbolic link; it does not provide any\ninformation regarding the target object\
     \ or determine\nwhether the link is a dangling link."
-  synonyms:
-  - --follow-symlinks
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-dangling-links
   description: "Must be used with --follow-symlinks option;\notherwise, h5ls shows\
     \ error message and returns an exit\ncode of 1.\nCheck for any symbolic links\
     \ (soft links or external links)\nthat do not resolve to an existing object (dataset,\
     \ group,\nor named datatype).\nIf any dangling link is found, this situation is\
     \ treated\nas an error and h5ls returns an exit code of 1."
-  synonyms:
-  - --no-dangling-links
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Print full path names instead of base names
+  optional: true
   synonyms:
   - -f
   - --full
+  description: Print full path names instead of base names
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Show information about a group, not its contents
+  optional: true
   synonyms:
   - -g
   - --group
+  description: Show information about a group, not its contents
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Label members of compound datasets
+  optional: true
   synonyms:
   - -l
   - --label
+  description: Label members of compound datasets
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: all groups recursively, avoiding cycles
+  optional: true
   synonyms:
   - -r
   - --recursive
+  description: all groups recursively, avoiding cycles
   args: !SimpleFlagArg
     name: List
-  optional: true
 - !Flag
-  description: Print 1-byte integer datasets as ASCII
+  optional: true
   synonyms:
   - -s
   - --string
+  description: Print 1-byte integer datasets as ASCII
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Use a machine-readable output format
+  optional: true
   synonyms:
   - -S
   - --simple
+  description: Use a machine-readable output format
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Set the number of columns of output
+  optional: true
   synonyms:
   - -wN
   - --width
+  description: Set the number of columns of output
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: Generate more verbose output
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: Generate more verbose output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Use the specified virtual file driver
+  optional: true
   synonyms:
   - --vfd
+  description: Use the specified virtual file driver
   args: !SimpleFlagArg
     name: DRIVER
-  optional: true
 - !Flag
-  description: Show raw data in hexadecimal format
+  optional: true
   synonyms:
   - -x
   - --hexdump
+  description: Show raw data in hexadecimal format
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Follow external links.\nReplaced by --follow-symlinks."
+  optional: true
   synonyms:
   - -E
   - --external
+  description: "Follow external links.\nReplaced by --follow-symlinks."
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: "Show all HDF5 error reporting\nReplaced by --enable-error-stack.\n"
+  optional: true
   synonyms:
   - -e
   - --errors
+  description: "Show all HDF5 error reporting\nReplaced by --enable-error-stack.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag
-  description: Print version number and exit
+  optional: true
   synonyms:
   - -V
   - --version
+  description: Print version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: h5ls [OPTIONS] file[/OBJECT] [file[/[OBJECT]...]\n  OPTIONS\n \
   \  -h, -?, --help  Print a usage message and exit\n   -a, --address   Print raw\
   \ data address.  If dataset is contiguous, address\n                   is offset\
@@ -201,3 +193,4 @@ help_text: "usage: h5ls [OPTIONS] file[/OBJECT] [file[/[OBJECT]...]\n  OPTIONS\n
   \ --enable-error-stack.\n"
 generated_using:
 - --help
+docker_image:

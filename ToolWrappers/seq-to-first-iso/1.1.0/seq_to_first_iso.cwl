@@ -3,17 +3,17 @@ id: seq_to_first_iso.cwl
 inputs:
 - id: in_output
   doc: name of output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_unlabelled_aa
   doc: amino acids with default abundance
-  type: string
+  type: string?
   inputBinding:
     prefix: --unlabelled-aa
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_input_file_name
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: name of output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - seq-to-first-iso

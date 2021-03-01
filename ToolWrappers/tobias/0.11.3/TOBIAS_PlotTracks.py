@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Directory, Int
+
+Tobias_Plottracks_V0_1_0 = CommandToolBuilder(tool="TOBIAS_PlotTracks", base_command=["TOBIAS", "PlotTracks"], inputs=[ToolInput(tag="in_bigwigs", input_type=Boolean(optional=True), prefix="--bigwigs", doc=InputDocumentation(doc="[ [ ...]]  One or more bigwigs to show. Note: All bigwigs within one '--\nbigwigs' argument will be normalized to each other. It is possible\nto give multiple '--bigwigs' arguments, which will be normalized\nindependently per group (required)")), ToolInput(tag="in_regions", input_type=Boolean(optional=True), prefix="--regions", doc=InputDocumentation(doc="Genomic regions to plot (required)")), ToolInput(tag="in_sites", input_type=Boolean(optional=True), prefix="--sites", doc=InputDocumentation(doc="Genomic sites to show in plot (optional)")), ToolInput(tag="in_highlight", input_type=Boolean(optional=True), prefix="--highlight", doc=InputDocumentation(doc="Regions to highlight in plot (optional)")), ToolInput(tag="in_gtf", input_type=Boolean(optional=True), prefix="--gtf", doc=InputDocumentation(doc="GTF file containing genes to show (optional)")), ToolInput(tag="in_width", input_type=Boolean(optional=True), prefix="--width", doc=InputDocumentation(doc="Width of plot in cm (default 15)")), ToolInput(tag="in_colors", input_type=Boolean(optional=True), prefix="--colors", doc=InputDocumentation(doc="[ [ ...]]   List of specific colors to use for plotting tracks")), ToolInput(tag="in_labels", input_type=Boolean(optional=True), prefix="--labels", doc=InputDocumentation(doc="[ [ ...]]   Labels for tracks (default: prefix of bigwig)")), ToolInput(tag="in_max_transcripts", input_type=Boolean(optional=True), prefix="--max-transcripts", doc=InputDocumentation(doc="Set a limit on number of transcripts per gene shown in plot\n(default: 1)")), ToolInput(tag="in_outdir", input_type=Directory(optional=True), prefix="--outdir", doc=InputDocumentation(doc="Output folder (default: plottracks_output)")), ToolInput(tag="in_verbosity", input_type=Int(optional=True), prefix="--verbosity", doc=InputDocumentation(doc="Level of output logging (0: silent, 1: errors/warnings, 2: info, 3:\nstats, 4: debug, 5: spam) (default: 3)\n"))], outputs=[ToolOutput(tag="out_outdir", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_outdir", type_hint=File()), doc=OutputDocumentation(doc="Output folder (default: plottracks_output)"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Tobias_Plottracks_V0_1_0().translate("wdl", allow_empty_container=True)
+

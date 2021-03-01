@@ -18,6 +18,9 @@ task Spaligner {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     datatype: "type of sequences: nanopore, pacbio"
     sequences: "path to fasta/fastq file with sequences"

@@ -3,12 +3,12 @@ id: agat_sp_separate_by_record_type.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GTF/GFF file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --gff
 - id: in_output
   doc: "Output folder. If no output folder provided, the default name\nwill be <split_result>."
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 - id: in_agat_sp_separate_by_record_type_do_tpl
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output folder. If no output folder provided, the default name\nwill be <split_result>."
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agat_sp_separate_by_record_type.pl

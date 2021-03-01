@@ -3,18 +3,19 @@ id: randomlinks.cwl
 inputs:
 - id: in_ruleset
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -ruleset
 - id: in_karyotype
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -karyotype
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - randomlinks

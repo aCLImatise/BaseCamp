@@ -24,6 +24,9 @@ task Frg2ta {
       ~{if (no_names) then "-nonames" else ""} \
       ~{if (prints_version_information) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     check: "Prints out those seqnames that are shorter than MINSEQ"
     min_seq: "sets MINSEQ.  Default is 64"

@@ -11,7 +11,7 @@ task MmseqsMsa2profile {
     Boolean? filter_msa
     Boolean? cov
     Boolean? qid
-    Boolean? qsc
+    Boolean? two_zero_dot_zero_zero_zero
     Boolean? max_seq_id
     Boolean? diff
     Boolean? msa_type
@@ -30,7 +30,7 @@ task MmseqsMsa2profile {
       ~{if (filter_msa) then "--filter-msa" else ""} \
       ~{if (cov) then "--cov" else ""} \
       ~{if (qid) then "--qid" else ""} \
-      ~{if (qsc) then "--qsc" else ""} \
+      ~{if (two_zero_dot_zero_zero_zero) then "-20.000" else ""} \
       ~{if (max_seq_id) then "--max-seq-id" else ""} \
       ~{if (diff) then "--diff" else ""} \
       ~{if (msa_type) then "--msa-type" else ""} \
@@ -38,6 +38,9 @@ task MmseqsMsa2profile {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     comp_bias_corr: "1               correct for locally biased amino acid composition [0,1]"
     match_mode: "0               0: Columns that have a residue in the first sequence are kept, 1: columns that have a residue in --match-ratio of all sequences are kept."
@@ -48,7 +51,7 @@ task MmseqsMsa2profile {
     filter_msa: "1               filter msa: 0: do not filter, 1: filter"
     cov: "0.000           filter output MSAs using min. fraction of query residues covered by matched sequences [0.0,1.0]"
     qid: "0.000           reduce diversity of output MSAs using min.seq. identity with query sequences [0.0,1.0]"
-    qsc: "-20.000         reduce diversity of output MSAs using min. score per aligned residue with query sequences [-50.0,100.0]"
+    two_zero_dot_zero_zero_zero: "reduce diversity of output MSAs using min. score per aligned residue with query sequences [-50.0,100.0]"
     max_seq_id: "0.900           reduce redundancy of output MSA using max. pairwise sequence identity [0.0,1.0]"
     diff: "1000            filter MSAs by selecting most diverse set of sequences, keeping at least this many seqs in each MSA block of length 50"
     msa_type: "2               MSA Type: cA3M 0, A3M 1, FASTA 2"

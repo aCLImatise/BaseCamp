@@ -22,6 +22,9 @@ task Trf {
       ~{if defined(maximum_tr_length) then ("-l " +  '"' + maximum_tr_length + '"') else ""} \
       ~{if (ngs) then "-ngs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     masked_sequence_file: "masked sequence file"
     flanking_sequence: "flanking sequence"

@@ -32,6 +32,9 @@ task Monoapihtml {
       ~{if (colorize) then "--colorize" else ""} \
       ~{if (lax) then "--lax" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     diff: "HTML diff file out output (omit for stdout)"
     ignore: "Ignore new, added, and removed members whose\\ndescription matches a given C# regular\\nexpression (see below)."

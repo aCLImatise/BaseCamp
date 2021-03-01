@@ -2,7 +2,7 @@ version 1.0
 
 task ScHicQualityControl {
   input {
-    String? schic_matrix_m
+    String? schic_matrix_scool
     String? outputs_cool
     Int? minimum_read_coverage
     Float? minimum_density
@@ -21,7 +21,7 @@ task ScHicQualityControl {
     scHicQualityControl \
       ~{sch_i_c} \
       ~{var_13} \
-      ~{if defined(schic_matrix_m) then ("--matrix " +  '"' + schic_matrix_m + '"') else ""} \
+      ~{if defined(schic_matrix_scool) then ("--matrix " +  '"' + schic_matrix_scool + '"') else ""} \
       ~{if defined(outputs_cool) then ("--outputScool " +  '"' + outputs_cool + '"') else ""} \
       ~{if defined(minimum_read_coverage) then ("--minimumReadCoverage " +  '"' + minimum_read_coverage + '"') else ""} \
       ~{if defined(minimum_density) then ("--minimumDensity " +  '"' + minimum_density + '"') else ""} \
@@ -34,8 +34,11 @@ task ScHicQualityControl {
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    schic_matrix_m: "scHi-C matrix, -m scool scHi-C matrix\\nThe single cell Hi-C interaction matrices to\\ninvestigate for QC. Needs to be in scool format\\n(default: None)"
+    schic_matrix_scool: "scHi-C matrix, -m scool scHi-C matrix\\nThe single cell Hi-C interaction matrices to\\ninvestigate for QC. Needs to be in scool format\\n(default: None)"
     outputs_cool: "scool matrix which contains only the filtered matrices\\n(default: filtered_matrices.scool)"
     minimum_read_coverage: "Remove all samples with a lower read coverage as this\\nvalue. (default: 1000000)"
     minimum_density: "Remove all samples with a lower read coverage as this\\nvalue. (default: 0.001)"

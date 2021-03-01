@@ -8,6 +8,9 @@ task CmconvertCmfile {
     cmconvert cmfile \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
   }

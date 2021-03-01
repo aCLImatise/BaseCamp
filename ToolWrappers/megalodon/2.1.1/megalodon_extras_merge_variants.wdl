@@ -14,6 +14,9 @@ task MegalodonExtrasMergeVariants {
       ~{if (overwrite) then "--overwrite" else ""} \
       ~{if (var_locations_on_disk) then "--var-locations-on-disk" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_megalodon_results_dir: "Output directory. Default:\\nmegalodon_merge_vars_results"
     overwrite: "Overwrite output directory if it exists."

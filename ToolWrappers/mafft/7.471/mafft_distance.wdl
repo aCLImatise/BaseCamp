@@ -12,6 +12,9 @@ task Mafftdistance {
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if (pd) then "-PD" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: ""
     pd: ""

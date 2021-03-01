@@ -38,6 +38,9 @@ task BlobtoolsCreate {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "FASTA file of assembly. Headers are split at whitespaces."
     type: "Assembly program used to create FASTA. If specified,\\ncoverage will be parsed from FASTA header.\\n(Parsing supported for 'spades', 'velvet', 'platanus')"

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Directory, Boolean
+
+Circexplorer2_Denovo_V0_1_0 = CommandToolBuilder(tool="CIRCexplorer2_denovo", base_command=["CIRCexplorer2", "denovo"], inputs=[ToolInput(tag="in_ref", input_type=String(optional=True), prefix="--ref", doc=InputDocumentation(doc="Gene annotation.")), ToolInput(tag="in_as", input_type=String(optional=True), prefix="--as", doc=InputDocumentation(doc="Detect alternative splicing and output.")), ToolInput(tag="in_as_type", input_type=String(optional=True), prefix="--as-type", doc=InputDocumentation(doc="Only check certain type (CE/RI/ASS) of AS events.")), ToolInput(tag="in_abs", input_type=String(optional=True), prefix="--abs", doc=InputDocumentation(doc="Detect alternative back-splicing and output.")), ToolInput(tag="in_bed", input_type=File(optional=True), prefix="--bed", doc=InputDocumentation(doc="Input file.")), ToolInput(tag="in_cuff", input_type=Directory(optional=True), prefix="--cuff", doc=InputDocumentation(doc="assemble folder output by CIRCexplorer2 assemble. [default: '']")), ToolInput(tag="in_top_hat", input_type=Directory(optional=True), prefix="--tophat", doc=InputDocumentation(doc="TopHat mapping folder.")), ToolInput(tag="in_pa_plus", input_type=Directory(optional=True), prefix="--pAplus", doc=InputDocumentation(doc="TopHat mapping directory for p(A)+ RNA-seq.")), ToolInput(tag="in_output", input_type=Directory(optional=True), prefix="--output", doc=InputDocumentation(doc="Output Folder. [default: denovo]")), ToolInput(tag="in_genome", input_type=File(optional=True), prefix="--genome", doc=InputDocumentation(doc="Genome FASTA file.")), ToolInput(tag="in_no_fix", input_type=Boolean(optional=True), prefix="--no-fix", doc=InputDocumentation(doc="No-fix mode (useful for species with poor gene annotations).")), ToolInput(tag="in_rp_km", input_type=Boolean(optional=True), prefix="--rpkm", doc=InputDocumentation(doc="Calculate RPKM for cassette exons."))], outputs=[ToolOutput(tag="out_cuff", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_cuff", type_hint=File()), doc=OutputDocumentation(doc="assemble folder output by CIRCexplorer2 assemble. [default: '']")), ToolOutput(tag="out_output", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="Output Folder. [default: denovo]"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Circexplorer2_Denovo_V0_1_0().translate("wdl", allow_empty_container=True)
+

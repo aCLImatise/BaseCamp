@@ -4,450 +4,450 @@ command:
 - run
 positional:
 - !Positional
-  description: --singularity-cachedir SINGULARITY_CACHEDIR
+  optional: false
   position: 0
   name: server.
-  optional: false
+  description: --singularity-cachedir SINGULARITY_CACHEDIR
 named:
 - !Flag
-  description: Caper does not take any action.
+  optional: true
   synonyms:
   - --dry-run
+  description: Caper does not take any action.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Prints all logs >= DEBUG level
+  optional: true
   synonyms:
   - -D
   - --debug
+  description: Prints all logs >= DEBUG level
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Workflow inputs JSON file
+  optional: true
   synonyms:
   - -i
   - --inputs
+  description: Workflow inputs JSON file
   args: !SimpleFlagArg
     name: INPUTS
-  optional: true
 - !Flag
-  description: Workflow options JSON file
+  optional: true
   synonyms:
   - -o
   - --options
+  description: Workflow options JSON file
   args: !SimpleFlagArg
     name: OPTIONS
-  optional: true
 - !Flag
-  description: Workflow labels JSON file
+  optional: true
   synonyms:
   - -l
   - --labels
+  description: Workflow labels JSON file
   args: !SimpleFlagArg
     name: LABELS
-  optional: true
 - !Flag
-  description: Zip file of imported subworkflows
+  optional: true
   synonyms:
   - -p
   - --imports
+  description: Zip file of imported subworkflows
   args: !SimpleFlagArg
     name: IMPORTS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --str-label
   description: "Caper's special label for a workflow This label will\nbe added to\
     \ a workflow labels JSON file as a value for\na key \"caper-label\". DO NOT USE\
     \ IRREGULAR CHARACTERS.\nUSE LETTERS, NUMBERS, DASHES AND UNDERSCORES ONLY\n(^[A-Za-z0-9\\\
     -\\_]+$) since this label is used to\ncompose a path for workflow's temporary\
     \ directory\n(tmp_dir/label/timestamp/)"
-  synonyms:
-  - -s
-  - --str-label
   args: !SimpleFlagArg
     name: STR_LABEL
-  optional: true
 - !Flag
-  description: Put a hold on a workflow when submitted to a Cromwell
+  optional: true
   synonyms:
   - --hold
+  description: Put a hold on a workflow when submitted to a Cromwell
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --use-gsutil-for-s3
   description: "Use gsutil CLI for direct trasnfer between S3 and GCS\nbuckets. Otherwise,\
     \ such file transfer will stream\nthrough local machine. Make sure that gsutil\
     \ is\ninstalled on your system and it has access to\ncredentials for AWS (e.g.\
     \ ~/.boto or\n~/.aws/credentials)."
-  synonyms:
-  - --use-gsutil-for-s3
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-deepcopy
   description: "(IMPORTANT) --deepcopy has been deprecated.\nDeepcopying is now activated\
     \ by default. This flag\ndisables deepcopy for JSON (.json), TSV (.tsv) and CSV\n\
     (.csv) files specified in an input JSON file\n(--inputs). Find all path/URI string\
     \ values in an\ninput JSON file and make copies of files on a\nlocal/remote storage\
     \ for a target backend. Make sure\nthat you have installed gsutil for GCS and\
     \ aws for S3."
-  synonyms:
-  - --no-deepcopy
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Ignore warnings from womtool.jar.
+  optional: true
   synonyms:
   - --ignore-womtool
+  description: Ignore warnings from womtool.jar.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Path or URL for Cromwell's womtool JAR file
+  optional: true
   synonyms:
   - --womtool
+  description: Path or URL for Cromwell's womtool JAR file
   args: !SimpleFlagArg
     name: WOMTOOL
-  optional: true
 - !Flag
-  description: "An optional directory path to output metadata JSON\nfile"
+  optional: true
   synonyms:
   - -m
   - --metadata-output
+  description: "An optional directory path to output metadata JSON\nfile"
   args: !SimpleFlagArg
     name: METADATA_OUTPUT
-  optional: true
 - !Flag
-  description: Cromwell Java heap size for "run" mode (java -Xmx)
+  optional: true
   synonyms:
   - --java-heap-run
+  description: Cromwell Java heap size for "run" mode (java -Xmx)
   args: !SimpleFlagArg
     name: JAVA_HEAP_RUN
-  optional: true
 - !Flag
-  description: Backend to run a workflow
+  optional: true
   synonyms:
   - -b
   - --backend
+  description: Backend to run a workflow
   args: !SimpleFlagArg
     name: BACKEND
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --docker
   description: "[DOCKER [DOCKER ...]]\nURI for Docker image (e.g. ubuntu:latest).\
     \ This can\nalso be used as a flag to use Docker image address\ndefined in your\
     \ WDL file as a comment (\"#CAPER\ndocker\")."
-  synonyms:
-  - --docker
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --singularity
   description: "[SINGULARITY [SINGULARITY ...]]\nURI or path for Singularity image\
     \ (e.g.\n~/.singularity/ubuntu-latest.simg,\ndocker://ubuntu:latest, shub://vsoch/hello-world).\n\
     This can also be used as a flag to use Docker image\naddress defined in your WDL\
     \ file as a comment (\"#CAPER\nsingularity\")."
-  synonyms:
-  - --singularity
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not build singularity image before running a\nworkflow."
+  optional: true
   synonyms:
   - --no-build-singularity
+  description: "Do not build singularity image before running a\nworkflow."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: SLURM partition
+  optional: true
   synonyms:
   - --slurm-partition
+  description: SLURM partition
   args: !SimpleFlagArg
     name: SLURM_PARTITION
-  optional: true
 - !Flag
-  description: SLURM account
+  optional: true
   synonyms:
   - --slurm-account
+  description: SLURM account
   args: !SimpleFlagArg
     name: SLURM_ACCOUNT
-  optional: true
 - !Flag
-  description: SLURM extra parameters. Must be double-quoted
+  optional: true
   synonyms:
   - --slurm-extra-param
+  description: SLURM extra parameters. Must be double-quoted
   args: !SimpleFlagArg
     name: SLURM_EXTRA_PARAM
-  optional: true
 - !Flag
-  description: SGE parallel environment. Check with "qconf -spl"
+  optional: true
   synonyms:
   - --sge-pe
+  description: SGE parallel environment. Check with "qconf -spl"
   args: !SimpleFlagArg
     name: SGE_PE
-  optional: true
 - !Flag
-  description: SGE queue. Check with "qconf -sql"
+  optional: true
   synonyms:
   - --sge-queue
+  description: SGE queue. Check with "qconf -sql"
   args: !SimpleFlagArg
     name: SGE_QUEUE
-  optional: true
 - !Flag
-  description: SGE extra parameters. Must be double-quoted
+  optional: true
   synonyms:
   - --sge-extra-param
+  description: SGE extra parameters. Must be double-quoted
   args: !SimpleFlagArg
     name: SGE_EXTRA_PARAM
-  optional: true
 - !Flag
-  description: PBS queue
+  optional: true
   synonyms:
   - --pbs-queue
+  description: PBS queue
   args: !SimpleFlagArg
     name: PBS_QUEUE
-  optional: true
 - !Flag
-  description: PBS extra parameters. Must be double-quoted
+  optional: true
   synonyms:
   - --pbs-extra-param
+  description: PBS extra parameters. Must be double-quoted
   args: !SimpleFlagArg
     name: PBS_EXTRA_PARAM
-  optional: true
 - !Flag
-  description: Cromwell metadata database type
+  optional: true
   synonyms:
   - --db
+  description: Cromwell metadata database type
   args: !ChoiceFlagArg
     choices: !!set
-      mysql:
-      file:
       in-memory:
+      file:
       postgresql:
-  optional: true
+      mysql:
 - !Flag
-  description: Milliseconds to wait for DB connection.
+  optional: true
   synonyms:
   - --db-timeout
+  description: Milliseconds to wait for DB connection.
   args: !SimpleFlagArg
     name: DB_TIMEOUT
-  optional: true
 - !Flag
-  description: "Default DB file for Cromwell's built-in HyperSQL\ndatabase."
+  optional: true
   synonyms:
   - --file-db
   - -d
+  description: "Default DB file for Cromwell's built-in HyperSQL\ndatabase."
   args: !SimpleFlagArg
     name: FILE_DB
-  optional: true
 - !Flag
-  description: MySQL Database IP address (e.g. localhost)
+  optional: true
   synonyms:
   - --mysql-db-ip
+  description: MySQL Database IP address (e.g. localhost)
   args: !SimpleFlagArg
     name: MYSQL_DB_IP
-  optional: true
 - !Flag
-  description: MySQL Database TCP/IP port (e.g. 3306)
+  optional: true
   synonyms:
   - --mysql-db-port
+  description: MySQL Database TCP/IP port (e.g. 3306)
   args: !SimpleFlagArg
     name: MYSQL_DB_PORT
-  optional: true
 - !Flag
-  description: MySQL DB username
+  optional: true
   synonyms:
   - --mysql-db-user
+  description: MySQL DB username
   args: !SimpleFlagArg
     name: MYSQL_DB_USER
-  optional: true
 - !Flag
-  description: MySQL DB password
+  optional: true
   synonyms:
   - --mysql-db-password
+  description: MySQL DB password
   args: !SimpleFlagArg
     name: MYSQL_DB_PASSWORD
-  optional: true
 - !Flag
-  description: MySQL DB name for Cromwell
+  optional: true
   synonyms:
   - --mysql-db-name
+  description: MySQL DB name for Cromwell
   args: !SimpleFlagArg
     name: MYSQL_DB_NAME
-  optional: true
 - !Flag
-  description: PostgreSQL DB IP address (e.g. localhost)
+  optional: true
   synonyms:
   - --postgresql-db-ip
+  description: PostgreSQL DB IP address (e.g. localhost)
   args: !SimpleFlagArg
     name: POSTGRESQL_DB_IP
-  optional: true
 - !Flag
-  description: PostgreSQL DB TCP/IP port (e.g. 5432)
+  optional: true
   synonyms:
   - --postgresql-db-port
+  description: PostgreSQL DB TCP/IP port (e.g. 5432)
   args: !SimpleFlagArg
     name: POSTGRESQL_DB_PORT
-  optional: true
 - !Flag
-  description: PostgreSQL DB username
+  optional: true
   synonyms:
   - --postgresql-db-user
+  description: PostgreSQL DB username
   args: !SimpleFlagArg
     name: POSTGRESQL_DB_USER
-  optional: true
 - !Flag
-  description: PostgreSQL DB password
+  optional: true
   synonyms:
   - --postgresql-db-password
+  description: PostgreSQL DB password
   args: !SimpleFlagArg
     name: POSTGRESQL_DB_PASSWORD
-  optional: true
 - !Flag
-  description: PostgreSQL DB name for Cromwell
+  optional: true
   synonyms:
   - --postgresql-db-name
+  description: PostgreSQL DB name for Cromwell
   args: !SimpleFlagArg
     name: POSTGRESQL_DB_NAME
-  optional: true
 - !Flag
-  description: Path or URL for Cromwell JAR file
+  optional: true
   synonyms:
   - --cromwell
+  description: Path or URL for Cromwell JAR file
   args: !SimpleFlagArg
     name: CROMWELL
-  optional: true
 - !Flag
-  description: "Number of concurrent tasks. \"config.concurrent-job-\nlimit\" in Cromwell\
-    \ backend configuration for each\nbackend"
+  optional: true
   synonyms:
   - --max-concurrent-tasks
+  description: "Number of concurrent tasks. \"config.concurrent-job-\nlimit\" in Cromwell\
+    \ backend configuration for each\nbackend"
   args: !SimpleFlagArg
     name: MAX_CONCURRENT_TASKS
-  optional: true
 - !Flag
-  description: "Number of concurrent workflows. \"system.max-\nconcurrent-workflows\"\
-    \ in backend configuration"
+  optional: true
   synonyms:
   - --max-concurrent-workflows
+  description: "Number of concurrent workflows. \"system.max-\nconcurrent-workflows\"\
+    \ in backend configuration"
   args: !SimpleFlagArg
     name: MAX_CONCURRENT_WORKFLOWS
-  optional: true
 - !Flag
-  description: "Number of retries for failing tasks. equivalent to\n\"maxRetries\"\
-    \ in workflow options JSON file."
+  optional: true
   synonyms:
   - --max-retries
+  description: "Number of retries for failing tasks. equivalent to\n\"maxRetries\"\
+    \ in workflow options JSON file."
   args: !SimpleFlagArg
     name: MAX_RETRIES
-  optional: true
 - !Flag
-  description: "Disable Cromwell's call caching, which re-uses outputs\nfrom previous\
-    \ workflows"
+  optional: true
   synonyms:
   - --disable-call-caching
+  description: "Disable Cromwell's call caching, which re-uses outputs\nfrom previous\
+    \ workflows"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Custom Cromwell backend configuration file to override\nall"
+  optional: true
   synonyms:
   - --backend-file
+  description: "Custom Cromwell backend configuration file to override\nall"
   args: !SimpleFlagArg
     name: BACKEND_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --soft-glob-output
   description: "Use soft-linking when globbing outputs for a\nfilesystem that does\
     \ not allow hard-linking. e.g.\nbeeGFS. This flag does not work with backends\
     \ based on\na Docker container. i.e. gcp and aws. Also, it does\nnot work with\
     \ local backends (local/slurm/sge/pbs)\nwith --docker. However, it works fine\
     \ with\n--singularity."
-  synonyms:
-  - --soft-glob-output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Output directory for local backend
+  optional: true
   synonyms:
   - --out-dir
+  description: Output directory for local backend
   args: !SimpleFlagArg
     name: OUT_DIR
-  optional: true
 - !Flag
-  description: Temporary directory for local backend
+  optional: true
   synonyms:
   - --tmp-dir
+  description: Temporary directory for local backend
   args: !SimpleFlagArg
     name: TMP_DIR
-  optional: true
 - !Flag
-  description: GC project
+  optional: true
   synonyms:
   - --gcp-prj
+  description: GC project
   args: !SimpleFlagArg
     name: GCP_PRJ
-  optional: true
 - !Flag
-  description: GCP zones (e.g. us-west1-b,us-central1-b)
+  optional: true
   synonyms:
   - --gcp-zones
+  description: GCP zones (e.g. us-west1-b,us-central1-b)
   args: !SimpleFlagArg
     name: GCP_ZONES
-  optional: true
 - !Flag
-  description: "Duplication strategy for call-cached outputs for GCP\nbackend: copy:\
-    \ make a copy, reference: refer to old\noutput in metadata.json."
+  optional: true
   synonyms:
   - --gcp-call-caching-dup-strat
+  description: "Duplication strategy for call-cached outputs for GCP\nbackend: copy:\
+    \ make a copy, reference: refer to old\noutput in metadata.json."
   args: !ChoiceFlagArg
     choices: !!set
-      copy:
       reference:
-  optional: true
+      copy:
 - !Flag
-  description: Output GCS bucket for GCP backend
+  optional: true
   synonyms:
   - --out-gcs-bucket
+  description: Output GCS bucket for GCP backend
   args: !SimpleFlagArg
     name: OUT_GCS_BUCKET
-  optional: true
 - !Flag
-  description: Temporary GCS bucket for GCP backend
+  optional: true
   synonyms:
   - --tmp-gcs-bucket
+  description: Temporary GCS bucket for GCP backend
   args: !SimpleFlagArg
     name: TMP_GCS_BUCKET
-  optional: true
 - !Flag
-  description: ARN for AWS Batch
+  optional: true
   synonyms:
   - --aws-batch-arn
+  description: ARN for AWS Batch
   args: !SimpleFlagArg
     name: AWS_BATCH_ARN
-  optional: true
 - !Flag
-  description: AWS region (e.g. us-west-1)
+  optional: true
   synonyms:
   - --aws-region
+  description: AWS region (e.g. us-west-1)
   args: !SimpleFlagArg
     name: AWS_REGION
-  optional: true
 - !Flag
-  description: Output S3 bucket for AWS backend
+  optional: true
   synonyms:
   - --out-s3-bucket
+  description: Output S3 bucket for AWS backend
   args: !SimpleFlagArg
     name: OUT_S3_BUCKET
-  optional: true
 - !Flag
-  description: "Temporary S3 bucket for AWS backend\n"
+  optional: true
   synonyms:
   - --tmp-s3-bucket
+  description: "Temporary S3 bucket for AWS backend\n"
   args: !SimpleFlagArg
     name: TMP_S3_BUCKET
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: caper run [-h] [--dry-run] [-D] [-i INPUTS] [-o OPTIONS] [-l LABELS]\n\
@@ -595,3 +595,4 @@ help_text: "usage: caper run [-h] [--dry-run] [-D] [-i INPUTS] [-o OPTIONS] [-l 
   \ TMP_S3_BUCKET\n                        Temporary S3 bucket for AWS backend\n"
 generated_using:
 - --help
+docker_image:

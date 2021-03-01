@@ -14,6 +14,9 @@ task ReadDuplicationpy {
       ~{if defined(up_limit) then ("--up-limit " +  '"' + up_limit + '"') else ""} \
       ~{if defined(mapq) then ("--mapq " +  '"' + mapq + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Alignment file in BAM or SAM format."
     out_prefix: "Prefix of output files(s)."

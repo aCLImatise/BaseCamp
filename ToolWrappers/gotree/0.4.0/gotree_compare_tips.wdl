@@ -20,6 +20,9 @@ task GotreeCompareTips {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     priority_over_f: "priority over -f"
     tip_file: "Tip File (Optional) (default \\\"none\\\")"

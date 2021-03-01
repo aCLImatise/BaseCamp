@@ -30,8 +30,6 @@ task Rdkit2fps {
     Int? bit_flags
     Boolean? pattern
     Boolean? sub_struct
-    Boolean? rdma_ccs_slash_two
-    Boolean? rdma_ccs_slash_one
     String filenames
     String smiles
     String sdf
@@ -68,10 +66,11 @@ task Rdkit2fps {
       ~{if defined(is_query) then ("--isQuery " +  '"' + is_query + '"') else ""} \
       ~{if defined(bit_flags) then ("--bitFlags " +  '"' + bit_flags + '"') else ""} \
       ~{if (pattern) then "--pattern" else ""} \
-      ~{if (sub_struct) then "--substruct" else ""} \
-      ~{if (rdma_ccs_slash_two) then "--rdmaccs/2" else ""} \
-      ~{if (rdma_ccs_slash_one) then "--rdmaccs/1" else ""}
+      ~{if (sub_struct) then "--substruct" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fp_size: "number of bits in the fingerprint. Default of 2048 for\\nRDK, Morgan, topological torsion, atom pair, and\\npattern fingerprints, and 512 for Avalon fingerprints"
     from_atoms: ",INT,...\\nfingerprint generation must use these atom indices\\n(out of range indices are ignored)"
@@ -101,8 +100,6 @@ task Rdkit2fps {
     bit_flags: "bit flags, SSSBits are 32767 and similarity bits are\\n15761407 (default=15761407)"
     pattern: "generate (substructure) pattern fingerprints"
     sub_struct: "generate ChemFP substructure fingerprints"
-    rdma_ccs_slash_two: "generate 166 bit RDKit/MACCS fingerprints (version 2)"
-    rdma_ccs_slash_one: "use the version 1 definition for --rdmaccs"
     filenames: "input structure files (default is stdin)"
     smiles: "smi, ism, usm, can, smi.gz, ism.gz, usm.gz, can.gz"
     sdf: "sdf, mol, sd, mdl, sdf.gz, mol.gz, sd.gz, mdl.gz"

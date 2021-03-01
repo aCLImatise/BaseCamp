@@ -1,0 +1,138 @@
+!Command
+command:
+- comparem
+- classify
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: output_dir
+  description: Identify similar genomes based on AAI value.
+- !Positional
+  optional: false
+  position: 0
+  name: query_gene_file
+  description: file with all query genes
+- !Positional
+  optional: false
+  position: 1
+  name: target_gene_file
+  description: file with all target genes
+- !Positional
+  optional: false
+  position: 2
+  name: sorted_hit_table
+  description: "sorted file indicating genes passing sequence\nsimilarity criteria"
+- !Positional
+  optional: false
+  position: 3
+  name: output_dir
+  description: output directory
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --num_top_targets
+  description: "number of top scoring target genomes to report per\nquery genome (default:\
+    \ 1)"
+  args: !SimpleFlagArg
+    name: NUM_TOP_TARGETS
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --taxonomy_file
+  description: "file indicating taxonomic identification of all target\ngenomes"
+  args: !SimpleFlagArg
+    name: TAXONOMY_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --evalue
+  description: "e-value cutoff for identifying initial blast hits\n(default: 0.001)"
+  args: !SimpleFlagArg
+    name: EVALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --per_identity
+  description: 'percent identity for defining homology (default: 30.0)'
+  args: !SimpleFlagArg
+    name: PER_IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --per_aln_len
+  description: "percent alignment length of query sequence for\ndefining homology\
+    \ (default: 70.0)"
+  args: !SimpleFlagArg
+    name: PER_ALN_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --file_ext
+  description: 'extension of files to process (default: fna)'
+  args: !SimpleFlagArg
+    name: FILE_EXT
+- !Flag
+  optional: true
+  synonyms:
+  - --keep_rbhs
+  description: create file with reciprocal best hits
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cpus
+  description: 'number of CPUs to use (default: 1)'
+  args: !SimpleFlagArg
+    name: CPUS
+- !Flag
+  optional: true
+  synonyms:
+  - --silent
+  description: suppress output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: comparem classify [-h] [-k NUM_TOP_TARGETS] [-t TAXONOMY_FILE]\n\
+  \                         [-e EVALUE] [-p PER_IDENTITY] [-a PER_ALN_LEN]\n     \
+  \                    [-x FILE_EXT] [--keep_rbhs] [-c CPUS] [--silent]\n        \
+  \                 query_gene_file target_gene_file sorted_hit_table\n          \
+  \               output_dir\n\nIdentify similar genomes based on AAI value.\n\npositional\
+  \ arguments:\n  query_gene_file       file with all query genes\n  target_gene_file\
+  \      file with all target genes\n  sorted_hit_table      sorted file indicating\
+  \ genes passing sequence\n                        similarity criteria\n  output_dir\
+  \            output directory\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -k, --num_top_targets NUM_TOP_TARGETS\n        \
+  \                number of top scoring target genomes to report per\n          \
+  \              query genome (default: 1)\n  -t, --taxonomy_file TAXONOMY_FILE\n\
+  \                        file indicating taxonomic identification of all target\n\
+  \                        genomes\n  -e, --evalue EVALUE   e-value cutoff for identifying\
+  \ initial blast hits\n                        (default: 0.001)\n  -p, --per_identity\
+  \ PER_IDENTITY\n                        percent identity for defining homology (default:\
+  \ 30.0)\n  -a, --per_aln_len PER_ALN_LEN\n                        percent alignment\
+  \ length of query sequence for\n                        defining homology (default:\
+  \ 70.0)\n  -x, --file_ext FILE_EXT\n                        extension of files to\
+  \ process (default: fna)\n  --keep_rbhs           create file with reciprocal best\
+  \ hits\n  -c, --cpus CPUS       number of CPUs to use (default: 1)\n  --silent \
+  \             suppress output\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/comparem:0.1.2--py_0

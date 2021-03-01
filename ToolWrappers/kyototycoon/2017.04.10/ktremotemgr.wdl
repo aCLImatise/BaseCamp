@@ -94,6 +94,9 @@ task Ktremotemgr {
       ~{if defined(iv) then ("-iv " +  '"' + iv + '"') else ""} \
       ~{if defined(m_port) then ("-mport " +  '"' + m_port + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     limit: ""
     px: ""

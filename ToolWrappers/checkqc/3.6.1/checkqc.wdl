@@ -16,6 +16,9 @@ task Checkqc {
       ~{if defined(downgrade_errors) then ("--downgrade-errors " +  '"' + downgrade_errors + '"') else ""} \
       ~{if (use_closest_read_length) then "--use-closest-read-length" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Path to the checkQC configuration file"
     json: "Print the results of the run as json to stdout"

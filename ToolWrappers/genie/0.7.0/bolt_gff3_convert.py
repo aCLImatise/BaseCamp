@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Boolean, File, Int
+
+Bolt_Gff3_Convert_V0_1_0 = CommandToolBuilder(tool="bolt_gff3_convert", base_command=["bolt", "gff3", "convert"], inputs=[ToolInput(tag="in_attributes", input_type=String(optional=True), prefix="--attributes", doc=InputDocumentation(doc="select attributes by key")), ToolInput(tag="in_end", input_type=Boolean(optional=True), prefix="--end", doc=InputDocumentation(doc="select end")), ToolInput(tag="in_file_path", input_type=File(optional=True), prefix="--filepath", doc=InputDocumentation(doc="A bam file (*require)")), ToolInput(tag="in_header", input_type=Boolean(optional=True), prefix="--header", doc=InputDocumentation(doc="hiding headers")), ToolInput(tag="in_limit", input_type=Int(optional=True), prefix="--limit", doc=InputDocumentation(doc="Output Limit (default -1)")), ToolInput(tag="in_phase", input_type=Boolean(optional=True), prefix="--phase", doc=InputDocumentation(doc="select phase")), ToolInput(tag="in_replacement", input_type=String(optional=True), prefix="--replacement", doc=InputDocumentation(doc="the replacement character if there is a blank value")), ToolInput(tag="in_score", input_type=Boolean(optional=True), prefix="--score", doc=InputDocumentation(doc="select score")), ToolInput(tag="in_separator", input_type=String(optional=True), prefix="--separator", doc=InputDocumentation(doc="the separator of each values (default '\t')")), ToolInput(tag="in_seq_id", input_type=Boolean(optional=True), prefix="--seqid", doc=InputDocumentation(doc="select seqid")), ToolInput(tag="in_source", input_type=Boolean(optional=True), prefix="--source", doc=InputDocumentation(doc="select source")), ToolInput(tag="in_start", input_type=Boolean(optional=True), prefix="--start", doc=InputDocumentation(doc="select start")), ToolInput(tag="in_strand", input_type=Boolean(optional=True), prefix="--strand", doc=InputDocumentation(doc="select strand")), ToolInput(tag="in_type", input_type=Boolean(optional=True), prefix="--type", doc=InputDocumentation(doc="select type")), ToolInput(tag="in_genie", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_gff_three", input_type=Int(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_convert", input_type=String(), position=2, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Bolt_Gff3_Convert_V0_1_0().translate("wdl", allow_empty_container=True)
+

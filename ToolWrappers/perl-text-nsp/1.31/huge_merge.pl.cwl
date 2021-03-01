@@ -3,7 +3,7 @@ id: huge_merge.pl.cwl
 inputs:
 - id: in_keep
   doc: "Keep the unmerged files.\nThe unmerged files are deleted by default."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep
 - id: in_source_dir
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - huge-merge.pl

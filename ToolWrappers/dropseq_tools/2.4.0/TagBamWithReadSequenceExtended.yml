@@ -1,0 +1,107 @@
+!Command
+command:
+- TagBamWithReadSequenceExtended
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: null.
+  description: TAG_QUALITY=String            The tag for the barcode quality.  The
+    number of bases that are below the quality
+- !Positional
+  optional: false
+  position: 1
+  name: threshold.
+  description: "Default value: XQ. This option can be set to 'null' to clear the default"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: (default 4g)
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: final command line before executing
+  args: !SimpleFlagArg
+    name: echo
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: /usr/local/bin/TagBamWithReadSequenceExtended [-m <jvm_heap_size>]\
+  \ [-v] program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
+  \ command line before executing\n\nProgram options:\nUSAGE: TagBamWithReadSequenceExtended\
+  \ [options]\n\nAdds a BAM tag to every read of the defined range of bases of the\
+  \ sequence of the 1st or 2nd read.  Reads must be paired\nfor this program to run.\n\
+  Version: 2.4.0(3d2b3d8_1600201514)\n\n\nOptions:\n\n--help\n-h                 \
+  \           Displays options specific to this tool.\n\n--stdhelp\n-H           \
+  \                 Displays options specific to this tool AND options common to all\
+  \ Picard command line\n                              tools.\n\n--version       \
+  \              Displays program version.\n\nINPUT=File\nI=File                 \
+  \       The input SAM or BAM file to analyze.  Required. \n\nOUTPUT=File\nO=File\
+  \                        Output bam  Required. \n\nSUMMARY=File                \
+  \  Summary of barcode base quality  Default value: null. \n\nBASE_RANGE=String \
+  \            Base range to extract, seperated by a dash.  IE: 1-4.  Can extract\
+  \ multiple ranges by\n                              seperating them by a colon.\
+  \  For example 1-4:17-22 extracts the first 4 bases, then the\n                \
+  \              17-22 bases, and glues the sequence together into a single sequence\
+  \ for a tag.  Required. \n\nBARCODED_READ=Integer         The sequence can be from\
+  \ the first or second read [1/2].    Required. \n\nTAG_BARCODED_READ=Boolean   \
+  \  Add the tag to the sequence the read came from? If false, the read that does\
+  \ not have the\n                              barcode gets the tag.  If true, set\
+  \ the tag on the barcoded read.  Default value: false.\n                       \
+  \       This option can be set to 'null' to clear the default value. Possible values:\
+  \ {true,\n                              false} \n\nDISCARD_READ=Boolean        \
+  \  Discard the read the sequence came from?.  If this is true, then the remaining\
+  \ read is\n                              marked as unpaired.  If the read is unpaired,\
+  \ then you can't discard a read.  Default\n                              value:\
+  \ false. This option can be set to 'null' to clear the default value. Possible\n\
+  \                              values: {true, false} \n\nHARD_CLIP_BASES=Boolean\
+  \       Should the bases selected for the tag be hard clipped from the read?  BE\
+  \ VERY CAREFUL WITH\n                              THIS FEATURE, FOR EXPERTS ONLY.\
+  \  NOT NEEDED FOR STANDARD DROPSEQ DATA PROCESSING.Don't use\n                 \
+  \             on aligned data, does NOT change cigar strings  Default value: false.\
+  \ This option can be\n                              set to 'null' to clear the default\
+  \ value. Possible values: {true, false} \n\nBASE_QUALITY=Integer          Minimum\
+  \ base quality required for barcode  Default value: 10. This option can be set to\n\
+  \                              'null' to clear the default value. \n\nNUM_BASES_BELOW_QUALITY=Integer\n\
+  \                              Number of bases below minimum base quality to fail\
+  \ the barcode.  Default value: 1. This\n                              option can\
+  \ be set to 'null' to clear the default value. \n\nTAG_NAME=String             \
+  \  Barcode tag.  This is typically X plus one more capitalized alpha.  For example,\
+  \ 'XS',\n                              which is the default.  Default value: XS.\
+  \ This option can be set to 'null' to clear the\n                              default\
+  \ value. \n\nBARCODE_QUALITY_TAG=String    The tag for the barcode read quality\
+  \ scores for every base in the barcode.  Default value:\n                      \
+  \        null. \n\nTAG_QUALITY=String            The tag for the barcode quality.\
+  \  The number of bases that are below the quality\n                            \
+  \  threshold.  Default value: XQ. This option can be set to 'null' to clear the\
+  \ default\n                              value. \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/dropseq_tools:2.4.0--0

@@ -3,22 +3,22 @@ id: vtools_report_meta_analysis.cwl
 inputs:
 - id: in_beta
   doc: column number of beta
-  type: long
+  type: long?
   inputBinding:
     prefix: --beta
 - id: in_pval
   doc: column number of p-value
-  type: long
+  type: long?
   inputBinding:
     prefix: --pval
 - id: in_se
   doc: column number of standard error
-  type: long
+  type: long?
   inputBinding:
     prefix: --se
 - id: in_size
   doc: column number of sample size
-  type: long
+  type: long?
   inputBinding:
     prefix: --size
 - id: in_link
@@ -29,19 +29,19 @@ inputs:
 - id: in_method
   doc: "Method (choose from \"ssb\" for sample based method and\n\"ivb\" for inverse\
     \ variance based method), default set\nto \"ssb\""
-  type: string
+  type: string?
   inputBinding:
     prefix: --method
 - id: in_to_db
   doc: "will write the results also to a sqlite3 database\ncompatible with vtools\
     \ associate result format"
-  type: long
+  type: long?
   inputBinding:
     prefix: --to_db
 - id: in_verbosity
   doc: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
     \ to standard output (default to\n1).\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbosity
 - id: in_file
@@ -54,6 +54,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vtools_report

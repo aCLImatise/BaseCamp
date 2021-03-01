@@ -16,6 +16,9 @@ task Mol2rtfpy {
       ~{if defined(original_residue_name) then ("-r " +  '"' + original_residue_name + '"') else ""} \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n: "[--ref reference_rtf_file]"
     input_mol_file: "Input mol2 file"

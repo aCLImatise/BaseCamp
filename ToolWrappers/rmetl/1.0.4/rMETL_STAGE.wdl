@@ -8,6 +8,9 @@ task RMETLSTAGE {
     rMETL STAGE \
       ~{rm_etl}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rm_etl: ""
   }

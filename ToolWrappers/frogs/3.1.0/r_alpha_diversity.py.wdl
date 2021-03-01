@@ -20,6 +20,9 @@ task RAlphaDiversitypy {
       ~{if defined(alpha_out) then ("--alpha-out " +  '"' + alpha_out + '"') else ""} \
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Keep temporary files to debug program."
     var_exp: "The experiment variable used to aggregate sample\\ndiversities."

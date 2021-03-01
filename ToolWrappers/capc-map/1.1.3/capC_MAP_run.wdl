@@ -10,6 +10,9 @@ task CapCMAPRun {
       ~{if defined(configuration_file) then ("-c " +  '"' + configuration_file + '"') else ""} \
       ~{if defined(directory_created_output) then ("-o " +  '"' + directory_created_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     configuration_file: "configuration file"
     directory_created_output: "directory to be created for output"

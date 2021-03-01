@@ -3,85 +3,85 @@ command:
 - svm_grid_modelling_singlet.py
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: grid.py
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: grid_options
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 2
   name: svm_options
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 3
   name: dataset
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -log2c
   description: "{begin,end,step | \"null\"} : set the range of c (default -5,15,2)\n\
     begin,end,step -- c_range = 2^{begin,...,begin+k*step,...,end}\n\"null\"     \
     \    -- do not grid with c"
-  synonyms:
-  - -log2c
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -log2g
   description: "{begin,end,step | \"null\"} : set the range of g (default 3,-15,-2)\n\
     begin,end,step -- g_range = 2^{begin,...,begin+k*step,...,end}\n\"null\"     \
     \    -- do not grid with g"
-  synonyms:
-  - -log2g
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': n-fold cross validation (default 5)'
+  optional: true
   synonyms:
   - -v
+  description: ': n-fold cross validation (default 5)'
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: ': set svm executable path and name'
+  optional: true
   synonyms:
   - -svmtrain
+  description: ': set svm executable path and name'
   args: !SimpleFlagArg
     name: pathname
-  optional: true
 - !Flag
-  description: "{pathname | \"null\"} :\npathname -- set gnuplot executable path and\
-    \ name\n\"null\"   -- do not plot"
+  optional: true
   synonyms:
   - -gnuplot
+  description: "{pathname | \"null\"} :\npathname -- set gnuplot executable path and\
+    \ name\n\"null\"   -- do not plot"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "{pathname | \"null\"} : (default dataset.out)\npathname -- set output\
-    \ file path and name\n\"null\"   -- do not output file"
+  optional: true
   synonyms:
   - -out
+  description: "{pathname | \"null\"} : (default dataset.out)\npathname -- set output\
+    \ file path and name\n\"null\"   -- do not output file"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': set graphic output file path and name (default dataset.png)'
+  optional: true
   synonyms:
   - -png
+  description: ': set graphic output file path and name (default dataset.png)'
   args: !SimpleFlagArg
     name: pathname
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -resume
   description: "[pathname] : resume the grid task using an existing output file (default\
     \ pathname is dataset.out)\nThis is experimental. Try this option only if some\
     \ parameters have been checked for the SAME data."
-  synonyms:
-  - -resume
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -103,3 +103,4 @@ help_text: "Usage: grid.py [grid_options] [svm_options] dataset\n\ngrid_options 
   \    This is experimental. Try this option only if some parameters have been checked\
   \ for the SAME data.\n\nsvm_options : additional options for svm-train\n"
 generated_using: []
+docker_image:

@@ -74,6 +74,9 @@ task Rsegdiff {
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "domain output file"
     score: "Posterior scores file"

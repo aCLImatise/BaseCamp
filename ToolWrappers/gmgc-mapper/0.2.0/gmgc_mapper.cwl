@@ -3,22 +3,22 @@ id: gmgc_mapper.cwl
 inputs:
 - id: in_input
   doc: 'Path to the input genome FASTA file. (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: "Output directory (will be created if non-existent)\n(default: None)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 - id: in_nt_genes
   doc: "Path to the input DNA gene file (FASTA format)\n(default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --nt-genes
 - id: in_aa_genes
   doc: "Path to the input amino acid gene file (FASTA format)\n(default: None)\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --aa-genes
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output directory (will be created if non-existent)\n(default: None)"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gmgc-mapper

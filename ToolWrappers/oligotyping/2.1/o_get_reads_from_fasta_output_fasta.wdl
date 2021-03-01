@@ -16,6 +16,9 @@ task OgetreadsfromfastaOutputFasta {
       ~{output_fast_a} \
       ~{if (s) then "-S" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s: ""
     o_get_reads_from_fast_a: ""

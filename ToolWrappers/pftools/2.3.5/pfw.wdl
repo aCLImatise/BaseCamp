@@ -18,6 +18,9 @@ task Pfw {
       ~{if (valuetotal_weight_default) then "-W" else ""} \
       ~{if (hmn_x_rw) then "-hmNXRW" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_sequences_msa: ": input sequences in MSA format."
     valuenumber_shuffles_sequence: "<value>:\\nnumber of shuffles per sequence (default: 100)."

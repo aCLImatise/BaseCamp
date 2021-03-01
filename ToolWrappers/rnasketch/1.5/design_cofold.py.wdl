@@ -32,6 +32,9 @@ task Designcofoldpy {
       ~{if defined(reporter) then ("--reporter " +  '"' + reporter + '"') else ""} \
       ~{if defined(q) then ("-q " +  '"' + q + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_custom_structures: "Read custom structures and sequence constraints from"
     temperature: "Temperature of the energy calculations."

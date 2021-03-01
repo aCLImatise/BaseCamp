@@ -12,6 +12,9 @@ task FastBlockSearch {
       ~{seqs_dot_fa} \
       ~{fam_dot_pr_fl}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_blocks_search: ""
     seqs_dot_fa: ""

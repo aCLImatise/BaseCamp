@@ -18,6 +18,9 @@ task Dbxtax {
       ~{if (date) then "-date" else ""} \
       ~{if (index_outdir) then "-indexoutdir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory: "directory  [.] Database directory"
     fields: "menu       [*] Index fields (Values: id (ID); acc\\n(Synonym); tax (Scientific name); rnk\\n(Rank); up (Parent); gc (Genetics code); mgc\\n(Mitochondrial genetic code))"

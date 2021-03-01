@@ -14,6 +14,9 @@ task CompareTaxa {
       ~{if defined(filtered_tax_on_a) then ("--filtered-taxon-a " +  '"' + filtered_tax_on_a + '"') else ""} \
       ~{if defined(filtered_tax_on_b) then ("--filtered-taxon-b " +  '"' + filtered_tax_on_b + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     unfiltered_tax_on_a: "genome IDs for taxon A as deduced from phylogenetic tree of unfiltered concatemers"
     unfiltered_tax_on_b: "genome IDs for taxon B as deduced from phylogenetic tree of unfiltered concatemers"

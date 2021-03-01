@@ -6,8 +6,8 @@ task Hmmemit {
     Int? number_seqs_sample
     Boolean? _emit_alignment
     Boolean? emit_simple_sequence
-    Boolean? emit_minl_minu
-    Boolean? sample_sequences_profile
+    Boolean? emit_sequence_reqs
+    Boolean? sample_sequences_model
     Int? set_expected_length
     Boolean? local
     Boolean? uni_local
@@ -24,8 +24,8 @@ task Hmmemit {
       ~{if defined(number_seqs_sample) then ("-N " +  '"' + number_seqs_sample + '"') else ""} \
       ~{if (_emit_alignment) then "-a" else ""} \
       ~{if (emit_simple_sequence) then "-c" else ""} \
-      ~{if (emit_minl_minu) then "-C" else ""} \
-      ~{if (sample_sequences_profile) then "-p" else ""} \
+      ~{if (emit_sequence_reqs) then "-C" else ""} \
+      ~{if (sample_sequences_model) then "-p" else ""} \
       ~{if defined(set_expected_length) then ("-L " +  '"' + set_expected_length + '"') else ""} \
       ~{if (local) then "--local" else ""} \
       ~{if (uni_local) then "--unilocal" else ""} \
@@ -36,13 +36,16 @@ task Hmmemit {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     send_sequence_output: ": send sequence output to file <f>, not stdout"
     number_seqs_sample: ": number of seqs to sample  [1]  (n>0)"
     _emit_alignment: ": emit alignment"
     emit_simple_sequence: ": emit simple majority-rule consensus sequence"
-    emit_minl_minu: ": emit fancier consensus sequence (req's --minl, --minu)"
-    sample_sequences_profile: ": sample sequences from profile, not core model"
+    emit_sequence_reqs: ": emit fancier consensus sequence (req's --minl, --minu)"
+    sample_sequences_model: ": sample sequences from profile, not core model"
     set_expected_length: ": set expected length from profile to <n>  [400]"
     local: ": configure profile in multihit local mode  [default]"
     uni_local: ": configure profile in unilocal mode"

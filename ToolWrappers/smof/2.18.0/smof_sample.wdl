@@ -4,18 +4,21 @@ task SmofSample {
   input {
     Int? number
     String? seed
-    String input_fasta_default
+    String input_fasta_sequence
   }
   command <<<
     smof sample \
-      ~{input_fasta_default} \
+      ~{input_fasta_sequence} \
       ~{if defined(number) then ("--number " +  '"' + number + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number: "sample size (default=1)"
     seed: "set random seed (for reproducibility/debugging)"
-    input_fasta_default: "input fasta sequence (default = stdin)"
+    input_fasta_sequence: "input fasta sequence (default = stdin)"
   }
   output {
     File out_stdout = stdout()

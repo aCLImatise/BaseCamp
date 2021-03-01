@@ -20,6 +20,9 @@ task RefgenieInit {
       ~{if defined(remote_url_base) then ("--remote-url-base " +  '"' + remote_url_base + '"') else ""} \
       ~{if defined(settings_json) then ("--settings-json " +  '"' + settings_json + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_config: "Path to local genome configuration file. Optional if\\nREFGENIE environment variable is set."
     genome_server: "URL(s) to use for the genome_servers attribute in\\nconfig file. Default: http://refgenomes.databio.org."

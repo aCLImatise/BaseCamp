@@ -22,6 +22,9 @@ task Dshfiltervcf {
       ~{if (input_vcf_file) then "--input-vcf-file" else ""} \
       ~{if (output_vcf_file) then "--output-vcf-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     id: "[java.util.List<java.lang.String>]  filter by id, specify as id1,id2,id3 [optional]"

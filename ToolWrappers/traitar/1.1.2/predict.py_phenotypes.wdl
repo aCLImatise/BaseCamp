@@ -16,6 +16,9 @@ task PredictpyPhenotypes {
       ~{summary_file_pfams} \
       ~{if defined(voters) then ("--voters " +  '"' + voters + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     voters: "use this number of voters for the classification\\n"
     positional_arguments: "positional arguments:"

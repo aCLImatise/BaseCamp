@@ -98,6 +98,9 @@ task Msa2prflpl {
       ~{if defined(set_acc) then ("--setacc " +  '"' + set_acc + '"') else ""} \
       ~{if defined(info) then ("--info " +  '"' + info + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     width: "minimal block width (default: 6)"
     alternative_file_containing: "alternative file containing BLOSUM q_ij matrix"

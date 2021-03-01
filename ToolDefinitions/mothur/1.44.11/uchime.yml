@@ -4,1140 +4,191 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --input
   description: "Query sequences in FASTA format.\nIf the --db option is not specificed,\
     \ uchime uses de novo\ndetection. In de novo mode, relative abundance must be\
     \ given\nby a string /ab=xxx/ somewhere in the label, where xxx is a\nfloating-point\
     \ number, e.g. >F00QGH67HG/ab=1.2/."
-  synonyms:
-  - --input
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --db
   description: "Reference database in FASTA format.\nOptional, if not specified uchime\
     \ uses de novo mode.\n***WARNING*** The database is searched ONLY on the plus\
     \ strand.\nYou MUST include reverse-complemented sequences in the database\nif\
     \ you want both strands to be searched."
-  synonyms:
-  - --db
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
-  description: "Minimum abundance skew. Default 1.9. De novo mode only.\nAbundance\
-    \ skew is:\nmin [ abund(parent1), abund(parent2) ] / abund(query)."
+  optional: true
   synonyms:
   - --abskew
+  description: "Minimum abundance skew. Default 1.9. De novo mode only.\nAbundance\
+    \ skew is:\nmin [ abund(parent1), abund(parent2) ] / abund(query)."
   args: !SimpleFlagArg
     name: x
-  optional: true
 - !Flag
-  description: "Output in tabbed format with one record per query sequence.\nFirst\
-    \ field is score (h), second field is query label.\nFor details, see manual."
+  optional: true
   synonyms:
   - --uchimeout
+  description: "Output in tabbed format with one record per query sequence.\nFirst\
+    \ field is score (h), second field is query label.\nFor details, see manual."
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --uchimealns
   description: "Multiple alignments of query sequences to parents in human-\nreadable\
     \ format. Alignments show columns with differences\nthat support or contradict\
     \ a chimeric model."
-  synonyms:
-  - --uchimealns
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --minh
   description: "Mininum score to report chimera. Default 0.3. Values from 0.1\nto\
     \ 5 might be reasonable. Lower values increase sensitivity\nbut may report more\
     \ false positives. If you decrease --xn,\nyou may need to increase --minh, and\
     \ vice versa."
-  synonyms:
-  - --minh
   args: !SimpleFlagArg
     name: h
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mindiv
   description: "Minimum divergence ratio, default 0.5. Div ratio is 100% -\n%identity\
     \ between query sequence and the closest candidate for\nbeing a parent. If you\
     \ don't care about very close chimeras,\nthen you could increase --mindiv to,\
     \ say, 1.0 or 2.0, and\nalso decrease --min h, say to 0.1, to increase sensitivity.\n\
     How well this works will depend on your data. Best is to\ntune parameters on a\
     \ good benchmark."
-  synonyms:
-  - --mindiv
   args: !SimpleFlagArg
     name: div
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --xn
   description: "Weight of a no vote, also called the beta parameter. Default 8.0.\n\
     Decreasing this weight to around 3 or 4 may give better\nperformance on denoised\
     \ data."
-  synonyms:
-  - --xn
   args: !SimpleFlagArg
     name: beta
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --dn
   description: "Pseudo-count prior on number of no votes. Default 1.4. Probably\n\
     no good reason to change this unless you can retune to a good\nbenchmark for your\
     \ data. Reasonable values are probably in the\nrange from 0.2 to 2."
-  synonyms:
-  - --dn
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --xa
   description: "Weight of an abstain vote. Default 1. So far, results do not\nseem\
     \ to be very sensitive to this parameter, but if you have\na good training set\
     \ might be worth trying. Reasonable values\nmight range from 0.1 to 2."
-  synonyms:
-  - --xa
   args: !SimpleFlagArg
     name: w
-  optional: true
 - !Flag
-  description: "Number of chunks to extract from the query sequence when searching\n\
-    for parents. Default 4."
+  optional: true
   synonyms:
   - --chunks
+  description: "Number of chunks to extract from the query sequence when searching\n\
+    for parents. Default 4."
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: Minimum length of a chunk. Default 64.
+  optional: true
   synonyms:
   - --minchunk
+  description: Minimum length of a chunk. Default 64.
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: Length of id smoothing window. Default 32.
+  optional: true
   synonyms:
   - --idsmoothwindow
+  description: Length of id smoothing window. Default 32.
   args: !SimpleFlagArg
     name: w
-  optional: true
 - !Flag
-  description: "Minimum factional identity over smoothed window of candidate parent.\n\
-    Default 0.95."
+  optional: true
   synonyms:
   - --minsmoothid
+  description: "Minimum factional identity over smoothed window of candidate parent.\n\
+    Default 0.95."
   args: !SimpleFlagArg
     name: f
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxp
   description: "Maximum number of candidate parents to consider. Default 2. In tests\
     \ so\nfar, increasing --maxp gives only a very small improvement in sensivity\n\
     but tends to increase the error rate quite a bit."
-  synonyms:
-  - --maxp
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --minlen
+  - --maxlen
   description: "Minimum and maximum sequence length. Defaults 10, 10000.\nApplies\
     \ to both query and reference sequences."
-  synonyms:
-  - --maxlen
   args: !SimpleFlagArg
     name: L
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ucl
   description: "Use local-X alignments. Default is global-X. On tests so far, global-X\n\
     is always better; this option is retained because it just might work\nwell on\
     \ some future type of data."
-  synonyms:
-  - --ucl
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum fraction of the query sequence that must be covered by a local-X\n\
-    alignment. Default 0.5. Applies only when --ucl is specified."
+  optional: true
   synonyms:
   - --queryfract
+  description: "Minimum fraction of the query sequence that must be covered by a local-X\n\
+    alignment. Default 0.5. Applies only when --ucl is specified."
   args: !SimpleFlagArg
     name: f
-  optional: true
 - !Flag
-  description: Do not display progress messages on stderr.
+  optional: true
   synonyms:
   - --quiet
+  description: Do not display progress messages on stderr.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Write miscellaneous information to the log file. Mostly of interest\n\
-    to me (the algorithm developer). Use --verbose to get more info."
+  optional: true
   synonyms:
   - --log
+  description: "Write miscellaneous information to the log file. Mostly of interest\n\
+    to me (the algorithm developer). Use --verbose to get more info."
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --self
   description: "In reference database mode, exclude a reference sequence if it has\n\
     the same label as the query. This is useful for benchmarking by using\nthe ref\
     \ db as a query to test for false positives."
-  synonyms:
-  - --self
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --absort
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --abx
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --allpairs
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --alpha
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --band
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --blast6out
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --blastout
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --bump
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --cc
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --chain_evalue
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --chain_targetfract
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --chainhits
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --chainout
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --clstr2uc
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --clump
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --clump2fasta
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --clumpfasta
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --clumpout
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --cluster
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: 'Write info about compiler types and #defines to stdout.'
-  synonyms:
-  - --compilerinfo
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --computekl
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --dbstep
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --derep
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --diffchar
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --doug
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --droppct
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --evalue
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --evalue_g
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --exact
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --fastapairs
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --fastq2fasta
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --findorfs
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --frame
-  args: !SimpleFlagArg
-    name: int
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --fspenalty
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --gapext
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --gapopen
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --getseqs
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --global
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --hash
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --hashsize
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --hireout
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --hspalpha
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --id
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --idchar
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --iddef
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --idprefix
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --ids
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --idsuffix
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --indexstats
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --k
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --ka_dbsize
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --ka_gapped_k
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --ka_gapped_lambda
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --ka_ungapped_k
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --ka_ungapped_lambda
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --labels
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --lext
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --local
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Log options.
-  synonyms:
-  - --logopts
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --lopen
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --makeindex
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --match
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --matrix
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --max2
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --maxaccepts
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --maxclump
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --maxovd
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --maxpoly
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --maxqgap
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --maxrejects
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --maxspan1
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --maxspan2
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --maxtargets
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --maxtgap
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --mcc
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --mergeclumps
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --mergesort
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --mincodons
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --mindiffs
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --minhsp
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --minlen
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --minorfcov
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --minspanratio1
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --minspanratio2
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --mismatch
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --mkctest
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --optimal
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --orfstyle
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --otusort
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --output
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --probmx
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --query
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --querylen
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --randseed
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --realign
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --rowlen
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --secs
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --seeds
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --seedsout
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --seedt1
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --seedt2
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --simcl
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --sort
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --sortuc
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --sparsedist
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --sparsedistparams
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --split
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --sspenalty
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --staralign
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --stepwords
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --strand
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --targetfract
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --targetlen
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --tmpdir
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --tracestate
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --uc
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --uc2clstr
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --uc2fasta
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --uc2fastax
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --uchime
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --uhire
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --ungapped
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --userfields
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --userout
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --usersort
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --uslink
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --utax
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --w
-  args: !SimpleFlagArg
-    name: uint
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --weak_evalue
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --weak_id
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --xdrop_g
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --xdrop_nw
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --xdrop_u
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --xdrop_ug
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --xframe
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: help
-  synonyms:
-  - --xlat
-  args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag: !Flag
-  description: Display command-line options.
-  synonyms:
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
-version_flag: !Flag
-  description: Show version and exit.
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "\n\nUCHIME 4.2 by Robert C. Edgar\nhttp://www.drive5.com/uchime\n\nThis\
   \ software is donated to the public domain\n\n\nUsage\n-----\n\nuchime --input query.fasta\
   \ [--db db.fasta] [--uchimeout results.uchime]\n    [--uchimealns results.alns]\n\
@@ -1262,3 +313,4 @@ help_text: "\n\nUCHIME 4.2 by Robert C. Edgar\nhttp://www.drive5.com/uchime\n\nT
   \  help\n\n  --xframe <str>  help\n\n  --xlat   help\n\n  --xn <float>  help\n\n"
 generated_using:
 - --help
+docker_image:

@@ -3,94 +3,79 @@ command:
 - pbsTrain
 positional:
 - !Positional
-  description: By default, n is given the largest possible value such
+  optional: false
   position: 0
   name: dimension.
-  optional: false
+  description: By default, n is given the largest possible value such
 - !Positional
-  description: 'EXAMPLES:'
+  optional: false
   position: 0
   name: size.
-  optional: false
-- !Positional
-  description: 0.191119        0.046081        0.695205        0.067595
-  position: 0
-  name: '158006'
-  optional: false
-- !Positional
-  description: 0.047309        0.122834        0.043852        0.786004
-  position: 1
-  name: '221937'
-  optional: false
-- !Positional
-  description: 0.067254        0.697947        0.045959        0.188840
-  position: 2
-  name: '159472'
-  optional: false
+  description: 'EXAMPLES:'
 named:
 - !Flag
-  description: Output is a code file that can be used with
+  optional: true
   synonyms:
   - --suff-stats
+  description: Output is a code file that can be used with
   args: !SimpleFlagArg
     name: option.
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --nbytes
+  - -b
   description: "Number of bytes per encoded probabilistic base (default 1).\nThe size\
     \ of the code will be 256^b - 1 (one letter in the code\nis reserved for gaps).\
     \  Values as large as 4 are allowed for\nb, but in the current implementation,\
     \ performance\nconsiderations effectively limit it to 2 or 3."
-  synonyms:
-  - --nbytes
-  - -b
   args: !SimpleFlagArg
     name: b
-  optional: true
 - !Flag
-  description: "Number of \"rows\" per dimension in the simplex grid.  Default\nis\
-    \ maximum possible for code size."
+  optional: true
   synonyms:
   - --nrows
   - -n
+  description: "Number of \"rows\" per dimension in the simplex grid.  Default\nis\
+    \ maximum possible for code size."
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: "Skip greedy optimization -- just assign a single\nrepresentative point\
-    \ to each region of the probability\nsimplex, equal to the (weighted) mean of\
-    \ all vectors from the\ntraining data that fall in that region."
+  optional: true
   synonyms:
   - --no-greedy
   - -G
+  description: "Skip greedy optimization -- just assign a single\nrepresentative point\
+    \ to each region of the probability\nsimplex, equal to the (weighted) mean of\
+    \ all vectors from the\ntraining data that fall in that region."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Ignore the data entirely; just use the centroid of each\nsimplex partition.\
-    \  The dimension of the simplex must be given\n(<dim>) but no data file is required."
+  optional: true
   synonyms:
   - --no-train
   - -x
+  description: "Ignore the data entirely; just use the centroid of each\nsimplex partition.\
+    \  The dimension of the simplex must be given\n(<dim>) but no data file is required."
   args: !SimpleFlagArg
     name: dim
-  optional: true
 - !Flag
-  description: write log of optimization procedure to specified file.
+  optional: true
   synonyms:
   - --log
   - -l
+  description: write log of optimization procedure to specified file.
   args: !SimpleFlagArg
     name: file
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "Print this help message.\n"
+  optional: true
   synonyms:
   - --help
   - -h
+  description: "Print this help message.\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nPROGRAM: pbsTrain\n\nUSAGE: pbsTrain [OPTIONS] file.stats > file.code\n\
@@ -165,3 +150,4 @@ help_text: "\nPROGRAM: pbsTrain\n\nUSAGE: pbsTrain [OPTIONS] file.stats > file.c
   \ -h\n\tPrint this help message.\n"
 generated_using:
 - --help
+docker_image:

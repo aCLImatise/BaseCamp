@@ -20,6 +20,9 @@ task BedtoolsUnionbedg {
       ~{if (examples) then "-examples" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     header: "Print a header line.\\n(chrom/start/end + names of each file)."
     names: "A list of names (one/file) to describe each file in -i.\\nThese names will be printed in the header line."

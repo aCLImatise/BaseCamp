@@ -12,6 +12,9 @@ task CaIkkiV5pl {
       ~{as_mdot_spec} \
       ~{estimated_genome_size}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this: ""
     as_mdot_spec: ""

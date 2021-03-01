@@ -4,6 +4,9 @@ task ClustergrammerIPGpy {
   command <<<
     clustergrammerIPG_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

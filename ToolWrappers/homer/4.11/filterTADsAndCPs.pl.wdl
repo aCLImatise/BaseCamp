@@ -13,7 +13,6 @@ task FilterTADsAndCPspl {
     Boolean? mint_ad_cov
     Boolean? min_cp_score
     Boolean? min_cp_cov
-    File? tad_score
   }
   command <<<
     filterTADsAndCPs_pl \
@@ -27,9 +26,11 @@ task FilterTADsAndCPspl {
       ~{if (mint_a_dir) then "-minTADir" else ""} \
       ~{if (mint_ad_cov) then "-minTADcov" else ""} \
       ~{if (min_cp_score) then "-minCPscore" else ""} \
-      ~{if (min_cp_cov) then "-minCPcov" else ""} \
-      ~{if defined(tad_score) then ("-TADscore " +  '"' + tad_score + '"') else ""}
+      ~{if (min_cp_cov) then "-minCPcov" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     def_out: "(def: out)"
     cp: "(input contact point file, 2D BED format"
@@ -42,7 +43,6 @@ task FilterTADsAndCPspl {
     mint_ad_cov: "<#> (minimum TAD coverage ratio relative to average, def: 0.25)"
     min_cp_score: "<#> (minimum int score, def: 0)"
     min_cp_cov: "<#> (minimum int coverage ratio relative to average, def: 0.25)"
-    tad_score: "-CPscore <CP score file>"
   }
   output {
     File out_stdout = stdout()

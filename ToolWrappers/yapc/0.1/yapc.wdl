@@ -24,6 +24,9 @@ task Yapc {
       ~{if (pseudo_replicates) then "--pseudoreplicates" else ""} \
       ~{if (recycle) then "--recycle" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     smoothing_window_width: "Width of the smoothing window used for the second\\nderivative track. If the peak calls aren't capturing\\nthe peak shape well, try setting this to different\\nvalues ranging from 75 to 200. (default: 150)"
     smoothing_times: "Number of times smoothing is applied to the second\\nderivative. (default: 3)"

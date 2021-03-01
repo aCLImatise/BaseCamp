@@ -24,6 +24,9 @@ task CVInspector {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cv_files: "*    List of ontology files in OBO format. (valid formats: 'obo')"
     cv_names: "*    List of identifiers (one for each ontology file)."

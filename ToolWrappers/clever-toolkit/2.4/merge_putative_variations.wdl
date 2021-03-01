@@ -18,6 +18,9 @@ task Mergeputativevariations {
       ~{if (arg_filter_file) then "-f" else ""} \
       ~{if (arg_input_file) then "-I" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_minimal_weight: "[ --min_weight ] arg (=1) Minimal weight to be printed (default=1)."
     arg_minimum_length: "[ --min_length ] arg (=0) Minimum length."

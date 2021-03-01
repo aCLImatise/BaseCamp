@@ -3,17 +3,17 @@ id: plot_sequence_properties.py_input_fastx.cwl
 inputs:
 - id: in_r
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -r
 - id: in_b
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -b
 - id: in_f
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
 - id: in_plot_sequence_properties_do_tpy
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - plot_sequence_properties.py

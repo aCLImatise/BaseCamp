@@ -3,22 +3,22 @@ id: extractpop.py.cwl
 inputs:
 - id: in_file_location_text
   doc: File location for the text file.
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_list_populations_extract
   doc: List of populations to extract.
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_name_output_file
   doc: Name of the output file.
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
-- id: in_what_to_populations
+- id: in_what_do_populations
   doc: What to do with the populations.
-  type: string
+  type: string?
   inputBinding:
     prefix: -m
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_name_output_file
   doc: Name of the output file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_name_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - extractpop.py

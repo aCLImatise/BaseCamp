@@ -8,6 +8,9 @@ task Hotspot3dCalroi {
     hotspot3d calroi \
       ~{if (output_dir) then "--output-dir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Output directory of proximity files"
   }

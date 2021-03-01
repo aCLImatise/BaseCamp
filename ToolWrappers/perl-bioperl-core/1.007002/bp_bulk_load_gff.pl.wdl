@@ -38,6 +38,9 @@ task BpBulkLoadGffpl {
       ~{if (summary) then "--summary" else ""} \
       ~{if (temporary) then "--Temporary" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     of__database: "of --database."
     database: "Database name (default dbi:mysql:test)"

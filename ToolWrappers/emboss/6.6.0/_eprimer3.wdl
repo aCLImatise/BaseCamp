@@ -21,12 +21,10 @@ task Eprimer3 {
     Boolean? self_end
     Boolean? max_end_stability
     Int length_dot
-    Int six_zero_zero_slash_length
   }
   command <<<
     _eprimer3 \
       ~{length_dot} \
-      ~{six_zero_zero_slash_length} \
       ~{if (hybrid_probe) then "-hybridprobe" else ""} \
       ~{if (num_return) then "-numreturn" else ""} \
       ~{if (included_region) then "-includedregion" else ""} \
@@ -46,6 +44,9 @@ task Eprimer3 {
       ~{if (self_end) then "-selfend" else ""} \
       ~{if (max_end_stability) then "-maxendstability" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hybrid_probe: "toggle     [N] An 'internal oligo' is intended to be\\nused as a hybridization probe (hyb probe) to\\ndetect the PCR product after amplification."
     num_return: "integer    [5] The maximum number of primer pairs to\\nreturn. Primer pairs returned are sorted by\\ntheir 'quality', in other words by the value\\nof the objective function (where a lower\\nnumber indicates a better primer pair).\\nCaution: setting this parameter to a large\\nvalue will increase running time. (Integer 0\\nor more)"
@@ -66,7 +67,6 @@ task Eprimer3 {
     self_end: "float      [3.00] The maximum allowable 3'-anchored\\nglobal alignment score when testing a single\\nprimer for self-complementarity, and the\\nmaximum allowable 3'-anchored global\\nalignment score when testing for\\ncomplementarity between forward and reverse\\nprimers. The 3'-anchored global alignment\\nscore is taken to predict the likelihood of\\nPCR-priming primer-dimers, for example\\n5' ATGCCCTAGCTTCCGGATG 3'\\n.............||| |||||\\n..........3' AAGTCCTACATTTAGCCTAGT 5'\\nor\\n5' AGGCTATGGGCCTCGCGA 3'\\n...............||||||\\n............3' AGCGCTCCGGGTATCGGA 5'\\nThe scoring system is as for the Maximum\\nComplementarity argument. In the examples\\nabove the scores are 7.00 and 6.00\\nrespectively. Scores are non-negative, and a\\nscore of 0.00 indicates that there is no\\nreasonable 3'-anchored global alignment\\nbetween two oligos. In order to estimate\\n3'-anchored global alignments for candidate\\nprimers and primer pairs, Primer assumes\\nthat the sequence from which to choose\\nprimers is presented 5' to 3'. It is\\nnonsensical to provide a larger value for\\nthis parameter than for the Maximum (local)\\nComplementarity parameter because the score\\nof a local alignment will always be at least\\nas great as the score of a global\\nalignment. (Number 0.000 or more)"
     max_end_stability: "float      [9.0] The maximum stability for the five 3'\\nbases of a forward or reverse primer. Bigger\\nnumbers mean more stable 3' ends. The value\\nis the maximum delta G for duplex\\ndisruption for the five 3' bases as\\ncalculated using the nearest neighbor\\nparameters published in Breslauer, Frank,\\nBloecker and Marky, Proc. Natl. Acad. Sci.\\nUSA, vol 83, pp 3746-3750. EPrimer3 uses a\\ncompletely permissive default value for\\nbackward compatibility (which we may change\\nin the next release). Rychlik recommends a\\nmaximum value of 9 (Wojciech Rychlik,\\n'Selection of Primers for Polymerase Chain\\nReaction' in BA White, Ed., 'Methods in\\nMolecular Biology, Vol. 15: PCR Protocols:\\nCurrent Methods and Applications', 1993, pp\\n31-40, Humana Press, Totowa NJ). (Number up\\nto 1000.000)"
     length_dot: "An empty value for this parameter indicates"
-    six_zero_zero_slash_length: "Where [Na+} is the molar sodium"
   }
   output {
     File out_stdout = stdout()

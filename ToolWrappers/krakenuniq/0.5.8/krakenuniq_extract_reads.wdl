@@ -7,7 +7,7 @@ task Krakenuniqextractreads {
     Boolean? invert_print_reads
     String? include_children_taxonomy
     Boolean? verbose
-    Boolean? pairedend_reads_use
+    Boolean? reads_use_fastaq
     Boolean? more_options
     Boolean? options
     String tax_on
@@ -24,17 +24,20 @@ task Krakenuniqextractreads {
       ~{if (invert_print_reads) then "-i" else ""} \
       ~{if defined(include_children_taxonomy) then ("-t " +  '"' + include_children_taxonomy + '"') else ""} \
       ~{if (verbose) then "-v" else ""} \
-      ~{if (pairedend_reads_use) then "-p" else ""} \
+      ~{if (reads_use_fastaq) then "-p" else ""} \
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_file: "input is FASTA file (default: FASTQ)"
     output_fasta_format: "output in FASTA format"
     invert_print_reads: "invert: print all reads not matching taxon"
     include_children_taxonomy: "Include children of taxonomy IDs, using TAXDB to find them"
     verbose: "verbose"
-    pairedend_reads_use: "paired-end reads: use a '%' in fasta/q file name as placeholder for 1 and 2"
+    reads_use_fastaq: "paired-end reads: use a '%' in fasta/q file name as placeholder for 1 and 2"
     more_options: ""
     options: ""
     tax_on: ""

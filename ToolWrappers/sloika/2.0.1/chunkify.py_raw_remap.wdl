@@ -52,6 +52,9 @@ task ChunkifypyRawRemap {
       ~{if defined(slip) then ("--slip " +  '"' + slip + '"') else ""} \
       ~{if defined(open_pore_fraction) then ("--open_pore_fraction " +  '"' + open_pore_fraction + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alphabet: "Alphabet of the sequences (default: b'ACGT')"
     input_strand_list: "Strand summary file containing subset (default: None)"

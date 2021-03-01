@@ -14,6 +14,9 @@ task Helixturnhelix {
       ~{if (mins_d) then "-minsd" else ""} \
       ~{if (boolean_use_data) then "-eightyseven" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mean: "float      [238.71] Mean value (Number from 1.000 to\\n10000.000)"
     sd_value: "float      [293.61] Standard Deviation value (Number\\nfrom 1.000 to 10000.000)"

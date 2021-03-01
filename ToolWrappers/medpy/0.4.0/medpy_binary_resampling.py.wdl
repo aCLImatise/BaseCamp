@@ -20,6 +20,9 @@ task MedpyBinaryResamplingpy {
       ~{if (display_debug_information) then "-d" else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     order: "the bspline order, default is 0 (= nearest neighbour)"
     verbose: "verbose output"

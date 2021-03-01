@@ -3,7 +3,7 @@ id: mb_normalize_normalization_pileup.cwl
 inputs:
 - id: in_mut_snp_ratio
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --mut_snp_ratio
 - id: in_mb_normalize
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mb-normalize

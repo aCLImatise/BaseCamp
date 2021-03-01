@@ -18,6 +18,9 @@ task LexmaprOUTPUT {
       ~{if (f) then "-f" else ""} \
       ~{if (o) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
     no_cache: ""

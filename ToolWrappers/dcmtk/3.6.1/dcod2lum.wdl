@@ -10,6 +10,9 @@ task Dcod2lum {
       ~{in_file} \
       ~{out_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "hardcopy characteristic curve file to be converted"
     out_file: "softcopy characteristic curve file to be written"

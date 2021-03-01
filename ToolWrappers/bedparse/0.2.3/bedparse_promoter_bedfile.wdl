@@ -12,6 +12,9 @@ task BedparsePromoterBedfile {
       ~{if defined(down) then ("--down " +  '"' + down + '"') else ""} \
       ~{if defined(up) then ("--up " +  '"' + up + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     un_stranded: ""
     down: ""

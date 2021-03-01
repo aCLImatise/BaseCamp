@@ -26,6 +26,9 @@ task Tinscanalign {
       ~{if defined(min_len) then ("--minLen " +  '"' + min_len + '"') else ""} \
       ~{if defined(hsp_thresh) then ("--hspthresh " +  '"' + hsp_thresh + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_dir: "Name of directory containing sequences from A genome."
     b_dir: "Name of directory containing sequences from B genome."

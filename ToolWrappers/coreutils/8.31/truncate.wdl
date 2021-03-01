@@ -18,6 +18,9 @@ task Truncate {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(size) then ("--size " +  '"' + size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_create: "do not create any files"
     io_blocks: "treat SIZE as number of IO blocks instead of bytes"

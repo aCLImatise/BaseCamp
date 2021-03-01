@@ -24,6 +24,9 @@ task ScanpycliScale {
       ~{if (no_zero_center) then "--no-zero-center" else ""} \
       ~{if defined(max_value) then ("--max-value " +  '"' + max_value + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_format: "[anndata|loom]\\nInput object format.  [default: anndata]"
     output_format: "[anndata|loom|zarr]\\nOutput object format.  [default: anndata]"

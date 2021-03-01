@@ -3,17 +3,17 @@ id: refinem_filter_bins.cwl
 inputs:
 - id: in_genome_ext
   doc: "extension of genomes (other files in directory are\nignored) (default: fna)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --genome_ext
 - id: in_modified_only
   doc: only copy modified bins to the output folder
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --modified_only
 - id: in_silent
   doc: suppress output of logger
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --silent
 - id: in_genome_nt_dir
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_modified_only
   doc: only copy modified bins to the output folder
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_modified_only)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - refinem

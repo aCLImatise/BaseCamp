@@ -10,6 +10,9 @@ task Arvnormalize {
       ~{if defined(extract) then ("--extract " +  '"' + extract + '"') else ""} \
       ~{if (strip) then "--strip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     extract: "The file to extract from the input manifest"
     strip: "Strip authorization tokens"

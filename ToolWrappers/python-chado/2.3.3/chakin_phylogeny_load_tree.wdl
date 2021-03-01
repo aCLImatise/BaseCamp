@@ -20,6 +20,9 @@ task ChakinPhylogenyLoadTree {
       ~{if (match_on_name) then "--match_on_name" else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "The name given to the phylotree entry in the database\\n(default=<filename>)"
     xref_db: "The name of the db to link dbxrefs for the trees\\n(default: \\\"null\\\")  [default: null]"

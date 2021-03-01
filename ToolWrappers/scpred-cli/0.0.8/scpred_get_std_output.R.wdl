@@ -16,6 +16,9 @@ task ScpredGetStdOutputR {
       ~{if defined(classifier) then ("--classifier " +  '"' + classifier + '"') else ""} \
       ~{if defined(output_table) then ("--output-table " +  '"' + output_table + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     predictions_file: "Path to the predictions file in text format"
     cell_id_col: "Cell id column name. If not provided, it is assumed cell ids are represented by index"

@@ -10,6 +10,9 @@ task Gxwflint {
       ~{path} \
       ~{if defined(training_topic) then ("--training-topic " +  '"' + training_topic + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     training_topic: "If this is a training workflow, specify a training\\ntopic.\\n"
     path: "workflow path"

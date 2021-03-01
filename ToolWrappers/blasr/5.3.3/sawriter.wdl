@@ -28,6 +28,9 @@ task Sawriter {
       ~{if (kar) then "-kar" else ""} \
       ~{if (man_my) then "-manmy" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     blt: "Build a lookup table on prefixes of length 'p'. This speeds\\nup lookups considerably (more than the LCP table), but misses matches\\nless than p when searching."
     four_bit: "Read in (one) fasta file as a compressed sequence file."

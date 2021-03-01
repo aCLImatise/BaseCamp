@@ -8,6 +8,9 @@ task Vcf2gffsh {
     vcf2gff_sh \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
   }

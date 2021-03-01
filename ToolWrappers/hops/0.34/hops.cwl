@@ -3,27 +3,27 @@ id: hops.cwl
 inputs:
 - id: in_config_file
   doc: Path to Config File
-  type: File
+  type: File?
   inputBinding:
     prefix: --configFile
 - id: in_input
   doc: Specify input directory or files valid option depend on mode
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --input
 - id: in_mode
   doc: HOPS Mode to run accpeted full, malt, maltex, post
-  type: string
+  type: string?
   inputBinding:
     prefix: --mode
 - id: in_output
   doc: Specify out directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Specify out directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hops

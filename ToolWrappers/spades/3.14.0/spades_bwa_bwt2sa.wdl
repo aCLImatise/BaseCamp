@@ -16,6 +16,9 @@ task SpadesbwaBwt2sa {
       ~{out_dots_a} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: ""
     bwa: ""

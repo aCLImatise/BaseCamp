@@ -14,6 +14,9 @@ task Bwtbuilder {
       ~{index} \
       ~{prefix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequence_file: ""
     var_output: ""

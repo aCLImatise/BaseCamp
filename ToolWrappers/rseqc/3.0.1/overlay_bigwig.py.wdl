@@ -16,6 +16,9 @@ task OverlayBigwigpy {
       ~{if defined(output_wig_file) then ("--output " +  '"' + output_wig_file + '"') else ""} \
       ~{if defined(chunk) then ("--chunk " +  '"' + chunk + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bw_file_one: "One BigWig file."
     bw_file_two: "Another BigWig file. Both BigWig files should use the\\nsame reference genome."

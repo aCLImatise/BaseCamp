@@ -14,6 +14,9 @@ task ChakinFeatureDeleteFeatures {
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if defined(unique_name) then ("--uniquename " +  '"' + unique_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     organism_id: "organism_id filter"
     analysis_id: "analysis_id filter"

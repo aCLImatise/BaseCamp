@@ -32,6 +32,9 @@ task Chcon {
       ~{if (command_line_argument) then "-H" else ""} \
       ~{if (traverse_symbolic_link) then "-L" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dereference: "affect the referent of each symbolic link (this is\\nthe default), rather than the symbolic link itself"
     user: "set user USER in the target security context"

@@ -12,6 +12,9 @@ task WgblimpRunshiny {
       ~{if defined(host) then ("--host " +  '"' + host + '"') else ""} \
       ~{if defined(port) then ("--port " +  '"' + port + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     host: "Host ip for shiny to listen on."
     port: "Shiny port number."

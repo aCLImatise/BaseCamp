@@ -4,6 +4,9 @@ task Acdtrace {
   command <<<
     _acdtrace
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

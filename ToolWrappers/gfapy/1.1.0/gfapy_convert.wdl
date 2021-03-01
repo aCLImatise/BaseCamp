@@ -8,6 +8,9 @@ task Gfapyconvert {
     gfapy_convert \
       ~{filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: "optional arguments:"
   }

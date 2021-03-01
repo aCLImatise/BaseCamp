@@ -14,6 +14,9 @@ task BamhashChecksumBam {
       ~{if (no_quality) then "--no-quality" else ""} \
       ~{if (no_paired) then "--no-paired" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Debug mode. Prints full hex for each read to stdout"
     no_read_names: "Do not use read names as part of checksum"

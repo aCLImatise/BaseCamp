@@ -8,6 +8,9 @@ task RegtoolsCisase {
     regtools cis_ase \
       ~{var_command}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_command: ""
   }

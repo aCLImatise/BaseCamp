@@ -50,6 +50,9 @@ task BcftoolsCsq {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_ref: "reference file in fasta format"
     gff_an_not: "gff3 annotation file"

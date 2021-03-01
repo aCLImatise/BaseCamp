@@ -22,6 +22,9 @@ task Hmmscore {
       ~{if defined(query) then ("-query " +  '"' + query + '"') else ""} \
       ~{if defined(option) then ("-option " +  '"' + option + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "[-db seq_filen]*     one or more sequence files"
     calibrate: "or calibrate E-values"

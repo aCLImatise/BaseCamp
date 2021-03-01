@@ -10,6 +10,9 @@ task SamtoolsIndex {
       ~{in_dot_bam} \
       ~{out_dot_index}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_bam: ""
     out_dot_index: ""

@@ -10,6 +10,9 @@ task ArbGeneProbe {
       ~{input_database} \
       ~{output_database}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_database: ""
     output_database: ""

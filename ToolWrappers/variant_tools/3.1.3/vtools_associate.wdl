@@ -10,7 +10,7 @@ task VtoolsAssociate {
     Boolean? geno_info
     String? geno_name
     Array[String] methods
-    Boolean? group_variants_fields
+    Boolean? group_variants_separated
     Boolean? limiting_variants_samples
     Boolean? genotypes
     Boolean? discard_samples
@@ -33,7 +33,7 @@ task VtoolsAssociate {
       ~{if (geno_info) then "--geno_info" else ""} \
       ~{if defined(geno_name) then ("--geno_name " +  '"' + geno_name + '"') else ""} \
       ~{if defined(methods) then ("--methods " +  '"' + methods + '"') else ""} \
-      ~{if (group_variants_fields) then "-g" else ""} \
+      ~{if (group_variants_separated) then "-g" else ""} \
       ~{if (limiting_variants_samples) then "-s" else ""} \
       ~{if (genotypes) then "--genotypes" else ""} \
       ~{if (discard_samples) then "--discard_samples" else ""} \
@@ -42,6 +42,9 @@ task VtoolsAssociate {
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jobs: "Number of processes to carry out association tests."
     mpi: "Submit vtools association job to cluster, please check\\nbash script."
@@ -51,7 +54,7 @@ task VtoolsAssociate {
     geno_info: "[GENO_INFO [GENO_INFO ...]], --geno-info [GENO_INFO [GENO_INFO ...]]\\nOptional genotype fields (e.g. quality score of\\ngenotype calls, cf. \\\"vtools show genotypes\\\") that will\\nbe passed to statistical tests. Note that the fields\\nshould exist for all samples that are tested."
     geno_name: "Field name of genotype, default to 'GT'. If another\\nfield name is specified, for example if imputation\\nscores are available as 'DS' (dosage), then the given\\nfield 'DS' will be used as genotype data for\\nassociation analysis."
     methods: "Method of one or more association tests. Parameters\\nfor each method should be specified together as a\\nquoted long argument (e.g. --methods \\\"m --alternative\\n2\\\" \\\"m1 --permute 1000\\\"), although the common method\\nparameters can be specified separately, as long as\\nthey do not conflict with command arguments. (e.g.\\n--methods m1 m2 -p 1000 is equivalent to --methods \\\"m1\\n-p 1000\\\" \\\"m2 -p 1000\\\".). You can use command 'vtools\\nshow tests' for a list of association tests, and\\n'vtools show test TST' for details about a test.\\nCustomized association tests can be specified as\\nmod_name.test_name where mod_name should be a Python\\nmodule (system wide or in the current directory), and\\ntest_name should be a subclass of NullTest."
-    group_variants_fields: "[GROUP_BY [GROUP_BY ...]], --group_by [GROUP_BY [GROUP_BY ...]], --group-by [GROUP_BY [GROUP_BY ...]]\\nGroup variants by fields. If specified, variants will\\nbe separated into groups and are tested one by one."
+    group_variants_separated: "[GROUP_BY [GROUP_BY ...]], --group_by [GROUP_BY [GROUP_BY ...]], --group-by [GROUP_BY [GROUP_BY ...]]\\nGroup variants by fields. If specified, variants will\\nbe separated into groups and are tested one by one."
     limiting_variants_samples: "[COND [COND ...]], --samples [COND [COND ...]]\\nLimiting variants from samples that match conditions\\nthat use columns shown in command 'vtools show sample'\\n(e.g. 'aff=1', 'filename like \\\"MG%\\\"'). Each line of\\nthe sample table (vtools show samples) is considered\\nas samples. If genotype of a physical sample is\\nscattered into multiple samples (e.g. imported\\nchromosome by chromosome), they should be merged using\\ncommand vtools admin."
     genotypes: "[COND [COND ...]]\\nLimiting genotypes to those matching conditions that\\nuse columns shown in command 'vtools show genotypes'\\n(e.g. 'GQ>15'). Genotypes failing such conditions will\\nbe regarded as missing genotypes."
     discard_samples: "[EXPR [EXPR ...]], --discard-samples [EXPR [EXPR ...]]\\nDiscard samples that match specified conditions within\\neach test group (defined by parameter --group_by).\\nCurrently only expressions in the form of \\\"%(NA)>p\\\" is\\nprovidedted to remove samples that have more 100*p\\npercent of missing values."

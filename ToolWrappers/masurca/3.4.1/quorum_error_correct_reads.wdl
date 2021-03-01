@@ -50,6 +50,9 @@ task QuorumErrorCorrectReads {
       ~{if (no_discard) then "--no-discard" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     thread: "Number of threads (1)"
     min_count: "Minimum count for a k-mer to be considered \\\"good\\\" (1)"

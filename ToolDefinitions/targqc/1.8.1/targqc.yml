@@ -4,37 +4,146 @@ command:
 positional: []
 named:
 - !Flag
-  description: Path to fai fasta index - sort BAM and BED files, and
+  optional: true
+  synonyms:
+  - --test
+  description: Quick test of correct installation.
+  args: !SimpleFlagArg
+    name: TEST
+- !Flag
+  optional: true
+  synonyms:
+  - --bed
+  - --capture
+  - --amplicons
+  description: "BED file with regions to analyse. If not specified,\nCDS across full\
+    \ genome will be analysed"
+  args: !SimpleFlagArg
+    name: BED
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-dir
+  description: "Output directory (or directory name in case of bcbio\nfinal dir)"
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome
+  description: "Genome build (hg19 or hg38), used to pick genome\nannotation BED file\
+    \ if not specified, or path to .fa\nbwa prefix"
+  args: !SimpleFlagArg
+    name: GENOME
+- !Flag
+  optional: true
+  synonyms:
+  - --bwa--bwa-prefix
+  description: Path to BWA index prefix to align if input is FastQ
+  args: !SimpleFlagArg
+    name: BWA_PREFIX
+- !Flag
+  optional: true
   synonyms:
   - --fai
+  description: "Path to fai fasta index - sort BAM and BED files, and\nto get chromosome\
+    \ lengths for proper padding BED\nfiles; optional"
   args: !SimpleFlagArg
     name: FAI
-  optional: true
 - !Flag
-  description: integer indicating the number of bases to extend each
+  optional: true
   synonyms:
   - --padding
+  description: "integer indicating the number of bases to extend each\ntarget region\
+    \ up and down-stream. Default is 200"
   args: !SimpleFlagArg
     name: PADDING
-  optional: true
 - !Flag
-  description: reuse intermediate non-empty files in the work dir
+  optional: true
+  synonyms:
+  - -T
+  - --depth-threshold
+  - --downsample-pairs-num
+  - --downsample-to
+  description: "If input is FastQ, select N random read pairs from\neach input set\
+    \ (instead of default fraction 0.05)."
+  args: !SimpleFlagArg
+    name: DEPTH_THRESHOLDS
+- !Flag
+  optional: true
+  synonyms:
+  - --downsample-fraction
+  - --downsample
+  description: "If input is FastQ, select K% random read pairs from\neach input set.\
+    \ Default is 0.05%. To turn off (align\nall reads), set --downsample 1"
+  args: !SimpleFlagArg
+    name: DOWNSAMPLE_FRACTION
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --nt
+  - --threads
+  description: Number of threads
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
   synonyms:
   - --reuse
+  description: "reuse intermediate non-empty files in the work dir\nfrom previous\
+    \ run"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Re-annotate BED file with gene names, even if it's 4
+  optional: true
+  synonyms:
+  - -s
+  - --scheduler
+  description: Scheduler to use for ipython parallel
+  args: !SimpleFlagArg
+    name: SCHEDULER
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --queue
+  description: Scheduler queue to run jobs on, for ipython parallel
+  args: !SimpleFlagArg
+    name: QUEUE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --resources
+  description: "Cluster specific resources specifications. Can be\nspecified multiple\
+    \ times. Supports SGE, Torque, LSF\nand SLURM parameters."
+  args: !SimpleFlagArg
+    name: RESOURCES
+- !Flag
+  optional: true
   synonyms:
   - --reannotate
+  description: "Re-annotate BED file with gene names, even if it's 4\ncolumns or more\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
 help_text: "Usage: targqc *.bam -o targqc_stats [--bed target.bed ...]\n\nTargQC,\
   \ target coverage evaluation tool. Version 1.8.1\n\nOptions:\n  --version      \
   \       show program's version number and exit\n  -h, --help            show this\
@@ -70,3 +179,4 @@ help_text: "Usage: targqc *.bam -o targqc_stats [--bed target.bed ...]\n\nTargQC
   \          columns or more\n"
 generated_using:
 - --help
+docker_image:

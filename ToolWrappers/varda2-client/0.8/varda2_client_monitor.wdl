@@ -8,6 +8,9 @@ task Varda2clientMonitor {
     varda2_client monitor \
       ~{if defined(task_file) then ("--task-file " +  '"' + task_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     task_file: "Filename of tasks to monitor\\n"
   }

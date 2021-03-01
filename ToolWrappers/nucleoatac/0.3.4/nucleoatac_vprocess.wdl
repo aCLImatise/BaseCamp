@@ -24,6 +24,9 @@ task NucleoatacVprocess {
       ~{if defined(sizes) then ("--sizes " +  '"' + sizes + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v_plot: "Accepts VMat file. Default is Vplot from S. Cer."
     lower: "lower limit (inclusive) in insert size. default is 105"

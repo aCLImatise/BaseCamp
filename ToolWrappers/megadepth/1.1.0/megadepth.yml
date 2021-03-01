@@ -1,0 +1,369 @@
+!Command
+command:
+- megadepth
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: expected
+  description: --head                       Print sequence names and lengths in SAM/BAM
+    header
+- !Positional
+  optional: false
+  position: 0
+  name: coverage
+  description: --num-bases          Report total sum of bases in alignments processed
+    (that pass filters)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: "# of threads to do: BAM decompression OR compute sums over multiple\
+    \ BigWigs in parallel\nif the 2nd is intended then a TXT file listing the paths\
+    \ to the BigWigs to process in parallel\nshould be passed in as the main input\
+    \ file instead of a single BigWig file (EXPERIMENTAL)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  description: String to use to prefix all output files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-auc-stdout
+  description: Force all AUC(s) to be written to <prefix>.auc.tsv rather than STDOUT
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-annotation-stdout
+  description: Force summarized annotation regions to be written to <prefix>.annotation.tsv
+    rather than STDOUT
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-coverage-stdout
+  description: Force covered regions to be written to <prefix>.coverage.tsv rather
+    than STDOUT
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-order
+  description: "Output annotation coverage in the order chromosomes appear in the\
+    \ BAM/BigWig file\nThe default is to output annotation coverage in the order chromosomes\
+    \ appear in the annotation BED file.\nThis is only applicable if --annotation\
+    \ is used for either BAM or BigWig input."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --annotation
+  description: Only output the regions in this BED applying the argument to --op to
+    them.
+  args: !SimpleFlagArg
+    name: bed
+- !Flag
+  optional: true
+  synonyms:
+  - --op
+  description: <sum[default], mean, min, max>     Statistic to run on the intervals
+    provided by --annotation
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sums-only
+  description: Discard coordinates from output of summarized regions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bwbuffer
+  description: "<1GB[default]>               Size of buffer for reading BigWig files,\
+    \ critical to use a large value (~1GB) for remote BigWigs.\nDefault setting should\
+    \ be fine for most uses, but raise if very slow on a remote BigWig."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: "Path to the reference FASTA file if a CRAM file is passed as the input\
+    \ file (ignored otherwise)\nIf not passed, references will be downloaded using\
+    \ the CRAM header."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --junctions
+  description: "Extract co-occurring jx coordinates, strand, and anchor length, per\
+    \ read\nwrites to a TSV file <prefix>.jxs.tsv"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --all-junctions
+  description: "Extract all jx coordinates, strand, and anchor length, per read for\
+    \ any jx\nwrites to a TSV file <prefix>.all_jxs.tsv"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --longreads
+  description: Modifies certain buffer sizes to accommodate longer reads such as PB/Oxford.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-in
+  description: Integer bitmask, any bits of which alignments need to have to be kept
+    (similar to samtools view -f).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-out
+  description: Integer bitmask, any bits of which alignments need to have to be skipped
+    (similar to samtools view -F).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --alts
+  description: "Print differing from ref per-base coverages\nWrites to a CSV file\
+    \ <prefix>.alts.tsv"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include-softclip
+  description: "Print a record to the alts CSV for soft-clipped bases\nWrites total\
+    \ counts to a separate TSV file <prefix>.softclip.tsv"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --only-polya
+  description: If --include-softclip, only print softclips which are mostly A's or
+    T's
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include-n
+  description: Print mismatch records when mismatched read base is N
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print-qual
+  description: Print quality values for mismatched bases
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --delta
+  description: Print POS field as +/- delta from previous
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --require-mdz
+  description: Quit with error unless MD:Z field exists everywhere it's
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --coverage
+  description: Print per-base coverage (slow but totally worth it)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --auc
+  description: "Print per-base area-under-coverage, will generate it for the genome\n\
+    and for the annotation if --annotation is also passed in\nDefaults to STDOUT,\
+    \ unless other params are passed in as well, then\nif writes to a TSV file <prefix>.auc.tsv"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bigwig
+  description: "Output coverage as BigWig file(s).  Writes to <prefix>.bw\n(also <prefix>.unique.bw\
+    \ when --min-unique-qual is specified).\nRequires libBigWig."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-index
+  description: "If using --annotation, skip the use of the BAM index (BAI) for pulling\
+    \ out regions.\nSetting this can be faster if doing windows across the whole genome.\n\
+    This will be turned on automatically if a window size is passed to --annotation."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-unique-qual
+  description: "Output second bigWig consisting built only from alignments\nwith at\
+    \ least this mapping quality.  --bigwig must be specified.\nAlso produces second\
+    \ set of annotation sums based on this coverage\nif --annotation is enabled"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --double-count
+  description: Allow overlapping ends of PE read to count twice toward
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gzip
+  description: "Turns on gzipping of coverage output (no effect if --bigwig is passsed),\n\
+    this will also enable --no-coverage-stdout."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --read-ends
+  description: "Print counts of read starts/ends, if --min-unique-qual is set\nthen\
+    \ only the alignments that pass that filter will be counted here\nWrites to 2\
+    \ TSV files: <prefix>.starts.tsv, <prefix>.ends.tsv"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --frag-dist
+  description: "Print fragment length distribution across the genome\nWrites to a\
+    \ TSV file <prefix>.frags.tsv"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --echo-sam
+  description: Print a SAM record for each aligned read
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ends
+  description: Report end coordinate for each read (useful for debugging)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --test-polya
+  description: Lower Poly-A filter minimums for testing (only useful for debugging/testing)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this screen.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show version.
+  args: !EmptyFlagArg {}
+help_text: "megadepth 1.1.0\n\nBAM and BigWig utility.\n\nUsage:\n  megadepth <bam|bw|->\
+  \ [options]\n\nOptions:\n  -h --help                Show this screen.\n  --version\
+  \                Show version.\n  --threads                # of threads to do: BAM\
+  \ decompression OR compute sums over multiple BigWigs in parallel\n            \
+  \                if the 2nd is intended then a TXT file listing the paths to the\
+  \ BigWigs to process in parallel\n                            should be passed in\
+  \ as the main input file instead of a single BigWig file (EXPERIMENTAL).\n  --prefix\
+  \                 String to use to prefix all output files.\n  --no-auc-stdout \
+  \         Force all AUC(s) to be written to <prefix>.auc.tsv rather than STDOUT\n\
+  \  --no-annotation-stdout   Force summarized annotation regions to be written to\
+  \ <prefix>.annotation.tsv rather than STDOUT\n  --no-coverage-stdout     Force covered\
+  \ regions to be written to <prefix>.coverage.tsv rather than STDOUT\n  --keep-order\
+  \             Output annotation coverage in the order chromosomes appear in the\
+  \ BAM/BigWig file\n                           The default is to output annotation\
+  \ coverage in the order chromosomes appear in the annotation BED file.\n       \
+  \                    This is only applicable if --annotation is used for either\
+  \ BAM or BigWig input.\n\nBigWig Input:\nExtract regions and their counts from a\
+  \ BigWig outputting BED format if a BigWig file is detected as input (exclusive\
+  \ of the other BAM modes):\n                                          Extracts all\
+  \ reads from the passed in BigWig and output as BED format.\n                  \
+  \                         This will also report the AUC over the annotated regions\
+  \ to STDOUT.\n                                           If only the name of the\
+  \ BigWig file is passed in with no other args, it will *only* report total AUC to\
+  \ STDOUT.\n  --annotation <bed>                      Only output the regions in\
+  \ this BED applying the argument to --op to them.\n  --op <sum[default], mean, min,\
+  \ max>     Statistic to run on the intervals provided by --annotation\n  --sums-only\
+  \                             Discard coordinates from output of summarized regions\n\
+  \  --bwbuffer <1GB[default]>               Size of buffer for reading BigWig files,\
+  \ critical to use a large value (~1GB) for remote BigWigs.\n                   \
+  \                        Default setting should be fine for most uses, but raise\
+  \ if very slow on a remote BigWig.\n\n\nBAM Input:\nExtract basic junction information\
+  \ from the BAM, including co-occurrence\nIf only the name of the BAM file is passed\
+  \ in with no other args, it will *only* report total AUC to STDOUT.\n  --fasta\t\
+  \            Path to the reference FASTA file if a CRAM file is passed as the input\
+  \ file (ignored otherwise)\n                       If not passed, references will\
+  \ be downloaded using the CRAM header.\n  --junctions          Extract co-occurring\
+  \ jx coordinates, strand, and anchor length, per read\n                       writes\
+  \ to a TSV file <prefix>.jxs.tsv\n  --all-junctions      Extract all jx coordinates,\
+  \ strand, and anchor length, per read for any jx\n                       writes\
+  \ to a TSV file <prefix>.all_jxs.tsv\n  --longreads          Modifies certain buffer\
+  \ sizes to accommodate longer reads such as PB/Oxford.\n  --filter-in          Integer\
+  \ bitmask, any bits of which alignments need to have to be kept (similar to samtools\
+  \ view -f).\n  --filter-out         Integer bitmask, any bits of which alignments\
+  \ need to have to be skipped (similar to samtools view -F).\n\nNon-reference summaries:\n\
+  \  --alts                       Print differing from ref per-base coverages\n  \
+  \                             Writes to a CSV file <prefix>.alts.tsv\n  --include-softclip\
+  \           Print a record to the alts CSV for soft-clipped bases\n            \
+  \                   Writes total counts to a separate TSV file <prefix>.softclip.tsv\n\
+  \  --only-polya                 If --include-softclip, only print softclips which\
+  \ are mostly A's or T's\n  --include-n                  Print mismatch records when\
+  \ mismatched read base is N\n  --print-qual                 Print quality values\
+  \ for mismatched bases\n  --delta                      Print POS field as +/- delta\
+  \ from previous\n  --require-mdz                Quit with error unless MD:Z field\
+  \ exists everywhere it's\n                               expected\n  --head    \
+  \                   Print sequence names and lengths in SAM/BAM header\n\nCoverage\
+  \ and quantification:\n  --coverage           Print per-base coverage (slow but\
+  \ totally worth it)\n  --auc                Print per-base area-under-coverage,\
+  \ will generate it for the genome\n                       and for the annotation\
+  \ if --annotation is also passed in\n                       Defaults to STDOUT,\
+  \ unless other params are passed in as well, then\n                       if writes\
+  \ to a TSV file <prefix>.auc.tsv\n  --bigwig             Output coverage as BigWig\
+  \ file(s).  Writes to <prefix>.bw\n                       (also <prefix>.unique.bw\
+  \ when --min-unique-qual is specified).\n                       Requires libBigWig.\n\
+  \  --annotation <BED|window_size>   Path to BED file containing list of regions\
+  \ to sum coverage over\n                       (tab-delimited: chrm,start,end).\
+  \ Or this can specify a contiguous region size in bp.\n  --op <sum[default], mean>\
+  \     Statistic to run on the intervals provided by --annotation\n  --no-index \
+  \          If using --annotation, skip the use of the BAM index (BAI) for pulling\
+  \ out regions.\n                       Setting this can be faster if doing windows\
+  \ across the whole genome.\n                       This will be turned on automatically\
+  \ if a window size is passed to --annotation.\n  --min-unique-qual <int>\n     \
+  \                  Output second bigWig consisting built only from alignments\n\
+  \                       with at least this mapping quality.  --bigwig must be specified.\n\
+  \                       Also produces second set of annotation sums based on this\
+  \ coverage\n                       if --annotation is enabled\n  --double-count\
+  \       Allow overlapping ends of PE read to count twice toward\n              \
+  \         coverage\n  --num-bases          Report total sum of bases in alignments\
+  \ processed (that pass filters)\n  --gzip               Turns on gzipping of coverage\
+  \ output (no effect if --bigwig is passsed),\n                       this will also\
+  \ enable --no-coverage-stdout.\n\nOther outputs:\n  --read-ends          Print counts\
+  \ of read starts/ends, if --min-unique-qual is set\n                       then\
+  \ only the alignments that pass that filter will be counted here\n             \
+  \          Writes to 2 TSV files: <prefix>.starts.tsv, <prefix>.ends.tsv\n  --frag-dist\
+  \          Print fragment length distribution across the genome\n              \
+  \         Writes to a TSV file <prefix>.frags.tsv\n  --echo-sam           Print\
+  \ a SAM record for each aligned read\n  --ends               Report end coordinate\
+  \ for each read (useful for debugging)\n  --test-polya         Lower Poly-A filter\
+  \ minimums for testing (only useful for debugging/testing)\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/megadepth:1.1.0--h5675ecd_0

@@ -14,6 +14,9 @@ task GcloudComputeTargetvpngateways {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create a target VPN Gateway."
     delete: "Delete target vpn gateways."

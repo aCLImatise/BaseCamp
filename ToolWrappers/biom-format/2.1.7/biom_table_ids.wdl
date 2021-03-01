@@ -10,6 +10,9 @@ task BiomTableids {
       ~{if defined(input_fp) then ("--input-fp " +  '"' + input_fp + '"') else ""} \
       ~{if (observations) then "--observations" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fp: "The input BIOM table  [required]"
     observations: "Grab observation IDs"

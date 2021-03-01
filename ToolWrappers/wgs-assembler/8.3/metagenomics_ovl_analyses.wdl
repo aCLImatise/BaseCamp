@@ -26,6 +26,9 @@ task MetagenomicsOvlAnalyses {
       ~{if defined(var_8) then ("-B " +  '"' + var_8 + '"') else ""} \
       ~{if defined(a) then ("-A " +  '"' + a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_0: ""
     o: ""

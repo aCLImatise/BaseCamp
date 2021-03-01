@@ -14,6 +14,9 @@ task Dialign22 {
       ~{if (nt) then "-nt" else ""} \
       ~{if (lgs) then "-lgs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna_sequences_nucleotide: "DNA sequences; similarity calculated at the nucleotide level"
     nt: "DNA sequences; similarity calculated at the peptide level\\n(by translation using the genetic code)"

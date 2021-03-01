@@ -18,6 +18,9 @@ task GdtoolsDOWNLOAD {
       ~{if (reference_only) then "--reference-only" else ""} \
       ~{if (un_gzip) then "--ungzip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     login: "Login user:password information for private server access."
     download_dir: "Output directory to download file to. (DEFAULT=02_Downloads)"

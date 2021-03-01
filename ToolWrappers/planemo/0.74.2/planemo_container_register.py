@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Directory, String
+
+Planemo_Container_Register_V0_1_0 = CommandToolBuilder(tool="planemo_container_register", base_command=["planemo", "container_register"], inputs=[ToolInput(tag="in_recursive", input_type=Boolean(optional=True), prefix="--recursive", doc=InputDocumentation(doc="Recursively perform command for")), ToolInput(tag="in_cond_a_prefix", input_type=Directory(optional=True), prefix="--conda_prefix", doc=InputDocumentation(doc="Conda prefix to use for conda dependency")), ToolInput(tag="in_cond_a_debug", input_type=Boolean(optional=True), prefix="--conda_debug", doc=InputDocumentation(doc="Enable more verbose conda logging.")), ToolInput(tag="in_cond_a_ensure_channels", input_type=String(optional=True), prefix="--conda_ensure_channels", doc=InputDocumentation(doc="Ensure conda is configured with specified\ncomma separated list of channels.")), ToolInput(tag="in_cond_a_use_local", input_type=Boolean(optional=True), prefix="--conda_use_local", doc=InputDocumentation(doc="Use locally built packages while building\nConda environments.")), ToolInput(tag="in_output_directory", input_type=Directory(optional=True), prefix="--output_directory", doc=InputDocumentation(doc="Container registration directory (defaults\nto ~/.planemo/multi-package-containers.")), ToolInput(tag="in_message", input_type=String(optional=True), prefix="--message", doc=InputDocumentation(doc="Commit and pull request message template for\nregistration interactions.")), ToolInput(tag="in_no_pull_request", input_type=Boolean(optional=True), prefix="--no_pull_request", doc=InputDocumentation(doc="Fork and create a pull request against\nBioContainers/multi-package-containers for\nthese changes.")), ToolInput(tag="in_no_force_push", input_type=Boolean(optional=True), prefix="--no_force_push", doc=InputDocumentation(doc="Force push branch for pull request in case\nit already exists.")), ToolInput(tag="in_tools_dot", input_type=String(), position=0, doc=InputDocumentation(doc="Options:")), ToolInput(tag="in_subdirectories_dot", input_type=String(), position=1, doc=InputDocumentation(doc="--mulled_namespace TEXT         Build a mulled image with the specified")), ToolInput(tag="in_commands_dot", input_type=String(), position=0, doc=InputDocumentation(doc="--conda_exec FILE               Location of conda executable."))], outputs=[], container="quay.io/biocontainers/planemo:0.74.2--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Planemo_Container_Register_V0_1_0().translate("wdl")
+

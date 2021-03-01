@@ -16,6 +16,9 @@ task ScramTest {
       ~{if defined(specifies_reference_file) then ("-r " +  '"' + specifies_reference_file + '"') else ""} \
       ~{if defined(use_n_threads) then ("-t " +  '"' + use_n_threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     set_input_format: "Set input format:  \\\"bam\\\", \\\"sam\\\" or \\\"cram\\\"."
     specifies_refseqstartend_range: "[Cram] Specifies the refseq:start-end range"

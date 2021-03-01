@@ -34,6 +34,9 @@ task Bazam {
       ~{if defined(sharding_factor_format) then ("-s " +  '"' + sharding_factor_format + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "BAM file to extract read pairs from"
     dr: "Specify a read name to debug: processing of the read\\nwill be verbosey printed"

@@ -10,6 +10,9 @@ task MbnormalizeNormalizationPileup {
       ~{mb_normalize} \
       ~{if defined(mut_snp_ratio) then ("--mut_snp_ratio " +  '"' + mut_snp_ratio + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mut_snp_ratio: ""
     mb_normalize: ""

@@ -38,6 +38,9 @@ task TomboResquiggle {
       ~{if (print_advanced_arguments) then "--print-advanced-arguments" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "Explicitly select canonical DNA model. Default:\\nAutomatically determine from FAST5s"
     rna: "Explicitly select canonical RNA model. Default:\\nAutomatically determine from FAST5s"

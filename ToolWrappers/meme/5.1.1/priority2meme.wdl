@@ -18,6 +18,9 @@ task Priority2meme {
       ~{if (log_odds) then "-logodds" else ""} \
       ~{if defined(url) then ("-url " +  '"' + url + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     numbers: "use numbers instead of strings as motif names;"
     bg: "file with background frequencies of letters;\\ndefault: uniform background"

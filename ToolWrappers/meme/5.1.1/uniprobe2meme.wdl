@@ -28,6 +28,9 @@ task Uniprobe2meme {
       ~{if defined(sg) then ("-sg " +  '"' + sg + '"') else ""} \
       ~{if defined(sp) then ("-sp " +  '"' + sp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rna: "output an RNA database instead of a DNA database."
     skip: "skip this ID (may be repeated)"

@@ -20,6 +20,9 @@ task BamToPsl {
       ~{if (no_sequence_verify) then "-noSequenceVerify" else ""} \
       ~{if defined(dots) then ("-dots " +  '"' + dots + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "- output query sequences to specified file"
     chrom_alias: "- specify a two-column file: 1: alias, 2: other name\\nfor target name translation from column 1 name to column 2 name\\nnames not found are passed through intact"

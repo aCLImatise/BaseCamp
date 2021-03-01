@@ -14,6 +14,9 @@ task FilterMatrixByCoordpy {
       ~{if defined(in_coords) then ("--in_coords " +  '"' + in_coords + '"') else ""} \
       ~{if defined(action) then ("--action " +  '"' + action + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_matrix: "/path/to/file [REQUIRED]"
     out_prefix: "prefix for output files [REQUIRED]"

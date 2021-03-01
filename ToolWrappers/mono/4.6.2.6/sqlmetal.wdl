@@ -58,6 +58,9 @@ task Sqlmetal {
       ~{if (readline) then "--readline" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     conn: "STRING\\nDatabase CONNECTION STRING. Cannot be used with\\n/server, /user or /password options."
     user: "Login user NAME."

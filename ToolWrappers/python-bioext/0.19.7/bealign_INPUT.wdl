@@ -14,6 +14,9 @@ task BealignINPUT {
       ~{if defined(e) then ("-e " +  '"' + e + '"') else ""} \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a: ""
     e: ""

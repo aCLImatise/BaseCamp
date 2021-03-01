@@ -34,6 +34,9 @@ task OncogeminiBottleneck {
       ~{if (somatic_only) then "--somatic_only" else ""} \
       ~{if defined(cancers) then ("--cancers " +  '"' + cancers + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mind_p: "Minimum depth required in all samples default is 0)"
     ming_q: "Minimum genotype quality required in all samples (default\\nis 0)"

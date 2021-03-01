@@ -46,6 +46,9 @@ task Srasort2 {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_failure: "ignore failure when sorting multiple objects\\ni.e. continue in spite of previous errors"
     force: "force overwrite of existing destination"

@@ -16,6 +16,9 @@ task Iusubsamplefastq {
       ~{if defined(output_two) then ("--output2 " +  '"' + output_two + '"') else ""} \
       ~{if defined(num_reads) then ("--num-reads " +  '"' + num_reads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r_one: "FASTQ file to be subsampled. If you are subsampling a\\nmerged FASTQ or you don't have reverse reads, provide\\nthe filepath here and do not supply an argument for\\n--r2. If you have forward and reverse reads, supply\\nthe filepaths as the arguments for --r1 and --r2,\\nrespectively."
     r_two: "FASTQ file for the reverse reads. Should be provided\\nonly if you are subsampling forward and reverse reads."

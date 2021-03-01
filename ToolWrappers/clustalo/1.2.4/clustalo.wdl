@@ -86,6 +86,9 @@ task Clustalo {
       ~{if (force) then "--force" else ""} \
       ~{if (hv) then "-hv" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "={<file>,-} Multiple sequence input file (- for stdin)"
     hmm_in: "HMM input files"

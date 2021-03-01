@@ -22,6 +22,9 @@ task FastxTrimmer {
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     i: ""

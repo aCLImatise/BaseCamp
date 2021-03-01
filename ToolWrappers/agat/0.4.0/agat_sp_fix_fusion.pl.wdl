@@ -8,7 +8,7 @@ task AgatSpFixFusionpl {
     Int? threshold
     Int? stranded
     String? verbose
-    File? _output_
+    File? outfile
     String agat_sp_fix_fusion_do_tpl
   }
   command <<<
@@ -20,8 +20,11 @@ task AgatSpFixFusionpl {
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
       ~{if defined(stranded) then ("--stranded " +  '"' + stranded + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""} \
-      ~{if (_output_) then "-o" else ""}
+      ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GTF/GFF file."
     fast_a: "Input fasta file."
@@ -29,11 +32,11 @@ task AgatSpFixFusionpl {
     threshold: "This is the minimum length of new protein predicted that will be\\ntaken in account. By default this value is 100 AA."
     stranded: "By default we predict protein in UTR3 and UTR5 and in both\\ndirection. The fusion assumed can be between gene in same\\ndirection and in opposite direction. If RNAseq data used during\\nthe annotation was stranded, only fusion of close genes oriented\\nin same direction are expected. In that case this option should\\nbe activated. When activated, we will try to predict protein in\\nUTR3 and UTR5 only in the same orientation than the gene\\ninvestigated."
     verbose: "Output verbose information."
-    _output_: ", --output , --out or --outfile\\nOutput GFF file. If no output file is specified, the output will\\nbe written to STDOUT."
+    outfile: "Output GFF file. If no output file is specified, the output will\\nbe written to STDOUT."
     agat_sp_fix_fusion_do_tpl: "Description:"
   }
   output {
     File out_stdout = stdout()
-    File out__output_ = "${in__output_}"
+    File out_outfile = "${in_outfile}"
   }
 }

@@ -14,12 +14,12 @@ inputs:
     prefix: --control-fast5-basedirs
 - id: in_statistics_filename
   doc: File to save/load genomic base anchored statistics.
-  type: File
+  type: File?
   inputBinding:
     prefix: --statistics-filename
 - id: in_genome_fast_a
   doc: "FASTA file used to re-squiggle. For faster sequence\naccess."
-  type: File
+  type: File?
   inputBinding:
     prefix: --genome-fasta
 - id: in_motif_descriptions
@@ -35,7 +35,7 @@ inputs:
     \ be produced for each --file-types\nsupplied. Filenames formatted as \"[browser-file-\n\
     basename].[file-\ntype].[sample|control]?.[plus|minus].[wig|bedgraph]\".\nDefault:\
     \ tombo_results"
-  type: File
+  type: File?
   inputBinding:
     prefix: --browser-file-basename
 - id: in_file_types
@@ -43,12 +43,12 @@ inputs:
     \ ...]\nData types of genome browser files to produce.\nProduced coverage files\
     \ are in bedGraph format, while\nall other file types will be in wiggle format\n\
     (https://genome.ucsc.edu/goldenpath/help/wiggle.html).\nDefault: \"coverage\""
-  type: string
+  type: string?
   inputBinding:
     prefix: --file-types
 - id: in_corrected_group
   doc: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
-  type: long
+  type: long?
   inputBinding:
     prefix: --corrected-group
 - id: in_base_call_subgroups
@@ -60,7 +60,7 @@ inputs:
     prefix: --basecall-subgroups
 - id: in_quiet
   doc: Don't print status information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 outputs:
@@ -72,9 +72,10 @@ outputs:
     \ be produced for each --file-types\nsupplied. Filenames formatted as \"[browser-file-\n\
     basename].[file-\ntype].[sample|control]?.[plus|minus].[wig|bedgraph]\".\nDefault:\
     \ tombo_results"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_browser_file_basename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tombo

@@ -32,6 +32,9 @@ task ScaterfilterR {
       ~{if defined(output_cell_select_file) then ("--output-cellselect-file " +  '"' + output_cell_select_file + '"') else ""} \
       ~{if defined(output_feature_select_file) then ("--output-featureselect-file " +  '"' + output_feature_select_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "A serialized SingleCellExperiment object file in RDS format."
     subset_cell_variables: "Comma-separated parameters to subset on. Any variable available in the colData of the supplied object."

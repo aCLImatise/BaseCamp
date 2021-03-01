@@ -14,6 +14,9 @@ task MergeFlagspy {
       ~{if defined(flag_uniqid) then ("--flagUniqID " +  '"' + flag_uniqid + '"') else ""} \
       ~{if defined(output_file) then ("--output " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_number_flag: "Input any number of flag files that have the same\\nindexes"
     filename: "Filename for input data."

@@ -3,22 +3,22 @@ id: compare_flags.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: Output file (Cross tab format).
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_flag_one
   doc: Flag 1 to create cross tab
-  type: long
+  type: long?
   inputBinding:
     prefix: --flag1
 - id: in_flag_two
   doc: "Flag 2 to create cross tab\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --flag2
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output file (Cross tab format).
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - compare_flags.py

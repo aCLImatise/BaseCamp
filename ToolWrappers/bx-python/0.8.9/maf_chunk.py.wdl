@@ -12,6 +12,9 @@ task MafChunkpy {
       ~{out_dir} \
       ~{if defined(prob) then ("--prob " +  '"' + prob + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prob: "Probability of writing a given chunk"
     chunk_size: ""

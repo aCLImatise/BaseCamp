@@ -38,6 +38,9 @@ task Lamassemble {
       ~{if defined(max_initial_matches) then ("-m " +  '"' + max_initial_matches + '"') else ""} \
       ~{if defined(max_gap_length) then ("-z " +  '"' + max_gap_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignment: "print an alignment, not a consensus"
     consensus: "just make a consensus, of already-aligned sequences"

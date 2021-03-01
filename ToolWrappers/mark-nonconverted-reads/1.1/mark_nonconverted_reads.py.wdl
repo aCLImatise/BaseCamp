@@ -16,6 +16,9 @@ task Marknonconvertedreadspy {
       ~{if defined(c_count) then ("--c_count " +  '"' + c_count + '"') else ""} \
       ~{if (flag_reads) then "--flag_reads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "Reference fasta file"
     bam: "Input bam or sam file (must end in .bam or .sam)\\n[default = stdin]"

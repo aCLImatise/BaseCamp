@@ -2,7 +2,6 @@ version 1.0
 
 task MutAnnotate {
   input {
-    String? b
     File? log_level
     File? log
     Boolean? verbose
@@ -27,7 +26,6 @@ task MutAnnotate {
   }
   command <<<
     mut_annotate \
-      ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""} \
@@ -50,8 +48,10 @@ task MutAnnotate {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(output_text_file) then ("--output " +  '"' + output_text_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    b: "[-s SCORE_DIR] [-p PROCESSES] [-n NUM_ITERATIONS]"
     log_level: "Write a log file (--log-level=DEBUG for debug mode,\\n--log-level=INFO for info mode)"
     log: "Path to log file. (accepts \\\"stdout\\\")"
     verbose: "Flag for more verbose log output"

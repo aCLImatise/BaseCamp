@@ -54,6 +54,9 @@ task ScanwiseServer {
       ~{if (error_log) then "-errorlog" else ""} \
       ~{if (error_style) then "-errorstyle" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compress: "use compressed index, for large indexes"
     hash: "use glib hash not array (far slower, but easier on the memory for small DBs)"

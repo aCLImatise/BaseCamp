@@ -30,6 +30,9 @@ task Daijin {
       ~{seq} \
       ~{data_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a: ""
     directed: ""

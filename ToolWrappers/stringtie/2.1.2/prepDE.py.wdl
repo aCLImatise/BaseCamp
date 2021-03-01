@@ -26,6 +26,9 @@ task PrepDEpy {
       ~{if (enable_verbose_processing) then "-v" else ""} \
       ~{if defined(legend) then ("--legend " +  '"' + legend + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     folder_containing_subdirectories: "a folder containing all sample sub-directories, or a\\ntext file with sample ID and path to its GTF file on\\neach line [default: ./]"
     where_output_default: "where to output the gene count matrix [default:"

@@ -8,6 +8,9 @@ task AppendSff {
     append_sff \
       ~{add_me_dots_ff}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_me_dots_ff: ""
   }

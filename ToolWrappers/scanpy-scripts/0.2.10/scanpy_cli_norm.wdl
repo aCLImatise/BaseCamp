@@ -28,6 +28,9 @@ task ScanpycliNorm {
       ~{if defined(normalize_to) then ("--normalize-to " +  '"' + normalize_to + '"') else ""} \
       ~{if defined(fraction) then ("--fraction " +  '"' + fraction + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_format: "[anndata|loom]\\nInput object format.  [default: anndata]"
     output_format: "[anndata|loom|zarr]\\nOutput object format.  [default: anndata]"

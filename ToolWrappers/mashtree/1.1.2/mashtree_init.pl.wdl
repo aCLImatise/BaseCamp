@@ -18,6 +18,9 @@ task MashtreeInitpl {
       ~{if (sort_order) then "--sort-order" else ""} \
       ~{if (min_depth) then "--mindepth" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "''   Required output sqlite file"
     tempdir: "''   If specified, this directory will not be\\nremoved at the end of the script and can\\nbe used to cache results for future\\nanalyses.\\nIf not specified, a dir will be made for you\\nand then deleted at the end of this script."

@@ -82,6 +82,9 @@ task CactusCaf {
       ~{if (phylogeny_nucleotide_scaling_factor) then "--phylogenyNucleotideScalingFactor" else ""} \
       ~{if (minimum_block_degree_to_check_support) then "--minimumBlockDegreeToCheckSupport" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     loglevel: ": Set the log level"
     alignments: ": The input alignments file"

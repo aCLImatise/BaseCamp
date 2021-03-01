@@ -26,6 +26,9 @@ task MatchRgPatternsToLibrarypl {
       ~{if (keep_small_dels_and_tds) then "-keep_small_dels_and_tds" else ""} \
       ~{if defined(max_depth) then ("-max_depth " +  '"' + max_depth + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     acf: "Aberrant cell fraction [1.0]"
     ploidy: "Tumour ploidy [2.0]"

@@ -50,6 +50,9 @@ task Anvipangenome {
       ~{if defined(distance) then ("--distance " +  '"' + distance + '"') else ""} \
       ~{if defined(linkage) then ("--linkage " +  '"' + linkage + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genomes_storage: "Anvi'o genomes storage file"
     genome_names: "Genome names to 'focus'. You can use this parameter to\\nlimit the genomes included in your analysis. You can\\nprovide these names as a comma-separated list of\\nnames, or you can put them in a file, where you have a\\nsingle genome name in each line, and provide the file\\npath."

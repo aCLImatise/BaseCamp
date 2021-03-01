@@ -22,6 +22,9 @@ task Dshsplitfasta {
       ~{if (suffix) then "--suffix" else ""} \
       ~{if (line_width) then "--line-width" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     input_file: "[class java.io.File]  input FASTA file, default stdin [optional]"

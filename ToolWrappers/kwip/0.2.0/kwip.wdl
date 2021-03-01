@@ -24,6 +24,9 @@ task Kwip {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads to utilise. [default N_CPUS]"
     kernel: "Output file for the kernel matrix. [default None]"

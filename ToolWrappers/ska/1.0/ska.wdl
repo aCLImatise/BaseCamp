@@ -8,6 +8,9 @@ task Ska {
     ska \
       ~{subcommand}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     subcommand: ""
   }

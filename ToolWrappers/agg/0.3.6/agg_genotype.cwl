@@ -3,23 +3,23 @@ id: agg_genotype.cwl
 inputs:
 - id: in_regions
   doc: region to genotype eg. chr1 or chr20:5000000-6000000
-  type: long
+  type: long?
   inputBinding:
     prefix: --regions
-- id: in__outputfile_file
-  doc: ',   --output-file <file>          output file name [stdout]'
-  type: File
+- id: in_output_file
+  doc: output file name [stdout]
+  type: File?
   inputBinding:
-    prefix: -o
-- id: in__outputtype_buzv
-  doc: ',   --output-type <b|u|z|v>       b: compressed BCF, u: uncompressed BCF,
-    z: compressed VCF, v: uncompressed VCF [v]'
-  type: boolean
+    prefix: --output-file
+- id: in_output_type
+  doc: 'b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed
+    VCF [v]'
+  type: string?
   inputBinding:
-    prefix: -O
+    prefix: --output-type
 - id: in_thread
   doc: number of threads [0]
-  type: long
+  type: long?
   inputBinding:
     prefix: --thread
 - id: in_chunk_one
@@ -31,11 +31,12 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out__outputfile_file
-  doc: ',   --output-file <file>          output file name [stdout]'
-  type: File
+- id: out_output_file
+  doc: output file name [stdout]
+  type: File?
   outputBinding:
-    glob: $(inputs.in__outputfile_file)
+    glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agg

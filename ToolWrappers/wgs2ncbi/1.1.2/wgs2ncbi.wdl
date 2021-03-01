@@ -8,6 +8,9 @@ task Wgs2ncbi {
     wgs2ncbi \
       ~{ncbi}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ncbi: "SYNOPSIS\\nUsage: wgs2ncbi [action] -conf [config file]"
   }

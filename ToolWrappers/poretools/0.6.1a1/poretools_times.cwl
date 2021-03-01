@@ -3,12 +3,12 @@ id: poretools_times.cwl
 inputs:
 - id: in_quiet
   doc: Do not output warnings to stderr
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_utc
   doc: Show timestamps in UTC.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --utc
 - id: in_files
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - poretools

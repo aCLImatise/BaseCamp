@@ -20,6 +20,9 @@ task TangoTransfer {
       ~{if defined(orf_tax_out) then ("--orf_tax_out " +  '"' + orf_tax_out + '"') else ""} \
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_unc_rank: "Ignore ORFs unclassified at <rank>"
     orf_tax_out: "Also transfer taxonomy back to ORFs and output to file"

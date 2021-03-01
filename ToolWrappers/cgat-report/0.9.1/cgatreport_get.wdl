@@ -22,6 +22,9 @@ task Cgatreportget {
       ~{if defined(group_by) then ("--groupby " +  '"' + group_by + '"') else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "loglevel. The higher, the more output [default=2]"
     view: "view keys in cache [default=False]"

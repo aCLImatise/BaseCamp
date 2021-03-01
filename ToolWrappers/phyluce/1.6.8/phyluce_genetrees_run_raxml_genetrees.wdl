@@ -26,6 +26,9 @@ task PhyluceGenetreesRunRaxmlGenetrees {
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""} \
       ~{if (var_output) then "--output" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_directory_containing: "The input directory containing alignments in phylip"
     out_group: "The outgroup to use"

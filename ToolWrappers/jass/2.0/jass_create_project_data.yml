@@ -5,43 +5,73 @@ command:
 positional: []
 named:
 - !Flag
-  description: "--worktable-path WORKTABLE_PATH [--keep-nans]\n--manhattan-plot-path\
-    \ MANHATTAN_PLOT_PATH\n--quadrant-plot-path QUADRANT_PLOT_PATH\n[--significance-treshold\
-    \ SIGNIFICANCE_TRESHOLD]\n[--post-filtering POST_FILTERING]\n[--custom-loadings\
-    \ CUSTOM_LOADINGS]\n[--omnibus | --sumz | --fisher_test | --strategy STRATEGY]"
-  synonyms:
-  - --phenotypes
-  args: !RepeatFlagArg
-    name: PHENOTYPES
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - --init-table-path
+  description: "path to the initial data file, default is the\nconfigured path (JASS_DATA_DIR/initTable.hdf5)"
   args: !SimpleFlagArg
     name: INIT_TABLE_PATH
+- !Flag
   optional: true
+  synonyms:
+  - --phenotypes
+  description: list of selected phenotypes
+  args: !RepeatFlagArg
+    name: PHENOTYPES
+- !Flag
+  optional: true
+  synonyms:
+  - --worktable-path
+  description: path to the worktable file to generate
+  args: !SimpleFlagArg
+    name: WORKTABLE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-nans
+  - --manhattan-plot-path
+  description: path to the genome-wide manhattan plot to generate
+  args: !SimpleFlagArg
+    name: MANHATTAN_PLOT_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --quadrant-plot-path
+  description: path to the quadrant plot to generate
+  args: !SimpleFlagArg
+    name: QUADRANT_PLOT_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --significance-treshold
+  description: "The treshold at which a p-value is considered\nsignificant"
+  args: !SimpleFlagArg
+    name: SIGNIFICANCE_TRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --post-filtering
+  description: "If a filtering to remove outlier will be applied (in\nthis case the\
+    \ result of SNPs considered aberant will\nnot appear in the worktable)"
+  args: !SimpleFlagArg
+    name: POST_FILTERING
+- !Flag
+  optional: true
+  synonyms:
+  - --custom-loadings
+  description: "path toward a csv file containing custom loading for\nsumZ tests"
+  args: !SimpleFlagArg
+    name: CUSTOM_LOADINGS
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--init-table-path INIT_TABLE_PATH\n\
-    path to the initial data file, default is the\nconfigured path (JASS_DATA_DIR/initTable.hdf5)\n\
-    --phenotypes PHENOTYPES [PHENOTYPES ...]\nlist of selected phenotypes\n--worktable-path\
-    \ WORKTABLE_PATH\npath to the worktable file to generate\n--keep-nans\n--manhattan-plot-path\
-    \ MANHATTAN_PLOT_PATH\npath to the genome-wide manhattan plot to generate\n--quadrant-plot-path\
-    \ QUADRANT_PLOT_PATH\npath to the quadrant plot to generate\n--significance-treshold\
-    \ SIGNIFICANCE_TRESHOLD\nThe treshold at which a p-value is considered\nsignificant\n\
-    --post-filtering POST_FILTERING\nIf a filtering to remove outlier will be applied\
-    \ (in\nthis case the result of SNPs considered aberant will\nnot appear in the\
-    \ worktable)\n--custom-loadings CUSTOM_LOADINGS\npath toward a csv file containing\
-    \ custom loading for\nsumZ tests\n--omnibus\n--sumz\n--fisher_test\n--strategy\
-    \ STRATEGY\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: jass create-project-data [-h] [--init-table-path INIT_TABLE_PATH]\n\
@@ -71,3 +101,4 @@ help_text: "usage: jass create-project-data [-h] [--init-table-path INIT_TABLE_P
   \  --strategy STRATEGY\n"
 generated_using:
 - --help
+docker_image:

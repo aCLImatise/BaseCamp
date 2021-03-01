@@ -22,6 +22,9 @@ task CnvkitpyExportBed {
       ~{if (haploid_x_reference) then "--haploid-x-reference" else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample_id: "Identifier to write in the 4th column of the BED file.\\n[Default: use the sample ID, taken from the file name]"
     label_genes: "Show gene names in the 4th column of the BED file.\\n(This is a bad idea if >1 input files are given.)"

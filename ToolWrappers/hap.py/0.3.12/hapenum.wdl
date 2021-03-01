@@ -22,6 +22,9 @@ task Hapenum {
       ~{if (arg_preprocess_variants) then "-P" else ""} \
       ~{if defined(max_n_haplotypes) then ("--max-n-haplotypes " +  '"' + max_n_haplotypes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "The input VCF/BCF file (use file:sample to specify\\na sample)"
     output_dot: "Write a dot file with the reference graph."

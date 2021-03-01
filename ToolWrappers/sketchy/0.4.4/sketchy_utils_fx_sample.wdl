@@ -16,6 +16,9 @@ task SketchyUtilsFxsample {
       ~{if (replacement) then "--replacement" else ""} \
       ~{if (seed) then "--seed" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_x: "Path to Fast{a,q} input file.  [required]"
     output_fast_file: "Output to Fast{a,q} file. Default stdout [-]"

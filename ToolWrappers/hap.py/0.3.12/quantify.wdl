@@ -4,7 +4,7 @@ task Quantify {
   input {
     File? input_file
     File? arg_output_file
-    File? arg_annotated_vcf
+    File? arg_annotated_file
     String? output_summary
     String? output_filter_rocs
     String? roc_filter
@@ -32,7 +32,7 @@ task Quantify {
     quantify \
       ~{if defined(input_file) then ("--input-file " +  '"' + input_file + '"') else ""} \
       ~{if (arg_output_file) then "-o" else ""} \
-      ~{if (arg_annotated_vcf) then "-v" else ""} \
+      ~{if (arg_annotated_file) then "-v" else ""} \
       ~{if defined(output_summary) then ("--output-summary " +  '"' + output_summary + '"') else ""} \
       ~{if defined(output_filter_rocs) then ("--output-filter-rocs " +  '"' + output_filter_rocs + '"') else ""} \
       ~{if defined(roc_filter) then ("--roc-filter " +  '"' + roc_filter + '"') else ""} \
@@ -56,10 +56,13 @@ task Quantify {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(block_size) then ("--blocksize " +  '"' + block_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "The input file"
     arg_output_file: "[ --output-file ] arg   The output file name (TSV Format)."
-    arg_annotated_vcf: "[ --output-vcf ] arg    Annotated VCF file (with bed annotations)."
+    arg_annotated_file: "[ --output-vcf ] arg    Annotated VCF file (with bed annotations)."
     output_summary: "Output a summary table with TP / FP / FN / UNK\\ncounts, precision, recall, etc."
     output_filter_rocs: "Output ROC levels for filters."
     roc_filter: "Ignore certain filters when creating a ROC."
@@ -86,7 +89,7 @@ task Quantify {
   output {
     File out_stdout = stdout()
     File out_arg_output_file = "${in_arg_output_file}"
-    File out_arg_annotated_vcf = "${in_arg_annotated_vcf}"
+    File out_arg_annotated_file = "${in_arg_annotated_file}"
     File out_arg_reference_fasta = "${in_arg_reference_fasta}"
   }
 }

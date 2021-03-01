@@ -1,0 +1,57 @@
+!Command
+command:
+- cnv_updater.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: cnn_files
+  description: "CNVkit coverage files to update (*.targetcoverage.cnn,\n*.antitargetcoverage.cnn)."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --output-dir
+  description: Directory to write output .cnn files.
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --suffix
+  description: "Filename suffix to add before the '.cnn' extension in\noutput files.\
+    \ [Default: .updated]\n"
+  args: !SimpleFlagArg
+    name: SUFFIX
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: cnv_updater.py [-h] [-d OUTPUT_DIR] [-s SUFFIX]\n             \
+  \         cnn_files [cnn_files ...]\n\nUpdate .cnn/.cnr files from older CNVkit\
+  \ versions to match current defaults.\nCNVkit v0.8.0 and later uses a 'depth' column\
+  \ in the *.targetcoverage.cnn and\n*.antitargetcoverage.cnn files produced by the\
+  \ 'coverage' command. To use .cnn\nfiles created by CNVkit v0.7.11 or earlier with\
+  \ the current version, run this\nscript on the old .cnn files to convert them to\
+  \ the new format, calculating\n'depth' from 'log2'. CNVkit v0.9.0 and later automatically\
+  \ names off-target\nbins \"Antitarget\", instead of the previous \"Background\"\
+  . This script also\nupdates those bin names in the 'gene' column.\n\npositional\
+  \ arguments:\n  cnn_files             CNVkit coverage files to update (*.targetcoverage.cnn,\n\
+  \                        *.antitargetcoverage.cnn).\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -d OUTPUT_DIR, --output-dir\
+  \ OUTPUT_DIR\n                        Directory to write output .cnn files.\n  -s\
+  \ SUFFIX, --suffix SUFFIX\n                        Filename suffix to add before\
+  \ the '.cnn' extension in\n                        output files. [Default: .updated]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cnvkit:0.9.8--py_0

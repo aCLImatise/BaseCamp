@@ -24,6 +24,9 @@ task Mergevcf {
       ~{if (filtered) then "--filtered" else ""} \
       ~{if defined(sv_window) then ("--svwindow " +  '"' + sv_window + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     specify_output_file: "Specify output file (default:stdout)"
     verbose: "Specify verbose output"

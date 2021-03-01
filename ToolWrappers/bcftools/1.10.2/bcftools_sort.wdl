@@ -16,6 +16,9 @@ task BcftoolsSort {
       ~{if defined(output_type) then ("--output-type " +  '"' + output_type + '"') else ""} \
       ~{if defined(temp_dir) then ("--temp-dir " +  '"' + temp_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_mem: "[kMG]    maximum memory to use [768M]"
     output_file: "output file name [stdout]"

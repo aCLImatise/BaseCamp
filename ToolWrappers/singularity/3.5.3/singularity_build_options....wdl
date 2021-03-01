@@ -18,6 +18,9 @@ task SingularityBuildOptions {
       ~{local} \
       ~{image_path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

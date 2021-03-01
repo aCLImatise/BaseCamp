@@ -16,6 +16,9 @@ task DRAMpyDistill {
       ~{if defined(trna_path) then ("--trna_path " +  '"' + trna_path + '"') else ""} \
       ~{if defined(group_by_column) then ("--groupby_column " +  '"' + group_by_column + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Annotations path (default: None)"
     output_dir: "Directory to write summarized genomes (default: None)"

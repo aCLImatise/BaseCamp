@@ -4,31 +4,55 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Job control file location (mandatory)\n-p prmtop  Parameter file location\
-    \ --OR--"
+  optional: true
   synonyms:
   - -i
+  description: Job control file location (mandatory)
   args: !SimpleFlagArg
     name: Job_Control.in
-  optional: true
 - !Flag
-  description: "list     List of multiple parameter files to use, their K values\n\
-    -c mdcrd   Coordinate file location --OR--"
+  optional: true
   synonyms:
-  - -pf
+  - -p
+  description: Parameter file location --OR--
   args: !SimpleFlagArg
     name: prmtop
-  optional: true
 - !Flag
-  description: "list      List of mdcrd files, number of structres, qm files location\n\
-    -q QM_data.dat     List of quantum energies (for single fits only)\n-v MEDIUM\n\
-    --random-seed 0 (for debugging only, no default value)\n/history prints program\
-    \ development history\nFor HELP please see the documentation\n"
+  optional: true
   synonyms:
-  - -cf
+  - -pf
+  description: list     List of multiple parameter files to use, their K values
+  args: !SimpleFlagArg
+    name: prmtop
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: Coordinate file location --OR--
   args: !SimpleFlagArg
     name: mdcrd
+- !Flag
   optional: true
+  synonyms:
+  - -cf
+  description: list      List of mdcrd files, number of structres, qm files location
+  args: !SimpleFlagArg
+    name: mdcrd
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: List of quantum energies (for single fits only)
+  args: !SimpleFlagArg
+    name: QM_data.dat
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --random-seed
+  description: (for debugging only, no default value)
+  args: !SimpleFlagArg
+    name: MEDIUM
 parent:
 subcommands: []
 usage: []
@@ -48,3 +72,4 @@ help_text: "Usage is:\n  paramfit -i Job_Control.in -p prmtop -c mdcrd -q QM_dat
   \ documentation\n\n"
 generated_using:
 - --help
+docker_image:

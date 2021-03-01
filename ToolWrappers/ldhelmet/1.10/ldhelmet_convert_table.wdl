@@ -14,6 +14,9 @@ task LdhelmetConvertTable {
       ~{if defined(output_table) then ("--output_table " +  '"' + output_table + '"') else ""} \
       ~{if defined(config_file) then ("--config_file " +  '"' + config_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _display_version: "[ --version ]       Display version."
     input_table: "LDhat style table to be converted."

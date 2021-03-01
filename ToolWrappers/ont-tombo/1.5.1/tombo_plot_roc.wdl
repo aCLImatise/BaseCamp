@@ -24,6 +24,9 @@ task TomboPlotRoc {
       ~{if defined(total_statistics_limit) then ("--total-statistics-limit " +  '"' + total_statistics_limit + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     statistics_filenames: "Files to load genomic base anchored statistics."
     modified_locations: "Modification description and bed format files\\ncontaining single base locations of ground truth\\nmodified sites. Bed files should contain 6 fields\\nincluding strand. Format descriptions as\\n\\\"mod_name:locs.bed\\\". Example: \\\"CpG\\nbisulfite\\\":bisulfite_locs.bed"

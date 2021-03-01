@@ -24,6 +24,9 @@ task SvtkSrtest {
       ~{if defined(median_file) then ("--medianfile " +  '"' + median_file + '"') else ""} \
       ~{if (log) then "--log" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window: "Window around variant start/end to consider for split\\nread support. [100]"
     background: "Number of background samples to choose for comparison\\nin t-test. [160]"

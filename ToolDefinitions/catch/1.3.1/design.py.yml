@@ -3,6 +3,9 @@ command:
 - design.py
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: dataset
   description: "One or more target datasets (e.g., one per species).\nEach dataset\
     \ can be specified in one of multiple ways.\n(a) If dataset is in the format 'download:TAXID',\
     \ then\nCATCH downloads from NCBI all whole genomes for the\nNCBI taxonomy with\
@@ -11,65 +14,65 @@ positional:
     \ it is assumed that this is a label for a\ndataset included in this package (e.g.,\
     \ 'zika'). If\nthe label starts with 'colleciton:' (e.g.,\n'collection:viruses_with_human_host'),\
     \ then this reads\nfrom an available collection of datasets."
-  position: 0
-  name: dataset
-  optional: false
 named:
 - !Flag
-  description: "The file to which all final probes should be written;\nthey are written\
-    \ in FASTA format"
+  optional: true
   synonyms:
   - -o
   - --output-probes
+  description: "The file to which all final probes should be written;\nthey are written\
+    \ in FASTA format"
   args: !SimpleFlagArg
     name: OUTPUT_PROBES
-  optional: true
 - !Flag
-  description: (Optional) Make probes be PROBE_LENGTH nt long
+  optional: true
   synonyms:
   - -pl
   - --probe-length
+  description: (Optional) Make probes be PROBE_LENGTH nt long
   args: !SimpleFlagArg
     name: PROBE_LENGTH
-  optional: true
 - !Flag
-  description: "(Optional) Generate candidate probes from the input\nthat are separated\
-    \ by PROBE_STRIDE nt"
+  optional: true
   synonyms:
   - -ps
   - --probe-stride
+  description: "(Optional) Generate candidate probes from the input\nthat are separated\
+    \ by PROBE_STRIDE nt"
   args: !SimpleFlagArg
     name: PROBE_STRIDE
-  optional: true
 - !Flag
-  description: "(Optional) Allow for MISMATCHES mismatches when\ndetermining whether\
-    \ a probe covers a sequence"
+  optional: true
   synonyms:
   - -m
   - --mismatches
+  description: "(Optional) Allow for MISMATCHES mismatches when\ndetermining whether\
+    \ a probe covers a sequence"
   args: !SimpleFlagArg
     name: MISMATCHES
-  optional: true
 - !Flag
-  description: "(Optional) Say that a portion of a probe covers a\nportion of a sequence\
-    \ if the two share a substring\nwith at most MISMATCHES mismatches that has length\
-    \ >=\nLCF_THRES nt; if unspecified, this is set to\nPROBE_LENGTH"
+  optional: true
   synonyms:
   - -l
   - --lcf-thres
+  description: "(Optional) Say that a portion of a probe covers a\nportion of a sequence\
+    \ if the two share a substring\nwith at most MISMATCHES mismatches that has length\
+    \ >=\nLCF_THRES nt; if unspecified, this is set to\nPROBE_LENGTH"
   args: !SimpleFlagArg
     name: LCF_THRES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --island-of-exact-match
   description: "(Optional) When determining whether a probe covers a\nsequence, require\
     \ that there be an exact match (i.e.,\nno mismatches) of length at least\nISLAND_OF_EXACT_MATCH\
     \ nt between a portion of the\nprobe and a portion of the sequence"
-  synonyms:
-  - --island-of-exact-match
   args: !SimpleFlagArg
     name: ISLAND_OF_EXACT_MATCH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --custom-hybridization-fn
   description: "CUSTOM_HYBRIDIZATION_FN\n(Optional) Args: <PATH> <FUNC>; PATH is a\
     \ path to a\nPython module (.py file) and FUNC is a string giving\nthe name of\
     \ a function in that module. FUNC provides a\ncustom model of hybridization between\
@@ -93,23 +96,24 @@ named:
     (start, end) where start is an int giving the start\nposition in the probe (equivalently,\
     \ in the target\nsubsequence) at which the probe will hybridize to the\ntarget\
     \ subsequence, and end is an int (exclusive)\ngiving the end position of the hybridization."
-  synonyms:
-  - --custom-hybridization-fn
   args: !SimpleFlagArg
     name: CUSTOM_HYBRIDIZATION_FN
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --coverage
   description: "If this is a float in [0,1], it gives the fraction of\neach target\
     \ genome that must be covered by the\nselected probes; if this is an int > 1,\
     \ it gives the\nnumber of bp of each target genome that must be\ncovered by the\
     \ selected probes"
-  synonyms:
-  - -c
-  - --coverage
   args: !SimpleFlagArg
     name: COVERAGE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --cover-extension
   description: "Extend the coverage of each side of a probe by\nCOVER_EXTENSION nt.\
     \ That is, a probe covers a region\nthat consists of the portion of a sequence\
     \ it\nhybridizes to, as well as this number of nt on each\nside of that portion.\
@@ -117,98 +121,97 @@ named:
     fragment that includes the region targeted by the\nprobe, along with surrounding\
     \ portions of the\nsequence. Increasing its value should reduce the\nnumber of\
     \ probes required to achieve the desired\ncoverage."
-  synonyms:
-  - -e
-  - --cover-extension
   args: !SimpleFlagArg
     name: COVER_EXTENSION
-  optional: true
 - !Flag
-  description: "Design probes meant to make it possible to identify\nnucleic acid\
-    \ from a particular input dataset against\nthe other datasets; when set, the coverage\
-    \ should\ngenerally be small"
+  optional: true
   synonyms:
   - -i
   - --identify
+  description: "Design probes meant to make it possible to identify\nnucleic acid\
+    \ from a particular input dataset against\nthe other datasets; when set, the coverage\
+    \ should\ngenerally be small"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --blacklist-genomes
   description: "One or more blacklisted genomes; penalize probes based\non how much\
     \ of each of these genomes they cover. If\nthe value is a path to a file, then\
     \ that file is\ntreated as a FASTA file and its sequences are read.\nOtherwise,\
     \ it is assumed that this is a label for a\ndataset included in this package (e.g.,\
     \ 'zika')."
-  synonyms:
-  - --blacklist-genomes
   args: !RepeatFlagArg
     name: BLACKLIST_GENOMES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -mt
+  - --mismatches-tolerant
   description: "(Optional) A more tolerant value for 'mismatches';\nthis should be\
     \ greater than the value of MISMATCHES.\nAllows for capturing more possible hybridizations\n\
     (i.e., more sensitivity) when designing probes for\nidentification or when genomes\
     \ are blacklisted."
-  synonyms:
-  - -mt
-  - --mismatches-tolerant
   args: !SimpleFlagArg
     name: MISMATCHES_TOLERANT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -lt
+  - --lcf-thres-tolerant
   description: "(Optional) A more tolerant value for 'lcf_thres'; this\nshould be\
     \ less than LCF_THRES. Allows for capturing\nmore possible hybridizations (i.e.,\
     \ more sensitivity)\nwhen designing probes for identification or when\ngenomes\
     \ are blacklisted."
-  synonyms:
-  - -lt
-  - --lcf-thres-tolerant
   args: !SimpleFlagArg
     name: LCF_THRES_TOLERANT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --island-of-exact-match-tolerant
   description: "(Optional) A more tolerant value for\n'island_of_exact_match'; this\
     \ should be less than\nISLAND_OF_ EXACT_MATCH. Allows for capturing more\npossible\
     \ hybridizations (i.e., more sensitivity) when\ndesigning probes for identification\
     \ or when genomes\nare blacklisted."
-  synonyms:
-  - --island-of-exact-match-tolerant
   args: !SimpleFlagArg
     name: ISLAND_OF_EXACT_MATCH_TOLERANT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --custom-hybridization-fn-tolerant
   description: "CUSTOM_HYBRIDIZATION_FN_TOLERANT\n(Optional) A more tolerant model\
     \ than the one\nimplemented in custom_hybridization_fn. This should\ncapture more\
     \ possible hybridizations (i.e., be more\nsensitive) when designing probes for\
     \ identification or\nwhen genomes are blacklisted. See --custom-\nhybridization-fn\
     \ for details of how this function\nshould be implemented and provided."
-  synonyms:
-  - --custom-hybridization-fn-tolerant
   args: !SimpleFlagArg
     name: CUSTOM_HYBRIDIZATION_FN_TOLERANT
-  optional: true
 - !Flag
-  description: Print analysis of the probe set's coverage
+  optional: true
   synonyms:
   - --print-analysis
+  description: Print analysis of the probe set's coverage
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(Optional) The file to which to write a TSV-formatted\nmatrix of the\
-    \ probe set's coverage analysis"
+  optional: true
   synonyms:
   - --write-analysis-to-tsv
+  description: "(Optional) The file to which to write a TSV-formatted\nmatrix of the\
+    \ probe set's coverage analysis"
   args: !SimpleFlagArg
     name: WRITE_ANALYSIS_TO_TSV
-  optional: true
 - !Flag
-  description: "(Optional) The file to which to write the average\ncoverage achieved\
-    \ by the probe set within sliding\nwindows of each target genome"
+  optional: true
   synonyms:
   - --write-sliding-window-coverage
+  description: "(Optional) The file to which to write the average\ncoverage achieved\
+    \ by the probe set within sliding\nwindows of each target genome"
   args: !SimpleFlagArg
     name: WRITE_SLIDING_WINDOW_COVERAGE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filter-from-fasta
   description: "(Optional) A FASTA file from which to select candidate\nprobes. Before\
     \ running any other filters, keep only\nthe candidate probes that are equal to\
     \ sequences in\nthe file and remove all probes not equal to any of\nthese sequences.\
@@ -222,60 +225,60 @@ named:
     \ containing those probes,\nwe can provide a path to that FASTA file for this\n\
     argument, and also provide the --skip-set-cover\nargument, in order to add adapters\
     \ to those probes\nwithout having to re-run the set cover filter."
-  synonyms:
-  - --filter-from-fasta
   args: !SimpleFlagArg
     name: FILTER_FROM_FASTA
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --skip-set-cover
   description: "Skip the set cover filter; this is useful when we wish\nto see the\
     \ probes generated from only the duplicate\nand reverse complement filters, to\
     \ gauge the effects\nof the set cover filter"
-  synonyms:
-  - --skip-set-cover
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Add adapters to the ends of probes; to specify adapter\nsequences,\
-    \ use --adapter-a and --adapter-b"
+  optional: true
   synonyms:
   - --add-adapters
+  description: "Add adapters to the ends of probes; to specify adapter\nsequences,\
+    \ use --adapter-a and --adapter-b"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --adapter-a
   description: "ADAPTER_A\n(Optional) Args: <X> <Y>; Custom A adapter to use; two\n\
     ordered where X is the A adapter sequence to place on\nthe 5' end of a probe and\
     \ Y is the A adapter sequence\nto place on the 3' end of a probe"
-  synonyms:
-  - --adapter-a
   args: !SimpleFlagArg
     name: ADAPTER_A
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --adapter-b
   description: "ADAPTER_B\n(Optional) Args: <X> <Y>; Custom B adapter to use; two\n\
     ordered where X is the B adapter sequence to place on\nthe 5' end of a probe and\
     \ Y is the B adapter sequence\nto place on the 3' end of a probe"
-  synonyms:
-  - --adapter-b
   args: !SimpleFlagArg
     name: ADAPTER_B
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filter-polya
   description: "FILTER_POLYA\n(Optional) Args: <X> <Y> (integers); do not output any\n\
     probe that contains a stretch of X or more 'A' bases,\ntolerating up to Y mismatches\
     \ (and likewise for 'T'\nbases)"
-  synonyms:
-  - --filter-polya
   args: !SimpleFlagArg
     name: FILTER_POLYA
-  optional: true
 - !Flag
-  description: Add to the output the reverse complement of each probe
+  optional: true
   synonyms:
   - --add-reverse-complements
+  description: Add to the output the reverse complement of each probe
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --expand-n
   description: "[EXPAND_N]\nExpand each probe so that 'N' bases are replaced by\n\
     real bases; for example, the probe 'ANA' would be\nreplaced with the probes 'AAA',\
     \ 'ATA', 'ACA', and\n'AGA'; this is done combinatorially across all 'N'\nbases\
@@ -283,27 +286,27 @@ named:
     \ number of 'N' bases in a\nprobe. If followed by a command- line argument (INT),\n\
     this only expands at most INT randomly selected N\nbases, and the rest are replaced\
     \ with random\nunambiguous bases (default INT is 3)."
-  synonyms:
-  - --expand-n
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(Optional) Use only the first LIMIT_TARGET_GENOMES\ntarget genomes\
-    \ in the dataset"
+  optional: true
   synonyms:
   - --limit-target-genomes
+  description: "(Optional) Use only the first LIMIT_TARGET_GENOMES\ntarget genomes\
+    \ in the dataset"
   args: !SimpleFlagArg
     name: LIMIT_TARGET_GENOMES
-  optional: true
 - !Flag
-  description: "(Optional) Randomly select\nLIMIT_TARGET_GENOMES_RANDOMLY_WITH_REPLACMENT\
-    \ target\ngenomes in the dataset with replacement"
+  optional: true
   synonyms:
   - --limit-target-genomes-randomly-with-replacement
+  description: "(Optional) Randomly select\nLIMIT_TARGET_GENOMES_RANDOMLY_WITH_REPLACMENT\
+    \ target\ngenomes in the dataset with replacement"
   args: !SimpleFlagArg
     name: LIMIT_TARGET_GENOMES_RANDOMLY_WITH_REPLACEMENT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cluster-and-design-separately
   description: "(Optional) If set, cluster all input sequences using\ntheir MinHash\
     \ signatures, design probes separately on\neach cluster, and combine the resulting\
     \ probes. This\ncan significantly lower runtime and memory usage, but\nmay lead\
@@ -316,23 +319,23 @@ named:
     sequences in one group. Therefore, genomes will not be\ngrouped as specified in\
     \ the input and sequences will\nnot be grouped by genome, and differential\nidentification\
     \ is not supported"
-  synonyms:
-  - --cluster-and-design-separately
   args: !SimpleFlagArg
     name: CLUSTER_AND_DESIGN_SEPARATELY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cluster-from-fragments
   description: "(Optional) If set, break all sequences into sequences\nof length CLUSTER_FROM_FRAGMENTS\
     \ nt, and cluster these\nfragments. This can be useful for improving runtime on\n\
     input with especially large genomes, in which probes\nfor different fragments\
     \ can be designed separately.\nValues should generally be around 10,000. For this\
     \ to\nbe used, --cluster-and-design-separately must also be\nset."
-  synonyms:
-  - --cluster-from-fragments
   args: !SimpleFlagArg
     name: CLUSTER_FROM_FRAGMENTS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filter-with-lsh-hamming
   description: "(Optional) If set, filter candidate probes for near-\nduplicates using\
     \ LSH with a family of hash functions\nthat works with Hamming distance.\nFILTER_WITH_LSH_HAMMING\
     \ gives the maximum Hamming\ndistance at which to call near-duplicates; it should\n\
@@ -344,12 +347,12 @@ named:
     coverage (COVERAGE) when that desired coverage is the\ncomplete genome; it is\
     \ recommended to also use\n--print-analysis or --write-analysis-to-tsv with this\n\
     to see the coverage that is obtained."
-  synonyms:
-  - --filter-with-lsh-hamming
   args: !SimpleFlagArg
     name: FILTER_WITH_LSH_HAMMING
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --filter-with-lsh-minhash
   description: "(Optional) If set, filter candidate probes for near-\nduplicates using\
     \ LSH with a MinHash family.\nFILTER_WITH_LSH_MINHASH gives the maximum Jaccard\n\
     distance (1 minus Jaccard similarity) at which to call\nnear-duplicates; the Jaccard\
@@ -362,30 +365,30 @@ named:
     same caveats mentioned in help for --filter-with-lsh-\nhamming also apply here.\
     \ Values of\nFILTER_WITH_LSH_MINHASH above ~0.7 may start to\nrequire significant\
     \ memory and runtime for near-\nduplicate detection."
-  synonyms:
-  - --filter-with-lsh-minhash
   args: !SimpleFlagArg
     name: FILTER_WITH_LSH_MINHASH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cover-groupings-separately
   description: "Run a separate instance of set cover with the target\ngenomes from\
     \ each grouping and pool (union) the\nresulting probes. When set, the software\
     \ will run\nfaster than when not set, but it may yield more probes\nthan when\
     \ it is not set."
-  synonyms:
-  - --cover-groupings-separately
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --small-seq-skip
   description: "(Optional) Do not create candidate probes from\nsequences whose length\
     \ is <= SMALL_SEQ_SKIP. If set to\n(PROBE_LENGTH - 1), this avoids the error raised\
     \ when\nsequences are less than the probe length"
-  synonyms:
-  - --small-seq-skip
   args: !SimpleFlagArg
     name: SMALL_SEQ_SKIP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --small-seq-min
   description: "(Optional) If set, allow sequences as input that are\nshorter than\
     \ PROBE_LENGTH (when not set, the program\nwill error on such input). SMALL_SEQ_MIN\
     \ is the\nminimum sequence length that should be accepted as\ninput. When a sequence\
@@ -397,21 +400,21 @@ named:
     is treated as being min(LCF_THRES, p_l, s_l) so that a\nprobe is able to 'cover'\
     \ a sequence shorter than the\nprobe and so that a probe shorter than lcf_thres\
     \ is\nable to 'cover' a sequence"
-  synonyms:
-  - --small-seq-min
   args: !SimpleFlagArg
     name: SMALL_SEQ_MIN
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-num-processes
   description: "(Optional) An int >= 1 that gives the maximum number\nof processes\
     \ to use in multiprocessing pools; uses\nmin(number of CPUs in the system, MAX_NUM_PROCESSES)\n\
     processes"
-  synonyms:
-  - --max-num-processes
   args: !SimpleFlagArg
     name: MAX_NUM_PROCESSES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --kmer-probe-map-k
   description: "(Optional) Use this value (KMER_PROBE_LENGTH_K) as the\nk-mer length\
     \ when constructing a map of k-mers to the\nprobes that contain these k-mers.\
     \ This map is used\nwhen mapping candidate probes to target sequences and\nthe\
@@ -425,12 +428,12 @@ named:
     \ KMER_PROBE_LENGTH_K as the\nk-mer length. If --custom-hybridization-fn is set,\
     \ it\nwill always use the randomized approach with\nKMER_PROBE_LENGTH_K (by default,\
     \ 20) as the k-mer\nlength."
-  synonyms:
-  - --kmer-probe-map-k
   args: !SimpleFlagArg
     name: KMER_PROBE_MAP_K
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --use-native-dict-when-finding-tolerant-coverage
   description: "When finding probe coverage for blacklisting and\nidentification (i.e.,\
     \ when using tolerant parameters),\nuse a native Python dict as the kmer_probe_map\
     \ across\nprocesses, rather than the primitives in\nSharedKmerProbeMap that are\
@@ -438,40 +441,37 @@ named:
     if there are many candidate probes) this may result in\nsubstantial memory usage;\
     \ but it may provide an\nimprovement in runtime when there are relatively few\n\
     candidate probes and a very large blacklisted input"
-  synonyms:
-  - --use-native-dict-when-finding-tolerant-coverage
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Debug output
+  optional: true
   synonyms:
   - --debug
+  description: Debug output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Verbose output
+  optional: true
   synonyms:
   - --verbose
+  description: Verbose output
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -V
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: design.py [-h] -o OUTPUT_PROBES [-pl PROBE_LENGTH] [-ps PROBE_STRIDE]\n\
   \                 [-m MISMATCHES] [-l LCF_THRES]\n                 [--island-of-exact-match\
   \ ISLAND_OF_EXACT_MATCH]\n                 [--custom-hybridization-fn CUSTOM_HYBRIDIZATION_FN\
@@ -788,3 +788,4 @@ help_text: "usage: design.py [-h] -o OUTPUT_PROBES [-pl PROBE_LENGTH] [-ps PROBE
   \ version number and exit\n"
 generated_using:
 - --help
+docker_image:

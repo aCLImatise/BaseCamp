@@ -16,6 +16,9 @@ task LibsequenceConfig {
       ~{number} \
       ~{and}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print: ""
     out: ""

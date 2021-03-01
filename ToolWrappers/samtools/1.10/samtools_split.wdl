@@ -30,6 +30,9 @@ task SamtoolsSplit {
       ~{if (write_index) then "--write-index" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_filename_format: "output filename format string [\\\"%*_%#.%.\\\"]"
     put_reads_rg: "put reads with no RG tag or an unrecognised RG tag in FILE1"

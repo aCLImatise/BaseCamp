@@ -26,6 +26,9 @@ task DuplexFoldsmp {
       ~{if (temperature) then "--temperature" else ""} \
       ~{if (window) then "--window" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "Specify that the sequence is DNA, and DNA parameters are to be used.\\nDefault is to use RNA parameters."
     loop: "Specify a maximum internal/bulge loop size.\\nDefault is 6 unpaired numcleotides."

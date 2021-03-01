@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, Boolean, String
+
+Stride_Assemble_V0_1_0 = CommandToolBuilder(tool="stride_assemble", base_command=["stride", "assemble"], inputs=[ToolInput(tag="in_read_length", input_type=Int(optional=True), prefix="--read-length", doc=InputDocumentation(doc="original read length")), ToolInput(tag="in_insert_size", input_type=Boolean(optional=True), prefix="--insert-size", doc=InputDocumentation(doc="insert size of the paired-end library")), ToolInput(tag="in_prefix", input_type=String(optional=True), prefix="--prefix", doc=InputDocumentation(doc="prefix of FM-index of paired-end reads (bwt, rbwt, sai, rsai)")), ToolInput(tag="in_km_er_size", input_type=Int(optional=True), prefix="--kmer-size", doc=InputDocumentation(doc="The length of the kmer to use. (default: 31)")), ToolInput(tag="in_km_er_threshold", input_type=Int(optional=True), prefix="--kmer-threshold", doc=InputDocumentation(doc="filter average kmer frequency vertex less than N (default: 3)")), ToolInput(tag="in_max_chimera", input_type=Int(optional=True), prefix="--max-chimera", doc=InputDocumentation(doc="maximum chimera length (default: read length(R)*2 )")), ToolInput(tag="in_credible_overlap", input_type=Int(optional=True), prefix="--credible-overlap", doc=InputDocumentation(doc="credible overlap length (default: 80)")), ToolInput(tag="in_min_branch_length", input_type=Int(optional=True), prefix="--min-branch-length", doc=InputDocumentation(doc="remove terminal branches only if they are less than LEN bases in length (default: 200)")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="display verbose output")), ToolInput(tag="in_out_prefix", input_type=String(optional=True), prefix="--out-prefix", doc=InputDocumentation(doc="use NAME as the prefix of the output files (output files will be NAME-contigs.fa, etc)")), ToolInput(tag="in_min_overlap", input_type=Int(optional=True), prefix="--min-overlap", doc=InputDocumentation(doc="only use overlaps of at least LEN. This can be used to filter")), ToolInput(tag="in_transitive_reduction", input_type=Boolean(optional=True), prefix="--transitive-reduction", doc=InputDocumentation(doc="remove transitive edges from the graph. Off by default.")), ToolInput(tag="in_max_edges", input_type=Int(optional=True), prefix="--max-edges", doc=InputDocumentation(doc="limit each vertex to a maximum of N edges. For highly repetitive regions"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Stride_Assemble_V0_1_0().translate("wdl", allow_empty_container=True)
+

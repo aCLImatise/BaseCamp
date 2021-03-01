@@ -3,22 +3,22 @@ id: isONclust_write_fastq.cwl
 inputs:
 - id: in_clusters
   doc: the file "final_clusters.csv created by isONclust."
-  type: File
+  type: File?
   inputBinding:
     prefix: --clusters
 - id: in_fast_q
   doc: Input fastq file
-  type: File
+  type: File?
   inputBinding:
     prefix: --fastq
 - id: in_out_folder
   doc: Output folder
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outfolder
-- id: in_write_clusters_more
+- id: in_write_clusters_reads
   doc: Write out clusters with more or equal than N reads
-  type: string
+  type: string?
   inputBinding:
     prefix: --N
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_out_folder
   doc: Output folder
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_out_folder)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - isONclust

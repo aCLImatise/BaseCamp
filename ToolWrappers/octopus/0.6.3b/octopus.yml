@@ -3,878 +3,878 @@ command:
 - octopus
 positional:
 - !Positional
-  description: '-s [ --samples-file ] arg             File of sample names to analyse,
-    one '
+  optional: false
   position: 0
   name: analyse
-  optional: false
+  description: '-s [ --samples-file ] arg             File of sample names to analyse,
+    one '
 - !Positional
-  description: '--soft-clip-mask-threshold [=arg(=3)] Only soft clipped bases with
-    quality '
+  optional: false
   position: 0
   name: recalibration
-  optional: false
+  description: '--soft-clip-mask-threshold [=arg(=3)] Only soft clipped bases with
+    quality '
 - !Positional
-  description: '--allow-secondary-alignments          Allows reads marked as secondary '
+  optional: false
   position: 0
   name: octopus
-  optional: false
+  description: '--allow-secondary-alignments          Allows reads marked as secondary '
 - !Positional
-  description: --disable-downsampling                Disables downsampling
+  optional: false
   position: 0
   name: contamination
-  optional: false
+  description: --disable-downsampling                Disables downsampling
 - !Positional
-  description: '--max-joint-genotypes arg (=1000000)  The maximum number of joint
-    genotype '
+  optional: false
   position: 0
   name: evaluate
-  optional: false
+  description: '--max-joint-genotypes arg (=1000000)  The maximum number of joint
+    genotype '
 - !Positional
-  description: '--inactive-flank-scoring arg (=1)     Disables additional calculation
-    to '
+  optional: false
   position: 0
   name: call
-  optional: false
+  description: '--inactive-flank-scoring arg (=1)     Disables additional calculation
+    to '
 - !Positional
-  description: --forest-file arg                     Trained Ranger random forest
-    file
+  optional: false
   position: 0
   name: calling
-  optional: false
+  description: --forest-file arg                     Trained Ranger random forest
+    file
 named:
 - !Flag
-  description: "A config file, used to populate command\nline options"
+  optional: true
   synonyms:
   - --config
+  description: "A config file, used to populate command\nline options"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "[=arg(=\"octopus_debug.log\")]  Writes verbose debug information to\n\
-    debug.log in the working directory"
+  optional: true
   synonyms:
   - --debug
+  description: "[=arg(=\"octopus_debug.log\")]  Writes verbose debug information to\n\
+    debug.log in the working directory"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[=arg(=\"octopus_trace.log\")]  Writes very verbose debug information\n\
-    to trace.log in the working directory"
+  optional: true
   synonyms:
   - --trace
+  description: "[=arg(=\"octopus_trace.log\")]  Writes very verbose debug information\n\
+    to trace.log in the working directory"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Turns off some features to improve\nruntime, at the cost of decreased\n\
-    calling accuracy. Equivalent to '-a off\n-l minimal -x 50`"
+  optional: true
   synonyms:
   - --fast
+  description: "Turns off some features to improve\nruntime, at the cost of decreased\n\
+    calling accuracy. Equivalent to '-a off\n-l minimal -x 50`"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The same as fast but also disables\ninactive flank scoring"
+  optional: true
   synonyms:
   - --very-fast
+  description: "The same as fast but also disables\ninactive flank scoring"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[ --working-directory ] arg        Sets the working directory'
+  optional: true
   synonyms:
   - -w
+  description: '[ --working-directory ] arg        Sets the working directory'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --threads
   description: "[=arg(=0)]                  Maximum number of threads to be used,\n\
     enabling this option with no argument\nlets the application decide the number\n\
     of threads ands enables specific\nalgorithm parallelisation"
-  synonyms:
-  - --threads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[ --max-reference-cache-footprint ] arg (=500MB)\nMaximum memory footprint\
-    \ for cached\nreference sequence"
+  optional: true
   synonyms:
   - -X
+  description: "[ --max-reference-cache-footprint ] arg (=500MB)\nMaximum memory footprint\
+    \ for cached\nreference sequence"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[ --target-read-buffer-footprint ] arg (=6GB)\nNone binding request\
-    \ to limit the\nmemory footprint of buffered read data"
+  optional: true
   synonyms:
   - -B
+  description: "[ --target-read-buffer-footprint ] arg (=6GB)\nNone binding request\
+    \ to limit the\nmemory footprint of buffered read data"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=250)      Limits the number of read files that\ncan be open simultaneously"
+  optional: true
   synonyms:
   - --max-open-read-files
+  description: "(=250)      Limits the number of read files that\ncan be open simultaneously"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "Target working memory footprint for\nanalysis not including read or\n\
-    reference footprint"
+  optional: true
   synonyms:
   - --target-working-memory
+  description: "Target working memory footprint for\nanalysis not including read or\n\
+    reference footprint"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=\"octopus-temp\")\nFile name prefix of temporary directory\nfor\
-    \ calling"
+  optional: true
   synonyms:
   - --temp-directory-prefix
+  description: "(=\"octopus-temp\")\nFile name prefix of temporary directory\nfor\
+    \ calling"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -R
   description: "[ --reference ] arg                FASTA format reference genome file\
     \ to\nbe analysed. Target regions will be\nextracted from the reference index\
     \ if\nnot provded explicitly"
-  synonyms:
-  - -R
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[ --reads ] arg                    Space-separated list of BAM/CRAM\
-    \ files\nto be analysed. May be specified\nmultiple times"
+  optional: true
   synonyms:
   - -I
+  description: "[ --reads ] arg                    Space-separated list of BAM/CRAM\
+    \ files\nto be analysed. May be specified\nmultiple times"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[ --reads-file ] arg               Files containing lists of BAM/CRAM\n\
-    files, one per line, to be analysed"
+  optional: true
   synonyms:
   - -i
+  description: "[ --reads-file ] arg               Files containing lists of BAM/CRAM\n\
+    files, one per line, to be analysed"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Notifies that input regions are given\nusing one based indexing rather\
-    \ than\nzero based"
+  optional: true
   synonyms:
   - --one-based-indexing
+  description: "Notifies that input regions are given\nusing one based indexing rather\
+    \ than\nzero based"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[ --regions ] arg                  Space-separated list of regions\n\
-    (chrom:begin-end) to be analysed. May\nbe specified multiple times"
+  optional: true
   synonyms:
   - -T
+  description: "[ --regions ] arg                  Space-separated list of regions\n\
+    (chrom:begin-end) to be analysed. May\nbe specified multiple times"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[ --regions-file ] arg             File containing a list of regions\n\
-    (chrom:begin-end), one per line, to be\nanalysed"
+  optional: true
   synonyms:
   - -t
+  description: "[ --regions-file ] arg             File containing a list of regions\n\
+    (chrom:begin-end), one per line, to be\nanalysed"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[ --skip-regions ] arg             Space-separated list of regions\n\
-    (chrom:begin-end) to skip May be\nspecified multiple times"
+  optional: true
   synonyms:
   - -K
+  description: "[ --skip-regions ] arg             Space-separated list of regions\n\
+    (chrom:begin-end) to skip May be\nspecified multiple times"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[ --skip-regions-file ] arg        File of regions (chrom:begin-end),\
-    \ one\nper line, to skip"
+  optional: true
   synonyms:
   - -k
+  description: "[ --skip-regions-file ] arg        File of regions (chrom:begin-end),\
+    \ one\nper line, to skip"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[ --samples ] arg                  Space-separated list of sample
-    names to'
+  optional: true
   synonyms:
   - -S
+  description: '[ --samples ] arg                  Space-separated list of sample
+    names to'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Ignore any contigs that are not present\nin the read files"
+  optional: true
   synonyms:
   - --ignore-unmapped-contigs
+  description: "Ignore any contigs that are not present\nin the read files"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: PED file containing sample pedigree
+  optional: true
   synonyms:
   - --pedigree
+  description: PED file containing sample pedigree
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "[ --output ] arg                   File to where output is written.\
-    \ If\nunspecified, calls are written to\nstdout"
+  optional: true
   synonyms:
   - -o
+  description: "[ --output ] arg                   File to where output is written.\
+    \ If\nunspecified, calls are written to\nstdout"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=asInReferenceIndex)\nThe order contigs should be written to\nthe\
-    \ output"
+  optional: true
   synonyms:
   - --contig-output-order
+  description: "(=asInReferenceIndex)\nThe order contigs should be written to\nthe\
+    \ output"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "Only reports call sites (i.e. without\nsample genotype information)"
+  optional: true
   synonyms:
   - --sites-only
+  description: "Only reports call sites (i.e. without\nsample genotype information)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Outputs a legacy version of the final\ncallset in addition to the\
-    \ native\nversion"
+  optional: true
   synonyms:
   - --legacy
+  description: "Outputs a legacy version of the final\ncallset in addition to the\
+    \ native\nversion"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "VCF file specifying calls to\nregenotype, only sites in this files\n\
-    will appear in the final output"
+  optional: true
   synonyms:
   - --regenotype
+  description: "VCF file specifying calls to\nregenotype, only sites in this files\n\
+    will appear in the final output"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Output realigned BAM files
+  optional: true
   synonyms:
   - --bamout
+  description: Output realigned BAM files
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "Output all reads when producing\nrealigned bam outputs rather than\
-    \ just\nvariant read minibams"
+  optional: true
   synonyms:
   - --full-bamout
+  description: "Output all reads when producing\nrealigned bam outputs rather than\
+    \ just\nvariant read minibams"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output a profile of polymorphisms and\nerrors found in the data"
+  optional: true
   synonyms:
   - --data-profile
+  description: "Output a profile of polymorphisms and\nerrors found in the data"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=1)            Enable all read transformations
+  optional: true
   synonyms:
   - --read-transforms
+  description: (=1)            Enable all read transformations
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "[=arg(=3)]   Masks read tail bases with base quality\nless than this"
+  optional: true
   synonyms:
   - --mask-low-quality-tails
+  description: "[=arg(=3)]   Masks read tail bases with base quality\nless than this"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[=arg(=1)]               Unconditionally mask this many read\ntail\
-    \ sbases"
+  optional: true
   synonyms:
   - --mask-tails
+  description: "[=arg(=1)]               Unconditionally mask this many read\ntail\
+    \ sbases"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (=1)          Turn on or off soft clip base
+  optional: true
   synonyms:
   - --soft-clip-masking
+  description: (=1)          Turn on or off soft clip base
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=2)\nMasks this number of adjacent non soft\nclipped bases when soft\
-    \ clipped bases\nare present"
+  optional: true
   synonyms:
   - --mask-soft-clipped-boundary-bases
+  description: "(=2)\nMasks this number of adjacent non soft\nclipped bases when soft\
+    \ clipped bases\nare present"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=1)            Enable adapter detection and masking
+  optional: true
   synonyms:
   - --adapter-masking
+  description: (=1)            Enable adapter detection and masking
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=1)            Enable read segment overlap masking
+  optional: true
   synonyms:
   - --overlap-masking
+  description: (=1)            Enable read segment overlap masking
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=0)\nMask soft clipped sequence that is an\ninverted copy of a proximate\
-    \ sequence"
+  optional: true
   synonyms:
   - --mask-inverted-soft-clipping
+  description: "(=0)\nMask soft clipped sequence that is an\ninverted copy of a proximate\
+    \ sequence"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=0)\nMask soft clipped read head sequence\nthat is a copy of a proximate\
-    \ 3'\nsequence"
+  optional: true
   synonyms:
   - --mask-3prime-shifted-soft-clipped-heads
+  description: "(=0)\nMask soft clipped read head sequence\nthat is a copy of a proximate\
+    \ 3'\nsequence"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=1)             Enable all read filters
+  optional: true
   synonyms:
   - --read-filtering
+  description: (=1)             Enable all read filters
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "Allows reads marked as unmapped to be\nused for calling"
+  optional: true
   synonyms:
   - --consider-unmapped-reads
+  description: "Allows reads marked as unmapped to be\nused for calling"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=20)       Minimum read mapping quality required\nto consider a read\
-    \ for calling"
+  optional: true
   synonyms:
   - --min-mapping-quality
+  description: "(=20)       Minimum read mapping quality required\nto consider a read\
+    \ for calling"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=20)         Base quality threshold used by\nmin-good-bases and min-good-base-fracti\n\
-    on filters"
+  optional: true
   synonyms:
   - --good-base-quality
+  description: "(=20)         Base quality threshold used by\nmin-good-bases and min-good-base-fracti\n\
+    on filters"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "[=arg(=0.5)] Base quality threshold used by\nmin-good-bases filter"
+  optional: true
   synonyms:
   - --min-good-base-fraction
+  description: "[=arg(=0.5)] Base quality threshold used by\nmin-good-bases filter"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=20)            Minimum number of bases with quality\nmin-base-quality\
-    \ before read is\nconsidered"
+  optional: true
   synonyms:
   - --min-good-bases
+  description: "(=20)            Minimum number of bases with quality\nmin-base-quality\
+    \ before read is\nconsidered"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Filters reads marked as QC failed
+  optional: true
   synonyms:
   - --allow-qc-fails
+  description: Filters reads marked as QC failed
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Filters reads shorter than this
+  optional: true
   synonyms:
   - --min-read-length
+  description: Filters reads shorter than this
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Filter reads longer than this
+  optional: true
   synonyms:
   - --max-read-length
+  description: Filter reads longer than this
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "Allows reads marked as duplicate in\nalignment record"
+  optional: true
   synonyms:
   - --allow-marked-duplicates
+  description: "Allows reads marked as duplicate in\nalignment record"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Allows reads considered duplicates by
+  optional: true
   synonyms:
   - --allow-octopus-duplicates
+  description: Allows reads considered duplicates by
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Filter reads with template segments\nthat are on different contigs"
+  optional: true
   synonyms:
   - --no-reads-with-distant-segments
+  description: "Filter reads with template segments\nthat are on different contigs"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Filter reads with possible adapter
+  optional: true
   synonyms:
   - --no-adapter-contaminated-reads
+  description: Filter reads with possible adapter
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=1000)        Downsample reads in regions where\ncoverage is over\
-    \ this"
+  optional: true
   synonyms:
   - --downsample-above
+  description: "(=1000)        Downsample reads in regions where\ncoverage is over\
+    \ this"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=500)        The target coverage for the downsampler
+  optional: true
   synonyms:
   - --downsample-target
+  description: (=500)        The target coverage for the downsampler
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "[ --raw-cigar-candidate-generator ] arg (=1)\nEnable candidate generation\
-    \ from raw\nread alignments (CIGAR strings)"
+  optional: true
   synonyms:
   - -g
+  description: "[ --raw-cigar-candidate-generator ] arg (=1)\nEnable candidate generation\
+    \ from raw\nread alignments (CIGAR strings)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=1) Enable candidate generation from\nadjusted read alignments (CIGAR\n\
-    strings) around tandem repeats"
+  optional: true
   synonyms:
   - --repeat-candidate-generator
+  description: "(=1) Enable candidate generation from\nadjusted read alignments (CIGAR\n\
+    strings) around tandem repeats"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "[ --assembly-candidate-generator ] arg (=1)\nEnable candidate generation\
-    \ using local\nre-assembly"
+  optional: true
   synonyms:
   - -a
+  description: "[ --assembly-candidate-generator ] arg (=1)\nEnable candidate generation\
+    \ using local\nre-assembly"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[ --source-candidates ] arg        Variant file paths containing known\n\
-    variants. These variants will\nautomatically become candidates"
+  optional: true
   synonyms:
   - -c
+  description: "[ --source-candidates ] arg        Variant file paths containing known\n\
+    variants. These variants will\nautomatically become candidates"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Files containing lists of source\ncandidate variant files"
+  optional: true
   synonyms:
   - --source-candidates-file
+  description: "Files containing lists of source\ncandidate variant files"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "[=arg(=2)]       Only variants with quality above this\nvalue are\
-    \ considered for candidate\ngeneration"
+  optional: true
   synonyms:
   - --min-source-quality
+  description: "[=arg(=2)]       Only variants with quality above this\nvalue are\
+    \ considered for candidate\ngeneration"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=0)\nUse variants from source VCF records\nthat have been filtered"
+  optional: true
   synonyms:
   - --use-filtered-source-candidates
+  description: "(=0)\nUse variants from source VCF records\nthat have been filtered"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=20)          Only bases with quality above this\nvalue are considered\
-    \ for candidate\ngeneration"
+  optional: true
   synonyms:
   - --min-base-quality
+  description: "(=20)          Only bases with quality above this\nvalue are considered\
+    \ for candidate\ngeneration"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --min-supporting-reads
   description: "[=arg(=2)]     Minimum number of reads that must\nsupport a variant\
     \ if it is to be\nconsidered a candidate. By default\noctopus will automatically\
     \ determine\nthis value"
-  synonyms:
-  - --min-supporting-reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=2000)        Maximum candidate variant size to\nconsider (in region\
-    \ space)"
+  optional: true
   synonyms:
   - --max-variant-size
+  description: "(=2000)        Maximum candidate variant size to\nconsider (in region\
+    \ space)"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=10 15 20)          Kmer sizes to use for local assembly
+  optional: true
   synonyms:
   - --kmer-sizes
+  description: (=10 15 20)          Kmer sizes to use for local assembly
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=10)        How many local assembly fallback kmer\nsizes to use if\
-    \ the default sizes fail"
+  optional: true
   synonyms:
   - --num-fallback-kmers
+  description: "(=10)        How many local assembly fallback kmer\nsizes to use if\
+    \ the default sizes fail"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=10)         The gap size used to generate local\nassembly fallback\
-    \ kmers"
+  optional: true
   synonyms:
   - --fallback-kmer-gap
+  description: "(=10)         The gap size used to generate local\nassembly fallback\
+    \ kmers"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=400)   The maximum region size that can be\nused for local assembly"
+  optional: true
   synonyms:
   - --max-region-to-assemble
+  description: "(=400)   The maximum region size that can be\nused for local assembly"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=200)\nThe maximum number of bases allowed to\noverlap assembly regions"
+  optional: true
   synonyms:
   - --max-assemble-region-overlap
+  description: "(=200)\nThe maximum number of bases allowed to\noverlap assembly regions"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Forces all regions to be assembled
+  optional: true
   synonyms:
   - --assemble-all
+  description: Forces all regions to be assembled
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=10)\nAligned bases with quality less than\nthis will be converted\
-    \ to reference\nbefore being inserted into the De\nBruijn graph"
+  optional: true
   synonyms:
   - --assembler-mask-base-quality
+  description: "(=10)\nAligned bases with quality less than\nthis will be converted\
+    \ to reference\nbefore being inserted into the De\nBruijn graph"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=2)             Minimum number of read observations to\nkeep a kmer\
-    \ in the assembly graph\nbefore bubble extraction"
+  optional: true
   synonyms:
   - --min-kmer-prune
+  description: "(=2)             Minimum number of read observations to\nkeep a kmer\
+    \ in the assembly graph\nbefore bubble extraction"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=30)               Maximum number of bubbles to extract\nfrom the\
-    \ assembly graph"
+  optional: true
   synonyms:
   - --max-bubbles
+  description: "(=30)               Maximum number of bubbles to extract\nfrom the\
+    \ assembly graph"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=2)           Minimum bubble score that will be\nextracted from the\
-    \ assembly graph"
+  optional: true
   synonyms:
   - --min-bubble-score
+  description: "(=2)           Minimum bubble score that will be\nextracted from the\
+    \ assembly graph"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -x
   description: "[ --max-haplotypes ] arg (=200)    Maximum number of candidate haplotypes\n\
     the caller may consider. If a region\ncontains more candidate haplotypes than\n\
     this then filtering is applied"
-  synonyms:
-  - -x
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=2500)\nForces the haplotype generator to\ntemporarily hold out some\
-    \ alleles if\nthe number of haplotypes in a region\nexceeds this threshold"
+  optional: true
   synonyms:
   - --haplotype-holdout-threshold
+  description: "(=2500)\nForces the haplotype generator to\ntemporarily hold out some\
+    \ alleles if\nthe number of haplotypes in a region\nexceeds this threshold"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=200000)    Regions with more haplotypes than this\nwill be skipped"
+  optional: true
   synonyms:
   - --haplotype-overflow
+  description: "(=200000)    Regions with more haplotypes than this\nwill be skipped"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=20)         Maximum number of holdout attempts the\nhaplotype generator\
-    \ can make before the\nregion is skipped"
+  optional: true
   synonyms:
   - --max-holdout-depth
+  description: "(=20)         Maximum number of holdout attempts the\nhaplotype generator\
+    \ can make before the\nregion is skipped"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=normal)       Level of haplotype extension. Possible\nvalues are:\
-    \ conservative, normal,\noptimistic, aggressive"
+  optional: true
   synonyms:
   - --extension-level
+  description: "(=normal)       Level of haplotype extension. Possible\nvalues are:\
+    \ conservative, normal,\noptimistic, aggressive"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "[ --haplotype-extension-threshold ] arg (=100)\nHaplotypes with posterior\
-    \ probability\nless than this can be filtered before\nextension"
+  optional: true
   synonyms:
   - -e
+  description: "[ --haplotype-extension-threshold ] arg (=100)\nHaplotypes with posterior\
+    \ probability\nless than this can be filtered before\nextension"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=1)\nRemove duplicate haplotypes using\nmutation prior model"
+  optional: true
   synonyms:
   - --dedup-haplotypes-with-prior-model
+  description: "(=1)\nRemove duplicate haplotypes using\nmutation prior model"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=1)\nProtect the reference haplotype from\nfiltering"
+  optional: true
   synonyms:
   - --protect-reference-haplotype
+  description: "(=1)\nProtect the reference haplotype from\nfiltering"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: '[ --caller ] arg (=population)     Which of the octopus callers to
-    use'
+  optional: true
   synonyms:
   - -C
+  description: '[ --caller ] arg (=population)     Which of the octopus callers to
+    use'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[ --organism-ploidy ] arg (=2)     All contigs with unspecified ploidies\n\
-    are assumed the organism ploidy"
+  optional: true
   synonyms:
   - -P
+  description: "[ --organism-ploidy ] arg (=2)     All contigs with unspecified ploidies\n\
+    are assumed the organism ploidy"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[ --contig-ploidies ] arg (=Y=1 chrY=1 MT=1 chrM=1)\nSpace-separated\
-    \ list of contig\n(contig=ploidy) or sample contig\n(sample:contig=ploidy) ploidies"
+  optional: true
   synonyms:
   - -p
+  description: "[ --contig-ploidies ] arg (=Y=1 chrY=1 MT=1 chrM=1)\nSpace-separated\
+    \ list of contig\n(contig=ploidy) or sample contig\n(sample:contig=ploidy) ploidies"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "File containing a list of contig\n(contig=ploidy) or sample contig\n\
-    (sample:contig=ploidy) ploidies, one\nper line"
+  optional: true
   synonyms:
   - --contig-ploidies-file
+  description: "File containing a list of contig\n(contig=ploidy) or sample contig\n\
+    (sample:contig=ploidy) ploidies, one\nper line"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=1)      Report variant alleles with posterior\nprobability (phred\
-    \ scale) greater than\nthis"
+  optional: true
   synonyms:
   - --min-variant-posterior
+  description: "(=1)      Report variant alleles with posterior\nprobability (phred\
+    \ scale) greater than\nthis"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "[=arg(=blocked)]            Caller will report reference confidence\n\
-    calls for each position (positional),\nor in automatically sized blocks\n(blocked)"
+  optional: true
   synonyms:
   - --refcall
+  description: "[=arg(=blocked)]            Caller will report reference confidence\n\
+    calls for each position (positional),\nor in automatically sized blocks\n(blocked)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=10)\nThreshold to merge adjacent refcall\npositions when using blocked\
-    \ refcalling"
+  optional: true
   synonyms:
   - --refcall-block-merge-threshold
+  description: "(=10)\nThreshold to merge adjacent refcall\npositions when using blocked\
+    \ refcalling"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=2)      Report reference alleles with posterior\nprobability (phred\
-    \ scale) greater than\nthis"
+  optional: true
   synonyms:
   - --min-refcall-posterior
+  description: "(=2)      Report reference alleles with posterior\nprobability (phred\
+    \ scale) greater than\nthis"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "[ --snp-heterozygosity ] arg (=0.001)\nGermline SNP heterozygosity\
-    \ for the\ngiven samples"
+  optional: true
   synonyms:
   - -z
+  description: "[ --snp-heterozygosity ] arg (=0.001)\nGermline SNP heterozygosity\
+    \ for the\ngiven samples"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=0.01)\nStandard deviation of the germline SNP\nheterozygosity used\
-    \ for the given\nsamples"
+  optional: true
   synonyms:
   - --snp-heterozygosity-stdev
+  description: "(=0.01)\nStandard deviation of the germline SNP\nheterozygosity used\
+    \ for the given\nsamples"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "[ --indel-heterozygosity ] arg (=0.0001)\nGermline indel heterozygosity\
-    \ for the\ngiven samples"
+  optional: true
   synonyms:
   - -y
+  description: "[ --indel-heterozygosity ] arg (=0.0001)\nGermline indel heterozygosity\
+    \ for the\ngiven samples"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use a uniform prior model when\ncalculating genotype posteriors"
+  optional: true
   synonyms:
   - --use-uniform-genotype-priors
+  description: "Use a uniform prior model when\ncalculating genotype posteriors"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: (=5000)           The maximum number of genotypes to
+  optional: true
   synonyms:
   - --max-genotypes
+  description: (=5000)           The maximum number of genotypes to
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "Use independent genotype priors for\njoint calling"
+  optional: true
   synonyms:
   - --use-independent-genotype-priors
+  description: "Use independent genotype priors for\njoint calling"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Calculate model posteriors for every
+  optional: true
   synonyms:
   - --model-posterior
+  description: Calculate model posteriors for every
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=1)      Include the read mapping quality in the\nhaplotype likelihood\
-    \ calculation"
+  optional: true
   synonyms:
   - --model-mapping-quality
+  description: "(=1)      Include the read mapping quality in the\nhaplotype likelihood\
+    \ calculation"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=PCR-free.HiSeq-2500)\nThe sequencer error model to use"
+  optional: true
   synonyms:
   - --sequence-error-model
+  description: "(=PCR-free.HiSeq-2500)\nThe sequencer error model to use"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=12)              Maximum number of seeds to use for\nVariational\
-    \ Bayes algorithms"
+  optional: true
   synonyms:
   - --max-vb-seeds
+  description: "(=12)              Maximum number of seeds to use for\nVariational\
+    \ Bayes algorithms"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -l
   description: "[ --phasing-level ] arg (=normal)  Level of phasing - longer range\
     \ phasing\ncan improve calling accuracy at the\ncost of runtime speed. Possible\
     \ values\nare: minimal, conservative, moderate,\nnormal, aggressive"
-  synonyms:
-  - -l
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=10)           Minimum phase score (phred scale)\nrequired to report\
-    \ sites as phased"
+  optional: true
   synonyms:
   - --min-phase-score
+  description: "(=10)           Minimum phase score (phred scale)\nrequired to report\
+    \ sites as phased"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: '[ --call-filtering ] arg (=1)      Turn variant call filtering on
-    or off'
+  optional: true
   synonyms:
   - -f
+  description: '[ --call-filtering ] arg (=1)      Turn variant call filtering on
+    or off'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=QUAL < 10 | MQ < 10 | MP < 10 | AF < 0.05 | SB > 0.98 | BQ < 15\
-    \ | DP < 1)\nBoolean expression to use to filter\nvariant calls"
+  optional: true
   synonyms:
   - --filter-expression
+  description: "(=QUAL < 10 | MQ < 10 | MP < 10 | AF < 0.05 | SB > 0.98 | BQ < 15\
+    \ | DP < 1)\nBoolean expression to use to filter\nvariant calls"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --somatic-filter-expression
   description: "(=QUAL < 2 | GQ < 20 | MQ < 30 | SMQ < 40 | SB > 0.9 | SD > 0.9 |\
     \ BQ < 20 | DP < 3 | MF > 0.2 | NC > 1 | FRF > 0.5)\nBoolean expression to use\
     \ to filter\nsomatic variant calls"
-  synonyms:
-  - --somatic-filter-expression
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --denovo-filter-expression
   description: "(=QUAL < 50 | PP < 40 | GQ < 20 | MQ < 30 | AF < 0.1 | SB > 0.95 |\
     \ BQ < 20 | DP < 10 | DC > 1 | MF > 0.2 | FRF > 0.5 | MP < 30 | MQ0 > 2)\nBoolean\
     \ expression to use to filter\nsomatic variant calls"
-  synonyms:
-  - --denovo-filter-expression
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=QUAL < 2 | GQ < 20 | MQ < 10 | DP < 10 | MF > 0.2)\nBoolean expression\
-    \ to use to filter\nhomozygous reference calls"
+  optional: true
   synonyms:
   - --refcall-filter-expression
+  description: "(=QUAL < 2 | GQ < 20 | MQ < 10 | DP < 10 | MF > 0.2)\nBoolean expression\
+    \ to use to filter\nhomozygous reference calls"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=0)\nUse the original reads used for variant\ncalling for filtering"
+  optional: true
   synonyms:
   - --use-calling-reads-for-filtering
+  description: "(=0)\nUse the original reads used for variant\ncalling for filtering"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Keep a copy of unfiltered calls
+  optional: true
   synonyms:
   - --keep-unfiltered-calls
+  description: Keep a copy of unfiltered calls
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '[=arg(=active)]         Annotations to write to final VCF'
+  optional: true
   synonyms:
   - --annotations
+  description: '[=arg(=active)]         Annotations to write to final VCF'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Filter the given Octopus VCF without
+  optional: true
   synonyms:
   - --filter-vcf
+  description: Filter the given Octopus VCF without
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "Trained Ranger random forest file for\nsomatic variants\n"
+  optional: true
   synonyms:
   - --somatic-forest-file
+  description: "Trained Ranger random forest file for\nsomatic variants\n"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: '[ --help ]                         Produce help message'
+  optional: true
   synonyms:
   - -h
+  description: '[ --help ]                         Produce help message'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Output the version number
+  optional: true
   synonyms:
   - --version
+  description: Output the version number
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "octopus population calling options:\n\nGeneral:\n  -h [ --help ]     \
   \                    Produce help message\n  --version                         \
   \    Output the version number\n  --config arg                          A config\
@@ -1146,3 +1146,4 @@ help_text: "octopus population calling options:\n\nGeneral:\n  -h [ --help ]    
   \ for \n                                        somatic variants\n\n"
 generated_using:
 - --help
+docker_image:

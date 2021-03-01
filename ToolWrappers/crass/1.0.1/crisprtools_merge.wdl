@@ -10,6 +10,9 @@ task CrisprtoolsMerge {
       ~{if defined(output_file_) then ("-o " +  '"' + output_file_ + '"') else ""} \
       ~{if (sanitise_names_contains) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_: "output file  [default: crisprtools_merged.crispr]"
     sanitise_names_contains: "sanitise the names so that the resulting output file contains completely unique group IDs"

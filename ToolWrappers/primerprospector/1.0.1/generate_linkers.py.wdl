@@ -24,6 +24,9 @@ task GenerateLinkerspy {
       ~{if defined(hits_fps) then ("--hits_fps " +  '"' + hits_fps + '"') else ""} \
       ~{if defined(fast_a_fps) then ("--fasta_fps " +  '"' + fast_a_fps + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     linker_len: "Size of linker in base pairs. [default: 2]"

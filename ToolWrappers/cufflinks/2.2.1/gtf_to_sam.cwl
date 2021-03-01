@@ -1,16 +1,16 @@
 class: CommandLineTool
 id: gtf_to_sam.cwl
 inputs:
-- id: in_r_slash_reference_seq
+- id: in_reference_seq
   doc: 'reference fasta file                     [ default:   NULL ]'
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -r/--reference-seq
-- id: in_f_slash_raw_fp_km
+    prefix: --reference-seq
+- id: in_raw_fp_km
   doc: use FPKM instead of isoform fraction
-  type: boolean
+  type: boolean?
   inputBinding:
-    prefix: -F/--raw-fpkm
+    prefix: --raw-fpkm
 - id: in_cufflinks
   doc: ''
   type: string
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gtf_to_sam

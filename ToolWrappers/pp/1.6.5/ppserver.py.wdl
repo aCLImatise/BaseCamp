@@ -36,6 +36,9 @@ task Ppserverpy {
       ~{if defined(file_write_pid) then ("-P " +  '"' + file_write_pid + '"') else ""} \
       ~{if (hd_ar) then "-hdar" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     set_log_level: ": set log level to debug"
     _log_format: ": log format"

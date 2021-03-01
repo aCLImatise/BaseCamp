@@ -14,6 +14,9 @@ task NwDistance {
       ~{if defined(where_selection_determined) then ("-s " +  '"' + where_selection_determined + '"') else ""} \
       ~{if (matrix_mode_print) then "-t" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     selects_mode_see: ": selects mode (see Output). Mode is determined by the first\\nletter of the argument: 'r' for root mode (default), 'l' for LCA,\\n'p' for parent, and 'm' for matrix. Thus, '-mm', '-m matrix',\\nand '-m mat' all select matrix mode."
     prints_labels_empty: ": prints labels (or '' if empty) in addition to distances."

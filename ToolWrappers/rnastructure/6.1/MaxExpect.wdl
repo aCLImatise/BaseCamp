@@ -22,6 +22,9 @@ task MaxExpect {
       ~{if (structures) then "--structures" else ""} \
       ~{if (window) then "--window" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "This flag only matters if the input file is a sequence file and has been\\nspecified as such. Specify that the sequence is DNA, and DNA parameters are\\nto be used.\\nDefault is to use RNA parameters."
     sequence: "Identify the input file format as a sequence file."

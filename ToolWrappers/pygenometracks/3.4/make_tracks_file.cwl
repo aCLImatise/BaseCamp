@@ -10,12 +10,12 @@ inputs:
     prefix: --trackFiles
 - id: in_out
   doc: "file, -o output file\nFile to save the tracks (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_bed_file
@@ -34,9 +34,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: "file, -o output file\nFile to save the tracks (default: None)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - make_tracks_file

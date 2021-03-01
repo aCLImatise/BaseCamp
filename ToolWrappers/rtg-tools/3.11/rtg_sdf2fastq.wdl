@@ -28,6 +28,9 @@ task RtgSdf2fastq {
       ~{if defined(line_length) then ("--line-length " +  '"' + line_length + '"') else ""} \
       ~{if (no_gzip) then "--no-gzip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sdf_containing_sequences: "SDF containing sequences"
     output_filename_extension: "output filename (extension added if not present).\\nUse '-' to write to standard output"

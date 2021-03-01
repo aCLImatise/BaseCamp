@@ -32,6 +32,9 @@ task MotifscanGenome {
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if (clean) then "--clean" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Enable verbose log messages."
     list: "Display installed genome assemblies."

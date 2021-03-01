@@ -4,124 +4,127 @@ command:
 positional: []
 named:
 - !Flag
-  description: priority of hint group (default 4)
+  optional: true
   synonyms:
   - --priority
+  description: priority of hint group (default 4)
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: gaps at most this length are simply closed (default 14)
+  optional: true
   synonyms:
   - --maxgaplen
+  description: gaps at most this length are simply closed (default 14)
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: alignments with gaps shorter than this and longer than maxgaplen are
-    discarded (default 41)
+  optional: true
   synonyms:
   - --minintronlen
+  description: alignments with gaps shorter than this and longer than maxgaplen are
+    discarded (default 41)
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: alignments with longer gaps are discarded (default 350000)
+  optional: true
   synonyms:
   - --maxintronlen
+  description: alignments with longer gaps are discarded (default 350000)
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: maximum length of gap in query (cDNA) sequence (default 5)
+  optional: true
   synonyms:
   - --maxQgaplen
+  description: maximum length of gap in query (cDNA) sequence (default 5)
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: this many bp are cut off of each exonpart hint at end of alignment
-    (default 10)
+  optional: true
   synonyms:
   - --ep_cutoff
+  description: this many bp are cut off of each exonpart hint at end of alignment
+    (default 10)
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: source identifier (default 'E')
+  optional: true
   synonyms:
   - --source
+  description: source identifier (default 'E')
   args: !SimpleFlagArg
     name: s
-  optional: true
 - !Flag
-  description: 'only retrieve intron hints (e.g. because the exon(part) hints are
-    retrieved by converting to a wig track, default: off)'
+  optional: true
   synonyms:
   - --intronsonly
+  description: 'only retrieve intron hints (e.g. because the exon(part) hints are
+    retrieved by converting to a wig track, default: off)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: do not summarize multiple identical intron hints to a single one
+  optional: true
   synonyms:
   - --nomult
+  description: do not summarize multiple identical intron hints to a single one
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: keep the strongest hint for a region (default false)
+  optional: true
   synonyms:
   - --remove_redundant
+  description: keep the strongest hint for a region (default false)
   args: !SimpleFlagArg
     name: only
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxcoverage
   description: "maximal number of hints at a given position. A high value causes long\
     \ running time of\nAUGUSTUS in regions with thousands of cDNA alignments. (default\
     \ 3000)"
-  synonyms:
-  - --maxcoverage
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: include splice site (dss, ass) hints in output (default false)
+  optional: true
   synonyms:
   - --ssOn
+  description: include splice site (dss, ass) hints in output (default false)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: include splice sites hints from the ends of a truncated alignment (contig
-    too short)
+  optional: true
   synonyms:
   - --trunkSS
+  description: include splice sites hints from the ends of a truncated alignment (contig
+    too short)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: column offset, 0 for direct blat output, 1 for psl format from UCSC
-    database (default 0)
+  optional: true
   synonyms:
   - --coloffset
+  description: column offset, 0 for direct blat output, 1 for psl format from UCSC
+    database (default 0)
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
-  description: fill this number in in the score column (default 0)
+  optional: true
   synonyms:
   - --score
+  description: fill this number in in the score column (default 0)
   args: !SimpleFlagArg
     name: f
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --clonefile
   description: "provide a file with clone names so close alignments from the same\
     \ clone can be grouped.\nAUGUSTUS will try to put those hints into a single transcripts\
     \ even if different ends of\nthe clones were sequenced. File format (tab delimited):\n\
     cloneA     read1   read2\ncloneA     read3\ncloneB     read4   read5"
-  synonyms:
-  - --clonefile
   args: !SimpleFlagArg
     name: s
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --terminusfile
   description: "provide a file with EST terminus information to infer tss/tts hints.\n\
     AUGUSTUS will use tss/tts hints to predict transcription start/termination sites\n\
     File format (tab delimited):\n# ESTname    EstDir    Type FrontTerminus  EndTerminus\n\
@@ -129,20 +132,17 @@ named:
     \     5TNS       3TNS\nCACW14459.g2    3       D2      Unknown    3TNS\nCACW21662.g1\
     \    3       C2      5TNS       Unknown\nCACW25491.g1    3       F21     5TNS\
     \       3TNS-NP\ncloneB     read4   read5"
-  synonyms:
-  - --terminusfile
   args: !SimpleFlagArg
     name: s
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --maxgenelen
   description: "alignments of the same clone are considered to be of the same gene\
     \ if not separated by more than this (400000)\nAlignments that span more than\
     \ this are ignored, but better filter long introns through alignment program.\n"
-  synonyms:
-  - --maxgenelen
   args: !SimpleFlagArg
     name: n
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -195,3 +195,4 @@ help_text: "/usr/local/bin/blat2hints.pl -- convert blat file with mRNA or EST a
   \ program.\n"
 generated_using:
 - --help
+docker_image:

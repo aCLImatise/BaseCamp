@@ -38,6 +38,9 @@ task FamSeq {
       ~{if (num_burnin) then "-numBurnIn" else ""} \
       ~{if (num_rep) then "-numRep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file: "The name of input vcf file."
     lk_file: "The name of input likelihood only format file."

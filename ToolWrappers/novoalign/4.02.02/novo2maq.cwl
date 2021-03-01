@@ -6,12 +6,12 @@ inputs:
     that/n                          would be part of optimum local alignment are converted
     as MAQ indels. Default is off /n                          which will report all
     indels found by Novoalign.'
-  type: string
+  type: string?
   inputBinding:
     prefix: -s
 - id: in_produces_short_report
   doc: Produces short report on number of alignments per reference sequence.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_out_dot_map
@@ -39,6 +39,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - novo2maq

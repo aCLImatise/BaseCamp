@@ -16,6 +16,9 @@ task PbsDecode {
       ~{if defined(end) then ("--end " +  '"' + end + '"') else ""} \
       ~{if (discard_gaps) then "--discard-gaps" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     start: "Decode only the subsequence starting at position <sidx>.\\nIndexing starts with 1."
     end: "Decode only the subsequence ending at position <eidx>.\\nIndexing starts with 1."

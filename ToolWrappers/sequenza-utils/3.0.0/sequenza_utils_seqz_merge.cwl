@@ -4,23 +4,23 @@ inputs:
 - id: in_output
   doc: "Output file. For gzip compressed output name the file\nending in .gz. Default\
     \ STDOUT"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_seq_zone
   doc: "First input file. If both input files contain the same\nline, the information\
     \ in the first file will be used"
-  type: long
+  type: long?
   inputBinding:
     prefix: --seqz1
 - id: in_seq_z_two
   doc: Second input file
-  type: long
+  type: long?
   inputBinding:
     prefix: --seqz2
 - id: in_tab_ix
   doc: "Path of the tabix binary. Default \"tabix\"\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --tabix
 outputs:
@@ -30,9 +30,10 @@ outputs:
 - id: out_output
   doc: "Output file. For gzip compressed output name the file\nending in .gz. Default\
     \ STDOUT"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sequenza-utils

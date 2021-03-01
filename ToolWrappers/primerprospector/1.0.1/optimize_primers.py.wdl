@@ -16,6 +16,9 @@ task OptimizePrimerspy {
       ~{if defined(score_threshold) then ("--score_threshold " +  '"' + score_threshold + '"') else ""} \
       ~{if defined(hits_fp) then ("--hits_fp " +  '"' + hits_fp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     output_dir: "Specify output directory for linkers summary.\\n[default: .]"

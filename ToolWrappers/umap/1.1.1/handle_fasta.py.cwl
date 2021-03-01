@@ -3,12 +3,12 @@ id: handle_fasta.py.cwl
 inputs:
 - id: in_complement
   doc: Create a double genome with both + and - strand
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --Complement
 - id: in_conversion
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -Conversion
 - id: in_in_fast_a
@@ -41,6 +41,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - handle_fasta.py

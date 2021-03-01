@@ -104,6 +104,9 @@ task Maltrun {
       ~{if (x_part) then "--xPart" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: "[string]                  Program mode. Mandatory option. Legal values: Unknown, BlastN, BlastP, BlastX, Classifier"
     alignment_type: "[string]        Type of alignment to be performed. Default value: Local. Legal values: Local, SemiGlobal"

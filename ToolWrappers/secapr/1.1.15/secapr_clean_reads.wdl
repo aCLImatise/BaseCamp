@@ -38,6 +38,9 @@ task SecaprCleanReads {
       ~{if defined(minlength) then ("--minLength " +  '"' + minlength + '"') else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_containing_unzipped: "The directory containing the unzipped .fastq or .fq\\nfiles (raw read files)"
     config: "A configuration file containing the adapter\\ninformation and the sample names"

@@ -28,6 +28,9 @@ task TOBIASPlotTracks {
       ~{if (outdir) then "--outdir" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bigwigs: "[ [ ...]]  One or more bigwigs to show. Note: All bigwigs within one \\\"--\\nbigwigs\\\" argument will be normalized to each other. It is possible\\nto give multiple \\\"--bigwigs\\\" arguments, which will be normalized\\nindependently per group (required)"
     regions: "Genomic regions to plot (required)"

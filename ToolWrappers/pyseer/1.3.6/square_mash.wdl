@@ -8,6 +8,9 @@ task SquareMash {
     square_mash \
       ~{if (classic) then "--classic" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     classic: "Output table in a format suitable for R_mds.pl"
   }

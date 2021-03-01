@@ -8,6 +8,9 @@ task Nospace {
     nospace \
       ~{if (menu) then "-menu" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     menu: "menu       [all] Remove whitespace (Values: all (all\\nwhitespace); end (trailing whitespace);\\nexcess (multiple whitespace characters))"
   }

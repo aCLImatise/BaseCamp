@@ -11,168 +11,168 @@ subcommands:
   - raw_remap
   positional:
   - !Positional
-    description: Directory containing single-read fast5 files
+    optional: false
     position: 0
     name: input_folder
-    optional: false
+    description: Directory containing single-read fast5 files
   - !Positional
-    description: Output HDF5 file
+    optional: false
     position: 1
     name: output
-    optional: false
+    description: Output HDF5 file
   - !Positional
-    description: Pickled model file
+    optional: false
     position: 2
     name: model
-    optional: false
+    description: Pickled model file
   - !Positional
-    description: Reference sequences in fasta format
+    optional: false
     position: 3
     name: references
-    optional: false
+    description: Reference sequences in fasta format
   named:
   - !Flag
-    description: "Alphabet of the sequences (default: b'ACGT')"
+    optional: true
     synonyms:
     - --alphabet
+    description: "Alphabet of the sequences (default: b'ACGT')"
     args: !SimpleFlagArg
       name: ALPHABET
-    optional: true
   - !Flag
-    description: 'Strand summary file containing subset (default: None)'
+    optional: true
     synonyms:
     - --input_strand_list
+    description: 'Strand summary file containing subset (default: None)'
     args: !SimpleFlagArg
       name: INPUT_STRAND_LIST
-    optional: true
   - !Flag
-    description: "Number of threads to use when processing data\n(default: 1)"
+    optional: true
     synonyms:
     - --jobs
+    description: "Number of threads to use when processing data\n(default: 1)"
     args: !SimpleFlagArg
       name: n
-    optional: true
   - !Flag
-    description: 'Length of kmer to estimate (default: 5)'
+    optional: true
     synonyms:
     - --kmer_len
+    description: 'Length of kmer to estimate (default: 5)'
     args: !SimpleFlagArg
       name: k
-    optional: true
   - !Flag
-    description: 'Limit number of reads to process (default: None)'
+    optional: true
     synonyms:
     - --limit
+    description: 'Limit number of reads to process (default: None)'
     args: !SimpleFlagArg
       name: LIMIT
-    optional: true
   - !Flag
-    description: "Whether to overwrite any output files (Default: --no-\noverwrite)\
-      \ (default: False)"
+    optional: true
     synonyms:
     - --overwrite
     - --no-overwrite
+    description: "Whether to overwrite any output files (Default: --no-\noverwrite)\
+      \ (default: False)"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "Percentile above which to filter out chunks with too\nmany blanks\
-      \ (default: 95)"
+    optional: true
     synonyms:
     - --blanks_percentile
+    description: "Percentile above which to filter out chunks with too\nmany blanks\
+      \ (default: 95)"
     args: !SimpleFlagArg
       name: percentage
-    optional: true
   - !Flag
-    description: 'Length of each read chunk (default: 2000)'
+    optional: true
     synonyms:
     - --chunk_len
+    description: 'Length of each read chunk (default: 2000)'
     args: !SimpleFlagArg
       name: samples
-    optional: true
   - !Flag
-    description: "Whether to perform median-mad normalisation and with\nwhat scope\
-      \ (default: per-read)"
+    optional: true
     synonyms:
     - --normalisation
+    description: "Whether to perform median-mad normalisation and with\nwhat scope\
+      \ (default: per-read)"
     args: !ChoiceFlagArg
       choices: !!set
-        none:
         per-read:
+        none:
         per-chunk:
-    optional: true
   - !Flag
-    description: "end  Number of samples to trim off start and end (default:\n(200,\
-      \ 50))"
+    optional: true
     synonyms:
     - --trim
+    description: "end  Number of samples to trim off start and end (default:\n(200,\
+      \ 50))"
     args: !SimpleFlagArg
       name: beginning
-    optional: true
   - !Flag
-    description: 'Minimum samples in acceptable read (default: 2500)'
+    optional: true
     synonyms:
     - --min_length
+    description: 'Minimum samples in acceptable read (default: 2500)'
     args: !SimpleFlagArg
       name: samples
-    optional: true
   - !Flag
-    description: 'Rate of label downsampling (default: 1)'
+    optional: true
     synonyms:
     - --downsample_factor
+    description: 'Rate of label downsampling (default: 1)'
     args: !SimpleFlagArg
       name: DOWNSAMPLE_FACTOR
-    optional: true
   - !Flag
-    description: "Interpolate reference sequence positions between\nmapped samples\
-      \ (Default: --no-interpolation) (default:\nFalse)"
+    optional: true
     synonyms:
     - --interpolation
     - --no-interpolation
+    description: "Interpolate reference sequence positions between\nmapped samples\
+      \ (Default: --no-interpolation) (default:\nFalse)"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: 'File output compiled model (default: None)'
+    optional: true
     synonyms:
     - --compile
+    description: 'File output compiled model (default: None)'
     args: !SimpleFlagArg
       name: COMPILE
-    optional: true
   - !Flag
-    description: "Minimum allowed probabiility for basecalls (default:\n1e-05)"
+    optional: true
     synonyms:
     - --min_prob
+    description: "Minimum allowed probabiility for basecalls (default:\n1e-05)"
     args: !SimpleFlagArg
       name: proportion
-    optional: true
   - !Flag
-    description: "Strand summary output file (default:\nstrand_output_list.txt)"
+    optional: true
     synonyms:
     - --output_strand_list
+    description: "Strand summary output file (default:\nstrand_output_list.txt)"
     args: !SimpleFlagArg
       name: OUTPUT_STRAND_LIST
-    optional: true
   - !Flag
-    description: "end     Mean of start and end positions (default: (25.0,\n25.0))"
+    optional: true
     synonyms:
     - --prior
+    description: "end     Mean of start and end positions (default: (25.0,\n25.0))"
     args: !SimpleFlagArg
       name: start
-    optional: true
   - !Flag
-    description: 'Slip penalty (default: 5.0)'
+    optional: true
     synonyms:
     - --slip
+    description: 'Slip penalty (default: 5.0)'
     args: !SimpleFlagArg
       name: SLIP
-    optional: true
   - !Flag
-    description: "Max fraction of signal to trim due to open pore\n(default: 0.0)\n"
+    optional: true
     synonyms:
     - --open_pore_fraction
+    description: "Max fraction of signal to trim due to open pore\n(default: 0.0)\n"
     args: !SimpleFlagArg
       name: proportion
-    optional: true
-  parent: &id011 !Command
+  parent: &id012 !Command
     command: *id001
     positional: []
     named: []
@@ -182,168 +182,168 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: Directory containing single-read fast5 files
+        optional: false
         position: 0
         name: input_folder
-        optional: false
+        description: Directory containing single-read fast5 files
       - !Positional
-        description: Output HDF5 file
+        optional: false
         position: 1
         name: output
-        optional: false
+        description: Output HDF5 file
       - !Positional
-        description: Pickled model file
+        optional: false
         position: 2
         name: model
-        optional: false
+        description: Pickled model file
       - !Positional
-        description: Reference sequences in fasta format
+        optional: false
         position: 3
         name: references
-        optional: false
+        description: Reference sequences in fasta format
       named:
       - !Flag
-        description: "Alphabet of the sequences (default: b'ACGT')"
+        optional: true
         synonyms:
         - --alphabet
+        description: "Alphabet of the sequences (default: b'ACGT')"
         args: !SimpleFlagArg
           name: ALPHABET
-        optional: true
       - !Flag
-        description: 'Strand summary file containing subset (default: None)'
+        optional: true
         synonyms:
         - --input_strand_list
+        description: 'Strand summary file containing subset (default: None)'
         args: !SimpleFlagArg
           name: INPUT_STRAND_LIST
-        optional: true
       - !Flag
-        description: "Number of threads to use when processing data\n(default: 1)"
+        optional: true
         synonyms:
         - --jobs
+        description: "Number of threads to use when processing data\n(default: 1)"
         args: !SimpleFlagArg
           name: n
-        optional: true
       - !Flag
-        description: 'Length of kmer to estimate (default: 5)'
+        optional: true
         synonyms:
         - --kmer_len
+        description: 'Length of kmer to estimate (default: 5)'
         args: !SimpleFlagArg
           name: k
-        optional: true
       - !Flag
-        description: 'Limit number of reads to process (default: None)'
+        optional: true
         synonyms:
         - --limit
+        description: 'Limit number of reads to process (default: None)'
         args: !SimpleFlagArg
           name: LIMIT
-        optional: true
       - !Flag
-        description: "Whether to overwrite any output files (Default: --no-\noverwrite)\
-          \ (default: False)"
+        optional: true
         synonyms:
         - --overwrite
         - --no-overwrite
+        description: "Whether to overwrite any output files (Default: --no-\noverwrite)\
+          \ (default: False)"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "Percentile above which to filter out chunks with too\nmany blanks\
-          \ (default: 95)"
+        optional: true
         synonyms:
         - --blanks_percentile
+        description: "Percentile above which to filter out chunks with too\nmany blanks\
+          \ (default: 95)"
         args: !SimpleFlagArg
           name: percentage
-        optional: true
       - !Flag
-        description: 'Length of each read chunk (default: 2000)'
+        optional: true
         synonyms:
         - --chunk_len
+        description: 'Length of each read chunk (default: 2000)'
         args: !SimpleFlagArg
           name: samples
-        optional: true
       - !Flag
-        description: "Whether to perform median-mad normalisation and with\nwhat scope\
-          \ (default: per-read)"
+        optional: true
         synonyms:
         - --normalisation
+        description: "Whether to perform median-mad normalisation and with\nwhat scope\
+          \ (default: per-read)"
         args: !ChoiceFlagArg
           choices: !!set
-            ? per-chunk
-            ? per-read
             ? none
-        optional: true
+            ? per-read
+            ? per-chunk
       - !Flag
-        description: "end  Number of samples to trim off start and end (default:\n\
-          (200, 50))"
+        optional: true
         synonyms:
         - --trim
+        description: "end  Number of samples to trim off start and end (default:\n\
+          (200, 50))"
         args: !SimpleFlagArg
           name: beginning
-        optional: true
       - !Flag
-        description: 'Minimum samples in acceptable read (default: 2500)'
+        optional: true
         synonyms:
         - --min_length
+        description: 'Minimum samples in acceptable read (default: 2500)'
         args: !SimpleFlagArg
           name: samples
-        optional: true
       - !Flag
-        description: 'Rate of label downsampling (default: 1)'
+        optional: true
         synonyms:
         - --downsample_factor
+        description: 'Rate of label downsampling (default: 1)'
         args: !SimpleFlagArg
           name: DOWNSAMPLE_FACTOR
-        optional: true
       - !Flag
-        description: "Interpolate reference sequence positions between\nmapped samples\
-          \ (Default: --no-interpolation) (default:\nFalse)"
+        optional: true
         synonyms:
         - --interpolation
         - --no-interpolation
+        description: "Interpolate reference sequence positions between\nmapped samples\
+          \ (Default: --no-interpolation) (default:\nFalse)"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: 'File output compiled model (default: None)'
+        optional: true
         synonyms:
         - --compile
+        description: 'File output compiled model (default: None)'
         args: !SimpleFlagArg
           name: COMPILE
-        optional: true
       - !Flag
-        description: "Minimum allowed probabiility for basecalls (default:\n1e-05)"
+        optional: true
         synonyms:
         - --min_prob
+        description: "Minimum allowed probabiility for basecalls (default:\n1e-05)"
         args: !SimpleFlagArg
           name: proportion
-        optional: true
       - !Flag
-        description: "Strand summary output file (default:\nstrand_output_list.txt)"
+        optional: true
         synonyms:
         - --output_strand_list
+        description: "Strand summary output file (default:\nstrand_output_list.txt)"
         args: !SimpleFlagArg
           name: OUTPUT_STRAND_LIST
-        optional: true
       - !Flag
-        description: "end     Mean of start and end positions (default: (25.0,\n25.0))"
+        optional: true
         synonyms:
         - --prior
+        description: "end     Mean of start and end positions (default: (25.0,\n25.0))"
         args: !SimpleFlagArg
           name: start
-        optional: true
       - !Flag
-        description: 'Slip penalty (default: 5.0)'
+        optional: true
         synonyms:
         - --slip
+        description: 'Slip penalty (default: 5.0)'
         args: !SimpleFlagArg
           name: SLIP
-        optional: true
       - !Flag
-        description: "Max fraction of signal to trim due to open pore\n(default: 0.0)\n"
+        optional: true
         synonyms:
         - --open_pore_fraction
+        description: "Max fraction of signal to trim due to open pore\n(default: 0.0)\n"
         args: !SimpleFlagArg
           name: proportion
-        optional: true
-      parent: &id010 !Command
+      parent: &id011 !Command
         command: *id001
         positional: []
         named: []
@@ -353,171 +353,171 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: Directory containing single-read fast5 files
+            optional: false
             position: 0
             name: input_folder
-            optional: false
+            description: Directory containing single-read fast5 files
           - !Positional
-            description: Output HDF5 file
+            optional: false
             position: 1
             name: output
-            optional: false
+            description: Output HDF5 file
           - !Positional
-            description: Pickled model file
+            optional: false
             position: 2
             name: model
-            optional: false
+            description: Pickled model file
           - !Positional
-            description: Reference sequences in fasta format
+            optional: false
             position: 3
             name: references
-            optional: false
+            description: Reference sequences in fasta format
           named:
           - !Flag
-            description: "Alphabet of the sequences (default: b'ACGT')"
+            optional: true
             synonyms:
             - --alphabet
+            description: "Alphabet of the sequences (default: b'ACGT')"
             args: !SimpleFlagArg
               name: ALPHABET
-            optional: true
           - !Flag
-            description: 'Strand summary file containing subset (default: None)'
+            optional: true
             synonyms:
             - --input_strand_list
+            description: 'Strand summary file containing subset (default: None)'
             args: !SimpleFlagArg
               name: INPUT_STRAND_LIST
-            optional: true
           - !Flag
-            description: "Number of threads to use when processing data\n(default:\
-              \ 1)"
+            optional: true
             synonyms:
             - --jobs
+            description: "Number of threads to use when processing data\n(default:\
+              \ 1)"
             args: !SimpleFlagArg
               name: n
-            optional: true
           - !Flag
-            description: 'Length of kmer to estimate (default: 5)'
+            optional: true
             synonyms:
             - --kmer_len
+            description: 'Length of kmer to estimate (default: 5)'
             args: !SimpleFlagArg
               name: k
-            optional: true
           - !Flag
-            description: 'Limit number of reads to process (default: None)'
+            optional: true
             synonyms:
             - --limit
+            description: 'Limit number of reads to process (default: None)'
             args: !SimpleFlagArg
               name: LIMIT
-            optional: true
           - !Flag
-            description: "Whether to overwrite any output files (Default: --no-\n\
-              overwrite) (default: False)"
+            optional: true
             synonyms:
             - --overwrite
             - --no-overwrite
+            description: "Whether to overwrite any output files (Default: --no-\n\
+              overwrite) (default: False)"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "Percentile above which to filter out chunks with too\nmany\
-              \ blanks (default: 95)"
+            optional: true
             synonyms:
             - --blanks_percentile
+            description: "Percentile above which to filter out chunks with too\nmany\
+              \ blanks (default: 95)"
             args: !SimpleFlagArg
               name: percentage
-            optional: true
           - !Flag
-            description: 'Length of each read chunk (default: 2000)'
+            optional: true
             synonyms:
             - --chunk_len
+            description: 'Length of each read chunk (default: 2000)'
             args: !SimpleFlagArg
               name: samples
-            optional: true
           - !Flag
-            description: "Whether to perform median-mad normalisation and with\nwhat\
-              \ scope (default: per-read)"
+            optional: true
             synonyms:
             - --normalisation
+            description: "Whether to perform median-mad normalisation and with\nwhat\
+              \ scope (default: per-read)"
             args: !ChoiceFlagArg
               choices: !!set
                 ? per-chunk
                 ? per-read
                 ? none
-            optional: true
           - !Flag
-            description: "end  Number of samples to trim off start and end (default:\n\
-              (200, 50))"
+            optional: true
             synonyms:
             - --trim
+            description: "end  Number of samples to trim off start and end (default:\n\
+              (200, 50))"
             args: !SimpleFlagArg
               name: beginning
-            optional: true
           - !Flag
-            description: 'Minimum samples in acceptable read (default: 2500)'
+            optional: true
             synonyms:
             - --min_length
+            description: 'Minimum samples in acceptable read (default: 2500)'
             args: !SimpleFlagArg
               name: samples
-            optional: true
           - !Flag
-            description: 'Rate of label downsampling (default: 1)'
+            optional: true
             synonyms:
             - --downsample_factor
+            description: 'Rate of label downsampling (default: 1)'
             args: !SimpleFlagArg
               name: DOWNSAMPLE_FACTOR
-            optional: true
           - !Flag
-            description: "Interpolate reference sequence positions between\nmapped\
-              \ samples (Default: --no-interpolation) (default:\nFalse)"
+            optional: true
             synonyms:
             - --interpolation
             - --no-interpolation
+            description: "Interpolate reference sequence positions between\nmapped\
+              \ samples (Default: --no-interpolation) (default:\nFalse)"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: 'File output compiled model (default: None)'
+            optional: true
             synonyms:
             - --compile
+            description: 'File output compiled model (default: None)'
             args: !SimpleFlagArg
               name: COMPILE
-            optional: true
           - !Flag
-            description: "Minimum allowed probabiility for basecalls (default:\n1e-05)"
+            optional: true
             synonyms:
             - --min_prob
+            description: "Minimum allowed probabiility for basecalls (default:\n1e-05)"
             args: !SimpleFlagArg
               name: proportion
-            optional: true
           - !Flag
-            description: "Strand summary output file (default:\nstrand_output_list.txt)"
+            optional: true
             synonyms:
             - --output_strand_list
+            description: "Strand summary output file (default:\nstrand_output_list.txt)"
             args: !SimpleFlagArg
               name: OUTPUT_STRAND_LIST
-            optional: true
           - !Flag
-            description: "end     Mean of start and end positions (default: (25.0,\n\
-              25.0))"
+            optional: true
             synonyms:
             - --prior
+            description: "end     Mean of start and end positions (default: (25.0,\n\
+              25.0))"
             args: !SimpleFlagArg
               name: start
-            optional: true
           - !Flag
-            description: 'Slip penalty (default: 5.0)'
+            optional: true
             synonyms:
             - --slip
+            description: 'Slip penalty (default: 5.0)'
             args: !SimpleFlagArg
               name: SLIP
-            optional: true
           - !Flag
-            description: "Max fraction of signal to trim due to open pore\n(default:\
-              \ 0.0)\n"
+            optional: true
             synonyms:
             - --open_pore_fraction
+            description: "Max fraction of signal to trim due to open pore\n(default:\
+              \ 0.0)\n"
             args: !SimpleFlagArg
               name: proportion
-            optional: true
-          parent: &id009 !Command
+          parent: &id010 !Command
             command: *id001
             positional: []
             named: []
@@ -527,172 +527,172 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: Directory containing single-read fast5 files
+                optional: false
                 position: 0
                 name: input_folder
-                optional: false
+                description: Directory containing single-read fast5 files
               - !Positional
-                description: Output HDF5 file
+                optional: false
                 position: 1
                 name: output
-                optional: false
+                description: Output HDF5 file
               - !Positional
-                description: Pickled model file
+                optional: false
                 position: 2
                 name: model
-                optional: false
+                description: Pickled model file
               - !Positional
-                description: Reference sequences in fasta format
+                optional: false
                 position: 3
                 name: references
-                optional: false
+                description: Reference sequences in fasta format
               named:
               - !Flag
-                description: "Alphabet of the sequences (default: b'ACGT')"
+                optional: true
                 synonyms:
                 - --alphabet
+                description: "Alphabet of the sequences (default: b'ACGT')"
                 args: !SimpleFlagArg
                   name: ALPHABET
-                optional: true
               - !Flag
-                description: 'Strand summary file containing subset (default: None)'
+                optional: true
                 synonyms:
                 - --input_strand_list
+                description: 'Strand summary file containing subset (default: None)'
                 args: !SimpleFlagArg
                   name: INPUT_STRAND_LIST
-                optional: true
               - !Flag
-                description: "Number of threads to use when processing data\n(default:\
-                  \ 1)"
+                optional: true
                 synonyms:
                 - --jobs
+                description: "Number of threads to use when processing data\n(default:\
+                  \ 1)"
                 args: !SimpleFlagArg
                   name: n
-                optional: true
               - !Flag
-                description: 'Length of kmer to estimate (default: 5)'
+                optional: true
                 synonyms:
                 - --kmer_len
+                description: 'Length of kmer to estimate (default: 5)'
                 args: !SimpleFlagArg
                   name: k
-                optional: true
               - !Flag
-                description: 'Limit number of reads to process (default: None)'
+                optional: true
                 synonyms:
                 - --limit
+                description: 'Limit number of reads to process (default: None)'
                 args: !SimpleFlagArg
                   name: LIMIT
-                optional: true
               - !Flag
-                description: "Whether to overwrite any output files (Default: --no-\n\
-                  overwrite) (default: False)"
+                optional: true
                 synonyms:
                 - --overwrite
                 - --no-overwrite
+                description: "Whether to overwrite any output files (Default: --no-\n\
+                  overwrite) (default: False)"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "Percentile above which to filter out chunks with too\n\
-                  many blanks (default: 95)"
+                optional: true
                 synonyms:
                 - --blanks_percentile
+                description: "Percentile above which to filter out chunks with too\n\
+                  many blanks (default: 95)"
                 args: !SimpleFlagArg
                   name: percentage
-                optional: true
               - !Flag
-                description: 'Length of each read chunk (default: 2000)'
+                optional: true
                 synonyms:
                 - --chunk_len
+                description: 'Length of each read chunk (default: 2000)'
                 args: !SimpleFlagArg
                   name: samples
-                optional: true
               - !Flag
-                description: "Whether to perform median-mad normalisation and with\n\
-                  what scope (default: per-read)"
+                optional: true
                 synonyms:
                 - --normalisation
+                description: "Whether to perform median-mad normalisation and with\n\
+                  what scope (default: per-read)"
                 args: !ChoiceFlagArg
                   choices: !!set
-                    ? none
                     ? per-chunk
                     ? per-read
-                optional: true
+                    ? none
               - !Flag
-                description: "end  Number of samples to trim off start and end (default:\n\
-                  (200, 50))"
+                optional: true
                 synonyms:
                 - --trim
+                description: "end  Number of samples to trim off start and end (default:\n\
+                  (200, 50))"
                 args: !SimpleFlagArg
                   name: beginning
-                optional: true
               - !Flag
-                description: 'Minimum samples in acceptable read (default: 2500)'
+                optional: true
                 synonyms:
                 - --min_length
+                description: 'Minimum samples in acceptable read (default: 2500)'
                 args: !SimpleFlagArg
                   name: samples
-                optional: true
               - !Flag
-                description: 'Rate of label downsampling (default: 1)'
+                optional: true
                 synonyms:
                 - --downsample_factor
+                description: 'Rate of label downsampling (default: 1)'
                 args: !SimpleFlagArg
                   name: DOWNSAMPLE_FACTOR
-                optional: true
               - !Flag
-                description: "Interpolate reference sequence positions between\nmapped\
-                  \ samples (Default: --no-interpolation) (default:\nFalse)"
+                optional: true
                 synonyms:
                 - --interpolation
                 - --no-interpolation
+                description: "Interpolate reference sequence positions between\nmapped\
+                  \ samples (Default: --no-interpolation) (default:\nFalse)"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: 'File output compiled model (default: None)'
+                optional: true
                 synonyms:
                 - --compile
+                description: 'File output compiled model (default: None)'
                 args: !SimpleFlagArg
                   name: COMPILE
-                optional: true
               - !Flag
-                description: "Minimum allowed probabiility for basecalls (default:\n\
-                  1e-05)"
+                optional: true
                 synonyms:
                 - --min_prob
+                description: "Minimum allowed probabiility for basecalls (default:\n\
+                  1e-05)"
                 args: !SimpleFlagArg
                   name: proportion
-                optional: true
               - !Flag
-                description: "Strand summary output file (default:\nstrand_output_list.txt)"
+                optional: true
                 synonyms:
                 - --output_strand_list
+                description: "Strand summary output file (default:\nstrand_output_list.txt)"
                 args: !SimpleFlagArg
                   name: OUTPUT_STRAND_LIST
-                optional: true
               - !Flag
-                description: "end     Mean of start and end positions (default: (25.0,\n\
-                  25.0))"
+                optional: true
                 synonyms:
                 - --prior
+                description: "end     Mean of start and end positions (default: (25.0,\n\
+                  25.0))"
                 args: !SimpleFlagArg
                   name: start
-                optional: true
               - !Flag
-                description: 'Slip penalty (default: 5.0)'
+                optional: true
                 synonyms:
                 - --slip
+                description: 'Slip penalty (default: 5.0)'
                 args: !SimpleFlagArg
                   name: SLIP
-                optional: true
               - !Flag
-                description: "Max fraction of signal to trim due to open pore\n(default:\
-                  \ 0.0)\n"
+                optional: true
                 synonyms:
                 - --open_pore_fraction
+                description: "Max fraction of signal to trim due to open pore\n(default:\
+                  \ 0.0)\n"
                 args: !SimpleFlagArg
                   name: proportion
-                optional: true
-              parent: &id003 !Command
+              parent: &id009 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -702,182 +702,926 @@ subcommands:
                   command: *id002
                   positional:
                   - !Positional
-                    description: Directory containing single-read fast5 files
+                    optional: false
                     position: 0
                     name: input_folder
-                    optional: false
+                    description: Directory containing single-read fast5 files
                   - !Positional
-                    description: Output HDF5 file
+                    optional: false
                     position: 1
                     name: output
-                    optional: false
+                    description: Output HDF5 file
                   - !Positional
-                    description: Pickled model file
+                    optional: false
                     position: 2
                     name: model
-                    optional: false
+                    description: Pickled model file
                   - !Positional
-                    description: Reference sequences in fasta format
+                    optional: false
                     position: 3
                     name: references
-                    optional: false
+                    description: Reference sequences in fasta format
                   named:
                   - !Flag
-                    description: "Alphabet of the sequences (default: b'ACGT')"
+                    optional: true
                     synonyms:
                     - --alphabet
+                    description: "Alphabet of the sequences (default: b'ACGT')"
                     args: !SimpleFlagArg
                       name: ALPHABET
-                    optional: true
                   - !Flag
-                    description: 'Strand summary file containing subset (default:
-                      None)'
+                    optional: true
                     synonyms:
                     - --input_strand_list
+                    description: 'Strand summary file containing subset (default:
+                      None)'
                     args: !SimpleFlagArg
                       name: INPUT_STRAND_LIST
-                    optional: true
                   - !Flag
-                    description: "Number of threads to use when processing data\n\
-                      (default: 1)"
+                    optional: true
                     synonyms:
                     - --jobs
+                    description: "Number of threads to use when processing data\n\
+                      (default: 1)"
                     args: !SimpleFlagArg
                       name: n
-                    optional: true
                   - !Flag
-                    description: 'Length of kmer to estimate (default: 5)'
+                    optional: true
                     synonyms:
                     - --kmer_len
+                    description: 'Length of kmer to estimate (default: 5)'
                     args: !SimpleFlagArg
                       name: k
-                    optional: true
                   - !Flag
-                    description: 'Limit number of reads to process (default: None)'
+                    optional: true
                     synonyms:
                     - --limit
+                    description: 'Limit number of reads to process (default: None)'
                     args: !SimpleFlagArg
                       name: LIMIT
-                    optional: true
                   - !Flag
-                    description: "Whether to overwrite any output files (Default:\
-                      \ --no-\noverwrite) (default: False)"
+                    optional: true
                     synonyms:
                     - --overwrite
                     - --no-overwrite
+                    description: "Whether to overwrite any output files (Default:\
+                      \ --no-\noverwrite) (default: False)"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "Percentile above which to filter out chunks with\
-                      \ too\nmany blanks (default: 95)"
+                    optional: true
                     synonyms:
                     - --blanks_percentile
+                    description: "Percentile above which to filter out chunks with\
+                      \ too\nmany blanks (default: 95)"
                     args: !SimpleFlagArg
                       name: percentage
-                    optional: true
                   - !Flag
-                    description: 'Length of each read chunk (default: 2000)'
+                    optional: true
                     synonyms:
                     - --chunk_len
+                    description: 'Length of each read chunk (default: 2000)'
                     args: !SimpleFlagArg
                       name: samples
-                    optional: true
                   - !Flag
-                    description: "Whether to perform median-mad normalisation and\
-                      \ with\nwhat scope (default: per-read)"
+                    optional: true
                     synonyms:
                     - --normalisation
+                    description: "Whether to perform median-mad normalisation and\
+                      \ with\nwhat scope (default: per-read)"
                     args: !ChoiceFlagArg
                       choices: !!set
-                        ? per-read
-                        ? per-chunk
                         ? none
-                    optional: true
+                        ? per-chunk
+                        ? per-read
                   - !Flag
-                    description: "end  Number of samples to trim off start and end\
-                      \ (default:\n(200, 50))"
+                    optional: true
                     synonyms:
                     - --trim
+                    description: "end  Number of samples to trim off start and end\
+                      \ (default:\n(200, 50))"
                     args: !SimpleFlagArg
                       name: beginning
-                    optional: true
                   - !Flag
-                    description: 'Minimum samples in acceptable read (default: 2500)'
+                    optional: true
                     synonyms:
                     - --min_length
+                    description: 'Minimum samples in acceptable read (default: 2500)'
                     args: !SimpleFlagArg
                       name: samples
-                    optional: true
                   - !Flag
-                    description: 'Rate of label downsampling (default: 1)'
+                    optional: true
                     synonyms:
                     - --downsample_factor
+                    description: 'Rate of label downsampling (default: 1)'
                     args: !SimpleFlagArg
                       name: DOWNSAMPLE_FACTOR
-                    optional: true
                   - !Flag
-                    description: "Interpolate reference sequence positions between\n\
-                      mapped samples (Default: --no-interpolation) (default:\nFalse)"
+                    optional: true
                     synonyms:
                     - --interpolation
                     - --no-interpolation
+                    description: "Interpolate reference sequence positions between\n\
+                      mapped samples (Default: --no-interpolation) (default:\nFalse)"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: 'File output compiled model (default: None)'
+                    optional: true
                     synonyms:
                     - --compile
+                    description: 'File output compiled model (default: None)'
                     args: !SimpleFlagArg
                       name: COMPILE
-                    optional: true
                   - !Flag
-                    description: "Minimum allowed probabiility for basecalls (default:\n\
-                      1e-05)"
+                    optional: true
                     synonyms:
                     - --min_prob
+                    description: "Minimum allowed probabiility for basecalls (default:\n\
+                      1e-05)"
                     args: !SimpleFlagArg
                       name: proportion
-                    optional: true
                   - !Flag
-                    description: "Strand summary output file (default:\nstrand_output_list.txt)"
+                    optional: true
                     synonyms:
                     - --output_strand_list
+                    description: "Strand summary output file (default:\nstrand_output_list.txt)"
                     args: !SimpleFlagArg
                       name: OUTPUT_STRAND_LIST
-                    optional: true
                   - !Flag
-                    description: "end     Mean of start and end positions (default:\
-                      \ (25.0,\n25.0))"
+                    optional: true
                     synonyms:
                     - --prior
+                    description: "end     Mean of start and end positions (default:\
+                      \ (25.0,\n25.0))"
                     args: !SimpleFlagArg
                       name: start
-                    optional: true
                   - !Flag
-                    description: 'Slip penalty (default: 5.0)'
+                    optional: true
                     synonyms:
                     - --slip
+                    description: 'Slip penalty (default: 5.0)'
                     args: !SimpleFlagArg
                       name: SLIP
-                    optional: true
                   - !Flag
-                    description: "Max fraction of signal to trim due to open pore\n\
-                      (default: 0.0)\n"
+                    optional: true
                     synonyms:
                     - --open_pore_fraction
+                    description: "Max fraction of signal to trim due to open pore\n\
+                      (default: 0.0)\n"
                     args: !SimpleFlagArg
                       name: proportion
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: input_folder
+                        description: Directory containing single-read fast5 files
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: output
+                        description: Output HDF5 file
+                      - !Positional
+                        optional: false
+                        position: 2
+                        name: model
+                        description: Pickled model file
+                      - !Positional
+                        optional: false
+                        position: 3
+                        name: references
+                        description: Reference sequences in fasta format
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --alphabet
+                        description: "Alphabet of the sequences (default: b'ACGT')"
+                        args: !SimpleFlagArg
+                          name: ALPHABET
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --input_strand_list
+                        description: 'Strand summary file containing subset (default:
+                          None)'
+                        args: !SimpleFlagArg
+                          name: INPUT_STRAND_LIST
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --jobs
+                        description: "Number of threads to use when processing data\n\
+                          (default: 1)"
+                        args: !SimpleFlagArg
+                          name: n
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --kmer_len
+                        description: 'Length of kmer to estimate (default: 5)'
+                        args: !SimpleFlagArg
+                          name: k
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --limit
+                        description: 'Limit number of reads to process (default: None)'
+                        args: !SimpleFlagArg
+                          name: LIMIT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --overwrite
+                        - --no-overwrite
+                        description: "Whether to overwrite any output files (Default:\
+                          \ --no-\noverwrite) (default: False)"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --blanks_percentile
+                        description: "Percentile above which to filter out chunks\
+                          \ with too\nmany blanks (default: 95)"
+                        args: !SimpleFlagArg
+                          name: percentage
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --chunk_len
+                        description: 'Length of each read chunk (default: 2000)'
+                        args: !SimpleFlagArg
+                          name: samples
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --normalisation
+                        description: "Whether to perform median-mad normalisation\
+                          \ and with\nwhat scope (default: per-read)"
+                        args: !ChoiceFlagArg
+                          choices: !!set
+                            ? per-read
+                            ? per-chunk
+                            ? none
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --trim
+                        description: "end  Number of samples to trim off start and\
+                          \ end (default:\n(200, 50))"
+                        args: !SimpleFlagArg
+                          name: beginning
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min_length
+                        description: 'Minimum samples in acceptable read (default:
+                          2500)'
+                        args: !SimpleFlagArg
+                          name: samples
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --downsample_factor
+                        description: 'Rate of label downsampling (default: 1)'
+                        args: !SimpleFlagArg
+                          name: DOWNSAMPLE_FACTOR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --interpolation
+                        - --no-interpolation
+                        description: "Interpolate reference sequence positions between\n\
+                          mapped samples (Default: --no-interpolation) (default:\n\
+                          False)"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --compile
+                        description: 'File output compiled model (default: None)'
+                        args: !SimpleFlagArg
+                          name: COMPILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min_prob
+                        description: "Minimum allowed probabiility for basecalls (default:\n\
+                          1e-05)"
+                        args: !SimpleFlagArg
+                          name: proportion
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --output_strand_list
+                        description: "Strand summary output file (default:\nstrand_output_list.txt)"
+                        args: !SimpleFlagArg
+                          name: OUTPUT_STRAND_LIST
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --prior
+                        description: "end     Mean of start and end positions (default:\
+                          \ (25.0,\n25.0))"
+                        args: !SimpleFlagArg
+                          name: start
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --slip
+                        description: 'Slip penalty (default: 5.0)'
+                        args: !SimpleFlagArg
+                          name: SLIP
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --open_pore_fraction
+                        description: "Max fraction of signal to trim due to open pore\n\
+                          (default: 0.0)\n"
+                        args: !SimpleFlagArg
+                          name: proportion
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: chunkify.py raw_remap [-h] [--alphabet ALPHABET]\n\
+                        \                             [--input_strand_list INPUT_STRAND_LIST]\n\
+                        \                             [--jobs n] [--kmer_len k] [--limit\
+                        \ LIMIT]\n                             [--overwrite] [--blanks_percentile\
+                        \ percentage]\n                             [--chunk_len samples]\n\
+                        \                             [--normalisation {per-chunk,per-read,none}]\n\
+                        \                             [--trim beginning end] [--min_length\
+                        \ samples]\n                             [--downsample_factor\
+                        \ DOWNSAMPLE_FACTOR]\n                             [--interpolation]\
+                        \ [--compile COMPILE]\n                             [--min_prob\
+                        \ proportion]\n                             [--output_strand_list\
+                        \ OUTPUT_STRAND_LIST]\n                             [--prior\
+                        \ start end] [--slip SLIP]\n                             [--open_pore_fraction\
+                        \ proportion]\n                             input_folder output\
+                        \ model references\n\npositional arguments:\n  input_folder\
+                        \          Directory containing single-read fast5 files\n\
+                        \  output                Output HDF5 file\n  model       \
+                        \          Pickled model file\n  references            Reference\
+                        \ sequences in fasta format\n\noptional arguments:\n  -h,\
+                        \ --help            show this help message and exit\n  --alphabet\
+                        \ ALPHABET   Alphabet of the sequences (default: b'ACGT')\n\
+                        \  --input_strand_list INPUT_STRAND_LIST\n               \
+                        \         Strand summary file containing subset (default:\
+                        \ None)\n  --jobs n              Number of threads to use\
+                        \ when processing data\n                        (default:\
+                        \ 1)\n  --kmer_len k          Length of kmer to estimate (default:\
+                        \ 5)\n  --limit LIMIT         Limit number of reads to process\
+                        \ (default: None)\n  --overwrite, --no-overwrite\n       \
+                        \                 Whether to overwrite any output files (Default:\
+                        \ --no-\n                        overwrite) (default: False)\n\
+                        \  --blanks_percentile percentage\n                      \
+                        \  Percentile above which to filter out chunks with too\n\
+                        \                        many blanks (default: 95)\n  --chunk_len\
+                        \ samples   Length of each read chunk (default: 2000)\n  --normalisation\
+                        \ {per-chunk,per-read,none}\n                        Whether\
+                        \ to perform median-mad normalisation and with\n         \
+                        \               what scope (default: per-read)\n  --trim beginning\
+                        \ end  Number of samples to trim off start and end (default:\n\
+                        \                        (200, 50))\n  --min_length samples\
+                        \  Minimum samples in acceptable read (default: 2500)\n  --downsample_factor\
+                        \ DOWNSAMPLE_FACTOR\n                        Rate of label\
+                        \ downsampling (default: 1)\n  --interpolation, --no-interpolation\n\
+                        \                        Interpolate reference sequence positions\
+                        \ between\n                        mapped samples (Default:\
+                        \ --no-interpolation) (default:\n                        False)\n\
+                        \  --compile COMPILE     File output compiled model (default:\
+                        \ None)\n  --min_prob proportion\n                       \
+                        \ Minimum allowed probabiility for basecalls (default:\n \
+                        \                       1e-05)\n  --output_strand_list OUTPUT_STRAND_LIST\n\
+                        \                        Strand summary output file (default:\n\
+                        \                        strand_output_list.txt)\n  --prior\
+                        \ start end     Mean of start and end positions (default:\
+                        \ (25.0,\n                        25.0))\n  --slip SLIP  \
+                        \         Slip penalty (default: 5.0)\n  --open_pore_fraction\
+                        \ proportion\n                        Max fraction of signal\
+                        \ to trim due to open pore\n                        (default:\
+                        \ 0.0)\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - chunkify.py
+                      - remap
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: input_folder
+                        description: Directory containing single-read fast5 files
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: output
+                        description: Output HDF5 file
+                      - !Positional
+                        optional: false
+                        position: 2
+                        name: model
+                        description: Pickled model file
+                      - !Positional
+                        optional: false
+                        position: 3
+                        name: references
+                        description: Reference sequences in fasta format
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --alphabet
+                        description: "Alphabet of the sequences (default: b'ACGT')"
+                        args: !SimpleFlagArg
+                          name: ALPHABET
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --input_strand_list
+                        description: 'Strand summary file containing subset (default:
+                          None)'
+                        args: !SimpleFlagArg
+                          name: INPUT_STRAND_LIST
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --jobs
+                        description: "Number of threads to use when processing data\n\
+                          (default: 1)"
+                        args: !SimpleFlagArg
+                          name: n
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --kmer_len
+                        description: 'Length of kmer to estimate (default: 5)'
+                        args: !SimpleFlagArg
+                          name: k
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --limit
+                        description: 'Limit number of reads to process (default: None)'
+                        args: !SimpleFlagArg
+                          name: LIMIT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --overwrite
+                        - --no-overwrite
+                        description: "Whether to overwrite any output files (Default:\
+                          \ --no-\noverwrite) (default: False)"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --blanks
+                        description: 'Maximum proportion of blanks in labels (default:
+                          0.7)'
+                        args: !SimpleFlagArg
+                          name: proportion
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --chunk_len
+                        description: 'Length of each read chunk (default: 500)'
+                        args: !SimpleFlagArg
+                          name: events
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --normalisation
+                        description: "Whether to perform studentisation and with what\
+                          \ scope\n(default: per-read)"
+                        args: !ChoiceFlagArg
+                          choices: !!set
+                            ? per-read
+                            ? per-chunk
+                            ? none
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min_length
+                        description: 'Minimum events in acceptable read (default:
+                          1200)'
+                        args: !SimpleFlagArg
+                          name: events
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --use_scaled
+                        - --no-use_scaled
+                        description: "Train from scaled event statistics (Default:\
+                          \ --no-\nuse_scaled) (default: False)"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --trim
+                        description: "end  Number of events to trim off start and\
+                          \ end (default:\n(50, 10))"
+                        args: !SimpleFlagArg
+                          name: beginning
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --section
+                        description: 'Section to call (default: template)'
+                        args: !ChoiceFlagArg
+                          choices: !!set
+                            ? complement
+                            ? template
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --compile
+                        description: 'File output compiled model (default: None)'
+                        args: !SimpleFlagArg
+                          name: COMPILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min_prob
+                        description: "Minimum allowed probabiility for basecalls (default:\n\
+                          1e-05)"
+                        args: !SimpleFlagArg
+                          name: proportion
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --output_strand_list
+                        description: "Strand summary output file (default:\nstrand_output_list.txt)"
+                        args: !SimpleFlagArg
+                          name: OUTPUT_STRAND_LIST
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --prior
+                        description: "end     Mean of start and end positions (default:\
+                          \ (25.0,\n25.0))"
+                        args: !SimpleFlagArg
+                          name: start
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --slip
+                        description: 'Slip penalty (default: 5.0)'
+                        args: !SimpleFlagArg
+                          name: SLIP
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --segmentation
+                        description: "Location of segmentation information (default:\n\
+                          Segmentation)\n"
+                        args: !SimpleFlagArg
+                          name: location
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: chunkify.py remap [-h] [--alphabet ALPHABET]\n\
+                        \                         [--input_strand_list INPUT_STRAND_LIST]\
+                        \ [--jobs n]\n                         [--kmer_len k] [--limit\
+                        \ LIMIT] [--overwrite]\n                         [--blanks\
+                        \ proportion] [--chunk_len events]\n                     \
+                        \    [--normalisation {per-chunk,none,per-read}]\n       \
+                        \                  [--min_length events] [--use_scaled]\n\
+                        \                         [--trim beginning end]\n       \
+                        \                  [--section {template,complement}] [--compile\
+                        \ COMPILE]\n                         [--min_prob proportion]\n\
+                        \                         [--output_strand_list OUTPUT_STRAND_LIST]\n\
+                        \                         [--prior start end] [--slip SLIP]\n\
+                        \                         [--segmentation location]\n    \
+                        \                     input_folder output model references\n\
+                        \npositional arguments:\n  input_folder          Directory\
+                        \ containing single-read fast5 files\n  output           \
+                        \     Output HDF5 file\n  model                 Pickled model\
+                        \ file\n  references            Reference sequences in fasta\
+                        \ format\n\noptional arguments:\n  -h, --help            show\
+                        \ this help message and exit\n  --alphabet ALPHABET   Alphabet\
+                        \ of the sequences (default: b'ACGT')\n  --input_strand_list\
+                        \ INPUT_STRAND_LIST\n                        Strand summary\
+                        \ file containing subset (default: None)\n  --jobs n     \
+                        \         Number of threads to use when processing data\n\
+                        \                        (default: 1)\n  --kmer_len k    \
+                        \      Length of kmer to estimate (default: 5)\n  --limit\
+                        \ LIMIT         Limit number of reads to process (default:\
+                        \ None)\n  --overwrite, --no-overwrite\n                 \
+                        \       Whether to overwrite any output files (Default: --no-\n\
+                        \                        overwrite) (default: False)\n  --blanks\
+                        \ proportion   Maximum proportion of blanks in labels (default:\
+                        \ 0.7)\n  --chunk_len events    Length of each read chunk\
+                        \ (default: 500)\n  --normalisation {per-chunk,none,per-read}\n\
+                        \                        Whether to perform studentisation\
+                        \ and with what scope\n                        (default: per-read)\n\
+                        \  --min_length events   Minimum events in acceptable read\
+                        \ (default: 1200)\n  --use_scaled, --no-use_scaled\n     \
+                        \                   Train from scaled event statistics (Default:\
+                        \ --no-\n                        use_scaled) (default: False)\n\
+                        \  --trim beginning end  Number of events to trim off start\
+                        \ and end (default:\n                        (50, 10))\n \
+                        \ --section {template,complement}\n                      \
+                        \  Section to call (default: template)\n  --compile COMPILE\
+                        \     File output compiled model (default: None)\n  --min_prob\
+                        \ proportion\n                        Minimum allowed probabiility\
+                        \ for basecalls (default:\n                        1e-05)\n\
+                        \  --output_strand_list OUTPUT_STRAND_LIST\n             \
+                        \           Strand summary output file (default:\n       \
+                        \                 strand_output_list.txt)\n  --prior start\
+                        \ end     Mean of start and end positions (default: (25.0,\n\
+                        \                        25.0))\n  --slip SLIP           Slip\
+                        \ penalty (default: 5.0)\n  --segmentation location\n    \
+                        \                    Location of segmentation information\
+                        \ (default:\n                        Segmentation)\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - chunkify.py
+                      - raw_identity
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: input_folder
+                        description: Directory containing single-read fast5 files
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: output
+                        description: Output HDF5 file
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --alphabet
+                        description: "Alphabet of the sequences (default: b'ACGT')"
+                        args: !SimpleFlagArg
+                          name: ALPHABET
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --input_strand_list
+                        description: 'Strand summary file containing subset (default:
+                          None)'
+                        args: !SimpleFlagArg
+                          name: INPUT_STRAND_LIST
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --jobs
+                        description: "Number of threads to use when processing data\n\
+                          (default: 1)"
+                        args: !SimpleFlagArg
+                          name: n
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --kmer_len
+                        description: 'Length of kmer to estimate (default: 5)'
+                        args: !SimpleFlagArg
+                          name: k
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --limit
+                        description: 'Limit number of reads to process (default: None)'
+                        args: !SimpleFlagArg
+                          name: LIMIT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --overwrite
+                        - --no-overwrite
+                        description: "Whether to overwrite any output files (Default:\
+                          \ --no-\noverwrite) (default: False)"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --blanks_percentile
+                        description: "Percentile above which to filter out chunks\
+                          \ with too\nmany blanks (default: 95)"
+                        args: !SimpleFlagArg
+                          name: percentage
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --chunk_len
+                        description: 'Length of each read chunk (default: 2000)'
+                        args: !SimpleFlagArg
+                          name: samples
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --normalisation
+                        description: "Whether to perform median-mad normalisation\
+                          \ and with\nwhat scope (default: per-read)"
+                        args: !ChoiceFlagArg
+                          choices: !!set
+                            ? per-read
+                            ? per-chunk
+                            ? none
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --trim
+                        description: "end  Number of samples to trim off start and\
+                          \ end (default:\n(200, 50))"
+                        args: !SimpleFlagArg
+                          name: beginning
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min_length
+                        description: 'Minimum samples in acceptable read (default:
+                          2500)'
+                        args: !SimpleFlagArg
+                          name: samples
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --downsample_factor
+                        description: 'Rate of label downsampling (default: 1)'
+                        args: !SimpleFlagArg
+                          name: DOWNSAMPLE_FACTOR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --interpolation
+                        - --no-interpolation
+                        description: "Interpolate reference sequence positions between\n\
+                          mapped samples (Default: --no-interpolation) (default:\n\
+                          False)\n"
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: chunkify.py raw_identity [-h] [--alphabet\
+                        \ ALPHABET]\n                                [--input_strand_list\
+                        \ INPUT_STRAND_LIST]\n                                [--jobs\
+                        \ n] [--kmer_len k] [--limit LIMIT]\n                    \
+                        \            [--overwrite] [--blanks_percentile percentage]\n\
+                        \                                [--chunk_len samples]\n \
+                        \                               [--normalisation {per-chunk,none,per-read}]\n\
+                        \                                [--trim beginning end] [--min_length\
+                        \ samples]\n                                [--downsample_factor\
+                        \ DOWNSAMPLE_FACTOR]\n                                [--interpolation]\n\
+                        \                                input_folder output\n\npositional\
+                        \ arguments:\n  input_folder          Directory containing\
+                        \ single-read fast5 files\n  output                Output\
+                        \ HDF5 file\n\noptional arguments:\n  -h, --help         \
+                        \   show this help message and exit\n  --alphabet ALPHABET\
+                        \   Alphabet of the sequences (default: b'ACGT')\n  --input_strand_list\
+                        \ INPUT_STRAND_LIST\n                        Strand summary\
+                        \ file containing subset (default: None)\n  --jobs n     \
+                        \         Number of threads to use when processing data\n\
+                        \                        (default: 1)\n  --kmer_len k    \
+                        \      Length of kmer to estimate (default: 5)\n  --limit\
+                        \ LIMIT         Limit number of reads to process (default:\
+                        \ None)\n  --overwrite, --no-overwrite\n                 \
+                        \       Whether to overwrite any output files (Default: --no-\n\
+                        \                        overwrite) (default: False)\n  --blanks_percentile\
+                        \ percentage\n                        Percentile above which\
+                        \ to filter out chunks with too\n                        many\
+                        \ blanks (default: 95)\n  --chunk_len samples   Length of\
+                        \ each read chunk (default: 2000)\n  --normalisation {per-chunk,none,per-read}\n\
+                        \                        Whether to perform median-mad normalisation\
+                        \ and with\n                        what scope (default: per-read)\n\
+                        \  --trim beginning end  Number of samples to trim off start\
+                        \ and end (default:\n                        (200, 50))\n\
+                        \  --min_length samples  Minimum samples in acceptable read\
+                        \ (default: 2500)\n  --downsample_factor DOWNSAMPLE_FACTOR\n\
+                        \                        Rate of label downsampling (default:\
+                        \ 1)\n  --interpolation, --no-interpolation\n            \
+                        \            Interpolate reference sequence positions between\n\
+                        \                        mapped samples (Default: --no-interpolation)\
+                        \ (default:\n                        False)\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - chunkify.py
+                      - command
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: chunkify.py
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: chunkify.py [-h] {identity,remap,raw_identity,raw_remap}\
+                        \ ...\nchunkify.py: error: argument command: invalid choice:\
+                        \ 'command' (choose from 'identity', 'remap', 'raw_identity',\
+                        \ 'raw_remap')\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id008
+                      - chunkify.py
+                      - fly
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: chunkify.py
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: chunkify.py [-h] {identity,remap,raw_identity,raw_remap}\
+                        \ ...\nchunkify.py: error: argument command: invalid choice:\
+                        \ 'fly' (choose from 'identity', 'remap', 'raw_identity',\
+                        \ 'raw_remap')\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: chunkify.py [-h] {identity,remap,raw_identity,raw_remap}\
+                      \ ...\n\nPrepare data for model training and save to hdf5 file\n\
+                      \npositional arguments:\n  {identity,remap,raw_identity,raw_remap}\n\
+                      \                        command\n    identity            Create\
+                      \ HDF file from reads as is\n    remap               Create\
+                      \ HDF file remapping reads on the fly using\n              \
+                      \          transducer network\n    raw_identity        Create\
+                      \ HDF file from reads as is using raw data\n    raw_remap  \
+                      \         Create HDF file of raw data, remapping reads on the\n\
+                      \                        fly\n\noptional arguments:\n  -h, --help\
+                      \            show this help message and exit\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: chunkify.py raw_remap [-h] [--alphabet ALPHABET]\n\
@@ -934,192 +1678,190 @@ subcommands:
                     \ (default: 5.0)\n  --open_pore_fraction proportion\n        \
                     \                Max fraction of signal to trim due to open pore\n\
                     \                        (default: 0.0)\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - chunkify.py
-                  - remap
+                  command: *id005
                   positional:
                   - !Positional
-                    description: Directory containing single-read fast5 files
+                    optional: false
                     position: 0
                     name: input_folder
-                    optional: false
+                    description: Directory containing single-read fast5 files
                   - !Positional
-                    description: Output HDF5 file
+                    optional: false
                     position: 1
                     name: output
-                    optional: false
+                    description: Output HDF5 file
                   - !Positional
-                    description: Pickled model file
+                    optional: false
                     position: 2
                     name: model
-                    optional: false
+                    description: Pickled model file
                   - !Positional
-                    description: Reference sequences in fasta format
+                    optional: false
                     position: 3
                     name: references
-                    optional: false
+                    description: Reference sequences in fasta format
                   named:
                   - !Flag
-                    description: "Alphabet of the sequences (default: b'ACGT')"
+                    optional: true
                     synonyms:
                     - --alphabet
+                    description: "Alphabet of the sequences (default: b'ACGT')"
                     args: !SimpleFlagArg
                       name: ALPHABET
-                    optional: true
                   - !Flag
-                    description: 'Strand summary file containing subset (default:
-                      None)'
+                    optional: true
                     synonyms:
                     - --input_strand_list
+                    description: 'Strand summary file containing subset (default:
+                      None)'
                     args: !SimpleFlagArg
                       name: INPUT_STRAND_LIST
-                    optional: true
                   - !Flag
-                    description: "Number of threads to use when processing data\n\
-                      (default: 1)"
+                    optional: true
                     synonyms:
                     - --jobs
+                    description: "Number of threads to use when processing data\n\
+                      (default: 1)"
                     args: !SimpleFlagArg
                       name: n
-                    optional: true
                   - !Flag
-                    description: 'Length of kmer to estimate (default: 5)'
+                    optional: true
                     synonyms:
                     - --kmer_len
+                    description: 'Length of kmer to estimate (default: 5)'
                     args: !SimpleFlagArg
                       name: k
-                    optional: true
                   - !Flag
-                    description: 'Limit number of reads to process (default: None)'
+                    optional: true
                     synonyms:
                     - --limit
+                    description: 'Limit number of reads to process (default: None)'
                     args: !SimpleFlagArg
                       name: LIMIT
-                    optional: true
                   - !Flag
-                    description: "Whether to overwrite any output files (Default:\
-                      \ --no-\noverwrite) (default: False)"
+                    optional: true
                     synonyms:
                     - --overwrite
                     - --no-overwrite
+                    description: "Whether to overwrite any output files (Default:\
+                      \ --no-\noverwrite) (default: False)"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: 'Maximum proportion of blanks in labels (default:
-                      0.7)'
+                    optional: true
                     synonyms:
                     - --blanks
+                    description: 'Maximum proportion of blanks in labels (default:
+                      0.7)'
                     args: !SimpleFlagArg
                       name: proportion
-                    optional: true
                   - !Flag
-                    description: 'Length of each read chunk (default: 500)'
+                    optional: true
                     synonyms:
                     - --chunk_len
+                    description: 'Length of each read chunk (default: 500)'
                     args: !SimpleFlagArg
                       name: events
-                    optional: true
                   - !Flag
-                    description: "Whether to perform studentisation and with what\
-                      \ scope\n(default: per-read)"
+                    optional: true
                     synonyms:
                     - --normalisation
+                    description: "Whether to perform studentisation and with what\
+                      \ scope\n(default: per-read)"
                     args: !ChoiceFlagArg
                       choices: !!set
-                        ? per-read
-                        ? per-chunk
                         ? none
-                    optional: true
+                        ? per-chunk
+                        ? per-read
                   - !Flag
-                    description: 'Minimum events in acceptable read (default: 1200)'
+                    optional: true
                     synonyms:
                     - --min_length
+                    description: 'Minimum events in acceptable read (default: 1200)'
                     args: !SimpleFlagArg
                       name: events
-                    optional: true
                   - !Flag
-                    description: "Train from scaled event statistics (Default: --no-\n\
-                      use_scaled) (default: False)"
+                    optional: true
                     synonyms:
                     - --use_scaled
                     - --no-use_scaled
+                    description: "Train from scaled event statistics (Default: --no-\n\
+                      use_scaled) (default: False)"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "end  Number of events to trim off start and end\
-                      \ (default:\n(50, 10))"
+                    optional: true
                     synonyms:
                     - --trim
+                    description: "end  Number of events to trim off start and end\
+                      \ (default:\n(50, 10))"
                     args: !SimpleFlagArg
                       name: beginning
-                    optional: true
                   - !Flag
-                    description: 'Section to call (default: template)'
+                    optional: true
                     synonyms:
                     - --section
+                    description: 'Section to call (default: template)'
                     args: !ChoiceFlagArg
                       choices: !!set
                         ? complement
                         ? template
-                    optional: true
                   - !Flag
-                    description: 'File output compiled model (default: None)'
+                    optional: true
                     synonyms:
                     - --compile
+                    description: 'File output compiled model (default: None)'
                     args: !SimpleFlagArg
                       name: COMPILE
-                    optional: true
                   - !Flag
-                    description: "Minimum allowed probabiility for basecalls (default:\n\
-                      1e-05)"
+                    optional: true
                     synonyms:
                     - --min_prob
+                    description: "Minimum allowed probabiility for basecalls (default:\n\
+                      1e-05)"
                     args: !SimpleFlagArg
                       name: proportion
-                    optional: true
                   - !Flag
-                    description: "Strand summary output file (default:\nstrand_output_list.txt)"
+                    optional: true
                     synonyms:
                     - --output_strand_list
+                    description: "Strand summary output file (default:\nstrand_output_list.txt)"
                     args: !SimpleFlagArg
                       name: OUTPUT_STRAND_LIST
-                    optional: true
                   - !Flag
-                    description: "end     Mean of start and end positions (default:\
-                      \ (25.0,\n25.0))"
+                    optional: true
                     synonyms:
                     - --prior
+                    description: "end     Mean of start and end positions (default:\
+                      \ (25.0,\n25.0))"
                     args: !SimpleFlagArg
                       name: start
-                    optional: true
                   - !Flag
-                    description: 'Slip penalty (default: 5.0)'
+                    optional: true
                     synonyms:
                     - --slip
+                    description: 'Slip penalty (default: 5.0)'
                     args: !SimpleFlagArg
                       name: SLIP
-                    optional: true
                   - !Flag
-                    description: "Location of segmentation information (default:\n\
-                      Segmentation)\n"
+                    optional: true
                     synonyms:
                     - --segmentation
+                    description: "Location of segmentation information (default:\n\
+                      Segmentation)\n"
                     args: !SimpleFlagArg
                       name: location
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: chunkify.py remap [-h] [--alphabet ALPHABET]\n\
@@ -1173,133 +1915,132 @@ subcommands:
                     \        Location of segmentation information (default:\n    \
                     \                    Segmentation)\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - chunkify.py
-                  - raw_identity
+                  command: *id006
                   positional:
                   - !Positional
-                    description: Directory containing single-read fast5 files
+                    optional: false
                     position: 0
                     name: input_folder
-                    optional: false
+                    description: Directory containing single-read fast5 files
                   - !Positional
-                    description: Output HDF5 file
+                    optional: false
                     position: 1
                     name: output
-                    optional: false
+                    description: Output HDF5 file
                   named:
                   - !Flag
-                    description: "Alphabet of the sequences (default: b'ACGT')"
+                    optional: true
                     synonyms:
                     - --alphabet
+                    description: "Alphabet of the sequences (default: b'ACGT')"
                     args: !SimpleFlagArg
                       name: ALPHABET
-                    optional: true
                   - !Flag
-                    description: 'Strand summary file containing subset (default:
-                      None)'
+                    optional: true
                     synonyms:
                     - --input_strand_list
+                    description: 'Strand summary file containing subset (default:
+                      None)'
                     args: !SimpleFlagArg
                       name: INPUT_STRAND_LIST
-                    optional: true
                   - !Flag
-                    description: "Number of threads to use when processing data\n\
-                      (default: 1)"
+                    optional: true
                     synonyms:
                     - --jobs
+                    description: "Number of threads to use when processing data\n\
+                      (default: 1)"
                     args: !SimpleFlagArg
                       name: n
-                    optional: true
                   - !Flag
-                    description: 'Length of kmer to estimate (default: 5)'
+                    optional: true
                     synonyms:
                     - --kmer_len
+                    description: 'Length of kmer to estimate (default: 5)'
                     args: !SimpleFlagArg
                       name: k
-                    optional: true
                   - !Flag
-                    description: 'Limit number of reads to process (default: None)'
+                    optional: true
                     synonyms:
                     - --limit
+                    description: 'Limit number of reads to process (default: None)'
                     args: !SimpleFlagArg
                       name: LIMIT
-                    optional: true
                   - !Flag
-                    description: "Whether to overwrite any output files (Default:\
-                      \ --no-\noverwrite) (default: False)"
+                    optional: true
                     synonyms:
                     - --overwrite
                     - --no-overwrite
+                    description: "Whether to overwrite any output files (Default:\
+                      \ --no-\noverwrite) (default: False)"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: "Percentile above which to filter out chunks with\
-                      \ too\nmany blanks (default: 95)"
+                    optional: true
                     synonyms:
                     - --blanks_percentile
+                    description: "Percentile above which to filter out chunks with\
+                      \ too\nmany blanks (default: 95)"
                     args: !SimpleFlagArg
                       name: percentage
-                    optional: true
                   - !Flag
-                    description: 'Length of each read chunk (default: 2000)'
+                    optional: true
                     synonyms:
                     - --chunk_len
+                    description: 'Length of each read chunk (default: 2000)'
                     args: !SimpleFlagArg
                       name: samples
-                    optional: true
                   - !Flag
-                    description: "Whether to perform median-mad normalisation and\
-                      \ with\nwhat scope (default: per-read)"
+                    optional: true
                     synonyms:
                     - --normalisation
+                    description: "Whether to perform median-mad normalisation and\
+                      \ with\nwhat scope (default: per-read)"
                     args: !ChoiceFlagArg
                       choices: !!set
-                        ? per-read
-                        ? per-chunk
                         ? none
-                    optional: true
+                        ? per-chunk
+                        ? per-read
                   - !Flag
-                    description: "end  Number of samples to trim off start and end\
-                      \ (default:\n(200, 50))"
+                    optional: true
                     synonyms:
                     - --trim
+                    description: "end  Number of samples to trim off start and end\
+                      \ (default:\n(200, 50))"
                     args: !SimpleFlagArg
                       name: beginning
-                    optional: true
                   - !Flag
-                    description: 'Minimum samples in acceptable read (default: 2500)'
+                    optional: true
                     synonyms:
                     - --min_length
+                    description: 'Minimum samples in acceptable read (default: 2500)'
                     args: !SimpleFlagArg
                       name: samples
-                    optional: true
                   - !Flag
-                    description: 'Rate of label downsampling (default: 1)'
+                    optional: true
                     synonyms:
                     - --downsample_factor
+                    description: 'Rate of label downsampling (default: 1)'
                     args: !SimpleFlagArg
                       name: DOWNSAMPLE_FACTOR
-                    optional: true
                   - !Flag
-                    description: "Interpolate reference sequence positions between\n\
-                      mapped samples (Default: --no-interpolation) (default:\nFalse)\n"
+                    optional: true
                     synonyms:
                     - --interpolation
                     - --no-interpolation
+                    description: "Interpolate reference sequence positions between\n\
+                      mapped samples (Default: --no-interpolation) (default:\nFalse)\n"
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: chunkify.py raw_identity [-h] [--alphabet ALPHABET]\n\
@@ -1341,66 +2082,59 @@ subcommands:
                     \ (Default: --no-interpolation) (default:\n                  \
                     \      False)\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - chunkify.py
-                  - command
+                  command: *id007
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: chunkify.py
-                    optional: false
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: chunkify.py [-h] {identity,remap,raw_identity,raw_remap}\
                     \ ...\nchunkify.py: error: argument command: invalid choice: 'command'\
                     \ (choose from 'identity', 'remap', 'raw_identity', 'raw_remap')\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id008
-                  - chunkify.py
-                  - fly
+                  command: *id008
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: chunkify.py
-                    optional: false
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -h
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: chunkify.py [-h] {identity,remap,raw_identity,raw_remap}\
                     \ ...\nchunkify.py: error: argument command: invalid choice: 'fly'\
                     \ (choose from 'identity', 'remap', 'raw_identity', 'raw_remap')\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "usage: chunkify.py [-h] {identity,remap,raw_identity,raw_remap}\
@@ -1415,15 +2149,16 @@ subcommands:
                   \     fly\n\noptional arguments:\n  -h, --help            show this\
                   \ help message and exit\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: chunkify.py raw_remap [-h] [--alphabet ALPHABET]\n\
@@ -1479,185 +2214,186 @@ subcommands:
                 \  Max fraction of signal to trim due to open pore\n             \
                 \           (default: 0.0)\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
-                description: Directory containing single-read fast5 files
+                optional: false
                 position: 0
                 name: input_folder
-                optional: false
+                description: Directory containing single-read fast5 files
               - !Positional
-                description: Output HDF5 file
+                optional: false
                 position: 1
                 name: output
-                optional: false
+                description: Output HDF5 file
               - !Positional
-                description: Pickled model file
+                optional: false
                 position: 2
                 name: model
-                optional: false
+                description: Pickled model file
               - !Positional
-                description: Reference sequences in fasta format
+                optional: false
                 position: 3
                 name: references
-                optional: false
+                description: Reference sequences in fasta format
               named:
               - !Flag
-                description: "Alphabet of the sequences (default: b'ACGT')"
+                optional: true
                 synonyms:
                 - --alphabet
+                description: "Alphabet of the sequences (default: b'ACGT')"
                 args: !SimpleFlagArg
                   name: ALPHABET
-                optional: true
               - !Flag
-                description: 'Strand summary file containing subset (default: None)'
+                optional: true
                 synonyms:
                 - --input_strand_list
+                description: 'Strand summary file containing subset (default: None)'
                 args: !SimpleFlagArg
                   name: INPUT_STRAND_LIST
-                optional: true
               - !Flag
-                description: "Number of threads to use when processing data\n(default:\
-                  \ 1)"
+                optional: true
                 synonyms:
                 - --jobs
+                description: "Number of threads to use when processing data\n(default:\
+                  \ 1)"
                 args: !SimpleFlagArg
                   name: n
-                optional: true
               - !Flag
-                description: 'Length of kmer to estimate (default: 5)'
+                optional: true
                 synonyms:
                 - --kmer_len
+                description: 'Length of kmer to estimate (default: 5)'
                 args: !SimpleFlagArg
                   name: k
-                optional: true
               - !Flag
-                description: 'Limit number of reads to process (default: None)'
+                optional: true
                 synonyms:
                 - --limit
+                description: 'Limit number of reads to process (default: None)'
                 args: !SimpleFlagArg
                   name: LIMIT
-                optional: true
               - !Flag
-                description: "Whether to overwrite any output files (Default: --no-\n\
-                  overwrite) (default: False)"
+                optional: true
                 synonyms:
                 - --overwrite
                 - --no-overwrite
+                description: "Whether to overwrite any output files (Default: --no-\n\
+                  overwrite) (default: False)"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: 'Maximum proportion of blanks in labels (default: 0.7)'
+                optional: true
                 synonyms:
                 - --blanks
+                description: 'Maximum proportion of blanks in labels (default: 0.7)'
                 args: !SimpleFlagArg
                   name: proportion
-                optional: true
               - !Flag
-                description: 'Length of each read chunk (default: 500)'
+                optional: true
                 synonyms:
                 - --chunk_len
+                description: 'Length of each read chunk (default: 500)'
                 args: !SimpleFlagArg
                   name: events
-                optional: true
               - !Flag
-                description: "Whether to perform studentisation and with what scope\n\
-                  (default: per-read)"
+                optional: true
                 synonyms:
                 - --normalisation
+                description: "Whether to perform studentisation and with what scope\n\
+                  (default: per-read)"
                 args: !ChoiceFlagArg
                   choices: !!set
-                    ? none
                     ? per-chunk
                     ? per-read
-                optional: true
+                    ? none
               - !Flag
-                description: 'Minimum events in acceptable read (default: 1200)'
+                optional: true
                 synonyms:
                 - --min_length
+                description: 'Minimum events in acceptable read (default: 1200)'
                 args: !SimpleFlagArg
                   name: events
-                optional: true
               - !Flag
-                description: "Train from scaled event statistics (Default: --no-\n\
-                  use_scaled) (default: False)"
+                optional: true
                 synonyms:
                 - --use_scaled
                 - --no-use_scaled
+                description: "Train from scaled event statistics (Default: --no-\n\
+                  use_scaled) (default: False)"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "end  Number of events to trim off start and end (default:\n\
-                  (50, 10))"
+                optional: true
                 synonyms:
                 - --trim
+                description: "end  Number of events to trim off start and end (default:\n\
+                  (50, 10))"
                 args: !SimpleFlagArg
                   name: beginning
-                optional: true
               - !Flag
-                description: 'Section to call (default: template)'
+                optional: true
                 synonyms:
                 - --section
+                description: 'Section to call (default: template)'
                 args: !ChoiceFlagArg
                   choices: !!set
                     ? complement
                     ? template
-                optional: true
               - !Flag
-                description: 'File output compiled model (default: None)'
+                optional: true
                 synonyms:
                 - --compile
+                description: 'File output compiled model (default: None)'
                 args: !SimpleFlagArg
                   name: COMPILE
-                optional: true
               - !Flag
-                description: "Minimum allowed probabiility for basecalls (default:\n\
-                  1e-05)"
+                optional: true
                 synonyms:
                 - --min_prob
+                description: "Minimum allowed probabiility for basecalls (default:\n\
+                  1e-05)"
                 args: !SimpleFlagArg
                   name: proportion
-                optional: true
               - !Flag
-                description: "Strand summary output file (default:\nstrand_output_list.txt)"
+                optional: true
                 synonyms:
                 - --output_strand_list
+                description: "Strand summary output file (default:\nstrand_output_list.txt)"
                 args: !SimpleFlagArg
                   name: OUTPUT_STRAND_LIST
-                optional: true
               - !Flag
-                description: "end     Mean of start and end positions (default: (25.0,\n\
-                  25.0))"
+                optional: true
                 synonyms:
                 - --prior
+                description: "end     Mean of start and end positions (default: (25.0,\n\
+                  25.0))"
                 args: !SimpleFlagArg
                   name: start
-                optional: true
               - !Flag
-                description: 'Slip penalty (default: 5.0)'
+                optional: true
                 synonyms:
                 - --slip
+                description: 'Slip penalty (default: 5.0)'
                 args: !SimpleFlagArg
                   name: SLIP
-                optional: true
               - !Flag
-                description: "Location of segmentation information (default:\nSegmentation)\n"
+                optional: true
                 synonyms:
                 - --segmentation
+                description: "Location of segmentation information (default:\nSegmentation)\n"
                 args: !SimpleFlagArg
                   name: location
-                optional: true
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: chunkify.py remap [-h] [--alphabet ALPHABET]\n  \
@@ -1708,130 +2444,131 @@ subcommands:
                 \ 5.0)\n  --segmentation location\n                        Location\
                 \ of segmentation information (default:\n                        Segmentation)\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: Directory containing single-read fast5 files
+                optional: false
                 position: 0
                 name: input_folder
-                optional: false
+                description: Directory containing single-read fast5 files
               - !Positional
-                description: Output HDF5 file
+                optional: false
                 position: 1
                 name: output
-                optional: false
+                description: Output HDF5 file
               named:
               - !Flag
-                description: "Alphabet of the sequences (default: b'ACGT')"
+                optional: true
                 synonyms:
                 - --alphabet
+                description: "Alphabet of the sequences (default: b'ACGT')"
                 args: !SimpleFlagArg
                   name: ALPHABET
-                optional: true
               - !Flag
-                description: 'Strand summary file containing subset (default: None)'
+                optional: true
                 synonyms:
                 - --input_strand_list
+                description: 'Strand summary file containing subset (default: None)'
                 args: !SimpleFlagArg
                   name: INPUT_STRAND_LIST
-                optional: true
               - !Flag
-                description: "Number of threads to use when processing data\n(default:\
-                  \ 1)"
+                optional: true
                 synonyms:
                 - --jobs
+                description: "Number of threads to use when processing data\n(default:\
+                  \ 1)"
                 args: !SimpleFlagArg
                   name: n
-                optional: true
               - !Flag
-                description: 'Length of kmer to estimate (default: 5)'
+                optional: true
                 synonyms:
                 - --kmer_len
+                description: 'Length of kmer to estimate (default: 5)'
                 args: !SimpleFlagArg
                   name: k
-                optional: true
               - !Flag
-                description: 'Limit number of reads to process (default: None)'
+                optional: true
                 synonyms:
                 - --limit
+                description: 'Limit number of reads to process (default: None)'
                 args: !SimpleFlagArg
                   name: LIMIT
-                optional: true
               - !Flag
-                description: "Whether to overwrite any output files (Default: --no-\n\
-                  overwrite) (default: False)"
+                optional: true
                 synonyms:
                 - --overwrite
                 - --no-overwrite
+                description: "Whether to overwrite any output files (Default: --no-\n\
+                  overwrite) (default: False)"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: "Percentile above which to filter out chunks with too\n\
-                  many blanks (default: 95)"
+                optional: true
                 synonyms:
                 - --blanks_percentile
+                description: "Percentile above which to filter out chunks with too\n\
+                  many blanks (default: 95)"
                 args: !SimpleFlagArg
                   name: percentage
-                optional: true
               - !Flag
-                description: 'Length of each read chunk (default: 2000)'
+                optional: true
                 synonyms:
                 - --chunk_len
+                description: 'Length of each read chunk (default: 2000)'
                 args: !SimpleFlagArg
                   name: samples
-                optional: true
               - !Flag
-                description: "Whether to perform median-mad normalisation and with\n\
-                  what scope (default: per-read)"
+                optional: true
                 synonyms:
                 - --normalisation
+                description: "Whether to perform median-mad normalisation and with\n\
+                  what scope (default: per-read)"
                 args: !ChoiceFlagArg
                   choices: !!set
-                    ? none
                     ? per-chunk
                     ? per-read
-                optional: true
+                    ? none
               - !Flag
-                description: "end  Number of samples to trim off start and end (default:\n\
-                  (200, 50))"
+                optional: true
                 synonyms:
                 - --trim
+                description: "end  Number of samples to trim off start and end (default:\n\
+                  (200, 50))"
                 args: !SimpleFlagArg
                   name: beginning
-                optional: true
               - !Flag
-                description: 'Minimum samples in acceptable read (default: 2500)'
+                optional: true
                 synonyms:
                 - --min_length
+                description: 'Minimum samples in acceptable read (default: 2500)'
                 args: !SimpleFlagArg
                   name: samples
-                optional: true
               - !Flag
-                description: 'Rate of label downsampling (default: 1)'
+                optional: true
                 synonyms:
                 - --downsample_factor
+                description: 'Rate of label downsampling (default: 1)'
                 args: !SimpleFlagArg
                   name: DOWNSAMPLE_FACTOR
-                optional: true
               - !Flag
-                description: "Interpolate reference sequence positions between\nmapped\
-                  \ samples (Default: --no-interpolation) (default:\nFalse)\n"
+                optional: true
                 synonyms:
                 - --interpolation
                 - --no-interpolation
+                description: "Interpolate reference sequence positions between\nmapped\
+                  \ samples (Default: --no-interpolation) (default:\nFalse)\n"
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: chunkify.py raw_identity [-h] [--alphabet ALPHABET]\n\
@@ -1871,54 +2608,57 @@ subcommands:
                 \ (Default: --no-interpolation) (default:\n                      \
                 \  False)\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: chunkify.py
-                optional: false
+                description: ''
               named: []
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: chunkify.py [-h] {identity,remap,raw_identity,raw_remap}\
                 \ ...\nchunkify.py: error: argument command: invalid choice: 'command'\
                 \ (choose from 'identity', 'remap', 'raw_identity', 'raw_remap')\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id008
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: chunkify.py
-                optional: false
+                description: ''
               named: []
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -h
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: chunkify.py [-h] {identity,remap,raw_identity,raw_remap}\
                 \ ...\nchunkify.py: error: argument command: invalid choice: 'fly'\
                 \ (choose from 'identity', 'remap', 'raw_identity', 'raw_remap')\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -1934,15 +2674,16 @@ subcommands:
               \ on the\n                        fly\n\noptional arguments:\n  -h,\
               \ --help            show this help message and exit\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: chunkify.py raw_remap [-h] [--alphabet ALPHABET]\n  \
@@ -1996,184 +2737,185 @@ subcommands:
             \ fraction of signal to trim due to open pore\n                      \
             \  (default: 0.0)\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: Directory containing single-read fast5 files
+            optional: false
             position: 0
             name: input_folder
-            optional: false
+            description: Directory containing single-read fast5 files
           - !Positional
-            description: Output HDF5 file
+            optional: false
             position: 1
             name: output
-            optional: false
+            description: Output HDF5 file
           - !Positional
-            description: Pickled model file
+            optional: false
             position: 2
             name: model
-            optional: false
+            description: Pickled model file
           - !Positional
-            description: Reference sequences in fasta format
+            optional: false
             position: 3
             name: references
-            optional: false
+            description: Reference sequences in fasta format
           named:
           - !Flag
-            description: "Alphabet of the sequences (default: b'ACGT')"
+            optional: true
             synonyms:
             - --alphabet
+            description: "Alphabet of the sequences (default: b'ACGT')"
             args: !SimpleFlagArg
               name: ALPHABET
-            optional: true
           - !Flag
-            description: 'Strand summary file containing subset (default: None)'
+            optional: true
             synonyms:
             - --input_strand_list
+            description: 'Strand summary file containing subset (default: None)'
             args: !SimpleFlagArg
               name: INPUT_STRAND_LIST
-            optional: true
           - !Flag
-            description: "Number of threads to use when processing data\n(default:\
-              \ 1)"
+            optional: true
             synonyms:
             - --jobs
+            description: "Number of threads to use when processing data\n(default:\
+              \ 1)"
             args: !SimpleFlagArg
               name: n
-            optional: true
           - !Flag
-            description: 'Length of kmer to estimate (default: 5)'
+            optional: true
             synonyms:
             - --kmer_len
+            description: 'Length of kmer to estimate (default: 5)'
             args: !SimpleFlagArg
               name: k
-            optional: true
           - !Flag
-            description: 'Limit number of reads to process (default: None)'
+            optional: true
             synonyms:
             - --limit
+            description: 'Limit number of reads to process (default: None)'
             args: !SimpleFlagArg
               name: LIMIT
-            optional: true
           - !Flag
-            description: "Whether to overwrite any output files (Default: --no-\n\
-              overwrite) (default: False)"
+            optional: true
             synonyms:
             - --overwrite
             - --no-overwrite
+            description: "Whether to overwrite any output files (Default: --no-\n\
+              overwrite) (default: False)"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: 'Maximum proportion of blanks in labels (default: 0.7)'
+            optional: true
             synonyms:
             - --blanks
+            description: 'Maximum proportion of blanks in labels (default: 0.7)'
             args: !SimpleFlagArg
               name: proportion
-            optional: true
           - !Flag
-            description: 'Length of each read chunk (default: 500)'
+            optional: true
             synonyms:
             - --chunk_len
+            description: 'Length of each read chunk (default: 500)'
             args: !SimpleFlagArg
               name: events
-            optional: true
           - !Flag
-            description: "Whether to perform studentisation and with what scope\n\
-              (default: per-read)"
+            optional: true
             synonyms:
             - --normalisation
+            description: "Whether to perform studentisation and with what scope\n\
+              (default: per-read)"
             args: !ChoiceFlagArg
               choices: !!set
                 ? per-chunk
                 ? per-read
                 ? none
-            optional: true
           - !Flag
-            description: 'Minimum events in acceptable read (default: 1200)'
+            optional: true
             synonyms:
             - --min_length
+            description: 'Minimum events in acceptable read (default: 1200)'
             args: !SimpleFlagArg
               name: events
-            optional: true
           - !Flag
-            description: "Train from scaled event statistics (Default: --no-\nuse_scaled)\
-              \ (default: False)"
+            optional: true
             synonyms:
             - --use_scaled
             - --no-use_scaled
+            description: "Train from scaled event statistics (Default: --no-\nuse_scaled)\
+              \ (default: False)"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "end  Number of events to trim off start and end (default:\n\
-              (50, 10))"
+            optional: true
             synonyms:
             - --trim
+            description: "end  Number of events to trim off start and end (default:\n\
+              (50, 10))"
             args: !SimpleFlagArg
               name: beginning
-            optional: true
           - !Flag
-            description: 'Section to call (default: template)'
+            optional: true
             synonyms:
             - --section
+            description: 'Section to call (default: template)'
             args: !ChoiceFlagArg
               choices: !!set
                 ? complement
                 ? template
-            optional: true
           - !Flag
-            description: 'File output compiled model (default: None)'
+            optional: true
             synonyms:
             - --compile
+            description: 'File output compiled model (default: None)'
             args: !SimpleFlagArg
               name: COMPILE
-            optional: true
           - !Flag
-            description: "Minimum allowed probabiility for basecalls (default:\n1e-05)"
+            optional: true
             synonyms:
             - --min_prob
+            description: "Minimum allowed probabiility for basecalls (default:\n1e-05)"
             args: !SimpleFlagArg
               name: proportion
-            optional: true
           - !Flag
-            description: "Strand summary output file (default:\nstrand_output_list.txt)"
+            optional: true
             synonyms:
             - --output_strand_list
+            description: "Strand summary output file (default:\nstrand_output_list.txt)"
             args: !SimpleFlagArg
               name: OUTPUT_STRAND_LIST
-            optional: true
           - !Flag
-            description: "end     Mean of start and end positions (default: (25.0,\n\
-              25.0))"
+            optional: true
             synonyms:
             - --prior
+            description: "end     Mean of start and end positions (default: (25.0,\n\
+              25.0))"
             args: !SimpleFlagArg
               name: start
-            optional: true
           - !Flag
-            description: 'Slip penalty (default: 5.0)'
+            optional: true
             synonyms:
             - --slip
+            description: 'Slip penalty (default: 5.0)'
             args: !SimpleFlagArg
               name: SLIP
-            optional: true
           - !Flag
-            description: "Location of segmentation information (default:\nSegmentation)\n"
+            optional: true
             synonyms:
             - --segmentation
+            description: "Location of segmentation information (default:\nSegmentation)\n"
             args: !SimpleFlagArg
               name: location
-            optional: true
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: chunkify.py remap [-h] [--alphabet ALPHABET]\n      \
@@ -2222,130 +2964,131 @@ subcommands:
             \ location\n                        Location of segmentation information\
             \ (default:\n                        Segmentation)\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: Directory containing single-read fast5 files
+            optional: false
             position: 0
             name: input_folder
-            optional: false
+            description: Directory containing single-read fast5 files
           - !Positional
-            description: Output HDF5 file
+            optional: false
             position: 1
             name: output
-            optional: false
+            description: Output HDF5 file
           named:
           - !Flag
-            description: "Alphabet of the sequences (default: b'ACGT')"
+            optional: true
             synonyms:
             - --alphabet
+            description: "Alphabet of the sequences (default: b'ACGT')"
             args: !SimpleFlagArg
               name: ALPHABET
-            optional: true
           - !Flag
-            description: 'Strand summary file containing subset (default: None)'
+            optional: true
             synonyms:
             - --input_strand_list
+            description: 'Strand summary file containing subset (default: None)'
             args: !SimpleFlagArg
               name: INPUT_STRAND_LIST
-            optional: true
           - !Flag
-            description: "Number of threads to use when processing data\n(default:\
-              \ 1)"
+            optional: true
             synonyms:
             - --jobs
+            description: "Number of threads to use when processing data\n(default:\
+              \ 1)"
             args: !SimpleFlagArg
               name: n
-            optional: true
           - !Flag
-            description: 'Length of kmer to estimate (default: 5)'
+            optional: true
             synonyms:
             - --kmer_len
+            description: 'Length of kmer to estimate (default: 5)'
             args: !SimpleFlagArg
               name: k
-            optional: true
           - !Flag
-            description: 'Limit number of reads to process (default: None)'
+            optional: true
             synonyms:
             - --limit
+            description: 'Limit number of reads to process (default: None)'
             args: !SimpleFlagArg
               name: LIMIT
-            optional: true
           - !Flag
-            description: "Whether to overwrite any output files (Default: --no-\n\
-              overwrite) (default: False)"
+            optional: true
             synonyms:
             - --overwrite
             - --no-overwrite
+            description: "Whether to overwrite any output files (Default: --no-\n\
+              overwrite) (default: False)"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: "Percentile above which to filter out chunks with too\nmany\
-              \ blanks (default: 95)"
+            optional: true
             synonyms:
             - --blanks_percentile
+            description: "Percentile above which to filter out chunks with too\nmany\
+              \ blanks (default: 95)"
             args: !SimpleFlagArg
               name: percentage
-            optional: true
           - !Flag
-            description: 'Length of each read chunk (default: 2000)'
+            optional: true
             synonyms:
             - --chunk_len
+            description: 'Length of each read chunk (default: 2000)'
             args: !SimpleFlagArg
               name: samples
-            optional: true
           - !Flag
-            description: "Whether to perform median-mad normalisation and with\nwhat\
-              \ scope (default: per-read)"
+            optional: true
             synonyms:
             - --normalisation
+            description: "Whether to perform median-mad normalisation and with\nwhat\
+              \ scope (default: per-read)"
             args: !ChoiceFlagArg
               choices: !!set
                 ? per-chunk
                 ? per-read
                 ? none
-            optional: true
           - !Flag
-            description: "end  Number of samples to trim off start and end (default:\n\
-              (200, 50))"
+            optional: true
             synonyms:
             - --trim
+            description: "end  Number of samples to trim off start and end (default:\n\
+              (200, 50))"
             args: !SimpleFlagArg
               name: beginning
-            optional: true
           - !Flag
-            description: 'Minimum samples in acceptable read (default: 2500)'
+            optional: true
             synonyms:
             - --min_length
+            description: 'Minimum samples in acceptable read (default: 2500)'
             args: !SimpleFlagArg
               name: samples
-            optional: true
           - !Flag
-            description: 'Rate of label downsampling (default: 1)'
+            optional: true
             synonyms:
             - --downsample_factor
+            description: 'Rate of label downsampling (default: 1)'
             args: !SimpleFlagArg
               name: DOWNSAMPLE_FACTOR
-            optional: true
           - !Flag
-            description: "Interpolate reference sequence positions between\nmapped\
-              \ samples (Default: --no-interpolation) (default:\nFalse)\n"
+            optional: true
             synonyms:
             - --interpolation
             - --no-interpolation
+            description: "Interpolate reference sequence positions between\nmapped\
+              \ samples (Default: --no-interpolation) (default:\nFalse)\n"
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: chunkify.py raw_identity [-h] [--alphabet ALPHABET]\n\
@@ -2383,54 +3126,57 @@ subcommands:
             \ positions between\n                        mapped samples (Default:\
             \ --no-interpolation) (default:\n                        False)\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: chunkify.py
-            optional: false
+            description: ''
           named: []
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: chunkify.py [-h] {identity,remap,raw_identity,raw_remap}\
             \ ...\nchunkify.py: error: argument command: invalid choice: 'command'\
             \ (choose from 'identity', 'remap', 'raw_identity', 'raw_remap')\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id008
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: chunkify.py
-            optional: false
+            description: ''
           named: []
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ''
+            optional: true
             synonyms:
             - -h
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: chunkify.py [-h] {identity,remap,raw_identity,raw_remap}\
             \ ...\nchunkify.py: error: argument command: invalid choice: 'fly' (choose\
             \ from 'identity', 'remap', 'raw_identity', 'raw_remap')\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -2446,15 +3192,16 @@ subcommands:
           \                fly\n\noptional arguments:\n  -h, --help            show\
           \ this help message and exit\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: chunkify.py raw_remap [-h] [--alphabet ALPHABET]\n      \
@@ -2504,182 +3251,183 @@ subcommands:
         \ 5.0)\n  --open_pore_fraction proportion\n                        Max fraction\
         \ of signal to trim due to open pore\n                        (default: 0.0)\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: Directory containing single-read fast5 files
+        optional: false
         position: 0
         name: input_folder
-        optional: false
+        description: Directory containing single-read fast5 files
       - !Positional
-        description: Output HDF5 file
+        optional: false
         position: 1
         name: output
-        optional: false
+        description: Output HDF5 file
       - !Positional
-        description: Pickled model file
+        optional: false
         position: 2
         name: model
-        optional: false
+        description: Pickled model file
       - !Positional
-        description: Reference sequences in fasta format
+        optional: false
         position: 3
         name: references
-        optional: false
+        description: Reference sequences in fasta format
       named:
       - !Flag
-        description: "Alphabet of the sequences (default: b'ACGT')"
+        optional: true
         synonyms:
         - --alphabet
+        description: "Alphabet of the sequences (default: b'ACGT')"
         args: !SimpleFlagArg
           name: ALPHABET
-        optional: true
       - !Flag
-        description: 'Strand summary file containing subset (default: None)'
+        optional: true
         synonyms:
         - --input_strand_list
+        description: 'Strand summary file containing subset (default: None)'
         args: !SimpleFlagArg
           name: INPUT_STRAND_LIST
-        optional: true
       - !Flag
-        description: "Number of threads to use when processing data\n(default: 1)"
+        optional: true
         synonyms:
         - --jobs
+        description: "Number of threads to use when processing data\n(default: 1)"
         args: !SimpleFlagArg
           name: n
-        optional: true
       - !Flag
-        description: 'Length of kmer to estimate (default: 5)'
+        optional: true
         synonyms:
         - --kmer_len
+        description: 'Length of kmer to estimate (default: 5)'
         args: !SimpleFlagArg
           name: k
-        optional: true
       - !Flag
-        description: 'Limit number of reads to process (default: None)'
+        optional: true
         synonyms:
         - --limit
+        description: 'Limit number of reads to process (default: None)'
         args: !SimpleFlagArg
           name: LIMIT
-        optional: true
       - !Flag
-        description: "Whether to overwrite any output files (Default: --no-\noverwrite)\
-          \ (default: False)"
+        optional: true
         synonyms:
         - --overwrite
         - --no-overwrite
+        description: "Whether to overwrite any output files (Default: --no-\noverwrite)\
+          \ (default: False)"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: 'Maximum proportion of blanks in labels (default: 0.7)'
+        optional: true
         synonyms:
         - --blanks
+        description: 'Maximum proportion of blanks in labels (default: 0.7)'
         args: !SimpleFlagArg
           name: proportion
-        optional: true
       - !Flag
-        description: 'Length of each read chunk (default: 500)'
+        optional: true
         synonyms:
         - --chunk_len
+        description: 'Length of each read chunk (default: 500)'
         args: !SimpleFlagArg
           name: events
-        optional: true
       - !Flag
-        description: "Whether to perform studentisation and with what scope\n(default:\
-          \ per-read)"
+        optional: true
         synonyms:
         - --normalisation
+        description: "Whether to perform studentisation and with what scope\n(default:\
+          \ per-read)"
         args: !ChoiceFlagArg
           choices: !!set
-            ? per-chunk
-            ? per-read
             ? none
-        optional: true
+            ? per-read
+            ? per-chunk
       - !Flag
-        description: 'Minimum events in acceptable read (default: 1200)'
+        optional: true
         synonyms:
         - --min_length
+        description: 'Minimum events in acceptable read (default: 1200)'
         args: !SimpleFlagArg
           name: events
-        optional: true
       - !Flag
-        description: "Train from scaled event statistics (Default: --no-\nuse_scaled)\
-          \ (default: False)"
+        optional: true
         synonyms:
         - --use_scaled
         - --no-use_scaled
+        description: "Train from scaled event statistics (Default: --no-\nuse_scaled)\
+          \ (default: False)"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "end  Number of events to trim off start and end (default:\n\
-          (50, 10))"
+        optional: true
         synonyms:
         - --trim
+        description: "end  Number of events to trim off start and end (default:\n\
+          (50, 10))"
         args: !SimpleFlagArg
           name: beginning
-        optional: true
       - !Flag
-        description: 'Section to call (default: template)'
+        optional: true
         synonyms:
         - --section
+        description: 'Section to call (default: template)'
         args: !ChoiceFlagArg
           choices: !!set
             ? complement
             ? template
-        optional: true
       - !Flag
-        description: 'File output compiled model (default: None)'
+        optional: true
         synonyms:
         - --compile
+        description: 'File output compiled model (default: None)'
         args: !SimpleFlagArg
           name: COMPILE
-        optional: true
       - !Flag
-        description: "Minimum allowed probabiility for basecalls (default:\n1e-05)"
+        optional: true
         synonyms:
         - --min_prob
+        description: "Minimum allowed probabiility for basecalls (default:\n1e-05)"
         args: !SimpleFlagArg
           name: proportion
-        optional: true
       - !Flag
-        description: "Strand summary output file (default:\nstrand_output_list.txt)"
+        optional: true
         synonyms:
         - --output_strand_list
+        description: "Strand summary output file (default:\nstrand_output_list.txt)"
         args: !SimpleFlagArg
           name: OUTPUT_STRAND_LIST
-        optional: true
       - !Flag
-        description: "end     Mean of start and end positions (default: (25.0,\n25.0))"
+        optional: true
         synonyms:
         - --prior
+        description: "end     Mean of start and end positions (default: (25.0,\n25.0))"
         args: !SimpleFlagArg
           name: start
-        optional: true
       - !Flag
-        description: 'Slip penalty (default: 5.0)'
+        optional: true
         synonyms:
         - --slip
+        description: 'Slip penalty (default: 5.0)'
         args: !SimpleFlagArg
           name: SLIP
-        optional: true
       - !Flag
-        description: "Location of segmentation information (default:\nSegmentation)\n"
+        optional: true
         synonyms:
         - --segmentation
+        description: "Location of segmentation information (default:\nSegmentation)\n"
         args: !SimpleFlagArg
           name: location
-        optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: chunkify.py remap [-h] [--alphabet ALPHABET]\n          \
@@ -2726,129 +3474,130 @@ subcommands:
         \                        Location of segmentation information (default:\n\
         \                        Segmentation)\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: Directory containing single-read fast5 files
+        optional: false
         position: 0
         name: input_folder
-        optional: false
+        description: Directory containing single-read fast5 files
       - !Positional
-        description: Output HDF5 file
+        optional: false
         position: 1
         name: output
-        optional: false
+        description: Output HDF5 file
       named:
       - !Flag
-        description: "Alphabet of the sequences (default: b'ACGT')"
+        optional: true
         synonyms:
         - --alphabet
+        description: "Alphabet of the sequences (default: b'ACGT')"
         args: !SimpleFlagArg
           name: ALPHABET
-        optional: true
       - !Flag
-        description: 'Strand summary file containing subset (default: None)'
+        optional: true
         synonyms:
         - --input_strand_list
+        description: 'Strand summary file containing subset (default: None)'
         args: !SimpleFlagArg
           name: INPUT_STRAND_LIST
-        optional: true
       - !Flag
-        description: "Number of threads to use when processing data\n(default: 1)"
+        optional: true
         synonyms:
         - --jobs
+        description: "Number of threads to use when processing data\n(default: 1)"
         args: !SimpleFlagArg
           name: n
-        optional: true
       - !Flag
-        description: 'Length of kmer to estimate (default: 5)'
+        optional: true
         synonyms:
         - --kmer_len
+        description: 'Length of kmer to estimate (default: 5)'
         args: !SimpleFlagArg
           name: k
-        optional: true
       - !Flag
-        description: 'Limit number of reads to process (default: None)'
+        optional: true
         synonyms:
         - --limit
+        description: 'Limit number of reads to process (default: None)'
         args: !SimpleFlagArg
           name: LIMIT
-        optional: true
       - !Flag
-        description: "Whether to overwrite any output files (Default: --no-\noverwrite)\
-          \ (default: False)"
+        optional: true
         synonyms:
         - --overwrite
         - --no-overwrite
+        description: "Whether to overwrite any output files (Default: --no-\noverwrite)\
+          \ (default: False)"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: "Percentile above which to filter out chunks with too\nmany blanks\
-          \ (default: 95)"
+        optional: true
         synonyms:
         - --blanks_percentile
+        description: "Percentile above which to filter out chunks with too\nmany blanks\
+          \ (default: 95)"
         args: !SimpleFlagArg
           name: percentage
-        optional: true
       - !Flag
-        description: 'Length of each read chunk (default: 2000)'
+        optional: true
         synonyms:
         - --chunk_len
+        description: 'Length of each read chunk (default: 2000)'
         args: !SimpleFlagArg
           name: samples
-        optional: true
       - !Flag
-        description: "Whether to perform median-mad normalisation and with\nwhat scope\
-          \ (default: per-read)"
+        optional: true
         synonyms:
         - --normalisation
+        description: "Whether to perform median-mad normalisation and with\nwhat scope\
+          \ (default: per-read)"
         args: !ChoiceFlagArg
           choices: !!set
-            ? per-chunk
-            ? per-read
             ? none
-        optional: true
+            ? per-read
+            ? per-chunk
       - !Flag
-        description: "end  Number of samples to trim off start and end (default:\n\
-          (200, 50))"
+        optional: true
         synonyms:
         - --trim
+        description: "end  Number of samples to trim off start and end (default:\n\
+          (200, 50))"
         args: !SimpleFlagArg
           name: beginning
-        optional: true
       - !Flag
-        description: 'Minimum samples in acceptable read (default: 2500)'
+        optional: true
         synonyms:
         - --min_length
+        description: 'Minimum samples in acceptable read (default: 2500)'
         args: !SimpleFlagArg
           name: samples
-        optional: true
       - !Flag
-        description: 'Rate of label downsampling (default: 1)'
+        optional: true
         synonyms:
         - --downsample_factor
+        description: 'Rate of label downsampling (default: 1)'
         args: !SimpleFlagArg
           name: DOWNSAMPLE_FACTOR
-        optional: true
       - !Flag
-        description: "Interpolate reference sequence positions between\nmapped samples\
-          \ (Default: --no-interpolation) (default:\nFalse)\n"
+        optional: true
         synonyms:
         - --interpolation
         - --no-interpolation
+        description: "Interpolate reference sequence positions between\nmapped samples\
+          \ (Default: --no-interpolation) (default:\nFalse)\n"
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: chunkify.py raw_identity [-h] [--alphabet ALPHABET]\n   \
@@ -2885,54 +3634,57 @@ subcommands:
         \ positions between\n                        mapped samples (Default: --no-interpolation)\
         \ (default:\n                        False)\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: chunkify.py
-        optional: false
+        description: ''
       named: []
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: chunkify.py [-h] {identity,remap,raw_identity,raw_remap}\
         \ ...\nchunkify.py: error: argument command: invalid choice: 'command' (choose\
         \ from 'identity', 'remap', 'raw_identity', 'raw_remap')\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id008
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: chunkify.py
-        optional: false
+        description: ''
       named: []
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        optional: true
         synonyms:
         - -h
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: chunkify.py [-h] {identity,remap,raw_identity,raw_remap}\
         \ ...\nchunkify.py: error: argument command: invalid choice: 'fly' (choose\
         \ from 'identity', 'remap', 'raw_identity', 'raw_remap')\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -2947,15 +3699,16 @@ subcommands:
       \ remapping reads on the\n                        fly\n\noptional arguments:\n\
       \  -h, --help            show this help message and exit\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: chunkify.py raw_remap [-h] [--alphabet ALPHABET]\n          \
@@ -3002,182 +3755,183 @@ subcommands:
     \ 5.0)\n  --open_pore_fraction proportion\n                        Max fraction\
     \ of signal to trim due to open pore\n                        (default: 0.0)\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: Directory containing single-read fast5 files
+    optional: false
     position: 0
     name: input_folder
-    optional: false
+    description: Directory containing single-read fast5 files
   - !Positional
-    description: Output HDF5 file
+    optional: false
     position: 1
     name: output
-    optional: false
+    description: Output HDF5 file
   - !Positional
-    description: Pickled model file
+    optional: false
     position: 2
     name: model
-    optional: false
+    description: Pickled model file
   - !Positional
-    description: Reference sequences in fasta format
+    optional: false
     position: 3
     name: references
-    optional: false
+    description: Reference sequences in fasta format
   named:
   - !Flag
-    description: "Alphabet of the sequences (default: b'ACGT')"
+    optional: true
     synonyms:
     - --alphabet
+    description: "Alphabet of the sequences (default: b'ACGT')"
     args: !SimpleFlagArg
       name: ALPHABET
-    optional: true
   - !Flag
-    description: 'Strand summary file containing subset (default: None)'
+    optional: true
     synonyms:
     - --input_strand_list
+    description: 'Strand summary file containing subset (default: None)'
     args: !SimpleFlagArg
       name: INPUT_STRAND_LIST
-    optional: true
   - !Flag
-    description: "Number of threads to use when processing data\n(default: 1)"
+    optional: true
     synonyms:
     - --jobs
+    description: "Number of threads to use when processing data\n(default: 1)"
     args: !SimpleFlagArg
       name: n
-    optional: true
   - !Flag
-    description: 'Length of kmer to estimate (default: 5)'
+    optional: true
     synonyms:
     - --kmer_len
+    description: 'Length of kmer to estimate (default: 5)'
     args: !SimpleFlagArg
       name: k
-    optional: true
   - !Flag
-    description: 'Limit number of reads to process (default: None)'
+    optional: true
     synonyms:
     - --limit
+    description: 'Limit number of reads to process (default: None)'
     args: !SimpleFlagArg
       name: LIMIT
-    optional: true
   - !Flag
-    description: "Whether to overwrite any output files (Default: --no-\noverwrite)\
-      \ (default: False)"
+    optional: true
     synonyms:
     - --overwrite
     - --no-overwrite
+    description: "Whether to overwrite any output files (Default: --no-\noverwrite)\
+      \ (default: False)"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: 'Maximum proportion of blanks in labels (default: 0.7)'
+    optional: true
     synonyms:
     - --blanks
+    description: 'Maximum proportion of blanks in labels (default: 0.7)'
     args: !SimpleFlagArg
       name: proportion
-    optional: true
   - !Flag
-    description: 'Length of each read chunk (default: 500)'
+    optional: true
     synonyms:
     - --chunk_len
+    description: 'Length of each read chunk (default: 500)'
     args: !SimpleFlagArg
       name: events
-    optional: true
   - !Flag
-    description: "Whether to perform studentisation and with what scope\n(default:\
-      \ per-read)"
+    optional: true
     synonyms:
     - --normalisation
+    description: "Whether to perform studentisation and with what scope\n(default:\
+      \ per-read)"
     args: !ChoiceFlagArg
       choices: !!set
-        none:
         per-read:
+        none:
         per-chunk:
-    optional: true
   - !Flag
-    description: 'Minimum events in acceptable read (default: 1200)'
+    optional: true
     synonyms:
     - --min_length
+    description: 'Minimum events in acceptable read (default: 1200)'
     args: !SimpleFlagArg
       name: events
-    optional: true
   - !Flag
-    description: "Train from scaled event statistics (Default: --no-\nuse_scaled)\
-      \ (default: False)"
+    optional: true
     synonyms:
     - --use_scaled
     - --no-use_scaled
+    description: "Train from scaled event statistics (Default: --no-\nuse_scaled)\
+      \ (default: False)"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "end  Number of events to trim off start and end (default:\n(50,\
-      \ 10))"
+    optional: true
     synonyms:
     - --trim
+    description: "end  Number of events to trim off start and end (default:\n(50,\
+      \ 10))"
     args: !SimpleFlagArg
       name: beginning
-    optional: true
   - !Flag
-    description: 'Section to call (default: template)'
+    optional: true
     synonyms:
     - --section
+    description: 'Section to call (default: template)'
     args: !ChoiceFlagArg
       choices: !!set
         complement:
         template:
-    optional: true
   - !Flag
-    description: 'File output compiled model (default: None)'
+    optional: true
     synonyms:
     - --compile
+    description: 'File output compiled model (default: None)'
     args: !SimpleFlagArg
       name: COMPILE
-    optional: true
   - !Flag
-    description: "Minimum allowed probabiility for basecalls (default:\n1e-05)"
+    optional: true
     synonyms:
     - --min_prob
+    description: "Minimum allowed probabiility for basecalls (default:\n1e-05)"
     args: !SimpleFlagArg
       name: proportion
-    optional: true
   - !Flag
-    description: "Strand summary output file (default:\nstrand_output_list.txt)"
+    optional: true
     synonyms:
     - --output_strand_list
+    description: "Strand summary output file (default:\nstrand_output_list.txt)"
     args: !SimpleFlagArg
       name: OUTPUT_STRAND_LIST
-    optional: true
   - !Flag
-    description: "end     Mean of start and end positions (default: (25.0,\n25.0))"
+    optional: true
     synonyms:
     - --prior
+    description: "end     Mean of start and end positions (default: (25.0,\n25.0))"
     args: !SimpleFlagArg
       name: start
-    optional: true
   - !Flag
-    description: 'Slip penalty (default: 5.0)'
+    optional: true
     synonyms:
     - --slip
+    description: 'Slip penalty (default: 5.0)'
     args: !SimpleFlagArg
       name: SLIP
-    optional: true
   - !Flag
-    description: "Location of segmentation information (default:\nSegmentation)\n"
+    optional: true
     synonyms:
     - --segmentation
+    description: "Location of segmentation information (default:\nSegmentation)\n"
     args: !SimpleFlagArg
       name: location
-    optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: chunkify.py remap [-h] [--alphabet ALPHABET]\n              \
@@ -3221,129 +3975,130 @@ subcommands:
     \ 5.0)\n  --segmentation location\n                        Location of segmentation\
     \ information (default:\n                        Segmentation)\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: Directory containing single-read fast5 files
+    optional: false
     position: 0
     name: input_folder
-    optional: false
+    description: Directory containing single-read fast5 files
   - !Positional
-    description: Output HDF5 file
+    optional: false
     position: 1
     name: output
-    optional: false
+    description: Output HDF5 file
   named:
   - !Flag
-    description: "Alphabet of the sequences (default: b'ACGT')"
+    optional: true
     synonyms:
     - --alphabet
+    description: "Alphabet of the sequences (default: b'ACGT')"
     args: !SimpleFlagArg
       name: ALPHABET
-    optional: true
   - !Flag
-    description: 'Strand summary file containing subset (default: None)'
+    optional: true
     synonyms:
     - --input_strand_list
+    description: 'Strand summary file containing subset (default: None)'
     args: !SimpleFlagArg
       name: INPUT_STRAND_LIST
-    optional: true
   - !Flag
-    description: "Number of threads to use when processing data\n(default: 1)"
+    optional: true
     synonyms:
     - --jobs
+    description: "Number of threads to use when processing data\n(default: 1)"
     args: !SimpleFlagArg
       name: n
-    optional: true
   - !Flag
-    description: 'Length of kmer to estimate (default: 5)'
+    optional: true
     synonyms:
     - --kmer_len
+    description: 'Length of kmer to estimate (default: 5)'
     args: !SimpleFlagArg
       name: k
-    optional: true
   - !Flag
-    description: 'Limit number of reads to process (default: None)'
+    optional: true
     synonyms:
     - --limit
+    description: 'Limit number of reads to process (default: None)'
     args: !SimpleFlagArg
       name: LIMIT
-    optional: true
   - !Flag
-    description: "Whether to overwrite any output files (Default: --no-\noverwrite)\
-      \ (default: False)"
+    optional: true
     synonyms:
     - --overwrite
     - --no-overwrite
+    description: "Whether to overwrite any output files (Default: --no-\noverwrite)\
+      \ (default: False)"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: "Percentile above which to filter out chunks with too\nmany blanks\
-      \ (default: 95)"
+    optional: true
     synonyms:
     - --blanks_percentile
+    description: "Percentile above which to filter out chunks with too\nmany blanks\
+      \ (default: 95)"
     args: !SimpleFlagArg
       name: percentage
-    optional: true
   - !Flag
-    description: 'Length of each read chunk (default: 2000)'
+    optional: true
     synonyms:
     - --chunk_len
+    description: 'Length of each read chunk (default: 2000)'
     args: !SimpleFlagArg
       name: samples
-    optional: true
   - !Flag
-    description: "Whether to perform median-mad normalisation and with\nwhat scope\
-      \ (default: per-read)"
+    optional: true
     synonyms:
     - --normalisation
+    description: "Whether to perform median-mad normalisation and with\nwhat scope\
+      \ (default: per-read)"
     args: !ChoiceFlagArg
       choices: !!set
-        none:
         per-read:
+        none:
         per-chunk:
-    optional: true
   - !Flag
-    description: "end  Number of samples to trim off start and end (default:\n(200,\
-      \ 50))"
+    optional: true
     synonyms:
     - --trim
+    description: "end  Number of samples to trim off start and end (default:\n(200,\
+      \ 50))"
     args: !SimpleFlagArg
       name: beginning
-    optional: true
   - !Flag
-    description: 'Minimum samples in acceptable read (default: 2500)'
+    optional: true
     synonyms:
     - --min_length
+    description: 'Minimum samples in acceptable read (default: 2500)'
     args: !SimpleFlagArg
       name: samples
-    optional: true
   - !Flag
-    description: 'Rate of label downsampling (default: 1)'
+    optional: true
     synonyms:
     - --downsample_factor
+    description: 'Rate of label downsampling (default: 1)'
     args: !SimpleFlagArg
       name: DOWNSAMPLE_FACTOR
-    optional: true
   - !Flag
-    description: "Interpolate reference sequence positions between\nmapped samples\
-      \ (Default: --no-interpolation) (default:\nFalse)\n"
+    optional: true
     synonyms:
     - --interpolation
     - --no-interpolation
+    description: "Interpolate reference sequence positions between\nmapped samples\
+      \ (Default: --no-interpolation) (default:\nFalse)\n"
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: chunkify.py raw_identity [-h] [--alphabet ALPHABET]\n       \
@@ -3378,54 +4133,57 @@ subcommands:
     \ between\n                        mapped samples (Default: --no-interpolation)\
     \ (default:\n                        False)\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: chunkify.py
-    optional: false
+    description: ''
   named: []
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: chunkify.py [-h] {identity,remap,raw_identity,raw_remap} ...\n\
     chunkify.py: error: argument command: invalid choice: 'command' (choose from 'identity',\
     \ 'remap', 'raw_identity', 'raw_remap')\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id008
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: chunkify.py
-    optional: false
+    description: ''
   named: []
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ''
+    optional: true
     synonyms:
     - -h
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: chunkify.py [-h] {identity,remap,raw_identity,raw_remap} ...\n\
     chunkify.py: error: argument command: invalid choice: 'fly' (choose from 'identity',\
     \ 'remap', 'raw_identity', 'raw_remap')\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -3440,3 +4198,4 @@ help_text: "usage: chunkify.py [-h] {identity,remap,raw_identity,raw_remap} ...\
   \                       fly\n\noptional arguments:\n  -h, --help            show\
   \ this help message and exit\n"
 generated_using: *id004
+docker_image:

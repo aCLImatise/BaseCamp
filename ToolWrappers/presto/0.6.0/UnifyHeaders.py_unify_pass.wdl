@@ -8,6 +8,9 @@ task UnifyHeaderspyUnifypass {
     UnifyHeaders_py unify_pass \
       ~{unify_headers_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     unify_headers_do_tpy: ""
   }

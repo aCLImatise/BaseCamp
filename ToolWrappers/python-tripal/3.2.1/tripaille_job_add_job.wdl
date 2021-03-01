@@ -16,6 +16,9 @@ task TripailleJobAddJob {
       ~{arguments} \
       ~{if defined(priority) then ("--priority " +  '"' + priority + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     priority: "An integer score to prioritize the job  [default: 10]"
     name: ""

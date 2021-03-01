@@ -54,6 +54,9 @@ task Abyssbloomdbg {
       ~{if defined(trace_file) then ("--trace-file " +  '"' + trace_file + '"') else ""} \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     __assemblyfasta: "[options] <FASTQ> [FASTQ]... > assembly.fasta"
     bloom_size: "overall memory budget for the assembly in bytes.\\nUnit suffixes 'k' (kilobytes), 'M' (megabytes),\\nor 'G' (gigabytes) may be used. [required]"

@@ -14,6 +14,9 @@ task VsnpFastqQualitypy {
       ~{if defined(read_two) then ("--read2 " +  '"' + read_two + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_one: "Required: single read, R1 if Illumina read"
     read_two: "Required: R2 Illumina read"

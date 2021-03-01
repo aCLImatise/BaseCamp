@@ -3,32 +3,32 @@ id: mglex_cli_spread.cwl
 inputs:
 - id: in_data
   doc: Feature matrix; default standard input
-  type: File
+  type: File?
   inputBinding:
     prefix: --data
 - id: in_responsibility
   doc: Responsibility (weight) matrix file
-  type: File
+  type: File?
   inputBinding:
     prefix: --responsibility
 - id: in_weight
   doc: Weights (sequence length) file for normalization
-  type: File
+  type: File?
   inputBinding:
     prefix: --weight
 - id: in_precision
   doc: Output precision; default 2
-  type: long
+  type: long?
   inputBinding:
     prefix: --precision
 - id: in_normalize
   doc: Report (weighted) average instead of sum
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --normalize
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_spread
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mglex-cli

@@ -12,6 +12,9 @@ task TripailleExpressionAddBiomaterial {
       ~{if defined(analysis_id) then ("--analysis_id " +  '"' + analysis_id + '"') else ""} \
       ~{if (no_wait) then "--no_wait" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     analysis_id: "The id of the associated analysis. Required for TripalV3"
     no_wait: "Do not wait for job to complete"

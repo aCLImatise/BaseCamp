@@ -4,43 +4,50 @@ command:
 - viterbi
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: in.bam
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: '| --ref FILE     Indexed reference fasta file [null]'
+  optional: true
   synonyms:
   - -f
-  args: !EmptyFlagArg {}
-  optional: true
+  - --ref
+  description: Indexed reference fasta file [null]
+  args: !SimpleFlagArg
+    name: FILE
 - !Flag
-  description: "| --keepflags    Don't delete flags MC, MD, NM and A, which are all\
-    \ prone to change during realignment."
+  optional: true
   synonyms:
   - -k
+  - --keepflags
+  description: Don't delete flags MC, MD, NM and A, which are all prone to change
+    during realignment.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '| --defqual INT  Assume INT as quality for all bases with BQ2. Default
-    (=-1) is to use median quality of bases in read.'
+  optional: true
   synonyms:
   - -q
-  args: !EmptyFlagArg {}
-  optional: true
+  - --defqual
+  description: Assume INT as quality for all bases with BQ2. Default (=-1) is to use
+    median quality of bases in read.
+  args: !SimpleFlagArg
+    name: INT
 - !Flag
-  description: '| --out FILE     Output BAM file [- = stdout = default]'
+  optional: true
   synonyms:
   - -o
-  args: !EmptyFlagArg {}
-  optional: true
+  - --out
+  description: Output BAM file [- = stdout = default]
+  args: !SimpleFlagArg
+    name: FILE
 - !Flag
-  description: Be verbose
+  optional: true
   synonyms:
   - --verbose
+  description: Be verbose
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -66,3 +73,4 @@ help_text: "viterbi: unrecognized option '--help'\nFATAL(lofreq_viterbi.c|main_v
   \ sort, e.g. lofreq viterbi ... | samtools sort -')\n"
 generated_using:
 - --help
+docker_image:

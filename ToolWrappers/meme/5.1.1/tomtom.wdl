@@ -7,7 +7,7 @@ task Tomtom {
     Boolean? x_alph
     File? b_file
     Float? motif_pseudo
-    String? use_specified_repeated
+    String? use_motifs_specified
     String? mi
     Float? thresh
     Boolean? evalue
@@ -35,7 +35,7 @@ task Tomtom {
       ~{if (x_alph) then "-xalph" else ""} \
       ~{if defined(b_file) then ("-bfile " +  '"' + b_file + '"') else ""} \
       ~{if defined(motif_pseudo) then ("-motif-pseudo " +  '"' + motif_pseudo + '"') else ""} \
-      ~{if defined(use_specified_repeated) then ("-m " +  '"' + use_specified_repeated + '"') else ""} \
+      ~{if defined(use_motifs_specified) then ("-m " +  '"' + use_motifs_specified + '"') else ""} \
       ~{if defined(mi) then ("-mi " +  '"' + mi + '"') else ""} \
       ~{if defined(thresh) then ("-thresh " +  '"' + thresh + '"') else ""} \
       ~{if (evalue) then "-evalue" else ""} \
@@ -52,13 +52,16 @@ task Tomtom {
       ~{if (verbosity) then "-verbosity" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_directory_not: "Name of directory for output files;\\nwill not replace existing directory"
     oc: "Name of directory for output files;\\nwill replace existing directory"
     x_alph: "Convert the alphabet of the target motif databases\\nto the alphabet of the query motif database\\nassuming the core symbols of the target motif\\nalphabet are a subset; default: reject differences"
     b_file: "Name of background file;\\ndefault: use the background from the query\\nmotif database"
     motif_pseudo: "Apply the pseudocount to the query and target motifs;\\ndefault: apply a pseudocount of 0.1"
-    use_specified_repeated: "Use only query motifs with a specified id;\\nmay be repeated"
+    use_motifs_specified: "Use only query motifs with a specified id;\\nmay be repeated"
     mi: "Use only query motifs with a specifed index;\\nmay be repeated"
     thresh: "Significance threshold; default: 0.5"
     evalue: "Use E-value threshold; default: q-value"

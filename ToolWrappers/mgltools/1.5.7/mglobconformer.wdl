@@ -4,6 +4,9 @@ task Mglobconformer {
   command <<<
     mglobconformer
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

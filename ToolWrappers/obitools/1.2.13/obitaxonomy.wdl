@@ -32,6 +32,9 @@ task Obitaxonomy {
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if defined(taxonomy_dump) then ("--taxonomy-dump " +  '"' + taxonomy_dump + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Set logging in debug mode"
     without_progress_bar: "desactivate progress bar"

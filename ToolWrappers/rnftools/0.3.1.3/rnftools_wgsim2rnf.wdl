@@ -18,6 +18,9 @@ task RnftoolsWgsim2rnf {
       ~{if defined(genome_id) then ("--genome-id " +  '"' + genome_id + '"') else ""} \
       ~{if (allow_unmapped) then "--allow-unmapped" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     wg_sim_fast_q_one: "First WgSim FASTQ file (- for standard input)"
     wg_sim_fast_q_two: "Second WgSim FASTQ file (in case of paired-end reads,\\ndefault: none)."

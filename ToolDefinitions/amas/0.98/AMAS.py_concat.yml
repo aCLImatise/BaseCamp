@@ -4,97 +4,89 @@ command:
 - concat
 positional:
 - !Positional
-  description: -c CORES, --cores CORES
+  optional: false
   position: 0
   name: check
-  optional: false
+  description: -c CORES, --cores CORES
 named:
 - !Flag
-  description: '{fasta,phylip,nexus,phylip-int,nexus-int} -d {aa,dna}'
-  synonyms:
-  - -i
-  - -f
-  args: !RepeatFlagArg
-    name: IN_FILES
   optional: true
-- !Flag
-  description: "File name for th0e concatenated alignment partitions.\nDefault: 'partitions.txt'"
   synonyms:
   - -p
   - --concat-part
+  description: "File name for th0e concatenated alignment partitions.\nDefault: 'partitions.txt'"
   args: !SimpleFlagArg
     name: CONCAT_PART
-  optional: true
 - !Flag
-  description: "File name for the concatenated alignment. Default:\n'concatenated.out'"
+  optional: true
   synonyms:
   - -t
   - --concat-out
+  description: "File name for the concatenated alignment. Default:\n'concatenated.out'"
   args: !SimpleFlagArg
     name: CONCAT_OUT
-  optional: true
 - !Flag
-  description: 'File format for the output alignment. Default: fasta'
+  optional: true
   synonyms:
   - -u
   - --out-format
+  description: 'File format for the output alignment. Default: fasta'
   args: !ChoiceFlagArg
     choices: !!set
-      phylip:
-      nexus-int:
       fasta:
       phylip-int:
+      phylip:
+      nexus-int:
       nexus:
-  optional: true
 - !Flag
-  description: 'Check if input sequences are aligned. Default: no'
+  optional: true
   synonyms:
   - -e
   - --check-align
+  description: 'Check if input sequences are aligned. Default: no'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Alignment files to be taken as input. You can specify\nmultiple files\
-    \ using wildcards (e.g. --in-files\n*fasta)"
+  optional: true
   synonyms:
   - -i
   - --in-files
+  description: "Alignment files to be taken as input. You can specify\nmultiple files\
+    \ using wildcards (e.g. --in-files\n*fasta)"
   args: !RepeatFlagArg
     name: IN_FILES
-  optional: true
 - !Flag
-  description: The format of input alignment
+  optional: true
   synonyms:
   - -f
   - --in-format
+  description: The format of input alignment
   args: !ChoiceFlagArg
     choices: !!set
-      phylip:
-      nexus-int:
       fasta:
       phylip-int:
+      phylip:
+      nexus-int:
       nexus:
-  optional: true
 - !Flag
-  description: "Type of data\n"
+  optional: true
   synonyms:
   - -d
   - --data-type
+  description: "Type of data\n"
   args: !ChoiceFlagArg
     choices: !!set
       dna:
       aa:
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: AMAS.py [-h] [-p CONCAT_PART] [-t CONCAT_OUT]\n               [-u\
@@ -119,3 +111,4 @@ help_text: "usage: AMAS.py [-h] [-p CONCAT_PART] [-t CONCAT_OUT]\n              
   \    Type of data\n"
 generated_using:
 - --help
+docker_image:

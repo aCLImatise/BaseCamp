@@ -14,6 +14,9 @@ task Ambmask {
       ~{prn_lev} \
       ~{format}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prm_top: ": amber topology"
     in_pc_rd: ": amber (restrt) coordinates"

@@ -14,6 +14,9 @@ task Mbcreatebamstatistics {
       ~{output_json} \
       ~{if defined(gff_file) then ("--gff_file " +  '"' + gff_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff_file: ""
     estimate_bam_statistics: ""

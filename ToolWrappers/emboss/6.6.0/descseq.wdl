@@ -12,6 +12,9 @@ task Descseq {
       ~{if (description) then "-description" else ""} \
       ~{if (append) then "-append" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "string     Name of the sequence (Any string)"
     description: "string     Description of the sequence (Any string)"

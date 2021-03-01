@@ -1,0 +1,52 @@
+!Command
+command:
+- pbmerge
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT
+  description: 'FILE  Input file(s). Maybe one of: DataSetXML, BAM file(s), or FOFN'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: STR   Output BAM filename. Writes to stdout if not provided.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-pbi
+  description: Disables creation of PBI index file. PBI always disabled when writing
+    to stdout.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "pbmerge - pbmerge merges PacBio BAM files. If the input is DataSetXML,\
+  \ any filters will be applied.\n\nUsage:\n  pbmerge [options] <INPUT>\n\n  INPUT\
+  \      FILE  Input file(s). Maybe one of: DataSetXML, BAM file(s), or FOFN\n\nInput/Output:\n\
+  \  -o         STR   Output BAM filename. Writes to stdout if not provided.\n  --no-pbi\
+  \         Disables creation of PBI index file. PBI always disabled when writing\
+  \ to stdout.\n\n  -h,--help        Show this help and exit.\n  --version       \
+  \ Show application version and exit.\n\nExamples:\n    $ pbmerge -o merged.bam data.subreadset.xml\n\
+  \    $ pbmerge -o merged.bam data_1.bam data_2.bam data_3.bam\n    $ pbmerge -o\
+  \ merged.bam data_bams.fofn\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pbbam:1.6.0--h5b7e6e0_0

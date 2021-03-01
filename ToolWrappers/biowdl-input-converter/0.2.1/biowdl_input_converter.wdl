@@ -20,6 +20,9 @@ task Biowdlinputconverter {
       ~{if (skip_file_check) then "--skip-file-check" else ""} \
       ~{if (old) then "--old" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_written: "The output file to which the json is written. Default:\\nstdout"
     validate: "Do not generate output but only validate the"

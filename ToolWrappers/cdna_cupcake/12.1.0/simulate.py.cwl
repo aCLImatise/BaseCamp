@@ -3,17 +3,17 @@ id: simulate.py.cwl
 inputs:
 - id: in_dele
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --dele
 - id: in_ins
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --ins
 - id: in_copy
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --copy
 - id: in_simple
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - simulate.py

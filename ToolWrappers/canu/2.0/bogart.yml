@@ -3,114 +3,122 @@ command:
 - bogart
 positional:
 - !Positional
-  description: bestOverlaps
+  optional: false
   position: 0
   name: overlapScoring
-  optional: false
+  description: bestOverlaps
 - !Positional
-  description: optimizePositions
+  optional: false
   position: 1
   name: errorProfiles
-  optional: false
+  description: optimizePositions
 - !Positional
-  description: buildUnitig
+  optional: false
   position: 2
   name: chunkGraph
-  optional: false
+  description: buildUnitig
 - !Positional
-  description: orphans
+  optional: false
   position: 3
   name: placeUnplaced
-  optional: false
+  description: orphans
 - !Positional
-  description: stderr
-  position: 4
-  name: setParentAndHang
   optional: false
+  position: 4
+  name: splitDiscontinuous
+  description: intermediateTigs
+- !Positional
+  optional: false
+  position: 5
+  name: setParentAndHang
+  description: stderr
 named:
 - !Flag
-  description: Mandatory path to an existing seqStore.
+  optional: true
   synonyms:
   - -S
+  description: Mandatory path to an existing seqStore.
   args: !SimpleFlagArg
     name: seqPath
-  optional: true
 - !Flag
-  description: Mandatory path to an existing ovlStore.
+  optional: true
   synonyms:
   - -O
+  description: Mandatory path to an existing ovlStore.
   args: !SimpleFlagArg
     name: ovlPath
-  optional: true
 - !Flag
-  description: Mandatory path to an output tigStore (can exist or not).
+  optional: true
   synonyms:
   - -T
+  description: Mandatory path to an output tigStore (can exist or not).
   args: !SimpleFlagArg
     name: tigPath
-  optional: true
 - !Flag
-  description: Mandatory prefix for the output files.
+  optional: true
   synonyms:
   - -o
+  description: Mandatory prefix for the output files.
   args: !SimpleFlagArg
     name: outPrefix
-  optional: true
 - !Flag
-  description: Use at most T compute threads.
+  optional: true
   synonyms:
   - -threads
+  description: Use at most T compute threads.
   args: !SimpleFlagArg
     name: T
-  optional: true
 - !Flag
-  description: Use at most 'gb' gigabytes of memory.
+  optional: true
   synonyms:
   - -M
+  description: Use at most 'gb' gigabytes of memory.
   args: !SimpleFlagArg
     name: gb
-  optional: true
 - !Flag
-  description: Save the overlap graph to disk, and continue (not implemented).
+  optional: true
   synonyms:
   - -save
+  description: Save the overlap graph to disk, and continue (not implemented).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Genome size in bases.
+  optional: true
   synonyms:
   - -gs
+  description: Genome size in bases.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Force reads below 'len' bases to be singletons.
+  optional: true
   synonyms:
   - -mr
+  description: Force reads below 'len' bases to be singletons.
   args: !SimpleFlagArg
     name: len
-  optional: true
 - !Flag
-  description: Ignore overlaps shorter than 'len' bases.
+  optional: true
   synonyms:
   - -mo
+  description: Ignore overlaps shorter than 'len' bases.
   args: !SimpleFlagArg
     name: len
-  optional: true
 - !Flag
-  description: Create unitigs from contig intersections of at least 'len' bases.
+  optional: true
   synonyms:
   - -mi
+  description: Create unitigs from contig intersections of at least 'len' bases.
   args: !SimpleFlagArg
     name: len
-  optional: true
 - !Flag
-  description: Create unitigs from contig intersections with at most 'num' placements.
+  optional: true
   synonyms:
   - -mp
+  description: Create unitigs from contig intersections with at most 'num' placements.
   args: !SimpleFlagArg
     name: num
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -nofilter
   description: "[coverageGap],[highError],[lopsided],[spur]\nDisable filtering of:\n\
     coverageGap - reads that have a suspicious lack of overlaps in the middle\nhighError\
     \   - overlaps that have error rates well outside the observed\nlopsided    -\
@@ -118,101 +126,98 @@ named:
     \ have no overlaps on one end\nThe value supplied to -nofilter must be one word,\
     \ case, order and punctuation\ndo not matter.  The following examples behave the\
     \ same:\n'-nofilter coverageGap,higherror'\n'-nofilter coveragegap-and-HIGHERROR'"
-  synonyms:
-  - -nofilter
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not use overlaps more than F fraction error when when finding initial
-    best edges.
+  optional: true
   synonyms:
   - -eg
+  description: Do not use overlaps more than F fraction error when when finding initial
+    best edges.
   args: !SimpleFlagArg
     name: F
-  optional: true
 - !Flag
-  description: Do not load overlaps more then F fraction error (useful only for -save).
+  optional: true
   synonyms:
   - -eM
+  description: Do not load overlaps more then F fraction error (useful only for -save).
   args: !SimpleFlagArg
     name: F
-  optional: true
 - !Flag
-  description: "Split a contig if there is an alternate path from an overlap of at\
-    \ least L bases.\nDefault: 2100."
+  optional: true
   synonyms:
   - -ca
+  description: "Split a contig if there is an alternate path from an overlap of at\
+    \ least L bases.\nDefault: 2100."
   args: !SimpleFlagArg
     name: L
-  optional: true
 - !Flag
-  description: "Split a contig if there is an alternate path from an overlap at most\
-    \ P percent\ndifferent from the length of the best overlap.  Default: 200."
+  optional: true
   synonyms:
   - -cp
+  description: "Split a contig if there is an alternate path from an overlap at most\
+    \ P percent\ndifferent from the length of the best overlap.  Default: 200."
   args: !SimpleFlagArg
     name: P
-  optional: true
 - !Flag
-  description: "Use overlaps upto D standard deviations from the mean when building\
-    \ the best\noverlap graph.  Default 6.0."
+  optional: true
   synonyms:
   - -dg
+  description: "Use overlaps upto D standard deviations from the mean when building\
+    \ the best\noverlap graph.  Default 6.0."
   args: !SimpleFlagArg
     name: D
-  optional: true
 - !Flag
-  description: Like -dg, but for merging bubbles into primary contigs.  Default 6.0.
+  optional: true
   synonyms:
   - -db
+  description: Like -dg, but for merging bubbles into primary contigs.  Default 6.0.
   args: !SimpleFlagArg
     name: D
-  optional: true
 - !Flag
-  description: Like -dg, but for breaking repeats.  Default 3.0.
+  optional: true
   synonyms:
   - -dr
+  description: Like -dg, but for breaking repeats.  Default 3.0.
   args: !SimpleFlagArg
     name: D
-  optional: true
 - !Flag
-  description: Require overlaps to overlap by at least n bases.
+  optional: true
   synonyms:
   - -covgapolap
+  description: Require overlaps to overlap by at least n bases.
   args: !SimpleFlagArg
     name: n
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -lopsided
   description: "n      Set how lopsided reads are detected and/or treated.\nm = off\
     \        - don't detect at all (omit n parameter)\nm = noseed n   - detect, n%\
     \ difference, allow edges to but don't seed overlaps with them\nm = nobest n \
     \  - detect, n% difference, exclude from bog graph completely"
-  synonyms:
-  - -lopsided
   args: !SimpleFlagArg
     name: m
-  optional: true
 - !Flag
-  description: Set a minimum overlap length, per overlap, as f*min(readAlen, readBlen)
+  optional: true
   synonyms:
   - -minolappercent
+  description: Set a minimum overlap length, per overlap, as f*min(readAlen, readBlen)
   args: !SimpleFlagArg
     name: f
-  optional: true
 - !Flag
-  description: enable logging/debugging for a specific component.
+  optional: true
   synonyms:
   - -D
+  description: enable logging/debugging for a specific component.
   args: !SimpleFlagArg
     name: name
-  optional: true
 - !Flag
-  description: disable logging/debugging for a specific component.
+  optional: true
   synonyms:
   - -d
+  description: disable logging/debugging for a specific component.
   args: !SimpleFlagArg
     name: name
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -267,3 +272,4 @@ help_text: "usage: bogart -S seqPath -O ovlPath -T tigPath -o outPrefix ...\n\nM
   No overlap store (-O option) supplied.\n"
 generated_using:
 - --help
+docker_image:

@@ -14,6 +14,9 @@ task CoverageFromBam {
       ~{if defined(stride) then ("--stride " +  '"' + stride + '"') else ""} \
       ~{if (summary_only) then "--summary_only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     regions: "Only process given regions. (default: None)"
     prefix: "Prefix for output, defaults to basename of bam.\\n(default: None)"

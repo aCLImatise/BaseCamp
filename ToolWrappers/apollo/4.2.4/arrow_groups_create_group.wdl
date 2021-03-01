@@ -8,6 +8,9 @@ task ArrowGroupsCreateGroup {
     arrow groups create_group \
       ~{name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: ""
   }

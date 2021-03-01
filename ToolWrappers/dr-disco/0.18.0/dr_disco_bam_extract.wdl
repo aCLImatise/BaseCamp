@@ -12,6 +12,9 @@ task DrdiscoBamextract {
       ~{region_two} \
       ~{bam_input_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     region_one: ""
     region_two: ""

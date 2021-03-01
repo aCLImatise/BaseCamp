@@ -30,6 +30,9 @@ task NucaminoHiv1b {
       ~{if defined(output_destination_thealignment) then ("--output " +  '"' + output_destination_thealignment + '"') else ""} \
       ~{if (ppr_of) then "--pprof" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "hide non-error information"
     in_del_codon_opening_bonus: "bonus score when a indel\\ncodon was opened (default:\\n0)"

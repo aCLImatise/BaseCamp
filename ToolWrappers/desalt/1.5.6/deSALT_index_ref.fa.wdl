@@ -14,6 +14,9 @@ task DeSALTIndexReffa {
       ~{reference_dot_fast_a} \
       ~{index_route}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     de_bga: ""
     index: ""

@@ -3,25 +3,20 @@ id: partition_gtf2gb.pl.cwl
 inputs:
 - id: in_min_cluster_size
   doc: "minimal number of genes in a one cluster,\ndefault n=20"
-  type: long
+  type: long?
   inputBinding:
     prefix: --minClusterSize
 - id: in_max_flanking_region_size
   doc: "maximal size of flanking intergenic region to be\nexcised around clusters\
     \ of genes,\ndefault n=2000"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxFlankingRegionSize
 - id: in_verbose
   doc: print verbose warning messages
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
-- id: in_synopsis
-  doc: parition_gtf2gb.pl --genome=genome.fa --gtf=annotation.gtf --out.gb
-  type: string
-  inputBinding:
-    position: 0
 - id: in_entry_two
   doc: NCBI   CDS 7   28  0 + . gene_id "g3"; transcript_id "g3.t1"
   type: long
@@ -49,6 +44,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - partition_gtf2gb.pl

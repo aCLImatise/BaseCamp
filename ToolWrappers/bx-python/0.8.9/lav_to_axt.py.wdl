@@ -8,6 +8,9 @@ task LavToAxtpy {
     lav_to_axt_py \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     silent: ""
   }

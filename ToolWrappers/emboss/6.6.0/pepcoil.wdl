@@ -12,6 +12,9 @@ task Pepcoil {
       ~{if (frame) then "-frame" else ""} \
       ~{if (other) then "-other" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window: "integer    [28] Window size (Integer from 7 to 28)"
     frame: "boolean    [Yes if -coil is true] Show coil frameshifts"

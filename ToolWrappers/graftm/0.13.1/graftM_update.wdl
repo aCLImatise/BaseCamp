@@ -20,6 +20,9 @@ task GraftMUpdate {
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graft_m_package: "GraftM package to update"
     regenerate_diamond_db: "Recreate the diamond DB in the package"

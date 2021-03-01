@@ -80,6 +80,9 @@ task SeqkitBam {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bins: "number of histogram bins (default -1)"
     bundle: "partition BAM file into loci (-1) or bundles with this minimum size"

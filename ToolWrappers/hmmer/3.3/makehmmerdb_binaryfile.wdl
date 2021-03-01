@@ -12,6 +12,9 @@ task MakehmmerdbBinaryfile {
       ~{seq_file} \
       ~{binary_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     make_hmmer_db: ""
     seq_file: ""

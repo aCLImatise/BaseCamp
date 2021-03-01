@@ -60,6 +60,9 @@ task Iprscan2gff3 {
       ~{with} \
       ~{that}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ipr: ""
     this: ""

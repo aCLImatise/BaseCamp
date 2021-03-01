@@ -14,6 +14,9 @@ task MmseqsResultsbyset {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alpha: "0.001           Set alpha for combining p-values during aggregation"
     short_output: "false           The output database will contain only the spread p-value"

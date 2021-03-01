@@ -16,6 +16,9 @@ task BedGraphToBigWig {
       ~{if defined(items_per_slot) then ("-itemsPerSlot " +  '"' + items_per_slot + '"') else ""} \
       ~{if (unc) then "-unc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     block_size: "- Number of items to bundle in r-tree.  Default 256"
     items_per_slot: "- Number of data points bundled at lowest level. Default 1024"

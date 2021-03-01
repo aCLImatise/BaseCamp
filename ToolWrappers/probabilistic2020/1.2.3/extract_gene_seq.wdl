@@ -7,7 +7,7 @@ task ExtractGeneSeq {
     Boolean? verbose
     File? human_genome_fasta
     File? bed
-    File? output_single_fasta
+    File? output_single_file
     String extracts_gene_sequences
   }
   command <<<
@@ -18,19 +18,22 @@ task ExtractGeneSeq {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(human_genome_fasta) then ("--input " +  '"' + human_genome_fasta + '"') else ""} \
       ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
-      ~{if defined(output_single_fasta) then ("--output " +  '"' + output_single_fasta + '"') else ""}
+      ~{if defined(output_single_file) then ("--output " +  '"' + output_single_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_level: "Write a log file (--log-level=DEBUG for debug mode,\\n--log-level=INFO for info mode)"
     log: "Path to log file. (accepts stdout)"
     verbose: "Flag for more verbose log output"
     human_genome_fasta: "Human genome FASTA file"
     bed: "BED file annotation of genes"
-    output_single_fasta: "Output a single FASTA file with gene sequences\\n"
+    output_single_file: "Output a single FASTA file with gene sequences\\n"
     extracts_gene_sequences: "Extracts gene sequences from a genomic FASTA file"
   }
   output {
     File out_stdout = stdout()
-    File out_output_single_fasta = "${in_output_single_fasta}"
+    File out_output_single_file = "${in_output_single_file}"
   }
 }

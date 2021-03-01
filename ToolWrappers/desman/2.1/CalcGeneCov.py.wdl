@@ -8,6 +8,9 @@ task CalcGeneCovpy {
     CalcGeneCov_py \
       ~{gene_freq_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene_freq_file: "input gene base frequencies"
   }

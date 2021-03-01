@@ -3,7 +3,7 @@ id: gffToBed_gff.cwl
 inputs:
 - id: in_emit_tool_contract
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --emit-tool-contract
 - id: in_gff_to_bed
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gffToBed

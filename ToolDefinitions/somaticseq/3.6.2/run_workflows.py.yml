@@ -1,0 +1,44 @@
+!Command
+command:
+- run_workflows.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -nt
+  - --threads
+  - -parts
+  description: '[PARTITION_NUMBERING [PARTITION_NUMBERING ...]], --partition-numbering
+    [PARTITION_NUMBERING [PARTITION_NUMBERING ...]]'
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: run_workflows.py [-h]\n                        [-scripts [LIST_OF_SCRIPTS\
+  \ [LIST_OF_SCRIPTS ...]]]\n                        [-nt THREADS]\n             \
+  \           [-parts [PARTITION_NUMBERING [PARTITION_NUMBERING ...]]]\n\nThis module\
+  \ has two use cases: 1) the first use case is simple, e.g., run the\n4 scripts using\
+  \ 2 threads in parallel: run_workflows.py --scripts 1.sh 2.sh\n3.sh 4.sh -nt 2.\
+  \ 2) the second use case is more complex, e.g., with -nt 3\nthreads, the following\
+  \ 10 scripts have to be completed in the following\norders: the first 3 need to\
+  \ complete first, and then the next 4 need to\ncomplete, and then finally the next\
+  \ 3 will need to complete: run_workflows.py\n-scripts 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh\
+  \ 7.sh 8.sh 9.sh 10.sh -parts 3 4 3 -nt 3\n\noptional arguments:\n  -h, --help \
+  \           show this help message and exit\n  -scripts [LIST_OF_SCRIPTS [LIST_OF_SCRIPTS\
+  \ ...]], --list-of-scripts [LIST_OF_SCRIPTS [LIST_OF_SCRIPTS ...]]\n  -nt THREADS,\
+  \ --threads THREADS\n  -parts [PARTITION_NUMBERING [PARTITION_NUMBERING ...]], --partition-numbering\
+  \ [PARTITION_NUMBERING [PARTITION_NUMBERING ...]]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/somaticseq:3.6.2--py_0

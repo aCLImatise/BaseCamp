@@ -20,6 +20,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_output_interval_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - addUnalignedIntervals

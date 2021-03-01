@@ -26,6 +26,9 @@ task MakeTestDatasetspy {
       ~{if defined(input_trait_table) then ("--input_trait_table " +  '"' + input_trait_table + '"') else ""} \
       ~{if defined(input_tree) then ("--input_tree " +  '"' + input_tree + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     output_dir: "the output directory.  Duplicate trees, trait tables,\\nexpected values and prediction files will be saved\\nhere.[default:./test_datasets/]"

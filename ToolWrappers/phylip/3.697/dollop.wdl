@@ -4,6 +4,9 @@ task Dollop {
   command <<<
     dollop
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -4,18 +4,21 @@ task SubChar {
   input {
     String old_char
     String new_char
-    File file
+    File var_file
   }
   command <<<
     subChar \
       ~{old_char} \
       ~{new_char} \
-      ~{file}
+      ~{var_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     old_char: ""
     new_char: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

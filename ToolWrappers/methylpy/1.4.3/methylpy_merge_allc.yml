@@ -5,61 +5,61 @@ command:
 positional: []
 named:
 - !Flag
-  description: '[--num-procs NUM_PROCS]'
-  synonyms:
-  - --output-file
-  args: !SimpleFlagArg
-    name: OUTPUT_FILE
   optional: true
-- !Flag
-  description: 'List of allc files to merge. (default: None)'
   synonyms:
   - --allc-files
+  description: 'List of allc files to merge. (default: None)'
   args: !RepeatFlagArg
     name: ALLC_FILES
-  optional: true
 - !Flag
-  description: 'Number of processors to use (default: 1)'
+  optional: true
+  synonyms:
+  - --output-file
+  description: "String indicating the name of output file (default:\nNone)"
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+- !Flag
+  optional: true
   synonyms:
   - --num-procs
+  description: 'Number of processors to use (default: 1)'
   args: !SimpleFlagArg
     name: NUM_PROCS
-  optional: true
 - !Flag
-  description: "Boolean indicating whether to compress (by gzip) the\nfinal output\
-    \ (default: True)"
+  optional: true
   synonyms:
   - --compress-output
+  description: "Boolean indicating whether to compress (by gzip) the\nfinal output\
+    \ (default: True)"
   args: !SimpleFlagArg
     name: COMPRESS_OUTPUT
-  optional: true
 - !Flag
-  description: "Boolean indicating whether to skip the merging of SNP\ninformation\
-    \ (default: True)"
+  optional: true
   synonyms:
   - --skip-snp-info
+  description: "Boolean indicating whether to skip the merging of SNP\ninformation\
+    \ (default: True)"
   args: !SimpleFlagArg
     name: SKIP_SNP_INFO
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mini-batch
   description: "The maximum number of allc files to be merged at the\nsame time. Since\
     \ OS or python may limit the number of\nfiles that can be open at once, value\
     \ larger than 200\nis not recommended (default: 100)\n"
-  synonyms:
-  - --mini-batch
   args: !SimpleFlagArg
     name: MINI_BATCH
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: methylpy merge-allc [-h] --allc-files ALLC_FILES [ALLC_FILES ...]\n\
@@ -82,3 +82,4 @@ help_text: "usage: methylpy merge-allc [-h] --allc-files ALLC_FILES [ALLC_FILES 
   \ 200\n                        is not recommended (default: 100)\n"
 generated_using:
 - --help
+docker_image:
